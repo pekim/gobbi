@@ -125,17 +125,37 @@ keys.</doc>
         <doc xml:space="preserve">Send terminal's "erase" setting.</doc>
       </member>
     </enumeration>
+    <enumeration name="Format"
+                 version="0.50"
+                 glib:type-name="VteFormat"
+                 glib:get-type="vte_format_get_type"
+                 c:type="VteFormat">
+      <doc xml:space="preserve">An enumeratio type that can be used to specify the format the selection
+should be copied to the clipboard in.</doc>
+      <member name="text"
+              value="1"
+              c:identifier="VTE_FORMAT_TEXT"
+              glib:nick="text">
+        <doc xml:space="preserve">Export as plain text</doc>
+      </member>
+      <member name="html"
+              value="2"
+              c:identifier="VTE_FORMAT_HTML"
+              glib:nick="html">
+        <doc xml:space="preserve">Export as HTML formatted text</doc>
+      </member>
+    </enumeration>
     <constant name="MAJOR_VERSION" value="0" c:type="VTE_MAJOR_VERSION">
       <doc xml:space="preserve">The major version number of the VTE library
 (e.g. in version 3.1.4 this is 3).</doc>
       <type name="gint" c:type="gint"/>
     </constant>
-    <constant name="MICRO_VERSION" value="4" c:type="VTE_MICRO_VERSION">
+    <constant name="MICRO_VERSION" value="1" c:type="VTE_MICRO_VERSION">
       <doc xml:space="preserve">The micro version number of the VTE library
 (e.g. in version 3.1.4 this is 4).</doc>
       <type name="gint" c:type="gint"/>
     </constant>
-    <constant name="MINOR_VERSION" value="48" c:type="VTE_MINOR_VERSION">
+    <constant name="MINOR_VERSION" value="52" c:type="VTE_MINOR_VERSION">
       <doc xml:space="preserve">The minor version number of the VTE library
 (e.g. in version 3.1.4 this is 1).</doc>
       <type name="gint" c:type="gint"/>
@@ -773,9 +793,14 @@ a cell has to be selected or not.</doc>
           </instance-parameter>
         </parameters>
       </virtual-method>
-      <virtual-method name="copy_clipboard" invoker="copy_clipboard">
+      <virtual-method name="copy_clipboard"
+                      invoker="copy_clipboard"
+                      deprecated="1"
+                      deprecated-version="0.50">
         <doc xml:space="preserve">Places the selected text in the terminal in the #GDK_SELECTION_CLIPBOARD
 selection.</doc>
+        <doc-deprecated xml:space="preserve">Use vte_terminal_copy_clipboard_format() with %VTE_FORMAT_TEXT
+  instead.</doc-deprecated>
         <return-value transfer-ownership="none">
           <type name="none" c:type="void"/>
         </return-value>
@@ -1026,9 +1051,14 @@ user presses Shift+Insert.</doc>
           </instance-parameter>
         </parameters>
       </virtual-method>
-      <method name="copy_clipboard" c:identifier="vte_terminal_copy_clipboard">
+      <method name="copy_clipboard"
+              c:identifier="vte_terminal_copy_clipboard"
+              deprecated="1"
+              deprecated-version="0.50">
         <doc xml:space="preserve">Places the selected text in the terminal in the #GDK_SELECTION_CLIPBOARD
 selection.</doc>
+        <doc-deprecated xml:space="preserve">Use vte_terminal_copy_clipboard_format() with %VTE_FORMAT_TEXT
+  instead.</doc-deprecated>
         <return-value transfer-ownership="none">
           <type name="none" c:type="void"/>
         </return-value>
@@ -1037,6 +1067,32 @@ selection.</doc>
             <doc xml:space="preserve">a #VteTerminal</doc>
             <type name="Terminal" c:type="VteTerminal*"/>
           </instance-parameter>
+        </parameters>
+      </method>
+      <method name="copy_clipboard_format"
+              c:identifier="vte_terminal_copy_clipboard_format"
+              version="0.50">
+        <doc xml:space="preserve">Places the selected text in the terminal in the #GDK_SELECTION_CLIPBOARD
+selection in the form specified by @format.
+
+For all formats, the selection data (see #GtkSelectionData) will include the
+text targets (see gtk_target_list_add_text_targets() and
+gtk_selection_data_targets_includes_text()). For %VTE_FORMAT_HTML,
+the selection will also include the "text/html" target, which when requested,
+returns the HTML data in UTF-16 with a U+FEFF BYTE ORDER MARK character at
+the start.</doc>
+        <return-value transfer-ownership="none">
+          <type name="none" c:type="void"/>
+        </return-value>
+        <parameters>
+          <instance-parameter name="terminal" transfer-ownership="none">
+            <doc xml:space="preserve">a #VteTerminal</doc>
+            <type name="Terminal" c:type="VteTerminal*"/>
+          </instance-parameter>
+          <parameter name="format" transfer-ownership="none">
+            <doc xml:space="preserve">a #VteFormat</doc>
+            <type name="Format" c:type="VteFormat"/>
+          </parameter>
         </parameters>
       </method>
       <method name="copy_primary" c:identifier="vte_terminal_copy_primary">
@@ -1218,10 +1274,26 @@ at the keyboard.</doc>
         </parameters>
       </method>
       <method name="get_allow_bold" c:identifier="vte_terminal_get_allow_bold">
-        <doc xml:space="preserve">Checks whether or not the terminal will attempt to draw bold text by
-repainting text with a one-pixel offset.</doc>
+        <doc xml:space="preserve">Checks whether or not the terminal will attempt to draw bold text,
+either by using a bold font variant or by repainting text with a different
+offset.</doc>
         <return-value transfer-ownership="none">
           <doc xml:space="preserve">%TRUE if bolding is enabled, %FALSE if not</doc>
+          <type name="gboolean" c:type="gboolean"/>
+        </return-value>
+        <parameters>
+          <instance-parameter name="terminal" transfer-ownership="none">
+            <doc xml:space="preserve">a #VteTerminal</doc>
+            <type name="Terminal" c:type="VteTerminal*"/>
+          </instance-parameter>
+        </parameters>
+      </method>
+      <method name="get_allow_hyperlink"
+              c:identifier="vte_terminal_get_allow_hyperlink"
+              version="0.50">
+        <doc xml:space="preserve">Checks whether or not hyperlinks (OSC 8 escape sequence) are allowed.</doc>
+        <return-value transfer-ownership="none">
+          <doc xml:space="preserve">%TRUE if hyperlinks are enabled, %FALSE if not</doc>
           <type name="gboolean" c:type="gboolean"/>
         </return-value>
         <parameters>
@@ -1246,10 +1318,58 @@ repainting text with a one-pixel offset.</doc>
           </instance-parameter>
         </parameters>
       </method>
+      <method name="get_bold_is_bright"
+              c:identifier="vte_terminal_get_bold_is_bright"
+              version="0.52">
+        <doc xml:space="preserve">Checks whether the SGR 1 attribute also switches to the bright counterpart
+of the first 8 palette colors, in addition to making them bold (legacy behavior)
+or if SGR 1 only enables bold and leaves the color intact.</doc>
+        <return-value transfer-ownership="none">
+          <doc xml:space="preserve">%TRUE if bold also enables bright, %FALSE if not</doc>
+          <type name="gboolean" c:type="gboolean"/>
+        </return-value>
+        <parameters>
+          <instance-parameter name="terminal" transfer-ownership="none">
+            <doc xml:space="preserve">a #VteTerminal</doc>
+            <type name="Terminal" c:type="VteTerminal*"/>
+          </instance-parameter>
+        </parameters>
+      </method>
+      <method name="get_cell_height_scale"
+              c:identifier="vte_terminal_get_cell_height_scale"
+              version="0.52">
+        <return-value transfer-ownership="none">
+          <doc xml:space="preserve">the terminal's cell height scale</doc>
+          <type name="gdouble" c:type="double"/>
+        </return-value>
+        <parameters>
+          <instance-parameter name="terminal" transfer-ownership="none">
+            <doc xml:space="preserve">a #VteTerminal</doc>
+            <type name="Terminal" c:type="VteTerminal*"/>
+          </instance-parameter>
+        </parameters>
+      </method>
+      <method name="get_cell_width_scale"
+              c:identifier="vte_terminal_get_cell_width_scale"
+              version="0.52">
+        <return-value transfer-ownership="none">
+          <doc xml:space="preserve">the terminal's cell width scale</doc>
+          <type name="gdouble" c:type="double"/>
+        </return-value>
+        <parameters>
+          <instance-parameter name="terminal" transfer-ownership="none">
+            <doc xml:space="preserve">a #VteTerminal</doc>
+            <type name="Terminal" c:type="VteTerminal*"/>
+          </instance-parameter>
+        </parameters>
+      </method>
       <method name="get_char_height"
               c:identifier="vte_terminal_get_char_height">
         <return-value transfer-ownership="none">
-          <doc xml:space="preserve">the height of a character cell</doc>
+          <doc xml:space="preserve">the height of a character cell
+
+Note that this method should rather be called vte_terminal_get_cell_height,
+because the return value takes cell-height-scale into account.</doc>
           <type name="glong" c:type="glong"/>
         </return-value>
         <parameters>
@@ -1261,7 +1381,10 @@ repainting text with a one-pixel offset.</doc>
       </method>
       <method name="get_char_width" c:identifier="vte_terminal_get_char_width">
         <return-value transfer-ownership="none">
-          <doc xml:space="preserve">the width of a character cell</doc>
+          <doc xml:space="preserve">the width of a character cell
+
+Note that this method should rather be called vte_terminal_get_cell_width,
+because the return value takes cell-width-scale into account.</doc>
           <type name="glong" c:type="glong"/>
         </return-value>
         <parameters>
@@ -1433,7 +1556,9 @@ terminal uses to render text at the default font scale of 1.0.</doc>
         </parameters>
       </method>
       <method name="get_geometry_hints"
-              c:identifier="vte_terminal_get_geometry_hints">
+              c:identifier="vte_terminal_get_geometry_hints"
+              deprecated="1"
+              deprecated-version="0.52">
         <doc xml:space="preserve">Fills in some @hints from @terminal's geometry. The hints
 filled are those covered by the %GDK_HINT_RESIZE_INC,
 %GDK_HINT_MIN_SIZE and %GDK_HINT_BASE_SIZE flags.
@@ -1563,6 +1688,52 @@ using vte_terminal_set_mouse_autohide().</doc>
           </instance-parameter>
         </parameters>
       </method>
+      <method name="get_scroll_on_keystroke"
+              c:identifier="vte_terminal_get_scroll_on_keystroke"
+              version="0.52">
+        <return-value transfer-ownership="none">
+          <doc xml:space="preserve">whether or not the terminal will forcibly scroll to the bottom of
+the viewable history when the user presses a key.  Modifier keys do not
+trigger this behavior.</doc>
+          <type name="gboolean" c:type="gboolean"/>
+        </return-value>
+        <parameters>
+          <instance-parameter name="terminal" transfer-ownership="none">
+            <doc xml:space="preserve">a #VteTerminal</doc>
+            <type name="Terminal" c:type="VteTerminal*"/>
+          </instance-parameter>
+        </parameters>
+      </method>
+      <method name="get_scroll_on_output"
+              c:identifier="vte_terminal_get_scroll_on_output"
+              version="0.52">
+        <return-value transfer-ownership="none">
+          <doc xml:space="preserve">whether or not the terminal will forcibly scroll to the bottom of
+the viewable history when the new data is received from the child.</doc>
+          <type name="gboolean" c:type="gboolean"/>
+        </return-value>
+        <parameters>
+          <instance-parameter name="terminal" transfer-ownership="none">
+            <doc xml:space="preserve">a #VteTerminal</doc>
+            <type name="Terminal" c:type="VteTerminal*"/>
+          </instance-parameter>
+        </parameters>
+      </method>
+      <method name="get_scrollback_lines"
+              c:identifier="vte_terminal_get_scrollback_lines"
+              version="0.52">
+        <return-value transfer-ownership="none">
+          <doc xml:space="preserve">length of the scrollback buffer used by the terminal.
+A negative value means "infinite scrollback".</doc>
+          <type name="glong" c:type="glong"/>
+        </return-value>
+        <parameters>
+          <instance-parameter name="terminal" transfer-ownership="none">
+            <doc xml:space="preserve">a #VteTerminal</doc>
+            <type name="Terminal" c:type="VteTerminal*"/>
+          </instance-parameter>
+        </parameters>
+      </method>
       <method name="get_text" c:identifier="vte_terminal_get_text">
         <doc xml:space="preserve">Extracts a view of the visible part of the terminal.  If @is_selected is not
 %NULL, characters will only be read if @is_selected returns %TRUE after being
@@ -1603,6 +1774,21 @@ the character's position, colors, and other characteristics.</doc>
               <type name="CharAttributes"/>
             </array>
           </parameter>
+        </parameters>
+      </method>
+      <method name="get_text_blink_mode"
+              c:identifier="vte_terminal_get_text_blink_mode"
+              version="0.52">
+        <doc xml:space="preserve">Checks whether or not the terminal will allow blinking text.</doc>
+        <return-value transfer-ownership="none">
+          <doc xml:space="preserve">the blinking setting</doc>
+          <type name="TextBlinkMode" c:type="VteTextBlinkMode"/>
+        </return-value>
+        <parameters>
+          <instance-parameter name="terminal" transfer-ownership="none">
+            <doc xml:space="preserve">a #VteTerminal</doc>
+            <type name="Terminal" c:type="VteTerminal*"/>
+          </instance-parameter>
         </parameters>
       </method>
       <method name="get_text_include_trailing_spaces"
@@ -1740,6 +1926,30 @@ If %NULL, a built-in set is used.</doc>
             <doc xml:space="preserve">a #VteTerminal</doc>
             <type name="Terminal" c:type="VteTerminal*"/>
           </instance-parameter>
+        </parameters>
+      </method>
+      <method name="hyperlink_check_event"
+              c:identifier="vte_terminal_hyperlink_check_event"
+              version="0.50">
+        <doc xml:space="preserve">Returns a nonempty string: the target of the explicit hyperlink (printed using the OSC 8
+escape sequence) at the position of the event, or %NULL.
+
+Proper use of the escape sequence should result in URI-encoded URIs with a proper scheme
+like "http://", "https://", "file://", "mailto:" etc. This is, however, not enforced by VTE.
+The caller must tolerate the returned string potentially not being a valid URI.</doc>
+        <return-value transfer-ownership="full">
+          <doc xml:space="preserve">a newly allocated string containing the target of the hyperlink</doc>
+          <type name="utf8" c:type="char*"/>
+        </return-value>
+        <parameters>
+          <instance-parameter name="terminal" transfer-ownership="none">
+            <doc xml:space="preserve">a #VteTerminal</doc>
+            <type name="Terminal" c:type="VteTerminal*"/>
+          </instance-parameter>
+          <parameter name="event" transfer-ownership="none">
+            <doc xml:space="preserve">a #GdkEvent</doc>
+            <type name="Gdk.Event" c:type="GdkEvent*"/>
+          </parameter>
         </parameters>
       </method>
       <method name="match_add_gregex"
@@ -2234,6 +2444,24 @@ offset.</doc>
           </parameter>
         </parameters>
       </method>
+      <method name="set_allow_hyperlink"
+              c:identifier="vte_terminal_set_allow_hyperlink"
+              version="0.50">
+        <doc xml:space="preserve">Controls whether or not hyperlinks (OSC 8 escape sequence) are allowed.</doc>
+        <return-value transfer-ownership="none">
+          <type name="none" c:type="void"/>
+        </return-value>
+        <parameters>
+          <instance-parameter name="terminal" transfer-ownership="none">
+            <doc xml:space="preserve">a #VteTerminal</doc>
+            <type name="Terminal" c:type="VteTerminal*"/>
+          </instance-parameter>
+          <parameter name="allow_hyperlink" transfer-ownership="none">
+            <doc xml:space="preserve">%TRUE if the terminal should allow hyperlinks</doc>
+            <type name="gboolean" c:type="gboolean"/>
+          </parameter>
+        </parameters>
+      </method>
       <method name="set_audible_bell"
               c:identifier="vte_terminal_set_audible_bell">
         <doc xml:space="preserve">Controls whether or not the terminal will beep when the child outputs the
@@ -2271,6 +2499,68 @@ presses the backspace key.</doc>
           </parameter>
         </parameters>
       </method>
+      <method name="set_bold_is_bright"
+              c:identifier="vte_terminal_set_bold_is_bright"
+              version="0.52">
+        <doc xml:space="preserve">Sets whether the SGR 1 attribute also switches to the bright counterpart
+of the first 8 palette colors, in addition to making them bold (legacy behavior)
+or if SGR 1 only enables bold and leaves the color intact.</doc>
+        <return-value transfer-ownership="none">
+          <type name="none" c:type="void"/>
+        </return-value>
+        <parameters>
+          <instance-parameter name="terminal" transfer-ownership="none">
+            <doc xml:space="preserve">a #VteTerminal</doc>
+            <type name="Terminal" c:type="VteTerminal*"/>
+          </instance-parameter>
+          <parameter name="bold_is_bright" transfer-ownership="none">
+            <doc xml:space="preserve">%TRUE if bold should also enable bright</doc>
+            <type name="gboolean" c:type="gboolean"/>
+          </parameter>
+        </parameters>
+      </method>
+      <method name="set_cell_height_scale"
+              c:identifier="vte_terminal_set_cell_height_scale"
+              version="0.52">
+        <doc xml:space="preserve">Sets the terminal's cell height scale to @scale.
+
+This can be used to increase the line spacing. (The font's height is not affected.)
+Valid values go from 1.0 (default) to 2.0 ("double spacing").</doc>
+        <return-value transfer-ownership="none">
+          <type name="none" c:type="void"/>
+        </return-value>
+        <parameters>
+          <instance-parameter name="terminal" transfer-ownership="none">
+            <doc xml:space="preserve">a #VteTerminal</doc>
+            <type name="Terminal" c:type="VteTerminal*"/>
+          </instance-parameter>
+          <parameter name="scale" transfer-ownership="none">
+            <doc xml:space="preserve">the cell height scale</doc>
+            <type name="gdouble" c:type="double"/>
+          </parameter>
+        </parameters>
+      </method>
+      <method name="set_cell_width_scale"
+              c:identifier="vte_terminal_set_cell_width_scale"
+              version="0.52">
+        <doc xml:space="preserve">Sets the terminal's cell width scale to @scale.
+
+This can be used to increase the letter spacing. (The font's width is not affected.)
+Valid values go from 1.0 (default) to 2.0.</doc>
+        <return-value transfer-ownership="none">
+          <type name="none" c:type="void"/>
+        </return-value>
+        <parameters>
+          <instance-parameter name="terminal" transfer-ownership="none">
+            <doc xml:space="preserve">a #VteTerminal</doc>
+            <type name="Terminal" c:type="VteTerminal*"/>
+          </instance-parameter>
+          <parameter name="scale" transfer-ownership="none">
+            <doc xml:space="preserve">the cell width scale</doc>
+            <type name="gdouble" c:type="double"/>
+          </parameter>
+        </parameters>
+      </method>
       <method name="set_cjk_ambiguous_width"
               c:identifier="vte_terminal_set_cjk_ambiguous_width">
         <doc xml:space="preserve">This setting controls whether ambiguous-width characters are narrow or wide
@@ -2287,6 +2577,27 @@ the width of ambiguous-width characters is fixed.</doc>
           <parameter name="width" transfer-ownership="none">
             <doc xml:space="preserve">either 1 (narrow) or 2 (wide)</doc>
             <type name="gint" c:type="int"/>
+          </parameter>
+        </parameters>
+      </method>
+      <method name="set_clear_background"
+              c:identifier="vte_terminal_set_clear_background"
+              version="0.52">
+        <doc xml:space="preserve">Sets whether to paint the background with the background colour.
+The default is %TRUE.
+
+This function is rarely useful. One use for it is to add a background
+image to the terminal.</doc>
+        <return-value transfer-ownership="none">
+          <type name="none" c:type="void"/>
+        </return-value>
+        <parameters>
+          <instance-parameter name="terminal" transfer-ownership="none">
+            <doc xml:space="preserve">a #VteTerminal</doc>
+            <type name="Terminal" c:type="VteTerminal*"/>
+          </instance-parameter>
+          <parameter name="setting" transfer-ownership="none">
+            <type name="gboolean" c:type="gboolean"/>
           </parameter>
         </parameters>
       </method>
@@ -2617,7 +2928,9 @@ and columns.  The font scale is applied to the specified font.</doc>
         </parameters>
       </method>
       <method name="set_geometry_hints_for_window"
-              c:identifier="vte_terminal_set_geometry_hints_for_window">
+              c:identifier="vte_terminal_set_geometry_hints_for_window"
+              deprecated="1"
+              deprecated-version="0.52">
         <doc xml:space="preserve">Sets @terminal as @window's geometry widget. See
 gtk_window_set_geometry_hints() for more information.
 
@@ -2796,6 +3109,24 @@ the attempt succeeds, the widget will resize itself to the proper size.</doc>
           </parameter>
         </parameters>
       </method>
+      <method name="set_text_blink_mode"
+              c:identifier="vte_terminal_set_text_blink_mode"
+              version="0.52">
+        <doc xml:space="preserve">Controls whether or not the terminal will allow blinking text.</doc>
+        <return-value transfer-ownership="none">
+          <type name="none" c:type="void"/>
+        </return-value>
+        <parameters>
+          <instance-parameter name="terminal" transfer-ownership="none">
+            <doc xml:space="preserve">a #VteTerminal</doc>
+            <type name="Terminal" c:type="VteTerminal*"/>
+          </instance-parameter>
+          <parameter name="text_blink_mode" transfer-ownership="none">
+            <doc xml:space="preserve">the #VteTextBlinkMode to use</doc>
+            <type name="TextBlinkMode" c:type="VteTextBlinkMode"/>
+          </parameter>
+        </parameters>
+      </method>
       <method name="set_word_char_exceptions"
               c:identifier="vte_terminal_set_word_char_exceptions"
               version="0.40">
@@ -2843,7 +3174,11 @@ Note that if @terminal has been destroyed before the operation is called,
 in the callback besides freeing any resources associated with @user_data,
 but taking care not to access the now-destroyed #VteTerminal. Note that
 in this case, if spawning was successful, the child process will be aborted
-automatically.</doc>
+automatically.
+
+Beginning with 0.52, sets PWD to @working_directory in order to preserve symlink components.
+The caller should also make sure that symlinks were preserved while constructing the value of @working_directory,
+e.g. by using vte_terminal_get_current_directory_uri(), g_get_current_dir() or get_current_dir_name().</doc>
         <return-value transfer-ownership="none">
           <type name="none" c:type="void"/>
         </return-value>
@@ -2954,7 +3289,11 @@ to keep some file descriptor open for use in the child process, you need to
 use a child setup function that unsets the FD_CLOEXEC flag on that file
 descriptor.
 
-See vte_pty_new(), g_spawn_async() and vte_terminal_watch_child() for more information.</doc>
+See vte_pty_new(), g_spawn_async() and vte_terminal_watch_child() for more information.
+
+Beginning with 0.52, sets PWD to @working_directory in order to preserve symlink components.
+The caller should also make sure that symlinks were preserved while constructing the value of @working_directory,
+e.g. by using vte_terminal_get_current_directory_uri(), g_get_current_dir() or get_current_dir_name().</doc>
         <doc-deprecated xml:space="preserve">Use vte_terminal_spawn_async() instead.</doc-deprecated>
         <return-value transfer-ownership="none">
           <doc xml:space="preserve">%TRUE on success, or %FALSE on error with @error filled in</doc>
@@ -3117,6 +3456,13 @@ This may happen either by using a bold font variant, or by
 repainting text with a different offset.</doc>
         <type name="gboolean" c:type="gboolean"/>
       </property>
+      <property name="allow-hyperlink"
+                version="0.50"
+                writable="1"
+                transfer-ownership="none">
+        <doc xml:space="preserve">Controls whether or not hyperlinks (OSC 8 escape sequence) are recognized and displayed.</doc>
+        <type name="gboolean" c:type="gboolean"/>
+      </property>
       <property name="audible-bell" writable="1" transfer-ownership="none">
         <doc xml:space="preserve">Controls whether or not the terminal will beep when the child outputs the
 "bl" sequence.</doc>
@@ -3128,6 +3474,29 @@ repainting text with a different offset.</doc>
         <doc xml:space="preserve">Controls what string or control sequence the terminal sends to its child
 when the user presses the backspace key.</doc>
         <type name="EraseBinding"/>
+      </property>
+      <property name="bold-is-bright"
+                version="0.52"
+                writable="1"
+                transfer-ownership="none">
+        <doc xml:space="preserve">Whether the SGR 1 attribute also switches to the bright counterpart
+of the first 8 palette colors, in addition to making them bold (legacy behavior)
+or if SGR 1 only enables bold and leaves the color intact.</doc>
+        <type name="gboolean" c:type="gboolean"/>
+      </property>
+      <property name="cell-height-scale"
+                version="0.52"
+                writable="1"
+                transfer-ownership="none">
+        <doc xml:space="preserve">Scale factor for the cell height, to increase line spacing. (The font's height is not affected.)</doc>
+        <type name="gdouble" c:type="gdouble"/>
+      </property>
+      <property name="cell-width-scale"
+                version="0.52"
+                writable="1"
+                transfer-ownership="none">
+        <doc xml:space="preserve">Scale factor for the cell width, to increase letter spacing. (The font's width is not affected.)</doc>
+        <type name="gdouble" c:type="gdouble"/>
       </property>
       <property name="cjk-ambiguous-width"
                 writable="1"
@@ -3183,6 +3552,12 @@ and columns.</doc>
         <doc xml:space="preserve">The terminal's font scale.</doc>
         <type name="gdouble" c:type="gdouble"/>
       </property>
+      <property name="hyperlink-hover-uri"
+                version="0.50"
+                transfer-ownership="none">
+        <doc xml:space="preserve">The currently hovered hyperlink URI, or %NULL if unset.</doc>
+        <type name="utf8" c:type="gchar*"/>
+      </property>
       <property name="icon-title" transfer-ownership="none">
         <doc xml:space="preserve">The terminal's so-called icon title, or %NULL if no icon title has been set.</doc>
         <type name="utf8" c:type="gchar*"/>
@@ -3230,6 +3605,13 @@ For terminal types which have an alternate screen buffer, no scrollback is
 allowed on the alternate screen buffer.</doc>
         <type name="guint" c:type="guint"/>
       </property>
+      <property name="text-blink-mode"
+                version="0.52"
+                writable="1"
+                transfer-ownership="none">
+        <doc xml:space="preserve">Controls whether or not the terminal will allow blinking text.</doc>
+        <type name="TextBlinkMode"/>
+      </property>
       <property name="window-title" transfer-ownership="none">
         <doc xml:space="preserve">The terminal's title.</doc>
         <type name="utf8" c:type="gchar*"/>
@@ -3260,8 +3642,10 @@ terminal.</doc>
         </return-value>
       </glib:signal>
       <glib:signal name="char-size-changed" when="last">
-        <doc xml:space="preserve">Emitted whenever selection of a new font causes the values of the
-%char_width or %char_height fields to change.</doc>
+        <doc xml:space="preserve">Emitted whenever the cell size changes, e.g. due to a change in
+font, font-scale or cell-width/height-scale.
+
+Note that this signal should rather be called "cell-size-changed".</doc>
         <return-value transfer-ownership="none">
           <type name="none" c:type="void"/>
         </return-value>
@@ -3366,6 +3750,30 @@ always) emitted with a #VteTerminal::child-exited signal.</doc>
         <return-value transfer-ownership="none">
           <type name="none" c:type="void"/>
         </return-value>
+      </glib:signal>
+      <glib:signal name="hyperlink-hover-uri-changed"
+                   when="last"
+                   version="0.50">
+        <doc xml:space="preserve">Emitted when the hovered hyperlink changes.
+
+@uri and @bbox are owned by VTE, must not be modified, and might
+change after the signal handlers returns.
+
+The signal is not re-emitted when the bounding box changes for the
+same hyperlink. This might change in a future VTE version without notice.</doc>
+        <return-value transfer-ownership="none">
+          <type name="none" c:type="void"/>
+        </return-value>
+        <parameters>
+          <parameter name="uri" transfer-ownership="none">
+            <doc xml:space="preserve">the nonempty target URI under the mouse, or NULL</doc>
+            <type name="utf8" c:type="gchar*"/>
+          </parameter>
+          <parameter name="bbox" transfer-ownership="none">
+            <doc xml:space="preserve">the bounding box of the hyperlink anchor text, or NULL</doc>
+            <type name="Gdk.Rectangle"/>
+          </parameter>
+        </parameters>
       </glib:signal>
       <glib:signal name="icon-title-changed" when="last">
         <doc xml:space="preserve">Emitted when the terminal's %icon_title field is modified.</doc>
@@ -3926,6 +4334,38 @@ On failure, @pid is -1 and @error contains the error information.</doc>
         </parameter>
       </parameters>
     </callback>
+    <enumeration name="TextBlinkMode"
+                 version="0.52"
+                 glib:type-name="VteTextBlinkMode"
+                 glib:get-type="vte_text_blink_mode_get_type"
+                 c:type="VteTextBlinkMode">
+      <doc xml:space="preserve">An enumerated type which can be used to indicate whether the terminal allows
+the text contents to be blinked.</doc>
+      <member name="never"
+              value="0"
+              c:identifier="VTE_TEXT_BLINK_NEVER"
+              glib:nick="never">
+        <doc xml:space="preserve">Do not blink the text.</doc>
+      </member>
+      <member name="focused"
+              value="1"
+              c:identifier="VTE_TEXT_BLINK_FOCUSED"
+              glib:nick="focused">
+        <doc xml:space="preserve">Allow blinking text only if the terminal is focused.</doc>
+      </member>
+      <member name="unfocused"
+              value="2"
+              c:identifier="VTE_TEXT_BLINK_UNFOCUSED"
+              glib:nick="unfocused">
+        <doc xml:space="preserve">Allow blinking text only if the terminal is unfocused.</doc>
+      </member>
+      <member name="always"
+              value="3"
+              c:identifier="VTE_TEXT_BLINK_ALWAYS"
+              glib:nick="always">
+        <doc xml:space="preserve">Allow blinking text. This is the default.</doc>
+      </member>
+    </enumeration>
     <enumeration name="WriteFlags"
                  glib:type-name="VteWriteFlags"
                  glib:get-type="vte_write_flags_get_type"
