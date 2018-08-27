@@ -1,0 +1,112 @@
+<?xml version="1.0"?>
+<repository version="1.2"
+            xmlns="http://www.gtk.org/introspection/core/1.0"
+            xmlns:c="http://www.gtk.org/introspection/c/1.0"
+            xmlns:glib="http://www.gtk.org/introspection/glib/1.0"
+>
+  <!-- required header files -->
+  <c:include name="glib/gstdio.h"/>
+  <c:include name="glib-unix.h"/>
+
+  <namespace>
+    <!-- a little obscure, and not worth the effort to support -->
+    <alias blacklist="true" name="Type"/>
+
+    <!-- avoid a name clash with the function file_test (go name FileTest) -->
+    <bitfield name="FileTest" goname="GFileTest"/>
+
+    <!--
+      Function where either doesn't make sense to call from Go,
+	    or is too difficult to do (at least for now).
+    -->
+    <function blacklist="true" c:identifier="g_atomic_int_add"/>
+    <function blacklist="true" c:identifier="g_atomic_int_compare_and_exchange"/>
+    <function blacklist="true" c:identifier="g_atomic_int_dec_and_test"/>
+    <function blacklist="true" c:identifier="g_atomic_int_exchange_and_add"/>
+    <function blacklist="true" c:identifier="g_atomic_int_get"/>
+    <function blacklist="true" c:identifier="g_atomic_int_inc"/>
+    <function blacklist="true" c:identifier="g_atomic_int_set"/>
+    <function blacklist="true" c:identifier="g_atomic_pointer_compare_and_exchange"/>
+    <function blacklist="true" c:identifier="g_atomic_pointer_get"/>
+    <function blacklist="true" c:identifier="g_atomic_pointer_set"/>
+    <function blacklist="true" c:identifier="g_bit_lock"/>
+    <function blacklist="true" c:identifier="g_bit_trylock"/>
+    <function blacklist="true" c:identifier="g_bit_unlock"/>
+    <function blacklist="true" c:identifier="g_malloc_n"/>
+    <function blacklist="true" c:identifier="g_malloc0_n"/>
+    <function blacklist="true" c:identifier="g_nullify_pointer"/>
+    <function blacklist="true" c:identifier="g_once_init_enter"/>
+    <function blacklist="true" c:identifier="g_once_init_leave"/>
+    <function blacklist="true" c:identifier="g_unichar_get_mirror_char"/>
+    <function blacklist="true" c:identifier="g_unicode_canonical_decomposition"/>
+    <function blacklist="true" c:identifier="g_unicode_canonical_ordering"/>
+    <function blacklist="true" c:identifier="g_utf8_to_ucs4_fast"/>
+
+    <!-- "long double" is not supported by cgo -->
+    <function blacklist="true" c:identifier="g_assertion_message_cmpnum"/>
+    <function blacklist="true" c:identifier="g_test_log_buffer_pop"/>
+
+    <!-- cannot find any documentation for this -->
+    <function blacklist="true" c:identifier="g_slice_get_config_state"/>
+
+    <!-- VariantType not supported yet -->
+    <function blacklist="true" c:identifier="g_variant_type_checked_"/>
+
+    <!-- missing version -->
+    <function version="2.54" c:identifier="g_number_parser_error_quark"/>
+
+    <!-- dependent on a callback available since a version -->
+    <function version="2.28" c:identifier="g_test_add_vtable"/>
+    <function version="2.28" c:identifier="g_test_add_data_func"/>
+    <function version="2.28" c:identifier="g_test_create_case"/>
+
+    <!-- no user_data parameter, so how to dispatch to correct Go function? -->
+    <callback blacklist="true" name="CompareFunc"/>
+    <callback blacklist="true" name="DestroyNotify"/>
+    <callback blacklist="true" name="EqualFunc"/>
+    <callback blacklist="true" name="FreeFunc"/>
+    <callback blacklist="true" name="HashFunc"/>
+    <callback blacklist="true" name="HookCheckFunc"/>
+    <callback blacklist="true" name="HookFunc"/>
+    <callback blacklist="true" name="OptionArgFunc"/>
+    <callback blacklist="true" name="PrintFunc"/>
+    <callback blacklist="true" name="SourceDummyMarshal"/>
+    <callback blacklist="true" name="ThreadFunc"/>
+    <callback blacklist="true" name="TranslateFunc"/>
+    <callback blacklist="true" name="TraverseFunc"/>
+    <callback blacklist="true" name="VoidFunc"/>
+    <callback blacklist="true" name="CopyFunc"/>
+    <callback blacklist="true" name="TestFunc"/>
+
+    <!-- array type not supported yet -->
+    <callback blacklist="true" name="LogWriterFunc"/>
+
+    <!-- one or more parameters of types not yet supported -->
+    <callback blacklist="true" name="HookCheckMarshaller"/>
+    <callback blacklist="true" name="HookCompareFunc"/>
+    <callback blacklist="true" name="HookFinalizeFunc"/>
+    <callback blacklist="true" name="HookFindFunc"/>
+    <callback blacklist="true" name="HookMarshaller"/>
+    <callback blacklist="true" name="IOFunc"/>
+    <callback blacklist="true" name="NodeForeachFunc"/>
+    <callback blacklist="true" name="NodeTraverseFunc"/>
+    <callback blacklist="true" name="OptionErrorFunc"/>
+    <callback blacklist="true" name="OptionParseFunc"/>
+    <callback blacklist="true" name="PollFunc"/>
+    <callback blacklist="true" name="ScannerMsgFunc"/>
+    <callback blacklist="true" name="SequenceIterCompareFunc"/>
+    <callback blacklist="true" name="RegexEvalCallback"/>
+
+    <!-- handled as a special case -->
+    <record blacklist="true" name="Error"/>
+
+    <!-- contains a long double, which is not supported by cg0 -->
+    <record blacklist="true" name="TestLogMsg"/>
+    <record blacklist="true" name="TestLogBuffer"/>
+
+    <!-- the types in some method do not appear to match the data in gir file -->
+    <record blacklist="true" name="IConv"/>
+    <record blacklist="true" name="Variant"/>
+    <record blacklist="true" name="VariantType"/>
+  </namespace>
+</repository>
