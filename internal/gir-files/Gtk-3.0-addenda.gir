@@ -5,6 +5,8 @@
             xmlns:glib="http://www.gtk.org/introspection/glib/1.0"
 >
   <namespace>
+    <function whitelist="true" c:identifier="gtk_application_new"/>
+
     <!-- correct version; remove trailing period -->
     <function c:identifier="gtk_render_background" version="3.0"/>
   </namespace>

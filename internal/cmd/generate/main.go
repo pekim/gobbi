@@ -6,6 +6,5 @@ import (
 
 func main() {
 	gir := generate.GirNew("Gtk-3.0")
-	gir.LoadFile()
 	gir.Generate()
 }
