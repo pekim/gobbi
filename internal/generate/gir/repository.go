@@ -17,6 +17,10 @@ func (r *Repository) Fixup() {
 	r.Namespace.fixup()
 }
 
+func (r *Repository) MergeAddenda(addenda *Repository) {
+	r.Namespace.mergeAddenda(addenda.Namespace)
+}
+
 type CInclude struct {
 	Name string `xml:"name,attr"`
 }

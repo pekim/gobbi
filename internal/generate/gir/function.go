@@ -4,7 +4,7 @@ type Function struct {
 	Namespace *Namespace
 
 	Name              string       `xml:"name,attr"`
-	Blacklist         bool         `xml:"blacklist,attr"`
+	Whitelist         bool         `xml:"whitelist,attr"`
 	Version           string       `xml:"version,attr"`
 	CIdentifier       string       `xml:"http://www.gtk.org/introspection/c/1.0 identifier,attr"`
 	Deprecated        int          `xml:"deprecated,attr"`

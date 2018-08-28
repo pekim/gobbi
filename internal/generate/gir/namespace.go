@@ -1,5 +1,9 @@
 package gir
 
+import (
+	"fmt"
+)
+
 type Namespace struct {
 	Name                string         `xml:"name,attr"`
 	Version             string         `xml:"version,attr"`
@@ -18,6 +22,16 @@ type Namespace struct {
 
 func (ns *Namespace) fixup() {
 	ns.fixupAliases()
+}
+
+func (ns *Namespace) mergeAddenda(addenda *Namespace) {
+	ns.mergeAddendaFunctions(addenda)
+}
+
+func (ns *Namespace) mergeAddendaFunctions(addenda *Namespace) {
+	for _, function := range addenda.Functions {
+		fmt.Println("addenda", function)
+	}
 }
 
 func (ns *Namespace) fixupAliases() {

@@ -8,6 +8,8 @@
     <function whitelist="true" c:identifier="gtk_application_new"/>
 
     <!-- correct version; remove trailing period -->
+    <!--
     <function c:identifier="gtk_render_background" version="3.0"/>
+    -->
   </namespace>
 </repository>

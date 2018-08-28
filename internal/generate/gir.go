@@ -21,7 +21,9 @@ func GirNew(name string) *Gir {
 	g.repo = g.LoadFile(name+".gir", true)
 	g.addendaRepo = g.LoadFile(name+"-addenda.gir", false)
 
-	fmt.Println(g)
+	g.repo.MergeAddenda(g.addendaRepo)
+
+	// fmt.Printf("%#v\n", g.addendaRepo.Namespace.Functions[0])
 	return g
 }
 
@@ -49,7 +51,7 @@ func (g *Gir) LoadFile(filename string, required bool) *gir.Repository {
 	if err != nil {
 		panic(fmt.Errorf("Failed to parse %s : %s", filepath, err))
 	}
-	// girRepo.Fixup()
+	girRepo.Fixup()
 
 	return girRepo
 }
