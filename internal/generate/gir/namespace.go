@@ -22,6 +22,61 @@ type Namespace struct {
 
 func (ns *Namespace) fixup() {
 	ns.fixupAliases()
+	ns.fixupBitfields()
+	ns.fixupCallbacks()
+	ns.fixupClasses()
+	ns.fixupConstants()
+	ns.fixupEnumerations()
+	ns.fixupFunctions()
+	ns.fixupRecords()
+}
+
+func (ns *Namespace) fixupAliases() {
+	for _, alias := range ns.Aliases {
+		alias.fixup(ns)
+	}
+}
+
+func (ns *Namespace) fixupBitfields() {
+	for _, bitfield := range ns.Bitfields {
+		bitfield.fixup(ns)
+	}
+}
+
+func (ns *Namespace) fixupCallbacks() {
+	for _, callback := range ns.Callbacks {
+		callback.fixup(ns)
+	}
+}
+
+func (ns *Namespace) fixupClasses() {
+	for _, class := range ns.Classes {
+		class.fixup(ns)
+	}
+}
+
+func (ns *Namespace) fixupConstants() {
+	for _, constant := range ns.Constants {
+		constant.fixup(ns)
+	}
+}
+
+func (ns *Namespace) fixupEnumerations() {
+	for _, enum := range ns.Enumerations {
+		enum.fixup(ns)
+	}
+}
+
+func (ns *Namespace) fixupFunctions() {
+	for _, function := range ns.Functions {
+		function.fixup(ns)
+	}
+}
+
+func (ns *Namespace) fixupRecords() {
+	for _, record := range ns.Records {
+		record.fixup(ns)
+	}
 }
 
 func (ns *Namespace) mergeAddenda(addenda *Namespace) {
@@ -31,43 +86,5 @@ func (ns *Namespace) mergeAddenda(addenda *Namespace) {
 func (ns *Namespace) mergeAddendaFunctions(addenda *Namespace) {
 	for _, function := range addenda.Functions {
 		fmt.Println("addenda", function)
-	}
-}
-
-func (ns *Namespace) fixupAliases() {
-	for _, alias := range ns.Aliases {
-		alias.fixup(ns)
-	}
-
-	for _, callback := range ns.Callbacks {
-		callback.fixup(ns)
-	}
-
-	for _, class := range ns.Classes {
-		class.fixup(ns)
-	}
-
-	for _, bitfield := range ns.Bitfields {
-		bitfield.fixup(ns)
-	}
-
-	for _, enum := range ns.Enumerations {
-		enum.fixup(ns)
-	}
-
-	for _, function := range ns.Functions {
-		function.fixup(ns)
-	}
-
-	for _, constant := range ns.Constants {
-		constant.fixup(ns)
-	}
-
-	for _, record := range ns.Records {
-		record.fixup(ns)
-	}
-
-	for _, class := range ns.Classes {
-		class.fixup(ns)
 	}
 }
