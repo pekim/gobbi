@@ -22,5 +22,18 @@ func (a *Alias) blacklisted() bool {
 }
 
 func (a Alias) generate(g *jen.Group) {
-	g.Comment(a.Name)
+	if a.blacklisted() {
+		g.Commentf("Blacklisted alias : %s", a.CType)
+		g.Line()
+		return
+	}
+
+	// goDoc{file.Group}.linesFromDoc(a.gir.Doc)
+
+	g.
+		Type().
+		Id(a.Name).
+		Qual("C", a.CType)
+
+	g.Line()
 }
