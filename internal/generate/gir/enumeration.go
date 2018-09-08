@@ -21,6 +21,14 @@ func (e *Enumeration) fixup(ns *Namespace) {
 	}
 }
 
+type Enumerations []*Enumeration
+
+func (es Enumerations) fixup(ns *Namespace) {
+	for _, enum := range es {
+		enum.fixup(ns)
+	}
+}
+
 type Member struct {
 	Namespace *Namespace
 

@@ -14,3 +14,11 @@ func (a *Alias) fixup(ns *Namespace) {
 	a.Namespace = ns
 	a.Type.Namespace = ns
 }
+
+type Aliases []*Alias
+
+func (as Aliases) fixup(ns *Namespace) {
+	for _, alias := range as {
+		alias.fixup(ns)
+	}
+}

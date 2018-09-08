@@ -5,6 +5,6 @@ import (
 )
 
 func main() {
-	gir := generate.GirNew("Gtk-3.0")
+	gir := generate.GirNew("GLib-2.0")
 	gir.Generate()
 }

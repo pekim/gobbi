@@ -17,10 +17,6 @@ type Record struct {
 	Methods        []*Method      `xml:"method"`
 }
 
-type Class struct {
-	*Record
-}
-
 func (r *Record) fixup(ns *Namespace) {
 	r.Namespace = ns
 
@@ -30,6 +26,26 @@ func (r *Record) fixup(ns *Namespace) {
 
 	for _, method := range r.Methods {
 		method.fixup(ns)
+	}
+}
+
+type Records []*Record
+
+func (rs Records) fixup(ns *Namespace) {
+	for _, record := range rs {
+		record.fixup(ns)
+	}
+}
+
+type Class struct {
+	*Record
+}
+
+type Classes Records
+
+func (cs Classes) fixup(ns *Namespace) {
+	for _, class := range cs {
+		class.fixup(ns)
 	}
 }
 

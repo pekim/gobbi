@@ -28,6 +28,14 @@ func (f *Function) fixup(ns *Namespace) {
 	}
 }
 
+type Functions []*Function
+
+func (fs Functions) fixup(ns *Namespace) {
+	for _, function := range fs {
+		function.fixup(ns)
+	}
+}
+
 type Parameter struct {
 	Namespace *Namespace
 
