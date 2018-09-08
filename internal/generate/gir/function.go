@@ -37,12 +37,8 @@ func (f *Function) introspectable() bool {
 	return f.Introspectable != "0"
 }
 
-type Functions []*Function
-
-func (fs Functions) fixup(ns *Namespace) {
-	for _, function := range fs {
-		function.fixup(ns)
-	}
+func (f *Function) version() string {
+	return f.Version
 }
 
 type Parameter struct {

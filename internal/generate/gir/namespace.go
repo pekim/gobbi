@@ -1,5 +1,12 @@
 package gir
 
+import (
+	"fmt"
+	"strings"
+
+	"github.com/dave/jennifer/jen"
+)
+
 type Namespace struct {
 	Blacklist           bool         `xml:"blacklist,attr"`
 	Name                string       `xml:"name,attr"`
@@ -15,9 +22,16 @@ type Namespace struct {
 	Enumerations        Enumerations `xml:"enumeration"`
 	Functions           Functions    `xml:"function"`
 	Records             Records      `xml:"record"`
+
+	goPackageName string
+	allVersions   Versions
+	versionDebug  bool
+	file          *jen.File
 }
 
 func (ns *Namespace) fixup() {
+	ns.goPackageName = strings.ToLower(ns.Name)
+
 	ns.Aliases.fixup(ns)
 	ns.Bitfields.fixup(ns)
 	ns.Callbacks.fixup(ns)
@@ -26,6 +40,9 @@ func (ns *Namespace) fixup() {
 	ns.Enumerations.fixup(ns)
 	ns.Functions.fixup(ns)
 	ns.Records.fixup(ns)
+
+	ns.setAllVersions()
+	fmt.Println(ns.allVersions)
 }
 
 func (ns *Namespace) mergeAddenda(addenda *Namespace) {

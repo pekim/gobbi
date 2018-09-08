@@ -33,24 +33,8 @@ func (r *Record) blacklisted() bool {
 	return r.Blacklist
 }
 
-type Records []*Record
-
-func (rs Records) fixup(ns *Namespace) {
-	for _, record := range rs {
-		record.fixup(ns)
-	}
-}
-
 type Class struct {
 	*Record
-}
-
-type Classes Records
-
-func (cs Classes) fixup(ns *Namespace) {
-	for _, class := range cs {
-		class.fixup(ns)
-	}
 }
 
 type Constructor struct {

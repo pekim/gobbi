@@ -18,11 +18,3 @@ func (a *Alias) fixup(ns *Namespace) {
 func (a *Alias) blacklisted() bool {
 	return a.Blacklist
 }
-
-type Aliases []*Alias
-
-func (as Aliases) fixup(ns *Namespace) {
-	for _, alias := range as {
-		alias.fixup(ns)
-	}
-}
