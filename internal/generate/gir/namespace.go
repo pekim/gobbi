@@ -1,6 +1,7 @@
 package gir
 
 type Namespace struct {
+	Blacklist           bool         `xml:"blacklist,attr"`
 	Name                string       `xml:"name,attr"`
 	Version             string       `xml:"version,attr"`
 	SharedLibrary       string       `xml:"shared-library,attr"`
@@ -37,4 +38,8 @@ func (ns *Namespace) mergeAddendaFunctions(addenda *Namespace) {
 	// for _, function := range addenda.Functions {
 	// 	fmt.Println("addenda", function)
 	// }
+}
+
+func (ns *Namespace) blacklisted() bool {
+	return ns.Blacklist
 }

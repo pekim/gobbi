@@ -4,7 +4,7 @@ type Function struct {
 	Namespace *Namespace
 
 	Name              string       `xml:"name,attr"`
-	Whitelist         bool         `xml:"whitelist,attr"`
+	Blacklist         bool         `xml:"blacklist,attr"`
 	Version           string       `xml:"version,attr"`
 	CIdentifier       string       `xml:"http://www.gtk.org/introspection/c/1.0 identifier,attr"`
 	Deprecated        int          `xml:"deprecated,attr"`
@@ -14,6 +14,7 @@ type Function struct {
 	Parameters        []*Parameter `xml:"parameters>parameter"`
 	ReturnValue       *ReturnValue `xml:"return-value"`
 	Throws            int          `xml:"throws,attr"`
+	Introspectable    string       `xml:"introspectable,attr"`
 }
 
 func (f *Function) fixup(ns *Namespace) {
@@ -26,6 +27,14 @@ func (f *Function) fixup(ns *Namespace) {
 	if f.ReturnValue != nil {
 		f.ReturnValue.fixup(ns)
 	}
+}
+
+func (f *Function) blacklisted() bool {
+	return f.Blacklist
+}
+
+func (f *Function) introspectable() bool {
+	return f.Introspectable != "0"
 }
 
 type Functions []*Function

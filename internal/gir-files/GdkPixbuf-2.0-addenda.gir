@@ -5,10 +5,9 @@
             xmlns:glib="http://www.gtk.org/introspection/glib/1.0"
 >
   <namespace>
-    <!-- correct version; remove trailing period -->
-    <function c:identifier="gtk_render_background" version="3.0"/>
+    <bitfield blacklist="true" name="PixdataDumpType"/>
+    <bitfield blacklist="true" name="PixdataType"/>
 
-   <class name="Plug" blacklist="true"/>
-   <class name="Socket" blacklist="true"/>
+    <record blacklist="true" name="Pixdata"/>
   </namespace>
 </repository>

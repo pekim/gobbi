@@ -4,11 +4,6 @@
             xmlns:c="http://www.gtk.org/introspection/c/1.0"
             xmlns:glib="http://www.gtk.org/introspection/glib/1.0"
 >
-  <namespace>
-    <!-- correct version; remove trailing period -->
-    <function c:identifier="gtk_render_background" version="3.0"/>
-
-   <class name="Plug" blacklist="true"/>
-   <class name="Socket" blacklist="true"/>
+  <namespace blacklist="true">
   </namespace>
 </repository>

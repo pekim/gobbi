@@ -5,10 +5,11 @@
             xmlns:glib="http://www.gtk.org/introspection/glib/1.0"
 >
   <namespace>
-    <!-- correct version; remove trailing period -->
-    <function c:identifier="gtk_render_background" version="3.0"/>
+    <class name="Object">
+      <method blacklist="true" c:identifier="atk_object_connect_property_change_handler"/>
+    </class>
 
-   <class name="Plug" blacklist="true"/>
-   <class name="Socket" blacklist="true"/>
+    <function blacklist="true" c:identifier="atk_add_focus_tracker" />
+    <function blacklist="true" c:identifier="atk_focus_tracker_init" />
   </namespace>
 </repository>

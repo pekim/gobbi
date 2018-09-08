@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<repository version="1.2"
+            xmlns="http://www.gtk.org/introspection/core/1.0"
+            xmlns:c="http://www.gtk.org/introspection/c/1.0"
+            xmlns:glib="http://www.gtk.org/introspection/glib/1.0"
+>
+  <namespace>
+    <class name="Settings">
+      <method blacklist="true" c:identifier="g_settings_get_mapped"/>
+    </class>
+
+    <!-- These method names should be created dynamically since 2.56. -->
+    <class name="IOModule">
+      <method blacklist="true" c:identifier="g_io_module_load"/>
+      <method blacklist="true" c:identifier="g_io_module_unload"/>
+    </class>
+
+    <!-- The The GSettingsBackend API is somewhat specialist. -->
+    <record blacklist="true" name="SettingsBackendClass"/>
+    <record blacklist="true" name="SettingsBackendPrivate"/>
+  </namespace>
+</repository>

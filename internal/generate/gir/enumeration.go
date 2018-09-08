@@ -4,6 +4,7 @@ type Enumeration struct {
 	Namespace *Namespace
 
 	Name         string    `xml:"name,attr"`
+	Blacklist    bool      `xml:"blacklist,attr"`
 	GoTypeName   string    `xml:"goname,attr"`
 	Version      string    `xml:"version,attr"`
 	CType        string    `xml:"http://www.gtk.org/introspection/c/1.0 type,attr"`
@@ -21,6 +22,10 @@ func (e *Enumeration) fixup(ns *Namespace) {
 	}
 }
 
+func (e *Enumeration) blacklisted() bool {
+	return e.Blacklist
+}
+
 type Enumerations []*Enumeration
 
 func (es Enumerations) fixup(ns *Namespace) {
@@ -33,8 +38,13 @@ type Member struct {
 	Namespace *Namespace
 
 	Name        string `xml:"name,attr"`
+	Blacklist   bool   `xml:"blacklist,attr"`
 	Value       int    `xml:"value,attr"`
 	CIdentifier string `xml:"http://www.gtk.org/introspection/c/1.0 identifier,attr"`
 	GlibNick    string `xml:"http://www.gtk.org/introspection/glib/1.0 nick,attr"`
 	Doc         *Doc   `xml:"doc"`
+}
+
+func (m *Member) blacklisted() bool {
+	return m.Blacklist
 }

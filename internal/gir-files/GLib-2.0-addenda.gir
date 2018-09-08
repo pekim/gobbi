@@ -41,6 +41,7 @@
     <function blacklist="true" c:identifier="g_unicode_canonical_decomposition"/>
     <function blacklist="true" c:identifier="g_unicode_canonical_ordering"/>
     <function blacklist="true" c:identifier="g_utf8_to_ucs4_fast"/>
+    <function blacklist="true" c:identifier="g_assertion_message_error"/>
 
     <!-- "long double" is not supported by cgo -->
     <function blacklist="true" c:identifier="g_assertion_message_cmpnum"/>

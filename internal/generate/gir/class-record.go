@@ -29,6 +29,10 @@ func (r *Record) fixup(ns *Namespace) {
 	}
 }
 
+func (r *Record) blacklisted() bool {
+	return r.Blacklist
+}
+
 type Records []*Record
 
 func (rs Records) fixup(ns *Namespace) {

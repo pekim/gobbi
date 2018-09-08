@@ -15,6 +15,10 @@ func (a *Alias) fixup(ns *Namespace) {
 	a.Type.Namespace = ns
 }
 
+func (a *Alias) blacklisted() bool {
+	return a.Blacklist
+}
+
 type Aliases []*Alias
 
 func (as Aliases) fixup(ns *Namespace) {
