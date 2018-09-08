@@ -20,10 +20,7 @@ func GirNew(name string) *Gir {
 
 	g.repo = g.LoadFile(name+".gir", true)
 	g.addendaRepo = g.LoadFile(name+"-addenda.gir", false)
-
 	g.repo.MergeAddenda(g.addendaRepo)
-
-	// fmt.Printf("%#v\n", g.addendaRepo.Namespace.Functions[0])
 	return g
 }
 
@@ -40,6 +37,7 @@ func (g *Gir) LoadFile(filename string, required bool) *gir.Repository {
 	source, err := ioutil.ReadFile(filepath)
 	if err != nil {
 		if os.IsNotExist(err) && !required {
+			fmt.Println(err)
 			return &gir.Repository{}
 		}
 

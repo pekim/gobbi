@@ -28,11 +28,13 @@ func (ns *Namespace) fixup() {
 }
 
 func (ns *Namespace) mergeAddenda(addenda *Namespace) {
-	ns.mergeAddendaFunctions(addenda)
+	if addenda != nil {
+		ns.mergeAddendaFunctions(addenda)
+	}
 }
 
 func (ns *Namespace) mergeAddendaFunctions(addenda *Namespace) {
 	// for _, function := range addenda.Functions {
-	// 	// fmt.Println("addenda", function)
+	// 	fmt.Println("addenda", function)
 	// }
 }

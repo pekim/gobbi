@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<repository version="1.2"
+            xmlns="http://www.gtk.org/introspection/core/1.0"
+            xmlns:c="http://www.gtk.org/introspection/c/1.0"
+            xmlns:glib="http://www.gtk.org/introspection/glib/1.0"
+>
+  <namespace>
+    <bitfield name="ParamFlags">
+      <member blacklist="true" name="deprecated"/>
+    </bitfield>
+
+    <!--
+      Function where either doesn't make sense to call from Go,
+	    or is too difficult to do (at least for now).
+    -->
+    <function blacklist="true" c:identifier="g_cclosure_new"/>
+    <function blacklist="true" c:identifier="g_cclosure_new_swap"/>
+    <function blacklist="true" c:identifier="g_type_add_class_cache_func"/>
+    <function blacklist="true" c:identifier="g_type_remove_class_cache_func"/>
+
+    <function c:identifier="g_signal_query" goname="SignalQuery_"/>
+
+    <class name="Object">
+      <method blacklist="true" c:identifier="g_object_weak_ref"/>
+      <method blacklist="true" c:identifier="g_object_weak_unref"/>
+    </class>
+
+    <record name="Closure" blacklist="true">
+      <!--
+      <method blacklist="true" c:identifier="g_closure_add_finalize_notifier"/>
+      <method blacklist="true" c:identifier="g_closure_add_invalidate_notifier"/>
+      <method blacklist="true" c:identifier="g_closure_set_marshal"/>
+      <method blacklist="true" c:identifier="g_closure_set_meta_marshal"/>
+      -->
+    </record>
+  </namespace>
+</repository>
