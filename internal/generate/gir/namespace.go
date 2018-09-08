@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/dave/jennifer/jen"
+	"gobbi2/internal/generate/file"
 )
 
 type Namespace struct {
@@ -26,11 +26,12 @@ type Namespace struct {
 	goPackageName string
 	allVersions   Versions
 	versionDebug  bool
-	file          *jen.File
+	libDir        string
 }
 
 func (ns *Namespace) fixup() {
 	ns.goPackageName = strings.ToLower(ns.Name)
+	ns.libDir = file.ProjectFilepath("lib", ns.goPackageName)
 
 	ns.Aliases.fixup(ns)
 	ns.Bitfields.fixup(ns)
@@ -59,4 +60,9 @@ func (ns *Namespace) mergeAddendaFunctions(addenda *Namespace) {
 
 func (ns *Namespace) blacklisted() bool {
 	return ns.Blacklist
+}
+
+func (ns *Namespace) generate() {
+	ns.generateLibDir()
+	ns.generateFile("alias", ns.Aliases.generate)
 }

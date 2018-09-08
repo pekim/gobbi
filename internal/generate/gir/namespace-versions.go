@@ -21,23 +21,23 @@ func (ns *Namespace) getCollectionVersions(versionLister VersionLister) Versions
 // generateVersionDebugFunction conditionally generates
 // a package "init" function that will print the package
 // name and library version constraint for the file.
-func (ns *Namespace) generateVersionDebugFunction(version string) {
+func (ns *Namespace) generateVersionDebugFunction(file *jen.File, version string) {
 	if !ns.versionDebug {
 		return
 	}
 
 	text := fmt.Sprintf("version : %s %s", ns.goPackageName, version)
 
-	ns.file.Func().Id("init").Params().BlockFunc(func(g *jen.Group) {
+	file.Func().Id("init").Params().BlockFunc(func(g *jen.Group) {
 		g.Qual("fmt", "Println").Call(jen.Lit(text))
 	})
 }
 
-func (ns *Namespace) buildConstraintsForVersion(version Version) {
+func (ns *Namespace) buildConstraintsForVersion(file *jen.File, version Version) {
 	tags := ns.constraintsForVersion(version)
 
 	if tags != "" {
-		ns.file.HeaderComment(fmt.Sprintf("+build %s", tags))
+		file.HeaderComment(fmt.Sprintf("+build %s", tags))
 	}
 }
 

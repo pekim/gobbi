@@ -6,6 +6,7 @@ import (
 	"io/ioutil"
 	"os"
 
+	"gobbi2/internal/generate/file"
 	"gobbi2/internal/generate/gir"
 )
 
@@ -25,15 +26,11 @@ func GirNew(name string) *Gir {
 }
 
 func (g *Gir) Generate() {
-	// f := jen.NewFile("main")
-	// f.Func().Id("main").Params().Block(
-	// 	jen.Qual("fmt", "Println").Call(jen.Lit("hw")),
-	// )
-	// fmt.Printf("%#v", f)
+	g.repo.Generate()
 }
 
 func (g *Gir) LoadFile(filename string, required bool) *gir.Repository {
-	filepath := projectFilepath("internal", "gir-files", filename)
+	filepath := file.ProjectFilepath("internal", "gir-files", filename)
 	source, err := ioutil.ReadFile(filepath)
 	if err != nil {
 		if os.IsNotExist(err) && !required {

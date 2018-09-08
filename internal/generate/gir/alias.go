@@ -1,5 +1,7 @@
 package gir
 
+import "github.com/dave/jennifer/jen"
+
 type Alias struct {
 	Namespace *Namespace
 
@@ -17,4 +19,8 @@ func (a *Alias) fixup(ns *Namespace) {
 
 func (a *Alias) blacklisted() bool {
 	return a.Blacklist
+}
+
+func (a Alias) generate(g *jen.Group) {
+	g.Comment(a.Name)
 }

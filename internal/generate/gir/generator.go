@@ -5,7 +5,7 @@ import (
 )
 
 type Generator interface {
-	Versioned
+	// Versioned
 	generate(file *jen.File, version *Version)
 }
 

@@ -21,6 +21,10 @@ func (r *Repository) MergeAddenda(addenda *Repository) {
 	r.Namespace.mergeAddenda(addenda.Namespace)
 }
 
+func (r *Repository) Generate() {
+	r.Namespace.generate()
+}
+
 type CInclude struct {
 	Name string `xml:"name,attr"`
 }

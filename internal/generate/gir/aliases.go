@@ -1,5 +1,7 @@
 package gir
 
+import "github.com/dave/jennifer/jen"
+
 type Aliases []*Alias
 
 func (aa Aliases) fixup(ns *Namespace) {
@@ -10,4 +12,10 @@ func (aa Aliases) fixup(ns *Namespace) {
 
 func (aa Aliases) versionList() Versions {
 	return Versions{}
+}
+
+func (aa Aliases) generate(file *jen.File) {
+	for _, alias := range aa {
+		alias.generate(file.Group)
+	}
 }
