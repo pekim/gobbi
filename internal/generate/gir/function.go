@@ -5,6 +5,7 @@ type Function struct {
 
 	Name              string       `xml:"name,attr"`
 	Blacklist         bool         `xml:"blacklist,attr"`
+	GoName            string       `xml:"goname,attr"`
 	Version           string       `xml:"version,attr"`
 	CIdentifier       string       `xml:"http://www.gtk.org/introspection/c/1.0 identifier,attr"`
 	Deprecated        int          `xml:"deprecated,attr"`
@@ -39,6 +40,11 @@ func (f *Function) introspectable() bool {
 
 func (f *Function) version() string {
 	return f.Version
+}
+
+func (f *Function) mergeAddenda(addenda *Function) {
+	f.Blacklist = addenda.Blacklist
+	f.GoName = addenda.GoName
 }
 
 type Parameter struct {

@@ -52,6 +52,7 @@ func (ns *Namespace) mergeAddenda(addenda *Namespace) {
 		ns.Bitfields.mergeAddenda(addenda.Bitfields)
 		ns.Constants.mergeAddenda(addenda.Constants)
 		ns.Enumerations.mergeAddenda(addenda.Enumerations)
+		ns.Functions.mergeAddenda(addenda.Functions)
 	}
 }
 

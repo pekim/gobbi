@@ -19,3 +19,21 @@ func (ff Functions) versionList() Versions {
 
 	return versions
 }
+
+func (ff Functions) forCIdentifier(cidentifier string) *Function {
+	for _, function := range ff {
+		if function.CIdentifier == cidentifier {
+			return function
+		}
+	}
+
+	return nil
+}
+
+func (ff Functions) mergeAddenda(addenda Functions) {
+	for _, addendaFunction := range addenda {
+		if function := ff.forCIdentifier(addendaFunction.CIdentifier); function != nil {
+			function.mergeAddenda(addendaFunction)
+		}
+	}
+}
