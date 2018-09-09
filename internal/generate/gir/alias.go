@@ -21,6 +21,10 @@ func (a *Alias) version() string {
 	return ""
 }
 
+func (a *Alias) mergeAddenda(addenda *Alias) {
+	a.Blacklist = addenda.Blacklist
+}
+
 func (a Alias) generate(g *jen.Group, version *Version) {
 	if a.Blacklist {
 		g.Commentf("Blacklisted alias : %s", a.CType)

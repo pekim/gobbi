@@ -29,3 +29,21 @@ func (ee Enumerations) entities() []Generatable {
 
 	return generatables
 }
+
+func (ee Enumerations) forName(name string) *Enumeration {
+	for _, enum := range ee {
+		if enum.Name == name {
+			return enum
+		}
+	}
+
+	return nil
+}
+
+func (ee Enumerations) mergeAddenda(addenda Enumerations) {
+	for _, addendaEnum := range addenda {
+		if enum := ee.forName(addendaEnum.Name); enum != nil {
+			enum.mergeAddenda(addendaEnum)
+		}
+	}
+}

@@ -25,7 +25,8 @@ const (
 	PARAM_STATIC_NICK     ParamFlags = 64
 	PARAM_STATIC_BLURB    ParamFlags = 128
 	PARAM_EXPLICIT_NOTIFY ParamFlags = 1073741824
-	PARAM_DEPRECATED      ParamFlags = 2147483648
+
+// Blacklisted member : G_PARAM_DEPRECATED
 )
 
 type SignalFlags C.GSignalFlags

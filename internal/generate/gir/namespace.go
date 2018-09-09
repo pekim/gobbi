@@ -48,14 +48,10 @@ func (ns *Namespace) fixup(repo *Repository) {
 
 func (ns *Namespace) mergeAddenda(addenda *Namespace) {
 	if addenda != nil {
-		ns.mergeAddendaFunctions(addenda)
+		ns.Aliases.mergeAddenda(addenda.Aliases)
+		ns.Bitfields.mergeAddenda(addenda.Bitfields)
+		ns.Enumerations.mergeAddenda(addenda.Enumerations)
 	}
-}
-
-func (ns *Namespace) mergeAddendaFunctions(addenda *Namespace) {
-	// for _, function := range addenda.Functions {
-	// 	fmt.Println("addenda", function)
-	// }
 }
 
 func (ns *Namespace) blacklisted() bool {

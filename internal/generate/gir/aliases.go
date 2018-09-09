@@ -23,3 +23,21 @@ func (aa Aliases) entities() []Generatable {
 
 	return generatables
 }
+
+func (aa Aliases) forName(name string) *Alias {
+	for _, alias := range aa {
+		if alias.Name == name {
+			return alias
+		}
+	}
+
+	return nil
+}
+
+func (aa Aliases) mergeAddenda(addenda Aliases) {
+	for _, addendaAlias := range addenda {
+		if alias := aa.forName(addendaAlias.Name); alias != nil {
+			alias.mergeAddenda(addendaAlias)
+		}
+	}
+}
