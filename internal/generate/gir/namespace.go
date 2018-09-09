@@ -66,4 +66,5 @@ func (ns *Namespace) generate() {
 	ns.generateLibDir()
 	ns.generatePackageFile()
 	ns.generateGeneratables("alias", ns.Aliases)
+	ns.generateGeneratables("bitfield", ns.Bitfields)
 }

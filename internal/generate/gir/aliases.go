@@ -17,8 +17,8 @@ func (aa Aliases) entities() []Generatable {
 
 	// DO NOT GENERATE aliases until they and their use is better understood.
 
-	// for _, function := range aa {
-	// 	generatables = append(generatables, function)
+	// for _, alias := range aa {
+	// 	generatables = append(generatables, alias)
 	// }
 
 	return generatables

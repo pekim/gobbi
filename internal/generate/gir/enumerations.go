@@ -19,3 +19,13 @@ func (ee Enumerations) versionList() Versions {
 
 	return versions
 }
+
+func (ee Enumerations) entities() []Generatable {
+	var generatables []Generatable
+
+	for _, enum := range ee {
+		generatables = append(generatables, enum)
+	}
+
+	return generatables
+}

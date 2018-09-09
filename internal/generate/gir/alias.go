@@ -17,16 +17,12 @@ func (a *Alias) fixup(ns *Namespace) {
 	a.Type.Namespace = ns
 }
 
-func (a *Alias) blacklisted() bool {
-	return a.Blacklist
-}
-
 func (a *Alias) version() string {
 	return ""
 }
 
 func (a Alias) generate(g *jen.Group, version *Version) {
-	if a.blacklisted() {
+	if a.Blacklist {
 		g.Commentf("Blacklisted alias : %s", a.CType)
 		g.Line()
 		return
