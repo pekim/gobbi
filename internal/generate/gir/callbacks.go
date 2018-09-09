@@ -2,8 +2,8 @@ package gir
 
 type Callbacks []*Callback
 
-func (cs Callbacks) init(ns *Namespace) {
-	for _, callback := range cs {
+func (cc Callbacks) init(ns *Namespace) {
+	for _, callback := range cc {
 		callback.init(ns)
 	}
 }
