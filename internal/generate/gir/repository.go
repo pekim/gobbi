@@ -14,7 +14,7 @@ type Repository struct {
 }
 
 func (r *Repository) Fixup() {
-	r.Namespace.fixup()
+	r.Namespace.fixup(r)
 }
 
 func (r *Repository) MergeAddenda(addenda *Repository) {

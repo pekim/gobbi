@@ -1,7 +1,6 @@
 package gir
 
 import (
-	"fmt"
 	"strings"
 
 	"gobbi2/internal/generate/file"
@@ -23,13 +22,15 @@ type Namespace struct {
 	Functions           Functions    `xml:"function"`
 	Records             Records      `xml:"record"`
 
+	repo          *Repository
 	goPackageName string
 	allVersions   Versions
 	versionDebug  bool
 	libDir        string
 }
 
-func (ns *Namespace) fixup() {
+func (ns *Namespace) fixup(repo *Repository) {
+	ns.repo = repo
 	ns.goPackageName = strings.ToLower(ns.Name)
 	ns.libDir = file.ProjectFilepath("lib", ns.goPackageName)
 
@@ -43,7 +44,6 @@ func (ns *Namespace) fixup() {
 	ns.Records.fixup(ns)
 
 	ns.setAllVersions()
-	fmt.Println(ns.allVersions)
 }
 
 func (ns *Namespace) mergeAddenda(addenda *Namespace) {
@@ -64,5 +64,6 @@ func (ns *Namespace) blacklisted() bool {
 
 func (ns *Namespace) generate() {
 	ns.generateLibDir()
+	ns.generatePackageFile()
 	ns.generateFile("alias", ns.Aliases.generate)
 }
