@@ -34,7 +34,6 @@ func (g *Gir) LoadFile(filename string, required bool) *gir.Repository {
 	source, err := ioutil.ReadFile(filepath)
 	if err != nil {
 		if os.IsNotExist(err) && !required {
-			fmt.Println(err)
 			return &gir.Repository{}
 		}
 
