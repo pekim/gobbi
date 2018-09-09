@@ -67,4 +67,5 @@ func (ns *Namespace) generate() {
 	ns.generateGeneratables("bitfield", ns.Bitfields)
 	ns.generateGeneratables("constant", ns.Constants)
 	ns.generateGeneratables("enum", ns.Enumerations)
+	ns.generateGeneratables("function", ns.Functions)
 }

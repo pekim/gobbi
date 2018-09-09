@@ -1,5 +1,7 @@
 package gir
 
+import "github.com/dave/jennifer/jen"
+
 type Function struct {
 	Namespace *Namespace
 
@@ -45,6 +47,19 @@ func (f *Function) version() string {
 func (f *Function) mergeAddenda(addenda *Function) {
 	f.Blacklist = addenda.Blacklist
 	f.GoName = addenda.GoName
+}
+
+func (f *Function) generate(g *jen.Group, version *Version) {
+	if !supportedByVersion(f, version) {
+		return
+	}
+
+	if f.Blacklist {
+		g.Commentf("Blacklisted function: %s", f.CIdentifier)
+		g.Line()
+		return
+	}
+
 }
 
 type Parameter struct {

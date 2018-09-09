@@ -20,6 +20,16 @@ func (ff Functions) versionList() Versions {
 	return versions
 }
 
+func (ff Functions) entities() []Generatable {
+	var generatables []Generatable
+
+	for _, function := range ff {
+		generatables = append(generatables, function)
+	}
+
+	return generatables
+}
+
 func (ff Functions) forCIdentifier(cidentifier string) *Function {
 	for _, function := range ff {
 		if function.CIdentifier == cidentifier {
