@@ -13,8 +13,8 @@ type Repository struct {
 	Namespace *Namespace `xml:"namespace"`
 }
 
-func (r *Repository) Fixup() {
-	r.Namespace.fixup(r)
+func (r *Repository) Init() {
+	r.Namespace.init(r)
 }
 
 func (r *Repository) MergeAddenda(addenda *Repository) {

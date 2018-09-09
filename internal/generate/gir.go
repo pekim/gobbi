@@ -45,7 +45,7 @@ func (g *Gir) LoadFile(filename string, required bool) *gir.Repository {
 	if err != nil {
 		panic(fmt.Errorf("Failed to parse %s : %s", filepath, err))
 	}
-	girRepo.Fixup()
+	girRepo.Init()
 
 	return girRepo
 }

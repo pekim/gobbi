@@ -2,9 +2,9 @@ package gir
 
 type Aliases []*Alias
 
-func (aa Aliases) fixup(ns *Namespace) {
+func (aa Aliases) init(ns *Namespace) {
 	for _, alias := range aa {
-		alias.fixup(ns)
+		alias.init(ns)
 	}
 }
 

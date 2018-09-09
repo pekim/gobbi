@@ -29,19 +29,19 @@ type Namespace struct {
 	libDir        string
 }
 
-func (ns *Namespace) fixup(repo *Repository) {
+func (ns *Namespace) init(repo *Repository) {
 	ns.repo = repo
 	ns.goPackageName = strings.ToLower(ns.Name)
 	ns.libDir = file.ProjectFilepath("lib", ns.goPackageName)
 
-	ns.Aliases.fixup(ns)
-	ns.Bitfields.fixup(ns)
-	ns.Callbacks.fixup(ns)
-	ns.Classes.fixup(ns)
-	ns.Constants.fixup(ns)
-	ns.Enumerations.fixup(ns)
-	ns.Functions.fixup(ns)
-	ns.Records.fixup(ns)
+	ns.Aliases.init(ns)
+	ns.Bitfields.init(ns)
+	ns.Callbacks.init(ns)
+	ns.Classes.init(ns)
+	ns.Constants.init(ns)
+	ns.Enumerations.init(ns)
+	ns.Functions.init(ns)
+	ns.Records.init(ns)
 
 	ns.setAllVersions()
 }

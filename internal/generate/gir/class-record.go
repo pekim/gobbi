@@ -17,15 +17,15 @@ type Record struct {
 	Methods        []*Method      `xml:"method"`
 }
 
-func (r *Record) fixup(ns *Namespace) {
+func (r *Record) init(ns *Namespace) {
 	r.Namespace = ns
 
 	for _, ctor := range r.Constructors {
-		ctor.fixup(ns)
+		ctor.init(ns)
 	}
 
 	for _, method := range r.Methods {
-		method.fixup(ns)
+		method.init(ns)
 	}
 }
 

@@ -11,7 +11,7 @@ type Constant struct {
 	Type    *Type  `xml:"type"`
 }
 
-func (c *Constant) fixup(ns *Namespace) {
+func (c *Constant) init(ns *Namespace) {
 	c.Namespace = ns
 	c.Type.Namespace = ns
 }

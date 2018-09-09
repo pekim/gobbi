@@ -17,15 +17,15 @@ type Function struct {
 	Introspectable    string       `xml:"introspectable,attr"`
 }
 
-func (f *Function) fixup(ns *Namespace) {
+func (f *Function) init(ns *Namespace) {
 	f.Namespace = ns
 
 	for _, param := range f.Parameters {
-		param.fixup(ns)
+		param.init(ns)
 	}
 
 	if f.ReturnValue != nil {
-		f.ReturnValue.fixup(ns)
+		f.ReturnValue.init(ns)
 	}
 }
 
@@ -53,7 +53,7 @@ type Parameter struct {
 	Varargs           *struct{} `xml:"varargs"`
 }
 
-func (p *Parameter) fixup(ns *Namespace) {
+func (p *Parameter) init(ns *Namespace) {
 	p.Namespace = ns
 
 	if p.Type != nil {
@@ -71,7 +71,7 @@ type ReturnValue struct {
 	Array             *Array `xml:"array"`
 }
 
-func (r *ReturnValue) fixup(ns *Namespace) {
+func (r *ReturnValue) init(ns *Namespace) {
 	r.Namespace = ns
 
 	if r.Type != nil {

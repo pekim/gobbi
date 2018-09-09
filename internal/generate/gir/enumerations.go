@@ -2,9 +2,9 @@ package gir
 
 type Enumerations []*Enumeration
 
-func (ee Enumerations) fixup(ns *Namespace) {
+func (ee Enumerations) init(ns *Namespace) {
 	for _, enum := range ee {
-		enum.fixup(ns)
+		enum.init(ns)
 	}
 }
 

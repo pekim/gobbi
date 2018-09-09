@@ -12,7 +12,7 @@ type Alias struct {
 	Doc       *Doc   `xml:"doc"`
 }
 
-func (a *Alias) fixup(ns *Namespace) {
+func (a *Alias) init(ns *Namespace) {
 	a.Namespace = ns
 	a.Type.Namespace = ns
 }

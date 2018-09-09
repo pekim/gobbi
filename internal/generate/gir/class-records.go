@@ -2,9 +2,9 @@ package gir
 
 type Records []*Record
 
-func (rr Records) fixup(ns *Namespace) {
+func (rr Records) init(ns *Namespace) {
 	for _, record := range rr {
-		record.fixup(ns)
+		record.init(ns)
 	}
 }
 
@@ -22,9 +22,9 @@ func (rr Records) versionList() Versions {
 
 type Classes Records
 
-func (cc Classes) fixup(ns *Namespace) {
+func (cc Classes) init(ns *Namespace) {
 	for _, class := range cc {
-		class.fixup(ns)
+		class.init(ns)
 	}
 }
 

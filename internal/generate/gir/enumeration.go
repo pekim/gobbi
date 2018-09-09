@@ -20,7 +20,7 @@ type Enumeration struct {
 	goTypeName string
 }
 
-func (e *Enumeration) fixup(ns *Namespace) {
+func (e *Enumeration) init(ns *Namespace) {
 	e.Namespace = ns
 
 	e.goTypeName = e.Name

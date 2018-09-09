@@ -2,9 +2,9 @@ package gir
 
 type Functions []*Function
 
-func (ff Functions) fixup(ns *Namespace) {
+func (ff Functions) init(ns *Namespace) {
 	for _, function := range ff {
-		function.fixup(ns)
+		function.init(ns)
 	}
 }
 

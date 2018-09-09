@@ -2,8 +2,8 @@ package gir
 
 type Constants []*Constant
 
-func (cs Constants) fixup(ns *Namespace) {
+func (cs Constants) init(ns *Namespace) {
 	for _, constant := range cs {
-		constant.fixup(ns)
+		constant.init(ns)
 	}
 }
