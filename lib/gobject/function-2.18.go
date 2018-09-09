@@ -5,3 +5,9 @@ package gobject
 // #include <glib-object.h>
 // #include <stdlib.h>
 import "C"
+
+func SignalChainFromOverriddenHandler() {}
+
+func SignalNewClassHandler() {}
+
+func SignalOverrideClassHandler() {}

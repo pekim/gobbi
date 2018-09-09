@@ -5,3 +5,19 @@ package gobject
 // #include <glib-object.h>
 // #include <stdlib.h>
 import "C"
+
+func ParamSpecOverride() {}
+
+func SignalAccumulatorTrueHandled() {}
+
+func TypeAddInterfaceCheck() {}
+
+func TypeClassPeekStatic() {}
+
+func TypeDefaultInterfacePeek() {}
+
+func TypeDefaultInterfaceRef() {}
+
+func TypeDefaultInterfaceUnref() {}
+
+func TypeRemoveInterfaceCheck() {}

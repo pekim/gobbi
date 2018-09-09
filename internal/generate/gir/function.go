@@ -1,6 +1,9 @@
 package gir
 
-import "github.com/dave/jennifer/jen"
+import (
+	"github.com/dave/jennifer/jen"
+	"strings"
+)
 
 type Function struct {
 	Namespace *Namespace
@@ -22,19 +25,12 @@ type Function struct {
 
 func (f *Function) init(ns *Namespace) {
 	f.Namespace = ns
+	f.setGoName()
 	f.Parameters.init(ns)
 
 	if f.ReturnValue != nil {
 		f.ReturnValue.init(ns)
 	}
-}
-
-func (f *Function) blacklisted() bool {
-	return f.Blacklist
-}
-
-func (f *Function) introspectable() bool {
-	return f.Introspectable != "0"
 }
 
 func (f *Function) version() string {
@@ -43,7 +39,22 @@ func (f *Function) version() string {
 
 func (f *Function) mergeAddenda(addenda *Function) {
 	f.Blacklist = addenda.Blacklist
-	f.GoName = addenda.GoName
+
+	if addenda.GoName != "" {
+		f.GoName = addenda.GoName
+	}
+}
+
+func (f *Function) setGoName() {
+	cParts := strings.Split(f.Name, "_")
+	goParts := []string{}
+
+	for _, cPart := range cParts {
+		goPart := strings.Title(cPart)
+		goParts = append(goParts, goPart)
+	}
+
+	f.GoName = strings.Join(goParts, "")
 }
 
 func (f *Function) generate(g *jen.Group, version *Version) {
@@ -57,4 +68,12 @@ func (f *Function) generate(g *jen.Group, version *Version) {
 		return
 	}
 
+	g.
+		Func().
+		Id(f.GoName).
+		ParamsFunc(func(g *jen.Group) {
+		}).
+		BlockFunc(func(g *jen.Group) {
+		}).
+		Line()
 }
