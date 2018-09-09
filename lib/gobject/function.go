@@ -10,49 +10,49 @@ func BoxedFree() {}
 
 func BoxedTypeRegisterStatic() {}
 
-func CclosureMarshalBOOLEANBOXEDBOXED() {}
+func CclosureMarshalBooleanBoxedBoxed() {}
 
-func CclosureMarshalBOOLEANFLAGS() {}
+func CclosureMarshalBooleanFlags() {}
 
-func CclosureMarshalSTRINGOBJECTPOINTER() {}
+func CclosureMarshalStringObjectPointer() {}
 
-func CclosureMarshalVOIDBOOLEAN() {}
+func CclosureMarshalVoidBoolean() {}
 
-func CclosureMarshalVOIDBOXED() {}
+func CclosureMarshalVoidBoxed() {}
 
-func CclosureMarshalVOIDCHAR() {}
+func CclosureMarshalVoidChar() {}
 
-func CclosureMarshalVOIDDOUBLE() {}
+func CclosureMarshalVoidDouble() {}
 
-func CclosureMarshalVOIDENUM() {}
+func CclosureMarshalVoidEnum() {}
 
-func CclosureMarshalVOIDFLAGS() {}
+func CclosureMarshalVoidFlags() {}
 
-func CclosureMarshalVOIDFLOAT() {}
+func CclosureMarshalVoidFloat() {}
 
-func CclosureMarshalVOIDINT() {}
+func CclosureMarshalVoidInt() {}
 
-func CclosureMarshalVOIDLONG() {}
+func CclosureMarshalVoidLong() {}
 
-func CclosureMarshalVOIDOBJECT() {}
+func CclosureMarshalVoidObject() {}
 
-func CclosureMarshalVOIDPARAM() {}
+func CclosureMarshalVoidParam() {}
 
-func CclosureMarshalVOIDPOINTER() {}
+func CclosureMarshalVoidPointer() {}
 
-func CclosureMarshalVOIDSTRING() {}
+func CclosureMarshalVoidString() {}
 
-func CclosureMarshalVOIDUCHAR() {}
+func CclosureMarshalVoidUchar() {}
 
-func CclosureMarshalVOIDUINT() {}
+func CclosureMarshalVoidUint() {}
 
-func CclosureMarshalVOIDUINTPOINTER() {}
+func CclosureMarshalVoidUintPointer() {}
 
-func CclosureMarshalVOIDULONG() {}
+func CclosureMarshalVoidUlong() {}
 
-func CclosureMarshalVOIDVARIANT() {}
+func CclosureMarshalVoidVariant() {}
 
-func CclosureMarshalVOIDVOID() {}
+func CclosureMarshalVoidVoid() {}
 
 // Blacklisted function: g_cclosure_new
 

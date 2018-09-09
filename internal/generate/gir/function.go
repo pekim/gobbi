@@ -50,7 +50,7 @@ func (f *Function) setGoName() {
 	goParts := []string{}
 
 	for _, cPart := range cParts {
-		goPart := strings.Title(cPart)
+		goPart := strings.Title(strings.ToLower(cPart))
 		goParts = append(goParts, goPart)
 	}
 
