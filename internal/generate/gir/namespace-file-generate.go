@@ -46,3 +46,37 @@ func (ns *Namespace) generatePackageFile() {
 		f.CgoPreamble("// #cgo CFLAGS: -Wno-deprecated-declarations")
 	})
 }
+
+func (ns *Namespace) cgoPreambleHeaders(file *jen.File) {
+	for _, cInclude := range ns.repo.CIncludes {
+		file.CgoPreamble(fmt.Sprintf("#include <%s>", cInclude.Name))
+	}
+
+	file.CgoPreamble("#include <stdlib.h>")
+	// file.CgoPreamble("#include \"callback.h\"")
+}
+
+func (ns *Namespace) generateGeneratables(typeName string, generatables Generatables) {
+	versions := ns.getCollectionVersions(generatables)
+
+	ns.generateFile(typeName, func(f *jen.File) {
+		ns.cgoPreambleHeaders(f)
+		ns.generateVersionDebugFunction(f, "")
+
+		for _, entity := range generatables.entities() {
+			entity.generate(f.Group, nil)
+		}
+	})
+
+	for _, version := range versions {
+		ns.generateFile(typeName+"-"+version.value, func(f *jen.File) {
+			ns.buildConstraintsForVersion(f, version)
+			ns.cgoPreambleHeaders(f)
+			ns.generateVersionDebugFunction(f, version.value)
+
+			for _, entity := range generatables.entities() {
+				entity.generate(f.Group, &version)
+			}
+		})
+	}
+}

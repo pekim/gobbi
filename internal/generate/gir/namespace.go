@@ -65,5 +65,5 @@ func (ns *Namespace) blacklisted() bool {
 func (ns *Namespace) generate() {
 	ns.generateLibDir()
 	ns.generatePackageFile()
-	ns.generateFile("alias", ns.Aliases.generate)
+	ns.generateGeneratables("alias", ns.Aliases)
 }

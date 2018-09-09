@@ -21,7 +21,11 @@ func (a *Alias) blacklisted() bool {
 	return a.Blacklist
 }
 
-func (a Alias) generate(g *jen.Group) {
+func (a *Alias) version() string {
+	return ""
+}
+
+func (a Alias) generate(g *jen.Group, version *Version) {
 	if a.blacklisted() {
 		g.Commentf("Blacklisted alias : %s", a.CType)
 		g.Line()
