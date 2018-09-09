@@ -34,6 +34,10 @@ func (ns *Namespace) generateVersionDebugFunction(file *jen.File, version string
 }
 
 func (ns *Namespace) buildConstraintsForVersion(file *jen.File, version Version) {
+	if version.value == "" {
+		return
+	}
+
 	tags := ns.constraintsForVersion(version)
 
 	if tags != "" {

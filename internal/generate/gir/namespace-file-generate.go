@@ -55,26 +55,26 @@ func (ns *Namespace) cgoPreambleHeaders(file *jen.File) {
 }
 
 func (ns *Namespace) generateGeneratables(typeName string, generatables Generatables) {
-	versions := ns.getCollectionVersions(generatables)
+	// file for non version-specific entities
+	ns.generateEntityVersionedFile(typeName, Version{}, generatables)
 
-	ns.generateFile(typeName, func(f *jen.File) {
+	// files for version-specific entities
+	versions := ns.getCollectionVersions(generatables)
+	for _, version := range versions {
+		ns.generateEntityVersionedFile(typeName+"-"+version.value, version, generatables)
+	}
+}
+
+// generateEntityVersionedFile generates a file for Generatables that
+// meet the version criterion.
+func (ns *Namespace) generateEntityVersionedFile(filename string, version Version, generatables Generatables) {
+	ns.generateFile(filename, func(f *jen.File) {
+		ns.buildConstraintsForVersion(f, version)
 		ns.cgoPreambleHeaders(f)
-		ns.generateVersionDebugFunction(f, "")
+		ns.generateVersionDebugFunction(f, version.value)
 
 		for _, entity := range generatables.entities() {
-			entity.generate(f.Group, nil)
+			entity.generate(f.Group, &version)
 		}
 	})
-
-	for _, version := range versions {
-		ns.generateFile(typeName+"-"+version.value, func(f *jen.File) {
-			ns.buildConstraintsForVersion(f, version)
-			ns.cgoPreambleHeaders(f)
-			ns.generateVersionDebugFunction(f, version.value)
-
-			for _, entity := range generatables.entities() {
-				entity.generate(f.Group, &version)
-			}
-		})
-	}
 }
