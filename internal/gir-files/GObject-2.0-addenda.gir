@@ -9,6 +9,8 @@
       <member blacklist="true" name="deprecated"/>
     </bitfield>
 
+    <constant blacklist="true" name="VALUE_COLLECT_FORMAT_MAX_LENGTH"/>
+
     <!--
       Function where either doesn't make sense to call from Go,
 	    or is too difficult to do (at least for now).

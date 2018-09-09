@@ -1,9 +1,6 @@
 package gir
 
 import (
-	"fmt"
-	"strconv"
-
 	"github.com/dave/jennifer/jen"
 )
 
@@ -41,10 +38,15 @@ func (c *Constant) generate(g *jen.Group, version *Version) {
 		return
 	}
 
-	goTypeName := "int"
-	goValue, err := strconv.Atoi(c.Value)
-	if err != nil {
-		panic(fmt.Errorf("Failed to parse int constant for %s : %s", c.Name, err))
+	var goTypeName string
+	switch c.Type.Name {
+	case "gint":
+		goTypeName = "int"
+	case "utf8":
+		goTypeName = "string"
+	default:
+		g.Commentf("Unsupport constant type %s for %s", c.Type.Name, c.Name)
+		return
 	}
 
 	g.
@@ -52,5 +54,5 @@ func (c *Constant) generate(g *jen.Group, version *Version) {
 		Id(c.Name).
 		Id(goTypeName).
 		Op("=").
-		Lit(goValue)
+		Qual("C", c.CType)
 }
