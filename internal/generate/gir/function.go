@@ -14,7 +14,7 @@ type Function struct {
 	DeprecatedVersion string       `xml:"deprecated-version,attr"`
 	Doc               *Doc         `xml:"doc"`
 	InstanceParameter *Parameter   `xml:"parameters>instance-parameter"`
-	Parameters        []*Parameter `xml:"parameters>parameter"`
+	Parameters        Parameters   `xml:"parameters>parameter"`
 	ReturnValue       *ReturnValue `xml:"return-value"`
 	Throws            int          `xml:"throws,attr"`
 	Introspectable    string       `xml:"introspectable,attr"`
@@ -22,10 +22,7 @@ type Function struct {
 
 func (f *Function) init(ns *Namespace) {
 	f.Namespace = ns
-
-	for _, param := range f.Parameters {
-		param.init(ns)
-	}
+	f.Parameters.init(ns)
 
 	if f.ReturnValue != nil {
 		f.ReturnValue.init(ns)
@@ -60,42 +57,4 @@ func (f *Function) generate(g *jen.Group, version *Version) {
 		return
 	}
 
-}
-
-type Parameter struct {
-	Namespace *Namespace
-
-	Name              string    `xml:"name,attr"`
-	Direction         string    `xml:"direction,attr"`
-	TransferOwnership string    `xml:"transfer-ownership,attr"`
-	Doc               *Doc      `xml:"doc"`
-	Type              *Type     `xml:"type"`
-	Array             *Array    `xml:"array"`
-	Varargs           *struct{} `xml:"varargs"`
-}
-
-func (p *Parameter) init(ns *Namespace) {
-	p.Namespace = ns
-
-	if p.Type != nil {
-		p.Type.Namespace = ns
-	}
-}
-
-type ReturnValue struct {
-	Namespace *Namespace
-
-	TransferOwnership string `xml:"transfer-ownership,attr"`
-	Nullable          string `xml:"nullable,attr"`
-	Doc               *Doc   `xml:"doc"`
-	Type              *Type  `xml:"type"`
-	Array             *Array `xml:"array"`
-}
-
-func (r *ReturnValue) init(ns *Namespace) {
-	r.Namespace = ns
-
-	if r.Type != nil {
-		r.Type.Namespace = ns
-	}
 }
