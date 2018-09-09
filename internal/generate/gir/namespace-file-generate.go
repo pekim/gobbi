@@ -48,9 +48,7 @@ func (ns *Namespace) generatePackageFile() {
 }
 
 func (ns *Namespace) cgoPreambleHeaders(file *jen.File) {
-	for _, cInclude := range ns.repo.CIncludes {
-		file.CgoPreamble(fmt.Sprintf("#include <%s>", cInclude.Name))
-	}
+	ns.repo.CIncludes.generate(file)
 
 	file.CgoPreamble("#include <stdlib.h>")
 	// file.CgoPreamble("#include \"callback.h\"")
