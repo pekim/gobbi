@@ -6,8 +6,6 @@ package gobject
 // #include <stdlib.h>
 import "C"
 
-// EnumToString is a wrapper around the C function g_enum_to_string.
-func EnumToString(gEnumType int, value int) {}
+// Unsupported function: g_enum_to_string : unsupported parameter g_enum_type : type GType, GType
 
-// FlagsToString is a wrapper around the C function g_flags_to_string.
-func FlagsToString(flagsType int, value int) {}
+// Unsupported function: g_flags_to_string : unsupported parameter flags_type : type GType, GType

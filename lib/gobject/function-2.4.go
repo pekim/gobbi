@@ -6,26 +6,19 @@ package gobject
 // #include <stdlib.h>
 import "C"
 
-// ParamSpecOverride is a wrapper around the C function g_param_spec_override.
-func ParamSpecOverride(name int, overridden int) {}
+// Unsupported function: g_param_spec_override : unsupported parameter overridden : type ParamSpec, GParamSpec*
 
-// SignalAccumulatorTrueHandled is a wrapper around the C function g_signal_accumulator_true_handled.
-func SignalAccumulatorTrueHandled(ihint int, returnAccu int, handlerReturn int, dummy int) {}
+// Unsupported function: g_signal_accumulator_true_handled : unsupported parameter ihint : type SignalInvocationHint, GSignalInvocationHint*
 
-// TypeAddInterfaceCheck is a wrapper around the C function g_type_add_interface_check.
-func TypeAddInterfaceCheck(checkData int, checkFunc int) {}
+// Unsupported function: g_type_add_interface_check : unsupported parameter check_func : type TypeInterfaceCheckFunc, GTypeInterfaceCheckFunc
 
-// TypeClassPeekStatic is a wrapper around the C function g_type_class_peek_static.
-func TypeClassPeekStatic(type_ int) {}
+// Unsupported function: g_type_class_peek_static : unsupported parameter type : type GType, GType
 
-// TypeDefaultInterfacePeek is a wrapper around the C function g_type_default_interface_peek.
-func TypeDefaultInterfacePeek(gType int) {}
+// Unsupported function: g_type_default_interface_peek : unsupported parameter g_type : type GType, GType
 
-// TypeDefaultInterfaceRef is a wrapper around the C function g_type_default_interface_ref.
-func TypeDefaultInterfaceRef(gType int) {}
+// Unsupported function: g_type_default_interface_ref : unsupported parameter g_type : type GType, GType
 
 // TypeDefaultInterfaceUnref is a wrapper around the C function g_type_default_interface_unref.
-func TypeDefaultInterfaceUnref(gIface int) {}
+func TypeDefaultInterfaceUnref(gIface uintptr) {}
 
-// TypeRemoveInterfaceCheck is a wrapper around the C function g_type_remove_interface_check.
-func TypeRemoveInterfaceCheck(checkData int, checkFunc int) {}
+// Unsupported function: g_type_remove_interface_check : unsupported parameter check_func : type TypeInterfaceCheckFunc, GTypeInterfaceCheckFunc

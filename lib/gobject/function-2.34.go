@@ -6,5 +6,4 @@ package gobject
 // #include <stdlib.h>
 import "C"
 
-// TypeEnsure is a wrapper around the C function g_type_ensure.
-func TypeEnsure(type_ int) {}
+// Unsupported function: g_type_ensure : unsupported parameter type : type GType, GType

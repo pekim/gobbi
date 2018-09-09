@@ -6,6 +6,4 @@ package gobject
 // #include <stdlib.h>
 import "C"
 
-// CclosureMarshalGeneric is a wrapper around the C function g_cclosure_marshal_generic.
-func CclosureMarshalGeneric(closure int, returnGvalue int, nParamValues int, paramValues int, invocationHint int, marshalData int) {
-}
+// Unsupported function: g_cclosure_marshal_generic : unsupported parameter closure : type Closure, GClosure*

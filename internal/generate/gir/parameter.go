@@ -1,6 +1,7 @@
 package gir
 
 import (
+	"fmt"
 	"github.com/dave/jennifer/jen"
 )
 
@@ -16,6 +17,7 @@ type Parameter struct {
 	Varargs           *struct{} `xml:"varargs"`
 
 	goName string
+	goType string
 }
 
 func (p *Parameter) init(ns *Namespace) {
@@ -24,18 +26,33 @@ func (p *Parameter) init(ns *Namespace) {
 
 	if p.Type != nil {
 		p.Type.Namespace = ns
+
+		goType, isPrimitive := primitiveCTypeMap[p.Type.CType]
+		if isPrimitive {
+			p.goType = goType
+		} else if p.Type.Name == "utf8" {
+			p.goType = "string"
+		}
 	}
 }
 
 func (p Parameter) generateFunctionDeclaration(g *jen.Group) {
 	g.
 		Id(p.goName).
-		Id("int")
+		Id(p.goType)
 }
 
 func (p Parameter) isSupported() (bool, string) {
 	if p.Varargs != nil {
 		return false, "varargs"
+	}
+
+	if p.goType == "" {
+		if p.Type != nil {
+			return false, fmt.Sprintf("type %s, %s", p.Type.Name, p.Type.CType)
+		} else {
+			return false, "no type"
+		}
 	}
 
 	return true, ""

@@ -6,5 +6,4 @@ package gobject
 // #include <stdlib.h>
 import "C"
 
-// ParamSpecGtype is a wrapper around the C function g_param_spec_gtype.
-func ParamSpecGtype(name int, nick int, blurb int, isAType int, flags int) {}
+// Unsupported function: g_param_spec_gtype : unsupported parameter is_a_type : type GType, GType

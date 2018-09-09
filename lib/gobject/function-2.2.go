@@ -6,5 +6,4 @@ package gobject
 // #include <stdlib.h>
 import "C"
 
-// TypeInterfacePrerequisites is a wrapper around the C function g_type_interface_prerequisites.
-func TypeInterfacePrerequisites(interfaceType int, nPrerequisites int) {}
+// Unsupported function: g_type_interface_prerequisites : unsupported parameter interface_type : type GType, GType

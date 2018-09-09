@@ -8,7 +8,6 @@ import "C"
 
 // Unsupported function: g_signal_chain_from_overridden_handler : unsupported parameter ... : varargs
 
-// Unsupported function: g_signal_new_class_handler : unsupported parameter ... : varargs
+// Unsupported function: g_signal_new_class_handler : unsupported parameter itype : type GType, GType
 
-// SignalOverrideClassHandler is a wrapper around the C function g_signal_override_class_handler.
-func SignalOverrideClassHandler(signalName int, instanceType int, classHandler int) {}
+// Unsupported function: g_signal_override_class_handler : unsupported parameter instance_type : type GType, GType

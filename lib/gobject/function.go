@@ -4,488 +4,324 @@ package gobject
 // #include <stdlib.h>
 import "C"
 
-// BoxedCopy is a wrapper around the C function g_boxed_copy.
-func BoxedCopy(boxedType int, srcBoxed int) {}
+// Unsupported function: g_boxed_copy : unsupported parameter boxed_type : type GType, GType
 
-// BoxedFree is a wrapper around the C function g_boxed_free.
-func BoxedFree(boxedType int, boxed int) {}
+// Unsupported function: g_boxed_free : unsupported parameter boxed_type : type GType, GType
 
-// BoxedTypeRegisterStatic is a wrapper around the C function g_boxed_type_register_static.
-func BoxedTypeRegisterStatic(name int, boxedCopy int, boxedFree int) {}
+// Unsupported function: g_boxed_type_register_static : unsupported parameter boxed_copy : type BoxedCopyFunc, GBoxedCopyFunc
 
-// CclosureMarshalBooleanBoxedBoxed is a wrapper around the C function g_cclosure_marshal_BOOLEAN__BOXED_BOXED.
-func CclosureMarshalBooleanBoxedBoxed(closure int, returnValue int, nParamValues int, paramValues int, invocationHint int, marshalData int) {
-}
+// Unsupported function: g_cclosure_marshal_BOOLEAN__BOXED_BOXED : unsupported parameter closure : type Closure, GClosure*
 
-// CclosureMarshalBooleanFlags is a wrapper around the C function g_cclosure_marshal_BOOLEAN__FLAGS.
-func CclosureMarshalBooleanFlags(closure int, returnValue int, nParamValues int, paramValues int, invocationHint int, marshalData int) {
-}
+// Unsupported function: g_cclosure_marshal_BOOLEAN__FLAGS : unsupported parameter closure : type Closure, GClosure*
 
-// CclosureMarshalStringObjectPointer is a wrapper around the C function g_cclosure_marshal_STRING__OBJECT_POINTER.
-func CclosureMarshalStringObjectPointer(closure int, returnValue int, nParamValues int, paramValues int, invocationHint int, marshalData int) {
-}
+// Unsupported function: g_cclosure_marshal_STRING__OBJECT_POINTER : unsupported parameter closure : type Closure, GClosure*
 
-// CclosureMarshalVoidBoolean is a wrapper around the C function g_cclosure_marshal_VOID__BOOLEAN.
-func CclosureMarshalVoidBoolean(closure int, returnValue int, nParamValues int, paramValues int, invocationHint int, marshalData int) {
-}
+// Unsupported function: g_cclosure_marshal_VOID__BOOLEAN : unsupported parameter closure : type Closure, GClosure*
 
-// CclosureMarshalVoidBoxed is a wrapper around the C function g_cclosure_marshal_VOID__BOXED.
-func CclosureMarshalVoidBoxed(closure int, returnValue int, nParamValues int, paramValues int, invocationHint int, marshalData int) {
-}
+// Unsupported function: g_cclosure_marshal_VOID__BOXED : unsupported parameter closure : type Closure, GClosure*
 
-// CclosureMarshalVoidChar is a wrapper around the C function g_cclosure_marshal_VOID__CHAR.
-func CclosureMarshalVoidChar(closure int, returnValue int, nParamValues int, paramValues int, invocationHint int, marshalData int) {
-}
+// Unsupported function: g_cclosure_marshal_VOID__CHAR : unsupported parameter closure : type Closure, GClosure*
 
-// CclosureMarshalVoidDouble is a wrapper around the C function g_cclosure_marshal_VOID__DOUBLE.
-func CclosureMarshalVoidDouble(closure int, returnValue int, nParamValues int, paramValues int, invocationHint int, marshalData int) {
-}
+// Unsupported function: g_cclosure_marshal_VOID__DOUBLE : unsupported parameter closure : type Closure, GClosure*
 
-// CclosureMarshalVoidEnum is a wrapper around the C function g_cclosure_marshal_VOID__ENUM.
-func CclosureMarshalVoidEnum(closure int, returnValue int, nParamValues int, paramValues int, invocationHint int, marshalData int) {
-}
+// Unsupported function: g_cclosure_marshal_VOID__ENUM : unsupported parameter closure : type Closure, GClosure*
 
-// CclosureMarshalVoidFlags is a wrapper around the C function g_cclosure_marshal_VOID__FLAGS.
-func CclosureMarshalVoidFlags(closure int, returnValue int, nParamValues int, paramValues int, invocationHint int, marshalData int) {
-}
+// Unsupported function: g_cclosure_marshal_VOID__FLAGS : unsupported parameter closure : type Closure, GClosure*
 
-// CclosureMarshalVoidFloat is a wrapper around the C function g_cclosure_marshal_VOID__FLOAT.
-func CclosureMarshalVoidFloat(closure int, returnValue int, nParamValues int, paramValues int, invocationHint int, marshalData int) {
-}
+// Unsupported function: g_cclosure_marshal_VOID__FLOAT : unsupported parameter closure : type Closure, GClosure*
 
-// CclosureMarshalVoidInt is a wrapper around the C function g_cclosure_marshal_VOID__INT.
-func CclosureMarshalVoidInt(closure int, returnValue int, nParamValues int, paramValues int, invocationHint int, marshalData int) {
-}
+// Unsupported function: g_cclosure_marshal_VOID__INT : unsupported parameter closure : type Closure, GClosure*
 
-// CclosureMarshalVoidLong is a wrapper around the C function g_cclosure_marshal_VOID__LONG.
-func CclosureMarshalVoidLong(closure int, returnValue int, nParamValues int, paramValues int, invocationHint int, marshalData int) {
-}
+// Unsupported function: g_cclosure_marshal_VOID__LONG : unsupported parameter closure : type Closure, GClosure*
 
-// CclosureMarshalVoidObject is a wrapper around the C function g_cclosure_marshal_VOID__OBJECT.
-func CclosureMarshalVoidObject(closure int, returnValue int, nParamValues int, paramValues int, invocationHint int, marshalData int) {
-}
+// Unsupported function: g_cclosure_marshal_VOID__OBJECT : unsupported parameter closure : type Closure, GClosure*
 
-// CclosureMarshalVoidParam is a wrapper around the C function g_cclosure_marshal_VOID__PARAM.
-func CclosureMarshalVoidParam(closure int, returnValue int, nParamValues int, paramValues int, invocationHint int, marshalData int) {
-}
+// Unsupported function: g_cclosure_marshal_VOID__PARAM : unsupported parameter closure : type Closure, GClosure*
 
-// CclosureMarshalVoidPointer is a wrapper around the C function g_cclosure_marshal_VOID__POINTER.
-func CclosureMarshalVoidPointer(closure int, returnValue int, nParamValues int, paramValues int, invocationHint int, marshalData int) {
-}
+// Unsupported function: g_cclosure_marshal_VOID__POINTER : unsupported parameter closure : type Closure, GClosure*
 
-// CclosureMarshalVoidString is a wrapper around the C function g_cclosure_marshal_VOID__STRING.
-func CclosureMarshalVoidString(closure int, returnValue int, nParamValues int, paramValues int, invocationHint int, marshalData int) {
-}
+// Unsupported function: g_cclosure_marshal_VOID__STRING : unsupported parameter closure : type Closure, GClosure*
 
-// CclosureMarshalVoidUchar is a wrapper around the C function g_cclosure_marshal_VOID__UCHAR.
-func CclosureMarshalVoidUchar(closure int, returnValue int, nParamValues int, paramValues int, invocationHint int, marshalData int) {
-}
+// Unsupported function: g_cclosure_marshal_VOID__UCHAR : unsupported parameter closure : type Closure, GClosure*
 
-// CclosureMarshalVoidUint is a wrapper around the C function g_cclosure_marshal_VOID__UINT.
-func CclosureMarshalVoidUint(closure int, returnValue int, nParamValues int, paramValues int, invocationHint int, marshalData int) {
-}
+// Unsupported function: g_cclosure_marshal_VOID__UINT : unsupported parameter closure : type Closure, GClosure*
 
-// CclosureMarshalVoidUintPointer is a wrapper around the C function g_cclosure_marshal_VOID__UINT_POINTER.
-func CclosureMarshalVoidUintPointer(closure int, returnValue int, nParamValues int, paramValues int, invocationHint int, marshalData int) {
-}
+// Unsupported function: g_cclosure_marshal_VOID__UINT_POINTER : unsupported parameter closure : type Closure, GClosure*
 
-// CclosureMarshalVoidUlong is a wrapper around the C function g_cclosure_marshal_VOID__ULONG.
-func CclosureMarshalVoidUlong(closure int, returnValue int, nParamValues int, paramValues int, invocationHint int, marshalData int) {
-}
+// Unsupported function: g_cclosure_marshal_VOID__ULONG : unsupported parameter closure : type Closure, GClosure*
 
-// CclosureMarshalVoidVariant is a wrapper around the C function g_cclosure_marshal_VOID__VARIANT.
-func CclosureMarshalVoidVariant(closure int, returnValue int, nParamValues int, paramValues int, invocationHint int, marshalData int) {
-}
+// Unsupported function: g_cclosure_marshal_VOID__VARIANT : unsupported parameter closure : type Closure, GClosure*
 
-// CclosureMarshalVoidVoid is a wrapper around the C function g_cclosure_marshal_VOID__VOID.
-func CclosureMarshalVoidVoid(closure int, returnValue int, nParamValues int, paramValues int, invocationHint int, marshalData int) {
-}
+// Unsupported function: g_cclosure_marshal_VOID__VOID : unsupported parameter closure : type Closure, GClosure*
 
 // Blacklisted function: g_cclosure_new
 
-// CclosureNewObject is a wrapper around the C function g_cclosure_new_object.
-func CclosureNewObject(callbackFunc int, object int) {}
+// Unsupported function: g_cclosure_new_object : unsupported parameter callback_func : type Callback, GCallback
 
-// CclosureNewObjectSwap is a wrapper around the C function g_cclosure_new_object_swap.
-func CclosureNewObjectSwap(callbackFunc int, object int) {}
+// Unsupported function: g_cclosure_new_object_swap : unsupported parameter callback_func : type Callback, GCallback
 
 // Blacklisted function: g_cclosure_new_swap
 
-// EnumCompleteTypeInfo is a wrapper around the C function g_enum_complete_type_info.
-func EnumCompleteTypeInfo(gEnumType int, info int, constValues int) {}
+// Unsupported function: g_enum_complete_type_info : unsupported parameter g_enum_type : type GType, GType
 
-// EnumGetValue is a wrapper around the C function g_enum_get_value.
-func EnumGetValue(enumClass int, value int) {}
+// Unsupported function: g_enum_get_value : unsupported parameter enum_class : type EnumClass, GEnumClass*
 
-// EnumGetValueByName is a wrapper around the C function g_enum_get_value_by_name.
-func EnumGetValueByName(enumClass int, name int) {}
+// Unsupported function: g_enum_get_value_by_name : unsupported parameter enum_class : type EnumClass, GEnumClass*
 
-// EnumGetValueByNick is a wrapper around the C function g_enum_get_value_by_nick.
-func EnumGetValueByNick(enumClass int, nick int) {}
+// Unsupported function: g_enum_get_value_by_nick : unsupported parameter enum_class : type EnumClass, GEnumClass*
 
-// EnumRegisterStatic is a wrapper around the C function g_enum_register_static.
-func EnumRegisterStatic(name int, constStaticValues int) {}
+// Unsupported function: g_enum_register_static : unsupported parameter const_static_values : type EnumValue, const GEnumValue*
 
-// FlagsCompleteTypeInfo is a wrapper around the C function g_flags_complete_type_info.
-func FlagsCompleteTypeInfo(gFlagsType int, info int, constValues int) {}
+// Unsupported function: g_flags_complete_type_info : unsupported parameter g_flags_type : type GType, GType
 
-// FlagsGetFirstValue is a wrapper around the C function g_flags_get_first_value.
-func FlagsGetFirstValue(flagsClass int, value int) {}
+// Unsupported function: g_flags_get_first_value : unsupported parameter flags_class : type FlagsClass, GFlagsClass*
 
-// FlagsGetValueByName is a wrapper around the C function g_flags_get_value_by_name.
-func FlagsGetValueByName(flagsClass int, name int) {}
+// Unsupported function: g_flags_get_value_by_name : unsupported parameter flags_class : type FlagsClass, GFlagsClass*
 
-// FlagsGetValueByNick is a wrapper around the C function g_flags_get_value_by_nick.
-func FlagsGetValueByNick(flagsClass int, nick int) {}
+// Unsupported function: g_flags_get_value_by_nick : unsupported parameter flags_class : type FlagsClass, GFlagsClass*
 
-// FlagsRegisterStatic is a wrapper around the C function g_flags_register_static.
-func FlagsRegisterStatic(name int, constStaticValues int) {}
+// Unsupported function: g_flags_register_static : unsupported parameter const_static_values : type FlagsValue, const GFlagsValue*
 
 // GtypeGetType is a wrapper around the C function g_gtype_get_type.
 func GtypeGetType() {}
 
-// ParamSpecBoolean is a wrapper around the C function g_param_spec_boolean.
-func ParamSpecBoolean(name int, nick int, blurb int, defaultValue int, flags int) {}
+// Unsupported function: g_param_spec_boolean : unsupported parameter default_value : type gboolean, gboolean
 
-// ParamSpecBoxed is a wrapper around the C function g_param_spec_boxed.
-func ParamSpecBoxed(name int, nick int, blurb int, boxedType int, flags int) {}
+// Unsupported function: g_param_spec_boxed : unsupported parameter boxed_type : type GType, GType
 
-// ParamSpecChar is a wrapper around the C function g_param_spec_char.
-func ParamSpecChar(name int, nick int, blurb int, minimum int, maximum int, defaultValue int, flags int) {}
+// Unsupported function: g_param_spec_char : unsupported parameter flags : type ParamFlags, GParamFlags
 
-// ParamSpecDouble is a wrapper around the C function g_param_spec_double.
-func ParamSpecDouble(name int, nick int, blurb int, minimum int, maximum int, defaultValue int, flags int) {
-}
+// Unsupported function: g_param_spec_double : unsupported parameter flags : type ParamFlags, GParamFlags
 
-// ParamSpecEnum is a wrapper around the C function g_param_spec_enum.
-func ParamSpecEnum(name int, nick int, blurb int, enumType int, defaultValue int, flags int) {}
+// Unsupported function: g_param_spec_enum : unsupported parameter enum_type : type GType, GType
 
-// ParamSpecFlags is a wrapper around the C function g_param_spec_flags.
-func ParamSpecFlags(name int, nick int, blurb int, flagsType int, defaultValue int, flags int) {}
+// Unsupported function: g_param_spec_flags : unsupported parameter flags_type : type GType, GType
 
-// ParamSpecFloat is a wrapper around the C function g_param_spec_float.
-func ParamSpecFloat(name int, nick int, blurb int, minimum int, maximum int, defaultValue int, flags int) {}
+// Unsupported function: g_param_spec_float : unsupported parameter flags : type ParamFlags, GParamFlags
 
-// ParamSpecInt is a wrapper around the C function g_param_spec_int.
-func ParamSpecInt(name int, nick int, blurb int, minimum int, maximum int, defaultValue int, flags int) {}
+// Unsupported function: g_param_spec_int : unsupported parameter flags : type ParamFlags, GParamFlags
 
-// ParamSpecInt64 is a wrapper around the C function g_param_spec_int64.
-func ParamSpecInt64(name int, nick int, blurb int, minimum int, maximum int, defaultValue int, flags int) {}
+// Unsupported function: g_param_spec_int64 : unsupported parameter flags : type ParamFlags, GParamFlags
 
-// ParamSpecLong is a wrapper around the C function g_param_spec_long.
-func ParamSpecLong(name int, nick int, blurb int, minimum int, maximum int, defaultValue int, flags int) {}
+// Unsupported function: g_param_spec_long : unsupported parameter flags : type ParamFlags, GParamFlags
 
-// ParamSpecObject is a wrapper around the C function g_param_spec_object.
-func ParamSpecObject(name int, nick int, blurb int, objectType int, flags int) {}
+// Unsupported function: g_param_spec_object : unsupported parameter object_type : type GType, GType
 
-// ParamSpecParam is a wrapper around the C function g_param_spec_param.
-func ParamSpecParam(name int, nick int, blurb int, paramType int, flags int) {}
+// Unsupported function: g_param_spec_param : unsupported parameter param_type : type GType, GType
 
-// ParamSpecPointer is a wrapper around the C function g_param_spec_pointer.
-func ParamSpecPointer(name int, nick int, blurb int, flags int) {}
+// Unsupported function: g_param_spec_pointer : unsupported parameter flags : type ParamFlags, GParamFlags
 
-// ParamSpecPoolNew is a wrapper around the C function g_param_spec_pool_new.
-func ParamSpecPoolNew(typePrefixing int) {}
+// Unsupported function: g_param_spec_pool_new : unsupported parameter type_prefixing : type gboolean, gboolean
 
-// ParamSpecString is a wrapper around the C function g_param_spec_string.
-func ParamSpecString(name int, nick int, blurb int, defaultValue int, flags int) {}
+// Unsupported function: g_param_spec_string : unsupported parameter flags : type ParamFlags, GParamFlags
 
-// ParamSpecUchar is a wrapper around the C function g_param_spec_uchar.
-func ParamSpecUchar(name int, nick int, blurb int, minimum int, maximum int, defaultValue int, flags int) {}
+// Unsupported function: g_param_spec_uchar : unsupported parameter flags : type ParamFlags, GParamFlags
 
-// ParamSpecUint is a wrapper around the C function g_param_spec_uint.
-func ParamSpecUint(name int, nick int, blurb int, minimum int, maximum int, defaultValue int, flags int) {}
+// Unsupported function: g_param_spec_uint : unsupported parameter flags : type ParamFlags, GParamFlags
 
-// ParamSpecUint64 is a wrapper around the C function g_param_spec_uint64.
-func ParamSpecUint64(name int, nick int, blurb int, minimum int, maximum int, defaultValue int, flags int) {
-}
+// Unsupported function: g_param_spec_uint64 : unsupported parameter flags : type ParamFlags, GParamFlags
 
-// ParamSpecUlong is a wrapper around the C function g_param_spec_ulong.
-func ParamSpecUlong(name int, nick int, blurb int, minimum int, maximum int, defaultValue int, flags int) {}
+// Unsupported function: g_param_spec_ulong : unsupported parameter flags : type ParamFlags, GParamFlags
 
-// ParamSpecUnichar is a wrapper around the C function g_param_spec_unichar.
-func ParamSpecUnichar(name int, nick int, blurb int, defaultValue int, flags int) {}
+// Unsupported function: g_param_spec_unichar : unsupported parameter flags : type ParamFlags, GParamFlags
 
-// ParamSpecValueArray is a wrapper around the C function g_param_spec_value_array.
-func ParamSpecValueArray(name int, nick int, blurb int, elementSpec int, flags int) {}
+// Unsupported function: g_param_spec_value_array : unsupported parameter element_spec : type ParamSpec, GParamSpec*
 
-// ParamTypeRegisterStatic is a wrapper around the C function g_param_type_register_static.
-func ParamTypeRegisterStatic(name int, pspecInfo int) {}
+// Unsupported function: g_param_type_register_static : unsupported parameter pspec_info : type ParamSpecTypeInfo, const GParamSpecTypeInfo*
 
-// ParamValueConvert is a wrapper around the C function g_param_value_convert.
-func ParamValueConvert(pspec int, srcValue int, destValue int, strictValidation int) {}
+// Unsupported function: g_param_value_convert : unsupported parameter pspec : type ParamSpec, GParamSpec*
 
-// ParamValueDefaults is a wrapper around the C function g_param_value_defaults.
-func ParamValueDefaults(pspec int, value int) {}
+// Unsupported function: g_param_value_defaults : unsupported parameter pspec : type ParamSpec, GParamSpec*
 
-// ParamValueSetDefault is a wrapper around the C function g_param_value_set_default.
-func ParamValueSetDefault(pspec int, value int) {}
+// Unsupported function: g_param_value_set_default : unsupported parameter pspec : type ParamSpec, GParamSpec*
 
-// ParamValueValidate is a wrapper around the C function g_param_value_validate.
-func ParamValueValidate(pspec int, value int) {}
+// Unsupported function: g_param_value_validate : unsupported parameter pspec : type ParamSpec, GParamSpec*
 
-// ParamValuesCmp is a wrapper around the C function g_param_values_cmp.
-func ParamValuesCmp(pspec int, value1 int, value2 int) {}
+// Unsupported function: g_param_values_cmp : unsupported parameter pspec : type ParamSpec, GParamSpec*
 
 // PointerTypeRegisterStatic is a wrapper around the C function g_pointer_type_register_static.
-func PointerTypeRegisterStatic(name int) {}
+func PointerTypeRegisterStatic(name string) {}
 
-// SignalAddEmissionHook is a wrapper around the C function g_signal_add_emission_hook.
-func SignalAddEmissionHook(signalId int, detail int, hookFunc int, hookData int, dataDestroy int) {}
+// Unsupported function: g_signal_add_emission_hook : unsupported parameter detail : type GLib.Quark, GQuark
 
-// SignalChainFromOverridden is a wrapper around the C function g_signal_chain_from_overridden.
-func SignalChainFromOverridden(instanceAndParams int, returnValue int) {}
+// Unsupported function: g_signal_chain_from_overridden : unsupported parameter instance_and_params : no type
 
-// SignalConnectClosure is a wrapper around the C function g_signal_connect_closure.
-func SignalConnectClosure(instance int, detailedSignal int, closure int, after int) {}
+// Unsupported function: g_signal_connect_closure : unsupported parameter closure : type Closure, GClosure*
 
-// SignalConnectClosureById is a wrapper around the C function g_signal_connect_closure_by_id.
-func SignalConnectClosureById(instance int, signalId int, detail int, closure int, after int) {}
+// Unsupported function: g_signal_connect_closure_by_id : unsupported parameter detail : type GLib.Quark, GQuark
 
-// SignalConnectData is a wrapper around the C function g_signal_connect_data.
-func SignalConnectData(instance int, detailedSignal int, cHandler int, data int, destroyData int, connectFlags int) {
-}
+// Unsupported function: g_signal_connect_data : unsupported parameter c_handler : type Callback, GCallback
 
-// SignalConnectObject is a wrapper around the C function g_signal_connect_object.
-func SignalConnectObject(instance int, detailedSignal int, cHandler int, gobject int, connectFlags int) {}
+// Unsupported function: g_signal_connect_object : unsupported parameter c_handler : type Callback, GCallback
 
-// Unsupported function: g_signal_emit : unsupported parameter ... : varargs
+// Unsupported function: g_signal_emit : unsupported parameter detail : type GLib.Quark, GQuark
 
 // Unsupported function: g_signal_emit_by_name : unsupported parameter ... : varargs
 
-// SignalEmitValist is a wrapper around the C function g_signal_emit_valist.
-func SignalEmitValist(instance int, signalId int, detail int, varArgs int) {}
+// Unsupported function: g_signal_emit_valist : unsupported parameter detail : type GLib.Quark, GQuark
 
-// SignalEmitv is a wrapper around the C function g_signal_emitv.
-func SignalEmitv(instanceAndParams int, signalId int, detail int, returnValue int) {}
+// Unsupported function: g_signal_emitv : unsupported parameter instance_and_params : no type
 
 // SignalGetInvocationHint is a wrapper around the C function g_signal_get_invocation_hint.
-func SignalGetInvocationHint(instance int) {}
+func SignalGetInvocationHint(instance uintptr) {}
 
 // SignalHandlerBlock is a wrapper around the C function g_signal_handler_block.
-func SignalHandlerBlock(instance int, handlerId int) {}
+func SignalHandlerBlock(instance uintptr, handlerId uint64) {}
 
 // SignalHandlerDisconnect is a wrapper around the C function g_signal_handler_disconnect.
-func SignalHandlerDisconnect(instance int, handlerId int) {}
+func SignalHandlerDisconnect(instance uintptr, handlerId uint64) {}
 
-// SignalHandlerFind is a wrapper around the C function g_signal_handler_find.
-func SignalHandlerFind(instance int, mask int, signalId int, detail int, closure int, func_ int, data int) {
-}
+// Unsupported function: g_signal_handler_find : unsupported parameter mask : type SignalMatchType, GSignalMatchType
 
 // SignalHandlerIsConnected is a wrapper around the C function g_signal_handler_is_connected.
-func SignalHandlerIsConnected(instance int, handlerId int) {}
+func SignalHandlerIsConnected(instance uintptr, handlerId uint64) {}
 
 // SignalHandlerUnblock is a wrapper around the C function g_signal_handler_unblock.
-func SignalHandlerUnblock(instance int, handlerId int) {}
+func SignalHandlerUnblock(instance uintptr, handlerId uint64) {}
 
-// SignalHandlersBlockMatched is a wrapper around the C function g_signal_handlers_block_matched.
-func SignalHandlersBlockMatched(instance int, mask int, signalId int, detail int, closure int, func_ int, data int) {
-}
+// Unsupported function: g_signal_handlers_block_matched : unsupported parameter mask : type SignalMatchType, GSignalMatchType
 
 // SignalHandlersDestroy is a wrapper around the C function g_signal_handlers_destroy.
-func SignalHandlersDestroy(instance int) {}
+func SignalHandlersDestroy(instance uintptr) {}
 
-// SignalHandlersDisconnectMatched is a wrapper around the C function g_signal_handlers_disconnect_matched.
-func SignalHandlersDisconnectMatched(instance int, mask int, signalId int, detail int, closure int, func_ int, data int) {
-}
+// Unsupported function: g_signal_handlers_disconnect_matched : unsupported parameter mask : type SignalMatchType, GSignalMatchType
 
-// SignalHandlersUnblockMatched is a wrapper around the C function g_signal_handlers_unblock_matched.
-func SignalHandlersUnblockMatched(instance int, mask int, signalId int, detail int, closure int, func_ int, data int) {
-}
+// Unsupported function: g_signal_handlers_unblock_matched : unsupported parameter mask : type SignalMatchType, GSignalMatchType
 
-// SignalHasHandlerPending is a wrapper around the C function g_signal_has_handler_pending.
-func SignalHasHandlerPending(instance int, signalId int, detail int, mayBeBlocked int) {}
+// Unsupported function: g_signal_has_handler_pending : unsupported parameter detail : type GLib.Quark, GQuark
 
-// SignalListIds is a wrapper around the C function g_signal_list_ids.
-func SignalListIds(itype int, nIds int) {}
+// Unsupported function: g_signal_list_ids : unsupported parameter itype : type GType, GType
 
-// SignalLookup is a wrapper around the C function g_signal_lookup.
-func SignalLookup(name int, itype int) {}
+// Unsupported function: g_signal_lookup : unsupported parameter itype : type GType, GType
 
 // SignalName is a wrapper around the C function g_signal_name.
-func SignalName(signalId int) {}
+func SignalName(signalId uint32) {}
 
-// Unsupported function: g_signal_new : unsupported parameter ... : varargs
+// Unsupported function: g_signal_new : unsupported parameter itype : type GType, GType
 
-// SignalNewValist is a wrapper around the C function g_signal_new_valist.
-func SignalNewValist(signalName int, itype int, signalFlags int, classClosure int, accumulator int, accuData int, cMarshaller int, returnType int, nParams int, args int) {
-}
+// Unsupported function: g_signal_new_valist : unsupported parameter itype : type GType, GType
 
-// SignalNewv is a wrapper around the C function g_signal_newv.
-func SignalNewv(signalName int, itype int, signalFlags int, classClosure int, accumulator int, accuData int, cMarshaller int, returnType int, nParams int, paramTypes int) {
-}
+// Unsupported function: g_signal_newv : unsupported parameter itype : type GType, GType
 
-// SignalOverrideClassClosure is a wrapper around the C function g_signal_override_class_closure.
-func SignalOverrideClassClosure(signalId int, instanceType int, classClosure int) {}
+// Unsupported function: g_signal_override_class_closure : unsupported parameter instance_type : type GType, GType
 
-// SignalParseName is a wrapper around the C function g_signal_parse_name.
-func SignalParseName(detailedSignal int, itype int, signalIdP int, detailP int, forceDetailQuark int) {}
+// Unsupported function: g_signal_parse_name : unsupported parameter itype : type GType, GType
 
-// SignalQuery is a wrapper around the C function g_signal_query.
-func SignalQuery(signalId int, query int) {}
+// Unsupported function: g_signal_query : unsupported parameter query : type SignalQuery, GSignalQuery*
 
 // SignalRemoveEmissionHook is a wrapper around the C function g_signal_remove_emission_hook.
-func SignalRemoveEmissionHook(signalId int, hookId int) {}
+func SignalRemoveEmissionHook(signalId uint32, hookId uint64) {}
 
-// SignalStopEmission is a wrapper around the C function g_signal_stop_emission.
-func SignalStopEmission(instance int, signalId int, detail int) {}
+// Unsupported function: g_signal_stop_emission : unsupported parameter detail : type GLib.Quark, GQuark
 
 // SignalStopEmissionByName is a wrapper around the C function g_signal_stop_emission_by_name.
-func SignalStopEmissionByName(instance int, detailedSignal int) {}
+func SignalStopEmissionByName(instance uintptr, detailedSignal string) {}
 
-// SignalTypeCclosureNew is a wrapper around the C function g_signal_type_cclosure_new.
-func SignalTypeCclosureNew(itype int, structOffset int) {}
+// Unsupported function: g_signal_type_cclosure_new : unsupported parameter itype : type GType, GType
 
-// SourceSetClosure is a wrapper around the C function g_source_set_closure.
-func SourceSetClosure(source int, closure int) {}
+// Unsupported function: g_source_set_closure : unsupported parameter source : type GLib.Source, GSource*
 
-// SourceSetDummyCallback is a wrapper around the C function g_source_set_dummy_callback.
-func SourceSetDummyCallback(source int) {}
+// Unsupported function: g_source_set_dummy_callback : unsupported parameter source : type GLib.Source, GSource*
 
-// StrdupValueContents is a wrapper around the C function g_strdup_value_contents.
-func StrdupValueContents(value int) {}
+// Unsupported function: g_strdup_value_contents : unsupported parameter value : type Value, const GValue*
 
 // Blacklisted function: g_type_add_class_cache_func
 
-// TypeAddInstancePrivate is a wrapper around the C function g_type_add_instance_private.
-func TypeAddInstancePrivate(classType int, privateSize int) {}
+// Unsupported function: g_type_add_instance_private : unsupported parameter class_type : type GType, GType
 
-// TypeAddInterfaceDynamic is a wrapper around the C function g_type_add_interface_dynamic.
-func TypeAddInterfaceDynamic(instanceType int, interfaceType int, plugin int) {}
+// Unsupported function: g_type_add_interface_dynamic : unsupported parameter instance_type : type GType, GType
 
-// TypeAddInterfaceStatic is a wrapper around the C function g_type_add_interface_static.
-func TypeAddInterfaceStatic(instanceType int, interfaceType int, info int) {}
+// Unsupported function: g_type_add_interface_static : unsupported parameter instance_type : type GType, GType
 
-// TypeCheckClassCast is a wrapper around the C function g_type_check_class_cast.
-func TypeCheckClassCast(gClass int, isAType int) {}
+// Unsupported function: g_type_check_class_cast : unsupported parameter g_class : type TypeClass, GTypeClass*
 
-// TypeCheckClassIsA is a wrapper around the C function g_type_check_class_is_a.
-func TypeCheckClassIsA(gClass int, isAType int) {}
+// Unsupported function: g_type_check_class_is_a : unsupported parameter g_class : type TypeClass, GTypeClass*
 
-// TypeCheckInstance is a wrapper around the C function g_type_check_instance.
-func TypeCheckInstance(instance int) {}
+// Unsupported function: g_type_check_instance : unsupported parameter instance : type TypeInstance, GTypeInstance*
 
-// TypeCheckInstanceCast is a wrapper around the C function g_type_check_instance_cast.
-func TypeCheckInstanceCast(instance int, ifaceType int) {}
+// Unsupported function: g_type_check_instance_cast : unsupported parameter instance : type TypeInstance, GTypeInstance*
 
-// TypeCheckInstanceIsA is a wrapper around the C function g_type_check_instance_is_a.
-func TypeCheckInstanceIsA(instance int, ifaceType int) {}
+// Unsupported function: g_type_check_instance_is_a : unsupported parameter instance : type TypeInstance, GTypeInstance*
 
-// TypeCheckInstanceIsFundamentallyA is a wrapper around the C function g_type_check_instance_is_fundamentally_a.
-func TypeCheckInstanceIsFundamentallyA(instance int, fundamentalType int) {}
+// Unsupported function: g_type_check_instance_is_fundamentally_a : unsupported parameter instance : type TypeInstance, GTypeInstance*
 
-// TypeCheckIsValueType is a wrapper around the C function g_type_check_is_value_type.
-func TypeCheckIsValueType(type_ int) {}
+// Unsupported function: g_type_check_is_value_type : unsupported parameter type : type GType, GType
 
-// TypeCheckValue is a wrapper around the C function g_type_check_value.
-func TypeCheckValue(value int) {}
+// Unsupported function: g_type_check_value : unsupported parameter value : type Value, const GValue*
 
-// TypeCheckValueHolds is a wrapper around the C function g_type_check_value_holds.
-func TypeCheckValueHolds(value int, type_ int) {}
+// Unsupported function: g_type_check_value_holds : unsupported parameter value : type Value, const GValue*
 
-// TypeChildren is a wrapper around the C function g_type_children.
-func TypeChildren(type_ int, nChildren int) {}
+// Unsupported function: g_type_children : unsupported parameter type : type GType, GType
 
-// TypeClassAdjustPrivateOffset is a wrapper around the C function g_type_class_adjust_private_offset.
-func TypeClassAdjustPrivateOffset(gClass int, privateSizeOrOffset int) {}
+// Unsupported function: g_type_class_adjust_private_offset : unsupported parameter private_size_or_offset : type gint, gint*
 
-// TypeClassPeek is a wrapper around the C function g_type_class_peek.
-func TypeClassPeek(type_ int) {}
+// Unsupported function: g_type_class_peek : unsupported parameter type : type GType, GType
 
-// TypeClassRef is a wrapper around the C function g_type_class_ref.
-func TypeClassRef(type_ int) {}
+// Unsupported function: g_type_class_ref : unsupported parameter type : type GType, GType
 
-// TypeCreateInstance is a wrapper around the C function g_type_create_instance.
-func TypeCreateInstance(type_ int) {}
+// Unsupported function: g_type_create_instance : unsupported parameter type : type GType, GType
 
-// TypeDepth is a wrapper around the C function g_type_depth.
-func TypeDepth(type_ int) {}
+// Unsupported function: g_type_depth : unsupported parameter type : type GType, GType
 
-// TypeFreeInstance is a wrapper around the C function g_type_free_instance.
-func TypeFreeInstance(instance int) {}
+// Unsupported function: g_type_free_instance : unsupported parameter instance : type TypeInstance, GTypeInstance*
 
 // TypeFromName is a wrapper around the C function g_type_from_name.
-func TypeFromName(name int) {}
+func TypeFromName(name string) {}
 
-// TypeFundamental is a wrapper around the C function g_type_fundamental.
-func TypeFundamental(typeId int) {}
+// Unsupported function: g_type_fundamental : unsupported parameter type_id : type GType, GType
 
 // TypeFundamentalNext is a wrapper around the C function g_type_fundamental_next.
 func TypeFundamentalNext() {}
 
-// TypeGetPlugin is a wrapper around the C function g_type_get_plugin.
-func TypeGetPlugin(type_ int) {}
+// Unsupported function: g_type_get_plugin : unsupported parameter type : type GType, GType
 
-// TypeGetQdata is a wrapper around the C function g_type_get_qdata.
-func TypeGetQdata(type_ int, quark int) {}
+// Unsupported function: g_type_get_qdata : unsupported parameter type : type GType, GType
 
 // TypeInit is a wrapper around the C function g_type_init.
 func TypeInit() {}
 
-// TypeInitWithDebugFlags is a wrapper around the C function g_type_init_with_debug_flags.
-func TypeInitWithDebugFlags(debugFlags int) {}
+// Unsupported function: g_type_init_with_debug_flags : unsupported parameter debug_flags : type TypeDebugFlags, GTypeDebugFlags
 
-// TypeInterfaceAddPrerequisite is a wrapper around the C function g_type_interface_add_prerequisite.
-func TypeInterfaceAddPrerequisite(interfaceType int, prerequisiteType int) {}
+// Unsupported function: g_type_interface_add_prerequisite : unsupported parameter interface_type : type GType, GType
 
-// TypeInterfaceGetPlugin is a wrapper around the C function g_type_interface_get_plugin.
-func TypeInterfaceGetPlugin(instanceType int, interfaceType int) {}
+// Unsupported function: g_type_interface_get_plugin : unsupported parameter instance_type : type GType, GType
 
-// TypeInterfacePeek is a wrapper around the C function g_type_interface_peek.
-func TypeInterfacePeek(instanceClass int, ifaceType int) {}
+// Unsupported function: g_type_interface_peek : unsupported parameter iface_type : type GType, GType
 
-// TypeInterfaces is a wrapper around the C function g_type_interfaces.
-func TypeInterfaces(type_ int, nInterfaces int) {}
+// Unsupported function: g_type_interfaces : unsupported parameter type : type GType, GType
 
-// TypeIsA is a wrapper around the C function g_type_is_a.
-func TypeIsA(type_ int, isAType int) {}
+// Unsupported function: g_type_is_a : unsupported parameter type : type GType, GType
 
-// TypeName is a wrapper around the C function g_type_name.
-func TypeName(type_ int) {}
+// Unsupported function: g_type_name : unsupported parameter type : type GType, GType
 
-// TypeNameFromClass is a wrapper around the C function g_type_name_from_class.
-func TypeNameFromClass(gClass int) {}
+// Unsupported function: g_type_name_from_class : unsupported parameter g_class : type TypeClass, GTypeClass*
 
-// TypeNameFromInstance is a wrapper around the C function g_type_name_from_instance.
-func TypeNameFromInstance(instance int) {}
+// Unsupported function: g_type_name_from_instance : unsupported parameter instance : type TypeInstance, GTypeInstance*
 
-// TypeNextBase is a wrapper around the C function g_type_next_base.
-func TypeNextBase(leafType int, rootType int) {}
+// Unsupported function: g_type_next_base : unsupported parameter leaf_type : type GType, GType
 
-// TypeParent is a wrapper around the C function g_type_parent.
-func TypeParent(type_ int) {}
+// Unsupported function: g_type_parent : unsupported parameter type : type GType, GType
 
-// TypeQname is a wrapper around the C function g_type_qname.
-func TypeQname(type_ int) {}
+// Unsupported function: g_type_qname : unsupported parameter type : type GType, GType
 
-// TypeQuery is a wrapper around the C function g_type_query.
-func TypeQuery(type_ int, query int) {}
+// Unsupported function: g_type_query : unsupported parameter type : type GType, GType
 
-// TypeRegisterDynamic is a wrapper around the C function g_type_register_dynamic.
-func TypeRegisterDynamic(parentType int, typeName int, plugin int, flags int) {}
+// Unsupported function: g_type_register_dynamic : unsupported parameter parent_type : type GType, GType
 
-// TypeRegisterFundamental is a wrapper around the C function g_type_register_fundamental.
-func TypeRegisterFundamental(typeId int, typeName int, info int, finfo int, flags int) {}
+// Unsupported function: g_type_register_fundamental : unsupported parameter type_id : type GType, GType
 
-// TypeRegisterStatic is a wrapper around the C function g_type_register_static.
-func TypeRegisterStatic(parentType int, typeName int, info int, flags int) {}
+// Unsupported function: g_type_register_static : unsupported parameter parent_type : type GType, GType
 
 // Blacklisted function: g_type_remove_class_cache_func
 
-// TypeSetQdata is a wrapper around the C function g_type_set_qdata.
-func TypeSetQdata(type_ int, quark int, data int) {}
+// Unsupported function: g_type_set_qdata : unsupported parameter type : type GType, GType
 
-// TypeTestFlags is a wrapper around the C function g_type_test_flags.
-func TypeTestFlags(type_ int, flags int) {}
+// Unsupported function: g_type_test_flags : unsupported parameter type : type GType, GType
 
-// TypeValueTablePeek is a wrapper around the C function g_type_value_table_peek.
-func TypeValueTablePeek(type_ int) {}
+// Unsupported function: g_type_value_table_peek : unsupported parameter type : type GType, GType
 
-// ValueRegisterTransformFunc is a wrapper around the C function g_value_register_transform_func.
-func ValueRegisterTransformFunc(srcType int, destType int, transformFunc int) {}
+// Unsupported function: g_value_register_transform_func : unsupported parameter src_type : type GType, GType
 
-// ValueTypeCompatible is a wrapper around the C function g_value_type_compatible.
-func ValueTypeCompatible(srcType int, destType int) {}
+// Unsupported function: g_value_type_compatible : unsupported parameter src_type : type GType, GType
 
-// ValueTypeTransformable is a wrapper around the C function g_value_type_transformable.
-func ValueTypeTransformable(srcType int, destType int) {}
+// Unsupported function: g_value_type_transformable : unsupported parameter src_type : type GType, GType

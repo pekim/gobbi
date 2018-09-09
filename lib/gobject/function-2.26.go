@@ -6,5 +6,4 @@ package gobject
 // #include <stdlib.h>
 import "C"
 
-// ParamSpecVariant is a wrapper around the C function g_param_spec_variant.
-func ParamSpecVariant(name int, nick int, blurb int, type_ int, defaultValue int, flags int) {}
+// Unsupported function: g_param_spec_variant : unsupported parameter type : type GLib.VariantType, const GVariantType*

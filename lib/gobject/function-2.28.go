@@ -6,8 +6,6 @@ package gobject
 // #include <stdlib.h>
 import "C"
 
-// ClearObject is a wrapper around the C function g_clear_object.
-func ClearObject(objectPtr int) {}
+// Unsupported function: g_clear_object : unsupported parameter object_ptr : type Object, volatile GObject**
 
-// SignalAccumulatorFirstWins is a wrapper around the C function g_signal_accumulator_first_wins.
-func SignalAccumulatorFirstWins(ihint int, returnAccu int, handlerReturn int, dummy int) {}
+// Unsupported function: g_signal_accumulator_first_wins : unsupported parameter ihint : type SignalInvocationHint, GSignalInvocationHint*
