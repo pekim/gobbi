@@ -63,4 +63,5 @@ func (ns *Namespace) generate() {
 	ns.generatePackageFile()
 	ns.generateGeneratables("alias", ns.Aliases)
 	ns.generateGeneratables("bitfield", ns.Bitfields)
+	ns.generateGeneratables("enum", ns.Enumerations)
 }
