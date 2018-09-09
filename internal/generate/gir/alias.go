@@ -33,7 +33,7 @@ func (a Alias) generate(g *jen.Group) {
 	g.
 		Type().
 		Id(a.Name).
-		Qual("C", a.CType)
+		Id(a.Type.Name)
 
 	g.Line()
 }

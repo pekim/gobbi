@@ -15,7 +15,7 @@ func (aa Aliases) versionList() Versions {
 }
 
 func (aa Aliases) generate(file *jen.File) {
-	for _, alias := range aa {
-		alias.generate(file.Group)
-	}
+	// for _, alias := range aa {
+	// 	alias.generate(file.Group)
+	// }
 }
