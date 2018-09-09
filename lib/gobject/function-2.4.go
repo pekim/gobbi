@@ -6,18 +6,26 @@ package gobject
 // #include <stdlib.h>
 import "C"
 
-func ParamSpecOverride() {}
+// ParamSpecOverride is a wrapper around the C function g_param_spec_override.
+func ParamSpecOverride(name int, overridden int) {}
 
-func SignalAccumulatorTrueHandled() {}
+// SignalAccumulatorTrueHandled is a wrapper around the C function g_signal_accumulator_true_handled.
+func SignalAccumulatorTrueHandled(ihint int, returnAccu int, handlerReturn int, dummy int) {}
 
-func TypeAddInterfaceCheck() {}
+// TypeAddInterfaceCheck is a wrapper around the C function g_type_add_interface_check.
+func TypeAddInterfaceCheck(checkData int, checkFunc int) {}
 
-func TypeClassPeekStatic() {}
+// TypeClassPeekStatic is a wrapper around the C function g_type_class_peek_static.
+func TypeClassPeekStatic(type_ int) {}
 
-func TypeDefaultInterfacePeek() {}
+// TypeDefaultInterfacePeek is a wrapper around the C function g_type_default_interface_peek.
+func TypeDefaultInterfacePeek(gType int) {}
 
-func TypeDefaultInterfaceRef() {}
+// TypeDefaultInterfaceRef is a wrapper around the C function g_type_default_interface_ref.
+func TypeDefaultInterfaceRef(gType int) {}
 
-func TypeDefaultInterfaceUnref() {}
+// TypeDefaultInterfaceUnref is a wrapper around the C function g_type_default_interface_unref.
+func TypeDefaultInterfaceUnref(gIface int) {}
 
-func TypeRemoveInterfaceCheck() {}
+// TypeRemoveInterfaceCheck is a wrapper around the C function g_type_remove_interface_check.
+func TypeRemoveInterfaceCheck(checkData int, checkFunc int) {}

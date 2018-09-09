@@ -6,4 +6,5 @@ package gobject
 // #include <stdlib.h>
 import "C"
 
-func SignalSetVaMarshaller() {}
+// SignalSetVaMarshaller is a wrapper around the C function g_signal_set_va_marshaller.
+func SignalSetVaMarshaller(signalId int, instanceType int, vaMarshaller int) {}

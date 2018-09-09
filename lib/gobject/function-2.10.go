@@ -6,4 +6,5 @@ package gobject
 // #include <stdlib.h>
 import "C"
 
-func ParamSpecGtype() {}
+// ParamSpecGtype is a wrapper around the C function g_param_spec_gtype.
+func ParamSpecGtype(name int, nick int, blurb int, isAType int, flags int) {}

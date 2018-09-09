@@ -6,4 +6,6 @@ package gobject
 // #include <stdlib.h>
 import "C"
 
-func TypeRegisterStaticSimple() {}
+// TypeRegisterStaticSimple is a wrapper around the C function g_type_register_static_simple.
+func TypeRegisterStaticSimple(parentType int, typeName int, classSize int, classInit int, instanceSize int, instanceInit int, flags int) {
+}

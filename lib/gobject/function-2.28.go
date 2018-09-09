@@ -6,6 +6,8 @@ package gobject
 // #include <stdlib.h>
 import "C"
 
-func ClearObject() {}
+// ClearObject is a wrapper around the C function g_clear_object.
+func ClearObject(objectPtr int) {}
 
-func SignalAccumulatorFirstWins() {}
+// SignalAccumulatorFirstWins is a wrapper around the C function g_signal_accumulator_first_wins.
+func SignalAccumulatorFirstWins(ihint int, returnAccu int, handlerReturn int, dummy int) {}

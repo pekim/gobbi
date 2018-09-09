@@ -6,4 +6,6 @@ package gobject
 // #include <stdlib.h>
 import "C"
 
-func CclosureMarshalGeneric() {}
+// CclosureMarshalGeneric is a wrapper around the C function g_cclosure_marshal_generic.
+func CclosureMarshalGeneric(closure int, returnGvalue int, nParamValues int, paramValues int, invocationHint int, marshalData int) {
+}

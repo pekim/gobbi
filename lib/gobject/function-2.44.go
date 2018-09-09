@@ -6,4 +6,5 @@ package gobject
 // #include <stdlib.h>
 import "C"
 
-func TypeGetInstanceCount() {}
+// TypeGetInstanceCount is a wrapper around the C function g_type_get_instance_count.
+func TypeGetInstanceCount(type_ int) {}

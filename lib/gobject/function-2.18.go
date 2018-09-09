@@ -6,8 +6,9 @@ package gobject
 // #include <stdlib.h>
 import "C"
 
-func SignalChainFromOverriddenHandler() {}
+// Unsupported function: g_signal_chain_from_overridden_handler : unsupported parameter ... : varargs
 
-func SignalNewClassHandler() {}
+// Unsupported function: g_signal_new_class_handler : unsupported parameter ... : varargs
 
-func SignalOverrideClassHandler() {}
+// SignalOverrideClassHandler is a wrapper around the C function g_signal_override_class_handler.
+func SignalOverrideClassHandler(signalName int, instanceType int, classHandler int) {}

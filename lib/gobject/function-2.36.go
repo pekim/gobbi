@@ -6,4 +6,5 @@ package gobject
 // #include <stdlib.h>
 import "C"
 
+// TypeGetTypeRegistrationSerial is a wrapper around the C function g_type_get_type_registration_serial.
 func TypeGetTypeRegistrationSerial() {}

@@ -6,4 +6,5 @@ package gobject
 // #include <stdlib.h>
 import "C"
 
-func ParamSpecVariant() {}
+// ParamSpecVariant is a wrapper around the C function g_param_spec_variant.
+func ParamSpecVariant(name int, nick int, blurb int, type_ int, defaultValue int, flags int) {}

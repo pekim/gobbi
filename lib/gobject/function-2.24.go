@@ -6,4 +6,5 @@ package gobject
 // #include <stdlib.h>
 import "C"
 
-func TypeAddClassPrivate() {}
+// TypeAddClassPrivate is a wrapper around the C function g_type_add_class_private.
+func TypeAddClassPrivate(classType int, privateSize int) {}

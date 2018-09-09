@@ -2,7 +2,6 @@ package gir
 
 import (
 	"github.com/dave/jennifer/jen"
-	"strings"
 )
 
 type Function struct {
@@ -25,7 +24,7 @@ type Function struct {
 
 func (f *Function) init(ns *Namespace) {
 	f.Namespace = ns
-	f.setGoName()
+	f.GoName = makeExportedGoName(f.Name)
 	f.Parameters.init(ns)
 
 	if f.ReturnValue != nil {
@@ -45,18 +44,6 @@ func (f *Function) mergeAddenda(addenda *Function) {
 	}
 }
 
-func (f *Function) setGoName() {
-	cParts := strings.Split(f.Name, "_")
-	goParts := []string{}
-
-	for _, cPart := range cParts {
-		goPart := strings.Title(strings.ToLower(cPart))
-		goParts = append(goParts, goPart)
-	}
-
-	f.GoName = strings.Join(goParts, "")
-}
-
 func (f *Function) generate(g *jen.Group, version *Version) {
 	if !supportedByVersion(f, version) {
 		return
@@ -68,11 +55,18 @@ func (f *Function) generate(g *jen.Group, version *Version) {
 		return
 	}
 
+	if supported, reason := f.Parameters.allSupported(); !supported {
+		g.Commentf("Unsupported function: %s : %s", f.CIdentifier, reason)
+		g.Line()
+		return
+	}
+
+	g.Commentf("%s is a wrapper around the C function %s.", f.GoName, f.CIdentifier)
+
 	g.
 		Func().
 		Id(f.GoName).
-		ParamsFunc(func(g *jen.Group) {
-		}).
+		ParamsFunc(f.Parameters.generateFunctionDeclaration).
 		BlockFunc(func(g *jen.Group) {
 		}).
 		Line()
