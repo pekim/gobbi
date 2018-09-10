@@ -2,46 +2,83 @@
 
 package glib
 
+import "unsafe"
+
 // #include <glib.h>
 // #include <stdlib.h>
 import "C"
 
 // CheckVersion is a wrapper around the C function glib_check_version.
-func CheckVersion(requiredMajor uint32, requiredMinor uint32, requiredMicro uint32) {}
+func CheckVersion(requiredMajor uint32, requiredMinor uint32, requiredMicro uint32) {
+	c_required_major := (C.guint)(requiredMajor)
+
+	c_required_minor := (C.guint)(requiredMinor)
+
+	c_required_micro := (C.guint)(requiredMicro)
+
+	C.glib_check_version()
+}
 
 // Unsupported : g_filename_display_basename : unsupported parameter filename : type filename, const gchar*
 
 // Unsupported : g_filename_display_name : unsupported parameter filename : type filename, const gchar*
 
 // GetFilenameCharsets is a wrapper around the C function g_get_filename_charsets.
-func GetFilenameCharsets(charsets string) {}
+func GetFilenameCharsets(charsets string) {
+	c_charsets := C.CString(charsets)
+	defer C.free(unsafe.Pointer(c_charsets))
+
+	C.g_get_filename_charsets()
+}
 
 // GetLanguageNames is a wrapper around the C function g_get_language_names.
-func GetLanguageNames() {}
+func GetLanguageNames() {
+	C.g_get_language_names()
+}
 
 // GetSystemConfigDirs is a wrapper around the C function g_get_system_config_dirs.
-func GetSystemConfigDirs() {}
+func GetSystemConfigDirs() {
+	C.g_get_system_config_dirs()
+}
 
 // GetSystemDataDirs is a wrapper around the C function g_get_system_data_dirs.
-func GetSystemDataDirs() {}
+func GetSystemDataDirs() {
+	C.g_get_system_data_dirs()
+}
 
 // GetUserCacheDir is a wrapper around the C function g_get_user_cache_dir.
-func GetUserCacheDir() {}
+func GetUserCacheDir() {
+	C.g_get_user_cache_dir()
+}
 
 // GetUserConfigDir is a wrapper around the C function g_get_user_config_dir.
-func GetUserConfigDir() {}
+func GetUserConfigDir() {
+	C.g_get_user_config_dir()
+}
 
 // GetUserDataDir is a wrapper around the C function g_get_user_data_dir.
-func GetUserDataDir() {}
+func GetUserDataDir() {
+	C.g_get_user_data_dir()
+}
 
 // Unsupported : g_log_set_default_handler : unsupported parameter log_func : type LogFunc, GLogFunc
 
 // Unsupported : g_rmdir : unsupported parameter filename : type filename, const gchar*
 
 // StrvLength is a wrapper around the C function g_strv_length.
-func StrvLength(strArray string) {}
+func StrvLength(strArray string) {
+	c_str_array := C.CString(strArray)
+	defer C.free(unsafe.Pointer(c_str_array))
+
+	C.g_strv_length()
+}
 
 // Unsupported : g_unlink : unsupported parameter filename : type filename, const gchar*
 
 // UriListExtractUris is a wrapper around the C function g_uri_list_extract_uris.
-func UriListExtractUris(uriList string) {}
+func UriListExtractUris(uriList string) {
+	c_uri_list := C.CString(uriList)
+	defer C.free(unsafe.Pointer(c_uri_list))
+
+	C.g_uri_list_extract_uris()
+}

@@ -2,6 +2,8 @@
 
 package glib
 
+import "unsafe"
+
 // #include <glib.h>
 // #include <stdlib.h>
 import "C"
@@ -23,15 +25,30 @@ import "C"
 // Unsupported : g_file_set_contents : unsupported parameter filename : type filename, const gchar*
 
 // GetHostName is a wrapper around the C function g_get_host_name.
-func GetHostName() {}
+func GetHostName() {
+	C.g_get_host_name()
+}
 
 // Listenv is a wrapper around the C function g_listenv.
-func Listenv() {}
+func Listenv() {
+	C.g_listenv()
+}
 
 // Unsupported : g_mkdir_with_parents : unsupported parameter pathname : type filename, const gchar*
 
 // TryMalloc0 is a wrapper around the C function g_try_malloc0.
-func TryMalloc0(nBytes uint64) {}
+func TryMalloc0(nBytes uint64) {
+	c_n_bytes := (C.gsize)(nBytes)
+
+	C.g_try_malloc0()
+}
 
 // Utf8CollateKeyForFilename is a wrapper around the C function g_utf8_collate_key_for_filename.
-func Utf8CollateKeyForFilename(str string, len int64) {}
+func Utf8CollateKeyForFilename(str string, len int64) {
+	c_str := C.CString(str)
+	defer C.free(unsafe.Pointer(c_str))
+
+	c_len := (C.gssize)(len)
+
+	C.g_utf8_collate_key_for_filename()
+}

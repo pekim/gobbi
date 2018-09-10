@@ -45,16 +45,36 @@ import "C"
 // Unsupported : g_timeout_add_seconds_full : unsupported parameter function : type SourceFunc, GSourceFunc
 
 // TimeoutSourceNewSeconds is a wrapper around the C function g_timeout_source_new_seconds.
-func TimeoutSourceNewSeconds(interval uint32) {}
+func TimeoutSourceNewSeconds(interval uint32) {
+	c_interval := (C.guint)(interval)
+
+	C.g_timeout_source_new_seconds()
+}
 
 // UnicharCombiningClass is a wrapper around the C function g_unichar_combining_class.
-func UnicharCombiningClass(uc rune) {}
+func UnicharCombiningClass(uc rune) {
+	c_uc := (C.gunichar)(uc)
+
+	C.g_unichar_combining_class()
+}
 
 // UnicharGetScript is a wrapper around the C function g_unichar_get_script.
-func UnicharGetScript(ch rune) {}
+func UnicharGetScript(ch rune) {
+	c_ch := (C.gunichar)(ch)
+
+	C.g_unichar_get_script()
+}
 
 // UnicharIsmark is a wrapper around the C function g_unichar_ismark.
-func UnicharIsmark(c rune) {}
+func UnicharIsmark(c rune) {
+	c_c := (C.gunichar)(c)
+
+	C.g_unichar_ismark()
+}
 
 // UnicharIszerowidth is a wrapper around the C function g_unichar_iszerowidth.
-func UnicharIszerowidth(c rune) {}
+func UnicharIszerowidth(c rune) {
+	c_c := (C.gunichar)(c)
+
+	C.g_unichar_iszerowidth()
+}

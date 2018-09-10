@@ -2,6 +2,8 @@
 
 package glib
 
+import "unsafe"
+
 // #include <glib.h>
 // #include <stdlib.h>
 import "C"
@@ -13,7 +15,24 @@ import "C"
 // Unsupported : g_date_time_hash : unsupported parameter datetime : type gpointer, gconstpointer
 
 // Dcgettext is a wrapper around the C function g_dcgettext.
-func Dcgettext(domain string, msgid string, category int32) {}
+func Dcgettext(domain string, msgid string, category int32) {
+	c_domain := C.CString(domain)
+	defer C.free(unsafe.Pointer(c_domain))
+
+	c_msgid := C.CString(msgid)
+	defer C.free(unsafe.Pointer(c_msgid))
+
+	c_category := (C.gint)(category)
+
+	C.g_dcgettext()
+}
 
 // SourceSetNameById is a wrapper around the C function g_source_set_name_by_id.
-func SourceSetNameById(tag uint32, name string) {}
+func SourceSetNameById(tag uint32, name string) {
+	c_tag := (C.guint)(tag)
+
+	c_name := C.CString(name)
+	defer C.free(unsafe.Pointer(c_name))
+
+	C.g_source_set_name_by_id()
+}

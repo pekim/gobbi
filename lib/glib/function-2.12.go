@@ -2,12 +2,21 @@
 
 package glib
 
+import "unsafe"
+
 // #include <glib.h>
 // #include <stdlib.h>
 import "C"
 
 // AsciiStrtoll is a wrapper around the C function g_ascii_strtoll.
-func AsciiStrtoll(nptr string, endptr string, base uint32) {}
+func AsciiStrtoll(nptr string, endptr string, base uint32) {
+	c_nptr := C.CString(nptr)
+	defer C.free(unsafe.Pointer(c_nptr))
+
+	c_base := (C.guint)(base)
+
+	C.g_ascii_strtoll()
+}
 
 // Unsupported : g_base64_decode : unsupported parameter out_len : type gsize, gsize*
 
@@ -24,9 +33,15 @@ func AsciiStrtoll(nptr string, endptr string, base uint32) {}
 // Unsupported : g_hash_table_steal_all : unsupported parameter hash_table : type GLib.HashTable, GHashTable*
 
 // MainCurrentSource is a wrapper around the C function g_main_current_source.
-func MainCurrentSource() {}
+func MainCurrentSource() {
+	C.g_main_current_source()
+}
 
 // Unsupported : g_time_val_from_iso8601 : unsupported parameter time_ : type TimeVal, GTimeVal*
 
 // UnicharIswideCjk is a wrapper around the C function g_unichar_iswide_cjk.
-func UnicharIswideCjk(c rune) {}
+func UnicharIswideCjk(c rune) {
+	c_c := (C.gunichar)(c)
+
+	C.g_unichar_iswide_cjk()
+}

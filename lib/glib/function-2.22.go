@@ -2,6 +2,8 @@
 
 package glib
 
+import "unsafe"
+
 // #include <glib.h>
 // #include <stdlib.h>
 import "C"
@@ -13,30 +15,59 @@ import "C"
 // Unsupported : g_double_hash : unsupported parameter v : type gpointer, gconstpointer
 
 // HostnameIsAsciiEncoded is a wrapper around the C function g_hostname_is_ascii_encoded.
-func HostnameIsAsciiEncoded(hostname string) {}
+func HostnameIsAsciiEncoded(hostname string) {
+	c_hostname := C.CString(hostname)
+	defer C.free(unsafe.Pointer(c_hostname))
+
+	C.g_hostname_is_ascii_encoded()
+}
 
 // HostnameIsIpAddress is a wrapper around the C function g_hostname_is_ip_address.
-func HostnameIsIpAddress(hostname string) {}
+func HostnameIsIpAddress(hostname string) {
+	c_hostname := C.CString(hostname)
+	defer C.free(unsafe.Pointer(c_hostname))
+
+	C.g_hostname_is_ip_address()
+}
 
 // HostnameIsNonAscii is a wrapper around the C function g_hostname_is_non_ascii.
-func HostnameIsNonAscii(hostname string) {}
+func HostnameIsNonAscii(hostname string) {
+	c_hostname := C.CString(hostname)
+	defer C.free(unsafe.Pointer(c_hostname))
+
+	C.g_hostname_is_non_ascii()
+}
 
 // HostnameToAscii is a wrapper around the C function g_hostname_to_ascii.
-func HostnameToAscii(hostname string) {}
+func HostnameToAscii(hostname string) {
+	c_hostname := C.CString(hostname)
+	defer C.free(unsafe.Pointer(c_hostname))
+
+	C.g_hostname_to_ascii()
+}
 
 // HostnameToUnicode is a wrapper around the C function g_hostname_to_unicode.
-func HostnameToUnicode(hostname string) {}
+func HostnameToUnicode(hostname string) {
+	c_hostname := C.CString(hostname)
+	defer C.free(unsafe.Pointer(c_hostname))
+
+	C.g_hostname_to_unicode()
+}
 
 // Unsupported : g_int64_equal : unsupported parameter v1 : type gpointer, gconstpointer
 
 // Unsupported : g_int64_hash : unsupported parameter v : type gpointer, gconstpointer
 
 // MainContextGetThreadDefault is a wrapper around the C function g_main_context_get_thread_default.
-func MainContextGetThreadDefault() {}
+func MainContextGetThreadDefault() {
+	C.g_main_context_get_thread_default()
+}
 
 // Unsupported : g_mkstemp_full : unsupported parameter tmpl : type filename, gchar*
 
 // ReloadUserSpecialDirsCache is a wrapper around the C function g_reload_user_special_dirs_cache.
-func ReloadUserSpecialDirsCache() {}
+func ReloadUserSpecialDirsCache() {
+	C.g_reload_user_special_dirs_cache()
+}
 
 // Unsupported : g_test_log_set_fatal_handler : unsupported parameter log_func : type TestLogFatalFunc, GTestLogFatalFunc

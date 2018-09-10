@@ -2,6 +2,8 @@
 
 package glib
 
+import "unsafe"
+
 // #include <glib.h>
 // #include <stdlib.h>
 import "C"
@@ -9,25 +11,63 @@ import "C"
 // Unsupported : g_hash_table_unref : unsupported parameter hash_table : type GLib.HashTable, GHashTable*
 
 // InternStaticString is a wrapper around the C function g_intern_static_string.
-func InternStaticString(string string) {}
+func InternStaticString(string string) {
+	c_string := C.CString(string)
+	defer C.free(unsafe.Pointer(c_string))
+
+	C.g_intern_static_string()
+}
 
 // InternString is a wrapper around the C function g_intern_string.
-func InternString(string string) {}
+func InternString(string string) {
+	c_string := C.CString(string)
+	defer C.free(unsafe.Pointer(c_string))
+
+	C.g_intern_string()
+}
 
 // SliceAlloc is a wrapper around the C function g_slice_alloc.
-func SliceAlloc(blockSize uint64) {}
+func SliceAlloc(blockSize uint64) {
+	c_block_size := (C.gsize)(blockSize)
+
+	C.g_slice_alloc()
+}
 
 // SliceAlloc0 is a wrapper around the C function g_slice_alloc0.
-func SliceAlloc0(blockSize uint64) {}
+func SliceAlloc0(blockSize uint64) {
+	c_block_size := (C.gsize)(blockSize)
+
+	C.g_slice_alloc0()
+}
 
 // SliceFree1 is a wrapper around the C function g_slice_free1.
-func SliceFree1(blockSize uint64, memBlock uintptr) {}
+func SliceFree1(blockSize uint64, memBlock uintptr) {
+	c_block_size := (C.gsize)(blockSize)
+
+	c_mem_block := (C.gpointer)(memBlock)
+
+	C.g_slice_free1()
+}
 
 // SliceFreeChainWithOffset is a wrapper around the C function g_slice_free_chain_with_offset.
-func SliceFreeChainWithOffset(blockSize uint64, memChain uintptr, nextOffset uint64) {}
+func SliceFreeChainWithOffset(blockSize uint64, memChain uintptr, nextOffset uint64) {
+	c_block_size := (C.gsize)(blockSize)
+
+	c_mem_chain := (C.gpointer)(memChain)
+
+	c_next_offset := (C.gsize)(nextOffset)
+
+	C.g_slice_free_chain_with_offset()
+}
 
 // ThreadPoolGetMaxIdleTime is a wrapper around the C function g_thread_pool_get_max_idle_time.
-func ThreadPoolGetMaxIdleTime() {}
+func ThreadPoolGetMaxIdleTime() {
+	C.g_thread_pool_get_max_idle_time()
+}
 
 // ThreadPoolSetMaxIdleTime is a wrapper around the C function g_thread_pool_set_max_idle_time.
-func ThreadPoolSetMaxIdleTime(interval uint32) {}
+func ThreadPoolSetMaxIdleTime(interval uint32) {
+	c_interval := (C.guint)(interval)
+
+	C.g_thread_pool_set_max_idle_time()
+}

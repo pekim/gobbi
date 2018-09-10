@@ -2,9 +2,19 @@
 
 package glib
 
+import "unsafe"
+
 // #include <glib.h>
 // #include <stdlib.h>
 import "C"
 
 // StrvContains is a wrapper around the C function g_strv_contains.
-func StrvContains(strv string, str string) {}
+func StrvContains(strv string, str string) {
+	c_strv := C.CString(strv)
+	defer C.free(unsafe.Pointer(c_strv))
+
+	c_str := C.CString(str)
+	defer C.free(unsafe.Pointer(c_str))
+
+	C.g_strv_contains()
+}

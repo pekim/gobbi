@@ -7,10 +7,16 @@ package glib
 import "C"
 
 // Close is a wrapper around the C function g_close.
-func Close(fd int32) {}
+func Close(fd int32) {
+	c_fd := (C.gint)(fd)
+
+	C.g_close()
+}
 
 // GetNumProcessors is a wrapper around the C function g_get_num_processors.
-func GetNumProcessors() {}
+func GetNumProcessors() {
+	C.g_get_num_processors()
+}
 
 // Unsupported : g_unix_fd_add : unsupported parameter condition : type IOCondition, GIOCondition
 

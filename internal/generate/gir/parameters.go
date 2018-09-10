@@ -2,6 +2,7 @@ package gir
 
 import (
 	"fmt"
+
 	"github.com/dave/jennifer/jen"
 )
 
@@ -16,6 +17,18 @@ func (pp Parameters) init(ns *Namespace) {
 func (pp Parameters) generateFunctionDeclaration(g *jen.Group) {
 	for _, p := range pp {
 		p.generateFunctionDeclaration(g)
+	}
+}
+
+func (pp Parameters) generateAssignmentToCVars(g *jen.Group) {
+	for _, p := range pp {
+		p.generateAssignmentToCVar(g)
+	}
+}
+
+func (pp Parameters) generateCallArguments(g *jen.Group) {
+	for _, p := range pp {
+		p.generateCallArgument(g)
 	}
 }
 

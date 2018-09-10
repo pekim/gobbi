@@ -2,33 +2,72 @@
 
 package glib
 
+import "unsafe"
+
 // #include <glib.h>
 // #include <stdlib.h>
 import "C"
 
 // AsciiStrtoull is a wrapper around the C function g_ascii_strtoull.
-func AsciiStrtoull(nptr string, endptr string, base uint32) {}
+func AsciiStrtoull(nptr string, endptr string, base uint32) {
+	c_nptr := C.CString(nptr)
+	defer C.free(unsafe.Pointer(c_nptr))
+
+	c_base := (C.guint)(base)
+
+	C.g_ascii_strtoull()
+}
 
 // Unsupported : g_fprintf : unsupported parameter file : type gpointer, FILE*
 
 // GetApplicationName is a wrapper around the C function g_get_application_name.
-func GetApplicationName() {}
+func GetApplicationName() {
+	C.g_get_application_name()
+}
 
 // Unsupported : g_printf : unsupported parameter ... : varargs
 
 // SetApplicationName is a wrapper around the C function g_set_application_name.
-func SetApplicationName(applicationName string) {}
+func SetApplicationName(applicationName string) {
+	c_application_name := C.CString(applicationName)
+	defer C.free(unsafe.Pointer(c_application_name))
+
+	C.g_set_application_name()
+}
 
 // Unsupported : g_sprintf : unsupported parameter ... : varargs
 
 // StrHasPrefix is a wrapper around the C function g_str_has_prefix.
-func StrHasPrefix(str string, prefix string) {}
+func StrHasPrefix(str string, prefix string) {
+	c_str := C.CString(str)
+	defer C.free(unsafe.Pointer(c_str))
+
+	c_prefix := C.CString(prefix)
+	defer C.free(unsafe.Pointer(c_prefix))
+
+	C.g_str_has_prefix()
+}
 
 // StrHasSuffix is a wrapper around the C function g_str_has_suffix.
-func StrHasSuffix(str string, suffix string) {}
+func StrHasSuffix(str string, suffix string) {
+	c_str := C.CString(str)
+	defer C.free(unsafe.Pointer(c_str))
+
+	c_suffix := C.CString(suffix)
+	defer C.free(unsafe.Pointer(c_suffix))
+
+	C.g_str_has_suffix()
+}
 
 // Utf8Strreverse is a wrapper around the C function g_utf8_strreverse.
-func Utf8Strreverse(str string, len int64) {}
+func Utf8Strreverse(str string, len int64) {
+	c_str := C.CString(str)
+	defer C.free(unsafe.Pointer(c_str))
+
+	c_len := (C.gssize)(len)
+
+	C.g_utf8_strreverse()
+}
 
 // Unsupported : g_vfprintf : unsupported parameter file : type gpointer, FILE*
 

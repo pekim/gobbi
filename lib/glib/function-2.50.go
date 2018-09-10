@@ -21,11 +21,19 @@ import "C"
 // Unsupported : g_log_writer_format_fields : unsupported parameter log_level : type LogLevelFlags, GLogLevelFlags
 
 // LogWriterIsJournald is a wrapper around the C function g_log_writer_is_journald.
-func LogWriterIsJournald(outputFd int32) {}
+func LogWriterIsJournald(outputFd int32) {
+	c_output_fd := (C.gint)(outputFd)
+
+	C.g_log_writer_is_journald()
+}
 
 // Unsupported : g_log_writer_journald : unsupported parameter log_level : type LogLevelFlags, GLogLevelFlags
 
 // Unsupported : g_log_writer_standard_streams : unsupported parameter log_level : type LogLevelFlags, GLogLevelFlags
 
 // LogWriterSupportsColor is a wrapper around the C function g_log_writer_supports_color.
-func LogWriterSupportsColor(outputFd int32) {}
+func LogWriterSupportsColor(outputFd int32) {
+	c_output_fd := (C.gint)(outputFd)
+
+	C.g_log_writer_supports_color()
+}
