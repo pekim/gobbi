@@ -20,9 +20,9 @@ func (pp Parameters) generateFunctionDeclaration(g *jen.Group) {
 	}
 }
 
-func (pp Parameters) generateAssignmentToCVars(g *jen.Group) {
+func (pp Parameters) generateCVars(g *jen.Group) {
 	for _, p := range pp {
-		p.generateAssignmentToCVar(g)
+		p.generateCVar(g)
 	}
 }
 

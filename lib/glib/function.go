@@ -75,7 +75,7 @@ func AsciiStrncasecmp(s1 string, s2 string, n uint64) {
 }
 
 // AsciiStrtod is a wrapper around the C function g_ascii_strtod.
-func AsciiStrtod(nptr string, endptr string) {
+func AsciiStrtod(nptr string) {
 	c_nptr := C.CString(nptr)
 	defer C.free(unsafe.Pointer(c_nptr))
 
@@ -260,7 +260,7 @@ func FileErrorQuark() {
 // Unsupported : g_file_test : unsupported parameter filename : type filename, const gchar*
 
 // FilenameFromUri is a wrapper around the C function g_filename_from_uri.
-func FilenameFromUri(uri string, hostname string) {
+func FilenameFromUri(uri string) {
 	c_uri := C.CString(uri)
 	defer C.free(unsafe.Pointer(c_uri))
 
@@ -283,7 +283,8 @@ func Free(mem uintptr) {
 }
 
 // GetCharset is a wrapper around the C function g_get_charset.
-func GetCharset(charset string) {
+func GetCharset() {
+
 	C.g_get_charset(c_charset)
 }
 
@@ -1014,7 +1015,7 @@ func StrstrLen(haystack string, haystackLen int64, needle string) {
 }
 
 // Strtod is a wrapper around the C function g_strtod.
-func Strtod(nptr string, endptr string) {
+func Strtod(nptr string) {
 	c_nptr := C.CString(nptr)
 	defer C.free(unsafe.Pointer(c_nptr))
 
@@ -1235,7 +1236,7 @@ func UnicharIsxdigit(c rune) {
 }
 
 // UnicharToUtf8 is a wrapper around the C function g_unichar_to_utf8.
-func UnicharToUtf8(c rune, outbuf string) {
+func UnicharToUtf8(c rune) {
 	c_c := (C.gunichar)(c)
 
 	C.g_unichar_to_utf8(c_c, c_outbuf)

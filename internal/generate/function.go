@@ -66,7 +66,7 @@ func (f *Function) generate(g *jen.Group, version *Version) {
 		Id(f.GoName).
 		ParamsFunc(f.Parameters.generateFunctionDeclaration).
 		BlockFunc(func(g *jen.Group) {
-			f.Parameters.generateAssignmentToCVars(g)
+			f.Parameters.generateCVars(g)
 
 			g.
 				Qual("C", f.CIdentifier).

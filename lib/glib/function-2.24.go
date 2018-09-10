@@ -89,7 +89,7 @@ func VariantIsSignature(string string) {
 }
 
 // VariantTypeStringScan is a wrapper around the C function g_variant_type_string_scan.
-func VariantTypeStringScan(string string, limit string, endptr string) {
+func VariantTypeStringScan(string string, limit string) {
 	c_string := C.CString(string)
 	defer C.free(unsafe.Pointer(c_string))
 

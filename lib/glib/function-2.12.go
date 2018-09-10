@@ -9,7 +9,7 @@ import "unsafe"
 import "C"
 
 // AsciiStrtoll is a wrapper around the C function g_ascii_strtoll.
-func AsciiStrtoll(nptr string, endptr string, base uint32) {
+func AsciiStrtoll(nptr string, base uint32) {
 	c_nptr := C.CString(nptr)
 	defer C.free(unsafe.Pointer(c_nptr))
 

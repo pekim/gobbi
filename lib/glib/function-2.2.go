@@ -9,7 +9,7 @@ import "unsafe"
 import "C"
 
 // AsciiStrtoull is a wrapper around the C function g_ascii_strtoull.
-func AsciiStrtoull(nptr string, endptr string, base uint32) {
+func AsciiStrtoull(nptr string, base uint32) {
 	c_nptr := C.CString(nptr)
 	defer C.free(unsafe.Pointer(c_nptr))
 
