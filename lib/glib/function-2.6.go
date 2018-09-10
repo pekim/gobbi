@@ -9,9 +9,9 @@ import "C"
 // CheckVersion is a wrapper around the C function glib_check_version.
 func CheckVersion(requiredMajor uint32, requiredMinor uint32, requiredMicro uint32) {}
 
-// Unsupported function: g_filename_display_basename : unsupported parameter filename : type filename, const gchar*
+// Unsupported : g_filename_display_basename : unsupported parameter filename : type filename, const gchar*
 
-// Unsupported function: g_filename_display_name : unsupported parameter filename : type filename, const gchar*
+// Unsupported : g_filename_display_name : unsupported parameter filename : type filename, const gchar*
 
 // GetFilenameCharsets is a wrapper around the C function g_get_filename_charsets.
 func GetFilenameCharsets(charsets string) {}
@@ -34,14 +34,14 @@ func GetUserConfigDir() {}
 // GetUserDataDir is a wrapper around the C function g_get_user_data_dir.
 func GetUserDataDir() {}
 
-// Unsupported function: g_log_set_default_handler : unsupported parameter log_func : type LogFunc, GLogFunc
+// Unsupported : g_log_set_default_handler : unsupported parameter log_func : type LogFunc, GLogFunc
 
-// Unsupported function: g_rmdir : unsupported parameter filename : type filename, const gchar*
+// Unsupported : g_rmdir : unsupported parameter filename : type filename, const gchar*
 
 // StrvLength is a wrapper around the C function g_strv_length.
 func StrvLength(strArray string) {}
 
-// Unsupported function: g_unlink : unsupported parameter filename : type filename, const gchar*
+// Unsupported : g_unlink : unsupported parameter filename : type filename, const gchar*
 
 // UriListExtractUris is a wrapper around the C function g_uri_list_extract_uris.
 func UriListExtractUris(uriList string) {}

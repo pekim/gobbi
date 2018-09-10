@@ -6,6 +6,6 @@ package glib
 // #include <stdlib.h>
 import "C"
 
-// Unsupported function: g_base64_decode_inplace : unsupported parameter text : no type
+// Unsupported : g_base64_decode_inplace : unsupported parameter text : no type
 
-// Unsupported function: g_poll : unsupported parameter fds : type PollFD, GPollFD*
+// Unsupported : g_poll : unsupported parameter fds : type PollFD, GPollFD*

@@ -6,7 +6,9 @@ package glib
 // #include <stdlib.h>
 import "C"
 
-// Unsupport constant type gboolean for SOURCE_CONTINUE
-// Unsupport constant type gboolean for SOURCE_REMOVE
+// Unsupported : type gboolean for SOURCE_CONTINUE
+
+// Unsupported : type gboolean for SOURCE_REMOVE
+
 const UNICHAR_MAX_DECOMPOSITION_LENGTH int = C.G_UNICHAR_MAX_DECOMPOSITION_LENGTH
 const VERSION_MIN_REQUIRED int = C.GLIB_VERSION_MIN_REQUIRED

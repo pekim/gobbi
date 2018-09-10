@@ -15,4 +15,4 @@ func Dngettext(domain string, msgid string, msgidPlural string, n uint64) {}
 // Dpgettext2 is a wrapper around the C function g_dpgettext2.
 func Dpgettext2(domain string, context string, msgid string) {}
 
-// Unsupported function: g_set_error_literal : unsupported parameter err : type Error, GError**
+// Unsupported : g_set_error_literal : unsupported parameter err : type Error, GError**

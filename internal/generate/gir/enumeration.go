@@ -42,17 +42,15 @@ func (e *Enumeration) mergeAddenda(addenda *Enumeration) {
 	e.Members.mergeAddenda(addenda.Members)
 }
 
+func (e *Enumeration) blacklisted() (bool, string) {
+	return e.Blacklist, e.CType
+}
+
+func (e *Enumeration) supported() (supported bool, reason string) {
+	return true, ""
+}
+
 func (e *Enumeration) generate(g *jen.Group, version *Version) {
-	if !supportedByVersion(e, version) {
-		return
-	}
-
-	if e.Blacklist {
-		g.Commentf("Blacklisted enum : %s", e.CType)
-		g.Line()
-		return
-	}
-
 	// define the type
 	g.
 		Type().

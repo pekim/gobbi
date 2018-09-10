@@ -6,8 +6,12 @@ package glib
 // #include <stdlib.h>
 import "C"
 
-// Unsupport constant type gint64 for TIME_SPAN_DAY
-// Unsupport constant type gint64 for TIME_SPAN_HOUR
-// Unsupport constant type gint64 for TIME_SPAN_MILLISECOND
-// Unsupport constant type gint64 for TIME_SPAN_MINUTE
-// Unsupport constant type gint64 for TIME_SPAN_SECOND
+// Unsupported : type gint64 for TIME_SPAN_DAY
+
+// Unsupported : type gint64 for TIME_SPAN_HOUR
+
+// Unsupported : type gint64 for TIME_SPAN_MILLISECOND
+
+// Unsupported : type gint64 for TIME_SPAN_MINUTE
+
+// Unsupported : type gint64 for TIME_SPAN_SECOND

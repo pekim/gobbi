@@ -1,6 +1,8 @@
 package gir
 
 import (
+	"fmt"
+
 	"github.com/dave/jennifer/jen"
 )
 
@@ -44,23 +46,19 @@ func (f *Function) mergeAddenda(addenda *Function) {
 	}
 }
 
-func (f *Function) generate(g *jen.Group, version *Version) {
-	if !supportedByVersion(f, version) {
-		return
-	}
+func (f *Function) blacklisted() (bool, string) {
+	return f.Blacklist, f.CIdentifier
+}
 
-	if f.Blacklist {
-		g.Commentf("Blacklisted function: %s", f.CIdentifier)
-		g.Line()
-		return
-	}
-
+func (f *Function) supported() (supported bool, reason string) {
 	if supported, reason := f.Parameters.allSupported(); !supported {
-		g.Commentf("Unsupported function: %s : %s", f.CIdentifier, reason)
-		g.Line()
-		return
+		return false, fmt.Sprintf("%s : %s", f.CIdentifier, reason)
 	}
 
+	return true, ""
+}
+
+func (f *Function) generate(g *jen.Group, version *Version) {
 	g.Commentf("%s is a wrapper around the C function %s.", f.GoName, f.CIdentifier)
 
 	g.

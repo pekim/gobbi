@@ -6,11 +6,11 @@ package glib
 // #include <stdlib.h>
 import "C"
 
-// Unsupported function: g_byte_array_unref : unsupported parameter array : no type
+// Unsupported : g_byte_array_unref : unsupported parameter array : no type
 
-// Unsupported function: g_double_equal : unsupported parameter v1 : type gpointer, gconstpointer
+// Unsupported : g_double_equal : unsupported parameter v1 : type gpointer, gconstpointer
 
-// Unsupported function: g_double_hash : unsupported parameter v : type gpointer, gconstpointer
+// Unsupported : g_double_hash : unsupported parameter v : type gpointer, gconstpointer
 
 // HostnameIsAsciiEncoded is a wrapper around the C function g_hostname_is_ascii_encoded.
 func HostnameIsAsciiEncoded(hostname string) {}
@@ -27,16 +27,16 @@ func HostnameToAscii(hostname string) {}
 // HostnameToUnicode is a wrapper around the C function g_hostname_to_unicode.
 func HostnameToUnicode(hostname string) {}
 
-// Unsupported function: g_int64_equal : unsupported parameter v1 : type gpointer, gconstpointer
+// Unsupported : g_int64_equal : unsupported parameter v1 : type gpointer, gconstpointer
 
-// Unsupported function: g_int64_hash : unsupported parameter v : type gpointer, gconstpointer
+// Unsupported : g_int64_hash : unsupported parameter v : type gpointer, gconstpointer
 
 // MainContextGetThreadDefault is a wrapper around the C function g_main_context_get_thread_default.
 func MainContextGetThreadDefault() {}
 
-// Unsupported function: g_mkstemp_full : unsupported parameter tmpl : type filename, gchar*
+// Unsupported : g_mkstemp_full : unsupported parameter tmpl : type filename, gchar*
 
 // ReloadUserSpecialDirsCache is a wrapper around the C function g_reload_user_special_dirs_cache.
 func ReloadUserSpecialDirsCache() {}
 
-// Unsupported function: g_test_log_set_fatal_handler : unsupported parameter log_func : type TestLogFatalFunc, GTestLogFatalFunc
+// Unsupported : g_test_log_set_fatal_handler : unsupported parameter log_func : type TestLogFatalFunc, GTestLogFatalFunc

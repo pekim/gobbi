@@ -12,8 +12,8 @@ func Close(fd int32) {}
 // GetNumProcessors is a wrapper around the C function g_get_num_processors.
 func GetNumProcessors() {}
 
-// Unsupported function: g_unix_fd_add : unsupported parameter condition : type IOCondition, GIOCondition
+// Unsupported : g_unix_fd_add : unsupported parameter condition : type IOCondition, GIOCondition
 
-// Unsupported function: g_unix_fd_add_full : unsupported parameter condition : type IOCondition, GIOCondition
+// Unsupported : g_unix_fd_add_full : unsupported parameter condition : type IOCondition, GIOCondition
 
-// Unsupported function: g_unix_fd_source_new : unsupported parameter condition : type IOCondition, GIOCondition
+// Unsupported : g_unix_fd_source_new : unsupported parameter condition : type IOCondition, GIOCondition

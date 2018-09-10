@@ -6,43 +6,43 @@ package glib
 // #include <stdlib.h>
 import "C"
 
-// Unsupported function: g_get_user_special_dir : unsupported parameter directory : type UserDirectory, GUserDirectory
+// Unsupported : g_get_user_special_dir : unsupported parameter directory : type UserDirectory, GUserDirectory
 
-// Blacklisted function: g_once_init_enter
+// Unsupported : g_once_init_enter : unsupported parameter location : type gpointer, void*
 
-// Blacklisted function: g_once_init_leave
+// Unsupported : g_once_init_leave : unsupported parameter location : type gpointer, void*
 
-// Unsupported function: g_regex_check_replacement : unsupported parameter has_references : type gboolean, gboolean*
+// Unsupported : g_regex_check_replacement : unsupported parameter has_references : type gboolean, gboolean*
 
-// Unsupported function: g_regex_escape_string : unsupported parameter string : no type
+// Unsupported : g_regex_escape_string : unsupported parameter string : no type
 
-// Unsupported function: g_regex_match_simple : unsupported parameter compile_options : type RegexCompileFlags, GRegexCompileFlags
+// Unsupported : g_regex_match_simple : unsupported parameter compile_options : type RegexCompileFlags, GRegexCompileFlags
 
-// Unsupported function: g_regex_split_simple : unsupported parameter compile_options : type RegexCompileFlags, GRegexCompileFlags
+// Unsupported : g_regex_split_simple : unsupported parameter compile_options : type RegexCompileFlags, GRegexCompileFlags
 
-// Unsupported function: g_sequence_get : unsupported parameter iter : type SequenceIter, GSequenceIter*
+// Unsupported : g_sequence_get : unsupported parameter iter : type SequenceIter, GSequenceIter*
 
-// Unsupported function: g_sequence_insert_before : unsupported parameter iter : type SequenceIter, GSequenceIter*
+// Unsupported : g_sequence_insert_before : unsupported parameter iter : type SequenceIter, GSequenceIter*
 
-// Unsupported function: g_sequence_move : unsupported parameter src : type SequenceIter, GSequenceIter*
+// Unsupported : g_sequence_move : unsupported parameter src : type SequenceIter, GSequenceIter*
 
-// Unsupported function: g_sequence_move_range : unsupported parameter dest : type SequenceIter, GSequenceIter*
+// Unsupported : g_sequence_move_range : unsupported parameter dest : type SequenceIter, GSequenceIter*
 
-// Unsupported function: g_sequence_range_get_midpoint : unsupported parameter begin : type SequenceIter, GSequenceIter*
+// Unsupported : g_sequence_range_get_midpoint : unsupported parameter begin : type SequenceIter, GSequenceIter*
 
-// Unsupported function: g_sequence_remove : unsupported parameter iter : type SequenceIter, GSequenceIter*
+// Unsupported : g_sequence_remove : unsupported parameter iter : type SequenceIter, GSequenceIter*
 
-// Unsupported function: g_sequence_remove_range : unsupported parameter begin : type SequenceIter, GSequenceIter*
+// Unsupported : g_sequence_remove_range : unsupported parameter begin : type SequenceIter, GSequenceIter*
 
-// Unsupported function: g_sequence_set : unsupported parameter iter : type SequenceIter, GSequenceIter*
+// Unsupported : g_sequence_set : unsupported parameter iter : type SequenceIter, GSequenceIter*
 
-// Unsupported function: g_sequence_swap : unsupported parameter a : type SequenceIter, GSequenceIter*
+// Unsupported : g_sequence_swap : unsupported parameter a : type SequenceIter, GSequenceIter*
 
-// Unsupported function: g_slice_copy : unsupported parameter mem_block : type gpointer, gconstpointer
+// Unsupported : g_slice_copy : unsupported parameter mem_block : type gpointer, gconstpointer
 
-// Unsupported function: g_timeout_add_seconds : unsupported parameter function : type SourceFunc, GSourceFunc
+// Unsupported : g_timeout_add_seconds : unsupported parameter function : type SourceFunc, GSourceFunc
 
-// Unsupported function: g_timeout_add_seconds_full : unsupported parameter function : type SourceFunc, GSourceFunc
+// Unsupported : g_timeout_add_seconds_full : unsupported parameter function : type SourceFunc, GSourceFunc
 
 // TimeoutSourceNewSeconds is a wrapper around the C function g_timeout_source_new_seconds.
 func TimeoutSourceNewSeconds(interval uint32) {}

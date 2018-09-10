@@ -6,7 +6,7 @@ package glib
 // #include <stdlib.h>
 import "C"
 
-// Unsupported function: g_hash_table_unref : unsupported parameter hash_table : type GLib.HashTable, GHashTable*
+// Unsupported : g_hash_table_unref : unsupported parameter hash_table : type GLib.HashTable, GHashTable*
 
 // InternStaticString is a wrapper around the C function g_intern_static_string.
 func InternStaticString(string string) {}

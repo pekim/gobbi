@@ -6,14 +6,14 @@ package glib
 // #include <stdlib.h>
 import "C"
 
-// Unsupported function: g_test_build_filename : unsupported parameter file_type : type TestFileType, GTestFileType
+// Unsupported : g_test_build_filename : unsupported parameter file_type : type TestFileType, GTestFileType
 
 // TestFailed is a wrapper around the C function g_test_failed.
 func TestFailed() {}
 
-// Unsupported function: g_test_get_dir : unsupported parameter file_type : type TestFileType, GTestFileType
+// Unsupported : g_test_get_dir : unsupported parameter file_type : type TestFileType, GTestFileType
 
-// Unsupported function: g_test_get_filename : unsupported parameter file_type : type TestFileType, GTestFileType
+// Unsupported : g_test_get_filename : unsupported parameter file_type : type TestFileType, GTestFileType
 
 // TestIncomplete is a wrapper around the C function g_test_incomplete.
 func TestIncomplete(msg string) {}
@@ -27,4 +27,4 @@ func TestSkip(msg string) {}
 // TestSubprocess is a wrapper around the C function g_test_subprocess.
 func TestSubprocess() {}
 
-// Unsupported function: g_test_trap_subprocess : unsupported parameter test_flags : type TestSubprocessFlags, GTestSubprocessFlags
+// Unsupported : g_test_trap_subprocess : unsupported parameter test_flags : type TestSubprocessFlags, GTestSubprocessFlags

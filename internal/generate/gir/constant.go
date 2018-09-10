@@ -1,6 +1,8 @@
 package gir
 
 import (
+	"fmt"
+
 	"github.com/dave/jennifer/jen"
 )
 
@@ -28,25 +30,26 @@ func (c *Constant) mergeAddenda(addenda *Constant) {
 	c.Blacklist = addenda.Blacklist
 }
 
+func (c *Constant) blacklisted() (bool, string) {
+	return c.Blacklist, c.Name
+}
+
+func (c *Constant) supported() (supported bool, reason string) {
+	switch c.Type.Name {
+	case "gint", "utf8":
+		return true, ""
+	default:
+		return false, fmt.Sprintf("type %s for %s", c.Type.Name, c.Name)
+	}
+}
+
 func (c *Constant) generate(g *jen.Group, version *Version) {
-	if !supportedByVersion(c, version) {
-		return
-	}
-
-	if c.Blacklist {
-		g.Commentf("Blacklisted constant : %s", c.Name)
-		return
-	}
-
 	var goTypeName string
 	switch c.Type.Name {
 	case "gint":
 		goTypeName = "int"
 	case "utf8":
 		goTypeName = "string"
-	default:
-		g.Commentf("Unsupport constant type %s for %s", c.Type.Name, c.Name)
-		return
 	}
 
 	g.

@@ -6,7 +6,9 @@ import (
 
 type Generatable interface {
 	Versioned
+	blacklisted() (bool, string)
 	generate(g *jen.Group, version *Version)
+	supported() (supported bool, reason string)
 }
 
 type Generatables interface {

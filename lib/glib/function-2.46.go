@@ -6,4 +6,4 @@ package glib
 // #include <stdlib.h>
 import "C"
 
-// Unsupported function: g_log_set_handler_full : unsupported parameter log_levels : type LogLevelFlags, GLogLevelFlags
+// Unsupported : g_log_set_handler_full : unsupported parameter log_levels : type LogLevelFlags, GLogLevelFlags

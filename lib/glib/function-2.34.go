@@ -6,17 +6,17 @@ package glib
 // #include <stdlib.h>
 import "C"
 
-// Unsupported function: g_clear_pointer : unsupported parameter pp : type gpointer, gpointer*
+// Unsupported : g_clear_pointer : unsupported parameter pp : type gpointer, gpointer*
 
-// Unsupported function: g_compute_checksum_for_bytes : unsupported parameter checksum_type : type ChecksumType, GChecksumType
+// Unsupported : g_compute_checksum_for_bytes : unsupported parameter checksum_type : type ChecksumType, GChecksumType
 
-// Unsupported function: g_datalist_id_dup_data : unsupported parameter datalist : type Data, GData**
+// Unsupported : g_datalist_id_dup_data : unsupported parameter datalist : type Data, GData**
 
-// Unsupported function: g_datalist_id_replace_data : unsupported parameter datalist : type Data, GData**
+// Unsupported : g_datalist_id_replace_data : unsupported parameter datalist : type Data, GData**
 
 // SpawnCheckExitStatus is a wrapper around the C function g_spawn_check_exit_status.
 func SpawnCheckExitStatus(exitStatus int32) {}
 
-// Unsupported function: g_test_add_data_func_full : unsupported parameter test_func : type TestDataFunc, GTestDataFunc
+// Unsupported : g_test_add_data_func_full : unsupported parameter test_func : type TestDataFunc, GTestDataFunc
 
-// Unsupported function: g_test_expect_message : unsupported parameter log_level : type LogLevelFlags, GLogLevelFlags
+// Unsupported : g_test_expect_message : unsupported parameter log_level : type LogLevelFlags, GLogLevelFlags

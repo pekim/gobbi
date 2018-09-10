@@ -10,12 +10,20 @@ const GINT16_MODIFIER string = C.G_GINT16_MODIFIER
 const GINT32_MODIFIER string = C.G_GINT32_MODIFIER
 const GINT64_MODIFIER string = C.G_GINT64_MODIFIER
 
-// Unsupport constant type gint16 for MAXINT16
-// Unsupport constant type gint32 for MAXINT32
-// Unsupport constant type gint8 for MAXINT8
-// Unsupport constant type guint16 for MAXUINT16
-// Unsupport constant type guint32 for MAXUINT32
-// Unsupport constant type guint8 for MAXUINT8
-// Unsupport constant type gint16 for MININT16
-// Unsupport constant type gint32 for MININT32
-// Unsupport constant type gint8 for MININT8
+// Unsupported : type gint16 for MAXINT16
+
+// Unsupported : type gint32 for MAXINT32
+
+// Unsupported : type gint8 for MAXINT8
+
+// Unsupported : type guint16 for MAXUINT16
+
+// Unsupported : type guint32 for MAXUINT32
+
+// Unsupported : type guint8 for MAXUINT8
+
+// Unsupported : type gint16 for MININT16
+
+// Unsupported : type gint32 for MININT32
+
+// Unsupported : type gint8 for MININT8

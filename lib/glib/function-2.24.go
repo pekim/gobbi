@@ -6,15 +6,15 @@ package glib
 // #include <stdlib.h>
 import "C"
 
-// Blacklisted function: g_bit_lock
+// Unsupported : g_bit_lock : unsupported parameter address : type gint, volatile gint*
 
-// Blacklisted function: g_bit_trylock
+// Unsupported : g_bit_trylock : unsupported parameter address : type gint, volatile gint*
 
-// Blacklisted function: g_bit_unlock
+// Unsupported : g_bit_unlock : unsupported parameter address : type gint, volatile gint*
 
-// Blacklisted function: g_malloc0_n
+// Blacklisted : g_malloc0_n
 
-// Blacklisted function: g_malloc_n
+// Blacklisted : g_malloc_n
 
 // ReallocN is a wrapper around the C function g_realloc_n.
 func ReallocN(mem uintptr, nBlocks uint64, nBlockBytes uint64) {}

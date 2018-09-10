@@ -9,24 +9,24 @@ import "C"
 // AsciiStrtoll is a wrapper around the C function g_ascii_strtoll.
 func AsciiStrtoll(nptr string, endptr string, base uint32) {}
 
-// Unsupported function: g_base64_decode : unsupported parameter out_len : type gsize, gsize*
+// Unsupported : g_base64_decode : unsupported parameter out_len : type gsize, gsize*
 
-// Unsupported function: g_base64_decode_step : unsupported parameter in : no type
+// Unsupported : g_base64_decode_step : unsupported parameter in : no type
 
-// Unsupported function: g_base64_encode : unsupported parameter data : no type
+// Unsupported : g_base64_encode : unsupported parameter data : no type
 
-// Unsupported function: g_base64_encode_close : unsupported parameter break_lines : type gboolean, gboolean
+// Unsupported : g_base64_encode_close : unsupported parameter break_lines : type gboolean, gboolean
 
-// Unsupported function: g_base64_encode_step : unsupported parameter in : no type
+// Unsupported : g_base64_encode_step : unsupported parameter in : no type
 
-// Unsupported function: g_hash_table_remove_all : unsupported parameter hash_table : type GLib.HashTable, GHashTable*
+// Unsupported : g_hash_table_remove_all : unsupported parameter hash_table : type GLib.HashTable, GHashTable*
 
-// Unsupported function: g_hash_table_steal_all : unsupported parameter hash_table : type GLib.HashTable, GHashTable*
+// Unsupported : g_hash_table_steal_all : unsupported parameter hash_table : type GLib.HashTable, GHashTable*
 
 // MainCurrentSource is a wrapper around the C function g_main_current_source.
 func MainCurrentSource() {}
 
-// Unsupported function: g_time_val_from_iso8601 : unsupported parameter time_ : type TimeVal, GTimeVal*
+// Unsupported : g_time_val_from_iso8601 : unsupported parameter time_ : type TimeVal, GTimeVal*
 
 // UnicharIswideCjk is a wrapper around the C function g_unichar_iswide_cjk.
 func UnicharIswideCjk(c rune) {}

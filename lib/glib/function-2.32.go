@@ -6,19 +6,19 @@ package glib
 // #include <stdlib.h>
 import "C"
 
-// Unsupported function: g_byte_array_free_to_bytes : unsupported parameter array : no type
+// Unsupported : g_byte_array_free_to_bytes : unsupported parameter array : no type
 
-// Unsupported function: g_byte_array_new_take : unsupported parameter data : no type
+// Unsupported : g_byte_array_new_take : unsupported parameter data : no type
 
-// Unsupported function: g_environ_getenv : unsupported parameter envp : no type
+// Unsupported : g_environ_getenv : unsupported parameter envp : no type
 
-// Unsupported function: g_environ_setenv : unsupported parameter envp : no type
+// Unsupported : g_environ_setenv : unsupported parameter envp : no type
 
-// Unsupported function: g_environ_unsetenv : unsupported parameter envp : no type
+// Unsupported : g_environ_unsetenv : unsupported parameter envp : no type
 
-// Unsupported function: g_hash_table_add : unsupported parameter hash_table : type GLib.HashTable, GHashTable*
+// Unsupported : g_hash_table_add : unsupported parameter hash_table : type GLib.HashTable, GHashTable*
 
-// Unsupported function: g_hash_table_contains : unsupported parameter hash_table : type GLib.HashTable, GHashTable*
+// Unsupported : g_hash_table_contains : unsupported parameter hash_table : type GLib.HashTable, GHashTable*
 
 // MainContextRefThreadDefault is a wrapper around the C function g_main_context_ref_thread_default.
 func MainContextRefThreadDefault() {}

@@ -6,11 +6,11 @@ package glib
 // #include <stdlib.h>
 import "C"
 
-// Unsupported function: g_date_time_compare : unsupported parameter dt1 : type gpointer, gconstpointer
+// Unsupported : g_date_time_compare : unsupported parameter dt1 : type gpointer, gconstpointer
 
-// Unsupported function: g_date_time_equal : unsupported parameter dt1 : type gpointer, gconstpointer
+// Unsupported : g_date_time_equal : unsupported parameter dt1 : type gpointer, gconstpointer
 
-// Unsupported function: g_date_time_hash : unsupported parameter datetime : type gpointer, gconstpointer
+// Unsupported : g_date_time_hash : unsupported parameter datetime : type gpointer, gconstpointer
 
 // Dcgettext is a wrapper around the C function g_dcgettext.
 func Dcgettext(domain string, msgid string, category int32) {}

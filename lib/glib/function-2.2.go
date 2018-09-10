@@ -9,17 +9,17 @@ import "C"
 // AsciiStrtoull is a wrapper around the C function g_ascii_strtoull.
 func AsciiStrtoull(nptr string, endptr string, base uint32) {}
 
-// Unsupported function: g_fprintf : unsupported parameter file : type gpointer, FILE*
+// Unsupported : g_fprintf : unsupported parameter file : type gpointer, FILE*
 
 // GetApplicationName is a wrapper around the C function g_get_application_name.
 func GetApplicationName() {}
 
-// Unsupported function: g_printf : unsupported parameter ... : varargs
+// Unsupported : g_printf : unsupported parameter ... : varargs
 
 // SetApplicationName is a wrapper around the C function g_set_application_name.
 func SetApplicationName(applicationName string) {}
 
-// Unsupported function: g_sprintf : unsupported parameter ... : varargs
+// Unsupported : g_sprintf : unsupported parameter ... : varargs
 
 // StrHasPrefix is a wrapper around the C function g_str_has_prefix.
 func StrHasPrefix(str string, prefix string) {}
@@ -30,8 +30,8 @@ func StrHasSuffix(str string, suffix string) {}
 // Utf8Strreverse is a wrapper around the C function g_utf8_strreverse.
 func Utf8Strreverse(str string, len int64) {}
 
-// Unsupported function: g_vfprintf : unsupported parameter file : type gpointer, FILE*
+// Unsupported : g_vfprintf : unsupported parameter file : type gpointer, FILE*
 
-// Unsupported function: g_vprintf : unsupported parameter args : type va_list, va_list
+// Unsupported : g_vprintf : unsupported parameter args : type va_list, va_list
 
-// Unsupported function: g_vsprintf : unsupported parameter args : type va_list, va_list
+// Unsupported : g_vsprintf : unsupported parameter args : type va_list, va_list

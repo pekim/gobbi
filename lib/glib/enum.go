@@ -272,7 +272,7 @@ const (
 	TEST_LOG_STOP_SUITE   TestLogType = 11
 )
 
-// Blacklisted enum : GTestResult
+// Blacklisted : GTestResult
 
 type ThreadError C.GThreadError
 

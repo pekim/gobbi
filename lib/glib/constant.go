@@ -17,7 +17,8 @@ const DATE_BAD_YEAR int = C.G_DATE_BAD_YEAR
 const DIR_SEPARATOR int = C.G_DIR_SEPARATOR
 const DIR_SEPARATOR_S string = C.G_DIR_SEPARATOR_S
 
-// Unsupport constant type gdouble for E
+// Unsupported : type gdouble for E
+
 const GINT16_FORMAT string = C.G_GINT16_FORMAT
 const GINT32_FORMAT string = C.G_GINT32_FORMAT
 const GINT64_FORMAT string = C.G_GINT64_FORMAT
@@ -35,32 +36,43 @@ const HOOK_FLAG_USER_SHIFT int = C.G_HOOK_FLAG_USER_SHIFT
 const IEEE754_DOUBLE_BIAS int = C.G_IEEE754_DOUBLE_BIAS
 const IEEE754_FLOAT_BIAS int = C.G_IEEE754_FLOAT_BIAS
 
-// Blacklisted constant : KEY_FILE_DESKTOP_ACTION_GROUP_PREFIX
+// Blacklisted : KEY_FILE_DESKTOP_ACTION_GROUP_PREFIX
+
 const KEY_FILE_DESKTOP_KEY_FULLNAME string = C.G_KEY_FILE_DESKTOP_KEY_FULLNAME
 const KEY_FILE_DESKTOP_KEY_GETTEXT_DOMAIN string = C.G_KEY_FILE_DESKTOP_KEY_GETTEXT_DOMAIN
 const KEY_FILE_DESKTOP_KEY_KEYWORDS string = C.G_KEY_FILE_DESKTOP_KEY_KEYWORDS
 const LITTLE_ENDIAN int = C.G_LITTLE_ENDIAN
 
-// Unsupport constant type gdouble for LN10
-// Unsupport constant type gdouble for LN2
-// Unsupport constant type gdouble for LOG_2_BASE_10
-// Unsupport constant type gchar for LOG_DOMAIN
+// Unsupported : type gdouble for LN10
+
+// Unsupported : type gdouble for LN2
+
+// Unsupported : type gdouble for LOG_2_BASE_10
+
+// Unsupported : type gchar for LOG_DOMAIN
+
 const LOG_FATAL_MASK int = C.G_LOG_FATAL_MASK
 const LOG_LEVEL_USER_SHIFT int = C.G_LOG_LEVEL_USER_SHIFT
 const MAJOR_VERSION int = C.GLIB_MAJOR_VERSION
 
-// Unsupport constant type gint64 for MAXINT64
-// Unsupport constant type guint64 for MAXUINT64
+// Unsupported : type gint64 for MAXINT64
+
+// Unsupported : type guint64 for MAXUINT64
+
 const MICRO_VERSION int = C.GLIB_MICRO_VERSION
 
-// Unsupport constant type gint64 for MININT64
+// Unsupported : type gint64 for MININT64
+
 const MINOR_VERSION int = C.GLIB_MINOR_VERSION
 const MODULE_SUFFIX string = C.G_MODULE_SUFFIX
 const PDP_ENDIAN int = C.G_PDP_ENDIAN
 
-// Unsupport constant type gdouble for PI
-// Unsupport constant type gdouble for PI_2
-// Unsupport constant type gdouble for PI_4
+// Unsupported : type gdouble for PI
+
+// Unsupported : type gdouble for PI_2
+
+// Unsupported : type gdouble for PI_4
+
 const POLLFD_FORMAT string = C.G_POLLFD_FORMAT
 const PRIORITY_DEFAULT int = C.G_PRIORITY_DEFAULT
 const PRIORITY_DEFAULT_IDLE int = C.G_PRIORITY_DEFAULT_IDLE
@@ -74,7 +86,8 @@ const SIZEOF_SIZE_T int = C.GLIB_SIZEOF_SIZE_T
 const SIZEOF_SSIZE_T int = C.GLIB_SIZEOF_SSIZE_T
 const SIZEOF_VOID_P int = C.GLIB_SIZEOF_VOID_P
 
-// Unsupport constant type gdouble for SQRT2
+// Unsupported : type gdouble for SQRT2
+
 const STR_DELIMITERS string = C.G_STR_DELIMITERS
 const SYSDEF_AF_INET int = C.GLIB_SYSDEF_AF_INET
 const SYSDEF_AF_INET6 int = C.GLIB_SYSDEF_AF_INET6
@@ -87,4 +100,4 @@ const URI_RESERVED_CHARS_SUBCOMPONENT_DELIMITERS string = C.G_URI_RESERVED_CHARS
 const USEC_PER_SEC int = C.G_USEC_PER_SEC
 const VA_COPY_AS_ARRAY int = C.G_VA_COPY_AS_ARRAY
 
-// Blacklisted constant : WIN32_MSG_HANDLE
+// Blacklisted : WIN32_MSG_HANDLE

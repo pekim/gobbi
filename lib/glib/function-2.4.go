@@ -6,39 +6,39 @@ package glib
 // #include <stdlib.h>
 import "C"
 
-// Blacklisted function: g_atomic_int_add
+// Unsupported : g_atomic_int_add : unsupported parameter atomic : type gint, volatile gint*
 
-// Blacklisted function: g_atomic_int_compare_and_exchange
+// Unsupported : g_atomic_int_compare_and_exchange : unsupported parameter atomic : type gint, volatile gint*
 
-// Blacklisted function: g_atomic_int_dec_and_test
+// Unsupported : g_atomic_int_dec_and_test : unsupported parameter atomic : type gint, volatile gint*
 
-// Blacklisted function: g_atomic_int_exchange_and_add
+// Unsupported : g_atomic_int_exchange_and_add : unsupported parameter atomic : type gint, volatile gint*
 
-// Blacklisted function: g_atomic_int_get
+// Unsupported : g_atomic_int_get : unsupported parameter atomic : type gint, volatile const gint*
 
-// Blacklisted function: g_atomic_int_inc
+// Unsupported : g_atomic_int_inc : unsupported parameter atomic : type gint, volatile gint*
 
-// Blacklisted function: g_atomic_int_set
+// Unsupported : g_atomic_int_set : unsupported parameter atomic : type gint, volatile gint*
 
-// Blacklisted function: g_atomic_pointer_compare_and_exchange
+// Unsupported : g_atomic_pointer_compare_and_exchange : unsupported parameter atomic : type gpointer, void*
 
-// Blacklisted function: g_atomic_pointer_get
+// Unsupported : g_atomic_pointer_get : unsupported parameter atomic : type gpointer, void*
 
-// Blacklisted function: g_atomic_pointer_set
+// Unsupported : g_atomic_pointer_set : unsupported parameter atomic : type gpointer, void*
 
-// Unsupported function: g_child_watch_add : unsupported parameter pid : type Pid, GPid
+// Unsupported : g_child_watch_add : unsupported parameter pid : type Pid, GPid
 
-// Unsupported function: g_child_watch_add_full : unsupported parameter pid : type Pid, GPid
+// Unsupported : g_child_watch_add_full : unsupported parameter pid : type Pid, GPid
 
-// Unsupported function: g_child_watch_source_new : unsupported parameter pid : type Pid, GPid
+// Unsupported : g_child_watch_source_new : unsupported parameter pid : type Pid, GPid
 
-// Unsupported function: g_file_read_link : unsupported parameter filename : type filename, const gchar*
+// Unsupported : g_file_read_link : unsupported parameter filename : type filename, const gchar*
 
-// Unsupported function: g_markup_printf_escaped : unsupported parameter ... : varargs
+// Unsupported : g_markup_printf_escaped : unsupported parameter ... : varargs
 
-// Unsupported function: g_markup_vprintf_escaped : unsupported parameter args : type va_list, va_list
+// Unsupported : g_markup_vprintf_escaped : unsupported parameter args : type va_list, va_list
 
-// Unsupported function: g_setenv : unsupported parameter variable : type filename, const gchar*
+// Unsupported : g_setenv : unsupported parameter variable : type filename, const gchar*
 
 // StripContext is a wrapper around the C function g_strip_context.
 func StripContext(msgid string, msgval string) {}
@@ -46,8 +46,8 @@ func StripContext(msgid string, msgval string) {}
 // StrsplitSet is a wrapper around the C function g_strsplit_set.
 func StrsplitSet(string string, delimiters string, maxTokens int32) {}
 
-// Blacklisted function: g_unichar_get_mirror_char
+// Unsupported : g_unichar_get_mirror_char : unsupported parameter mirrored_ch : type gunichar, gunichar*
 
-// Unsupported function: g_unsetenv : unsupported parameter variable : type filename, const gchar*
+// Unsupported : g_unsetenv : unsupported parameter variable : type filename, const gchar*
 
-// Unsupported function: g_vasprintf : unsupported parameter args : type va_list, va_list
+// Unsupported : g_vasprintf : unsupported parameter args : type va_list, va_list
