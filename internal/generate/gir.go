@@ -5,14 +5,11 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os"
-
-	"gobbi2/internal/generate/file"
-	"gobbi2/internal/generate/gir"
 )
 
 type Gir struct {
-	repo        *gir.Repository
-	addendaRepo *gir.Repository
+	repo        *Repository
+	addendaRepo *Repository
 }
 
 func GirNew(name string) *Gir {
@@ -29,18 +26,18 @@ func (g *Gir) Generate() {
 	g.repo.Generate()
 }
 
-func (g *Gir) LoadFile(filename string, required bool) *gir.Repository {
-	filepath := file.ProjectFilepath("internal", "gir-files", filename)
+func (g *Gir) LoadFile(filename string, required bool) *Repository {
+	filepath := projectFilepath("internal", "gir-files", filename)
 	source, err := ioutil.ReadFile(filepath)
 	if err != nil {
 		if os.IsNotExist(err) && !required {
-			return &gir.Repository{}
+			return &Repository{}
 		}
 
 		panic(err)
 	}
 
-	girRepo := &gir.Repository{}
+	girRepo := &Repository{}
 	err = xml.Unmarshal(source, girRepo)
 	if err != nil {
 		panic(fmt.Errorf("Failed to parse %s : %s", filepath, err))
