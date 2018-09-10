@@ -24,7 +24,7 @@ func Dcgettext(domain string, msgid string, category int32) {
 
 	c_category := (C.gint)(category)
 
-	C.g_dcgettext()
+	C.g_dcgettext(c_domain, c_msgid, c_category)
 }
 
 // SourceSetNameById is a wrapper around the C function g_source_set_name_by_id.
@@ -34,5 +34,5 @@ func SourceSetNameById(tag uint32, name string) {
 	c_name := C.CString(name)
 	defer C.free(unsafe.Pointer(c_name))
 
-	C.g_source_set_name_by_id()
+	C.g_source_set_name_by_id(c_tag, c_name)
 }

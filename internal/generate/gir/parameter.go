@@ -85,6 +85,7 @@ func (p Parameter) generateAssignmentToCVarPrimitive(g *jen.Group) {
 }
 
 func (p Parameter) generateCallArgument(g *jen.Group) {
+	g.Id(p.cVarName)
 }
 
 func (p Parameter) isSupported() (bool, string) {

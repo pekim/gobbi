@@ -15,7 +15,7 @@ func Utf8MakeValid(str string, len int64) {
 
 	c_len := (C.gssize)(len)
 
-	C.g_utf8_make_valid()
+	C.g_utf8_make_valid(c_str, c_len)
 }
 
 // UuidStringIsValid is a wrapper around the C function g_uuid_string_is_valid.
@@ -23,7 +23,7 @@ func UuidStringIsValid(str string) {
 	c_str := C.CString(str)
 	defer C.free(unsafe.Pointer(c_str))
 
-	C.g_uuid_string_is_valid()
+	C.g_uuid_string_is_valid(c_str)
 }
 
 // UuidStringRandom is a wrapper around the C function g_uuid_string_random.

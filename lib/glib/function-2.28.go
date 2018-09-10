@@ -18,7 +18,7 @@ func GetLocaleVariants(locale string) {
 	c_locale := C.CString(locale)
 	defer C.free(unsafe.Pointer(c_locale))
 
-	C.g_get_locale_variants()
+	C.g_get_locale_variants(c_locale)
 }
 
 // GetMonotonicTime is a wrapper around the C function g_get_monotonic_time.

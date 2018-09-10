@@ -32,7 +32,7 @@ import "C"
 func FormatSize(size uint64) {
 	c_size := (C.guint64)(size)
 
-	C.g_format_size()
+	C.g_format_size(c_size)
 }
 
 // Unsupported : g_format_size_full : unsupported parameter flags : type FormatSizeFlags, GFormatSizeFlags
@@ -54,7 +54,7 @@ func RegexEscapeNul(string string, length int32) {
 
 	c_length := (C.gint)(length)
 
-	C.g_regex_escape_nul()
+	C.g_regex_escape_nul(c_string, c_length)
 }
 
 // TestFail is a wrapper around the C function g_test_fail.
@@ -72,7 +72,7 @@ func TestFail() {
 func UnicodeScriptFromIso15924(iso15924 uint32) {
 	c_iso15924 := (C.guint32)(iso15924)
 
-	C.g_unicode_script_from_iso15924()
+	C.g_unicode_script_from_iso15924(c_iso15924)
 }
 
 // Unsupported : g_unicode_script_to_iso15924 : unsupported parameter script : type UnicodeScript, GUnicodeScript
@@ -89,7 +89,7 @@ func UnicodeScriptFromIso15924(iso15924 uint32) {
 func UnixSignalSourceNew(signum int32) {
 	c_signum := (C.gint)(signum)
 
-	C.g_unix_signal_source_new()
+	C.g_unix_signal_source_new(c_signum)
 }
 
 // Utf8Substring is a wrapper around the C function g_utf8_substring.
@@ -101,5 +101,5 @@ func Utf8Substring(str string, startPos int64, endPos int64) {
 
 	c_end_pos := (C.glong)(endPos)
 
-	C.g_utf8_substring()
+	C.g_utf8_substring(c_str, c_start_pos, c_end_pos)
 }

@@ -40,7 +40,7 @@ func Listenv() {
 func TryMalloc0(nBytes uint64) {
 	c_n_bytes := (C.gsize)(nBytes)
 
-	C.g_try_malloc0()
+	C.g_try_malloc0(c_n_bytes)
 }
 
 // Utf8CollateKeyForFilename is a wrapper around the C function g_utf8_collate_key_for_filename.
@@ -50,5 +50,5 @@ func Utf8CollateKeyForFilename(str string, len int64) {
 
 	c_len := (C.gssize)(len)
 
-	C.g_utf8_collate_key_for_filename()
+	C.g_utf8_collate_key_for_filename(c_str, c_len)
 }

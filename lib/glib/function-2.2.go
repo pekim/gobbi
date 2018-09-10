@@ -15,7 +15,7 @@ func AsciiStrtoull(nptr string, endptr string, base uint32) {
 
 	c_base := (C.guint)(base)
 
-	C.g_ascii_strtoull()
+	C.g_ascii_strtoull(c_nptr, c_endptr, c_base)
 }
 
 // Unsupported : g_fprintf : unsupported parameter file : type gpointer, FILE*
@@ -32,7 +32,7 @@ func SetApplicationName(applicationName string) {
 	c_application_name := C.CString(applicationName)
 	defer C.free(unsafe.Pointer(c_application_name))
 
-	C.g_set_application_name()
+	C.g_set_application_name(c_application_name)
 }
 
 // Unsupported : g_sprintf : unsupported parameter ... : varargs
@@ -45,7 +45,7 @@ func StrHasPrefix(str string, prefix string) {
 	c_prefix := C.CString(prefix)
 	defer C.free(unsafe.Pointer(c_prefix))
 
-	C.g_str_has_prefix()
+	C.g_str_has_prefix(c_str, c_prefix)
 }
 
 // StrHasSuffix is a wrapper around the C function g_str_has_suffix.
@@ -56,7 +56,7 @@ func StrHasSuffix(str string, suffix string) {
 	c_suffix := C.CString(suffix)
 	defer C.free(unsafe.Pointer(c_suffix))
 
-	C.g_str_has_suffix()
+	C.g_str_has_suffix(c_str, c_suffix)
 }
 
 // Utf8Strreverse is a wrapper around the C function g_utf8_strreverse.
@@ -66,7 +66,7 @@ func Utf8Strreverse(str string, len int64) {
 
 	c_len := (C.gssize)(len)
 
-	C.g_utf8_strreverse()
+	C.g_utf8_strreverse(c_str, c_len)
 }
 
 // Unsupported : g_vfprintf : unsupported parameter file : type gpointer, FILE*

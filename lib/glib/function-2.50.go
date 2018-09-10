@@ -24,7 +24,7 @@ import "C"
 func LogWriterIsJournald(outputFd int32) {
 	c_output_fd := (C.gint)(outputFd)
 
-	C.g_log_writer_is_journald()
+	C.g_log_writer_is_journald(c_output_fd)
 }
 
 // Unsupported : g_log_writer_journald : unsupported parameter log_level : type LogLevelFlags, GLogLevelFlags
@@ -35,5 +35,5 @@ func LogWriterIsJournald(outputFd int32) {
 func LogWriterSupportsColor(outputFd int32) {
 	c_output_fd := (C.gint)(outputFd)
 
-	C.g_log_writer_supports_color()
+	C.g_log_writer_supports_color(c_output_fd)
 }

@@ -48,33 +48,33 @@ import "C"
 func TimeoutSourceNewSeconds(interval uint32) {
 	c_interval := (C.guint)(interval)
 
-	C.g_timeout_source_new_seconds()
+	C.g_timeout_source_new_seconds(c_interval)
 }
 
 // UnicharCombiningClass is a wrapper around the C function g_unichar_combining_class.
 func UnicharCombiningClass(uc rune) {
 	c_uc := (C.gunichar)(uc)
 
-	C.g_unichar_combining_class()
+	C.g_unichar_combining_class(c_uc)
 }
 
 // UnicharGetScript is a wrapper around the C function g_unichar_get_script.
 func UnicharGetScript(ch rune) {
 	c_ch := (C.gunichar)(ch)
 
-	C.g_unichar_get_script()
+	C.g_unichar_get_script(c_ch)
 }
 
 // UnicharIsmark is a wrapper around the C function g_unichar_ismark.
 func UnicharIsmark(c rune) {
 	c_c := (C.gunichar)(c)
 
-	C.g_unichar_ismark()
+	C.g_unichar_ismark(c_c)
 }
 
 // UnicharIszerowidth is a wrapper around the C function g_unichar_iszerowidth.
 func UnicharIszerowidth(c rune) {
 	c_c := (C.gunichar)(c)
 
-	C.g_unichar_iszerowidth()
+	C.g_unichar_iszerowidth(c_c)
 }

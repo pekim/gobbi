@@ -16,5 +16,5 @@ func StrvContains(strv string, str string) {
 	c_str := C.CString(str)
 	defer C.free(unsafe.Pointer(c_str))
 
-	C.g_strv_contains()
+	C.g_strv_contains(c_strv, c_str)
 }

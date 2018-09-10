@@ -19,7 +19,7 @@ func HostnameIsAsciiEncoded(hostname string) {
 	c_hostname := C.CString(hostname)
 	defer C.free(unsafe.Pointer(c_hostname))
 
-	C.g_hostname_is_ascii_encoded()
+	C.g_hostname_is_ascii_encoded(c_hostname)
 }
 
 // HostnameIsIpAddress is a wrapper around the C function g_hostname_is_ip_address.
@@ -27,7 +27,7 @@ func HostnameIsIpAddress(hostname string) {
 	c_hostname := C.CString(hostname)
 	defer C.free(unsafe.Pointer(c_hostname))
 
-	C.g_hostname_is_ip_address()
+	C.g_hostname_is_ip_address(c_hostname)
 }
 
 // HostnameIsNonAscii is a wrapper around the C function g_hostname_is_non_ascii.
@@ -35,7 +35,7 @@ func HostnameIsNonAscii(hostname string) {
 	c_hostname := C.CString(hostname)
 	defer C.free(unsafe.Pointer(c_hostname))
 
-	C.g_hostname_is_non_ascii()
+	C.g_hostname_is_non_ascii(c_hostname)
 }
 
 // HostnameToAscii is a wrapper around the C function g_hostname_to_ascii.
@@ -43,7 +43,7 @@ func HostnameToAscii(hostname string) {
 	c_hostname := C.CString(hostname)
 	defer C.free(unsafe.Pointer(c_hostname))
 
-	C.g_hostname_to_ascii()
+	C.g_hostname_to_ascii(c_hostname)
 }
 
 // HostnameToUnicode is a wrapper around the C function g_hostname_to_unicode.
@@ -51,7 +51,7 @@ func HostnameToUnicode(hostname string) {
 	c_hostname := C.CString(hostname)
 	defer C.free(unsafe.Pointer(c_hostname))
 
-	C.g_hostname_to_unicode()
+	C.g_hostname_to_unicode(c_hostname)
 }
 
 // Unsupported : g_int64_equal : unsupported parameter v1 : type gpointer, gconstpointer

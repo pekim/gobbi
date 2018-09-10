@@ -24,7 +24,7 @@ func Dpgettext(domain string, msgctxtid string, msgidoffset uint64) {
 
 	c_msgidoffset := (C.gsize)(msgidoffset)
 
-	C.g_dpgettext()
+	C.g_dpgettext(c_domain, c_msgctxtid, c_msgidoffset)
 }
 
 // Unsupported : g_format_size_for_display : unsupported parameter size : type gint64, goffset
@@ -43,7 +43,7 @@ func Strcmp0(str1 string, str2 string) {
 	c_str2 := C.CString(str2)
 	defer C.free(unsafe.Pointer(c_str2))
 
-	C.g_strcmp0()
+	C.g_strcmp0(c_str1, c_str2)
 }
 
 // Unsupported : g_test_add_data_func : unsupported parameter test_data : type gpointer, gconstpointer
@@ -55,7 +55,7 @@ func TestBug(bugUriSnippet string) {
 	c_bug_uri_snippet := C.CString(bugUriSnippet)
 	defer C.free(unsafe.Pointer(c_bug_uri_snippet))
 
-	C.g_test_bug()
+	C.g_test_bug(c_bug_uri_snippet)
 }
 
 // TestBugBase is a wrapper around the C function g_test_bug_base.
@@ -63,7 +63,7 @@ func TestBugBase(uriPattern string) {
 	c_uri_pattern := C.CString(uriPattern)
 	defer C.free(unsafe.Pointer(c_uri_pattern))
 
-	C.g_test_bug_base()
+	C.g_test_bug_base(c_uri_pattern)
 }
 
 // Unsupported : g_test_create_case : unsupported parameter test_data : type gpointer, gconstpointer
@@ -73,7 +73,7 @@ func TestCreateSuite(suiteName string) {
 	c_suite_name := C.CString(suiteName)
 	defer C.free(unsafe.Pointer(c_suite_name))
 
-	C.g_test_create_suite()
+	C.g_test_create_suite(c_suite_name)
 }
 
 // TestGetRoot is a wrapper around the C function g_test_get_root.
@@ -95,7 +95,7 @@ func TestGetRoot() {
 func TestQueueFree(gfreePointer uintptr) {
 	c_gfree_pointer := (C.gpointer)(gfreePointer)
 
-	C.g_test_queue_free()
+	C.g_test_queue_free(c_gfree_pointer)
 }
 
 // TestRandDouble is a wrapper around the C function g_test_rand_double.
@@ -116,7 +116,7 @@ func TestRandIntRange(begin int32, end int32) {
 
 	c_end := (C.gint32)(end)
 
-	C.g_test_rand_int_range()
+	C.g_test_rand_int_range(c_begin, c_end)
 }
 
 // TestRun is a wrapper around the C function g_test_run.
@@ -160,7 +160,7 @@ func UriParseScheme(uri string) {
 	c_uri := C.CString(uri)
 	defer C.free(unsafe.Pointer(c_uri))
 
-	C.g_uri_parse_scheme()
+	C.g_uri_parse_scheme(c_uri)
 }
 
 // UriUnescapeSegment is a wrapper around the C function g_uri_unescape_segment.
@@ -174,7 +174,7 @@ func UriUnescapeSegment(escapedString string, escapedStringEnd string, illegalCh
 	c_illegal_characters := C.CString(illegalCharacters)
 	defer C.free(unsafe.Pointer(c_illegal_characters))
 
-	C.g_uri_unescape_segment()
+	C.g_uri_unescape_segment(c_escaped_string, c_escaped_string_end, c_illegal_characters)
 }
 
 // UriUnescapeString is a wrapper around the C function g_uri_unescape_string.
@@ -185,5 +185,5 @@ func UriUnescapeString(escapedString string, illegalCharacters string) {
 	c_illegal_characters := C.CString(illegalCharacters)
 	defer C.free(unsafe.Pointer(c_illegal_characters))
 
-	C.g_uri_unescape_string()
+	C.g_uri_unescape_string(c_escaped_string, c_illegal_characters)
 }

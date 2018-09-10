@@ -50,7 +50,7 @@ func StripContext(msgid string, msgval string) {
 	c_msgval := C.CString(msgval)
 	defer C.free(unsafe.Pointer(c_msgval))
 
-	C.g_strip_context()
+	C.g_strip_context(c_msgid, c_msgval)
 }
 
 // StrsplitSet is a wrapper around the C function g_strsplit_set.
@@ -63,7 +63,7 @@ func StrsplitSet(string string, delimiters string, maxTokens int32) {
 
 	c_max_tokens := (C.gint)(maxTokens)
 
-	C.g_strsplit_set()
+	C.g_strsplit_set(c_string, c_delimiters, c_max_tokens)
 }
 
 // Unsupported : g_unichar_get_mirror_char : unsupported parameter mirrored_ch : type gunichar, gunichar*

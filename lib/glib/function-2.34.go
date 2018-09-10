@@ -18,7 +18,7 @@ import "C"
 func SpawnCheckExitStatus(exitStatus int32) {
 	c_exit_status := (C.gint)(exitStatus)
 
-	C.g_spawn_check_exit_status()
+	C.g_spawn_check_exit_status(c_exit_status)
 }
 
 // Unsupported : g_test_add_data_func_full : unsupported parameter test_func : type TestDataFunc, GTestDataFunc

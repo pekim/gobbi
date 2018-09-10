@@ -24,7 +24,7 @@ func TestIncomplete(msg string) {
 	c_msg := C.CString(msg)
 	defer C.free(unsafe.Pointer(c_msg))
 
-	C.g_test_incomplete()
+	C.g_test_incomplete(c_msg)
 }
 
 // TestSetNonfatalAssertions is a wrapper around the C function g_test_set_nonfatal_assertions.
@@ -37,7 +37,7 @@ func TestSkip(msg string) {
 	c_msg := C.CString(msg)
 	defer C.free(unsafe.Pointer(c_msg))
 
-	C.g_test_skip()
+	C.g_test_skip(c_msg)
 }
 
 // TestSubprocess is a wrapper around the C function g_test_subprocess.

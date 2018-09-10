@@ -16,7 +16,7 @@ func CheckVersion(requiredMajor uint32, requiredMinor uint32, requiredMicro uint
 
 	c_required_micro := (C.guint)(requiredMicro)
 
-	C.glib_check_version()
+	C.glib_check_version(c_required_major, c_required_minor, c_required_micro)
 }
 
 // Unsupported : g_filename_display_basename : unsupported parameter filename : type filename, const gchar*
@@ -28,7 +28,7 @@ func GetFilenameCharsets(charsets string) {
 	c_charsets := C.CString(charsets)
 	defer C.free(unsafe.Pointer(c_charsets))
 
-	C.g_get_filename_charsets()
+	C.g_get_filename_charsets(c_charsets)
 }
 
 // GetLanguageNames is a wrapper around the C function g_get_language_names.
@@ -70,7 +70,7 @@ func StrvLength(strArray string) {
 	c_str_array := C.CString(strArray)
 	defer C.free(unsafe.Pointer(c_str_array))
 
-	C.g_strv_length()
+	C.g_strv_length(c_str_array)
 }
 
 // Unsupported : g_unlink : unsupported parameter filename : type filename, const gchar*
@@ -80,5 +80,5 @@ func UriListExtractUris(uriList string) {
 	c_uri_list := C.CString(uriList)
 	defer C.free(unsafe.Pointer(c_uri_list))
 
-	C.g_uri_list_extract_uris()
+	C.g_uri_list_extract_uris(c_uri_list)
 }

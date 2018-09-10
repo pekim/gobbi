@@ -16,7 +16,7 @@ func Dgettext(domain string, msgid string) {
 	c_msgid := C.CString(msgid)
 	defer C.free(unsafe.Pointer(c_msgid))
 
-	C.g_dgettext()
+	C.g_dgettext(c_domain, c_msgid)
 }
 
 // Dngettext is a wrapper around the C function g_dngettext.
@@ -32,7 +32,7 @@ func Dngettext(domain string, msgid string, msgidPlural string, n uint64) {
 
 	c_n := (C.gulong)(n)
 
-	C.g_dngettext()
+	C.g_dngettext(c_domain, c_msgid, c_msgid_plural, c_n)
 }
 
 // Dpgettext2 is a wrapper around the C function g_dpgettext2.
@@ -46,7 +46,7 @@ func Dpgettext2(domain string, context string, msgid string) {
 	c_msgid := C.CString(msgid)
 	defer C.free(unsafe.Pointer(c_msgid))
 
-	C.g_dpgettext2()
+	C.g_dpgettext2(c_domain, c_context, c_msgid)
 }
 
 // Unsupported : g_set_error_literal : unsupported parameter err : type Error, GError**

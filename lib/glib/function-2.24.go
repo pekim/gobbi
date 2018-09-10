@@ -26,7 +26,7 @@ func ReallocN(mem uintptr, nBlocks uint64, nBlockBytes uint64) {
 
 	c_n_block_bytes := (C.gsize)(nBlockBytes)
 
-	C.g_realloc_n()
+	C.g_realloc_n(c_mem, c_n_blocks, c_n_block_bytes)
 }
 
 // TryMalloc0N is a wrapper around the C function g_try_malloc0_n.
@@ -35,7 +35,7 @@ func TryMalloc0N(nBlocks uint64, nBlockBytes uint64) {
 
 	c_n_block_bytes := (C.gsize)(nBlockBytes)
 
-	C.g_try_malloc0_n()
+	C.g_try_malloc0_n(c_n_blocks, c_n_block_bytes)
 }
 
 // TryMallocN is a wrapper around the C function g_try_malloc_n.
@@ -44,7 +44,7 @@ func TryMallocN(nBlocks uint64, nBlockBytes uint64) {
 
 	c_n_block_bytes := (C.gsize)(nBlockBytes)
 
-	C.g_try_malloc_n()
+	C.g_try_malloc_n(c_n_blocks, c_n_block_bytes)
 }
 
 // TryReallocN is a wrapper around the C function g_try_realloc_n.
@@ -55,7 +55,7 @@ func TryReallocN(mem uintptr, nBlocks uint64, nBlockBytes uint64) {
 
 	c_n_block_bytes := (C.gsize)(nBlockBytes)
 
-	C.g_try_realloc_n()
+	C.g_try_realloc_n(c_mem, c_n_blocks, c_n_block_bytes)
 }
 
 // VariantIsObjectPath is a wrapper around the C function g_variant_is_object_path.
@@ -63,7 +63,7 @@ func VariantIsObjectPath(string string) {
 	c_string := C.CString(string)
 	defer C.free(unsafe.Pointer(c_string))
 
-	C.g_variant_is_object_path()
+	C.g_variant_is_object_path(c_string)
 }
 
 // VariantIsSignature is a wrapper around the C function g_variant_is_signature.
@@ -71,7 +71,7 @@ func VariantIsSignature(string string) {
 	c_string := C.CString(string)
 	defer C.free(unsafe.Pointer(c_string))
 
-	C.g_variant_is_signature()
+	C.g_variant_is_signature(c_string)
 }
 
 // VariantTypeStringScan is a wrapper around the C function g_variant_type_string_scan.
@@ -82,5 +82,5 @@ func VariantTypeStringScan(string string, limit string, endptr string) {
 	c_limit := C.CString(limit)
 	defer C.free(unsafe.Pointer(c_limit))
 
-	C.g_variant_type_string_scan()
+	C.g_variant_type_string_scan(c_string, c_limit, c_endptr)
 }

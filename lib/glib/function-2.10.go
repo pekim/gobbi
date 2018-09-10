@@ -15,7 +15,7 @@ func InternStaticString(string string) {
 	c_string := C.CString(string)
 	defer C.free(unsafe.Pointer(c_string))
 
-	C.g_intern_static_string()
+	C.g_intern_static_string(c_string)
 }
 
 // InternString is a wrapper around the C function g_intern_string.
@@ -23,21 +23,21 @@ func InternString(string string) {
 	c_string := C.CString(string)
 	defer C.free(unsafe.Pointer(c_string))
 
-	C.g_intern_string()
+	C.g_intern_string(c_string)
 }
 
 // SliceAlloc is a wrapper around the C function g_slice_alloc.
 func SliceAlloc(blockSize uint64) {
 	c_block_size := (C.gsize)(blockSize)
 
-	C.g_slice_alloc()
+	C.g_slice_alloc(c_block_size)
 }
 
 // SliceAlloc0 is a wrapper around the C function g_slice_alloc0.
 func SliceAlloc0(blockSize uint64) {
 	c_block_size := (C.gsize)(blockSize)
 
-	C.g_slice_alloc0()
+	C.g_slice_alloc0(c_block_size)
 }
 
 // SliceFree1 is a wrapper around the C function g_slice_free1.
@@ -46,7 +46,7 @@ func SliceFree1(blockSize uint64, memBlock uintptr) {
 
 	c_mem_block := (C.gpointer)(memBlock)
 
-	C.g_slice_free1()
+	C.g_slice_free1(c_block_size, c_mem_block)
 }
 
 // SliceFreeChainWithOffset is a wrapper around the C function g_slice_free_chain_with_offset.
@@ -57,7 +57,7 @@ func SliceFreeChainWithOffset(blockSize uint64, memChain uintptr, nextOffset uin
 
 	c_next_offset := (C.gsize)(nextOffset)
 
-	C.g_slice_free_chain_with_offset()
+	C.g_slice_free_chain_with_offset(c_block_size, c_mem_chain, c_next_offset)
 }
 
 // ThreadPoolGetMaxIdleTime is a wrapper around the C function g_thread_pool_get_max_idle_time.
@@ -69,5 +69,5 @@ func ThreadPoolGetMaxIdleTime() {
 func ThreadPoolSetMaxIdleTime(interval uint32) {
 	c_interval := (C.guint)(interval)
 
-	C.g_thread_pool_set_max_idle_time()
+	C.g_thread_pool_set_max_idle_time(c_interval)
 }

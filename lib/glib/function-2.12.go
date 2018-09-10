@@ -15,7 +15,7 @@ func AsciiStrtoll(nptr string, endptr string, base uint32) {
 
 	c_base := (C.guint)(base)
 
-	C.g_ascii_strtoll()
+	C.g_ascii_strtoll(c_nptr, c_endptr, c_base)
 }
 
 // Unsupported : g_base64_decode : unsupported parameter out_len : type gsize, gsize*
@@ -43,5 +43,5 @@ func MainCurrentSource() {
 func UnicharIswideCjk(c rune) {
 	c_c := (C.gunichar)(c)
 
-	C.g_unichar_iswide_cjk()
+	C.g_unichar_iswide_cjk(c_c)
 }

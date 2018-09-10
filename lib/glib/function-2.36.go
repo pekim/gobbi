@@ -10,7 +10,7 @@ import "C"
 func Close(fd int32) {
 	c_fd := (C.gint)(fd)
 
-	C.g_close()
+	C.g_close(c_fd)
 }
 
 // GetNumProcessors is a wrapper around the C function g_get_num_processors.
