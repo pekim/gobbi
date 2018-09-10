@@ -19,6 +19,8 @@
     <constant blacklist="true" name="KEY_FILE_DESKTOP_ACTION_GROUP_PREFIX"/>
     <constant blacklist="true" name="WIN32_MSG_HANDLE"/>
 
+    <enumeration blacklist="true" name="TestResult"/>
+
     <!--
       Function where either doesn't make sense to call from Go,
 	    or is too difficult to do (at least for now).

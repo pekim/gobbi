@@ -272,14 +272,7 @@ const (
 	TEST_LOG_STOP_SUITE   TestLogType = 11
 )
 
-type TestResult C.GTestResult
-
-const (
-	TEST_RUN_SUCCESS    TestResult = 0
-	TEST_RUN_SKIPPED    TestResult = 1
-	TEST_RUN_FAILURE    TestResult = 2
-	TEST_RUN_INCOMPLETE TestResult = 3
-)
+// Blacklisted enum : GTestResult
 
 type ThreadError C.GThreadError
 
