@@ -15,6 +15,10 @@
     <!-- avoid a name clash with the function file_test (go name FileTest) -->
     <bitfield name="FileTest" goname="GFileTest"/>
 
+    <!-- do not appear to be present in header files -->
+    <constant blacklist="true" name="KEY_FILE_DESKTOP_ACTION_GROUP_PREFIX"/>
+    <constant blacklist="true" name="WIN32_MSG_HANDLE"/>
+
     <!--
       Function where either doesn't make sense to call from Go,
 	    or is too difficult to do (at least for now).
