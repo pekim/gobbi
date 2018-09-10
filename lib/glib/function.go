@@ -495,10 +495,7 @@ func MemProfile() {
 
 // Unsupported : g_nullify_pointer : unsupported parameter nullify_location : type gpointer, gpointer*
 
-// NumberParserErrorQuark is a wrapper around the C function g_number_parser_error_quark.
-func NumberParserErrorQuark() {
-	C.g_number_parser_error_quark()
-}
+// Blacklisted : g_number_parser_error_quark
 
 // OnErrorQuery is a wrapper around the C function g_on_error_query.
 func OnErrorQuery(prgName string) {
@@ -1032,10 +1029,7 @@ func Strup(string string) {
 	C.g_strup(c_string)
 }
 
-// StrvGetType is a wrapper around the C function g_strv_get_type.
-func StrvGetType() {
-	C.g_strv_get_type()
-}
+// Blacklisted : g_strv_get_type
 
 // Unsupported : g_test_add_vtable : unsupported parameter test_data : type gpointer, gconstpointer
 
@@ -1293,10 +1287,7 @@ func UnicharXdigitValue(c rune) {
 
 // Unsupported : g_unicode_canonical_ordering : unsupported parameter string : type gunichar, gunichar*
 
-// UnixErrorQuark is a wrapper around the C function g_unix_error_quark.
-func UnixErrorQuark() {
-	C.g_unix_error_quark()
-}
+// Blacklisted : g_unix_error_quark
 
 // Usleep is a wrapper around the C function g_usleep.
 func Usleep(microseconds uint64) {
@@ -1486,10 +1477,7 @@ func Utf8Strup(str string, len int64) {
 
 // Unsupported : g_utf8_validate : unsupported parameter str : no type
 
-// VariantGetGtype is a wrapper around the C function g_variant_get_gtype.
-func VariantGetGtype() {
-	C.g_variant_get_gtype()
-}
+// Blacklisted : g_variant_get_gtype
 
 // Unsupported : g_variant_parse : unsupported parameter type : type VariantType, const GVariantType*
 

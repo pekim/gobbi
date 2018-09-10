@@ -59,13 +59,17 @@
     <!-- VariantType not supported yet -->
     <function blacklist="true" c:identifier="g_variant_type_checked_"/>
 
-    <!-- missing version -->
-    <function version="2.54" c:identifier="g_number_parser_error_quark"/>
+    <!--weirdly these are in GObject-2.0.gir, but appear to be otherwise unknown -->
+    <function blacklist="true" c:identifier="g_number_parser_error_quark"/>
+    <function blacklist="true" c:identifier="g_strv_get_type"/>
+    <function blacklist="true" c:identifier="g_unix_error_quark"/>
+    <function blacklist="true" c:identifier="g_variant_get_gtype"/>
 
     <!-- dependent on a callback available since a version -->
     <function version="2.28" c:identifier="g_test_add_vtable"/>
     <function version="2.28" c:identifier="g_test_add_data_func"/>
     <function version="2.28" c:identifier="g_test_create_case"/>
+
 
     <!-- no user_data parameter, so how to dispatch to correct Go function? -->
     <callback blacklist="true" name="CompareFunc"/>
