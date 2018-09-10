@@ -14,9 +14,23 @@ import "C"
 
 // Unsupported : g_bit_unlock : unsupported parameter address : type gint, volatile gint*
 
-// Blacklisted : g_malloc0_n
+// Malloc0N is a wrapper around the C function g_malloc0_n.
+func Malloc0N(nBlocks uint64, nBlockBytes uint64) {
+	c_n_blocks := (C.gsize)(nBlocks)
 
-// Blacklisted : g_malloc_n
+	c_n_block_bytes := (C.gsize)(nBlockBytes)
+
+	C.g_malloc0_n(c_n_blocks, c_n_block_bytes)
+}
+
+// MallocN is a wrapper around the C function g_malloc_n.
+func MallocN(nBlocks uint64, nBlockBytes uint64) {
+	c_n_blocks := (C.gsize)(nBlocks)
+
+	c_n_block_bytes := (C.gsize)(nBlockBytes)
+
+	C.g_malloc_n(c_n_blocks, c_n_block_bytes)
+}
 
 // ReallocN is a wrapper around the C function g_realloc_n.
 func ReallocN(mem uintptr, nBlocks uint64, nBlockBytes uint64) {

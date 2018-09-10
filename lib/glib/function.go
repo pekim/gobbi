@@ -1491,7 +1491,13 @@ func VariantParserGetErrorQuark() {
 	C.g_variant_parser_get_error_quark()
 }
 
-// Blacklisted : g_variant_type_checked_
+// VariantTypeChecked is a wrapper around the C function g_variant_type_checked_.
+func VariantTypeChecked(arg0 string) {
+	c_arg0 := C.CString(arg0)
+	defer C.free(unsafe.Pointer(c_arg0))
+
+	C.g_variant_type_checked_(c_arg0)
+}
 
 // VariantTypeStringIsValid is a wrapper around the C function g_variant_type_string_is_valid.
 func VariantTypeStringIsValid(typeString string) {
