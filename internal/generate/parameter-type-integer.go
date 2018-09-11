@@ -1,6 +1,8 @@
 package generate
 
 import (
+	"fmt"
+
 	"github.com/dave/jennifer/jen"
 )
 
@@ -12,6 +14,10 @@ func ParameterTypeIntegerNew(param *Parameter) *ParameterTypeInteger {
 	return &ParameterTypeInteger{param: param}
 }
 
+func (pt *ParameterTypeInteger) isSupported() (supported bool, reason string) {
+	return true, ""
+}
+
 func (pt *ParameterTypeInteger) generateFunctionDeclaration(g *jen.Group) {
 	g.
 		Id(pt.param.goVarName).
@@ -20,6 +26,10 @@ func (pt *ParameterTypeInteger) generateFunctionDeclaration(g *jen.Group) {
 
 func (pt *ParameterTypeInteger) generateCallArgument(g *jen.Group) {
 	g.Id(pt.param.cVarName)
+}
+
+func (pt *ParameterTypeInteger) generateOutCallArgument(g *jen.Group) {
+	panic(fmt.Sprintf("call argument for an integer out param, not supported : %s", pt.param.cVarName))
 }
 
 func (pt *ParameterTypeInteger) generateCVar(g *jen.Group) {

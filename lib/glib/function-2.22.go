@@ -8,11 +8,11 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : g_byte_array_unref : unsupported parameter array : no type
+// Unsupported : g_byte_array_unref : unsupported parameter array : no param type
 
-// Unsupported : g_double_equal : unsupported parameter v1 : type gpointer, gconstpointer
+// Unsupported : g_double_equal : unsupported parameter v1 : no param type
 
-// Unsupported : g_double_hash : unsupported parameter v : type gpointer, gconstpointer
+// Unsupported : g_double_hash : unsupported parameter v : no param type
 
 // HostnameIsAsciiEncoded is a wrapper around the C function g_hostname_is_ascii_encoded.
 func HostnameIsAsciiEncoded(hostname string) {
@@ -54,20 +54,20 @@ func HostnameToUnicode(hostname string) {
 	C.g_hostname_to_unicode(c_hostname)
 }
 
-// Unsupported : g_int64_equal : unsupported parameter v1 : type gpointer, gconstpointer
+// Unsupported : g_int64_equal : unsupported parameter v1 : no param type
 
-// Unsupported : g_int64_hash : unsupported parameter v : type gpointer, gconstpointer
+// Unsupported : g_int64_hash : unsupported parameter v : no param type
 
 // MainContextGetThreadDefault is a wrapper around the C function g_main_context_get_thread_default.
 func MainContextGetThreadDefault() {
 	C.g_main_context_get_thread_default()
 }
 
-// Unsupported : g_mkstemp_full : unsupported parameter tmpl : type filename, gchar*
+// Unsupported : g_mkstemp_full : unsupported parameter tmpl : no param type
 
 // ReloadUserSpecialDirsCache is a wrapper around the C function g_reload_user_special_dirs_cache.
 func ReloadUserSpecialDirsCache() {
 	C.g_reload_user_special_dirs_cache()
 }
 
-// Unsupported : g_test_log_set_fatal_handler : unsupported parameter log_func : type TestLogFatalFunc, GTestLogFatalFunc
+// Unsupported : g_test_log_set_fatal_handler : unsupported parameter log_func : no param type

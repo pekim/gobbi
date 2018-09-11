@@ -13,31 +13,33 @@ func AsciiStrtoll(nptr string, base uint32) {
 	c_nptr := C.CString(nptr)
 	defer C.free(unsafe.Pointer(c_nptr))
 
+	var c_endptr *C.gchar
+
 	c_base := (C.guint)(base)
 
-	C.g_ascii_strtoll(c_nptr, c_endptr, c_base)
+	C.g_ascii_strtoll(c_nptr, &c_endptr, c_base)
 }
 
-// Unsupported : g_base64_decode : unsupported parameter out_len : type gsize, gsize*
+// Unsupported : g_base64_decode : unsupported parameter out_len : no param type
 
-// Unsupported : g_base64_decode_step : unsupported parameter in : no type
+// Unsupported : g_base64_decode_step : unsupported parameter in : no param type
 
-// Unsupported : g_base64_encode : unsupported parameter data : no type
+// Unsupported : g_base64_encode : unsupported parameter data : no param type
 
-// Unsupported : g_base64_encode_close : unsupported parameter break_lines : type gboolean, gboolean
+// Unsupported : g_base64_encode_close : unsupported parameter break_lines : no param type
 
-// Unsupported : g_base64_encode_step : unsupported parameter in : no type
+// Unsupported : g_base64_encode_step : unsupported parameter in : no param type
 
-// Unsupported : g_hash_table_remove_all : unsupported parameter hash_table : type GLib.HashTable, GHashTable*
+// Unsupported : g_hash_table_remove_all : unsupported parameter hash_table : no param type
 
-// Unsupported : g_hash_table_steal_all : unsupported parameter hash_table : type GLib.HashTable, GHashTable*
+// Unsupported : g_hash_table_steal_all : unsupported parameter hash_table : no param type
 
 // MainCurrentSource is a wrapper around the C function g_main_current_source.
 func MainCurrentSource() {
 	C.g_main_current_source()
 }
 
-// Unsupported : g_time_val_from_iso8601 : unsupported parameter time_ : type TimeVal, GTimeVal*
+// Unsupported : g_time_val_from_iso8601 : unsupported parameter time_ : no param type
 
 // UnicharIswideCjk is a wrapper around the C function g_unichar_iswide_cjk.
 func UnicharIswideCjk(c rune) {

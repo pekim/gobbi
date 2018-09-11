@@ -19,17 +19,11 @@ func CheckVersion(requiredMajor uint32, requiredMinor uint32, requiredMicro uint
 	C.glib_check_version(c_required_major, c_required_minor, c_required_micro)
 }
 
-// Unsupported : g_filename_display_basename : unsupported parameter filename : type filename, const gchar*
+// Unsupported : g_filename_display_basename : unsupported parameter filename : no param type
 
-// Unsupported : g_filename_display_name : unsupported parameter filename : type filename, const gchar*
+// Unsupported : g_filename_display_name : unsupported parameter filename : no param type
 
-// GetFilenameCharsets is a wrapper around the C function g_get_filename_charsets.
-func GetFilenameCharsets(charsets string) {
-	c_charsets := C.CString(charsets)
-	defer C.free(unsafe.Pointer(c_charsets))
-
-	C.g_get_filename_charsets(c_charsets)
-}
+// Unsupported : g_get_filename_charsets : unsupported parameter charsets : in for string with indirection level of 3
 
 // GetLanguageNames is a wrapper around the C function g_get_language_names.
 func GetLanguageNames() {
@@ -61,19 +55,13 @@ func GetUserDataDir() {
 	C.g_get_user_data_dir()
 }
 
-// Unsupported : g_log_set_default_handler : unsupported parameter log_func : type LogFunc, GLogFunc
+// Unsupported : g_log_set_default_handler : unsupported parameter log_func : no param type
 
-// Unsupported : g_rmdir : unsupported parameter filename : type filename, const gchar*
+// Unsupported : g_rmdir : unsupported parameter filename : no param type
 
-// StrvLength is a wrapper around the C function g_strv_length.
-func StrvLength(strArray string) {
-	c_str_array := C.CString(strArray)
-	defer C.free(unsafe.Pointer(c_str_array))
+// Unsupported : g_strv_length : unsupported parameter str_array : in for string with indirection level of 2
 
-	C.g_strv_length(c_str_array)
-}
-
-// Unsupported : g_unlink : unsupported parameter filename : type filename, const gchar*
+// Unsupported : g_unlink : unsupported parameter filename : no param type
 
 // UriListExtractUris is a wrapper around the C function g_uri_list_extract_uris.
 func UriListExtractUris(uriList string) {

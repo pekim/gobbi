@@ -13,12 +13,14 @@ func AsciiStrtoull(nptr string, base uint32) {
 	c_nptr := C.CString(nptr)
 	defer C.free(unsafe.Pointer(c_nptr))
 
+	var c_endptr *C.gchar
+
 	c_base := (C.guint)(base)
 
-	C.g_ascii_strtoull(c_nptr, c_endptr, c_base)
+	C.g_ascii_strtoull(c_nptr, &c_endptr, c_base)
 }
 
-// Unsupported : g_fprintf : unsupported parameter file : type gpointer, FILE*
+// Unsupported : g_fprintf : unsupported parameter file : no param type
 
 // GetApplicationName is a wrapper around the C function g_get_application_name.
 func GetApplicationName() {
@@ -69,8 +71,8 @@ func Utf8Strreverse(str string, len int64) {
 	C.g_utf8_strreverse(c_str, c_len)
 }
 
-// Unsupported : g_vfprintf : unsupported parameter file : type gpointer, FILE*
+// Unsupported : g_vfprintf : unsupported parameter file : no param type
 
-// Unsupported : g_vprintf : unsupported parameter args : type va_list, va_list
+// Unsupported : g_vprintf : unsupported parameter args : no param type
 
-// Unsupported : g_vsprintf : unsupported parameter args : type va_list, va_list
+// Unsupported : g_vsprintf : unsupported parameter args : no param type

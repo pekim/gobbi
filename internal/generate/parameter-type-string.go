@@ -1,13 +1,37 @@
 package generate
 
-import "github.com/dave/jennifer/jen"
+import (
+	"fmt"
+	"strings"
+
+	"github.com/dave/jennifer/jen"
+)
 
 type ParameterTypeString struct {
-	param *Parameter
+	param         *Parameter
+	cTypeName     string
+	indirectLevel int
 }
 
 func ParameterTypeStringNew(param *Parameter) *ParameterTypeString {
-	return &ParameterTypeString{param: param}
+	cTypeParts := strings.Split(param.Type.CType, " ")
+	cType := cTypeParts[len(cTypeParts)-1]
+	cTypeName := strings.TrimRight(cType, "*")
+	indirectLevel := len(cType) - len(cTypeName)
+
+	return &ParameterTypeString{
+		param:         param,
+		cTypeName:     cTypeName,
+		indirectLevel: indirectLevel,
+	}
+}
+
+func (pt *ParameterTypeString) isSupported() (supported bool, reason string) {
+	if pt.param.Direction != "out" && pt.indirectLevel > 1 {
+		return false, fmt.Sprintf("in for string with indirection level of %d", pt.indirectLevel)
+	}
+
+	return true, ""
 }
 
 func (pt *ParameterTypeString) generateFunctionDeclaration(g *jen.Group) {
@@ -18,6 +42,12 @@ func (pt *ParameterTypeString) generateFunctionDeclaration(g *jen.Group) {
 
 func (pt *ParameterTypeString) generateCallArgument(g *jen.Group) {
 	g.Id(pt.param.cVarName)
+}
+
+func (pt *ParameterTypeString) generateOutCallArgument(g *jen.Group) {
+	g.
+		Op("&").
+		Id(pt.param.cVarName)
 }
 
 func (pt *ParameterTypeString) generateCVar(g *jen.Group) {
@@ -36,8 +66,9 @@ func (pt *ParameterTypeString) generateCVar(g *jen.Group) {
 }
 
 func (pt *ParameterTypeString) generateOutCVar(g *jen.Group) {
-	//g.
-	//	Var().
-	//	Id(pt.param.cVarName).
-	//	Qual("C", pt.param.Type.CType)
+	g.
+		Var().
+		Id(pt.param.cVarName).
+		Op(strings.Repeat("*", pt.indirectLevel-1)).
+		Qual("C", pt.cTypeName)
 }

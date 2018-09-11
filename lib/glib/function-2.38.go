@@ -8,16 +8,16 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : g_test_build_filename : unsupported parameter file_type : type TestFileType, GTestFileType
+// Unsupported : g_test_build_filename : unsupported parameter file_type : no param type
 
 // TestFailed is a wrapper around the C function g_test_failed.
 func TestFailed() {
 	C.g_test_failed()
 }
 
-// Unsupported : g_test_get_dir : unsupported parameter file_type : type TestFileType, GTestFileType
+// Unsupported : g_test_get_dir : unsupported parameter file_type : no param type
 
-// Unsupported : g_test_get_filename : unsupported parameter file_type : type TestFileType, GTestFileType
+// Unsupported : g_test_get_filename : unsupported parameter file_type : no param type
 
 // TestIncomplete is a wrapper around the C function g_test_incomplete.
 func TestIncomplete(msg string) {
@@ -45,4 +45,4 @@ func TestSubprocess() {
 	C.g_test_subprocess()
 }
 
-// Unsupported : g_test_trap_subprocess : unsupported parameter test_flags : type TestSubprocessFlags, GTestSubprocessFlags
+// Unsupported : g_test_trap_subprocess : unsupported parameter test_flags : no param type

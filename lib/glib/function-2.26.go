@@ -8,11 +8,11 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : g_date_time_compare : unsupported parameter dt1 : type gpointer, gconstpointer
+// Unsupported : g_date_time_compare : unsupported parameter dt1 : no param type
 
-// Unsupported : g_date_time_equal : unsupported parameter dt1 : type gpointer, gconstpointer
+// Unsupported : g_date_time_equal : unsupported parameter dt1 : no param type
 
-// Unsupported : g_date_time_hash : unsupported parameter datetime : type gpointer, gconstpointer
+// Unsupported : g_date_time_hash : unsupported parameter datetime : no param type
 
 // Dcgettext is a wrapper around the C function g_dcgettext.
 func Dcgettext(domain string, msgid string, category int32) {

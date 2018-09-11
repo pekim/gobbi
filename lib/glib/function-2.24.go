@@ -8,11 +8,11 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : g_bit_lock : unsupported parameter address : type gint, volatile gint*
+// Unsupported : g_bit_lock : unsupported parameter address : no param type
 
-// Unsupported : g_bit_trylock : unsupported parameter address : type gint, volatile gint*
+// Unsupported : g_bit_trylock : unsupported parameter address : no param type
 
-// Unsupported : g_bit_unlock : unsupported parameter address : type gint, volatile gint*
+// Unsupported : g_bit_unlock : unsupported parameter address : no param type
 
 // Malloc0N is a wrapper around the C function g_malloc0_n.
 func Malloc0N(nBlocks uint64, nBlockBytes uint64) {
@@ -96,5 +96,7 @@ func VariantTypeStringScan(string string, limit string) {
 	c_limit := C.CString(limit)
 	defer C.free(unsafe.Pointer(c_limit))
 
-	C.g_variant_type_string_scan(c_string, c_limit, c_endptr)
+	var c_endptr *C.gchar
+
+	C.g_variant_type_string_scan(c_string, c_limit, &c_endptr)
 }

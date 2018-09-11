@@ -16,7 +16,7 @@ func StrIsAscii(str string) {
 	C.g_str_is_ascii(c_str)
 }
 
-// Unsupported : g_str_match_string : unsupported parameter accept_alternates : type gboolean, gboolean
+// Unsupported : g_str_match_string : unsupported parameter accept_alternates : no param type
 
 // StrToAscii is a wrapper around the C function g_str_to_ascii.
 func StrToAscii(str string, fromLocale string) {
@@ -29,6 +29,6 @@ func StrToAscii(str string, fromLocale string) {
 	C.g_str_to_ascii(c_str, c_from_locale)
 }
 
-// Unsupported : g_str_tokenize_and_fold : unsupported parameter ascii_alternates : no type
+// Unsupported : g_str_tokenize_and_fold : unsupported parameter ascii_alternates : no param type
 
-// Unsupported : g_variant_parse_error_print_context : unsupported parameter error : type Error, GError*
+// Unsupported : g_variant_parse_error_print_context : unsupported parameter error : no param type

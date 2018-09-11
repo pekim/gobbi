@@ -18,8 +18,8 @@ func GetNumProcessors() {
 	C.g_get_num_processors()
 }
 
-// Unsupported : g_unix_fd_add : unsupported parameter condition : type IOCondition, GIOCondition
+// Unsupported : g_unix_fd_add : unsupported parameter condition : no param type
 
-// Unsupported : g_unix_fd_add_full : unsupported parameter condition : type IOCondition, GIOCondition
+// Unsupported : g_unix_fd_add_full : unsupported parameter condition : no param type
 
-// Unsupported : g_unix_fd_source_new : unsupported parameter condition : type IOCondition, GIOCondition
+// Unsupported : g_unix_fd_source_new : unsupported parameter condition : no param type

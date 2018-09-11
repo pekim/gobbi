@@ -8,21 +8,21 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : g_access : unsupported parameter filename : type filename, const gchar*
+// Unsupported : g_access : unsupported parameter filename : no param type
 
-// Unsupported : g_build_filenamev : unsupported parameter args : no type
+// Unsupported : g_build_filenamev : unsupported parameter args : no param type
 
-// Unsupported : g_build_pathv : unsupported parameter args : no type
+// Unsupported : g_build_pathv : unsupported parameter args : no param type
 
-// Unsupported : g_chdir : unsupported parameter path : type filename, const gchar*
+// Unsupported : g_chdir : unsupported parameter path : no param type
 
-// Unsupported : g_datalist_get_flags : unsupported parameter datalist : type Data, GData**
+// Unsupported : g_datalist_get_flags : unsupported parameter datalist : no param type
 
-// Unsupported : g_datalist_set_flags : unsupported parameter datalist : type Data, GData**
+// Unsupported : g_datalist_set_flags : unsupported parameter datalist : no param type
 
-// Unsupported : g_datalist_unset_flags : unsupported parameter datalist : type Data, GData**
+// Unsupported : g_datalist_unset_flags : unsupported parameter datalist : no param type
 
-// Unsupported : g_file_set_contents : unsupported parameter filename : type filename, const gchar*
+// Unsupported : g_file_set_contents : unsupported parameter filename : no param type
 
 // GetHostName is a wrapper around the C function g_get_host_name.
 func GetHostName() {
@@ -34,7 +34,7 @@ func Listenv() {
 	C.g_listenv()
 }
 
-// Unsupported : g_mkdir_with_parents : unsupported parameter pathname : type filename, const gchar*
+// Unsupported : g_mkdir_with_parents : unsupported parameter pathname : no param type
 
 // TryMalloc0 is a wrapper around the C function g_try_malloc0.
 func TryMalloc0(nBytes uint64) {

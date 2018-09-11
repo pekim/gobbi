@@ -47,6 +47,14 @@ func (p Parameter) isSupported() (bool, string) {
 		return false, "varargs"
 	}
 
+	if p.paramType == nil {
+		return false, "no param type"
+	}
+
+	if supported, reason := p.paramType.isSupported(); !supported {
+		return false, reason
+	}
+
 	if p.goType == "" {
 		if p.Type != nil {
 			return false, fmt.Sprintf("type %s, %s", p.Type.Name, p.Type.CType)
@@ -77,5 +85,9 @@ func (p Parameter) generateCVar(g *jen.Group) {
 }
 
 func (p Parameter) generateCallArgument(g *jen.Group) {
-	p.paramType.generateCallArgument(g)
+	if p.Direction == "out" {
+		p.paramType.generateOutCallArgument(g)
+	} else {
+		p.paramType.generateCallArgument(g)
+	}
 }

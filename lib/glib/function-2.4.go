@@ -8,39 +8,39 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : g_atomic_int_add : unsupported parameter atomic : type gint, volatile gint*
+// Unsupported : g_atomic_int_add : unsupported parameter atomic : no param type
 
-// Unsupported : g_atomic_int_compare_and_exchange : unsupported parameter atomic : type gint, volatile gint*
+// Unsupported : g_atomic_int_compare_and_exchange : unsupported parameter atomic : no param type
 
-// Unsupported : g_atomic_int_dec_and_test : unsupported parameter atomic : type gint, volatile gint*
+// Unsupported : g_atomic_int_dec_and_test : unsupported parameter atomic : no param type
 
-// Unsupported : g_atomic_int_exchange_and_add : unsupported parameter atomic : type gint, volatile gint*
+// Unsupported : g_atomic_int_exchange_and_add : unsupported parameter atomic : no param type
 
-// Unsupported : g_atomic_int_get : unsupported parameter atomic : type gint, volatile const gint*
+// Unsupported : g_atomic_int_get : unsupported parameter atomic : no param type
 
-// Unsupported : g_atomic_int_inc : unsupported parameter atomic : type gint, volatile gint*
+// Unsupported : g_atomic_int_inc : unsupported parameter atomic : no param type
 
-// Unsupported : g_atomic_int_set : unsupported parameter atomic : type gint, volatile gint*
+// Unsupported : g_atomic_int_set : unsupported parameter atomic : no param type
 
-// Unsupported : g_atomic_pointer_compare_and_exchange : unsupported parameter atomic : type gpointer, void*
+// Unsupported : g_atomic_pointer_compare_and_exchange : unsupported parameter atomic : no param type
 
-// Unsupported : g_atomic_pointer_get : unsupported parameter atomic : type gpointer, void*
+// Unsupported : g_atomic_pointer_get : unsupported parameter atomic : no param type
 
-// Unsupported : g_atomic_pointer_set : unsupported parameter atomic : type gpointer, void*
+// Unsupported : g_atomic_pointer_set : unsupported parameter atomic : no param type
 
-// Unsupported : g_child_watch_add : unsupported parameter pid : type Pid, GPid
+// Unsupported : g_child_watch_add : unsupported parameter pid : no param type
 
-// Unsupported : g_child_watch_add_full : unsupported parameter pid : type Pid, GPid
+// Unsupported : g_child_watch_add_full : unsupported parameter pid : no param type
 
-// Unsupported : g_child_watch_source_new : unsupported parameter pid : type Pid, GPid
+// Unsupported : g_child_watch_source_new : unsupported parameter pid : no param type
 
-// Unsupported : g_file_read_link : unsupported parameter filename : type filename, const gchar*
+// Unsupported : g_file_read_link : unsupported parameter filename : no param type
 
 // Unsupported : g_markup_printf_escaped : unsupported parameter ... : varargs
 
-// Unsupported : g_markup_vprintf_escaped : unsupported parameter args : type va_list, va_list
+// Unsupported : g_markup_vprintf_escaped : unsupported parameter args : no param type
 
-// Unsupported : g_setenv : unsupported parameter variable : type filename, const gchar*
+// Unsupported : g_setenv : unsupported parameter variable : no param type
 
 // StripContext is a wrapper around the C function g_strip_context.
 func StripContext(msgid string, msgval string) {
@@ -66,8 +66,8 @@ func StrsplitSet(string string, delimiters string, maxTokens int32) {
 	C.g_strsplit_set(c_string, c_delimiters, c_max_tokens)
 }
 
-// Unsupported : g_unichar_get_mirror_char : unsupported parameter mirrored_ch : type gunichar, gunichar*
+// Unsupported : g_unichar_get_mirror_char : unsupported parameter mirrored_ch : no param type
 
-// Unsupported : g_unsetenv : unsupported parameter variable : type filename, const gchar*
+// Unsupported : g_unsetenv : unsupported parameter variable : no param type
 
-// Unsupported : g_vasprintf : unsupported parameter args : type va_list, va_list
+// Unsupported : g_vasprintf : unsupported parameter string : in for string with indirection level of 2

@@ -49,4 +49,4 @@ func Dpgettext2(domain string, context string, msgid string) {
 	C.g_dpgettext2(c_domain, c_context, c_msgid)
 }
 
-// Unsupported : g_set_error_literal : unsupported parameter err : type Error, GError**
+// Unsupported : g_set_error_literal : unsupported parameter err : no param type
