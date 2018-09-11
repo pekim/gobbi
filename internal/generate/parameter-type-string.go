@@ -57,6 +57,12 @@ func (pt *ParameterTypeString) generateCVar(g *jen.Group) {
 		Qual("C", "CString").
 		Call(jen.Id(pt.param.goVarName))
 
+	if pt.param.TransferOwnership != "none" {
+		// ownership is transferred (to the library) so we should not
+		// free the string memory
+		return
+	}
+
 	g.
 		Defer().
 		Qual("C", "free").
