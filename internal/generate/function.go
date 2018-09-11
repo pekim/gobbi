@@ -55,6 +55,10 @@ func (f *Function) supported() (supported bool, reason string) {
 		return false, fmt.Sprintf("%s : %s", f.CIdentifier, reason)
 	}
 
+	if f.Throws != 0 {
+		return false, "throws"
+	}
+
 	return true, ""
 }
 

@@ -6,12 +6,7 @@ package glib
 // #include <stdlib.h>
 import "C"
 
-// Close is a wrapper around the C function g_close.
-func Close(fd int32) {
-	c_fd := (C.gint)(fd)
-
-	C.g_close(c_fd)
-}
+// Unsupported : throws
 
 // GetNumProcessors is a wrapper around the C function g_get_num_processors.
 func GetNumProcessors() {

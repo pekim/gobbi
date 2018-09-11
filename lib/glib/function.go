@@ -172,10 +172,7 @@ func ByteArrayNew() {
 	C.g_byte_array_new()
 }
 
-// ClearError is a wrapper around the C function g_clear_error.
-func ClearError() {
-	C.g_clear_error()
-}
+// Unsupported : throws
 
 // Unsupported : g_convert : unsupported parameter str : no param type
 
@@ -261,15 +258,7 @@ func FileErrorQuark() {
 
 // Unsupported : g_file_test : unsupported parameter filename : no param type
 
-// FilenameFromUri is a wrapper around the C function g_filename_from_uri.
-func FilenameFromUri(uri string) {
-	c_uri := C.CString(uri)
-	defer C.free(unsafe.Pointer(c_uri))
-
-	var c_hostname *C.gchar
-
-	C.g_filename_from_uri(c_uri, &c_hostname)
-}
+// Unsupported : throws
 
 // Unsupported : g_filename_from_utf8 : unsupported parameter bytes_read : no param type
 
