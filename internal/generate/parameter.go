@@ -2,6 +2,7 @@ package generate
 
 import (
 	"fmt"
+
 	"github.com/dave/jennifer/jen"
 )
 
@@ -16,24 +17,27 @@ type Parameter struct {
 	Array             *Array    `xml:"array"`
 	Varargs           *struct{} `xml:"varargs"`
 
-	goName   string
-	goType   string
-	cVarName string
+	paramType ParameterType
+	goVarName string
+	goType    string
+	cVarName  string
 }
 
 func (p *Parameter) init(ns *Namespace) {
 	p.Namespace = ns
-	p.goName = makeGoName(p.Name)
+	p.goVarName = makeGoName(p.Name)
 	p.cVarName = "c_" + p.Name
 
 	if p.Type != nil {
 		p.Type.Namespace = ns
 
-		goType, isPrimitive := primitiveCTypeMap[p.Type.CType]
-		if isPrimitive {
+		goType, isInteger := integerCTypeMap[p.Type.CType]
+		if isInteger {
 			p.goType = goType
+			p.paramType = ParameterTypeIntegerNew(p)
 		} else if p.Type.Name == "utf8" {
 			p.goType = "string"
+			p.paramType = ParameterTypeStringNew(p)
 		}
 	}
 }
@@ -59,84 +63,19 @@ func (p Parameter) generateFunctionDeclaration(g *jen.Group) {
 		return
 	}
 
-	g.
-		Id(p.goName).
-		Id(p.goType)
+	p.paramType.generateFunctionDeclaration(g)
 }
 
 func (p Parameter) generateCVar(g *jen.Group) {
 	if p.Direction == "out" {
-		p.generateOutCVar(g)
-		return
+		p.paramType.generateOutCVar(g)
+	} else {
+		p.paramType.generateCVar(g)
 	}
-
-	if p.Type.Name == "utf8" {
-		p.generateAssignmentToCVarString(g)
-		return
-	}
-	p.generateAssignmentToCVarPrimitive(g)
-}
-
-func (p Parameter) generateAssignmentToCVarString(g *jen.Group) {
-	g.
-		Id(p.cVarName).
-		Op(":=").
-		Qual("C", "CString").
-		Call(jen.Id(p.goName))
-
-	g.
-		Defer().
-		Qual("C", "free").
-		Call(jen.
-			Qual("unsafe", "Pointer").
-			Call(jen.Id(p.cVarName)))
-
-	g.Line()
-}
-
-func (p Parameter) generateAssignmentToCVarPrimitive(g *jen.Group) {
-	g.
-		Id(p.cVarName).
-		Op(":=").
-		Parens(jen.Qual("C", p.Type.CType)).
-		Parens(jen.Id(p.goName))
-
-	g.Line()
-}
-
-func (p Parameter) generateOutCVar(g *jen.Group) {
-	if p.Type.Name == "utf8" {
-		p.generateOutCVarString(g)
-		return
-	}
-	p.generateOutCVarPrimitive(g)
-}
-
-func (p Parameter) generateOutCVarString(g *jen.Group) {
-	//g.
-	//	Var().
-	//	Id(p.cVarName).
-	//	Qual("C", p.Type.CType)
-
-	//g.
-	//	Defer().
-	//	Qual("C", "free").
-	//	Call(jen.
-	//		Qual("unsafe", "Pointer").
-	//		Call(jen.Id(p.cVarName)))
-
-	g.Line()
-}
-
-func (p Parameter) generateOutCVarPrimitive(g *jen.Group) {
-	g.
-		Var().
-		Id(p.cVarName).
-		Qual("C", p.Type.CType)
 
 	g.Line()
 }
 
 func (p Parameter) generateCallArgument(g *jen.Group) {
-	g.Id(p.cVarName)
+	p.paramType.generateCallArgument(g)
 }

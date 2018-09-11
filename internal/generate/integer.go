@@ -1,6 +1,6 @@
 package generate
 
-var primitiveCTypeMap = map[string]string{
+var integerCTypeMap = map[string]string{
 	"gshort": "int16",
 	"gint":   "int32",
 	"glong":  "int64",
