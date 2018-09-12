@@ -8,46 +8,15 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// AtomicIntAdd is a wrapper around the C function g_atomic_int_add.
-func AtomicIntAdd(atomic int32, val int32) int32 {
-	c_atomic := (C.gint)(atomic)
-
-	c_val := (C.gint)(val)
-
-	retC := C.g_atomic_int_add(c_atomic, c_val)
-	retGo :=
-		(int32)(retC)
-
-	return retGo
-}
+// Blacklisted : g_atomic_int_add
 
 // Unsupported : g_atomic_int_compare_and_exchange : no return type
 
 // Unsupported : g_atomic_int_dec_and_test : no return type
 
-// AtomicIntExchangeAndAdd is a wrapper around the C function g_atomic_int_exchange_and_add.
-func AtomicIntExchangeAndAdd(atomic int32, val int32) int32 {
-	c_atomic := (C.gint)(atomic)
+// Blacklisted : g_atomic_int_exchange_and_add
 
-	c_val := (C.gint)(val)
-
-	retC := C.g_atomic_int_exchange_and_add(c_atomic, c_val)
-	retGo :=
-		(int32)(retC)
-
-	return retGo
-}
-
-// AtomicIntGet is a wrapper around the C function g_atomic_int_get.
-func AtomicIntGet(atomic int32) int32 {
-	c_atomic := (C.gint)(atomic)
-
-	retC := C.g_atomic_int_get(c_atomic)
-	retGo :=
-		(int32)(retC)
-
-	return retGo
-}
+// Blacklisted : g_atomic_int_get
 
 // Unsupported : g_atomic_int_inc : no return type
 

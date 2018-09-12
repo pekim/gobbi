@@ -25,15 +25,15 @@
       Function where either doesn't make sense to call from Go,
 	    or is too difficult to do (at least for now).
     -->
-    <!--<function blacklist="true" c:identifier="g_atomic_int_add"/>-->
-    <!--<function blacklist="true" c:identifier="g_atomic_int_compare_and_exchange"/>-->
-    <!--<function blacklist="true" c:identifier="g_atomic_int_dec_and_test"/>-->
-    <!--<function blacklist="true" c:identifier="g_atomic_int_exchange_and_add"/>-->
-    <!--<function blacklist="true" c:identifier="g_atomic_int_get"/>-->
-    <!--<function blacklist="true" c:identifier="g_atomic_int_inc"/>-->
-    <!--<function blacklist="true" c:identifier="g_atomic_int_set"/>-->
-    <!--<function blacklist="true" c:identifier="g_atomic_pointer_compare_and_exchange"/>-->
-    <!--<function blacklist="true" c:identifier="g_atomic_pointer_set"/>-->
+    <function blacklist="true" c:identifier="g_atomic_int_add"/>
+    <function blacklist="true" c:identifier="g_atomic_int_compare_and_exchange"/>
+    <function blacklist="true" c:identifier="g_atomic_int_dec_and_test"/>
+    <function blacklist="true" c:identifier="g_atomic_int_exchange_and_add"/>
+    <function blacklist="true" c:identifier="g_atomic_int_get"/>
+    <function blacklist="true" c:identifier="g_atomic_int_inc"/>
+    <function blacklist="true" c:identifier="g_atomic_int_set"/>
+    <function blacklist="true" c:identifier="g_atomic_pointer_compare_and_exchange"/>
+    <function blacklist="true" c:identifier="g_atomic_pointer_set"/>
     <!--<function blacklist="true" c:identifier="g_bit_lock"/>-->
     <!--<function blacklist="true" c:identifier="g_bit_trylock"/>-->
     <!--<function blacklist="true" c:identifier="g_bit_unlock"/>-->
