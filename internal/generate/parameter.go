@@ -30,15 +30,7 @@ func (p *Parameter) init(ns *Namespace) {
 
 	if p.Type != nil {
 		p.Type.Namespace = ns
-
-		goType, isInteger := integerCTypeMap[p.Type.CType]
-		if isInteger {
-			p.goType = goType
-			p.paramType = ParameterTypeIntegerNew(p)
-		} else if p.Type.Name == "utf8" {
-			p.goType = "string"
-			p.paramType = ParameterTypeStringNew(p)
-		}
+		p.goType, p.paramType = parameterType(p)
 	}
 }
 

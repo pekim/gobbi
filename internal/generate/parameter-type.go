@@ -11,3 +11,17 @@ type ParameterType interface {
 	generateCVar(g *jen.Group)
 	generateOutCVar(g *jen.Group)
 }
+
+// parameterType gets the Go type and a ParameterType for a Parameter.
+func parameterType(param *Parameter) (string, ParameterType) {
+	goType, isInteger := integerCTypeMap[param.Type.CType]
+	if isInteger {
+		return goType, ParameterTypeIntegerNew(param)
+	}
+
+	if param.Type.Name == "utf8" {
+		return "string", ParameterTypeStringNew(param)
+	}
+
+	return "", nil
+}

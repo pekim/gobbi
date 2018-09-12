@@ -15,7 +15,7 @@ type ReturnValue struct {
 	Array             *Array `xml:"array"`
 
 	returnType ReturnType
-	goType    string
+	goType     string
 }
 
 func (r *ReturnValue) init(ns *Namespace) {
@@ -23,15 +23,7 @@ func (r *ReturnValue) init(ns *Namespace) {
 
 	if r.Type != nil {
 		r.Type.Namespace = ns
-
-		goType, isInteger := integerCTypeMap[r.Type.CType]
-		if isInteger {
-			r.goType = goType
-			r.returnType = ReturnTypeIntegerNew(r)
-		//} else if p.Type.Name == "utf8" {
-		//	p.goType = "string"
-		//	p.paramType = ParameterTypeStringNew(p)
-		}
+		r.goType, r.returnType = returnType(r)
 	}
 }
 
@@ -41,7 +33,7 @@ func (r *ReturnValue) isSupported() (bool, string) {
 	}
 
 	if supported, reason := r.returnType.isSupported(); !supported {
-		return false, fmt.Sprintf("return type : %s",reason)
+		return false, fmt.Sprintf("return type : %s", reason)
 	}
 
 	return true, ""
