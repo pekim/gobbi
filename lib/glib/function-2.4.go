@@ -55,16 +55,7 @@ func AtomicIntGet(atomic int32) int32 {
 
 // Unsupported : g_atomic_pointer_compare_and_exchange : no return type
 
-// AtomicPointerGet is a wrapper around the C function g_atomic_pointer_get.
-func AtomicPointerGet(atomic uintptr) uintptr {
-	c_atomic := (C.gpointer)(atomic)
-
-	retC := C.g_atomic_pointer_get(c_atomic)
-	retGo :=
-		(uintptr)(retC)
-
-	return retGo
-}
+// Blacklisted : g_atomic_pointer_get
 
 // Unsupported : g_atomic_pointer_set : no return type
 

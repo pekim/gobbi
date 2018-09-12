@@ -33,7 +33,6 @@
     <!--<function blacklist="true" c:identifier="g_atomic_int_inc"/>-->
     <!--<function blacklist="true" c:identifier="g_atomic_int_set"/>-->
     <!--<function blacklist="true" c:identifier="g_atomic_pointer_compare_and_exchange"/>-->
-    <!--<function blacklist="true" c:identifier="g_atomic_pointer_get"/>-->
     <!--<function blacklist="true" c:identifier="g_atomic_pointer_set"/>-->
     <!--<function blacklist="true" c:identifier="g_bit_lock"/>-->
     <!--<function blacklist="true" c:identifier="g_bit_trylock"/>-->
@@ -48,6 +47,10 @@
     <!--<function blacklist="true" c:identifier="g_unicode_canonical_ordering"/>-->
     <!--<function blacklist="true" c:identifier="g_utf8_to_ucs4_fast"/>-->
     <!--<function blacklist="true" c:identifier="g_assertion_message_error"/>-->
+
+    <!--cgo-gcc-prolog: In function ‘_cgo_5905a9f56549_Cfunc_g_atomic_pointer_get’:-->
+    <!--/usr/include/glib-2.0/glib/gmacros.h:232:53: error: size of array ‘_GStaticAssertCompileTimeAssertion_3’ is negative-->
+    <function blacklist="true" c:identifier="g_atomic_pointer_get"/>
 
     <!-- "long double" is not supported by cgo -->
     <!--<function blacklist="true" c:identifier="g_assertion_message_cmpnum"/>-->
