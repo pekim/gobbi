@@ -6,7 +6,7 @@ package glib
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : g_hash_table_unref : unsupported parameter hash_table : no param type
+// Unsupported : g_hash_table_unref : unsupported parameter hash_table : no param type for GLib.HashTable, GHashTable*
 
 // Unsupported : g_intern_static_string : no return type
 

@@ -17,8 +17,8 @@ func GetNumProcessors() uint32 {
 	return retGo
 }
 
-// Unsupported : g_unix_fd_add : unsupported parameter condition : no param type
+// Unsupported : g_unix_fd_add : unsupported parameter condition : no param type for IOCondition, GIOCondition
 
-// Unsupported : g_unix_fd_add_full : unsupported parameter condition : no param type
+// Unsupported : g_unix_fd_add_full : unsupported parameter condition : no param type for IOCondition, GIOCondition
 
-// Unsupported : g_unix_fd_source_new : unsupported parameter condition : no param type
+// Unsupported : g_unix_fd_source_new : unsupported parameter condition : no param type for IOCondition, GIOCondition

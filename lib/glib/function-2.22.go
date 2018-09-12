@@ -8,9 +8,9 @@ import "C"
 
 // Unsupported : g_byte_array_unref : unsupported parameter array : no param type
 
-// Unsupported : g_double_equal : unsupported parameter v1 : no param type
+// Unsupported : g_double_equal : unsupported parameter v1 : no param type for gpointer, gconstpointer
 
-// Unsupported : g_double_hash : unsupported parameter v : no param type
+// Unsupported : g_double_hash : unsupported parameter v : no param type for gpointer, gconstpointer
 
 // Unsupported : g_hostname_is_ascii_encoded : no return type
 
@@ -22,14 +22,14 @@ import "C"
 
 // Unsupported : g_hostname_to_unicode : no return type
 
-// Unsupported : g_int64_equal : unsupported parameter v1 : no param type
+// Unsupported : g_int64_equal : unsupported parameter v1 : no param type for gpointer, gconstpointer
 
-// Unsupported : g_int64_hash : unsupported parameter v : no param type
+// Unsupported : g_int64_hash : unsupported parameter v : no param type for gpointer, gconstpointer
 
 // Unsupported : g_main_context_get_thread_default : no return type
 
-// Unsupported : g_mkstemp_full : unsupported parameter tmpl : no param type
+// Unsupported : g_mkstemp_full : unsupported parameter tmpl : no param type for filename, gchar*
 
 // Unsupported : g_reload_user_special_dirs_cache : no return type
 
-// Unsupported : g_test_log_set_fatal_handler : unsupported parameter log_func : no param type
+// Unsupported : g_test_log_set_fatal_handler : unsupported parameter log_func : no param type for TestLogFatalFunc, GTestLogFatalFunc

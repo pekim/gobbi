@@ -6,13 +6,13 @@ package glib
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : g_test_build_filename : unsupported parameter file_type : no param type
+// Unsupported : g_test_build_filename : unsupported parameter file_type : no param type for TestFileType, GTestFileType
 
 // Unsupported : g_test_failed : no return type
 
-// Unsupported : g_test_get_dir : unsupported parameter file_type : no param type
+// Unsupported : g_test_get_dir : unsupported parameter file_type : no param type for TestFileType, GTestFileType
 
-// Unsupported : g_test_get_filename : unsupported parameter file_type : no param type
+// Unsupported : g_test_get_filename : unsupported parameter file_type : no param type for TestFileType, GTestFileType
 
 // Unsupported : g_test_incomplete : no return type
 
@@ -22,4 +22,4 @@ import "C"
 
 // Unsupported : g_test_subprocess : no return type
 
-// Unsupported : g_test_trap_subprocess : unsupported parameter test_flags : no param type
+// Unsupported : g_test_trap_subprocess : unsupported parameter test_flags : no param type for TestSubprocessFlags, GTestSubprocessFlags

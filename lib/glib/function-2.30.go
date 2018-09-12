@@ -6,61 +6,61 @@ package glib
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : g_atomic_int_and : unsupported parameter atomic : no param type
+// Unsupported : g_atomic_int_and : unsupported parameter atomic : no param type for guint, volatile guint*
 
-// Unsupported : g_atomic_int_or : unsupported parameter atomic : no param type
+// Unsupported : g_atomic_int_or : unsupported parameter atomic : no param type for guint, volatile guint*
 
-// Unsupported : g_atomic_int_xor : unsupported parameter atomic : no param type
+// Unsupported : g_atomic_int_xor : unsupported parameter atomic : no param type for guint, volatile guint*
 
-// Unsupported : g_atomic_pointer_add : unsupported parameter atomic : no param type
+// Unsupported : g_atomic_pointer_add : unsupported parameter atomic : no param type for gpointer, void*
 
-// Unsupported : g_atomic_pointer_and : unsupported parameter atomic : no param type
+// Unsupported : g_atomic_pointer_and : unsupported parameter atomic : no param type for gpointer, void*
 
-// Unsupported : g_atomic_pointer_or : unsupported parameter atomic : no param type
+// Unsupported : g_atomic_pointer_or : unsupported parameter atomic : no param type for gpointer, void*
 
-// Unsupported : g_atomic_pointer_xor : unsupported parameter atomic : no param type
+// Unsupported : g_atomic_pointer_xor : unsupported parameter atomic : no param type for gpointer, void*
 
-// Unsupported : g_compute_hmac_for_data : unsupported parameter digest_type : no param type
+// Unsupported : g_compute_hmac_for_data : unsupported parameter digest_type : no param type for ChecksumType, GChecksumType
 
-// Unsupported : g_compute_hmac_for_string : unsupported parameter digest_type : no param type
+// Unsupported : g_compute_hmac_for_string : unsupported parameter digest_type : no param type for ChecksumType, GChecksumType
 
-// Unsupported : g_dir_make_tmp : unsupported parameter tmpl : no param type
+// Unsupported : g_dir_make_tmp : unsupported parameter tmpl : no param type for filename, const gchar*
 
 // Unsupported : g_format_size : no return type
 
-// Unsupported : g_format_size_full : unsupported parameter flags : no param type
+// Unsupported : g_format_size_full : unsupported parameter flags : no param type for FormatSizeFlags, GFormatSizeFlags
 
-// Unsupported : g_mkdtemp : unsupported parameter tmpl : no param type
+// Unsupported : g_mkdtemp : unsupported parameter tmpl : no param type for filename, gchar*
 
-// Unsupported : g_mkdtemp_full : unsupported parameter tmpl : no param type
+// Unsupported : g_mkdtemp_full : unsupported parameter tmpl : no param type for filename, gchar*
 
-// Unsupported : g_pointer_bit_lock : unsupported parameter address : no param type
+// Unsupported : g_pointer_bit_lock : unsupported parameter address : no param type for gpointer, void*
 
-// Unsupported : g_pointer_bit_trylock : unsupported parameter address : no param type
+// Unsupported : g_pointer_bit_trylock : unsupported parameter address : no param type for gpointer, void*
 
-// Unsupported : g_pointer_bit_unlock : unsupported parameter address : no param type
+// Unsupported : g_pointer_bit_unlock : unsupported parameter address : no param type for gpointer, void*
 
 // Unsupported : g_regex_escape_nul : no return type
 
 // Unsupported : g_test_fail : no return type
 
-// Unsupported : g_unichar_compose : unsupported parameter ch : no param type
+// Unsupported : g_unichar_compose : unsupported parameter ch : no param type for gunichar, gunichar*
 
-// Unsupported : g_unichar_decompose : unsupported parameter a : no param type
+// Unsupported : g_unichar_decompose : unsupported parameter a : no param type for gunichar, gunichar*
 
-// Unsupported : g_unichar_fully_decompose : unsupported parameter compat : no param type
+// Unsupported : g_unichar_fully_decompose : unsupported parameter compat : no param type for gboolean, gboolean
 
 // Unsupported : g_unicode_script_from_iso15924 : no return type
 
-// Unsupported : g_unicode_script_to_iso15924 : unsupported parameter script : no param type
+// Unsupported : g_unicode_script_to_iso15924 : unsupported parameter script : no param type for UnicodeScript, GUnicodeScript
 
-// Unsupported : g_unix_open_pipe : unsupported parameter fds : no param type
+// Unsupported : g_unix_open_pipe : unsupported parameter fds : no param type for gint, gint*
 
-// Unsupported : g_unix_set_fd_nonblocking : unsupported parameter nonblock : no param type
+// Unsupported : g_unix_set_fd_nonblocking : unsupported parameter nonblock : no param type for gboolean, gboolean
 
-// Unsupported : g_unix_signal_add : unsupported parameter handler : no param type
+// Unsupported : g_unix_signal_add : unsupported parameter handler : no param type for SourceFunc, GSourceFunc
 
-// Unsupported : g_unix_signal_add_full : unsupported parameter handler : no param type
+// Unsupported : g_unix_signal_add_full : unsupported parameter handler : no param type for SourceFunc, GSourceFunc
 
 // Unsupported : g_unix_signal_source_new : no return type
 

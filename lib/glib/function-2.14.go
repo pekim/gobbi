@@ -6,43 +6,43 @@ package glib
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : g_get_user_special_dir : unsupported parameter directory : no param type
+// Unsupported : g_get_user_special_dir : unsupported parameter directory : no param type for UserDirectory, GUserDirectory
 
-// Unsupported : g_once_init_enter : unsupported parameter location : no param type
+// Unsupported : g_once_init_enter : unsupported parameter location : no param type for gpointer, void*
 
-// Unsupported : g_once_init_leave : unsupported parameter location : no param type
+// Unsupported : g_once_init_leave : unsupported parameter location : no param type for gpointer, void*
 
-// Unsupported : g_regex_check_replacement : unsupported parameter has_references : no param type
+// Unsupported : g_regex_check_replacement : unsupported parameter has_references : no param type for gboolean, gboolean*
 
 // Unsupported : g_regex_escape_string : unsupported parameter string : no param type
 
-// Unsupported : g_regex_match_simple : unsupported parameter compile_options : no param type
+// Unsupported : g_regex_match_simple : unsupported parameter compile_options : no param type for RegexCompileFlags, GRegexCompileFlags
 
-// Unsupported : g_regex_split_simple : unsupported parameter compile_options : no param type
+// Unsupported : g_regex_split_simple : unsupported parameter compile_options : no param type for RegexCompileFlags, GRegexCompileFlags
 
-// Unsupported : g_sequence_get : unsupported parameter iter : no param type
+// Unsupported : g_sequence_get : unsupported parameter iter : no param type for SequenceIter, GSequenceIter*
 
-// Unsupported : g_sequence_insert_before : unsupported parameter iter : no param type
+// Unsupported : g_sequence_insert_before : unsupported parameter iter : no param type for SequenceIter, GSequenceIter*
 
-// Unsupported : g_sequence_move : unsupported parameter src : no param type
+// Unsupported : g_sequence_move : unsupported parameter src : no param type for SequenceIter, GSequenceIter*
 
-// Unsupported : g_sequence_move_range : unsupported parameter dest : no param type
+// Unsupported : g_sequence_move_range : unsupported parameter dest : no param type for SequenceIter, GSequenceIter*
 
-// Unsupported : g_sequence_range_get_midpoint : unsupported parameter begin : no param type
+// Unsupported : g_sequence_range_get_midpoint : unsupported parameter begin : no param type for SequenceIter, GSequenceIter*
 
-// Unsupported : g_sequence_remove : unsupported parameter iter : no param type
+// Unsupported : g_sequence_remove : unsupported parameter iter : no param type for SequenceIter, GSequenceIter*
 
-// Unsupported : g_sequence_remove_range : unsupported parameter begin : no param type
+// Unsupported : g_sequence_remove_range : unsupported parameter begin : no param type for SequenceIter, GSequenceIter*
 
-// Unsupported : g_sequence_set : unsupported parameter iter : no param type
+// Unsupported : g_sequence_set : unsupported parameter iter : no param type for SequenceIter, GSequenceIter*
 
-// Unsupported : g_sequence_swap : unsupported parameter a : no param type
+// Unsupported : g_sequence_swap : unsupported parameter a : no param type for SequenceIter, GSequenceIter*
 
-// Unsupported : g_slice_copy : unsupported parameter mem_block : no param type
+// Unsupported : g_slice_copy : unsupported parameter mem_block : no param type for gpointer, gconstpointer
 
-// Unsupported : g_timeout_add_seconds : unsupported parameter function : no param type
+// Unsupported : g_timeout_add_seconds : unsupported parameter function : no param type for SourceFunc, GSourceFunc
 
-// Unsupported : g_timeout_add_seconds_full : unsupported parameter function : no param type
+// Unsupported : g_timeout_add_seconds_full : unsupported parameter function : no param type for SourceFunc, GSourceFunc
 
 // Unsupported : g_timeout_source_new_seconds : no return type
 

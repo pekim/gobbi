@@ -8,4 +8,4 @@ import "C"
 
 // Unsupported : g_base64_decode_inplace : unsupported parameter text : no param type
 
-// Unsupported : g_poll : unsupported parameter fds : no param type
+// Unsupported : g_poll : unsupported parameter fds : no param type for PollFD, GPollFD*

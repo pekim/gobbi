@@ -12,4 +12,4 @@ import "C"
 
 // Unsupported : g_dpgettext2 : no return type
 
-// Unsupported : g_set_error_literal : unsupported parameter err : no param type
+// Unsupported : g_set_error_literal : unsupported parameter err : no param type for Error, GError**

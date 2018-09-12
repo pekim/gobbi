@@ -48,7 +48,11 @@ func (p *Parameter) isSupported() (bool, string) {
 	}
 
 	if p.paramType == nil {
-		return false, "no param type"
+		if p.Type != nil {
+			return false, fmt.Sprintf("no param type for %s, %s", p.Type.Name, p.Type.CType)
+		} else {
+			return false, "no param type"
+		}
 	}
 
 	if supported, reason := p.paramType.isSupported(); !supported {

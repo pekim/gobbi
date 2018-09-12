@@ -104,21 +104,21 @@ func AsciiXdigitValue(c rune) int32 {
 	return retGo
 }
 
-// Unsupported : g_assert_warning : unsupported parameter line : no param type
+// Unsupported : g_assert_warning : unsupported parameter line : no param type for gint, const int
 
-// Unsupported : g_assertion_message : unsupported parameter line : no param type
+// Unsupported : g_assertion_message : unsupported parameter line : no param type for gint, int
 
-// Unsupported : g_assertion_message_cmpnum : unsupported parameter line : no param type
+// Unsupported : g_assertion_message_cmpnum : unsupported parameter line : no param type for gint, int
 
-// Unsupported : g_assertion_message_cmpstr : unsupported parameter line : no param type
+// Unsupported : g_assertion_message_cmpstr : unsupported parameter line : no param type for gint, int
 
-// Unsupported : g_assertion_message_error : unsupported parameter line : no param type
+// Unsupported : g_assertion_message_error : unsupported parameter line : no param type for gint, int
 
-// Unsupported : g_assertion_message_expr : unsupported parameter line : no param type
+// Unsupported : g_assertion_message_expr : unsupported parameter line : no param type for gint, int
 
-// Unsupported : g_atexit : unsupported parameter func : no param type
+// Unsupported : g_atexit : unsupported parameter func : no param type for VoidFunc, GVoidFunc
 
-// Unsupported : g_basename : unsupported parameter file_name : no param type
+// Unsupported : g_basename : unsupported parameter file_name : no param type for filename, const gchar*
 
 // BitNthLsf is a wrapper around the C function g_bit_nth_lsf.
 func BitNthLsf(mask uint64, nthBit int32) int32 {
@@ -159,9 +159,9 @@ func BitStorage(number uint64) uint32 {
 
 // Unsupported : g_bookmark_file_error_quark : no return type
 
-// Unsupported : g_build_filename : unsupported parameter first_element : no param type
+// Unsupported : g_build_filename : unsupported parameter first_element : no param type for filename, const gchar*
 
-// Unsupported : g_build_path : unsupported parameter separator : no param type
+// Unsupported : g_build_path : unsupported parameter separator : no param type for filename, const gchar*
 
 // Unsupported : g_byte_array_free : unsupported parameter array : no param type
 
@@ -177,75 +177,75 @@ func BitStorage(number uint64) uint32 {
 
 // Unsupported : g_convert_with_iconv : unsupported parameter str : no param type
 
-// Unsupported : g_datalist_clear : unsupported parameter datalist : no param type
+// Unsupported : g_datalist_clear : unsupported parameter datalist : no param type for Data, GData**
 
-// Unsupported : g_datalist_foreach : unsupported parameter datalist : no param type
+// Unsupported : g_datalist_foreach : unsupported parameter datalist : no param type for Data, GData**
 
-// Unsupported : g_datalist_get_data : unsupported parameter datalist : no param type
+// Unsupported : g_datalist_get_data : unsupported parameter datalist : no param type for Data, GData**
 
-// Unsupported : g_datalist_id_get_data : unsupported parameter datalist : no param type
+// Unsupported : g_datalist_id_get_data : unsupported parameter datalist : no param type for Data, GData**
 
-// Unsupported : g_datalist_id_remove_no_notify : unsupported parameter datalist : no param type
+// Unsupported : g_datalist_id_remove_no_notify : unsupported parameter datalist : no param type for Data, GData**
 
-// Unsupported : g_datalist_id_set_data_full : unsupported parameter datalist : no param type
+// Unsupported : g_datalist_id_set_data_full : unsupported parameter datalist : no param type for Data, GData**
 
-// Unsupported : g_datalist_init : unsupported parameter datalist : no param type
+// Unsupported : g_datalist_init : unsupported parameter datalist : no param type for Data, GData**
 
-// Unsupported : g_dataset_destroy : unsupported parameter dataset_location : no param type
+// Unsupported : g_dataset_destroy : unsupported parameter dataset_location : no param type for gpointer, gconstpointer
 
-// Unsupported : g_dataset_foreach : unsupported parameter dataset_location : no param type
+// Unsupported : g_dataset_foreach : unsupported parameter dataset_location : no param type for gpointer, gconstpointer
 
-// Unsupported : g_dataset_id_get_data : unsupported parameter dataset_location : no param type
+// Unsupported : g_dataset_id_get_data : unsupported parameter dataset_location : no param type for gpointer, gconstpointer
 
-// Unsupported : g_dataset_id_remove_no_notify : unsupported parameter dataset_location : no param type
+// Unsupported : g_dataset_id_remove_no_notify : unsupported parameter dataset_location : no param type for gpointer, gconstpointer
 
-// Unsupported : g_dataset_id_set_data_full : unsupported parameter dataset_location : no param type
+// Unsupported : g_dataset_id_set_data_full : unsupported parameter dataset_location : no param type for gpointer, gconstpointer
 
-// Unsupported : g_date_get_days_in_month : unsupported parameter month : no param type
+// Unsupported : g_date_get_days_in_month : unsupported parameter month : no param type for DateMonth, GDateMonth
 
-// Unsupported : g_date_get_monday_weeks_in_year : unsupported parameter year : no param type
+// Unsupported : g_date_get_monday_weeks_in_year : unsupported parameter year : no param type for DateYear, GDateYear
 
-// Unsupported : g_date_get_sunday_weeks_in_year : unsupported parameter year : no param type
+// Unsupported : g_date_get_sunday_weeks_in_year : unsupported parameter year : no param type for DateYear, GDateYear
 
-// Unsupported : g_date_is_leap_year : unsupported parameter year : no param type
+// Unsupported : g_date_is_leap_year : unsupported parameter year : no param type for DateYear, GDateYear
 
-// Unsupported : g_date_strftime : unsupported parameter date : no param type
+// Unsupported : g_date_strftime : unsupported parameter date : no param type for Date, const GDate*
 
-// Unsupported : g_date_valid_day : unsupported parameter day : no param type
+// Unsupported : g_date_valid_day : unsupported parameter day : no param type for DateDay, GDateDay
 
-// Unsupported : g_date_valid_dmy : unsupported parameter day : no param type
+// Unsupported : g_date_valid_dmy : unsupported parameter day : no param type for DateDay, GDateDay
 
 // Unsupported : g_date_valid_julian : no return type
 
-// Unsupported : g_date_valid_month : unsupported parameter month : no param type
+// Unsupported : g_date_valid_month : unsupported parameter month : no param type for DateMonth, GDateMonth
 
-// Unsupported : g_date_valid_weekday : unsupported parameter weekday : no param type
+// Unsupported : g_date_valid_weekday : unsupported parameter weekday : no param type for DateWeekday, GDateWeekday
 
-// Unsupported : g_date_valid_year : unsupported parameter year : no param type
+// Unsupported : g_date_valid_year : unsupported parameter year : no param type for DateYear, GDateYear
 
-// Unsupported : g_direct_equal : unsupported parameter v1 : no param type
+// Unsupported : g_direct_equal : unsupported parameter v1 : no param type for gpointer, gconstpointer
 
-// Unsupported : g_direct_hash : unsupported parameter v : no param type
+// Unsupported : g_direct_hash : unsupported parameter v : no param type for gpointer, gconstpointer
 
 // Unsupported : g_file_error_from_errno : no return type
 
 // Unsupported : g_file_error_quark : no return type
 
-// Unsupported : g_file_get_contents : unsupported parameter filename : no param type
+// Unsupported : g_file_get_contents : unsupported parameter filename : no param type for filename, const gchar*
 
-// Unsupported : g_file_open_tmp : unsupported parameter tmpl : no param type
+// Unsupported : g_file_open_tmp : unsupported parameter tmpl : no param type for filename, const gchar*
 
-// Unsupported : g_file_test : unsupported parameter filename : no param type
+// Unsupported : g_file_test : unsupported parameter filename : no param type for filename, const gchar*
 
 // Unsupported : g_filename_from_uri : no return type
 
-// Unsupported : g_filename_from_utf8 : unsupported parameter bytes_read : no param type
+// Unsupported : g_filename_from_utf8 : unsupported parameter bytes_read : no param type for gsize, gsize*
 
-// Unsupported : g_filename_to_uri : unsupported parameter filename : no param type
+// Unsupported : g_filename_to_uri : unsupported parameter filename : no param type for filename, const gchar*
 
-// Unsupported : g_filename_to_utf8 : unsupported parameter opsysstring : no param type
+// Unsupported : g_filename_to_utf8 : unsupported parameter opsysstring : no param type for filename, const gchar*
 
-// Unsupported : g_find_program_in_path : unsupported parameter program : no param type
+// Unsupported : g_find_program_in_path : unsupported parameter program : no param type for filename, const gchar*
 
 // Unsupported : g_free : no return type
 
@@ -255,7 +255,7 @@ func BitStorage(number uint64) uint32 {
 
 // Unsupported : g_get_current_dir : no return type
 
-// Unsupported : g_get_current_time : unsupported parameter result : no param type
+// Unsupported : g_get_current_time : unsupported parameter result : no param type for TimeVal, GTimeVal*
 
 // Unsupported : g_get_home_dir : no return type
 
@@ -267,83 +267,83 @@ func BitStorage(number uint64) uint32 {
 
 // Unsupported : g_get_user_name : no return type
 
-// Unsupported : g_getenv : unsupported parameter variable : no param type
+// Unsupported : g_getenv : unsupported parameter variable : no param type for filename, const gchar*
 
-// Unsupported : g_hash_table_destroy : unsupported parameter hash_table : no param type
+// Unsupported : g_hash_table_destroy : unsupported parameter hash_table : no param type for GLib.HashTable, GHashTable*
 
-// Unsupported : g_hash_table_insert : unsupported parameter hash_table : no param type
+// Unsupported : g_hash_table_insert : unsupported parameter hash_table : no param type for GLib.HashTable, GHashTable*
 
-// Unsupported : g_hash_table_lookup : unsupported parameter hash_table : no param type
+// Unsupported : g_hash_table_lookup : unsupported parameter hash_table : no param type for GLib.HashTable, GHashTable*
 
-// Unsupported : g_hash_table_lookup_extended : unsupported parameter hash_table : no param type
+// Unsupported : g_hash_table_lookup_extended : unsupported parameter hash_table : no param type for GLib.HashTable, GHashTable*
 
-// Unsupported : g_hash_table_remove : unsupported parameter hash_table : no param type
+// Unsupported : g_hash_table_remove : unsupported parameter hash_table : no param type for GLib.HashTable, GHashTable*
 
-// Unsupported : g_hash_table_replace : unsupported parameter hash_table : no param type
+// Unsupported : g_hash_table_replace : unsupported parameter hash_table : no param type for GLib.HashTable, GHashTable*
 
-// Unsupported : g_hash_table_size : unsupported parameter hash_table : no param type
+// Unsupported : g_hash_table_size : unsupported parameter hash_table : no param type for GLib.HashTable, GHashTable*
 
-// Unsupported : g_hash_table_steal : unsupported parameter hash_table : no param type
+// Unsupported : g_hash_table_steal : unsupported parameter hash_table : no param type for GLib.HashTable, GHashTable*
 
-// Unsupported : g_hook_destroy : unsupported parameter hook_list : no param type
+// Unsupported : g_hook_destroy : unsupported parameter hook_list : no param type for HookList, GHookList*
 
-// Unsupported : g_hook_destroy_link : unsupported parameter hook_list : no param type
+// Unsupported : g_hook_destroy_link : unsupported parameter hook_list : no param type for HookList, GHookList*
 
-// Unsupported : g_hook_free : unsupported parameter hook_list : no param type
+// Unsupported : g_hook_free : unsupported parameter hook_list : no param type for HookList, GHookList*
 
-// Unsupported : g_hook_insert_before : unsupported parameter hook_list : no param type
+// Unsupported : g_hook_insert_before : unsupported parameter hook_list : no param type for HookList, GHookList*
 
-// Unsupported : g_hook_prepend : unsupported parameter hook_list : no param type
+// Unsupported : g_hook_prepend : unsupported parameter hook_list : no param type for HookList, GHookList*
 
-// Unsupported : g_hook_unref : unsupported parameter hook_list : no param type
+// Unsupported : g_hook_unref : unsupported parameter hook_list : no param type for HookList, GHookList*
 
-// Unsupported : g_iconv : unsupported parameter converter : no param type
+// Unsupported : g_iconv : unsupported parameter converter : no param type for IConv, GIConv
 
 // Unsupported : g_iconv_open : no return type
 
-// Unsupported : g_idle_add : unsupported parameter function : no param type
+// Unsupported : g_idle_add : unsupported parameter function : no param type for SourceFunc, GSourceFunc
 
-// Unsupported : g_idle_add_full : unsupported parameter function : no param type
+// Unsupported : g_idle_add_full : unsupported parameter function : no param type for SourceFunc, GSourceFunc
 
 // Unsupported : g_idle_remove_by_data : no return type
 
 // Unsupported : g_idle_source_new : no return type
 
-// Unsupported : g_int_equal : unsupported parameter v1 : no param type
+// Unsupported : g_int_equal : unsupported parameter v1 : no param type for gpointer, gconstpointer
 
-// Unsupported : g_int_hash : unsupported parameter v : no param type
+// Unsupported : g_int_hash : unsupported parameter v : no param type for gpointer, gconstpointer
 
-// Unsupported : g_io_add_watch : unsupported parameter channel : no param type
+// Unsupported : g_io_add_watch : unsupported parameter channel : no param type for IOChannel, GIOChannel*
 
-// Unsupported : g_io_add_watch_full : unsupported parameter channel : no param type
+// Unsupported : g_io_add_watch_full : unsupported parameter channel : no param type for IOChannel, GIOChannel*
 
 // Unsupported : g_io_channel_error_from_errno : no return type
 
 // Unsupported : g_io_channel_error_quark : no return type
 
-// Unsupported : g_io_create_watch : unsupported parameter channel : no param type
+// Unsupported : g_io_create_watch : unsupported parameter channel : no param type for IOChannel, GIOChannel*
 
 // Unsupported : g_key_file_error_quark : no return type
 
-// Unsupported : g_locale_from_utf8 : unsupported parameter bytes_read : no param type
+// Unsupported : g_locale_from_utf8 : unsupported parameter bytes_read : no param type for gsize, gsize*
 
 // Unsupported : g_locale_to_utf8 : unsupported parameter opsysstring : no param type
 
-// Unsupported : g_log : unsupported parameter log_level : no param type
+// Unsupported : g_log : unsupported parameter log_level : no param type for LogLevelFlags, GLogLevelFlags
 
-// Unsupported : g_log_default_handler : unsupported parameter log_level : no param type
+// Unsupported : g_log_default_handler : unsupported parameter log_level : no param type for LogLevelFlags, GLogLevelFlags
 
 // Unsupported : g_log_remove_handler : no return type
 
-// Unsupported : g_log_set_always_fatal : unsupported parameter fatal_mask : no param type
+// Unsupported : g_log_set_always_fatal : unsupported parameter fatal_mask : no param type for LogLevelFlags, GLogLevelFlags
 
-// Unsupported : g_log_set_fatal_mask : unsupported parameter fatal_mask : no param type
+// Unsupported : g_log_set_fatal_mask : unsupported parameter fatal_mask : no param type for LogLevelFlags, GLogLevelFlags
 
-// Unsupported : g_log_set_handler : unsupported parameter log_levels : no param type
+// Unsupported : g_log_set_handler : unsupported parameter log_levels : no param type for LogLevelFlags, GLogLevelFlags
 
-// Unsupported : g_log_structured_standard : unsupported parameter log_level : no param type
+// Unsupported : g_log_structured_standard : unsupported parameter log_level : no param type for LogLevelFlags, GLogLevelFlags
 
-// Unsupported : g_logv : unsupported parameter log_level : no param type
+// Unsupported : g_logv : unsupported parameter log_level : no param type for LogLevelFlags, GLogLevelFlags
 
 // Unsupported : g_main_context_default : no return type
 
@@ -386,13 +386,13 @@ func Malloc0(nBytes uint64) uintptr {
 
 // Unsupported : g_mem_profile : no return type
 
-// Unsupported : g_mem_set_vtable : unsupported parameter vtable : no param type
+// Unsupported : g_mem_set_vtable : unsupported parameter vtable : no param type for MemVTable, GMemVTable*
 
-// Unsupported : g_memdup : unsupported parameter mem : no param type
+// Unsupported : g_memdup : unsupported parameter mem : no param type for gpointer, gconstpointer
 
-// Unsupported : g_mkstemp : unsupported parameter tmpl : no param type
+// Unsupported : g_mkstemp : unsupported parameter tmpl : no param type for filename, gchar*
 
-// Unsupported : g_nullify_pointer : unsupported parameter nullify_location : no param type
+// Unsupported : g_nullify_pointer : unsupported parameter nullify_location : no param type for gpointer, gpointer*
 
 // Unsupported : g_number_parser_error_quark : no return type
 
@@ -404,35 +404,35 @@ func Malloc0(nBytes uint64) uintptr {
 
 // Unsupported : g_parse_debug_string : unsupported parameter keys : no param type
 
-// Unsupported : g_path_get_basename : unsupported parameter file_name : no param type
+// Unsupported : g_path_get_basename : unsupported parameter file_name : no param type for filename, const gchar*
 
-// Unsupported : g_path_get_dirname : unsupported parameter file_name : no param type
+// Unsupported : g_path_get_dirname : unsupported parameter file_name : no param type for filename, const gchar*
 
-// Unsupported : g_path_is_absolute : unsupported parameter file_name : no param type
+// Unsupported : g_path_is_absolute : unsupported parameter file_name : no param type for filename, const gchar*
 
-// Unsupported : g_path_skip_root : unsupported parameter file_name : no param type
+// Unsupported : g_path_skip_root : unsupported parameter file_name : no param type for filename, const gchar*
 
-// Unsupported : g_pattern_match : unsupported parameter pspec : no param type
+// Unsupported : g_pattern_match : unsupported parameter pspec : no param type for PatternSpec, GPatternSpec*
 
 // Unsupported : g_pattern_match_simple : no return type
 
-// Unsupported : g_pattern_match_string : unsupported parameter pspec : no param type
+// Unsupported : g_pattern_match_string : unsupported parameter pspec : no param type for PatternSpec, GPatternSpec*
 
 // Unsupported : g_print : unsupported parameter ... : varargs
 
 // Unsupported : g_printerr : unsupported parameter ... : varargs
 
-// Unsupported : g_printf_string_upper_bound : unsupported parameter args : no param type
+// Unsupported : g_printf_string_upper_bound : unsupported parameter args : no param type for va_list, va_list
 
-// Unsupported : g_propagate_error : unsupported parameter dest : no param type
+// Unsupported : g_propagate_error : unsupported parameter dest : no param type for Error, GError**
 
-// Unsupported : g_qsort_with_data : unsupported parameter pbase : no param type
+// Unsupported : g_qsort_with_data : unsupported parameter pbase : no param type for gpointer, gconstpointer
 
 // Unsupported : g_quark_from_static_string : no return type
 
 // Unsupported : g_quark_from_string : no return type
 
-// Unsupported : g_quark_to_string : unsupported parameter quark : no param type
+// Unsupported : g_quark_to_string : unsupported parameter quark : no param type for Quark, GQuark
 
 // Unsupported : g_quark_try_string : no return type
 
@@ -499,33 +499,33 @@ func Realloc(mem uintptr, nBytes uint64) uintptr {
 
 // Unsupported : g_return_if_fail_warning : no return type
 
-// Unsupported : g_set_error : unsupported parameter err : no param type
+// Unsupported : g_set_error : unsupported parameter err : no param type for Error, GError**
 
 // Unsupported : g_set_prgname : no return type
 
-// Unsupported : g_set_print_handler : unsupported parameter func : no param type
+// Unsupported : g_set_print_handler : unsupported parameter func : no param type for PrintFunc, GPrintFunc
 
-// Unsupported : g_set_printerr_handler : unsupported parameter func : no param type
+// Unsupported : g_set_printerr_handler : unsupported parameter func : no param type for PrintFunc, GPrintFunc
 
 // Unsupported : g_shell_error_quark : no return type
 
-// Unsupported : g_shell_parse_argv : unsupported parameter command_line : no param type
+// Unsupported : g_shell_parse_argv : unsupported parameter command_line : no param type for filename, const gchar*
 
-// Unsupported : g_shell_quote : unsupported parameter unquoted_string : no param type
+// Unsupported : g_shell_quote : unsupported parameter unquoted_string : no param type for filename, const gchar*
 
-// Unsupported : g_shell_unquote : unsupported parameter quoted_string : no param type
+// Unsupported : g_shell_unquote : unsupported parameter quoted_string : no param type for filename, const gchar*
 
-// Unsupported : g_slice_get_config : unsupported parameter ckey : no param type
+// Unsupported : g_slice_get_config : unsupported parameter ckey : no param type for SliceConfig, GSliceConfig
 
-// Unsupported : g_slice_get_config_state : unsupported parameter ckey : no param type
+// Unsupported : g_slice_get_config_state : unsupported parameter ckey : no param type for SliceConfig, GSliceConfig
 
-// Unsupported : g_slice_set_config : unsupported parameter ckey : no param type
+// Unsupported : g_slice_set_config : unsupported parameter ckey : no param type for SliceConfig, GSliceConfig
 
 // Unsupported : g_snprintf : unsupported parameter ... : varargs
 
 // Unsupported : g_source_remove : no return type
 
-// Unsupported : g_source_remove_by_funcs_user_data : unsupported parameter funcs : no param type
+// Unsupported : g_source_remove_by_funcs_user_data : unsupported parameter funcs : no param type for SourceFuncs, GSourceFuncs*
 
 // Unsupported : g_source_remove_by_user_data : no return type
 
@@ -540,27 +540,27 @@ func SpacedPrimesClosest(num uint32) uint32 {
 	return retGo
 }
 
-// Unsupported : g_spawn_async : unsupported parameter working_directory : no param type
+// Unsupported : g_spawn_async : unsupported parameter working_directory : no param type for filename, const gchar*
 
-// Unsupported : g_spawn_async_with_pipes : unsupported parameter working_directory : no param type
+// Unsupported : g_spawn_async_with_pipes : unsupported parameter working_directory : no param type for filename, const gchar*
 
-// Unsupported : g_spawn_close_pid : unsupported parameter pid : no param type
+// Unsupported : g_spawn_close_pid : unsupported parameter pid : no param type for Pid, GPid
 
-// Unsupported : g_spawn_command_line_async : unsupported parameter command_line : no param type
+// Unsupported : g_spawn_command_line_async : unsupported parameter command_line : no param type for filename, const gchar*
 
-// Unsupported : g_spawn_command_line_sync : unsupported parameter command_line : no param type
+// Unsupported : g_spawn_command_line_sync : unsupported parameter command_line : no param type for filename, const gchar*
 
 // Unsupported : g_spawn_error_quark : no return type
 
 // Unsupported : g_spawn_exit_error_quark : no return type
 
-// Unsupported : g_spawn_sync : unsupported parameter working_directory : no param type
+// Unsupported : g_spawn_sync : unsupported parameter working_directory : no param type for filename, const gchar*
 
 // Unsupported : g_stpcpy : no return type
 
-// Unsupported : g_str_equal : unsupported parameter v1 : no param type
+// Unsupported : g_str_equal : unsupported parameter v1 : no param type for gpointer, gconstpointer
 
-// Unsupported : g_str_hash : unsupported parameter v : no param type
+// Unsupported : g_str_hash : unsupported parameter v : no param type for gpointer, gconstpointer
 
 // Unsupported : g_strcanon : no return type
 
@@ -595,7 +595,7 @@ func Strcasecmp(s1 string, s2 string) int32 {
 
 // Unsupported : g_strdup_printf : unsupported parameter ... : varargs
 
-// Unsupported : g_strdup_vprintf : unsupported parameter args : no param type
+// Unsupported : g_strdup_vprintf : unsupported parameter args : no param type for va_list, va_list
 
 // Unsupported : g_strdupv : unsupported parameter str_array : in for string with indirection level of 2
 
@@ -700,13 +700,13 @@ func Strtod(nptr string) float64 {
 
 // Unsupported : g_strv_get_type : no return type
 
-// Unsupported : g_test_add_vtable : unsupported parameter test_data : no param type
+// Unsupported : g_test_add_vtable : unsupported parameter test_data : no param type for gpointer, gconstpointer
 
-// Unsupported : g_test_assert_expected_messages_internal : unsupported parameter line : no param type
+// Unsupported : g_test_assert_expected_messages_internal : unsupported parameter line : no param type for gint, int
 
-// Unsupported : g_test_log_type_name : unsupported parameter log_type : no param type
+// Unsupported : g_test_log_type_name : unsupported parameter log_type : no param type for TestLogType, GTestLogType
 
-// Unsupported : g_test_trap_assertions : unsupported parameter line : no param type
+// Unsupported : g_test_trap_assertions : unsupported parameter line : no param type for gint, int
 
 // Unsupported : g_thread_error_quark : no return type
 
@@ -738,19 +738,19 @@ func ThreadPoolGetNumUnusedThreads() uint32 {
 
 // Unsupported : g_thread_yield : no return type
 
-// Unsupported : g_timeout_add : unsupported parameter function : no param type
+// Unsupported : g_timeout_add : unsupported parameter function : no param type for SourceFunc, GSourceFunc
 
-// Unsupported : g_timeout_add_full : unsupported parameter function : no param type
+// Unsupported : g_timeout_add_full : unsupported parameter function : no param type for SourceFunc, GSourceFunc
 
 // Unsupported : g_timeout_source_new : no return type
 
-// Unsupported : g_trash_stack_height : unsupported parameter stack_p : no param type
+// Unsupported : g_trash_stack_height : unsupported parameter stack_p : no param type for TrashStack, GTrashStack**
 
-// Unsupported : g_trash_stack_peek : unsupported parameter stack_p : no param type
+// Unsupported : g_trash_stack_peek : unsupported parameter stack_p : no param type for TrashStack, GTrashStack**
 
-// Unsupported : g_trash_stack_pop : unsupported parameter stack_p : no param type
+// Unsupported : g_trash_stack_pop : unsupported parameter stack_p : no param type for TrashStack, GTrashStack**
 
-// Unsupported : g_trash_stack_push : unsupported parameter stack_p : no param type
+// Unsupported : g_trash_stack_push : unsupported parameter stack_p : no param type for TrashStack, GTrashStack**
 
 // TryMalloc is a wrapper around the C function g_try_malloc.
 func TryMalloc(nBytes uint64) uintptr {
@@ -776,9 +776,9 @@ func TryRealloc(mem uintptr, nBytes uint64) uintptr {
 	return retGo
 }
 
-// Unsupported : g_ucs4_to_utf16 : unsupported parameter str : no param type
+// Unsupported : g_ucs4_to_utf16 : unsupported parameter str : no param type for gunichar, const gunichar*
 
-// Unsupported : g_ucs4_to_utf8 : unsupported parameter str : no param type
+// Unsupported : g_ucs4_to_utf8 : unsupported parameter str : no param type for gunichar, const gunichar*
 
 // Unsupported : g_unichar_break_type : no return type
 
@@ -882,17 +882,17 @@ func UnicharXdigitValue(c rune) int32 {
 	return retGo
 }
 
-// Unsupported : g_unicode_canonical_decomposition : unsupported parameter result_len : no param type
+// Unsupported : g_unicode_canonical_decomposition : unsupported parameter result_len : no param type for gsize, gsize*
 
-// Unsupported : g_unicode_canonical_ordering : unsupported parameter string : no param type
+// Unsupported : g_unicode_canonical_ordering : unsupported parameter string : no param type for gunichar, gunichar*
 
 // Unsupported : g_unix_error_quark : no return type
 
 // Unsupported : g_usleep : no return type
 
-// Unsupported : g_utf16_to_ucs4 : unsupported parameter str : no param type
+// Unsupported : g_utf16_to_ucs4 : unsupported parameter str : no param type for guint16, const gunichar2*
 
-// Unsupported : g_utf16_to_utf8 : unsupported parameter str : no param type
+// Unsupported : g_utf16_to_utf8 : unsupported parameter str : no param type for guint16, const gunichar2*
 
 // Unsupported : g_utf8_casefold : no return type
 
@@ -943,7 +943,7 @@ func Utf8GetCharValidated(p string, maxLen int64) rune {
 	return retGo
 }
 
-// Unsupported : g_utf8_normalize : unsupported parameter mode : no param type
+// Unsupported : g_utf8_normalize : unsupported parameter mode : no param type for NormalizeMode, GNormalizeMode
 
 // Unsupported : g_utf8_offset_to_pointer : no return type
 
@@ -988,17 +988,17 @@ func Utf8Strlen(p string, max int64) int64 {
 
 // Unsupported : g_utf8_strup : no return type
 
-// Unsupported : g_utf8_to_ucs4 : unsupported parameter items_read : no param type
+// Unsupported : g_utf8_to_ucs4 : unsupported parameter items_read : no param type for glong, glong*
 
-// Unsupported : g_utf8_to_ucs4_fast : unsupported parameter items_written : no param type
+// Unsupported : g_utf8_to_ucs4_fast : unsupported parameter items_written : no param type for glong, glong*
 
-// Unsupported : g_utf8_to_utf16 : unsupported parameter items_read : no param type
+// Unsupported : g_utf8_to_utf16 : unsupported parameter items_read : no param type for glong, glong*
 
 // Unsupported : g_utf8_validate : unsupported parameter str : no param type
 
 // Unsupported : g_variant_get_gtype : no return type
 
-// Unsupported : g_variant_parse : unsupported parameter type : no param type
+// Unsupported : g_variant_parse : unsupported parameter type : no param type for VariantType, const GVariantType*
 
 // Unsupported : g_variant_parse_error_quark : no return type
 
@@ -1008,6 +1008,6 @@ func Utf8Strlen(p string, max int64) int64 {
 
 // Unsupported : g_variant_type_string_is_valid : no return type
 
-// Unsupported : g_vsnprintf : unsupported parameter args : no param type
+// Unsupported : g_vsnprintf : unsupported parameter args : no param type for va_list, va_list
 
-// Unsupported : g_warn_message : unsupported parameter line : no param type
+// Unsupported : g_warn_message : unsupported parameter line : no param type for gint, int

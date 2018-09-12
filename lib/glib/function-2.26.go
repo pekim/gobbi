@@ -6,11 +6,11 @@ package glib
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : g_date_time_compare : unsupported parameter dt1 : no param type
+// Unsupported : g_date_time_compare : unsupported parameter dt1 : no param type for gpointer, gconstpointer
 
-// Unsupported : g_date_time_equal : unsupported parameter dt1 : no param type
+// Unsupported : g_date_time_equal : unsupported parameter dt1 : no param type for gpointer, gconstpointer
 
-// Unsupported : g_date_time_hash : unsupported parameter datetime : no param type
+// Unsupported : g_date_time_hash : unsupported parameter datetime : no param type for gpointer, gconstpointer
 
 // Unsupported : g_dcgettext : no return type
 

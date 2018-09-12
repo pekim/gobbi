@@ -6,11 +6,11 @@ package glib
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : g_bit_lock : unsupported parameter address : no param type
+// Unsupported : g_bit_lock : unsupported parameter address : no param type for gint, volatile gint*
 
-// Unsupported : g_bit_trylock : unsupported parameter address : no param type
+// Unsupported : g_bit_trylock : unsupported parameter address : no param type for gint, volatile gint*
 
-// Unsupported : g_bit_unlock : unsupported parameter address : no param type
+// Unsupported : g_bit_unlock : unsupported parameter address : no param type for gint, volatile gint*
 
 // Malloc0N is a wrapper around the C function g_malloc0_n.
 func Malloc0N(nBlocks uint64, nBlockBytes uint64) uintptr {

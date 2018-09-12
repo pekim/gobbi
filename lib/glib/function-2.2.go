@@ -24,7 +24,7 @@ func AsciiStrtoull(nptr string, base uint32) uint64 {
 	return retGo
 }
 
-// Unsupported : g_fprintf : unsupported parameter file : no param type
+// Unsupported : g_fprintf : unsupported parameter file : no param type for gpointer, FILE*
 
 // Unsupported : g_get_application_name : no return type
 
@@ -40,8 +40,8 @@ func AsciiStrtoull(nptr string, base uint32) uint64 {
 
 // Unsupported : g_utf8_strreverse : no return type
 
-// Unsupported : g_vfprintf : unsupported parameter file : no param type
+// Unsupported : g_vfprintf : unsupported parameter file : no param type for gpointer, FILE*
 
-// Unsupported : g_vprintf : unsupported parameter args : no param type
+// Unsupported : g_vprintf : unsupported parameter args : no param type for va_list, va_list
 
-// Unsupported : g_vsprintf : unsupported parameter args : no param type
+// Unsupported : g_vsprintf : unsupported parameter args : no param type for va_list, va_list

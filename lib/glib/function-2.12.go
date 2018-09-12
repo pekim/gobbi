@@ -24,22 +24,22 @@ func AsciiStrtoll(nptr string, base uint32) int64 {
 	return retGo
 }
 
-// Unsupported : g_base64_decode : unsupported parameter out_len : no param type
+// Unsupported : g_base64_decode : unsupported parameter out_len : no param type for gsize, gsize*
 
 // Unsupported : g_base64_decode_step : unsupported parameter in : no param type
 
 // Unsupported : g_base64_encode : unsupported parameter data : no param type
 
-// Unsupported : g_base64_encode_close : unsupported parameter break_lines : no param type
+// Unsupported : g_base64_encode_close : unsupported parameter break_lines : no param type for gboolean, gboolean
 
 // Unsupported : g_base64_encode_step : unsupported parameter in : no param type
 
-// Unsupported : g_hash_table_remove_all : unsupported parameter hash_table : no param type
+// Unsupported : g_hash_table_remove_all : unsupported parameter hash_table : no param type for GLib.HashTable, GHashTable*
 
-// Unsupported : g_hash_table_steal_all : unsupported parameter hash_table : no param type
+// Unsupported : g_hash_table_steal_all : unsupported parameter hash_table : no param type for GLib.HashTable, GHashTable*
 
 // Unsupported : g_main_current_source : no return type
 
-// Unsupported : g_time_val_from_iso8601 : unsupported parameter time_ : no param type
+// Unsupported : g_time_val_from_iso8601 : unsupported parameter time_ : no param type for TimeVal, GTimeVal*
 
 // Unsupported : g_unichar_iswide_cjk : no return type

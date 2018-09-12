@@ -6,27 +6,27 @@ package glib
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : g_access : unsupported parameter filename : no param type
+// Unsupported : g_access : unsupported parameter filename : no param type for filename, const gchar*
 
 // Unsupported : g_build_filenamev : unsupported parameter args : no param type
 
 // Unsupported : g_build_pathv : unsupported parameter args : no param type
 
-// Unsupported : g_chdir : unsupported parameter path : no param type
+// Unsupported : g_chdir : unsupported parameter path : no param type for filename, const gchar*
 
-// Unsupported : g_datalist_get_flags : unsupported parameter datalist : no param type
+// Unsupported : g_datalist_get_flags : unsupported parameter datalist : no param type for Data, GData**
 
-// Unsupported : g_datalist_set_flags : unsupported parameter datalist : no param type
+// Unsupported : g_datalist_set_flags : unsupported parameter datalist : no param type for Data, GData**
 
-// Unsupported : g_datalist_unset_flags : unsupported parameter datalist : no param type
+// Unsupported : g_datalist_unset_flags : unsupported parameter datalist : no param type for Data, GData**
 
-// Unsupported : g_file_set_contents : unsupported parameter filename : no param type
+// Unsupported : g_file_set_contents : unsupported parameter filename : no param type for filename, const gchar*
 
 // Unsupported : g_get_host_name : no return type
 
 // Unsupported : g_listenv : no return type
 
-// Unsupported : g_mkdir_with_parents : unsupported parameter pathname : no param type
+// Unsupported : g_mkdir_with_parents : unsupported parameter pathname : no param type for filename, const gchar*
 
 // TryMalloc0 is a wrapper around the C function g_try_malloc0.
 func TryMalloc0(nBytes uint64) uintptr {
