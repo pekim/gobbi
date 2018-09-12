@@ -24,7 +24,7 @@ func AsciiStrtoll(nptr string, base uint32) int64 {
 	return retGo
 }
 
-// Unsupported : g_base64_decode : unsupported parameter out_len : no param type for gsize, gsize*
+// Unsupported : g_base64_decode : no return type
 
 // Unsupported : g_base64_decode_step : unsupported parameter in : no param type
 

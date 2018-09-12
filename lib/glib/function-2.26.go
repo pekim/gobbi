@@ -8,11 +8,31 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : g_date_time_compare : unsupported parameter dt1 : no param type for gpointer, gconstpointer
+// DateTimeCompare is a wrapper around the C function g_date_time_compare.
+func DateTimeCompare(dt1 uintptr, dt2 uintptr) int32 {
+	c_dt1 := (C.gpointer)(dt1)
 
-// Unsupported : g_date_time_equal : unsupported parameter dt1 : no param type for gpointer, gconstpointer
+	c_dt2 := (C.gpointer)(dt2)
 
-// Unsupported : g_date_time_hash : unsupported parameter datetime : no param type for gpointer, gconstpointer
+	retC := C.g_date_time_compare(c_dt1, c_dt2)
+	retGo :=
+		(int32)(retC)
+
+	return retGo
+}
+
+// Unsupported : g_date_time_equal : no return type
+
+// DateTimeHash is a wrapper around the C function g_date_time_hash.
+func DateTimeHash(datetime uintptr) uint32 {
+	c_datetime := (C.gpointer)(datetime)
+
+	retC := C.g_date_time_hash(c_datetime)
+	retGo :=
+		(uint32)(retC)
+
+	return retGo
+}
 
 // Dcgettext is a wrapper around the C function g_dcgettext.
 func Dcgettext(domain string, msgid string, category int32) string {

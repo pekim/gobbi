@@ -6,7 +6,7 @@ package glib
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : g_clear_pointer : unsupported parameter pp : no param type for gpointer, gpointer*
+// Unsupported : g_clear_pointer : unsupported parameter destroy : no param type for DestroyNotify, GDestroyNotify
 
 // Unsupported : g_compute_checksum_for_bytes : unsupported parameter checksum_type : no param type for ChecksumType, GChecksumType
 

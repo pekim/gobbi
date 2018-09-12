@@ -6,9 +6,9 @@ package glib
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : g_ascii_string_to_signed : unsupported parameter out_num : no param type for gint64, gint64*
+// Unsupported : g_ascii_string_to_signed : no return type
 
-// Unsupported : g_ascii_string_to_unsigned : unsupported parameter out_num : no param type for guint64, guint64*
+// Unsupported : g_ascii_string_to_unsigned : no return type
 
 // Unsupported : g_ptr_array_find : unsupported parameter haystack : no param type
 

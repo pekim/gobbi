@@ -8,9 +8,9 @@ import "C"
 
 // Unsupported : g_get_user_special_dir : unsupported parameter directory : no param type for UserDirectory, GUserDirectory
 
-// Unsupported : g_once_init_enter : unsupported parameter location : no param type for gpointer, void*
+// Unsupported : g_once_init_enter : no return type
 
-// Unsupported : g_once_init_leave : unsupported parameter location : no param type for gpointer, void*
+// Unsupported : g_once_init_leave : no return type
 
 // Unsupported : g_regex_check_replacement : unsupported parameter has_references : no param type for gboolean, gboolean*
 
@@ -38,7 +38,18 @@ import "C"
 
 // Unsupported : g_sequence_swap : unsupported parameter a : no param type for SequenceIter, GSequenceIter*
 
-// Unsupported : g_slice_copy : unsupported parameter mem_block : no param type for gpointer, gconstpointer
+// SliceCopy is a wrapper around the C function g_slice_copy.
+func SliceCopy(blockSize uint64, memBlock uintptr) uintptr {
+	c_block_size := (C.gsize)(blockSize)
+
+	c_mem_block := (C.gpointer)(memBlock)
+
+	retC := C.g_slice_copy(c_block_size, c_mem_block)
+	retGo :=
+		(uintptr)(retC)
+
+	return retGo
+}
 
 // Unsupported : g_timeout_add_seconds : unsupported parameter function : no param type for SourceFunc, GSourceFunc
 

@@ -32,7 +32,16 @@ func Dpgettext(domain string, msgctxtid string, msgidoffset uint64) string {
 	return retGo
 }
 
-// Unsupported : g_format_size_for_display : unsupported parameter size : no param type for gint64, goffset
+// FormatSizeForDisplay is a wrapper around the C function g_format_size_for_display.
+func FormatSizeForDisplay(size int64) string {
+	c_size := (C.gint64)(size)
+
+	retC := C.g_format_size_for_display(c_size)
+	retGo :=
+		C.GoString(retC)
+
+	return retGo
+}
 
 // Unsupported : g_markup_collect_attributes : unsupported parameter attribute_names : in for string with indirection level of 2
 
@@ -42,7 +51,7 @@ func Dpgettext(domain string, msgctxtid string, msgidoffset uint64) string {
 
 // Unsupported : g_strcmp0 : no return type
 
-// Unsupported : g_test_add_data_func : unsupported parameter test_data : no param type for gpointer, gconstpointer
+// Unsupported : g_test_add_data_func : unsupported parameter test_func : no param type for TestDataFunc, GTestDataFunc
 
 // Unsupported : g_test_add_func : unsupported parameter test_func : no param type for TestFunc, GTestFunc
 
@@ -50,19 +59,19 @@ func Dpgettext(domain string, msgctxtid string, msgidoffset uint64) string {
 
 // Unsupported : g_test_bug_base : no return type
 
-// Unsupported : g_test_create_case : unsupported parameter test_data : no param type for gpointer, gconstpointer
+// Unsupported : g_test_create_case : unsupported parameter data_setup : no param type for TestFixtureFunc, GTestFixtureFunc
 
 // Unsupported : g_test_create_suite : no return type
 
 // Unsupported : g_test_get_root : no return type
 
-// Unsupported : g_test_init : unsupported parameter argc : no param type for gint, int*
+// Unsupported : g_test_init : unsupported parameter argv : in for string with indirection level of 3
 
-// Unsupported : g_test_maximized_result : unsupported parameter maximized_quantity : no param type for gdouble, double
+// Unsupported : g_test_maximized_result : unsupported parameter ... : varargs
 
 // Unsupported : g_test_message : unsupported parameter ... : varargs
 
-// Unsupported : g_test_minimized_result : unsupported parameter minimized_quantity : no param type for gdouble, double
+// Unsupported : g_test_minimized_result : unsupported parameter ... : varargs
 
 // Unsupported : g_test_queue_destroy : unsupported parameter destroy_func : no param type for DestroyNotify, GDestroyNotify
 
@@ -70,7 +79,7 @@ func Dpgettext(domain string, msgctxtid string, msgidoffset uint64) string {
 
 // Unsupported : g_test_rand_double : no return type
 
-// Unsupported : g_test_rand_double_range : unsupported parameter range_start : no param type for gdouble, double
+// Unsupported : g_test_rand_double_range : no return type
 
 // TestRandInt is a wrapper around the C function g_test_rand_int.
 func TestRandInt() int32 {

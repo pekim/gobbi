@@ -14,7 +14,7 @@ type ParameterType interface {
 
 // parameterType gets the Go type and a ParameterType for a Parameter.
 func parameterType(param *Parameter) (string, ParameterType) {
-	goType, isInteger := integerCTypeMap[param.Type.CType]
+	goType, isInteger := integerCTypeMap[param.Type.Name]
 	if isInteger {
 		return goType, ParameterTypeIntegerNew(param)
 	}

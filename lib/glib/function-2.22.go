@@ -10,9 +10,18 @@ import "C"
 
 // Unsupported : g_byte_array_unref : unsupported parameter array : no param type
 
-// Unsupported : g_double_equal : unsupported parameter v1 : no param type for gpointer, gconstpointer
+// Unsupported : g_double_equal : no return type
 
-// Unsupported : g_double_hash : unsupported parameter v : no param type for gpointer, gconstpointer
+// DoubleHash is a wrapper around the C function g_double_hash.
+func DoubleHash(v uintptr) uint32 {
+	c_v := (C.gpointer)(v)
+
+	retC := C.g_double_hash(c_v)
+	retGo :=
+		(uint32)(retC)
+
+	return retGo
+}
 
 // Unsupported : g_hostname_is_ascii_encoded : no return type
 
@@ -44,9 +53,18 @@ func HostnameToUnicode(hostname string) string {
 	return retGo
 }
 
-// Unsupported : g_int64_equal : unsupported parameter v1 : no param type for gpointer, gconstpointer
+// Unsupported : g_int64_equal : no return type
 
-// Unsupported : g_int64_hash : unsupported parameter v : no param type for gpointer, gconstpointer
+// Int64Hash is a wrapper around the C function g_int64_hash.
+func Int64Hash(v uintptr) uint32 {
+	c_v := (C.gpointer)(v)
+
+	retC := C.g_int64_hash(c_v)
+	retGo :=
+		(uint32)(retC)
+
+	return retGo
+}
 
 // Unsupported : g_main_context_get_thread_default : no return type
 

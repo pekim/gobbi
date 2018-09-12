@@ -8,25 +8,65 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : g_atomic_int_add : unsupported parameter atomic : no param type for gint, volatile gint*
+// AtomicIntAdd is a wrapper around the C function g_atomic_int_add.
+func AtomicIntAdd(atomic int32, val int32) int32 {
+	c_atomic := (C.gint)(atomic)
 
-// Unsupported : g_atomic_int_compare_and_exchange : unsupported parameter atomic : no param type for gint, volatile gint*
+	c_val := (C.gint)(val)
 
-// Unsupported : g_atomic_int_dec_and_test : unsupported parameter atomic : no param type for gint, volatile gint*
+	retC := C.g_atomic_int_add(c_atomic, c_val)
+	retGo :=
+		(int32)(retC)
 
-// Unsupported : g_atomic_int_exchange_and_add : unsupported parameter atomic : no param type for gint, volatile gint*
+	return retGo
+}
 
-// Unsupported : g_atomic_int_get : unsupported parameter atomic : no param type for gint, volatile const gint*
+// Unsupported : g_atomic_int_compare_and_exchange : no return type
 
-// Unsupported : g_atomic_int_inc : unsupported parameter atomic : no param type for gint, volatile gint*
+// Unsupported : g_atomic_int_dec_and_test : no return type
 
-// Unsupported : g_atomic_int_set : unsupported parameter atomic : no param type for gint, volatile gint*
+// AtomicIntExchangeAndAdd is a wrapper around the C function g_atomic_int_exchange_and_add.
+func AtomicIntExchangeAndAdd(atomic int32, val int32) int32 {
+	c_atomic := (C.gint)(atomic)
 
-// Unsupported : g_atomic_pointer_compare_and_exchange : unsupported parameter atomic : no param type for gpointer, void*
+	c_val := (C.gint)(val)
 
-// Unsupported : g_atomic_pointer_get : unsupported parameter atomic : no param type for gpointer, void*
+	retC := C.g_atomic_int_exchange_and_add(c_atomic, c_val)
+	retGo :=
+		(int32)(retC)
 
-// Unsupported : g_atomic_pointer_set : unsupported parameter atomic : no param type for gpointer, void*
+	return retGo
+}
+
+// AtomicIntGet is a wrapper around the C function g_atomic_int_get.
+func AtomicIntGet(atomic int32) int32 {
+	c_atomic := (C.gint)(atomic)
+
+	retC := C.g_atomic_int_get(c_atomic)
+	retGo :=
+		(int32)(retC)
+
+	return retGo
+}
+
+// Unsupported : g_atomic_int_inc : no return type
+
+// Unsupported : g_atomic_int_set : no return type
+
+// Unsupported : g_atomic_pointer_compare_and_exchange : no return type
+
+// AtomicPointerGet is a wrapper around the C function g_atomic_pointer_get.
+func AtomicPointerGet(atomic uintptr) uintptr {
+	c_atomic := (C.gpointer)(atomic)
+
+	retC := C.g_atomic_pointer_get(c_atomic)
+	retGo :=
+		(uintptr)(retC)
+
+	return retGo
+}
+
+// Unsupported : g_atomic_pointer_set : no return type
 
 // Unsupported : g_child_watch_add : unsupported parameter pid : no param type for Pid, GPid
 
@@ -60,7 +100,7 @@ func StripContext(msgid string, msgval string) string {
 
 // Unsupported : g_strsplit_set : no return type
 
-// Unsupported : g_unichar_get_mirror_char : unsupported parameter mirrored_ch : no param type for gunichar, gunichar*
+// Unsupported : g_unichar_get_mirror_char : no return type
 
 // Unsupported : g_unsetenv : no return type
 

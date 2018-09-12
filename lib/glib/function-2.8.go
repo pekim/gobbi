@@ -8,7 +8,7 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : g_access : unsupported parameter mode : no param type for gint, int
+// Unsupported : g_access : no return type
 
 // Unsupported : g_build_filenamev : unsupported parameter args : no param type
 
