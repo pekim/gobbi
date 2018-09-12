@@ -3,7 +3,6 @@ package generate
 import (
 	"fmt"
 	"github.com/dave/jennifer/jen"
-	"strings"
 )
 
 type ReturnTypeString struct {
@@ -13,10 +12,7 @@ type ReturnTypeString struct {
 }
 
 func ReturnTypeStringNew(rv *ReturnValue) *ReturnTypeString {
-	cTypeParts := strings.Split(rv.Type.CType, " ")
-	cType := cTypeParts[len(cTypeParts)-1]
-	cTypeName := strings.TrimRight(cType, "*")
-	indirectLevel := len(cType) - len(cTypeName)
+	cTypeName, indirectLevel := rv.Type.parseStringCType()
 
 	return &ReturnTypeString{
 		returnValue:   rv,

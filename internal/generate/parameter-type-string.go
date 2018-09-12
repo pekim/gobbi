@@ -14,10 +14,7 @@ type ParameterTypeString struct {
 }
 
 func ParameterTypeStringNew(param *Parameter) *ParameterTypeString {
-	cTypeParts := strings.Split(param.Type.CType, " ")
-	cType := cTypeParts[len(cTypeParts)-1]
-	cTypeName := strings.TrimRight(cType, "*")
-	indirectLevel := len(cType) - len(cTypeName)
+	cTypeName, indirectLevel := param.Type.parseStringCType()
 
 	return &ParameterTypeString{
 		param:         param,
