@@ -2,14 +2,63 @@
 
 package glib
 
+import "unsafe"
+
 // #include <glib.h>
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : g_dgettext : no return type
+// Dgettext is a wrapper around the C function g_dgettext.
+func Dgettext(domain string, msgid string) string {
+	c_domain := C.CString(domain)
+	defer C.free(unsafe.Pointer(c_domain))
 
-// Unsupported : g_dngettext : no return type
+	c_msgid := C.CString(msgid)
+	defer C.free(unsafe.Pointer(c_msgid))
 
-// Unsupported : g_dpgettext2 : no return type
+	retC := C.g_dgettext(c_domain, c_msgid)
+	retGo :=
+		C.GoString(retC)
+
+	return retGo
+}
+
+// Dngettext is a wrapper around the C function g_dngettext.
+func Dngettext(domain string, msgid string, msgidPlural string, n uint64) string {
+	c_domain := C.CString(domain)
+	defer C.free(unsafe.Pointer(c_domain))
+
+	c_msgid := C.CString(msgid)
+	defer C.free(unsafe.Pointer(c_msgid))
+
+	c_msgid_plural := C.CString(msgidPlural)
+	defer C.free(unsafe.Pointer(c_msgid_plural))
+
+	c_n := (C.gulong)(n)
+
+	retC := C.g_dngettext(c_domain, c_msgid, c_msgid_plural, c_n)
+	retGo :=
+		C.GoString(retC)
+
+	return retGo
+}
+
+// Dpgettext2 is a wrapper around the C function g_dpgettext2.
+func Dpgettext2(domain string, context string, msgid string) string {
+	c_domain := C.CString(domain)
+	defer C.free(unsafe.Pointer(c_domain))
+
+	c_context := C.CString(context)
+	defer C.free(unsafe.Pointer(c_context))
+
+	c_msgid := C.CString(msgid)
+	defer C.free(unsafe.Pointer(c_msgid))
+
+	retC := C.g_dpgettext2(c_domain, c_context, c_msgid)
+	retGo :=
+		C.GoString(retC)
+
+	return retGo
+}
 
 // Unsupported : g_set_error_literal : unsupported parameter err : no param type for Error, GError**

@@ -2,6 +2,8 @@
 
 package glib
 
+import "unsafe"
+
 // #include <glib.h>
 // #include <stdlib.h>
 import "C"
@@ -10,7 +12,21 @@ import "C"
 
 // Unsupported : g_str_match_string : unsupported parameter accept_alternates : no param type for gboolean, gboolean
 
-// Unsupported : g_str_to_ascii : no return type
+// StrToAscii is a wrapper around the C function g_str_to_ascii.
+func StrToAscii(str string, fromLocale string) string {
+	c_str := C.CString(str)
+	defer C.free(unsafe.Pointer(c_str))
+
+	c_from_locale := C.CString(fromLocale)
+	defer C.free(unsafe.Pointer(c_from_locale))
+
+	retC := C.g_str_to_ascii(c_str, c_from_locale)
+	retGo :=
+		C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // Unsupported : g_str_tokenize_and_fold : unsupported parameter ascii_alternates : no param type
 

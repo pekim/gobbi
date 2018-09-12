@@ -2,15 +2,37 @@
 
 package glib
 
+import "unsafe"
+
 // #include <glib.h>
 // #include <stdlib.h>
 import "C"
 
 // Unsupported : g_hash_table_unref : unsupported parameter hash_table : no param type for GLib.HashTable, GHashTable*
 
-// Unsupported : g_intern_static_string : no return type
+// InternStaticString is a wrapper around the C function g_intern_static_string.
+func InternStaticString(string string) string {
+	c_string := C.CString(string)
+	defer C.free(unsafe.Pointer(c_string))
 
-// Unsupported : g_intern_string : no return type
+	retC := C.g_intern_static_string(c_string)
+	retGo :=
+		C.GoString(retC)
+
+	return retGo
+}
+
+// InternString is a wrapper around the C function g_intern_string.
+func InternString(string string) string {
+	c_string := C.CString(string)
+	defer C.free(unsafe.Pointer(c_string))
+
+	retC := C.g_intern_string(c_string)
+	retGo :=
+		C.GoString(retC)
+
+	return retGo
+}
 
 // SliceAlloc is a wrapper around the C function g_slice_alloc.
 func SliceAlloc(blockSize uint64) uintptr {

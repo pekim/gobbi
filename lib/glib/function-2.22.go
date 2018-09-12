@@ -2,6 +2,8 @@
 
 package glib
 
+import "unsafe"
+
 // #include <glib.h>
 // #include <stdlib.h>
 import "C"
@@ -18,9 +20,31 @@ import "C"
 
 // Unsupported : g_hostname_is_non_ascii : no return type
 
-// Unsupported : g_hostname_to_ascii : no return type
+// HostnameToAscii is a wrapper around the C function g_hostname_to_ascii.
+func HostnameToAscii(hostname string) string {
+	c_hostname := C.CString(hostname)
+	defer C.free(unsafe.Pointer(c_hostname))
 
-// Unsupported : g_hostname_to_unicode : no return type
+	retC := C.g_hostname_to_ascii(c_hostname)
+	retGo :=
+		C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// HostnameToUnicode is a wrapper around the C function g_hostname_to_unicode.
+func HostnameToUnicode(hostname string) string {
+	c_hostname := C.CString(hostname)
+	defer C.free(unsafe.Pointer(c_hostname))
+
+	retC := C.g_hostname_to_unicode(c_hostname)
+	retGo :=
+		C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // Unsupported : g_int64_equal : unsupported parameter v1 : no param type for gpointer, gconstpointer
 

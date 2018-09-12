@@ -2,6 +2,8 @@
 
 package glib
 
+import "unsafe"
+
 // #include <glib.h>
 // #include <stdlib.h>
 import "C"
@@ -40,7 +42,20 @@ import "C"
 
 // Unsupported : g_setenv : unsupported parameter variable : no param type for filename, const gchar*
 
-// Unsupported : g_strip_context : no return type
+// StripContext is a wrapper around the C function g_strip_context.
+func StripContext(msgid string, msgval string) string {
+	c_msgid := C.CString(msgid)
+	defer C.free(unsafe.Pointer(c_msgid))
+
+	c_msgval := C.CString(msgval)
+	defer C.free(unsafe.Pointer(c_msgval))
+
+	retC := C.g_strip_context(c_msgid, c_msgval)
+	retGo :=
+		C.GoString(retC)
+
+	return retGo
+}
 
 // Unsupported : g_strsplit_set : no return type
 

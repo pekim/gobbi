@@ -26,7 +26,14 @@ func AsciiStrtoull(nptr string, base uint32) uint64 {
 
 // Unsupported : g_fprintf : unsupported parameter file : no param type for gpointer, FILE*
 
-// Unsupported : g_get_application_name : no return type
+// GetApplicationName is a wrapper around the C function g_get_application_name.
+func GetApplicationName() string {
+	retC := C.g_get_application_name()
+	retGo :=
+		C.GoString(retC)
+
+	return retGo
+}
 
 // Unsupported : g_printf : unsupported parameter ... : varargs
 
@@ -38,7 +45,20 @@ func AsciiStrtoull(nptr string, base uint32) uint64 {
 
 // Unsupported : g_str_has_suffix : no return type
 
-// Unsupported : g_utf8_strreverse : no return type
+// Utf8Strreverse is a wrapper around the C function g_utf8_strreverse.
+func Utf8Strreverse(str string, len int64) string {
+	c_str := C.CString(str)
+	defer C.free(unsafe.Pointer(c_str))
+
+	c_len := (C.gssize)(len)
+
+	retC := C.g_utf8_strreverse(c_str, c_len)
+	retGo :=
+		C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // Unsupported : g_vfprintf : unsupported parameter file : no param type for gpointer, FILE*
 

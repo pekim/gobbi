@@ -2,6 +2,8 @@
 
 package glib
 
+import "unsafe"
+
 // #include <glib.h>
 // #include <stdlib.h>
 import "C"
@@ -22,7 +24,14 @@ import "C"
 
 // Unsupported : g_file_set_contents : unsupported parameter filename : no param type for filename, const gchar*
 
-// Unsupported : g_get_host_name : no return type
+// GetHostName is a wrapper around the C function g_get_host_name.
+func GetHostName() string {
+	retC := C.g_get_host_name()
+	retGo :=
+		C.GoString(retC)
+
+	return retGo
+}
 
 // Unsupported : g_listenv : no return type
 
@@ -39,4 +48,17 @@ func TryMalloc0(nBytes uint64) uintptr {
 	return retGo
 }
 
-// Unsupported : g_utf8_collate_key_for_filename : no return type
+// Utf8CollateKeyForFilename is a wrapper around the C function g_utf8_collate_key_for_filename.
+func Utf8CollateKeyForFilename(str string, len int64) string {
+	c_str := C.CString(str)
+	defer C.free(unsafe.Pointer(c_str))
+
+	c_len := (C.gssize)(len)
+
+	retC := C.g_utf8_collate_key_for_filename(c_str, c_len)
+	retGo :=
+		C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
+
+	return retGo
+}

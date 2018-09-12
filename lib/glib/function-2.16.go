@@ -2,6 +2,8 @@
 
 package glib
 
+import "unsafe"
+
 // #include <glib.h>
 // #include <stdlib.h>
 import "C"
@@ -12,7 +14,22 @@ import "C"
 
 // Unsupported : g_compute_checksum_for_string : unsupported parameter checksum_type : no param type for ChecksumType, GChecksumType
 
-// Unsupported : g_dpgettext : no return type
+// Dpgettext is a wrapper around the C function g_dpgettext.
+func Dpgettext(domain string, msgctxtid string, msgidoffset uint64) string {
+	c_domain := C.CString(domain)
+	defer C.free(unsafe.Pointer(c_domain))
+
+	c_msgctxtid := C.CString(msgctxtid)
+	defer C.free(unsafe.Pointer(c_msgctxtid))
+
+	c_msgidoffset := (C.gsize)(msgidoffset)
+
+	retC := C.g_dpgettext(c_domain, c_msgctxtid, c_msgidoffset)
+	retGo :=
+		C.GoString(retC)
+
+	return retGo
+}
 
 // Unsupported : g_format_size_for_display : unsupported parameter size : no param type for gint64, goffset
 
@@ -94,8 +111,50 @@ func TestRandIntRange(begin int32, end int32) int32 {
 
 // Unsupported : g_uri_escape_string : unsupported parameter allow_utf8 : no param type for gboolean, gboolean
 
-// Unsupported : g_uri_parse_scheme : no return type
+// UriParseScheme is a wrapper around the C function g_uri_parse_scheme.
+func UriParseScheme(uri string) string {
+	c_uri := C.CString(uri)
+	defer C.free(unsafe.Pointer(c_uri))
 
-// Unsupported : g_uri_unescape_segment : no return type
+	retC := C.g_uri_parse_scheme(c_uri)
+	retGo :=
+		C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
 
-// Unsupported : g_uri_unescape_string : no return type
+	return retGo
+}
+
+// UriUnescapeSegment is a wrapper around the C function g_uri_unescape_segment.
+func UriUnescapeSegment(escapedString string, escapedStringEnd string, illegalCharacters string) string {
+	c_escaped_string := C.CString(escapedString)
+	defer C.free(unsafe.Pointer(c_escaped_string))
+
+	c_escaped_string_end := C.CString(escapedStringEnd)
+	defer C.free(unsafe.Pointer(c_escaped_string_end))
+
+	c_illegal_characters := C.CString(illegalCharacters)
+	defer C.free(unsafe.Pointer(c_illegal_characters))
+
+	retC := C.g_uri_unescape_segment(c_escaped_string, c_escaped_string_end, c_illegal_characters)
+	retGo :=
+		C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// UriUnescapeString is a wrapper around the C function g_uri_unescape_string.
+func UriUnescapeString(escapedString string, illegalCharacters string) string {
+	c_escaped_string := C.CString(escapedString)
+	defer C.free(unsafe.Pointer(c_escaped_string))
+
+	c_illegal_characters := C.CString(illegalCharacters)
+	defer C.free(unsafe.Pointer(c_illegal_characters))
+
+	retC := C.g_uri_unescape_string(c_escaped_string, c_illegal_characters)
+	retGo :=
+		C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
+
+	return retGo
+}

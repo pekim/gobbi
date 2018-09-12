@@ -16,9 +16,10 @@ func returnType(rv *ReturnValue) (string, ReturnType) {
 	goType, isInteger := integerCTypeMap[rv.Type.CType]
 	if isInteger {
 		return goType, ReturnTypeIntegerNew(rv)
-		//} else if p.Type.Name == "utf8" {
-		//	p.goType = "string"
-		//	p.paramType = ParameterTypeStringNew(p)
+	}
+
+	if rv.Type.Name == "utf8" {
+		return "string", ReturnTypeStringNew(rv)
 	}
 
 	return "", nil

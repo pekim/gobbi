@@ -6,7 +6,20 @@ package glib
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : glib_check_version : no return type
+// CheckVersion is a wrapper around the C function glib_check_version.
+func CheckVersion(requiredMajor uint32, requiredMinor uint32, requiredMicro uint32) string {
+	c_required_major := (C.guint)(requiredMajor)
+
+	c_required_minor := (C.guint)(requiredMinor)
+
+	c_required_micro := (C.guint)(requiredMicro)
+
+	retC := C.glib_check_version(c_required_major, c_required_minor, c_required_micro)
+	retGo :=
+		C.GoString(retC)
+
+	return retGo
+}
 
 // Unsupported : g_filename_display_basename : unsupported parameter filename : no param type for filename, const gchar*
 

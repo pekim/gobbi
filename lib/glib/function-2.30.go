@@ -2,6 +2,8 @@
 
 package glib
 
+import "unsafe"
+
 // #include <glib.h>
 // #include <stdlib.h>
 import "C"
@@ -26,7 +28,17 @@ import "C"
 
 // Unsupported : g_dir_make_tmp : unsupported parameter tmpl : no param type for filename, const gchar*
 
-// Unsupported : g_format_size : no return type
+// FormatSize is a wrapper around the C function g_format_size.
+func FormatSize(size uint64) string {
+	c_size := (C.guint64)(size)
+
+	retC := C.g_format_size(c_size)
+	retGo :=
+		C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // Unsupported : g_format_size_full : unsupported parameter flags : no param type for FormatSizeFlags, GFormatSizeFlags
 
@@ -40,7 +52,20 @@ import "C"
 
 // Unsupported : g_pointer_bit_unlock : unsupported parameter address : no param type for gpointer, void*
 
-// Unsupported : g_regex_escape_nul : no return type
+// RegexEscapeNul is a wrapper around the C function g_regex_escape_nul.
+func RegexEscapeNul(string string, length int32) string {
+	c_string := C.CString(string)
+	defer C.free(unsafe.Pointer(c_string))
+
+	c_length := (C.gint)(length)
+
+	retC := C.g_regex_escape_nul(c_string, c_length)
+	retGo :=
+		C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // Unsupported : g_test_fail : no return type
 
@@ -64,4 +89,19 @@ import "C"
 
 // Unsupported : g_unix_signal_source_new : no return type
 
-// Unsupported : g_utf8_substring : no return type
+// Utf8Substring is a wrapper around the C function g_utf8_substring.
+func Utf8Substring(str string, startPos int64, endPos int64) string {
+	c_str := C.CString(str)
+	defer C.free(unsafe.Pointer(c_str))
+
+	c_start_pos := (C.glong)(startPos)
+
+	c_end_pos := (C.glong)(endPos)
+
+	retC := C.g_utf8_substring(c_str, c_start_pos, c_end_pos)
+	retGo :=
+		C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
+
+	return retGo
+}

@@ -17,9 +17,42 @@ func AsciiDigitValue(c rune) int32 {
 	return retGo
 }
 
-// Unsupported : g_ascii_dtostr : no return type
+// AsciiDtostr is a wrapper around the C function g_ascii_dtostr.
+func AsciiDtostr(buffer string, bufLen int32, d float64) string {
+	c_buffer := C.CString(buffer)
+	defer C.free(unsafe.Pointer(c_buffer))
 
-// Unsupported : g_ascii_formatd : no return type
+	c_buf_len := (C.gint)(bufLen)
+
+	c_d := (C.gdouble)(d)
+
+	retC := C.g_ascii_dtostr(c_buffer, c_buf_len, c_d)
+	retGo :=
+		C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// AsciiFormatd is a wrapper around the C function g_ascii_formatd.
+func AsciiFormatd(buffer string, bufLen int32, format string, d float64) string {
+	c_buffer := C.CString(buffer)
+	defer C.free(unsafe.Pointer(c_buffer))
+
+	c_buf_len := (C.gint)(bufLen)
+
+	c_format := C.CString(format)
+	defer C.free(unsafe.Pointer(c_format))
+
+	c_d := (C.gdouble)(d)
+
+	retC := C.g_ascii_formatd(c_buffer, c_buf_len, c_format, c_d)
+	retGo :=
+		C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // AsciiStrcasecmp is a wrapper around the C function g_ascii_strcasecmp.
 func AsciiStrcasecmp(s1 string, s2 string) int32 {
@@ -36,7 +69,20 @@ func AsciiStrcasecmp(s1 string, s2 string) int32 {
 	return retGo
 }
 
-// Unsupported : g_ascii_strdown : no return type
+// AsciiStrdown is a wrapper around the C function g_ascii_strdown.
+func AsciiStrdown(str string, len int64) string {
+	c_str := C.CString(str)
+	defer C.free(unsafe.Pointer(c_str))
+
+	c_len := (C.gssize)(len)
+
+	retC := C.g_ascii_strdown(c_str, c_len)
+	retGo :=
+		C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // AsciiStrncasecmp is a wrapper around the C function g_ascii_strncasecmp.
 func AsciiStrncasecmp(s1 string, s2 string, n uint64) int32 {
@@ -69,7 +115,20 @@ func AsciiStrtod(nptr string) float64 {
 	return retGo
 }
 
-// Unsupported : g_ascii_strup : no return type
+// AsciiStrup is a wrapper around the C function g_ascii_strup.
+func AsciiStrup(str string, len int64) string {
+	c_str := C.CString(str)
+	defer C.free(unsafe.Pointer(c_str))
+
+	c_len := (C.gssize)(len)
+
+	retC := C.g_ascii_strup(c_str, c_len)
+	retGo :=
+		C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // AsciiTolower is a wrapper around the C function g_ascii_tolower.
 func AsciiTolower(c rune) rune {
@@ -251,7 +310,15 @@ func BitStorage(number uint64) uint32 {
 
 // Unsupported : g_get_charset : no return type
 
-// Unsupported : g_get_codeset : no return type
+// GetCodeset is a wrapper around the C function g_get_codeset.
+func GetCodeset() string {
+	retC := C.g_get_codeset()
+	retGo :=
+		C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // Unsupported : g_get_current_dir : no return type
 
@@ -259,7 +326,14 @@ func BitStorage(number uint64) uint32 {
 
 // Unsupported : g_get_home_dir : no return type
 
-// Unsupported : g_get_prgname : no return type
+// GetPrgname is a wrapper around the C function g_get_prgname.
+func GetPrgname() string {
+	retC := C.g_get_prgname()
+	retGo :=
+		C.GoString(retC)
+
+	return retGo
+}
 
 // Unsupported : g_get_real_name : no return type
 
@@ -380,7 +454,20 @@ func Malloc0(nBytes uint64) uintptr {
 
 // Unsupported : g_markup_error_quark : no return type
 
-// Unsupported : g_markup_escape_text : no return type
+// MarkupEscapeText is a wrapper around the C function g_markup_escape_text.
+func MarkupEscapeText(text string, length int64) string {
+	c_text := C.CString(text)
+	defer C.free(unsafe.Pointer(c_text))
+
+	c_length := (C.gssize)(length)
+
+	retC := C.g_markup_escape_text(c_text, c_length)
+	retGo :=
+		C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // Unsupported : g_mem_is_system_malloc : no return type
 
@@ -556,13 +643,43 @@ func SpacedPrimesClosest(num uint32) uint32 {
 
 // Unsupported : g_spawn_sync : unsupported parameter working_directory : no param type for filename, const gchar*
 
-// Unsupported : g_stpcpy : no return type
+// Stpcpy is a wrapper around the C function g_stpcpy.
+func Stpcpy(dest string, src string) string {
+	c_dest := C.CString(dest)
+	defer C.free(unsafe.Pointer(c_dest))
+
+	c_src := C.CString(src)
+	defer C.free(unsafe.Pointer(c_src))
+
+	retC := C.g_stpcpy(c_dest, c_src)
+	retGo :=
+		C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // Unsupported : g_str_equal : unsupported parameter v1 : no param type for gpointer, gconstpointer
 
 // Unsupported : g_str_hash : unsupported parameter v : no param type for gpointer, gconstpointer
 
-// Unsupported : g_strcanon : no return type
+// Strcanon is a wrapper around the C function g_strcanon.
+func Strcanon(string string, validChars string, substitutor rune) string {
+	c_string := C.CString(string)
+	defer C.free(unsafe.Pointer(c_string))
+
+	c_valid_chars := C.CString(validChars)
+	defer C.free(unsafe.Pointer(c_valid_chars))
+
+	c_substitutor := (C.gchar)(substitutor)
+
+	retC := C.g_strcanon(c_string, c_valid_chars, c_substitutor)
+	retGo :=
+		C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // Strcasecmp is a wrapper around the C function g_strcasecmp.
 func Strcasecmp(s1 string, s2 string) int32 {
@@ -579,19 +696,90 @@ func Strcasecmp(s1 string, s2 string) int32 {
 	return retGo
 }
 
-// Unsupported : g_strchomp : no return type
+// Strchomp is a wrapper around the C function g_strchomp.
+func Strchomp(string string) string {
+	c_string := C.CString(string)
+	defer C.free(unsafe.Pointer(c_string))
 
-// Unsupported : g_strchug : no return type
+	retC := C.g_strchomp(c_string)
+	retGo :=
+		C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
 
-// Unsupported : g_strcompress : no return type
+	return retGo
+}
+
+// Strchug is a wrapper around the C function g_strchug.
+func Strchug(string string) string {
+	c_string := C.CString(string)
+	defer C.free(unsafe.Pointer(c_string))
+
+	retC := C.g_strchug(c_string)
+	retGo :=
+		C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// Strcompress is a wrapper around the C function g_strcompress.
+func Strcompress(source string) string {
+	c_source := C.CString(source)
+	defer C.free(unsafe.Pointer(c_source))
+
+	retC := C.g_strcompress(c_source)
+	retGo :=
+		C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // Unsupported : g_strconcat : unsupported parameter ... : varargs
 
-// Unsupported : g_strdelimit : no return type
+// Strdelimit is a wrapper around the C function g_strdelimit.
+func Strdelimit(string string, delimiters string, newDelimiter rune) string {
+	c_string := C.CString(string)
+	defer C.free(unsafe.Pointer(c_string))
 
-// Unsupported : g_strdown : no return type
+	c_delimiters := C.CString(delimiters)
+	defer C.free(unsafe.Pointer(c_delimiters))
 
-// Unsupported : g_strdup : no return type
+	c_new_delimiter := (C.gchar)(newDelimiter)
+
+	retC := C.g_strdelimit(c_string, c_delimiters, c_new_delimiter)
+	retGo :=
+		C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// Strdown is a wrapper around the C function g_strdown.
+func Strdown(string string) string {
+	c_string := C.CString(string)
+	defer C.free(unsafe.Pointer(c_string))
+
+	retC := C.g_strdown(c_string)
+	retGo :=
+		C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// Strdup is a wrapper around the C function g_strdup.
+func Strdup(str string) string {
+	c_str := C.CString(str)
+	defer C.free(unsafe.Pointer(c_str))
+
+	retC := C.g_strdup(c_str)
+	retGo :=
+		C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // Unsupported : g_strdup_printf : unsupported parameter ... : varargs
 
@@ -599,9 +787,32 @@ func Strcasecmp(s1 string, s2 string) int32 {
 
 // Unsupported : g_strdupv : unsupported parameter str_array : in for string with indirection level of 2
 
-// Unsupported : g_strerror : no return type
+// Strerror is a wrapper around the C function g_strerror.
+func Strerror(errnum int32) string {
+	c_errnum := (C.gint)(errnum)
 
-// Unsupported : g_strescape : no return type
+	retC := C.g_strerror(c_errnum)
+	retGo :=
+		C.GoString(retC)
+
+	return retGo
+}
+
+// Strescape is a wrapper around the C function g_strescape.
+func Strescape(source string, exceptions string) string {
+	c_source := C.CString(source)
+	defer C.free(unsafe.Pointer(c_source))
+
+	c_exceptions := C.CString(exceptions)
+	defer C.free(unsafe.Pointer(c_exceptions))
+
+	retC := C.g_strescape(c_source, c_exceptions)
+	retGo :=
+		C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // Unsupported : g_strfreev : unsupported parameter str_array : in for string with indirection level of 2
 
@@ -666,21 +877,112 @@ func Strncasecmp(s1 string, s2 string, n uint32) int32 {
 	return retGo
 }
 
-// Unsupported : g_strndup : no return type
+// Strndup is a wrapper around the C function g_strndup.
+func Strndup(str string, n uint64) string {
+	c_str := C.CString(str)
+	defer C.free(unsafe.Pointer(c_str))
 
-// Unsupported : g_strnfill : no return type
+	c_n := (C.gsize)(n)
 
-// Unsupported : g_strreverse : no return type
+	retC := C.g_strndup(c_str, c_n)
+	retGo :=
+		C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
 
-// Unsupported : g_strrstr : no return type
+	return retGo
+}
 
-// Unsupported : g_strrstr_len : no return type
+// Strnfill is a wrapper around the C function g_strnfill.
+func Strnfill(length uint64, fillChar rune) string {
+	c_length := (C.gsize)(length)
 
-// Unsupported : g_strsignal : no return type
+	c_fill_char := (C.gchar)(fillChar)
+
+	retC := C.g_strnfill(c_length, c_fill_char)
+	retGo :=
+		C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// Strreverse is a wrapper around the C function g_strreverse.
+func Strreverse(string string) string {
+	c_string := C.CString(string)
+	defer C.free(unsafe.Pointer(c_string))
+
+	retC := C.g_strreverse(c_string)
+	retGo :=
+		C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// Strrstr is a wrapper around the C function g_strrstr.
+func Strrstr(haystack string, needle string) string {
+	c_haystack := C.CString(haystack)
+	defer C.free(unsafe.Pointer(c_haystack))
+
+	c_needle := C.CString(needle)
+	defer C.free(unsafe.Pointer(c_needle))
+
+	retC := C.g_strrstr(c_haystack, c_needle)
+	retGo :=
+		C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// StrrstrLen is a wrapper around the C function g_strrstr_len.
+func StrrstrLen(haystack string, haystackLen int64, needle string) string {
+	c_haystack := C.CString(haystack)
+	defer C.free(unsafe.Pointer(c_haystack))
+
+	c_haystack_len := (C.gssize)(haystackLen)
+
+	c_needle := C.CString(needle)
+	defer C.free(unsafe.Pointer(c_needle))
+
+	retC := C.g_strrstr_len(c_haystack, c_haystack_len, c_needle)
+	retGo :=
+		C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// Strsignal is a wrapper around the C function g_strsignal.
+func Strsignal(signum int32) string {
+	c_signum := (C.gint)(signum)
+
+	retC := C.g_strsignal(c_signum)
+	retGo :=
+		C.GoString(retC)
+
+	return retGo
+}
 
 // Unsupported : g_strsplit : no return type
 
-// Unsupported : g_strstr_len : no return type
+// StrstrLen is a wrapper around the C function g_strstr_len.
+func StrstrLen(haystack string, haystackLen int64, needle string) string {
+	c_haystack := C.CString(haystack)
+	defer C.free(unsafe.Pointer(c_haystack))
+
+	c_haystack_len := (C.gssize)(haystackLen)
+
+	c_needle := C.CString(needle)
+	defer C.free(unsafe.Pointer(c_needle))
+
+	retC := C.g_strstr_len(c_haystack, c_haystack_len, c_needle)
+	retGo :=
+		C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // Strtod is a wrapper around the C function g_strtod.
 func Strtod(nptr string) float64 {
@@ -696,7 +998,18 @@ func Strtod(nptr string) float64 {
 	return retGo
 }
 
-// Unsupported : g_strup : no return type
+// Strup is a wrapper around the C function g_strup.
+func Strup(string string) string {
+	c_string := C.CString(string)
+	defer C.free(unsafe.Pointer(c_string))
+
+	retC := C.g_strup(c_string)
+	retGo :=
+		C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // Unsupported : g_strv_get_type : no return type
 
@@ -894,7 +1207,20 @@ func UnicharXdigitValue(c rune) int32 {
 
 // Unsupported : g_utf16_to_utf8 : unsupported parameter str : no param type for guint16, const gunichar2*
 
-// Unsupported : g_utf8_casefold : no return type
+// Utf8Casefold is a wrapper around the C function g_utf8_casefold.
+func Utf8Casefold(str string, len int64) string {
+	c_str := C.CString(str)
+	defer C.free(unsafe.Pointer(c_str))
+
+	c_len := (C.gssize)(len)
+
+	retC := C.g_utf8_casefold(c_str, c_len)
+	retGo :=
+		C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // Utf8Collate is a wrapper around the C function g_utf8_collate.
 func Utf8Collate(str1 string, str2 string) int32 {
@@ -911,11 +1237,52 @@ func Utf8Collate(str1 string, str2 string) int32 {
 	return retGo
 }
 
-// Unsupported : g_utf8_collate_key : no return type
+// Utf8CollateKey is a wrapper around the C function g_utf8_collate_key.
+func Utf8CollateKey(str string, len int64) string {
+	c_str := C.CString(str)
+	defer C.free(unsafe.Pointer(c_str))
 
-// Unsupported : g_utf8_find_next_char : no return type
+	c_len := (C.gssize)(len)
 
-// Unsupported : g_utf8_find_prev_char : no return type
+	retC := C.g_utf8_collate_key(c_str, c_len)
+	retGo :=
+		C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// Utf8FindNextChar is a wrapper around the C function g_utf8_find_next_char.
+func Utf8FindNextChar(p string, end string) string {
+	c_p := C.CString(p)
+	defer C.free(unsafe.Pointer(c_p))
+
+	c_end := C.CString(end)
+	defer C.free(unsafe.Pointer(c_end))
+
+	retC := C.g_utf8_find_next_char(c_p, c_end)
+	retGo :=
+		C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// Utf8FindPrevChar is a wrapper around the C function g_utf8_find_prev_char.
+func Utf8FindPrevChar(str string, p string) string {
+	c_str := C.CString(str)
+	defer C.free(unsafe.Pointer(c_str))
+
+	c_p := C.CString(p)
+	defer C.free(unsafe.Pointer(c_p))
+
+	retC := C.g_utf8_find_prev_char(c_str, c_p)
+	retGo :=
+		C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // Utf8GetChar is a wrapper around the C function g_utf8_get_char.
 func Utf8GetChar(p string) rune {
@@ -945,7 +1312,20 @@ func Utf8GetCharValidated(p string, maxLen int64) rune {
 
 // Unsupported : g_utf8_normalize : unsupported parameter mode : no param type for NormalizeMode, GNormalizeMode
 
-// Unsupported : g_utf8_offset_to_pointer : no return type
+// Utf8OffsetToPointer is a wrapper around the C function g_utf8_offset_to_pointer.
+func Utf8OffsetToPointer(str string, offset int64) string {
+	c_str := C.CString(str)
+	defer C.free(unsafe.Pointer(c_str))
+
+	c_offset := (C.glong)(offset)
+
+	retC := C.g_utf8_offset_to_pointer(c_str, c_offset)
+	retGo :=
+		C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // Utf8PointerToOffset is a wrapper around the C function g_utf8_pointer_to_offset.
 func Utf8PointerToOffset(str string, pos string) int64 {
@@ -962,11 +1342,50 @@ func Utf8PointerToOffset(str string, pos string) int64 {
 	return retGo
 }
 
-// Unsupported : g_utf8_prev_char : no return type
+// Utf8PrevChar is a wrapper around the C function g_utf8_prev_char.
+func Utf8PrevChar(p string) string {
+	c_p := C.CString(p)
+	defer C.free(unsafe.Pointer(c_p))
 
-// Unsupported : g_utf8_strchr : no return type
+	retC := C.g_utf8_prev_char(c_p)
+	retGo :=
+		C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
 
-// Unsupported : g_utf8_strdown : no return type
+	return retGo
+}
+
+// Utf8Strchr is a wrapper around the C function g_utf8_strchr.
+func Utf8Strchr(p string, len int64, c rune) string {
+	c_p := C.CString(p)
+	defer C.free(unsafe.Pointer(c_p))
+
+	c_len := (C.gssize)(len)
+
+	c_c := (C.gunichar)(c)
+
+	retC := C.g_utf8_strchr(c_p, c_len, c_c)
+	retGo :=
+		C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// Utf8Strdown is a wrapper around the C function g_utf8_strdown.
+func Utf8Strdown(str string, len int64) string {
+	c_str := C.CString(str)
+	defer C.free(unsafe.Pointer(c_str))
+
+	c_len := (C.gssize)(len)
+
+	retC := C.g_utf8_strdown(c_str, c_len)
+	retGo :=
+		C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // Utf8Strlen is a wrapper around the C function g_utf8_strlen.
 func Utf8Strlen(p string, max int64) int64 {
@@ -982,11 +1401,55 @@ func Utf8Strlen(p string, max int64) int64 {
 	return retGo
 }
 
-// Unsupported : g_utf8_strncpy : no return type
+// Utf8Strncpy is a wrapper around the C function g_utf8_strncpy.
+func Utf8Strncpy(dest string, src string, n uint64) string {
+	c_dest := C.CString(dest)
+	defer C.free(unsafe.Pointer(c_dest))
 
-// Unsupported : g_utf8_strrchr : no return type
+	c_src := C.CString(src)
+	defer C.free(unsafe.Pointer(c_src))
 
-// Unsupported : g_utf8_strup : no return type
+	c_n := (C.gsize)(n)
+
+	retC := C.g_utf8_strncpy(c_dest, c_src, c_n)
+	retGo :=
+		C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// Utf8Strrchr is a wrapper around the C function g_utf8_strrchr.
+func Utf8Strrchr(p string, len int64, c rune) string {
+	c_p := C.CString(p)
+	defer C.free(unsafe.Pointer(c_p))
+
+	c_len := (C.gssize)(len)
+
+	c_c := (C.gunichar)(c)
+
+	retC := C.g_utf8_strrchr(c_p, c_len, c_c)
+	retGo :=
+		C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// Utf8Strup is a wrapper around the C function g_utf8_strup.
+func Utf8Strup(str string, len int64) string {
+	c_str := C.CString(str)
+	defer C.free(unsafe.Pointer(c_str))
+
+	c_len := (C.gssize)(len)
+
+	retC := C.g_utf8_strup(c_str, c_len)
+	retGo :=
+		C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // Unsupported : g_utf8_to_ucs4 : unsupported parameter items_read : no param type for glong, glong*
 
