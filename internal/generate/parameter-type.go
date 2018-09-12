@@ -19,7 +19,7 @@ func parameterType(param *Parameter) (string, ParameterType) {
 		return goType, ParameterTypeIntegerNew(param)
 	}
 
-	if param.Type.Name == "utf8" {
+	if param.Type.Name == "utf8" || param.Type.Name == "filename" {
 		return "string", ParameterTypeStringNew(param)
 	}
 

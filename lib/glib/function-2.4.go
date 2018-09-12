@@ -34,13 +34,13 @@ import "C"
 
 // Unsupported : g_child_watch_source_new : unsupported parameter pid : no param type for Pid, GPid
 
-// Unsupported : g_file_read_link : unsupported parameter filename : no param type for filename, const gchar*
+// Unsupported : g_file_read_link : no return type
 
 // Unsupported : g_markup_printf_escaped : unsupported parameter ... : varargs
 
 // Unsupported : g_markup_vprintf_escaped : unsupported parameter args : no param type for va_list, va_list
 
-// Unsupported : g_setenv : unsupported parameter variable : no param type for filename, const gchar*
+// Unsupported : g_setenv : unsupported parameter overwrite : no param type for gboolean, gboolean
 
 // StripContext is a wrapper around the C function g_strip_context.
 func StripContext(msgid string, msgval string) string {
@@ -62,6 +62,6 @@ func StripContext(msgid string, msgval string) string {
 
 // Unsupported : g_unichar_get_mirror_char : unsupported parameter mirrored_ch : no param type for gunichar, gunichar*
 
-// Unsupported : g_unsetenv : unsupported parameter variable : no param type for filename, const gchar*
+// Unsupported : g_unsetenv : no return type
 
 // Unsupported : g_vasprintf : unsupported parameter string : in for string with indirection level of 2

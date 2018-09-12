@@ -26,7 +26,7 @@ import "C"
 
 // Unsupported : g_compute_hmac_for_string : unsupported parameter digest_type : no param type for ChecksumType, GChecksumType
 
-// Unsupported : g_dir_make_tmp : unsupported parameter tmpl : no param type for filename, const gchar*
+// Unsupported : g_dir_make_tmp : no return type
 
 // FormatSize is a wrapper around the C function g_format_size.
 func FormatSize(size uint64) string {
@@ -41,9 +41,9 @@ func FormatSize(size uint64) string {
 
 // Unsupported : g_format_size_full : unsupported parameter flags : no param type for FormatSizeFlags, GFormatSizeFlags
 
-// Unsupported : g_mkdtemp : unsupported parameter tmpl : no param type for filename, gchar*
+// Unsupported : g_mkdtemp : no return type
 
-// Unsupported : g_mkdtemp_full : unsupported parameter tmpl : no param type for filename, gchar*
+// Unsupported : g_mkdtemp_full : no return type
 
 // Unsupported : g_pointer_bit_lock : unsupported parameter address : no param type for gpointer, void*
 

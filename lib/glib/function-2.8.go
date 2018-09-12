@@ -8,13 +8,13 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : g_access : unsupported parameter filename : no param type for filename, const gchar*
+// Unsupported : g_access : unsupported parameter mode : no param type for gint, int
 
 // Unsupported : g_build_filenamev : unsupported parameter args : no param type
 
 // Unsupported : g_build_pathv : unsupported parameter args : no param type
 
-// Unsupported : g_chdir : unsupported parameter path : no param type for filename, const gchar*
+// Unsupported : g_chdir : no return type
 
 // Unsupported : g_datalist_get_flags : unsupported parameter datalist : no param type for Data, GData**
 
@@ -22,7 +22,7 @@ import "C"
 
 // Unsupported : g_datalist_unset_flags : unsupported parameter datalist : no param type for Data, GData**
 
-// Unsupported : g_file_set_contents : unsupported parameter filename : no param type for filename, const gchar*
+// Unsupported : g_file_set_contents : unsupported parameter contents : no param type
 
 // GetHostName is a wrapper around the C function g_get_host_name.
 func GetHostName() string {
@@ -36,7 +36,19 @@ func GetHostName() string {
 
 // Unsupported : g_listenv : no return type
 
-// Unsupported : g_mkdir_with_parents : unsupported parameter pathname : no param type for filename, const gchar*
+// MkdirWithParents is a wrapper around the C function g_mkdir_with_parents.
+func MkdirWithParents(pathname string, mode int32) int32 {
+	c_pathname := C.CString(pathname)
+	defer C.free(unsafe.Pointer(c_pathname))
+
+	c_mode := (C.gint)(mode)
+
+	retC := C.g_mkdir_with_parents(c_pathname, c_mode)
+	retGo :=
+		(int32)(retC)
+
+	return retGo
+}
 
 // TryMalloc0 is a wrapper around the C function g_try_malloc0.
 func TryMalloc0(nBytes uint64) uintptr {

@@ -50,7 +50,21 @@ func HostnameToUnicode(hostname string) string {
 
 // Unsupported : g_main_context_get_thread_default : no return type
 
-// Unsupported : g_mkstemp_full : unsupported parameter tmpl : no param type for filename, gchar*
+// MkstempFull is a wrapper around the C function g_mkstemp_full.
+func MkstempFull(tmpl string, flags int32, mode int32) int32 {
+	c_tmpl := C.CString(tmpl)
+	defer C.free(unsafe.Pointer(c_tmpl))
+
+	c_flags := (C.gint)(flags)
+
+	c_mode := (C.gint)(mode)
+
+	retC := C.g_mkstemp_full(c_tmpl, c_flags, c_mode)
+	retGo :=
+		(int32)(retC)
+
+	return retGo
+}
 
 // Unsupported : g_reload_user_special_dirs_cache : no return type
 

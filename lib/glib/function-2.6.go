@@ -24,9 +24,29 @@ func CheckVersion(requiredMajor uint32, requiredMinor uint32, requiredMicro uint
 	return retGo
 }
 
-// Unsupported : g_filename_display_basename : unsupported parameter filename : no param type for filename, const gchar*
+// FilenameDisplayBasename is a wrapper around the C function g_filename_display_basename.
+func FilenameDisplayBasename(filename string) string {
+	c_filename := C.CString(filename)
+	defer C.free(unsafe.Pointer(c_filename))
 
-// Unsupported : g_filename_display_name : unsupported parameter filename : no param type for filename, const gchar*
+	retC := C.g_filename_display_basename(c_filename)
+	retGo :=
+		C.GoString(retC)
+
+	return retGo
+}
+
+// FilenameDisplayName is a wrapper around the C function g_filename_display_name.
+func FilenameDisplayName(filename string) string {
+	c_filename := C.CString(filename)
+	defer C.free(unsafe.Pointer(c_filename))
+
+	retC := C.g_filename_display_name(c_filename)
+	retGo :=
+		C.GoString(retC)
+
+	return retGo
+}
 
 // Unsupported : g_get_filename_charsets : unsupported parameter charsets : in for string with indirection level of 3
 
@@ -44,10 +64,10 @@ func CheckVersion(requiredMajor uint32, requiredMinor uint32, requiredMicro uint
 
 // Unsupported : g_log_set_default_handler : unsupported parameter log_func : no param type for LogFunc, GLogFunc
 
-// Unsupported : g_rmdir : unsupported parameter filename : no param type for filename, const gchar*
+// Unsupported : g_rmdir : no return type
 
 // Unsupported : g_strv_length : unsupported parameter str_array : in for string with indirection level of 2
 
-// Unsupported : g_unlink : unsupported parameter filename : no param type for filename, const gchar*
+// Unsupported : g_unlink : no return type
 
 // Unsupported : g_uri_list_extract_uris : no return type

@@ -173,7 +173,7 @@ func AsciiXdigitValue(c rune) int32 {
 
 // Unsupported : g_atexit : unsupported parameter func : no param type for VoidFunc, GVoidFunc
 
-// Unsupported : g_basename : unsupported parameter file_name : no param type for filename, const gchar*
+// Unsupported : g_basename : no return type
 
 // BitNthLsf is a wrapper around the C function g_bit_nth_lsf.
 func BitNthLsf(mask uint64, nthBit int32) int32 {
@@ -214,9 +214,9 @@ func BitStorage(number uint64) uint32 {
 
 // Unsupported : g_bookmark_file_error_quark : no return type
 
-// Unsupported : g_build_filename : unsupported parameter first_element : no param type for filename, const gchar*
+// Unsupported : g_build_filename : unsupported parameter ... : varargs
 
-// Unsupported : g_build_path : unsupported parameter separator : no param type for filename, const gchar*
+// Unsupported : g_build_path : unsupported parameter ... : varargs
 
 // Unsupported : g_byte_array_free : unsupported parameter array : no param type
 
@@ -286,21 +286,21 @@ func BitStorage(number uint64) uint32 {
 
 // Unsupported : g_file_error_quark : no return type
 
-// Unsupported : g_file_get_contents : unsupported parameter filename : no param type for filename, const gchar*
+// Unsupported : g_file_get_contents : unsupported parameter contents : no param type
 
-// Unsupported : g_file_open_tmp : unsupported parameter tmpl : no param type for filename, const gchar*
+// Unsupported : throws
 
-// Unsupported : g_file_test : unsupported parameter filename : no param type for filename, const gchar*
+// Unsupported : g_file_test : unsupported parameter test : no param type for FileTest, GFileTest
 
 // Unsupported : g_filename_from_uri : no return type
 
 // Unsupported : g_filename_from_utf8 : unsupported parameter bytes_read : no param type for gsize, gsize*
 
-// Unsupported : g_filename_to_uri : unsupported parameter filename : no param type for filename, const gchar*
+// Unsupported : throws
 
-// Unsupported : g_filename_to_utf8 : unsupported parameter opsysstring : no param type for filename, const gchar*
+// Unsupported : g_filename_to_utf8 : unsupported parameter bytes_read : no param type for gsize, gsize*
 
-// Unsupported : g_find_program_in_path : unsupported parameter program : no param type for filename, const gchar*
+// Unsupported : g_find_program_in_path : no return type
 
 // Unsupported : g_free : no return type
 
@@ -337,7 +337,7 @@ func GetPrgname() string {
 
 // Unsupported : g_get_user_name : no return type
 
-// Unsupported : g_getenv : unsupported parameter variable : no param type for filename, const gchar*
+// Unsupported : g_getenv : no return type
 
 // Unsupported : g_hash_table_destroy : unsupported parameter hash_table : no param type for GLib.HashTable, GHashTable*
 
@@ -472,7 +472,17 @@ func MarkupEscapeText(text string, length int64) string {
 
 // Unsupported : g_memdup : unsupported parameter mem : no param type for gpointer, gconstpointer
 
-// Unsupported : g_mkstemp : unsupported parameter tmpl : no param type for filename, gchar*
+// Mkstemp is a wrapper around the C function g_mkstemp.
+func Mkstemp(tmpl string) int32 {
+	c_tmpl := C.CString(tmpl)
+	defer C.free(unsafe.Pointer(c_tmpl))
+
+	retC := C.g_mkstemp(c_tmpl)
+	retGo :=
+		(int32)(retC)
+
+	return retGo
+}
 
 // Unsupported : g_nullify_pointer : unsupported parameter nullify_location : no param type for gpointer, gpointer*
 
@@ -486,13 +496,13 @@ func MarkupEscapeText(text string, length int64) string {
 
 // Unsupported : g_parse_debug_string : unsupported parameter keys : no param type
 
-// Unsupported : g_path_get_basename : unsupported parameter file_name : no param type for filename, const gchar*
+// Unsupported : g_path_get_basename : no return type
 
-// Unsupported : g_path_get_dirname : unsupported parameter file_name : no param type for filename, const gchar*
+// Unsupported : g_path_get_dirname : no return type
 
-// Unsupported : g_path_is_absolute : unsupported parameter file_name : no param type for filename, const gchar*
+// Unsupported : g_path_is_absolute : no return type
 
-// Unsupported : g_path_skip_root : unsupported parameter file_name : no param type for filename, const gchar*
+// Unsupported : g_path_skip_root : no return type
 
 // Unsupported : g_pattern_match : unsupported parameter pspec : no param type for PatternSpec, GPatternSpec*
 
@@ -591,11 +601,11 @@ func Realloc(mem uintptr, nBytes uint64) uintptr {
 
 // Unsupported : g_shell_error_quark : no return type
 
-// Unsupported : g_shell_parse_argv : unsupported parameter command_line : no param type for filename, const gchar*
+// Unsupported : g_shell_parse_argv : unsupported parameter argcp : no param type for gint, gint*
 
-// Unsupported : g_shell_quote : unsupported parameter unquoted_string : no param type for filename, const gchar*
+// Unsupported : g_shell_quote : no return type
 
-// Unsupported : g_shell_unquote : unsupported parameter quoted_string : no param type for filename, const gchar*
+// Unsupported : g_shell_unquote : no return type
 
 // Unsupported : g_slice_get_config : unsupported parameter ckey : no param type for SliceConfig, GSliceConfig
 
@@ -622,21 +632,21 @@ func SpacedPrimesClosest(num uint32) uint32 {
 	return retGo
 }
 
-// Unsupported : g_spawn_async : unsupported parameter working_directory : no param type for filename, const gchar*
+// Unsupported : g_spawn_async : unsupported parameter argv : no param type
 
-// Unsupported : g_spawn_async_with_pipes : unsupported parameter working_directory : no param type for filename, const gchar*
+// Unsupported : g_spawn_async_with_pipes : unsupported parameter argv : no param type
 
 // Unsupported : g_spawn_close_pid : unsupported parameter pid : no param type for Pid, GPid
 
-// Unsupported : g_spawn_command_line_async : unsupported parameter command_line : no param type for filename, const gchar*
+// Unsupported : g_spawn_command_line_async : no return type
 
-// Unsupported : g_spawn_command_line_sync : unsupported parameter command_line : no param type for filename, const gchar*
+// Unsupported : g_spawn_command_line_sync : unsupported parameter standard_output : no param type
 
 // Unsupported : g_spawn_error_quark : no return type
 
 // Unsupported : g_spawn_exit_error_quark : no return type
 
-// Unsupported : g_spawn_sync : unsupported parameter working_directory : no param type for filename, const gchar*
+// Unsupported : g_spawn_sync : unsupported parameter argv : no param type
 
 // Stpcpy is a wrapper around the C function g_stpcpy.
 func Stpcpy(dest string, src string) string {
