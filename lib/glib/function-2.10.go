@@ -18,6 +18,7 @@ func InternStaticString(string string) string {
 	retC := C.g_intern_static_string(c_string)
 	retGo :=
 		C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -30,6 +31,7 @@ func InternString(string string) string {
 	retC := C.g_intern_string(c_string)
 	retGo :=
 		C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
 }

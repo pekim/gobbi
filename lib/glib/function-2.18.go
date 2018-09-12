@@ -19,6 +19,7 @@ func Dgettext(domain string, msgid string) string {
 	retC := C.g_dgettext(c_domain, c_msgid)
 	retGo :=
 		C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -39,6 +40,7 @@ func Dngettext(domain string, msgid string, msgidPlural string, n uint64) string
 	retC := C.g_dngettext(c_domain, c_msgid, c_msgid_plural, c_n)
 	retGo :=
 		C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -57,6 +59,7 @@ func Dpgettext2(domain string, context string, msgid string) string {
 	retC := C.g_dpgettext2(c_domain, c_context, c_msgid)
 	retGo :=
 		C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
 }

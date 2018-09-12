@@ -29,7 +29,6 @@ func AsciiDtostr(buffer string, bufLen int32, d float64) string {
 	retC := C.g_ascii_dtostr(c_buffer, c_buf_len, c_d)
 	retGo :=
 		C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -49,7 +48,6 @@ func AsciiFormatd(buffer string, bufLen int32, format string, d float64) string 
 	retC := C.g_ascii_formatd(c_buffer, c_buf_len, c_format, c_d)
 	retGo :=
 		C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -79,7 +77,6 @@ func AsciiStrdown(str string, len int64) string {
 	retC := C.g_ascii_strdown(c_str, c_len)
 	retGo :=
 		C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -125,7 +122,6 @@ func AsciiStrup(str string, len int64) string {
 	retC := C.g_ascii_strup(c_str, c_len)
 	retGo :=
 		C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -315,7 +311,6 @@ func GetCodeset() string {
 	retC := C.g_get_codeset()
 	retGo :=
 		C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -331,6 +326,7 @@ func GetPrgname() string {
 	retC := C.g_get_prgname()
 	retGo :=
 		C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -464,7 +460,6 @@ func MarkupEscapeText(text string, length int64) string {
 	retC := C.g_markup_escape_text(c_text, c_length)
 	retGo :=
 		C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -654,7 +649,6 @@ func Stpcpy(dest string, src string) string {
 	retC := C.g_stpcpy(c_dest, c_src)
 	retGo :=
 		C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -676,7 +670,6 @@ func Strcanon(string string, validChars string, substitutor rune) string {
 	retC := C.g_strcanon(c_string, c_valid_chars, c_substitutor)
 	retGo :=
 		C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -704,7 +697,6 @@ func Strchomp(string string) string {
 	retC := C.g_strchomp(c_string)
 	retGo :=
 		C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -717,7 +709,6 @@ func Strchug(string string) string {
 	retC := C.g_strchug(c_string)
 	retGo :=
 		C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -730,7 +721,6 @@ func Strcompress(source string) string {
 	retC := C.g_strcompress(c_source)
 	retGo :=
 		C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -750,7 +740,6 @@ func Strdelimit(string string, delimiters string, newDelimiter rune) string {
 	retC := C.g_strdelimit(c_string, c_delimiters, c_new_delimiter)
 	retGo :=
 		C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -763,7 +752,6 @@ func Strdown(string string) string {
 	retC := C.g_strdown(c_string)
 	retGo :=
 		C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -776,7 +764,6 @@ func Strdup(str string) string {
 	retC := C.g_strdup(c_str)
 	retGo :=
 		C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -794,6 +781,7 @@ func Strerror(errnum int32) string {
 	retC := C.g_strerror(c_errnum)
 	retGo :=
 		C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -809,7 +797,6 @@ func Strescape(source string, exceptions string) string {
 	retC := C.g_strescape(c_source, c_exceptions)
 	retGo :=
 		C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -887,7 +874,6 @@ func Strndup(str string, n uint64) string {
 	retC := C.g_strndup(c_str, c_n)
 	retGo :=
 		C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -901,7 +887,6 @@ func Strnfill(length uint64, fillChar rune) string {
 	retC := C.g_strnfill(c_length, c_fill_char)
 	retGo :=
 		C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -914,7 +899,6 @@ func Strreverse(string string) string {
 	retC := C.g_strreverse(c_string)
 	retGo :=
 		C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -930,7 +914,6 @@ func Strrstr(haystack string, needle string) string {
 	retC := C.g_strrstr(c_haystack, c_needle)
 	retGo :=
 		C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -948,7 +931,6 @@ func StrrstrLen(haystack string, haystackLen int64, needle string) string {
 	retC := C.g_strrstr_len(c_haystack, c_haystack_len, c_needle)
 	retGo :=
 		C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -960,6 +942,7 @@ func Strsignal(signum int32) string {
 	retC := C.g_strsignal(c_signum)
 	retGo :=
 		C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -979,7 +962,6 @@ func StrstrLen(haystack string, haystackLen int64, needle string) string {
 	retC := C.g_strstr_len(c_haystack, c_haystack_len, c_needle)
 	retGo :=
 		C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -1006,7 +988,6 @@ func Strup(string string) string {
 	retC := C.g_strup(c_string)
 	retGo :=
 		C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -1217,7 +1198,6 @@ func Utf8Casefold(str string, len int64) string {
 	retC := C.g_utf8_casefold(c_str, c_len)
 	retGo :=
 		C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -1247,7 +1227,6 @@ func Utf8CollateKey(str string, len int64) string {
 	retC := C.g_utf8_collate_key(c_str, c_len)
 	retGo :=
 		C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -1263,7 +1242,6 @@ func Utf8FindNextChar(p string, end string) string {
 	retC := C.g_utf8_find_next_char(c_p, c_end)
 	retGo :=
 		C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -1279,7 +1257,6 @@ func Utf8FindPrevChar(str string, p string) string {
 	retC := C.g_utf8_find_prev_char(c_str, c_p)
 	retGo :=
 		C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -1322,7 +1299,6 @@ func Utf8OffsetToPointer(str string, offset int64) string {
 	retC := C.g_utf8_offset_to_pointer(c_str, c_offset)
 	retGo :=
 		C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -1350,7 +1326,6 @@ func Utf8PrevChar(p string) string {
 	retC := C.g_utf8_prev_char(c_p)
 	retGo :=
 		C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -1367,7 +1342,6 @@ func Utf8Strchr(p string, len int64, c rune) string {
 	retC := C.g_utf8_strchr(c_p, c_len, c_c)
 	retGo :=
 		C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -1382,7 +1356,6 @@ func Utf8Strdown(str string, len int64) string {
 	retC := C.g_utf8_strdown(c_str, c_len)
 	retGo :=
 		C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -1414,7 +1387,6 @@ func Utf8Strncpy(dest string, src string, n uint64) string {
 	retC := C.g_utf8_strncpy(c_dest, c_src, c_n)
 	retGo :=
 		C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -1431,7 +1403,6 @@ func Utf8Strrchr(p string, len int64, c rune) string {
 	retC := C.g_utf8_strrchr(c_p, c_len, c_c)
 	retGo :=
 		C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -1446,7 +1417,6 @@ func Utf8Strup(str string, len int64) string {
 	retC := C.g_utf8_strup(c_str, c_len)
 	retGo :=
 		C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
 }

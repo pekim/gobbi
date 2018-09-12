@@ -14,6 +14,10 @@ func TestFunctionCallWithIntegers(t *testing.T) {
 	assert.Equal(t, int32(4), AsciiDigitValue('4'))
 }
 
-func TestFunctionCallWithStrings(t *testing.T) {
+func TestFunctionCallWithStringsNotFreeReturnedString(t *testing.T) {
 	assert.Equal(t, "edcba", Strreverse("abcde"))
+}
+
+func TestFunctionCallWithReturnedStringToFree(t *testing.T) {
+	assert.Equal(t, "abcde", InternString("abcde"))
 }

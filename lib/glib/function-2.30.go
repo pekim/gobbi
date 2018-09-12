@@ -35,7 +35,6 @@ func FormatSize(size uint64) string {
 	retC := C.g_format_size(c_size)
 	retGo :=
 		C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -62,7 +61,6 @@ func RegexEscapeNul(string string, length int32) string {
 	retC := C.g_regex_escape_nul(c_string, c_length)
 	retGo :=
 		C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -101,7 +99,6 @@ func Utf8Substring(str string, startPos int64, endPos int64) string {
 	retC := C.g_utf8_substring(c_str, c_start_pos, c_end_pos)
 	retGo :=
 		C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
 }

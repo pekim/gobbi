@@ -42,7 +42,7 @@ func (rt *ReturnTypeString) generateCToGo(g *jen.Group, cVarName string) {
 		Qual("C", "GoString").
 		Call(jen.Id(cVarName))
 
-	if rt.returnValue.TransferOwnership != "full" {
+	if rt.returnValue.TransferOwnership != "none" {
 		// the library will be responsible for the memory
 		return
 	}

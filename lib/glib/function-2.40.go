@@ -23,7 +23,6 @@ func StrToAscii(str string, fromLocale string) string {
 	retC := C.g_str_to_ascii(c_str, c_from_locale)
 	retGo :=
 		C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
 }

@@ -18,7 +18,6 @@ func Utf8MakeValid(str string, len int64) string {
 	retC := C.g_utf8_make_valid(c_str, c_len)
 	retGo :=
 		C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -30,7 +29,6 @@ func UuidStringRandom() string {
 	retC := C.g_uuid_string_random()
 	retGo :=
 		C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
 }

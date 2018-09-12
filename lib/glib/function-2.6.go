@@ -2,6 +2,8 @@
 
 package glib
 
+import "unsafe"
+
 // #include <glib.h>
 // #include <stdlib.h>
 import "C"
@@ -17,6 +19,7 @@ func CheckVersion(requiredMajor uint32, requiredMinor uint32, requiredMicro uint
 	retC := C.glib_check_version(c_required_major, c_required_minor, c_required_micro)
 	retGo :=
 		C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
 }
