@@ -2,8 +2,6 @@
 
 package glib
 
-import "unsafe"
-
 // #include <glib.h>
 // #include <stdlib.h>
 import "C"
@@ -15,88 +13,89 @@ import "C"
 // Unsupported : g_bit_unlock : unsupported parameter address : no param type
 
 // Malloc0N is a wrapper around the C function g_malloc0_n.
-func Malloc0N(nBlocks uint64, nBlockBytes uint64) {
+func Malloc0N(nBlocks uint64, nBlockBytes uint64) uintptr {
 	c_n_blocks := (C.gsize)(nBlocks)
 
 	c_n_block_bytes := (C.gsize)(nBlockBytes)
 
-	C.g_malloc0_n(c_n_blocks, c_n_block_bytes)
+	retC := C.g_malloc0_n(c_n_blocks, c_n_block_bytes)
+	retGo :=
+		(uintptr)(retC)
+
+	return retGo
 }
 
 // MallocN is a wrapper around the C function g_malloc_n.
-func MallocN(nBlocks uint64, nBlockBytes uint64) {
+func MallocN(nBlocks uint64, nBlockBytes uint64) uintptr {
 	c_n_blocks := (C.gsize)(nBlocks)
 
 	c_n_block_bytes := (C.gsize)(nBlockBytes)
 
-	C.g_malloc_n(c_n_blocks, c_n_block_bytes)
+	retC := C.g_malloc_n(c_n_blocks, c_n_block_bytes)
+	retGo :=
+		(uintptr)(retC)
+
+	return retGo
 }
 
 // ReallocN is a wrapper around the C function g_realloc_n.
-func ReallocN(mem uintptr, nBlocks uint64, nBlockBytes uint64) {
+func ReallocN(mem uintptr, nBlocks uint64, nBlockBytes uint64) uintptr {
 	c_mem := (C.gpointer)(mem)
 
 	c_n_blocks := (C.gsize)(nBlocks)
 
 	c_n_block_bytes := (C.gsize)(nBlockBytes)
 
-	C.g_realloc_n(c_mem, c_n_blocks, c_n_block_bytes)
+	retC := C.g_realloc_n(c_mem, c_n_blocks, c_n_block_bytes)
+	retGo :=
+		(uintptr)(retC)
+
+	return retGo
 }
 
 // TryMalloc0N is a wrapper around the C function g_try_malloc0_n.
-func TryMalloc0N(nBlocks uint64, nBlockBytes uint64) {
+func TryMalloc0N(nBlocks uint64, nBlockBytes uint64) uintptr {
 	c_n_blocks := (C.gsize)(nBlocks)
 
 	c_n_block_bytes := (C.gsize)(nBlockBytes)
 
-	C.g_try_malloc0_n(c_n_blocks, c_n_block_bytes)
+	retC := C.g_try_malloc0_n(c_n_blocks, c_n_block_bytes)
+	retGo :=
+		(uintptr)(retC)
+
+	return retGo
 }
 
 // TryMallocN is a wrapper around the C function g_try_malloc_n.
-func TryMallocN(nBlocks uint64, nBlockBytes uint64) {
+func TryMallocN(nBlocks uint64, nBlockBytes uint64) uintptr {
 	c_n_blocks := (C.gsize)(nBlocks)
 
 	c_n_block_bytes := (C.gsize)(nBlockBytes)
 
-	C.g_try_malloc_n(c_n_blocks, c_n_block_bytes)
+	retC := C.g_try_malloc_n(c_n_blocks, c_n_block_bytes)
+	retGo :=
+		(uintptr)(retC)
+
+	return retGo
 }
 
 // TryReallocN is a wrapper around the C function g_try_realloc_n.
-func TryReallocN(mem uintptr, nBlocks uint64, nBlockBytes uint64) {
+func TryReallocN(mem uintptr, nBlocks uint64, nBlockBytes uint64) uintptr {
 	c_mem := (C.gpointer)(mem)
 
 	c_n_blocks := (C.gsize)(nBlocks)
 
 	c_n_block_bytes := (C.gsize)(nBlockBytes)
 
-	C.g_try_realloc_n(c_mem, c_n_blocks, c_n_block_bytes)
+	retC := C.g_try_realloc_n(c_mem, c_n_blocks, c_n_block_bytes)
+	retGo :=
+		(uintptr)(retC)
+
+	return retGo
 }
 
-// VariantIsObjectPath is a wrapper around the C function g_variant_is_object_path.
-func VariantIsObjectPath(string string) {
-	c_string := C.CString(string)
-	defer C.free(unsafe.Pointer(c_string))
+// Unsupported : g_variant_is_object_path : no return type
 
-	C.g_variant_is_object_path(c_string)
-}
+// Unsupported : g_variant_is_signature : no return type
 
-// VariantIsSignature is a wrapper around the C function g_variant_is_signature.
-func VariantIsSignature(string string) {
-	c_string := C.CString(string)
-	defer C.free(unsafe.Pointer(c_string))
-
-	C.g_variant_is_signature(c_string)
-}
-
-// VariantTypeStringScan is a wrapper around the C function g_variant_type_string_scan.
-func VariantTypeStringScan(string string, limit string) {
-	c_string := C.CString(string)
-	defer C.free(unsafe.Pointer(c_string))
-
-	c_limit := C.CString(limit)
-	defer C.free(unsafe.Pointer(c_limit))
-
-	var c_endptr *C.gchar
-
-	C.g_variant_type_string_scan(c_string, c_limit, &c_endptr)
-}
+// Unsupported : g_variant_type_string_scan : no return type

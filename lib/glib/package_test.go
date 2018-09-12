@@ -11,5 +11,5 @@ func TestCleanBuild(t *testing.T) {
 }
 
 func TestFunctionCall(t *testing.T) {
-	assert.Equal(t, 0x30, AsciiDigitValue('A'))
+	assert.Equal(t, int32(4), AsciiDigitValue('4'))
 }

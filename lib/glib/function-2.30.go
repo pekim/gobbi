@@ -2,8 +2,6 @@
 
 package glib
 
-import "unsafe"
-
 // #include <glib.h>
 // #include <stdlib.h>
 import "C"
@@ -28,12 +26,7 @@ import "C"
 
 // Unsupported : g_dir_make_tmp : unsupported parameter tmpl : no param type
 
-// FormatSize is a wrapper around the C function g_format_size.
-func FormatSize(size uint64) {
-	c_size := (C.guint64)(size)
-
-	C.g_format_size(c_size)
-}
+// Unsupported : g_format_size : no return type
 
 // Unsupported : g_format_size_full : unsupported parameter flags : no param type
 
@@ -47,20 +40,9 @@ func FormatSize(size uint64) {
 
 // Unsupported : g_pointer_bit_unlock : unsupported parameter address : no param type
 
-// RegexEscapeNul is a wrapper around the C function g_regex_escape_nul.
-func RegexEscapeNul(string string, length int32) {
-	c_string := C.CString(string)
-	defer C.free(unsafe.Pointer(c_string))
+// Unsupported : g_regex_escape_nul : no return type
 
-	c_length := (C.gint)(length)
-
-	C.g_regex_escape_nul(c_string, c_length)
-}
-
-// TestFail is a wrapper around the C function g_test_fail.
-func TestFail() {
-	C.g_test_fail()
-}
+// Unsupported : g_test_fail : no return type
 
 // Unsupported : g_unichar_compose : unsupported parameter ch : no param type
 
@@ -68,12 +50,7 @@ func TestFail() {
 
 // Unsupported : g_unichar_fully_decompose : unsupported parameter compat : no param type
 
-// UnicodeScriptFromIso15924 is a wrapper around the C function g_unicode_script_from_iso15924.
-func UnicodeScriptFromIso15924(iso15924 uint32) {
-	c_iso15924 := (C.guint32)(iso15924)
-
-	C.g_unicode_script_from_iso15924(c_iso15924)
-}
+// Unsupported : g_unicode_script_from_iso15924 : no return type
 
 // Unsupported : g_unicode_script_to_iso15924 : unsupported parameter script : no param type
 
@@ -85,21 +62,6 @@ func UnicodeScriptFromIso15924(iso15924 uint32) {
 
 // Unsupported : g_unix_signal_add_full : unsupported parameter handler : no param type
 
-// UnixSignalSourceNew is a wrapper around the C function g_unix_signal_source_new.
-func UnixSignalSourceNew(signum int32) {
-	c_signum := (C.gint)(signum)
+// Unsupported : g_unix_signal_source_new : no return type
 
-	C.g_unix_signal_source_new(c_signum)
-}
-
-// Utf8Substring is a wrapper around the C function g_utf8_substring.
-func Utf8Substring(str string, startPos int64, endPos int64) {
-	c_str := C.CString(str)
-	defer C.free(unsafe.Pointer(c_str))
-
-	c_start_pos := (C.glong)(startPos)
-
-	c_end_pos := (C.glong)(endPos)
-
-	C.g_utf8_substring(c_str, c_start_pos, c_end_pos)
-}
+// Unsupported : g_utf8_substring : no return type

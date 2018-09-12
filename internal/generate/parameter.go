@@ -42,7 +42,7 @@ func (p *Parameter) init(ns *Namespace) {
 	}
 }
 
-func (p Parameter) isSupported() (bool, string) {
+func (p *Parameter) isSupported() (bool, string) {
 	if p.Varargs != nil {
 		return false, "varargs"
 	}
@@ -66,7 +66,7 @@ func (p Parameter) isSupported() (bool, string) {
 	return true, ""
 }
 
-func (p Parameter) generateFunctionDeclaration(g *jen.Group) {
+func (p *Parameter) generateFunctionDeclaration(g *jen.Group) {
 	if p.Direction == "out" {
 		return
 	}
@@ -74,7 +74,7 @@ func (p Parameter) generateFunctionDeclaration(g *jen.Group) {
 	p.paramType.generateFunctionDeclaration(g)
 }
 
-func (p Parameter) generateCVar(g *jen.Group) {
+func (p *Parameter) generateCVar(g *jen.Group) {
 	if p.Direction == "out" {
 		p.paramType.generateOutCVar(g)
 	} else {
@@ -84,7 +84,7 @@ func (p Parameter) generateCVar(g *jen.Group) {
 	g.Line()
 }
 
-func (p Parameter) generateCallArgument(g *jen.Group) {
+func (p *Parameter) generateCallArgument(g *jen.Group) {
 	if p.Direction == "out" {
 		p.paramType.generateOutCallArgument(g)
 	} else {

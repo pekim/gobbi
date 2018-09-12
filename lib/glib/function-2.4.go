@@ -2,8 +2,6 @@
 
 package glib
 
-import "unsafe"
-
 // #include <glib.h>
 // #include <stdlib.h>
 import "C"
@@ -42,29 +40,9 @@ import "C"
 
 // Unsupported : g_setenv : unsupported parameter variable : no param type
 
-// StripContext is a wrapper around the C function g_strip_context.
-func StripContext(msgid string, msgval string) {
-	c_msgid := C.CString(msgid)
-	defer C.free(unsafe.Pointer(c_msgid))
+// Unsupported : g_strip_context : no return type
 
-	c_msgval := C.CString(msgval)
-	defer C.free(unsafe.Pointer(c_msgval))
-
-	C.g_strip_context(c_msgid, c_msgval)
-}
-
-// StrsplitSet is a wrapper around the C function g_strsplit_set.
-func StrsplitSet(string string, delimiters string, maxTokens int32) {
-	c_string := C.CString(string)
-	defer C.free(unsafe.Pointer(c_string))
-
-	c_delimiters := C.CString(delimiters)
-	defer C.free(unsafe.Pointer(c_delimiters))
-
-	c_max_tokens := (C.gint)(maxTokens)
-
-	C.g_strsplit_set(c_string, c_delimiters, c_max_tokens)
-}
+// Unsupported : g_strsplit_set : no return type
 
 // Unsupported : g_unichar_get_mirror_char : unsupported parameter mirrored_ch : no param type
 

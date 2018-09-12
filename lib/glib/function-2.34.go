@@ -14,7 +14,7 @@ import "C"
 
 // Unsupported : g_datalist_id_replace_data : unsupported parameter datalist : no param type
 
-// Unsupported : throws
+// Unsupported : g_spawn_check_exit_status : no return type
 
 // Unsupported : g_test_add_data_func_full : unsupported parameter test_func : no param type
 

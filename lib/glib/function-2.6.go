@@ -2,22 +2,11 @@
 
 package glib
 
-import "unsafe"
-
 // #include <glib.h>
 // #include <stdlib.h>
 import "C"
 
-// CheckVersion is a wrapper around the C function glib_check_version.
-func CheckVersion(requiredMajor uint32, requiredMinor uint32, requiredMicro uint32) {
-	c_required_major := (C.guint)(requiredMajor)
-
-	c_required_minor := (C.guint)(requiredMinor)
-
-	c_required_micro := (C.guint)(requiredMicro)
-
-	C.glib_check_version(c_required_major, c_required_minor, c_required_micro)
-}
+// Unsupported : glib_check_version : no return type
 
 // Unsupported : g_filename_display_basename : unsupported parameter filename : no param type
 
@@ -25,35 +14,17 @@ func CheckVersion(requiredMajor uint32, requiredMinor uint32, requiredMicro uint
 
 // Unsupported : g_get_filename_charsets : unsupported parameter charsets : in for string with indirection level of 3
 
-// GetLanguageNames is a wrapper around the C function g_get_language_names.
-func GetLanguageNames() {
-	C.g_get_language_names()
-}
+// Unsupported : g_get_language_names : no return type
 
-// GetSystemConfigDirs is a wrapper around the C function g_get_system_config_dirs.
-func GetSystemConfigDirs() {
-	C.g_get_system_config_dirs()
-}
+// Unsupported : g_get_system_config_dirs : no return type
 
-// GetSystemDataDirs is a wrapper around the C function g_get_system_data_dirs.
-func GetSystemDataDirs() {
-	C.g_get_system_data_dirs()
-}
+// Unsupported : g_get_system_data_dirs : no return type
 
-// GetUserCacheDir is a wrapper around the C function g_get_user_cache_dir.
-func GetUserCacheDir() {
-	C.g_get_user_cache_dir()
-}
+// Unsupported : g_get_user_cache_dir : no return type
 
-// GetUserConfigDir is a wrapper around the C function g_get_user_config_dir.
-func GetUserConfigDir() {
-	C.g_get_user_config_dir()
-}
+// Unsupported : g_get_user_config_dir : no return type
 
-// GetUserDataDir is a wrapper around the C function g_get_user_data_dir.
-func GetUserDataDir() {
-	C.g_get_user_data_dir()
-}
+// Unsupported : g_get_user_data_dir : no return type
 
 // Unsupported : g_log_set_default_handler : unsupported parameter log_func : no param type
 
@@ -63,10 +34,4 @@ func GetUserDataDir() {
 
 // Unsupported : g_unlink : unsupported parameter filename : no param type
 
-// UriListExtractUris is a wrapper around the C function g_uri_list_extract_uris.
-func UriListExtractUris(uriList string) {
-	c_uri_list := C.CString(uriList)
-	defer C.free(unsafe.Pointer(c_uri_list))
-
-	C.g_uri_list_extract_uris(c_uri_list)
-}
+// Unsupported : g_uri_list_extract_uris : no return type

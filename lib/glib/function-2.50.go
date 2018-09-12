@@ -20,20 +20,10 @@ import "C"
 
 // Unsupported : g_log_writer_format_fields : unsupported parameter log_level : no param type
 
-// LogWriterIsJournald is a wrapper around the C function g_log_writer_is_journald.
-func LogWriterIsJournald(outputFd int32) {
-	c_output_fd := (C.gint)(outputFd)
-
-	C.g_log_writer_is_journald(c_output_fd)
-}
+// Unsupported : g_log_writer_is_journald : no return type
 
 // Unsupported : g_log_writer_journald : unsupported parameter log_level : no param type
 
 // Unsupported : g_log_writer_standard_streams : unsupported parameter log_level : no param type
 
-// LogWriterSupportsColor is a wrapper around the C function g_log_writer_supports_color.
-func LogWriterSupportsColor(outputFd int32) {
-	c_output_fd := (C.gint)(outputFd)
-
-	C.g_log_writer_supports_color(c_output_fd)
-}
+// Unsupported : g_log_writer_supports_color : no return type

@@ -44,37 +44,21 @@ import "C"
 
 // Unsupported : g_timeout_add_seconds_full : unsupported parameter function : no param type
 
-// TimeoutSourceNewSeconds is a wrapper around the C function g_timeout_source_new_seconds.
-func TimeoutSourceNewSeconds(interval uint32) {
-	c_interval := (C.guint)(interval)
-
-	C.g_timeout_source_new_seconds(c_interval)
-}
+// Unsupported : g_timeout_source_new_seconds : no return type
 
 // UnicharCombiningClass is a wrapper around the C function g_unichar_combining_class.
-func UnicharCombiningClass(uc rune) {
+func UnicharCombiningClass(uc rune) int32 {
 	c_uc := (C.gunichar)(uc)
 
-	C.g_unichar_combining_class(c_uc)
+	retC := C.g_unichar_combining_class(c_uc)
+	retGo :=
+		(int32)(retC)
+
+	return retGo
 }
 
-// UnicharGetScript is a wrapper around the C function g_unichar_get_script.
-func UnicharGetScript(ch rune) {
-	c_ch := (C.gunichar)(ch)
+// Unsupported : g_unichar_get_script : no return type
 
-	C.g_unichar_get_script(c_ch)
-}
+// Unsupported : g_unichar_ismark : no return type
 
-// UnicharIsmark is a wrapper around the C function g_unichar_ismark.
-func UnicharIsmark(c rune) {
-	c_c := (C.gunichar)(c)
-
-	C.g_unichar_ismark(c_c)
-}
-
-// UnicharIszerowidth is a wrapper around the C function g_unichar_iszerowidth.
-func UnicharIszerowidth(c rune) {
-	c_c := (C.gunichar)(c)
-
-	C.g_unichar_iszerowidth(c_c)
-}
+// Unsupported : g_unichar_iszerowidth : no return type

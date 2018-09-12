@@ -9,7 +9,7 @@ import "unsafe"
 import "C"
 
 // AsciiStrtoll is a wrapper around the C function g_ascii_strtoll.
-func AsciiStrtoll(nptr string, base uint32) {
+func AsciiStrtoll(nptr string, base uint32) int64 {
 	c_nptr := C.CString(nptr)
 	defer C.free(unsafe.Pointer(c_nptr))
 
@@ -17,7 +17,11 @@ func AsciiStrtoll(nptr string, base uint32) {
 
 	c_base := (C.guint)(base)
 
-	C.g_ascii_strtoll(c_nptr, &c_endptr, c_base)
+	retC := C.g_ascii_strtoll(c_nptr, &c_endptr, c_base)
+	retGo :=
+		(int64)(retC)
+
+	return retGo
 }
 
 // Unsupported : g_base64_decode : unsupported parameter out_len : no param type
@@ -34,16 +38,8 @@ func AsciiStrtoll(nptr string, base uint32) {
 
 // Unsupported : g_hash_table_steal_all : unsupported parameter hash_table : no param type
 
-// MainCurrentSource is a wrapper around the C function g_main_current_source.
-func MainCurrentSource() {
-	C.g_main_current_source()
-}
+// Unsupported : g_main_current_source : no return type
 
 // Unsupported : g_time_val_from_iso8601 : unsupported parameter time_ : no param type
 
-// UnicharIswideCjk is a wrapper around the C function g_unichar_iswide_cjk.
-func UnicharIswideCjk(c rune) {
-	c_c := (C.gunichar)(c)
-
-	C.g_unichar_iswide_cjk(c_c)
-}
+// Unsupported : g_unichar_iswide_cjk : no return type

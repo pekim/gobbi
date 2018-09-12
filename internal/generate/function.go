@@ -55,6 +55,10 @@ func (f *Function) supported() (supported bool, reason string) {
 		return false, fmt.Sprintf("%s : %s", f.CIdentifier, reason)
 	}
 
+	if supported, reason := f.ReturnValue.isSupported(); !supported {
+		return false, fmt.Sprintf("%s : %s", f.CIdentifier, reason)
+	}
+
 	if f.Throws != 0 {
 		return false, "throws"
 	}
@@ -69,12 +73,23 @@ func (f *Function) generate(g *jen.Group, version *Version) {
 		Func().
 		Id(f.GoName).
 		ParamsFunc(f.Parameters.generateFunctionDeclaration).
+		ParamsFunc(f.ReturnValue.generateFunctionDeclaration).
 		BlockFunc(func(g *jen.Group) {
 			f.Parameters.generateCVars(g)
 
 			g.
+				Id("retC").
+				Op(":=").
 				Qual("C", f.CIdentifier).
 				CallFunc(f.Parameters.generateCallArguments)
+
+			g.
+				Id("retGo").
+				Op(":=")
+			f.ReturnValue.generateCToGo(g, "retC")
+
+			g.Line()
+			g.Return(jen.Id("retGo"))
 		}).
 		Line()
 }

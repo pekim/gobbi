@@ -2,36 +2,30 @@
 
 package glib
 
-import "unsafe"
-
 // #include <glib.h>
 // #include <stdlib.h>
 import "C"
 
-// GetEnviron is a wrapper around the C function g_get_environ.
-func GetEnviron() {
-	C.g_get_environ()
-}
+// Unsupported : g_get_environ : no return type
 
-// GetLocaleVariants is a wrapper around the C function g_get_locale_variants.
-func GetLocaleVariants(locale string) {
-	c_locale := C.CString(locale)
-	defer C.free(unsafe.Pointer(c_locale))
-
-	C.g_get_locale_variants(c_locale)
-}
+// Unsupported : g_get_locale_variants : no return type
 
 // GetMonotonicTime is a wrapper around the C function g_get_monotonic_time.
-func GetMonotonicTime() {
-	C.g_get_monotonic_time()
+func GetMonotonicTime() int64 {
+	retC := C.g_get_monotonic_time()
+	retGo :=
+		(int64)(retC)
+
+	return retGo
 }
 
 // GetRealTime is a wrapper around the C function g_get_real_time.
-func GetRealTime() {
-	C.g_get_real_time()
+func GetRealTime() int64 {
+	retC := C.g_get_real_time()
+	retGo :=
+		(int64)(retC)
+
+	return retGo
 }
 
-// GetUserRuntimeDir is a wrapper around the C function g_get_user_runtime_dir.
-func GetUserRuntimeDir() {
-	C.g_get_user_runtime_dir()
-}
+// Unsupported : g_get_user_runtime_dir : no return type

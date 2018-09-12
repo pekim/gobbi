@@ -2,31 +2,12 @@
 
 package glib
 
-import "unsafe"
-
 // #include <glib.h>
 // #include <stdlib.h>
 import "C"
 
-// Utf8MakeValid is a wrapper around the C function g_utf8_make_valid.
-func Utf8MakeValid(str string, len int64) {
-	c_str := C.CString(str)
-	defer C.free(unsafe.Pointer(c_str))
+// Unsupported : g_utf8_make_valid : no return type
 
-	c_len := (C.gssize)(len)
+// Unsupported : g_uuid_string_is_valid : no return type
 
-	C.g_utf8_make_valid(c_str, c_len)
-}
-
-// UuidStringIsValid is a wrapper around the C function g_uuid_string_is_valid.
-func UuidStringIsValid(str string) {
-	c_str := C.CString(str)
-	defer C.free(unsafe.Pointer(c_str))
-
-	C.g_uuid_string_is_valid(c_str)
-}
-
-// UuidStringRandom is a wrapper around the C function g_uuid_string_random.
-func UuidStringRandom() {
-	C.g_uuid_string_random()
-}
+// Unsupported : g_uuid_string_random : no return type

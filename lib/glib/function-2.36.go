@@ -6,11 +6,15 @@ package glib
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : throws
+// Unsupported : g_close : no return type
 
 // GetNumProcessors is a wrapper around the C function g_get_num_processors.
-func GetNumProcessors() {
-	C.g_get_num_processors()
+func GetNumProcessors() uint32 {
+	retC := C.g_get_num_processors()
+	retGo :=
+		(uint32)(retC)
+
+	return retGo
 }
 
 // Unsupported : g_unix_fd_add : unsupported parameter condition : no param type
