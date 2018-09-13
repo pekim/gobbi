@@ -20,6 +20,16 @@ func (rr Records) versionList() Versions {
 	return versions
 }
 
+func (rr Records) entities() []Generatable {
+	var generatables []Generatable
+
+	for _, record := range rr {
+		generatables = append(generatables, record)
+	}
+
+	return generatables
+}
+
 func (rr Records) forName(name string) *Record {
 	for _, record := range rr {
 		if record.Name == name {

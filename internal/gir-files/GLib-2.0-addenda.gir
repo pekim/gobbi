@@ -112,9 +112,9 @@
     <callback blacklist="true" name="RegexEvalCallback"/>
 
     <!-- handled as a special case -->
-    <record blacklist="true" name="Error"/>
+    <!--<record blacklist="true" name="Error"/>-->
 
-    <!-- contains a long double, which is not supported by cg0 -->
+    <!-- contains a long double, which is not supported by cgo -->
     <record blacklist="true" name="TestLogMsg"/>
     <record blacklist="true" name="TestLogBuffer"/>
 
