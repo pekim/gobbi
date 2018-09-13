@@ -8,4 +8,4 @@ import "C"
 
 // Unsupported : g_build_filename_valist : unsupported parameter args : no param type for va_list, va_list*
 
-// Unsupported : g_clear_handle_id : unsupported parameter clear_func : no param type for ClearHandleFunc, GClearHandleFunc
+// Unsupported : g_clear_handle_id : unsupported parameter tag_ptr : no param type for guint, guint*

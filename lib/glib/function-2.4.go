@@ -8,25 +8,25 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// Blacklisted : g_atomic_int_add
+// Unsupported : g_atomic_int_add : unsupported parameter atomic : no param type for gint, volatile gint*
 
-// Unsupported : g_atomic_int_compare_and_exchange : no return type
+// Unsupported : g_atomic_int_compare_and_exchange : unsupported parameter atomic : no param type for gint, volatile gint*
 
-// Unsupported : g_atomic_int_dec_and_test : no return type
+// Unsupported : g_atomic_int_dec_and_test : unsupported parameter atomic : no param type for gint, volatile gint*
 
-// Blacklisted : g_atomic_int_exchange_and_add
+// Unsupported : g_atomic_int_exchange_and_add : unsupported parameter atomic : no param type for gint, volatile gint*
 
-// Blacklisted : g_atomic_int_get
+// Unsupported : g_atomic_int_get : unsupported parameter atomic : no param type for gint, volatile const gint*
 
-// Unsupported : g_atomic_int_inc : no return type
+// Unsupported : g_atomic_int_inc : unsupported parameter atomic : no param type for gint, volatile gint*
 
-// Unsupported : g_atomic_int_set : no return type
+// Unsupported : g_atomic_int_set : unsupported parameter atomic : no param type for gint, volatile gint*
 
-// Unsupported : g_atomic_pointer_compare_and_exchange : no return type
+// Unsupported : g_atomic_pointer_compare_and_exchange : unsupported parameter atomic : no param type for gpointer, void*
 
-// Blacklisted : g_atomic_pointer_get
+// Unsupported : g_atomic_pointer_get : unsupported parameter atomic : no param type for gpointer, void*
 
-// Unsupported : g_atomic_pointer_set : no return type
+// Unsupported : g_atomic_pointer_set : unsupported parameter atomic : no param type for gpointer, void*
 
 // Unsupported : g_child_watch_add : unsupported parameter pid : no param type for Pid, GPid
 
@@ -60,7 +60,7 @@ func StripContext(msgid string, msgval string) string {
 
 // Unsupported : g_strsplit_set : no return type
 
-// Unsupported : g_unichar_get_mirror_char : no return type
+// Unsupported : g_unichar_get_mirror_char : unsupported parameter mirrored_ch : no param type for gunichar, gunichar*
 
 // Unsupported : g_unsetenv : no return type
 

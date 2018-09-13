@@ -8,9 +8,9 @@ import "C"
 
 // Unsupported : g_get_user_special_dir : unsupported parameter directory : no param type for UserDirectory, GUserDirectory
 
-// Unsupported : g_once_init_enter : no return type
+// Unsupported : g_once_init_enter : unsupported parameter location : no param type for gpointer, void*
 
-// Unsupported : g_once_init_leave : no return type
+// Unsupported : g_once_init_leave : unsupported parameter location : no param type for gpointer, void*
 
 // Unsupported : g_regex_check_replacement : unsupported parameter has_references : no param type for gboolean, gboolean*
 
@@ -42,7 +42,7 @@ import "C"
 func SliceCopy(blockSize uint64, memBlock uintptr) uintptr {
 	c_block_size := (C.gsize)(blockSize)
 
-	c_mem_block := (C.gpointer)(memBlock)
+	c_mem_block := (C.gconstpointer)(memBlock)
 
 	retC := C.g_slice_copy(c_block_size, c_mem_block)
 	retGo :=

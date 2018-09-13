@@ -33,8 +33,8 @@ func Dpgettext(domain string, msgctxtid string, msgidoffset uint64) string {
 }
 
 // FormatSizeForDisplay is a wrapper around the C function g_format_size_for_display.
-func FormatSizeForDisplay(size int64) string {
-	c_size := (C.gint64)(size)
+func FormatSizeForDisplay(size uint64) string {
+	c_size := (C.goffset)(size)
 
 	retC := C.g_format_size_for_display(c_size)
 	retGo :=
@@ -49,7 +49,20 @@ func FormatSizeForDisplay(size int64) string {
 
 // Unsupported : g_propagate_prefixed_error : unsupported parameter dest : no param type for Error, GError**
 
-// Unsupported : g_strcmp0 : no return type
+// Strcmp0 is a wrapper around the C function g_strcmp0.
+func Strcmp0(str1 string, str2 string) int32 {
+	c_str1 := C.CString(str1)
+	defer C.free(unsafe.Pointer(c_str1))
+
+	c_str2 := C.CString(str2)
+	defer C.free(unsafe.Pointer(c_str2))
+
+	retC := C.g_strcmp0(c_str1, c_str2)
+	retGo :=
+		(int32)(retC)
+
+	return retGo
+}
 
 // Unsupported : g_test_add_data_func : unsupported parameter test_func : no param type for TestDataFunc, GTestDataFunc
 
@@ -65,7 +78,7 @@ func FormatSizeForDisplay(size int64) string {
 
 // Unsupported : g_test_get_root : no return type
 
-// Unsupported : g_test_init : unsupported parameter argv : in for string with indirection level of 3
+// Unsupported : g_test_init : unsupported parameter argc : no param type for gint, int*
 
 // Unsupported : g_test_maximized_result : unsupported parameter ... : varargs
 
@@ -77,9 +90,27 @@ func FormatSizeForDisplay(size int64) string {
 
 // Unsupported : g_test_queue_free : no return type
 
-// Unsupported : g_test_rand_double : no return type
+// TestRandDouble is a wrapper around the C function g_test_rand_double.
+func TestRandDouble() float64 {
+	retC := C.g_test_rand_double()
+	retGo :=
+		(float64)(retC)
 
-// Unsupported : g_test_rand_double_range : no return type
+	return retGo
+}
+
+// TestRandDoubleRange is a wrapper around the C function g_test_rand_double_range.
+func TestRandDoubleRange(rangeStart float64, rangeEnd float64) float64 {
+	c_range_start := (C.double)(rangeStart)
+
+	c_range_end := (C.double)(rangeEnd)
+
+	retC := C.g_test_rand_double_range(c_range_start, c_range_end)
+	retGo :=
+		(float64)(retC)
+
+	return retGo
+}
 
 // TestRandInt is a wrapper around the C function g_test_rand_int.
 func TestRandInt() int32 {
@@ -103,13 +134,34 @@ func TestRandIntRange(begin int32, end int32) int32 {
 	return retGo
 }
 
-// Unsupported : g_test_run : no return type
+// TestRun is a wrapper around the C function g_test_run.
+func TestRun() int32 {
+	retC := C.g_test_run()
+	retGo :=
+		(int32)(retC)
+
+	return retGo
+}
 
 // Unsupported : g_test_run_suite : unsupported parameter suite : no param type for TestSuite, GTestSuite*
 
-// Unsupported : g_test_timer_elapsed : no return type
+// TestTimerElapsed is a wrapper around the C function g_test_timer_elapsed.
+func TestTimerElapsed() float64 {
+	retC := C.g_test_timer_elapsed()
+	retGo :=
+		(float64)(retC)
 
-// Unsupported : g_test_timer_last : no return type
+	return retGo
+}
+
+// TestTimerLast is a wrapper around the C function g_test_timer_last.
+func TestTimerLast() float64 {
+	retC := C.g_test_timer_last()
+	retGo :=
+		(float64)(retC)
+
+	return retGo
+}
 
 // Unsupported : g_test_timer_start : no return type
 

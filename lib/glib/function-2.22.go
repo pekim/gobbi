@@ -14,7 +14,7 @@ import "C"
 
 // DoubleHash is a wrapper around the C function g_double_hash.
 func DoubleHash(v uintptr) uint32 {
-	c_v := (C.gpointer)(v)
+	c_v := (C.gconstpointer)(v)
 
 	retC := C.g_double_hash(c_v)
 	retGo :=
@@ -57,7 +57,7 @@ func HostnameToUnicode(hostname string) string {
 
 // Int64Hash is a wrapper around the C function g_int64_hash.
 func Int64Hash(v uintptr) uint32 {
-	c_v := (C.gpointer)(v)
+	c_v := (C.gconstpointer)(v)
 
 	retC := C.g_int64_hash(c_v)
 	retGo :=

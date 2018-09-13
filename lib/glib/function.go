@@ -159,7 +159,7 @@ func AsciiXdigitValue(c rune) int32 {
 	return retGo
 }
 
-// Unsupported : g_assert_warning : no return type
+// Unsupported : g_assert_warning : unsupported parameter line : no param type for gint, const int
 
 // Unsupported : g_assertion_message : no return type
 
@@ -282,7 +282,7 @@ func BitStorage(number uint64) uint32 {
 
 // DirectHash is a wrapper around the C function g_direct_hash.
 func DirectHash(v uintptr) uint32 {
-	c_v := (C.gpointer)(v)
+	c_v := (C.gconstpointer)(v)
 
 	retC := C.g_direct_hash(c_v)
 	retGo :=
@@ -303,11 +303,11 @@ func DirectHash(v uintptr) uint32 {
 
 // Unsupported : g_filename_from_uri : no return type
 
-// Unsupported : g_filename_from_utf8 : no return type
+// Unsupported : g_filename_from_utf8 : unsupported parameter bytes_read : no param type for gsize, gsize*
 
 // Unsupported : throws
 
-// Unsupported : throws
+// Unsupported : g_filename_to_utf8 : unsupported parameter bytes_read : no param type for gsize, gsize*
 
 // Unsupported : g_find_program_in_path : no return type
 
@@ -392,7 +392,7 @@ func GetPrgname() string {
 
 // IntHash is a wrapper around the C function g_int_hash.
 func IntHash(v uintptr) uint32 {
-	c_v := (C.gpointer)(v)
+	c_v := (C.gconstpointer)(v)
 
 	retC := C.g_int_hash(c_v)
 	retGo :=
@@ -413,7 +413,7 @@ func IntHash(v uintptr) uint32 {
 
 // Unsupported : g_key_file_error_quark : no return type
 
-// Unsupported : g_locale_from_utf8 : no return type
+// Unsupported : g_locale_from_utf8 : unsupported parameter bytes_read : no param type for gsize, gsize*
 
 // Unsupported : g_locale_to_utf8 : unsupported parameter opsysstring : no param type
 
@@ -490,7 +490,7 @@ func MarkupEscapeText(text string, length int64) string {
 
 // Memdup is a wrapper around the C function g_memdup.
 func Memdup(mem uintptr, byteSize uint32) uintptr {
-	c_mem := (C.gpointer)(mem)
+	c_mem := (C.gconstpointer)(mem)
 
 	c_byte_size := (C.guint)(byteSize)
 
@@ -513,7 +513,7 @@ func Mkstemp(tmpl string) int32 {
 	return retGo
 }
 
-// Unsupported : g_nullify_pointer : no return type
+// Unsupported : g_nullify_pointer : unsupported parameter nullify_location : no param type for gpointer, gpointer*
 
 // Unsupported : g_number_parser_error_quark : no return type
 
@@ -630,7 +630,7 @@ func Realloc(mem uintptr, nBytes uint64) uintptr {
 
 // Unsupported : g_shell_error_quark : no return type
 
-// Unsupported : g_shell_parse_argv : unsupported parameter argvp : no param type
+// Unsupported : g_shell_parse_argv : unsupported parameter argcp : no param type for gint, gint*
 
 // Unsupported : g_shell_quote : no return type
 
@@ -696,7 +696,7 @@ func Stpcpy(dest string, src string) string {
 
 // StrHash is a wrapper around the C function g_str_hash.
 func StrHash(v uintptr) uint32 {
-	c_v := (C.gpointer)(v)
+	c_v := (C.gconstpointer)(v)
 
 	retC := C.g_str_hash(c_v)
 	retGo :=
@@ -1118,9 +1118,9 @@ func TryRealloc(mem uintptr, nBytes uint64) uintptr {
 	return retGo
 }
 
-// Unsupported : g_ucs4_to_utf16 : no return type
+// Unsupported : g_ucs4_to_utf16 : unsupported parameter str : no param type for gunichar, const gunichar*
 
-// Unsupported : throws
+// Unsupported : g_ucs4_to_utf8 : unsupported parameter str : no param type for gunichar, const gunichar*
 
 // Unsupported : g_unichar_break_type : no return type
 
@@ -1224,17 +1224,17 @@ func UnicharXdigitValue(c rune) int32 {
 	return retGo
 }
 
-// Unsupported : g_unicode_canonical_decomposition : no return type
+// Unsupported : g_unicode_canonical_decomposition : unsupported parameter result_len : no param type for gsize, gsize*
 
-// Unsupported : g_unicode_canonical_ordering : no return type
+// Unsupported : g_unicode_canonical_ordering : unsupported parameter string : no param type for gunichar, gunichar*
 
 // Unsupported : g_unix_error_quark : no return type
 
 // Unsupported : g_usleep : no return type
 
-// Unsupported : g_utf16_to_ucs4 : no return type
+// Unsupported : g_utf16_to_ucs4 : unsupported parameter str : no param type for guint16, const gunichar2*
 
-// Unsupported : throws
+// Unsupported : g_utf16_to_utf8 : unsupported parameter str : no param type for guint16, const gunichar2*
 
 // Utf8Casefold is a wrapper around the C function g_utf8_casefold.
 func Utf8Casefold(str string, len int64) string {
@@ -1469,11 +1469,11 @@ func Utf8Strup(str string, len int64) string {
 	return retGo
 }
 
-// Unsupported : g_utf8_to_ucs4 : no return type
+// Unsupported : g_utf8_to_ucs4 : unsupported parameter items_read : no param type for glong, glong*
 
-// Unsupported : g_utf8_to_ucs4_fast : no return type
+// Unsupported : g_utf8_to_ucs4_fast : unsupported parameter items_written : no param type for glong, glong*
 
-// Unsupported : g_utf8_to_utf16 : no return type
+// Unsupported : g_utf8_to_utf16 : unsupported parameter items_read : no param type for glong, glong*
 
 // Unsupported : g_utf8_validate : unsupported parameter str : no param type
 

@@ -3,6 +3,7 @@ package generate
 var integerCTypeMap = map[string]string{
 	"gshort": "int16",
 	"gint":   "int32",
+	"int":    "int32",
 	"glong":  "int64",
 
 	"guchar":  "uint8",
@@ -22,11 +23,14 @@ var integerCTypeMap = map[string]string{
 
 	"gfloat":  "float32",
 	"gdouble": "float64",
+	"double":  "float64",
 
 	"gchar":    "rune",
 	"gunichar": "rune",
 
-	"gpointer": "uintptr",
-	"gsize":    "uint64",
-	"gssize":   "int64",
+	"gpointer":      "uintptr",
+	"gconstpointer": "uintptr",
+	"goffset":       "uint64",
+	"gsize":         "uint64",
+	"gssize":        "int64",
 }

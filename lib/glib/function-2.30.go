@@ -8,96 +8,19 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// AtomicIntAnd is a wrapper around the C function g_atomic_int_and.
-func AtomicIntAnd(atomic uint32, val uint32) uint32 {
-	c_atomic := (C.guint)(atomic)
+// Unsupported : g_atomic_int_and : unsupported parameter atomic : no param type for guint, volatile guint*
 
-	c_val := (C.guint)(val)
+// Unsupported : g_atomic_int_or : unsupported parameter atomic : no param type for guint, volatile guint*
 
-	retC := C.g_atomic_int_and(c_atomic, c_val)
-	retGo :=
-		(uint32)(retC)
+// Unsupported : g_atomic_int_xor : unsupported parameter atomic : no param type for guint, volatile guint*
 
-	return retGo
-}
+// Unsupported : g_atomic_pointer_add : unsupported parameter atomic : no param type for gpointer, void*
 
-// AtomicIntOr is a wrapper around the C function g_atomic_int_or.
-func AtomicIntOr(atomic uint32, val uint32) uint32 {
-	c_atomic := (C.guint)(atomic)
+// Unsupported : g_atomic_pointer_and : unsupported parameter atomic : no param type for gpointer, void*
 
-	c_val := (C.guint)(val)
+// Unsupported : g_atomic_pointer_or : unsupported parameter atomic : no param type for gpointer, void*
 
-	retC := C.g_atomic_int_or(c_atomic, c_val)
-	retGo :=
-		(uint32)(retC)
-
-	return retGo
-}
-
-// AtomicIntXor is a wrapper around the C function g_atomic_int_xor.
-func AtomicIntXor(atomic uint32, val uint32) uint32 {
-	c_atomic := (C.guint)(atomic)
-
-	c_val := (C.guint)(val)
-
-	retC := C.g_atomic_int_xor(c_atomic, c_val)
-	retGo :=
-		(uint32)(retC)
-
-	return retGo
-}
-
-// AtomicPointerAdd is a wrapper around the C function g_atomic_pointer_add.
-func AtomicPointerAdd(atomic uintptr, val int64) int64 {
-	c_atomic := (C.gpointer)(atomic)
-
-	c_val := (C.gssize)(val)
-
-	retC := C.g_atomic_pointer_add(c_atomic, c_val)
-	retGo :=
-		(int64)(retC)
-
-	return retGo
-}
-
-// AtomicPointerAnd is a wrapper around the C function g_atomic_pointer_and.
-func AtomicPointerAnd(atomic uintptr, val uint64) uint64 {
-	c_atomic := (C.gpointer)(atomic)
-
-	c_val := (C.gsize)(val)
-
-	retC := C.g_atomic_pointer_and(c_atomic, c_val)
-	retGo :=
-		(uint64)(retC)
-
-	return retGo
-}
-
-// AtomicPointerOr is a wrapper around the C function g_atomic_pointer_or.
-func AtomicPointerOr(atomic uintptr, val uint64) uint64 {
-	c_atomic := (C.gpointer)(atomic)
-
-	c_val := (C.gsize)(val)
-
-	retC := C.g_atomic_pointer_or(c_atomic, c_val)
-	retGo :=
-		(uint64)(retC)
-
-	return retGo
-}
-
-// AtomicPointerXor is a wrapper around the C function g_atomic_pointer_xor.
-func AtomicPointerXor(atomic uintptr, val uint64) uint64 {
-	c_atomic := (C.gpointer)(atomic)
-
-	c_val := (C.gsize)(val)
-
-	retC := C.g_atomic_pointer_xor(c_atomic, c_val)
-	retGo :=
-		(uint64)(retC)
-
-	return retGo
-}
+// Unsupported : g_atomic_pointer_xor : unsupported parameter atomic : no param type for gpointer, void*
 
 // Unsupported : g_compute_hmac_for_data : unsupported parameter digest_type : no param type for ChecksumType, GChecksumType
 
@@ -122,11 +45,11 @@ func FormatSize(size uint64) string {
 
 // Unsupported : g_mkdtemp_full : no return type
 
-// Unsupported : g_pointer_bit_lock : no return type
+// Unsupported : g_pointer_bit_lock : unsupported parameter address : no param type for gpointer, void*
 
-// Unsupported : g_pointer_bit_trylock : no return type
+// Unsupported : g_pointer_bit_trylock : unsupported parameter address : no param type for gpointer, void*
 
-// Unsupported : g_pointer_bit_unlock : no return type
+// Unsupported : g_pointer_bit_unlock : unsupported parameter address : no param type for gpointer, void*
 
 // RegexEscapeNul is a wrapper around the C function g_regex_escape_nul.
 func RegexEscapeNul(string string, length int32) string {
@@ -144,9 +67,9 @@ func RegexEscapeNul(string string, length int32) string {
 
 // Unsupported : g_test_fail : no return type
 
-// Unsupported : g_unichar_compose : no return type
+// Unsupported : g_unichar_compose : unsupported parameter ch : no param type for gunichar, gunichar*
 
-// Unsupported : g_unichar_decompose : no return type
+// Unsupported : g_unichar_decompose : unsupported parameter a : no param type for gunichar, gunichar*
 
 // Unsupported : g_unichar_fully_decompose : unsupported parameter compat : no param type for gboolean, gboolean
 
@@ -154,7 +77,7 @@ func RegexEscapeNul(string string, length int32) string {
 
 // Unsupported : g_unicode_script_to_iso15924 : unsupported parameter script : no param type for UnicodeScript, GUnicodeScript
 
-// Unsupported : g_unix_open_pipe : no return type
+// Unsupported : g_unix_open_pipe : unsupported parameter fds : no param type for gint, gint*
 
 // Unsupported : g_unix_set_fd_nonblocking : unsupported parameter nonblock : no param type for gboolean, gboolean
 

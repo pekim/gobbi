@@ -64,10 +64,30 @@ func FilenameDisplayName(filename string) string {
 
 // Unsupported : g_log_set_default_handler : unsupported parameter log_func : no param type for LogFunc, GLogFunc
 
-// Unsupported : g_rmdir : no return type
+// Rmdir is a wrapper around the C function g_rmdir.
+func Rmdir(filename string) int32 {
+	c_filename := C.CString(filename)
+	defer C.free(unsafe.Pointer(c_filename))
+
+	retC := C.g_rmdir(c_filename)
+	retGo :=
+		(int32)(retC)
+
+	return retGo
+}
 
 // Unsupported : g_strv_length : unsupported parameter str_array : in for string with indirection level of 2
 
-// Unsupported : g_unlink : no return type
+// Unlink is a wrapper around the C function g_unlink.
+func Unlink(filename string) int32 {
+	c_filename := C.CString(filename)
+	defer C.free(unsafe.Pointer(c_filename))
+
+	retC := C.g_unlink(c_filename)
+	retGo :=
+		(int32)(retC)
+
+	return retGo
+}
 
 // Unsupported : g_uri_list_extract_uris : no return type

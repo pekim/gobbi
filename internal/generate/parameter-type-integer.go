@@ -36,7 +36,7 @@ func (pt *ParameterTypeInteger) generateCVar(g *jen.Group) {
 	g.
 		Id(pt.param.cVarName).
 		Op(":=").
-		Parens(jen.Qual("C", pt.param.Type.Name)).
+		Parens(jen.Qual("C", pt.param.Type.CType)).
 		Parens(jen.Id(pt.param.goVarName))
 }
 
@@ -44,5 +44,5 @@ func (pt *ParameterTypeInteger) generateOutCVar(g *jen.Group) {
 	g.
 		Var().
 		Id(pt.param.cVarName).
-		Qual("C", pt.param.Type.Name)
+		Qual("C", pt.param.Type.CType)
 }

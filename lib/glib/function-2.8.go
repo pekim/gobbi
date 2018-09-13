@@ -8,13 +8,35 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : g_access : no return type
+// Access is a wrapper around the C function g_access.
+func Access(filename string, mode int32) int32 {
+	c_filename := C.CString(filename)
+	defer C.free(unsafe.Pointer(c_filename))
+
+	c_mode := (C.int)(mode)
+
+	retC := C.g_access(c_filename, c_mode)
+	retGo :=
+		(int32)(retC)
+
+	return retGo
+}
 
 // Unsupported : g_build_filenamev : unsupported parameter args : no param type
 
 // Unsupported : g_build_pathv : unsupported parameter args : no param type
 
-// Unsupported : g_chdir : no return type
+// Chdir is a wrapper around the C function g_chdir.
+func Chdir(path string) int32 {
+	c_path := C.CString(path)
+	defer C.free(unsafe.Pointer(c_path))
+
+	retC := C.g_chdir(c_path)
+	retGo :=
+		(int32)(retC)
+
+	return retGo
+}
 
 // Unsupported : g_datalist_get_flags : unsupported parameter datalist : no param type for Data, GData**
 
