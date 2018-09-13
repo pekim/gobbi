@@ -18,6 +18,7 @@ func (r *Repository) Init() {
 }
 
 func (r *Repository) MergeAddenda(addenda *Repository) {
+	r.CIncludes = append(r.CIncludes, addenda.CIncludes...)
 	r.Namespace.mergeAddenda(addenda.Namespace)
 }
 
