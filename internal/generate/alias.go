@@ -14,7 +14,7 @@ type Alias struct {
 
 func (a *Alias) init(ns *Namespace) {
 	a.Namespace = ns
-	a.Type.Namespace = ns
+	a.Type.init(ns)
 }
 
 func (a *Alias) version() string {

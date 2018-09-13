@@ -29,7 +29,7 @@ func (p *Parameter) init(ns *Namespace) {
 	p.cVarName = "c_" + p.Name
 
 	if p.Type != nil {
-		p.Type.Namespace = ns
+		p.Type.init(ns)
 		p.goType, p.paramType = parameterType(p)
 	}
 }

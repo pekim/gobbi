@@ -14,12 +14,10 @@ type ParameterTypeString struct {
 }
 
 func ParameterTypeStringNew(param *Parameter) *ParameterTypeString {
-	cTypeName, indirectLevel := param.Type.parseStringCType()
-
 	return &ParameterTypeString{
 		param:         param,
-		cTypeName:     cTypeName,
-		indirectLevel: indirectLevel,
+		cTypeName:     param.Type.cTypeName,
+		indirectLevel: param.Type.indirectLevel,
 	}
 }
 

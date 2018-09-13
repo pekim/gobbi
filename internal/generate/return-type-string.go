@@ -12,12 +12,10 @@ type ReturnTypeString struct {
 }
 
 func ReturnTypeStringNew(rv *ReturnValue) *ReturnTypeString {
-	cTypeName, indirectLevel := rv.Type.parseStringCType()
-
 	return &ReturnTypeString{
 		returnValue:   rv,
-		cTypeName:     cTypeName,
-		indirectLevel: indirectLevel,
+		cTypeName:     rv.Type.cTypeName,
+		indirectLevel: rv.Type.indirectLevel,
 	}
 }
 

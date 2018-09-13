@@ -22,7 +22,7 @@ func (r *ReturnValue) init(ns *Namespace) {
 	r.Namespace = ns
 
 	if r.Type != nil {
-		r.Type.Namespace = ns
+		r.Type.init(ns)
 		r.goType, r.returnType = returnType(r)
 	}
 }
