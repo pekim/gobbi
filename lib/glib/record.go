@@ -44,13 +44,13 @@ type Data struct {
 
 // Date is a wrapper around the C record GDate.
 type Date struct {
-	native     *C.GDate
-	JulianDays int
-	Julian     int
-	Dmy        int
-	Day        int
-	Month      int
-	Year       int
+	native *C.GDate
+	// Bitfield not supported : 32 julian_days
+	// Bitfield not supported :  1 julian
+	// Bitfield not supported :  1 dmy
+	// Bitfield not supported :  6 day
+	// Bitfield not supported :  4 month
+	// Bitfield not supported : 16 year
 }
 
 // Debugkey is a wrapper around the C record GDebugKey.
@@ -104,10 +104,10 @@ type Hook struct {
 
 // Hooklist is a wrapper around the C record GHookList.
 type Hooklist struct {
-	native       *C.GHookList
-	SeqId        int
-	HookSize     int
-	IsSetup      int
+	native *C.GHookList
+	SeqId  int
+	// Bitfield not supported : 16 hook_size
+	// Bitfield not supported :  1 is_setup
 	Hooks        int
 	Dummy3       int
 	FinalizeHook int
@@ -131,14 +131,14 @@ type Iochannel struct {
 	EncodedReadBuf  int
 	WriteBuf        int
 	PartialWriteBuf int
-	UseBuffer       int
-	DoEncode        int
-	CloseOnUnref    int
-	IsReadable      int
-	IsWriteable     int
-	IsSeekable      int
-	Reserved1       int
-	Reserved2       int
+	// Bitfield not supported :  1 use_buffer
+	// Bitfield not supported :  1 do_encode
+	// Bitfield not supported :  1 close_on_unref
+	// Bitfield not supported :  1 is_readable
+	// Bitfield not supported :  1 is_writeable
+	// Bitfield not supported :  1 is_seekable
+	Reserved1 int
+	Reserved2 int
 }
 
 // Iofuncs is a wrapper around the C record GIOFuncs.
@@ -326,29 +326,29 @@ type Scannerconfig struct {
 	CsetIdentifierFirst int
 	CsetIdentifierNth   int
 	CpairCommentSingle  int
-	CaseSensitive       int
-	SkipCommentMulti    int
-	SkipCommentSingle   int
-	ScanCommentMulti    int
-	ScanIdentifier      int
-	ScanIdentifier1char int
-	ScanIdentifierNull  int
-	ScanSymbols         int
-	ScanBinary          int
-	ScanOctal           int
-	ScanFloat           int
-	ScanHex             int
-	ScanHexDollar       int
-	ScanStringSq        int
-	ScanStringDq        int
-	Numbers2Int         int
-	Int2Float           int
-	Identifier2String   int
-	Char2Token          int
-	Symbol2Token        int
-	Scope0Fallback      int
-	StoreInt64          int
-	PaddingDummy        int
+	// Bitfield not supported :  1 case_sensitive
+	// Bitfield not supported :  1 skip_comment_multi
+	// Bitfield not supported :  1 skip_comment_single
+	// Bitfield not supported :  1 scan_comment_multi
+	// Bitfield not supported :  1 scan_identifier
+	// Bitfield not supported :  1 scan_identifier_1char
+	// Bitfield not supported :  1 scan_identifier_NULL
+	// Bitfield not supported :  1 scan_symbols
+	// Bitfield not supported :  1 scan_binary
+	// Bitfield not supported :  1 scan_octal
+	// Bitfield not supported :  1 scan_float
+	// Bitfield not supported :  1 scan_hex
+	// Bitfield not supported :  1 scan_hex_dollar
+	// Bitfield not supported :  1 scan_string_sq
+	// Bitfield not supported :  1 scan_string_dq
+	// Bitfield not supported :  1 numbers_2_int
+	// Bitfield not supported :  1 int_2_float
+	// Bitfield not supported :  1 identifier_2_string
+	// Bitfield not supported :  1 char_2_token
+	// Bitfield not supported :  1 symbol_2_token
+	// Bitfield not supported :  1 scope_0_fallback
+	// Bitfield not supported :  1 store_int64
+	PaddingDummy int
 }
 
 // Sequence is a wrapper around the C record GSequence.
