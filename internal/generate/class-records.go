@@ -20,6 +20,24 @@ func (rr Records) versionList() Versions {
 	return versions
 }
 
+func (rr Records) forName(name string) *Record {
+	for _, record := range rr {
+		if record.Name == name {
+			return record
+		}
+	}
+
+	return nil
+}
+
+func (rr Records) mergeAddenda(addenda Records) {
+	for _, addendaRecord := range addenda {
+		if record := rr.forName(addendaRecord.Name); record != nil {
+			record.mergeAddenda(addendaRecord)
+		}
+	}
+}
+
 type Classes Records
 
 func (cc Classes) init(ns *Namespace) {

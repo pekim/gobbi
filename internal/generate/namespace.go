@@ -51,6 +51,7 @@ func (ns *Namespace) mergeAddenda(addenda *Namespace) {
 		ns.Constants.mergeAddenda(addenda.Constants)
 		ns.Enumerations.mergeAddenda(addenda.Enumerations)
 		ns.Functions.mergeAddenda(addenda.Functions)
+		ns.Records.mergeAddenda(addenda.Records)
 	}
 }
 

@@ -33,6 +33,10 @@ func (r *Record) blacklisted() bool {
 	return r.Blacklist
 }
 
+func (r *Record) mergeAddenda(addenda *Record) {
+	r.Blacklist = addenda.Blacklist
+}
+
 type Class struct {
 	*Record
 }
