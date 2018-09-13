@@ -8,5 +8,7 @@ package glib
 // #include <stdlib.h>
 import "C"
 
-// Hmac is a wrapper around the C function GHmac.
-type Hmac struct{}
+// Hmac is a wrapper around the C record GHmac.
+type Hmac struct {
+	native *C.GHmac
+}

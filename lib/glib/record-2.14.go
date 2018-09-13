@@ -8,5 +8,7 @@ package glib
 // #include <stdlib.h>
 import "C"
 
-// Regex is a wrapper around the C function GRegex.
-type Regex struct{}
+// Regex is a wrapper around the C record GRegex.
+type Regex struct {
+	native *C.GRegex
+}

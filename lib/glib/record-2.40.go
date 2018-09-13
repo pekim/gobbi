@@ -8,5 +8,7 @@ package glib
 // #include <stdlib.h>
 import "C"
 
-// Variantdict is a wrapper around the C function GVariantDict.
-type Variantdict struct{}
+// Variantdict is a wrapper around the C record GVariantDict.
+type Variantdict struct {
+	native *C.GVariantDict
+}

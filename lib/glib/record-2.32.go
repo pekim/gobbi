@@ -8,11 +8,21 @@ package glib
 // #include <stdlib.h>
 import "C"
 
-// Bytes is a wrapper around the C function GBytes.
-type Bytes struct{}
+// Bytes is a wrapper around the C record GBytes.
+type Bytes struct {
+	native *C.GBytes
+}
 
-// Rwlock is a wrapper around the C function GRWLock.
-type Rwlock struct{}
+// Rwlock is a wrapper around the C record GRWLock.
+type Rwlock struct {
+	native *C.GRWLock
+	P      int
+	I      int
+}
 
-// Recmutex is a wrapper around the C function GRecMutex.
-type Recmutex struct{}
+// Recmutex is a wrapper around the C record GRecMutex.
+type Recmutex struct {
+	native *C.GRecMutex
+	P      int
+	I      int
+}

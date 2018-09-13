@@ -6,184 +6,491 @@ package glib
 // #include <stdlib.h>
 import "C"
 
-// Array is a wrapper around the C function GArray.
-type Array struct{}
+// Array is a wrapper around the C record GArray.
+type Array struct {
+	native *C.GArray
+	Data   int
+	Len    int
+}
 
-// Asyncqueue is a wrapper around the C function GAsyncQueue.
-type Asyncqueue struct{}
+// Asyncqueue is a wrapper around the C record GAsyncQueue.
+type Asyncqueue struct {
+	native *C.GAsyncQueue
+}
 
-// Bookmarkfile is a wrapper around the C function GBookmarkFile.
-type Bookmarkfile struct{}
+// Bookmarkfile is a wrapper around the C record GBookmarkFile.
+type Bookmarkfile struct {
+	native *C.GBookmarkFile
+}
 
-// Bytearray is a wrapper around the C function GByteArray.
-type Bytearray struct{}
+// Bytearray is a wrapper around the C record GByteArray.
+type Bytearray struct {
+	native *C.GByteArray
+	Data   int
+	Len    int
+}
 
-// Cond is a wrapper around the C function GCond.
-type Cond struct{}
+// Cond is a wrapper around the C record GCond.
+type Cond struct {
+	native *C.GCond
+	P      int
+	I      int
+}
 
-// Data is a wrapper around the C function GData.
-type Data struct{}
+// Data is a wrapper around the C record GData.
+type Data struct {
+	native *C.GData
+}
 
-// Date is a wrapper around the C function GDate.
-type Date struct{}
+// Date is a wrapper around the C record GDate.
+type Date struct {
+	native     *C.GDate
+	JulianDays int
+	Julian     int
+	Dmy        int
+	Day        int
+	Month      int
+	Year       int
+}
 
-// Debugkey is a wrapper around the C function GDebugKey.
-type Debugkey struct{}
+// Debugkey is a wrapper around the C record GDebugKey.
+type Debugkey struct {
+	native *C.GDebugKey
+	Key    int
+	Value  int
+}
 
-// Dir is a wrapper around the C function GDir.
-type Dir struct{}
+// Dir is a wrapper around the C record GDir.
+type Dir struct {
+	native *C.GDir
+}
 
-// Error is a wrapper around the C function GError.
-type Error struct{}
+// Error is a wrapper around the C record GError.
+type Error struct {
+	native  *C.GError
+	Domain  int
+	Code    int
+	Message int
+}
 
-// Hashtable is a wrapper around the C function GHashTable.
-type Hashtable struct{}
+// Hashtable is a wrapper around the C record GHashTable.
+type Hashtable struct {
+	native *C.GHashTable
+}
 
-// Hashtableiter is a wrapper around the C function GHashTableIter.
-type Hashtableiter struct{}
+// Hashtableiter is a wrapper around the C record GHashTableIter.
+type Hashtableiter struct {
+	native *C.GHashTableIter
+	Dummy1 int
+	Dummy2 int
+	Dummy3 int
+	Dummy4 int
+	Dummy5 int
+	Dummy6 int
+}
 
-// Hook is a wrapper around the C function GHook.
-type Hook struct{}
+// Hook is a wrapper around the C record GHook.
+type Hook struct {
+	native   *C.GHook
+	Data     int
+	Next     int
+	Prev     int
+	RefCount int
+	HookId   int
+	Flags    int
+	Func     int
+	Destroy  int
+}
 
-// Hooklist is a wrapper around the C function GHookList.
-type Hooklist struct{}
+// Hooklist is a wrapper around the C record GHookList.
+type Hooklist struct {
+	native       *C.GHookList
+	SeqId        int
+	HookSize     int
+	IsSetup      int
+	Hooks        int
+	Dummy3       int
+	FinalizeHook int
+	Dummy        int
+}
 
 // Blacklisted : GIConv
 
-// Iochannel is a wrapper around the C function GIOChannel.
-type Iochannel struct{}
+// Iochannel is a wrapper around the C record GIOChannel.
+type Iochannel struct {
+	native          *C.GIOChannel
+	RefCount        int
+	Funcs           int
+	Encoding        int
+	ReadCd          int
+	WriteCd         int
+	LineTerm        int
+	LineTermLen     int
+	BufSize         int
+	ReadBuf         int
+	EncodedReadBuf  int
+	WriteBuf        int
+	PartialWriteBuf int
+	UseBuffer       int
+	DoEncode        int
+	CloseOnUnref    int
+	IsReadable      int
+	IsWriteable     int
+	IsSeekable      int
+	Reserved1       int
+	Reserved2       int
+}
 
-// Iofuncs is a wrapper around the C function GIOFuncs.
-type Iofuncs struct{}
+// Iofuncs is a wrapper around the C record GIOFuncs.
+type Iofuncs struct {
+	native        *C.GIOFuncs
+	IoRead        int
+	IoWrite       int
+	IoSeek        int
+	IoClose       int
+	IoCreateWatch int
+	IoFree        int
+	IoSetFlags    int
+	IoGetFlags    int
+}
 
-// Keyfile is a wrapper around the C function GKeyFile.
-type Keyfile struct{}
+// Keyfile is a wrapper around the C record GKeyFile.
+type Keyfile struct {
+	native *C.GKeyFile
+}
 
-// List is a wrapper around the C function GList.
-type List struct{}
+// List is a wrapper around the C record GList.
+type List struct {
+	native *C.GList
+	Data   int
+	Next   int
+	Prev   int
+}
 
-// Maincontext is a wrapper around the C function GMainContext.
-type Maincontext struct{}
+// Maincontext is a wrapper around the C record GMainContext.
+type Maincontext struct {
+	native *C.GMainContext
+}
 
-// Mainloop is a wrapper around the C function GMainLoop.
-type Mainloop struct{}
+// Mainloop is a wrapper around the C record GMainLoop.
+type Mainloop struct {
+	native *C.GMainLoop
+}
 
-// Mappedfile is a wrapper around the C function GMappedFile.
-type Mappedfile struct{}
+// Mappedfile is a wrapper around the C record GMappedFile.
+type Mappedfile struct {
+	native *C.GMappedFile
+}
 
-// Markupparsecontext is a wrapper around the C function GMarkupParseContext.
-type Markupparsecontext struct{}
+// Markupparsecontext is a wrapper around the C record GMarkupParseContext.
+type Markupparsecontext struct {
+	native *C.GMarkupParseContext
+}
 
-// Markupparser is a wrapper around the C function GMarkupParser.
-type Markupparser struct{}
+// Markupparser is a wrapper around the C record GMarkupParser.
+type Markupparser struct {
+	native       *C.GMarkupParser
+	StartElement int
+	EndElement   int
+	Text         int
+	Passthrough  int
+	Error        int
+}
 
-// Matchinfo is a wrapper around the C function GMatchInfo.
-type Matchinfo struct{}
+// Matchinfo is a wrapper around the C record GMatchInfo.
+type Matchinfo struct {
+	native *C.GMatchInfo
+}
 
-// Memvtable is a wrapper around the C function GMemVTable.
-type Memvtable struct{}
+// Memvtable is a wrapper around the C record GMemVTable.
+type Memvtable struct {
+	native     *C.GMemVTable
+	Malloc     int
+	Realloc    int
+	Free       int
+	Calloc     int
+	TryMalloc  int
+	TryRealloc int
+}
 
-// Node is a wrapper around the C function GNode.
-type Node struct{}
+// Node is a wrapper around the C record GNode.
+type Node struct {
+	native   *C.GNode
+	Data     int
+	Next     int
+	Prev     int
+	Parent   int
+	Children int
+}
 
-// Optioncontext is a wrapper around the C function GOptionContext.
-type Optioncontext struct{}
+// Optioncontext is a wrapper around the C record GOptionContext.
+type Optioncontext struct {
+	native *C.GOptionContext
+}
 
-// Optionentry is a wrapper around the C function GOptionEntry.
-type Optionentry struct{}
+// Optionentry is a wrapper around the C record GOptionEntry.
+type Optionentry struct {
+	native         *C.GOptionEntry
+	LongName       int
+	ShortName      int
+	Flags          int
+	Arg            int
+	ArgData        int
+	Description    int
+	ArgDescription int
+}
 
-// Optiongroup is a wrapper around the C function GOptionGroup.
-type Optiongroup struct{}
+// Optiongroup is a wrapper around the C record GOptionGroup.
+type Optiongroup struct {
+	native *C.GOptionGroup
+}
 
-// Patternspec is a wrapper around the C function GPatternSpec.
-type Patternspec struct{}
+// Patternspec is a wrapper around the C record GPatternSpec.
+type Patternspec struct {
+	native *C.GPatternSpec
+}
 
-// Pollfd is a wrapper around the C function GPollFD.
-type Pollfd struct{}
+// Pollfd is a wrapper around the C record GPollFD.
+type Pollfd struct {
+	native  *C.GPollFD
+	Fd      int
+	Events  int
+	Revents int
+}
 
-// Private is a wrapper around the C function GPrivate.
-type Private struct{}
+// Private is a wrapper around the C record GPrivate.
+type Private struct {
+	native *C.GPrivate
+	P      int
+	Notify int
+	Future int
+}
 
-// Ptrarray is a wrapper around the C function GPtrArray.
-type Ptrarray struct{}
+// Ptrarray is a wrapper around the C record GPtrArray.
+type Ptrarray struct {
+	native *C.GPtrArray
+	Pdata  int
+	Len    int
+}
 
-// Queue is a wrapper around the C function GQueue.
-type Queue struct{}
+// Queue is a wrapper around the C record GQueue.
+type Queue struct {
+	native *C.GQueue
+	Head   int
+	Tail   int
+	Length int
+}
 
-// Rand is a wrapper around the C function GRand.
-type Rand struct{}
+// Rand is a wrapper around the C record GRand.
+type Rand struct {
+	native *C.GRand
+}
 
-// Slist is a wrapper around the C function GSList.
-type Slist struct{}
+// Slist is a wrapper around the C record GSList.
+type Slist struct {
+	native *C.GSList
+	Data   int
+	Next   int
+}
 
-// Scanner is a wrapper around the C function GScanner.
-type Scanner struct{}
+// Scanner is a wrapper around the C record GScanner.
+type Scanner struct {
+	native         *C.GScanner
+	UserData       int
+	MaxParseErrors int
+	ParseErrors    int
+	InputName      int
+	Qdata          int
+	Config         int
+	Token          int
+	Value          int
+	Line           int
+	Position       int
+	NextToken      int
+	NextValue      int
+	NextLine       int
+	NextPosition   int
+	SymbolTable    int
+	InputFd        int
+	Text           int
+	TextEnd        int
+	Buffer         int
+	ScopeId        int
+	MsgHandler     int
+}
 
-// Scannerconfig is a wrapper around the C function GScannerConfig.
-type Scannerconfig struct{}
+// Scannerconfig is a wrapper around the C record GScannerConfig.
+type Scannerconfig struct {
+	native              *C.GScannerConfig
+	CsetSkipCharacters  int
+	CsetIdentifierFirst int
+	CsetIdentifierNth   int
+	CpairCommentSingle  int
+	CaseSensitive       int
+	SkipCommentMulti    int
+	SkipCommentSingle   int
+	ScanCommentMulti    int
+	ScanIdentifier      int
+	ScanIdentifier1char int
+	ScanIdentifierNull  int
+	ScanSymbols         int
+	ScanBinary          int
+	ScanOctal           int
+	ScanFloat           int
+	ScanHex             int
+	ScanHexDollar       int
+	ScanStringSq        int
+	ScanStringDq        int
+	Numbers2Int         int
+	Int2Float           int
+	Identifier2String   int
+	Char2Token          int
+	Symbol2Token        int
+	Scope0Fallback      int
+	StoreInt64          int
+	PaddingDummy        int
+}
 
-// Sequence is a wrapper around the C function GSequence.
-type Sequence struct{}
+// Sequence is a wrapper around the C record GSequence.
+type Sequence struct {
+	native *C.GSequence
+}
 
-// Sequenceiter is a wrapper around the C function GSequenceIter.
-type Sequenceiter struct{}
+// Sequenceiter is a wrapper around the C record GSequenceIter.
+type Sequenceiter struct {
+	native *C.GSequenceIter
+}
 
-// Source is a wrapper around the C function GSource.
-type Source struct{}
+// Source is a wrapper around the C record GSource.
+type Source struct {
+	native        *C.GSource
+	CallbackData  int
+	CallbackFuncs int
+	SourceFuncs   int
+	RefCount      int
+	Context       int
+	Priority      int
+	Flags         int
+	SourceId      int
+	PollFds       int
+	Prev          int
+	Next          int
+	Name          int
+	Priv          int
+}
 
-// Sourcecallbackfuncs is a wrapper around the C function GSourceCallbackFuncs.
-type Sourcecallbackfuncs struct{}
+// Sourcecallbackfuncs is a wrapper around the C record GSourceCallbackFuncs.
+type Sourcecallbackfuncs struct {
+	native *C.GSourceCallbackFuncs
+	Ref    int
+	Unref  int
+	Get    int
+}
 
-// Sourcefuncs is a wrapper around the C function GSourceFuncs.
-type Sourcefuncs struct{}
+// Sourcefuncs is a wrapper around the C record GSourceFuncs.
+type Sourcefuncs struct {
+	native          *C.GSourceFuncs
+	Prepare         int
+	Check           int
+	Dispatch        int
+	Finalize        int
+	ClosureCallback int
+	ClosureMarshal  int
+}
 
-// Sourceprivate is a wrapper around the C function GSourcePrivate.
-type Sourceprivate struct{}
+// Sourceprivate is a wrapper around the C record GSourcePrivate.
+type Sourceprivate struct {
+	native *C.GSourcePrivate
+}
 
-// Statbuf is a wrapper around the C function GStatBuf.
-type Statbuf struct{}
+// Statbuf is a wrapper around the C record GStatBuf.
+type Statbuf struct {
+	native *C.GStatBuf
+}
 
-// String is a wrapper around the C function GString.
-type String struct{}
+// String is a wrapper around the C record GString.
+type String struct {
+	native       *C.GString
+	Str          int
+	Len          int
+	AllocatedLen int
+}
 
-// Stringchunk is a wrapper around the C function GStringChunk.
-type Stringchunk struct{}
+// Stringchunk is a wrapper around the C record GStringChunk.
+type Stringchunk struct {
+	native *C.GStringChunk
+}
 
-// Testcase is a wrapper around the C function GTestCase.
-type Testcase struct{}
+// Testcase is a wrapper around the C record GTestCase.
+type Testcase struct {
+	native *C.GTestCase
+}
 
-// Testconfig is a wrapper around the C function GTestConfig.
-type Testconfig struct{}
+// Testconfig is a wrapper around the C record GTestConfig.
+type Testconfig struct {
+	native          *C.GTestConfig
+	TestInitialized int
+	TestQuick       int
+	TestPerf        int
+	TestVerbose     int
+	TestQuiet       int
+	TestUndefined   int
+}
 
 // Blacklisted : GTestLogBuffer
 
 // Blacklisted : GTestLogMsg
 
-// Testsuite is a wrapper around the C function GTestSuite.
-type Testsuite struct{}
+// Testsuite is a wrapper around the C record GTestSuite.
+type Testsuite struct {
+	native *C.GTestSuite
+}
 
-// Thread is a wrapper around the C function GThread.
-type Thread struct{}
+// Thread is a wrapper around the C record GThread.
+type Thread struct {
+	native *C.GThread
+}
 
-// Threadpool is a wrapper around the C function GThreadPool.
-type Threadpool struct{}
+// Threadpool is a wrapper around the C record GThreadPool.
+type Threadpool struct {
+	native    *C.GThreadPool
+	Func      int
+	UserData  int
+	Exclusive int
+}
 
-// Timeval is a wrapper around the C function GTimeVal.
-type Timeval struct{}
+// Timeval is a wrapper around the C record GTimeVal.
+type Timeval struct {
+	native *C.GTimeVal
+	TvSec  int
+	TvUsec int
+}
 
-// Timer is a wrapper around the C function GTimer.
-type Timer struct{}
+// Timer is a wrapper around the C record GTimer.
+type Timer struct {
+	native *C.GTimer
+}
 
-// Trashstack is a wrapper around the C function GTrashStack.
-type Trashstack struct{}
+// Trashstack is a wrapper around the C record GTrashStack.
+type Trashstack struct {
+	native *C.GTrashStack
+	Next   int
+}
 
-// Tree is a wrapper around the C function GTree.
-type Tree struct{}
+// Tree is a wrapper around the C record GTree.
+type Tree struct {
+	native *C.GTree
+}
 
-// Variantbuilder is a wrapper around the C function GVariantBuilder.
-type Variantbuilder struct{}
+// Variantbuilder is a wrapper around the C record GVariantBuilder.
+type Variantbuilder struct {
+	native *C.GVariantBuilder
+}
 
-// Variantiter is a wrapper around the C function GVariantIter.
-type Variantiter struct{}
+// Variantiter is a wrapper around the C record GVariantIter.
+type Variantiter struct {
+	native *C.GVariantIter
+	X      int
+}
 
 // Blacklisted : GVariantType

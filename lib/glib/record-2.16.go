@@ -8,5 +8,7 @@ package glib
 // #include <stdlib.h>
 import "C"
 
-// Checksum is a wrapper around the C function GChecksum.
-type Checksum struct{}
+// Checksum is a wrapper around the C record GChecksum.
+type Checksum struct {
+	native *C.GChecksum
+}

@@ -8,5 +8,9 @@ package glib
 // #include <stdlib.h>
 import "C"
 
-// Once is a wrapper around the C function GOnce.
-type Once struct{}
+// Once is a wrapper around the C record GOnce.
+type Once struct {
+	native *C.GOnce
+	Status int
+	Retval int
+}

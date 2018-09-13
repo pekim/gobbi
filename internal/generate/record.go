@@ -18,8 +18,9 @@ type Record struct {
 	GlibGetType    string         `xml:"http://www.gtk.org/introspection/glib/1.0 get-type,attr"`
 	GlibTypeStruct string         `xml:"http://www.gtk.org/introspection/glib/1.0 type-struct,attr"`
 	Doc            *Doc           `xml:"doc"`
+	Fields         Fields         `xml:"field"`
 	Constructors   []*Constructor `xml:"constructor"`
-	Methods        []*Method      `xml:"method"`
+	Methods        Methods        `xml:"method"`
 }
 
 func (r *Record) init(ns *Namespace) {
@@ -53,20 +54,22 @@ func (r *Record) mergeAddenda(addenda *Record) {
 }
 
 func (r *Record) generate(g *jen.Group, version *Version) {
-	g.Commentf("%s is a wrapper around the C function %s.", r.GoName, r.CType)
+	g.Commentf("%s is a wrapper around the C record %s.", r.GoName, r.CType)
 
 	g.
 		Type().
 		Id(r.GoName).
 		StructFunc(func(g *jen.Group) {
+			g.
+				Id("native").
+				Op("*").
+				Qual("C", r.CType)
+
+			r.Fields.generate(g)
 		}).
 		Line()
 }
 
 type Constructor struct {
-	*Function
-}
-
-type Method struct {
 	*Function
 }

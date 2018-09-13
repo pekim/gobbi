@@ -8,8 +8,12 @@ package glib
 // #include <stdlib.h>
 import "C"
 
-// Datetime is a wrapper around the C function GDateTime.
-type Datetime struct{}
+// Datetime is a wrapper around the C record GDateTime.
+type Datetime struct {
+	native *C.GDateTime
+}
 
-// Timezone is a wrapper around the C function GTimeZone.
-type Timezone struct{}
+// Timezone is a wrapper around the C record GTimeZone.
+type Timezone struct {
+	native *C.GTimeZone
+}

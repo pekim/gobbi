@@ -8,5 +8,10 @@ package glib
 // #include <stdlib.h>
 import "C"
 
-// Logfield is a wrapper around the C function GLogField.
-type Logfield struct{}
+// Logfield is a wrapper around the C record GLogField.
+type Logfield struct {
+	native *C.GLogField
+	Key    int
+	Value  int
+	Length int
+}
