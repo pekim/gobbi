@@ -15,6 +15,12 @@ func ParameterTypeIntegerNew(param *Parameter) *ParameterTypeInteger {
 }
 
 func (pt *ParameterTypeInteger) isSupported() (supported bool, reason string) {
+	typ := pt.param.Type
+	if typ.indirectLevel > 0 {
+		return false, fmt.Sprintf("parameter for %s with indirection level of %d",
+			pt.param.Type.CType, typ.indirectLevel)
+	}
+
 	return true, ""
 }
 
