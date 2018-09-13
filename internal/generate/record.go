@@ -63,10 +63,6 @@ func (r *Record) generate(g *jen.Group, version *Version) {
 		Line()
 }
 
-type Class struct {
-	*Record
-}
-
 type Constructor struct {
 	*Function
 }
