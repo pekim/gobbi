@@ -37,20 +37,20 @@ func (ns *Namespace) generatePackageFile() {
 		for _, pkg := range ns.repo.Packages {
 			f.CgoPreamble(fmt.Sprintf("// #cgo pkg-config: %s", pkg.Name))
 		}
-
-		/*
-		 * Suppress C compiler warnings about deprecated functions.
-		 *
-		 * There are api functions that are deprecated from various
-		 * library versions. The compilers warnings are noisy as
-		 * they will be emitted regardless of whether such functions
-		 * are used or not by an application.
-		 */
-		f.CgoPreamble("// #cgo CFLAGS: -Wno-deprecated-declarations")
 	})
 }
 
 func (ns *Namespace) cgoPreambleHeaders(file *jen.File) {
+	/*
+	 * Suppress C compiler warnings about deprecated functions.
+	 *
+	 * There are api functions that are deprecated from various
+	 * library versions. The compilers warnings are noisy as
+	 * they will be emitted regardless of whether such functions
+	 * are used or not by an application.
+	 */
+	file.CgoPreamble("#define GLIB_DISABLE_DEPRECATION_WARNINGS")
+
 	ns.repo.CIncludes.generate(file)
 
 	file.CgoPreamble("#include <stdlib.h>")
