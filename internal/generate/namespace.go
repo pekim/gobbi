@@ -1,6 +1,7 @@
 package generate
 
 import (
+	"fmt"
 	"strings"
 )
 
@@ -60,6 +61,8 @@ func (ns *Namespace) blacklisted() bool {
 }
 
 func (ns *Namespace) generate() {
+	fmt.Println(ns.Name, ns.Version)
+
 	ns.generateLibDir()
 	ns.generatePackageFile()
 	ns.generateGeneratables("alias", ns.Aliases)
