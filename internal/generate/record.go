@@ -34,6 +34,10 @@ func (r *Record) init(ns *Namespace) {
 	for _, method := range r.Methods {
 		method.init(ns)
 	}
+
+	for _, field := range r.Fields {
+		field.init(ns)
+	}
 }
 
 func (r *Record) version() string {

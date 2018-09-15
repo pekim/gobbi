@@ -12,8 +12,8 @@ import "C"
 // Array is a wrapper around the C record GArray.
 type Array struct {
 	native *C.GArray
-	Data   int
-	Len    int
+	Data   string
+	Len    uint32
 }
 
 // Asyncqueue is a wrapper around the C record GAsyncQueue.
@@ -29,15 +29,15 @@ type Bookmarkfile struct {
 // Bytearray is a wrapper around the C record GByteArray.
 type Bytearray struct {
 	native *C.GByteArray
-	Data   int
-	Len    int
+	// data : no type generator for guint8, guint8*
+	Len uint32
 }
 
 // Cond is a wrapper around the C record GCond.
 type Cond struct {
 	native *C.GCond
-	P      int
-	I      int
+	P      uintptr
+	// no type for i
 }
 
 // Data is a wrapper around the C record GData.
@@ -59,8 +59,8 @@ type Date struct {
 // Debugkey is a wrapper around the C record GDebugKey.
 type Debugkey struct {
 	native *C.GDebugKey
-	Key    int
-	Value  int
+	Key    string
+	Value  uint32
 }
 
 // Dir is a wrapper around the C record GDir.
@@ -70,10 +70,10 @@ type Dir struct {
 
 // Error is a wrapper around the C record GError.
 type Error struct {
-	native  *C.GError
-	Domain  int
-	Code    int
-	Message int
+	native *C.GError
+	// domain : no type generator for Quark, GQuark
+	Code    int32
+	Message string
 }
 
 // Hashtable is a wrapper around the C record GHashTable.
@@ -84,77 +84,77 @@ type Hashtable struct {
 // Hashtableiter is a wrapper around the C record GHashTableIter.
 type Hashtableiter struct {
 	native *C.GHashTableIter
-	Dummy1 int
-	Dummy2 int
-	Dummy3 int
-	Dummy4 int
-	Dummy5 int
-	Dummy6 int
+	Dummy1 uintptr
+	Dummy2 uintptr
+	Dummy3 uintptr
+	Dummy4 int32
+	// dummy5 : no type generator for gboolean, gboolean
+	Dummy6 uintptr
 }
 
 // Hook is a wrapper around the C record GHook.
 type Hook struct {
-	native   *C.GHook
-	Data     int
-	Next     int
-	Prev     int
-	RefCount int
-	HookId   int
-	Flags    int
-	Func     int
-	Destroy  int
+	native *C.GHook
+	Data   uintptr
+	// next : no type generator for Hook, GHook*
+	// prev : no type generator for Hook, GHook*
+	RefCount uint32
+	HookId   uint64
+	Flags    uint32
+	Func     uintptr
+	// destroy : no type generator for DestroyNotify, GDestroyNotify
 }
 
 // Hooklist is a wrapper around the C record GHookList.
 type Hooklist struct {
 	native *C.GHookList
-	SeqId  int
+	SeqId  uint64
 	// Bitfield not supported : 16 hook_size
 	// Bitfield not supported :  1 is_setup
-	Hooks        int
-	Dummy3       int
-	FinalizeHook int
-	Dummy        int
+	// hooks : no type generator for Hook, GHook*
+	Dummy3 uintptr
+	// finalize_hook : no type generator for HookFinalizeFunc, GHookFinalizeFunc
+	// no type for dummy
 }
 
 // Blacklisted : GIConv
 
 // Iochannel is a wrapper around the C record GIOChannel.
 type Iochannel struct {
-	native          *C.GIOChannel
-	RefCount        int
-	Funcs           int
-	Encoding        int
-	ReadCd          int
-	WriteCd         int
-	LineTerm        int
-	LineTermLen     int
-	BufSize         int
-	ReadBuf         int
-	EncodedReadBuf  int
-	WriteBuf        int
-	PartialWriteBuf int
+	native   *C.GIOChannel
+	RefCount int32
+	// funcs : no type generator for IOFuncs, GIOFuncs*
+	Encoding string
+	// read_cd : no type generator for IConv, GIConv
+	// write_cd : no type generator for IConv, GIConv
+	LineTerm    string
+	LineTermLen uint32
+	BufSize     uint64
+	// read_buf : no type generator for String, GString*
+	// encoded_read_buf : no type generator for String, GString*
+	// write_buf : no type generator for String, GString*
+	// no type for partial_write_buf
 	// Bitfield not supported :  1 use_buffer
 	// Bitfield not supported :  1 do_encode
 	// Bitfield not supported :  1 close_on_unref
 	// Bitfield not supported :  1 is_readable
 	// Bitfield not supported :  1 is_writeable
 	// Bitfield not supported :  1 is_seekable
-	Reserved1 int
-	Reserved2 int
+	Reserved1 uintptr
+	Reserved2 uintptr
 }
 
 // Iofuncs is a wrapper around the C record GIOFuncs.
 type Iofuncs struct {
-	native        *C.GIOFuncs
-	IoRead        int
-	IoWrite       int
-	IoSeek        int
-	IoClose       int
-	IoCreateWatch int
-	IoFree        int
-	IoSetFlags    int
-	IoGetFlags    int
+	native *C.GIOFuncs
+	// no type for io_read
+	// no type for io_write
+	// no type for io_seek
+	// no type for io_close
+	// no type for io_create_watch
+	// no type for io_free
+	// no type for io_set_flags
+	// no type for io_get_flags
 }
 
 // Keyfile is a wrapper around the C record GKeyFile.
@@ -165,9 +165,9 @@ type Keyfile struct {
 // List is a wrapper around the C record GList.
 type List struct {
 	native *C.GList
-	Data   int
-	Next   int
-	Prev   int
+	Data   uintptr
+	// next : no type generator for GLib.List, GList*
+	// prev : no type generator for GLib.List, GList*
 }
 
 // Maincontext is a wrapper around the C record GMainContext.
@@ -192,12 +192,12 @@ type Markupparsecontext struct {
 
 // Markupparser is a wrapper around the C record GMarkupParser.
 type Markupparser struct {
-	native       *C.GMarkupParser
-	StartElement int
-	EndElement   int
-	Text         int
-	Passthrough  int
-	Error        int
+	native *C.GMarkupParser
+	// no type for start_element
+	// no type for end_element
+	// no type for text
+	// no type for passthrough
+	// no type for error
 }
 
 // Matchinfo is a wrapper around the C record GMatchInfo.
@@ -207,23 +207,23 @@ type Matchinfo struct {
 
 // Memvtable is a wrapper around the C record GMemVTable.
 type Memvtable struct {
-	native     *C.GMemVTable
-	Malloc     int
-	Realloc    int
-	Free       int
-	Calloc     int
-	TryMalloc  int
-	TryRealloc int
+	native *C.GMemVTable
+	// no type for malloc
+	// no type for realloc
+	// no type for free
+	// no type for calloc
+	// no type for try_malloc
+	// no type for try_realloc
 }
 
 // Node is a wrapper around the C record GNode.
 type Node struct {
-	native   *C.GNode
-	Data     int
-	Next     int
-	Prev     int
-	Parent   int
-	Children int
+	native *C.GNode
+	Data   uintptr
+	// next : no type generator for Node, GNode*
+	// prev : no type generator for Node, GNode*
+	// parent : no type generator for Node, GNode*
+	// children : no type generator for Node, GNode*
 }
 
 // Optioncontext is a wrapper around the C record GOptionContext.
@@ -233,14 +233,14 @@ type Optioncontext struct {
 
 // Optionentry is a wrapper around the C record GOptionEntry.
 type Optionentry struct {
-	native         *C.GOptionEntry
-	LongName       int
-	ShortName      int
-	Flags          int
-	Arg            int
-	ArgData        int
-	Description    int
-	ArgDescription int
+	native    *C.GOptionEntry
+	LongName  string
+	ShortName rune
+	Flags     int32
+	// arg : no type generator for OptionArg, GOptionArg
+	ArgData        uintptr
+	Description    string
+	ArgDescription string
 }
 
 // Optiongroup is a wrapper around the C record GOptionGroup.
@@ -256,32 +256,32 @@ type Patternspec struct {
 // Pollfd is a wrapper around the C record GPollFD.
 type Pollfd struct {
 	native  *C.GPollFD
-	Fd      int
-	Events  int
-	Revents int
+	Fd      int32
+	Events  uint32
+	Revents uint32
 }
 
 // Private is a wrapper around the C record GPrivate.
 type Private struct {
 	native *C.GPrivate
-	P      int
-	Notify int
-	Future int
+	P      uintptr
+	// notify : no type generator for DestroyNotify, GDestroyNotify
+	// no type for future
 }
 
 // Ptrarray is a wrapper around the C record GPtrArray.
 type Ptrarray struct {
 	native *C.GPtrArray
-	Pdata  int
-	Len    int
+	// pdata : no type generator for gpointer, gpointer*
+	Len uint32
 }
 
 // Queue is a wrapper around the C record GQueue.
 type Queue struct {
 	native *C.GQueue
-	Head   int
-	Tail   int
-	Length int
+	// head : no type generator for GLib.List, GList*
+	// tail : no type generator for GLib.List, GList*
+	Length uint32
 }
 
 // Rand is a wrapper around the C record GRand.
@@ -292,43 +292,43 @@ type Rand struct {
 // Slist is a wrapper around the C record GSList.
 type Slist struct {
 	native *C.GSList
-	Data   int
-	Next   int
+	Data   uintptr
+	// next : no type generator for GLib.SList, GSList*
 }
 
 // Scanner is a wrapper around the C record GScanner.
 type Scanner struct {
 	native         *C.GScanner
-	UserData       int
-	MaxParseErrors int
-	ParseErrors    int
-	InputName      int
-	Qdata          int
-	Config         int
-	Token          int
-	Value          int
-	Line           int
-	Position       int
-	NextToken      int
-	NextValue      int
-	NextLine       int
-	NextPosition   int
-	SymbolTable    int
-	InputFd        int
-	Text           int
-	TextEnd        int
-	Buffer         int
-	ScopeId        int
-	MsgHandler     int
+	UserData       uintptr
+	MaxParseErrors uint32
+	ParseErrors    uint32
+	InputName      string
+	// qdata : no type generator for Data, GData*
+	// config : no type generator for ScannerConfig, GScannerConfig*
+	// token : no type generator for TokenType, GTokenType
+	// value : no type generator for TokenValue, GTokenValue
+	Line     uint32
+	Position uint32
+	// next_token : no type generator for TokenType, GTokenType
+	// next_value : no type generator for TokenValue, GTokenValue
+	NextLine     uint32
+	NextPosition uint32
+	// symbol_table : no type generator for GLib.HashTable, GHashTable*
+	InputFd int32
+	Text    string
+	TextEnd string
+	Buffer  string
+	ScopeId uint32
+	// msg_handler : no type generator for ScannerMsgFunc, GScannerMsgFunc
 }
 
 // Scannerconfig is a wrapper around the C record GScannerConfig.
 type Scannerconfig struct {
 	native              *C.GScannerConfig
-	CsetSkipCharacters  int
-	CsetIdentifierFirst int
-	CsetIdentifierNth   int
-	CpairCommentSingle  int
+	CsetSkipCharacters  string
+	CsetIdentifierFirst string
+	CsetIdentifierNth   string
+	CpairCommentSingle  string
 	// Bitfield not supported :  1 case_sensitive
 	// Bitfield not supported :  1 skip_comment_multi
 	// Bitfield not supported :  1 skip_comment_single
@@ -351,7 +351,7 @@ type Scannerconfig struct {
 	// Bitfield not supported :  1 symbol_2_token
 	// Bitfield not supported :  1 scope_0_fallback
 	// Bitfield not supported :  1 store_int64
-	PaddingDummy int
+	PaddingDummy uint32
 }
 
 // Sequence is a wrapper around the C record GSequence.
@@ -366,39 +366,39 @@ type Sequenceiter struct {
 
 // Source is a wrapper around the C record GSource.
 type Source struct {
-	native        *C.GSource
-	CallbackData  int
-	CallbackFuncs int
-	SourceFuncs   int
-	RefCount      int
-	Context       int
-	Priority      int
-	Flags         int
-	SourceId      int
-	PollFds       int
-	Prev          int
-	Next          int
-	Name          int
-	Priv          int
+	native       *C.GSource
+	CallbackData uintptr
+	// callback_funcs : no type generator for SourceCallbackFuncs, GSourceCallbackFuncs*
+	// source_funcs : no type generator for SourceFuncs, const GSourceFuncs*
+	RefCount uint32
+	// context : no type generator for MainContext, GMainContext*
+	Priority int32
+	Flags    uint32
+	SourceId uint32
+	// poll_fds : no type generator for GLib.SList, GSList*
+	// prev : no type generator for Source, GSource*
+	// next : no type generator for Source, GSource*
+	Name string
+	// priv : no type generator for SourcePrivate, GSourcePrivate*
 }
 
 // Sourcecallbackfuncs is a wrapper around the C record GSourceCallbackFuncs.
 type Sourcecallbackfuncs struct {
 	native *C.GSourceCallbackFuncs
-	Ref    int
-	Unref  int
-	Get    int
+	// no type for ref
+	// no type for unref
+	// no type for get
 }
 
 // Sourcefuncs is a wrapper around the C record GSourceFuncs.
 type Sourcefuncs struct {
-	native          *C.GSourceFuncs
-	Prepare         int
-	Check           int
-	Dispatch        int
-	Finalize        int
-	ClosureCallback int
-	ClosureMarshal  int
+	native *C.GSourceFuncs
+	// no type for prepare
+	// no type for check
+	// no type for dispatch
+	// no type for finalize
+	// closure_callback : no type generator for SourceFunc, GSourceFunc
+	// closure_marshal : no type generator for SourceDummyMarshal, GSourceDummyMarshal
 }
 
 // Sourceprivate is a wrapper around the C record GSourcePrivate.
@@ -414,9 +414,9 @@ type Statbuf struct {
 // String is a wrapper around the C record GString.
 type String struct {
 	native       *C.GString
-	Str          int
-	Len          int
-	AllocatedLen int
+	Str          string
+	Len          uint64
+	AllocatedLen uint64
 }
 
 // Stringchunk is a wrapper around the C record GStringChunk.
@@ -431,13 +431,13 @@ type Testcase struct {
 
 // Testconfig is a wrapper around the C record GTestConfig.
 type Testconfig struct {
-	native          *C.GTestConfig
-	TestInitialized int
-	TestQuick       int
-	TestPerf        int
-	TestVerbose     int
-	TestQuiet       int
-	TestUndefined   int
+	native *C.GTestConfig
+	// test_initialized : no type generator for gboolean, gboolean
+	// test_quick : no type generator for gboolean, gboolean
+	// test_perf : no type generator for gboolean, gboolean
+	// test_verbose : no type generator for gboolean, gboolean
+	// test_quiet : no type generator for gboolean, gboolean
+	// test_undefined : no type generator for gboolean, gboolean
 }
 
 // Blacklisted : GTestLogBuffer
@@ -456,17 +456,17 @@ type Thread struct {
 
 // Threadpool is a wrapper around the C record GThreadPool.
 type Threadpool struct {
-	native    *C.GThreadPool
-	Func      int
-	UserData  int
-	Exclusive int
+	native *C.GThreadPool
+	// func : no type generator for Func, GFunc
+	UserData uintptr
+	// exclusive : no type generator for gboolean, gboolean
 }
 
 // Timeval is a wrapper around the C record GTimeVal.
 type Timeval struct {
 	native *C.GTimeVal
-	TvSec  int
-	TvUsec int
+	TvSec  int64
+	TvUsec int64
 }
 
 // Timer is a wrapper around the C record GTimer.
@@ -477,7 +477,7 @@ type Timer struct {
 // Trashstack is a wrapper around the C record GTrashStack.
 type Trashstack struct {
 	native *C.GTrashStack
-	Next   int
+	// next : no type generator for TrashStack, GTrashStack*
 }
 
 // Tree is a wrapper around the C record GTree.
@@ -493,7 +493,7 @@ type Variantbuilder struct {
 // Variantiter is a wrapper around the C record GVariantIter.
 type Variantiter struct {
 	native *C.GVariantIter
-	X      int
+	// no type for x
 }
 
 // Blacklisted : GVariantType

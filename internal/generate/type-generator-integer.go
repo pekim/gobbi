@@ -29,7 +29,7 @@ func (t *TypeGeneratorInteger) isSupportedAsReturnValue() (supported bool, reaso
 	return true, ""
 }
 
-func (t *TypeGeneratorInteger) generateParamFunctionDeclaration(g *jen.Group, goVarName string) {
+func (t *TypeGeneratorInteger) generateDeclaration(g *jen.Group, goVarName string) {
 	g.
 		Id(goVarName).
 		Id(t.typ.goType)

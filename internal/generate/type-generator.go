@@ -10,7 +10,8 @@ type TypeGenerator interface {
 	isSupportedAsParam(direction string) (supported bool, reason string)
 	isSupportedAsReturnValue() (supported bool, reason string)
 
-	generateParamFunctionDeclaration(g *jen.Group, goVarName string)
+	generateDeclaration(g *jen.Group, goVarName string)
+
 	generateParamCallArgument(g *jen.Group, cVarName string)
 	generateParamOutCallArgument(g *jen.Group, cVarName string)
 	generateParamCVar(g *jen.Group, cVarName string, goVarName string, transferOwnership string)

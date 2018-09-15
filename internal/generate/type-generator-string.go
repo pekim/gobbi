@@ -35,7 +35,7 @@ func (t *TypeGeneratorString) isSupportedAsReturnValue() (supported bool, reason
 	return true, ""
 }
 
-func (t *TypeGeneratorString) generateParamFunctionDeclaration(g *jen.Group, goVarName string) {
+func (t *TypeGeneratorString) generateDeclaration(g *jen.Group, goVarName string) {
 	g.
 		Id(goVarName).
 		Id(t.typ.goType)

@@ -13,6 +13,6 @@ import "C"
 // Once is a wrapper around the C record GOnce.
 type Once struct {
 	native *C.GOnce
-	Status int
-	Retval int
+	// status : no type generator for OnceStatus, volatile GOnceStatus
+	// retval : no type generator for gpointer, volatile gpointer
 }

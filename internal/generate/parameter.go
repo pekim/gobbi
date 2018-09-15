@@ -54,7 +54,7 @@ func (p *Parameter) generateFunctionDeclaration(g *jen.Group) {
 		return
 	}
 
-	p.Type.generator.generateParamFunctionDeclaration(g, p.goVarName)
+	p.Type.generator.generateDeclaration(g, p.goVarName)
 }
 
 func (p *Parameter) generateCVar(g *jen.Group) {

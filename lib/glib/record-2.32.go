@@ -18,13 +18,13 @@ type Bytes struct {
 // Rwlock is a wrapper around the C record GRWLock.
 type Rwlock struct {
 	native *C.GRWLock
-	P      int
-	I      int
+	P      uintptr
+	// no type for i
 }
 
 // Recmutex is a wrapper around the C record GRecMutex.
 type Recmutex struct {
 	native *C.GRecMutex
-	P      int
-	I      int
+	P      uintptr
+	// no type for i
 }
