@@ -14,7 +14,7 @@ import "C"
 
 // Unsupported : g_byte_array_unref : unsupported parameter array : no param type
 
-// Unsupported : g_double_equal : no return type
+// Unsupported : g_double_equal : no return generator
 
 // DoubleHash is a wrapper around the C function g_double_hash.
 func DoubleHash(v uintptr) uint32 {
@@ -27,11 +27,11 @@ func DoubleHash(v uintptr) uint32 {
 	return retGo
 }
 
-// Unsupported : g_hostname_is_ascii_encoded : no return type
+// Unsupported : g_hostname_is_ascii_encoded : no return generator
 
-// Unsupported : g_hostname_is_ip_address : no return type
+// Unsupported : g_hostname_is_ip_address : no return generator
 
-// Unsupported : g_hostname_is_non_ascii : no return type
+// Unsupported : g_hostname_is_non_ascii : no return generator
 
 // HostnameToAscii is a wrapper around the C function g_hostname_to_ascii.
 func HostnameToAscii(hostname string) string {
@@ -57,7 +57,7 @@ func HostnameToUnicode(hostname string) string {
 	return retGo
 }
 
-// Unsupported : g_int64_equal : no return type
+// Unsupported : g_int64_equal : no return generator
 
 // Int64Hash is a wrapper around the C function g_int64_hash.
 func Int64Hash(v uintptr) uint32 {
@@ -70,7 +70,7 @@ func Int64Hash(v uintptr) uint32 {
 	return retGo
 }
 
-// Unsupported : g_main_context_get_thread_default : no return type
+// Unsupported : g_main_context_get_thread_default : no return generator
 
 // MkstempFull is a wrapper around the C function g_mkstemp_full.
 func MkstempFull(tmpl string, flags int32, mode int32) int32 {
@@ -88,6 +88,6 @@ func MkstempFull(tmpl string, flags int32, mode int32) int32 {
 	return retGo
 }
 
-// Unsupported : g_reload_user_special_dirs_cache : no return type
+// Unsupported : g_reload_user_special_dirs_cache : no return generator
 
-// Unsupported : g_test_log_set_fatal_handler : unsupported parameter log_func : no param type for TestLogFatalFunc, GTestLogFatalFunc
+// Unsupported : g_test_log_set_fatal_handler : unsupported parameter log_func : no type generator for TestLogFatalFunc, GTestLogFatalFunc

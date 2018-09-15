@@ -2,7 +2,6 @@ package generate
 
 import (
 	"fmt"
-
 	"github.com/dave/jennifer/jen"
 )
 
@@ -17,9 +16,7 @@ type Parameter struct {
 	Array             *Array    `xml:"array"`
 	Varargs           *struct{} `xml:"varargs"`
 
-	paramType ParameterType
 	goVarName string
-	goType    string
 	cVarName  string
 }
 
@@ -30,7 +27,6 @@ func (p *Parameter) init(ns *Namespace) {
 
 	if p.Type != nil {
 		p.Type.init(ns)
-		p.goType, p.paramType = parameterType(p)
 	}
 }
 
@@ -39,24 +35,15 @@ func (p *Parameter) isSupported() (bool, string) {
 		return false, "varargs"
 	}
 
-	if p.paramType == nil {
-		if p.Type != nil {
-			return false, fmt.Sprintf("no param type for %s, %s", p.Type.Name, p.Type.CType)
-		} else {
-			return false, "no param type"
-		}
+	if p.Type == nil {
+		return false, "no param type"
+	}
+	if p.Type.generator == nil {
+		return false, fmt.Sprintf("no type generator for %s, %s", p.Type.Name, p.Type.CType)
 	}
 
-	if supported, reason := p.paramType.isSupported(); !supported {
+	if supported, reason := p.Type.generator.isSupportedAsParam(p.Direction); !supported {
 		return false, reason
-	}
-
-	if p.goType == "" {
-		if p.Type != nil {
-			return false, fmt.Sprintf("type %s, %s", p.Type.Name, p.Type.CType)
-		} else {
-			return false, "no type"
-		}
 	}
 
 	return true, ""
@@ -67,14 +54,14 @@ func (p *Parameter) generateFunctionDeclaration(g *jen.Group) {
 		return
 	}
 
-	p.paramType.generateFunctionDeclaration(g)
+	p.Type.generator.generateParamFunctionDeclaration(g, p.goVarName)
 }
 
 func (p *Parameter) generateCVar(g *jen.Group) {
 	if p.Direction == "out" {
-		p.paramType.generateOutCVar(g)
+		p.Type.generator.generateParamOutCVar(g, p.cVarName)
 	} else {
-		p.paramType.generateCVar(g)
+		p.Type.generator.generateParamCVar(g, p.cVarName, p.goVarName, p.TransferOwnership)
 	}
 
 	g.Line()
@@ -82,8 +69,8 @@ func (p *Parameter) generateCVar(g *jen.Group) {
 
 func (p *Parameter) generateCallArgument(g *jen.Group) {
 	if p.Direction == "out" {
-		p.paramType.generateOutCallArgument(g)
+		p.Type.generator.generateParamOutCallArgument(g, p.cVarName)
 	} else {
-		p.paramType.generateCallArgument(g)
+		p.Type.generator.generateParamCallArgument(g, p.cVarName)
 	}
 }

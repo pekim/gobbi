@@ -164,21 +164,32 @@ func AsciiXdigitValue(c rune) int32 {
 	return retGo
 }
 
-// Unsupported : g_assert_warning : unsupported parameter line : no param type for gint, const int
+// Unsupported : g_assert_warning : unsupported parameter line : no type generator for gint, const int
 
-// Unsupported : g_assertion_message : no return type
+// Unsupported : g_assertion_message : no return generator
 
-// Unsupported : g_assertion_message_cmpnum : unsupported parameter arg1 : no param type for long double, long double
+// Unsupported : g_assertion_message_cmpnum : unsupported parameter arg1 : no type generator for long double, long double
 
-// Unsupported : g_assertion_message_cmpstr : no return type
+// Unsupported : g_assertion_message_cmpstr : no return generator
 
-// Unsupported : g_assertion_message_error : unsupported parameter error : no param type for Error, const GError*
+// Unsupported : g_assertion_message_error : unsupported parameter error : no type generator for Error, const GError*
 
-// Unsupported : g_assertion_message_expr : no return type
+// Unsupported : g_assertion_message_expr : no return generator
 
-// Unsupported : g_atexit : unsupported parameter func : no param type for VoidFunc, GVoidFunc
+// Unsupported : g_atexit : unsupported parameter func : no type generator for VoidFunc, GVoidFunc
 
-// Unsupported : g_basename : no return type
+// Basename is a wrapper around the C function g_basename.
+func Basename(fileName string) string {
+	c_file_name := C.CString(fileName)
+	defer C.free(unsafe.Pointer(c_file_name))
+
+	retC := C.g_basename(c_file_name)
+	retGo :=
+		C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // BitNthLsf is a wrapper around the C function g_bit_nth_lsf.
 func BitNthLsf(mask uint64, nthBit int32) int32 {
@@ -217,7 +228,7 @@ func BitStorage(number uint64) uint32 {
 	return retGo
 }
 
-// Unsupported : g_bookmark_file_error_quark : no return type
+// Unsupported : g_bookmark_file_error_quark : no return generator
 
 // Unsupported : g_build_filename : unsupported parameter ... : varargs
 
@@ -227,63 +238,63 @@ func BitStorage(number uint64) uint32 {
 
 // Unsupported : g_byte_array_new : no return type
 
-// Unsupported : g_clear_error : no return type
+// Unsupported : g_clear_error : no return generator
 
 // Unsupported : g_convert : unsupported parameter str : no param type
 
-// Unsupported : g_convert_error_quark : no return type
+// Unsupported : g_convert_error_quark : no return generator
 
 // Unsupported : g_convert_with_fallback : unsupported parameter str : no param type
 
 // Unsupported : g_convert_with_iconv : unsupported parameter str : no param type
 
-// Unsupported : g_datalist_clear : unsupported parameter datalist : no param type for Data, GData**
+// Unsupported : g_datalist_clear : unsupported parameter datalist : no type generator for Data, GData**
 
-// Unsupported : g_datalist_foreach : unsupported parameter datalist : no param type for Data, GData**
+// Unsupported : g_datalist_foreach : unsupported parameter datalist : no type generator for Data, GData**
 
-// Unsupported : g_datalist_get_data : unsupported parameter datalist : no param type for Data, GData**
+// Unsupported : g_datalist_get_data : unsupported parameter datalist : no type generator for Data, GData**
 
-// Unsupported : g_datalist_id_get_data : unsupported parameter datalist : no param type for Data, GData**
+// Unsupported : g_datalist_id_get_data : unsupported parameter datalist : no type generator for Data, GData**
 
-// Unsupported : g_datalist_id_remove_no_notify : unsupported parameter datalist : no param type for Data, GData**
+// Unsupported : g_datalist_id_remove_no_notify : unsupported parameter datalist : no type generator for Data, GData**
 
-// Unsupported : g_datalist_id_set_data_full : unsupported parameter datalist : no param type for Data, GData**
+// Unsupported : g_datalist_id_set_data_full : unsupported parameter datalist : no type generator for Data, GData**
 
-// Unsupported : g_datalist_init : unsupported parameter datalist : no param type for Data, GData**
+// Unsupported : g_datalist_init : unsupported parameter datalist : no type generator for Data, GData**
 
-// Unsupported : g_dataset_destroy : no return type
+// Unsupported : g_dataset_destroy : no return generator
 
-// Unsupported : g_dataset_foreach : unsupported parameter func : no param type for DataForeachFunc, GDataForeachFunc
+// Unsupported : g_dataset_foreach : unsupported parameter func : no type generator for DataForeachFunc, GDataForeachFunc
 
-// Unsupported : g_dataset_id_get_data : unsupported parameter key_id : no param type for Quark, GQuark
+// Unsupported : g_dataset_id_get_data : unsupported parameter key_id : no type generator for Quark, GQuark
 
-// Unsupported : g_dataset_id_remove_no_notify : unsupported parameter key_id : no param type for Quark, GQuark
+// Unsupported : g_dataset_id_remove_no_notify : unsupported parameter key_id : no type generator for Quark, GQuark
 
-// Unsupported : g_dataset_id_set_data_full : unsupported parameter key_id : no param type for Quark, GQuark
+// Unsupported : g_dataset_id_set_data_full : unsupported parameter key_id : no type generator for Quark, GQuark
 
-// Unsupported : g_date_get_days_in_month : unsupported parameter month : no param type for DateMonth, GDateMonth
+// Unsupported : g_date_get_days_in_month : unsupported parameter month : no type generator for DateMonth, GDateMonth
 
-// Unsupported : g_date_get_monday_weeks_in_year : unsupported parameter year : no param type for DateYear, GDateYear
+// Unsupported : g_date_get_monday_weeks_in_year : unsupported parameter year : no type generator for DateYear, GDateYear
 
-// Unsupported : g_date_get_sunday_weeks_in_year : unsupported parameter year : no param type for DateYear, GDateYear
+// Unsupported : g_date_get_sunday_weeks_in_year : unsupported parameter year : no type generator for DateYear, GDateYear
 
-// Unsupported : g_date_is_leap_year : unsupported parameter year : no param type for DateYear, GDateYear
+// Unsupported : g_date_is_leap_year : unsupported parameter year : no type generator for DateYear, GDateYear
 
-// Unsupported : g_date_strftime : unsupported parameter date : no param type for Date, const GDate*
+// Unsupported : g_date_strftime : unsupported parameter date : no type generator for Date, const GDate*
 
-// Unsupported : g_date_valid_day : unsupported parameter day : no param type for DateDay, GDateDay
+// Unsupported : g_date_valid_day : unsupported parameter day : no type generator for DateDay, GDateDay
 
-// Unsupported : g_date_valid_dmy : unsupported parameter day : no param type for DateDay, GDateDay
+// Unsupported : g_date_valid_dmy : unsupported parameter day : no type generator for DateDay, GDateDay
 
-// Unsupported : g_date_valid_julian : no return type
+// Unsupported : g_date_valid_julian : no return generator
 
-// Unsupported : g_date_valid_month : unsupported parameter month : no param type for DateMonth, GDateMonth
+// Unsupported : g_date_valid_month : unsupported parameter month : no type generator for DateMonth, GDateMonth
 
-// Unsupported : g_date_valid_weekday : unsupported parameter weekday : no param type for DateWeekday, GDateWeekday
+// Unsupported : g_date_valid_weekday : unsupported parameter weekday : no type generator for DateWeekday, GDateWeekday
 
-// Unsupported : g_date_valid_year : unsupported parameter year : no param type for DateYear, GDateYear
+// Unsupported : g_date_valid_year : unsupported parameter year : no type generator for DateYear, GDateYear
 
-// Unsupported : g_direct_equal : no return type
+// Unsupported : g_direct_equal : no return generator
 
 // DirectHash is a wrapper around the C function g_direct_hash.
 func DirectHash(v uintptr) uint32 {
@@ -296,29 +307,39 @@ func DirectHash(v uintptr) uint32 {
 	return retGo
 }
 
-// Unsupported : g_file_error_from_errno : no return type
+// Unsupported : g_file_error_from_errno : no return generator
 
-// Unsupported : g_file_error_quark : no return type
+// Unsupported : g_file_error_quark : no return generator
 
 // Unsupported : g_file_get_contents : unsupported parameter contents : no param type
 
 // Unsupported : throws
 
-// Unsupported : g_file_test : unsupported parameter test : no param type for FileTest, GFileTest
-
-// Unsupported : g_filename_from_uri : no return type
-
-// Unsupported : g_filename_from_utf8 : unsupported parameter bytes_read : no param type for gsize, gsize*
+// Unsupported : g_file_test : unsupported parameter test : no type generator for FileTest, GFileTest
 
 // Unsupported : throws
 
-// Unsupported : g_filename_to_utf8 : unsupported parameter bytes_read : no param type for gsize, gsize*
+// Unsupported : g_filename_from_utf8 : unsupported parameter bytes_read : no type generator for gsize, gsize*
 
-// Unsupported : g_find_program_in_path : no return type
+// Unsupported : throws
 
-// Unsupported : g_free : no return type
+// Unsupported : g_filename_to_utf8 : unsupported parameter bytes_read : no type generator for gsize, gsize*
 
-// Unsupported : g_get_charset : no return type
+// FindProgramInPath is a wrapper around the C function g_find_program_in_path.
+func FindProgramInPath(program string) string {
+	c_program := C.CString(program)
+	defer C.free(unsafe.Pointer(c_program))
+
+	retC := C.g_find_program_in_path(c_program)
+	retGo :=
+		C.GoString(retC)
+
+	return retGo
+}
+
+// Unsupported : g_free : no return generator
+
+// Unsupported : g_get_charset : no return generator
 
 // GetCodeset is a wrapper around the C function g_get_codeset.
 func GetCodeset() string {
@@ -329,11 +350,26 @@ func GetCodeset() string {
 	return retGo
 }
 
-// Unsupported : g_get_current_dir : no return type
+// GetCurrentDir is a wrapper around the C function g_get_current_dir.
+func GetCurrentDir() string {
+	retC := C.g_get_current_dir()
+	retGo :=
+		C.GoString(retC)
 
-// Unsupported : g_get_current_time : unsupported parameter result : no param type for TimeVal, GTimeVal*
+	return retGo
+}
 
-// Unsupported : g_get_home_dir : no return type
+// Unsupported : g_get_current_time : unsupported parameter result : no type generator for TimeVal, GTimeVal*
+
+// GetHomeDir is a wrapper around the C function g_get_home_dir.
+func GetHomeDir() string {
+	retC := C.g_get_home_dir()
+	retGo :=
+		C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // GetPrgname is a wrapper around the C function g_get_prgname.
 func GetPrgname() string {
@@ -345,55 +381,90 @@ func GetPrgname() string {
 	return retGo
 }
 
-// Unsupported : g_get_real_name : no return type
+// GetRealName is a wrapper around the C function g_get_real_name.
+func GetRealName() string {
+	retC := C.g_get_real_name()
+	retGo :=
+		C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
 
-// Unsupported : g_get_tmp_dir : no return type
+	return retGo
+}
 
-// Unsupported : g_get_user_name : no return type
+// GetTmpDir is a wrapper around the C function g_get_tmp_dir.
+func GetTmpDir() string {
+	retC := C.g_get_tmp_dir()
+	retGo :=
+		C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
 
-// Unsupported : g_getenv : no return type
+	return retGo
+}
 
-// Unsupported : g_hash_table_destroy : unsupported parameter hash_table : no param type for GLib.HashTable, GHashTable*
+// GetUserName is a wrapper around the C function g_get_user_name.
+func GetUserName() string {
+	retC := C.g_get_user_name()
+	retGo :=
+		C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
 
-// Unsupported : g_hash_table_insert : unsupported parameter hash_table : no param type for GLib.HashTable, GHashTable*
+	return retGo
+}
 
-// Unsupported : g_hash_table_lookup : unsupported parameter hash_table : no param type for GLib.HashTable, GHashTable*
+// Getenv is a wrapper around the C function g_getenv.
+func Getenv(variable string) string {
+	c_variable := C.CString(variable)
+	defer C.free(unsafe.Pointer(c_variable))
 
-// Unsupported : g_hash_table_lookup_extended : unsupported parameter hash_table : no param type for GLib.HashTable, GHashTable*
+	retC := C.g_getenv(c_variable)
+	retGo :=
+		C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
 
-// Unsupported : g_hash_table_remove : unsupported parameter hash_table : no param type for GLib.HashTable, GHashTable*
+	return retGo
+}
 
-// Unsupported : g_hash_table_replace : unsupported parameter hash_table : no param type for GLib.HashTable, GHashTable*
+// Unsupported : g_hash_table_destroy : unsupported parameter hash_table : no type generator for GLib.HashTable, GHashTable*
 
-// Unsupported : g_hash_table_size : unsupported parameter hash_table : no param type for GLib.HashTable, GHashTable*
+// Unsupported : g_hash_table_insert : unsupported parameter hash_table : no type generator for GLib.HashTable, GHashTable*
 
-// Unsupported : g_hash_table_steal : unsupported parameter hash_table : no param type for GLib.HashTable, GHashTable*
+// Unsupported : g_hash_table_lookup : unsupported parameter hash_table : no type generator for GLib.HashTable, GHashTable*
 
-// Unsupported : g_hook_destroy : unsupported parameter hook_list : no param type for HookList, GHookList*
+// Unsupported : g_hash_table_lookup_extended : unsupported parameter hash_table : no type generator for GLib.HashTable, GHashTable*
 
-// Unsupported : g_hook_destroy_link : unsupported parameter hook_list : no param type for HookList, GHookList*
+// Unsupported : g_hash_table_remove : unsupported parameter hash_table : no type generator for GLib.HashTable, GHashTable*
 
-// Unsupported : g_hook_free : unsupported parameter hook_list : no param type for HookList, GHookList*
+// Unsupported : g_hash_table_replace : unsupported parameter hash_table : no type generator for GLib.HashTable, GHashTable*
 
-// Unsupported : g_hook_insert_before : unsupported parameter hook_list : no param type for HookList, GHookList*
+// Unsupported : g_hash_table_size : unsupported parameter hash_table : no type generator for GLib.HashTable, GHashTable*
 
-// Unsupported : g_hook_prepend : unsupported parameter hook_list : no param type for HookList, GHookList*
+// Unsupported : g_hash_table_steal : unsupported parameter hash_table : no type generator for GLib.HashTable, GHashTable*
 
-// Unsupported : g_hook_unref : unsupported parameter hook_list : no param type for HookList, GHookList*
+// Unsupported : g_hook_destroy : unsupported parameter hook_list : no type generator for HookList, GHookList*
 
-// Unsupported : g_iconv : unsupported parameter converter : no param type for IConv, GIConv
+// Unsupported : g_hook_destroy_link : unsupported parameter hook_list : no type generator for HookList, GHookList*
 
-// Unsupported : g_iconv_open : no return type
+// Unsupported : g_hook_free : unsupported parameter hook_list : no type generator for HookList, GHookList*
 
-// Unsupported : g_idle_add : unsupported parameter function : no param type for SourceFunc, GSourceFunc
+// Unsupported : g_hook_insert_before : unsupported parameter hook_list : no type generator for HookList, GHookList*
 
-// Unsupported : g_idle_add_full : unsupported parameter function : no param type for SourceFunc, GSourceFunc
+// Unsupported : g_hook_prepend : unsupported parameter hook_list : no type generator for HookList, GHookList*
 
-// Unsupported : g_idle_remove_by_data : no return type
+// Unsupported : g_hook_unref : unsupported parameter hook_list : no type generator for HookList, GHookList*
 
-// Unsupported : g_idle_source_new : no return type
+// Unsupported : g_iconv : unsupported parameter converter : no type generator for IConv, GIConv
 
-// Unsupported : g_int_equal : no return type
+// Unsupported : g_iconv_open : no return generator
+
+// Unsupported : g_idle_add : unsupported parameter function : no type generator for SourceFunc, GSourceFunc
+
+// Unsupported : g_idle_add_full : unsupported parameter function : no type generator for SourceFunc, GSourceFunc
+
+// Unsupported : g_idle_remove_by_data : no return generator
+
+// Unsupported : g_idle_source_new : no return generator
+
+// Unsupported : g_int_equal : no return generator
 
 // IntHash is a wrapper around the C function g_int_hash.
 func IntHash(v uintptr) uint32 {
@@ -406,39 +477,39 @@ func IntHash(v uintptr) uint32 {
 	return retGo
 }
 
-// Unsupported : g_io_add_watch : unsupported parameter channel : no param type for IOChannel, GIOChannel*
+// Unsupported : g_io_add_watch : unsupported parameter channel : no type generator for IOChannel, GIOChannel*
 
-// Unsupported : g_io_add_watch_full : unsupported parameter channel : no param type for IOChannel, GIOChannel*
+// Unsupported : g_io_add_watch_full : unsupported parameter channel : no type generator for IOChannel, GIOChannel*
 
-// Unsupported : g_io_channel_error_from_errno : no return type
+// Unsupported : g_io_channel_error_from_errno : no return generator
 
-// Unsupported : g_io_channel_error_quark : no return type
+// Unsupported : g_io_channel_error_quark : no return generator
 
-// Unsupported : g_io_create_watch : unsupported parameter channel : no param type for IOChannel, GIOChannel*
+// Unsupported : g_io_create_watch : unsupported parameter channel : no type generator for IOChannel, GIOChannel*
 
-// Unsupported : g_key_file_error_quark : no return type
+// Unsupported : g_key_file_error_quark : no return generator
 
-// Unsupported : g_locale_from_utf8 : unsupported parameter bytes_read : no param type for gsize, gsize*
+// Unsupported : g_locale_from_utf8 : unsupported parameter bytes_read : no type generator for gsize, gsize*
 
 // Unsupported : g_locale_to_utf8 : unsupported parameter opsysstring : no param type
 
-// Unsupported : g_log : unsupported parameter log_level : no param type for LogLevelFlags, GLogLevelFlags
+// Unsupported : g_log : unsupported parameter log_level : no type generator for LogLevelFlags, GLogLevelFlags
 
-// Unsupported : g_log_default_handler : unsupported parameter log_level : no param type for LogLevelFlags, GLogLevelFlags
+// Unsupported : g_log_default_handler : unsupported parameter log_level : no type generator for LogLevelFlags, GLogLevelFlags
 
-// Unsupported : g_log_remove_handler : no return type
+// Unsupported : g_log_remove_handler : no return generator
 
-// Unsupported : g_log_set_always_fatal : unsupported parameter fatal_mask : no param type for LogLevelFlags, GLogLevelFlags
+// Unsupported : g_log_set_always_fatal : unsupported parameter fatal_mask : no type generator for LogLevelFlags, GLogLevelFlags
 
-// Unsupported : g_log_set_fatal_mask : unsupported parameter fatal_mask : no param type for LogLevelFlags, GLogLevelFlags
+// Unsupported : g_log_set_fatal_mask : unsupported parameter fatal_mask : no type generator for LogLevelFlags, GLogLevelFlags
 
-// Unsupported : g_log_set_handler : unsupported parameter log_levels : no param type for LogLevelFlags, GLogLevelFlags
+// Unsupported : g_log_set_handler : unsupported parameter log_levels : no type generator for LogLevelFlags, GLogLevelFlags
 
-// Unsupported : g_log_structured_standard : unsupported parameter log_level : no param type for LogLevelFlags, GLogLevelFlags
+// Unsupported : g_log_structured_standard : unsupported parameter log_level : no type generator for LogLevelFlags, GLogLevelFlags
 
-// Unsupported : g_logv : unsupported parameter log_level : no param type for LogLevelFlags, GLogLevelFlags
+// Unsupported : g_logv : unsupported parameter log_level : no type generator for LogLevelFlags, GLogLevelFlags
 
-// Unsupported : g_main_context_default : no return type
+// Unsupported : g_main_context_default : no return generator
 
 // MainDepth is a wrapper around the C function g_main_depth.
 func MainDepth() int32 {
@@ -471,7 +542,7 @@ func Malloc0(nBytes uint64) uintptr {
 	return retGo
 }
 
-// Unsupported : g_markup_error_quark : no return type
+// Unsupported : g_markup_error_quark : no return generator
 
 // MarkupEscapeText is a wrapper around the C function g_markup_escape_text.
 func MarkupEscapeText(text string, length int64) string {
@@ -487,11 +558,11 @@ func MarkupEscapeText(text string, length int64) string {
 	return retGo
 }
 
-// Unsupported : g_mem_is_system_malloc : no return type
+// Unsupported : g_mem_is_system_malloc : no return generator
 
-// Unsupported : g_mem_profile : no return type
+// Unsupported : g_mem_profile : no return generator
 
-// Unsupported : g_mem_set_vtable : unsupported parameter vtable : no param type for MemVTable, GMemVTable*
+// Unsupported : g_mem_set_vtable : unsupported parameter vtable : no type generator for MemVTable, GMemVTable*
 
 // Memdup is a wrapper around the C function g_memdup.
 func Memdup(mem uintptr, byteSize uint32) uintptr {
@@ -518,49 +589,80 @@ func Mkstemp(tmpl string) int32 {
 	return retGo
 }
 
-// Unsupported : g_nullify_pointer : unsupported parameter nullify_location : no param type for gpointer, gpointer*
+// Unsupported : g_nullify_pointer : unsupported parameter nullify_location : no type generator for gpointer, gpointer*
 
-// Unsupported : g_number_parser_error_quark : no return type
+// Unsupported : g_number_parser_error_quark : no return generator
 
-// Unsupported : g_on_error_query : no return type
+// Unsupported : g_on_error_query : no return generator
 
-// Unsupported : g_on_error_stack_trace : no return type
+// Unsupported : g_on_error_stack_trace : no return generator
 
-// Unsupported : g_option_error_quark : no return type
+// Unsupported : g_option_error_quark : no return generator
 
 // Unsupported : g_parse_debug_string : unsupported parameter keys : no param type
 
-// Unsupported : g_path_get_basename : no return type
+// PathGetBasename is a wrapper around the C function g_path_get_basename.
+func PathGetBasename(fileName string) string {
+	c_file_name := C.CString(fileName)
+	defer C.free(unsafe.Pointer(c_file_name))
 
-// Unsupported : g_path_get_dirname : no return type
+	retC := C.g_path_get_basename(c_file_name)
+	retGo :=
+		C.GoString(retC)
 
-// Unsupported : g_path_is_absolute : no return type
+	return retGo
+}
 
-// Unsupported : g_path_skip_root : no return type
+// PathGetDirname is a wrapper around the C function g_path_get_dirname.
+func PathGetDirname(fileName string) string {
+	c_file_name := C.CString(fileName)
+	defer C.free(unsafe.Pointer(c_file_name))
 
-// Unsupported : g_pattern_match : unsupported parameter pspec : no param type for PatternSpec, GPatternSpec*
+	retC := C.g_path_get_dirname(c_file_name)
+	retGo :=
+		C.GoString(retC)
 
-// Unsupported : g_pattern_match_simple : no return type
+	return retGo
+}
 
-// Unsupported : g_pattern_match_string : unsupported parameter pspec : no param type for PatternSpec, GPatternSpec*
+// Unsupported : g_path_is_absolute : no return generator
+
+// PathSkipRoot is a wrapper around the C function g_path_skip_root.
+func PathSkipRoot(fileName string) string {
+	c_file_name := C.CString(fileName)
+	defer C.free(unsafe.Pointer(c_file_name))
+
+	retC := C.g_path_skip_root(c_file_name)
+	retGo :=
+		C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// Unsupported : g_pattern_match : unsupported parameter pspec : no type generator for PatternSpec, GPatternSpec*
+
+// Unsupported : g_pattern_match_simple : no return generator
+
+// Unsupported : g_pattern_match_string : unsupported parameter pspec : no type generator for PatternSpec, GPatternSpec*
 
 // Unsupported : g_print : unsupported parameter ... : varargs
 
 // Unsupported : g_printerr : unsupported parameter ... : varargs
 
-// Unsupported : g_printf_string_upper_bound : unsupported parameter args : no param type for va_list, va_list
+// Unsupported : g_printf_string_upper_bound : unsupported parameter args : no type generator for va_list, va_list
 
-// Unsupported : g_propagate_error : unsupported parameter dest : no param type for Error, GError**
+// Unsupported : g_propagate_error : unsupported parameter dest : no type generator for Error, GError**
 
-// Unsupported : g_qsort_with_data : unsupported parameter compare_func : no param type for CompareDataFunc, GCompareDataFunc
+// Unsupported : g_qsort_with_data : unsupported parameter compare_func : no type generator for CompareDataFunc, GCompareDataFunc
 
-// Unsupported : g_quark_from_static_string : no return type
+// Unsupported : g_quark_from_static_string : no return generator
 
-// Unsupported : g_quark_from_string : no return type
+// Unsupported : g_quark_from_string : no return generator
 
-// Unsupported : g_quark_to_string : unsupported parameter quark : no param type for Quark, GQuark
+// Unsupported : g_quark_to_string : unsupported parameter quark : no type generator for Quark, GQuark
 
-// Unsupported : g_quark_try_string : no return type
+// Unsupported : g_quark_try_string : no return generator
 
 // RandomDouble is a wrapper around the C function g_random_double.
 func RandomDouble() float64 {
@@ -606,7 +708,7 @@ func RandomIntRange(begin int32, end int32) int32 {
 	return retGo
 }
 
-// Unsupported : g_random_set_seed : no return type
+// Unsupported : g_random_set_seed : no return generator
 
 // Realloc is a wrapper around the C function g_realloc.
 func Realloc(mem uintptr, nBytes uint64) uintptr {
@@ -621,39 +723,49 @@ func Realloc(mem uintptr, nBytes uint64) uintptr {
 	return retGo
 }
 
-// Unsupported : g_regex_error_quark : no return type
+// Unsupported : g_regex_error_quark : no return generator
 
-// Unsupported : g_return_if_fail_warning : no return type
+// Unsupported : g_return_if_fail_warning : no return generator
 
-// Unsupported : g_set_error : unsupported parameter err : no param type for Error, GError**
+// Unsupported : g_set_error : unsupported parameter err : no type generator for Error, GError**
 
-// Unsupported : g_set_prgname : no return type
+// Unsupported : g_set_prgname : no return generator
 
-// Unsupported : g_set_print_handler : unsupported parameter func : no param type for PrintFunc, GPrintFunc
+// Unsupported : g_set_print_handler : unsupported parameter func : no type generator for PrintFunc, GPrintFunc
 
-// Unsupported : g_set_printerr_handler : unsupported parameter func : no param type for PrintFunc, GPrintFunc
+// Unsupported : g_set_printerr_handler : unsupported parameter func : no type generator for PrintFunc, GPrintFunc
 
-// Unsupported : g_shell_error_quark : no return type
+// Unsupported : g_shell_error_quark : no return generator
 
-// Unsupported : g_shell_parse_argv : unsupported parameter argcp : no param type for gint, gint*
+// Unsupported : g_shell_parse_argv : unsupported parameter argcp : no type generator for gint, gint*
 
-// Unsupported : g_shell_quote : no return type
+// ShellQuote is a wrapper around the C function g_shell_quote.
+func ShellQuote(unquotedString string) string {
+	c_unquoted_string := C.CString(unquotedString)
+	defer C.free(unsafe.Pointer(c_unquoted_string))
 
-// Unsupported : g_shell_unquote : no return type
+	retC := C.g_shell_quote(c_unquoted_string)
+	retGo :=
+		C.GoString(retC)
 
-// Unsupported : g_slice_get_config : unsupported parameter ckey : no param type for SliceConfig, GSliceConfig
+	return retGo
+}
 
-// Unsupported : g_slice_get_config_state : unsupported parameter ckey : no param type for SliceConfig, GSliceConfig
+// Unsupported : throws
 
-// Unsupported : g_slice_set_config : unsupported parameter ckey : no param type for SliceConfig, GSliceConfig
+// Unsupported : g_slice_get_config : unsupported parameter ckey : no type generator for SliceConfig, GSliceConfig
+
+// Unsupported : g_slice_get_config_state : unsupported parameter ckey : no type generator for SliceConfig, GSliceConfig
+
+// Unsupported : g_slice_set_config : unsupported parameter ckey : no type generator for SliceConfig, GSliceConfig
 
 // Unsupported : g_snprintf : unsupported parameter ... : varargs
 
-// Unsupported : g_source_remove : no return type
+// Unsupported : g_source_remove : no return generator
 
-// Unsupported : g_source_remove_by_funcs_user_data : unsupported parameter funcs : no param type for SourceFuncs, GSourceFuncs*
+// Unsupported : g_source_remove_by_funcs_user_data : unsupported parameter funcs : no type generator for SourceFuncs, GSourceFuncs*
 
-// Unsupported : g_source_remove_by_user_data : no return type
+// Unsupported : g_source_remove_by_user_data : no return generator
 
 // SpacedPrimesClosest is a wrapper around the C function g_spaced_primes_closest.
 func SpacedPrimesClosest(num uint32) uint32 {
@@ -670,15 +782,15 @@ func SpacedPrimesClosest(num uint32) uint32 {
 
 // Unsupported : g_spawn_async_with_pipes : unsupported parameter argv : no param type
 
-// Unsupported : g_spawn_close_pid : unsupported parameter pid : no param type for Pid, GPid
+// Unsupported : g_spawn_close_pid : unsupported parameter pid : no type generator for Pid, GPid
 
-// Unsupported : g_spawn_command_line_async : no return type
+// Unsupported : g_spawn_command_line_async : no return generator
 
 // Unsupported : g_spawn_command_line_sync : unsupported parameter standard_output : no param type
 
-// Unsupported : g_spawn_error_quark : no return type
+// Unsupported : g_spawn_error_quark : no return generator
 
-// Unsupported : g_spawn_exit_error_quark : no return type
+// Unsupported : g_spawn_exit_error_quark : no return generator
 
 // Unsupported : g_spawn_sync : unsupported parameter argv : no param type
 
@@ -697,7 +809,7 @@ func Stpcpy(dest string, src string) string {
 	return retGo
 }
 
-// Unsupported : g_str_equal : no return type
+// Unsupported : g_str_equal : no return generator
 
 // StrHash is a wrapper around the C function g_str_hash.
 func StrHash(v uintptr) uint32 {
@@ -823,9 +935,9 @@ func Strdup(str string) string {
 
 // Unsupported : g_strdup_printf : unsupported parameter ... : varargs
 
-// Unsupported : g_strdup_vprintf : unsupported parameter args : no param type for va_list, va_list
+// Unsupported : g_strdup_vprintf : unsupported parameter args : no type generator for va_list, va_list
 
-// Unsupported : g_strdupv : unsupported parameter str_array : in for string with indirection level of 2
+// Unsupported : g_strdupv : unsupported parameter str_array : in string with indirection level of 2
 
 // Strerror is a wrapper around the C function g_strerror.
 func Strerror(errnum int32) string {
@@ -854,17 +966,17 @@ func Strescape(source string, exceptions string) string {
 	return retGo
 }
 
-// Unsupported : g_strfreev : unsupported parameter str_array : in for string with indirection level of 2
+// Unsupported : g_strfreev : unsupported parameter str_array : in string with indirection level of 2
 
-// Unsupported : g_string_new : no return type
+// Unsupported : g_string_new : no return generator
 
-// Unsupported : g_string_new_len : no return type
+// Unsupported : g_string_new_len : no return generator
 
-// Unsupported : g_string_sized_new : no return type
+// Unsupported : g_string_sized_new : no return generator
 
 // Unsupported : g_strjoin : unsupported parameter ... : varargs
 
-// Unsupported : g_strjoinv : unsupported parameter str_array : in for string with indirection level of 2
+// Unsupported : g_strjoinv : unsupported parameter str_array : in string with indirection level of 2
 
 // Strlcat is a wrapper around the C function g_strlcat.
 func Strlcat(dest string, src string, destSize uint64) uint64 {
@@ -1045,19 +1157,19 @@ func Strup(string string) string {
 	return retGo
 }
 
-// Unsupported : g_strv_get_type : no return type
+// Unsupported : g_strv_get_type : no return generator
 
-// Unsupported : g_test_add_vtable : unsupported parameter data_setup : no param type for TestFixtureFunc, GTestFixtureFunc
+// Unsupported : g_test_add_vtable : unsupported parameter data_setup : no type generator for TestFixtureFunc, GTestFixtureFunc
 
-// Unsupported : g_test_assert_expected_messages_internal : no return type
+// Unsupported : g_test_assert_expected_messages_internal : no return generator
 
-// Unsupported : g_test_log_type_name : unsupported parameter log_type : no param type for TestLogType, GTestLogType
+// Unsupported : g_test_log_type_name : unsupported parameter log_type : no type generator for TestLogType, GTestLogType
 
-// Unsupported : g_test_trap_assertions : no return type
+// Unsupported : g_test_trap_assertions : no return generator
 
-// Unsupported : g_thread_error_quark : no return type
+// Unsupported : g_thread_error_quark : no return generator
 
-// Unsupported : g_thread_exit : no return type
+// Unsupported : g_thread_exit : no return generator
 
 // ThreadPoolGetMaxUnusedThreads is a wrapper around the C function g_thread_pool_get_max_unused_threads.
 func ThreadPoolGetMaxUnusedThreads() int32 {
@@ -1077,27 +1189,27 @@ func ThreadPoolGetNumUnusedThreads() uint32 {
 	return retGo
 }
 
-// Unsupported : g_thread_pool_set_max_unused_threads : no return type
+// Unsupported : g_thread_pool_set_max_unused_threads : no return generator
 
-// Unsupported : g_thread_pool_stop_unused_threads : no return type
+// Unsupported : g_thread_pool_stop_unused_threads : no return generator
 
-// Unsupported : g_thread_self : no return type
+// Unsupported : g_thread_self : no return generator
 
-// Unsupported : g_thread_yield : no return type
+// Unsupported : g_thread_yield : no return generator
 
-// Unsupported : g_timeout_add : unsupported parameter function : no param type for SourceFunc, GSourceFunc
+// Unsupported : g_timeout_add : unsupported parameter function : no type generator for SourceFunc, GSourceFunc
 
-// Unsupported : g_timeout_add_full : unsupported parameter function : no param type for SourceFunc, GSourceFunc
+// Unsupported : g_timeout_add_full : unsupported parameter function : no type generator for SourceFunc, GSourceFunc
 
-// Unsupported : g_timeout_source_new : no return type
+// Unsupported : g_timeout_source_new : no return generator
 
-// Unsupported : g_trash_stack_height : unsupported parameter stack_p : no param type for TrashStack, GTrashStack**
+// Unsupported : g_trash_stack_height : unsupported parameter stack_p : no type generator for TrashStack, GTrashStack**
 
-// Unsupported : g_trash_stack_peek : unsupported parameter stack_p : no param type for TrashStack, GTrashStack**
+// Unsupported : g_trash_stack_peek : unsupported parameter stack_p : no type generator for TrashStack, GTrashStack**
 
-// Unsupported : g_trash_stack_pop : unsupported parameter stack_p : no param type for TrashStack, GTrashStack**
+// Unsupported : g_trash_stack_pop : unsupported parameter stack_p : no type generator for TrashStack, GTrashStack**
 
-// Unsupported : g_trash_stack_push : unsupported parameter stack_p : no param type for TrashStack, GTrashStack**
+// Unsupported : g_trash_stack_push : unsupported parameter stack_p : no type generator for TrashStack, GTrashStack**
 
 // TryMalloc is a wrapper around the C function g_try_malloc.
 func TryMalloc(nBytes uint64) uintptr {
@@ -1123,11 +1235,11 @@ func TryRealloc(mem uintptr, nBytes uint64) uintptr {
 	return retGo
 }
 
-// Unsupported : g_ucs4_to_utf16 : unsupported parameter str : no param type for gunichar, const gunichar*
+// Unsupported : g_ucs4_to_utf16 : unsupported parameter str : no type generator for gunichar, const gunichar*
 
-// Unsupported : g_ucs4_to_utf8 : unsupported parameter str : no param type for gunichar, const gunichar*
+// Unsupported : g_ucs4_to_utf8 : unsupported parameter str : no type generator for gunichar, const gunichar*
 
-// Unsupported : g_unichar_break_type : no return type
+// Unsupported : g_unichar_break_type : no return generator
 
 // UnicharDigitValue is a wrapper around the C function g_unichar_digit_value.
 func UnicharDigitValue(c rune) int32 {
@@ -1140,33 +1252,33 @@ func UnicharDigitValue(c rune) int32 {
 	return retGo
 }
 
-// Unsupported : g_unichar_isalnum : no return type
+// Unsupported : g_unichar_isalnum : no return generator
 
-// Unsupported : g_unichar_isalpha : no return type
+// Unsupported : g_unichar_isalpha : no return generator
 
-// Unsupported : g_unichar_iscntrl : no return type
+// Unsupported : g_unichar_iscntrl : no return generator
 
-// Unsupported : g_unichar_isdefined : no return type
+// Unsupported : g_unichar_isdefined : no return generator
 
-// Unsupported : g_unichar_isdigit : no return type
+// Unsupported : g_unichar_isdigit : no return generator
 
-// Unsupported : g_unichar_isgraph : no return type
+// Unsupported : g_unichar_isgraph : no return generator
 
-// Unsupported : g_unichar_islower : no return type
+// Unsupported : g_unichar_islower : no return generator
 
-// Unsupported : g_unichar_isprint : no return type
+// Unsupported : g_unichar_isprint : no return generator
 
-// Unsupported : g_unichar_ispunct : no return type
+// Unsupported : g_unichar_ispunct : no return generator
 
-// Unsupported : g_unichar_isspace : no return type
+// Unsupported : g_unichar_isspace : no return generator
 
-// Unsupported : g_unichar_istitle : no return type
+// Unsupported : g_unichar_istitle : no return generator
 
-// Unsupported : g_unichar_isupper : no return type
+// Unsupported : g_unichar_isupper : no return generator
 
-// Unsupported : g_unichar_iswide : no return type
+// Unsupported : g_unichar_iswide : no return generator
 
-// Unsupported : g_unichar_isxdigit : no return type
+// Unsupported : g_unichar_isxdigit : no return generator
 
 // UnicharToUtf8 is a wrapper around the C function g_unichar_to_utf8.
 func UnicharToUtf8(c rune) int32 {
@@ -1214,9 +1326,9 @@ func UnicharToupper(c rune) rune {
 	return retGo
 }
 
-// Unsupported : g_unichar_type : no return type
+// Unsupported : g_unichar_type : no return generator
 
-// Unsupported : g_unichar_validate : no return type
+// Unsupported : g_unichar_validate : no return generator
 
 // UnicharXdigitValue is a wrapper around the C function g_unichar_xdigit_value.
 func UnicharXdigitValue(c rune) int32 {
@@ -1229,17 +1341,17 @@ func UnicharXdigitValue(c rune) int32 {
 	return retGo
 }
 
-// Unsupported : g_unicode_canonical_decomposition : unsupported parameter result_len : no param type for gsize, gsize*
+// Unsupported : g_unicode_canonical_decomposition : unsupported parameter result_len : no type generator for gsize, gsize*
 
-// Unsupported : g_unicode_canonical_ordering : unsupported parameter string : no param type for gunichar, gunichar*
+// Unsupported : g_unicode_canonical_ordering : unsupported parameter string : no type generator for gunichar, gunichar*
 
-// Unsupported : g_unix_error_quark : no return type
+// Unsupported : g_unix_error_quark : no return generator
 
-// Unsupported : g_usleep : no return type
+// Unsupported : g_usleep : no return generator
 
-// Unsupported : g_utf16_to_ucs4 : unsupported parameter str : no param type for guint16, const gunichar2*
+// Unsupported : g_utf16_to_ucs4 : unsupported parameter str : no type generator for guint16, const gunichar2*
 
-// Unsupported : g_utf16_to_utf8 : unsupported parameter str : no param type for guint16, const gunichar2*
+// Unsupported : g_utf16_to_utf8 : unsupported parameter str : no type generator for guint16, const gunichar2*
 
 // Utf8Casefold is a wrapper around the C function g_utf8_casefold.
 func Utf8Casefold(str string, len int64) string {
@@ -1340,7 +1452,7 @@ func Utf8GetCharValidated(p string, maxLen int64) rune {
 	return retGo
 }
 
-// Unsupported : g_utf8_normalize : unsupported parameter mode : no param type for NormalizeMode, GNormalizeMode
+// Unsupported : g_utf8_normalize : unsupported parameter mode : no type generator for NormalizeMode, GNormalizeMode
 
 // Utf8OffsetToPointer is a wrapper around the C function g_utf8_offset_to_pointer.
 func Utf8OffsetToPointer(str string, offset int64) string {
@@ -1474,26 +1586,26 @@ func Utf8Strup(str string, len int64) string {
 	return retGo
 }
 
-// Unsupported : g_utf8_to_ucs4 : unsupported parameter items_read : no param type for glong, glong*
+// Unsupported : g_utf8_to_ucs4 : unsupported parameter items_read : no type generator for glong, glong*
 
-// Unsupported : g_utf8_to_ucs4_fast : unsupported parameter items_written : no param type for glong, glong*
+// Unsupported : g_utf8_to_ucs4_fast : unsupported parameter items_written : no type generator for glong, glong*
 
-// Unsupported : g_utf8_to_utf16 : unsupported parameter items_read : no param type for glong, glong*
+// Unsupported : g_utf8_to_utf16 : unsupported parameter items_read : no type generator for glong, glong*
 
 // Unsupported : g_utf8_validate : unsupported parameter str : no param type
 
-// Unsupported : g_variant_get_gtype : no return type
+// Unsupported : g_variant_get_gtype : no return generator
 
-// Unsupported : g_variant_parse : unsupported parameter type : no param type for VariantType, const GVariantType*
+// Unsupported : g_variant_parse : unsupported parameter type : no type generator for VariantType, const GVariantType*
 
-// Unsupported : g_variant_parse_error_quark : no return type
+// Unsupported : g_variant_parse_error_quark : no return generator
 
-// Unsupported : g_variant_parser_get_error_quark : no return type
+// Unsupported : g_variant_parser_get_error_quark : no return generator
 
-// Unsupported : g_variant_type_checked_ : no return type
+// Unsupported : g_variant_type_checked_ : no return generator
 
-// Unsupported : g_variant_type_string_is_valid : no return type
+// Unsupported : g_variant_type_string_is_valid : no return generator
 
-// Unsupported : g_vsnprintf : unsupported parameter args : no param type for va_list, va_list
+// Unsupported : g_vsnprintf : unsupported parameter args : no type generator for va_list, va_list
 
-// Unsupported : g_warn_message : no return type
+// Unsupported : g_warn_message : no return generator

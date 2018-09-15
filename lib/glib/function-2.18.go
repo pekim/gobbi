@@ -68,4 +68,4 @@ func Dpgettext2(domain string, context string, msgid string) string {
 	return retGo
 }
 
-// Unsupported : g_set_error_literal : unsupported parameter err : no param type for Error, GError**
+// Unsupported : g_set_error_literal : unsupported parameter err : no type generator for Error, GError**

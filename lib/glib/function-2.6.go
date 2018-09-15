@@ -52,7 +52,7 @@ func FilenameDisplayName(filename string) string {
 	return retGo
 }
 
-// Unsupported : g_get_filename_charsets : unsupported parameter charsets : in for string with indirection level of 3
+// Unsupported : g_get_filename_charsets : unsupported parameter charsets : in string with indirection level of 3
 
 // Unsupported : g_get_language_names : no return type
 
@@ -60,13 +60,37 @@ func FilenameDisplayName(filename string) string {
 
 // Unsupported : g_get_system_data_dirs : no return type
 
-// Unsupported : g_get_user_cache_dir : no return type
+// GetUserCacheDir is a wrapper around the C function g_get_user_cache_dir.
+func GetUserCacheDir() string {
+	retC := C.g_get_user_cache_dir()
+	retGo :=
+		C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
 
-// Unsupported : g_get_user_config_dir : no return type
+	return retGo
+}
 
-// Unsupported : g_get_user_data_dir : no return type
+// GetUserConfigDir is a wrapper around the C function g_get_user_config_dir.
+func GetUserConfigDir() string {
+	retC := C.g_get_user_config_dir()
+	retGo :=
+		C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
 
-// Unsupported : g_log_set_default_handler : unsupported parameter log_func : no param type for LogFunc, GLogFunc
+	return retGo
+}
+
+// GetUserDataDir is a wrapper around the C function g_get_user_data_dir.
+func GetUserDataDir() string {
+	retC := C.g_get_user_data_dir()
+	retGo :=
+		C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// Unsupported : g_log_set_default_handler : unsupported parameter log_func : no type generator for LogFunc, GLogFunc
 
 // Rmdir is a wrapper around the C function g_rmdir.
 func Rmdir(filename string) int32 {
@@ -80,7 +104,7 @@ func Rmdir(filename string) int32 {
 	return retGo
 }
 
-// Unsupported : g_strv_length : unsupported parameter str_array : in for string with indirection level of 2
+// Unsupported : g_strv_length : unsupported parameter str_array : in string with indirection level of 2
 
 // Unlink is a wrapper around the C function g_unlink.
 func Unlink(filename string) int32 {

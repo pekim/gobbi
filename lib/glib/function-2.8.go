@@ -42,11 +42,11 @@ func Chdir(path string) int32 {
 	return retGo
 }
 
-// Unsupported : g_datalist_get_flags : unsupported parameter datalist : no param type for Data, GData**
+// Unsupported : g_datalist_get_flags : unsupported parameter datalist : no type generator for Data, GData**
 
-// Unsupported : g_datalist_set_flags : unsupported parameter datalist : no param type for Data, GData**
+// Unsupported : g_datalist_set_flags : unsupported parameter datalist : no type generator for Data, GData**
 
-// Unsupported : g_datalist_unset_flags : unsupported parameter datalist : no param type for Data, GData**
+// Unsupported : g_datalist_unset_flags : unsupported parameter datalist : no type generator for Data, GData**
 
 // Unsupported : g_file_set_contents : unsupported parameter contents : no param type
 

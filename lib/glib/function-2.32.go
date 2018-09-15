@@ -20,8 +20,8 @@ import "C"
 
 // Unsupported : g_environ_unsetenv : unsupported parameter envp : no param type
 
-// Unsupported : g_hash_table_add : unsupported parameter hash_table : no param type for GLib.HashTable, GHashTable*
+// Unsupported : g_hash_table_add : unsupported parameter hash_table : no type generator for GLib.HashTable, GHashTable*
 
-// Unsupported : g_hash_table_contains : unsupported parameter hash_table : no param type for GLib.HashTable, GHashTable*
+// Unsupported : g_hash_table_contains : unsupported parameter hash_table : no type generator for GLib.HashTable, GHashTable*
 
-// Unsupported : g_main_context_ref_thread_default : no return type
+// Unsupported : g_main_context_ref_thread_default : no return generator

@@ -10,7 +10,7 @@ package glib
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : g_close : no return type
+// Unsupported : g_close : no return generator
 
 // GetNumProcessors is a wrapper around the C function g_get_num_processors.
 func GetNumProcessors() uint32 {
@@ -21,8 +21,8 @@ func GetNumProcessors() uint32 {
 	return retGo
 }
 
-// Unsupported : g_unix_fd_add : unsupported parameter condition : no param type for IOCondition, GIOCondition
+// Unsupported : g_unix_fd_add : unsupported parameter condition : no type generator for IOCondition, GIOCondition
 
-// Unsupported : g_unix_fd_add_full : unsupported parameter condition : no param type for IOCondition, GIOCondition
+// Unsupported : g_unix_fd_add_full : unsupported parameter condition : no type generator for IOCondition, GIOCondition
 
-// Unsupported : g_unix_fd_source_new : unsupported parameter condition : no param type for IOCondition, GIOCondition
+// Unsupported : g_unix_fd_source_new : unsupported parameter condition : no type generator for IOCondition, GIOCondition

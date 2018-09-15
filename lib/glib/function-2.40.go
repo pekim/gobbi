@@ -12,9 +12,9 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : g_str_is_ascii : no return type
+// Unsupported : g_str_is_ascii : no return generator
 
-// Unsupported : g_str_match_string : unsupported parameter accept_alternates : no param type for gboolean, gboolean
+// Unsupported : g_str_match_string : unsupported parameter accept_alternates : no type generator for gboolean, gboolean
 
 // StrToAscii is a wrapper around the C function g_str_to_ascii.
 func StrToAscii(str string, fromLocale string) string {
@@ -33,4 +33,4 @@ func StrToAscii(str string, fromLocale string) string {
 
 // Unsupported : g_str_tokenize_and_fold : unsupported parameter ascii_alternates : no param type
 
-// Unsupported : g_variant_parse_error_print_context : unsupported parameter error : no param type for Error, GError*
+// Unsupported : g_variant_parse_error_print_context : unsupported parameter error : no type generator for Error, GError*

@@ -3,6 +3,8 @@
 
 package glib
 
+import "unsafe"
+
 // #define GLIB_DISABLE_DEPRECATION_WARNINGS
 // #include <glib.h>
 // #include <glib/gstdio.h>
@@ -32,4 +34,12 @@ func GetRealTime() int64 {
 	return retGo
 }
 
-// Unsupported : g_get_user_runtime_dir : no return type
+// GetUserRuntimeDir is a wrapper around the C function g_get_user_runtime_dir.
+func GetUserRuntimeDir() string {
+	retC := C.g_get_user_runtime_dir()
+	retGo :=
+		C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
+
+	return retGo
+}

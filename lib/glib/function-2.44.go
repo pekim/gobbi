@@ -10,4 +10,4 @@ package glib
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : g_strv_contains : no return type
+// Unsupported : g_strv_contains : no return generator

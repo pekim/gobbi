@@ -12,11 +12,11 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : g_checksum_type_get_length : unsupported parameter checksum_type : no param type for ChecksumType, GChecksumType
+// Unsupported : g_checksum_type_get_length : unsupported parameter checksum_type : no type generator for ChecksumType, GChecksumType
 
-// Unsupported : g_compute_checksum_for_data : unsupported parameter checksum_type : no param type for ChecksumType, GChecksumType
+// Unsupported : g_compute_checksum_for_data : unsupported parameter checksum_type : no type generator for ChecksumType, GChecksumType
 
-// Unsupported : g_compute_checksum_for_string : unsupported parameter checksum_type : no param type for ChecksumType, GChecksumType
+// Unsupported : g_compute_checksum_for_string : unsupported parameter checksum_type : no type generator for ChecksumType, GChecksumType
 
 // Dpgettext is a wrapper around the C function g_dpgettext.
 func Dpgettext(domain string, msgctxtid string, msgidoffset uint64) string {
@@ -47,11 +47,11 @@ func FormatSizeForDisplay(size uint64) string {
 	return retGo
 }
 
-// Unsupported : g_markup_collect_attributes : unsupported parameter attribute_names : in for string with indirection level of 2
+// Unsupported : g_markup_collect_attributes : unsupported parameter attribute_names : in string with indirection level of 2
 
-// Unsupported : g_prefix_error : unsupported parameter err : no param type for Error, GError**
+// Unsupported : g_prefix_error : unsupported parameter err : no type generator for Error, GError**
 
-// Unsupported : g_propagate_prefixed_error : unsupported parameter dest : no param type for Error, GError**
+// Unsupported : g_propagate_prefixed_error : unsupported parameter dest : no type generator for Error, GError**
 
 // Strcmp0 is a wrapper around the C function g_strcmp0.
 func Strcmp0(str1 string, str2 string) int32 {
@@ -68,21 +68,21 @@ func Strcmp0(str1 string, str2 string) int32 {
 	return retGo
 }
 
-// Unsupported : g_test_add_data_func : unsupported parameter test_func : no param type for TestDataFunc, GTestDataFunc
+// Unsupported : g_test_add_data_func : unsupported parameter test_func : no type generator for TestDataFunc, GTestDataFunc
 
-// Unsupported : g_test_add_func : unsupported parameter test_func : no param type for TestFunc, GTestFunc
+// Unsupported : g_test_add_func : unsupported parameter test_func : no type generator for TestFunc, GTestFunc
 
-// Unsupported : g_test_bug : no return type
+// Unsupported : g_test_bug : no return generator
 
-// Unsupported : g_test_bug_base : no return type
+// Unsupported : g_test_bug_base : no return generator
 
-// Unsupported : g_test_create_case : unsupported parameter data_setup : no param type for TestFixtureFunc, GTestFixtureFunc
+// Unsupported : g_test_create_case : unsupported parameter data_setup : no type generator for TestFixtureFunc, GTestFixtureFunc
 
-// Unsupported : g_test_create_suite : no return type
+// Unsupported : g_test_create_suite : no return generator
 
-// Unsupported : g_test_get_root : no return type
+// Unsupported : g_test_get_root : no return generator
 
-// Unsupported : g_test_init : unsupported parameter argc : no param type for gint, int*
+// Unsupported : g_test_init : unsupported parameter argc : no type generator for gint, int*
 
 // Unsupported : g_test_maximized_result : unsupported parameter ... : varargs
 
@@ -90,9 +90,9 @@ func Strcmp0(str1 string, str2 string) int32 {
 
 // Unsupported : g_test_minimized_result : unsupported parameter ... : varargs
 
-// Unsupported : g_test_queue_destroy : unsupported parameter destroy_func : no param type for DestroyNotify, GDestroyNotify
+// Unsupported : g_test_queue_destroy : unsupported parameter destroy_func : no type generator for DestroyNotify, GDestroyNotify
 
-// Unsupported : g_test_queue_free : no return type
+// Unsupported : g_test_queue_free : no return generator
 
 // TestRandDouble is a wrapper around the C function g_test_rand_double.
 func TestRandDouble() float64 {
@@ -147,7 +147,7 @@ func TestRun() int32 {
 	return retGo
 }
 
-// Unsupported : g_test_run_suite : unsupported parameter suite : no param type for TestSuite, GTestSuite*
+// Unsupported : g_test_run_suite : unsupported parameter suite : no type generator for TestSuite, GTestSuite*
 
 // TestTimerElapsed is a wrapper around the C function g_test_timer_elapsed.
 func TestTimerElapsed() float64 {
@@ -167,15 +167,15 @@ func TestTimerLast() float64 {
 	return retGo
 }
 
-// Unsupported : g_test_timer_start : no return type
+// Unsupported : g_test_timer_start : no return generator
 
-// Unsupported : g_test_trap_fork : unsupported parameter test_trap_flags : no param type for TestTrapFlags, GTestTrapFlags
+// Unsupported : g_test_trap_fork : unsupported parameter test_trap_flags : no type generator for TestTrapFlags, GTestTrapFlags
 
-// Unsupported : g_test_trap_has_passed : no return type
+// Unsupported : g_test_trap_has_passed : no return generator
 
-// Unsupported : g_test_trap_reached_timeout : no return type
+// Unsupported : g_test_trap_reached_timeout : no return generator
 
-// Unsupported : g_uri_escape_string : unsupported parameter allow_utf8 : no param type for gboolean, gboolean
+// Unsupported : g_uri_escape_string : unsupported parameter allow_utf8 : no type generator for gboolean, gboolean
 
 // UriParseScheme is a wrapper around the C function g_uri_parse_scheme.
 func UriParseScheme(uri string) string {

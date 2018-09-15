@@ -12,7 +12,7 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : g_hash_table_unref : unsupported parameter hash_table : no param type for GLib.HashTable, GHashTable*
+// Unsupported : g_hash_table_unref : unsupported parameter hash_table : no type generator for GLib.HashTable, GHashTable*
 
 // InternStaticString is a wrapper around the C function g_intern_static_string.
 func InternStaticString(string string) string {
@@ -62,9 +62,9 @@ func SliceAlloc0(blockSize uint64) uintptr {
 	return retGo
 }
 
-// Unsupported : g_slice_free1 : no return type
+// Unsupported : g_slice_free1 : no return generator
 
-// Unsupported : g_slice_free_chain_with_offset : no return type
+// Unsupported : g_slice_free_chain_with_offset : no return generator
 
 // ThreadPoolGetMaxIdleTime is a wrapper around the C function g_thread_pool_get_max_idle_time.
 func ThreadPoolGetMaxIdleTime() uint32 {
@@ -75,4 +75,4 @@ func ThreadPoolGetMaxIdleTime() uint32 {
 	return retGo
 }
 
-// Unsupported : g_thread_pool_set_max_idle_time : no return type
+// Unsupported : g_thread_pool_set_max_idle_time : no return generator

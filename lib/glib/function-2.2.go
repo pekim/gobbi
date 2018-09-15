@@ -28,7 +28,7 @@ func AsciiStrtoull(nptr string, base uint32) uint64 {
 	return retGo
 }
 
-// Unsupported : g_fprintf : unsupported parameter file : no param type for gpointer, FILE*
+// Unsupported : g_fprintf : unsupported parameter file : no type generator for gpointer, FILE*
 
 // GetApplicationName is a wrapper around the C function g_get_application_name.
 func GetApplicationName() string {
@@ -42,13 +42,13 @@ func GetApplicationName() string {
 
 // Unsupported : g_printf : unsupported parameter ... : varargs
 
-// Unsupported : g_set_application_name : no return type
+// Unsupported : g_set_application_name : no return generator
 
 // Unsupported : g_sprintf : unsupported parameter ... : varargs
 
-// Unsupported : g_str_has_prefix : no return type
+// Unsupported : g_str_has_prefix : no return generator
 
-// Unsupported : g_str_has_suffix : no return type
+// Unsupported : g_str_has_suffix : no return generator
 
 // Utf8Strreverse is a wrapper around the C function g_utf8_strreverse.
 func Utf8Strreverse(str string, len int64) string {
@@ -64,8 +64,8 @@ func Utf8Strreverse(str string, len int64) string {
 	return retGo
 }
 
-// Unsupported : g_vfprintf : unsupported parameter file : no param type for gpointer, FILE*
+// Unsupported : g_vfprintf : unsupported parameter file : no type generator for gpointer, FILE*
 
-// Unsupported : g_vprintf : unsupported parameter args : no param type for va_list, va_list
+// Unsupported : g_vprintf : unsupported parameter args : no type generator for va_list, va_list
 
-// Unsupported : g_vsprintf : unsupported parameter args : no param type for va_list, va_list
+// Unsupported : g_vsprintf : unsupported parameter args : no type generator for va_list, va_list

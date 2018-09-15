@@ -10,6 +10,6 @@ package glib
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : g_build_filename_valist : unsupported parameter args : no param type for va_list, va_list*
+// Unsupported : g_build_filename_valist : unsupported parameter args : no type generator for va_list, va_list*
 
-// Unsupported : g_clear_handle_id : unsupported parameter tag_ptr : no param type for guint, guint*
+// Unsupported : g_clear_handle_id : unsupported parameter tag_ptr : no type generator for guint, guint*

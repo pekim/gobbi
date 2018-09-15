@@ -25,7 +25,7 @@ func DateTimeCompare(dt1 uintptr, dt2 uintptr) int32 {
 	return retGo
 }
 
-// Unsupported : g_date_time_equal : no return type
+// Unsupported : g_date_time_equal : no return generator
 
 // DateTimeHash is a wrapper around the C function g_date_time_hash.
 func DateTimeHash(datetime uintptr) uint32 {
@@ -56,4 +56,4 @@ func Dcgettext(domain string, msgid string, category int32) string {
 	return retGo
 }
 
-// Unsupported : g_source_set_name_by_id : no return type
+// Unsupported : g_source_set_name_by_id : no return generator

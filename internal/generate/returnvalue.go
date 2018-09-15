@@ -13,9 +13,6 @@ type ReturnValue struct {
 	Doc               *Doc   `xml:"doc"`
 	Type              *Type  `xml:"type"`
 	Array             *Array `xml:"array"`
-
-	returnType ReturnType
-	goType     string
 }
 
 func (r *ReturnValue) init(ns *Namespace) {
@@ -23,16 +20,18 @@ func (r *ReturnValue) init(ns *Namespace) {
 
 	if r.Type != nil {
 		r.Type.init(ns)
-		r.goType, r.returnType = returnType(r)
 	}
 }
 
 func (r *ReturnValue) isSupported() (bool, string) {
-	if r.returnType == nil {
+	if r.Type == nil {
 		return false, "no return type"
 	}
+	if r.Type.generator == nil {
+		return false, "no return generator"
+	}
 
-	if supported, reason := r.returnType.isSupported(); !supported {
+	if supported, reason := r.Type.generator.isSupportedAsReturnValue(); !supported {
 		return false, fmt.Sprintf("return type : %s", reason)
 	}
 
@@ -40,9 +39,9 @@ func (r *ReturnValue) isSupported() (bool, string) {
 }
 
 func (r *ReturnValue) generateFunctionDeclaration(g *jen.Group) {
-	r.returnType.generateFunctionDeclaration(g)
+	r.Type.generator.generateReturnFunctionDeclaration(g)
 }
 
 func (r *ReturnValue) generateCToGo(g *jen.Group, cVarName string) {
-	r.returnType.generateCToGo(g, cVarName)
+	r.Type.generator.generateReturnCToGo(g, cVarName, r.TransferOwnership)
 }
