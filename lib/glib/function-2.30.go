@@ -30,7 +30,19 @@ import "C"
 
 // Unsupported : g_compute_hmac_for_string : unsupported parameter digest_type : no type generator for ChecksumType, GChecksumType
 
-// Unsupported : throws
+// DirMakeTmp is a wrapper around the C function g_dir_make_tmp.
+func DirMakeTmp(tmpl string) string {
+	c_tmpl := C.CString(tmpl)
+	defer C.free(unsafe.Pointer(c_tmpl))
+
+	var throwableError *C.GError
+
+	retC := C.g_dir_make_tmp(c_tmpl, &throwableError)
+	retGo :=
+		C.GoString(retC)
+
+	return retGo
+}
 
 // FormatSize is a wrapper around the C function g_format_size.
 func FormatSize(size uint64) string {

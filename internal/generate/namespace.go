@@ -72,3 +72,8 @@ func (ns *Namespace) generate() {
 	ns.generateGeneratables("function", ns.Functions)
 	ns.generateGeneratables("record", ns.Records)
 }
+
+func (ns *Namespace) recordForName(name string) (*Record, bool) {
+	record := ns.Records.forName(name)
+	return record, record != nil
+}

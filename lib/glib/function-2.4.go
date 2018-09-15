@@ -38,7 +38,19 @@ import "C"
 
 // Unsupported : g_child_watch_source_new : unsupported parameter pid : no type generator for Pid, GPid
 
-// Unsupported : throws
+// FileReadLink is a wrapper around the C function g_file_read_link.
+func FileReadLink(filename string) string {
+	c_filename := C.CString(filename)
+	defer C.free(unsafe.Pointer(c_filename))
+
+	var throwableError *C.GError
+
+	retC := C.g_file_read_link(c_filename, &throwableError)
+	retGo :=
+		C.GoString(retC)
+
+	return retGo
+}
 
 // Unsupported : g_markup_printf_escaped : unsupported parameter ... : varargs
 

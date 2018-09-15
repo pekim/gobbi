@@ -172,7 +172,7 @@ func AsciiXdigitValue(c rune) int32 {
 
 // Unsupported : g_assertion_message_cmpstr : no return generator
 
-// Unsupported : g_assertion_message_error : unsupported parameter error : no type generator for Error, const GError*
+// Unsupported : g_assertion_message_error : unsupported parameter error : record param - coming soon
 
 // Unsupported : g_assertion_message_expr : no return generator
 
@@ -313,15 +313,58 @@ func DirectHash(v uintptr) uint32 {
 
 // Unsupported : g_file_get_contents : unsupported parameter contents : no param type
 
-// Unsupported : throws
+// FileOpenTmp is a wrapper around the C function g_file_open_tmp.
+func FileOpenTmp(tmpl string) int32 {
+	c_tmpl := C.CString(tmpl)
+	defer C.free(unsafe.Pointer(c_tmpl))
+
+	var c_name_used *C.gchar
+
+	var throwableError *C.GError
+
+	retC := C.g_file_open_tmp(c_tmpl, &c_name_used, &throwableError)
+	retGo :=
+		(int32)(retC)
+
+	return retGo
+}
 
 // Unsupported : g_file_test : unsupported parameter test : no type generator for FileTest, GFileTest
 
-// Unsupported : throws
+// FilenameFromUri is a wrapper around the C function g_filename_from_uri.
+func FilenameFromUri(uri string) string {
+	c_uri := C.CString(uri)
+	defer C.free(unsafe.Pointer(c_uri))
+
+	var c_hostname *C.gchar
+
+	var throwableError *C.GError
+
+	retC := C.g_filename_from_uri(c_uri, &c_hostname, &throwableError)
+	retGo :=
+		C.GoString(retC)
+
+	return retGo
+}
 
 // Unsupported : g_filename_from_utf8 : unsupported parameter bytes_read : no type generator for gsize, gsize*
 
-// Unsupported : throws
+// FilenameToUri is a wrapper around the C function g_filename_to_uri.
+func FilenameToUri(filename string, hostname string) string {
+	c_filename := C.CString(filename)
+	defer C.free(unsafe.Pointer(c_filename))
+
+	c_hostname := C.CString(hostname)
+	defer C.free(unsafe.Pointer(c_hostname))
+
+	var throwableError *C.GError
+
+	retC := C.g_filename_to_uri(c_filename, c_hostname, &throwableError)
+	retGo :=
+		C.GoString(retC)
+
+	return retGo
+}
 
 // Unsupported : g_filename_to_utf8 : unsupported parameter bytes_read : no type generator for gsize, gsize*
 
@@ -652,7 +695,7 @@ func PathSkipRoot(fileName string) string {
 
 // Unsupported : g_printf_string_upper_bound : unsupported parameter args : no type generator for va_list, va_list
 
-// Unsupported : g_propagate_error : unsupported parameter dest : no type generator for Error, GError**
+// Unsupported : g_propagate_error : unsupported parameter dest : record param - coming soon
 
 // Unsupported : g_qsort_with_data : unsupported parameter compare_func : no type generator for CompareDataFunc, GCompareDataFunc
 
@@ -727,7 +770,7 @@ func Realloc(mem uintptr, nBytes uint64) uintptr {
 
 // Unsupported : g_return_if_fail_warning : no return generator
 
-// Unsupported : g_set_error : unsupported parameter err : no type generator for Error, GError**
+// Unsupported : g_set_error : unsupported parameter err : record param - coming soon
 
 // Unsupported : g_set_prgname : no return generator
 
@@ -751,7 +794,19 @@ func ShellQuote(unquotedString string) string {
 	return retGo
 }
 
-// Unsupported : throws
+// ShellUnquote is a wrapper around the C function g_shell_unquote.
+func ShellUnquote(quotedString string) string {
+	c_quoted_string := C.CString(quotedString)
+	defer C.free(unsafe.Pointer(c_quoted_string))
+
+	var throwableError *C.GError
+
+	retC := C.g_shell_unquote(c_quoted_string, &throwableError)
+	retGo :=
+		C.GoString(retC)
+
+	return retGo
+}
 
 // Unsupported : g_slice_get_config : unsupported parameter ckey : no type generator for SliceConfig, GSliceConfig
 

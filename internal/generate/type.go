@@ -25,15 +25,33 @@ func (t *Type) init(ns *Namespace) {
 	t.cTypeName = strings.TrimRight(cType, "*")
 	t.indirectLevel = len(cType) - len(t.cTypeName)
 
-	// set goType and a TypeGenerator
+	t.initTypeSpecific()
+}
+
+// initTypeSpecific initialises field that are specific to the type of the Type.
+//
+// fields set
+//		goType
+//		generator
+func (t *Type) initTypeSpecific() {
 	goType, isInteger := integerCTypeMap[t.CType]
 	if isInteger {
 		t.goType = goType
 		t.generator = TypeGeneratorIntegerNew(t)
+		return
 	}
 
 	if t.Name == "utf8" || t.Name == "filename" {
 		t.goType = "string"
 		t.generator = TypeGeneratorStringNew(t)
+		return
 	}
+
+	record, found := t.Namespace.recordForName(t.Name)
+
+	if !found || t.Name != "Error" {
+		return
+	}
+	t.goType = t.Name
+	t.generator = TypeGeneratorRecordNew(t, record)
 }

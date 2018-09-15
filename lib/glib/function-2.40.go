@@ -33,4 +33,4 @@ func StrToAscii(str string, fromLocale string) string {
 
 // Unsupported : g_str_tokenize_and_fold : unsupported parameter ascii_alternates : no param type
 
-// Unsupported : g_variant_parse_error_print_context : unsupported parameter error : no type generator for Error, GError*
+// Unsupported : g_variant_parse_error_print_context : unsupported parameter error : record param - coming soon

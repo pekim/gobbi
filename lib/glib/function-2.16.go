@@ -49,9 +49,9 @@ func FormatSizeForDisplay(size uint64) string {
 
 // Unsupported : g_markup_collect_attributes : unsupported parameter attribute_names : in string with indirection level of 2
 
-// Unsupported : g_prefix_error : unsupported parameter err : no type generator for Error, GError**
+// Unsupported : g_prefix_error : unsupported parameter err : record param - coming soon
 
-// Unsupported : g_propagate_prefixed_error : unsupported parameter dest : no type generator for Error, GError**
+// Unsupported : g_propagate_prefixed_error : unsupported parameter dest : record param - coming soon
 
 // Strcmp0 is a wrapper around the C function g_strcmp0.
 func Strcmp0(str1 string, str2 string) int32 {

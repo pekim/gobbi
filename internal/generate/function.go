@@ -22,16 +22,33 @@ type Function struct {
 	ReturnValue       *ReturnValue `xml:"return-value"`
 	Throws            int          `xml:"throws,attr"`
 	Introspectable    string       `xml:"introspectable,attr"`
+
+	throwableErrorType *Type
 }
 
 func (f *Function) init(ns *Namespace) {
 	f.Namespace = ns
 	f.GoName = makeExportedGoName(f.Name)
 	f.Parameters.init(ns)
+	f.initThrowableError()
 
 	if f.ReturnValue != nil {
 		f.ReturnValue.init(ns)
 	}
+}
+
+func (f *Function) initThrowableError() {
+	if f.Throws == 0 {
+		return
+	}
+
+	typ := &Type{
+		Name:  "Error",
+		CType: "GError**",
+	}
+	typ.init(f.Namespace)
+
+	f.throwableErrorType = typ
 }
 
 func (f *Function) version() string {
@@ -59,10 +76,6 @@ func (f *Function) supported() (supported bool, reason string) {
 		return false, fmt.Sprintf("%s : %s", f.CIdentifier, reason)
 	}
 
-	if f.Throws != 0 {
-		return false, "throws"
-	}
-
 	return true, ""
 }
 
@@ -71,25 +84,55 @@ func (f *Function) generate(g *jen.Group, version *Version) {
 
 	g.
 		Func().
-		Id(f.GoName).
-		ParamsFunc(f.Parameters.generateFunctionDeclaration).
-		ParamsFunc(f.ReturnValue.generateFunctionDeclaration).
-		BlockFunc(func(g *jen.Group) {
-			f.Parameters.generateCVars(g)
-
-			g.
-				Id("retC").
-				Op(":=").
-				Qual("C", f.CIdentifier).
-				CallFunc(f.Parameters.generateCallArguments)
-
-			g.
-				Id("retGo").
-				Op(":=")
-			f.ReturnValue.generateCToGo(g, "retC")
-
-			g.Line()
-			g.Return(jen.Id("retGo"))
-		}).
+		Id(f.GoName).                                          // name
+		ParamsFunc(f.Parameters.generateFunctionDeclaration).  // params
+		ParamsFunc(f.ReturnValue.generateFunctionDeclaration). // returns
+		BlockFunc(f.generateBody).                             // body
 		Line()
+}
+
+func (f *Function) generateBody(g *jen.Group) {
+	f.generateCParameterVars(g)
+	f.generateCall(g)
+	f.generateReturn(g)
+}
+
+func (f *Function) generateCParameterVars(g *jen.Group) {
+	f.Parameters.generateCVars(g)
+	f.generateThrowableErrorCVar(g)
+}
+
+func (f *Function) generateCall(g *jen.Group) *jen.Statement {
+	return g.
+		Id("retC").
+		Op(":=").
+		Qual("C", f.CIdentifier).
+		CallFunc(func(g *jen.Group) {
+			f.Parameters.generateCallArguments(g)
+			f.generateThrowableCallArgument(g)
+		})
+}
+
+func (f *Function) generateReturn(g *jen.Group) {
+	g.Id("retGo").Op(":=")
+	f.ReturnValue.generateCToGo(g, "retC")
+	g.Line()
+	g.Return(jen.Id("retGo"))
+}
+
+func (f *Function) generateThrowableErrorCVar(g *jen.Group) {
+	if f.Throws == 0 {
+		return
+	}
+
+	f.throwableErrorType.generator.generateParamOutCVar(g, "throwableError")
+	g.Line()
+}
+
+func (f *Function) generateThrowableCallArgument(g *jen.Group) {
+	if f.Throws == 0 {
+		return
+	}
+
+	f.throwableErrorType.generator.generateParamOutCallArgument(g, "throwableError")
 }
