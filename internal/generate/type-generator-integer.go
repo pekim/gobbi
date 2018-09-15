@@ -6,17 +6,17 @@ import (
 	"github.com/dave/jennifer/jen"
 )
 
-type TypeInteger struct {
+type TypeGeneratorInteger struct {
 	typ *Type
 }
 
-func TypeIntegerNew(typ *Type) *TypeInteger {
-	return &TypeInteger{
+func TypeGeneratorIntegerNew(typ *Type) *TypeGeneratorInteger {
+	return &TypeGeneratorInteger{
 		typ: typ,
 	}
 }
 
-func (t *TypeInteger) isSupportedAsParam(direction string) (supported bool, reason string) {
+func (t *TypeGeneratorInteger) isSupportedAsParam(direction string) (supported bool, reason string) {
 	if t.typ.indirectLevel > 0 {
 		return false, fmt.Sprintf("%s with indirection level of %d",
 			t.typ.CType, t.typ.indirectLevel)
@@ -25,25 +25,25 @@ func (t *TypeInteger) isSupportedAsParam(direction string) (supported bool, reas
 	return true, ""
 }
 
-func (t *TypeInteger) isSupportedAsReturnValue() (supported bool, reason string) {
+func (t *TypeGeneratorInteger) isSupportedAsReturnValue() (supported bool, reason string) {
 	return true, ""
 }
 
-func (t *TypeInteger) generateParamFunctionDeclaration(g *jen.Group, goVarName string) {
+func (t *TypeGeneratorInteger) generateParamFunctionDeclaration(g *jen.Group, goVarName string) {
 	g.
 		Id(goVarName).
 		Id(t.typ.goType)
 }
 
-func (t *TypeInteger) generateParamCallArgument(g *jen.Group, cVarName string) {
+func (t *TypeGeneratorInteger) generateParamCallArgument(g *jen.Group, cVarName string) {
 	g.Id(cVarName)
 }
 
-func (t *TypeInteger) generateParamOutCallArgument(g *jen.Group, cVarName string) {
+func (t *TypeGeneratorInteger) generateParamOutCallArgument(g *jen.Group, cVarName string) {
 	panic(fmt.Sprintf("call argument for an integer out param, not supported : %s", cVarName))
 }
 
-func (t *TypeInteger) generateParamCVar(g *jen.Group, cVarName string, goVarName string, transferOwnership string) {
+func (t *TypeGeneratorInteger) generateParamCVar(g *jen.Group, cVarName string, goVarName string, transferOwnership string) {
 	g.
 		Id(cVarName).
 		Op(":=").
@@ -51,18 +51,18 @@ func (t *TypeInteger) generateParamCVar(g *jen.Group, cVarName string, goVarName
 		Parens(jen.Id(goVarName))
 }
 
-func (t *TypeInteger) generateParamOutCVar(g *jen.Group, cVarName string) {
+func (t *TypeGeneratorInteger) generateParamOutCVar(g *jen.Group, cVarName string) {
 	g.
 		Var().
 		Id(cVarName).
 		Qual("C", t.typ.CType)
 }
 
-func (t *TypeInteger) generateReturnFunctionDeclaration(g *jen.Group) {
+func (t *TypeGeneratorInteger) generateReturnFunctionDeclaration(g *jen.Group) {
 	g.Id(t.typ.goType)
 }
 
-func (t *TypeInteger) generateReturnCToGo(g *jen.Group, cVarName string, transferOwnership string) {
+func (t *TypeGeneratorInteger) generateReturnCToGo(g *jen.Group, cVarName string, transferOwnership string) {
 	g.
 		Parens(jen.Id(t.typ.goType)).
 		Parens(jen.Id(cVarName))
