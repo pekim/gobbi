@@ -1,5 +1,4 @@
 #!/bin/bash
-##!/usr/bin/env bash
 set -e
 set -u
 
@@ -24,7 +23,9 @@ example () {
 }
 
 build () {
-    generate && test
+    generate && \
+    echo "" && \
+    test
 }
 
 generate () {
