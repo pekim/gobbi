@@ -10,10 +10,10 @@ package glib
 import "C"
 
 // DateDay is a representation of the C alias of the same name.
-type Dateday uint8
+type DateDay uint8
 
 // DateYear is a representation of the C alias of the same name.
-type Dateyear uint16
+type DateYear uint16
 
 // Unsupported : alias has no type generator for none, void
 
@@ -30,6 +30,6 @@ type Strv string
 type Time int32
 
 // TimeSpan is a representation of the C alias of the same name.
-type Timespan int64
+type TimeSpan int64
 
 // Blacklisted : GType

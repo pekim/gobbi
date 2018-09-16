@@ -73,6 +73,11 @@ func (ns *Namespace) generate() {
 	ns.generateGeneratables("record", ns.Records)
 }
 
+func (ns *Namespace) aliasForName(name string) (*Alias, bool) {
+	alias := ns.Aliases.forName(name)
+	return alias, alias != nil
+}
+
 func (ns *Namespace) recordForName(name string) (*Record, bool) {
 	record := ns.Records.forName(name)
 	return record, record != nil

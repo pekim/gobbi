@@ -19,7 +19,8 @@ type Alias struct {
 
 func (a *Alias) init(ns *Namespace) {
 	a.Namespace = ns
-	a.goName = makeExportedGoName(a.Name)
+	//a.goName = makeExportedGoName(a.Name)
+	a.goName = a.Name
 
 	if a.Type != nil {
 		a.Type.init(ns)

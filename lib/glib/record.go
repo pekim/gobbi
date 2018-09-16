@@ -70,8 +70,8 @@ type Dir struct {
 
 // Error is a wrapper around the C record GError.
 type Error struct {
-	native *C.GError
-	// domain : no type generator for Quark, GQuark
+	native  *C.GError
+	Domain  Quark
 	Code    int32
 	Message string
 }

@@ -42,5 +42,4 @@ func (f Field) generate(g *jen.Group) {
 	}
 
 	f.Type.generator.generateDeclaration(g, f.goVarName)
-
 }

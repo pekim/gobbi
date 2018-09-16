@@ -32,11 +32,11 @@ import "C"
 
 // Unsupported : g_atomic_pointer_set : unsupported parameter atomic : no type generator for gpointer, void*
 
-// Unsupported : g_child_watch_add : unsupported parameter pid : no type generator for Pid, GPid
+// Unsupported : g_child_watch_add : unsupported parameter function : no type generator for ChildWatchFunc, GChildWatchFunc
 
-// Unsupported : g_child_watch_add_full : unsupported parameter pid : no type generator for Pid, GPid
+// Unsupported : g_child_watch_add_full : unsupported parameter function : no type generator for ChildWatchFunc, GChildWatchFunc
 
-// Unsupported : g_child_watch_source_new : unsupported parameter pid : no type generator for Pid, GPid
+// Unsupported : g_child_watch_source_new : no return generator
 
 // FileReadLink is a wrapper around the C function g_file_read_link.
 func FileReadLink(filename string) string {

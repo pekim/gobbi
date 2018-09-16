@@ -34,24 +34,31 @@ func (t *Type) init(ns *Namespace) {
 //		goType
 //		generator
 func (t *Type) initTypeSpecific() {
+	t.goType, t.generator = t.goTypeAndGenerator(t)
+}
+
+func (t *Type) goTypeAndGenerator(targetType *Type) (string, TypeGenerator) {
 	goType, isInteger := integerCTypeMap[t.CType]
 	if isInteger {
-		t.goType = goType
-		t.generator = TypeGeneratorIntegerNew(t)
-		return
+		return goType, TypeGeneratorIntegerNew(targetType)
 	}
 
 	if t.Name == "utf8" || t.Name == "filename" {
-		t.goType = "string"
-		t.generator = TypeGeneratorStringNew(t)
-		return
+		return "string", TypeGeneratorStringNew(targetType)
+	}
+
+	alias, found := t.Namespace.aliasForName(t.Name)
+	if found {
+		// Use a generator for the alias' Type rather than
+		// this Type.
+		_, typeGenerator := alias.Type.goTypeAndGenerator(t)
+		return t.Name, typeGenerator
 	}
 
 	record, found := t.Namespace.recordForName(t.Name)
-
-	if !found || t.Name != "Error" {
-		return
+	if found && t.Name == "Error" {
+		return t.Name, TypeGeneratorRecordNew(targetType, record)
 	}
-	t.goType = t.Name
-	t.generator = TypeGeneratorRecordNew(t, record)
+
+	return "", nil
 }

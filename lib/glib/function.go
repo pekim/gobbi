@@ -228,7 +228,14 @@ func BitStorage(number uint64) uint32 {
 	return retGo
 }
 
-// Unsupported : g_bookmark_file_error_quark : no return generator
+// BookmarkFileErrorQuark is a wrapper around the C function g_bookmark_file_error_quark.
+func BookmarkFileErrorQuark() Quark {
+	retC := C.g_bookmark_file_error_quark()
+	retGo :=
+		(Quark)(retC)
+
+	return retGo
+}
 
 // Unsupported : g_build_filename : unsupported parameter ... : varargs
 
@@ -242,7 +249,14 @@ func BitStorage(number uint64) uint32 {
 
 // Unsupported : g_convert : unsupported parameter str : no param type
 
-// Unsupported : g_convert_error_quark : no return generator
+// ConvertErrorQuark is a wrapper around the C function g_convert_error_quark.
+func ConvertErrorQuark() Quark {
+	retC := C.g_convert_error_quark()
+	retGo :=
+		(Quark)(retC)
+
+	return retGo
+}
 
 // Unsupported : g_convert_with_fallback : unsupported parameter str : no param type
 
@@ -266,25 +280,65 @@ func BitStorage(number uint64) uint32 {
 
 // Unsupported : g_dataset_foreach : unsupported parameter func : no type generator for DataForeachFunc, GDataForeachFunc
 
-// Unsupported : g_dataset_id_get_data : unsupported parameter key_id : no type generator for Quark, GQuark
+// DatasetIdGetData is a wrapper around the C function g_dataset_id_get_data.
+func DatasetIdGetData(datasetLocation uintptr, keyId Quark) uintptr {
+	c_dataset_location := (C.gconstpointer)(datasetLocation)
 
-// Unsupported : g_dataset_id_remove_no_notify : unsupported parameter key_id : no type generator for Quark, GQuark
+	c_key_id := (C.GQuark)(keyId)
 
-// Unsupported : g_dataset_id_set_data_full : unsupported parameter key_id : no type generator for Quark, GQuark
+	retC := C.g_dataset_id_get_data(c_dataset_location, c_key_id)
+	retGo :=
+		(uintptr)(retC)
+
+	return retGo
+}
+
+// DatasetIdRemoveNoNotify is a wrapper around the C function g_dataset_id_remove_no_notify.
+func DatasetIdRemoveNoNotify(datasetLocation uintptr, keyId Quark) uintptr {
+	c_dataset_location := (C.gconstpointer)(datasetLocation)
+
+	c_key_id := (C.GQuark)(keyId)
+
+	retC := C.g_dataset_id_remove_no_notify(c_dataset_location, c_key_id)
+	retGo :=
+		(uintptr)(retC)
+
+	return retGo
+}
+
+// Unsupported : g_dataset_id_set_data_full : unsupported parameter destroy_func : no type generator for DestroyNotify, GDestroyNotify
 
 // Unsupported : g_date_get_days_in_month : unsupported parameter month : no type generator for DateMonth, GDateMonth
 
-// Unsupported : g_date_get_monday_weeks_in_year : unsupported parameter year : no type generator for DateYear, GDateYear
+// DateGetMondayWeeksInYear is a wrapper around the C function g_date_get_monday_weeks_in_year.
+func DateGetMondayWeeksInYear(year DateYear) uint8 {
+	c_year := (C.GDateYear)(year)
 
-// Unsupported : g_date_get_sunday_weeks_in_year : unsupported parameter year : no type generator for DateYear, GDateYear
+	retC := C.g_date_get_monday_weeks_in_year(c_year)
+	retGo :=
+		(uint8)(retC)
 
-// Unsupported : g_date_is_leap_year : unsupported parameter year : no type generator for DateYear, GDateYear
+	return retGo
+}
+
+// DateGetSundayWeeksInYear is a wrapper around the C function g_date_get_sunday_weeks_in_year.
+func DateGetSundayWeeksInYear(year DateYear) uint8 {
+	c_year := (C.GDateYear)(year)
+
+	retC := C.g_date_get_sunday_weeks_in_year(c_year)
+	retGo :=
+		(uint8)(retC)
+
+	return retGo
+}
+
+// Unsupported : g_date_is_leap_year : no return generator
 
 // Unsupported : g_date_strftime : unsupported parameter date : no type generator for Date, const GDate*
 
-// Unsupported : g_date_valid_day : unsupported parameter day : no type generator for DateDay, GDateDay
+// Unsupported : g_date_valid_day : no return generator
 
-// Unsupported : g_date_valid_dmy : unsupported parameter day : no type generator for DateDay, GDateDay
+// Unsupported : g_date_valid_dmy : unsupported parameter month : no type generator for DateMonth, GDateMonth
 
 // Unsupported : g_date_valid_julian : no return generator
 
@@ -292,7 +346,7 @@ func BitStorage(number uint64) uint32 {
 
 // Unsupported : g_date_valid_weekday : unsupported parameter weekday : no type generator for DateWeekday, GDateWeekday
 
-// Unsupported : g_date_valid_year : unsupported parameter year : no type generator for DateYear, GDateYear
+// Unsupported : g_date_valid_year : no return generator
 
 // Unsupported : g_direct_equal : no return generator
 
@@ -309,7 +363,14 @@ func DirectHash(v uintptr) uint32 {
 
 // Unsupported : g_file_error_from_errno : no return generator
 
-// Unsupported : g_file_error_quark : no return generator
+// FileErrorQuark is a wrapper around the C function g_file_error_quark.
+func FileErrorQuark() Quark {
+	retC := C.g_file_error_quark()
+	retGo :=
+		(Quark)(retC)
+
+	return retGo
+}
 
 // Unsupported : g_file_get_contents : unsupported parameter contents : no param type
 
@@ -526,11 +587,25 @@ func IntHash(v uintptr) uint32 {
 
 // Unsupported : g_io_channel_error_from_errno : no return generator
 
-// Unsupported : g_io_channel_error_quark : no return generator
+// IoChannelErrorQuark is a wrapper around the C function g_io_channel_error_quark.
+func IoChannelErrorQuark() Quark {
+	retC := C.g_io_channel_error_quark()
+	retGo :=
+		(Quark)(retC)
+
+	return retGo
+}
 
 // Unsupported : g_io_create_watch : unsupported parameter channel : no type generator for IOChannel, GIOChannel*
 
-// Unsupported : g_key_file_error_quark : no return generator
+// KeyFileErrorQuark is a wrapper around the C function g_key_file_error_quark.
+func KeyFileErrorQuark() Quark {
+	retC := C.g_key_file_error_quark()
+	retGo :=
+		(Quark)(retC)
+
+	return retGo
+}
 
 // Unsupported : g_locale_from_utf8 : unsupported parameter bytes_read : no type generator for gsize, gsize*
 
@@ -585,7 +660,14 @@ func Malloc0(nBytes uint64) uintptr {
 	return retGo
 }
 
-// Unsupported : g_markup_error_quark : no return generator
+// MarkupErrorQuark is a wrapper around the C function g_markup_error_quark.
+func MarkupErrorQuark() Quark {
+	retC := C.g_markup_error_quark()
+	retGo :=
+		(Quark)(retC)
+
+	return retGo
+}
 
 // MarkupEscapeText is a wrapper around the C function g_markup_escape_text.
 func MarkupEscapeText(text string, length int64) string {
@@ -634,13 +716,20 @@ func Mkstemp(tmpl string) int32 {
 
 // Unsupported : g_nullify_pointer : unsupported parameter nullify_location : no type generator for gpointer, gpointer*
 
-// Unsupported : g_number_parser_error_quark : no return generator
+// Blacklisted : g_number_parser_error_quark
 
 // Unsupported : g_on_error_query : no return generator
 
 // Unsupported : g_on_error_stack_trace : no return generator
 
-// Unsupported : g_option_error_quark : no return generator
+// OptionErrorQuark is a wrapper around the C function g_option_error_quark.
+func OptionErrorQuark() Quark {
+	retC := C.g_option_error_quark()
+	retGo :=
+		(Quark)(retC)
+
+	return retGo
+}
 
 // Unsupported : g_parse_debug_string : unsupported parameter keys : no param type
 
@@ -699,13 +788,53 @@ func PathSkipRoot(fileName string) string {
 
 // Unsupported : g_qsort_with_data : unsupported parameter compare_func : no type generator for CompareDataFunc, GCompareDataFunc
 
-// Unsupported : g_quark_from_static_string : no return generator
+// QuarkFromStaticString is a wrapper around the C function g_quark_from_static_string.
+func QuarkFromStaticString(string string) Quark {
+	c_string := C.CString(string)
+	defer C.free(unsafe.Pointer(c_string))
 
-// Unsupported : g_quark_from_string : no return generator
+	retC := C.g_quark_from_static_string(c_string)
+	retGo :=
+		(Quark)(retC)
 
-// Unsupported : g_quark_to_string : unsupported parameter quark : no type generator for Quark, GQuark
+	return retGo
+}
 
-// Unsupported : g_quark_try_string : no return generator
+// QuarkFromString is a wrapper around the C function g_quark_from_string.
+func QuarkFromString(string string) Quark {
+	c_string := C.CString(string)
+	defer C.free(unsafe.Pointer(c_string))
+
+	retC := C.g_quark_from_string(c_string)
+	retGo :=
+		(Quark)(retC)
+
+	return retGo
+}
+
+// QuarkToString is a wrapper around the C function g_quark_to_string.
+func QuarkToString(quark Quark) string {
+	c_quark := (C.GQuark)(quark)
+
+	retC := C.g_quark_to_string(c_quark)
+	retGo :=
+		C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// QuarkTryString is a wrapper around the C function g_quark_try_string.
+func QuarkTryString(string string) Quark {
+	c_string := C.CString(string)
+	defer C.free(unsafe.Pointer(c_string))
+
+	retC := C.g_quark_try_string(c_string)
+	retGo :=
+		(Quark)(retC)
+
+	return retGo
+}
 
 // RandomDouble is a wrapper around the C function g_random_double.
 func RandomDouble() float64 {
@@ -766,7 +895,14 @@ func Realloc(mem uintptr, nBytes uint64) uintptr {
 	return retGo
 }
 
-// Unsupported : g_regex_error_quark : no return generator
+// RegexErrorQuark is a wrapper around the C function g_regex_error_quark.
+func RegexErrorQuark() Quark {
+	retC := C.g_regex_error_quark()
+	retGo :=
+		(Quark)(retC)
+
+	return retGo
+}
 
 // Unsupported : g_return_if_fail_warning : no return generator
 
@@ -778,7 +914,14 @@ func Realloc(mem uintptr, nBytes uint64) uintptr {
 
 // Unsupported : g_set_printerr_handler : unsupported parameter func : no type generator for PrintFunc, GPrintFunc
 
-// Unsupported : g_shell_error_quark : no return generator
+// ShellErrorQuark is a wrapper around the C function g_shell_error_quark.
+func ShellErrorQuark() Quark {
+	retC := C.g_shell_error_quark()
+	retGo :=
+		(Quark)(retC)
+
+	return retGo
+}
 
 // Unsupported : g_shell_parse_argv : unsupported parameter argcp : no type generator for gint, gint*
 
@@ -837,15 +980,29 @@ func SpacedPrimesClosest(num uint32) uint32 {
 
 // Unsupported : g_spawn_async_with_pipes : unsupported parameter argv : no param type
 
-// Unsupported : g_spawn_close_pid : unsupported parameter pid : no type generator for Pid, GPid
+// Unsupported : g_spawn_close_pid : no return generator
 
 // Unsupported : g_spawn_command_line_async : no return generator
 
 // Unsupported : g_spawn_command_line_sync : unsupported parameter standard_output : no param type
 
-// Unsupported : g_spawn_error_quark : no return generator
+// SpawnErrorQuark is a wrapper around the C function g_spawn_error_quark.
+func SpawnErrorQuark() Quark {
+	retC := C.g_spawn_error_quark()
+	retGo :=
+		(Quark)(retC)
 
-// Unsupported : g_spawn_exit_error_quark : no return generator
+	return retGo
+}
+
+// SpawnExitErrorQuark is a wrapper around the C function g_spawn_exit_error_quark.
+func SpawnExitErrorQuark() Quark {
+	retC := C.g_spawn_exit_error_quark()
+	retGo :=
+		(Quark)(retC)
+
+	return retGo
+}
 
 // Unsupported : g_spawn_sync : unsupported parameter argv : no param type
 
@@ -1222,7 +1379,14 @@ func Strup(string string) string {
 
 // Unsupported : g_test_trap_assertions : no return generator
 
-// Unsupported : g_thread_error_quark : no return generator
+// ThreadErrorQuark is a wrapper around the C function g_thread_error_quark.
+func ThreadErrorQuark() Quark {
+	retC := C.g_thread_error_quark()
+	retGo :=
+		(Quark)(retC)
+
+	return retGo
+}
 
 // Unsupported : g_thread_exit : no return generator
 
@@ -1400,7 +1564,7 @@ func UnicharXdigitValue(c rune) int32 {
 
 // Unsupported : g_unicode_canonical_ordering : unsupported parameter string : no type generator for gunichar, gunichar*
 
-// Unsupported : g_unix_error_quark : no return generator
+// Blacklisted : g_unix_error_quark
 
 // Unsupported : g_usleep : no return generator
 
@@ -1653,9 +1817,23 @@ func Utf8Strup(str string, len int64) string {
 
 // Unsupported : g_variant_parse : unsupported parameter type : no type generator for VariantType, const GVariantType*
 
-// Unsupported : g_variant_parse_error_quark : no return generator
+// VariantParseErrorQuark is a wrapper around the C function g_variant_parse_error_quark.
+func VariantParseErrorQuark() Quark {
+	retC := C.g_variant_parse_error_quark()
+	retGo :=
+		(Quark)(retC)
 
-// Unsupported : g_variant_parser_get_error_quark : no return generator
+	return retGo
+}
+
+// VariantParserGetErrorQuark is a wrapper around the C function g_variant_parser_get_error_quark.
+func VariantParserGetErrorQuark() Quark {
+	retC := C.g_variant_parser_get_error_quark()
+	retGo :=
+		(Quark)(retC)
+
+	return retGo
+}
 
 // Unsupported : g_variant_type_checked_ : no return generator
 
