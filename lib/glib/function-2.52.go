@@ -20,8 +20,7 @@ func Utf8MakeValid(str string, len int64) string {
 	c_len := (C.gssize)(len)
 
 	retC := C.g_utf8_make_valid(c_str, c_len)
-	retGo :=
-		C.GoString(retC)
+	retGo := C.GoString(retC)
 	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
@@ -32,8 +31,7 @@ func Utf8MakeValid(str string, len int64) string {
 // UuidStringRandom is a wrapper around the C function g_uuid_string_random.
 func UuidStringRandom() string {
 	retC := C.g_uuid_string_random()
-	retGo :=
-		C.GoString(retC)
+	retGo := C.GoString(retC)
 	defer C.free(unsafe.Pointer(retC))
 
 	return retGo

@@ -7,6 +7,14 @@ var reservedWords = map[string]bool{
 	"type": true,
 }
 
+func makeSafeCName(cName string) string {
+	if _, isReserved := reservedWords[cName]; isReserved {
+		return "_" + cName
+	}
+
+	return cName
+}
+
 func makeGoName(cName string) string {
 	name := makeGoNameInternal(cName, false)
 

@@ -20,8 +20,7 @@ func InternStaticString(string string) string {
 	defer C.free(unsafe.Pointer(c_string))
 
 	retC := C.g_intern_static_string(c_string)
-	retGo :=
-		C.GoString(retC)
+	retGo := C.GoString(retC)
 
 	return retGo
 }
@@ -32,8 +31,7 @@ func InternString(string string) string {
 	defer C.free(unsafe.Pointer(c_string))
 
 	retC := C.g_intern_string(c_string)
-	retGo :=
-		C.GoString(retC)
+	retGo := C.GoString(retC)
 
 	return retGo
 }
@@ -43,8 +41,7 @@ func SliceAlloc(blockSize uint64) uintptr {
 	c_block_size := (C.gsize)(blockSize)
 
 	retC := C.g_slice_alloc(c_block_size)
-	retGo :=
-		(uintptr)(retC)
+	retGo := (uintptr)(retC)
 
 	return retGo
 }
@@ -54,8 +51,7 @@ func SliceAlloc0(blockSize uint64) uintptr {
 	c_block_size := (C.gsize)(blockSize)
 
 	retC := C.g_slice_alloc0(c_block_size)
-	retGo :=
-		(uintptr)(retC)
+	retGo := (uintptr)(retC)
 
 	return retGo
 }
@@ -67,8 +63,7 @@ func SliceAlloc0(blockSize uint64) uintptr {
 // ThreadPoolGetMaxIdleTime is a wrapper around the C function g_thread_pool_get_max_idle_time.
 func ThreadPoolGetMaxIdleTime() uint32 {
 	retC := C.g_thread_pool_get_max_idle_time()
-	retGo :=
-		(uint32)(retC)
+	retGo := (uint32)(retC)
 
 	return retGo
 }

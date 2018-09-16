@@ -17,3 +17,12 @@ type Logfield struct {
 	Value  uintptr
 	Length int64
 }
+
+func logfieldNewFromC(c *C.GLogField) *Logfield {
+	r := &Logfield{
+		Key:    C.GoString(c.key),
+		Length: (int64)(c.length),
+		Value:  (uintptr)(c.value),
+	}
+	return r
+}

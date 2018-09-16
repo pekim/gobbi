@@ -20,8 +20,7 @@ func Access(filename string, mode int32) int32 {
 	c_mode := (C.int)(mode)
 
 	retC := C.g_access(c_filename, c_mode)
-	retGo :=
-		(int32)(retC)
+	retGo := (int32)(retC)
 
 	return retGo
 }
@@ -36,8 +35,7 @@ func Chdir(path string) int32 {
 	defer C.free(unsafe.Pointer(c_path))
 
 	retC := C.g_chdir(c_path)
-	retGo :=
-		(int32)(retC)
+	retGo := (int32)(retC)
 
 	return retGo
 }
@@ -53,8 +51,7 @@ func Chdir(path string) int32 {
 // GetHostName is a wrapper around the C function g_get_host_name.
 func GetHostName() string {
 	retC := C.g_get_host_name()
-	retGo :=
-		C.GoString(retC)
+	retGo := C.GoString(retC)
 
 	return retGo
 }
@@ -69,8 +66,7 @@ func MkdirWithParents(pathname string, mode int32) int32 {
 	c_mode := (C.gint)(mode)
 
 	retC := C.g_mkdir_with_parents(c_pathname, c_mode)
-	retGo :=
-		(int32)(retC)
+	retGo := (int32)(retC)
 
 	return retGo
 }
@@ -80,8 +76,7 @@ func TryMalloc0(nBytes uint64) uintptr {
 	c_n_bytes := (C.gsize)(nBytes)
 
 	retC := C.g_try_malloc0(c_n_bytes)
-	retGo :=
-		(uintptr)(retC)
+	retGo := (uintptr)(retC)
 
 	return retGo
 }
@@ -94,8 +89,7 @@ func Utf8CollateKeyForFilename(str string, len int64) string {
 	c_len := (C.gssize)(len)
 
 	retC := C.g_utf8_collate_key_for_filename(c_str, c_len)
-	retGo :=
-		C.GoString(retC)
+	retGo := C.GoString(retC)
 	defer C.free(unsafe.Pointer(retC))
 
 	return retGo

@@ -11,6 +11,7 @@ type TypeGenerator interface {
 	isSupportedAsReturnValue() (supported bool, reason string)
 
 	generateDeclaration(g *jen.Group, goVarName string)
+	generateCToGo(cVarReference *jen.Statement) *jen.Statement
 
 	generateParamCallArgument(g *jen.Group, cVarName string)
 	generateParamOutCallArgument(g *jen.Group, cVarName string)
@@ -18,5 +19,5 @@ type TypeGenerator interface {
 	generateParamOutCVar(g *jen.Group, cVarName string)
 
 	generateReturnFunctionDeclaration(g *jen.Group)
-	generateReturnCToGo(g *jen.Group, cVarName string, transferOwnership string)
+	generateReturnCToGo(g *jen.Group, cVarName string, goVarName string, transferOwnership string)
 }

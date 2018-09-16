@@ -14,3 +14,8 @@ import "C"
 type Hmac struct {
 	native *C.GHmac
 }
+
+func hmacNewFromC(c *C.GHmac) *Hmac {
+	r := &Hmac{}
+	return r
+}

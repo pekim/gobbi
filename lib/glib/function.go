@@ -2,7 +2,10 @@
 
 package glib
 
-import "unsafe"
+import (
+	"fmt"
+	"unsafe"
+)
 
 // #define GLIB_DISABLE_DEPRECATION_WARNINGS
 // #include <glib.h>
@@ -16,8 +19,7 @@ func AsciiDigitValue(c rune) int32 {
 	c_c := (C.gchar)(c)
 
 	retC := C.g_ascii_digit_value(c_c)
-	retGo :=
-		(int32)(retC)
+	retGo := (int32)(retC)
 
 	return retGo
 }
@@ -32,8 +34,7 @@ func AsciiDtostr(buffer string, bufLen int32, d float64) string {
 	c_d := (C.gdouble)(d)
 
 	retC := C.g_ascii_dtostr(c_buffer, c_buf_len, c_d)
-	retGo :=
-		C.GoString(retC)
+	retGo := C.GoString(retC)
 	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
@@ -52,8 +53,7 @@ func AsciiFormatd(buffer string, bufLen int32, format string, d float64) string 
 	c_d := (C.gdouble)(d)
 
 	retC := C.g_ascii_formatd(c_buffer, c_buf_len, c_format, c_d)
-	retGo :=
-		C.GoString(retC)
+	retGo := C.GoString(retC)
 	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
@@ -68,8 +68,7 @@ func AsciiStrcasecmp(s1 string, s2 string) int32 {
 	defer C.free(unsafe.Pointer(c_s2))
 
 	retC := C.g_ascii_strcasecmp(c_s1, c_s2)
-	retGo :=
-		(int32)(retC)
+	retGo := (int32)(retC)
 
 	return retGo
 }
@@ -82,8 +81,7 @@ func AsciiStrdown(str string, len int64) string {
 	c_len := (C.gssize)(len)
 
 	retC := C.g_ascii_strdown(c_str, c_len)
-	retGo :=
-		C.GoString(retC)
+	retGo := C.GoString(retC)
 	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
@@ -100,8 +98,7 @@ func AsciiStrncasecmp(s1 string, s2 string, n uint64) int32 {
 	c_n := (C.gsize)(n)
 
 	retC := C.g_ascii_strncasecmp(c_s1, c_s2, c_n)
-	retGo :=
-		(int32)(retC)
+	retGo := (int32)(retC)
 
 	return retGo
 }
@@ -114,8 +111,7 @@ func AsciiStrtod(nptr string) float64 {
 	var c_endptr *C.gchar
 
 	retC := C.g_ascii_strtod(c_nptr, &c_endptr)
-	retGo :=
-		(float64)(retC)
+	retGo := (float64)(retC)
 
 	return retGo
 }
@@ -128,8 +124,7 @@ func AsciiStrup(str string, len int64) string {
 	c_len := (C.gssize)(len)
 
 	retC := C.g_ascii_strup(c_str, c_len)
-	retGo :=
-		C.GoString(retC)
+	retGo := C.GoString(retC)
 	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
@@ -140,8 +135,7 @@ func AsciiTolower(c rune) rune {
 	c_c := (C.gchar)(c)
 
 	retC := C.g_ascii_tolower(c_c)
-	retGo :=
-		(rune)(retC)
+	retGo := (rune)(retC)
 
 	return retGo
 }
@@ -151,8 +145,7 @@ func AsciiToupper(c rune) rune {
 	c_c := (C.gchar)(c)
 
 	retC := C.g_ascii_toupper(c_c)
-	retGo :=
-		(rune)(retC)
+	retGo := (rune)(retC)
 
 	return retGo
 }
@@ -162,8 +155,7 @@ func AsciiXdigitValue(c rune) int32 {
 	c_c := (C.gchar)(c)
 
 	retC := C.g_ascii_xdigit_value(c_c)
-	retGo :=
-		(int32)(retC)
+	retGo := (int32)(retC)
 
 	return retGo
 }
@@ -188,8 +180,7 @@ func Basename(fileName string) string {
 	defer C.free(unsafe.Pointer(c_file_name))
 
 	retC := C.g_basename(c_file_name)
-	retGo :=
-		C.GoString(retC)
+	retGo := C.GoString(retC)
 
 	return retGo
 }
@@ -201,8 +192,7 @@ func BitNthLsf(mask uint64, nthBit int32) int32 {
 	c_nth_bit := (C.gint)(nthBit)
 
 	retC := C.g_bit_nth_lsf(c_mask, c_nth_bit)
-	retGo :=
-		(int32)(retC)
+	retGo := (int32)(retC)
 
 	return retGo
 }
@@ -214,8 +204,7 @@ func BitNthMsf(mask uint64, nthBit int32) int32 {
 	c_nth_bit := (C.gint)(nthBit)
 
 	retC := C.g_bit_nth_msf(c_mask, c_nth_bit)
-	retGo :=
-		(int32)(retC)
+	retGo := (int32)(retC)
 
 	return retGo
 }
@@ -225,8 +214,7 @@ func BitStorage(number uint64) uint32 {
 	c_number := (C.gulong)(number)
 
 	retC := C.g_bit_storage(c_number)
-	retGo :=
-		(uint32)(retC)
+	retGo := (uint32)(retC)
 
 	return retGo
 }
@@ -234,8 +222,7 @@ func BitStorage(number uint64) uint32 {
 // BookmarkFileErrorQuark is a wrapper around the C function g_bookmark_file_error_quark.
 func BookmarkFileErrorQuark() Quark {
 	retC := C.g_bookmark_file_error_quark()
-	retGo :=
-		(Quark)(retC)
+	retGo := (Quark)(retC)
 
 	return retGo
 }
@@ -255,8 +242,7 @@ func BookmarkFileErrorQuark() Quark {
 // ConvertErrorQuark is a wrapper around the C function g_convert_error_quark.
 func ConvertErrorQuark() Quark {
 	retC := C.g_convert_error_quark()
-	retGo :=
-		(Quark)(retC)
+	retGo := (Quark)(retC)
 
 	return retGo
 }
@@ -290,8 +276,7 @@ func DatasetIdGetData(datasetLocation uintptr, keyId Quark) uintptr {
 	c_key_id := (C.GQuark)(keyId)
 
 	retC := C.g_dataset_id_get_data(c_dataset_location, c_key_id)
-	retGo :=
-		(uintptr)(retC)
+	retGo := (uintptr)(retC)
 
 	return retGo
 }
@@ -303,8 +288,7 @@ func DatasetIdRemoveNoNotify(datasetLocation uintptr, keyId Quark) uintptr {
 	c_key_id := (C.GQuark)(keyId)
 
 	retC := C.g_dataset_id_remove_no_notify(c_dataset_location, c_key_id)
-	retGo :=
-		(uintptr)(retC)
+	retGo := (uintptr)(retC)
 
 	return retGo
 }
@@ -318,8 +302,7 @@ func DateGetMondayWeeksInYear(year DateYear) uint8 {
 	c_year := (C.GDateYear)(year)
 
 	retC := C.g_date_get_monday_weeks_in_year(c_year)
-	retGo :=
-		(uint8)(retC)
+	retGo := (uint8)(retC)
 
 	return retGo
 }
@@ -329,8 +312,7 @@ func DateGetSundayWeeksInYear(year DateYear) uint8 {
 	c_year := (C.GDateYear)(year)
 
 	retC := C.g_date_get_sunday_weeks_in_year(c_year)
-	retGo :=
-		(uint8)(retC)
+	retGo := (uint8)(retC)
 
 	return retGo
 }
@@ -358,8 +340,7 @@ func DirectHash(v uintptr) uint32 {
 	c_v := (C.gconstpointer)(v)
 
 	retC := C.g_direct_hash(c_v)
-	retGo :=
-		(uint32)(retC)
+	retGo := (uint32)(retC)
 
 	return retGo
 }
@@ -369,8 +350,7 @@ func DirectHash(v uintptr) uint32 {
 // FileErrorQuark is a wrapper around the C function g_file_error_quark.
 func FileErrorQuark() Quark {
 	retC := C.g_file_error_quark()
-	retGo :=
-		(Quark)(retC)
+	retGo := (Quark)(retC)
 
 	return retGo
 }
@@ -384,11 +364,13 @@ func FileOpenTmp(tmpl string) int32 {
 
 	var c_name_used *C.gchar
 
-	var throwableError *C.GError
+	var cThrowableError *C.GError
 
-	retC := C.g_file_open_tmp(c_tmpl, &c_name_used, &throwableError)
-	retGo :=
-		(int32)(retC)
+	retC := C.g_file_open_tmp(c_tmpl, &c_name_used, &cThrowableError)
+	retGo := (int32)(retC)
+
+	goThrowableError := errorNewFromC(cThrowableError)
+	fmt.Println(goThrowableError)
 
 	return retGo
 }
@@ -402,12 +384,14 @@ func FilenameFromUri(uri string) string {
 
 	var c_hostname *C.gchar
 
-	var throwableError *C.GError
+	var cThrowableError *C.GError
 
-	retC := C.g_filename_from_uri(c_uri, &c_hostname, &throwableError)
-	retGo :=
-		C.GoString(retC)
+	retC := C.g_filename_from_uri(c_uri, &c_hostname, &cThrowableError)
+	retGo := C.GoString(retC)
 	defer C.free(unsafe.Pointer(retC))
+
+	goThrowableError := errorNewFromC(cThrowableError)
+	fmt.Println(goThrowableError)
 
 	return retGo
 }
@@ -422,12 +406,14 @@ func FilenameToUri(filename string, hostname string) string {
 	c_hostname := C.CString(hostname)
 	defer C.free(unsafe.Pointer(c_hostname))
 
-	var throwableError *C.GError
+	var cThrowableError *C.GError
 
-	retC := C.g_filename_to_uri(c_filename, c_hostname, &throwableError)
-	retGo :=
-		C.GoString(retC)
+	retC := C.g_filename_to_uri(c_filename, c_hostname, &cThrowableError)
+	retGo := C.GoString(retC)
 	defer C.free(unsafe.Pointer(retC))
+
+	goThrowableError := errorNewFromC(cThrowableError)
+	fmt.Println(goThrowableError)
 
 	return retGo
 }
@@ -440,8 +426,7 @@ func FindProgramInPath(program string) string {
 	defer C.free(unsafe.Pointer(c_program))
 
 	retC := C.g_find_program_in_path(c_program)
-	retGo :=
-		C.GoString(retC)
+	retGo := C.GoString(retC)
 	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
@@ -454,8 +439,7 @@ func FindProgramInPath(program string) string {
 // GetCodeset is a wrapper around the C function g_get_codeset.
 func GetCodeset() string {
 	retC := C.g_get_codeset()
-	retGo :=
-		C.GoString(retC)
+	retGo := C.GoString(retC)
 	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
@@ -464,8 +448,7 @@ func GetCodeset() string {
 // GetCurrentDir is a wrapper around the C function g_get_current_dir.
 func GetCurrentDir() string {
 	retC := C.g_get_current_dir()
-	retGo :=
-		C.GoString(retC)
+	retGo := C.GoString(retC)
 	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
@@ -476,8 +459,7 @@ func GetCurrentDir() string {
 // GetHomeDir is a wrapper around the C function g_get_home_dir.
 func GetHomeDir() string {
 	retC := C.g_get_home_dir()
-	retGo :=
-		C.GoString(retC)
+	retGo := C.GoString(retC)
 
 	return retGo
 }
@@ -485,8 +467,7 @@ func GetHomeDir() string {
 // GetPrgname is a wrapper around the C function g_get_prgname.
 func GetPrgname() string {
 	retC := C.g_get_prgname()
-	retGo :=
-		C.GoString(retC)
+	retGo := C.GoString(retC)
 
 	return retGo
 }
@@ -494,8 +475,7 @@ func GetPrgname() string {
 // GetRealName is a wrapper around the C function g_get_real_name.
 func GetRealName() string {
 	retC := C.g_get_real_name()
-	retGo :=
-		C.GoString(retC)
+	retGo := C.GoString(retC)
 
 	return retGo
 }
@@ -503,8 +483,7 @@ func GetRealName() string {
 // GetTmpDir is a wrapper around the C function g_get_tmp_dir.
 func GetTmpDir() string {
 	retC := C.g_get_tmp_dir()
-	retGo :=
-		C.GoString(retC)
+	retGo := C.GoString(retC)
 
 	return retGo
 }
@@ -512,8 +491,7 @@ func GetTmpDir() string {
 // GetUserName is a wrapper around the C function g_get_user_name.
 func GetUserName() string {
 	retC := C.g_get_user_name()
-	retGo :=
-		C.GoString(retC)
+	retGo := C.GoString(retC)
 
 	return retGo
 }
@@ -524,8 +502,7 @@ func Getenv(variable string) string {
 	defer C.free(unsafe.Pointer(c_variable))
 
 	retC := C.g_getenv(c_variable)
-	retGo :=
-		C.GoString(retC)
+	retGo := C.GoString(retC)
 
 	return retGo
 }
@@ -577,8 +554,7 @@ func IntHash(v uintptr) uint32 {
 	c_v := (C.gconstpointer)(v)
 
 	retC := C.g_int_hash(c_v)
-	retGo :=
-		(uint32)(retC)
+	retGo := (uint32)(retC)
 
 	return retGo
 }
@@ -592,8 +568,7 @@ func IntHash(v uintptr) uint32 {
 // IoChannelErrorQuark is a wrapper around the C function g_io_channel_error_quark.
 func IoChannelErrorQuark() Quark {
 	retC := C.g_io_channel_error_quark()
-	retGo :=
-		(Quark)(retC)
+	retGo := (Quark)(retC)
 
 	return retGo
 }
@@ -603,8 +578,7 @@ func IoChannelErrorQuark() Quark {
 // KeyFileErrorQuark is a wrapper around the C function g_key_file_error_quark.
 func KeyFileErrorQuark() Quark {
 	retC := C.g_key_file_error_quark()
-	retGo :=
-		(Quark)(retC)
+	retGo := (Quark)(retC)
 
 	return retGo
 }
@@ -634,8 +608,7 @@ func KeyFileErrorQuark() Quark {
 // MainDepth is a wrapper around the C function g_main_depth.
 func MainDepth() int32 {
 	retC := C.g_main_depth()
-	retGo :=
-		(int32)(retC)
+	retGo := (int32)(retC)
 
 	return retGo
 }
@@ -645,8 +618,7 @@ func Malloc(nBytes uint64) uintptr {
 	c_n_bytes := (C.gsize)(nBytes)
 
 	retC := C.g_malloc(c_n_bytes)
-	retGo :=
-		(uintptr)(retC)
+	retGo := (uintptr)(retC)
 
 	return retGo
 }
@@ -656,8 +628,7 @@ func Malloc0(nBytes uint64) uintptr {
 	c_n_bytes := (C.gsize)(nBytes)
 
 	retC := C.g_malloc0(c_n_bytes)
-	retGo :=
-		(uintptr)(retC)
+	retGo := (uintptr)(retC)
 
 	return retGo
 }
@@ -665,8 +636,7 @@ func Malloc0(nBytes uint64) uintptr {
 // MarkupErrorQuark is a wrapper around the C function g_markup_error_quark.
 func MarkupErrorQuark() Quark {
 	retC := C.g_markup_error_quark()
-	retGo :=
-		(Quark)(retC)
+	retGo := (Quark)(retC)
 
 	return retGo
 }
@@ -679,8 +649,7 @@ func MarkupEscapeText(text string, length int64) string {
 	c_length := (C.gssize)(length)
 
 	retC := C.g_markup_escape_text(c_text, c_length)
-	retGo :=
-		C.GoString(retC)
+	retGo := C.GoString(retC)
 	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
@@ -699,8 +668,7 @@ func Memdup(mem uintptr, byteSize uint32) uintptr {
 	c_byte_size := (C.guint)(byteSize)
 
 	retC := C.g_memdup(c_mem, c_byte_size)
-	retGo :=
-		(uintptr)(retC)
+	retGo := (uintptr)(retC)
 
 	return retGo
 }
@@ -711,8 +679,7 @@ func Mkstemp(tmpl string) int32 {
 	defer C.free(unsafe.Pointer(c_tmpl))
 
 	retC := C.g_mkstemp(c_tmpl)
-	retGo :=
-		(int32)(retC)
+	retGo := (int32)(retC)
 
 	return retGo
 }
@@ -728,8 +695,7 @@ func Mkstemp(tmpl string) int32 {
 // OptionErrorQuark is a wrapper around the C function g_option_error_quark.
 func OptionErrorQuark() Quark {
 	retC := C.g_option_error_quark()
-	retGo :=
-		(Quark)(retC)
+	retGo := (Quark)(retC)
 
 	return retGo
 }
@@ -742,8 +708,7 @@ func PathGetBasename(fileName string) string {
 	defer C.free(unsafe.Pointer(c_file_name))
 
 	retC := C.g_path_get_basename(c_file_name)
-	retGo :=
-		C.GoString(retC)
+	retGo := C.GoString(retC)
 	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
@@ -755,8 +720,7 @@ func PathGetDirname(fileName string) string {
 	defer C.free(unsafe.Pointer(c_file_name))
 
 	retC := C.g_path_get_dirname(c_file_name)
-	retGo :=
-		C.GoString(retC)
+	retGo := C.GoString(retC)
 	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
@@ -770,8 +734,7 @@ func PathSkipRoot(fileName string) string {
 	defer C.free(unsafe.Pointer(c_file_name))
 
 	retC := C.g_path_skip_root(c_file_name)
-	retGo :=
-		C.GoString(retC)
+	retGo := C.GoString(retC)
 
 	return retGo
 }
@@ -798,8 +761,7 @@ func QuarkFromStaticString(string string) Quark {
 	defer C.free(unsafe.Pointer(c_string))
 
 	retC := C.g_quark_from_static_string(c_string)
-	retGo :=
-		(Quark)(retC)
+	retGo := (Quark)(retC)
 
 	return retGo
 }
@@ -810,8 +772,7 @@ func QuarkFromString(string string) Quark {
 	defer C.free(unsafe.Pointer(c_string))
 
 	retC := C.g_quark_from_string(c_string)
-	retGo :=
-		(Quark)(retC)
+	retGo := (Quark)(retC)
 
 	return retGo
 }
@@ -821,8 +782,7 @@ func QuarkToString(quark Quark) string {
 	c_quark := (C.GQuark)(quark)
 
 	retC := C.g_quark_to_string(c_quark)
-	retGo :=
-		C.GoString(retC)
+	retGo := C.GoString(retC)
 
 	return retGo
 }
@@ -833,8 +793,7 @@ func QuarkTryString(string string) Quark {
 	defer C.free(unsafe.Pointer(c_string))
 
 	retC := C.g_quark_try_string(c_string)
-	retGo :=
-		(Quark)(retC)
+	retGo := (Quark)(retC)
 
 	return retGo
 }
@@ -842,8 +801,7 @@ func QuarkTryString(string string) Quark {
 // RandomDouble is a wrapper around the C function g_random_double.
 func RandomDouble() float64 {
 	retC := C.g_random_double()
-	retGo :=
-		(float64)(retC)
+	retGo := (float64)(retC)
 
 	return retGo
 }
@@ -855,8 +813,7 @@ func RandomDoubleRange(begin float64, end float64) float64 {
 	c_end := (C.gdouble)(end)
 
 	retC := C.g_random_double_range(c_begin, c_end)
-	retGo :=
-		(float64)(retC)
+	retGo := (float64)(retC)
 
 	return retGo
 }
@@ -864,8 +821,7 @@ func RandomDoubleRange(begin float64, end float64) float64 {
 // RandomInt is a wrapper around the C function g_random_int.
 func RandomInt() uint32 {
 	retC := C.g_random_int()
-	retGo :=
-		(uint32)(retC)
+	retGo := (uint32)(retC)
 
 	return retGo
 }
@@ -877,8 +833,7 @@ func RandomIntRange(begin int32, end int32) int32 {
 	c_end := (C.gint32)(end)
 
 	retC := C.g_random_int_range(c_begin, c_end)
-	retGo :=
-		(int32)(retC)
+	retGo := (int32)(retC)
 
 	return retGo
 }
@@ -892,8 +847,7 @@ func Realloc(mem uintptr, nBytes uint64) uintptr {
 	c_n_bytes := (C.gsize)(nBytes)
 
 	retC := C.g_realloc(c_mem, c_n_bytes)
-	retGo :=
-		(uintptr)(retC)
+	retGo := (uintptr)(retC)
 
 	return retGo
 }
@@ -901,8 +855,7 @@ func Realloc(mem uintptr, nBytes uint64) uintptr {
 // RegexErrorQuark is a wrapper around the C function g_regex_error_quark.
 func RegexErrorQuark() Quark {
 	retC := C.g_regex_error_quark()
-	retGo :=
-		(Quark)(retC)
+	retGo := (Quark)(retC)
 
 	return retGo
 }
@@ -920,8 +873,7 @@ func RegexErrorQuark() Quark {
 // ShellErrorQuark is a wrapper around the C function g_shell_error_quark.
 func ShellErrorQuark() Quark {
 	retC := C.g_shell_error_quark()
-	retGo :=
-		(Quark)(retC)
+	retGo := (Quark)(retC)
 
 	return retGo
 }
@@ -934,8 +886,7 @@ func ShellQuote(unquotedString string) string {
 	defer C.free(unsafe.Pointer(c_unquoted_string))
 
 	retC := C.g_shell_quote(c_unquoted_string)
-	retGo :=
-		C.GoString(retC)
+	retGo := C.GoString(retC)
 	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
@@ -946,12 +897,14 @@ func ShellUnquote(quotedString string) string {
 	c_quoted_string := C.CString(quotedString)
 	defer C.free(unsafe.Pointer(c_quoted_string))
 
-	var throwableError *C.GError
+	var cThrowableError *C.GError
 
-	retC := C.g_shell_unquote(c_quoted_string, &throwableError)
-	retGo :=
-		C.GoString(retC)
+	retC := C.g_shell_unquote(c_quoted_string, &cThrowableError)
+	retGo := C.GoString(retC)
 	defer C.free(unsafe.Pointer(retC))
+
+	goThrowableError := errorNewFromC(cThrowableError)
+	fmt.Println(goThrowableError)
 
 	return retGo
 }
@@ -975,8 +928,7 @@ func SpacedPrimesClosest(num uint32) uint32 {
 	c_num := (C.guint)(num)
 
 	retC := C.g_spaced_primes_closest(c_num)
-	retGo :=
-		(uint32)(retC)
+	retGo := (uint32)(retC)
 
 	return retGo
 }
@@ -994,8 +946,7 @@ func SpacedPrimesClosest(num uint32) uint32 {
 // SpawnErrorQuark is a wrapper around the C function g_spawn_error_quark.
 func SpawnErrorQuark() Quark {
 	retC := C.g_spawn_error_quark()
-	retGo :=
-		(Quark)(retC)
+	retGo := (Quark)(retC)
 
 	return retGo
 }
@@ -1003,8 +954,7 @@ func SpawnErrorQuark() Quark {
 // SpawnExitErrorQuark is a wrapper around the C function g_spawn_exit_error_quark.
 func SpawnExitErrorQuark() Quark {
 	retC := C.g_spawn_exit_error_quark()
-	retGo :=
-		(Quark)(retC)
+	retGo := (Quark)(retC)
 
 	return retGo
 }
@@ -1020,8 +970,7 @@ func Stpcpy(dest string, src string) string {
 	defer C.free(unsafe.Pointer(c_src))
 
 	retC := C.g_stpcpy(c_dest, c_src)
-	retGo :=
-		C.GoString(retC)
+	retGo := C.GoString(retC)
 	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
@@ -1034,8 +983,7 @@ func StrHash(v uintptr) uint32 {
 	c_v := (C.gconstpointer)(v)
 
 	retC := C.g_str_hash(c_v)
-	retGo :=
-		(uint32)(retC)
+	retGo := (uint32)(retC)
 
 	return retGo
 }
@@ -1051,8 +999,7 @@ func Strcanon(string string, validChars string, substitutor rune) string {
 	c_substitutor := (C.gchar)(substitutor)
 
 	retC := C.g_strcanon(c_string, c_valid_chars, c_substitutor)
-	retGo :=
-		C.GoString(retC)
+	retGo := C.GoString(retC)
 	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
@@ -1067,8 +1014,7 @@ func Strcasecmp(s1 string, s2 string) int32 {
 	defer C.free(unsafe.Pointer(c_s2))
 
 	retC := C.g_strcasecmp(c_s1, c_s2)
-	retGo :=
-		(int32)(retC)
+	retGo := (int32)(retC)
 
 	return retGo
 }
@@ -1079,8 +1025,7 @@ func Strchomp(string string) string {
 	defer C.free(unsafe.Pointer(c_string))
 
 	retC := C.g_strchomp(c_string)
-	retGo :=
-		C.GoString(retC)
+	retGo := C.GoString(retC)
 	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
@@ -1092,8 +1037,7 @@ func Strchug(string string) string {
 	defer C.free(unsafe.Pointer(c_string))
 
 	retC := C.g_strchug(c_string)
-	retGo :=
-		C.GoString(retC)
+	retGo := C.GoString(retC)
 	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
@@ -1105,8 +1049,7 @@ func Strcompress(source string) string {
 	defer C.free(unsafe.Pointer(c_source))
 
 	retC := C.g_strcompress(c_source)
-	retGo :=
-		C.GoString(retC)
+	retGo := C.GoString(retC)
 	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
@@ -1125,8 +1068,7 @@ func Strdelimit(string string, delimiters string, newDelimiter rune) string {
 	c_new_delimiter := (C.gchar)(newDelimiter)
 
 	retC := C.g_strdelimit(c_string, c_delimiters, c_new_delimiter)
-	retGo :=
-		C.GoString(retC)
+	retGo := C.GoString(retC)
 	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
@@ -1138,8 +1080,7 @@ func Strdown(string string) string {
 	defer C.free(unsafe.Pointer(c_string))
 
 	retC := C.g_strdown(c_string)
-	retGo :=
-		C.GoString(retC)
+	retGo := C.GoString(retC)
 	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
@@ -1151,8 +1092,7 @@ func Strdup(str string) string {
 	defer C.free(unsafe.Pointer(c_str))
 
 	retC := C.g_strdup(c_str)
-	retGo :=
-		C.GoString(retC)
+	retGo := C.GoString(retC)
 	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
@@ -1169,8 +1109,7 @@ func Strerror(errnum int32) string {
 	c_errnum := (C.gint)(errnum)
 
 	retC := C.g_strerror(c_errnum)
-	retGo :=
-		C.GoString(retC)
+	retGo := C.GoString(retC)
 
 	return retGo
 }
@@ -1184,8 +1123,7 @@ func Strescape(source string, exceptions string) string {
 	defer C.free(unsafe.Pointer(c_exceptions))
 
 	retC := C.g_strescape(c_source, c_exceptions)
-	retGo :=
-		C.GoString(retC)
+	retGo := C.GoString(retC)
 	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
@@ -1214,8 +1152,7 @@ func Strlcat(dest string, src string, destSize uint64) uint64 {
 	c_dest_size := (C.gsize)(destSize)
 
 	retC := C.g_strlcat(c_dest, c_src, c_dest_size)
-	retGo :=
-		(uint64)(retC)
+	retGo := (uint64)(retC)
 
 	return retGo
 }
@@ -1231,8 +1168,7 @@ func Strlcpy(dest string, src string, destSize uint64) uint64 {
 	c_dest_size := (C.gsize)(destSize)
 
 	retC := C.g_strlcpy(c_dest, c_src, c_dest_size)
-	retGo :=
-		(uint64)(retC)
+	retGo := (uint64)(retC)
 
 	return retGo
 }
@@ -1248,8 +1184,7 @@ func Strncasecmp(s1 string, s2 string, n uint32) int32 {
 	c_n := (C.guint)(n)
 
 	retC := C.g_strncasecmp(c_s1, c_s2, c_n)
-	retGo :=
-		(int32)(retC)
+	retGo := (int32)(retC)
 
 	return retGo
 }
@@ -1262,8 +1197,7 @@ func Strndup(str string, n uint64) string {
 	c_n := (C.gsize)(n)
 
 	retC := C.g_strndup(c_str, c_n)
-	retGo :=
-		C.GoString(retC)
+	retGo := C.GoString(retC)
 	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
@@ -1276,8 +1210,7 @@ func Strnfill(length uint64, fillChar rune) string {
 	c_fill_char := (C.gchar)(fillChar)
 
 	retC := C.g_strnfill(c_length, c_fill_char)
-	retGo :=
-		C.GoString(retC)
+	retGo := C.GoString(retC)
 	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
@@ -1289,8 +1222,7 @@ func Strreverse(string string) string {
 	defer C.free(unsafe.Pointer(c_string))
 
 	retC := C.g_strreverse(c_string)
-	retGo :=
-		C.GoString(retC)
+	retGo := C.GoString(retC)
 
 	return retGo
 }
@@ -1304,8 +1236,7 @@ func Strrstr(haystack string, needle string) string {
 	defer C.free(unsafe.Pointer(c_needle))
 
 	retC := C.g_strrstr(c_haystack, c_needle)
-	retGo :=
-		C.GoString(retC)
+	retGo := C.GoString(retC)
 	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
@@ -1322,8 +1253,7 @@ func StrrstrLen(haystack string, haystackLen int64, needle string) string {
 	defer C.free(unsafe.Pointer(c_needle))
 
 	retC := C.g_strrstr_len(c_haystack, c_haystack_len, c_needle)
-	retGo :=
-		C.GoString(retC)
+	retGo := C.GoString(retC)
 	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
@@ -1334,8 +1264,7 @@ func Strsignal(signum int32) string {
 	c_signum := (C.gint)(signum)
 
 	retC := C.g_strsignal(c_signum)
-	retGo :=
-		C.GoString(retC)
+	retGo := C.GoString(retC)
 
 	return retGo
 }
@@ -1353,8 +1282,7 @@ func StrstrLen(haystack string, haystackLen int64, needle string) string {
 	defer C.free(unsafe.Pointer(c_needle))
 
 	retC := C.g_strstr_len(c_haystack, c_haystack_len, c_needle)
-	retGo :=
-		C.GoString(retC)
+	retGo := C.GoString(retC)
 	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
@@ -1368,8 +1296,7 @@ func Strtod(nptr string) float64 {
 	var c_endptr *C.gchar
 
 	retC := C.g_strtod(c_nptr, &c_endptr)
-	retGo :=
-		(float64)(retC)
+	retGo := (float64)(retC)
 
 	return retGo
 }
@@ -1380,8 +1307,7 @@ func Strup(string string) string {
 	defer C.free(unsafe.Pointer(c_string))
 
 	retC := C.g_strup(c_string)
-	retGo :=
-		C.GoString(retC)
+	retGo := C.GoString(retC)
 	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
@@ -1400,8 +1326,7 @@ func Strup(string string) string {
 // ThreadErrorQuark is a wrapper around the C function g_thread_error_quark.
 func ThreadErrorQuark() Quark {
 	retC := C.g_thread_error_quark()
-	retGo :=
-		(Quark)(retC)
+	retGo := (Quark)(retC)
 
 	return retGo
 }
@@ -1411,8 +1336,7 @@ func ThreadErrorQuark() Quark {
 // ThreadPoolGetMaxUnusedThreads is a wrapper around the C function g_thread_pool_get_max_unused_threads.
 func ThreadPoolGetMaxUnusedThreads() int32 {
 	retC := C.g_thread_pool_get_max_unused_threads()
-	retGo :=
-		(int32)(retC)
+	retGo := (int32)(retC)
 
 	return retGo
 }
@@ -1420,8 +1344,7 @@ func ThreadPoolGetMaxUnusedThreads() int32 {
 // ThreadPoolGetNumUnusedThreads is a wrapper around the C function g_thread_pool_get_num_unused_threads.
 func ThreadPoolGetNumUnusedThreads() uint32 {
 	retC := C.g_thread_pool_get_num_unused_threads()
-	retGo :=
-		(uint32)(retC)
+	retGo := (uint32)(retC)
 
 	return retGo
 }
@@ -1453,8 +1376,7 @@ func TryMalloc(nBytes uint64) uintptr {
 	c_n_bytes := (C.gsize)(nBytes)
 
 	retC := C.g_try_malloc(c_n_bytes)
-	retGo :=
-		(uintptr)(retC)
+	retGo := (uintptr)(retC)
 
 	return retGo
 }
@@ -1466,8 +1388,7 @@ func TryRealloc(mem uintptr, nBytes uint64) uintptr {
 	c_n_bytes := (C.gsize)(nBytes)
 
 	retC := C.g_try_realloc(c_mem, c_n_bytes)
-	retGo :=
-		(uintptr)(retC)
+	retGo := (uintptr)(retC)
 
 	return retGo
 }
@@ -1483,8 +1404,7 @@ func UnicharDigitValue(c rune) int32 {
 	c_c := (C.gunichar)(c)
 
 	retC := C.g_unichar_digit_value(c_c)
-	retGo :=
-		(int32)(retC)
+	retGo := (int32)(retC)
 
 	return retGo
 }
@@ -1524,8 +1444,7 @@ func UnicharToUtf8(c rune) int32 {
 	var c_outbuf C.gchar
 
 	retC := C.g_unichar_to_utf8(c_c, &c_outbuf)
-	retGo :=
-		(int32)(retC)
+	retGo := (int32)(retC)
 
 	return retGo
 }
@@ -1535,8 +1454,7 @@ func UnicharTolower(c rune) rune {
 	c_c := (C.gunichar)(c)
 
 	retC := C.g_unichar_tolower(c_c)
-	retGo :=
-		(rune)(retC)
+	retGo := (rune)(retC)
 
 	return retGo
 }
@@ -1546,8 +1464,7 @@ func UnicharTotitle(c rune) rune {
 	c_c := (C.gunichar)(c)
 
 	retC := C.g_unichar_totitle(c_c)
-	retGo :=
-		(rune)(retC)
+	retGo := (rune)(retC)
 
 	return retGo
 }
@@ -1557,8 +1474,7 @@ func UnicharToupper(c rune) rune {
 	c_c := (C.gunichar)(c)
 
 	retC := C.g_unichar_toupper(c_c)
-	retGo :=
-		(rune)(retC)
+	retGo := (rune)(retC)
 
 	return retGo
 }
@@ -1572,8 +1488,7 @@ func UnicharXdigitValue(c rune) int32 {
 	c_c := (C.gunichar)(c)
 
 	retC := C.g_unichar_xdigit_value(c_c)
-	retGo :=
-		(int32)(retC)
+	retGo := (int32)(retC)
 
 	return retGo
 }
@@ -1598,8 +1513,7 @@ func Utf8Casefold(str string, len int64) string {
 	c_len := (C.gssize)(len)
 
 	retC := C.g_utf8_casefold(c_str, c_len)
-	retGo :=
-		C.GoString(retC)
+	retGo := C.GoString(retC)
 	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
@@ -1614,8 +1528,7 @@ func Utf8Collate(str1 string, str2 string) int32 {
 	defer C.free(unsafe.Pointer(c_str2))
 
 	retC := C.g_utf8_collate(c_str1, c_str2)
-	retGo :=
-		(int32)(retC)
+	retGo := (int32)(retC)
 
 	return retGo
 }
@@ -1628,8 +1541,7 @@ func Utf8CollateKey(str string, len int64) string {
 	c_len := (C.gssize)(len)
 
 	retC := C.g_utf8_collate_key(c_str, c_len)
-	retGo :=
-		C.GoString(retC)
+	retGo := C.GoString(retC)
 	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
@@ -1644,8 +1556,7 @@ func Utf8FindNextChar(p string, end string) string {
 	defer C.free(unsafe.Pointer(c_end))
 
 	retC := C.g_utf8_find_next_char(c_p, c_end)
-	retGo :=
-		C.GoString(retC)
+	retGo := C.GoString(retC)
 	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
@@ -1660,8 +1571,7 @@ func Utf8FindPrevChar(str string, p string) string {
 	defer C.free(unsafe.Pointer(c_p))
 
 	retC := C.g_utf8_find_prev_char(c_str, c_p)
-	retGo :=
-		C.GoString(retC)
+	retGo := C.GoString(retC)
 	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
@@ -1673,8 +1583,7 @@ func Utf8GetChar(p string) rune {
 	defer C.free(unsafe.Pointer(c_p))
 
 	retC := C.g_utf8_get_char(c_p)
-	retGo :=
-		(rune)(retC)
+	retGo := (rune)(retC)
 
 	return retGo
 }
@@ -1687,8 +1596,7 @@ func Utf8GetCharValidated(p string, maxLen int64) rune {
 	c_max_len := (C.gssize)(maxLen)
 
 	retC := C.g_utf8_get_char_validated(c_p, c_max_len)
-	retGo :=
-		(rune)(retC)
+	retGo := (rune)(retC)
 
 	return retGo
 }
@@ -1703,8 +1611,7 @@ func Utf8OffsetToPointer(str string, offset int64) string {
 	c_offset := (C.glong)(offset)
 
 	retC := C.g_utf8_offset_to_pointer(c_str, c_offset)
-	retGo :=
-		C.GoString(retC)
+	retGo := C.GoString(retC)
 	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
@@ -1719,8 +1626,7 @@ func Utf8PointerToOffset(str string, pos string) int64 {
 	defer C.free(unsafe.Pointer(c_pos))
 
 	retC := C.g_utf8_pointer_to_offset(c_str, c_pos)
-	retGo :=
-		(int64)(retC)
+	retGo := (int64)(retC)
 
 	return retGo
 }
@@ -1731,8 +1637,7 @@ func Utf8PrevChar(p string) string {
 	defer C.free(unsafe.Pointer(c_p))
 
 	retC := C.g_utf8_prev_char(c_p)
-	retGo :=
-		C.GoString(retC)
+	retGo := C.GoString(retC)
 	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
@@ -1748,8 +1653,7 @@ func Utf8Strchr(p string, len int64, c rune) string {
 	c_c := (C.gunichar)(c)
 
 	retC := C.g_utf8_strchr(c_p, c_len, c_c)
-	retGo :=
-		C.GoString(retC)
+	retGo := C.GoString(retC)
 	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
@@ -1763,8 +1667,7 @@ func Utf8Strdown(str string, len int64) string {
 	c_len := (C.gssize)(len)
 
 	retC := C.g_utf8_strdown(c_str, c_len)
-	retGo :=
-		C.GoString(retC)
+	retGo := C.GoString(retC)
 	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
@@ -1778,8 +1681,7 @@ func Utf8Strlen(p string, max int64) int64 {
 	c_max := (C.gssize)(max)
 
 	retC := C.g_utf8_strlen(c_p, c_max)
-	retGo :=
-		(int64)(retC)
+	retGo := (int64)(retC)
 
 	return retGo
 }
@@ -1795,8 +1697,7 @@ func Utf8Strncpy(dest string, src string, n uint64) string {
 	c_n := (C.gsize)(n)
 
 	retC := C.g_utf8_strncpy(c_dest, c_src, c_n)
-	retGo :=
-		C.GoString(retC)
+	retGo := C.GoString(retC)
 	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
@@ -1812,8 +1713,7 @@ func Utf8Strrchr(p string, len int64, c rune) string {
 	c_c := (C.gunichar)(c)
 
 	retC := C.g_utf8_strrchr(c_p, c_len, c_c)
-	retGo :=
-		C.GoString(retC)
+	retGo := C.GoString(retC)
 	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
@@ -1827,8 +1727,7 @@ func Utf8Strup(str string, len int64) string {
 	c_len := (C.gssize)(len)
 
 	retC := C.g_utf8_strup(c_str, c_len)
-	retGo :=
-		C.GoString(retC)
+	retGo := C.GoString(retC)
 	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
@@ -1849,8 +1748,7 @@ func Utf8Strup(str string, len int64) string {
 // VariantParseErrorQuark is a wrapper around the C function g_variant_parse_error_quark.
 func VariantParseErrorQuark() Quark {
 	retC := C.g_variant_parse_error_quark()
-	retGo :=
-		(Quark)(retC)
+	retGo := (Quark)(retC)
 
 	return retGo
 }
@@ -1858,8 +1756,7 @@ func VariantParseErrorQuark() Quark {
 // VariantParserGetErrorQuark is a wrapper around the C function g_variant_parser_get_error_quark.
 func VariantParserGetErrorQuark() Quark {
 	retC := C.g_variant_parser_get_error_quark()
-	retGo :=
-		(Quark)(retC)
+	retGo := (Quark)(retC)
 
 	return retGo
 }

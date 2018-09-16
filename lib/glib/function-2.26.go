@@ -19,8 +19,7 @@ func DateTimeCompare(dt1 uintptr, dt2 uintptr) int32 {
 	c_dt2 := (C.gconstpointer)(dt2)
 
 	retC := C.g_date_time_compare(c_dt1, c_dt2)
-	retGo :=
-		(int32)(retC)
+	retGo := (int32)(retC)
 
 	return retGo
 }
@@ -32,8 +31,7 @@ func DateTimeHash(datetime uintptr) uint32 {
 	c_datetime := (C.gconstpointer)(datetime)
 
 	retC := C.g_date_time_hash(c_datetime)
-	retGo :=
-		(uint32)(retC)
+	retGo := (uint32)(retC)
 
 	return retGo
 }
@@ -49,8 +47,7 @@ func Dcgettext(domain string, msgid string, category int32) string {
 	c_category := (C.gint)(category)
 
 	retC := C.g_dcgettext(c_domain, c_msgid, c_category)
-	retGo :=
-		C.GoString(retC)
+	retGo := C.GoString(retC)
 
 	return retGo
 }

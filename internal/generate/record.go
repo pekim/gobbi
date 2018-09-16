@@ -1,6 +1,7 @@
 package generate
 
 import (
+	"fmt"
 	"github.com/dave/jennifer/jen"
 )
 
@@ -21,11 +22,14 @@ type Record struct {
 	Fields         Fields         `xml:"field"`
 	Constructors   []*Constructor `xml:"constructor"`
 	Methods        Methods        `xml:"method"`
+
+	newFromCFuncName string
 }
 
 func (r *Record) init(ns *Namespace) {
 	r.Namespace = ns
 	r.GoName = makeExportedGoName(r.Name)
+	r.newFromCFuncName = fmt.Sprintf("%sNewFromC", makeGoName(r.Name))
 
 	for _, ctor := range r.Constructors {
 		ctor.init(ns)
@@ -58,6 +62,11 @@ func (r *Record) mergeAddenda(addenda *Record) {
 }
 
 func (r *Record) generate(g *jen.Group, version *Version) {
+	r.generateType(g)
+	r.generateNewFromCFunc(g)
+}
+
+func (r *Record) generateType(g *jen.Group) {
 	g.Commentf("%s is a wrapper around the C record %s.", r.GoName, r.CType)
 
 	g.
@@ -70,8 +79,47 @@ func (r *Record) generate(g *jen.Group, version *Version) {
 				Qual("C", r.CType)
 
 			r.Fields.generate(g)
-		}).
-		Line()
+		})
+	g.Line()
+}
+
+func (r *Record) generateNewFromCFunc(g *jen.Group) {
+	g.
+		Func().
+		Id(r.newFromCFuncName).
+		Params(jen.
+			Id("c").
+			Op("*").
+			Qual("C", r.CType)).
+		Params(jen.
+			Op("*").
+			Id(r.GoName)).
+		BlockFunc(func(g *jen.Group) {
+			g.
+				Id("r").
+				Op(":=").
+				Op("&").
+				Id(r.GoName).
+				Values(
+					jen.DictFunc(func(d jen.Dict) {
+						for _, f := range r.Fields {
+							if supported, _ := f.supported(); !supported {
+								continue
+							}
+
+							cValue := jen.
+								Id("c").
+								Op(".").
+								Id(f.Name)
+
+							d[jen.Id(f.goVarName)] = f.Type.generator.generateCToGo(cValue)
+						}
+					}))
+
+			g.Return(jen.Id("r"))
+		})
+
+	g.Line()
 }
 
 type Constructor struct {

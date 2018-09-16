@@ -22,8 +22,7 @@ func AsciiStrtoull(nptr string, base uint32) uint64 {
 	c_base := (C.guint)(base)
 
 	retC := C.g_ascii_strtoull(c_nptr, &c_endptr, c_base)
-	retGo :=
-		(uint64)(retC)
+	retGo := (uint64)(retC)
 
 	return retGo
 }
@@ -33,8 +32,7 @@ func AsciiStrtoull(nptr string, base uint32) uint64 {
 // GetApplicationName is a wrapper around the C function g_get_application_name.
 func GetApplicationName() string {
 	retC := C.g_get_application_name()
-	retGo :=
-		C.GoString(retC)
+	retGo := C.GoString(retC)
 
 	return retGo
 }
@@ -57,8 +55,7 @@ func Utf8Strreverse(str string, len int64) string {
 	c_len := (C.gssize)(len)
 
 	retC := C.g_utf8_strreverse(c_str, c_len)
-	retGo :=
-		C.GoString(retC)
+	retGo := C.GoString(retC)
 	defer C.free(unsafe.Pointer(retC))
 
 	return retGo

@@ -23,7 +23,9 @@ type Function struct {
 	Throws            int          `xml:"throws,attr"`
 	Introspectable    string       `xml:"introspectable,attr"`
 
-	throwableErrorType *Type
+	throwableErrorType      *Type
+	throwableErrorCVarName  string
+	throwableErrorGoVarName string
 }
 
 func (f *Function) init(ns *Namespace) {
@@ -49,6 +51,8 @@ func (f *Function) initThrowableError() {
 	typ.init(f.Namespace)
 
 	f.throwableErrorType = typ
+	f.throwableErrorCVarName = "cThrowableError"
+	f.throwableErrorGoVarName = "goThrowableError"
 }
 
 func (f *Function) version() string {
@@ -98,6 +102,8 @@ func (f *Function) generate(g *jen.Group, version *Version) {
 func (f *Function) generateBody(g *jen.Group) {
 	f.generateCParameterVars(g)
 	f.generateCall(g)
+
+	f.generateGoReturnVars(g)
 	f.generateReturn(g)
 }
 
@@ -117,11 +123,32 @@ func (f *Function) generateCall(g *jen.Group) *jen.Statement {
 		})
 }
 
+func (f *Function) generateGoReturnVars(g *jen.Group) {
+	f.generateReturnGoVar(g)
+	f.generateThrowableReturnGoVar(g)
+}
+
 func (f *Function) generateReturn(g *jen.Group) {
-	g.Id("retGo").Op(":=")
-	f.ReturnValue.generateCToGo(g, "retC")
+	g.ReturnFunc(func(g *jen.Group) {
+		g.Id("retGo")
+		//f.generateThrowableReturn(g)
+	})
+}
+
+func (f *Function) generateReturnGoVar(g *jen.Group) {
+	f.ReturnValue.generateCToGo(g, "retC", "retGo")
 	g.Line()
-	g.Return(jen.Id("retGo"))
+}
+
+func (f *Function) generateThrowableReturnGoVar(g *jen.Group) {
+	if f.Throws == 0 {
+		return
+	}
+
+	f.throwableErrorType.generator.generateReturnCToGo(g,
+		f.throwableErrorCVarName, f.throwableErrorGoVarName, "")
+	g.Line()
+
 }
 
 func (f *Function) generateThrowableErrorCVar(g *jen.Group) {
@@ -129,7 +156,7 @@ func (f *Function) generateThrowableErrorCVar(g *jen.Group) {
 		return
 	}
 
-	f.throwableErrorType.generator.generateParamOutCVar(g, "throwableError")
+	f.throwableErrorType.generator.generateParamOutCVar(g, f.throwableErrorCVarName)
 	g.Line()
 }
 
@@ -138,5 +165,5 @@ func (f *Function) generateThrowableCallArgument(g *jen.Group) {
 		return
 	}
 
-	f.throwableErrorType.generator.generateParamOutCallArgument(g, "throwableError")
+	f.throwableErrorType.generator.generateParamOutCallArgument(g, f.throwableErrorCVarName)
 }

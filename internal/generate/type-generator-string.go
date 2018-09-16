@@ -84,8 +84,10 @@ func (t *TypeGeneratorString) generateReturnFunctionDeclaration(g *jen.Group) {
 	g.Id(t.typ.goType)
 }
 
-func (t *TypeGeneratorString) generateReturnCToGo(g *jen.Group, cVarName string, transferOwnership string) {
+func (t *TypeGeneratorString) generateReturnCToGo(g *jen.Group, cVarName string, goVarName string, transferOwnership string) {
 	g.
+		Id(goVarName).
+		Op(":=").
 		Qual("C", "GoString").
 		Call(jen.Id(cVarName))
 
@@ -100,4 +102,10 @@ func (t *TypeGeneratorString) generateReturnCToGo(g *jen.Group, cVarName string,
 		Call(jen.
 			Qual("unsafe", "Pointer").
 			Call(jen.Id(cVarName)))
+}
+
+func (t *TypeGeneratorString) generateCToGo(cVarReference *jen.Statement) *jen.Statement {
+	return jen.
+		Qual("C", "GoString").
+		Call(cVarReference)
 }

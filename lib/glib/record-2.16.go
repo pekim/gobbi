@@ -14,3 +14,8 @@ import "C"
 type Checksum struct {
 	native *C.GChecksum
 }
+
+func checksumNewFromC(c *C.GChecksum) *Checksum {
+	r := &Checksum{}
+	return r
+}

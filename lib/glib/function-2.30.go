@@ -3,7 +3,10 @@
 
 package glib
 
-import "unsafe"
+import (
+	"fmt"
+	"unsafe"
+)
 
 // #define GLIB_DISABLE_DEPRECATION_WARNINGS
 // #include <glib.h>
@@ -35,12 +38,14 @@ func DirMakeTmp(tmpl string) string {
 	c_tmpl := C.CString(tmpl)
 	defer C.free(unsafe.Pointer(c_tmpl))
 
-	var throwableError *C.GError
+	var cThrowableError *C.GError
 
-	retC := C.g_dir_make_tmp(c_tmpl, &throwableError)
-	retGo :=
-		C.GoString(retC)
+	retC := C.g_dir_make_tmp(c_tmpl, &cThrowableError)
+	retGo := C.GoString(retC)
 	defer C.free(unsafe.Pointer(retC))
+
+	goThrowableError := errorNewFromC(cThrowableError)
+	fmt.Println(goThrowableError)
 
 	return retGo
 }
@@ -50,8 +55,7 @@ func FormatSize(size uint64) string {
 	c_size := (C.guint64)(size)
 
 	retC := C.g_format_size(c_size)
-	retGo :=
-		C.GoString(retC)
+	retGo := C.GoString(retC)
 	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
@@ -65,8 +69,7 @@ func Mkdtemp(tmpl string) string {
 	defer C.free(unsafe.Pointer(c_tmpl))
 
 	retC := C.g_mkdtemp(c_tmpl)
-	retGo :=
-		C.GoString(retC)
+	retGo := C.GoString(retC)
 	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
@@ -80,8 +83,7 @@ func MkdtempFull(tmpl string, mode int32) string {
 	c_mode := (C.gint)(mode)
 
 	retC := C.g_mkdtemp_full(c_tmpl, c_mode)
-	retGo :=
-		C.GoString(retC)
+	retGo := C.GoString(retC)
 	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
@@ -101,8 +103,7 @@ func RegexEscapeNul(string string, length int32) string {
 	c_length := (C.gint)(length)
 
 	retC := C.g_regex_escape_nul(c_string, c_length)
-	retGo :=
-		C.GoString(retC)
+	retGo := C.GoString(retC)
 	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
@@ -140,8 +141,7 @@ func Utf8Substring(str string, startPos int64, endPos int64) string {
 	c_end_pos := (C.glong)(endPos)
 
 	retC := C.g_utf8_substring(c_str, c_start_pos, c_end_pos)
-	retGo :=
-		C.GoString(retC)
+	retGo := C.GoString(retC)
 	defer C.free(unsafe.Pointer(retC))
 
 	return retGo

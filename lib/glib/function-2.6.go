@@ -21,8 +21,7 @@ func CheckVersion(requiredMajor uint32, requiredMinor uint32, requiredMicro uint
 	c_required_micro := (C.guint)(requiredMicro)
 
 	retC := C.glib_check_version(c_required_major, c_required_minor, c_required_micro)
-	retGo :=
-		C.GoString(retC)
+	retGo := C.GoString(retC)
 
 	return retGo
 }
@@ -33,8 +32,7 @@ func FilenameDisplayBasename(filename string) string {
 	defer C.free(unsafe.Pointer(c_filename))
 
 	retC := C.g_filename_display_basename(c_filename)
-	retGo :=
-		C.GoString(retC)
+	retGo := C.GoString(retC)
 	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
@@ -46,8 +44,7 @@ func FilenameDisplayName(filename string) string {
 	defer C.free(unsafe.Pointer(c_filename))
 
 	retC := C.g_filename_display_name(c_filename)
-	retGo :=
-		C.GoString(retC)
+	retGo := C.GoString(retC)
 	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
@@ -64,8 +61,7 @@ func FilenameDisplayName(filename string) string {
 // GetUserCacheDir is a wrapper around the C function g_get_user_cache_dir.
 func GetUserCacheDir() string {
 	retC := C.g_get_user_cache_dir()
-	retGo :=
-		C.GoString(retC)
+	retGo := C.GoString(retC)
 
 	return retGo
 }
@@ -73,8 +69,7 @@ func GetUserCacheDir() string {
 // GetUserConfigDir is a wrapper around the C function g_get_user_config_dir.
 func GetUserConfigDir() string {
 	retC := C.g_get_user_config_dir()
-	retGo :=
-		C.GoString(retC)
+	retGo := C.GoString(retC)
 
 	return retGo
 }
@@ -82,8 +77,7 @@ func GetUserConfigDir() string {
 // GetUserDataDir is a wrapper around the C function g_get_user_data_dir.
 func GetUserDataDir() string {
 	retC := C.g_get_user_data_dir()
-	retGo :=
-		C.GoString(retC)
+	retGo := C.GoString(retC)
 
 	return retGo
 }
@@ -96,8 +90,7 @@ func Rmdir(filename string) int32 {
 	defer C.free(unsafe.Pointer(c_filename))
 
 	retC := C.g_rmdir(c_filename)
-	retGo :=
-		(int32)(retC)
+	retGo := (int32)(retC)
 
 	return retGo
 }
@@ -110,8 +103,7 @@ func Unlink(filename string) int32 {
 	defer C.free(unsafe.Pointer(c_filename))
 
 	retC := C.g_unlink(c_filename)
-	retGo :=
-		(int32)(retC)
+	retGo := (int32)(retC)
 
 	return retGo
 }

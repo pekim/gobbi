@@ -15,6 +15,11 @@ type Bytes struct {
 	native *C.GBytes
 }
 
+func bytesNewFromC(c *C.GBytes) *Bytes {
+	r := &Bytes{}
+	return r
+}
+
 // Rwlock is a wrapper around the C record GRWLock.
 type Rwlock struct {
 	native *C.GRWLock
@@ -22,9 +27,19 @@ type Rwlock struct {
 	// no type for i
 }
 
+func rwlockNewFromC(c *C.GRWLock) *Rwlock {
+	r := &Rwlock{P: (uintptr)(c.p)}
+	return r
+}
+
 // Recmutex is a wrapper around the C record GRecMutex.
 type Recmutex struct {
 	native *C.GRecMutex
 	P      uintptr
 	// no type for i
+}
+
+func recmutexNewFromC(c *C.GRecMutex) *Recmutex {
+	r := &Recmutex{P: (uintptr)(c.p)}
+	return r
 }

@@ -15,8 +15,7 @@ import "C"
 // GetNumProcessors is a wrapper around the C function g_get_num_processors.
 func GetNumProcessors() uint32 {
 	retC := C.g_get_num_processors()
-	retGo :=
-		(uint32)(retC)
+	retGo := (uint32)(retC)
 
 	return retGo
 }

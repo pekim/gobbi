@@ -14,3 +14,8 @@ import "C"
 type Variantdict struct {
 	native *C.GVariantDict
 }
+
+func variantdictNewFromC(c *C.GVariantDict) *Variantdict {
+	r := &Variantdict{}
+	return r
+}

@@ -1,6 +1,7 @@
 package generate
 
 import (
+	"fmt"
 	"github.com/dave/jennifer/jen"
 )
 
@@ -19,25 +20,33 @@ type Field struct {
 func (f *Field) init(ns *Namespace) {
 	f.Namespace = ns
 	f.goVarName = makeExportedGoName(f.Name)
+	f.Name = makeSafeCName(f.Name)
 
 	if f.Type != nil {
 		f.Type.init(ns)
 	}
 }
 
-func (f Field) generate(g *jen.Group) {
+func (f Field) supported() (bool, string) {
 	if f.Bits > 0 {
-		g.Commentf("Bitfield not supported : %2d %s", f.Bits, f.Name)
-		return
+		return false, fmt.Sprintf("Bitfield not supported : %2d %s", f.Bits, f.Name)
 	}
 
 	if f.Type == nil {
-		g.Commentf("no type for %s", f.Name)
-		return
+		return false, fmt.Sprintf("no type for %s", f.Name)
 	}
 
 	if f.Type.generator == nil {
-		g.Commentf("%s : no type generator for %s, %s", f.Name, f.Type.Name, f.Type.CType)
+		return false, fmt.Sprintf("%s : no type generator for %s, %s", f.Name, f.Type.Name, f.Type.CType)
+	}
+
+	return true, ""
+}
+
+func (f Field) generate(g *jen.Group) {
+	supported, reason := f.supported()
+	if !supported {
+		g.Comment(reason)
 		return
 	}
 

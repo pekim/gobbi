@@ -23,8 +23,7 @@ func Malloc0N(nBlocks uint64, nBlockBytes uint64) uintptr {
 	c_n_block_bytes := (C.gsize)(nBlockBytes)
 
 	retC := C.g_malloc0_n(c_n_blocks, c_n_block_bytes)
-	retGo :=
-		(uintptr)(retC)
+	retGo := (uintptr)(retC)
 
 	return retGo
 }
@@ -36,8 +35,7 @@ func MallocN(nBlocks uint64, nBlockBytes uint64) uintptr {
 	c_n_block_bytes := (C.gsize)(nBlockBytes)
 
 	retC := C.g_malloc_n(c_n_blocks, c_n_block_bytes)
-	retGo :=
-		(uintptr)(retC)
+	retGo := (uintptr)(retC)
 
 	return retGo
 }
@@ -51,8 +49,7 @@ func ReallocN(mem uintptr, nBlocks uint64, nBlockBytes uint64) uintptr {
 	c_n_block_bytes := (C.gsize)(nBlockBytes)
 
 	retC := C.g_realloc_n(c_mem, c_n_blocks, c_n_block_bytes)
-	retGo :=
-		(uintptr)(retC)
+	retGo := (uintptr)(retC)
 
 	return retGo
 }
@@ -64,8 +61,7 @@ func TryMalloc0N(nBlocks uint64, nBlockBytes uint64) uintptr {
 	c_n_block_bytes := (C.gsize)(nBlockBytes)
 
 	retC := C.g_try_malloc0_n(c_n_blocks, c_n_block_bytes)
-	retGo :=
-		(uintptr)(retC)
+	retGo := (uintptr)(retC)
 
 	return retGo
 }
@@ -77,8 +73,7 @@ func TryMallocN(nBlocks uint64, nBlockBytes uint64) uintptr {
 	c_n_block_bytes := (C.gsize)(nBlockBytes)
 
 	retC := C.g_try_malloc_n(c_n_blocks, c_n_block_bytes)
-	retGo :=
-		(uintptr)(retC)
+	retGo := (uintptr)(retC)
 
 	return retGo
 }
@@ -92,8 +87,7 @@ func TryReallocN(mem uintptr, nBlocks uint64, nBlockBytes uint64) uintptr {
 	c_n_block_bytes := (C.gsize)(nBlockBytes)
 
 	retC := C.g_try_realloc_n(c_mem, c_n_blocks, c_n_block_bytes)
-	retGo :=
-		(uintptr)(retC)
+	retGo := (uintptr)(retC)
 
 	return retGo
 }

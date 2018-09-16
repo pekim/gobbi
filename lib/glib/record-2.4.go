@@ -16,3 +16,8 @@ type Once struct {
 	// status : no type generator for OnceStatus, volatile GOnceStatus
 	// retval : no type generator for gpointer, volatile gpointer
 }
+
+func onceNewFromC(c *C.GOnce) *Once {
+	r := &Once{}
+	return r
+}

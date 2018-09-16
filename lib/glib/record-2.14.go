@@ -14,3 +14,8 @@ import "C"
 type Regex struct {
 	native *C.GRegex
 }
+
+func regexNewFromC(c *C.GRegex) *Regex {
+	r := &Regex{}
+	return r
+}

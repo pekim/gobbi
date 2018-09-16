@@ -29,8 +29,7 @@ func Dpgettext(domain string, msgctxtid string, msgidoffset uint64) string {
 	c_msgidoffset := (C.gsize)(msgidoffset)
 
 	retC := C.g_dpgettext(c_domain, c_msgctxtid, c_msgidoffset)
-	retGo :=
-		C.GoString(retC)
+	retGo := C.GoString(retC)
 
 	return retGo
 }
@@ -40,8 +39,7 @@ func FormatSizeForDisplay(size uint64) string {
 	c_size := (C.goffset)(size)
 
 	retC := C.g_format_size_for_display(c_size)
-	retGo :=
-		C.GoString(retC)
+	retGo := C.GoString(retC)
 	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
@@ -62,8 +60,7 @@ func Strcmp0(str1 string, str2 string) int32 {
 	defer C.free(unsafe.Pointer(c_str2))
 
 	retC := C.g_strcmp0(c_str1, c_str2)
-	retGo :=
-		(int32)(retC)
+	retGo := (int32)(retC)
 
 	return retGo
 }
@@ -97,8 +94,7 @@ func Strcmp0(str1 string, str2 string) int32 {
 // TestRandDouble is a wrapper around the C function g_test_rand_double.
 func TestRandDouble() float64 {
 	retC := C.g_test_rand_double()
-	retGo :=
-		(float64)(retC)
+	retGo := (float64)(retC)
 
 	return retGo
 }
@@ -110,8 +106,7 @@ func TestRandDoubleRange(rangeStart float64, rangeEnd float64) float64 {
 	c_range_end := (C.double)(rangeEnd)
 
 	retC := C.g_test_rand_double_range(c_range_start, c_range_end)
-	retGo :=
-		(float64)(retC)
+	retGo := (float64)(retC)
 
 	return retGo
 }
@@ -119,8 +114,7 @@ func TestRandDoubleRange(rangeStart float64, rangeEnd float64) float64 {
 // TestRandInt is a wrapper around the C function g_test_rand_int.
 func TestRandInt() int32 {
 	retC := C.g_test_rand_int()
-	retGo :=
-		(int32)(retC)
+	retGo := (int32)(retC)
 
 	return retGo
 }
@@ -132,8 +126,7 @@ func TestRandIntRange(begin int32, end int32) int32 {
 	c_end := (C.gint32)(end)
 
 	retC := C.g_test_rand_int_range(c_begin, c_end)
-	retGo :=
-		(int32)(retC)
+	retGo := (int32)(retC)
 
 	return retGo
 }
@@ -141,8 +134,7 @@ func TestRandIntRange(begin int32, end int32) int32 {
 // TestRun is a wrapper around the C function g_test_run.
 func TestRun() int32 {
 	retC := C.g_test_run()
-	retGo :=
-		(int32)(retC)
+	retGo := (int32)(retC)
 
 	return retGo
 }
@@ -152,8 +144,7 @@ func TestRun() int32 {
 // TestTimerElapsed is a wrapper around the C function g_test_timer_elapsed.
 func TestTimerElapsed() float64 {
 	retC := C.g_test_timer_elapsed()
-	retGo :=
-		(float64)(retC)
+	retGo := (float64)(retC)
 
 	return retGo
 }
@@ -161,8 +152,7 @@ func TestTimerElapsed() float64 {
 // TestTimerLast is a wrapper around the C function g_test_timer_last.
 func TestTimerLast() float64 {
 	retC := C.g_test_timer_last()
-	retGo :=
-		(float64)(retC)
+	retGo := (float64)(retC)
 
 	return retGo
 }
@@ -183,8 +173,7 @@ func UriParseScheme(uri string) string {
 	defer C.free(unsafe.Pointer(c_uri))
 
 	retC := C.g_uri_parse_scheme(c_uri)
-	retGo :=
-		C.GoString(retC)
+	retGo := C.GoString(retC)
 	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
@@ -202,8 +191,7 @@ func UriUnescapeSegment(escapedString string, escapedStringEnd string, illegalCh
 	defer C.free(unsafe.Pointer(c_illegal_characters))
 
 	retC := C.g_uri_unescape_segment(c_escaped_string, c_escaped_string_end, c_illegal_characters)
-	retGo :=
-		C.GoString(retC)
+	retGo := C.GoString(retC)
 	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
@@ -218,8 +206,7 @@ func UriUnescapeString(escapedString string, illegalCharacters string) string {
 	defer C.free(unsafe.Pointer(c_illegal_characters))
 
 	retC := C.g_uri_unescape_string(c_escaped_string, c_illegal_characters)
-	retGo :=
-		C.GoString(retC)
+	retGo := C.GoString(retC)
 	defer C.free(unsafe.Pointer(retC))
 
 	return retGo

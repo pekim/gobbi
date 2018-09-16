@@ -17,8 +17,7 @@ import "C"
 // GetMonotonicTime is a wrapper around the C function g_get_monotonic_time.
 func GetMonotonicTime() int64 {
 	retC := C.g_get_monotonic_time()
-	retGo :=
-		(int64)(retC)
+	retGo := (int64)(retC)
 
 	return retGo
 }
@@ -26,8 +25,7 @@ func GetMonotonicTime() int64 {
 // GetRealTime is a wrapper around the C function g_get_real_time.
 func GetRealTime() int64 {
 	retC := C.g_get_real_time()
-	retGo :=
-		(int64)(retC)
+	retGo := (int64)(retC)
 
 	return retGo
 }
@@ -35,8 +33,7 @@ func GetRealTime() int64 {
 // GetUserRuntimeDir is a wrapper around the C function g_get_user_runtime_dir.
 func GetUserRuntimeDir() string {
 	retC := C.g_get_user_runtime_dir()
-	retGo :=
-		C.GoString(retC)
+	retGo := C.GoString(retC)
 
 	return retGo
 }

@@ -62,8 +62,16 @@ func (t *TypeGeneratorInteger) generateReturnFunctionDeclaration(g *jen.Group) {
 	g.Id(t.typ.goType)
 }
 
-func (t *TypeGeneratorInteger) generateReturnCToGo(g *jen.Group, cVarName string, transferOwnership string) {
+func (t *TypeGeneratorInteger) generateReturnCToGo(g *jen.Group, cVarName string, goVarName string, transferOwnership string) {
 	g.
+		Id(goVarName).
+		Op(":=").
 		Parens(jen.Id(t.typ.goType)).
 		Parens(jen.Id(cVarName))
+}
+
+func (t *TypeGeneratorInteger) generateCToGo(cVarReference *jen.Statement) *jen.Statement {
+	return jen.
+		Parens(jen.Id(t.typ.goType)).
+		Params(cVarReference)
 }

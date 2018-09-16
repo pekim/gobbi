@@ -3,7 +3,10 @@
 
 package glib
 
-import "unsafe"
+import (
+	"fmt"
+	"unsafe"
+)
 
 // #define GLIB_DISABLE_DEPRECATION_WARNINGS
 // #include <glib.h>
@@ -43,12 +46,14 @@ func FileReadLink(filename string) string {
 	c_filename := C.CString(filename)
 	defer C.free(unsafe.Pointer(c_filename))
 
-	var throwableError *C.GError
+	var cThrowableError *C.GError
 
-	retC := C.g_file_read_link(c_filename, &throwableError)
-	retGo :=
-		C.GoString(retC)
+	retC := C.g_file_read_link(c_filename, &cThrowableError)
+	retGo := C.GoString(retC)
 	defer C.free(unsafe.Pointer(retC))
+
+	goThrowableError := errorNewFromC(cThrowableError)
+	fmt.Println(goThrowableError)
 
 	return retGo
 }
@@ -68,8 +73,7 @@ func StripContext(msgid string, msgval string) string {
 	defer C.free(unsafe.Pointer(c_msgval))
 
 	retC := C.g_strip_context(c_msgid, c_msgval)
-	retGo :=
-		C.GoString(retC)
+	retGo := C.GoString(retC)
 
 	return retGo
 }

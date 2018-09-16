@@ -22,8 +22,7 @@ func AsciiStrtoll(nptr string, base uint32) int64 {
 	c_base := (C.guint)(base)
 
 	retC := C.g_ascii_strtoll(c_nptr, &c_endptr, c_base)
-	retGo :=
-		(int64)(retC)
+	retGo := (int64)(retC)
 
 	return retGo
 }

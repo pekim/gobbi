@@ -48,6 +48,6 @@ func (r *ReturnValue) generateFunctionDeclaration(g *jen.Group) {
 	r.Type.generator.generateReturnFunctionDeclaration(g)
 }
 
-func (r *ReturnValue) generateCToGo(g *jen.Group, cVarName string) {
-	r.Type.generator.generateReturnCToGo(g, cVarName, r.TransferOwnership)
+func (r *ReturnValue) generateCToGo(g *jen.Group, cVarName string, goVarName string) {
+	r.Type.generator.generateReturnCToGo(g, cVarName, goVarName, r.TransferOwnership)
 }

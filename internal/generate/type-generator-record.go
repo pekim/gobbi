@@ -65,5 +65,20 @@ func (t *TypeGeneratorRecord) generateParamOutCVar(g *jen.Group, cVarName string
 func (t *TypeGeneratorRecord) generateReturnFunctionDeclaration(g *jen.Group) {
 }
 
-func (t *TypeGeneratorRecord) generateReturnCToGo(g *jen.Group, cVarName string, transferOwnership string) {
+func (t *TypeGeneratorRecord) generateReturnCToGo(g *jen.Group, cVarName string, goVarName string, transferOwnership string) {
+	g.
+		Id(goVarName).
+		Op(":=").
+		Id(t.record.newFromCFuncName).
+		Call(jen.Id(cVarName))
+
+	g.
+		Qual("fmt", "Println").
+		Call(jen.Id(goVarName))
+}
+
+func (t *TypeGeneratorRecord) generateCToGo(cVarReference *jen.Statement) *jen.Statement {
+	return jen.
+		Id(t.record.newFromCFuncName).
+		Call(cVarReference)
 }

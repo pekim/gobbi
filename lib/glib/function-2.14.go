@@ -49,8 +49,7 @@ func SliceCopy(blockSize uint64, memBlock uintptr) uintptr {
 	c_mem_block := (C.gconstpointer)(memBlock)
 
 	retC := C.g_slice_copy(c_block_size, c_mem_block)
-	retGo :=
-		(uintptr)(retC)
+	retGo := (uintptr)(retC)
 
 	return retGo
 }
@@ -66,8 +65,7 @@ func UnicharCombiningClass(uc rune) int32 {
 	c_uc := (C.gunichar)(uc)
 
 	retC := C.g_unichar_combining_class(c_uc)
-	retGo :=
-		(int32)(retC)
+	retGo := (int32)(retC)
 
 	return retGo
 }

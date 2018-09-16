@@ -15,7 +15,17 @@ type Datetime struct {
 	native *C.GDateTime
 }
 
+func datetimeNewFromC(c *C.GDateTime) *Datetime {
+	r := &Datetime{}
+	return r
+}
+
 // Timezone is a wrapper around the C record GTimeZone.
 type Timezone struct {
 	native *C.GTimeZone
+}
+
+func timezoneNewFromC(c *C.GTimeZone) *Timezone {
+	r := &Timezone{}
+	return r
 }

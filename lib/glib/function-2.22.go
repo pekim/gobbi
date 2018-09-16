@@ -21,8 +21,7 @@ func DoubleHash(v uintptr) uint32 {
 	c_v := (C.gconstpointer)(v)
 
 	retC := C.g_double_hash(c_v)
-	retGo :=
-		(uint32)(retC)
+	retGo := (uint32)(retC)
 
 	return retGo
 }
@@ -39,8 +38,7 @@ func HostnameToAscii(hostname string) string {
 	defer C.free(unsafe.Pointer(c_hostname))
 
 	retC := C.g_hostname_to_ascii(c_hostname)
-	retGo :=
-		C.GoString(retC)
+	retGo := C.GoString(retC)
 	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
@@ -52,8 +50,7 @@ func HostnameToUnicode(hostname string) string {
 	defer C.free(unsafe.Pointer(c_hostname))
 
 	retC := C.g_hostname_to_unicode(c_hostname)
-	retGo :=
-		C.GoString(retC)
+	retGo := C.GoString(retC)
 	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
@@ -66,8 +63,7 @@ func Int64Hash(v uintptr) uint32 {
 	c_v := (C.gconstpointer)(v)
 
 	retC := C.g_int64_hash(c_v)
-	retGo :=
-		(uint32)(retC)
+	retGo := (uint32)(retC)
 
 	return retGo
 }
@@ -84,8 +80,7 @@ func MkstempFull(tmpl string, flags int32, mode int32) int32 {
 	c_mode := (C.gint)(mode)
 
 	retC := C.g_mkstemp_full(c_tmpl, c_flags, c_mode)
-	retGo :=
-		(int32)(retC)
+	retGo := (int32)(retC)
 
 	return retGo
 }
