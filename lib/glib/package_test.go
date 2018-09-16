@@ -19,5 +19,11 @@ func TestFunctionCallWithStringsNotFreeReturnedString(t *testing.T) {
 }
 
 func TestFunctionCallWithReturnedStringToFree(t *testing.T) {
-	assert.Equal(t, "abcde", InternString("abcde"))
+	assert.Equal(t, "ABCDE", AsciiStrup("aBcDe", -1))
+}
+
+func TestFunctionCallWithAliasParamAndReturn(t *testing.T) {
+	s := "abc"
+	q := QuarkFromString(s)
+	assert.Equal(t, s, QuarkToString(q))
 }
