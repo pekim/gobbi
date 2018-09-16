@@ -20,6 +20,5 @@ func checksumNewFromC(c *C.GChecksum) *Checksum {
 		return nil
 	}
 
-	r := &Checksum{}
-	return r
+	return &Checksum{}
 }

@@ -95,6 +95,7 @@ func (r *Record) generateNewFromCFunc(g *jen.Group) {
 			Op("*").
 			Id(r.GoName)).
 		BlockFunc(func(g *jen.Group) {
+			// If the C parameter is nil, do not create a Go struct.
 			g.If(
 				jen.
 					Id("c").
@@ -104,8 +105,7 @@ func (r *Record) generateNewFromCFunc(g *jen.Group) {
 			g.Line()
 
 			g.
-				Id("r").
-				Op(":=").
+				Return().
 				Op("&").
 				Id(r.GoName).
 				Values(
@@ -123,8 +123,6 @@ func (r *Record) generateNewFromCFunc(g *jen.Group) {
 							d[jen.Id(f.goVarName)] = f.Type.generator.generateCToGo(cValue)
 						}
 					}))
-
-			g.Return(jen.Id("r"))
 		})
 
 	g.Line()

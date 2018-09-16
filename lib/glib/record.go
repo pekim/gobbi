@@ -21,11 +21,10 @@ func arrayNewFromC(c *C.GArray) *Array {
 		return nil
 	}
 
-	r := &Array{
+	return &Array{
 		Data: C.GoString(c.data),
 		Len:  (uint32)(c.len),
 	}
-	return r
 }
 
 // Asyncqueue is a wrapper around the C record GAsyncQueue.
@@ -38,8 +37,7 @@ func asyncqueueNewFromC(c *C.GAsyncQueue) *Asyncqueue {
 		return nil
 	}
 
-	r := &Asyncqueue{}
-	return r
+	return &Asyncqueue{}
 }
 
 // Bookmarkfile is a wrapper around the C record GBookmarkFile.
@@ -52,8 +50,7 @@ func bookmarkfileNewFromC(c *C.GBookmarkFile) *Bookmarkfile {
 		return nil
 	}
 
-	r := &Bookmarkfile{}
-	return r
+	return &Bookmarkfile{}
 }
 
 // Bytearray is a wrapper around the C record GByteArray.
@@ -68,8 +65,7 @@ func bytearrayNewFromC(c *C.GByteArray) *Bytearray {
 		return nil
 	}
 
-	r := &Bytearray{Len: (uint32)(c.len)}
-	return r
+	return &Bytearray{Len: (uint32)(c.len)}
 }
 
 // Cond is a wrapper around the C record GCond.
@@ -84,8 +80,7 @@ func condNewFromC(c *C.GCond) *Cond {
 		return nil
 	}
 
-	r := &Cond{P: (uintptr)(c.p)}
-	return r
+	return &Cond{P: (uintptr)(c.p)}
 }
 
 // Data is a wrapper around the C record GData.
@@ -98,8 +93,7 @@ func dataNewFromC(c *C.GData) *Data {
 		return nil
 	}
 
-	r := &Data{}
-	return r
+	return &Data{}
 }
 
 // Date is a wrapper around the C record GDate.
@@ -118,8 +112,7 @@ func dateNewFromC(c *C.GDate) *Date {
 		return nil
 	}
 
-	r := &Date{}
-	return r
+	return &Date{}
 }
 
 // Debugkey is a wrapper around the C record GDebugKey.
@@ -134,11 +127,10 @@ func debugkeyNewFromC(c *C.GDebugKey) *Debugkey {
 		return nil
 	}
 
-	r := &Debugkey{
+	return &Debugkey{
 		Key:   C.GoString(c.key),
 		Value: (uint32)(c.value),
 	}
-	return r
 }
 
 // Dir is a wrapper around the C record GDir.
@@ -151,8 +143,7 @@ func dirNewFromC(c *C.GDir) *Dir {
 		return nil
 	}
 
-	r := &Dir{}
-	return r
+	return &Dir{}
 }
 
 // Error is a wrapper around the C record GError.
@@ -168,12 +159,11 @@ func errorNewFromC(c *C.GError) *Error {
 		return nil
 	}
 
-	r := &Error{
+	return &Error{
 		Code:    (int32)(c.code),
 		Domain:  (Quark)(c.domain),
 		Message: C.GoString(c.message),
 	}
-	return r
 }
 
 // Hashtable is a wrapper around the C record GHashTable.
@@ -186,8 +176,7 @@ func hashtableNewFromC(c *C.GHashTable) *Hashtable {
 		return nil
 	}
 
-	r := &Hashtable{}
-	return r
+	return &Hashtable{}
 }
 
 // Hashtableiter is a wrapper around the C record GHashTableIter.
@@ -206,14 +195,13 @@ func hashtableiterNewFromC(c *C.GHashTableIter) *Hashtableiter {
 		return nil
 	}
 
-	r := &Hashtableiter{
+	return &Hashtableiter{
 		Dummy1: (uintptr)(c.dummy1),
 		Dummy2: (uintptr)(c.dummy2),
 		Dummy3: (uintptr)(c.dummy3),
 		Dummy4: (int32)(c.dummy4),
 		Dummy6: (uintptr)(c.dummy6),
 	}
-	return r
 }
 
 // Hook is a wrapper around the C record GHook.
@@ -234,14 +222,13 @@ func hookNewFromC(c *C.GHook) *Hook {
 		return nil
 	}
 
-	r := &Hook{
+	return &Hook{
 		Data:     (uintptr)(c.data),
 		Flags:    (uint32)(c.flags),
 		Func:     (uintptr)(c._func),
 		HookId:   (uint64)(c.hook_id),
 		RefCount: (uint32)(c.ref_count),
 	}
-	return r
 }
 
 // Hooklist is a wrapper around the C record GHookList.
@@ -261,11 +248,10 @@ func hooklistNewFromC(c *C.GHookList) *Hooklist {
 		return nil
 	}
 
-	r := &Hooklist{
+	return &Hooklist{
 		Dummy3: (uintptr)(c.dummy3),
 		SeqId:  (uint64)(c.seq_id),
 	}
-	return r
 }
 
 // Blacklisted : GIConv
@@ -300,7 +286,7 @@ func iochannelNewFromC(c *C.GIOChannel) *Iochannel {
 		return nil
 	}
 
-	r := &Iochannel{
+	return &Iochannel{
 		BufSize:     (uint64)(c.buf_size),
 		Encoding:    C.GoString(c.encoding),
 		LineTerm:    C.GoString(c.line_term),
@@ -309,7 +295,6 @@ func iochannelNewFromC(c *C.GIOChannel) *Iochannel {
 		Reserved1:   (uintptr)(c.reserved1),
 		Reserved2:   (uintptr)(c.reserved2),
 	}
-	return r
 }
 
 // Iofuncs is a wrapper around the C record GIOFuncs.
@@ -330,8 +315,7 @@ func iofuncsNewFromC(c *C.GIOFuncs) *Iofuncs {
 		return nil
 	}
 
-	r := &Iofuncs{}
-	return r
+	return &Iofuncs{}
 }
 
 // Keyfile is a wrapper around the C record GKeyFile.
@@ -344,8 +328,7 @@ func keyfileNewFromC(c *C.GKeyFile) *Keyfile {
 		return nil
 	}
 
-	r := &Keyfile{}
-	return r
+	return &Keyfile{}
 }
 
 // List is a wrapper around the C record GList.
@@ -361,8 +344,7 @@ func listNewFromC(c *C.GList) *List {
 		return nil
 	}
 
-	r := &List{Data: (uintptr)(c.data)}
-	return r
+	return &List{Data: (uintptr)(c.data)}
 }
 
 // Maincontext is a wrapper around the C record GMainContext.
@@ -375,8 +357,7 @@ func maincontextNewFromC(c *C.GMainContext) *Maincontext {
 		return nil
 	}
 
-	r := &Maincontext{}
-	return r
+	return &Maincontext{}
 }
 
 // Mainloop is a wrapper around the C record GMainLoop.
@@ -389,8 +370,7 @@ func mainloopNewFromC(c *C.GMainLoop) *Mainloop {
 		return nil
 	}
 
-	r := &Mainloop{}
-	return r
+	return &Mainloop{}
 }
 
 // Mappedfile is a wrapper around the C record GMappedFile.
@@ -403,8 +383,7 @@ func mappedfileNewFromC(c *C.GMappedFile) *Mappedfile {
 		return nil
 	}
 
-	r := &Mappedfile{}
-	return r
+	return &Mappedfile{}
 }
 
 // Markupparsecontext is a wrapper around the C record GMarkupParseContext.
@@ -417,8 +396,7 @@ func markupparsecontextNewFromC(c *C.GMarkupParseContext) *Markupparsecontext {
 		return nil
 	}
 
-	r := &Markupparsecontext{}
-	return r
+	return &Markupparsecontext{}
 }
 
 // Markupparser is a wrapper around the C record GMarkupParser.
@@ -436,8 +414,7 @@ func markupparserNewFromC(c *C.GMarkupParser) *Markupparser {
 		return nil
 	}
 
-	r := &Markupparser{}
-	return r
+	return &Markupparser{}
 }
 
 // Matchinfo is a wrapper around the C record GMatchInfo.
@@ -450,8 +427,7 @@ func matchinfoNewFromC(c *C.GMatchInfo) *Matchinfo {
 		return nil
 	}
 
-	r := &Matchinfo{}
-	return r
+	return &Matchinfo{}
 }
 
 // Memvtable is a wrapper around the C record GMemVTable.
@@ -470,8 +446,7 @@ func memvtableNewFromC(c *C.GMemVTable) *Memvtable {
 		return nil
 	}
 
-	r := &Memvtable{}
-	return r
+	return &Memvtable{}
 }
 
 // Node is a wrapper around the C record GNode.
@@ -489,8 +464,7 @@ func nodeNewFromC(c *C.GNode) *Node {
 		return nil
 	}
 
-	r := &Node{Data: (uintptr)(c.data)}
-	return r
+	return &Node{Data: (uintptr)(c.data)}
 }
 
 // Optioncontext is a wrapper around the C record GOptionContext.
@@ -503,8 +477,7 @@ func optioncontextNewFromC(c *C.GOptionContext) *Optioncontext {
 		return nil
 	}
 
-	r := &Optioncontext{}
-	return r
+	return &Optioncontext{}
 }
 
 // Optionentry is a wrapper around the C record GOptionEntry.
@@ -524,7 +497,7 @@ func optionentryNewFromC(c *C.GOptionEntry) *Optionentry {
 		return nil
 	}
 
-	r := &Optionentry{
+	return &Optionentry{
 		ArgData:        (uintptr)(c.arg_data),
 		ArgDescription: C.GoString(c.arg_description),
 		Description:    C.GoString(c.description),
@@ -532,7 +505,6 @@ func optionentryNewFromC(c *C.GOptionEntry) *Optionentry {
 		LongName:       C.GoString(c.long_name),
 		ShortName:      (rune)(c.short_name),
 	}
-	return r
 }
 
 // Optiongroup is a wrapper around the C record GOptionGroup.
@@ -545,8 +517,7 @@ func optiongroupNewFromC(c *C.GOptionGroup) *Optiongroup {
 		return nil
 	}
 
-	r := &Optiongroup{}
-	return r
+	return &Optiongroup{}
 }
 
 // Patternspec is a wrapper around the C record GPatternSpec.
@@ -559,8 +530,7 @@ func patternspecNewFromC(c *C.GPatternSpec) *Patternspec {
 		return nil
 	}
 
-	r := &Patternspec{}
-	return r
+	return &Patternspec{}
 }
 
 // Pollfd is a wrapper around the C record GPollFD.
@@ -576,12 +546,11 @@ func pollfdNewFromC(c *C.GPollFD) *Pollfd {
 		return nil
 	}
 
-	r := &Pollfd{
+	return &Pollfd{
 		Events:  (uint32)(c.events),
 		Fd:      (int32)(c.fd),
 		Revents: (uint32)(c.revents),
 	}
-	return r
 }
 
 // Private is a wrapper around the C record GPrivate.
@@ -597,8 +566,7 @@ func privateNewFromC(c *C.GPrivate) *Private {
 		return nil
 	}
 
-	r := &Private{P: (uintptr)(c.p)}
-	return r
+	return &Private{P: (uintptr)(c.p)}
 }
 
 // Ptrarray is a wrapper around the C record GPtrArray.
@@ -613,8 +581,7 @@ func ptrarrayNewFromC(c *C.GPtrArray) *Ptrarray {
 		return nil
 	}
 
-	r := &Ptrarray{Len: (uint32)(c.len)}
-	return r
+	return &Ptrarray{Len: (uint32)(c.len)}
 }
 
 // Queue is a wrapper around the C record GQueue.
@@ -630,8 +597,7 @@ func queueNewFromC(c *C.GQueue) *Queue {
 		return nil
 	}
 
-	r := &Queue{Length: (uint32)(c.length)}
-	return r
+	return &Queue{Length: (uint32)(c.length)}
 }
 
 // Rand is a wrapper around the C record GRand.
@@ -644,8 +610,7 @@ func randNewFromC(c *C.GRand) *Rand {
 		return nil
 	}
 
-	r := &Rand{}
-	return r
+	return &Rand{}
 }
 
 // Slist is a wrapper around the C record GSList.
@@ -660,8 +625,7 @@ func slistNewFromC(c *C.GSList) *Slist {
 		return nil
 	}
 
-	r := &Slist{Data: (uintptr)(c.data)}
-	return r
+	return &Slist{Data: (uintptr)(c.data)}
 }
 
 // Scanner is a wrapper around the C record GScanner.
@@ -695,7 +659,7 @@ func scannerNewFromC(c *C.GScanner) *Scanner {
 		return nil
 	}
 
-	r := &Scanner{
+	return &Scanner{
 		Buffer:         C.GoString(c.buffer),
 		InputFd:        (int32)(c.input_fd),
 		InputName:      C.GoString(c.input_name),
@@ -710,7 +674,6 @@ func scannerNewFromC(c *C.GScanner) *Scanner {
 		TextEnd:        C.GoString(c.text_end),
 		UserData:       (uintptr)(c.user_data),
 	}
-	return r
 }
 
 // Scannerconfig is a wrapper around the C record GScannerConfig.
@@ -750,14 +713,13 @@ func scannerconfigNewFromC(c *C.GScannerConfig) *Scannerconfig {
 		return nil
 	}
 
-	r := &Scannerconfig{
+	return &Scannerconfig{
 		CpairCommentSingle:  C.GoString(c.cpair_comment_single),
 		CsetIdentifierFirst: C.GoString(c.cset_identifier_first),
 		CsetIdentifierNth:   C.GoString(c.cset_identifier_nth),
 		CsetSkipCharacters:  C.GoString(c.cset_skip_characters),
 		PaddingDummy:        (uint32)(c.padding_dummy),
 	}
-	return r
 }
 
 // Sequence is a wrapper around the C record GSequence.
@@ -770,8 +732,7 @@ func sequenceNewFromC(c *C.GSequence) *Sequence {
 		return nil
 	}
 
-	r := &Sequence{}
-	return r
+	return &Sequence{}
 }
 
 // Sequenceiter is a wrapper around the C record GSequenceIter.
@@ -784,8 +745,7 @@ func sequenceiterNewFromC(c *C.GSequenceIter) *Sequenceiter {
 		return nil
 	}
 
-	r := &Sequenceiter{}
-	return r
+	return &Sequenceiter{}
 }
 
 // Source is a wrapper around the C record GSource.
@@ -811,7 +771,7 @@ func sourceNewFromC(c *C.GSource) *Source {
 		return nil
 	}
 
-	r := &Source{
+	return &Source{
 		CallbackData: (uintptr)(c.callback_data),
 		Flags:        (uint32)(c.flags),
 		Name:         C.GoString(c.name),
@@ -819,7 +779,6 @@ func sourceNewFromC(c *C.GSource) *Source {
 		RefCount:     (uint32)(c.ref_count),
 		SourceId:     (uint32)(c.source_id),
 	}
-	return r
 }
 
 // Sourcecallbackfuncs is a wrapper around the C record GSourceCallbackFuncs.
@@ -835,8 +794,7 @@ func sourcecallbackfuncsNewFromC(c *C.GSourceCallbackFuncs) *Sourcecallbackfuncs
 		return nil
 	}
 
-	r := &Sourcecallbackfuncs{}
-	return r
+	return &Sourcecallbackfuncs{}
 }
 
 // Sourcefuncs is a wrapper around the C record GSourceFuncs.
@@ -855,8 +813,7 @@ func sourcefuncsNewFromC(c *C.GSourceFuncs) *Sourcefuncs {
 		return nil
 	}
 
-	r := &Sourcefuncs{}
-	return r
+	return &Sourcefuncs{}
 }
 
 // Sourceprivate is a wrapper around the C record GSourcePrivate.
@@ -869,8 +826,7 @@ func sourceprivateNewFromC(c *C.GSourcePrivate) *Sourceprivate {
 		return nil
 	}
 
-	r := &Sourceprivate{}
-	return r
+	return &Sourceprivate{}
 }
 
 // Statbuf is a wrapper around the C record GStatBuf.
@@ -883,8 +839,7 @@ func statbufNewFromC(c *C.GStatBuf) *Statbuf {
 		return nil
 	}
 
-	r := &Statbuf{}
-	return r
+	return &Statbuf{}
 }
 
 // String is a wrapper around the C record GString.
@@ -900,12 +855,11 @@ func stringNewFromC(c *C.GString) *String {
 		return nil
 	}
 
-	r := &String{
+	return &String{
 		AllocatedLen: (uint64)(c.allocated_len),
 		Len:          (uint64)(c.len),
 		Str:          C.GoString(c.str),
 	}
-	return r
 }
 
 // Stringchunk is a wrapper around the C record GStringChunk.
@@ -918,8 +872,7 @@ func stringchunkNewFromC(c *C.GStringChunk) *Stringchunk {
 		return nil
 	}
 
-	r := &Stringchunk{}
-	return r
+	return &Stringchunk{}
 }
 
 // Testcase is a wrapper around the C record GTestCase.
@@ -932,8 +885,7 @@ func testcaseNewFromC(c *C.GTestCase) *Testcase {
 		return nil
 	}
 
-	r := &Testcase{}
-	return r
+	return &Testcase{}
 }
 
 // Testconfig is a wrapper around the C record GTestConfig.
@@ -952,8 +904,7 @@ func testconfigNewFromC(c *C.GTestConfig) *Testconfig {
 		return nil
 	}
 
-	r := &Testconfig{}
-	return r
+	return &Testconfig{}
 }
 
 // Blacklisted : GTestLogBuffer
@@ -970,8 +921,7 @@ func testsuiteNewFromC(c *C.GTestSuite) *Testsuite {
 		return nil
 	}
 
-	r := &Testsuite{}
-	return r
+	return &Testsuite{}
 }
 
 // Thread is a wrapper around the C record GThread.
@@ -984,8 +934,7 @@ func threadNewFromC(c *C.GThread) *Thread {
 		return nil
 	}
 
-	r := &Thread{}
-	return r
+	return &Thread{}
 }
 
 // Threadpool is a wrapper around the C record GThreadPool.
@@ -1001,8 +950,7 @@ func threadpoolNewFromC(c *C.GThreadPool) *Threadpool {
 		return nil
 	}
 
-	r := &Threadpool{UserData: (uintptr)(c.user_data)}
-	return r
+	return &Threadpool{UserData: (uintptr)(c.user_data)}
 }
 
 // Timeval is a wrapper around the C record GTimeVal.
@@ -1017,11 +965,10 @@ func timevalNewFromC(c *C.GTimeVal) *Timeval {
 		return nil
 	}
 
-	r := &Timeval{
+	return &Timeval{
 		TvSec:  (int64)(c.tv_sec),
 		TvUsec: (int64)(c.tv_usec),
 	}
-	return r
 }
 
 // Timer is a wrapper around the C record GTimer.
@@ -1034,8 +981,7 @@ func timerNewFromC(c *C.GTimer) *Timer {
 		return nil
 	}
 
-	r := &Timer{}
-	return r
+	return &Timer{}
 }
 
 // Trashstack is a wrapper around the C record GTrashStack.
@@ -1049,8 +995,7 @@ func trashstackNewFromC(c *C.GTrashStack) *Trashstack {
 		return nil
 	}
 
-	r := &Trashstack{}
-	return r
+	return &Trashstack{}
 }
 
 // Tree is a wrapper around the C record GTree.
@@ -1063,8 +1008,7 @@ func treeNewFromC(c *C.GTree) *Tree {
 		return nil
 	}
 
-	r := &Tree{}
-	return r
+	return &Tree{}
 }
 
 // Variantbuilder is a wrapper around the C record GVariantBuilder.
@@ -1077,8 +1021,7 @@ func variantbuilderNewFromC(c *C.GVariantBuilder) *Variantbuilder {
 		return nil
 	}
 
-	r := &Variantbuilder{}
-	return r
+	return &Variantbuilder{}
 }
 
 // Variantiter is a wrapper around the C record GVariantIter.
@@ -1092,8 +1035,7 @@ func variantiterNewFromC(c *C.GVariantIter) *Variantiter {
 		return nil
 	}
 
-	r := &Variantiter{}
-	return r
+	return &Variantiter{}
 }
 
 // Blacklisted : GVariantType

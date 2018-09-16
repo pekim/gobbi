@@ -20,8 +20,7 @@ func datetimeNewFromC(c *C.GDateTime) *Datetime {
 		return nil
 	}
 
-	r := &Datetime{}
-	return r
+	return &Datetime{}
 }
 
 // Timezone is a wrapper around the C record GTimeZone.
@@ -34,6 +33,5 @@ func timezoneNewFromC(c *C.GTimeZone) *Timezone {
 		return nil
 	}
 
-	r := &Timezone{}
-	return r
+	return &Timezone{}
 }

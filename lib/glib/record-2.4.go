@@ -22,6 +22,5 @@ func onceNewFromC(c *C.GOnce) *Once {
 		return nil
 	}
 
-	r := &Once{}
-	return r
+	return &Once{}
 }

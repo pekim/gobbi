@@ -20,6 +20,5 @@ func variantdictNewFromC(c *C.GVariantDict) *Variantdict {
 		return nil
 	}
 
-	r := &Variantdict{}
-	return r
+	return &Variantdict{}
 }

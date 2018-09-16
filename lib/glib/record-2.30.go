@@ -20,6 +20,5 @@ func hmacNewFromC(c *C.GHmac) *Hmac {
 		return nil
 	}
 
-	r := &Hmac{}
-	return r
+	return &Hmac{}
 }
