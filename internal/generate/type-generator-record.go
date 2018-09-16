@@ -71,10 +71,6 @@ func (t *TypeGeneratorRecord) generateReturnCToGo(g *jen.Group, cVarName string,
 		Op(":=").
 		Id(t.record.newFromCFuncName).
 		Call(jen.Id(cVarName))
-
-	g.
-		Qual("fmt", "Println").
-		Call(jen.Id(goVarName))
 }
 
 func (t *TypeGeneratorRecord) generateCToGo(cVarReference *jen.Statement) *jen.Statement {

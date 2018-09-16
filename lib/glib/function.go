@@ -2,10 +2,7 @@
 
 package glib
 
-import (
-	"fmt"
-	"unsafe"
-)
+import "unsafe"
 
 // #define GLIB_DISABLE_DEPRECATION_WARNINGS
 // #include <glib.h>
@@ -358,7 +355,7 @@ func FileErrorQuark() Quark {
 // Unsupported : g_file_get_contents : unsupported parameter contents : no param type
 
 // FileOpenTmp is a wrapper around the C function g_file_open_tmp.
-func FileOpenTmp(tmpl string) int32 {
+func FileOpenTmp(tmpl string) (int32, error) {
 	c_tmpl := C.CString(tmpl)
 	defer C.free(unsafe.Pointer(c_tmpl))
 
@@ -370,15 +367,14 @@ func FileOpenTmp(tmpl string) int32 {
 	retGo := (int32)(retC)
 
 	goThrowableError := errorNewFromC(cThrowableError)
-	fmt.Println(goThrowableError)
 
-	return retGo
+	return retGo, goThrowableError
 }
 
 // Unsupported : g_file_test : unsupported parameter test : no type generator for FileTest, GFileTest
 
 // FilenameFromUri is a wrapper around the C function g_filename_from_uri.
-func FilenameFromUri(uri string) string {
+func FilenameFromUri(uri string) (string, error) {
 	c_uri := C.CString(uri)
 	defer C.free(unsafe.Pointer(c_uri))
 
@@ -391,15 +387,14 @@ func FilenameFromUri(uri string) string {
 	defer C.free(unsafe.Pointer(retC))
 
 	goThrowableError := errorNewFromC(cThrowableError)
-	fmt.Println(goThrowableError)
 
-	return retGo
+	return retGo, goThrowableError
 }
 
 // Unsupported : g_filename_from_utf8 : unsupported parameter bytes_read : no type generator for gsize, gsize*
 
 // FilenameToUri is a wrapper around the C function g_filename_to_uri.
-func FilenameToUri(filename string, hostname string) string {
+func FilenameToUri(filename string, hostname string) (string, error) {
 	c_filename := C.CString(filename)
 	defer C.free(unsafe.Pointer(c_filename))
 
@@ -413,9 +408,8 @@ func FilenameToUri(filename string, hostname string) string {
 	defer C.free(unsafe.Pointer(retC))
 
 	goThrowableError := errorNewFromC(cThrowableError)
-	fmt.Println(goThrowableError)
 
-	return retGo
+	return retGo, goThrowableError
 }
 
 // Unsupported : g_filename_to_utf8 : unsupported parameter bytes_read : no type generator for gsize, gsize*
@@ -893,7 +887,7 @@ func ShellQuote(unquotedString string) string {
 }
 
 // ShellUnquote is a wrapper around the C function g_shell_unquote.
-func ShellUnquote(quotedString string) string {
+func ShellUnquote(quotedString string) (string, error) {
 	c_quoted_string := C.CString(quotedString)
 	defer C.free(unsafe.Pointer(c_quoted_string))
 
@@ -904,9 +898,8 @@ func ShellUnquote(quotedString string) string {
 	defer C.free(unsafe.Pointer(retC))
 
 	goThrowableError := errorNewFromC(cThrowableError)
-	fmt.Println(goThrowableError)
 
-	return retGo
+	return retGo, goThrowableError
 }
 
 // Unsupported : g_slice_get_config : unsupported parameter ckey : no type generator for SliceConfig, GSliceConfig

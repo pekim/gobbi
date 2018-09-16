@@ -3,10 +3,7 @@
 
 package glib
 
-import (
-	"fmt"
-	"unsafe"
-)
+import "unsafe"
 
 // #define GLIB_DISABLE_DEPRECATION_WARNINGS
 // #include <glib.h>
@@ -42,7 +39,7 @@ import "C"
 // Unsupported : g_child_watch_source_new : no return generator
 
 // FileReadLink is a wrapper around the C function g_file_read_link.
-func FileReadLink(filename string) string {
+func FileReadLink(filename string) (string, error) {
 	c_filename := C.CString(filename)
 	defer C.free(unsafe.Pointer(c_filename))
 
@@ -53,9 +50,8 @@ func FileReadLink(filename string) string {
 	defer C.free(unsafe.Pointer(retC))
 
 	goThrowableError := errorNewFromC(cThrowableError)
-	fmt.Println(goThrowableError)
 
-	return retGo
+	return retGo, goThrowableError
 }
 
 // Unsupported : g_markup_printf_escaped : unsupported parameter ... : varargs

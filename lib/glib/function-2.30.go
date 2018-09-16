@@ -3,10 +3,7 @@
 
 package glib
 
-import (
-	"fmt"
-	"unsafe"
-)
+import "unsafe"
 
 // #define GLIB_DISABLE_DEPRECATION_WARNINGS
 // #include <glib.h>
@@ -34,7 +31,7 @@ import "C"
 // Unsupported : g_compute_hmac_for_string : unsupported parameter digest_type : no type generator for ChecksumType, GChecksumType
 
 // DirMakeTmp is a wrapper around the C function g_dir_make_tmp.
-func DirMakeTmp(tmpl string) string {
+func DirMakeTmp(tmpl string) (string, error) {
 	c_tmpl := C.CString(tmpl)
 	defer C.free(unsafe.Pointer(c_tmpl))
 
@@ -45,9 +42,8 @@ func DirMakeTmp(tmpl string) string {
 	defer C.free(unsafe.Pointer(retC))
 
 	goThrowableError := errorNewFromC(cThrowableError)
-	fmt.Println(goThrowableError)
 
-	return retGo
+	return retGo, goThrowableError
 }
 
 // FormatSize is a wrapper around the C function g_format_size.

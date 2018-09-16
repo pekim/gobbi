@@ -92,11 +92,16 @@ func (f *Function) generate(g *jen.Group, version *Version) {
 
 	g.
 		Func().
-		Id(f.GoName).                                          // name
-		ParamsFunc(f.Parameters.generateFunctionDeclaration).  // params
-		ParamsFunc(f.ReturnValue.generateFunctionDeclaration). // returns
-		BlockFunc(f.generateBody).                             // body
+		Id(f.GoName).                                         // name
+		ParamsFunc(f.Parameters.generateFunctionDeclaration). // params
+		ParamsFunc(f.generateReturnDeclaration).              // returns
+		BlockFunc(f.generateBody).                            // body
 		Line()
+}
+
+func (f *Function) generateReturnDeclaration(g *jen.Group) {
+	f.ReturnValue.generateFunctionDeclaration(g)
+	f.generateThrowableReturnDeclaration(g)
 }
 
 func (f *Function) generateBody(g *jen.Group) {
@@ -131,13 +136,29 @@ func (f *Function) generateGoReturnVars(g *jen.Group) {
 func (f *Function) generateReturn(g *jen.Group) {
 	g.ReturnFunc(func(g *jen.Group) {
 		g.Id("retGo")
-		//f.generateThrowableReturn(g)
+		f.generateThrowableReturn(g)
 	})
 }
 
 func (f *Function) generateReturnGoVar(g *jen.Group) {
 	f.ReturnValue.generateCToGo(g, "retC", "retGo")
 	g.Line()
+}
+
+func (f *Function) generateThrowableReturnDeclaration(g *jen.Group) {
+	if f.Throws == 0 {
+		return
+	}
+
+	g.Id("error")
+}
+
+func (f *Function) generateThrowableReturn(g *jen.Group) {
+	if f.Throws == 0 {
+		return
+	}
+
+	g.Id(f.throwableErrorGoVarName)
 }
 
 func (f *Function) generateThrowableReturnGoVar(g *jen.Group) {
