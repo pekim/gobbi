@@ -41,6 +41,7 @@ func HostnameToAscii(hostname string) string {
 	retC := C.g_hostname_to_ascii(c_hostname)
 	retGo :=
 		C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -53,6 +54,7 @@ func HostnameToUnicode(hostname string) string {
 	retC := C.g_hostname_to_unicode(c_hostname)
 	retGo :=
 		C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
 }

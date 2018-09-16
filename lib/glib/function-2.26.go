@@ -51,7 +51,6 @@ func Dcgettext(domain string, msgid string, category int32) string {
 	retC := C.g_dcgettext(c_domain, c_msgid, c_category)
 	retGo :=
 		C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
 }

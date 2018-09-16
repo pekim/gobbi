@@ -16,6 +16,7 @@ func TestFunctionCallWithIntegers(t *testing.T) {
 
 func TestFunctionCallWithStringsNotFreeReturnedString(t *testing.T) {
 	assert.Equal(t, "edcba", Strreverse("abcde"))
+	assert.Equal(t, "abcde", InternString("abcde"))
 }
 
 func TestFunctionCallWithReturnedStringToFree(t *testing.T) {

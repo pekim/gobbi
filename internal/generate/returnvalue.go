@@ -23,6 +23,12 @@ func (r *ReturnValue) init(ns *Namespace) {
 	}
 }
 
+func (r *ReturnValue) mergeAddenda(addenda *ReturnValue) {
+	if addenda.TransferOwnership != "" {
+		r.TransferOwnership = addenda.TransferOwnership
+	}
+}
+
 func (r *ReturnValue) isSupported() (bool, string) {
 	if r.Type == nil {
 		return false, "no return type"

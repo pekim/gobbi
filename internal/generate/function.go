@@ -58,6 +58,10 @@ func (f *Function) version() string {
 func (f *Function) mergeAddenda(addenda *Function) {
 	f.Blacklist = addenda.Blacklist
 
+	if f.ReturnValue != nil && addenda.ReturnValue != nil {
+		f.ReturnValue.mergeAddenda(addenda.ReturnValue)
+	}
+
 	if addenda.GoName != "" {
 		f.GoName = addenda.GoName
 	}

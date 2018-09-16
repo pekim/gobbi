@@ -89,7 +89,7 @@ func (t *TypeGeneratorString) generateReturnCToGo(g *jen.Group, cVarName string,
 		Qual("C", "GoString").
 		Call(jen.Id(cVarName))
 
-	if transferOwnership != "none" {
+	if transferOwnership == "none" {
 		// the library will be responsible for the memory
 		return
 	}

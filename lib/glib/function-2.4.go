@@ -48,6 +48,7 @@ func FileReadLink(filename string) string {
 	retC := C.g_file_read_link(c_filename, &throwableError)
 	retGo :=
 		C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -69,7 +70,6 @@ func StripContext(msgid string, msgval string) string {
 	retC := C.g_strip_context(c_msgid, c_msgval)
 	retGo :=
 		C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
 }

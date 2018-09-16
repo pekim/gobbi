@@ -3,8 +3,6 @@
 
 package glib
 
-import "unsafe"
-
 // #define GLIB_DISABLE_DEPRECATION_WARNINGS
 // #include <glib.h>
 // #include <glib/gstdio.h>
@@ -39,7 +37,6 @@ func GetUserRuntimeDir() string {
 	retC := C.g_get_user_runtime_dir()
 	retGo :=
 		C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
 }

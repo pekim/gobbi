@@ -73,6 +73,7 @@
     <function version="2.28" c:identifier="g_test_add_data_func"/>
     <function version="2.28" c:identifier="g_test_create_case"/>
 
+    <function c:identifier="g_strreverse"><return-value transfer-ownership="none"/></function>
 
     <!-- no user_data parameter, so how to dispatch to correct Go function? -->
     <callback blacklist="true" name="CompareFunc"/>

@@ -23,7 +23,6 @@ func CheckVersion(requiredMajor uint32, requiredMinor uint32, requiredMicro uint
 	retC := C.glib_check_version(c_required_major, c_required_minor, c_required_micro)
 	retGo :=
 		C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -36,6 +35,7 @@ func FilenameDisplayBasename(filename string) string {
 	retC := C.g_filename_display_basename(c_filename)
 	retGo :=
 		C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -48,6 +48,7 @@ func FilenameDisplayName(filename string) string {
 	retC := C.g_filename_display_name(c_filename)
 	retGo :=
 		C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -65,7 +66,6 @@ func GetUserCacheDir() string {
 	retC := C.g_get_user_cache_dir()
 	retGo :=
 		C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -75,7 +75,6 @@ func GetUserConfigDir() string {
 	retC := C.g_get_user_config_dir()
 	retGo :=
 		C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -85,7 +84,6 @@ func GetUserDataDir() string {
 	retC := C.g_get_user_data_dir()
 	retGo :=
 		C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
 }

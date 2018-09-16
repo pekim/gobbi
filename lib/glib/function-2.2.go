@@ -35,7 +35,6 @@ func GetApplicationName() string {
 	retC := C.g_get_application_name()
 	retGo :=
 		C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -60,6 +59,7 @@ func Utf8Strreverse(str string, len int64) string {
 	retC := C.g_utf8_strreverse(c_str, c_len)
 	retGo :=
 		C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
 
 	return retGo
 }
