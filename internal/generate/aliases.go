@@ -15,11 +15,9 @@ func (aa Aliases) versionList() Versions {
 func (aa Aliases) entities() []Generatable {
 	var generatables []Generatable
 
-	// DO NOT GENERATE aliases until they and their use is better understood.
-
-	// for _, alias := range aa {
-	// 	generatables = append(generatables, alias)
-	// }
+	for _, alias := range aa {
+		generatables = append(generatables, alias)
+	}
 
 	return generatables
 }
