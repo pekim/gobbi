@@ -30,7 +30,7 @@ func TestFunctionCallWithAliasParamAndReturn(t *testing.T) {
 	assert.Equal(t, s, QuarkToString(q))
 }
 
-func TestFunctionReturnError(t *testing.T) {
+func TestFunctionReturningError(t *testing.T) {
 	_, err := FileOpenTmp("bad/should/not/contain/a/slash")
 	assert.NotNil(t, err)
 
@@ -38,4 +38,9 @@ func TestFunctionReturnError(t *testing.T) {
 	assert.True(t,
 		strings.Contains(glibError.Message, "should not contain"),
 		"error message not correct")
+}
+
+func TestFunctionReturningNoError(t *testing.T) {
+	_, err := FilenameFromUri("file:///good")
+	assert.Nil(t, err)
 }

@@ -16,6 +16,10 @@ type Regex struct {
 }
 
 func regexNewFromC(c *C.GRegex) *Regex {
+	if c == nil {
+		return nil
+	}
+
 	r := &Regex{}
 	return r
 }

@@ -16,6 +16,10 @@ type Checksum struct {
 }
 
 func checksumNewFromC(c *C.GChecksum) *Checksum {
+	if c == nil {
+		return nil
+	}
+
 	r := &Checksum{}
 	return r
 }

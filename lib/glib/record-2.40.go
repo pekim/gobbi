@@ -16,6 +16,10 @@ type Variantdict struct {
 }
 
 func variantdictNewFromC(c *C.GVariantDict) *Variantdict {
+	if c == nil {
+		return nil
+	}
+
 	r := &Variantdict{}
 	return r
 }

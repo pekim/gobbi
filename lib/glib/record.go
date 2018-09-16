@@ -17,6 +17,10 @@ type Array struct {
 }
 
 func arrayNewFromC(c *C.GArray) *Array {
+	if c == nil {
+		return nil
+	}
+
 	r := &Array{
 		Data: C.GoString(c.data),
 		Len:  (uint32)(c.len),
@@ -30,6 +34,10 @@ type Asyncqueue struct {
 }
 
 func asyncqueueNewFromC(c *C.GAsyncQueue) *Asyncqueue {
+	if c == nil {
+		return nil
+	}
+
 	r := &Asyncqueue{}
 	return r
 }
@@ -40,6 +48,10 @@ type Bookmarkfile struct {
 }
 
 func bookmarkfileNewFromC(c *C.GBookmarkFile) *Bookmarkfile {
+	if c == nil {
+		return nil
+	}
+
 	r := &Bookmarkfile{}
 	return r
 }
@@ -52,6 +64,10 @@ type Bytearray struct {
 }
 
 func bytearrayNewFromC(c *C.GByteArray) *Bytearray {
+	if c == nil {
+		return nil
+	}
+
 	r := &Bytearray{Len: (uint32)(c.len)}
 	return r
 }
@@ -64,6 +80,10 @@ type Cond struct {
 }
 
 func condNewFromC(c *C.GCond) *Cond {
+	if c == nil {
+		return nil
+	}
+
 	r := &Cond{P: (uintptr)(c.p)}
 	return r
 }
@@ -74,6 +94,10 @@ type Data struct {
 }
 
 func dataNewFromC(c *C.GData) *Data {
+	if c == nil {
+		return nil
+	}
+
 	r := &Data{}
 	return r
 }
@@ -90,6 +114,10 @@ type Date struct {
 }
 
 func dateNewFromC(c *C.GDate) *Date {
+	if c == nil {
+		return nil
+	}
+
 	r := &Date{}
 	return r
 }
@@ -102,6 +130,10 @@ type Debugkey struct {
 }
 
 func debugkeyNewFromC(c *C.GDebugKey) *Debugkey {
+	if c == nil {
+		return nil
+	}
+
 	r := &Debugkey{
 		Key:   C.GoString(c.key),
 		Value: (uint32)(c.value),
@@ -115,6 +147,10 @@ type Dir struct {
 }
 
 func dirNewFromC(c *C.GDir) *Dir {
+	if c == nil {
+		return nil
+	}
+
 	r := &Dir{}
 	return r
 }
@@ -128,6 +164,10 @@ type Error struct {
 }
 
 func errorNewFromC(c *C.GError) *Error {
+	if c == nil {
+		return nil
+	}
+
 	r := &Error{
 		Code:    (int32)(c.code),
 		Domain:  (Quark)(c.domain),
@@ -142,6 +182,10 @@ type Hashtable struct {
 }
 
 func hashtableNewFromC(c *C.GHashTable) *Hashtable {
+	if c == nil {
+		return nil
+	}
+
 	r := &Hashtable{}
 	return r
 }
@@ -158,6 +202,10 @@ type Hashtableiter struct {
 }
 
 func hashtableiterNewFromC(c *C.GHashTableIter) *Hashtableiter {
+	if c == nil {
+		return nil
+	}
+
 	r := &Hashtableiter{
 		Dummy1: (uintptr)(c.dummy1),
 		Dummy2: (uintptr)(c.dummy2),
@@ -182,6 +230,10 @@ type Hook struct {
 }
 
 func hookNewFromC(c *C.GHook) *Hook {
+	if c == nil {
+		return nil
+	}
+
 	r := &Hook{
 		Data:     (uintptr)(c.data),
 		Flags:    (uint32)(c.flags),
@@ -205,6 +257,10 @@ type Hooklist struct {
 }
 
 func hooklistNewFromC(c *C.GHookList) *Hooklist {
+	if c == nil {
+		return nil
+	}
+
 	r := &Hooklist{
 		Dummy3: (uintptr)(c.dummy3),
 		SeqId:  (uint64)(c.seq_id),
@@ -240,6 +296,10 @@ type Iochannel struct {
 }
 
 func iochannelNewFromC(c *C.GIOChannel) *Iochannel {
+	if c == nil {
+		return nil
+	}
+
 	r := &Iochannel{
 		BufSize:     (uint64)(c.buf_size),
 		Encoding:    C.GoString(c.encoding),
@@ -266,6 +326,10 @@ type Iofuncs struct {
 }
 
 func iofuncsNewFromC(c *C.GIOFuncs) *Iofuncs {
+	if c == nil {
+		return nil
+	}
+
 	r := &Iofuncs{}
 	return r
 }
@@ -276,6 +340,10 @@ type Keyfile struct {
 }
 
 func keyfileNewFromC(c *C.GKeyFile) *Keyfile {
+	if c == nil {
+		return nil
+	}
+
 	r := &Keyfile{}
 	return r
 }
@@ -289,6 +357,10 @@ type List struct {
 }
 
 func listNewFromC(c *C.GList) *List {
+	if c == nil {
+		return nil
+	}
+
 	r := &List{Data: (uintptr)(c.data)}
 	return r
 }
@@ -299,6 +371,10 @@ type Maincontext struct {
 }
 
 func maincontextNewFromC(c *C.GMainContext) *Maincontext {
+	if c == nil {
+		return nil
+	}
+
 	r := &Maincontext{}
 	return r
 }
@@ -309,6 +385,10 @@ type Mainloop struct {
 }
 
 func mainloopNewFromC(c *C.GMainLoop) *Mainloop {
+	if c == nil {
+		return nil
+	}
+
 	r := &Mainloop{}
 	return r
 }
@@ -319,6 +399,10 @@ type Mappedfile struct {
 }
 
 func mappedfileNewFromC(c *C.GMappedFile) *Mappedfile {
+	if c == nil {
+		return nil
+	}
+
 	r := &Mappedfile{}
 	return r
 }
@@ -329,6 +413,10 @@ type Markupparsecontext struct {
 }
 
 func markupparsecontextNewFromC(c *C.GMarkupParseContext) *Markupparsecontext {
+	if c == nil {
+		return nil
+	}
+
 	r := &Markupparsecontext{}
 	return r
 }
@@ -344,6 +432,10 @@ type Markupparser struct {
 }
 
 func markupparserNewFromC(c *C.GMarkupParser) *Markupparser {
+	if c == nil {
+		return nil
+	}
+
 	r := &Markupparser{}
 	return r
 }
@@ -354,6 +446,10 @@ type Matchinfo struct {
 }
 
 func matchinfoNewFromC(c *C.GMatchInfo) *Matchinfo {
+	if c == nil {
+		return nil
+	}
+
 	r := &Matchinfo{}
 	return r
 }
@@ -370,6 +466,10 @@ type Memvtable struct {
 }
 
 func memvtableNewFromC(c *C.GMemVTable) *Memvtable {
+	if c == nil {
+		return nil
+	}
+
 	r := &Memvtable{}
 	return r
 }
@@ -385,6 +485,10 @@ type Node struct {
 }
 
 func nodeNewFromC(c *C.GNode) *Node {
+	if c == nil {
+		return nil
+	}
+
 	r := &Node{Data: (uintptr)(c.data)}
 	return r
 }
@@ -395,6 +499,10 @@ type Optioncontext struct {
 }
 
 func optioncontextNewFromC(c *C.GOptionContext) *Optioncontext {
+	if c == nil {
+		return nil
+	}
+
 	r := &Optioncontext{}
 	return r
 }
@@ -412,6 +520,10 @@ type Optionentry struct {
 }
 
 func optionentryNewFromC(c *C.GOptionEntry) *Optionentry {
+	if c == nil {
+		return nil
+	}
+
 	r := &Optionentry{
 		ArgData:        (uintptr)(c.arg_data),
 		ArgDescription: C.GoString(c.arg_description),
@@ -429,6 +541,10 @@ type Optiongroup struct {
 }
 
 func optiongroupNewFromC(c *C.GOptionGroup) *Optiongroup {
+	if c == nil {
+		return nil
+	}
+
 	r := &Optiongroup{}
 	return r
 }
@@ -439,6 +555,10 @@ type Patternspec struct {
 }
 
 func patternspecNewFromC(c *C.GPatternSpec) *Patternspec {
+	if c == nil {
+		return nil
+	}
+
 	r := &Patternspec{}
 	return r
 }
@@ -452,6 +572,10 @@ type Pollfd struct {
 }
 
 func pollfdNewFromC(c *C.GPollFD) *Pollfd {
+	if c == nil {
+		return nil
+	}
+
 	r := &Pollfd{
 		Events:  (uint32)(c.events),
 		Fd:      (int32)(c.fd),
@@ -469,6 +593,10 @@ type Private struct {
 }
 
 func privateNewFromC(c *C.GPrivate) *Private {
+	if c == nil {
+		return nil
+	}
+
 	r := &Private{P: (uintptr)(c.p)}
 	return r
 }
@@ -481,6 +609,10 @@ type Ptrarray struct {
 }
 
 func ptrarrayNewFromC(c *C.GPtrArray) *Ptrarray {
+	if c == nil {
+		return nil
+	}
+
 	r := &Ptrarray{Len: (uint32)(c.len)}
 	return r
 }
@@ -494,6 +626,10 @@ type Queue struct {
 }
 
 func queueNewFromC(c *C.GQueue) *Queue {
+	if c == nil {
+		return nil
+	}
+
 	r := &Queue{Length: (uint32)(c.length)}
 	return r
 }
@@ -504,6 +640,10 @@ type Rand struct {
 }
 
 func randNewFromC(c *C.GRand) *Rand {
+	if c == nil {
+		return nil
+	}
+
 	r := &Rand{}
 	return r
 }
@@ -516,6 +656,10 @@ type Slist struct {
 }
 
 func slistNewFromC(c *C.GSList) *Slist {
+	if c == nil {
+		return nil
+	}
+
 	r := &Slist{Data: (uintptr)(c.data)}
 	return r
 }
@@ -547,6 +691,10 @@ type Scanner struct {
 }
 
 func scannerNewFromC(c *C.GScanner) *Scanner {
+	if c == nil {
+		return nil
+	}
+
 	r := &Scanner{
 		Buffer:         C.GoString(c.buffer),
 		InputFd:        (int32)(c.input_fd),
@@ -598,6 +746,10 @@ type Scannerconfig struct {
 }
 
 func scannerconfigNewFromC(c *C.GScannerConfig) *Scannerconfig {
+	if c == nil {
+		return nil
+	}
+
 	r := &Scannerconfig{
 		CpairCommentSingle:  C.GoString(c.cpair_comment_single),
 		CsetIdentifierFirst: C.GoString(c.cset_identifier_first),
@@ -614,6 +766,10 @@ type Sequence struct {
 }
 
 func sequenceNewFromC(c *C.GSequence) *Sequence {
+	if c == nil {
+		return nil
+	}
+
 	r := &Sequence{}
 	return r
 }
@@ -624,6 +780,10 @@ type Sequenceiter struct {
 }
 
 func sequenceiterNewFromC(c *C.GSequenceIter) *Sequenceiter {
+	if c == nil {
+		return nil
+	}
+
 	r := &Sequenceiter{}
 	return r
 }
@@ -647,6 +807,10 @@ type Source struct {
 }
 
 func sourceNewFromC(c *C.GSource) *Source {
+	if c == nil {
+		return nil
+	}
+
 	r := &Source{
 		CallbackData: (uintptr)(c.callback_data),
 		Flags:        (uint32)(c.flags),
@@ -667,6 +831,10 @@ type Sourcecallbackfuncs struct {
 }
 
 func sourcecallbackfuncsNewFromC(c *C.GSourceCallbackFuncs) *Sourcecallbackfuncs {
+	if c == nil {
+		return nil
+	}
+
 	r := &Sourcecallbackfuncs{}
 	return r
 }
@@ -683,6 +851,10 @@ type Sourcefuncs struct {
 }
 
 func sourcefuncsNewFromC(c *C.GSourceFuncs) *Sourcefuncs {
+	if c == nil {
+		return nil
+	}
+
 	r := &Sourcefuncs{}
 	return r
 }
@@ -693,6 +865,10 @@ type Sourceprivate struct {
 }
 
 func sourceprivateNewFromC(c *C.GSourcePrivate) *Sourceprivate {
+	if c == nil {
+		return nil
+	}
+
 	r := &Sourceprivate{}
 	return r
 }
@@ -703,6 +879,10 @@ type Statbuf struct {
 }
 
 func statbufNewFromC(c *C.GStatBuf) *Statbuf {
+	if c == nil {
+		return nil
+	}
+
 	r := &Statbuf{}
 	return r
 }
@@ -716,6 +896,10 @@ type String struct {
 }
 
 func stringNewFromC(c *C.GString) *String {
+	if c == nil {
+		return nil
+	}
+
 	r := &String{
 		AllocatedLen: (uint64)(c.allocated_len),
 		Len:          (uint64)(c.len),
@@ -730,6 +914,10 @@ type Stringchunk struct {
 }
 
 func stringchunkNewFromC(c *C.GStringChunk) *Stringchunk {
+	if c == nil {
+		return nil
+	}
+
 	r := &Stringchunk{}
 	return r
 }
@@ -740,6 +928,10 @@ type Testcase struct {
 }
 
 func testcaseNewFromC(c *C.GTestCase) *Testcase {
+	if c == nil {
+		return nil
+	}
+
 	r := &Testcase{}
 	return r
 }
@@ -756,6 +948,10 @@ type Testconfig struct {
 }
 
 func testconfigNewFromC(c *C.GTestConfig) *Testconfig {
+	if c == nil {
+		return nil
+	}
+
 	r := &Testconfig{}
 	return r
 }
@@ -770,6 +966,10 @@ type Testsuite struct {
 }
 
 func testsuiteNewFromC(c *C.GTestSuite) *Testsuite {
+	if c == nil {
+		return nil
+	}
+
 	r := &Testsuite{}
 	return r
 }
@@ -780,6 +980,10 @@ type Thread struct {
 }
 
 func threadNewFromC(c *C.GThread) *Thread {
+	if c == nil {
+		return nil
+	}
+
 	r := &Thread{}
 	return r
 }
@@ -793,6 +997,10 @@ type Threadpool struct {
 }
 
 func threadpoolNewFromC(c *C.GThreadPool) *Threadpool {
+	if c == nil {
+		return nil
+	}
+
 	r := &Threadpool{UserData: (uintptr)(c.user_data)}
 	return r
 }
@@ -805,6 +1013,10 @@ type Timeval struct {
 }
 
 func timevalNewFromC(c *C.GTimeVal) *Timeval {
+	if c == nil {
+		return nil
+	}
+
 	r := &Timeval{
 		TvSec:  (int64)(c.tv_sec),
 		TvUsec: (int64)(c.tv_usec),
@@ -818,6 +1030,10 @@ type Timer struct {
 }
 
 func timerNewFromC(c *C.GTimer) *Timer {
+	if c == nil {
+		return nil
+	}
+
 	r := &Timer{}
 	return r
 }
@@ -829,6 +1045,10 @@ type Trashstack struct {
 }
 
 func trashstackNewFromC(c *C.GTrashStack) *Trashstack {
+	if c == nil {
+		return nil
+	}
+
 	r := &Trashstack{}
 	return r
 }
@@ -839,6 +1059,10 @@ type Tree struct {
 }
 
 func treeNewFromC(c *C.GTree) *Tree {
+	if c == nil {
+		return nil
+	}
+
 	r := &Tree{}
 	return r
 }
@@ -849,6 +1073,10 @@ type Variantbuilder struct {
 }
 
 func variantbuilderNewFromC(c *C.GVariantBuilder) *Variantbuilder {
+	if c == nil {
+		return nil
+	}
+
 	r := &Variantbuilder{}
 	return r
 }
@@ -860,6 +1088,10 @@ type Variantiter struct {
 }
 
 func variantiterNewFromC(c *C.GVariantIter) *Variantiter {
+	if c == nil {
+		return nil
+	}
+
 	r := &Variantiter{}
 	return r
 }

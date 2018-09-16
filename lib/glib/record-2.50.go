@@ -19,6 +19,10 @@ type Logfield struct {
 }
 
 func logfieldNewFromC(c *C.GLogField) *Logfield {
+	if c == nil {
+		return nil
+	}
+
 	r := &Logfield{
 		Key:    C.GoString(c.key),
 		Length: (int64)(c.length),

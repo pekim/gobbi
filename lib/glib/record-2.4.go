@@ -18,6 +18,10 @@ type Once struct {
 }
 
 func onceNewFromC(c *C.GOnce) *Once {
+	if c == nil {
+		return nil
+	}
+
 	r := &Once{}
 	return r
 }

@@ -95,6 +95,14 @@ func (r *Record) generateNewFromCFunc(g *jen.Group) {
 			Op("*").
 			Id(r.GoName)).
 		BlockFunc(func(g *jen.Group) {
+			g.If(
+				jen.
+					Id("c").
+					Op("==").
+					Nil()).
+				Block(jen.Return(jen.Nil()))
+			g.Line()
+
 			g.
 				Id("r").
 				Op(":=").

@@ -16,6 +16,10 @@ type Bytes struct {
 }
 
 func bytesNewFromC(c *C.GBytes) *Bytes {
+	if c == nil {
+		return nil
+	}
+
 	r := &Bytes{}
 	return r
 }
@@ -28,6 +32,10 @@ type Rwlock struct {
 }
 
 func rwlockNewFromC(c *C.GRWLock) *Rwlock {
+	if c == nil {
+		return nil
+	}
+
 	r := &Rwlock{P: (uintptr)(c.p)}
 	return r
 }
@@ -40,6 +48,10 @@ type Recmutex struct {
 }
 
 func recmutexNewFromC(c *C.GRecMutex) *Recmutex {
+	if c == nil {
+		return nil
+	}
+
 	r := &Recmutex{P: (uintptr)(c.p)}
 	return r
 }

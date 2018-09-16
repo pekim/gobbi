@@ -16,6 +16,10 @@ type Datetime struct {
 }
 
 func datetimeNewFromC(c *C.GDateTime) *Datetime {
+	if c == nil {
+		return nil
+	}
+
 	r := &Datetime{}
 	return r
 }
@@ -26,6 +30,10 @@ type Timezone struct {
 }
 
 func timezoneNewFromC(c *C.GTimeZone) *Timezone {
+	if c == nil {
+		return nil
+	}
+
 	r := &Timezone{}
 	return r
 }

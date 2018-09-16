@@ -16,6 +16,10 @@ type Hmac struct {
 }
 
 func hmacNewFromC(c *C.GHmac) *Hmac {
+	if c == nil {
+		return nil
+	}
+
 	r := &Hmac{}
 	return r
 }
