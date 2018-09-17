@@ -3,6 +3,8 @@
 
 package glib
 
+import "runtime"
+
 // #define GLIB_DISABLE_DEPRECATION_WARNINGS
 // #include <glib.h>
 // #include <glib/gstdio.h>
@@ -20,7 +22,12 @@ func datetimeNewFromC(c *C.GDateTime) *Datetime {
 		return nil
 	}
 
-	return &Datetime{native: c}
+	g := &Datetime{native: c}
+	runtime.SetFinalizer(g, func(obj interface{}) {
+		C.g_free(obj)
+	})
+
+	return g
 }
 
 // Timezone is a wrapper around the C record GTimeZone.
@@ -33,5 +40,10 @@ func timezoneNewFromC(c *C.GTimeZone) *Timezone {
 		return nil
 	}
 
-	return &Timezone{native: c}
+	g := &Timezone{native: c}
+	runtime.SetFinalizer(g, func(obj interface{}) {
+		C.g_free(obj)
+	})
+
+	return g
 }

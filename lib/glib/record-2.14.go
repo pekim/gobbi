@@ -3,6 +3,8 @@
 
 package glib
 
+import "runtime"
+
 // #define GLIB_DISABLE_DEPRECATION_WARNINGS
 // #include <glib.h>
 // #include <glib/gstdio.h>
@@ -20,5 +22,10 @@ func regexNewFromC(c *C.GRegex) *Regex {
 		return nil
 	}
 
-	return &Regex{native: c}
+	g := &Regex{native: c}
+	runtime.SetFinalizer(g, func(obj interface{}) {
+		C.g_free(obj)
+	})
+
+	return g
 }

@@ -167,7 +167,7 @@ func (f *Function) generateThrowableReturnGoVar(g *jen.Group) {
 	}
 
 	f.throwableErrorType.generator.generateReturnCToGo(g,
-		f.throwableErrorCVarName, f.throwableErrorGoVarName, "")
+		f.throwableErrorCVarName, f.throwableErrorGoVarName, "full")
 	g.Line()
 
 }

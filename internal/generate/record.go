@@ -105,7 +105,8 @@ func (r *Record) generateNewFromCFunc(g *jen.Group) {
 			g.Line()
 
 			g.
-				Return().
+				Id("g").
+				Op(":=").
 				Op("&").
 				Id(r.GoName).
 				Values(
@@ -125,6 +126,29 @@ func (r *Record) generateNewFromCFunc(g *jen.Group) {
 							d[jen.Id(f.goVarName)] = f.Type.generator.generateCToGo(cValue)
 						}
 					}))
+
+			g.
+				Qual("runtime", "SetFinalizer").
+				Call(
+					jen.Id("g"),
+					jen.
+						Func().
+						Params(
+							jen.
+								Id("obj").
+								Id("interface").
+								Op("{}")).
+						BlockFunc(func(g *jen.Group) {
+							g.
+								Qual("C", "g_free").
+								Call(jen.Id("obj"))
+						}))
+
+			g.Line()
+
+			g.
+				Return().
+				Id("g")
 		})
 
 	g.Line()

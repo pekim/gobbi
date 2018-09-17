@@ -3,6 +3,8 @@
 
 package glib
 
+import "runtime"
+
 // #define GLIB_DISABLE_DEPRECATION_WARNINGS
 // #include <glib.h>
 // #include <glib/gstdio.h>
@@ -22,5 +24,10 @@ func onceNewFromC(c *C.GOnce) *Once {
 		return nil
 	}
 
-	return &Once{native: c}
+	g := &Once{native: c}
+	runtime.SetFinalizer(g, func(obj interface{}) {
+		C.g_free(obj)
+	})
+
+	return g
 }

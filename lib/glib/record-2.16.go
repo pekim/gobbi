@@ -3,6 +3,8 @@
 
 package glib
 
+import "runtime"
+
 // #define GLIB_DISABLE_DEPRECATION_WARNINGS
 // #include <glib.h>
 // #include <glib/gstdio.h>
@@ -20,5 +22,10 @@ func checksumNewFromC(c *C.GChecksum) *Checksum {
 		return nil
 	}
 
-	return &Checksum{native: c}
+	g := &Checksum{native: c}
+	runtime.SetFinalizer(g, func(obj interface{}) {
+		C.g_free(obj)
+	})
+
+	return g
 }

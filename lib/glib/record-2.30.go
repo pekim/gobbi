@@ -3,6 +3,8 @@
 
 package glib
 
+import "runtime"
+
 // #define GLIB_DISABLE_DEPRECATION_WARNINGS
 // #include <glib.h>
 // #include <glib/gstdio.h>
@@ -20,5 +22,10 @@ func hmacNewFromC(c *C.GHmac) *Hmac {
 		return nil
 	}
 
-	return &Hmac{native: c}
+	g := &Hmac{native: c}
+	runtime.SetFinalizer(g, func(obj interface{}) {
+		C.g_free(obj)
+	})
+
+	return g
 }

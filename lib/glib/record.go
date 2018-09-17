@@ -2,6 +2,8 @@
 
 package glib
 
+import "runtime"
+
 // #define GLIB_DISABLE_DEPRECATION_WARNINGS
 // #include <glib.h>
 // #include <glib/gstdio.h>
@@ -21,11 +23,16 @@ func arrayNewFromC(c *C.GArray) *Array {
 		return nil
 	}
 
-	return &Array{
+	g := &Array{
 		Data:   C.GoString(c.data),
 		Len:    (uint32)(c.len),
 		native: c,
 	}
+	runtime.SetFinalizer(g, func(obj interface{}) {
+		C.g_free(obj)
+	})
+
+	return g
 }
 
 // Asyncqueue is a wrapper around the C record GAsyncQueue.
@@ -38,7 +45,12 @@ func asyncqueueNewFromC(c *C.GAsyncQueue) *Asyncqueue {
 		return nil
 	}
 
-	return &Asyncqueue{native: c}
+	g := &Asyncqueue{native: c}
+	runtime.SetFinalizer(g, func(obj interface{}) {
+		C.g_free(obj)
+	})
+
+	return g
 }
 
 // Bookmarkfile is a wrapper around the C record GBookmarkFile.
@@ -51,7 +63,12 @@ func bookmarkfileNewFromC(c *C.GBookmarkFile) *Bookmarkfile {
 		return nil
 	}
 
-	return &Bookmarkfile{native: c}
+	g := &Bookmarkfile{native: c}
+	runtime.SetFinalizer(g, func(obj interface{}) {
+		C.g_free(obj)
+	})
+
+	return g
 }
 
 // Bytearray is a wrapper around the C record GByteArray.
@@ -66,10 +83,15 @@ func bytearrayNewFromC(c *C.GByteArray) *Bytearray {
 		return nil
 	}
 
-	return &Bytearray{
+	g := &Bytearray{
 		Len:    (uint32)(c.len),
 		native: c,
 	}
+	runtime.SetFinalizer(g, func(obj interface{}) {
+		C.g_free(obj)
+	})
+
+	return g
 }
 
 // Cond is a wrapper around the C record GCond.
@@ -84,10 +106,15 @@ func condNewFromC(c *C.GCond) *Cond {
 		return nil
 	}
 
-	return &Cond{
+	g := &Cond{
 		P:      (uintptr)(c.p),
 		native: c,
 	}
+	runtime.SetFinalizer(g, func(obj interface{}) {
+		C.g_free(obj)
+	})
+
+	return g
 }
 
 // Data is a wrapper around the C record GData.
@@ -100,7 +127,12 @@ func dataNewFromC(c *C.GData) *Data {
 		return nil
 	}
 
-	return &Data{native: c}
+	g := &Data{native: c}
+	runtime.SetFinalizer(g, func(obj interface{}) {
+		C.g_free(obj)
+	})
+
+	return g
 }
 
 // Date is a wrapper around the C record GDate.
@@ -119,7 +151,12 @@ func dateNewFromC(c *C.GDate) *Date {
 		return nil
 	}
 
-	return &Date{native: c}
+	g := &Date{native: c}
+	runtime.SetFinalizer(g, func(obj interface{}) {
+		C.g_free(obj)
+	})
+
+	return g
 }
 
 // Debugkey is a wrapper around the C record GDebugKey.
@@ -134,11 +171,16 @@ func debugkeyNewFromC(c *C.GDebugKey) *Debugkey {
 		return nil
 	}
 
-	return &Debugkey{
+	g := &Debugkey{
 		Key:    C.GoString(c.key),
 		Value:  (uint32)(c.value),
 		native: c,
 	}
+	runtime.SetFinalizer(g, func(obj interface{}) {
+		C.g_free(obj)
+	})
+
+	return g
 }
 
 // Dir is a wrapper around the C record GDir.
@@ -151,7 +193,12 @@ func dirNewFromC(c *C.GDir) *Dir {
 		return nil
 	}
 
-	return &Dir{native: c}
+	g := &Dir{native: c}
+	runtime.SetFinalizer(g, func(obj interface{}) {
+		C.g_free(obj)
+	})
+
+	return g
 }
 
 // Error is a wrapper around the C record GError.
@@ -167,12 +214,17 @@ func errorNewFromC(c *C.GError) *Error {
 		return nil
 	}
 
-	return &Error{
+	g := &Error{
 		Code:    (int32)(c.code),
 		Domain:  (Quark)(c.domain),
 		Message: C.GoString(c.message),
 		native:  c,
 	}
+	runtime.SetFinalizer(g, func(obj interface{}) {
+		C.g_free(obj)
+	})
+
+	return g
 }
 
 // Hashtable is a wrapper around the C record GHashTable.
@@ -185,7 +237,12 @@ func hashtableNewFromC(c *C.GHashTable) *Hashtable {
 		return nil
 	}
 
-	return &Hashtable{native: c}
+	g := &Hashtable{native: c}
+	runtime.SetFinalizer(g, func(obj interface{}) {
+		C.g_free(obj)
+	})
+
+	return g
 }
 
 // Hashtableiter is a wrapper around the C record GHashTableIter.
@@ -204,7 +261,7 @@ func hashtableiterNewFromC(c *C.GHashTableIter) *Hashtableiter {
 		return nil
 	}
 
-	return &Hashtableiter{
+	g := &Hashtableiter{
 		Dummy1: (uintptr)(c.dummy1),
 		Dummy2: (uintptr)(c.dummy2),
 		Dummy3: (uintptr)(c.dummy3),
@@ -212,6 +269,11 @@ func hashtableiterNewFromC(c *C.GHashTableIter) *Hashtableiter {
 		Dummy6: (uintptr)(c.dummy6),
 		native: c,
 	}
+	runtime.SetFinalizer(g, func(obj interface{}) {
+		C.g_free(obj)
+	})
+
+	return g
 }
 
 // Hook is a wrapper around the C record GHook.
@@ -232,7 +294,7 @@ func hookNewFromC(c *C.GHook) *Hook {
 		return nil
 	}
 
-	return &Hook{
+	g := &Hook{
 		Data:     (uintptr)(c.data),
 		Flags:    (uint32)(c.flags),
 		Func:     (uintptr)(c._func),
@@ -240,6 +302,11 @@ func hookNewFromC(c *C.GHook) *Hook {
 		RefCount: (uint32)(c.ref_count),
 		native:   c,
 	}
+	runtime.SetFinalizer(g, func(obj interface{}) {
+		C.g_free(obj)
+	})
+
+	return g
 }
 
 // Hooklist is a wrapper around the C record GHookList.
@@ -259,11 +326,16 @@ func hooklistNewFromC(c *C.GHookList) *Hooklist {
 		return nil
 	}
 
-	return &Hooklist{
+	g := &Hooklist{
 		Dummy3: (uintptr)(c.dummy3),
 		SeqId:  (uint64)(c.seq_id),
 		native: c,
 	}
+	runtime.SetFinalizer(g, func(obj interface{}) {
+		C.g_free(obj)
+	})
+
+	return g
 }
 
 // Blacklisted : GIConv
@@ -298,7 +370,7 @@ func iochannelNewFromC(c *C.GIOChannel) *Iochannel {
 		return nil
 	}
 
-	return &Iochannel{
+	g := &Iochannel{
 		BufSize:     (uint64)(c.buf_size),
 		Encoding:    C.GoString(c.encoding),
 		LineTerm:    C.GoString(c.line_term),
@@ -308,6 +380,11 @@ func iochannelNewFromC(c *C.GIOChannel) *Iochannel {
 		Reserved2:   (uintptr)(c.reserved2),
 		native:      c,
 	}
+	runtime.SetFinalizer(g, func(obj interface{}) {
+		C.g_free(obj)
+	})
+
+	return g
 }
 
 // Iofuncs is a wrapper around the C record GIOFuncs.
@@ -328,7 +405,12 @@ func iofuncsNewFromC(c *C.GIOFuncs) *Iofuncs {
 		return nil
 	}
 
-	return &Iofuncs{native: c}
+	g := &Iofuncs{native: c}
+	runtime.SetFinalizer(g, func(obj interface{}) {
+		C.g_free(obj)
+	})
+
+	return g
 }
 
 // Keyfile is a wrapper around the C record GKeyFile.
@@ -341,7 +423,12 @@ func keyfileNewFromC(c *C.GKeyFile) *Keyfile {
 		return nil
 	}
 
-	return &Keyfile{native: c}
+	g := &Keyfile{native: c}
+	runtime.SetFinalizer(g, func(obj interface{}) {
+		C.g_free(obj)
+	})
+
+	return g
 }
 
 // List is a wrapper around the C record GList.
@@ -357,10 +444,15 @@ func listNewFromC(c *C.GList) *List {
 		return nil
 	}
 
-	return &List{
+	g := &List{
 		Data:   (uintptr)(c.data),
 		native: c,
 	}
+	runtime.SetFinalizer(g, func(obj interface{}) {
+		C.g_free(obj)
+	})
+
+	return g
 }
 
 // Maincontext is a wrapper around the C record GMainContext.
@@ -373,7 +465,12 @@ func maincontextNewFromC(c *C.GMainContext) *Maincontext {
 		return nil
 	}
 
-	return &Maincontext{native: c}
+	g := &Maincontext{native: c}
+	runtime.SetFinalizer(g, func(obj interface{}) {
+		C.g_free(obj)
+	})
+
+	return g
 }
 
 // Mainloop is a wrapper around the C record GMainLoop.
@@ -386,7 +483,12 @@ func mainloopNewFromC(c *C.GMainLoop) *Mainloop {
 		return nil
 	}
 
-	return &Mainloop{native: c}
+	g := &Mainloop{native: c}
+	runtime.SetFinalizer(g, func(obj interface{}) {
+		C.g_free(obj)
+	})
+
+	return g
 }
 
 // Mappedfile is a wrapper around the C record GMappedFile.
@@ -399,7 +501,12 @@ func mappedfileNewFromC(c *C.GMappedFile) *Mappedfile {
 		return nil
 	}
 
-	return &Mappedfile{native: c}
+	g := &Mappedfile{native: c}
+	runtime.SetFinalizer(g, func(obj interface{}) {
+		C.g_free(obj)
+	})
+
+	return g
 }
 
 // Markupparsecontext is a wrapper around the C record GMarkupParseContext.
@@ -412,7 +519,12 @@ func markupparsecontextNewFromC(c *C.GMarkupParseContext) *Markupparsecontext {
 		return nil
 	}
 
-	return &Markupparsecontext{native: c}
+	g := &Markupparsecontext{native: c}
+	runtime.SetFinalizer(g, func(obj interface{}) {
+		C.g_free(obj)
+	})
+
+	return g
 }
 
 // Markupparser is a wrapper around the C record GMarkupParser.
@@ -430,7 +542,12 @@ func markupparserNewFromC(c *C.GMarkupParser) *Markupparser {
 		return nil
 	}
 
-	return &Markupparser{native: c}
+	g := &Markupparser{native: c}
+	runtime.SetFinalizer(g, func(obj interface{}) {
+		C.g_free(obj)
+	})
+
+	return g
 }
 
 // Matchinfo is a wrapper around the C record GMatchInfo.
@@ -443,7 +560,12 @@ func matchinfoNewFromC(c *C.GMatchInfo) *Matchinfo {
 		return nil
 	}
 
-	return &Matchinfo{native: c}
+	g := &Matchinfo{native: c}
+	runtime.SetFinalizer(g, func(obj interface{}) {
+		C.g_free(obj)
+	})
+
+	return g
 }
 
 // Memvtable is a wrapper around the C record GMemVTable.
@@ -462,7 +584,12 @@ func memvtableNewFromC(c *C.GMemVTable) *Memvtable {
 		return nil
 	}
 
-	return &Memvtable{native: c}
+	g := &Memvtable{native: c}
+	runtime.SetFinalizer(g, func(obj interface{}) {
+		C.g_free(obj)
+	})
+
+	return g
 }
 
 // Node is a wrapper around the C record GNode.
@@ -480,10 +607,15 @@ func nodeNewFromC(c *C.GNode) *Node {
 		return nil
 	}
 
-	return &Node{
+	g := &Node{
 		Data:   (uintptr)(c.data),
 		native: c,
 	}
+	runtime.SetFinalizer(g, func(obj interface{}) {
+		C.g_free(obj)
+	})
+
+	return g
 }
 
 // Optioncontext is a wrapper around the C record GOptionContext.
@@ -496,7 +628,12 @@ func optioncontextNewFromC(c *C.GOptionContext) *Optioncontext {
 		return nil
 	}
 
-	return &Optioncontext{native: c}
+	g := &Optioncontext{native: c}
+	runtime.SetFinalizer(g, func(obj interface{}) {
+		C.g_free(obj)
+	})
+
+	return g
 }
 
 // Optionentry is a wrapper around the C record GOptionEntry.
@@ -516,7 +653,7 @@ func optionentryNewFromC(c *C.GOptionEntry) *Optionentry {
 		return nil
 	}
 
-	return &Optionentry{
+	g := &Optionentry{
 		ArgData:        (uintptr)(c.arg_data),
 		ArgDescription: C.GoString(c.arg_description),
 		Description:    C.GoString(c.description),
@@ -525,6 +662,11 @@ func optionentryNewFromC(c *C.GOptionEntry) *Optionentry {
 		ShortName:      (rune)(c.short_name),
 		native:         c,
 	}
+	runtime.SetFinalizer(g, func(obj interface{}) {
+		C.g_free(obj)
+	})
+
+	return g
 }
 
 // Optiongroup is a wrapper around the C record GOptionGroup.
@@ -537,7 +679,12 @@ func optiongroupNewFromC(c *C.GOptionGroup) *Optiongroup {
 		return nil
 	}
 
-	return &Optiongroup{native: c}
+	g := &Optiongroup{native: c}
+	runtime.SetFinalizer(g, func(obj interface{}) {
+		C.g_free(obj)
+	})
+
+	return g
 }
 
 // Patternspec is a wrapper around the C record GPatternSpec.
@@ -550,7 +697,12 @@ func patternspecNewFromC(c *C.GPatternSpec) *Patternspec {
 		return nil
 	}
 
-	return &Patternspec{native: c}
+	g := &Patternspec{native: c}
+	runtime.SetFinalizer(g, func(obj interface{}) {
+		C.g_free(obj)
+	})
+
+	return g
 }
 
 // Pollfd is a wrapper around the C record GPollFD.
@@ -566,12 +718,17 @@ func pollfdNewFromC(c *C.GPollFD) *Pollfd {
 		return nil
 	}
 
-	return &Pollfd{
+	g := &Pollfd{
 		Events:  (uint32)(c.events),
 		Fd:      (int32)(c.fd),
 		Revents: (uint32)(c.revents),
 		native:  c,
 	}
+	runtime.SetFinalizer(g, func(obj interface{}) {
+		C.g_free(obj)
+	})
+
+	return g
 }
 
 // Private is a wrapper around the C record GPrivate.
@@ -587,10 +744,15 @@ func privateNewFromC(c *C.GPrivate) *Private {
 		return nil
 	}
 
-	return &Private{
+	g := &Private{
 		P:      (uintptr)(c.p),
 		native: c,
 	}
+	runtime.SetFinalizer(g, func(obj interface{}) {
+		C.g_free(obj)
+	})
+
+	return g
 }
 
 // Ptrarray is a wrapper around the C record GPtrArray.
@@ -605,10 +767,15 @@ func ptrarrayNewFromC(c *C.GPtrArray) *Ptrarray {
 		return nil
 	}
 
-	return &Ptrarray{
+	g := &Ptrarray{
 		Len:    (uint32)(c.len),
 		native: c,
 	}
+	runtime.SetFinalizer(g, func(obj interface{}) {
+		C.g_free(obj)
+	})
+
+	return g
 }
 
 // Queue is a wrapper around the C record GQueue.
@@ -624,10 +791,15 @@ func queueNewFromC(c *C.GQueue) *Queue {
 		return nil
 	}
 
-	return &Queue{
+	g := &Queue{
 		Length: (uint32)(c.length),
 		native: c,
 	}
+	runtime.SetFinalizer(g, func(obj interface{}) {
+		C.g_free(obj)
+	})
+
+	return g
 }
 
 // Rand is a wrapper around the C record GRand.
@@ -640,7 +812,12 @@ func randNewFromC(c *C.GRand) *Rand {
 		return nil
 	}
 
-	return &Rand{native: c}
+	g := &Rand{native: c}
+	runtime.SetFinalizer(g, func(obj interface{}) {
+		C.g_free(obj)
+	})
+
+	return g
 }
 
 // Slist is a wrapper around the C record GSList.
@@ -655,10 +832,15 @@ func slistNewFromC(c *C.GSList) *Slist {
 		return nil
 	}
 
-	return &Slist{
+	g := &Slist{
 		Data:   (uintptr)(c.data),
 		native: c,
 	}
+	runtime.SetFinalizer(g, func(obj interface{}) {
+		C.g_free(obj)
+	})
+
+	return g
 }
 
 // Scanner is a wrapper around the C record GScanner.
@@ -692,7 +874,7 @@ func scannerNewFromC(c *C.GScanner) *Scanner {
 		return nil
 	}
 
-	return &Scanner{
+	g := &Scanner{
 		Buffer:         C.GoString(c.buffer),
 		InputFd:        (int32)(c.input_fd),
 		InputName:      C.GoString(c.input_name),
@@ -708,6 +890,11 @@ func scannerNewFromC(c *C.GScanner) *Scanner {
 		UserData:       (uintptr)(c.user_data),
 		native:         c,
 	}
+	runtime.SetFinalizer(g, func(obj interface{}) {
+		C.g_free(obj)
+	})
+
+	return g
 }
 
 // Scannerconfig is a wrapper around the C record GScannerConfig.
@@ -747,7 +934,7 @@ func scannerconfigNewFromC(c *C.GScannerConfig) *Scannerconfig {
 		return nil
 	}
 
-	return &Scannerconfig{
+	g := &Scannerconfig{
 		CpairCommentSingle:  C.GoString(c.cpair_comment_single),
 		CsetIdentifierFirst: C.GoString(c.cset_identifier_first),
 		CsetIdentifierNth:   C.GoString(c.cset_identifier_nth),
@@ -755,6 +942,11 @@ func scannerconfigNewFromC(c *C.GScannerConfig) *Scannerconfig {
 		PaddingDummy:        (uint32)(c.padding_dummy),
 		native:              c,
 	}
+	runtime.SetFinalizer(g, func(obj interface{}) {
+		C.g_free(obj)
+	})
+
+	return g
 }
 
 // Sequence is a wrapper around the C record GSequence.
@@ -767,7 +959,12 @@ func sequenceNewFromC(c *C.GSequence) *Sequence {
 		return nil
 	}
 
-	return &Sequence{native: c}
+	g := &Sequence{native: c}
+	runtime.SetFinalizer(g, func(obj interface{}) {
+		C.g_free(obj)
+	})
+
+	return g
 }
 
 // Sequenceiter is a wrapper around the C record GSequenceIter.
@@ -780,7 +977,12 @@ func sequenceiterNewFromC(c *C.GSequenceIter) *Sequenceiter {
 		return nil
 	}
 
-	return &Sequenceiter{native: c}
+	g := &Sequenceiter{native: c}
+	runtime.SetFinalizer(g, func(obj interface{}) {
+		C.g_free(obj)
+	})
+
+	return g
 }
 
 // Source is a wrapper around the C record GSource.
@@ -806,7 +1008,7 @@ func sourceNewFromC(c *C.GSource) *Source {
 		return nil
 	}
 
-	return &Source{
+	g := &Source{
 		CallbackData: (uintptr)(c.callback_data),
 		Flags:        (uint32)(c.flags),
 		Name:         C.GoString(c.name),
@@ -815,6 +1017,11 @@ func sourceNewFromC(c *C.GSource) *Source {
 		SourceId:     (uint32)(c.source_id),
 		native:       c,
 	}
+	runtime.SetFinalizer(g, func(obj interface{}) {
+		C.g_free(obj)
+	})
+
+	return g
 }
 
 // Sourcecallbackfuncs is a wrapper around the C record GSourceCallbackFuncs.
@@ -830,7 +1037,12 @@ func sourcecallbackfuncsNewFromC(c *C.GSourceCallbackFuncs) *Sourcecallbackfuncs
 		return nil
 	}
 
-	return &Sourcecallbackfuncs{native: c}
+	g := &Sourcecallbackfuncs{native: c}
+	runtime.SetFinalizer(g, func(obj interface{}) {
+		C.g_free(obj)
+	})
+
+	return g
 }
 
 // Sourcefuncs is a wrapper around the C record GSourceFuncs.
@@ -849,7 +1061,12 @@ func sourcefuncsNewFromC(c *C.GSourceFuncs) *Sourcefuncs {
 		return nil
 	}
 
-	return &Sourcefuncs{native: c}
+	g := &Sourcefuncs{native: c}
+	runtime.SetFinalizer(g, func(obj interface{}) {
+		C.g_free(obj)
+	})
+
+	return g
 }
 
 // Sourceprivate is a wrapper around the C record GSourcePrivate.
@@ -862,7 +1079,12 @@ func sourceprivateNewFromC(c *C.GSourcePrivate) *Sourceprivate {
 		return nil
 	}
 
-	return &Sourceprivate{native: c}
+	g := &Sourceprivate{native: c}
+	runtime.SetFinalizer(g, func(obj interface{}) {
+		C.g_free(obj)
+	})
+
+	return g
 }
 
 // Statbuf is a wrapper around the C record GStatBuf.
@@ -875,7 +1097,12 @@ func statbufNewFromC(c *C.GStatBuf) *Statbuf {
 		return nil
 	}
 
-	return &Statbuf{native: c}
+	g := &Statbuf{native: c}
+	runtime.SetFinalizer(g, func(obj interface{}) {
+		C.g_free(obj)
+	})
+
+	return g
 }
 
 // String is a wrapper around the C record GString.
@@ -891,12 +1118,17 @@ func stringNewFromC(c *C.GString) *String {
 		return nil
 	}
 
-	return &String{
+	g := &String{
 		AllocatedLen: (uint64)(c.allocated_len),
 		Len:          (uint64)(c.len),
 		Str:          C.GoString(c.str),
 		native:       c,
 	}
+	runtime.SetFinalizer(g, func(obj interface{}) {
+		C.g_free(obj)
+	})
+
+	return g
 }
 
 // Stringchunk is a wrapper around the C record GStringChunk.
@@ -909,7 +1141,12 @@ func stringchunkNewFromC(c *C.GStringChunk) *Stringchunk {
 		return nil
 	}
 
-	return &Stringchunk{native: c}
+	g := &Stringchunk{native: c}
+	runtime.SetFinalizer(g, func(obj interface{}) {
+		C.g_free(obj)
+	})
+
+	return g
 }
 
 // Testcase is a wrapper around the C record GTestCase.
@@ -922,7 +1159,12 @@ func testcaseNewFromC(c *C.GTestCase) *Testcase {
 		return nil
 	}
 
-	return &Testcase{native: c}
+	g := &Testcase{native: c}
+	runtime.SetFinalizer(g, func(obj interface{}) {
+		C.g_free(obj)
+	})
+
+	return g
 }
 
 // Testconfig is a wrapper around the C record GTestConfig.
@@ -941,7 +1183,12 @@ func testconfigNewFromC(c *C.GTestConfig) *Testconfig {
 		return nil
 	}
 
-	return &Testconfig{native: c}
+	g := &Testconfig{native: c}
+	runtime.SetFinalizer(g, func(obj interface{}) {
+		C.g_free(obj)
+	})
+
+	return g
 }
 
 // Blacklisted : GTestLogBuffer
@@ -958,7 +1205,12 @@ func testsuiteNewFromC(c *C.GTestSuite) *Testsuite {
 		return nil
 	}
 
-	return &Testsuite{native: c}
+	g := &Testsuite{native: c}
+	runtime.SetFinalizer(g, func(obj interface{}) {
+		C.g_free(obj)
+	})
+
+	return g
 }
 
 // Thread is a wrapper around the C record GThread.
@@ -971,7 +1223,12 @@ func threadNewFromC(c *C.GThread) *Thread {
 		return nil
 	}
 
-	return &Thread{native: c}
+	g := &Thread{native: c}
+	runtime.SetFinalizer(g, func(obj interface{}) {
+		C.g_free(obj)
+	})
+
+	return g
 }
 
 // Threadpool is a wrapper around the C record GThreadPool.
@@ -987,10 +1244,15 @@ func threadpoolNewFromC(c *C.GThreadPool) *Threadpool {
 		return nil
 	}
 
-	return &Threadpool{
+	g := &Threadpool{
 		UserData: (uintptr)(c.user_data),
 		native:   c,
 	}
+	runtime.SetFinalizer(g, func(obj interface{}) {
+		C.g_free(obj)
+	})
+
+	return g
 }
 
 // Timeval is a wrapper around the C record GTimeVal.
@@ -1005,11 +1267,16 @@ func timevalNewFromC(c *C.GTimeVal) *Timeval {
 		return nil
 	}
 
-	return &Timeval{
+	g := &Timeval{
 		TvSec:  (int64)(c.tv_sec),
 		TvUsec: (int64)(c.tv_usec),
 		native: c,
 	}
+	runtime.SetFinalizer(g, func(obj interface{}) {
+		C.g_free(obj)
+	})
+
+	return g
 }
 
 // Timer is a wrapper around the C record GTimer.
@@ -1022,7 +1289,12 @@ func timerNewFromC(c *C.GTimer) *Timer {
 		return nil
 	}
 
-	return &Timer{native: c}
+	g := &Timer{native: c}
+	runtime.SetFinalizer(g, func(obj interface{}) {
+		C.g_free(obj)
+	})
+
+	return g
 }
 
 // Trashstack is a wrapper around the C record GTrashStack.
@@ -1036,7 +1308,12 @@ func trashstackNewFromC(c *C.GTrashStack) *Trashstack {
 		return nil
 	}
 
-	return &Trashstack{native: c}
+	g := &Trashstack{native: c}
+	runtime.SetFinalizer(g, func(obj interface{}) {
+		C.g_free(obj)
+	})
+
+	return g
 }
 
 // Tree is a wrapper around the C record GTree.
@@ -1049,7 +1326,12 @@ func treeNewFromC(c *C.GTree) *Tree {
 		return nil
 	}
 
-	return &Tree{native: c}
+	g := &Tree{native: c}
+	runtime.SetFinalizer(g, func(obj interface{}) {
+		C.g_free(obj)
+	})
+
+	return g
 }
 
 // Variantbuilder is a wrapper around the C record GVariantBuilder.
@@ -1062,7 +1344,12 @@ func variantbuilderNewFromC(c *C.GVariantBuilder) *Variantbuilder {
 		return nil
 	}
 
-	return &Variantbuilder{native: c}
+	g := &Variantbuilder{native: c}
+	runtime.SetFinalizer(g, func(obj interface{}) {
+		C.g_free(obj)
+	})
+
+	return g
 }
 
 // Variantiter is a wrapper around the C record GVariantIter.
@@ -1076,7 +1363,12 @@ func variantiterNewFromC(c *C.GVariantIter) *Variantiter {
 		return nil
 	}
 
-	return &Variantiter{native: c}
+	g := &Variantiter{native: c}
+	runtime.SetFinalizer(g, func(obj interface{}) {
+		C.g_free(obj)
+	})
+
+	return g
 }
 
 // Blacklisted : GVariantType

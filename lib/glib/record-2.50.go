@@ -3,6 +3,8 @@
 
 package glib
 
+import "runtime"
+
 // #define GLIB_DISABLE_DEPRECATION_WARNINGS
 // #include <glib.h>
 // #include <glib/gstdio.h>
@@ -23,10 +25,15 @@ func logfieldNewFromC(c *C.GLogField) *Logfield {
 		return nil
 	}
 
-	return &Logfield{
+	g := &Logfield{
 		Key:    C.GoString(c.key),
 		Length: (int64)(c.length),
 		Value:  (uintptr)(c.value),
 		native: c,
 	}
+	runtime.SetFinalizer(g, func(obj interface{}) {
+		C.g_free(obj)
+	})
+
+	return g
 }

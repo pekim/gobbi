@@ -3,6 +3,8 @@
 
 package glib
 
+import "runtime"
+
 // #define GLIB_DISABLE_DEPRECATION_WARNINGS
 // #include <glib.h>
 // #include <glib/gstdio.h>
@@ -20,7 +22,12 @@ func bytesNewFromC(c *C.GBytes) *Bytes {
 		return nil
 	}
 
-	return &Bytes{native: c}
+	g := &Bytes{native: c}
+	runtime.SetFinalizer(g, func(obj interface{}) {
+		C.g_free(obj)
+	})
+
+	return g
 }
 
 // Rwlock is a wrapper around the C record GRWLock.
@@ -35,10 +42,15 @@ func rwlockNewFromC(c *C.GRWLock) *Rwlock {
 		return nil
 	}
 
-	return &Rwlock{
+	g := &Rwlock{
 		P:      (uintptr)(c.p),
 		native: c,
 	}
+	runtime.SetFinalizer(g, func(obj interface{}) {
+		C.g_free(obj)
+	})
+
+	return g
 }
 
 // Recmutex is a wrapper around the C record GRecMutex.
@@ -53,8 +65,13 @@ func recmutexNewFromC(c *C.GRecMutex) *Recmutex {
 		return nil
 	}
 
-	return &Recmutex{
+	g := &Recmutex{
 		P:      (uintptr)(c.p),
 		native: c,
 	}
+	runtime.SetFinalizer(g, func(obj interface{}) {
+		C.g_free(obj)
+	})
+
+	return g
 }
