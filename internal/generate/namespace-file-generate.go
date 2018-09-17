@@ -37,32 +37,7 @@ func (ns *Namespace) generatePackageFile() {
 		for _, pkg := range ns.repo.Packages {
 			f.CgoPreamble(fmt.Sprintf("// #cgo pkg-config: %s", pkg.Name))
 		}
-
-		if ns.Name == "GLib" {
-			ns.generateGlibErrorReceiver(f)
-		}
 	})
-}
-
-func (ns *Namespace) generateGlibErrorReceiver(f *jen.File) {
-	f.Comment("Error makes Error implement the error interface")
-
-	f.
-		Func().
-		Params(jen.
-			Id("e").
-			Id("Error")).
-		Id("Error").
-		Params().
-		Id("string").
-		Block(
-			jen.
-				Return().
-				Id("e").
-				Op(".").
-				Id("Message"))
-
-	f.Line()
 }
 
 func (ns *Namespace) cgoPreambleHeaders(file *jen.File) {
