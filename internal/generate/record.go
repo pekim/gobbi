@@ -110,6 +110,8 @@ func (r *Record) generateNewFromCFunc(g *jen.Group) {
 				Id(r.GoName).
 				Values(
 					jen.DictFunc(func(d jen.Dict) {
+						d[jen.Id("native")] = jen.Id("c")
+
 						for _, f := range r.Fields {
 							if supported, _ := f.supported(); !supported {
 								continue

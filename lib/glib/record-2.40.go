@@ -20,5 +20,5 @@ func variantdictNewFromC(c *C.GVariantDict) *Variantdict {
 		return nil
 	}
 
-	return &Variantdict{}
+	return &Variantdict{native: c}
 }

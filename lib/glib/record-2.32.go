@@ -20,7 +20,7 @@ func bytesNewFromC(c *C.GBytes) *Bytes {
 		return nil
 	}
 
-	return &Bytes{}
+	return &Bytes{native: c}
 }
 
 // Rwlock is a wrapper around the C record GRWLock.
@@ -35,7 +35,10 @@ func rwlockNewFromC(c *C.GRWLock) *Rwlock {
 		return nil
 	}
 
-	return &Rwlock{P: (uintptr)(c.p)}
+	return &Rwlock{
+		P:      (uintptr)(c.p),
+		native: c,
+	}
 }
 
 // Recmutex is a wrapper around the C record GRecMutex.
@@ -50,5 +53,8 @@ func recmutexNewFromC(c *C.GRecMutex) *Recmutex {
 		return nil
 	}
 
-	return &Recmutex{P: (uintptr)(c.p)}
+	return &Recmutex{
+		P:      (uintptr)(c.p),
+		native: c,
+	}
 }

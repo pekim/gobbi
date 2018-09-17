@@ -20,5 +20,5 @@ func hmacNewFromC(c *C.GHmac) *Hmac {
 		return nil
 	}
 
-	return &Hmac{}
+	return &Hmac{native: c}
 }

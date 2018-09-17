@@ -27,5 +27,6 @@ func logfieldNewFromC(c *C.GLogField) *Logfield {
 		Key:    C.GoString(c.key),
 		Length: (int64)(c.length),
 		Value:  (uintptr)(c.value),
+		native: c,
 	}
 }

@@ -20,5 +20,5 @@ func regexNewFromC(c *C.GRegex) *Regex {
 		return nil
 	}
 
-	return &Regex{}
+	return &Regex{native: c}
 }

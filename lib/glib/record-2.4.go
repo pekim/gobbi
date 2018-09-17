@@ -22,5 +22,5 @@ func onceNewFromC(c *C.GOnce) *Once {
 		return nil
 	}
 
-	return &Once{}
+	return &Once{native: c}
 }
