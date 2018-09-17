@@ -366,7 +366,7 @@ func FileOpenTmp(tmpl string) (int32, error) {
 	retC := C.g_file_open_tmp(c_tmpl, &c_name_used, &cThrowableError)
 	retGo := (int32)(retC)
 
-	goThrowableError := errorNewFromC(cThrowableError)
+	goThrowableError := errorNewFromC(cThrowableError, true)
 
 	return retGo, goThrowableError
 }
@@ -386,7 +386,7 @@ func FilenameFromUri(uri string) (string, error) {
 	retGo := C.GoString(retC)
 	defer C.free(unsafe.Pointer(retC))
 
-	goThrowableError := errorNewFromC(cThrowableError)
+	goThrowableError := errorNewFromC(cThrowableError, true)
 
 	return retGo, goThrowableError
 }
@@ -407,7 +407,7 @@ func FilenameToUri(filename string, hostname string) (string, error) {
 	retGo := C.GoString(retC)
 	defer C.free(unsafe.Pointer(retC))
 
-	goThrowableError := errorNewFromC(cThrowableError)
+	goThrowableError := errorNewFromC(cThrowableError, true)
 
 	return retGo, goThrowableError
 }
@@ -897,7 +897,7 @@ func ShellUnquote(quotedString string) (string, error) {
 	retGo := C.GoString(retC)
 	defer C.free(unsafe.Pointer(retC))
 
-	goThrowableError := errorNewFromC(cThrowableError)
+	goThrowableError := errorNewFromC(cThrowableError, true)
 
 	return retGo, goThrowableError
 }

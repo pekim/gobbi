@@ -17,15 +17,18 @@ type Regex struct {
 	native *C.GRegex
 }
 
-func regexNewFromC(c *C.GRegex) *Regex {
+func regexNewFromC(c *C.GRegex, finalizeFree bool) *Regex {
 	if c == nil {
 		return nil
 	}
 
 	g := &Regex{native: c}
-	runtime.SetFinalizer(g, func(obj interface{}) {
-		C.g_free(obj)
-	})
+
+	if finalizeFree {
+		runtime.SetFinalizer(g, func(obj interface{}) {
+			C.g_free((C.gpointer)(c))
+		})
+	}
 
 	return g
 }

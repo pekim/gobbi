@@ -17,15 +17,18 @@ type Bytes struct {
 	native *C.GBytes
 }
 
-func bytesNewFromC(c *C.GBytes) *Bytes {
+func bytesNewFromC(c *C.GBytes, finalizeFree bool) *Bytes {
 	if c == nil {
 		return nil
 	}
 
 	g := &Bytes{native: c}
-	runtime.SetFinalizer(g, func(obj interface{}) {
-		C.g_free(obj)
-	})
+
+	if finalizeFree {
+		runtime.SetFinalizer(g, func(obj interface{}) {
+			C.g_free((C.gpointer)(c))
+		})
+	}
 
 	return g
 }
@@ -37,7 +40,7 @@ type Rwlock struct {
 	// no type for i
 }
 
-func rwlockNewFromC(c *C.GRWLock) *Rwlock {
+func rwlockNewFromC(c *C.GRWLock, finalizeFree bool) *Rwlock {
 	if c == nil {
 		return nil
 	}
@@ -46,9 +49,12 @@ func rwlockNewFromC(c *C.GRWLock) *Rwlock {
 		P:      (uintptr)(c.p),
 		native: c,
 	}
-	runtime.SetFinalizer(g, func(obj interface{}) {
-		C.g_free(obj)
-	})
+
+	if finalizeFree {
+		runtime.SetFinalizer(g, func(obj interface{}) {
+			C.g_free((C.gpointer)(c))
+		})
+	}
 
 	return g
 }
@@ -60,7 +66,7 @@ type Recmutex struct {
 	// no type for i
 }
 
-func recmutexNewFromC(c *C.GRecMutex) *Recmutex {
+func recmutexNewFromC(c *C.GRecMutex, finalizeFree bool) *Recmutex {
 	if c == nil {
 		return nil
 	}
@@ -69,9 +75,12 @@ func recmutexNewFromC(c *C.GRecMutex) *Recmutex {
 		P:      (uintptr)(c.p),
 		native: c,
 	}
-	runtime.SetFinalizer(g, func(obj interface{}) {
-		C.g_free(obj)
-	})
+
+	if finalizeFree {
+		runtime.SetFinalizer(g, func(obj interface{}) {
+			C.g_free((C.gpointer)(c))
+		})
+	}
 
 	return g
 }

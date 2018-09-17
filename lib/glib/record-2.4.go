@@ -19,15 +19,18 @@ type Once struct {
 	// retval : no type generator for gpointer, volatile gpointer
 }
 
-func onceNewFromC(c *C.GOnce) *Once {
+func onceNewFromC(c *C.GOnce, finalizeFree bool) *Once {
 	if c == nil {
 		return nil
 	}
 
 	g := &Once{native: c}
-	runtime.SetFinalizer(g, func(obj interface{}) {
-		C.g_free(obj)
-	})
+
+	if finalizeFree {
+		runtime.SetFinalizer(g, func(obj interface{}) {
+			C.g_free((C.gpointer)(c))
+		})
+	}
 
 	return g
 }

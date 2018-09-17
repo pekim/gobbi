@@ -17,15 +17,18 @@ type Datetime struct {
 	native *C.GDateTime
 }
 
-func datetimeNewFromC(c *C.GDateTime) *Datetime {
+func datetimeNewFromC(c *C.GDateTime, finalizeFree bool) *Datetime {
 	if c == nil {
 		return nil
 	}
 
 	g := &Datetime{native: c}
-	runtime.SetFinalizer(g, func(obj interface{}) {
-		C.g_free(obj)
-	})
+
+	if finalizeFree {
+		runtime.SetFinalizer(g, func(obj interface{}) {
+			C.g_free((C.gpointer)(c))
+		})
+	}
 
 	return g
 }
@@ -35,15 +38,18 @@ type Timezone struct {
 	native *C.GTimeZone
 }
 
-func timezoneNewFromC(c *C.GTimeZone) *Timezone {
+func timezoneNewFromC(c *C.GTimeZone, finalizeFree bool) *Timezone {
 	if c == nil {
 		return nil
 	}
 
 	g := &Timezone{native: c}
-	runtime.SetFinalizer(g, func(obj interface{}) {
-		C.g_free(obj)
-	})
+
+	if finalizeFree {
+		runtime.SetFinalizer(g, func(obj interface{}) {
+			C.g_free((C.gpointer)(c))
+		})
+	}
 
 	return g
 }

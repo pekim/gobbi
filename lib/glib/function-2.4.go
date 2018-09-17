@@ -49,7 +49,7 @@ func FileReadLink(filename string) (string, error) {
 	retGo := C.GoString(retC)
 	defer C.free(unsafe.Pointer(retC))
 
-	goThrowableError := errorNewFromC(cThrowableError)
+	goThrowableError := errorNewFromC(cThrowableError, true)
 
 	return retGo, goThrowableError
 }

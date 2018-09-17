@@ -20,7 +20,7 @@ type Logfield struct {
 	Length int64
 }
 
-func logfieldNewFromC(c *C.GLogField) *Logfield {
+func logfieldNewFromC(c *C.GLogField, finalizeFree bool) *Logfield {
 	if c == nil {
 		return nil
 	}
@@ -31,9 +31,12 @@ func logfieldNewFromC(c *C.GLogField) *Logfield {
 		Value:  (uintptr)(c.value),
 		native: c,
 	}
-	runtime.SetFinalizer(g, func(obj interface{}) {
-		C.g_free(obj)
-	})
+
+	if finalizeFree {
+		runtime.SetFinalizer(g, func(obj interface{}) {
+			C.g_free((C.gpointer)(c))
+		})
+	}
 
 	return g
 }

@@ -17,15 +17,18 @@ type Variantdict struct {
 	native *C.GVariantDict
 }
 
-func variantdictNewFromC(c *C.GVariantDict) *Variantdict {
+func variantdictNewFromC(c *C.GVariantDict, finalizeFree bool) *Variantdict {
 	if c == nil {
 		return nil
 	}
 
 	g := &Variantdict{native: c}
-	runtime.SetFinalizer(g, func(obj interface{}) {
-		C.g_free(obj)
-	})
+
+	if finalizeFree {
+		runtime.SetFinalizer(g, func(obj interface{}) {
+			C.g_free((C.gpointer)(c))
+		})
+	}
 
 	return g
 }

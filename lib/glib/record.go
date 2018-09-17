@@ -18,7 +18,7 @@ type Array struct {
 	Len    uint32
 }
 
-func arrayNewFromC(c *C.GArray) *Array {
+func arrayNewFromC(c *C.GArray, finalizeFree bool) *Array {
 	if c == nil {
 		return nil
 	}
@@ -28,9 +28,12 @@ func arrayNewFromC(c *C.GArray) *Array {
 		Len:    (uint32)(c.len),
 		native: c,
 	}
-	runtime.SetFinalizer(g, func(obj interface{}) {
-		C.g_free(obj)
-	})
+
+	if finalizeFree {
+		runtime.SetFinalizer(g, func(obj interface{}) {
+			C.g_free((C.gpointer)(c))
+		})
+	}
 
 	return g
 }
@@ -40,15 +43,18 @@ type Asyncqueue struct {
 	native *C.GAsyncQueue
 }
 
-func asyncqueueNewFromC(c *C.GAsyncQueue) *Asyncqueue {
+func asyncqueueNewFromC(c *C.GAsyncQueue, finalizeFree bool) *Asyncqueue {
 	if c == nil {
 		return nil
 	}
 
 	g := &Asyncqueue{native: c}
-	runtime.SetFinalizer(g, func(obj interface{}) {
-		C.g_free(obj)
-	})
+
+	if finalizeFree {
+		runtime.SetFinalizer(g, func(obj interface{}) {
+			C.g_free((C.gpointer)(c))
+		})
+	}
 
 	return g
 }
@@ -58,15 +64,18 @@ type Bookmarkfile struct {
 	native *C.GBookmarkFile
 }
 
-func bookmarkfileNewFromC(c *C.GBookmarkFile) *Bookmarkfile {
+func bookmarkfileNewFromC(c *C.GBookmarkFile, finalizeFree bool) *Bookmarkfile {
 	if c == nil {
 		return nil
 	}
 
 	g := &Bookmarkfile{native: c}
-	runtime.SetFinalizer(g, func(obj interface{}) {
-		C.g_free(obj)
-	})
+
+	if finalizeFree {
+		runtime.SetFinalizer(g, func(obj interface{}) {
+			C.g_free((C.gpointer)(c))
+		})
+	}
 
 	return g
 }
@@ -78,7 +87,7 @@ type Bytearray struct {
 	Len uint32
 }
 
-func bytearrayNewFromC(c *C.GByteArray) *Bytearray {
+func bytearrayNewFromC(c *C.GByteArray, finalizeFree bool) *Bytearray {
 	if c == nil {
 		return nil
 	}
@@ -87,9 +96,12 @@ func bytearrayNewFromC(c *C.GByteArray) *Bytearray {
 		Len:    (uint32)(c.len),
 		native: c,
 	}
-	runtime.SetFinalizer(g, func(obj interface{}) {
-		C.g_free(obj)
-	})
+
+	if finalizeFree {
+		runtime.SetFinalizer(g, func(obj interface{}) {
+			C.g_free((C.gpointer)(c))
+		})
+	}
 
 	return g
 }
@@ -101,7 +113,7 @@ type Cond struct {
 	// no type for i
 }
 
-func condNewFromC(c *C.GCond) *Cond {
+func condNewFromC(c *C.GCond, finalizeFree bool) *Cond {
 	if c == nil {
 		return nil
 	}
@@ -110,9 +122,12 @@ func condNewFromC(c *C.GCond) *Cond {
 		P:      (uintptr)(c.p),
 		native: c,
 	}
-	runtime.SetFinalizer(g, func(obj interface{}) {
-		C.g_free(obj)
-	})
+
+	if finalizeFree {
+		runtime.SetFinalizer(g, func(obj interface{}) {
+			C.g_free((C.gpointer)(c))
+		})
+	}
 
 	return g
 }
@@ -122,15 +137,18 @@ type Data struct {
 	native *C.GData
 }
 
-func dataNewFromC(c *C.GData) *Data {
+func dataNewFromC(c *C.GData, finalizeFree bool) *Data {
 	if c == nil {
 		return nil
 	}
 
 	g := &Data{native: c}
-	runtime.SetFinalizer(g, func(obj interface{}) {
-		C.g_free(obj)
-	})
+
+	if finalizeFree {
+		runtime.SetFinalizer(g, func(obj interface{}) {
+			C.g_free((C.gpointer)(c))
+		})
+	}
 
 	return g
 }
@@ -146,15 +164,18 @@ type Date struct {
 	// Bitfield not supported : 16 year
 }
 
-func dateNewFromC(c *C.GDate) *Date {
+func dateNewFromC(c *C.GDate, finalizeFree bool) *Date {
 	if c == nil {
 		return nil
 	}
 
 	g := &Date{native: c}
-	runtime.SetFinalizer(g, func(obj interface{}) {
-		C.g_free(obj)
-	})
+
+	if finalizeFree {
+		runtime.SetFinalizer(g, func(obj interface{}) {
+			C.g_free((C.gpointer)(c))
+		})
+	}
 
 	return g
 }
@@ -166,7 +187,7 @@ type Debugkey struct {
 	Value  uint32
 }
 
-func debugkeyNewFromC(c *C.GDebugKey) *Debugkey {
+func debugkeyNewFromC(c *C.GDebugKey, finalizeFree bool) *Debugkey {
 	if c == nil {
 		return nil
 	}
@@ -176,9 +197,12 @@ func debugkeyNewFromC(c *C.GDebugKey) *Debugkey {
 		Value:  (uint32)(c.value),
 		native: c,
 	}
-	runtime.SetFinalizer(g, func(obj interface{}) {
-		C.g_free(obj)
-	})
+
+	if finalizeFree {
+		runtime.SetFinalizer(g, func(obj interface{}) {
+			C.g_free((C.gpointer)(c))
+		})
+	}
 
 	return g
 }
@@ -188,15 +212,18 @@ type Dir struct {
 	native *C.GDir
 }
 
-func dirNewFromC(c *C.GDir) *Dir {
+func dirNewFromC(c *C.GDir, finalizeFree bool) *Dir {
 	if c == nil {
 		return nil
 	}
 
 	g := &Dir{native: c}
-	runtime.SetFinalizer(g, func(obj interface{}) {
-		C.g_free(obj)
-	})
+
+	if finalizeFree {
+		runtime.SetFinalizer(g, func(obj interface{}) {
+			C.g_free((C.gpointer)(c))
+		})
+	}
 
 	return g
 }
@@ -209,7 +236,7 @@ type Error struct {
 	Message string
 }
 
-func errorNewFromC(c *C.GError) *Error {
+func errorNewFromC(c *C.GError, finalizeFree bool) *Error {
 	if c == nil {
 		return nil
 	}
@@ -220,9 +247,12 @@ func errorNewFromC(c *C.GError) *Error {
 		Message: C.GoString(c.message),
 		native:  c,
 	}
-	runtime.SetFinalizer(g, func(obj interface{}) {
-		C.g_free(obj)
-	})
+
+	if finalizeFree {
+		runtime.SetFinalizer(g, func(obj interface{}) {
+			C.g_free((C.gpointer)(c))
+		})
+	}
 
 	return g
 }
@@ -232,15 +262,18 @@ type Hashtable struct {
 	native *C.GHashTable
 }
 
-func hashtableNewFromC(c *C.GHashTable) *Hashtable {
+func hashtableNewFromC(c *C.GHashTable, finalizeFree bool) *Hashtable {
 	if c == nil {
 		return nil
 	}
 
 	g := &Hashtable{native: c}
-	runtime.SetFinalizer(g, func(obj interface{}) {
-		C.g_free(obj)
-	})
+
+	if finalizeFree {
+		runtime.SetFinalizer(g, func(obj interface{}) {
+			C.g_free((C.gpointer)(c))
+		})
+	}
 
 	return g
 }
@@ -256,7 +289,7 @@ type Hashtableiter struct {
 	Dummy6 uintptr
 }
 
-func hashtableiterNewFromC(c *C.GHashTableIter) *Hashtableiter {
+func hashtableiterNewFromC(c *C.GHashTableIter, finalizeFree bool) *Hashtableiter {
 	if c == nil {
 		return nil
 	}
@@ -269,9 +302,12 @@ func hashtableiterNewFromC(c *C.GHashTableIter) *Hashtableiter {
 		Dummy6: (uintptr)(c.dummy6),
 		native: c,
 	}
-	runtime.SetFinalizer(g, func(obj interface{}) {
-		C.g_free(obj)
-	})
+
+	if finalizeFree {
+		runtime.SetFinalizer(g, func(obj interface{}) {
+			C.g_free((C.gpointer)(c))
+		})
+	}
 
 	return g
 }
@@ -289,7 +325,7 @@ type Hook struct {
 	// destroy : no type generator for DestroyNotify, GDestroyNotify
 }
 
-func hookNewFromC(c *C.GHook) *Hook {
+func hookNewFromC(c *C.GHook, finalizeFree bool) *Hook {
 	if c == nil {
 		return nil
 	}
@@ -302,9 +338,12 @@ func hookNewFromC(c *C.GHook) *Hook {
 		RefCount: (uint32)(c.ref_count),
 		native:   c,
 	}
-	runtime.SetFinalizer(g, func(obj interface{}) {
-		C.g_free(obj)
-	})
+
+	if finalizeFree {
+		runtime.SetFinalizer(g, func(obj interface{}) {
+			C.g_free((C.gpointer)(c))
+		})
+	}
 
 	return g
 }
@@ -321,7 +360,7 @@ type Hooklist struct {
 	// no type for dummy
 }
 
-func hooklistNewFromC(c *C.GHookList) *Hooklist {
+func hooklistNewFromC(c *C.GHookList, finalizeFree bool) *Hooklist {
 	if c == nil {
 		return nil
 	}
@@ -331,9 +370,12 @@ func hooklistNewFromC(c *C.GHookList) *Hooklist {
 		SeqId:  (uint64)(c.seq_id),
 		native: c,
 	}
-	runtime.SetFinalizer(g, func(obj interface{}) {
-		C.g_free(obj)
-	})
+
+	if finalizeFree {
+		runtime.SetFinalizer(g, func(obj interface{}) {
+			C.g_free((C.gpointer)(c))
+		})
+	}
 
 	return g
 }
@@ -365,7 +407,7 @@ type Iochannel struct {
 	Reserved2 uintptr
 }
 
-func iochannelNewFromC(c *C.GIOChannel) *Iochannel {
+func iochannelNewFromC(c *C.GIOChannel, finalizeFree bool) *Iochannel {
 	if c == nil {
 		return nil
 	}
@@ -380,9 +422,12 @@ func iochannelNewFromC(c *C.GIOChannel) *Iochannel {
 		Reserved2:   (uintptr)(c.reserved2),
 		native:      c,
 	}
-	runtime.SetFinalizer(g, func(obj interface{}) {
-		C.g_free(obj)
-	})
+
+	if finalizeFree {
+		runtime.SetFinalizer(g, func(obj interface{}) {
+			C.g_free((C.gpointer)(c))
+		})
+	}
 
 	return g
 }
@@ -400,15 +445,18 @@ type Iofuncs struct {
 	// no type for io_get_flags
 }
 
-func iofuncsNewFromC(c *C.GIOFuncs) *Iofuncs {
+func iofuncsNewFromC(c *C.GIOFuncs, finalizeFree bool) *Iofuncs {
 	if c == nil {
 		return nil
 	}
 
 	g := &Iofuncs{native: c}
-	runtime.SetFinalizer(g, func(obj interface{}) {
-		C.g_free(obj)
-	})
+
+	if finalizeFree {
+		runtime.SetFinalizer(g, func(obj interface{}) {
+			C.g_free((C.gpointer)(c))
+		})
+	}
 
 	return g
 }
@@ -418,15 +466,18 @@ type Keyfile struct {
 	native *C.GKeyFile
 }
 
-func keyfileNewFromC(c *C.GKeyFile) *Keyfile {
+func keyfileNewFromC(c *C.GKeyFile, finalizeFree bool) *Keyfile {
 	if c == nil {
 		return nil
 	}
 
 	g := &Keyfile{native: c}
-	runtime.SetFinalizer(g, func(obj interface{}) {
-		C.g_free(obj)
-	})
+
+	if finalizeFree {
+		runtime.SetFinalizer(g, func(obj interface{}) {
+			C.g_free((C.gpointer)(c))
+		})
+	}
 
 	return g
 }
@@ -439,7 +490,7 @@ type List struct {
 	// prev : no type generator for GLib.List, GList*
 }
 
-func listNewFromC(c *C.GList) *List {
+func listNewFromC(c *C.GList, finalizeFree bool) *List {
 	if c == nil {
 		return nil
 	}
@@ -448,9 +499,12 @@ func listNewFromC(c *C.GList) *List {
 		Data:   (uintptr)(c.data),
 		native: c,
 	}
-	runtime.SetFinalizer(g, func(obj interface{}) {
-		C.g_free(obj)
-	})
+
+	if finalizeFree {
+		runtime.SetFinalizer(g, func(obj interface{}) {
+			C.g_free((C.gpointer)(c))
+		})
+	}
 
 	return g
 }
@@ -460,15 +514,18 @@ type Maincontext struct {
 	native *C.GMainContext
 }
 
-func maincontextNewFromC(c *C.GMainContext) *Maincontext {
+func maincontextNewFromC(c *C.GMainContext, finalizeFree bool) *Maincontext {
 	if c == nil {
 		return nil
 	}
 
 	g := &Maincontext{native: c}
-	runtime.SetFinalizer(g, func(obj interface{}) {
-		C.g_free(obj)
-	})
+
+	if finalizeFree {
+		runtime.SetFinalizer(g, func(obj interface{}) {
+			C.g_free((C.gpointer)(c))
+		})
+	}
 
 	return g
 }
@@ -478,15 +535,18 @@ type Mainloop struct {
 	native *C.GMainLoop
 }
 
-func mainloopNewFromC(c *C.GMainLoop) *Mainloop {
+func mainloopNewFromC(c *C.GMainLoop, finalizeFree bool) *Mainloop {
 	if c == nil {
 		return nil
 	}
 
 	g := &Mainloop{native: c}
-	runtime.SetFinalizer(g, func(obj interface{}) {
-		C.g_free(obj)
-	})
+
+	if finalizeFree {
+		runtime.SetFinalizer(g, func(obj interface{}) {
+			C.g_free((C.gpointer)(c))
+		})
+	}
 
 	return g
 }
@@ -496,15 +556,18 @@ type Mappedfile struct {
 	native *C.GMappedFile
 }
 
-func mappedfileNewFromC(c *C.GMappedFile) *Mappedfile {
+func mappedfileNewFromC(c *C.GMappedFile, finalizeFree bool) *Mappedfile {
 	if c == nil {
 		return nil
 	}
 
 	g := &Mappedfile{native: c}
-	runtime.SetFinalizer(g, func(obj interface{}) {
-		C.g_free(obj)
-	})
+
+	if finalizeFree {
+		runtime.SetFinalizer(g, func(obj interface{}) {
+			C.g_free((C.gpointer)(c))
+		})
+	}
 
 	return g
 }
@@ -514,15 +577,18 @@ type Markupparsecontext struct {
 	native *C.GMarkupParseContext
 }
 
-func markupparsecontextNewFromC(c *C.GMarkupParseContext) *Markupparsecontext {
+func markupparsecontextNewFromC(c *C.GMarkupParseContext, finalizeFree bool) *Markupparsecontext {
 	if c == nil {
 		return nil
 	}
 
 	g := &Markupparsecontext{native: c}
-	runtime.SetFinalizer(g, func(obj interface{}) {
-		C.g_free(obj)
-	})
+
+	if finalizeFree {
+		runtime.SetFinalizer(g, func(obj interface{}) {
+			C.g_free((C.gpointer)(c))
+		})
+	}
 
 	return g
 }
@@ -537,15 +603,18 @@ type Markupparser struct {
 	// no type for error
 }
 
-func markupparserNewFromC(c *C.GMarkupParser) *Markupparser {
+func markupparserNewFromC(c *C.GMarkupParser, finalizeFree bool) *Markupparser {
 	if c == nil {
 		return nil
 	}
 
 	g := &Markupparser{native: c}
-	runtime.SetFinalizer(g, func(obj interface{}) {
-		C.g_free(obj)
-	})
+
+	if finalizeFree {
+		runtime.SetFinalizer(g, func(obj interface{}) {
+			C.g_free((C.gpointer)(c))
+		})
+	}
 
 	return g
 }
@@ -555,15 +624,18 @@ type Matchinfo struct {
 	native *C.GMatchInfo
 }
 
-func matchinfoNewFromC(c *C.GMatchInfo) *Matchinfo {
+func matchinfoNewFromC(c *C.GMatchInfo, finalizeFree bool) *Matchinfo {
 	if c == nil {
 		return nil
 	}
 
 	g := &Matchinfo{native: c}
-	runtime.SetFinalizer(g, func(obj interface{}) {
-		C.g_free(obj)
-	})
+
+	if finalizeFree {
+		runtime.SetFinalizer(g, func(obj interface{}) {
+			C.g_free((C.gpointer)(c))
+		})
+	}
 
 	return g
 }
@@ -579,15 +651,18 @@ type Memvtable struct {
 	// no type for try_realloc
 }
 
-func memvtableNewFromC(c *C.GMemVTable) *Memvtable {
+func memvtableNewFromC(c *C.GMemVTable, finalizeFree bool) *Memvtable {
 	if c == nil {
 		return nil
 	}
 
 	g := &Memvtable{native: c}
-	runtime.SetFinalizer(g, func(obj interface{}) {
-		C.g_free(obj)
-	})
+
+	if finalizeFree {
+		runtime.SetFinalizer(g, func(obj interface{}) {
+			C.g_free((C.gpointer)(c))
+		})
+	}
 
 	return g
 }
@@ -602,7 +677,7 @@ type Node struct {
 	// children : no type generator for Node, GNode*
 }
 
-func nodeNewFromC(c *C.GNode) *Node {
+func nodeNewFromC(c *C.GNode, finalizeFree bool) *Node {
 	if c == nil {
 		return nil
 	}
@@ -611,9 +686,12 @@ func nodeNewFromC(c *C.GNode) *Node {
 		Data:   (uintptr)(c.data),
 		native: c,
 	}
-	runtime.SetFinalizer(g, func(obj interface{}) {
-		C.g_free(obj)
-	})
+
+	if finalizeFree {
+		runtime.SetFinalizer(g, func(obj interface{}) {
+			C.g_free((C.gpointer)(c))
+		})
+	}
 
 	return g
 }
@@ -623,15 +701,18 @@ type Optioncontext struct {
 	native *C.GOptionContext
 }
 
-func optioncontextNewFromC(c *C.GOptionContext) *Optioncontext {
+func optioncontextNewFromC(c *C.GOptionContext, finalizeFree bool) *Optioncontext {
 	if c == nil {
 		return nil
 	}
 
 	g := &Optioncontext{native: c}
-	runtime.SetFinalizer(g, func(obj interface{}) {
-		C.g_free(obj)
-	})
+
+	if finalizeFree {
+		runtime.SetFinalizer(g, func(obj interface{}) {
+			C.g_free((C.gpointer)(c))
+		})
+	}
 
 	return g
 }
@@ -648,7 +729,7 @@ type Optionentry struct {
 	ArgDescription string
 }
 
-func optionentryNewFromC(c *C.GOptionEntry) *Optionentry {
+func optionentryNewFromC(c *C.GOptionEntry, finalizeFree bool) *Optionentry {
 	if c == nil {
 		return nil
 	}
@@ -662,9 +743,12 @@ func optionentryNewFromC(c *C.GOptionEntry) *Optionentry {
 		ShortName:      (rune)(c.short_name),
 		native:         c,
 	}
-	runtime.SetFinalizer(g, func(obj interface{}) {
-		C.g_free(obj)
-	})
+
+	if finalizeFree {
+		runtime.SetFinalizer(g, func(obj interface{}) {
+			C.g_free((C.gpointer)(c))
+		})
+	}
 
 	return g
 }
@@ -674,15 +758,18 @@ type Optiongroup struct {
 	native *C.GOptionGroup
 }
 
-func optiongroupNewFromC(c *C.GOptionGroup) *Optiongroup {
+func optiongroupNewFromC(c *C.GOptionGroup, finalizeFree bool) *Optiongroup {
 	if c == nil {
 		return nil
 	}
 
 	g := &Optiongroup{native: c}
-	runtime.SetFinalizer(g, func(obj interface{}) {
-		C.g_free(obj)
-	})
+
+	if finalizeFree {
+		runtime.SetFinalizer(g, func(obj interface{}) {
+			C.g_free((C.gpointer)(c))
+		})
+	}
 
 	return g
 }
@@ -692,15 +779,18 @@ type Patternspec struct {
 	native *C.GPatternSpec
 }
 
-func patternspecNewFromC(c *C.GPatternSpec) *Patternspec {
+func patternspecNewFromC(c *C.GPatternSpec, finalizeFree bool) *Patternspec {
 	if c == nil {
 		return nil
 	}
 
 	g := &Patternspec{native: c}
-	runtime.SetFinalizer(g, func(obj interface{}) {
-		C.g_free(obj)
-	})
+
+	if finalizeFree {
+		runtime.SetFinalizer(g, func(obj interface{}) {
+			C.g_free((C.gpointer)(c))
+		})
+	}
 
 	return g
 }
@@ -713,7 +803,7 @@ type Pollfd struct {
 	Revents uint32
 }
 
-func pollfdNewFromC(c *C.GPollFD) *Pollfd {
+func pollfdNewFromC(c *C.GPollFD, finalizeFree bool) *Pollfd {
 	if c == nil {
 		return nil
 	}
@@ -724,9 +814,12 @@ func pollfdNewFromC(c *C.GPollFD) *Pollfd {
 		Revents: (uint32)(c.revents),
 		native:  c,
 	}
-	runtime.SetFinalizer(g, func(obj interface{}) {
-		C.g_free(obj)
-	})
+
+	if finalizeFree {
+		runtime.SetFinalizer(g, func(obj interface{}) {
+			C.g_free((C.gpointer)(c))
+		})
+	}
 
 	return g
 }
@@ -739,7 +832,7 @@ type Private struct {
 	// no type for future
 }
 
-func privateNewFromC(c *C.GPrivate) *Private {
+func privateNewFromC(c *C.GPrivate, finalizeFree bool) *Private {
 	if c == nil {
 		return nil
 	}
@@ -748,9 +841,12 @@ func privateNewFromC(c *C.GPrivate) *Private {
 		P:      (uintptr)(c.p),
 		native: c,
 	}
-	runtime.SetFinalizer(g, func(obj interface{}) {
-		C.g_free(obj)
-	})
+
+	if finalizeFree {
+		runtime.SetFinalizer(g, func(obj interface{}) {
+			C.g_free((C.gpointer)(c))
+		})
+	}
 
 	return g
 }
@@ -762,7 +858,7 @@ type Ptrarray struct {
 	Len uint32
 }
 
-func ptrarrayNewFromC(c *C.GPtrArray) *Ptrarray {
+func ptrarrayNewFromC(c *C.GPtrArray, finalizeFree bool) *Ptrarray {
 	if c == nil {
 		return nil
 	}
@@ -771,9 +867,12 @@ func ptrarrayNewFromC(c *C.GPtrArray) *Ptrarray {
 		Len:    (uint32)(c.len),
 		native: c,
 	}
-	runtime.SetFinalizer(g, func(obj interface{}) {
-		C.g_free(obj)
-	})
+
+	if finalizeFree {
+		runtime.SetFinalizer(g, func(obj interface{}) {
+			C.g_free((C.gpointer)(c))
+		})
+	}
 
 	return g
 }
@@ -786,7 +885,7 @@ type Queue struct {
 	Length uint32
 }
 
-func queueNewFromC(c *C.GQueue) *Queue {
+func queueNewFromC(c *C.GQueue, finalizeFree bool) *Queue {
 	if c == nil {
 		return nil
 	}
@@ -795,9 +894,12 @@ func queueNewFromC(c *C.GQueue) *Queue {
 		Length: (uint32)(c.length),
 		native: c,
 	}
-	runtime.SetFinalizer(g, func(obj interface{}) {
-		C.g_free(obj)
-	})
+
+	if finalizeFree {
+		runtime.SetFinalizer(g, func(obj interface{}) {
+			C.g_free((C.gpointer)(c))
+		})
+	}
 
 	return g
 }
@@ -807,15 +909,18 @@ type Rand struct {
 	native *C.GRand
 }
 
-func randNewFromC(c *C.GRand) *Rand {
+func randNewFromC(c *C.GRand, finalizeFree bool) *Rand {
 	if c == nil {
 		return nil
 	}
 
 	g := &Rand{native: c}
-	runtime.SetFinalizer(g, func(obj interface{}) {
-		C.g_free(obj)
-	})
+
+	if finalizeFree {
+		runtime.SetFinalizer(g, func(obj interface{}) {
+			C.g_free((C.gpointer)(c))
+		})
+	}
 
 	return g
 }
@@ -827,7 +932,7 @@ type Slist struct {
 	// next : no type generator for GLib.SList, GSList*
 }
 
-func slistNewFromC(c *C.GSList) *Slist {
+func slistNewFromC(c *C.GSList, finalizeFree bool) *Slist {
 	if c == nil {
 		return nil
 	}
@@ -836,9 +941,12 @@ func slistNewFromC(c *C.GSList) *Slist {
 		Data:   (uintptr)(c.data),
 		native: c,
 	}
-	runtime.SetFinalizer(g, func(obj interface{}) {
-		C.g_free(obj)
-	})
+
+	if finalizeFree {
+		runtime.SetFinalizer(g, func(obj interface{}) {
+			C.g_free((C.gpointer)(c))
+		})
+	}
 
 	return g
 }
@@ -869,7 +977,7 @@ type Scanner struct {
 	// msg_handler : no type generator for ScannerMsgFunc, GScannerMsgFunc
 }
 
-func scannerNewFromC(c *C.GScanner) *Scanner {
+func scannerNewFromC(c *C.GScanner, finalizeFree bool) *Scanner {
 	if c == nil {
 		return nil
 	}
@@ -890,9 +998,12 @@ func scannerNewFromC(c *C.GScanner) *Scanner {
 		UserData:       (uintptr)(c.user_data),
 		native:         c,
 	}
-	runtime.SetFinalizer(g, func(obj interface{}) {
-		C.g_free(obj)
-	})
+
+	if finalizeFree {
+		runtime.SetFinalizer(g, func(obj interface{}) {
+			C.g_free((C.gpointer)(c))
+		})
+	}
 
 	return g
 }
@@ -929,7 +1040,7 @@ type Scannerconfig struct {
 	PaddingDummy uint32
 }
 
-func scannerconfigNewFromC(c *C.GScannerConfig) *Scannerconfig {
+func scannerconfigNewFromC(c *C.GScannerConfig, finalizeFree bool) *Scannerconfig {
 	if c == nil {
 		return nil
 	}
@@ -942,9 +1053,12 @@ func scannerconfigNewFromC(c *C.GScannerConfig) *Scannerconfig {
 		PaddingDummy:        (uint32)(c.padding_dummy),
 		native:              c,
 	}
-	runtime.SetFinalizer(g, func(obj interface{}) {
-		C.g_free(obj)
-	})
+
+	if finalizeFree {
+		runtime.SetFinalizer(g, func(obj interface{}) {
+			C.g_free((C.gpointer)(c))
+		})
+	}
 
 	return g
 }
@@ -954,15 +1068,18 @@ type Sequence struct {
 	native *C.GSequence
 }
 
-func sequenceNewFromC(c *C.GSequence) *Sequence {
+func sequenceNewFromC(c *C.GSequence, finalizeFree bool) *Sequence {
 	if c == nil {
 		return nil
 	}
 
 	g := &Sequence{native: c}
-	runtime.SetFinalizer(g, func(obj interface{}) {
-		C.g_free(obj)
-	})
+
+	if finalizeFree {
+		runtime.SetFinalizer(g, func(obj interface{}) {
+			C.g_free((C.gpointer)(c))
+		})
+	}
 
 	return g
 }
@@ -972,15 +1089,18 @@ type Sequenceiter struct {
 	native *C.GSequenceIter
 }
 
-func sequenceiterNewFromC(c *C.GSequenceIter) *Sequenceiter {
+func sequenceiterNewFromC(c *C.GSequenceIter, finalizeFree bool) *Sequenceiter {
 	if c == nil {
 		return nil
 	}
 
 	g := &Sequenceiter{native: c}
-	runtime.SetFinalizer(g, func(obj interface{}) {
-		C.g_free(obj)
-	})
+
+	if finalizeFree {
+		runtime.SetFinalizer(g, func(obj interface{}) {
+			C.g_free((C.gpointer)(c))
+		})
+	}
 
 	return g
 }
@@ -1003,7 +1123,7 @@ type Source struct {
 	// priv : no type generator for SourcePrivate, GSourcePrivate*
 }
 
-func sourceNewFromC(c *C.GSource) *Source {
+func sourceNewFromC(c *C.GSource, finalizeFree bool) *Source {
 	if c == nil {
 		return nil
 	}
@@ -1017,9 +1137,12 @@ func sourceNewFromC(c *C.GSource) *Source {
 		SourceId:     (uint32)(c.source_id),
 		native:       c,
 	}
-	runtime.SetFinalizer(g, func(obj interface{}) {
-		C.g_free(obj)
-	})
+
+	if finalizeFree {
+		runtime.SetFinalizer(g, func(obj interface{}) {
+			C.g_free((C.gpointer)(c))
+		})
+	}
 
 	return g
 }
@@ -1032,15 +1155,18 @@ type Sourcecallbackfuncs struct {
 	// no type for get
 }
 
-func sourcecallbackfuncsNewFromC(c *C.GSourceCallbackFuncs) *Sourcecallbackfuncs {
+func sourcecallbackfuncsNewFromC(c *C.GSourceCallbackFuncs, finalizeFree bool) *Sourcecallbackfuncs {
 	if c == nil {
 		return nil
 	}
 
 	g := &Sourcecallbackfuncs{native: c}
-	runtime.SetFinalizer(g, func(obj interface{}) {
-		C.g_free(obj)
-	})
+
+	if finalizeFree {
+		runtime.SetFinalizer(g, func(obj interface{}) {
+			C.g_free((C.gpointer)(c))
+		})
+	}
 
 	return g
 }
@@ -1056,15 +1182,18 @@ type Sourcefuncs struct {
 	// closure_marshal : no type generator for SourceDummyMarshal, GSourceDummyMarshal
 }
 
-func sourcefuncsNewFromC(c *C.GSourceFuncs) *Sourcefuncs {
+func sourcefuncsNewFromC(c *C.GSourceFuncs, finalizeFree bool) *Sourcefuncs {
 	if c == nil {
 		return nil
 	}
 
 	g := &Sourcefuncs{native: c}
-	runtime.SetFinalizer(g, func(obj interface{}) {
-		C.g_free(obj)
-	})
+
+	if finalizeFree {
+		runtime.SetFinalizer(g, func(obj interface{}) {
+			C.g_free((C.gpointer)(c))
+		})
+	}
 
 	return g
 }
@@ -1074,15 +1203,18 @@ type Sourceprivate struct {
 	native *C.GSourcePrivate
 }
 
-func sourceprivateNewFromC(c *C.GSourcePrivate) *Sourceprivate {
+func sourceprivateNewFromC(c *C.GSourcePrivate, finalizeFree bool) *Sourceprivate {
 	if c == nil {
 		return nil
 	}
 
 	g := &Sourceprivate{native: c}
-	runtime.SetFinalizer(g, func(obj interface{}) {
-		C.g_free(obj)
-	})
+
+	if finalizeFree {
+		runtime.SetFinalizer(g, func(obj interface{}) {
+			C.g_free((C.gpointer)(c))
+		})
+	}
 
 	return g
 }
@@ -1092,15 +1224,18 @@ type Statbuf struct {
 	native *C.GStatBuf
 }
 
-func statbufNewFromC(c *C.GStatBuf) *Statbuf {
+func statbufNewFromC(c *C.GStatBuf, finalizeFree bool) *Statbuf {
 	if c == nil {
 		return nil
 	}
 
 	g := &Statbuf{native: c}
-	runtime.SetFinalizer(g, func(obj interface{}) {
-		C.g_free(obj)
-	})
+
+	if finalizeFree {
+		runtime.SetFinalizer(g, func(obj interface{}) {
+			C.g_free((C.gpointer)(c))
+		})
+	}
 
 	return g
 }
@@ -1113,7 +1248,7 @@ type String struct {
 	AllocatedLen uint64
 }
 
-func stringNewFromC(c *C.GString) *String {
+func stringNewFromC(c *C.GString, finalizeFree bool) *String {
 	if c == nil {
 		return nil
 	}
@@ -1124,9 +1259,12 @@ func stringNewFromC(c *C.GString) *String {
 		Str:          C.GoString(c.str),
 		native:       c,
 	}
-	runtime.SetFinalizer(g, func(obj interface{}) {
-		C.g_free(obj)
-	})
+
+	if finalizeFree {
+		runtime.SetFinalizer(g, func(obj interface{}) {
+			C.g_free((C.gpointer)(c))
+		})
+	}
 
 	return g
 }
@@ -1136,15 +1274,18 @@ type Stringchunk struct {
 	native *C.GStringChunk
 }
 
-func stringchunkNewFromC(c *C.GStringChunk) *Stringchunk {
+func stringchunkNewFromC(c *C.GStringChunk, finalizeFree bool) *Stringchunk {
 	if c == nil {
 		return nil
 	}
 
 	g := &Stringchunk{native: c}
-	runtime.SetFinalizer(g, func(obj interface{}) {
-		C.g_free(obj)
-	})
+
+	if finalizeFree {
+		runtime.SetFinalizer(g, func(obj interface{}) {
+			C.g_free((C.gpointer)(c))
+		})
+	}
 
 	return g
 }
@@ -1154,15 +1295,18 @@ type Testcase struct {
 	native *C.GTestCase
 }
 
-func testcaseNewFromC(c *C.GTestCase) *Testcase {
+func testcaseNewFromC(c *C.GTestCase, finalizeFree bool) *Testcase {
 	if c == nil {
 		return nil
 	}
 
 	g := &Testcase{native: c}
-	runtime.SetFinalizer(g, func(obj interface{}) {
-		C.g_free(obj)
-	})
+
+	if finalizeFree {
+		runtime.SetFinalizer(g, func(obj interface{}) {
+			C.g_free((C.gpointer)(c))
+		})
+	}
 
 	return g
 }
@@ -1178,15 +1322,18 @@ type Testconfig struct {
 	// test_undefined : no type generator for gboolean, gboolean
 }
 
-func testconfigNewFromC(c *C.GTestConfig) *Testconfig {
+func testconfigNewFromC(c *C.GTestConfig, finalizeFree bool) *Testconfig {
 	if c == nil {
 		return nil
 	}
 
 	g := &Testconfig{native: c}
-	runtime.SetFinalizer(g, func(obj interface{}) {
-		C.g_free(obj)
-	})
+
+	if finalizeFree {
+		runtime.SetFinalizer(g, func(obj interface{}) {
+			C.g_free((C.gpointer)(c))
+		})
+	}
 
 	return g
 }
@@ -1200,15 +1347,18 @@ type Testsuite struct {
 	native *C.GTestSuite
 }
 
-func testsuiteNewFromC(c *C.GTestSuite) *Testsuite {
+func testsuiteNewFromC(c *C.GTestSuite, finalizeFree bool) *Testsuite {
 	if c == nil {
 		return nil
 	}
 
 	g := &Testsuite{native: c}
-	runtime.SetFinalizer(g, func(obj interface{}) {
-		C.g_free(obj)
-	})
+
+	if finalizeFree {
+		runtime.SetFinalizer(g, func(obj interface{}) {
+			C.g_free((C.gpointer)(c))
+		})
+	}
 
 	return g
 }
@@ -1218,15 +1368,18 @@ type Thread struct {
 	native *C.GThread
 }
 
-func threadNewFromC(c *C.GThread) *Thread {
+func threadNewFromC(c *C.GThread, finalizeFree bool) *Thread {
 	if c == nil {
 		return nil
 	}
 
 	g := &Thread{native: c}
-	runtime.SetFinalizer(g, func(obj interface{}) {
-		C.g_free(obj)
-	})
+
+	if finalizeFree {
+		runtime.SetFinalizer(g, func(obj interface{}) {
+			C.g_free((C.gpointer)(c))
+		})
+	}
 
 	return g
 }
@@ -1239,7 +1392,7 @@ type Threadpool struct {
 	// exclusive : no type generator for gboolean, gboolean
 }
 
-func threadpoolNewFromC(c *C.GThreadPool) *Threadpool {
+func threadpoolNewFromC(c *C.GThreadPool, finalizeFree bool) *Threadpool {
 	if c == nil {
 		return nil
 	}
@@ -1248,9 +1401,12 @@ func threadpoolNewFromC(c *C.GThreadPool) *Threadpool {
 		UserData: (uintptr)(c.user_data),
 		native:   c,
 	}
-	runtime.SetFinalizer(g, func(obj interface{}) {
-		C.g_free(obj)
-	})
+
+	if finalizeFree {
+		runtime.SetFinalizer(g, func(obj interface{}) {
+			C.g_free((C.gpointer)(c))
+		})
+	}
 
 	return g
 }
@@ -1262,7 +1418,7 @@ type Timeval struct {
 	TvUsec int64
 }
 
-func timevalNewFromC(c *C.GTimeVal) *Timeval {
+func timevalNewFromC(c *C.GTimeVal, finalizeFree bool) *Timeval {
 	if c == nil {
 		return nil
 	}
@@ -1272,9 +1428,12 @@ func timevalNewFromC(c *C.GTimeVal) *Timeval {
 		TvUsec: (int64)(c.tv_usec),
 		native: c,
 	}
-	runtime.SetFinalizer(g, func(obj interface{}) {
-		C.g_free(obj)
-	})
+
+	if finalizeFree {
+		runtime.SetFinalizer(g, func(obj interface{}) {
+			C.g_free((C.gpointer)(c))
+		})
+	}
 
 	return g
 }
@@ -1284,15 +1443,18 @@ type Timer struct {
 	native *C.GTimer
 }
 
-func timerNewFromC(c *C.GTimer) *Timer {
+func timerNewFromC(c *C.GTimer, finalizeFree bool) *Timer {
 	if c == nil {
 		return nil
 	}
 
 	g := &Timer{native: c}
-	runtime.SetFinalizer(g, func(obj interface{}) {
-		C.g_free(obj)
-	})
+
+	if finalizeFree {
+		runtime.SetFinalizer(g, func(obj interface{}) {
+			C.g_free((C.gpointer)(c))
+		})
+	}
 
 	return g
 }
@@ -1303,15 +1465,18 @@ type Trashstack struct {
 	// next : no type generator for TrashStack, GTrashStack*
 }
 
-func trashstackNewFromC(c *C.GTrashStack) *Trashstack {
+func trashstackNewFromC(c *C.GTrashStack, finalizeFree bool) *Trashstack {
 	if c == nil {
 		return nil
 	}
 
 	g := &Trashstack{native: c}
-	runtime.SetFinalizer(g, func(obj interface{}) {
-		C.g_free(obj)
-	})
+
+	if finalizeFree {
+		runtime.SetFinalizer(g, func(obj interface{}) {
+			C.g_free((C.gpointer)(c))
+		})
+	}
 
 	return g
 }
@@ -1321,15 +1486,18 @@ type Tree struct {
 	native *C.GTree
 }
 
-func treeNewFromC(c *C.GTree) *Tree {
+func treeNewFromC(c *C.GTree, finalizeFree bool) *Tree {
 	if c == nil {
 		return nil
 	}
 
 	g := &Tree{native: c}
-	runtime.SetFinalizer(g, func(obj interface{}) {
-		C.g_free(obj)
-	})
+
+	if finalizeFree {
+		runtime.SetFinalizer(g, func(obj interface{}) {
+			C.g_free((C.gpointer)(c))
+		})
+	}
 
 	return g
 }
@@ -1339,15 +1507,18 @@ type Variantbuilder struct {
 	native *C.GVariantBuilder
 }
 
-func variantbuilderNewFromC(c *C.GVariantBuilder) *Variantbuilder {
+func variantbuilderNewFromC(c *C.GVariantBuilder, finalizeFree bool) *Variantbuilder {
 	if c == nil {
 		return nil
 	}
 
 	g := &Variantbuilder{native: c}
-	runtime.SetFinalizer(g, func(obj interface{}) {
-		C.g_free(obj)
-	})
+
+	if finalizeFree {
+		runtime.SetFinalizer(g, func(obj interface{}) {
+			C.g_free((C.gpointer)(c))
+		})
+	}
 
 	return g
 }
@@ -1358,15 +1529,18 @@ type Variantiter struct {
 	// no type for x
 }
 
-func variantiterNewFromC(c *C.GVariantIter) *Variantiter {
+func variantiterNewFromC(c *C.GVariantIter, finalizeFree bool) *Variantiter {
 	if c == nil {
 		return nil
 	}
 
 	g := &Variantiter{native: c}
-	runtime.SetFinalizer(g, func(obj interface{}) {
-		C.g_free(obj)
-	})
+
+	if finalizeFree {
+		runtime.SetFinalizer(g, func(obj interface{}) {
+			C.g_free((C.gpointer)(c))
+		})
+	}
 
 	return g
 }

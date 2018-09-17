@@ -17,15 +17,18 @@ type Hmac struct {
 	native *C.GHmac
 }
 
-func hmacNewFromC(c *C.GHmac) *Hmac {
+func hmacNewFromC(c *C.GHmac, finalizeFree bool) *Hmac {
 	if c == nil {
 		return nil
 	}
 
 	g := &Hmac{native: c}
-	runtime.SetFinalizer(g, func(obj interface{}) {
-		C.g_free(obj)
-	})
+
+	if finalizeFree {
+		runtime.SetFinalizer(g, func(obj interface{}) {
+			C.g_free((C.gpointer)(c))
+		})
+	}
 
 	return g
 }
