@@ -11,15 +11,19 @@ func (r *RecordNewFromCFunc) generate(g *jen.Group) {
 		Func().
 		Id(r.newFromCFuncName).
 		ParamsFunc(r.generateParams).
-		ParamsFunc(r.generateNewFromCFunc).
+		ParamsFunc(r.generateReturnDeclaration).
 		BlockFunc(func(g *jen.Group) {
-			r.generateNotCreateGoStruct(g)
+			// If the C parameter is nil, do not create a Go struct.
+			// Instead, return nil.
+			g.If(jen.Id("c").Op("==").Nil()).
+				Block(jen.Return(jen.Nil()))
 			g.Line()
 
 			r.generateCreateGoStruct(g)
 			g.Line()
 
-			r.generateFinalizeFree(g)
+			g.If(jen.Id("finalizeFree")).
+				BlockFunc(r.generateFinalizeFree)
 			g.Line()
 
 			g.
@@ -41,21 +45,10 @@ func (r *RecordNewFromCFunc) generateParams(g *jen.Group) {
 		Id("bool")
 }
 
-func (r *RecordNewFromCFunc) generateNewFromCFunc(g *jen.Group) {
+func (r *RecordNewFromCFunc) generateReturnDeclaration(g *jen.Group) {
 	g.
 		Op("*").
 		Id(r.GoName)
-}
-
-func (r *RecordNewFromCFunc) generateNotCreateGoStruct(g *jen.Group) {
-	// If the C parameter is nil, do not create a Go struct.
-	// Instead, return nil.
-	g.If(
-		jen.
-			Id("c").
-			Op("==").
-			Nil()).
-		Block(jen.Return(jen.Nil()))
 }
 
 func (r *RecordNewFromCFunc) generateCreateGoStruct(g *jen.Group) {
@@ -64,45 +57,38 @@ func (r *RecordNewFromCFunc) generateCreateGoStruct(g *jen.Group) {
 		Op(":=").
 		Op("&").
 		Id(r.GoName).
-		Values(
-			jen.DictFunc(func(d jen.Dict) {
-				d[jen.Id("native")] = jen.Id("c")
+		Values(jen.DictFunc(r.generateStructValues))
+}
 
-				for _, f := range r.Fields {
-					if supported, _ := f.supported(); !supported {
-						continue
-					}
+func (r *RecordNewFromCFunc) generateStructValues(d jen.Dict) {
+	d[jen.Id("native")] = jen.Id("c")
 
-					cValue := jen.
-						Id("c").
-						Op(".").
-						Id(f.Name)
+	for _, f := range r.Fields {
+		if supported, _ := f.supported(); !supported {
+			continue
+		}
 
-					d[jen.Id(f.goVarName)] = f.Type.generator.generateCToGo(cValue)
-				}
-			}))
+		cValue := jen.
+			Id("c").
+			Op(".").
+			Id(f.Name)
+
+		d[jen.Id(f.goVarName)] = f.Type.generator.generateCToGo(cValue)
+	}
 }
 
 func (r *RecordNewFromCFunc) generateFinalizeFree(g *jen.Group) {
-	g.
-		If(jen.Id("finalizeFree")).
-		BlockFunc(func(g *jen.Group) {
-			g.Qual("runtime", "SetFinalizer").
-				Call(
-					jen.Id("g"),
-					jen.
-						Func().
-						Params(
-							jen.
-								Id("obj").
-								Id("interface").
-								Op("{}")).
-						BlockFunc(func(g *jen.Group) {
-							g.
-								Qual("C", "g_free").
-								Call(jen.
-									Parens(jen.Qual("C", "gpointer")).
-									Parens(jen.Id("c")))
-						}))
-		})
+	g.Qual("runtime", "SetFinalizer").
+		Call(
+			jen.Id("g"),
+			jen.
+				Func().
+				Params(jen.Id("obj").Id("interface").Op("{}")).
+				BlockFunc(func(g *jen.Group) {
+					g.
+						Qual("C", "g_free").
+						Call(jen.
+							Parens(jen.Qual("C", "gpointer")).
+							Parens(jen.Id("c")))
+				}))
 }
