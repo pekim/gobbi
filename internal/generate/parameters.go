@@ -26,6 +26,24 @@ func (pp Parameters) generateCVars(g *jen.Group) {
 	}
 }
 
+func (pp Parameters) generateOutputParamsReturnDeclaration(g *jen.Group) {
+	for _, p := range pp {
+		p.generateOutputParamReturnDeclaration(g)
+	}
+}
+
+func (pp Parameters) generateOutputParamsReturns(g *jen.Group) {
+	for _, p := range pp {
+		p.generateOutputParamReturn(g)
+	}
+}
+
+func (pp Parameters) generateOutputParamsGoVars(g *jen.Group) {
+	for _, p := range pp {
+		p.generateOutputParamGoVar(g)
+	}
+}
+
 func (pp Parameters) generateCallArguments(g *jen.Group) {
 	for _, p := range pp {
 		p.generateCallArgument(g)

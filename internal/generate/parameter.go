@@ -74,3 +74,22 @@ func (p *Parameter) generateCallArgument(g *jen.Group) {
 		p.Type.generator.generateParamCallArgument(g, p.cVarName)
 	}
 }
+
+func (p *Parameter) generateOutputParamGoVar(g *jen.Group) {
+	if p.Direction == "out" {
+		p.Type.generator.generateReturnCToGo(g, p.cVarName, p.goVarName, p.TransferOwnership)
+		g.Line()
+	}
+}
+
+func (p *Parameter) generateOutputParamReturnDeclaration(g *jen.Group) {
+	if p.Direction == "out" {
+		p.Type.generator.generateReturnFunctionDeclaration(g)
+	}
+}
+
+func (p *Parameter) generateOutputParamReturn(g *jen.Group) {
+	if p.Direction == "out" {
+		g.Id(p.goVarName)
+	}
+}

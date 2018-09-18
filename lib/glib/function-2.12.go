@@ -13,7 +13,7 @@ import "unsafe"
 import "C"
 
 // AsciiStrtoll is a wrapper around the C function g_ascii_strtoll.
-func AsciiStrtoll(nptr string, base uint32) int64 {
+func AsciiStrtoll(nptr string, base uint32) (int64, string) {
 	c_nptr := C.CString(nptr)
 	defer C.free(unsafe.Pointer(c_nptr))
 
@@ -24,7 +24,9 @@ func AsciiStrtoll(nptr string, base uint32) int64 {
 	retC := C.g_ascii_strtoll(c_nptr, &c_endptr, c_base)
 	retGo := (int64)(retC)
 
-	return retGo
+	endptr := C.GoString(c_endptr)
+
+	return retGo, endptr
 }
 
 // Unsupported : g_base64_decode : unsupported parameter out_len : no type generator for gsize, gsize*

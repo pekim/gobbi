@@ -31,7 +31,7 @@ func TestFunctionCallWithAliasParamAndReturn(t *testing.T) {
 }
 
 func TestFunctionReturningError(t *testing.T) {
-	_, err := FileOpenTmp("bad/should/not/contain/a/slash")
+	_, _, err := FileOpenTmp("bad/should/not/contain/a/slash")
 	assert.NotNil(t, err)
 
 	glibError := err.(*Error)
@@ -41,6 +41,12 @@ func TestFunctionReturningError(t *testing.T) {
 }
 
 func TestFunctionReturningNoError(t *testing.T) {
-	_, err := FilenameFromUri("file:///good")
+	_, _, err := FilenameFromUri("file://hostname/filename")
 	assert.Nil(t, err)
+}
+
+func TestFunctionReturningOutParam(t *testing.T) {
+	filename, hostname, _ := FilenameFromUri("file://hostname/filename")
+	assert.Equal(t, "/filename", filename)
+	assert.Equal(t, "hostname", hostname)
 }

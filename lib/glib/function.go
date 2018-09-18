@@ -101,7 +101,7 @@ func AsciiStrncasecmp(s1 string, s2 string, n uint64) int32 {
 }
 
 // AsciiStrtod is a wrapper around the C function g_ascii_strtod.
-func AsciiStrtod(nptr string) float64 {
+func AsciiStrtod(nptr string) (float64, string) {
 	c_nptr := C.CString(nptr)
 	defer C.free(unsafe.Pointer(c_nptr))
 
@@ -110,7 +110,9 @@ func AsciiStrtod(nptr string) float64 {
 	retC := C.g_ascii_strtod(c_nptr, &c_endptr)
 	retGo := (float64)(retC)
 
-	return retGo
+	endptr := C.GoString(c_endptr)
+
+	return retGo, endptr
 }
 
 // AsciiStrup is a wrapper around the C function g_ascii_strup.
@@ -355,7 +357,7 @@ func FileErrorQuark() Quark {
 // Unsupported : g_file_get_contents : unsupported parameter contents : no param type
 
 // FileOpenTmp is a wrapper around the C function g_file_open_tmp.
-func FileOpenTmp(tmpl string) (int32, error) {
+func FileOpenTmp(tmpl string) (int32, string, error) {
 	c_tmpl := C.CString(tmpl)
 	defer C.free(unsafe.Pointer(c_tmpl))
 
@@ -371,13 +373,16 @@ func FileOpenTmp(tmpl string) (int32, error) {
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	nameUsed := C.GoString(c_name_used)
+	defer C.free(unsafe.Pointer(c_name_used))
+
+	return retGo, nameUsed, goThrowableError
 }
 
 // Unsupported : g_file_test : unsupported parameter test : no type generator for FileTest, GFileTest
 
 // FilenameFromUri is a wrapper around the C function g_filename_from_uri.
-func FilenameFromUri(uri string) (string, error) {
+func FilenameFromUri(uri string) (string, string, error) {
 	c_uri := C.CString(uri)
 	defer C.free(unsafe.Pointer(c_uri))
 
@@ -394,7 +399,10 @@ func FilenameFromUri(uri string) (string, error) {
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	hostname := C.GoString(c_hostname)
+	defer C.free(unsafe.Pointer(c_hostname))
+
+	return retGo, hostname, goThrowableError
 }
 
 // Unsupported : g_filename_from_utf8 : unsupported parameter bytes_read : no type generator for gsize, gsize*
@@ -1294,7 +1302,7 @@ func StrstrLen(haystack string, haystackLen int64, needle string) string {
 }
 
 // Strtod is a wrapper around the C function g_strtod.
-func Strtod(nptr string) float64 {
+func Strtod(nptr string) (float64, string) {
 	c_nptr := C.CString(nptr)
 	defer C.free(unsafe.Pointer(c_nptr))
 
@@ -1303,7 +1311,9 @@ func Strtod(nptr string) float64 {
 	retC := C.g_strtod(c_nptr, &c_endptr)
 	retGo := (float64)(retC)
 
-	return retGo
+	endptr := C.GoString(c_endptr)
+
+	return retGo, endptr
 }
 
 // Strup is a wrapper around the C function g_strup.
@@ -1442,17 +1452,7 @@ func UnicharDigitValue(c rune) int32 {
 
 // Unsupported : g_unichar_isxdigit : no return generator
 
-// UnicharToUtf8 is a wrapper around the C function g_unichar_to_utf8.
-func UnicharToUtf8(c rune) int32 {
-	c_c := (C.gunichar)(c)
-
-	var c_outbuf C.gchar
-
-	retC := C.g_unichar_to_utf8(c_c, &c_outbuf)
-	retGo := (int32)(retC)
-
-	return retGo
-}
+// Blacklisted : g_unichar_to_utf8
 
 // UnicharTolower is a wrapper around the C function g_unichar_tolower.
 func UnicharTolower(c rune) rune {

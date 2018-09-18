@@ -34,6 +34,8 @@
     <function blacklist="true" c:identifier="g_atomic_int_set"/>
     <function blacklist="true" c:identifier="g_atomic_pointer_compare_and_exchange"/>
     <function blacklist="true" c:identifier="g_atomic_pointer_set"/>
+    <function blacklist="true" c:identifier="g_unichar_to_utf8"/>
+
     <!--<function blacklist="true" c:identifier="g_bit_lock"/>-->
     <!--<function blacklist="true" c:identifier="g_bit_trylock"/>-->
     <!--<function blacklist="true" c:identifier="g_bit_unlock"/>-->

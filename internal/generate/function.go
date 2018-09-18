@@ -101,6 +101,7 @@ func (f *Function) generate(g *jen.Group, version *Version) {
 
 func (f *Function) generateReturnDeclaration(g *jen.Group) {
 	f.ReturnValue.generateFunctionDeclaration(g)
+	f.Parameters.generateOutputParamsReturnDeclaration(g)
 	f.generateThrowableReturnDeclaration(g)
 }
 
@@ -109,6 +110,7 @@ func (f *Function) generateBody(g *jen.Group) {
 	f.generateCall(g)
 
 	f.generateGoReturnVars(g)
+	f.generateOutputParamsGoVars(g)
 	f.generateReturn(g)
 }
 
@@ -128,6 +130,10 @@ func (f *Function) generateCall(g *jen.Group) *jen.Statement {
 		})
 }
 
+func (f *Function) generateOutputParamsGoVars(g *jen.Group) {
+	f.Parameters.generateOutputParamsGoVars(g)
+}
+
 func (f *Function) generateGoReturnVars(g *jen.Group) {
 	f.generateReturnGoVar(g)
 	f.generateThrowableReturnGoVar(g)
@@ -136,6 +142,7 @@ func (f *Function) generateGoReturnVars(g *jen.Group) {
 func (f *Function) generateReturn(g *jen.Group) {
 	g.ReturnFunc(func(g *jen.Group) {
 		g.Id("retGo")
+		f.Parameters.generateOutputParamsReturns(g)
 		f.generateThrowableReturn(g)
 	})
 }

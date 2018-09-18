@@ -13,7 +13,7 @@ import "unsafe"
 import "C"
 
 // AsciiStrtoull is a wrapper around the C function g_ascii_strtoull.
-func AsciiStrtoull(nptr string, base uint32) uint64 {
+func AsciiStrtoull(nptr string, base uint32) (uint64, string) {
 	c_nptr := C.CString(nptr)
 	defer C.free(unsafe.Pointer(c_nptr))
 
@@ -24,7 +24,9 @@ func AsciiStrtoull(nptr string, base uint32) uint64 {
 	retC := C.g_ascii_strtoull(c_nptr, &c_endptr, c_base)
 	retGo := (uint64)(retC)
 
-	return retGo
+	endptr := C.GoString(c_endptr)
+
+	return retGo, endptr
 }
 
 // Unsupported : g_fprintf : unsupported parameter file : no type generator for gpointer, FILE*
