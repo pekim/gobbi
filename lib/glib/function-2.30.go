@@ -41,7 +41,10 @@ func DirMakeTmp(tmpl string) (string, error) {
 	retGo := C.GoString(retC)
 	defer C.free(unsafe.Pointer(retC))
 
-	goThrowableError := errorNewFromC(cThrowableError, true)
+	goThrowableError := errorNewFromC(cThrowableError)
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
 
 	return retGo, goThrowableError
 }

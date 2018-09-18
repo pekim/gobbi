@@ -3,8 +3,6 @@
 
 package glib
 
-import "runtime"
-
 // #define GLIB_DISABLE_DEPRECATION_WARNINGS
 // #include <glib.h>
 // #include <glib/gstdio.h>
@@ -17,18 +15,12 @@ type Regex struct {
 	native *C.GRegex
 }
 
-func regexNewFromC(c *C.GRegex, finalizeFree bool) *Regex {
+func regexNewFromC(c *C.GRegex) *Regex {
 	if c == nil {
 		return nil
 	}
 
 	g := &Regex{native: c}
-
-	if finalizeFree {
-		runtime.SetFinalizer(g, func(obj interface{}) {
-			C.g_free((C.gpointer)(c))
-		})
-	}
 
 	return g
 }

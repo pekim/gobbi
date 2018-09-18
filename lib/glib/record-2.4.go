@@ -3,8 +3,6 @@
 
 package glib
 
-import "runtime"
-
 // #define GLIB_DISABLE_DEPRECATION_WARNINGS
 // #include <glib.h>
 // #include <glib/gstdio.h>
@@ -19,18 +17,12 @@ type Once struct {
 	// retval : no type generator for gpointer, volatile gpointer
 }
 
-func onceNewFromC(c *C.GOnce, finalizeFree bool) *Once {
+func onceNewFromC(c *C.GOnce) *Once {
 	if c == nil {
 		return nil
 	}
 
 	g := &Once{native: c}
-
-	if finalizeFree {
-		runtime.SetFinalizer(g, func(obj interface{}) {
-			C.g_free((C.gpointer)(c))
-		})
-	}
 
 	return g
 }

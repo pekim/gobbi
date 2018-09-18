@@ -3,8 +3,6 @@
 
 package glib
 
-import "runtime"
-
 // #define GLIB_DISABLE_DEPRECATION_WARNINGS
 // #include <glib.h>
 // #include <glib/gstdio.h>
@@ -17,18 +15,12 @@ type Variantdict struct {
 	native *C.GVariantDict
 }
 
-func variantdictNewFromC(c *C.GVariantDict, finalizeFree bool) *Variantdict {
+func variantdictNewFromC(c *C.GVariantDict) *Variantdict {
 	if c == nil {
 		return nil
 	}
 
 	g := &Variantdict{native: c}
-
-	if finalizeFree {
-		runtime.SetFinalizer(g, func(obj interface{}) {
-			C.g_free((C.gpointer)(c))
-		})
-	}
 
 	return g
 }

@@ -3,8 +3,6 @@
 
 package glib
 
-import "runtime"
-
 // #define GLIB_DISABLE_DEPRECATION_WARNINGS
 // #include <glib.h>
 // #include <glib/gstdio.h>
@@ -17,18 +15,12 @@ type Bytes struct {
 	native *C.GBytes
 }
 
-func bytesNewFromC(c *C.GBytes, finalizeFree bool) *Bytes {
+func bytesNewFromC(c *C.GBytes) *Bytes {
 	if c == nil {
 		return nil
 	}
 
 	g := &Bytes{native: c}
-
-	if finalizeFree {
-		runtime.SetFinalizer(g, func(obj interface{}) {
-			C.g_free((C.gpointer)(c))
-		})
-	}
 
 	return g
 }
@@ -40,7 +32,7 @@ type Rwlock struct {
 	// no type for i
 }
 
-func rwlockNewFromC(c *C.GRWLock, finalizeFree bool) *Rwlock {
+func rwlockNewFromC(c *C.GRWLock) *Rwlock {
 	if c == nil {
 		return nil
 	}
@@ -48,12 +40,6 @@ func rwlockNewFromC(c *C.GRWLock, finalizeFree bool) *Rwlock {
 	g := &Rwlock{
 		P:      (uintptr)(c.p),
 		native: c,
-	}
-
-	if finalizeFree {
-		runtime.SetFinalizer(g, func(obj interface{}) {
-			C.g_free((C.gpointer)(c))
-		})
 	}
 
 	return g
@@ -66,7 +52,7 @@ type Recmutex struct {
 	// no type for i
 }
 
-func recmutexNewFromC(c *C.GRecMutex, finalizeFree bool) *Recmutex {
+func recmutexNewFromC(c *C.GRecMutex) *Recmutex {
 	if c == nil {
 		return nil
 	}
@@ -74,12 +60,6 @@ func recmutexNewFromC(c *C.GRecMutex, finalizeFree bool) *Recmutex {
 	g := &Recmutex{
 		P:      (uintptr)(c.p),
 		native: c,
-	}
-
-	if finalizeFree {
-		runtime.SetFinalizer(g, func(obj interface{}) {
-			C.g_free((C.gpointer)(c))
-		})
 	}
 
 	return g

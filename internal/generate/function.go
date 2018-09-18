@@ -167,9 +167,15 @@ func (f *Function) generateThrowableReturnGoVar(g *jen.Group) {
 	}
 
 	f.throwableErrorType.generator.generateReturnCToGo(g,
-		f.throwableErrorCVarName, f.throwableErrorGoVarName, "full")
-	g.Line()
+		f.throwableErrorCVarName, f.throwableErrorGoVarName, "")
 
+	// If there is an error, free it.
+	g.If(jen.Id(f.throwableErrorCVarName).Op("!=").Id("nil")).
+		Block(jen.
+			Qual("C", "g_error_free").
+			Call(jen.Id(f.throwableErrorCVarName)))
+
+	g.Line()
 }
 
 func (f *Function) generateThrowableErrorCVar(g *jen.Group) {

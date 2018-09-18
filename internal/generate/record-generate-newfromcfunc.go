@@ -22,10 +22,6 @@ func (r *RecordNewFromCFunc) generate(g *jen.Group) {
 			r.generateCreateGoStruct(g)
 			g.Line()
 
-			g.If(jen.Id("finalizeFree")).
-				BlockFunc(r.generateFinalizeFree)
-			g.Line()
-
 			g.
 				Return().
 				Id("g")
@@ -39,10 +35,6 @@ func (r *RecordNewFromCFunc) generateParams(g *jen.Group) {
 		Id("c").
 		Op("*").
 		Qual("C", r.CType)
-
-	g.
-		Id("finalizeFree").
-		Id("bool")
 }
 
 func (r *RecordNewFromCFunc) generateReturnDeclaration(g *jen.Group) {

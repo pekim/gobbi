@@ -65,17 +65,13 @@ func (t *TypeGeneratorRecord) generateParamOutCVar(g *jen.Group, cVarName string
 func (t *TypeGeneratorRecord) generateReturnFunctionDeclaration(g *jen.Group) {
 }
 
-func (t *TypeGeneratorRecord) generateReturnCToGo(g *jen.Group, cVarName string, goVarName string, transferOwnership string) {
-	finalizeFree := transferOwnership == "full"
-
+func (t *TypeGeneratorRecord) generateReturnCToGo(g *jen.Group, cVarName string, goVarName string,
+	transferOwnership string) {
 	g.
 		Id(goVarName).
 		Op(":=").
 		Id(t.record.newFromCFuncName).
-		Call(
-			jen.Id(cVarName),
-			jen.Lit(finalizeFree),
-		)
+		Call(jen.Id(cVarName))
 }
 
 func (t *TypeGeneratorRecord) generateCToGo(cVarReference *jen.Statement) *jen.Statement {

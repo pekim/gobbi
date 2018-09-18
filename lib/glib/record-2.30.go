@@ -3,8 +3,6 @@
 
 package glib
 
-import "runtime"
-
 // #define GLIB_DISABLE_DEPRECATION_WARNINGS
 // #include <glib.h>
 // #include <glib/gstdio.h>
@@ -17,18 +15,12 @@ type Hmac struct {
 	native *C.GHmac
 }
 
-func hmacNewFromC(c *C.GHmac, finalizeFree bool) *Hmac {
+func hmacNewFromC(c *C.GHmac) *Hmac {
 	if c == nil {
 		return nil
 	}
 
 	g := &Hmac{native: c}
-
-	if finalizeFree {
-		runtime.SetFinalizer(g, func(obj interface{}) {
-			C.g_free((C.gpointer)(c))
-		})
-	}
 
 	return g
 }

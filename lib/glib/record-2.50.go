@@ -3,8 +3,6 @@
 
 package glib
 
-import "runtime"
-
 // #define GLIB_DISABLE_DEPRECATION_WARNINGS
 // #include <glib.h>
 // #include <glib/gstdio.h>
@@ -20,7 +18,7 @@ type Logfield struct {
 	Length int64
 }
 
-func logfieldNewFromC(c *C.GLogField, finalizeFree bool) *Logfield {
+func logfieldNewFromC(c *C.GLogField) *Logfield {
 	if c == nil {
 		return nil
 	}
@@ -30,12 +28,6 @@ func logfieldNewFromC(c *C.GLogField, finalizeFree bool) *Logfield {
 		Length: (int64)(c.length),
 		Value:  (uintptr)(c.value),
 		native: c,
-	}
-
-	if finalizeFree {
-		runtime.SetFinalizer(g, func(obj interface{}) {
-			C.g_free((C.gpointer)(c))
-		})
 	}
 
 	return g

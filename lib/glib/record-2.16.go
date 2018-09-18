@@ -3,8 +3,6 @@
 
 package glib
 
-import "runtime"
-
 // #define GLIB_DISABLE_DEPRECATION_WARNINGS
 // #include <glib.h>
 // #include <glib/gstdio.h>
@@ -17,18 +15,12 @@ type Checksum struct {
 	native *C.GChecksum
 }
 
-func checksumNewFromC(c *C.GChecksum, finalizeFree bool) *Checksum {
+func checksumNewFromC(c *C.GChecksum) *Checksum {
 	if c == nil {
 		return nil
 	}
 
 	g := &Checksum{native: c}
-
-	if finalizeFree {
-		runtime.SetFinalizer(g, func(obj interface{}) {
-			C.g_free((C.gpointer)(c))
-		})
-	}
 
 	return g
 }

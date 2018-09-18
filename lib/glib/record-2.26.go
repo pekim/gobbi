@@ -3,8 +3,6 @@
 
 package glib
 
-import "runtime"
-
 // #define GLIB_DISABLE_DEPRECATION_WARNINGS
 // #include <glib.h>
 // #include <glib/gstdio.h>
@@ -17,18 +15,12 @@ type Datetime struct {
 	native *C.GDateTime
 }
 
-func datetimeNewFromC(c *C.GDateTime, finalizeFree bool) *Datetime {
+func datetimeNewFromC(c *C.GDateTime) *Datetime {
 	if c == nil {
 		return nil
 	}
 
 	g := &Datetime{native: c}
-
-	if finalizeFree {
-		runtime.SetFinalizer(g, func(obj interface{}) {
-			C.g_free((C.gpointer)(c))
-		})
-	}
 
 	return g
 }
@@ -38,18 +30,12 @@ type Timezone struct {
 	native *C.GTimeZone
 }
 
-func timezoneNewFromC(c *C.GTimeZone, finalizeFree bool) *Timezone {
+func timezoneNewFromC(c *C.GTimeZone) *Timezone {
 	if c == nil {
 		return nil
 	}
 
 	g := &Timezone{native: c}
-
-	if finalizeFree {
-		runtime.SetFinalizer(g, func(obj interface{}) {
-			C.g_free((C.gpointer)(c))
-		})
-	}
 
 	return g
 }
