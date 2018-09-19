@@ -250,19 +250,19 @@ func ConvertErrorQuark() Quark {
 
 // Unsupported : g_convert_with_iconv : unsupported parameter str : no param type
 
-// Unsupported : g_datalist_clear : unsupported parameter datalist : no type generator for Data, GData**
+// Unsupported : g_datalist_clear : unsupported parameter datalist : record param - coming soon
 
-// Unsupported : g_datalist_foreach : unsupported parameter datalist : no type generator for Data, GData**
+// Unsupported : g_datalist_foreach : unsupported parameter datalist : record param - coming soon
 
-// Unsupported : g_datalist_get_data : unsupported parameter datalist : no type generator for Data, GData**
+// Unsupported : g_datalist_get_data : unsupported parameter datalist : record param - coming soon
 
-// Unsupported : g_datalist_id_get_data : unsupported parameter datalist : no type generator for Data, GData**
+// Unsupported : g_datalist_id_get_data : unsupported parameter datalist : record param - coming soon
 
-// Unsupported : g_datalist_id_remove_no_notify : unsupported parameter datalist : no type generator for Data, GData**
+// Unsupported : g_datalist_id_remove_no_notify : unsupported parameter datalist : record param - coming soon
 
-// Unsupported : g_datalist_id_set_data_full : unsupported parameter datalist : no type generator for Data, GData**
+// Unsupported : g_datalist_id_set_data_full : unsupported parameter datalist : record param - coming soon
 
-// Unsupported : g_datalist_init : unsupported parameter datalist : no type generator for Data, GData**
+// Unsupported : g_datalist_init : unsupported parameter datalist : record param - coming soon
 
 // Unsupported : g_dataset_destroy : no return generator
 
@@ -294,7 +294,17 @@ func DatasetIdRemoveNoNotify(datasetLocation uintptr, keyId Quark) uintptr {
 
 // Unsupported : g_dataset_id_set_data_full : unsupported parameter destroy_func : no type generator for DestroyNotify, GDestroyNotify
 
-// Unsupported : g_date_get_days_in_month : unsupported parameter month : no type generator for DateMonth, GDateMonth
+// DateGetDaysInMonth is a wrapper around the C function g_date_get_days_in_month.
+func DateGetDaysInMonth(month DateMonth, year DateYear) uint8 {
+	c_month := (C.GDateMonth)(month)
+
+	c_year := (C.GDateYear)(year)
+
+	retC := C.g_date_get_days_in_month(c_month, c_year)
+	retGo := (uint8)(retC)
+
+	return retGo
+}
 
 // DateGetMondayWeeksInYear is a wrapper around the C function g_date_get_monday_weeks_in_year.
 func DateGetMondayWeeksInYear(year DateYear) uint8 {
@@ -318,17 +328,17 @@ func DateGetSundayWeeksInYear(year DateYear) uint8 {
 
 // Unsupported : g_date_is_leap_year : no return generator
 
-// Unsupported : g_date_strftime : unsupported parameter date : no type generator for Date, const GDate*
+// Unsupported : g_date_strftime : unsupported parameter date : record param - coming soon
 
 // Unsupported : g_date_valid_day : no return generator
 
-// Unsupported : g_date_valid_dmy : unsupported parameter month : no type generator for DateMonth, GDateMonth
+// Unsupported : g_date_valid_dmy : no return generator
 
 // Unsupported : g_date_valid_julian : no return generator
 
-// Unsupported : g_date_valid_month : unsupported parameter month : no type generator for DateMonth, GDateMonth
+// Unsupported : g_date_valid_month : no return generator
 
-// Unsupported : g_date_valid_weekday : unsupported parameter weekday : no type generator for DateWeekday, GDateWeekday
+// Unsupported : g_date_valid_weekday : no return generator
 
 // Unsupported : g_date_valid_year : no return generator
 
@@ -344,7 +354,15 @@ func DirectHash(v uintptr) uint32 {
 	return retGo
 }
 
-// Unsupported : g_file_error_from_errno : no return generator
+// FileErrorFromErrno is a wrapper around the C function g_file_error_from_errno.
+func FileErrorFromErrno(errNo int32) FileError {
+	c_err_no := (C.gint)(errNo)
+
+	retC := C.g_file_error_from_errno(c_err_no)
+	retGo := (FileError)(retC)
+
+	return retGo
+}
 
 // FileErrorQuark is a wrapper around the C function g_file_error_quark.
 func FileErrorQuark() Quark {
@@ -465,7 +483,7 @@ func GetCurrentDir() string {
 	return retGo
 }
 
-// Unsupported : g_get_current_time : unsupported parameter result : no type generator for TimeVal, GTimeVal*
+// Unsupported : g_get_current_time : unsupported parameter result : record param - coming soon
 
 // GetHomeDir is a wrapper around the C function g_get_home_dir.
 func GetHomeDir() string {
@@ -534,21 +552,21 @@ func Getenv(variable string) string {
 
 // Unsupported : g_hash_table_steal : unsupported parameter hash_table : no type generator for GLib.HashTable, GHashTable*
 
-// Unsupported : g_hook_destroy : unsupported parameter hook_list : no type generator for HookList, GHookList*
+// Unsupported : g_hook_destroy : unsupported parameter hook_list : record param - coming soon
 
-// Unsupported : g_hook_destroy_link : unsupported parameter hook_list : no type generator for HookList, GHookList*
+// Unsupported : g_hook_destroy_link : unsupported parameter hook_list : record param - coming soon
 
-// Unsupported : g_hook_free : unsupported parameter hook_list : no type generator for HookList, GHookList*
+// Unsupported : g_hook_free : unsupported parameter hook_list : record param - coming soon
 
-// Unsupported : g_hook_insert_before : unsupported parameter hook_list : no type generator for HookList, GHookList*
+// Unsupported : g_hook_insert_before : unsupported parameter hook_list : record param - coming soon
 
-// Unsupported : g_hook_prepend : unsupported parameter hook_list : no type generator for HookList, GHookList*
+// Unsupported : g_hook_prepend : unsupported parameter hook_list : record param - coming soon
 
-// Unsupported : g_hook_unref : unsupported parameter hook_list : no type generator for HookList, GHookList*
+// Unsupported : g_hook_unref : unsupported parameter hook_list : record param - coming soon
 
-// Unsupported : g_iconv : unsupported parameter converter : no type generator for IConv, GIConv
+// Unsupported : g_iconv : unsupported parameter converter : Blacklisted record : GIConv
 
-// Unsupported : g_iconv_open : no return generator
+// Unsupported : g_iconv_open : return type : Blacklisted record : GIConv
 
 // Unsupported : g_idle_add : unsupported parameter function : no type generator for SourceFunc, GSourceFunc
 
@@ -556,7 +574,13 @@ func Getenv(variable string) string {
 
 // Unsupported : g_idle_remove_by_data : no return generator
 
-// Unsupported : g_idle_source_new : no return generator
+// IdleSourceNew is a wrapper around the C function g_idle_source_new.
+func IdleSourceNew() *Source {
+	retC := C.g_idle_source_new()
+	retGo := sourceNewFromC(retC)
+
+	return retGo
+}
 
 // Unsupported : g_int_equal : no return generator
 
@@ -570,11 +594,19 @@ func IntHash(v uintptr) uint32 {
 	return retGo
 }
 
-// Unsupported : g_io_add_watch : unsupported parameter channel : no type generator for IOChannel, GIOChannel*
+// Unsupported : g_io_add_watch : unsupported parameter channel : Blacklisted record : GIOChannel
 
-// Unsupported : g_io_add_watch_full : unsupported parameter channel : no type generator for IOChannel, GIOChannel*
+// Unsupported : g_io_add_watch_full : unsupported parameter channel : Blacklisted record : GIOChannel
 
-// Unsupported : g_io_channel_error_from_errno : no return generator
+// IoChannelErrorFromErrno is a wrapper around the C function g_io_channel_error_from_errno.
+func IoChannelErrorFromErrno(en int32) IOChannelError {
+	c_en := (C.gint)(en)
+
+	retC := C.g_io_channel_error_from_errno(c_en)
+	retGo := (IOChannelError)(retC)
+
+	return retGo
+}
 
 // IoChannelErrorQuark is a wrapper around the C function g_io_channel_error_quark.
 func IoChannelErrorQuark() Quark {
@@ -584,7 +616,7 @@ func IoChannelErrorQuark() Quark {
 	return retGo
 }
 
-// Unsupported : g_io_create_watch : unsupported parameter channel : no type generator for IOChannel, GIOChannel*
+// Unsupported : g_io_create_watch : unsupported parameter channel : Blacklisted record : GIOChannel
 
 // KeyFileErrorQuark is a wrapper around the C function g_key_file_error_quark.
 func KeyFileErrorQuark() Quark {
@@ -614,7 +646,13 @@ func KeyFileErrorQuark() Quark {
 
 // Unsupported : g_logv : unsupported parameter log_level : no type generator for LogLevelFlags, GLogLevelFlags
 
-// Unsupported : g_main_context_default : no return generator
+// MainContextDefault is a wrapper around the C function g_main_context_default.
+func MainContextDefault() *MainContext {
+	retC := C.g_main_context_default()
+	retGo := mainContextNewFromC(retC)
+
+	return retGo
+}
 
 // MainDepth is a wrapper around the C function g_main_depth.
 func MainDepth() int32 {
@@ -670,7 +708,7 @@ func MarkupEscapeText(text string, length int64) string {
 
 // Unsupported : g_mem_profile : no return generator
 
-// Unsupported : g_mem_set_vtable : unsupported parameter vtable : no type generator for MemVTable, GMemVTable*
+// Unsupported : g_mem_set_vtable : unsupported parameter vtable : record param - coming soon
 
 // Memdup is a wrapper around the C function g_memdup.
 func Memdup(mem uintptr, byteSize uint32) uintptr {
@@ -750,11 +788,11 @@ func PathSkipRoot(fileName string) string {
 	return retGo
 }
 
-// Unsupported : g_pattern_match : unsupported parameter pspec : no type generator for PatternSpec, GPatternSpec*
+// Unsupported : g_pattern_match : unsupported parameter pspec : record param - coming soon
 
 // Unsupported : g_pattern_match_simple : no return generator
 
-// Unsupported : g_pattern_match_string : unsupported parameter pspec : no type generator for PatternSpec, GPatternSpec*
+// Unsupported : g_pattern_match_string : unsupported parameter pspec : record param - coming soon
 
 // Unsupported : g_print : unsupported parameter ... : varargs
 
@@ -922,17 +960,25 @@ func ShellUnquote(quotedString string) (string, error) {
 	return retGo, goThrowableError
 }
 
-// Unsupported : g_slice_get_config : unsupported parameter ckey : no type generator for SliceConfig, GSliceConfig
+// SliceGetConfig is a wrapper around the C function g_slice_get_config.
+func SliceGetConfig(ckey SliceConfig) int64 {
+	c_ckey := (C.GSliceConfig)(ckey)
 
-// Unsupported : g_slice_get_config_state : unsupported parameter ckey : no type generator for SliceConfig, GSliceConfig
+	retC := C.g_slice_get_config(c_ckey)
+	retGo := (int64)(retC)
 
-// Unsupported : g_slice_set_config : unsupported parameter ckey : no type generator for SliceConfig, GSliceConfig
+	return retGo
+}
+
+// Unsupported : g_slice_get_config_state : unsupported parameter n_values : no type generator for guint, guint*
+
+// Unsupported : g_slice_set_config : no return generator
 
 // Unsupported : g_snprintf : unsupported parameter ... : varargs
 
 // Unsupported : g_source_remove : no return generator
 
-// Unsupported : g_source_remove_by_funcs_user_data : unsupported parameter funcs : no type generator for SourceFuncs, GSourceFuncs*
+// Unsupported : g_source_remove_by_funcs_user_data : unsupported parameter funcs : record param - coming soon
 
 // Unsupported : g_source_remove_by_user_data : no return generator
 
@@ -1144,11 +1190,39 @@ func Strescape(source string, exceptions string) string {
 
 // Unsupported : g_strfreev : unsupported parameter str_array : in string with indirection level of 2
 
-// Unsupported : g_string_new : no return generator
+// StringNew is a wrapper around the C function g_string_new.
+func StringNew(init string) *String {
+	c_init := C.CString(init)
+	defer C.free(unsafe.Pointer(c_init))
 
-// Unsupported : g_string_new_len : no return generator
+	retC := C.g_string_new(c_init)
+	retGo := stringNewFromC(retC)
 
-// Unsupported : g_string_sized_new : no return generator
+	return retGo
+}
+
+// StringNewLen is a wrapper around the C function g_string_new_len.
+func StringNewLen(init string, len int64) *String {
+	c_init := C.CString(init)
+	defer C.free(unsafe.Pointer(c_init))
+
+	c_len := (C.gssize)(len)
+
+	retC := C.g_string_new_len(c_init, c_len)
+	retGo := stringNewFromC(retC)
+
+	return retGo
+}
+
+// StringSizedNew is a wrapper around the C function g_string_sized_new.
+func StringSizedNew(dflSize uint64) *String {
+	c_dfl_size := (C.gsize)(dflSize)
+
+	retC := C.g_string_sized_new(c_dfl_size)
+	retGo := stringNewFromC(retC)
+
+	return retGo
+}
 
 // Unsupported : g_strjoin : unsupported parameter ... : varargs
 
@@ -1334,7 +1408,15 @@ func Strup(string string) string {
 
 // Unsupported : g_test_assert_expected_messages_internal : no return generator
 
-// Unsupported : g_test_log_type_name : unsupported parameter log_type : no type generator for TestLogType, GTestLogType
+// TestLogTypeName is a wrapper around the C function g_test_log_type_name.
+func TestLogTypeName(logType TestLogType) string {
+	c_log_type := (C.GTestLogType)(logType)
+
+	retC := C.g_test_log_type_name(c_log_type)
+	retGo := C.GoString(retC)
+
+	return retGo
+}
 
 // Unsupported : g_test_trap_assertions : no return generator
 
@@ -1368,7 +1450,13 @@ func ThreadPoolGetNumUnusedThreads() uint32 {
 
 // Unsupported : g_thread_pool_stop_unused_threads : no return generator
 
-// Unsupported : g_thread_self : no return generator
+// ThreadSelf is a wrapper around the C function g_thread_self.
+func ThreadSelf() *Thread {
+	retC := C.g_thread_self()
+	retGo := threadNewFromC(retC)
+
+	return retGo
+}
 
 // Unsupported : g_thread_yield : no return generator
 
@@ -1376,15 +1464,23 @@ func ThreadPoolGetNumUnusedThreads() uint32 {
 
 // Unsupported : g_timeout_add_full : unsupported parameter function : no type generator for SourceFunc, GSourceFunc
 
-// Unsupported : g_timeout_source_new : no return generator
+// TimeoutSourceNew is a wrapper around the C function g_timeout_source_new.
+func TimeoutSourceNew(interval uint32) *Source {
+	c_interval := (C.guint)(interval)
 
-// Unsupported : g_trash_stack_height : unsupported parameter stack_p : no type generator for TrashStack, GTrashStack**
+	retC := C.g_timeout_source_new(c_interval)
+	retGo := sourceNewFromC(retC)
 
-// Unsupported : g_trash_stack_peek : unsupported parameter stack_p : no type generator for TrashStack, GTrashStack**
+	return retGo
+}
 
-// Unsupported : g_trash_stack_pop : unsupported parameter stack_p : no type generator for TrashStack, GTrashStack**
+// Unsupported : g_trash_stack_height : unsupported parameter stack_p : record param - coming soon
 
-// Unsupported : g_trash_stack_push : unsupported parameter stack_p : no type generator for TrashStack, GTrashStack**
+// Unsupported : g_trash_stack_peek : unsupported parameter stack_p : record param - coming soon
+
+// Unsupported : g_trash_stack_pop : unsupported parameter stack_p : record param - coming soon
+
+// Unsupported : g_trash_stack_push : unsupported parameter stack_p : record param - coming soon
 
 // TryMalloc is a wrapper around the C function g_try_malloc.
 func TryMalloc(nBytes uint64) uintptr {
@@ -1412,7 +1508,15 @@ func TryRealloc(mem uintptr, nBytes uint64) uintptr {
 
 // Unsupported : g_ucs4_to_utf8 : unsupported parameter str : no type generator for gunichar, const gunichar*
 
-// Unsupported : g_unichar_break_type : no return generator
+// UnicharBreakType is a wrapper around the C function g_unichar_break_type.
+func UnicharBreakType(c rune) UnicodeBreakType {
+	c_c := (C.gunichar)(c)
+
+	retC := C.g_unichar_break_type(c_c)
+	retGo := (UnicodeBreakType)(retC)
+
+	return retGo
+}
 
 // UnicharDigitValue is a wrapper around the C function g_unichar_digit_value.
 func UnicharDigitValue(c rune) int32 {
@@ -1484,7 +1588,15 @@ func UnicharToupper(c rune) rune {
 	return retGo
 }
 
-// Unsupported : g_unichar_type : no return generator
+// UnicharType is a wrapper around the C function g_unichar_type.
+func UnicharType(c rune) UnicodeType {
+	c_c := (C.gunichar)(c)
+
+	retC := C.g_unichar_type(c_c)
+	retGo := (UnicodeType)(retC)
+
+	return retGo
+}
 
 // Unsupported : g_unichar_validate : no return generator
 
@@ -1606,7 +1718,21 @@ func Utf8GetCharValidated(p string, maxLen int64) rune {
 	return retGo
 }
 
-// Unsupported : g_utf8_normalize : unsupported parameter mode : no type generator for NormalizeMode, GNormalizeMode
+// Utf8Normalize is a wrapper around the C function g_utf8_normalize.
+func Utf8Normalize(str string, len int64, mode NormalizeMode) string {
+	c_str := C.CString(str)
+	defer C.free(unsafe.Pointer(c_str))
+
+	c_len := (C.gssize)(len)
+
+	c_mode := (C.GNormalizeMode)(mode)
+
+	retC := C.g_utf8_normalize(c_str, c_len, c_mode)
+	retGo := C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // Utf8OffsetToPointer is a wrapper around the C function g_utf8_offset_to_pointer.
 func Utf8OffsetToPointer(str string, offset int64) string {
@@ -1748,7 +1874,7 @@ func Utf8Strup(str string, len int64) string {
 
 // Unsupported : g_variant_get_gtype : no return generator
 
-// Unsupported : g_variant_parse : unsupported parameter type : no type generator for VariantType, const GVariantType*
+// Unsupported : g_variant_parse : unsupported parameter type : Blacklisted record : GVariantType
 
 // VariantParseErrorQuark is a wrapper around the C function g_variant_parse_error_quark.
 func VariantParseErrorQuark() Quark {
@@ -1766,7 +1892,7 @@ func VariantParserGetErrorQuark() Quark {
 	return retGo
 }
 
-// Unsupported : g_variant_type_checked_ : no return generator
+// Unsupported : g_variant_type_checked_ : return type : Blacklisted record : GVariantType
 
 // Unsupported : g_variant_type_string_is_valid : no return generator
 

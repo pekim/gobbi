@@ -10,20 +10,20 @@ package glib
 // #include <stdlib.h>
 import "C"
 
-// Logfield is a wrapper around the C record GLogField.
-type Logfield struct {
+// LogField is a wrapper around the C record GLogField.
+type LogField struct {
 	native *C.GLogField
 	Key    string
 	Value  uintptr
 	Length int64
 }
 
-func logfieldNewFromC(c *C.GLogField) *Logfield {
+func logFieldNewFromC(c *C.GLogField) *LogField {
 	if c == nil {
 		return nil
 	}
 
-	g := &Logfield{
+	g := &LogField{
 		Key:    C.GoString(c.key),
 		Length: (int64)(c.length),
 		Value:  (uintptr)(c.value),

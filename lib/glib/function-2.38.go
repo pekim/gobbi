@@ -10,13 +10,21 @@ package glib
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : g_test_build_filename : unsupported parameter file_type : no type generator for TestFileType, GTestFileType
+// Unsupported : g_test_build_filename : unsupported parameter ... : varargs
 
 // Unsupported : g_test_failed : no return generator
 
-// Unsupported : g_test_get_dir : unsupported parameter file_type : no type generator for TestFileType, GTestFileType
+// TestGetDir is a wrapper around the C function g_test_get_dir.
+func TestGetDir(fileType TestFileType) string {
+	c_file_type := (C.GTestFileType)(fileType)
 
-// Unsupported : g_test_get_filename : unsupported parameter file_type : no type generator for TestFileType, GTestFileType
+	retC := C.g_test_get_dir(c_file_type)
+	retGo := C.GoString(retC)
+
+	return retGo
+}
+
+// Unsupported : g_test_get_filename : unsupported parameter ... : varargs
 
 // Unsupported : g_test_incomplete : no return generator
 

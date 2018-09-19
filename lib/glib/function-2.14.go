@@ -10,7 +10,15 @@ package glib
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : g_get_user_special_dir : unsupported parameter directory : no type generator for UserDirectory, GUserDirectory
+// GetUserSpecialDir is a wrapper around the C function g_get_user_special_dir.
+func GetUserSpecialDir(directory UserDirectory) string {
+	c_directory := (C.GUserDirectory)(directory)
+
+	retC := C.g_get_user_special_dir(c_directory)
+	retGo := C.GoString(retC)
+
+	return retGo
+}
 
 // Unsupported : g_once_init_enter : unsupported parameter location : no type generator for gpointer, void*
 
@@ -24,23 +32,23 @@ import "C"
 
 // Unsupported : g_regex_split_simple : unsupported parameter compile_options : no type generator for RegexCompileFlags, GRegexCompileFlags
 
-// Unsupported : g_sequence_get : unsupported parameter iter : no type generator for SequenceIter, GSequenceIter*
+// Unsupported : g_sequence_get : unsupported parameter iter : record param - coming soon
 
-// Unsupported : g_sequence_insert_before : unsupported parameter iter : no type generator for SequenceIter, GSequenceIter*
+// Unsupported : g_sequence_insert_before : unsupported parameter iter : record param - coming soon
 
-// Unsupported : g_sequence_move : unsupported parameter src : no type generator for SequenceIter, GSequenceIter*
+// Unsupported : g_sequence_move : unsupported parameter src : record param - coming soon
 
-// Unsupported : g_sequence_move_range : unsupported parameter dest : no type generator for SequenceIter, GSequenceIter*
+// Unsupported : g_sequence_move_range : unsupported parameter dest : record param - coming soon
 
-// Unsupported : g_sequence_range_get_midpoint : unsupported parameter begin : no type generator for SequenceIter, GSequenceIter*
+// Unsupported : g_sequence_range_get_midpoint : unsupported parameter begin : record param - coming soon
 
-// Unsupported : g_sequence_remove : unsupported parameter iter : no type generator for SequenceIter, GSequenceIter*
+// Unsupported : g_sequence_remove : unsupported parameter iter : record param - coming soon
 
-// Unsupported : g_sequence_remove_range : unsupported parameter begin : no type generator for SequenceIter, GSequenceIter*
+// Unsupported : g_sequence_remove_range : unsupported parameter begin : record param - coming soon
 
-// Unsupported : g_sequence_set : unsupported parameter iter : no type generator for SequenceIter, GSequenceIter*
+// Unsupported : g_sequence_set : unsupported parameter iter : record param - coming soon
 
-// Unsupported : g_sequence_swap : unsupported parameter a : no type generator for SequenceIter, GSequenceIter*
+// Unsupported : g_sequence_swap : unsupported parameter a : record param - coming soon
 
 // SliceCopy is a wrapper around the C function g_slice_copy.
 func SliceCopy(blockSize uint64, memBlock uintptr) uintptr {
@@ -58,7 +66,15 @@ func SliceCopy(blockSize uint64, memBlock uintptr) uintptr {
 
 // Unsupported : g_timeout_add_seconds_full : unsupported parameter function : no type generator for SourceFunc, GSourceFunc
 
-// Unsupported : g_timeout_source_new_seconds : no return generator
+// TimeoutSourceNewSeconds is a wrapper around the C function g_timeout_source_new_seconds.
+func TimeoutSourceNewSeconds(interval uint32) *Source {
+	c_interval := (C.guint)(interval)
+
+	retC := C.g_timeout_source_new_seconds(c_interval)
+	retGo := sourceNewFromC(retC)
+
+	return retGo
+}
 
 // UnicharCombiningClass is a wrapper around the C function g_unichar_combining_class.
 func UnicharCombiningClass(uc rune) int32 {
@@ -70,7 +86,15 @@ func UnicharCombiningClass(uc rune) int32 {
 	return retGo
 }
 
-// Unsupported : g_unichar_get_script : no return generator
+// UnicharGetScript is a wrapper around the C function g_unichar_get_script.
+func UnicharGetScript(ch rune) UnicodeScript {
+	c_ch := (C.gunichar)(ch)
+
+	retC := C.g_unichar_get_script(c_ch)
+	retGo := (UnicodeScript)(retC)
+
+	return retGo
+}
 
 // Unsupported : g_unichar_ismark : no return generator
 

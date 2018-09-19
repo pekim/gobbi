@@ -2,6 +2,8 @@
 
 package glib
 
+import "unsafe"
+
 // #define GLIB_DISABLE_DEPRECATION_WARNINGS
 // #include <glib.h>
 // #include <glib/gstdio.h>
@@ -30,49 +32,49 @@ func arrayNewFromC(c *C.GArray) *Array {
 	return g
 }
 
-// Asyncqueue is a wrapper around the C record GAsyncQueue.
-type Asyncqueue struct {
+// AsyncQueue is a wrapper around the C record GAsyncQueue.
+type AsyncQueue struct {
 	native *C.GAsyncQueue
 }
 
-func asyncqueueNewFromC(c *C.GAsyncQueue) *Asyncqueue {
+func asyncQueueNewFromC(c *C.GAsyncQueue) *AsyncQueue {
 	if c == nil {
 		return nil
 	}
 
-	g := &Asyncqueue{native: c}
+	g := &AsyncQueue{native: c}
 
 	return g
 }
 
-// Bookmarkfile is a wrapper around the C record GBookmarkFile.
-type Bookmarkfile struct {
+// BookmarkFile is a wrapper around the C record GBookmarkFile.
+type BookmarkFile struct {
 	native *C.GBookmarkFile
 }
 
-func bookmarkfileNewFromC(c *C.GBookmarkFile) *Bookmarkfile {
+func bookmarkFileNewFromC(c *C.GBookmarkFile) *BookmarkFile {
 	if c == nil {
 		return nil
 	}
 
-	g := &Bookmarkfile{native: c}
+	g := &BookmarkFile{native: c}
 
 	return g
 }
 
-// Bytearray is a wrapper around the C record GByteArray.
-type Bytearray struct {
+// ByteArray is a wrapper around the C record GByteArray.
+type ByteArray struct {
 	native *C.GByteArray
 	// data : no type generator for guint8, guint8*
 	Len uint32
 }
 
-func bytearrayNewFromC(c *C.GByteArray) *Bytearray {
+func byteArrayNewFromC(c *C.GByteArray) *ByteArray {
 	if c == nil {
 		return nil
 	}
 
-	g := &Bytearray{
+	g := &ByteArray{
 		Len:    (uint32)(c.len),
 		native: c,
 	}
@@ -136,19 +138,51 @@ func dateNewFromC(c *C.GDate) *Date {
 	return g
 }
 
-// Debugkey is a wrapper around the C record GDebugKey.
-type Debugkey struct {
+// DateNew is a wrapper around the C function g_date_new.
+func DateNew() *Date {
+	retC := C.g_date_new()
+	retGo := dateNewFromC(retC)
+
+	return retGo
+}
+
+// DateNewDmy is a wrapper around the C function g_date_new_dmy.
+func DateNewDmy(day DateDay, month DateMonth, year DateYear) *Date {
+	c_day := (C.GDateDay)(day)
+
+	c_month := (C.GDateMonth)(month)
+
+	c_year := (C.GDateYear)(year)
+
+	retC := C.g_date_new_dmy(c_day, c_month, c_year)
+	retGo := dateNewFromC(retC)
+
+	return retGo
+}
+
+// DateNewJulian is a wrapper around the C function g_date_new_julian.
+func DateNewJulian(julianDay uint32) *Date {
+	c_julian_day := (C.guint32)(julianDay)
+
+	retC := C.g_date_new_julian(c_julian_day)
+	retGo := dateNewFromC(retC)
+
+	return retGo
+}
+
+// DebugKey is a wrapper around the C record GDebugKey.
+type DebugKey struct {
 	native *C.GDebugKey
 	Key    string
 	Value  uint32
 }
 
-func debugkeyNewFromC(c *C.GDebugKey) *Debugkey {
+func debugKeyNewFromC(c *C.GDebugKey) *DebugKey {
 	if c == nil {
 		return nil
 	}
 
-	g := &Debugkey{
+	g := &DebugKey{
 		Key:    C.GoString(c.key),
 		Value:  (uint32)(c.value),
 		native: c,
@@ -195,23 +229,42 @@ func errorNewFromC(c *C.GError) *Error {
 	return g
 }
 
-// Hashtable is a wrapper around the C record GHashTable.
-type Hashtable struct {
+// Unsupported : g_error_new : unsupported parameter ... : varargs
+
+// ErrorNewLiteral is a wrapper around the C function g_error_new_literal.
+func ErrorNewLiteral(domain Quark, code int32, message string) *Error {
+	c_domain := (C.GQuark)(domain)
+
+	c_code := (C.gint)(code)
+
+	c_message := C.CString(message)
+	defer C.free(unsafe.Pointer(c_message))
+
+	retC := C.g_error_new_literal(c_domain, c_code, c_message)
+	retGo := errorNewFromC(retC)
+
+	return retGo
+}
+
+// Unsupported : g_error_new_valist : unsupported parameter args : no type generator for va_list, va_list
+
+// HashTable is a wrapper around the C record GHashTable.
+type HashTable struct {
 	native *C.GHashTable
 }
 
-func hashtableNewFromC(c *C.GHashTable) *Hashtable {
+func hashTableNewFromC(c *C.GHashTable) *HashTable {
 	if c == nil {
 		return nil
 	}
 
-	g := &Hashtable{native: c}
+	g := &HashTable{native: c}
 
 	return g
 }
 
-// Hashtableiter is a wrapper around the C record GHashTableIter.
-type Hashtableiter struct {
+// HashTableIter is a wrapper around the C record GHashTableIter.
+type HashTableIter struct {
 	native *C.GHashTableIter
 	Dummy1 uintptr
 	Dummy2 uintptr
@@ -221,12 +274,12 @@ type Hashtableiter struct {
 	Dummy6 uintptr
 }
 
-func hashtableiterNewFromC(c *C.GHashTableIter) *Hashtableiter {
+func hashTableIterNewFromC(c *C.GHashTableIter) *HashTableIter {
 	if c == nil {
 		return nil
 	}
 
-	g := &Hashtableiter{
+	g := &HashTableIter{
 		Dummy1: (uintptr)(c.dummy1),
 		Dummy2: (uintptr)(c.dummy2),
 		Dummy3: (uintptr)(c.dummy3),
@@ -240,10 +293,10 @@ func hashtableiterNewFromC(c *C.GHashTableIter) *Hashtableiter {
 
 // Hook is a wrapper around the C record GHook.
 type Hook struct {
-	native *C.GHook
-	Data   uintptr
-	// next : no type generator for Hook, GHook*
-	// prev : no type generator for Hook, GHook*
+	native   *C.GHook
+	Data     uintptr
+	Next     *Hook
+	Prev     *Hook
 	RefCount uint32
 	HookId   uint64
 	Flags    uint32
@@ -261,6 +314,8 @@ func hookNewFromC(c *C.GHook) *Hook {
 		Flags:    (uint32)(c.flags),
 		Func:     (uintptr)(c._func),
 		HookId:   (uint64)(c.hook_id),
+		Next:     hookNewFromC(c.next),
+		Prev:     hookNewFromC(c.prev),
 		RefCount: (uint32)(c.ref_count),
 		native:   c,
 	}
@@ -268,25 +323,26 @@ func hookNewFromC(c *C.GHook) *Hook {
 	return g
 }
 
-// Hooklist is a wrapper around the C record GHookList.
-type Hooklist struct {
+// HookList is a wrapper around the C record GHookList.
+type HookList struct {
 	native *C.GHookList
 	SeqId  uint64
 	// Bitfield not supported : 16 hook_size
 	// Bitfield not supported :  1 is_setup
-	// hooks : no type generator for Hook, GHook*
+	Hooks  *Hook
 	Dummy3 uintptr
 	// finalize_hook : no type generator for HookFinalizeFunc, GHookFinalizeFunc
 	// no type for dummy
 }
 
-func hooklistNewFromC(c *C.GHookList) *Hooklist {
+func hookListNewFromC(c *C.GHookList) *HookList {
 	if c == nil {
 		return nil
 	}
 
-	g := &Hooklist{
+	g := &HookList{
 		Dummy3: (uintptr)(c.dummy3),
+		Hooks:  hookNewFromC(c.hooks),
 		SeqId:  (uint64)(c.seq_id),
 		native: c,
 	}
@@ -296,52 +352,10 @@ func hooklistNewFromC(c *C.GHookList) *Hooklist {
 
 // Blacklisted : GIConv
 
-// Iochannel is a wrapper around the C record GIOChannel.
-type Iochannel struct {
-	native   *C.GIOChannel
-	RefCount int32
-	// funcs : no type generator for IOFuncs, GIOFuncs*
-	Encoding string
-	// read_cd : no type generator for IConv, GIConv
-	// write_cd : no type generator for IConv, GIConv
-	LineTerm    string
-	LineTermLen uint32
-	BufSize     uint64
-	// read_buf : no type generator for String, GString*
-	// encoded_read_buf : no type generator for String, GString*
-	// write_buf : no type generator for String, GString*
-	// no type for partial_write_buf
-	// Bitfield not supported :  1 use_buffer
-	// Bitfield not supported :  1 do_encode
-	// Bitfield not supported :  1 close_on_unref
-	// Bitfield not supported :  1 is_readable
-	// Bitfield not supported :  1 is_writeable
-	// Bitfield not supported :  1 is_seekable
-	Reserved1 uintptr
-	Reserved2 uintptr
-}
+// Blacklisted : GIOChannel
 
-func iochannelNewFromC(c *C.GIOChannel) *Iochannel {
-	if c == nil {
-		return nil
-	}
-
-	g := &Iochannel{
-		BufSize:     (uint64)(c.buf_size),
-		Encoding:    C.GoString(c.encoding),
-		LineTerm:    C.GoString(c.line_term),
-		LineTermLen: (uint32)(c.line_term_len),
-		RefCount:    (int32)(c.ref_count),
-		Reserved1:   (uintptr)(c.reserved1),
-		Reserved2:   (uintptr)(c.reserved2),
-		native:      c,
-	}
-
-	return g
-}
-
-// Iofuncs is a wrapper around the C record GIOFuncs.
-type Iofuncs struct {
+// IOFuncs is a wrapper around the C record GIOFuncs.
+type IOFuncs struct {
 	native *C.GIOFuncs
 	// no type for io_read
 	// no type for io_write
@@ -353,29 +367,37 @@ type Iofuncs struct {
 	// no type for io_get_flags
 }
 
-func iofuncsNewFromC(c *C.GIOFuncs) *Iofuncs {
+func iOFuncsNewFromC(c *C.GIOFuncs) *IOFuncs {
 	if c == nil {
 		return nil
 	}
 
-	g := &Iofuncs{native: c}
+	g := &IOFuncs{native: c}
 
 	return g
 }
 
-// Keyfile is a wrapper around the C record GKeyFile.
-type Keyfile struct {
+// KeyFile is a wrapper around the C record GKeyFile.
+type KeyFile struct {
 	native *C.GKeyFile
 }
 
-func keyfileNewFromC(c *C.GKeyFile) *Keyfile {
+func keyFileNewFromC(c *C.GKeyFile) *KeyFile {
 	if c == nil {
 		return nil
 	}
 
-	g := &Keyfile{native: c}
+	g := &KeyFile{native: c}
 
 	return g
+}
+
+// KeyFileNew is a wrapper around the C function g_key_file_new.
+func KeyFileNew() *KeyFile {
+	retC := C.g_key_file_new()
+	retGo := keyFileNewFromC(retC)
+
+	return retGo
 }
 
 // List is a wrapper around the C record GList.
@@ -399,68 +421,84 @@ func listNewFromC(c *C.GList) *List {
 	return g
 }
 
-// Maincontext is a wrapper around the C record GMainContext.
-type Maincontext struct {
+// MainContext is a wrapper around the C record GMainContext.
+type MainContext struct {
 	native *C.GMainContext
 }
 
-func maincontextNewFromC(c *C.GMainContext) *Maincontext {
+func mainContextNewFromC(c *C.GMainContext) *MainContext {
 	if c == nil {
 		return nil
 	}
 
-	g := &Maincontext{native: c}
+	g := &MainContext{native: c}
 
 	return g
 }
 
-// Mainloop is a wrapper around the C record GMainLoop.
-type Mainloop struct {
+// MainContextNew is a wrapper around the C function g_main_context_new.
+func MainContextNew() *MainContext {
+	retC := C.g_main_context_new()
+	retGo := mainContextNewFromC(retC)
+
+	return retGo
+}
+
+// MainLoop is a wrapper around the C record GMainLoop.
+type MainLoop struct {
 	native *C.GMainLoop
 }
 
-func mainloopNewFromC(c *C.GMainLoop) *Mainloop {
+func mainLoopNewFromC(c *C.GMainLoop) *MainLoop {
 	if c == nil {
 		return nil
 	}
 
-	g := &Mainloop{native: c}
+	g := &MainLoop{native: c}
 
 	return g
 }
 
-// Mappedfile is a wrapper around the C record GMappedFile.
-type Mappedfile struct {
+// Unsupported : g_main_loop_new : unsupported parameter context : record param - coming soon
+
+// MappedFile is a wrapper around the C record GMappedFile.
+type MappedFile struct {
 	native *C.GMappedFile
 }
 
-func mappedfileNewFromC(c *C.GMappedFile) *Mappedfile {
+func mappedFileNewFromC(c *C.GMappedFile) *MappedFile {
 	if c == nil {
 		return nil
 	}
 
-	g := &Mappedfile{native: c}
+	g := &MappedFile{native: c}
 
 	return g
 }
 
-// Markupparsecontext is a wrapper around the C record GMarkupParseContext.
-type Markupparsecontext struct {
+// Unsupported : g_mapped_file_new : unsupported parameter writable : no type generator for gboolean, gboolean
+
+// Unsupported : g_mapped_file_new_from_fd : unsupported parameter writable : no type generator for gboolean, gboolean
+
+// MarkupParseContext is a wrapper around the C record GMarkupParseContext.
+type MarkupParseContext struct {
 	native *C.GMarkupParseContext
 }
 
-func markupparsecontextNewFromC(c *C.GMarkupParseContext) *Markupparsecontext {
+func markupParseContextNewFromC(c *C.GMarkupParseContext) *MarkupParseContext {
 	if c == nil {
 		return nil
 	}
 
-	g := &Markupparsecontext{native: c}
+	g := &MarkupParseContext{native: c}
 
 	return g
 }
 
-// Markupparser is a wrapper around the C record GMarkupParser.
-type Markupparser struct {
+// Unsupported : g_markup_parse_context_new : unsupported parameter parser : record param - coming soon
+
+// MarkupParser is a wrapper around the C record GMarkupParser.
+type MarkupParser struct {
 	native *C.GMarkupParser
 	// no type for start_element
 	// no type for end_element
@@ -469,33 +507,33 @@ type Markupparser struct {
 	// no type for error
 }
 
-func markupparserNewFromC(c *C.GMarkupParser) *Markupparser {
+func markupParserNewFromC(c *C.GMarkupParser) *MarkupParser {
 	if c == nil {
 		return nil
 	}
 
-	g := &Markupparser{native: c}
+	g := &MarkupParser{native: c}
 
 	return g
 }
 
-// Matchinfo is a wrapper around the C record GMatchInfo.
-type Matchinfo struct {
+// MatchInfo is a wrapper around the C record GMatchInfo.
+type MatchInfo struct {
 	native *C.GMatchInfo
 }
 
-func matchinfoNewFromC(c *C.GMatchInfo) *Matchinfo {
+func matchInfoNewFromC(c *C.GMatchInfo) *MatchInfo {
 	if c == nil {
 		return nil
 	}
 
-	g := &Matchinfo{native: c}
+	g := &MatchInfo{native: c}
 
 	return g
 }
 
-// Memvtable is a wrapper around the C record GMemVTable.
-type Memvtable struct {
+// MemVTable is a wrapper around the C record GMemVTable.
+type MemVTable struct {
 	native *C.GMemVTable
 	// no type for malloc
 	// no type for realloc
@@ -505,24 +543,24 @@ type Memvtable struct {
 	// no type for try_realloc
 }
 
-func memvtableNewFromC(c *C.GMemVTable) *Memvtable {
+func memVTableNewFromC(c *C.GMemVTable) *MemVTable {
 	if c == nil {
 		return nil
 	}
 
-	g := &Memvtable{native: c}
+	g := &MemVTable{native: c}
 
 	return g
 }
 
 // Node is a wrapper around the C record GNode.
 type Node struct {
-	native *C.GNode
-	Data   uintptr
-	// next : no type generator for Node, GNode*
-	// prev : no type generator for Node, GNode*
-	// parent : no type generator for Node, GNode*
-	// children : no type generator for Node, GNode*
+	native   *C.GNode
+	Data     uintptr
+	Next     *Node
+	Prev     *Node
+	Parent   *Node
+	Children *Node
 }
 
 func nodeNewFromC(c *C.GNode) *Node {
@@ -531,46 +569,51 @@ func nodeNewFromC(c *C.GNode) *Node {
 	}
 
 	g := &Node{
-		Data:   (uintptr)(c.data),
-		native: c,
+		Children: nodeNewFromC(c.children),
+		Data:     (uintptr)(c.data),
+		Next:     nodeNewFromC(c.next),
+		Parent:   nodeNewFromC(c.parent),
+		Prev:     nodeNewFromC(c.prev),
+		native:   c,
 	}
 
 	return g
 }
 
-// Optioncontext is a wrapper around the C record GOptionContext.
-type Optioncontext struct {
+// OptionContext is a wrapper around the C record GOptionContext.
+type OptionContext struct {
 	native *C.GOptionContext
 }
 
-func optioncontextNewFromC(c *C.GOptionContext) *Optioncontext {
+func optionContextNewFromC(c *C.GOptionContext) *OptionContext {
 	if c == nil {
 		return nil
 	}
 
-	g := &Optioncontext{native: c}
+	g := &OptionContext{native: c}
 
 	return g
 }
 
-// Optionentry is a wrapper around the C record GOptionEntry.
-type Optionentry struct {
-	native    *C.GOptionEntry
-	LongName  string
-	ShortName rune
-	Flags     int32
-	// arg : no type generator for OptionArg, GOptionArg
+// OptionEntry is a wrapper around the C record GOptionEntry.
+type OptionEntry struct {
+	native         *C.GOptionEntry
+	LongName       string
+	ShortName      rune
+	Flags          int32
+	Arg            OptionArg
 	ArgData        uintptr
 	Description    string
 	ArgDescription string
 }
 
-func optionentryNewFromC(c *C.GOptionEntry) *Optionentry {
+func optionEntryNewFromC(c *C.GOptionEntry) *OptionEntry {
 	if c == nil {
 		return nil
 	}
 
-	g := &Optionentry{
+	g := &OptionEntry{
+		Arg:            (OptionArg)(c.arg),
 		ArgData:        (uintptr)(c.arg_data),
 		ArgDescription: C.GoString(c.arg_description),
 		Description:    C.GoString(c.description),
@@ -583,50 +626,52 @@ func optionentryNewFromC(c *C.GOptionEntry) *Optionentry {
 	return g
 }
 
-// Optiongroup is a wrapper around the C record GOptionGroup.
-type Optiongroup struct {
+// OptionGroup is a wrapper around the C record GOptionGroup.
+type OptionGroup struct {
 	native *C.GOptionGroup
 }
 
-func optiongroupNewFromC(c *C.GOptionGroup) *Optiongroup {
+func optionGroupNewFromC(c *C.GOptionGroup) *OptionGroup {
 	if c == nil {
 		return nil
 	}
 
-	g := &Optiongroup{native: c}
+	g := &OptionGroup{native: c}
 
 	return g
 }
 
-// Patternspec is a wrapper around the C record GPatternSpec.
-type Patternspec struct {
+// Unsupported : g_option_group_new : unsupported parameter destroy : no type generator for DestroyNotify, GDestroyNotify
+
+// PatternSpec is a wrapper around the C record GPatternSpec.
+type PatternSpec struct {
 	native *C.GPatternSpec
 }
 
-func patternspecNewFromC(c *C.GPatternSpec) *Patternspec {
+func patternSpecNewFromC(c *C.GPatternSpec) *PatternSpec {
 	if c == nil {
 		return nil
 	}
 
-	g := &Patternspec{native: c}
+	g := &PatternSpec{native: c}
 
 	return g
 }
 
-// Pollfd is a wrapper around the C record GPollFD.
-type Pollfd struct {
+// PollFD is a wrapper around the C record GPollFD.
+type PollFD struct {
 	native  *C.GPollFD
 	Fd      int32
 	Events  uint32
 	Revents uint32
 }
 
-func pollfdNewFromC(c *C.GPollFD) *Pollfd {
+func pollFDNewFromC(c *C.GPollFD) *PollFD {
 	if c == nil {
 		return nil
 	}
 
-	g := &Pollfd{
+	g := &PollFD{
 		Events:  (uint32)(c.events),
 		Fd:      (int32)(c.fd),
 		Revents: (uint32)(c.revents),
@@ -657,19 +702,19 @@ func privateNewFromC(c *C.GPrivate) *Private {
 	return g
 }
 
-// Ptrarray is a wrapper around the C record GPtrArray.
-type Ptrarray struct {
+// PtrArray is a wrapper around the C record GPtrArray.
+type PtrArray struct {
 	native *C.GPtrArray
 	// pdata : no type generator for gpointer, gpointer*
 	Len uint32
 }
 
-func ptrarrayNewFromC(c *C.GPtrArray) *Ptrarray {
+func ptrArrayNewFromC(c *C.GPtrArray) *PtrArray {
 	if c == nil {
 		return nil
 	}
 
-	g := &Ptrarray{
+	g := &PtrArray{
 		Len:    (uint32)(c.len),
 		native: c,
 	}
@@ -713,19 +758,19 @@ func randNewFromC(c *C.GRand) *Rand {
 	return g
 }
 
-// Slist is a wrapper around the C record GSList.
-type Slist struct {
+// SList is a wrapper around the C record GSList.
+type SList struct {
 	native *C.GSList
 	Data   uintptr
 	// next : no type generator for GLib.SList, GSList*
 }
 
-func slistNewFromC(c *C.GSList) *Slist {
+func sListNewFromC(c *C.GSList) *SList {
 	if c == nil {
 		return nil
 	}
 
-	g := &Slist{
+	g := &SList{
 		Data:   (uintptr)(c.data),
 		native: c,
 	}
@@ -740,13 +785,13 @@ type Scanner struct {
 	MaxParseErrors uint32
 	ParseErrors    uint32
 	InputName      string
-	// qdata : no type generator for Data, GData*
-	// config : no type generator for ScannerConfig, GScannerConfig*
-	// token : no type generator for TokenType, GTokenType
+	Qdata          *Data
+	Config         *ScannerConfig
+	Token          TokenType
 	// value : no type generator for TokenValue, GTokenValue
-	Line     uint32
-	Position uint32
-	// next_token : no type generator for TokenType, GTokenType
+	Line      uint32
+	Position  uint32
+	NextToken TokenType
 	// next_value : no type generator for TokenValue, GTokenValue
 	NextLine     uint32
 	NextPosition uint32
@@ -766,17 +811,21 @@ func scannerNewFromC(c *C.GScanner) *Scanner {
 
 	g := &Scanner{
 		Buffer:         C.GoString(c.buffer),
+		Config:         scannerConfigNewFromC(c.config),
 		InputFd:        (int32)(c.input_fd),
 		InputName:      C.GoString(c.input_name),
 		Line:           (uint32)(c.line),
 		MaxParseErrors: (uint32)(c.max_parse_errors),
 		NextLine:       (uint32)(c.next_line),
 		NextPosition:   (uint32)(c.next_position),
+		NextToken:      (TokenType)(c.next_token),
 		ParseErrors:    (uint32)(c.parse_errors),
 		Position:       (uint32)(c.position),
+		Qdata:          dataNewFromC(c.qdata),
 		ScopeId:        (uint32)(c.scope_id),
 		Text:           C.GoString(c.text),
 		TextEnd:        C.GoString(c.text_end),
+		Token:          (TokenType)(c.token),
 		UserData:       (uintptr)(c.user_data),
 		native:         c,
 	}
@@ -784,8 +833,8 @@ func scannerNewFromC(c *C.GScanner) *Scanner {
 	return g
 }
 
-// Scannerconfig is a wrapper around the C record GScannerConfig.
-type Scannerconfig struct {
+// ScannerConfig is a wrapper around the C record GScannerConfig.
+type ScannerConfig struct {
 	native              *C.GScannerConfig
 	CsetSkipCharacters  string
 	CsetIdentifierFirst string
@@ -816,12 +865,12 @@ type Scannerconfig struct {
 	PaddingDummy uint32
 }
 
-func scannerconfigNewFromC(c *C.GScannerConfig) *Scannerconfig {
+func scannerConfigNewFromC(c *C.GScannerConfig) *ScannerConfig {
 	if c == nil {
 		return nil
 	}
 
-	g := &Scannerconfig{
+	g := &ScannerConfig{
 		CpairCommentSingle:  C.GoString(c.cpair_comment_single),
 		CsetIdentifierFirst: C.GoString(c.cset_identifier_first),
 		CsetIdentifierNth:   C.GoString(c.cset_identifier_nth),
@@ -848,37 +897,37 @@ func sequenceNewFromC(c *C.GSequence) *Sequence {
 	return g
 }
 
-// Sequenceiter is a wrapper around the C record GSequenceIter.
-type Sequenceiter struct {
+// SequenceIter is a wrapper around the C record GSequenceIter.
+type SequenceIter struct {
 	native *C.GSequenceIter
 }
 
-func sequenceiterNewFromC(c *C.GSequenceIter) *Sequenceiter {
+func sequenceIterNewFromC(c *C.GSequenceIter) *SequenceIter {
 	if c == nil {
 		return nil
 	}
 
-	g := &Sequenceiter{native: c}
+	g := &SequenceIter{native: c}
 
 	return g
 }
 
 // Source is a wrapper around the C record GSource.
 type Source struct {
-	native       *C.GSource
-	CallbackData uintptr
-	// callback_funcs : no type generator for SourceCallbackFuncs, GSourceCallbackFuncs*
-	// source_funcs : no type generator for SourceFuncs, const GSourceFuncs*
-	RefCount uint32
-	// context : no type generator for MainContext, GMainContext*
-	Priority int32
-	Flags    uint32
-	SourceId uint32
+	native        *C.GSource
+	CallbackData  uintptr
+	CallbackFuncs *SourceCallbackFuncs
+	SourceFuncs   *SourceFuncs
+	RefCount      uint32
+	Context       *MainContext
+	Priority      int32
+	Flags         uint32
+	SourceId      uint32
 	// poll_fds : no type generator for GLib.SList, GSList*
-	// prev : no type generator for Source, GSource*
-	// next : no type generator for Source, GSource*
+	Prev *Source
+	Next *Source
 	Name string
-	// priv : no type generator for SourcePrivate, GSourcePrivate*
+	Priv *SourcePrivate
 }
 
 func sourceNewFromC(c *C.GSource) *Source {
@@ -887,38 +936,46 @@ func sourceNewFromC(c *C.GSource) *Source {
 	}
 
 	g := &Source{
-		CallbackData: (uintptr)(c.callback_data),
-		Flags:        (uint32)(c.flags),
-		Name:         C.GoString(c.name),
-		Priority:     (int32)(c.priority),
-		RefCount:     (uint32)(c.ref_count),
-		SourceId:     (uint32)(c.source_id),
-		native:       c,
+		CallbackData:  (uintptr)(c.callback_data),
+		CallbackFuncs: sourceCallbackFuncsNewFromC(c.callback_funcs),
+		Context:       mainContextNewFromC(c.context),
+		Flags:         (uint32)(c.flags),
+		Name:          C.GoString(c.name),
+		Next:          sourceNewFromC(c.next),
+		Prev:          sourceNewFromC(c.prev),
+		Priority:      (int32)(c.priority),
+		Priv:          sourcePrivateNewFromC(c.priv),
+		RefCount:      (uint32)(c.ref_count),
+		SourceFuncs:   sourceFuncsNewFromC(c.source_funcs),
+		SourceId:      (uint32)(c.source_id),
+		native:        c,
 	}
 
 	return g
 }
 
-// Sourcecallbackfuncs is a wrapper around the C record GSourceCallbackFuncs.
-type Sourcecallbackfuncs struct {
+// Unsupported : g_source_new : unsupported parameter source_funcs : record param - coming soon
+
+// SourceCallbackFuncs is a wrapper around the C record GSourceCallbackFuncs.
+type SourceCallbackFuncs struct {
 	native *C.GSourceCallbackFuncs
 	// no type for ref
 	// no type for unref
 	// no type for get
 }
 
-func sourcecallbackfuncsNewFromC(c *C.GSourceCallbackFuncs) *Sourcecallbackfuncs {
+func sourceCallbackFuncsNewFromC(c *C.GSourceCallbackFuncs) *SourceCallbackFuncs {
 	if c == nil {
 		return nil
 	}
 
-	g := &Sourcecallbackfuncs{native: c}
+	g := &SourceCallbackFuncs{native: c}
 
 	return g
 }
 
-// Sourcefuncs is a wrapper around the C record GSourceFuncs.
-type Sourcefuncs struct {
+// SourceFuncs is a wrapper around the C record GSourceFuncs.
+type SourceFuncs struct {
 	native *C.GSourceFuncs
 	// no type for prepare
 	// no type for check
@@ -928,42 +985,42 @@ type Sourcefuncs struct {
 	// closure_marshal : no type generator for SourceDummyMarshal, GSourceDummyMarshal
 }
 
-func sourcefuncsNewFromC(c *C.GSourceFuncs) *Sourcefuncs {
+func sourceFuncsNewFromC(c *C.GSourceFuncs) *SourceFuncs {
 	if c == nil {
 		return nil
 	}
 
-	g := &Sourcefuncs{native: c}
+	g := &SourceFuncs{native: c}
 
 	return g
 }
 
-// Sourceprivate is a wrapper around the C record GSourcePrivate.
-type Sourceprivate struct {
+// SourcePrivate is a wrapper around the C record GSourcePrivate.
+type SourcePrivate struct {
 	native *C.GSourcePrivate
 }
 
-func sourceprivateNewFromC(c *C.GSourcePrivate) *Sourceprivate {
+func sourcePrivateNewFromC(c *C.GSourcePrivate) *SourcePrivate {
 	if c == nil {
 		return nil
 	}
 
-	g := &Sourceprivate{native: c}
+	g := &SourcePrivate{native: c}
 
 	return g
 }
 
-// Statbuf is a wrapper around the C record GStatBuf.
-type Statbuf struct {
+// StatBuf is a wrapper around the C record GStatBuf.
+type StatBuf struct {
 	native *C.GStatBuf
 }
 
-func statbufNewFromC(c *C.GStatBuf) *Statbuf {
+func statBufNewFromC(c *C.GStatBuf) *StatBuf {
 	if c == nil {
 		return nil
 	}
 
-	g := &Statbuf{native: c}
+	g := &StatBuf{native: c}
 
 	return g
 }
@@ -991,38 +1048,38 @@ func stringNewFromC(c *C.GString) *String {
 	return g
 }
 
-// Stringchunk is a wrapper around the C record GStringChunk.
-type Stringchunk struct {
+// StringChunk is a wrapper around the C record GStringChunk.
+type StringChunk struct {
 	native *C.GStringChunk
 }
 
-func stringchunkNewFromC(c *C.GStringChunk) *Stringchunk {
+func stringChunkNewFromC(c *C.GStringChunk) *StringChunk {
 	if c == nil {
 		return nil
 	}
 
-	g := &Stringchunk{native: c}
+	g := &StringChunk{native: c}
 
 	return g
 }
 
-// Testcase is a wrapper around the C record GTestCase.
-type Testcase struct {
+// TestCase is a wrapper around the C record GTestCase.
+type TestCase struct {
 	native *C.GTestCase
 }
 
-func testcaseNewFromC(c *C.GTestCase) *Testcase {
+func testCaseNewFromC(c *C.GTestCase) *TestCase {
 	if c == nil {
 		return nil
 	}
 
-	g := &Testcase{native: c}
+	g := &TestCase{native: c}
 
 	return g
 }
 
-// Testconfig is a wrapper around the C record GTestConfig.
-type Testconfig struct {
+// TestConfig is a wrapper around the C record GTestConfig.
+type TestConfig struct {
 	native *C.GTestConfig
 	// test_initialized : no type generator for gboolean, gboolean
 	// test_quick : no type generator for gboolean, gboolean
@@ -1032,12 +1089,12 @@ type Testconfig struct {
 	// test_undefined : no type generator for gboolean, gboolean
 }
 
-func testconfigNewFromC(c *C.GTestConfig) *Testconfig {
+func testConfigNewFromC(c *C.GTestConfig) *TestConfig {
 	if c == nil {
 		return nil
 	}
 
-	g := &Testconfig{native: c}
+	g := &TestConfig{native: c}
 
 	return g
 }
@@ -1046,17 +1103,17 @@ func testconfigNewFromC(c *C.GTestConfig) *Testconfig {
 
 // Blacklisted : GTestLogMsg
 
-// Testsuite is a wrapper around the C record GTestSuite.
-type Testsuite struct {
+// TestSuite is a wrapper around the C record GTestSuite.
+type TestSuite struct {
 	native *C.GTestSuite
 }
 
-func testsuiteNewFromC(c *C.GTestSuite) *Testsuite {
+func testSuiteNewFromC(c *C.GTestSuite) *TestSuite {
 	if c == nil {
 		return nil
 	}
 
-	g := &Testsuite{native: c}
+	g := &TestSuite{native: c}
 
 	return g
 }
@@ -1076,20 +1133,24 @@ func threadNewFromC(c *C.GThread) *Thread {
 	return g
 }
 
-// Threadpool is a wrapper around the C record GThreadPool.
-type Threadpool struct {
+// Unsupported : g_thread_new : unsupported parameter func : no type generator for ThreadFunc, GThreadFunc
+
+// Unsupported : g_thread_try_new : unsupported parameter func : no type generator for ThreadFunc, GThreadFunc
+
+// ThreadPool is a wrapper around the C record GThreadPool.
+type ThreadPool struct {
 	native *C.GThreadPool
 	// _func : no type generator for Func, GFunc
 	UserData uintptr
 	// exclusive : no type generator for gboolean, gboolean
 }
 
-func threadpoolNewFromC(c *C.GThreadPool) *Threadpool {
+func threadPoolNewFromC(c *C.GThreadPool) *ThreadPool {
 	if c == nil {
 		return nil
 	}
 
-	g := &Threadpool{
+	g := &ThreadPool{
 		UserData: (uintptr)(c.user_data),
 		native:   c,
 	}
@@ -1097,19 +1158,19 @@ func threadpoolNewFromC(c *C.GThreadPool) *Threadpool {
 	return g
 }
 
-// Timeval is a wrapper around the C record GTimeVal.
-type Timeval struct {
+// TimeVal is a wrapper around the C record GTimeVal.
+type TimeVal struct {
 	native *C.GTimeVal
 	TvSec  int64
 	TvUsec int64
 }
 
-func timevalNewFromC(c *C.GTimeVal) *Timeval {
+func timeValNewFromC(c *C.GTimeVal) *TimeVal {
 	if c == nil {
 		return nil
 	}
 
-	g := &Timeval{
+	g := &TimeVal{
 		TvSec:  (int64)(c.tv_sec),
 		TvUsec: (int64)(c.tv_usec),
 		native: c,
@@ -1133,18 +1194,21 @@ func timerNewFromC(c *C.GTimer) *Timer {
 	return g
 }
 
-// Trashstack is a wrapper around the C record GTrashStack.
-type Trashstack struct {
+// TrashStack is a wrapper around the C record GTrashStack.
+type TrashStack struct {
 	native *C.GTrashStack
-	// next : no type generator for TrashStack, GTrashStack*
+	Next   *TrashStack
 }
 
-func trashstackNewFromC(c *C.GTrashStack) *Trashstack {
+func trashStackNewFromC(c *C.GTrashStack) *TrashStack {
 	if c == nil {
 		return nil
 	}
 
-	g := &Trashstack{native: c}
+	g := &TrashStack{
+		Next:   trashStackNewFromC(c.next),
+		native: c,
+	}
 
 	return g
 }
@@ -1164,33 +1228,35 @@ func treeNewFromC(c *C.GTree) *Tree {
 	return g
 }
 
-// Variantbuilder is a wrapper around the C record GVariantBuilder.
-type Variantbuilder struct {
+// VariantBuilder is a wrapper around the C record GVariantBuilder.
+type VariantBuilder struct {
 	native *C.GVariantBuilder
 }
 
-func variantbuilderNewFromC(c *C.GVariantBuilder) *Variantbuilder {
+func variantBuilderNewFromC(c *C.GVariantBuilder) *VariantBuilder {
 	if c == nil {
 		return nil
 	}
 
-	g := &Variantbuilder{native: c}
+	g := &VariantBuilder{native: c}
 
 	return g
 }
 
-// Variantiter is a wrapper around the C record GVariantIter.
-type Variantiter struct {
+// Unsupported : g_variant_builder_new : unsupported parameter type : Blacklisted record : GVariantType
+
+// VariantIter is a wrapper around the C record GVariantIter.
+type VariantIter struct {
 	native *C.GVariantIter
 	// no type for x
 }
 
-func variantiterNewFromC(c *C.GVariantIter) *Variantiter {
+func variantIterNewFromC(c *C.GVariantIter) *VariantIter {
 	if c == nil {
 		return nil
 	}
 
-	g := &Variantiter{native: c}
+	g := &VariantIter{native: c}
 
 	return g
 }

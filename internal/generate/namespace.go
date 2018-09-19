@@ -78,6 +78,11 @@ func (ns *Namespace) aliasForName(name string) (*Alias, bool) {
 	return alias, alias != nil
 }
 
+func (ns *Namespace) enumForName(name string) (*Enumeration, bool) {
+	enum := ns.Enumerations.forName(name)
+	return enum, enum != nil
+}
+
 func (ns *Namespace) recordForName(name string) (*Record, bool) {
 	record := ns.Records.forName(name)
 	return record, record != nil

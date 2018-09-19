@@ -25,19 +25,27 @@ func bytesNewFromC(c *C.GBytes) *Bytes {
 	return g
 }
 
-// Rwlock is a wrapper around the C record GRWLock.
-type Rwlock struct {
+// Unsupported : g_bytes_new : unsupported parameter data : no param type
+
+// Unsupported : g_bytes_new_static : unsupported parameter data : no param type
+
+// Unsupported : g_bytes_new_take : unsupported parameter data : no param type
+
+// Unsupported : g_bytes_new_with_free_func : unsupported parameter data : no param type
+
+// RWLock is a wrapper around the C record GRWLock.
+type RWLock struct {
 	native *C.GRWLock
 	P      uintptr
 	// no type for i
 }
 
-func rwlockNewFromC(c *C.GRWLock) *Rwlock {
+func rWLockNewFromC(c *C.GRWLock) *RWLock {
 	if c == nil {
 		return nil
 	}
 
-	g := &Rwlock{
+	g := &RWLock{
 		P:      (uintptr)(c.p),
 		native: c,
 	}
@@ -45,19 +53,19 @@ func rwlockNewFromC(c *C.GRWLock) *Rwlock {
 	return g
 }
 
-// Recmutex is a wrapper around the C record GRecMutex.
-type Recmutex struct {
+// RecMutex is a wrapper around the C record GRecMutex.
+type RecMutex struct {
 	native *C.GRecMutex
 	P      uintptr
 	// no type for i
 }
 
-func recmutexNewFromC(c *C.GRecMutex) *Recmutex {
+func recMutexNewFromC(c *C.GRecMutex) *RecMutex {
 	if c == nil {
 		return nil
 	}
 
-	g := &Recmutex{
+	g := &RecMutex{
 		P:      (uintptr)(c.p),
 		native: c,
 	}

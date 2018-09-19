@@ -55,8 +55,13 @@ func (t *Type) goTypeAndGenerator(targetType *Type) (string, TypeGenerator) {
 		return t.Name, typeGenerator
 	}
 
+	_, found = t.Namespace.enumForName(t.Name)
+	if found {
+		return t.Name, TypeGeneratorEnumerationNew(targetType)
+	}
+
 	record, found := t.Namespace.recordForName(t.Name)
-	if found && t.Name == "Error" {
+	if found {
 		return t.Name, TypeGeneratorRecordNew(targetType, record)
 	}
 

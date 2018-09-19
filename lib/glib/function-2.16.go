@@ -12,11 +12,33 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : g_checksum_type_get_length : unsupported parameter checksum_type : no type generator for ChecksumType, GChecksumType
+// ChecksumTypeGetLength is a wrapper around the C function g_checksum_type_get_length.
+func ChecksumTypeGetLength(checksumType ChecksumType) int64 {
+	c_checksum_type := (C.GChecksumType)(checksumType)
 
-// Unsupported : g_compute_checksum_for_data : unsupported parameter checksum_type : no type generator for ChecksumType, GChecksumType
+	retC := C.g_checksum_type_get_length(c_checksum_type)
+	retGo := (int64)(retC)
 
-// Unsupported : g_compute_checksum_for_string : unsupported parameter checksum_type : no type generator for ChecksumType, GChecksumType
+	return retGo
+}
+
+// Unsupported : g_compute_checksum_for_data : unsupported parameter data : no param type
+
+// ComputeChecksumForString is a wrapper around the C function g_compute_checksum_for_string.
+func ComputeChecksumForString(checksumType ChecksumType, str string, length int64) string {
+	c_checksum_type := (C.GChecksumType)(checksumType)
+
+	c_str := C.CString(str)
+	defer C.free(unsafe.Pointer(c_str))
+
+	c_length := (C.gssize)(length)
+
+	retC := C.g_compute_checksum_for_string(c_checksum_type, c_str, c_length)
+	retGo := C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // Dpgettext is a wrapper around the C function g_dpgettext.
 func Dpgettext(domain string, msgctxtid string, msgidoffset uint64) string {
@@ -75,9 +97,24 @@ func Strcmp0(str1 string, str2 string) int32 {
 
 // Unsupported : g_test_create_case : unsupported parameter data_setup : no type generator for TestFixtureFunc, GTestFixtureFunc
 
-// Unsupported : g_test_create_suite : no return generator
+// TestCreateSuite is a wrapper around the C function g_test_create_suite.
+func TestCreateSuite(suiteName string) *TestSuite {
+	c_suite_name := C.CString(suiteName)
+	defer C.free(unsafe.Pointer(c_suite_name))
 
-// Unsupported : g_test_get_root : no return generator
+	retC := C.g_test_create_suite(c_suite_name)
+	retGo := testSuiteNewFromC(retC)
+
+	return retGo
+}
+
+// TestGetRoot is a wrapper around the C function g_test_get_root.
+func TestGetRoot() *TestSuite {
+	retC := C.g_test_get_root()
+	retGo := testSuiteNewFromC(retC)
+
+	return retGo
+}
 
 // Unsupported : g_test_init : unsupported parameter argc : no type generator for gint, int*
 
@@ -139,7 +176,7 @@ func TestRun() int32 {
 	return retGo
 }
 
-// Unsupported : g_test_run_suite : unsupported parameter suite : no type generator for TestSuite, GTestSuite*
+// Unsupported : g_test_run_suite : unsupported parameter suite : record param - coming soon
 
 // TestTimerElapsed is a wrapper around the C function g_test_timer_elapsed.
 func TestTimerElapsed() float64 {

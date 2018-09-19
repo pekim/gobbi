@@ -43,8 +43,14 @@ func AsciiStrtoll(nptr string, base uint32) (int64, string) {
 
 // Unsupported : g_hash_table_steal_all : unsupported parameter hash_table : no type generator for GLib.HashTable, GHashTable*
 
-// Unsupported : g_main_current_source : no return generator
+// MainCurrentSource is a wrapper around the C function g_main_current_source.
+func MainCurrentSource() *Source {
+	retC := C.g_main_current_source()
+	retGo := sourceNewFromC(retC)
 
-// Unsupported : g_time_val_from_iso8601 : unsupported parameter time_ : no type generator for TimeVal, GTimeVal*
+	return retGo
+}
+
+// Unsupported : g_time_val_from_iso8601 : unsupported parameter time_ : record param - coming soon
 
 // Unsupported : g_unichar_iswide_cjk : no return generator

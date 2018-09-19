@@ -26,9 +26,9 @@ import "C"
 
 // Unsupported : g_atomic_pointer_xor : unsupported parameter atomic : no type generator for gpointer, void*
 
-// Unsupported : g_compute_hmac_for_data : unsupported parameter digest_type : no type generator for ChecksumType, GChecksumType
+// Unsupported : g_compute_hmac_for_data : unsupported parameter key : no param type
 
-// Unsupported : g_compute_hmac_for_string : unsupported parameter digest_type : no type generator for ChecksumType, GChecksumType
+// Unsupported : g_compute_hmac_for_string : unsupported parameter key : no param type
 
 // DirMakeTmp is a wrapper around the C function g_dir_make_tmp.
 func DirMakeTmp(tmpl string) (string, error) {
@@ -116,9 +116,25 @@ func RegexEscapeNul(string string, length int32) string {
 
 // Unsupported : g_unichar_fully_decompose : unsupported parameter compat : no type generator for gboolean, gboolean
 
-// Unsupported : g_unicode_script_from_iso15924 : no return generator
+// UnicodeScriptFromIso15924 is a wrapper around the C function g_unicode_script_from_iso15924.
+func UnicodeScriptFromIso15924(iso15924 uint32) UnicodeScript {
+	c_iso15924 := (C.guint32)(iso15924)
 
-// Unsupported : g_unicode_script_to_iso15924 : unsupported parameter script : no type generator for UnicodeScript, GUnicodeScript
+	retC := C.g_unicode_script_from_iso15924(c_iso15924)
+	retGo := (UnicodeScript)(retC)
+
+	return retGo
+}
+
+// UnicodeScriptToIso15924 is a wrapper around the C function g_unicode_script_to_iso15924.
+func UnicodeScriptToIso15924(script UnicodeScript) uint32 {
+	c_script := (C.GUnicodeScript)(script)
+
+	retC := C.g_unicode_script_to_iso15924(c_script)
+	retGo := (uint32)(retC)
+
+	return retGo
+}
 
 // Unsupported : g_unix_open_pipe : unsupported parameter fds : no type generator for gint, gint*
 
@@ -128,7 +144,15 @@ func RegexEscapeNul(string string, length int32) string {
 
 // Unsupported : g_unix_signal_add_full : unsupported parameter handler : no type generator for SourceFunc, GSourceFunc
 
-// Unsupported : g_unix_signal_source_new : no return generator
+// UnixSignalSourceNew is a wrapper around the C function g_unix_signal_source_new.
+func UnixSignalSourceNew(signum int32) *Source {
+	c_signum := (C.gint)(signum)
+
+	retC := C.g_unix_signal_source_new(c_signum)
+	retGo := sourceNewFromC(retC)
+
+	return retGo
+}
 
 // Utf8Substring is a wrapper around the C function g_utf8_substring.
 func Utf8Substring(str string, startPos int64, endPos int64) string {

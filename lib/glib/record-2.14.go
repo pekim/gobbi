@@ -24,3 +24,5 @@ func regexNewFromC(c *C.GRegex) *Regex {
 
 	return g
 }
+
+// Unsupported : g_regex_new : unsupported parameter compile_options : no type generator for RegexCompileFlags, GRegexCompileFlags

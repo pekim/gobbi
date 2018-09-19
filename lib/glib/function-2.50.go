@@ -10,7 +10,7 @@ package glib
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : g_compute_hmac_for_bytes : unsupported parameter digest_type : no type generator for ChecksumType, GChecksumType
+// Unsupported : g_compute_hmac_for_bytes : unsupported parameter key : record param - coming soon
 
 // Unsupported : g_log_set_writer_func : unsupported parameter func : no type generator for LogWriterFunc, GLogWriterFunc
 

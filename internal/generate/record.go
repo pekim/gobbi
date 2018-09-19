@@ -8,32 +8,29 @@ import (
 type Record struct {
 	Namespace *Namespace
 
-	Name           string         `xml:"name,attr"`
-	Blacklist      bool           `xml:"blacklist,attr"`
-	GoName         string         `xml:"goname,attr"`
-	Version        string         `xml:"version,attr"`
-	CSymbolPrefix  string         `xml:"http://www.gtk.org/introspection/c/1.0 symbol-prefix,attr"`
-	CType          string         `xml:"http://www.gtk.org/introspection/c/1.0 type,attr"`
-	ParentName     string         `xml:"parent,attr"`
-	GlibTypeName   string         `xml:"http://www.gtk.org/introspection/glib/1.0 type-name,attr"`
-	GlibGetType    string         `xml:"http://www.gtk.org/introspection/glib/1.0 get-type,attr"`
-	GlibTypeStruct string         `xml:"http://www.gtk.org/introspection/glib/1.0 type-struct,attr"`
-	Doc            *Doc           `xml:"doc"`
-	Fields         Fields         `xml:"field"`
-	Constructors   []*Constructor `xml:"constructor"`
-	Methods        Methods        `xml:"method"`
+	Name           string       `xml:"name,attr"`
+	Blacklist      bool         `xml:"blacklist,attr"`
+	GoName         string       `xml:"goname,attr"`
+	Version        string       `xml:"version,attr"`
+	CSymbolPrefix  string       `xml:"http://www.gtk.org/introspection/c/1.0 symbol-prefix,attr"`
+	CType          string       `xml:"http://www.gtk.org/introspection/c/1.0 type,attr"`
+	ParentName     string       `xml:"parent,attr"`
+	GlibTypeName   string       `xml:"http://www.gtk.org/introspection/glib/1.0 type-name,attr"`
+	GlibGetType    string       `xml:"http://www.gtk.org/introspection/glib/1.0 get-type,attr"`
+	GlibTypeStruct string       `xml:"http://www.gtk.org/introspection/glib/1.0 type-struct,attr"`
+	Doc            *Doc         `xml:"doc"`
+	Fields         Fields       `xml:"field"`
+	Constructors   Constructors `xml:"constructor"`
+	Methods        Methods      `xml:"method"`
 
 	newFromCFuncName string
 }
 
 func (r *Record) init(ns *Namespace) {
 	r.Namespace = ns
-	r.GoName = makeExportedGoName(r.Name)
-	r.newFromCFuncName = fmt.Sprintf("%sNewFromC", makeGoName(r.Name))
-
-	for _, ctor := range r.Constructors {
-		ctor.init(ns)
-	}
+	r.GoName = r.Name
+	r.newFromCFuncName = fmt.Sprintf("%sNewFromC", lowerFirst(r.Name))
+	r.Constructors.init(ns, r)
 
 	for _, method := range r.Methods {
 		method.init(ns)
@@ -64,6 +61,7 @@ func (r *Record) mergeAddenda(addenda *Record) {
 func (r *Record) generate(g *jen.Group, version *Version) {
 	r.generateType(g)
 	(&RecordNewFromCFunc{r}).generate(g)
+	r.Constructors.generate(g, version)
 }
 
 func (r *Record) generateType(g *jen.Group) {
@@ -81,8 +79,4 @@ func (r *Record) generateType(g *jen.Group) {
 			r.Fields.generate(g)
 		})
 	g.Line()
-}
-
-type Constructor struct {
-	*Function
 }

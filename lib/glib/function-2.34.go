@@ -12,11 +12,11 @@ import "C"
 
 // Unsupported : g_clear_pointer : unsupported parameter pp : no type generator for gpointer, gpointer*
 
-// Unsupported : g_compute_checksum_for_bytes : unsupported parameter checksum_type : no type generator for ChecksumType, GChecksumType
+// Unsupported : g_compute_checksum_for_bytes : unsupported parameter data : record param - coming soon
 
-// Unsupported : g_datalist_id_dup_data : unsupported parameter datalist : no type generator for Data, GData**
+// Unsupported : g_datalist_id_dup_data : unsupported parameter datalist : record param - coming soon
 
-// Unsupported : g_datalist_id_replace_data : unsupported parameter datalist : no type generator for Data, GData**
+// Unsupported : g_datalist_id_replace_data : unsupported parameter datalist : record param - coming soon
 
 // Unsupported : g_spawn_check_exit_status : no return generator
 

@@ -1,6 +1,7 @@
 package generate
 
 import (
+	"fmt"
 	"github.com/dave/jennifer/jen"
 	"strings"
 )
@@ -18,6 +19,10 @@ func TypeGeneratorRecordNew(typ *Type, record *Record) *TypeGeneratorRecord {
 }
 
 func (t *TypeGeneratorRecord) isSupportedAsParam(direction string) (supported bool, reason string) {
+	if t.record.Blacklist {
+		return false, fmt.Sprintf("Blacklisted record : %s", t.record.CType)
+	}
+
 	//if direction != "out" && t.typ.indirectLevel > 1 {
 	//	return false, fmt.Sprintf("in string with indirection level of %d",
 	//		t.typ.indirectLevel)
@@ -27,12 +32,16 @@ func (t *TypeGeneratorRecord) isSupportedAsParam(direction string) (supported bo
 }
 
 func (t *TypeGeneratorRecord) isSupportedAsReturnValue() (supported bool, reason string) {
-	//if t.typ.indirectLevel > 1 {
-	//	return false, fmt.Sprintf("string with indirection level of %d",
-	//		t.typ.indirectLevel)
-	//}
+	if t.record.Blacklist {
+		return false, fmt.Sprintf("Blacklisted record : %s", t.record.CType)
+	}
 
-	return false, "record return - coming soon"
+	if t.typ.indirectLevel > 1 {
+		return false, fmt.Sprintf("record with indirection level of %d",
+			t.typ.indirectLevel)
+	}
+
+	return true, ""
 }
 
 func (t *TypeGeneratorRecord) generateDeclaration(g *jen.Group, goVarName string) {
@@ -63,6 +72,9 @@ func (t *TypeGeneratorRecord) generateParamOutCVar(g *jen.Group, cVarName string
 }
 
 func (t *TypeGeneratorRecord) generateReturnFunctionDeclaration(g *jen.Group) {
+	g.
+		Op(strings.Repeat("*", t.typ.indirectLevel)).
+		Id(t.typ.goType)
 }
 
 func (t *TypeGeneratorRecord) generateReturnCToGo(g *jen.Group, cVarName string, goVarName string,

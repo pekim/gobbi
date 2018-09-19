@@ -36,7 +36,15 @@ import "C"
 
 // Unsupported : g_child_watch_add_full : unsupported parameter function : no type generator for ChildWatchFunc, GChildWatchFunc
 
-// Unsupported : g_child_watch_source_new : no return generator
+// ChildWatchSourceNew is a wrapper around the C function g_child_watch_source_new.
+func ChildWatchSourceNew(pid Pid) *Source {
+	c_pid := (C.GPid)(pid)
+
+	retC := C.g_child_watch_source_new(c_pid)
+	retGo := sourceNewFromC(retC)
+
+	return retGo
+}
 
 // FileReadLink is a wrapper around the C function g_file_read_link.
 func FileReadLink(filename string) (string, error) {

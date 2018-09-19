@@ -13,7 +13,7 @@ import "C"
 // Once is a wrapper around the C record GOnce.
 type Once struct {
 	native *C.GOnce
-	// status : no type generator for OnceStatus, volatile GOnceStatus
+	Status OnceStatus
 	// retval : no type generator for gpointer, volatile gpointer
 }
 
@@ -22,7 +22,10 @@ func onceNewFromC(c *C.GOnce) *Once {
 		return nil
 	}
 
-	g := &Once{native: c}
+	g := &Once{
+		Status: (OnceStatus)(c.status),
+		native: c,
+	}
 
 	return g
 }

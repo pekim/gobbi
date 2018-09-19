@@ -10,17 +10,19 @@ package glib
 // #include <stdlib.h>
 import "C"
 
-// Variantdict is a wrapper around the C record GVariantDict.
-type Variantdict struct {
+// VariantDict is a wrapper around the C record GVariantDict.
+type VariantDict struct {
 	native *C.GVariantDict
 }
 
-func variantdictNewFromC(c *C.GVariantDict) *Variantdict {
+func variantDictNewFromC(c *C.GVariantDict) *VariantDict {
 	if c == nil {
 		return nil
 	}
 
-	g := &Variantdict{native: c}
+	g := &VariantDict{native: c}
 
 	return g
 }
+
+// Unsupported : g_variant_dict_new : unsupported parameter from_asv : Blacklisted record : GVariant

@@ -24,3 +24,13 @@ func checksumNewFromC(c *C.GChecksum) *Checksum {
 
 	return g
 }
+
+// ChecksumNew is a wrapper around the C function g_checksum_new.
+func ChecksumNew(checksumType ChecksumType) *Checksum {
+	c_checksum_type := (C.GChecksumType)(checksumType)
+
+	retC := C.g_checksum_new(c_checksum_type)
+	retGo := checksumNewFromC(retC)
+
+	return retGo
+}

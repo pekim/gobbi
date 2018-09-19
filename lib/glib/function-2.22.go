@@ -68,7 +68,13 @@ func Int64Hash(v uintptr) uint32 {
 	return retGo
 }
 
-// Unsupported : g_main_context_get_thread_default : no return generator
+// MainContextGetThreadDefault is a wrapper around the C function g_main_context_get_thread_default.
+func MainContextGetThreadDefault() *MainContext {
+	retC := C.g_main_context_get_thread_default()
+	retGo := mainContextNewFromC(retC)
+
+	return retGo
+}
 
 // MkstempFull is a wrapper around the C function g_mkstemp_full.
 func MkstempFull(tmpl string, flags int32, mode int32) int32 {
