@@ -50,3 +50,9 @@ func TestFunctionReturningOutParam(t *testing.T) {
 	assert.Equal(t, "/filename", filename)
 	assert.Equal(t, "hostname", hostname)
 }
+
+func TestConstructor(t *testing.T) {
+	date := DateNewDmy(02, 06, 1962)
+	assert.NotNil(t, date)
+	assert.NotNil(t, date.native)
+}
