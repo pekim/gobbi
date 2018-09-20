@@ -12,13 +12,28 @@ type Gir struct {
 	addendaRepo *Repository
 }
 
-func GirNew(name string) *Gir {
+func GirNewRoot(name string, version string) *Gir {
+	return GirNew(name, version, map[string]*Gir{})
+}
+
+func GirNew(name string, version string, girs map[string]*Gir) *Gir {
+	fullname := name + "-" + version
+
+	if g, haveGir := girs[fullname]; haveGir {
+		return g
+	}
 
 	g := &Gir{}
-
-	g.repo = g.LoadFile(name+".gir", true)
-	g.addendaRepo = g.LoadFile(name+"-addenda.gir", false)
+	g.repo = g.LoadFile(fullname+".gir", true)
+	g.addendaRepo = g.LoadFile(fullname+"-addenda.gir", false)
 	g.repo.MergeAddenda(g.addendaRepo)
+
+	girs[fullname] = g
+
+	for _, i := range g.repo.Includes {
+		GirNew(i.Name, i.Version, girs)
+	}
+
 	return g
 }
 
@@ -27,6 +42,7 @@ func (g *Gir) Generate() {
 }
 
 func (g *Gir) LoadFile(filename string, required bool) *Repository {
+	fmt.Println(filename)
 	filepath := projectFilepath("internal", "gir-files", filename)
 	source, err := ioutil.ReadFile(filepath)
 	if err != nil {
