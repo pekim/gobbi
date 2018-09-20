@@ -3,6 +3,8 @@
 
 package glib
 
+import "unsafe"
+
 // #define GLIB_DISABLE_DEPRECATION_WARNINGS
 // #include <glib.h>
 // #include <glib/gstdio.h>
@@ -26,3 +28,72 @@ func regexNewFromC(c *C.GRegex) *Regex {
 }
 
 // Unsupported : g_regex_new : unsupported parameter compile_options : no type generator for RegexCompileFlags, GRegexCompileFlags
+
+// GetCaptureCount is a wrapper around the C function g_regex_get_capture_count.
+func GetCaptureCount() int32 {
+	retC := C.g_regex_get_capture_count()
+	retGo := (int32)(retC)
+
+	return retGo
+}
+
+// Unsupported : g_regex_get_compile_flags : no return generator
+
+// Unsupported : g_regex_get_has_cr_or_lf : no return generator
+
+// Unsupported : g_regex_get_match_flags : no return generator
+
+// GetMaxBackref is a wrapper around the C function g_regex_get_max_backref.
+func GetMaxBackref() int32 {
+	retC := C.g_regex_get_max_backref()
+	retGo := (int32)(retC)
+
+	return retGo
+}
+
+// GetPattern is a wrapper around the C function g_regex_get_pattern.
+func GetPattern() string {
+	retC := C.g_regex_get_pattern()
+	retGo := C.GoString(retC)
+
+	return retGo
+}
+
+// GetStringNumber is a wrapper around the C function g_regex_get_string_number.
+func GetStringNumber(name string) int32 {
+	c_name := C.CString(name)
+	defer C.free(unsafe.Pointer(c_name))
+
+	retC := C.g_regex_get_string_number(c_name)
+	retGo := (int32)(retC)
+
+	return retGo
+}
+
+// Unsupported : g_regex_match : unsupported parameter match_options : no type generator for RegexMatchFlags, GRegexMatchFlags
+
+// Unsupported : g_regex_match_all : unsupported parameter match_options : no type generator for RegexMatchFlags, GRegexMatchFlags
+
+// Unsupported : g_regex_match_all_full : unsupported parameter string : no param type
+
+// Unsupported : g_regex_match_full : unsupported parameter string : no param type
+
+// Ref is a wrapper around the C function g_regex_ref.
+func Ref() *Regex {
+	retC := C.g_regex_ref()
+	retGo := regexNewFromC(retC)
+
+	return retGo
+}
+
+// Unsupported : g_regex_replace : unsupported parameter string : no param type
+
+// Unsupported : g_regex_replace_eval : unsupported parameter string : no param type
+
+// Unsupported : g_regex_replace_literal : unsupported parameter string : no param type
+
+// Unsupported : g_regex_split : unsupported parameter match_options : no type generator for RegexMatchFlags, GRegexMatchFlags
+
+// Unsupported : g_regex_split_full : unsupported parameter string : no param type
+
+// Unsupported : g_regex_unref : no return generator

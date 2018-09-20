@@ -30,15 +30,10 @@ func (r *Record) init(ns *Namespace) {
 	r.Namespace = ns
 	r.GoName = r.Name
 	r.newFromCFuncName = fmt.Sprintf("%sNewFromC", lowerFirst(r.Name))
+
 	r.Constructors.init(ns, r)
-
-	for _, method := range r.Methods {
-		method.init(ns)
-	}
-
-	for _, field := range r.Fields {
-		field.init(ns)
-	}
+	r.Methods.init(ns, r)
+	r.Fields.init(ns)
 }
 
 func (r *Record) version() string {
@@ -62,6 +57,7 @@ func (r *Record) generate(g *jen.Group, version *Version) {
 	r.generateType(g)
 	(&RecordNewFromCFunc{r}).generate(g)
 	r.Constructors.generate(g, version)
+	r.Methods.generate(g, version)
 }
 
 func (r *Record) generateType(g *jen.Group) {

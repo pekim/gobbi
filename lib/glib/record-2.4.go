@@ -29,3 +29,5 @@ func onceNewFromC(c *C.GOnce) *Once {
 
 	return g
 }
+
+// Unsupported : g_once_impl : unsupported parameter func : no type generator for ThreadFunc, GThreadFunc

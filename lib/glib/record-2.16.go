@@ -34,3 +34,27 @@ func ChecksumNew(checksumType ChecksumType) *Checksum {
 
 	return retGo
 }
+
+// Copy is a wrapper around the C function g_checksum_copy.
+func Copy() *Checksum {
+	retC := C.g_checksum_copy()
+	retGo := checksumNewFromC(retC)
+
+	return retGo
+}
+
+// Unsupported : g_checksum_free : no return generator
+
+// Unsupported : g_checksum_get_digest : unsupported parameter buffer : no type generator for guint8, guint8*
+
+// GetString is a wrapper around the C function g_checksum_get_string.
+func GetString() string {
+	retC := C.g_checksum_get_string()
+	retGo := C.GoString(retC)
+
+	return retGo
+}
+
+// Unsupported : g_checksum_reset : no return generator
+
+// Unsupported : g_checksum_update : unsupported parameter data : no param type

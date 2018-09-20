@@ -23,13 +23,16 @@ type Function struct {
 	Throws            int          `xml:"throws,attr"`
 	Introspectable    string       `xml:"introspectable,attr"`
 
+	receiver *Record
+
 	throwableErrorType      *Type
 	throwableErrorCVarName  string
 	throwableErrorGoVarName string
 }
 
-func (f *Function) init(ns *Namespace) {
+func (f *Function) init(ns *Namespace, receiver *Record) {
 	f.Namespace = ns
+	f.receiver = receiver
 	f.GoName = makeExportedGoName(f.Name)
 	f.Parameters.init(ns)
 	f.initThrowableError()

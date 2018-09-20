@@ -26,3 +26,31 @@ func variantDictNewFromC(c *C.GVariantDict) *VariantDict {
 }
 
 // Unsupported : g_variant_dict_new : unsupported parameter from_asv : Blacklisted record : GVariant
+
+// Unsupported : g_variant_dict_clear : no return generator
+
+// Unsupported : g_variant_dict_contains : no return generator
+
+// Unsupported : g_variant_dict_end : return type : Blacklisted record : GVariant
+
+// Unsupported : g_variant_dict_init : unsupported parameter from_asv : Blacklisted record : GVariant
+
+// Unsupported : g_variant_dict_insert : unsupported parameter ... : varargs
+
+// Unsupported : g_variant_dict_insert_value : unsupported parameter value : Blacklisted record : GVariant
+
+// Unsupported : g_variant_dict_lookup : unsupported parameter ... : varargs
+
+// Unsupported : g_variant_dict_lookup_value : unsupported parameter expected_type : Blacklisted record : GVariantType
+
+// Ref is a wrapper around the C function g_variant_dict_ref.
+func Ref() *VariantDict {
+	retC := C.g_variant_dict_ref()
+	retGo := variantDictNewFromC(retC)
+
+	return retGo
+}
+
+// Unsupported : g_variant_dict_remove : no return generator
+
+// Unsupported : g_variant_dict_unref : no return generator
