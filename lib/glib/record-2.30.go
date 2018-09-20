@@ -26,7 +26,7 @@ func hmacNewFromC(c *C.GHmac) *Hmac {
 }
 
 // Copy is a wrapper around the C function g_hmac_copy.
-func Copy() *Hmac {
+func (recv *Hmac) Copy() *Hmac {
 	retC := C.g_hmac_copy()
 	retGo := hmacNewFromC(retC)
 
@@ -36,7 +36,7 @@ func Copy() *Hmac {
 // Unsupported : g_hmac_get_digest : unsupported parameter buffer : no type generator for guint8, guint8*
 
 // GetString is a wrapper around the C function g_hmac_get_string.
-func GetString() string {
+func (recv *Hmac) GetString() string {
 	retC := C.g_hmac_get_string()
 	retGo := C.GoString(retC)
 
@@ -44,7 +44,7 @@ func GetString() string {
 }
 
 // Ref is a wrapper around the C function g_hmac_ref.
-func Ref() *Hmac {
+func (recv *Hmac) Ref() *Hmac {
 	retC := C.g_hmac_ref()
 	retGo := hmacNewFromC(retC)
 

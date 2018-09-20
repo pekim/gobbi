@@ -95,11 +95,23 @@ func (f *Function) generate(g *jen.Group, version *Version) {
 
 	g.
 		Func().
+		Do(f.generateReceiverDeclaration).
 		Id(f.GoName).                                         // name
 		ParamsFunc(f.Parameters.generateFunctionDeclaration). // params
 		ParamsFunc(f.generateReturnDeclaration).              // returns
 		BlockFunc(f.generateBody).                            // body
 		Line()
+}
+
+func (f *Function) generateReceiverDeclaration(s *jen.Statement) {
+	if f.receiver == nil {
+		return
+	}
+
+	s.Parens(jen.
+		Id("recv").
+		Op("*").
+		Id(f.receiver.GoName))
 }
 
 func (f *Function) generateReturnDeclaration(g *jen.Group) {

@@ -114,7 +114,7 @@ func DateTimeNewUtc(year int32, month int32, day int32, hour int32, minute int32
 }
 
 // Add is a wrapper around the C function g_date_time_add.
-func Add(timespan TimeSpan) *DateTime {
+func (recv *DateTime) Add(timespan TimeSpan) *DateTime {
 	c_timespan := (C.GTimeSpan)(timespan)
 
 	retC := C.g_date_time_add(c_timespan)
@@ -124,7 +124,7 @@ func Add(timespan TimeSpan) *DateTime {
 }
 
 // AddDays is a wrapper around the C function g_date_time_add_days.
-func AddDays(days int32) *DateTime {
+func (recv *DateTime) AddDays(days int32) *DateTime {
 	c_days := (C.gint)(days)
 
 	retC := C.g_date_time_add_days(c_days)
@@ -134,7 +134,7 @@ func AddDays(days int32) *DateTime {
 }
 
 // AddFull is a wrapper around the C function g_date_time_add_full.
-func AddFull(years int32, months int32, days int32, hours int32, minutes int32, seconds float64) *DateTime {
+func (recv *DateTime) AddFull(years int32, months int32, days int32, hours int32, minutes int32, seconds float64) *DateTime {
 	c_years := (C.gint)(years)
 
 	c_months := (C.gint)(months)
@@ -154,7 +154,7 @@ func AddFull(years int32, months int32, days int32, hours int32, minutes int32, 
 }
 
 // AddHours is a wrapper around the C function g_date_time_add_hours.
-func AddHours(hours int32) *DateTime {
+func (recv *DateTime) AddHours(hours int32) *DateTime {
 	c_hours := (C.gint)(hours)
 
 	retC := C.g_date_time_add_hours(c_hours)
@@ -164,7 +164,7 @@ func AddHours(hours int32) *DateTime {
 }
 
 // AddMinutes is a wrapper around the C function g_date_time_add_minutes.
-func AddMinutes(minutes int32) *DateTime {
+func (recv *DateTime) AddMinutes(minutes int32) *DateTime {
 	c_minutes := (C.gint)(minutes)
 
 	retC := C.g_date_time_add_minutes(c_minutes)
@@ -174,7 +174,7 @@ func AddMinutes(minutes int32) *DateTime {
 }
 
 // AddMonths is a wrapper around the C function g_date_time_add_months.
-func AddMonths(months int32) *DateTime {
+func (recv *DateTime) AddMonths(months int32) *DateTime {
 	c_months := (C.gint)(months)
 
 	retC := C.g_date_time_add_months(c_months)
@@ -184,7 +184,7 @@ func AddMonths(months int32) *DateTime {
 }
 
 // AddSeconds is a wrapper around the C function g_date_time_add_seconds.
-func AddSeconds(seconds float64) *DateTime {
+func (recv *DateTime) AddSeconds(seconds float64) *DateTime {
 	c_seconds := (C.gdouble)(seconds)
 
 	retC := C.g_date_time_add_seconds(c_seconds)
@@ -194,7 +194,7 @@ func AddSeconds(seconds float64) *DateTime {
 }
 
 // AddWeeks is a wrapper around the C function g_date_time_add_weeks.
-func AddWeeks(weeks int32) *DateTime {
+func (recv *DateTime) AddWeeks(weeks int32) *DateTime {
 	c_weeks := (C.gint)(weeks)
 
 	retC := C.g_date_time_add_weeks(c_weeks)
@@ -204,7 +204,7 @@ func AddWeeks(weeks int32) *DateTime {
 }
 
 // AddYears is a wrapper around the C function g_date_time_add_years.
-func AddYears(years int32) *DateTime {
+func (recv *DateTime) AddYears(years int32) *DateTime {
 	c_years := (C.gint)(years)
 
 	retC := C.g_date_time_add_years(c_years)
@@ -216,7 +216,7 @@ func AddYears(years int32) *DateTime {
 // Unsupported : g_date_time_difference : unsupported parameter begin : record param - coming soon
 
 // Format is a wrapper around the C function g_date_time_format.
-func Format(format string) string {
+func (recv *DateTime) Format(format string) string {
 	c_format := C.CString(format)
 	defer C.free(unsafe.Pointer(c_format))
 
@@ -228,7 +228,7 @@ func Format(format string) string {
 }
 
 // GetDayOfMonth is a wrapper around the C function g_date_time_get_day_of_month.
-func GetDayOfMonth() int32 {
+func (recv *DateTime) GetDayOfMonth() int32 {
 	retC := C.g_date_time_get_day_of_month()
 	retGo := (int32)(retC)
 
@@ -236,7 +236,7 @@ func GetDayOfMonth() int32 {
 }
 
 // GetDayOfWeek is a wrapper around the C function g_date_time_get_day_of_week.
-func GetDayOfWeek() int32 {
+func (recv *DateTime) GetDayOfWeek() int32 {
 	retC := C.g_date_time_get_day_of_week()
 	retGo := (int32)(retC)
 
@@ -244,7 +244,7 @@ func GetDayOfWeek() int32 {
 }
 
 // GetDayOfYear is a wrapper around the C function g_date_time_get_day_of_year.
-func GetDayOfYear() int32 {
+func (recv *DateTime) GetDayOfYear() int32 {
 	retC := C.g_date_time_get_day_of_year()
 	retGo := (int32)(retC)
 
@@ -252,7 +252,7 @@ func GetDayOfYear() int32 {
 }
 
 // GetHour is a wrapper around the C function g_date_time_get_hour.
-func GetHour() int32 {
+func (recv *DateTime) GetHour() int32 {
 	retC := C.g_date_time_get_hour()
 	retGo := (int32)(retC)
 
@@ -260,7 +260,7 @@ func GetHour() int32 {
 }
 
 // GetMicrosecond is a wrapper around the C function g_date_time_get_microsecond.
-func GetMicrosecond() int32 {
+func (recv *DateTime) GetMicrosecond() int32 {
 	retC := C.g_date_time_get_microsecond()
 	retGo := (int32)(retC)
 
@@ -268,7 +268,7 @@ func GetMicrosecond() int32 {
 }
 
 // GetMinute is a wrapper around the C function g_date_time_get_minute.
-func GetMinute() int32 {
+func (recv *DateTime) GetMinute() int32 {
 	retC := C.g_date_time_get_minute()
 	retGo := (int32)(retC)
 
@@ -276,7 +276,7 @@ func GetMinute() int32 {
 }
 
 // GetMonth is a wrapper around the C function g_date_time_get_month.
-func GetMonth() int32 {
+func (recv *DateTime) GetMonth() int32 {
 	retC := C.g_date_time_get_month()
 	retGo := (int32)(retC)
 
@@ -284,7 +284,7 @@ func GetMonth() int32 {
 }
 
 // GetSecond is a wrapper around the C function g_date_time_get_second.
-func GetSecond() int32 {
+func (recv *DateTime) GetSecond() int32 {
 	retC := C.g_date_time_get_second()
 	retGo := (int32)(retC)
 
@@ -292,7 +292,7 @@ func GetSecond() int32 {
 }
 
 // GetSeconds is a wrapper around the C function g_date_time_get_seconds.
-func GetSeconds() float64 {
+func (recv *DateTime) GetSeconds() float64 {
 	retC := C.g_date_time_get_seconds()
 	retGo := (float64)(retC)
 
@@ -300,7 +300,7 @@ func GetSeconds() float64 {
 }
 
 // GetTimezoneAbbreviation is a wrapper around the C function g_date_time_get_timezone_abbreviation.
-func GetTimezoneAbbreviation() string {
+func (recv *DateTime) GetTimezoneAbbreviation() string {
 	retC := C.g_date_time_get_timezone_abbreviation()
 	retGo := C.GoString(retC)
 
@@ -308,7 +308,7 @@ func GetTimezoneAbbreviation() string {
 }
 
 // GetUtcOffset is a wrapper around the C function g_date_time_get_utc_offset.
-func GetUtcOffset() TimeSpan {
+func (recv *DateTime) GetUtcOffset() TimeSpan {
 	retC := C.g_date_time_get_utc_offset()
 	retGo := (TimeSpan)(retC)
 
@@ -316,7 +316,7 @@ func GetUtcOffset() TimeSpan {
 }
 
 // GetWeekNumberingYear is a wrapper around the C function g_date_time_get_week_numbering_year.
-func GetWeekNumberingYear() int32 {
+func (recv *DateTime) GetWeekNumberingYear() int32 {
 	retC := C.g_date_time_get_week_numbering_year()
 	retGo := (int32)(retC)
 
@@ -324,7 +324,7 @@ func GetWeekNumberingYear() int32 {
 }
 
 // GetWeekOfYear is a wrapper around the C function g_date_time_get_week_of_year.
-func GetWeekOfYear() int32 {
+func (recv *DateTime) GetWeekOfYear() int32 {
 	retC := C.g_date_time_get_week_of_year()
 	retGo := (int32)(retC)
 
@@ -332,7 +332,7 @@ func GetWeekOfYear() int32 {
 }
 
 // GetYear is a wrapper around the C function g_date_time_get_year.
-func GetYear() int32 {
+func (recv *DateTime) GetYear() int32 {
 	retC := C.g_date_time_get_year()
 	retGo := (int32)(retC)
 
@@ -344,7 +344,7 @@ func GetYear() int32 {
 // Unsupported : g_date_time_is_daylight_savings : no return generator
 
 // Ref is a wrapper around the C function g_date_time_ref.
-func Ref() *DateTime {
+func (recv *DateTime) Ref() *DateTime {
 	retC := C.g_date_time_ref()
 	retGo := dateTimeNewFromC(retC)
 
@@ -352,7 +352,7 @@ func Ref() *DateTime {
 }
 
 // ToLocal is a wrapper around the C function g_date_time_to_local.
-func ToLocal() *DateTime {
+func (recv *DateTime) ToLocal() *DateTime {
 	retC := C.g_date_time_to_local()
 	retGo := dateTimeNewFromC(retC)
 
@@ -364,7 +364,7 @@ func ToLocal() *DateTime {
 // Unsupported : g_date_time_to_timezone : unsupported parameter tz : record param - coming soon
 
 // ToUnix is a wrapper around the C function g_date_time_to_unix.
-func ToUnix() int64 {
+func (recv *DateTime) ToUnix() int64 {
 	retC := C.g_date_time_to_unix()
 	retGo := (int64)(retC)
 
@@ -372,7 +372,7 @@ func ToUnix() int64 {
 }
 
 // ToUtc is a wrapper around the C function g_date_time_to_utc.
-func ToUtc() *DateTime {
+func (recv *DateTime) ToUtc() *DateTime {
 	retC := C.g_date_time_to_utc()
 	retGo := dateTimeNewFromC(retC)
 
@@ -426,7 +426,7 @@ func TimeZoneNewUtc() *TimeZone {
 // Unsupported : g_time_zone_adjust_time : unsupported parameter time_ : no type generator for gint64, gint64*
 
 // FindInterval is a wrapper around the C function g_time_zone_find_interval.
-func FindInterval(type_ TimeType, time int64) int32 {
+func (recv *TimeZone) FindInterval(type_ TimeType, time int64) int32 {
 	c_type := (C.GTimeType)(type_)
 
 	c_time_ := (C.gint64)(time)
@@ -438,7 +438,7 @@ func FindInterval(type_ TimeType, time int64) int32 {
 }
 
 // GetAbbreviation is a wrapper around the C function g_time_zone_get_abbreviation.
-func GetAbbreviation(interval int32) string {
+func (recv *TimeZone) GetAbbreviation(interval int32) string {
 	c_interval := (C.gint)(interval)
 
 	retC := C.g_time_zone_get_abbreviation(c_interval)
@@ -448,7 +448,7 @@ func GetAbbreviation(interval int32) string {
 }
 
 // GetOffset is a wrapper around the C function g_time_zone_get_offset.
-func GetOffset(interval int32) int32 {
+func (recv *TimeZone) GetOffset(interval int32) int32 {
 	c_interval := (C.gint)(interval)
 
 	retC := C.g_time_zone_get_offset(c_interval)
@@ -460,7 +460,7 @@ func GetOffset(interval int32) int32 {
 // Unsupported : g_time_zone_is_dst : no return generator
 
 // Ref is a wrapper around the C function g_time_zone_ref.
-func Ref() *TimeZone {
+func (recv *TimeZone) Ref() *TimeZone {
 	retC := C.g_time_zone_ref()
 	retGo := timeZoneNewFromC(retC)
 

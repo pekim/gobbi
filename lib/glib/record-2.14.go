@@ -30,7 +30,7 @@ func regexNewFromC(c *C.GRegex) *Regex {
 // Unsupported : g_regex_new : unsupported parameter compile_options : no type generator for RegexCompileFlags, GRegexCompileFlags
 
 // GetCaptureCount is a wrapper around the C function g_regex_get_capture_count.
-func GetCaptureCount() int32 {
+func (recv *Regex) GetCaptureCount() int32 {
 	retC := C.g_regex_get_capture_count()
 	retGo := (int32)(retC)
 
@@ -44,7 +44,7 @@ func GetCaptureCount() int32 {
 // Unsupported : g_regex_get_match_flags : no return generator
 
 // GetMaxBackref is a wrapper around the C function g_regex_get_max_backref.
-func GetMaxBackref() int32 {
+func (recv *Regex) GetMaxBackref() int32 {
 	retC := C.g_regex_get_max_backref()
 	retGo := (int32)(retC)
 
@@ -52,7 +52,7 @@ func GetMaxBackref() int32 {
 }
 
 // GetPattern is a wrapper around the C function g_regex_get_pattern.
-func GetPattern() string {
+func (recv *Regex) GetPattern() string {
 	retC := C.g_regex_get_pattern()
 	retGo := C.GoString(retC)
 
@@ -60,7 +60,7 @@ func GetPattern() string {
 }
 
 // GetStringNumber is a wrapper around the C function g_regex_get_string_number.
-func GetStringNumber(name string) int32 {
+func (recv *Regex) GetStringNumber(name string) int32 {
 	c_name := C.CString(name)
 	defer C.free(unsafe.Pointer(c_name))
 
@@ -79,7 +79,7 @@ func GetStringNumber(name string) int32 {
 // Unsupported : g_regex_match_full : unsupported parameter string : no param type
 
 // Ref is a wrapper around the C function g_regex_ref.
-func Ref() *Regex {
+func (recv *Regex) Ref() *Regex {
 	retC := C.g_regex_ref()
 	retGo := regexNewFromC(retC)
 

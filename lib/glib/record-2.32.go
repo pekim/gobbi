@@ -34,7 +34,7 @@ func bytesNewFromC(c *C.GBytes) *Bytes {
 // Unsupported : g_bytes_new_with_free_func : unsupported parameter data : no param type
 
 // Compare is a wrapper around the C function g_bytes_compare.
-func Compare(bytes2 uintptr) int32 {
+func (recv *Bytes) Compare(bytes2 uintptr) int32 {
 	c_bytes2 := (C.gconstpointer)(bytes2)
 
 	retC := C.g_bytes_compare(c_bytes2)
@@ -48,7 +48,7 @@ func Compare(bytes2 uintptr) int32 {
 // Unsupported : g_bytes_get_data : unsupported parameter size : no type generator for gsize, gsize*
 
 // GetSize is a wrapper around the C function g_bytes_get_size.
-func GetSize() uint64 {
+func (recv *Bytes) GetSize() uint64 {
 	retC := C.g_bytes_get_size()
 	retGo := (uint64)(retC)
 
@@ -56,7 +56,7 @@ func GetSize() uint64 {
 }
 
 // Hash is a wrapper around the C function g_bytes_hash.
-func Hash() uint32 {
+func (recv *Bytes) Hash() uint32 {
 	retC := C.g_bytes_hash()
 	retGo := (uint32)(retC)
 
@@ -64,7 +64,7 @@ func Hash() uint32 {
 }
 
 // NewFromBytes is a wrapper around the C function g_bytes_new_from_bytes.
-func NewFromBytes(offset uint64, length uint64) *Bytes {
+func (recv *Bytes) NewFromBytes(offset uint64, length uint64) *Bytes {
 	c_offset := (C.gsize)(offset)
 
 	c_length := (C.gsize)(length)
@@ -76,7 +76,7 @@ func NewFromBytes(offset uint64, length uint64) *Bytes {
 }
 
 // Ref is a wrapper around the C function g_bytes_ref.
-func Ref() *Bytes {
+func (recv *Bytes) Ref() *Bytes {
 	retC := C.g_bytes_ref()
 	retGo := bytesNewFromC(retC)
 

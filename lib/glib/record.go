@@ -48,7 +48,7 @@ func asyncQueueNewFromC(c *C.GAsyncQueue) *AsyncQueue {
 }
 
 // Length is a wrapper around the C function g_async_queue_length.
-func Length() int32 {
+func (recv *AsyncQueue) Length() int32 {
 	retC := C.g_async_queue_length()
 	retGo := (int32)(retC)
 
@@ -56,7 +56,7 @@ func Length() int32 {
 }
 
 // LengthUnlocked is a wrapper around the C function g_async_queue_length_unlocked.
-func LengthUnlocked() int32 {
+func (recv *AsyncQueue) LengthUnlocked() int32 {
 	retC := C.g_async_queue_length_unlocked()
 	retGo := (int32)(retC)
 
@@ -66,7 +66,7 @@ func LengthUnlocked() int32 {
 // Unsupported : g_async_queue_lock : no return generator
 
 // Pop is a wrapper around the C function g_async_queue_pop.
-func Pop() uintptr {
+func (recv *AsyncQueue) Pop() uintptr {
 	retC := C.g_async_queue_pop()
 	retGo := (uintptr)(retC)
 
@@ -74,7 +74,7 @@ func Pop() uintptr {
 }
 
 // PopUnlocked is a wrapper around the C function g_async_queue_pop_unlocked.
-func PopUnlocked() uintptr {
+func (recv *AsyncQueue) PopUnlocked() uintptr {
 	retC := C.g_async_queue_pop_unlocked()
 	retGo := (uintptr)(retC)
 
@@ -94,7 +94,7 @@ func PopUnlocked() uintptr {
 // Unsupported : g_async_queue_push_unlocked : no return generator
 
 // Ref is a wrapper around the C function g_async_queue_ref.
-func Ref() *AsyncQueue {
+func (recv *AsyncQueue) Ref() *AsyncQueue {
 	retC := C.g_async_queue_ref()
 	retGo := asyncQueueNewFromC(retC)
 
@@ -116,7 +116,7 @@ func Ref() *AsyncQueue {
 // Unsupported : g_async_queue_timed_pop_unlocked : unsupported parameter end_time : record param - coming soon
 
 // TimeoutPop is a wrapper around the C function g_async_queue_timeout_pop.
-func TimeoutPop(timeout uint64) uintptr {
+func (recv *AsyncQueue) TimeoutPop(timeout uint64) uintptr {
 	c_timeout := (C.guint64)(timeout)
 
 	retC := C.g_async_queue_timeout_pop(c_timeout)
@@ -126,7 +126,7 @@ func TimeoutPop(timeout uint64) uintptr {
 }
 
 // TimeoutPopUnlocked is a wrapper around the C function g_async_queue_timeout_pop_unlocked.
-func TimeoutPopUnlocked(timeout uint64) uintptr {
+func (recv *AsyncQueue) TimeoutPopUnlocked(timeout uint64) uintptr {
 	c_timeout := (C.guint64)(timeout)
 
 	retC := C.g_async_queue_timeout_pop_unlocked(c_timeout)
@@ -136,7 +136,7 @@ func TimeoutPopUnlocked(timeout uint64) uintptr {
 }
 
 // TryPop is a wrapper around the C function g_async_queue_try_pop.
-func TryPop() uintptr {
+func (recv *AsyncQueue) TryPop() uintptr {
 	retC := C.g_async_queue_try_pop()
 	retGo := (uintptr)(retC)
 
@@ -144,7 +144,7 @@ func TryPop() uintptr {
 }
 
 // TryPopUnlocked is a wrapper around the C function g_async_queue_try_pop_unlocked.
-func TryPopUnlocked() uintptr {
+func (recv *AsyncQueue) TryPopUnlocked() uintptr {
 	retC := C.g_async_queue_try_pop_unlocked()
 	retGo := (uintptr)(retC)
 
@@ -377,7 +377,7 @@ func DateNewJulian(julianDay uint32) *Date {
 // Unsupported : g_date_free : no return generator
 
 // GetDay is a wrapper around the C function g_date_get_day.
-func GetDay() DateDay {
+func (recv *Date) GetDay() DateDay {
 	retC := C.g_date_get_day()
 	retGo := (DateDay)(retC)
 
@@ -385,7 +385,7 @@ func GetDay() DateDay {
 }
 
 // GetDayOfYear is a wrapper around the C function g_date_get_day_of_year.
-func GetDayOfYear() uint32 {
+func (recv *Date) GetDayOfYear() uint32 {
 	retC := C.g_date_get_day_of_year()
 	retGo := (uint32)(retC)
 
@@ -393,7 +393,7 @@ func GetDayOfYear() uint32 {
 }
 
 // GetJulian is a wrapper around the C function g_date_get_julian.
-func GetJulian() uint32 {
+func (recv *Date) GetJulian() uint32 {
 	retC := C.g_date_get_julian()
 	retGo := (uint32)(retC)
 
@@ -401,7 +401,7 @@ func GetJulian() uint32 {
 }
 
 // GetMondayWeekOfYear is a wrapper around the C function g_date_get_monday_week_of_year.
-func GetMondayWeekOfYear() uint32 {
+func (recv *Date) GetMondayWeekOfYear() uint32 {
 	retC := C.g_date_get_monday_week_of_year()
 	retGo := (uint32)(retC)
 
@@ -409,7 +409,7 @@ func GetMondayWeekOfYear() uint32 {
 }
 
 // GetMonth is a wrapper around the C function g_date_get_month.
-func GetMonth() DateMonth {
+func (recv *Date) GetMonth() DateMonth {
 	retC := C.g_date_get_month()
 	retGo := (DateMonth)(retC)
 
@@ -417,7 +417,7 @@ func GetMonth() DateMonth {
 }
 
 // GetSundayWeekOfYear is a wrapper around the C function g_date_get_sunday_week_of_year.
-func GetSundayWeekOfYear() uint32 {
+func (recv *Date) GetSundayWeekOfYear() uint32 {
 	retC := C.g_date_get_sunday_week_of_year()
 	retGo := (uint32)(retC)
 
@@ -425,7 +425,7 @@ func GetSundayWeekOfYear() uint32 {
 }
 
 // GetWeekday is a wrapper around the C function g_date_get_weekday.
-func GetWeekday() DateWeekday {
+func (recv *Date) GetWeekday() DateWeekday {
 	retC := C.g_date_get_weekday()
 	retGo := (DateWeekday)(retC)
 
@@ -433,7 +433,7 @@ func GetWeekday() DateWeekday {
 }
 
 // GetYear is a wrapper around the C function g_date_get_year.
-func GetYear() DateYear {
+func (recv *Date) GetYear() DateYear {
 	retC := C.g_date_get_year()
 	retGo := (DateYear)(retC)
 
@@ -513,7 +513,7 @@ func dirNewFromC(c *C.GDir) *Dir {
 // Unsupported : g_dir_close : no return generator
 
 // ReadName is a wrapper around the C function g_dir_read_name.
-func ReadName() string {
+func (recv *Dir) ReadName() string {
 	retC := C.g_dir_read_name()
 	retGo := C.GoString(retC)
 
@@ -565,7 +565,7 @@ func ErrorNewLiteral(domain Quark, code int32, message string) *Error {
 // Unsupported : g_error_new_valist : unsupported parameter args : no type generator for va_list, va_list
 
 // Copy is a wrapper around the C function g_error_copy.
-func Copy() *Error {
+func (recv *Error) Copy() *Error {
 	retC := C.g_error_copy()
 	retGo := errorNewFromC(retC)
 
@@ -883,7 +883,7 @@ func MainContextNew() *MainContext {
 // Unsupported : g_main_context_find_source_by_funcs_user_data : unsupported parameter funcs : record param - coming soon
 
 // FindSourceById is a wrapper around the C function g_main_context_find_source_by_id.
-func FindSourceById(sourceId uint32) *Source {
+func (recv *MainContext) FindSourceById(sourceId uint32) *Source {
 	c_source_id := (C.guint)(sourceId)
 
 	retC := C.g_main_context_find_source_by_id(c_source_id)
@@ -893,7 +893,7 @@ func FindSourceById(sourceId uint32) *Source {
 }
 
 // FindSourceByUserData is a wrapper around the C function g_main_context_find_source_by_user_data.
-func FindSourceByUserData(userData uintptr) *Source {
+func (recv *MainContext) FindSourceByUserData(userData uintptr) *Source {
 	c_user_data := (C.gpointer)(userData)
 
 	retC := C.g_main_context_find_source_by_user_data(c_user_data)
@@ -923,7 +923,7 @@ func FindSourceByUserData(userData uintptr) *Source {
 // Unsupported : g_main_context_query : unsupported parameter timeout_ : no type generator for gint, gint*
 
 // Ref is a wrapper around the C function g_main_context_ref.
-func Ref() *MainContext {
+func (recv *MainContext) Ref() *MainContext {
 	retC := C.g_main_context_ref()
 	retGo := mainContextNewFromC(retC)
 
@@ -960,7 +960,7 @@ func mainLoopNewFromC(c *C.GMainLoop) *MainLoop {
 // Unsupported : g_main_loop_new : unsupported parameter context : record param - coming soon
 
 // GetContext is a wrapper around the C function g_main_loop_get_context.
-func GetContext() *MainContext {
+func (recv *MainLoop) GetContext() *MainContext {
 	retC := C.g_main_loop_get_context()
 	retGo := mainContextNewFromC(retC)
 
@@ -972,7 +972,7 @@ func GetContext() *MainContext {
 // Unsupported : g_main_loop_quit : no return generator
 
 // Ref is a wrapper around the C function g_main_loop_ref.
-func Ref() *MainLoop {
+func (recv *MainLoop) Ref() *MainLoop {
 	retC := C.g_main_loop_ref()
 	retGo := mainLoopNewFromC(retC)
 
@@ -1137,7 +1137,7 @@ func nodeNewFromC(c *C.GNode) *Node {
 }
 
 // ChildIndex is a wrapper around the C function g_node_child_index.
-func ChildIndex(data uintptr) int32 {
+func (recv *Node) ChildIndex(data uintptr) int32 {
 	c_data := (C.gpointer)(data)
 
 	retC := C.g_node_child_index(c_data)
@@ -1151,7 +1151,7 @@ func ChildIndex(data uintptr) int32 {
 // Unsupported : g_node_children_foreach : unsupported parameter flags : no type generator for TraverseFlags, GTraverseFlags
 
 // Copy is a wrapper around the C function g_node_copy.
-func Copy() *Node {
+func (recv *Node) Copy() *Node {
 	retC := C.g_node_copy()
 	retGo := nodeNewFromC(retC)
 
@@ -1161,7 +1161,7 @@ func Copy() *Node {
 // Unsupported : g_node_copy_deep : unsupported parameter copy_func : no type generator for CopyFunc, GCopyFunc
 
 // Depth is a wrapper around the C function g_node_depth.
-func Depth() uint32 {
+func (recv *Node) Depth() uint32 {
 	retC := C.g_node_depth()
 	retGo := (uint32)(retC)
 
@@ -1175,7 +1175,7 @@ func Depth() uint32 {
 // Unsupported : g_node_find_child : unsupported parameter flags : no type generator for TraverseFlags, GTraverseFlags
 
 // FirstSibling is a wrapper around the C function g_node_first_sibling.
-func FirstSibling() *Node {
+func (recv *Node) FirstSibling() *Node {
 	retC := C.g_node_first_sibling()
 	retGo := nodeNewFromC(retC)
 
@@ -1183,7 +1183,7 @@ func FirstSibling() *Node {
 }
 
 // GetRoot is a wrapper around the C function g_node_get_root.
-func GetRoot() *Node {
+func (recv *Node) GetRoot() *Node {
 	retC := C.g_node_get_root()
 	retGo := nodeNewFromC(retC)
 
@@ -1199,7 +1199,7 @@ func GetRoot() *Node {
 // Unsupported : g_node_is_ancestor : unsupported parameter descendant : record param - coming soon
 
 // LastChild is a wrapper around the C function g_node_last_child.
-func LastChild() *Node {
+func (recv *Node) LastChild() *Node {
 	retC := C.g_node_last_child()
 	retGo := nodeNewFromC(retC)
 
@@ -1207,7 +1207,7 @@ func LastChild() *Node {
 }
 
 // LastSibling is a wrapper around the C function g_node_last_sibling.
-func LastSibling() *Node {
+func (recv *Node) LastSibling() *Node {
 	retC := C.g_node_last_sibling()
 	retGo := nodeNewFromC(retC)
 
@@ -1215,7 +1215,7 @@ func LastSibling() *Node {
 }
 
 // MaxHeight is a wrapper around the C function g_node_max_height.
-func MaxHeight() uint32 {
+func (recv *Node) MaxHeight() uint32 {
 	retC := C.g_node_max_height()
 	retGo := (uint32)(retC)
 
@@ -1223,7 +1223,7 @@ func MaxHeight() uint32 {
 }
 
 // NChildren is a wrapper around the C function g_node_n_children.
-func NChildren() uint32 {
+func (recv *Node) NChildren() uint32 {
 	retC := C.g_node_n_children()
 	retGo := (uint32)(retC)
 
@@ -1233,7 +1233,7 @@ func NChildren() uint32 {
 // Unsupported : g_node_n_nodes : unsupported parameter flags : no type generator for TraverseFlags, GTraverseFlags
 
 // NthChild is a wrapper around the C function g_node_nth_child.
-func NthChild(n uint32) *Node {
+func (recv *Node) NthChild(n uint32) *Node {
 	c_n := (C.guint)(n)
 
 	retC := C.g_node_nth_child(c_n)
@@ -1425,7 +1425,7 @@ func privateNewFromC(c *C.GPrivate) *Private {
 }
 
 // Get is a wrapper around the C function g_private_get.
-func Get() uintptr {
+func (recv *Private) Get() uintptr {
 	retC := C.g_private_get()
 	retGo := (uintptr)(retC)
 
@@ -1504,7 +1504,7 @@ func queueNewFromC(c *C.GQueue) *Queue {
 // Unsupported : g_queue_link_index : unsupported parameter link_ : no type generator for GLib.List, GList*
 
 // PeekHead is a wrapper around the C function g_queue_peek_head.
-func PeekHead() uintptr {
+func (recv *Queue) PeekHead() uintptr {
 	retC := C.g_queue_peek_head()
 	retGo := (uintptr)(retC)
 
@@ -1516,7 +1516,7 @@ func PeekHead() uintptr {
 // Unsupported : g_queue_peek_nth_link : no return generator
 
 // PeekTail is a wrapper around the C function g_queue_peek_tail.
-func PeekTail() uintptr {
+func (recv *Queue) PeekTail() uintptr {
 	retC := C.g_queue_peek_tail()
 	retGo := (uintptr)(retC)
 
@@ -1526,7 +1526,7 @@ func PeekTail() uintptr {
 // Unsupported : g_queue_peek_tail_link : no return generator
 
 // PopHead is a wrapper around the C function g_queue_pop_head.
-func PopHead() uintptr {
+func (recv *Queue) PopHead() uintptr {
 	retC := C.g_queue_pop_head()
 	retGo := (uintptr)(retC)
 
@@ -1538,7 +1538,7 @@ func PopHead() uintptr {
 // Unsupported : g_queue_pop_nth_link : no return generator
 
 // PopTail is a wrapper around the C function g_queue_pop_tail.
-func PopTail() uintptr {
+func (recv *Queue) PopTail() uintptr {
 	retC := C.g_queue_pop_tail()
 	retGo := (uintptr)(retC)
 
@@ -1583,7 +1583,7 @@ func randNewFromC(c *C.GRand) *Rand {
 }
 
 // Double is a wrapper around the C function g_rand_double.
-func Double() float64 {
+func (recv *Rand) Double() float64 {
 	retC := C.g_rand_double()
 	retGo := (float64)(retC)
 
@@ -1591,7 +1591,7 @@ func Double() float64 {
 }
 
 // DoubleRange is a wrapper around the C function g_rand_double_range.
-func DoubleRange(begin float64, end float64) float64 {
+func (recv *Rand) DoubleRange(begin float64, end float64) float64 {
 	c_begin := (C.gdouble)(begin)
 
 	c_end := (C.gdouble)(end)
@@ -1605,7 +1605,7 @@ func DoubleRange(begin float64, end float64) float64 {
 // Unsupported : g_rand_free : no return generator
 
 // Int is a wrapper around the C function g_rand_int.
-func Int() uint32 {
+func (recv *Rand) Int() uint32 {
 	retC := C.g_rand_int()
 	retGo := (uint32)(retC)
 
@@ -1613,7 +1613,7 @@ func Int() uint32 {
 }
 
 // IntRange is a wrapper around the C function g_rand_int_range.
-func IntRange(begin int32, end int32) int32 {
+func (recv *Rand) IntRange(begin int32, end int32) int32 {
 	c_begin := (C.gint32)(begin)
 
 	c_end := (C.gint32)(end)
@@ -1704,7 +1704,7 @@ func scannerNewFromC(c *C.GScanner) *Scanner {
 }
 
 // CurLine is a wrapper around the C function g_scanner_cur_line.
-func CurLine() uint32 {
+func (recv *Scanner) CurLine() uint32 {
 	retC := C.g_scanner_cur_line()
 	retGo := (uint32)(retC)
 
@@ -1712,7 +1712,7 @@ func CurLine() uint32 {
 }
 
 // CurPosition is a wrapper around the C function g_scanner_cur_position.
-func CurPosition() uint32 {
+func (recv *Scanner) CurPosition() uint32 {
 	retC := C.g_scanner_cur_position()
 	retGo := (uint32)(retC)
 
@@ -1720,7 +1720,7 @@ func CurPosition() uint32 {
 }
 
 // CurToken is a wrapper around the C function g_scanner_cur_token.
-func CurToken() TokenType {
+func (recv *Scanner) CurToken() TokenType {
 	retC := C.g_scanner_cur_token()
 	retGo := (TokenType)(retC)
 
@@ -1736,7 +1736,7 @@ func CurToken() TokenType {
 // Unsupported : g_scanner_error : unsupported parameter ... : varargs
 
 // GetNextToken is a wrapper around the C function g_scanner_get_next_token.
-func GetNextToken() TokenType {
+func (recv *Scanner) GetNextToken() TokenType {
 	retC := C.g_scanner_get_next_token()
 	retGo := (TokenType)(retC)
 
@@ -1748,7 +1748,7 @@ func GetNextToken() TokenType {
 // Unsupported : g_scanner_input_text : no return generator
 
 // LookupSymbol is a wrapper around the C function g_scanner_lookup_symbol.
-func LookupSymbol(symbol string) uintptr {
+func (recv *Scanner) LookupSymbol(symbol string) uintptr {
 	c_symbol := C.CString(symbol)
 	defer C.free(unsafe.Pointer(c_symbol))
 
@@ -1759,7 +1759,7 @@ func LookupSymbol(symbol string) uintptr {
 }
 
 // PeekNextToken is a wrapper around the C function g_scanner_peek_next_token.
-func PeekNextToken() TokenType {
+func (recv *Scanner) PeekNextToken() TokenType {
 	retC := C.g_scanner_peek_next_token()
 	retGo := (TokenType)(retC)
 
@@ -1771,7 +1771,7 @@ func PeekNextToken() TokenType {
 // Unsupported : g_scanner_scope_foreach_symbol : unsupported parameter func : no type generator for HFunc, GHFunc
 
 // ScopeLookupSymbol is a wrapper around the C function g_scanner_scope_lookup_symbol.
-func ScopeLookupSymbol(scopeId uint32, symbol string) uintptr {
+func (recv *Scanner) ScopeLookupSymbol(scopeId uint32, symbol string) uintptr {
 	c_scope_id := (C.guint)(scopeId)
 
 	c_symbol := C.CString(symbol)
@@ -1786,7 +1786,7 @@ func ScopeLookupSymbol(scopeId uint32, symbol string) uintptr {
 // Unsupported : g_scanner_scope_remove_symbol : no return generator
 
 // SetScope is a wrapper around the C function g_scanner_set_scope.
-func SetScope(scopeId uint32) uint32 {
+func (recv *Scanner) SetScope(scopeId uint32) uint32 {
 	c_scope_id := (C.guint)(scopeId)
 
 	retC := C.g_scanner_set_scope(c_scope_id)
@@ -1965,7 +1965,7 @@ func sourceNewFromC(c *C.GSource) *Source {
 // Unsupported : g_source_get_can_recurse : no return generator
 
 // GetContext is a wrapper around the C function g_source_get_context.
-func GetContext() *MainContext {
+func (recv *Source) GetContext() *MainContext {
 	retC := C.g_source_get_context()
 	retGo := mainContextNewFromC(retC)
 
@@ -1975,7 +1975,7 @@ func GetContext() *MainContext {
 // Unsupported : g_source_get_current_time : unsupported parameter timeval : record param - coming soon
 
 // GetId is a wrapper around the C function g_source_get_id.
-func GetId() uint32 {
+func (recv *Source) GetId() uint32 {
 	retC := C.g_source_get_id()
 	retGo := (uint32)(retC)
 
@@ -1983,7 +1983,7 @@ func GetId() uint32 {
 }
 
 // GetPriority is a wrapper around the C function g_source_get_priority.
-func GetPriority() int32 {
+func (recv *Source) GetPriority() int32 {
 	retC := C.g_source_get_priority()
 	retGo := (int32)(retC)
 
@@ -1991,7 +1991,7 @@ func GetPriority() int32 {
 }
 
 // GetReadyTime is a wrapper around the C function g_source_get_ready_time.
-func GetReadyTime() int64 {
+func (recv *Source) GetReadyTime() int64 {
 	retC := C.g_source_get_ready_time()
 	retGo := (int64)(retC)
 
@@ -2005,7 +2005,7 @@ func GetReadyTime() int64 {
 // Unsupported : g_source_query_unix_fd : no return generator
 
 // Ref is a wrapper around the C function g_source_ref.
-func Ref() *Source {
+func (recv *Source) Ref() *Source {
 	retC := C.g_source_ref()
 	retGo := sourceNewFromC(retC)
 
@@ -2127,7 +2127,7 @@ func stringNewFromC(c *C.GString) *String {
 }
 
 // Append is a wrapper around the C function g_string_append.
-func Append(val string) *String {
+func (recv *String) Append(val string) *String {
 	c_val := C.CString(val)
 	defer C.free(unsafe.Pointer(c_val))
 
@@ -2138,7 +2138,7 @@ func Append(val string) *String {
 }
 
 // AppendC is a wrapper around the C function g_string_append_c.
-func AppendC(c rune) *String {
+func (recv *String) AppendC(c rune) *String {
 	c_c := (C.gchar)(c)
 
 	retC := C.g_string_append_c(c_c)
@@ -2148,7 +2148,7 @@ func AppendC(c rune) *String {
 }
 
 // AppendLen is a wrapper around the C function g_string_append_len.
-func AppendLen(val string, len int64) *String {
+func (recv *String) AppendLen(val string, len int64) *String {
 	c_val := C.CString(val)
 	defer C.free(unsafe.Pointer(c_val))
 
@@ -2163,7 +2163,7 @@ func AppendLen(val string, len int64) *String {
 // Unsupported : g_string_append_printf : unsupported parameter ... : varargs
 
 // AppendUnichar is a wrapper around the C function g_string_append_unichar.
-func AppendUnichar(wc rune) *String {
+func (recv *String) AppendUnichar(wc rune) *String {
 	c_wc := (C.gunichar)(wc)
 
 	retC := C.g_string_append_unichar(c_wc)
@@ -2177,7 +2177,7 @@ func AppendUnichar(wc rune) *String {
 // Unsupported : g_string_append_vprintf : unsupported parameter args : no type generator for va_list, va_list
 
 // AsciiDown is a wrapper around the C function g_string_ascii_down.
-func AsciiDown() *String {
+func (recv *String) AsciiDown() *String {
 	retC := C.g_string_ascii_down()
 	retGo := stringNewFromC(retC)
 
@@ -2185,7 +2185,7 @@ func AsciiDown() *String {
 }
 
 // AsciiUp is a wrapper around the C function g_string_ascii_up.
-func AsciiUp() *String {
+func (recv *String) AsciiUp() *String {
 	retC := C.g_string_ascii_up()
 	retGo := stringNewFromC(retC)
 
@@ -2193,7 +2193,7 @@ func AsciiUp() *String {
 }
 
 // Assign is a wrapper around the C function g_string_assign.
-func Assign(rval string) *String {
+func (recv *String) Assign(rval string) *String {
 	c_rval := C.CString(rval)
 	defer C.free(unsafe.Pointer(c_rval))
 
@@ -2204,7 +2204,7 @@ func Assign(rval string) *String {
 }
 
 // Down is a wrapper around the C function g_string_down.
-func Down() *String {
+func (recv *String) Down() *String {
 	retC := C.g_string_down()
 	retGo := stringNewFromC(retC)
 
@@ -2214,7 +2214,7 @@ func Down() *String {
 // Unsupported : g_string_equal : unsupported parameter v2 : record param - coming soon
 
 // Erase is a wrapper around the C function g_string_erase.
-func Erase(pos int64, len int64) *String {
+func (recv *String) Erase(pos int64, len int64) *String {
 	c_pos := (C.gssize)(pos)
 
 	c_len := (C.gssize)(len)
@@ -2228,7 +2228,7 @@ func Erase(pos int64, len int64) *String {
 // Unsupported : g_string_free : unsupported parameter free_segment : no type generator for gboolean, gboolean
 
 // Hash is a wrapper around the C function g_string_hash.
-func Hash() uint32 {
+func (recv *String) Hash() uint32 {
 	retC := C.g_string_hash()
 	retGo := (uint32)(retC)
 
@@ -2236,7 +2236,7 @@ func Hash() uint32 {
 }
 
 // Insert is a wrapper around the C function g_string_insert.
-func Insert(pos int64, val string) *String {
+func (recv *String) Insert(pos int64, val string) *String {
 	c_pos := (C.gssize)(pos)
 
 	c_val := C.CString(val)
@@ -2249,7 +2249,7 @@ func Insert(pos int64, val string) *String {
 }
 
 // InsertC is a wrapper around the C function g_string_insert_c.
-func InsertC(pos int64, c rune) *String {
+func (recv *String) InsertC(pos int64, c rune) *String {
 	c_pos := (C.gssize)(pos)
 
 	c_c := (C.gchar)(c)
@@ -2261,7 +2261,7 @@ func InsertC(pos int64, c rune) *String {
 }
 
 // InsertLen is a wrapper around the C function g_string_insert_len.
-func InsertLen(pos int64, val string, len int64) *String {
+func (recv *String) InsertLen(pos int64, val string, len int64) *String {
 	c_pos := (C.gssize)(pos)
 
 	c_val := C.CString(val)
@@ -2276,7 +2276,7 @@ func InsertLen(pos int64, val string, len int64) *String {
 }
 
 // InsertUnichar is a wrapper around the C function g_string_insert_unichar.
-func InsertUnichar(pos int64, wc rune) *String {
+func (recv *String) InsertUnichar(pos int64, wc rune) *String {
 	c_pos := (C.gssize)(pos)
 
 	c_wc := (C.gunichar)(wc)
@@ -2288,7 +2288,7 @@ func InsertUnichar(pos int64, wc rune) *String {
 }
 
 // Prepend is a wrapper around the C function g_string_prepend.
-func Prepend(val string) *String {
+func (recv *String) Prepend(val string) *String {
 	c_val := C.CString(val)
 	defer C.free(unsafe.Pointer(c_val))
 
@@ -2299,7 +2299,7 @@ func Prepend(val string) *String {
 }
 
 // PrependC is a wrapper around the C function g_string_prepend_c.
-func PrependC(c rune) *String {
+func (recv *String) PrependC(c rune) *String {
 	c_c := (C.gchar)(c)
 
 	retC := C.g_string_prepend_c(c_c)
@@ -2309,7 +2309,7 @@ func PrependC(c rune) *String {
 }
 
 // PrependLen is a wrapper around the C function g_string_prepend_len.
-func PrependLen(val string, len int64) *String {
+func (recv *String) PrependLen(val string, len int64) *String {
 	c_val := C.CString(val)
 	defer C.free(unsafe.Pointer(c_val))
 
@@ -2322,7 +2322,7 @@ func PrependLen(val string, len int64) *String {
 }
 
 // PrependUnichar is a wrapper around the C function g_string_prepend_unichar.
-func PrependUnichar(wc rune) *String {
+func (recv *String) PrependUnichar(wc rune) *String {
 	c_wc := (C.gunichar)(wc)
 
 	retC := C.g_string_prepend_unichar(c_wc)
@@ -2334,7 +2334,7 @@ func PrependUnichar(wc rune) *String {
 // Unsupported : g_string_printf : unsupported parameter ... : varargs
 
 // SetSize is a wrapper around the C function g_string_set_size.
-func SetSize(len uint64) *String {
+func (recv *String) SetSize(len uint64) *String {
 	c_len := (C.gsize)(len)
 
 	retC := C.g_string_set_size(c_len)
@@ -2344,7 +2344,7 @@ func SetSize(len uint64) *String {
 }
 
 // Truncate is a wrapper around the C function g_string_truncate.
-func Truncate(len uint64) *String {
+func (recv *String) Truncate(len uint64) *String {
 	c_len := (C.gsize)(len)
 
 	retC := C.g_string_truncate(c_len)
@@ -2354,7 +2354,7 @@ func Truncate(len uint64) *String {
 }
 
 // Up is a wrapper around the C function g_string_up.
-func Up() *String {
+func (recv *String) Up() *String {
 	retC := C.g_string_up()
 	retGo := stringNewFromC(retC)
 
@@ -2383,7 +2383,7 @@ func stringChunkNewFromC(c *C.GStringChunk) *StringChunk {
 // Unsupported : g_string_chunk_free : no return generator
 
 // Insert is a wrapper around the C function g_string_chunk_insert.
-func Insert(string string) string {
+func (recv *StringChunk) Insert(string string) string {
 	c_string := C.CString(string)
 	defer C.free(unsafe.Pointer(c_string))
 
@@ -2395,7 +2395,7 @@ func Insert(string string) string {
 }
 
 // InsertConst is a wrapper around the C function g_string_chunk_insert_const.
-func InsertConst(string string) string {
+func (recv *StringChunk) InsertConst(string string) string {
 	c_string := C.CString(string)
 	defer C.free(unsafe.Pointer(c_string))
 
@@ -2485,7 +2485,7 @@ func threadNewFromC(c *C.GThread) *Thread {
 // Unsupported : g_thread_try_new : unsupported parameter func : no type generator for ThreadFunc, GThreadFunc
 
 // Join is a wrapper around the C function g_thread_join.
-func Join() uintptr {
+func (recv *Thread) Join() uintptr {
 	retC := C.g_thread_join()
 	retGo := (uintptr)(retC)
 
@@ -2518,7 +2518,7 @@ func threadPoolNewFromC(c *C.GThreadPool) *ThreadPool {
 // Unsupported : g_thread_pool_free : unsupported parameter immediate : no type generator for gboolean, gboolean
 
 // GetMaxThreads is a wrapper around the C function g_thread_pool_get_max_threads.
-func GetMaxThreads() int32 {
+func (recv *ThreadPool) GetMaxThreads() int32 {
 	retC := C.g_thread_pool_get_max_threads()
 	retGo := (int32)(retC)
 
@@ -2526,7 +2526,7 @@ func GetMaxThreads() int32 {
 }
 
 // GetNumThreads is a wrapper around the C function g_thread_pool_get_num_threads.
-func GetNumThreads() uint32 {
+func (recv *ThreadPool) GetNumThreads() uint32 {
 	retC := C.g_thread_pool_get_num_threads()
 	retGo := (uint32)(retC)
 
@@ -2542,7 +2542,7 @@ func GetNumThreads() uint32 {
 // Unsupported : g_thread_pool_set_sort_function : unsupported parameter func : no type generator for CompareDataFunc, GCompareDataFunc
 
 // Unprocessed is a wrapper around the C function g_thread_pool_unprocessed.
-func Unprocessed() uint32 {
+func (recv *ThreadPool) Unprocessed() uint32 {
 	retC := C.g_thread_pool_unprocessed()
 	retGo := (uint32)(retC)
 
@@ -2638,7 +2638,7 @@ func treeNewFromC(c *C.GTree) *Tree {
 // Unsupported : g_tree_foreach : unsupported parameter func : no type generator for TraverseFunc, GTraverseFunc
 
 // Height is a wrapper around the C function g_tree_height.
-func Height() int32 {
+func (recv *Tree) Height() int32 {
 	retC := C.g_tree_height()
 	retGo := (int32)(retC)
 
@@ -2648,7 +2648,7 @@ func Height() int32 {
 // Unsupported : g_tree_insert : no return generator
 
 // Lookup is a wrapper around the C function g_tree_lookup.
-func Lookup(key uintptr) uintptr {
+func (recv *Tree) Lookup(key uintptr) uintptr {
 	c_key := (C.gconstpointer)(key)
 
 	retC := C.g_tree_lookup(c_key)
@@ -2660,7 +2660,7 @@ func Lookup(key uintptr) uintptr {
 // Unsupported : g_tree_lookup_extended : unsupported parameter orig_key : no type generator for gpointer, gpointer*
 
 // Nnodes is a wrapper around the C function g_tree_nnodes.
-func Nnodes() int32 {
+func (recv *Tree) Nnodes() int32 {
 	retC := C.g_tree_nnodes()
 	retGo := (int32)(retC)
 

@@ -44,7 +44,7 @@ func variantDictNewFromC(c *C.GVariantDict) *VariantDict {
 // Unsupported : g_variant_dict_lookup_value : unsupported parameter expected_type : Blacklisted record : GVariantType
 
 // Ref is a wrapper around the C function g_variant_dict_ref.
-func Ref() *VariantDict {
+func (recv *VariantDict) Ref() *VariantDict {
 	retC := C.g_variant_dict_ref()
 	retGo := variantDictNewFromC(retC)
 
