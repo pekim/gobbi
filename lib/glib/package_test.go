@@ -38,6 +38,10 @@ func TestFunctionReturningError(t *testing.T) {
 	assert.True(t,
 		strings.Contains(glibError.Message, "should not contain"),
 		"error message not correct")
+
+	// Chack the Error's domain Quark.
+	domain := QuarkToString(glibError.Domain)
+	assert.Equal(t, "g-file-error-quark", domain)
 }
 
 func TestFunctionReturningNoError(t *testing.T) {
