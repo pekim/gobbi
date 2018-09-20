@@ -37,7 +37,7 @@ func ChecksumNew(checksumType ChecksumType) *Checksum {
 
 // Copy is a wrapper around the C function g_checksum_copy.
 func (recv *Checksum) Copy() *Checksum {
-	retC := C.g_checksum_copy()
+	retC := C.g_checksum_copy(recv.native)
 	retGo := checksumNewFromC(retC)
 
 	return retGo
@@ -49,7 +49,7 @@ func (recv *Checksum) Copy() *Checksum {
 
 // GetString is a wrapper around the C function g_checksum_get_string.
 func (recv *Checksum) GetString() string {
-	retC := C.g_checksum_get_string()
+	retC := C.g_checksum_get_string(recv.native)
 	retGo := C.GoString(retC)
 
 	return retGo

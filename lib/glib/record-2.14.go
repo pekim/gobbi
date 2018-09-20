@@ -31,7 +31,7 @@ func regexNewFromC(c *C.GRegex) *Regex {
 
 // GetCaptureCount is a wrapper around the C function g_regex_get_capture_count.
 func (recv *Regex) GetCaptureCount() int32 {
-	retC := C.g_regex_get_capture_count()
+	retC := C.g_regex_get_capture_count(recv.native)
 	retGo := (int32)(retC)
 
 	return retGo
@@ -45,7 +45,7 @@ func (recv *Regex) GetCaptureCount() int32 {
 
 // GetMaxBackref is a wrapper around the C function g_regex_get_max_backref.
 func (recv *Regex) GetMaxBackref() int32 {
-	retC := C.g_regex_get_max_backref()
+	retC := C.g_regex_get_max_backref(recv.native)
 	retGo := (int32)(retC)
 
 	return retGo
@@ -53,7 +53,7 @@ func (recv *Regex) GetMaxBackref() int32 {
 
 // GetPattern is a wrapper around the C function g_regex_get_pattern.
 func (recv *Regex) GetPattern() string {
-	retC := C.g_regex_get_pattern()
+	retC := C.g_regex_get_pattern(recv.native)
 	retGo := C.GoString(retC)
 
 	return retGo
@@ -64,7 +64,7 @@ func (recv *Regex) GetStringNumber(name string) int32 {
 	c_name := C.CString(name)
 	defer C.free(unsafe.Pointer(c_name))
 
-	retC := C.g_regex_get_string_number(c_name)
+	retC := C.g_regex_get_string_number(recv.native, c_name)
 	retGo := (int32)(retC)
 
 	return retGo
@@ -80,7 +80,7 @@ func (recv *Regex) GetStringNumber(name string) int32 {
 
 // Ref is a wrapper around the C function g_regex_ref.
 func (recv *Regex) Ref() *Regex {
-	retC := C.g_regex_ref()
+	retC := C.g_regex_ref(recv.native)
 	retGo := regexNewFromC(retC)
 
 	return retGo

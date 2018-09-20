@@ -140,9 +140,25 @@ func (f *Function) generateCall(g *jen.Group) *jen.Statement {
 		Op(":=").
 		Qual("C", f.CIdentifier).
 		CallFunc(func(g *jen.Group) {
+			// Assumption that receiver is always first agumment.
+			// If turns out not to be true, will need to look at
+			// using <InstanceParameter> position.
+			f.generateReceiverArgument(g)
+
 			f.Parameters.generateCallArguments(g)
 			f.generateThrowableCallArgument(g)
 		})
+}
+
+func (f *Function) generateReceiverArgument(g *jen.Group) {
+	if f.receiver == nil {
+		return
+	}
+
+	g.
+		Id("recv").
+		Op(".").
+		Id("native")
 }
 
 func (f *Function) generateOutputParamsGoVars(g *jen.Group) {

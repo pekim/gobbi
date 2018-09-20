@@ -45,7 +45,7 @@ func variantDictNewFromC(c *C.GVariantDict) *VariantDict {
 
 // Ref is a wrapper around the C function g_variant_dict_ref.
 func (recv *VariantDict) Ref() *VariantDict {
-	retC := C.g_variant_dict_ref()
+	retC := C.g_variant_dict_ref(recv.native)
 	retGo := variantDictNewFromC(retC)
 
 	return retGo

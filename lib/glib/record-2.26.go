@@ -117,7 +117,7 @@ func DateTimeNewUtc(year int32, month int32, day int32, hour int32, minute int32
 func (recv *DateTime) Add(timespan TimeSpan) *DateTime {
 	c_timespan := (C.GTimeSpan)(timespan)
 
-	retC := C.g_date_time_add(c_timespan)
+	retC := C.g_date_time_add(recv.native, c_timespan)
 	retGo := dateTimeNewFromC(retC)
 
 	return retGo
@@ -127,7 +127,7 @@ func (recv *DateTime) Add(timespan TimeSpan) *DateTime {
 func (recv *DateTime) AddDays(days int32) *DateTime {
 	c_days := (C.gint)(days)
 
-	retC := C.g_date_time_add_days(c_days)
+	retC := C.g_date_time_add_days(recv.native, c_days)
 	retGo := dateTimeNewFromC(retC)
 
 	return retGo
@@ -147,7 +147,7 @@ func (recv *DateTime) AddFull(years int32, months int32, days int32, hours int32
 
 	c_seconds := (C.gdouble)(seconds)
 
-	retC := C.g_date_time_add_full(c_years, c_months, c_days, c_hours, c_minutes, c_seconds)
+	retC := C.g_date_time_add_full(recv.native, c_years, c_months, c_days, c_hours, c_minutes, c_seconds)
 	retGo := dateTimeNewFromC(retC)
 
 	return retGo
@@ -157,7 +157,7 @@ func (recv *DateTime) AddFull(years int32, months int32, days int32, hours int32
 func (recv *DateTime) AddHours(hours int32) *DateTime {
 	c_hours := (C.gint)(hours)
 
-	retC := C.g_date_time_add_hours(c_hours)
+	retC := C.g_date_time_add_hours(recv.native, c_hours)
 	retGo := dateTimeNewFromC(retC)
 
 	return retGo
@@ -167,7 +167,7 @@ func (recv *DateTime) AddHours(hours int32) *DateTime {
 func (recv *DateTime) AddMinutes(minutes int32) *DateTime {
 	c_minutes := (C.gint)(minutes)
 
-	retC := C.g_date_time_add_minutes(c_minutes)
+	retC := C.g_date_time_add_minutes(recv.native, c_minutes)
 	retGo := dateTimeNewFromC(retC)
 
 	return retGo
@@ -177,7 +177,7 @@ func (recv *DateTime) AddMinutes(minutes int32) *DateTime {
 func (recv *DateTime) AddMonths(months int32) *DateTime {
 	c_months := (C.gint)(months)
 
-	retC := C.g_date_time_add_months(c_months)
+	retC := C.g_date_time_add_months(recv.native, c_months)
 	retGo := dateTimeNewFromC(retC)
 
 	return retGo
@@ -187,7 +187,7 @@ func (recv *DateTime) AddMonths(months int32) *DateTime {
 func (recv *DateTime) AddSeconds(seconds float64) *DateTime {
 	c_seconds := (C.gdouble)(seconds)
 
-	retC := C.g_date_time_add_seconds(c_seconds)
+	retC := C.g_date_time_add_seconds(recv.native, c_seconds)
 	retGo := dateTimeNewFromC(retC)
 
 	return retGo
@@ -197,7 +197,7 @@ func (recv *DateTime) AddSeconds(seconds float64) *DateTime {
 func (recv *DateTime) AddWeeks(weeks int32) *DateTime {
 	c_weeks := (C.gint)(weeks)
 
-	retC := C.g_date_time_add_weeks(c_weeks)
+	retC := C.g_date_time_add_weeks(recv.native, c_weeks)
 	retGo := dateTimeNewFromC(retC)
 
 	return retGo
@@ -207,7 +207,7 @@ func (recv *DateTime) AddWeeks(weeks int32) *DateTime {
 func (recv *DateTime) AddYears(years int32) *DateTime {
 	c_years := (C.gint)(years)
 
-	retC := C.g_date_time_add_years(c_years)
+	retC := C.g_date_time_add_years(recv.native, c_years)
 	retGo := dateTimeNewFromC(retC)
 
 	return retGo
@@ -220,7 +220,7 @@ func (recv *DateTime) Format(format string) string {
 	c_format := C.CString(format)
 	defer C.free(unsafe.Pointer(c_format))
 
-	retC := C.g_date_time_format(c_format)
+	retC := C.g_date_time_format(recv.native, c_format)
 	retGo := C.GoString(retC)
 	defer C.free(unsafe.Pointer(retC))
 
@@ -229,7 +229,7 @@ func (recv *DateTime) Format(format string) string {
 
 // GetDayOfMonth is a wrapper around the C function g_date_time_get_day_of_month.
 func (recv *DateTime) GetDayOfMonth() int32 {
-	retC := C.g_date_time_get_day_of_month()
+	retC := C.g_date_time_get_day_of_month(recv.native)
 	retGo := (int32)(retC)
 
 	return retGo
@@ -237,7 +237,7 @@ func (recv *DateTime) GetDayOfMonth() int32 {
 
 // GetDayOfWeek is a wrapper around the C function g_date_time_get_day_of_week.
 func (recv *DateTime) GetDayOfWeek() int32 {
-	retC := C.g_date_time_get_day_of_week()
+	retC := C.g_date_time_get_day_of_week(recv.native)
 	retGo := (int32)(retC)
 
 	return retGo
@@ -245,7 +245,7 @@ func (recv *DateTime) GetDayOfWeek() int32 {
 
 // GetDayOfYear is a wrapper around the C function g_date_time_get_day_of_year.
 func (recv *DateTime) GetDayOfYear() int32 {
-	retC := C.g_date_time_get_day_of_year()
+	retC := C.g_date_time_get_day_of_year(recv.native)
 	retGo := (int32)(retC)
 
 	return retGo
@@ -253,7 +253,7 @@ func (recv *DateTime) GetDayOfYear() int32 {
 
 // GetHour is a wrapper around the C function g_date_time_get_hour.
 func (recv *DateTime) GetHour() int32 {
-	retC := C.g_date_time_get_hour()
+	retC := C.g_date_time_get_hour(recv.native)
 	retGo := (int32)(retC)
 
 	return retGo
@@ -261,7 +261,7 @@ func (recv *DateTime) GetHour() int32 {
 
 // GetMicrosecond is a wrapper around the C function g_date_time_get_microsecond.
 func (recv *DateTime) GetMicrosecond() int32 {
-	retC := C.g_date_time_get_microsecond()
+	retC := C.g_date_time_get_microsecond(recv.native)
 	retGo := (int32)(retC)
 
 	return retGo
@@ -269,7 +269,7 @@ func (recv *DateTime) GetMicrosecond() int32 {
 
 // GetMinute is a wrapper around the C function g_date_time_get_minute.
 func (recv *DateTime) GetMinute() int32 {
-	retC := C.g_date_time_get_minute()
+	retC := C.g_date_time_get_minute(recv.native)
 	retGo := (int32)(retC)
 
 	return retGo
@@ -277,7 +277,7 @@ func (recv *DateTime) GetMinute() int32 {
 
 // GetMonth is a wrapper around the C function g_date_time_get_month.
 func (recv *DateTime) GetMonth() int32 {
-	retC := C.g_date_time_get_month()
+	retC := C.g_date_time_get_month(recv.native)
 	retGo := (int32)(retC)
 
 	return retGo
@@ -285,7 +285,7 @@ func (recv *DateTime) GetMonth() int32 {
 
 // GetSecond is a wrapper around the C function g_date_time_get_second.
 func (recv *DateTime) GetSecond() int32 {
-	retC := C.g_date_time_get_second()
+	retC := C.g_date_time_get_second(recv.native)
 	retGo := (int32)(retC)
 
 	return retGo
@@ -293,7 +293,7 @@ func (recv *DateTime) GetSecond() int32 {
 
 // GetSeconds is a wrapper around the C function g_date_time_get_seconds.
 func (recv *DateTime) GetSeconds() float64 {
-	retC := C.g_date_time_get_seconds()
+	retC := C.g_date_time_get_seconds(recv.native)
 	retGo := (float64)(retC)
 
 	return retGo
@@ -301,7 +301,7 @@ func (recv *DateTime) GetSeconds() float64 {
 
 // GetTimezoneAbbreviation is a wrapper around the C function g_date_time_get_timezone_abbreviation.
 func (recv *DateTime) GetTimezoneAbbreviation() string {
-	retC := C.g_date_time_get_timezone_abbreviation()
+	retC := C.g_date_time_get_timezone_abbreviation(recv.native)
 	retGo := C.GoString(retC)
 
 	return retGo
@@ -309,7 +309,7 @@ func (recv *DateTime) GetTimezoneAbbreviation() string {
 
 // GetUtcOffset is a wrapper around the C function g_date_time_get_utc_offset.
 func (recv *DateTime) GetUtcOffset() TimeSpan {
-	retC := C.g_date_time_get_utc_offset()
+	retC := C.g_date_time_get_utc_offset(recv.native)
 	retGo := (TimeSpan)(retC)
 
 	return retGo
@@ -317,7 +317,7 @@ func (recv *DateTime) GetUtcOffset() TimeSpan {
 
 // GetWeekNumberingYear is a wrapper around the C function g_date_time_get_week_numbering_year.
 func (recv *DateTime) GetWeekNumberingYear() int32 {
-	retC := C.g_date_time_get_week_numbering_year()
+	retC := C.g_date_time_get_week_numbering_year(recv.native)
 	retGo := (int32)(retC)
 
 	return retGo
@@ -325,7 +325,7 @@ func (recv *DateTime) GetWeekNumberingYear() int32 {
 
 // GetWeekOfYear is a wrapper around the C function g_date_time_get_week_of_year.
 func (recv *DateTime) GetWeekOfYear() int32 {
-	retC := C.g_date_time_get_week_of_year()
+	retC := C.g_date_time_get_week_of_year(recv.native)
 	retGo := (int32)(retC)
 
 	return retGo
@@ -333,7 +333,7 @@ func (recv *DateTime) GetWeekOfYear() int32 {
 
 // GetYear is a wrapper around the C function g_date_time_get_year.
 func (recv *DateTime) GetYear() int32 {
-	retC := C.g_date_time_get_year()
+	retC := C.g_date_time_get_year(recv.native)
 	retGo := (int32)(retC)
 
 	return retGo
@@ -345,7 +345,7 @@ func (recv *DateTime) GetYear() int32 {
 
 // Ref is a wrapper around the C function g_date_time_ref.
 func (recv *DateTime) Ref() *DateTime {
-	retC := C.g_date_time_ref()
+	retC := C.g_date_time_ref(recv.native)
 	retGo := dateTimeNewFromC(retC)
 
 	return retGo
@@ -353,7 +353,7 @@ func (recv *DateTime) Ref() *DateTime {
 
 // ToLocal is a wrapper around the C function g_date_time_to_local.
 func (recv *DateTime) ToLocal() *DateTime {
-	retC := C.g_date_time_to_local()
+	retC := C.g_date_time_to_local(recv.native)
 	retGo := dateTimeNewFromC(retC)
 
 	return retGo
@@ -365,7 +365,7 @@ func (recv *DateTime) ToLocal() *DateTime {
 
 // ToUnix is a wrapper around the C function g_date_time_to_unix.
 func (recv *DateTime) ToUnix() int64 {
-	retC := C.g_date_time_to_unix()
+	retC := C.g_date_time_to_unix(recv.native)
 	retGo := (int64)(retC)
 
 	return retGo
@@ -373,7 +373,7 @@ func (recv *DateTime) ToUnix() int64 {
 
 // ToUtc is a wrapper around the C function g_date_time_to_utc.
 func (recv *DateTime) ToUtc() *DateTime {
-	retC := C.g_date_time_to_utc()
+	retC := C.g_date_time_to_utc(recv.native)
 	retGo := dateTimeNewFromC(retC)
 
 	return retGo
@@ -431,7 +431,7 @@ func (recv *TimeZone) FindInterval(type_ TimeType, time int64) int32 {
 
 	c_time_ := (C.gint64)(time)
 
-	retC := C.g_time_zone_find_interval(c_type, c_time_)
+	retC := C.g_time_zone_find_interval(recv.native, c_type, c_time_)
 	retGo := (int32)(retC)
 
 	return retGo
@@ -441,7 +441,7 @@ func (recv *TimeZone) FindInterval(type_ TimeType, time int64) int32 {
 func (recv *TimeZone) GetAbbreviation(interval int32) string {
 	c_interval := (C.gint)(interval)
 
-	retC := C.g_time_zone_get_abbreviation(c_interval)
+	retC := C.g_time_zone_get_abbreviation(recv.native, c_interval)
 	retGo := C.GoString(retC)
 
 	return retGo
@@ -451,7 +451,7 @@ func (recv *TimeZone) GetAbbreviation(interval int32) string {
 func (recv *TimeZone) GetOffset(interval int32) int32 {
 	c_interval := (C.gint)(interval)
 
-	retC := C.g_time_zone_get_offset(c_interval)
+	retC := C.g_time_zone_get_offset(recv.native, c_interval)
 	retGo := (int32)(retC)
 
 	return retGo
@@ -461,7 +461,7 @@ func (recv *TimeZone) GetOffset(interval int32) int32 {
 
 // Ref is a wrapper around the C function g_time_zone_ref.
 func (recv *TimeZone) Ref() *TimeZone {
-	retC := C.g_time_zone_ref()
+	retC := C.g_time_zone_ref(recv.native)
 	retGo := timeZoneNewFromC(retC)
 
 	return retGo
