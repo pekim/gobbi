@@ -12,15 +12,33 @@ type Gir struct {
 	addendaRepo *Repository
 }
 
-func GirNewRoot(name string, version string) *Gir {
-	return GirNew(name, version, map[string]*Gir{})
+func GirNewRoot(name string, version string) []*Gir {
+	girsMap := map[string]*Gir{}
+	GirNew(name, version, girsMap)
+
+	nn := make(map[string]*Namespace)
+	for _, g := range girsMap {
+		ns := g.repo.Namespace
+		nn[ns.Name] = ns
+	}
+
+	for _, ns := range nn {
+		ns.namespaces = nn
+	}
+
+	girs := []*Gir{}
+	for _, gir := range girsMap {
+		girs = append(girs, gir)
+	}
+
+	return girs
 }
 
-func GirNew(name string, version string, girs map[string]*Gir) *Gir {
+func GirNew(name string, version string, girs map[string]*Gir) {
 	fullname := name + "-" + version
 
-	if g, haveGir := girs[fullname]; haveGir {
-		return g
+	if _, haveGir := girs[fullname]; haveGir {
+		return
 	}
 
 	g := &Gir{}
@@ -34,7 +52,7 @@ func GirNew(name string, version string, girs map[string]*Gir) *Gir {
 		GirNew(i.Name, i.Version, girs)
 	}
 
-	return g
+	return
 }
 
 func (g *Gir) Generate() {
@@ -42,7 +60,6 @@ func (g *Gir) Generate() {
 }
 
 func (g *Gir) LoadFile(filename string, required bool) *Repository {
-	fmt.Println(filename)
 	filepath := projectFilepath("internal", "gir-files", filename)
 	source, err := ioutil.ReadFile(filepath)
 	if err != nil {

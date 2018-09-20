@@ -5,6 +5,9 @@ import (
 )
 
 func main() {
-	gir := generate.GirNewRoot("GObject", "2.0")
-	gir.Generate()
+	girs := generate.GirNewRoot("GObject", "2.0")
+
+	for _, gir := range girs {
+		gir.Generate()
+	}
 }

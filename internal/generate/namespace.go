@@ -26,6 +26,7 @@ type Namespace struct {
 	allVersions   Versions
 	versionDebug  bool
 	libDir        string
+	namespaces    map[string]*Namespace
 }
 
 func (ns *Namespace) init(repo *Repository) {
@@ -62,7 +63,7 @@ func (ns *Namespace) blacklisted() bool {
 }
 
 func (ns *Namespace) generate() {
-	fmt.Println(ns.Name, ns.Version)
+	fmt.Printf("%-10s %s\n", ns.Name, ns.Version)
 
 	ns.generateLibDir()
 	ns.generatePackageFile()
