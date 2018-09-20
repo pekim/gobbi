@@ -5,6 +5,6 @@ import (
 )
 
 func main() {
-	gir := generate.GirNew("GLib-2.0")
+	gir := generate.GirNew("GObject-2.0")
 	gir.Generate()
 }
