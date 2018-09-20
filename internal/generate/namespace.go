@@ -49,6 +49,7 @@ func (ns *Namespace) mergeAddenda(addenda *Namespace) {
 	if addenda != nil {
 		ns.Aliases.mergeAddenda(addenda.Aliases)
 		ns.Bitfields.mergeAddenda(addenda.Bitfields)
+		ns.Classes.mergeAddenda(addenda.Classes)
 		ns.Constants.mergeAddenda(addenda.Constants)
 		ns.Enumerations.mergeAddenda(addenda.Enumerations)
 		ns.Functions.mergeAddenda(addenda.Functions)
@@ -67,6 +68,7 @@ func (ns *Namespace) generate() {
 	ns.generatePackageFile()
 	ns.generateGeneratables("alias", ns.Aliases)
 	ns.generateGeneratables("bitfield", ns.Bitfields)
+	ns.generateGeneratables("class", ns.Classes)
 	ns.generateGeneratables("constant", ns.Constants)
 	ns.generateGeneratables("enum", ns.Enumerations)
 	ns.generateGeneratables("function", ns.Functions)
