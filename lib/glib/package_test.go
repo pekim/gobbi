@@ -55,8 +55,16 @@ func TestFunctionReturningOutParam(t *testing.T) {
 	assert.Equal(t, "hostname", hostname)
 }
 
-func TestConstructor(t *testing.T) {
+func TestRecordConstructor(t *testing.T) {
 	date := DateNewDmy(02, 06, 1962)
 	assert.NotNil(t, date)
 	assert.NotNil(t, date.native)
+}
+
+func TestRecordReceivers(t *testing.T) {
+	date := DateNewDmy(02, 06, 1962)
+	assert.Equal(t, DateDay(2), date.GetDay())
+	assert.Equal(t, DateMonth(6), date.GetMonth())
+	assert.Equal(t, DateYear(1962), date.GetYear())
+	assert.Equal(t, uint32(153), date.GetDayOfYear())
 }
