@@ -8,8 +8,10 @@ import (
 type Record struct {
 	Namespace *Namespace
 
+	Blacklist     bool `xml:"blacklist,attr"`
+	FieldsPrivate bool `xml:"fieldsPrivate,attr"`
+
 	Name           string       `xml:"name,attr"`
-	Blacklist      bool         `xml:"blacklist,attr"`
 	GoName         string       `xml:"goname,attr"`
 	Version        string       `xml:"version,attr"`
 	CSymbolPrefix  string       `xml:"http://www.gtk.org/introspection/c/1.0 symbol-prefix,attr"`
@@ -51,6 +53,7 @@ func (r *Record) supported() (supported bool, reason string) {
 
 func (r *Record) mergeAddenda(addenda *Record) {
 	r.Blacklist = addenda.Blacklist
+	r.FieldsPrivate = addenda.FieldsPrivate
 }
 
 func (r *Record) generate(g *jen.Group, version *Version) {
@@ -72,7 +75,11 @@ func (r *Record) generateType(g *jen.Group) {
 				Op("*").
 				Qual("C", r.CType)
 
-			r.Fields.generate(g)
+			if r.FieldsPrivate {
+				g.Comment("All fields are private")
+			} else {
+				r.Fields.generate(g)
+			}
 		})
 	g.Line()
 }

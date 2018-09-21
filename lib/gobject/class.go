@@ -11,10 +11,8 @@ import "C"
 
 // InitiallyUnowned is a wrapper around the C record GInitiallyUnowned.
 type InitiallyUnowned struct {
-	native        *C.GInitiallyUnowned
-	GTypeInstance *TypeInstance
-	// ref_count : no type generator for guint, volatile guint
-	// qdata : no type generator for GLib.Data, GData*
+	native *C.GInitiallyUnowned
+	// All fields are private
 }
 
 func initiallyUnownedNewFromC(c *C.GInitiallyUnowned) *InitiallyUnowned {
@@ -22,20 +20,15 @@ func initiallyUnownedNewFromC(c *C.GInitiallyUnowned) *InitiallyUnowned {
 		return nil
 	}
 
-	g := &InitiallyUnowned{
-		GTypeInstance: typeInstanceNewFromC(c.g_type_instance),
-		native:        c,
-	}
+	g := &InitiallyUnowned{native: c}
 
 	return g
 }
 
 // Object is a wrapper around the C record GObject.
 type Object struct {
-	native        *C.GObject
-	GTypeInstance *TypeInstance
-	// ref_count : no type generator for guint, volatile guint
-	// qdata : no type generator for GLib.Data, GData*
+	native *C.GObject
+	// All fields are private
 }
 
 func objectNewFromC(c *C.GObject) *Object {
@@ -43,10 +36,7 @@ func objectNewFromC(c *C.GObject) *Object {
 		return nil
 	}
 
-	g := &Object{
-		GTypeInstance: typeInstanceNewFromC(c.g_type_instance),
-		native:        c,
-	}
+	g := &Object{native: c}
 
 	return g
 }
@@ -88,7 +78,7 @@ func (recv *Object) GetData(key string) uintptr {
 	c_key := C.CString(key)
 	defer C.free(unsafe.Pointer(c_key))
 
-	retC := C.g_object_get_data(recv.native, c_key)
+	retC := C.g_object_get_data((*C.GObject)(recv.native), c_key)
 	retGo := (uintptr)(retC)
 
 	return retGo
@@ -110,7 +100,7 @@ func (recv *Object) GetData(key string) uintptr {
 
 // Ref is a wrapper around the C function g_object_ref.
 func (recv *Object) Ref() uintptr {
-	retC := C.g_object_ref(recv.native)
+	retC := C.g_object_ref((C.gpointer)(recv.native))
 	retGo := (uintptr)(retC)
 
 	return retGo
@@ -147,7 +137,7 @@ func (recv *Object) StealData(key string) uintptr {
 	c_key := C.CString(key)
 	defer C.free(unsafe.Pointer(c_key))
 
-	retC := C.g_object_steal_data(recv.native, c_key)
+	retC := C.g_object_steal_data((*C.GObject)(recv.native), c_key)
 	retGo := (uintptr)(retC)
 
 	return retGo
@@ -159,7 +149,7 @@ func (recv *Object) StealData(key string) uintptr {
 
 // Unsupported : g_object_unref : no return generator
 
-// Unsupported : g_object_watch_closure : unsupported parameter closure : Blacklisted record : GClosure
+// Unsupported : g_object_watch_closure : unsupported parameter closure : record param - coming soon
 
 // Unsupported : g_object_weak_ref : unsupported parameter notify : no type generator for WeakNotify, GWeakNotify
 
@@ -200,7 +190,7 @@ func paramSpecNewFromC(c *C.GParamSpec) *ParamSpec {
 
 // GetBlurb is a wrapper around the C function g_param_spec_get_blurb.
 func (recv *ParamSpec) GetBlurb() string {
-	retC := C.g_param_spec_get_blurb(recv.native)
+	retC := C.g_param_spec_get_blurb((*C.GParamSpec)(recv.native))
 	retGo := C.GoString(retC)
 
 	return retGo
@@ -208,7 +198,7 @@ func (recv *ParamSpec) GetBlurb() string {
 
 // GetName is a wrapper around the C function g_param_spec_get_name.
 func (recv *ParamSpec) GetName() string {
-	retC := C.g_param_spec_get_name(recv.native)
+	retC := C.g_param_spec_get_name((*C.GParamSpec)(recv.native))
 	retGo := C.GoString(retC)
 
 	return retGo
@@ -218,7 +208,7 @@ func (recv *ParamSpec) GetName() string {
 
 // GetNick is a wrapper around the C function g_param_spec_get_nick.
 func (recv *ParamSpec) GetNick() string {
-	retC := C.g_param_spec_get_nick(recv.native)
+	retC := C.g_param_spec_get_nick((*C.GParamSpec)(recv.native))
 	retGo := C.GoString(retC)
 
 	return retGo

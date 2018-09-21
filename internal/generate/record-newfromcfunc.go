@@ -55,6 +55,10 @@ func (r *RecordNewFromCFunc) generateCreateGoStruct(g *jen.Group) {
 func (r *RecordNewFromCFunc) generateStructValues(d jen.Dict) {
 	d[jen.Id("native")] = jen.Id("c")
 
+	if r.FieldsPrivate {
+		return
+	}
+
 	for _, f := range r.Fields {
 		if supported, _ := f.supported(); !supported {
 			continue

@@ -30,7 +30,81 @@ func cClosureNewFromC(c *C.GCClosure) *CClosure {
 	return g
 }
 
-// Blacklisted : GClosure
+// Closure is a wrapper around the C record GClosure.
+type Closure struct {
+	native *C.GClosure
+	// Bitfield not supported : 15 ref_count
+	// Bitfield not supported :  1 meta_marshal_nouse
+	// Bitfield not supported :  1 n_guards
+	// Bitfield not supported :  2 n_fnotifiers
+	// Bitfield not supported :  8 n_inotifiers
+	// Bitfield not supported :  1 in_inotify
+	// Bitfield not supported :  1 floating
+	// Bitfield not supported :  1 derivative_flag
+	// Bitfield not supported :  1 in_marshal
+	// Bitfield not supported :  1 is_invalid
+	// no type for marshal
+	Data      uintptr
+	Notifiers *ClosureNotifyData
+}
+
+func closureNewFromC(c *C.GClosure) *Closure {
+	if c == nil {
+		return nil
+	}
+
+	g := &Closure{
+		Data:      (uintptr)(c.data),
+		Notifiers: closureNotifyDataNewFromC(c.notifiers),
+		native:    c,
+	}
+
+	return g
+}
+
+// Unsupported : g_closure_new_object : unsupported parameter object : no type generator for Object, GObject*
+
+// ClosureNewSimple is a wrapper around the C function g_closure_new_simple.
+func ClosureNewSimple(sizeofClosure uint32, data uintptr) *Closure {
+	c_sizeof_closure := (C.guint)(sizeofClosure)
+
+	c_data := (C.gpointer)(data)
+
+	retC := C.g_closure_new_simple(c_sizeof_closure, c_data)
+	retGo := closureNewFromC(retC)
+
+	return retGo
+}
+
+// Unsupported : g_closure_add_finalize_notifier : unsupported parameter notify_func : no type generator for ClosureNotify, GClosureNotify
+
+// Unsupported : g_closure_add_invalidate_notifier : unsupported parameter notify_func : no type generator for ClosureNotify, GClosureNotify
+
+// Unsupported : g_closure_add_marshal_guards : unsupported parameter pre_marshal_notify : no type generator for ClosureNotify, GClosureNotify
+
+// Unsupported : g_closure_invalidate : no return generator
+
+// Unsupported : g_closure_invoke : unsupported parameter return_value : record param - coming soon
+
+// Ref is a wrapper around the C function g_closure_ref.
+func (recv *Closure) Ref() *Closure {
+	retC := C.g_closure_ref((*C.GClosure)(recv.native))
+	retGo := closureNewFromC(retC)
+
+	return retGo
+}
+
+// Unsupported : g_closure_remove_finalize_notifier : unsupported parameter notify_func : no type generator for ClosureNotify, GClosureNotify
+
+// Unsupported : g_closure_remove_invalidate_notifier : unsupported parameter notify_func : no type generator for ClosureNotify, GClosureNotify
+
+// Unsupported : g_closure_set_marshal : unsupported parameter marshal : no type generator for ClosureMarshal, GClosureMarshal
+
+// Unsupported : g_closure_set_meta_marshal : unsupported parameter meta_marshal : no type generator for ClosureMarshal, GClosureMarshal
+
+// Unsupported : g_closure_sink : no return generator
+
+// Unsupported : g_closure_unref : no return generator
 
 // ClosureNotifyData is a wrapper around the C record GClosureNotifyData.
 type ClosureNotifyData struct {
@@ -431,7 +505,7 @@ func typeClassNewFromC(c *C.GTypeClass) *TypeClass {
 
 // PeekParent is a wrapper around the C function g_type_class_peek_parent.
 func (recv *TypeClass) PeekParent() uintptr {
-	retC := C.g_type_class_peek_parent(recv.native)
+	retC := C.g_type_class_peek_parent((C.gpointer)(recv.native))
 	retGo := (uintptr)(retC)
 
 	return retGo
@@ -529,7 +603,7 @@ func typeInterfaceNewFromC(c *C.GTypeInterface) *TypeInterface {
 
 // PeekParent is a wrapper around the C function g_type_interface_peek_parent.
 func (recv *TypeInterface) PeekParent() uintptr {
-	retC := C.g_type_interface_peek_parent(recv.native)
+	retC := C.g_type_interface_peek_parent((C.gpointer)(recv.native))
 	retGo := (uintptr)(retC)
 
 	return retGo
@@ -655,7 +729,7 @@ func valueNewFromC(c *C.GValue) *Value {
 
 // DupBoxed is a wrapper around the C function g_value_dup_boxed.
 func (recv *Value) DupBoxed() uintptr {
-	retC := C.g_value_dup_boxed(recv.native)
+	retC := C.g_value_dup_boxed((*C.GValue)(recv.native))
 	retGo := (uintptr)(retC)
 
 	return retGo
@@ -663,7 +737,7 @@ func (recv *Value) DupBoxed() uintptr {
 
 // DupObject is a wrapper around the C function g_value_dup_object.
 func (recv *Value) DupObject() uintptr {
-	retC := C.g_value_dup_object(recv.native)
+	retC := C.g_value_dup_object((*C.GValue)(recv.native))
 	retGo := (uintptr)(retC)
 
 	return retGo
@@ -673,7 +747,7 @@ func (recv *Value) DupObject() uintptr {
 
 // DupString is a wrapper around the C function g_value_dup_string.
 func (recv *Value) DupString() string {
-	retC := C.g_value_dup_string(recv.native)
+	retC := C.g_value_dup_string((*C.GValue)(recv.native))
 	retGo := C.GoString(retC)
 	defer C.free(unsafe.Pointer(retC))
 
@@ -688,7 +762,7 @@ func (recv *Value) DupString() string {
 
 // GetBoxed is a wrapper around the C function g_value_get_boxed.
 func (recv *Value) GetBoxed() uintptr {
-	retC := C.g_value_get_boxed(recv.native)
+	retC := C.g_value_get_boxed((*C.GValue)(recv.native))
 	retGo := (uintptr)(retC)
 
 	return retGo
@@ -696,7 +770,7 @@ func (recv *Value) GetBoxed() uintptr {
 
 // GetChar is a wrapper around the C function g_value_get_char.
 func (recv *Value) GetChar() rune {
-	retC := C.g_value_get_char(recv.native)
+	retC := C.g_value_get_char((*C.GValue)(recv.native))
 	retGo := (rune)(retC)
 
 	return retGo
@@ -704,7 +778,7 @@ func (recv *Value) GetChar() rune {
 
 // GetDouble is a wrapper around the C function g_value_get_double.
 func (recv *Value) GetDouble() float64 {
-	retC := C.g_value_get_double(recv.native)
+	retC := C.g_value_get_double((*C.GValue)(recv.native))
 	retGo := (float64)(retC)
 
 	return retGo
@@ -712,7 +786,7 @@ func (recv *Value) GetDouble() float64 {
 
 // GetEnum is a wrapper around the C function g_value_get_enum.
 func (recv *Value) GetEnum() int32 {
-	retC := C.g_value_get_enum(recv.native)
+	retC := C.g_value_get_enum((*C.GValue)(recv.native))
 	retGo := (int32)(retC)
 
 	return retGo
@@ -720,7 +794,7 @@ func (recv *Value) GetEnum() int32 {
 
 // GetFlags is a wrapper around the C function g_value_get_flags.
 func (recv *Value) GetFlags() uint32 {
-	retC := C.g_value_get_flags(recv.native)
+	retC := C.g_value_get_flags((*C.GValue)(recv.native))
 	retGo := (uint32)(retC)
 
 	return retGo
@@ -728,7 +802,7 @@ func (recv *Value) GetFlags() uint32 {
 
 // GetFloat is a wrapper around the C function g_value_get_float.
 func (recv *Value) GetFloat() float32 {
-	retC := C.g_value_get_float(recv.native)
+	retC := C.g_value_get_float((*C.GValue)(recv.native))
 	retGo := (float32)(retC)
 
 	return retGo
@@ -738,7 +812,7 @@ func (recv *Value) GetFloat() float32 {
 
 // GetInt is a wrapper around the C function g_value_get_int.
 func (recv *Value) GetInt() int32 {
-	retC := C.g_value_get_int(recv.native)
+	retC := C.g_value_get_int((*C.GValue)(recv.native))
 	retGo := (int32)(retC)
 
 	return retGo
@@ -746,7 +820,7 @@ func (recv *Value) GetInt() int32 {
 
 // GetInt64 is a wrapper around the C function g_value_get_int64.
 func (recv *Value) GetInt64() int64 {
-	retC := C.g_value_get_int64(recv.native)
+	retC := C.g_value_get_int64((*C.GValue)(recv.native))
 	retGo := (int64)(retC)
 
 	return retGo
@@ -754,7 +828,7 @@ func (recv *Value) GetInt64() int64 {
 
 // GetLong is a wrapper around the C function g_value_get_long.
 func (recv *Value) GetLong() int64 {
-	retC := C.g_value_get_long(recv.native)
+	retC := C.g_value_get_long((*C.GValue)(recv.native))
 	retGo := (int64)(retC)
 
 	return retGo
@@ -762,7 +836,7 @@ func (recv *Value) GetLong() int64 {
 
 // GetObject is a wrapper around the C function g_value_get_object.
 func (recv *Value) GetObject() uintptr {
-	retC := C.g_value_get_object(recv.native)
+	retC := C.g_value_get_object((*C.GValue)(recv.native))
 	retGo := (uintptr)(retC)
 
 	return retGo
@@ -772,7 +846,7 @@ func (recv *Value) GetObject() uintptr {
 
 // GetPointer is a wrapper around the C function g_value_get_pointer.
 func (recv *Value) GetPointer() uintptr {
-	retC := C.g_value_get_pointer(recv.native)
+	retC := C.g_value_get_pointer((*C.GValue)(recv.native))
 	retGo := (uintptr)(retC)
 
 	return retGo
@@ -780,7 +854,7 @@ func (recv *Value) GetPointer() uintptr {
 
 // GetString is a wrapper around the C function g_value_get_string.
 func (recv *Value) GetString() string {
-	retC := C.g_value_get_string(recv.native)
+	retC := C.g_value_get_string((*C.GValue)(recv.native))
 	retGo := C.GoString(retC)
 
 	return retGo
@@ -788,7 +862,7 @@ func (recv *Value) GetString() string {
 
 // GetUchar is a wrapper around the C function g_value_get_uchar.
 func (recv *Value) GetUchar() uint8 {
-	retC := C.g_value_get_uchar(recv.native)
+	retC := C.g_value_get_uchar((*C.GValue)(recv.native))
 	retGo := (uint8)(retC)
 
 	return retGo
@@ -796,7 +870,7 @@ func (recv *Value) GetUchar() uint8 {
 
 // GetUint is a wrapper around the C function g_value_get_uint.
 func (recv *Value) GetUint() uint32 {
-	retC := C.g_value_get_uint(recv.native)
+	retC := C.g_value_get_uint((*C.GValue)(recv.native))
 	retGo := (uint32)(retC)
 
 	return retGo
@@ -804,7 +878,7 @@ func (recv *Value) GetUint() uint32 {
 
 // GetUint64 is a wrapper around the C function g_value_get_uint64.
 func (recv *Value) GetUint64() uint64 {
-	retC := C.g_value_get_uint64(recv.native)
+	retC := C.g_value_get_uint64((*C.GValue)(recv.native))
 	retGo := (uint64)(retC)
 
 	return retGo
@@ -812,7 +886,7 @@ func (recv *Value) GetUint64() uint64 {
 
 // GetUlong is a wrapper around the C function g_value_get_ulong.
 func (recv *Value) GetUlong() uint64 {
-	retC := C.g_value_get_ulong(recv.native)
+	retC := C.g_value_get_ulong((*C.GValue)(recv.native))
 	retGo := (uint64)(retC)
 
 	return retGo
@@ -826,7 +900,7 @@ func (recv *Value) GetUlong() uint64 {
 
 // PeekPointer is a wrapper around the C function g_value_peek_pointer.
 func (recv *Value) PeekPointer() uintptr {
-	retC := C.g_value_peek_pointer(recv.native)
+	retC := C.g_value_peek_pointer((*C.GValue)(recv.native))
 	retGo := (uintptr)(retC)
 
 	return retGo
@@ -834,7 +908,7 @@ func (recv *Value) PeekPointer() uintptr {
 
 // Reset is a wrapper around the C function g_value_reset.
 func (recv *Value) Reset() *Value {
-	retC := C.g_value_reset(recv.native)
+	retC := C.g_value_reset((*C.GValue)(recv.native))
 	retGo := valueNewFromC(retC)
 
 	return retGo
@@ -947,7 +1021,7 @@ func ValueArrayNew(nPrealloced uint32) *ValueArray {
 
 // Copy is a wrapper around the C function g_value_array_copy.
 func (recv *ValueArray) Copy() *ValueArray {
-	retC := C.g_value_array_copy(recv.native)
+	retC := C.g_value_array_copy((*C.GValueArray)(recv.native))
 	retGo := valueArrayNewFromC(retC)
 
 	return retGo
@@ -959,7 +1033,7 @@ func (recv *ValueArray) Copy() *ValueArray {
 func (recv *ValueArray) GetNth(index uint32) *Value {
 	c_index_ := (C.guint)(index)
 
-	retC := C.g_value_array_get_nth(recv.native, c_index_)
+	retC := C.g_value_array_get_nth((*C.GValueArray)(recv.native), c_index_)
 	retGo := valueNewFromC(retC)
 
 	return retGo
@@ -973,7 +1047,7 @@ func (recv *ValueArray) GetNth(index uint32) *Value {
 func (recv *ValueArray) Remove(index uint32) *ValueArray {
 	c_index_ := (C.guint)(index)
 
-	retC := C.g_value_array_remove(recv.native, c_index_)
+	retC := C.g_value_array_remove((*C.GValueArray)(recv.native), c_index_)
 	retGo := valueArrayNewFromC(retC)
 
 	return retGo

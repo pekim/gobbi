@@ -27,7 +27,7 @@ func hmacNewFromC(c *C.GHmac) *Hmac {
 
 // Copy is a wrapper around the C function g_hmac_copy.
 func (recv *Hmac) Copy() *Hmac {
-	retC := C.g_hmac_copy(recv.native)
+	retC := C.g_hmac_copy((*C.GHmac)(recv.native))
 	retGo := hmacNewFromC(retC)
 
 	return retGo
@@ -37,7 +37,7 @@ func (recv *Hmac) Copy() *Hmac {
 
 // GetString is a wrapper around the C function g_hmac_get_string.
 func (recv *Hmac) GetString() string {
-	retC := C.g_hmac_get_string(recv.native)
+	retC := C.g_hmac_get_string((*C.GHmac)(recv.native))
 	retGo := C.GoString(retC)
 
 	return retGo
@@ -45,7 +45,7 @@ func (recv *Hmac) GetString() string {
 
 // Ref is a wrapper around the C function g_hmac_ref.
 func (recv *Hmac) Ref() *Hmac {
-	retC := C.g_hmac_ref(recv.native)
+	retC := C.g_hmac_ref((*C.GHmac)(recv.native))
 	retGo := hmacNewFromC(retC)
 
 	return retGo

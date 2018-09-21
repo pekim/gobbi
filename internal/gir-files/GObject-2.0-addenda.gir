@@ -27,13 +27,16 @@
       <method blacklist="true" c:identifier="g_object_weak_unref"/>
     </class>
 
-    <record name="Closure" blacklist="true">
-      <!--
-      <method blacklist="true" c:identifier="g_closure_add_finalize_notifier"/>
-      <method blacklist="true" c:identifier="g_closure_add_invalidate_notifier"/>
-      <method blacklist="true" c:identifier="g_closure_set_marshal"/>
-      <method blacklist="true" c:identifier="g_closure_set_meta_marshal"/>
-      -->
-    </record>
+    <class name="InitiallyUnowned" fieldsPrivate="true"/>
+    <class name="Object" fieldsPrivate="true"/>
+
+    <!--<record name="Closure" blacklist="true">-->
+      <!--&lt;!&ndash;-->
+      <!--<method blacklist="true" c:identifier="g_closure_add_finalize_notifier"/>-->
+      <!--<method blacklist="true" c:identifier="g_closure_add_invalidate_notifier"/>-->
+      <!--<method blacklist="true" c:identifier="g_closure_set_marshal"/>-->
+      <!--<method blacklist="true" c:identifier="g_closure_set_meta_marshal"/>-->
+      <!--&ndash;&gt;-->
+    <!--</record>-->
   </namespace>
 </repository>

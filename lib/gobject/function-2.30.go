@@ -8,4 +8,4 @@ package gobject
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : g_cclosure_marshal_generic : unsupported parameter closure : Blacklisted record : GClosure
+// Unsupported : g_cclosure_marshal_generic : unsupported parameter closure : record param - coming soon

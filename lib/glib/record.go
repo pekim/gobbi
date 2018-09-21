@@ -49,7 +49,7 @@ func asyncQueueNewFromC(c *C.GAsyncQueue) *AsyncQueue {
 
 // Length is a wrapper around the C function g_async_queue_length.
 func (recv *AsyncQueue) Length() int32 {
-	retC := C.g_async_queue_length(recv.native)
+	retC := C.g_async_queue_length((*C.GAsyncQueue)(recv.native))
 	retGo := (int32)(retC)
 
 	return retGo
@@ -57,7 +57,7 @@ func (recv *AsyncQueue) Length() int32 {
 
 // LengthUnlocked is a wrapper around the C function g_async_queue_length_unlocked.
 func (recv *AsyncQueue) LengthUnlocked() int32 {
-	retC := C.g_async_queue_length_unlocked(recv.native)
+	retC := C.g_async_queue_length_unlocked((*C.GAsyncQueue)(recv.native))
 	retGo := (int32)(retC)
 
 	return retGo
@@ -67,7 +67,7 @@ func (recv *AsyncQueue) LengthUnlocked() int32 {
 
 // Pop is a wrapper around the C function g_async_queue_pop.
 func (recv *AsyncQueue) Pop() uintptr {
-	retC := C.g_async_queue_pop(recv.native)
+	retC := C.g_async_queue_pop((*C.GAsyncQueue)(recv.native))
 	retGo := (uintptr)(retC)
 
 	return retGo
@@ -75,7 +75,7 @@ func (recv *AsyncQueue) Pop() uintptr {
 
 // PopUnlocked is a wrapper around the C function g_async_queue_pop_unlocked.
 func (recv *AsyncQueue) PopUnlocked() uintptr {
-	retC := C.g_async_queue_pop_unlocked(recv.native)
+	retC := C.g_async_queue_pop_unlocked((*C.GAsyncQueue)(recv.native))
 	retGo := (uintptr)(retC)
 
 	return retGo
@@ -95,7 +95,7 @@ func (recv *AsyncQueue) PopUnlocked() uintptr {
 
 // Ref is a wrapper around the C function g_async_queue_ref.
 func (recv *AsyncQueue) Ref() *AsyncQueue {
-	retC := C.g_async_queue_ref(recv.native)
+	retC := C.g_async_queue_ref((*C.GAsyncQueue)(recv.native))
 	retGo := asyncQueueNewFromC(retC)
 
 	return retGo
@@ -119,7 +119,7 @@ func (recv *AsyncQueue) Ref() *AsyncQueue {
 func (recv *AsyncQueue) TimeoutPop(timeout uint64) uintptr {
 	c_timeout := (C.guint64)(timeout)
 
-	retC := C.g_async_queue_timeout_pop(recv.native, c_timeout)
+	retC := C.g_async_queue_timeout_pop((*C.GAsyncQueue)(recv.native), c_timeout)
 	retGo := (uintptr)(retC)
 
 	return retGo
@@ -129,7 +129,7 @@ func (recv *AsyncQueue) TimeoutPop(timeout uint64) uintptr {
 func (recv *AsyncQueue) TimeoutPopUnlocked(timeout uint64) uintptr {
 	c_timeout := (C.guint64)(timeout)
 
-	retC := C.g_async_queue_timeout_pop_unlocked(recv.native, c_timeout)
+	retC := C.g_async_queue_timeout_pop_unlocked((*C.GAsyncQueue)(recv.native), c_timeout)
 	retGo := (uintptr)(retC)
 
 	return retGo
@@ -137,7 +137,7 @@ func (recv *AsyncQueue) TimeoutPopUnlocked(timeout uint64) uintptr {
 
 // TryPop is a wrapper around the C function g_async_queue_try_pop.
 func (recv *AsyncQueue) TryPop() uintptr {
-	retC := C.g_async_queue_try_pop(recv.native)
+	retC := C.g_async_queue_try_pop((*C.GAsyncQueue)(recv.native))
 	retGo := (uintptr)(retC)
 
 	return retGo
@@ -145,7 +145,7 @@ func (recv *AsyncQueue) TryPop() uintptr {
 
 // TryPopUnlocked is a wrapper around the C function g_async_queue_try_pop_unlocked.
 func (recv *AsyncQueue) TryPopUnlocked() uintptr {
-	retC := C.g_async_queue_try_pop_unlocked(recv.native)
+	retC := C.g_async_queue_try_pop_unlocked((*C.GAsyncQueue)(recv.native))
 	retGo := (uintptr)(retC)
 
 	return retGo
@@ -378,7 +378,7 @@ func DateNewJulian(julianDay uint32) *Date {
 
 // GetDay is a wrapper around the C function g_date_get_day.
 func (recv *Date) GetDay() DateDay {
-	retC := C.g_date_get_day(recv.native)
+	retC := C.g_date_get_day((*C.GDate)(recv.native))
 	retGo := (DateDay)(retC)
 
 	return retGo
@@ -386,7 +386,7 @@ func (recv *Date) GetDay() DateDay {
 
 // GetDayOfYear is a wrapper around the C function g_date_get_day_of_year.
 func (recv *Date) GetDayOfYear() uint32 {
-	retC := C.g_date_get_day_of_year(recv.native)
+	retC := C.g_date_get_day_of_year((*C.GDate)(recv.native))
 	retGo := (uint32)(retC)
 
 	return retGo
@@ -394,7 +394,7 @@ func (recv *Date) GetDayOfYear() uint32 {
 
 // GetJulian is a wrapper around the C function g_date_get_julian.
 func (recv *Date) GetJulian() uint32 {
-	retC := C.g_date_get_julian(recv.native)
+	retC := C.g_date_get_julian((*C.GDate)(recv.native))
 	retGo := (uint32)(retC)
 
 	return retGo
@@ -402,7 +402,7 @@ func (recv *Date) GetJulian() uint32 {
 
 // GetMondayWeekOfYear is a wrapper around the C function g_date_get_monday_week_of_year.
 func (recv *Date) GetMondayWeekOfYear() uint32 {
-	retC := C.g_date_get_monday_week_of_year(recv.native)
+	retC := C.g_date_get_monday_week_of_year((*C.GDate)(recv.native))
 	retGo := (uint32)(retC)
 
 	return retGo
@@ -410,7 +410,7 @@ func (recv *Date) GetMondayWeekOfYear() uint32 {
 
 // GetMonth is a wrapper around the C function g_date_get_month.
 func (recv *Date) GetMonth() DateMonth {
-	retC := C.g_date_get_month(recv.native)
+	retC := C.g_date_get_month((*C.GDate)(recv.native))
 	retGo := (DateMonth)(retC)
 
 	return retGo
@@ -418,7 +418,7 @@ func (recv *Date) GetMonth() DateMonth {
 
 // GetSundayWeekOfYear is a wrapper around the C function g_date_get_sunday_week_of_year.
 func (recv *Date) GetSundayWeekOfYear() uint32 {
-	retC := C.g_date_get_sunday_week_of_year(recv.native)
+	retC := C.g_date_get_sunday_week_of_year((*C.GDate)(recv.native))
 	retGo := (uint32)(retC)
 
 	return retGo
@@ -426,7 +426,7 @@ func (recv *Date) GetSundayWeekOfYear() uint32 {
 
 // GetWeekday is a wrapper around the C function g_date_get_weekday.
 func (recv *Date) GetWeekday() DateWeekday {
-	retC := C.g_date_get_weekday(recv.native)
+	retC := C.g_date_get_weekday((*C.GDate)(recv.native))
 	retGo := (DateWeekday)(retC)
 
 	return retGo
@@ -434,7 +434,7 @@ func (recv *Date) GetWeekday() DateWeekday {
 
 // GetYear is a wrapper around the C function g_date_get_year.
 func (recv *Date) GetYear() DateYear {
-	retC := C.g_date_get_year(recv.native)
+	retC := C.g_date_get_year((*C.GDate)(recv.native))
 	retGo := (DateYear)(retC)
 
 	return retGo
@@ -514,7 +514,7 @@ func dirNewFromC(c *C.GDir) *Dir {
 
 // ReadName is a wrapper around the C function g_dir_read_name.
 func (recv *Dir) ReadName() string {
-	retC := C.g_dir_read_name(recv.native)
+	retC := C.g_dir_read_name((*C.GDir)(recv.native))
 	retGo := C.GoString(retC)
 
 	return retGo
@@ -566,7 +566,7 @@ func ErrorNewLiteral(domain Quark, code int32, message string) *Error {
 
 // Copy is a wrapper around the C function g_error_copy.
 func (recv *Error) Copy() *Error {
-	retC := C.g_error_copy(recv.native)
+	retC := C.g_error_copy((*C.GError)(recv.native))
 	retGo := errorNewFromC(retC)
 
 	return retGo
@@ -886,7 +886,7 @@ func MainContextNew() *MainContext {
 func (recv *MainContext) FindSourceById(sourceId uint32) *Source {
 	c_source_id := (C.guint)(sourceId)
 
-	retC := C.g_main_context_find_source_by_id(recv.native, c_source_id)
+	retC := C.g_main_context_find_source_by_id((*C.GMainContext)(recv.native), c_source_id)
 	retGo := sourceNewFromC(retC)
 
 	return retGo
@@ -896,7 +896,7 @@ func (recv *MainContext) FindSourceById(sourceId uint32) *Source {
 func (recv *MainContext) FindSourceByUserData(userData uintptr) *Source {
 	c_user_data := (C.gpointer)(userData)
 
-	retC := C.g_main_context_find_source_by_user_data(recv.native, c_user_data)
+	retC := C.g_main_context_find_source_by_user_data((*C.GMainContext)(recv.native), c_user_data)
 	retGo := sourceNewFromC(retC)
 
 	return retGo
@@ -924,7 +924,7 @@ func (recv *MainContext) FindSourceByUserData(userData uintptr) *Source {
 
 // Ref is a wrapper around the C function g_main_context_ref.
 func (recv *MainContext) Ref() *MainContext {
-	retC := C.g_main_context_ref(recv.native)
+	retC := C.g_main_context_ref((*C.GMainContext)(recv.native))
 	retGo := mainContextNewFromC(retC)
 
 	return retGo
@@ -961,7 +961,7 @@ func mainLoopNewFromC(c *C.GMainLoop) *MainLoop {
 
 // GetContext is a wrapper around the C function g_main_loop_get_context.
 func (recv *MainLoop) GetContext() *MainContext {
-	retC := C.g_main_loop_get_context(recv.native)
+	retC := C.g_main_loop_get_context((*C.GMainLoop)(recv.native))
 	retGo := mainContextNewFromC(retC)
 
 	return retGo
@@ -973,7 +973,7 @@ func (recv *MainLoop) GetContext() *MainContext {
 
 // Ref is a wrapper around the C function g_main_loop_ref.
 func (recv *MainLoop) Ref() *MainLoop {
-	retC := C.g_main_loop_ref(recv.native)
+	retC := C.g_main_loop_ref((*C.GMainLoop)(recv.native))
 	retGo := mainLoopNewFromC(retC)
 
 	return retGo
@@ -1140,7 +1140,7 @@ func nodeNewFromC(c *C.GNode) *Node {
 func (recv *Node) ChildIndex(data uintptr) int32 {
 	c_data := (C.gpointer)(data)
 
-	retC := C.g_node_child_index(recv.native, c_data)
+	retC := C.g_node_child_index((*C.GNode)(recv.native), c_data)
 	retGo := (int32)(retC)
 
 	return retGo
@@ -1152,7 +1152,7 @@ func (recv *Node) ChildIndex(data uintptr) int32 {
 
 // Copy is a wrapper around the C function g_node_copy.
 func (recv *Node) Copy() *Node {
-	retC := C.g_node_copy(recv.native)
+	retC := C.g_node_copy((*C.GNode)(recv.native))
 	retGo := nodeNewFromC(retC)
 
 	return retGo
@@ -1162,7 +1162,7 @@ func (recv *Node) Copy() *Node {
 
 // Depth is a wrapper around the C function g_node_depth.
 func (recv *Node) Depth() uint32 {
-	retC := C.g_node_depth(recv.native)
+	retC := C.g_node_depth((*C.GNode)(recv.native))
 	retGo := (uint32)(retC)
 
 	return retGo
@@ -1176,7 +1176,7 @@ func (recv *Node) Depth() uint32 {
 
 // FirstSibling is a wrapper around the C function g_node_first_sibling.
 func (recv *Node) FirstSibling() *Node {
-	retC := C.g_node_first_sibling(recv.native)
+	retC := C.g_node_first_sibling((*C.GNode)(recv.native))
 	retGo := nodeNewFromC(retC)
 
 	return retGo
@@ -1184,7 +1184,7 @@ func (recv *Node) FirstSibling() *Node {
 
 // GetRoot is a wrapper around the C function g_node_get_root.
 func (recv *Node) GetRoot() *Node {
-	retC := C.g_node_get_root(recv.native)
+	retC := C.g_node_get_root((*C.GNode)(recv.native))
 	retGo := nodeNewFromC(retC)
 
 	return retGo
@@ -1200,7 +1200,7 @@ func (recv *Node) GetRoot() *Node {
 
 // LastChild is a wrapper around the C function g_node_last_child.
 func (recv *Node) LastChild() *Node {
-	retC := C.g_node_last_child(recv.native)
+	retC := C.g_node_last_child((*C.GNode)(recv.native))
 	retGo := nodeNewFromC(retC)
 
 	return retGo
@@ -1208,7 +1208,7 @@ func (recv *Node) LastChild() *Node {
 
 // LastSibling is a wrapper around the C function g_node_last_sibling.
 func (recv *Node) LastSibling() *Node {
-	retC := C.g_node_last_sibling(recv.native)
+	retC := C.g_node_last_sibling((*C.GNode)(recv.native))
 	retGo := nodeNewFromC(retC)
 
 	return retGo
@@ -1216,7 +1216,7 @@ func (recv *Node) LastSibling() *Node {
 
 // MaxHeight is a wrapper around the C function g_node_max_height.
 func (recv *Node) MaxHeight() uint32 {
-	retC := C.g_node_max_height(recv.native)
+	retC := C.g_node_max_height((*C.GNode)(recv.native))
 	retGo := (uint32)(retC)
 
 	return retGo
@@ -1224,7 +1224,7 @@ func (recv *Node) MaxHeight() uint32 {
 
 // NChildren is a wrapper around the C function g_node_n_children.
 func (recv *Node) NChildren() uint32 {
-	retC := C.g_node_n_children(recv.native)
+	retC := C.g_node_n_children((*C.GNode)(recv.native))
 	retGo := (uint32)(retC)
 
 	return retGo
@@ -1236,7 +1236,7 @@ func (recv *Node) NChildren() uint32 {
 func (recv *Node) NthChild(n uint32) *Node {
 	c_n := (C.guint)(n)
 
-	retC := C.g_node_nth_child(recv.native, c_n)
+	retC := C.g_node_nth_child((*C.GNode)(recv.native), c_n)
 	retGo := nodeNewFromC(retC)
 
 	return retGo
@@ -1426,7 +1426,7 @@ func privateNewFromC(c *C.GPrivate) *Private {
 
 // Get is a wrapper around the C function g_private_get.
 func (recv *Private) Get() uintptr {
-	retC := C.g_private_get(recv.native)
+	retC := C.g_private_get((*C.GPrivate)(recv.native))
 	retGo := (uintptr)(retC)
 
 	return retGo
@@ -1505,7 +1505,7 @@ func queueNewFromC(c *C.GQueue) *Queue {
 
 // PeekHead is a wrapper around the C function g_queue_peek_head.
 func (recv *Queue) PeekHead() uintptr {
-	retC := C.g_queue_peek_head(recv.native)
+	retC := C.g_queue_peek_head((*C.GQueue)(recv.native))
 	retGo := (uintptr)(retC)
 
 	return retGo
@@ -1517,7 +1517,7 @@ func (recv *Queue) PeekHead() uintptr {
 
 // PeekTail is a wrapper around the C function g_queue_peek_tail.
 func (recv *Queue) PeekTail() uintptr {
-	retC := C.g_queue_peek_tail(recv.native)
+	retC := C.g_queue_peek_tail((*C.GQueue)(recv.native))
 	retGo := (uintptr)(retC)
 
 	return retGo
@@ -1527,7 +1527,7 @@ func (recv *Queue) PeekTail() uintptr {
 
 // PopHead is a wrapper around the C function g_queue_pop_head.
 func (recv *Queue) PopHead() uintptr {
-	retC := C.g_queue_pop_head(recv.native)
+	retC := C.g_queue_pop_head((*C.GQueue)(recv.native))
 	retGo := (uintptr)(retC)
 
 	return retGo
@@ -1539,7 +1539,7 @@ func (recv *Queue) PopHead() uintptr {
 
 // PopTail is a wrapper around the C function g_queue_pop_tail.
 func (recv *Queue) PopTail() uintptr {
-	retC := C.g_queue_pop_tail(recv.native)
+	retC := C.g_queue_pop_tail((*C.GQueue)(recv.native))
 	retGo := (uintptr)(retC)
 
 	return retGo
@@ -1584,7 +1584,7 @@ func randNewFromC(c *C.GRand) *Rand {
 
 // Double is a wrapper around the C function g_rand_double.
 func (recv *Rand) Double() float64 {
-	retC := C.g_rand_double(recv.native)
+	retC := C.g_rand_double((*C.GRand)(recv.native))
 	retGo := (float64)(retC)
 
 	return retGo
@@ -1596,7 +1596,7 @@ func (recv *Rand) DoubleRange(begin float64, end float64) float64 {
 
 	c_end := (C.gdouble)(end)
 
-	retC := C.g_rand_double_range(recv.native, c_begin, c_end)
+	retC := C.g_rand_double_range((*C.GRand)(recv.native), c_begin, c_end)
 	retGo := (float64)(retC)
 
 	return retGo
@@ -1606,7 +1606,7 @@ func (recv *Rand) DoubleRange(begin float64, end float64) float64 {
 
 // Int is a wrapper around the C function g_rand_int.
 func (recv *Rand) Int() uint32 {
-	retC := C.g_rand_int(recv.native)
+	retC := C.g_rand_int((*C.GRand)(recv.native))
 	retGo := (uint32)(retC)
 
 	return retGo
@@ -1618,7 +1618,7 @@ func (recv *Rand) IntRange(begin int32, end int32) int32 {
 
 	c_end := (C.gint32)(end)
 
-	retC := C.g_rand_int_range(recv.native, c_begin, c_end)
+	retC := C.g_rand_int_range((*C.GRand)(recv.native), c_begin, c_end)
 	retGo := (int32)(retC)
 
 	return retGo
@@ -1705,7 +1705,7 @@ func scannerNewFromC(c *C.GScanner) *Scanner {
 
 // CurLine is a wrapper around the C function g_scanner_cur_line.
 func (recv *Scanner) CurLine() uint32 {
-	retC := C.g_scanner_cur_line(recv.native)
+	retC := C.g_scanner_cur_line((*C.GScanner)(recv.native))
 	retGo := (uint32)(retC)
 
 	return retGo
@@ -1713,7 +1713,7 @@ func (recv *Scanner) CurLine() uint32 {
 
 // CurPosition is a wrapper around the C function g_scanner_cur_position.
 func (recv *Scanner) CurPosition() uint32 {
-	retC := C.g_scanner_cur_position(recv.native)
+	retC := C.g_scanner_cur_position((*C.GScanner)(recv.native))
 	retGo := (uint32)(retC)
 
 	return retGo
@@ -1721,7 +1721,7 @@ func (recv *Scanner) CurPosition() uint32 {
 
 // CurToken is a wrapper around the C function g_scanner_cur_token.
 func (recv *Scanner) CurToken() TokenType {
-	retC := C.g_scanner_cur_token(recv.native)
+	retC := C.g_scanner_cur_token((*C.GScanner)(recv.native))
 	retGo := (TokenType)(retC)
 
 	return retGo
@@ -1737,7 +1737,7 @@ func (recv *Scanner) CurToken() TokenType {
 
 // GetNextToken is a wrapper around the C function g_scanner_get_next_token.
 func (recv *Scanner) GetNextToken() TokenType {
-	retC := C.g_scanner_get_next_token(recv.native)
+	retC := C.g_scanner_get_next_token((*C.GScanner)(recv.native))
 	retGo := (TokenType)(retC)
 
 	return retGo
@@ -1752,7 +1752,7 @@ func (recv *Scanner) LookupSymbol(symbol string) uintptr {
 	c_symbol := C.CString(symbol)
 	defer C.free(unsafe.Pointer(c_symbol))
 
-	retC := C.g_scanner_lookup_symbol(recv.native, c_symbol)
+	retC := C.g_scanner_lookup_symbol((*C.GScanner)(recv.native), c_symbol)
 	retGo := (uintptr)(retC)
 
 	return retGo
@@ -1760,7 +1760,7 @@ func (recv *Scanner) LookupSymbol(symbol string) uintptr {
 
 // PeekNextToken is a wrapper around the C function g_scanner_peek_next_token.
 func (recv *Scanner) PeekNextToken() TokenType {
-	retC := C.g_scanner_peek_next_token(recv.native)
+	retC := C.g_scanner_peek_next_token((*C.GScanner)(recv.native))
 	retGo := (TokenType)(retC)
 
 	return retGo
@@ -1777,7 +1777,7 @@ func (recv *Scanner) ScopeLookupSymbol(scopeId uint32, symbol string) uintptr {
 	c_symbol := C.CString(symbol)
 	defer C.free(unsafe.Pointer(c_symbol))
 
-	retC := C.g_scanner_scope_lookup_symbol(recv.native, c_scope_id, c_symbol)
+	retC := C.g_scanner_scope_lookup_symbol((*C.GScanner)(recv.native), c_scope_id, c_symbol)
 	retGo := (uintptr)(retC)
 
 	return retGo
@@ -1789,7 +1789,7 @@ func (recv *Scanner) ScopeLookupSymbol(scopeId uint32, symbol string) uintptr {
 func (recv *Scanner) SetScope(scopeId uint32) uint32 {
 	c_scope_id := (C.guint)(scopeId)
 
-	retC := C.g_scanner_set_scope(recv.native, c_scope_id)
+	retC := C.g_scanner_set_scope((*C.GScanner)(recv.native), c_scope_id)
 	retGo := (uint32)(retC)
 
 	return retGo
@@ -1966,7 +1966,7 @@ func sourceNewFromC(c *C.GSource) *Source {
 
 // GetContext is a wrapper around the C function g_source_get_context.
 func (recv *Source) GetContext() *MainContext {
-	retC := C.g_source_get_context(recv.native)
+	retC := C.g_source_get_context((*C.GSource)(recv.native))
 	retGo := mainContextNewFromC(retC)
 
 	return retGo
@@ -1976,7 +1976,7 @@ func (recv *Source) GetContext() *MainContext {
 
 // GetId is a wrapper around the C function g_source_get_id.
 func (recv *Source) GetId() uint32 {
-	retC := C.g_source_get_id(recv.native)
+	retC := C.g_source_get_id((*C.GSource)(recv.native))
 	retGo := (uint32)(retC)
 
 	return retGo
@@ -1984,7 +1984,7 @@ func (recv *Source) GetId() uint32 {
 
 // GetPriority is a wrapper around the C function g_source_get_priority.
 func (recv *Source) GetPriority() int32 {
-	retC := C.g_source_get_priority(recv.native)
+	retC := C.g_source_get_priority((*C.GSource)(recv.native))
 	retGo := (int32)(retC)
 
 	return retGo
@@ -1992,7 +1992,7 @@ func (recv *Source) GetPriority() int32 {
 
 // GetReadyTime is a wrapper around the C function g_source_get_ready_time.
 func (recv *Source) GetReadyTime() int64 {
-	retC := C.g_source_get_ready_time(recv.native)
+	retC := C.g_source_get_ready_time((*C.GSource)(recv.native))
 	retGo := (int64)(retC)
 
 	return retGo
@@ -2006,7 +2006,7 @@ func (recv *Source) GetReadyTime() int64 {
 
 // Ref is a wrapper around the C function g_source_ref.
 func (recv *Source) Ref() *Source {
-	retC := C.g_source_ref(recv.native)
+	retC := C.g_source_ref((*C.GSource)(recv.native))
 	retGo := sourceNewFromC(retC)
 
 	return retGo
@@ -2131,7 +2131,7 @@ func (recv *String) Append(val string) *String {
 	c_val := C.CString(val)
 	defer C.free(unsafe.Pointer(c_val))
 
-	retC := C.g_string_append(recv.native, c_val)
+	retC := C.g_string_append((*C.GString)(recv.native), c_val)
 	retGo := stringNewFromC(retC)
 
 	return retGo
@@ -2141,7 +2141,7 @@ func (recv *String) Append(val string) *String {
 func (recv *String) AppendC(c rune) *String {
 	c_c := (C.gchar)(c)
 
-	retC := C.g_string_append_c(recv.native, c_c)
+	retC := C.g_string_append_c((*C.GString)(recv.native), c_c)
 	retGo := stringNewFromC(retC)
 
 	return retGo
@@ -2154,7 +2154,7 @@ func (recv *String) AppendLen(val string, len int64) *String {
 
 	c_len := (C.gssize)(len)
 
-	retC := C.g_string_append_len(recv.native, c_val, c_len)
+	retC := C.g_string_append_len((*C.GString)(recv.native), c_val, c_len)
 	retGo := stringNewFromC(retC)
 
 	return retGo
@@ -2166,7 +2166,7 @@ func (recv *String) AppendLen(val string, len int64) *String {
 func (recv *String) AppendUnichar(wc rune) *String {
 	c_wc := (C.gunichar)(wc)
 
-	retC := C.g_string_append_unichar(recv.native, c_wc)
+	retC := C.g_string_append_unichar((*C.GString)(recv.native), c_wc)
 	retGo := stringNewFromC(retC)
 
 	return retGo
@@ -2178,7 +2178,7 @@ func (recv *String) AppendUnichar(wc rune) *String {
 
 // AsciiDown is a wrapper around the C function g_string_ascii_down.
 func (recv *String) AsciiDown() *String {
-	retC := C.g_string_ascii_down(recv.native)
+	retC := C.g_string_ascii_down((*C.GString)(recv.native))
 	retGo := stringNewFromC(retC)
 
 	return retGo
@@ -2186,7 +2186,7 @@ func (recv *String) AsciiDown() *String {
 
 // AsciiUp is a wrapper around the C function g_string_ascii_up.
 func (recv *String) AsciiUp() *String {
-	retC := C.g_string_ascii_up(recv.native)
+	retC := C.g_string_ascii_up((*C.GString)(recv.native))
 	retGo := stringNewFromC(retC)
 
 	return retGo
@@ -2197,7 +2197,7 @@ func (recv *String) Assign(rval string) *String {
 	c_rval := C.CString(rval)
 	defer C.free(unsafe.Pointer(c_rval))
 
-	retC := C.g_string_assign(recv.native, c_rval)
+	retC := C.g_string_assign((*C.GString)(recv.native), c_rval)
 	retGo := stringNewFromC(retC)
 
 	return retGo
@@ -2205,7 +2205,7 @@ func (recv *String) Assign(rval string) *String {
 
 // Down is a wrapper around the C function g_string_down.
 func (recv *String) Down() *String {
-	retC := C.g_string_down(recv.native)
+	retC := C.g_string_down((*C.GString)(recv.native))
 	retGo := stringNewFromC(retC)
 
 	return retGo
@@ -2219,7 +2219,7 @@ func (recv *String) Erase(pos int64, len int64) *String {
 
 	c_len := (C.gssize)(len)
 
-	retC := C.g_string_erase(recv.native, c_pos, c_len)
+	retC := C.g_string_erase((*C.GString)(recv.native), c_pos, c_len)
 	retGo := stringNewFromC(retC)
 
 	return retGo
@@ -2229,7 +2229,7 @@ func (recv *String) Erase(pos int64, len int64) *String {
 
 // Hash is a wrapper around the C function g_string_hash.
 func (recv *String) Hash() uint32 {
-	retC := C.g_string_hash(recv.native)
+	retC := C.g_string_hash((*C.GString)(recv.native))
 	retGo := (uint32)(retC)
 
 	return retGo
@@ -2242,7 +2242,7 @@ func (recv *String) Insert(pos int64, val string) *String {
 	c_val := C.CString(val)
 	defer C.free(unsafe.Pointer(c_val))
 
-	retC := C.g_string_insert(recv.native, c_pos, c_val)
+	retC := C.g_string_insert((*C.GString)(recv.native), c_pos, c_val)
 	retGo := stringNewFromC(retC)
 
 	return retGo
@@ -2254,7 +2254,7 @@ func (recv *String) InsertC(pos int64, c rune) *String {
 
 	c_c := (C.gchar)(c)
 
-	retC := C.g_string_insert_c(recv.native, c_pos, c_c)
+	retC := C.g_string_insert_c((*C.GString)(recv.native), c_pos, c_c)
 	retGo := stringNewFromC(retC)
 
 	return retGo
@@ -2269,7 +2269,7 @@ func (recv *String) InsertLen(pos int64, val string, len int64) *String {
 
 	c_len := (C.gssize)(len)
 
-	retC := C.g_string_insert_len(recv.native, c_pos, c_val, c_len)
+	retC := C.g_string_insert_len((*C.GString)(recv.native), c_pos, c_val, c_len)
 	retGo := stringNewFromC(retC)
 
 	return retGo
@@ -2281,7 +2281,7 @@ func (recv *String) InsertUnichar(pos int64, wc rune) *String {
 
 	c_wc := (C.gunichar)(wc)
 
-	retC := C.g_string_insert_unichar(recv.native, c_pos, c_wc)
+	retC := C.g_string_insert_unichar((*C.GString)(recv.native), c_pos, c_wc)
 	retGo := stringNewFromC(retC)
 
 	return retGo
@@ -2292,7 +2292,7 @@ func (recv *String) Prepend(val string) *String {
 	c_val := C.CString(val)
 	defer C.free(unsafe.Pointer(c_val))
 
-	retC := C.g_string_prepend(recv.native, c_val)
+	retC := C.g_string_prepend((*C.GString)(recv.native), c_val)
 	retGo := stringNewFromC(retC)
 
 	return retGo
@@ -2302,7 +2302,7 @@ func (recv *String) Prepend(val string) *String {
 func (recv *String) PrependC(c rune) *String {
 	c_c := (C.gchar)(c)
 
-	retC := C.g_string_prepend_c(recv.native, c_c)
+	retC := C.g_string_prepend_c((*C.GString)(recv.native), c_c)
 	retGo := stringNewFromC(retC)
 
 	return retGo
@@ -2315,7 +2315,7 @@ func (recv *String) PrependLen(val string, len int64) *String {
 
 	c_len := (C.gssize)(len)
 
-	retC := C.g_string_prepend_len(recv.native, c_val, c_len)
+	retC := C.g_string_prepend_len((*C.GString)(recv.native), c_val, c_len)
 	retGo := stringNewFromC(retC)
 
 	return retGo
@@ -2325,7 +2325,7 @@ func (recv *String) PrependLen(val string, len int64) *String {
 func (recv *String) PrependUnichar(wc rune) *String {
 	c_wc := (C.gunichar)(wc)
 
-	retC := C.g_string_prepend_unichar(recv.native, c_wc)
+	retC := C.g_string_prepend_unichar((*C.GString)(recv.native), c_wc)
 	retGo := stringNewFromC(retC)
 
 	return retGo
@@ -2337,7 +2337,7 @@ func (recv *String) PrependUnichar(wc rune) *String {
 func (recv *String) SetSize(len uint64) *String {
 	c_len := (C.gsize)(len)
 
-	retC := C.g_string_set_size(recv.native, c_len)
+	retC := C.g_string_set_size((*C.GString)(recv.native), c_len)
 	retGo := stringNewFromC(retC)
 
 	return retGo
@@ -2347,7 +2347,7 @@ func (recv *String) SetSize(len uint64) *String {
 func (recv *String) Truncate(len uint64) *String {
 	c_len := (C.gsize)(len)
 
-	retC := C.g_string_truncate(recv.native, c_len)
+	retC := C.g_string_truncate((*C.GString)(recv.native), c_len)
 	retGo := stringNewFromC(retC)
 
 	return retGo
@@ -2355,7 +2355,7 @@ func (recv *String) Truncate(len uint64) *String {
 
 // Up is a wrapper around the C function g_string_up.
 func (recv *String) Up() *String {
-	retC := C.g_string_up(recv.native)
+	retC := C.g_string_up((*C.GString)(recv.native))
 	retGo := stringNewFromC(retC)
 
 	return retGo
@@ -2387,7 +2387,7 @@ func (recv *StringChunk) Insert(string string) string {
 	c_string := C.CString(string)
 	defer C.free(unsafe.Pointer(c_string))
 
-	retC := C.g_string_chunk_insert(recv.native, c_string)
+	retC := C.g_string_chunk_insert((*C.GStringChunk)(recv.native), c_string)
 	retGo := C.GoString(retC)
 	defer C.free(unsafe.Pointer(retC))
 
@@ -2399,7 +2399,7 @@ func (recv *StringChunk) InsertConst(string string) string {
 	c_string := C.CString(string)
 	defer C.free(unsafe.Pointer(c_string))
 
-	retC := C.g_string_chunk_insert_const(recv.native, c_string)
+	retC := C.g_string_chunk_insert_const((*C.GStringChunk)(recv.native), c_string)
 	retGo := C.GoString(retC)
 	defer C.free(unsafe.Pointer(retC))
 
@@ -2486,7 +2486,7 @@ func threadNewFromC(c *C.GThread) *Thread {
 
 // Join is a wrapper around the C function g_thread_join.
 func (recv *Thread) Join() uintptr {
-	retC := C.g_thread_join(recv.native)
+	retC := C.g_thread_join((*C.GThread)(recv.native))
 	retGo := (uintptr)(retC)
 
 	return retGo
@@ -2519,7 +2519,7 @@ func threadPoolNewFromC(c *C.GThreadPool) *ThreadPool {
 
 // GetMaxThreads is a wrapper around the C function g_thread_pool_get_max_threads.
 func (recv *ThreadPool) GetMaxThreads() int32 {
-	retC := C.g_thread_pool_get_max_threads(recv.native)
+	retC := C.g_thread_pool_get_max_threads((*C.GThreadPool)(recv.native))
 	retGo := (int32)(retC)
 
 	return retGo
@@ -2527,7 +2527,7 @@ func (recv *ThreadPool) GetMaxThreads() int32 {
 
 // GetNumThreads is a wrapper around the C function g_thread_pool_get_num_threads.
 func (recv *ThreadPool) GetNumThreads() uint32 {
-	retC := C.g_thread_pool_get_num_threads(recv.native)
+	retC := C.g_thread_pool_get_num_threads((*C.GThreadPool)(recv.native))
 	retGo := (uint32)(retC)
 
 	return retGo
@@ -2543,7 +2543,7 @@ func (recv *ThreadPool) GetNumThreads() uint32 {
 
 // Unprocessed is a wrapper around the C function g_thread_pool_unprocessed.
 func (recv *ThreadPool) Unprocessed() uint32 {
-	retC := C.g_thread_pool_unprocessed(recv.native)
+	retC := C.g_thread_pool_unprocessed((*C.GThreadPool)(recv.native))
 	retGo := (uint32)(retC)
 
 	return retGo
@@ -2639,7 +2639,7 @@ func treeNewFromC(c *C.GTree) *Tree {
 
 // Height is a wrapper around the C function g_tree_height.
 func (recv *Tree) Height() int32 {
-	retC := C.g_tree_height(recv.native)
+	retC := C.g_tree_height((*C.GTree)(recv.native))
 	retGo := (int32)(retC)
 
 	return retGo
@@ -2651,7 +2651,7 @@ func (recv *Tree) Height() int32 {
 func (recv *Tree) Lookup(key uintptr) uintptr {
 	c_key := (C.gconstpointer)(key)
 
-	retC := C.g_tree_lookup(recv.native, c_key)
+	retC := C.g_tree_lookup((*C.GTree)(recv.native), c_key)
 	retGo := (uintptr)(retC)
 
 	return retGo
@@ -2661,7 +2661,7 @@ func (recv *Tree) Lookup(key uintptr) uintptr {
 
 // Nnodes is a wrapper around the C function g_tree_nnodes.
 func (recv *Tree) Nnodes() int32 {
-	retC := C.g_tree_nnodes(recv.native)
+	retC := C.g_tree_nnodes((*C.GTree)(recv.native))
 	retGo := (int32)(retC)
 
 	return retGo

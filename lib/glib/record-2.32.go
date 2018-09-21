@@ -37,7 +37,7 @@ func bytesNewFromC(c *C.GBytes) *Bytes {
 func (recv *Bytes) Compare(bytes2 uintptr) int32 {
 	c_bytes2 := (C.gconstpointer)(bytes2)
 
-	retC := C.g_bytes_compare(recv.native, c_bytes2)
+	retC := C.g_bytes_compare((C.gconstpointer)(recv.native), c_bytes2)
 	retGo := (int32)(retC)
 
 	return retGo
@@ -49,7 +49,7 @@ func (recv *Bytes) Compare(bytes2 uintptr) int32 {
 
 // GetSize is a wrapper around the C function g_bytes_get_size.
 func (recv *Bytes) GetSize() uint64 {
-	retC := C.g_bytes_get_size(recv.native)
+	retC := C.g_bytes_get_size((*C.GBytes)(recv.native))
 	retGo := (uint64)(retC)
 
 	return retGo
@@ -57,7 +57,7 @@ func (recv *Bytes) GetSize() uint64 {
 
 // Hash is a wrapper around the C function g_bytes_hash.
 func (recv *Bytes) Hash() uint32 {
-	retC := C.g_bytes_hash(recv.native)
+	retC := C.g_bytes_hash((C.gconstpointer)(recv.native))
 	retGo := (uint32)(retC)
 
 	return retGo
@@ -69,7 +69,7 @@ func (recv *Bytes) NewFromBytes(offset uint64, length uint64) *Bytes {
 
 	c_length := (C.gsize)(length)
 
-	retC := C.g_bytes_new_from_bytes(recv.native, c_offset, c_length)
+	retC := C.g_bytes_new_from_bytes((*C.GBytes)(recv.native), c_offset, c_length)
 	retGo := bytesNewFromC(retC)
 
 	return retGo
@@ -77,7 +77,7 @@ func (recv *Bytes) NewFromBytes(offset uint64, length uint64) *Bytes {
 
 // Ref is a wrapper around the C function g_bytes_ref.
 func (recv *Bytes) Ref() *Bytes {
-	retC := C.g_bytes_ref(recv.native)
+	retC := C.g_bytes_ref((*C.GBytes)(recv.native))
 	retGo := bytesNewFromC(retC)
 
 	return retGo

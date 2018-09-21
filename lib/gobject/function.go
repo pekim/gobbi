@@ -13,49 +13,49 @@ import "C"
 
 // Unsupported : g_boxed_type_register_static : unsupported parameter boxed_copy : no type generator for BoxedCopyFunc, GBoxedCopyFunc
 
-// Unsupported : g_cclosure_marshal_BOOLEAN__BOXED_BOXED : unsupported parameter closure : Blacklisted record : GClosure
+// Unsupported : g_cclosure_marshal_BOOLEAN__BOXED_BOXED : unsupported parameter closure : record param - coming soon
 
-// Unsupported : g_cclosure_marshal_BOOLEAN__FLAGS : unsupported parameter closure : Blacklisted record : GClosure
+// Unsupported : g_cclosure_marshal_BOOLEAN__FLAGS : unsupported parameter closure : record param - coming soon
 
-// Unsupported : g_cclosure_marshal_STRING__OBJECT_POINTER : unsupported parameter closure : Blacklisted record : GClosure
+// Unsupported : g_cclosure_marshal_STRING__OBJECT_POINTER : unsupported parameter closure : record param - coming soon
 
-// Unsupported : g_cclosure_marshal_VOID__BOOLEAN : unsupported parameter closure : Blacklisted record : GClosure
+// Unsupported : g_cclosure_marshal_VOID__BOOLEAN : unsupported parameter closure : record param - coming soon
 
-// Unsupported : g_cclosure_marshal_VOID__BOXED : unsupported parameter closure : Blacklisted record : GClosure
+// Unsupported : g_cclosure_marshal_VOID__BOXED : unsupported parameter closure : record param - coming soon
 
-// Unsupported : g_cclosure_marshal_VOID__CHAR : unsupported parameter closure : Blacklisted record : GClosure
+// Unsupported : g_cclosure_marshal_VOID__CHAR : unsupported parameter closure : record param - coming soon
 
-// Unsupported : g_cclosure_marshal_VOID__DOUBLE : unsupported parameter closure : Blacklisted record : GClosure
+// Unsupported : g_cclosure_marshal_VOID__DOUBLE : unsupported parameter closure : record param - coming soon
 
-// Unsupported : g_cclosure_marshal_VOID__ENUM : unsupported parameter closure : Blacklisted record : GClosure
+// Unsupported : g_cclosure_marshal_VOID__ENUM : unsupported parameter closure : record param - coming soon
 
-// Unsupported : g_cclosure_marshal_VOID__FLAGS : unsupported parameter closure : Blacklisted record : GClosure
+// Unsupported : g_cclosure_marshal_VOID__FLAGS : unsupported parameter closure : record param - coming soon
 
-// Unsupported : g_cclosure_marshal_VOID__FLOAT : unsupported parameter closure : Blacklisted record : GClosure
+// Unsupported : g_cclosure_marshal_VOID__FLOAT : unsupported parameter closure : record param - coming soon
 
-// Unsupported : g_cclosure_marshal_VOID__INT : unsupported parameter closure : Blacklisted record : GClosure
+// Unsupported : g_cclosure_marshal_VOID__INT : unsupported parameter closure : record param - coming soon
 
-// Unsupported : g_cclosure_marshal_VOID__LONG : unsupported parameter closure : Blacklisted record : GClosure
+// Unsupported : g_cclosure_marshal_VOID__LONG : unsupported parameter closure : record param - coming soon
 
-// Unsupported : g_cclosure_marshal_VOID__OBJECT : unsupported parameter closure : Blacklisted record : GClosure
+// Unsupported : g_cclosure_marshal_VOID__OBJECT : unsupported parameter closure : record param - coming soon
 
-// Unsupported : g_cclosure_marshal_VOID__PARAM : unsupported parameter closure : Blacklisted record : GClosure
+// Unsupported : g_cclosure_marshal_VOID__PARAM : unsupported parameter closure : record param - coming soon
 
-// Unsupported : g_cclosure_marshal_VOID__POINTER : unsupported parameter closure : Blacklisted record : GClosure
+// Unsupported : g_cclosure_marshal_VOID__POINTER : unsupported parameter closure : record param - coming soon
 
-// Unsupported : g_cclosure_marshal_VOID__STRING : unsupported parameter closure : Blacklisted record : GClosure
+// Unsupported : g_cclosure_marshal_VOID__STRING : unsupported parameter closure : record param - coming soon
 
-// Unsupported : g_cclosure_marshal_VOID__UCHAR : unsupported parameter closure : Blacklisted record : GClosure
+// Unsupported : g_cclosure_marshal_VOID__UCHAR : unsupported parameter closure : record param - coming soon
 
-// Unsupported : g_cclosure_marshal_VOID__UINT : unsupported parameter closure : Blacklisted record : GClosure
+// Unsupported : g_cclosure_marshal_VOID__UINT : unsupported parameter closure : record param - coming soon
 
-// Unsupported : g_cclosure_marshal_VOID__UINT_POINTER : unsupported parameter closure : Blacklisted record : GClosure
+// Unsupported : g_cclosure_marshal_VOID__UINT_POINTER : unsupported parameter closure : record param - coming soon
 
-// Unsupported : g_cclosure_marshal_VOID__ULONG : unsupported parameter closure : Blacklisted record : GClosure
+// Unsupported : g_cclosure_marshal_VOID__ULONG : unsupported parameter closure : record param - coming soon
 
-// Unsupported : g_cclosure_marshal_VOID__VARIANT : unsupported parameter closure : Blacklisted record : GClosure
+// Unsupported : g_cclosure_marshal_VOID__VARIANT : unsupported parameter closure : record param - coming soon
 
-// Unsupported : g_cclosure_marshal_VOID__VOID : unsupported parameter closure : Blacklisted record : GClosure
+// Unsupported : g_cclosure_marshal_VOID__VOID : unsupported parameter closure : record param - coming soon
 
 // Unsupported : g_cclosure_new : unsupported parameter callback_func : no type generator for Callback, GCallback
 
@@ -147,7 +147,7 @@ import "C"
 
 // Unsupported : g_signal_chain_from_overridden : unsupported parameter instance_and_params : no param type
 
-// Unsupported : g_signal_connect_closure : unsupported parameter closure : Blacklisted record : GClosure
+// Unsupported : g_signal_connect_closure : unsupported parameter closure : record param - coming soon
 
 // Unsupported : g_signal_connect_closure_by_id : unsupported parameter detail : no type generator for GLib.Quark, GQuark
 

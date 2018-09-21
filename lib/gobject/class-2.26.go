@@ -29,7 +29,7 @@ func bindingNewFromC(c *C.GBinding) *Binding {
 
 // GetSourceProperty is a wrapper around the C function g_binding_get_source_property.
 func (recv *Binding) GetSourceProperty() string {
-	retC := C.g_binding_get_source_property(recv.native)
+	retC := C.g_binding_get_source_property((*C.GBinding)(recv.native))
 	retGo := C.GoString(retC)
 
 	return retGo
@@ -39,7 +39,7 @@ func (recv *Binding) GetSourceProperty() string {
 
 // GetTargetProperty is a wrapper around the C function g_binding_get_target_property.
 func (recv *Binding) GetTargetProperty() string {
-	retC := C.g_binding_get_target_property(recv.native)
+	retC := C.g_binding_get_target_property((*C.GBinding)(recv.native))
 	retGo := C.GoString(retC)
 
 	return retGo

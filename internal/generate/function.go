@@ -2,6 +2,7 @@ package generate
 
 import (
 	"fmt"
+	"strings"
 
 	"github.com/dave/jennifer/jen"
 )
@@ -35,6 +36,9 @@ func (f *Function) init(ns *Namespace, receiver *Record) {
 	f.receiver = receiver
 	f.GoName = makeExportedGoName(f.Name)
 	f.Parameters.init(ns)
+	if f.InstanceParameter != nil {
+		f.InstanceParameter.init(ns)
+	}
 	f.initThrowableError()
 
 	if f.ReturnValue != nil {
@@ -155,10 +159,16 @@ func (f *Function) generateReceiverArgument(g *jen.Group) {
 		return
 	}
 
+	typ := f.InstanceParameter.Type
+
 	g.
-		Id("recv").
-		Op(".").
-		Id("native")
+		Parens(jen.
+			Op(strings.Repeat("*", typ.indirectLevel)).
+			Qual("C", typ.cTypeName)).
+		Parens(jen.
+			Id("recv").
+			Op(".").
+			Id("native"))
 }
 
 func (f *Function) generateOutputParamsGoVars(g *jen.Group) {
