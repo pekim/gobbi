@@ -11,8 +11,8 @@ import "C"
 
 // CClosure is a wrapper around the C record GCClosure.
 type CClosure struct {
-	native   *C.GCClosure
-	Closure  *Closure
+	native *C.GCClosure
+	// closure : record with indirection of 0
 	Callback uintptr
 }
 
@@ -23,7 +23,6 @@ func cClosureNewFromC(c *C.GCClosure) *CClosure {
 
 	g := &CClosure{
 		Callback: (uintptr)(c.callback),
-		Closure:  closureNewFromC(c.closure),
 		native:   c,
 	}
 
@@ -128,12 +127,12 @@ func closureNotifyDataNewFromC(c *C.GClosureNotifyData) *ClosureNotifyData {
 
 // EnumClass is a wrapper around the C record GEnumClass.
 type EnumClass struct {
-	native     *C.GEnumClass
-	GTypeClass *TypeClass
-	Minimum    int32
-	Maximum    int32
-	NValues    uint32
-	Values     *EnumValue
+	native *C.GEnumClass
+	// g_type_class : record with indirection of 0
+	Minimum int32
+	Maximum int32
+	NValues uint32
+	Values  *EnumValue
 }
 
 func enumClassNewFromC(c *C.GEnumClass) *EnumClass {
@@ -142,12 +141,11 @@ func enumClassNewFromC(c *C.GEnumClass) *EnumClass {
 	}
 
 	g := &EnumClass{
-		GTypeClass: typeClassNewFromC(c.g_type_class),
-		Maximum:    (int32)(c.maximum),
-		Minimum:    (int32)(c.minimum),
-		NValues:    (uint32)(c.n_values),
-		Values:     enumValueNewFromC(c.values),
-		native:     c,
+		Maximum: (int32)(c.maximum),
+		Minimum: (int32)(c.minimum),
+		NValues: (uint32)(c.n_values),
+		Values:  enumValueNewFromC(c.values),
+		native:  c,
 	}
 
 	return g
@@ -178,11 +176,11 @@ func enumValueNewFromC(c *C.GEnumValue) *EnumValue {
 
 // FlagsClass is a wrapper around the C record GFlagsClass.
 type FlagsClass struct {
-	native     *C.GFlagsClass
-	GTypeClass *TypeClass
-	Mask       uint32
-	NValues    uint32
-	Values     *FlagsValue
+	native *C.GFlagsClass
+	// g_type_class : record with indirection of 0
+	Mask    uint32
+	NValues uint32
+	Values  *FlagsValue
 }
 
 func flagsClassNewFromC(c *C.GFlagsClass) *FlagsClass {
@@ -191,11 +189,10 @@ func flagsClassNewFromC(c *C.GFlagsClass) *FlagsClass {
 	}
 
 	g := &FlagsClass{
-		GTypeClass: typeClassNewFromC(c.g_type_class),
-		Mask:       (uint32)(c.mask),
-		NValues:    (uint32)(c.n_values),
-		Values:     flagsValueNewFromC(c.values),
-		native:     c,
+		Mask:    (uint32)(c.mask),
+		NValues: (uint32)(c.n_values),
+		Values:  flagsValueNewFromC(c.values),
+		native:  c,
 	}
 
 	return g
@@ -226,8 +223,8 @@ func flagsValueNewFromC(c *C.GFlagsValue) *FlagsValue {
 
 // InitiallyUnownedClass is a wrapper around the C record GInitiallyUnownedClass.
 type InitiallyUnownedClass struct {
-	native     *C.GInitiallyUnownedClass
-	GTypeClass *TypeClass
+	native *C.GInitiallyUnownedClass
+	// g_type_class : record with indirection of 0
 	// construct_properties : no type generator for GLib.SList, GSList*
 	// no type for constructor
 	// no type for set_property
@@ -247,9 +244,8 @@ func initiallyUnownedClassNewFromC(c *C.GInitiallyUnownedClass) *InitiallyUnowne
 	}
 
 	g := &InitiallyUnownedClass{
-		Flags:      (uint64)(c.flags),
-		GTypeClass: typeClassNewFromC(c.g_type_class),
-		native:     c,
+		Flags:  (uint64)(c.flags),
+		native: c,
 	}
 
 	return g
@@ -278,8 +274,8 @@ func interfaceInfoNewFromC(c *C.GInterfaceInfo) *InterfaceInfo {
 
 // ObjectClass is a wrapper around the C record GObjectClass.
 type ObjectClass struct {
-	native     *C.GObjectClass
-	GTypeClass *TypeClass
+	native *C.GObjectClass
+	// g_type_class : record with indirection of 0
 	// construct_properties : no type generator for GLib.SList, GSList*
 	// no type for constructor
 	// no type for set_property
@@ -299,9 +295,8 @@ func objectClassNewFromC(c *C.GObjectClass) *ObjectClass {
 	}
 
 	g := &ObjectClass{
-		Flags:      (uint64)(c.flags),
-		GTypeClass: typeClassNewFromC(c.g_type_class),
-		native:     c,
+		Flags:  (uint64)(c.flags),
+		native: c,
 	}
 
 	return g
@@ -339,8 +334,8 @@ func objectConstructParamNewFromC(c *C.GObjectConstructParam) *ObjectConstructPa
 
 // ParamSpecClass is a wrapper around the C record GParamSpecClass.
 type ParamSpecClass struct {
-	native     *C.GParamSpecClass
-	GTypeClass *TypeClass
+	native *C.GParamSpecClass
+	// g_type_class : record with indirection of 0
 	// value_type : no type generator for GType, GType
 	// no type for finalize
 	// no type for value_set_default
@@ -354,10 +349,7 @@ func paramSpecClassNewFromC(c *C.GParamSpecClass) *ParamSpecClass {
 		return nil
 	}
 
-	g := &ParamSpecClass{
-		GTypeClass: typeClassNewFromC(c.g_type_class),
-		native:     c,
-	}
+	g := &ParamSpecClass{native: c}
 
 	return g
 }
@@ -418,7 +410,7 @@ func paramSpecTypeInfoNewFromC(c *C.GParamSpecTypeInfo) *ParamSpecTypeInfo {
 type Parameter struct {
 	native *C.GParameter
 	Name   string
-	Value  *Value
+	// value : record with indirection of 0
 }
 
 func parameterNewFromC(c *C.GParameter) *Parameter {
@@ -428,7 +420,6 @@ func parameterNewFromC(c *C.GParameter) *Parameter {
 
 	g := &Parameter{
 		Name:   C.GoString(c.name),
-		Value:  valueNewFromC(c.value),
 		native: c,
 	}
 
@@ -611,8 +602,8 @@ func (recv *TypeInterface) PeekParent() uintptr {
 
 // TypeModuleClass is a wrapper around the C record GTypeModuleClass.
 type TypeModuleClass struct {
-	native      *C.GTypeModuleClass
-	ParentClass *ObjectClass
+	native *C.GTypeModuleClass
+	// parent_class : record with indirection of 0
 	// no type for load
 	// no type for unload
 	// no type for reserved1
@@ -626,18 +617,15 @@ func typeModuleClassNewFromC(c *C.GTypeModuleClass) *TypeModuleClass {
 		return nil
 	}
 
-	g := &TypeModuleClass{
-		ParentClass: objectClassNewFromC(c.parent_class),
-		native:      c,
-	}
+	g := &TypeModuleClass{native: c}
 
 	return g
 }
 
 // TypePluginClass is a wrapper around the C record GTypePluginClass.
 type TypePluginClass struct {
-	native    *C.GTypePluginClass
-	BaseIface *TypeInterface
+	native *C.GTypePluginClass
+	// base_iface : record with indirection of 0
 	// use_plugin : no type generator for TypePluginUse, GTypePluginUse
 	// unuse_plugin : no type generator for TypePluginUnuse, GTypePluginUnuse
 	// complete_type_info : no type generator for TypePluginCompleteTypeInfo, GTypePluginCompleteTypeInfo
@@ -649,10 +637,7 @@ func typePluginClassNewFromC(c *C.GTypePluginClass) *TypePluginClass {
 		return nil
 	}
 
-	g := &TypePluginClass{
-		BaseIface: typeInterfaceNewFromC(c.base_iface),
-		native:    c,
-	}
+	g := &TypePluginClass{native: c}
 
 	return g
 }

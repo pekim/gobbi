@@ -7,6 +7,7 @@ import (
 // TypeGenerator is an interface where implementors provide generator
 // support for a type or types.
 type TypeGenerator interface {
+	isSupportedAsField() (supported bool, reason string)
 	isSupportedAsParam(direction string) (supported bool, reason string)
 	isSupportedAsReturnValue() (supported bool, reason string)
 

@@ -157,9 +157,9 @@ func (recv *Object) StealData(key string) uintptr {
 
 // ParamSpec is a wrapper around the C record GParamSpec.
 type ParamSpec struct {
-	native        *C.GParamSpec
-	GTypeInstance *TypeInstance
-	Name          string
+	native *C.GParamSpec
+	// g_type_instance : record with indirection of 0
+	Name string
 	// flags : no type generator for ParamFlags, GParamFlags
 	// value_type : no type generator for GType, GType
 	// owner_type : no type generator for GType, GType
@@ -176,13 +176,12 @@ func paramSpecNewFromC(c *C.GParamSpec) *ParamSpec {
 	}
 
 	g := &ParamSpec{
-		Blurb:         C.GoString(c._blurb),
-		GTypeInstance: typeInstanceNewFromC(c.g_type_instance),
-		Name:          C.GoString(c.name),
-		Nick:          C.GoString(c._nick),
-		ParamId:       (uint32)(c.param_id),
-		RefCount:      (uint32)(c.ref_count),
-		native:        c,
+		Blurb:    C.GoString(c._blurb),
+		Name:     C.GoString(c.name),
+		Nick:     C.GoString(c._nick),
+		ParamId:  (uint32)(c.param_id),
+		RefCount: (uint32)(c.ref_count),
+		native:   c,
 	}
 
 	return g

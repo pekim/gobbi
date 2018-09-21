@@ -18,6 +18,14 @@ func TypeGeneratorRecordNew(typ *Type, record *Record) *TypeGeneratorRecord {
 	}
 }
 
+func (t *TypeGeneratorRecord) isSupportedAsField() (supported bool, reason string) {
+	if t.typ.indirectLevel != 1 {
+		return false, fmt.Sprintf("record with indirection of %d", t.typ.indirectLevel)
+	}
+
+	return true, ""
+}
+
 func (t *TypeGeneratorRecord) isSupportedAsParam(direction string) (supported bool, reason string) {
 	if t.record.Blacklist {
 		return false, fmt.Sprintf("Blacklisted record : %s", t.record.CType)

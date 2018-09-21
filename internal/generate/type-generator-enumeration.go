@@ -25,6 +25,10 @@ func (t *TypeGeneratorEnumeration) isSupportedAsParam(direction string) (support
 	return true, ""
 }
 
+func (t *TypeGeneratorEnumeration) isSupportedAsField() (supported bool, reason string) {
+	return true, ""
+}
+
 func (t *TypeGeneratorEnumeration) isSupportedAsReturnValue() (supported bool, reason string) {
 	return true, ""
 }

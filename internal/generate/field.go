@@ -40,6 +40,10 @@ func (f Field) supported() (bool, string) {
 		return false, fmt.Sprintf("%s : no type generator for %s, %s", f.Name, f.Type.Name, f.Type.CType)
 	}
 
+	if supportedAsField, reason := f.Type.generator.isSupportedAsField(); !supportedAsField {
+		return false, fmt.Sprintf("%s : %s", f.Name, reason)
+	}
+
 	return true, ""
 }
 

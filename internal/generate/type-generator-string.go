@@ -17,6 +17,10 @@ func TypeGeneratorStringNew(typ *Type) *TypeGeneratorString {
 	}
 }
 
+func (t *TypeGeneratorString) isSupportedAsField() (supported bool, reason string) {
+	return true, ""
+}
+
 func (t *TypeGeneratorString) isSupportedAsParam(direction string) (supported bool, reason string) {
 	if direction != "out" && t.typ.indirectLevel > 1 {
 		return false, fmt.Sprintf("in string with indirection level of %d",

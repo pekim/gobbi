@@ -25,6 +25,10 @@ func (t *TypeGeneratorInteger) isSupportedAsParam(direction string) (supported b
 	return true, ""
 }
 
+func (t *TypeGeneratorInteger) isSupportedAsField() (supported bool, reason string) {
+	return true, ""
+}
+
 func (t *TypeGeneratorInteger) isSupportedAsReturnValue() (supported bool, reason string) {
 	return true, ""
 }
