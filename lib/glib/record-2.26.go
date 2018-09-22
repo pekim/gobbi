@@ -27,6 +27,12 @@ func dateTimeNewFromC(c *C.GDateTime) *DateTime {
 	return g
 }
 
+func (recv *DateTime) toC() *C.GDateTime {
+	// TODO marshall fields to native
+
+	return recv.native
+}
+
 // Unsupported : g_date_time_new : unsupported parameter tz : record param - coming soon
 
 // Unsupported : g_date_time_new_from_iso8601 : unsupported parameter default_tz : record param - coming soon
@@ -394,6 +400,12 @@ func timeZoneNewFromC(c *C.GTimeZone) *TimeZone {
 	g := &TimeZone{native: c}
 
 	return g
+}
+
+func (recv *TimeZone) toC() *C.GTimeZone {
+	// TODO marshall fields to native
+
+	return recv.native
 }
 
 // TimeZoneNew is a wrapper around the C function g_time_zone_new.

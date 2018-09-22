@@ -27,6 +27,12 @@ func regexNewFromC(c *C.GRegex) *Regex {
 	return g
 }
 
+func (recv *Regex) toC() *C.GRegex {
+	// TODO marshall fields to native
+
+	return recv.native
+}
+
 // Unsupported : g_regex_new : unsupported parameter compile_options : no type generator for RegexCompileFlags, GRegexCompileFlags
 
 // GetCaptureCount is a wrapper around the C function g_regex_get_capture_count.

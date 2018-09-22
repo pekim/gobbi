@@ -32,6 +32,12 @@ func arrayNewFromC(c *C.GArray) *Array {
 	return g
 }
 
+func (recv *Array) toC() *C.GArray {
+	// TODO marshall fields to native
+
+	return recv.native
+}
+
 // AsyncQueue is a wrapper around the C record GAsyncQueue.
 type AsyncQueue struct {
 	native *C.GAsyncQueue
@@ -45,6 +51,12 @@ func asyncQueueNewFromC(c *C.GAsyncQueue) *AsyncQueue {
 	g := &AsyncQueue{native: c}
 
 	return g
+}
+
+func (recv *AsyncQueue) toC() *C.GAsyncQueue {
+	// TODO marshall fields to native
+
+	return recv.native
 }
 
 // Length is a wrapper around the C function g_async_queue_length.
@@ -172,6 +184,12 @@ func bookmarkFileNewFromC(c *C.GBookmarkFile) *BookmarkFile {
 	return g
 }
 
+func (recv *BookmarkFile) toC() *C.GBookmarkFile {
+	// TODO marshall fields to native
+
+	return recv.native
+}
+
 // Unsupported : g_bookmark_file_add_application : no return generator
 
 // Unsupported : g_bookmark_file_add_group : no return generator
@@ -260,6 +278,12 @@ func byteArrayNewFromC(c *C.GByteArray) *ByteArray {
 	return g
 }
 
+func (recv *ByteArray) toC() *C.GByteArray {
+	// TODO marshall fields to native
+
+	return recv.native
+}
+
 // Cond is a wrapper around the C record GCond.
 type Cond struct {
 	native *C.GCond
@@ -275,6 +299,12 @@ func condNewFromC(c *C.GCond) *Cond {
 	g := &Cond{native: c}
 
 	return g
+}
+
+func (recv *Cond) toC() *C.GCond {
+	// TODO marshall fields to native
+
+	return recv.native
 }
 
 // Unsupported : g_cond_broadcast : no return generator
@@ -304,6 +334,12 @@ func dataNewFromC(c *C.GData) *Data {
 	return g
 }
 
+func (recv *Data) toC() *C.GData {
+	// TODO marshall fields to native
+
+	return recv.native
+}
+
 // Date is a wrapper around the C record GDate.
 type Date struct {
 	native *C.GDate
@@ -323,6 +359,12 @@ func dateNewFromC(c *C.GDate) *Date {
 	g := &Date{native: c}
 
 	return g
+}
+
+func (recv *Date) toC() *C.GDate {
+	// TODO marshall fields to native
+
+	return recv.native
 }
 
 // DateNew is a wrapper around the C function g_date_new.
@@ -492,6 +534,12 @@ func debugKeyNewFromC(c *C.GDebugKey) *DebugKey {
 	return g
 }
 
+func (recv *DebugKey) toC() *C.GDebugKey {
+	// TODO marshall fields to native
+
+	return recv.native
+}
+
 // Dir is a wrapper around the C record GDir.
 type Dir struct {
 	native *C.GDir
@@ -505,6 +553,12 @@ func dirNewFromC(c *C.GDir) *Dir {
 	g := &Dir{native: c}
 
 	return g
+}
+
+func (recv *Dir) toC() *C.GDir {
+	// TODO marshall fields to native
+
+	return recv.native
 }
 
 // Unsupported : g_dir_close : no return generator
@@ -540,6 +594,12 @@ func errorNewFromC(c *C.GError) *Error {
 	}
 
 	return g
+}
+
+func (recv *Error) toC() *C.GError {
+	// TODO marshall fields to native
+
+	return recv.native
 }
 
 // Unsupported : g_error_new : unsupported parameter ... : varargs
@@ -588,6 +648,12 @@ func hashTableNewFromC(c *C.GHashTable) *HashTable {
 	return g
 }
 
+func (recv *HashTable) toC() *C.GHashTable {
+	// TODO marshall fields to native
+
+	return recv.native
+}
+
 // HashTableIter is a wrapper around the C record GHashTableIter.
 type HashTableIter struct {
 	native *C.GHashTableIter
@@ -607,6 +673,12 @@ func hashTableIterNewFromC(c *C.GHashTableIter) *HashTableIter {
 	g := &HashTableIter{native: c}
 
 	return g
+}
+
+func (recv *HashTableIter) toC() *C.GHashTableIter {
+	// TODO marshall fields to native
+
+	return recv.native
 }
 
 // Unsupported : g_hash_table_iter_get_hash_table : no return generator
@@ -653,6 +725,12 @@ func hookNewFromC(c *C.GHook) *Hook {
 	return g
 }
 
+func (recv *Hook) toC() *C.GHook {
+	// TODO marshall fields to native
+
+	return recv.native
+}
+
 // Unsupported : g_hook_compare_ids : unsupported parameter sibling : record param - coming soon
 
 // HookList is a wrapper around the C record GHookList.
@@ -680,6 +758,12 @@ func hookListNewFromC(c *C.GHookList) *HookList {
 	}
 
 	return g
+}
+
+func (recv *HookList) toC() *C.GHookList {
+	// TODO marshall fields to native
+
+	return recv.native
 }
 
 // Unsupported : g_hook_list_clear : no return generator
@@ -721,6 +805,12 @@ func iOFuncsNewFromC(c *C.GIOFuncs) *IOFuncs {
 	return g
 }
 
+func (recv *IOFuncs) toC() *C.GIOFuncs {
+	// TODO marshall fields to native
+
+	return recv.native
+}
+
 // KeyFile is a wrapper around the C record GKeyFile.
 type KeyFile struct {
 	native *C.GKeyFile
@@ -734,6 +824,12 @@ func keyFileNewFromC(c *C.GKeyFile) *KeyFile {
 	g := &KeyFile{native: c}
 
 	return g
+}
+
+func (recv *KeyFile) toC() *C.GKeyFile {
+	// TODO marshall fields to native
+
+	return recv.native
 }
 
 // KeyFileNew is a wrapper around the C function g_key_file_new.
@@ -839,6 +935,12 @@ func listNewFromC(c *C.GList) *List {
 	return g
 }
 
+func (recv *List) toC() *C.GList {
+	// TODO marshall fields to native
+
+	return recv.native
+}
+
 // MainContext is a wrapper around the C record GMainContext.
 type MainContext struct {
 	native *C.GMainContext
@@ -852,6 +954,12 @@ func mainContextNewFromC(c *C.GMainContext) *MainContext {
 	g := &MainContext{native: c}
 
 	return g
+}
+
+func (recv *MainContext) toC() *C.GMainContext {
+	// TODO marshall fields to native
+
+	return recv.native
 }
 
 // MainContextNew is a wrapper around the C function g_main_context_new.
@@ -947,6 +1055,12 @@ func mainLoopNewFromC(c *C.GMainLoop) *MainLoop {
 	return g
 }
 
+func (recv *MainLoop) toC() *C.GMainLoop {
+	// TODO marshall fields to native
+
+	return recv.native
+}
+
 // Unsupported : g_main_loop_new : unsupported parameter context : record param - coming soon
 
 // GetContext is a wrapper around the C function g_main_loop_get_context.
@@ -988,6 +1102,12 @@ func mappedFileNewFromC(c *C.GMappedFile) *MappedFile {
 	return g
 }
 
+func (recv *MappedFile) toC() *C.GMappedFile {
+	// TODO marshall fields to native
+
+	return recv.native
+}
+
 // Unsupported : g_mapped_file_new : unsupported parameter writable : no type generator for gboolean, gboolean
 
 // Unsupported : g_mapped_file_new_from_fd : unsupported parameter writable : no type generator for gboolean, gboolean
@@ -1009,6 +1129,12 @@ func markupParseContextNewFromC(c *C.GMarkupParseContext) *MarkupParseContext {
 	g := &MarkupParseContext{native: c}
 
 	return g
+}
+
+func (recv *MarkupParseContext) toC() *C.GMarkupParseContext {
+	// TODO marshall fields to native
+
+	return recv.native
 }
 
 // Unsupported : g_markup_parse_context_new : unsupported parameter parser : record param - coming soon
@@ -1047,6 +1173,12 @@ func markupParserNewFromC(c *C.GMarkupParser) *MarkupParser {
 	return g
 }
 
+func (recv *MarkupParser) toC() *C.GMarkupParser {
+	// TODO marshall fields to native
+
+	return recv.native
+}
+
 // MatchInfo is a wrapper around the C record GMatchInfo.
 type MatchInfo struct {
 	native *C.GMatchInfo
@@ -1060,6 +1192,12 @@ func matchInfoNewFromC(c *C.GMatchInfo) *MatchInfo {
 	g := &MatchInfo{native: c}
 
 	return g
+}
+
+func (recv *MatchInfo) toC() *C.GMatchInfo {
+	// TODO marshall fields to native
+
+	return recv.native
 }
 
 // Unsupported : g_match_info_fetch_all : no return type
@@ -1099,6 +1237,12 @@ func memVTableNewFromC(c *C.GMemVTable) *MemVTable {
 	return g
 }
 
+func (recv *MemVTable) toC() *C.GMemVTable {
+	// TODO marshall fields to native
+
+	return recv.native
+}
+
 // Node is a wrapper around the C record GNode.
 type Node struct {
 	native   *C.GNode
@@ -1124,6 +1268,12 @@ func nodeNewFromC(c *C.GNode) *Node {
 	}
 
 	return g
+}
+
+func (recv *Node) toC() *C.GNode {
+	// TODO marshall fields to native
+
+	return recv.native
 }
 
 // ChildIndex is a wrapper around the C function g_node_child_index.
@@ -1255,6 +1405,12 @@ func optionContextNewFromC(c *C.GOptionContext) *OptionContext {
 	return g
 }
 
+func (recv *OptionContext) toC() *C.GOptionContext {
+	// TODO marshall fields to native
+
+	return recv.native
+}
+
 // Unsupported : g_option_context_add_group : unsupported parameter group : record param - coming soon
 
 // Unsupported : g_option_context_add_main_entries : unsupported parameter entries : record param - coming soon
@@ -1320,6 +1476,12 @@ func optionEntryNewFromC(c *C.GOptionEntry) *OptionEntry {
 	return g
 }
 
+func (recv *OptionEntry) toC() *C.GOptionEntry {
+	// TODO marshall fields to native
+
+	return recv.native
+}
+
 // OptionGroup is a wrapper around the C record GOptionGroup.
 type OptionGroup struct {
 	native *C.GOptionGroup
@@ -1333,6 +1495,12 @@ func optionGroupNewFromC(c *C.GOptionGroup) *OptionGroup {
 	g := &OptionGroup{native: c}
 
 	return g
+}
+
+func (recv *OptionGroup) toC() *C.GOptionGroup {
+	// TODO marshall fields to native
+
+	return recv.native
 }
 
 // Unsupported : g_option_group_new : unsupported parameter destroy : no type generator for DestroyNotify, GDestroyNotify
@@ -1366,6 +1534,12 @@ func patternSpecNewFromC(c *C.GPatternSpec) *PatternSpec {
 	return g
 }
 
+func (recv *PatternSpec) toC() *C.GPatternSpec {
+	// TODO marshall fields to native
+
+	return recv.native
+}
+
 // Unsupported : g_pattern_spec_equal : unsupported parameter pspec2 : record param - coming soon
 
 // Unsupported : g_pattern_spec_free : no return generator
@@ -1393,6 +1567,12 @@ func pollFDNewFromC(c *C.GPollFD) *PollFD {
 	return g
 }
 
+func (recv *PollFD) toC() *C.GPollFD {
+	// TODO marshall fields to native
+
+	return recv.native
+}
+
 // Private is a wrapper around the C record GPrivate.
 type Private struct {
 	native *C.GPrivate
@@ -1409,6 +1589,12 @@ func privateNewFromC(c *C.GPrivate) *Private {
 	g := &Private{native: c}
 
 	return g
+}
+
+func (recv *Private) toC() *C.GPrivate {
+	// TODO marshall fields to native
+
+	return recv.native
 }
 
 // Get is a wrapper around the C function g_private_get.
@@ -1443,6 +1629,12 @@ func ptrArrayNewFromC(c *C.GPtrArray) *PtrArray {
 	return g
 }
 
+func (recv *PtrArray) toC() *C.GPtrArray {
+	// TODO marshall fields to native
+
+	return recv.native
+}
+
 // Queue is a wrapper around the C record GQueue.
 type Queue struct {
 	native *C.GQueue
@@ -1462,6 +1654,12 @@ func queueNewFromC(c *C.GQueue) *Queue {
 	}
 
 	return g
+}
+
+func (recv *Queue) toC() *C.GQueue {
+	// TODO marshall fields to native
+
+	return recv.native
 }
 
 // Unsupported : g_queue_clear : no return generator
@@ -1569,6 +1767,12 @@ func randNewFromC(c *C.GRand) *Rand {
 	return g
 }
 
+func (recv *Rand) toC() *C.GRand {
+	// TODO marshall fields to native
+
+	return recv.native
+}
+
 // Double is a wrapper around the C function g_rand_double.
 func (recv *Rand) Double() float64 {
 	retC := C.g_rand_double((*C.GRand)(recv.native))
@@ -1635,6 +1839,12 @@ func sListNewFromC(c *C.GSList) *SList {
 	return g
 }
 
+func (recv *SList) toC() *C.GSList {
+	// TODO marshall fields to native
+
+	return recv.native
+}
+
 // Scanner is a wrapper around the C record GScanner.
 type Scanner struct {
 	native         *C.GScanner
@@ -1683,6 +1893,12 @@ func scannerNewFromC(c *C.GScanner) *Scanner {
 	}
 
 	return g
+}
+
+func (recv *Scanner) toC() *C.GScanner {
+	// TODO marshall fields to native
+
+	return recv.native
 }
 
 // CurLine is a wrapper around the C function g_scanner_cur_line.
@@ -1831,6 +2047,12 @@ func scannerConfigNewFromC(c *C.GScannerConfig) *ScannerConfig {
 	return g
 }
 
+func (recv *ScannerConfig) toC() *C.GScannerConfig {
+	// TODO marshall fields to native
+
+	return recv.native
+}
+
 // Sequence is a wrapper around the C record GSequence.
 type Sequence struct {
 	native *C.GSequence
@@ -1844,6 +2066,12 @@ func sequenceNewFromC(c *C.GSequence) *Sequence {
 	g := &Sequence{native: c}
 
 	return g
+}
+
+func (recv *Sequence) toC() *C.GSequence {
+	// TODO marshall fields to native
+
+	return recv.native
 }
 
 // Unsupported : g_sequence_foreach : unsupported parameter func : no type generator for Func, GFunc
@@ -1883,6 +2111,12 @@ func sequenceIterNewFromC(c *C.GSequenceIter) *SequenceIter {
 	return g
 }
 
+func (recv *SequenceIter) toC() *C.GSequenceIter {
+	// TODO marshall fields to native
+
+	return recv.native
+}
+
 // Unsupported : g_sequence_iter_compare : unsupported parameter b : record param - coming soon
 
 // Unsupported : g_sequence_iter_is_begin : no return generator
@@ -1915,6 +2149,12 @@ func sourceNewFromC(c *C.GSource) *Source {
 	g := &Source{native: c}
 
 	return g
+}
+
+func (recv *Source) toC() *C.GSource {
+	// TODO marshall fields to native
+
+	return recv.native
 }
 
 // Unsupported : g_source_new : unsupported parameter source_funcs : record param - coming soon
@@ -2019,6 +2259,12 @@ func sourceCallbackFuncsNewFromC(c *C.GSourceCallbackFuncs) *SourceCallbackFuncs
 	return g
 }
 
+func (recv *SourceCallbackFuncs) toC() *C.GSourceCallbackFuncs {
+	// TODO marshall fields to native
+
+	return recv.native
+}
+
 // SourceFuncs is a wrapper around the C record GSourceFuncs.
 type SourceFuncs struct {
 	native *C.GSourceFuncs
@@ -2040,6 +2286,12 @@ func sourceFuncsNewFromC(c *C.GSourceFuncs) *SourceFuncs {
 	return g
 }
 
+func (recv *SourceFuncs) toC() *C.GSourceFuncs {
+	// TODO marshall fields to native
+
+	return recv.native
+}
+
 // SourcePrivate is a wrapper around the C record GSourcePrivate.
 type SourcePrivate struct {
 	native *C.GSourcePrivate
@@ -2055,6 +2307,12 @@ func sourcePrivateNewFromC(c *C.GSourcePrivate) *SourcePrivate {
 	return g
 }
 
+func (recv *SourcePrivate) toC() *C.GSourcePrivate {
+	// TODO marshall fields to native
+
+	return recv.native
+}
+
 // StatBuf is a wrapper around the C record GStatBuf.
 type StatBuf struct {
 	native *C.GStatBuf
@@ -2068,6 +2326,12 @@ func statBufNewFromC(c *C.GStatBuf) *StatBuf {
 	g := &StatBuf{native: c}
 
 	return g
+}
+
+func (recv *StatBuf) toC() *C.GStatBuf {
+	// TODO marshall fields to native
+
+	return recv.native
 }
 
 // String is a wrapper around the C record GString.
@@ -2091,6 +2355,12 @@ func stringNewFromC(c *C.GString) *String {
 	}
 
 	return g
+}
+
+func (recv *String) toC() *C.GString {
+	// TODO marshall fields to native
+
+	return recv.native
 }
 
 // Append is a wrapper around the C function g_string_append.
@@ -2345,6 +2615,12 @@ func stringChunkNewFromC(c *C.GStringChunk) *StringChunk {
 	return g
 }
 
+func (recv *StringChunk) toC() *C.GStringChunk {
+	// TODO marshall fields to native
+
+	return recv.native
+}
+
 // Unsupported : g_string_chunk_clear : no return generator
 
 // Unsupported : g_string_chunk_free : no return generator
@@ -2388,6 +2664,12 @@ func testCaseNewFromC(c *C.GTestCase) *TestCase {
 	return g
 }
 
+func (recv *TestCase) toC() *C.GTestCase {
+	// TODO marshall fields to native
+
+	return recv.native
+}
+
 // TestConfig is a wrapper around the C record GTestConfig.
 type TestConfig struct {
 	native *C.GTestConfig
@@ -2409,6 +2691,12 @@ func testConfigNewFromC(c *C.GTestConfig) *TestConfig {
 	return g
 }
 
+func (recv *TestConfig) toC() *C.GTestConfig {
+	// TODO marshall fields to native
+
+	return recv.native
+}
+
 // Blacklisted : GTestLogBuffer
 
 // Blacklisted : GTestLogMsg
@@ -2428,6 +2716,12 @@ func testSuiteNewFromC(c *C.GTestSuite) *TestSuite {
 	return g
 }
 
+func (recv *TestSuite) toC() *C.GTestSuite {
+	// TODO marshall fields to native
+
+	return recv.native
+}
+
 // Unsupported : g_test_suite_add : unsupported parameter test_case : record param - coming soon
 
 // Unsupported : g_test_suite_add_suite : unsupported parameter nestedsuite : record param - coming soon
@@ -2445,6 +2739,12 @@ func threadNewFromC(c *C.GThread) *Thread {
 	g := &Thread{native: c}
 
 	return g
+}
+
+func (recv *Thread) toC() *C.GThread {
+	// TODO marshall fields to native
+
+	return recv.native
 }
 
 // Unsupported : g_thread_new : unsupported parameter func : no type generator for ThreadFunc, GThreadFunc
@@ -2480,6 +2780,12 @@ func threadPoolNewFromC(c *C.GThreadPool) *ThreadPool {
 	}
 
 	return g
+}
+
+func (recv *ThreadPool) toC() *C.GThreadPool {
+	// TODO marshall fields to native
+
+	return recv.native
 }
 
 // Unsupported : g_thread_pool_free : unsupported parameter immediate : no type generator for gboolean, gboolean
@@ -2537,6 +2843,12 @@ func timeValNewFromC(c *C.GTimeVal) *TimeVal {
 	return g
 }
 
+func (recv *TimeVal) toC() *C.GTimeVal {
+	// TODO marshall fields to native
+
+	return recv.native
+}
+
 // Unsupported : g_time_val_add : no return generator
 
 // Timer is a wrapper around the C record GTimer.
@@ -2552,6 +2864,12 @@ func timerNewFromC(c *C.GTimer) *Timer {
 	g := &Timer{native: c}
 
 	return g
+}
+
+func (recv *Timer) toC() *C.GTimer {
+	// TODO marshall fields to native
+
+	return recv.native
 }
 
 // Unsupported : g_timer_continue : no return generator
@@ -2585,6 +2903,12 @@ func trashStackNewFromC(c *C.GTrashStack) *TrashStack {
 	return g
 }
 
+func (recv *TrashStack) toC() *C.GTrashStack {
+	// TODO marshall fields to native
+
+	return recv.native
+}
+
 // Tree is a wrapper around the C record GTree.
 type Tree struct {
 	native *C.GTree
@@ -2598,6 +2922,12 @@ func treeNewFromC(c *C.GTree) *Tree {
 	g := &Tree{native: c}
 
 	return g
+}
+
+func (recv *Tree) toC() *C.GTree {
+	// TODO marshall fields to native
+
+	return recv.native
 }
 
 // Unsupported : g_tree_destroy : no return generator
@@ -2661,6 +2991,12 @@ func variantBuilderNewFromC(c *C.GVariantBuilder) *VariantBuilder {
 	return g
 }
 
+func (recv *VariantBuilder) toC() *C.GVariantBuilder {
+	// TODO marshall fields to native
+
+	return recv.native
+}
+
 // Unsupported : g_variant_builder_new : unsupported parameter type : Blacklisted record : GVariantType
 
 // Unsupported : g_variant_builder_add : unsupported parameter ... : varargs
@@ -2695,6 +3031,12 @@ func variantIterNewFromC(c *C.GVariantIter) *VariantIter {
 	g := &VariantIter{native: c}
 
 	return g
+}
+
+func (recv *VariantIter) toC() *C.GVariantIter {
+	// TODO marshall fields to native
+
+	return recv.native
 }
 
 // Unsupported : g_variant_iter_free : no return generator

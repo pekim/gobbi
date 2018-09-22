@@ -24,3 +24,9 @@ func paramSpecOverrideNewFromC(c *C.GParamSpecOverride) *ParamSpecOverride {
 
 	return g
 }
+
+func (recv *ParamSpecOverride) toC() *C.GParamSpecOverride {
+	// TODO marshall fields to native
+
+	return recv.native
+}

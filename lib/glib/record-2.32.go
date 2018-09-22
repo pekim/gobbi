@@ -25,6 +25,12 @@ func bytesNewFromC(c *C.GBytes) *Bytes {
 	return g
 }
 
+func (recv *Bytes) toC() *C.GBytes {
+	// TODO marshall fields to native
+
+	return recv.native
+}
+
 // Unsupported : g_bytes_new : unsupported parameter data : no param type
 
 // Unsupported : g_bytes_new_static : unsupported parameter data : no param type
@@ -106,6 +112,12 @@ func rWLockNewFromC(c *C.GRWLock) *RWLock {
 	return g
 }
 
+func (recv *RWLock) toC() *C.GRWLock {
+	// TODO marshall fields to native
+
+	return recv.native
+}
+
 // Unsupported : g_rw_lock_clear : no return generator
 
 // Unsupported : g_rw_lock_init : no return generator
@@ -137,6 +149,12 @@ func recMutexNewFromC(c *C.GRecMutex) *RecMutex {
 	g := &RecMutex{native: c}
 
 	return g
+}
+
+func (recv *RecMutex) toC() *C.GRecMutex {
+	// TODO marshall fields to native
+
+	return recv.native
 }
 
 // Unsupported : g_rec_mutex_clear : no return generator

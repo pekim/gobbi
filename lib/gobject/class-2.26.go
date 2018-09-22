@@ -23,6 +23,12 @@ func bindingNewFromC(c *C.GBinding) *Binding {
 	return g
 }
 
+func (recv *Binding) toC() *C.GBinding {
+	// TODO marshall fields to native
+
+	return recv.native
+}
+
 // Unsupported : g_binding_get_flags : no return generator
 
 // Unsupported : g_binding_get_source : no return generator
@@ -64,4 +70,10 @@ func paramSpecVariantNewFromC(c *C.GParamSpecVariant) *ParamSpecVariant {
 	g := &ParamSpecVariant{native: c}
 
 	return g
+}
+
+func (recv *ParamSpecVariant) toC() *C.GParamSpecVariant {
+	// TODO marshall fields to native
+
+	return recv.native
 }

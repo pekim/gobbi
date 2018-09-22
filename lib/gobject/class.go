@@ -25,6 +25,12 @@ func initiallyUnownedNewFromC(c *C.GInitiallyUnowned) *InitiallyUnowned {
 	return g
 }
 
+func (recv *InitiallyUnowned) toC() *C.GInitiallyUnowned {
+	// TODO marshall fields to native
+
+	return recv.native
+}
+
 // Object is a wrapper around the C record GObject.
 type Object struct {
 	native *C.GObject
@@ -39,6 +45,12 @@ func objectNewFromC(c *C.GObject) *Object {
 	g := &Object{native: c}
 
 	return g
+}
+
+func (recv *Object) toC() *C.GObject {
+	// TODO marshall fields to native
+
+	return recv.native
 }
 
 // Unsupported : g_object_new : unsupported parameter object_type : no type generator for GType, GType
@@ -183,6 +195,12 @@ func paramSpecNewFromC(c *C.GParamSpec) *ParamSpec {
 	return g
 }
 
+func (recv *ParamSpec) toC() *C.GParamSpec {
+	// TODO marshall fields to native
+
+	return recv.native
+}
+
 // GetBlurb is a wrapper around the C function g_param_spec_get_blurb.
 func (recv *ParamSpec) GetBlurb() string {
 	retC := C.g_param_spec_get_blurb((*C.GParamSpec)(recv.native))
@@ -244,6 +262,12 @@ func paramSpecBooleanNewFromC(c *C.GParamSpecBoolean) *ParamSpecBoolean {
 	return g
 }
 
+func (recv *ParamSpecBoolean) toC() *C.GParamSpecBoolean {
+	// TODO marshall fields to native
+
+	return recv.native
+}
+
 // ParamSpecBoxed is a wrapper around the C record GParamSpecBoxed.
 type ParamSpecBoxed struct {
 	native *C.GParamSpecBoxed
@@ -258,6 +282,12 @@ func paramSpecBoxedNewFromC(c *C.GParamSpecBoxed) *ParamSpecBoxed {
 	g := &ParamSpecBoxed{native: c}
 
 	return g
+}
+
+func (recv *ParamSpecBoxed) toC() *C.GParamSpecBoxed {
+	// TODO marshall fields to native
+
+	return recv.native
 }
 
 // ParamSpecChar is a wrapper around the C record GParamSpecChar.
@@ -282,6 +312,12 @@ func paramSpecCharNewFromC(c *C.GParamSpecChar) *ParamSpecChar {
 	}
 
 	return g
+}
+
+func (recv *ParamSpecChar) toC() *C.GParamSpecChar {
+	// TODO marshall fields to native
+
+	return recv.native
 }
 
 // ParamSpecDouble is a wrapper around the C record GParamSpecDouble.
@@ -310,6 +346,12 @@ func paramSpecDoubleNewFromC(c *C.GParamSpecDouble) *ParamSpecDouble {
 	return g
 }
 
+func (recv *ParamSpecDouble) toC() *C.GParamSpecDouble {
+	// TODO marshall fields to native
+
+	return recv.native
+}
+
 // ParamSpecEnum is a wrapper around the C record GParamSpecEnum.
 type ParamSpecEnum struct {
 	native *C.GParamSpecEnum
@@ -332,6 +374,12 @@ func paramSpecEnumNewFromC(c *C.GParamSpecEnum) *ParamSpecEnum {
 	return g
 }
 
+func (recv *ParamSpecEnum) toC() *C.GParamSpecEnum {
+	// TODO marshall fields to native
+
+	return recv.native
+}
+
 // ParamSpecFlags is a wrapper around the C record GParamSpecFlags.
 type ParamSpecFlags struct {
 	native *C.GParamSpecFlags
@@ -352,6 +400,12 @@ func paramSpecFlagsNewFromC(c *C.GParamSpecFlags) *ParamSpecFlags {
 	}
 
 	return g
+}
+
+func (recv *ParamSpecFlags) toC() *C.GParamSpecFlags {
+	// TODO marshall fields to native
+
+	return recv.native
 }
 
 // ParamSpecFloat is a wrapper around the C record GParamSpecFloat.
@@ -380,6 +434,12 @@ func paramSpecFloatNewFromC(c *C.GParamSpecFloat) *ParamSpecFloat {
 	return g
 }
 
+func (recv *ParamSpecFloat) toC() *C.GParamSpecFloat {
+	// TODO marshall fields to native
+
+	return recv.native
+}
+
 // ParamSpecInt is a wrapper around the C record GParamSpecInt.
 type ParamSpecInt struct {
 	native *C.GParamSpecInt
@@ -402,6 +462,12 @@ func paramSpecIntNewFromC(c *C.GParamSpecInt) *ParamSpecInt {
 	}
 
 	return g
+}
+
+func (recv *ParamSpecInt) toC() *C.GParamSpecInt {
+	// TODO marshall fields to native
+
+	return recv.native
 }
 
 // ParamSpecInt64 is a wrapper around the C record GParamSpecInt64.
@@ -428,6 +494,12 @@ func paramSpecInt64NewFromC(c *C.GParamSpecInt64) *ParamSpecInt64 {
 	return g
 }
 
+func (recv *ParamSpecInt64) toC() *C.GParamSpecInt64 {
+	// TODO marshall fields to native
+
+	return recv.native
+}
+
 // ParamSpecLong is a wrapper around the C record GParamSpecLong.
 type ParamSpecLong struct {
 	native *C.GParamSpecLong
@@ -452,6 +524,12 @@ func paramSpecLongNewFromC(c *C.GParamSpecLong) *ParamSpecLong {
 	return g
 }
 
+func (recv *ParamSpecLong) toC() *C.GParamSpecLong {
+	// TODO marshall fields to native
+
+	return recv.native
+}
+
 // ParamSpecObject is a wrapper around the C record GParamSpecObject.
 type ParamSpecObject struct {
 	native *C.GParamSpecObject
@@ -466,6 +544,12 @@ func paramSpecObjectNewFromC(c *C.GParamSpecObject) *ParamSpecObject {
 	g := &ParamSpecObject{native: c}
 
 	return g
+}
+
+func (recv *ParamSpecObject) toC() *C.GParamSpecObject {
+	// TODO marshall fields to native
+
+	return recv.native
 }
 
 // ParamSpecParam is a wrapper around the C record GParamSpecParam.
@@ -484,6 +568,12 @@ func paramSpecParamNewFromC(c *C.GParamSpecParam) *ParamSpecParam {
 	return g
 }
 
+func (recv *ParamSpecParam) toC() *C.GParamSpecParam {
+	// TODO marshall fields to native
+
+	return recv.native
+}
+
 // ParamSpecPointer is a wrapper around the C record GParamSpecPointer.
 type ParamSpecPointer struct {
 	native *C.GParamSpecPointer
@@ -498,6 +588,12 @@ func paramSpecPointerNewFromC(c *C.GParamSpecPointer) *ParamSpecPointer {
 	g := &ParamSpecPointer{native: c}
 
 	return g
+}
+
+func (recv *ParamSpecPointer) toC() *C.GParamSpecPointer {
+	// TODO marshall fields to native
+
+	return recv.native
 }
 
 // ParamSpecString is a wrapper around the C record GParamSpecString.
@@ -528,6 +624,12 @@ func paramSpecStringNewFromC(c *C.GParamSpecString) *ParamSpecString {
 	return g
 }
 
+func (recv *ParamSpecString) toC() *C.GParamSpecString {
+	// TODO marshall fields to native
+
+	return recv.native
+}
+
 // ParamSpecUChar is a wrapper around the C record GParamSpecUChar.
 type ParamSpecUChar struct {
 	native *C.GParamSpecUChar
@@ -550,6 +652,12 @@ func paramSpecUCharNewFromC(c *C.GParamSpecUChar) *ParamSpecUChar {
 	}
 
 	return g
+}
+
+func (recv *ParamSpecUChar) toC() *C.GParamSpecUChar {
+	// TODO marshall fields to native
+
+	return recv.native
 }
 
 // ParamSpecUInt is a wrapper around the C record GParamSpecUInt.
@@ -576,6 +684,12 @@ func paramSpecUIntNewFromC(c *C.GParamSpecUInt) *ParamSpecUInt {
 	return g
 }
 
+func (recv *ParamSpecUInt) toC() *C.GParamSpecUInt {
+	// TODO marshall fields to native
+
+	return recv.native
+}
+
 // ParamSpecUInt64 is a wrapper around the C record GParamSpecUInt64.
 type ParamSpecUInt64 struct {
 	native *C.GParamSpecUInt64
@@ -598,6 +712,12 @@ func paramSpecUInt64NewFromC(c *C.GParamSpecUInt64) *ParamSpecUInt64 {
 	}
 
 	return g
+}
+
+func (recv *ParamSpecUInt64) toC() *C.GParamSpecUInt64 {
+	// TODO marshall fields to native
+
+	return recv.native
 }
 
 // ParamSpecULong is a wrapper around the C record GParamSpecULong.
@@ -624,6 +744,12 @@ func paramSpecULongNewFromC(c *C.GParamSpecULong) *ParamSpecULong {
 	return g
 }
 
+func (recv *ParamSpecULong) toC() *C.GParamSpecULong {
+	// TODO marshall fields to native
+
+	return recv.native
+}
+
 // ParamSpecUnichar is a wrapper around the C record GParamSpecUnichar.
 type ParamSpecUnichar struct {
 	native *C.GParamSpecUnichar
@@ -642,6 +768,12 @@ func paramSpecUnicharNewFromC(c *C.GParamSpecUnichar) *ParamSpecUnichar {
 	}
 
 	return g
+}
+
+func (recv *ParamSpecUnichar) toC() *C.GParamSpecUnichar {
+	// TODO marshall fields to native
+
+	return recv.native
 }
 
 // ParamSpecValueArray is a wrapper around the C record GParamSpecValueArray.
@@ -663,6 +795,12 @@ func paramSpecValueArrayNewFromC(c *C.GParamSpecValueArray) *ParamSpecValueArray
 	}
 
 	return g
+}
+
+func (recv *ParamSpecValueArray) toC() *C.GParamSpecValueArray {
+	// TODO marshall fields to native
+
+	return recv.native
 }
 
 // TypeModule is a wrapper around the C record GTypeModule.
@@ -687,6 +825,12 @@ func typeModuleNewFromC(c *C.GTypeModule) *TypeModule {
 	}
 
 	return g
+}
+
+func (recv *TypeModule) toC() *C.GTypeModule {
+	// TODO marshall fields to native
+
+	return recv.native
 }
 
 // Unsupported : g_type_module_add_interface : unsupported parameter instance_type : no type generator for GType, GType

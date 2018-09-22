@@ -25,6 +25,12 @@ func checksumNewFromC(c *C.GChecksum) *Checksum {
 	return g
 }
 
+func (recv *Checksum) toC() *C.GChecksum {
+	// TODO marshall fields to native
+
+	return recv.native
+}
+
 // ChecksumNew is a wrapper around the C function g_checksum_new.
 func ChecksumNew(checksumType ChecksumType) *Checksum {
 	c_checksum_type := (C.GChecksumType)(checksumType)

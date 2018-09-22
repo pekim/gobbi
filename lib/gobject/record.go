@@ -29,6 +29,12 @@ func cClosureNewFromC(c *C.GCClosure) *CClosure {
 	return g
 }
 
+func (recv *CClosure) toC() *C.GCClosure {
+	// TODO marshall fields to native
+
+	return recv.native
+}
+
 // Closure is a wrapper around the C record GClosure.
 type Closure struct {
 	native *C.GClosure
@@ -55,6 +61,12 @@ func closureNewFromC(c *C.GClosure) *Closure {
 	g := &Closure{native: c}
 
 	return g
+}
+
+func (recv *Closure) toC() *C.GClosure {
+	// TODO marshall fields to native
+
+	return recv.native
 }
 
 // Unsupported : g_closure_new_object : unsupported parameter object : no type generator for Object, GObject*
@@ -121,6 +133,12 @@ func closureNotifyDataNewFromC(c *C.GClosureNotifyData) *ClosureNotifyData {
 	return g
 }
 
+func (recv *ClosureNotifyData) toC() *C.GClosureNotifyData {
+	// TODO marshall fields to native
+
+	return recv.native
+}
+
 // EnumClass is a wrapper around the C record GEnumClass.
 type EnumClass struct {
 	native *C.GEnumClass
@@ -147,6 +165,12 @@ func enumClassNewFromC(c *C.GEnumClass) *EnumClass {
 	return g
 }
 
+func (recv *EnumClass) toC() *C.GEnumClass {
+	// TODO marshall fields to native
+
+	return recv.native
+}
+
 // EnumValue is a wrapper around the C record GEnumValue.
 type EnumValue struct {
 	native    *C.GEnumValue
@@ -168,6 +192,12 @@ func enumValueNewFromC(c *C.GEnumValue) *EnumValue {
 	}
 
 	return g
+}
+
+func (recv *EnumValue) toC() *C.GEnumValue {
+	// TODO marshall fields to native
+
+	return recv.native
 }
 
 // FlagsClass is a wrapper around the C record GFlagsClass.
@@ -194,6 +224,12 @@ func flagsClassNewFromC(c *C.GFlagsClass) *FlagsClass {
 	return g
 }
 
+func (recv *FlagsClass) toC() *C.GFlagsClass {
+	// TODO marshall fields to native
+
+	return recv.native
+}
+
 // FlagsValue is a wrapper around the C record GFlagsValue.
 type FlagsValue struct {
 	native    *C.GFlagsValue
@@ -215,6 +251,12 @@ func flagsValueNewFromC(c *C.GFlagsValue) *FlagsValue {
 	}
 
 	return g
+}
+
+func (recv *FlagsValue) toC() *C.GFlagsValue {
+	// TODO marshall fields to native
+
+	return recv.native
 }
 
 // InitiallyUnownedClass is a wrapper around the C record GInitiallyUnownedClass.
@@ -244,6 +286,12 @@ func initiallyUnownedClassNewFromC(c *C.GInitiallyUnownedClass) *InitiallyUnowne
 	return g
 }
 
+func (recv *InitiallyUnownedClass) toC() *C.GInitiallyUnownedClass {
+	// TODO marshall fields to native
+
+	return recv.native
+}
+
 // InterfaceInfo is a wrapper around the C record GInterfaceInfo.
 type InterfaceInfo struct {
 	native *C.GInterfaceInfo
@@ -263,6 +311,12 @@ func interfaceInfoNewFromC(c *C.GInterfaceInfo) *InterfaceInfo {
 	}
 
 	return g
+}
+
+func (recv *InterfaceInfo) toC() *C.GInterfaceInfo {
+	// TODO marshall fields to native
+
+	return recv.native
 }
 
 // ObjectClass is a wrapper around the C record GObjectClass.
@@ -290,6 +344,12 @@ func objectClassNewFromC(c *C.GObjectClass) *ObjectClass {
 	g := &ObjectClass{native: c}
 
 	return g
+}
+
+func (recv *ObjectClass) toC() *C.GObjectClass {
+	// TODO marshall fields to native
+
+	return recv.native
 }
 
 // Unsupported : g_object_class_find_property : no return generator
@@ -322,6 +382,12 @@ func objectConstructParamNewFromC(c *C.GObjectConstructParam) *ObjectConstructPa
 	return g
 }
 
+func (recv *ObjectConstructParam) toC() *C.GObjectConstructParam {
+	// TODO marshall fields to native
+
+	return recv.native
+}
+
 // ParamSpecClass is a wrapper around the C record GParamSpecClass.
 type ParamSpecClass struct {
 	native *C.GParamSpecClass
@@ -344,6 +410,12 @@ func paramSpecClassNewFromC(c *C.GParamSpecClass) *ParamSpecClass {
 	return g
 }
 
+func (recv *ParamSpecClass) toC() *C.GParamSpecClass {
+	// TODO marshall fields to native
+
+	return recv.native
+}
+
 // ParamSpecPool is a wrapper around the C record GParamSpecPool.
 type ParamSpecPool struct {
 	native *C.GParamSpecPool
@@ -357,6 +429,12 @@ func paramSpecPoolNewFromC(c *C.GParamSpecPool) *ParamSpecPool {
 	g := &ParamSpecPool{native: c}
 
 	return g
+}
+
+func (recv *ParamSpecPool) toC() *C.GParamSpecPool {
+	// TODO marshall fields to native
+
+	return recv.native
 }
 
 // Unsupported : g_param_spec_pool_insert : unsupported parameter pspec : no type generator for ParamSpec, GParamSpec*
@@ -396,6 +474,12 @@ func paramSpecTypeInfoNewFromC(c *C.GParamSpecTypeInfo) *ParamSpecTypeInfo {
 	return g
 }
 
+func (recv *ParamSpecTypeInfo) toC() *C.GParamSpecTypeInfo {
+	// TODO marshall fields to native
+
+	return recv.native
+}
+
 // Parameter is a wrapper around the C record GParameter.
 type Parameter struct {
 	native *C.GParameter
@@ -414,6 +498,12 @@ func parameterNewFromC(c *C.GParameter) *Parameter {
 	}
 
 	return g
+}
+
+func (recv *Parameter) toC() *C.GParameter {
+	// TODO marshall fields to native
+
+	return recv.native
 }
 
 // SignalInvocationHint is a wrapper around the C record GSignalInvocationHint.
@@ -435,6 +525,12 @@ func signalInvocationHintNewFromC(c *C.GSignalInvocationHint) *SignalInvocationH
 	}
 
 	return g
+}
+
+func (recv *SignalInvocationHint) toC() *C.GSignalInvocationHint {
+	// TODO marshall fields to native
+
+	return recv.native
 }
 
 // SignalQuery is a wrapper around the C record GSignalQuery.
@@ -464,6 +560,12 @@ func signalQueryNewFromC(c *C.GSignalQuery) *SignalQuery {
 	return g
 }
 
+func (recv *SignalQuery) toC() *C.GSignalQuery {
+	// TODO marshall fields to native
+
+	return recv.native
+}
+
 // TypeClass is a wrapper around the C record GTypeClass.
 type TypeClass struct {
 	native *C.GTypeClass
@@ -478,6 +580,12 @@ func typeClassNewFromC(c *C.GTypeClass) *TypeClass {
 	g := &TypeClass{native: c}
 
 	return g
+}
+
+func (recv *TypeClass) toC() *C.GTypeClass {
+	// TODO marshall fields to native
+
+	return recv.native
 }
 
 // Unsupported : g_type_class_add_private : no return generator
@@ -512,6 +620,12 @@ func typeFundamentalInfoNewFromC(c *C.GTypeFundamentalInfo) *TypeFundamentalInfo
 	return g
 }
 
+func (recv *TypeFundamentalInfo) toC() *C.GTypeFundamentalInfo {
+	// TODO marshall fields to native
+
+	return recv.native
+}
+
 // TypeInfo is a wrapper around the C record GTypeInfo.
 type TypeInfo struct {
 	native    *C.GTypeInfo
@@ -544,6 +658,12 @@ func typeInfoNewFromC(c *C.GTypeInfo) *TypeInfo {
 	return g
 }
 
+func (recv *TypeInfo) toC() *C.GTypeInfo {
+	// TODO marshall fields to native
+
+	return recv.native
+}
+
 // TypeInstance is a wrapper around the C record GTypeInstance.
 type TypeInstance struct {
 	native *C.GTypeInstance
@@ -558,6 +678,12 @@ func typeInstanceNewFromC(c *C.GTypeInstance) *TypeInstance {
 	g := &TypeInstance{native: c}
 
 	return g
+}
+
+func (recv *TypeInstance) toC() *C.GTypeInstance {
+	// TODO marshall fields to native
+
+	return recv.native
 }
 
 // Unsupported : g_type_instance_get_private : unsupported parameter private_type : no type generator for GType, GType
@@ -577,6 +703,12 @@ func typeInterfaceNewFromC(c *C.GTypeInterface) *TypeInterface {
 	g := &TypeInterface{native: c}
 
 	return g
+}
+
+func (recv *TypeInterface) toC() *C.GTypeInterface {
+	// TODO marshall fields to native
+
+	return recv.native
 }
 
 // PeekParent is a wrapper around the C function g_type_interface_peek_parent.
@@ -609,6 +741,12 @@ func typeModuleClassNewFromC(c *C.GTypeModuleClass) *TypeModuleClass {
 	return g
 }
 
+func (recv *TypeModuleClass) toC() *C.GTypeModuleClass {
+	// TODO marshall fields to native
+
+	return recv.native
+}
+
 // TypePluginClass is a wrapper around the C record GTypePluginClass.
 type TypePluginClass struct {
 	native *C.GTypePluginClass
@@ -627,6 +765,12 @@ func typePluginClassNewFromC(c *C.GTypePluginClass) *TypePluginClass {
 	g := &TypePluginClass{native: c}
 
 	return g
+}
+
+func (recv *TypePluginClass) toC() *C.GTypePluginClass {
+	// TODO marshall fields to native
+
+	return recv.native
 }
 
 // TypeQuery is a wrapper around the C record GTypeQuery.
@@ -651,6 +795,12 @@ func typeQueryNewFromC(c *C.GTypeQuery) *TypeQuery {
 	}
 
 	return g
+}
+
+func (recv *TypeQuery) toC() *C.GTypeQuery {
+	// TODO marshall fields to native
+
+	return recv.native
 }
 
 // TypeValueTable is a wrapper around the C record GTypeValueTable.
@@ -680,6 +830,12 @@ func typeValueTableNewFromC(c *C.GTypeValueTable) *TypeValueTable {
 	return g
 }
 
+func (recv *TypeValueTable) toC() *C.GTypeValueTable {
+	// TODO marshall fields to native
+
+	return recv.native
+}
+
 // Value is a wrapper around the C record GValue.
 type Value struct {
 	native *C.GValue
@@ -695,6 +851,12 @@ func valueNewFromC(c *C.GValue) *Value {
 	g := &Value{native: c}
 
 	return g
+}
+
+func (recv *Value) toC() *C.GValue {
+	// TODO marshall fields to native
+
+	return recv.native
 }
 
 // Unsupported : g_value_copy : unsupported parameter dest_value : record param - coming soon
@@ -978,6 +1140,12 @@ func valueArrayNewFromC(c *C.GValueArray) *ValueArray {
 	return g
 }
 
+func (recv *ValueArray) toC() *C.GValueArray {
+	// TODO marshall fields to native
+
+	return recv.native
+}
+
 // ValueArrayNew is a wrapper around the C function g_value_array_new.
 func ValueArrayNew(nPrealloced uint32) *ValueArray {
 	c_n_prealloced := (C.guint)(nPrealloced)
@@ -1041,6 +1209,12 @@ func weakRefNewFromC(c *C.GWeakRef) *WeakRef {
 	g := &WeakRef{native: c}
 
 	return g
+}
+
+func (recv *WeakRef) toC() *C.GWeakRef {
+	// TODO marshall fields to native
+
+	return recv.native
 }
 
 // Unsupported : g_weak_ref_clear : no return generator

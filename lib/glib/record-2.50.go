@@ -32,3 +32,9 @@ func logFieldNewFromC(c *C.GLogField) *LogField {
 
 	return g
 }
+
+func (recv *LogField) toC() *C.GLogField {
+	// TODO marshall fields to native
+
+	return recv.native
+}

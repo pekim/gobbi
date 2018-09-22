@@ -30,4 +30,10 @@ func onceNewFromC(c *C.GOnce) *Once {
 	return g
 }
 
+func (recv *Once) toC() *C.GOnce {
+	// TODO marshall fields to native
+
+	return recv.native
+}
+
 // Unsupported : g_once_impl : unsupported parameter func : no type generator for ThreadFunc, GThreadFunc

@@ -25,6 +25,12 @@ func hmacNewFromC(c *C.GHmac) *Hmac {
 	return g
 }
 
+func (recv *Hmac) toC() *C.GHmac {
+	// TODO marshall fields to native
+
+	return recv.native
+}
+
 // Copy is a wrapper around the C function g_hmac_copy.
 func (recv *Hmac) Copy() *Hmac {
 	retC := C.g_hmac_copy((*C.GHmac)(recv.native))

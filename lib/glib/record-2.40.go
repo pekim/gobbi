@@ -25,6 +25,12 @@ func variantDictNewFromC(c *C.GVariantDict) *VariantDict {
 	return g
 }
 
+func (recv *VariantDict) toC() *C.GVariantDict {
+	// TODO marshall fields to native
+
+	return recv.native
+}
+
 // Unsupported : g_variant_dict_new : unsupported parameter from_asv : Blacklisted record : GVariant
 
 // Unsupported : g_variant_dict_clear : no return generator
