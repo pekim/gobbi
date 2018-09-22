@@ -1,7 +1,7 @@
 package main
 
 import (
-	"gobbi2/internal/generate"
+	"github.com/pekim/gobbi/internal/generate"
 )
 
 func main() {
