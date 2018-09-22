@@ -26,7 +26,6 @@ func variantDictNewFromC(c *C.GVariantDict) *VariantDict {
 }
 
 func (recv *VariantDict) toC() *C.GVariantDict {
-	// TODO marshall fields to native
 
 	return recv.native
 }

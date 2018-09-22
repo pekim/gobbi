@@ -28,7 +28,6 @@ func regexNewFromC(c *C.GRegex) *Regex {
 }
 
 func (recv *Regex) toC() *C.GRegex {
-	// TODO marshall fields to native
 
 	return recv.native
 }

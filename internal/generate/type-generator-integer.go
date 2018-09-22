@@ -77,5 +77,11 @@ func (t *TypeGeneratorInteger) generateReturnCToGo(g *jen.Group, cVarName string
 func (t *TypeGeneratorInteger) generateCToGo(cVarReference *jen.Statement) *jen.Statement {
 	return jen.
 		Parens(jen.Id(t.typ.goType)).
-		Params(cVarReference)
+		Parens(cVarReference)
+}
+
+func (t *TypeGeneratorInteger) generateGoToC(g *jen.Group, goVarReference *jen.Statement) {
+	g.
+		Parens(jen.Qual("C", t.typ.CType)).
+		Parens(goVarReference)
 }

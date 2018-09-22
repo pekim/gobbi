@@ -79,3 +79,9 @@ func (t *TypeGeneratorEnumeration) generateCToGo(cVarReference *jen.Statement) *
 		Parens(jen.Id(t.typ.goType)).
 		Params(cVarReference)
 }
+
+func (t *TypeGeneratorEnumeration) generateGoToC(g *jen.Group, goVarReference *jen.Statement) {
+	g.
+		Parens(jen.Qual("C", t.typ.cTypeName)).
+		Parens(goVarReference)
+}

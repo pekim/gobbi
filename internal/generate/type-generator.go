@@ -13,6 +13,7 @@ type TypeGenerator interface {
 
 	generateDeclaration(g *jen.Group, goVarName string)
 	generateCToGo(cVarReference *jen.Statement) *jen.Statement
+	generateGoToC(g *jen.Group, goVarReference *jen.Statement)
 
 	generateParamCallArgument(g *jen.Group, cVarName string)
 	generateParamOutCallArgument(g *jen.Group, cVarName string)

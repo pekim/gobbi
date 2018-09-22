@@ -26,7 +26,6 @@ func hmacNewFromC(c *C.GHmac) *Hmac {
 }
 
 func (recv *Hmac) toC() *C.GHmac {
-	// TODO marshall fields to native
 
 	return recv.native
 }

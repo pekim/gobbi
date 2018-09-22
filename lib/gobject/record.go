@@ -12,7 +12,7 @@ import "C"
 // CClosure is a wrapper around the C record GCClosure.
 type CClosure struct {
 	native *C.GCClosure
-	// closure : record with indirection of 0
+	// closure : record
 	Callback uintptr
 }
 
@@ -30,7 +30,8 @@ func cClosureNewFromC(c *C.GCClosure) *CClosure {
 }
 
 func (recv *CClosure) toC() *C.GCClosure {
-	// TODO marshall fields to native
+	recv.native.callback =
+		(C.gpointer)(recv.Callback)
 
 	return recv.native
 }
@@ -64,7 +65,6 @@ func closureNewFromC(c *C.GClosure) *Closure {
 }
 
 func (recv *Closure) toC() *C.GClosure {
-	// TODO marshall fields to native
 
 	return recv.native
 }
@@ -134,7 +134,8 @@ func closureNotifyDataNewFromC(c *C.GClosureNotifyData) *ClosureNotifyData {
 }
 
 func (recv *ClosureNotifyData) toC() *C.GClosureNotifyData {
-	// TODO marshall fields to native
+	recv.native.data =
+		(C.gpointer)(recv.Data)
 
 	return recv.native
 }
@@ -142,11 +143,11 @@ func (recv *ClosureNotifyData) toC() *C.GClosureNotifyData {
 // EnumClass is a wrapper around the C record GEnumClass.
 type EnumClass struct {
 	native *C.GEnumClass
-	// g_type_class : record with indirection of 0
+	// g_type_class : record
 	Minimum int32
 	Maximum int32
 	NValues uint32
-	Values  *EnumValue
+	// values : record
 }
 
 func enumClassNewFromC(c *C.GEnumClass) *EnumClass {
@@ -158,7 +159,6 @@ func enumClassNewFromC(c *C.GEnumClass) *EnumClass {
 		Maximum: (int32)(c.maximum),
 		Minimum: (int32)(c.minimum),
 		NValues: (uint32)(c.n_values),
-		Values:  enumValueNewFromC(c.values),
 		native:  c,
 	}
 
@@ -166,7 +166,12 @@ func enumClassNewFromC(c *C.GEnumClass) *EnumClass {
 }
 
 func (recv *EnumClass) toC() *C.GEnumClass {
-	// TODO marshall fields to native
+	recv.native.minimum =
+		(C.gint)(recv.Minimum)
+	recv.native.maximum =
+		(C.gint)(recv.Maximum)
+	recv.native.n_values =
+		(C.guint)(recv.NValues)
 
 	return recv.native
 }
@@ -195,7 +200,12 @@ func enumValueNewFromC(c *C.GEnumValue) *EnumValue {
 }
 
 func (recv *EnumValue) toC() *C.GEnumValue {
-	// TODO marshall fields to native
+	recv.native.value =
+		(C.gint)(recv.Value)
+	recv.native.value_name =
+		C.CString(recv.ValueName)
+	recv.native.value_nick =
+		C.CString(recv.ValueNick)
 
 	return recv.native
 }
@@ -203,10 +213,10 @@ func (recv *EnumValue) toC() *C.GEnumValue {
 // FlagsClass is a wrapper around the C record GFlagsClass.
 type FlagsClass struct {
 	native *C.GFlagsClass
-	// g_type_class : record with indirection of 0
+	// g_type_class : record
 	Mask    uint32
 	NValues uint32
-	Values  *FlagsValue
+	// values : record
 }
 
 func flagsClassNewFromC(c *C.GFlagsClass) *FlagsClass {
@@ -217,7 +227,6 @@ func flagsClassNewFromC(c *C.GFlagsClass) *FlagsClass {
 	g := &FlagsClass{
 		Mask:    (uint32)(c.mask),
 		NValues: (uint32)(c.n_values),
-		Values:  flagsValueNewFromC(c.values),
 		native:  c,
 	}
 
@@ -225,7 +234,10 @@ func flagsClassNewFromC(c *C.GFlagsClass) *FlagsClass {
 }
 
 func (recv *FlagsClass) toC() *C.GFlagsClass {
-	// TODO marshall fields to native
+	recv.native.mask =
+		(C.guint)(recv.Mask)
+	recv.native.n_values =
+		(C.guint)(recv.NValues)
 
 	return recv.native
 }
@@ -254,7 +266,12 @@ func flagsValueNewFromC(c *C.GFlagsValue) *FlagsValue {
 }
 
 func (recv *FlagsValue) toC() *C.GFlagsValue {
-	// TODO marshall fields to native
+	recv.native.value =
+		(C.guint)(recv.Value)
+	recv.native.value_name =
+		C.CString(recv.ValueName)
+	recv.native.value_nick =
+		C.CString(recv.ValueNick)
 
 	return recv.native
 }
@@ -262,7 +279,7 @@ func (recv *FlagsValue) toC() *C.GFlagsValue {
 // InitiallyUnownedClass is a wrapper around the C record GInitiallyUnownedClass.
 type InitiallyUnownedClass struct {
 	native *C.GInitiallyUnownedClass
-	// g_type_class : record with indirection of 0
+	// g_type_class : record
 	// Private : construct_properties
 	// no type for constructor
 	// no type for set_property
@@ -287,7 +304,6 @@ func initiallyUnownedClassNewFromC(c *C.GInitiallyUnownedClass) *InitiallyUnowne
 }
 
 func (recv *InitiallyUnownedClass) toC() *C.GInitiallyUnownedClass {
-	// TODO marshall fields to native
 
 	return recv.native
 }
@@ -314,7 +330,8 @@ func interfaceInfoNewFromC(c *C.GInterfaceInfo) *InterfaceInfo {
 }
 
 func (recv *InterfaceInfo) toC() *C.GInterfaceInfo {
-	// TODO marshall fields to native
+	recv.native.interface_data =
+		(C.gpointer)(recv.InterfaceData)
 
 	return recv.native
 }
@@ -322,7 +339,7 @@ func (recv *InterfaceInfo) toC() *C.GInterfaceInfo {
 // ObjectClass is a wrapper around the C record GObjectClass.
 type ObjectClass struct {
 	native *C.GObjectClass
-	// g_type_class : record with indirection of 0
+	// g_type_class : record
 	// Private : construct_properties
 	// no type for constructor
 	// no type for set_property
@@ -347,7 +364,6 @@ func objectClassNewFromC(c *C.GObjectClass) *ObjectClass {
 }
 
 func (recv *ObjectClass) toC() *C.GObjectClass {
-	// TODO marshall fields to native
 
 	return recv.native
 }
@@ -366,7 +382,7 @@ func (recv *ObjectClass) toC() *C.GObjectClass {
 type ObjectConstructParam struct {
 	native *C.GObjectConstructParam
 	// pspec : no type generator for ParamSpec, GParamSpec*
-	Value *Value
+	// value : record
 }
 
 func objectConstructParamNewFromC(c *C.GObjectConstructParam) *ObjectConstructParam {
@@ -374,16 +390,12 @@ func objectConstructParamNewFromC(c *C.GObjectConstructParam) *ObjectConstructPa
 		return nil
 	}
 
-	g := &ObjectConstructParam{
-		Value:  valueNewFromC(c.value),
-		native: c,
-	}
+	g := &ObjectConstructParam{native: c}
 
 	return g
 }
 
 func (recv *ObjectConstructParam) toC() *C.GObjectConstructParam {
-	// TODO marshall fields to native
 
 	return recv.native
 }
@@ -391,7 +403,7 @@ func (recv *ObjectConstructParam) toC() *C.GObjectConstructParam {
 // ParamSpecClass is a wrapper around the C record GParamSpecClass.
 type ParamSpecClass struct {
 	native *C.GParamSpecClass
-	// g_type_class : record with indirection of 0
+	// g_type_class : record
 	// value_type : no type generator for GType, GType
 	// no type for finalize
 	// no type for value_set_default
@@ -411,7 +423,6 @@ func paramSpecClassNewFromC(c *C.GParamSpecClass) *ParamSpecClass {
 }
 
 func (recv *ParamSpecClass) toC() *C.GParamSpecClass {
-	// TODO marshall fields to native
 
 	return recv.native
 }
@@ -432,7 +443,6 @@ func paramSpecPoolNewFromC(c *C.GParamSpecPool) *ParamSpecPool {
 }
 
 func (recv *ParamSpecPool) toC() *C.GParamSpecPool {
-	// TODO marshall fields to native
 
 	return recv.native
 }
@@ -475,7 +485,10 @@ func paramSpecTypeInfoNewFromC(c *C.GParamSpecTypeInfo) *ParamSpecTypeInfo {
 }
 
 func (recv *ParamSpecTypeInfo) toC() *C.GParamSpecTypeInfo {
-	// TODO marshall fields to native
+	recv.native.instance_size =
+		(C.guint16)(recv.InstanceSize)
+	recv.native.n_preallocs =
+		(C.guint16)(recv.NPreallocs)
 
 	return recv.native
 }
@@ -484,7 +497,7 @@ func (recv *ParamSpecTypeInfo) toC() *C.GParamSpecTypeInfo {
 type Parameter struct {
 	native *C.GParameter
 	Name   string
-	// value : record with indirection of 0
+	// value : record
 }
 
 func parameterNewFromC(c *C.GParameter) *Parameter {
@@ -501,7 +514,8 @@ func parameterNewFromC(c *C.GParameter) *Parameter {
 }
 
 func (recv *Parameter) toC() *C.GParameter {
-	// TODO marshall fields to native
+	recv.native.name =
+		C.CString(recv.Name)
 
 	return recv.native
 }
@@ -528,7 +542,8 @@ func signalInvocationHintNewFromC(c *C.GSignalInvocationHint) *SignalInvocationH
 }
 
 func (recv *SignalInvocationHint) toC() *C.GSignalInvocationHint {
-	// TODO marshall fields to native
+	recv.native.signal_id =
+		(C.guint)(recv.SignalId)
 
 	return recv.native
 }
@@ -561,7 +576,12 @@ func signalQueryNewFromC(c *C.GSignalQuery) *SignalQuery {
 }
 
 func (recv *SignalQuery) toC() *C.GSignalQuery {
-	// TODO marshall fields to native
+	recv.native.signal_id =
+		(C.guint)(recv.SignalId)
+	recv.native.signal_name =
+		C.CString(recv.SignalName)
+	recv.native.n_params =
+		(C.guint)(recv.NParams)
 
 	return recv.native
 }
@@ -583,7 +603,6 @@ func typeClassNewFromC(c *C.GTypeClass) *TypeClass {
 }
 
 func (recv *TypeClass) toC() *C.GTypeClass {
-	// TODO marshall fields to native
 
 	return recv.native
 }
@@ -621,7 +640,6 @@ func typeFundamentalInfoNewFromC(c *C.GTypeFundamentalInfo) *TypeFundamentalInfo
 }
 
 func (recv *TypeFundamentalInfo) toC() *C.GTypeFundamentalInfo {
-	// TODO marshall fields to native
 
 	return recv.native
 }
@@ -638,7 +656,7 @@ type TypeInfo struct {
 	InstanceSize uint16
 	NPreallocs   uint16
 	// instance_init : no type generator for InstanceInitFunc, GInstanceInitFunc
-	ValueTable *TypeValueTable
+	// value_table : record
 }
 
 func typeInfoNewFromC(c *C.GTypeInfo) *TypeInfo {
@@ -651,7 +669,6 @@ func typeInfoNewFromC(c *C.GTypeInfo) *TypeInfo {
 		ClassSize:    (uint16)(c.class_size),
 		InstanceSize: (uint16)(c.instance_size),
 		NPreallocs:   (uint16)(c.n_preallocs),
-		ValueTable:   typeValueTableNewFromC(c.value_table),
 		native:       c,
 	}
 
@@ -659,7 +676,14 @@ func typeInfoNewFromC(c *C.GTypeInfo) *TypeInfo {
 }
 
 func (recv *TypeInfo) toC() *C.GTypeInfo {
-	// TODO marshall fields to native
+	recv.native.class_size =
+		(C.guint16)(recv.ClassSize)
+	recv.native.class_data =
+		(C.gconstpointer)(recv.ClassData)
+	recv.native.instance_size =
+		(C.guint16)(recv.InstanceSize)
+	recv.native.n_preallocs =
+		(C.guint16)(recv.NPreallocs)
 
 	return recv.native
 }
@@ -681,7 +705,6 @@ func typeInstanceNewFromC(c *C.GTypeInstance) *TypeInstance {
 }
 
 func (recv *TypeInstance) toC() *C.GTypeInstance {
-	// TODO marshall fields to native
 
 	return recv.native
 }
@@ -706,7 +729,6 @@ func typeInterfaceNewFromC(c *C.GTypeInterface) *TypeInterface {
 }
 
 func (recv *TypeInterface) toC() *C.GTypeInterface {
-	// TODO marshall fields to native
 
 	return recv.native
 }
@@ -722,7 +744,7 @@ func (recv *TypeInterface) PeekParent() uintptr {
 // TypeModuleClass is a wrapper around the C record GTypeModuleClass.
 type TypeModuleClass struct {
 	native *C.GTypeModuleClass
-	// parent_class : record with indirection of 0
+	// parent_class : record
 	// no type for load
 	// no type for unload
 	// no type for reserved1
@@ -742,7 +764,6 @@ func typeModuleClassNewFromC(c *C.GTypeModuleClass) *TypeModuleClass {
 }
 
 func (recv *TypeModuleClass) toC() *C.GTypeModuleClass {
-	// TODO marshall fields to native
 
 	return recv.native
 }
@@ -768,7 +789,6 @@ func typePluginClassNewFromC(c *C.GTypePluginClass) *TypePluginClass {
 }
 
 func (recv *TypePluginClass) toC() *C.GTypePluginClass {
-	// TODO marshall fields to native
 
 	return recv.native
 }
@@ -798,7 +818,12 @@ func typeQueryNewFromC(c *C.GTypeQuery) *TypeQuery {
 }
 
 func (recv *TypeQuery) toC() *C.GTypeQuery {
-	// TODO marshall fields to native
+	recv.native.type_name =
+		C.CString(recv.TypeName)
+	recv.native.class_size =
+		(C.guint)(recv.ClassSize)
+	recv.native.instance_size =
+		(C.guint)(recv.InstanceSize)
 
 	return recv.native
 }
@@ -831,7 +856,10 @@ func typeValueTableNewFromC(c *C.GTypeValueTable) *TypeValueTable {
 }
 
 func (recv *TypeValueTable) toC() *C.GTypeValueTable {
-	// TODO marshall fields to native
+	recv.native.collect_format =
+		C.CString(recv.CollectFormat)
+	recv.native.lcopy_format =
+		C.CString(recv.LcopyFormat)
 
 	return recv.native
 }
@@ -854,7 +882,6 @@ func valueNewFromC(c *C.GValue) *Value {
 }
 
 func (recv *Value) toC() *C.GValue {
-	// TODO marshall fields to native
 
 	return recv.native
 }
@@ -1122,7 +1149,7 @@ func (recv *Value) Reset() *Value {
 type ValueArray struct {
 	native  *C.GValueArray
 	NValues uint32
-	Values  *Value
+	// values : record
 	// Private : n_prealloced
 }
 
@@ -1133,7 +1160,6 @@ func valueArrayNewFromC(c *C.GValueArray) *ValueArray {
 
 	g := &ValueArray{
 		NValues: (uint32)(c.n_values),
-		Values:  valueNewFromC(c.values),
 		native:  c,
 	}
 
@@ -1141,7 +1167,8 @@ func valueArrayNewFromC(c *C.GValueArray) *ValueArray {
 }
 
 func (recv *ValueArray) toC() *C.GValueArray {
-	// TODO marshall fields to native
+	recv.native.n_values =
+		(C.guint)(recv.NValues)
 
 	return recv.native
 }
@@ -1212,7 +1239,6 @@ func weakRefNewFromC(c *C.GWeakRef) *WeakRef {
 }
 
 func (recv *WeakRef) toC() *C.GWeakRef {
-	// TODO marshall fields to native
 
 	return recv.native
 }

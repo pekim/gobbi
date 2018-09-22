@@ -19,6 +19,8 @@ func TypeGeneratorRecordNew(typ *Type, record *Record) *TypeGeneratorRecord {
 }
 
 func (t *TypeGeneratorRecord) isSupportedAsField() (supported bool, reason string) {
+	return false, "record"
+
 	if t.typ.indirectLevel != 1 {
 		return false, fmt.Sprintf("record with indirection of %d", t.typ.indirectLevel)
 	}
@@ -98,4 +100,7 @@ func (t *TypeGeneratorRecord) generateCToGo(cVarReference *jen.Statement) *jen.S
 	return jen.
 		Id(t.record.newFromCFuncName).
 		Call(cVarReference)
+}
+
+func (t *TypeGeneratorRecord) generateGoToC(g *jen.Group, goVarReference *jen.Statement) {
 }

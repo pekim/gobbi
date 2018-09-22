@@ -28,11 +28,39 @@ func (r *RecordToCFunc) generateReturnDeclaration(g *jen.Group) {
 }
 
 func (r *RecordToCFunc) generateBody(g *jen.Group) {
-	g.
-		Comment("TODO marshall fields to native").
-		Line()
+	if !r.FieldsPrivate {
+		r.generateFieldsAssignment(g)
+	}
+
+	g.Line()
 
 	g.
 		Return().
 		Id("recv").Op(".").Id("native")
+}
+
+func (r *RecordToCFunc) generateFieldsAssignment(g *jen.Group) {
+	for _, f := range r.Fields {
+		if supported, _ := f.supported(); !supported {
+			continue
+		}
+
+		if supported, _ := f.Type.generator.isSupportedAsField(); !supported {
+			continue
+		}
+
+		goReference := jen.
+			Id("recv").
+			Op(".").
+			Id(f.goVarName)
+
+		g.
+			Id("recv").
+			Op(".").
+			Id("native").
+			Op(".").
+			Id(f.Name).
+			Op("=")
+		f.Type.generator.generateGoToC(g, goReference)
+	}
 }

@@ -26,7 +26,6 @@ func checksumNewFromC(c *C.GChecksum) *Checksum {
 }
 
 func (recv *Checksum) toC() *C.GChecksum {
-	// TODO marshall fields to native
 
 	return recv.native
 }

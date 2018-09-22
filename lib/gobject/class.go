@@ -26,7 +26,6 @@ func initiallyUnownedNewFromC(c *C.GInitiallyUnowned) *InitiallyUnowned {
 }
 
 func (recv *InitiallyUnowned) toC() *C.GInitiallyUnowned {
-	// TODO marshall fields to native
 
 	return recv.native
 }
@@ -48,7 +47,6 @@ func objectNewFromC(c *C.GObject) *Object {
 }
 
 func (recv *Object) toC() *C.GObject {
-	// TODO marshall fields to native
 
 	return recv.native
 }
@@ -170,7 +168,7 @@ func (recv *Object) StealData(key string) uintptr {
 // ParamSpec is a wrapper around the C record GParamSpec.
 type ParamSpec struct {
 	native *C.GParamSpec
-	// g_type_instance : record with indirection of 0
+	// g_type_instance : record
 	Name string
 	// flags : no type generator for ParamFlags, GParamFlags
 	// value_type : no type generator for GType, GType
@@ -196,7 +194,8 @@ func paramSpecNewFromC(c *C.GParamSpec) *ParamSpec {
 }
 
 func (recv *ParamSpec) toC() *C.GParamSpec {
-	// TODO marshall fields to native
+	recv.native.name =
+		C.CString(recv.Name)
 
 	return recv.native
 }
@@ -263,7 +262,6 @@ func paramSpecBooleanNewFromC(c *C.GParamSpecBoolean) *ParamSpecBoolean {
 }
 
 func (recv *ParamSpecBoolean) toC() *C.GParamSpecBoolean {
-	// TODO marshall fields to native
 
 	return recv.native
 }
@@ -285,7 +283,6 @@ func paramSpecBoxedNewFromC(c *C.GParamSpecBoxed) *ParamSpecBoxed {
 }
 
 func (recv *ParamSpecBoxed) toC() *C.GParamSpecBoxed {
-	// TODO marshall fields to native
 
 	return recv.native
 }
@@ -315,7 +312,12 @@ func paramSpecCharNewFromC(c *C.GParamSpecChar) *ParamSpecChar {
 }
 
 func (recv *ParamSpecChar) toC() *C.GParamSpecChar {
-	// TODO marshall fields to native
+	recv.native.minimum =
+		(C.gint8)(recv.Minimum)
+	recv.native.maximum =
+		(C.gint8)(recv.Maximum)
+	recv.native.default_value =
+		(C.gint8)(recv.DefaultValue)
 
 	return recv.native
 }
@@ -347,7 +349,14 @@ func paramSpecDoubleNewFromC(c *C.GParamSpecDouble) *ParamSpecDouble {
 }
 
 func (recv *ParamSpecDouble) toC() *C.GParamSpecDouble {
-	// TODO marshall fields to native
+	recv.native.minimum =
+		(C.gdouble)(recv.Minimum)
+	recv.native.maximum =
+		(C.gdouble)(recv.Maximum)
+	recv.native.default_value =
+		(C.gdouble)(recv.DefaultValue)
+	recv.native.epsilon =
+		(C.gdouble)(recv.Epsilon)
 
 	return recv.native
 }
@@ -356,7 +365,7 @@ func (recv *ParamSpecDouble) toC() *C.GParamSpecDouble {
 type ParamSpecEnum struct {
 	native *C.GParamSpecEnum
 	// parent_instance : no type generator for ParamSpec, GParamSpec
-	EnumClass    *EnumClass
+	// enum_class : record
 	DefaultValue int32
 }
 
@@ -367,7 +376,6 @@ func paramSpecEnumNewFromC(c *C.GParamSpecEnum) *ParamSpecEnum {
 
 	g := &ParamSpecEnum{
 		DefaultValue: (int32)(c.default_value),
-		EnumClass:    enumClassNewFromC(c.enum_class),
 		native:       c,
 	}
 
@@ -375,7 +383,8 @@ func paramSpecEnumNewFromC(c *C.GParamSpecEnum) *ParamSpecEnum {
 }
 
 func (recv *ParamSpecEnum) toC() *C.GParamSpecEnum {
-	// TODO marshall fields to native
+	recv.native.default_value =
+		(C.gint)(recv.DefaultValue)
 
 	return recv.native
 }
@@ -384,7 +393,7 @@ func (recv *ParamSpecEnum) toC() *C.GParamSpecEnum {
 type ParamSpecFlags struct {
 	native *C.GParamSpecFlags
 	// parent_instance : no type generator for ParamSpec, GParamSpec
-	FlagsClass   *FlagsClass
+	// flags_class : record
 	DefaultValue uint32
 }
 
@@ -395,7 +404,6 @@ func paramSpecFlagsNewFromC(c *C.GParamSpecFlags) *ParamSpecFlags {
 
 	g := &ParamSpecFlags{
 		DefaultValue: (uint32)(c.default_value),
-		FlagsClass:   flagsClassNewFromC(c.flags_class),
 		native:       c,
 	}
 
@@ -403,7 +411,8 @@ func paramSpecFlagsNewFromC(c *C.GParamSpecFlags) *ParamSpecFlags {
 }
 
 func (recv *ParamSpecFlags) toC() *C.GParamSpecFlags {
-	// TODO marshall fields to native
+	recv.native.default_value =
+		(C.guint)(recv.DefaultValue)
 
 	return recv.native
 }
@@ -435,7 +444,14 @@ func paramSpecFloatNewFromC(c *C.GParamSpecFloat) *ParamSpecFloat {
 }
 
 func (recv *ParamSpecFloat) toC() *C.GParamSpecFloat {
-	// TODO marshall fields to native
+	recv.native.minimum =
+		(C.gfloat)(recv.Minimum)
+	recv.native.maximum =
+		(C.gfloat)(recv.Maximum)
+	recv.native.default_value =
+		(C.gfloat)(recv.DefaultValue)
+	recv.native.epsilon =
+		(C.gfloat)(recv.Epsilon)
 
 	return recv.native
 }
@@ -465,7 +481,12 @@ func paramSpecIntNewFromC(c *C.GParamSpecInt) *ParamSpecInt {
 }
 
 func (recv *ParamSpecInt) toC() *C.GParamSpecInt {
-	// TODO marshall fields to native
+	recv.native.minimum =
+		(C.gint)(recv.Minimum)
+	recv.native.maximum =
+		(C.gint)(recv.Maximum)
+	recv.native.default_value =
+		(C.gint)(recv.DefaultValue)
 
 	return recv.native
 }
@@ -495,7 +516,12 @@ func paramSpecInt64NewFromC(c *C.GParamSpecInt64) *ParamSpecInt64 {
 }
 
 func (recv *ParamSpecInt64) toC() *C.GParamSpecInt64 {
-	// TODO marshall fields to native
+	recv.native.minimum =
+		(C.gint64)(recv.Minimum)
+	recv.native.maximum =
+		(C.gint64)(recv.Maximum)
+	recv.native.default_value =
+		(C.gint64)(recv.DefaultValue)
 
 	return recv.native
 }
@@ -525,7 +551,12 @@ func paramSpecLongNewFromC(c *C.GParamSpecLong) *ParamSpecLong {
 }
 
 func (recv *ParamSpecLong) toC() *C.GParamSpecLong {
-	// TODO marshall fields to native
+	recv.native.minimum =
+		(C.glong)(recv.Minimum)
+	recv.native.maximum =
+		(C.glong)(recv.Maximum)
+	recv.native.default_value =
+		(C.glong)(recv.DefaultValue)
 
 	return recv.native
 }
@@ -547,7 +578,6 @@ func paramSpecObjectNewFromC(c *C.GParamSpecObject) *ParamSpecObject {
 }
 
 func (recv *ParamSpecObject) toC() *C.GParamSpecObject {
-	// TODO marshall fields to native
 
 	return recv.native
 }
@@ -569,7 +599,6 @@ func paramSpecParamNewFromC(c *C.GParamSpecParam) *ParamSpecParam {
 }
 
 func (recv *ParamSpecParam) toC() *C.GParamSpecParam {
-	// TODO marshall fields to native
 
 	return recv.native
 }
@@ -591,7 +620,6 @@ func paramSpecPointerNewFromC(c *C.GParamSpecPointer) *ParamSpecPointer {
 }
 
 func (recv *ParamSpecPointer) toC() *C.GParamSpecPointer {
-	// TODO marshall fields to native
 
 	return recv.native
 }
@@ -625,7 +653,14 @@ func paramSpecStringNewFromC(c *C.GParamSpecString) *ParamSpecString {
 }
 
 func (recv *ParamSpecString) toC() *C.GParamSpecString {
-	// TODO marshall fields to native
+	recv.native.default_value =
+		C.CString(recv.DefaultValue)
+	recv.native.cset_first =
+		C.CString(recv.CsetFirst)
+	recv.native.cset_nth =
+		C.CString(recv.CsetNth)
+	recv.native.substitutor =
+		(C.gchar)(recv.Substitutor)
 
 	return recv.native
 }
@@ -655,7 +690,12 @@ func paramSpecUCharNewFromC(c *C.GParamSpecUChar) *ParamSpecUChar {
 }
 
 func (recv *ParamSpecUChar) toC() *C.GParamSpecUChar {
-	// TODO marshall fields to native
+	recv.native.minimum =
+		(C.guint8)(recv.Minimum)
+	recv.native.maximum =
+		(C.guint8)(recv.Maximum)
+	recv.native.default_value =
+		(C.guint8)(recv.DefaultValue)
 
 	return recv.native
 }
@@ -685,7 +725,12 @@ func paramSpecUIntNewFromC(c *C.GParamSpecUInt) *ParamSpecUInt {
 }
 
 func (recv *ParamSpecUInt) toC() *C.GParamSpecUInt {
-	// TODO marshall fields to native
+	recv.native.minimum =
+		(C.guint)(recv.Minimum)
+	recv.native.maximum =
+		(C.guint)(recv.Maximum)
+	recv.native.default_value =
+		(C.guint)(recv.DefaultValue)
 
 	return recv.native
 }
@@ -715,7 +760,12 @@ func paramSpecUInt64NewFromC(c *C.GParamSpecUInt64) *ParamSpecUInt64 {
 }
 
 func (recv *ParamSpecUInt64) toC() *C.GParamSpecUInt64 {
-	// TODO marshall fields to native
+	recv.native.minimum =
+		(C.guint64)(recv.Minimum)
+	recv.native.maximum =
+		(C.guint64)(recv.Maximum)
+	recv.native.default_value =
+		(C.guint64)(recv.DefaultValue)
 
 	return recv.native
 }
@@ -745,7 +795,12 @@ func paramSpecULongNewFromC(c *C.GParamSpecULong) *ParamSpecULong {
 }
 
 func (recv *ParamSpecULong) toC() *C.GParamSpecULong {
-	// TODO marshall fields to native
+	recv.native.minimum =
+		(C.gulong)(recv.Minimum)
+	recv.native.maximum =
+		(C.gulong)(recv.Maximum)
+	recv.native.default_value =
+		(C.gulong)(recv.DefaultValue)
 
 	return recv.native
 }
@@ -771,7 +826,8 @@ func paramSpecUnicharNewFromC(c *C.GParamSpecUnichar) *ParamSpecUnichar {
 }
 
 func (recv *ParamSpecUnichar) toC() *C.GParamSpecUnichar {
-	// TODO marshall fields to native
+	recv.native.default_value =
+		(C.gunichar)(recv.DefaultValue)
 
 	return recv.native
 }
@@ -798,7 +854,8 @@ func paramSpecValueArrayNewFromC(c *C.GParamSpecValueArray) *ParamSpecValueArray
 }
 
 func (recv *ParamSpecValueArray) toC() *C.GParamSpecValueArray {
-	// TODO marshall fields to native
+	recv.native.fixed_n_elements =
+		(C.guint)(recv.FixedNElements)
 
 	return recv.native
 }
@@ -828,7 +885,10 @@ func typeModuleNewFromC(c *C.GTypeModule) *TypeModule {
 }
 
 func (recv *TypeModule) toC() *C.GTypeModule {
-	// TODO marshall fields to native
+	recv.native.use_count =
+		(C.guint)(recv.UseCount)
+	recv.native.name =
+		C.CString(recv.Name)
 
 	return recv.native
 }

@@ -24,7 +24,6 @@ func bindingNewFromC(c *C.GBinding) *Binding {
 }
 
 func (recv *Binding) toC() *C.GBinding {
-	// TODO marshall fields to native
 
 	return recv.native
 }
@@ -73,7 +72,6 @@ func paramSpecVariantNewFromC(c *C.GParamSpecVariant) *ParamSpecVariant {
 }
 
 func (recv *ParamSpecVariant) toC() *C.GParamSpecVariant {
-	// TODO marshall fields to native
 
 	return recv.native
 }

@@ -34,7 +34,12 @@ func logFieldNewFromC(c *C.GLogField) *LogField {
 }
 
 func (recv *LogField) toC() *C.GLogField {
-	// TODO marshall fields to native
+	recv.native.key =
+		C.CString(recv.Key)
+	recv.native.value =
+		(C.gconstpointer)(recv.Value)
+	recv.native.length =
+		(C.gssize)(recv.Length)
 
 	return recv.native
 }

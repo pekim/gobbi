@@ -26,7 +26,6 @@ func paramSpecGTypeNewFromC(c *C.GParamSpecGType) *ParamSpecGType {
 }
 
 func (recv *ParamSpecGType) toC() *C.GParamSpecGType {
-	// TODO marshall fields to native
 
 	return recv.native
 }

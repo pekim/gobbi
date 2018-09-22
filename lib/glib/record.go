@@ -33,7 +33,10 @@ func arrayNewFromC(c *C.GArray) *Array {
 }
 
 func (recv *Array) toC() *C.GArray {
-	// TODO marshall fields to native
+	recv.native.data =
+		C.CString(recv.Data)
+	recv.native.len =
+		(C.guint)(recv.Len)
 
 	return recv.native
 }
@@ -54,7 +57,6 @@ func asyncQueueNewFromC(c *C.GAsyncQueue) *AsyncQueue {
 }
 
 func (recv *AsyncQueue) toC() *C.GAsyncQueue {
-	// TODO marshall fields to native
 
 	return recv.native
 }
@@ -185,7 +187,6 @@ func bookmarkFileNewFromC(c *C.GBookmarkFile) *BookmarkFile {
 }
 
 func (recv *BookmarkFile) toC() *C.GBookmarkFile {
-	// TODO marshall fields to native
 
 	return recv.native
 }
@@ -279,7 +280,8 @@ func byteArrayNewFromC(c *C.GByteArray) *ByteArray {
 }
 
 func (recv *ByteArray) toC() *C.GByteArray {
-	// TODO marshall fields to native
+	recv.native.len =
+		(C.guint)(recv.Len)
 
 	return recv.native
 }
@@ -302,7 +304,6 @@ func condNewFromC(c *C.GCond) *Cond {
 }
 
 func (recv *Cond) toC() *C.GCond {
-	// TODO marshall fields to native
 
 	return recv.native
 }
@@ -335,7 +336,6 @@ func dataNewFromC(c *C.GData) *Data {
 }
 
 func (recv *Data) toC() *C.GData {
-	// TODO marshall fields to native
 
 	return recv.native
 }
@@ -362,7 +362,6 @@ func dateNewFromC(c *C.GDate) *Date {
 }
 
 func (recv *Date) toC() *C.GDate {
-	// TODO marshall fields to native
 
 	return recv.native
 }
@@ -535,7 +534,10 @@ func debugKeyNewFromC(c *C.GDebugKey) *DebugKey {
 }
 
 func (recv *DebugKey) toC() *C.GDebugKey {
-	// TODO marshall fields to native
+	recv.native.key =
+		C.CString(recv.Key)
+	recv.native.value =
+		(C.guint)(recv.Value)
 
 	return recv.native
 }
@@ -556,7 +558,6 @@ func dirNewFromC(c *C.GDir) *Dir {
 }
 
 func (recv *Dir) toC() *C.GDir {
-	// TODO marshall fields to native
 
 	return recv.native
 }
@@ -597,7 +598,12 @@ func errorNewFromC(c *C.GError) *Error {
 }
 
 func (recv *Error) toC() *C.GError {
-	// TODO marshall fields to native
+	recv.native.domain =
+		(C.GQuark)(recv.Domain)
+	recv.native.code =
+		(C.gint)(recv.Code)
+	recv.native.message =
+		C.CString(recv.Message)
 
 	return recv.native
 }
@@ -649,7 +655,6 @@ func hashTableNewFromC(c *C.GHashTable) *HashTable {
 }
 
 func (recv *HashTable) toC() *C.GHashTable {
-	// TODO marshall fields to native
 
 	return recv.native
 }
@@ -676,7 +681,6 @@ func hashTableIterNewFromC(c *C.GHashTableIter) *HashTableIter {
 }
 
 func (recv *HashTableIter) toC() *C.GHashTableIter {
-	// TODO marshall fields to native
 
 	return recv.native
 }
@@ -695,10 +699,10 @@ func (recv *HashTableIter) toC() *C.GHashTableIter {
 
 // Hook is a wrapper around the C record GHook.
 type Hook struct {
-	native   *C.GHook
-	Data     uintptr
-	Next     *Hook
-	Prev     *Hook
+	native *C.GHook
+	Data   uintptr
+	// next : record
+	// prev : record
 	RefCount uint32
 	HookId   uint64
 	Flags    uint32
@@ -716,8 +720,6 @@ func hookNewFromC(c *C.GHook) *Hook {
 		Flags:    (uint32)(c.flags),
 		Func:     (uintptr)(c._func),
 		HookId:   (uint64)(c.hook_id),
-		Next:     hookNewFromC(c.next),
-		Prev:     hookNewFromC(c.prev),
 		RefCount: (uint32)(c.ref_count),
 		native:   c,
 	}
@@ -726,7 +728,16 @@ func hookNewFromC(c *C.GHook) *Hook {
 }
 
 func (recv *Hook) toC() *C.GHook {
-	// TODO marshall fields to native
+	recv.native.data =
+		(C.gpointer)(recv.Data)
+	recv.native.ref_count =
+		(C.guint)(recv.RefCount)
+	recv.native.hook_id =
+		(C.gulong)(recv.HookId)
+	recv.native.flags =
+		(C.guint)(recv.Flags)
+	recv.native._func =
+		(C.gpointer)(recv.Func)
 
 	return recv.native
 }
@@ -739,7 +750,7 @@ type HookList struct {
 	SeqId  uint64
 	// Bitfield not supported : 16 hook_size
 	// Bitfield not supported :  1 is_setup
-	Hooks  *Hook
+	// hooks : record
 	Dummy3 uintptr
 	// finalize_hook : no type generator for HookFinalizeFunc, GHookFinalizeFunc
 	// no type for dummy
@@ -752,7 +763,6 @@ func hookListNewFromC(c *C.GHookList) *HookList {
 
 	g := &HookList{
 		Dummy3: (uintptr)(c.dummy3),
-		Hooks:  hookNewFromC(c.hooks),
 		SeqId:  (uint64)(c.seq_id),
 		native: c,
 	}
@@ -761,7 +771,10 @@ func hookListNewFromC(c *C.GHookList) *HookList {
 }
 
 func (recv *HookList) toC() *C.GHookList {
-	// TODO marshall fields to native
+	recv.native.seq_id =
+		(C.gulong)(recv.SeqId)
+	recv.native.dummy3 =
+		(C.gpointer)(recv.Dummy3)
 
 	return recv.native
 }
@@ -806,7 +819,6 @@ func iOFuncsNewFromC(c *C.GIOFuncs) *IOFuncs {
 }
 
 func (recv *IOFuncs) toC() *C.GIOFuncs {
-	// TODO marshall fields to native
 
 	return recv.native
 }
@@ -827,7 +839,6 @@ func keyFileNewFromC(c *C.GKeyFile) *KeyFile {
 }
 
 func (recv *KeyFile) toC() *C.GKeyFile {
-	// TODO marshall fields to native
 
 	return recv.native
 }
@@ -936,7 +947,8 @@ func listNewFromC(c *C.GList) *List {
 }
 
 func (recv *List) toC() *C.GList {
-	// TODO marshall fields to native
+	recv.native.data =
+		(C.gpointer)(recv.Data)
 
 	return recv.native
 }
@@ -957,7 +969,6 @@ func mainContextNewFromC(c *C.GMainContext) *MainContext {
 }
 
 func (recv *MainContext) toC() *C.GMainContext {
-	// TODO marshall fields to native
 
 	return recv.native
 }
@@ -1056,7 +1067,6 @@ func mainLoopNewFromC(c *C.GMainLoop) *MainLoop {
 }
 
 func (recv *MainLoop) toC() *C.GMainLoop {
-	// TODO marshall fields to native
 
 	return recv.native
 }
@@ -1103,7 +1113,6 @@ func mappedFileNewFromC(c *C.GMappedFile) *MappedFile {
 }
 
 func (recv *MappedFile) toC() *C.GMappedFile {
-	// TODO marshall fields to native
 
 	return recv.native
 }
@@ -1132,7 +1141,6 @@ func markupParseContextNewFromC(c *C.GMarkupParseContext) *MarkupParseContext {
 }
 
 func (recv *MarkupParseContext) toC() *C.GMarkupParseContext {
-	// TODO marshall fields to native
 
 	return recv.native
 }
@@ -1174,7 +1182,6 @@ func markupParserNewFromC(c *C.GMarkupParser) *MarkupParser {
 }
 
 func (recv *MarkupParser) toC() *C.GMarkupParser {
-	// TODO marshall fields to native
 
 	return recv.native
 }
@@ -1195,7 +1202,6 @@ func matchInfoNewFromC(c *C.GMatchInfo) *MatchInfo {
 }
 
 func (recv *MatchInfo) toC() *C.GMatchInfo {
-	// TODO marshall fields to native
 
 	return recv.native
 }
@@ -1238,19 +1244,18 @@ func memVTableNewFromC(c *C.GMemVTable) *MemVTable {
 }
 
 func (recv *MemVTable) toC() *C.GMemVTable {
-	// TODO marshall fields to native
 
 	return recv.native
 }
 
 // Node is a wrapper around the C record GNode.
 type Node struct {
-	native   *C.GNode
-	Data     uintptr
-	Next     *Node
-	Prev     *Node
-	Parent   *Node
-	Children *Node
+	native *C.GNode
+	Data   uintptr
+	// next : record
+	// prev : record
+	// parent : record
+	// children : record
 }
 
 func nodeNewFromC(c *C.GNode) *Node {
@@ -1259,19 +1264,16 @@ func nodeNewFromC(c *C.GNode) *Node {
 	}
 
 	g := &Node{
-		Children: nodeNewFromC(c.children),
-		Data:     (uintptr)(c.data),
-		Next:     nodeNewFromC(c.next),
-		Parent:   nodeNewFromC(c.parent),
-		Prev:     nodeNewFromC(c.prev),
-		native:   c,
+		Data:   (uintptr)(c.data),
+		native: c,
 	}
 
 	return g
 }
 
 func (recv *Node) toC() *C.GNode {
-	// TODO marshall fields to native
+	recv.native.data =
+		(C.gpointer)(recv.Data)
 
 	return recv.native
 }
@@ -1406,7 +1408,6 @@ func optionContextNewFromC(c *C.GOptionContext) *OptionContext {
 }
 
 func (recv *OptionContext) toC() *C.GOptionContext {
-	// TODO marshall fields to native
 
 	return recv.native
 }
@@ -1477,7 +1478,20 @@ func optionEntryNewFromC(c *C.GOptionEntry) *OptionEntry {
 }
 
 func (recv *OptionEntry) toC() *C.GOptionEntry {
-	// TODO marshall fields to native
+	recv.native.long_name =
+		C.CString(recv.LongName)
+	recv.native.short_name =
+		(C.gchar)(recv.ShortName)
+	recv.native.flags =
+		(C.gint)(recv.Flags)
+	recv.native.arg =
+		(C.GOptionArg)(recv.Arg)
+	recv.native.arg_data =
+		(C.gpointer)(recv.ArgData)
+	recv.native.description =
+		C.CString(recv.Description)
+	recv.native.arg_description =
+		C.CString(recv.ArgDescription)
 
 	return recv.native
 }
@@ -1498,7 +1512,6 @@ func optionGroupNewFromC(c *C.GOptionGroup) *OptionGroup {
 }
 
 func (recv *OptionGroup) toC() *C.GOptionGroup {
-	// TODO marshall fields to native
 
 	return recv.native
 }
@@ -1535,7 +1548,6 @@ func patternSpecNewFromC(c *C.GPatternSpec) *PatternSpec {
 }
 
 func (recv *PatternSpec) toC() *C.GPatternSpec {
-	// TODO marshall fields to native
 
 	return recv.native
 }
@@ -1568,7 +1580,12 @@ func pollFDNewFromC(c *C.GPollFD) *PollFD {
 }
 
 func (recv *PollFD) toC() *C.GPollFD {
-	// TODO marshall fields to native
+	recv.native.fd =
+		(C.gint)(recv.Fd)
+	recv.native.events =
+		(C.gushort)(recv.Events)
+	recv.native.revents =
+		(C.gushort)(recv.Revents)
 
 	return recv.native
 }
@@ -1592,7 +1609,6 @@ func privateNewFromC(c *C.GPrivate) *Private {
 }
 
 func (recv *Private) toC() *C.GPrivate {
-	// TODO marshall fields to native
 
 	return recv.native
 }
@@ -1630,7 +1646,8 @@ func ptrArrayNewFromC(c *C.GPtrArray) *PtrArray {
 }
 
 func (recv *PtrArray) toC() *C.GPtrArray {
-	// TODO marshall fields to native
+	recv.native.len =
+		(C.guint)(recv.Len)
 
 	return recv.native
 }
@@ -1657,7 +1674,8 @@ func queueNewFromC(c *C.GQueue) *Queue {
 }
 
 func (recv *Queue) toC() *C.GQueue {
-	// TODO marshall fields to native
+	recv.native.length =
+		(C.guint)(recv.Length)
 
 	return recv.native
 }
@@ -1768,7 +1786,6 @@ func randNewFromC(c *C.GRand) *Rand {
 }
 
 func (recv *Rand) toC() *C.GRand {
-	// TODO marshall fields to native
 
 	return recv.native
 }
@@ -1840,7 +1857,8 @@ func sListNewFromC(c *C.GSList) *SList {
 }
 
 func (recv *SList) toC() *C.GSList {
-	// TODO marshall fields to native
+	recv.native.data =
+		(C.gpointer)(recv.Data)
 
 	return recv.native
 }
@@ -1852,9 +1870,9 @@ type Scanner struct {
 	MaxParseErrors uint32
 	ParseErrors    uint32
 	InputName      string
-	Qdata          *Data
-	Config         *ScannerConfig
-	Token          TokenType
+	// qdata : record
+	// config : record
+	Token TokenType
 	// value : no type generator for TokenValue, GTokenValue
 	Line      uint32
 	Position  uint32
@@ -1877,7 +1895,6 @@ func scannerNewFromC(c *C.GScanner) *Scanner {
 	}
 
 	g := &Scanner{
-		Config:         scannerConfigNewFromC(c.config),
 		InputName:      C.GoString(c.input_name),
 		Line:           (uint32)(c.line),
 		MaxParseErrors: (uint32)(c.max_parse_errors),
@@ -1886,7 +1903,6 @@ func scannerNewFromC(c *C.GScanner) *Scanner {
 		NextToken:      (TokenType)(c.next_token),
 		ParseErrors:    (uint32)(c.parse_errors),
 		Position:       (uint32)(c.position),
-		Qdata:          dataNewFromC(c.qdata),
 		Token:          (TokenType)(c.token),
 		UserData:       (uintptr)(c.user_data),
 		native:         c,
@@ -1896,7 +1912,26 @@ func scannerNewFromC(c *C.GScanner) *Scanner {
 }
 
 func (recv *Scanner) toC() *C.GScanner {
-	// TODO marshall fields to native
+	recv.native.user_data =
+		(C.gpointer)(recv.UserData)
+	recv.native.max_parse_errors =
+		(C.guint)(recv.MaxParseErrors)
+	recv.native.parse_errors =
+		(C.guint)(recv.ParseErrors)
+	recv.native.input_name =
+		C.CString(recv.InputName)
+	recv.native.token =
+		(C.GTokenType)(recv.Token)
+	recv.native.line =
+		(C.guint)(recv.Line)
+	recv.native.position =
+		(C.guint)(recv.Position)
+	recv.native.next_token =
+		(C.GTokenType)(recv.NextToken)
+	recv.native.next_line =
+		(C.guint)(recv.NextLine)
+	recv.native.next_position =
+		(C.guint)(recv.NextPosition)
 
 	return recv.native
 }
@@ -2048,7 +2083,14 @@ func scannerConfigNewFromC(c *C.GScannerConfig) *ScannerConfig {
 }
 
 func (recv *ScannerConfig) toC() *C.GScannerConfig {
-	// TODO marshall fields to native
+	recv.native.cset_skip_characters =
+		C.CString(recv.CsetSkipCharacters)
+	recv.native.cset_identifier_first =
+		C.CString(recv.CsetIdentifierFirst)
+	recv.native.cset_identifier_nth =
+		C.CString(recv.CsetIdentifierNth)
+	recv.native.cpair_comment_single =
+		C.CString(recv.CpairCommentSingle)
 
 	return recv.native
 }
@@ -2069,7 +2111,6 @@ func sequenceNewFromC(c *C.GSequence) *Sequence {
 }
 
 func (recv *Sequence) toC() *C.GSequence {
-	// TODO marshall fields to native
 
 	return recv.native
 }
@@ -2112,7 +2153,6 @@ func sequenceIterNewFromC(c *C.GSequenceIter) *SequenceIter {
 }
 
 func (recv *SequenceIter) toC() *C.GSequenceIter {
-	// TODO marshall fields to native
 
 	return recv.native
 }
@@ -2152,7 +2192,6 @@ func sourceNewFromC(c *C.GSource) *Source {
 }
 
 func (recv *Source) toC() *C.GSource {
-	// TODO marshall fields to native
 
 	return recv.native
 }
@@ -2260,7 +2299,6 @@ func sourceCallbackFuncsNewFromC(c *C.GSourceCallbackFuncs) *SourceCallbackFuncs
 }
 
 func (recv *SourceCallbackFuncs) toC() *C.GSourceCallbackFuncs {
-	// TODO marshall fields to native
 
 	return recv.native
 }
@@ -2287,7 +2325,6 @@ func sourceFuncsNewFromC(c *C.GSourceFuncs) *SourceFuncs {
 }
 
 func (recv *SourceFuncs) toC() *C.GSourceFuncs {
-	// TODO marshall fields to native
 
 	return recv.native
 }
@@ -2308,7 +2345,6 @@ func sourcePrivateNewFromC(c *C.GSourcePrivate) *SourcePrivate {
 }
 
 func (recv *SourcePrivate) toC() *C.GSourcePrivate {
-	// TODO marshall fields to native
 
 	return recv.native
 }
@@ -2329,7 +2365,6 @@ func statBufNewFromC(c *C.GStatBuf) *StatBuf {
 }
 
 func (recv *StatBuf) toC() *C.GStatBuf {
-	// TODO marshall fields to native
 
 	return recv.native
 }
@@ -2358,7 +2393,12 @@ func stringNewFromC(c *C.GString) *String {
 }
 
 func (recv *String) toC() *C.GString {
-	// TODO marshall fields to native
+	recv.native.str =
+		C.CString(recv.Str)
+	recv.native.len =
+		(C.gsize)(recv.Len)
+	recv.native.allocated_len =
+		(C.gsize)(recv.AllocatedLen)
 
 	return recv.native
 }
@@ -2616,7 +2656,6 @@ func stringChunkNewFromC(c *C.GStringChunk) *StringChunk {
 }
 
 func (recv *StringChunk) toC() *C.GStringChunk {
-	// TODO marshall fields to native
 
 	return recv.native
 }
@@ -2665,7 +2704,6 @@ func testCaseNewFromC(c *C.GTestCase) *TestCase {
 }
 
 func (recv *TestCase) toC() *C.GTestCase {
-	// TODO marshall fields to native
 
 	return recv.native
 }
@@ -2692,7 +2730,6 @@ func testConfigNewFromC(c *C.GTestConfig) *TestConfig {
 }
 
 func (recv *TestConfig) toC() *C.GTestConfig {
-	// TODO marshall fields to native
 
 	return recv.native
 }
@@ -2717,7 +2754,6 @@ func testSuiteNewFromC(c *C.GTestSuite) *TestSuite {
 }
 
 func (recv *TestSuite) toC() *C.GTestSuite {
-	// TODO marshall fields to native
 
 	return recv.native
 }
@@ -2742,7 +2778,6 @@ func threadNewFromC(c *C.GThread) *Thread {
 }
 
 func (recv *Thread) toC() *C.GThread {
-	// TODO marshall fields to native
 
 	return recv.native
 }
@@ -2783,7 +2818,8 @@ func threadPoolNewFromC(c *C.GThreadPool) *ThreadPool {
 }
 
 func (recv *ThreadPool) toC() *C.GThreadPool {
-	// TODO marshall fields to native
+	recv.native.user_data =
+		(C.gpointer)(recv.UserData)
 
 	return recv.native
 }
@@ -2844,7 +2880,10 @@ func timeValNewFromC(c *C.GTimeVal) *TimeVal {
 }
 
 func (recv *TimeVal) toC() *C.GTimeVal {
-	// TODO marshall fields to native
+	recv.native.tv_sec =
+		(C.glong)(recv.TvSec)
+	recv.native.tv_usec =
+		(C.glong)(recv.TvUsec)
 
 	return recv.native
 }
@@ -2867,7 +2906,6 @@ func timerNewFromC(c *C.GTimer) *Timer {
 }
 
 func (recv *Timer) toC() *C.GTimer {
-	// TODO marshall fields to native
 
 	return recv.native
 }
@@ -2887,7 +2925,7 @@ func (recv *Timer) toC() *C.GTimer {
 // TrashStack is a wrapper around the C record GTrashStack.
 type TrashStack struct {
 	native *C.GTrashStack
-	Next   *TrashStack
+	// next : record
 }
 
 func trashStackNewFromC(c *C.GTrashStack) *TrashStack {
@@ -2895,16 +2933,12 @@ func trashStackNewFromC(c *C.GTrashStack) *TrashStack {
 		return nil
 	}
 
-	g := &TrashStack{
-		Next:   trashStackNewFromC(c.next),
-		native: c,
-	}
+	g := &TrashStack{native: c}
 
 	return g
 }
 
 func (recv *TrashStack) toC() *C.GTrashStack {
-	// TODO marshall fields to native
 
 	return recv.native
 }
@@ -2925,7 +2959,6 @@ func treeNewFromC(c *C.GTree) *Tree {
 }
 
 func (recv *Tree) toC() *C.GTree {
-	// TODO marshall fields to native
 
 	return recv.native
 }
@@ -2992,7 +3025,6 @@ func variantBuilderNewFromC(c *C.GVariantBuilder) *VariantBuilder {
 }
 
 func (recv *VariantBuilder) toC() *C.GVariantBuilder {
-	// TODO marshall fields to native
 
 	return recv.native
 }
@@ -3034,7 +3066,6 @@ func variantIterNewFromC(c *C.GVariantIter) *VariantIter {
 }
 
 func (recv *VariantIter) toC() *C.GVariantIter {
-	// TODO marshall fields to native
 
 	return recv.native
 }

@@ -31,7 +31,8 @@ func onceNewFromC(c *C.GOnce) *Once {
 }
 
 func (recv *Once) toC() *C.GOnce {
-	// TODO marshall fields to native
+	recv.native.status =
+		(C.GOnceStatus)(recv.Status)
 
 	return recv.native
 }

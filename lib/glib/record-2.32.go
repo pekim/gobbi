@@ -26,7 +26,6 @@ func bytesNewFromC(c *C.GBytes) *Bytes {
 }
 
 func (recv *Bytes) toC() *C.GBytes {
-	// TODO marshall fields to native
 
 	return recv.native
 }
@@ -113,7 +112,6 @@ func rWLockNewFromC(c *C.GRWLock) *RWLock {
 }
 
 func (recv *RWLock) toC() *C.GRWLock {
-	// TODO marshall fields to native
 
 	return recv.native
 }
@@ -152,7 +150,6 @@ func recMutexNewFromC(c *C.GRecMutex) *RecMutex {
 }
 
 func (recv *RecMutex) toC() *C.GRecMutex {
-	// TODO marshall fields to native
 
 	return recv.native
 }

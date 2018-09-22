@@ -113,3 +113,9 @@ func (t *TypeGeneratorString) generateCToGo(cVarReference *jen.Statement) *jen.S
 		Qual("C", "GoString").
 		Call(cVarReference)
 }
+
+func (t *TypeGeneratorString) generateGoToC(g *jen.Group, goVarReference *jen.Statement) {
+	g.
+		Qual("C", "CString").
+		Call(goVarReference)
+}

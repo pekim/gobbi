@@ -28,7 +28,6 @@ func dateTimeNewFromC(c *C.GDateTime) *DateTime {
 }
 
 func (recv *DateTime) toC() *C.GDateTime {
-	// TODO marshall fields to native
 
 	return recv.native
 }
@@ -403,7 +402,6 @@ func timeZoneNewFromC(c *C.GTimeZone) *TimeZone {
 }
 
 func (recv *TimeZone) toC() *C.GTimeZone {
-	// TODO marshall fields to native
 
 	return recv.native
 }
