@@ -263,8 +263,8 @@ func byteArrayNewFromC(c *C.GByteArray) *ByteArray {
 // Cond is a wrapper around the C record GCond.
 type Cond struct {
 	native *C.GCond
-	P      uintptr
-	// no type for i
+	// Private : p
+	// Private : i
 }
 
 func condNewFromC(c *C.GCond) *Cond {
@@ -272,10 +272,7 @@ func condNewFromC(c *C.GCond) *Cond {
 		return nil
 	}
 
-	g := &Cond{
-		P:      (uintptr)(c.p),
-		native: c,
-	}
+	g := &Cond{native: c}
 
 	return g
 }
@@ -594,12 +591,12 @@ func hashTableNewFromC(c *C.GHashTable) *HashTable {
 // HashTableIter is a wrapper around the C record GHashTableIter.
 type HashTableIter struct {
 	native *C.GHashTableIter
-	Dummy1 uintptr
-	Dummy2 uintptr
-	Dummy3 uintptr
-	Dummy4 int32
-	// dummy5 : no type generator for gboolean, gboolean
-	Dummy6 uintptr
+	// Private : dummy1
+	// Private : dummy2
+	// Private : dummy3
+	// Private : dummy4
+	// Private : dummy5
+	// Private : dummy6
 }
 
 func hashTableIterNewFromC(c *C.GHashTableIter) *HashTableIter {
@@ -607,14 +604,7 @@ func hashTableIterNewFromC(c *C.GHashTableIter) *HashTableIter {
 		return nil
 	}
 
-	g := &HashTableIter{
-		Dummy1: (uintptr)(c.dummy1),
-		Dummy2: (uintptr)(c.dummy2),
-		Dummy3: (uintptr)(c.dummy3),
-		Dummy4: (int32)(c.dummy4),
-		Dummy6: (uintptr)(c.dummy6),
-		native: c,
-	}
+	g := &HashTableIter{native: c}
 
 	return g
 }
@@ -1406,9 +1396,9 @@ func pollFDNewFromC(c *C.GPollFD) *PollFD {
 // Private is a wrapper around the C record GPrivate.
 type Private struct {
 	native *C.GPrivate
-	P      uintptr
-	// notify : no type generator for DestroyNotify, GDestroyNotify
-	// no type for future
+	// Private : p
+	// Private : notify
+	// Private : future
 }
 
 func privateNewFromC(c *C.GPrivate) *Private {
@@ -1416,10 +1406,7 @@ func privateNewFromC(c *C.GPrivate) *Private {
 		return nil
 	}
 
-	g := &Private{
-		P:      (uintptr)(c.p),
-		native: c,
-	}
+	g := &Private{native: c}
 
 	return g
 }
@@ -1665,12 +1652,12 @@ type Scanner struct {
 	// next_value : no type generator for TokenValue, GTokenValue
 	NextLine     uint32
 	NextPosition uint32
-	// symbol_table : no type generator for GLib.HashTable, GHashTable*
-	InputFd int32
-	Text    string
-	TextEnd string
-	Buffer  string
-	ScopeId uint32
+	// Private : symbol_table
+	// Private : input_fd
+	// Private : text
+	// Private : text_end
+	// Private : buffer
+	// Private : scope_id
 	// msg_handler : no type generator for ScannerMsgFunc, GScannerMsgFunc
 }
 
@@ -1680,9 +1667,7 @@ func scannerNewFromC(c *C.GScanner) *Scanner {
 	}
 
 	g := &Scanner{
-		Buffer:         C.GoString(c.buffer),
 		Config:         scannerConfigNewFromC(c.config),
-		InputFd:        (int32)(c.input_fd),
 		InputName:      C.GoString(c.input_name),
 		Line:           (uint32)(c.line),
 		MaxParseErrors: (uint32)(c.max_parse_errors),
@@ -1692,9 +1677,6 @@ func scannerNewFromC(c *C.GScanner) *Scanner {
 		ParseErrors:    (uint32)(c.parse_errors),
 		Position:       (uint32)(c.position),
 		Qdata:          dataNewFromC(c.qdata),
-		ScopeId:        (uint32)(c.scope_id),
-		Text:           C.GoString(c.text),
-		TextEnd:        C.GoString(c.text_end),
 		Token:          (TokenType)(c.token),
 		UserData:       (uintptr)(c.user_data),
 		native:         c,
@@ -1830,7 +1812,7 @@ type ScannerConfig struct {
 	// Bitfield not supported :  1 symbol_2_token
 	// Bitfield not supported :  1 scope_0_fallback
 	// Bitfield not supported :  1 store_int64
-	PaddingDummy uint32
+	// Private : padding_dummy
 }
 
 func scannerConfigNewFromC(c *C.GScannerConfig) *ScannerConfig {
@@ -1843,7 +1825,6 @@ func scannerConfigNewFromC(c *C.GScannerConfig) *ScannerConfig {
 		CsetIdentifierFirst: C.GoString(c.cset_identifier_first),
 		CsetIdentifierNth:   C.GoString(c.cset_identifier_nth),
 		CsetSkipCharacters:  C.GoString(c.cset_skip_characters),
-		PaddingDummy:        (uint32)(c.padding_dummy),
 		native:              c,
 	}
 
@@ -1910,20 +1891,20 @@ func sequenceIterNewFromC(c *C.GSequenceIter) *SequenceIter {
 
 // Source is a wrapper around the C record GSource.
 type Source struct {
-	native        *C.GSource
-	CallbackData  uintptr
-	CallbackFuncs *SourceCallbackFuncs
-	SourceFuncs   *SourceFuncs
-	RefCount      uint32
-	Context       *MainContext
-	Priority      int32
-	Flags         uint32
-	SourceId      uint32
-	// poll_fds : no type generator for GLib.SList, GSList*
-	Prev *Source
-	Next *Source
-	Name string
-	Priv *SourcePrivate
+	native *C.GSource
+	// Private : callback_data
+	// Private : callback_funcs
+	// Private : source_funcs
+	// Private : ref_count
+	// Private : context
+	// Private : priority
+	// Private : flags
+	// Private : source_id
+	// Private : poll_fds
+	// Private : prev
+	// Private : next
+	// Private : name
+	// Private : priv
 }
 
 func sourceNewFromC(c *C.GSource) *Source {
@@ -1931,21 +1912,7 @@ func sourceNewFromC(c *C.GSource) *Source {
 		return nil
 	}
 
-	g := &Source{
-		CallbackData:  (uintptr)(c.callback_data),
-		CallbackFuncs: sourceCallbackFuncsNewFromC(c.callback_funcs),
-		Context:       mainContextNewFromC(c.context),
-		Flags:         (uint32)(c.flags),
-		Name:          C.GoString(c.name),
-		Next:          sourceNewFromC(c.next),
-		Prev:          sourceNewFromC(c.prev),
-		Priority:      (int32)(c.priority),
-		Priv:          sourcePrivateNewFromC(c.priv),
-		RefCount:      (uint32)(c.ref_count),
-		SourceFuncs:   sourceFuncsNewFromC(c.source_funcs),
-		SourceId:      (uint32)(c.source_id),
-		native:        c,
-	}
+	g := &Source{native: c}
 
 	return g
 }
@@ -2059,8 +2026,8 @@ type SourceFuncs struct {
 	// no type for check
 	// no type for dispatch
 	// no type for finalize
-	// closure_callback : no type generator for SourceFunc, GSourceFunc
-	// closure_marshal : no type generator for SourceDummyMarshal, GSourceDummyMarshal
+	// Private : closure_callback
+	// Private : closure_marshal
 }
 
 func sourceFuncsNewFromC(c *C.GSourceFuncs) *SourceFuncs {
@@ -2717,7 +2684,7 @@ func variantBuilderNewFromC(c *C.GVariantBuilder) *VariantBuilder {
 // VariantIter is a wrapper around the C record GVariantIter.
 type VariantIter struct {
 	native *C.GVariantIter
-	// no type for x
+	// Private : x
 }
 
 func variantIterNewFromC(c *C.GVariantIter) *VariantIter {

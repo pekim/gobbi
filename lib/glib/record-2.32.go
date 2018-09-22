@@ -92,8 +92,8 @@ func (recv *Bytes) Ref() *Bytes {
 // RWLock is a wrapper around the C record GRWLock.
 type RWLock struct {
 	native *C.GRWLock
-	P      uintptr
-	// no type for i
+	// Private : p
+	// Private : i
 }
 
 func rWLockNewFromC(c *C.GRWLock) *RWLock {
@@ -101,10 +101,7 @@ func rWLockNewFromC(c *C.GRWLock) *RWLock {
 		return nil
 	}
 
-	g := &RWLock{
-		P:      (uintptr)(c.p),
-		native: c,
-	}
+	g := &RWLock{native: c}
 
 	return g
 }
@@ -128,8 +125,8 @@ func rWLockNewFromC(c *C.GRWLock) *RWLock {
 // RecMutex is a wrapper around the C record GRecMutex.
 type RecMutex struct {
 	native *C.GRecMutex
-	P      uintptr
-	// no type for i
+	// Private : p
+	// Private : i
 }
 
 func recMutexNewFromC(c *C.GRecMutex) *RecMutex {
@@ -137,10 +134,7 @@ func recMutexNewFromC(c *C.GRecMutex) *RecMutex {
 		return nil
 	}
 
-	g := &RecMutex{
-		P:      (uintptr)(c.p),
-		native: c,
-	}
+	g := &RecMutex{native: c}
 
 	return g
 }

@@ -11,8 +11,8 @@ import "C"
 // ParamSpecOverride is a wrapper around the C record GParamSpecOverride.
 type ParamSpecOverride struct {
 	native *C.GParamSpecOverride
-	// parent_instance : no type generator for ParamSpec, GParamSpec
-	// overridden : no type generator for ParamSpec, GParamSpec*
+	// Private : parent_instance
+	// Private : overridden
 }
 
 func paramSpecOverrideNewFromC(c *C.GParamSpecOverride) *ParamSpecOverride {

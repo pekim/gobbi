@@ -32,19 +32,19 @@ func cClosureNewFromC(c *C.GCClosure) *CClosure {
 // Closure is a wrapper around the C record GClosure.
 type Closure struct {
 	native *C.GClosure
-	// Bitfield not supported : 15 ref_count
-	// Bitfield not supported :  1 meta_marshal_nouse
-	// Bitfield not supported :  1 n_guards
-	// Bitfield not supported :  2 n_fnotifiers
-	// Bitfield not supported :  8 n_inotifiers
-	// Bitfield not supported :  1 in_inotify
-	// Bitfield not supported :  1 floating
-	// Bitfield not supported :  1 derivative_flag
+	// Private : ref_count
+	// Private : meta_marshal_nouse
+	// Private : n_guards
+	// Private : n_fnotifiers
+	// Private : n_inotifiers
+	// Private : in_inotify
+	// Private : floating
+	// Private : derivative_flag
 	// Bitfield not supported :  1 in_marshal
 	// Bitfield not supported :  1 is_invalid
 	// no type for marshal
-	Data      uintptr
-	Notifiers *ClosureNotifyData
+	// Private : data
+	// Private : notifiers
 }
 
 func closureNewFromC(c *C.GClosure) *Closure {
@@ -52,11 +52,7 @@ func closureNewFromC(c *C.GClosure) *Closure {
 		return nil
 	}
 
-	g := &Closure{
-		Data:      (uintptr)(c.data),
-		Notifiers: closureNotifyDataNewFromC(c.notifiers),
-		native:    c,
-	}
+	g := &Closure{native: c}
 
 	return g
 }
@@ -225,7 +221,7 @@ func flagsValueNewFromC(c *C.GFlagsValue) *FlagsValue {
 type InitiallyUnownedClass struct {
 	native *C.GInitiallyUnownedClass
 	// g_type_class : record with indirection of 0
-	// construct_properties : no type generator for GLib.SList, GSList*
+	// Private : construct_properties
 	// no type for constructor
 	// no type for set_property
 	// no type for get_property
@@ -234,8 +230,8 @@ type InitiallyUnownedClass struct {
 	// no type for dispatch_properties_changed
 	// no type for notify
 	// no type for constructed
-	Flags uint64
-	// no type for pdummy
+	// Private : flags
+	// Private : pdummy
 }
 
 func initiallyUnownedClassNewFromC(c *C.GInitiallyUnownedClass) *InitiallyUnownedClass {
@@ -243,10 +239,7 @@ func initiallyUnownedClassNewFromC(c *C.GInitiallyUnownedClass) *InitiallyUnowne
 		return nil
 	}
 
-	g := &InitiallyUnownedClass{
-		Flags:  (uint64)(c.flags),
-		native: c,
-	}
+	g := &InitiallyUnownedClass{native: c}
 
 	return g
 }
@@ -276,7 +269,7 @@ func interfaceInfoNewFromC(c *C.GInterfaceInfo) *InterfaceInfo {
 type ObjectClass struct {
 	native *C.GObjectClass
 	// g_type_class : record with indirection of 0
-	// construct_properties : no type generator for GLib.SList, GSList*
+	// Private : construct_properties
 	// no type for constructor
 	// no type for set_property
 	// no type for get_property
@@ -285,8 +278,8 @@ type ObjectClass struct {
 	// no type for dispatch_properties_changed
 	// no type for notify
 	// no type for constructed
-	Flags uint64
-	// no type for pdummy
+	// Private : flags
+	// Private : pdummy
 }
 
 func objectClassNewFromC(c *C.GObjectClass) *ObjectClass {
@@ -294,10 +287,7 @@ func objectClassNewFromC(c *C.GObjectClass) *ObjectClass {
 		return nil
 	}
 
-	g := &ObjectClass{
-		Flags:  (uint64)(c.flags),
-		native: c,
-	}
+	g := &ObjectClass{native: c}
 
 	return g
 }
@@ -341,7 +331,7 @@ type ParamSpecClass struct {
 	// no type for value_set_default
 	// no type for value_validate
 	// no type for values_cmp
-	// no type for dummy
+	// Private : dummy
 }
 
 func paramSpecClassNewFromC(c *C.GParamSpecClass) *ParamSpecClass {
@@ -477,7 +467,7 @@ func signalQueryNewFromC(c *C.GSignalQuery) *SignalQuery {
 // TypeClass is a wrapper around the C record GTypeClass.
 type TypeClass struct {
 	native *C.GTypeClass
-	// g_type : no type generator for GType, GType
+	// Private : g_type
 }
 
 func typeClassNewFromC(c *C.GTypeClass) *TypeClass {
@@ -557,7 +547,7 @@ func typeInfoNewFromC(c *C.GTypeInfo) *TypeInfo {
 // TypeInstance is a wrapper around the C record GTypeInstance.
 type TypeInstance struct {
 	native *C.GTypeInstance
-	GClass *TypeClass
+	// Private : g_class
 }
 
 func typeInstanceNewFromC(c *C.GTypeInstance) *TypeInstance {
@@ -565,10 +555,7 @@ func typeInstanceNewFromC(c *C.GTypeInstance) *TypeInstance {
 		return nil
 	}
 
-	g := &TypeInstance{
-		GClass: typeClassNewFromC(c.g_class),
-		native: c,
-	}
+	g := &TypeInstance{native: c}
 
 	return g
 }
@@ -578,8 +565,8 @@ func typeInstanceNewFromC(c *C.GTypeInstance) *TypeInstance {
 // TypeInterface is a wrapper around the C record GTypeInterface.
 type TypeInterface struct {
 	native *C.GTypeInterface
-	// g_type : no type generator for GType, GType
-	// g_instance_type : no type generator for GType, GType
+	// Private : g_type
+	// Private : g_instance_type
 }
 
 func typeInterfaceNewFromC(c *C.GTypeInterface) *TypeInterface {
@@ -625,7 +612,7 @@ func typeModuleClassNewFromC(c *C.GTypeModuleClass) *TypeModuleClass {
 // TypePluginClass is a wrapper around the C record GTypePluginClass.
 type TypePluginClass struct {
 	native *C.GTypePluginClass
-	// base_iface : record with indirection of 0
+	// Private : base_iface
 	// use_plugin : no type generator for TypePluginUse, GTypePluginUse
 	// unuse_plugin : no type generator for TypePluginUnuse, GTypePluginUnuse
 	// complete_type_info : no type generator for TypePluginCompleteTypeInfo, GTypePluginCompleteTypeInfo
@@ -696,7 +683,7 @@ func typeValueTableNewFromC(c *C.GTypeValueTable) *TypeValueTable {
 // Value is a wrapper around the C record GValue.
 type Value struct {
 	native *C.GValue
-	// g_type : no type generator for GType, GType
+	// Private : g_type
 	// no type for data
 }
 
@@ -971,10 +958,10 @@ func (recv *Value) Reset() *Value {
 
 // ValueArray is a wrapper around the C record GValueArray.
 type ValueArray struct {
-	native      *C.GValueArray
-	NValues     uint32
-	Values      *Value
-	NPrealloced uint32
+	native  *C.GValueArray
+	NValues uint32
+	Values  *Value
+	// Private : n_prealloced
 }
 
 func valueArrayNewFromC(c *C.GValueArray) *ValueArray {
@@ -983,10 +970,9 @@ func valueArrayNewFromC(c *C.GValueArray) *ValueArray {
 	}
 
 	g := &ValueArray{
-		NPrealloced: (uint32)(c.n_prealloced),
-		NValues:     (uint32)(c.n_values),
-		Values:      valueNewFromC(c.values),
-		native:      c,
+		NValues: (uint32)(c.n_values),
+		Values:  valueNewFromC(c.values),
+		native:  c,
 	}
 
 	return g

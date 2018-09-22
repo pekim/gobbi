@@ -11,6 +11,7 @@ type Field struct {
 	Name     string `xml:"name,attr"`
 	Writable int    `xml:"writable,attr"`
 	Bits     int    `xml:"bits,attr"`
+	Private  bool   `xml:"private,attr"`
 	Doc      *Doc   `xml:"doc"`
 	Type     *Type  `xml:"type"`
 
@@ -28,6 +29,10 @@ func (f *Field) init(ns *Namespace) {
 }
 
 func (f Field) supported() (bool, string) {
+	if f.Private {
+		return false, fmt.Sprintf("Private : %s", f.Name)
+	}
+
 	if f.Bits > 0 {
 		return false, fmt.Sprintf("Bitfield not supported : %2d %s", f.Bits, f.Name)
 	}

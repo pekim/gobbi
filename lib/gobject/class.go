@@ -163,11 +163,11 @@ type ParamSpec struct {
 	// flags : no type generator for ParamFlags, GParamFlags
 	// value_type : no type generator for GType, GType
 	// owner_type : no type generator for GType, GType
-	Nick  string
-	Blurb string
-	// qdata : no type generator for GLib.Data, GData*
-	RefCount uint32
-	ParamId  uint32
+	// Private : _nick
+	// Private : _blurb
+	// Private : qdata
+	// Private : ref_count
+	// Private : param_id
 }
 
 func paramSpecNewFromC(c *C.GParamSpec) *ParamSpec {
@@ -176,12 +176,8 @@ func paramSpecNewFromC(c *C.GParamSpec) *ParamSpec {
 	}
 
 	g := &ParamSpec{
-		Blurb:    C.GoString(c._blurb),
-		Name:     C.GoString(c.name),
-		Nick:     C.GoString(c._nick),
-		ParamId:  (uint32)(c.param_id),
-		RefCount: (uint32)(c.ref_count),
-		native:   c,
+		Name:   C.GoString(c.name),
+		native: c,
 	}
 
 	return g

@@ -53,7 +53,7 @@ type ParamSpecVariant struct {
 	// parent_instance : no type generator for ParamSpec, GParamSpec
 	// _type : no type generator for GLib.VariantType, GVariantType*
 	// default_value : no type generator for GLib.Variant, GVariant*
-	// no type for padding
+	// Private : padding
 }
 
 func paramSpecVariantNewFromC(c *C.GParamSpecVariant) *ParamSpecVariant {
