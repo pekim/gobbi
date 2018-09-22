@@ -10,4 +10,4 @@ import "C"
 
 // Unsupported : g_clear_object : unsupported parameter object_ptr : no type generator for Object, volatile GObject**
 
-// Unsupported : g_signal_accumulator_first_wins : unsupported parameter ihint : record param - coming soon
+// Unsupported : g_signal_accumulator_first_wins : no return generator

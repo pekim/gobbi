@@ -2,6 +2,8 @@
 
 package gobject
 
+import "unsafe"
+
 // #define GLIB_DISABLE_DEPRECATION_WARNINGS
 // #include <glib-object.h>
 // #include <stdlib.h>
@@ -13,49 +15,49 @@ import "C"
 
 // Unsupported : g_boxed_type_register_static : unsupported parameter boxed_copy : no type generator for BoxedCopyFunc, GBoxedCopyFunc
 
-// Unsupported : g_cclosure_marshal_BOOLEAN__BOXED_BOXED : unsupported parameter closure : record param - coming soon
+// Unsupported : g_cclosure_marshal_BOOLEAN__BOXED_BOXED : no return generator
 
-// Unsupported : g_cclosure_marshal_BOOLEAN__FLAGS : unsupported parameter closure : record param - coming soon
+// Unsupported : g_cclosure_marshal_BOOLEAN__FLAGS : no return generator
 
-// Unsupported : g_cclosure_marshal_STRING__OBJECT_POINTER : unsupported parameter closure : record param - coming soon
+// Unsupported : g_cclosure_marshal_STRING__OBJECT_POINTER : no return generator
 
-// Unsupported : g_cclosure_marshal_VOID__BOOLEAN : unsupported parameter closure : record param - coming soon
+// Unsupported : g_cclosure_marshal_VOID__BOOLEAN : no return generator
 
-// Unsupported : g_cclosure_marshal_VOID__BOXED : unsupported parameter closure : record param - coming soon
+// Unsupported : g_cclosure_marshal_VOID__BOXED : no return generator
 
-// Unsupported : g_cclosure_marshal_VOID__CHAR : unsupported parameter closure : record param - coming soon
+// Unsupported : g_cclosure_marshal_VOID__CHAR : no return generator
 
-// Unsupported : g_cclosure_marshal_VOID__DOUBLE : unsupported parameter closure : record param - coming soon
+// Unsupported : g_cclosure_marshal_VOID__DOUBLE : no return generator
 
-// Unsupported : g_cclosure_marshal_VOID__ENUM : unsupported parameter closure : record param - coming soon
+// Unsupported : g_cclosure_marshal_VOID__ENUM : no return generator
 
-// Unsupported : g_cclosure_marshal_VOID__FLAGS : unsupported parameter closure : record param - coming soon
+// Unsupported : g_cclosure_marshal_VOID__FLAGS : no return generator
 
-// Unsupported : g_cclosure_marshal_VOID__FLOAT : unsupported parameter closure : record param - coming soon
+// Unsupported : g_cclosure_marshal_VOID__FLOAT : no return generator
 
-// Unsupported : g_cclosure_marshal_VOID__INT : unsupported parameter closure : record param - coming soon
+// Unsupported : g_cclosure_marshal_VOID__INT : no return generator
 
-// Unsupported : g_cclosure_marshal_VOID__LONG : unsupported parameter closure : record param - coming soon
+// Unsupported : g_cclosure_marshal_VOID__LONG : no return generator
 
-// Unsupported : g_cclosure_marshal_VOID__OBJECT : unsupported parameter closure : record param - coming soon
+// Unsupported : g_cclosure_marshal_VOID__OBJECT : no return generator
 
-// Unsupported : g_cclosure_marshal_VOID__PARAM : unsupported parameter closure : record param - coming soon
+// Unsupported : g_cclosure_marshal_VOID__PARAM : no return generator
 
-// Unsupported : g_cclosure_marshal_VOID__POINTER : unsupported parameter closure : record param - coming soon
+// Unsupported : g_cclosure_marshal_VOID__POINTER : no return generator
 
-// Unsupported : g_cclosure_marshal_VOID__STRING : unsupported parameter closure : record param - coming soon
+// Unsupported : g_cclosure_marshal_VOID__STRING : no return generator
 
-// Unsupported : g_cclosure_marshal_VOID__UCHAR : unsupported parameter closure : record param - coming soon
+// Unsupported : g_cclosure_marshal_VOID__UCHAR : no return generator
 
-// Unsupported : g_cclosure_marshal_VOID__UINT : unsupported parameter closure : record param - coming soon
+// Unsupported : g_cclosure_marshal_VOID__UINT : no return generator
 
-// Unsupported : g_cclosure_marshal_VOID__UINT_POINTER : unsupported parameter closure : record param - coming soon
+// Unsupported : g_cclosure_marshal_VOID__UINT_POINTER : no return generator
 
-// Unsupported : g_cclosure_marshal_VOID__ULONG : unsupported parameter closure : record param - coming soon
+// Unsupported : g_cclosure_marshal_VOID__ULONG : no return generator
 
-// Unsupported : g_cclosure_marshal_VOID__VARIANT : unsupported parameter closure : record param - coming soon
+// Unsupported : g_cclosure_marshal_VOID__VARIANT : no return generator
 
-// Unsupported : g_cclosure_marshal_VOID__VOID : unsupported parameter closure : record param - coming soon
+// Unsupported : g_cclosure_marshal_VOID__VOID : no return generator
 
 // Unsupported : g_cclosure_new : unsupported parameter callback_func : no type generator for Callback, GCallback
 
@@ -67,23 +69,87 @@ import "C"
 
 // Unsupported : g_enum_complete_type_info : unsupported parameter g_enum_type : no type generator for GType, GType
 
-// Unsupported : g_enum_get_value : unsupported parameter enum_class : record param - coming soon
+// EnumGetValue is a wrapper around the C function g_enum_get_value.
+func EnumGetValue(enumClass *EnumClass, value int32) *EnumValue {
+	c_enum_class := enumClass.toC()
 
-// Unsupported : g_enum_get_value_by_name : unsupported parameter enum_class : record param - coming soon
+	c_value := (C.gint)(value)
 
-// Unsupported : g_enum_get_value_by_nick : unsupported parameter enum_class : record param - coming soon
+	retC := C.g_enum_get_value(c_enum_class, c_value)
+	retGo := enumValueNewFromC(retC)
 
-// Unsupported : g_enum_register_static : unsupported parameter const_static_values : record param - coming soon
+	return retGo
+}
+
+// EnumGetValueByName is a wrapper around the C function g_enum_get_value_by_name.
+func EnumGetValueByName(enumClass *EnumClass, name string) *EnumValue {
+	c_enum_class := enumClass.toC()
+
+	c_name := C.CString(name)
+	defer C.free(unsafe.Pointer(c_name))
+
+	retC := C.g_enum_get_value_by_name(c_enum_class, c_name)
+	retGo := enumValueNewFromC(retC)
+
+	return retGo
+}
+
+// EnumGetValueByNick is a wrapper around the C function g_enum_get_value_by_nick.
+func EnumGetValueByNick(enumClass *EnumClass, nick string) *EnumValue {
+	c_enum_class := enumClass.toC()
+
+	c_nick := C.CString(nick)
+	defer C.free(unsafe.Pointer(c_nick))
+
+	retC := C.g_enum_get_value_by_nick(c_enum_class, c_nick)
+	retGo := enumValueNewFromC(retC)
+
+	return retGo
+}
+
+// Unsupported : g_enum_register_static : no return generator
 
 // Unsupported : g_flags_complete_type_info : unsupported parameter g_flags_type : no type generator for GType, GType
 
-// Unsupported : g_flags_get_first_value : unsupported parameter flags_class : record param - coming soon
+// FlagsGetFirstValue is a wrapper around the C function g_flags_get_first_value.
+func FlagsGetFirstValue(flagsClass *FlagsClass, value uint32) *FlagsValue {
+	c_flags_class := flagsClass.toC()
 
-// Unsupported : g_flags_get_value_by_name : unsupported parameter flags_class : record param - coming soon
+	c_value := (C.guint)(value)
 
-// Unsupported : g_flags_get_value_by_nick : unsupported parameter flags_class : record param - coming soon
+	retC := C.g_flags_get_first_value(c_flags_class, c_value)
+	retGo := flagsValueNewFromC(retC)
 
-// Unsupported : g_flags_register_static : unsupported parameter const_static_values : record param - coming soon
+	return retGo
+}
+
+// FlagsGetValueByName is a wrapper around the C function g_flags_get_value_by_name.
+func FlagsGetValueByName(flagsClass *FlagsClass, name string) *FlagsValue {
+	c_flags_class := flagsClass.toC()
+
+	c_name := C.CString(name)
+	defer C.free(unsafe.Pointer(c_name))
+
+	retC := C.g_flags_get_value_by_name(c_flags_class, c_name)
+	retGo := flagsValueNewFromC(retC)
+
+	return retGo
+}
+
+// FlagsGetValueByNick is a wrapper around the C function g_flags_get_value_by_nick.
+func FlagsGetValueByNick(flagsClass *FlagsClass, nick string) *FlagsValue {
+	c_flags_class := flagsClass.toC()
+
+	c_nick := C.CString(nick)
+	defer C.free(unsafe.Pointer(c_nick))
+
+	retC := C.g_flags_get_value_by_nick(c_flags_class, c_nick)
+	retGo := flagsValueNewFromC(retC)
+
+	return retGo
+}
+
+// Unsupported : g_flags_register_static : no return generator
 
 // Unsupported : g_gtype_get_type : no return generator
 
@@ -129,7 +195,7 @@ import "C"
 
 // Unsupported : g_param_spec_value_array : unsupported parameter element_spec : no type generator for ParamSpec, GParamSpec*
 
-// Unsupported : g_param_type_register_static : unsupported parameter pspec_info : record param - coming soon
+// Unsupported : g_param_type_register_static : no return generator
 
 // Unsupported : g_param_value_convert : unsupported parameter pspec : no type generator for ParamSpec, GParamSpec*
 
@@ -147,7 +213,7 @@ import "C"
 
 // Unsupported : g_signal_chain_from_overridden : unsupported parameter instance_and_params : no param type
 
-// Unsupported : g_signal_connect_closure : unsupported parameter closure : record param - coming soon
+// Unsupported : g_signal_connect_closure : unsupported parameter after : no type generator for gboolean, gboolean
 
 // Unsupported : g_signal_connect_closure_by_id : unsupported parameter detail : no type generator for GLib.Quark, GQuark
 
@@ -217,7 +283,7 @@ func SignalName(signalId uint32) string {
 
 // Unsupported : g_signal_parse_name : unsupported parameter itype : no type generator for GType, GType
 
-// Unsupported : g_signal_query : unsupported parameter query : record param - coming soon
+// Unsupported : g_signal_query : no return generator
 
 // Unsupported : g_signal_remove_emission_hook : no return generator
 
@@ -231,7 +297,16 @@ func SignalName(signalId uint32) string {
 
 // Unsupported : g_source_set_dummy_callback : unsupported parameter source : no type generator for GLib.Source, GSource*
 
-// Unsupported : g_strdup_value_contents : unsupported parameter value : record param - coming soon
+// StrdupValueContents is a wrapper around the C function g_strdup_value_contents.
+func StrdupValueContents(value *Value) string {
+	c_value := value.toC()
+
+	retC := C.g_strdup_value_contents(c_value)
+	retGo := C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // Unsupported : g_type_add_class_cache_func : unsupported parameter cache_func : no type generator for TypeClassCacheFunc, GTypeClassCacheFunc
 
@@ -241,23 +316,23 @@ func SignalName(signalId uint32) string {
 
 // Unsupported : g_type_add_interface_static : unsupported parameter instance_type : no type generator for GType, GType
 
-// Unsupported : g_type_check_class_cast : unsupported parameter g_class : record param - coming soon
+// Unsupported : g_type_check_class_cast : unsupported parameter is_a_type : no type generator for GType, GType
 
-// Unsupported : g_type_check_class_is_a : unsupported parameter g_class : record param - coming soon
+// Unsupported : g_type_check_class_is_a : unsupported parameter is_a_type : no type generator for GType, GType
 
-// Unsupported : g_type_check_instance : unsupported parameter instance : record param - coming soon
+// Unsupported : g_type_check_instance : no return generator
 
-// Unsupported : g_type_check_instance_cast : unsupported parameter instance : record param - coming soon
+// Unsupported : g_type_check_instance_cast : unsupported parameter iface_type : no type generator for GType, GType
 
-// Unsupported : g_type_check_instance_is_a : unsupported parameter instance : record param - coming soon
+// Unsupported : g_type_check_instance_is_a : unsupported parameter iface_type : no type generator for GType, GType
 
-// Unsupported : g_type_check_instance_is_fundamentally_a : unsupported parameter instance : record param - coming soon
+// Unsupported : g_type_check_instance_is_fundamentally_a : unsupported parameter fundamental_type : no type generator for GType, GType
 
 // Unsupported : g_type_check_is_value_type : unsupported parameter type : no type generator for GType, GType
 
-// Unsupported : g_type_check_value : unsupported parameter value : record param - coming soon
+// Unsupported : g_type_check_value : no return generator
 
-// Unsupported : g_type_check_value_holds : unsupported parameter value : record param - coming soon
+// Unsupported : g_type_check_value_holds : unsupported parameter type : no type generator for GType, GType
 
 // Unsupported : g_type_children : unsupported parameter type : no type generator for GType, GType
 
@@ -271,7 +346,7 @@ func SignalName(signalId uint32) string {
 
 // Unsupported : g_type_depth : unsupported parameter type : no type generator for GType, GType
 
-// Unsupported : g_type_free_instance : unsupported parameter instance : record param - coming soon
+// Unsupported : g_type_free_instance : no return generator
 
 // Unsupported : g_type_from_name : no return generator
 
@@ -299,9 +374,25 @@ func SignalName(signalId uint32) string {
 
 // Unsupported : g_type_name : unsupported parameter type : no type generator for GType, GType
 
-// Unsupported : g_type_name_from_class : unsupported parameter g_class : record param - coming soon
+// TypeNameFromClass is a wrapper around the C function g_type_name_from_class.
+func TypeNameFromClass(gClass *TypeClass) string {
+	c_g_class := gClass.toC()
 
-// Unsupported : g_type_name_from_instance : unsupported parameter instance : record param - coming soon
+	retC := C.g_type_name_from_class(c_g_class)
+	retGo := C.GoString(retC)
+
+	return retGo
+}
+
+// TypeNameFromInstance is a wrapper around the C function g_type_name_from_instance.
+func TypeNameFromInstance(instance *TypeInstance) string {
+	c_instance := instance.toC()
+
+	retC := C.g_type_name_from_instance(c_instance)
+	retGo := C.GoString(retC)
+
+	return retGo
+}
 
 // Unsupported : g_type_next_base : unsupported parameter leaf_type : no type generator for GType, GType
 

@@ -91,7 +91,7 @@ func ClosureNewSimple(sizeofClosure uint32, data uintptr) *Closure {
 
 // Unsupported : g_closure_invalidate : no return generator
 
-// Unsupported : g_closure_invoke : unsupported parameter return_value : record param - coming soon
+// Unsupported : g_closure_invoke : unsupported parameter param_values : no param type
 
 // Ref is a wrapper around the C function g_closure_ref.
 func (recv *Closure) Ref() *Closure {
@@ -886,7 +886,7 @@ func (recv *Value) toC() *C.GValue {
 	return recv.native
 }
 
-// Unsupported : g_value_copy : unsupported parameter dest_value : record param - coming soon
+// Unsupported : g_value_copy : no return generator
 
 // DupBoxed is a wrapper around the C function g_value_dup_boxed.
 func (recv *Value) DupBoxed() uintptr {
@@ -1141,7 +1141,7 @@ func (recv *Value) Reset() *Value {
 
 // Unsupported : g_value_take_variant : unsupported parameter variant : no type generator for GLib.Variant, GVariant*
 
-// Unsupported : g_value_transform : unsupported parameter dest_value : record param - coming soon
+// Unsupported : g_value_transform : no return generator
 
 // Unsupported : g_value_unset : no return generator
 
@@ -1183,7 +1183,15 @@ func ValueArrayNew(nPrealloced uint32) *ValueArray {
 	return retGo
 }
 
-// Unsupported : g_value_array_append : unsupported parameter value : record param - coming soon
+// Append is a wrapper around the C function g_value_array_append.
+func (recv *ValueArray) Append(value *Value) *ValueArray {
+	c_value := value.toC()
+
+	retC := C.g_value_array_append((*C.GValueArray)(recv.native), c_value)
+	retGo := valueArrayNewFromC(retC)
+
+	return retGo
+}
 
 // Copy is a wrapper around the C function g_value_array_copy.
 func (recv *ValueArray) Copy() *ValueArray {
@@ -1205,9 +1213,27 @@ func (recv *ValueArray) GetNth(index uint32) *Value {
 	return retGo
 }
 
-// Unsupported : g_value_array_insert : unsupported parameter value : record param - coming soon
+// Insert is a wrapper around the C function g_value_array_insert.
+func (recv *ValueArray) Insert(index uint32, value *Value) *ValueArray {
+	c_index_ := (C.guint)(index)
 
-// Unsupported : g_value_array_prepend : unsupported parameter value : record param - coming soon
+	c_value := value.toC()
+
+	retC := C.g_value_array_insert((*C.GValueArray)(recv.native), c_index_, c_value)
+	retGo := valueArrayNewFromC(retC)
+
+	return retGo
+}
+
+// Prepend is a wrapper around the C function g_value_array_prepend.
+func (recv *ValueArray) Prepend(value *Value) *ValueArray {
+	c_value := value.toC()
+
+	retC := C.g_value_array_prepend((*C.GValueArray)(recv.native), c_value)
+	retGo := valueArrayNewFromC(retC)
+
+	return retGo
+}
 
 // Remove is a wrapper around the C function g_value_array_remove.
 func (recv *ValueArray) Remove(index uint32) *ValueArray {

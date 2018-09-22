@@ -125,9 +125,25 @@ func (recv *AsyncQueue) Ref() *AsyncQueue {
 
 // Unsupported : g_async_queue_sort_unlocked : unsupported parameter func : no type generator for CompareDataFunc, GCompareDataFunc
 
-// Unsupported : g_async_queue_timed_pop : unsupported parameter end_time : record param - coming soon
+// TimedPop is a wrapper around the C function g_async_queue_timed_pop.
+func (recv *AsyncQueue) TimedPop(endTime *TimeVal) uintptr {
+	c_end_time := endTime.toC()
 
-// Unsupported : g_async_queue_timed_pop_unlocked : unsupported parameter end_time : record param - coming soon
+	retC := C.g_async_queue_timed_pop((*C.GAsyncQueue)(recv.native), c_end_time)
+	retGo := (uintptr)(retC)
+
+	return retGo
+}
+
+// TimedPopUnlocked is a wrapper around the C function g_async_queue_timed_pop_unlocked.
+func (recv *AsyncQueue) TimedPopUnlocked(endTime *TimeVal) uintptr {
+	c_end_time := endTime.toC()
+
+	retC := C.g_async_queue_timed_pop_unlocked((*C.GAsyncQueue)(recv.native), c_end_time)
+	retGo := (uintptr)(retC)
+
+	return retGo
+}
 
 // TimeoutPop is a wrapper around the C function g_async_queue_timeout_pop.
 func (recv *AsyncQueue) TimeoutPop(timeout uint64) uintptr {
@@ -404,13 +420,29 @@ func DateNewJulian(julianDay uint32) *Date {
 
 // Unsupported : g_date_add_years : no return generator
 
-// Unsupported : g_date_clamp : unsupported parameter min_date : record param - coming soon
+// Unsupported : g_date_clamp : no return generator
 
 // Unsupported : g_date_clear : no return generator
 
-// Unsupported : g_date_compare : unsupported parameter rhs : record param - coming soon
+// Compare is a wrapper around the C function g_date_compare.
+func (recv *Date) Compare(rhs *Date) int32 {
+	c_rhs := rhs.toC()
 
-// Unsupported : g_date_days_between : unsupported parameter date2 : record param - coming soon
+	retC := C.g_date_compare((*C.GDate)(recv.native), c_rhs)
+	retGo := (int32)(retC)
+
+	return retGo
+}
+
+// DaysBetween is a wrapper around the C function g_date_days_between.
+func (recv *Date) DaysBetween(date2 *Date) int32 {
+	c_date2 := date2.toC()
+
+	retC := C.g_date_days_between((*C.GDate)(recv.native), c_date2)
+	retGo := (int32)(retC)
+
+	return retGo
+}
 
 // Unsupported : g_date_free : no return generator
 
@@ -482,7 +514,7 @@ func (recv *Date) GetYear() DateYear {
 
 // Unsupported : g_date_is_last_of_month : no return generator
 
-// Unsupported : g_date_order : unsupported parameter date2 : record param - coming soon
+// Unsupported : g_date_order : no return generator
 
 // Unsupported : g_date_set_day : no return generator
 
@@ -498,7 +530,7 @@ func (recv *Date) GetYear() DateYear {
 
 // Unsupported : g_date_set_time_t : unsupported parameter timet : no type generator for glong, time_t
 
-// Unsupported : g_date_set_time_val : unsupported parameter timeval : record param - coming soon
+// Unsupported : g_date_set_time_val : no return generator
 
 // Unsupported : g_date_set_year : no return generator
 
@@ -742,7 +774,15 @@ func (recv *Hook) toC() *C.GHook {
 	return recv.native
 }
 
-// Unsupported : g_hook_compare_ids : unsupported parameter sibling : record param - coming soon
+// CompareIds is a wrapper around the C function g_hook_compare_ids.
+func (recv *Hook) CompareIds(sibling *Hook) int32 {
+	c_sibling := sibling.toC()
+
+	retC := C.g_hook_compare_ids((*C.GHook)(recv.native), c_sibling)
+	retGo := (int32)(retC)
+
+	return retGo
+}
 
 // HookList is a wrapper around the C record GHookList.
 type HookList struct {
@@ -873,7 +913,7 @@ func KeyFileNew() *KeyFile {
 
 // Unsupported : g_key_file_has_key : no return generator
 
-// Unsupported : g_key_file_load_from_bytes : unsupported parameter bytes : record param - coming soon
+// Unsupported : g_key_file_load_from_bytes : unsupported parameter flags : no type generator for KeyFileFlags, GKeyFileFlags
 
 // Unsupported : g_key_file_load_from_data : unsupported parameter flags : no type generator for KeyFileFlags, GKeyFileFlags
 
@@ -983,13 +1023,23 @@ func MainContextNew() *MainContext {
 
 // Unsupported : g_main_context_acquire : no return generator
 
-// Unsupported : g_main_context_add_poll : unsupported parameter fd : record param - coming soon
+// Unsupported : g_main_context_add_poll : no return generator
 
 // Unsupported : g_main_context_check : unsupported parameter fds : no param type
 
 // Unsupported : g_main_context_dispatch : no return generator
 
-// Unsupported : g_main_context_find_source_by_funcs_user_data : unsupported parameter funcs : record param - coming soon
+// FindSourceByFuncsUserData is a wrapper around the C function g_main_context_find_source_by_funcs_user_data.
+func (recv *MainContext) FindSourceByFuncsUserData(funcs *SourceFuncs, userData uintptr) *Source {
+	c_funcs := funcs.toC()
+
+	c_user_data := (C.gpointer)(userData)
+
+	retC := C.g_main_context_find_source_by_funcs_user_data((*C.GMainContext)(recv.native), c_funcs, c_user_data)
+	retGo := sourceNewFromC(retC)
+
+	return retGo
+}
 
 // FindSourceById is a wrapper around the C function g_main_context_find_source_by_id.
 func (recv *MainContext) FindSourceById(sourceId uint32) *Source {
@@ -1041,13 +1091,13 @@ func (recv *MainContext) Ref() *MainContext {
 
 // Unsupported : g_main_context_release : no return generator
 
-// Unsupported : g_main_context_remove_poll : unsupported parameter fd : record param - coming soon
+// Unsupported : g_main_context_remove_poll : no return generator
 
 // Unsupported : g_main_context_set_poll_func : unsupported parameter func : no type generator for PollFunc, GPollFunc
 
 // Unsupported : g_main_context_unref : no return generator
 
-// Unsupported : g_main_context_wait : unsupported parameter cond : record param - coming soon
+// Unsupported : g_main_context_wait : unsupported parameter mutex : no type generator for Mutex, GMutex*
 
 // Unsupported : g_main_context_wakeup : no return generator
 
@@ -1071,7 +1121,7 @@ func (recv *MainLoop) toC() *C.GMainLoop {
 	return recv.native
 }
 
-// Unsupported : g_main_loop_new : unsupported parameter context : record param - coming soon
+// Unsupported : g_main_loop_new : unsupported parameter is_running : no type generator for gboolean, gboolean
 
 // GetContext is a wrapper around the C function g_main_loop_get_context.
 func (recv *MainLoop) GetContext() *MainContext {
@@ -1145,7 +1195,7 @@ func (recv *MarkupParseContext) toC() *C.GMarkupParseContext {
 	return recv.native
 }
 
-// Unsupported : g_markup_parse_context_new : unsupported parameter parser : record param - coming soon
+// Unsupported : g_markup_parse_context_new : unsupported parameter flags : no type generator for MarkupParseFlags, GMarkupParseFlags
 
 // Unsupported : g_markup_parse_context_end_parse : no return generator
 
@@ -1157,7 +1207,7 @@ func (recv *MarkupParseContext) toC() *C.GMarkupParseContext {
 
 // Unsupported : g_markup_parse_context_parse : no return generator
 
-// Unsupported : g_markup_parse_context_push : unsupported parameter parser : record param - coming soon
+// Unsupported : g_markup_parse_context_push : no return generator
 
 // Unsupported : g_markup_parse_context_unref : no return generator
 
@@ -1288,7 +1338,15 @@ func (recv *Node) ChildIndex(data uintptr) int32 {
 	return retGo
 }
 
-// Unsupported : g_node_child_position : unsupported parameter child : record param - coming soon
+// ChildPosition is a wrapper around the C function g_node_child_position.
+func (recv *Node) ChildPosition(child *Node) int32 {
+	c_child := child.toC()
+
+	retC := C.g_node_child_position((*C.GNode)(recv.native), c_child)
+	retGo := (int32)(retC)
+
+	return retGo
+}
 
 // Unsupported : g_node_children_foreach : unsupported parameter flags : no type generator for TraverseFlags, GTraverseFlags
 
@@ -1332,13 +1390,43 @@ func (recv *Node) GetRoot() *Node {
 	return retGo
 }
 
-// Unsupported : g_node_insert : unsupported parameter node : record param - coming soon
+// Insert is a wrapper around the C function g_node_insert.
+func (recv *Node) Insert(position int32, node *Node) *Node {
+	c_position := (C.gint)(position)
 
-// Unsupported : g_node_insert_after : unsupported parameter sibling : record param - coming soon
+	c_node := node.toC()
 
-// Unsupported : g_node_insert_before : unsupported parameter sibling : record param - coming soon
+	retC := C.g_node_insert((*C.GNode)(recv.native), c_position, c_node)
+	retGo := nodeNewFromC(retC)
 
-// Unsupported : g_node_is_ancestor : unsupported parameter descendant : record param - coming soon
+	return retGo
+}
+
+// InsertAfter is a wrapper around the C function g_node_insert_after.
+func (recv *Node) InsertAfter(sibling *Node, node *Node) *Node {
+	c_sibling := sibling.toC()
+
+	c_node := node.toC()
+
+	retC := C.g_node_insert_after((*C.GNode)(recv.native), c_sibling, c_node)
+	retGo := nodeNewFromC(retC)
+
+	return retGo
+}
+
+// InsertBefore is a wrapper around the C function g_node_insert_before.
+func (recv *Node) InsertBefore(sibling *Node, node *Node) *Node {
+	c_sibling := sibling.toC()
+
+	c_node := node.toC()
+
+	retC := C.g_node_insert_before((*C.GNode)(recv.native), c_sibling, c_node)
+	retGo := nodeNewFromC(retC)
+
+	return retGo
+}
+
+// Unsupported : g_node_is_ancestor : no return generator
 
 // LastChild is a wrapper around the C function g_node_last_child.
 func (recv *Node) LastChild() *Node {
@@ -1384,7 +1472,15 @@ func (recv *Node) NthChild(n uint32) *Node {
 	return retGo
 }
 
-// Unsupported : g_node_prepend : unsupported parameter node : record param - coming soon
+// Prepend is a wrapper around the C function g_node_prepend.
+func (recv *Node) Prepend(node *Node) *Node {
+	c_node := node.toC()
+
+	retC := C.g_node_prepend((*C.GNode)(recv.native), c_node)
+	retGo := nodeNewFromC(retC)
+
+	return retGo
+}
 
 // Unsupported : g_node_reverse_children : no return generator
 
@@ -1412,9 +1508,9 @@ func (recv *OptionContext) toC() *C.GOptionContext {
 	return recv.native
 }
 
-// Unsupported : g_option_context_add_group : unsupported parameter group : record param - coming soon
+// Unsupported : g_option_context_add_group : no return generator
 
-// Unsupported : g_option_context_add_main_entries : unsupported parameter entries : record param - coming soon
+// Unsupported : g_option_context_add_main_entries : no return generator
 
 // Unsupported : g_option_context_free : no return generator
 
@@ -1436,7 +1532,7 @@ func (recv *OptionContext) toC() *C.GOptionContext {
 
 // Unsupported : g_option_context_set_ignore_unknown_options : unsupported parameter ignore_unknown : no type generator for gboolean, gboolean
 
-// Unsupported : g_option_context_set_main_group : unsupported parameter group : record param - coming soon
+// Unsupported : g_option_context_set_main_group : no return generator
 
 // Unsupported : g_option_context_set_strict_posix : unsupported parameter strict_posix : no type generator for gboolean, gboolean
 
@@ -1518,7 +1614,7 @@ func (recv *OptionGroup) toC() *C.GOptionGroup {
 
 // Unsupported : g_option_group_new : unsupported parameter destroy : no type generator for DestroyNotify, GDestroyNotify
 
-// Unsupported : g_option_group_add_entries : unsupported parameter entries : record param - coming soon
+// Unsupported : g_option_group_add_entries : no return generator
 
 // Unsupported : g_option_group_free : no return generator
 
@@ -1552,7 +1648,7 @@ func (recv *PatternSpec) toC() *C.GPatternSpec {
 	return recv.native
 }
 
-// Unsupported : g_pattern_spec_equal : unsupported parameter pspec2 : record param - coming soon
+// Unsupported : g_pattern_spec_equal : no return generator
 
 // Unsupported : g_pattern_spec_free : no return generator
 
@@ -2157,8 +2253,6 @@ func (recv *SequenceIter) toC() *C.GSequenceIter {
 	return recv.native
 }
 
-// Unsupported : g_sequence_iter_compare : unsupported parameter b : record param - coming soon
-
 // Unsupported : g_sequence_iter_is_begin : no return generator
 
 // Unsupported : g_sequence_iter_is_end : no return generator
@@ -2196,15 +2290,33 @@ func (recv *Source) toC() *C.GSource {
 	return recv.native
 }
 
-// Unsupported : g_source_new : unsupported parameter source_funcs : record param - coming soon
+// SourceNew is a wrapper around the C function g_source_new.
+func SourceNew(sourceFuncs *SourceFuncs, structSize uint32) *Source {
+	c_source_funcs := sourceFuncs.toC()
 
-// Unsupported : g_source_add_child_source : unsupported parameter child_source : record param - coming soon
+	c_struct_size := (C.guint)(structSize)
 
-// Unsupported : g_source_add_poll : unsupported parameter fd : record param - coming soon
+	retC := C.g_source_new(c_source_funcs, c_struct_size)
+	retGo := sourceNewFromC(retC)
+
+	return retGo
+}
+
+// Unsupported : g_source_add_child_source : no return generator
+
+// Unsupported : g_source_add_poll : no return generator
 
 // Unsupported : g_source_add_unix_fd : unsupported parameter events : no type generator for IOCondition, GIOCondition
 
-// Unsupported : g_source_attach : unsupported parameter context : record param - coming soon
+// Attach is a wrapper around the C function g_source_attach.
+func (recv *Source) Attach(context *MainContext) uint32 {
+	c_context := context.toC()
+
+	retC := C.g_source_attach((*C.GSource)(recv.native), c_context)
+	retGo := (uint32)(retC)
+
+	return retGo
+}
 
 // Unsupported : g_source_destroy : no return generator
 
@@ -2218,7 +2330,7 @@ func (recv *Source) GetContext() *MainContext {
 	return retGo
 }
 
-// Unsupported : g_source_get_current_time : unsupported parameter timeval : record param - coming soon
+// Unsupported : g_source_get_current_time : no return generator
 
 // GetId is a wrapper around the C function g_source_get_id.
 func (recv *Source) GetId() uint32 {
@@ -2258,19 +2370,19 @@ func (recv *Source) Ref() *Source {
 	return retGo
 }
 
-// Unsupported : g_source_remove_child_source : unsupported parameter child_source : record param - coming soon
+// Unsupported : g_source_remove_child_source : no return generator
 
-// Unsupported : g_source_remove_poll : unsupported parameter fd : record param - coming soon
+// Unsupported : g_source_remove_poll : no return generator
 
 // Unsupported : g_source_remove_unix_fd : no return generator
 
 // Unsupported : g_source_set_callback : unsupported parameter func : no type generator for SourceFunc, GSourceFunc
 
-// Unsupported : g_source_set_callback_indirect : unsupported parameter callback_funcs : record param - coming soon
+// Unsupported : g_source_set_callback_indirect : no return generator
 
 // Unsupported : g_source_set_can_recurse : unsupported parameter can_recurse : no type generator for gboolean, gboolean
 
-// Unsupported : g_source_set_funcs : unsupported parameter funcs : record param - coming soon
+// Unsupported : g_source_set_funcs : no return generator
 
 // Unsupported : g_source_set_name : no return generator
 
@@ -2488,7 +2600,7 @@ func (recv *String) Down() *String {
 	return retGo
 }
 
-// Unsupported : g_string_equal : unsupported parameter v2 : record param - coming soon
+// Unsupported : g_string_equal : no return generator
 
 // Erase is a wrapper around the C function g_string_erase.
 func (recv *String) Erase(pos int64, len int64) *String {
@@ -2758,9 +2870,9 @@ func (recv *TestSuite) toC() *C.GTestSuite {
 	return recv.native
 }
 
-// Unsupported : g_test_suite_add : unsupported parameter test_case : record param - coming soon
+// Unsupported : g_test_suite_add : no return generator
 
-// Unsupported : g_test_suite_add_suite : unsupported parameter nestedsuite : record param - coming soon
+// Unsupported : g_test_suite_add_suite : no return generator
 
 // Thread is a wrapper around the C record GThread.
 type Thread struct {

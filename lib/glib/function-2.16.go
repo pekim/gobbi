@@ -69,9 +69,9 @@ func FormatSizeForDisplay(size uint64) string {
 
 // Unsupported : g_markup_collect_attributes : unsupported parameter attribute_names : in string with indirection level of 2
 
-// Unsupported : g_prefix_error : unsupported parameter err : record param - coming soon
+// Unsupported : g_prefix_error : unsupported parameter err : in string with indirection level of 2
 
-// Unsupported : g_propagate_prefixed_error : unsupported parameter dest : record param - coming soon
+// Unsupported : g_propagate_prefixed_error : unsupported parameter dest : in string with indirection level of 2
 
 // Strcmp0 is a wrapper around the C function g_strcmp0.
 func Strcmp0(str1 string, str2 string) int32 {
@@ -176,7 +176,15 @@ func TestRun() int32 {
 	return retGo
 }
 
-// Unsupported : g_test_run_suite : unsupported parameter suite : record param - coming soon
+// TestRunSuite is a wrapper around the C function g_test_run_suite.
+func TestRunSuite(suite *TestSuite) int32 {
+	c_suite := suite.toC()
+
+	retC := C.g_test_run_suite(c_suite)
+	retGo := (int32)(retC)
+
+	return retGo
+}
 
 // TestTimerElapsed is a wrapper around the C function g_test_timer_elapsed.
 func TestTimerElapsed() float64 {

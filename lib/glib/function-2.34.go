@@ -3,6 +3,8 @@
 
 package glib
 
+import "unsafe"
+
 // #define GLIB_DISABLE_DEPRECATION_WARNINGS
 // #include <glib.h>
 // #include <glib/gstdio.h>
@@ -12,11 +14,22 @@ import "C"
 
 // Unsupported : g_clear_pointer : unsupported parameter pp : no type generator for gpointer, gpointer*
 
-// Unsupported : g_compute_checksum_for_bytes : unsupported parameter data : record param - coming soon
+// ComputeChecksumForBytes is a wrapper around the C function g_compute_checksum_for_bytes.
+func ComputeChecksumForBytes(checksumType ChecksumType, data *Bytes) string {
+	c_checksum_type := (C.GChecksumType)(checksumType)
 
-// Unsupported : g_datalist_id_dup_data : unsupported parameter datalist : record param - coming soon
+	c_data := data.toC()
 
-// Unsupported : g_datalist_id_replace_data : unsupported parameter datalist : record param - coming soon
+	retC := C.g_compute_checksum_for_bytes(c_checksum_type, c_data)
+	retGo := C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// Unsupported : g_datalist_id_dup_data : unsupported parameter datalist : in string with indirection level of 2
+
+// Unsupported : g_datalist_id_replace_data : unsupported parameter datalist : in string with indirection level of 2
 
 // Unsupported : g_spawn_check_exit_status : no return generator
 

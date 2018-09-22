@@ -32,13 +32,60 @@ func (recv *DateTime) toC() *C.GDateTime {
 	return recv.native
 }
 
-// Unsupported : g_date_time_new : unsupported parameter tz : record param - coming soon
+// DateTimeNew is a wrapper around the C function g_date_time_new.
+func DateTimeNew(tz *TimeZone, year int32, month int32, day int32, hour int32, minute int32, seconds float64) *DateTime {
+	c_tz := tz.toC()
 
-// Unsupported : g_date_time_new_from_iso8601 : unsupported parameter default_tz : record param - coming soon
+	c_year := (C.gint)(year)
 
-// Unsupported : g_date_time_new_from_timeval_local : unsupported parameter tv : record param - coming soon
+	c_month := (C.gint)(month)
 
-// Unsupported : g_date_time_new_from_timeval_utc : unsupported parameter tv : record param - coming soon
+	c_day := (C.gint)(day)
+
+	c_hour := (C.gint)(hour)
+
+	c_minute := (C.gint)(minute)
+
+	c_seconds := (C.gdouble)(seconds)
+
+	retC := C.g_date_time_new(c_tz, c_year, c_month, c_day, c_hour, c_minute, c_seconds)
+	retGo := dateTimeNewFromC(retC)
+
+	return retGo
+}
+
+// DateTimeNewFromIso8601 is a wrapper around the C function g_date_time_new_from_iso8601.
+func DateTimeNewFromIso8601(text string, defaultTz *TimeZone) *DateTime {
+	c_text := C.CString(text)
+	defer C.free(unsafe.Pointer(c_text))
+
+	c_default_tz := defaultTz.toC()
+
+	retC := C.g_date_time_new_from_iso8601(c_text, c_default_tz)
+	retGo := dateTimeNewFromC(retC)
+
+	return retGo
+}
+
+// DateTimeNewFromTimevalLocal is a wrapper around the C function g_date_time_new_from_timeval_local.
+func DateTimeNewFromTimevalLocal(tv *TimeVal) *DateTime {
+	c_tv := tv.toC()
+
+	retC := C.g_date_time_new_from_timeval_local(c_tv)
+	retGo := dateTimeNewFromC(retC)
+
+	return retGo
+}
+
+// DateTimeNewFromTimevalUtc is a wrapper around the C function g_date_time_new_from_timeval_utc.
+func DateTimeNewFromTimevalUtc(tv *TimeVal) *DateTime {
+	c_tv := tv.toC()
+
+	retC := C.g_date_time_new_from_timeval_utc(c_tv)
+	retGo := dateTimeNewFromC(retC)
+
+	return retGo
+}
 
 // DateTimeNewFromUnixLocal is a wrapper around the C function g_date_time_new_from_unix_local.
 func DateTimeNewFromUnixLocal(t int64) *DateTime {
@@ -80,7 +127,15 @@ func DateTimeNewLocal(year int32, month int32, day int32, hour int32, minute int
 	return retGo
 }
 
-// Unsupported : g_date_time_new_now : unsupported parameter tz : record param - coming soon
+// DateTimeNewNow is a wrapper around the C function g_date_time_new_now.
+func DateTimeNewNow(tz *TimeZone) *DateTime {
+	c_tz := tz.toC()
+
+	retC := C.g_date_time_new_now(c_tz)
+	retGo := dateTimeNewFromC(retC)
+
+	return retGo
+}
 
 // DateTimeNewNowLocal is a wrapper around the C function g_date_time_new_now_local.
 func DateTimeNewNowLocal() *DateTime {
@@ -218,7 +273,15 @@ func (recv *DateTime) AddYears(years int32) *DateTime {
 	return retGo
 }
 
-// Unsupported : g_date_time_difference : unsupported parameter begin : record param - coming soon
+// Difference is a wrapper around the C function g_date_time_difference.
+func (recv *DateTime) Difference(begin *DateTime) TimeSpan {
+	c_begin := begin.toC()
+
+	retC := C.g_date_time_difference((*C.GDateTime)(recv.native), c_begin)
+	retGo := (TimeSpan)(retC)
+
+	return retGo
+}
 
 // Format is a wrapper around the C function g_date_time_format.
 func (recv *DateTime) Format(format string) string {
@@ -364,9 +427,17 @@ func (recv *DateTime) ToLocal() *DateTime {
 	return retGo
 }
 
-// Unsupported : g_date_time_to_timeval : unsupported parameter tv : record param - coming soon
+// Unsupported : g_date_time_to_timeval : no return generator
 
-// Unsupported : g_date_time_to_timezone : unsupported parameter tz : record param - coming soon
+// ToTimezone is a wrapper around the C function g_date_time_to_timezone.
+func (recv *DateTime) ToTimezone(tz *TimeZone) *DateTime {
+	c_tz := tz.toC()
+
+	retC := C.g_date_time_to_timezone((*C.GDateTime)(recv.native), c_tz)
+	retGo := dateTimeNewFromC(retC)
+
+	return retGo
+}
 
 // ToUnix is a wrapper around the C function g_date_time_to_unix.
 func (recv *DateTime) ToUnix() int64 {

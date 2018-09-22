@@ -94,7 +94,7 @@ func (recv *Object) GetData(key string) uintptr {
 	return retGo
 }
 
-// Unsupported : g_object_get_property : unsupported parameter value : record param - coming soon
+// Unsupported : g_object_get_property : no return generator
 
 // Unsupported : g_object_get_qdata : unsupported parameter quark : no type generator for GLib.Quark, GQuark
 
@@ -132,7 +132,7 @@ func (recv *Object) Ref() uintptr {
 
 // Unsupported : g_object_set_data_full : unsupported parameter destroy : no type generator for GLib.DestroyNotify, GDestroyNotify
 
-// Unsupported : g_object_set_property : unsupported parameter value : record param - coming soon
+// Unsupported : g_object_set_property : no return generator
 
 // Unsupported : g_object_set_qdata : unsupported parameter quark : no type generator for GLib.Quark, GQuark
 
@@ -159,7 +159,7 @@ func (recv *Object) StealData(key string) uintptr {
 
 // Unsupported : g_object_unref : no return generator
 
-// Unsupported : g_object_watch_closure : unsupported parameter closure : record param - coming soon
+// Unsupported : g_object_watch_closure : no return generator
 
 // Unsupported : g_object_weak_ref : unsupported parameter notify : no type generator for WeakNotify, GWeakNotify
 
@@ -895,9 +895,9 @@ func (recv *TypeModule) toC() *C.GTypeModule {
 
 // Unsupported : g_type_module_add_interface : unsupported parameter instance_type : no type generator for GType, GType
 
-// Unsupported : g_type_module_register_enum : unsupported parameter const_static_values : record param - coming soon
+// Unsupported : g_type_module_register_enum : no return generator
 
-// Unsupported : g_type_module_register_flags : unsupported parameter const_static_values : record param - coming soon
+// Unsupported : g_type_module_register_flags : no return generator
 
 // Unsupported : g_type_module_register_type : unsupported parameter parent_type : no type generator for GType, GType
 

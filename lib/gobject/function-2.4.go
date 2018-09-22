@@ -10,7 +10,7 @@ import "C"
 
 // Unsupported : g_param_spec_override : unsupported parameter overridden : no type generator for ParamSpec, GParamSpec*
 
-// Unsupported : g_signal_accumulator_true_handled : unsupported parameter ihint : record param - coming soon
+// Unsupported : g_signal_accumulator_true_handled : no return generator
 
 // Unsupported : g_type_add_interface_check : unsupported parameter check_func : no type generator for TypeInterfaceCheckFunc, GTypeInterfaceCheckFunc
 

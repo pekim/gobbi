@@ -12,4 +12,16 @@ import "C"
 
 // Unsupported : g_base64_decode_inplace : unsupported parameter text : no param type
 
-// Unsupported : g_poll : unsupported parameter fds : record param - coming soon
+// Poll is a wrapper around the C function g_poll.
+func Poll(fds *PollFD, nfds uint32, timeout int32) int32 {
+	c_fds := fds.toC()
+
+	c_nfds := (C.guint)(nfds)
+
+	c_timeout := (C.gint)(timeout)
+
+	retC := C.g_poll(c_fds, c_nfds, c_timeout)
+	retGo := (int32)(retC)
+
+	return retGo
+}

@@ -3,6 +3,8 @@
 
 package glib
 
+import "unsafe"
+
 // #define GLIB_DISABLE_DEPRECATION_WARNINGS
 // #include <glib.h>
 // #include <glib/gstdio.h>
@@ -10,7 +12,20 @@ package glib
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : g_compute_hmac_for_bytes : unsupported parameter key : record param - coming soon
+// ComputeHmacForBytes is a wrapper around the C function g_compute_hmac_for_bytes.
+func ComputeHmacForBytes(digestType ChecksumType, key *Bytes, data *Bytes) string {
+	c_digest_type := (C.GChecksumType)(digestType)
+
+	c_key := key.toC()
+
+	c_data := data.toC()
+
+	retC := C.g_compute_hmac_for_bytes(c_digest_type, c_key, c_data)
+	retGo := C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // Unsupported : g_log_set_writer_func : unsupported parameter func : no type generator for LogWriterFunc, GLogWriterFunc
 

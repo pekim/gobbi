@@ -8,4 +8,4 @@ package gobject
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : g_cclosure_marshal_generic : unsupported parameter closure : record param - coming soon
+// Unsupported : g_cclosure_marshal_generic : no return generator

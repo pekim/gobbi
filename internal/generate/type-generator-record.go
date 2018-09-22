@@ -33,12 +33,12 @@ func (t *TypeGeneratorRecord) isSupportedAsParam(direction string) (supported bo
 		return false, fmt.Sprintf("Blacklisted record : %s", t.record.CType)
 	}
 
-	//if direction != "out" && t.typ.indirectLevel > 1 {
-	//	return false, fmt.Sprintf("in string with indirection level of %d",
-	//		t.typ.indirectLevel)
-	//}
+	if direction != "out" && t.typ.indirectLevel > 1 {
+		return false, fmt.Sprintf("in string with indirection level of %d",
+			t.typ.indirectLevel)
+	}
 
-	return false, "record param - coming soon"
+	return true, ""
 }
 
 func (t *TypeGeneratorRecord) isSupportedAsReturnValue() (supported bool, reason string) {
@@ -62,6 +62,7 @@ func (t *TypeGeneratorRecord) generateDeclaration(g *jen.Group, goVarName string
 }
 
 func (t *TypeGeneratorRecord) generateParamCallArgument(g *jen.Group, cVarName string) {
+	g.Id(cVarName)
 }
 
 func (t *TypeGeneratorRecord) generateParamOutCallArgument(g *jen.Group, cVarName string) {
@@ -71,6 +72,11 @@ func (t *TypeGeneratorRecord) generateParamOutCallArgument(g *jen.Group, cVarNam
 }
 
 func (t *TypeGeneratorRecord) generateParamCVar(g *jen.Group, cVarName string, goVarName string, transferOwnership string) {
+	g.
+		Id(cVarName).
+		Op(":=").
+		Id(goVarName).Op(".").Id("toC").
+		Call()
 }
 
 func (t *TypeGeneratorRecord) generateParamOutCVar(g *jen.Group, cVarName string) {

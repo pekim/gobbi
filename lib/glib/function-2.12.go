@@ -51,6 +51,6 @@ func MainCurrentSource() *Source {
 	return retGo
 }
 
-// Unsupported : g_time_val_from_iso8601 : unsupported parameter time_ : record param - coming soon
+// Unsupported : g_time_val_from_iso8601 : no return generator
 
 // Unsupported : g_unichar_iswide_cjk : no return generator

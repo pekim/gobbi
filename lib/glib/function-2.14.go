@@ -32,23 +32,51 @@ func GetUserSpecialDir(directory UserDirectory) string {
 
 // Unsupported : g_regex_split_simple : unsupported parameter compile_options : no type generator for RegexCompileFlags, GRegexCompileFlags
 
-// Unsupported : g_sequence_get : unsupported parameter iter : record param - coming soon
+// SequenceGet is a wrapper around the C function g_sequence_get.
+func SequenceGet(iter *SequenceIter) uintptr {
+	c_iter := iter.toC()
 
-// Unsupported : g_sequence_insert_before : unsupported parameter iter : record param - coming soon
+	retC := C.g_sequence_get(c_iter)
+	retGo := (uintptr)(retC)
 
-// Unsupported : g_sequence_move : unsupported parameter src : record param - coming soon
+	return retGo
+}
 
-// Unsupported : g_sequence_move_range : unsupported parameter dest : record param - coming soon
+// SequenceInsertBefore is a wrapper around the C function g_sequence_insert_before.
+func SequenceInsertBefore(iter *SequenceIter, data uintptr) *SequenceIter {
+	c_iter := iter.toC()
 
-// Unsupported : g_sequence_range_get_midpoint : unsupported parameter begin : record param - coming soon
+	c_data := (C.gpointer)(data)
 
-// Unsupported : g_sequence_remove : unsupported parameter iter : record param - coming soon
+	retC := C.g_sequence_insert_before(c_iter, c_data)
+	retGo := sequenceIterNewFromC(retC)
 
-// Unsupported : g_sequence_remove_range : unsupported parameter begin : record param - coming soon
+	return retGo
+}
 
-// Unsupported : g_sequence_set : unsupported parameter iter : record param - coming soon
+// Unsupported : g_sequence_move : no return generator
 
-// Unsupported : g_sequence_swap : unsupported parameter a : record param - coming soon
+// Unsupported : g_sequence_move_range : no return generator
+
+// SequenceRangeGetMidpoint is a wrapper around the C function g_sequence_range_get_midpoint.
+func SequenceRangeGetMidpoint(begin *SequenceIter, end *SequenceIter) *SequenceIter {
+	c_begin := begin.toC()
+
+	c_end := end.toC()
+
+	retC := C.g_sequence_range_get_midpoint(c_begin, c_end)
+	retGo := sequenceIterNewFromC(retC)
+
+	return retGo
+}
+
+// Unsupported : g_sequence_remove : no return generator
+
+// Unsupported : g_sequence_remove_range : no return generator
+
+// Unsupported : g_sequence_set : no return generator
+
+// Unsupported : g_sequence_swap : no return generator
 
 // SliceCopy is a wrapper around the C function g_slice_copy.
 func SliceCopy(blockSize uint64, memBlock uintptr) uintptr {

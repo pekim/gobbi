@@ -167,7 +167,7 @@ func AsciiXdigitValue(c rune) int32 {
 
 // Unsupported : g_assertion_message_cmpstr : no return generator
 
-// Unsupported : g_assertion_message_error : unsupported parameter error : record param - coming soon
+// Unsupported : g_assertion_message_error : no return generator
 
 // Unsupported : g_assertion_message_expr : no return generator
 
@@ -250,19 +250,19 @@ func ConvertErrorQuark() Quark {
 
 // Unsupported : g_convert_with_iconv : unsupported parameter str : no param type
 
-// Unsupported : g_datalist_clear : unsupported parameter datalist : record param - coming soon
+// Unsupported : g_datalist_clear : unsupported parameter datalist : in string with indirection level of 2
 
-// Unsupported : g_datalist_foreach : unsupported parameter datalist : record param - coming soon
+// Unsupported : g_datalist_foreach : unsupported parameter datalist : in string with indirection level of 2
 
-// Unsupported : g_datalist_get_data : unsupported parameter datalist : record param - coming soon
+// Unsupported : g_datalist_get_data : unsupported parameter datalist : in string with indirection level of 2
 
-// Unsupported : g_datalist_id_get_data : unsupported parameter datalist : record param - coming soon
+// Unsupported : g_datalist_id_get_data : unsupported parameter datalist : in string with indirection level of 2
 
-// Unsupported : g_datalist_id_remove_no_notify : unsupported parameter datalist : record param - coming soon
+// Unsupported : g_datalist_id_remove_no_notify : unsupported parameter datalist : in string with indirection level of 2
 
-// Unsupported : g_datalist_id_set_data_full : unsupported parameter datalist : record param - coming soon
+// Unsupported : g_datalist_id_set_data_full : unsupported parameter datalist : in string with indirection level of 2
 
-// Unsupported : g_datalist_init : unsupported parameter datalist : record param - coming soon
+// Unsupported : g_datalist_init : unsupported parameter datalist : in string with indirection level of 2
 
 // Unsupported : g_dataset_destroy : no return generator
 
@@ -328,7 +328,23 @@ func DateGetSundayWeeksInYear(year DateYear) uint8 {
 
 // Unsupported : g_date_is_leap_year : no return generator
 
-// Unsupported : g_date_strftime : unsupported parameter date : record param - coming soon
+// DateStrftime is a wrapper around the C function g_date_strftime.
+func DateStrftime(s string, slen uint64, format string, date *Date) uint64 {
+	c_s := C.CString(s)
+	defer C.free(unsafe.Pointer(c_s))
+
+	c_slen := (C.gsize)(slen)
+
+	c_format := C.CString(format)
+	defer C.free(unsafe.Pointer(c_format))
+
+	c_date := date.toC()
+
+	retC := C.g_date_strftime(c_s, c_slen, c_format, c_date)
+	retGo := (uint64)(retC)
+
+	return retGo
+}
 
 // Unsupported : g_date_valid_day : no return generator
 
@@ -483,7 +499,7 @@ func GetCurrentDir() string {
 	return retGo
 }
 
-// Unsupported : g_get_current_time : unsupported parameter result : record param - coming soon
+// Unsupported : g_get_current_time : no return generator
 
 // GetHomeDir is a wrapper around the C function g_get_home_dir.
 func GetHomeDir() string {
@@ -552,17 +568,17 @@ func Getenv(variable string) string {
 
 // Unsupported : g_hash_table_steal : unsupported parameter hash_table : no type generator for GLib.HashTable, GHashTable*
 
-// Unsupported : g_hook_destroy : unsupported parameter hook_list : record param - coming soon
+// Unsupported : g_hook_destroy : no return generator
 
-// Unsupported : g_hook_destroy_link : unsupported parameter hook_list : record param - coming soon
+// Unsupported : g_hook_destroy_link : no return generator
 
-// Unsupported : g_hook_free : unsupported parameter hook_list : record param - coming soon
+// Unsupported : g_hook_free : no return generator
 
-// Unsupported : g_hook_insert_before : unsupported parameter hook_list : record param - coming soon
+// Unsupported : g_hook_insert_before : no return generator
 
-// Unsupported : g_hook_prepend : unsupported parameter hook_list : record param - coming soon
+// Unsupported : g_hook_prepend : no return generator
 
-// Unsupported : g_hook_unref : unsupported parameter hook_list : record param - coming soon
+// Unsupported : g_hook_unref : no return generator
 
 // Unsupported : g_iconv : unsupported parameter converter : Blacklisted record : GIConv
 
@@ -708,7 +724,7 @@ func MarkupEscapeText(text string, length int64) string {
 
 // Unsupported : g_mem_profile : no return generator
 
-// Unsupported : g_mem_set_vtable : unsupported parameter vtable : record param - coming soon
+// Unsupported : g_mem_set_vtable : no return generator
 
 // Memdup is a wrapper around the C function g_memdup.
 func Memdup(mem uintptr, byteSize uint32) uintptr {
@@ -788,11 +804,11 @@ func PathSkipRoot(fileName string) string {
 	return retGo
 }
 
-// Unsupported : g_pattern_match : unsupported parameter pspec : record param - coming soon
+// Unsupported : g_pattern_match : no return generator
 
 // Unsupported : g_pattern_match_simple : no return generator
 
-// Unsupported : g_pattern_match_string : unsupported parameter pspec : record param - coming soon
+// Unsupported : g_pattern_match_string : no return generator
 
 // Unsupported : g_print : unsupported parameter ... : varargs
 
@@ -800,7 +816,7 @@ func PathSkipRoot(fileName string) string {
 
 // Unsupported : g_printf_string_upper_bound : unsupported parameter args : no type generator for va_list, va_list
 
-// Unsupported : g_propagate_error : unsupported parameter dest : record param - coming soon
+// Unsupported : g_propagate_error : no return generator
 
 // Unsupported : g_qsort_with_data : unsupported parameter compare_func : no type generator for CompareDataFunc, GCompareDataFunc
 
@@ -911,7 +927,7 @@ func RegexErrorQuark() Quark {
 
 // Unsupported : g_return_if_fail_warning : no return generator
 
-// Unsupported : g_set_error : unsupported parameter err : record param - coming soon
+// Unsupported : g_set_error : unsupported parameter ... : varargs
 
 // Unsupported : g_set_prgname : no return generator
 
@@ -978,7 +994,7 @@ func SliceGetConfig(ckey SliceConfig) int64 {
 
 // Unsupported : g_source_remove : no return generator
 
-// Unsupported : g_source_remove_by_funcs_user_data : unsupported parameter funcs : record param - coming soon
+// Unsupported : g_source_remove_by_funcs_user_data : no return generator
 
 // Unsupported : g_source_remove_by_user_data : no return generator
 
@@ -1474,13 +1490,13 @@ func TimeoutSourceNew(interval uint32) *Source {
 	return retGo
 }
 
-// Unsupported : g_trash_stack_height : unsupported parameter stack_p : record param - coming soon
+// Unsupported : g_trash_stack_height : unsupported parameter stack_p : in string with indirection level of 2
 
-// Unsupported : g_trash_stack_peek : unsupported parameter stack_p : record param - coming soon
+// Unsupported : g_trash_stack_peek : unsupported parameter stack_p : in string with indirection level of 2
 
-// Unsupported : g_trash_stack_pop : unsupported parameter stack_p : record param - coming soon
+// Unsupported : g_trash_stack_pop : unsupported parameter stack_p : in string with indirection level of 2
 
-// Unsupported : g_trash_stack_push : unsupported parameter stack_p : record param - coming soon
+// Unsupported : g_trash_stack_push : unsupported parameter stack_p : in string with indirection level of 2
 
 // TryMalloc is a wrapper around the C function g_try_malloc.
 func TryMalloc(nBytes uint64) uintptr {
