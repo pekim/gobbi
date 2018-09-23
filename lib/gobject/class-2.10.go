@@ -3,6 +3,8 @@
 
 package gobject
 
+import "unsafe"
+
 // #define GLIB_DISABLE_DEPRECATION_WARNINGS
 // #include <glib-object.h>
 // #include <stdlib.h>
@@ -15,7 +17,8 @@ type ParamSpecGType struct {
 	// is_a_type : no type generator for GType, GType
 }
 
-func paramSpecGTypeNewFromC(c *C.GParamSpecGType) *ParamSpecGType {
+func ParamSpecGTypeNewFromC(u unsafe.Pointer) *ParamSpecGType {
+	c := (*C.GParamSpecGType)(u)
 	if c == nil {
 		return nil
 	}

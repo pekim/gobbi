@@ -31,7 +31,7 @@ type Record struct {
 func (r *Record) init(ns *Namespace) {
 	r.Namespace = ns
 	r.GoName = r.Name
-	r.newFromCFuncName = fmt.Sprintf("%sNewFromC", lowerFirst(r.Name))
+	r.newFromCFuncName = fmt.Sprintf("%sNewFromC", r.Name)
 
 	r.Constructors.init(ns, r)
 	r.Methods.init(ns, r)

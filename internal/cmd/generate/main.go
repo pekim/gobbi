@@ -5,7 +5,7 @@ import (
 )
 
 func main() {
-	girs := generate.GirNewRoot("GObject", "2.0")
+	girs := generate.GirNewRoot("Gio", "2.0")
 
 	for _, gir := range girs {
 		gir.Generate()

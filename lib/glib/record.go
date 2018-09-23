@@ -18,7 +18,8 @@ type Array struct {
 	Len    uint32
 }
 
-func arrayNewFromC(c *C.GArray) *Array {
+func ArrayNewFromC(u unsafe.Pointer) *Array {
+	c := (*C.GArray)(u)
 	if c == nil {
 		return nil
 	}
@@ -46,7 +47,8 @@ type AsyncQueue struct {
 	native *C.GAsyncQueue
 }
 
-func asyncQueueNewFromC(c *C.GAsyncQueue) *AsyncQueue {
+func AsyncQueueNewFromC(u unsafe.Pointer) *AsyncQueue {
+	c := (*C.GAsyncQueue)(u)
 	if c == nil {
 		return nil
 	}
@@ -110,7 +112,7 @@ func (recv *AsyncQueue) PopUnlocked() uintptr {
 // Ref is a wrapper around the C function g_async_queue_ref.
 func (recv *AsyncQueue) Ref() *AsyncQueue {
 	retC := C.g_async_queue_ref((*C.GAsyncQueue)(recv.native))
-	retGo := asyncQueueNewFromC(retC)
+	retGo := AsyncQueueNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -192,7 +194,8 @@ type BookmarkFile struct {
 	native *C.GBookmarkFile
 }
 
-func bookmarkFileNewFromC(c *C.GBookmarkFile) *BookmarkFile {
+func BookmarkFileNewFromC(u unsafe.Pointer) *BookmarkFile {
+	c := (*C.GBookmarkFile)(u)
 	if c == nil {
 		return nil
 	}
@@ -282,7 +285,8 @@ type ByteArray struct {
 	Len uint32
 }
 
-func byteArrayNewFromC(c *C.GByteArray) *ByteArray {
+func ByteArrayNewFromC(u unsafe.Pointer) *ByteArray {
+	c := (*C.GByteArray)(u)
 	if c == nil {
 		return nil
 	}
@@ -309,7 +313,8 @@ type Cond struct {
 	// Private : i
 }
 
-func condNewFromC(c *C.GCond) *Cond {
+func CondNewFromC(u unsafe.Pointer) *Cond {
+	c := (*C.GCond)(u)
 	if c == nil {
 		return nil
 	}
@@ -341,7 +346,8 @@ type Data struct {
 	native *C.GData
 }
 
-func dataNewFromC(c *C.GData) *Data {
+func DataNewFromC(u unsafe.Pointer) *Data {
+	c := (*C.GData)(u)
 	if c == nil {
 		return nil
 	}
@@ -367,7 +373,8 @@ type Date struct {
 	// Bitfield not supported : 16 year
 }
 
-func dateNewFromC(c *C.GDate) *Date {
+func DateNewFromC(u unsafe.Pointer) *Date {
+	c := (*C.GDate)(u)
 	if c == nil {
 		return nil
 	}
@@ -385,7 +392,7 @@ func (recv *Date) toC() *C.GDate {
 // DateNew is a wrapper around the C function g_date_new.
 func DateNew() *Date {
 	retC := C.g_date_new()
-	retGo := dateNewFromC(retC)
+	retGo := DateNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -399,7 +406,7 @@ func DateNewDmy(day DateDay, month DateMonth, year DateYear) *Date {
 	c_year := (C.GDateYear)(year)
 
 	retC := C.g_date_new_dmy(c_day, c_month, c_year)
-	retGo := dateNewFromC(retC)
+	retGo := DateNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -409,7 +416,7 @@ func DateNewJulian(julianDay uint32) *Date {
 	c_julian_day := (C.guint32)(julianDay)
 
 	retC := C.g_date_new_julian(c_julian_day)
-	retGo := dateNewFromC(retC)
+	retGo := DateNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -551,7 +558,8 @@ type DebugKey struct {
 	Value  uint32
 }
 
-func debugKeyNewFromC(c *C.GDebugKey) *DebugKey {
+func DebugKeyNewFromC(u unsafe.Pointer) *DebugKey {
+	c := (*C.GDebugKey)(u)
 	if c == nil {
 		return nil
 	}
@@ -579,7 +587,8 @@ type Dir struct {
 	native *C.GDir
 }
 
-func dirNewFromC(c *C.GDir) *Dir {
+func DirNewFromC(u unsafe.Pointer) *Dir {
+	c := (*C.GDir)(u)
 	if c == nil {
 		return nil
 	}
@@ -614,7 +623,8 @@ type Error struct {
 	Message string
 }
 
-func errorNewFromC(c *C.GError) *Error {
+func ErrorNewFromC(u unsafe.Pointer) *Error {
+	c := (*C.GError)(u)
 	if c == nil {
 		return nil
 	}
@@ -652,7 +662,7 @@ func ErrorNewLiteral(domain Quark, code int32, message string) *Error {
 	defer C.free(unsafe.Pointer(c_message))
 
 	retC := C.g_error_new_literal(c_domain, c_code, c_message)
-	retGo := errorNewFromC(retC)
+	retGo := ErrorNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -662,7 +672,7 @@ func ErrorNewLiteral(domain Quark, code int32, message string) *Error {
 // Copy is a wrapper around the C function g_error_copy.
 func (recv *Error) Copy() *Error {
 	retC := C.g_error_copy((*C.GError)(recv.native))
-	retGo := errorNewFromC(retC)
+	retGo := ErrorNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -676,7 +686,8 @@ type HashTable struct {
 	native *C.GHashTable
 }
 
-func hashTableNewFromC(c *C.GHashTable) *HashTable {
+func HashTableNewFromC(u unsafe.Pointer) *HashTable {
+	c := (*C.GHashTable)(u)
 	if c == nil {
 		return nil
 	}
@@ -702,7 +713,8 @@ type HashTableIter struct {
 	// Private : dummy6
 }
 
-func hashTableIterNewFromC(c *C.GHashTableIter) *HashTableIter {
+func HashTableIterNewFromC(u unsafe.Pointer) *HashTableIter {
+	c := (*C.GHashTableIter)(u)
 	if c == nil {
 		return nil
 	}
@@ -740,7 +752,8 @@ type Hook struct {
 	// destroy : no type generator for DestroyNotify, GDestroyNotify
 }
 
-func hookNewFromC(c *C.GHook) *Hook {
+func HookNewFromC(u unsafe.Pointer) *Hook {
+	c := (*C.GHook)(u)
 	if c == nil {
 		return nil
 	}
@@ -794,7 +807,8 @@ type HookList struct {
 	// no type for dummy
 }
 
-func hookListNewFromC(c *C.GHookList) *HookList {
+func HookListNewFromC(u unsafe.Pointer) *HookList {
+	c := (*C.GHookList)(u)
 	if c == nil {
 		return nil
 	}
@@ -846,7 +860,8 @@ type IOFuncs struct {
 	// no type for io_get_flags
 }
 
-func iOFuncsNewFromC(c *C.GIOFuncs) *IOFuncs {
+func IOFuncsNewFromC(u unsafe.Pointer) *IOFuncs {
+	c := (*C.GIOFuncs)(u)
 	if c == nil {
 		return nil
 	}
@@ -866,7 +881,8 @@ type KeyFile struct {
 	native *C.GKeyFile
 }
 
-func keyFileNewFromC(c *C.GKeyFile) *KeyFile {
+func KeyFileNewFromC(u unsafe.Pointer) *KeyFile {
+	c := (*C.GKeyFile)(u)
 	if c == nil {
 		return nil
 	}
@@ -884,7 +900,7 @@ func (recv *KeyFile) toC() *C.GKeyFile {
 // KeyFileNew is a wrapper around the C function g_key_file_new.
 func KeyFileNew() *KeyFile {
 	retC := C.g_key_file_new()
-	retGo := keyFileNewFromC(retC)
+	retGo := KeyFileNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -971,7 +987,8 @@ type List struct {
 	// prev : record
 }
 
-func listNewFromC(c *C.GList) *List {
+func ListNewFromC(u unsafe.Pointer) *List {
+	c := (*C.GList)(u)
 	if c == nil {
 		return nil
 	}
@@ -996,7 +1013,8 @@ type MainContext struct {
 	native *C.GMainContext
 }
 
-func mainContextNewFromC(c *C.GMainContext) *MainContext {
+func MainContextNewFromC(u unsafe.Pointer) *MainContext {
+	c := (*C.GMainContext)(u)
 	if c == nil {
 		return nil
 	}
@@ -1014,7 +1032,7 @@ func (recv *MainContext) toC() *C.GMainContext {
 // MainContextNew is a wrapper around the C function g_main_context_new.
 func MainContextNew() *MainContext {
 	retC := C.g_main_context_new()
-	retGo := mainContextNewFromC(retC)
+	retGo := MainContextNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -1034,7 +1052,7 @@ func (recv *MainContext) FindSourceByFuncsUserData(funcs *SourceFuncs, userData 
 	c_user_data := (C.gpointer)(userData)
 
 	retC := C.g_main_context_find_source_by_funcs_user_data((*C.GMainContext)(recv.native), c_funcs, c_user_data)
-	retGo := sourceNewFromC(retC)
+	retGo := SourceNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -1044,7 +1062,7 @@ func (recv *MainContext) FindSourceById(sourceId uint32) *Source {
 	c_source_id := (C.guint)(sourceId)
 
 	retC := C.g_main_context_find_source_by_id((*C.GMainContext)(recv.native), c_source_id)
-	retGo := sourceNewFromC(retC)
+	retGo := SourceNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -1054,7 +1072,7 @@ func (recv *MainContext) FindSourceByUserData(userData uintptr) *Source {
 	c_user_data := (C.gpointer)(userData)
 
 	retC := C.g_main_context_find_source_by_user_data((*C.GMainContext)(recv.native), c_user_data)
-	retGo := sourceNewFromC(retC)
+	retGo := SourceNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -1082,7 +1100,7 @@ func (recv *MainContext) FindSourceByUserData(userData uintptr) *Source {
 // Ref is a wrapper around the C function g_main_context_ref.
 func (recv *MainContext) Ref() *MainContext {
 	retC := C.g_main_context_ref((*C.GMainContext)(recv.native))
-	retGo := mainContextNewFromC(retC)
+	retGo := MainContextNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -1104,7 +1122,8 @@ type MainLoop struct {
 	native *C.GMainLoop
 }
 
-func mainLoopNewFromC(c *C.GMainLoop) *MainLoop {
+func MainLoopNewFromC(u unsafe.Pointer) *MainLoop {
+	c := (*C.GMainLoop)(u)
 	if c == nil {
 		return nil
 	}
@@ -1124,7 +1143,7 @@ func (recv *MainLoop) toC() *C.GMainLoop {
 // GetContext is a wrapper around the C function g_main_loop_get_context.
 func (recv *MainLoop) GetContext() *MainContext {
 	retC := C.g_main_loop_get_context((*C.GMainLoop)(recv.native))
-	retGo := mainContextNewFromC(retC)
+	retGo := MainContextNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -1136,7 +1155,7 @@ func (recv *MainLoop) GetContext() *MainContext {
 // Ref is a wrapper around the C function g_main_loop_ref.
 func (recv *MainLoop) Ref() *MainLoop {
 	retC := C.g_main_loop_ref((*C.GMainLoop)(recv.native))
-	retGo := mainLoopNewFromC(retC)
+	retGo := MainLoopNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -1150,7 +1169,8 @@ type MappedFile struct {
 	native *C.GMappedFile
 }
 
-func mappedFileNewFromC(c *C.GMappedFile) *MappedFile {
+func MappedFileNewFromC(u unsafe.Pointer) *MappedFile {
+	c := (*C.GMappedFile)(u)
 	if c == nil {
 		return nil
 	}
@@ -1178,7 +1198,8 @@ type MarkupParseContext struct {
 	native *C.GMarkupParseContext
 }
 
-func markupParseContextNewFromC(c *C.GMarkupParseContext) *MarkupParseContext {
+func MarkupParseContextNewFromC(u unsafe.Pointer) *MarkupParseContext {
+	c := (*C.GMarkupParseContext)(u)
 	if c == nil {
 		return nil
 	}
@@ -1217,7 +1238,8 @@ type MarkupParser struct {
 	// no type for error
 }
 
-func markupParserNewFromC(c *C.GMarkupParser) *MarkupParser {
+func MarkupParserNewFromC(u unsafe.Pointer) *MarkupParser {
+	c := (*C.GMarkupParser)(u)
 	if c == nil {
 		return nil
 	}
@@ -1237,7 +1259,8 @@ type MatchInfo struct {
 	native *C.GMatchInfo
 }
 
-func matchInfoNewFromC(c *C.GMatchInfo) *MatchInfo {
+func MatchInfoNewFromC(u unsafe.Pointer) *MatchInfo {
+	c := (*C.GMatchInfo)(u)
 	if c == nil {
 		return nil
 	}
@@ -1279,7 +1302,8 @@ type MemVTable struct {
 	// no type for try_realloc
 }
 
-func memVTableNewFromC(c *C.GMemVTable) *MemVTable {
+func MemVTableNewFromC(u unsafe.Pointer) *MemVTable {
+	c := (*C.GMemVTable)(u)
 	if c == nil {
 		return nil
 	}
@@ -1304,7 +1328,8 @@ type Node struct {
 	// children : record
 }
 
-func nodeNewFromC(c *C.GNode) *Node {
+func NodeNewFromC(u unsafe.Pointer) *Node {
+	c := (*C.GNode)(u)
 	if c == nil {
 		return nil
 	}
@@ -1349,7 +1374,7 @@ func (recv *Node) ChildPosition(child *Node) int32 {
 // Copy is a wrapper around the C function g_node_copy.
 func (recv *Node) Copy() *Node {
 	retC := C.g_node_copy((*C.GNode)(recv.native))
-	retGo := nodeNewFromC(retC)
+	retGo := NodeNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -1373,7 +1398,7 @@ func (recv *Node) Depth() uint32 {
 // FirstSibling is a wrapper around the C function g_node_first_sibling.
 func (recv *Node) FirstSibling() *Node {
 	retC := C.g_node_first_sibling((*C.GNode)(recv.native))
-	retGo := nodeNewFromC(retC)
+	retGo := NodeNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -1381,7 +1406,7 @@ func (recv *Node) FirstSibling() *Node {
 // GetRoot is a wrapper around the C function g_node_get_root.
 func (recv *Node) GetRoot() *Node {
 	retC := C.g_node_get_root((*C.GNode)(recv.native))
-	retGo := nodeNewFromC(retC)
+	retGo := NodeNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -1393,7 +1418,7 @@ func (recv *Node) Insert(position int32, node *Node) *Node {
 	c_node := node.toC()
 
 	retC := C.g_node_insert((*C.GNode)(recv.native), c_position, c_node)
-	retGo := nodeNewFromC(retC)
+	retGo := NodeNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -1405,7 +1430,7 @@ func (recv *Node) InsertAfter(sibling *Node, node *Node) *Node {
 	c_node := node.toC()
 
 	retC := C.g_node_insert_after((*C.GNode)(recv.native), c_sibling, c_node)
-	retGo := nodeNewFromC(retC)
+	retGo := NodeNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -1417,7 +1442,7 @@ func (recv *Node) InsertBefore(sibling *Node, node *Node) *Node {
 	c_node := node.toC()
 
 	retC := C.g_node_insert_before((*C.GNode)(recv.native), c_sibling, c_node)
-	retGo := nodeNewFromC(retC)
+	retGo := NodeNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -1427,7 +1452,7 @@ func (recv *Node) InsertBefore(sibling *Node, node *Node) *Node {
 // LastChild is a wrapper around the C function g_node_last_child.
 func (recv *Node) LastChild() *Node {
 	retC := C.g_node_last_child((*C.GNode)(recv.native))
-	retGo := nodeNewFromC(retC)
+	retGo := NodeNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -1435,7 +1460,7 @@ func (recv *Node) LastChild() *Node {
 // LastSibling is a wrapper around the C function g_node_last_sibling.
 func (recv *Node) LastSibling() *Node {
 	retC := C.g_node_last_sibling((*C.GNode)(recv.native))
-	retGo := nodeNewFromC(retC)
+	retGo := NodeNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -1463,7 +1488,7 @@ func (recv *Node) NthChild(n uint32) *Node {
 	c_n := (C.guint)(n)
 
 	retC := C.g_node_nth_child((*C.GNode)(recv.native), c_n)
-	retGo := nodeNewFromC(retC)
+	retGo := NodeNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -1473,7 +1498,7 @@ func (recv *Node) Prepend(node *Node) *Node {
 	c_node := node.toC()
 
 	retC := C.g_node_prepend((*C.GNode)(recv.native), c_node)
-	retGo := nodeNewFromC(retC)
+	retGo := NodeNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -1489,7 +1514,8 @@ type OptionContext struct {
 	native *C.GOptionContext
 }
 
-func optionContextNewFromC(c *C.GOptionContext) *OptionContext {
+func OptionContextNewFromC(u unsafe.Pointer) *OptionContext {
+	c := (*C.GOptionContext)(u)
 	if c == nil {
 		return nil
 	}
@@ -1550,7 +1576,8 @@ type OptionEntry struct {
 	ArgDescription string
 }
 
-func optionEntryNewFromC(c *C.GOptionEntry) *OptionEntry {
+func OptionEntryNewFromC(u unsafe.Pointer) *OptionEntry {
+	c := (*C.GOptionEntry)(u)
 	if c == nil {
 		return nil
 	}
@@ -1593,7 +1620,8 @@ type OptionGroup struct {
 	native *C.GOptionGroup
 }
 
-func optionGroupNewFromC(c *C.GOptionGroup) *OptionGroup {
+func OptionGroupNewFromC(u unsafe.Pointer) *OptionGroup {
+	c := (*C.GOptionGroup)(u)
 	if c == nil {
 		return nil
 	}
@@ -1629,7 +1657,8 @@ type PatternSpec struct {
 	native *C.GPatternSpec
 }
 
-func patternSpecNewFromC(c *C.GPatternSpec) *PatternSpec {
+func PatternSpecNewFromC(u unsafe.Pointer) *PatternSpec {
+	c := (*C.GPatternSpec)(u)
 	if c == nil {
 		return nil
 	}
@@ -1656,7 +1685,8 @@ type PollFD struct {
 	Revents uint32
 }
 
-func pollFDNewFromC(c *C.GPollFD) *PollFD {
+func PollFDNewFromC(u unsafe.Pointer) *PollFD {
+	c := (*C.GPollFD)(u)
 	if c == nil {
 		return nil
 	}
@@ -1690,7 +1720,8 @@ type Private struct {
 	// Private : future
 }
 
-func privateNewFromC(c *C.GPrivate) *Private {
+func PrivateNewFromC(u unsafe.Pointer) *Private {
+	c := (*C.GPrivate)(u)
 	if c == nil {
 		return nil
 	}
@@ -1724,7 +1755,8 @@ type PtrArray struct {
 	Len uint32
 }
 
-func ptrArrayNewFromC(c *C.GPtrArray) *PtrArray {
+func PtrArrayNewFromC(u unsafe.Pointer) *PtrArray {
+	c := (*C.GPtrArray)(u)
 	if c == nil {
 		return nil
 	}
@@ -1752,7 +1784,8 @@ type Queue struct {
 	Length uint32
 }
 
-func queueNewFromC(c *C.GQueue) *Queue {
+func QueueNewFromC(u unsafe.Pointer) *Queue {
+	c := (*C.GQueue)(u)
 	if c == nil {
 		return nil
 	}
@@ -1821,7 +1854,7 @@ func (recv *Queue) PopHead() uintptr {
 // PopHeadLink is a wrapper around the C function g_queue_pop_head_link.
 func (recv *Queue) PopHeadLink() *List {
 	retC := C.g_queue_pop_head_link((*C.GQueue)(recv.native))
-	retGo := listNewFromC(retC)
+	retGo := ListNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -1837,7 +1870,7 @@ func (recv *Queue) PopTail() uintptr {
 // PopTailLink is a wrapper around the C function g_queue_pop_tail_link.
 func (recv *Queue) PopTailLink() *List {
 	retC := C.g_queue_pop_tail_link((*C.GQueue)(recv.native))
-	retGo := listNewFromC(retC)
+	retGo := ListNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -1867,7 +1900,8 @@ type Rand struct {
 	native *C.GRand
 }
 
-func randNewFromC(c *C.GRand) *Rand {
+func RandNewFromC(u unsafe.Pointer) *Rand {
+	c := (*C.GRand)(u)
 	if c == nil {
 		return nil
 	}
@@ -1935,7 +1969,8 @@ type SList struct {
 	// next : record
 }
 
-func sListNewFromC(c *C.GSList) *SList {
+func SListNewFromC(u unsafe.Pointer) *SList {
+	c := (*C.GSList)(u)
 	if c == nil {
 		return nil
 	}
@@ -1981,7 +2016,8 @@ type Scanner struct {
 	// msg_handler : no type generator for ScannerMsgFunc, GScannerMsgFunc
 }
 
-func scannerNewFromC(c *C.GScanner) *Scanner {
+func ScannerNewFromC(u unsafe.Pointer) *Scanner {
+	c := (*C.GScanner)(u)
 	if c == nil {
 		return nil
 	}
@@ -2158,7 +2194,8 @@ type ScannerConfig struct {
 	// Private : padding_dummy
 }
 
-func scannerConfigNewFromC(c *C.GScannerConfig) *ScannerConfig {
+func ScannerConfigNewFromC(u unsafe.Pointer) *ScannerConfig {
+	c := (*C.GScannerConfig)(u)
 	if c == nil {
 		return nil
 	}
@@ -2192,7 +2229,8 @@ type Sequence struct {
 	native *C.GSequence
 }
 
-func sequenceNewFromC(c *C.GSequence) *Sequence {
+func SequenceNewFromC(u unsafe.Pointer) *Sequence {
+	c := (*C.GSequence)(u)
 	if c == nil {
 		return nil
 	}
@@ -2234,7 +2272,8 @@ type SequenceIter struct {
 	native *C.GSequenceIter
 }
 
-func sequenceIterNewFromC(c *C.GSequenceIter) *SequenceIter {
+func SequenceIterNewFromC(u unsafe.Pointer) *SequenceIter {
+	c := (*C.GSequenceIter)(u)
 	if c == nil {
 		return nil
 	}
@@ -2271,7 +2310,8 @@ type Source struct {
 	// Private : priv
 }
 
-func sourceNewFromC(c *C.GSource) *Source {
+func SourceNewFromC(u unsafe.Pointer) *Source {
+	c := (*C.GSource)(u)
 	if c == nil {
 		return nil
 	}
@@ -2293,7 +2333,7 @@ func SourceNew(sourceFuncs *SourceFuncs, structSize uint32) *Source {
 	c_struct_size := (C.guint)(structSize)
 
 	retC := C.g_source_new(c_source_funcs, c_struct_size)
-	retGo := sourceNewFromC(retC)
+	retGo := SourceNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -2321,7 +2361,7 @@ func (recv *Source) Attach(context *MainContext) uint32 {
 // GetContext is a wrapper around the C function g_source_get_context.
 func (recv *Source) GetContext() *MainContext {
 	retC := C.g_source_get_context((*C.GSource)(recv.native))
-	retGo := mainContextNewFromC(retC)
+	retGo := MainContextNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -2361,7 +2401,7 @@ func (recv *Source) GetReadyTime() int64 {
 // Ref is a wrapper around the C function g_source_ref.
 func (recv *Source) Ref() *Source {
 	retC := C.g_source_ref((*C.GSource)(recv.native))
-	retGo := sourceNewFromC(retC)
+	retGo := SourceNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -2396,7 +2436,8 @@ type SourceCallbackFuncs struct {
 	// no type for get
 }
 
-func sourceCallbackFuncsNewFromC(c *C.GSourceCallbackFuncs) *SourceCallbackFuncs {
+func SourceCallbackFuncsNewFromC(u unsafe.Pointer) *SourceCallbackFuncs {
+	c := (*C.GSourceCallbackFuncs)(u)
 	if c == nil {
 		return nil
 	}
@@ -2422,7 +2463,8 @@ type SourceFuncs struct {
 	// Private : closure_marshal
 }
 
-func sourceFuncsNewFromC(c *C.GSourceFuncs) *SourceFuncs {
+func SourceFuncsNewFromC(u unsafe.Pointer) *SourceFuncs {
+	c := (*C.GSourceFuncs)(u)
 	if c == nil {
 		return nil
 	}
@@ -2442,7 +2484,8 @@ type SourcePrivate struct {
 	native *C.GSourcePrivate
 }
 
-func sourcePrivateNewFromC(c *C.GSourcePrivate) *SourcePrivate {
+func SourcePrivateNewFromC(u unsafe.Pointer) *SourcePrivate {
+	c := (*C.GSourcePrivate)(u)
 	if c == nil {
 		return nil
 	}
@@ -2462,7 +2505,8 @@ type StatBuf struct {
 	native *C.GStatBuf
 }
 
-func statBufNewFromC(c *C.GStatBuf) *StatBuf {
+func StatBufNewFromC(u unsafe.Pointer) *StatBuf {
+	c := (*C.GStatBuf)(u)
 	if c == nil {
 		return nil
 	}
@@ -2485,7 +2529,8 @@ type String struct {
 	AllocatedLen uint64
 }
 
-func stringNewFromC(c *C.GString) *String {
+func StringNewFromC(u unsafe.Pointer) *String {
+	c := (*C.GString)(u)
 	if c == nil {
 		return nil
 	}
@@ -2517,7 +2562,7 @@ func (recv *String) Append(val string) *String {
 	defer C.free(unsafe.Pointer(c_val))
 
 	retC := C.g_string_append((*C.GString)(recv.native), c_val)
-	retGo := stringNewFromC(retC)
+	retGo := StringNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -2527,7 +2572,7 @@ func (recv *String) AppendC(c rune) *String {
 	c_c := (C.gchar)(c)
 
 	retC := C.g_string_append_c((*C.GString)(recv.native), c_c)
-	retGo := stringNewFromC(retC)
+	retGo := StringNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -2540,7 +2585,7 @@ func (recv *String) AppendLen(val string, len int64) *String {
 	c_len := (C.gssize)(len)
 
 	retC := C.g_string_append_len((*C.GString)(recv.native), c_val, c_len)
-	retGo := stringNewFromC(retC)
+	retGo := StringNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -2552,7 +2597,7 @@ func (recv *String) AppendUnichar(wc rune) *String {
 	c_wc := (C.gunichar)(wc)
 
 	retC := C.g_string_append_unichar((*C.GString)(recv.native), c_wc)
-	retGo := stringNewFromC(retC)
+	retGo := StringNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -2564,7 +2609,7 @@ func (recv *String) AppendUnichar(wc rune) *String {
 // AsciiDown is a wrapper around the C function g_string_ascii_down.
 func (recv *String) AsciiDown() *String {
 	retC := C.g_string_ascii_down((*C.GString)(recv.native))
-	retGo := stringNewFromC(retC)
+	retGo := StringNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -2572,7 +2617,7 @@ func (recv *String) AsciiDown() *String {
 // AsciiUp is a wrapper around the C function g_string_ascii_up.
 func (recv *String) AsciiUp() *String {
 	retC := C.g_string_ascii_up((*C.GString)(recv.native))
-	retGo := stringNewFromC(retC)
+	retGo := StringNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -2583,7 +2628,7 @@ func (recv *String) Assign(rval string) *String {
 	defer C.free(unsafe.Pointer(c_rval))
 
 	retC := C.g_string_assign((*C.GString)(recv.native), c_rval)
-	retGo := stringNewFromC(retC)
+	retGo := StringNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -2591,7 +2636,7 @@ func (recv *String) Assign(rval string) *String {
 // Down is a wrapper around the C function g_string_down.
 func (recv *String) Down() *String {
 	retC := C.g_string_down((*C.GString)(recv.native))
-	retGo := stringNewFromC(retC)
+	retGo := StringNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -2605,7 +2650,7 @@ func (recv *String) Erase(pos int64, len int64) *String {
 	c_len := (C.gssize)(len)
 
 	retC := C.g_string_erase((*C.GString)(recv.native), c_pos, c_len)
-	retGo := stringNewFromC(retC)
+	retGo := StringNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -2628,7 +2673,7 @@ func (recv *String) Insert(pos int64, val string) *String {
 	defer C.free(unsafe.Pointer(c_val))
 
 	retC := C.g_string_insert((*C.GString)(recv.native), c_pos, c_val)
-	retGo := stringNewFromC(retC)
+	retGo := StringNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -2640,7 +2685,7 @@ func (recv *String) InsertC(pos int64, c rune) *String {
 	c_c := (C.gchar)(c)
 
 	retC := C.g_string_insert_c((*C.GString)(recv.native), c_pos, c_c)
-	retGo := stringNewFromC(retC)
+	retGo := StringNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -2655,7 +2700,7 @@ func (recv *String) InsertLen(pos int64, val string, len int64) *String {
 	c_len := (C.gssize)(len)
 
 	retC := C.g_string_insert_len((*C.GString)(recv.native), c_pos, c_val, c_len)
-	retGo := stringNewFromC(retC)
+	retGo := StringNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -2667,7 +2712,7 @@ func (recv *String) InsertUnichar(pos int64, wc rune) *String {
 	c_wc := (C.gunichar)(wc)
 
 	retC := C.g_string_insert_unichar((*C.GString)(recv.native), c_pos, c_wc)
-	retGo := stringNewFromC(retC)
+	retGo := StringNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -2678,7 +2723,7 @@ func (recv *String) Prepend(val string) *String {
 	defer C.free(unsafe.Pointer(c_val))
 
 	retC := C.g_string_prepend((*C.GString)(recv.native), c_val)
-	retGo := stringNewFromC(retC)
+	retGo := StringNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -2688,7 +2733,7 @@ func (recv *String) PrependC(c rune) *String {
 	c_c := (C.gchar)(c)
 
 	retC := C.g_string_prepend_c((*C.GString)(recv.native), c_c)
-	retGo := stringNewFromC(retC)
+	retGo := StringNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -2701,7 +2746,7 @@ func (recv *String) PrependLen(val string, len int64) *String {
 	c_len := (C.gssize)(len)
 
 	retC := C.g_string_prepend_len((*C.GString)(recv.native), c_val, c_len)
-	retGo := stringNewFromC(retC)
+	retGo := StringNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -2711,7 +2756,7 @@ func (recv *String) PrependUnichar(wc rune) *String {
 	c_wc := (C.gunichar)(wc)
 
 	retC := C.g_string_prepend_unichar((*C.GString)(recv.native), c_wc)
-	retGo := stringNewFromC(retC)
+	retGo := StringNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -2723,7 +2768,7 @@ func (recv *String) SetSize(len uint64) *String {
 	c_len := (C.gsize)(len)
 
 	retC := C.g_string_set_size((*C.GString)(recv.native), c_len)
-	retGo := stringNewFromC(retC)
+	retGo := StringNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -2733,7 +2778,7 @@ func (recv *String) Truncate(len uint64) *String {
 	c_len := (C.gsize)(len)
 
 	retC := C.g_string_truncate((*C.GString)(recv.native), c_len)
-	retGo := stringNewFromC(retC)
+	retGo := StringNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -2741,7 +2786,7 @@ func (recv *String) Truncate(len uint64) *String {
 // Up is a wrapper around the C function g_string_up.
 func (recv *String) Up() *String {
 	retC := C.g_string_up((*C.GString)(recv.native))
-	retGo := stringNewFromC(retC)
+	retGo := StringNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -2753,7 +2798,8 @@ type StringChunk struct {
 	native *C.GStringChunk
 }
 
-func stringChunkNewFromC(c *C.GStringChunk) *StringChunk {
+func StringChunkNewFromC(u unsafe.Pointer) *StringChunk {
+	c := (*C.GStringChunk)(u)
 	if c == nil {
 		return nil
 	}
@@ -2801,7 +2847,8 @@ type TestCase struct {
 	native *C.GTestCase
 }
 
-func testCaseNewFromC(c *C.GTestCase) *TestCase {
+func TestCaseNewFromC(u unsafe.Pointer) *TestCase {
+	c := (*C.GTestCase)(u)
 	if c == nil {
 		return nil
 	}
@@ -2827,7 +2874,8 @@ type TestConfig struct {
 	// test_undefined : no type generator for gboolean, gboolean
 }
 
-func testConfigNewFromC(c *C.GTestConfig) *TestConfig {
+func TestConfigNewFromC(u unsafe.Pointer) *TestConfig {
+	c := (*C.GTestConfig)(u)
 	if c == nil {
 		return nil
 	}
@@ -2851,7 +2899,8 @@ type TestSuite struct {
 	native *C.GTestSuite
 }
 
-func testSuiteNewFromC(c *C.GTestSuite) *TestSuite {
+func TestSuiteNewFromC(u unsafe.Pointer) *TestSuite {
+	c := (*C.GTestSuite)(u)
 	if c == nil {
 		return nil
 	}
@@ -2875,7 +2924,8 @@ type Thread struct {
 	native *C.GThread
 }
 
-func threadNewFromC(c *C.GThread) *Thread {
+func ThreadNewFromC(u unsafe.Pointer) *Thread {
+	c := (*C.GThread)(u)
 	if c == nil {
 		return nil
 	}
@@ -2912,7 +2962,8 @@ type ThreadPool struct {
 	// exclusive : no type generator for gboolean, gboolean
 }
 
-func threadPoolNewFromC(c *C.GThreadPool) *ThreadPool {
+func ThreadPoolNewFromC(u unsafe.Pointer) *ThreadPool {
+	c := (*C.GThreadPool)(u)
 	if c == nil {
 		return nil
 	}
@@ -2973,7 +3024,8 @@ type TimeVal struct {
 	TvUsec int64
 }
 
-func timeValNewFromC(c *C.GTimeVal) *TimeVal {
+func TimeValNewFromC(u unsafe.Pointer) *TimeVal {
+	c := (*C.GTimeVal)(u)
 	if c == nil {
 		return nil
 	}
@@ -3003,7 +3055,8 @@ type Timer struct {
 	native *C.GTimer
 }
 
-func timerNewFromC(c *C.GTimer) *Timer {
+func TimerNewFromC(u unsafe.Pointer) *Timer {
+	c := (*C.GTimer)(u)
 	if c == nil {
 		return nil
 	}
@@ -3036,7 +3089,8 @@ type TrashStack struct {
 	// next : record
 }
 
-func trashStackNewFromC(c *C.GTrashStack) *TrashStack {
+func TrashStackNewFromC(u unsafe.Pointer) *TrashStack {
+	c := (*C.GTrashStack)(u)
 	if c == nil {
 		return nil
 	}
@@ -3056,7 +3110,8 @@ type Tree struct {
 	native *C.GTree
 }
 
-func treeNewFromC(c *C.GTree) *Tree {
+func TreeNewFromC(u unsafe.Pointer) *Tree {
+	c := (*C.GTree)(u)
 	if c == nil {
 		return nil
 	}
@@ -3122,7 +3177,8 @@ type VariantBuilder struct {
 	native *C.GVariantBuilder
 }
 
-func variantBuilderNewFromC(c *C.GVariantBuilder) *VariantBuilder {
+func VariantBuilderNewFromC(u unsafe.Pointer) *VariantBuilder {
+	c := (*C.GVariantBuilder)(u)
 	if c == nil {
 		return nil
 	}
@@ -3163,7 +3219,8 @@ type VariantIter struct {
 	// Private : x
 }
 
-func variantIterNewFromC(c *C.GVariantIter) *VariantIter {
+func VariantIterNewFromC(u unsafe.Pointer) *VariantIter {
+	c := (*C.GVariantIter)(u)
 	if c == nil {
 		return nil
 	}

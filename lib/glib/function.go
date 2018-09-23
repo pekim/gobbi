@@ -402,7 +402,7 @@ func FileOpenTmp(tmpl string) (int32, string, error) {
 	retC := C.g_file_open_tmp(c_tmpl, &c_name_used, &cThrowableError)
 	retGo := (int32)(retC)
 
-	goThrowableError := errorNewFromC(cThrowableError)
+	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
 	if cThrowableError != nil {
 		C.g_error_free(cThrowableError)
 	}
@@ -428,7 +428,7 @@ func FilenameFromUri(uri string) (string, string, error) {
 	retGo := C.GoString(retC)
 	defer C.free(unsafe.Pointer(retC))
 
-	goThrowableError := errorNewFromC(cThrowableError)
+	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
 	if cThrowableError != nil {
 		C.g_error_free(cThrowableError)
 	}
@@ -455,7 +455,7 @@ func FilenameToUri(filename string, hostname string) (string, error) {
 	retGo := C.GoString(retC)
 	defer C.free(unsafe.Pointer(retC))
 
-	goThrowableError := errorNewFromC(cThrowableError)
+	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
 	if cThrowableError != nil {
 		C.g_error_free(cThrowableError)
 	}
@@ -611,7 +611,7 @@ func HashTableSize(hashTable *HashTable) uint32 {
 // IdleSourceNew is a wrapper around the C function g_idle_source_new.
 func IdleSourceNew() *Source {
 	retC := C.g_idle_source_new()
-	retGo := sourceNewFromC(retC)
+	retGo := SourceNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -683,7 +683,7 @@ func KeyFileErrorQuark() Quark {
 // MainContextDefault is a wrapper around the C function g_main_context_default.
 func MainContextDefault() *MainContext {
 	retC := C.g_main_context_default()
-	retGo := mainContextNewFromC(retC)
+	retGo := MainContextNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -986,7 +986,7 @@ func ShellUnquote(quotedString string) (string, error) {
 	retGo := C.GoString(retC)
 	defer C.free(unsafe.Pointer(retC))
 
-	goThrowableError := errorNewFromC(cThrowableError)
+	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
 	if cThrowableError != nil {
 		C.g_error_free(cThrowableError)
 	}
@@ -1230,7 +1230,7 @@ func StringNew(init string) *String {
 	defer C.free(unsafe.Pointer(c_init))
 
 	retC := C.g_string_new(c_init)
-	retGo := stringNewFromC(retC)
+	retGo := StringNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -1243,7 +1243,7 @@ func StringNewLen(init string, len int64) *String {
 	c_len := (C.gssize)(len)
 
 	retC := C.g_string_new_len(c_init, c_len)
-	retGo := stringNewFromC(retC)
+	retGo := StringNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -1253,7 +1253,7 @@ func StringSizedNew(dflSize uint64) *String {
 	c_dfl_size := (C.gsize)(dflSize)
 
 	retC := C.g_string_sized_new(c_dfl_size)
-	retGo := stringNewFromC(retC)
+	retGo := StringNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -1487,7 +1487,7 @@ func ThreadPoolGetNumUnusedThreads() uint32 {
 // ThreadSelf is a wrapper around the C function g_thread_self.
 func ThreadSelf() *Thread {
 	retC := C.g_thread_self()
-	retGo := threadNewFromC(retC)
+	retGo := ThreadNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -1503,7 +1503,7 @@ func TimeoutSourceNew(interval uint32) *Source {
 	c_interval := (C.guint)(interval)
 
 	retC := C.g_timeout_source_new(c_interval)
-	retGo := sourceNewFromC(retC)
+	retGo := SourceNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }

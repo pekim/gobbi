@@ -3,6 +3,8 @@
 
 package glib
 
+import "unsafe"
+
 // #define GLIB_DISABLE_DEPRECATION_WARNINGS
 // #include <glib.h>
 // #include <glib/gstdio.h>
@@ -15,7 +17,8 @@ type VariantDict struct {
 	native *C.GVariantDict
 }
 
-func variantDictNewFromC(c *C.GVariantDict) *VariantDict {
+func VariantDictNewFromC(u unsafe.Pointer) *VariantDict {
+	c := (*C.GVariantDict)(u)
 	if c == nil {
 		return nil
 	}
@@ -51,7 +54,7 @@ func (recv *VariantDict) toC() *C.GVariantDict {
 // Ref is a wrapper around the C function g_variant_dict_ref.
 func (recv *VariantDict) Ref() *VariantDict {
 	retC := C.g_variant_dict_ref((*C.GVariantDict)(recv.native))
-	retGo := variantDictNewFromC(retC)
+	retGo := VariantDictNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }

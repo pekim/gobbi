@@ -3,6 +3,8 @@
 
 package glib
 
+import "unsafe"
+
 // #define GLIB_DISABLE_DEPRECATION_WARNINGS
 // #include <glib.h>
 // #include <glib/gstdio.h>
@@ -15,7 +17,8 @@ type Bytes struct {
 	native *C.GBytes
 }
 
-func bytesNewFromC(c *C.GBytes) *Bytes {
+func BytesNewFromC(u unsafe.Pointer) *Bytes {
+	c := (*C.GBytes)(u)
 	if c == nil {
 		return nil
 	}
@@ -75,7 +78,7 @@ func (recv *Bytes) NewFromBytes(offset uint64, length uint64) *Bytes {
 	c_length := (C.gsize)(length)
 
 	retC := C.g_bytes_new_from_bytes((*C.GBytes)(recv.native), c_offset, c_length)
-	retGo := bytesNewFromC(retC)
+	retGo := BytesNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -83,7 +86,7 @@ func (recv *Bytes) NewFromBytes(offset uint64, length uint64) *Bytes {
 // Ref is a wrapper around the C function g_bytes_ref.
 func (recv *Bytes) Ref() *Bytes {
 	retC := C.g_bytes_ref((*C.GBytes)(recv.native))
-	retGo := bytesNewFromC(retC)
+	retGo := BytesNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -101,7 +104,8 @@ type RWLock struct {
 	// Private : i
 }
 
-func rWLockNewFromC(c *C.GRWLock) *RWLock {
+func RWLockNewFromC(u unsafe.Pointer) *RWLock {
+	c := (*C.GRWLock)(u)
 	if c == nil {
 		return nil
 	}
@@ -139,7 +143,8 @@ type RecMutex struct {
 	// Private : i
 }
 
-func recMutexNewFromC(c *C.GRecMutex) *RecMutex {
+func RecMutexNewFromC(u unsafe.Pointer) *RecMutex {
+	c := (*C.GRecMutex)(u)
 	if c == nil {
 		return nil
 	}

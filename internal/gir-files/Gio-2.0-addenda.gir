@@ -5,6 +5,9 @@
             xmlns:glib="http://www.gtk.org/introspection/glib/1.0"
 >
   <namespace>
+    <constant blacklist="true" name="FILE_ATTRIBUTE_FILESYSTEM_REMOTE"/>
+    <constant blacklist="true" name="SETTINGS_BACKEND_EXTENSION_POINT_NAME"/>
+
     <class name="Settings">
       <method blacklist="true" c:identifier="g_settings_get_mapped"/>
     </class>

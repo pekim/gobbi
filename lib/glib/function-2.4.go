@@ -41,7 +41,7 @@ func ChildWatchSourceNew(pid Pid) *Source {
 	c_pid := (C.GPid)(pid)
 
 	retC := C.g_child_watch_source_new(c_pid)
-	retGo := sourceNewFromC(retC)
+	retGo := SourceNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -57,7 +57,7 @@ func FileReadLink(filename string) (string, error) {
 	retGo := C.GoString(retC)
 	defer C.free(unsafe.Pointer(retC))
 
-	goThrowableError := errorNewFromC(cThrowableError)
+	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
 	if cThrowableError != nil {
 		C.g_error_free(cThrowableError)
 	}

@@ -19,7 +19,8 @@ type CClosure struct {
 	Callback uintptr
 }
 
-func cClosureNewFromC(c *C.GCClosure) *CClosure {
+func CClosureNewFromC(u unsafe.Pointer) *CClosure {
+	c := (*C.GCClosure)(u)
 	if c == nil {
 		return nil
 	}
@@ -57,7 +58,8 @@ type Closure struct {
 	// Private : notifiers
 }
 
-func closureNewFromC(c *C.GClosure) *Closure {
+func ClosureNewFromC(u unsafe.Pointer) *Closure {
+	c := (*C.GClosure)(u)
 	if c == nil {
 		return nil
 	}
@@ -81,7 +83,7 @@ func ClosureNewSimple(sizeofClosure uint32, data uintptr) *Closure {
 	c_data := (C.gpointer)(data)
 
 	retC := C.g_closure_new_simple(c_sizeof_closure, c_data)
-	retGo := closureNewFromC(retC)
+	retGo := ClosureNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -99,7 +101,7 @@ func ClosureNewSimple(sizeofClosure uint32, data uintptr) *Closure {
 // Ref is a wrapper around the C function g_closure_ref.
 func (recv *Closure) Ref() *Closure {
 	retC := C.g_closure_ref((*C.GClosure)(recv.native))
-	retGo := closureNewFromC(retC)
+	retGo := ClosureNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -123,7 +125,8 @@ type ClosureNotifyData struct {
 	// notify : no type generator for ClosureNotify, GClosureNotify
 }
 
-func closureNotifyDataNewFromC(c *C.GClosureNotifyData) *ClosureNotifyData {
+func ClosureNotifyDataNewFromC(u unsafe.Pointer) *ClosureNotifyData {
+	c := (*C.GClosureNotifyData)(u)
 	if c == nil {
 		return nil
 	}
@@ -153,7 +156,8 @@ type EnumClass struct {
 	// values : record
 }
 
-func enumClassNewFromC(c *C.GEnumClass) *EnumClass {
+func EnumClassNewFromC(u unsafe.Pointer) *EnumClass {
+	c := (*C.GEnumClass)(u)
 	if c == nil {
 		return nil
 	}
@@ -187,7 +191,8 @@ type EnumValue struct {
 	ValueNick string
 }
 
-func enumValueNewFromC(c *C.GEnumValue) *EnumValue {
+func EnumValueNewFromC(u unsafe.Pointer) *EnumValue {
+	c := (*C.GEnumValue)(u)
 	if c == nil {
 		return nil
 	}
@@ -222,7 +227,8 @@ type FlagsClass struct {
 	// values : record
 }
 
-func flagsClassNewFromC(c *C.GFlagsClass) *FlagsClass {
+func FlagsClassNewFromC(u unsafe.Pointer) *FlagsClass {
+	c := (*C.GFlagsClass)(u)
 	if c == nil {
 		return nil
 	}
@@ -253,7 +259,8 @@ type FlagsValue struct {
 	ValueNick string
 }
 
-func flagsValueNewFromC(c *C.GFlagsValue) *FlagsValue {
+func FlagsValueNewFromC(u unsafe.Pointer) *FlagsValue {
+	c := (*C.GFlagsValue)(u)
 	if c == nil {
 		return nil
 	}
@@ -296,7 +303,8 @@ type InitiallyUnownedClass struct {
 	// Private : pdummy
 }
 
-func initiallyUnownedClassNewFromC(c *C.GInitiallyUnownedClass) *InitiallyUnownedClass {
+func InitiallyUnownedClassNewFromC(u unsafe.Pointer) *InitiallyUnownedClass {
+	c := (*C.GInitiallyUnownedClass)(u)
 	if c == nil {
 		return nil
 	}
@@ -319,7 +327,8 @@ type InterfaceInfo struct {
 	InterfaceData uintptr
 }
 
-func interfaceInfoNewFromC(c *C.GInterfaceInfo) *InterfaceInfo {
+func InterfaceInfoNewFromC(u unsafe.Pointer) *InterfaceInfo {
+	c := (*C.GInterfaceInfo)(u)
 	if c == nil {
 		return nil
 	}
@@ -356,7 +365,8 @@ type ObjectClass struct {
 	// Private : pdummy
 }
 
-func objectClassNewFromC(c *C.GObjectClass) *ObjectClass {
+func ObjectClassNewFromC(u unsafe.Pointer) *ObjectClass {
+	c := (*C.GObjectClass)(u)
 	if c == nil {
 		return nil
 	}
@@ -388,7 +398,8 @@ type ObjectConstructParam struct {
 	// value : record
 }
 
-func objectConstructParamNewFromC(c *C.GObjectConstructParam) *ObjectConstructParam {
+func ObjectConstructParamNewFromC(u unsafe.Pointer) *ObjectConstructParam {
+	c := (*C.GObjectConstructParam)(u)
 	if c == nil {
 		return nil
 	}
@@ -415,7 +426,8 @@ type ParamSpecClass struct {
 	// Private : dummy
 }
 
-func paramSpecClassNewFromC(c *C.GParamSpecClass) *ParamSpecClass {
+func ParamSpecClassNewFromC(u unsafe.Pointer) *ParamSpecClass {
+	c := (*C.GParamSpecClass)(u)
 	if c == nil {
 		return nil
 	}
@@ -435,7 +447,8 @@ type ParamSpecPool struct {
 	native *C.GParamSpecPool
 }
 
-func paramSpecPoolNewFromC(c *C.GParamSpecPool) *ParamSpecPool {
+func ParamSpecPoolNewFromC(u unsafe.Pointer) *ParamSpecPool {
+	c := (*C.GParamSpecPool)(u)
 	if c == nil {
 		return nil
 	}
@@ -473,7 +486,8 @@ type ParamSpecTypeInfo struct {
 	// no type for values_cmp
 }
 
-func paramSpecTypeInfoNewFromC(c *C.GParamSpecTypeInfo) *ParamSpecTypeInfo {
+func ParamSpecTypeInfoNewFromC(u unsafe.Pointer) *ParamSpecTypeInfo {
+	c := (*C.GParamSpecTypeInfo)(u)
 	if c == nil {
 		return nil
 	}
@@ -503,7 +517,8 @@ type Parameter struct {
 	// value : record
 }
 
-func parameterNewFromC(c *C.GParameter) *Parameter {
+func ParameterNewFromC(u unsafe.Pointer) *Parameter {
+	c := (*C.GParameter)(u)
 	if c == nil {
 		return nil
 	}
@@ -531,7 +546,8 @@ type SignalInvocationHint struct {
 	// run_type : no type generator for SignalFlags, GSignalFlags
 }
 
-func signalInvocationHintNewFromC(c *C.GSignalInvocationHint) *SignalInvocationHint {
+func SignalInvocationHintNewFromC(u unsafe.Pointer) *SignalInvocationHint {
+	c := (*C.GSignalInvocationHint)(u)
 	if c == nil {
 		return nil
 	}
@@ -566,7 +582,8 @@ type SignalQuery struct {
 	// no type for param_types
 }
 
-func signalQueryNewFromC(c *C.GSignalQuery) *SignalQuery {
+func SignalQueryNewFromC(u unsafe.Pointer) *SignalQuery {
+	c := (*C.GSignalQuery)(u)
 	if c == nil {
 		return nil
 	}
@@ -598,7 +615,8 @@ type TypeClass struct {
 	// Private : g_type
 }
 
-func typeClassNewFromC(c *C.GTypeClass) *TypeClass {
+func TypeClassNewFromC(u unsafe.Pointer) *TypeClass {
+	c := (*C.GTypeClass)(u)
 	if c == nil {
 		return nil
 	}
@@ -635,7 +653,8 @@ type TypeFundamentalInfo struct {
 	// type_flags : no type generator for TypeFundamentalFlags, GTypeFundamentalFlags
 }
 
-func typeFundamentalInfoNewFromC(c *C.GTypeFundamentalInfo) *TypeFundamentalInfo {
+func TypeFundamentalInfoNewFromC(u unsafe.Pointer) *TypeFundamentalInfo {
+	c := (*C.GTypeFundamentalInfo)(u)
 	if c == nil {
 		return nil
 	}
@@ -665,7 +684,8 @@ type TypeInfo struct {
 	// value_table : record
 }
 
-func typeInfoNewFromC(c *C.GTypeInfo) *TypeInfo {
+func TypeInfoNewFromC(u unsafe.Pointer) *TypeInfo {
+	c := (*C.GTypeInfo)(u)
 	if c == nil {
 		return nil
 	}
@@ -700,7 +720,8 @@ type TypeInstance struct {
 	// Private : g_class
 }
 
-func typeInstanceNewFromC(c *C.GTypeInstance) *TypeInstance {
+func TypeInstanceNewFromC(u unsafe.Pointer) *TypeInstance {
+	c := (*C.GTypeInstance)(u)
 	if c == nil {
 		return nil
 	}
@@ -724,7 +745,8 @@ type TypeInterface struct {
 	// Private : g_instance_type
 }
 
-func typeInterfaceNewFromC(c *C.GTypeInterface) *TypeInterface {
+func TypeInterfaceNewFromC(u unsafe.Pointer) *TypeInterface {
+	c := (*C.GTypeInterface)(u)
 	if c == nil {
 		return nil
 	}
@@ -759,7 +781,8 @@ type TypeModuleClass struct {
 	// no type for reserved4
 }
 
-func typeModuleClassNewFromC(c *C.GTypeModuleClass) *TypeModuleClass {
+func TypeModuleClassNewFromC(u unsafe.Pointer) *TypeModuleClass {
+	c := (*C.GTypeModuleClass)(u)
 	if c == nil {
 		return nil
 	}
@@ -784,7 +807,8 @@ type TypePluginClass struct {
 	// complete_interface_info : no type generator for TypePluginCompleteInterfaceInfo, GTypePluginCompleteInterfaceInfo
 }
 
-func typePluginClassNewFromC(c *C.GTypePluginClass) *TypePluginClass {
+func TypePluginClassNewFromC(u unsafe.Pointer) *TypePluginClass {
+	c := (*C.GTypePluginClass)(u)
 	if c == nil {
 		return nil
 	}
@@ -808,7 +832,8 @@ type TypeQuery struct {
 	InstanceSize uint32
 }
 
-func typeQueryNewFromC(c *C.GTypeQuery) *TypeQuery {
+func TypeQueryNewFromC(u unsafe.Pointer) *TypeQuery {
+	c := (*C.GTypeQuery)(u)
 	if c == nil {
 		return nil
 	}
@@ -847,7 +872,8 @@ type TypeValueTable struct {
 	// no type for lcopy_value
 }
 
-func typeValueTableNewFromC(c *C.GTypeValueTable) *TypeValueTable {
+func TypeValueTableNewFromC(u unsafe.Pointer) *TypeValueTable {
+	c := (*C.GTypeValueTable)(u)
 	if c == nil {
 		return nil
 	}
@@ -877,7 +903,8 @@ type Value struct {
 	// no type for data
 }
 
-func valueNewFromC(c *C.GValue) *Value {
+func ValueNewFromC(u unsafe.Pointer) *Value {
+	c := (*C.GValue)(u)
 	if c == nil {
 		return nil
 	}
@@ -1076,7 +1103,7 @@ func (recv *Value) PeekPointer() uintptr {
 // Reset is a wrapper around the C function g_value_reset.
 func (recv *Value) Reset() *Value {
 	retC := C.g_value_reset((*C.GValue)(recv.native))
-	retGo := valueNewFromC(retC)
+	retGo := ValueNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -1159,7 +1186,8 @@ type ValueArray struct {
 	// Private : n_prealloced
 }
 
-func valueArrayNewFromC(c *C.GValueArray) *ValueArray {
+func ValueArrayNewFromC(u unsafe.Pointer) *ValueArray {
+	c := (*C.GValueArray)(u)
 	if c == nil {
 		return nil
 	}
@@ -1184,7 +1212,7 @@ func ValueArrayNew(nPrealloced uint32) *ValueArray {
 	c_n_prealloced := (C.guint)(nPrealloced)
 
 	retC := C.g_value_array_new(c_n_prealloced)
-	retGo := valueArrayNewFromC(retC)
+	retGo := ValueArrayNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -1194,7 +1222,7 @@ func (recv *ValueArray) Append(value *Value) *ValueArray {
 	c_value := value.toC()
 
 	retC := C.g_value_array_append((*C.GValueArray)(recv.native), c_value)
-	retGo := valueArrayNewFromC(retC)
+	retGo := ValueArrayNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -1202,7 +1230,7 @@ func (recv *ValueArray) Append(value *Value) *ValueArray {
 // Copy is a wrapper around the C function g_value_array_copy.
 func (recv *ValueArray) Copy() *ValueArray {
 	retC := C.g_value_array_copy((*C.GValueArray)(recv.native))
-	retGo := valueArrayNewFromC(retC)
+	retGo := ValueArrayNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -1214,7 +1242,7 @@ func (recv *ValueArray) GetNth(index uint32) *Value {
 	c_index_ := (C.guint)(index)
 
 	retC := C.g_value_array_get_nth((*C.GValueArray)(recv.native), c_index_)
-	retGo := valueNewFromC(retC)
+	retGo := ValueNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -1226,7 +1254,7 @@ func (recv *ValueArray) Insert(index uint32, value *Value) *ValueArray {
 	c_value := value.toC()
 
 	retC := C.g_value_array_insert((*C.GValueArray)(recv.native), c_index_, c_value)
-	retGo := valueArrayNewFromC(retC)
+	retGo := ValueArrayNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -1236,7 +1264,7 @@ func (recv *ValueArray) Prepend(value *Value) *ValueArray {
 	c_value := value.toC()
 
 	retC := C.g_value_array_prepend((*C.GValueArray)(recv.native), c_value)
-	retGo := valueArrayNewFromC(retC)
+	retGo := ValueArrayNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -1246,7 +1274,7 @@ func (recv *ValueArray) Remove(index uint32) *ValueArray {
 	c_index_ := (C.guint)(index)
 
 	retC := C.g_value_array_remove((*C.GValueArray)(recv.native), c_index_)
-	retGo := valueArrayNewFromC(retC)
+	retGo := ValueArrayNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -1260,7 +1288,8 @@ type WeakRef struct {
 	native *C.GWeakRef
 }
 
-func weakRefNewFromC(c *C.GWeakRef) *WeakRef {
+func WeakRefNewFromC(u unsafe.Pointer) *WeakRef {
+	c := (*C.GWeakRef)(u)
 	if c == nil {
 		return nil
 	}

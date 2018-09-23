@@ -3,6 +3,8 @@
 
 package glib
 
+import "unsafe"
+
 // #define GLIB_DISABLE_DEPRECATION_WARNINGS
 // #include <glib.h>
 // #include <glib/gstdio.h>
@@ -15,7 +17,8 @@ type Checksum struct {
 	native *C.GChecksum
 }
 
-func checksumNewFromC(c *C.GChecksum) *Checksum {
+func ChecksumNewFromC(u unsafe.Pointer) *Checksum {
+	c := (*C.GChecksum)(u)
 	if c == nil {
 		return nil
 	}
@@ -35,7 +38,7 @@ func ChecksumNew(checksumType ChecksumType) *Checksum {
 	c_checksum_type := (C.GChecksumType)(checksumType)
 
 	retC := C.g_checksum_new(c_checksum_type)
-	retGo := checksumNewFromC(retC)
+	retGo := ChecksumNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -43,7 +46,7 @@ func ChecksumNew(checksumType ChecksumType) *Checksum {
 // Copy is a wrapper around the C function g_checksum_copy.
 func (recv *Checksum) Copy() *Checksum {
 	retC := C.g_checksum_copy((*C.GChecksum)(recv.native))
-	retGo := checksumNewFromC(retC)
+	retGo := ChecksumNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }

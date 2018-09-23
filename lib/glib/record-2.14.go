@@ -17,7 +17,8 @@ type Regex struct {
 	native *C.GRegex
 }
 
-func regexNewFromC(c *C.GRegex) *Regex {
+func RegexNewFromC(u unsafe.Pointer) *Regex {
+	c := (*C.GRegex)(u)
 	if c == nil {
 		return nil
 	}
@@ -86,7 +87,7 @@ func (recv *Regex) GetStringNumber(name string) int32 {
 // Ref is a wrapper around the C function g_regex_ref.
 func (recv *Regex) Ref() *Regex {
 	retC := C.g_regex_ref((*C.GRegex)(recv.native))
-	retGo := regexNewFromC(retC)
+	retGo := RegexNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }

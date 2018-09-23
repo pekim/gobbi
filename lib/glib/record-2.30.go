@@ -3,6 +3,8 @@
 
 package glib
 
+import "unsafe"
+
 // #define GLIB_DISABLE_DEPRECATION_WARNINGS
 // #include <glib.h>
 // #include <glib/gstdio.h>
@@ -15,7 +17,8 @@ type Hmac struct {
 	native *C.GHmac
 }
 
-func hmacNewFromC(c *C.GHmac) *Hmac {
+func HmacNewFromC(u unsafe.Pointer) *Hmac {
+	c := (*C.GHmac)(u)
 	if c == nil {
 		return nil
 	}
@@ -33,7 +36,7 @@ func (recv *Hmac) toC() *C.GHmac {
 // Copy is a wrapper around the C function g_hmac_copy.
 func (recv *Hmac) Copy() *Hmac {
 	retC := C.g_hmac_copy((*C.GHmac)(recv.native))
-	retGo := hmacNewFromC(retC)
+	retGo := HmacNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -51,7 +54,7 @@ func (recv *Hmac) GetString() string {
 // Ref is a wrapper around the C function g_hmac_ref.
 func (recv *Hmac) Ref() *Hmac {
 	retC := C.g_hmac_ref((*C.GHmac)(recv.native))
-	retGo := hmacNewFromC(retC)
+	retGo := HmacNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }

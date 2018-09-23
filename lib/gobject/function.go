@@ -76,7 +76,7 @@ func EnumGetValue(enumClass *EnumClass, value int32) *EnumValue {
 	c_value := (C.gint)(value)
 
 	retC := C.g_enum_get_value(c_enum_class, c_value)
-	retGo := enumValueNewFromC(retC)
+	retGo := EnumValueNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -89,7 +89,7 @@ func EnumGetValueByName(enumClass *EnumClass, name string) *EnumValue {
 	defer C.free(unsafe.Pointer(c_name))
 
 	retC := C.g_enum_get_value_by_name(c_enum_class, c_name)
-	retGo := enumValueNewFromC(retC)
+	retGo := EnumValueNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -102,7 +102,7 @@ func EnumGetValueByNick(enumClass *EnumClass, nick string) *EnumValue {
 	defer C.free(unsafe.Pointer(c_nick))
 
 	retC := C.g_enum_get_value_by_nick(c_enum_class, c_nick)
-	retGo := enumValueNewFromC(retC)
+	retGo := EnumValueNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -118,7 +118,7 @@ func FlagsGetFirstValue(flagsClass *FlagsClass, value uint32) *FlagsValue {
 	c_value := (C.guint)(value)
 
 	retC := C.g_flags_get_first_value(c_flags_class, c_value)
-	retGo := flagsValueNewFromC(retC)
+	retGo := FlagsValueNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -131,7 +131,7 @@ func FlagsGetValueByName(flagsClass *FlagsClass, name string) *FlagsValue {
 	defer C.free(unsafe.Pointer(c_name))
 
 	retC := C.g_flags_get_value_by_name(c_flags_class, c_name)
-	retGo := flagsValueNewFromC(retC)
+	retGo := FlagsValueNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -144,7 +144,7 @@ func FlagsGetValueByNick(flagsClass *FlagsClass, nick string) *FlagsValue {
 	defer C.free(unsafe.Pointer(c_nick))
 
 	retC := C.g_flags_get_value_by_nick(c_flags_class, c_nick)
-	retGo := flagsValueNewFromC(retC)
+	retGo := FlagsValueNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -234,7 +234,7 @@ func SignalGetInvocationHint(instance uintptr) *SignalInvocationHint {
 	c_instance := (C.gpointer)(instance)
 
 	retC := C.g_signal_get_invocation_hint(c_instance)
-	retGo := signalInvocationHintNewFromC(retC)
+	retGo := SignalInvocationHintNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }

@@ -49,5 +49,10 @@ func (r *ReturnValue) generateFunctionDeclaration(g *jen.Group) {
 }
 
 func (r *ReturnValue) generateCToGo(g *jen.Group, cVarName string, goVarName string) {
-	r.Type.generator.generateReturnCToGo(g, cVarName, goVarName, r.TransferOwnership)
+	pkg := ""
+	if r.Type.qname.ns != r.Namespace {
+		pkg = r.Type.qname.ns.fullGoPackageName
+	}
+
+	r.Type.generator.generateReturnCToGo(g, cVarName, goVarName, pkg, r.TransferOwnership)
 }

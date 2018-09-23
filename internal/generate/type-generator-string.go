@@ -88,7 +88,8 @@ func (t *TypeGeneratorString) generateReturnFunctionDeclaration(g *jen.Group) {
 	g.Do(t.typ.qname.generate)
 }
 
-func (t *TypeGeneratorString) generateReturnCToGo(g *jen.Group, cVarName string, goVarName string, transferOwnership string) {
+func (t *TypeGeneratorString) generateReturnCToGo(g *jen.Group,
+	cVarName string, goVarName string, pkg string, transferOwnership string) {
 	g.
 		Id(goVarName).
 		Op(":=").

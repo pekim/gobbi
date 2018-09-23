@@ -3,6 +3,8 @@
 
 package gobject
 
+import "unsafe"
+
 // #define GLIB_DISABLE_DEPRECATION_WARNINGS
 // #include <glib-object.h>
 // #include <stdlib.h>
@@ -13,7 +15,8 @@ type Binding struct {
 	native *C.GBinding
 }
 
-func bindingNewFromC(c *C.GBinding) *Binding {
+func BindingNewFromC(u unsafe.Pointer) *Binding {
+	c := (*C.GBinding)(u)
 	if c == nil {
 		return nil
 	}
@@ -61,7 +64,8 @@ type ParamSpecVariant struct {
 	// Private : padding
 }
 
-func paramSpecVariantNewFromC(c *C.GParamSpecVariant) *ParamSpecVariant {
+func ParamSpecVariantNewFromC(u unsafe.Pointer) *ParamSpecVariant {
+	c := (*C.GParamSpecVariant)(u)
 	if c == nil {
 		return nil
 	}

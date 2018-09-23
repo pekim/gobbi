@@ -3,6 +3,8 @@
 
 package gobject
 
+import "unsafe"
+
 // #define GLIB_DISABLE_DEPRECATION_WARNINGS
 // #include <glib-object.h>
 // #include <stdlib.h>
@@ -15,7 +17,8 @@ type ParamSpecOverride struct {
 	// Private : overridden
 }
 
-func paramSpecOverrideNewFromC(c *C.GParamSpecOverride) *ParamSpecOverride {
+func ParamSpecOverrideNewFromC(u unsafe.Pointer) *ParamSpecOverride {
+	c := (*C.GParamSpecOverride)(u)
 	if c == nil {
 		return nil
 	}

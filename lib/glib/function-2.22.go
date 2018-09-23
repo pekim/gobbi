@@ -71,7 +71,7 @@ func Int64Hash(v uintptr) uint32 {
 // MainContextGetThreadDefault is a wrapper around the C function g_main_context_get_thread_default.
 func MainContextGetThreadDefault() *MainContext {
 	retC := C.g_main_context_get_thread_default()
-	retGo := mainContextNewFromC(retC)
+	retGo := MainContextNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }

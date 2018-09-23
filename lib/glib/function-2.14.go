@@ -3,6 +3,8 @@
 
 package glib
 
+import "unsafe"
+
 // #define GLIB_DISABLE_DEPRECATION_WARNINGS
 // #include <glib.h>
 // #include <glib/gstdio.h>
@@ -49,7 +51,7 @@ func SequenceInsertBefore(iter *SequenceIter, data uintptr) *SequenceIter {
 	c_data := (C.gpointer)(data)
 
 	retC := C.g_sequence_insert_before(c_iter, c_data)
-	retGo := sequenceIterNewFromC(retC)
+	retGo := SequenceIterNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -65,7 +67,7 @@ func SequenceRangeGetMidpoint(begin *SequenceIter, end *SequenceIter) *SequenceI
 	c_end := end.toC()
 
 	retC := C.g_sequence_range_get_midpoint(c_begin, c_end)
-	retGo := sequenceIterNewFromC(retC)
+	retGo := SequenceIterNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -99,7 +101,7 @@ func TimeoutSourceNewSeconds(interval uint32) *Source {
 	c_interval := (C.guint)(interval)
 
 	retC := C.g_timeout_source_new_seconds(c_interval)
-	retGo := sourceNewFromC(retC)
+	retGo := SourceNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }

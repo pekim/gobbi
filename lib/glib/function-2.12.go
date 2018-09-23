@@ -46,7 +46,7 @@ func AsciiStrtoll(nptr string, base uint32) (int64, string) {
 // MainCurrentSource is a wrapper around the C function g_main_current_source.
 func MainCurrentSource() *Source {
 	retC := C.g_main_current_source()
-	retGo := sourceNewFromC(retC)
+	retGo := SourceNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }

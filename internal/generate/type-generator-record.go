@@ -93,13 +93,23 @@ func (t *TypeGeneratorRecord) generateReturnFunctionDeclaration(g *jen.Group) {
 		Do(t.typ.qname.generate)
 }
 
-func (t *TypeGeneratorRecord) generateReturnCToGo(g *jen.Group, cVarName string, goVarName string,
+func (t *TypeGeneratorRecord) generateReturnCToGo(g *jen.Group,
+	cVarName string, goVarName string, pkg string,
 	transferOwnership string) {
+
 	g.
 		Id(goVarName).
 		Op(":=").
-		Id(t.record.newFromCFuncName).
-		Call(jen.Id(cVarName))
+		Do(func(s *jen.Statement) {
+			if pkg != "" {
+				s.Qual(pkg, t.record.newFromCFuncName)
+			} else {
+				s.Id(t.record.newFromCFuncName)
+			}
+		}).
+		Call(jen.
+			Qual("unsafe", "Pointer").
+			Call(jen.Id(cVarName)))
 }
 
 func (t *TypeGeneratorRecord) generateCToGo(cVarReference *jen.Statement) *jen.Statement {

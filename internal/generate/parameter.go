@@ -77,7 +77,7 @@ func (p *Parameter) generateCallArgument(g *jen.Group) {
 
 func (p *Parameter) generateOutputParamGoVar(g *jen.Group) {
 	if p.Direction == "out" {
-		p.Type.generator.generateReturnCToGo(g, p.cVarName, p.goVarName, p.TransferOwnership)
+		p.Type.generator.generateReturnCToGo(g, p.cVarName, p.goVarName, "", p.TransferOwnership)
 		g.Line()
 	}
 }

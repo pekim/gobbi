@@ -3,6 +3,8 @@
 
 package glib
 
+import "unsafe"
+
 // #define GLIB_DISABLE_DEPRECATION_WARNINGS
 // #include <glib.h>
 // #include <glib/gstdio.h>
@@ -17,7 +19,8 @@ type Once struct {
 	// retval : no type generator for gpointer, volatile gpointer
 }
 
-func onceNewFromC(c *C.GOnce) *Once {
+func OnceNewFromC(u unsafe.Pointer) *Once {
+	c := (*C.GOnce)(u)
 	if c == nil {
 		return nil
 	}

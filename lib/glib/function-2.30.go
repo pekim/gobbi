@@ -41,7 +41,7 @@ func DirMakeTmp(tmpl string) (string, error) {
 	retGo := C.GoString(retC)
 	defer C.free(unsafe.Pointer(retC))
 
-	goThrowableError := errorNewFromC(cThrowableError)
+	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
 	if cThrowableError != nil {
 		C.g_error_free(cThrowableError)
 	}
@@ -149,7 +149,7 @@ func UnixSignalSourceNew(signum int32) *Source {
 	c_signum := (C.gint)(signum)
 
 	retC := C.g_unix_signal_source_new(c_signum)
-	retGo := sourceNewFromC(retC)
+	retGo := SourceNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }

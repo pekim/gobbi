@@ -13,6 +13,13 @@ func (r *RecordNewFromCFunc) generate(g *jen.Group) {
 		ParamsFunc(r.generateParams).
 		ParamsFunc(r.generateReturnDeclaration).
 		BlockFunc(func(g *jen.Group) {
+			// convert unsafe.Pointer arg to C type
+			g.
+				Id("c").
+				Op(":=").
+				Parens(jen.Id("*").Qual("C", r.CType)).
+				Parens(jen.Id("u"))
+
 			// If the C parameter is nil, do not create a Go struct.
 			// Instead, return nil.
 			g.If(jen.Id("c").Op("==").Nil()).
@@ -32,9 +39,8 @@ func (r *RecordNewFromCFunc) generate(g *jen.Group) {
 
 func (r *RecordNewFromCFunc) generateParams(g *jen.Group) {
 	g.
-		Id("c").
-		Op("*").
-		Qual("C", r.CType)
+		Id("u").
+		Qual("unsafe", "Pointer")
 }
 
 func (r *RecordNewFromCFunc) generateReturnDeclaration(g *jen.Group) {

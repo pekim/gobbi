@@ -3,6 +3,8 @@
 
 package glib
 
+import "unsafe"
+
 // #define GLIB_DISABLE_DEPRECATION_WARNINGS
 // #include <glib.h>
 // #include <glib/gstdio.h>
@@ -18,7 +20,8 @@ type LogField struct {
 	Length int64
 }
 
-func logFieldNewFromC(c *C.GLogField) *LogField {
+func LogFieldNewFromC(u unsafe.Pointer) *LogField {
+	c := (*C.GLogField)(u)
 	if c == nil {
 		return nil
 	}

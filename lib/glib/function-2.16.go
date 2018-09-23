@@ -103,7 +103,7 @@ func TestCreateSuite(suiteName string) *TestSuite {
 	defer C.free(unsafe.Pointer(c_suite_name))
 
 	retC := C.g_test_create_suite(c_suite_name)
-	retGo := testSuiteNewFromC(retC)
+	retGo := TestSuiteNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -111,7 +111,7 @@ func TestCreateSuite(suiteName string) *TestSuite {
 // TestGetRoot is a wrapper around the C function g_test_get_root.
 func TestGetRoot() *TestSuite {
 	retC := C.g_test_get_root()
-	retGo := testSuiteNewFromC(retC)
+	retGo := TestSuiteNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }

@@ -3,6 +3,8 @@
 
 package glib
 
+import "unsafe"
+
 // #define GLIB_DISABLE_DEPRECATION_WARNINGS
 // #include <glib.h>
 // #include <glib/gstdio.h>
@@ -27,7 +29,7 @@ import "C"
 // MainContextRefThreadDefault is a wrapper around the C function g_main_context_ref_thread_default.
 func MainContextRefThreadDefault() *MainContext {
 	retC := C.g_main_context_ref_thread_default()
-	retGo := mainContextNewFromC(retC)
+	retGo := MainContextNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }

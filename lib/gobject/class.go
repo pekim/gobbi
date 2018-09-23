@@ -18,7 +18,8 @@ type InitiallyUnowned struct {
 	// All fields are private
 }
 
-func initiallyUnownedNewFromC(c *C.GInitiallyUnowned) *InitiallyUnowned {
+func InitiallyUnownedNewFromC(u unsafe.Pointer) *InitiallyUnowned {
+	c := (*C.GInitiallyUnowned)(u)
 	if c == nil {
 		return nil
 	}
@@ -39,7 +40,8 @@ type Object struct {
 	// All fields are private
 }
 
-func objectNewFromC(c *C.GObject) *Object {
+func ObjectNewFromC(u unsafe.Pointer) *Object {
+	c := (*C.GObject)(u)
 	if c == nil {
 		return nil
 	}
@@ -199,7 +201,8 @@ type ParamSpec struct {
 	// Private : param_id
 }
 
-func paramSpecNewFromC(c *C.GParamSpec) *ParamSpec {
+func ParamSpecNewFromC(u unsafe.Pointer) *ParamSpec {
+	c := (*C.GParamSpec)(u)
 	if c == nil {
 		return nil
 	}
@@ -284,7 +287,8 @@ type ParamSpecBoolean struct {
 	// default_value : no type generator for gboolean, gboolean
 }
 
-func paramSpecBooleanNewFromC(c *C.GParamSpecBoolean) *ParamSpecBoolean {
+func ParamSpecBooleanNewFromC(u unsafe.Pointer) *ParamSpecBoolean {
+	c := (*C.GParamSpecBoolean)(u)
 	if c == nil {
 		return nil
 	}
@@ -305,7 +309,8 @@ type ParamSpecBoxed struct {
 	// parent_instance : no type generator for ParamSpec, GParamSpec
 }
 
-func paramSpecBoxedNewFromC(c *C.GParamSpecBoxed) *ParamSpecBoxed {
+func ParamSpecBoxedNewFromC(u unsafe.Pointer) *ParamSpecBoxed {
+	c := (*C.GParamSpecBoxed)(u)
 	if c == nil {
 		return nil
 	}
@@ -329,7 +334,8 @@ type ParamSpecChar struct {
 	DefaultValue int8
 }
 
-func paramSpecCharNewFromC(c *C.GParamSpecChar) *ParamSpecChar {
+func ParamSpecCharNewFromC(u unsafe.Pointer) *ParamSpecChar {
+	c := (*C.GParamSpecChar)(u)
 	if c == nil {
 		return nil
 	}
@@ -365,7 +371,8 @@ type ParamSpecDouble struct {
 	Epsilon      float64
 }
 
-func paramSpecDoubleNewFromC(c *C.GParamSpecDouble) *ParamSpecDouble {
+func ParamSpecDoubleNewFromC(u unsafe.Pointer) *ParamSpecDouble {
+	c := (*C.GParamSpecDouble)(u)
 	if c == nil {
 		return nil
 	}
@@ -402,7 +409,8 @@ type ParamSpecEnum struct {
 	DefaultValue int32
 }
 
-func paramSpecEnumNewFromC(c *C.GParamSpecEnum) *ParamSpecEnum {
+func ParamSpecEnumNewFromC(u unsafe.Pointer) *ParamSpecEnum {
+	c := (*C.GParamSpecEnum)(u)
 	if c == nil {
 		return nil
 	}
@@ -430,7 +438,8 @@ type ParamSpecFlags struct {
 	DefaultValue uint32
 }
 
-func paramSpecFlagsNewFromC(c *C.GParamSpecFlags) *ParamSpecFlags {
+func ParamSpecFlagsNewFromC(u unsafe.Pointer) *ParamSpecFlags {
+	c := (*C.GParamSpecFlags)(u)
 	if c == nil {
 		return nil
 	}
@@ -460,7 +469,8 @@ type ParamSpecFloat struct {
 	Epsilon      float32
 }
 
-func paramSpecFloatNewFromC(c *C.GParamSpecFloat) *ParamSpecFloat {
+func ParamSpecFloatNewFromC(u unsafe.Pointer) *ParamSpecFloat {
+	c := (*C.GParamSpecFloat)(u)
 	if c == nil {
 		return nil
 	}
@@ -498,7 +508,8 @@ type ParamSpecInt struct {
 	DefaultValue int32
 }
 
-func paramSpecIntNewFromC(c *C.GParamSpecInt) *ParamSpecInt {
+func ParamSpecIntNewFromC(u unsafe.Pointer) *ParamSpecInt {
+	c := (*C.GParamSpecInt)(u)
 	if c == nil {
 		return nil
 	}
@@ -533,7 +544,8 @@ type ParamSpecInt64 struct {
 	DefaultValue int64
 }
 
-func paramSpecInt64NewFromC(c *C.GParamSpecInt64) *ParamSpecInt64 {
+func ParamSpecInt64NewFromC(u unsafe.Pointer) *ParamSpecInt64 {
+	c := (*C.GParamSpecInt64)(u)
 	if c == nil {
 		return nil
 	}
@@ -568,7 +580,8 @@ type ParamSpecLong struct {
 	DefaultValue int64
 }
 
-func paramSpecLongNewFromC(c *C.GParamSpecLong) *ParamSpecLong {
+func ParamSpecLongNewFromC(u unsafe.Pointer) *ParamSpecLong {
+	c := (*C.GParamSpecLong)(u)
 	if c == nil {
 		return nil
 	}
@@ -600,7 +613,8 @@ type ParamSpecObject struct {
 	// parent_instance : no type generator for ParamSpec, GParamSpec
 }
 
-func paramSpecObjectNewFromC(c *C.GParamSpecObject) *ParamSpecObject {
+func ParamSpecObjectNewFromC(u unsafe.Pointer) *ParamSpecObject {
+	c := (*C.GParamSpecObject)(u)
 	if c == nil {
 		return nil
 	}
@@ -621,7 +635,8 @@ type ParamSpecParam struct {
 	// parent_instance : no type generator for ParamSpec, GParamSpec
 }
 
-func paramSpecParamNewFromC(c *C.GParamSpecParam) *ParamSpecParam {
+func ParamSpecParamNewFromC(u unsafe.Pointer) *ParamSpecParam {
+	c := (*C.GParamSpecParam)(u)
 	if c == nil {
 		return nil
 	}
@@ -642,7 +657,8 @@ type ParamSpecPointer struct {
 	// parent_instance : no type generator for ParamSpec, GParamSpec
 }
 
-func paramSpecPointerNewFromC(c *C.GParamSpecPointer) *ParamSpecPointer {
+func ParamSpecPointerNewFromC(u unsafe.Pointer) *ParamSpecPointer {
+	c := (*C.GParamSpecPointer)(u)
 	if c == nil {
 		return nil
 	}
@@ -669,7 +685,8 @@ type ParamSpecString struct {
 	// Bitfield not supported :  1 ensure_non_null
 }
 
-func paramSpecStringNewFromC(c *C.GParamSpecString) *ParamSpecString {
+func ParamSpecStringNewFromC(u unsafe.Pointer) *ParamSpecString {
+	c := (*C.GParamSpecString)(u)
 	if c == nil {
 		return nil
 	}
@@ -707,7 +724,8 @@ type ParamSpecUChar struct {
 	DefaultValue uint8
 }
 
-func paramSpecUCharNewFromC(c *C.GParamSpecUChar) *ParamSpecUChar {
+func ParamSpecUCharNewFromC(u unsafe.Pointer) *ParamSpecUChar {
+	c := (*C.GParamSpecUChar)(u)
 	if c == nil {
 		return nil
 	}
@@ -742,7 +760,8 @@ type ParamSpecUInt struct {
 	DefaultValue uint32
 }
 
-func paramSpecUIntNewFromC(c *C.GParamSpecUInt) *ParamSpecUInt {
+func ParamSpecUIntNewFromC(u unsafe.Pointer) *ParamSpecUInt {
+	c := (*C.GParamSpecUInt)(u)
 	if c == nil {
 		return nil
 	}
@@ -777,7 +796,8 @@ type ParamSpecUInt64 struct {
 	DefaultValue uint64
 }
 
-func paramSpecUInt64NewFromC(c *C.GParamSpecUInt64) *ParamSpecUInt64 {
+func ParamSpecUInt64NewFromC(u unsafe.Pointer) *ParamSpecUInt64 {
+	c := (*C.GParamSpecUInt64)(u)
 	if c == nil {
 		return nil
 	}
@@ -812,7 +832,8 @@ type ParamSpecULong struct {
 	DefaultValue uint64
 }
 
-func paramSpecULongNewFromC(c *C.GParamSpecULong) *ParamSpecULong {
+func ParamSpecULongNewFromC(u unsafe.Pointer) *ParamSpecULong {
+	c := (*C.GParamSpecULong)(u)
 	if c == nil {
 		return nil
 	}
@@ -845,7 +866,8 @@ type ParamSpecUnichar struct {
 	DefaultValue rune
 }
 
-func paramSpecUnicharNewFromC(c *C.GParamSpecUnichar) *ParamSpecUnichar {
+func ParamSpecUnicharNewFromC(u unsafe.Pointer) *ParamSpecUnichar {
+	c := (*C.GParamSpecUnichar)(u)
 	if c == nil {
 		return nil
 	}
@@ -873,7 +895,8 @@ type ParamSpecValueArray struct {
 	FixedNElements uint32
 }
 
-func paramSpecValueArrayNewFromC(c *C.GParamSpecValueArray) *ParamSpecValueArray {
+func ParamSpecValueArrayNewFromC(u unsafe.Pointer) *ParamSpecValueArray {
+	c := (*C.GParamSpecValueArray)(u)
 	if c == nil {
 		return nil
 	}
@@ -903,7 +926,8 @@ type TypeModule struct {
 	Name string
 }
 
-func typeModuleNewFromC(c *C.GTypeModule) *TypeModule {
+func TypeModuleNewFromC(u unsafe.Pointer) *TypeModule {
+	c := (*C.GTypeModule)(u)
 	if c == nil {
 		return nil
 	}
