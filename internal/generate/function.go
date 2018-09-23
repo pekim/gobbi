@@ -55,7 +55,7 @@ func (f *Function) initThrowableError() {
 		Name:  "Error",
 		CType: "GError**",
 	}
-	typ.init(f.Namespace)
+	typ.init(f.Namespace.get("GLib"))
 
 	f.throwableErrorType = typ
 	f.throwableErrorCVarName = "cThrowableError"
