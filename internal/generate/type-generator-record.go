@@ -58,7 +58,7 @@ func (t *TypeGeneratorRecord) generateDeclaration(g *jen.Group, goVarName string
 	g.
 		Id(goVarName).
 		Op("*").
-		Id(t.typ.goType)
+		Do(t.typ.qname.generate)
 }
 
 func (t *TypeGeneratorRecord) generateParamCallArgument(g *jen.Group, cVarName string) {
@@ -90,7 +90,7 @@ func (t *TypeGeneratorRecord) generateParamOutCVar(g *jen.Group, cVarName string
 func (t *TypeGeneratorRecord) generateReturnFunctionDeclaration(g *jen.Group) {
 	g.
 		Op(strings.Repeat("*", t.typ.indirectLevel)).
-		Id(t.typ.goType)
+		Do(t.typ.qname.generate)
 }
 
 func (t *TypeGeneratorRecord) generateReturnCToGo(g *jen.Group, cVarName string, goVarName string,

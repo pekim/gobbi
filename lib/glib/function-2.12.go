@@ -39,9 +39,9 @@ func AsciiStrtoll(nptr string, base uint32) (int64, string) {
 
 // Unsupported : g_base64_encode_step : unsupported parameter in : no param type
 
-// Unsupported : g_hash_table_remove_all : unsupported parameter hash_table : no type generator for GLib.HashTable, GHashTable*
+// Unsupported : g_hash_table_remove_all : no return generator
 
-// Unsupported : g_hash_table_steal_all : unsupported parameter hash_table : no type generator for GLib.HashTable, GHashTable*
+// Unsupported : g_hash_table_steal_all : no return generator
 
 // MainCurrentSource is a wrapper around the C function g_main_current_source.
 func MainCurrentSource() *Source {

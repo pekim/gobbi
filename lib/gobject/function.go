@@ -209,23 +209,23 @@ func FlagsGetValueByNick(flagsClass *FlagsClass, nick string) *FlagsValue {
 
 // Unsupported : g_pointer_type_register_static : no return generator
 
-// Unsupported : g_signal_add_emission_hook : unsupported parameter detail : no type generator for GLib.Quark, GQuark
+// Unsupported : g_signal_add_emission_hook : unsupported parameter hook_func : no type generator for SignalEmissionHook, GSignalEmissionHook
 
 // Unsupported : g_signal_chain_from_overridden : unsupported parameter instance_and_params : no param type
 
 // Unsupported : g_signal_connect_closure : unsupported parameter after : no type generator for gboolean, gboolean
 
-// Unsupported : g_signal_connect_closure_by_id : unsupported parameter detail : no type generator for GLib.Quark, GQuark
+// Unsupported : g_signal_connect_closure_by_id : unsupported parameter after : no type generator for gboolean, gboolean
 
 // Unsupported : g_signal_connect_data : unsupported parameter c_handler : no type generator for Callback, GCallback
 
 // Unsupported : g_signal_connect_object : unsupported parameter c_handler : no type generator for Callback, GCallback
 
-// Unsupported : g_signal_emit : unsupported parameter detail : no type generator for GLib.Quark, GQuark
+// Unsupported : g_signal_emit : unsupported parameter ... : varargs
 
 // Unsupported : g_signal_emit_by_name : unsupported parameter ... : varargs
 
-// Unsupported : g_signal_emit_valist : unsupported parameter detail : no type generator for GLib.Quark, GQuark
+// Unsupported : g_signal_emit_valist : unsupported parameter var_args : no type generator for va_list, va_list
 
 // Unsupported : g_signal_emitv : unsupported parameter instance_and_params : no param type
 
@@ -257,7 +257,7 @@ func SignalGetInvocationHint(instance uintptr) *SignalInvocationHint {
 
 // Unsupported : g_signal_handlers_unblock_matched : unsupported parameter mask : no type generator for SignalMatchType, GSignalMatchType
 
-// Unsupported : g_signal_has_handler_pending : unsupported parameter detail : no type generator for GLib.Quark, GQuark
+// Unsupported : g_signal_has_handler_pending : unsupported parameter may_be_blocked : no type generator for gboolean, gboolean
 
 // Unsupported : g_signal_list_ids : unsupported parameter itype : no type generator for GType, GType
 
@@ -287,15 +287,15 @@ func SignalName(signalId uint32) string {
 
 // Unsupported : g_signal_remove_emission_hook : no return generator
 
-// Unsupported : g_signal_stop_emission : unsupported parameter detail : no type generator for GLib.Quark, GQuark
+// Unsupported : g_signal_stop_emission : no return generator
 
 // Unsupported : g_signal_stop_emission_by_name : no return generator
 
 // Unsupported : g_signal_type_cclosure_new : unsupported parameter itype : no type generator for GType, GType
 
-// Unsupported : g_source_set_closure : unsupported parameter source : no type generator for GLib.Source, GSource*
+// Unsupported : g_source_set_closure : no return generator
 
-// Unsupported : g_source_set_dummy_callback : unsupported parameter source : no type generator for GLib.Source, GSource*
+// Unsupported : g_source_set_dummy_callback : no return generator
 
 // StrdupValueContents is a wrapper around the C function g_strdup_value_contents.
 func StrdupValueContents(value *Value) string {

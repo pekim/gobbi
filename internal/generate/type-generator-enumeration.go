@@ -36,7 +36,7 @@ func (t *TypeGeneratorEnumeration) isSupportedAsReturnValue() (supported bool, r
 func (t *TypeGeneratorEnumeration) generateDeclaration(g *jen.Group, goVarName string) {
 	g.
 		Id(goVarName).
-		Id(t.typ.goType)
+		Do(t.typ.qname.generate)
 }
 
 func (t *TypeGeneratorEnumeration) generateParamCallArgument(g *jen.Group, cVarName string) {
@@ -63,20 +63,20 @@ func (t *TypeGeneratorEnumeration) generateParamOutCVar(g *jen.Group, cVarName s
 }
 
 func (t *TypeGeneratorEnumeration) generateReturnFunctionDeclaration(g *jen.Group) {
-	g.Id(t.typ.goType)
+	g.Do(t.typ.qname.generate)
 }
 
 func (t *TypeGeneratorEnumeration) generateReturnCToGo(g *jen.Group, cVarName string, goVarName string, transferOwnership string) {
 	g.
 		Id(goVarName).
 		Op(":=").
-		Parens(jen.Id(t.typ.goType)).
+		Parens(jen.Do(t.typ.qname.generate)).
 		Parens(jen.Id(cVarName))
 }
 
 func (t *TypeGeneratorEnumeration) generateCToGo(cVarReference *jen.Statement) *jen.Statement {
 	return jen.
-		Parens(jen.Id(t.typ.goType)).
+		Parens(jen.Do(t.typ.qname.generate)).
 		Params(cVarReference)
 }
 

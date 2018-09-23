@@ -552,21 +552,39 @@ func Getenv(variable string) string {
 	return retGo
 }
 
-// Unsupported : g_hash_table_destroy : unsupported parameter hash_table : no type generator for GLib.HashTable, GHashTable*
+// Unsupported : g_hash_table_destroy : no return generator
 
-// Unsupported : g_hash_table_insert : unsupported parameter hash_table : no type generator for GLib.HashTable, GHashTable*
+// Unsupported : g_hash_table_insert : no return generator
 
-// Unsupported : g_hash_table_lookup : unsupported parameter hash_table : no type generator for GLib.HashTable, GHashTable*
+// HashTableLookup is a wrapper around the C function g_hash_table_lookup.
+func HashTableLookup(hashTable *HashTable, key uintptr) uintptr {
+	c_hash_table := hashTable.toC()
 
-// Unsupported : g_hash_table_lookup_extended : unsupported parameter hash_table : no type generator for GLib.HashTable, GHashTable*
+	c_key := (C.gconstpointer)(key)
 
-// Unsupported : g_hash_table_remove : unsupported parameter hash_table : no type generator for GLib.HashTable, GHashTable*
+	retC := C.g_hash_table_lookup(c_hash_table, c_key)
+	retGo := (uintptr)(retC)
 
-// Unsupported : g_hash_table_replace : unsupported parameter hash_table : no type generator for GLib.HashTable, GHashTable*
+	return retGo
+}
 
-// Unsupported : g_hash_table_size : unsupported parameter hash_table : no type generator for GLib.HashTable, GHashTable*
+// Unsupported : g_hash_table_lookup_extended : unsupported parameter orig_key : no type generator for gpointer, gpointer*
 
-// Unsupported : g_hash_table_steal : unsupported parameter hash_table : no type generator for GLib.HashTable, GHashTable*
+// Unsupported : g_hash_table_remove : no return generator
+
+// Unsupported : g_hash_table_replace : no return generator
+
+// HashTableSize is a wrapper around the C function g_hash_table_size.
+func HashTableSize(hashTable *HashTable) uint32 {
+	c_hash_table := hashTable.toC()
+
+	retC := C.g_hash_table_size(c_hash_table)
+	retGo := (uint32)(retC)
+
+	return retGo
+}
+
+// Unsupported : g_hash_table_steal : no return generator
 
 // Unsupported : g_hook_destroy : no return generator
 

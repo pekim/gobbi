@@ -20,9 +20,9 @@ import "C"
 
 // Unsupported : g_environ_unsetenv : unsupported parameter envp : no param type
 
-// Unsupported : g_hash_table_add : unsupported parameter hash_table : no type generator for GLib.HashTable, GHashTable*
+// Unsupported : g_hash_table_add : no return generator
 
-// Unsupported : g_hash_table_contains : unsupported parameter hash_table : no type generator for GLib.HashTable, GHashTable*
+// Unsupported : g_hash_table_contains : no return generator
 
 // MainContextRefThreadDefault is a wrapper around the C function g_main_context_ref_thread_default.
 func MainContextRefThreadDefault() *MainContext {

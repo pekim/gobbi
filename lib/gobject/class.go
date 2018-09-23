@@ -2,7 +2,10 @@
 
 package gobject
 
-import "unsafe"
+import (
+	glib "github.com/pekim/gobbi/lib/glib"
+	"unsafe"
+)
 
 // #define GLIB_DISABLE_DEPRECATION_WARNINGS
 // #include <glib-object.h>
@@ -75,7 +78,7 @@ func (recv *Object) toC() *C.GObject {
 
 // Unsupported : g_object_dup_data : unsupported parameter dup_func : no type generator for GLib.DuplicateFunc, GDuplicateFunc
 
-// Unsupported : g_object_dup_qdata : unsupported parameter quark : no type generator for GLib.Quark, GQuark
+// Unsupported : g_object_dup_qdata : unsupported parameter dup_func : no type generator for GLib.DuplicateFunc, GDuplicateFunc
 
 // Unsupported : g_object_force_floating : no return generator
 
@@ -96,7 +99,15 @@ func (recv *Object) GetData(key string) uintptr {
 
 // Unsupported : g_object_get_property : no return generator
 
-// Unsupported : g_object_get_qdata : unsupported parameter quark : no type generator for GLib.Quark, GQuark
+// GetQdata is a wrapper around the C function g_object_get_qdata.
+func (recv *Object) GetQdata(quark glib.Quark) uintptr {
+	c_quark := (C.GQuark)(quark)
+
+	retC := C.g_object_get_qdata((*C.GObject)(recv.native), c_quark)
+	retGo := (uintptr)(retC)
+
+	return retGo
+}
 
 // Unsupported : g_object_get_valist : unsupported parameter var_args : no type generator for va_list, va_list
 
@@ -122,7 +133,7 @@ func (recv *Object) Ref() uintptr {
 
 // Unsupported : g_object_replace_data : unsupported parameter destroy : no type generator for GLib.DestroyNotify, GDestroyNotify
 
-// Unsupported : g_object_replace_qdata : unsupported parameter quark : no type generator for GLib.Quark, GQuark
+// Unsupported : g_object_replace_qdata : unsupported parameter destroy : no type generator for GLib.DestroyNotify, GDestroyNotify
 
 // Unsupported : g_object_run_dispose : no return generator
 
@@ -134,9 +145,9 @@ func (recv *Object) Ref() uintptr {
 
 // Unsupported : g_object_set_property : no return generator
 
-// Unsupported : g_object_set_qdata : unsupported parameter quark : no type generator for GLib.Quark, GQuark
+// Unsupported : g_object_set_qdata : no return generator
 
-// Unsupported : g_object_set_qdata_full : unsupported parameter quark : no type generator for GLib.Quark, GQuark
+// Unsupported : g_object_set_qdata_full : unsupported parameter destroy : no type generator for GLib.DestroyNotify, GDestroyNotify
 
 // Unsupported : g_object_set_valist : unsupported parameter var_args : no type generator for va_list, va_list
 
@@ -153,7 +164,15 @@ func (recv *Object) StealData(key string) uintptr {
 	return retGo
 }
 
-// Unsupported : g_object_steal_qdata : unsupported parameter quark : no type generator for GLib.Quark, GQuark
+// StealQdata is a wrapper around the C function g_object_steal_qdata.
+func (recv *Object) StealQdata(quark glib.Quark) uintptr {
+	c_quark := (C.GQuark)(quark)
+
+	retC := C.g_object_steal_qdata((*C.GObject)(recv.native), c_quark)
+	retGo := (uintptr)(retC)
+
+	return retGo
+}
 
 // Unsupported : g_object_thaw_notify : no return generator
 
@@ -216,8 +235,6 @@ func (recv *ParamSpec) GetName() string {
 	return retGo
 }
 
-// Unsupported : g_param_spec_get_name_quark : no return generator
-
 // GetNick is a wrapper around the C function g_param_spec_get_nick.
 func (recv *ParamSpec) GetNick() string {
 	retC := C.g_param_spec_get_nick((*C.GParamSpec)(recv.native))
@@ -226,7 +243,15 @@ func (recv *ParamSpec) GetNick() string {
 	return retGo
 }
 
-// Unsupported : g_param_spec_get_qdata : unsupported parameter quark : no type generator for GLib.Quark, GQuark
+// GetQdata is a wrapper around the C function g_param_spec_get_qdata.
+func (recv *ParamSpec) GetQdata(quark glib.Quark) uintptr {
+	c_quark := (C.GQuark)(quark)
+
+	retC := C.g_param_spec_get_qdata((*C.GParamSpec)(recv.native), c_quark)
+	retGo := (uintptr)(retC)
+
+	return retGo
+}
 
 // Unsupported : g_param_spec_get_redirect_target : no return generator
 
@@ -234,13 +259,21 @@ func (recv *ParamSpec) GetNick() string {
 
 // Unsupported : g_param_spec_ref_sink : no return generator
 
-// Unsupported : g_param_spec_set_qdata : unsupported parameter quark : no type generator for GLib.Quark, GQuark
+// Unsupported : g_param_spec_set_qdata : no return generator
 
-// Unsupported : g_param_spec_set_qdata_full : unsupported parameter quark : no type generator for GLib.Quark, GQuark
+// Unsupported : g_param_spec_set_qdata_full : unsupported parameter destroy : no type generator for GLib.DestroyNotify, GDestroyNotify
 
 // Unsupported : g_param_spec_sink : no return generator
 
-// Unsupported : g_param_spec_steal_qdata : unsupported parameter quark : no type generator for GLib.Quark, GQuark
+// StealQdata is a wrapper around the C function g_param_spec_steal_qdata.
+func (recv *ParamSpec) StealQdata(quark glib.Quark) uintptr {
+	c_quark := (C.GQuark)(quark)
+
+	retC := C.g_param_spec_steal_qdata((*C.GParamSpec)(recv.native), c_quark)
+	retGo := (uintptr)(retC)
+
+	return retGo
+}
 
 // Unsupported : g_param_spec_unref : no return generator
 
@@ -865,8 +898,8 @@ type TypeModule struct {
 	native *C.GTypeModule
 	// parent_instance : no type generator for Object, GObject
 	UseCount uint32
-	// type_infos : no type generator for GLib.SList, GSList*
-	// interface_infos : no type generator for GLib.SList, GSList*
+	// type_infos : record
+	// interface_infos : record
 	Name string
 }
 

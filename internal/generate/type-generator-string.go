@@ -42,7 +42,7 @@ func (t *TypeGeneratorString) isSupportedAsReturnValue() (supported bool, reason
 func (t *TypeGeneratorString) generateDeclaration(g *jen.Group, goVarName string) {
 	g.
 		Id(goVarName).
-		Id(t.typ.goType)
+		Do(t.typ.qname.generate)
 }
 
 func (t *TypeGeneratorString) generateParamCallArgument(g *jen.Group, cVarName string) {
@@ -85,7 +85,7 @@ func (t *TypeGeneratorString) generateParamOutCVar(g *jen.Group, cVarName string
 }
 
 func (t *TypeGeneratorString) generateReturnFunctionDeclaration(g *jen.Group) {
-	g.Id(t.typ.goType)
+	g.Do(t.typ.qname.generate)
 }
 
 func (t *TypeGeneratorString) generateReturnCToGo(g *jen.Group, cVarName string, goVarName string, transferOwnership string) {

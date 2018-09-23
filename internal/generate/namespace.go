@@ -21,17 +21,19 @@ type Namespace struct {
 	Functions           Functions    `xml:"function"`
 	Records             Records      `xml:"record"`
 
-	repo          *Repository
-	goPackageName string
-	allVersions   Versions
-	versionDebug  bool
-	libDir        string
-	namespaces    map[string]*Namespace
+	repo              *Repository
+	goPackageName     string
+	fullGoPackageName string
+	allVersions       Versions
+	versionDebug      bool
+	libDir            string
+	namespaces        map[string]*Namespace
 }
 
 func (ns *Namespace) init(repo *Repository) {
 	ns.repo = repo
 	ns.goPackageName = strings.ToLower(ns.Name)
+	ns.fullGoPackageName = fmt.Sprintf("github.com/pekim/gobbi/lib/%s", ns.goPackageName)
 	ns.libDir = projectFilepath("lib", ns.goPackageName)
 
 	ns.Aliases.init(ns)
@@ -89,4 +91,14 @@ func (ns *Namespace) enumForName(name string) (*Enumeration, bool) {
 func (ns *Namespace) recordForName(name string) (*Record, bool) {
 	record := ns.Records.forName(name)
 	return record, record != nil
+}
+
+func (ns *Namespace) get(name string) *Namespace {
+	for _, namespace := range ns.namespaces {
+		if namespace.Name == name {
+			return namespace
+		}
+	}
+
+	return nil
 }

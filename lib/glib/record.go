@@ -717,9 +717,7 @@ func (recv *HashTableIter) toC() *C.GHashTableIter {
 	return recv.native
 }
 
-// Unsupported : g_hash_table_iter_get_hash_table : no return generator
-
-// Unsupported : g_hash_table_iter_init : unsupported parameter hash_table : no type generator for GLib.HashTable, GHashTable*
+// Unsupported : g_hash_table_iter_init : no return generator
 
 // Unsupported : g_hash_table_iter_next : unsupported parameter key : no type generator for gpointer, gpointer*
 
@@ -969,8 +967,8 @@ func KeyFileNew() *KeyFile {
 type List struct {
 	native *C.GList
 	Data   uintptr
-	// next : no type generator for GLib.List, GList*
-	// prev : no type generator for GLib.List, GList*
+	// next : record
+	// prev : record
 }
 
 func listNewFromC(c *C.GList) *List {
@@ -1200,8 +1198,6 @@ func (recv *MarkupParseContext) toC() *C.GMarkupParseContext {
 // Unsupported : g_markup_parse_context_end_parse : no return generator
 
 // Unsupported : g_markup_parse_context_free : no return generator
-
-// Unsupported : g_markup_parse_context_get_element_stack : no return generator
 
 // Unsupported : g_markup_parse_context_get_position : unsupported parameter line_number : no type generator for gint, gint*
 
@@ -1751,8 +1747,8 @@ func (recv *PtrArray) toC() *C.GPtrArray {
 // Queue is a wrapper around the C record GQueue.
 type Queue struct {
 	native *C.GQueue
-	// head : no type generator for GLib.List, GList*
-	// tail : no type generator for GLib.List, GList*
+	// head : record
+	// tail : record
 	Length uint32
 }
 
@@ -1778,9 +1774,7 @@ func (recv *Queue) toC() *C.GQueue {
 
 // Unsupported : g_queue_clear : no return generator
 
-// Unsupported : g_queue_delete_link : unsupported parameter link_ : no type generator for GLib.List, GList*
-
-// Unsupported : g_queue_find : no return generator
+// Unsupported : g_queue_delete_link : no return generator
 
 // Unsupported : g_queue_find_custom : unsupported parameter func : no type generator for CompareFunc, GCompareFunc
 
@@ -1792,15 +1786,13 @@ func (recv *Queue) toC() *C.GQueue {
 
 // Unsupported : g_queue_init : no return generator
 
-// Unsupported : g_queue_insert_after : unsupported parameter sibling : no type generator for GLib.List, GList*
+// Unsupported : g_queue_insert_after : no return generator
 
-// Unsupported : g_queue_insert_before : unsupported parameter sibling : no type generator for GLib.List, GList*
+// Unsupported : g_queue_insert_before : no return generator
 
 // Unsupported : g_queue_insert_sorted : unsupported parameter func : no type generator for CompareDataFunc, GCompareDataFunc
 
 // Unsupported : g_queue_is_empty : no return generator
-
-// Unsupported : g_queue_link_index : unsupported parameter link_ : no type generator for GLib.List, GList*
 
 // PeekHead is a wrapper around the C function g_queue_peek_head.
 func (recv *Queue) PeekHead() uintptr {
@@ -1810,10 +1802,6 @@ func (recv *Queue) PeekHead() uintptr {
 	return retGo
 }
 
-// Unsupported : g_queue_peek_head_link : no return generator
-
-// Unsupported : g_queue_peek_nth_link : no return generator
-
 // PeekTail is a wrapper around the C function g_queue_peek_tail.
 func (recv *Queue) PeekTail() uintptr {
 	retC := C.g_queue_peek_tail((*C.GQueue)(recv.native))
@@ -1821,8 +1809,6 @@ func (recv *Queue) PeekTail() uintptr {
 
 	return retGo
 }
-
-// Unsupported : g_queue_peek_tail_link : no return generator
 
 // PopHead is a wrapper around the C function g_queue_pop_head.
 func (recv *Queue) PopHead() uintptr {
@@ -1832,9 +1818,13 @@ func (recv *Queue) PopHead() uintptr {
 	return retGo
 }
 
-// Unsupported : g_queue_pop_head_link : no return generator
+// PopHeadLink is a wrapper around the C function g_queue_pop_head_link.
+func (recv *Queue) PopHeadLink() *List {
+	retC := C.g_queue_pop_head_link((*C.GQueue)(recv.native))
+	retGo := listNewFromC(retC)
 
-// Unsupported : g_queue_pop_nth_link : no return generator
+	return retGo
+}
 
 // PopTail is a wrapper around the C function g_queue_pop_tail.
 func (recv *Queue) PopTail() uintptr {
@@ -1844,19 +1834,25 @@ func (recv *Queue) PopTail() uintptr {
 	return retGo
 }
 
-// Unsupported : g_queue_pop_tail_link : no return generator
+// PopTailLink is a wrapper around the C function g_queue_pop_tail_link.
+func (recv *Queue) PopTailLink() *List {
+	retC := C.g_queue_pop_tail_link((*C.GQueue)(recv.native))
+	retGo := listNewFromC(retC)
+
+	return retGo
+}
 
 // Unsupported : g_queue_push_head : no return generator
 
-// Unsupported : g_queue_push_head_link : unsupported parameter link_ : no type generator for GLib.List, GList*
+// Unsupported : g_queue_push_head_link : no return generator
 
 // Unsupported : g_queue_push_nth : no return generator
 
-// Unsupported : g_queue_push_nth_link : unsupported parameter link_ : no type generator for GLib.List, GList*
+// Unsupported : g_queue_push_nth_link : no return generator
 
 // Unsupported : g_queue_push_tail : no return generator
 
-// Unsupported : g_queue_push_tail_link : unsupported parameter link_ : no type generator for GLib.List, GList*
+// Unsupported : g_queue_push_tail_link : no return generator
 
 // Unsupported : g_queue_remove : no return generator
 
@@ -1864,7 +1860,7 @@ func (recv *Queue) PopTail() uintptr {
 
 // Unsupported : g_queue_sort : unsupported parameter compare_func : no type generator for CompareDataFunc, GCompareDataFunc
 
-// Unsupported : g_queue_unlink : unsupported parameter link_ : no type generator for GLib.List, GList*
+// Unsupported : g_queue_unlink : no return generator
 
 // Rand is a wrapper around the C record GRand.
 type Rand struct {
@@ -1936,7 +1932,7 @@ func (recv *Rand) IntRange(begin int32, end int32) int32 {
 type SList struct {
 	native *C.GSList
 	Data   uintptr
-	// next : no type generator for GLib.SList, GSList*
+	// next : record
 }
 
 func sListNewFromC(c *C.GSList) *SList {

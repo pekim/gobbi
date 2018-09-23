@@ -2,7 +2,10 @@
 
 package gobject
 
-import "unsafe"
+import (
+	glib "github.com/pekim/gobbi/lib/glib"
+	"unsafe"
+)
 
 // #define GLIB_DISABLE_DEPRECATION_WARNINGS
 // #include <glib-object.h>
@@ -524,7 +527,7 @@ func (recv *Parameter) toC() *C.GParameter {
 type SignalInvocationHint struct {
 	native   *C.GSignalInvocationHint
 	SignalId uint32
-	// detail : no type generator for GLib.Quark, GQuark
+	Detail   glib.Quark
 	// run_type : no type generator for SignalFlags, GSignalFlags
 }
 
@@ -534,6 +537,7 @@ func signalInvocationHintNewFromC(c *C.GSignalInvocationHint) *SignalInvocationH
 	}
 
 	g := &SignalInvocationHint{
+		Detail:   (glib.Quark)(c.detail),
 		SignalId: (uint32)(c.signal_id),
 		native:   c,
 	}
@@ -544,6 +548,8 @@ func signalInvocationHintNewFromC(c *C.GSignalInvocationHint) *SignalInvocationH
 func (recv *SignalInvocationHint) toC() *C.GSignalInvocationHint {
 	recv.native.signal_id =
 		(C.guint)(recv.SignalId)
+	recv.native.detail =
+		(C.GQuark)(recv.Detail)
 
 	return recv.native
 }
@@ -915,7 +921,7 @@ func (recv *Value) DupString() string {
 	return retGo
 }
 
-// Unsupported : g_value_dup_variant : no return generator
+// Unsupported : g_value_dup_variant : return type : Blacklisted record : GVariant
 
 // Unsupported : g_value_fits_pointer : no return generator
 
@@ -1053,7 +1059,7 @@ func (recv *Value) GetUlong() uint64 {
 	return retGo
 }
 
-// Unsupported : g_value_get_variant : no return generator
+// Unsupported : g_value_get_variant : return type : Blacklisted record : GVariant
 
 // Unsupported : g_value_init : unsupported parameter g_type : no type generator for GType, GType
 
@@ -1129,7 +1135,7 @@ func (recv *Value) Reset() *Value {
 
 // Unsupported : g_value_set_ulong : no return generator
 
-// Unsupported : g_value_set_variant : unsupported parameter variant : no type generator for GLib.Variant, GVariant*
+// Unsupported : g_value_set_variant : unsupported parameter variant : Blacklisted record : GVariant
 
 // Unsupported : g_value_take_boxed : no return generator
 
@@ -1139,7 +1145,7 @@ func (recv *Value) Reset() *Value {
 
 // Unsupported : g_value_take_string : no return generator
 
-// Unsupported : g_value_take_variant : unsupported parameter variant : no type generator for GLib.Variant, GVariant*
+// Unsupported : g_value_take_variant : unsupported parameter variant : Blacklisted record : GVariant
 
 // Unsupported : g_value_transform : no return generator
 

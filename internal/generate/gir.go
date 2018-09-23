@@ -16,14 +16,22 @@ func GirNewRoot(name string, version string) []*Gir {
 	girsMap := map[string]*Gir{}
 	GirNew(name, version, girsMap)
 
+	// create a map of namespaces
 	nn := make(map[string]*Namespace)
 	for _, g := range girsMap {
 		ns := g.repo.Namespace
+		ns.repo = g.repo
 		nn[ns.Name] = ns
 	}
 
+	// make all namespaces available all namespaces
 	for _, ns := range nn {
 		ns.namespaces = nn
+	}
+
+	// initialise each namespace
+	for _, ns := range nn {
+		ns.repo.Init()
 	}
 
 	girs := []*Gir{}
@@ -75,7 +83,6 @@ func (g *Gir) LoadFile(filename string, required bool) *Repository {
 	if err != nil {
 		panic(fmt.Errorf("Failed to parse %s : %s", filepath, err))
 	}
-	girRepo.Init()
 
 	return girRepo
 }

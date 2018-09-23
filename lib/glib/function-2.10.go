@@ -12,7 +12,7 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : g_hash_table_unref : unsupported parameter hash_table : no type generator for GLib.HashTable, GHashTable*
+// Unsupported : g_hash_table_unref : no return generator
 
 // InternStaticString is a wrapper around the C function g_intern_static_string.
 func InternStaticString(string string) string {

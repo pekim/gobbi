@@ -56,8 +56,8 @@ func (recv *Binding) GetTargetProperty() string {
 type ParamSpecVariant struct {
 	native *C.GParamSpecVariant
 	// parent_instance : no type generator for ParamSpec, GParamSpec
-	// _type : no type generator for GLib.VariantType, GVariantType*
-	// default_value : no type generator for GLib.Variant, GVariant*
+	// _type : record
+	// default_value : record
 	// Private : padding
 }
 
