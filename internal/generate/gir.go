@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os"
+	"sort"
 )
 
 type Gir struct {
@@ -38,6 +39,9 @@ func GirNewRoot(name string, version string) []*Gir {
 	for _, gir := range girsMap {
 		girs = append(girs, gir)
 	}
+	sort.Slice(girs, func(i, j int) bool {
+		return girs[i].repo.Namespace.Name < girs[j].repo.Namespace.Name
+	})
 
 	return girs
 }
