@@ -44,7 +44,7 @@ func LogWriterIsJournald(outputFd int32) bool {
 	c_output_fd := (C.gint)(outputFd)
 
 	retC := C.g_log_writer_is_journald(c_output_fd)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -58,7 +58,7 @@ func LogWriterSupportsColor(outputFd int32) bool {
 	c_output_fd := (C.gint)(outputFd)
 
 	retC := C.g_log_writer_supports_color(c_output_fd)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }

@@ -211,7 +211,7 @@ func TestTrapFork(usecTimeout uint64, testTrapFlags TestTrapFlags) bool {
 	c_test_trap_flags := (C.GTestTrapFlags)(testTrapFlags)
 
 	retC := C.g_test_trap_fork(c_usec_timeout, c_test_trap_flags)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -219,7 +219,7 @@ func TestTrapFork(usecTimeout uint64, testTrapFlags TestTrapFlags) bool {
 // TestTrapHasPassed is a wrapper around the C function g_test_trap_has_passed.
 func TestTrapHasPassed() bool {
 	retC := C.g_test_trap_has_passed()
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -227,7 +227,7 @@ func TestTrapHasPassed() bool {
 // TestTrapReachedTimeout is a wrapper around the C function g_test_trap_reached_timeout.
 func TestTrapReachedTimeout() bool {
 	retC := C.g_test_trap_reached_timeout()
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -240,7 +240,10 @@ func UriEscapeString(unescaped string, reservedCharsAllowed string, allowUtf8 bo
 	c_reserved_chars_allowed := C.CString(reservedCharsAllowed)
 	defer C.free(unsafe.Pointer(c_reserved_chars_allowed))
 
-	c_allow_utf8 := (C.gboolean)(allowUtf8)
+	c_allow_utf8 := C.FALSE
+	if allowUtf8 {
+		c_allow_utf8 = C.TRUE
+	}
 
 	retC := C.g_uri_escape_string(c_unescaped, c_reserved_chars_allowed, c_allow_utf8)
 	retGo := C.GoString(retC)

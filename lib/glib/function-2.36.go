@@ -19,7 +19,7 @@ func Close(fd int32) (bool, error) {
 	var cThrowableError *C.GError
 
 	retC := C.g_close(c_fd, &cThrowableError)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
 	if cThrowableError != nil {

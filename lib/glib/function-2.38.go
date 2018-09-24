@@ -15,7 +15,7 @@ import "C"
 // TestFailed is a wrapper around the C function g_test_failed.
 func TestFailed() bool {
 	retC := C.g_test_failed()
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -41,7 +41,7 @@ func TestGetDir(fileType TestFileType) string {
 // TestSubprocess is a wrapper around the C function g_test_subprocess.
 func TestSubprocess() bool {
 	retC := C.g_test_subprocess()
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }

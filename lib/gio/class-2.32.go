@@ -169,7 +169,7 @@ func (recv *MenuAttributeIter) GetName() string {
 // Next is a wrapper around the C function g_menu_attribute_iter_next.
 func (recv *MenuAttributeIter) Next() bool {
 	retC := C.g_menu_attribute_iter_next((*C.GMenuAttributeIter)(recv.native))
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -267,7 +267,7 @@ func (recv *MenuLinkIter) GetName() string {
 // Next is a wrapper around the C function g_menu_link_iter_next.
 func (recv *MenuLinkIter) Next() bool {
 	retC := C.g_menu_link_iter_next((*C.GMenuLinkIter)(recv.native))
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -312,7 +312,7 @@ func (recv *MenuModel) GetNItems() int32 {
 // IsMutable is a wrapper around the C function g_menu_model_is_mutable.
 func (recv *MenuModel) IsMutable() bool {
 	retC := C.g_menu_model_is_mutable((*C.GMenuModel)(recv.native))
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }

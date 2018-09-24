@@ -32,7 +32,7 @@ func UuidStringIsValid(str string) bool {
 	defer C.free(unsafe.Pointer(c_str))
 
 	retC := C.g_uuid_string_is_valid(c_str)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }

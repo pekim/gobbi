@@ -185,7 +185,7 @@ func (recv *BufferedOutputStream) toC() *C.GBufferedOutputStream {
 // GetAutoGrow is a wrapper around the C function g_buffered_output_stream_get_auto_grow.
 func (recv *BufferedOutputStream) GetAutoGrow() bool {
 	retC := C.g_buffered_output_stream_get_auto_grow((*C.GBufferedOutputStream)(recv.native))
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -267,7 +267,7 @@ func (recv *Cancellable) GetFd() int32 {
 // IsCancelled is a wrapper around the C function g_cancellable_is_cancelled.
 func (recv *Cancellable) IsCancelled() bool {
 	retC := C.g_cancellable_is_cancelled((*C.GCancellable)(recv.native))
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -285,7 +285,7 @@ func (recv *Cancellable) SetErrorIfCancelled() (bool, error) {
 	var cThrowableError *C.GError
 
 	retC := C.g_cancellable_set_error_if_cancelled((*C.GCancellable)(recv.native), &cThrowableError)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
 	if cThrowableError != nil {
@@ -594,7 +594,7 @@ func (recv *DesktopAppInfo) GetGenericName() string {
 // GetIsHidden is a wrapper around the C function g_desktop_app_info_get_is_hidden.
 func (recv *DesktopAppInfo) GetIsHidden() bool {
 	retC := C.g_desktop_app_info_get_is_hidden((*C.GDesktopAppInfo)(recv.native))
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -701,7 +701,7 @@ func (recv *FileEnumerator) toC() *C.GFileEnumerator {
 // HasPending is a wrapper around the C function g_file_enumerator_has_pending.
 func (recv *FileEnumerator) HasPending() bool {
 	retC := C.g_file_enumerator_has_pending((*C.GFileEnumerator)(recv.native))
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -709,7 +709,7 @@ func (recv *FileEnumerator) HasPending() bool {
 // IsClosed is a wrapper around the C function g_file_enumerator_is_closed.
 func (recv *FileEnumerator) IsClosed() bool {
 	retC := C.g_file_enumerator_is_closed((*C.GFileEnumerator)(recv.native))
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -825,7 +825,7 @@ func (recv *FileInfo) GetAttributeBoolean(attribute string) bool {
 	defer C.free(unsafe.Pointer(c_attribute))
 
 	retC := C.g_file_info_get_attribute_boolean((*C.GFileInfo)(recv.native), c_attribute)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -969,7 +969,7 @@ func (recv *FileInfo) GetFileType() FileType {
 // GetIsBackup is a wrapper around the C function g_file_info_get_is_backup.
 func (recv *FileInfo) GetIsBackup() bool {
 	retC := C.g_file_info_get_is_backup((*C.GFileInfo)(recv.native))
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -977,7 +977,7 @@ func (recv *FileInfo) GetIsBackup() bool {
 // GetIsHidden is a wrapper around the C function g_file_info_get_is_hidden.
 func (recv *FileInfo) GetIsHidden() bool {
 	retC := C.g_file_info_get_is_hidden((*C.GFileInfo)(recv.native))
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -985,7 +985,7 @@ func (recv *FileInfo) GetIsHidden() bool {
 // GetIsSymlink is a wrapper around the C function g_file_info_get_is_symlink.
 func (recv *FileInfo) GetIsSymlink() bool {
 	retC := C.g_file_info_get_is_symlink((*C.GFileInfo)(recv.native))
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -1032,7 +1032,7 @@ func (recv *FileInfo) HasAttribute(attribute string) bool {
 	defer C.free(unsafe.Pointer(c_attribute))
 
 	retC := C.g_file_info_has_attribute((*C.GFileInfo)(recv.native), c_attribute)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -1146,7 +1146,7 @@ func (recv *FileMonitor) toC() *C.GFileMonitor {
 // Cancel is a wrapper around the C function g_file_monitor_cancel.
 func (recv *FileMonitor) Cancel() bool {
 	retC := C.g_file_monitor_cancel((*C.GFileMonitor)(recv.native))
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -1156,7 +1156,7 @@ func (recv *FileMonitor) Cancel() bool {
 // IsCancelled is a wrapper around the C function g_file_monitor_is_cancelled.
 func (recv *FileMonitor) IsCancelled() bool {
 	retC := C.g_file_monitor_is_cancelled((*C.GFileMonitor)(recv.native))
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -1268,7 +1268,7 @@ func (recv *FilterInputStream) toC() *C.GFilterInputStream {
 // GetCloseBaseStream is a wrapper around the C function g_filter_input_stream_get_close_base_stream.
 func (recv *FilterInputStream) GetCloseBaseStream() bool {
 	retC := C.g_filter_input_stream_get_close_base_stream((*C.GFilterInputStream)(recv.native))
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -1303,7 +1303,7 @@ func (recv *FilterOutputStream) toC() *C.GFilterOutputStream {
 // GetCloseBaseStream is a wrapper around the C function g_filter_output_stream_get_close_base_stream.
 func (recv *FilterOutputStream) GetCloseBaseStream() bool {
 	retC := C.g_filter_output_stream_get_close_base_stream((*C.GFilterOutputStream)(recv.native))
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -1472,7 +1472,7 @@ func (recv *InputStream) toC() *C.GInputStream {
 // HasPending is a wrapper around the C function g_input_stream_has_pending.
 func (recv *InputStream) HasPending() bool {
 	retC := C.g_input_stream_has_pending((*C.GInputStream)(recv.native))
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -1480,7 +1480,7 @@ func (recv *InputStream) HasPending() bool {
 // IsClosed is a wrapper around the C function g_input_stream_is_closed.
 func (recv *InputStream) IsClosed() bool {
 	retC := C.g_input_stream_is_closed((*C.GInputStream)(recv.native))
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -1508,7 +1508,7 @@ func (recv *InputStream) SetPending() (bool, error) {
 	var cThrowableError *C.GError
 
 	retC := C.g_input_stream_set_pending((*C.GInputStream)(recv.native), &cThrowableError)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
 	if cThrowableError != nil {
@@ -1665,7 +1665,7 @@ func (recv *MountOperation) toC() *C.GMountOperation {
 // GetAnonymous is a wrapper around the C function g_mount_operation_get_anonymous.
 func (recv *MountOperation) GetAnonymous() bool {
 	retC := C.g_mount_operation_get_anonymous((*C.GMountOperation)(recv.native))
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -1840,7 +1840,7 @@ func (recv *OutputStream) toC() *C.GOutputStream {
 // HasPending is a wrapper around the C function g_output_stream_has_pending.
 func (recv *OutputStream) HasPending() bool {
 	retC := C.g_output_stream_has_pending((*C.GOutputStream)(recv.native))
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -1848,7 +1848,7 @@ func (recv *OutputStream) HasPending() bool {
 // IsClosed is a wrapper around the C function g_output_stream_is_closed.
 func (recv *OutputStream) IsClosed() bool {
 	retC := C.g_output_stream_is_closed((*C.GOutputStream)(recv.native))
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -1860,7 +1860,7 @@ func (recv *OutputStream) SetPending() (bool, error) {
 	var cThrowableError *C.GError
 
 	retC := C.g_output_stream_set_pending((*C.GOutputStream)(recv.native), &cThrowableError)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
 	if cThrowableError != nil {
@@ -2086,7 +2086,7 @@ func (recv *Settings) SetEnum(key string, value int32) bool {
 	c_value := (C.gint)(value)
 
 	retC := C.g_settings_set_enum((*C.GSettings)(recv.native), c_key, c_value)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -2099,7 +2099,7 @@ func (recv *Settings) SetFlags(key string, value uint32) bool {
 	c_value := (C.guint)(value)
 
 	retC := C.g_settings_set_flags((*C.GSettings)(recv.native), c_key, c_value)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -2210,7 +2210,7 @@ func (recv *SimpleAsyncResult) toC() *C.GSimpleAsyncResult {
 // GetOpResGboolean is a wrapper around the C function g_simple_async_result_get_op_res_gboolean.
 func (recv *SimpleAsyncResult) GetOpResGboolean() bool {
 	retC := C.g_simple_async_result_get_op_res_gboolean((*C.GSimpleAsyncResult)(recv.native))
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -2244,7 +2244,7 @@ func (recv *SimpleAsyncResult) PropagateError() (bool, error) {
 	var cThrowableError *C.GError
 
 	retC := C.g_simple_async_result_propagate_error((*C.GSimpleAsyncResult)(recv.native), &cThrowableError)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
 	if cThrowableError != nil {
@@ -2752,7 +2752,7 @@ func (recv *Vfs) toC() *C.GVfs {
 // IsActive is a wrapper around the C function g_vfs_is_active.
 func (recv *Vfs) IsActive() bool {
 	retC := C.g_vfs_is_active((*C.GVfs)(recv.native))
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }

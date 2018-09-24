@@ -100,7 +100,7 @@ func VariantIsObjectPath(string string) bool {
 	defer C.free(unsafe.Pointer(c_string))
 
 	retC := C.g_variant_is_object_path(c_string)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -111,7 +111,7 @@ func VariantIsSignature(string string) bool {
 	defer C.free(unsafe.Pointer(c_string))
 
 	retC := C.g_variant_is_signature(c_string)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -127,7 +127,7 @@ func VariantTypeStringScan(string string, limit string) (bool, string) {
 	var c_endptr *C.gchar
 
 	retC := C.g_variant_type_string_scan(c_string, c_limit, &c_endptr)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	endptr := C.GoString(c_endptr)
 	defer C.free(unsafe.Pointer(c_endptr))

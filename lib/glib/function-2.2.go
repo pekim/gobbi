@@ -54,7 +54,7 @@ func StrHasPrefix(str string, prefix string) bool {
 	defer C.free(unsafe.Pointer(c_prefix))
 
 	retC := C.g_str_has_prefix(c_str, c_prefix)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -68,7 +68,7 @@ func StrHasSuffix(str string, suffix string) bool {
 	defer C.free(unsafe.Pointer(c_suffix))
 
 	retC := C.g_str_has_suffix(c_str, c_suffix)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }

@@ -169,7 +169,7 @@ func (recv *DBusConnection) GetCapabilities() DBusCapabilityFlags {
 // GetExitOnClose is a wrapper around the C function g_dbus_connection_get_exit_on_close.
 func (recv *DBusConnection) GetExitOnClose() bool {
 	retC := C.g_dbus_connection_get_exit_on_close((*C.GDBusConnection)(recv.native))
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -197,7 +197,7 @@ func (recv *DBusConnection) GetUniqueName() string {
 // IsClosed is a wrapper around the C function g_dbus_connection_is_closed.
 func (recv *DBusConnection) IsClosed() bool {
 	retC := C.g_dbus_connection_is_closed((*C.GDBusConnection)(recv.native))
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -233,7 +233,7 @@ func (recv *DBusConnection) UnregisterObject(registrationId uint32) bool {
 	c_registration_id := (C.guint)(registrationId)
 
 	retC := C.g_dbus_connection_unregister_object((*C.GDBusConnection)(recv.native), c_registration_id)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -243,7 +243,7 @@ func (recv *DBusConnection) UnregisterSubtree(registrationId uint32) bool {
 	c_registration_id := (C.guint)(registrationId)
 
 	retC := C.g_dbus_connection_unregister_subtree((*C.GDBusConnection)(recv.native), c_registration_id)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -328,7 +328,7 @@ func (recv *DBusMessage) GetInterface() string {
 // GetLocked is a wrapper around the C function g_dbus_message_get_locked.
 func (recv *DBusMessage) GetLocked() bool {
 	retC := C.g_dbus_message_get_locked((*C.GDBusMessage)(recv.native))
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -459,7 +459,7 @@ func (recv *DBusMessage) ToGerror() (bool, error) {
 	var cThrowableError *C.GError
 
 	retC := C.g_dbus_message_to_gerror((*C.GDBusMessage)(recv.native), &cThrowableError)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
 	if cThrowableError != nil {
@@ -722,7 +722,7 @@ func (recv *DBusServer) GetGuid() string {
 // IsActive is a wrapper around the C function g_dbus_server_is_active.
 func (recv *DBusServer) IsActive() bool {
 	retC := C.g_dbus_server_is_active((*C.GDBusServer)(recv.native))
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }

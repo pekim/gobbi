@@ -38,7 +38,7 @@ func SpawnCheckExitStatus(exitStatus int32) (bool, error) {
 	var cThrowableError *C.GError
 
 	retC := C.g_spawn_check_exit_status(c_exit_status, &cThrowableError)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
 	if cThrowableError != nil {

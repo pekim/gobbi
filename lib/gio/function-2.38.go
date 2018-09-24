@@ -26,7 +26,7 @@ func ActionNameIsValid(actionName string) bool {
 	defer C.free(unsafe.Pointer(c_action_name))
 
 	retC := C.g_action_name_is_valid(c_action_name)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }

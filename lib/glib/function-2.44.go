@@ -21,7 +21,7 @@ func StrvContains(strv string, str string) bool {
 	defer C.free(unsafe.Pointer(c_str))
 
 	retC := C.g_strv_contains(c_strv, c_str)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }

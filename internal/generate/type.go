@@ -34,6 +34,10 @@ func (t *Type) init(ns *Namespace) {
 //		generator
 // that are specific to the type of the Type.
 func (t *Type) qnameAndGenerator(targetType *Type) (*QName, TypeGenerator) {
+	if t.Name == "gboolean" {
+		return QNameNew(t.Namespace, "bool"), TypeGeneratorBooleanNew(targetType)
+	}
+
 	goType, isInteger := integerCTypeMap[t.CType]
 	if isInteger {
 		return QNameNew(t.Namespace, goType), TypeGeneratorIntegerNew(targetType)

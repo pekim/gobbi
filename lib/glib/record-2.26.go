@@ -413,7 +413,7 @@ func (recv *DateTime) GetYear() int32 {
 // IsDaylightSavings is a wrapper around the C function g_date_time_is_daylight_savings.
 func (recv *DateTime) IsDaylightSavings() bool {
 	retC := C.g_date_time_is_daylight_savings((*C.GDateTime)(recv.native))
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -439,7 +439,7 @@ func (recv *DateTime) ToTimeval(tv *TimeVal) bool {
 	c_tv := tv.toC()
 
 	retC := C.g_date_time_to_timeval((*C.GDateTime)(recv.native), c_tv)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -559,7 +559,7 @@ func (recv *TimeZone) IsDst(interval int32) bool {
 	c_interval := (C.gint)(interval)
 
 	retC := C.g_time_zone_is_dst((*C.GTimeZone)(recv.native), c_interval)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }

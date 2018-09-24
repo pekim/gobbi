@@ -153,12 +153,15 @@ func UnicodeScriptToIso15924(script UnicodeScript) uint32 {
 func UnixSetFdNonblocking(fd int32, nonblock bool) (bool, error) {
 	c_fd := (C.gint)(fd)
 
-	c_nonblock := (C.gboolean)(nonblock)
+	c_nonblock := C.FALSE
+	if nonblock {
+		c_nonblock = C.TRUE
+	}
 
 	var cThrowableError *C.GError
 
 	retC := C.g_unix_set_fd_nonblocking(c_fd, c_nonblock, &cThrowableError)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
 	if cThrowableError != nil {

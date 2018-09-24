@@ -331,7 +331,7 @@ func DateIsLeapYear(year DateYear) bool {
 	c_year := (C.GDateYear)(year)
 
 	retC := C.g_date_is_leap_year(c_year)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -359,7 +359,7 @@ func DateValidDay(day DateDay) bool {
 	c_day := (C.GDateDay)(day)
 
 	retC := C.g_date_valid_day(c_day)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -373,7 +373,7 @@ func DateValidDmy(day DateDay, month DateMonth, year DateYear) bool {
 	c_year := (C.GDateYear)(year)
 
 	retC := C.g_date_valid_dmy(c_day, c_month, c_year)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -383,7 +383,7 @@ func DateValidJulian(julianDate uint32) bool {
 	c_julian_date := (C.guint32)(julianDate)
 
 	retC := C.g_date_valid_julian(c_julian_date)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -393,7 +393,7 @@ func DateValidMonth(month DateMonth) bool {
 	c_month := (C.GDateMonth)(month)
 
 	retC := C.g_date_valid_month(c_month)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -403,7 +403,7 @@ func DateValidWeekday(weekday DateWeekday) bool {
 	c_weekday := (C.GDateWeekday)(weekday)
 
 	retC := C.g_date_valid_weekday(c_weekday)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -413,7 +413,7 @@ func DateValidYear(year DateYear) bool {
 	c_year := (C.GDateYear)(year)
 
 	retC := C.g_date_valid_year(c_year)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -425,7 +425,7 @@ func DirectEqual(v1 uintptr, v2 uintptr) bool {
 	c_v2 := (C.gconstpointer)(v2)
 
 	retC := C.g_direct_equal(c_v1, c_v2)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -491,7 +491,7 @@ func FileTest(filename string, test FileTest) bool {
 	c_test := (C.GFileTest)(test)
 
 	retC := C.g_file_test(c_filename, c_test)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -565,7 +565,7 @@ func GetCharset() (bool, string) {
 	var c_charset *C.char
 
 	retC := C.g_get_charset(&c_charset)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	charset := C.GoString(c_charset)
 
@@ -654,7 +654,7 @@ func HashTableInsert(hashTable *HashTable, key uintptr, value uintptr) bool {
 	c_value := (C.gpointer)(value)
 
 	retC := C.g_hash_table_insert(c_hash_table, c_key, c_value)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -680,7 +680,7 @@ func HashTableRemove(hashTable *HashTable, key uintptr) bool {
 	c_key := (C.gconstpointer)(key)
 
 	retC := C.g_hash_table_remove(c_hash_table, c_key)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -694,7 +694,7 @@ func HashTableReplace(hashTable *HashTable, key uintptr, value uintptr) bool {
 	c_value := (C.gpointer)(value)
 
 	retC := C.g_hash_table_replace(c_hash_table, c_key, c_value)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -716,7 +716,7 @@ func HashTableSteal(hashTable *HashTable, key uintptr) bool {
 	c_key := (C.gconstpointer)(key)
 
 	retC := C.g_hash_table_steal(c_hash_table, c_key)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -728,7 +728,7 @@ func HookDestroy(hookList *HookList, hookId uint64) bool {
 	c_hook_id := (C.gulong)(hookId)
 
 	retC := C.g_hook_destroy(c_hook_list, c_hook_id)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -756,7 +756,7 @@ func IdleRemoveByData(data uintptr) bool {
 	c_data := (C.gpointer)(data)
 
 	retC := C.g_idle_remove_by_data(c_data)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -776,7 +776,7 @@ func IntEqual(v1 uintptr, v2 uintptr) bool {
 	c_v2 := (C.gconstpointer)(v2)
 
 	retC := C.g_int_equal(c_v1, c_v2)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -923,7 +923,7 @@ func MarkupEscapeText(text string, length int64) string {
 // MemIsSystemMalloc is a wrapper around the C function g_mem_is_system_malloc.
 func MemIsSystemMalloc() bool {
 	retC := C.g_mem_is_system_malloc()
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -1003,7 +1003,7 @@ func PathIsAbsolute(fileName string) bool {
 	defer C.free(unsafe.Pointer(c_file_name))
 
 	retC := C.g_path_is_absolute(c_file_name)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -1032,7 +1032,7 @@ func PatternMatch(pspec *PatternSpec, stringLength uint32, string string, string
 	defer C.free(unsafe.Pointer(c_string_reversed))
 
 	retC := C.g_pattern_match(c_pspec, c_string_length, c_string, c_string_reversed)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -1046,7 +1046,7 @@ func PatternMatchSimple(pattern string, string string) bool {
 	defer C.free(unsafe.Pointer(c_string))
 
 	retC := C.g_pattern_match_simple(c_pattern, c_string)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -1059,7 +1059,7 @@ func PatternMatchString(pspec *PatternSpec, string string) bool {
 	defer C.free(unsafe.Pointer(c_string))
 
 	retC := C.g_pattern_match_string(c_pspec, c_string)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -1251,7 +1251,7 @@ func SourceRemove(tag uint32) bool {
 	c_tag := (C.guint)(tag)
 
 	retC := C.g_source_remove(c_tag)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -1263,7 +1263,7 @@ func SourceRemoveByFuncsUserData(funcs *SourceFuncs, userData uintptr) bool {
 	c_user_data := (C.gpointer)(userData)
 
 	retC := C.g_source_remove_by_funcs_user_data(c_funcs, c_user_data)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -1273,7 +1273,7 @@ func SourceRemoveByUserData(userData uintptr) bool {
 	c_user_data := (C.gpointer)(userData)
 
 	retC := C.g_source_remove_by_user_data(c_user_data)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -1302,7 +1302,7 @@ func SpawnCommandLineAsync(commandLine string) (bool, error) {
 	var cThrowableError *C.GError
 
 	retC := C.g_spawn_command_line_async(c_command_line, &cThrowableError)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
 	if cThrowableError != nil {
@@ -1354,7 +1354,7 @@ func StrEqual(v1 uintptr, v2 uintptr) bool {
 	c_v2 := (C.gconstpointer)(v2)
 
 	retC := C.g_str_equal(c_v1, c_v2)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -1855,7 +1855,7 @@ func UnicharIsalnum(c rune) bool {
 	c_c := (C.gunichar)(c)
 
 	retC := C.g_unichar_isalnum(c_c)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -1865,7 +1865,7 @@ func UnicharIsalpha(c rune) bool {
 	c_c := (C.gunichar)(c)
 
 	retC := C.g_unichar_isalpha(c_c)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -1875,7 +1875,7 @@ func UnicharIscntrl(c rune) bool {
 	c_c := (C.gunichar)(c)
 
 	retC := C.g_unichar_iscntrl(c_c)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -1885,7 +1885,7 @@ func UnicharIsdefined(c rune) bool {
 	c_c := (C.gunichar)(c)
 
 	retC := C.g_unichar_isdefined(c_c)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -1895,7 +1895,7 @@ func UnicharIsdigit(c rune) bool {
 	c_c := (C.gunichar)(c)
 
 	retC := C.g_unichar_isdigit(c_c)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -1905,7 +1905,7 @@ func UnicharIsgraph(c rune) bool {
 	c_c := (C.gunichar)(c)
 
 	retC := C.g_unichar_isgraph(c_c)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -1915,7 +1915,7 @@ func UnicharIslower(c rune) bool {
 	c_c := (C.gunichar)(c)
 
 	retC := C.g_unichar_islower(c_c)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -1925,7 +1925,7 @@ func UnicharIsprint(c rune) bool {
 	c_c := (C.gunichar)(c)
 
 	retC := C.g_unichar_isprint(c_c)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -1935,7 +1935,7 @@ func UnicharIspunct(c rune) bool {
 	c_c := (C.gunichar)(c)
 
 	retC := C.g_unichar_ispunct(c_c)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -1945,7 +1945,7 @@ func UnicharIsspace(c rune) bool {
 	c_c := (C.gunichar)(c)
 
 	retC := C.g_unichar_isspace(c_c)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -1955,7 +1955,7 @@ func UnicharIstitle(c rune) bool {
 	c_c := (C.gunichar)(c)
 
 	retC := C.g_unichar_istitle(c_c)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -1965,7 +1965,7 @@ func UnicharIsupper(c rune) bool {
 	c_c := (C.gunichar)(c)
 
 	retC := C.g_unichar_isupper(c_c)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -1975,7 +1975,7 @@ func UnicharIswide(c rune) bool {
 	c_c := (C.gunichar)(c)
 
 	retC := C.g_unichar_iswide(c_c)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -1985,7 +1985,7 @@ func UnicharIsxdigit(c rune) bool {
 	c_c := (C.gunichar)(c)
 
 	retC := C.g_unichar_isxdigit(c_c)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -2037,7 +2037,7 @@ func UnicharValidate(ch rune) bool {
 	c_ch := (C.gunichar)(ch)
 
 	retC := C.g_unichar_validate(c_ch)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -2342,7 +2342,7 @@ func VariantTypeStringIsValid(typeString string) bool {
 	defer C.free(unsafe.Pointer(c_type_string))
 
 	retC := C.g_variant_type_string_is_valid(c_type_string)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }

@@ -55,7 +55,7 @@ func ContentTypeCanBeExecutable(type_ string) bool {
 	defer C.free(unsafe.Pointer(c_type))
 
 	retC := C.g_content_type_can_be_executable(c_type)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -69,7 +69,7 @@ func ContentTypeEquals(type1 string, type2 string) bool {
 	defer C.free(unsafe.Pointer(c_type2))
 
 	retC := C.g_content_type_equals(c_type1, c_type2)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -111,7 +111,7 @@ func ContentTypeIsA(type_ string, supertype string) bool {
 	defer C.free(unsafe.Pointer(c_supertype))
 
 	retC := C.g_content_type_is_a(c_type, c_supertype)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -122,7 +122,7 @@ func ContentTypeIsUnknown(type_ string) bool {
 	defer C.free(unsafe.Pointer(c_type))
 
 	retC := C.g_content_type_is_unknown(c_type)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -230,7 +230,7 @@ func UnixIsMountPathSystemInternal(mountPath string) bool {
 	defer C.free(unsafe.Pointer(c_mount_path))
 
 	retC := C.g_unix_is_mount_path_system_internal(c_mount_path)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -286,7 +286,7 @@ func UnixMountGuessCanEject(mountEntry *UnixMountEntry) bool {
 	c_mount_entry := mountEntry.toC()
 
 	retC := C.g_unix_mount_guess_can_eject(c_mount_entry)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -309,7 +309,7 @@ func UnixMountGuessShouldDisplay(mountEntry *UnixMountEntry) bool {
 	c_mount_entry := mountEntry.toC()
 
 	retC := C.g_unix_mount_guess_should_display(c_mount_entry)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -319,7 +319,7 @@ func UnixMountIsReadonly(mountEntry *UnixMountEntry) bool {
 	c_mount_entry := mountEntry.toC()
 
 	retC := C.g_unix_mount_is_readonly(c_mount_entry)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -329,7 +329,7 @@ func UnixMountIsSystemInternal(mountEntry *UnixMountEntry) bool {
 	c_mount_entry := mountEntry.toC()
 
 	retC := C.g_unix_mount_is_system_internal(c_mount_entry)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -339,7 +339,7 @@ func UnixMountPointsChangedSince(time uint64) bool {
 	c_time := (C.guint64)(time)
 
 	retC := C.g_unix_mount_points_changed_since(c_time)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -351,7 +351,7 @@ func UnixMountsChangedSince(time uint64) bool {
 	c_time := (C.guint64)(time)
 
 	retC := C.g_unix_mounts_changed_since(c_time)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }

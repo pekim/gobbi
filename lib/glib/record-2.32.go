@@ -56,7 +56,7 @@ func (recv *Bytes) Equal(bytes2 uintptr) bool {
 	c_bytes2 := (C.gconstpointer)(bytes2)
 
 	retC := C.g_bytes_equal((C.gconstpointer)(recv.native), c_bytes2)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -137,7 +137,7 @@ func (recv *RWLock) toC() *C.GRWLock {
 // ReaderTrylock is a wrapper around the C function g_rw_lock_reader_trylock.
 func (recv *RWLock) ReaderTrylock() bool {
 	retC := C.g_rw_lock_reader_trylock((*C.GRWLock)(recv.native))
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -149,7 +149,7 @@ func (recv *RWLock) ReaderTrylock() bool {
 // WriterTrylock is a wrapper around the C function g_rw_lock_writer_trylock.
 func (recv *RWLock) WriterTrylock() bool {
 	retC := C.g_rw_lock_writer_trylock((*C.GRWLock)(recv.native))
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -188,7 +188,7 @@ func (recv *RecMutex) toC() *C.GRecMutex {
 // Trylock is a wrapper around the C function g_rec_mutex_trylock.
 func (recv *RecMutex) Trylock() bool {
 	retC := C.g_rec_mutex_trylock((*C.GRecMutex)(recv.native))
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }

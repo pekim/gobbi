@@ -26,7 +26,7 @@ func UnixIsSystemDevicePath(devicePath string) bool {
 	defer C.free(unsafe.Pointer(c_device_path))
 
 	retC := C.g_unix_is_system_device_path(c_device_path)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -37,7 +37,7 @@ func UnixIsSystemFsType(fsType string) bool {
 	defer C.free(unsafe.Pointer(c_fs_type))
 
 	retC := C.g_unix_is_system_fs_type(c_fs_type)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }

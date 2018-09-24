@@ -964,7 +964,7 @@ func (recv *Value) DupString() string {
 // FitsPointer is a wrapper around the C function g_value_fits_pointer.
 func (recv *Value) FitsPointer() bool {
 	retC := C.g_value_fits_pointer((*C.GValue)(recv.native))
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -972,7 +972,7 @@ func (recv *Value) FitsPointer() bool {
 // GetBoolean is a wrapper around the C function g_value_get_boolean.
 func (recv *Value) GetBoolean() bool {
 	retC := C.g_value_get_boolean((*C.GValue)(recv.native))
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -1202,7 +1202,7 @@ func (recv *Value) Transform(destValue *Value) bool {
 	c_dest_value := destValue.toC()
 
 	retC := C.g_value_transform((*C.GValue)(recv.native), c_dest_value)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }

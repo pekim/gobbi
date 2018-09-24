@@ -295,7 +295,7 @@ func ParamSpecBooleanNewFromC(u unsafe.Pointer) *ParamSpecBoolean {
 	}
 
 	g := &ParamSpecBoolean{
-		DefaultValue: (bool)(c.default_value),
+		DefaultValue: c.default_value == C.TRUE,
 		native:       c,
 	}
 
@@ -304,7 +304,12 @@ func ParamSpecBooleanNewFromC(u unsafe.Pointer) *ParamSpecBoolean {
 
 func (recv *ParamSpecBoolean) toC() *C.GParamSpecBoolean {
 	recv.native.default_value =
-		(C.gboolean)(recv.DefaultValue)
+		func() bool {
+			if recv.DefaultValue {
+				return C.TRUE
+			}
+			return C.FALSE
+		}()
 
 	return recv.native
 }
@@ -971,7 +976,7 @@ func (recv *TypeModule) toC() *C.GTypeModule {
 // Use is a wrapper around the C function g_type_module_use.
 func (recv *TypeModule) Use() bool {
 	retC := C.g_type_module_use((*C.GTypeModule)(recv.native))
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }

@@ -59,7 +59,7 @@ func TimeValFromIso8601(isoDate string) (bool, *TimeVal) {
 	var c_time_ C.GTimeVal
 
 	retC := C.g_time_val_from_iso8601(c_iso_date, &c_time_)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	time := TimeValNewFromC(unsafe.Pointer(c_time_))
 
@@ -71,7 +71,7 @@ func UnicharIswideCjk(c rune) bool {
 	c_c := (C.gunichar)(c)
 
 	retC := C.g_unichar_iswide_cjk(c_c)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }

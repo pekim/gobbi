@@ -247,7 +247,10 @@ func SettingsSchemaSourceNewFromDirectory(directory string, parent *SettingsSche
 
 	c_parent := parent.toC()
 
-	c_trusted := (C.gboolean)(trusted)
+	c_trusted := C.FALSE
+	if trusted {
+		c_trusted = C.TRUE
+	}
 
 	var cThrowableError *C.GError
 
@@ -269,7 +272,10 @@ func (recv *SettingsSchemaSource) Lookup(schemaId string, recursive bool) *Setti
 	c_schema_id := C.CString(schemaId)
 	defer C.free(unsafe.Pointer(c_schema_id))
 
-	c_recursive := (C.gboolean)(recursive)
+	c_recursive := C.FALSE
+	if recursive {
+		c_recursive = C.TRUE
+	}
 
 	retC := C.g_settings_schema_source_lookup((*C.GSettingsSchemaSource)(recv.native), c_schema_id, c_recursive)
 	retGo := SettingsSchemaNewFromC(unsafe.Pointer(retC))

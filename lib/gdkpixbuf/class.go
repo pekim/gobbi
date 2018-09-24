@@ -98,7 +98,7 @@ func (recv *Pixbuf) GetColorspace() Colorspace {
 // GetHasAlpha is a wrapper around the C function gdk_pixbuf_get_has_alpha.
 func (recv *Pixbuf) GetHasAlpha() bool {
 	retC := C.gdk_pixbuf_get_has_alpha((*C.GdkPixbuf)(recv.native))
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -238,7 +238,7 @@ func (recv *PixbufAnimation) GetWidth() int32 {
 // IsStaticImage is a wrapper around the C function gdk_pixbuf_animation_is_static_image.
 func (recv *PixbufAnimation) IsStaticImage() bool {
 	retC := C.gdk_pixbuf_animation_is_static_image((*C.GdkPixbufAnimation)(recv.native))
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -273,7 +273,7 @@ func (recv *PixbufAnimationIter) Advance(currentTime *glib.TimeVal) bool {
 	c_current_time := currentTime.toC()
 
 	retC := C.gdk_pixbuf_animation_iter_advance((*C.GdkPixbufAnimationIter)(recv.native), c_current_time)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -291,7 +291,7 @@ func (recv *PixbufAnimationIter) GetDelayTime() int32 {
 // OnCurrentlyLoadingFrame is a wrapper around the C function gdk_pixbuf_animation_iter_on_currently_loading_frame.
 func (recv *PixbufAnimationIter) OnCurrentlyLoadingFrame() bool {
 	retC := C.gdk_pixbuf_animation_iter_on_currently_loading_frame((*C.GdkPixbufAnimationIter)(recv.native))
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -330,7 +330,7 @@ func (recv *PixbufLoader) Close() (bool, error) {
 	var cThrowableError *C.GError
 
 	retC := C.gdk_pixbuf_loader_close((*C.GdkPixbufLoader)(recv.native), &cThrowableError)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
 	if cThrowableError != nil {

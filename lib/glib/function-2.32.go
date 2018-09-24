@@ -29,7 +29,7 @@ func HashTableAdd(hashTable *HashTable, key uintptr) bool {
 	c_key := (C.gpointer)(key)
 
 	retC := C.g_hash_table_add(c_hash_table, c_key)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -41,7 +41,7 @@ func HashTableContains(hashTable *HashTable, key uintptr) bool {
 	c_key := (C.gconstpointer)(key)
 
 	retC := C.g_hash_table_contains(c_hash_table, c_key)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }

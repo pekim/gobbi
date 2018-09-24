@@ -26,7 +26,25 @@ func GetUserSpecialDir(directory UserDirectory) string {
 
 // Unsupported : g_once_init_leave : unsupported parameter location : no type generator for gpointer, void*
 
-// Unsupported : g_regex_check_replacement : unsupported parameter has_references : no type generator for gboolean, gboolean*
+// RegexCheckReplacement is a wrapper around the C function g_regex_check_replacement.
+func RegexCheckReplacement(replacement string) (bool, bool, error) {
+	c_replacement := C.CString(replacement)
+	defer C.free(unsafe.Pointer(c_replacement))
+
+	var cThrowableError *C.GError
+
+	retC := C.g_regex_check_replacement(c_replacement, &c_has_references, &cThrowableError)
+	retGo := retC == C.TRUE
+
+	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	hasReferences := c_has_references == C.TRUE
+
+	return retGo, hasReferences, goThrowableError
+}
 
 // Unsupported : g_regex_escape_string : unsupported parameter string : no param type
 
@@ -43,7 +61,7 @@ func RegexMatchSimple(pattern string, string string, compileOptions RegexCompile
 	c_match_options := (C.GRegexMatchFlags)(matchOptions)
 
 	retC := C.g_regex_match_simple(c_pattern, c_string, c_compile_options, c_match_options)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -147,7 +165,7 @@ func UnicharIsmark(c rune) bool {
 	c_c := (C.gunichar)(c)
 
 	retC := C.g_unichar_ismark(c_c)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -157,7 +175,7 @@ func UnicharIszerowidth(c rune) bool {
 	c_c := (C.gunichar)(c)
 
 	retC := C.g_unichar_iszerowidth(c_c)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }

@@ -100,7 +100,7 @@ func (recv *Regex) Match(string string, matchOptions RegexMatchFlags) (bool, **M
 	var c_match_info *C.GMatchInfo
 
 	retC := C.g_regex_match((*C.GRegex)(recv.native), c_string, c_match_options, &c_match_info)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	matchInfo := MatchInfoNewFromC(unsafe.Pointer(c_match_info))
 
@@ -117,7 +117,7 @@ func (recv *Regex) MatchAll(string string, matchOptions RegexMatchFlags) (bool, 
 	var c_match_info *C.GMatchInfo
 
 	retC := C.g_regex_match_all((*C.GRegex)(recv.native), c_string, c_match_options, &c_match_info)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	matchInfo := MatchInfoNewFromC(unsafe.Pointer(c_match_info))
 

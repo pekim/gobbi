@@ -84,7 +84,7 @@ func (recv *Application) GetInactivityTimeout() uint32 {
 // GetIsRegistered is a wrapper around the C function g_application_get_is_registered.
 func (recv *Application) GetIsRegistered() bool {
 	retC := C.g_application_get_is_registered((*C.GApplication)(recv.native))
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -92,7 +92,7 @@ func (recv *Application) GetIsRegistered() bool {
 // GetIsRemote is a wrapper around the C function g_application_get_is_remote.
 func (recv *Application) GetIsRemote() bool {
 	retC := C.g_application_get_is_remote((*C.GApplication)(recv.native))
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -257,7 +257,7 @@ func (recv *TlsConnection) GetRehandshakeMode() TlsRehandshakeMode {
 // GetRequireCloseNotify is a wrapper around the C function g_tls_connection_get_require_close_notify.
 func (recv *TlsConnection) GetRequireCloseNotify() bool {
 	retC := C.g_tls_connection_get_require_close_notify((*C.GTlsConnection)(recv.native))
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }

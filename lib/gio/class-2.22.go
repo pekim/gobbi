@@ -59,7 +59,7 @@ func (recv *Socket) CheckConnectResult() (bool, error) {
 	var cThrowableError *C.GError
 
 	retC := C.g_socket_check_connect_result((*C.GSocket)(recv.native), &cThrowableError)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
 	if cThrowableError != nil {
@@ -74,7 +74,7 @@ func (recv *Socket) Close() (bool, error) {
 	var cThrowableError *C.GError
 
 	retC := C.g_socket_close((*C.GSocket)(recv.native), &cThrowableError)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
 	if cThrowableError != nil {
@@ -107,7 +107,7 @@ func (recv *Socket) ConditionCheck(condition glib.IOCondition) glib.IOCondition 
 // GetBlocking is a wrapper around the C function g_socket_get_blocking.
 func (recv *Socket) GetBlocking() bool {
 	retC := C.g_socket_get_blocking((*C.GSocket)(recv.native))
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -133,7 +133,7 @@ func (recv *Socket) GetFd() int32 {
 // GetKeepalive is a wrapper around the C function g_socket_get_keepalive.
 func (recv *Socket) GetKeepalive() bool {
 	retC := C.g_socket_get_keepalive((*C.GSocket)(recv.native))
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -171,7 +171,7 @@ func (recv *Socket) GetSocketType() SocketType {
 // IsClosed is a wrapper around the C function g_socket_is_closed.
 func (recv *Socket) IsClosed() bool {
 	retC := C.g_socket_is_closed((*C.GSocket)(recv.native))
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -179,7 +179,7 @@ func (recv *Socket) IsClosed() bool {
 // IsConnected is a wrapper around the C function g_socket_is_connected.
 func (recv *Socket) IsConnected() bool {
 	retC := C.g_socket_is_connected((*C.GSocket)(recv.native))
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -197,7 +197,7 @@ func (recv *Socket) Listen() (bool, error) {
 	var cThrowableError *C.GError
 
 	retC := C.g_socket_listen((*C.GSocket)(recv.native), &cThrowableError)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
 	if cThrowableError != nil {
@@ -245,14 +245,20 @@ func (recv *Socket) Listen() (bool, error) {
 
 // Shutdown is a wrapper around the C function g_socket_shutdown.
 func (recv *Socket) Shutdown(shutdownRead bool, shutdownWrite bool) (bool, error) {
-	c_shutdown_read := (C.gboolean)(shutdownRead)
+	c_shutdown_read := C.FALSE
+	if shutdownRead {
+		c_shutdown_read = C.TRUE
+	}
 
-	c_shutdown_write := (C.gboolean)(shutdownWrite)
+	c_shutdown_write := C.FALSE
+	if shutdownWrite {
+		c_shutdown_write = C.TRUE
+	}
 
 	var cThrowableError *C.GError
 
 	retC := C.g_socket_shutdown((*C.GSocket)(recv.native), c_shutdown_read, c_shutdown_write, &cThrowableError)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
 	if cThrowableError != nil {
@@ -265,7 +271,7 @@ func (recv *Socket) Shutdown(shutdownRead bool, shutdownWrite bool) (bool, error
 // SpeaksIpv4 is a wrapper around the C function g_socket_speaks_ipv4.
 func (recv *Socket) SpeaksIpv4() bool {
 	retC := C.g_socket_speaks_ipv4((*C.GSocket)(recv.native))
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -479,7 +485,7 @@ func (recv *SocketService) toC() *C.GSocketService {
 // IsActive is a wrapper around the C function g_socket_service_is_active.
 func (recv *SocketService) IsActive() bool {
 	retC := C.g_socket_service_is_active((*C.GSocketService)(recv.native))
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -514,7 +520,7 @@ func (recv *TcpConnection) toC() *C.GTcpConnection {
 // GetGracefulDisconnect is a wrapper around the C function g_tcp_connection_get_graceful_disconnect.
 func (recv *TcpConnection) GetGracefulDisconnect() bool {
 	retC := C.g_tcp_connection_get_graceful_disconnect((*C.GTcpConnection)(recv.native))
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }

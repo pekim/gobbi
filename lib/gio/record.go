@@ -1012,7 +1012,7 @@ func (recv *FileAttributeMatcher) EnumerateNamespace(ns string) bool {
 	defer C.free(unsafe.Pointer(c_ns))
 
 	retC := C.g_file_attribute_matcher_enumerate_namespace((*C.GFileAttributeMatcher)(recv.native), c_ns)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -1031,7 +1031,7 @@ func (recv *FileAttributeMatcher) Matches(attribute string) bool {
 	defer C.free(unsafe.Pointer(c_attribute))
 
 	retC := C.g_file_attribute_matcher_matches((*C.GFileAttributeMatcher)(recv.native), c_attribute)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -1042,7 +1042,7 @@ func (recv *FileAttributeMatcher) MatchesOnly(attribute string) bool {
 	defer C.free(unsafe.Pointer(c_attribute))
 
 	retC := C.g_file_attribute_matcher_matches_only((*C.GFileAttributeMatcher)(recv.native), c_attribute)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -1340,7 +1340,7 @@ func FileIfaceNewFromC(u unsafe.Pointer) *FileIface {
 	}
 
 	g := &FileIface{
-		SupportsThreadContexts: (bool)(c.supports_thread_contexts),
+		SupportsThreadContexts: c.supports_thread_contexts == C.TRUE,
 		native:                 c,
 	}
 
@@ -1349,7 +1349,12 @@ func FileIfaceNewFromC(u unsafe.Pointer) *FileIface {
 
 func (recv *FileIface) toC() *C.GFileIface {
 	recv.native.supports_thread_contexts =
-		(C.gboolean)(recv.SupportsThreadContexts)
+		func() bool {
+			if recv.SupportsThreadContexts {
+				return C.TRUE
+			}
+			return C.FALSE
+		}()
 
 	return recv.native
 }
@@ -4191,7 +4196,7 @@ func (recv *UnixMountPoint) GetMountPath() string {
 // GuessCanEject is a wrapper around the C function g_unix_mount_point_guess_can_eject.
 func (recv *UnixMountPoint) GuessCanEject() bool {
 	retC := C.g_unix_mount_point_guess_can_eject((*C.GUnixMountPoint)(recv.native))
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -4212,7 +4217,7 @@ func (recv *UnixMountPoint) GuessName() string {
 // IsLoopback is a wrapper around the C function g_unix_mount_point_is_loopback.
 func (recv *UnixMountPoint) IsLoopback() bool {
 	retC := C.g_unix_mount_point_is_loopback((*C.GUnixMountPoint)(recv.native))
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -4220,7 +4225,7 @@ func (recv *UnixMountPoint) IsLoopback() bool {
 // IsReadonly is a wrapper around the C function g_unix_mount_point_is_readonly.
 func (recv *UnixMountPoint) IsReadonly() bool {
 	retC := C.g_unix_mount_point_is_readonly((*C.GUnixMountPoint)(recv.native))
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -4228,7 +4233,7 @@ func (recv *UnixMountPoint) IsReadonly() bool {
 // IsUserMountable is a wrapper around the C function g_unix_mount_point_is_user_mountable.
 func (recv *UnixMountPoint) IsUserMountable() bool {
 	retC := C.g_unix_mount_point_is_user_mountable((*C.GUnixMountPoint)(recv.native))
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }

@@ -18,7 +18,7 @@ func StrIsAscii(str string) bool {
 	defer C.free(unsafe.Pointer(c_str))
 
 	retC := C.g_str_is_ascii(c_str)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -31,10 +31,13 @@ func StrMatchString(searchTerm string, potentialHit string, acceptAlternates boo
 	c_potential_hit := C.CString(potentialHit)
 	defer C.free(unsafe.Pointer(c_potential_hit))
 
-	c_accept_alternates := (C.gboolean)(acceptAlternates)
+	c_accept_alternates := C.FALSE
+	if acceptAlternates {
+		c_accept_alternates = C.TRUE
+	}
 
 	retC := C.g_str_match_string(c_search_term, c_potential_hit, c_accept_alternates)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }

@@ -31,7 +31,7 @@ func DateTimeEqual(dt1 uintptr, dt2 uintptr) bool {
 	c_dt2 := (C.gconstpointer)(dt2)
 
 	retC := C.g_date_time_equal(c_dt1, c_dt2)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }

@@ -136,7 +136,7 @@ func (recv *Subprocess) GetExitStatus() int32 {
 // GetIfExited is a wrapper around the C function g_subprocess_get_if_exited.
 func (recv *Subprocess) GetIfExited() bool {
 	retC := C.g_subprocess_get_if_exited((*C.GSubprocess)(recv.native))
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -144,7 +144,7 @@ func (recv *Subprocess) GetIfExited() bool {
 // GetIfSignaled is a wrapper around the C function g_subprocess_get_if_signaled.
 func (recv *Subprocess) GetIfSignaled() bool {
 	retC := C.g_subprocess_get_if_signaled((*C.GSubprocess)(recv.native))
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -166,7 +166,7 @@ func (recv *Subprocess) GetStatus() int32 {
 // GetSuccessful is a wrapper around the C function g_subprocess_get_successful.
 func (recv *Subprocess) GetSuccessful() bool {
 	retC := C.g_subprocess_get_successful((*C.GSubprocess)(recv.native))
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }

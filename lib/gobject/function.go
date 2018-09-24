@@ -184,7 +184,10 @@ func FlagsGetValueByNick(flagsClass *FlagsClass, nick string) *FlagsValue {
 
 // ParamSpecPoolNew is a wrapper around the C function g_param_spec_pool_new.
 func ParamSpecPoolNew(typePrefixing bool) *ParamSpecPool {
-	c_type_prefixing := (C.gboolean)(typePrefixing)
+	c_type_prefixing := C.FALSE
+	if typePrefixing {
+		c_type_prefixing = C.TRUE
+	}
 
 	retC := C.g_param_spec_pool_new(c_type_prefixing)
 	retGo := ParamSpecPoolNewFromC(unsafe.Pointer(retC))
@@ -233,7 +236,10 @@ func SignalConnectClosure(instance uintptr, detailedSignal string, closure *Clos
 
 	c_closure := closure.toC()
 
-	c_after := (C.gboolean)(after)
+	c_after := C.FALSE
+	if after {
+		c_after = C.TRUE
+	}
 
 	retC := C.g_signal_connect_closure(c_instance, c_detailed_signal, c_closure, c_after)
 	retGo := (uint64)(retC)
@@ -251,7 +257,10 @@ func SignalConnectClosureById(instance uintptr, signalId uint32, detail glib.Qua
 
 	c_closure := closure.toC()
 
-	c_after := (C.gboolean)(after)
+	c_after := C.FALSE
+	if after {
+		c_after = C.TRUE
+	}
 
 	retC := C.g_signal_connect_closure_by_id(c_instance, c_signal_id, c_detail, c_closure, c_after)
 	retGo := (uint64)(retC)
@@ -314,7 +323,7 @@ func SignalHandlerIsConnected(instance uintptr, handlerId uint64) bool {
 	c_handler_id := (C.gulong)(handlerId)
 
 	retC := C.g_signal_handler_is_connected(c_instance, c_handler_id)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -397,10 +406,13 @@ func SignalHasHandlerPending(instance uintptr, signalId uint32, detail glib.Quar
 
 	c_detail := (C.GQuark)(detail)
 
-	c_may_be_blocked := (C.gboolean)(mayBeBlocked)
+	c_may_be_blocked := C.FALSE
+	if mayBeBlocked {
+		c_may_be_blocked = C.TRUE
+	}
 
 	retC := C.g_signal_has_handler_pending(c_instance, c_signal_id, c_detail, c_may_be_blocked)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -471,7 +483,7 @@ func TypeCheckInstance(instance *TypeInstance) bool {
 	c_instance := instance.toC()
 
 	retC := C.g_type_check_instance(c_instance)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -489,7 +501,7 @@ func TypeCheckValue(value *Value) bool {
 	c_value := value.toC()
 
 	retC := C.g_type_check_value(c_value)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }

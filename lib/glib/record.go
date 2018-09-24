@@ -492,7 +492,7 @@ func (recv *Date) GetYear() DateYear {
 // IsFirstOfMonth is a wrapper around the C function g_date_is_first_of_month.
 func (recv *Date) IsFirstOfMonth() bool {
 	retC := C.g_date_is_first_of_month((*C.GDate)(recv.native))
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -500,7 +500,7 @@ func (recv *Date) IsFirstOfMonth() bool {
 // IsLastOfMonth is a wrapper around the C function g_date_is_last_of_month.
 func (recv *Date) IsLastOfMonth() bool {
 	retC := C.g_date_is_last_of_month((*C.GDate)(recv.native))
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -536,7 +536,7 @@ func (recv *Date) IsLastOfMonth() bool {
 // Valid is a wrapper around the C function g_date_valid.
 func (recv *Date) Valid() bool {
 	retC := C.g_date_valid((*C.GDate)(recv.native))
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -676,7 +676,7 @@ func (recv *Error) Matches(domain Quark, code int32) bool {
 	c_code := (C.gint)(code)
 
 	retC := C.g_error_matches((*C.GError)(recv.native), c_domain, c_code)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -1016,7 +1016,7 @@ func MainContextNew() *MainContext {
 // Acquire is a wrapper around the C function g_main_context_acquire.
 func (recv *MainContext) Acquire() bool {
 	retC := C.g_main_context_acquire((*C.GMainContext)(recv.native))
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -1067,10 +1067,13 @@ func (recv *MainContext) FindSourceByUserData(userData uintptr) *Source {
 
 // Iteration is a wrapper around the C function g_main_context_iteration.
 func (recv *MainContext) Iteration(mayBlock bool) bool {
-	c_may_block := (C.gboolean)(mayBlock)
+	c_may_block := C.FALSE
+	if mayBlock {
+		c_may_block = C.TRUE
+	}
 
 	retC := C.g_main_context_iteration((*C.GMainContext)(recv.native), c_may_block)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -1078,7 +1081,7 @@ func (recv *MainContext) Iteration(mayBlock bool) bool {
 // Pending is a wrapper around the C function g_main_context_pending.
 func (recv *MainContext) Pending() bool {
 	retC := C.g_main_context_pending((*C.GMainContext)(recv.native))
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -1136,7 +1139,10 @@ func (recv *MainLoop) toC() *C.GMainLoop {
 func MainLoopNew(context *MainContext, isRunning bool) *MainLoop {
 	c_context := context.toC()
 
-	c_is_running := (C.gboolean)(isRunning)
+	c_is_running := C.FALSE
+	if isRunning {
+		c_is_running = C.TRUE
+	}
 
 	retC := C.g_main_loop_new(c_context, c_is_running)
 	retGo := MainLoopNewFromC(unsafe.Pointer(retC))
@@ -1155,7 +1161,7 @@ func (recv *MainLoop) GetContext() *MainContext {
 // IsRunning is a wrapper around the C function g_main_loop_is_running.
 func (recv *MainLoop) IsRunning() bool {
 	retC := C.g_main_loop_is_running((*C.GMainLoop)(recv.native))
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -1200,7 +1206,10 @@ func MappedFileNew(filename string, writable bool) (*MappedFile, error) {
 	c_filename := C.CString(filename)
 	defer C.free(unsafe.Pointer(c_filename))
 
-	c_writable := (C.gboolean)(writable)
+	c_writable := C.FALSE
+	if writable {
+		c_writable = C.TRUE
+	}
 
 	var cThrowableError *C.GError
 
@@ -1219,7 +1228,10 @@ func MappedFileNew(filename string, writable bool) (*MappedFile, error) {
 func MappedFileNewFromFd(fd int32, writable bool) (*MappedFile, error) {
 	c_fd := (C.gint)(fd)
 
-	c_writable := (C.gboolean)(writable)
+	c_writable := C.FALSE
+	if writable {
+		c_writable = C.TRUE
+	}
 
 	var cThrowableError *C.GError
 
@@ -1266,7 +1278,7 @@ func (recv *MarkupParseContext) EndParse() (bool, error) {
 	var cThrowableError *C.GError
 
 	retC := C.g_markup_parse_context_end_parse((*C.GMarkupParseContext)(recv.native), &cThrowableError)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
 	if cThrowableError != nil {
@@ -1290,7 +1302,7 @@ func (recv *MarkupParseContext) Parse(text string, textLen int64) (bool, error) 
 	var cThrowableError *C.GError
 
 	retC := C.g_markup_parse_context_parse((*C.GMarkupParseContext)(recv.native), c_text, c_text_len, &cThrowableError)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
 	if cThrowableError != nil {
@@ -1544,7 +1556,7 @@ func (recv *Node) IsAncestor(descendant *Node) bool {
 	c_descendant := descendant.toC()
 
 	retC := C.g_node_is_ancestor((*C.GNode)(recv.native), c_descendant)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -1778,7 +1790,7 @@ func (recv *PatternSpec) Equal(pspec2 *PatternSpec) bool {
 	c_pspec2 := pspec2.toC()
 
 	retC := C.g_pattern_spec_equal((*C.GPatternSpec)(recv.native), c_pspec2)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -1936,7 +1948,7 @@ func (recv *Queue) toC() *C.GQueue {
 // IsEmpty is a wrapper around the C function g_queue_is_empty.
 func (recv *Queue) IsEmpty() bool {
 	retC := C.g_queue_is_empty((*C.GQueue)(recv.native))
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -2207,7 +2219,7 @@ func (recv *Scanner) CurToken() TokenType {
 // Eof is a wrapper around the C function g_scanner_eof.
 func (recv *Scanner) Eof() bool {
 	retC := C.g_scanner_eof((*C.GScanner)(recv.native))
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -2469,7 +2481,7 @@ func (recv *Source) Attach(context *MainContext) uint32 {
 // GetCanRecurse is a wrapper around the C function g_source_get_can_recurse.
 func (recv *Source) GetCanRecurse() bool {
 	retC := C.g_source_get_can_recurse((*C.GSource)(recv.native))
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -2756,7 +2768,7 @@ func (recv *String) Equal(v2 *String) bool {
 	c_v2 := v2.toC()
 
 	retC := C.g_string_equal((*C.GString)(recv.native), c_v2)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -2775,7 +2787,10 @@ func (recv *String) Erase(pos int64, len int64) *String {
 
 // Free is a wrapper around the C function g_string_free.
 func (recv *String) Free(freeSegment bool) string {
-	c_free_segment := (C.gboolean)(freeSegment)
+	c_free_segment := C.FALSE
+	if freeSegment {
+		c_free_segment = C.TRUE
+	}
 
 	retC := C.g_string_free((*C.GString)(recv.native), c_free_segment)
 	retGo := C.GoString(retC)
@@ -3008,12 +3023,12 @@ func TestConfigNewFromC(u unsafe.Pointer) *TestConfig {
 	}
 
 	g := &TestConfig{
-		TestInitialized: (bool)(c.test_initialized),
-		TestPerf:        (bool)(c.test_perf),
-		TestQuick:       (bool)(c.test_quick),
-		TestQuiet:       (bool)(c.test_quiet),
-		TestUndefined:   (bool)(c.test_undefined),
-		TestVerbose:     (bool)(c.test_verbose),
+		TestInitialized: c.test_initialized == C.TRUE,
+		TestPerf:        c.test_perf == C.TRUE,
+		TestQuick:       c.test_quick == C.TRUE,
+		TestQuiet:       c.test_quiet == C.TRUE,
+		TestUndefined:   c.test_undefined == C.TRUE,
+		TestVerbose:     c.test_verbose == C.TRUE,
 		native:          c,
 	}
 
@@ -3022,17 +3037,47 @@ func TestConfigNewFromC(u unsafe.Pointer) *TestConfig {
 
 func (recv *TestConfig) toC() *C.GTestConfig {
 	recv.native.test_initialized =
-		(C.gboolean)(recv.TestInitialized)
+		func() bool {
+			if recv.TestInitialized {
+				return C.TRUE
+			}
+			return C.FALSE
+		}()
 	recv.native.test_quick =
-		(C.gboolean)(recv.TestQuick)
+		func() bool {
+			if recv.TestQuick {
+				return C.TRUE
+			}
+			return C.FALSE
+		}()
 	recv.native.test_perf =
-		(C.gboolean)(recv.TestPerf)
+		func() bool {
+			if recv.TestPerf {
+				return C.TRUE
+			}
+			return C.FALSE
+		}()
 	recv.native.test_verbose =
-		(C.gboolean)(recv.TestVerbose)
+		func() bool {
+			if recv.TestVerbose {
+				return C.TRUE
+			}
+			return C.FALSE
+		}()
 	recv.native.test_quiet =
-		(C.gboolean)(recv.TestQuiet)
+		func() bool {
+			if recv.TestQuiet {
+				return C.TRUE
+			}
+			return C.FALSE
+		}()
 	recv.native.test_undefined =
-		(C.gboolean)(recv.TestUndefined)
+		func() bool {
+			if recv.TestUndefined {
+				return C.TRUE
+			}
+			return C.FALSE
+		}()
 
 	return recv.native
 }
@@ -3116,7 +3161,7 @@ func ThreadPoolNewFromC(u unsafe.Pointer) *ThreadPool {
 	}
 
 	g := &ThreadPool{
-		Exclusive: (bool)(c.exclusive),
+		Exclusive: c.exclusive == C.TRUE,
 		UserData:  (uintptr)(c.user_data),
 		native:    c,
 	}
@@ -3128,7 +3173,12 @@ func (recv *ThreadPool) toC() *C.GThreadPool {
 	recv.native.user_data =
 		(C.gpointer)(recv.UserData)
 	recv.native.exclusive =
-		(C.gboolean)(recv.Exclusive)
+		func() bool {
+			if recv.Exclusive {
+				return C.TRUE
+			}
+			return C.FALSE
+		}()
 
 	return recv.native
 }
@@ -3158,7 +3208,7 @@ func (recv *ThreadPool) Push(data uintptr) (bool, error) {
 	var cThrowableError *C.GError
 
 	retC := C.g_thread_pool_push((*C.GThreadPool)(recv.native), c_data, &cThrowableError)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
 	if cThrowableError != nil {
@@ -3175,7 +3225,7 @@ func (recv *ThreadPool) SetMaxThreads(maxThreads int32) (bool, error) {
 	var cThrowableError *C.GError
 
 	retC := C.g_thread_pool_set_max_threads((*C.GThreadPool)(recv.native), c_max_threads, &cThrowableError)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
 	if cThrowableError != nil {
@@ -3343,7 +3393,7 @@ func (recv *Tree) Remove(key uintptr) bool {
 	c_key := (C.gconstpointer)(key)
 
 	retC := C.g_tree_remove((*C.GTree)(recv.native), c_key)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -3357,7 +3407,7 @@ func (recv *Tree) Steal(key uintptr) bool {
 	c_key := (C.gconstpointer)(key)
 
 	retC := C.g_tree_steal((*C.GTree)(recv.native), c_key)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }

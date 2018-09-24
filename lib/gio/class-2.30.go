@@ -190,7 +190,7 @@ func (recv *DBusObjectManagerServer) Unexport(objectPath string) bool {
 	defer C.free(unsafe.Pointer(c_object_path))
 
 	retC := C.g_dbus_object_manager_server_unexport((*C.GDBusObjectManagerServer)(recv.native), c_object_path)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }

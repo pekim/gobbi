@@ -123,7 +123,7 @@ func DbusErrorIsRemoteError(error *glib.Error) bool {
 	c_error := error.toC()
 
 	retC := C.g_dbus_error_is_remote_error(c_error)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -152,7 +152,7 @@ func DbusErrorRegisterError(errorDomain glib.Quark, errorCode int32, dbusErrorNa
 	defer C.free(unsafe.Pointer(c_dbus_error_name))
 
 	retC := C.g_dbus_error_register_error(c_error_domain, c_error_code, c_dbus_error_name)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -164,7 +164,7 @@ func DbusErrorStripRemoteError(error *glib.Error) bool {
 	c_error := error.toC()
 
 	retC := C.g_dbus_error_strip_remote_error(c_error)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -179,7 +179,7 @@ func DbusErrorUnregisterError(errorDomain glib.Quark, errorCode int32, dbusError
 	defer C.free(unsafe.Pointer(c_dbus_error_name))
 
 	retC := C.g_dbus_error_unregister_error(c_error_domain, c_error_code, c_dbus_error_name)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -199,7 +199,7 @@ func DbusIsAddress(string string) bool {
 	defer C.free(unsafe.Pointer(c_string))
 
 	retC := C.g_dbus_is_address(c_string)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -210,7 +210,7 @@ func DbusIsGuid(string string) bool {
 	defer C.free(unsafe.Pointer(c_string))
 
 	retC := C.g_dbus_is_guid(c_string)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -221,7 +221,7 @@ func DbusIsInterfaceName(string string) bool {
 	defer C.free(unsafe.Pointer(c_string))
 
 	retC := C.g_dbus_is_interface_name(c_string)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -232,7 +232,7 @@ func DbusIsMemberName(string string) bool {
 	defer C.free(unsafe.Pointer(c_string))
 
 	retC := C.g_dbus_is_member_name(c_string)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -243,7 +243,7 @@ func DbusIsName(string string) bool {
 	defer C.free(unsafe.Pointer(c_string))
 
 	retC := C.g_dbus_is_name(c_string)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -256,7 +256,7 @@ func DbusIsSupportedAddress(string string) (bool, error) {
 	var cThrowableError *C.GError
 
 	retC := C.g_dbus_is_supported_address(c_string, &cThrowableError)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
 	if cThrowableError != nil {
@@ -272,7 +272,7 @@ func DbusIsUniqueName(string string) bool {
 	defer C.free(unsafe.Pointer(c_string))
 
 	retC := C.g_dbus_is_unique_name(c_string)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }

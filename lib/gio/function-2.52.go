@@ -29,7 +29,7 @@ func ContentTypeIsMimeType(type_ string, mimeType string) bool {
 	defer C.free(unsafe.Pointer(c_mime_type))
 
 	retC := C.g_content_type_is_mime_type(c_type, c_mime_type)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }

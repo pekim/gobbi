@@ -21,7 +21,7 @@ func DoubleEqual(v1 uintptr, v2 uintptr) bool {
 	c_v2 := (C.gconstpointer)(v2)
 
 	retC := C.g_double_equal(c_v1, c_v2)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -42,7 +42,7 @@ func HostnameIsAsciiEncoded(hostname string) bool {
 	defer C.free(unsafe.Pointer(c_hostname))
 
 	retC := C.g_hostname_is_ascii_encoded(c_hostname)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -53,7 +53,7 @@ func HostnameIsIpAddress(hostname string) bool {
 	defer C.free(unsafe.Pointer(c_hostname))
 
 	retC := C.g_hostname_is_ip_address(c_hostname)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -64,7 +64,7 @@ func HostnameIsNonAscii(hostname string) bool {
 	defer C.free(unsafe.Pointer(c_hostname))
 
 	retC := C.g_hostname_is_non_ascii(c_hostname)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -100,7 +100,7 @@ func Int64Equal(v1 uintptr, v2 uintptr) bool {
 	c_v2 := (C.gconstpointer)(v2)
 
 	retC := C.g_int64_equal(c_v1, c_v2)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }

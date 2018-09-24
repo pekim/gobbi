@@ -43,7 +43,7 @@ func (recv *VariantDict) Contains(key string) bool {
 	defer C.free(unsafe.Pointer(c_key))
 
 	retC := C.g_variant_dict_contains((*C.GVariantDict)(recv.native), c_key)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -74,7 +74,7 @@ func (recv *VariantDict) Remove(key string) bool {
 	defer C.free(unsafe.Pointer(c_key))
 
 	retC := C.g_variant_dict_remove((*C.GVariantDict)(recv.native), c_key)
-	retGo := (bool)(retC)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
