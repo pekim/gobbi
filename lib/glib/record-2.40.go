@@ -37,7 +37,16 @@ func (recv *VariantDict) toC() *C.GVariantDict {
 
 // Unsupported : g_variant_dict_clear : no return generator
 
-// Unsupported : g_variant_dict_contains : no return generator
+// Contains is a wrapper around the C function g_variant_dict_contains.
+func (recv *VariantDict) Contains(key string) bool {
+	c_key := C.CString(key)
+	defer C.free(unsafe.Pointer(c_key))
+
+	retC := C.g_variant_dict_contains((*C.GVariantDict)(recv.native), c_key)
+	retGo := (bool)(retC)
+
+	return retGo
+}
 
 // Unsupported : g_variant_dict_end : return type : Blacklisted record : GVariant
 
@@ -59,6 +68,15 @@ func (recv *VariantDict) Ref() *VariantDict {
 	return retGo
 }
 
-// Unsupported : g_variant_dict_remove : no return generator
+// Remove is a wrapper around the C function g_variant_dict_remove.
+func (recv *VariantDict) Remove(key string) bool {
+	c_key := C.CString(key)
+	defer C.free(unsafe.Pointer(c_key))
+
+	retC := C.g_variant_dict_remove((*C.GVariantDict)(recv.native), c_key)
+	retGo := (bool)(retC)
+
+	return retGo
+}
 
 // Unsupported : g_variant_dict_unref : no return generator

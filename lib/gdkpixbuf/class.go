@@ -2,7 +2,10 @@
 
 package gdkpixbuf
 
-import "unsafe"
+import (
+	glib "github.com/pekim/gobbi/lib/glib"
+	"unsafe"
+)
 
 // #define GLIB_DISABLE_DEPRECATION_WARNINGS
 // #include <gdk-pixbuf/gdk-pixbuf.h>
@@ -30,15 +33,15 @@ func (recv *Pixbuf) toC() *C.GdkPixbuf {
 	return recv.native
 }
 
-// Unsupported : gdk_pixbuf_new : unsupported parameter has_alpha : no type generator for gboolean, gboolean
+// Unsupported : gdk_pixbuf_new : no return generator
 
-// Unsupported : gdk_pixbuf_new_from_bytes : unsupported parameter has_alpha : no type generator for gboolean, gboolean
+// Unsupported : gdk_pixbuf_new_from_bytes : no return generator
 
 // Unsupported : gdk_pixbuf_new_from_data : unsupported parameter data : no param type
 
 // Unsupported : gdk_pixbuf_new_from_file : no return generator
 
-// Unsupported : gdk_pixbuf_new_from_file_at_scale : unsupported parameter preserve_aspect_ratio : no type generator for gboolean, gboolean
+// Unsupported : gdk_pixbuf_new_from_file_at_scale : no return generator
 
 // Unsupported : gdk_pixbuf_new_from_file_at_size : no return generator
 
@@ -46,7 +49,7 @@ func (recv *Pixbuf) toC() *C.GdkPixbuf {
 
 // Unsupported : gdk_pixbuf_new_from_resource : no return generator
 
-// Unsupported : gdk_pixbuf_new_from_resource_at_scale : unsupported parameter preserve_aspect_ratio : no type generator for gboolean, gboolean
+// Unsupported : gdk_pixbuf_new_from_resource_at_scale : no return generator
 
 // Unsupported : gdk_pixbuf_new_from_stream : unsupported parameter stream : no type generator for Gio.InputStream, GInputStream*
 
@@ -56,7 +59,7 @@ func (recv *Pixbuf) toC() *C.GdkPixbuf {
 
 // Unsupported : gdk_pixbuf_new_from_xpm_data : unsupported parameter data : no param type
 
-// Unsupported : gdk_pixbuf_add_alpha : unsupported parameter substitute_color : no type generator for gboolean, gboolean
+// Unsupported : gdk_pixbuf_add_alpha : no return generator
 
 // Unsupported : gdk_pixbuf_apply_embedded_orientation : no return generator
 
@@ -74,7 +77,7 @@ func (recv *Pixbuf) toC() *C.GdkPixbuf {
 
 // Unsupported : gdk_pixbuf_fill : no return generator
 
-// Unsupported : gdk_pixbuf_flip : unsupported parameter horizontal : no type generator for gboolean, gboolean
+// Unsupported : gdk_pixbuf_flip : no return generator
 
 // GetBitsPerSample is a wrapper around the C function gdk_pixbuf_get_bits_per_sample.
 func (recv *Pixbuf) GetBitsPerSample() int32 {
@@ -92,7 +95,13 @@ func (recv *Pixbuf) GetColorspace() Colorspace {
 	return retGo
 }
 
-// Unsupported : gdk_pixbuf_get_has_alpha : no return generator
+// GetHasAlpha is a wrapper around the C function gdk_pixbuf_get_has_alpha.
+func (recv *Pixbuf) GetHasAlpha() bool {
+	retC := C.gdk_pixbuf_get_has_alpha((*C.GdkPixbuf)(recv.native))
+	retGo := (bool)(retC)
+
+	return retGo
+}
 
 // GetHeight is a wrapper around the C function gdk_pixbuf_get_height.
 func (recv *Pixbuf) GetHeight() int32 {
@@ -147,8 +156,6 @@ func (recv *Pixbuf) GetWidth() int32 {
 
 // Unsupported : gdk_pixbuf_ref : no return generator
 
-// Unsupported : gdk_pixbuf_remove_option : no return generator
-
 // Unsupported : gdk_pixbuf_rotate_simple : no return generator
 
 // Unsupported : gdk_pixbuf_saturate_and_pixelate : unsupported parameter dest : no type generator for Pixbuf, GdkPixbuf*
@@ -176,8 +183,6 @@ func (recv *Pixbuf) GetWidth() int32 {
 // Unsupported : gdk_pixbuf_scale : unsupported parameter dest : no type generator for Pixbuf, GdkPixbuf*
 
 // Unsupported : gdk_pixbuf_scale_simple : no return generator
-
-// Unsupported : gdk_pixbuf_set_option : no return generator
 
 // Unsupported : gdk_pixbuf_unref : no return generator
 
@@ -230,7 +235,13 @@ func (recv *PixbufAnimation) GetWidth() int32 {
 	return retGo
 }
 
-// Unsupported : gdk_pixbuf_animation_is_static_image : no return generator
+// IsStaticImage is a wrapper around the C function gdk_pixbuf_animation_is_static_image.
+func (recv *PixbufAnimation) IsStaticImage() bool {
+	retC := C.gdk_pixbuf_animation_is_static_image((*C.GdkPixbufAnimation)(recv.native))
+	retGo := (bool)(retC)
+
+	return retGo
+}
 
 // Unsupported : gdk_pixbuf_animation_ref : no return generator
 
@@ -257,7 +268,15 @@ func (recv *PixbufAnimationIter) toC() *C.GdkPixbufAnimationIter {
 	return recv.native
 }
 
-// Unsupported : gdk_pixbuf_animation_iter_advance : no return generator
+// Advance is a wrapper around the C function gdk_pixbuf_animation_iter_advance.
+func (recv *PixbufAnimationIter) Advance(currentTime *glib.TimeVal) bool {
+	c_current_time := currentTime.toC()
+
+	retC := C.gdk_pixbuf_animation_iter_advance((*C.GdkPixbufAnimationIter)(recv.native), c_current_time)
+	retGo := (bool)(retC)
+
+	return retGo
+}
 
 // GetDelayTime is a wrapper around the C function gdk_pixbuf_animation_iter_get_delay_time.
 func (recv *PixbufAnimationIter) GetDelayTime() int32 {
@@ -269,7 +288,13 @@ func (recv *PixbufAnimationIter) GetDelayTime() int32 {
 
 // Unsupported : gdk_pixbuf_animation_iter_get_pixbuf : no return generator
 
-// Unsupported : gdk_pixbuf_animation_iter_on_currently_loading_frame : no return generator
+// OnCurrentlyLoadingFrame is a wrapper around the C function gdk_pixbuf_animation_iter_on_currently_loading_frame.
+func (recv *PixbufAnimationIter) OnCurrentlyLoadingFrame() bool {
+	retC := C.gdk_pixbuf_animation_iter_on_currently_loading_frame((*C.GdkPixbufAnimationIter)(recv.native))
+	retGo := (bool)(retC)
+
+	return retGo
+}
 
 // PixbufLoader is a wrapper around the C record GdkPixbufLoader.
 type PixbufLoader struct {
@@ -300,7 +325,20 @@ func (recv *PixbufLoader) toC() *C.GdkPixbufLoader {
 
 // Unsupported : gdk_pixbuf_loader_new_with_type : no return generator
 
-// Unsupported : gdk_pixbuf_loader_close : no return generator
+// Close is a wrapper around the C function gdk_pixbuf_loader_close.
+func (recv *PixbufLoader) Close() (bool, error) {
+	var cThrowableError *C.GError
+
+	retC := C.gdk_pixbuf_loader_close((*C.GdkPixbufLoader)(recv.native), &cThrowableError)
+	retGo := (bool)(retC)
+
+	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // Unsupported : gdk_pixbuf_loader_get_animation : no return generator
 
@@ -309,8 +347,6 @@ func (recv *PixbufLoader) toC() *C.GdkPixbufLoader {
 // Unsupported : gdk_pixbuf_loader_set_size : no return generator
 
 // Unsupported : gdk_pixbuf_loader_write : unsupported parameter buf : no param type
-
-// Unsupported : gdk_pixbuf_loader_write_bytes : no return generator
 
 // PixbufSimpleAnim is a wrapper around the C record GdkPixbufSimpleAnim.
 type PixbufSimpleAnim struct {
@@ -337,8 +373,6 @@ func (recv *PixbufSimpleAnim) toC() *C.GdkPixbufSimpleAnim {
 
 // Unsupported : gdk_pixbuf_simple_anim_add_frame : unsupported parameter pixbuf : no type generator for Pixbuf, GdkPixbuf*
 
-// Unsupported : gdk_pixbuf_simple_anim_get_loop : no return generator
-
-// Unsupported : gdk_pixbuf_simple_anim_set_loop : unsupported parameter loop : no type generator for gboolean, gboolean
+// Unsupported : gdk_pixbuf_simple_anim_set_loop : no return generator
 
 // Unsupported : PixbufSimpleAnimIter : no CType

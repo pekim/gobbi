@@ -26,7 +26,16 @@ func Utf8MakeValid(str string, len int64) string {
 	return retGo
 }
 
-// Unsupported : g_uuid_string_is_valid : no return generator
+// UuidStringIsValid is a wrapper around the C function g_uuid_string_is_valid.
+func UuidStringIsValid(str string) bool {
+	c_str := C.CString(str)
+	defer C.free(unsafe.Pointer(c_str))
+
+	retC := C.g_uuid_string_is_valid(c_str)
+	retGo := (bool)(retC)
+
+	return retGo
+}
 
 // UuidStringRandom is a wrapper around the C function g_uuid_string_random.
 func UuidStringRandom() string {

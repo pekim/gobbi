@@ -95,8 +95,6 @@ func (recv *DBusAuthObserver) toC() *C.GDBusAuthObserver {
 
 // Unsupported : g_dbus_auth_observer_new : no return generator
 
-// Unsupported : g_dbus_auth_observer_allow_mechanism : no return generator
-
 // Unsupported : g_dbus_auth_observer_authorize_authenticated_peer : unsupported parameter stream : no type generator for IOStream, GIOStream*
 
 // DBusConnection is a wrapper around the C record GDBusConnection.
@@ -168,7 +166,13 @@ func (recv *DBusConnection) GetCapabilities() DBusCapabilityFlags {
 	return retGo
 }
 
-// Unsupported : g_dbus_connection_get_exit_on_close : no return generator
+// GetExitOnClose is a wrapper around the C function g_dbus_connection_get_exit_on_close.
+func (recv *DBusConnection) GetExitOnClose() bool {
+	retC := C.g_dbus_connection_get_exit_on_close((*C.GDBusConnection)(recv.native))
+	retGo := (bool)(retC)
+
+	return retGo
+}
 
 // GetGuid is a wrapper around the C function g_dbus_connection_get_guid.
 func (recv *DBusConnection) GetGuid() string {
@@ -190,7 +194,13 @@ func (recv *DBusConnection) GetUniqueName() string {
 	return retGo
 }
 
-// Unsupported : g_dbus_connection_is_closed : no return generator
+// IsClosed is a wrapper around the C function g_dbus_connection_is_closed.
+func (recv *DBusConnection) IsClosed() bool {
+	retC := C.g_dbus_connection_is_closed((*C.GDBusConnection)(recv.native))
+	retGo := (bool)(retC)
+
+	return retGo
+}
 
 // Unsupported : g_dbus_connection_register_object : unsupported parameter user_data_free_func : no type generator for GLib.DestroyNotify, GDestroyNotify
 
@@ -206,7 +216,7 @@ func (recv *DBusConnection) GetUniqueName() string {
 
 // Unsupported : g_dbus_connection_send_message_with_reply_sync : unsupported parameter message : no type generator for DBusMessage, GDBusMessage*
 
-// Unsupported : g_dbus_connection_set_exit_on_close : unsupported parameter exit_on_close : no type generator for gboolean, gboolean
+// Unsupported : g_dbus_connection_set_exit_on_close : no return generator
 
 // Unsupported : g_dbus_connection_signal_subscribe : unsupported parameter callback : no type generator for DBusSignalCallback, GDBusSignalCallback
 
@@ -218,9 +228,25 @@ func (recv *DBusConnection) GetUniqueName() string {
 
 // Unsupported : g_dbus_connection_unexport_menu_model : no return generator
 
-// Unsupported : g_dbus_connection_unregister_object : no return generator
+// UnregisterObject is a wrapper around the C function g_dbus_connection_unregister_object.
+func (recv *DBusConnection) UnregisterObject(registrationId uint32) bool {
+	c_registration_id := (C.guint)(registrationId)
 
-// Unsupported : g_dbus_connection_unregister_subtree : no return generator
+	retC := C.g_dbus_connection_unregister_object((*C.GDBusConnection)(recv.native), c_registration_id)
+	retGo := (bool)(retC)
+
+	return retGo
+}
+
+// UnregisterSubtree is a wrapper around the C function g_dbus_connection_unregister_subtree.
+func (recv *DBusConnection) UnregisterSubtree(registrationId uint32) bool {
+	c_registration_id := (C.guint)(registrationId)
+
+	retC := C.g_dbus_connection_unregister_subtree((*C.GDBusConnection)(recv.native), c_registration_id)
+	retGo := (bool)(retC)
+
+	return retGo
+}
 
 // DBusMessage is a wrapper around the C record GDBusMessage.
 type DBusMessage struct {
@@ -299,7 +325,13 @@ func (recv *DBusMessage) GetInterface() string {
 	return retGo
 }
 
-// Unsupported : g_dbus_message_get_locked : no return generator
+// GetLocked is a wrapper around the C function g_dbus_message_get_locked.
+func (recv *DBusMessage) GetLocked() bool {
+	retC := C.g_dbus_message_get_locked((*C.GDBusMessage)(recv.native))
+	retGo := (bool)(retC)
+
+	return retGo
+}
 
 // GetMember is a wrapper around the C function g_dbus_message_get_member.
 func (recv *DBusMessage) GetMember() string {
@@ -422,7 +454,20 @@ func (recv *DBusMessage) Print(indent uint32) string {
 
 // Unsupported : g_dbus_message_to_blob : unsupported parameter out_size : no type generator for gsize, gsize*
 
-// Unsupported : g_dbus_message_to_gerror : no return generator
+// ToGerror is a wrapper around the C function g_dbus_message_to_gerror.
+func (recv *DBusMessage) ToGerror() (bool, error) {
+	var cThrowableError *C.GError
+
+	retC := C.g_dbus_message_to_gerror((*C.GDBusMessage)(recv.native), &cThrowableError)
+	retGo := (bool)(retC)
+
+	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // DBusMethodInvocation is a wrapper around the C record GDBusMethodInvocation.
 type DBusMethodInvocation struct {
@@ -674,7 +719,13 @@ func (recv *DBusServer) GetGuid() string {
 	return retGo
 }
 
-// Unsupported : g_dbus_server_is_active : no return generator
+// IsActive is a wrapper around the C function g_dbus_server_is_active.
+func (recv *DBusServer) IsActive() bool {
+	retC := C.g_dbus_server_is_active((*C.GDBusServer)(recv.native))
+	retGo := (bool)(retC)
+
+	return retGo
+}
 
 // Unsupported : g_dbus_server_start : no return generator
 

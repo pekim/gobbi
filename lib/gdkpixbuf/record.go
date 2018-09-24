@@ -36,15 +36,7 @@ func (recv *PixbufFormat) toC() *C.GdkPixbufFormat {
 
 // Unsupported : gdk_pixbuf_format_get_mime_types : no return type
 
-// Unsupported : gdk_pixbuf_format_is_disabled : no return generator
-
-// Unsupported : gdk_pixbuf_format_is_save_option_supported : no return generator
-
-// Unsupported : gdk_pixbuf_format_is_scalable : no return generator
-
-// Unsupported : gdk_pixbuf_format_is_writable : no return generator
-
-// Unsupported : gdk_pixbuf_format_set_disabled : unsupported parameter disabled : no type generator for gboolean, gboolean
+// Unsupported : gdk_pixbuf_format_set_disabled : no return generator
 
 // PixbufLoaderClass is a wrapper around the C record GdkPixbufLoaderClass.
 type PixbufLoaderClass struct {

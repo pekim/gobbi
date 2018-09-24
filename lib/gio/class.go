@@ -88,8 +88,6 @@ func (recv *ApplicationCommandLine) toC() *C.GApplicationCommandLine {
 
 // Unsupported : g_application_command_line_get_environ : no return type
 
-// Unsupported : g_application_command_line_get_is_remote : no return generator
-
 // Unsupported : g_application_command_line_get_platform_data : return type : Blacklisted record : GVariant
 
 // Unsupported : g_application_command_line_get_stdin : no return generator
@@ -184,7 +182,13 @@ func (recv *BufferedOutputStream) toC() *C.GBufferedOutputStream {
 
 // Unsupported : g_buffered_output_stream_new_sized : unsupported parameter base_stream : no type generator for OutputStream, GOutputStream*
 
-// Unsupported : g_buffered_output_stream_get_auto_grow : no return generator
+// GetAutoGrow is a wrapper around the C function g_buffered_output_stream_get_auto_grow.
+func (recv *BufferedOutputStream) GetAutoGrow() bool {
+	retC := C.g_buffered_output_stream_get_auto_grow((*C.GBufferedOutputStream)(recv.native))
+	retGo := (bool)(retC)
+
+	return retGo
+}
 
 // GetBufferSize is a wrapper around the C function g_buffered_output_stream_get_buffer_size.
 func (recv *BufferedOutputStream) GetBufferSize() uint64 {
@@ -194,7 +198,7 @@ func (recv *BufferedOutputStream) GetBufferSize() uint64 {
 	return retGo
 }
 
-// Unsupported : g_buffered_output_stream_set_auto_grow : unsupported parameter auto_grow : no type generator for gboolean, gboolean
+// Unsupported : g_buffered_output_stream_set_auto_grow : no return generator
 
 // Unsupported : g_buffered_output_stream_set_buffer_size : no return generator
 
@@ -260,9 +264,13 @@ func (recv *Cancellable) GetFd() int32 {
 	return retGo
 }
 
-// Unsupported : g_cancellable_is_cancelled : no return generator
+// IsCancelled is a wrapper around the C function g_cancellable_is_cancelled.
+func (recv *Cancellable) IsCancelled() bool {
+	retC := C.g_cancellable_is_cancelled((*C.GCancellable)(recv.native))
+	retGo := (bool)(retC)
 
-// Unsupported : g_cancellable_make_pollfd : no return generator
+	return retGo
+}
 
 // Unsupported : g_cancellable_pop_current : no return generator
 
@@ -272,7 +280,20 @@ func (recv *Cancellable) GetFd() int32 {
 
 // Unsupported : g_cancellable_reset : no return generator
 
-// Unsupported : g_cancellable_set_error_if_cancelled : no return generator
+// SetErrorIfCancelled is a wrapper around the C function g_cancellable_set_error_if_cancelled.
+func (recv *Cancellable) SetErrorIfCancelled() (bool, error) {
+	var cThrowableError *C.GError
+
+	retC := C.g_cancellable_set_error_if_cancelled((*C.GCancellable)(recv.native), &cThrowableError)
+	retGo := (bool)(retC)
+
+	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // CharsetConverter is a wrapper around the C record GCharsetConverter.
 type CharsetConverter struct {
@@ -297,9 +318,7 @@ func (recv *CharsetConverter) toC() *C.GCharsetConverter {
 
 // Unsupported : g_charset_converter_new : no return generator
 
-// Unsupported : g_charset_converter_get_use_fallback : no return generator
-
-// Unsupported : g_charset_converter_set_use_fallback : unsupported parameter use_fallback : no type generator for gboolean, gboolean
+// Unsupported : g_charset_converter_set_use_fallback : no return generator
 
 // ConverterInputStream is a wrapper around the C record GConverterInputStream.
 type ConverterInputStream struct {
@@ -556,8 +575,6 @@ func (recv *DesktopAppInfo) toC() *C.GDesktopAppInfo {
 
 // Unsupported : g_desktop_app_info_new_from_keyfile : no return generator
 
-// Unsupported : g_desktop_app_info_get_boolean : no return generator
-
 // GetCategories is a wrapper around the C function g_desktop_app_info_get_categories.
 func (recv *DesktopAppInfo) GetCategories() string {
 	retC := C.g_desktop_app_info_get_categories((*C.GDesktopAppInfo)(recv.native))
@@ -574,15 +591,15 @@ func (recv *DesktopAppInfo) GetGenericName() string {
 	return retGo
 }
 
-// Unsupported : g_desktop_app_info_get_is_hidden : no return generator
+// GetIsHidden is a wrapper around the C function g_desktop_app_info_get_is_hidden.
+func (recv *DesktopAppInfo) GetIsHidden() bool {
+	retC := C.g_desktop_app_info_get_is_hidden((*C.GDesktopAppInfo)(recv.native))
+	retGo := (bool)(retC)
+
+	return retGo
+}
 
 // Unsupported : g_desktop_app_info_get_keywords : no return type
-
-// Unsupported : g_desktop_app_info_get_nodisplay : no return generator
-
-// Unsupported : g_desktop_app_info_get_show_in : no return generator
-
-// Unsupported : g_desktop_app_info_has_key : no return generator
 
 // Unsupported : g_desktop_app_info_launch_action : unsupported parameter launch_context : no type generator for AppLaunchContext, GAppLaunchContext*
 
@@ -681,9 +698,21 @@ func (recv *FileEnumerator) toC() *C.GFileEnumerator {
 
 // Unsupported : g_file_enumerator_get_container : no return generator
 
-// Unsupported : g_file_enumerator_has_pending : no return generator
+// HasPending is a wrapper around the C function g_file_enumerator_has_pending.
+func (recv *FileEnumerator) HasPending() bool {
+	retC := C.g_file_enumerator_has_pending((*C.GFileEnumerator)(recv.native))
+	retGo := (bool)(retC)
 
-// Unsupported : g_file_enumerator_is_closed : no return generator
+	return retGo
+}
+
+// IsClosed is a wrapper around the C function g_file_enumerator_is_closed.
+func (recv *FileEnumerator) IsClosed() bool {
+	retC := C.g_file_enumerator_is_closed((*C.GFileEnumerator)(recv.native))
+	retGo := (bool)(retC)
+
+	return retGo
+}
 
 // Unsupported : g_file_enumerator_iterate : unsupported parameter out_info : no type generator for FileInfo, GFileInfo**
 
@@ -693,7 +722,7 @@ func (recv *FileEnumerator) toC() *C.GFileEnumerator {
 
 // Unsupported : g_file_enumerator_next_files_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
 
-// Unsupported : g_file_enumerator_set_pending : unsupported parameter pending : no type generator for gboolean, gboolean
+// Unsupported : g_file_enumerator_set_pending : no return generator
 
 // FileIOStream is a wrapper around the C record GFileIOStream.
 type FileIOStream struct {
@@ -790,7 +819,16 @@ func (recv *FileInfo) GetAttributeAsString(attribute string) string {
 	return retGo
 }
 
-// Unsupported : g_file_info_get_attribute_boolean : no return generator
+// GetAttributeBoolean is a wrapper around the C function g_file_info_get_attribute_boolean.
+func (recv *FileInfo) GetAttributeBoolean(attribute string) bool {
+	c_attribute := C.CString(attribute)
+	defer C.free(unsafe.Pointer(c_attribute))
+
+	retC := C.g_file_info_get_attribute_boolean((*C.GFileInfo)(recv.native), c_attribute)
+	retGo := (bool)(retC)
+
+	return retGo
+}
 
 // GetAttributeByteString is a wrapper around the C function g_file_info_get_attribute_byte_string.
 func (recv *FileInfo) GetAttributeByteString(attribute string) string {
@@ -928,11 +966,29 @@ func (recv *FileInfo) GetFileType() FileType {
 
 // Unsupported : g_file_info_get_icon : no return generator
 
-// Unsupported : g_file_info_get_is_backup : no return generator
+// GetIsBackup is a wrapper around the C function g_file_info_get_is_backup.
+func (recv *FileInfo) GetIsBackup() bool {
+	retC := C.g_file_info_get_is_backup((*C.GFileInfo)(recv.native))
+	retGo := (bool)(retC)
 
-// Unsupported : g_file_info_get_is_hidden : no return generator
+	return retGo
+}
 
-// Unsupported : g_file_info_get_is_symlink : no return generator
+// GetIsHidden is a wrapper around the C function g_file_info_get_is_hidden.
+func (recv *FileInfo) GetIsHidden() bool {
+	retC := C.g_file_info_get_is_hidden((*C.GFileInfo)(recv.native))
+	retGo := (bool)(retC)
+
+	return retGo
+}
+
+// GetIsSymlink is a wrapper around the C function g_file_info_get_is_symlink.
+func (recv *FileInfo) GetIsSymlink() bool {
+	retC := C.g_file_info_get_is_symlink((*C.GFileInfo)(recv.native))
+	retGo := (bool)(retC)
+
+	return retGo
+}
 
 // Unsupported : g_file_info_get_modification_time : no return generator
 
@@ -970,9 +1026,16 @@ func (recv *FileInfo) GetSymlinkTarget() string {
 	return retGo
 }
 
-// Unsupported : g_file_info_has_attribute : no return generator
+// HasAttribute is a wrapper around the C function g_file_info_has_attribute.
+func (recv *FileInfo) HasAttribute(attribute string) bool {
+	c_attribute := C.CString(attribute)
+	defer C.free(unsafe.Pointer(c_attribute))
 
-// Unsupported : g_file_info_has_namespace : no return generator
+	retC := C.g_file_info_has_attribute((*C.GFileInfo)(recv.native), c_attribute)
+	retGo := (bool)(retC)
+
+	return retGo
+}
 
 // Unsupported : g_file_info_list_attributes : no return type
 
@@ -980,7 +1043,7 @@ func (recv *FileInfo) GetSymlinkTarget() string {
 
 // Unsupported : g_file_info_set_attribute : no return generator
 
-// Unsupported : g_file_info_set_attribute_boolean : unsupported parameter attr_value : no type generator for gboolean, gboolean
+// Unsupported : g_file_info_set_attribute_boolean : no return generator
 
 // Unsupported : g_file_info_set_attribute_byte_string : no return generator
 
@@ -991,8 +1054,6 @@ func (recv *FileInfo) GetSymlinkTarget() string {
 // Unsupported : g_file_info_set_attribute_mask : no return generator
 
 // Unsupported : g_file_info_set_attribute_object : unsupported parameter attr_value : no type generator for GObject.Object, GObject*
-
-// Unsupported : g_file_info_set_attribute_status : no return generator
 
 // Unsupported : g_file_info_set_attribute_string : no return generator
 
@@ -1012,9 +1073,9 @@ func (recv *FileInfo) GetSymlinkTarget() string {
 
 // Unsupported : g_file_info_set_icon : unsupported parameter icon : no type generator for Icon, GIcon*
 
-// Unsupported : g_file_info_set_is_hidden : unsupported parameter is_hidden : no type generator for gboolean, gboolean
+// Unsupported : g_file_info_set_is_hidden : no return generator
 
-// Unsupported : g_file_info_set_is_symlink : unsupported parameter is_symlink : no type generator for gboolean, gboolean
+// Unsupported : g_file_info_set_is_symlink : no return generator
 
 // Unsupported : g_file_info_set_modification_time : no return generator
 
@@ -1082,11 +1143,23 @@ func (recv *FileMonitor) toC() *C.GFileMonitor {
 	return recv.native
 }
 
-// Unsupported : g_file_monitor_cancel : no return generator
+// Cancel is a wrapper around the C function g_file_monitor_cancel.
+func (recv *FileMonitor) Cancel() bool {
+	retC := C.g_file_monitor_cancel((*C.GFileMonitor)(recv.native))
+	retGo := (bool)(retC)
+
+	return retGo
+}
 
 // Unsupported : g_file_monitor_emit_event : unsupported parameter child : no type generator for File, GFile*
 
-// Unsupported : g_file_monitor_is_cancelled : no return generator
+// IsCancelled is a wrapper around the C function g_file_monitor_is_cancelled.
+func (recv *FileMonitor) IsCancelled() bool {
+	retC := C.g_file_monitor_is_cancelled((*C.GFileMonitor)(recv.native))
+	retGo := (bool)(retC)
+
+	return retGo
+}
 
 // Unsupported : g_file_monitor_set_rate_limit : no return generator
 
@@ -1165,7 +1238,7 @@ func (recv *FilenameCompleter) GetCompletionSuffix(initialText string) string {
 
 // Unsupported : g_filename_completer_get_completions : no return type
 
-// Unsupported : g_filename_completer_set_dirs_only : unsupported parameter dirs_only : no type generator for gboolean, gboolean
+// Unsupported : g_filename_completer_set_dirs_only : no return generator
 
 // FilterInputStream is a wrapper around the C record GFilterInputStream.
 type FilterInputStream struct {
@@ -1192,9 +1265,15 @@ func (recv *FilterInputStream) toC() *C.GFilterInputStream {
 
 // Unsupported : g_filter_input_stream_get_base_stream : no return generator
 
-// Unsupported : g_filter_input_stream_get_close_base_stream : no return generator
+// GetCloseBaseStream is a wrapper around the C function g_filter_input_stream_get_close_base_stream.
+func (recv *FilterInputStream) GetCloseBaseStream() bool {
+	retC := C.g_filter_input_stream_get_close_base_stream((*C.GFilterInputStream)(recv.native))
+	retGo := (bool)(retC)
 
-// Unsupported : g_filter_input_stream_set_close_base_stream : unsupported parameter close_base : no type generator for gboolean, gboolean
+	return retGo
+}
+
+// Unsupported : g_filter_input_stream_set_close_base_stream : no return generator
 
 // FilterOutputStream is a wrapper around the C record GFilterOutputStream.
 type FilterOutputStream struct {
@@ -1221,9 +1300,15 @@ func (recv *FilterOutputStream) toC() *C.GFilterOutputStream {
 
 // Unsupported : g_filter_output_stream_get_base_stream : no return generator
 
-// Unsupported : g_filter_output_stream_get_close_base_stream : no return generator
+// GetCloseBaseStream is a wrapper around the C function g_filter_output_stream_get_close_base_stream.
+func (recv *FilterOutputStream) GetCloseBaseStream() bool {
+	retC := C.g_filter_output_stream_get_close_base_stream((*C.GFilterOutputStream)(recv.native))
+	retGo := (bool)(retC)
 
-// Unsupported : g_filter_output_stream_set_close_base_stream : unsupported parameter close_base : no type generator for gboolean, gboolean
+	return retGo
+}
+
+// Unsupported : g_filter_output_stream_set_close_base_stream : no return generator
 
 // IOModule is a wrapper around the C record GIOModule.
 type IOModule struct {
@@ -1287,12 +1372,6 @@ func (recv *IOStream) toC() *C.GIOStream {
 
 // Unsupported : g_io_stream_get_output_stream : no return generator
 
-// Unsupported : g_io_stream_has_pending : no return generator
-
-// Unsupported : g_io_stream_is_closed : no return generator
-
-// Unsupported : g_io_stream_set_pending : no return generator
-
 // Unsupported : g_io_stream_splice_async : unsupported parameter stream2 : no type generator for IOStream, GIOStream*
 
 // InetAddress is a wrapper around the C record GInetAddress.
@@ -1327,26 +1406,6 @@ func (recv *InetAddress) toC() *C.GInetAddress {
 // Unsupported : g_inet_address_new_loopback : no return generator
 
 // Unsupported : g_inet_address_equal : unsupported parameter other_address : no type generator for InetAddress, GInetAddress*
-
-// Unsupported : g_inet_address_get_is_any : no return generator
-
-// Unsupported : g_inet_address_get_is_link_local : no return generator
-
-// Unsupported : g_inet_address_get_is_loopback : no return generator
-
-// Unsupported : g_inet_address_get_is_mc_global : no return generator
-
-// Unsupported : g_inet_address_get_is_mc_link_local : no return generator
-
-// Unsupported : g_inet_address_get_is_mc_node_local : no return generator
-
-// Unsupported : g_inet_address_get_is_mc_org_local : no return generator
-
-// Unsupported : g_inet_address_get_is_mc_site_local : no return generator
-
-// Unsupported : g_inet_address_get_is_multicast : no return generator
-
-// Unsupported : g_inet_address_get_is_site_local : no return generator
 
 // Unsupported : g_inet_address_to_bytes : no return generator
 
@@ -1410,9 +1469,21 @@ func (recv *InputStream) toC() *C.GInputStream {
 
 // Unsupported : g_input_stream_close_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
 
-// Unsupported : g_input_stream_has_pending : no return generator
+// HasPending is a wrapper around the C function g_input_stream_has_pending.
+func (recv *InputStream) HasPending() bool {
+	retC := C.g_input_stream_has_pending((*C.GInputStream)(recv.native))
+	retGo := (bool)(retC)
 
-// Unsupported : g_input_stream_is_closed : no return generator
+	return retGo
+}
+
+// IsClosed is a wrapper around the C function g_input_stream_is_closed.
+func (recv *InputStream) IsClosed() bool {
+	retC := C.g_input_stream_is_closed((*C.GInputStream)(recv.native))
+	retGo := (bool)(retC)
+
+	return retGo
+}
 
 // Unsupported : g_input_stream_read : unsupported parameter buffer : no param type
 
@@ -1432,7 +1503,20 @@ func (recv *InputStream) toC() *C.GInputStream {
 
 // Unsupported : g_input_stream_read_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
 
-// Unsupported : g_input_stream_set_pending : no return generator
+// SetPending is a wrapper around the C function g_input_stream_set_pending.
+func (recv *InputStream) SetPending() (bool, error) {
+	var cThrowableError *C.GError
+
+	retC := C.g_input_stream_set_pending((*C.GInputStream)(recv.native), &cThrowableError)
+	retGo := (bool)(retC)
+
+	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // Unsupported : g_input_stream_skip : unsupported parameter cancellable : no type generator for Cancellable, GCancellable*
 
@@ -1578,7 +1662,13 @@ func (recv *MountOperation) toC() *C.GMountOperation {
 
 // Unsupported : g_mount_operation_new : no return generator
 
-// Unsupported : g_mount_operation_get_anonymous : no return generator
+// GetAnonymous is a wrapper around the C function g_mount_operation_get_anonymous.
+func (recv *MountOperation) GetAnonymous() bool {
+	retC := C.g_mount_operation_get_anonymous((*C.GMountOperation)(recv.native))
+	retGo := (bool)(retC)
+
+	return retGo
+}
 
 // GetChoice is a wrapper around the C function g_mount_operation_get_choice.
 func (recv *MountOperation) GetChoice() int32 {
@@ -1622,7 +1712,7 @@ func (recv *MountOperation) GetUsername() string {
 
 // Unsupported : g_mount_operation_reply : no return generator
 
-// Unsupported : g_mount_operation_set_anonymous : unsupported parameter anonymous : no type generator for gboolean, gboolean
+// Unsupported : g_mount_operation_set_anonymous : no return generator
 
 // Unsupported : g_mount_operation_set_choice : no return generator
 
@@ -1747,15 +1837,38 @@ func (recv *OutputStream) toC() *C.GOutputStream {
 
 // Unsupported : g_output_stream_flush_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
 
-// Unsupported : g_output_stream_has_pending : no return generator
+// HasPending is a wrapper around the C function g_output_stream_has_pending.
+func (recv *OutputStream) HasPending() bool {
+	retC := C.g_output_stream_has_pending((*C.GOutputStream)(recv.native))
+	retGo := (bool)(retC)
 
-// Unsupported : g_output_stream_is_closed : no return generator
+	return retGo
+}
 
-// Unsupported : g_output_stream_is_closing : no return generator
+// IsClosed is a wrapper around the C function g_output_stream_is_closed.
+func (recv *OutputStream) IsClosed() bool {
+	retC := C.g_output_stream_is_closed((*C.GOutputStream)(recv.native))
+	retGo := (bool)(retC)
+
+	return retGo
+}
 
 // Unsupported : g_output_stream_printf : unsupported parameter bytes_written : no type generator for gsize, gsize*
 
-// Unsupported : g_output_stream_set_pending : no return generator
+// SetPending is a wrapper around the C function g_output_stream_set_pending.
+func (recv *OutputStream) SetPending() (bool, error) {
+	var cThrowableError *C.GError
+
+	retC := C.g_output_stream_set_pending((*C.GOutputStream)(recv.native), &cThrowableError)
+	retGo := (bool)(retC)
+
+	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // Unsupported : g_output_stream_splice : unsupported parameter source : no type generator for InputStream, GInputStream*
 
@@ -1812,13 +1925,7 @@ func (recv *Permission) toC() *C.GPermission {
 
 // Unsupported : g_permission_acquire_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
 
-// Unsupported : g_permission_get_allowed : no return generator
-
-// Unsupported : g_permission_get_can_acquire : no return generator
-
-// Unsupported : g_permission_get_can_release : no return generator
-
-// Unsupported : g_permission_impl_update : unsupported parameter allowed : no type generator for gboolean, gboolean
+// Unsupported : g_permission_impl_update : no return generator
 
 // Unsupported : g_permission_release : unsupported parameter cancellable : no type generator for Cancellable, GCancellable*
 
@@ -1937,7 +2044,7 @@ func (recv *Settings) toC() *C.GSettings {
 
 // Unsupported : g_settings_bind_with_mapping : unsupported parameter get_mapping : no type generator for SettingsBindGetMapping, GSettingsBindGetMapping
 
-// Unsupported : g_settings_bind_writable : unsupported parameter inverted : no type generator for gboolean, gboolean
+// Unsupported : g_settings_bind_writable : no return generator
 
 // Unsupported : g_settings_create_action : no return generator
 
@@ -1945,13 +2052,9 @@ func (recv *Settings) toC() *C.GSettings {
 
 // Unsupported : g_settings_get : unsupported parameter ... : varargs
 
-// Unsupported : g_settings_get_boolean : no return generator
-
 // Unsupported : g_settings_get_child : no return generator
 
 // Unsupported : g_settings_get_default_value : return type : Blacklisted record : GVariant
-
-// Unsupported : g_settings_get_has_unapplied : no return generator
 
 // Unsupported : g_settings_get_mapped : unsupported parameter mapping : no type generator for SettingsGetMapping, GSettingsGetMapping
 
@@ -1962,8 +2065,6 @@ func (recv *Settings) toC() *C.GSettings {
 // Unsupported : g_settings_get_user_value : return type : Blacklisted record : GVariant
 
 // Unsupported : g_settings_get_value : return type : Blacklisted record : GVariant
-
-// Unsupported : g_settings_is_writable : no return generator
 
 // Unsupported : g_settings_list_children : no return type
 
@@ -1977,25 +2078,33 @@ func (recv *Settings) toC() *C.GSettings {
 
 // Unsupported : g_settings_set : unsupported parameter ... : varargs
 
-// Unsupported : g_settings_set_boolean : unsupported parameter value : no type generator for gboolean, gboolean
+// SetEnum is a wrapper around the C function g_settings_set_enum.
+func (recv *Settings) SetEnum(key string, value int32) bool {
+	c_key := C.CString(key)
+	defer C.free(unsafe.Pointer(c_key))
 
-// Unsupported : g_settings_set_double : no return generator
+	c_value := (C.gint)(value)
 
-// Unsupported : g_settings_set_enum : no return generator
+	retC := C.g_settings_set_enum((*C.GSettings)(recv.native), c_key, c_value)
+	retGo := (bool)(retC)
 
-// Unsupported : g_settings_set_flags : no return generator
+	return retGo
+}
 
-// Unsupported : g_settings_set_int : no return generator
+// SetFlags is a wrapper around the C function g_settings_set_flags.
+func (recv *Settings) SetFlags(key string, value uint32) bool {
+	c_key := C.CString(key)
+	defer C.free(unsafe.Pointer(c_key))
 
-// Unsupported : g_settings_set_int64 : no return generator
+	c_value := (C.guint)(value)
 
-// Unsupported : g_settings_set_string : no return generator
+	retC := C.g_settings_set_flags((*C.GSettings)(recv.native), c_key, c_value)
+	retGo := (bool)(retC)
+
+	return retGo
+}
 
 // Unsupported : g_settings_set_strv : unsupported parameter value : no param type
-
-// Unsupported : g_settings_set_uint : no return generator
-
-// Unsupported : g_settings_set_uint64 : no return generator
 
 // Unsupported : g_settings_set_value : unsupported parameter value : Blacklisted record : GVariant
 
@@ -2059,7 +2168,7 @@ func (recv *SimpleAction) toC() *C.GSimpleAction {
 
 // Unsupported : g_simple_action_new_stateful : unsupported parameter parameter_type : Blacklisted record : GVariantType
 
-// Unsupported : g_simple_action_set_enabled : unsupported parameter enabled : no type generator for gboolean, gboolean
+// Unsupported : g_simple_action_set_enabled : no return generator
 
 // Unsupported : g_simple_action_set_state : unsupported parameter value : Blacklisted record : GVariant
 
@@ -2098,7 +2207,13 @@ func (recv *SimpleAsyncResult) toC() *C.GSimpleAsyncResult {
 
 // Unsupported : g_simple_async_result_complete_in_idle : no return generator
 
-// Unsupported : g_simple_async_result_get_op_res_gboolean : no return generator
+// GetOpResGboolean is a wrapper around the C function g_simple_async_result_get_op_res_gboolean.
+func (recv *SimpleAsyncResult) GetOpResGboolean() bool {
+	retC := C.g_simple_async_result_get_op_res_gboolean((*C.GSimpleAsyncResult)(recv.native))
+	retGo := (bool)(retC)
+
+	return retGo
+}
 
 // GetOpResGpointer is a wrapper around the C function g_simple_async_result_get_op_res_gpointer.
 func (recv *SimpleAsyncResult) GetOpResGpointer() uintptr {
@@ -2124,7 +2239,20 @@ func (recv *SimpleAsyncResult) GetSourceTag() uintptr {
 	return retGo
 }
 
-// Unsupported : g_simple_async_result_propagate_error : no return generator
+// PropagateError is a wrapper around the C function g_simple_async_result_propagate_error.
+func (recv *SimpleAsyncResult) PropagateError() (bool, error) {
+	var cThrowableError *C.GError
+
+	retC := C.g_simple_async_result_propagate_error((*C.GSimpleAsyncResult)(recv.native), &cThrowableError)
+	retGo := (bool)(retC)
+
+	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // Unsupported : g_simple_async_result_run_in_thread : unsupported parameter func : no type generator for SimpleAsyncThreadFunc, GSimpleAsyncThreadFunc
 
@@ -2136,9 +2264,9 @@ func (recv *SimpleAsyncResult) GetSourceTag() uintptr {
 
 // Unsupported : g_simple_async_result_set_from_error : no return generator
 
-// Unsupported : g_simple_async_result_set_handle_cancellation : unsupported parameter handle_cancellation : no type generator for gboolean, gboolean
+// Unsupported : g_simple_async_result_set_handle_cancellation : no return generator
 
-// Unsupported : g_simple_async_result_set_op_res_gboolean : unsupported parameter op_res : no type generator for gboolean, gboolean
+// Unsupported : g_simple_async_result_set_op_res_gboolean : no return generator
 
 // Unsupported : g_simple_async_result_set_op_res_gpointer : unsupported parameter destroy_op_res : no type generator for GLib.DestroyNotify, GDestroyNotify
 
@@ -2167,7 +2295,7 @@ func (recv *SimplePermission) toC() *C.GSimplePermission {
 	return recv.native
 }
 
-// Unsupported : g_simple_permission_new : unsupported parameter allowed : no type generator for gboolean, gboolean
+// Unsupported : g_simple_permission_new : no return generator
 
 // SimpleProxyResolver is a wrapper around the C record GSimpleProxyResolver.
 type SimpleProxyResolver struct {
@@ -2221,8 +2349,6 @@ func (recv *SocketAddress) toC() *C.GSocketAddress {
 }
 
 // Unsupported : g_socket_address_new_from_native : no return generator
-
-// Unsupported : g_socket_address_to_native : no return generator
 
 // SocketAddressEnumerator is a wrapper around the C record GSocketAddressEnumerator.
 type SocketAddressEnumerator struct {
@@ -2304,21 +2430,9 @@ func (recv *Task) toC() *C.GTask {
 
 // Unsupported : g_task_get_cancellable : no return generator
 
-// Unsupported : g_task_get_check_cancellable : no return generator
-
-// Unsupported : g_task_get_completed : no return generator
-
-// Unsupported : g_task_get_return_on_cancel : no return generator
-
-// Unsupported : g_task_had_error : no return generator
-
-// Unsupported : g_task_propagate_boolean : no return generator
-
-// Unsupported : g_task_return_boolean : unsupported parameter result : no type generator for gboolean, gboolean
+// Unsupported : g_task_return_boolean : no return generator
 
 // Unsupported : g_task_return_error : no return generator
-
-// Unsupported : g_task_return_error_if_cancelled : no return generator
 
 // Unsupported : g_task_return_int : no return generator
 
@@ -2330,11 +2444,9 @@ func (recv *Task) toC() *C.GTask {
 
 // Unsupported : g_task_run_in_thread_sync : unsupported parameter task_func : no type generator for TaskThreadFunc, GTaskThreadFunc
 
-// Unsupported : g_task_set_check_cancellable : unsupported parameter check_cancellable : no type generator for gboolean, gboolean
+// Unsupported : g_task_set_check_cancellable : no return generator
 
 // Unsupported : g_task_set_priority : no return generator
-
-// Unsupported : g_task_set_return_on_cancel : unsupported parameter return_on_cancel : no type generator for gboolean, gboolean
 
 // Unsupported : g_task_set_source_tag : no return generator
 
@@ -2497,8 +2609,6 @@ func (recv *UnixFDMessage) toC() *C.GUnixFDMessage {
 
 // Unsupported : g_unix_fd_message_new_with_fd_list : unsupported parameter fd_list : no type generator for UnixFDList, GUnixFDList*
 
-// Unsupported : g_unix_fd_message_append_fd : no return generator
-
 // Unsupported : g_unix_fd_message_get_fd_list : no return generator
 
 // Unsupported : g_unix_fd_message_steal_fds : unsupported parameter length : no type generator for gint, gint*
@@ -2526,11 +2636,9 @@ func (recv *UnixInputStream) toC() *C.GUnixInputStream {
 	return recv.native
 }
 
-// Unsupported : g_unix_input_stream_new : unsupported parameter close_fd : no type generator for gboolean, gboolean
+// Unsupported : g_unix_input_stream_new : no return generator
 
-// Unsupported : g_unix_input_stream_get_close_fd : no return generator
-
-// Unsupported : g_unix_input_stream_set_close_fd : unsupported parameter close_fd : no type generator for gboolean, gboolean
+// Unsupported : g_unix_input_stream_set_close_fd : no return generator
 
 // UnixMountMonitor is a wrapper around the C record GUnixMountMonitor.
 type UnixMountMonitor struct {
@@ -2580,11 +2688,9 @@ func (recv *UnixOutputStream) toC() *C.GUnixOutputStream {
 	return recv.native
 }
 
-// Unsupported : g_unix_output_stream_new : unsupported parameter close_fd : no type generator for gboolean, gboolean
+// Unsupported : g_unix_output_stream_new : no return generator
 
-// Unsupported : g_unix_output_stream_get_close_fd : no return generator
-
-// Unsupported : g_unix_output_stream_set_close_fd : unsupported parameter close_fd : no type generator for gboolean, gboolean
+// Unsupported : g_unix_output_stream_set_close_fd : no return generator
 
 // UnixSocketAddress is a wrapper around the C record GUnixSocketAddress.
 type UnixSocketAddress struct {
@@ -2615,8 +2721,6 @@ func (recv *UnixSocketAddress) toC() *C.GUnixSocketAddress {
 
 // Unsupported : g_unix_socket_address_new_with_type : unsupported parameter path : no param type
 
-// Unsupported : g_unix_socket_address_get_is_abstract : no return generator
-
 // Vfs is a wrapper around the C record GVfs.
 type Vfs struct {
 	native *C.GVfs
@@ -2645,13 +2749,17 @@ func (recv *Vfs) toC() *C.GVfs {
 
 // Unsupported : g_vfs_get_supported_uri_schemes : no return type
 
-// Unsupported : g_vfs_is_active : no return generator
+// IsActive is a wrapper around the C function g_vfs_is_active.
+func (recv *Vfs) IsActive() bool {
+	retC := C.g_vfs_is_active((*C.GVfs)(recv.native))
+	retGo := (bool)(retC)
+
+	return retGo
+}
 
 // Unsupported : g_vfs_parse_name : no return generator
 
 // Unsupported : g_vfs_register_uri_scheme : unsupported parameter uri_func : no type generator for VfsFileLookupFunc, GVfsFileLookupFunc
-
-// Unsupported : g_vfs_unregister_uri_scheme : no return generator
 
 // VolumeMonitor is a wrapper around the C record GVolumeMonitor.
 type VolumeMonitor struct {

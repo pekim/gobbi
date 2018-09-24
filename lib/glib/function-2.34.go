@@ -31,7 +31,22 @@ func ComputeChecksumForBytes(checksumType ChecksumType, data *Bytes) string {
 
 // Unsupported : g_datalist_id_replace_data : unsupported parameter datalist : in string with indirection level of 2
 
-// Unsupported : g_spawn_check_exit_status : no return generator
+// SpawnCheckExitStatus is a wrapper around the C function g_spawn_check_exit_status.
+func SpawnCheckExitStatus(exitStatus int32) (bool, error) {
+	c_exit_status := (C.gint)(exitStatus)
+
+	var cThrowableError *C.GError
+
+	retC := C.g_spawn_check_exit_status(c_exit_status, &cThrowableError)
+	retGo := (bool)(retC)
+
+	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // Unsupported : g_test_add_data_func_full : unsupported parameter test_func : no type generator for TestDataFunc, GTestDataFunc
 

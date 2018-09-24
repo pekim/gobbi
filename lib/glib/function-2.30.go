@@ -125,7 +125,7 @@ func RegexEscapeNul(string string, length int32) string {
 
 // Unsupported : g_unichar_decompose : unsupported parameter a : no type generator for gunichar, gunichar*
 
-// Unsupported : g_unichar_fully_decompose : unsupported parameter compat : no type generator for gboolean, gboolean
+// Unsupported : g_unichar_fully_decompose : unsupported parameter result : no type generator for gunichar, gunichar*
 
 // UnicodeScriptFromIso15924 is a wrapper around the C function g_unicode_script_from_iso15924.
 func UnicodeScriptFromIso15924(iso15924 uint32) UnicodeScript {
@@ -149,7 +149,24 @@ func UnicodeScriptToIso15924(script UnicodeScript) uint32 {
 
 // Unsupported : g_unix_open_pipe : unsupported parameter fds : no type generator for gint, gint*
 
-// Unsupported : g_unix_set_fd_nonblocking : unsupported parameter nonblock : no type generator for gboolean, gboolean
+// UnixSetFdNonblocking is a wrapper around the C function g_unix_set_fd_nonblocking.
+func UnixSetFdNonblocking(fd int32, nonblock bool) (bool, error) {
+	c_fd := (C.gint)(fd)
+
+	c_nonblock := (C.gboolean)(nonblock)
+
+	var cThrowableError *C.GError
+
+	retC := C.g_unix_set_fd_nonblocking(c_fd, c_nonblock, &cThrowableError)
+	retGo := (bool)(retC)
+
+	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // Unsupported : g_unix_signal_add : unsupported parameter handler : no type generator for SourceFunc, GSourceFunc
 

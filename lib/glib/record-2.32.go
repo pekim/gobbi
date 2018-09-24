@@ -51,7 +51,15 @@ func (recv *Bytes) Compare(bytes2 uintptr) int32 {
 	return retGo
 }
 
-// Unsupported : g_bytes_equal : no return generator
+// Equal is a wrapper around the C function g_bytes_equal.
+func (recv *Bytes) Equal(bytes2 uintptr) bool {
+	c_bytes2 := (C.gconstpointer)(bytes2)
+
+	retC := C.g_bytes_equal((C.gconstpointer)(recv.native), c_bytes2)
+	retGo := (bool)(retC)
+
+	return retGo
+}
 
 // Unsupported : g_bytes_get_data : unsupported parameter size : no type generator for gsize, gsize*
 
@@ -126,13 +134,25 @@ func (recv *RWLock) toC() *C.GRWLock {
 
 // Unsupported : g_rw_lock_reader_lock : no return generator
 
-// Unsupported : g_rw_lock_reader_trylock : no return generator
+// ReaderTrylock is a wrapper around the C function g_rw_lock_reader_trylock.
+func (recv *RWLock) ReaderTrylock() bool {
+	retC := C.g_rw_lock_reader_trylock((*C.GRWLock)(recv.native))
+	retGo := (bool)(retC)
+
+	return retGo
+}
 
 // Unsupported : g_rw_lock_reader_unlock : no return generator
 
 // Unsupported : g_rw_lock_writer_lock : no return generator
 
-// Unsupported : g_rw_lock_writer_trylock : no return generator
+// WriterTrylock is a wrapper around the C function g_rw_lock_writer_trylock.
+func (recv *RWLock) WriterTrylock() bool {
+	retC := C.g_rw_lock_writer_trylock((*C.GRWLock)(recv.native))
+	retGo := (bool)(retC)
+
+	return retGo
+}
 
 // Unsupported : g_rw_lock_writer_unlock : no return generator
 
@@ -165,6 +185,12 @@ func (recv *RecMutex) toC() *C.GRecMutex {
 
 // Unsupported : g_rec_mutex_lock : no return generator
 
-// Unsupported : g_rec_mutex_trylock : no return generator
+// Trylock is a wrapper around the C function g_rec_mutex_trylock.
+func (recv *RecMutex) Trylock() bool {
+	retC := C.g_rec_mutex_trylock((*C.GRecMutex)(recv.native))
+	retGo := (bool)(retC)
+
+	return retGo
+}
 
 // Unsupported : g_rec_mutex_unlock : no return generator

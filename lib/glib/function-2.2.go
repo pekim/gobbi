@@ -45,9 +45,33 @@ func GetApplicationName() string {
 
 // Unsupported : g_sprintf : unsupported parameter ... : varargs
 
-// Unsupported : g_str_has_prefix : no return generator
+// StrHasPrefix is a wrapper around the C function g_str_has_prefix.
+func StrHasPrefix(str string, prefix string) bool {
+	c_str := C.CString(str)
+	defer C.free(unsafe.Pointer(c_str))
 
-// Unsupported : g_str_has_suffix : no return generator
+	c_prefix := C.CString(prefix)
+	defer C.free(unsafe.Pointer(c_prefix))
+
+	retC := C.g_str_has_prefix(c_str, c_prefix)
+	retGo := (bool)(retC)
+
+	return retGo
+}
+
+// StrHasSuffix is a wrapper around the C function g_str_has_suffix.
+func StrHasSuffix(str string, suffix string) bool {
+	c_str := C.CString(str)
+	defer C.free(unsafe.Pointer(c_str))
+
+	c_suffix := C.CString(suffix)
+	defer C.free(unsafe.Pointer(c_suffix))
+
+	retC := C.g_str_has_suffix(c_str, c_suffix)
+	retGo := (bool)(retC)
+
+	return retGo
+}
 
 // Utf8Strreverse is a wrapper around the C function g_utf8_strreverse.
 func Utf8Strreverse(str string, len int64) string {

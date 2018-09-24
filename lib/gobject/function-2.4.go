@@ -10,7 +10,21 @@ import "C"
 
 // Unsupported : g_param_spec_override : unsupported parameter overridden : no type generator for ParamSpec, GParamSpec*
 
-// Unsupported : g_signal_accumulator_true_handled : no return generator
+// SignalAccumulatorTrueHandled is a wrapper around the C function g_signal_accumulator_true_handled.
+func SignalAccumulatorTrueHandled(ihint *SignalInvocationHint, returnAccu *Value, handlerReturn *Value, dummy uintptr) bool {
+	c_ihint := ihint.toC()
+
+	c_return_accu := returnAccu.toC()
+
+	c_handler_return := handlerReturn.toC()
+
+	c_dummy := (C.gpointer)(dummy)
+
+	retC := C.g_signal_accumulator_true_handled(c_ihint, c_return_accu, c_handler_return, c_dummy)
+	retGo := (bool)(retC)
+
+	return retGo
+}
 
 // Unsupported : g_type_add_interface_check : unsupported parameter check_func : no type generator for TypeInterfaceCheckFunc, GTypeInterfaceCheckFunc
 

@@ -204,13 +204,50 @@ func TestTimerLast() float64 {
 
 // Unsupported : g_test_timer_start : no return generator
 
-// Unsupported : g_test_trap_fork : no return generator
+// TestTrapFork is a wrapper around the C function g_test_trap_fork.
+func TestTrapFork(usecTimeout uint64, testTrapFlags TestTrapFlags) bool {
+	c_usec_timeout := (C.guint64)(usecTimeout)
 
-// Unsupported : g_test_trap_has_passed : no return generator
+	c_test_trap_flags := (C.GTestTrapFlags)(testTrapFlags)
 
-// Unsupported : g_test_trap_reached_timeout : no return generator
+	retC := C.g_test_trap_fork(c_usec_timeout, c_test_trap_flags)
+	retGo := (bool)(retC)
 
-// Unsupported : g_uri_escape_string : unsupported parameter allow_utf8 : no type generator for gboolean, gboolean
+	return retGo
+}
+
+// TestTrapHasPassed is a wrapper around the C function g_test_trap_has_passed.
+func TestTrapHasPassed() bool {
+	retC := C.g_test_trap_has_passed()
+	retGo := (bool)(retC)
+
+	return retGo
+}
+
+// TestTrapReachedTimeout is a wrapper around the C function g_test_trap_reached_timeout.
+func TestTrapReachedTimeout() bool {
+	retC := C.g_test_trap_reached_timeout()
+	retGo := (bool)(retC)
+
+	return retGo
+}
+
+// UriEscapeString is a wrapper around the C function g_uri_escape_string.
+func UriEscapeString(unescaped string, reservedCharsAllowed string, allowUtf8 bool) string {
+	c_unescaped := C.CString(unescaped)
+	defer C.free(unsafe.Pointer(c_unescaped))
+
+	c_reserved_chars_allowed := C.CString(reservedCharsAllowed)
+	defer C.free(unsafe.Pointer(c_reserved_chars_allowed))
+
+	c_allow_utf8 := (C.gboolean)(allowUtf8)
+
+	retC := C.g_uri_escape_string(c_unescaped, c_reserved_chars_allowed, c_allow_utf8)
+	retGo := C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // UriParseScheme is a wrapper around the C function g_uri_parse_scheme.
 func UriParseScheme(uri string) string {

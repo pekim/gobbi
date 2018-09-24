@@ -410,7 +410,13 @@ func (recv *DateTime) GetYear() int32 {
 
 // Unsupported : g_date_time_get_ymd : unsupported parameter year : no type generator for gint, gint*
 
-// Unsupported : g_date_time_is_daylight_savings : no return generator
+// IsDaylightSavings is a wrapper around the C function g_date_time_is_daylight_savings.
+func (recv *DateTime) IsDaylightSavings() bool {
+	retC := C.g_date_time_is_daylight_savings((*C.GDateTime)(recv.native))
+	retGo := (bool)(retC)
+
+	return retGo
+}
 
 // Ref is a wrapper around the C function g_date_time_ref.
 func (recv *DateTime) Ref() *DateTime {
@@ -428,7 +434,15 @@ func (recv *DateTime) ToLocal() *DateTime {
 	return retGo
 }
 
-// Unsupported : g_date_time_to_timeval : no return generator
+// ToTimeval is a wrapper around the C function g_date_time_to_timeval.
+func (recv *DateTime) ToTimeval(tv *TimeVal) bool {
+	c_tv := tv.toC()
+
+	retC := C.g_date_time_to_timeval((*C.GDateTime)(recv.native), c_tv)
+	retGo := (bool)(retC)
+
+	return retGo
+}
 
 // ToTimezone is a wrapper around the C function g_date_time_to_timezone.
 func (recv *DateTime) ToTimezone(tz *TimeZone) *DateTime {
@@ -540,7 +554,15 @@ func (recv *TimeZone) GetOffset(interval int32) int32 {
 	return retGo
 }
 
-// Unsupported : g_time_zone_is_dst : no return generator
+// IsDst is a wrapper around the C function g_time_zone_is_dst.
+func (recv *TimeZone) IsDst(interval int32) bool {
+	c_interval := (C.gint)(interval)
+
+	retC := C.g_time_zone_is_dst((*C.GTimeZone)(recv.native), c_interval)
+	retGo := (bool)(retC)
+
+	return retGo
+}
 
 // Ref is a wrapper around the C function g_time_zone_ref.
 func (recv *TimeZone) Ref() *TimeZone {

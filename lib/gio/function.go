@@ -43,15 +43,36 @@ func AppInfoGetAllForType(contentType string) *glib.List {
 	return retGo
 }
 
-// Unsupported : g_app_info_get_default_for_type : unsupported parameter must_support_uris : no type generator for gboolean, gboolean
+// Unsupported : g_app_info_get_default_for_type : no return generator
 
 // Unsupported : g_app_info_get_default_for_uri_scheme : no return generator
 
 // Unsupported : g_app_info_launch_default_for_uri : unsupported parameter context : no type generator for AppLaunchContext, GAppLaunchContext*
 
-// Unsupported : g_content_type_can_be_executable : no return generator
+// ContentTypeCanBeExecutable is a wrapper around the C function g_content_type_can_be_executable.
+func ContentTypeCanBeExecutable(type_ string) bool {
+	c_type := C.CString(type_)
+	defer C.free(unsafe.Pointer(c_type))
 
-// Unsupported : g_content_type_equals : no return generator
+	retC := C.g_content_type_can_be_executable(c_type)
+	retGo := (bool)(retC)
+
+	return retGo
+}
+
+// ContentTypeEquals is a wrapper around the C function g_content_type_equals.
+func ContentTypeEquals(type1 string, type2 string) bool {
+	c_type1 := C.CString(type1)
+	defer C.free(unsafe.Pointer(c_type1))
+
+	c_type2 := C.CString(type2)
+	defer C.free(unsafe.Pointer(c_type2))
+
+	retC := C.g_content_type_equals(c_type1, c_type2)
+	retGo := (bool)(retC)
+
+	return retGo
+}
 
 // ContentTypeGetDescription is a wrapper around the C function g_content_type_get_description.
 func ContentTypeGetDescription(type_ string) string {
@@ -81,9 +102,30 @@ func ContentTypeGetMimeType(type_ string) string {
 
 // Unsupported : g_content_type_guess : unsupported parameter data : no param type
 
-// Unsupported : g_content_type_is_a : no return generator
+// ContentTypeIsA is a wrapper around the C function g_content_type_is_a.
+func ContentTypeIsA(type_ string, supertype string) bool {
+	c_type := C.CString(type_)
+	defer C.free(unsafe.Pointer(c_type))
 
-// Unsupported : g_content_type_is_unknown : no return generator
+	c_supertype := C.CString(supertype)
+	defer C.free(unsafe.Pointer(c_supertype))
+
+	retC := C.g_content_type_is_a(c_type, c_supertype)
+	retGo := (bool)(retC)
+
+	return retGo
+}
+
+// ContentTypeIsUnknown is a wrapper around the C function g_content_type_is_unknown.
+func ContentTypeIsUnknown(type_ string) bool {
+	c_type := C.CString(type_)
+	defer C.free(unsafe.Pointer(c_type))
+
+	retC := C.g_content_type_is_unknown(c_type)
+	retGo := (bool)(retC)
+
+	return retGo
+}
 
 // ContentTypesGetRegistered is a wrapper around the C function g_content_types_get_registered.
 func ContentTypesGetRegistered() *glib.List {
@@ -182,7 +224,16 @@ func IoModulesLoadAllInDirectory(dirname string) *glib.List {
 
 // Unsupported : g_simple_async_report_gerror_in_idle : unsupported parameter object : no type generator for GObject.Object, GObject*
 
-// Unsupported : g_unix_is_mount_path_system_internal : no return generator
+// UnixIsMountPathSystemInternal is a wrapper around the C function g_unix_is_mount_path_system_internal.
+func UnixIsMountPathSystemInternal(mountPath string) bool {
+	c_mount_path := C.CString(mountPath)
+	defer C.free(unsafe.Pointer(c_mount_path))
+
+	retC := C.g_unix_is_mount_path_system_internal(c_mount_path)
+	retGo := (bool)(retC)
+
+	return retGo
+}
 
 // Unsupported : g_unix_mount_at : unsupported parameter time_read : no type generator for guint64, guint64*
 
@@ -230,7 +281,15 @@ func UnixMountGetMountPath(mountEntry *UnixMountEntry) string {
 	return retGo
 }
 
-// Unsupported : g_unix_mount_guess_can_eject : no return generator
+// UnixMountGuessCanEject is a wrapper around the C function g_unix_mount_guess_can_eject.
+func UnixMountGuessCanEject(mountEntry *UnixMountEntry) bool {
+	c_mount_entry := mountEntry.toC()
+
+	retC := C.g_unix_mount_guess_can_eject(c_mount_entry)
+	retGo := (bool)(retC)
+
+	return retGo
+}
 
 // Unsupported : g_unix_mount_guess_icon : no return generator
 
@@ -245,16 +304,56 @@ func UnixMountGuessName(mountEntry *UnixMountEntry) string {
 	return retGo
 }
 
-// Unsupported : g_unix_mount_guess_should_display : no return generator
+// UnixMountGuessShouldDisplay is a wrapper around the C function g_unix_mount_guess_should_display.
+func UnixMountGuessShouldDisplay(mountEntry *UnixMountEntry) bool {
+	c_mount_entry := mountEntry.toC()
 
-// Unsupported : g_unix_mount_is_readonly : no return generator
+	retC := C.g_unix_mount_guess_should_display(c_mount_entry)
+	retGo := (bool)(retC)
 
-// Unsupported : g_unix_mount_is_system_internal : no return generator
+	return retGo
+}
 
-// Unsupported : g_unix_mount_points_changed_since : no return generator
+// UnixMountIsReadonly is a wrapper around the C function g_unix_mount_is_readonly.
+func UnixMountIsReadonly(mountEntry *UnixMountEntry) bool {
+	c_mount_entry := mountEntry.toC()
+
+	retC := C.g_unix_mount_is_readonly(c_mount_entry)
+	retGo := (bool)(retC)
+
+	return retGo
+}
+
+// UnixMountIsSystemInternal is a wrapper around the C function g_unix_mount_is_system_internal.
+func UnixMountIsSystemInternal(mountEntry *UnixMountEntry) bool {
+	c_mount_entry := mountEntry.toC()
+
+	retC := C.g_unix_mount_is_system_internal(c_mount_entry)
+	retGo := (bool)(retC)
+
+	return retGo
+}
+
+// UnixMountPointsChangedSince is a wrapper around the C function g_unix_mount_points_changed_since.
+func UnixMountPointsChangedSince(time uint64) bool {
+	c_time := (C.guint64)(time)
+
+	retC := C.g_unix_mount_points_changed_since(c_time)
+	retGo := (bool)(retC)
+
+	return retGo
+}
 
 // Unsupported : g_unix_mount_points_get : unsupported parameter time_read : no type generator for guint64, guint64*
 
-// Unsupported : g_unix_mounts_changed_since : no return generator
+// UnixMountsChangedSince is a wrapper around the C function g_unix_mounts_changed_since.
+func UnixMountsChangedSince(time uint64) bool {
+	c_time := (C.guint64)(time)
+
+	retC := C.g_unix_mounts_changed_since(c_time)
+	retGo := (bool)(retC)
+
+	return retGo
+}
 
 // Unsupported : g_unix_mounts_get : unsupported parameter time_read : no type generator for guint64, guint64*

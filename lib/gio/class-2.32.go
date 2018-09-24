@@ -166,7 +166,13 @@ func (recv *MenuAttributeIter) GetName() string {
 
 // Unsupported : g_menu_attribute_iter_get_value : return type : Blacklisted record : GVariant
 
-// Unsupported : g_menu_attribute_iter_next : no return generator
+// Next is a wrapper around the C function g_menu_attribute_iter_next.
+func (recv *MenuAttributeIter) Next() bool {
+	retC := C.g_menu_attribute_iter_next((*C.GMenuAttributeIter)(recv.native))
+	retGo := (bool)(retC)
+
+	return retGo
+}
 
 // MenuItem is a wrapper around the C record GMenuItem.
 type MenuItem struct {
@@ -258,7 +264,13 @@ func (recv *MenuLinkIter) GetName() string {
 
 // Unsupported : g_menu_link_iter_get_value : no return generator
 
-// Unsupported : g_menu_link_iter_next : no return generator
+// Next is a wrapper around the C function g_menu_link_iter_next.
+func (recv *MenuLinkIter) Next() bool {
+	retC := C.g_menu_link_iter_next((*C.GMenuLinkIter)(recv.native))
+	retGo := (bool)(retC)
+
+	return retGo
+}
 
 // MenuModel is a wrapper around the C record GMenuModel.
 type MenuModel struct {
@@ -297,7 +309,13 @@ func (recv *MenuModel) GetNItems() int32 {
 	return retGo
 }
 
-// Unsupported : g_menu_model_is_mutable : no return generator
+// IsMutable is a wrapper around the C function g_menu_model_is_mutable.
+func (recv *MenuModel) IsMutable() bool {
+	retC := C.g_menu_model_is_mutable((*C.GMenuModel)(recv.native))
+	retGo := (bool)(retC)
+
+	return retGo
+}
 
 // Unsupported : g_menu_model_items_changed : no return generator
 

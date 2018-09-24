@@ -24,7 +24,17 @@ func DateTimeCompare(dt1 uintptr, dt2 uintptr) int32 {
 	return retGo
 }
 
-// Unsupported : g_date_time_equal : no return generator
+// DateTimeEqual is a wrapper around the C function g_date_time_equal.
+func DateTimeEqual(dt1 uintptr, dt2 uintptr) bool {
+	c_dt1 := (C.gconstpointer)(dt1)
+
+	c_dt2 := (C.gconstpointer)(dt2)
+
+	retC := C.g_date_time_equal(c_dt1, c_dt2)
+	retGo := (bool)(retC)
+
+	return retGo
+}
 
 // DateTimeHash is a wrapper around the C function g_date_time_hash.
 func DateTimeHash(datetime uintptr) uint32 {

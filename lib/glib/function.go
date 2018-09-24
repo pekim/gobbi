@@ -326,7 +326,15 @@ func DateGetSundayWeeksInYear(year DateYear) uint8 {
 	return retGo
 }
 
-// Unsupported : g_date_is_leap_year : no return generator
+// DateIsLeapYear is a wrapper around the C function g_date_is_leap_year.
+func DateIsLeapYear(year DateYear) bool {
+	c_year := (C.GDateYear)(year)
+
+	retC := C.g_date_is_leap_year(c_year)
+	retGo := (bool)(retC)
+
+	return retGo
+}
 
 // DateStrftime is a wrapper around the C function g_date_strftime.
 func DateStrftime(s string, slen uint64, format string, date *Date) uint64 {
@@ -346,19 +354,81 @@ func DateStrftime(s string, slen uint64, format string, date *Date) uint64 {
 	return retGo
 }
 
-// Unsupported : g_date_valid_day : no return generator
+// DateValidDay is a wrapper around the C function g_date_valid_day.
+func DateValidDay(day DateDay) bool {
+	c_day := (C.GDateDay)(day)
 
-// Unsupported : g_date_valid_dmy : no return generator
+	retC := C.g_date_valid_day(c_day)
+	retGo := (bool)(retC)
 
-// Unsupported : g_date_valid_julian : no return generator
+	return retGo
+}
 
-// Unsupported : g_date_valid_month : no return generator
+// DateValidDmy is a wrapper around the C function g_date_valid_dmy.
+func DateValidDmy(day DateDay, month DateMonth, year DateYear) bool {
+	c_day := (C.GDateDay)(day)
 
-// Unsupported : g_date_valid_weekday : no return generator
+	c_month := (C.GDateMonth)(month)
 
-// Unsupported : g_date_valid_year : no return generator
+	c_year := (C.GDateYear)(year)
 
-// Unsupported : g_direct_equal : no return generator
+	retC := C.g_date_valid_dmy(c_day, c_month, c_year)
+	retGo := (bool)(retC)
+
+	return retGo
+}
+
+// DateValidJulian is a wrapper around the C function g_date_valid_julian.
+func DateValidJulian(julianDate uint32) bool {
+	c_julian_date := (C.guint32)(julianDate)
+
+	retC := C.g_date_valid_julian(c_julian_date)
+	retGo := (bool)(retC)
+
+	return retGo
+}
+
+// DateValidMonth is a wrapper around the C function g_date_valid_month.
+func DateValidMonth(month DateMonth) bool {
+	c_month := (C.GDateMonth)(month)
+
+	retC := C.g_date_valid_month(c_month)
+	retGo := (bool)(retC)
+
+	return retGo
+}
+
+// DateValidWeekday is a wrapper around the C function g_date_valid_weekday.
+func DateValidWeekday(weekday DateWeekday) bool {
+	c_weekday := (C.GDateWeekday)(weekday)
+
+	retC := C.g_date_valid_weekday(c_weekday)
+	retGo := (bool)(retC)
+
+	return retGo
+}
+
+// DateValidYear is a wrapper around the C function g_date_valid_year.
+func DateValidYear(year DateYear) bool {
+	c_year := (C.GDateYear)(year)
+
+	retC := C.g_date_valid_year(c_year)
+	retGo := (bool)(retC)
+
+	return retGo
+}
+
+// DirectEqual is a wrapper around the C function g_direct_equal.
+func DirectEqual(v1 uintptr, v2 uintptr) bool {
+	c_v1 := (C.gconstpointer)(v1)
+
+	c_v2 := (C.gconstpointer)(v2)
+
+	retC := C.g_direct_equal(c_v1, c_v2)
+	retGo := (bool)(retC)
+
+	return retGo
+}
 
 // DirectHash is a wrapper around the C function g_direct_hash.
 func DirectHash(v uintptr) uint32 {
@@ -413,7 +483,18 @@ func FileOpenTmp(tmpl string) (int32, string, error) {
 	return retGo, nameUsed, goThrowableError
 }
 
-// Unsupported : g_file_test : no return generator
+// FileTest is a wrapper around the C function g_file_test.
+func FileTest(filename string, test FileTest) bool {
+	c_filename := C.CString(filename)
+	defer C.free(unsafe.Pointer(c_filename))
+
+	c_test := (C.GFileTest)(test)
+
+	retC := C.g_file_test(c_filename, c_test)
+	retGo := (bool)(retC)
+
+	return retGo
+}
 
 // FilenameFromUri is a wrapper around the C function g_filename_from_uri.
 func FilenameFromUri(uri string) (string, string, error) {
@@ -479,7 +560,17 @@ func FindProgramInPath(program string) string {
 
 // Unsupported : g_free : no return generator
 
-// Unsupported : g_get_charset : no return generator
+// GetCharset is a wrapper around the C function g_get_charset.
+func GetCharset() (bool, string) {
+	var c_charset *C.char
+
+	retC := C.g_get_charset(&c_charset)
+	retGo := (bool)(retC)
+
+	charset := C.GoString(c_charset)
+
+	return retGo, charset
+}
 
 // GetCodeset is a wrapper around the C function g_get_codeset.
 func GetCodeset() string {
@@ -554,7 +645,19 @@ func Getenv(variable string) string {
 
 // Unsupported : g_hash_table_destroy : no return generator
 
-// Unsupported : g_hash_table_insert : no return generator
+// HashTableInsert is a wrapper around the C function g_hash_table_insert.
+func HashTableInsert(hashTable *HashTable, key uintptr, value uintptr) bool {
+	c_hash_table := hashTable.toC()
+
+	c_key := (C.gpointer)(key)
+
+	c_value := (C.gpointer)(value)
+
+	retC := C.g_hash_table_insert(c_hash_table, c_key, c_value)
+	retGo := (bool)(retC)
+
+	return retGo
+}
 
 // HashTableLookup is a wrapper around the C function g_hash_table_lookup.
 func HashTableLookup(hashTable *HashTable, key uintptr) uintptr {
@@ -570,9 +673,31 @@ func HashTableLookup(hashTable *HashTable, key uintptr) uintptr {
 
 // Unsupported : g_hash_table_lookup_extended : unsupported parameter orig_key : no type generator for gpointer, gpointer*
 
-// Unsupported : g_hash_table_remove : no return generator
+// HashTableRemove is a wrapper around the C function g_hash_table_remove.
+func HashTableRemove(hashTable *HashTable, key uintptr) bool {
+	c_hash_table := hashTable.toC()
 
-// Unsupported : g_hash_table_replace : no return generator
+	c_key := (C.gconstpointer)(key)
+
+	retC := C.g_hash_table_remove(c_hash_table, c_key)
+	retGo := (bool)(retC)
+
+	return retGo
+}
+
+// HashTableReplace is a wrapper around the C function g_hash_table_replace.
+func HashTableReplace(hashTable *HashTable, key uintptr, value uintptr) bool {
+	c_hash_table := hashTable.toC()
+
+	c_key := (C.gpointer)(key)
+
+	c_value := (C.gpointer)(value)
+
+	retC := C.g_hash_table_replace(c_hash_table, c_key, c_value)
+	retGo := (bool)(retC)
+
+	return retGo
+}
 
 // HashTableSize is a wrapper around the C function g_hash_table_size.
 func HashTableSize(hashTable *HashTable) uint32 {
@@ -584,9 +709,29 @@ func HashTableSize(hashTable *HashTable) uint32 {
 	return retGo
 }
 
-// Unsupported : g_hash_table_steal : no return generator
+// HashTableSteal is a wrapper around the C function g_hash_table_steal.
+func HashTableSteal(hashTable *HashTable, key uintptr) bool {
+	c_hash_table := hashTable.toC()
 
-// Unsupported : g_hook_destroy : no return generator
+	c_key := (C.gconstpointer)(key)
+
+	retC := C.g_hash_table_steal(c_hash_table, c_key)
+	retGo := (bool)(retC)
+
+	return retGo
+}
+
+// HookDestroy is a wrapper around the C function g_hook_destroy.
+func HookDestroy(hookList *HookList, hookId uint64) bool {
+	c_hook_list := hookList.toC()
+
+	c_hook_id := (C.gulong)(hookId)
+
+	retC := C.g_hook_destroy(c_hook_list, c_hook_id)
+	retGo := (bool)(retC)
+
+	return retGo
+}
 
 // Unsupported : g_hook_destroy_link : no return generator
 
@@ -606,7 +751,15 @@ func HashTableSize(hashTable *HashTable) uint32 {
 
 // Unsupported : g_idle_add_full : unsupported parameter function : no type generator for SourceFunc, GSourceFunc
 
-// Unsupported : g_idle_remove_by_data : no return generator
+// IdleRemoveByData is a wrapper around the C function g_idle_remove_by_data.
+func IdleRemoveByData(data uintptr) bool {
+	c_data := (C.gpointer)(data)
+
+	retC := C.g_idle_remove_by_data(c_data)
+	retGo := (bool)(retC)
+
+	return retGo
+}
 
 // IdleSourceNew is a wrapper around the C function g_idle_source_new.
 func IdleSourceNew() *Source {
@@ -616,7 +769,17 @@ func IdleSourceNew() *Source {
 	return retGo
 }
 
-// Unsupported : g_int_equal : no return generator
+// IntEqual is a wrapper around the C function g_int_equal.
+func IntEqual(v1 uintptr, v2 uintptr) bool {
+	c_v1 := (C.gconstpointer)(v1)
+
+	c_v2 := (C.gconstpointer)(v2)
+
+	retC := C.g_int_equal(c_v1, c_v2)
+	retGo := (bool)(retC)
+
+	return retGo
+}
 
 // IntHash is a wrapper around the C function g_int_hash.
 func IntHash(v uintptr) uint32 {
@@ -757,7 +920,13 @@ func MarkupEscapeText(text string, length int64) string {
 	return retGo
 }
 
-// Unsupported : g_mem_is_system_malloc : no return generator
+// MemIsSystemMalloc is a wrapper around the C function g_mem_is_system_malloc.
+func MemIsSystemMalloc() bool {
+	retC := C.g_mem_is_system_malloc()
+	retGo := (bool)(retC)
+
+	return retGo
+}
 
 // Unsupported : g_mem_profile : no return generator
 
@@ -828,7 +997,16 @@ func PathGetDirname(fileName string) string {
 	return retGo
 }
 
-// Unsupported : g_path_is_absolute : no return generator
+// PathIsAbsolute is a wrapper around the C function g_path_is_absolute.
+func PathIsAbsolute(fileName string) bool {
+	c_file_name := C.CString(fileName)
+	defer C.free(unsafe.Pointer(c_file_name))
+
+	retC := C.g_path_is_absolute(c_file_name)
+	retGo := (bool)(retC)
+
+	return retGo
+}
 
 // PathSkipRoot is a wrapper around the C function g_path_skip_root.
 func PathSkipRoot(fileName string) string {
@@ -841,11 +1019,50 @@ func PathSkipRoot(fileName string) string {
 	return retGo
 }
 
-// Unsupported : g_pattern_match : no return generator
+// PatternMatch is a wrapper around the C function g_pattern_match.
+func PatternMatch(pspec *PatternSpec, stringLength uint32, string string, stringReversed string) bool {
+	c_pspec := pspec.toC()
 
-// Unsupported : g_pattern_match_simple : no return generator
+	c_string_length := (C.guint)(stringLength)
 
-// Unsupported : g_pattern_match_string : no return generator
+	c_string := C.CString(string)
+	defer C.free(unsafe.Pointer(c_string))
+
+	c_string_reversed := C.CString(stringReversed)
+	defer C.free(unsafe.Pointer(c_string_reversed))
+
+	retC := C.g_pattern_match(c_pspec, c_string_length, c_string, c_string_reversed)
+	retGo := (bool)(retC)
+
+	return retGo
+}
+
+// PatternMatchSimple is a wrapper around the C function g_pattern_match_simple.
+func PatternMatchSimple(pattern string, string string) bool {
+	c_pattern := C.CString(pattern)
+	defer C.free(unsafe.Pointer(c_pattern))
+
+	c_string := C.CString(string)
+	defer C.free(unsafe.Pointer(c_string))
+
+	retC := C.g_pattern_match_simple(c_pattern, c_string)
+	retGo := (bool)(retC)
+
+	return retGo
+}
+
+// PatternMatchString is a wrapper around the C function g_pattern_match_string.
+func PatternMatchString(pspec *PatternSpec, string string) bool {
+	c_pspec := pspec.toC()
+
+	c_string := C.CString(string)
+	defer C.free(unsafe.Pointer(c_string))
+
+	retC := C.g_pattern_match_string(c_pspec, c_string)
+	retGo := (bool)(retC)
+
+	return retGo
+}
 
 // Unsupported : g_print : unsupported parameter ... : varargs
 
@@ -1029,11 +1246,37 @@ func SliceGetConfig(ckey SliceConfig) int64 {
 
 // Unsupported : g_snprintf : unsupported parameter ... : varargs
 
-// Unsupported : g_source_remove : no return generator
+// SourceRemove is a wrapper around the C function g_source_remove.
+func SourceRemove(tag uint32) bool {
+	c_tag := (C.guint)(tag)
 
-// Unsupported : g_source_remove_by_funcs_user_data : no return generator
+	retC := C.g_source_remove(c_tag)
+	retGo := (bool)(retC)
 
-// Unsupported : g_source_remove_by_user_data : no return generator
+	return retGo
+}
+
+// SourceRemoveByFuncsUserData is a wrapper around the C function g_source_remove_by_funcs_user_data.
+func SourceRemoveByFuncsUserData(funcs *SourceFuncs, userData uintptr) bool {
+	c_funcs := funcs.toC()
+
+	c_user_data := (C.gpointer)(userData)
+
+	retC := C.g_source_remove_by_funcs_user_data(c_funcs, c_user_data)
+	retGo := (bool)(retC)
+
+	return retGo
+}
+
+// SourceRemoveByUserData is a wrapper around the C function g_source_remove_by_user_data.
+func SourceRemoveByUserData(userData uintptr) bool {
+	c_user_data := (C.gpointer)(userData)
+
+	retC := C.g_source_remove_by_user_data(c_user_data)
+	retGo := (bool)(retC)
+
+	return retGo
+}
 
 // SpacedPrimesClosest is a wrapper around the C function g_spaced_primes_closest.
 func SpacedPrimesClosest(num uint32) uint32 {
@@ -1051,7 +1294,23 @@ func SpacedPrimesClosest(num uint32) uint32 {
 
 // Unsupported : g_spawn_close_pid : no return generator
 
-// Unsupported : g_spawn_command_line_async : no return generator
+// SpawnCommandLineAsync is a wrapper around the C function g_spawn_command_line_async.
+func SpawnCommandLineAsync(commandLine string) (bool, error) {
+	c_command_line := C.CString(commandLine)
+	defer C.free(unsafe.Pointer(c_command_line))
+
+	var cThrowableError *C.GError
+
+	retC := C.g_spawn_command_line_async(c_command_line, &cThrowableError)
+	retGo := (bool)(retC)
+
+	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // Unsupported : g_spawn_command_line_sync : unsupported parameter standard_output : no param type
 
@@ -1088,7 +1347,17 @@ func Stpcpy(dest string, src string) string {
 	return retGo
 }
 
-// Unsupported : g_str_equal : no return generator
+// StrEqual is a wrapper around the C function g_str_equal.
+func StrEqual(v1 uintptr, v2 uintptr) bool {
+	c_v1 := (C.gconstpointer)(v1)
+
+	c_v2 := (C.gconstpointer)(v2)
+
+	retC := C.g_str_equal(c_v1, c_v2)
+	retGo := (bool)(retC)
+
+	return retGo
+}
 
 // StrHash is a wrapper around the C function g_str_hash.
 func StrHash(v uintptr) uint32 {
@@ -1581,33 +1850,145 @@ func UnicharDigitValue(c rune) int32 {
 	return retGo
 }
 
-// Unsupported : g_unichar_isalnum : no return generator
+// UnicharIsalnum is a wrapper around the C function g_unichar_isalnum.
+func UnicharIsalnum(c rune) bool {
+	c_c := (C.gunichar)(c)
 
-// Unsupported : g_unichar_isalpha : no return generator
+	retC := C.g_unichar_isalnum(c_c)
+	retGo := (bool)(retC)
 
-// Unsupported : g_unichar_iscntrl : no return generator
+	return retGo
+}
 
-// Unsupported : g_unichar_isdefined : no return generator
+// UnicharIsalpha is a wrapper around the C function g_unichar_isalpha.
+func UnicharIsalpha(c rune) bool {
+	c_c := (C.gunichar)(c)
 
-// Unsupported : g_unichar_isdigit : no return generator
+	retC := C.g_unichar_isalpha(c_c)
+	retGo := (bool)(retC)
 
-// Unsupported : g_unichar_isgraph : no return generator
+	return retGo
+}
 
-// Unsupported : g_unichar_islower : no return generator
+// UnicharIscntrl is a wrapper around the C function g_unichar_iscntrl.
+func UnicharIscntrl(c rune) bool {
+	c_c := (C.gunichar)(c)
 
-// Unsupported : g_unichar_isprint : no return generator
+	retC := C.g_unichar_iscntrl(c_c)
+	retGo := (bool)(retC)
 
-// Unsupported : g_unichar_ispunct : no return generator
+	return retGo
+}
 
-// Unsupported : g_unichar_isspace : no return generator
+// UnicharIsdefined is a wrapper around the C function g_unichar_isdefined.
+func UnicharIsdefined(c rune) bool {
+	c_c := (C.gunichar)(c)
 
-// Unsupported : g_unichar_istitle : no return generator
+	retC := C.g_unichar_isdefined(c_c)
+	retGo := (bool)(retC)
 
-// Unsupported : g_unichar_isupper : no return generator
+	return retGo
+}
 
-// Unsupported : g_unichar_iswide : no return generator
+// UnicharIsdigit is a wrapper around the C function g_unichar_isdigit.
+func UnicharIsdigit(c rune) bool {
+	c_c := (C.gunichar)(c)
 
-// Unsupported : g_unichar_isxdigit : no return generator
+	retC := C.g_unichar_isdigit(c_c)
+	retGo := (bool)(retC)
+
+	return retGo
+}
+
+// UnicharIsgraph is a wrapper around the C function g_unichar_isgraph.
+func UnicharIsgraph(c rune) bool {
+	c_c := (C.gunichar)(c)
+
+	retC := C.g_unichar_isgraph(c_c)
+	retGo := (bool)(retC)
+
+	return retGo
+}
+
+// UnicharIslower is a wrapper around the C function g_unichar_islower.
+func UnicharIslower(c rune) bool {
+	c_c := (C.gunichar)(c)
+
+	retC := C.g_unichar_islower(c_c)
+	retGo := (bool)(retC)
+
+	return retGo
+}
+
+// UnicharIsprint is a wrapper around the C function g_unichar_isprint.
+func UnicharIsprint(c rune) bool {
+	c_c := (C.gunichar)(c)
+
+	retC := C.g_unichar_isprint(c_c)
+	retGo := (bool)(retC)
+
+	return retGo
+}
+
+// UnicharIspunct is a wrapper around the C function g_unichar_ispunct.
+func UnicharIspunct(c rune) bool {
+	c_c := (C.gunichar)(c)
+
+	retC := C.g_unichar_ispunct(c_c)
+	retGo := (bool)(retC)
+
+	return retGo
+}
+
+// UnicharIsspace is a wrapper around the C function g_unichar_isspace.
+func UnicharIsspace(c rune) bool {
+	c_c := (C.gunichar)(c)
+
+	retC := C.g_unichar_isspace(c_c)
+	retGo := (bool)(retC)
+
+	return retGo
+}
+
+// UnicharIstitle is a wrapper around the C function g_unichar_istitle.
+func UnicharIstitle(c rune) bool {
+	c_c := (C.gunichar)(c)
+
+	retC := C.g_unichar_istitle(c_c)
+	retGo := (bool)(retC)
+
+	return retGo
+}
+
+// UnicharIsupper is a wrapper around the C function g_unichar_isupper.
+func UnicharIsupper(c rune) bool {
+	c_c := (C.gunichar)(c)
+
+	retC := C.g_unichar_isupper(c_c)
+	retGo := (bool)(retC)
+
+	return retGo
+}
+
+// UnicharIswide is a wrapper around the C function g_unichar_iswide.
+func UnicharIswide(c rune) bool {
+	c_c := (C.gunichar)(c)
+
+	retC := C.g_unichar_iswide(c_c)
+	retGo := (bool)(retC)
+
+	return retGo
+}
+
+// UnicharIsxdigit is a wrapper around the C function g_unichar_isxdigit.
+func UnicharIsxdigit(c rune) bool {
+	c_c := (C.gunichar)(c)
+
+	retC := C.g_unichar_isxdigit(c_c)
+	retGo := (bool)(retC)
+
+	return retGo
+}
 
 // Blacklisted : g_unichar_to_utf8
 
@@ -1651,7 +2032,15 @@ func UnicharType(c rune) UnicodeType {
 	return retGo
 }
 
-// Unsupported : g_unichar_validate : no return generator
+// UnicharValidate is a wrapper around the C function g_unichar_validate.
+func UnicharValidate(ch rune) bool {
+	c_ch := (C.gunichar)(ch)
+
+	retC := C.g_unichar_validate(c_ch)
+	retGo := (bool)(retC)
+
+	return retGo
+}
 
 // UnicharXdigitValue is a wrapper around the C function g_unichar_xdigit_value.
 func UnicharXdigitValue(c rune) int32 {
@@ -1947,7 +2336,16 @@ func VariantParserGetErrorQuark() Quark {
 
 // Unsupported : g_variant_type_checked_ : return type : Blacklisted record : GVariantType
 
-// Unsupported : g_variant_type_string_is_valid : no return generator
+// VariantTypeStringIsValid is a wrapper around the C function g_variant_type_string_is_valid.
+func VariantTypeStringIsValid(typeString string) bool {
+	c_type_string := C.CString(typeString)
+	defer C.free(unsafe.Pointer(c_type_string))
+
+	retC := C.g_variant_type_string_is_valid(c_type_string)
+	retGo := (bool)(retC)
+
+	return retGo
+}
 
 // Unsupported : g_vsnprintf : unsupported parameter args : no type generator for va_list, va_list
 

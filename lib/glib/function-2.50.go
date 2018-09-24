@@ -39,10 +39,26 @@ func ComputeHmacForBytes(digestType ChecksumType, key *Bytes, data *Bytes) strin
 
 // Unsupported : g_log_writer_format_fields : unsupported parameter fields : no param type
 
-// Unsupported : g_log_writer_is_journald : no return generator
+// LogWriterIsJournald is a wrapper around the C function g_log_writer_is_journald.
+func LogWriterIsJournald(outputFd int32) bool {
+	c_output_fd := (C.gint)(outputFd)
+
+	retC := C.g_log_writer_is_journald(c_output_fd)
+	retGo := (bool)(retC)
+
+	return retGo
+}
 
 // Unsupported : g_log_writer_journald : unsupported parameter fields : no param type
 
 // Unsupported : g_log_writer_standard_streams : unsupported parameter fields : no param type
 
-// Unsupported : g_log_writer_supports_color : no return generator
+// LogWriterSupportsColor is a wrapper around the C function g_log_writer_supports_color.
+func LogWriterSupportsColor(outputFd int32) bool {
+	c_output_fd := (C.gint)(outputFd)
+
+	retC := C.g_log_writer_supports_color(c_output_fd)
+	retGo := (bool)(retC)
+
+	return retGo
+}

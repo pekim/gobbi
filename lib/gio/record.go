@@ -1006,7 +1006,16 @@ func FileAttributeMatcherNew(attributes string) *FileAttributeMatcher {
 	return retGo
 }
 
-// Unsupported : g_file_attribute_matcher_enumerate_namespace : no return generator
+// EnumerateNamespace is a wrapper around the C function g_file_attribute_matcher_enumerate_namespace.
+func (recv *FileAttributeMatcher) EnumerateNamespace(ns string) bool {
+	c_ns := C.CString(ns)
+	defer C.free(unsafe.Pointer(c_ns))
+
+	retC := C.g_file_attribute_matcher_enumerate_namespace((*C.GFileAttributeMatcher)(recv.native), c_ns)
+	retGo := (bool)(retC)
+
+	return retGo
+}
 
 // EnumerateNext is a wrapper around the C function g_file_attribute_matcher_enumerate_next.
 func (recv *FileAttributeMatcher) EnumerateNext() string {
@@ -1016,9 +1025,27 @@ func (recv *FileAttributeMatcher) EnumerateNext() string {
 	return retGo
 }
 
-// Unsupported : g_file_attribute_matcher_matches : no return generator
+// Matches is a wrapper around the C function g_file_attribute_matcher_matches.
+func (recv *FileAttributeMatcher) Matches(attribute string) bool {
+	c_attribute := C.CString(attribute)
+	defer C.free(unsafe.Pointer(c_attribute))
 
-// Unsupported : g_file_attribute_matcher_matches_only : no return generator
+	retC := C.g_file_attribute_matcher_matches((*C.GFileAttributeMatcher)(recv.native), c_attribute)
+	retGo := (bool)(retC)
+
+	return retGo
+}
+
+// MatchesOnly is a wrapper around the C function g_file_attribute_matcher_matches_only.
+func (recv *FileAttributeMatcher) MatchesOnly(attribute string) bool {
+	c_attribute := C.CString(attribute)
+	defer C.free(unsafe.Pointer(c_attribute))
+
+	retC := C.g_file_attribute_matcher_matches_only((*C.GFileAttributeMatcher)(recv.native), c_attribute)
+	retGo := (bool)(retC)
+
+	return retGo
+}
 
 // Ref is a wrapper around the C function g_file_attribute_matcher_ref.
 func (recv *FileAttributeMatcher) Ref() *FileAttributeMatcher {
@@ -1294,7 +1321,7 @@ type FileIface struct {
 	// no type for start_mountable_finish
 	// no type for stop_mountable
 	// no type for stop_mountable_finish
-	// supports_thread_contexts : no type generator for gboolean, gboolean
+	SupportsThreadContexts bool
 	// no type for unmount_mountable_with_operation
 	// no type for unmount_mountable_with_operation_finish
 	// no type for eject_mountable_with_operation
@@ -1312,12 +1339,17 @@ func FileIfaceNewFromC(u unsafe.Pointer) *FileIface {
 		return nil
 	}
 
-	g := &FileIface{native: c}
+	g := &FileIface{
+		SupportsThreadContexts: (bool)(c.supports_thread_contexts),
+		native:                 c,
+	}
 
 	return g
 }
 
 func (recv *FileIface) toC() *C.GFileIface {
+	recv.native.supports_thread_contexts =
+		(C.gboolean)(recv.SupportsThreadContexts)
 
 	return recv.native
 }
@@ -4156,7 +4188,13 @@ func (recv *UnixMountPoint) GetMountPath() string {
 	return retGo
 }
 
-// Unsupported : g_unix_mount_point_guess_can_eject : no return generator
+// GuessCanEject is a wrapper around the C function g_unix_mount_point_guess_can_eject.
+func (recv *UnixMountPoint) GuessCanEject() bool {
+	retC := C.g_unix_mount_point_guess_can_eject((*C.GUnixMountPoint)(recv.native))
+	retGo := (bool)(retC)
+
+	return retGo
+}
 
 // Unsupported : g_unix_mount_point_guess_icon : no return generator
 
@@ -4171,11 +4209,29 @@ func (recv *UnixMountPoint) GuessName() string {
 
 // Unsupported : g_unix_mount_point_guess_symbolic_icon : no return generator
 
-// Unsupported : g_unix_mount_point_is_loopback : no return generator
+// IsLoopback is a wrapper around the C function g_unix_mount_point_is_loopback.
+func (recv *UnixMountPoint) IsLoopback() bool {
+	retC := C.g_unix_mount_point_is_loopback((*C.GUnixMountPoint)(recv.native))
+	retGo := (bool)(retC)
 
-// Unsupported : g_unix_mount_point_is_readonly : no return generator
+	return retGo
+}
 
-// Unsupported : g_unix_mount_point_is_user_mountable : no return generator
+// IsReadonly is a wrapper around the C function g_unix_mount_point_is_readonly.
+func (recv *UnixMountPoint) IsReadonly() bool {
+	retC := C.g_unix_mount_point_is_readonly((*C.GUnixMountPoint)(recv.native))
+	retGo := (bool)(retC)
+
+	return retGo
+}
+
+// IsUserMountable is a wrapper around the C function g_unix_mount_point_is_user_mountable.
+func (recv *UnixMountPoint) IsUserMountable() bool {
+	retC := C.g_unix_mount_point_is_user_mountable((*C.GUnixMountPoint)(recv.native))
+	retGo := (bool)(retC)
+
+	return retGo
+}
 
 // UnixOutputStreamClass is a wrapper around the C record GUnixOutputStreamClass.
 type UnixOutputStreamClass struct {

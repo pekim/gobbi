@@ -12,9 +12,32 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : g_str_is_ascii : no return generator
+// StrIsAscii is a wrapper around the C function g_str_is_ascii.
+func StrIsAscii(str string) bool {
+	c_str := C.CString(str)
+	defer C.free(unsafe.Pointer(c_str))
 
-// Unsupported : g_str_match_string : unsupported parameter accept_alternates : no type generator for gboolean, gboolean
+	retC := C.g_str_is_ascii(c_str)
+	retGo := (bool)(retC)
+
+	return retGo
+}
+
+// StrMatchString is a wrapper around the C function g_str_match_string.
+func StrMatchString(searchTerm string, potentialHit string, acceptAlternates bool) bool {
+	c_search_term := C.CString(searchTerm)
+	defer C.free(unsafe.Pointer(c_search_term))
+
+	c_potential_hit := C.CString(potentialHit)
+	defer C.free(unsafe.Pointer(c_potential_hit))
+
+	c_accept_alternates := (C.gboolean)(acceptAlternates)
+
+	retC := C.g_str_match_string(c_search_term, c_potential_hit, c_accept_alternates)
+	retGo := (bool)(retC)
+
+	return retGo
+}
 
 // StrToAscii is a wrapper around the C function g_str_to_ascii.
 func StrToAscii(str string, fromLocale string) string {

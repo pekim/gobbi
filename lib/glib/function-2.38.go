@@ -12,7 +12,13 @@ import "C"
 
 // Unsupported : g_test_build_filename : unsupported parameter ... : varargs
 
-// Unsupported : g_test_failed : no return generator
+// TestFailed is a wrapper around the C function g_test_failed.
+func TestFailed() bool {
+	retC := C.g_test_failed()
+	retGo := (bool)(retC)
+
+	return retGo
+}
 
 // TestGetDir is a wrapper around the C function g_test_get_dir.
 func TestGetDir(fileType TestFileType) string {
@@ -32,6 +38,12 @@ func TestGetDir(fileType TestFileType) string {
 
 // Unsupported : g_test_skip : no return generator
 
-// Unsupported : g_test_subprocess : no return generator
+// TestSubprocess is a wrapper around the C function g_test_subprocess.
+func TestSubprocess() bool {
+	retC := C.g_test_subprocess()
+	retGo := (bool)(retC)
+
+	return retGo
+}
 
 // Unsupported : g_test_trap_subprocess : no return generator

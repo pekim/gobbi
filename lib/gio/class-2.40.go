@@ -84,7 +84,7 @@ func (recv *Notification) toC() *C.GNotification {
 
 // Unsupported : g_notification_set_title : no return generator
 
-// Unsupported : g_notification_set_urgent : unsupported parameter urgent : no type generator for gboolean, gboolean
+// Unsupported : g_notification_set_urgent : no return generator
 
 // Subprocess is a wrapper around the C record GSubprocess.
 type Subprocess struct {
@@ -133,9 +133,21 @@ func (recv *Subprocess) GetExitStatus() int32 {
 	return retGo
 }
 
-// Unsupported : g_subprocess_get_if_exited : no return generator
+// GetIfExited is a wrapper around the C function g_subprocess_get_if_exited.
+func (recv *Subprocess) GetIfExited() bool {
+	retC := C.g_subprocess_get_if_exited((*C.GSubprocess)(recv.native))
+	retGo := (bool)(retC)
 
-// Unsupported : g_subprocess_get_if_signaled : no return generator
+	return retGo
+}
+
+// GetIfSignaled is a wrapper around the C function g_subprocess_get_if_signaled.
+func (recv *Subprocess) GetIfSignaled() bool {
+	retC := C.g_subprocess_get_if_signaled((*C.GSubprocess)(recv.native))
+	retGo := (bool)(retC)
+
+	return retGo
+}
 
 // GetStatus is a wrapper around the C function g_subprocess_get_status.
 func (recv *Subprocess) GetStatus() int32 {
@@ -151,7 +163,13 @@ func (recv *Subprocess) GetStatus() int32 {
 
 // Unsupported : g_subprocess_get_stdout_pipe : no return generator
 
-// Unsupported : g_subprocess_get_successful : no return generator
+// GetSuccessful is a wrapper around the C function g_subprocess_get_successful.
+func (recv *Subprocess) GetSuccessful() bool {
+	retC := C.g_subprocess_get_successful((*C.GSubprocess)(recv.native))
+	retGo := (bool)(retC)
+
+	return retGo
+}
 
 // GetTermSig is a wrapper around the C function g_subprocess_get_term_sig.
 func (recv *Subprocess) GetTermSig() int32 {
@@ -223,7 +241,7 @@ func (recv *SubprocessLauncher) Getenv(variable string) string {
 
 // Unsupported : g_subprocess_launcher_set_stdout_file_path : no return generator
 
-// Unsupported : g_subprocess_launcher_setenv : unsupported parameter overwrite : no type generator for gboolean, gboolean
+// Unsupported : g_subprocess_launcher_setenv : no return generator
 
 // Unsupported : g_subprocess_launcher_spawn : unsupported parameter error : in string with indirection level of 2
 

@@ -205,8 +205,6 @@ func (recv *SettingsSchema) GetPath() string {
 	return retGo
 }
 
-// Unsupported : g_settings_schema_has_key : no return generator
-
 // Unsupported : g_settings_schema_list_children : no return type
 
 // Unsupported : g_settings_schema_list_keys : no return type
@@ -242,11 +240,42 @@ func (recv *SettingsSchemaSource) toC() *C.GSettingsSchemaSource {
 	return recv.native
 }
 
-// Unsupported : g_settings_schema_source_new_from_directory : unsupported parameter trusted : no type generator for gboolean, gboolean
+// SettingsSchemaSourceNewFromDirectory is a wrapper around the C function g_settings_schema_source_new_from_directory.
+func SettingsSchemaSourceNewFromDirectory(directory string, parent *SettingsSchemaSource, trusted bool) (*SettingsSchemaSource, error) {
+	c_directory := C.CString(directory)
+	defer C.free(unsafe.Pointer(c_directory))
 
-// Unsupported : g_settings_schema_source_list_schemas : unsupported parameter recursive : no type generator for gboolean, gboolean
+	c_parent := parent.toC()
 
-// Unsupported : g_settings_schema_source_lookup : unsupported parameter recursive : no type generator for gboolean, gboolean
+	c_trusted := (C.gboolean)(trusted)
+
+	var cThrowableError *C.GError
+
+	retC := C.g_settings_schema_source_new_from_directory(c_directory, c_parent, c_trusted, &cThrowableError)
+	retGo := SettingsSchemaSourceNewFromC(unsafe.Pointer(retC))
+
+	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
+
+// Unsupported : g_settings_schema_source_list_schemas : unsupported parameter non_relocatable : no param type
+
+// Lookup is a wrapper around the C function g_settings_schema_source_lookup.
+func (recv *SettingsSchemaSource) Lookup(schemaId string, recursive bool) *SettingsSchema {
+	c_schema_id := C.CString(schemaId)
+	defer C.free(unsafe.Pointer(c_schema_id))
+
+	c_recursive := (C.gboolean)(recursive)
+
+	retC := C.g_settings_schema_source_lookup((*C.GSettingsSchemaSource)(recv.native), c_schema_id, c_recursive)
+	retGo := SettingsSchemaNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // Ref is a wrapper around the C function g_settings_schema_source_ref.
 func (recv *SettingsSchemaSource) Ref() *SettingsSchemaSource {

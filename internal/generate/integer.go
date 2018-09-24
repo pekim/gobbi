@@ -1,6 +1,8 @@
 package generate
 
 var integerCTypeMap = map[string]string{
+	"gboolean": "bool",
+
 	"gshort": "int16",
 	"gint":   "int32",
 	"int":    "int32",

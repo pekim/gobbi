@@ -3,6 +3,8 @@
 
 package glib
 
+import "unsafe"
+
 // #define GLIB_DISABLE_DEPRECATION_WARNINGS
 // #include <glib.h>
 // #include <glib/gstdio.h>
@@ -10,4 +12,16 @@ package glib
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : g_strv_contains : no return generator
+// StrvContains is a wrapper around the C function g_strv_contains.
+func StrvContains(strv string, str string) bool {
+	c_strv := C.CString(strv)
+	defer C.free(unsafe.Pointer(c_strv))
+
+	c_str := C.CString(str)
+	defer C.free(unsafe.Pointer(c_str))
+
+	retC := C.g_strv_contains(c_strv, c_str)
+	retGo := (bool)(retC)
+
+	return retGo
+}

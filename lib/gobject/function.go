@@ -156,7 +156,7 @@ func FlagsGetValueByNick(flagsClass *FlagsClass, nick string) *FlagsValue {
 
 // Unsupported : g_gtype_get_type : no return generator
 
-// Unsupported : g_param_spec_boolean : unsupported parameter default_value : no type generator for gboolean, gboolean
+// Unsupported : g_param_spec_boolean : no return generator
 
 // Unsupported : g_param_spec_boxed : unsupported parameter boxed_type : no type generator for GType, GType
 
@@ -182,7 +182,15 @@ func FlagsGetValueByNick(flagsClass *FlagsClass, nick string) *FlagsValue {
 
 // Unsupported : g_param_spec_pointer : no return generator
 
-// Unsupported : g_param_spec_pool_new : unsupported parameter type_prefixing : no type generator for gboolean, gboolean
+// ParamSpecPoolNew is a wrapper around the C function g_param_spec_pool_new.
+func ParamSpecPoolNew(typePrefixing bool) *ParamSpecPool {
+	c_type_prefixing := (C.gboolean)(typePrefixing)
+
+	retC := C.g_param_spec_pool_new(c_type_prefixing)
+	retGo := ParamSpecPoolNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // Unsupported : g_param_spec_string : no return generator
 
@@ -216,9 +224,40 @@ func FlagsGetValueByNick(flagsClass *FlagsClass, nick string) *FlagsValue {
 
 // Unsupported : g_signal_chain_from_overridden : unsupported parameter instance_and_params : no param type
 
-// Unsupported : g_signal_connect_closure : unsupported parameter after : no type generator for gboolean, gboolean
+// SignalConnectClosure is a wrapper around the C function g_signal_connect_closure.
+func SignalConnectClosure(instance uintptr, detailedSignal string, closure *Closure, after bool) uint64 {
+	c_instance := (C.gpointer)(instance)
 
-// Unsupported : g_signal_connect_closure_by_id : unsupported parameter after : no type generator for gboolean, gboolean
+	c_detailed_signal := C.CString(detailedSignal)
+	defer C.free(unsafe.Pointer(c_detailed_signal))
+
+	c_closure := closure.toC()
+
+	c_after := (C.gboolean)(after)
+
+	retC := C.g_signal_connect_closure(c_instance, c_detailed_signal, c_closure, c_after)
+	retGo := (uint64)(retC)
+
+	return retGo
+}
+
+// SignalConnectClosureById is a wrapper around the C function g_signal_connect_closure_by_id.
+func SignalConnectClosureById(instance uintptr, signalId uint32, detail glib.Quark, closure *Closure, after bool) uint64 {
+	c_instance := (C.gpointer)(instance)
+
+	c_signal_id := (C.guint)(signalId)
+
+	c_detail := (C.GQuark)(detail)
+
+	c_closure := closure.toC()
+
+	c_after := (C.gboolean)(after)
+
+	retC := C.g_signal_connect_closure_by_id(c_instance, c_signal_id, c_detail, c_closure, c_after)
+	retGo := (uint64)(retC)
+
+	return retGo
+}
 
 // Unsupported : g_signal_connect_data : unsupported parameter c_handler : no type generator for Callback, GCallback
 
@@ -268,7 +307,17 @@ func SignalHandlerFind(instance uintptr, mask SignalMatchType, signalId uint32, 
 	return retGo
 }
 
-// Unsupported : g_signal_handler_is_connected : no return generator
+// SignalHandlerIsConnected is a wrapper around the C function g_signal_handler_is_connected.
+func SignalHandlerIsConnected(instance uintptr, handlerId uint64) bool {
+	c_instance := (C.gpointer)(instance)
+
+	c_handler_id := (C.gulong)(handlerId)
+
+	retC := C.g_signal_handler_is_connected(c_instance, c_handler_id)
+	retGo := (bool)(retC)
+
+	return retGo
+}
 
 // Unsupported : g_signal_handler_unblock : no return generator
 
@@ -340,7 +389,21 @@ func SignalHandlersUnblockMatched(instance uintptr, mask SignalMatchType, signal
 	return retGo
 }
 
-// Unsupported : g_signal_has_handler_pending : unsupported parameter may_be_blocked : no type generator for gboolean, gboolean
+// SignalHasHandlerPending is a wrapper around the C function g_signal_has_handler_pending.
+func SignalHasHandlerPending(instance uintptr, signalId uint32, detail glib.Quark, mayBeBlocked bool) bool {
+	c_instance := (C.gpointer)(instance)
+
+	c_signal_id := (C.guint)(signalId)
+
+	c_detail := (C.GQuark)(detail)
+
+	c_may_be_blocked := (C.gboolean)(mayBeBlocked)
+
+	retC := C.g_signal_has_handler_pending(c_instance, c_signal_id, c_detail, c_may_be_blocked)
+	retGo := (bool)(retC)
+
+	return retGo
+}
 
 // Unsupported : g_signal_list_ids : unsupported parameter itype : no type generator for GType, GType
 
@@ -403,7 +466,15 @@ func StrdupValueContents(value *Value) string {
 
 // Unsupported : g_type_check_class_is_a : unsupported parameter is_a_type : no type generator for GType, GType
 
-// Unsupported : g_type_check_instance : no return generator
+// TypeCheckInstance is a wrapper around the C function g_type_check_instance.
+func TypeCheckInstance(instance *TypeInstance) bool {
+	c_instance := instance.toC()
+
+	retC := C.g_type_check_instance(c_instance)
+	retGo := (bool)(retC)
+
+	return retGo
+}
 
 // Unsupported : g_type_check_instance_cast : unsupported parameter iface_type : no type generator for GType, GType
 
@@ -413,7 +484,15 @@ func StrdupValueContents(value *Value) string {
 
 // Unsupported : g_type_check_is_value_type : unsupported parameter type : no type generator for GType, GType
 
-// Unsupported : g_type_check_value : no return generator
+// TypeCheckValue is a wrapper around the C function g_type_check_value.
+func TypeCheckValue(value *Value) bool {
+	c_value := value.toC()
+
+	retC := C.g_type_check_value(c_value)
+	retGo := (bool)(retC)
+
+	return retGo
+}
 
 // Unsupported : g_type_check_value_holds : unsupported parameter type : no type generator for GType, GType
 

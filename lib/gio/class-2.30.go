@@ -184,7 +184,16 @@ func (recv *DBusObjectManagerServer) toC() *C.GDBusObjectManagerServer {
 
 // Unsupported : g_dbus_object_manager_server_set_connection : unsupported parameter connection : no type generator for DBusConnection, GDBusConnection*
 
-// Unsupported : g_dbus_object_manager_server_unexport : no return generator
+// Unexport is a wrapper around the C function g_dbus_object_manager_server_unexport.
+func (recv *DBusObjectManagerServer) Unexport(objectPath string) bool {
+	c_object_path := C.CString(objectPath)
+	defer C.free(unsafe.Pointer(c_object_path))
+
+	retC := C.g_dbus_object_manager_server_unexport((*C.GDBusObjectManagerServer)(recv.native), c_object_path)
+	retGo := (bool)(retC)
+
+	return retGo
+}
 
 // DBusObjectProxy is a wrapper around the C record GDBusObjectProxy.
 type DBusObjectProxy struct {

@@ -22,9 +22,29 @@ import "C"
 
 // Unsupported : g_environ_unsetenv : unsupported parameter envp : no param type
 
-// Unsupported : g_hash_table_add : no return generator
+// HashTableAdd is a wrapper around the C function g_hash_table_add.
+func HashTableAdd(hashTable *HashTable, key uintptr) bool {
+	c_hash_table := hashTable.toC()
 
-// Unsupported : g_hash_table_contains : no return generator
+	c_key := (C.gpointer)(key)
+
+	retC := C.g_hash_table_add(c_hash_table, c_key)
+	retGo := (bool)(retC)
+
+	return retGo
+}
+
+// HashTableContains is a wrapper around the C function g_hash_table_contains.
+func HashTableContains(hashTable *HashTable, key uintptr) bool {
+	c_hash_table := hashTable.toC()
+
+	c_key := (C.gconstpointer)(key)
+
+	retC := C.g_hash_table_contains(c_hash_table, c_key)
+	retGo := (bool)(retC)
+
+	return retGo
+}
 
 // MainContextRefThreadDefault is a wrapper around the C function g_main_context_ref_thread_default.
 func MainContextRefThreadDefault() *MainContext {

@@ -3,6 +3,8 @@
 
 package gio
 
+import "unsafe"
+
 // #define GLIB_DISABLE_DEPRECATION_WARNINGS
 // #include <gio/gdesktopappinfo.h>
 // #include <gio/gfiledescriptorbased.h>
@@ -18,7 +20,16 @@ package gio
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : g_action_name_is_valid : no return generator
+// ActionNameIsValid is a wrapper around the C function g_action_name_is_valid.
+func ActionNameIsValid(actionName string) bool {
+	c_action_name := C.CString(actionName)
+	defer C.free(unsafe.Pointer(c_action_name))
+
+	retC := C.g_action_name_is_valid(c_action_name)
+	retGo := (bool)(retC)
+
+	return retGo
+}
 
 // Unsupported : g_action_parse_detailed_name : unsupported parameter target_value : Blacklisted record : GVariant
 

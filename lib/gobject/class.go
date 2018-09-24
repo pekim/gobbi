@@ -115,8 +115,6 @@ func (recv *Object) GetQdata(quark glib.Quark) uintptr {
 
 // Unsupported : g_object_getv : unsupported parameter names : no param type
 
-// Unsupported : g_object_is_floating : no return generator
-
 // Unsupported : g_object_notify : no return generator
 
 // Unsupported : g_object_notify_by_pspec : unsupported parameter pspec : no type generator for ParamSpec, GParamSpec*
@@ -287,7 +285,7 @@ func (recv *ParamSpec) StealQdata(quark glib.Quark) uintptr {
 type ParamSpecBoolean struct {
 	native *C.GParamSpecBoolean
 	// parent_instance : no type generator for ParamSpec, GParamSpec
-	// default_value : no type generator for gboolean, gboolean
+	DefaultValue bool
 }
 
 func ParamSpecBooleanNewFromC(u unsafe.Pointer) *ParamSpecBoolean {
@@ -296,12 +294,17 @@ func ParamSpecBooleanNewFromC(u unsafe.Pointer) *ParamSpecBoolean {
 		return nil
 	}
 
-	g := &ParamSpecBoolean{native: c}
+	g := &ParamSpecBoolean{
+		DefaultValue: (bool)(c.default_value),
+		native:       c,
+	}
 
 	return g
 }
 
 func (recv *ParamSpecBoolean) toC() *C.GParamSpecBoolean {
+	recv.native.default_value =
+		(C.gboolean)(recv.DefaultValue)
 
 	return recv.native
 }
@@ -965,4 +968,10 @@ func (recv *TypeModule) toC() *C.GTypeModule {
 
 // Unsupported : g_type_module_unuse : no return generator
 
-// Unsupported : g_type_module_use : no return generator
+// Use is a wrapper around the C function g_type_module_use.
+func (recv *TypeModule) Use() bool {
+	retC := C.g_type_module_use((*C.GTypeModule)(recv.native))
+	retGo := (bool)(retC)
+
+	return retGo
+}

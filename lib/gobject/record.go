@@ -961,9 +961,21 @@ func (recv *Value) DupString() string {
 
 // Unsupported : g_value_dup_variant : return type : Blacklisted record : GVariant
 
-// Unsupported : g_value_fits_pointer : no return generator
+// FitsPointer is a wrapper around the C function g_value_fits_pointer.
+func (recv *Value) FitsPointer() bool {
+	retC := C.g_value_fits_pointer((*C.GValue)(recv.native))
+	retGo := (bool)(retC)
 
-// Unsupported : g_value_get_boolean : no return generator
+	return retGo
+}
+
+// GetBoolean is a wrapper around the C function g_value_get_boolean.
+func (recv *Value) GetBoolean() bool {
+	retC := C.g_value_get_boolean((*C.GValue)(recv.native))
+	retGo := (bool)(retC)
+
+	return retGo
+}
 
 // GetBoxed is a wrapper around the C function g_value_get_boxed.
 func (recv *Value) GetBoxed() uintptr {
@@ -1119,7 +1131,7 @@ func (recv *Value) Reset() *Value {
 	return retGo
 }
 
-// Unsupported : g_value_set_boolean : unsupported parameter v_boolean : no type generator for gboolean, gboolean
+// Unsupported : g_value_set_boolean : no return generator
 
 // Unsupported : g_value_set_boxed : no return generator
 
@@ -1185,7 +1197,15 @@ func (recv *Value) Reset() *Value {
 
 // Unsupported : g_value_take_variant : unsupported parameter variant : Blacklisted record : GVariant
 
-// Unsupported : g_value_transform : no return generator
+// Transform is a wrapper around the C function g_value_transform.
+func (recv *Value) Transform(destValue *Value) bool {
+	c_dest_value := destValue.toC()
+
+	retC := C.g_value_transform((*C.GValue)(recv.native), c_dest_value)
+	retGo := (bool)(retC)
+
+	return retGo
+}
 
 // Unsupported : g_value_unset : no return generator
 

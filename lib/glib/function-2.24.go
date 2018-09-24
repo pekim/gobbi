@@ -3,6 +3,8 @@
 
 package glib
 
+import "unsafe"
+
 // #define GLIB_DISABLE_DEPRECATION_WARNINGS
 // #include <glib.h>
 // #include <glib/gstdio.h>
@@ -92,8 +94,43 @@ func TryReallocN(mem uintptr, nBlocks uint64, nBlockBytes uint64) uintptr {
 	return retGo
 }
 
-// Unsupported : g_variant_is_object_path : no return generator
+// VariantIsObjectPath is a wrapper around the C function g_variant_is_object_path.
+func VariantIsObjectPath(string string) bool {
+	c_string := C.CString(string)
+	defer C.free(unsafe.Pointer(c_string))
 
-// Unsupported : g_variant_is_signature : no return generator
+	retC := C.g_variant_is_object_path(c_string)
+	retGo := (bool)(retC)
 
-// Unsupported : g_variant_type_string_scan : no return generator
+	return retGo
+}
+
+// VariantIsSignature is a wrapper around the C function g_variant_is_signature.
+func VariantIsSignature(string string) bool {
+	c_string := C.CString(string)
+	defer C.free(unsafe.Pointer(c_string))
+
+	retC := C.g_variant_is_signature(c_string)
+	retGo := (bool)(retC)
+
+	return retGo
+}
+
+// VariantTypeStringScan is a wrapper around the C function g_variant_type_string_scan.
+func VariantTypeStringScan(string string, limit string) (bool, string) {
+	c_string := C.CString(string)
+	defer C.free(unsafe.Pointer(c_string))
+
+	c_limit := C.CString(limit)
+	defer C.free(unsafe.Pointer(c_limit))
+
+	var c_endptr *C.gchar
+
+	retC := C.g_variant_type_string_scan(c_string, c_limit, &c_endptr)
+	retGo := (bool)(retC)
+
+	endptr := C.GoString(c_endptr)
+	defer C.free(unsafe.Pointer(c_endptr))
+
+	return retGo, endptr
+}

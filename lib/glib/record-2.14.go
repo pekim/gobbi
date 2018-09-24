@@ -63,8 +63,6 @@ func (recv *Regex) GetCaptureCount() int32 {
 	return retGo
 }
 
-// Unsupported : g_regex_get_has_cr_or_lf : no return generator
-
 // GetMaxBackref is a wrapper around the C function g_regex_get_max_backref.
 func (recv *Regex) GetMaxBackref() int32 {
 	retC := C.g_regex_get_max_backref((*C.GRegex)(recv.native))
@@ -92,9 +90,39 @@ func (recv *Regex) GetStringNumber(name string) int32 {
 	return retGo
 }
 
-// Unsupported : g_regex_match : no return generator
+// Match is a wrapper around the C function g_regex_match.
+func (recv *Regex) Match(string string, matchOptions RegexMatchFlags) (bool, **MatchInfo) {
+	c_string := C.CString(string)
+	defer C.free(unsafe.Pointer(c_string))
 
-// Unsupported : g_regex_match_all : no return generator
+	c_match_options := (C.GRegexMatchFlags)(matchOptions)
+
+	var c_match_info *C.GMatchInfo
+
+	retC := C.g_regex_match((*C.GRegex)(recv.native), c_string, c_match_options, &c_match_info)
+	retGo := (bool)(retC)
+
+	matchInfo := MatchInfoNewFromC(unsafe.Pointer(c_match_info))
+
+	return retGo, matchInfo
+}
+
+// MatchAll is a wrapper around the C function g_regex_match_all.
+func (recv *Regex) MatchAll(string string, matchOptions RegexMatchFlags) (bool, **MatchInfo) {
+	c_string := C.CString(string)
+	defer C.free(unsafe.Pointer(c_string))
+
+	c_match_options := (C.GRegexMatchFlags)(matchOptions)
+
+	var c_match_info *C.GMatchInfo
+
+	retC := C.g_regex_match_all((*C.GRegex)(recv.native), c_string, c_match_options, &c_match_info)
+	retGo := (bool)(retC)
+
+	matchInfo := MatchInfoNewFromC(unsafe.Pointer(c_match_info))
+
+	return retGo, matchInfo
+}
 
 // Unsupported : g_regex_match_all_full : unsupported parameter string : no param type
 

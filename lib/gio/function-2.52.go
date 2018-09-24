@@ -3,6 +3,8 @@
 
 package gio
 
+import "unsafe"
+
 // #define GLIB_DISABLE_DEPRECATION_WARNINGS
 // #include <gio/gdesktopappinfo.h>
 // #include <gio/gfiledescriptorbased.h>
@@ -18,6 +20,18 @@ package gio
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : g_content_type_is_mime_type : no return generator
+// ContentTypeIsMimeType is a wrapper around the C function g_content_type_is_mime_type.
+func ContentTypeIsMimeType(type_ string, mimeType string) bool {
+	c_type := C.CString(type_)
+	defer C.free(unsafe.Pointer(c_type))
+
+	c_mime_type := C.CString(mimeType)
+	defer C.free(unsafe.Pointer(c_mime_type))
+
+	retC := C.g_content_type_is_mime_type(c_type, c_mime_type)
+	retGo := (bool)(retC)
+
+	return retGo
+}
 
 // Unsupported : g_unix_mount_for : unsupported parameter time_read : no type generator for guint64, guint64*

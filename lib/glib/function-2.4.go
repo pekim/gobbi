@@ -69,7 +69,21 @@ func FileReadLink(filename string) (string, error) {
 
 // Unsupported : g_markup_vprintf_escaped : unsupported parameter args : no type generator for va_list, va_list
 
-// Unsupported : g_setenv : unsupported parameter overwrite : no type generator for gboolean, gboolean
+// Setenv is a wrapper around the C function g_setenv.
+func Setenv(variable string, value string, overwrite bool) bool {
+	c_variable := C.CString(variable)
+	defer C.free(unsafe.Pointer(c_variable))
+
+	c_value := C.CString(value)
+	defer C.free(unsafe.Pointer(c_value))
+
+	c_overwrite := (C.gboolean)(overwrite)
+
+	retC := C.g_setenv(c_variable, c_value, c_overwrite)
+	retGo := (bool)(retC)
+
+	return retGo
+}
 
 // StripContext is a wrapper around the C function g_strip_context.
 func StripContext(msgid string, msgval string) string {

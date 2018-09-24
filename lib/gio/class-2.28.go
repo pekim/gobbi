@@ -81,11 +81,21 @@ func (recv *Application) GetInactivityTimeout() uint32 {
 	return retGo
 }
 
-// Unsupported : g_application_get_is_busy : no return generator
+// GetIsRegistered is a wrapper around the C function g_application_get_is_registered.
+func (recv *Application) GetIsRegistered() bool {
+	retC := C.g_application_get_is_registered((*C.GApplication)(recv.native))
+	retGo := (bool)(retC)
 
-// Unsupported : g_application_get_is_registered : no return generator
+	return retGo
+}
 
-// Unsupported : g_application_get_is_remote : no return generator
+// GetIsRemote is a wrapper around the C function g_application_get_is_remote.
+func (recv *Application) GetIsRemote() bool {
+	retC := C.g_application_get_is_remote((*C.GApplication)(recv.native))
+	retGo := (bool)(retC)
+
+	return retGo
+}
 
 // Unsupported : g_application_hold : no return generator
 
@@ -244,9 +254,13 @@ func (recv *TlsConnection) GetRehandshakeMode() TlsRehandshakeMode {
 	return retGo
 }
 
-// Unsupported : g_tls_connection_get_require_close_notify : no return generator
+// GetRequireCloseNotify is a wrapper around the C function g_tls_connection_get_require_close_notify.
+func (recv *TlsConnection) GetRequireCloseNotify() bool {
+	retC := C.g_tls_connection_get_require_close_notify((*C.GTlsConnection)(recv.native))
+	retGo := (bool)(retC)
 
-// Unsupported : g_tls_connection_get_use_system_certdb : no return generator
+	return retGo
+}
 
 // Unsupported : g_tls_connection_handshake : unsupported parameter cancellable : no type generator for Cancellable, GCancellable*
 
@@ -262,6 +276,6 @@ func (recv *TlsConnection) GetRehandshakeMode() TlsRehandshakeMode {
 
 // Unsupported : g_tls_connection_set_rehandshake_mode : no return generator
 
-// Unsupported : g_tls_connection_set_require_close_notify : unsupported parameter require_close_notify : no type generator for gboolean, gboolean
+// Unsupported : g_tls_connection_set_require_close_notify : no return generator
 
-// Unsupported : g_tls_connection_set_use_system_certdb : unsupported parameter use_system_certdb : no type generator for gboolean, gboolean
+// Unsupported : g_tls_connection_set_use_system_certdb : no return generator

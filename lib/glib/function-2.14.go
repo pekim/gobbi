@@ -30,7 +30,23 @@ func GetUserSpecialDir(directory UserDirectory) string {
 
 // Unsupported : g_regex_escape_string : unsupported parameter string : no param type
 
-// Unsupported : g_regex_match_simple : no return generator
+// RegexMatchSimple is a wrapper around the C function g_regex_match_simple.
+func RegexMatchSimple(pattern string, string string, compileOptions RegexCompileFlags, matchOptions RegexMatchFlags) bool {
+	c_pattern := C.CString(pattern)
+	defer C.free(unsafe.Pointer(c_pattern))
+
+	c_string := C.CString(string)
+	defer C.free(unsafe.Pointer(c_string))
+
+	c_compile_options := (C.GRegexCompileFlags)(compileOptions)
+
+	c_match_options := (C.GRegexMatchFlags)(matchOptions)
+
+	retC := C.g_regex_match_simple(c_pattern, c_string, c_compile_options, c_match_options)
+	retGo := (bool)(retC)
+
+	return retGo
+}
 
 // Unsupported : g_regex_split_simple : no return type
 
@@ -126,6 +142,22 @@ func UnicharGetScript(ch rune) UnicodeScript {
 	return retGo
 }
 
-// Unsupported : g_unichar_ismark : no return generator
+// UnicharIsmark is a wrapper around the C function g_unichar_ismark.
+func UnicharIsmark(c rune) bool {
+	c_c := (C.gunichar)(c)
 
-// Unsupported : g_unichar_iszerowidth : no return generator
+	retC := C.g_unichar_ismark(c_c)
+	retGo := (bool)(retC)
+
+	return retGo
+}
+
+// UnicharIszerowidth is a wrapper around the C function g_unichar_iszerowidth.
+func UnicharIszerowidth(c rune) bool {
+	c_c := (C.gunichar)(c)
+
+	retC := C.g_unichar_iszerowidth(c_c)
+	retGo := (bool)(retC)
+
+	return retGo
+}

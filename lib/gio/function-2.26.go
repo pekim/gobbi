@@ -118,7 +118,15 @@ func DbusErrorGetRemoteError(error *glib.Error) string {
 	return retGo
 }
 
-// Unsupported : g_dbus_error_is_remote_error : no return generator
+// DbusErrorIsRemoteError is a wrapper around the C function g_dbus_error_is_remote_error.
+func DbusErrorIsRemoteError(error *glib.Error) bool {
+	c_error := error.toC()
+
+	retC := C.g_dbus_error_is_remote_error(c_error)
+	retGo := (bool)(retC)
+
+	return retGo
+}
 
 // DbusErrorNewForDbusError is a wrapper around the C function g_dbus_error_new_for_dbus_error.
 func DbusErrorNewForDbusError(dbusErrorName string, dbusErrorMessage string) *glib.Error {
@@ -134,13 +142,47 @@ func DbusErrorNewForDbusError(dbusErrorName string, dbusErrorMessage string) *gl
 	return retGo
 }
 
-// Unsupported : g_dbus_error_register_error : no return generator
+// DbusErrorRegisterError is a wrapper around the C function g_dbus_error_register_error.
+func DbusErrorRegisterError(errorDomain glib.Quark, errorCode int32, dbusErrorName string) bool {
+	c_error_domain := (C.GQuark)(errorDomain)
+
+	c_error_code := (C.gint)(errorCode)
+
+	c_dbus_error_name := C.CString(dbusErrorName)
+	defer C.free(unsafe.Pointer(c_dbus_error_name))
+
+	retC := C.g_dbus_error_register_error(c_error_domain, c_error_code, c_dbus_error_name)
+	retGo := (bool)(retC)
+
+	return retGo
+}
 
 // Unsupported : g_dbus_error_register_error_domain : unsupported parameter quark_volatile : no type generator for gsize, volatile gsize*
 
-// Unsupported : g_dbus_error_strip_remote_error : no return generator
+// DbusErrorStripRemoteError is a wrapper around the C function g_dbus_error_strip_remote_error.
+func DbusErrorStripRemoteError(error *glib.Error) bool {
+	c_error := error.toC()
 
-// Unsupported : g_dbus_error_unregister_error : no return generator
+	retC := C.g_dbus_error_strip_remote_error(c_error)
+	retGo := (bool)(retC)
+
+	return retGo
+}
+
+// DbusErrorUnregisterError is a wrapper around the C function g_dbus_error_unregister_error.
+func DbusErrorUnregisterError(errorDomain glib.Quark, errorCode int32, dbusErrorName string) bool {
+	c_error_domain := (C.GQuark)(errorDomain)
+
+	c_error_code := (C.gint)(errorCode)
+
+	c_dbus_error_name := C.CString(dbusErrorName)
+	defer C.free(unsafe.Pointer(c_dbus_error_name))
+
+	retC := C.g_dbus_error_unregister_error(c_error_domain, c_error_code, c_dbus_error_name)
+	retGo := (bool)(retC)
+
+	return retGo
+}
 
 // DbusGenerateGuid is a wrapper around the C function g_dbus_generate_guid.
 func DbusGenerateGuid() string {
@@ -151,19 +193,89 @@ func DbusGenerateGuid() string {
 	return retGo
 }
 
-// Unsupported : g_dbus_is_address : no return generator
+// DbusIsAddress is a wrapper around the C function g_dbus_is_address.
+func DbusIsAddress(string string) bool {
+	c_string := C.CString(string)
+	defer C.free(unsafe.Pointer(c_string))
 
-// Unsupported : g_dbus_is_guid : no return generator
+	retC := C.g_dbus_is_address(c_string)
+	retGo := (bool)(retC)
 
-// Unsupported : g_dbus_is_interface_name : no return generator
+	return retGo
+}
 
-// Unsupported : g_dbus_is_member_name : no return generator
+// DbusIsGuid is a wrapper around the C function g_dbus_is_guid.
+func DbusIsGuid(string string) bool {
+	c_string := C.CString(string)
+	defer C.free(unsafe.Pointer(c_string))
 
-// Unsupported : g_dbus_is_name : no return generator
+	retC := C.g_dbus_is_guid(c_string)
+	retGo := (bool)(retC)
 
-// Unsupported : g_dbus_is_supported_address : no return generator
+	return retGo
+}
 
-// Unsupported : g_dbus_is_unique_name : no return generator
+// DbusIsInterfaceName is a wrapper around the C function g_dbus_is_interface_name.
+func DbusIsInterfaceName(string string) bool {
+	c_string := C.CString(string)
+	defer C.free(unsafe.Pointer(c_string))
+
+	retC := C.g_dbus_is_interface_name(c_string)
+	retGo := (bool)(retC)
+
+	return retGo
+}
+
+// DbusIsMemberName is a wrapper around the C function g_dbus_is_member_name.
+func DbusIsMemberName(string string) bool {
+	c_string := C.CString(string)
+	defer C.free(unsafe.Pointer(c_string))
+
+	retC := C.g_dbus_is_member_name(c_string)
+	retGo := (bool)(retC)
+
+	return retGo
+}
+
+// DbusIsName is a wrapper around the C function g_dbus_is_name.
+func DbusIsName(string string) bool {
+	c_string := C.CString(string)
+	defer C.free(unsafe.Pointer(c_string))
+
+	retC := C.g_dbus_is_name(c_string)
+	retGo := (bool)(retC)
+
+	return retGo
+}
+
+// DbusIsSupportedAddress is a wrapper around the C function g_dbus_is_supported_address.
+func DbusIsSupportedAddress(string string) (bool, error) {
+	c_string := C.CString(string)
+	defer C.free(unsafe.Pointer(c_string))
+
+	var cThrowableError *C.GError
+
+	retC := C.g_dbus_is_supported_address(c_string, &cThrowableError)
+	retGo := (bool)(retC)
+
+	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
+
+// DbusIsUniqueName is a wrapper around the C function g_dbus_is_unique_name.
+func DbusIsUniqueName(string string) bool {
+	c_string := C.CString(string)
+	defer C.free(unsafe.Pointer(c_string))
+
+	retC := C.g_dbus_is_unique_name(c_string)
+	retGo := (bool)(retC)
+
+	return retGo
+}
 
 // Unsupported : g_proxy_get_default_for_protocol : no return generator
 

@@ -32,4 +32,10 @@ func ModuleError() string {
 	return retGo
 }
 
-// Unsupported : g_module_supported : no return generator
+// ModuleSupported is a wrapper around the C function g_module_supported.
+func ModuleSupported() bool {
+	retC := C.g_module_supported()
+	retGo := (bool)(retC)
+
+	return retGo
+}

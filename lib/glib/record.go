@@ -119,10 +119,6 @@ func (recv *AsyncQueue) Ref() *AsyncQueue {
 
 // Unsupported : g_async_queue_ref_unlocked : no return generator
 
-// Unsupported : g_async_queue_remove : no return generator
-
-// Unsupported : g_async_queue_remove_unlocked : no return generator
-
 // Unsupported : g_async_queue_sort : unsupported parameter func : no type generator for CompareDataFunc, GCompareDataFunc
 
 // Unsupported : g_async_queue_sort_unlocked : unsupported parameter func : no type generator for CompareDataFunc, GCompareDataFunc
@@ -224,35 +220,13 @@ func (recv *BookmarkFile) toC() *C.GBookmarkFile {
 
 // Unsupported : g_bookmark_file_get_groups : unsupported parameter length : no type generator for gsize, gsize*
 
-// Unsupported : g_bookmark_file_get_icon : no return generator
-
-// Unsupported : g_bookmark_file_get_is_private : no return generator
-
 // Unsupported : g_bookmark_file_get_modified : no return generator
 
 // Unsupported : g_bookmark_file_get_uris : unsupported parameter length : no type generator for gsize, gsize*
 
 // Unsupported : g_bookmark_file_get_visited : no return generator
 
-// Unsupported : g_bookmark_file_has_application : no return generator
-
-// Unsupported : g_bookmark_file_has_group : no return generator
-
-// Unsupported : g_bookmark_file_has_item : no return generator
-
 // Unsupported : g_bookmark_file_load_from_data : unsupported parameter data : no param type
-
-// Unsupported : g_bookmark_file_load_from_data_dirs : no return generator
-
-// Unsupported : g_bookmark_file_load_from_file : no return generator
-
-// Unsupported : g_bookmark_file_move_item : no return generator
-
-// Unsupported : g_bookmark_file_remove_application : no return generator
-
-// Unsupported : g_bookmark_file_remove_group : no return generator
-
-// Unsupported : g_bookmark_file_remove_item : no return generator
 
 // Unsupported : g_bookmark_file_set_added : unsupported parameter added : no type generator for glong, time_t
 
@@ -264,7 +238,7 @@ func (recv *BookmarkFile) toC() *C.GBookmarkFile {
 
 // Unsupported : g_bookmark_file_set_icon : no return generator
 
-// Unsupported : g_bookmark_file_set_is_private : unsupported parameter is_private : no type generator for gboolean, gboolean
+// Unsupported : g_bookmark_file_set_is_private : no return generator
 
 // Unsupported : g_bookmark_file_set_mime_type : no return generator
 
@@ -275,8 +249,6 @@ func (recv *BookmarkFile) toC() *C.GBookmarkFile {
 // Unsupported : g_bookmark_file_set_visited : unsupported parameter visited : no type generator for glong, time_t
 
 // Unsupported : g_bookmark_file_to_data : unsupported parameter length : no type generator for gsize, gsize*
-
-// Unsupported : g_bookmark_file_to_file : no return generator
 
 // ByteArray is a wrapper around the C record GByteArray.
 type ByteArray struct {
@@ -517,9 +489,21 @@ func (recv *Date) GetYear() DateYear {
 	return retGo
 }
 
-// Unsupported : g_date_is_first_of_month : no return generator
+// IsFirstOfMonth is a wrapper around the C function g_date_is_first_of_month.
+func (recv *Date) IsFirstOfMonth() bool {
+	retC := C.g_date_is_first_of_month((*C.GDate)(recv.native))
+	retGo := (bool)(retC)
 
-// Unsupported : g_date_is_last_of_month : no return generator
+	return retGo
+}
+
+// IsLastOfMonth is a wrapper around the C function g_date_is_last_of_month.
+func (recv *Date) IsLastOfMonth() bool {
+	retC := C.g_date_is_last_of_month((*C.GDate)(recv.native))
+	retGo := (bool)(retC)
+
+	return retGo
+}
 
 // Unsupported : g_date_order : no return generator
 
@@ -549,7 +533,13 @@ func (recv *Date) GetYear() DateYear {
 
 // Unsupported : g_date_to_struct_tm : unsupported parameter tm : no type generator for gpointer, tm*
 
-// Unsupported : g_date_valid : no return generator
+// Valid is a wrapper around the C function g_date_valid.
+func (recv *Date) Valid() bool {
+	retC := C.g_date_valid((*C.GDate)(recv.native))
+	retGo := (bool)(retC)
+
+	return retGo
+}
 
 // DebugKey is a wrapper around the C record GDebugKey.
 type DebugKey struct {
@@ -679,7 +669,17 @@ func (recv *Error) Copy() *Error {
 
 // Unsupported : g_error_free : no return generator
 
-// Unsupported : g_error_matches : no return generator
+// Matches is a wrapper around the C function g_error_matches.
+func (recv *Error) Matches(domain Quark, code int32) bool {
+	c_domain := (C.GQuark)(domain)
+
+	c_code := (C.gint)(code)
+
+	retC := C.g_error_matches((*C.GError)(recv.native), c_domain, c_code)
+	retGo := (bool)(retC)
+
+	return retGo
+}
 
 // HashTable is a wrapper around the C record GHashTable.
 type HashTable struct {
@@ -835,13 +835,13 @@ func (recv *HookList) toC() *C.GHookList {
 
 // Unsupported : g_hook_list_init : no return generator
 
-// Unsupported : g_hook_list_invoke : unsupported parameter may_recurse : no type generator for gboolean, gboolean
+// Unsupported : g_hook_list_invoke : no return generator
 
-// Unsupported : g_hook_list_invoke_check : unsupported parameter may_recurse : no type generator for gboolean, gboolean
+// Unsupported : g_hook_list_invoke_check : no return generator
 
-// Unsupported : g_hook_list_marshal : unsupported parameter may_recurse : no type generator for gboolean, gboolean
+// Unsupported : g_hook_list_marshal : unsupported parameter marshaller : no type generator for HookMarshaller, GHookMarshaller
 
-// Unsupported : g_hook_list_marshal_check : unsupported parameter may_recurse : no type generator for gboolean, gboolean
+// Unsupported : g_hook_list_marshal_check : unsupported parameter marshaller : no type generator for HookCheckMarshaller, GHookCheckMarshaller
 
 // Blacklisted : GIConv
 
@@ -907,8 +907,6 @@ func KeyFileNew() *KeyFile {
 
 // Unsupported : g_key_file_free : no return generator
 
-// Unsupported : g_key_file_get_boolean : no return generator
-
 // Unsupported : g_key_file_get_boolean_list : unsupported parameter length : no type generator for gsize, gsize*
 
 // Unsupported : g_key_file_get_double_list : unsupported parameter length : no type generator for gsize, gsize*
@@ -923,33 +921,11 @@ func KeyFileNew() *KeyFile {
 
 // Unsupported : g_key_file_get_string_list : unsupported parameter length : no type generator for gsize, gsize*
 
-// Unsupported : g_key_file_has_group : no return generator
-
-// Unsupported : g_key_file_has_key : no return generator
-
-// Unsupported : g_key_file_load_from_bytes : no return generator
-
-// Unsupported : g_key_file_load_from_data : no return generator
-
-// Unsupported : g_key_file_load_from_data_dirs : no return generator
-
 // Unsupported : g_key_file_load_from_dirs : unsupported parameter search_dirs : no param type
 
-// Unsupported : g_key_file_load_from_file : no return generator
-
-// Unsupported : g_key_file_remove_comment : no return generator
-
-// Unsupported : g_key_file_remove_group : no return generator
-
-// Unsupported : g_key_file_remove_key : no return generator
-
-// Unsupported : g_key_file_save_to_file : no return generator
-
-// Unsupported : g_key_file_set_boolean : unsupported parameter value : no type generator for gboolean, gboolean
+// Unsupported : g_key_file_set_boolean : no return generator
 
 // Unsupported : g_key_file_set_boolean_list : unsupported parameter list : no param type
-
-// Unsupported : g_key_file_set_comment : no return generator
 
 // Unsupported : g_key_file_set_double : no return generator
 
@@ -1037,7 +1013,13 @@ func MainContextNew() *MainContext {
 	return retGo
 }
 
-// Unsupported : g_main_context_acquire : no return generator
+// Acquire is a wrapper around the C function g_main_context_acquire.
+func (recv *MainContext) Acquire() bool {
+	retC := C.g_main_context_acquire((*C.GMainContext)(recv.native))
+	retGo := (bool)(retC)
+
+	return retGo
+}
 
 // Unsupported : g_main_context_add_poll : no return generator
 
@@ -1083,11 +1065,23 @@ func (recv *MainContext) FindSourceByUserData(userData uintptr) *Source {
 
 // Unsupported : g_main_context_invoke_full : unsupported parameter function : no type generator for SourceFunc, GSourceFunc
 
-// Unsupported : g_main_context_is_owner : no return generator
+// Iteration is a wrapper around the C function g_main_context_iteration.
+func (recv *MainContext) Iteration(mayBlock bool) bool {
+	c_may_block := (C.gboolean)(mayBlock)
 
-// Unsupported : g_main_context_iteration : unsupported parameter may_block : no type generator for gboolean, gboolean
+	retC := C.g_main_context_iteration((*C.GMainContext)(recv.native), c_may_block)
+	retGo := (bool)(retC)
 
-// Unsupported : g_main_context_pending : no return generator
+	return retGo
+}
+
+// Pending is a wrapper around the C function g_main_context_pending.
+func (recv *MainContext) Pending() bool {
+	retC := C.g_main_context_pending((*C.GMainContext)(recv.native))
+	retGo := (bool)(retC)
+
+	return retGo
+}
 
 // Unsupported : g_main_context_pop_thread_default : no return generator
 
@@ -1138,7 +1132,17 @@ func (recv *MainLoop) toC() *C.GMainLoop {
 	return recv.native
 }
 
-// Unsupported : g_main_loop_new : unsupported parameter is_running : no type generator for gboolean, gboolean
+// MainLoopNew is a wrapper around the C function g_main_loop_new.
+func MainLoopNew(context *MainContext, isRunning bool) *MainLoop {
+	c_context := context.toC()
+
+	c_is_running := (C.gboolean)(isRunning)
+
+	retC := C.g_main_loop_new(c_context, c_is_running)
+	retGo := MainLoopNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // GetContext is a wrapper around the C function g_main_loop_get_context.
 func (recv *MainLoop) GetContext() *MainContext {
@@ -1148,7 +1152,13 @@ func (recv *MainLoop) GetContext() *MainContext {
 	return retGo
 }
 
-// Unsupported : g_main_loop_is_running : no return generator
+// IsRunning is a wrapper around the C function g_main_loop_is_running.
+func (recv *MainLoop) IsRunning() bool {
+	retC := C.g_main_loop_is_running((*C.GMainLoop)(recv.native))
+	retGo := (bool)(retC)
+
+	return retGo
+}
 
 // Unsupported : g_main_loop_quit : no return generator
 
@@ -1185,9 +1195,44 @@ func (recv *MappedFile) toC() *C.GMappedFile {
 	return recv.native
 }
 
-// Unsupported : g_mapped_file_new : unsupported parameter writable : no type generator for gboolean, gboolean
+// MappedFileNew is a wrapper around the C function g_mapped_file_new.
+func MappedFileNew(filename string, writable bool) (*MappedFile, error) {
+	c_filename := C.CString(filename)
+	defer C.free(unsafe.Pointer(c_filename))
 
-// Unsupported : g_mapped_file_new_from_fd : unsupported parameter writable : no type generator for gboolean, gboolean
+	c_writable := (C.gboolean)(writable)
+
+	var cThrowableError *C.GError
+
+	retC := C.g_mapped_file_new(c_filename, c_writable, &cThrowableError)
+	retGo := MappedFileNewFromC(unsafe.Pointer(retC))
+
+	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
+
+// MappedFileNewFromFd is a wrapper around the C function g_mapped_file_new_from_fd.
+func MappedFileNewFromFd(fd int32, writable bool) (*MappedFile, error) {
+	c_fd := (C.gint)(fd)
+
+	c_writable := (C.gboolean)(writable)
+
+	var cThrowableError *C.GError
+
+	retC := C.g_mapped_file_new_from_fd(c_fd, c_writable, &cThrowableError)
+	retGo := MappedFileNewFromC(unsafe.Pointer(retC))
+
+	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // Unsupported : g_mapped_file_free : no return generator
 
@@ -1216,13 +1261,44 @@ func (recv *MarkupParseContext) toC() *C.GMarkupParseContext {
 
 // Unsupported : g_markup_parse_context_new : unsupported parameter user_data_dnotify : no type generator for DestroyNotify, GDestroyNotify
 
-// Unsupported : g_markup_parse_context_end_parse : no return generator
+// EndParse is a wrapper around the C function g_markup_parse_context_end_parse.
+func (recv *MarkupParseContext) EndParse() (bool, error) {
+	var cThrowableError *C.GError
+
+	retC := C.g_markup_parse_context_end_parse((*C.GMarkupParseContext)(recv.native), &cThrowableError)
+	retGo := (bool)(retC)
+
+	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // Unsupported : g_markup_parse_context_free : no return generator
 
 // Unsupported : g_markup_parse_context_get_position : unsupported parameter line_number : no type generator for gint, gint*
 
-// Unsupported : g_markup_parse_context_parse : no return generator
+// Parse is a wrapper around the C function g_markup_parse_context_parse.
+func (recv *MarkupParseContext) Parse(text string, textLen int64) (bool, error) {
+	c_text := C.CString(text)
+	defer C.free(unsafe.Pointer(c_text))
+
+	c_text_len := (C.gssize)(textLen)
+
+	var cThrowableError *C.GError
+
+	retC := C.g_markup_parse_context_parse((*C.GMarkupParseContext)(recv.native), c_text, c_text_len, &cThrowableError)
+	retGo := (bool)(retC)
+
+	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // Unsupported : g_markup_parse_context_push : no return generator
 
@@ -1282,12 +1358,6 @@ func (recv *MatchInfo) toC() *C.GMatchInfo {
 // Unsupported : g_match_info_fetch_pos : unsupported parameter start_pos : no type generator for gint, gint*
 
 // Unsupported : g_match_info_free : no return generator
-
-// Unsupported : g_match_info_is_partial_match : no return generator
-
-// Unsupported : g_match_info_matches : no return generator
-
-// Unsupported : g_match_info_next : no return generator
 
 // Unsupported : g_match_info_unref : no return generator
 
@@ -1469,7 +1539,15 @@ func (recv *Node) InsertBefore(sibling *Node, node *Node) *Node {
 	return retGo
 }
 
-// Unsupported : g_node_is_ancestor : no return generator
+// IsAncestor is a wrapper around the C function g_node_is_ancestor.
+func (recv *Node) IsAncestor(descendant *Node) bool {
+	c_descendant := descendant.toC()
+
+	retC := C.g_node_is_ancestor((*C.GNode)(recv.native), c_descendant)
+	retGo := (bool)(retC)
+
+	return retGo
+}
 
 // LastChild is a wrapper around the C function g_node_last_child.
 func (recv *Node) LastChild() *Node {
@@ -1566,27 +1644,19 @@ func (recv *OptionContext) toC() *C.GOptionContext {
 
 // Unsupported : g_option_context_free : no return generator
 
-// Unsupported : g_option_context_get_help : unsupported parameter main_help : no type generator for gboolean, gboolean
-
-// Unsupported : g_option_context_get_help_enabled : no return generator
-
-// Unsupported : g_option_context_get_ignore_unknown_options : no return generator
-
-// Unsupported : g_option_context_get_strict_posix : no return generator
-
 // Unsupported : g_option_context_parse : unsupported parameter argc : no type generator for gint, gint*
 
 // Unsupported : g_option_context_parse_strv : unsupported parameter arguments : no param type
 
 // Unsupported : g_option_context_set_description : no return generator
 
-// Unsupported : g_option_context_set_help_enabled : unsupported parameter help_enabled : no type generator for gboolean, gboolean
+// Unsupported : g_option_context_set_help_enabled : no return generator
 
-// Unsupported : g_option_context_set_ignore_unknown_options : unsupported parameter ignore_unknown : no type generator for gboolean, gboolean
+// Unsupported : g_option_context_set_ignore_unknown_options : no return generator
 
 // Unsupported : g_option_context_set_main_group : no return generator
 
-// Unsupported : g_option_context_set_strict_posix : unsupported parameter strict_posix : no type generator for gboolean, gboolean
+// Unsupported : g_option_context_set_strict_posix : no return generator
 
 // Unsupported : g_option_context_set_summary : no return generator
 
@@ -1703,7 +1773,15 @@ func (recv *PatternSpec) toC() *C.GPatternSpec {
 	return recv.native
 }
 
-// Unsupported : g_pattern_spec_equal : no return generator
+// Equal is a wrapper around the C function g_pattern_spec_equal.
+func (recv *PatternSpec) Equal(pspec2 *PatternSpec) bool {
+	c_pspec2 := pspec2.toC()
+
+	retC := C.g_pattern_spec_equal((*C.GPatternSpec)(recv.native), c_pspec2)
+	retGo := (bool)(retC)
+
+	return retGo
+}
 
 // Unsupported : g_pattern_spec_free : no return generator
 
@@ -1855,7 +1933,13 @@ func (recv *Queue) toC() *C.GQueue {
 
 // Unsupported : g_queue_insert_sorted : unsupported parameter func : no type generator for CompareDataFunc, GCompareDataFunc
 
-// Unsupported : g_queue_is_empty : no return generator
+// IsEmpty is a wrapper around the C function g_queue_is_empty.
+func (recv *Queue) IsEmpty() bool {
+	retC := C.g_queue_is_empty((*C.GQueue)(recv.native))
+	retGo := (bool)(retC)
+
+	return retGo
+}
 
 // PeekHead is a wrapper around the C function g_queue_peek_head.
 func (recv *Queue) PeekHead() uintptr {
@@ -1916,8 +2000,6 @@ func (recv *Queue) PopTailLink() *List {
 // Unsupported : g_queue_push_tail : no return generator
 
 // Unsupported : g_queue_push_tail_link : no return generator
-
-// Unsupported : g_queue_remove : no return generator
 
 // Unsupported : g_queue_reverse : no return generator
 
@@ -2122,7 +2204,13 @@ func (recv *Scanner) CurToken() TokenType {
 
 // Unsupported : g_scanner_destroy : no return generator
 
-// Unsupported : g_scanner_eof : no return generator
+// Eof is a wrapper around the C function g_scanner_eof.
+func (recv *Scanner) Eof() bool {
+	retC := C.g_scanner_eof((*C.GScanner)(recv.native))
+	retGo := (bool)(retC)
+
+	return retGo
+}
 
 // Unsupported : g_scanner_error : unsupported parameter ... : varargs
 
@@ -2283,8 +2371,6 @@ func (recv *Sequence) toC() *C.GSequence {
 
 // Unsupported : g_sequence_insert_sorted_iter : unsupported parameter iter_cmp : no type generator for SequenceIterCompareFunc, GSequenceIterCompareFunc
 
-// Unsupported : g_sequence_is_empty : no return generator
-
 // Unsupported : g_sequence_lookup : unsupported parameter cmp_func : no type generator for CompareDataFunc, GCompareDataFunc
 
 // Unsupported : g_sequence_lookup_iter : unsupported parameter iter_cmp : no type generator for SequenceIterCompareFunc, GSequenceIterCompareFunc
@@ -2317,10 +2403,6 @@ func (recv *SequenceIter) toC() *C.GSequenceIter {
 
 	return recv.native
 }
-
-// Unsupported : g_sequence_iter_is_begin : no return generator
-
-// Unsupported : g_sequence_iter_is_end : no return generator
 
 // Source is a wrapper around the C record GSource.
 type Source struct {
@@ -2384,7 +2466,13 @@ func (recv *Source) Attach(context *MainContext) uint32 {
 
 // Unsupported : g_source_destroy : no return generator
 
-// Unsupported : g_source_get_can_recurse : no return generator
+// GetCanRecurse is a wrapper around the C function g_source_get_can_recurse.
+func (recv *Source) GetCanRecurse() bool {
+	retC := C.g_source_get_can_recurse((*C.GSource)(recv.native))
+	retGo := (bool)(retC)
+
+	return retGo
+}
 
 // GetContext is a wrapper around the C function g_source_get_context.
 func (recv *Source) GetContext() *MainContext {
@@ -2420,8 +2508,6 @@ func (recv *Source) GetReadyTime() int64 {
 	return retGo
 }
 
-// Unsupported : g_source_is_destroyed : no return generator
-
 // Unsupported : g_source_modify_unix_fd : no return generator
 
 // Ref is a wrapper around the C function g_source_ref.
@@ -2442,7 +2528,7 @@ func (recv *Source) Ref() *Source {
 
 // Unsupported : g_source_set_callback_indirect : no return generator
 
-// Unsupported : g_source_set_can_recurse : unsupported parameter can_recurse : no type generator for gboolean, gboolean
+// Unsupported : g_source_set_can_recurse : no return generator
 
 // Unsupported : g_source_set_funcs : no return generator
 
@@ -2628,8 +2714,6 @@ func (recv *String) AppendUnichar(wc rune) *String {
 	return retGo
 }
 
-// Unsupported : g_string_append_uri_escaped : unsupported parameter allow_utf8 : no type generator for gboolean, gboolean
-
 // Unsupported : g_string_append_vprintf : unsupported parameter args : no type generator for va_list, va_list
 
 // AsciiDown is a wrapper around the C function g_string_ascii_down.
@@ -2667,7 +2751,15 @@ func (recv *String) Down() *String {
 	return retGo
 }
 
-// Unsupported : g_string_equal : no return generator
+// Equal is a wrapper around the C function g_string_equal.
+func (recv *String) Equal(v2 *String) bool {
+	c_v2 := v2.toC()
+
+	retC := C.g_string_equal((*C.GString)(recv.native), c_v2)
+	retGo := (bool)(retC)
+
+	return retGo
+}
 
 // Erase is a wrapper around the C function g_string_erase.
 func (recv *String) Erase(pos int64, len int64) *String {
@@ -2681,7 +2773,16 @@ func (recv *String) Erase(pos int64, len int64) *String {
 	return retGo
 }
 
-// Unsupported : g_string_free : unsupported parameter free_segment : no type generator for gboolean, gboolean
+// Free is a wrapper around the C function g_string_free.
+func (recv *String) Free(freeSegment bool) string {
+	c_free_segment := (C.gboolean)(freeSegment)
+
+	retC := C.g_string_free((*C.GString)(recv.native), c_free_segment)
+	retGo := C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // Hash is a wrapper around the C function g_string_hash.
 func (recv *String) Hash() uint32 {
@@ -2891,13 +2992,13 @@ func (recv *TestCase) toC() *C.GTestCase {
 
 // TestConfig is a wrapper around the C record GTestConfig.
 type TestConfig struct {
-	native *C.GTestConfig
-	// test_initialized : no type generator for gboolean, gboolean
-	// test_quick : no type generator for gboolean, gboolean
-	// test_perf : no type generator for gboolean, gboolean
-	// test_verbose : no type generator for gboolean, gboolean
-	// test_quiet : no type generator for gboolean, gboolean
-	// test_undefined : no type generator for gboolean, gboolean
+	native          *C.GTestConfig
+	TestInitialized bool
+	TestQuick       bool
+	TestPerf        bool
+	TestVerbose     bool
+	TestQuiet       bool
+	TestUndefined   bool
 }
 
 func TestConfigNewFromC(u unsafe.Pointer) *TestConfig {
@@ -2906,12 +3007,32 @@ func TestConfigNewFromC(u unsafe.Pointer) *TestConfig {
 		return nil
 	}
 
-	g := &TestConfig{native: c}
+	g := &TestConfig{
+		TestInitialized: (bool)(c.test_initialized),
+		TestPerf:        (bool)(c.test_perf),
+		TestQuick:       (bool)(c.test_quick),
+		TestQuiet:       (bool)(c.test_quiet),
+		TestUndefined:   (bool)(c.test_undefined),
+		TestVerbose:     (bool)(c.test_verbose),
+		native:          c,
+	}
 
 	return g
 }
 
 func (recv *TestConfig) toC() *C.GTestConfig {
+	recv.native.test_initialized =
+		(C.gboolean)(recv.TestInitialized)
+	recv.native.test_quick =
+		(C.gboolean)(recv.TestQuick)
+	recv.native.test_perf =
+		(C.gboolean)(recv.TestPerf)
+	recv.native.test_verbose =
+		(C.gboolean)(recv.TestVerbose)
+	recv.native.test_quiet =
+		(C.gboolean)(recv.TestQuiet)
+	recv.native.test_undefined =
+		(C.gboolean)(recv.TestUndefined)
 
 	return recv.native
 }
@@ -2984,8 +3105,8 @@ func (recv *Thread) Join() uintptr {
 type ThreadPool struct {
 	native *C.GThreadPool
 	// _func : no type generator for Func, GFunc
-	UserData uintptr
-	// exclusive : no type generator for gboolean, gboolean
+	UserData  uintptr
+	Exclusive bool
 }
 
 func ThreadPoolNewFromC(u unsafe.Pointer) *ThreadPool {
@@ -2995,8 +3116,9 @@ func ThreadPoolNewFromC(u unsafe.Pointer) *ThreadPool {
 	}
 
 	g := &ThreadPool{
-		UserData: (uintptr)(c.user_data),
-		native:   c,
+		Exclusive: (bool)(c.exclusive),
+		UserData:  (uintptr)(c.user_data),
+		native:    c,
 	}
 
 	return g
@@ -3005,11 +3127,13 @@ func ThreadPoolNewFromC(u unsafe.Pointer) *ThreadPool {
 func (recv *ThreadPool) toC() *C.GThreadPool {
 	recv.native.user_data =
 		(C.gpointer)(recv.UserData)
+	recv.native.exclusive =
+		(C.gboolean)(recv.Exclusive)
 
 	return recv.native
 }
 
-// Unsupported : g_thread_pool_free : unsupported parameter immediate : no type generator for gboolean, gboolean
+// Unsupported : g_thread_pool_free : no return generator
 
 // GetMaxThreads is a wrapper around the C function g_thread_pool_get_max_threads.
 func (recv *ThreadPool) GetMaxThreads() int32 {
@@ -3027,11 +3151,39 @@ func (recv *ThreadPool) GetNumThreads() uint32 {
 	return retGo
 }
 
-// Unsupported : g_thread_pool_move_to_front : no return generator
+// Push is a wrapper around the C function g_thread_pool_push.
+func (recv *ThreadPool) Push(data uintptr) (bool, error) {
+	c_data := (C.gpointer)(data)
 
-// Unsupported : g_thread_pool_push : no return generator
+	var cThrowableError *C.GError
 
-// Unsupported : g_thread_pool_set_max_threads : no return generator
+	retC := C.g_thread_pool_push((*C.GThreadPool)(recv.native), c_data, &cThrowableError)
+	retGo := (bool)(retC)
+
+	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
+
+// SetMaxThreads is a wrapper around the C function g_thread_pool_set_max_threads.
+func (recv *ThreadPool) SetMaxThreads(maxThreads int32) (bool, error) {
+	c_max_threads := (C.gint)(maxThreads)
+
+	var cThrowableError *C.GError
+
+	retC := C.g_thread_pool_set_max_threads((*C.GThreadPool)(recv.native), c_max_threads, &cThrowableError)
+	retGo := (bool)(retC)
+
+	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // Unsupported : g_thread_pool_set_sort_function : unsupported parameter func : no type generator for CompareDataFunc, GCompareDataFunc
 
@@ -3186,13 +3338,29 @@ func (recv *Tree) Nnodes() int32 {
 	return retGo
 }
 
-// Unsupported : g_tree_remove : no return generator
+// Remove is a wrapper around the C function g_tree_remove.
+func (recv *Tree) Remove(key uintptr) bool {
+	c_key := (C.gconstpointer)(key)
+
+	retC := C.g_tree_remove((*C.GTree)(recv.native), c_key)
+	retGo := (bool)(retC)
+
+	return retGo
+}
 
 // Unsupported : g_tree_replace : no return generator
 
 // Unsupported : g_tree_search : unsupported parameter search_func : no type generator for CompareFunc, GCompareFunc
 
-// Unsupported : g_tree_steal : no return generator
+// Steal is a wrapper around the C function g_tree_steal.
+func (recv *Tree) Steal(key uintptr) bool {
+	c_key := (C.gconstpointer)(key)
+
+	retC := C.g_tree_steal((*C.GTree)(recv.native), c_key)
+	retGo := (bool)(retC)
+
+	return retGo
+}
 
 // Unsupported : g_tree_traverse : unsupported parameter traverse_func : no type generator for TraverseFunc, GTraverseFunc
 

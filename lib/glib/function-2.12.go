@@ -35,7 +35,7 @@ func AsciiStrtoll(nptr string, base uint32) (int64, string) {
 
 // Unsupported : g_base64_encode : unsupported parameter data : no param type
 
-// Unsupported : g_base64_encode_close : unsupported parameter break_lines : no type generator for gboolean, gboolean
+// Unsupported : g_base64_encode_close : unsupported parameter out : no param type
 
 // Unsupported : g_base64_encode_step : unsupported parameter in : no param type
 
@@ -51,6 +51,27 @@ func MainCurrentSource() *Source {
 	return retGo
 }
 
-// Unsupported : g_time_val_from_iso8601 : no return generator
+// TimeValFromIso8601 is a wrapper around the C function g_time_val_from_iso8601.
+func TimeValFromIso8601(isoDate string) (bool, *TimeVal) {
+	c_iso_date := C.CString(isoDate)
+	defer C.free(unsafe.Pointer(c_iso_date))
 
-// Unsupported : g_unichar_iswide_cjk : no return generator
+	var c_time_ C.GTimeVal
+
+	retC := C.g_time_val_from_iso8601(c_iso_date, &c_time_)
+	retGo := (bool)(retC)
+
+	time := TimeValNewFromC(unsafe.Pointer(c_time_))
+
+	return retGo, time
+}
+
+// UnicharIswideCjk is a wrapper around the C function g_unichar_iswide_cjk.
+func UnicharIswideCjk(c rune) bool {
+	c_c := (C.gunichar)(c)
+
+	retC := C.g_unichar_iswide_cjk(c_c)
+	retGo := (bool)(retC)
+
+	return retGo
+}

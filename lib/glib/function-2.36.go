@@ -12,7 +12,22 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : g_close : no return generator
+// Close is a wrapper around the C function g_close.
+func Close(fd int32) (bool, error) {
+	c_fd := (C.gint)(fd)
+
+	var cThrowableError *C.GError
+
+	retC := C.g_close(c_fd, &cThrowableError)
+	retGo := (bool)(retC)
+
+	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // GetNumProcessors is a wrapper around the C function g_get_num_processors.
 func GetNumProcessors() uint32 {

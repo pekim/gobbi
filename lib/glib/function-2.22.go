@@ -14,7 +14,17 @@ import "C"
 
 // Unsupported : g_byte_array_unref : unsupported parameter array : no param type
 
-// Unsupported : g_double_equal : no return generator
+// DoubleEqual is a wrapper around the C function g_double_equal.
+func DoubleEqual(v1 uintptr, v2 uintptr) bool {
+	c_v1 := (C.gconstpointer)(v1)
+
+	c_v2 := (C.gconstpointer)(v2)
+
+	retC := C.g_double_equal(c_v1, c_v2)
+	retGo := (bool)(retC)
+
+	return retGo
+}
 
 // DoubleHash is a wrapper around the C function g_double_hash.
 func DoubleHash(v uintptr) uint32 {
@@ -26,11 +36,38 @@ func DoubleHash(v uintptr) uint32 {
 	return retGo
 }
 
-// Unsupported : g_hostname_is_ascii_encoded : no return generator
+// HostnameIsAsciiEncoded is a wrapper around the C function g_hostname_is_ascii_encoded.
+func HostnameIsAsciiEncoded(hostname string) bool {
+	c_hostname := C.CString(hostname)
+	defer C.free(unsafe.Pointer(c_hostname))
 
-// Unsupported : g_hostname_is_ip_address : no return generator
+	retC := C.g_hostname_is_ascii_encoded(c_hostname)
+	retGo := (bool)(retC)
 
-// Unsupported : g_hostname_is_non_ascii : no return generator
+	return retGo
+}
+
+// HostnameIsIpAddress is a wrapper around the C function g_hostname_is_ip_address.
+func HostnameIsIpAddress(hostname string) bool {
+	c_hostname := C.CString(hostname)
+	defer C.free(unsafe.Pointer(c_hostname))
+
+	retC := C.g_hostname_is_ip_address(c_hostname)
+	retGo := (bool)(retC)
+
+	return retGo
+}
+
+// HostnameIsNonAscii is a wrapper around the C function g_hostname_is_non_ascii.
+func HostnameIsNonAscii(hostname string) bool {
+	c_hostname := C.CString(hostname)
+	defer C.free(unsafe.Pointer(c_hostname))
+
+	retC := C.g_hostname_is_non_ascii(c_hostname)
+	retGo := (bool)(retC)
+
+	return retGo
+}
 
 // HostnameToAscii is a wrapper around the C function g_hostname_to_ascii.
 func HostnameToAscii(hostname string) string {
@@ -56,7 +93,17 @@ func HostnameToUnicode(hostname string) string {
 	return retGo
 }
 
-// Unsupported : g_int64_equal : no return generator
+// Int64Equal is a wrapper around the C function g_int64_equal.
+func Int64Equal(v1 uintptr, v2 uintptr) bool {
+	c_v1 := (C.gconstpointer)(v1)
+
+	c_v2 := (C.gconstpointer)(v2)
+
+	retC := C.g_int64_equal(c_v1, c_v2)
+	retGo := (bool)(retC)
+
+	return retGo
+}
 
 // Int64Hash is a wrapper around the C function g_int64_hash.
 func Int64Hash(v uintptr) uint32 {

@@ -30,7 +30,13 @@ func (recv *Module) toC() *C.GModule {
 	return recv.native
 }
 
-// Unsupported : g_module_close : no return generator
+// Close is a wrapper around the C function g_module_close.
+func (recv *Module) Close() bool {
+	retC := C.g_module_close((*C.GModule)(recv.native))
+	retGo := (bool)(retC)
+
+	return retGo
+}
 
 // Unsupported : g_module_make_resident : no return generator
 
