@@ -8,6 +8,9 @@
     <bitfield blacklist="true" name="PixdataDumpType"/>
     <bitfield blacklist="true" name="PixdataType"/>
 
+    <constant blacklist="true" name="PIXBUF_MAGIC_NUMBER"/>
+    <constant blacklist="true" name="PIXDATA_HEADER_LENGTH"/>
+
     <record blacklist="true" name="Pixdata"/>
   </namespace>
 </repository>
