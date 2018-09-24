@@ -9,7 +9,7 @@ import (
 func main() {
 	start := time.Now()
 
-	girs := generate.GirNewRoot("Gio", "2.0")
+	girs := generate.GirNewRoot("GdkPixbuf", "2.0")
 
 	parseDuration := time.Now().Sub(start)
 	start = time.Now()

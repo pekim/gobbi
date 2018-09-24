@@ -47,6 +47,9 @@ func (r *Record) blacklisted() (bool, string) {
 }
 
 func (r *Record) supported() (supported bool, reason string) {
+	if r.CType == "" {
+		return false, fmt.Sprintf("%s : no CType", r.Name)
+	}
 
 	return true, ""
 }
