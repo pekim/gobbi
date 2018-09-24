@@ -50,6 +50,8 @@ func (ns *Namespace) init(repo *Repository) {
 
 func (ns *Namespace) mergeAddenda(addenda *Namespace) {
 	if addenda != nil {
+		ns.Blacklist = addenda.Blacklist
+
 		ns.Aliases.mergeAddenda(addenda.Aliases)
 		ns.Bitfields.mergeAddenda(addenda.Bitfields)
 		ns.Classes.mergeAddenda(addenda.Classes)
@@ -65,6 +67,10 @@ func (ns *Namespace) blacklisted() bool {
 }
 
 func (ns *Namespace) generate() {
+	if ns.Blacklist {
+		return
+	}
+
 	fmt.Printf("%-10s %s\n", ns.Name, ns.Version)
 
 	ns.generateLibDir()
