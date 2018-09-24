@@ -140,13 +140,31 @@ func ResourceNewFromData(data *glib.Bytes) (*Resource, error) {
 
 // Unsupported : g_resources_unregister : no return generator
 
-// Unsupported : g_resource_enumerate_children : unsupported parameter lookup_flags : no type generator for ResourceLookupFlags, GResourceLookupFlags
+// Unsupported : g_resource_enumerate_children : no return type
 
-// Unsupported : g_resource_get_info : unsupported parameter lookup_flags : no type generator for ResourceLookupFlags, GResourceLookupFlags
+// Unsupported : g_resource_get_info : unsupported parameter size : no type generator for gsize, gsize*
 
-// Unsupported : g_resource_lookup_data : unsupported parameter lookup_flags : no type generator for ResourceLookupFlags, GResourceLookupFlags
+// LookupData is a wrapper around the C function g_resource_lookup_data.
+func (recv *Resource) LookupData(path string, lookupFlags ResourceLookupFlags) (*glib.Bytes, error) {
+	c_path := C.CString(path)
+	defer C.free(unsafe.Pointer(c_path))
 
-// Unsupported : g_resource_open_stream : unsupported parameter lookup_flags : no type generator for ResourceLookupFlags, GResourceLookupFlags
+	c_lookup_flags := (C.GResourceLookupFlags)(lookupFlags)
+
+	var cThrowableError *C.GError
+
+	retC := C.g_resource_lookup_data((*C.GResource)(recv.native), c_path, c_lookup_flags, &cThrowableError)
+	retGo := glib.BytesNewFromC(unsafe.Pointer(retC))
+
+	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
+
+// Unsupported : g_resource_open_stream : no return generator
 
 // Ref is a wrapper around the C function g_resource_ref.
 func (recv *Resource) Ref() *Resource {

@@ -107,7 +107,7 @@ func (recv *Subprocess) toC() *C.GSubprocess {
 	return recv.native
 }
 
-// Unsupported : g_subprocess_new : unsupported parameter flags : no type generator for SubprocessFlags, GSubprocessFlags
+// Unsupported : g_subprocess_new : unsupported parameter error : in string with indirection level of 2
 
 // Unsupported : g_subprocess_newv : unsupported parameter argv : no param type
 
@@ -196,7 +196,7 @@ func (recv *SubprocessLauncher) toC() *C.GSubprocessLauncher {
 	return recv.native
 }
 
-// Unsupported : g_subprocess_launcher_new : unsupported parameter flags : no type generator for SubprocessFlags, GSubprocessFlags
+// Unsupported : g_subprocess_launcher_new : no return generator
 
 // Getenv is a wrapper around the C function g_subprocess_launcher_getenv.
 func (recv *SubprocessLauncher) Getenv(variable string) string {
@@ -215,7 +215,7 @@ func (recv *SubprocessLauncher) Getenv(variable string) string {
 
 // Unsupported : g_subprocess_launcher_set_environ : unsupported parameter env : no param type
 
-// Unsupported : g_subprocess_launcher_set_flags : unsupported parameter flags : no type generator for SubprocessFlags, GSubprocessFlags
+// Unsupported : g_subprocess_launcher_set_flags : no return generator
 
 // Unsupported : g_subprocess_launcher_set_stderr_file_path : no return generator
 

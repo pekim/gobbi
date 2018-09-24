@@ -30,9 +30,9 @@ func GetUserSpecialDir(directory UserDirectory) string {
 
 // Unsupported : g_regex_escape_string : unsupported parameter string : no param type
 
-// Unsupported : g_regex_match_simple : unsupported parameter compile_options : no type generator for RegexCompileFlags, GRegexCompileFlags
+// Unsupported : g_regex_match_simple : no return generator
 
-// Unsupported : g_regex_split_simple : unsupported parameter compile_options : no type generator for RegexCompileFlags, GRegexCompileFlags
+// Unsupported : g_regex_split_simple : no return type
 
 // SequenceGet is a wrapper around the C function g_sequence_get.
 func SequenceGet(iter *SequenceIter) uintptr {

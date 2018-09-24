@@ -29,20 +29,20 @@ func ComputeHmacForBytes(digestType ChecksumType, key *Bytes, data *Bytes) strin
 
 // Unsupported : g_log_set_writer_func : unsupported parameter func : no type generator for LogWriterFunc, GLogWriterFunc
 
-// Unsupported : g_log_structured : unsupported parameter log_level : no type generator for LogLevelFlags, GLogLevelFlags
+// Unsupported : g_log_structured : unsupported parameter ... : varargs
 
-// Unsupported : g_log_structured_array : unsupported parameter log_level : no type generator for LogLevelFlags, GLogLevelFlags
+// Unsupported : g_log_structured_array : unsupported parameter fields : no param type
 
-// Unsupported : g_log_variant : unsupported parameter log_level : no type generator for LogLevelFlags, GLogLevelFlags
+// Unsupported : g_log_variant : unsupported parameter fields : Blacklisted record : GVariant
 
-// Unsupported : g_log_writer_default : unsupported parameter log_level : no type generator for LogLevelFlags, GLogLevelFlags
+// Unsupported : g_log_writer_default : unsupported parameter fields : no param type
 
-// Unsupported : g_log_writer_format_fields : unsupported parameter log_level : no type generator for LogLevelFlags, GLogLevelFlags
+// Unsupported : g_log_writer_format_fields : unsupported parameter fields : no param type
 
 // Unsupported : g_log_writer_is_journald : no return generator
 
-// Unsupported : g_log_writer_journald : unsupported parameter log_level : no type generator for LogLevelFlags, GLogLevelFlags
+// Unsupported : g_log_writer_journald : unsupported parameter fields : no param type
 
-// Unsupported : g_log_writer_standard_streams : unsupported parameter log_level : no type generator for LogLevelFlags, GLogLevelFlags
+// Unsupported : g_log_writer_standard_streams : unsupported parameter fields : no param type
 
 // Unsupported : g_log_writer_supports_color : no return generator

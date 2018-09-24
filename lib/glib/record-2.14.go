@@ -33,7 +33,27 @@ func (recv *Regex) toC() *C.GRegex {
 	return recv.native
 }
 
-// Unsupported : g_regex_new : unsupported parameter compile_options : no type generator for RegexCompileFlags, GRegexCompileFlags
+// RegexNew is a wrapper around the C function g_regex_new.
+func RegexNew(pattern string, compileOptions RegexCompileFlags, matchOptions RegexMatchFlags) (*Regex, error) {
+	c_pattern := C.CString(pattern)
+	defer C.free(unsafe.Pointer(c_pattern))
+
+	c_compile_options := (C.GRegexCompileFlags)(compileOptions)
+
+	c_match_options := (C.GRegexMatchFlags)(matchOptions)
+
+	var cThrowableError *C.GError
+
+	retC := C.g_regex_new(c_pattern, c_compile_options, c_match_options, &cThrowableError)
+	retGo := RegexNewFromC(unsafe.Pointer(retC))
+
+	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // GetCaptureCount is a wrapper around the C function g_regex_get_capture_count.
 func (recv *Regex) GetCaptureCount() int32 {
@@ -43,11 +63,7 @@ func (recv *Regex) GetCaptureCount() int32 {
 	return retGo
 }
 
-// Unsupported : g_regex_get_compile_flags : no return generator
-
 // Unsupported : g_regex_get_has_cr_or_lf : no return generator
-
-// Unsupported : g_regex_get_match_flags : no return generator
 
 // GetMaxBackref is a wrapper around the C function g_regex_get_max_backref.
 func (recv *Regex) GetMaxBackref() int32 {
@@ -76,9 +92,9 @@ func (recv *Regex) GetStringNumber(name string) int32 {
 	return retGo
 }
 
-// Unsupported : g_regex_match : unsupported parameter match_options : no type generator for RegexMatchFlags, GRegexMatchFlags
+// Unsupported : g_regex_match : no return generator
 
-// Unsupported : g_regex_match_all : unsupported parameter match_options : no type generator for RegexMatchFlags, GRegexMatchFlags
+// Unsupported : g_regex_match_all : no return generator
 
 // Unsupported : g_regex_match_all_full : unsupported parameter string : no param type
 
@@ -98,7 +114,7 @@ func (recv *Regex) Ref() *Regex {
 
 // Unsupported : g_regex_replace_literal : unsupported parameter string : no param type
 
-// Unsupported : g_regex_split : unsupported parameter match_options : no type generator for RegexMatchFlags, GRegexMatchFlags
+// Unsupported : g_regex_split : no return type
 
 // Unsupported : g_regex_split_full : unsupported parameter string : no param type
 

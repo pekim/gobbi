@@ -53,6 +53,11 @@ func (t *Type) qnameAndGenerator(targetType *Type) (*QName, TypeGenerator) {
 		return qname, typeGenerator
 	}
 
+	_, found = qname.ns.bitfieldForName(qname.name)
+	if found {
+		return qname, TypeGeneratorEnumerationNew(targetType)
+	}
+
 	_, found = qname.ns.enumForName(qname.name)
 	if found {
 		return qname, TypeGeneratorEnumerationNew(targetType)

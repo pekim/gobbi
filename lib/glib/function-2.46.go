@@ -10,4 +10,4 @@ package glib
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : g_log_set_handler_full : unsupported parameter log_levels : no type generator for LogLevelFlags, GLogLevelFlags
+// Unsupported : g_log_set_handler_full : unsupported parameter log_func : no type generator for LogFunc, GLogFunc

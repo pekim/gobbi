@@ -1933,9 +1933,9 @@ func (recv *Settings) toC() *C.GSettings {
 
 // Unsupported : g_settings_apply : no return generator
 
-// Unsupported : g_settings_bind : unsupported parameter flags : no type generator for SettingsBindFlags, GSettingsBindFlags
+// Unsupported : g_settings_bind : no return generator
 
-// Unsupported : g_settings_bind_with_mapping : unsupported parameter flags : no type generator for SettingsBindFlags, GSettingsBindFlags
+// Unsupported : g_settings_bind_with_mapping : unsupported parameter get_mapping : no type generator for SettingsBindGetMapping, GSettingsBindGetMapping
 
 // Unsupported : g_settings_bind_writable : unsupported parameter inverted : no type generator for gboolean, gboolean
 

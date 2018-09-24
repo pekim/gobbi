@@ -124,7 +124,7 @@ func (recv *DBusConnection) toC() *C.GDBusConnection {
 
 // Unsupported : g_dbus_connection_new_for_address_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
 
-// Unsupported : g_dbus_connection_new_for_address_sync : unsupported parameter flags : no type generator for DBusConnectionFlags, GDBusConnectionFlags
+// Unsupported : g_dbus_connection_new_for_address_sync : unsupported parameter observer : no type generator for DBusAuthObserver, GDBusAuthObserver*
 
 // Unsupported : g_dbus_connection_new_sync : unsupported parameter stream : no type generator for IOStream, GIOStream*
 
@@ -160,7 +160,13 @@ func (recv *DBusConnection) toC() *C.GDBusConnection {
 
 // Unsupported : g_dbus_connection_flush_sync : unsupported parameter cancellable : no type generator for Cancellable, GCancellable*
 
-// Unsupported : g_dbus_connection_get_capabilities : no return generator
+// GetCapabilities is a wrapper around the C function g_dbus_connection_get_capabilities.
+func (recv *DBusConnection) GetCapabilities() DBusCapabilityFlags {
+	retC := C.g_dbus_connection_get_capabilities((*C.GDBusConnection)(recv.native))
+	retGo := (DBusCapabilityFlags)(retC)
+
+	return retGo
+}
 
 // Unsupported : g_dbus_connection_get_exit_on_close : no return generator
 
@@ -188,7 +194,7 @@ func (recv *DBusConnection) GetUniqueName() string {
 
 // Unsupported : g_dbus_connection_register_object : unsupported parameter user_data_free_func : no type generator for GLib.DestroyNotify, GDestroyNotify
 
-// Unsupported : g_dbus_connection_register_subtree : unsupported parameter flags : no type generator for DBusSubtreeFlags, GDBusSubtreeFlags
+// Unsupported : g_dbus_connection_register_subtree : unsupported parameter user_data_free_func : no type generator for GLib.DestroyNotify, GDestroyNotify
 
 // Unsupported : g_dbus_connection_remove_filter : no return generator
 
@@ -202,7 +208,7 @@ func (recv *DBusConnection) GetUniqueName() string {
 
 // Unsupported : g_dbus_connection_set_exit_on_close : unsupported parameter exit_on_close : no type generator for gboolean, gboolean
 
-// Unsupported : g_dbus_connection_signal_subscribe : unsupported parameter flags : no type generator for DBusSignalFlags, GDBusSignalFlags
+// Unsupported : g_dbus_connection_signal_subscribe : unsupported parameter callback : no type generator for DBusSignalCallback, GDBusSignalCallback
 
 // Unsupported : g_dbus_connection_signal_unsubscribe : no return generator
 
@@ -273,7 +279,13 @@ func (recv *DBusMessage) GetErrorName() string {
 	return retGo
 }
 
-// Unsupported : g_dbus_message_get_flags : no return generator
+// GetFlags is a wrapper around the C function g_dbus_message_get_flags.
+func (recv *DBusMessage) GetFlags() DBusMessageFlags {
+	retC := C.g_dbus_message_get_flags((*C.GDBusMessage)(recv.native))
+	retGo := (DBusMessageFlags)(retC)
+
+	return retGo
+}
 
 // Unsupported : g_dbus_message_get_header : return type : Blacklisted record : GVariant
 
@@ -384,7 +396,7 @@ func (recv *DBusMessage) Print(indent uint32) string {
 
 // Unsupported : g_dbus_message_set_error_name : no return generator
 
-// Unsupported : g_dbus_message_set_flags : unsupported parameter flags : no type generator for DBusMessageFlags, GDBusMessageFlags
+// Unsupported : g_dbus_message_set_flags : no return generator
 
 // Unsupported : g_dbus_message_set_header : unsupported parameter value : Blacklisted record : GVariant
 
@@ -530,7 +542,7 @@ func (recv *DBusProxy) toC() *C.GDBusProxy {
 
 // Unsupported : g_dbus_proxy_new_for_bus_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
 
-// Unsupported : g_dbus_proxy_new_for_bus_sync : unsupported parameter flags : no type generator for DBusProxyFlags, GDBusProxyFlags
+// Unsupported : g_dbus_proxy_new_for_bus_sync : unsupported parameter cancellable : no type generator for Cancellable, GCancellable*
 
 // Unsupported : g_dbus_proxy_new_sync : unsupported parameter connection : no type generator for DBusConnection, GDBusConnection*
 
@@ -560,7 +572,13 @@ func (recv *DBusProxy) GetDefaultTimeout() int32 {
 	return retGo
 }
 
-// Unsupported : g_dbus_proxy_get_flags : no return generator
+// GetFlags is a wrapper around the C function g_dbus_proxy_get_flags.
+func (recv *DBusProxy) GetFlags() DBusProxyFlags {
+	retC := C.g_dbus_proxy_get_flags((*C.GDBusProxy)(recv.native))
+	retGo := (DBusProxyFlags)(retC)
+
+	return retGo
+}
 
 // GetInterfaceInfo is a wrapper around the C function g_dbus_proxy_get_interface_info.
 func (recv *DBusProxy) GetInterfaceInfo() *DBusInterfaceInfo {
@@ -630,7 +648,7 @@ func (recv *DBusServer) toC() *C.GDBusServer {
 	return recv.native
 }
 
-// Unsupported : g_dbus_server_new_sync : unsupported parameter flags : no type generator for DBusServerFlags, GDBusServerFlags
+// Unsupported : g_dbus_server_new_sync : unsupported parameter observer : no type generator for DBusAuthObserver, GDBusAuthObserver*
 
 // GetClientAddress is a wrapper around the C function g_dbus_server_get_client_address.
 func (recv *DBusServer) GetClientAddress() string {
@@ -640,7 +658,13 @@ func (recv *DBusServer) GetClientAddress() string {
 	return retGo
 }
 
-// Unsupported : g_dbus_server_get_flags : no return generator
+// GetFlags is a wrapper around the C function g_dbus_server_get_flags.
+func (recv *DBusServer) GetFlags() DBusServerFlags {
+	retC := C.g_dbus_server_get_flags((*C.GDBusServer)(recv.native))
+	retGo := (DBusServerFlags)(retC)
+
+	return retGo
+}
 
 // GetGuid is a wrapper around the C function g_dbus_server_get_guid.
 func (recv *DBusServer) GetGuid() string {

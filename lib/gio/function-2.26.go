@@ -5,6 +5,7 @@ package gio
 
 import (
 	glib "github.com/pekim/gobbi/lib/glib"
+	gobject "github.com/pekim/gobbi/lib/gobject"
 	"unsafe"
 )
 
@@ -29,25 +30,61 @@ import "C"
 
 // Unsupported : g_bus_get_sync : unsupported parameter cancellable : no type generator for Cancellable, GCancellable*
 
-// Unsupported : g_bus_own_name : unsupported parameter flags : no type generator for BusNameOwnerFlags, GBusNameOwnerFlags
+// Unsupported : g_bus_own_name : unsupported parameter bus_acquired_handler : no type generator for BusAcquiredCallback, GBusAcquiredCallback
 
 // Unsupported : g_bus_own_name_on_connection : unsupported parameter connection : no type generator for DBusConnection, GDBusConnection*
 
 // Unsupported : g_bus_own_name_on_connection_with_closures : unsupported parameter connection : no type generator for DBusConnection, GDBusConnection*
 
-// Unsupported : g_bus_own_name_with_closures : unsupported parameter flags : no type generator for BusNameOwnerFlags, GBusNameOwnerFlags
+// BusOwnNameWithClosures is a wrapper around the C function g_bus_own_name_with_closures.
+func BusOwnNameWithClosures(busType BusType, name string, flags BusNameOwnerFlags, busAcquiredClosure *gobject.Closure, nameAcquiredClosure *gobject.Closure, nameLostClosure *gobject.Closure) uint32 {
+	c_bus_type := (C.GBusType)(busType)
+
+	c_name := C.CString(name)
+	defer C.free(unsafe.Pointer(c_name))
+
+	c_flags := (C.GBusNameOwnerFlags)(flags)
+
+	c_bus_acquired_closure := busAcquiredClosure.toC()
+
+	c_name_acquired_closure := nameAcquiredClosure.toC()
+
+	c_name_lost_closure := nameLostClosure.toC()
+
+	retC := C.g_bus_own_name_with_closures(c_bus_type, c_name, c_flags, c_bus_acquired_closure, c_name_acquired_closure, c_name_lost_closure)
+	retGo := (uint32)(retC)
+
+	return retGo
+}
 
 // Unsupported : g_bus_unown_name : no return generator
 
 // Unsupported : g_bus_unwatch_name : no return generator
 
-// Unsupported : g_bus_watch_name : unsupported parameter flags : no type generator for BusNameWatcherFlags, GBusNameWatcherFlags
+// Unsupported : g_bus_watch_name : unsupported parameter name_appeared_handler : no type generator for BusNameAppearedCallback, GBusNameAppearedCallback
 
 // Unsupported : g_bus_watch_name_on_connection : unsupported parameter connection : no type generator for DBusConnection, GDBusConnection*
 
 // Unsupported : g_bus_watch_name_on_connection_with_closures : unsupported parameter connection : no type generator for DBusConnection, GDBusConnection*
 
-// Unsupported : g_bus_watch_name_with_closures : unsupported parameter flags : no type generator for BusNameWatcherFlags, GBusNameWatcherFlags
+// BusWatchNameWithClosures is a wrapper around the C function g_bus_watch_name_with_closures.
+func BusWatchNameWithClosures(busType BusType, name string, flags BusNameWatcherFlags, nameAppearedClosure *gobject.Closure, nameVanishedClosure *gobject.Closure) uint32 {
+	c_bus_type := (C.GBusType)(busType)
+
+	c_name := C.CString(name)
+	defer C.free(unsafe.Pointer(c_name))
+
+	c_flags := (C.GBusNameWatcherFlags)(flags)
+
+	c_name_appeared_closure := nameAppearedClosure.toC()
+
+	c_name_vanished_closure := nameVanishedClosure.toC()
+
+	retC := C.g_bus_watch_name_with_closures(c_bus_type, c_name, c_flags, c_name_appeared_closure, c_name_vanished_closure)
+	retGo := (uint32)(retC)
+
+	return retGo
+}
 
 // Unsupported : g_dbus_address_get_for_bus_sync : unsupported parameter cancellable : no type generator for Cancellable, GCancellable*
 

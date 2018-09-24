@@ -927,15 +927,15 @@ func KeyFileNew() *KeyFile {
 
 // Unsupported : g_key_file_has_key : no return generator
 
-// Unsupported : g_key_file_load_from_bytes : unsupported parameter flags : no type generator for KeyFileFlags, GKeyFileFlags
+// Unsupported : g_key_file_load_from_bytes : no return generator
 
-// Unsupported : g_key_file_load_from_data : unsupported parameter flags : no type generator for KeyFileFlags, GKeyFileFlags
+// Unsupported : g_key_file_load_from_data : no return generator
 
-// Unsupported : g_key_file_load_from_data_dirs : unsupported parameter flags : no type generator for KeyFileFlags, GKeyFileFlags
+// Unsupported : g_key_file_load_from_data_dirs : no return generator
 
 // Unsupported : g_key_file_load_from_dirs : unsupported parameter search_dirs : no param type
 
-// Unsupported : g_key_file_load_from_file : unsupported parameter flags : no type generator for KeyFileFlags, GKeyFileFlags
+// Unsupported : g_key_file_load_from_file : no return generator
 
 // Unsupported : g_key_file_remove_comment : no return generator
 
@@ -1214,7 +1214,7 @@ func (recv *MarkupParseContext) toC() *C.GMarkupParseContext {
 	return recv.native
 }
 
-// Unsupported : g_markup_parse_context_new : unsupported parameter flags : no type generator for MarkupParseFlags, GMarkupParseFlags
+// Unsupported : g_markup_parse_context_new : unsupported parameter user_data_dnotify : no type generator for DestroyNotify, GDestroyNotify
 
 // Unsupported : g_markup_parse_context_end_parse : no return generator
 
@@ -1369,7 +1369,7 @@ func (recv *Node) ChildPosition(child *Node) int32 {
 	return retGo
 }
 
-// Unsupported : g_node_children_foreach : unsupported parameter flags : no type generator for TraverseFlags, GTraverseFlags
+// Unsupported : g_node_children_foreach : unsupported parameter func : no type generator for NodeForeachFunc, GNodeForeachFunc
 
 // Copy is a wrapper around the C function g_node_copy.
 func (recv *Node) Copy() *Node {
@@ -1391,9 +1391,31 @@ func (recv *Node) Depth() uint32 {
 
 // Unsupported : g_node_destroy : no return generator
 
-// Unsupported : g_node_find : unsupported parameter flags : no type generator for TraverseFlags, GTraverseFlags
+// Find is a wrapper around the C function g_node_find.
+func (recv *Node) Find(order TraverseType, flags TraverseFlags, data uintptr) *Node {
+	c_order := (C.GTraverseType)(order)
 
-// Unsupported : g_node_find_child : unsupported parameter flags : no type generator for TraverseFlags, GTraverseFlags
+	c_flags := (C.GTraverseFlags)(flags)
+
+	c_data := (C.gpointer)(data)
+
+	retC := C.g_node_find((*C.GNode)(recv.native), c_order, c_flags, c_data)
+	retGo := NodeNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// FindChild is a wrapper around the C function g_node_find_child.
+func (recv *Node) FindChild(flags TraverseFlags, data uintptr) *Node {
+	c_flags := (C.GTraverseFlags)(flags)
+
+	c_data := (C.gpointer)(data)
+
+	retC := C.g_node_find_child((*C.GNode)(recv.native), c_flags, c_data)
+	retGo := NodeNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // FirstSibling is a wrapper around the C function g_node_first_sibling.
 func (recv *Node) FirstSibling() *Node {
@@ -1481,7 +1503,15 @@ func (recv *Node) NChildren() uint32 {
 	return retGo
 }
 
-// Unsupported : g_node_n_nodes : unsupported parameter flags : no type generator for TraverseFlags, GTraverseFlags
+// NNodes is a wrapper around the C function g_node_n_nodes.
+func (recv *Node) NNodes(flags TraverseFlags) uint32 {
+	c_flags := (C.GTraverseFlags)(flags)
+
+	retC := C.g_node_n_nodes((*C.GNode)(recv.native), c_flags)
+	retGo := (uint32)(retC)
+
+	return retGo
+}
 
 // NthChild is a wrapper around the C function g_node_nth_child.
 func (recv *Node) NthChild(n uint32) *Node {
@@ -1505,7 +1535,7 @@ func (recv *Node) Prepend(node *Node) *Node {
 
 // Unsupported : g_node_reverse_children : no return generator
 
-// Unsupported : g_node_traverse : unsupported parameter flags : no type generator for TraverseFlags, GTraverseFlags
+// Unsupported : g_node_traverse : unsupported parameter func : no type generator for NodeTraverseFunc, GNodeTraverseFunc
 
 // Unsupported : g_node_unlink : no return generator
 
@@ -2342,8 +2372,6 @@ func SourceNew(sourceFuncs *SourceFuncs, structSize uint32) *Source {
 
 // Unsupported : g_source_add_poll : no return generator
 
-// Unsupported : g_source_add_unix_fd : unsupported parameter events : no type generator for IOCondition, GIOCondition
-
 // Attach is a wrapper around the C function g_source_attach.
 func (recv *Source) Attach(context *MainContext) uint32 {
 	c_context := context.toC()
@@ -2394,9 +2422,7 @@ func (recv *Source) GetReadyTime() int64 {
 
 // Unsupported : g_source_is_destroyed : no return generator
 
-// Unsupported : g_source_modify_unix_fd : unsupported parameter new_events : no type generator for IOCondition, GIOCondition
-
-// Unsupported : g_source_query_unix_fd : no return generator
+// Unsupported : g_source_modify_unix_fd : no return generator
 
 // Ref is a wrapper around the C function g_source_ref.
 func (recv *Source) Ref() *Source {

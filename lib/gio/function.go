@@ -22,7 +22,7 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : g_app_info_create_from_commandline : unsupported parameter flags : no type generator for AppInfoCreateFlags, GAppInfoCreateFlags
+// Unsupported : g_app_info_create_from_commandline : no return generator
 
 // AppInfoGetAll is a wrapper around the C function g_app_info_get_all.
 func AppInfoGetAll() *glib.List {

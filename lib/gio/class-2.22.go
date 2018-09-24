@@ -3,7 +3,10 @@
 
 package gio
 
-import "unsafe"
+import (
+	glib "github.com/pekim/gobbi/lib/glib"
+	"unsafe"
+)
 
 // #define GLIB_DISABLE_DEPRECATION_WARNINGS
 // #include <gio/gdesktopappinfo.h>
@@ -55,17 +58,25 @@ func (recv *Socket) toC() *C.GSocket {
 
 // Unsupported : g_socket_close : no return generator
 
-// Unsupported : g_socket_condition_check : unsupported parameter condition : no type generator for GLib.IOCondition, GIOCondition
+// ConditionCheck is a wrapper around the C function g_socket_condition_check.
+func (recv *Socket) ConditionCheck(condition glib.IOCondition) glib.IOCondition {
+	c_condition := (C.GIOCondition)(condition)
 
-// Unsupported : g_socket_condition_timed_wait : unsupported parameter condition : no type generator for GLib.IOCondition, GIOCondition
+	retC := C.g_socket_condition_check((*C.GSocket)(recv.native), c_condition)
+	retGo := (glib.IOCondition)(retC)
 
-// Unsupported : g_socket_condition_wait : unsupported parameter condition : no type generator for GLib.IOCondition, GIOCondition
+	return retGo
+}
+
+// Unsupported : g_socket_condition_timed_wait : unsupported parameter cancellable : no type generator for Cancellable, GCancellable*
+
+// Unsupported : g_socket_condition_wait : unsupported parameter cancellable : no type generator for Cancellable, GCancellable*
 
 // Unsupported : g_socket_connect : unsupported parameter address : no type generator for SocketAddress, GSocketAddress*
 
 // Unsupported : g_socket_connection_factory_create_connection : no return generator
 
-// Unsupported : g_socket_create_source : unsupported parameter condition : no type generator for GLib.IOCondition, GIOCondition
+// Unsupported : g_socket_create_source : unsupported parameter cancellable : no type generator for Cancellable, GCancellable*
 
 // Unsupported : g_socket_get_blocking : no return generator
 
@@ -262,8 +273,6 @@ func (recv *SocketClient) GetSocketType() SocketType {
 
 // Unsupported : g_socket_client_get_tls : no return generator
 
-// Unsupported : g_socket_client_get_tls_validation_flags : no return generator
-
 // Unsupported : g_socket_client_set_enable_proxy : unsupported parameter enable : no type generator for gboolean, gboolean
 
 // Unsupported : g_socket_client_set_family : no return generator
@@ -280,7 +289,7 @@ func (recv *SocketClient) GetSocketType() SocketType {
 
 // Unsupported : g_socket_client_set_tls : unsupported parameter tls : no type generator for gboolean, gboolean
 
-// Unsupported : g_socket_client_set_tls_validation_flags : unsupported parameter flags : no type generator for TlsCertificateFlags, GTlsCertificateFlags
+// Unsupported : g_socket_client_set_tls_validation_flags : no return generator
 
 // SocketConnection is a wrapper around the C record GSocketConnection.
 type SocketConnection struct {

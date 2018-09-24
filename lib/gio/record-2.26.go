@@ -383,7 +383,7 @@ type DBusPropertyInfo struct {
 	// ref_count : no type generator for gint, volatile gint
 	Name      string
 	Signature string
-	// flags : no type generator for DBusPropertyInfoFlags, GDBusPropertyInfoFlags
+	Flags     DBusPropertyInfoFlags
 	// no type for annotations
 }
 
@@ -394,6 +394,7 @@ func DBusPropertyInfoNewFromC(u unsafe.Pointer) *DBusPropertyInfo {
 	}
 
 	g := &DBusPropertyInfo{
+		Flags:     (DBusPropertyInfoFlags)(c.flags),
 		Name:      C.GoString(c.name),
 		Signature: C.GoString(c.signature),
 		native:    c,
@@ -407,6 +408,8 @@ func (recv *DBusPropertyInfo) toC() *C.GDBusPropertyInfo {
 		C.CString(recv.Name)
 	recv.native.signature =
 		C.CString(recv.Signature)
+	recv.native.flags =
+		(C.GDBusPropertyInfoFlags)(recv.Flags)
 
 	return recv.native
 }

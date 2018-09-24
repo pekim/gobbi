@@ -543,7 +543,7 @@ type SignalInvocationHint struct {
 	native   *C.GSignalInvocationHint
 	SignalId uint32
 	Detail   glib.Quark
-	// run_type : no type generator for SignalFlags, GSignalFlags
+	RunType  SignalFlags
 }
 
 func SignalInvocationHintNewFromC(u unsafe.Pointer) *SignalInvocationHint {
@@ -554,6 +554,7 @@ func SignalInvocationHintNewFromC(u unsafe.Pointer) *SignalInvocationHint {
 
 	g := &SignalInvocationHint{
 		Detail:   (glib.Quark)(c.detail),
+		RunType:  (SignalFlags)(c.run_type),
 		SignalId: (uint32)(c.signal_id),
 		native:   c,
 	}
@@ -566,6 +567,8 @@ func (recv *SignalInvocationHint) toC() *C.GSignalInvocationHint {
 		(C.guint)(recv.SignalId)
 	recv.native.detail =
 		(C.GQuark)(recv.Detail)
+	recv.native.run_type =
+		(C.GSignalFlags)(recv.RunType)
 
 	return recv.native
 }
@@ -576,7 +579,7 @@ type SignalQuery struct {
 	SignalId   uint32
 	SignalName string
 	// itype : no type generator for GType, GType
-	// signal_flags : no type generator for SignalFlags, GSignalFlags
+	SignalFlags SignalFlags
 	// return_type : no type generator for GType, GType
 	NParams uint32
 	// no type for param_types
@@ -589,10 +592,11 @@ func SignalQueryNewFromC(u unsafe.Pointer) *SignalQuery {
 	}
 
 	g := &SignalQuery{
-		NParams:    (uint32)(c.n_params),
-		SignalId:   (uint32)(c.signal_id),
-		SignalName: C.GoString(c.signal_name),
-		native:     c,
+		NParams:     (uint32)(c.n_params),
+		SignalFlags: (SignalFlags)(c.signal_flags),
+		SignalId:    (uint32)(c.signal_id),
+		SignalName:  C.GoString(c.signal_name),
+		native:      c,
 	}
 
 	return g
@@ -603,6 +607,8 @@ func (recv *SignalQuery) toC() *C.GSignalQuery {
 		(C.guint)(recv.SignalId)
 	recv.native.signal_name =
 		C.CString(recv.SignalName)
+	recv.native.signal_flags =
+		(C.GSignalFlags)(recv.SignalFlags)
 	recv.native.n_params =
 		(C.guint)(recv.NParams)
 
@@ -649,8 +655,8 @@ func (recv *TypeClass) PeekParent() uintptr {
 
 // TypeFundamentalInfo is a wrapper around the C record GTypeFundamentalInfo.
 type TypeFundamentalInfo struct {
-	native *C.GTypeFundamentalInfo
-	// type_flags : no type generator for TypeFundamentalFlags, GTypeFundamentalFlags
+	native    *C.GTypeFundamentalInfo
+	TypeFlags TypeFundamentalFlags
 }
 
 func TypeFundamentalInfoNewFromC(u unsafe.Pointer) *TypeFundamentalInfo {
@@ -659,12 +665,17 @@ func TypeFundamentalInfoNewFromC(u unsafe.Pointer) *TypeFundamentalInfo {
 		return nil
 	}
 
-	g := &TypeFundamentalInfo{native: c}
+	g := &TypeFundamentalInfo{
+		TypeFlags: (TypeFundamentalFlags)(c.type_flags),
+		native:    c,
+	}
 
 	return g
 }
 
 func (recv *TypeFundamentalInfo) toC() *C.GTypeFundamentalInfo {
+	recv.native.type_flags =
+		(C.GTypeFundamentalFlags)(recv.TypeFlags)
 
 	return recv.native
 }

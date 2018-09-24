@@ -877,7 +877,7 @@ type FileAttributeInfo struct {
 	native *C.GFileAttributeInfo
 	Name   string
 	Type   FileAttributeType
-	// flags : no type generator for FileAttributeInfoFlags, GFileAttributeInfoFlags
+	Flags  FileAttributeInfoFlags
 }
 
 func FileAttributeInfoNewFromC(u unsafe.Pointer) *FileAttributeInfo {
@@ -887,6 +887,7 @@ func FileAttributeInfoNewFromC(u unsafe.Pointer) *FileAttributeInfo {
 	}
 
 	g := &FileAttributeInfo{
+		Flags:  (FileAttributeInfoFlags)(c.flags),
 		Name:   C.GoString(c.name),
 		Type:   (FileAttributeType)(c._type),
 		native: c,
@@ -900,6 +901,8 @@ func (recv *FileAttributeInfo) toC() *C.GFileAttributeInfo {
 		C.CString(recv.Name)
 	recv.native._type =
 		(C.GFileAttributeType)(recv.Type)
+	recv.native.flags =
+		(C.GFileAttributeInfoFlags)(recv.Flags)
 
 	return recv.native
 }
@@ -940,7 +943,7 @@ func FileAttributeInfoListNew() *FileAttributeInfoList {
 	return retGo
 }
 
-// Unsupported : g_file_attribute_info_list_add : unsupported parameter flags : no type generator for FileAttributeInfoFlags, GFileAttributeInfoFlags
+// Unsupported : g_file_attribute_info_list_add : no return generator
 
 // Dup is a wrapper around the C function g_file_attribute_info_list_dup.
 func (recv *FileAttributeInfoList) Dup() *FileAttributeInfoList {

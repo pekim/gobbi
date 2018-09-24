@@ -2,7 +2,10 @@
 
 package gobject
 
-import "unsafe"
+import (
+	glib "github.com/pekim/gobbi/lib/glib"
+	"unsafe"
+)
 
 // #define GLIB_DISABLE_DEPRECATION_WARNINGS
 // #include <glib-object.h>
@@ -157,41 +160,41 @@ func FlagsGetValueByNick(flagsClass *FlagsClass, nick string) *FlagsValue {
 
 // Unsupported : g_param_spec_boxed : unsupported parameter boxed_type : no type generator for GType, GType
 
-// Unsupported : g_param_spec_char : unsupported parameter flags : no type generator for ParamFlags, GParamFlags
+// Unsupported : g_param_spec_char : no return generator
 
-// Unsupported : g_param_spec_double : unsupported parameter flags : no type generator for ParamFlags, GParamFlags
+// Unsupported : g_param_spec_double : no return generator
 
 // Unsupported : g_param_spec_enum : unsupported parameter enum_type : no type generator for GType, GType
 
 // Unsupported : g_param_spec_flags : unsupported parameter flags_type : no type generator for GType, GType
 
-// Unsupported : g_param_spec_float : unsupported parameter flags : no type generator for ParamFlags, GParamFlags
+// Unsupported : g_param_spec_float : no return generator
 
-// Unsupported : g_param_spec_int : unsupported parameter flags : no type generator for ParamFlags, GParamFlags
+// Unsupported : g_param_spec_int : no return generator
 
-// Unsupported : g_param_spec_int64 : unsupported parameter flags : no type generator for ParamFlags, GParamFlags
+// Unsupported : g_param_spec_int64 : no return generator
 
-// Unsupported : g_param_spec_long : unsupported parameter flags : no type generator for ParamFlags, GParamFlags
+// Unsupported : g_param_spec_long : no return generator
 
 // Unsupported : g_param_spec_object : unsupported parameter object_type : no type generator for GType, GType
 
 // Unsupported : g_param_spec_param : unsupported parameter param_type : no type generator for GType, GType
 
-// Unsupported : g_param_spec_pointer : unsupported parameter flags : no type generator for ParamFlags, GParamFlags
+// Unsupported : g_param_spec_pointer : no return generator
 
 // Unsupported : g_param_spec_pool_new : unsupported parameter type_prefixing : no type generator for gboolean, gboolean
 
-// Unsupported : g_param_spec_string : unsupported parameter flags : no type generator for ParamFlags, GParamFlags
+// Unsupported : g_param_spec_string : no return generator
 
-// Unsupported : g_param_spec_uchar : unsupported parameter flags : no type generator for ParamFlags, GParamFlags
+// Unsupported : g_param_spec_uchar : no return generator
 
-// Unsupported : g_param_spec_uint : unsupported parameter flags : no type generator for ParamFlags, GParamFlags
+// Unsupported : g_param_spec_uint : no return generator
 
-// Unsupported : g_param_spec_uint64 : unsupported parameter flags : no type generator for ParamFlags, GParamFlags
+// Unsupported : g_param_spec_uint64 : no return generator
 
-// Unsupported : g_param_spec_ulong : unsupported parameter flags : no type generator for ParamFlags, GParamFlags
+// Unsupported : g_param_spec_ulong : no return generator
 
-// Unsupported : g_param_spec_unichar : unsupported parameter flags : no type generator for ParamFlags, GParamFlags
+// Unsupported : g_param_spec_unichar : no return generator
 
 // Unsupported : g_param_spec_value_array : unsupported parameter element_spec : no type generator for ParamSpec, GParamSpec*
 
@@ -243,19 +246,99 @@ func SignalGetInvocationHint(instance uintptr) *SignalInvocationHint {
 
 // Unsupported : g_signal_handler_disconnect : no return generator
 
-// Unsupported : g_signal_handler_find : unsupported parameter mask : no type generator for SignalMatchType, GSignalMatchType
+// SignalHandlerFind is a wrapper around the C function g_signal_handler_find.
+func SignalHandlerFind(instance uintptr, mask SignalMatchType, signalId uint32, detail glib.Quark, closure *Closure, func_ uintptr, data uintptr) uint64 {
+	c_instance := (C.gpointer)(instance)
+
+	c_mask := (C.GSignalMatchType)(mask)
+
+	c_signal_id := (C.guint)(signalId)
+
+	c_detail := (C.GQuark)(detail)
+
+	c_closure := closure.toC()
+
+	c_func := (C.gpointer)(func_)
+
+	c_data := (C.gpointer)(data)
+
+	retC := C.g_signal_handler_find(c_instance, c_mask, c_signal_id, c_detail, c_closure, c_func, c_data)
+	retGo := (uint64)(retC)
+
+	return retGo
+}
 
 // Unsupported : g_signal_handler_is_connected : no return generator
 
 // Unsupported : g_signal_handler_unblock : no return generator
 
-// Unsupported : g_signal_handlers_block_matched : unsupported parameter mask : no type generator for SignalMatchType, GSignalMatchType
+// SignalHandlersBlockMatched is a wrapper around the C function g_signal_handlers_block_matched.
+func SignalHandlersBlockMatched(instance uintptr, mask SignalMatchType, signalId uint32, detail glib.Quark, closure *Closure, func_ uintptr, data uintptr) uint32 {
+	c_instance := (C.gpointer)(instance)
+
+	c_mask := (C.GSignalMatchType)(mask)
+
+	c_signal_id := (C.guint)(signalId)
+
+	c_detail := (C.GQuark)(detail)
+
+	c_closure := closure.toC()
+
+	c_func := (C.gpointer)(func_)
+
+	c_data := (C.gpointer)(data)
+
+	retC := C.g_signal_handlers_block_matched(c_instance, c_mask, c_signal_id, c_detail, c_closure, c_func, c_data)
+	retGo := (uint32)(retC)
+
+	return retGo
+}
 
 // Unsupported : g_signal_handlers_destroy : no return generator
 
-// Unsupported : g_signal_handlers_disconnect_matched : unsupported parameter mask : no type generator for SignalMatchType, GSignalMatchType
+// SignalHandlersDisconnectMatched is a wrapper around the C function g_signal_handlers_disconnect_matched.
+func SignalHandlersDisconnectMatched(instance uintptr, mask SignalMatchType, signalId uint32, detail glib.Quark, closure *Closure, func_ uintptr, data uintptr) uint32 {
+	c_instance := (C.gpointer)(instance)
 
-// Unsupported : g_signal_handlers_unblock_matched : unsupported parameter mask : no type generator for SignalMatchType, GSignalMatchType
+	c_mask := (C.GSignalMatchType)(mask)
+
+	c_signal_id := (C.guint)(signalId)
+
+	c_detail := (C.GQuark)(detail)
+
+	c_closure := closure.toC()
+
+	c_func := (C.gpointer)(func_)
+
+	c_data := (C.gpointer)(data)
+
+	retC := C.g_signal_handlers_disconnect_matched(c_instance, c_mask, c_signal_id, c_detail, c_closure, c_func, c_data)
+	retGo := (uint32)(retC)
+
+	return retGo
+}
+
+// SignalHandlersUnblockMatched is a wrapper around the C function g_signal_handlers_unblock_matched.
+func SignalHandlersUnblockMatched(instance uintptr, mask SignalMatchType, signalId uint32, detail glib.Quark, closure *Closure, func_ uintptr, data uintptr) uint32 {
+	c_instance := (C.gpointer)(instance)
+
+	c_mask := (C.GSignalMatchType)(mask)
+
+	c_signal_id := (C.guint)(signalId)
+
+	c_detail := (C.GQuark)(detail)
+
+	c_closure := closure.toC()
+
+	c_func := (C.gpointer)(func_)
+
+	c_data := (C.gpointer)(data)
+
+	retC := C.g_signal_handlers_unblock_matched(c_instance, c_mask, c_signal_id, c_detail, c_closure, c_func, c_data)
+	retGo := (uint32)(retC)
+
+	return retGo
+}
 
 // Unsupported : g_signal_has_handler_pending : unsupported parameter may_be_blocked : no type generator for gboolean, gboolean
 
@@ -360,7 +443,7 @@ func StrdupValueContents(value *Value) string {
 
 // Unsupported : g_type_init : no return generator
 
-// Unsupported : g_type_init_with_debug_flags : unsupported parameter debug_flags : no type generator for TypeDebugFlags, GTypeDebugFlags
+// Unsupported : g_type_init_with_debug_flags : no return generator
 
 // Unsupported : g_type_interface_add_prerequisite : unsupported parameter interface_type : no type generator for GType, GType
 

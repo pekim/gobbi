@@ -83,6 +83,11 @@ func (ns *Namespace) aliasForName(name string) (*Alias, bool) {
 	return alias, alias != nil
 }
 
+func (ns *Namespace) bitfieldForName(name string) (*Enumeration, bool) {
+	bitfield := ns.Bitfields.forName(name)
+	return bitfield, bitfield != nil
+}
+
 func (ns *Namespace) enumForName(name string) (*Enumeration, bool) {
 	enum := ns.Enumerations.forName(name)
 	return enum, enum != nil

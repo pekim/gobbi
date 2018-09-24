@@ -43,7 +43,7 @@ func (recv *Application) toC() *C.GApplication {
 	return recv.native
 }
 
-// Unsupported : g_application_new : unsupported parameter flags : no type generator for ApplicationFlags, GApplicationFlags
+// Unsupported : g_application_new : no return generator
 
 // Unsupported : g_application_activate : no return generator
 
@@ -65,7 +65,13 @@ func (recv *Application) GetApplicationId() string {
 
 // Unsupported : g_application_get_dbus_connection : no return generator
 
-// Unsupported : g_application_get_flags : no return generator
+// GetFlags is a wrapper around the C function g_application_get_flags.
+func (recv *Application) GetFlags() ApplicationFlags {
+	retC := C.g_application_get_flags((*C.GApplication)(recv.native))
+	retGo := (ApplicationFlags)(retC)
+
+	return retGo
+}
 
 // GetInactivityTimeout is a wrapper around the C function g_application_get_inactivity_timeout.
 func (recv *Application) GetInactivityTimeout() uint32 {
@@ -103,7 +109,7 @@ func (recv *Application) GetInactivityTimeout() uint32 {
 
 // Unsupported : g_application_set_default : no return generator
 
-// Unsupported : g_application_set_flags : unsupported parameter flags : no type generator for ApplicationFlags, GApplicationFlags
+// Unsupported : g_application_set_flags : no return generator
 
 // Unsupported : g_application_set_inactivity_timeout : no return generator
 
@@ -222,7 +228,13 @@ func (recv *TlsConnection) toC() *C.GTlsConnection {
 
 // Unsupported : g_tls_connection_get_peer_certificate : no return generator
 
-// Unsupported : g_tls_connection_get_peer_certificate_errors : no return generator
+// GetPeerCertificateErrors is a wrapper around the C function g_tls_connection_get_peer_certificate_errors.
+func (recv *TlsConnection) GetPeerCertificateErrors() TlsCertificateFlags {
+	retC := C.g_tls_connection_get_peer_certificate_errors((*C.GTlsConnection)(recv.native))
+	retGo := (TlsCertificateFlags)(retC)
+
+	return retGo
+}
 
 // GetRehandshakeMode is a wrapper around the C function g_tls_connection_get_rehandshake_mode.
 func (recv *TlsConnection) GetRehandshakeMode() TlsRehandshakeMode {

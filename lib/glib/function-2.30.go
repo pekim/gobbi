@@ -60,7 +60,18 @@ func FormatSize(size uint64) string {
 	return retGo
 }
 
-// Unsupported : g_format_size_full : unsupported parameter flags : no type generator for FormatSizeFlags, GFormatSizeFlags
+// FormatSizeFull is a wrapper around the C function g_format_size_full.
+func FormatSizeFull(size uint64, flags FormatSizeFlags) string {
+	c_size := (C.guint64)(size)
+
+	c_flags := (C.GFormatSizeFlags)(flags)
+
+	retC := C.g_format_size_full(c_size, c_flags)
+	retGo := C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // Mkdtemp is a wrapper around the C function g_mkdtemp.
 func Mkdtemp(tmpl string) string {

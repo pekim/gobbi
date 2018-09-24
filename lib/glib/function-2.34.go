@@ -35,4 +35,4 @@ func ComputeChecksumForBytes(checksumType ChecksumType, data *Bytes) string {
 
 // Unsupported : g_test_add_data_func_full : unsupported parameter test_func : no type generator for TestDataFunc, GTestDataFunc
 
-// Unsupported : g_test_expect_message : unsupported parameter log_level : no type generator for LogLevelFlags, GLogLevelFlags
+// Unsupported : g_test_expect_message : no return generator

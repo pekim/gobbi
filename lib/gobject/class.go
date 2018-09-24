@@ -68,11 +68,11 @@ func (recv *Object) toC() *C.GObject {
 
 // Unsupported : g_object_add_weak_pointer : unsupported parameter weak_pointer_location : no type generator for gpointer, gpointer*
 
-// Unsupported : g_object_bind_property : unsupported parameter flags : no type generator for BindingFlags, GBindingFlags
+// Unsupported : g_object_bind_property : no return generator
 
-// Unsupported : g_object_bind_property_full : unsupported parameter flags : no type generator for BindingFlags, GBindingFlags
+// Unsupported : g_object_bind_property_full : unsupported parameter transform_to : no type generator for BindingTransformFunc, GBindingTransformFunc
 
-// Unsupported : g_object_bind_property_with_closures : unsupported parameter flags : no type generator for BindingFlags, GBindingFlags
+// Unsupported : g_object_bind_property_with_closures : no return generator
 
 // Unsupported : g_object_connect : unsupported parameter ... : varargs
 
@@ -190,8 +190,8 @@ func (recv *Object) StealQdata(quark glib.Quark) uintptr {
 type ParamSpec struct {
 	native *C.GParamSpec
 	// g_type_instance : record
-	Name string
-	// flags : no type generator for ParamFlags, GParamFlags
+	Name  string
+	Flags ParamFlags
 	// value_type : no type generator for GType, GType
 	// owner_type : no type generator for GType, GType
 	// Private : _nick
@@ -208,6 +208,7 @@ func ParamSpecNewFromC(u unsafe.Pointer) *ParamSpec {
 	}
 
 	g := &ParamSpec{
+		Flags:  (ParamFlags)(c.flags),
 		Name:   C.GoString(c.name),
 		native: c,
 	}
@@ -218,6 +219,8 @@ func ParamSpecNewFromC(u unsafe.Pointer) *ParamSpec {
 func (recv *ParamSpec) toC() *C.GParamSpec {
 	recv.native.name =
 		C.CString(recv.Name)
+	recv.native.flags =
+		(C.GParamFlags)(recv.Flags)
 
 	return recv.native
 }

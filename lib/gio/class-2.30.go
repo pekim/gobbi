@@ -49,7 +49,13 @@ func (recv *DBusInterfaceSkeleton) toC() *C.GDBusInterfaceSkeleton {
 
 // Unsupported : g_dbus_interface_skeleton_get_connection : no return generator
 
-// Unsupported : g_dbus_interface_skeleton_get_flags : no return generator
+// GetFlags is a wrapper around the C function g_dbus_interface_skeleton_get_flags.
+func (recv *DBusInterfaceSkeleton) GetFlags() DBusInterfaceSkeletonFlags {
+	retC := C.g_dbus_interface_skeleton_get_flags((*C.GDBusInterfaceSkeleton)(recv.native))
+	retGo := (DBusInterfaceSkeletonFlags)(retC)
+
+	return retGo
+}
 
 // GetInfo is a wrapper around the C function g_dbus_interface_skeleton_get_info.
 func (recv *DBusInterfaceSkeleton) GetInfo() *DBusInterfaceInfo {
@@ -79,7 +85,7 @@ func (recv *DBusInterfaceSkeleton) GetVtable() *DBusInterfaceVTable {
 
 // Unsupported : g_dbus_interface_skeleton_has_connection : unsupported parameter connection : no type generator for DBusConnection, GDBusConnection*
 
-// Unsupported : g_dbus_interface_skeleton_set_flags : unsupported parameter flags : no type generator for DBusInterfaceSkeletonFlags, GDBusInterfaceSkeletonFlags
+// Unsupported : g_dbus_interface_skeleton_set_flags : no return generator
 
 // Unsupported : g_dbus_interface_skeleton_unexport : no return generator
 
@@ -112,13 +118,19 @@ func (recv *DBusObjectManagerClient) toC() *C.GDBusObjectManagerClient {
 
 // Unsupported : g_dbus_object_manager_client_new_for_bus_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
 
-// Unsupported : g_dbus_object_manager_client_new_for_bus_sync : unsupported parameter flags : no type generator for DBusObjectManagerClientFlags, GDBusObjectManagerClientFlags
+// Unsupported : g_dbus_object_manager_client_new_for_bus_sync : unsupported parameter get_proxy_type_func : no type generator for DBusProxyTypeFunc, GDBusProxyTypeFunc
 
 // Unsupported : g_dbus_object_manager_client_new_sync : unsupported parameter connection : no type generator for DBusConnection, GDBusConnection*
 
 // Unsupported : g_dbus_object_manager_client_get_connection : no return generator
 
-// Unsupported : g_dbus_object_manager_client_get_flags : no return generator
+// GetFlags is a wrapper around the C function g_dbus_object_manager_client_get_flags.
+func (recv *DBusObjectManagerClient) GetFlags() DBusObjectManagerClientFlags {
+	retC := C.g_dbus_object_manager_client_get_flags((*C.GDBusObjectManagerClient)(recv.native))
+	retGo := (DBusObjectManagerClientFlags)(retC)
+
+	return retGo
+}
 
 // GetName is a wrapper around the C function g_dbus_object_manager_client_get_name.
 func (recv *DBusObjectManagerClient) GetName() string {
@@ -347,7 +359,7 @@ func (recv *TlsPassword) toC() *C.GTlsPassword {
 	return recv.native
 }
 
-// Unsupported : g_tls_password_new : unsupported parameter flags : no type generator for TlsPasswordFlags, GTlsPasswordFlags
+// Unsupported : g_tls_password_new : no return generator
 
 // GetDescription is a wrapper around the C function g_tls_password_get_description.
 func (recv *TlsPassword) GetDescription() string {
@@ -357,7 +369,13 @@ func (recv *TlsPassword) GetDescription() string {
 	return retGo
 }
 
-// Unsupported : g_tls_password_get_flags : no return generator
+// GetFlags is a wrapper around the C function g_tls_password_get_flags.
+func (recv *TlsPassword) GetFlags() TlsPasswordFlags {
+	retC := C.g_tls_password_get_flags((*C.GTlsPassword)(recv.native))
+	retGo := (TlsPasswordFlags)(retC)
+
+	return retGo
+}
 
 // Unsupported : g_tls_password_get_value : unsupported parameter length : no type generator for gsize, gsize*
 
@@ -371,7 +389,7 @@ func (recv *TlsPassword) GetWarning() string {
 
 // Unsupported : g_tls_password_set_description : no return generator
 
-// Unsupported : g_tls_password_set_flags : unsupported parameter flags : no type generator for TlsPasswordFlags, GTlsPasswordFlags
+// Unsupported : g_tls_password_set_flags : no return generator
 
 // Unsupported : g_tls_password_set_value : unsupported parameter value : no param type
 

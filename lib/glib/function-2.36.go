@@ -3,6 +3,8 @@
 
 package glib
 
+import "unsafe"
+
 // #define GLIB_DISABLE_DEPRECATION_WARNINGS
 // #include <glib.h>
 // #include <glib/gstdio.h>
@@ -20,8 +22,18 @@ func GetNumProcessors() uint32 {
 	return retGo
 }
 
-// Unsupported : g_unix_fd_add : unsupported parameter condition : no type generator for IOCondition, GIOCondition
+// Unsupported : g_unix_fd_add : unsupported parameter function : no type generator for UnixFDSourceFunc, GUnixFDSourceFunc
 
-// Unsupported : g_unix_fd_add_full : unsupported parameter condition : no type generator for IOCondition, GIOCondition
+// Unsupported : g_unix_fd_add_full : unsupported parameter function : no type generator for UnixFDSourceFunc, GUnixFDSourceFunc
 
-// Unsupported : g_unix_fd_source_new : unsupported parameter condition : no type generator for IOCondition, GIOCondition
+// UnixFdSourceNew is a wrapper around the C function g_unix_fd_source_new.
+func UnixFdSourceNew(fd int32, condition IOCondition) *Source {
+	c_fd := (C.gint)(fd)
+
+	c_condition := (C.GIOCondition)(condition)
+
+	retC := C.g_unix_fd_source_new(c_fd, c_condition)
+	retGo := SourceNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}

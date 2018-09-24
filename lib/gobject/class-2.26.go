@@ -31,7 +31,13 @@ func (recv *Binding) toC() *C.GBinding {
 	return recv.native
 }
 
-// Unsupported : g_binding_get_flags : no return generator
+// GetFlags is a wrapper around the C function g_binding_get_flags.
+func (recv *Binding) GetFlags() BindingFlags {
+	retC := C.g_binding_get_flags((*C.GBinding)(recv.native))
+	retGo := (BindingFlags)(retC)
+
+	return retGo
+}
 
 // Unsupported : g_binding_get_source : no return generator
 

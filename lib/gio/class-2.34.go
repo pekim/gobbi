@@ -41,13 +41,11 @@ func (recv *TestDBus) toC() *C.GTestDBus {
 	return recv.native
 }
 
-// Unsupported : g_test_dbus_new : unsupported parameter flags : no type generator for TestDBusFlags, GTestDBusFlags
+// Unsupported : g_test_dbus_new : no return generator
 
 // Unsupported : g_test_dbus_add_service_dir : no return generator
 
 // Unsupported : g_test_dbus_down : no return generator
-
-// Unsupported : g_test_dbus_get_flags : no return generator
 
 // Unsupported : g_test_dbus_stop : no return generator
 

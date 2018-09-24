@@ -34,4 +34,4 @@ func TestGetDir(fileType TestFileType) string {
 
 // Unsupported : g_test_subprocess : no return generator
 
-// Unsupported : g_test_trap_subprocess : unsupported parameter test_flags : no type generator for TestSubprocessFlags, GTestSubprocessFlags
+// Unsupported : g_test_trap_subprocess : no return generator

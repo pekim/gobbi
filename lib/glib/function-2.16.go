@@ -204,7 +204,7 @@ func TestTimerLast() float64 {
 
 // Unsupported : g_test_timer_start : no return generator
 
-// Unsupported : g_test_trap_fork : unsupported parameter test_trap_flags : no type generator for TestTrapFlags, GTestTrapFlags
+// Unsupported : g_test_trap_fork : no return generator
 
 // Unsupported : g_test_trap_has_passed : no return generator
 

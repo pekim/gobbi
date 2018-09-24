@@ -413,7 +413,7 @@ func FileOpenTmp(tmpl string) (int32, string, error) {
 	return retGo, nameUsed, goThrowableError
 }
 
-// Unsupported : g_file_test : unsupported parameter test : no type generator for FileTest, GFileTest
+// Unsupported : g_file_test : no return generator
 
 // FilenameFromUri is a wrapper around the C function g_filename_from_uri.
 func FilenameFromUri(uri string) (string, string, error) {
@@ -664,21 +664,40 @@ func KeyFileErrorQuark() Quark {
 
 // Unsupported : g_locale_to_utf8 : unsupported parameter opsysstring : no param type
 
-// Unsupported : g_log : unsupported parameter log_level : no type generator for LogLevelFlags, GLogLevelFlags
+// Unsupported : g_log : unsupported parameter ... : varargs
 
-// Unsupported : g_log_default_handler : unsupported parameter log_level : no type generator for LogLevelFlags, GLogLevelFlags
+// Unsupported : g_log_default_handler : no return generator
 
 // Unsupported : g_log_remove_handler : no return generator
 
-// Unsupported : g_log_set_always_fatal : unsupported parameter fatal_mask : no type generator for LogLevelFlags, GLogLevelFlags
+// LogSetAlwaysFatal is a wrapper around the C function g_log_set_always_fatal.
+func LogSetAlwaysFatal(fatalMask LogLevelFlags) LogLevelFlags {
+	c_fatal_mask := (C.GLogLevelFlags)(fatalMask)
 
-// Unsupported : g_log_set_fatal_mask : unsupported parameter fatal_mask : no type generator for LogLevelFlags, GLogLevelFlags
+	retC := C.g_log_set_always_fatal(c_fatal_mask)
+	retGo := (LogLevelFlags)(retC)
 
-// Unsupported : g_log_set_handler : unsupported parameter log_levels : no type generator for LogLevelFlags, GLogLevelFlags
+	return retGo
+}
 
-// Unsupported : g_log_structured_standard : unsupported parameter log_level : no type generator for LogLevelFlags, GLogLevelFlags
+// LogSetFatalMask is a wrapper around the C function g_log_set_fatal_mask.
+func LogSetFatalMask(logDomain string, fatalMask LogLevelFlags) LogLevelFlags {
+	c_log_domain := C.CString(logDomain)
+	defer C.free(unsafe.Pointer(c_log_domain))
 
-// Unsupported : g_logv : unsupported parameter log_level : no type generator for LogLevelFlags, GLogLevelFlags
+	c_fatal_mask := (C.GLogLevelFlags)(fatalMask)
+
+	retC := C.g_log_set_fatal_mask(c_log_domain, c_fatal_mask)
+	retGo := (LogLevelFlags)(retC)
+
+	return retGo
+}
+
+// Unsupported : g_log_set_handler : unsupported parameter log_func : no type generator for LogFunc, GLogFunc
+
+// Unsupported : g_log_structured_standard : unsupported parameter ... : varargs
+
+// Unsupported : g_logv : unsupported parameter args : no type generator for va_list, va_list
 
 // MainContextDefault is a wrapper around the C function g_main_context_default.
 func MainContextDefault() *MainContext {
