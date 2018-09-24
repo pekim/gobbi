@@ -57,13 +57,19 @@ func (t *Type) qnameAndGenerator(targetType *Type) (*QName, TypeGenerator) {
 		return qname, typeGenerator
 	}
 
-	_, found = qname.ns.bitfieldForName(qname.name)
+	enum, found := qname.ns.bitfieldForName(qname.name)
 	if found {
+		if enum.goTypeName != "" {
+			qname.name = enum.goTypeName
+		}
 		return qname, TypeGeneratorEnumerationNew(targetType)
 	}
 
-	_, found = qname.ns.enumForName(qname.name)
+	enum, found = qname.ns.enumForName(qname.name)
 	if found {
+		if enum.goTypeName != "" {
+			qname.name = enum.goTypeName
+		}
 		return qname, TypeGeneratorEnumerationNew(targetType)
 	}
 

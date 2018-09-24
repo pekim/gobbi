@@ -484,7 +484,7 @@ func FileOpenTmp(tmpl string) (int32, string, error) {
 }
 
 // FileTest is a wrapper around the C function g_file_test.
-func FileTest(filename string, test FileTest) bool {
+func FileTest(filename string, test GFileTest) bool {
 	c_filename := C.CString(filename)
 	defer C.free(unsafe.Pointer(c_filename))
 

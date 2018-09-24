@@ -39,6 +39,7 @@ func (e *Enumeration) version() string {
 
 func (e *Enumeration) mergeAddenda(addenda *Enumeration) {
 	e.Blacklist = addenda.Blacklist
+	e.GoTypeName = addenda.GoTypeName
 	e.Members.mergeAddenda(addenda.Members)
 }
 

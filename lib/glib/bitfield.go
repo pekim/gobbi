@@ -25,14 +25,14 @@ const (
 	ASCII_XDIGIT AsciiType = 1024
 )
 
-type FileTest C.GFileTest
+type GFileTest C.GFileTest
 
 const (
-	FILE_TEST_IS_REGULAR    FileTest = 1
-	FILE_TEST_IS_SYMLINK    FileTest = 2
-	FILE_TEST_IS_DIR        FileTest = 4
-	FILE_TEST_IS_EXECUTABLE FileTest = 8
-	FILE_TEST_EXISTS        FileTest = 16
+	FILE_TEST_IS_REGULAR    GFileTest = 1
+	FILE_TEST_IS_SYMLINK    GFileTest = 2
+	FILE_TEST_IS_DIR        GFileTest = 4
+	FILE_TEST_IS_EXECUTABLE GFileTest = 8
+	FILE_TEST_EXISTS        GFileTest = 16
 )
 
 type FormatSizeFlags C.GFormatSizeFlags
