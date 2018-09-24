@@ -1,5 +1,6 @@
 package generate
 
+import "C"
 import (
 	"fmt"
 	"os"
@@ -34,9 +35,29 @@ func (ns *Namespace) generateFile(name string, generateContent func(f *jen.File)
 // for the namespace's packages.
 func (ns *Namespace) generatePackageFile() {
 	ns.generateFile("package", func(f *jen.File) {
+		// pkg-config
 		for _, pkg := range ns.repo.Packages {
 			f.CgoPreamble(fmt.Sprintf("// #cgo pkg-config: %s", pkg.Name))
 		}
+	})
+}
+
+func (ns *Namespace) generateBooleanFile() {
+	ns.generateFile("boolean", func(f *jen.File) {
+		ns.cgoPreambleHeaders(f)
+
+		f.
+			Func().
+			Id("boolToGboolean").
+			Params(jen.Id("b").Id("bool")).
+			Parens(jen.Qual("C", "gboolean")).
+			BlockFunc(func(g *jen.Group) {
+				g.
+					If(jen.Id("b")).
+					Block(jen.Return(jen.Qual("C", "TRUE")))
+
+				g.Return(jen.Qual("C", "FALSE"))
+			})
 	})
 }
 

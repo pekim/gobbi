@@ -245,15 +245,11 @@ func (recv *Socket) Listen() (bool, error) {
 
 // Shutdown is a wrapper around the C function g_socket_shutdown.
 func (recv *Socket) Shutdown(shutdownRead bool, shutdownWrite bool) (bool, error) {
-	c_shutdown_read := C.FALSE
-	if shutdownRead {
-		c_shutdown_read = C.TRUE
-	}
+	c_shutdown_read :=
+		boolToGboolean(shutdownRead)
 
-	c_shutdown_write := C.FALSE
-	if shutdownWrite {
-		c_shutdown_write = C.TRUE
-	}
+	c_shutdown_write :=
+		boolToGboolean(shutdownWrite)
 
 	var cThrowableError *C.GError
 

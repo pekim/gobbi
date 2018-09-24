@@ -43,17 +43,8 @@ func (t *TypeGeneratorBoolean) generateParamOutCallArgument(g *jen.Group, cVarNa
 }
 
 func (t *TypeGeneratorBoolean) generateParamCVar(g *jen.Group, cVarName string, goVarName string, transferOwnership string) {
-	g.
-		Id(cVarName).
-		Op(":=").
-		Qual("C", "FALSE")
-
-	g.
-		If(jen.Id(goVarName)).
-		Block(jen.
-			Id(cVarName).
-			Op("=").
-			Qual("C", "TRUE"))
+	g.Id(cVarName).Op(":=")
+	t.generateCallBoolToGboolean(g, jen.Id(goVarName))
 }
 
 func (t *TypeGeneratorBoolean) generateParamOutCVar(g *jen.Group, cVarName string) {
@@ -81,19 +72,11 @@ func (t *TypeGeneratorBoolean) generateCToGo(cVarReference *jen.Statement) *jen.
 }
 
 func (t *TypeGeneratorBoolean) generateGoToC(g *jen.Group, goVarReference *jen.Statement) {
+	t.generateCallBoolToGboolean(g, goVarReference)
+}
+
+func (t *TypeGeneratorBoolean) generateCallBoolToGboolean(g *jen.Group, goVarReference *jen.Statement) {
 	g.
-		Func().
-		Params().
-		Id("bool").
-		BlockFunc(func(g *jen.Group) {
-			g.
-				If(goVarReference).
-				BlockFunc(func(g *jen.Group) {
-
-					g.Return(jen.Qual("C", "TRUE"))
-				})
-
-			g.Return(jen.Qual("C", "FALSE"))
-		}).
-		Call()
+		Id("boolToGboolean").
+		Call(goVarReference)
 }

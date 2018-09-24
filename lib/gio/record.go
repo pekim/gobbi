@@ -1349,12 +1349,7 @@ func FileIfaceNewFromC(u unsafe.Pointer) *FileIface {
 
 func (recv *FileIface) toC() *C.GFileIface {
 	recv.native.supports_thread_contexts =
-		func() bool {
-			if recv.SupportsThreadContexts {
-				return C.TRUE
-			}
-			return C.FALSE
-		}()
+		boolToGboolean(recv.SupportsThreadContexts)
 
 	return recv.native
 }

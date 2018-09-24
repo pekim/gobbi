@@ -31,10 +31,8 @@ func StrMatchString(searchTerm string, potentialHit string, acceptAlternates boo
 	c_potential_hit := C.CString(potentialHit)
 	defer C.free(unsafe.Pointer(c_potential_hit))
 
-	c_accept_alternates := C.FALSE
-	if acceptAlternates {
-		c_accept_alternates = C.TRUE
-	}
+	c_accept_alternates :=
+		boolToGboolean(acceptAlternates)
 
 	retC := C.g_str_match_string(c_search_term, c_potential_hit, c_accept_alternates)
 	retGo := retC == C.TRUE

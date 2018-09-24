@@ -77,10 +77,8 @@ func Setenv(variable string, value string, overwrite bool) bool {
 	c_value := C.CString(value)
 	defer C.free(unsafe.Pointer(c_value))
 
-	c_overwrite := C.FALSE
-	if overwrite {
-		c_overwrite = C.TRUE
-	}
+	c_overwrite :=
+		boolToGboolean(overwrite)
 
 	retC := C.g_setenv(c_variable, c_value, c_overwrite)
 	retGo := retC == C.TRUE

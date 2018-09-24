@@ -1067,10 +1067,8 @@ func (recv *MainContext) FindSourceByUserData(userData uintptr) *Source {
 
 // Iteration is a wrapper around the C function g_main_context_iteration.
 func (recv *MainContext) Iteration(mayBlock bool) bool {
-	c_may_block := C.FALSE
-	if mayBlock {
-		c_may_block = C.TRUE
-	}
+	c_may_block :=
+		boolToGboolean(mayBlock)
 
 	retC := C.g_main_context_iteration((*C.GMainContext)(recv.native), c_may_block)
 	retGo := retC == C.TRUE
@@ -1139,10 +1137,8 @@ func (recv *MainLoop) toC() *C.GMainLoop {
 func MainLoopNew(context *MainContext, isRunning bool) *MainLoop {
 	c_context := context.toC()
 
-	c_is_running := C.FALSE
-	if isRunning {
-		c_is_running = C.TRUE
-	}
+	c_is_running :=
+		boolToGboolean(isRunning)
 
 	retC := C.g_main_loop_new(c_context, c_is_running)
 	retGo := MainLoopNewFromC(unsafe.Pointer(retC))
@@ -1206,10 +1202,8 @@ func MappedFileNew(filename string, writable bool) (*MappedFile, error) {
 	c_filename := C.CString(filename)
 	defer C.free(unsafe.Pointer(c_filename))
 
-	c_writable := C.FALSE
-	if writable {
-		c_writable = C.TRUE
-	}
+	c_writable :=
+		boolToGboolean(writable)
 
 	var cThrowableError *C.GError
 
@@ -1228,10 +1222,8 @@ func MappedFileNew(filename string, writable bool) (*MappedFile, error) {
 func MappedFileNewFromFd(fd int32, writable bool) (*MappedFile, error) {
 	c_fd := (C.gint)(fd)
 
-	c_writable := C.FALSE
-	if writable {
-		c_writable = C.TRUE
-	}
+	c_writable :=
+		boolToGboolean(writable)
 
 	var cThrowableError *C.GError
 
@@ -2787,10 +2779,8 @@ func (recv *String) Erase(pos int64, len int64) *String {
 
 // Free is a wrapper around the C function g_string_free.
 func (recv *String) Free(freeSegment bool) string {
-	c_free_segment := C.FALSE
-	if freeSegment {
-		c_free_segment = C.TRUE
-	}
+	c_free_segment :=
+		boolToGboolean(freeSegment)
 
 	retC := C.g_string_free((*C.GString)(recv.native), c_free_segment)
 	retGo := C.GoString(retC)
@@ -3037,47 +3027,17 @@ func TestConfigNewFromC(u unsafe.Pointer) *TestConfig {
 
 func (recv *TestConfig) toC() *C.GTestConfig {
 	recv.native.test_initialized =
-		func() bool {
-			if recv.TestInitialized {
-				return C.TRUE
-			}
-			return C.FALSE
-		}()
+		boolToGboolean(recv.TestInitialized)
 	recv.native.test_quick =
-		func() bool {
-			if recv.TestQuick {
-				return C.TRUE
-			}
-			return C.FALSE
-		}()
+		boolToGboolean(recv.TestQuick)
 	recv.native.test_perf =
-		func() bool {
-			if recv.TestPerf {
-				return C.TRUE
-			}
-			return C.FALSE
-		}()
+		boolToGboolean(recv.TestPerf)
 	recv.native.test_verbose =
-		func() bool {
-			if recv.TestVerbose {
-				return C.TRUE
-			}
-			return C.FALSE
-		}()
+		boolToGboolean(recv.TestVerbose)
 	recv.native.test_quiet =
-		func() bool {
-			if recv.TestQuiet {
-				return C.TRUE
-			}
-			return C.FALSE
-		}()
+		boolToGboolean(recv.TestQuiet)
 	recv.native.test_undefined =
-		func() bool {
-			if recv.TestUndefined {
-				return C.TRUE
-			}
-			return C.FALSE
-		}()
+		boolToGboolean(recv.TestUndefined)
 
 	return recv.native
 }
@@ -3173,12 +3133,7 @@ func (recv *ThreadPool) toC() *C.GThreadPool {
 	recv.native.user_data =
 		(C.gpointer)(recv.UserData)
 	recv.native.exclusive =
-		func() bool {
-			if recv.Exclusive {
-				return C.TRUE
-			}
-			return C.FALSE
-		}()
+		boolToGboolean(recv.Exclusive)
 
 	return recv.native
 }

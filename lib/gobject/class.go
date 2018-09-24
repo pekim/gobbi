@@ -304,12 +304,7 @@ func ParamSpecBooleanNewFromC(u unsafe.Pointer) *ParamSpecBoolean {
 
 func (recv *ParamSpecBoolean) toC() *C.GParamSpecBoolean {
 	recv.native.default_value =
-		func() bool {
-			if recv.DefaultValue {
-				return C.TRUE
-			}
-			return C.FALSE
-		}()
+		boolToGboolean(recv.DefaultValue)
 
 	return recv.native
 }

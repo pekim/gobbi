@@ -240,10 +240,8 @@ func UriEscapeString(unescaped string, reservedCharsAllowed string, allowUtf8 bo
 	c_reserved_chars_allowed := C.CString(reservedCharsAllowed)
 	defer C.free(unsafe.Pointer(c_reserved_chars_allowed))
 
-	c_allow_utf8 := C.FALSE
-	if allowUtf8 {
-		c_allow_utf8 = C.TRUE
-	}
+	c_allow_utf8 :=
+		boolToGboolean(allowUtf8)
 
 	retC := C.g_uri_escape_string(c_unescaped, c_reserved_chars_allowed, c_allow_utf8)
 	retGo := C.GoString(retC)
