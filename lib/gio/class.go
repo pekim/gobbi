@@ -4,6 +4,7 @@ package gio
 
 import (
 	glib "github.com/pekim/gobbi/lib/glib"
+	gobject "github.com/pekim/gobbi/lib/gobject"
 	"unsafe"
 )
 
@@ -25,7 +26,7 @@ import "C"
 // AppLaunchContext is a wrapper around the C record GAppLaunchContext.
 type AppLaunchContext struct {
 	native *C.GAppLaunchContext
-	// parent_instance : no type generator for GObject.Object, GObject
+	// parent_instance : record
 	// Private : priv
 }
 
@@ -45,7 +46,13 @@ func (recv *AppLaunchContext) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : g_app_launch_context_new : no return generator
+// AppLaunchContextNew is a wrapper around the C function g_app_launch_context_new.
+func AppLaunchContextNew() *AppLaunchContext {
+	retC := C.g_app_launch_context_new()
+	retGo := AppLaunchContextNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // Unsupported : g_app_launch_context_get_display : unsupported parameter info : no type generator for AppInfo, GAppInfo*
 
@@ -90,8 +97,6 @@ func (recv *ApplicationCommandLine) ToC() unsafe.Pointer {
 
 // Unsupported : g_application_command_line_get_platform_data : return type : Blacklisted record : GVariant
 
-// Unsupported : g_application_command_line_get_stdin : no return generator
-
 // Unsupported : g_application_command_line_print : unsupported parameter ... : varargs
 
 // Unsupported : g_application_command_line_printerr : unsupported parameter ... : varargs
@@ -101,7 +106,7 @@ func (recv *ApplicationCommandLine) ToC() unsafe.Pointer {
 // BufferedInputStream is a wrapper around the C record GBufferedInputStream.
 type BufferedInputStream struct {
 	native *C.GBufferedInputStream
-	// parent_instance : no type generator for FilterInputStream, GFilterInputStream
+	// parent_instance : record
 	// Private : priv
 }
 
@@ -121,13 +126,48 @@ func (recv *BufferedInputStream) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : g_buffered_input_stream_new : unsupported parameter base_stream : no type generator for InputStream, GInputStream*
+// BufferedInputStreamNew is a wrapper around the C function g_buffered_input_stream_new.
+func BufferedInputStreamNew(baseStream *InputStream) *InputStream {
+	c_base_stream := (*C.GInputStream)(baseStream.ToC())
 
-// Unsupported : g_buffered_input_stream_new_sized : unsupported parameter base_stream : no type generator for InputStream, GInputStream*
+	retC := C.g_buffered_input_stream_new(c_base_stream)
+	retGo := InputStreamNewFromC(unsafe.Pointer(retC))
 
-// Unsupported : g_buffered_input_stream_fill : unsupported parameter cancellable : no type generator for Cancellable, GCancellable*
+	return retGo
+}
 
-// Unsupported : g_buffered_input_stream_fill_async : unsupported parameter cancellable : no type generator for Cancellable, GCancellable*
+// BufferedInputStreamNewSized is a wrapper around the C function g_buffered_input_stream_new_sized.
+func BufferedInputStreamNewSized(baseStream *InputStream, size uint64) *InputStream {
+	c_base_stream := (*C.GInputStream)(baseStream.ToC())
+
+	c_size := (C.gsize)(size)
+
+	retC := C.g_buffered_input_stream_new_sized(c_base_stream, c_size)
+	retGo := InputStreamNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// Fill is a wrapper around the C function g_buffered_input_stream_fill.
+func (recv *BufferedInputStream) Fill(count int64, cancellable *Cancellable) (int64, error) {
+	c_count := (C.gssize)(count)
+
+	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_buffered_input_stream_fill((*C.GBufferedInputStream)(recv.native), c_count, c_cancellable, &cThrowableError)
+	retGo := (int64)(retC)
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
+
+// Unsupported : g_buffered_input_stream_fill_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
 
 // Unsupported : g_buffered_input_stream_fill_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
 
@@ -151,14 +191,29 @@ func (recv *BufferedInputStream) GetBufferSize() uint64 {
 
 // Unsupported : g_buffered_input_stream_peek_buffer : unsupported parameter count : no type generator for gsize, gsize*
 
-// Unsupported : g_buffered_input_stream_read_byte : unsupported parameter cancellable : no type generator for Cancellable, GCancellable*
+// ReadByte is a wrapper around the C function g_buffered_input_stream_read_byte.
+func (recv *BufferedInputStream) ReadByte(cancellable *Cancellable) (int32, error) {
+	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_buffered_input_stream_read_byte((*C.GBufferedInputStream)(recv.native), c_cancellable, &cThrowableError)
+	retGo := (int32)(retC)
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // Unsupported : g_buffered_input_stream_set_buffer_size : no return generator
 
 // BufferedOutputStream is a wrapper around the C record GBufferedOutputStream.
 type BufferedOutputStream struct {
 	native *C.GBufferedOutputStream
-	// parent_instance : no type generator for FilterOutputStream, GFilterOutputStream
+	// parent_instance : record
 	// priv : record
 }
 
@@ -178,9 +233,27 @@ func (recv *BufferedOutputStream) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : g_buffered_output_stream_new : unsupported parameter base_stream : no type generator for OutputStream, GOutputStream*
+// BufferedOutputStreamNew is a wrapper around the C function g_buffered_output_stream_new.
+func BufferedOutputStreamNew(baseStream *OutputStream) *OutputStream {
+	c_base_stream := (*C.GOutputStream)(baseStream.ToC())
 
-// Unsupported : g_buffered_output_stream_new_sized : unsupported parameter base_stream : no type generator for OutputStream, GOutputStream*
+	retC := C.g_buffered_output_stream_new(c_base_stream)
+	retGo := OutputStreamNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// BufferedOutputStreamNewSized is a wrapper around the C function g_buffered_output_stream_new_sized.
+func BufferedOutputStreamNewSized(baseStream *OutputStream, size uint64) *OutputStream {
+	c_base_stream := (*C.GOutputStream)(baseStream.ToC())
+
+	c_size := (C.gsize)(size)
+
+	retC := C.g_buffered_output_stream_new_sized(c_base_stream, c_size)
+	retGo := OutputStreamNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // GetAutoGrow is a wrapper around the C function g_buffered_output_stream_get_auto_grow.
 func (recv *BufferedOutputStream) GetAutoGrow() bool {
@@ -223,12 +296,10 @@ func (recv *BytesIcon) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : g_bytes_icon_new : no return generator
-
 // Cancellable is a wrapper around the C record GCancellable.
 type Cancellable struct {
 	native *C.GCancellable
-	// parent_instance : no type generator for GObject.Object, GObject
+	// parent_instance : record
 	// Private : priv
 }
 
@@ -248,7 +319,13 @@ func (recv *Cancellable) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : g_cancellable_new : no return generator
+// CancellableNew is a wrapper around the C function g_cancellable_new.
+func CancellableNew() *Cancellable {
+	retC := C.g_cancellable_new()
+	retGo := CancellableNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // Unsupported : g_cancellable_cancel : no return generator
 
@@ -316,14 +393,12 @@ func (recv *CharsetConverter) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : g_charset_converter_new : no return generator
-
 // Unsupported : g_charset_converter_set_use_fallback : no return generator
 
 // ConverterInputStream is a wrapper around the C record GConverterInputStream.
 type ConverterInputStream struct {
 	native *C.GConverterInputStream
-	// parent_instance : no type generator for FilterInputStream, GFilterInputStream
+	// parent_instance : record
 	// Private : priv
 }
 
@@ -343,14 +418,14 @@ func (recv *ConverterInputStream) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : g_converter_input_stream_new : unsupported parameter base_stream : no type generator for InputStream, GInputStream*
+// Unsupported : g_converter_input_stream_new : unsupported parameter converter : no type generator for Converter, GConverter*
 
 // Unsupported : g_converter_input_stream_get_converter : no return generator
 
 // ConverterOutputStream is a wrapper around the C record GConverterOutputStream.
 type ConverterOutputStream struct {
 	native *C.GConverterOutputStream
-	// parent_instance : no type generator for FilterOutputStream, GFilterOutputStream
+	// parent_instance : record
 	// Private : priv
 }
 
@@ -370,7 +445,7 @@ func (recv *ConverterOutputStream) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : g_converter_output_stream_new : unsupported parameter base_stream : no type generator for OutputStream, GOutputStream*
+// Unsupported : g_converter_output_stream_new : unsupported parameter converter : no type generator for Converter, GConverter*
 
 // Unsupported : g_converter_output_stream_get_converter : no return generator
 
@@ -419,7 +494,7 @@ func (recv *DBusMenuModel) ToC() unsafe.Pointer {
 // DataInputStream is a wrapper around the C record GDataInputStream.
 type DataInputStream struct {
 	native *C.GDataInputStream
-	// parent_instance : no type generator for BufferedInputStream, GBufferedInputStream
+	// parent_instance : record
 	// Private : priv
 }
 
@@ -439,7 +514,15 @@ func (recv *DataInputStream) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : g_data_input_stream_new : unsupported parameter base_stream : no type generator for InputStream, GInputStream*
+// DataInputStreamNew is a wrapper around the C function g_data_input_stream_new.
+func DataInputStreamNew(baseStream *InputStream) *DataInputStream {
+	c_base_stream := (*C.GInputStream)(baseStream.ToC())
+
+	retC := C.g_data_input_stream_new(c_base_stream)
+	retGo := DataInputStreamNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // GetByteOrder is a wrapper around the C function g_data_input_stream_get_byte_order.
 func (recv *DataInputStream) GetByteOrder() DataStreamByteOrder {
@@ -457,17 +540,77 @@ func (recv *DataInputStream) GetNewlineType() DataStreamNewlineType {
 	return retGo
 }
 
-// Unsupported : g_data_input_stream_read_byte : unsupported parameter cancellable : no type generator for Cancellable, GCancellable*
+// ReadByte is a wrapper around the C function g_data_input_stream_read_byte.
+func (recv *DataInputStream) ReadByte(cancellable *Cancellable) (uint8, error) {
+	c_cancellable := (*C.GCancellable)(cancellable.ToC())
 
-// Unsupported : g_data_input_stream_read_int16 : unsupported parameter cancellable : no type generator for Cancellable, GCancellable*
+	var cThrowableError *C.GError
 
-// Unsupported : g_data_input_stream_read_int32 : unsupported parameter cancellable : no type generator for Cancellable, GCancellable*
+	retC := C.g_data_input_stream_read_byte((*C.GDataInputStream)(recv.native), c_cancellable, &cThrowableError)
+	retGo := (uint8)(retC)
 
-// Unsupported : g_data_input_stream_read_int64 : unsupported parameter cancellable : no type generator for Cancellable, GCancellable*
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
+
+// ReadInt16 is a wrapper around the C function g_data_input_stream_read_int16.
+func (recv *DataInputStream) ReadInt16(cancellable *Cancellable) (int16, error) {
+	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_data_input_stream_read_int16((*C.GDataInputStream)(recv.native), c_cancellable, &cThrowableError)
+	retGo := (int16)(retC)
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
+
+// ReadInt32 is a wrapper around the C function g_data_input_stream_read_int32.
+func (recv *DataInputStream) ReadInt32(cancellable *Cancellable) (int32, error) {
+	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_data_input_stream_read_int32((*C.GDataInputStream)(recv.native), c_cancellable, &cThrowableError)
+	retGo := (int32)(retC)
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
+
+// ReadInt64 is a wrapper around the C function g_data_input_stream_read_int64.
+func (recv *DataInputStream) ReadInt64(cancellable *Cancellable) (int64, error) {
+	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_data_input_stream_read_int64((*C.GDataInputStream)(recv.native), c_cancellable, &cThrowableError)
+	retGo := (int64)(retC)
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // Unsupported : g_data_input_stream_read_line : unsupported parameter length : no type generator for gsize, gsize*
 
-// Unsupported : g_data_input_stream_read_line_async : unsupported parameter cancellable : no type generator for Cancellable, GCancellable*
+// Unsupported : g_data_input_stream_read_line_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
 
 // Unsupported : g_data_input_stream_read_line_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
 
@@ -475,21 +618,66 @@ func (recv *DataInputStream) GetNewlineType() DataStreamNewlineType {
 
 // Unsupported : g_data_input_stream_read_line_utf8 : unsupported parameter length : no type generator for gsize, gsize*
 
-// Unsupported : g_data_input_stream_read_uint16 : unsupported parameter cancellable : no type generator for Cancellable, GCancellable*
+// ReadUint16 is a wrapper around the C function g_data_input_stream_read_uint16.
+func (recv *DataInputStream) ReadUint16(cancellable *Cancellable) (uint16, error) {
+	c_cancellable := (*C.GCancellable)(cancellable.ToC())
 
-// Unsupported : g_data_input_stream_read_uint32 : unsupported parameter cancellable : no type generator for Cancellable, GCancellable*
+	var cThrowableError *C.GError
 
-// Unsupported : g_data_input_stream_read_uint64 : unsupported parameter cancellable : no type generator for Cancellable, GCancellable*
+	retC := C.g_data_input_stream_read_uint16((*C.GDataInputStream)(recv.native), c_cancellable, &cThrowableError)
+	retGo := (uint16)(retC)
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
+
+// ReadUint32 is a wrapper around the C function g_data_input_stream_read_uint32.
+func (recv *DataInputStream) ReadUint32(cancellable *Cancellable) (uint32, error) {
+	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_data_input_stream_read_uint32((*C.GDataInputStream)(recv.native), c_cancellable, &cThrowableError)
+	retGo := (uint32)(retC)
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
+
+// ReadUint64 is a wrapper around the C function g_data_input_stream_read_uint64.
+func (recv *DataInputStream) ReadUint64(cancellable *Cancellable) (uint64, error) {
+	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_data_input_stream_read_uint64((*C.GDataInputStream)(recv.native), c_cancellable, &cThrowableError)
+	retGo := (uint64)(retC)
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // Unsupported : g_data_input_stream_read_until : unsupported parameter length : no type generator for gsize, gsize*
 
-// Unsupported : g_data_input_stream_read_until_async : unsupported parameter cancellable : no type generator for Cancellable, GCancellable*
+// Unsupported : g_data_input_stream_read_until_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
 
 // Unsupported : g_data_input_stream_read_until_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
 
 // Unsupported : g_data_input_stream_read_upto : unsupported parameter length : no type generator for gsize, gsize*
 
-// Unsupported : g_data_input_stream_read_upto_async : unsupported parameter cancellable : no type generator for Cancellable, GCancellable*
+// Unsupported : g_data_input_stream_read_upto_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
 
 // Unsupported : g_data_input_stream_read_upto_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
 
@@ -500,7 +688,7 @@ func (recv *DataInputStream) GetNewlineType() DataStreamNewlineType {
 // DataOutputStream is a wrapper around the C record GDataOutputStream.
 type DataOutputStream struct {
 	native *C.GDataOutputStream
-	// parent_instance : no type generator for FilterOutputStream, GFilterOutputStream
+	// parent_instance : record
 	// Private : priv
 }
 
@@ -520,7 +708,15 @@ func (recv *DataOutputStream) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : g_data_output_stream_new : unsupported parameter base_stream : no type generator for OutputStream, GOutputStream*
+// DataOutputStreamNew is a wrapper around the C function g_data_output_stream_new.
+func DataOutputStreamNew(baseStream *OutputStream) *DataOutputStream {
+	c_base_stream := (*C.GOutputStream)(baseStream.ToC())
+
+	retC := C.g_data_output_stream_new(c_base_stream)
+	retGo := DataOutputStreamNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // GetByteOrder is a wrapper around the C function g_data_output_stream_get_byte_order.
 func (recv *DataOutputStream) GetByteOrder() DataStreamByteOrder {
@@ -530,21 +726,158 @@ func (recv *DataOutputStream) GetByteOrder() DataStreamByteOrder {
 	return retGo
 }
 
-// Unsupported : g_data_output_stream_put_byte : unsupported parameter cancellable : no type generator for Cancellable, GCancellable*
+// PutByte is a wrapper around the C function g_data_output_stream_put_byte.
+func (recv *DataOutputStream) PutByte(data uint8, cancellable *Cancellable) (bool, error) {
+	c_data := (C.guchar)(data)
 
-// Unsupported : g_data_output_stream_put_int16 : unsupported parameter cancellable : no type generator for Cancellable, GCancellable*
+	c_cancellable := (*C.GCancellable)(cancellable.ToC())
 
-// Unsupported : g_data_output_stream_put_int32 : unsupported parameter cancellable : no type generator for Cancellable, GCancellable*
+	var cThrowableError *C.GError
 
-// Unsupported : g_data_output_stream_put_int64 : unsupported parameter cancellable : no type generator for Cancellable, GCancellable*
+	retC := C.g_data_output_stream_put_byte((*C.GDataOutputStream)(recv.native), c_data, c_cancellable, &cThrowableError)
+	retGo := retC == C.TRUE
 
-// Unsupported : g_data_output_stream_put_string : unsupported parameter cancellable : no type generator for Cancellable, GCancellable*
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
 
-// Unsupported : g_data_output_stream_put_uint16 : unsupported parameter cancellable : no type generator for Cancellable, GCancellable*
+	return retGo, goThrowableError
+}
 
-// Unsupported : g_data_output_stream_put_uint32 : unsupported parameter cancellable : no type generator for Cancellable, GCancellable*
+// PutInt16 is a wrapper around the C function g_data_output_stream_put_int16.
+func (recv *DataOutputStream) PutInt16(data int16, cancellable *Cancellable) (bool, error) {
+	c_data := (C.gint16)(data)
 
-// Unsupported : g_data_output_stream_put_uint64 : unsupported parameter cancellable : no type generator for Cancellable, GCancellable*
+	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_data_output_stream_put_int16((*C.GDataOutputStream)(recv.native), c_data, c_cancellable, &cThrowableError)
+	retGo := retC == C.TRUE
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
+
+// PutInt32 is a wrapper around the C function g_data_output_stream_put_int32.
+func (recv *DataOutputStream) PutInt32(data int32, cancellable *Cancellable) (bool, error) {
+	c_data := (C.gint32)(data)
+
+	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_data_output_stream_put_int32((*C.GDataOutputStream)(recv.native), c_data, c_cancellable, &cThrowableError)
+	retGo := retC == C.TRUE
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
+
+// PutInt64 is a wrapper around the C function g_data_output_stream_put_int64.
+func (recv *DataOutputStream) PutInt64(data int64, cancellable *Cancellable) (bool, error) {
+	c_data := (C.gint64)(data)
+
+	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_data_output_stream_put_int64((*C.GDataOutputStream)(recv.native), c_data, c_cancellable, &cThrowableError)
+	retGo := retC == C.TRUE
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
+
+// PutString is a wrapper around the C function g_data_output_stream_put_string.
+func (recv *DataOutputStream) PutString(str string, cancellable *Cancellable) (bool, error) {
+	c_str := C.CString(str)
+	defer C.free(unsafe.Pointer(c_str))
+
+	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_data_output_stream_put_string((*C.GDataOutputStream)(recv.native), c_str, c_cancellable, &cThrowableError)
+	retGo := retC == C.TRUE
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
+
+// PutUint16 is a wrapper around the C function g_data_output_stream_put_uint16.
+func (recv *DataOutputStream) PutUint16(data uint16, cancellable *Cancellable) (bool, error) {
+	c_data := (C.guint16)(data)
+
+	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_data_output_stream_put_uint16((*C.GDataOutputStream)(recv.native), c_data, c_cancellable, &cThrowableError)
+	retGo := retC == C.TRUE
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
+
+// PutUint32 is a wrapper around the C function g_data_output_stream_put_uint32.
+func (recv *DataOutputStream) PutUint32(data uint32, cancellable *Cancellable) (bool, error) {
+	c_data := (C.guint32)(data)
+
+	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_data_output_stream_put_uint32((*C.GDataOutputStream)(recv.native), c_data, c_cancellable, &cThrowableError)
+	retGo := retC == C.TRUE
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
+
+// PutUint64 is a wrapper around the C function g_data_output_stream_put_uint64.
+func (recv *DataOutputStream) PutUint64(data uint64, cancellable *Cancellable) (bool, error) {
+	c_data := (C.guint64)(data)
+
+	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_data_output_stream_put_uint64((*C.GDataOutputStream)(recv.native), c_data, c_cancellable, &cThrowableError)
+	retGo := retC == C.TRUE
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // Unsupported : g_data_output_stream_set_byte_order : no return generator
 
@@ -569,11 +902,27 @@ func (recv *DesktopAppInfo) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : g_desktop_app_info_new : no return generator
+// DesktopAppInfoNew is a wrapper around the C function g_desktop_app_info_new.
+func DesktopAppInfoNew(desktopId string) *DesktopAppInfo {
+	c_desktop_id := C.CString(desktopId)
+	defer C.free(unsafe.Pointer(c_desktop_id))
 
-// Unsupported : g_desktop_app_info_new_from_filename : no return generator
+	retC := C.g_desktop_app_info_new(c_desktop_id)
+	retGo := DesktopAppInfoNewFromC(unsafe.Pointer(retC))
 
-// Unsupported : g_desktop_app_info_new_from_keyfile : no return generator
+	return retGo
+}
+
+// DesktopAppInfoNewFromFilename is a wrapper around the C function g_desktop_app_info_new_from_filename.
+func DesktopAppInfoNewFromFilename(filename string) *DesktopAppInfo {
+	c_filename := C.CString(filename)
+	defer C.free(unsafe.Pointer(c_filename))
+
+	retC := C.g_desktop_app_info_new_from_filename(c_filename)
+	retGo := DesktopAppInfoNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // GetCategories is a wrapper around the C function g_desktop_app_info_get_categories.
 func (recv *DesktopAppInfo) GetCategories() string {
@@ -601,9 +950,9 @@ func (recv *DesktopAppInfo) GetIsHidden() bool {
 
 // Unsupported : g_desktop_app_info_get_keywords : no return type
 
-// Unsupported : g_desktop_app_info_launch_action : unsupported parameter launch_context : no type generator for AppLaunchContext, GAppLaunchContext*
+// Unsupported : g_desktop_app_info_launch_action : no return generator
 
-// Unsupported : g_desktop_app_info_launch_uris_as_manager : unsupported parameter launch_context : no type generator for AppLaunchContext, GAppLaunchContext*
+// Unsupported : g_desktop_app_info_launch_uris_as_manager : unsupported parameter user_setup : no type generator for GLib.SpawnChildSetupFunc, GSpawnChildSetupFunc
 
 // Unsupported : g_desktop_app_info_list_actions : no return type
 
@@ -637,7 +986,7 @@ func (recv *Emblem) ToC() unsafe.Pointer {
 // EmblemedIcon is a wrapper around the C record GEmblemedIcon.
 type EmblemedIcon struct {
 	native *C.GEmblemedIcon
-	// parent_instance : no type generator for GObject.Object, GObject
+	// parent_instance : record
 	// Private : priv
 }
 
@@ -659,7 +1008,7 @@ func (recv *EmblemedIcon) ToC() unsafe.Pointer {
 
 // Unsupported : g_emblemed_icon_new : unsupported parameter icon : no type generator for Icon, GIcon*
 
-// Unsupported : g_emblemed_icon_add_emblem : unsupported parameter emblem : no type generator for Emblem, GEmblem*
+// Unsupported : g_emblemed_icon_add_emblem : no return generator
 
 // Unsupported : g_emblemed_icon_clear_emblems : no return generator
 
@@ -668,7 +1017,7 @@ func (recv *EmblemedIcon) ToC() unsafe.Pointer {
 // FileEnumerator is a wrapper around the C record GFileEnumerator.
 type FileEnumerator struct {
 	native *C.GFileEnumerator
-	// parent_instance : no type generator for GObject.Object, GObject
+	// parent_instance : record
 	// Private : priv
 }
 
@@ -688,13 +1037,28 @@ func (recv *FileEnumerator) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : g_file_enumerator_close : unsupported parameter cancellable : no type generator for Cancellable, GCancellable*
+// Close is a wrapper around the C function g_file_enumerator_close.
+func (recv *FileEnumerator) Close(cancellable *Cancellable) (bool, error) {
+	c_cancellable := (*C.GCancellable)(cancellable.ToC())
 
-// Unsupported : g_file_enumerator_close_async : unsupported parameter cancellable : no type generator for Cancellable, GCancellable*
+	var cThrowableError *C.GError
+
+	retC := C.g_file_enumerator_close((*C.GFileEnumerator)(recv.native), c_cancellable, &cThrowableError)
+	retGo := retC == C.TRUE
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
+
+// Unsupported : g_file_enumerator_close_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
 
 // Unsupported : g_file_enumerator_close_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
 
-// Unsupported : g_file_enumerator_get_child : unsupported parameter info : no type generator for FileInfo, GFileInfo*
+// Unsupported : g_file_enumerator_get_child : no return generator
 
 // Unsupported : g_file_enumerator_get_container : no return generator
 
@@ -714,11 +1078,26 @@ func (recv *FileEnumerator) IsClosed() bool {
 	return retGo
 }
 
-// Unsupported : g_file_enumerator_iterate : unsupported parameter out_info : no type generator for FileInfo, GFileInfo**
+// Unsupported : g_file_enumerator_iterate : unsupported parameter out_child : no type generator for File, GFile**
 
-// Unsupported : g_file_enumerator_next_file : unsupported parameter cancellable : no type generator for Cancellable, GCancellable*
+// NextFile is a wrapper around the C function g_file_enumerator_next_file.
+func (recv *FileEnumerator) NextFile(cancellable *Cancellable) (*FileInfo, error) {
+	c_cancellable := (*C.GCancellable)(cancellable.ToC())
 
-// Unsupported : g_file_enumerator_next_files_async : unsupported parameter cancellable : no type generator for Cancellable, GCancellable*
+	var cThrowableError *C.GError
+
+	retC := C.g_file_enumerator_next_file((*C.GFileEnumerator)(recv.native), c_cancellable, &cThrowableError)
+	retGo := FileInfoNewFromC(unsafe.Pointer(retC))
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
+
+// Unsupported : g_file_enumerator_next_files_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
 
 // Unsupported : g_file_enumerator_next_files_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
 
@@ -727,7 +1106,7 @@ func (recv *FileEnumerator) IsClosed() bool {
 // FileIOStream is a wrapper around the C record GFileIOStream.
 type FileIOStream struct {
 	native *C.GFileIOStream
-	// parent_instance : no type generator for IOStream, GIOStream
+	// parent_instance : record
 	// Private : priv
 }
 
@@ -747,9 +1126,7 @@ func (recv *FileIOStream) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : g_file_io_stream_query_info : unsupported parameter cancellable : no type generator for Cancellable, GCancellable*
-
-// Unsupported : g_file_io_stream_query_info_async : unsupported parameter cancellable : no type generator for Cancellable, GCancellable*
+// Unsupported : g_file_io_stream_query_info_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
 
 // Unsupported : g_file_io_stream_query_info_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
 
@@ -799,13 +1176,25 @@ func (recv *FileInfo) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : g_file_info_new : no return generator
+// FileInfoNew is a wrapper around the C function g_file_info_new.
+func FileInfoNew() *FileInfo {
+	retC := C.g_file_info_new()
+	retGo := FileInfoNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // Unsupported : g_file_info_clear_status : no return generator
 
-// Unsupported : g_file_info_copy_into : unsupported parameter dest_info : no type generator for FileInfo, GFileInfo*
+// Unsupported : g_file_info_copy_into : no return generator
 
-// Unsupported : g_file_info_dup : no return generator
+// Dup is a wrapper around the C function g_file_info_dup.
+func (recv *FileInfo) Dup() *FileInfo {
+	retC := C.g_file_info_dup((*C.GFileInfo)(recv.native))
+	retGo := FileInfoNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // GetAttributeAsString is a wrapper around the C function g_file_info_get_attribute_as_string.
 func (recv *FileInfo) GetAttributeAsString(attribute string) string {
@@ -865,7 +1254,16 @@ func (recv *FileInfo) GetAttributeInt64(attribute string) int64 {
 	return retGo
 }
 
-// Unsupported : g_file_info_get_attribute_object : no return generator
+// GetAttributeObject is a wrapper around the C function g_file_info_get_attribute_object.
+func (recv *FileInfo) GetAttributeObject(attribute string) *gobject.Object {
+	c_attribute := C.CString(attribute)
+	defer C.free(unsafe.Pointer(c_attribute))
+
+	retC := C.g_file_info_get_attribute_object((*C.GFileInfo)(recv.native), c_attribute)
+	retGo := gobject.ObjectNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // GetAttributeStatus is a wrapper around the C function g_file_info_get_attribute_status.
 func (recv *FileInfo) GetAttributeStatus(attribute string) FileAttributeStatus {
@@ -1053,7 +1451,7 @@ func (recv *FileInfo) HasAttribute(attribute string) bool {
 
 // Unsupported : g_file_info_set_attribute_mask : no return generator
 
-// Unsupported : g_file_info_set_attribute_object : unsupported parameter attr_value : no type generator for GObject.Object, GObject*
+// Unsupported : g_file_info_set_attribute_object : no return generator
 
 // Unsupported : g_file_info_set_attribute_string : no return generator
 
@@ -1094,7 +1492,7 @@ func (recv *FileInfo) HasAttribute(attribute string) bool {
 // FileInputStream is a wrapper around the C record GFileInputStream.
 type FileInputStream struct {
 	native *C.GFileInputStream
-	// parent_instance : no type generator for InputStream, GInputStream
+	// parent_instance : record
 	// Private : priv
 }
 
@@ -1114,16 +1512,34 @@ func (recv *FileInputStream) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : g_file_input_stream_query_info : unsupported parameter cancellable : no type generator for Cancellable, GCancellable*
+// QueryInfo is a wrapper around the C function g_file_input_stream_query_info.
+func (recv *FileInputStream) QueryInfo(attributes string, cancellable *Cancellable) (*FileInfo, error) {
+	c_attributes := C.CString(attributes)
+	defer C.free(unsafe.Pointer(c_attributes))
 
-// Unsupported : g_file_input_stream_query_info_async : unsupported parameter cancellable : no type generator for Cancellable, GCancellable*
+	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_file_input_stream_query_info((*C.GFileInputStream)(recv.native), c_attributes, c_cancellable, &cThrowableError)
+	retGo := FileInfoNewFromC(unsafe.Pointer(retC))
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
+
+// Unsupported : g_file_input_stream_query_info_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
 
 // Unsupported : g_file_input_stream_query_info_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
 
 // FileMonitor is a wrapper around the C record GFileMonitor.
 type FileMonitor struct {
 	native *C.GFileMonitor
-	// parent_instance : no type generator for GObject.Object, GObject
+	// parent_instance : record
 	// Private : priv
 }
 
@@ -1166,7 +1582,7 @@ func (recv *FileMonitor) IsCancelled() bool {
 // FileOutputStream is a wrapper around the C record GFileOutputStream.
 type FileOutputStream struct {
 	native *C.GFileOutputStream
-	// parent_instance : no type generator for OutputStream, GOutputStream
+	// parent_instance : record
 	// Private : priv
 }
 
@@ -1195,9 +1611,27 @@ func (recv *FileOutputStream) GetEtag() string {
 	return retGo
 }
 
-// Unsupported : g_file_output_stream_query_info : unsupported parameter cancellable : no type generator for Cancellable, GCancellable*
+// QueryInfo is a wrapper around the C function g_file_output_stream_query_info.
+func (recv *FileOutputStream) QueryInfo(attributes string, cancellable *Cancellable) (*FileInfo, error) {
+	c_attributes := C.CString(attributes)
+	defer C.free(unsafe.Pointer(c_attributes))
 
-// Unsupported : g_file_output_stream_query_info_async : unsupported parameter cancellable : no type generator for Cancellable, GCancellable*
+	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_file_output_stream_query_info((*C.GFileOutputStream)(recv.native), c_attributes, c_cancellable, &cThrowableError)
+	retGo := FileInfoNewFromC(unsafe.Pointer(retC))
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
+
+// Unsupported : g_file_output_stream_query_info_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
 
 // Unsupported : g_file_output_stream_query_info_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
 
@@ -1222,7 +1656,13 @@ func (recv *FilenameCompleter) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : g_filename_completer_new : no return generator
+// FilenameCompleterNew is a wrapper around the C function g_filename_completer_new.
+func FilenameCompleterNew() *FilenameCompleter {
+	retC := C.g_filename_completer_new()
+	retGo := FilenameCompleterNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // GetCompletionSuffix is a wrapper around the C function g_filename_completer_get_completion_suffix.
 func (recv *FilenameCompleter) GetCompletionSuffix(initialText string) string {
@@ -1243,8 +1683,8 @@ func (recv *FilenameCompleter) GetCompletionSuffix(initialText string) string {
 // FilterInputStream is a wrapper around the C record GFilterInputStream.
 type FilterInputStream struct {
 	native *C.GFilterInputStream
-	// parent_instance : no type generator for InputStream, GInputStream
-	// base_stream : no type generator for InputStream, GInputStream*
+	// parent_instance : record
+	// base_stream : record
 }
 
 func FilterInputStreamNewFromC(u unsafe.Pointer) *FilterInputStream {
@@ -1263,7 +1703,13 @@ func (recv *FilterInputStream) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : g_filter_input_stream_get_base_stream : no return generator
+// GetBaseStream is a wrapper around the C function g_filter_input_stream_get_base_stream.
+func (recv *FilterInputStream) GetBaseStream() *InputStream {
+	retC := C.g_filter_input_stream_get_base_stream((*C.GFilterInputStream)(recv.native))
+	retGo := InputStreamNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // GetCloseBaseStream is a wrapper around the C function g_filter_input_stream_get_close_base_stream.
 func (recv *FilterInputStream) GetCloseBaseStream() bool {
@@ -1278,8 +1724,8 @@ func (recv *FilterInputStream) GetCloseBaseStream() bool {
 // FilterOutputStream is a wrapper around the C record GFilterOutputStream.
 type FilterOutputStream struct {
 	native *C.GFilterOutputStream
-	// parent_instance : no type generator for OutputStream, GOutputStream
-	// base_stream : no type generator for OutputStream, GOutputStream*
+	// parent_instance : record
+	// base_stream : record
 }
 
 func FilterOutputStreamNewFromC(u unsafe.Pointer) *FilterOutputStream {
@@ -1298,7 +1744,13 @@ func (recv *FilterOutputStream) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : g_filter_output_stream_get_base_stream : no return generator
+// GetBaseStream is a wrapper around the C function g_filter_output_stream_get_base_stream.
+func (recv *FilterOutputStream) GetBaseStream() *OutputStream {
+	retC := C.g_filter_output_stream_get_base_stream((*C.GFilterOutputStream)(recv.native))
+	retGo := OutputStreamNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // GetCloseBaseStream is a wrapper around the C function g_filter_output_stream_get_close_base_stream.
 func (recv *FilterOutputStream) GetCloseBaseStream() bool {
@@ -1331,7 +1783,16 @@ func (recv *IOModule) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : g_io_module_new : no return generator
+// IOModuleNew is a wrapper around the C function g_io_module_new.
+func IOModuleNew(filename string) *IOModule {
+	c_filename := C.CString(filename)
+	defer C.free(unsafe.Pointer(c_filename))
+
+	retC := C.g_io_module_new(c_filename)
+	retGo := IOModuleNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // Unsupported : g_io_module_load : no return generator
 
@@ -1340,7 +1801,7 @@ func (recv *IOModule) ToC() unsafe.Pointer {
 // IOStream is a wrapper around the C record GIOStream.
 type IOStream struct {
 	native *C.GIOStream
-	// parent_instance : no type generator for GObject.Object, GObject
+	// parent_instance : record
 	// Private : priv
 }
 
@@ -1362,22 +1823,16 @@ func (recv *IOStream) ToC() unsafe.Pointer {
 
 // Unsupported : g_io_stream_clear_pending : no return generator
 
-// Unsupported : g_io_stream_close : unsupported parameter cancellable : no type generator for Cancellable, GCancellable*
-
-// Unsupported : g_io_stream_close_async : unsupported parameter cancellable : no type generator for Cancellable, GCancellable*
+// Unsupported : g_io_stream_close_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
 
 // Unsupported : g_io_stream_close_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
 
-// Unsupported : g_io_stream_get_input_stream : no return generator
-
-// Unsupported : g_io_stream_get_output_stream : no return generator
-
-// Unsupported : g_io_stream_splice_async : unsupported parameter stream2 : no type generator for IOStream, GIOStream*
+// Unsupported : g_io_stream_splice_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
 
 // InetAddress is a wrapper around the C record GInetAddress.
 type InetAddress struct {
 	native *C.GInetAddress
-	// parent_instance : no type generator for GObject.Object, GObject
+	// parent_instance : record
 	// Private : priv
 }
 
@@ -1397,22 +1852,14 @@ func (recv *InetAddress) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : g_inet_address_new_any : no return generator
-
 // Unsupported : g_inet_address_new_from_bytes : unsupported parameter bytes : no param type
-
-// Unsupported : g_inet_address_new_from_string : no return generator
-
-// Unsupported : g_inet_address_new_loopback : no return generator
-
-// Unsupported : g_inet_address_equal : unsupported parameter other_address : no type generator for InetAddress, GInetAddress*
 
 // Unsupported : g_inet_address_to_bytes : no return generator
 
 // InetSocketAddress is a wrapper around the C record GInetSocketAddress.
 type InetSocketAddress struct {
 	native *C.GInetSocketAddress
-	// parent_instance : no type generator for SocketAddress, GSocketAddress
+	// parent_instance : record
 	// Private : priv
 }
 
@@ -1432,16 +1879,10 @@ func (recv *InetSocketAddress) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : g_inet_socket_address_new : unsupported parameter address : no type generator for InetAddress, GInetAddress*
-
-// Unsupported : g_inet_socket_address_new_from_string : no return generator
-
-// Unsupported : g_inet_socket_address_get_address : no return generator
-
 // InputStream is a wrapper around the C record GInputStream.
 type InputStream struct {
 	native *C.GInputStream
-	// parent_instance : no type generator for GObject.Object, GObject
+	// parent_instance : record
 	// Private : priv
 }
 
@@ -1463,9 +1904,24 @@ func (recv *InputStream) ToC() unsafe.Pointer {
 
 // Unsupported : g_input_stream_clear_pending : no return generator
 
-// Unsupported : g_input_stream_close : unsupported parameter cancellable : no type generator for Cancellable, GCancellable*
+// Close is a wrapper around the C function g_input_stream_close.
+func (recv *InputStream) Close(cancellable *Cancellable) (bool, error) {
+	c_cancellable := (*C.GCancellable)(cancellable.ToC())
 
-// Unsupported : g_input_stream_close_async : unsupported parameter cancellable : no type generator for Cancellable, GCancellable*
+	var cThrowableError *C.GError
+
+	retC := C.g_input_stream_close((*C.GInputStream)(recv.native), c_cancellable, &cThrowableError)
+	retGo := retC == C.TRUE
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
+
+// Unsupported : g_input_stream_close_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
 
 // Unsupported : g_input_stream_close_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
 
@@ -1495,9 +1951,7 @@ func (recv *InputStream) IsClosed() bool {
 
 // Unsupported : g_input_stream_read_async : unsupported parameter buffer : no param type
 
-// Unsupported : g_input_stream_read_bytes : unsupported parameter cancellable : no type generator for Cancellable, GCancellable*
-
-// Unsupported : g_input_stream_read_bytes_async : unsupported parameter cancellable : no type generator for Cancellable, GCancellable*
+// Unsupported : g_input_stream_read_bytes_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
 
 // Unsupported : g_input_stream_read_bytes_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
 
@@ -1518,9 +1972,26 @@ func (recv *InputStream) SetPending() (bool, error) {
 	return retGo, goThrowableError
 }
 
-// Unsupported : g_input_stream_skip : unsupported parameter cancellable : no type generator for Cancellable, GCancellable*
+// Skip is a wrapper around the C function g_input_stream_skip.
+func (recv *InputStream) Skip(count uint64, cancellable *Cancellable) (int64, error) {
+	c_count := (C.gsize)(count)
 
-// Unsupported : g_input_stream_skip_async : unsupported parameter cancellable : no type generator for Cancellable, GCancellable*
+	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_input_stream_skip((*C.GInputStream)(recv.native), c_count, c_cancellable, &cThrowableError)
+	retGo := (int64)(retC)
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
+
+// Unsupported : g_input_stream_skip_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
 
 // Unsupported : g_input_stream_skip_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
 
@@ -1564,7 +2035,7 @@ func (recv *ListStore) ToC() unsafe.Pointer {
 // MemoryInputStream is a wrapper around the C record GMemoryInputStream.
 type MemoryInputStream struct {
 	native *C.GMemoryInputStream
-	// parent_instance : no type generator for InputStream, GInputStream
+	// parent_instance : record
 	// Private : priv
 }
 
@@ -1584,9 +2055,13 @@ func (recv *MemoryInputStream) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : g_memory_input_stream_new : no return generator
+// MemoryInputStreamNew is a wrapper around the C function g_memory_input_stream_new.
+func MemoryInputStreamNew() *InputStream {
+	retC := C.g_memory_input_stream_new()
+	retGo := InputStreamNewFromC(unsafe.Pointer(retC))
 
-// Unsupported : g_memory_input_stream_new_from_bytes : no return generator
+	return retGo
+}
 
 // Unsupported : g_memory_input_stream_new_from_data : unsupported parameter data : no param type
 
@@ -1597,7 +2072,7 @@ func (recv *MemoryInputStream) ToC() unsafe.Pointer {
 // MemoryOutputStream is a wrapper around the C record GMemoryOutputStream.
 type MemoryOutputStream struct {
 	native *C.GMemoryOutputStream
-	// parent_instance : no type generator for OutputStream, GOutputStream
+	// parent_instance : record
 	// Private : priv
 }
 
@@ -1619,8 +2094,6 @@ func (recv *MemoryOutputStream) ToC() unsafe.Pointer {
 
 // Unsupported : g_memory_output_stream_new : unsupported parameter realloc_function : no type generator for ReallocFunc, GReallocFunc
 
-// Unsupported : g_memory_output_stream_new_resizable : no return generator
-
 // GetData is a wrapper around the C function g_memory_output_stream_get_data.
 func (recv *MemoryOutputStream) GetData() uintptr {
 	retC := C.g_memory_output_stream_get_data((*C.GMemoryOutputStream)(recv.native))
@@ -1640,7 +2113,7 @@ func (recv *MemoryOutputStream) GetSize() uint64 {
 // MountOperation is a wrapper around the C record GMountOperation.
 type MountOperation struct {
 	native *C.GMountOperation
-	// parent_instance : no type generator for GObject.Object, GObject
+	// parent_instance : record
 	// priv : record
 }
 
@@ -1660,7 +2133,13 @@ func (recv *MountOperation) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : g_mount_operation_new : no return generator
+// MountOperationNew is a wrapper around the C function g_mount_operation_new.
+func MountOperationNew() *MountOperation {
+	retC := C.g_mount_operation_new()
+	retGo := MountOperationNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // GetAnonymous is a wrapper around the C function g_mount_operation_get_anonymous.
 func (recv *MountOperation) GetAnonymous() bool {
@@ -1727,7 +2206,7 @@ func (recv *MountOperation) GetUsername() string {
 // NativeVolumeMonitor is a wrapper around the C record GNativeVolumeMonitor.
 type NativeVolumeMonitor struct {
 	native *C.GNativeVolumeMonitor
-	// parent_instance : no type generator for VolumeMonitor, GVolumeMonitor
+	// parent_instance : record
 }
 
 func NativeVolumeMonitorNewFromC(u unsafe.Pointer) *NativeVolumeMonitor {
@@ -1749,7 +2228,7 @@ func (recv *NativeVolumeMonitor) ToC() unsafe.Pointer {
 // NetworkAddress is a wrapper around the C record GNetworkAddress.
 type NetworkAddress struct {
 	native *C.GNetworkAddress
-	// parent_instance : no type generator for GObject.Object, GObject
+	// parent_instance : record
 	// Private : priv
 }
 
@@ -1769,14 +2248,10 @@ func (recv *NetworkAddress) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : g_network_address_new : no return generator
-
-// Unsupported : g_network_address_new_loopback : no return generator
-
 // NetworkService is a wrapper around the C record GNetworkService.
 type NetworkService struct {
 	native *C.GNetworkService
-	// parent_instance : no type generator for GObject.Object, GObject
+	// parent_instance : record
 	// Private : priv
 }
 
@@ -1796,14 +2271,12 @@ func (recv *NetworkService) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : g_network_service_new : no return generator
-
 // Unsupported : g_network_service_set_scheme : no return generator
 
 // OutputStream is a wrapper around the C record GOutputStream.
 type OutputStream struct {
 	native *C.GOutputStream
-	// parent_instance : no type generator for GObject.Object, GObject
+	// parent_instance : record
 	// Private : priv
 }
 
@@ -1825,15 +2298,45 @@ func (recv *OutputStream) ToC() unsafe.Pointer {
 
 // Unsupported : g_output_stream_clear_pending : no return generator
 
-// Unsupported : g_output_stream_close : unsupported parameter cancellable : no type generator for Cancellable, GCancellable*
+// Close is a wrapper around the C function g_output_stream_close.
+func (recv *OutputStream) Close(cancellable *Cancellable) (bool, error) {
+	c_cancellable := (*C.GCancellable)(cancellable.ToC())
 
-// Unsupported : g_output_stream_close_async : unsupported parameter cancellable : no type generator for Cancellable, GCancellable*
+	var cThrowableError *C.GError
+
+	retC := C.g_output_stream_close((*C.GOutputStream)(recv.native), c_cancellable, &cThrowableError)
+	retGo := retC == C.TRUE
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
+
+// Unsupported : g_output_stream_close_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
 
 // Unsupported : g_output_stream_close_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
 
-// Unsupported : g_output_stream_flush : unsupported parameter cancellable : no type generator for Cancellable, GCancellable*
+// Flush is a wrapper around the C function g_output_stream_flush.
+func (recv *OutputStream) Flush(cancellable *Cancellable) (bool, error) {
+	c_cancellable := (*C.GCancellable)(cancellable.ToC())
 
-// Unsupported : g_output_stream_flush_async : unsupported parameter cancellable : no type generator for Cancellable, GCancellable*
+	var cThrowableError *C.GError
+
+	retC := C.g_output_stream_flush((*C.GOutputStream)(recv.native), c_cancellable, &cThrowableError)
+	retGo := retC == C.TRUE
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
+
+// Unsupported : g_output_stream_flush_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
 
 // Unsupported : g_output_stream_flush_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
 
@@ -1870,9 +2373,28 @@ func (recv *OutputStream) SetPending() (bool, error) {
 	return retGo, goThrowableError
 }
 
-// Unsupported : g_output_stream_splice : unsupported parameter source : no type generator for InputStream, GInputStream*
+// Splice is a wrapper around the C function g_output_stream_splice.
+func (recv *OutputStream) Splice(source *InputStream, flags OutputStreamSpliceFlags, cancellable *Cancellable) (int64, error) {
+	c_source := (*C.GInputStream)(source.ToC())
 
-// Unsupported : g_output_stream_splice_async : unsupported parameter source : no type generator for InputStream, GInputStream*
+	c_flags := (C.GOutputStreamSpliceFlags)(flags)
+
+	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_output_stream_splice((*C.GOutputStream)(recv.native), c_source, c_flags, c_cancellable, &cThrowableError)
+	retGo := (int64)(retC)
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
+
+// Unsupported : g_output_stream_splice_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
 
 // Unsupported : g_output_stream_splice_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
 
@@ -1888,9 +2410,26 @@ func (recv *OutputStream) SetPending() (bool, error) {
 
 // Unsupported : g_output_stream_write_async : unsupported parameter buffer : no param type
 
-// Unsupported : g_output_stream_write_bytes : unsupported parameter cancellable : no type generator for Cancellable, GCancellable*
+// WriteBytes is a wrapper around the C function g_output_stream_write_bytes.
+func (recv *OutputStream) WriteBytes(bytes *glib.Bytes, cancellable *Cancellable) (int64, error) {
+	c_bytes := (*C.GBytes)(bytes.ToC())
 
-// Unsupported : g_output_stream_write_bytes_async : unsupported parameter cancellable : no type generator for Cancellable, GCancellable*
+	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_output_stream_write_bytes((*C.GOutputStream)(recv.native), c_bytes, c_cancellable, &cThrowableError)
+	retGo := (int64)(retC)
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
+
+// Unsupported : g_output_stream_write_bytes_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
 
 // Unsupported : g_output_stream_write_bytes_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
 
@@ -1899,7 +2438,7 @@ func (recv *OutputStream) SetPending() (bool, error) {
 // Permission is a wrapper around the C record GPermission.
 type Permission struct {
 	native *C.GPermission
-	// parent_instance : no type generator for GObject.Object, GObject
+	// parent_instance : record
 	// Private : priv
 }
 
@@ -1919,24 +2458,20 @@ func (recv *Permission) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : g_permission_acquire : unsupported parameter cancellable : no type generator for Cancellable, GCancellable*
-
-// Unsupported : g_permission_acquire_async : unsupported parameter cancellable : no type generator for Cancellable, GCancellable*
+// Unsupported : g_permission_acquire_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
 
 // Unsupported : g_permission_acquire_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
 
 // Unsupported : g_permission_impl_update : no return generator
 
-// Unsupported : g_permission_release : unsupported parameter cancellable : no type generator for Cancellable, GCancellable*
-
-// Unsupported : g_permission_release_async : unsupported parameter cancellable : no type generator for Cancellable, GCancellable*
+// Unsupported : g_permission_release_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
 
 // Unsupported : g_permission_release_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
 
 // ProxyAddressEnumerator is a wrapper around the C record GProxyAddressEnumerator.
 type ProxyAddressEnumerator struct {
 	native *C.GProxyAddressEnumerator
-	// parent_instance : no type generator for SocketAddressEnumerator, GSocketAddressEnumerator
+	// parent_instance : record
 	// priv : record
 }
 
@@ -1959,7 +2494,7 @@ func (recv *ProxyAddressEnumerator) ToC() unsafe.Pointer {
 // Resolver is a wrapper around the C record GResolver.
 type Resolver struct {
 	native *C.GResolver
-	// parent_instance : no type generator for GObject.Object, GObject
+	// parent_instance : record
 	// priv : record
 }
 
@@ -1979,27 +2514,19 @@ func (recv *Resolver) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : g_resolver_lookup_by_address : unsupported parameter address : no type generator for InetAddress, GInetAddress*
-
-// Unsupported : g_resolver_lookup_by_address_async : unsupported parameter address : no type generator for InetAddress, GInetAddress*
+// Unsupported : g_resolver_lookup_by_address_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
 
 // Unsupported : g_resolver_lookup_by_address_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
 
-// Unsupported : g_resolver_lookup_by_name : unsupported parameter cancellable : no type generator for Cancellable, GCancellable*
-
-// Unsupported : g_resolver_lookup_by_name_async : unsupported parameter cancellable : no type generator for Cancellable, GCancellable*
+// Unsupported : g_resolver_lookup_by_name_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
 
 // Unsupported : g_resolver_lookup_by_name_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
 
-// Unsupported : g_resolver_lookup_records : unsupported parameter cancellable : no type generator for Cancellable, GCancellable*
-
-// Unsupported : g_resolver_lookup_records_async : unsupported parameter cancellable : no type generator for Cancellable, GCancellable*
+// Unsupported : g_resolver_lookup_records_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
 
 // Unsupported : g_resolver_lookup_records_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
 
-// Unsupported : g_resolver_lookup_service : unsupported parameter cancellable : no type generator for Cancellable, GCancellable*
-
-// Unsupported : g_resolver_lookup_service_async : unsupported parameter cancellable : no type generator for Cancellable, GCancellable*
+// Unsupported : g_resolver_lookup_service_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
 
 // Unsupported : g_resolver_lookup_service_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
 
@@ -2008,7 +2535,7 @@ func (recv *Resolver) ToC() unsafe.Pointer {
 // Settings is a wrapper around the C record GSettings.
 type Settings struct {
 	native *C.GSettings
-	// parent_instance : no type generator for GObject.Object, GObject
+	// parent_instance : record
 	// priv : record
 }
 
@@ -2028,16 +2555,6 @@ func (recv *Settings) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : g_settings_new : no return generator
-
-// Unsupported : g_settings_new_full : unsupported parameter backend : no type generator for SettingsBackend, GSettingsBackend*
-
-// Unsupported : g_settings_new_with_backend : unsupported parameter backend : no type generator for SettingsBackend, GSettingsBackend*
-
-// Unsupported : g_settings_new_with_backend_and_path : unsupported parameter backend : no type generator for SettingsBackend, GSettingsBackend*
-
-// Unsupported : g_settings_new_with_path : no return generator
-
 // Unsupported : g_settings_apply : no return generator
 
 // Unsupported : g_settings_bind : no return generator
@@ -2051,8 +2568,6 @@ func (recv *Settings) ToC() unsafe.Pointer {
 // Unsupported : g_settings_delay : no return generator
 
 // Unsupported : g_settings_get : unsupported parameter ... : varargs
-
-// Unsupported : g_settings_get_child : no return generator
 
 // Unsupported : g_settings_get_default_value : return type : Blacklisted record : GVariant
 
@@ -2111,7 +2626,7 @@ func (recv *Settings) SetFlags(key string, value uint32) bool {
 // SettingsBackend is a wrapper around the C record GSettingsBackend.
 type SettingsBackend struct {
 	native *C.GSettingsBackend
-	// parent_instance : no type generator for GObject.Object, GObject
+	// parent_instance : record
 	// Private : priv
 }
 
@@ -2195,13 +2710,13 @@ func (recv *SimpleAsyncResult) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : g_simple_async_result_new : unsupported parameter source_object : no type generator for GObject.Object, GObject*
+// Unsupported : g_simple_async_result_new : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
 
-// Unsupported : g_simple_async_result_new_error : unsupported parameter source_object : no type generator for GObject.Object, GObject*
+// Unsupported : g_simple_async_result_new_error : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
 
-// Unsupported : g_simple_async_result_new_from_error : unsupported parameter source_object : no type generator for GObject.Object, GObject*
+// Unsupported : g_simple_async_result_new_from_error : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
 
-// Unsupported : g_simple_async_result_new_take_error : unsupported parameter source_object : no type generator for GObject.Object, GObject*
+// Unsupported : g_simple_async_result_new_take_error : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
 
 // Unsupported : g_simple_async_result_complete : no return generator
 
@@ -2256,7 +2771,7 @@ func (recv *SimpleAsyncResult) PropagateError() (bool, error) {
 
 // Unsupported : g_simple_async_result_run_in_thread : unsupported parameter func : no type generator for SimpleAsyncThreadFunc, GSimpleAsyncThreadFunc
 
-// Unsupported : g_simple_async_result_set_check_cancellable : unsupported parameter check_cancellable : no type generator for Cancellable, GCancellable*
+// Unsupported : g_simple_async_result_set_check_cancellable : no return generator
 
 // Unsupported : g_simple_async_result_set_error : unsupported parameter ... : varargs
 
@@ -2295,12 +2810,10 @@ func (recv *SimplePermission) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : g_simple_permission_new : no return generator
-
 // SimpleProxyResolver is a wrapper around the C record GSimpleProxyResolver.
 type SimpleProxyResolver struct {
 	native *C.GSimpleProxyResolver
-	// parent_instance : no type generator for GObject.Object, GObject
+	// parent_instance : record
 	// Private : priv
 }
 
@@ -2329,7 +2842,7 @@ func (recv *SimpleProxyResolver) ToC() unsafe.Pointer {
 // SocketAddress is a wrapper around the C record GSocketAddress.
 type SocketAddress struct {
 	native *C.GSocketAddress
-	// parent_instance : no type generator for GObject.Object, GObject
+	// parent_instance : record
 }
 
 func SocketAddressNewFromC(u unsafe.Pointer) *SocketAddress {
@@ -2348,12 +2861,10 @@ func (recv *SocketAddress) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : g_socket_address_new_from_native : no return generator
-
 // SocketAddressEnumerator is a wrapper around the C record GSocketAddressEnumerator.
 type SocketAddressEnumerator struct {
 	native *C.GSocketAddressEnumerator
-	// parent_instance : no type generator for GObject.Object, GObject
+	// parent_instance : record
 }
 
 func SocketAddressEnumeratorNewFromC(u unsafe.Pointer) *SocketAddressEnumerator {
@@ -2372,16 +2883,31 @@ func (recv *SocketAddressEnumerator) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : g_socket_address_enumerator_next : unsupported parameter cancellable : no type generator for Cancellable, GCancellable*
+// Next is a wrapper around the C function g_socket_address_enumerator_next.
+func (recv *SocketAddressEnumerator) Next(cancellable *Cancellable) (*SocketAddress, error) {
+	c_cancellable := (*C.GCancellable)(cancellable.ToC())
 
-// Unsupported : g_socket_address_enumerator_next_async : unsupported parameter cancellable : no type generator for Cancellable, GCancellable*
+	var cThrowableError *C.GError
+
+	retC := C.g_socket_address_enumerator_next((*C.GSocketAddressEnumerator)(recv.native), c_cancellable, &cThrowableError)
+	retGo := SocketAddressNewFromC(unsafe.Pointer(retC))
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
+
+// Unsupported : g_socket_address_enumerator_next_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
 
 // Unsupported : g_socket_address_enumerator_next_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
 
 // SocketControlMessage is a wrapper around the C record GSocketControlMessage.
 type SocketControlMessage struct {
 	native *C.GSocketControlMessage
-	// parent_instance : no type generator for GObject.Object, GObject
+	// parent_instance : record
 	// priv : record
 }
 
@@ -2424,11 +2950,9 @@ func (recv *Task) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : g_task_new : unsupported parameter cancellable : no type generator for Cancellable, GCancellable*
+// Unsupported : g_task_new : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
 
 // Unsupported : g_task_attach_source : unsupported parameter callback : no type generator for GLib.SourceFunc, GSourceFunc
-
-// Unsupported : g_task_get_cancellable : no return generator
 
 // Unsupported : g_task_return_boolean : no return generator
 
@@ -2455,7 +2979,7 @@ func (recv *Task) ToC() unsafe.Pointer {
 // TcpWrapperConnection is a wrapper around the C record GTcpWrapperConnection.
 type TcpWrapperConnection struct {
 	native *C.GTcpWrapperConnection
-	// parent_instance : no type generator for TcpConnection, GTcpConnection
+	// parent_instance : record
 	// priv : record
 }
 
@@ -2475,9 +2999,13 @@ func (recv *TcpWrapperConnection) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : g_tcp_wrapper_connection_new : unsupported parameter base_io_stream : no type generator for IOStream, GIOStream*
+// GetBaseIoStream is a wrapper around the C function g_tcp_wrapper_connection_get_base_io_stream.
+func (recv *TcpWrapperConnection) GetBaseIoStream() *IOStream {
+	retC := C.g_tcp_wrapper_connection_get_base_io_stream((*C.GTcpWrapperConnection)(recv.native))
+	retGo := IOStreamNewFromC(unsafe.Pointer(retC))
 
-// Unsupported : g_tcp_wrapper_connection_get_base_io_stream : no return generator
+	return retGo
+}
 
 // ThemedIcon is a wrapper around the C record GThemedIcon.
 type ThemedIcon struct {
@@ -2500,11 +3028,29 @@ func (recv *ThemedIcon) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : g_themed_icon_new : no return generator
+// ThemedIconNew is a wrapper around the C function g_themed_icon_new.
+func ThemedIconNew(iconname string) *ThemedIcon {
+	c_iconname := C.CString(iconname)
+	defer C.free(unsafe.Pointer(c_iconname))
+
+	retC := C.g_themed_icon_new(c_iconname)
+	retGo := ThemedIconNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // Unsupported : g_themed_icon_new_from_names : unsupported parameter iconnames : no param type
 
-// Unsupported : g_themed_icon_new_with_default_fallbacks : no return generator
+// ThemedIconNewWithDefaultFallbacks is a wrapper around the C function g_themed_icon_new_with_default_fallbacks.
+func ThemedIconNewWithDefaultFallbacks(iconname string) *ThemedIcon {
+	c_iconname := C.CString(iconname)
+	defer C.free(unsafe.Pointer(c_iconname))
+
+	retC := C.g_themed_icon_new_with_default_fallbacks(c_iconname)
+	retGo := ThemedIconNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // Unsupported : g_themed_icon_append_name : no return generator
 
@@ -2515,7 +3061,7 @@ func (recv *ThemedIcon) ToC() unsafe.Pointer {
 // UnixConnection is a wrapper around the C record GUnixConnection.
 type UnixConnection struct {
 	native *C.GUnixConnection
-	// parent_instance : no type generator for SocketConnection, GSocketConnection
+	// parent_instance : record
 	// priv : record
 }
 
@@ -2535,26 +3081,18 @@ func (recv *UnixConnection) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : g_unix_connection_receive_credentials : unsupported parameter cancellable : no type generator for Cancellable, GCancellable*
-
-// Unsupported : g_unix_connection_receive_credentials_async : unsupported parameter cancellable : no type generator for Cancellable, GCancellable*
+// Unsupported : g_unix_connection_receive_credentials_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
 
 // Unsupported : g_unix_connection_receive_credentials_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
 
-// Unsupported : g_unix_connection_receive_fd : unsupported parameter cancellable : no type generator for Cancellable, GCancellable*
-
-// Unsupported : g_unix_connection_send_credentials : unsupported parameter cancellable : no type generator for Cancellable, GCancellable*
-
-// Unsupported : g_unix_connection_send_credentials_async : unsupported parameter cancellable : no type generator for Cancellable, GCancellable*
+// Unsupported : g_unix_connection_send_credentials_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
 
 // Unsupported : g_unix_connection_send_credentials_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
-
-// Unsupported : g_unix_connection_send_fd : unsupported parameter cancellable : no type generator for Cancellable, GCancellable*
 
 // UnixFDList is a wrapper around the C record GUnixFDList.
 type UnixFDList struct {
 	native *C.GUnixFDList
-	// parent_instance : no type generator for GObject.Object, GObject
+	// parent_instance : record
 	// priv : record
 }
 
@@ -2574,8 +3112,6 @@ func (recv *UnixFDList) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : g_unix_fd_list_new : no return generator
-
 // Unsupported : g_unix_fd_list_new_from_array : unsupported parameter fds : no param type
 
 // Unsupported : g_unix_fd_list_peek_fds : unsupported parameter length : no type generator for gint, gint*
@@ -2585,7 +3121,7 @@ func (recv *UnixFDList) ToC() unsafe.Pointer {
 // UnixFDMessage is a wrapper around the C record GUnixFDMessage.
 type UnixFDMessage struct {
 	native *C.GUnixFDMessage
-	// parent_instance : no type generator for SocketControlMessage, GSocketControlMessage
+	// parent_instance : record
 	// priv : record
 }
 
@@ -2605,18 +3141,12 @@ func (recv *UnixFDMessage) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : g_unix_fd_message_new : no return generator
-
-// Unsupported : g_unix_fd_message_new_with_fd_list : unsupported parameter fd_list : no type generator for UnixFDList, GUnixFDList*
-
-// Unsupported : g_unix_fd_message_get_fd_list : no return generator
-
 // Unsupported : g_unix_fd_message_steal_fds : unsupported parameter length : no type generator for gint, gint*
 
 // UnixInputStream is a wrapper around the C record GUnixInputStream.
 type UnixInputStream struct {
 	native *C.GUnixInputStream
-	// parent_instance : no type generator for InputStream, GInputStream
+	// parent_instance : record
 	// Private : priv
 }
 
@@ -2636,7 +3166,18 @@ func (recv *UnixInputStream) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : g_unix_input_stream_new : no return generator
+// UnixInputStreamNew is a wrapper around the C function g_unix_input_stream_new.
+func UnixInputStreamNew(fd int32, closeFd bool) *InputStream {
+	c_fd := (C.gint)(fd)
+
+	c_close_fd :=
+		boolToGboolean(closeFd)
+
+	retC := C.g_unix_input_stream_new(c_fd, c_close_fd)
+	retGo := InputStreamNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // Unsupported : g_unix_input_stream_set_close_fd : no return generator
 
@@ -2661,14 +3202,20 @@ func (recv *UnixMountMonitor) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : g_unix_mount_monitor_new : no return generator
+// UnixMountMonitorNew is a wrapper around the C function g_unix_mount_monitor_new.
+func UnixMountMonitorNew() *UnixMountMonitor {
+	retC := C.g_unix_mount_monitor_new()
+	retGo := UnixMountMonitorNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // Unsupported : g_unix_mount_monitor_set_rate_limit : no return generator
 
 // UnixOutputStream is a wrapper around the C record GUnixOutputStream.
 type UnixOutputStream struct {
 	native *C.GUnixOutputStream
-	// parent_instance : no type generator for OutputStream, GOutputStream
+	// parent_instance : record
 	// Private : priv
 }
 
@@ -2688,14 +3235,25 @@ func (recv *UnixOutputStream) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : g_unix_output_stream_new : no return generator
+// UnixOutputStreamNew is a wrapper around the C function g_unix_output_stream_new.
+func UnixOutputStreamNew(fd int32, closeFd bool) *OutputStream {
+	c_fd := (C.gint)(fd)
+
+	c_close_fd :=
+		boolToGboolean(closeFd)
+
+	retC := C.g_unix_output_stream_new(c_fd, c_close_fd)
+	retGo := OutputStreamNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // Unsupported : g_unix_output_stream_set_close_fd : no return generator
 
 // UnixSocketAddress is a wrapper around the C record GUnixSocketAddress.
 type UnixSocketAddress struct {
 	native *C.GUnixSocketAddress
-	// parent_instance : no type generator for SocketAddress, GSocketAddress
+	// parent_instance : record
 	// Private : priv
 }
 
@@ -2715,8 +3273,6 @@ func (recv *UnixSocketAddress) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : g_unix_socket_address_new : no return generator
-
 // Unsupported : g_unix_socket_address_new_abstract : unsupported parameter path : no param type
 
 // Unsupported : g_unix_socket_address_new_with_type : unsupported parameter path : no param type
@@ -2724,7 +3280,7 @@ func (recv *UnixSocketAddress) ToC() unsafe.Pointer {
 // Vfs is a wrapper around the C record GVfs.
 type Vfs struct {
 	native *C.GVfs
-	// parent_instance : no type generator for GObject.Object, GObject
+	// parent_instance : record
 }
 
 func VfsNewFromC(u unsafe.Pointer) *Vfs {
@@ -2764,7 +3320,7 @@ func (recv *Vfs) IsActive() bool {
 // VolumeMonitor is a wrapper around the C record GVolumeMonitor.
 type VolumeMonitor struct {
 	native *C.GVolumeMonitor
-	// parent_instance : no type generator for GObject.Object, GObject
+	// parent_instance : record
 	// Private : priv
 }
 
@@ -2833,11 +3389,7 @@ func (recv *ZlibCompressor) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : g_zlib_compressor_new : no return generator
-
-// Unsupported : g_zlib_compressor_get_file_info : no return generator
-
-// Unsupported : g_zlib_compressor_set_file_info : unsupported parameter file_info : no type generator for FileInfo, GFileInfo*
+// Unsupported : g_zlib_compressor_set_file_info : no return generator
 
 // ZlibDecompressor is a wrapper around the C record GZlibDecompressor.
 type ZlibDecompressor struct {
@@ -2859,7 +3411,3 @@ func (recv *ZlibDecompressor) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
-
-// Unsupported : g_zlib_decompressor_new : no return generator
-
-// Unsupported : g_zlib_decompressor_get_file_info : no return generator

@@ -3,7 +3,10 @@
 
 package gio
 
-import "unsafe"
+import (
+	glib "github.com/pekim/gobbi/lib/glib"
+	"unsafe"
+)
 
 // #define GLIB_DISABLE_DEPRECATION_WARNINGS
 // #include <gio/gdesktopappinfo.h>
@@ -43,11 +46,35 @@ func (recv *DBusInterfaceSkeleton) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : g_dbus_interface_skeleton_export : unsupported parameter connection : no type generator for DBusConnection, GDBusConnection*
+// Export is a wrapper around the C function g_dbus_interface_skeleton_export.
+func (recv *DBusInterfaceSkeleton) Export(connection *DBusConnection, objectPath string) (bool, error) {
+	c_connection := (*C.GDBusConnection)(connection.ToC())
+
+	c_object_path := C.CString(objectPath)
+	defer C.free(unsafe.Pointer(c_object_path))
+
+	var cThrowableError *C.GError
+
+	retC := C.g_dbus_interface_skeleton_export((*C.GDBusInterfaceSkeleton)(recv.native), c_connection, c_object_path, &cThrowableError)
+	retGo := retC == C.TRUE
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // Unsupported : g_dbus_interface_skeleton_flush : no return generator
 
-// Unsupported : g_dbus_interface_skeleton_get_connection : no return generator
+// GetConnection is a wrapper around the C function g_dbus_interface_skeleton_get_connection.
+func (recv *DBusInterfaceSkeleton) GetConnection() *DBusConnection {
+	retC := C.g_dbus_interface_skeleton_get_connection((*C.GDBusInterfaceSkeleton)(recv.native))
+	retGo := DBusConnectionNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // GetFlags is a wrapper around the C function g_dbus_interface_skeleton_get_flags.
 func (recv *DBusInterfaceSkeleton) GetFlags() DBusInterfaceSkeletonFlags {
@@ -83,13 +110,11 @@ func (recv *DBusInterfaceSkeleton) GetVtable() *DBusInterfaceVTable {
 	return retGo
 }
 
-// Unsupported : g_dbus_interface_skeleton_has_connection : unsupported parameter connection : no type generator for DBusConnection, GDBusConnection*
-
 // Unsupported : g_dbus_interface_skeleton_set_flags : no return generator
 
 // Unsupported : g_dbus_interface_skeleton_unexport : no return generator
 
-// Unsupported : g_dbus_interface_skeleton_unexport_from_connection : unsupported parameter connection : no type generator for DBusConnection, GDBusConnection*
+// Unsupported : g_dbus_interface_skeleton_unexport_from_connection : no return generator
 
 // DBusObjectManagerClient is a wrapper around the C record GDBusObjectManagerClient.
 type DBusObjectManagerClient struct {
@@ -120,9 +145,15 @@ func (recv *DBusObjectManagerClient) ToC() unsafe.Pointer {
 
 // Unsupported : g_dbus_object_manager_client_new_for_bus_sync : unsupported parameter get_proxy_type_func : no type generator for DBusProxyTypeFunc, GDBusProxyTypeFunc
 
-// Unsupported : g_dbus_object_manager_client_new_sync : unsupported parameter connection : no type generator for DBusConnection, GDBusConnection*
+// Unsupported : g_dbus_object_manager_client_new_sync : unsupported parameter get_proxy_type_func : no type generator for DBusProxyTypeFunc, GDBusProxyTypeFunc
 
-// Unsupported : g_dbus_object_manager_client_get_connection : no return generator
+// GetConnection is a wrapper around the C function g_dbus_object_manager_client_get_connection.
+func (recv *DBusObjectManagerClient) GetConnection() *DBusConnection {
+	retC := C.g_dbus_object_manager_client_get_connection((*C.GDBusObjectManagerClient)(recv.native))
+	retGo := DBusConnectionNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // GetFlags is a wrapper around the C function g_dbus_object_manager_client_get_flags.
 func (recv *DBusObjectManagerClient) GetFlags() DBusObjectManagerClientFlags {
@@ -172,17 +203,30 @@ func (recv *DBusObjectManagerServer) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : g_dbus_object_manager_server_new : no return generator
+// DBusObjectManagerServerNew is a wrapper around the C function g_dbus_object_manager_server_new.
+func DBusObjectManagerServerNew(objectPath string) *DBusObjectManagerServer {
+	c_object_path := C.CString(objectPath)
+	defer C.free(unsafe.Pointer(c_object_path))
 
-// Unsupported : g_dbus_object_manager_server_export : unsupported parameter object : no type generator for DBusObjectSkeleton, GDBusObjectSkeleton*
+	retC := C.g_dbus_object_manager_server_new(c_object_path)
+	retGo := DBusObjectManagerServerNewFromC(unsafe.Pointer(retC))
 
-// Unsupported : g_dbus_object_manager_server_export_uniquely : unsupported parameter object : no type generator for DBusObjectSkeleton, GDBusObjectSkeleton*
+	return retGo
+}
 
-// Unsupported : g_dbus_object_manager_server_get_connection : no return generator
+// Unsupported : g_dbus_object_manager_server_export : no return generator
 
-// Unsupported : g_dbus_object_manager_server_is_exported : unsupported parameter object : no type generator for DBusObjectSkeleton, GDBusObjectSkeleton*
+// Unsupported : g_dbus_object_manager_server_export_uniquely : no return generator
 
-// Unsupported : g_dbus_object_manager_server_set_connection : unsupported parameter connection : no type generator for DBusConnection, GDBusConnection*
+// GetConnection is a wrapper around the C function g_dbus_object_manager_server_get_connection.
+func (recv *DBusObjectManagerServer) GetConnection() *DBusConnection {
+	retC := C.g_dbus_object_manager_server_get_connection((*C.GDBusObjectManagerServer)(recv.native))
+	retGo := DBusConnectionNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// Unsupported : g_dbus_object_manager_server_set_connection : no return generator
 
 // Unexport is a wrapper around the C function g_dbus_object_manager_server_unexport.
 func (recv *DBusObjectManagerServer) Unexport(objectPath string) bool {
@@ -218,9 +262,26 @@ func (recv *DBusObjectProxy) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : g_dbus_object_proxy_new : unsupported parameter connection : no type generator for DBusConnection, GDBusConnection*
+// DBusObjectProxyNew is a wrapper around the C function g_dbus_object_proxy_new.
+func DBusObjectProxyNew(connection *DBusConnection, objectPath string) *DBusObjectProxy {
+	c_connection := (*C.GDBusConnection)(connection.ToC())
 
-// Unsupported : g_dbus_object_proxy_get_connection : no return generator
+	c_object_path := C.CString(objectPath)
+	defer C.free(unsafe.Pointer(c_object_path))
+
+	retC := C.g_dbus_object_proxy_new(c_connection, c_object_path)
+	retGo := DBusObjectProxyNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// GetConnection is a wrapper around the C function g_dbus_object_proxy_get_connection.
+func (recv *DBusObjectProxy) GetConnection() *DBusConnection {
+	retC := C.g_dbus_object_proxy_get_connection((*C.GDBusObjectProxy)(recv.native))
+	retGo := DBusConnectionNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // DBusObjectSkeleton is a wrapper around the C record GDBusObjectSkeleton.
 type DBusObjectSkeleton struct {
@@ -245,13 +306,22 @@ func (recv *DBusObjectSkeleton) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : g_dbus_object_skeleton_new : no return generator
+// DBusObjectSkeletonNew is a wrapper around the C function g_dbus_object_skeleton_new.
+func DBusObjectSkeletonNew(objectPath string) *DBusObjectSkeleton {
+	c_object_path := C.CString(objectPath)
+	defer C.free(unsafe.Pointer(c_object_path))
 
-// Unsupported : g_dbus_object_skeleton_add_interface : unsupported parameter interface_ : no type generator for DBusInterfaceSkeleton, GDBusInterfaceSkeleton*
+	retC := C.g_dbus_object_skeleton_new(c_object_path)
+	retGo := DBusObjectSkeletonNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// Unsupported : g_dbus_object_skeleton_add_interface : no return generator
 
 // Unsupported : g_dbus_object_skeleton_flush : no return generator
 
-// Unsupported : g_dbus_object_skeleton_remove_interface : unsupported parameter interface_ : no type generator for DBusInterfaceSkeleton, GDBusInterfaceSkeleton*
+// Unsupported : g_dbus_object_skeleton_remove_interface : no return generator
 
 // Unsupported : g_dbus_object_skeleton_remove_interface_by_name : no return generator
 
@@ -260,7 +330,7 @@ func (recv *DBusObjectSkeleton) ToC() unsafe.Pointer {
 // TlsDatabase is a wrapper around the C record GTlsDatabase.
 type TlsDatabase struct {
 	native *C.GTlsDatabase
-	// parent_instance : no type generator for GObject.Object, GObject
+	// parent_instance : record
 	// priv : record
 }
 
@@ -280,17 +350,69 @@ func (recv *TlsDatabase) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : g_tls_database_create_certificate_handle : unsupported parameter certificate : no type generator for TlsCertificate, GTlsCertificate*
+// CreateCertificateHandle is a wrapper around the C function g_tls_database_create_certificate_handle.
+func (recv *TlsDatabase) CreateCertificateHandle(certificate *TlsCertificate) string {
+	c_certificate := (*C.GTlsCertificate)(certificate.ToC())
 
-// Unsupported : g_tls_database_lookup_certificate_for_handle : unsupported parameter interaction : no type generator for TlsInteraction, GTlsInteraction*
+	retC := C.g_tls_database_create_certificate_handle((*C.GTlsDatabase)(recv.native), c_certificate)
+	retGo := C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
 
-// Unsupported : g_tls_database_lookup_certificate_for_handle_async : unsupported parameter interaction : no type generator for TlsInteraction, GTlsInteraction*
+	return retGo
+}
+
+// LookupCertificateForHandle is a wrapper around the C function g_tls_database_lookup_certificate_for_handle.
+func (recv *TlsDatabase) LookupCertificateForHandle(handle string, interaction *TlsInteraction, flags TlsDatabaseLookupFlags, cancellable *Cancellable) (*TlsCertificate, error) {
+	c_handle := C.CString(handle)
+	defer C.free(unsafe.Pointer(c_handle))
+
+	c_interaction := (*C.GTlsInteraction)(interaction.ToC())
+
+	c_flags := (C.GTlsDatabaseLookupFlags)(flags)
+
+	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_tls_database_lookup_certificate_for_handle((*C.GTlsDatabase)(recv.native), c_handle, c_interaction, c_flags, c_cancellable, &cThrowableError)
+	retGo := TlsCertificateNewFromC(unsafe.Pointer(retC))
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
+
+// Unsupported : g_tls_database_lookup_certificate_for_handle_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
 
 // Unsupported : g_tls_database_lookup_certificate_for_handle_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
 
-// Unsupported : g_tls_database_lookup_certificate_issuer : unsupported parameter certificate : no type generator for TlsCertificate, GTlsCertificate*
+// LookupCertificateIssuer is a wrapper around the C function g_tls_database_lookup_certificate_issuer.
+func (recv *TlsDatabase) LookupCertificateIssuer(certificate *TlsCertificate, interaction *TlsInteraction, flags TlsDatabaseLookupFlags, cancellable *Cancellable) (*TlsCertificate, error) {
+	c_certificate := (*C.GTlsCertificate)(certificate.ToC())
 
-// Unsupported : g_tls_database_lookup_certificate_issuer_async : unsupported parameter certificate : no type generator for TlsCertificate, GTlsCertificate*
+	c_interaction := (*C.GTlsInteraction)(interaction.ToC())
+
+	c_flags := (C.GTlsDatabaseLookupFlags)(flags)
+
+	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_tls_database_lookup_certificate_issuer((*C.GTlsDatabase)(recv.native), c_certificate, c_interaction, c_flags, c_cancellable, &cThrowableError)
+	retGo := TlsCertificateNewFromC(unsafe.Pointer(retC))
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
+
+// Unsupported : g_tls_database_lookup_certificate_issuer_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
 
 // Unsupported : g_tls_database_lookup_certificate_issuer_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
 
@@ -300,9 +422,9 @@ func (recv *TlsDatabase) ToC() unsafe.Pointer {
 
 // Unsupported : g_tls_database_lookup_certificates_issued_by_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
 
-// Unsupported : g_tls_database_verify_chain : unsupported parameter chain : no type generator for TlsCertificate, GTlsCertificate*
+// Unsupported : g_tls_database_verify_chain : unsupported parameter identity : no type generator for SocketConnectable, GSocketConnectable*
 
-// Unsupported : g_tls_database_verify_chain_async : unsupported parameter chain : no type generator for TlsCertificate, GTlsCertificate*
+// Unsupported : g_tls_database_verify_chain_async : unsupported parameter identity : no type generator for SocketConnectable, GSocketConnectable*
 
 // Unsupported : g_tls_database_verify_chain_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
 
@@ -329,26 +451,56 @@ func (recv *TlsInteraction) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : g_tls_interaction_ask_password : unsupported parameter password : no type generator for TlsPassword, GTlsPassword*
+// AskPassword is a wrapper around the C function g_tls_interaction_ask_password.
+func (recv *TlsInteraction) AskPassword(password *TlsPassword, cancellable *Cancellable) (TlsInteractionResult, error) {
+	c_password := (*C.GTlsPassword)(password.ToC())
 
-// Unsupported : g_tls_interaction_ask_password_async : unsupported parameter password : no type generator for TlsPassword, GTlsPassword*
+	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_tls_interaction_ask_password((*C.GTlsInteraction)(recv.native), c_password, c_cancellable, &cThrowableError)
+	retGo := (TlsInteractionResult)(retC)
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
+
+// Unsupported : g_tls_interaction_ask_password_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
 
 // Unsupported : g_tls_interaction_ask_password_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
 
-// Unsupported : g_tls_interaction_invoke_ask_password : unsupported parameter password : no type generator for TlsPassword, GTlsPassword*
+// InvokeAskPassword is a wrapper around the C function g_tls_interaction_invoke_ask_password.
+func (recv *TlsInteraction) InvokeAskPassword(password *TlsPassword, cancellable *Cancellable) (TlsInteractionResult, error) {
+	c_password := (*C.GTlsPassword)(password.ToC())
 
-// Unsupported : g_tls_interaction_invoke_request_certificate : unsupported parameter connection : no type generator for TlsConnection, GTlsConnection*
+	c_cancellable := (*C.GCancellable)(cancellable.ToC())
 
-// Unsupported : g_tls_interaction_request_certificate : unsupported parameter connection : no type generator for TlsConnection, GTlsConnection*
+	var cThrowableError *C.GError
 
-// Unsupported : g_tls_interaction_request_certificate_async : unsupported parameter connection : no type generator for TlsConnection, GTlsConnection*
+	retC := C.g_tls_interaction_invoke_ask_password((*C.GTlsInteraction)(recv.native), c_password, c_cancellable, &cThrowableError)
+	retGo := (TlsInteractionResult)(retC)
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
+
+// Unsupported : g_tls_interaction_request_certificate_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
 
 // Unsupported : g_tls_interaction_request_certificate_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
 
 // TlsPassword is a wrapper around the C record GTlsPassword.
 type TlsPassword struct {
 	native *C.GTlsPassword
-	// parent_instance : no type generator for GObject.Object, GObject
+	// parent_instance : record
 	// priv : record
 }
 
@@ -367,8 +519,6 @@ func (recv *TlsPassword) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
-
-// Unsupported : g_tls_password_new : no return generator
 
 // GetDescription is a wrapper around the C function g_tls_password_get_description.
 func (recv *TlsPassword) GetDescription() string {

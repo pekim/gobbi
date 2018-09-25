@@ -41,8 +41,6 @@ func (recv *TestDBus) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : g_test_dbus_new : no return generator
-
 // Unsupported : g_test_dbus_add_service_dir : no return generator
 
 // Unsupported : g_test_dbus_down : no return generator

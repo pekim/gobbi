@@ -34,7 +34,9 @@ type Function struct {
 func (f *Function) init(ns *Namespace, receiver *Record) {
 	f.Namespace = ns
 	f.receiver = receiver
-	f.GoName = makeExportedGoName(f.Name)
+	if f.GoName == "" {
+		f.GoName = makeExportedGoName(f.Name)
+	}
 	f.Parameters.init(ns)
 	if f.InstanceParameter != nil {
 		f.InstanceParameter.init(ns)

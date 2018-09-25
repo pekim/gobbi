@@ -44,7 +44,13 @@ func (recv *Credentials) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : g_credentials_new : no return generator
+// CredentialsNew is a wrapper around the C function g_credentials_new.
+func CredentialsNew() *Credentials {
+	retC := C.g_credentials_new()
+	retGo := CredentialsNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // GetNative is a wrapper around the C function g_credentials_get_native.
 func (recv *Credentials) GetNative(nativeType CredentialsType) uintptr {
@@ -60,7 +66,22 @@ func (recv *Credentials) GetNative(nativeType CredentialsType) uintptr {
 
 // Unsupported : g_credentials_get_unix_user : no return generator
 
-// Unsupported : g_credentials_is_same_user : unsupported parameter other_credentials : no type generator for Credentials, GCredentials*
+// IsSameUser is a wrapper around the C function g_credentials_is_same_user.
+func (recv *Credentials) IsSameUser(otherCredentials *Credentials) (bool, error) {
+	c_other_credentials := (*C.GCredentials)(otherCredentials.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_credentials_is_same_user((*C.GCredentials)(recv.native), c_other_credentials, &cThrowableError)
+	retGo := retC == C.TRUE
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // Unsupported : g_credentials_set_native : no return generator
 
@@ -96,9 +117,25 @@ func (recv *DBusAuthObserver) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : g_dbus_auth_observer_new : no return generator
+// DBusAuthObserverNew is a wrapper around the C function g_dbus_auth_observer_new.
+func DBusAuthObserverNew() *DBusAuthObserver {
+	retC := C.g_dbus_auth_observer_new()
+	retGo := DBusAuthObserverNewFromC(unsafe.Pointer(retC))
 
-// Unsupported : g_dbus_auth_observer_authorize_authenticated_peer : unsupported parameter stream : no type generator for IOStream, GIOStream*
+	return retGo
+}
+
+// AuthorizeAuthenticatedPeer is a wrapper around the C function g_dbus_auth_observer_authorize_authenticated_peer.
+func (recv *DBusAuthObserver) AuthorizeAuthenticatedPeer(stream *IOStream, credentials *Credentials) bool {
+	c_stream := (*C.GIOStream)(stream.ToC())
+
+	c_credentials := (*C.GCredentials)(credentials.ToC())
+
+	retC := C.g_dbus_auth_observer_authorize_authenticated_peer((*C.GDBusAuthObserver)(recv.native), c_stream, c_credentials)
+	retGo := retC == C.TRUE
+
+	return retGo
+}
 
 // DBusConnection is a wrapper around the C record GDBusConnection.
 type DBusConnection struct {
@@ -125,9 +162,55 @@ func (recv *DBusConnection) ToC() unsafe.Pointer {
 
 // Unsupported : g_dbus_connection_new_for_address_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
 
-// Unsupported : g_dbus_connection_new_for_address_sync : unsupported parameter observer : no type generator for DBusAuthObserver, GDBusAuthObserver*
+// DBusConnectionNewForAddressSync is a wrapper around the C function g_dbus_connection_new_for_address_sync.
+func DBusConnectionNewForAddressSync(address string, flags DBusConnectionFlags, observer *DBusAuthObserver, cancellable *Cancellable) (*DBusConnection, error) {
+	c_address := C.CString(address)
+	defer C.free(unsafe.Pointer(c_address))
 
-// Unsupported : g_dbus_connection_new_sync : unsupported parameter stream : no type generator for IOStream, GIOStream*
+	c_flags := (C.GDBusConnectionFlags)(flags)
+
+	c_observer := (*C.GDBusAuthObserver)(observer.ToC())
+
+	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_dbus_connection_new_for_address_sync(c_address, c_flags, c_observer, c_cancellable, &cThrowableError)
+	retGo := DBusConnectionNewFromC(unsafe.Pointer(retC))
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
+
+// DBusConnectionNewSync is a wrapper around the C function g_dbus_connection_new_sync.
+func DBusConnectionNewSync(stream *IOStream, guid string, flags DBusConnectionFlags, observer *DBusAuthObserver, cancellable *Cancellable) (*DBusConnection, error) {
+	c_stream := (*C.GIOStream)(stream.ToC())
+
+	c_guid := C.CString(guid)
+	defer C.free(unsafe.Pointer(c_guid))
+
+	c_flags := (C.GDBusConnectionFlags)(flags)
+
+	c_observer := (*C.GDBusAuthObserver)(observer.ToC())
+
+	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_dbus_connection_new_sync(c_stream, c_guid, c_flags, c_observer, c_cancellable, &cThrowableError)
+	retGo := DBusConnectionNewFromC(unsafe.Pointer(retC))
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // Unsupported : g_dbus_connection_add_filter : unsupported parameter filter_function : no type generator for DBusMessageFilterFunction, GDBusMessageFilterFunction
 
@@ -139,27 +222,55 @@ func (recv *DBusConnection) ToC() unsafe.Pointer {
 
 // Unsupported : g_dbus_connection_call_with_unix_fd_list : unsupported parameter parameters : Blacklisted record : GVariant
 
-// Unsupported : g_dbus_connection_call_with_unix_fd_list_finish : unsupported parameter out_fd_list : no type generator for UnixFDList, GUnixFDList**
+// Unsupported : g_dbus_connection_call_with_unix_fd_list_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
 
 // Unsupported : g_dbus_connection_call_with_unix_fd_list_sync : unsupported parameter parameters : Blacklisted record : GVariant
 
-// Unsupported : g_dbus_connection_close : unsupported parameter cancellable : no type generator for Cancellable, GCancellable*
+// Unsupported : g_dbus_connection_close : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
 
 // Unsupported : g_dbus_connection_close_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
 
-// Unsupported : g_dbus_connection_close_sync : unsupported parameter cancellable : no type generator for Cancellable, GCancellable*
+// CloseSync is a wrapper around the C function g_dbus_connection_close_sync.
+func (recv *DBusConnection) CloseSync(cancellable *Cancellable) (bool, error) {
+	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_dbus_connection_close_sync((*C.GDBusConnection)(recv.native), c_cancellable, &cThrowableError)
+	retGo := retC == C.TRUE
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // Unsupported : g_dbus_connection_emit_signal : unsupported parameter parameters : Blacklisted record : GVariant
 
 // Unsupported : g_dbus_connection_export_action_group : unsupported parameter action_group : no type generator for ActionGroup, GActionGroup*
 
-// Unsupported : g_dbus_connection_export_menu_model : unsupported parameter menu : no type generator for MenuModel, GMenuModel*
-
-// Unsupported : g_dbus_connection_flush : unsupported parameter cancellable : no type generator for Cancellable, GCancellable*
+// Unsupported : g_dbus_connection_flush : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
 
 // Unsupported : g_dbus_connection_flush_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
 
-// Unsupported : g_dbus_connection_flush_sync : unsupported parameter cancellable : no type generator for Cancellable, GCancellable*
+// FlushSync is a wrapper around the C function g_dbus_connection_flush_sync.
+func (recv *DBusConnection) FlushSync(cancellable *Cancellable) (bool, error) {
+	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_dbus_connection_flush_sync((*C.GDBusConnection)(recv.native), c_cancellable, &cThrowableError)
+	retGo := retC == C.TRUE
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // GetCapabilities is a wrapper around the C function g_dbus_connection_get_capabilities.
 func (recv *DBusConnection) GetCapabilities() DBusCapabilityFlags {
@@ -185,9 +296,21 @@ func (recv *DBusConnection) GetGuid() string {
 	return retGo
 }
 
-// Unsupported : g_dbus_connection_get_peer_credentials : no return generator
+// GetPeerCredentials is a wrapper around the C function g_dbus_connection_get_peer_credentials.
+func (recv *DBusConnection) GetPeerCredentials() *Credentials {
+	retC := C.g_dbus_connection_get_peer_credentials((*C.GDBusConnection)(recv.native))
+	retGo := CredentialsNewFromC(unsafe.Pointer(retC))
 
-// Unsupported : g_dbus_connection_get_stream : no return generator
+	return retGo
+}
+
+// GetStream is a wrapper around the C function g_dbus_connection_get_stream.
+func (recv *DBusConnection) GetStream() *IOStream {
+	retC := C.g_dbus_connection_get_stream((*C.GDBusConnection)(recv.native))
+	retGo := IOStreamNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // GetUniqueName is a wrapper around the C function g_dbus_connection_get_unique_name.
 func (recv *DBusConnection) GetUniqueName() string {
@@ -211,13 +334,13 @@ func (recv *DBusConnection) IsClosed() bool {
 
 // Unsupported : g_dbus_connection_remove_filter : no return generator
 
-// Unsupported : g_dbus_connection_send_message : unsupported parameter message : no type generator for DBusMessage, GDBusMessage*
+// Unsupported : g_dbus_connection_send_message : unsupported parameter out_serial : no type generator for guint32, volatile guint32*
 
-// Unsupported : g_dbus_connection_send_message_with_reply : unsupported parameter message : no type generator for DBusMessage, GDBusMessage*
+// Unsupported : g_dbus_connection_send_message_with_reply : unsupported parameter out_serial : no type generator for guint32, volatile guint32*
 
 // Unsupported : g_dbus_connection_send_message_with_reply_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
 
-// Unsupported : g_dbus_connection_send_message_with_reply_sync : unsupported parameter message : no type generator for DBusMessage, GDBusMessage*
+// Unsupported : g_dbus_connection_send_message_with_reply_sync : unsupported parameter out_serial : no type generator for guint32, volatile guint32*
 
 // Unsupported : g_dbus_connection_set_exit_on_close : no return generator
 
@@ -272,15 +395,67 @@ func (recv *DBusMessage) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : g_dbus_message_new : no return generator
+// DBusMessageNew is a wrapper around the C function g_dbus_message_new.
+func DBusMessageNew() *DBusMessage {
+	retC := C.g_dbus_message_new()
+	retGo := DBusMessageNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // Unsupported : g_dbus_message_new_from_blob : unsupported parameter blob : no param type
 
-// Unsupported : g_dbus_message_new_method_call : no return generator
+// DBusMessageNewMethodCall is a wrapper around the C function g_dbus_message_new_method_call.
+func DBusMessageNewMethodCall(name string, path string, interface_ string, method string) *DBusMessage {
+	c_name := C.CString(name)
+	defer C.free(unsafe.Pointer(c_name))
 
-// Unsupported : g_dbus_message_new_signal : no return generator
+	c_path := C.CString(path)
+	defer C.free(unsafe.Pointer(c_path))
 
-// Unsupported : g_dbus_message_copy : no return generator
+	c_interface_ := C.CString(interface_)
+	defer C.free(unsafe.Pointer(c_interface_))
+
+	c_method := C.CString(method)
+	defer C.free(unsafe.Pointer(c_method))
+
+	retC := C.g_dbus_message_new_method_call(c_name, c_path, c_interface_, c_method)
+	retGo := DBusMessageNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// DBusMessageNewSignal is a wrapper around the C function g_dbus_message_new_signal.
+func DBusMessageNewSignal(path string, interface_ string, signal string) *DBusMessage {
+	c_path := C.CString(path)
+	defer C.free(unsafe.Pointer(c_path))
+
+	c_interface_ := C.CString(interface_)
+	defer C.free(unsafe.Pointer(c_interface_))
+
+	c_signal := C.CString(signal)
+	defer C.free(unsafe.Pointer(c_signal))
+
+	retC := C.g_dbus_message_new_signal(c_path, c_interface_, c_signal)
+	retGo := DBusMessageNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// Copy is a wrapper around the C function g_dbus_message_copy.
+func (recv *DBusMessage) Copy() (*DBusMessage, error) {
+	var cThrowableError *C.GError
+
+	retC := C.g_dbus_message_copy((*C.GDBusMessage)(recv.native), &cThrowableError)
+	retGo := DBusMessageNewFromC(unsafe.Pointer(retC))
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // GetArg0 is a wrapper around the C function g_dbus_message_get_arg0.
 func (recv *DBusMessage) GetArg0() string {
@@ -400,17 +575,41 @@ func (recv *DBusMessage) GetSignature() string {
 	return retGo
 }
 
-// Unsupported : g_dbus_message_get_unix_fd_list : no return generator
+// GetUnixFdList is a wrapper around the C function g_dbus_message_get_unix_fd_list.
+func (recv *DBusMessage) GetUnixFdList() *UnixFDList {
+	retC := C.g_dbus_message_get_unix_fd_list((*C.GDBusMessage)(recv.native))
+	retGo := UnixFDListNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // Unsupported : g_dbus_message_lock : no return generator
 
 // Unsupported : g_dbus_message_new_method_error : unsupported parameter ... : varargs
 
-// Unsupported : g_dbus_message_new_method_error_literal : no return generator
+// NewMethodErrorLiteral is a wrapper around the C function g_dbus_message_new_method_error_literal.
+func (recv *DBusMessage) NewMethodErrorLiteral(errorName string, errorMessage string) *DBusMessage {
+	c_error_name := C.CString(errorName)
+	defer C.free(unsafe.Pointer(c_error_name))
+
+	c_error_message := C.CString(errorMessage)
+	defer C.free(unsafe.Pointer(c_error_message))
+
+	retC := C.g_dbus_message_new_method_error_literal((*C.GDBusMessage)(recv.native), c_error_name, c_error_message)
+	retGo := DBusMessageNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // Unsupported : g_dbus_message_new_method_error_valist : unsupported parameter var_args : no type generator for va_list, va_list
 
-// Unsupported : g_dbus_message_new_method_reply : no return generator
+// NewMethodReply is a wrapper around the C function g_dbus_message_new_method_reply.
+func (recv *DBusMessage) NewMethodReply() *DBusMessage {
+	retC := C.g_dbus_message_new_method_reply((*C.GDBusMessage)(recv.native))
+	retGo := DBusMessageNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // Print is a wrapper around the C function g_dbus_message_print.
 func (recv *DBusMessage) Print(indent uint32) string {
@@ -453,7 +652,7 @@ func (recv *DBusMessage) Print(indent uint32) string {
 
 // Unsupported : g_dbus_message_set_signature : no return generator
 
-// Unsupported : g_dbus_message_set_unix_fd_list : unsupported parameter fd_list : no type generator for UnixFDList, GUnixFDList*
+// Unsupported : g_dbus_message_set_unix_fd_list : no return generator
 
 // Unsupported : g_dbus_message_to_blob : unsupported parameter out_size : no type generator for gsize, gsize*
 
@@ -493,7 +692,13 @@ func (recv *DBusMethodInvocation) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : g_dbus_method_invocation_get_connection : no return generator
+// GetConnection is a wrapper around the C function g_dbus_method_invocation_get_connection.
+func (recv *DBusMethodInvocation) GetConnection() *DBusConnection {
+	retC := C.g_dbus_method_invocation_get_connection((*C.GDBusMethodInvocation)(recv.native))
+	retGo := DBusConnectionNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // GetInterfaceName is a wrapper around the C function g_dbus_method_invocation_get_interface_name.
 func (recv *DBusMethodInvocation) GetInterfaceName() string {
@@ -503,7 +708,13 @@ func (recv *DBusMethodInvocation) GetInterfaceName() string {
 	return retGo
 }
 
-// Unsupported : g_dbus_method_invocation_get_message : no return generator
+// GetMessage is a wrapper around the C function g_dbus_method_invocation_get_message.
+func (recv *DBusMethodInvocation) GetMessage() *DBusMessage {
+	retC := C.g_dbus_method_invocation_get_message((*C.GDBusMethodInvocation)(recv.native))
+	retGo := DBusMessageNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // GetMethodInfo is a wrapper around the C function g_dbus_method_invocation_get_method_info.
 func (recv *DBusMethodInvocation) GetMethodInfo() *DBusMethodInfo {
@@ -590,9 +801,69 @@ func (recv *DBusProxy) ToC() unsafe.Pointer {
 
 // Unsupported : g_dbus_proxy_new_for_bus_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
 
-// Unsupported : g_dbus_proxy_new_for_bus_sync : unsupported parameter cancellable : no type generator for Cancellable, GCancellable*
+// DBusProxyNewForBusSync is a wrapper around the C function g_dbus_proxy_new_for_bus_sync.
+func DBusProxyNewForBusSync(busType BusType, flags DBusProxyFlags, info *DBusInterfaceInfo, name string, objectPath string, interfaceName string, cancellable *Cancellable) (*DBusProxy, error) {
+	c_bus_type := (C.GBusType)(busType)
 
-// Unsupported : g_dbus_proxy_new_sync : unsupported parameter connection : no type generator for DBusConnection, GDBusConnection*
+	c_flags := (C.GDBusProxyFlags)(flags)
+
+	c_info := (*C.GDBusInterfaceInfo)(info.ToC())
+
+	c_name := C.CString(name)
+	defer C.free(unsafe.Pointer(c_name))
+
+	c_object_path := C.CString(objectPath)
+	defer C.free(unsafe.Pointer(c_object_path))
+
+	c_interface_name := C.CString(interfaceName)
+	defer C.free(unsafe.Pointer(c_interface_name))
+
+	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_dbus_proxy_new_for_bus_sync(c_bus_type, c_flags, c_info, c_name, c_object_path, c_interface_name, c_cancellable, &cThrowableError)
+	retGo := DBusProxyNewFromC(unsafe.Pointer(retC))
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
+
+// DBusProxyNewSync is a wrapper around the C function g_dbus_proxy_new_sync.
+func DBusProxyNewSync(connection *DBusConnection, flags DBusProxyFlags, info *DBusInterfaceInfo, name string, objectPath string, interfaceName string, cancellable *Cancellable) (*DBusProxy, error) {
+	c_connection := (*C.GDBusConnection)(connection.ToC())
+
+	c_flags := (C.GDBusProxyFlags)(flags)
+
+	c_info := (*C.GDBusInterfaceInfo)(info.ToC())
+
+	c_name := C.CString(name)
+	defer C.free(unsafe.Pointer(c_name))
+
+	c_object_path := C.CString(objectPath)
+	defer C.free(unsafe.Pointer(c_object_path))
+
+	c_interface_name := C.CString(interfaceName)
+	defer C.free(unsafe.Pointer(c_interface_name))
+
+	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_dbus_proxy_new_sync(c_connection, c_flags, c_info, c_name, c_object_path, c_interface_name, c_cancellable, &cThrowableError)
+	retGo := DBusProxyNewFromC(unsafe.Pointer(retC))
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // Unsupported : g_dbus_proxy_call : unsupported parameter parameters : Blacklisted record : GVariant
 
@@ -602,7 +873,7 @@ func (recv *DBusProxy) ToC() unsafe.Pointer {
 
 // Unsupported : g_dbus_proxy_call_with_unix_fd_list : unsupported parameter parameters : Blacklisted record : GVariant
 
-// Unsupported : g_dbus_proxy_call_with_unix_fd_list_finish : unsupported parameter out_fd_list : no type generator for UnixFDList, GUnixFDList**
+// Unsupported : g_dbus_proxy_call_with_unix_fd_list_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
 
 // Unsupported : g_dbus_proxy_call_with_unix_fd_list_sync : unsupported parameter parameters : Blacklisted record : GVariant
 
@@ -610,7 +881,13 @@ func (recv *DBusProxy) ToC() unsafe.Pointer {
 
 // Unsupported : g_dbus_proxy_get_cached_property_names : no return type
 
-// Unsupported : g_dbus_proxy_get_connection : no return generator
+// GetConnection is a wrapper around the C function g_dbus_proxy_get_connection.
+func (recv *DBusProxy) GetConnection() *DBusConnection {
+	retC := C.g_dbus_proxy_get_connection((*C.GDBusProxy)(recv.native))
+	retGo := DBusConnectionNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // GetDefaultTimeout is a wrapper around the C function g_dbus_proxy_get_default_timeout.
 func (recv *DBusProxy) GetDefaultTimeout() int32 {
@@ -696,7 +973,32 @@ func (recv *DBusServer) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : g_dbus_server_new_sync : unsupported parameter observer : no type generator for DBusAuthObserver, GDBusAuthObserver*
+// DBusServerNewSync is a wrapper around the C function g_dbus_server_new_sync.
+func DBusServerNewSync(address string, flags DBusServerFlags, guid string, observer *DBusAuthObserver, cancellable *Cancellable) (*DBusServer, error) {
+	c_address := C.CString(address)
+	defer C.free(unsafe.Pointer(c_address))
+
+	c_flags := (C.GDBusServerFlags)(flags)
+
+	c_guid := C.CString(guid)
+	defer C.free(unsafe.Pointer(c_guid))
+
+	c_observer := (*C.GDBusAuthObserver)(observer.ToC())
+
+	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_dbus_server_new_sync(c_address, c_flags, c_guid, c_observer, c_cancellable, &cThrowableError)
+	retGo := DBusServerNewFromC(unsafe.Pointer(retC))
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // GetClientAddress is a wrapper around the C function g_dbus_server_get_client_address.
 func (recv *DBusServer) GetClientAddress() string {
@@ -737,7 +1039,7 @@ func (recv *DBusServer) IsActive() bool {
 // ProxyAddress is a wrapper around the C record GProxyAddress.
 type ProxyAddress struct {
 	native *C.GProxyAddress
-	// parent_instance : no type generator for InetSocketAddress, GInetSocketAddress
+	// parent_instance : record
 	// Private : priv
 }
 
@@ -757,7 +1059,31 @@ func (recv *ProxyAddress) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : g_proxy_address_new : unsupported parameter inetaddr : no type generator for InetAddress, GInetAddress*
+// ProxyAddressNew is a wrapper around the C function g_proxy_address_new.
+func ProxyAddressNew(inetaddr *InetAddress, port uint16, protocol string, destHostname string, destPort uint16, username string, password string) *SocketAddress {
+	c_inetaddr := (*C.GInetAddress)(inetaddr.ToC())
+
+	c_port := (C.guint16)(port)
+
+	c_protocol := C.CString(protocol)
+	defer C.free(unsafe.Pointer(c_protocol))
+
+	c_dest_hostname := C.CString(destHostname)
+	defer C.free(unsafe.Pointer(c_dest_hostname))
+
+	c_dest_port := (C.guint16)(destPort)
+
+	c_username := C.CString(username)
+	defer C.free(unsafe.Pointer(c_username))
+
+	c_password := C.CString(password)
+	defer C.free(unsafe.Pointer(c_password))
+
+	retC := C.g_proxy_address_new(c_inetaddr, c_port, c_protocol, c_dest_hostname, c_dest_port, c_username, c_password)
+	retGo := SocketAddressNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // GetDestinationHostname is a wrapper around the C function g_proxy_address_get_destination_hostname.
 func (recv *ProxyAddress) GetDestinationHostname() string {
@@ -802,7 +1128,7 @@ func (recv *ProxyAddress) GetUsername() string {
 // UnixCredentialsMessage is a wrapper around the C record GUnixCredentialsMessage.
 type UnixCredentialsMessage struct {
 	native *C.GUnixCredentialsMessage
-	// parent_instance : no type generator for SocketControlMessage, GSocketControlMessage
+	// parent_instance : record
 	// priv : record
 }
 
@@ -822,8 +1148,28 @@ func (recv *UnixCredentialsMessage) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : g_unix_credentials_message_new : no return generator
+// UnixCredentialsMessageNew is a wrapper around the C function g_unix_credentials_message_new.
+func UnixCredentialsMessageNew() *SocketControlMessage {
+	retC := C.g_unix_credentials_message_new()
+	retGo := SocketControlMessageNewFromC(unsafe.Pointer(retC))
 
-// Unsupported : g_unix_credentials_message_new_with_credentials : unsupported parameter credentials : no type generator for Credentials, GCredentials*
+	return retGo
+}
 
-// Unsupported : g_unix_credentials_message_get_credentials : no return generator
+// UnixCredentialsMessageNewWithCredentials is a wrapper around the C function g_unix_credentials_message_new_with_credentials.
+func UnixCredentialsMessageNewWithCredentials(credentials *Credentials) *SocketControlMessage {
+	c_credentials := (*C.GCredentials)(credentials.ToC())
+
+	retC := C.g_unix_credentials_message_new_with_credentials(c_credentials)
+	retGo := SocketControlMessageNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// GetCredentials is a wrapper around the C function g_unix_credentials_message_get_credentials.
+func (recv *UnixCredentialsMessage) GetCredentials() *Credentials {
+	retC := C.g_unix_credentials_message_get_credentials((*C.GUnixCredentialsMessage)(recv.native))
+	retGo := CredentialsNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}

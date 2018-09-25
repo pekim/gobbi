@@ -41,4 +41,14 @@ func (recv *SimpleIOStream) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : g_simple_io_stream_new : unsupported parameter input_stream : no type generator for InputStream, GInputStream*
+// SimpleIOStreamNew is a wrapper around the C function g_simple_io_stream_new.
+func SimpleIOStreamNew(inputStream *InputStream, outputStream *OutputStream) *IOStream {
+	c_input_stream := (*C.GInputStream)(inputStream.ToC())
+
+	c_output_stream := (*C.GOutputStream)(outputStream.ToC())
+
+	retC := C.g_simple_io_stream_new(c_input_stream, c_output_stream)
+	retGo := IOStreamNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}

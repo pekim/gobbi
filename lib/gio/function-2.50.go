@@ -18,6 +18,6 @@ package gio
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : g_app_info_launch_default_for_uri_async : unsupported parameter context : no type generator for AppLaunchContext, GAppLaunchContext*
+// Unsupported : g_app_info_launch_default_for_uri_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
 
 // Unsupported : g_app_info_launch_default_for_uri_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*

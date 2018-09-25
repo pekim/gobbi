@@ -3453,23 +3453,6 @@ func (recv *SrvTarget) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// SrvTargetNew is a wrapper around the C function g_srv_target_new.
-func SrvTargetNew(hostname string, port uint16, priority uint16, weight uint16) *SrvTarget {
-	c_hostname := C.CString(hostname)
-	defer C.free(unsafe.Pointer(c_hostname))
-
-	c_port := (C.guint16)(port)
-
-	c_priority := (C.guint16)(priority)
-
-	c_weight := (C.guint16)(weight)
-
-	retC := C.g_srv_target_new(c_hostname, c_port, c_priority, c_weight)
-	retGo := SrvTargetNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
 // Unsupported : g_srv_target_free : no return generator
 
 // StaticResource is a wrapper around the C record GStaticResource.

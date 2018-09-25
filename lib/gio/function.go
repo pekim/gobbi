@@ -47,7 +47,25 @@ func AppInfoGetAllForType(contentType string) *glib.List {
 
 // Unsupported : g_app_info_get_default_for_uri_scheme : no return generator
 
-// Unsupported : g_app_info_launch_default_for_uri : unsupported parameter context : no type generator for AppLaunchContext, GAppLaunchContext*
+// AppInfoLaunchDefaultForUri is a wrapper around the C function g_app_info_launch_default_for_uri.
+func AppInfoLaunchDefaultForUri(uri string, context *AppLaunchContext) (bool, error) {
+	c_uri := C.CString(uri)
+	defer C.free(unsafe.Pointer(c_uri))
+
+	c_context := (*C.GAppLaunchContext)(context.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_app_info_launch_default_for_uri(c_uri, c_context, &cThrowableError)
+	retGo := retC == C.TRUE
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // ContentTypeCanBeExecutable is a wrapper around the C function g_content_type_can_be_executable.
 func ContentTypeCanBeExecutable(type_ string) bool {
@@ -218,11 +236,11 @@ func IoModulesLoadAllInDirectory(dirname string) *glib.List {
 
 // Unsupported : g_io_scheduler_push_job : unsupported parameter job_func : no type generator for IOSchedulerJobFunc, GIOSchedulerJobFunc
 
-// Unsupported : g_keyfile_settings_backend_new : no return generator
+// Blacklisted : g_keyfile_settings_backend_new
 
-// Unsupported : g_simple_async_report_error_in_idle : unsupported parameter object : no type generator for GObject.Object, GObject*
+// Unsupported : g_simple_async_report_error_in_idle : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
 
-// Unsupported : g_simple_async_report_gerror_in_idle : unsupported parameter object : no type generator for GObject.Object, GObject*
+// Unsupported : g_simple_async_report_gerror_in_idle : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
 
 // UnixIsMountPathSystemInternal is a wrapper around the C function g_unix_is_mount_path_system_internal.
 func UnixIsMountPathSystemInternal(mountPath string) bool {

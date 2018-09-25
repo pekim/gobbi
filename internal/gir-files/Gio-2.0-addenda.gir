@@ -18,6 +18,8 @@
       <method blacklist="true" c:identifier="g_io_module_unload"/>
     </class>
 
+    <function blacklist="true" c:identifier="g_keyfile_settings_backend_new"/>
+
     <!-- The The GSettingsBackend API is somewhat specialist. -->
     <record blacklist="true" name="SettingsBackendClass"/>
     <record blacklist="true" name="SettingsBackendPrivate"/>

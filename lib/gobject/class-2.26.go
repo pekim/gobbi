@@ -39,7 +39,13 @@ func (recv *Binding) GetFlags() BindingFlags {
 	return retGo
 }
 
-// Unsupported : g_binding_get_source : no return generator
+// GetSource is a wrapper around the C function g_binding_get_source.
+func (recv *Binding) GetSource() *Object {
+	retC := C.g_binding_get_source((*C.GBinding)(recv.native))
+	retGo := ObjectNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // GetSourceProperty is a wrapper around the C function g_binding_get_source_property.
 func (recv *Binding) GetSourceProperty() string {
@@ -49,7 +55,13 @@ func (recv *Binding) GetSourceProperty() string {
 	return retGo
 }
 
-// Unsupported : g_binding_get_target : no return generator
+// GetTarget is a wrapper around the C function g_binding_get_target.
+func (recv *Binding) GetTarget() *Object {
+	retC := C.g_binding_get_target((*C.GBinding)(recv.native))
+	retGo := ObjectNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // GetTargetProperty is a wrapper around the C function g_binding_get_target_property.
 func (recv *Binding) GetTargetProperty() string {
@@ -64,7 +76,7 @@ func (recv *Binding) GetTargetProperty() string {
 // ParamSpecVariant is a wrapper around the C record GParamSpecVariant.
 type ParamSpecVariant struct {
 	native *C.GParamSpecVariant
-	// parent_instance : no type generator for ParamSpec, GParamSpec
+	// parent_instance : record
 	// _type : record
 	// default_value : record
 	// Private : padding

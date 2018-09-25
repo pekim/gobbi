@@ -123,7 +123,7 @@ func (recv *DtlsServerConnectionInterface) ToC() unsafe.Pointer {
 // InputMessage is a wrapper around the C record GInputMessage.
 type InputMessage struct {
 	native *C.GInputMessage
-	// address : no type generator for SocketAddress, GSocketAddress**
+	// address : record
 	// no type for vectors
 	NumVectors    uint32
 	BytesReceived uint64

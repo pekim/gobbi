@@ -8,7 +8,7 @@ package gobject
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : g_clear_object : unsupported parameter object_ptr : no type generator for Object, volatile GObject**
+// Unsupported : g_clear_object : unsupported parameter object_ptr : in string with indirection level of 2
 
 // SignalAccumulatorFirstWins is a wrapper around the C function g_signal_accumulator_first_wins.
 func SignalAccumulatorFirstWins(ihint *SignalInvocationHint, returnAccu *Value, handlerReturn *Value, dummy uintptr) bool {

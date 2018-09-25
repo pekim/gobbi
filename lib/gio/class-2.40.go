@@ -3,7 +3,10 @@
 
 package gio
 
-import "unsafe"
+import (
+	glib "github.com/pekim/gobbi/lib/glib"
+	"unsafe"
+)
 
 // #define GLIB_DISABLE_DEPRECATION_WARNINGS
 // #include <gio/gdesktopappinfo.h>
@@ -62,7 +65,16 @@ func (recv *Notification) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : g_notification_new : no return generator
+// NotificationNew is a wrapper around the C function g_notification_new.
+func NotificationNew(title string) *Notification {
+	c_title := C.CString(title)
+	defer C.free(unsafe.Pointer(c_title))
+
+	retC := C.g_notification_new(c_title)
+	retGo := NotificationNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // Unsupported : g_notification_add_button : no return generator
 
@@ -111,15 +123,38 @@ func (recv *Subprocess) ToC() unsafe.Pointer {
 
 // Unsupported : g_subprocess_newv : unsupported parameter argv : no param type
 
-// Unsupported : g_subprocess_communicate : unsupported parameter cancellable : no type generator for Cancellable, GCancellable*
+// Communicate is a wrapper around the C function g_subprocess_communicate.
+func (recv *Subprocess) Communicate(stdinBuf *glib.Bytes, cancellable *Cancellable) (bool, **glib.Bytes, **glib.Bytes, error) {
+	c_stdin_buf := (*C.GBytes)(stdinBuf.ToC())
 
-// Unsupported : g_subprocess_communicate_async : unsupported parameter cancellable : no type generator for Cancellable, GCancellable*
+	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+
+	var c_stdout_buf *C.GBytes
+
+	var c_stderr_buf *C.GBytes
+
+	var cThrowableError *C.GError
+
+	retC := C.g_subprocess_communicate((*C.GSubprocess)(recv.native), c_stdin_buf, c_cancellable, &c_stdout_buf, &c_stderr_buf, &cThrowableError)
+	retGo := retC == C.TRUE
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	stdoutBuf := BytesNewFromC(unsafe.Pointer(c_stdout_buf))
+
+	stderrBuf := BytesNewFromC(unsafe.Pointer(c_stderr_buf))
+
+	return retGo, stdoutBuf, stderrBuf, goThrowableError
+}
+
+// Unsupported : g_subprocess_communicate_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
 
 // Unsupported : g_subprocess_communicate_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
 
-// Unsupported : g_subprocess_communicate_utf8 : unsupported parameter cancellable : no type generator for Cancellable, GCancellable*
-
-// Unsupported : g_subprocess_communicate_utf8_async : unsupported parameter cancellable : no type generator for Cancellable, GCancellable*
+// Unsupported : g_subprocess_communicate_utf8_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
 
 // Unsupported : g_subprocess_communicate_utf8_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
 
@@ -157,11 +192,29 @@ func (recv *Subprocess) GetStatus() int32 {
 	return retGo
 }
 
-// Unsupported : g_subprocess_get_stderr_pipe : no return generator
+// GetStderrPipe is a wrapper around the C function g_subprocess_get_stderr_pipe.
+func (recv *Subprocess) GetStderrPipe() *InputStream {
+	retC := C.g_subprocess_get_stderr_pipe((*C.GSubprocess)(recv.native))
+	retGo := InputStreamNewFromC(unsafe.Pointer(retC))
 
-// Unsupported : g_subprocess_get_stdin_pipe : no return generator
+	return retGo
+}
 
-// Unsupported : g_subprocess_get_stdout_pipe : no return generator
+// GetStdinPipe is a wrapper around the C function g_subprocess_get_stdin_pipe.
+func (recv *Subprocess) GetStdinPipe() *OutputStream {
+	retC := C.g_subprocess_get_stdin_pipe((*C.GSubprocess)(recv.native))
+	retGo := OutputStreamNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// GetStdoutPipe is a wrapper around the C function g_subprocess_get_stdout_pipe.
+func (recv *Subprocess) GetStdoutPipe() *InputStream {
+	retC := C.g_subprocess_get_stdout_pipe((*C.GSubprocess)(recv.native))
+	retGo := InputStreamNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // GetSuccessful is a wrapper around the C function g_subprocess_get_successful.
 func (recv *Subprocess) GetSuccessful() bool {
@@ -181,13 +234,43 @@ func (recv *Subprocess) GetTermSig() int32 {
 
 // Unsupported : g_subprocess_send_signal : no return generator
 
-// Unsupported : g_subprocess_wait : unsupported parameter cancellable : no type generator for Cancellable, GCancellable*
+// Wait is a wrapper around the C function g_subprocess_wait.
+func (recv *Subprocess) Wait(cancellable *Cancellable) (bool, error) {
+	c_cancellable := (*C.GCancellable)(cancellable.ToC())
 
-// Unsupported : g_subprocess_wait_async : unsupported parameter cancellable : no type generator for Cancellable, GCancellable*
+	var cThrowableError *C.GError
 
-// Unsupported : g_subprocess_wait_check : unsupported parameter cancellable : no type generator for Cancellable, GCancellable*
+	retC := C.g_subprocess_wait((*C.GSubprocess)(recv.native), c_cancellable, &cThrowableError)
+	retGo := retC == C.TRUE
 
-// Unsupported : g_subprocess_wait_check_async : unsupported parameter cancellable : no type generator for Cancellable, GCancellable*
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
+
+// Unsupported : g_subprocess_wait_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+
+// WaitCheck is a wrapper around the C function g_subprocess_wait_check.
+func (recv *Subprocess) WaitCheck(cancellable *Cancellable) (bool, error) {
+	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_subprocess_wait_check((*C.GSubprocess)(recv.native), c_cancellable, &cThrowableError)
+	retGo := retC == C.TRUE
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
+
+// Unsupported : g_subprocess_wait_check_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
 
 // Unsupported : g_subprocess_wait_check_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
 
@@ -214,7 +297,15 @@ func (recv *SubprocessLauncher) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : g_subprocess_launcher_new : no return generator
+// SubprocessLauncherNew is a wrapper around the C function g_subprocess_launcher_new.
+func SubprocessLauncherNew(flags SubprocessFlags) *SubprocessLauncher {
+	c_flags := (C.GSubprocessFlags)(flags)
+
+	retC := C.g_subprocess_launcher_new(c_flags)
+	retGo := SubprocessLauncherNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // Getenv is a wrapper around the C function g_subprocess_launcher_getenv.
 func (recv *SubprocessLauncher) Getenv(variable string) string {

@@ -41,4 +41,18 @@ func (recv *PropertyAction) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : g_property_action_new : no return generator
+// PropertyActionNew is a wrapper around the C function g_property_action_new.
+func PropertyActionNew(name string, object uintptr, propertyName string) *PropertyAction {
+	c_name := C.CString(name)
+	defer C.free(unsafe.Pointer(c_name))
+
+	c_object := (C.gpointer)(object)
+
+	c_property_name := C.CString(propertyName)
+	defer C.free(unsafe.Pointer(c_property_name))
+
+	retC := C.g_property_action_new(c_name, c_object, c_property_name)
+	retGo := PropertyActionNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}

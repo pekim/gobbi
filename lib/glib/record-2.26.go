@@ -55,19 +55,6 @@ func DateTimeNew(tz *TimeZone, year int32, month int32, day int32, hour int32, m
 	return retGo
 }
 
-// DateTimeNewFromIso8601 is a wrapper around the C function g_date_time_new_from_iso8601.
-func DateTimeNewFromIso8601(text string, defaultTz *TimeZone) *DateTime {
-	c_text := C.CString(text)
-	defer C.free(unsafe.Pointer(c_text))
-
-	c_default_tz := (*C.GTimeZone)(defaultTz.ToC())
-
-	retC := C.g_date_time_new_from_iso8601(c_text, c_default_tz)
-	retGo := DateTimeNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
 // DateTimeNewFromTimevalLocal is a wrapper around the C function g_date_time_new_from_timeval_local.
 func DateTimeNewFromTimevalLocal(tv *TimeVal) *DateTime {
 	c_tv := (*C.GTimeVal)(tv.ToC())

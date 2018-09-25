@@ -48,7 +48,7 @@ func (recv *ListModelInterface) ToC() unsafe.Pointer {
 // OutputMessage is a wrapper around the C record GOutputMessage.
 type OutputMessage struct {
 	native *C.GOutputMessage
-	// address : no type generator for SocketAddress, GSocketAddress*
+	// address : record
 	// vectors : record
 	NumVectors uint32
 	BytesSent  uint32

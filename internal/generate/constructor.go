@@ -15,11 +15,15 @@ func (m *Constructor) init(ns *Namespace, record *Record) {
 
 func (m *Constructor) generate(g *jen.Group, version *Version) {
 	supported, reason := m.supported()
-
-	if supported {
-		m.Function.generate(g, version)
-	} else {
+	if !supported {
 		g.Commentf("Unsupported : %s", reason)
 		g.Line()
+		return
 	}
+
+	if !supportedByVersion(m, version) {
+		return
+	}
+
+	m.Function.generate(g, version)
 }

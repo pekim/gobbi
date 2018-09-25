@@ -68,11 +68,7 @@ func (recv *Object) ToC() unsafe.Pointer {
 
 // Unsupported : g_object_add_weak_pointer : unsupported parameter weak_pointer_location : no type generator for gpointer, gpointer*
 
-// Unsupported : g_object_bind_property : no return generator
-
 // Unsupported : g_object_bind_property_full : unsupported parameter transform_to : no type generator for BindingTransformFunc, GBindingTransformFunc
-
-// Unsupported : g_object_bind_property_with_closures : no return generator
 
 // Unsupported : g_object_connect : unsupported parameter ... : varargs
 
@@ -117,7 +113,7 @@ func (recv *Object) GetQdata(quark glib.Quark) uintptr {
 
 // Unsupported : g_object_notify : no return generator
 
-// Unsupported : g_object_notify_by_pspec : unsupported parameter pspec : no type generator for ParamSpec, GParamSpec*
+// Unsupported : g_object_notify_by_pspec : no return generator
 
 // Ref is a wrapper around the C function g_object_ref.
 func (recv *Object) Ref() uintptr {
@@ -257,11 +253,13 @@ func (recv *ParamSpec) GetQdata(quark glib.Quark) uintptr {
 	return retGo
 }
 
-// Unsupported : g_param_spec_get_redirect_target : no return generator
+// Ref is a wrapper around the C function g_param_spec_ref.
+func (recv *ParamSpec) Ref() *ParamSpec {
+	retC := C.g_param_spec_ref((*C.GParamSpec)(recv.native))
+	retGo := ParamSpecNewFromC(unsafe.Pointer(retC))
 
-// Unsupported : g_param_spec_ref : no return generator
-
-// Unsupported : g_param_spec_ref_sink : no return generator
+	return retGo
+}
 
 // Unsupported : g_param_spec_set_qdata : no return generator
 
@@ -284,7 +282,7 @@ func (recv *ParamSpec) StealQdata(quark glib.Quark) uintptr {
 // ParamSpecBoolean is a wrapper around the C record GParamSpecBoolean.
 type ParamSpecBoolean struct {
 	native *C.GParamSpecBoolean
-	// parent_instance : no type generator for ParamSpec, GParamSpec
+	// parent_instance : record
 	DefaultValue bool
 }
 
@@ -312,7 +310,7 @@ func (recv *ParamSpecBoolean) ToC() unsafe.Pointer {
 // ParamSpecBoxed is a wrapper around the C record GParamSpecBoxed.
 type ParamSpecBoxed struct {
 	native *C.GParamSpecBoxed
-	// parent_instance : no type generator for ParamSpec, GParamSpec
+	// parent_instance : record
 }
 
 func ParamSpecBoxedNewFromC(u unsafe.Pointer) *ParamSpecBoxed {
@@ -334,7 +332,7 @@ func (recv *ParamSpecBoxed) ToC() unsafe.Pointer {
 // ParamSpecChar is a wrapper around the C record GParamSpecChar.
 type ParamSpecChar struct {
 	native *C.GParamSpecChar
-	// parent_instance : no type generator for ParamSpec, GParamSpec
+	// parent_instance : record
 	Minimum      int8
 	Maximum      int8
 	DefaultValue int8
@@ -370,7 +368,7 @@ func (recv *ParamSpecChar) ToC() unsafe.Pointer {
 // ParamSpecDouble is a wrapper around the C record GParamSpecDouble.
 type ParamSpecDouble struct {
 	native *C.GParamSpecDouble
-	// parent_instance : no type generator for ParamSpec, GParamSpec
+	// parent_instance : record
 	Minimum      float64
 	Maximum      float64
 	DefaultValue float64
@@ -410,7 +408,7 @@ func (recv *ParamSpecDouble) ToC() unsafe.Pointer {
 // ParamSpecEnum is a wrapper around the C record GParamSpecEnum.
 type ParamSpecEnum struct {
 	native *C.GParamSpecEnum
-	// parent_instance : no type generator for ParamSpec, GParamSpec
+	// parent_instance : record
 	// enum_class : record
 	DefaultValue int32
 }
@@ -439,7 +437,7 @@ func (recv *ParamSpecEnum) ToC() unsafe.Pointer {
 // ParamSpecFlags is a wrapper around the C record GParamSpecFlags.
 type ParamSpecFlags struct {
 	native *C.GParamSpecFlags
-	// parent_instance : no type generator for ParamSpec, GParamSpec
+	// parent_instance : record
 	// flags_class : record
 	DefaultValue uint32
 }
@@ -468,7 +466,7 @@ func (recv *ParamSpecFlags) ToC() unsafe.Pointer {
 // ParamSpecFloat is a wrapper around the C record GParamSpecFloat.
 type ParamSpecFloat struct {
 	native *C.GParamSpecFloat
-	// parent_instance : no type generator for ParamSpec, GParamSpec
+	// parent_instance : record
 	Minimum      float32
 	Maximum      float32
 	DefaultValue float32
@@ -508,7 +506,7 @@ func (recv *ParamSpecFloat) ToC() unsafe.Pointer {
 // ParamSpecInt is a wrapper around the C record GParamSpecInt.
 type ParamSpecInt struct {
 	native *C.GParamSpecInt
-	// parent_instance : no type generator for ParamSpec, GParamSpec
+	// parent_instance : record
 	Minimum      int32
 	Maximum      int32
 	DefaultValue int32
@@ -544,7 +542,7 @@ func (recv *ParamSpecInt) ToC() unsafe.Pointer {
 // ParamSpecInt64 is a wrapper around the C record GParamSpecInt64.
 type ParamSpecInt64 struct {
 	native *C.GParamSpecInt64
-	// parent_instance : no type generator for ParamSpec, GParamSpec
+	// parent_instance : record
 	Minimum      int64
 	Maximum      int64
 	DefaultValue int64
@@ -580,7 +578,7 @@ func (recv *ParamSpecInt64) ToC() unsafe.Pointer {
 // ParamSpecLong is a wrapper around the C record GParamSpecLong.
 type ParamSpecLong struct {
 	native *C.GParamSpecLong
-	// parent_instance : no type generator for ParamSpec, GParamSpec
+	// parent_instance : record
 	Minimum      int64
 	Maximum      int64
 	DefaultValue int64
@@ -616,7 +614,7 @@ func (recv *ParamSpecLong) ToC() unsafe.Pointer {
 // ParamSpecObject is a wrapper around the C record GParamSpecObject.
 type ParamSpecObject struct {
 	native *C.GParamSpecObject
-	// parent_instance : no type generator for ParamSpec, GParamSpec
+	// parent_instance : record
 }
 
 func ParamSpecObjectNewFromC(u unsafe.Pointer) *ParamSpecObject {
@@ -638,7 +636,7 @@ func (recv *ParamSpecObject) ToC() unsafe.Pointer {
 // ParamSpecParam is a wrapper around the C record GParamSpecParam.
 type ParamSpecParam struct {
 	native *C.GParamSpecParam
-	// parent_instance : no type generator for ParamSpec, GParamSpec
+	// parent_instance : record
 }
 
 func ParamSpecParamNewFromC(u unsafe.Pointer) *ParamSpecParam {
@@ -660,7 +658,7 @@ func (recv *ParamSpecParam) ToC() unsafe.Pointer {
 // ParamSpecPointer is a wrapper around the C record GParamSpecPointer.
 type ParamSpecPointer struct {
 	native *C.GParamSpecPointer
-	// parent_instance : no type generator for ParamSpec, GParamSpec
+	// parent_instance : record
 }
 
 func ParamSpecPointerNewFromC(u unsafe.Pointer) *ParamSpecPointer {
@@ -682,7 +680,7 @@ func (recv *ParamSpecPointer) ToC() unsafe.Pointer {
 // ParamSpecString is a wrapper around the C record GParamSpecString.
 type ParamSpecString struct {
 	native *C.GParamSpecString
-	// parent_instance : no type generator for ParamSpec, GParamSpec
+	// parent_instance : record
 	DefaultValue string
 	CsetFirst    string
 	CsetNth      string
@@ -724,7 +722,7 @@ func (recv *ParamSpecString) ToC() unsafe.Pointer {
 // ParamSpecUChar is a wrapper around the C record GParamSpecUChar.
 type ParamSpecUChar struct {
 	native *C.GParamSpecUChar
-	// parent_instance : no type generator for ParamSpec, GParamSpec
+	// parent_instance : record
 	Minimum      uint8
 	Maximum      uint8
 	DefaultValue uint8
@@ -760,7 +758,7 @@ func (recv *ParamSpecUChar) ToC() unsafe.Pointer {
 // ParamSpecUInt is a wrapper around the C record GParamSpecUInt.
 type ParamSpecUInt struct {
 	native *C.GParamSpecUInt
-	// parent_instance : no type generator for ParamSpec, GParamSpec
+	// parent_instance : record
 	Minimum      uint32
 	Maximum      uint32
 	DefaultValue uint32
@@ -796,7 +794,7 @@ func (recv *ParamSpecUInt) ToC() unsafe.Pointer {
 // ParamSpecUInt64 is a wrapper around the C record GParamSpecUInt64.
 type ParamSpecUInt64 struct {
 	native *C.GParamSpecUInt64
-	// parent_instance : no type generator for ParamSpec, GParamSpec
+	// parent_instance : record
 	Minimum      uint64
 	Maximum      uint64
 	DefaultValue uint64
@@ -832,7 +830,7 @@ func (recv *ParamSpecUInt64) ToC() unsafe.Pointer {
 // ParamSpecULong is a wrapper around the C record GParamSpecULong.
 type ParamSpecULong struct {
 	native *C.GParamSpecULong
-	// parent_instance : no type generator for ParamSpec, GParamSpec
+	// parent_instance : record
 	Minimum      uint64
 	Maximum      uint64
 	DefaultValue uint64
@@ -868,7 +866,7 @@ func (recv *ParamSpecULong) ToC() unsafe.Pointer {
 // ParamSpecUnichar is a wrapper around the C record GParamSpecUnichar.
 type ParamSpecUnichar struct {
 	native *C.GParamSpecUnichar
-	// parent_instance : no type generator for ParamSpec, GParamSpec
+	// parent_instance : record
 	DefaultValue rune
 }
 
@@ -896,8 +894,8 @@ func (recv *ParamSpecUnichar) ToC() unsafe.Pointer {
 // ParamSpecValueArray is a wrapper around the C record GParamSpecValueArray.
 type ParamSpecValueArray struct {
 	native *C.GParamSpecValueArray
-	// parent_instance : no type generator for ParamSpec, GParamSpec
-	// element_spec : no type generator for ParamSpec, GParamSpec*
+	// parent_instance : record
+	// element_spec : record
 	FixedNElements uint32
 }
 
@@ -925,7 +923,7 @@ func (recv *ParamSpecValueArray) ToC() unsafe.Pointer {
 // TypeModule is a wrapper around the C record GTypeModule.
 type TypeModule struct {
 	native *C.GTypeModule
-	// parent_instance : no type generator for Object, GObject
+	// parent_instance : record
 	UseCount uint32
 	// type_infos : record
 	// interface_infos : record

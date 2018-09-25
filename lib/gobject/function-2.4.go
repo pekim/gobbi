@@ -3,12 +3,25 @@
 
 package gobject
 
+import "unsafe"
+
 // #define GLIB_DISABLE_DEPRECATION_WARNINGS
 // #include <glib-object.h>
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : g_param_spec_override : unsupported parameter overridden : no type generator for ParamSpec, GParamSpec*
+// ParamSpecOverride is a wrapper around the C function g_param_spec_override.
+func ParamSpecOverride(name string, overridden *ParamSpec) *ParamSpec {
+	c_name := C.CString(name)
+	defer C.free(unsafe.Pointer(c_name))
+
+	c_overridden := (*C.GParamSpec)(overridden.ToC())
+
+	retC := C.g_param_spec_override(c_name, c_overridden)
+	retGo := ParamSpecNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // SignalAccumulatorTrueHandled is a wrapper around the C function g_signal_accumulator_true_handled.
 func SignalAccumulatorTrueHandled(ihint *SignalInvocationHint, returnAccu *Value, handlerReturn *Value, dummy uintptr) bool {

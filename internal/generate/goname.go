@@ -7,8 +7,9 @@ import (
 )
 
 var reservedWords = map[string]bool{
-	"func": true,
-	"type": true,
+	"func":      true,
+	"interface": true,
+	"type":      true,
 }
 
 func makeSafeCName(cName string) string {

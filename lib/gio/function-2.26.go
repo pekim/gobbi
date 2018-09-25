@@ -24,17 +24,51 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : g_bus_get : unsupported parameter cancellable : no type generator for Cancellable, GCancellable*
+// Unsupported : g_bus_get : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
 
 // Unsupported : g_bus_get_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
 
-// Unsupported : g_bus_get_sync : unsupported parameter cancellable : no type generator for Cancellable, GCancellable*
+// BusGetSync is a wrapper around the C function g_bus_get_sync.
+func BusGetSync(busType BusType, cancellable *Cancellable) (*DBusConnection, error) {
+	c_bus_type := (C.GBusType)(busType)
+
+	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_bus_get_sync(c_bus_type, c_cancellable, &cThrowableError)
+	retGo := DBusConnectionNewFromC(unsafe.Pointer(retC))
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // Unsupported : g_bus_own_name : unsupported parameter bus_acquired_handler : no type generator for BusAcquiredCallback, GBusAcquiredCallback
 
-// Unsupported : g_bus_own_name_on_connection : unsupported parameter connection : no type generator for DBusConnection, GDBusConnection*
+// Unsupported : g_bus_own_name_on_connection : unsupported parameter name_acquired_handler : no type generator for BusNameAcquiredCallback, GBusNameAcquiredCallback
 
-// Unsupported : g_bus_own_name_on_connection_with_closures : unsupported parameter connection : no type generator for DBusConnection, GDBusConnection*
+// BusOwnNameOnConnectionWithClosures is a wrapper around the C function g_bus_own_name_on_connection_with_closures.
+func BusOwnNameOnConnectionWithClosures(connection *DBusConnection, name string, flags BusNameOwnerFlags, nameAcquiredClosure *gobject.Closure, nameLostClosure *gobject.Closure) uint32 {
+	c_connection := (*C.GDBusConnection)(connection.ToC())
+
+	c_name := C.CString(name)
+	defer C.free(unsafe.Pointer(c_name))
+
+	c_flags := (C.GBusNameOwnerFlags)(flags)
+
+	c_name_acquired_closure := (*C.GClosure)(nameAcquiredClosure.ToC())
+
+	c_name_lost_closure := (*C.GClosure)(nameLostClosure.ToC())
+
+	retC := C.g_bus_own_name_on_connection_with_closures(c_connection, c_name, c_flags, c_name_acquired_closure, c_name_lost_closure)
+	retGo := (uint32)(retC)
+
+	return retGo
+}
 
 // BusOwnNameWithClosures is a wrapper around the C function g_bus_own_name_with_closures.
 func BusOwnNameWithClosures(busType BusType, name string, flags BusNameOwnerFlags, busAcquiredClosure *gobject.Closure, nameAcquiredClosure *gobject.Closure, nameLostClosure *gobject.Closure) uint32 {
@@ -63,9 +97,26 @@ func BusOwnNameWithClosures(busType BusType, name string, flags BusNameOwnerFlag
 
 // Unsupported : g_bus_watch_name : unsupported parameter name_appeared_handler : no type generator for BusNameAppearedCallback, GBusNameAppearedCallback
 
-// Unsupported : g_bus_watch_name_on_connection : unsupported parameter connection : no type generator for DBusConnection, GDBusConnection*
+// Unsupported : g_bus_watch_name_on_connection : unsupported parameter name_appeared_handler : no type generator for BusNameAppearedCallback, GBusNameAppearedCallback
 
-// Unsupported : g_bus_watch_name_on_connection_with_closures : unsupported parameter connection : no type generator for DBusConnection, GDBusConnection*
+// BusWatchNameOnConnectionWithClosures is a wrapper around the C function g_bus_watch_name_on_connection_with_closures.
+func BusWatchNameOnConnectionWithClosures(connection *DBusConnection, name string, flags BusNameWatcherFlags, nameAppearedClosure *gobject.Closure, nameVanishedClosure *gobject.Closure) uint32 {
+	c_connection := (*C.GDBusConnection)(connection.ToC())
+
+	c_name := C.CString(name)
+	defer C.free(unsafe.Pointer(c_name))
+
+	c_flags := (C.GBusNameWatcherFlags)(flags)
+
+	c_name_appeared_closure := (*C.GClosure)(nameAppearedClosure.ToC())
+
+	c_name_vanished_closure := (*C.GClosure)(nameVanishedClosure.ToC())
+
+	retC := C.g_bus_watch_name_on_connection_with_closures(c_connection, c_name, c_flags, c_name_appeared_closure, c_name_vanished_closure)
+	retGo := (uint32)(retC)
+
+	return retGo
+}
 
 // BusWatchNameWithClosures is a wrapper around the C function g_bus_watch_name_with_closures.
 func BusWatchNameWithClosures(busType BusType, name string, flags BusNameWatcherFlags, nameAppearedClosure *gobject.Closure, nameVanishedClosure *gobject.Closure) uint32 {
@@ -86,13 +137,54 @@ func BusWatchNameWithClosures(busType BusType, name string, flags BusNameWatcher
 	return retGo
 }
 
-// Unsupported : g_dbus_address_get_for_bus_sync : unsupported parameter cancellable : no type generator for Cancellable, GCancellable*
+// DbusAddressGetForBusSync is a wrapper around the C function g_dbus_address_get_for_bus_sync.
+func DbusAddressGetForBusSync(busType BusType, cancellable *Cancellable) (string, error) {
+	c_bus_type := (C.GBusType)(busType)
 
-// Unsupported : g_dbus_address_get_stream : unsupported parameter cancellable : no type generator for Cancellable, GCancellable*
+	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_dbus_address_get_for_bus_sync(c_bus_type, c_cancellable, &cThrowableError)
+	retGo := C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
+
+// Unsupported : g_dbus_address_get_stream : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
 
 // Unsupported : g_dbus_address_get_stream_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
 
-// Unsupported : g_dbus_address_get_stream_sync : unsupported parameter cancellable : no type generator for Cancellable, GCancellable*
+// DbusAddressGetStreamSync is a wrapper around the C function g_dbus_address_get_stream_sync.
+func DbusAddressGetStreamSync(address string, cancellable *Cancellable) (*IOStream, string, error) {
+	c_address := C.CString(address)
+	defer C.free(unsafe.Pointer(c_address))
+
+	var c_out_guid *C.gchar
+
+	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_dbus_address_get_stream_sync(c_address, &c_out_guid, c_cancellable, &cThrowableError)
+	retGo := IOStreamNewFromC(unsafe.Pointer(retC))
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	outGuid := C.GoString(c_out_guid)
+	defer C.free(unsafe.Pointer(c_out_guid))
+
+	return retGo, outGuid, goThrowableError
+}
 
 // Unsupported : g_dbus_annotation_info_lookup : unsupported parameter annotations : no param type
 

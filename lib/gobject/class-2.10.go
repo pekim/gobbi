@@ -13,7 +13,7 @@ import "C"
 // ParamSpecGType is a wrapper around the C record GParamSpecGType.
 type ParamSpecGType struct {
 	native *C.GParamSpecGType
-	// parent_instance : no type generator for ParamSpec, GParamSpec
+	// parent_instance : record
 	// is_a_type : no type generator for GType, GType
 }
 

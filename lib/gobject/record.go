@@ -74,7 +74,17 @@ func (recv *Closure) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : g_closure_new_object : unsupported parameter object : no type generator for Object, GObject*
+// ClosureNewObject is a wrapper around the C function g_closure_new_object.
+func ClosureNewObject(sizeofClosure uint32, object *Object) *Closure {
+	c_sizeof_closure := (C.guint)(sizeofClosure)
+
+	c_object := (*C.GObject)(object.ToC())
+
+	retC := C.g_closure_new_object(c_sizeof_closure, c_object)
+	retGo := ClosureNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // ClosureNewSimple is a wrapper around the C function g_closure_new_simple.
 func ClosureNewSimple(sizeofClosure uint32, data uintptr) *Closure {
@@ -381,11 +391,20 @@ func (recv *ObjectClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : g_object_class_find_property : no return generator
+// FindProperty is a wrapper around the C function g_object_class_find_property.
+func (recv *ObjectClass) FindProperty(propertyName string) *ParamSpec {
+	c_property_name := C.CString(propertyName)
+	defer C.free(unsafe.Pointer(c_property_name))
+
+	retC := C.g_object_class_find_property((*C.GObjectClass)(recv.native), c_property_name)
+	retGo := ParamSpecNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // Unsupported : g_object_class_install_properties : unsupported parameter pspecs : no param type
 
-// Unsupported : g_object_class_install_property : unsupported parameter pspec : no type generator for ParamSpec, GParamSpec*
+// Unsupported : g_object_class_install_property : no return generator
 
 // Unsupported : g_object_class_list_properties : unsupported parameter n_properties : no type generator for guint, guint*
 
@@ -394,7 +413,7 @@ func (recv *ObjectClass) ToC() unsafe.Pointer {
 // ObjectConstructParam is a wrapper around the C record GObjectConstructParam.
 type ObjectConstructParam struct {
 	native *C.GObjectConstructParam
-	// pspec : no type generator for ParamSpec, GParamSpec*
+	// pspec : record
 	// value : record
 }
 
@@ -463,7 +482,7 @@ func (recv *ParamSpecPool) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : g_param_spec_pool_insert : unsupported parameter pspec : no type generator for ParamSpec, GParamSpec*
+// Unsupported : g_param_spec_pool_insert : unsupported parameter owner_type : no type generator for GType, GType
 
 // Unsupported : g_param_spec_pool_list : unsupported parameter owner_type : no type generator for GType, GType
 
@@ -471,7 +490,7 @@ func (recv *ParamSpecPool) ToC() unsafe.Pointer {
 
 // Unsupported : g_param_spec_pool_lookup : unsupported parameter owner_type : no type generator for GType, GType
 
-// Unsupported : g_param_spec_pool_remove : unsupported parameter pspec : no type generator for ParamSpec, GParamSpec*
+// Unsupported : g_param_spec_pool_remove : no return generator
 
 // ParamSpecTypeInfo is a wrapper around the C record GParamSpecTypeInfo.
 type ParamSpecTypeInfo struct {
@@ -948,7 +967,13 @@ func (recv *Value) DupObject() uintptr {
 	return retGo
 }
 
-// Unsupported : g_value_dup_param : no return generator
+// DupParam is a wrapper around the C function g_value_dup_param.
+func (recv *Value) DupParam() *ParamSpec {
+	retC := C.g_value_dup_param((*C.GValue)(recv.native))
+	retGo := ParamSpecNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // DupString is a wrapper around the C function g_value_dup_string.
 func (recv *Value) DupString() string {
@@ -1059,7 +1084,13 @@ func (recv *Value) GetObject() uintptr {
 	return retGo
 }
 
-// Unsupported : g_value_get_param : no return generator
+// GetParam is a wrapper around the C function g_value_get_param.
+func (recv *Value) GetParam() *ParamSpec {
+	retC := C.g_value_get_param((*C.GValue)(recv.native))
+	retGo := ParamSpecNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // GetPointer is a wrapper around the C function g_value_get_pointer.
 func (recv *Value) GetPointer() uintptr {
@@ -1161,9 +1192,9 @@ func (recv *Value) Reset() *Value {
 
 // Unsupported : g_value_set_object_take_ownership : no return generator
 
-// Unsupported : g_value_set_param : unsupported parameter param : no type generator for ParamSpec, GParamSpec*
+// Unsupported : g_value_set_param : no return generator
 
-// Unsupported : g_value_set_param_take_ownership : unsupported parameter param : no type generator for ParamSpec, GParamSpec*
+// Unsupported : g_value_set_param_take_ownership : no return generator
 
 // Unsupported : g_value_set_pointer : no return generator
 
@@ -1191,7 +1222,7 @@ func (recv *Value) Reset() *Value {
 
 // Unsupported : g_value_take_object : no return generator
 
-// Unsupported : g_value_take_param : unsupported parameter param : no type generator for ParamSpec, GParamSpec*
+// Unsupported : g_value_take_param : no return generator
 
 // Unsupported : g_value_take_string : no return generator
 

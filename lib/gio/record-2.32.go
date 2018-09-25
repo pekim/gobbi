@@ -164,7 +164,25 @@ func (recv *Resource) LookupData(path string, lookupFlags ResourceLookupFlags) (
 	return retGo, goThrowableError
 }
 
-// Unsupported : g_resource_open_stream : no return generator
+// OpenStream is a wrapper around the C function g_resource_open_stream.
+func (recv *Resource) OpenStream(path string, lookupFlags ResourceLookupFlags) (*InputStream, error) {
+	c_path := C.CString(path)
+	defer C.free(unsafe.Pointer(c_path))
+
+	c_lookup_flags := (C.GResourceLookupFlags)(lookupFlags)
+
+	var cThrowableError *C.GError
+
+	retC := C.g_resource_open_stream((*C.GResource)(recv.native), c_path, c_lookup_flags, &cThrowableError)
+	retGo := InputStreamNewFromC(unsafe.Pointer(retC))
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // Ref is a wrapper around the C function g_resource_ref.
 func (recv *Resource) Ref() *Resource {

@@ -5,6 +5,7 @@ package gio
 
 import (
 	glib "github.com/pekim/gobbi/lib/glib"
+	gobject "github.com/pekim/gobbi/lib/gobject"
 	"unsafe"
 )
 
@@ -45,17 +46,37 @@ func AppInfoGetRecommendedForType(contentType string) *glib.List {
 	return retGo
 }
 
-// Unsupported : g_memory_settings_backend_new : no return generator
+// MemorySettingsBackendNew is a wrapper around the C function g_memory_settings_backend_new.
+func MemorySettingsBackendNew() *SettingsBackend {
+	retC := C.g_memory_settings_backend_new()
+	retGo := SettingsBackendNewFromC(unsafe.Pointer(retC))
 
-// Unsupported : g_null_settings_backend_new : no return generator
+	return retGo
+}
 
-// Unsupported : g_pollable_source_new : unsupported parameter pollable_stream : no type generator for GObject.Object, GObject*
+// NullSettingsBackendNew is a wrapper around the C function g_null_settings_backend_new.
+func NullSettingsBackendNew() *SettingsBackend {
+	retC := C.g_null_settings_backend_new()
+	retGo := SettingsBackendNewFromC(unsafe.Pointer(retC))
 
-// Unsupported : g_simple_async_report_take_gerror_in_idle : unsupported parameter object : no type generator for GObject.Object, GObject*
+	return retGo
+}
+
+// PollableSourceNew is a wrapper around the C function g_pollable_source_new.
+func PollableSourceNew(pollableStream *gobject.Object) *glib.Source {
+	c_pollable_stream := (*C.GObject)(pollableStream.ToC())
+
+	retC := C.g_pollable_source_new(c_pollable_stream)
+	retGo := glib.SourceNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// Unsupported : g_simple_async_report_take_gerror_in_idle : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
 
 // Unsupported : g_tls_backend_get_default : no return generator
 
-// Unsupported : g_tls_client_connection_new : unsupported parameter base_io_stream : no type generator for IOStream, GIOStream*
+// Unsupported : g_tls_client_connection_new : unsupported parameter server_identity : no type generator for SocketConnectable, GSocketConnectable*
 
 // TlsErrorQuark is a wrapper around the C function g_tls_error_quark.
 func TlsErrorQuark() glib.Quark {
@@ -65,4 +86,4 @@ func TlsErrorQuark() glib.Quark {
 	return retGo
 }
 
-// Unsupported : g_tls_server_connection_new : unsupported parameter base_io_stream : no type generator for IOStream, GIOStream*
+// Unsupported : g_tls_server_connection_new : no return generator

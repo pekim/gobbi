@@ -3,7 +3,10 @@
 
 package gio
 
-import "unsafe"
+import (
+	glib "github.com/pekim/gobbi/lib/glib"
+	"unsafe"
+)
 
 // #define GLIB_DISABLE_DEPRECATION_WARNINGS
 // #include <gio/gdesktopappinfo.h>
@@ -34,12 +37,24 @@ func ContentTypeGetGenericIconName(type_ string) string {
 
 // Unsupported : g_content_type_get_symbolic_icon : no return generator
 
-// Unsupported : g_pollable_source_new_full : unsupported parameter cancellable : no type generator for Cancellable, GCancellable*
+// PollableSourceNewFull is a wrapper around the C function g_pollable_source_new_full.
+func PollableSourceNewFull(pollableStream uintptr, childSource *glib.Source, cancellable *Cancellable) *glib.Source {
+	c_pollable_stream := (C.gpointer)(pollableStream)
 
-// Unsupported : g_pollable_stream_read : unsupported parameter stream : no type generator for InputStream, GInputStream*
+	c_child_source := (*C.GSource)(childSource.ToC())
 
-// Unsupported : g_pollable_stream_write : unsupported parameter stream : no type generator for OutputStream, GOutputStream*
+	c_cancellable := (*C.GCancellable)(cancellable.ToC())
 
-// Unsupported : g_pollable_stream_write_all : unsupported parameter stream : no type generator for OutputStream, GOutputStream*
+	retC := C.g_pollable_source_new_full(c_pollable_stream, c_child_source, c_cancellable)
+	retGo := glib.SourceNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// Unsupported : g_pollable_stream_read : unsupported parameter buffer : no param type
+
+// Unsupported : g_pollable_stream_write : unsupported parameter buffer : no param type
+
+// Unsupported : g_pollable_stream_write_all : unsupported parameter buffer : no param type
 
 // Unsupported : g_unix_mount_guess_symbolic_icon : no return generator

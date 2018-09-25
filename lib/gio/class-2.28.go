@@ -3,7 +3,10 @@
 
 package gio
 
-import "unsafe"
+import (
+	glib "github.com/pekim/gobbi/lib/glib"
+	"unsafe"
+)
 
 // #define GLIB_DISABLE_DEPRECATION_WARNINGS
 // #include <gio/gdesktopappinfo.h>
@@ -43,8 +46,6 @@ func (recv *Application) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : g_application_new : no return generator
-
 // Unsupported : g_application_activate : no return generator
 
 // Unsupported : g_application_add_main_option : unsupported parameter short_name : no type generator for gchar, char
@@ -62,8 +63,6 @@ func (recv *Application) GetApplicationId() string {
 
 	return retGo
 }
-
-// Unsupported : g_application_get_dbus_connection : no return generator
 
 // GetFlags is a wrapper around the C function g_application_get_flags.
 func (recv *Application) GetFlags() ApplicationFlags {
@@ -105,13 +104,28 @@ func (recv *Application) GetIsRemote() bool {
 
 // Unsupported : g_application_quit : no return generator
 
-// Unsupported : g_application_register : unsupported parameter cancellable : no type generator for Cancellable, GCancellable*
+// Register is a wrapper around the C function g_application_register.
+func (recv *Application) Register(cancellable *Cancellable) (bool, error) {
+	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_application_register((*C.GApplication)(recv.native), c_cancellable, &cThrowableError)
+	retGo := retC == C.TRUE
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // Unsupported : g_application_release : no return generator
 
 // Unsupported : g_application_run : unsupported parameter argv : no param type
 
-// Unsupported : g_application_send_notification : unsupported parameter notification : no type generator for Notification, GNotification*
+// Unsupported : g_application_send_notification : no return generator
 
 // Unsupported : g_application_set_action_group : unsupported parameter action_group : no type generator for ActionGroup, GActionGroup*
 
@@ -160,7 +174,13 @@ func (recv *SimpleActionGroup) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : g_simple_action_group_new : no return generator
+// SimpleActionGroupNew is a wrapper around the C function g_simple_action_group_new.
+func SimpleActionGroupNew() *SimpleActionGroup {
+	retC := C.g_simple_action_group_new()
+	retGo := SimpleActionGroupNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // Unsupported : g_simple_action_group_add_entries : unsupported parameter entries : no param type
 
@@ -173,7 +193,7 @@ func (recv *SimpleActionGroup) ToC() unsafe.Pointer {
 // TlsCertificate is a wrapper around the C record GTlsCertificate.
 type TlsCertificate struct {
 	native *C.GTlsCertificate
-	// parent_instance : no type generator for GObject.Object, GObject
+	// parent_instance : record
 	// priv : record
 }
 
@@ -193,22 +213,79 @@ func (recv *TlsCertificate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : g_tls_certificate_new_from_file : no return generator
+// TlsCertificateNewFromFile is a wrapper around the C function g_tls_certificate_new_from_file.
+func TlsCertificateNewFromFile(file string) (*TlsCertificate, error) {
+	c_file := C.CString(file)
+	defer C.free(unsafe.Pointer(c_file))
 
-// Unsupported : g_tls_certificate_new_from_files : no return generator
+	var cThrowableError *C.GError
 
-// Unsupported : g_tls_certificate_new_from_pem : no return generator
+	retC := C.g_tls_certificate_new_from_file(c_file, &cThrowableError)
+	retGo := TlsCertificateNewFromC(unsafe.Pointer(retC))
 
-// Unsupported : g_tls_certificate_get_issuer : no return generator
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
 
-// Unsupported : g_tls_certificate_is_same : unsupported parameter cert_two : no type generator for TlsCertificate, GTlsCertificate*
+	return retGo, goThrowableError
+}
+
+// TlsCertificateNewFromFiles is a wrapper around the C function g_tls_certificate_new_from_files.
+func TlsCertificateNewFromFiles(certFile string, keyFile string) (*TlsCertificate, error) {
+	c_cert_file := C.CString(certFile)
+	defer C.free(unsafe.Pointer(c_cert_file))
+
+	c_key_file := C.CString(keyFile)
+	defer C.free(unsafe.Pointer(c_key_file))
+
+	var cThrowableError *C.GError
+
+	retC := C.g_tls_certificate_new_from_files(c_cert_file, c_key_file, &cThrowableError)
+	retGo := TlsCertificateNewFromC(unsafe.Pointer(retC))
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
+
+// TlsCertificateNewFromPem is a wrapper around the C function g_tls_certificate_new_from_pem.
+func TlsCertificateNewFromPem(data string, length int64) (*TlsCertificate, error) {
+	c_data := C.CString(data)
+	defer C.free(unsafe.Pointer(c_data))
+
+	c_length := (C.gssize)(length)
+
+	var cThrowableError *C.GError
+
+	retC := C.g_tls_certificate_new_from_pem(c_data, c_length, &cThrowableError)
+	retGo := TlsCertificateNewFromC(unsafe.Pointer(retC))
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
+
+// GetIssuer is a wrapper around the C function g_tls_certificate_get_issuer.
+func (recv *TlsCertificate) GetIssuer() *TlsCertificate {
+	retC := C.g_tls_certificate_get_issuer((*C.GTlsCertificate)(recv.native))
+	retGo := TlsCertificateNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // Unsupported : g_tls_certificate_verify : unsupported parameter identity : no type generator for SocketConnectable, GSocketConnectable*
 
 // TlsConnection is a wrapper around the C record GTlsConnection.
 type TlsConnection struct {
 	native *C.GTlsConnection
-	// parent_instance : no type generator for IOStream, GIOStream
+	// parent_instance : record
 	// priv : record
 }
 
@@ -228,15 +305,33 @@ func (recv *TlsConnection) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : g_tls_connection_emit_accept_certificate : unsupported parameter peer_cert : no type generator for TlsCertificate, GTlsCertificate*
+// EmitAcceptCertificate is a wrapper around the C function g_tls_connection_emit_accept_certificate.
+func (recv *TlsConnection) EmitAcceptCertificate(peerCert *TlsCertificate, errors TlsCertificateFlags) bool {
+	c_peer_cert := (*C.GTlsCertificate)(peerCert.ToC())
 
-// Unsupported : g_tls_connection_get_certificate : no return generator
+	c_errors := (C.GTlsCertificateFlags)(errors)
 
-// Unsupported : g_tls_connection_get_database : no return generator
+	retC := C.g_tls_connection_emit_accept_certificate((*C.GTlsConnection)(recv.native), c_peer_cert, c_errors)
+	retGo := retC == C.TRUE
 
-// Unsupported : g_tls_connection_get_interaction : no return generator
+	return retGo
+}
 
-// Unsupported : g_tls_connection_get_peer_certificate : no return generator
+// GetCertificate is a wrapper around the C function g_tls_connection_get_certificate.
+func (recv *TlsConnection) GetCertificate() *TlsCertificate {
+	retC := C.g_tls_connection_get_certificate((*C.GTlsConnection)(recv.native))
+	retGo := TlsCertificateNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// GetPeerCertificate is a wrapper around the C function g_tls_connection_get_peer_certificate.
+func (recv *TlsConnection) GetPeerCertificate() *TlsCertificate {
+	retC := C.g_tls_connection_get_peer_certificate((*C.GTlsConnection)(recv.native))
+	retGo := TlsCertificateNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // GetPeerCertificateErrors is a wrapper around the C function g_tls_connection_get_peer_certificate_errors.
 func (recv *TlsConnection) GetPeerCertificateErrors() TlsCertificateFlags {
@@ -262,17 +357,32 @@ func (recv *TlsConnection) GetRequireCloseNotify() bool {
 	return retGo
 }
 
-// Unsupported : g_tls_connection_handshake : unsupported parameter cancellable : no type generator for Cancellable, GCancellable*
+// Handshake is a wrapper around the C function g_tls_connection_handshake.
+func (recv *TlsConnection) Handshake(cancellable *Cancellable) (bool, error) {
+	c_cancellable := (*C.GCancellable)(cancellable.ToC())
 
-// Unsupported : g_tls_connection_handshake_async : unsupported parameter cancellable : no type generator for Cancellable, GCancellable*
+	var cThrowableError *C.GError
+
+	retC := C.g_tls_connection_handshake((*C.GTlsConnection)(recv.native), c_cancellable, &cThrowableError)
+	retGo := retC == C.TRUE
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
+
+// Unsupported : g_tls_connection_handshake_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
 
 // Unsupported : g_tls_connection_handshake_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
 
-// Unsupported : g_tls_connection_set_certificate : unsupported parameter certificate : no type generator for TlsCertificate, GTlsCertificate*
+// Unsupported : g_tls_connection_set_certificate : no return generator
 
-// Unsupported : g_tls_connection_set_database : unsupported parameter database : no type generator for TlsDatabase, GTlsDatabase*
+// Unsupported : g_tls_connection_set_database : no return generator
 
-// Unsupported : g_tls_connection_set_interaction : unsupported parameter interaction : no type generator for TlsInteraction, GTlsInteraction*
+// Unsupported : g_tls_connection_set_interaction : no return generator
 
 // Unsupported : g_tls_connection_set_rehandshake_mode : no return generator
 

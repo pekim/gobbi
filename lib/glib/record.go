@@ -897,14 +897,6 @@ func (recv *KeyFile) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// KeyFileNew is a wrapper around the C function g_key_file_new.
-func KeyFileNew() *KeyFile {
-	retC := C.g_key_file_new()
-	retGo := KeyFileNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
 // Unsupported : g_key_file_free : no return generator
 
 // Unsupported : g_key_file_get_boolean_list : unsupported parameter length : no type generator for gsize, gsize*
@@ -1195,47 +1187,6 @@ func MappedFileNewFromC(u unsafe.Pointer) *MappedFile {
 func (recv *MappedFile) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
-}
-
-// MappedFileNew is a wrapper around the C function g_mapped_file_new.
-func MappedFileNew(filename string, writable bool) (*MappedFile, error) {
-	c_filename := C.CString(filename)
-	defer C.free(unsafe.Pointer(c_filename))
-
-	c_writable :=
-		boolToGboolean(writable)
-
-	var cThrowableError *C.GError
-
-	retC := C.g_mapped_file_new(c_filename, c_writable, &cThrowableError)
-	retGo := MappedFileNewFromC(unsafe.Pointer(retC))
-
-	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
-	if cThrowableError != nil {
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goThrowableError
-}
-
-// MappedFileNewFromFd is a wrapper around the C function g_mapped_file_new_from_fd.
-func MappedFileNewFromFd(fd int32, writable bool) (*MappedFile, error) {
-	c_fd := (C.gint)(fd)
-
-	c_writable :=
-		boolToGboolean(writable)
-
-	var cThrowableError *C.GError
-
-	retC := C.g_mapped_file_new_from_fd(c_fd, c_writable, &cThrowableError)
-	retGo := MappedFileNewFromC(unsafe.Pointer(retC))
-
-	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
-	if cThrowableError != nil {
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goThrowableError
 }
 
 // Unsupported : g_mapped_file_free : no return generator
