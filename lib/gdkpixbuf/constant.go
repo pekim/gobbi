@@ -2,7 +2,7 @@
 
 package gdkpixbuf
 
-// #define GLIB_DISABLE_DEPRECATION_WARNINGS
+// #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <gdk-pixbuf/gdk-pixbuf.h>
 // #include <stdlib.h>
 import "C"

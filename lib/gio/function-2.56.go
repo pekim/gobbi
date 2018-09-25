@@ -5,7 +5,7 @@ package gio
 
 import "unsafe"
 
-// #define GLIB_DISABLE_DEPRECATION_WARNINGS
+// #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <gio/gdesktopappinfo.h>
 // #include <gio/gfiledescriptorbased.h>
 // #include <gio/gio.h>

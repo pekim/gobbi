@@ -3,7 +3,7 @@
 
 package gobject
 
-// #define GLIB_DISABLE_DEPRECATION_WARNINGS
+// #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <glib-object.h>
 // #include <stdlib.h>
 import "C"

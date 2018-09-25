@@ -70,7 +70,7 @@ func (ns *Namespace) cgoPreambleHeaders(file *jen.File) {
 	 * they will be emitted regardless of whether such functions
 	 * are used or not by an application.
 	 */
-	file.CgoPreamble("#define GLIB_DISABLE_DEPRECATION_WARNINGS")
+	file.CgoPreamble("#cgo CFLAGS: -Wno-deprecated-declarations")
 
 	ns.repo.CIncludes.generate(file)
 

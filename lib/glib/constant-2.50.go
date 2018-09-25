@@ -3,7 +3,7 @@
 
 package glib
 
-// #define GLIB_DISABLE_DEPRECATION_WARNINGS
+// #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <glib.h>
 // #include <glib/gstdio.h>
 // #include <glib-unix.h>
