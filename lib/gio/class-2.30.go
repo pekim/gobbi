@@ -520,6 +520,19 @@ func (recv *TlsPassword) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// TlsPasswordNew is a wrapper around the C function g_tls_password_new.
+func TlsPasswordNew(flags TlsPasswordFlags, description string) *TlsPassword {
+	c_flags := (C.GTlsPasswordFlags)(flags)
+
+	c_description := C.CString(description)
+	defer C.free(unsafe.Pointer(c_description))
+
+	retC := C.g_tls_password_new(c_flags, c_description)
+	retGo := TlsPasswordNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
 // GetDescription is a wrapper around the C function g_tls_password_get_description.
 func (recv *TlsPassword) GetDescription() string {
 	retC := C.g_tls_password_get_description((*C.GTlsPassword)(recv.native))

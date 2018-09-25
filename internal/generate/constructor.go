@@ -8,22 +8,26 @@ type Constructor struct {
 	*Function
 }
 
-func (m *Constructor) init(ns *Namespace, record *Record) {
-	m.Function.init(ns, nil)
-	m.GoName = record.GoName + makeExportedGoName(m.Name)
+func (c *Constructor) init(ns *Namespace, record *Record) {
+	c.Function.init(ns, nil)
+	c.GoName = record.GoName + makeExportedGoName(c.Name)
+
+	if record.Version != "" && c.Version == "" {
+		c.Version = record.Version
+	}
 }
 
-func (m *Constructor) generate(g *jen.Group, version *Version) {
-	supported, reason := m.supported()
+func (c *Constructor) generate(g *jen.Group, version *Version) {
+	supported, reason := c.supported()
 	if !supported {
 		g.Commentf("Unsupported : %s", reason)
 		g.Line()
 		return
 	}
 
-	if !supportedByVersion(m, version) {
+	if !supportedByVersion(c, version) {
 		return
 	}
 
-	m.Function.generate(g, version)
+	c.Function.generate(g, version)
 }

@@ -154,6 +154,36 @@ func (recv *Subprocess) Communicate(stdinBuf *glib.Bytes, cancellable *Cancellab
 
 // Unsupported : g_subprocess_communicate_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
 
+// CommunicateUtf8 is a wrapper around the C function g_subprocess_communicate_utf8.
+func (recv *Subprocess) CommunicateUtf8(stdinBuf string, cancellable *Cancellable) (bool, string, string, error) {
+	c_stdin_buf := C.CString(stdinBuf)
+	defer C.free(unsafe.Pointer(c_stdin_buf))
+
+	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+
+	var c_stdout_buf *C.char
+
+	var c_stderr_buf *C.char
+
+	var cThrowableError *C.GError
+
+	retC := C.g_subprocess_communicate_utf8((*C.GSubprocess)(recv.native), c_stdin_buf, c_cancellable, &c_stdout_buf, &c_stderr_buf, &cThrowableError)
+	retGo := retC == C.TRUE
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	stdoutBuf := C.GoString(c_stdout_buf)
+	defer C.free(unsafe.Pointer(c_stdout_buf))
+
+	stderrBuf := C.GoString(c_stderr_buf)
+	defer C.free(unsafe.Pointer(c_stderr_buf))
+
+	return retGo, stdoutBuf, stderrBuf, goThrowableError
+}
+
 // Unsupported : g_subprocess_communicate_utf8_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
 
 // Unsupported : g_subprocess_communicate_utf8_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
@@ -164,6 +194,14 @@ func (recv *Subprocess) Communicate(stdinBuf *glib.Bytes, cancellable *Cancellab
 func (recv *Subprocess) GetExitStatus() int32 {
 	retC := C.g_subprocess_get_exit_status((*C.GSubprocess)(recv.native))
 	retGo := (int32)(retC)
+
+	return retGo
+}
+
+// GetIdentifier is a wrapper around the C function g_subprocess_get_identifier.
+func (recv *Subprocess) GetIdentifier() string {
+	retC := C.g_subprocess_get_identifier((*C.GSubprocess)(recv.native))
+	retGo := C.GoString(retC)
 
 	return retGo
 }

@@ -3,7 +3,7 @@ set -e
 set -u
 
 exampleDir=internal/example
-tags="glib_2.10"
+tags="glib_2.10 gio_2.28"
 
 usage () {
     echo "Usage:"
@@ -33,7 +33,7 @@ generate () {
 }
 
 test () {
-    go test -tags $tags ./...
+    go test -tags "$tags" ./...
 }
 
 examples () {

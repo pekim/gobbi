@@ -10,6 +10,11 @@ type Method struct {
 
 func (m *Method) init(ns *Namespace, record *Record) {
 	m.Function.init(ns, record)
+
+	if record.Version != "" && m.Version == "" {
+		m.Version = record.Version
+	}
+
 }
 
 func (m *Method) generate(g *jen.Group, version *Version) {

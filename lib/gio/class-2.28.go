@@ -46,6 +46,19 @@ func (recv *Application) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// ApplicationNew is a wrapper around the C function g_application_new.
+func ApplicationNew(applicationId string, flags ApplicationFlags) *Application {
+	c_application_id := C.CString(applicationId)
+	defer C.free(unsafe.Pointer(c_application_id))
+
+	c_flags := (C.GApplicationFlags)(flags)
+
+	retC := C.g_application_new(c_application_id, c_flags)
+	retGo := ApplicationNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
 // Unsupported : g_application_activate : no return generator
 
 // Unsupported : g_application_add_main_option : unsupported parameter short_name : no type generator for gchar, char
@@ -352,6 +365,14 @@ func (recv *TlsConnection) GetRehandshakeMode() TlsRehandshakeMode {
 // GetRequireCloseNotify is a wrapper around the C function g_tls_connection_get_require_close_notify.
 func (recv *TlsConnection) GetRequireCloseNotify() bool {
 	retC := C.g_tls_connection_get_require_close_notify((*C.GTlsConnection)(recv.native))
+	retGo := retC == C.TRUE
+
+	return retGo
+}
+
+// GetUseSystemCertdb is a wrapper around the C function g_tls_connection_get_use_system_certdb.
+func (recv *TlsConnection) GetUseSystemCertdb() bool {
+	retC := C.g_tls_connection_get_use_system_certdb((*C.GTlsConnection)(recv.native))
 	retGo := retC == C.TRUE
 
 	return retGo

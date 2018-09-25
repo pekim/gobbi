@@ -24,6 +24,8 @@
     </class>
 
     <function blacklist="true" c:identifier="g_keyfile_settings_backend_new"/>
+    <function blacklist="true" c:identifier="g_memory_settings_backend_new"/>
+    <function blacklist="true" c:identifier="g_null_settings_backend_new"/>
 
     <!-- The The GSettingsBackend API is somewhat specialist. -->
     <record blacklist="true" name="SettingsBackendClass"/>

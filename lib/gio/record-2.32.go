@@ -215,6 +215,14 @@ func (recv *SettingsSchema) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// GetId is a wrapper around the C function g_settings_schema_get_id.
+func (recv *SettingsSchema) GetId() string {
+	retC := C.g_settings_schema_get_id((*C.GSettingsSchema)(recv.native))
+	retGo := C.GoString(retC)
+
+	return retGo
+}
+
 // GetPath is a wrapper around the C function g_settings_schema_get_path.
 func (recv *SettingsSchema) GetPath() string {
 	retC := C.g_settings_schema_get_path((*C.GSettingsSchema)(recv.native))

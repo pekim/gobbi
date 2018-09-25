@@ -469,6 +469,29 @@ func (recv *SocketClient) ConnectToHost(hostAndPort string, defaultPort uint16, 
 
 // Unsupported : g_socket_client_connect_to_host_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
 
+// ConnectToService is a wrapper around the C function g_socket_client_connect_to_service.
+func (recv *SocketClient) ConnectToService(domain string, service string, cancellable *Cancellable) (*SocketConnection, error) {
+	c_domain := C.CString(domain)
+	defer C.free(unsafe.Pointer(c_domain))
+
+	c_service := C.CString(service)
+	defer C.free(unsafe.Pointer(c_service))
+
+	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_socket_client_connect_to_service((*C.GSocketClient)(recv.native), c_domain, c_service, c_cancellable, &cThrowableError)
+	retGo := SocketConnectionNewFromC(unsafe.Pointer(retC))
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
+
 // Unsupported : g_socket_client_connect_to_service_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
 
 // Unsupported : g_socket_client_connect_to_service_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*

@@ -467,6 +467,14 @@ func (recv *DBusMessage) GetArg0() string {
 
 // Unsupported : g_dbus_message_get_body : return type : Blacklisted record : GVariant
 
+// GetByteOrder is a wrapper around the C function g_dbus_message_get_byte_order.
+func (recv *DBusMessage) GetByteOrder() DBusMessageByteOrder {
+	retC := C.g_dbus_message_get_byte_order((*C.GDBusMessage)(recv.native))
+	retGo := (DBusMessageByteOrder)(retC)
+
+	return retGo
+}
+
 // GetDestination is a wrapper around the C function g_dbus_message_get_destination.
 func (recv *DBusMessage) GetDestination() string {
 	retC := C.g_dbus_message_get_destination((*C.GDBusMessage)(recv.native))

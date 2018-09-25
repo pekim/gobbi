@@ -46,21 +46,9 @@ func AppInfoGetRecommendedForType(contentType string) *glib.List {
 	return retGo
 }
 
-// MemorySettingsBackendNew is a wrapper around the C function g_memory_settings_backend_new.
-func MemorySettingsBackendNew() *SettingsBackend {
-	retC := C.g_memory_settings_backend_new()
-	retGo := SettingsBackendNewFromC(unsafe.Pointer(retC))
+// Blacklisted : g_memory_settings_backend_new
 
-	return retGo
-}
-
-// NullSettingsBackendNew is a wrapper around the C function g_null_settings_backend_new.
-func NullSettingsBackendNew() *SettingsBackend {
-	retC := C.g_null_settings_backend_new()
-	retGo := SettingsBackendNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Blacklisted : g_null_settings_backend_new
 
 // PollableSourceNew is a wrapper around the C function g_pollable_source_new.
 func PollableSourceNew(pollableStream *gobject.Object) *glib.Source {
