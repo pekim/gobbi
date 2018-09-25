@@ -2410,24 +2410,7 @@ func (recv *OutputStream) Splice(source *InputStream, flags OutputStreamSpliceFl
 
 // Unsupported : g_output_stream_write_async : unsupported parameter buffer : no param type
 
-// WriteBytes is a wrapper around the C function g_output_stream_write_bytes.
-func (recv *OutputStream) WriteBytes(bytes *glib.Bytes, cancellable *Cancellable) (int64, error) {
-	c_bytes := (*C.GBytes)(bytes.ToC())
-
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
-
-	var cThrowableError *C.GError
-
-	retC := C.g_output_stream_write_bytes((*C.GOutputStream)(recv.native), c_bytes, c_cancellable, &cThrowableError)
-	retGo := (int64)(retC)
-
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-	if cThrowableError != nil {
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goThrowableError
-}
+// Blacklisted : g_output_stream_write_bytes
 
 // Unsupported : g_output_stream_write_bytes_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
 

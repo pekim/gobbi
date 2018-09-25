@@ -24,5 +24,11 @@ func (m *Method) generate(g *jen.Group, version *Version) {
 		return
 	}
 
+	if blacklisted, detail := m.blacklisted(); blacklisted {
+		g.Commentf("Blacklisted : %s", detail)
+		g.Line()
+		return
+	}
+
 	m.Function.generate(g, version)
 }

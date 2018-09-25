@@ -57,6 +57,7 @@ func (r *Record) supported() (supported bool, reason string) {
 func (r *Record) mergeAddenda(addenda *Record) {
 	r.Blacklist = addenda.Blacklist
 	r.FieldsPrivate = addenda.FieldsPrivate
+	r.Methods.mergeAddenda(addenda.Methods)
 }
 
 func (r *Record) generate(g *jen.Group, version *Version) {
