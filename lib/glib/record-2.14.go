@@ -28,9 +28,9 @@ func RegexNewFromC(u unsafe.Pointer) *Regex {
 	return g
 }
 
-func (recv *Regex) toC() *C.GRegex {
+func (recv *Regex) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // RegexNew is a wrapper around the C function g_regex_new.

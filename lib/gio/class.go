@@ -40,9 +40,9 @@ func AppLaunchContextNewFromC(u unsafe.Pointer) *AppLaunchContext {
 	return g
 }
 
-func (recv *AppLaunchContext) toC() *C.GAppLaunchContext {
+func (recv *AppLaunchContext) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_app_launch_context_new : no return generator
@@ -77,9 +77,9 @@ func ApplicationCommandLineNewFromC(u unsafe.Pointer) *ApplicationCommandLine {
 	return g
 }
 
-func (recv *ApplicationCommandLine) toC() *C.GApplicationCommandLine {
+func (recv *ApplicationCommandLine) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_application_command_line_create_file_for_arg : no return generator
@@ -116,9 +116,9 @@ func BufferedInputStreamNewFromC(u unsafe.Pointer) *BufferedInputStream {
 	return g
 }
 
-func (recv *BufferedInputStream) toC() *C.GBufferedInputStream {
+func (recv *BufferedInputStream) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_buffered_input_stream_new : unsupported parameter base_stream : no type generator for InputStream, GInputStream*
@@ -173,9 +173,9 @@ func BufferedOutputStreamNewFromC(u unsafe.Pointer) *BufferedOutputStream {
 	return g
 }
 
-func (recv *BufferedOutputStream) toC() *C.GBufferedOutputStream {
+func (recv *BufferedOutputStream) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_buffered_output_stream_new : unsupported parameter base_stream : no type generator for OutputStream, GOutputStream*
@@ -218,9 +218,9 @@ func BytesIconNewFromC(u unsafe.Pointer) *BytesIcon {
 	return g
 }
 
-func (recv *BytesIcon) toC() *C.GBytesIcon {
+func (recv *BytesIcon) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_bytes_icon_new : no return generator
@@ -243,9 +243,9 @@ func CancellableNewFromC(u unsafe.Pointer) *Cancellable {
 	return g
 }
 
-func (recv *Cancellable) toC() *C.GCancellable {
+func (recv *Cancellable) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_cancellable_new : no return generator
@@ -311,9 +311,9 @@ func CharsetConverterNewFromC(u unsafe.Pointer) *CharsetConverter {
 	return g
 }
 
-func (recv *CharsetConverter) toC() *C.GCharsetConverter {
+func (recv *CharsetConverter) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_charset_converter_new : no return generator
@@ -338,9 +338,9 @@ func ConverterInputStreamNewFromC(u unsafe.Pointer) *ConverterInputStream {
 	return g
 }
 
-func (recv *ConverterInputStream) toC() *C.GConverterInputStream {
+func (recv *ConverterInputStream) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_converter_input_stream_new : unsupported parameter base_stream : no type generator for InputStream, GInputStream*
@@ -365,9 +365,9 @@ func ConverterOutputStreamNewFromC(u unsafe.Pointer) *ConverterOutputStream {
 	return g
 }
 
-func (recv *ConverterOutputStream) toC() *C.GConverterOutputStream {
+func (recv *ConverterOutputStream) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_converter_output_stream_new : unsupported parameter base_stream : no type generator for OutputStream, GOutputStream*
@@ -390,9 +390,9 @@ func DBusActionGroupNewFromC(u unsafe.Pointer) *DBusActionGroup {
 	return g
 }
 
-func (recv *DBusActionGroup) toC() *C.GDBusActionGroup {
+func (recv *DBusActionGroup) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // DBusMenuModel is a wrapper around the C record GDBusMenuModel.
@@ -411,9 +411,9 @@ func DBusMenuModelNewFromC(u unsafe.Pointer) *DBusMenuModel {
 	return g
 }
 
-func (recv *DBusMenuModel) toC() *C.GDBusMenuModel {
+func (recv *DBusMenuModel) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // DataInputStream is a wrapper around the C record GDataInputStream.
@@ -434,9 +434,9 @@ func DataInputStreamNewFromC(u unsafe.Pointer) *DataInputStream {
 	return g
 }
 
-func (recv *DataInputStream) toC() *C.GDataInputStream {
+func (recv *DataInputStream) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_data_input_stream_new : unsupported parameter base_stream : no type generator for InputStream, GInputStream*
@@ -515,9 +515,9 @@ func DataOutputStreamNewFromC(u unsafe.Pointer) *DataOutputStream {
 	return g
 }
 
-func (recv *DataOutputStream) toC() *C.GDataOutputStream {
+func (recv *DataOutputStream) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_data_output_stream_new : unsupported parameter base_stream : no type generator for OutputStream, GOutputStream*
@@ -564,9 +564,9 @@ func DesktopAppInfoNewFromC(u unsafe.Pointer) *DesktopAppInfo {
 	return g
 }
 
-func (recv *DesktopAppInfo) toC() *C.GDesktopAppInfo {
+func (recv *DesktopAppInfo) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_desktop_app_info_new : no return generator
@@ -623,9 +623,9 @@ func EmblemNewFromC(u unsafe.Pointer) *Emblem {
 	return g
 }
 
-func (recv *Emblem) toC() *C.GEmblem {
+func (recv *Emblem) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_emblem_new : unsupported parameter icon : no type generator for Icon, GIcon*
@@ -652,9 +652,9 @@ func EmblemedIconNewFromC(u unsafe.Pointer) *EmblemedIcon {
 	return g
 }
 
-func (recv *EmblemedIcon) toC() *C.GEmblemedIcon {
+func (recv *EmblemedIcon) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_emblemed_icon_new : unsupported parameter icon : no type generator for Icon, GIcon*
@@ -683,9 +683,9 @@ func FileEnumeratorNewFromC(u unsafe.Pointer) *FileEnumerator {
 	return g
 }
 
-func (recv *FileEnumerator) toC() *C.GFileEnumerator {
+func (recv *FileEnumerator) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_file_enumerator_close : unsupported parameter cancellable : no type generator for Cancellable, GCancellable*
@@ -742,9 +742,9 @@ func FileIOStreamNewFromC(u unsafe.Pointer) *FileIOStream {
 	return g
 }
 
-func (recv *FileIOStream) toC() *C.GFileIOStream {
+func (recv *FileIOStream) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_file_io_stream_query_info : unsupported parameter cancellable : no type generator for Cancellable, GCancellable*
@@ -769,9 +769,9 @@ func FileIconNewFromC(u unsafe.Pointer) *FileIcon {
 	return g
 }
 
-func (recv *FileIcon) toC() *C.GFileIcon {
+func (recv *FileIcon) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_file_icon_new : unsupported parameter file : no type generator for File, GFile*
@@ -794,9 +794,9 @@ func FileInfoNewFromC(u unsafe.Pointer) *FileInfo {
 	return g
 }
 
-func (recv *FileInfo) toC() *C.GFileInfo {
+func (recv *FileInfo) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_file_info_new : no return generator
@@ -1109,9 +1109,9 @@ func FileInputStreamNewFromC(u unsafe.Pointer) *FileInputStream {
 	return g
 }
 
-func (recv *FileInputStream) toC() *C.GFileInputStream {
+func (recv *FileInputStream) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_file_input_stream_query_info : unsupported parameter cancellable : no type generator for Cancellable, GCancellable*
@@ -1138,9 +1138,9 @@ func FileMonitorNewFromC(u unsafe.Pointer) *FileMonitor {
 	return g
 }
 
-func (recv *FileMonitor) toC() *C.GFileMonitor {
+func (recv *FileMonitor) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Cancel is a wrapper around the C function g_file_monitor_cancel.
@@ -1181,9 +1181,9 @@ func FileOutputStreamNewFromC(u unsafe.Pointer) *FileOutputStream {
 	return g
 }
 
-func (recv *FileOutputStream) toC() *C.GFileOutputStream {
+func (recv *FileOutputStream) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // GetEtag is a wrapper around the C function g_file_output_stream_get_etag.
@@ -1217,9 +1217,9 @@ func FilenameCompleterNewFromC(u unsafe.Pointer) *FilenameCompleter {
 	return g
 }
 
-func (recv *FilenameCompleter) toC() *C.GFilenameCompleter {
+func (recv *FilenameCompleter) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_filename_completer_new : no return generator
@@ -1258,9 +1258,9 @@ func FilterInputStreamNewFromC(u unsafe.Pointer) *FilterInputStream {
 	return g
 }
 
-func (recv *FilterInputStream) toC() *C.GFilterInputStream {
+func (recv *FilterInputStream) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_filter_input_stream_get_base_stream : no return generator
@@ -1293,9 +1293,9 @@ func FilterOutputStreamNewFromC(u unsafe.Pointer) *FilterOutputStream {
 	return g
 }
 
-func (recv *FilterOutputStream) toC() *C.GFilterOutputStream {
+func (recv *FilterOutputStream) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_filter_output_stream_get_base_stream : no return generator
@@ -1326,9 +1326,9 @@ func IOModuleNewFromC(u unsafe.Pointer) *IOModule {
 	return g
 }
 
-func (recv *IOModule) toC() *C.GIOModule {
+func (recv *IOModule) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_io_module_new : no return generator
@@ -1355,9 +1355,9 @@ func IOStreamNewFromC(u unsafe.Pointer) *IOStream {
 	return g
 }
 
-func (recv *IOStream) toC() *C.GIOStream {
+func (recv *IOStream) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_io_stream_clear_pending : no return generator
@@ -1392,9 +1392,9 @@ func InetAddressNewFromC(u unsafe.Pointer) *InetAddress {
 	return g
 }
 
-func (recv *InetAddress) toC() *C.GInetAddress {
+func (recv *InetAddress) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_inet_address_new_any : no return generator
@@ -1427,9 +1427,9 @@ func InetSocketAddressNewFromC(u unsafe.Pointer) *InetSocketAddress {
 	return g
 }
 
-func (recv *InetSocketAddress) toC() *C.GInetSocketAddress {
+func (recv *InetSocketAddress) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_inet_socket_address_new : unsupported parameter address : no type generator for InetAddress, GInetAddress*
@@ -1456,9 +1456,9 @@ func InputStreamNewFromC(u unsafe.Pointer) *InputStream {
 	return g
 }
 
-func (recv *InputStream) toC() *C.GInputStream {
+func (recv *InputStream) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_input_stream_clear_pending : no return generator
@@ -1540,9 +1540,9 @@ func ListStoreNewFromC(u unsafe.Pointer) *ListStore {
 	return g
 }
 
-func (recv *ListStore) toC() *C.GListStore {
+func (recv *ListStore) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_list_store_new : unsupported parameter item_type : no type generator for GType, GType
@@ -1579,9 +1579,9 @@ func MemoryInputStreamNewFromC(u unsafe.Pointer) *MemoryInputStream {
 	return g
 }
 
-func (recv *MemoryInputStream) toC() *C.GMemoryInputStream {
+func (recv *MemoryInputStream) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_memory_input_stream_new : no return generator
@@ -1612,9 +1612,9 @@ func MemoryOutputStreamNewFromC(u unsafe.Pointer) *MemoryOutputStream {
 	return g
 }
 
-func (recv *MemoryOutputStream) toC() *C.GMemoryOutputStream {
+func (recv *MemoryOutputStream) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_memory_output_stream_new : unsupported parameter realloc_function : no type generator for ReallocFunc, GReallocFunc
@@ -1655,9 +1655,9 @@ func MountOperationNewFromC(u unsafe.Pointer) *MountOperation {
 	return g
 }
 
-func (recv *MountOperation) toC() *C.GMountOperation {
+func (recv *MountOperation) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_mount_operation_new : no return generator
@@ -1741,9 +1741,9 @@ func NativeVolumeMonitorNewFromC(u unsafe.Pointer) *NativeVolumeMonitor {
 	return g
 }
 
-func (recv *NativeVolumeMonitor) toC() *C.GNativeVolumeMonitor {
+func (recv *NativeVolumeMonitor) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // NetworkAddress is a wrapper around the C record GNetworkAddress.
@@ -1764,9 +1764,9 @@ func NetworkAddressNewFromC(u unsafe.Pointer) *NetworkAddress {
 	return g
 }
 
-func (recv *NetworkAddress) toC() *C.GNetworkAddress {
+func (recv *NetworkAddress) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_network_address_new : no return generator
@@ -1791,9 +1791,9 @@ func NetworkServiceNewFromC(u unsafe.Pointer) *NetworkService {
 	return g
 }
 
-func (recv *NetworkService) toC() *C.GNetworkService {
+func (recv *NetworkService) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_network_service_new : no return generator
@@ -1818,9 +1818,9 @@ func OutputStreamNewFromC(u unsafe.Pointer) *OutputStream {
 	return g
 }
 
-func (recv *OutputStream) toC() *C.GOutputStream {
+func (recv *OutputStream) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_output_stream_clear_pending : no return generator
@@ -1914,9 +1914,9 @@ func PermissionNewFromC(u unsafe.Pointer) *Permission {
 	return g
 }
 
-func (recv *Permission) toC() *C.GPermission {
+func (recv *Permission) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_permission_acquire : unsupported parameter cancellable : no type generator for Cancellable, GCancellable*
@@ -1951,9 +1951,9 @@ func ProxyAddressEnumeratorNewFromC(u unsafe.Pointer) *ProxyAddressEnumerator {
 	return g
 }
 
-func (recv *ProxyAddressEnumerator) toC() *C.GProxyAddressEnumerator {
+func (recv *ProxyAddressEnumerator) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Resolver is a wrapper around the C record GResolver.
@@ -1974,9 +1974,9 @@ func ResolverNewFromC(u unsafe.Pointer) *Resolver {
 	return g
 }
 
-func (recv *Resolver) toC() *C.GResolver {
+func (recv *Resolver) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_resolver_lookup_by_address : unsupported parameter address : no type generator for InetAddress, GInetAddress*
@@ -2023,9 +2023,9 @@ func SettingsNewFromC(u unsafe.Pointer) *Settings {
 	return g
 }
 
-func (recv *Settings) toC() *C.GSettings {
+func (recv *Settings) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_settings_new : no return generator
@@ -2126,9 +2126,9 @@ func SettingsBackendNewFromC(u unsafe.Pointer) *SettingsBackend {
 	return g
 }
 
-func (recv *SettingsBackend) toC() *C.GSettingsBackend {
+func (recv *SettingsBackend) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_settings_backend_changed : no return generator
@@ -2159,9 +2159,9 @@ func SimpleActionNewFromC(u unsafe.Pointer) *SimpleAction {
 	return g
 }
 
-func (recv *SimpleAction) toC() *C.GSimpleAction {
+func (recv *SimpleAction) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_simple_action_new : unsupported parameter parameter_type : Blacklisted record : GVariantType
@@ -2190,9 +2190,9 @@ func SimpleAsyncResultNewFromC(u unsafe.Pointer) *SimpleAsyncResult {
 	return g
 }
 
-func (recv *SimpleAsyncResult) toC() *C.GSimpleAsyncResult {
+func (recv *SimpleAsyncResult) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_simple_async_result_new : unsupported parameter source_object : no type generator for GObject.Object, GObject*
@@ -2290,9 +2290,9 @@ func SimplePermissionNewFromC(u unsafe.Pointer) *SimplePermission {
 	return g
 }
 
-func (recv *SimplePermission) toC() *C.GSimplePermission {
+func (recv *SimplePermission) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_simple_permission_new : no return generator
@@ -2315,9 +2315,9 @@ func SimpleProxyResolverNewFromC(u unsafe.Pointer) *SimpleProxyResolver {
 	return g
 }
 
-func (recv *SimpleProxyResolver) toC() *C.GSimpleProxyResolver {
+func (recv *SimpleProxyResolver) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_simple_proxy_resolver_set_default_proxy : no return generator
@@ -2343,9 +2343,9 @@ func SocketAddressNewFromC(u unsafe.Pointer) *SocketAddress {
 	return g
 }
 
-func (recv *SocketAddress) toC() *C.GSocketAddress {
+func (recv *SocketAddress) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_socket_address_new_from_native : no return generator
@@ -2367,9 +2367,9 @@ func SocketAddressEnumeratorNewFromC(u unsafe.Pointer) *SocketAddressEnumerator 
 	return g
 }
 
-func (recv *SocketAddressEnumerator) toC() *C.GSocketAddressEnumerator {
+func (recv *SocketAddressEnumerator) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_socket_address_enumerator_next : unsupported parameter cancellable : no type generator for Cancellable, GCancellable*
@@ -2396,9 +2396,9 @@ func SocketControlMessageNewFromC(u unsafe.Pointer) *SocketControlMessage {
 	return g
 }
 
-func (recv *SocketControlMessage) toC() *C.GSocketControlMessage {
+func (recv *SocketControlMessage) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_socket_control_message_serialize : no return generator
@@ -2419,9 +2419,9 @@ func TaskNewFromC(u unsafe.Pointer) *Task {
 	return g
 }
 
-func (recv *Task) toC() *C.GTask {
+func (recv *Task) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_task_new : unsupported parameter cancellable : no type generator for Cancellable, GCancellable*
@@ -2470,9 +2470,9 @@ func TcpWrapperConnectionNewFromC(u unsafe.Pointer) *TcpWrapperConnection {
 	return g
 }
 
-func (recv *TcpWrapperConnection) toC() *C.GTcpWrapperConnection {
+func (recv *TcpWrapperConnection) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_tcp_wrapper_connection_new : unsupported parameter base_io_stream : no type generator for IOStream, GIOStream*
@@ -2495,9 +2495,9 @@ func ThemedIconNewFromC(u unsafe.Pointer) *ThemedIcon {
 	return g
 }
 
-func (recv *ThemedIcon) toC() *C.GThemedIcon {
+func (recv *ThemedIcon) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_themed_icon_new : no return generator
@@ -2530,9 +2530,9 @@ func UnixConnectionNewFromC(u unsafe.Pointer) *UnixConnection {
 	return g
 }
 
-func (recv *UnixConnection) toC() *C.GUnixConnection {
+func (recv *UnixConnection) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_unix_connection_receive_credentials : unsupported parameter cancellable : no type generator for Cancellable, GCancellable*
@@ -2569,9 +2569,9 @@ func UnixFDListNewFromC(u unsafe.Pointer) *UnixFDList {
 	return g
 }
 
-func (recv *UnixFDList) toC() *C.GUnixFDList {
+func (recv *UnixFDList) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_unix_fd_list_new : no return generator
@@ -2600,9 +2600,9 @@ func UnixFDMessageNewFromC(u unsafe.Pointer) *UnixFDMessage {
 	return g
 }
 
-func (recv *UnixFDMessage) toC() *C.GUnixFDMessage {
+func (recv *UnixFDMessage) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_unix_fd_message_new : no return generator
@@ -2631,9 +2631,9 @@ func UnixInputStreamNewFromC(u unsafe.Pointer) *UnixInputStream {
 	return g
 }
 
-func (recv *UnixInputStream) toC() *C.GUnixInputStream {
+func (recv *UnixInputStream) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_unix_input_stream_new : no return generator
@@ -2656,9 +2656,9 @@ func UnixMountMonitorNewFromC(u unsafe.Pointer) *UnixMountMonitor {
 	return g
 }
 
-func (recv *UnixMountMonitor) toC() *C.GUnixMountMonitor {
+func (recv *UnixMountMonitor) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_unix_mount_monitor_new : no return generator
@@ -2683,9 +2683,9 @@ func UnixOutputStreamNewFromC(u unsafe.Pointer) *UnixOutputStream {
 	return g
 }
 
-func (recv *UnixOutputStream) toC() *C.GUnixOutputStream {
+func (recv *UnixOutputStream) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_unix_output_stream_new : no return generator
@@ -2710,9 +2710,9 @@ func UnixSocketAddressNewFromC(u unsafe.Pointer) *UnixSocketAddress {
 	return g
 }
 
-func (recv *UnixSocketAddress) toC() *C.GUnixSocketAddress {
+func (recv *UnixSocketAddress) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_unix_socket_address_new : no return generator
@@ -2738,9 +2738,9 @@ func VfsNewFromC(u unsafe.Pointer) *Vfs {
 	return g
 }
 
-func (recv *Vfs) toC() *C.GVfs {
+func (recv *Vfs) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_vfs_get_file_for_path : no return generator
@@ -2779,9 +2779,9 @@ func VolumeMonitorNewFromC(u unsafe.Pointer) *VolumeMonitor {
 	return g
 }
 
-func (recv *VolumeMonitor) toC() *C.GVolumeMonitor {
+func (recv *VolumeMonitor) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // GetConnectedDrives is a wrapper around the C function g_volume_monitor_get_connected_drives.
@@ -2828,9 +2828,9 @@ func ZlibCompressorNewFromC(u unsafe.Pointer) *ZlibCompressor {
 	return g
 }
 
-func (recv *ZlibCompressor) toC() *C.GZlibCompressor {
+func (recv *ZlibCompressor) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_zlib_compressor_new : no return generator
@@ -2855,9 +2855,9 @@ func ZlibDecompressorNewFromC(u unsafe.Pointer) *ZlibDecompressor {
 	return g
 }
 
-func (recv *ZlibDecompressor) toC() *C.GZlibDecompressor {
+func (recv *ZlibDecompressor) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_zlib_decompressor_new : no return generator

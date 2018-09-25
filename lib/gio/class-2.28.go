@@ -38,9 +38,9 @@ func ApplicationNewFromC(u unsafe.Pointer) *Application {
 	return g
 }
 
-func (recv *Application) toC() *C.GApplication {
+func (recv *Application) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_application_new : no return generator
@@ -155,9 +155,9 @@ func SimpleActionGroupNewFromC(u unsafe.Pointer) *SimpleActionGroup {
 	return g
 }
 
-func (recv *SimpleActionGroup) toC() *C.GSimpleActionGroup {
+func (recv *SimpleActionGroup) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_simple_action_group_new : no return generator
@@ -188,9 +188,9 @@ func TlsCertificateNewFromC(u unsafe.Pointer) *TlsCertificate {
 	return g
 }
 
-func (recv *TlsCertificate) toC() *C.GTlsCertificate {
+func (recv *TlsCertificate) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_tls_certificate_new_from_file : no return generator
@@ -223,9 +223,9 @@ func TlsConnectionNewFromC(u unsafe.Pointer) *TlsConnection {
 	return g
 }
 
-func (recv *TlsConnection) toC() *C.GTlsConnection {
+func (recv *TlsConnection) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_tls_connection_emit_accept_certificate : unsupported parameter peer_cert : no type generator for TlsCertificate, GTlsCertificate*

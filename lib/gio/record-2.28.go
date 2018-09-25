@@ -51,9 +51,9 @@ func ActionGroupInterfaceNewFromC(u unsafe.Pointer) *ActionGroupInterface {
 	return g
 }
 
-func (recv *ActionGroupInterface) toC() *C.GActionGroupInterface {
+func (recv *ActionGroupInterface) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ActionInterface is a wrapper around the C record GActionInterface.
@@ -81,9 +81,9 @@ func ActionInterfaceNewFromC(u unsafe.Pointer) *ActionInterface {
 	return g
 }
 
-func (recv *ActionInterface) toC() *C.GActionInterface {
+func (recv *ActionInterface) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ApplicationClass is a wrapper around the C record GApplicationClass.
@@ -118,9 +118,9 @@ func ApplicationClassNewFromC(u unsafe.Pointer) *ApplicationClass {
 	return g
 }
 
-func (recv *ApplicationClass) toC() *C.GApplicationClass {
+func (recv *ApplicationClass) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ApplicationCommandLineClass is a wrapper around the C record GApplicationCommandLineClass.
@@ -144,9 +144,9 @@ func ApplicationCommandLineClassNewFromC(u unsafe.Pointer) *ApplicationCommandLi
 	return g
 }
 
-func (recv *ApplicationCommandLineClass) toC() *C.GApplicationCommandLineClass {
+func (recv *ApplicationCommandLineClass) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // PollableInputStreamInterface is a wrapper around the C record GPollableInputStreamInterface.
@@ -170,9 +170,9 @@ func PollableInputStreamInterfaceNewFromC(u unsafe.Pointer) *PollableInputStream
 	return g
 }
 
-func (recv *PollableInputStreamInterface) toC() *C.GPollableInputStreamInterface {
+func (recv *PollableInputStreamInterface) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // PollableOutputStreamInterface is a wrapper around the C record GPollableOutputStreamInterface.
@@ -196,9 +196,9 @@ func PollableOutputStreamInterfaceNewFromC(u unsafe.Pointer) *PollableOutputStre
 	return g
 }
 
-func (recv *PollableOutputStreamInterface) toC() *C.GPollableOutputStreamInterface {
+func (recv *PollableOutputStreamInterface) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // TlsBackendInterface is a wrapper around the C record GTlsBackendInterface.
@@ -227,7 +227,7 @@ func TlsBackendInterfaceNewFromC(u unsafe.Pointer) *TlsBackendInterface {
 	return g
 }
 
-func (recv *TlsBackendInterface) toC() *C.GTlsBackendInterface {
+func (recv *TlsBackendInterface) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }

@@ -36,9 +36,9 @@ func AppInfoMonitorNewFromC(u unsafe.Pointer) *AppInfoMonitor {
 	return g
 }
 
-func (recv *AppInfoMonitor) toC() *C.GAppInfoMonitor {
+func (recv *AppInfoMonitor) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Notification is a wrapper around the C record GNotification.
@@ -57,9 +57,9 @@ func NotificationNewFromC(u unsafe.Pointer) *Notification {
 	return g
 }
 
-func (recv *Notification) toC() *C.GNotification {
+func (recv *Notification) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_notification_new : no return generator
@@ -102,9 +102,9 @@ func SubprocessNewFromC(u unsafe.Pointer) *Subprocess {
 	return g
 }
 
-func (recv *Subprocess) toC() *C.GSubprocess {
+func (recv *Subprocess) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_subprocess_new : unsupported parameter error : in string with indirection level of 2
@@ -209,9 +209,9 @@ func SubprocessLauncherNewFromC(u unsafe.Pointer) *SubprocessLauncher {
 	return g
 }
 
-func (recv *SubprocessLauncher) toC() *C.GSubprocessLauncher {
+func (recv *SubprocessLauncher) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_subprocess_launcher_new : no return generator

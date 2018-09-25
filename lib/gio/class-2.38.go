@@ -36,9 +36,9 @@ func PropertyActionNewFromC(u unsafe.Pointer) *PropertyAction {
 	return g
 }
 
-func (recv *PropertyAction) toC() *C.GPropertyAction {
+func (recv *PropertyAction) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_property_action_new : no return generator

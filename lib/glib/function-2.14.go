@@ -70,7 +70,7 @@ func RegexMatchSimple(pattern string, string string, compileOptions RegexCompile
 
 // SequenceGet is a wrapper around the C function g_sequence_get.
 func SequenceGet(iter *SequenceIter) uintptr {
-	c_iter := iter.toC()
+	c_iter := (*C.GSequenceIter)(iter.ToC())
 
 	retC := C.g_sequence_get(c_iter)
 	retGo := (uintptr)(retC)
@@ -80,7 +80,7 @@ func SequenceGet(iter *SequenceIter) uintptr {
 
 // SequenceInsertBefore is a wrapper around the C function g_sequence_insert_before.
 func SequenceInsertBefore(iter *SequenceIter, data uintptr) *SequenceIter {
-	c_iter := iter.toC()
+	c_iter := (*C.GSequenceIter)(iter.ToC())
 
 	c_data := (C.gpointer)(data)
 
@@ -96,9 +96,9 @@ func SequenceInsertBefore(iter *SequenceIter, data uintptr) *SequenceIter {
 
 // SequenceRangeGetMidpoint is a wrapper around the C function g_sequence_range_get_midpoint.
 func SequenceRangeGetMidpoint(begin *SequenceIter, end *SequenceIter) *SequenceIter {
-	c_begin := begin.toC()
+	c_begin := (*C.GSequenceIter)(begin.ToC())
 
-	c_end := end.toC()
+	c_end := (*C.GSequenceIter)(end.ToC())
 
 	retC := C.g_sequence_range_get_midpoint(c_begin, c_end)
 	retGo := SequenceIterNewFromC(unsafe.Pointer(retC))

@@ -37,7 +37,7 @@ func ResolverErrorQuark() glib.Quark {
 
 // SrvTargetListSort is a wrapper around the C function g_srv_target_list_sort.
 func SrvTargetListSort(targets *glib.List) *glib.List {
-	c_targets := targets.toC()
+	c_targets := (*C.GList)(targets.ToC())
 
 	retC := C.g_srv_target_list_sort(c_targets)
 	retGo := glib.ListNewFromC(unsafe.Pointer(retC))

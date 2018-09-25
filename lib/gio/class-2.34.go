@@ -36,9 +36,9 @@ func TestDBusNewFromC(u unsafe.Pointer) *TestDBus {
 	return g
 }
 
-func (recv *TestDBus) toC() *C.GTestDBus {
+func (recv *TestDBus) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_test_dbus_new : no return generator

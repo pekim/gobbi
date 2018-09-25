@@ -239,9 +239,9 @@ func UnixIsMountPathSystemInternal(mountPath string) bool {
 
 // UnixMountCompare is a wrapper around the C function g_unix_mount_compare.
 func UnixMountCompare(mount1 *UnixMountEntry, mount2 *UnixMountEntry) int32 {
-	c_mount1 := mount1.toC()
+	c_mount1 := (*C.GUnixMountEntry)(mount1.ToC())
 
-	c_mount2 := mount2.toC()
+	c_mount2 := (*C.GUnixMountEntry)(mount2.ToC())
 
 	retC := C.g_unix_mount_compare(c_mount1, c_mount2)
 	retGo := (int32)(retC)
@@ -253,7 +253,7 @@ func UnixMountCompare(mount1 *UnixMountEntry, mount2 *UnixMountEntry) int32 {
 
 // UnixMountGetDevicePath is a wrapper around the C function g_unix_mount_get_device_path.
 func UnixMountGetDevicePath(mountEntry *UnixMountEntry) string {
-	c_mount_entry := mountEntry.toC()
+	c_mount_entry := (*C.GUnixMountEntry)(mountEntry.ToC())
 
 	retC := C.g_unix_mount_get_device_path(c_mount_entry)
 	retGo := C.GoString(retC)
@@ -263,7 +263,7 @@ func UnixMountGetDevicePath(mountEntry *UnixMountEntry) string {
 
 // UnixMountGetFsType is a wrapper around the C function g_unix_mount_get_fs_type.
 func UnixMountGetFsType(mountEntry *UnixMountEntry) string {
-	c_mount_entry := mountEntry.toC()
+	c_mount_entry := (*C.GUnixMountEntry)(mountEntry.ToC())
 
 	retC := C.g_unix_mount_get_fs_type(c_mount_entry)
 	retGo := C.GoString(retC)
@@ -273,7 +273,7 @@ func UnixMountGetFsType(mountEntry *UnixMountEntry) string {
 
 // UnixMountGetMountPath is a wrapper around the C function g_unix_mount_get_mount_path.
 func UnixMountGetMountPath(mountEntry *UnixMountEntry) string {
-	c_mount_entry := mountEntry.toC()
+	c_mount_entry := (*C.GUnixMountEntry)(mountEntry.ToC())
 
 	retC := C.g_unix_mount_get_mount_path(c_mount_entry)
 	retGo := C.GoString(retC)
@@ -283,7 +283,7 @@ func UnixMountGetMountPath(mountEntry *UnixMountEntry) string {
 
 // UnixMountGuessCanEject is a wrapper around the C function g_unix_mount_guess_can_eject.
 func UnixMountGuessCanEject(mountEntry *UnixMountEntry) bool {
-	c_mount_entry := mountEntry.toC()
+	c_mount_entry := (*C.GUnixMountEntry)(mountEntry.ToC())
 
 	retC := C.g_unix_mount_guess_can_eject(c_mount_entry)
 	retGo := retC == C.TRUE
@@ -295,7 +295,7 @@ func UnixMountGuessCanEject(mountEntry *UnixMountEntry) bool {
 
 // UnixMountGuessName is a wrapper around the C function g_unix_mount_guess_name.
 func UnixMountGuessName(mountEntry *UnixMountEntry) string {
-	c_mount_entry := mountEntry.toC()
+	c_mount_entry := (*C.GUnixMountEntry)(mountEntry.ToC())
 
 	retC := C.g_unix_mount_guess_name(c_mount_entry)
 	retGo := C.GoString(retC)
@@ -306,7 +306,7 @@ func UnixMountGuessName(mountEntry *UnixMountEntry) string {
 
 // UnixMountGuessShouldDisplay is a wrapper around the C function g_unix_mount_guess_should_display.
 func UnixMountGuessShouldDisplay(mountEntry *UnixMountEntry) bool {
-	c_mount_entry := mountEntry.toC()
+	c_mount_entry := (*C.GUnixMountEntry)(mountEntry.ToC())
 
 	retC := C.g_unix_mount_guess_should_display(c_mount_entry)
 	retGo := retC == C.TRUE
@@ -316,7 +316,7 @@ func UnixMountGuessShouldDisplay(mountEntry *UnixMountEntry) bool {
 
 // UnixMountIsReadonly is a wrapper around the C function g_unix_mount_is_readonly.
 func UnixMountIsReadonly(mountEntry *UnixMountEntry) bool {
-	c_mount_entry := mountEntry.toC()
+	c_mount_entry := (*C.GUnixMountEntry)(mountEntry.ToC())
 
 	retC := C.g_unix_mount_is_readonly(c_mount_entry)
 	retGo := retC == C.TRUE
@@ -326,7 +326,7 @@ func UnixMountIsReadonly(mountEntry *UnixMountEntry) bool {
 
 // UnixMountIsSystemInternal is a wrapper around the C function g_unix_mount_is_system_internal.
 func UnixMountIsSystemInternal(mountEntry *UnixMountEntry) bool {
-	c_mount_entry := mountEntry.toC()
+	c_mount_entry := (*C.GUnixMountEntry)(mountEntry.ToC())
 
 	retC := C.g_unix_mount_is_system_internal(c_mount_entry)
 	retGo := retC == C.TRUE

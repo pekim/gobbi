@@ -36,9 +36,9 @@ func CredentialsNewFromC(u unsafe.Pointer) *Credentials {
 	return g
 }
 
-func (recv *Credentials) toC() *C.GCredentials {
+func (recv *Credentials) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_credentials_new : no return generator
@@ -88,9 +88,9 @@ func DBusAuthObserverNewFromC(u unsafe.Pointer) *DBusAuthObserver {
 	return g
 }
 
-func (recv *DBusAuthObserver) toC() *C.GDBusAuthObserver {
+func (recv *DBusAuthObserver) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_dbus_auth_observer_new : no return generator
@@ -113,9 +113,9 @@ func DBusConnectionNewFromC(u unsafe.Pointer) *DBusConnection {
 	return g
 }
 
-func (recv *DBusConnection) toC() *C.GDBusConnection {
+func (recv *DBusConnection) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_dbus_connection_new_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
@@ -264,9 +264,9 @@ func DBusMessageNewFromC(u unsafe.Pointer) *DBusMessage {
 	return g
 }
 
-func (recv *DBusMessage) toC() *C.GDBusMessage {
+func (recv *DBusMessage) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_dbus_message_new : no return generator
@@ -485,9 +485,9 @@ func DBusMethodInvocationNewFromC(u unsafe.Pointer) *DBusMethodInvocation {
 	return g
 }
 
-func (recv *DBusMethodInvocation) toC() *C.GDBusMethodInvocation {
+func (recv *DBusMethodInvocation) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_dbus_method_invocation_get_connection : no return generator
@@ -578,9 +578,9 @@ func DBusProxyNewFromC(u unsafe.Pointer) *DBusProxy {
 	return g
 }
 
-func (recv *DBusProxy) toC() *C.GDBusProxy {
+func (recv *DBusProxy) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_dbus_proxy_new_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
@@ -688,9 +688,9 @@ func DBusServerNewFromC(u unsafe.Pointer) *DBusServer {
 	return g
 }
 
-func (recv *DBusServer) toC() *C.GDBusServer {
+func (recv *DBusServer) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_dbus_server_new_sync : unsupported parameter observer : no type generator for DBusAuthObserver, GDBusAuthObserver*
@@ -749,9 +749,9 @@ func ProxyAddressNewFromC(u unsafe.Pointer) *ProxyAddress {
 	return g
 }
 
-func (recv *ProxyAddress) toC() *C.GProxyAddress {
+func (recv *ProxyAddress) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_proxy_address_new : unsupported parameter inetaddr : no type generator for InetAddress, GInetAddress*
@@ -814,9 +814,9 @@ func UnixCredentialsMessageNewFromC(u unsafe.Pointer) *UnixCredentialsMessage {
 	return g
 }
 
-func (recv *UnixCredentialsMessage) toC() *C.GUnixCredentialsMessage {
+func (recv *UnixCredentialsMessage) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_unix_credentials_message_new : no return generator

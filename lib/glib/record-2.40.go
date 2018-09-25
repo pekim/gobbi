@@ -28,9 +28,9 @@ func VariantDictNewFromC(u unsafe.Pointer) *VariantDict {
 	return g
 }
 
-func (recv *VariantDict) toC() *C.GVariantDict {
+func (recv *VariantDict) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_variant_dict_new : unsupported parameter from_asv : Blacklisted record : GVariant

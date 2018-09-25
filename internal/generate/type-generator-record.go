@@ -21,11 +21,11 @@ func TypeGeneratorRecordNew(typ *Type, record *Record) *TypeGeneratorRecord {
 func (t *TypeGeneratorRecord) isSupportedAsField() (supported bool, reason string) {
 	return false, "record"
 
-	if t.typ.indirectLevel != 1 {
-		return false, fmt.Sprintf("record with indirection of %d", t.typ.indirectLevel)
-	}
-
-	return true, ""
+	//if t.typ.indirectLevel != 1 {
+	//	return false, fmt.Sprintf("record with indirection of %d", t.typ.indirectLevel)
+	//}
+	//
+	//return true, ""
 }
 
 func (t *TypeGeneratorRecord) isSupportedAsParam(direction string) (supported bool, reason string) {
@@ -75,8 +75,14 @@ func (t *TypeGeneratorRecord) generateParamCVar(g *jen.Group, cVarName string, g
 	g.
 		Id(cVarName).
 		Op(":=").
-		Id(goVarName).Op(".").Id("toC").
-		Call()
+		Parens(jen.
+			Op(strings.Repeat("*", t.typ.indirectLevel)).
+			Qual("C", t.typ.cTypeName)).
+		Parens(jen.
+			Id(goVarName).
+			Op(".").
+			Id("ToC").
+			Call())
 }
 
 func (t *TypeGeneratorRecord) generateParamOutCVar(g *jen.Group, cVarName string) {

@@ -28,7 +28,7 @@ func ParamSpecGTypeNewFromC(u unsafe.Pointer) *ParamSpecGType {
 	return g
 }
 
-func (recv *ParamSpecGType) toC() *C.GParamSpecGType {
+func (recv *ParamSpecGType) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }

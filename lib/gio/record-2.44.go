@@ -40,9 +40,9 @@ func ListModelInterfaceNewFromC(u unsafe.Pointer) *ListModelInterface {
 	return g
 }
 
-func (recv *ListModelInterface) toC() *C.GListModelInterface {
+func (recv *ListModelInterface) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // OutputMessage is a wrapper around the C record GOutputMessage.
@@ -72,7 +72,7 @@ func OutputMessageNewFromC(u unsafe.Pointer) *OutputMessage {
 	return g
 }
 
-func (recv *OutputMessage) toC() *C.GOutputMessage {
+func (recv *OutputMessage) ToC() unsafe.Pointer {
 	recv.native.num_vectors =
 		(C.guint)(recv.NumVectors)
 	recv.native.bytes_sent =
@@ -80,5 +80,5 @@ func (recv *OutputMessage) toC() *C.GOutputMessage {
 	recv.native.num_control_messages =
 		(C.guint)(recv.NumControlMessages)
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }

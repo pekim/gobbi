@@ -74,7 +74,7 @@ import "C"
 
 // EnumGetValue is a wrapper around the C function g_enum_get_value.
 func EnumGetValue(enumClass *EnumClass, value int32) *EnumValue {
-	c_enum_class := enumClass.toC()
+	c_enum_class := (*C.GEnumClass)(enumClass.ToC())
 
 	c_value := (C.gint)(value)
 
@@ -86,7 +86,7 @@ func EnumGetValue(enumClass *EnumClass, value int32) *EnumValue {
 
 // EnumGetValueByName is a wrapper around the C function g_enum_get_value_by_name.
 func EnumGetValueByName(enumClass *EnumClass, name string) *EnumValue {
-	c_enum_class := enumClass.toC()
+	c_enum_class := (*C.GEnumClass)(enumClass.ToC())
 
 	c_name := C.CString(name)
 	defer C.free(unsafe.Pointer(c_name))
@@ -99,7 +99,7 @@ func EnumGetValueByName(enumClass *EnumClass, name string) *EnumValue {
 
 // EnumGetValueByNick is a wrapper around the C function g_enum_get_value_by_nick.
 func EnumGetValueByNick(enumClass *EnumClass, nick string) *EnumValue {
-	c_enum_class := enumClass.toC()
+	c_enum_class := (*C.GEnumClass)(enumClass.ToC())
 
 	c_nick := C.CString(nick)
 	defer C.free(unsafe.Pointer(c_nick))
@@ -116,7 +116,7 @@ func EnumGetValueByNick(enumClass *EnumClass, nick string) *EnumValue {
 
 // FlagsGetFirstValue is a wrapper around the C function g_flags_get_first_value.
 func FlagsGetFirstValue(flagsClass *FlagsClass, value uint32) *FlagsValue {
-	c_flags_class := flagsClass.toC()
+	c_flags_class := (*C.GFlagsClass)(flagsClass.ToC())
 
 	c_value := (C.guint)(value)
 
@@ -128,7 +128,7 @@ func FlagsGetFirstValue(flagsClass *FlagsClass, value uint32) *FlagsValue {
 
 // FlagsGetValueByName is a wrapper around the C function g_flags_get_value_by_name.
 func FlagsGetValueByName(flagsClass *FlagsClass, name string) *FlagsValue {
-	c_flags_class := flagsClass.toC()
+	c_flags_class := (*C.GFlagsClass)(flagsClass.ToC())
 
 	c_name := C.CString(name)
 	defer C.free(unsafe.Pointer(c_name))
@@ -141,7 +141,7 @@ func FlagsGetValueByName(flagsClass *FlagsClass, name string) *FlagsValue {
 
 // FlagsGetValueByNick is a wrapper around the C function g_flags_get_value_by_nick.
 func FlagsGetValueByNick(flagsClass *FlagsClass, nick string) *FlagsValue {
-	c_flags_class := flagsClass.toC()
+	c_flags_class := (*C.GFlagsClass)(flagsClass.ToC())
 
 	c_nick := C.CString(nick)
 	defer C.free(unsafe.Pointer(c_nick))
@@ -232,7 +232,7 @@ func SignalConnectClosure(instance uintptr, detailedSignal string, closure *Clos
 	c_detailed_signal := C.CString(detailedSignal)
 	defer C.free(unsafe.Pointer(c_detailed_signal))
 
-	c_closure := closure.toC()
+	c_closure := (*C.GClosure)(closure.ToC())
 
 	c_after :=
 		boolToGboolean(after)
@@ -251,7 +251,7 @@ func SignalConnectClosureById(instance uintptr, signalId uint32, detail glib.Qua
 
 	c_detail := (C.GQuark)(detail)
 
-	c_closure := closure.toC()
+	c_closure := (*C.GClosure)(closure.ToC())
 
 	c_after :=
 		boolToGboolean(after)
@@ -298,7 +298,7 @@ func SignalHandlerFind(instance uintptr, mask SignalMatchType, signalId uint32, 
 
 	c_detail := (C.GQuark)(detail)
 
-	c_closure := closure.toC()
+	c_closure := (*C.GClosure)(closure.ToC())
 
 	c_func := (C.gpointer)(func_)
 
@@ -334,7 +334,7 @@ func SignalHandlersBlockMatched(instance uintptr, mask SignalMatchType, signalId
 
 	c_detail := (C.GQuark)(detail)
 
-	c_closure := closure.toC()
+	c_closure := (*C.GClosure)(closure.ToC())
 
 	c_func := (C.gpointer)(func_)
 
@@ -358,7 +358,7 @@ func SignalHandlersDisconnectMatched(instance uintptr, mask SignalMatchType, sig
 
 	c_detail := (C.GQuark)(detail)
 
-	c_closure := closure.toC()
+	c_closure := (*C.GClosure)(closure.ToC())
 
 	c_func := (C.gpointer)(func_)
 
@@ -380,7 +380,7 @@ func SignalHandlersUnblockMatched(instance uintptr, mask SignalMatchType, signal
 
 	c_detail := (C.GQuark)(detail)
 
-	c_closure := closure.toC()
+	c_closure := (*C.GClosure)(closure.ToC())
 
 	c_func := (C.gpointer)(func_)
 
@@ -449,7 +449,7 @@ func SignalName(signalId uint32) string {
 
 // StrdupValueContents is a wrapper around the C function g_strdup_value_contents.
 func StrdupValueContents(value *Value) string {
-	c_value := value.toC()
+	c_value := (*C.GValue)(value.ToC())
 
 	retC := C.g_strdup_value_contents(c_value)
 	retGo := C.GoString(retC)
@@ -472,7 +472,7 @@ func StrdupValueContents(value *Value) string {
 
 // TypeCheckInstance is a wrapper around the C function g_type_check_instance.
 func TypeCheckInstance(instance *TypeInstance) bool {
-	c_instance := instance.toC()
+	c_instance := (*C.GTypeInstance)(instance.ToC())
 
 	retC := C.g_type_check_instance(c_instance)
 	retGo := retC == C.TRUE
@@ -490,7 +490,7 @@ func TypeCheckInstance(instance *TypeInstance) bool {
 
 // TypeCheckValue is a wrapper around the C function g_type_check_value.
 func TypeCheckValue(value *Value) bool {
-	c_value := value.toC()
+	c_value := (*C.GValue)(value.ToC())
 
 	retC := C.g_type_check_value(c_value)
 	retGo := retC == C.TRUE
@@ -542,7 +542,7 @@ func TypeCheckValue(value *Value) bool {
 
 // TypeNameFromClass is a wrapper around the C function g_type_name_from_class.
 func TypeNameFromClass(gClass *TypeClass) string {
-	c_g_class := gClass.toC()
+	c_g_class := (*C.GTypeClass)(gClass.ToC())
 
 	retC := C.g_type_name_from_class(c_g_class)
 	retGo := C.GoString(retC)
@@ -552,7 +552,7 @@ func TypeNameFromClass(gClass *TypeClass) string {
 
 // TypeNameFromInstance is a wrapper around the C function g_type_name_from_instance.
 func TypeNameFromInstance(instance *TypeInstance) string {
-	c_instance := instance.toC()
+	c_instance := (*C.GTypeInstance)(instance.ToC())
 
 	retC := C.g_type_name_from_instance(c_instance)
 	retGo := C.GoString(retC)

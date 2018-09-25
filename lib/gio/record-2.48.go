@@ -42,9 +42,9 @@ func DatagramBasedInterfaceNewFromC(u unsafe.Pointer) *DatagramBasedInterface {
 	return g
 }
 
-func (recv *DatagramBasedInterface) toC() *C.GDatagramBasedInterface {
+func (recv *DatagramBasedInterface) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // DtlsClientConnectionInterface is a wrapper around the C record GDtlsClientConnectionInterface.
@@ -64,9 +64,9 @@ func DtlsClientConnectionInterfaceNewFromC(u unsafe.Pointer) *DtlsClientConnecti
 	return g
 }
 
-func (recv *DtlsClientConnectionInterface) toC() *C.GDtlsClientConnectionInterface {
+func (recv *DtlsClientConnectionInterface) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // DtlsConnectionInterface is a wrapper around the C record GDtlsConnectionInterface.
@@ -93,9 +93,9 @@ func DtlsConnectionInterfaceNewFromC(u unsafe.Pointer) *DtlsConnectionInterface 
 	return g
 }
 
-func (recv *DtlsConnectionInterface) toC() *C.GDtlsConnectionInterface {
+func (recv *DtlsConnectionInterface) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // DtlsServerConnectionInterface is a wrapper around the C record GDtlsServerConnectionInterface.
@@ -115,9 +115,9 @@ func DtlsServerConnectionInterfaceNewFromC(u unsafe.Pointer) *DtlsServerConnecti
 	return g
 }
 
-func (recv *DtlsServerConnectionInterface) toC() *C.GDtlsServerConnectionInterface {
+func (recv *DtlsServerConnectionInterface) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // InputMessage is a wrapper around the C record GInputMessage.
@@ -148,7 +148,7 @@ func InputMessageNewFromC(u unsafe.Pointer) *InputMessage {
 	return g
 }
 
-func (recv *InputMessage) toC() *C.GInputMessage {
+func (recv *InputMessage) ToC() unsafe.Pointer {
 	recv.native.num_vectors =
 		(C.guint)(recv.NumVectors)
 	recv.native.bytes_received =
@@ -156,5 +156,5 @@ func (recv *InputMessage) toC() *C.GInputMessage {
 	recv.native.flags =
 		(C.gint)(recv.Flags)
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }

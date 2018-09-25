@@ -39,7 +39,7 @@ func ConverterIfaceNewFromC(u unsafe.Pointer) *ConverterIface {
 	return g
 }
 
-func (recv *ConverterIface) toC() *C.GConverterIface {
+func (recv *ConverterIface) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }

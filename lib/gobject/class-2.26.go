@@ -26,9 +26,9 @@ func BindingNewFromC(u unsafe.Pointer) *Binding {
 	return g
 }
 
-func (recv *Binding) toC() *C.GBinding {
+func (recv *Binding) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // GetFlags is a wrapper around the C function g_binding_get_flags.
@@ -81,7 +81,7 @@ func ParamSpecVariantNewFromC(u unsafe.Pointer) *ParamSpecVariant {
 	return g
 }
 
-func (recv *ParamSpecVariant) toC() *C.GParamSpecVariant {
+func (recv *ParamSpecVariant) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }

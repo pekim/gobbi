@@ -50,7 +50,7 @@ func ActionEntryNewFromC(u unsafe.Pointer) *ActionEntry {
 	return g
 }
 
-func (recv *ActionEntry) toC() *C.GActionEntry {
+func (recv *ActionEntry) ToC() unsafe.Pointer {
 	recv.native.name =
 		C.CString(recv.Name)
 	recv.native.parameter_type =
@@ -58,7 +58,7 @@ func (recv *ActionEntry) toC() *C.GActionEntry {
 	recv.native.state =
 		C.CString(recv.State)
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // AppInfoIface is a wrapper around the C record GAppInfoIface.
@@ -101,9 +101,9 @@ func AppInfoIfaceNewFromC(u unsafe.Pointer) *AppInfoIface {
 	return g
 }
 
-func (recv *AppInfoIface) toC() *C.GAppInfoIface {
+func (recv *AppInfoIface) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // AppLaunchContextClass is a wrapper around the C record GAppLaunchContextClass.
@@ -131,9 +131,9 @@ func AppLaunchContextClassNewFromC(u unsafe.Pointer) *AppLaunchContextClass {
 	return g
 }
 
-func (recv *AppLaunchContextClass) toC() *C.GAppLaunchContextClass {
+func (recv *AppLaunchContextClass) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // AppLaunchContextPrivate is a wrapper around the C record GAppLaunchContextPrivate.
@@ -152,9 +152,9 @@ func AppLaunchContextPrivateNewFromC(u unsafe.Pointer) *AppLaunchContextPrivate 
 	return g
 }
 
-func (recv *AppLaunchContextPrivate) toC() *C.GAppLaunchContextPrivate {
+func (recv *AppLaunchContextPrivate) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ApplicationCommandLinePrivate is a wrapper around the C record GApplicationCommandLinePrivate.
@@ -173,9 +173,9 @@ func ApplicationCommandLinePrivateNewFromC(u unsafe.Pointer) *ApplicationCommand
 	return g
 }
 
-func (recv *ApplicationCommandLinePrivate) toC() *C.GApplicationCommandLinePrivate {
+func (recv *ApplicationCommandLinePrivate) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ApplicationPrivate is a wrapper around the C record GApplicationPrivate.
@@ -194,9 +194,9 @@ func ApplicationPrivateNewFromC(u unsafe.Pointer) *ApplicationPrivate {
 	return g
 }
 
-func (recv *ApplicationPrivate) toC() *C.GApplicationPrivate {
+func (recv *ApplicationPrivate) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // AsyncResultIface is a wrapper around the C record GAsyncResultIface.
@@ -219,9 +219,9 @@ func AsyncResultIfaceNewFromC(u unsafe.Pointer) *AsyncResultIface {
 	return g
 }
 
-func (recv *AsyncResultIface) toC() *C.GAsyncResultIface {
+func (recv *AsyncResultIface) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // BufferedInputStreamClass is a wrapper around the C record GBufferedInputStreamClass.
@@ -249,9 +249,9 @@ func BufferedInputStreamClassNewFromC(u unsafe.Pointer) *BufferedInputStreamClas
 	return g
 }
 
-func (recv *BufferedInputStreamClass) toC() *C.GBufferedInputStreamClass {
+func (recv *BufferedInputStreamClass) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // BufferedInputStreamPrivate is a wrapper around the C record GBufferedInputStreamPrivate.
@@ -270,9 +270,9 @@ func BufferedInputStreamPrivateNewFromC(u unsafe.Pointer) *BufferedInputStreamPr
 	return g
 }
 
-func (recv *BufferedInputStreamPrivate) toC() *C.GBufferedInputStreamPrivate {
+func (recv *BufferedInputStreamPrivate) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // BufferedOutputStreamClass is a wrapper around the C record GBufferedOutputStreamClass.
@@ -294,9 +294,9 @@ func BufferedOutputStreamClassNewFromC(u unsafe.Pointer) *BufferedOutputStreamCl
 	return g
 }
 
-func (recv *BufferedOutputStreamClass) toC() *C.GBufferedOutputStreamClass {
+func (recv *BufferedOutputStreamClass) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // BufferedOutputStreamPrivate is a wrapper around the C record GBufferedOutputStreamPrivate.
@@ -315,9 +315,9 @@ func BufferedOutputStreamPrivateNewFromC(u unsafe.Pointer) *BufferedOutputStream
 	return g
 }
 
-func (recv *BufferedOutputStreamPrivate) toC() *C.GBufferedOutputStreamPrivate {
+func (recv *BufferedOutputStreamPrivate) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // CancellableClass is a wrapper around the C record GCancellableClass.
@@ -343,9 +343,9 @@ func CancellableClassNewFromC(u unsafe.Pointer) *CancellableClass {
 	return g
 }
 
-func (recv *CancellableClass) toC() *C.GCancellableClass {
+func (recv *CancellableClass) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // CancellablePrivate is a wrapper around the C record GCancellablePrivate.
@@ -364,9 +364,9 @@ func CancellablePrivateNewFromC(u unsafe.Pointer) *CancellablePrivate {
 	return g
 }
 
-func (recv *CancellablePrivate) toC() *C.GCancellablePrivate {
+func (recv *CancellablePrivate) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // CharsetConverterClass is a wrapper around the C record GCharsetConverterClass.
@@ -386,9 +386,9 @@ func CharsetConverterClassNewFromC(u unsafe.Pointer) *CharsetConverterClass {
 	return g
 }
 
-func (recv *CharsetConverterClass) toC() *C.GCharsetConverterClass {
+func (recv *CharsetConverterClass) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ConverterInputStreamClass is a wrapper around the C record GConverterInputStreamClass.
@@ -413,9 +413,9 @@ func ConverterInputStreamClassNewFromC(u unsafe.Pointer) *ConverterInputStreamCl
 	return g
 }
 
-func (recv *ConverterInputStreamClass) toC() *C.GConverterInputStreamClass {
+func (recv *ConverterInputStreamClass) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ConverterInputStreamPrivate is a wrapper around the C record GConverterInputStreamPrivate.
@@ -434,9 +434,9 @@ func ConverterInputStreamPrivateNewFromC(u unsafe.Pointer) *ConverterInputStream
 	return g
 }
 
-func (recv *ConverterInputStreamPrivate) toC() *C.GConverterInputStreamPrivate {
+func (recv *ConverterInputStreamPrivate) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ConverterOutputStreamClass is a wrapper around the C record GConverterOutputStreamClass.
@@ -461,9 +461,9 @@ func ConverterOutputStreamClassNewFromC(u unsafe.Pointer) *ConverterOutputStream
 	return g
 }
 
-func (recv *ConverterOutputStreamClass) toC() *C.GConverterOutputStreamClass {
+func (recv *ConverterOutputStreamClass) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ConverterOutputStreamPrivate is a wrapper around the C record GConverterOutputStreamPrivate.
@@ -482,9 +482,9 @@ func ConverterOutputStreamPrivateNewFromC(u unsafe.Pointer) *ConverterOutputStre
 	return g
 }
 
-func (recv *ConverterOutputStreamPrivate) toC() *C.GConverterOutputStreamPrivate {
+func (recv *ConverterOutputStreamPrivate) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // DBusInterfaceSkeletonPrivate is a wrapper around the C record GDBusInterfaceSkeletonPrivate.
@@ -503,9 +503,9 @@ func DBusInterfaceSkeletonPrivateNewFromC(u unsafe.Pointer) *DBusInterfaceSkelet
 	return g
 }
 
-func (recv *DBusInterfaceSkeletonPrivate) toC() *C.GDBusInterfaceSkeletonPrivate {
+func (recv *DBusInterfaceSkeletonPrivate) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // DBusObjectManagerClientPrivate is a wrapper around the C record GDBusObjectManagerClientPrivate.
@@ -524,9 +524,9 @@ func DBusObjectManagerClientPrivateNewFromC(u unsafe.Pointer) *DBusObjectManager
 	return g
 }
 
-func (recv *DBusObjectManagerClientPrivate) toC() *C.GDBusObjectManagerClientPrivate {
+func (recv *DBusObjectManagerClientPrivate) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // DBusObjectManagerServerPrivate is a wrapper around the C record GDBusObjectManagerServerPrivate.
@@ -545,9 +545,9 @@ func DBusObjectManagerServerPrivateNewFromC(u unsafe.Pointer) *DBusObjectManager
 	return g
 }
 
-func (recv *DBusObjectManagerServerPrivate) toC() *C.GDBusObjectManagerServerPrivate {
+func (recv *DBusObjectManagerServerPrivate) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // DBusObjectProxyPrivate is a wrapper around the C record GDBusObjectProxyPrivate.
@@ -566,9 +566,9 @@ func DBusObjectProxyPrivateNewFromC(u unsafe.Pointer) *DBusObjectProxyPrivate {
 	return g
 }
 
-func (recv *DBusObjectProxyPrivate) toC() *C.GDBusObjectProxyPrivate {
+func (recv *DBusObjectProxyPrivate) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // DBusObjectSkeletonPrivate is a wrapper around the C record GDBusObjectSkeletonPrivate.
@@ -587,9 +587,9 @@ func DBusObjectSkeletonPrivateNewFromC(u unsafe.Pointer) *DBusObjectSkeletonPriv
 	return g
 }
 
-func (recv *DBusObjectSkeletonPrivate) toC() *C.GDBusObjectSkeletonPrivate {
+func (recv *DBusObjectSkeletonPrivate) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // DBusProxyPrivate is a wrapper around the C record GDBusProxyPrivate.
@@ -608,9 +608,9 @@ func DBusProxyPrivateNewFromC(u unsafe.Pointer) *DBusProxyPrivate {
 	return g
 }
 
-func (recv *DBusProxyPrivate) toC() *C.GDBusProxyPrivate {
+func (recv *DBusProxyPrivate) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // DataInputStreamClass is a wrapper around the C record GDataInputStreamClass.
@@ -635,9 +635,9 @@ func DataInputStreamClassNewFromC(u unsafe.Pointer) *DataInputStreamClass {
 	return g
 }
 
-func (recv *DataInputStreamClass) toC() *C.GDataInputStreamClass {
+func (recv *DataInputStreamClass) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // DataInputStreamPrivate is a wrapper around the C record GDataInputStreamPrivate.
@@ -656,9 +656,9 @@ func DataInputStreamPrivateNewFromC(u unsafe.Pointer) *DataInputStreamPrivate {
 	return g
 }
 
-func (recv *DataInputStreamPrivate) toC() *C.GDataInputStreamPrivate {
+func (recv *DataInputStreamPrivate) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // DataOutputStreamClass is a wrapper around the C record GDataOutputStreamClass.
@@ -683,9 +683,9 @@ func DataOutputStreamClassNewFromC(u unsafe.Pointer) *DataOutputStreamClass {
 	return g
 }
 
-func (recv *DataOutputStreamClass) toC() *C.GDataOutputStreamClass {
+func (recv *DataOutputStreamClass) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // DataOutputStreamPrivate is a wrapper around the C record GDataOutputStreamPrivate.
@@ -704,9 +704,9 @@ func DataOutputStreamPrivateNewFromC(u unsafe.Pointer) *DataOutputStreamPrivate 
 	return g
 }
 
-func (recv *DataOutputStreamPrivate) toC() *C.GDataOutputStreamPrivate {
+func (recv *DataOutputStreamPrivate) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // DesktopAppInfoClass is a wrapper around the C record GDesktopAppInfoClass.
@@ -726,9 +726,9 @@ func DesktopAppInfoClassNewFromC(u unsafe.Pointer) *DesktopAppInfoClass {
 	return g
 }
 
-func (recv *DesktopAppInfoClass) toC() *C.GDesktopAppInfoClass {
+func (recv *DesktopAppInfoClass) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // DesktopAppInfoLookupIface is a wrapper around the C record GDesktopAppInfoLookupIface.
@@ -749,9 +749,9 @@ func DesktopAppInfoLookupIfaceNewFromC(u unsafe.Pointer) *DesktopAppInfoLookupIf
 	return g
 }
 
-func (recv *DesktopAppInfoLookupIface) toC() *C.GDesktopAppInfoLookupIface {
+func (recv *DesktopAppInfoLookupIface) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // DriveIface is a wrapper around the C record GDriveIface.
@@ -803,9 +803,9 @@ func DriveIfaceNewFromC(u unsafe.Pointer) *DriveIface {
 	return g
 }
 
-func (recv *DriveIface) toC() *C.GDriveIface {
+func (recv *DriveIface) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // EmblemClass is a wrapper around the C record GEmblemClass.
@@ -824,9 +824,9 @@ func EmblemClassNewFromC(u unsafe.Pointer) *EmblemClass {
 	return g
 }
 
-func (recv *EmblemClass) toC() *C.GEmblemClass {
+func (recv *EmblemClass) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // EmblemedIconClass is a wrapper around the C record GEmblemedIconClass.
@@ -846,9 +846,9 @@ func EmblemedIconClassNewFromC(u unsafe.Pointer) *EmblemedIconClass {
 	return g
 }
 
-func (recv *EmblemedIconClass) toC() *C.GEmblemedIconClass {
+func (recv *EmblemedIconClass) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // EmblemedIconPrivate is a wrapper around the C record GEmblemedIconPrivate.
@@ -867,9 +867,9 @@ func EmblemedIconPrivateNewFromC(u unsafe.Pointer) *EmblemedIconPrivate {
 	return g
 }
 
-func (recv *EmblemedIconPrivate) toC() *C.GEmblemedIconPrivate {
+func (recv *EmblemedIconPrivate) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // FileAttributeInfo is a wrapper around the C record GFileAttributeInfo.
@@ -896,7 +896,7 @@ func FileAttributeInfoNewFromC(u unsafe.Pointer) *FileAttributeInfo {
 	return g
 }
 
-func (recv *FileAttributeInfo) toC() *C.GFileAttributeInfo {
+func (recv *FileAttributeInfo) ToC() unsafe.Pointer {
 	recv.native.name =
 		C.CString(recv.Name)
 	recv.native._type =
@@ -904,7 +904,7 @@ func (recv *FileAttributeInfo) toC() *C.GFileAttributeInfo {
 	recv.native.flags =
 		(C.GFileAttributeInfoFlags)(recv.Flags)
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // FileAttributeInfoList is a wrapper around the C record GFileAttributeInfoList.
@@ -928,11 +928,11 @@ func FileAttributeInfoListNewFromC(u unsafe.Pointer) *FileAttributeInfoList {
 	return g
 }
 
-func (recv *FileAttributeInfoList) toC() *C.GFileAttributeInfoList {
+func (recv *FileAttributeInfoList) ToC() unsafe.Pointer {
 	recv.native.n_infos =
 		(C.int)(recv.NInfos)
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // FileAttributeInfoListNew is a wrapper around the C function g_file_attribute_info_list_new.
@@ -990,9 +990,9 @@ func FileAttributeMatcherNewFromC(u unsafe.Pointer) *FileAttributeMatcher {
 	return g
 }
 
-func (recv *FileAttributeMatcher) toC() *C.GFileAttributeMatcher {
+func (recv *FileAttributeMatcher) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // FileAttributeMatcherNew is a wrapper around the C function g_file_attribute_matcher_new.
@@ -1057,7 +1057,7 @@ func (recv *FileAttributeMatcher) Ref() *FileAttributeMatcher {
 
 // Subtract is a wrapper around the C function g_file_attribute_matcher_subtract.
 func (recv *FileAttributeMatcher) Subtract(subtract *FileAttributeMatcher) *FileAttributeMatcher {
-	c_subtract := subtract.toC()
+	c_subtract := (*C.GFileAttributeMatcher)(subtract.ToC())
 
 	retC := C.g_file_attribute_matcher_subtract((*C.GFileAttributeMatcher)(recv.native), c_subtract)
 	retGo := FileAttributeMatcherNewFromC(unsafe.Pointer(retC))
@@ -1085,9 +1085,9 @@ func FileDescriptorBasedIfaceNewFromC(u unsafe.Pointer) *FileDescriptorBasedIfac
 	return g
 }
 
-func (recv *FileDescriptorBasedIface) toC() *C.GFileDescriptorBasedIface {
+func (recv *FileDescriptorBasedIface) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // FileEnumeratorClass is a wrapper around the C record GFileEnumeratorClass.
@@ -1120,9 +1120,9 @@ func FileEnumeratorClassNewFromC(u unsafe.Pointer) *FileEnumeratorClass {
 	return g
 }
 
-func (recv *FileEnumeratorClass) toC() *C.GFileEnumeratorClass {
+func (recv *FileEnumeratorClass) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // FileEnumeratorPrivate is a wrapper around the C record GFileEnumeratorPrivate.
@@ -1141,9 +1141,9 @@ func FileEnumeratorPrivateNewFromC(u unsafe.Pointer) *FileEnumeratorPrivate {
 	return g
 }
 
-func (recv *FileEnumeratorPrivate) toC() *C.GFileEnumeratorPrivate {
+func (recv *FileEnumeratorPrivate) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // FileIOStreamClass is a wrapper around the C record GFileIOStreamClass.
@@ -1177,9 +1177,9 @@ func FileIOStreamClassNewFromC(u unsafe.Pointer) *FileIOStreamClass {
 	return g
 }
 
-func (recv *FileIOStreamClass) toC() *C.GFileIOStreamClass {
+func (recv *FileIOStreamClass) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // FileIOStreamPrivate is a wrapper around the C record GFileIOStreamPrivate.
@@ -1198,9 +1198,9 @@ func FileIOStreamPrivateNewFromC(u unsafe.Pointer) *FileIOStreamPrivate {
 	return g
 }
 
-func (recv *FileIOStreamPrivate) toC() *C.GFileIOStreamPrivate {
+func (recv *FileIOStreamPrivate) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // FileIconClass is a wrapper around the C record GFileIconClass.
@@ -1219,9 +1219,9 @@ func FileIconClassNewFromC(u unsafe.Pointer) *FileIconClass {
 	return g
 }
 
-func (recv *FileIconClass) toC() *C.GFileIconClass {
+func (recv *FileIconClass) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // FileIface is a wrapper around the C record GFileIface.
@@ -1347,11 +1347,11 @@ func FileIfaceNewFromC(u unsafe.Pointer) *FileIface {
 	return g
 }
 
-func (recv *FileIface) toC() *C.GFileIface {
+func (recv *FileIface) ToC() unsafe.Pointer {
 	recv.native.supports_thread_contexts =
 		boolToGboolean(recv.SupportsThreadContexts)
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // FileInfoClass is a wrapper around the C record GFileInfoClass.
@@ -1370,9 +1370,9 @@ func FileInfoClassNewFromC(u unsafe.Pointer) *FileInfoClass {
 	return g
 }
 
-func (recv *FileInfoClass) toC() *C.GFileInfoClass {
+func (recv *FileInfoClass) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // FileInputStreamClass is a wrapper around the C record GFileInputStreamClass.
@@ -1403,9 +1403,9 @@ func FileInputStreamClassNewFromC(u unsafe.Pointer) *FileInputStreamClass {
 	return g
 }
 
-func (recv *FileInputStreamClass) toC() *C.GFileInputStreamClass {
+func (recv *FileInputStreamClass) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // FileInputStreamPrivate is a wrapper around the C record GFileInputStreamPrivate.
@@ -1424,9 +1424,9 @@ func FileInputStreamPrivateNewFromC(u unsafe.Pointer) *FileInputStreamPrivate {
 	return g
 }
 
-func (recv *FileInputStreamPrivate) toC() *C.GFileInputStreamPrivate {
+func (recv *FileInputStreamPrivate) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // FileMonitorClass is a wrapper around the C record GFileMonitorClass.
@@ -1453,9 +1453,9 @@ func FileMonitorClassNewFromC(u unsafe.Pointer) *FileMonitorClass {
 	return g
 }
 
-func (recv *FileMonitorClass) toC() *C.GFileMonitorClass {
+func (recv *FileMonitorClass) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // FileMonitorPrivate is a wrapper around the C record GFileMonitorPrivate.
@@ -1474,9 +1474,9 @@ func FileMonitorPrivateNewFromC(u unsafe.Pointer) *FileMonitorPrivate {
 	return g
 }
 
-func (recv *FileMonitorPrivate) toC() *C.GFileMonitorPrivate {
+func (recv *FileMonitorPrivate) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // FileOutputStreamClass is a wrapper around the C record GFileOutputStreamClass.
@@ -1510,9 +1510,9 @@ func FileOutputStreamClassNewFromC(u unsafe.Pointer) *FileOutputStreamClass {
 	return g
 }
 
-func (recv *FileOutputStreamClass) toC() *C.GFileOutputStreamClass {
+func (recv *FileOutputStreamClass) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // FileOutputStreamPrivate is a wrapper around the C record GFileOutputStreamPrivate.
@@ -1531,9 +1531,9 @@ func FileOutputStreamPrivateNewFromC(u unsafe.Pointer) *FileOutputStreamPrivate 
 	return g
 }
 
-func (recv *FileOutputStreamPrivate) toC() *C.GFileOutputStreamPrivate {
+func (recv *FileOutputStreamPrivate) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // FilenameCompleterClass is a wrapper around the C record GFilenameCompleterClass.
@@ -1557,9 +1557,9 @@ func FilenameCompleterClassNewFromC(u unsafe.Pointer) *FilenameCompleterClass {
 	return g
 }
 
-func (recv *FilenameCompleterClass) toC() *C.GFilenameCompleterClass {
+func (recv *FilenameCompleterClass) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // FilterInputStreamClass is a wrapper around the C record GFilterInputStreamClass.
@@ -1582,9 +1582,9 @@ func FilterInputStreamClassNewFromC(u unsafe.Pointer) *FilterInputStreamClass {
 	return g
 }
 
-func (recv *FilterInputStreamClass) toC() *C.GFilterInputStreamClass {
+func (recv *FilterInputStreamClass) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // FilterOutputStreamClass is a wrapper around the C record GFilterOutputStreamClass.
@@ -1607,9 +1607,9 @@ func FilterOutputStreamClassNewFromC(u unsafe.Pointer) *FilterOutputStreamClass 
 	return g
 }
 
-func (recv *FilterOutputStreamClass) toC() *C.GFilterOutputStreamClass {
+func (recv *FilterOutputStreamClass) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // IOExtension is a wrapper around the C record GIOExtension.
@@ -1628,9 +1628,9 @@ func IOExtensionNewFromC(u unsafe.Pointer) *IOExtension {
 	return g
 }
 
-func (recv *IOExtension) toC() *C.GIOExtension {
+func (recv *IOExtension) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // GetName is a wrapper around the C function g_io_extension_get_name.
@@ -1675,9 +1675,9 @@ func IOExtensionPointNewFromC(u unsafe.Pointer) *IOExtensionPoint {
 	return g
 }
 
-func (recv *IOExtensionPoint) toC() *C.GIOExtensionPoint {
+func (recv *IOExtensionPoint) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // GetExtensionByName is a wrapper around the C function g_io_extension_point_get_extension_by_name.
@@ -1719,9 +1719,9 @@ func IOModuleClassNewFromC(u unsafe.Pointer) *IOModuleClass {
 	return g
 }
 
-func (recv *IOModuleClass) toC() *C.GIOModuleClass {
+func (recv *IOModuleClass) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // IOSchedulerJob is a wrapper around the C record GIOSchedulerJob.
@@ -1740,9 +1740,9 @@ func IOSchedulerJobNewFromC(u unsafe.Pointer) *IOSchedulerJob {
 	return g
 }
 
-func (recv *IOSchedulerJob) toC() *C.GIOSchedulerJob {
+func (recv *IOSchedulerJob) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_io_scheduler_job_send_to_mainloop : unsupported parameter func : no type generator for GLib.SourceFunc, GSourceFunc
@@ -1765,9 +1765,9 @@ func IOStreamAdapterNewFromC(u unsafe.Pointer) *IOStreamAdapter {
 	return g
 }
 
-func (recv *IOStreamAdapter) toC() *C.GIOStreamAdapter {
+func (recv *IOStreamAdapter) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // IOStreamClass is a wrapper around the C record GIOStreamClass.
@@ -1802,9 +1802,9 @@ func IOStreamClassNewFromC(u unsafe.Pointer) *IOStreamClass {
 	return g
 }
 
-func (recv *IOStreamClass) toC() *C.GIOStreamClass {
+func (recv *IOStreamClass) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // IOStreamPrivate is a wrapper around the C record GIOStreamPrivate.
@@ -1823,9 +1823,9 @@ func IOStreamPrivateNewFromC(u unsafe.Pointer) *IOStreamPrivate {
 	return g
 }
 
-func (recv *IOStreamPrivate) toC() *C.GIOStreamPrivate {
+func (recv *IOStreamPrivate) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // IconIface is a wrapper around the C record GIconIface.
@@ -1850,9 +1850,9 @@ func IconIfaceNewFromC(u unsafe.Pointer) *IconIface {
 	return g
 }
 
-func (recv *IconIface) toC() *C.GIconIface {
+func (recv *IconIface) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // InetAddressClass is a wrapper around the C record GInetAddressClass.
@@ -1874,9 +1874,9 @@ func InetAddressClassNewFromC(u unsafe.Pointer) *InetAddressClass {
 	return g
 }
 
-func (recv *InetAddressClass) toC() *C.GInetAddressClass {
+func (recv *InetAddressClass) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // InetAddressMaskClass is a wrapper around the C record GInetAddressMaskClass.
@@ -1896,9 +1896,9 @@ func InetAddressMaskClassNewFromC(u unsafe.Pointer) *InetAddressMaskClass {
 	return g
 }
 
-func (recv *InetAddressMaskClass) toC() *C.GInetAddressMaskClass {
+func (recv *InetAddressMaskClass) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // InetAddressMaskPrivate is a wrapper around the C record GInetAddressMaskPrivate.
@@ -1917,9 +1917,9 @@ func InetAddressMaskPrivateNewFromC(u unsafe.Pointer) *InetAddressMaskPrivate {
 	return g
 }
 
-func (recv *InetAddressMaskPrivate) toC() *C.GInetAddressMaskPrivate {
+func (recv *InetAddressMaskPrivate) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // InetAddressPrivate is a wrapper around the C record GInetAddressPrivate.
@@ -1938,9 +1938,9 @@ func InetAddressPrivateNewFromC(u unsafe.Pointer) *InetAddressPrivate {
 	return g
 }
 
-func (recv *InetAddressPrivate) toC() *C.GInetAddressPrivate {
+func (recv *InetAddressPrivate) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // InetSocketAddressClass is a wrapper around the C record GInetSocketAddressClass.
@@ -1960,9 +1960,9 @@ func InetSocketAddressClassNewFromC(u unsafe.Pointer) *InetSocketAddressClass {
 	return g
 }
 
-func (recv *InetSocketAddressClass) toC() *C.GInetSocketAddressClass {
+func (recv *InetSocketAddressClass) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // InetSocketAddressPrivate is a wrapper around the C record GInetSocketAddressPrivate.
@@ -1981,9 +1981,9 @@ func InetSocketAddressPrivateNewFromC(u unsafe.Pointer) *InetSocketAddressPrivat
 	return g
 }
 
-func (recv *InetSocketAddressPrivate) toC() *C.GInetSocketAddressPrivate {
+func (recv *InetSocketAddressPrivate) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // InputStreamClass is a wrapper around the C record GInputStreamClass.
@@ -2017,9 +2017,9 @@ func InputStreamClassNewFromC(u unsafe.Pointer) *InputStreamClass {
 	return g
 }
 
-func (recv *InputStreamClass) toC() *C.GInputStreamClass {
+func (recv *InputStreamClass) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // InputStreamPrivate is a wrapper around the C record GInputStreamPrivate.
@@ -2038,9 +2038,9 @@ func InputStreamPrivateNewFromC(u unsafe.Pointer) *InputStreamPrivate {
 	return g
 }
 
-func (recv *InputStreamPrivate) toC() *C.GInputStreamPrivate {
+func (recv *InputStreamPrivate) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ListStoreClass is a wrapper around the C record GListStoreClass.
@@ -2060,9 +2060,9 @@ func ListStoreClassNewFromC(u unsafe.Pointer) *ListStoreClass {
 	return g
 }
 
-func (recv *ListStoreClass) toC() *C.GListStoreClass {
+func (recv *ListStoreClass) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // LoadableIconIface is a wrapper around the C record GLoadableIconIface.
@@ -2085,9 +2085,9 @@ func LoadableIconIfaceNewFromC(u unsafe.Pointer) *LoadableIconIface {
 	return g
 }
 
-func (recv *LoadableIconIface) toC() *C.GLoadableIconIface {
+func (recv *LoadableIconIface) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // MemoryInputStreamClass is a wrapper around the C record GMemoryInputStreamClass.
@@ -2112,9 +2112,9 @@ func MemoryInputStreamClassNewFromC(u unsafe.Pointer) *MemoryInputStreamClass {
 	return g
 }
 
-func (recv *MemoryInputStreamClass) toC() *C.GMemoryInputStreamClass {
+func (recv *MemoryInputStreamClass) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // MemoryInputStreamPrivate is a wrapper around the C record GMemoryInputStreamPrivate.
@@ -2133,9 +2133,9 @@ func MemoryInputStreamPrivateNewFromC(u unsafe.Pointer) *MemoryInputStreamPrivat
 	return g
 }
 
-func (recv *MemoryInputStreamPrivate) toC() *C.GMemoryInputStreamPrivate {
+func (recv *MemoryInputStreamPrivate) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // MemoryOutputStreamClass is a wrapper around the C record GMemoryOutputStreamClass.
@@ -2160,9 +2160,9 @@ func MemoryOutputStreamClassNewFromC(u unsafe.Pointer) *MemoryOutputStreamClass 
 	return g
 }
 
-func (recv *MemoryOutputStreamClass) toC() *C.GMemoryOutputStreamClass {
+func (recv *MemoryOutputStreamClass) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // MemoryOutputStreamPrivate is a wrapper around the C record GMemoryOutputStreamPrivate.
@@ -2181,9 +2181,9 @@ func MemoryOutputStreamPrivateNewFromC(u unsafe.Pointer) *MemoryOutputStreamPriv
 	return g
 }
 
-func (recv *MemoryOutputStreamPrivate) toC() *C.GMemoryOutputStreamPrivate {
+func (recv *MemoryOutputStreamPrivate) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // MenuAttributeIterClass is a wrapper around the C record GMenuAttributeIterClass.
@@ -2204,9 +2204,9 @@ func MenuAttributeIterClassNewFromC(u unsafe.Pointer) *MenuAttributeIterClass {
 	return g
 }
 
-func (recv *MenuAttributeIterClass) toC() *C.GMenuAttributeIterClass {
+func (recv *MenuAttributeIterClass) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // MenuAttributeIterPrivate is a wrapper around the C record GMenuAttributeIterPrivate.
@@ -2225,9 +2225,9 @@ func MenuAttributeIterPrivateNewFromC(u unsafe.Pointer) *MenuAttributeIterPrivat
 	return g
 }
 
-func (recv *MenuAttributeIterPrivate) toC() *C.GMenuAttributeIterPrivate {
+func (recv *MenuAttributeIterPrivate) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // MenuLinkIterClass is a wrapper around the C record GMenuLinkIterClass.
@@ -2248,9 +2248,9 @@ func MenuLinkIterClassNewFromC(u unsafe.Pointer) *MenuLinkIterClass {
 	return g
 }
 
-func (recv *MenuLinkIterClass) toC() *C.GMenuLinkIterClass {
+func (recv *MenuLinkIterClass) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // MenuLinkIterPrivate is a wrapper around the C record GMenuLinkIterPrivate.
@@ -2269,9 +2269,9 @@ func MenuLinkIterPrivateNewFromC(u unsafe.Pointer) *MenuLinkIterPrivate {
 	return g
 }
 
-func (recv *MenuLinkIterPrivate) toC() *C.GMenuLinkIterPrivate {
+func (recv *MenuLinkIterPrivate) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // MenuModelClass is a wrapper around the C record GMenuModelClass.
@@ -2299,9 +2299,9 @@ func MenuModelClassNewFromC(u unsafe.Pointer) *MenuModelClass {
 	return g
 }
 
-func (recv *MenuModelClass) toC() *C.GMenuModelClass {
+func (recv *MenuModelClass) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // MenuModelPrivate is a wrapper around the C record GMenuModelPrivate.
@@ -2320,9 +2320,9 @@ func MenuModelPrivateNewFromC(u unsafe.Pointer) *MenuModelPrivate {
 	return g
 }
 
-func (recv *MenuModelPrivate) toC() *C.GMenuModelPrivate {
+func (recv *MenuModelPrivate) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // MountIface is a wrapper around the C record GMountIface.
@@ -2369,9 +2369,9 @@ func MountIfaceNewFromC(u unsafe.Pointer) *MountIface {
 	return g
 }
 
-func (recv *MountIface) toC() *C.GMountIface {
+func (recv *MountIface) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // MountOperationClass is a wrapper around the C record GMountOperationClass.
@@ -2406,9 +2406,9 @@ func MountOperationClassNewFromC(u unsafe.Pointer) *MountOperationClass {
 	return g
 }
 
-func (recv *MountOperationClass) toC() *C.GMountOperationClass {
+func (recv *MountOperationClass) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // MountOperationPrivate is a wrapper around the C record GMountOperationPrivate.
@@ -2427,9 +2427,9 @@ func MountOperationPrivateNewFromC(u unsafe.Pointer) *MountOperationPrivate {
 	return g
 }
 
-func (recv *MountOperationPrivate) toC() *C.GMountOperationPrivate {
+func (recv *MountOperationPrivate) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // NativeSocketAddress is a wrapper around the C record GNativeSocketAddress.
@@ -2448,9 +2448,9 @@ func NativeSocketAddressNewFromC(u unsafe.Pointer) *NativeSocketAddress {
 	return g
 }
 
-func (recv *NativeSocketAddress) toC() *C.GNativeSocketAddress {
+func (recv *NativeSocketAddress) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // NativeVolumeMonitorClass is a wrapper around the C record GNativeVolumeMonitorClass.
@@ -2471,9 +2471,9 @@ func NativeVolumeMonitorClassNewFromC(u unsafe.Pointer) *NativeVolumeMonitorClas
 	return g
 }
 
-func (recv *NativeVolumeMonitorClass) toC() *C.GNativeVolumeMonitorClass {
+func (recv *NativeVolumeMonitorClass) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // NetworkAddressClass is a wrapper around the C record GNetworkAddressClass.
@@ -2493,9 +2493,9 @@ func NetworkAddressClassNewFromC(u unsafe.Pointer) *NetworkAddressClass {
 	return g
 }
 
-func (recv *NetworkAddressClass) toC() *C.GNetworkAddressClass {
+func (recv *NetworkAddressClass) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // NetworkAddressPrivate is a wrapper around the C record GNetworkAddressPrivate.
@@ -2514,9 +2514,9 @@ func NetworkAddressPrivateNewFromC(u unsafe.Pointer) *NetworkAddressPrivate {
 	return g
 }
 
-func (recv *NetworkAddressPrivate) toC() *C.GNetworkAddressPrivate {
+func (recv *NetworkAddressPrivate) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // NetworkServiceClass is a wrapper around the C record GNetworkServiceClass.
@@ -2536,9 +2536,9 @@ func NetworkServiceClassNewFromC(u unsafe.Pointer) *NetworkServiceClass {
 	return g
 }
 
-func (recv *NetworkServiceClass) toC() *C.GNetworkServiceClass {
+func (recv *NetworkServiceClass) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // NetworkServicePrivate is a wrapper around the C record GNetworkServicePrivate.
@@ -2557,9 +2557,9 @@ func NetworkServicePrivateNewFromC(u unsafe.Pointer) *NetworkServicePrivate {
 	return g
 }
 
-func (recv *NetworkServicePrivate) toC() *C.GNetworkServicePrivate {
+func (recv *NetworkServicePrivate) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // OutputStreamClass is a wrapper around the C record GOutputStreamClass.
@@ -2599,9 +2599,9 @@ func OutputStreamClassNewFromC(u unsafe.Pointer) *OutputStreamClass {
 	return g
 }
 
-func (recv *OutputStreamClass) toC() *C.GOutputStreamClass {
+func (recv *OutputStreamClass) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // OutputStreamPrivate is a wrapper around the C record GOutputStreamPrivate.
@@ -2620,9 +2620,9 @@ func OutputStreamPrivateNewFromC(u unsafe.Pointer) *OutputStreamPrivate {
 	return g
 }
 
-func (recv *OutputStreamPrivate) toC() *C.GOutputStreamPrivate {
+func (recv *OutputStreamPrivate) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // PermissionClass is a wrapper around the C record GPermissionClass.
@@ -2649,9 +2649,9 @@ func PermissionClassNewFromC(u unsafe.Pointer) *PermissionClass {
 	return g
 }
 
-func (recv *PermissionClass) toC() *C.GPermissionClass {
+func (recv *PermissionClass) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // PermissionPrivate is a wrapper around the C record GPermissionPrivate.
@@ -2670,9 +2670,9 @@ func PermissionPrivateNewFromC(u unsafe.Pointer) *PermissionPrivate {
 	return g
 }
 
-func (recv *PermissionPrivate) toC() *C.GPermissionPrivate {
+func (recv *PermissionPrivate) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ProxyAddressEnumeratorClass is a wrapper around the C record GProxyAddressEnumeratorClass.
@@ -2699,9 +2699,9 @@ func ProxyAddressEnumeratorClassNewFromC(u unsafe.Pointer) *ProxyAddressEnumerat
 	return g
 }
 
-func (recv *ProxyAddressEnumeratorClass) toC() *C.GProxyAddressEnumeratorClass {
+func (recv *ProxyAddressEnumeratorClass) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ProxyAddressEnumeratorPrivate is a wrapper around the C record GProxyAddressEnumeratorPrivate.
@@ -2720,9 +2720,9 @@ func ProxyAddressEnumeratorPrivateNewFromC(u unsafe.Pointer) *ProxyAddressEnumer
 	return g
 }
 
-func (recv *ProxyAddressEnumeratorPrivate) toC() *C.GProxyAddressEnumeratorPrivate {
+func (recv *ProxyAddressEnumeratorPrivate) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ProxyAddressPrivate is a wrapper around the C record GProxyAddressPrivate.
@@ -2741,9 +2741,9 @@ func ProxyAddressPrivateNewFromC(u unsafe.Pointer) *ProxyAddressPrivate {
 	return g
 }
 
-func (recv *ProxyAddressPrivate) toC() *C.GProxyAddressPrivate {
+func (recv *ProxyAddressPrivate) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ProxyResolverInterface is a wrapper around the C record GProxyResolverInterface.
@@ -2767,9 +2767,9 @@ func ProxyResolverInterfaceNewFromC(u unsafe.Pointer) *ProxyResolverInterface {
 	return g
 }
 
-func (recv *ProxyResolverInterface) toC() *C.GProxyResolverInterface {
+func (recv *ProxyResolverInterface) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ResolverClass is a wrapper around the C record GResolverClass.
@@ -2805,9 +2805,9 @@ func ResolverClassNewFromC(u unsafe.Pointer) *ResolverClass {
 	return g
 }
 
-func (recv *ResolverClass) toC() *C.GResolverClass {
+func (recv *ResolverClass) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ResolverPrivate is a wrapper around the C record GResolverPrivate.
@@ -2826,9 +2826,9 @@ func ResolverPrivateNewFromC(u unsafe.Pointer) *ResolverPrivate {
 	return g
 }
 
-func (recv *ResolverPrivate) toC() *C.GResolverPrivate {
+func (recv *ResolverPrivate) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // SeekableIface is a wrapper around the C record GSeekableIface.
@@ -2853,9 +2853,9 @@ func SeekableIfaceNewFromC(u unsafe.Pointer) *SeekableIface {
 	return g
 }
 
-func (recv *SeekableIface) toC() *C.GSeekableIface {
+func (recv *SeekableIface) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Blacklisted : GSettingsBackendClass
@@ -2884,9 +2884,9 @@ func SettingsClassNewFromC(u unsafe.Pointer) *SettingsClass {
 	return g
 }
 
-func (recv *SettingsClass) toC() *C.GSettingsClass {
+func (recv *SettingsClass) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // SettingsPrivate is a wrapper around the C record GSettingsPrivate.
@@ -2905,9 +2905,9 @@ func SettingsPrivateNewFromC(u unsafe.Pointer) *SettingsPrivate {
 	return g
 }
 
-func (recv *SettingsPrivate) toC() *C.GSettingsPrivate {
+func (recv *SettingsPrivate) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // SettingsSchemaKey is a wrapper around the C record GSettingsSchemaKey.
@@ -2926,9 +2926,9 @@ func SettingsSchemaKeyNewFromC(u unsafe.Pointer) *SettingsSchemaKey {
 	return g
 }
 
-func (recv *SettingsSchemaKey) toC() *C.GSettingsSchemaKey {
+func (recv *SettingsSchemaKey) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_settings_schema_key_get_default_value : return type : Blacklisted record : GVariant
@@ -2959,9 +2959,9 @@ func SimpleActionGroupClassNewFromC(u unsafe.Pointer) *SimpleActionGroupClass {
 	return g
 }
 
-func (recv *SimpleActionGroupClass) toC() *C.GSimpleActionGroupClass {
+func (recv *SimpleActionGroupClass) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // SimpleActionGroupPrivate is a wrapper around the C record GSimpleActionGroupPrivate.
@@ -2980,9 +2980,9 @@ func SimpleActionGroupPrivateNewFromC(u unsafe.Pointer) *SimpleActionGroupPrivat
 	return g
 }
 
-func (recv *SimpleActionGroupPrivate) toC() *C.GSimpleActionGroupPrivate {
+func (recv *SimpleActionGroupPrivate) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // SimpleAsyncResultClass is a wrapper around the C record GSimpleAsyncResultClass.
@@ -3001,9 +3001,9 @@ func SimpleAsyncResultClassNewFromC(u unsafe.Pointer) *SimpleAsyncResultClass {
 	return g
 }
 
-func (recv *SimpleAsyncResultClass) toC() *C.GSimpleAsyncResultClass {
+func (recv *SimpleAsyncResultClass) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // SimpleProxyResolverClass is a wrapper around the C record GSimpleProxyResolverClass.
@@ -3028,9 +3028,9 @@ func SimpleProxyResolverClassNewFromC(u unsafe.Pointer) *SimpleProxyResolverClas
 	return g
 }
 
-func (recv *SimpleProxyResolverClass) toC() *C.GSimpleProxyResolverClass {
+func (recv *SimpleProxyResolverClass) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // SimpleProxyResolverPrivate is a wrapper around the C record GSimpleProxyResolverPrivate.
@@ -3049,9 +3049,9 @@ func SimpleProxyResolverPrivateNewFromC(u unsafe.Pointer) *SimpleProxyResolverPr
 	return g
 }
 
-func (recv *SimpleProxyResolverPrivate) toC() *C.GSimpleProxyResolverPrivate {
+func (recv *SimpleProxyResolverPrivate) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // SocketAddressClass is a wrapper around the C record GSocketAddressClass.
@@ -3074,9 +3074,9 @@ func SocketAddressClassNewFromC(u unsafe.Pointer) *SocketAddressClass {
 	return g
 }
 
-func (recv *SocketAddressClass) toC() *C.GSocketAddressClass {
+func (recv *SocketAddressClass) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // SocketAddressEnumeratorClass is a wrapper around the C record GSocketAddressEnumeratorClass.
@@ -3099,9 +3099,9 @@ func SocketAddressEnumeratorClassNewFromC(u unsafe.Pointer) *SocketAddressEnumer
 	return g
 }
 
-func (recv *SocketAddressEnumeratorClass) toC() *C.GSocketAddressEnumeratorClass {
+func (recv *SocketAddressEnumeratorClass) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // SocketClass is a wrapper around the C record GSocketClass.
@@ -3131,9 +3131,9 @@ func SocketClassNewFromC(u unsafe.Pointer) *SocketClass {
 	return g
 }
 
-func (recv *SocketClass) toC() *C.GSocketClass {
+func (recv *SocketClass) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // SocketClientClass is a wrapper around the C record GSocketClientClass.
@@ -3158,9 +3158,9 @@ func SocketClientClassNewFromC(u unsafe.Pointer) *SocketClientClass {
 	return g
 }
 
-func (recv *SocketClientClass) toC() *C.GSocketClientClass {
+func (recv *SocketClientClass) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // SocketClientPrivate is a wrapper around the C record GSocketClientPrivate.
@@ -3179,9 +3179,9 @@ func SocketClientPrivateNewFromC(u unsafe.Pointer) *SocketClientPrivate {
 	return g
 }
 
-func (recv *SocketClientPrivate) toC() *C.GSocketClientPrivate {
+func (recv *SocketClientPrivate) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // SocketConnectableIface is a wrapper around the C record GSocketConnectableIface.
@@ -3204,9 +3204,9 @@ func SocketConnectableIfaceNewFromC(u unsafe.Pointer) *SocketConnectableIface {
 	return g
 }
 
-func (recv *SocketConnectableIface) toC() *C.GSocketConnectableIface {
+func (recv *SocketConnectableIface) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // SocketConnectionClass is a wrapper around the C record GSocketConnectionClass.
@@ -3232,9 +3232,9 @@ func SocketConnectionClassNewFromC(u unsafe.Pointer) *SocketConnectionClass {
 	return g
 }
 
-func (recv *SocketConnectionClass) toC() *C.GSocketConnectionClass {
+func (recv *SocketConnectionClass) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // SocketConnectionPrivate is a wrapper around the C record GSocketConnectionPrivate.
@@ -3253,9 +3253,9 @@ func SocketConnectionPrivateNewFromC(u unsafe.Pointer) *SocketConnectionPrivate 
 	return g
 }
 
-func (recv *SocketConnectionPrivate) toC() *C.GSocketConnectionPrivate {
+func (recv *SocketConnectionPrivate) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // SocketControlMessageClass is a wrapper around the C record GSocketControlMessageClass.
@@ -3285,9 +3285,9 @@ func SocketControlMessageClassNewFromC(u unsafe.Pointer) *SocketControlMessageCl
 	return g
 }
 
-func (recv *SocketControlMessageClass) toC() *C.GSocketControlMessageClass {
+func (recv *SocketControlMessageClass) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // SocketControlMessagePrivate is a wrapper around the C record GSocketControlMessagePrivate.
@@ -3306,9 +3306,9 @@ func SocketControlMessagePrivateNewFromC(u unsafe.Pointer) *SocketControlMessage
 	return g
 }
 
-func (recv *SocketControlMessagePrivate) toC() *C.GSocketControlMessagePrivate {
+func (recv *SocketControlMessagePrivate) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // SocketListenerClass is a wrapper around the C record GSocketListenerClass.
@@ -3335,9 +3335,9 @@ func SocketListenerClassNewFromC(u unsafe.Pointer) *SocketListenerClass {
 	return g
 }
 
-func (recv *SocketListenerClass) toC() *C.GSocketListenerClass {
+func (recv *SocketListenerClass) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // SocketListenerPrivate is a wrapper around the C record GSocketListenerPrivate.
@@ -3356,9 +3356,9 @@ func SocketListenerPrivateNewFromC(u unsafe.Pointer) *SocketListenerPrivate {
 	return g
 }
 
-func (recv *SocketListenerPrivate) toC() *C.GSocketListenerPrivate {
+func (recv *SocketListenerPrivate) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // SocketPrivate is a wrapper around the C record GSocketPrivate.
@@ -3377,9 +3377,9 @@ func SocketPrivateNewFromC(u unsafe.Pointer) *SocketPrivate {
 	return g
 }
 
-func (recv *SocketPrivate) toC() *C.GSocketPrivate {
+func (recv *SocketPrivate) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // SocketServiceClass is a wrapper around the C record GSocketServiceClass.
@@ -3406,9 +3406,9 @@ func SocketServiceClassNewFromC(u unsafe.Pointer) *SocketServiceClass {
 	return g
 }
 
-func (recv *SocketServiceClass) toC() *C.GSocketServiceClass {
+func (recv *SocketServiceClass) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // SocketServicePrivate is a wrapper around the C record GSocketServicePrivate.
@@ -3427,9 +3427,9 @@ func SocketServicePrivateNewFromC(u unsafe.Pointer) *SocketServicePrivate {
 	return g
 }
 
-func (recv *SocketServicePrivate) toC() *C.GSocketServicePrivate {
+func (recv *SocketServicePrivate) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // SrvTarget is a wrapper around the C record GSrvTarget.
@@ -3448,9 +3448,9 @@ func SrvTargetNewFromC(u unsafe.Pointer) *SrvTarget {
 	return g
 }
 
-func (recv *SrvTarget) toC() *C.GSrvTarget {
+func (recv *SrvTarget) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // SrvTargetNew is a wrapper around the C function g_srv_target_new.
@@ -3493,9 +3493,9 @@ func StaticResourceNewFromC(u unsafe.Pointer) *StaticResource {
 	return g
 }
 
-func (recv *StaticResource) toC() *C.GStaticResource {
+func (recv *StaticResource) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_static_resource_fini : no return generator
@@ -3518,9 +3518,9 @@ func TaskClassNewFromC(u unsafe.Pointer) *TaskClass {
 	return g
 }
 
-func (recv *TaskClass) toC() *C.GTaskClass {
+func (recv *TaskClass) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // TcpConnectionClass is a wrapper around the C record GTcpConnectionClass.
@@ -3540,9 +3540,9 @@ func TcpConnectionClassNewFromC(u unsafe.Pointer) *TcpConnectionClass {
 	return g
 }
 
-func (recv *TcpConnectionClass) toC() *C.GTcpConnectionClass {
+func (recv *TcpConnectionClass) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // TcpConnectionPrivate is a wrapper around the C record GTcpConnectionPrivate.
@@ -3561,9 +3561,9 @@ func TcpConnectionPrivateNewFromC(u unsafe.Pointer) *TcpConnectionPrivate {
 	return g
 }
 
-func (recv *TcpConnectionPrivate) toC() *C.GTcpConnectionPrivate {
+func (recv *TcpConnectionPrivate) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // TcpWrapperConnectionClass is a wrapper around the C record GTcpWrapperConnectionClass.
@@ -3583,9 +3583,9 @@ func TcpWrapperConnectionClassNewFromC(u unsafe.Pointer) *TcpWrapperConnectionCl
 	return g
 }
 
-func (recv *TcpWrapperConnectionClass) toC() *C.GTcpWrapperConnectionClass {
+func (recv *TcpWrapperConnectionClass) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // TcpWrapperConnectionPrivate is a wrapper around the C record GTcpWrapperConnectionPrivate.
@@ -3604,9 +3604,9 @@ func TcpWrapperConnectionPrivateNewFromC(u unsafe.Pointer) *TcpWrapperConnection
 	return g
 }
 
-func (recv *TcpWrapperConnectionPrivate) toC() *C.GTcpWrapperConnectionPrivate {
+func (recv *TcpWrapperConnectionPrivate) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ThemedIconClass is a wrapper around the C record GThemedIconClass.
@@ -3625,9 +3625,9 @@ func ThemedIconClassNewFromC(u unsafe.Pointer) *ThemedIconClass {
 	return g
 }
 
-func (recv *ThemedIconClass) toC() *C.GThemedIconClass {
+func (recv *ThemedIconClass) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ThreadedSocketServiceClass is a wrapper around the C record GThreadedSocketServiceClass.
@@ -3653,9 +3653,9 @@ func ThreadedSocketServiceClassNewFromC(u unsafe.Pointer) *ThreadedSocketService
 	return g
 }
 
-func (recv *ThreadedSocketServiceClass) toC() *C.GThreadedSocketServiceClass {
+func (recv *ThreadedSocketServiceClass) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ThreadedSocketServicePrivate is a wrapper around the C record GThreadedSocketServicePrivate.
@@ -3674,9 +3674,9 @@ func ThreadedSocketServicePrivateNewFromC(u unsafe.Pointer) *ThreadedSocketServi
 	return g
 }
 
-func (recv *ThreadedSocketServicePrivate) toC() *C.GThreadedSocketServicePrivate {
+func (recv *ThreadedSocketServicePrivate) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // TlsCertificateClass is a wrapper around the C record GTlsCertificateClass.
@@ -3698,9 +3698,9 @@ func TlsCertificateClassNewFromC(u unsafe.Pointer) *TlsCertificateClass {
 	return g
 }
 
-func (recv *TlsCertificateClass) toC() *C.GTlsCertificateClass {
+func (recv *TlsCertificateClass) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // TlsCertificatePrivate is a wrapper around the C record GTlsCertificatePrivate.
@@ -3719,9 +3719,9 @@ func TlsCertificatePrivateNewFromC(u unsafe.Pointer) *TlsCertificatePrivate {
 	return g
 }
 
-func (recv *TlsCertificatePrivate) toC() *C.GTlsCertificatePrivate {
+func (recv *TlsCertificatePrivate) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // TlsConnectionClass is a wrapper around the C record GTlsConnectionClass.
@@ -3746,9 +3746,9 @@ func TlsConnectionClassNewFromC(u unsafe.Pointer) *TlsConnectionClass {
 	return g
 }
 
-func (recv *TlsConnectionClass) toC() *C.GTlsConnectionClass {
+func (recv *TlsConnectionClass) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // TlsConnectionPrivate is a wrapper around the C record GTlsConnectionPrivate.
@@ -3767,9 +3767,9 @@ func TlsConnectionPrivateNewFromC(u unsafe.Pointer) *TlsConnectionPrivate {
 	return g
 }
 
-func (recv *TlsConnectionPrivate) toC() *C.GTlsConnectionPrivate {
+func (recv *TlsConnectionPrivate) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // TlsDatabasePrivate is a wrapper around the C record GTlsDatabasePrivate.
@@ -3788,9 +3788,9 @@ func TlsDatabasePrivateNewFromC(u unsafe.Pointer) *TlsDatabasePrivate {
 	return g
 }
 
-func (recv *TlsDatabasePrivate) toC() *C.GTlsDatabasePrivate {
+func (recv *TlsDatabasePrivate) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // TlsFileDatabaseInterface is a wrapper around the C record GTlsFileDatabaseInterface.
@@ -3811,9 +3811,9 @@ func TlsFileDatabaseInterfaceNewFromC(u unsafe.Pointer) *TlsFileDatabaseInterfac
 	return g
 }
 
-func (recv *TlsFileDatabaseInterface) toC() *C.GTlsFileDatabaseInterface {
+func (recv *TlsFileDatabaseInterface) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // TlsInteractionPrivate is a wrapper around the C record GTlsInteractionPrivate.
@@ -3832,9 +3832,9 @@ func TlsInteractionPrivateNewFromC(u unsafe.Pointer) *TlsInteractionPrivate {
 	return g
 }
 
-func (recv *TlsInteractionPrivate) toC() *C.GTlsInteractionPrivate {
+func (recv *TlsInteractionPrivate) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // TlsPasswordClass is a wrapper around the C record GTlsPasswordClass.
@@ -3858,9 +3858,9 @@ func TlsPasswordClassNewFromC(u unsafe.Pointer) *TlsPasswordClass {
 	return g
 }
 
-func (recv *TlsPasswordClass) toC() *C.GTlsPasswordClass {
+func (recv *TlsPasswordClass) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // TlsPasswordPrivate is a wrapper around the C record GTlsPasswordPrivate.
@@ -3879,9 +3879,9 @@ func TlsPasswordPrivateNewFromC(u unsafe.Pointer) *TlsPasswordPrivate {
 	return g
 }
 
-func (recv *TlsPasswordPrivate) toC() *C.GTlsPasswordPrivate {
+func (recv *TlsPasswordPrivate) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // UnixConnectionClass is a wrapper around the C record GUnixConnectionClass.
@@ -3901,9 +3901,9 @@ func UnixConnectionClassNewFromC(u unsafe.Pointer) *UnixConnectionClass {
 	return g
 }
 
-func (recv *UnixConnectionClass) toC() *C.GUnixConnectionClass {
+func (recv *UnixConnectionClass) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // UnixConnectionPrivate is a wrapper around the C record GUnixConnectionPrivate.
@@ -3922,9 +3922,9 @@ func UnixConnectionPrivateNewFromC(u unsafe.Pointer) *UnixConnectionPrivate {
 	return g
 }
 
-func (recv *UnixConnectionPrivate) toC() *C.GUnixConnectionPrivate {
+func (recv *UnixConnectionPrivate) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // UnixCredentialsMessagePrivate is a wrapper around the C record GUnixCredentialsMessagePrivate.
@@ -3943,9 +3943,9 @@ func UnixCredentialsMessagePrivateNewFromC(u unsafe.Pointer) *UnixCredentialsMes
 	return g
 }
 
-func (recv *UnixCredentialsMessagePrivate) toC() *C.GUnixCredentialsMessagePrivate {
+func (recv *UnixCredentialsMessagePrivate) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // UnixFDListClass is a wrapper around the C record GUnixFDListClass.
@@ -3970,9 +3970,9 @@ func UnixFDListClassNewFromC(u unsafe.Pointer) *UnixFDListClass {
 	return g
 }
 
-func (recv *UnixFDListClass) toC() *C.GUnixFDListClass {
+func (recv *UnixFDListClass) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // UnixFDListPrivate is a wrapper around the C record GUnixFDListPrivate.
@@ -3991,9 +3991,9 @@ func UnixFDListPrivateNewFromC(u unsafe.Pointer) *UnixFDListPrivate {
 	return g
 }
 
-func (recv *UnixFDListPrivate) toC() *C.GUnixFDListPrivate {
+func (recv *UnixFDListPrivate) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // UnixFDMessageClass is a wrapper around the C record GUnixFDMessageClass.
@@ -4015,9 +4015,9 @@ func UnixFDMessageClassNewFromC(u unsafe.Pointer) *UnixFDMessageClass {
 	return g
 }
 
-func (recv *UnixFDMessageClass) toC() *C.GUnixFDMessageClass {
+func (recv *UnixFDMessageClass) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // UnixFDMessagePrivate is a wrapper around the C record GUnixFDMessagePrivate.
@@ -4036,9 +4036,9 @@ func UnixFDMessagePrivateNewFromC(u unsafe.Pointer) *UnixFDMessagePrivate {
 	return g
 }
 
-func (recv *UnixFDMessagePrivate) toC() *C.GUnixFDMessagePrivate {
+func (recv *UnixFDMessagePrivate) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // UnixInputStreamClass is a wrapper around the C record GUnixInputStreamClass.
@@ -4063,9 +4063,9 @@ func UnixInputStreamClassNewFromC(u unsafe.Pointer) *UnixInputStreamClass {
 	return g
 }
 
-func (recv *UnixInputStreamClass) toC() *C.GUnixInputStreamClass {
+func (recv *UnixInputStreamClass) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // UnixInputStreamPrivate is a wrapper around the C record GUnixInputStreamPrivate.
@@ -4084,9 +4084,9 @@ func UnixInputStreamPrivateNewFromC(u unsafe.Pointer) *UnixInputStreamPrivate {
 	return g
 }
 
-func (recv *UnixInputStreamPrivate) toC() *C.GUnixInputStreamPrivate {
+func (recv *UnixInputStreamPrivate) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // UnixMountEntry is a wrapper around the C record GUnixMountEntry.
@@ -4105,9 +4105,9 @@ func UnixMountEntryNewFromC(u unsafe.Pointer) *UnixMountEntry {
 	return g
 }
 
-func (recv *UnixMountEntry) toC() *C.GUnixMountEntry {
+func (recv *UnixMountEntry) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // UnixMountMonitorClass is a wrapper around the C record GUnixMountMonitorClass.
@@ -4126,9 +4126,9 @@ func UnixMountMonitorClassNewFromC(u unsafe.Pointer) *UnixMountMonitorClass {
 	return g
 }
 
-func (recv *UnixMountMonitorClass) toC() *C.GUnixMountMonitorClass {
+func (recv *UnixMountMonitorClass) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // UnixMountPoint is a wrapper around the C record GUnixMountPoint.
@@ -4147,14 +4147,14 @@ func UnixMountPointNewFromC(u unsafe.Pointer) *UnixMountPoint {
 	return g
 }
 
-func (recv *UnixMountPoint) toC() *C.GUnixMountPoint {
+func (recv *UnixMountPoint) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Compare is a wrapper around the C function g_unix_mount_point_compare.
 func (recv *UnixMountPoint) Compare(mount2 *UnixMountPoint) int32 {
-	c_mount2 := mount2.toC()
+	c_mount2 := (*C.GUnixMountPoint)(mount2.ToC())
 
 	retC := C.g_unix_mount_point_compare((*C.GUnixMountPoint)(recv.native), c_mount2)
 	retGo := (int32)(retC)
@@ -4255,9 +4255,9 @@ func UnixOutputStreamClassNewFromC(u unsafe.Pointer) *UnixOutputStreamClass {
 	return g
 }
 
-func (recv *UnixOutputStreamClass) toC() *C.GUnixOutputStreamClass {
+func (recv *UnixOutputStreamClass) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // UnixOutputStreamPrivate is a wrapper around the C record GUnixOutputStreamPrivate.
@@ -4276,9 +4276,9 @@ func UnixOutputStreamPrivateNewFromC(u unsafe.Pointer) *UnixOutputStreamPrivate 
 	return g
 }
 
-func (recv *UnixOutputStreamPrivate) toC() *C.GUnixOutputStreamPrivate {
+func (recv *UnixOutputStreamPrivate) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // UnixSocketAddressClass is a wrapper around the C record GUnixSocketAddressClass.
@@ -4298,9 +4298,9 @@ func UnixSocketAddressClassNewFromC(u unsafe.Pointer) *UnixSocketAddressClass {
 	return g
 }
 
-func (recv *UnixSocketAddressClass) toC() *C.GUnixSocketAddressClass {
+func (recv *UnixSocketAddressClass) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // UnixSocketAddressPrivate is a wrapper around the C record GUnixSocketAddressPrivate.
@@ -4319,9 +4319,9 @@ func UnixSocketAddressPrivateNewFromC(u unsafe.Pointer) *UnixSocketAddressPrivat
 	return g
 }
 
-func (recv *UnixSocketAddressPrivate) toC() *C.GUnixSocketAddressPrivate {
+func (recv *UnixSocketAddressPrivate) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // VfsClass is a wrapper around the C record GVfsClass.
@@ -4358,9 +4358,9 @@ func VfsClassNewFromC(u unsafe.Pointer) *VfsClass {
 	return g
 }
 
-func (recv *VfsClass) toC() *C.GVfsClass {
+func (recv *VfsClass) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // VolumeIface is a wrapper around the C record GVolumeIface.
@@ -4401,9 +4401,9 @@ func VolumeIfaceNewFromC(u unsafe.Pointer) *VolumeIface {
 	return g
 }
 
-func (recv *VolumeIface) toC() *C.GVolumeIface {
+func (recv *VolumeIface) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // VolumeMonitorClass is a wrapper around the C record GVolumeMonitorClass.
@@ -4448,9 +4448,9 @@ func VolumeMonitorClassNewFromC(u unsafe.Pointer) *VolumeMonitorClass {
 	return g
 }
 
-func (recv *VolumeMonitorClass) toC() *C.GVolumeMonitorClass {
+func (recv *VolumeMonitorClass) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ZlibCompressorClass is a wrapper around the C record GZlibCompressorClass.
@@ -4470,9 +4470,9 @@ func ZlibCompressorClassNewFromC(u unsafe.Pointer) *ZlibCompressorClass {
 	return g
 }
 
-func (recv *ZlibCompressorClass) toC() *C.GZlibCompressorClass {
+func (recv *ZlibCompressorClass) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ZlibDecompressorClass is a wrapper around the C record GZlibDecompressorClass.
@@ -4492,7 +4492,7 @@ func ZlibDecompressorClassNewFromC(u unsafe.Pointer) *ZlibDecompressorClass {
 	return g
 }
 
-func (recv *ZlibDecompressorClass) toC() *C.GZlibDecompressorClass {
+func (recv *ZlibDecompressorClass) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }

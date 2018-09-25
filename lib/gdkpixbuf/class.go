@@ -28,9 +28,9 @@ func PixbufNewFromC(u unsafe.Pointer) *Pixbuf {
 	return g
 }
 
-func (recv *Pixbuf) toC() *C.GdkPixbuf {
+func (recv *Pixbuf) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : gdk_pixbuf_new : no return generator
@@ -202,9 +202,9 @@ func PixbufAnimationNewFromC(u unsafe.Pointer) *PixbufAnimation {
 	return g
 }
 
-func (recv *PixbufAnimation) toC() *C.GdkPixbufAnimation {
+func (recv *PixbufAnimation) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : gdk_pixbuf_animation_new_from_file : no return generator
@@ -263,14 +263,14 @@ func PixbufAnimationIterNewFromC(u unsafe.Pointer) *PixbufAnimationIter {
 	return g
 }
 
-func (recv *PixbufAnimationIter) toC() *C.GdkPixbufAnimationIter {
+func (recv *PixbufAnimationIter) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Advance is a wrapper around the C function gdk_pixbuf_animation_iter_advance.
 func (recv *PixbufAnimationIter) Advance(currentTime *glib.TimeVal) bool {
-	c_current_time := currentTime.toC()
+	c_current_time := (*C.GTimeVal)(currentTime.ToC())
 
 	retC := C.gdk_pixbuf_animation_iter_advance((*C.GdkPixbufAnimationIter)(recv.native), c_current_time)
 	retGo := retC == C.TRUE
@@ -314,9 +314,9 @@ func PixbufLoaderNewFromC(u unsafe.Pointer) *PixbufLoader {
 	return g
 }
 
-func (recv *PixbufLoader) toC() *C.GdkPixbufLoader {
+func (recv *PixbufLoader) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : gdk_pixbuf_loader_new : no return generator
@@ -364,9 +364,9 @@ func PixbufSimpleAnimNewFromC(u unsafe.Pointer) *PixbufSimpleAnim {
 	return g
 }
 
-func (recv *PixbufSimpleAnim) toC() *C.GdkPixbufSimpleAnim {
+func (recv *PixbufSimpleAnim) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : gdk_pixbuf_simple_anim_new : no return generator

@@ -12,11 +12,11 @@ import "C"
 
 // SignalAccumulatorFirstWins is a wrapper around the C function g_signal_accumulator_first_wins.
 func SignalAccumulatorFirstWins(ihint *SignalInvocationHint, returnAccu *Value, handlerReturn *Value, dummy uintptr) bool {
-	c_ihint := ihint.toC()
+	c_ihint := (*C.GSignalInvocationHint)(ihint.ToC())
 
-	c_return_accu := returnAccu.toC()
+	c_return_accu := (*C.GValue)(returnAccu.ToC())
 
-	c_handler_return := handlerReturn.toC()
+	c_handler_return := (*C.GValue)(handlerReturn.ToC())
 
 	c_dummy := (C.gpointer)(dummy)
 

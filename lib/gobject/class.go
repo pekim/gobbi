@@ -29,9 +29,9 @@ func InitiallyUnownedNewFromC(u unsafe.Pointer) *InitiallyUnowned {
 	return g
 }
 
-func (recv *InitiallyUnowned) toC() *C.GInitiallyUnowned {
+func (recv *InitiallyUnowned) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Object is a wrapper around the C record GObject.
@@ -51,9 +51,9 @@ func ObjectNewFromC(u unsafe.Pointer) *Object {
 	return g
 }
 
-func (recv *Object) toC() *C.GObject {
+func (recv *Object) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_object_new : unsupported parameter object_type : no type generator for GType, GType
@@ -214,13 +214,13 @@ func ParamSpecNewFromC(u unsafe.Pointer) *ParamSpec {
 	return g
 }
 
-func (recv *ParamSpec) toC() *C.GParamSpec {
+func (recv *ParamSpec) ToC() unsafe.Pointer {
 	recv.native.name =
 		C.CString(recv.Name)
 	recv.native.flags =
 		(C.GParamFlags)(recv.Flags)
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // GetBlurb is a wrapper around the C function g_param_spec_get_blurb.
@@ -302,11 +302,11 @@ func ParamSpecBooleanNewFromC(u unsafe.Pointer) *ParamSpecBoolean {
 	return g
 }
 
-func (recv *ParamSpecBoolean) toC() *C.GParamSpecBoolean {
+func (recv *ParamSpecBoolean) ToC() unsafe.Pointer {
 	recv.native.default_value =
 		boolToGboolean(recv.DefaultValue)
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ParamSpecBoxed is a wrapper around the C record GParamSpecBoxed.
@@ -326,9 +326,9 @@ func ParamSpecBoxedNewFromC(u unsafe.Pointer) *ParamSpecBoxed {
 	return g
 }
 
-func (recv *ParamSpecBoxed) toC() *C.GParamSpecBoxed {
+func (recv *ParamSpecBoxed) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ParamSpecChar is a wrapper around the C record GParamSpecChar.
@@ -356,7 +356,7 @@ func ParamSpecCharNewFromC(u unsafe.Pointer) *ParamSpecChar {
 	return g
 }
 
-func (recv *ParamSpecChar) toC() *C.GParamSpecChar {
+func (recv *ParamSpecChar) ToC() unsafe.Pointer {
 	recv.native.minimum =
 		(C.gint8)(recv.Minimum)
 	recv.native.maximum =
@@ -364,7 +364,7 @@ func (recv *ParamSpecChar) toC() *C.GParamSpecChar {
 	recv.native.default_value =
 		(C.gint8)(recv.DefaultValue)
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ParamSpecDouble is a wrapper around the C record GParamSpecDouble.
@@ -394,7 +394,7 @@ func ParamSpecDoubleNewFromC(u unsafe.Pointer) *ParamSpecDouble {
 	return g
 }
 
-func (recv *ParamSpecDouble) toC() *C.GParamSpecDouble {
+func (recv *ParamSpecDouble) ToC() unsafe.Pointer {
 	recv.native.minimum =
 		(C.gdouble)(recv.Minimum)
 	recv.native.maximum =
@@ -404,7 +404,7 @@ func (recv *ParamSpecDouble) toC() *C.GParamSpecDouble {
 	recv.native.epsilon =
 		(C.gdouble)(recv.Epsilon)
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ParamSpecEnum is a wrapper around the C record GParamSpecEnum.
@@ -429,11 +429,11 @@ func ParamSpecEnumNewFromC(u unsafe.Pointer) *ParamSpecEnum {
 	return g
 }
 
-func (recv *ParamSpecEnum) toC() *C.GParamSpecEnum {
+func (recv *ParamSpecEnum) ToC() unsafe.Pointer {
 	recv.native.default_value =
 		(C.gint)(recv.DefaultValue)
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ParamSpecFlags is a wrapper around the C record GParamSpecFlags.
@@ -458,11 +458,11 @@ func ParamSpecFlagsNewFromC(u unsafe.Pointer) *ParamSpecFlags {
 	return g
 }
 
-func (recv *ParamSpecFlags) toC() *C.GParamSpecFlags {
+func (recv *ParamSpecFlags) ToC() unsafe.Pointer {
 	recv.native.default_value =
 		(C.guint)(recv.DefaultValue)
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ParamSpecFloat is a wrapper around the C record GParamSpecFloat.
@@ -492,7 +492,7 @@ func ParamSpecFloatNewFromC(u unsafe.Pointer) *ParamSpecFloat {
 	return g
 }
 
-func (recv *ParamSpecFloat) toC() *C.GParamSpecFloat {
+func (recv *ParamSpecFloat) ToC() unsafe.Pointer {
 	recv.native.minimum =
 		(C.gfloat)(recv.Minimum)
 	recv.native.maximum =
@@ -502,7 +502,7 @@ func (recv *ParamSpecFloat) toC() *C.GParamSpecFloat {
 	recv.native.epsilon =
 		(C.gfloat)(recv.Epsilon)
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ParamSpecInt is a wrapper around the C record GParamSpecInt.
@@ -530,7 +530,7 @@ func ParamSpecIntNewFromC(u unsafe.Pointer) *ParamSpecInt {
 	return g
 }
 
-func (recv *ParamSpecInt) toC() *C.GParamSpecInt {
+func (recv *ParamSpecInt) ToC() unsafe.Pointer {
 	recv.native.minimum =
 		(C.gint)(recv.Minimum)
 	recv.native.maximum =
@@ -538,7 +538,7 @@ func (recv *ParamSpecInt) toC() *C.GParamSpecInt {
 	recv.native.default_value =
 		(C.gint)(recv.DefaultValue)
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ParamSpecInt64 is a wrapper around the C record GParamSpecInt64.
@@ -566,7 +566,7 @@ func ParamSpecInt64NewFromC(u unsafe.Pointer) *ParamSpecInt64 {
 	return g
 }
 
-func (recv *ParamSpecInt64) toC() *C.GParamSpecInt64 {
+func (recv *ParamSpecInt64) ToC() unsafe.Pointer {
 	recv.native.minimum =
 		(C.gint64)(recv.Minimum)
 	recv.native.maximum =
@@ -574,7 +574,7 @@ func (recv *ParamSpecInt64) toC() *C.GParamSpecInt64 {
 	recv.native.default_value =
 		(C.gint64)(recv.DefaultValue)
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ParamSpecLong is a wrapper around the C record GParamSpecLong.
@@ -602,7 +602,7 @@ func ParamSpecLongNewFromC(u unsafe.Pointer) *ParamSpecLong {
 	return g
 }
 
-func (recv *ParamSpecLong) toC() *C.GParamSpecLong {
+func (recv *ParamSpecLong) ToC() unsafe.Pointer {
 	recv.native.minimum =
 		(C.glong)(recv.Minimum)
 	recv.native.maximum =
@@ -610,7 +610,7 @@ func (recv *ParamSpecLong) toC() *C.GParamSpecLong {
 	recv.native.default_value =
 		(C.glong)(recv.DefaultValue)
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ParamSpecObject is a wrapper around the C record GParamSpecObject.
@@ -630,9 +630,9 @@ func ParamSpecObjectNewFromC(u unsafe.Pointer) *ParamSpecObject {
 	return g
 }
 
-func (recv *ParamSpecObject) toC() *C.GParamSpecObject {
+func (recv *ParamSpecObject) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ParamSpecParam is a wrapper around the C record GParamSpecParam.
@@ -652,9 +652,9 @@ func ParamSpecParamNewFromC(u unsafe.Pointer) *ParamSpecParam {
 	return g
 }
 
-func (recv *ParamSpecParam) toC() *C.GParamSpecParam {
+func (recv *ParamSpecParam) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ParamSpecPointer is a wrapper around the C record GParamSpecPointer.
@@ -674,9 +674,9 @@ func ParamSpecPointerNewFromC(u unsafe.Pointer) *ParamSpecPointer {
 	return g
 }
 
-func (recv *ParamSpecPointer) toC() *C.GParamSpecPointer {
+func (recv *ParamSpecPointer) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ParamSpecString is a wrapper around the C record GParamSpecString.
@@ -708,7 +708,7 @@ func ParamSpecStringNewFromC(u unsafe.Pointer) *ParamSpecString {
 	return g
 }
 
-func (recv *ParamSpecString) toC() *C.GParamSpecString {
+func (recv *ParamSpecString) ToC() unsafe.Pointer {
 	recv.native.default_value =
 		C.CString(recv.DefaultValue)
 	recv.native.cset_first =
@@ -718,7 +718,7 @@ func (recv *ParamSpecString) toC() *C.GParamSpecString {
 	recv.native.substitutor =
 		(C.gchar)(recv.Substitutor)
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ParamSpecUChar is a wrapper around the C record GParamSpecUChar.
@@ -746,7 +746,7 @@ func ParamSpecUCharNewFromC(u unsafe.Pointer) *ParamSpecUChar {
 	return g
 }
 
-func (recv *ParamSpecUChar) toC() *C.GParamSpecUChar {
+func (recv *ParamSpecUChar) ToC() unsafe.Pointer {
 	recv.native.minimum =
 		(C.guint8)(recv.Minimum)
 	recv.native.maximum =
@@ -754,7 +754,7 @@ func (recv *ParamSpecUChar) toC() *C.GParamSpecUChar {
 	recv.native.default_value =
 		(C.guint8)(recv.DefaultValue)
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ParamSpecUInt is a wrapper around the C record GParamSpecUInt.
@@ -782,7 +782,7 @@ func ParamSpecUIntNewFromC(u unsafe.Pointer) *ParamSpecUInt {
 	return g
 }
 
-func (recv *ParamSpecUInt) toC() *C.GParamSpecUInt {
+func (recv *ParamSpecUInt) ToC() unsafe.Pointer {
 	recv.native.minimum =
 		(C.guint)(recv.Minimum)
 	recv.native.maximum =
@@ -790,7 +790,7 @@ func (recv *ParamSpecUInt) toC() *C.GParamSpecUInt {
 	recv.native.default_value =
 		(C.guint)(recv.DefaultValue)
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ParamSpecUInt64 is a wrapper around the C record GParamSpecUInt64.
@@ -818,7 +818,7 @@ func ParamSpecUInt64NewFromC(u unsafe.Pointer) *ParamSpecUInt64 {
 	return g
 }
 
-func (recv *ParamSpecUInt64) toC() *C.GParamSpecUInt64 {
+func (recv *ParamSpecUInt64) ToC() unsafe.Pointer {
 	recv.native.minimum =
 		(C.guint64)(recv.Minimum)
 	recv.native.maximum =
@@ -826,7 +826,7 @@ func (recv *ParamSpecUInt64) toC() *C.GParamSpecUInt64 {
 	recv.native.default_value =
 		(C.guint64)(recv.DefaultValue)
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ParamSpecULong is a wrapper around the C record GParamSpecULong.
@@ -854,7 +854,7 @@ func ParamSpecULongNewFromC(u unsafe.Pointer) *ParamSpecULong {
 	return g
 }
 
-func (recv *ParamSpecULong) toC() *C.GParamSpecULong {
+func (recv *ParamSpecULong) ToC() unsafe.Pointer {
 	recv.native.minimum =
 		(C.gulong)(recv.Minimum)
 	recv.native.maximum =
@@ -862,7 +862,7 @@ func (recv *ParamSpecULong) toC() *C.GParamSpecULong {
 	recv.native.default_value =
 		(C.gulong)(recv.DefaultValue)
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ParamSpecUnichar is a wrapper around the C record GParamSpecUnichar.
@@ -886,11 +886,11 @@ func ParamSpecUnicharNewFromC(u unsafe.Pointer) *ParamSpecUnichar {
 	return g
 }
 
-func (recv *ParamSpecUnichar) toC() *C.GParamSpecUnichar {
+func (recv *ParamSpecUnichar) ToC() unsafe.Pointer {
 	recv.native.default_value =
 		(C.gunichar)(recv.DefaultValue)
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ParamSpecValueArray is a wrapper around the C record GParamSpecValueArray.
@@ -915,11 +915,11 @@ func ParamSpecValueArrayNewFromC(u unsafe.Pointer) *ParamSpecValueArray {
 	return g
 }
 
-func (recv *ParamSpecValueArray) toC() *C.GParamSpecValueArray {
+func (recv *ParamSpecValueArray) ToC() unsafe.Pointer {
 	recv.native.fixed_n_elements =
 		(C.guint)(recv.FixedNElements)
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // TypeModule is a wrapper around the C record GTypeModule.
@@ -947,13 +947,13 @@ func TypeModuleNewFromC(u unsafe.Pointer) *TypeModule {
 	return g
 }
 
-func (recv *TypeModule) toC() *C.GTypeModule {
+func (recv *TypeModule) ToC() unsafe.Pointer {
 	recv.native.use_count =
 		(C.guint)(recv.UseCount)
 	recv.native.name =
 		C.CString(recv.Name)
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_type_module_add_interface : unsupported parameter instance_type : no type generator for GType, GType

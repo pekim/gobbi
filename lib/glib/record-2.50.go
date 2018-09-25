@@ -36,7 +36,7 @@ func LogFieldNewFromC(u unsafe.Pointer) *LogField {
 	return g
 }
 
-func (recv *LogField) toC() *C.GLogField {
+func (recv *LogField) ToC() unsafe.Pointer {
 	recv.native.key =
 		C.CString(recv.Key)
 	recv.native.value =
@@ -44,5 +44,5 @@ func (recv *LogField) toC() *C.GLogField {
 	recv.native.length =
 		(C.gssize)(recv.Length)
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }

@@ -43,9 +43,9 @@ func ActionMapInterfaceNewFromC(u unsafe.Pointer) *ActionMapInterface {
 	return g
 }
 
-func (recv *ActionMapInterface) toC() *C.GActionMapInterface {
+func (recv *ActionMapInterface) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // NetworkMonitorInterface is a wrapper around the C record GNetworkMonitorInterface.
@@ -69,9 +69,9 @@ func NetworkMonitorInterfaceNewFromC(u unsafe.Pointer) *NetworkMonitorInterface 
 	return g
 }
 
-func (recv *NetworkMonitorInterface) toC() *C.GNetworkMonitorInterface {
+func (recv *NetworkMonitorInterface) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // RemoteActionGroupInterface is a wrapper around the C record GRemoteActionGroupInterface.
@@ -93,9 +93,9 @@ func RemoteActionGroupInterfaceNewFromC(u unsafe.Pointer) *RemoteActionGroupInte
 	return g
 }
 
-func (recv *RemoteActionGroupInterface) toC() *C.GRemoteActionGroupInterface {
+func (recv *RemoteActionGroupInterface) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Resource is a wrapper around the C record GResource.
@@ -114,14 +114,14 @@ func ResourceNewFromC(u unsafe.Pointer) *Resource {
 	return g
 }
 
-func (recv *Resource) toC() *C.GResource {
+func (recv *Resource) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ResourceNewFromData is a wrapper around the C function g_resource_new_from_data.
 func ResourceNewFromData(data *glib.Bytes) (*Resource, error) {
-	c_data := data.toC()
+	c_data := (*C.GBytes)(data.ToC())
 
 	var cThrowableError *C.GError
 
@@ -192,9 +192,9 @@ func SettingsSchemaNewFromC(u unsafe.Pointer) *SettingsSchema {
 	return g
 }
 
-func (recv *SettingsSchema) toC() *C.GSettingsSchema {
+func (recv *SettingsSchema) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // GetPath is a wrapper around the C function g_settings_schema_get_path.
@@ -235,9 +235,9 @@ func SettingsSchemaSourceNewFromC(u unsafe.Pointer) *SettingsSchemaSource {
 	return g
 }
 
-func (recv *SettingsSchemaSource) toC() *C.GSettingsSchemaSource {
+func (recv *SettingsSchemaSource) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // SettingsSchemaSourceNewFromDirectory is a wrapper around the C function g_settings_schema_source_new_from_directory.
@@ -245,7 +245,7 @@ func SettingsSchemaSourceNewFromDirectory(directory string, parent *SettingsSche
 	c_directory := C.CString(directory)
 	defer C.free(unsafe.Pointer(c_directory))
 
-	c_parent := parent.toC()
+	c_parent := (*C.GSettingsSchemaSource)(parent.ToC())
 
 	c_trusted :=
 		boolToGboolean(trusted)

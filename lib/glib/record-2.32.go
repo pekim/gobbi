@@ -28,9 +28,9 @@ func BytesNewFromC(u unsafe.Pointer) *Bytes {
 	return g
 }
 
-func (recv *Bytes) toC() *C.GBytes {
+func (recv *Bytes) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_bytes_new : unsupported parameter data : no param type
@@ -123,9 +123,9 @@ func RWLockNewFromC(u unsafe.Pointer) *RWLock {
 	return g
 }
 
-func (recv *RWLock) toC() *C.GRWLock {
+func (recv *RWLock) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_rw_lock_clear : no return generator
@@ -174,9 +174,9 @@ func RecMutexNewFromC(u unsafe.Pointer) *RecMutex {
 	return g
 }
 
-func (recv *RecMutex) toC() *C.GRecMutex {
+func (recv *RecMutex) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_rec_mutex_clear : no return generator

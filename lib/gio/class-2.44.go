@@ -36,9 +36,9 @@ func SimpleIOStreamNewFromC(u unsafe.Pointer) *SimpleIOStream {
 	return g
 }
 
-func (recv *SimpleIOStream) toC() *C.GSimpleIOStream {
+func (recv *SimpleIOStream) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_simple_io_stream_new : unsupported parameter input_stream : no type generator for InputStream, GInputStream*

@@ -346,7 +346,7 @@ func DateStrftime(s string, slen uint64, format string, date *Date) uint64 {
 	c_format := C.CString(format)
 	defer C.free(unsafe.Pointer(c_format))
 
-	c_date := date.toC()
+	c_date := (*C.GDate)(date.ToC())
 
 	retC := C.g_date_strftime(c_s, c_slen, c_format, c_date)
 	retGo := (uint64)(retC)
@@ -647,7 +647,7 @@ func Getenv(variable string) string {
 
 // HashTableInsert is a wrapper around the C function g_hash_table_insert.
 func HashTableInsert(hashTable *HashTable, key uintptr, value uintptr) bool {
-	c_hash_table := hashTable.toC()
+	c_hash_table := (*C.GHashTable)(hashTable.ToC())
 
 	c_key := (C.gpointer)(key)
 
@@ -661,7 +661,7 @@ func HashTableInsert(hashTable *HashTable, key uintptr, value uintptr) bool {
 
 // HashTableLookup is a wrapper around the C function g_hash_table_lookup.
 func HashTableLookup(hashTable *HashTable, key uintptr) uintptr {
-	c_hash_table := hashTable.toC()
+	c_hash_table := (*C.GHashTable)(hashTable.ToC())
 
 	c_key := (C.gconstpointer)(key)
 
@@ -675,7 +675,7 @@ func HashTableLookup(hashTable *HashTable, key uintptr) uintptr {
 
 // HashTableRemove is a wrapper around the C function g_hash_table_remove.
 func HashTableRemove(hashTable *HashTable, key uintptr) bool {
-	c_hash_table := hashTable.toC()
+	c_hash_table := (*C.GHashTable)(hashTable.ToC())
 
 	c_key := (C.gconstpointer)(key)
 
@@ -687,7 +687,7 @@ func HashTableRemove(hashTable *HashTable, key uintptr) bool {
 
 // HashTableReplace is a wrapper around the C function g_hash_table_replace.
 func HashTableReplace(hashTable *HashTable, key uintptr, value uintptr) bool {
-	c_hash_table := hashTable.toC()
+	c_hash_table := (*C.GHashTable)(hashTable.ToC())
 
 	c_key := (C.gpointer)(key)
 
@@ -701,7 +701,7 @@ func HashTableReplace(hashTable *HashTable, key uintptr, value uintptr) bool {
 
 // HashTableSize is a wrapper around the C function g_hash_table_size.
 func HashTableSize(hashTable *HashTable) uint32 {
-	c_hash_table := hashTable.toC()
+	c_hash_table := (*C.GHashTable)(hashTable.ToC())
 
 	retC := C.g_hash_table_size(c_hash_table)
 	retGo := (uint32)(retC)
@@ -711,7 +711,7 @@ func HashTableSize(hashTable *HashTable) uint32 {
 
 // HashTableSteal is a wrapper around the C function g_hash_table_steal.
 func HashTableSteal(hashTable *HashTable, key uintptr) bool {
-	c_hash_table := hashTable.toC()
+	c_hash_table := (*C.GHashTable)(hashTable.ToC())
 
 	c_key := (C.gconstpointer)(key)
 
@@ -723,7 +723,7 @@ func HashTableSteal(hashTable *HashTable, key uintptr) bool {
 
 // HookDestroy is a wrapper around the C function g_hook_destroy.
 func HookDestroy(hookList *HookList, hookId uint64) bool {
-	c_hook_list := hookList.toC()
+	c_hook_list := (*C.GHookList)(hookList.ToC())
 
 	c_hook_id := (C.gulong)(hookId)
 
@@ -1021,7 +1021,7 @@ func PathSkipRoot(fileName string) string {
 
 // PatternMatch is a wrapper around the C function g_pattern_match.
 func PatternMatch(pspec *PatternSpec, stringLength uint32, string string, stringReversed string) bool {
-	c_pspec := pspec.toC()
+	c_pspec := (*C.GPatternSpec)(pspec.ToC())
 
 	c_string_length := (C.guint)(stringLength)
 
@@ -1053,7 +1053,7 @@ func PatternMatchSimple(pattern string, string string) bool {
 
 // PatternMatchString is a wrapper around the C function g_pattern_match_string.
 func PatternMatchString(pspec *PatternSpec, string string) bool {
-	c_pspec := pspec.toC()
+	c_pspec := (*C.GPatternSpec)(pspec.ToC())
 
 	c_string := C.CString(string)
 	defer C.free(unsafe.Pointer(c_string))
@@ -1258,7 +1258,7 @@ func SourceRemove(tag uint32) bool {
 
 // SourceRemoveByFuncsUserData is a wrapper around the C function g_source_remove_by_funcs_user_data.
 func SourceRemoveByFuncsUserData(funcs *SourceFuncs, userData uintptr) bool {
-	c_funcs := funcs.toC()
+	c_funcs := (*C.GSourceFuncs)(funcs.ToC())
 
 	c_user_data := (C.gpointer)(userData)
 

@@ -24,7 +24,7 @@ import "C"
 
 // HashTableAdd is a wrapper around the C function g_hash_table_add.
 func HashTableAdd(hashTable *HashTable, key uintptr) bool {
-	c_hash_table := hashTable.toC()
+	c_hash_table := (*C.GHashTable)(hashTable.ToC())
 
 	c_key := (C.gpointer)(key)
 
@@ -36,7 +36,7 @@ func HashTableAdd(hashTable *HashTable, key uintptr) bool {
 
 // HashTableContains is a wrapper around the C function g_hash_table_contains.
 func HashTableContains(hashTable *HashTable, key uintptr) bool {
-	c_hash_table := hashTable.toC()
+	c_hash_table := (*C.GHashTable)(hashTable.ToC())
 
 	c_key := (C.gconstpointer)(key)
 

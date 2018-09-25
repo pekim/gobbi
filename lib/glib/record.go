@@ -33,13 +33,13 @@ func ArrayNewFromC(u unsafe.Pointer) *Array {
 	return g
 }
 
-func (recv *Array) toC() *C.GArray {
+func (recv *Array) ToC() unsafe.Pointer {
 	recv.native.data =
 		C.CString(recv.Data)
 	recv.native.len =
 		(C.guint)(recv.Len)
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // AsyncQueue is a wrapper around the C record GAsyncQueue.
@@ -58,9 +58,9 @@ func AsyncQueueNewFromC(u unsafe.Pointer) *AsyncQueue {
 	return g
 }
 
-func (recv *AsyncQueue) toC() *C.GAsyncQueue {
+func (recv *AsyncQueue) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Length is a wrapper around the C function g_async_queue_length.
@@ -125,7 +125,7 @@ func (recv *AsyncQueue) Ref() *AsyncQueue {
 
 // TimedPop is a wrapper around the C function g_async_queue_timed_pop.
 func (recv *AsyncQueue) TimedPop(endTime *TimeVal) uintptr {
-	c_end_time := endTime.toC()
+	c_end_time := (*C.GTimeVal)(endTime.ToC())
 
 	retC := C.g_async_queue_timed_pop((*C.GAsyncQueue)(recv.native), c_end_time)
 	retGo := (uintptr)(retC)
@@ -135,7 +135,7 @@ func (recv *AsyncQueue) TimedPop(endTime *TimeVal) uintptr {
 
 // TimedPopUnlocked is a wrapper around the C function g_async_queue_timed_pop_unlocked.
 func (recv *AsyncQueue) TimedPopUnlocked(endTime *TimeVal) uintptr {
-	c_end_time := endTime.toC()
+	c_end_time := (*C.GTimeVal)(endTime.ToC())
 
 	retC := C.g_async_queue_timed_pop_unlocked((*C.GAsyncQueue)(recv.native), c_end_time)
 	retGo := (uintptr)(retC)
@@ -201,9 +201,9 @@ func BookmarkFileNewFromC(u unsafe.Pointer) *BookmarkFile {
 	return g
 }
 
-func (recv *BookmarkFile) toC() *C.GBookmarkFile {
+func (recv *BookmarkFile) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_bookmark_file_add_application : no return generator
@@ -271,11 +271,11 @@ func ByteArrayNewFromC(u unsafe.Pointer) *ByteArray {
 	return g
 }
 
-func (recv *ByteArray) toC() *C.GByteArray {
+func (recv *ByteArray) ToC() unsafe.Pointer {
 	recv.native.len =
 		(C.guint)(recv.Len)
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Cond is a wrapper around the C record GCond.
@@ -296,9 +296,9 @@ func CondNewFromC(u unsafe.Pointer) *Cond {
 	return g
 }
 
-func (recv *Cond) toC() *C.GCond {
+func (recv *Cond) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_cond_broadcast : no return generator
@@ -329,9 +329,9 @@ func DataNewFromC(u unsafe.Pointer) *Data {
 	return g
 }
 
-func (recv *Data) toC() *C.GData {
+func (recv *Data) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Date is a wrapper around the C record GDate.
@@ -356,9 +356,9 @@ func DateNewFromC(u unsafe.Pointer) *Date {
 	return g
 }
 
-func (recv *Date) toC() *C.GDate {
+func (recv *Date) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // DateNew is a wrapper around the C function g_date_new.
@@ -405,7 +405,7 @@ func DateNewJulian(julianDay uint32) *Date {
 
 // Compare is a wrapper around the C function g_date_compare.
 func (recv *Date) Compare(rhs *Date) int32 {
-	c_rhs := rhs.toC()
+	c_rhs := (*C.GDate)(rhs.ToC())
 
 	retC := C.g_date_compare((*C.GDate)(recv.native), c_rhs)
 	retGo := (int32)(retC)
@@ -415,7 +415,7 @@ func (recv *Date) Compare(rhs *Date) int32 {
 
 // DaysBetween is a wrapper around the C function g_date_days_between.
 func (recv *Date) DaysBetween(date2 *Date) int32 {
-	c_date2 := date2.toC()
+	c_date2 := (*C.GDate)(date2.ToC())
 
 	retC := C.g_date_days_between((*C.GDate)(recv.native), c_date2)
 	retGo := (int32)(retC)
@@ -563,13 +563,13 @@ func DebugKeyNewFromC(u unsafe.Pointer) *DebugKey {
 	return g
 }
 
-func (recv *DebugKey) toC() *C.GDebugKey {
+func (recv *DebugKey) ToC() unsafe.Pointer {
 	recv.native.key =
 		C.CString(recv.Key)
 	recv.native.value =
 		(C.guint)(recv.Value)
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Dir is a wrapper around the C record GDir.
@@ -588,9 +588,9 @@ func DirNewFromC(u unsafe.Pointer) *Dir {
 	return g
 }
 
-func (recv *Dir) toC() *C.GDir {
+func (recv *Dir) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_dir_close : no return generator
@@ -629,7 +629,7 @@ func ErrorNewFromC(u unsafe.Pointer) *Error {
 	return g
 }
 
-func (recv *Error) toC() *C.GError {
+func (recv *Error) ToC() unsafe.Pointer {
 	recv.native.domain =
 		(C.GQuark)(recv.Domain)
 	recv.native.code =
@@ -637,7 +637,7 @@ func (recv *Error) toC() *C.GError {
 	recv.native.message =
 		C.CString(recv.Message)
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_error_new : unsupported parameter ... : varargs
@@ -697,9 +697,9 @@ func HashTableNewFromC(u unsafe.Pointer) *HashTable {
 	return g
 }
 
-func (recv *HashTable) toC() *C.GHashTable {
+func (recv *HashTable) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // HashTableIter is a wrapper around the C record GHashTableIter.
@@ -724,9 +724,9 @@ func HashTableIterNewFromC(u unsafe.Pointer) *HashTableIter {
 	return g
 }
 
-func (recv *HashTableIter) toC() *C.GHashTableIter {
+func (recv *HashTableIter) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_hash_table_iter_init : no return generator
@@ -770,7 +770,7 @@ func HookNewFromC(u unsafe.Pointer) *Hook {
 	return g
 }
 
-func (recv *Hook) toC() *C.GHook {
+func (recv *Hook) ToC() unsafe.Pointer {
 	recv.native.data =
 		(C.gpointer)(recv.Data)
 	recv.native.ref_count =
@@ -782,12 +782,12 @@ func (recv *Hook) toC() *C.GHook {
 	recv.native._func =
 		(C.gpointer)(recv.Func)
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // CompareIds is a wrapper around the C function g_hook_compare_ids.
 func (recv *Hook) CompareIds(sibling *Hook) int32 {
-	c_sibling := sibling.toC()
+	c_sibling := (*C.GHook)(sibling.ToC())
 
 	retC := C.g_hook_compare_ids((*C.GHook)(recv.native), c_sibling)
 	retGo := (int32)(retC)
@@ -822,13 +822,13 @@ func HookListNewFromC(u unsafe.Pointer) *HookList {
 	return g
 }
 
-func (recv *HookList) toC() *C.GHookList {
+func (recv *HookList) ToC() unsafe.Pointer {
 	recv.native.seq_id =
 		(C.gulong)(recv.SeqId)
 	recv.native.dummy3 =
 		(C.gpointer)(recv.Dummy3)
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_hook_list_clear : no return generator
@@ -871,9 +871,9 @@ func IOFuncsNewFromC(u unsafe.Pointer) *IOFuncs {
 	return g
 }
 
-func (recv *IOFuncs) toC() *C.GIOFuncs {
+func (recv *IOFuncs) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // KeyFile is a wrapper around the C record GKeyFile.
@@ -892,9 +892,9 @@ func KeyFileNewFromC(u unsafe.Pointer) *KeyFile {
 	return g
 }
 
-func (recv *KeyFile) toC() *C.GKeyFile {
+func (recv *KeyFile) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // KeyFileNew is a wrapper around the C function g_key_file_new.
@@ -977,11 +977,11 @@ func ListNewFromC(u unsafe.Pointer) *List {
 	return g
 }
 
-func (recv *List) toC() *C.GList {
+func (recv *List) ToC() unsafe.Pointer {
 	recv.native.data =
 		(C.gpointer)(recv.Data)
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // MainContext is a wrapper around the C record GMainContext.
@@ -1000,9 +1000,9 @@ func MainContextNewFromC(u unsafe.Pointer) *MainContext {
 	return g
 }
 
-func (recv *MainContext) toC() *C.GMainContext {
+func (recv *MainContext) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // MainContextNew is a wrapper around the C function g_main_context_new.
@@ -1029,7 +1029,7 @@ func (recv *MainContext) Acquire() bool {
 
 // FindSourceByFuncsUserData is a wrapper around the C function g_main_context_find_source_by_funcs_user_data.
 func (recv *MainContext) FindSourceByFuncsUserData(funcs *SourceFuncs, userData uintptr) *Source {
-	c_funcs := funcs.toC()
+	c_funcs := (*C.GSourceFuncs)(funcs.ToC())
 
 	c_user_data := (C.gpointer)(userData)
 
@@ -1128,14 +1128,14 @@ func MainLoopNewFromC(u unsafe.Pointer) *MainLoop {
 	return g
 }
 
-func (recv *MainLoop) toC() *C.GMainLoop {
+func (recv *MainLoop) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // MainLoopNew is a wrapper around the C function g_main_loop_new.
 func MainLoopNew(context *MainContext, isRunning bool) *MainLoop {
-	c_context := context.toC()
+	c_context := (*C.GMainContext)(context.ToC())
 
 	c_is_running :=
 		boolToGboolean(isRunning)
@@ -1192,9 +1192,9 @@ func MappedFileNewFromC(u unsafe.Pointer) *MappedFile {
 	return g
 }
 
-func (recv *MappedFile) toC() *C.GMappedFile {
+func (recv *MappedFile) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // MappedFileNew is a wrapper around the C function g_mapped_file_new.
@@ -1258,9 +1258,9 @@ func MarkupParseContextNewFromC(u unsafe.Pointer) *MarkupParseContext {
 	return g
 }
 
-func (recv *MarkupParseContext) toC() *C.GMarkupParseContext {
+func (recv *MarkupParseContext) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_markup_parse_context_new : unsupported parameter user_data_dnotify : no type generator for DestroyNotify, GDestroyNotify
@@ -1329,9 +1329,9 @@ func MarkupParserNewFromC(u unsafe.Pointer) *MarkupParser {
 	return g
 }
 
-func (recv *MarkupParser) toC() *C.GMarkupParser {
+func (recv *MarkupParser) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // MatchInfo is a wrapper around the C record GMatchInfo.
@@ -1350,9 +1350,9 @@ func MatchInfoNewFromC(u unsafe.Pointer) *MatchInfo {
 	return g
 }
 
-func (recv *MatchInfo) toC() *C.GMatchInfo {
+func (recv *MatchInfo) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_match_info_fetch_all : no return type
@@ -1387,9 +1387,9 @@ func MemVTableNewFromC(u unsafe.Pointer) *MemVTable {
 	return g
 }
 
-func (recv *MemVTable) toC() *C.GMemVTable {
+func (recv *MemVTable) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Node is a wrapper around the C record GNode.
@@ -1416,11 +1416,11 @@ func NodeNewFromC(u unsafe.Pointer) *Node {
 	return g
 }
 
-func (recv *Node) toC() *C.GNode {
+func (recv *Node) ToC() unsafe.Pointer {
 	recv.native.data =
 		(C.gpointer)(recv.Data)
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ChildIndex is a wrapper around the C function g_node_child_index.
@@ -1435,7 +1435,7 @@ func (recv *Node) ChildIndex(data uintptr) int32 {
 
 // ChildPosition is a wrapper around the C function g_node_child_position.
 func (recv *Node) ChildPosition(child *Node) int32 {
-	c_child := child.toC()
+	c_child := (*C.GNode)(child.ToC())
 
 	retC := C.g_node_child_position((*C.GNode)(recv.native), c_child)
 	retGo := (int32)(retC)
@@ -1511,7 +1511,7 @@ func (recv *Node) GetRoot() *Node {
 func (recv *Node) Insert(position int32, node *Node) *Node {
 	c_position := (C.gint)(position)
 
-	c_node := node.toC()
+	c_node := (*C.GNode)(node.ToC())
 
 	retC := C.g_node_insert((*C.GNode)(recv.native), c_position, c_node)
 	retGo := NodeNewFromC(unsafe.Pointer(retC))
@@ -1521,9 +1521,9 @@ func (recv *Node) Insert(position int32, node *Node) *Node {
 
 // InsertAfter is a wrapper around the C function g_node_insert_after.
 func (recv *Node) InsertAfter(sibling *Node, node *Node) *Node {
-	c_sibling := sibling.toC()
+	c_sibling := (*C.GNode)(sibling.ToC())
 
-	c_node := node.toC()
+	c_node := (*C.GNode)(node.ToC())
 
 	retC := C.g_node_insert_after((*C.GNode)(recv.native), c_sibling, c_node)
 	retGo := NodeNewFromC(unsafe.Pointer(retC))
@@ -1533,9 +1533,9 @@ func (recv *Node) InsertAfter(sibling *Node, node *Node) *Node {
 
 // InsertBefore is a wrapper around the C function g_node_insert_before.
 func (recv *Node) InsertBefore(sibling *Node, node *Node) *Node {
-	c_sibling := sibling.toC()
+	c_sibling := (*C.GNode)(sibling.ToC())
 
-	c_node := node.toC()
+	c_node := (*C.GNode)(node.ToC())
 
 	retC := C.g_node_insert_before((*C.GNode)(recv.native), c_sibling, c_node)
 	retGo := NodeNewFromC(unsafe.Pointer(retC))
@@ -1545,7 +1545,7 @@ func (recv *Node) InsertBefore(sibling *Node, node *Node) *Node {
 
 // IsAncestor is a wrapper around the C function g_node_is_ancestor.
 func (recv *Node) IsAncestor(descendant *Node) bool {
-	c_descendant := descendant.toC()
+	c_descendant := (*C.GNode)(descendant.ToC())
 
 	retC := C.g_node_is_ancestor((*C.GNode)(recv.native), c_descendant)
 	retGo := retC == C.TRUE
@@ -1607,7 +1607,7 @@ func (recv *Node) NthChild(n uint32) *Node {
 
 // Prepend is a wrapper around the C function g_node_prepend.
 func (recv *Node) Prepend(node *Node) *Node {
-	c_node := node.toC()
+	c_node := (*C.GNode)(node.ToC())
 
 	retC := C.g_node_prepend((*C.GNode)(recv.native), c_node)
 	retGo := NodeNewFromC(unsafe.Pointer(retC))
@@ -1637,9 +1637,9 @@ func OptionContextNewFromC(u unsafe.Pointer) *OptionContext {
 	return g
 }
 
-func (recv *OptionContext) toC() *C.GOptionContext {
+func (recv *OptionContext) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_option_context_add_group : no return generator
@@ -1700,7 +1700,7 @@ func OptionEntryNewFromC(u unsafe.Pointer) *OptionEntry {
 	return g
 }
 
-func (recv *OptionEntry) toC() *C.GOptionEntry {
+func (recv *OptionEntry) ToC() unsafe.Pointer {
 	recv.native.long_name =
 		C.CString(recv.LongName)
 	recv.native.short_name =
@@ -1716,7 +1716,7 @@ func (recv *OptionEntry) toC() *C.GOptionEntry {
 	recv.native.arg_description =
 		C.CString(recv.ArgDescription)
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // OptionGroup is a wrapper around the C record GOptionGroup.
@@ -1735,9 +1735,9 @@ func OptionGroupNewFromC(u unsafe.Pointer) *OptionGroup {
 	return g
 }
 
-func (recv *OptionGroup) toC() *C.GOptionGroup {
+func (recv *OptionGroup) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_option_group_new : unsupported parameter destroy : no type generator for DestroyNotify, GDestroyNotify
@@ -1772,14 +1772,14 @@ func PatternSpecNewFromC(u unsafe.Pointer) *PatternSpec {
 	return g
 }
 
-func (recv *PatternSpec) toC() *C.GPatternSpec {
+func (recv *PatternSpec) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Equal is a wrapper around the C function g_pattern_spec_equal.
 func (recv *PatternSpec) Equal(pspec2 *PatternSpec) bool {
-	c_pspec2 := pspec2.toC()
+	c_pspec2 := (*C.GPatternSpec)(pspec2.ToC())
 
 	retC := C.g_pattern_spec_equal((*C.GPatternSpec)(recv.native), c_pspec2)
 	retGo := retC == C.TRUE
@@ -1813,7 +1813,7 @@ func PollFDNewFromC(u unsafe.Pointer) *PollFD {
 	return g
 }
 
-func (recv *PollFD) toC() *C.GPollFD {
+func (recv *PollFD) ToC() unsafe.Pointer {
 	recv.native.fd =
 		(C.gint)(recv.Fd)
 	recv.native.events =
@@ -1821,7 +1821,7 @@ func (recv *PollFD) toC() *C.GPollFD {
 	recv.native.revents =
 		(C.gushort)(recv.Revents)
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Private is a wrapper around the C record GPrivate.
@@ -1843,9 +1843,9 @@ func PrivateNewFromC(u unsafe.Pointer) *Private {
 	return g
 }
 
-func (recv *Private) toC() *C.GPrivate {
+func (recv *Private) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Get is a wrapper around the C function g_private_get.
@@ -1881,11 +1881,11 @@ func PtrArrayNewFromC(u unsafe.Pointer) *PtrArray {
 	return g
 }
 
-func (recv *PtrArray) toC() *C.GPtrArray {
+func (recv *PtrArray) ToC() unsafe.Pointer {
 	recv.native.len =
 		(C.guint)(recv.Len)
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Queue is a wrapper around the C record GQueue.
@@ -1910,11 +1910,11 @@ func QueueNewFromC(u unsafe.Pointer) *Queue {
 	return g
 }
 
-func (recv *Queue) toC() *C.GQueue {
+func (recv *Queue) ToC() unsafe.Pointer {
 	recv.native.length =
 		(C.guint)(recv.Length)
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_queue_clear : no return generator
@@ -2027,9 +2027,9 @@ func RandNewFromC(u unsafe.Pointer) *Rand {
 	return g
 }
 
-func (recv *Rand) toC() *C.GRand {
+func (recv *Rand) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Double is a wrapper around the C function g_rand_double.
@@ -2099,11 +2099,11 @@ func SListNewFromC(u unsafe.Pointer) *SList {
 	return g
 }
 
-func (recv *SList) toC() *C.GSList {
+func (recv *SList) ToC() unsafe.Pointer {
 	recv.native.data =
 		(C.gpointer)(recv.Data)
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Scanner is a wrapper around the C record GScanner.
@@ -2155,7 +2155,7 @@ func ScannerNewFromC(u unsafe.Pointer) *Scanner {
 	return g
 }
 
-func (recv *Scanner) toC() *C.GScanner {
+func (recv *Scanner) ToC() unsafe.Pointer {
 	recv.native.user_data =
 		(C.gpointer)(recv.UserData)
 	recv.native.max_parse_errors =
@@ -2177,7 +2177,7 @@ func (recv *Scanner) toC() *C.GScanner {
 	recv.native.next_position =
 		(C.guint)(recv.NextPosition)
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // CurLine is a wrapper around the C function g_scanner_cur_line.
@@ -2333,7 +2333,7 @@ func ScannerConfigNewFromC(u unsafe.Pointer) *ScannerConfig {
 	return g
 }
 
-func (recv *ScannerConfig) toC() *C.GScannerConfig {
+func (recv *ScannerConfig) ToC() unsafe.Pointer {
 	recv.native.cset_skip_characters =
 		C.CString(recv.CsetSkipCharacters)
 	recv.native.cset_identifier_first =
@@ -2343,7 +2343,7 @@ func (recv *ScannerConfig) toC() *C.GScannerConfig {
 	recv.native.cpair_comment_single =
 		C.CString(recv.CpairCommentSingle)
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Sequence is a wrapper around the C record GSequence.
@@ -2362,9 +2362,9 @@ func SequenceNewFromC(u unsafe.Pointer) *Sequence {
 	return g
 }
 
-func (recv *Sequence) toC() *C.GSequence {
+func (recv *Sequence) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_sequence_foreach : unsupported parameter func : no type generator for Func, GFunc
@@ -2403,9 +2403,9 @@ func SequenceIterNewFromC(u unsafe.Pointer) *SequenceIter {
 	return g
 }
 
-func (recv *SequenceIter) toC() *C.GSequenceIter {
+func (recv *SequenceIter) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Source is a wrapper around the C record GSource.
@@ -2437,14 +2437,14 @@ func SourceNewFromC(u unsafe.Pointer) *Source {
 	return g
 }
 
-func (recv *Source) toC() *C.GSource {
+func (recv *Source) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // SourceNew is a wrapper around the C function g_source_new.
 func SourceNew(sourceFuncs *SourceFuncs, structSize uint32) *Source {
-	c_source_funcs := sourceFuncs.toC()
+	c_source_funcs := (*C.GSourceFuncs)(sourceFuncs.ToC())
 
 	c_struct_size := (C.guint)(structSize)
 
@@ -2460,7 +2460,7 @@ func SourceNew(sourceFuncs *SourceFuncs, structSize uint32) *Source {
 
 // Attach is a wrapper around the C function g_source_attach.
 func (recv *Source) Attach(context *MainContext) uint32 {
-	c_context := context.toC()
+	c_context := (*C.GMainContext)(context.ToC())
 
 	retC := C.g_source_attach((*C.GSource)(recv.native), c_context)
 	retGo := (uint32)(retC)
@@ -2563,9 +2563,9 @@ func SourceCallbackFuncsNewFromC(u unsafe.Pointer) *SourceCallbackFuncs {
 	return g
 }
 
-func (recv *SourceCallbackFuncs) toC() *C.GSourceCallbackFuncs {
+func (recv *SourceCallbackFuncs) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // SourceFuncs is a wrapper around the C record GSourceFuncs.
@@ -2590,9 +2590,9 @@ func SourceFuncsNewFromC(u unsafe.Pointer) *SourceFuncs {
 	return g
 }
 
-func (recv *SourceFuncs) toC() *C.GSourceFuncs {
+func (recv *SourceFuncs) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // SourcePrivate is a wrapper around the C record GSourcePrivate.
@@ -2611,9 +2611,9 @@ func SourcePrivateNewFromC(u unsafe.Pointer) *SourcePrivate {
 	return g
 }
 
-func (recv *SourcePrivate) toC() *C.GSourcePrivate {
+func (recv *SourcePrivate) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // StatBuf is a wrapper around the C record GStatBuf.
@@ -2632,9 +2632,9 @@ func StatBufNewFromC(u unsafe.Pointer) *StatBuf {
 	return g
 }
 
-func (recv *StatBuf) toC() *C.GStatBuf {
+func (recv *StatBuf) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // String is a wrapper around the C record GString.
@@ -2661,7 +2661,7 @@ func StringNewFromC(u unsafe.Pointer) *String {
 	return g
 }
 
-func (recv *String) toC() *C.GString {
+func (recv *String) ToC() unsafe.Pointer {
 	recv.native.str =
 		C.CString(recv.Str)
 	recv.native.len =
@@ -2669,7 +2669,7 @@ func (recv *String) toC() *C.GString {
 	recv.native.allocated_len =
 		(C.gsize)(recv.AllocatedLen)
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Append is a wrapper around the C function g_string_append.
@@ -2757,7 +2757,7 @@ func (recv *String) Down() *String {
 
 // Equal is a wrapper around the C function g_string_equal.
 func (recv *String) Equal(v2 *String) bool {
-	c_v2 := v2.toC()
+	c_v2 := (*C.GString)(v2.ToC())
 
 	retC := C.g_string_equal((*C.GString)(recv.native), c_v2)
 	retGo := retC == C.TRUE
@@ -2941,9 +2941,9 @@ func StringChunkNewFromC(u unsafe.Pointer) *StringChunk {
 	return g
 }
 
-func (recv *StringChunk) toC() *C.GStringChunk {
+func (recv *StringChunk) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_string_chunk_clear : no return generator
@@ -2990,9 +2990,9 @@ func TestCaseNewFromC(u unsafe.Pointer) *TestCase {
 	return g
 }
 
-func (recv *TestCase) toC() *C.GTestCase {
+func (recv *TestCase) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // TestConfig is a wrapper around the C record GTestConfig.
@@ -3025,7 +3025,7 @@ func TestConfigNewFromC(u unsafe.Pointer) *TestConfig {
 	return g
 }
 
-func (recv *TestConfig) toC() *C.GTestConfig {
+func (recv *TestConfig) ToC() unsafe.Pointer {
 	recv.native.test_initialized =
 		boolToGboolean(recv.TestInitialized)
 	recv.native.test_quick =
@@ -3039,7 +3039,7 @@ func (recv *TestConfig) toC() *C.GTestConfig {
 	recv.native.test_undefined =
 		boolToGboolean(recv.TestUndefined)
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Blacklisted : GTestLogBuffer
@@ -3062,9 +3062,9 @@ func TestSuiteNewFromC(u unsafe.Pointer) *TestSuite {
 	return g
 }
 
-func (recv *TestSuite) toC() *C.GTestSuite {
+func (recv *TestSuite) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_test_suite_add : no return generator
@@ -3087,9 +3087,9 @@ func ThreadNewFromC(u unsafe.Pointer) *Thread {
 	return g
 }
 
-func (recv *Thread) toC() *C.GThread {
+func (recv *Thread) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_thread_new : unsupported parameter func : no type generator for ThreadFunc, GThreadFunc
@@ -3129,13 +3129,13 @@ func ThreadPoolNewFromC(u unsafe.Pointer) *ThreadPool {
 	return g
 }
 
-func (recv *ThreadPool) toC() *C.GThreadPool {
+func (recv *ThreadPool) ToC() unsafe.Pointer {
 	recv.native.user_data =
 		(C.gpointer)(recv.UserData)
 	recv.native.exclusive =
 		boolToGboolean(recv.Exclusive)
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_thread_pool_free : no return generator
@@ -3222,13 +3222,13 @@ func TimeValNewFromC(u unsafe.Pointer) *TimeVal {
 	return g
 }
 
-func (recv *TimeVal) toC() *C.GTimeVal {
+func (recv *TimeVal) ToC() unsafe.Pointer {
 	recv.native.tv_sec =
 		(C.glong)(recv.TvSec)
 	recv.native.tv_usec =
 		(C.glong)(recv.TvUsec)
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_time_val_add : no return generator
@@ -3249,9 +3249,9 @@ func TimerNewFromC(u unsafe.Pointer) *Timer {
 	return g
 }
 
-func (recv *Timer) toC() *C.GTimer {
+func (recv *Timer) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_timer_continue : no return generator
@@ -3283,9 +3283,9 @@ func TrashStackNewFromC(u unsafe.Pointer) *TrashStack {
 	return g
 }
 
-func (recv *TrashStack) toC() *C.GTrashStack {
+func (recv *TrashStack) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Tree is a wrapper around the C record GTree.
@@ -3304,9 +3304,9 @@ func TreeNewFromC(u unsafe.Pointer) *Tree {
 	return g
 }
 
-func (recv *Tree) toC() *C.GTree {
+func (recv *Tree) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_tree_destroy : no return generator
@@ -3387,9 +3387,9 @@ func VariantBuilderNewFromC(u unsafe.Pointer) *VariantBuilder {
 	return g
 }
 
-func (recv *VariantBuilder) toC() *C.GVariantBuilder {
+func (recv *VariantBuilder) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_variant_builder_new : unsupported parameter type : Blacklisted record : GVariantType
@@ -3429,9 +3429,9 @@ func VariantIterNewFromC(u unsafe.Pointer) *VariantIter {
 	return g
 }
 
-func (recv *VariantIter) toC() *C.GVariantIter {
+func (recv *VariantIter) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_variant_iter_free : no return generator

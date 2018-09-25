@@ -28,14 +28,14 @@ func DateTimeNewFromC(u unsafe.Pointer) *DateTime {
 	return g
 }
 
-func (recv *DateTime) toC() *C.GDateTime {
+func (recv *DateTime) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // DateTimeNew is a wrapper around the C function g_date_time_new.
 func DateTimeNew(tz *TimeZone, year int32, month int32, day int32, hour int32, minute int32, seconds float64) *DateTime {
-	c_tz := tz.toC()
+	c_tz := (*C.GTimeZone)(tz.ToC())
 
 	c_year := (C.gint)(year)
 
@@ -60,7 +60,7 @@ func DateTimeNewFromIso8601(text string, defaultTz *TimeZone) *DateTime {
 	c_text := C.CString(text)
 	defer C.free(unsafe.Pointer(c_text))
 
-	c_default_tz := defaultTz.toC()
+	c_default_tz := (*C.GTimeZone)(defaultTz.ToC())
 
 	retC := C.g_date_time_new_from_iso8601(c_text, c_default_tz)
 	retGo := DateTimeNewFromC(unsafe.Pointer(retC))
@@ -70,7 +70,7 @@ func DateTimeNewFromIso8601(text string, defaultTz *TimeZone) *DateTime {
 
 // DateTimeNewFromTimevalLocal is a wrapper around the C function g_date_time_new_from_timeval_local.
 func DateTimeNewFromTimevalLocal(tv *TimeVal) *DateTime {
-	c_tv := tv.toC()
+	c_tv := (*C.GTimeVal)(tv.ToC())
 
 	retC := C.g_date_time_new_from_timeval_local(c_tv)
 	retGo := DateTimeNewFromC(unsafe.Pointer(retC))
@@ -80,7 +80,7 @@ func DateTimeNewFromTimevalLocal(tv *TimeVal) *DateTime {
 
 // DateTimeNewFromTimevalUtc is a wrapper around the C function g_date_time_new_from_timeval_utc.
 func DateTimeNewFromTimevalUtc(tv *TimeVal) *DateTime {
-	c_tv := tv.toC()
+	c_tv := (*C.GTimeVal)(tv.ToC())
 
 	retC := C.g_date_time_new_from_timeval_utc(c_tv)
 	retGo := DateTimeNewFromC(unsafe.Pointer(retC))
@@ -130,7 +130,7 @@ func DateTimeNewLocal(year int32, month int32, day int32, hour int32, minute int
 
 // DateTimeNewNow is a wrapper around the C function g_date_time_new_now.
 func DateTimeNewNow(tz *TimeZone) *DateTime {
-	c_tz := tz.toC()
+	c_tz := (*C.GTimeZone)(tz.ToC())
 
 	retC := C.g_date_time_new_now(c_tz)
 	retGo := DateTimeNewFromC(unsafe.Pointer(retC))
@@ -276,7 +276,7 @@ func (recv *DateTime) AddYears(years int32) *DateTime {
 
 // Difference is a wrapper around the C function g_date_time_difference.
 func (recv *DateTime) Difference(begin *DateTime) TimeSpan {
-	c_begin := begin.toC()
+	c_begin := (*C.GDateTime)(begin.ToC())
 
 	retC := C.g_date_time_difference((*C.GDateTime)(recv.native), c_begin)
 	retGo := (TimeSpan)(retC)
@@ -436,7 +436,7 @@ func (recv *DateTime) ToLocal() *DateTime {
 
 // ToTimeval is a wrapper around the C function g_date_time_to_timeval.
 func (recv *DateTime) ToTimeval(tv *TimeVal) bool {
-	c_tv := tv.toC()
+	c_tv := (*C.GTimeVal)(tv.ToC())
 
 	retC := C.g_date_time_to_timeval((*C.GDateTime)(recv.native), c_tv)
 	retGo := retC == C.TRUE
@@ -446,7 +446,7 @@ func (recv *DateTime) ToTimeval(tv *TimeVal) bool {
 
 // ToTimezone is a wrapper around the C function g_date_time_to_timezone.
 func (recv *DateTime) ToTimezone(tz *TimeZone) *DateTime {
-	c_tz := tz.toC()
+	c_tz := (*C.GTimeZone)(tz.ToC())
 
 	retC := C.g_date_time_to_timezone((*C.GDateTime)(recv.native), c_tz)
 	retGo := DateTimeNewFromC(unsafe.Pointer(retC))
@@ -488,9 +488,9 @@ func TimeZoneNewFromC(u unsafe.Pointer) *TimeZone {
 	return g
 }
 
-func (recv *TimeZone) toC() *C.GTimeZone {
+func (recv *TimeZone) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // TimeZoneNew is a wrapper around the C function g_time_zone_new.

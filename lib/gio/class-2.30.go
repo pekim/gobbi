@@ -38,9 +38,9 @@ func DBusInterfaceSkeletonNewFromC(u unsafe.Pointer) *DBusInterfaceSkeleton {
 	return g
 }
 
-func (recv *DBusInterfaceSkeleton) toC() *C.GDBusInterfaceSkeleton {
+func (recv *DBusInterfaceSkeleton) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_dbus_interface_skeleton_export : unsupported parameter connection : no type generator for DBusConnection, GDBusConnection*
@@ -109,9 +109,9 @@ func DBusObjectManagerClientNewFromC(u unsafe.Pointer) *DBusObjectManagerClient 
 	return g
 }
 
-func (recv *DBusObjectManagerClient) toC() *C.GDBusObjectManagerClient {
+func (recv *DBusObjectManagerClient) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_dbus_object_manager_client_new_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
@@ -167,9 +167,9 @@ func DBusObjectManagerServerNewFromC(u unsafe.Pointer) *DBusObjectManagerServer 
 	return g
 }
 
-func (recv *DBusObjectManagerServer) toC() *C.GDBusObjectManagerServer {
+func (recv *DBusObjectManagerServer) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_dbus_object_manager_server_new : no return generator
@@ -213,9 +213,9 @@ func DBusObjectProxyNewFromC(u unsafe.Pointer) *DBusObjectProxy {
 	return g
 }
 
-func (recv *DBusObjectProxy) toC() *C.GDBusObjectProxy {
+func (recv *DBusObjectProxy) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_dbus_object_proxy_new : unsupported parameter connection : no type generator for DBusConnection, GDBusConnection*
@@ -240,9 +240,9 @@ func DBusObjectSkeletonNewFromC(u unsafe.Pointer) *DBusObjectSkeleton {
 	return g
 }
 
-func (recv *DBusObjectSkeleton) toC() *C.GDBusObjectSkeleton {
+func (recv *DBusObjectSkeleton) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_dbus_object_skeleton_new : no return generator
@@ -275,9 +275,9 @@ func TlsDatabaseNewFromC(u unsafe.Pointer) *TlsDatabase {
 	return g
 }
 
-func (recv *TlsDatabase) toC() *C.GTlsDatabase {
+func (recv *TlsDatabase) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_tls_database_create_certificate_handle : unsupported parameter certificate : no type generator for TlsCertificate, GTlsCertificate*
@@ -324,9 +324,9 @@ func TlsInteractionNewFromC(u unsafe.Pointer) *TlsInteraction {
 	return g
 }
 
-func (recv *TlsInteraction) toC() *C.GTlsInteraction {
+func (recv *TlsInteraction) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_tls_interaction_ask_password : unsupported parameter password : no type generator for TlsPassword, GTlsPassword*
@@ -363,9 +363,9 @@ func TlsPasswordNewFromC(u unsafe.Pointer) *TlsPassword {
 	return g
 }
 
-func (recv *TlsPassword) toC() *C.GTlsPassword {
+func (recv *TlsPassword) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_tls_password_new : no return generator

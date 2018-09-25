@@ -41,9 +41,9 @@ func SocketNewFromC(u unsafe.Pointer) *Socket {
 	return g
 }
 
-func (recv *Socket) toC() *C.GSocket {
+func (recv *Socket) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_socket_new : no return generator
@@ -290,9 +290,9 @@ func SocketClientNewFromC(u unsafe.Pointer) *SocketClient {
 	return g
 }
 
-func (recv *SocketClient) toC() *C.GSocketClient {
+func (recv *SocketClient) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_socket_client_new : no return generator
@@ -387,9 +387,9 @@ func SocketConnectionNewFromC(u unsafe.Pointer) *SocketConnection {
 	return g
 }
 
-func (recv *SocketConnection) toC() *C.GSocketConnection {
+func (recv *SocketConnection) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_socket_connection_connect : unsupported parameter address : no type generator for SocketAddress, GSocketAddress*
@@ -422,9 +422,9 @@ func SocketListenerNewFromC(u unsafe.Pointer) *SocketListener {
 	return g
 }
 
-func (recv *SocketListener) toC() *C.GSocketListener {
+func (recv *SocketListener) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_socket_listener_new : no return generator
@@ -471,9 +471,9 @@ func SocketServiceNewFromC(u unsafe.Pointer) *SocketService {
 	return g
 }
 
-func (recv *SocketService) toC() *C.GSocketService {
+func (recv *SocketService) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_socket_service_new : no return generator
@@ -508,9 +508,9 @@ func TcpConnectionNewFromC(u unsafe.Pointer) *TcpConnection {
 	return g
 }
 
-func (recv *TcpConnection) toC() *C.GTcpConnection {
+func (recv *TcpConnection) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // GetGracefulDisconnect is a wrapper around the C function g_tcp_connection_get_graceful_disconnect.
@@ -541,9 +541,9 @@ func ThreadedSocketServiceNewFromC(u unsafe.Pointer) *ThreadedSocketService {
 	return g
 }
 
-func (recv *ThreadedSocketService) toC() *C.GThreadedSocketService {
+func (recv *ThreadedSocketService) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_threaded_socket_service_new : no return generator

@@ -13,7 +13,7 @@ func (r *RecordToCFunc) generate(g *jen.Group) {
 			Id("recv").
 			Op("*").
 			Id(r.GoName)).
-		Id("toC").
+		Id("ToC").
 		Params(). // no params
 		ParamsFunc(r.generateReturnDeclaration).
 		BlockFunc(r.generateBody)
@@ -22,9 +22,7 @@ func (r *RecordToCFunc) generate(g *jen.Group) {
 }
 
 func (r *RecordToCFunc) generateReturnDeclaration(g *jen.Group) {
-	g.
-		Op("*").
-		Qual("C", r.CType)
+	g.Qual("unsafe", "Pointer")
 }
 
 func (r *RecordToCFunc) generateBody(g *jen.Group) {
@@ -36,7 +34,8 @@ func (r *RecordToCFunc) generateBody(g *jen.Group) {
 
 	g.
 		Return().
-		Id("recv").Op(".").Id("native")
+		Parens(jen.Qual("unsafe", "Pointer")).
+		Parens(jen.Id("recv").Op(".").Id("native"))
 }
 
 func (r *RecordToCFunc) generateFieldsAssignment(g *jen.Group) {

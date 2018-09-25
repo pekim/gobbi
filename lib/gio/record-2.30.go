@@ -41,9 +41,9 @@ func DBusInterfaceIfaceNewFromC(u unsafe.Pointer) *DBusInterfaceIface {
 	return g
 }
 
-func (recv *DBusInterfaceIface) toC() *C.GDBusInterfaceIface {
+func (recv *DBusInterfaceIface) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // DBusInterfaceSkeletonClass is a wrapper around the C record GDBusInterfaceSkeletonClass.
@@ -70,9 +70,9 @@ func DBusInterfaceSkeletonClassNewFromC(u unsafe.Pointer) *DBusInterfaceSkeleton
 	return g
 }
 
-func (recv *DBusInterfaceSkeletonClass) toC() *C.GDBusInterfaceSkeletonClass {
+func (recv *DBusInterfaceSkeletonClass) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // DBusObjectIface is a wrapper around the C record GDBusObjectIface.
@@ -97,9 +97,9 @@ func DBusObjectIfaceNewFromC(u unsafe.Pointer) *DBusObjectIface {
 	return g
 }
 
-func (recv *DBusObjectIface) toC() *C.GDBusObjectIface {
+func (recv *DBusObjectIface) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // DBusObjectManagerClientClass is a wrapper around the C record GDBusObjectManagerClientClass.
@@ -122,9 +122,9 @@ func DBusObjectManagerClientClassNewFromC(u unsafe.Pointer) *DBusObjectManagerCl
 	return g
 }
 
-func (recv *DBusObjectManagerClientClass) toC() *C.GDBusObjectManagerClientClass {
+func (recv *DBusObjectManagerClientClass) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // DBusObjectManagerIface is a wrapper around the C record GDBusObjectManagerIface.
@@ -152,9 +152,9 @@ func DBusObjectManagerIfaceNewFromC(u unsafe.Pointer) *DBusObjectManagerIface {
 	return g
 }
 
-func (recv *DBusObjectManagerIface) toC() *C.GDBusObjectManagerIface {
+func (recv *DBusObjectManagerIface) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // DBusObjectManagerServerClass is a wrapper around the C record GDBusObjectManagerServerClass.
@@ -175,9 +175,9 @@ func DBusObjectManagerServerClassNewFromC(u unsafe.Pointer) *DBusObjectManagerSe
 	return g
 }
 
-func (recv *DBusObjectManagerServerClass) toC() *C.GDBusObjectManagerServerClass {
+func (recv *DBusObjectManagerServerClass) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // DBusObjectProxyClass is a wrapper around the C record GDBusObjectProxyClass.
@@ -198,9 +198,9 @@ func DBusObjectProxyClassNewFromC(u unsafe.Pointer) *DBusObjectProxyClass {
 	return g
 }
 
-func (recv *DBusObjectProxyClass) toC() *C.GDBusObjectProxyClass {
+func (recv *DBusObjectProxyClass) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // DBusObjectSkeletonClass is a wrapper around the C record GDBusObjectSkeletonClass.
@@ -222,9 +222,9 @@ func DBusObjectSkeletonClassNewFromC(u unsafe.Pointer) *DBusObjectSkeletonClass 
 	return g
 }
 
-func (recv *DBusObjectSkeletonClass) toC() *C.GDBusObjectSkeletonClass {
+func (recv *DBusObjectSkeletonClass) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // IOModuleScope is a wrapper around the C record GIOModuleScope.
@@ -243,9 +243,9 @@ func IOModuleScopeNewFromC(u unsafe.Pointer) *IOModuleScope {
 	return g
 }
 
-func (recv *IOModuleScope) toC() *C.GIOModuleScope {
+func (recv *IOModuleScope) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_io_module_scope_block : no return generator
@@ -283,9 +283,9 @@ func TlsDatabaseClassNewFromC(u unsafe.Pointer) *TlsDatabaseClass {
 	return g
 }
 
-func (recv *TlsDatabaseClass) toC() *C.GTlsDatabaseClass {
+func (recv *TlsDatabaseClass) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // TlsInteractionClass is a wrapper around the C record GTlsInteractionClass.
@@ -312,7 +312,7 @@ func TlsInteractionClassNewFromC(u unsafe.Pointer) *TlsInteractionClass {
 	return g
 }
 
-func (recv *TlsInteractionClass) toC() *C.GTlsInteractionClass {
+func (recv *TlsInteractionClass) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }

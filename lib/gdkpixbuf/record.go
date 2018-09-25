@@ -25,9 +25,9 @@ func PixbufFormatNewFromC(u unsafe.Pointer) *PixbufFormat {
 	return g
 }
 
-func (recv *PixbufFormat) toC() *C.GdkPixbufFormat {
+func (recv *PixbufFormat) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : gdk_pixbuf_format_free : no return generator
@@ -59,9 +59,9 @@ func PixbufLoaderClassNewFromC(u unsafe.Pointer) *PixbufLoaderClass {
 	return g
 }
 
-func (recv *PixbufLoaderClass) toC() *C.GdkPixbufLoaderClass {
+func (recv *PixbufLoaderClass) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // PixbufSimpleAnimClass is a wrapper around the C record GdkPixbufSimpleAnimClass.
@@ -80,9 +80,9 @@ func PixbufSimpleAnimClassNewFromC(u unsafe.Pointer) *PixbufSimpleAnimClass {
 	return g
 }
 
-func (recv *PixbufSimpleAnimClass) toC() *C.GdkPixbufSimpleAnimClass {
+func (recv *PixbufSimpleAnimClass) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Blacklisted : GdkPixdata

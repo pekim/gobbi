@@ -59,7 +59,7 @@ func StrToAscii(str string, fromLocale string) string {
 
 // VariantParseErrorPrintContext is a wrapper around the C function g_variant_parse_error_print_context.
 func VariantParseErrorPrintContext(error *Error, sourceStr string) string {
-	c_error := error.toC()
+	c_error := (*C.GError)(error.ToC())
 
 	c_source_str := C.CString(sourceStr)
 	defer C.free(unsafe.Pointer(c_source_str))

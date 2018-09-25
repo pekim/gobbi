@@ -33,11 +33,11 @@ func OnceNewFromC(u unsafe.Pointer) *Once {
 	return g
 }
 
-func (recv *Once) toC() *C.GOnce {
+func (recv *Once) ToC() unsafe.Pointer {
 	recv.native.status =
 		(C.GOnceStatus)(recv.Status)
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_once_impl : unsupported parameter func : no type generator for ThreadFunc, GThreadFunc

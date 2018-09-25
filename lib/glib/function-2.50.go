@@ -16,9 +16,9 @@ import "C"
 func ComputeHmacForBytes(digestType ChecksumType, key *Bytes, data *Bytes) string {
 	c_digest_type := (C.GChecksumType)(digestType)
 
-	c_key := key.toC()
+	c_key := (*C.GBytes)(key.ToC())
 
-	c_data := data.toC()
+	c_data := (*C.GBytes)(data.ToC())
 
 	retC := C.g_compute_hmac_for_bytes(c_digest_type, c_key, c_data)
 	retGo := C.GoString(retC)

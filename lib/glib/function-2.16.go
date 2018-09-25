@@ -178,7 +178,7 @@ func TestRun() int32 {
 
 // TestRunSuite is a wrapper around the C function g_test_run_suite.
 func TestRunSuite(suite *TestSuite) int32 {
-	c_suite := suite.toC()
+	c_suite := (*C.GTestSuite)(suite.ToC())
 
 	retC := C.g_test_run_suite(c_suite)
 	retGo := (int32)(retC)

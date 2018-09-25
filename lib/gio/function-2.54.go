@@ -22,7 +22,7 @@ import "C"
 
 // UnixMountCopy is a wrapper around the C function g_unix_mount_copy.
 func UnixMountCopy(mountEntry *UnixMountEntry) *UnixMountEntry {
-	c_mount_entry := mountEntry.toC()
+	c_mount_entry := (*C.GUnixMountEntry)(mountEntry.ToC())
 
 	retC := C.g_unix_mount_copy(c_mount_entry)
 	retGo := UnixMountEntryNewFromC(unsafe.Pointer(retC))

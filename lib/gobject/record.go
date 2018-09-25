@@ -33,11 +33,11 @@ func CClosureNewFromC(u unsafe.Pointer) *CClosure {
 	return g
 }
 
-func (recv *CClosure) toC() *C.GCClosure {
+func (recv *CClosure) ToC() unsafe.Pointer {
 	recv.native.callback =
 		(C.gpointer)(recv.Callback)
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Closure is a wrapper around the C record GClosure.
@@ -69,9 +69,9 @@ func ClosureNewFromC(u unsafe.Pointer) *Closure {
 	return g
 }
 
-func (recv *Closure) toC() *C.GClosure {
+func (recv *Closure) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_closure_new_object : unsupported parameter object : no type generator for Object, GObject*
@@ -139,11 +139,11 @@ func ClosureNotifyDataNewFromC(u unsafe.Pointer) *ClosureNotifyData {
 	return g
 }
 
-func (recv *ClosureNotifyData) toC() *C.GClosureNotifyData {
+func (recv *ClosureNotifyData) ToC() unsafe.Pointer {
 	recv.native.data =
 		(C.gpointer)(recv.Data)
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // EnumClass is a wrapper around the C record GEnumClass.
@@ -172,7 +172,7 @@ func EnumClassNewFromC(u unsafe.Pointer) *EnumClass {
 	return g
 }
 
-func (recv *EnumClass) toC() *C.GEnumClass {
+func (recv *EnumClass) ToC() unsafe.Pointer {
 	recv.native.minimum =
 		(C.gint)(recv.Minimum)
 	recv.native.maximum =
@@ -180,7 +180,7 @@ func (recv *EnumClass) toC() *C.GEnumClass {
 	recv.native.n_values =
 		(C.guint)(recv.NValues)
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // EnumValue is a wrapper around the C record GEnumValue.
@@ -207,7 +207,7 @@ func EnumValueNewFromC(u unsafe.Pointer) *EnumValue {
 	return g
 }
 
-func (recv *EnumValue) toC() *C.GEnumValue {
+func (recv *EnumValue) ToC() unsafe.Pointer {
 	recv.native.value =
 		(C.gint)(recv.Value)
 	recv.native.value_name =
@@ -215,7 +215,7 @@ func (recv *EnumValue) toC() *C.GEnumValue {
 	recv.native.value_nick =
 		C.CString(recv.ValueNick)
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // FlagsClass is a wrapper around the C record GFlagsClass.
@@ -242,13 +242,13 @@ func FlagsClassNewFromC(u unsafe.Pointer) *FlagsClass {
 	return g
 }
 
-func (recv *FlagsClass) toC() *C.GFlagsClass {
+func (recv *FlagsClass) ToC() unsafe.Pointer {
 	recv.native.mask =
 		(C.guint)(recv.Mask)
 	recv.native.n_values =
 		(C.guint)(recv.NValues)
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // FlagsValue is a wrapper around the C record GFlagsValue.
@@ -275,7 +275,7 @@ func FlagsValueNewFromC(u unsafe.Pointer) *FlagsValue {
 	return g
 }
 
-func (recv *FlagsValue) toC() *C.GFlagsValue {
+func (recv *FlagsValue) ToC() unsafe.Pointer {
 	recv.native.value =
 		(C.guint)(recv.Value)
 	recv.native.value_name =
@@ -283,7 +283,7 @@ func (recv *FlagsValue) toC() *C.GFlagsValue {
 	recv.native.value_nick =
 		C.CString(recv.ValueNick)
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // InitiallyUnownedClass is a wrapper around the C record GInitiallyUnownedClass.
@@ -314,9 +314,9 @@ func InitiallyUnownedClassNewFromC(u unsafe.Pointer) *InitiallyUnownedClass {
 	return g
 }
 
-func (recv *InitiallyUnownedClass) toC() *C.GInitiallyUnownedClass {
+func (recv *InitiallyUnownedClass) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // InterfaceInfo is a wrapper around the C record GInterfaceInfo.
@@ -341,11 +341,11 @@ func InterfaceInfoNewFromC(u unsafe.Pointer) *InterfaceInfo {
 	return g
 }
 
-func (recv *InterfaceInfo) toC() *C.GInterfaceInfo {
+func (recv *InterfaceInfo) ToC() unsafe.Pointer {
 	recv.native.interface_data =
 		(C.gpointer)(recv.InterfaceData)
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ObjectClass is a wrapper around the C record GObjectClass.
@@ -376,9 +376,9 @@ func ObjectClassNewFromC(u unsafe.Pointer) *ObjectClass {
 	return g
 }
 
-func (recv *ObjectClass) toC() *C.GObjectClass {
+func (recv *ObjectClass) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_object_class_find_property : no return generator
@@ -409,9 +409,9 @@ func ObjectConstructParamNewFromC(u unsafe.Pointer) *ObjectConstructParam {
 	return g
 }
 
-func (recv *ObjectConstructParam) toC() *C.GObjectConstructParam {
+func (recv *ObjectConstructParam) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ParamSpecClass is a wrapper around the C record GParamSpecClass.
@@ -437,9 +437,9 @@ func ParamSpecClassNewFromC(u unsafe.Pointer) *ParamSpecClass {
 	return g
 }
 
-func (recv *ParamSpecClass) toC() *C.GParamSpecClass {
+func (recv *ParamSpecClass) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ParamSpecPool is a wrapper around the C record GParamSpecPool.
@@ -458,9 +458,9 @@ func ParamSpecPoolNewFromC(u unsafe.Pointer) *ParamSpecPool {
 	return g
 }
 
-func (recv *ParamSpecPool) toC() *C.GParamSpecPool {
+func (recv *ParamSpecPool) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_param_spec_pool_insert : unsupported parameter pspec : no type generator for ParamSpec, GParamSpec*
@@ -501,13 +501,13 @@ func ParamSpecTypeInfoNewFromC(u unsafe.Pointer) *ParamSpecTypeInfo {
 	return g
 }
 
-func (recv *ParamSpecTypeInfo) toC() *C.GParamSpecTypeInfo {
+func (recv *ParamSpecTypeInfo) ToC() unsafe.Pointer {
 	recv.native.instance_size =
 		(C.guint16)(recv.InstanceSize)
 	recv.native.n_preallocs =
 		(C.guint16)(recv.NPreallocs)
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Parameter is a wrapper around the C record GParameter.
@@ -531,11 +531,11 @@ func ParameterNewFromC(u unsafe.Pointer) *Parameter {
 	return g
 }
 
-func (recv *Parameter) toC() *C.GParameter {
+func (recv *Parameter) ToC() unsafe.Pointer {
 	recv.native.name =
 		C.CString(recv.Name)
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // SignalInvocationHint is a wrapper around the C record GSignalInvocationHint.
@@ -562,7 +562,7 @@ func SignalInvocationHintNewFromC(u unsafe.Pointer) *SignalInvocationHint {
 	return g
 }
 
-func (recv *SignalInvocationHint) toC() *C.GSignalInvocationHint {
+func (recv *SignalInvocationHint) ToC() unsafe.Pointer {
 	recv.native.signal_id =
 		(C.guint)(recv.SignalId)
 	recv.native.detail =
@@ -570,7 +570,7 @@ func (recv *SignalInvocationHint) toC() *C.GSignalInvocationHint {
 	recv.native.run_type =
 		(C.GSignalFlags)(recv.RunType)
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // SignalQuery is a wrapper around the C record GSignalQuery.
@@ -602,7 +602,7 @@ func SignalQueryNewFromC(u unsafe.Pointer) *SignalQuery {
 	return g
 }
 
-func (recv *SignalQuery) toC() *C.GSignalQuery {
+func (recv *SignalQuery) ToC() unsafe.Pointer {
 	recv.native.signal_id =
 		(C.guint)(recv.SignalId)
 	recv.native.signal_name =
@@ -612,7 +612,7 @@ func (recv *SignalQuery) toC() *C.GSignalQuery {
 	recv.native.n_params =
 		(C.guint)(recv.NParams)
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // TypeClass is a wrapper around the C record GTypeClass.
@@ -632,9 +632,9 @@ func TypeClassNewFromC(u unsafe.Pointer) *TypeClass {
 	return g
 }
 
-func (recv *TypeClass) toC() *C.GTypeClass {
+func (recv *TypeClass) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_type_class_add_private : no return generator
@@ -673,11 +673,11 @@ func TypeFundamentalInfoNewFromC(u unsafe.Pointer) *TypeFundamentalInfo {
 	return g
 }
 
-func (recv *TypeFundamentalInfo) toC() *C.GTypeFundamentalInfo {
+func (recv *TypeFundamentalInfo) ToC() unsafe.Pointer {
 	recv.native.type_flags =
 		(C.GTypeFundamentalFlags)(recv.TypeFlags)
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // TypeInfo is a wrapper around the C record GTypeInfo.
@@ -712,7 +712,7 @@ func TypeInfoNewFromC(u unsafe.Pointer) *TypeInfo {
 	return g
 }
 
-func (recv *TypeInfo) toC() *C.GTypeInfo {
+func (recv *TypeInfo) ToC() unsafe.Pointer {
 	recv.native.class_size =
 		(C.guint16)(recv.ClassSize)
 	recv.native.class_data =
@@ -722,7 +722,7 @@ func (recv *TypeInfo) toC() *C.GTypeInfo {
 	recv.native.n_preallocs =
 		(C.guint16)(recv.NPreallocs)
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // TypeInstance is a wrapper around the C record GTypeInstance.
@@ -742,9 +742,9 @@ func TypeInstanceNewFromC(u unsafe.Pointer) *TypeInstance {
 	return g
 }
 
-func (recv *TypeInstance) toC() *C.GTypeInstance {
+func (recv *TypeInstance) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_type_instance_get_private : unsupported parameter private_type : no type generator for GType, GType
@@ -767,9 +767,9 @@ func TypeInterfaceNewFromC(u unsafe.Pointer) *TypeInterface {
 	return g
 }
 
-func (recv *TypeInterface) toC() *C.GTypeInterface {
+func (recv *TypeInterface) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // PeekParent is a wrapper around the C function g_type_interface_peek_parent.
@@ -803,9 +803,9 @@ func TypeModuleClassNewFromC(u unsafe.Pointer) *TypeModuleClass {
 	return g
 }
 
-func (recv *TypeModuleClass) toC() *C.GTypeModuleClass {
+func (recv *TypeModuleClass) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // TypePluginClass is a wrapper around the C record GTypePluginClass.
@@ -829,9 +829,9 @@ func TypePluginClassNewFromC(u unsafe.Pointer) *TypePluginClass {
 	return g
 }
 
-func (recv *TypePluginClass) toC() *C.GTypePluginClass {
+func (recv *TypePluginClass) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // TypeQuery is a wrapper around the C record GTypeQuery.
@@ -859,7 +859,7 @@ func TypeQueryNewFromC(u unsafe.Pointer) *TypeQuery {
 	return g
 }
 
-func (recv *TypeQuery) toC() *C.GTypeQuery {
+func (recv *TypeQuery) ToC() unsafe.Pointer {
 	recv.native.type_name =
 		C.CString(recv.TypeName)
 	recv.native.class_size =
@@ -867,7 +867,7 @@ func (recv *TypeQuery) toC() *C.GTypeQuery {
 	recv.native.instance_size =
 		(C.guint)(recv.InstanceSize)
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // TypeValueTable is a wrapper around the C record GTypeValueTable.
@@ -898,13 +898,13 @@ func TypeValueTableNewFromC(u unsafe.Pointer) *TypeValueTable {
 	return g
 }
 
-func (recv *TypeValueTable) toC() *C.GTypeValueTable {
+func (recv *TypeValueTable) ToC() unsafe.Pointer {
 	recv.native.collect_format =
 		C.CString(recv.CollectFormat)
 	recv.native.lcopy_format =
 		C.CString(recv.LcopyFormat)
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Value is a wrapper around the C record GValue.
@@ -925,9 +925,9 @@ func ValueNewFromC(u unsafe.Pointer) *Value {
 	return g
 }
 
-func (recv *Value) toC() *C.GValue {
+func (recv *Value) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_value_copy : no return generator
@@ -1199,7 +1199,7 @@ func (recv *Value) Reset() *Value {
 
 // Transform is a wrapper around the C function g_value_transform.
 func (recv *Value) Transform(destValue *Value) bool {
-	c_dest_value := destValue.toC()
+	c_dest_value := (*C.GValue)(destValue.ToC())
 
 	retC := C.g_value_transform((*C.GValue)(recv.native), c_dest_value)
 	retGo := retC == C.TRUE
@@ -1231,11 +1231,11 @@ func ValueArrayNewFromC(u unsafe.Pointer) *ValueArray {
 	return g
 }
 
-func (recv *ValueArray) toC() *C.GValueArray {
+func (recv *ValueArray) ToC() unsafe.Pointer {
 	recv.native.n_values =
 		(C.guint)(recv.NValues)
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ValueArrayNew is a wrapper around the C function g_value_array_new.
@@ -1250,7 +1250,7 @@ func ValueArrayNew(nPrealloced uint32) *ValueArray {
 
 // Append is a wrapper around the C function g_value_array_append.
 func (recv *ValueArray) Append(value *Value) *ValueArray {
-	c_value := value.toC()
+	c_value := (*C.GValue)(value.ToC())
 
 	retC := C.g_value_array_append((*C.GValueArray)(recv.native), c_value)
 	retGo := ValueArrayNewFromC(unsafe.Pointer(retC))
@@ -1282,7 +1282,7 @@ func (recv *ValueArray) GetNth(index uint32) *Value {
 func (recv *ValueArray) Insert(index uint32, value *Value) *ValueArray {
 	c_index_ := (C.guint)(index)
 
-	c_value := value.toC()
+	c_value := (*C.GValue)(value.ToC())
 
 	retC := C.g_value_array_insert((*C.GValueArray)(recv.native), c_index_, c_value)
 	retGo := ValueArrayNewFromC(unsafe.Pointer(retC))
@@ -1292,7 +1292,7 @@ func (recv *ValueArray) Insert(index uint32, value *Value) *ValueArray {
 
 // Prepend is a wrapper around the C function g_value_array_prepend.
 func (recv *ValueArray) Prepend(value *Value) *ValueArray {
-	c_value := value.toC()
+	c_value := (*C.GValue)(value.ToC())
 
 	retC := C.g_value_array_prepend((*C.GValueArray)(recv.native), c_value)
 	retGo := ValueArrayNewFromC(unsafe.Pointer(retC))
@@ -1330,9 +1330,9 @@ func WeakRefNewFromC(u unsafe.Pointer) *WeakRef {
 	return g
 }
 
-func (recv *WeakRef) toC() *C.GWeakRef {
+func (recv *WeakRef) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_weak_ref_clear : no return generator

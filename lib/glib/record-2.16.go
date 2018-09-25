@@ -28,9 +28,9 @@ func ChecksumNewFromC(u unsafe.Pointer) *Checksum {
 	return g
 }
 
-func (recv *Checksum) toC() *C.GChecksum {
+func (recv *Checksum) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ChecksumNew is a wrapper around the C function g_checksum_new.

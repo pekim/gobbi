@@ -36,9 +36,9 @@ func CredentialsClassNewFromC(u unsafe.Pointer) *CredentialsClass {
 	return g
 }
 
-func (recv *CredentialsClass) toC() *C.GCredentialsClass {
+func (recv *CredentialsClass) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // DBusAnnotationInfo is a wrapper around the C record GDBusAnnotationInfo.
@@ -65,13 +65,13 @@ func DBusAnnotationInfoNewFromC(u unsafe.Pointer) *DBusAnnotationInfo {
 	return g
 }
 
-func (recv *DBusAnnotationInfo) toC() *C.GDBusAnnotationInfo {
+func (recv *DBusAnnotationInfo) ToC() unsafe.Pointer {
 	recv.native.key =
 		C.CString(recv.Key)
 	recv.native.value =
 		C.CString(recv.Value)
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Ref is a wrapper around the C function g_dbus_annotation_info_ref.
@@ -108,13 +108,13 @@ func DBusArgInfoNewFromC(u unsafe.Pointer) *DBusArgInfo {
 	return g
 }
 
-func (recv *DBusArgInfo) toC() *C.GDBusArgInfo {
+func (recv *DBusArgInfo) ToC() unsafe.Pointer {
 	recv.native.name =
 		C.CString(recv.Name)
 	recv.native.signature =
 		C.CString(recv.Signature)
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Ref is a wrapper around the C function g_dbus_arg_info_ref.
@@ -149,13 +149,13 @@ func DBusErrorEntryNewFromC(u unsafe.Pointer) *DBusErrorEntry {
 	return g
 }
 
-func (recv *DBusErrorEntry) toC() *C.GDBusErrorEntry {
+func (recv *DBusErrorEntry) ToC() unsafe.Pointer {
 	recv.native.error_code =
 		(C.gint)(recv.ErrorCode)
 	recv.native.dbus_error_name =
 		C.CString(recv.DbusErrorName)
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // DBusInterfaceInfo is a wrapper around the C record GDBusInterfaceInfo.
@@ -183,11 +183,11 @@ func DBusInterfaceInfoNewFromC(u unsafe.Pointer) *DBusInterfaceInfo {
 	return g
 }
 
-func (recv *DBusInterfaceInfo) toC() *C.GDBusInterfaceInfo {
+func (recv *DBusInterfaceInfo) ToC() unsafe.Pointer {
 	recv.native.name =
 		C.CString(recv.Name)
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_dbus_interface_info_cache_build : no return generator
@@ -259,9 +259,9 @@ func DBusInterfaceVTableNewFromC(u unsafe.Pointer) *DBusInterfaceVTable {
 	return g
 }
 
-func (recv *DBusInterfaceVTable) toC() *C.GDBusInterfaceVTable {
+func (recv *DBusInterfaceVTable) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // DBusMethodInfo is a wrapper around the C record GDBusMethodInfo.
@@ -288,11 +288,11 @@ func DBusMethodInfoNewFromC(u unsafe.Pointer) *DBusMethodInfo {
 	return g
 }
 
-func (recv *DBusMethodInfo) toC() *C.GDBusMethodInfo {
+func (recv *DBusMethodInfo) ToC() unsafe.Pointer {
 	recv.native.name =
 		C.CString(recv.Name)
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Ref is a wrapper around the C function g_dbus_method_info_ref.
@@ -329,11 +329,11 @@ func DBusNodeInfoNewFromC(u unsafe.Pointer) *DBusNodeInfo {
 	return g
 }
 
-func (recv *DBusNodeInfo) toC() *C.GDBusNodeInfo {
+func (recv *DBusNodeInfo) ToC() unsafe.Pointer {
 	recv.native.path =
 		C.CString(recv.Path)
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // DBusNodeInfoNewForXml is a wrapper around the C function g_dbus_node_info_new_for_xml.
@@ -403,7 +403,7 @@ func DBusPropertyInfoNewFromC(u unsafe.Pointer) *DBusPropertyInfo {
 	return g
 }
 
-func (recv *DBusPropertyInfo) toC() *C.GDBusPropertyInfo {
+func (recv *DBusPropertyInfo) ToC() unsafe.Pointer {
 	recv.native.name =
 		C.CString(recv.Name)
 	recv.native.signature =
@@ -411,7 +411,7 @@ func (recv *DBusPropertyInfo) toC() *C.GDBusPropertyInfo {
 	recv.native.flags =
 		(C.GDBusPropertyInfoFlags)(recv.Flags)
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Ref is a wrapper around the C function g_dbus_property_info_ref.
@@ -444,9 +444,9 @@ func DBusProxyClassNewFromC(u unsafe.Pointer) *DBusProxyClass {
 	return g
 }
 
-func (recv *DBusProxyClass) toC() *C.GDBusProxyClass {
+func (recv *DBusProxyClass) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // DBusSignalInfo is a wrapper around the C record GDBusSignalInfo.
@@ -472,11 +472,11 @@ func DBusSignalInfoNewFromC(u unsafe.Pointer) *DBusSignalInfo {
 	return g
 }
 
-func (recv *DBusSignalInfo) toC() *C.GDBusSignalInfo {
+func (recv *DBusSignalInfo) ToC() unsafe.Pointer {
 	recv.native.name =
 		C.CString(recv.Name)
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Ref is a wrapper around the C function g_dbus_signal_info_ref.
@@ -509,9 +509,9 @@ func DBusSubtreeVTableNewFromC(u unsafe.Pointer) *DBusSubtreeVTable {
 	return g
 }
 
-func (recv *DBusSubtreeVTable) toC() *C.GDBusSubtreeVTable {
+func (recv *DBusSubtreeVTable) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ProxyAddressClass is a wrapper around the C record GProxyAddressClass.
@@ -531,9 +531,9 @@ func ProxyAddressClassNewFromC(u unsafe.Pointer) *ProxyAddressClass {
 	return g
 }
 
-func (recv *ProxyAddressClass) toC() *C.GProxyAddressClass {
+func (recv *ProxyAddressClass) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // ProxyInterface is a wrapper around the C record GProxyInterface.
@@ -557,9 +557,9 @@ func ProxyInterfaceNewFromC(u unsafe.Pointer) *ProxyInterface {
 	return g
 }
 
-func (recv *ProxyInterface) toC() *C.GProxyInterface {
+func (recv *ProxyInterface) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // TlsClientConnectionInterface is a wrapper around the C record GTlsClientConnectionInterface.
@@ -580,9 +580,9 @@ func TlsClientConnectionInterfaceNewFromC(u unsafe.Pointer) *TlsClientConnection
 	return g
 }
 
-func (recv *TlsClientConnectionInterface) toC() *C.GTlsClientConnectionInterface {
+func (recv *TlsClientConnectionInterface) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // TlsServerConnectionInterface is a wrapper around the C record GTlsServerConnectionInterface.
@@ -602,9 +602,9 @@ func TlsServerConnectionInterfaceNewFromC(u unsafe.Pointer) *TlsServerConnection
 	return g
 }
 
-func (recv *TlsServerConnectionInterface) toC() *C.GTlsServerConnectionInterface {
+func (recv *TlsServerConnectionInterface) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // UnixCredentialsMessageClass is a wrapper around the C record GUnixCredentialsMessageClass.
@@ -626,7 +626,7 @@ func UnixCredentialsMessageClassNewFromC(u unsafe.Pointer) *UnixCredentialsMessa
 	return g
 }
 
-func (recv *UnixCredentialsMessageClass) toC() *C.GUnixCredentialsMessageClass {
+func (recv *UnixCredentialsMessageClass) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }

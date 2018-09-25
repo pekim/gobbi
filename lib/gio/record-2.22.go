@@ -39,9 +39,9 @@ func AsyncInitableIfaceNewFromC(u unsafe.Pointer) *AsyncInitableIface {
 	return g
 }
 
-func (recv *AsyncInitableIface) toC() *C.GAsyncInitableIface {
+func (recv *AsyncInitableIface) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // InitableIface is a wrapper around the C record GInitableIface.
@@ -62,9 +62,9 @@ func InitableIfaceNewFromC(u unsafe.Pointer) *InitableIface {
 	return g
 }
 
-func (recv *InitableIface) toC() *C.GInitableIface {
+func (recv *InitableIface) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // InputVector is a wrapper around the C record GInputVector.
@@ -89,13 +89,13 @@ func InputVectorNewFromC(u unsafe.Pointer) *InputVector {
 	return g
 }
 
-func (recv *InputVector) toC() *C.GInputVector {
+func (recv *InputVector) ToC() unsafe.Pointer {
 	recv.native.buffer =
 		(C.gpointer)(recv.Buffer)
 	recv.native.size =
 		(C.gsize)(recv.Size)
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // OutputVector is a wrapper around the C record GOutputVector.
@@ -120,11 +120,11 @@ func OutputVectorNewFromC(u unsafe.Pointer) *OutputVector {
 	return g
 }
 
-func (recv *OutputVector) toC() *C.GOutputVector {
+func (recv *OutputVector) ToC() unsafe.Pointer {
 	recv.native.buffer =
 		(C.gconstpointer)(recv.Buffer)
 	recv.native.size =
 		(C.gsize)(recv.Size)
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }

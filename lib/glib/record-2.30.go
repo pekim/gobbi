@@ -28,9 +28,9 @@ func HmacNewFromC(u unsafe.Pointer) *Hmac {
 	return g
 }
 
-func (recv *Hmac) toC() *C.GHmac {
+func (recv *Hmac) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Copy is a wrapper around the C function g_hmac_copy.

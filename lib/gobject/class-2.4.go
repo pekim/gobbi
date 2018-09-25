@@ -28,7 +28,7 @@ func ParamSpecOverrideNewFromC(u unsafe.Pointer) *ParamSpecOverride {
 	return g
 }
 
-func (recv *ParamSpecOverride) toC() *C.GParamSpecOverride {
+func (recv *ParamSpecOverride) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }

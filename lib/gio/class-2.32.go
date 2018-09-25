@@ -38,9 +38,9 @@ func InetAddressMaskNewFromC(u unsafe.Pointer) *InetAddressMask {
 	return g
 }
 
-func (recv *InetAddressMask) toC() *C.GInetAddressMask {
+func (recv *InetAddressMask) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_inet_address_mask_new : unsupported parameter addr : no type generator for InetAddress, GInetAddress*
@@ -94,9 +94,9 @@ func MenuNewFromC(u unsafe.Pointer) *Menu {
 	return g
 }
 
-func (recv *Menu) toC() *C.GMenu {
+func (recv *Menu) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_menu_new : no return generator
@@ -149,9 +149,9 @@ func MenuAttributeIterNewFromC(u unsafe.Pointer) *MenuAttributeIter {
 	return g
 }
 
-func (recv *MenuAttributeIter) toC() *C.GMenuAttributeIter {
+func (recv *MenuAttributeIter) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // GetName is a wrapper around the C function g_menu_attribute_iter_get_name.
@@ -190,9 +190,9 @@ func MenuItemNewFromC(u unsafe.Pointer) *MenuItem {
 	return g
 }
 
-func (recv *MenuItem) toC() *C.GMenuItem {
+func (recv *MenuItem) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_menu_item_new : no return generator
@@ -247,9 +247,9 @@ func MenuLinkIterNewFromC(u unsafe.Pointer) *MenuLinkIter {
 	return g
 }
 
-func (recv *MenuLinkIter) toC() *C.GMenuLinkIter {
+func (recv *MenuLinkIter) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // GetName is a wrapper around the C function g_menu_link_iter_get_name.
@@ -290,9 +290,9 @@ func MenuModelNewFromC(u unsafe.Pointer) *MenuModel {
 	return g
 }
 
-func (recv *MenuModel) toC() *C.GMenuModel {
+func (recv *MenuModel) ToC() unsafe.Pointer {
 
-	return recv.native
+	return (unsafe.Pointer)(recv.native)
 }
 
 // Unsupported : g_menu_model_get_item_attribute : unsupported parameter ... : varargs
