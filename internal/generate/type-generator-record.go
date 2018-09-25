@@ -118,9 +118,15 @@ func (t *TypeGeneratorRecord) generateReturnCToGo(g *jen.Group,
 			Call(jen.Id(cVarName)))
 }
 
-func (t *TypeGeneratorRecord) generateCToGo(cVarReference *jen.Statement) *jen.Statement {
+func (t *TypeGeneratorRecord) generateCToGo(pkg string, cVarReference *jen.Statement) *jen.Statement {
 	return jen.
-		Id(t.record.newFromCFuncName).
+		Do(func(s *jen.Statement) {
+			if pkg != "" {
+				s.Qual(pkg, t.record.newFromCFuncName)
+			} else {
+				s.Id(t.record.newFromCFuncName)
+			}
+		}).
 		Call(cVarReference)
 }
 

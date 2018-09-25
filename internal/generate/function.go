@@ -214,8 +214,14 @@ func (f *Function) generateThrowableReturnGoVar(g *jen.Group) {
 		return
 	}
 
+	pkg := ""
+	if f.Namespace.Name != "GLib" {
+		pkg = f.Namespace.get("GLib").fullGoPackageName
+	}
+
 	f.throwableErrorType.generator.generateReturnCToGo(g,
-		f.throwableErrorCVarName, f.throwableErrorGoVarName, "", "")
+		f.throwableErrorCVarName, f.throwableErrorGoVarName,
+		pkg, "")
 
 	// If there is an error, free it.
 	g.If(jen.Id(f.throwableErrorCVarName).Op("!=").Id("nil")).

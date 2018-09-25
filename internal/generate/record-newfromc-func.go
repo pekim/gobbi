@@ -75,7 +75,8 @@ func (r *RecordNewFromCFunc) generateStructValues(d jen.Dict) {
 			Op(".").
 			Id(f.Name)
 
-		d[jen.Id(f.goVarName)] = f.Type.generator.generateCToGo(cValue)
+		d[jen.Id(f.goVarName)] = f.Type.generator.generateCToGo(
+			f.Namespace.fullGoPackageName, cValue)
 	}
 }
 

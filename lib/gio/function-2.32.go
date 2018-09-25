@@ -45,7 +45,7 @@ func ResourceLoad(filename string) (*Resource, error) {
 	retC := C.g_resource_load(c_filename, &cThrowableError)
 	retGo := ResourceNewFromC(unsafe.Pointer(retC))
 
-	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
 	if cThrowableError != nil {
 		C.g_error_free(cThrowableError)
 	}
@@ -69,7 +69,7 @@ func ResourcesLookupData(path string, lookupFlags ResourceLookupFlags) (*glib.By
 	retC := C.g_resources_lookup_data(c_path, c_lookup_flags, &cThrowableError)
 	retGo := glib.BytesNewFromC(unsafe.Pointer(retC))
 
-	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
 	if cThrowableError != nil {
 		C.g_error_free(cThrowableError)
 	}

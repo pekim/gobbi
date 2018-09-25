@@ -65,7 +65,7 @@ func (t *TypeGeneratorBoolean) generateReturnCToGo(g *jen.Group,
 		Qual("C", "TRUE")
 }
 
-func (t *TypeGeneratorBoolean) generateCToGo(cVarReference *jen.Statement) *jen.Statement {
+func (t *TypeGeneratorBoolean) generateCToGo(pkg string, cVarReference *jen.Statement) *jen.Statement {
 	return cVarReference.
 		Op("==").
 		Qual("C", "TRUE")

@@ -128,7 +128,7 @@ func ResourceNewFromData(data *glib.Bytes) (*Resource, error) {
 	retC := C.g_resource_new_from_data(c_data, &cThrowableError)
 	retGo := ResourceNewFromC(unsafe.Pointer(retC))
 
-	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
 	if cThrowableError != nil {
 		C.g_error_free(cThrowableError)
 	}
@@ -156,7 +156,7 @@ func (recv *Resource) LookupData(path string, lookupFlags ResourceLookupFlags) (
 	retC := C.g_resource_lookup_data((*C.GResource)(recv.native), c_path, c_lookup_flags, &cThrowableError)
 	retGo := glib.BytesNewFromC(unsafe.Pointer(retC))
 
-	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
 	if cThrowableError != nil {
 		C.g_error_free(cThrowableError)
 	}
@@ -255,7 +255,7 @@ func SettingsSchemaSourceNewFromDirectory(directory string, parent *SettingsSche
 	retC := C.g_settings_schema_source_new_from_directory(c_directory, c_parent, c_trusted, &cThrowableError)
 	retGo := SettingsSchemaSourceNewFromC(unsafe.Pointer(retC))
 
-	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
 	if cThrowableError != nil {
 		C.g_error_free(cThrowableError)
 	}

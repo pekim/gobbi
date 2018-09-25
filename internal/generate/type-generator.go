@@ -12,7 +12,7 @@ type TypeGenerator interface {
 	isSupportedAsReturnValue() (supported bool, reason string)
 
 	generateDeclaration(g *jen.Group, goVarName string)
-	generateCToGo(cVarReference *jen.Statement) *jen.Statement
+	generateCToGo(pkg string, cVarReference *jen.Statement) *jen.Statement
 	generateGoToC(g *jen.Group, goVarReference *jen.Statement)
 
 	generateParamCallArgument(g *jen.Group, cVarName string)

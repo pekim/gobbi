@@ -75,7 +75,7 @@ func (t *TypeGeneratorEnumeration) generateReturnCToGo(g *jen.Group,
 		Parens(jen.Id(cVarName))
 }
 
-func (t *TypeGeneratorEnumeration) generateCToGo(cVarReference *jen.Statement) *jen.Statement {
+func (t *TypeGeneratorEnumeration) generateCToGo(pkg string, cVarReference *jen.Statement) *jen.Statement {
 	return jen.
 		Parens(jen.Do(t.typ.qname.generate)).
 		Params(cVarReference)

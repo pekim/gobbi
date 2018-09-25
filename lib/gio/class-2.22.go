@@ -61,7 +61,7 @@ func (recv *Socket) CheckConnectResult() (bool, error) {
 	retC := C.g_socket_check_connect_result((*C.GSocket)(recv.native), &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
 	if cThrowableError != nil {
 		C.g_error_free(cThrowableError)
 	}
@@ -76,7 +76,7 @@ func (recv *Socket) Close() (bool, error) {
 	retC := C.g_socket_close((*C.GSocket)(recv.native), &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
 	if cThrowableError != nil {
 		C.g_error_free(cThrowableError)
 	}
@@ -199,7 +199,7 @@ func (recv *Socket) Listen() (bool, error) {
 	retC := C.g_socket_listen((*C.GSocket)(recv.native), &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
 	if cThrowableError != nil {
 		C.g_error_free(cThrowableError)
 	}
@@ -256,7 +256,7 @@ func (recv *Socket) Shutdown(shutdownRead bool, shutdownWrite bool) (bool, error
 	retC := C.g_socket_shutdown((*C.GSocket)(recv.native), c_shutdown_read, c_shutdown_write, &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
 	if cThrowableError != nil {
 		C.g_error_free(cThrowableError)
 	}

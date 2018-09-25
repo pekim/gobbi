@@ -258,7 +258,7 @@ func DbusIsSupportedAddress(string string) (bool, error) {
 	retC := C.g_dbus_is_supported_address(c_string, &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
 	if cThrowableError != nil {
 		C.g_error_free(cThrowableError)
 	}

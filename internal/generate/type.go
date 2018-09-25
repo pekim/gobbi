@@ -80,20 +80,3 @@ func (t *Type) qnameAndGenerator(targetType *Type) (*QName, TypeGenerator) {
 
 	return nil, nil
 }
-
-//func (t *Type) nameParts() (*Namespace, string) {
-//	parts := strings.Split(t.Name, ".")
-//
-//	switch len(parts) {
-//	case 1:
-//		return t.Namespace, t.Name
-//	case 2:
-//		ns := t.Namespace.get(parts[0])
-//		if ns == nil {
-//			panic(fmt.Sprintf("Failed to find namespace for '%s'", t.Name))
-//		}
-//		return ns, parts[1]
-//	default:
-//		panic(fmt.Sprintf("Unsupported type name '%s'", t.Name))
-//	}
-//}

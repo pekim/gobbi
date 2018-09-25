@@ -109,7 +109,7 @@ func (t *TypeGeneratorString) generateReturnCToGo(g *jen.Group,
 			Call(jen.Id(cVarName)))
 }
 
-func (t *TypeGeneratorString) generateCToGo(cVarReference *jen.Statement) *jen.Statement {
+func (t *TypeGeneratorString) generateCToGo(pkg string, cVarReference *jen.Statement) *jen.Statement {
 	return jen.
 		Qual("C", "GoString").
 		Call(cVarReference)
