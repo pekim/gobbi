@@ -76,8 +76,13 @@ func (p *Parameter) generateCallArgument(g *jen.Group) {
 }
 
 func (p *Parameter) generateOutputParamGoVar(g *jen.Group) {
+	pkg := ""
+	if p.Namespace != p.Type.qname.ns {
+		pkg = p.Type.qname.ns.fullGoPackageName
+	}
+
 	if p.Direction == "out" {
-		p.Type.generator.generateReturnCToGo(g, p.cVarName, p.goVarName, "", p.TransferOwnership)
+		p.Type.generator.generateReturnCToGo(g, p.cVarName, p.goVarName, pkg, p.TransferOwnership)
 		g.Line()
 	}
 }

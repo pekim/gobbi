@@ -143,9 +143,9 @@ func (recv *Subprocess) Communicate(stdinBuf *glib.Bytes, cancellable *Cancellab
 		C.g_error_free(cThrowableError)
 	}
 
-	stdoutBuf := BytesNewFromC(unsafe.Pointer(c_stdout_buf))
+	stdoutBuf := glib.BytesNewFromC(unsafe.Pointer(c_stdout_buf))
 
-	stderrBuf := BytesNewFromC(unsafe.Pointer(c_stderr_buf))
+	stderrBuf := glib.BytesNewFromC(unsafe.Pointer(c_stderr_buf))
 
 	return retGo, stdoutBuf, stderrBuf, goThrowableError
 }

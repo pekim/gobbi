@@ -664,7 +664,7 @@ func (recv *SocketListener) Accept(cancellable *Cancellable) (*SocketConnection,
 		C.g_error_free(cThrowableError)
 	}
 
-	sourceObject := ObjectNewFromC(unsafe.Pointer(c_source_object))
+	sourceObject := gobject.ObjectNewFromC(unsafe.Pointer(c_source_object))
 
 	return retGo, sourceObject, goThrowableError
 }
@@ -689,7 +689,7 @@ func (recv *SocketListener) AcceptSocket(cancellable *Cancellable) (*Socket, **g
 		C.g_error_free(cThrowableError)
 	}
 
-	sourceObject := ObjectNewFromC(unsafe.Pointer(c_source_object))
+	sourceObject := gobject.ObjectNewFromC(unsafe.Pointer(c_source_object))
 
 	return retGo, sourceObject, goThrowableError
 }
