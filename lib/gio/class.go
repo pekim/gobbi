@@ -1078,7 +1078,7 @@ func (recv *FileEnumerator) IsClosed() bool {
 	return retGo
 }
 
-// Unsupported : g_file_enumerator_iterate : unsupported parameter out_child : no type generator for File, GFile**
+// Unsupported : g_file_enumerator_iterate : unsupported parameter out_info : record with indirection level of 2
 
 // NextFile is a wrapper around the C function g_file_enumerator_next_file.
 func (recv *FileEnumerator) NextFile(cancellable *Cancellable) (*FileInfo, error) {

@@ -341,9 +341,9 @@ func (recv *Socket) Listen() (bool, error) {
 
 // Unsupported : g_socket_receive : unsupported parameter buffer : no param type
 
-// Unsupported : g_socket_receive_from : unsupported parameter buffer : no param type
+// Unsupported : g_socket_receive_from : unsupported parameter address : record with indirection level of 2
 
-// Unsupported : g_socket_receive_message : unsupported parameter vectors : no param type
+// Unsupported : g_socket_receive_message : unsupported parameter address : record with indirection level of 2
 
 // Unsupported : g_socket_receive_messages : unsupported parameter messages : no param type
 
@@ -648,82 +648,19 @@ func SocketListenerNew() *SocketListener {
 	return retGo
 }
 
-// Accept is a wrapper around the C function g_socket_listener_accept.
-func (recv *SocketListener) Accept(cancellable *Cancellable) (*SocketConnection, **gobject.Object, error) {
-	var c_source_object *C.GObject
-
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
-
-	var cThrowableError *C.GError
-
-	retC := C.g_socket_listener_accept((*C.GSocketListener)(recv.native), &c_source_object, c_cancellable, &cThrowableError)
-	retGo := SocketConnectionNewFromC(unsafe.Pointer(retC))
-
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-	if cThrowableError != nil {
-		C.g_error_free(cThrowableError)
-	}
-
-	sourceObject := gobject.ObjectNewFromC(unsafe.Pointer(c_source_object))
-
-	return retGo, sourceObject, goThrowableError
-}
+// Unsupported : g_socket_listener_accept : unsupported parameter source_object : record with indirection level of 2
 
 // Unsupported : g_socket_listener_accept_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
 
 // Unsupported : g_socket_listener_accept_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
 
-// AcceptSocket is a wrapper around the C function g_socket_listener_accept_socket.
-func (recv *SocketListener) AcceptSocket(cancellable *Cancellable) (*Socket, **gobject.Object, error) {
-	var c_source_object *C.GObject
-
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
-
-	var cThrowableError *C.GError
-
-	retC := C.g_socket_listener_accept_socket((*C.GSocketListener)(recv.native), &c_source_object, c_cancellable, &cThrowableError)
-	retGo := SocketNewFromC(unsafe.Pointer(retC))
-
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-	if cThrowableError != nil {
-		C.g_error_free(cThrowableError)
-	}
-
-	sourceObject := gobject.ObjectNewFromC(unsafe.Pointer(c_source_object))
-
-	return retGo, sourceObject, goThrowableError
-}
+// Unsupported : g_socket_listener_accept_socket : unsupported parameter source_object : record with indirection level of 2
 
 // Unsupported : g_socket_listener_accept_socket_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
 
 // Unsupported : g_socket_listener_accept_socket_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
 
-// AddAddress is a wrapper around the C function g_socket_listener_add_address.
-func (recv *SocketListener) AddAddress(address *SocketAddress, type_ SocketType, protocol SocketProtocol, sourceObject *gobject.Object) (bool, **SocketAddress, error) {
-	c_address := (*C.GSocketAddress)(address.ToC())
-
-	c_type := (C.GSocketType)(type_)
-
-	c_protocol := (C.GSocketProtocol)(protocol)
-
-	c_source_object := (*C.GObject)(sourceObject.ToC())
-
-	var c_effective_address *C.GSocketAddress
-
-	var cThrowableError *C.GError
-
-	retC := C.g_socket_listener_add_address((*C.GSocketListener)(recv.native), c_address, c_type, c_protocol, c_source_object, &c_effective_address, &cThrowableError)
-	retGo := retC == C.TRUE
-
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-	if cThrowableError != nil {
-		C.g_error_free(cThrowableError)
-	}
-
-	effectiveAddress := SocketAddressNewFromC(unsafe.Pointer(c_effective_address))
-
-	return retGo, effectiveAddress, goThrowableError
-}
+// Unsupported : g_socket_listener_add_address : unsupported parameter effective_address : record with indirection level of 2
 
 // AddInetPort is a wrapper around the C function g_socket_listener_add_inet_port.
 func (recv *SocketListener) AddInetPort(port uint16, sourceObject *gobject.Object) (bool, error) {

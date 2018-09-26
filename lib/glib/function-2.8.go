@@ -40,11 +40,11 @@ func Chdir(path string) int32 {
 	return retGo
 }
 
-// Unsupported : g_datalist_get_flags : unsupported parameter datalist : in string with indirection level of 2
+// Unsupported : g_datalist_get_flags : unsupported parameter datalist : record with indirection level of 2
 
-// Unsupported : g_datalist_set_flags : unsupported parameter datalist : in string with indirection level of 2
+// Unsupported : g_datalist_set_flags : unsupported parameter datalist : record with indirection level of 2
 
-// Unsupported : g_datalist_unset_flags : unsupported parameter datalist : in string with indirection level of 2
+// Unsupported : g_datalist_unset_flags : unsupported parameter datalist : record with indirection level of 2
 
 // Unsupported : g_file_set_contents : unsupported parameter contents : no param type
 

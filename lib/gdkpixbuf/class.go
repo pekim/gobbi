@@ -232,7 +232,7 @@ func (recv *Pixbuf) Ref() *Pixbuf {
 
 // Unsupported : gdk_pixbuf_saturate_and_pixelate : no return generator
 
-// Unsupported : gdk_pixbuf_save : unsupported parameter error : in string with indirection level of 2
+// Unsupported : gdk_pixbuf_save : unsupported parameter error : record with indirection level of 2
 
 // Unsupported : gdk_pixbuf_save_to_buffer : unsupported parameter buffer : no param type
 
@@ -242,7 +242,7 @@ func (recv *Pixbuf) Ref() *Pixbuf {
 
 // Unsupported : gdk_pixbuf_save_to_callbackv : unsupported parameter save_func : no type generator for PixbufSaveFunc, GdkPixbufSaveFunc
 
-// Unsupported : gdk_pixbuf_save_to_stream : unsupported parameter error : in string with indirection level of 2
+// Unsupported : gdk_pixbuf_save_to_stream : unsupported parameter error : record with indirection level of 2
 
 // Unsupported : gdk_pixbuf_save_to_stream_async : unsupported parameter callback : no type generator for Gio.AsyncReadyCallback, GAsyncReadyCallback
 

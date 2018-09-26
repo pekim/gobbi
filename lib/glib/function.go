@@ -250,19 +250,19 @@ func ConvertErrorQuark() Quark {
 
 // Unsupported : g_convert_with_iconv : unsupported parameter str : no param type
 
-// Unsupported : g_datalist_clear : unsupported parameter datalist : in string with indirection level of 2
+// Unsupported : g_datalist_clear : unsupported parameter datalist : record with indirection level of 2
 
-// Unsupported : g_datalist_foreach : unsupported parameter datalist : in string with indirection level of 2
+// Unsupported : g_datalist_foreach : unsupported parameter datalist : record with indirection level of 2
 
-// Unsupported : g_datalist_get_data : unsupported parameter datalist : in string with indirection level of 2
+// Unsupported : g_datalist_get_data : unsupported parameter datalist : record with indirection level of 2
 
-// Unsupported : g_datalist_id_get_data : unsupported parameter datalist : in string with indirection level of 2
+// Unsupported : g_datalist_id_get_data : unsupported parameter datalist : record with indirection level of 2
 
-// Unsupported : g_datalist_id_remove_no_notify : unsupported parameter datalist : in string with indirection level of 2
+// Unsupported : g_datalist_id_remove_no_notify : unsupported parameter datalist : record with indirection level of 2
 
-// Unsupported : g_datalist_id_set_data_full : unsupported parameter datalist : in string with indirection level of 2
+// Unsupported : g_datalist_id_set_data_full : unsupported parameter datalist : record with indirection level of 2
 
-// Unsupported : g_datalist_init : unsupported parameter datalist : in string with indirection level of 2
+// Unsupported : g_datalist_init : unsupported parameter datalist : record with indirection level of 2
 
 // Unsupported : g_dataset_destroy : no return generator
 
@@ -1070,7 +1070,7 @@ func PatternMatchString(pspec *PatternSpec, string string) bool {
 
 // Unsupported : g_printf_string_upper_bound : unsupported parameter args : no type generator for va_list, va_list
 
-// Unsupported : g_propagate_error : no return generator
+// Unsupported : g_propagate_error : unsupported parameter dest : record with indirection level of 2
 
 // Unsupported : g_qsort_with_data : unsupported parameter compare_func : no type generator for CompareDataFunc, GCompareDataFunc
 
@@ -1181,7 +1181,7 @@ func RegexErrorQuark() Quark {
 
 // Unsupported : g_return_if_fail_warning : no return generator
 
-// Unsupported : g_set_error : unsupported parameter ... : varargs
+// Unsupported : g_set_error : unsupported parameter err : record with indirection level of 2
 
 // Unsupported : g_set_prgname : no return generator
 
@@ -1796,13 +1796,13 @@ func TimeoutSourceNew(interval uint32) *Source {
 	return retGo
 }
 
-// Unsupported : g_trash_stack_height : unsupported parameter stack_p : in string with indirection level of 2
+// Unsupported : g_trash_stack_height : unsupported parameter stack_p : record with indirection level of 2
 
-// Unsupported : g_trash_stack_peek : unsupported parameter stack_p : in string with indirection level of 2
+// Unsupported : g_trash_stack_peek : unsupported parameter stack_p : record with indirection level of 2
 
-// Unsupported : g_trash_stack_pop : unsupported parameter stack_p : in string with indirection level of 2
+// Unsupported : g_trash_stack_pop : unsupported parameter stack_p : record with indirection level of 2
 
-// Unsupported : g_trash_stack_push : unsupported parameter stack_p : in string with indirection level of 2
+// Unsupported : g_trash_stack_push : unsupported parameter stack_p : record with indirection level of 2
 
 // TryMalloc is a wrapper around the C function g_try_malloc.
 func TryMalloc(nBytes uint64) uintptr {

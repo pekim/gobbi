@@ -27,9 +27,9 @@ func ComputeChecksumForBytes(checksumType ChecksumType, data *Bytes) string {
 	return retGo
 }
 
-// Unsupported : g_datalist_id_dup_data : unsupported parameter datalist : in string with indirection level of 2
+// Unsupported : g_datalist_id_dup_data : unsupported parameter datalist : record with indirection level of 2
 
-// Unsupported : g_datalist_id_replace_data : unsupported parameter datalist : in string with indirection level of 2
+// Unsupported : g_datalist_id_replace_data : unsupported parameter datalist : record with indirection level of 2
 
 // SpawnCheckExitStatus is a wrapper around the C function g_spawn_check_exit_status.
 func SpawnCheckExitStatus(exitStatus int32) (bool, error) {

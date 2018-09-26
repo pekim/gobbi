@@ -222,7 +222,7 @@ func DBusConnectionNewSync(stream *IOStream, guid string, flags DBusConnectionFl
 
 // Unsupported : g_dbus_connection_call_with_unix_fd_list : unsupported parameter parameters : Blacklisted record : GVariant
 
-// Unsupported : g_dbus_connection_call_with_unix_fd_list_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
+// Unsupported : g_dbus_connection_call_with_unix_fd_list_finish : unsupported parameter out_fd_list : record with indirection level of 2
 
 // Unsupported : g_dbus_connection_call_with_unix_fd_list_sync : unsupported parameter parameters : Blacklisted record : GVariant
 
@@ -881,7 +881,7 @@ func DBusProxyNewSync(connection *DBusConnection, flags DBusProxyFlags, info *DB
 
 // Unsupported : g_dbus_proxy_call_with_unix_fd_list : unsupported parameter parameters : Blacklisted record : GVariant
 
-// Unsupported : g_dbus_proxy_call_with_unix_fd_list_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
+// Unsupported : g_dbus_proxy_call_with_unix_fd_list_finish : unsupported parameter out_fd_list : record with indirection level of 2
 
 // Unsupported : g_dbus_proxy_call_with_unix_fd_list_sync : unsupported parameter parameters : Blacklisted record : GVariant
 

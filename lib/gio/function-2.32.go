@@ -23,7 +23,7 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : g_file_new_tmp : no return generator
+// Unsupported : g_file_new_tmp : unsupported parameter iostream : record with indirection level of 2
 
 // Unsupported : g_network_monitor_get_default : no return generator
 

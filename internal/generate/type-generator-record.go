@@ -33,8 +33,8 @@ func (t *TypeGeneratorRecord) isSupportedAsParam(direction string) (supported bo
 		return false, fmt.Sprintf("Blacklisted record : %s", t.record.CType)
 	}
 
-	if direction != "out" && t.typ.indirectLevel > 1 {
-		return false, fmt.Sprintf("in string with indirection level of %d",
+	if t.typ.indirectLevel > 1 {
+		return false, fmt.Sprintf("record with indirection level of %d",
 			t.typ.indirectLevel)
 	}
 

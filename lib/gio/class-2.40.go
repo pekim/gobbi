@@ -119,36 +119,11 @@ func (recv *Subprocess) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : g_subprocess_new : unsupported parameter error : in string with indirection level of 2
+// Unsupported : g_subprocess_new : unsupported parameter error : record with indirection level of 2
 
 // Unsupported : g_subprocess_newv : unsupported parameter argv : no param type
 
-// Communicate is a wrapper around the C function g_subprocess_communicate.
-func (recv *Subprocess) Communicate(stdinBuf *glib.Bytes, cancellable *Cancellable) (bool, **glib.Bytes, **glib.Bytes, error) {
-	c_stdin_buf := (*C.GBytes)(stdinBuf.ToC())
-
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
-
-	var c_stdout_buf *C.GBytes
-
-	var c_stderr_buf *C.GBytes
-
-	var cThrowableError *C.GError
-
-	retC := C.g_subprocess_communicate((*C.GSubprocess)(recv.native), c_stdin_buf, c_cancellable, &c_stdout_buf, &c_stderr_buf, &cThrowableError)
-	retGo := retC == C.TRUE
-
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-	if cThrowableError != nil {
-		C.g_error_free(cThrowableError)
-	}
-
-	stdoutBuf := glib.BytesNewFromC(unsafe.Pointer(c_stdout_buf))
-
-	stderrBuf := glib.BytesNewFromC(unsafe.Pointer(c_stderr_buf))
-
-	return retGo, stdoutBuf, stderrBuf, goThrowableError
-}
+// Unsupported : g_subprocess_communicate : unsupported parameter stdout_buf : record with indirection level of 2
 
 // Unsupported : g_subprocess_communicate_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
 
@@ -372,7 +347,7 @@ func (recv *SubprocessLauncher) Getenv(variable string) string {
 
 // Unsupported : g_subprocess_launcher_setenv : no return generator
 
-// Unsupported : g_subprocess_launcher_spawn : unsupported parameter error : in string with indirection level of 2
+// Unsupported : g_subprocess_launcher_spawn : unsupported parameter error : record with indirection level of 2
 
 // Unsupported : g_subprocess_launcher_spawnv : unsupported parameter argv : no param type
 

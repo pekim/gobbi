@@ -354,21 +354,7 @@ func (recv *MenuLinkIter) GetName() string {
 	return retGo
 }
 
-// GetNext is a wrapper around the C function g_menu_link_iter_get_next.
-func (recv *MenuLinkIter) GetNext() (bool, string, **MenuModel) {
-	var c_out_link *C.gchar
-
-	var c_value *C.GMenuModel
-
-	retC := C.g_menu_link_iter_get_next((*C.GMenuLinkIter)(recv.native), &c_out_link, &c_value)
-	retGo := retC == C.TRUE
-
-	outLink := C.GoString(c_out_link)
-
-	value := MenuModelNewFromC(unsafe.Pointer(c_value))
-
-	return retGo, outLink, value
-}
+// Unsupported : g_menu_link_iter_get_next : unsupported parameter value : record with indirection level of 2
 
 // GetValue is a wrapper around the C function g_menu_link_iter_get_value.
 func (recv *MenuLinkIter) GetValue() *MenuModel {
