@@ -4,6 +4,6 @@
             xmlns:c="http://www.gtk.org/introspection/c/1.0"
             xmlns:glib="http://www.gtk.org/introspection/glib/1.0"
 >
-  <namespace blacklist="true">
-  </namespace>
+  <c:include name="glib/gstdio.h"/>
+  <c:include name="cairo/cairo.h"/>
 </repository>
