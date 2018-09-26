@@ -84,7 +84,12 @@ func (t *TypeGeneratorEnumeration) generateCToGo(pkg string, cVarReference *jen.
 }
 
 func (t *TypeGeneratorEnumeration) generateGoToC(g *jen.Group, goVarReference *jen.Statement) {
+	ctype := t.typ.cTypeName
+	if ctype == "" {
+		ctype = t.enum.CType
+	}
+
 	g.
-		Parens(jen.Qual("C", t.enum.CType)).
+		Parens(jen.Qual("C", ctype)).
 		Parens(goVarReference)
 }
