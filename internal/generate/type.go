@@ -62,7 +62,7 @@ func (t *Type) qnameAndGenerator(targetType *Type) (*QName, TypeGenerator) {
 		if enum.goTypeName != "" {
 			qname.name = enum.goTypeName
 		}
-		return qname, TypeGeneratorEnumerationNew(targetType)
+		return qname, TypeGeneratorEnumerationNew(targetType, enum)
 	}
 
 	enum, found = qname.ns.enumForName(qname.name)
@@ -70,7 +70,7 @@ func (t *Type) qnameAndGenerator(targetType *Type) (*QName, TypeGenerator) {
 		if enum.goTypeName != "" {
 			qname.name = enum.goTypeName
 		}
-		return qname, TypeGeneratorEnumerationNew(targetType)
+		return qname, TypeGeneratorEnumerationNew(targetType, enum)
 	}
 
 	record, found := qname.ns.recordForName(qname.name)

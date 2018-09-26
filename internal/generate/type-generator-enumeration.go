@@ -7,12 +7,14 @@ import (
 )
 
 type TypeGeneratorEnumeration struct {
-	typ *Type
+	typ  *Type
+	enum *Enumeration
 }
 
-func TypeGeneratorEnumerationNew(typ *Type) *TypeGeneratorEnumeration {
+func TypeGeneratorEnumerationNew(typ *Type, enum *Enumeration) *TypeGeneratorEnumeration {
 	return &TypeGeneratorEnumeration{
-		typ: typ,
+		typ:  typ,
+		enum: enum,
 	}
 }
 
@@ -83,6 +85,6 @@ func (t *TypeGeneratorEnumeration) generateCToGo(pkg string, cVarReference *jen.
 
 func (t *TypeGeneratorEnumeration) generateGoToC(g *jen.Group, goVarReference *jen.Statement) {
 	g.
-		Parens(jen.Qual("C", t.typ.cTypeName)).
+		Parens(jen.Qual("C", t.enum.CType)).
 		Parens(goVarReference)
 }
