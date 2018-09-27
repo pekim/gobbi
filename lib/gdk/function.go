@@ -22,19 +22,7 @@ import "C"
 
 // Unsupported : gdk_beep : no return generator
 
-// CairoGetClipRectangle is a wrapper around the C function gdk_cairo_get_clip_rectangle.
-func CairoGetClipRectangle(cr *cairo.Context) (bool, *Rectangle) {
-	c_cr := (*C.cairo_t)(cr.ToC())
-
-	var c_rect C.GdkRectangle
-
-	retC := C.gdk_cairo_get_clip_rectangle(c_cr, &c_rect)
-	retGo := retC == C.TRUE
-
-	rect := RectangleNewFromC(unsafe.Pointer(c_rect))
-
-	return retGo, rect
-}
+// Unsupported : gdk_cairo_get_clip_rectangle : unsupported parameter rect : Blacklisted record : GdkRectangle
 
 // CairoRegionCreateFromSurface is a wrapper around the C function gdk_cairo_region_create_from_surface.
 func CairoRegionCreateFromSurface(surface *cairo.Surface) *cairo.Region {
@@ -46,20 +34,7 @@ func CairoRegionCreateFromSurface(surface *cairo.Surface) *cairo.Region {
 	return retGo
 }
 
-// ColorParse is a wrapper around the C function gdk_color_parse.
-func ColorParse(spec string) (bool, *Color) {
-	c_spec := C.CString(spec)
-	defer C.free(unsafe.Pointer(c_spec))
-
-	var c_color C.GdkColor
-
-	retC := C.gdk_color_parse(c_spec, &c_color)
-	retGo := retC == C.TRUE
-
-	color := ColorNewFromC(unsafe.Pointer(c_color))
-
-	return retGo, color
-}
+// Blacklisted : gdk_color_parse
 
 // Unsupported : gdk_drag_abort : no return generator
 

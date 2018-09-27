@@ -475,7 +475,7 @@ func (recv *Monitor) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : gdk_monitor_get_geometry : no return generator
+// Unsupported : gdk_monitor_get_geometry : unsupported parameter geometry : Blacklisted record : GdkRectangle
 
 // GetManufacturer is a wrapper around the C function gdk_monitor_get_manufacturer.
 func (recv *Monitor) GetManufacturer() string {
@@ -493,7 +493,7 @@ func (recv *Monitor) GetModel() string {
 	return retGo
 }
 
-// Unsupported : gdk_monitor_get_workarea : no return generator
+// Unsupported : gdk_monitor_get_workarea : unsupported parameter workarea : Blacklisted record : GdkRectangle
 
 // Screen is a wrapper around the C record GdkScreen.
 type Screen struct {
@@ -516,9 +516,9 @@ func (recv *Screen) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : gdk_screen_get_monitor_geometry : no return generator
+// Unsupported : gdk_screen_get_monitor_geometry : unsupported parameter dest : Blacklisted record : GdkRectangle
 
-// Unsupported : gdk_screen_get_monitor_workarea : no return generator
+// Unsupported : gdk_screen_get_monitor_workarea : unsupported parameter dest : Blacklisted record : GdkRectangle
 
 // Unsupported : gdk_screen_set_font_options : no return generator
 
@@ -628,7 +628,7 @@ func WindowNew(parent *Window, attributes *WindowAttr, attributesMask int32) *Wi
 
 // Unsupported : gdk_window_begin_move_drag_for_device : no return generator
 
-// Unsupported : gdk_window_begin_paint_rect : no return generator
+// Unsupported : gdk_window_begin_paint_rect : unsupported parameter rectangle : Blacklisted record : GdkRectangle
 
 // Unsupported : gdk_window_begin_paint_region : no return generator
 
@@ -702,7 +702,7 @@ func (recv *Window) GetEvents() EventMask {
 	return retGo
 }
 
-// Unsupported : gdk_window_get_frame_extents : no return generator
+// Unsupported : gdk_window_get_frame_extents : unsupported parameter rect : Blacklisted record : GdkRectangle
 
 // Unsupported : gdk_window_get_geometry : unsupported parameter x : no type generator for gint, gint*
 
@@ -784,7 +784,7 @@ func (recv *Window) GetWindowType() WindowType {
 
 // Unsupported : gdk_window_invalidate_maybe_recurse : unsupported parameter child_func : no type generator for WindowChildFunc, GdkWindowChildFunc
 
-// Unsupported : gdk_window_invalidate_rect : no return generator
+// Unsupported : gdk_window_invalidate_rect : unsupported parameter rect : Blacklisted record : GdkRectangle
 
 // Unsupported : gdk_window_invalidate_region : no return generator
 

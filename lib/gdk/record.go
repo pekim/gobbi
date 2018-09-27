@@ -1381,60 +1381,7 @@ func (recv *RGBA) ToC() unsafe.Pointer {
 
 // Unsupported : gdk_rgba_free : no return generator
 
-// Rectangle is a wrapper around the C record GdkRectangle.
-type Rectangle struct {
-	native *C.GdkRectangle
-	X      int32
-	Y      int32
-	Width  int32
-	Height int32
-}
-
-func RectangleNewFromC(u unsafe.Pointer) *Rectangle {
-	c := (*C.GdkRectangle)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &Rectangle{
-		Height: (int32)(c.height),
-		Width:  (int32)(c.width),
-		X:      (int32)(c.x),
-		Y:      (int32)(c.y),
-		native: c,
-	}
-
-	return g
-}
-
-func (recv *Rectangle) ToC() unsafe.Pointer {
-	recv.native.x =
-		(C.int)(recv.X)
-	recv.native.y =
-		(C.int)(recv.Y)
-	recv.native.width =
-		(C.int)(recv.Width)
-	recv.native.height =
-		(C.int)(recv.Height)
-
-	return (unsafe.Pointer)(recv.native)
-}
-
-// Intersect is a wrapper around the C function gdk_rectangle_intersect.
-func (recv *Rectangle) Intersect(src2 *Rectangle) (bool, *Rectangle) {
-	c_src2 := (*C.GdkRectangle)(src2.ToC())
-
-	var c_dest C.GdkRectangle
-
-	retC := C.gdk_rectangle_intersect((*C.GdkRectangle)(recv.native), c_src2, &c_dest)
-	retGo := retC == C.TRUE
-
-	dest := RectangleNewFromC(unsafe.Pointer(c_dest))
-
-	return retGo, dest
-}
-
-// Unsupported : gdk_rectangle_union : no return generator
+// Blacklisted : GdkRectangle
 
 // TimeCoord is a wrapper around the C record GdkTimeCoord.
 type TimeCoord struct {

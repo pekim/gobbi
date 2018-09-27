@@ -9,7 +9,10 @@
       <enumeration name="PropertyState" c:type="guint"/>
 
       <function blacklist="true" c:identifier="gdk_atom_intern"/>
+      <function blacklist="true" c:identifier="gdk_cairo_get_clip_rectangle"/>
+      <function blacklist="true" c:identifier="gdk_color_parse"/>
 
-    <record blacklist="true" name="Atom"/>
+      <record blacklist="true" name="Atom"/>
+      <record blacklist="true" name="Rectangle"/>
   </namespace>
 </repository>

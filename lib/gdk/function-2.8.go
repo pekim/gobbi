@@ -23,7 +23,7 @@ func CairoCreate(window *Window) *cairo.Context {
 	return retGo
 }
 
-// Unsupported : gdk_cairo_rectangle : no return generator
+// Unsupported : gdk_cairo_rectangle : unsupported parameter rectangle : Blacklisted record : GdkRectangle
 
 // Unsupported : gdk_cairo_region : no return generator
 
