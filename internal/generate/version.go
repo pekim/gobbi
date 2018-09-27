@@ -3,6 +3,7 @@ package generate
 import (
 	"fmt"
 	"sort"
+	"strings"
 
 	"github.com/blang/semver"
 )
@@ -21,6 +22,8 @@ type Version struct {
 }
 
 func VersionNew(value string) Version {
+	value = strings.TrimSuffix(value, ".")
+
 	version, err := semver.ParseTolerant(value)
 	if err != nil {
 		panic(fmt.Sprintf("Failed to parse verison '%s' : %s", value, err))
