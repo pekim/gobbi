@@ -37,37 +37,10 @@ func PangoContextGetForScreen(screen *Screen) *pango.Context {
 
 // Unsupported : gdk_parse_args : unsupported parameter argc : no type generator for gint, gint*
 
-// SelectionOwnerGetForDisplay is a wrapper around the C function gdk_selection_owner_get_for_display.
-func SelectionOwnerGetForDisplay(display *Display, selection *Atom) *Window {
-	c_display := (*C.GdkDisplay)(display.ToC())
+// Unsupported : gdk_selection_owner_get_for_display : unsupported parameter selection : Blacklisted record : GdkAtom
 
-	c_selection := (C.GdkAtom)(selection.ToC())
+// Unsupported : gdk_selection_owner_set_for_display : unsupported parameter selection : Blacklisted record : GdkAtom
 
-	retC := C.gdk_selection_owner_get_for_display(c_display, c_selection)
-	retGo := WindowNewFromC(unsafe.Pointer(retC))
+// Unsupported : gdk_selection_send_notify_for_display : unsupported parameter selection : Blacklisted record : GdkAtom
 
-	return retGo
-}
-
-// SelectionOwnerSetForDisplay is a wrapper around the C function gdk_selection_owner_set_for_display.
-func SelectionOwnerSetForDisplay(display *Display, owner *Window, selection *Atom, time uint32, sendEvent bool) bool {
-	c_display := (*C.GdkDisplay)(display.ToC())
-
-	c_owner := (*C.GdkWindow)(owner.ToC())
-
-	c_selection := (C.GdkAtom)(selection.ToC())
-
-	c_time_ := (C.guint32)(time)
-
-	c_send_event :=
-		boolToGboolean(sendEvent)
-
-	retC := C.gdk_selection_owner_set_for_display(c_display, c_owner, c_selection, c_time_, c_send_event)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// Unsupported : gdk_selection_send_notify_for_display : no return generator
-
-// Unsupported : gdk_text_property_to_utf8_list_for_display : unsupported parameter text : no param type
+// Unsupported : gdk_text_property_to_utf8_list_for_display : unsupported parameter encoding : Blacklisted record : GdkAtom

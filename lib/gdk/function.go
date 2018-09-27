@@ -18,19 +18,7 @@ import "C"
 
 // Unsupported : gdk_add_option_entries_libgtk_only : no return generator
 
-// AtomIntern is a wrapper around the C function gdk_atom_intern.
-func AtomIntern(atomName string, onlyIfExists bool) Atom {
-	c_atom_name := C.CString(atomName)
-	defer C.free(unsafe.Pointer(c_atom_name))
-
-	c_only_if_exists :=
-		boolToGboolean(onlyIfExists)
-
-	retC := C.gdk_atom_intern(c_atom_name, c_only_if_exists)
-	retGo := AtomNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Unsupported : gdk_atom_intern : return type : Blacklisted record : GdkAtom
 
 // Unsupported : gdk_beep : no return generator
 
@@ -103,15 +91,7 @@ func DragBeginForDevice(window *Window, device *Device, targets *glib.List) *Dra
 
 // Unsupported : gdk_drag_drop : no return generator
 
-// DragGetSelection is a wrapper around the C function gdk_drag_get_selection.
-func DragGetSelection(context *DragContext) Atom {
-	c_context := (*C.GdkDragContext)(context.ToC())
-
-	retC := C.gdk_drag_get_selection(c_context)
-	retGo := AtomNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Unsupported : gdk_drag_get_selection : return type : Blacklisted record : GdkAtom
 
 // DragMotion is a wrapper around the C function gdk_drag_motion.
 func DragMotion(context *DragContext, destWindow *Window, protocol DragProtocol, xRoot int32, yRoot int32, suggestedAction DragAction, possibleActions DragAction, time uint32) bool {
@@ -403,48 +383,25 @@ func PointerIsGrabbed() bool {
 
 // Unsupported : gdk_pre_parse_libgtk_only : no return generator
 
-// Unsupported : gdk_property_change : unsupported parameter data : no type generator for guint8, const guchar*
+// Unsupported : gdk_property_change : unsupported parameter property : Blacklisted record : GdkAtom
 
-// Unsupported : gdk_property_delete : no return generator
+// Unsupported : gdk_property_delete : unsupported parameter property : Blacklisted record : GdkAtom
 
-// Unsupported : gdk_property_get : unsupported parameter actual_format : no type generator for gint, gint*
+// Unsupported : gdk_property_get : unsupported parameter property : Blacklisted record : GdkAtom
 
 // Unsupported : gdk_query_depths : unsupported parameter depths : no param type
 
 // Unsupported : gdk_query_visual_types : unsupported parameter visual_types : no param type
 
-// Unsupported : gdk_selection_convert : no return generator
+// Unsupported : gdk_selection_convert : unsupported parameter selection : Blacklisted record : GdkAtom
 
-// SelectionOwnerGet is a wrapper around the C function gdk_selection_owner_get.
-func SelectionOwnerGet(selection *Atom) *Window {
-	c_selection := (C.GdkAtom)(selection.ToC())
+// Unsupported : gdk_selection_owner_get : unsupported parameter selection : Blacklisted record : GdkAtom
 
-	retC := C.gdk_selection_owner_get(c_selection)
-	retGo := WindowNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// SelectionOwnerSet is a wrapper around the C function gdk_selection_owner_set.
-func SelectionOwnerSet(owner *Window, selection *Atom, time uint32, sendEvent bool) bool {
-	c_owner := (*C.GdkWindow)(owner.ToC())
-
-	c_selection := (C.GdkAtom)(selection.ToC())
-
-	c_time_ := (C.guint32)(time)
-
-	c_send_event :=
-		boolToGboolean(sendEvent)
-
-	retC := C.gdk_selection_owner_set(c_owner, c_selection, c_time_, c_send_event)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
+// Unsupported : gdk_selection_owner_set : unsupported parameter selection : Blacklisted record : GdkAtom
 
 // Unsupported : gdk_selection_property_get : unsupported parameter data : no type generator for guint8, guchar**
 
-// Unsupported : gdk_selection_send_notify : no return generator
+// Unsupported : gdk_selection_send_notify : unsupported parameter selection : Blacklisted record : GdkAtom
 
 // Unsupported : gdk_set_double_click_time : no return generator
 

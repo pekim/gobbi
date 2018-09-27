@@ -252,6 +252,8 @@ func (recv *Display) DeviceIsGrabbed(device *Device) bool {
 
 // Unsupported : gdk_display_put_event : unsupported parameter event : no type generator for Event, const GdkEvent*
 
+// Unsupported : gdk_display_request_selection_notification : unsupported parameter selection : Blacklisted record : GdkAtom
+
 // Unsupported : gdk_display_set_double_click_distance : no return generator
 
 // Unsupported : gdk_display_set_double_click_time : no return generator

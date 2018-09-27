@@ -3,20 +3,9 @@
 
 package gdk
 
-import "unsafe"
-
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <gdk/gdk.h>
 // #include <stdlib.h>
 import "C"
 
-// AtomInternStaticString is a wrapper around the C function gdk_atom_intern_static_string.
-func AtomInternStaticString(atomName string) Atom {
-	c_atom_name := C.CString(atomName)
-	defer C.free(unsafe.Pointer(c_atom_name))
-
-	retC := C.gdk_atom_intern_static_string(c_atom_name)
-	retGo := AtomNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Unsupported : gdk_atom_intern_static_string : return type : Blacklisted record : GdkAtom
