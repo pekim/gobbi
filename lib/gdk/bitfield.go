@@ -49,7 +49,7 @@ const (
 	GDK_ALL_EVENTS_MASK          EventMask = 67108862
 )
 
-type ModifierType C.GdkModifierType
+type ModifierType C.guint
 
 const (
 	GDK_SHIFT_MASK                ModifierType = 1

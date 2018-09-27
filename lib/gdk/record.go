@@ -203,7 +203,7 @@ func (recv *EventButton) ToC() unsafe.Pointer {
 	recv.native.y =
 		(C.gdouble)(recv.Y)
 	recv.native.state =
-		(C.GdkModifierType)(recv.State)
+		(C.guint)(recv.State)
 	recv.native.button =
 		(C.guint)(recv.Button)
 	recv.native.x_root =
@@ -326,7 +326,7 @@ func (recv *EventCrossing) ToC() unsafe.Pointer {
 	recv.native.focus =
 		boolToGboolean(recv.Focus)
 	recv.native.state =
-		(C.GdkModifierType)(recv.State)
+		(C.guint)(recv.State)
 
 	return (unsafe.Pointer)(recv.native)
 }
@@ -496,7 +496,7 @@ func (recv *EventKey) ToC() unsafe.Pointer {
 	recv.native.time =
 		(C.guint32)(recv.Time)
 	recv.native.state =
-		(C.GdkModifierType)(recv.State)
+		(C.guint)(recv.State)
 	recv.native.keyval =
 		(C.guint)(recv.Keyval)
 	recv.native.length =
@@ -562,7 +562,7 @@ func (recv *EventMotion) ToC() unsafe.Pointer {
 	recv.native.y =
 		(C.gdouble)(recv.Y)
 	recv.native.state =
-		(C.GdkModifierType)(recv.State)
+		(C.guint)(recv.State)
 	recv.native.is_hint =
 		(C.gint16)(recv.IsHint)
 	recv.native.x_root =
@@ -609,7 +609,7 @@ func (recv *EventProperty) ToC() unsafe.Pointer {
 	recv.native.time =
 		(C.guint32)(recv.Time)
 	recv.native.state =
-		(C.GdkPropertyState)(recv.State)
+		(C.guint)(recv.State)
 
 	return (unsafe.Pointer)(recv.native)
 }
@@ -706,7 +706,7 @@ func (recv *EventScroll) ToC() unsafe.Pointer {
 	recv.native.y =
 		(C.gdouble)(recv.Y)
 	recv.native.state =
-		(C.GdkModifierType)(recv.State)
+		(C.guint)(recv.State)
 	recv.native.direction =
 		(C.GdkScrollDirection)(recv.Direction)
 	recv.native.x_root =
@@ -874,7 +874,7 @@ func (recv *EventTouch) ToC() unsafe.Pointer {
 	recv.native.y =
 		(C.gdouble)(recv.Y)
 	recv.native.state =
-		(C.GdkModifierType)(recv.State)
+		(C.guint)(recv.State)
 	recv.native.emulating_pointer =
 		boolToGboolean(recv.EmulatingPointer)
 	recv.native.x_root =
@@ -960,7 +960,7 @@ func (recv *EventTouchpadPinch) ToC() unsafe.Pointer {
 	recv.native.y_root =
 		(C.gdouble)(recv.YRoot)
 	recv.native.state =
-		(C.GdkModifierType)(recv.State)
+		(C.guint)(recv.State)
 
 	return (unsafe.Pointer)(recv.native)
 }
@@ -1032,7 +1032,7 @@ func (recv *EventTouchpadSwipe) ToC() unsafe.Pointer {
 	recv.native.y_root =
 		(C.gdouble)(recv.YRoot)
 	recv.native.state =
-		(C.GdkModifierType)(recv.State)
+		(C.guint)(recv.State)
 
 	return (unsafe.Pointer)(recv.native)
 }

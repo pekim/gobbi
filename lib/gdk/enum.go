@@ -305,7 +305,7 @@ const (
 	GDK_PROP_MODE_APPEND  PropMode = 2
 )
 
-type PropertyState C.GdkPropertyState
+type PropertyState C.guint
 
 const (
 	GDK_PROPERTY_NEW_VALUE PropertyState = 0

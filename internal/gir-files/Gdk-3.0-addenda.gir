@@ -5,7 +5,10 @@
             xmlns:glib="http://www.gtk.org/introspection/glib/1.0"
 >
   <namespace>
-    <function blacklist="true" c:identifier="gdk_atom_intern"/>
+      <bitfield name="ModifierType" c:type="guint"/>
+      <enumeration name="PropertyState" c:type="guint"/>
+
+      <function blacklist="true" c:identifier="gdk_atom_intern"/>
 
     <record blacklist="true" name="Atom"/>
   </namespace>
