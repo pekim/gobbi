@@ -5,10 +5,124 @@
             xmlns:glib="http://www.gtk.org/introspection/glib/1.0"
 >
   <namespace>
+    <alias blacklist="true" name="Allocation"/>
+
+    <constant blacklist="true" name="STOCK_ABOUT"/>
+    <constant blacklist="true" name="STOCK_ADD"/>
+    <constant blacklist="true" name="STOCK_APPLY"/>
+    <constant blacklist="true" name="STOCK_BOLD"/>
+    <constant blacklist="true" name="STOCK_CANCEL"/>
+    <constant blacklist="true" name="STOCK_CAPS_LOCK_WARNING"/>
+    <constant blacklist="true" name="STOCK_CDROM"/>
+    <constant blacklist="true" name="STOCK_CLEAR"/>
+    <constant blacklist="true" name="STOCK_CLOSE"/>
+    <constant blacklist="true" name="STOCK_COLOR_PICKER"/>
+    <constant blacklist="true" name="STOCK_CONVERT"/>
+    <constant blacklist="true" name="STOCK_CONNECT"/>
+    <constant blacklist="true" name="STOCK_COPY"/>
+    <constant blacklist="true" name="STOCK_CUT"/>
+    <constant blacklist="true" name="STOCK_DELETE"/>
+    <constant blacklist="true" name="STOCK_DIALOG_AUTHENTICATION"/>
+    <constant blacklist="true" name="STOCK_DIALOG_ERROR"/>
+    <constant blacklist="true" name="STOCK_DIALOG_INFO"/>
+    <constant blacklist="true" name="STOCK_DIALOG_QUESTION"/>
+    <constant blacklist="true" name="STOCK_DIALOG_WARNING"/>
+    <constant blacklist="true" name="STOCK_DIRECTORY"/>
+    <constant blacklist="true" name="STOCK_DISCARD"/>
+    <constant blacklist="true" name="STOCK_DISCONNECT"/>
+    <constant blacklist="true" name="STOCK_DND"/>
+    <constant blacklist="true" name="STOCK_DND_MULTIPLE"/>
+    <constant blacklist="true" name="STOCK_EDIT"/>
+    <constant blacklist="true" name="STOCK_EXECUTE"/>
+    <constant blacklist="true" name="STOCK_FILE"/>
+    <constant blacklist="true" name="STOCK_FIND"/>
+    <constant blacklist="true" name="STOCK_FIND_AND_REPLACE"/>
+    <constant blacklist="true" name="STOCK_FLOPPY"/>
+    <constant blacklist="true" name="STOCK_FULLSCREEN"/>
+    <constant blacklist="true" name="STOCK_GOTO_BOTTOM"/>
+    <constant blacklist="true" name="STOCK_GOTO_FIRST"/>
+    <constant blacklist="true" name="STOCK_GOTO_LAST"/>
+    <constant blacklist="true" name="STOCK_GOTO_TOP"/>
+    <constant blacklist="true" name="STOCK_GO_BACK"/>
+    <constant blacklist="true" name="STOCK_GO_DOWN"/>
+    <constant blacklist="true" name="STOCK_GO_FORWARD"/>
+    <constant blacklist="true" name="STOCK_GO_UP"/>
+    <constant blacklist="true" name="STOCK_HARDDISK"/>
+    <constant blacklist="true" name="STOCK_HELP"/>
+    <constant blacklist="true" name="STOCK_HOME"/>
+    <constant blacklist="true" name="STOCK_INDENT"/>
+    <constant blacklist="true" name="STOCK_INDEX"/>
+    <constant blacklist="true" name="STOCK_INFO"/>
+    <constant blacklist="true" name="STOCK_ITALIC"/>
+    <constant blacklist="true" name="STOCK_JUMP_TO"/>
+    <constant blacklist="true" name="STOCK_JUSTIFY_CENTER"/>
+    <constant blacklist="true" name="STOCK_JUSTIFY_FILL"/>
+    <constant blacklist="true" name="STOCK_JUSTIFY_LEFT"/>
+    <constant blacklist="true" name="STOCK_JUSTIFY_RIGHT"/>
+    <constant blacklist="true" name="STOCK_LEAVE_FULLSCREEN"/>
+    <constant blacklist="true" name="STOCK_MEDIA_FORWARD"/>
+    <constant blacklist="true" name="STOCK_MEDIA_NEXT"/>
+    <constant blacklist="true" name="STOCK_MEDIA_PAUSE"/>
+    <constant blacklist="true" name="STOCK_MEDIA_PLAY"/>
+    <constant blacklist="true" name="STOCK_MEDIA_PREVIOUS"/>
+    <constant blacklist="true" name="STOCK_MEDIA_RECORD"/>
+    <constant blacklist="true" name="STOCK_MEDIA_REWIND"/>
+    <constant blacklist="true" name="STOCK_MEDIA_STOP"/>
+    <constant blacklist="true" name="STOCK_MISSING_IMAGE"/>
+    <constant blacklist="true" name="STOCK_NETWORK"/>
+    <constant blacklist="true" name="STOCK_NEW"/>
+    <constant blacklist="true" name="STOCK_NO"/>
+    <constant blacklist="true" name="STOCK_OK"/>
+    <constant blacklist="true" name="STOCK_OPEN"/>
+    <constant blacklist="true" name="STOCK_ORIENTATION_LANDSCAPE"/>
+    <constant blacklist="true" name="STOCK_ORIENTATION_PORTRAIT"/>
+    <constant blacklist="true" name="STOCK_ORIENTATION_REVERSE_LANDSCAPE"/>
+    <constant blacklist="true" name="STOCK_ORIENTATION_REVERSE_PORTRAIT"/>
+    <constant blacklist="true" name="STOCK_PAGE_SETUP"/>
+    <constant blacklist="true" name="STOCK_PASTE"/>
+    <constant blacklist="true" name="STOCK_PREFERENCES"/>
+    <constant blacklist="true" name="STOCK_PRINT"/>
+    <constant blacklist="true" name="STOCK_PRINT_ERROR"/>
+    <constant blacklist="true" name="STOCK_PRINT_PAUSED"/>
+    <constant blacklist="true" name="STOCK_PRINT_PREVIEW"/>
+    <constant blacklist="true" name="STOCK_PRINT_REPORT"/>
+    <constant blacklist="true" name="STOCK_PRINT_WARNING"/>
+    <constant blacklist="true" name="STOCK_PROPERTIES"/>
+    <constant blacklist="true" name="STOCK_QUIT"/>
+    <constant blacklist="true" name="STOCK_REDO"/>
+    <constant blacklist="true" name="STOCK_REFRESH"/>
+    <constant blacklist="true" name="STOCK_REMOVE"/>
+    <constant blacklist="true" name="STOCK_REVERT_TO_SAVED"/>
+    <constant blacklist="true" name="STOCK_SAVE"/>
+    <constant blacklist="true" name="STOCK_SAVE_AS"/>
+    <constant blacklist="true" name="STOCK_SELECT_ALL"/>
+    <constant blacklist="true" name="STOCK_SELECT_COLOR"/>
+    <constant blacklist="true" name="STOCK_SELECT_FONT"/>
+    <constant blacklist="true" name="STOCK_SORT_ASCENDING"/>
+    <constant blacklist="true" name="STOCK_SORT_DESCENDING"/>
+    <constant blacklist="true" name="STOCK_SPELL_CHECK"/>
+    <constant blacklist="true" name="STOCK_STOP"/>
+    <constant blacklist="true" name="STOCK_STRIKETHROUGH"/>
+    <constant blacklist="true" name="STOCK_UNDELETE"/>
+    <constant blacklist="true" name="STOCK_UNDERLINE"/>
+    <constant blacklist="true" name="STOCK_UNDO"/>
+    <constant blacklist="true" name="STOCK_UNINDENT"/>
+    <constant blacklist="true" name="STOCK_YES"/>
+    <constant blacklist="true" name="STOCK_ZOOM_100"/>
+    <constant blacklist="true" name="STOCK_ZOOM_FIT"/>
+    <constant blacklist="true" name="STOCK_ZOOM_IN"/>
+    <constant blacklist="true" name="STOCK_ZOOM_OUT"/>
+
     <!-- correct version; remove trailing period -->
     <function c:identifier="gtk_render_background" version="3.0"/>
 
-   <class name="Plug" blacklist="true"/>
-   <class name="Socket" blacklist="true"/>
+    <class blacklist="true" name="Plug"/>
+    <class blacklist="true" name="Socket"/>
+    <class blacklist="true" name="StackAccessible"/>
+
+    <record blacklist="true" name="StackAccessibleClass"/>
   </namespace>
 </repository>
+
+
+

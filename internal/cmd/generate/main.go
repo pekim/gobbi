@@ -9,7 +9,7 @@ import (
 func main() {
 	start := time.Now()
 
-	girs := generate.GirNewRoot("Gdk", "3.0")
+	girs := generate.GirNewRoot("Gtk", "3.0")
 
 	parseDuration := time.Now().Sub(start)
 	start = time.Now()
