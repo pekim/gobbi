@@ -8,6 +8,14 @@ package gdk
 // #include <stdlib.h>
 import "C"
 
+type DevicePadFeature C.GdkDevicePadFeature
+
+const (
+	GDK_DEVICE_PAD_FEATURE_BUTTON DevicePadFeature = 0
+	GDK_DEVICE_PAD_FEATURE_RING   DevicePadFeature = 1
+	GDK_DEVICE_PAD_FEATURE_STRIP  DevicePadFeature = 2
+)
+
 type DeviceToolType C.GdkDeviceToolType
 
 const (

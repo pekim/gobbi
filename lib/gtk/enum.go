@@ -355,14 +355,6 @@ const (
 	GTK_PACK_END   PackType = 1
 )
 
-type PadActionType C.GtkPadActionType
-
-const (
-	GTK_PAD_ACTION_BUTTON PadActionType = 0
-	GTK_PAD_ACTION_RING   PadActionType = 1
-	GTK_PAD_ACTION_STRIP  PadActionType = 2
-)
-
 type PageOrientation C.GtkPageOrientation
 
 const (

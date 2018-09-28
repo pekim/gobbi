@@ -6,6 +6,13 @@
 >
   <namespace>
       <bitfield name="ModifierType" c:type="guint"/>
+
+      <class version="3.22" name="DeviceTool"/>
+      <class version="3.22" name="DrawingContext"/>
+      <class version="3.22" name="Monitor"/>
+      <class version="3.22" name="Seat"/>
+
+      <enumeration name="DevicePadFeature" version="3.22"/>
       <enumeration name="PropertyState" c:type="guint"/>
 
       <function blacklist="true" c:identifier="gdk_atom_intern"/>
@@ -14,5 +21,9 @@
 
       <record blacklist="true" name="Atom"/>
       <record blacklist="true" name="Rectangle"/>
+
+      <record version="3.22" name="DevicePadInterface"/>
+      <record version="3.22" name="DrawingContextClass"/>
+      <record version="3.22" name="MonitorClass"/>
   </namespace>
 </repository>

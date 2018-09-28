@@ -43,6 +43,9 @@ func (e *Enumeration) mergeAddenda(addenda *Enumeration) {
 	if addenda.CType != "" {
 		e.CType = addenda.CType
 	}
+	if addenda.Version != "" {
+		e.Version = addenda.Version
+	}
 	e.Members.mergeAddenda(addenda.Members)
 }
 

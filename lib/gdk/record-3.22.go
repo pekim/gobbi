@@ -10,6 +10,48 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
+// DevicePadInterface is a wrapper around the C record GdkDevicePadInterface.
+type DevicePadInterface struct {
+	native *C.GdkDevicePadInterface
+}
+
+func DevicePadInterfaceNewFromC(u unsafe.Pointer) *DevicePadInterface {
+	c := (*C.GdkDevicePadInterface)(u)
+	if c == nil {
+		return nil
+	}
+
+	g := &DevicePadInterface{native: c}
+
+	return g
+}
+
+func (recv *DevicePadInterface) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
+// DrawingContextClass is a wrapper around the C record GdkDrawingContextClass.
+type DrawingContextClass struct {
+	native *C.GdkDrawingContextClass
+}
+
+func DrawingContextClassNewFromC(u unsafe.Pointer) *DrawingContextClass {
+	c := (*C.GdkDrawingContextClass)(u)
+	if c == nil {
+		return nil
+	}
+
+	g := &DrawingContextClass{native: c}
+
+	return g
+}
+
+func (recv *DrawingContextClass) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
 // EventPadAxis is a wrapper around the C record GdkEventPadAxis.
 type EventPadAxis struct {
 	native *C.GdkEventPadAxis
@@ -150,6 +192,27 @@ func (recv *EventPadGroupMode) ToC() unsafe.Pointer {
 		(C.guint)(recv.Group)
 	recv.native.mode =
 		(C.guint)(recv.Mode)
+
+	return (unsafe.Pointer)(recv.native)
+}
+
+// MonitorClass is a wrapper around the C record GdkMonitorClass.
+type MonitorClass struct {
+	native *C.GdkMonitorClass
+}
+
+func MonitorClassNewFromC(u unsafe.Pointer) *MonitorClass {
+	c := (*C.GdkMonitorClass)(u)
+	if c == nil {
+		return nil
+	}
+
+	g := &MonitorClass{native: c}
+
+	return g
+}
+
+func (recv *MonitorClass) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }

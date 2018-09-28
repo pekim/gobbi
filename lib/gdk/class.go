@@ -176,27 +176,6 @@ func (recv *DeviceManager) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// DeviceTool is a wrapper around the C record GdkDeviceTool.
-type DeviceTool struct {
-	native *C.GdkDeviceTool
-}
-
-func DeviceToolNewFromC(u unsafe.Pointer) *DeviceTool {
-	c := (*C.GdkDeviceTool)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &DeviceTool{native: c}
-
-	return g
-}
-
-func (recv *DeviceTool) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // Display is a wrapper around the C record GdkDisplay.
 type Display struct {
 	native *C.GdkDisplay
@@ -320,27 +299,6 @@ func (recv *DragContext) GetDevice() *Device {
 
 // Unsupported : gdk_drag_context_set_hotspot : no return generator
 
-// DrawingContext is a wrapper around the C record GdkDrawingContext.
-type DrawingContext struct {
-	native *C.GdkDrawingContext
-}
-
-func DrawingContextNewFromC(u unsafe.Pointer) *DrawingContext {
-	c := (*C.GdkDrawingContext)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &DrawingContext{native: c}
-
-	return g
-}
-
-func (recv *DrawingContext) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
 // FrameClock is a wrapper around the C record GdkFrameClock.
 type FrameClock struct {
 	native *C.GdkFrameClock
@@ -454,47 +412,6 @@ func (recv *Keymap) LookupKey(key *KeymapKey) uint32 {
 
 // Unsupported : gdk_keymap_translate_keyboard_state : unsupported parameter keyval : no type generator for guint, guint*
 
-// Monitor is a wrapper around the C record GdkMonitor.
-type Monitor struct {
-	native *C.GdkMonitor
-}
-
-func MonitorNewFromC(u unsafe.Pointer) *Monitor {
-	c := (*C.GdkMonitor)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &Monitor{native: c}
-
-	return g
-}
-
-func (recv *Monitor) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
-// Unsupported : gdk_monitor_get_geometry : unsupported parameter geometry : Blacklisted record : GdkRectangle
-
-// GetManufacturer is a wrapper around the C function gdk_monitor_get_manufacturer.
-func (recv *Monitor) GetManufacturer() string {
-	retC := C.gdk_monitor_get_manufacturer((*C.GdkMonitor)(recv.native))
-	retGo := C.GoString(retC)
-
-	return retGo
-}
-
-// GetModel is a wrapper around the C function gdk_monitor_get_model.
-func (recv *Monitor) GetModel() string {
-	retC := C.gdk_monitor_get_model((*C.GdkMonitor)(recv.native))
-	retGo := C.GoString(retC)
-
-	return retGo
-}
-
-// Unsupported : gdk_monitor_get_workarea : unsupported parameter workarea : Blacklisted record : GdkRectangle
-
 // Screen is a wrapper around the C record GdkScreen.
 type Screen struct {
 	native *C.GdkScreen
@@ -523,40 +440,6 @@ func (recv *Screen) ToC() unsafe.Pointer {
 // Unsupported : gdk_screen_set_font_options : no return generator
 
 // Unsupported : gdk_screen_set_resolution : no return generator
-
-// Seat is a wrapper around the C record GdkSeat.
-type Seat struct {
-	native *C.GdkSeat
-	// parent_instance : record
-}
-
-func SeatNewFromC(u unsafe.Pointer) *Seat {
-	c := (*C.GdkSeat)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &Seat{native: c}
-
-	return g
-}
-
-func (recv *Seat) ToC() unsafe.Pointer {
-
-	return (unsafe.Pointer)(recv.native)
-}
-
-// GetDisplay is a wrapper around the C function gdk_seat_get_display.
-func (recv *Seat) GetDisplay() *Display {
-	retC := C.gdk_seat_get_display((*C.GdkSeat)(recv.native))
-	retGo := DisplayNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// Unsupported : gdk_seat_grab : unsupported parameter event : no type generator for Event, const GdkEvent*
-
-// Unsupported : gdk_seat_ungrab : no return generator
 
 // Visual is a wrapper around the C record GdkVisual.
 type Visual struct {

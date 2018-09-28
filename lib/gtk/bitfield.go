@@ -186,14 +186,6 @@ const (
 	GTK_STATE_FLAG_DROP_ACTIVE  StateFlags = 4096
 )
 
-type StyleContextPrintFlags C.GtkStyleContextPrintFlags
-
-const (
-	GTK_STYLE_CONTEXT_PRINT_NONE       StyleContextPrintFlags = 0
-	GTK_STYLE_CONTEXT_PRINT_RECURSE    StyleContextPrintFlags = 1
-	GTK_STYLE_CONTEXT_PRINT_SHOW_STYLE StyleContextPrintFlags = 2
-)
-
 type TargetFlags C.GtkTargetFlags
 
 const (

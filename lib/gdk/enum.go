@@ -129,14 +129,6 @@ const (
 	GDK_CURSOR_IS_PIXMAP    CursorType = -1
 )
 
-type DevicePadFeature C.GdkDevicePadFeature
-
-const (
-	GDK_DEVICE_PAD_FEATURE_BUTTON DevicePadFeature = 0
-	GDK_DEVICE_PAD_FEATURE_RING   DevicePadFeature = 1
-	GDK_DEVICE_PAD_FEATURE_STRIP  DevicePadFeature = 2
-)
-
 type DeviceType C.GdkDeviceType
 
 const (

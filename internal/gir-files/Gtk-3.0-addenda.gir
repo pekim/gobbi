@@ -7,6 +7,8 @@
   <namespace>
     <alias blacklist="true" name="Allocation"/>
 
+    <bitfield name="StyleContextPrintFlags" version="3.20"/>
+
     <constant blacklist="true" name="STOCK_ABOUT"/>
     <constant blacklist="true" name="STOCK_ADD"/>
     <constant blacklist="true" name="STOCK_APPLY"/>
@@ -113,12 +115,34 @@
     <constant blacklist="true" name="STOCK_ZOOM_IN"/>
     <constant blacklist="true" name="STOCK_ZOOM_OUT"/>
 
+    <enumeration version="3.22" name="PadActionType"/>
+
     <!-- correct version; remove trailing period -->
     <function c:identifier="gtk_render_background" version="3.0"/>
 
     <class blacklist="true" name="Plug"/>
     <class blacklist="true" name="Socket"/>
     <class blacklist="true" name="StackAccessible"/>
+
+    <class version="3.20" name="FileChooserNative"/>
+    <class version="3.20" name="NativeDialog"/>
+    <class version="3.20" name="PadController"/>
+    <class version="3.20" name="ShortcutLabel"/>
+    <class version="3.20" name="ShortcutsGroup"/>
+    <class version="3.20" name="ShortcutsSection"/>
+    <class version="3.20" name="ShortcutsShortcut"/>
+    <class version="3.20" name="ShortcutsWindow"/>
+
+    <record version="3.20" name="FileChooserNativeClass"/>
+    <record version="3.20" name="NativeDialogClass"/>
+    <record version="3.20" name="PadActionEntry"/>
+    <record version="3.20" name="PadActionType"/>
+    <record version="3.20" name="PadControllerClass"/>
+    <record version="3.20" name="ShortcutLabelClass"/>
+    <record version="3.20" name="ShortcutsGroupClass"/>
+    <record version="3.20" name="ShortcutsSectionClass"/>
+    <record version="3.20" name="ShortcutsShortcutClass"/>
+    <record version="3.20" name="ShortcutsWindowClass"/>
 
     <record blacklist="true" name="StackAccessibleClass"/>
     <record name="ContainerClass">
