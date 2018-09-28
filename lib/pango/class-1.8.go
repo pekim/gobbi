@@ -37,25 +37,128 @@ func (recv *Renderer) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : pango_renderer_activate : no return generator
+// Activate is a wrapper around the C function pango_renderer_activate.
+func (recv *Renderer) Activate() {
+	C.pango_renderer_activate((*C.PangoRenderer)(recv.native))
 
-// Unsupported : pango_renderer_deactivate : no return generator
+	return
+}
 
-// Unsupported : pango_renderer_draw_error_underline : no return generator
+// Deactivate is a wrapper around the C function pango_renderer_deactivate.
+func (recv *Renderer) Deactivate() {
+	C.pango_renderer_deactivate((*C.PangoRenderer)(recv.native))
 
-// Unsupported : pango_renderer_draw_glyph : no return generator
+	return
+}
 
-// Unsupported : pango_renderer_draw_glyph_item : no return generator
+// DrawErrorUnderline is a wrapper around the C function pango_renderer_draw_error_underline.
+func (recv *Renderer) DrawErrorUnderline(x int32, y int32, width int32, height int32) {
+	c_x := (C.int)(x)
 
-// Unsupported : pango_renderer_draw_glyphs : no return generator
+	c_y := (C.int)(y)
 
-// Unsupported : pango_renderer_draw_layout : no return generator
+	c_width := (C.int)(width)
 
-// Unsupported : pango_renderer_draw_layout_line : no return generator
+	c_height := (C.int)(height)
 
-// Unsupported : pango_renderer_draw_rectangle : no return generator
+	C.pango_renderer_draw_error_underline((*C.PangoRenderer)(recv.native), c_x, c_y, c_width, c_height)
 
-// Unsupported : pango_renderer_draw_trapezoid : no return generator
+	return
+}
+
+// DrawGlyph is a wrapper around the C function pango_renderer_draw_glyph.
+func (recv *Renderer) DrawGlyph(font *Font, glyph Glyph, x float64, y float64) {
+	c_font := (*C.PangoFont)(font.ToC())
+
+	c_glyph := (C.PangoGlyph)(glyph)
+
+	c_x := (C.double)(x)
+
+	c_y := (C.double)(y)
+
+	C.pango_renderer_draw_glyph((*C.PangoRenderer)(recv.native), c_font, c_glyph, c_x, c_y)
+
+	return
+}
+
+// DrawGlyphs is a wrapper around the C function pango_renderer_draw_glyphs.
+func (recv *Renderer) DrawGlyphs(font *Font, glyphs *GlyphString, x int32, y int32) {
+	c_font := (*C.PangoFont)(font.ToC())
+
+	c_glyphs := (*C.PangoGlyphString)(glyphs.ToC())
+
+	c_x := (C.int)(x)
+
+	c_y := (C.int)(y)
+
+	C.pango_renderer_draw_glyphs((*C.PangoRenderer)(recv.native), c_font, c_glyphs, c_x, c_y)
+
+	return
+}
+
+// DrawLayout is a wrapper around the C function pango_renderer_draw_layout.
+func (recv *Renderer) DrawLayout(layout *Layout, x int32, y int32) {
+	c_layout := (*C.PangoLayout)(layout.ToC())
+
+	c_x := (C.int)(x)
+
+	c_y := (C.int)(y)
+
+	C.pango_renderer_draw_layout((*C.PangoRenderer)(recv.native), c_layout, c_x, c_y)
+
+	return
+}
+
+// DrawLayoutLine is a wrapper around the C function pango_renderer_draw_layout_line.
+func (recv *Renderer) DrawLayoutLine(line *LayoutLine, x int32, y int32) {
+	c_line := (*C.PangoLayoutLine)(line.ToC())
+
+	c_x := (C.int)(x)
+
+	c_y := (C.int)(y)
+
+	C.pango_renderer_draw_layout_line((*C.PangoRenderer)(recv.native), c_line, c_x, c_y)
+
+	return
+}
+
+// DrawRectangle is a wrapper around the C function pango_renderer_draw_rectangle.
+func (recv *Renderer) DrawRectangle(part RenderPart, x int32, y int32, width int32, height int32) {
+	c_part := (C.PangoRenderPart)(part)
+
+	c_x := (C.int)(x)
+
+	c_y := (C.int)(y)
+
+	c_width := (C.int)(width)
+
+	c_height := (C.int)(height)
+
+	C.pango_renderer_draw_rectangle((*C.PangoRenderer)(recv.native), c_part, c_x, c_y, c_width, c_height)
+
+	return
+}
+
+// DrawTrapezoid is a wrapper around the C function pango_renderer_draw_trapezoid.
+func (recv *Renderer) DrawTrapezoid(part RenderPart, y1 float64, x11 float64, x21 float64, y2 float64, x12 float64, x22 float64) {
+	c_part := (C.PangoRenderPart)(part)
+
+	c_y1_ := (C.double)(y1)
+
+	c_x11 := (C.double)(x11)
+
+	c_x21 := (C.double)(x21)
+
+	c_y2 := (C.double)(y2)
+
+	c_x12 := (C.double)(x12)
+
+	c_x22 := (C.double)(x22)
+
+	C.pango_renderer_draw_trapezoid((*C.PangoRenderer)(recv.native), c_part, c_y1_, c_x11, c_x21, c_y2, c_x12, c_x22)
+
+	return
+}
 
 // GetColor is a wrapper around the C function pango_renderer_get_color.
 func (recv *Renderer) GetColor(part RenderPart) *Color {
@@ -75,10 +178,31 @@ func (recv *Renderer) GetMatrix() *Matrix {
 	return retGo
 }
 
-// Unsupported : pango_renderer_part_changed : no return generator
+// PartChanged is a wrapper around the C function pango_renderer_part_changed.
+func (recv *Renderer) PartChanged(part RenderPart) {
+	c_part := (C.PangoRenderPart)(part)
 
-// Unsupported : pango_renderer_set_alpha : no return generator
+	C.pango_renderer_part_changed((*C.PangoRenderer)(recv.native), c_part)
 
-// Unsupported : pango_renderer_set_color : no return generator
+	return
+}
 
-// Unsupported : pango_renderer_set_matrix : no return generator
+// SetColor is a wrapper around the C function pango_renderer_set_color.
+func (recv *Renderer) SetColor(part RenderPart, color *Color) {
+	c_part := (C.PangoRenderPart)(part)
+
+	c_color := (*C.PangoColor)(color.ToC())
+
+	C.pango_renderer_set_color((*C.PangoRenderer)(recv.native), c_part, c_color)
+
+	return
+}
+
+// SetMatrix is a wrapper around the C function pango_renderer_set_matrix.
+func (recv *Renderer) SetMatrix(matrix *Matrix) {
+	c_matrix := (*C.PangoMatrix)(matrix.ToC())
+
+	C.pango_renderer_set_matrix((*C.PangoRenderer)(recv.native), c_matrix)
+
+	return
+}

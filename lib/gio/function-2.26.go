@@ -91,9 +91,23 @@ func BusOwnNameWithClosures(busType BusType, name string, flags BusNameOwnerFlag
 	return retGo
 }
 
-// Unsupported : g_bus_unown_name : no return generator
+// BusUnownName is a wrapper around the C function g_bus_unown_name.
+func BusUnownName(ownerId uint32) {
+	c_owner_id := (C.guint)(ownerId)
 
-// Unsupported : g_bus_unwatch_name : no return generator
+	C.g_bus_unown_name(c_owner_id)
+
+	return
+}
+
+// BusUnwatchName is a wrapper around the C function g_bus_unwatch_name.
+func BusUnwatchName(watcherId uint32) {
+	c_watcher_id := (C.guint)(watcherId)
+
+	C.g_bus_unwatch_name(c_watcher_id)
+
+	return
+}
 
 // Unsupported : g_bus_watch_name : unsupported parameter name_appeared_handler : no type generator for BusNameAppearedCallback, GBusNameAppearedCallback
 

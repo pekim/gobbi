@@ -97,9 +97,23 @@ func ResourcesOpenStream(path string, lookupFlags ResourceLookupFlags) (*InputSt
 	return retGo, goThrowableError
 }
 
-// Unsupported : g_resources_register : no return generator
+// ResourcesRegister is a wrapper around the C function g_resources_register.
+func ResourcesRegister(resource *Resource) {
+	c_resource := (*C.GResource)(resource.ToC())
 
-// Unsupported : g_resources_unregister : no return generator
+	C.g_resources_register(c_resource)
+
+	return
+}
+
+// ResourcesUnregister is a wrapper around the C function g_resources_unregister.
+func ResourcesUnregister(resource *Resource) {
+	c_resource := (*C.GResource)(resource.ToC())
+
+	C.g_resources_unregister(c_resource)
+
+	return
+}
 
 // SettingsSchemaSourceGetDefault is a wrapper around the C function g_settings_schema_source_get_default.
 func SettingsSchemaSourceGetDefault() *SettingsSchemaSource {

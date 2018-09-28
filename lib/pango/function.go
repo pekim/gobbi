@@ -149,7 +149,23 @@ func AttrWeightNew(weight Weight) *Attribute {
 
 // Blacklisted : pango_config_key_get_system
 
-// Unsupported : pango_default_break : no return generator
+// DefaultBreak is a wrapper around the C function pango_default_break.
+func DefaultBreak(text string, length int32, analysis *Analysis, attrs *LogAttr, attrsLen int32) {
+	c_text := C.CString(text)
+	defer C.free(unsafe.Pointer(c_text))
+
+	c_length := (C.int)(length)
+
+	c_analysis := (*C.PangoAnalysis)(analysis.ToC())
+
+	c_attrs := (*C.PangoLogAttr)(attrs.ToC())
+
+	c_attrs_len := (C.int)(attrsLen)
+
+	C.pango_default_break(c_text, c_length, c_analysis, c_attrs, c_attrs_len)
+
+	return
+}
 
 // Unsupported : pango_find_map : return type : Blacklisted record : PangoMap
 
@@ -238,7 +254,21 @@ func ReorderItems(logicalItems *glib.List) *glib.List {
 
 // Unsupported : pango_scan_word : unsupported parameter pos : in string with indirection level of 2
 
-// Unsupported : pango_shape : no return generator
+// Shape is a wrapper around the C function pango_shape.
+func Shape(text string, length int32, analysis *Analysis, glyphs *GlyphString) {
+	c_text := C.CString(text)
+	defer C.free(unsafe.Pointer(c_text))
+
+	c_length := (C.gint)(length)
+
+	c_analysis := (*C.PangoAnalysis)(analysis.ToC())
+
+	c_glyphs := (*C.PangoGlyphString)(glyphs.ToC())
+
+	C.pango_shape(c_text, c_length, c_analysis, c_glyphs)
+
+	return
+}
 
 // Unsupported : pango_skip_space : unsupported parameter pos : in string with indirection level of 2
 

@@ -3,7 +3,9 @@
 package gtk
 
 import (
+	cairo "github.com/pekim/gobbi/lib/cairo"
 	gdk "github.com/pekim/gobbi/lib/gdk"
+	gdkpixbuf "github.com/pekim/gobbi/lib/gdkpixbuf"
 	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	pango "github.com/pekim/gobbi/lib/pango"
@@ -64,7 +66,14 @@ func AcceleratorName(acceleratorKey uint32, acceleratorMods gdk.ModifierType) st
 
 // Unsupported : gtk_accelerator_parse : unsupported parameter accelerator_key : no type generator for guint, guint*
 
-// Unsupported : gtk_accelerator_set_default_mod_mask : no return generator
+// AcceleratorSetDefaultModMask is a wrapper around the C function gtk_accelerator_set_default_mod_mask.
+func AcceleratorSetDefaultModMask(defaultModMask gdk.ModifierType) {
+	c_default_mod_mask := (C.GdkModifierType)(defaultModMask)
+
+	C.gtk_accelerator_set_default_mod_mask(c_default_mod_mask)
+
+	return
+}
 
 // AcceleratorValid is a wrapper around the C function gtk_accelerator_valid.
 func AcceleratorValid(keyval uint32, modifiers gdk.ModifierType) bool {
@@ -78,9 +87,36 @@ func AcceleratorValid(keyval uint32, modifiers gdk.ModifierType) bool {
 	return retGo
 }
 
-// Unsupported : gtk_binding_entry_add_signall : no return generator
+// BindingEntryAddSignall is a wrapper around the C function gtk_binding_entry_add_signall.
+func BindingEntryAddSignall(bindingSet *BindingSet, keyval uint32, modifiers gdk.ModifierType, signalName string, bindingArgs *glib.SList) {
+	c_binding_set := (*C.GtkBindingSet)(bindingSet.ToC())
 
-// Unsupported : gtk_binding_entry_remove : no return generator
+	c_keyval := (C.guint)(keyval)
+
+	c_modifiers := (C.GdkModifierType)(modifiers)
+
+	c_signal_name := C.CString(signalName)
+	defer C.free(unsafe.Pointer(c_signal_name))
+
+	c_binding_args := (*C.GSList)(bindingArgs.ToC())
+
+	C.gtk_binding_entry_add_signall(c_binding_set, c_keyval, c_modifiers, c_signal_name, c_binding_args)
+
+	return
+}
+
+// BindingEntryRemove is a wrapper around the C function gtk_binding_entry_remove.
+func BindingEntryRemove(bindingSet *BindingSet, keyval uint32, modifiers gdk.ModifierType) {
+	c_binding_set := (*C.GtkBindingSet)(bindingSet.ToC())
+
+	c_keyval := (C.guint)(keyval)
+
+	c_modifiers := (C.GdkModifierType)(modifiers)
+
+	C.gtk_binding_entry_remove(c_binding_set, c_keyval, c_modifiers)
+
+	return
+}
 
 // BindingSetByClass is a wrapper around the C function gtk_binding_set_by_class.
 func BindingSetByClass(objectClass uintptr) *BindingSet {
@@ -158,7 +194,12 @@ func CssProviderErrorQuark() glib.Quark {
 	return retGo
 }
 
-// Unsupported : gtk_disable_setlocale : no return generator
+// DisableSetlocale is a wrapper around the C function gtk_disable_setlocale.
+func DisableSetlocale() {
+	C.gtk_disable_setlocale()
+
+	return
+}
 
 // DistributeNaturalAllocation is a wrapper around the C function gtk_distribute_natural_allocation.
 func DistributeNaturalAllocation(extraSpace int32, nRequestedSizes uint32, sizes *RequestedSize) int32 {
@@ -174,7 +215,22 @@ func DistributeNaturalAllocation(extraSpace int32, nRequestedSizes uint32, sizes
 	return retGo
 }
 
-// Unsupported : gtk_drag_finish : no return generator
+// DragFinish is a wrapper around the C function gtk_drag_finish.
+func DragFinish(context *gdk.DragContext, success bool, del bool, time uint32) {
+	c_context := (*C.GdkDragContext)(context.ToC())
+
+	c_success :=
+		boolToGboolean(success)
+
+	c_del :=
+		boolToGboolean(del)
+
+	c_time_ := (C.guint32)(time)
+
+	C.gtk_drag_finish(c_context, c_success, c_del, c_time_)
+
+	return
+}
 
 // DragGetSourceWidget is a wrapper around the C function gtk_drag_get_source_widget.
 func DragGetSourceWidget(context *gdk.DragContext) *Widget {
@@ -186,15 +242,71 @@ func DragGetSourceWidget(context *gdk.DragContext) *Widget {
 	return retGo
 }
 
-// Unsupported : gtk_drag_set_icon_default : no return generator
+// DragSetIconDefault is a wrapper around the C function gtk_drag_set_icon_default.
+func DragSetIconDefault(context *gdk.DragContext) {
+	c_context := (*C.GdkDragContext)(context.ToC())
 
-// Unsupported : gtk_drag_set_icon_pixbuf : no return generator
+	C.gtk_drag_set_icon_default(c_context)
 
-// Unsupported : gtk_drag_set_icon_stock : no return generator
+	return
+}
 
-// Unsupported : gtk_drag_set_icon_surface : no return generator
+// DragSetIconPixbuf is a wrapper around the C function gtk_drag_set_icon_pixbuf.
+func DragSetIconPixbuf(context *gdk.DragContext, pixbuf *gdkpixbuf.Pixbuf, hotX int32, hotY int32) {
+	c_context := (*C.GdkDragContext)(context.ToC())
 
-// Unsupported : gtk_drag_set_icon_widget : no return generator
+	c_pixbuf := (*C.GdkPixbuf)(pixbuf.ToC())
+
+	c_hot_x := (C.gint)(hotX)
+
+	c_hot_y := (C.gint)(hotY)
+
+	C.gtk_drag_set_icon_pixbuf(c_context, c_pixbuf, c_hot_x, c_hot_y)
+
+	return
+}
+
+// DragSetIconStock is a wrapper around the C function gtk_drag_set_icon_stock.
+func DragSetIconStock(context *gdk.DragContext, stockId string, hotX int32, hotY int32) {
+	c_context := (*C.GdkDragContext)(context.ToC())
+
+	c_stock_id := C.CString(stockId)
+	defer C.free(unsafe.Pointer(c_stock_id))
+
+	c_hot_x := (C.gint)(hotX)
+
+	c_hot_y := (C.gint)(hotY)
+
+	C.gtk_drag_set_icon_stock(c_context, c_stock_id, c_hot_x, c_hot_y)
+
+	return
+}
+
+// DragSetIconSurface is a wrapper around the C function gtk_drag_set_icon_surface.
+func DragSetIconSurface(context *gdk.DragContext, surface *cairo.Surface) {
+	c_context := (*C.GdkDragContext)(context.ToC())
+
+	c_surface := (*C.cairo_surface_t)(surface.ToC())
+
+	C.gtk_drag_set_icon_surface(c_context, c_surface)
+
+	return
+}
+
+// DragSetIconWidget is a wrapper around the C function gtk_drag_set_icon_widget.
+func DragSetIconWidget(context *gdk.DragContext, widget *Widget, hotX int32, hotY int32) {
+	c_context := (*C.GdkDragContext)(context.ToC())
+
+	c_widget := (*C.GtkWidget)(widget.ToC())
+
+	c_hot_x := (C.gint)(hotX)
+
+	c_hot_y := (C.gint)(hotY)
+
+	C.gtk_drag_set_icon_widget(c_context, c_widget, c_hot_x, c_hot_y)
+
+	return
+}
 
 // EventsPending is a wrapper around the C function gtk_events_pending.
 func EventsPending() bool {
@@ -282,9 +394,21 @@ func IconThemeErrorQuark() glib.Quark {
 
 // Unsupported : gtk_key_snooper_install : unsupported parameter snooper : no type generator for KeySnoopFunc, GtkKeySnoopFunc
 
-// Unsupported : gtk_key_snooper_remove : no return generator
+// KeySnooperRemove is a wrapper around the C function gtk_key_snooper_remove.
+func KeySnooperRemove(snooperHandlerId uint32) {
+	c_snooper_handler_id := (C.guint)(snooperHandlerId)
 
-// Unsupported : gtk_main : no return generator
+	C.gtk_key_snooper_remove(c_snooper_handler_id)
+
+	return
+}
+
+// Main is a wrapper around the C function gtk_main.
+func Main() {
+	C.gtk_main()
+
+	return
+}
 
 // Unsupported : gtk_main_do_event : unsupported parameter event : no type generator for Gdk.Event, GdkEvent*
 
@@ -315,53 +439,594 @@ func MainLevel() uint32 {
 	return retGo
 }
 
-// Unsupported : gtk_main_quit : no return generator
+// MainQuit is a wrapper around the C function gtk_main_quit.
+func MainQuit() {
+	C.gtk_main_quit()
 
-// Unsupported : gtk_paint_arrow : no return generator
+	return
+}
 
-// Unsupported : gtk_paint_box : no return generator
+// PaintArrow is a wrapper around the C function gtk_paint_arrow.
+func PaintArrow(style *Style, cr *cairo.Context, stateType StateType, shadowType ShadowType, widget *Widget, detail string, arrowType ArrowType, fill bool, x int32, y int32, width int32, height int32) {
+	c_style := (*C.GtkStyle)(style.ToC())
 
-// Unsupported : gtk_paint_box_gap : no return generator
+	c_cr := (*C.cairo_t)(cr.ToC())
 
-// Unsupported : gtk_paint_check : no return generator
+	c_state_type := (C.GtkStateType)(stateType)
 
-// Unsupported : gtk_paint_diamond : no return generator
+	c_shadow_type := (C.GtkShadowType)(shadowType)
 
-// Unsupported : gtk_paint_expander : no return generator
+	c_widget := (*C.GtkWidget)(widget.ToC())
 
-// Unsupported : gtk_paint_extension : no return generator
+	c_detail := C.CString(detail)
+	defer C.free(unsafe.Pointer(c_detail))
 
-// Unsupported : gtk_paint_flat_box : no return generator
+	c_arrow_type := (C.GtkArrowType)(arrowType)
 
-// Unsupported : gtk_paint_focus : no return generator
+	c_fill :=
+		boolToGboolean(fill)
 
-// Unsupported : gtk_paint_handle : no return generator
+	c_x := (C.gint)(x)
 
-// Unsupported : gtk_paint_hline : no return generator
+	c_y := (C.gint)(y)
 
-// Unsupported : gtk_paint_layout : no return generator
+	c_width := (C.gint)(width)
 
-// Unsupported : gtk_paint_option : no return generator
+	c_height := (C.gint)(height)
 
-// Unsupported : gtk_paint_resize_grip : no return generator
+	C.gtk_paint_arrow(c_style, c_cr, c_state_type, c_shadow_type, c_widget, c_detail, c_arrow_type, c_fill, c_x, c_y, c_width, c_height)
 
-// Unsupported : gtk_paint_shadow : no return generator
+	return
+}
 
-// Unsupported : gtk_paint_shadow_gap : no return generator
+// PaintBox is a wrapper around the C function gtk_paint_box.
+func PaintBox(style *Style, cr *cairo.Context, stateType StateType, shadowType ShadowType, widget *Widget, detail string, x int32, y int32, width int32, height int32) {
+	c_style := (*C.GtkStyle)(style.ToC())
 
-// Unsupported : gtk_paint_slider : no return generator
+	c_cr := (*C.cairo_t)(cr.ToC())
 
-// Unsupported : gtk_paint_spinner : no return generator
+	c_state_type := (C.GtkStateType)(stateType)
 
-// Unsupported : gtk_paint_tab : no return generator
+	c_shadow_type := (C.GtkShadowType)(shadowType)
 
-// Unsupported : gtk_paint_vline : no return generator
+	c_widget := (*C.GtkWidget)(widget.ToC())
+
+	c_detail := C.CString(detail)
+	defer C.free(unsafe.Pointer(c_detail))
+
+	c_x := (C.gint)(x)
+
+	c_y := (C.gint)(y)
+
+	c_width := (C.gint)(width)
+
+	c_height := (C.gint)(height)
+
+	C.gtk_paint_box(c_style, c_cr, c_state_type, c_shadow_type, c_widget, c_detail, c_x, c_y, c_width, c_height)
+
+	return
+}
+
+// PaintBoxGap is a wrapper around the C function gtk_paint_box_gap.
+func PaintBoxGap(style *Style, cr *cairo.Context, stateType StateType, shadowType ShadowType, widget *Widget, detail string, x int32, y int32, width int32, height int32, gapSide PositionType, gapX int32, gapWidth int32) {
+	c_style := (*C.GtkStyle)(style.ToC())
+
+	c_cr := (*C.cairo_t)(cr.ToC())
+
+	c_state_type := (C.GtkStateType)(stateType)
+
+	c_shadow_type := (C.GtkShadowType)(shadowType)
+
+	c_widget := (*C.GtkWidget)(widget.ToC())
+
+	c_detail := C.CString(detail)
+	defer C.free(unsafe.Pointer(c_detail))
+
+	c_x := (C.gint)(x)
+
+	c_y := (C.gint)(y)
+
+	c_width := (C.gint)(width)
+
+	c_height := (C.gint)(height)
+
+	c_gap_side := (C.GtkPositionType)(gapSide)
+
+	c_gap_x := (C.gint)(gapX)
+
+	c_gap_width := (C.gint)(gapWidth)
+
+	C.gtk_paint_box_gap(c_style, c_cr, c_state_type, c_shadow_type, c_widget, c_detail, c_x, c_y, c_width, c_height, c_gap_side, c_gap_x, c_gap_width)
+
+	return
+}
+
+// PaintCheck is a wrapper around the C function gtk_paint_check.
+func PaintCheck(style *Style, cr *cairo.Context, stateType StateType, shadowType ShadowType, widget *Widget, detail string, x int32, y int32, width int32, height int32) {
+	c_style := (*C.GtkStyle)(style.ToC())
+
+	c_cr := (*C.cairo_t)(cr.ToC())
+
+	c_state_type := (C.GtkStateType)(stateType)
+
+	c_shadow_type := (C.GtkShadowType)(shadowType)
+
+	c_widget := (*C.GtkWidget)(widget.ToC())
+
+	c_detail := C.CString(detail)
+	defer C.free(unsafe.Pointer(c_detail))
+
+	c_x := (C.gint)(x)
+
+	c_y := (C.gint)(y)
+
+	c_width := (C.gint)(width)
+
+	c_height := (C.gint)(height)
+
+	C.gtk_paint_check(c_style, c_cr, c_state_type, c_shadow_type, c_widget, c_detail, c_x, c_y, c_width, c_height)
+
+	return
+}
+
+// PaintDiamond is a wrapper around the C function gtk_paint_diamond.
+func PaintDiamond(style *Style, cr *cairo.Context, stateType StateType, shadowType ShadowType, widget *Widget, detail string, x int32, y int32, width int32, height int32) {
+	c_style := (*C.GtkStyle)(style.ToC())
+
+	c_cr := (*C.cairo_t)(cr.ToC())
+
+	c_state_type := (C.GtkStateType)(stateType)
+
+	c_shadow_type := (C.GtkShadowType)(shadowType)
+
+	c_widget := (*C.GtkWidget)(widget.ToC())
+
+	c_detail := C.CString(detail)
+	defer C.free(unsafe.Pointer(c_detail))
+
+	c_x := (C.gint)(x)
+
+	c_y := (C.gint)(y)
+
+	c_width := (C.gint)(width)
+
+	c_height := (C.gint)(height)
+
+	C.gtk_paint_diamond(c_style, c_cr, c_state_type, c_shadow_type, c_widget, c_detail, c_x, c_y, c_width, c_height)
+
+	return
+}
+
+// PaintExpander is a wrapper around the C function gtk_paint_expander.
+func PaintExpander(style *Style, cr *cairo.Context, stateType StateType, widget *Widget, detail string, x int32, y int32, expanderStyle ExpanderStyle) {
+	c_style := (*C.GtkStyle)(style.ToC())
+
+	c_cr := (*C.cairo_t)(cr.ToC())
+
+	c_state_type := (C.GtkStateType)(stateType)
+
+	c_widget := (*C.GtkWidget)(widget.ToC())
+
+	c_detail := C.CString(detail)
+	defer C.free(unsafe.Pointer(c_detail))
+
+	c_x := (C.gint)(x)
+
+	c_y := (C.gint)(y)
+
+	c_expander_style := (C.GtkExpanderStyle)(expanderStyle)
+
+	C.gtk_paint_expander(c_style, c_cr, c_state_type, c_widget, c_detail, c_x, c_y, c_expander_style)
+
+	return
+}
+
+// PaintExtension is a wrapper around the C function gtk_paint_extension.
+func PaintExtension(style *Style, cr *cairo.Context, stateType StateType, shadowType ShadowType, widget *Widget, detail string, x int32, y int32, width int32, height int32, gapSide PositionType) {
+	c_style := (*C.GtkStyle)(style.ToC())
+
+	c_cr := (*C.cairo_t)(cr.ToC())
+
+	c_state_type := (C.GtkStateType)(stateType)
+
+	c_shadow_type := (C.GtkShadowType)(shadowType)
+
+	c_widget := (*C.GtkWidget)(widget.ToC())
+
+	c_detail := C.CString(detail)
+	defer C.free(unsafe.Pointer(c_detail))
+
+	c_x := (C.gint)(x)
+
+	c_y := (C.gint)(y)
+
+	c_width := (C.gint)(width)
+
+	c_height := (C.gint)(height)
+
+	c_gap_side := (C.GtkPositionType)(gapSide)
+
+	C.gtk_paint_extension(c_style, c_cr, c_state_type, c_shadow_type, c_widget, c_detail, c_x, c_y, c_width, c_height, c_gap_side)
+
+	return
+}
+
+// PaintFlatBox is a wrapper around the C function gtk_paint_flat_box.
+func PaintFlatBox(style *Style, cr *cairo.Context, stateType StateType, shadowType ShadowType, widget *Widget, detail string, x int32, y int32, width int32, height int32) {
+	c_style := (*C.GtkStyle)(style.ToC())
+
+	c_cr := (*C.cairo_t)(cr.ToC())
+
+	c_state_type := (C.GtkStateType)(stateType)
+
+	c_shadow_type := (C.GtkShadowType)(shadowType)
+
+	c_widget := (*C.GtkWidget)(widget.ToC())
+
+	c_detail := C.CString(detail)
+	defer C.free(unsafe.Pointer(c_detail))
+
+	c_x := (C.gint)(x)
+
+	c_y := (C.gint)(y)
+
+	c_width := (C.gint)(width)
+
+	c_height := (C.gint)(height)
+
+	C.gtk_paint_flat_box(c_style, c_cr, c_state_type, c_shadow_type, c_widget, c_detail, c_x, c_y, c_width, c_height)
+
+	return
+}
+
+// PaintFocus is a wrapper around the C function gtk_paint_focus.
+func PaintFocus(style *Style, cr *cairo.Context, stateType StateType, widget *Widget, detail string, x int32, y int32, width int32, height int32) {
+	c_style := (*C.GtkStyle)(style.ToC())
+
+	c_cr := (*C.cairo_t)(cr.ToC())
+
+	c_state_type := (C.GtkStateType)(stateType)
+
+	c_widget := (*C.GtkWidget)(widget.ToC())
+
+	c_detail := C.CString(detail)
+	defer C.free(unsafe.Pointer(c_detail))
+
+	c_x := (C.gint)(x)
+
+	c_y := (C.gint)(y)
+
+	c_width := (C.gint)(width)
+
+	c_height := (C.gint)(height)
+
+	C.gtk_paint_focus(c_style, c_cr, c_state_type, c_widget, c_detail, c_x, c_y, c_width, c_height)
+
+	return
+}
+
+// PaintHandle is a wrapper around the C function gtk_paint_handle.
+func PaintHandle(style *Style, cr *cairo.Context, stateType StateType, shadowType ShadowType, widget *Widget, detail string, x int32, y int32, width int32, height int32, orientation Orientation) {
+	c_style := (*C.GtkStyle)(style.ToC())
+
+	c_cr := (*C.cairo_t)(cr.ToC())
+
+	c_state_type := (C.GtkStateType)(stateType)
+
+	c_shadow_type := (C.GtkShadowType)(shadowType)
+
+	c_widget := (*C.GtkWidget)(widget.ToC())
+
+	c_detail := C.CString(detail)
+	defer C.free(unsafe.Pointer(c_detail))
+
+	c_x := (C.gint)(x)
+
+	c_y := (C.gint)(y)
+
+	c_width := (C.gint)(width)
+
+	c_height := (C.gint)(height)
+
+	c_orientation := (C.GtkOrientation)(orientation)
+
+	C.gtk_paint_handle(c_style, c_cr, c_state_type, c_shadow_type, c_widget, c_detail, c_x, c_y, c_width, c_height, c_orientation)
+
+	return
+}
+
+// PaintHline is a wrapper around the C function gtk_paint_hline.
+func PaintHline(style *Style, cr *cairo.Context, stateType StateType, widget *Widget, detail string, x1 int32, x2 int32, y int32) {
+	c_style := (*C.GtkStyle)(style.ToC())
+
+	c_cr := (*C.cairo_t)(cr.ToC())
+
+	c_state_type := (C.GtkStateType)(stateType)
+
+	c_widget := (*C.GtkWidget)(widget.ToC())
+
+	c_detail := C.CString(detail)
+	defer C.free(unsafe.Pointer(c_detail))
+
+	c_x1 := (C.gint)(x1)
+
+	c_x2 := (C.gint)(x2)
+
+	c_y := (C.gint)(y)
+
+	C.gtk_paint_hline(c_style, c_cr, c_state_type, c_widget, c_detail, c_x1, c_x2, c_y)
+
+	return
+}
+
+// PaintLayout is a wrapper around the C function gtk_paint_layout.
+func PaintLayout(style *Style, cr *cairo.Context, stateType StateType, useText bool, widget *Widget, detail string, x int32, y int32, layout *pango.Layout) {
+	c_style := (*C.GtkStyle)(style.ToC())
+
+	c_cr := (*C.cairo_t)(cr.ToC())
+
+	c_state_type := (C.GtkStateType)(stateType)
+
+	c_use_text :=
+		boolToGboolean(useText)
+
+	c_widget := (*C.GtkWidget)(widget.ToC())
+
+	c_detail := C.CString(detail)
+	defer C.free(unsafe.Pointer(c_detail))
+
+	c_x := (C.gint)(x)
+
+	c_y := (C.gint)(y)
+
+	c_layout := (*C.PangoLayout)(layout.ToC())
+
+	C.gtk_paint_layout(c_style, c_cr, c_state_type, c_use_text, c_widget, c_detail, c_x, c_y, c_layout)
+
+	return
+}
+
+// PaintOption is a wrapper around the C function gtk_paint_option.
+func PaintOption(style *Style, cr *cairo.Context, stateType StateType, shadowType ShadowType, widget *Widget, detail string, x int32, y int32, width int32, height int32) {
+	c_style := (*C.GtkStyle)(style.ToC())
+
+	c_cr := (*C.cairo_t)(cr.ToC())
+
+	c_state_type := (C.GtkStateType)(stateType)
+
+	c_shadow_type := (C.GtkShadowType)(shadowType)
+
+	c_widget := (*C.GtkWidget)(widget.ToC())
+
+	c_detail := C.CString(detail)
+	defer C.free(unsafe.Pointer(c_detail))
+
+	c_x := (C.gint)(x)
+
+	c_y := (C.gint)(y)
+
+	c_width := (C.gint)(width)
+
+	c_height := (C.gint)(height)
+
+	C.gtk_paint_option(c_style, c_cr, c_state_type, c_shadow_type, c_widget, c_detail, c_x, c_y, c_width, c_height)
+
+	return
+}
+
+// PaintResizeGrip is a wrapper around the C function gtk_paint_resize_grip.
+func PaintResizeGrip(style *Style, cr *cairo.Context, stateType StateType, widget *Widget, detail string, edge gdk.WindowEdge, x int32, y int32, width int32, height int32) {
+	c_style := (*C.GtkStyle)(style.ToC())
+
+	c_cr := (*C.cairo_t)(cr.ToC())
+
+	c_state_type := (C.GtkStateType)(stateType)
+
+	c_widget := (*C.GtkWidget)(widget.ToC())
+
+	c_detail := C.CString(detail)
+	defer C.free(unsafe.Pointer(c_detail))
+
+	c_edge := (C.GdkWindowEdge)(edge)
+
+	c_x := (C.gint)(x)
+
+	c_y := (C.gint)(y)
+
+	c_width := (C.gint)(width)
+
+	c_height := (C.gint)(height)
+
+	C.gtk_paint_resize_grip(c_style, c_cr, c_state_type, c_widget, c_detail, c_edge, c_x, c_y, c_width, c_height)
+
+	return
+}
+
+// PaintShadow is a wrapper around the C function gtk_paint_shadow.
+func PaintShadow(style *Style, cr *cairo.Context, stateType StateType, shadowType ShadowType, widget *Widget, detail string, x int32, y int32, width int32, height int32) {
+	c_style := (*C.GtkStyle)(style.ToC())
+
+	c_cr := (*C.cairo_t)(cr.ToC())
+
+	c_state_type := (C.GtkStateType)(stateType)
+
+	c_shadow_type := (C.GtkShadowType)(shadowType)
+
+	c_widget := (*C.GtkWidget)(widget.ToC())
+
+	c_detail := C.CString(detail)
+	defer C.free(unsafe.Pointer(c_detail))
+
+	c_x := (C.gint)(x)
+
+	c_y := (C.gint)(y)
+
+	c_width := (C.gint)(width)
+
+	c_height := (C.gint)(height)
+
+	C.gtk_paint_shadow(c_style, c_cr, c_state_type, c_shadow_type, c_widget, c_detail, c_x, c_y, c_width, c_height)
+
+	return
+}
+
+// PaintShadowGap is a wrapper around the C function gtk_paint_shadow_gap.
+func PaintShadowGap(style *Style, cr *cairo.Context, stateType StateType, shadowType ShadowType, widget *Widget, detail string, x int32, y int32, width int32, height int32, gapSide PositionType, gapX int32, gapWidth int32) {
+	c_style := (*C.GtkStyle)(style.ToC())
+
+	c_cr := (*C.cairo_t)(cr.ToC())
+
+	c_state_type := (C.GtkStateType)(stateType)
+
+	c_shadow_type := (C.GtkShadowType)(shadowType)
+
+	c_widget := (*C.GtkWidget)(widget.ToC())
+
+	c_detail := C.CString(detail)
+	defer C.free(unsafe.Pointer(c_detail))
+
+	c_x := (C.gint)(x)
+
+	c_y := (C.gint)(y)
+
+	c_width := (C.gint)(width)
+
+	c_height := (C.gint)(height)
+
+	c_gap_side := (C.GtkPositionType)(gapSide)
+
+	c_gap_x := (C.gint)(gapX)
+
+	c_gap_width := (C.gint)(gapWidth)
+
+	C.gtk_paint_shadow_gap(c_style, c_cr, c_state_type, c_shadow_type, c_widget, c_detail, c_x, c_y, c_width, c_height, c_gap_side, c_gap_x, c_gap_width)
+
+	return
+}
+
+// PaintSlider is a wrapper around the C function gtk_paint_slider.
+func PaintSlider(style *Style, cr *cairo.Context, stateType StateType, shadowType ShadowType, widget *Widget, detail string, x int32, y int32, width int32, height int32, orientation Orientation) {
+	c_style := (*C.GtkStyle)(style.ToC())
+
+	c_cr := (*C.cairo_t)(cr.ToC())
+
+	c_state_type := (C.GtkStateType)(stateType)
+
+	c_shadow_type := (C.GtkShadowType)(shadowType)
+
+	c_widget := (*C.GtkWidget)(widget.ToC())
+
+	c_detail := C.CString(detail)
+	defer C.free(unsafe.Pointer(c_detail))
+
+	c_x := (C.gint)(x)
+
+	c_y := (C.gint)(y)
+
+	c_width := (C.gint)(width)
+
+	c_height := (C.gint)(height)
+
+	c_orientation := (C.GtkOrientation)(orientation)
+
+	C.gtk_paint_slider(c_style, c_cr, c_state_type, c_shadow_type, c_widget, c_detail, c_x, c_y, c_width, c_height, c_orientation)
+
+	return
+}
+
+// PaintSpinner is a wrapper around the C function gtk_paint_spinner.
+func PaintSpinner(style *Style, cr *cairo.Context, stateType StateType, widget *Widget, detail string, step uint32, x int32, y int32, width int32, height int32) {
+	c_style := (*C.GtkStyle)(style.ToC())
+
+	c_cr := (*C.cairo_t)(cr.ToC())
+
+	c_state_type := (C.GtkStateType)(stateType)
+
+	c_widget := (*C.GtkWidget)(widget.ToC())
+
+	c_detail := C.CString(detail)
+	defer C.free(unsafe.Pointer(c_detail))
+
+	c_step := (C.guint)(step)
+
+	c_x := (C.gint)(x)
+
+	c_y := (C.gint)(y)
+
+	c_width := (C.gint)(width)
+
+	c_height := (C.gint)(height)
+
+	C.gtk_paint_spinner(c_style, c_cr, c_state_type, c_widget, c_detail, c_step, c_x, c_y, c_width, c_height)
+
+	return
+}
+
+// PaintTab is a wrapper around the C function gtk_paint_tab.
+func PaintTab(style *Style, cr *cairo.Context, stateType StateType, shadowType ShadowType, widget *Widget, detail string, x int32, y int32, width int32, height int32) {
+	c_style := (*C.GtkStyle)(style.ToC())
+
+	c_cr := (*C.cairo_t)(cr.ToC())
+
+	c_state_type := (C.GtkStateType)(stateType)
+
+	c_shadow_type := (C.GtkShadowType)(shadowType)
+
+	c_widget := (*C.GtkWidget)(widget.ToC())
+
+	c_detail := C.CString(detail)
+	defer C.free(unsafe.Pointer(c_detail))
+
+	c_x := (C.gint)(x)
+
+	c_y := (C.gint)(y)
+
+	c_width := (C.gint)(width)
+
+	c_height := (C.gint)(height)
+
+	C.gtk_paint_tab(c_style, c_cr, c_state_type, c_shadow_type, c_widget, c_detail, c_x, c_y, c_width, c_height)
+
+	return
+}
+
+// PaintVline is a wrapper around the C function gtk_paint_vline.
+func PaintVline(style *Style, cr *cairo.Context, stateType StateType, widget *Widget, detail string, y1 int32, y2 int32, x int32) {
+	c_style := (*C.GtkStyle)(style.ToC())
+
+	c_cr := (*C.cairo_t)(cr.ToC())
+
+	c_state_type := (C.GtkStateType)(stateType)
+
+	c_widget := (*C.GtkWidget)(widget.ToC())
+
+	c_detail := C.CString(detail)
+	defer C.free(unsafe.Pointer(c_detail))
+
+	c_y1_ := (C.gint)(y1)
+
+	c_y2_ := (C.gint)(y2)
+
+	c_x := (C.gint)(x)
+
+	C.gtk_paint_vline(c_style, c_cr, c_state_type, c_widget, c_detail, c_y1_, c_y2_, c_x)
+
+	return
+}
 
 // Unsupported : gtk_parse_args : unsupported parameter argc : no type generator for gint, int*
 
 // Unsupported : gtk_propagate_event : unsupported parameter event : no type generator for Gdk.Event, GdkEvent*
 
-// Unsupported : gtk_rc_add_default_file : no return generator
+// RcAddDefaultFile is a wrapper around the C function gtk_rc_add_default_file.
+func RcAddDefaultFile(filename string) {
+	c_filename := C.CString(filename)
+	defer C.free(unsafe.Pointer(c_filename))
+
+	C.gtk_rc_add_default_file(c_filename)
+
+	return
+}
 
 // RcFindModuleInPath is a wrapper around the C function gtk_rc_find_module_in_path.
 func RcFindModuleInPath(moduleFile string) string {
@@ -441,7 +1106,15 @@ func RcGetThemeDir() string {
 	return retGo
 }
 
-// Unsupported : gtk_rc_parse : no return generator
+// RcParse is a wrapper around the C function gtk_rc_parse.
+func RcParse(filename string) {
+	c_filename := C.CString(filename)
+	defer C.free(unsafe.Pointer(c_filename))
+
+	C.gtk_rc_parse(c_filename)
+
+	return
+}
 
 // RcParseColor is a wrapper around the C function gtk_rc_parse_color.
 func RcParseColor(scanner *glib.Scanner) (uint32, *gdk.Color) {
@@ -461,7 +1134,15 @@ func RcParseColor(scanner *glib.Scanner) (uint32, *gdk.Color) {
 
 // Unsupported : gtk_rc_parse_state : unsupported parameter state : GtkStateType* with indirection level of 1
 
-// Unsupported : gtk_rc_parse_string : no return generator
+// RcParseString is a wrapper around the C function gtk_rc_parse_string.
+func RcParseString(rcString string) {
+	c_rc_string := C.CString(rcString)
+	defer C.free(unsafe.Pointer(c_rc_string))
+
+	C.gtk_rc_parse_string(c_rc_string)
+
+	return
+}
 
 // RcPropertyParseBorder is a wrapper around the C function gtk_rc_property_parse_border.
 func RcPropertyParseBorder(pspec *gobject.ParamSpec, gstring *glib.String, propertyValue *gobject.Value) bool {
@@ -590,9 +1271,23 @@ func RecentManagerErrorQuark() glib.Quark {
 
 // Unsupported : gtk_selection_owner_set : unsupported parameter selection : Blacklisted record : GdkAtom
 
-// Unsupported : gtk_selection_remove_all : no return generator
+// SelectionRemoveAll is a wrapper around the C function gtk_selection_remove_all.
+func SelectionRemoveAll(widget *Widget) {
+	c_widget := (*C.GtkWidget)(widget.ToC())
 
-// Unsupported : gtk_set_debug_flags : no return generator
+	C.gtk_selection_remove_all(c_widget)
+
+	return
+}
+
+// SetDebugFlags is a wrapper around the C function gtk_set_debug_flags.
+func SetDebugFlags(flags uint32) {
+	c_flags := (C.guint)(flags)
+
+	C.gtk_set_debug_flags(c_flags)
+
+	return
+}
 
 // Unsupported : gtk_stock_add : unsupported parameter items : no param type
 
@@ -623,9 +1318,27 @@ func StockLookup(stockId string) (bool, *StockItem) {
 
 // Unsupported : gtk_tree_get_row_drag_data : unsupported parameter tree_model : no type generator for TreeModel, GtkTreeModel**
 
-// Unsupported : gtk_tree_row_reference_deleted : no return generator
+// TreeRowReferenceDeleted is a wrapper around the C function gtk_tree_row_reference_deleted.
+func TreeRowReferenceDeleted(proxy *gobject.Object, path *TreePath) {
+	c_proxy := (*C.GObject)(proxy.ToC())
 
-// Unsupported : gtk_tree_row_reference_inserted : no return generator
+	c_path := (*C.GtkTreePath)(path.ToC())
+
+	C.gtk_tree_row_reference_deleted(c_proxy, c_path)
+
+	return
+}
+
+// TreeRowReferenceInserted is a wrapper around the C function gtk_tree_row_reference_inserted.
+func TreeRowReferenceInserted(proxy *gobject.Object, path *TreePath) {
+	c_proxy := (*C.GObject)(proxy.ToC())
+
+	c_path := (*C.GtkTreePath)(path.ToC())
+
+	C.gtk_tree_row_reference_inserted(c_proxy, c_path)
+
+	return
+}
 
 // Unsupported : gtk_tree_row_reference_reordered : unsupported parameter new_order : no param type
 

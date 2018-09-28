@@ -16,7 +16,18 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : gtk_binding_entry_skip : no return generator
+// BindingEntrySkip is a wrapper around the C function gtk_binding_entry_skip.
+func BindingEntrySkip(bindingSet *BindingSet, keyval uint32, modifiers gdk.ModifierType) {
+	c_binding_set := (*C.GtkBindingSet)(bindingSet.ToC())
+
+	c_keyval := (C.guint)(keyval)
+
+	c_modifiers := (C.GdkModifierType)(modifiers)
+
+	C.gtk_binding_entry_skip(c_binding_set, c_keyval, c_modifiers)
+
+	return
+}
 
 // PaperSizeGetPaperSizes is a wrapper around the C function gtk_paper_size_get_paper_sizes.
 func PaperSizeGetPaperSizes(includeCustom bool) *glib.List {

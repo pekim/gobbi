@@ -40,6 +40,16 @@ func IoModulesLoadAllInDirectoryWithScope(dirname string, scope *IOModuleScope) 
 	return retGo
 }
 
-// Unsupported : g_io_modules_scan_all_in_directory_with_scope : no return generator
+// IoModulesScanAllInDirectoryWithScope is a wrapper around the C function g_io_modules_scan_all_in_directory_with_scope.
+func IoModulesScanAllInDirectoryWithScope(dirname string, scope *IOModuleScope) {
+	c_dirname := C.CString(dirname)
+	defer C.free(unsafe.Pointer(c_dirname))
+
+	c_scope := (*C.GIOModuleScope)(scope.ToC())
+
+	C.g_io_modules_scan_all_in_directory_with_scope(c_dirname, c_scope)
+
+	return
+}
 
 // Unsupported : g_tls_file_database_new : no return generator

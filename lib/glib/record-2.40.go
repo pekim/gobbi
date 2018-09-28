@@ -35,7 +35,12 @@ func (recv *VariantDict) ToC() unsafe.Pointer {
 
 // Unsupported : g_variant_dict_new : unsupported parameter from_asv : Blacklisted record : GVariant
 
-// Unsupported : g_variant_dict_clear : no return generator
+// Clear is a wrapper around the C function g_variant_dict_clear.
+func (recv *VariantDict) Clear() {
+	C.g_variant_dict_clear((*C.GVariantDict)(recv.native))
+
+	return
+}
 
 // Contains is a wrapper around the C function g_variant_dict_contains.
 func (recv *VariantDict) Contains(key string) bool {
@@ -79,4 +84,9 @@ func (recv *VariantDict) Remove(key string) bool {
 	return retGo
 }
 
-// Unsupported : g_variant_dict_unref : no return generator
+// Unref is a wrapper around the C function g_variant_dict_unref.
+func (recv *VariantDict) Unref() {
+	C.g_variant_dict_unref((*C.GVariantDict)(recv.native))
+
+	return
+}

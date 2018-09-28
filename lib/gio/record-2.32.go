@@ -136,9 +136,19 @@ func ResourceNewFromData(data *glib.Bytes) (*Resource, error) {
 	return retGo, goThrowableError
 }
 
-// Unsupported : g_resources_register : no return generator
+// Register is a wrapper around the C function g_resources_register.
+func (recv *Resource) Register() {
+	C.g_resources_register((*C.GResource)(recv.native))
 
-// Unsupported : g_resources_unregister : no return generator
+	return
+}
+
+// Unregister is a wrapper around the C function g_resources_unregister.
+func (recv *Resource) Unregister() {
+	C.g_resources_unregister((*C.GResource)(recv.native))
+
+	return
+}
 
 // Unsupported : g_resource_enumerate_children : no return type
 
@@ -192,7 +202,12 @@ func (recv *Resource) Ref() *Resource {
 	return retGo
 }
 
-// Unsupported : g_resource_unref : no return generator
+// Unref is a wrapper around the C function g_resource_unref.
+func (recv *Resource) Unref() {
+	C.g_resource_unref((*C.GResource)(recv.native))
+
+	return
+}
 
 // SettingsSchema is a wrapper around the C record GSettingsSchema.
 type SettingsSchema struct {
@@ -243,7 +258,12 @@ func (recv *SettingsSchema) Ref() *SettingsSchema {
 	return retGo
 }
 
-// Unsupported : g_settings_schema_unref : no return generator
+// Unref is a wrapper around the C function g_settings_schema_unref.
+func (recv *SettingsSchema) Unref() {
+	C.g_settings_schema_unref((*C.GSettingsSchema)(recv.native))
+
+	return
+}
 
 // SettingsSchemaSource is a wrapper around the C record GSettingsSchemaSource.
 type SettingsSchemaSource struct {
@@ -313,4 +333,9 @@ func (recv *SettingsSchemaSource) Ref() *SettingsSchemaSource {
 	return retGo
 }
 
-// Unsupported : g_settings_schema_source_unref : no return generator
+// Unref is a wrapper around the C function g_settings_schema_source_unref.
+func (recv *SettingsSchemaSource) Unref() {
+	C.g_settings_schema_source_unref((*C.GSettingsSchemaSource)(recv.native))
+
+	return
+}

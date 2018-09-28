@@ -3,6 +3,8 @@
 
 package gio
 
+import "unsafe"
+
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <gio/gdesktopappinfo.h>
 // #include <gio/gfiledescriptorbased.h>
@@ -18,6 +20,14 @@ package gio
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : g_app_info_reset_type_associations : no return generator
+// AppInfoResetTypeAssociations is a wrapper around the C function g_app_info_reset_type_associations.
+func AppInfoResetTypeAssociations(contentType string) {
+	c_content_type := C.CString(contentType)
+	defer C.free(unsafe.Pointer(c_content_type))
+
+	C.g_app_info_reset_type_associations(c_content_type)
+
+	return
+}
 
 // Unsupported : g_icon_new_for_string : no return generator

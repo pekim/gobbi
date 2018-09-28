@@ -7,6 +7,7 @@ import (
 	cairo "github.com/pekim/gobbi/lib/cairo"
 	gdk "github.com/pekim/gobbi/lib/gdk"
 	glib "github.com/pekim/gobbi/lib/glib"
+	pango "github.com/pekim/gobbi/lib/pango"
 	"unsafe"
 )
 
@@ -42,11 +43,43 @@ func CairoShouldDrawWindow(cr *cairo.Context, window *gdk.Window) bool {
 	return retGo
 }
 
-// Unsupported : gtk_cairo_transform_to_window : no return generator
+// CairoTransformToWindow is a wrapper around the C function gtk_cairo_transform_to_window.
+func CairoTransformToWindow(cr *cairo.Context, widget *Widget, window *gdk.Window) {
+	c_cr := (*C.cairo_t)(cr.ToC())
 
-// Unsupported : gtk_device_grab_add : no return generator
+	c_widget := (*C.GtkWidget)(widget.ToC())
 
-// Unsupported : gtk_device_grab_remove : no return generator
+	c_window := (*C.GdkWindow)(window.ToC())
+
+	C.gtk_cairo_transform_to_window(c_cr, c_widget, c_window)
+
+	return
+}
+
+// DeviceGrabAdd is a wrapper around the C function gtk_device_grab_add.
+func DeviceGrabAdd(widget *Widget, device *gdk.Device, blockOthers bool) {
+	c_widget := (*C.GtkWidget)(widget.ToC())
+
+	c_device := (*C.GdkDevice)(device.ToC())
+
+	c_block_others :=
+		boolToGboolean(blockOthers)
+
+	C.gtk_device_grab_add(c_widget, c_device, c_block_others)
+
+	return
+}
+
+// DeviceGrabRemove is a wrapper around the C function gtk_device_grab_remove.
+func DeviceGrabRemove(widget *Widget, device *gdk.Device) {
+	c_widget := (*C.GtkWidget)(widget.ToC())
+
+	c_device := (*C.GdkDevice)(device.ToC())
+
+	C.gtk_device_grab_remove(c_widget, c_device)
+
+	return
+}
 
 // Unsupported : gtk_draw_insertion_cursor : unsupported parameter location : Blacklisted record : GdkRectangle
 
@@ -90,30 +123,259 @@ func GetMinorVersion() uint32 {
 	return retGo
 }
 
-// Unsupported : gtk_render_activity : no return generator
+// RenderActivity is a wrapper around the C function gtk_render_activity.
+func RenderActivity(context *StyleContext, cr *cairo.Context, x float64, y float64, width float64, height float64) {
+	c_context := (*C.GtkStyleContext)(context.ToC())
 
-// Unsupported : gtk_render_arrow : no return generator
+	c_cr := (*C.cairo_t)(cr.ToC())
 
-// Unsupported : gtk_render_check : no return generator
+	c_x := (C.gdouble)(x)
 
-// Unsupported : gtk_render_expander : no return generator
+	c_y := (C.gdouble)(y)
 
-// Unsupported : gtk_render_extension : no return generator
+	c_width := (C.gdouble)(width)
 
-// Unsupported : gtk_render_focus : no return generator
+	c_height := (C.gdouble)(height)
 
-// Unsupported : gtk_render_frame : no return generator
+	C.gtk_render_activity(c_context, c_cr, c_x, c_y, c_width, c_height)
 
-// Unsupported : gtk_render_frame_gap : no return generator
+	return
+}
 
-// Unsupported : gtk_render_handle : no return generator
+// RenderArrow is a wrapper around the C function gtk_render_arrow.
+func RenderArrow(context *StyleContext, cr *cairo.Context, angle float64, x float64, y float64, size float64) {
+	c_context := (*C.GtkStyleContext)(context.ToC())
+
+	c_cr := (*C.cairo_t)(cr.ToC())
+
+	c_angle := (C.gdouble)(angle)
+
+	c_x := (C.gdouble)(x)
+
+	c_y := (C.gdouble)(y)
+
+	c_size := (C.gdouble)(size)
+
+	C.gtk_render_arrow(c_context, c_cr, c_angle, c_x, c_y, c_size)
+
+	return
+}
+
+// RenderCheck is a wrapper around the C function gtk_render_check.
+func RenderCheck(context *StyleContext, cr *cairo.Context, x float64, y float64, width float64, height float64) {
+	c_context := (*C.GtkStyleContext)(context.ToC())
+
+	c_cr := (*C.cairo_t)(cr.ToC())
+
+	c_x := (C.gdouble)(x)
+
+	c_y := (C.gdouble)(y)
+
+	c_width := (C.gdouble)(width)
+
+	c_height := (C.gdouble)(height)
+
+	C.gtk_render_check(c_context, c_cr, c_x, c_y, c_width, c_height)
+
+	return
+}
+
+// RenderExpander is a wrapper around the C function gtk_render_expander.
+func RenderExpander(context *StyleContext, cr *cairo.Context, x float64, y float64, width float64, height float64) {
+	c_context := (*C.GtkStyleContext)(context.ToC())
+
+	c_cr := (*C.cairo_t)(cr.ToC())
+
+	c_x := (C.gdouble)(x)
+
+	c_y := (C.gdouble)(y)
+
+	c_width := (C.gdouble)(width)
+
+	c_height := (C.gdouble)(height)
+
+	C.gtk_render_expander(c_context, c_cr, c_x, c_y, c_width, c_height)
+
+	return
+}
+
+// RenderExtension is a wrapper around the C function gtk_render_extension.
+func RenderExtension(context *StyleContext, cr *cairo.Context, x float64, y float64, width float64, height float64, gapSide PositionType) {
+	c_context := (*C.GtkStyleContext)(context.ToC())
+
+	c_cr := (*C.cairo_t)(cr.ToC())
+
+	c_x := (C.gdouble)(x)
+
+	c_y := (C.gdouble)(y)
+
+	c_width := (C.gdouble)(width)
+
+	c_height := (C.gdouble)(height)
+
+	c_gap_side := (C.GtkPositionType)(gapSide)
+
+	C.gtk_render_extension(c_context, c_cr, c_x, c_y, c_width, c_height, c_gap_side)
+
+	return
+}
+
+// RenderFocus is a wrapper around the C function gtk_render_focus.
+func RenderFocus(context *StyleContext, cr *cairo.Context, x float64, y float64, width float64, height float64) {
+	c_context := (*C.GtkStyleContext)(context.ToC())
+
+	c_cr := (*C.cairo_t)(cr.ToC())
+
+	c_x := (C.gdouble)(x)
+
+	c_y := (C.gdouble)(y)
+
+	c_width := (C.gdouble)(width)
+
+	c_height := (C.gdouble)(height)
+
+	C.gtk_render_focus(c_context, c_cr, c_x, c_y, c_width, c_height)
+
+	return
+}
+
+// RenderFrame is a wrapper around the C function gtk_render_frame.
+func RenderFrame(context *StyleContext, cr *cairo.Context, x float64, y float64, width float64, height float64) {
+	c_context := (*C.GtkStyleContext)(context.ToC())
+
+	c_cr := (*C.cairo_t)(cr.ToC())
+
+	c_x := (C.gdouble)(x)
+
+	c_y := (C.gdouble)(y)
+
+	c_width := (C.gdouble)(width)
+
+	c_height := (C.gdouble)(height)
+
+	C.gtk_render_frame(c_context, c_cr, c_x, c_y, c_width, c_height)
+
+	return
+}
+
+// RenderFrameGap is a wrapper around the C function gtk_render_frame_gap.
+func RenderFrameGap(context *StyleContext, cr *cairo.Context, x float64, y float64, width float64, height float64, gapSide PositionType, xy0Gap float64, xy1Gap float64) {
+	c_context := (*C.GtkStyleContext)(context.ToC())
+
+	c_cr := (*C.cairo_t)(cr.ToC())
+
+	c_x := (C.gdouble)(x)
+
+	c_y := (C.gdouble)(y)
+
+	c_width := (C.gdouble)(width)
+
+	c_height := (C.gdouble)(height)
+
+	c_gap_side := (C.GtkPositionType)(gapSide)
+
+	c_xy0_gap := (C.gdouble)(xy0Gap)
+
+	c_xy1_gap := (C.gdouble)(xy1Gap)
+
+	C.gtk_render_frame_gap(c_context, c_cr, c_x, c_y, c_width, c_height, c_gap_side, c_xy0_gap, c_xy1_gap)
+
+	return
+}
+
+// RenderHandle is a wrapper around the C function gtk_render_handle.
+func RenderHandle(context *StyleContext, cr *cairo.Context, x float64, y float64, width float64, height float64) {
+	c_context := (*C.GtkStyleContext)(context.ToC())
+
+	c_cr := (*C.cairo_t)(cr.ToC())
+
+	c_x := (C.gdouble)(x)
+
+	c_y := (C.gdouble)(y)
+
+	c_width := (C.gdouble)(width)
+
+	c_height := (C.gdouble)(height)
+
+	C.gtk_render_handle(c_context, c_cr, c_x, c_y, c_width, c_height)
+
+	return
+}
 
 // Unsupported : gtk_render_icon_pixbuf : unsupported parameter size : no type generator for gint, GtkIconSize
 
-// Unsupported : gtk_render_layout : no return generator
+// RenderLayout is a wrapper around the C function gtk_render_layout.
+func RenderLayout(context *StyleContext, cr *cairo.Context, x float64, y float64, layout *pango.Layout) {
+	c_context := (*C.GtkStyleContext)(context.ToC())
 
-// Unsupported : gtk_render_line : no return generator
+	c_cr := (*C.cairo_t)(cr.ToC())
 
-// Unsupported : gtk_render_option : no return generator
+	c_x := (C.gdouble)(x)
 
-// Unsupported : gtk_render_slider : no return generator
+	c_y := (C.gdouble)(y)
+
+	c_layout := (*C.PangoLayout)(layout.ToC())
+
+	C.gtk_render_layout(c_context, c_cr, c_x, c_y, c_layout)
+
+	return
+}
+
+// RenderLine is a wrapper around the C function gtk_render_line.
+func RenderLine(context *StyleContext, cr *cairo.Context, x0 float64, y0 float64, x1 float64, y1 float64) {
+	c_context := (*C.GtkStyleContext)(context.ToC())
+
+	c_cr := (*C.cairo_t)(cr.ToC())
+
+	c_x0 := (C.gdouble)(x0)
+
+	c_y0 := (C.gdouble)(y0)
+
+	c_x1 := (C.gdouble)(x1)
+
+	c_y1 := (C.gdouble)(y1)
+
+	C.gtk_render_line(c_context, c_cr, c_x0, c_y0, c_x1, c_y1)
+
+	return
+}
+
+// RenderOption is a wrapper around the C function gtk_render_option.
+func RenderOption(context *StyleContext, cr *cairo.Context, x float64, y float64, width float64, height float64) {
+	c_context := (*C.GtkStyleContext)(context.ToC())
+
+	c_cr := (*C.cairo_t)(cr.ToC())
+
+	c_x := (C.gdouble)(x)
+
+	c_y := (C.gdouble)(y)
+
+	c_width := (C.gdouble)(width)
+
+	c_height := (C.gdouble)(height)
+
+	C.gtk_render_option(c_context, c_cr, c_x, c_y, c_width, c_height)
+
+	return
+}
+
+// RenderSlider is a wrapper around the C function gtk_render_slider.
+func RenderSlider(context *StyleContext, cr *cairo.Context, x float64, y float64, width float64, height float64, orientation Orientation) {
+	c_context := (*C.GtkStyleContext)(context.ToC())
+
+	c_cr := (*C.cairo_t)(cr.ToC())
+
+	c_x := (C.gdouble)(x)
+
+	c_y := (C.gdouble)(y)
+
+	c_width := (C.gdouble)(width)
+
+	c_height := (C.gdouble)(height)
+
+	c_orientation := (C.GtkOrientation)(orientation)
+
+	C.gtk_render_slider(c_context, c_cr, c_x, c_y, c_width, c_height, c_orientation)
+
+	return
+}

@@ -147,10 +147,6 @@ func (recv *Misc) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : atk_misc_threads_enter : no return generator
-
-// Unsupported : atk_misc_threads_leave : no return generator
-
 // NoOpObject is a wrapper around the C record AtkNoOpObject.
 type NoOpObject struct {
 	native *C.AtkNoOpObject
@@ -333,9 +329,26 @@ func (recv *Object) GetRole() Role {
 	return retGo
 }
 
-// Unsupported : atk_object_initialize : no return generator
+// Initialize is a wrapper around the C function atk_object_initialize.
+func (recv *Object) Initialize(data uintptr) {
+	c_data := (C.gpointer)(data)
 
-// Unsupported : atk_object_notify_state_change : no return generator
+	C.atk_object_initialize((*C.AtkObject)(recv.native), c_data)
+
+	return
+}
+
+// NotifyStateChange is a wrapper around the C function atk_object_notify_state_change.
+func (recv *Object) NotifyStateChange(state State, value bool) {
+	c_state := (C.AtkState)(state)
+
+	c_value :=
+		boolToGboolean(value)
+
+	C.atk_object_notify_state_change((*C.AtkObject)(recv.native), c_state, c_value)
+
+	return
+}
 
 // PeekParent is a wrapper around the C function atk_object_peek_parent.
 func (recv *Object) PeekParent() *Object {
@@ -371,7 +384,14 @@ func (recv *Object) RefStateSet() *StateSet {
 	return retGo
 }
 
-// Unsupported : atk_object_remove_property_change_handler : no return generator
+// RemovePropertyChangeHandler is a wrapper around the C function atk_object_remove_property_change_handler.
+func (recv *Object) RemovePropertyChangeHandler(handlerId uint32) {
+	c_handler_id := (C.guint)(handlerId)
+
+	C.atk_object_remove_property_change_handler((*C.AtkObject)(recv.native), c_handler_id)
+
+	return
+}
 
 // RemoveRelationship is a wrapper around the C function atk_object_remove_relationship.
 func (recv *Object) RemoveRelationship(relationship RelationType, target *Object) bool {
@@ -385,13 +405,43 @@ func (recv *Object) RemoveRelationship(relationship RelationType, target *Object
 	return retGo
 }
 
-// Unsupported : atk_object_set_description : no return generator
+// SetDescription is a wrapper around the C function atk_object_set_description.
+func (recv *Object) SetDescription(description string) {
+	c_description := C.CString(description)
+	defer C.free(unsafe.Pointer(c_description))
 
-// Unsupported : atk_object_set_name : no return generator
+	C.atk_object_set_description((*C.AtkObject)(recv.native), c_description)
 
-// Unsupported : atk_object_set_parent : no return generator
+	return
+}
 
-// Unsupported : atk_object_set_role : no return generator
+// SetName is a wrapper around the C function atk_object_set_name.
+func (recv *Object) SetName(name string) {
+	c_name := C.CString(name)
+	defer C.free(unsafe.Pointer(c_name))
+
+	C.atk_object_set_name((*C.AtkObject)(recv.native), c_name)
+
+	return
+}
+
+// SetParent is a wrapper around the C function atk_object_set_parent.
+func (recv *Object) SetParent(parent *Object) {
+	c_parent := (*C.AtkObject)(parent.ToC())
+
+	C.atk_object_set_parent((*C.AtkObject)(recv.native), c_parent)
+
+	return
+}
+
+// SetRole is a wrapper around the C function atk_object_set_role.
+func (recv *Object) SetRole(role Role) {
+	c_role := (C.AtkRole)(role)
+
+	C.atk_object_set_role((*C.AtkObject)(recv.native), c_role)
+
+	return
+}
 
 // ObjectFactory is a wrapper around the C record AtkObjectFactory.
 type ObjectFactory struct {
@@ -427,7 +477,12 @@ func (recv *ObjectFactory) CreateAccessible(obj *gobject.Object) *Object {
 
 // Unsupported : atk_object_factory_get_accessible_type : no return generator
 
-// Unsupported : atk_object_factory_invalidate : no return generator
+// Invalidate is a wrapper around the C function atk_object_factory_invalidate.
+func (recv *ObjectFactory) Invalidate() {
+	C.atk_object_factory_invalidate((*C.AtkObjectFactory)(recv.native))
+
+	return
+}
 
 // Plug is a wrapper around the C record AtkPlug.
 type Plug struct {
@@ -520,8 +575,6 @@ func (recv *Relation) ToC() unsafe.Pointer {
 
 // Unsupported : atk_relation_new : unsupported parameter targets : no param type
 
-// Unsupported : atk_relation_add_target : no return generator
-
 // GetRelationType is a wrapper around the C function atk_relation_get_relation_type.
 func (recv *Relation) GetRelationType() RelationType {
 	retC := C.atk_relation_get_relation_type((*C.AtkRelation)(recv.native))
@@ -573,9 +626,14 @@ func RelationSetNew() *RelationSet {
 	return retGo
 }
 
-// Unsupported : atk_relation_set_add : no return generator
+// Add is a wrapper around the C function atk_relation_set_add.
+func (recv *RelationSet) Add(relation *Relation) {
+	c_relation := (*C.AtkRelation)(relation.ToC())
 
-// Unsupported : atk_relation_set_add_relation_by_type : no return generator
+	C.atk_relation_set_add((*C.AtkRelationSet)(recv.native), c_relation)
+
+	return
+}
 
 // Contains is a wrapper around the C function atk_relation_set_contains.
 func (recv *RelationSet) Contains(relationship RelationType) bool {
@@ -627,7 +685,14 @@ func (recv *RelationSet) GetRelationByType(relationship RelationType) *Relation 
 	return retGo
 }
 
-// Unsupported : atk_relation_set_remove : no return generator
+// Remove is a wrapper around the C function atk_relation_set_remove.
+func (recv *RelationSet) Remove(relation *Relation) {
+	c_relation := (*C.AtkRelation)(relation.ToC())
+
+	C.atk_relation_set_remove((*C.AtkRelationSet)(recv.native), c_relation)
+
+	return
+}
 
 // Socket is a wrapper around the C record AtkSocket.
 type Socket struct {
@@ -659,8 +724,6 @@ func SocketNew() *Object {
 
 	return retGo
 }
-
-// Unsupported : atk_socket_embed : no return generator
 
 // StateSet is a wrapper around the C record AtkStateSet.
 type StateSet struct {
@@ -714,7 +777,12 @@ func (recv *StateSet) AndSets(compareSet *StateSet) *StateSet {
 	return retGo
 }
 
-// Unsupported : atk_state_set_clear_states : no return generator
+// ClearStates is a wrapper around the C function atk_state_set_clear_states.
+func (recv *StateSet) ClearStates() {
+	C.atk_state_set_clear_states((*C.AtkStateSet)(recv.native))
+
+	return
+}
 
 // ContainsState is a wrapper around the C function atk_state_set_contains_state.
 func (recv *StateSet) ContainsState(type_ StateType) bool {

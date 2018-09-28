@@ -66,7 +66,12 @@ func (recv *DBusInterfaceSkeleton) Export(connection *DBusConnection, objectPath
 	return retGo, goThrowableError
 }
 
-// Unsupported : g_dbus_interface_skeleton_flush : no return generator
+// Flush is a wrapper around the C function g_dbus_interface_skeleton_flush.
+func (recv *DBusInterfaceSkeleton) Flush() {
+	C.g_dbus_interface_skeleton_flush((*C.GDBusInterfaceSkeleton)(recv.native))
+
+	return
+}
 
 // GetConnection is a wrapper around the C function g_dbus_interface_skeleton_get_connection.
 func (recv *DBusInterfaceSkeleton) GetConnection() *DBusConnection {
@@ -110,11 +115,21 @@ func (recv *DBusInterfaceSkeleton) GetVtable() *DBusInterfaceVTable {
 	return retGo
 }
 
-// Unsupported : g_dbus_interface_skeleton_set_flags : no return generator
+// SetFlags is a wrapper around the C function g_dbus_interface_skeleton_set_flags.
+func (recv *DBusInterfaceSkeleton) SetFlags(flags DBusInterfaceSkeletonFlags) {
+	c_flags := (C.GDBusInterfaceSkeletonFlags)(flags)
 
-// Unsupported : g_dbus_interface_skeleton_unexport : no return generator
+	C.g_dbus_interface_skeleton_set_flags((*C.GDBusInterfaceSkeleton)(recv.native), c_flags)
 
-// Unsupported : g_dbus_interface_skeleton_unexport_from_connection : no return generator
+	return
+}
+
+// Unexport is a wrapper around the C function g_dbus_interface_skeleton_unexport.
+func (recv *DBusInterfaceSkeleton) Unexport() {
+	C.g_dbus_interface_skeleton_unexport((*C.GDBusInterfaceSkeleton)(recv.native))
+
+	return
+}
 
 // DBusObjectManagerClient is a wrapper around the C record GDBusObjectManagerClient.
 type DBusObjectManagerClient struct {
@@ -214,9 +229,23 @@ func DBusObjectManagerServerNew(objectPath string) *DBusObjectManagerServer {
 	return retGo
 }
 
-// Unsupported : g_dbus_object_manager_server_export : no return generator
+// Export is a wrapper around the C function g_dbus_object_manager_server_export.
+func (recv *DBusObjectManagerServer) Export(object *DBusObjectSkeleton) {
+	c_object := (*C.GDBusObjectSkeleton)(object.ToC())
 
-// Unsupported : g_dbus_object_manager_server_export_uniquely : no return generator
+	C.g_dbus_object_manager_server_export((*C.GDBusObjectManagerServer)(recv.native), c_object)
+
+	return
+}
+
+// ExportUniquely is a wrapper around the C function g_dbus_object_manager_server_export_uniquely.
+func (recv *DBusObjectManagerServer) ExportUniquely(object *DBusObjectSkeleton) {
+	c_object := (*C.GDBusObjectSkeleton)(object.ToC())
+
+	C.g_dbus_object_manager_server_export_uniquely((*C.GDBusObjectManagerServer)(recv.native), c_object)
+
+	return
+}
 
 // GetConnection is a wrapper around the C function g_dbus_object_manager_server_get_connection.
 func (recv *DBusObjectManagerServer) GetConnection() *DBusConnection {
@@ -226,7 +255,14 @@ func (recv *DBusObjectManagerServer) GetConnection() *DBusConnection {
 	return retGo
 }
 
-// Unsupported : g_dbus_object_manager_server_set_connection : no return generator
+// SetConnection is a wrapper around the C function g_dbus_object_manager_server_set_connection.
+func (recv *DBusObjectManagerServer) SetConnection(connection *DBusConnection) {
+	c_connection := (*C.GDBusConnection)(connection.ToC())
+
+	C.g_dbus_object_manager_server_set_connection((*C.GDBusObjectManagerServer)(recv.native), c_connection)
+
+	return
+}
 
 // Unexport is a wrapper around the C function g_dbus_object_manager_server_unexport.
 func (recv *DBusObjectManagerServer) Unexport(objectPath string) bool {
@@ -317,15 +353,50 @@ func DBusObjectSkeletonNew(objectPath string) *DBusObjectSkeleton {
 	return retGo
 }
 
-// Unsupported : g_dbus_object_skeleton_add_interface : no return generator
+// AddInterface is a wrapper around the C function g_dbus_object_skeleton_add_interface.
+func (recv *DBusObjectSkeleton) AddInterface(interface_ *DBusInterfaceSkeleton) {
+	c_interface_ := (*C.GDBusInterfaceSkeleton)(interface_.ToC())
 
-// Unsupported : g_dbus_object_skeleton_flush : no return generator
+	C.g_dbus_object_skeleton_add_interface((*C.GDBusObjectSkeleton)(recv.native), c_interface_)
 
-// Unsupported : g_dbus_object_skeleton_remove_interface : no return generator
+	return
+}
 
-// Unsupported : g_dbus_object_skeleton_remove_interface_by_name : no return generator
+// Flush is a wrapper around the C function g_dbus_object_skeleton_flush.
+func (recv *DBusObjectSkeleton) Flush() {
+	C.g_dbus_object_skeleton_flush((*C.GDBusObjectSkeleton)(recv.native))
 
-// Unsupported : g_dbus_object_skeleton_set_object_path : no return generator
+	return
+}
+
+// RemoveInterface is a wrapper around the C function g_dbus_object_skeleton_remove_interface.
+func (recv *DBusObjectSkeleton) RemoveInterface(interface_ *DBusInterfaceSkeleton) {
+	c_interface_ := (*C.GDBusInterfaceSkeleton)(interface_.ToC())
+
+	C.g_dbus_object_skeleton_remove_interface((*C.GDBusObjectSkeleton)(recv.native), c_interface_)
+
+	return
+}
+
+// RemoveInterfaceByName is a wrapper around the C function g_dbus_object_skeleton_remove_interface_by_name.
+func (recv *DBusObjectSkeleton) RemoveInterfaceByName(interfaceName string) {
+	c_interface_name := C.CString(interfaceName)
+	defer C.free(unsafe.Pointer(c_interface_name))
+
+	C.g_dbus_object_skeleton_remove_interface_by_name((*C.GDBusObjectSkeleton)(recv.native), c_interface_name)
+
+	return
+}
+
+// SetObjectPath is a wrapper around the C function g_dbus_object_skeleton_set_object_path.
+func (recv *DBusObjectSkeleton) SetObjectPath(objectPath string) {
+	c_object_path := C.CString(objectPath)
+	defer C.free(unsafe.Pointer(c_object_path))
+
+	C.g_dbus_object_skeleton_set_object_path((*C.GDBusObjectSkeleton)(recv.native), c_object_path)
+
+	return
+}
 
 // TlsDatabase is a wrapper around the C record GTlsDatabase.
 type TlsDatabase struct {
@@ -559,12 +630,35 @@ func (recv *TlsPassword) GetWarning() string {
 	return retGo
 }
 
-// Unsupported : g_tls_password_set_description : no return generator
+// SetDescription is a wrapper around the C function g_tls_password_set_description.
+func (recv *TlsPassword) SetDescription(description string) {
+	c_description := C.CString(description)
+	defer C.free(unsafe.Pointer(c_description))
 
-// Unsupported : g_tls_password_set_flags : no return generator
+	C.g_tls_password_set_description((*C.GTlsPassword)(recv.native), c_description)
+
+	return
+}
+
+// SetFlags is a wrapper around the C function g_tls_password_set_flags.
+func (recv *TlsPassword) SetFlags(flags TlsPasswordFlags) {
+	c_flags := (C.GTlsPasswordFlags)(flags)
+
+	C.g_tls_password_set_flags((*C.GTlsPassword)(recv.native), c_flags)
+
+	return
+}
 
 // Unsupported : g_tls_password_set_value : unsupported parameter value : no param type
 
 // Unsupported : g_tls_password_set_value_full : unsupported parameter value : no param type
 
-// Unsupported : g_tls_password_set_warning : no return generator
+// SetWarning is a wrapper around the C function g_tls_password_set_warning.
+func (recv *TlsPassword) SetWarning(warning string) {
+	c_warning := C.CString(warning)
+	defer C.free(unsafe.Pointer(c_warning))
+
+	C.g_tls_password_set_warning((*C.GTlsPassword)(recv.native), c_warning)
+
+	return
+}

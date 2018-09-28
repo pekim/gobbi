@@ -55,31 +55,7 @@ func (recv *AboutDialog) ToC() unsafe.Pointer {
 
 // Unsupported : gtk_about_dialog_set_authors : unsupported parameter authors : no param type
 
-// Unsupported : gtk_about_dialog_set_comments : no return generator
-
-// Unsupported : gtk_about_dialog_set_copyright : no return generator
-
 // Unsupported : gtk_about_dialog_set_documenters : unsupported parameter documenters : no param type
-
-// Unsupported : gtk_about_dialog_set_license : no return generator
-
-// Unsupported : gtk_about_dialog_set_license_type : no return generator
-
-// Unsupported : gtk_about_dialog_set_logo : no return generator
-
-// Unsupported : gtk_about_dialog_set_logo_icon_name : no return generator
-
-// Unsupported : gtk_about_dialog_set_program_name : no return generator
-
-// Unsupported : gtk_about_dialog_set_translator_credits : no return generator
-
-// Unsupported : gtk_about_dialog_set_version : no return generator
-
-// Unsupported : gtk_about_dialog_set_website : no return generator
-
-// Unsupported : gtk_about_dialog_set_website_label : no return generator
-
-// Unsupported : gtk_about_dialog_set_wrap_license : no return generator
 
 // AccelGroup is a wrapper around the C record GtkAccelGroup.
 type AccelGroup struct {
@@ -128,9 +104,32 @@ func (recv *AccelGroup) Activate(accelQuark glib.Quark, acceleratable *gobject.O
 	return retGo
 }
 
-// Unsupported : gtk_accel_group_connect : no return generator
+// Connect is a wrapper around the C function gtk_accel_group_connect.
+func (recv *AccelGroup) Connect(accelKey uint32, accelMods gdk.ModifierType, accelFlags AccelFlags, closure *gobject.Closure) {
+	c_accel_key := (C.guint)(accelKey)
 
-// Unsupported : gtk_accel_group_connect_by_path : no return generator
+	c_accel_mods := (C.GdkModifierType)(accelMods)
+
+	c_accel_flags := (C.GtkAccelFlags)(accelFlags)
+
+	c_closure := (*C.GClosure)(closure.ToC())
+
+	C.gtk_accel_group_connect((*C.GtkAccelGroup)(recv.native), c_accel_key, c_accel_mods, c_accel_flags, c_closure)
+
+	return
+}
+
+// ConnectByPath is a wrapper around the C function gtk_accel_group_connect_by_path.
+func (recv *AccelGroup) ConnectByPath(accelPath string, closure *gobject.Closure) {
+	c_accel_path := C.CString(accelPath)
+	defer C.free(unsafe.Pointer(c_accel_path))
+
+	c_closure := (*C.GClosure)(closure.ToC())
+
+	C.gtk_accel_group_connect_by_path((*C.GtkAccelGroup)(recv.native), c_accel_path, c_closure)
+
+	return
+}
 
 // Disconnect is a wrapper around the C function gtk_accel_group_disconnect.
 func (recv *AccelGroup) Disconnect(closure *gobject.Closure) bool {
@@ -156,11 +155,21 @@ func (recv *AccelGroup) DisconnectKey(accelKey uint32, accelMods gdk.ModifierTyp
 
 // Unsupported : gtk_accel_group_find : unsupported parameter find_func : no type generator for AccelGroupFindFunc, GtkAccelGroupFindFunc
 
-// Unsupported : gtk_accel_group_lock : no return generator
+// Lock is a wrapper around the C function gtk_accel_group_lock.
+func (recv *AccelGroup) Lock() {
+	C.gtk_accel_group_lock((*C.GtkAccelGroup)(recv.native))
+
+	return
+}
 
 // Unsupported : gtk_accel_group_query : unsupported parameter n_entries : no type generator for guint, guint*
 
-// Unsupported : gtk_accel_group_unlock : no return generator
+// Unlock is a wrapper around the C function gtk_accel_group_unlock.
+func (recv *AccelGroup) Unlock() {
+	C.gtk_accel_group_unlock((*C.GtkAccelGroup)(recv.native))
+
+	return
+}
 
 // AccelLabel is a wrapper around the C record GtkAccelLabel.
 type AccelLabel struct {
@@ -222,11 +231,23 @@ func (recv *AccelLabel) Refetch() bool {
 	return retGo
 }
 
-// Unsupported : gtk_accel_label_set_accel : no return generator
+// SetAccelClosure is a wrapper around the C function gtk_accel_label_set_accel_closure.
+func (recv *AccelLabel) SetAccelClosure(accelClosure *gobject.Closure) {
+	c_accel_closure := (*C.GClosure)(accelClosure.ToC())
 
-// Unsupported : gtk_accel_label_set_accel_closure : no return generator
+	C.gtk_accel_label_set_accel_closure((*C.GtkAccelLabel)(recv.native), c_accel_closure)
 
-// Unsupported : gtk_accel_label_set_accel_widget : no return generator
+	return
+}
+
+// SetAccelWidget is a wrapper around the C function gtk_accel_label_set_accel_widget.
+func (recv *AccelLabel) SetAccelWidget(accelWidget *Widget) {
+	c_accel_widget := (*C.GtkWidget)(accelWidget.ToC())
+
+	C.gtk_accel_label_set_accel_widget((*C.GtkAccelLabel)(recv.native), c_accel_widget)
+
+	return
+}
 
 // AccelMap is a wrapper around the C record GtkAccelMap.
 type AccelMap struct {
@@ -272,9 +293,12 @@ func (recv *Accessible) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : gtk_accessible_connect_widget_destroyed : no return generator
+// ConnectWidgetDestroyed is a wrapper around the C function gtk_accessible_connect_widget_destroyed.
+func (recv *Accessible) ConnectWidgetDestroyed() {
+	C.gtk_accessible_connect_widget_destroyed((*C.GtkAccessible)(recv.native))
 
-// Unsupported : gtk_accessible_set_widget : no return generator
+	return
+}
 
 // Action is a wrapper around the C record GtkAction.
 type Action struct {
@@ -299,47 +323,11 @@ func (recv *Action) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : gtk_action_activate : no return generator
-
-// Unsupported : gtk_action_block_activate : no return generator
-
-// Unsupported : gtk_action_connect_accelerator : no return generator
-
 // Unsupported : gtk_action_create_icon : unsupported parameter icon_size : no type generator for gint, GtkIconSize
-
-// Unsupported : gtk_action_disconnect_accelerator : no return generator
 
 // Unsupported : gtk_action_get_gicon : no return generator
 
-// Unsupported : gtk_action_set_accel_group : no return generator
-
-// Unsupported : gtk_action_set_accel_path : no return generator
-
-// Unsupported : gtk_action_set_always_show_image : no return generator
-
 // Unsupported : gtk_action_set_gicon : unsupported parameter icon : no type generator for Gio.Icon, GIcon*
-
-// Unsupported : gtk_action_set_icon_name : no return generator
-
-// Unsupported : gtk_action_set_is_important : no return generator
-
-// Unsupported : gtk_action_set_label : no return generator
-
-// Unsupported : gtk_action_set_sensitive : no return generator
-
-// Unsupported : gtk_action_set_short_label : no return generator
-
-// Unsupported : gtk_action_set_stock_id : no return generator
-
-// Unsupported : gtk_action_set_tooltip : no return generator
-
-// Unsupported : gtk_action_set_visible : no return generator
-
-// Unsupported : gtk_action_set_visible_horizontal : no return generator
-
-// Unsupported : gtk_action_set_visible_vertical : no return generator
-
-// Unsupported : gtk_action_unblock_activate : no return generator
 
 // ActionBar is a wrapper around the C record GtkActionBar.
 type ActionBar struct {
@@ -362,12 +350,6 @@ func (recv *ActionBar) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
-
-// Unsupported : gtk_action_bar_pack_end : no return generator
-
-// Unsupported : gtk_action_bar_pack_start : no return generator
-
-// Unsupported : gtk_action_bar_set_center_widget : no return generator
 
 // ActionGroup is a wrapper around the C record GtkActionGroup.
 type ActionGroup struct {
@@ -392,10 +374,6 @@ func (recv *ActionGroup) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : gtk_action_group_add_action : no return generator
-
-// Unsupported : gtk_action_group_add_action_with_accel : no return generator
-
 // Unsupported : gtk_action_group_add_actions : unsupported parameter entries : no param type
 
 // Unsupported : gtk_action_group_add_actions_full : unsupported parameter entries : no param type
@@ -408,17 +386,7 @@ func (recv *ActionGroup) ToC() unsafe.Pointer {
 
 // Unsupported : gtk_action_group_add_toggle_actions_full : unsupported parameter entries : no param type
 
-// Unsupported : gtk_action_group_remove_action : no return generator
-
-// Unsupported : gtk_action_group_set_accel_group : no return generator
-
-// Unsupported : gtk_action_group_set_sensitive : no return generator
-
 // Unsupported : gtk_action_group_set_translate_func : unsupported parameter func : no type generator for TranslateFunc, GtkTranslateFunc
-
-// Unsupported : gtk_action_group_set_translation_domain : no return generator
-
-// Unsupported : gtk_action_group_set_visible : no return generator
 
 // Adjustment is a wrapper around the C record GtkAdjustment.
 type Adjustment struct {
@@ -463,11 +431,23 @@ func AdjustmentNew(value float64, lower float64, upper float64, stepIncrement fl
 	return retGo
 }
 
-// Unsupported : gtk_adjustment_changed : no return generator
+// Changed is a wrapper around the C function gtk_adjustment_changed.
+func (recv *Adjustment) Changed() {
+	C.gtk_adjustment_changed((*C.GtkAdjustment)(recv.native))
 
-// Unsupported : gtk_adjustment_clamp_page : no return generator
+	return
+}
 
-// Unsupported : gtk_adjustment_configure : no return generator
+// ClampPage is a wrapper around the C function gtk_adjustment_clamp_page.
+func (recv *Adjustment) ClampPage(lower float64, upper float64) {
+	c_lower := (C.gdouble)(lower)
+
+	c_upper := (C.gdouble)(upper)
+
+	C.gtk_adjustment_clamp_page((*C.GtkAdjustment)(recv.native), c_lower, c_upper)
+
+	return
+}
 
 // GetValue is a wrapper around the C function gtk_adjustment_get_value.
 func (recv *Adjustment) GetValue() float64 {
@@ -477,19 +457,21 @@ func (recv *Adjustment) GetValue() float64 {
 	return retGo
 }
 
-// Unsupported : gtk_adjustment_set_lower : no return generator
+// SetValue is a wrapper around the C function gtk_adjustment_set_value.
+func (recv *Adjustment) SetValue(value float64) {
+	c_value := (C.gdouble)(value)
 
-// Unsupported : gtk_adjustment_set_page_increment : no return generator
+	C.gtk_adjustment_set_value((*C.GtkAdjustment)(recv.native), c_value)
 
-// Unsupported : gtk_adjustment_set_page_size : no return generator
+	return
+}
 
-// Unsupported : gtk_adjustment_set_step_increment : no return generator
+// ValueChanged is a wrapper around the C function gtk_adjustment_value_changed.
+func (recv *Adjustment) ValueChanged() {
+	C.gtk_adjustment_value_changed((*C.GtkAdjustment)(recv.native))
 
-// Unsupported : gtk_adjustment_set_upper : no return generator
-
-// Unsupported : gtk_adjustment_set_value : no return generator
-
-// Unsupported : gtk_adjustment_value_changed : no return generator
+	return
+}
 
 // Alignment is a wrapper around the C record GtkAlignment.
 type Alignment struct {
@@ -532,9 +514,20 @@ func AlignmentNew(xalign float32, yalign float32, xscale float32, yscale float32
 
 // Unsupported : gtk_alignment_get_padding : unsupported parameter padding_top : no type generator for guint, guint*
 
-// Unsupported : gtk_alignment_set : no return generator
+// Set is a wrapper around the C function gtk_alignment_set.
+func (recv *Alignment) Set(xalign float32, yalign float32, xscale float32, yscale float32) {
+	c_xalign := (C.gfloat)(xalign)
 
-// Unsupported : gtk_alignment_set_padding : no return generator
+	c_yalign := (C.gfloat)(yalign)
+
+	c_xscale := (C.gfloat)(xscale)
+
+	c_yscale := (C.gfloat)(yscale)
+
+	C.gtk_alignment_set((*C.GtkAlignment)(recv.native), c_xalign, c_yalign, c_xscale, c_yscale)
+
+	return
+}
 
 // AppChooserButton is a wrapper around the C record GtkAppChooserButton.
 type AppChooserButton struct {
@@ -561,8 +554,6 @@ func (recv *AppChooserButton) ToC() unsafe.Pointer {
 
 // Unsupported : gtk_app_chooser_button_append_custom_item : unsupported parameter icon : no type generator for Gio.Icon, GIcon*
 
-// Unsupported : gtk_app_chooser_button_append_separator : no return generator
-
 // GetHeading is a wrapper around the C function gtk_app_chooser_button_get_heading.
 func (recv *AppChooserButton) GetHeading() string {
 	retC := C.gtk_app_chooser_button_get_heading((*C.GtkAppChooserButton)(recv.native))
@@ -571,13 +562,15 @@ func (recv *AppChooserButton) GetHeading() string {
 	return retGo
 }
 
-// Unsupported : gtk_app_chooser_button_set_active_custom_item : no return generator
+// SetHeading is a wrapper around the C function gtk_app_chooser_button_set_heading.
+func (recv *AppChooserButton) SetHeading(heading string) {
+	c_heading := C.CString(heading)
+	defer C.free(unsafe.Pointer(c_heading))
 
-// Unsupported : gtk_app_chooser_button_set_heading : no return generator
+	C.gtk_app_chooser_button_set_heading((*C.GtkAppChooserButton)(recv.native), c_heading)
 
-// Unsupported : gtk_app_chooser_button_set_show_default_item : no return generator
-
-// Unsupported : gtk_app_chooser_button_set_show_dialog_item : no return generator
+	return
+}
 
 // AppChooserDialog is a wrapper around the C record GtkAppChooserDialog.
 type AppChooserDialog struct {
@@ -612,7 +605,15 @@ func (recv *AppChooserDialog) GetHeading() string {
 	return retGo
 }
 
-// Unsupported : gtk_app_chooser_dialog_set_heading : no return generator
+// SetHeading is a wrapper around the C function gtk_app_chooser_dialog_set_heading.
+func (recv *AppChooserDialog) SetHeading(heading string) {
+	c_heading := C.CString(heading)
+	defer C.free(unsafe.Pointer(c_heading))
+
+	C.gtk_app_chooser_dialog_set_heading((*C.GtkAppChooserDialog)(recv.native), c_heading)
+
+	return
+}
 
 // AppChooserWidget is a wrapper around the C record GtkAppChooserWidget.
 type AppChooserWidget struct {
@@ -637,17 +638,15 @@ func (recv *AppChooserWidget) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : gtk_app_chooser_widget_set_default_text : no return generator
+// SetDefaultText is a wrapper around the C function gtk_app_chooser_widget_set_default_text.
+func (recv *AppChooserWidget) SetDefaultText(text string) {
+	c_text := C.CString(text)
+	defer C.free(unsafe.Pointer(c_text))
 
-// Unsupported : gtk_app_chooser_widget_set_show_all : no return generator
+	C.gtk_app_chooser_widget_set_default_text((*C.GtkAppChooserWidget)(recv.native), c_text)
 
-// Unsupported : gtk_app_chooser_widget_set_show_default : no return generator
-
-// Unsupported : gtk_app_chooser_widget_set_show_fallback : no return generator
-
-// Unsupported : gtk_app_chooser_widget_set_show_other : no return generator
-
-// Unsupported : gtk_app_chooser_widget_set_show_recommended : no return generator
+	return
+}
 
 // Application is a wrapper around the C record GtkApplication.
 type Application struct {
@@ -674,8 +673,6 @@ func (recv *Application) ToC() unsafe.Pointer {
 
 // Unsupported : gtk_application_add_accelerator : unsupported parameter parameter : Blacklisted record : GVariant
 
-// Unsupported : gtk_application_add_window : no return generator
-
 // Unsupported : gtk_application_get_accels_for_action : no return type
 
 // Unsupported : gtk_application_get_actions_for_accel : no return type
@@ -684,15 +681,7 @@ func (recv *Application) ToC() unsafe.Pointer {
 
 // Unsupported : gtk_application_remove_accelerator : unsupported parameter parameter : Blacklisted record : GVariant
 
-// Unsupported : gtk_application_remove_window : no return generator
-
 // Unsupported : gtk_application_set_accels_for_action : unsupported parameter accels : no param type
-
-// Unsupported : gtk_application_set_app_menu : no return generator
-
-// Unsupported : gtk_application_set_menubar : no return generator
-
-// Unsupported : gtk_application_uninhibit : no return generator
 
 // ApplicationWindow is a wrapper around the C record GtkApplicationWindow.
 type ApplicationWindow struct {
@@ -716,10 +705,6 @@ func (recv *ApplicationWindow) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
-
-// Unsupported : gtk_application_window_set_help_overlay : no return generator
-
-// Unsupported : gtk_application_window_set_show_menubar : no return generator
 
 // Arrow is a wrapper around the C record GtkArrow.
 type Arrow struct {
@@ -756,7 +741,16 @@ func ArrowNew(arrowType ArrowType, shadowType ShadowType) *Widget {
 	return retGo
 }
 
-// Unsupported : gtk_arrow_set : no return generator
+// Set is a wrapper around the C function gtk_arrow_set.
+func (recv *Arrow) Set(arrowType ArrowType, shadowType ShadowType) {
+	c_arrow_type := (C.GtkArrowType)(arrowType)
+
+	c_shadow_type := (C.GtkShadowType)(shadowType)
+
+	C.gtk_arrow_set((*C.GtkArrow)(recv.native), c_arrow_type, c_shadow_type)
+
+	return
+}
 
 // ArrowAccessible is a wrapper around the C record GtkArrowAccessible.
 type ArrowAccessible struct {
@@ -824,7 +818,21 @@ func AspectFrameNew(label string, xalign float32, yalign float32, ratio float32,
 	return retGo
 }
 
-// Unsupported : gtk_aspect_frame_set : no return generator
+// Set is a wrapper around the C function gtk_aspect_frame_set.
+func (recv *AspectFrame) Set(xalign float32, yalign float32, ratio float32, obeyChild bool) {
+	c_xalign := (C.gfloat)(xalign)
+
+	c_yalign := (C.gfloat)(yalign)
+
+	c_ratio := (C.gfloat)(ratio)
+
+	c_obey_child :=
+		boolToGboolean(obeyChild)
+
+	C.gtk_aspect_frame_set((*C.GtkAspectFrame)(recv.native), c_xalign, c_yalign, c_ratio, c_obey_child)
+
+	return
+}
 
 // Assistant is a wrapper around the C record GtkAssistant.
 type Assistant struct {
@@ -849,35 +857,7 @@ func (recv *Assistant) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : gtk_assistant_add_action_widget : no return generator
-
-// Unsupported : gtk_assistant_commit : no return generator
-
-// Unsupported : gtk_assistant_next_page : no return generator
-
-// Unsupported : gtk_assistant_previous_page : no return generator
-
-// Unsupported : gtk_assistant_remove_action_widget : no return generator
-
-// Unsupported : gtk_assistant_remove_page : no return generator
-
-// Unsupported : gtk_assistant_set_current_page : no return generator
-
 // Unsupported : gtk_assistant_set_forward_page_func : unsupported parameter page_func : no type generator for AssistantPageFunc, GtkAssistantPageFunc
-
-// Unsupported : gtk_assistant_set_page_complete : no return generator
-
-// Unsupported : gtk_assistant_set_page_has_padding : no return generator
-
-// Unsupported : gtk_assistant_set_page_header_image : no return generator
-
-// Unsupported : gtk_assistant_set_page_side_image : no return generator
-
-// Unsupported : gtk_assistant_set_page_title : no return generator
-
-// Unsupported : gtk_assistant_set_page_type : no return generator
-
-// Unsupported : gtk_assistant_update_buttons_state : no return generator
 
 // Bin is a wrapper around the C record GtkBin.
 type Bin struct {
@@ -972,23 +952,90 @@ func (recv *Box) GetSpacing() int32 {
 	return retGo
 }
 
-// Unsupported : gtk_box_pack_end : no return generator
+// PackEnd is a wrapper around the C function gtk_box_pack_end.
+func (recv *Box) PackEnd(child *Widget, expand bool, fill bool, padding uint32) {
+	c_child := (*C.GtkWidget)(child.ToC())
 
-// Unsupported : gtk_box_pack_start : no return generator
+	c_expand :=
+		boolToGboolean(expand)
+
+	c_fill :=
+		boolToGboolean(fill)
+
+	c_padding := (C.guint)(padding)
+
+	C.gtk_box_pack_end((*C.GtkBox)(recv.native), c_child, c_expand, c_fill, c_padding)
+
+	return
+}
+
+// PackStart is a wrapper around the C function gtk_box_pack_start.
+func (recv *Box) PackStart(child *Widget, expand bool, fill bool, padding uint32) {
+	c_child := (*C.GtkWidget)(child.ToC())
+
+	c_expand :=
+		boolToGboolean(expand)
+
+	c_fill :=
+		boolToGboolean(fill)
+
+	c_padding := (C.guint)(padding)
+
+	C.gtk_box_pack_start((*C.GtkBox)(recv.native), c_child, c_expand, c_fill, c_padding)
+
+	return
+}
 
 // Unsupported : gtk_box_query_child_packing : unsupported parameter padding : no type generator for guint, guint*
 
-// Unsupported : gtk_box_reorder_child : no return generator
+// ReorderChild is a wrapper around the C function gtk_box_reorder_child.
+func (recv *Box) ReorderChild(child *Widget, position int32) {
+	c_child := (*C.GtkWidget)(child.ToC())
 
-// Unsupported : gtk_box_set_baseline_position : no return generator
+	c_position := (C.gint)(position)
 
-// Unsupported : gtk_box_set_center_widget : no return generator
+	C.gtk_box_reorder_child((*C.GtkBox)(recv.native), c_child, c_position)
 
-// Unsupported : gtk_box_set_child_packing : no return generator
+	return
+}
 
-// Unsupported : gtk_box_set_homogeneous : no return generator
+// SetChildPacking is a wrapper around the C function gtk_box_set_child_packing.
+func (recv *Box) SetChildPacking(child *Widget, expand bool, fill bool, padding uint32, packType PackType) {
+	c_child := (*C.GtkWidget)(child.ToC())
 
-// Unsupported : gtk_box_set_spacing : no return generator
+	c_expand :=
+		boolToGboolean(expand)
+
+	c_fill :=
+		boolToGboolean(fill)
+
+	c_padding := (C.guint)(padding)
+
+	c_pack_type := (C.GtkPackType)(packType)
+
+	C.gtk_box_set_child_packing((*C.GtkBox)(recv.native), c_child, c_expand, c_fill, c_padding, c_pack_type)
+
+	return
+}
+
+// SetHomogeneous is a wrapper around the C function gtk_box_set_homogeneous.
+func (recv *Box) SetHomogeneous(homogeneous bool) {
+	c_homogeneous :=
+		boolToGboolean(homogeneous)
+
+	C.gtk_box_set_homogeneous((*C.GtkBox)(recv.native), c_homogeneous)
+
+	return
+}
+
+// SetSpacing is a wrapper around the C function gtk_box_set_spacing.
+func (recv *Box) SetSpacing(spacing int32) {
+	c_spacing := (C.gint)(spacing)
+
+	C.gtk_box_set_spacing((*C.GtkBox)(recv.native), c_spacing)
+
+	return
+}
 
 // Builder is a wrapper around the C record GtkBuilder.
 type Builder struct {
@@ -1023,21 +1070,13 @@ func (recv *Builder) ToC() unsafe.Pointer {
 
 // Unsupported : gtk_builder_add_objects_from_string : unsupported parameter object_ids : no param type
 
-// Unsupported : gtk_builder_connect_signals : no return generator
-
 // Unsupported : gtk_builder_connect_signals_full : unsupported parameter func : no type generator for BuilderConnectFunc, GtkBuilderConnectFunc
-
-// Unsupported : gtk_builder_expose_object : no return generator
 
 // Unsupported : gtk_builder_extend_with_template : unsupported parameter template_type : no type generator for GType, GType
 
 // Unsupported : gtk_builder_get_type_from_name : no return generator
 
 // Unsupported : gtk_builder_lookup_callback_symbol : no return generator
-
-// Unsupported : gtk_builder_set_application : no return generator
-
-// Unsupported : gtk_builder_set_translation_domain : no return generator
 
 // Unsupported : gtk_builder_value_from_string_type : unsupported parameter type : no type generator for GType, GType
 
@@ -1107,9 +1146,19 @@ func ButtonNewWithMnemonic(label string) *Widget {
 	return retGo
 }
 
-// Unsupported : gtk_button_clicked : no return generator
+// Clicked is a wrapper around the C function gtk_button_clicked.
+func (recv *Button) Clicked() {
+	C.gtk_button_clicked((*C.GtkButton)(recv.native))
 
-// Unsupported : gtk_button_enter : no return generator
+	return
+}
+
+// Enter is a wrapper around the C function gtk_button_enter.
+func (recv *Button) Enter() {
+	C.gtk_button_enter((*C.GtkButton)(recv.native))
+
+	return
+}
 
 // Unsupported : gtk_button_get_alignment : unsupported parameter xalign : no type generator for gfloat, gfloat*
 
@@ -1145,29 +1194,65 @@ func (recv *Button) GetUseUnderline() bool {
 	return retGo
 }
 
-// Unsupported : gtk_button_leave : no return generator
+// Leave is a wrapper around the C function gtk_button_leave.
+func (recv *Button) Leave() {
+	C.gtk_button_leave((*C.GtkButton)(recv.native))
 
-// Unsupported : gtk_button_pressed : no return generator
+	return
+}
 
-// Unsupported : gtk_button_released : no return generator
+// Pressed is a wrapper around the C function gtk_button_pressed.
+func (recv *Button) Pressed() {
+	C.gtk_button_pressed((*C.GtkButton)(recv.native))
 
-// Unsupported : gtk_button_set_alignment : no return generator
+	return
+}
 
-// Unsupported : gtk_button_set_always_show_image : no return generator
+// Released is a wrapper around the C function gtk_button_released.
+func (recv *Button) Released() {
+	C.gtk_button_released((*C.GtkButton)(recv.native))
 
-// Unsupported : gtk_button_set_focus_on_click : no return generator
+	return
+}
 
-// Unsupported : gtk_button_set_image : no return generator
+// SetLabel is a wrapper around the C function gtk_button_set_label.
+func (recv *Button) SetLabel(label string) {
+	c_label := C.CString(label)
+	defer C.free(unsafe.Pointer(c_label))
 
-// Unsupported : gtk_button_set_image_position : no return generator
+	C.gtk_button_set_label((*C.GtkButton)(recv.native), c_label)
 
-// Unsupported : gtk_button_set_label : no return generator
+	return
+}
 
-// Unsupported : gtk_button_set_relief : no return generator
+// SetRelief is a wrapper around the C function gtk_button_set_relief.
+func (recv *Button) SetRelief(relief ReliefStyle) {
+	c_relief := (C.GtkReliefStyle)(relief)
 
-// Unsupported : gtk_button_set_use_stock : no return generator
+	C.gtk_button_set_relief((*C.GtkButton)(recv.native), c_relief)
 
-// Unsupported : gtk_button_set_use_underline : no return generator
+	return
+}
+
+// SetUseStock is a wrapper around the C function gtk_button_set_use_stock.
+func (recv *Button) SetUseStock(useStock bool) {
+	c_use_stock :=
+		boolToGboolean(useStock)
+
+	C.gtk_button_set_use_stock((*C.GtkButton)(recv.native), c_use_stock)
+
+	return
+}
+
+// SetUseUnderline is a wrapper around the C function gtk_button_set_use_underline.
+func (recv *Button) SetUseUnderline(useUnderline bool) {
+	c_use_underline :=
+		boolToGboolean(useUnderline)
+
+	C.gtk_button_set_use_underline((*C.GtkButton)(recv.native), c_use_underline)
+
+	return
+}
 
 // ButtonAccessible is a wrapper around the C record GtkButtonAccessible.
 type ButtonAccessible struct {
@@ -1223,11 +1308,26 @@ func (recv *ButtonBox) GetLayout() ButtonBoxStyle {
 	return retGo
 }
 
-// Unsupported : gtk_button_box_set_child_non_homogeneous : no return generator
+// SetChildSecondary is a wrapper around the C function gtk_button_box_set_child_secondary.
+func (recv *ButtonBox) SetChildSecondary(child *Widget, isSecondary bool) {
+	c_child := (*C.GtkWidget)(child.ToC())
 
-// Unsupported : gtk_button_box_set_child_secondary : no return generator
+	c_is_secondary :=
+		boolToGboolean(isSecondary)
 
-// Unsupported : gtk_button_box_set_layout : no return generator
+	C.gtk_button_box_set_child_secondary((*C.GtkButtonBox)(recv.native), c_child, c_is_secondary)
+
+	return
+}
+
+// SetLayout is a wrapper around the C function gtk_button_box_set_layout.
+func (recv *ButtonBox) SetLayout(layoutStyle ButtonBoxStyle) {
+	c_layout_style := (C.GtkButtonBoxStyle)(layoutStyle)
+
+	C.gtk_button_box_set_layout((*C.GtkButtonBox)(recv.native), c_layout_style)
+
+	return
+}
 
 // Calendar is a wrapper around the C record GtkCalendar.
 type Calendar struct {
@@ -1260,25 +1360,54 @@ func CalendarNew() *Widget {
 	return retGo
 }
 
-// Unsupported : gtk_calendar_clear_marks : no return generator
+// ClearMarks is a wrapper around the C function gtk_calendar_clear_marks.
+func (recv *Calendar) ClearMarks() {
+	C.gtk_calendar_clear_marks((*C.GtkCalendar)(recv.native))
+
+	return
+}
 
 // Unsupported : gtk_calendar_get_date : unsupported parameter year : no type generator for guint, guint*
 
-// Unsupported : gtk_calendar_mark_day : no return generator
+// MarkDay is a wrapper around the C function gtk_calendar_mark_day.
+func (recv *Calendar) MarkDay(day uint32) {
+	c_day := (C.guint)(day)
 
-// Unsupported : gtk_calendar_select_day : no return generator
+	C.gtk_calendar_mark_day((*C.GtkCalendar)(recv.native), c_day)
 
-// Unsupported : gtk_calendar_select_month : no return generator
+	return
+}
+
+// SelectDay is a wrapper around the C function gtk_calendar_select_day.
+func (recv *Calendar) SelectDay(day uint32) {
+	c_day := (C.guint)(day)
+
+	C.gtk_calendar_select_day((*C.GtkCalendar)(recv.native), c_day)
+
+	return
+}
+
+// SelectMonth is a wrapper around the C function gtk_calendar_select_month.
+func (recv *Calendar) SelectMonth(month uint32, year uint32) {
+	c_month := (C.guint)(month)
+
+	c_year := (C.guint)(year)
+
+	C.gtk_calendar_select_month((*C.GtkCalendar)(recv.native), c_month, c_year)
+
+	return
+}
 
 // Unsupported : gtk_calendar_set_detail_func : unsupported parameter func : no type generator for CalendarDetailFunc, GtkCalendarDetailFunc
 
-// Unsupported : gtk_calendar_set_detail_height_rows : no return generator
+// UnmarkDay is a wrapper around the C function gtk_calendar_unmark_day.
+func (recv *Calendar) UnmarkDay(day uint32) {
+	c_day := (C.guint)(day)
 
-// Unsupported : gtk_calendar_set_detail_width_chars : no return generator
+	C.gtk_calendar_unmark_day((*C.GtkCalendar)(recv.native), c_day)
 
-// Unsupported : gtk_calendar_set_display_options : no return generator
-
-// Unsupported : gtk_calendar_unmark_day : no return generator
+	return
+}
 
 // CellAccessible is a wrapper around the C record GtkCellAccessible.
 type CellAccessible struct {
@@ -1330,27 +1459,15 @@ func (recv *CellArea) ToC() unsafe.Pointer {
 
 // Unsupported : gtk_cell_area_activate_cell : unsupported parameter event : no type generator for Gdk.Event, GdkEvent*
 
-// Unsupported : gtk_cell_area_add : no return generator
-
-// Unsupported : gtk_cell_area_add_focus_sibling : no return generator
-
 // Unsupported : gtk_cell_area_add_with_properties : unsupported parameter ... : varargs
 
 // Unsupported : gtk_cell_area_apply_attributes : unsupported parameter tree_model : no type generator for TreeModel, GtkTreeModel*
 
-// Unsupported : gtk_cell_area_attribute_connect : no return generator
-
-// Unsupported : gtk_cell_area_attribute_disconnect : no return generator
-
 // Unsupported : gtk_cell_area_cell_get : unsupported parameter ... : varargs
-
-// Unsupported : gtk_cell_area_cell_get_property : no return generator
 
 // Unsupported : gtk_cell_area_cell_get_valist : unsupported parameter var_args : no type generator for va_list, va_list
 
 // Unsupported : gtk_cell_area_cell_set : unsupported parameter ... : varargs
-
-// Unsupported : gtk_cell_area_cell_set_property : no return generator
 
 // Unsupported : gtk_cell_area_cell_set_valist : unsupported parameter var_args : no type generator for va_list, va_list
 
@@ -1376,17 +1493,9 @@ func (recv *CellArea) ToC() unsafe.Pointer {
 
 // Unsupported : gtk_cell_area_inner_cell_area : unsupported parameter cell_area : Blacklisted record : GdkRectangle
 
-// Unsupported : gtk_cell_area_remove : no return generator
-
-// Unsupported : gtk_cell_area_remove_focus_sibling : no return generator
-
 // Unsupported : gtk_cell_area_render : unsupported parameter background_area : Blacklisted record : GdkRectangle
 
 // Unsupported : gtk_cell_area_request_renderer : unsupported parameter minimum_size : no type generator for gint, gint*
-
-// Unsupported : gtk_cell_area_set_focus_cell : no return generator
-
-// Unsupported : gtk_cell_area_stop_editing : no return generator
 
 // CellAreaBox is a wrapper around the C record GtkCellAreaBox.
 type CellAreaBox struct {
@@ -1411,12 +1520,6 @@ func (recv *CellAreaBox) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : gtk_cell_area_box_pack_end : no return generator
-
-// Unsupported : gtk_cell_area_box_pack_start : no return generator
-
-// Unsupported : gtk_cell_area_box_set_spacing : no return generator
-
 // CellAreaContext is a wrapper around the C record GtkCellAreaContext.
 type CellAreaContext struct {
 	native *C.GtkCellAreaContext
@@ -1440,7 +1543,16 @@ func (recv *CellAreaContext) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : gtk_cell_area_context_allocate : no return generator
+// Allocate is a wrapper around the C function gtk_cell_area_context_allocate.
+func (recv *CellAreaContext) Allocate(width int32, height int32) {
+	c_width := (C.gint)(width)
+
+	c_height := (C.gint)(height)
+
+	C.gtk_cell_area_context_allocate((*C.GtkCellAreaContext)(recv.native), c_width, c_height)
+
+	return
+}
 
 // Unsupported : gtk_cell_area_context_get_allocation : unsupported parameter width : no type generator for gint, gint*
 
@@ -1452,11 +1564,12 @@ func (recv *CellAreaContext) ToC() unsafe.Pointer {
 
 // Unsupported : gtk_cell_area_context_get_preferred_width_for_height : unsupported parameter minimum_width : no type generator for gint, gint*
 
-// Unsupported : gtk_cell_area_context_push_preferred_height : no return generator
+// Reset is a wrapper around the C function gtk_cell_area_context_reset.
+func (recv *CellAreaContext) Reset() {
+	C.gtk_cell_area_context_reset((*C.GtkCellAreaContext)(recv.native))
 
-// Unsupported : gtk_cell_area_context_push_preferred_width : no return generator
-
-// Unsupported : gtk_cell_area_context_reset : no return generator
+	return
+}
 
 // CellRenderer is a wrapper around the C record GtkCellRenderer.
 type CellRenderer struct {
@@ -1495,8 +1608,6 @@ func (recv *CellRenderer) ToC() unsafe.Pointer {
 
 // Unsupported : gtk_cell_renderer_get_preferred_height_for_width : unsupported parameter minimum_height : no type generator for gint, gint*
 
-// Unsupported : gtk_cell_renderer_get_preferred_size : no return generator
-
 // Unsupported : gtk_cell_renderer_get_preferred_width : unsupported parameter minimum_size : no type generator for gint, gint*
 
 // Unsupported : gtk_cell_renderer_get_preferred_width_for_height : unsupported parameter minimum_width : no type generator for gint, gint*
@@ -1505,19 +1616,18 @@ func (recv *CellRenderer) ToC() unsafe.Pointer {
 
 // Unsupported : gtk_cell_renderer_render : unsupported parameter background_area : Blacklisted record : GdkRectangle
 
-// Unsupported : gtk_cell_renderer_set_alignment : no return generator
+// SetFixedSize is a wrapper around the C function gtk_cell_renderer_set_fixed_size.
+func (recv *CellRenderer) SetFixedSize(width int32, height int32) {
+	c_width := (C.gint)(width)
 
-// Unsupported : gtk_cell_renderer_set_fixed_size : no return generator
+	c_height := (C.gint)(height)
 
-// Unsupported : gtk_cell_renderer_set_padding : no return generator
+	C.gtk_cell_renderer_set_fixed_size((*C.GtkCellRenderer)(recv.native), c_width, c_height)
 
-// Unsupported : gtk_cell_renderer_set_sensitive : no return generator
-
-// Unsupported : gtk_cell_renderer_set_visible : no return generator
+	return
+}
 
 // Unsupported : gtk_cell_renderer_start_editing : unsupported parameter event : no type generator for Gdk.Event, GdkEvent*
-
-// Unsupported : gtk_cell_renderer_stop_editing : no return generator
 
 // CellRendererAccel is a wrapper around the C record GtkCellRendererAccel.
 type CellRendererAccel struct {
@@ -1696,7 +1806,14 @@ func CellRendererTextNew() *CellRenderer {
 	return retGo
 }
 
-// Unsupported : gtk_cell_renderer_text_set_fixed_height_from_font : no return generator
+// SetFixedHeightFromFont is a wrapper around the C function gtk_cell_renderer_text_set_fixed_height_from_font.
+func (recv *CellRendererText) SetFixedHeightFromFont(numberOfRows int32) {
+	c_number_of_rows := (C.gint)(numberOfRows)
+
+	C.gtk_cell_renderer_text_set_fixed_height_from_font((*C.GtkCellRendererText)(recv.native), c_number_of_rows)
+
+	return
+}
 
 // CellRendererToggle is a wrapper around the C record GtkCellRendererToggle.
 type CellRendererToggle struct {
@@ -1745,11 +1862,25 @@ func (recv *CellRendererToggle) GetRadio() bool {
 	return retGo
 }
 
-// Unsupported : gtk_cell_renderer_toggle_set_activatable : no return generator
+// SetActive is a wrapper around the C function gtk_cell_renderer_toggle_set_active.
+func (recv *CellRendererToggle) SetActive(setting bool) {
+	c_setting :=
+		boolToGboolean(setting)
 
-// Unsupported : gtk_cell_renderer_toggle_set_active : no return generator
+	C.gtk_cell_renderer_toggle_set_active((*C.GtkCellRendererToggle)(recv.native), c_setting)
 
-// Unsupported : gtk_cell_renderer_toggle_set_radio : no return generator
+	return
+}
+
+// SetRadio is a wrapper around the C function gtk_cell_renderer_toggle_set_radio.
+func (recv *CellRendererToggle) SetRadio(radio bool) {
+	c_radio :=
+		boolToGboolean(radio)
+
+	C.gtk_cell_renderer_toggle_set_radio((*C.GtkCellRendererToggle)(recv.native), c_radio)
+
+	return
+}
 
 // CellView is a wrapper around the C record GtkCellView.
 type CellView struct {
@@ -1775,16 +1906,6 @@ func (recv *CellView) ToC() unsafe.Pointer {
 }
 
 // Unsupported : gtk_cell_view_get_model : no return generator
-
-// Unsupported : gtk_cell_view_set_background_color : no return generator
-
-// Unsupported : gtk_cell_view_set_background_rgba : no return generator
-
-// Unsupported : gtk_cell_view_set_displayed_row : no return generator
-
-// Unsupported : gtk_cell_view_set_draw_sensitive : no return generator
-
-// Unsupported : gtk_cell_view_set_fit_model : no return generator
 
 // Unsupported : gtk_cell_view_set_model : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
 
@@ -1909,13 +2030,32 @@ func (recv *CheckMenuItem) GetInconsistent() bool {
 	return retGo
 }
 
-// Unsupported : gtk_check_menu_item_set_active : no return generator
+// SetActive is a wrapper around the C function gtk_check_menu_item_set_active.
+func (recv *CheckMenuItem) SetActive(isActive bool) {
+	c_is_active :=
+		boolToGboolean(isActive)
 
-// Unsupported : gtk_check_menu_item_set_draw_as_radio : no return generator
+	C.gtk_check_menu_item_set_active((*C.GtkCheckMenuItem)(recv.native), c_is_active)
 
-// Unsupported : gtk_check_menu_item_set_inconsistent : no return generator
+	return
+}
 
-// Unsupported : gtk_check_menu_item_toggled : no return generator
+// SetInconsistent is a wrapper around the C function gtk_check_menu_item_set_inconsistent.
+func (recv *CheckMenuItem) SetInconsistent(setting bool) {
+	c_setting :=
+		boolToGboolean(setting)
+
+	C.gtk_check_menu_item_set_inconsistent((*C.GtkCheckMenuItem)(recv.native), c_setting)
+
+	return
+}
+
+// Toggled is a wrapper around the C function gtk_check_menu_item_toggled.
+func (recv *CheckMenuItem) Toggled() {
+	C.gtk_check_menu_item_toggled((*C.GtkCheckMenuItem)(recv.native))
+
+	return
+}
 
 // CheckMenuItemAccessible is a wrapper around the C record GtkCheckMenuItemAccessible.
 type CheckMenuItemAccessible struct {
@@ -1961,7 +2101,12 @@ func (recv *Clipboard) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : gtk_clipboard_clear : no return generator
+// Clear is a wrapper around the C function gtk_clipboard_clear.
+func (recv *Clipboard) Clear() {
+	C.gtk_clipboard_clear((*C.GtkClipboard)(recv.native))
+
+	return
+}
 
 // GetOwner is a wrapper around the C function gtk_clipboard_get_owner.
 func (recv *Clipboard) GetOwner() *gobject.Object {
@@ -1987,15 +2132,21 @@ func (recv *Clipboard) GetOwner() *gobject.Object {
 
 // Unsupported : gtk_clipboard_set_can_store : unsupported parameter targets : no param type
 
-// Unsupported : gtk_clipboard_set_image : no return generator
+// SetText is a wrapper around the C function gtk_clipboard_set_text.
+func (recv *Clipboard) SetText(text string, len int32) {
+	c_text := C.CString(text)
+	defer C.free(unsafe.Pointer(c_text))
 
-// Unsupported : gtk_clipboard_set_text : no return generator
+	c_len := (C.gint)(len)
+
+	C.gtk_clipboard_set_text((*C.GtkClipboard)(recv.native), c_text, c_len)
+
+	return
+}
 
 // Unsupported : gtk_clipboard_set_with_data : unsupported parameter targets : no param type
 
 // Unsupported : gtk_clipboard_set_with_owner : unsupported parameter targets : no param type
-
-// Unsupported : gtk_clipboard_store : no return generator
 
 // Unsupported : gtk_clipboard_wait_for_contents : unsupported parameter target : Blacklisted record : GdkAtom
 
@@ -2046,20 +2197,6 @@ func (recv *ColorButton) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
-
-// Unsupported : gtk_color_button_get_color : no return generator
-
-// Unsupported : gtk_color_button_get_rgba : no return generator
-
-// Unsupported : gtk_color_button_set_alpha : no return generator
-
-// Unsupported : gtk_color_button_set_color : no return generator
-
-// Unsupported : gtk_color_button_set_rgba : no return generator
-
-// Unsupported : gtk_color_button_set_title : no return generator
-
-// Unsupported : gtk_color_button_set_use_alpha : no return generator
 
 // ColorChooserDialog is a wrapper around the C record GtkColorChooserDialog.
 type ColorChooserDialog struct {
@@ -2146,9 +2283,16 @@ func (recv *ColorSelection) GetCurrentAlpha() uint16 {
 	return retGo
 }
 
-// Unsupported : gtk_color_selection_get_current_color : no return generator
+// GetCurrentColor is a wrapper around the C function gtk_color_selection_get_current_color.
+func (recv *ColorSelection) GetCurrentColor() *gdk.Color {
+	var c_color C.GdkColor
 
-// Unsupported : gtk_color_selection_get_current_rgba : no return generator
+	C.gtk_color_selection_get_current_color((*C.GtkColorSelection)(recv.native), &c_color)
+
+	color := gdk.ColorNewFromC(unsafe.Pointer(&c_color))
+
+	return color
+}
 
 // GetHasOpacityControl is a wrapper around the C function gtk_color_selection_get_has_opacity_control.
 func (recv *ColorSelection) GetHasOpacityControl() bool {
@@ -2174,9 +2318,16 @@ func (recv *ColorSelection) GetPreviousAlpha() uint16 {
 	return retGo
 }
 
-// Unsupported : gtk_color_selection_get_previous_color : no return generator
+// GetPreviousColor is a wrapper around the C function gtk_color_selection_get_previous_color.
+func (recv *ColorSelection) GetPreviousColor() *gdk.Color {
+	var c_color C.GdkColor
 
-// Unsupported : gtk_color_selection_get_previous_rgba : no return generator
+	C.gtk_color_selection_get_previous_color((*C.GtkColorSelection)(recv.native), &c_color)
+
+	color := gdk.ColorNewFromC(unsafe.Pointer(&c_color))
+
+	return color
+}
 
 // IsAdjusting is a wrapper around the C function gtk_color_selection_is_adjusting.
 func (recv *ColorSelection) IsAdjusting() bool {
@@ -2186,21 +2337,61 @@ func (recv *ColorSelection) IsAdjusting() bool {
 	return retGo
 }
 
-// Unsupported : gtk_color_selection_set_current_alpha : no return generator
+// SetCurrentAlpha is a wrapper around the C function gtk_color_selection_set_current_alpha.
+func (recv *ColorSelection) SetCurrentAlpha(alpha uint16) {
+	c_alpha := (C.guint16)(alpha)
 
-// Unsupported : gtk_color_selection_set_current_color : no return generator
+	C.gtk_color_selection_set_current_alpha((*C.GtkColorSelection)(recv.native), c_alpha)
 
-// Unsupported : gtk_color_selection_set_current_rgba : no return generator
+	return
+}
 
-// Unsupported : gtk_color_selection_set_has_opacity_control : no return generator
+// SetCurrentColor is a wrapper around the C function gtk_color_selection_set_current_color.
+func (recv *ColorSelection) SetCurrentColor(color *gdk.Color) {
+	c_color := (*C.GdkColor)(color.ToC())
 
-// Unsupported : gtk_color_selection_set_has_palette : no return generator
+	C.gtk_color_selection_set_current_color((*C.GtkColorSelection)(recv.native), c_color)
 
-// Unsupported : gtk_color_selection_set_previous_alpha : no return generator
+	return
+}
 
-// Unsupported : gtk_color_selection_set_previous_color : no return generator
+// SetHasOpacityControl is a wrapper around the C function gtk_color_selection_set_has_opacity_control.
+func (recv *ColorSelection) SetHasOpacityControl(hasOpacity bool) {
+	c_has_opacity :=
+		boolToGboolean(hasOpacity)
 
-// Unsupported : gtk_color_selection_set_previous_rgba : no return generator
+	C.gtk_color_selection_set_has_opacity_control((*C.GtkColorSelection)(recv.native), c_has_opacity)
+
+	return
+}
+
+// SetHasPalette is a wrapper around the C function gtk_color_selection_set_has_palette.
+func (recv *ColorSelection) SetHasPalette(hasPalette bool) {
+	c_has_palette :=
+		boolToGboolean(hasPalette)
+
+	C.gtk_color_selection_set_has_palette((*C.GtkColorSelection)(recv.native), c_has_palette)
+
+	return
+}
+
+// SetPreviousAlpha is a wrapper around the C function gtk_color_selection_set_previous_alpha.
+func (recv *ColorSelection) SetPreviousAlpha(alpha uint16) {
+	c_alpha := (C.guint16)(alpha)
+
+	C.gtk_color_selection_set_previous_alpha((*C.GtkColorSelection)(recv.native), c_alpha)
+
+	return
+}
+
+// SetPreviousColor is a wrapper around the C function gtk_color_selection_set_previous_color.
+func (recv *ColorSelection) SetPreviousColor(color *gdk.Color) {
+	c_color := (*C.GdkColor)(color.ToC())
+
+	C.gtk_color_selection_set_previous_color((*C.GtkColorSelection)(recv.native), c_color)
+
+	return
+}
 
 // ColorSelectionDialog is a wrapper around the C record GtkColorSelectionDialog.
 type ColorSelectionDialog struct {
@@ -2295,39 +2486,9 @@ func (recv *ComboBox) GetAddTearoffs() bool {
 
 // Unsupported : gtk_combo_box_get_row_separator_func : no return generator
 
-// Unsupported : gtk_combo_box_popdown : no return generator
-
-// Unsupported : gtk_combo_box_popup : no return generator
-
-// Unsupported : gtk_combo_box_popup_for_device : no return generator
-
-// Unsupported : gtk_combo_box_set_active : no return generator
-
-// Unsupported : gtk_combo_box_set_active_iter : no return generator
-
-// Unsupported : gtk_combo_box_set_add_tearoffs : no return generator
-
-// Unsupported : gtk_combo_box_set_button_sensitivity : no return generator
-
-// Unsupported : gtk_combo_box_set_column_span_column : no return generator
-
-// Unsupported : gtk_combo_box_set_entry_text_column : no return generator
-
-// Unsupported : gtk_combo_box_set_focus_on_click : no return generator
-
-// Unsupported : gtk_combo_box_set_id_column : no return generator
-
 // Unsupported : gtk_combo_box_set_model : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
 
-// Unsupported : gtk_combo_box_set_popup_fixed_width : no return generator
-
 // Unsupported : gtk_combo_box_set_row_separator_func : unsupported parameter func : no type generator for TreeViewRowSeparatorFunc, GtkTreeViewRowSeparatorFunc
-
-// Unsupported : gtk_combo_box_set_row_span_column : no return generator
-
-// Unsupported : gtk_combo_box_set_title : no return generator
-
-// Unsupported : gtk_combo_box_set_wrap_width : no return generator
 
 // ComboBoxAccessible is a wrapper around the C record GtkComboBoxAccessible.
 type ComboBoxAccessible struct {
@@ -2375,22 +2536,6 @@ func (recv *ComboBoxText) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : gtk_combo_box_text_append : no return generator
-
-// Unsupported : gtk_combo_box_text_append_text : no return generator
-
-// Unsupported : gtk_combo_box_text_insert : no return generator
-
-// Unsupported : gtk_combo_box_text_insert_text : no return generator
-
-// Unsupported : gtk_combo_box_text_prepend : no return generator
-
-// Unsupported : gtk_combo_box_text_prepend_text : no return generator
-
-// Unsupported : gtk_combo_box_text_remove : no return generator
-
-// Unsupported : gtk_combo_box_text_remove_all : no return generator
-
 // Container is a wrapper around the C record GtkContainer.
 type Container struct {
 	native *C.GtkContainer
@@ -2414,25 +2559,57 @@ func (recv *Container) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : gtk_container_add : no return generator
+// Add is a wrapper around the C function gtk_container_add.
+func (recv *Container) Add(widget *Widget) {
+	c_widget := (*C.GtkWidget)(widget.ToC())
+
+	C.gtk_container_add((*C.GtkContainer)(recv.native), c_widget)
+
+	return
+}
 
 // Unsupported : gtk_container_add_with_properties : unsupported parameter ... : varargs
 
-// Unsupported : gtk_container_check_resize : no return generator
+// CheckResize is a wrapper around the C function gtk_container_check_resize.
+func (recv *Container) CheckResize() {
+	C.gtk_container_check_resize((*C.GtkContainer)(recv.native))
+
+	return
+}
 
 // Unsupported : gtk_container_child_get : unsupported parameter ... : varargs
 
-// Unsupported : gtk_container_child_get_property : no return generator
+// ChildGetProperty is a wrapper around the C function gtk_container_child_get_property.
+func (recv *Container) ChildGetProperty(child *Widget, propertyName string, value *gobject.Value) {
+	c_child := (*C.GtkWidget)(child.ToC())
+
+	c_property_name := C.CString(propertyName)
+	defer C.free(unsafe.Pointer(c_property_name))
+
+	c_value := (*C.GValue)(value.ToC())
+
+	C.gtk_container_child_get_property((*C.GtkContainer)(recv.native), c_child, c_property_name, c_value)
+
+	return
+}
 
 // Unsupported : gtk_container_child_get_valist : unsupported parameter var_args : no type generator for va_list, va_list
 
-// Unsupported : gtk_container_child_notify : no return generator
-
-// Unsupported : gtk_container_child_notify_by_pspec : no return generator
-
 // Unsupported : gtk_container_child_set : unsupported parameter ... : varargs
 
-// Unsupported : gtk_container_child_set_property : no return generator
+// ChildSetProperty is a wrapper around the C function gtk_container_child_set_property.
+func (recv *Container) ChildSetProperty(child *Widget, propertyName string, value *gobject.Value) {
+	c_child := (*C.GtkWidget)(child.ToC())
+
+	c_property_name := C.CString(propertyName)
+	defer C.free(unsafe.Pointer(c_property_name))
+
+	c_value := (*C.GValue)(value.ToC())
+
+	C.gtk_container_child_set_property((*C.GtkContainer)(recv.native), c_child, c_property_name, c_value)
+
+	return
+}
 
 // Unsupported : gtk_container_child_set_valist : unsupported parameter var_args : no type generator for va_list, va_list
 
@@ -2494,27 +2671,103 @@ func (recv *Container) GetResizeMode() ResizeMode {
 	return retGo
 }
 
-// Unsupported : gtk_container_propagate_draw : no return generator
+// PropagateDraw is a wrapper around the C function gtk_container_propagate_draw.
+func (recv *Container) PropagateDraw(child *Widget, cr *cairo.Context) {
+	c_child := (*C.GtkWidget)(child.ToC())
 
-// Unsupported : gtk_container_remove : no return generator
+	c_cr := (*C.cairo_t)(cr.ToC())
 
-// Unsupported : gtk_container_resize_children : no return generator
+	C.gtk_container_propagate_draw((*C.GtkContainer)(recv.native), c_child, c_cr)
 
-// Unsupported : gtk_container_set_border_width : no return generator
+	return
+}
 
-// Unsupported : gtk_container_set_focus_chain : no return generator
+// Remove is a wrapper around the C function gtk_container_remove.
+func (recv *Container) Remove(widget *Widget) {
+	c_widget := (*C.GtkWidget)(widget.ToC())
 
-// Unsupported : gtk_container_set_focus_child : no return generator
+	C.gtk_container_remove((*C.GtkContainer)(recv.native), c_widget)
 
-// Unsupported : gtk_container_set_focus_hadjustment : no return generator
+	return
+}
 
-// Unsupported : gtk_container_set_focus_vadjustment : no return generator
+// ResizeChildren is a wrapper around the C function gtk_container_resize_children.
+func (recv *Container) ResizeChildren() {
+	C.gtk_container_resize_children((*C.GtkContainer)(recv.native))
 
-// Unsupported : gtk_container_set_reallocate_redraws : no return generator
+	return
+}
 
-// Unsupported : gtk_container_set_resize_mode : no return generator
+// SetBorderWidth is a wrapper around the C function gtk_container_set_border_width.
+func (recv *Container) SetBorderWidth(borderWidth uint32) {
+	c_border_width := (C.guint)(borderWidth)
 
-// Unsupported : gtk_container_unset_focus_chain : no return generator
+	C.gtk_container_set_border_width((*C.GtkContainer)(recv.native), c_border_width)
+
+	return
+}
+
+// SetFocusChain is a wrapper around the C function gtk_container_set_focus_chain.
+func (recv *Container) SetFocusChain(focusableWidgets *glib.List) {
+	c_focusable_widgets := (*C.GList)(focusableWidgets.ToC())
+
+	C.gtk_container_set_focus_chain((*C.GtkContainer)(recv.native), c_focusable_widgets)
+
+	return
+}
+
+// SetFocusChild is a wrapper around the C function gtk_container_set_focus_child.
+func (recv *Container) SetFocusChild(child *Widget) {
+	c_child := (*C.GtkWidget)(child.ToC())
+
+	C.gtk_container_set_focus_child((*C.GtkContainer)(recv.native), c_child)
+
+	return
+}
+
+// SetFocusHadjustment is a wrapper around the C function gtk_container_set_focus_hadjustment.
+func (recv *Container) SetFocusHadjustment(adjustment *Adjustment) {
+	c_adjustment := (*C.GtkAdjustment)(adjustment.ToC())
+
+	C.gtk_container_set_focus_hadjustment((*C.GtkContainer)(recv.native), c_adjustment)
+
+	return
+}
+
+// SetFocusVadjustment is a wrapper around the C function gtk_container_set_focus_vadjustment.
+func (recv *Container) SetFocusVadjustment(adjustment *Adjustment) {
+	c_adjustment := (*C.GtkAdjustment)(adjustment.ToC())
+
+	C.gtk_container_set_focus_vadjustment((*C.GtkContainer)(recv.native), c_adjustment)
+
+	return
+}
+
+// SetReallocateRedraws is a wrapper around the C function gtk_container_set_reallocate_redraws.
+func (recv *Container) SetReallocateRedraws(needsRedraws bool) {
+	c_needs_redraws :=
+		boolToGboolean(needsRedraws)
+
+	C.gtk_container_set_reallocate_redraws((*C.GtkContainer)(recv.native), c_needs_redraws)
+
+	return
+}
+
+// SetResizeMode is a wrapper around the C function gtk_container_set_resize_mode.
+func (recv *Container) SetResizeMode(resizeMode ResizeMode) {
+	c_resize_mode := (C.GtkResizeMode)(resizeMode)
+
+	C.gtk_container_set_resize_mode((*C.GtkContainer)(recv.native), c_resize_mode)
+
+	return
+}
+
+// UnsetFocusChain is a wrapper around the C function gtk_container_unset_focus_chain.
+func (recv *Container) UnsetFocusChain() {
+	C.gtk_container_unset_focus_chain((*C.GtkContainer)(recv.native))
+
+	return
+}
 
 // ContainerAccessible is a wrapper around the C record GtkContainerAccessible.
 type ContainerAccessible struct {
@@ -2570,7 +2823,14 @@ func ContainerCellAccessibleNew() *ContainerCellAccessible {
 	return retGo
 }
 
-// Unsupported : gtk_container_cell_accessible_add_child : no return generator
+// AddChild is a wrapper around the C function gtk_container_cell_accessible_add_child.
+func (recv *ContainerCellAccessible) AddChild(child *CellAccessible) {
+	c_child := (*C.GtkCellAccessible)(child.ToC())
+
+	C.gtk_container_cell_accessible_add_child((*C.GtkContainerCellAccessible)(recv.native), c_child)
+
+	return
+}
 
 // GetChildren is a wrapper around the C function gtk_container_cell_accessible_get_children.
 func (recv *ContainerCellAccessible) GetChildren() *glib.List {
@@ -2580,7 +2840,14 @@ func (recv *ContainerCellAccessible) GetChildren() *glib.List {
 	return retGo
 }
 
-// Unsupported : gtk_container_cell_accessible_remove_child : no return generator
+// RemoveChild is a wrapper around the C function gtk_container_cell_accessible_remove_child.
+func (recv *ContainerCellAccessible) RemoveChild(child *CellAccessible) {
+	c_child := (*C.GtkCellAccessible)(child.ToC())
+
+	C.gtk_container_cell_accessible_remove_child((*C.GtkContainerCellAccessible)(recv.native), c_child)
+
+	return
+}
 
 // CssProvider is a wrapper around the C record GtkCssProvider.
 type CssProvider struct {
@@ -2635,8 +2902,6 @@ func (recv *CssProvider) LoadFromPath(path string) (bool, error) {
 	return retGo, goThrowableError
 }
 
-// Unsupported : gtk_css_provider_load_from_resource : no return generator
-
 // Dialog is a wrapper around the C record GtkDialog.
 type Dialog struct {
 	native *C.GtkDialog
@@ -2670,7 +2935,16 @@ func DialogNew() *Widget {
 
 // Unsupported : gtk_dialog_new_with_buttons : unsupported parameter ... : varargs
 
-// Unsupported : gtk_dialog_add_action_widget : no return generator
+// AddActionWidget is a wrapper around the C function gtk_dialog_add_action_widget.
+func (recv *Dialog) AddActionWidget(child *Widget, responseId int32) {
+	c_child := (*C.GtkWidget)(child.ToC())
+
+	c_response_id := (C.gint)(responseId)
+
+	C.gtk_dialog_add_action_widget((*C.GtkDialog)(recv.native), c_child, c_response_id)
+
+	return
+}
 
 // AddButton is a wrapper around the C function gtk_dialog_add_button.
 func (recv *Dialog) AddButton(buttonText string, responseId int32) *Widget {
@@ -2687,7 +2961,14 @@ func (recv *Dialog) AddButton(buttonText string, responseId int32) *Widget {
 
 // Unsupported : gtk_dialog_add_buttons : unsupported parameter ... : varargs
 
-// Unsupported : gtk_dialog_response : no return generator
+// Response is a wrapper around the C function gtk_dialog_response.
+func (recv *Dialog) Response(responseId int32) {
+	c_response_id := (C.gint)(responseId)
+
+	C.gtk_dialog_response((*C.GtkDialog)(recv.native), c_response_id)
+
+	return
+}
 
 // Run is a wrapper around the C function gtk_dialog_run.
 func (recv *Dialog) Run() int32 {
@@ -2701,9 +2982,26 @@ func (recv *Dialog) Run() int32 {
 
 // Unsupported : gtk_dialog_set_alternative_button_order_from_array : unsupported parameter new_order : no param type
 
-// Unsupported : gtk_dialog_set_default_response : no return generator
+// SetDefaultResponse is a wrapper around the C function gtk_dialog_set_default_response.
+func (recv *Dialog) SetDefaultResponse(responseId int32) {
+	c_response_id := (C.gint)(responseId)
 
-// Unsupported : gtk_dialog_set_response_sensitive : no return generator
+	C.gtk_dialog_set_default_response((*C.GtkDialog)(recv.native), c_response_id)
+
+	return
+}
+
+// SetResponseSensitive is a wrapper around the C function gtk_dialog_set_response_sensitive.
+func (recv *Dialog) SetResponseSensitive(responseId int32, setting bool) {
+	c_response_id := (C.gint)(responseId)
+
+	c_setting :=
+		boolToGboolean(setting)
+
+	C.gtk_dialog_set_response_sensitive((*C.GtkDialog)(recv.native), c_response_id, c_setting)
+
+	return
+}
 
 // DrawingArea is a wrapper around the C record GtkDrawingArea.
 type DrawingArea struct {
@@ -2839,8 +3137,6 @@ func (recv *Entry) GetWidthChars() int32 {
 	return retGo
 }
 
-// Unsupported : gtk_entry_grab_focus_without_selecting : no return generator
-
 // LayoutIndexToTextIndex is a wrapper around the C function gtk_entry_layout_index_to_text_index.
 func (recv *Entry) LayoutIndexToTextIndex(layoutIndex int32) int32 {
 	c_layout_index := (C.gint)(layoutIndex)
@@ -2851,69 +3147,74 @@ func (recv *Entry) LayoutIndexToTextIndex(layoutIndex int32) int32 {
 	return retGo
 }
 
-// Unsupported : gtk_entry_progress_pulse : no return generator
+// SetActivatesDefault is a wrapper around the C function gtk_entry_set_activates_default.
+func (recv *Entry) SetActivatesDefault(setting bool) {
+	c_setting :=
+		boolToGboolean(setting)
 
-// Unsupported : gtk_entry_reset_im_context : no return generator
+	C.gtk_entry_set_activates_default((*C.GtkEntry)(recv.native), c_setting)
 
-// Unsupported : gtk_entry_set_activates_default : no return generator
+	return
+}
 
-// Unsupported : gtk_entry_set_alignment : no return generator
+// SetHasFrame is a wrapper around the C function gtk_entry_set_has_frame.
+func (recv *Entry) SetHasFrame(setting bool) {
+	c_setting :=
+		boolToGboolean(setting)
 
-// Unsupported : gtk_entry_set_attributes : no return generator
+	C.gtk_entry_set_has_frame((*C.GtkEntry)(recv.native), c_setting)
 
-// Unsupported : gtk_entry_set_buffer : no return generator
-
-// Unsupported : gtk_entry_set_completion : no return generator
-
-// Unsupported : gtk_entry_set_cursor_hadjustment : no return generator
-
-// Unsupported : gtk_entry_set_has_frame : no return generator
-
-// Unsupported : gtk_entry_set_icon_activatable : no return generator
-
-// Unsupported : gtk_entry_set_icon_drag_source : no return generator
+	return
+}
 
 // Unsupported : gtk_entry_set_icon_from_gicon : unsupported parameter icon : no type generator for Gio.Icon, GIcon*
 
-// Unsupported : gtk_entry_set_icon_from_icon_name : no return generator
+// SetInvisibleChar is a wrapper around the C function gtk_entry_set_invisible_char.
+func (recv *Entry) SetInvisibleChar(ch rune) {
+	c_ch := (C.gunichar)(ch)
 
-// Unsupported : gtk_entry_set_icon_from_pixbuf : no return generator
+	C.gtk_entry_set_invisible_char((*C.GtkEntry)(recv.native), c_ch)
 
-// Unsupported : gtk_entry_set_icon_from_stock : no return generator
+	return
+}
 
-// Unsupported : gtk_entry_set_icon_sensitive : no return generator
+// SetMaxLength is a wrapper around the C function gtk_entry_set_max_length.
+func (recv *Entry) SetMaxLength(max int32) {
+	c_max := (C.gint)(max)
 
-// Unsupported : gtk_entry_set_icon_tooltip_markup : no return generator
+	C.gtk_entry_set_max_length((*C.GtkEntry)(recv.native), c_max)
 
-// Unsupported : gtk_entry_set_icon_tooltip_text : no return generator
+	return
+}
 
-// Unsupported : gtk_entry_set_inner_border : no return generator
+// SetText is a wrapper around the C function gtk_entry_set_text.
+func (recv *Entry) SetText(text string) {
+	c_text := C.CString(text)
+	defer C.free(unsafe.Pointer(c_text))
 
-// Unsupported : gtk_entry_set_input_hints : no return generator
+	C.gtk_entry_set_text((*C.GtkEntry)(recv.native), c_text)
 
-// Unsupported : gtk_entry_set_input_purpose : no return generator
+	return
+}
 
-// Unsupported : gtk_entry_set_invisible_char : no return generator
+// SetVisibility is a wrapper around the C function gtk_entry_set_visibility.
+func (recv *Entry) SetVisibility(visible bool) {
+	c_visible :=
+		boolToGboolean(visible)
 
-// Unsupported : gtk_entry_set_max_length : no return generator
+	C.gtk_entry_set_visibility((*C.GtkEntry)(recv.native), c_visible)
 
-// Unsupported : gtk_entry_set_max_width_chars : no return generator
+	return
+}
 
-// Unsupported : gtk_entry_set_overwrite_mode : no return generator
+// SetWidthChars is a wrapper around the C function gtk_entry_set_width_chars.
+func (recv *Entry) SetWidthChars(nChars int32) {
+	c_n_chars := (C.gint)(nChars)
 
-// Unsupported : gtk_entry_set_placeholder_text : no return generator
+	C.gtk_entry_set_width_chars((*C.GtkEntry)(recv.native), c_n_chars)
 
-// Unsupported : gtk_entry_set_progress_fraction : no return generator
-
-// Unsupported : gtk_entry_set_progress_pulse_step : no return generator
-
-// Unsupported : gtk_entry_set_tabs : no return generator
-
-// Unsupported : gtk_entry_set_text : no return generator
-
-// Unsupported : gtk_entry_set_visibility : no return generator
-
-// Unsupported : gtk_entry_set_width_chars : no return generator
+	return
+}
 
 // TextIndexToLayoutIndex is a wrapper around the C function gtk_entry_text_index_to_layout_index.
 func (recv *Entry) TextIndexToLayoutIndex(textIndex int32) int32 {
@@ -2924,8 +3225,6 @@ func (recv *Entry) TextIndexToLayoutIndex(textIndex int32) int32 {
 
 	return retGo
 }
-
-// Unsupported : gtk_entry_unset_invisible_char : no return generator
 
 // EntryAccessible is a wrapper around the C record GtkEntryAccessible.
 type EntryAccessible struct {
@@ -2973,14 +3272,6 @@ func (recv *EntryBuffer) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : gtk_entry_buffer_emit_deleted_text : no return generator
-
-// Unsupported : gtk_entry_buffer_emit_inserted_text : no return generator
-
-// Unsupported : gtk_entry_buffer_set_max_length : no return generator
-
-// Unsupported : gtk_entry_buffer_set_text : no return generator
-
 // EntryCompletion is a wrapper around the C record GtkEntryCompletion.
 type EntryCompletion struct {
 	native *C.GtkEntryCompletion
@@ -3004,35 +3295,11 @@ func (recv *EntryCompletion) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : gtk_entry_completion_complete : no return generator
-
-// Unsupported : gtk_entry_completion_delete_action : no return generator
-
 // Unsupported : gtk_entry_completion_get_model : no return generator
-
-// Unsupported : gtk_entry_completion_insert_action_markup : no return generator
-
-// Unsupported : gtk_entry_completion_insert_action_text : no return generator
-
-// Unsupported : gtk_entry_completion_insert_prefix : no return generator
-
-// Unsupported : gtk_entry_completion_set_inline_completion : no return generator
-
-// Unsupported : gtk_entry_completion_set_inline_selection : no return generator
 
 // Unsupported : gtk_entry_completion_set_match_func : unsupported parameter func : no type generator for EntryCompletionMatchFunc, GtkEntryCompletionMatchFunc
 
-// Unsupported : gtk_entry_completion_set_minimum_key_length : no return generator
-
 // Unsupported : gtk_entry_completion_set_model : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
-
-// Unsupported : gtk_entry_completion_set_popup_completion : no return generator
-
-// Unsupported : gtk_entry_completion_set_popup_set_width : no return generator
-
-// Unsupported : gtk_entry_completion_set_popup_single_match : no return generator
-
-// Unsupported : gtk_entry_completion_set_text_column : no return generator
 
 // Unsupported : EntryIconAccessible : no CType
 
@@ -3067,10 +3334,6 @@ func EventBoxNew() *Widget {
 	return retGo
 }
 
-// Unsupported : gtk_event_box_set_above_child : no return generator
-
-// Unsupported : gtk_event_box_set_visible_window : no return generator
-
 // EventController is a wrapper around the C record GtkEventController.
 type EventController struct {
 	native *C.GtkEventController
@@ -3094,10 +3357,6 @@ func (recv *EventController) ToC() unsafe.Pointer {
 
 // Unsupported : gtk_event_controller_handle_event : unsupported parameter event : no type generator for Gdk.Event, const GdkEvent*
 
-// Unsupported : gtk_event_controller_reset : no return generator
-
-// Unsupported : gtk_event_controller_set_propagation_phase : no return generator
-
 // Expander is a wrapper around the C record GtkExpander.
 type Expander struct {
 	native *C.GtkExpander
@@ -3120,22 +3379,6 @@ func (recv *Expander) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
-
-// Unsupported : gtk_expander_set_expanded : no return generator
-
-// Unsupported : gtk_expander_set_label : no return generator
-
-// Unsupported : gtk_expander_set_label_fill : no return generator
-
-// Unsupported : gtk_expander_set_label_widget : no return generator
-
-// Unsupported : gtk_expander_set_resize_toplevel : no return generator
-
-// Unsupported : gtk_expander_set_spacing : no return generator
-
-// Unsupported : gtk_expander_set_use_markup : no return generator
-
-// Unsupported : gtk_expander_set_use_underline : no return generator
 
 // ExpanderAccessible is a wrapper around the C record GtkExpanderAccessible.
 type ExpanderAccessible struct {
@@ -3182,12 +3425,6 @@ func (recv *FileChooserButton) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
-
-// Unsupported : gtk_file_chooser_button_set_focus_on_click : no return generator
-
-// Unsupported : gtk_file_chooser_button_set_title : no return generator
-
-// Unsupported : gtk_file_chooser_button_set_width_chars : no return generator
 
 // FileChooserDialog is a wrapper around the C record GtkFileChooserDialog.
 type FileChooserDialog struct {
@@ -3262,14 +3499,6 @@ func (recv *FileFilter) ToC() unsafe.Pointer {
 
 // Unsupported : gtk_file_filter_add_custom : unsupported parameter func : no type generator for FileFilterFunc, GtkFileFilterFunc
 
-// Unsupported : gtk_file_filter_add_mime_type : no return generator
-
-// Unsupported : gtk_file_filter_add_pattern : no return generator
-
-// Unsupported : gtk_file_filter_add_pixbuf_formats : no return generator
-
-// Unsupported : gtk_file_filter_set_name : no return generator
-
 // Unsupported : gtk_file_filter_to_gvariant : return type : Blacklisted record : GVariant
 
 // Fixed is a wrapper around the C record GtkFixed.
@@ -3303,9 +3532,31 @@ func FixedNew() *Widget {
 	return retGo
 }
 
-// Unsupported : gtk_fixed_move : no return generator
+// Move is a wrapper around the C function gtk_fixed_move.
+func (recv *Fixed) Move(widget *Widget, x int32, y int32) {
+	c_widget := (*C.GtkWidget)(widget.ToC())
 
-// Unsupported : gtk_fixed_put : no return generator
+	c_x := (C.gint)(x)
+
+	c_y := (C.gint)(y)
+
+	C.gtk_fixed_move((*C.GtkFixed)(recv.native), c_widget, c_x, c_y)
+
+	return
+}
+
+// Put is a wrapper around the C function gtk_fixed_put.
+func (recv *Fixed) Put(widget *Widget, x int32, y int32) {
+	c_widget := (*C.GtkWidget)(widget.ToC())
+
+	c_x := (C.gint)(x)
+
+	c_y := (C.gint)(y)
+
+	C.gtk_fixed_put((*C.GtkFixed)(recv.native), c_widget, c_x, c_y)
+
+	return
+}
 
 // FlowBox is a wrapper around the C record GtkFlowBox.
 type FlowBox struct {
@@ -3331,43 +3582,11 @@ func (recv *FlowBox) ToC() unsafe.Pointer {
 
 // Unsupported : gtk_flow_box_bind_model : unsupported parameter model : no type generator for Gio.ListModel, GListModel*
 
-// Unsupported : gtk_flow_box_insert : no return generator
-
-// Unsupported : gtk_flow_box_invalidate_filter : no return generator
-
-// Unsupported : gtk_flow_box_invalidate_sort : no return generator
-
-// Unsupported : gtk_flow_box_select_all : no return generator
-
-// Unsupported : gtk_flow_box_select_child : no return generator
-
 // Unsupported : gtk_flow_box_selected_foreach : unsupported parameter func : no type generator for FlowBoxForeachFunc, GtkFlowBoxForeachFunc
-
-// Unsupported : gtk_flow_box_set_activate_on_single_click : no return generator
-
-// Unsupported : gtk_flow_box_set_column_spacing : no return generator
 
 // Unsupported : gtk_flow_box_set_filter_func : unsupported parameter filter_func : no type generator for FlowBoxFilterFunc, GtkFlowBoxFilterFunc
 
-// Unsupported : gtk_flow_box_set_hadjustment : no return generator
-
-// Unsupported : gtk_flow_box_set_homogeneous : no return generator
-
-// Unsupported : gtk_flow_box_set_max_children_per_line : no return generator
-
-// Unsupported : gtk_flow_box_set_min_children_per_line : no return generator
-
-// Unsupported : gtk_flow_box_set_row_spacing : no return generator
-
-// Unsupported : gtk_flow_box_set_selection_mode : no return generator
-
 // Unsupported : gtk_flow_box_set_sort_func : unsupported parameter sort_func : no type generator for FlowBoxSortFunc, GtkFlowBoxSortFunc
-
-// Unsupported : gtk_flow_box_set_vadjustment : no return generator
-
-// Unsupported : gtk_flow_box_unselect_all : no return generator
-
-// Unsupported : gtk_flow_box_unselect_child : no return generator
 
 // FlowBoxAccessible is a wrapper around the C record GtkFlowBoxAccessible.
 type FlowBoxAccessible struct {
@@ -3414,8 +3633,6 @@ func (recv *FlowBoxChild) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : gtk_flow_box_child_changed : no return generator
-
 // FlowBoxChildAccessible is a wrapper around the C record GtkFlowBoxChildAccessible.
 type FlowBoxChildAccessible struct {
 	native *C.GtkFlowBoxChildAccessible
@@ -3460,16 +3677,6 @@ func (recv *FontButton) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
-
-// Unsupported : gtk_font_button_set_show_size : no return generator
-
-// Unsupported : gtk_font_button_set_show_style : no return generator
-
-// Unsupported : gtk_font_button_set_title : no return generator
-
-// Unsupported : gtk_font_button_set_use_font : no return generator
-
-// Unsupported : gtk_font_button_set_use_size : no return generator
 
 // FontChooserDialog is a wrapper around the C record GtkFontChooserDialog.
 type FontChooserDialog struct {
@@ -3576,7 +3783,15 @@ func (recv *FontSelection) SetFontName(fontname string) bool {
 	return retGo
 }
 
-// Unsupported : gtk_font_selection_set_preview_text : no return generator
+// SetPreviewText is a wrapper around the C function gtk_font_selection_set_preview_text.
+func (recv *FontSelection) SetPreviewText(text string) {
+	c_text := C.CString(text)
+	defer C.free(unsafe.Pointer(c_text))
+
+	C.gtk_font_selection_set_preview_text((*C.GtkFontSelection)(recv.native), c_text)
+
+	return
+}
 
 // FontSelectionDialog is a wrapper around the C record GtkFontSelectionDialog.
 type FontSelectionDialog struct {
@@ -3640,7 +3855,15 @@ func (recv *FontSelectionDialog) SetFontName(fontname string) bool {
 	return retGo
 }
 
-// Unsupported : gtk_font_selection_dialog_set_preview_text : no return generator
+// SetPreviewText is a wrapper around the C function gtk_font_selection_dialog_set_preview_text.
+func (recv *FontSelectionDialog) SetPreviewText(text string) {
+	c_text := C.CString(text)
+	defer C.free(unsafe.Pointer(c_text))
+
+	C.gtk_font_selection_dialog_set_preview_text((*C.GtkFontSelectionDialog)(recv.native), c_text)
+
+	return
+}
 
 // Frame is a wrapper around the C record GtkFrame.
 type Frame struct {
@@ -3702,13 +3925,44 @@ func (recv *Frame) GetShadowType() ShadowType {
 	return retGo
 }
 
-// Unsupported : gtk_frame_set_label : no return generator
+// SetLabel is a wrapper around the C function gtk_frame_set_label.
+func (recv *Frame) SetLabel(label string) {
+	c_label := C.CString(label)
+	defer C.free(unsafe.Pointer(c_label))
 
-// Unsupported : gtk_frame_set_label_align : no return generator
+	C.gtk_frame_set_label((*C.GtkFrame)(recv.native), c_label)
 
-// Unsupported : gtk_frame_set_label_widget : no return generator
+	return
+}
 
-// Unsupported : gtk_frame_set_shadow_type : no return generator
+// SetLabelAlign is a wrapper around the C function gtk_frame_set_label_align.
+func (recv *Frame) SetLabelAlign(xalign float32, yalign float32) {
+	c_xalign := (C.gfloat)(xalign)
+
+	c_yalign := (C.gfloat)(yalign)
+
+	C.gtk_frame_set_label_align((*C.GtkFrame)(recv.native), c_xalign, c_yalign)
+
+	return
+}
+
+// SetLabelWidget is a wrapper around the C function gtk_frame_set_label_widget.
+func (recv *Frame) SetLabelWidget(labelWidget *Widget) {
+	c_label_widget := (*C.GtkWidget)(labelWidget.ToC())
+
+	C.gtk_frame_set_label_widget((*C.GtkFrame)(recv.native), c_label_widget)
+
+	return
+}
+
+// SetShadowType is a wrapper around the C function gtk_frame_set_shadow_type.
+func (recv *Frame) SetShadowType(type_ ShadowType) {
+	c_type := (C.GtkShadowType)(type_)
+
+	C.gtk_frame_set_shadow_type((*C.GtkFrame)(recv.native), c_type)
+
+	return
+}
 
 // FrameAccessible is a wrapper around the C record GtkFrameAccessible.
 type FrameAccessible struct {
@@ -3761,12 +4015,6 @@ func (recv *Gesture) ToC() unsafe.Pointer {
 // Unsupported : gtk_gesture_get_last_event : no return generator
 
 // Unsupported : gtk_gesture_get_point : unsupported parameter x : no type generator for gdouble, gdouble*
-
-// Unsupported : gtk_gesture_group : no return generator
-
-// Unsupported : gtk_gesture_set_window : no return generator
-
-// Unsupported : gtk_gesture_ungroup : no return generator
 
 // GestureDrag is a wrapper around the C record GtkGestureDrag.
 type GestureDrag struct {
@@ -3860,8 +4108,6 @@ func (recv *GesturePan) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : gtk_gesture_pan_set_orientation : no return generator
-
 // GestureRotate is a wrapper around the C record GtkGestureRotate.
 type GestureRotate struct {
 	native *C.GtkGestureRotate
@@ -3903,12 +4149,6 @@ func (recv *GestureSingle) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
-
-// Unsupported : gtk_gesture_single_set_button : no return generator
-
-// Unsupported : gtk_gesture_single_set_exclusive : no return generator
-
-// Unsupported : gtk_gesture_single_set_touch_only : no return generator
 
 // GestureSwipe is a wrapper around the C record GtkGestureSwipe.
 type GestureSwipe struct {
@@ -3985,9 +4225,39 @@ func GridNew() *Widget {
 	return retGo
 }
 
-// Unsupported : gtk_grid_attach : no return generator
+// Attach is a wrapper around the C function gtk_grid_attach.
+func (recv *Grid) Attach(child *Widget, left int32, top int32, width int32, height int32) {
+	c_child := (*C.GtkWidget)(child.ToC())
 
-// Unsupported : gtk_grid_attach_next_to : no return generator
+	c_left := (C.gint)(left)
+
+	c_top := (C.gint)(top)
+
+	c_width := (C.gint)(width)
+
+	c_height := (C.gint)(height)
+
+	C.gtk_grid_attach((*C.GtkGrid)(recv.native), c_child, c_left, c_top, c_width, c_height)
+
+	return
+}
+
+// AttachNextTo is a wrapper around the C function gtk_grid_attach_next_to.
+func (recv *Grid) AttachNextTo(child *Widget, sibling *Widget, side PositionType, width int32, height int32) {
+	c_child := (*C.GtkWidget)(child.ToC())
+
+	c_sibling := (*C.GtkWidget)(sibling.ToC())
+
+	c_side := (C.GtkPositionType)(side)
+
+	c_width := (C.gint)(width)
+
+	c_height := (C.gint)(height)
+
+	C.gtk_grid_attach_next_to((*C.GtkGrid)(recv.native), c_child, c_sibling, c_side, c_width, c_height)
+
+	return
+}
 
 // GetColumnHomogeneous is a wrapper around the C function gtk_grid_get_column_homogeneous.
 func (recv *Grid) GetColumnHomogeneous() bool {
@@ -4021,27 +4291,43 @@ func (recv *Grid) GetRowSpacing() uint32 {
 	return retGo
 }
 
-// Unsupported : gtk_grid_insert_column : no return generator
+// SetColumnHomogeneous is a wrapper around the C function gtk_grid_set_column_homogeneous.
+func (recv *Grid) SetColumnHomogeneous(homogeneous bool) {
+	c_homogeneous :=
+		boolToGboolean(homogeneous)
 
-// Unsupported : gtk_grid_insert_next_to : no return generator
+	C.gtk_grid_set_column_homogeneous((*C.GtkGrid)(recv.native), c_homogeneous)
 
-// Unsupported : gtk_grid_insert_row : no return generator
+	return
+}
 
-// Unsupported : gtk_grid_remove_column : no return generator
+// SetColumnSpacing is a wrapper around the C function gtk_grid_set_column_spacing.
+func (recv *Grid) SetColumnSpacing(spacing uint32) {
+	c_spacing := (C.guint)(spacing)
 
-// Unsupported : gtk_grid_remove_row : no return generator
+	C.gtk_grid_set_column_spacing((*C.GtkGrid)(recv.native), c_spacing)
 
-// Unsupported : gtk_grid_set_baseline_row : no return generator
+	return
+}
 
-// Unsupported : gtk_grid_set_column_homogeneous : no return generator
+// SetRowHomogeneous is a wrapper around the C function gtk_grid_set_row_homogeneous.
+func (recv *Grid) SetRowHomogeneous(homogeneous bool) {
+	c_homogeneous :=
+		boolToGboolean(homogeneous)
 
-// Unsupported : gtk_grid_set_column_spacing : no return generator
+	C.gtk_grid_set_row_homogeneous((*C.GtkGrid)(recv.native), c_homogeneous)
 
-// Unsupported : gtk_grid_set_row_baseline_position : no return generator
+	return
+}
 
-// Unsupported : gtk_grid_set_row_homogeneous : no return generator
+// SetRowSpacing is a wrapper around the C function gtk_grid_set_row_spacing.
+func (recv *Grid) SetRowSpacing(spacing uint32) {
+	c_spacing := (C.guint)(spacing)
 
-// Unsupported : gtk_grid_set_row_spacing : no return generator
+	C.gtk_grid_set_row_spacing((*C.GtkGrid)(recv.native), c_spacing)
+
+	return
+}
 
 // HBox is a wrapper around the C record GtkHBox.
 type HBox struct {
@@ -4164,10 +4450,6 @@ func (recv *HSV) ToC() unsafe.Pointer {
 // Unsupported : gtk_hsv_get_color : unsupported parameter h : no type generator for gdouble, gdouble*
 
 // Unsupported : gtk_hsv_get_metrics : unsupported parameter size : no type generator for gint, gint*
-
-// Unsupported : gtk_hsv_set_color : no return generator
-
-// Unsupported : gtk_hsv_set_metrics : no return generator
 
 // HScale is a wrapper around the C record GtkHScale.
 type HScale struct {
@@ -4332,11 +4614,32 @@ func (recv *HandleBox) GetSnapEdge() PositionType {
 	return retGo
 }
 
-// Unsupported : gtk_handle_box_set_handle_position : no return generator
+// SetHandlePosition is a wrapper around the C function gtk_handle_box_set_handle_position.
+func (recv *HandleBox) SetHandlePosition(position PositionType) {
+	c_position := (C.GtkPositionType)(position)
 
-// Unsupported : gtk_handle_box_set_shadow_type : no return generator
+	C.gtk_handle_box_set_handle_position((*C.GtkHandleBox)(recv.native), c_position)
 
-// Unsupported : gtk_handle_box_set_snap_edge : no return generator
+	return
+}
+
+// SetShadowType is a wrapper around the C function gtk_handle_box_set_shadow_type.
+func (recv *HandleBox) SetShadowType(type_ ShadowType) {
+	c_type := (C.GtkShadowType)(type_)
+
+	C.gtk_handle_box_set_shadow_type((*C.GtkHandleBox)(recv.native), c_type)
+
+	return
+}
+
+// SetSnapEdge is a wrapper around the C function gtk_handle_box_set_snap_edge.
+func (recv *HandleBox) SetSnapEdge(edge PositionType) {
+	c_edge := (C.GtkPositionType)(edge)
+
+	C.gtk_handle_box_set_snap_edge((*C.GtkHandleBox)(recv.native), c_edge)
+
+	return
+}
 
 // HeaderBar is a wrapper around the C record GtkHeaderBar.
 type HeaderBar struct {
@@ -4359,22 +4662,6 @@ func (recv *HeaderBar) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
-
-// Unsupported : gtk_header_bar_pack_end : no return generator
-
-// Unsupported : gtk_header_bar_pack_start : no return generator
-
-// Unsupported : gtk_header_bar_set_custom_title : no return generator
-
-// Unsupported : gtk_header_bar_set_decoration_layout : no return generator
-
-// Unsupported : gtk_header_bar_set_has_subtitle : no return generator
-
-// Unsupported : gtk_header_bar_set_show_close_button : no return generator
-
-// Unsupported : gtk_header_bar_set_subtitle : no return generator
-
-// Unsupported : gtk_header_bar_set_title : no return generator
 
 // IMContext is a wrapper around the C record GtkIMContext.
 type IMContext struct {
@@ -4420,23 +4707,65 @@ func (recv *IMContext) FilterKeypress(event *gdk.EventKey) bool {
 	return retGo
 }
 
-// Unsupported : gtk_im_context_focus_in : no return generator
+// FocusIn is a wrapper around the C function gtk_im_context_focus_in.
+func (recv *IMContext) FocusIn() {
+	C.gtk_im_context_focus_in((*C.GtkIMContext)(recv.native))
 
-// Unsupported : gtk_im_context_focus_out : no return generator
+	return
+}
+
+// FocusOut is a wrapper around the C function gtk_im_context_focus_out.
+func (recv *IMContext) FocusOut() {
+	C.gtk_im_context_focus_out((*C.GtkIMContext)(recv.native))
+
+	return
+}
 
 // Unsupported : gtk_im_context_get_preedit_string : unsupported parameter attrs : record with indirection level of 2
 
 // Unsupported : gtk_im_context_get_surrounding : unsupported parameter cursor_index : no type generator for gint, gint*
 
-// Unsupported : gtk_im_context_reset : no return generator
+// Reset is a wrapper around the C function gtk_im_context_reset.
+func (recv *IMContext) Reset() {
+	C.gtk_im_context_reset((*C.GtkIMContext)(recv.native))
 
-// Unsupported : gtk_im_context_set_client_window : no return generator
+	return
+}
+
+// SetClientWindow is a wrapper around the C function gtk_im_context_set_client_window.
+func (recv *IMContext) SetClientWindow(window *gdk.Window) {
+	c_window := (*C.GdkWindow)(window.ToC())
+
+	C.gtk_im_context_set_client_window((*C.GtkIMContext)(recv.native), c_window)
+
+	return
+}
 
 // Unsupported : gtk_im_context_set_cursor_location : unsupported parameter area : Blacklisted record : GdkRectangle
 
-// Unsupported : gtk_im_context_set_surrounding : no return generator
+// SetSurrounding is a wrapper around the C function gtk_im_context_set_surrounding.
+func (recv *IMContext) SetSurrounding(text string, len int32, cursorIndex int32) {
+	c_text := C.CString(text)
+	defer C.free(unsafe.Pointer(c_text))
 
-// Unsupported : gtk_im_context_set_use_preedit : no return generator
+	c_len := (C.gint)(len)
+
+	c_cursor_index := (C.gint)(cursorIndex)
+
+	C.gtk_im_context_set_surrounding((*C.GtkIMContext)(recv.native), c_text, c_len, c_cursor_index)
+
+	return
+}
+
+// SetUsePreedit is a wrapper around the C function gtk_im_context_set_use_preedit.
+func (recv *IMContext) SetUsePreedit(usePreedit bool) {
+	c_use_preedit :=
+		boolToGboolean(usePreedit)
+
+	C.gtk_im_context_set_use_preedit((*C.GtkIMContext)(recv.native), c_use_preedit)
+
+	return
+}
 
 // IMContextSimple is a wrapper around the C record GtkIMContextSimple.
 type IMContextSimple struct {
@@ -4469,7 +4798,15 @@ func IMContextSimpleNew() *IMContext {
 	return retGo
 }
 
-// Unsupported : gtk_im_context_simple_add_compose_file : no return generator
+// AddComposeFile is a wrapper around the C function gtk_im_context_simple_add_compose_file.
+func (recv *IMContextSimple) AddComposeFile(composeFile string) {
+	c_compose_file := C.CString(composeFile)
+	defer C.free(unsafe.Pointer(c_compose_file))
+
+	C.gtk_im_context_simple_add_compose_file((*C.GtkIMContextSimple)(recv.native), c_compose_file)
+
+	return
+}
 
 // Unsupported : gtk_im_context_simple_add_table : unsupported parameter data : no param type
 
@@ -4504,9 +4841,14 @@ func IMMulticontextNew() *IMContext {
 	return retGo
 }
 
-// Unsupported : gtk_im_multicontext_append_menuitems : no return generator
+// AppendMenuitems is a wrapper around the C function gtk_im_multicontext_append_menuitems.
+func (recv *IMMulticontext) AppendMenuitems(menushell *MenuShell) {
+	c_menushell := (*C.GtkMenuShell)(menushell.ToC())
 
-// Unsupported : gtk_im_multicontext_set_context_id : no return generator
+	C.gtk_im_multicontext_append_menuitems((*C.GtkIMMulticontext)(recv.native), c_menushell)
+
+	return
+}
 
 // IconFactory is a wrapper around the C record GtkIconFactory.
 type IconFactory struct {
@@ -4539,9 +4881,24 @@ func IconFactoryNew() *IconFactory {
 	return retGo
 }
 
-// Unsupported : gtk_icon_factory_add : no return generator
+// Add is a wrapper around the C function gtk_icon_factory_add.
+func (recv *IconFactory) Add(stockId string, iconSet *IconSet) {
+	c_stock_id := C.CString(stockId)
+	defer C.free(unsafe.Pointer(c_stock_id))
 
-// Unsupported : gtk_icon_factory_add_default : no return generator
+	c_icon_set := (*C.GtkIconSet)(iconSet.ToC())
+
+	C.gtk_icon_factory_add((*C.GtkIconFactory)(recv.native), c_stock_id, c_icon_set)
+
+	return
+}
+
+// AddDefault is a wrapper around the C function gtk_icon_factory_add_default.
+func (recv *IconFactory) AddDefault() {
+	C.gtk_icon_factory_add_default((*C.GtkIconFactory)(recv.native))
+
+	return
+}
 
 // Lookup is a wrapper around the C function gtk_icon_factory_lookup.
 func (recv *IconFactory) Lookup(stockId string) *IconSet {
@@ -4554,7 +4911,12 @@ func (recv *IconFactory) Lookup(stockId string) *IconSet {
 	return retGo
 }
 
-// Unsupported : gtk_icon_factory_remove_default : no return generator
+// RemoveDefault is a wrapper around the C function gtk_icon_factory_remove_default.
+func (recv *IconFactory) RemoveDefault() {
+	C.gtk_icon_factory_remove_default((*C.GtkIconFactory)(recv.native))
+
+	return
+}
 
 // IconInfo is a wrapper around the C record GtkIconInfo.
 type IconInfo struct {
@@ -4577,8 +4939,6 @@ func (recv *IconInfo) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : gtk_icon_info_free : no return generator
-
 // Unsupported : gtk_icon_info_get_attach_points : unsupported parameter points : no param type
 
 // Unsupported : gtk_icon_info_get_embedded_rect : unsupported parameter rectangle : Blacklisted record : GdkRectangle
@@ -4594,8 +4954,6 @@ func (recv *IconInfo) ToC() unsafe.Pointer {
 // Unsupported : gtk_icon_info_load_symbolic_for_context_async : unsupported parameter callback : no type generator for Gio.AsyncReadyCallback, GAsyncReadyCallback
 
 // Unsupported : gtk_icon_info_load_symbolic_for_context_finish : unsupported parameter res : no type generator for Gio.AsyncResult, GAsyncResult*
-
-// Unsupported : gtk_icon_info_set_raw_coordinates : no return generator
 
 // IconTheme is a wrapper around the C record GtkIconTheme.
 type IconTheme struct {
@@ -4620,10 +4978,6 @@ func (recv *IconTheme) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : gtk_icon_theme_add_resource_path : no return generator
-
-// Unsupported : gtk_icon_theme_append_search_path : no return generator
-
 // Unsupported : gtk_icon_theme_choose_icon : unsupported parameter icon_names : no param type
 
 // Unsupported : gtk_icon_theme_choose_icon_for_scale : unsupported parameter icon_names : no param type
@@ -4635,12 +4989,6 @@ func (recv *IconTheme) ToC() unsafe.Pointer {
 // Unsupported : gtk_icon_theme_lookup_by_gicon : unsupported parameter icon : no type generator for Gio.Icon, GIcon*
 
 // Unsupported : gtk_icon_theme_lookup_by_gicon_for_scale : unsupported parameter icon : no type generator for Gio.Icon, GIcon*
-
-// Unsupported : gtk_icon_theme_prepend_search_path : no return generator
-
-// Unsupported : gtk_icon_theme_set_custom_theme : no return generator
-
-// Unsupported : gtk_icon_theme_set_screen : no return generator
 
 // Unsupported : gtk_icon_theme_set_search_path : unsupported parameter path : no param type
 
@@ -4691,63 +5039,9 @@ func (recv *IconView) ToC() unsafe.Pointer {
 
 // Unsupported : gtk_icon_view_get_visible_range : unsupported parameter start_path : record with indirection level of 2
 
-// Unsupported : gtk_icon_view_item_activated : no return generator
-
-// Unsupported : gtk_icon_view_scroll_to_path : no return generator
-
-// Unsupported : gtk_icon_view_select_all : no return generator
-
-// Unsupported : gtk_icon_view_select_path : no return generator
-
 // Unsupported : gtk_icon_view_selected_foreach : unsupported parameter func : no type generator for IconViewForeachFunc, GtkIconViewForeachFunc
 
-// Unsupported : gtk_icon_view_set_activate_on_single_click : no return generator
-
-// Unsupported : gtk_icon_view_set_column_spacing : no return generator
-
-// Unsupported : gtk_icon_view_set_columns : no return generator
-
-// Unsupported : gtk_icon_view_set_cursor : no return generator
-
-// Unsupported : gtk_icon_view_set_drag_dest_item : no return generator
-
-// Unsupported : gtk_icon_view_set_item_orientation : no return generator
-
-// Unsupported : gtk_icon_view_set_item_padding : no return generator
-
-// Unsupported : gtk_icon_view_set_item_width : no return generator
-
-// Unsupported : gtk_icon_view_set_margin : no return generator
-
-// Unsupported : gtk_icon_view_set_markup_column : no return generator
-
 // Unsupported : gtk_icon_view_set_model : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
-
-// Unsupported : gtk_icon_view_set_pixbuf_column : no return generator
-
-// Unsupported : gtk_icon_view_set_reorderable : no return generator
-
-// Unsupported : gtk_icon_view_set_row_spacing : no return generator
-
-// Unsupported : gtk_icon_view_set_selection_mode : no return generator
-
-// Unsupported : gtk_icon_view_set_spacing : no return generator
-
-// Unsupported : gtk_icon_view_set_text_column : no return generator
-
-// Unsupported : gtk_icon_view_set_tooltip_cell : no return generator
-
-// Unsupported : gtk_icon_view_set_tooltip_column : no return generator
-
-// Unsupported : gtk_icon_view_set_tooltip_item : no return generator
-
-// Unsupported : gtk_icon_view_unselect_all : no return generator
-
-// Unsupported : gtk_icon_view_unselect_path : no return generator
-
-// Unsupported : gtk_icon_view_unset_model_drag_dest : no return generator
-
-// Unsupported : gtk_icon_view_unset_model_drag_source : no return generator
 
 // IconViewAccessible is a wrapper around the C record GtkIconViewAccessible.
 type IconViewAccessible struct {
@@ -4842,8 +5136,6 @@ func ImageNewFromPixbuf(pixbuf *gdkpixbuf.Pixbuf) *Widget {
 
 // Unsupported : gtk_image_new_from_stock : unsupported parameter size : no type generator for gint, GtkIconSize
 
-// Unsupported : gtk_image_clear : no return generator
-
 // GetAnimation is a wrapper around the C function gtk_image_get_animation.
 func (recv *Image) GetAnimation() *gdkpixbuf.PixbufAnimation {
 	retC := C.gtk_image_get_animation((*C.GtkImage)(recv.native))
@@ -4876,9 +5168,24 @@ func (recv *Image) GetStorageType() ImageType {
 	return retGo
 }
 
-// Unsupported : gtk_image_set_from_animation : no return generator
+// SetFromAnimation is a wrapper around the C function gtk_image_set_from_animation.
+func (recv *Image) SetFromAnimation(animation *gdkpixbuf.PixbufAnimation) {
+	c_animation := (*C.GdkPixbufAnimation)(animation.ToC())
 
-// Unsupported : gtk_image_set_from_file : no return generator
+	C.gtk_image_set_from_animation((*C.GtkImage)(recv.native), c_animation)
+
+	return
+}
+
+// SetFromFile is a wrapper around the C function gtk_image_set_from_file.
+func (recv *Image) SetFromFile(filename string) {
+	c_filename := C.CString(filename)
+	defer C.free(unsafe.Pointer(c_filename))
+
+	C.gtk_image_set_from_file((*C.GtkImage)(recv.native), c_filename)
+
+	return
+}
 
 // Unsupported : gtk_image_set_from_gicon : unsupported parameter icon : no type generator for Gio.Icon, GIcon*
 
@@ -4886,15 +5193,26 @@ func (recv *Image) GetStorageType() ImageType {
 
 // Unsupported : gtk_image_set_from_icon_set : unsupported parameter size : no type generator for gint, GtkIconSize
 
-// Unsupported : gtk_image_set_from_pixbuf : no return generator
+// SetFromPixbuf is a wrapper around the C function gtk_image_set_from_pixbuf.
+func (recv *Image) SetFromPixbuf(pixbuf *gdkpixbuf.Pixbuf) {
+	c_pixbuf := (*C.GdkPixbuf)(pixbuf.ToC())
 
-// Unsupported : gtk_image_set_from_resource : no return generator
+	C.gtk_image_set_from_pixbuf((*C.GtkImage)(recv.native), c_pixbuf)
+
+	return
+}
+
+// SetFromResource is a wrapper around the C function gtk_image_set_from_resource.
+func (recv *Image) SetFromResource(resourcePath string) {
+	c_resource_path := C.CString(resourcePath)
+	defer C.free(unsafe.Pointer(c_resource_path))
+
+	C.gtk_image_set_from_resource((*C.GtkImage)(recv.native), c_resource_path)
+
+	return
+}
 
 // Unsupported : gtk_image_set_from_stock : unsupported parameter size : no type generator for gint, GtkIconSize
-
-// Unsupported : gtk_image_set_from_surface : no return generator
-
-// Unsupported : gtk_image_set_pixel_size : no return generator
 
 // ImageAccessible is a wrapper around the C record GtkImageAccessible.
 type ImageAccessible struct {
@@ -5016,13 +5334,14 @@ func (recv *ImageMenuItem) GetImage() *Widget {
 	return retGo
 }
 
-// Unsupported : gtk_image_menu_item_set_accel_group : no return generator
+// SetImage is a wrapper around the C function gtk_image_menu_item_set_image.
+func (recv *ImageMenuItem) SetImage(image *Widget) {
+	c_image := (*C.GtkWidget)(image.ToC())
 
-// Unsupported : gtk_image_menu_item_set_always_show_image : no return generator
+	C.gtk_image_menu_item_set_image((*C.GtkImageMenuItem)(recv.native), c_image)
 
-// Unsupported : gtk_image_menu_item_set_image : no return generator
-
-// Unsupported : gtk_image_menu_item_set_use_stock : no return generator
+	return
+}
 
 // InfoBar is a wrapper around the C record GtkInfoBar.
 type InfoBar struct {
@@ -5049,21 +5368,7 @@ func (recv *InfoBar) ToC() unsafe.Pointer {
 
 // Unsupported : gtk_info_bar_new_with_buttons : unsupported parameter ... : varargs
 
-// Unsupported : gtk_info_bar_add_action_widget : no return generator
-
 // Unsupported : gtk_info_bar_add_buttons : unsupported parameter ... : varargs
-
-// Unsupported : gtk_info_bar_response : no return generator
-
-// Unsupported : gtk_info_bar_set_default_response : no return generator
-
-// Unsupported : gtk_info_bar_set_message_type : no return generator
-
-// Unsupported : gtk_info_bar_set_response_sensitive : no return generator
-
-// Unsupported : gtk_info_bar_set_revealed : no return generator
-
-// Unsupported : gtk_info_bar_set_show_close_button : no return generator
 
 // Invisible is a wrapper around the C record GtkInvisible.
 type Invisible struct {
@@ -5095,8 +5400,6 @@ func InvisibleNew() *Widget {
 
 	return retGo
 }
-
-// Unsupported : gtk_invisible_set_screen : no return generator
 
 // Label is a wrapper around the C record GtkLabel.
 type Label struct {
@@ -5235,53 +5538,143 @@ func (recv *Label) GetUseUnderline() bool {
 	return retGo
 }
 
-// Unsupported : gtk_label_select_region : no return generator
+// SelectRegion is a wrapper around the C function gtk_label_select_region.
+func (recv *Label) SelectRegion(startOffset int32, endOffset int32) {
+	c_start_offset := (C.gint)(startOffset)
 
-// Unsupported : gtk_label_set_angle : no return generator
+	c_end_offset := (C.gint)(endOffset)
 
-// Unsupported : gtk_label_set_attributes : no return generator
+	C.gtk_label_select_region((*C.GtkLabel)(recv.native), c_start_offset, c_end_offset)
 
-// Unsupported : gtk_label_set_ellipsize : no return generator
+	return
+}
 
-// Unsupported : gtk_label_set_justify : no return generator
+// SetAttributes is a wrapper around the C function gtk_label_set_attributes.
+func (recv *Label) SetAttributes(attrs *pango.AttrList) {
+	c_attrs := (*C.PangoAttrList)(attrs.ToC())
 
-// Unsupported : gtk_label_set_label : no return generator
+	C.gtk_label_set_attributes((*C.GtkLabel)(recv.native), c_attrs)
 
-// Unsupported : gtk_label_set_line_wrap : no return generator
+	return
+}
 
-// Unsupported : gtk_label_set_line_wrap_mode : no return generator
+// SetJustify is a wrapper around the C function gtk_label_set_justify.
+func (recv *Label) SetJustify(jtype Justification) {
+	c_jtype := (C.GtkJustification)(jtype)
 
-// Unsupported : gtk_label_set_lines : no return generator
+	C.gtk_label_set_justify((*C.GtkLabel)(recv.native), c_jtype)
 
-// Unsupported : gtk_label_set_markup : no return generator
+	return
+}
 
-// Unsupported : gtk_label_set_markup_with_mnemonic : no return generator
+// SetLabel is a wrapper around the C function gtk_label_set_label.
+func (recv *Label) SetLabel(str string) {
+	c_str := C.CString(str)
+	defer C.free(unsafe.Pointer(c_str))
 
-// Unsupported : gtk_label_set_max_width_chars : no return generator
+	C.gtk_label_set_label((*C.GtkLabel)(recv.native), c_str)
 
-// Unsupported : gtk_label_set_mnemonic_widget : no return generator
+	return
+}
 
-// Unsupported : gtk_label_set_pattern : no return generator
+// SetLineWrap is a wrapper around the C function gtk_label_set_line_wrap.
+func (recv *Label) SetLineWrap(wrap bool) {
+	c_wrap :=
+		boolToGboolean(wrap)
 
-// Unsupported : gtk_label_set_selectable : no return generator
+	C.gtk_label_set_line_wrap((*C.GtkLabel)(recv.native), c_wrap)
 
-// Unsupported : gtk_label_set_single_line_mode : no return generator
+	return
+}
 
-// Unsupported : gtk_label_set_text : no return generator
+// SetMarkup is a wrapper around the C function gtk_label_set_markup.
+func (recv *Label) SetMarkup(str string) {
+	c_str := C.CString(str)
+	defer C.free(unsafe.Pointer(c_str))
 
-// Unsupported : gtk_label_set_text_with_mnemonic : no return generator
+	C.gtk_label_set_markup((*C.GtkLabel)(recv.native), c_str)
 
-// Unsupported : gtk_label_set_track_visited_links : no return generator
+	return
+}
 
-// Unsupported : gtk_label_set_use_markup : no return generator
+// SetMarkupWithMnemonic is a wrapper around the C function gtk_label_set_markup_with_mnemonic.
+func (recv *Label) SetMarkupWithMnemonic(str string) {
+	c_str := C.CString(str)
+	defer C.free(unsafe.Pointer(c_str))
 
-// Unsupported : gtk_label_set_use_underline : no return generator
+	C.gtk_label_set_markup_with_mnemonic((*C.GtkLabel)(recv.native), c_str)
 
-// Unsupported : gtk_label_set_width_chars : no return generator
+	return
+}
 
-// Unsupported : gtk_label_set_xalign : no return generator
+// SetMnemonicWidget is a wrapper around the C function gtk_label_set_mnemonic_widget.
+func (recv *Label) SetMnemonicWidget(widget *Widget) {
+	c_widget := (*C.GtkWidget)(widget.ToC())
 
-// Unsupported : gtk_label_set_yalign : no return generator
+	C.gtk_label_set_mnemonic_widget((*C.GtkLabel)(recv.native), c_widget)
+
+	return
+}
+
+// SetPattern is a wrapper around the C function gtk_label_set_pattern.
+func (recv *Label) SetPattern(pattern string) {
+	c_pattern := C.CString(pattern)
+	defer C.free(unsafe.Pointer(c_pattern))
+
+	C.gtk_label_set_pattern((*C.GtkLabel)(recv.native), c_pattern)
+
+	return
+}
+
+// SetSelectable is a wrapper around the C function gtk_label_set_selectable.
+func (recv *Label) SetSelectable(setting bool) {
+	c_setting :=
+		boolToGboolean(setting)
+
+	C.gtk_label_set_selectable((*C.GtkLabel)(recv.native), c_setting)
+
+	return
+}
+
+// SetText is a wrapper around the C function gtk_label_set_text.
+func (recv *Label) SetText(str string) {
+	c_str := C.CString(str)
+	defer C.free(unsafe.Pointer(c_str))
+
+	C.gtk_label_set_text((*C.GtkLabel)(recv.native), c_str)
+
+	return
+}
+
+// SetTextWithMnemonic is a wrapper around the C function gtk_label_set_text_with_mnemonic.
+func (recv *Label) SetTextWithMnemonic(str string) {
+	c_str := C.CString(str)
+	defer C.free(unsafe.Pointer(c_str))
+
+	C.gtk_label_set_text_with_mnemonic((*C.GtkLabel)(recv.native), c_str)
+
+	return
+}
+
+// SetUseMarkup is a wrapper around the C function gtk_label_set_use_markup.
+func (recv *Label) SetUseMarkup(setting bool) {
+	c_setting :=
+		boolToGboolean(setting)
+
+	C.gtk_label_set_use_markup((*C.GtkLabel)(recv.native), c_setting)
+
+	return
+}
+
+// SetUseUnderline is a wrapper around the C function gtk_label_set_use_underline.
+func (recv *Label) SetUseUnderline(setting bool) {
+	c_setting :=
+		boolToGboolean(setting)
+
+	C.gtk_label_set_use_underline((*C.GtkLabel)(recv.native), c_setting)
+
+	return
+}
 
 // LabelAccessible is a wrapper around the C record GtkLabelAccessible.
 type LabelAccessible struct {
@@ -5359,15 +5752,60 @@ func (recv *Layout) GetVadjustment() *Adjustment {
 	return retGo
 }
 
-// Unsupported : gtk_layout_move : no return generator
+// Move is a wrapper around the C function gtk_layout_move.
+func (recv *Layout) Move(childWidget *Widget, x int32, y int32) {
+	c_child_widget := (*C.GtkWidget)(childWidget.ToC())
 
-// Unsupported : gtk_layout_put : no return generator
+	c_x := (C.gint)(x)
 
-// Unsupported : gtk_layout_set_hadjustment : no return generator
+	c_y := (C.gint)(y)
 
-// Unsupported : gtk_layout_set_size : no return generator
+	C.gtk_layout_move((*C.GtkLayout)(recv.native), c_child_widget, c_x, c_y)
 
-// Unsupported : gtk_layout_set_vadjustment : no return generator
+	return
+}
+
+// Put is a wrapper around the C function gtk_layout_put.
+func (recv *Layout) Put(childWidget *Widget, x int32, y int32) {
+	c_child_widget := (*C.GtkWidget)(childWidget.ToC())
+
+	c_x := (C.gint)(x)
+
+	c_y := (C.gint)(y)
+
+	C.gtk_layout_put((*C.GtkLayout)(recv.native), c_child_widget, c_x, c_y)
+
+	return
+}
+
+// SetHadjustment is a wrapper around the C function gtk_layout_set_hadjustment.
+func (recv *Layout) SetHadjustment(adjustment *Adjustment) {
+	c_adjustment := (*C.GtkAdjustment)(adjustment.ToC())
+
+	C.gtk_layout_set_hadjustment((*C.GtkLayout)(recv.native), c_adjustment)
+
+	return
+}
+
+// SetSize is a wrapper around the C function gtk_layout_set_size.
+func (recv *Layout) SetSize(width uint32, height uint32) {
+	c_width := (C.guint)(width)
+
+	c_height := (C.guint)(height)
+
+	C.gtk_layout_set_size((*C.GtkLayout)(recv.native), c_width, c_height)
+
+	return
+}
+
+// SetVadjustment is a wrapper around the C function gtk_layout_set_vadjustment.
+func (recv *Layout) SetVadjustment(adjustment *Adjustment) {
+	c_adjustment := (*C.GtkAdjustment)(adjustment.ToC())
+
+	C.gtk_layout_set_vadjustment((*C.GtkLayout)(recv.native), c_adjustment)
+
+	return
+}
 
 // LevelBar is a wrapper around the C record GtkLevelBar.
 type LevelBar struct {
@@ -5392,21 +5830,7 @@ func (recv *LevelBar) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : gtk_level_bar_add_offset_value : no return generator
-
 // Unsupported : gtk_level_bar_get_offset_value : unsupported parameter value : no type generator for gdouble, gdouble*
-
-// Unsupported : gtk_level_bar_remove_offset_value : no return generator
-
-// Unsupported : gtk_level_bar_set_inverted : no return generator
-
-// Unsupported : gtk_level_bar_set_max_value : no return generator
-
-// Unsupported : gtk_level_bar_set_min_value : no return generator
-
-// Unsupported : gtk_level_bar_set_mode : no return generator
-
-// Unsupported : gtk_level_bar_set_value : no return generator
 
 // LevelBarAccessible is a wrapper around the C record GtkLevelBarAccessible.
 type LevelBarAccessible struct {
@@ -5453,10 +5877,6 @@ func (recv *LinkButton) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
-
-// Unsupported : gtk_link_button_set_uri : no return generator
-
-// Unsupported : gtk_link_button_set_visited : no return generator
 
 // LinkButtonAccessible is a wrapper around the C record GtkLinkButtonAccessible.
 type LinkButtonAccessible struct {
@@ -5505,43 +5925,13 @@ func (recv *ListBox) ToC() unsafe.Pointer {
 
 // Unsupported : gtk_list_box_bind_model : unsupported parameter model : no type generator for Gio.ListModel, GListModel*
 
-// Unsupported : gtk_list_box_drag_highlight_row : no return generator
-
-// Unsupported : gtk_list_box_drag_unhighlight_row : no return generator
-
-// Unsupported : gtk_list_box_insert : no return generator
-
-// Unsupported : gtk_list_box_invalidate_filter : no return generator
-
-// Unsupported : gtk_list_box_invalidate_headers : no return generator
-
-// Unsupported : gtk_list_box_invalidate_sort : no return generator
-
-// Unsupported : gtk_list_box_prepend : no return generator
-
-// Unsupported : gtk_list_box_select_all : no return generator
-
-// Unsupported : gtk_list_box_select_row : no return generator
-
 // Unsupported : gtk_list_box_selected_foreach : unsupported parameter func : no type generator for ListBoxForeachFunc, GtkListBoxForeachFunc
-
-// Unsupported : gtk_list_box_set_activate_on_single_click : no return generator
-
-// Unsupported : gtk_list_box_set_adjustment : no return generator
 
 // Unsupported : gtk_list_box_set_filter_func : unsupported parameter filter_func : no type generator for ListBoxFilterFunc, GtkListBoxFilterFunc
 
 // Unsupported : gtk_list_box_set_header_func : unsupported parameter update_header : no type generator for ListBoxUpdateHeaderFunc, GtkListBoxUpdateHeaderFunc
 
-// Unsupported : gtk_list_box_set_placeholder : no return generator
-
-// Unsupported : gtk_list_box_set_selection_mode : no return generator
-
 // Unsupported : gtk_list_box_set_sort_func : unsupported parameter sort_func : no type generator for ListBoxSortFunc, GtkListBoxSortFunc
-
-// Unsupported : gtk_list_box_unselect_all : no return generator
-
-// Unsupported : gtk_list_box_unselect_row : no return generator
 
 // ListBoxAccessible is a wrapper around the C record GtkListBoxAccessible.
 type ListBoxAccessible struct {
@@ -5587,14 +5977,6 @@ func (recv *ListBoxRow) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
-
-// Unsupported : gtk_list_box_row_changed : no return generator
-
-// Unsupported : gtk_list_box_row_set_activatable : no return generator
-
-// Unsupported : gtk_list_box_row_set_header : no return generator
-
-// Unsupported : gtk_list_box_row_set_selectable : no return generator
 
 // ListBoxRowAccessible is a wrapper around the C record GtkListBoxRowAccessible.
 type ListBoxRowAccessible struct {
@@ -5645,25 +6027,77 @@ func (recv *ListStore) ToC() unsafe.Pointer {
 
 // Unsupported : gtk_list_store_newv : unsupported parameter types : no param type
 
-// Unsupported : gtk_list_store_append : no return generator
+// Append is a wrapper around the C function gtk_list_store_append.
+func (recv *ListStore) Append() *TreeIter {
+	var c_iter C.GtkTreeIter
 
-// Unsupported : gtk_list_store_clear : no return generator
+	C.gtk_list_store_append((*C.GtkListStore)(recv.native), &c_iter)
 
-// Unsupported : gtk_list_store_insert : no return generator
+	iter := TreeIterNewFromC(unsafe.Pointer(&c_iter))
 
-// Unsupported : gtk_list_store_insert_after : no return generator
+	return iter
+}
 
-// Unsupported : gtk_list_store_insert_before : no return generator
+// Clear is a wrapper around the C function gtk_list_store_clear.
+func (recv *ListStore) Clear() {
+	C.gtk_list_store_clear((*C.GtkListStore)(recv.native))
+
+	return
+}
+
+// Insert is a wrapper around the C function gtk_list_store_insert.
+func (recv *ListStore) Insert(position int32) *TreeIter {
+	var c_iter C.GtkTreeIter
+
+	c_position := (C.gint)(position)
+
+	C.gtk_list_store_insert((*C.GtkListStore)(recv.native), &c_iter, c_position)
+
+	iter := TreeIterNewFromC(unsafe.Pointer(&c_iter))
+
+	return iter
+}
+
+// InsertAfter is a wrapper around the C function gtk_list_store_insert_after.
+func (recv *ListStore) InsertAfter(sibling *TreeIter) *TreeIter {
+	var c_iter C.GtkTreeIter
+
+	c_sibling := (*C.GtkTreeIter)(sibling.ToC())
+
+	C.gtk_list_store_insert_after((*C.GtkListStore)(recv.native), &c_iter, c_sibling)
+
+	iter := TreeIterNewFromC(unsafe.Pointer(&c_iter))
+
+	return iter
+}
+
+// InsertBefore is a wrapper around the C function gtk_list_store_insert_before.
+func (recv *ListStore) InsertBefore(sibling *TreeIter) *TreeIter {
+	var c_iter C.GtkTreeIter
+
+	c_sibling := (*C.GtkTreeIter)(sibling.ToC())
+
+	C.gtk_list_store_insert_before((*C.GtkListStore)(recv.native), &c_iter, c_sibling)
+
+	iter := TreeIterNewFromC(unsafe.Pointer(&c_iter))
+
+	return iter
+}
 
 // Unsupported : gtk_list_store_insert_with_values : unsupported parameter ... : varargs
 
 // Unsupported : gtk_list_store_insert_with_valuesv : unsupported parameter columns : no param type
 
-// Unsupported : gtk_list_store_move_after : no return generator
+// Prepend is a wrapper around the C function gtk_list_store_prepend.
+func (recv *ListStore) Prepend() *TreeIter {
+	var c_iter C.GtkTreeIter
 
-// Unsupported : gtk_list_store_move_before : no return generator
+	C.gtk_list_store_prepend((*C.GtkListStore)(recv.native), &c_iter)
 
-// Unsupported : gtk_list_store_prepend : no return generator
+	iter := TreeIterNewFromC(unsafe.Pointer(&c_iter))
+
+	return iter
+}
 
 // Remove is a wrapper around the C function gtk_list_store_remove.
 func (recv *ListStore) Remove(iter *TreeIter) bool {
@@ -5683,11 +6117,20 @@ func (recv *ListStore) Remove(iter *TreeIter) bool {
 
 // Unsupported : gtk_list_store_set_valist : unsupported parameter var_args : no type generator for va_list, va_list
 
-// Unsupported : gtk_list_store_set_value : no return generator
+// SetValue is a wrapper around the C function gtk_list_store_set_value.
+func (recv *ListStore) SetValue(iter *TreeIter, column int32, value *gobject.Value) {
+	c_iter := (*C.GtkTreeIter)(iter.ToC())
+
+	c_column := (C.gint)(column)
+
+	c_value := (*C.GValue)(value.ToC())
+
+	C.gtk_list_store_set_value((*C.GtkListStore)(recv.native), c_iter, c_column, c_value)
+
+	return
+}
 
 // Unsupported : gtk_list_store_set_valuesv : unsupported parameter columns : no param type
-
-// Unsupported : gtk_list_store_swap : no return generator
 
 // LockButton is a wrapper around the C record GtkLockButton.
 type LockButton struct {
@@ -5711,8 +6154,6 @@ func (recv *LockButton) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
-
-// Unsupported : gtk_lock_button_set_permission : no return generator
 
 // LockButtonAccessible is a wrapper around the C record GtkLockButtonAccessible.
 type LockButtonAccessible struct {
@@ -5768,11 +6209,14 @@ func MenuNew() *Widget {
 	return retGo
 }
 
-// Unsupported : gtk_menu_attach : no return generator
-
 // Unsupported : gtk_menu_attach_to_widget : unsupported parameter detacher : no type generator for MenuDetachFunc, GtkMenuDetachFunc
 
-// Unsupported : gtk_menu_detach : no return generator
+// Detach is a wrapper around the C function gtk_menu_detach.
+func (recv *Menu) Detach() {
+	C.gtk_menu_detach((*C.GtkMenu)(recv.native))
+
+	return
+}
 
 // GetAccelGroup is a wrapper around the C function gtk_menu_get_accel_group.
 func (recv *Menu) GetAccelGroup() *AccelGroup {
@@ -5814,9 +6258,12 @@ func (recv *Menu) GetTitle() string {
 	return retGo
 }
 
-// Unsupported : gtk_menu_place_on_monitor : no return generator
+// Popdown is a wrapper around the C function gtk_menu_popdown.
+func (recv *Menu) Popdown() {
+	C.gtk_menu_popdown((*C.GtkMenu)(recv.native))
 
-// Unsupported : gtk_menu_popdown : no return generator
+	return
+}
 
 // Unsupported : gtk_menu_popup : unsupported parameter func : no type generator for MenuPositionFunc, GtkMenuPositionFunc
 
@@ -5828,25 +6275,71 @@ func (recv *Menu) GetTitle() string {
 
 // Unsupported : gtk_menu_popup_for_device : unsupported parameter func : no type generator for MenuPositionFunc, GtkMenuPositionFunc
 
-// Unsupported : gtk_menu_reorder_child : no return generator
+// ReorderChild is a wrapper around the C function gtk_menu_reorder_child.
+func (recv *Menu) ReorderChild(child *Widget, position int32) {
+	c_child := (*C.GtkWidget)(child.ToC())
 
-// Unsupported : gtk_menu_reposition : no return generator
+	c_position := (C.gint)(position)
 
-// Unsupported : gtk_menu_set_accel_group : no return generator
+	C.gtk_menu_reorder_child((*C.GtkMenu)(recv.native), c_child, c_position)
 
-// Unsupported : gtk_menu_set_accel_path : no return generator
+	return
+}
 
-// Unsupported : gtk_menu_set_active : no return generator
+// Reposition is a wrapper around the C function gtk_menu_reposition.
+func (recv *Menu) Reposition() {
+	C.gtk_menu_reposition((*C.GtkMenu)(recv.native))
 
-// Unsupported : gtk_menu_set_monitor : no return generator
+	return
+}
 
-// Unsupported : gtk_menu_set_reserve_toggle_size : no return generator
+// SetAccelGroup is a wrapper around the C function gtk_menu_set_accel_group.
+func (recv *Menu) SetAccelGroup(accelGroup *AccelGroup) {
+	c_accel_group := (*C.GtkAccelGroup)(accelGroup.ToC())
 
-// Unsupported : gtk_menu_set_screen : no return generator
+	C.gtk_menu_set_accel_group((*C.GtkMenu)(recv.native), c_accel_group)
 
-// Unsupported : gtk_menu_set_tearoff_state : no return generator
+	return
+}
 
-// Unsupported : gtk_menu_set_title : no return generator
+// SetAccelPath is a wrapper around the C function gtk_menu_set_accel_path.
+func (recv *Menu) SetAccelPath(accelPath string) {
+	c_accel_path := C.CString(accelPath)
+	defer C.free(unsafe.Pointer(c_accel_path))
+
+	C.gtk_menu_set_accel_path((*C.GtkMenu)(recv.native), c_accel_path)
+
+	return
+}
+
+// SetActive is a wrapper around the C function gtk_menu_set_active.
+func (recv *Menu) SetActive(index uint32) {
+	c_index := (C.guint)(index)
+
+	C.gtk_menu_set_active((*C.GtkMenu)(recv.native), c_index)
+
+	return
+}
+
+// SetTearoffState is a wrapper around the C function gtk_menu_set_tearoff_state.
+func (recv *Menu) SetTearoffState(tornOff bool) {
+	c_torn_off :=
+		boolToGboolean(tornOff)
+
+	C.gtk_menu_set_tearoff_state((*C.GtkMenu)(recv.native), c_torn_off)
+
+	return
+}
+
+// SetTitle is a wrapper around the C function gtk_menu_set_title.
+func (recv *Menu) SetTitle(title string) {
+	c_title := C.CString(title)
+	defer C.free(unsafe.Pointer(c_title))
+
+	C.gtk_menu_set_title((*C.GtkMenu)(recv.native), c_title)
+
+	return
+}
 
 // MenuAccessible is a wrapper around the C record GtkMenuAccessible.
 type MenuAccessible struct {
@@ -5902,10 +6395,6 @@ func MenuBarNew() *Widget {
 	return retGo
 }
 
-// Unsupported : gtk_menu_bar_set_child_pack_direction : no return generator
-
-// Unsupported : gtk_menu_bar_set_pack_direction : no return generator
-
 // MenuButton is a wrapper around the C record GtkMenuButton.
 type MenuButton struct {
 	native *C.GtkMenuButton
@@ -5928,18 +6417,6 @@ func (recv *MenuButton) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
-
-// Unsupported : gtk_menu_button_set_align_widget : no return generator
-
-// Unsupported : gtk_menu_button_set_direction : no return generator
-
-// Unsupported : gtk_menu_button_set_menu_model : no return generator
-
-// Unsupported : gtk_menu_button_set_popover : no return generator
-
-// Unsupported : gtk_menu_button_set_popup : no return generator
-
-// Unsupported : gtk_menu_button_set_use_popover : no return generator
 
 // MenuButtonAccessible is a wrapper around the C record GtkMenuButtonAccessible.
 type MenuButtonAccessible struct {
@@ -6017,9 +6494,19 @@ func MenuItemNewWithMnemonic(label string) *Widget {
 	return retGo
 }
 
-// Unsupported : gtk_menu_item_activate : no return generator
+// Activate is a wrapper around the C function gtk_menu_item_activate.
+func (recv *MenuItem) Activate() {
+	C.gtk_menu_item_activate((*C.GtkMenuItem)(recv.native))
 
-// Unsupported : gtk_menu_item_deselect : no return generator
+	return
+}
+
+// Deselect is a wrapper around the C function gtk_menu_item_deselect.
+func (recv *MenuItem) Deselect() {
+	C.gtk_menu_item_deselect((*C.GtkMenuItem)(recv.native))
+
+	return
+}
 
 // GetRightJustified is a wrapper around the C function gtk_menu_item_get_right_justified.
 func (recv *MenuItem) GetRightJustified() bool {
@@ -6037,21 +6524,50 @@ func (recv *MenuItem) GetSubmenu() *Widget {
 	return retGo
 }
 
-// Unsupported : gtk_menu_item_select : no return generator
+// Select is a wrapper around the C function gtk_menu_item_select.
+func (recv *MenuItem) Select() {
+	C.gtk_menu_item_select((*C.GtkMenuItem)(recv.native))
 
-// Unsupported : gtk_menu_item_set_accel_path : no return generator
+	return
+}
 
-// Unsupported : gtk_menu_item_set_label : no return generator
+// SetAccelPath is a wrapper around the C function gtk_menu_item_set_accel_path.
+func (recv *MenuItem) SetAccelPath(accelPath string) {
+	c_accel_path := C.CString(accelPath)
+	defer C.free(unsafe.Pointer(c_accel_path))
 
-// Unsupported : gtk_menu_item_set_reserve_indicator : no return generator
+	C.gtk_menu_item_set_accel_path((*C.GtkMenuItem)(recv.native), c_accel_path)
 
-// Unsupported : gtk_menu_item_set_right_justified : no return generator
+	return
+}
 
-// Unsupported : gtk_menu_item_set_submenu : no return generator
+// SetRightJustified is a wrapper around the C function gtk_menu_item_set_right_justified.
+func (recv *MenuItem) SetRightJustified(rightJustified bool) {
+	c_right_justified :=
+		boolToGboolean(rightJustified)
 
-// Unsupported : gtk_menu_item_set_use_underline : no return generator
+	C.gtk_menu_item_set_right_justified((*C.GtkMenuItem)(recv.native), c_right_justified)
 
-// Unsupported : gtk_menu_item_toggle_size_allocate : no return generator
+	return
+}
+
+// SetSubmenu is a wrapper around the C function gtk_menu_item_set_submenu.
+func (recv *MenuItem) SetSubmenu(submenu *Menu) {
+	c_submenu := (*C.GtkWidget)(submenu.ToC())
+
+	C.gtk_menu_item_set_submenu((*C.GtkMenuItem)(recv.native), c_submenu)
+
+	return
+}
+
+// ToggleSizeAllocate is a wrapper around the C function gtk_menu_item_toggle_size_allocate.
+func (recv *MenuItem) ToggleSizeAllocate(allocation int32) {
+	c_allocation := (C.gint)(allocation)
+
+	C.gtk_menu_item_toggle_size_allocate((*C.GtkMenuItem)(recv.native), c_allocation)
+
+	return
+}
 
 // Unsupported : gtk_menu_item_toggle_size_request : unsupported parameter requisition : no type generator for gint, gint*
 
@@ -6101,27 +6617,69 @@ func (recv *MenuShell) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : gtk_menu_shell_activate_item : no return generator
+// ActivateItem is a wrapper around the C function gtk_menu_shell_activate_item.
+func (recv *MenuShell) ActivateItem(menuItem *Widget, forceDeactivate bool) {
+	c_menu_item := (*C.GtkWidget)(menuItem.ToC())
 
-// Unsupported : gtk_menu_shell_append : no return generator
+	c_force_deactivate :=
+		boolToGboolean(forceDeactivate)
 
-// Unsupported : gtk_menu_shell_bind_model : no return generator
+	C.gtk_menu_shell_activate_item((*C.GtkMenuShell)(recv.native), c_menu_item, c_force_deactivate)
 
-// Unsupported : gtk_menu_shell_cancel : no return generator
+	return
+}
 
-// Unsupported : gtk_menu_shell_deactivate : no return generator
+// Append is a wrapper around the C function gtk_menu_shell_append.
+func (recv *MenuShell) Append(child *MenuItem) {
+	c_child := (*C.GtkWidget)(child.ToC())
 
-// Unsupported : gtk_menu_shell_deselect : no return generator
+	C.gtk_menu_shell_append((*C.GtkMenuShell)(recv.native), c_child)
 
-// Unsupported : gtk_menu_shell_insert : no return generator
+	return
+}
 
-// Unsupported : gtk_menu_shell_prepend : no return generator
+// Deactivate is a wrapper around the C function gtk_menu_shell_deactivate.
+func (recv *MenuShell) Deactivate() {
+	C.gtk_menu_shell_deactivate((*C.GtkMenuShell)(recv.native))
 
-// Unsupported : gtk_menu_shell_select_first : no return generator
+	return
+}
 
-// Unsupported : gtk_menu_shell_select_item : no return generator
+// Deselect is a wrapper around the C function gtk_menu_shell_deselect.
+func (recv *MenuShell) Deselect() {
+	C.gtk_menu_shell_deselect((*C.GtkMenuShell)(recv.native))
 
-// Unsupported : gtk_menu_shell_set_take_focus : no return generator
+	return
+}
+
+// Insert is a wrapper around the C function gtk_menu_shell_insert.
+func (recv *MenuShell) Insert(child *Widget, position int32) {
+	c_child := (*C.GtkWidget)(child.ToC())
+
+	c_position := (C.gint)(position)
+
+	C.gtk_menu_shell_insert((*C.GtkMenuShell)(recv.native), c_child, c_position)
+
+	return
+}
+
+// Prepend is a wrapper around the C function gtk_menu_shell_prepend.
+func (recv *MenuShell) Prepend(child *Widget) {
+	c_child := (*C.GtkWidget)(child.ToC())
+
+	C.gtk_menu_shell_prepend((*C.GtkMenuShell)(recv.native), c_child)
+
+	return
+}
+
+// SelectItem is a wrapper around the C function gtk_menu_shell_select_item.
+func (recv *MenuShell) SelectItem(menuItem *Widget) {
+	c_menu_item := (*C.GtkWidget)(menuItem.ToC())
+
+	C.gtk_menu_shell_select_item((*C.GtkMenuShell)(recv.native), c_menu_item)
+
+	return
+}
 
 // MenuShellAccessible is a wrapper around the C record GtkMenuShellAccessible.
 type MenuShellAccessible struct {
@@ -6169,12 +6727,6 @@ func (recv *MenuToolButton) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : gtk_menu_tool_button_set_arrow_tooltip_markup : no return generator
-
-// Unsupported : gtk_menu_tool_button_set_arrow_tooltip_text : no return generator
-
-// Unsupported : gtk_menu_tool_button_set_menu : no return generator
-
 // MessageDialog is a wrapper around the C record GtkMessageDialog.
 type MessageDialog struct {
 	native *C.GtkMessageDialog
@@ -6206,10 +6758,6 @@ func (recv *MessageDialog) ToC() unsafe.Pointer {
 
 // Unsupported : gtk_message_dialog_format_secondary_text : unsupported parameter ... : varargs
 
-// Unsupported : gtk_message_dialog_set_image : no return generator
-
-// Unsupported : gtk_message_dialog_set_markup : no return generator
-
 // Misc is a wrapper around the C record GtkMisc.
 type Misc struct {
 	native *C.GtkMisc
@@ -6237,9 +6785,27 @@ func (recv *Misc) ToC() unsafe.Pointer {
 
 // Unsupported : gtk_misc_get_padding : unsupported parameter xpad : no type generator for gint, gint*
 
-// Unsupported : gtk_misc_set_alignment : no return generator
+// SetAlignment is a wrapper around the C function gtk_misc_set_alignment.
+func (recv *Misc) SetAlignment(xalign float32, yalign float32) {
+	c_xalign := (C.gfloat)(xalign)
 
-// Unsupported : gtk_misc_set_padding : no return generator
+	c_yalign := (C.gfloat)(yalign)
+
+	C.gtk_misc_set_alignment((*C.GtkMisc)(recv.native), c_xalign, c_yalign)
+
+	return
+}
+
+// SetPadding is a wrapper around the C function gtk_misc_set_padding.
+func (recv *Misc) SetPadding(xpad int32, ypad int32) {
+	c_xpad := (C.gint)(xpad)
+
+	c_ypad := (C.gint)(ypad)
+
+	C.gtk_misc_set_padding((*C.GtkMisc)(recv.native), c_xpad, c_ypad)
+
+	return
+}
 
 // ModelButton is a wrapper around the C record GtkModelButton.
 type ModelButton struct {
@@ -6284,10 +6850,6 @@ func (recv *MountOperation) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
-
-// Unsupported : gtk_mount_operation_set_parent : no return generator
-
-// Unsupported : gtk_mount_operation_set_screen : no return generator
 
 // Notebook is a wrapper around the C record GtkNotebook.
 type Notebook struct {
@@ -6345,8 +6907,6 @@ func (recv *Notebook) AppendPageMenu(child *Widget, tabLabel *Widget, menuLabel 
 
 	return retGo
 }
-
-// Unsupported : gtk_notebook_detach_tab : no return generator
 
 // GetCurrentPage is a wrapper around the C function gtk_notebook_get_current_page.
 func (recv *Notebook) GetCurrentPage() int32 {
@@ -6468,7 +7028,12 @@ func (recv *Notebook) InsertPageMenu(child *Widget, tabLabel *Widget, menuLabel 
 	return retGo
 }
 
-// Unsupported : gtk_notebook_next_page : no return generator
+// NextPage is a wrapper around the C function gtk_notebook_next_page.
+func (recv *Notebook) NextPage() {
+	C.gtk_notebook_next_page((*C.GtkNotebook)(recv.native))
+
+	return
+}
 
 // PageNum is a wrapper around the C function gtk_notebook_page_num.
 func (recv *Notebook) PageNum(child *Widget) int32 {
@@ -6480,9 +7045,19 @@ func (recv *Notebook) PageNum(child *Widget) int32 {
 	return retGo
 }
 
-// Unsupported : gtk_notebook_popup_disable : no return generator
+// PopupDisable is a wrapper around the C function gtk_notebook_popup_disable.
+func (recv *Notebook) PopupDisable() {
+	C.gtk_notebook_popup_disable((*C.GtkNotebook)(recv.native))
 
-// Unsupported : gtk_notebook_popup_enable : no return generator
+	return
+}
+
+// PopupEnable is a wrapper around the C function gtk_notebook_popup_enable.
+func (recv *Notebook) PopupEnable() {
+	C.gtk_notebook_popup_enable((*C.GtkNotebook)(recv.native))
+
+	return
+}
 
 // PrependPage is a wrapper around the C function gtk_notebook_prepend_page.
 func (recv *Notebook) PrependPage(child *Widget, tabLabel *Widget) int32 {
@@ -6510,37 +7085,126 @@ func (recv *Notebook) PrependPageMenu(child *Widget, tabLabel *Widget, menuLabel
 	return retGo
 }
 
-// Unsupported : gtk_notebook_prev_page : no return generator
+// PrevPage is a wrapper around the C function gtk_notebook_prev_page.
+func (recv *Notebook) PrevPage() {
+	C.gtk_notebook_prev_page((*C.GtkNotebook)(recv.native))
 
-// Unsupported : gtk_notebook_remove_page : no return generator
+	return
+}
 
-// Unsupported : gtk_notebook_reorder_child : no return generator
+// RemovePage is a wrapper around the C function gtk_notebook_remove_page.
+func (recv *Notebook) RemovePage(pageNum int32) {
+	c_page_num := (C.gint)(pageNum)
 
-// Unsupported : gtk_notebook_set_action_widget : no return generator
+	C.gtk_notebook_remove_page((*C.GtkNotebook)(recv.native), c_page_num)
 
-// Unsupported : gtk_notebook_set_current_page : no return generator
+	return
+}
 
-// Unsupported : gtk_notebook_set_group_name : no return generator
+// ReorderChild is a wrapper around the C function gtk_notebook_reorder_child.
+func (recv *Notebook) ReorderChild(child *Widget, position int32) {
+	c_child := (*C.GtkWidget)(child.ToC())
 
-// Unsupported : gtk_notebook_set_menu_label : no return generator
+	c_position := (C.gint)(position)
 
-// Unsupported : gtk_notebook_set_menu_label_text : no return generator
+	C.gtk_notebook_reorder_child((*C.GtkNotebook)(recv.native), c_child, c_position)
 
-// Unsupported : gtk_notebook_set_scrollable : no return generator
+	return
+}
 
-// Unsupported : gtk_notebook_set_show_border : no return generator
+// SetCurrentPage is a wrapper around the C function gtk_notebook_set_current_page.
+func (recv *Notebook) SetCurrentPage(pageNum int32) {
+	c_page_num := (C.gint)(pageNum)
 
-// Unsupported : gtk_notebook_set_show_tabs : no return generator
+	C.gtk_notebook_set_current_page((*C.GtkNotebook)(recv.native), c_page_num)
 
-// Unsupported : gtk_notebook_set_tab_detachable : no return generator
+	return
+}
 
-// Unsupported : gtk_notebook_set_tab_label : no return generator
+// SetMenuLabel is a wrapper around the C function gtk_notebook_set_menu_label.
+func (recv *Notebook) SetMenuLabel(child *Widget, menuLabel *Widget) {
+	c_child := (*C.GtkWidget)(child.ToC())
 
-// Unsupported : gtk_notebook_set_tab_label_text : no return generator
+	c_menu_label := (*C.GtkWidget)(menuLabel.ToC())
 
-// Unsupported : gtk_notebook_set_tab_pos : no return generator
+	C.gtk_notebook_set_menu_label((*C.GtkNotebook)(recv.native), c_child, c_menu_label)
 
-// Unsupported : gtk_notebook_set_tab_reorderable : no return generator
+	return
+}
+
+// SetMenuLabelText is a wrapper around the C function gtk_notebook_set_menu_label_text.
+func (recv *Notebook) SetMenuLabelText(child *Widget, menuText string) {
+	c_child := (*C.GtkWidget)(child.ToC())
+
+	c_menu_text := C.CString(menuText)
+	defer C.free(unsafe.Pointer(c_menu_text))
+
+	C.gtk_notebook_set_menu_label_text((*C.GtkNotebook)(recv.native), c_child, c_menu_text)
+
+	return
+}
+
+// SetScrollable is a wrapper around the C function gtk_notebook_set_scrollable.
+func (recv *Notebook) SetScrollable(scrollable bool) {
+	c_scrollable :=
+		boolToGboolean(scrollable)
+
+	C.gtk_notebook_set_scrollable((*C.GtkNotebook)(recv.native), c_scrollable)
+
+	return
+}
+
+// SetShowBorder is a wrapper around the C function gtk_notebook_set_show_border.
+func (recv *Notebook) SetShowBorder(showBorder bool) {
+	c_show_border :=
+		boolToGboolean(showBorder)
+
+	C.gtk_notebook_set_show_border((*C.GtkNotebook)(recv.native), c_show_border)
+
+	return
+}
+
+// SetShowTabs is a wrapper around the C function gtk_notebook_set_show_tabs.
+func (recv *Notebook) SetShowTabs(showTabs bool) {
+	c_show_tabs :=
+		boolToGboolean(showTabs)
+
+	C.gtk_notebook_set_show_tabs((*C.GtkNotebook)(recv.native), c_show_tabs)
+
+	return
+}
+
+// SetTabLabel is a wrapper around the C function gtk_notebook_set_tab_label.
+func (recv *Notebook) SetTabLabel(child *Widget, tabLabel *Widget) {
+	c_child := (*C.GtkWidget)(child.ToC())
+
+	c_tab_label := (*C.GtkWidget)(tabLabel.ToC())
+
+	C.gtk_notebook_set_tab_label((*C.GtkNotebook)(recv.native), c_child, c_tab_label)
+
+	return
+}
+
+// SetTabLabelText is a wrapper around the C function gtk_notebook_set_tab_label_text.
+func (recv *Notebook) SetTabLabelText(child *Widget, tabText string) {
+	c_child := (*C.GtkWidget)(child.ToC())
+
+	c_tab_text := C.CString(tabText)
+	defer C.free(unsafe.Pointer(c_tab_text))
+
+	C.gtk_notebook_set_tab_label_text((*C.GtkNotebook)(recv.native), c_child, c_tab_text)
+
+	return
+}
+
+// SetTabPos is a wrapper around the C function gtk_notebook_set_tab_pos.
+func (recv *Notebook) SetTabPos(pos PositionType) {
+	c_pos := (C.GtkPositionType)(pos)
+
+	C.gtk_notebook_set_tab_pos((*C.GtkNotebook)(recv.native), c_pos)
+
+	return
+}
 
 // NotebookAccessible is a wrapper around the C record GtkNotebookAccessible.
 type NotebookAccessible struct {
@@ -6600,7 +7264,12 @@ func NotebookPageAccessibleNew(notebook *NotebookAccessible, child *Widget) *atk
 	return retGo
 }
 
-// Unsupported : gtk_notebook_page_accessible_invalidate : no return generator
+// Invalidate is a wrapper around the C function gtk_notebook_page_accessible_invalidate.
+func (recv *NotebookPageAccessible) Invalidate() {
+	C.gtk_notebook_page_accessible_invalidate((*C.GtkNotebookPageAccessible)(recv.native))
+
+	return
+}
 
 // NumerableIcon is a wrapper around the C record GtkNumerableIcon.
 type NumerableIcon struct {
@@ -6628,14 +7297,6 @@ func (recv *NumerableIcon) ToC() unsafe.Pointer {
 // Unsupported : gtk_numerable_icon_get_background_gicon : no return generator
 
 // Unsupported : gtk_numerable_icon_set_background_gicon : unsupported parameter icon : no type generator for Gio.Icon, GIcon*
-
-// Unsupported : gtk_numerable_icon_set_background_icon_name : no return generator
-
-// Unsupported : gtk_numerable_icon_set_count : no return generator
-
-// Unsupported : gtk_numerable_icon_set_label : no return generator
-
-// Unsupported : gtk_numerable_icon_set_style_context : no return generator
 
 // OffscreenWindow is a wrapper around the C record GtkOffscreenWindow.
 type OffscreenWindow struct {
@@ -6682,12 +7343,6 @@ func (recv *Overlay) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : gtk_overlay_add_overlay : no return generator
-
-// Unsupported : gtk_overlay_reorder_overlay : no return generator
-
-// Unsupported : gtk_overlay_set_overlay_pass_through : no return generator
-
 // PageSetup is a wrapper around the C record GtkPageSetup.
 type PageSetup struct {
 	native *C.GtkPageSetup
@@ -6711,23 +7366,7 @@ func (recv *PageSetup) ToC() unsafe.Pointer {
 
 // Unsupported : gtk_page_setup_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
 
-// Unsupported : gtk_page_setup_set_bottom_margin : no return generator
-
-// Unsupported : gtk_page_setup_set_left_margin : no return generator
-
-// Unsupported : gtk_page_setup_set_orientation : no return generator
-
-// Unsupported : gtk_page_setup_set_paper_size : no return generator
-
-// Unsupported : gtk_page_setup_set_paper_size_and_default_margins : no return generator
-
-// Unsupported : gtk_page_setup_set_right_margin : no return generator
-
-// Unsupported : gtk_page_setup_set_top_margin : no return generator
-
 // Unsupported : gtk_page_setup_to_gvariant : return type : Blacklisted record : GVariant
-
-// Unsupported : gtk_page_setup_to_key_file : no return generator
 
 // Paned is a wrapper around the C record GtkPaned.
 type Paned struct {
@@ -6752,9 +7391,23 @@ func (recv *Paned) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : gtk_paned_add1 : no return generator
+// Add1 is a wrapper around the C function gtk_paned_add1.
+func (recv *Paned) Add1(child *Widget) {
+	c_child := (*C.GtkWidget)(child.ToC())
 
-// Unsupported : gtk_paned_add2 : no return generator
+	C.gtk_paned_add1((*C.GtkPaned)(recv.native), c_child)
+
+	return
+}
+
+// Add2 is a wrapper around the C function gtk_paned_add2.
+func (recv *Paned) Add2(child *Widget) {
+	c_child := (*C.GtkWidget)(child.ToC())
+
+	C.gtk_paned_add2((*C.GtkPaned)(recv.native), c_child)
+
+	return
+}
 
 // GetPosition is a wrapper around the C function gtk_paned_get_position.
 func (recv *Paned) GetPosition() int32 {
@@ -6764,13 +7417,44 @@ func (recv *Paned) GetPosition() int32 {
 	return retGo
 }
 
-// Unsupported : gtk_paned_pack1 : no return generator
+// Pack1 is a wrapper around the C function gtk_paned_pack1.
+func (recv *Paned) Pack1(child *Widget, resize bool, shrink bool) {
+	c_child := (*C.GtkWidget)(child.ToC())
 
-// Unsupported : gtk_paned_pack2 : no return generator
+	c_resize :=
+		boolToGboolean(resize)
 
-// Unsupported : gtk_paned_set_position : no return generator
+	c_shrink :=
+		boolToGboolean(shrink)
 
-// Unsupported : gtk_paned_set_wide_handle : no return generator
+	C.gtk_paned_pack1((*C.GtkPaned)(recv.native), c_child, c_resize, c_shrink)
+
+	return
+}
+
+// Pack2 is a wrapper around the C function gtk_paned_pack2.
+func (recv *Paned) Pack2(child *Widget, resize bool, shrink bool) {
+	c_child := (*C.GtkWidget)(child.ToC())
+
+	c_resize :=
+		boolToGboolean(resize)
+
+	c_shrink :=
+		boolToGboolean(shrink)
+
+	C.gtk_paned_pack2((*C.GtkPaned)(recv.native), c_child, c_resize, c_shrink)
+
+	return
+}
+
+// SetPosition is a wrapper around the C function gtk_paned_set_position.
+func (recv *Paned) SetPosition(position int32) {
+	c_position := (C.gint)(position)
+
+	C.gtk_paned_set_position((*C.GtkPaned)(recv.native), c_position)
+
+	return
+}
 
 // PanedAccessible is a wrapper around the C record GtkPanedAccessible.
 type PanedAccessible struct {
@@ -6832,27 +7516,7 @@ func (recv *PlacesSidebar) GetShowConnectToServer() bool {
 
 // Unsupported : gtk_places_sidebar_remove_shortcut : unsupported parameter location : no type generator for Gio.File, GFile*
 
-// Unsupported : gtk_places_sidebar_set_drop_targets_visible : no return generator
-
-// Unsupported : gtk_places_sidebar_set_local_only : no return generator
-
 // Unsupported : gtk_places_sidebar_set_location : unsupported parameter location : no type generator for Gio.File, GFile*
-
-// Unsupported : gtk_places_sidebar_set_open_flags : no return generator
-
-// Unsupported : gtk_places_sidebar_set_show_connect_to_server : no return generator
-
-// Unsupported : gtk_places_sidebar_set_show_desktop : no return generator
-
-// Unsupported : gtk_places_sidebar_set_show_enter_location : no return generator
-
-// Unsupported : gtk_places_sidebar_set_show_other_locations : no return generator
-
-// Unsupported : gtk_places_sidebar_set_show_recent : no return generator
-
-// Unsupported : gtk_places_sidebar_set_show_starred_location : no return generator
-
-// Unsupported : gtk_places_sidebar_set_show_trash : no return generator
 
 // Blacklisted : GtkPlug
 
@@ -6879,8 +7543,6 @@ func (recv *Popover) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : gtk_popover_bind_model : no return generator
-
 // Unsupported : gtk_popover_get_pointing_to : unsupported parameter rect : Blacklisted record : GdkRectangle
 
 // GetPosition is a wrapper around the C function gtk_popover_get_position.
@@ -6891,23 +7553,7 @@ func (recv *Popover) GetPosition() PositionType {
 	return retGo
 }
 
-// Unsupported : gtk_popover_popdown : no return generator
-
-// Unsupported : gtk_popover_popup : no return generator
-
-// Unsupported : gtk_popover_set_constrain_to : no return generator
-
-// Unsupported : gtk_popover_set_default_widget : no return generator
-
-// Unsupported : gtk_popover_set_modal : no return generator
-
 // Unsupported : gtk_popover_set_pointing_to : unsupported parameter rect : Blacklisted record : GdkRectangle
-
-// Unsupported : gtk_popover_set_position : no return generator
-
-// Unsupported : gtk_popover_set_relative_to : no return generator
-
-// Unsupported : gtk_popover_set_transitions_enabled : no return generator
 
 // PopoverAccessible is a wrapper around the C record GtkPopoverAccessible.
 type PopoverAccessible struct {
@@ -6952,8 +7598,6 @@ func (recv *PopoverMenu) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : gtk_popover_menu_open_submenu : no return generator
-
 // PrintContext is a wrapper around the C record GtkPrintContext.
 type PrintContext struct {
 	native *C.GtkPrintContext
@@ -6977,8 +7621,6 @@ func (recv *PrintContext) ToC() unsafe.Pointer {
 
 // Unsupported : gtk_print_context_get_hard_margins : unsupported parameter top : no type generator for gdouble, gdouble*
 
-// Unsupported : gtk_print_context_set_cairo_context : no return generator
-
 // PrintOperation is a wrapper around the C record GtkPrintOperation.
 type PrintOperation struct {
 	native *C.GtkPrintOperation
@@ -7001,44 +7643,6 @@ func (recv *PrintOperation) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
-
-// Unsupported : gtk_print_operation_cancel : no return generator
-
-// Unsupported : gtk_print_operation_draw_page_finish : no return generator
-
-// Unsupported : gtk_print_operation_get_error : no return generator
-
-// Unsupported : gtk_print_operation_set_allow_async : no return generator
-
-// Unsupported : gtk_print_operation_set_current_page : no return generator
-
-// Unsupported : gtk_print_operation_set_custom_tab_label : no return generator
-
-// Unsupported : gtk_print_operation_set_default_page_setup : no return generator
-
-// Unsupported : gtk_print_operation_set_defer_drawing : no return generator
-
-// Unsupported : gtk_print_operation_set_embed_page_setup : no return generator
-
-// Unsupported : gtk_print_operation_set_export_filename : no return generator
-
-// Unsupported : gtk_print_operation_set_has_selection : no return generator
-
-// Unsupported : gtk_print_operation_set_job_name : no return generator
-
-// Unsupported : gtk_print_operation_set_n_pages : no return generator
-
-// Unsupported : gtk_print_operation_set_print_settings : no return generator
-
-// Unsupported : gtk_print_operation_set_show_progress : no return generator
-
-// Unsupported : gtk_print_operation_set_support_selection : no return generator
-
-// Unsupported : gtk_print_operation_set_track_print_status : no return generator
-
-// Unsupported : gtk_print_operation_set_unit : no return generator
-
-// Unsupported : gtk_print_operation_set_use_full_page : no return generator
 
 // PrintSettings is a wrapper around the C record GtkPrintSettings.
 type PrintSettings struct {
@@ -7067,71 +7671,9 @@ func (recv *PrintSettings) ToC() unsafe.Pointer {
 
 // Unsupported : gtk_print_settings_get_page_ranges : unsupported parameter num_ranges : no type generator for gint, gint*
 
-// Unsupported : gtk_print_settings_set : no return generator
-
-// Unsupported : gtk_print_settings_set_bool : no return generator
-
-// Unsupported : gtk_print_settings_set_collate : no return generator
-
-// Unsupported : gtk_print_settings_set_default_source : no return generator
-
-// Unsupported : gtk_print_settings_set_dither : no return generator
-
-// Unsupported : gtk_print_settings_set_double : no return generator
-
-// Unsupported : gtk_print_settings_set_duplex : no return generator
-
-// Unsupported : gtk_print_settings_set_finishings : no return generator
-
-// Unsupported : gtk_print_settings_set_int : no return generator
-
-// Unsupported : gtk_print_settings_set_length : no return generator
-
-// Unsupported : gtk_print_settings_set_media_type : no return generator
-
-// Unsupported : gtk_print_settings_set_n_copies : no return generator
-
-// Unsupported : gtk_print_settings_set_number_up : no return generator
-
-// Unsupported : gtk_print_settings_set_number_up_layout : no return generator
-
-// Unsupported : gtk_print_settings_set_orientation : no return generator
-
-// Unsupported : gtk_print_settings_set_output_bin : no return generator
-
 // Unsupported : gtk_print_settings_set_page_ranges : unsupported parameter page_ranges : no param type
 
-// Unsupported : gtk_print_settings_set_page_set : no return generator
-
-// Unsupported : gtk_print_settings_set_paper_height : no return generator
-
-// Unsupported : gtk_print_settings_set_paper_size : no return generator
-
-// Unsupported : gtk_print_settings_set_paper_width : no return generator
-
-// Unsupported : gtk_print_settings_set_print_pages : no return generator
-
-// Unsupported : gtk_print_settings_set_printer : no return generator
-
-// Unsupported : gtk_print_settings_set_printer_lpi : no return generator
-
-// Unsupported : gtk_print_settings_set_quality : no return generator
-
-// Unsupported : gtk_print_settings_set_resolution : no return generator
-
-// Unsupported : gtk_print_settings_set_resolution_xy : no return generator
-
-// Unsupported : gtk_print_settings_set_reverse : no return generator
-
-// Unsupported : gtk_print_settings_set_scale : no return generator
-
-// Unsupported : gtk_print_settings_set_use_color : no return generator
-
 // Unsupported : gtk_print_settings_to_gvariant : return type : Blacklisted record : GVariant
-
-// Unsupported : gtk_print_settings_to_key_file : no return generator
-
-// Unsupported : gtk_print_settings_unset : no return generator
 
 // ProgressBar is a wrapper around the C record GtkProgressBar.
 type ProgressBar struct {
@@ -7196,19 +7738,50 @@ func (recv *ProgressBar) GetText() string {
 	return retGo
 }
 
-// Unsupported : gtk_progress_bar_pulse : no return generator
+// Pulse is a wrapper around the C function gtk_progress_bar_pulse.
+func (recv *ProgressBar) Pulse() {
+	C.gtk_progress_bar_pulse((*C.GtkProgressBar)(recv.native))
 
-// Unsupported : gtk_progress_bar_set_ellipsize : no return generator
+	return
+}
 
-// Unsupported : gtk_progress_bar_set_fraction : no return generator
+// SetFraction is a wrapper around the C function gtk_progress_bar_set_fraction.
+func (recv *ProgressBar) SetFraction(fraction float64) {
+	c_fraction := (C.gdouble)(fraction)
 
-// Unsupported : gtk_progress_bar_set_inverted : no return generator
+	C.gtk_progress_bar_set_fraction((*C.GtkProgressBar)(recv.native), c_fraction)
 
-// Unsupported : gtk_progress_bar_set_pulse_step : no return generator
+	return
+}
 
-// Unsupported : gtk_progress_bar_set_show_text : no return generator
+// SetInverted is a wrapper around the C function gtk_progress_bar_set_inverted.
+func (recv *ProgressBar) SetInverted(inverted bool) {
+	c_inverted :=
+		boolToGboolean(inverted)
 
-// Unsupported : gtk_progress_bar_set_text : no return generator
+	C.gtk_progress_bar_set_inverted((*C.GtkProgressBar)(recv.native), c_inverted)
+
+	return
+}
+
+// SetPulseStep is a wrapper around the C function gtk_progress_bar_set_pulse_step.
+func (recv *ProgressBar) SetPulseStep(fraction float64) {
+	c_fraction := (C.gdouble)(fraction)
+
+	C.gtk_progress_bar_set_pulse_step((*C.GtkProgressBar)(recv.native), c_fraction)
+
+	return
+}
+
+// SetText is a wrapper around the C function gtk_progress_bar_set_text.
+func (recv *ProgressBar) SetText(text string) {
+	c_text := C.CString(text)
+	defer C.free(unsafe.Pointer(c_text))
+
+	C.gtk_progress_bar_set_text((*C.GtkProgressBar)(recv.native), c_text)
+
+	return
+}
 
 // ProgressBarAccessible is a wrapper around the C record GtkProgressBarAccessible.
 type ProgressBarAccessible struct {
@@ -7255,12 +7828,6 @@ func (recv *RadioAction) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
-
-// Unsupported : gtk_radio_action_join_group : no return generator
-
-// Unsupported : gtk_radio_action_set_current_value : no return generator
-
-// Unsupported : gtk_radio_action_set_group : no return generator
 
 // RadioButton is a wrapper around the C record GtkRadioButton.
 type RadioButton struct {
@@ -7365,9 +7932,14 @@ func (recv *RadioButton) GetGroup() *glib.SList {
 	return retGo
 }
 
-// Unsupported : gtk_radio_button_join_group : no return generator
+// SetGroup is a wrapper around the C function gtk_radio_button_set_group.
+func (recv *RadioButton) SetGroup(group *glib.SList) {
+	c_group := (*C.GSList)(group.ToC())
 
-// Unsupported : gtk_radio_button_set_group : no return generator
+	C.gtk_radio_button_set_group((*C.GtkRadioButton)(recv.native), c_group)
+
+	return
+}
 
 // RadioButtonAccessible is a wrapper around the C record GtkRadioButtonAccessible.
 type RadioButtonAccessible struct {
@@ -7459,9 +8031,14 @@ func (recv *RadioMenuItem) GetGroup() *glib.SList {
 	return retGo
 }
 
-// Unsupported : gtk_radio_menu_item_join_group : no return generator
+// SetGroup is a wrapper around the C function gtk_radio_menu_item_set_group.
+func (recv *RadioMenuItem) SetGroup(group *glib.SList) {
+	c_group := (*C.GSList)(group.ToC())
 
-// Unsupported : gtk_radio_menu_item_set_group : no return generator
+	C.gtk_radio_menu_item_set_group((*C.GtkRadioMenuItem)(recv.native), c_group)
+
+	return
+}
 
 // RadioMenuItemAccessible is a wrapper around the C record GtkRadioMenuItemAccessible.
 type RadioMenuItemAccessible struct {
@@ -7507,8 +8084,6 @@ func (recv *RadioToolButton) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
-
-// Unsupported : gtk_radio_tool_button_set_group : no return generator
 
 // Range is a wrapper around the C record GtkRange.
 type Range struct {
@@ -7561,33 +8136,55 @@ func (recv *Range) GetValue() float64 {
 	return retGo
 }
 
-// Unsupported : gtk_range_set_adjustment : no return generator
+// SetAdjustment is a wrapper around the C function gtk_range_set_adjustment.
+func (recv *Range) SetAdjustment(adjustment *Adjustment) {
+	c_adjustment := (*C.GtkAdjustment)(adjustment.ToC())
 
-// Unsupported : gtk_range_set_fill_level : no return generator
+	C.gtk_range_set_adjustment((*C.GtkRange)(recv.native), c_adjustment)
 
-// Unsupported : gtk_range_set_flippable : no return generator
+	return
+}
 
-// Unsupported : gtk_range_set_increments : no return generator
+// SetIncrements is a wrapper around the C function gtk_range_set_increments.
+func (recv *Range) SetIncrements(step float64, page float64) {
+	c_step := (C.gdouble)(step)
 
-// Unsupported : gtk_range_set_inverted : no return generator
+	c_page := (C.gdouble)(page)
 
-// Unsupported : gtk_range_set_lower_stepper_sensitivity : no return generator
+	C.gtk_range_set_increments((*C.GtkRange)(recv.native), c_step, c_page)
 
-// Unsupported : gtk_range_set_min_slider_size : no return generator
+	return
+}
 
-// Unsupported : gtk_range_set_range : no return generator
+// SetInverted is a wrapper around the C function gtk_range_set_inverted.
+func (recv *Range) SetInverted(setting bool) {
+	c_setting :=
+		boolToGboolean(setting)
 
-// Unsupported : gtk_range_set_restrict_to_fill_level : no return generator
+	C.gtk_range_set_inverted((*C.GtkRange)(recv.native), c_setting)
 
-// Unsupported : gtk_range_set_round_digits : no return generator
+	return
+}
 
-// Unsupported : gtk_range_set_show_fill_level : no return generator
+// SetRange is a wrapper around the C function gtk_range_set_range.
+func (recv *Range) SetRange(min float64, max float64) {
+	c_min := (C.gdouble)(min)
 
-// Unsupported : gtk_range_set_slider_size_fixed : no return generator
+	c_max := (C.gdouble)(max)
 
-// Unsupported : gtk_range_set_upper_stepper_sensitivity : no return generator
+	C.gtk_range_set_range((*C.GtkRange)(recv.native), c_min, c_max)
 
-// Unsupported : gtk_range_set_value : no return generator
+	return
+}
+
+// SetValue is a wrapper around the C function gtk_range_set_value.
+func (recv *Range) SetValue(value float64) {
+	c_value := (C.gdouble)(value)
+
+	C.gtk_range_set_value((*C.GtkRange)(recv.native), c_value)
+
+	return
+}
 
 // RangeAccessible is a wrapper around the C record GtkRangeAccessible.
 type RangeAccessible struct {
@@ -7698,8 +8295,6 @@ func (recv *RecentAction) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : gtk_recent_action_set_show_numbers : no return generator
-
 // RecentChooserDialog is a wrapper around the C record GtkRecentChooserDialog.
 type RecentChooserDialog struct {
 	native *C.GtkRecentChooserDialog
@@ -7750,8 +8345,6 @@ func (recv *RecentChooserMenu) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : gtk_recent_chooser_menu_set_show_numbers : no return generator
-
 // RecentChooserWidget is a wrapper around the C record GtkRecentChooserWidget.
 type RecentChooserWidget struct {
 	native *C.GtkRecentChooserWidget
@@ -7796,21 +8389,7 @@ func (recv *RecentFilter) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : gtk_recent_filter_add_age : no return generator
-
-// Unsupported : gtk_recent_filter_add_application : no return generator
-
 // Unsupported : gtk_recent_filter_add_custom : unsupported parameter func : no type generator for RecentFilterFunc, GtkRecentFilterFunc
-
-// Unsupported : gtk_recent_filter_add_group : no return generator
-
-// Unsupported : gtk_recent_filter_add_mime_type : no return generator
-
-// Unsupported : gtk_recent_filter_add_pattern : no return generator
-
-// Unsupported : gtk_recent_filter_add_pixbuf_formats : no return generator
-
-// Unsupported : gtk_recent_filter_set_name : no return generator
 
 // RendererCellAccessible is a wrapper around the C record GtkRendererCellAccessible.
 type RendererCellAccessible struct {
@@ -7867,12 +8446,6 @@ func (recv *Revealer) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : gtk_revealer_set_reveal_child : no return generator
-
-// Unsupported : gtk_revealer_set_transition_duration : no return generator
-
-// Unsupported : gtk_revealer_set_transition_type : no return generator
-
 // Scale is a wrapper around the C record GtkScale.
 type Scale struct {
 	native *C.GtkScale
@@ -7895,10 +8468,6 @@ func (recv *Scale) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
-
-// Unsupported : gtk_scale_add_mark : no return generator
-
-// Unsupported : gtk_scale_clear_marks : no return generator
 
 // GetDigits is a wrapper around the C function gtk_scale_get_digits.
 func (recv *Scale) GetDigits() int32 {
@@ -7926,13 +8495,33 @@ func (recv *Scale) GetValuePos() PositionType {
 	return retGo
 }
 
-// Unsupported : gtk_scale_set_digits : no return generator
+// SetDigits is a wrapper around the C function gtk_scale_set_digits.
+func (recv *Scale) SetDigits(digits int32) {
+	c_digits := (C.gint)(digits)
 
-// Unsupported : gtk_scale_set_draw_value : no return generator
+	C.gtk_scale_set_digits((*C.GtkScale)(recv.native), c_digits)
 
-// Unsupported : gtk_scale_set_has_origin : no return generator
+	return
+}
 
-// Unsupported : gtk_scale_set_value_pos : no return generator
+// SetDrawValue is a wrapper around the C function gtk_scale_set_draw_value.
+func (recv *Scale) SetDrawValue(drawValue bool) {
+	c_draw_value :=
+		boolToGboolean(drawValue)
+
+	C.gtk_scale_set_draw_value((*C.GtkScale)(recv.native), c_draw_value)
+
+	return
+}
+
+// SetValuePos is a wrapper around the C function gtk_scale_set_value_pos.
+func (recv *Scale) SetValuePos(pos PositionType) {
+	c_pos := (C.GtkPositionType)(pos)
+
+	C.gtk_scale_set_value_pos((*C.GtkScale)(recv.native), c_pos)
+
+	return
+}
 
 // ScaleAccessible is a wrapper around the C record GtkScaleAccessible.
 type ScaleAccessible struct {
@@ -7982,11 +8571,7 @@ func (recv *ScaleButton) ToC() unsafe.Pointer {
 
 // Unsupported : gtk_scale_button_new : unsupported parameter size : no type generator for gint, GtkIconSize
 
-// Unsupported : gtk_scale_button_set_adjustment : no return generator
-
 // Unsupported : gtk_scale_button_set_icons : unsupported parameter icons : no param type
-
-// Unsupported : gtk_scale_button_set_value : no return generator
 
 // ScaleButtonAccessible is a wrapper around the C record GtkScaleButtonAccessible.
 type ScaleButtonAccessible struct {
@@ -8068,7 +8653,14 @@ func ScrolledWindowNew(hadjustment *Adjustment, vadjustment *Adjustment) *Widget
 	return retGo
 }
 
-// Unsupported : gtk_scrolled_window_add_with_viewport : no return generator
+// AddWithViewport is a wrapper around the C function gtk_scrolled_window_add_with_viewport.
+func (recv *ScrolledWindow) AddWithViewport(child *Widget) {
+	c_child := (*C.GtkWidget)(child.ToC())
+
+	C.gtk_scrolled_window_add_with_viewport((*C.GtkScrolledWindow)(recv.native), c_child)
+
+	return
+}
 
 // GetHadjustment is a wrapper around the C function gtk_scrolled_window_get_hadjustment.
 func (recv *ScrolledWindow) GetHadjustment() *Adjustment {
@@ -8104,35 +8696,52 @@ func (recv *ScrolledWindow) GetVadjustment() *Adjustment {
 	return retGo
 }
 
-// Unsupported : gtk_scrolled_window_set_capture_button_press : no return generator
+// SetHadjustment is a wrapper around the C function gtk_scrolled_window_set_hadjustment.
+func (recv *ScrolledWindow) SetHadjustment(hadjustment *Adjustment) {
+	c_hadjustment := (*C.GtkAdjustment)(hadjustment.ToC())
 
-// Unsupported : gtk_scrolled_window_set_hadjustment : no return generator
+	C.gtk_scrolled_window_set_hadjustment((*C.GtkScrolledWindow)(recv.native), c_hadjustment)
 
-// Unsupported : gtk_scrolled_window_set_kinetic_scrolling : no return generator
+	return
+}
 
-// Unsupported : gtk_scrolled_window_set_max_content_height : no return generator
+// SetPlacement is a wrapper around the C function gtk_scrolled_window_set_placement.
+func (recv *ScrolledWindow) SetPlacement(windowPlacement CornerType) {
+	c_window_placement := (C.GtkCornerType)(windowPlacement)
 
-// Unsupported : gtk_scrolled_window_set_max_content_width : no return generator
+	C.gtk_scrolled_window_set_placement((*C.GtkScrolledWindow)(recv.native), c_window_placement)
 
-// Unsupported : gtk_scrolled_window_set_min_content_height : no return generator
+	return
+}
 
-// Unsupported : gtk_scrolled_window_set_min_content_width : no return generator
+// SetPolicy is a wrapper around the C function gtk_scrolled_window_set_policy.
+func (recv *ScrolledWindow) SetPolicy(hscrollbarPolicy PolicyType, vscrollbarPolicy PolicyType) {
+	c_hscrollbar_policy := (C.GtkPolicyType)(hscrollbarPolicy)
 
-// Unsupported : gtk_scrolled_window_set_overlay_scrolling : no return generator
+	c_vscrollbar_policy := (C.GtkPolicyType)(vscrollbarPolicy)
 
-// Unsupported : gtk_scrolled_window_set_placement : no return generator
+	C.gtk_scrolled_window_set_policy((*C.GtkScrolledWindow)(recv.native), c_hscrollbar_policy, c_vscrollbar_policy)
 
-// Unsupported : gtk_scrolled_window_set_policy : no return generator
+	return
+}
 
-// Unsupported : gtk_scrolled_window_set_propagate_natural_height : no return generator
+// SetShadowType is a wrapper around the C function gtk_scrolled_window_set_shadow_type.
+func (recv *ScrolledWindow) SetShadowType(type_ ShadowType) {
+	c_type := (C.GtkShadowType)(type_)
 
-// Unsupported : gtk_scrolled_window_set_propagate_natural_width : no return generator
+	C.gtk_scrolled_window_set_shadow_type((*C.GtkScrolledWindow)(recv.native), c_type)
 
-// Unsupported : gtk_scrolled_window_set_shadow_type : no return generator
+	return
+}
 
-// Unsupported : gtk_scrolled_window_set_vadjustment : no return generator
+// SetVadjustment is a wrapper around the C function gtk_scrolled_window_set_vadjustment.
+func (recv *ScrolledWindow) SetVadjustment(vadjustment *Adjustment) {
+	c_vadjustment := (*C.GtkAdjustment)(vadjustment.ToC())
 
-// Unsupported : gtk_scrolled_window_unset_placement : no return generator
+	C.gtk_scrolled_window_set_vadjustment((*C.GtkScrolledWindow)(recv.native), c_vadjustment)
+
+	return
+}
 
 // ScrolledWindowAccessible is a wrapper around the C record GtkScrolledWindowAccessible.
 type ScrolledWindowAccessible struct {
@@ -8179,13 +8788,7 @@ func (recv *SearchBar) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : gtk_search_bar_connect_entry : no return generator
-
 // Unsupported : gtk_search_bar_handle_event : unsupported parameter event : no type generator for Gdk.Event, GdkEvent*
-
-// Unsupported : gtk_search_bar_set_search_mode : no return generator
-
-// Unsupported : gtk_search_bar_set_show_close_button : no return generator
 
 // SearchEntry is a wrapper around the C record GtkSearchEntry.
 type SearchEntry struct {
@@ -8287,8 +8890,6 @@ func (recv *SeparatorToolItem) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : gtk_separator_tool_item_set_draw : no return generator
-
 // Settings is a wrapper around the C record GtkSettings.
 type Settings struct {
 	native *C.GtkSettings
@@ -8312,15 +8913,63 @@ func (recv *Settings) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : gtk_settings_reset_property : no return generator
+// SetDoubleProperty is a wrapper around the C function gtk_settings_set_double_property.
+func (recv *Settings) SetDoubleProperty(name string, vDouble float64, origin string) {
+	c_name := C.CString(name)
+	defer C.free(unsafe.Pointer(c_name))
 
-// Unsupported : gtk_settings_set_double_property : no return generator
+	c_v_double := (C.gdouble)(vDouble)
 
-// Unsupported : gtk_settings_set_long_property : no return generator
+	c_origin := C.CString(origin)
+	defer C.free(unsafe.Pointer(c_origin))
 
-// Unsupported : gtk_settings_set_property_value : no return generator
+	C.gtk_settings_set_double_property((*C.GtkSettings)(recv.native), c_name, c_v_double, c_origin)
 
-// Unsupported : gtk_settings_set_string_property : no return generator
+	return
+}
+
+// SetLongProperty is a wrapper around the C function gtk_settings_set_long_property.
+func (recv *Settings) SetLongProperty(name string, vLong int64, origin string) {
+	c_name := C.CString(name)
+	defer C.free(unsafe.Pointer(c_name))
+
+	c_v_long := (C.glong)(vLong)
+
+	c_origin := C.CString(origin)
+	defer C.free(unsafe.Pointer(c_origin))
+
+	C.gtk_settings_set_long_property((*C.GtkSettings)(recv.native), c_name, c_v_long, c_origin)
+
+	return
+}
+
+// SetPropertyValue is a wrapper around the C function gtk_settings_set_property_value.
+func (recv *Settings) SetPropertyValue(name string, svalue *SettingsValue) {
+	c_name := C.CString(name)
+	defer C.free(unsafe.Pointer(c_name))
+
+	c_svalue := (*C.GtkSettingsValue)(svalue.ToC())
+
+	C.gtk_settings_set_property_value((*C.GtkSettings)(recv.native), c_name, c_svalue)
+
+	return
+}
+
+// SetStringProperty is a wrapper around the C function gtk_settings_set_string_property.
+func (recv *Settings) SetStringProperty(name string, vString string, origin string) {
+	c_name := C.CString(name)
+	defer C.free(unsafe.Pointer(c_name))
+
+	c_v_string := C.CString(vString)
+	defer C.free(unsafe.Pointer(c_v_string))
+
+	c_origin := C.CString(origin)
+	defer C.free(unsafe.Pointer(c_origin))
+
+	C.gtk_settings_set_string_property((*C.GtkSettings)(recv.native), c_name, c_v_string, c_origin)
+
+	return
+}
 
 // SizeGroup is a wrapper around the C record GtkSizeGroup.
 type SizeGroup struct {
@@ -8355,7 +9004,14 @@ func SizeGroupNew(mode SizeGroupMode) *SizeGroup {
 	return retGo
 }
 
-// Unsupported : gtk_size_group_add_widget : no return generator
+// AddWidget is a wrapper around the C function gtk_size_group_add_widget.
+func (recv *SizeGroup) AddWidget(widget *Widget) {
+	c_widget := (*C.GtkWidget)(widget.ToC())
+
+	C.gtk_size_group_add_widget((*C.GtkSizeGroup)(recv.native), c_widget)
+
+	return
+}
 
 // GetMode is a wrapper around the C function gtk_size_group_get_mode.
 func (recv *SizeGroup) GetMode() SizeGroupMode {
@@ -8365,11 +9021,23 @@ func (recv *SizeGroup) GetMode() SizeGroupMode {
 	return retGo
 }
 
-// Unsupported : gtk_size_group_remove_widget : no return generator
+// RemoveWidget is a wrapper around the C function gtk_size_group_remove_widget.
+func (recv *SizeGroup) RemoveWidget(widget *Widget) {
+	c_widget := (*C.GtkWidget)(widget.ToC())
 
-// Unsupported : gtk_size_group_set_ignore_hidden : no return generator
+	C.gtk_size_group_remove_widget((*C.GtkSizeGroup)(recv.native), c_widget)
 
-// Unsupported : gtk_size_group_set_mode : no return generator
+	return
+}
+
+// SetMode is a wrapper around the C function gtk_size_group_set_mode.
+func (recv *SizeGroup) SetMode(mode SizeGroupMode) {
+	c_mode := (C.GtkSizeGroupMode)(mode)
+
+	C.gtk_size_group_set_mode((*C.GtkSizeGroup)(recv.native), c_mode)
+
+	return
+}
 
 // Blacklisted : GtkSocket
 
@@ -8424,7 +9092,18 @@ func SpinButtonNewWithRange(min float64, max float64, step float64) *Widget {
 	return retGo
 }
 
-// Unsupported : gtk_spin_button_configure : no return generator
+// Configure is a wrapper around the C function gtk_spin_button_configure.
+func (recv *SpinButton) Configure(adjustment *Adjustment, climbRate float64, digits uint32) {
+	c_adjustment := (*C.GtkAdjustment)(adjustment.ToC())
+
+	c_climb_rate := (C.gdouble)(climbRate)
+
+	c_digits := (C.guint)(digits)
+
+	C.gtk_spin_button_configure((*C.GtkSpinButton)(recv.native), c_adjustment, c_climb_rate, c_digits)
+
+	return
+}
 
 // GetAdjustment is a wrapper around the C function gtk_spin_button_get_adjustment.
 func (recv *SpinButton) GetAdjustment() *Adjustment {
@@ -8494,27 +9173,111 @@ func (recv *SpinButton) GetWrap() bool {
 	return retGo
 }
 
-// Unsupported : gtk_spin_button_set_adjustment : no return generator
+// SetAdjustment is a wrapper around the C function gtk_spin_button_set_adjustment.
+func (recv *SpinButton) SetAdjustment(adjustment *Adjustment) {
+	c_adjustment := (*C.GtkAdjustment)(adjustment.ToC())
 
-// Unsupported : gtk_spin_button_set_digits : no return generator
+	C.gtk_spin_button_set_adjustment((*C.GtkSpinButton)(recv.native), c_adjustment)
 
-// Unsupported : gtk_spin_button_set_increments : no return generator
+	return
+}
 
-// Unsupported : gtk_spin_button_set_numeric : no return generator
+// SetDigits is a wrapper around the C function gtk_spin_button_set_digits.
+func (recv *SpinButton) SetDigits(digits uint32) {
+	c_digits := (C.guint)(digits)
 
-// Unsupported : gtk_spin_button_set_range : no return generator
+	C.gtk_spin_button_set_digits((*C.GtkSpinButton)(recv.native), c_digits)
 
-// Unsupported : gtk_spin_button_set_snap_to_ticks : no return generator
+	return
+}
 
-// Unsupported : gtk_spin_button_set_update_policy : no return generator
+// SetIncrements is a wrapper around the C function gtk_spin_button_set_increments.
+func (recv *SpinButton) SetIncrements(step float64, page float64) {
+	c_step := (C.gdouble)(step)
 
-// Unsupported : gtk_spin_button_set_value : no return generator
+	c_page := (C.gdouble)(page)
 
-// Unsupported : gtk_spin_button_set_wrap : no return generator
+	C.gtk_spin_button_set_increments((*C.GtkSpinButton)(recv.native), c_step, c_page)
 
-// Unsupported : gtk_spin_button_spin : no return generator
+	return
+}
 
-// Unsupported : gtk_spin_button_update : no return generator
+// SetNumeric is a wrapper around the C function gtk_spin_button_set_numeric.
+func (recv *SpinButton) SetNumeric(numeric bool) {
+	c_numeric :=
+		boolToGboolean(numeric)
+
+	C.gtk_spin_button_set_numeric((*C.GtkSpinButton)(recv.native), c_numeric)
+
+	return
+}
+
+// SetRange is a wrapper around the C function gtk_spin_button_set_range.
+func (recv *SpinButton) SetRange(min float64, max float64) {
+	c_min := (C.gdouble)(min)
+
+	c_max := (C.gdouble)(max)
+
+	C.gtk_spin_button_set_range((*C.GtkSpinButton)(recv.native), c_min, c_max)
+
+	return
+}
+
+// SetSnapToTicks is a wrapper around the C function gtk_spin_button_set_snap_to_ticks.
+func (recv *SpinButton) SetSnapToTicks(snapToTicks bool) {
+	c_snap_to_ticks :=
+		boolToGboolean(snapToTicks)
+
+	C.gtk_spin_button_set_snap_to_ticks((*C.GtkSpinButton)(recv.native), c_snap_to_ticks)
+
+	return
+}
+
+// SetUpdatePolicy is a wrapper around the C function gtk_spin_button_set_update_policy.
+func (recv *SpinButton) SetUpdatePolicy(policy SpinButtonUpdatePolicy) {
+	c_policy := (C.GtkSpinButtonUpdatePolicy)(policy)
+
+	C.gtk_spin_button_set_update_policy((*C.GtkSpinButton)(recv.native), c_policy)
+
+	return
+}
+
+// SetValue is a wrapper around the C function gtk_spin_button_set_value.
+func (recv *SpinButton) SetValue(value float64) {
+	c_value := (C.gdouble)(value)
+
+	C.gtk_spin_button_set_value((*C.GtkSpinButton)(recv.native), c_value)
+
+	return
+}
+
+// SetWrap is a wrapper around the C function gtk_spin_button_set_wrap.
+func (recv *SpinButton) SetWrap(wrap bool) {
+	c_wrap :=
+		boolToGboolean(wrap)
+
+	C.gtk_spin_button_set_wrap((*C.GtkSpinButton)(recv.native), c_wrap)
+
+	return
+}
+
+// Spin is a wrapper around the C function gtk_spin_button_spin.
+func (recv *SpinButton) Spin(direction SpinType, increment float64) {
+	c_direction := (C.GtkSpinType)(direction)
+
+	c_increment := (C.gdouble)(increment)
+
+	C.gtk_spin_button_spin((*C.GtkSpinButton)(recv.native), c_direction, c_increment)
+
+	return
+}
+
+// Update is a wrapper around the C function gtk_spin_button_update.
+func (recv *SpinButton) Update() {
+	C.gtk_spin_button_update((*C.GtkSpinButton)(recv.native))
+
+	return
+}
 
 // SpinButtonAccessible is a wrapper around the C record GtkSpinButtonAccessible.
 type SpinButtonAccessible struct {
@@ -8562,10 +9325,6 @@ func (recv *Spinner) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : gtk_spinner_start : no return generator
-
-// Unsupported : gtk_spinner_stop : no return generator
-
 // SpinnerAccessible is a wrapper around the C record GtkSpinnerAccessible.
 type SpinnerAccessible struct {
 	native *C.GtkSpinnerAccessible
@@ -8611,28 +9370,6 @@ func (recv *Stack) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : gtk_stack_add_named : no return generator
-
-// Unsupported : gtk_stack_add_titled : no return generator
-
-// Unsupported : gtk_stack_set_hhomogeneous : no return generator
-
-// Unsupported : gtk_stack_set_homogeneous : no return generator
-
-// Unsupported : gtk_stack_set_interpolate_size : no return generator
-
-// Unsupported : gtk_stack_set_transition_duration : no return generator
-
-// Unsupported : gtk_stack_set_transition_type : no return generator
-
-// Unsupported : gtk_stack_set_vhomogeneous : no return generator
-
-// Unsupported : gtk_stack_set_visible_child : no return generator
-
-// Unsupported : gtk_stack_set_visible_child_full : no return generator
-
-// Unsupported : gtk_stack_set_visible_child_name : no return generator
-
 // Blacklisted : GtkStackAccessible
 
 // StackSidebar is a wrapper around the C record GtkStackSidebar.
@@ -8657,8 +9394,6 @@ func (recv *StackSidebar) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : gtk_stack_sidebar_set_stack : no return generator
-
 // StackSwitcher is a wrapper around the C record GtkStackSwitcher.
 type StackSwitcher struct {
 	native *C.GtkStackSwitcher
@@ -8680,8 +9415,6 @@ func (recv *StackSwitcher) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
-
-// Unsupported : gtk_stack_switcher_set_stack : no return generator
 
 // StatusIcon is a wrapper around the C record GtkStatusIcon.
 type StatusIcon struct {
@@ -8712,29 +9445,7 @@ func (recv *StatusIcon) ToC() unsafe.Pointer {
 
 // Unsupported : gtk_status_icon_get_gicon : no return generator
 
-// Unsupported : gtk_status_icon_set_from_file : no return generator
-
 // Unsupported : gtk_status_icon_set_from_gicon : unsupported parameter icon : no type generator for Gio.Icon, GIcon*
-
-// Unsupported : gtk_status_icon_set_from_icon_name : no return generator
-
-// Unsupported : gtk_status_icon_set_from_pixbuf : no return generator
-
-// Unsupported : gtk_status_icon_set_from_stock : no return generator
-
-// Unsupported : gtk_status_icon_set_has_tooltip : no return generator
-
-// Unsupported : gtk_status_icon_set_name : no return generator
-
-// Unsupported : gtk_status_icon_set_screen : no return generator
-
-// Unsupported : gtk_status_icon_set_title : no return generator
-
-// Unsupported : gtk_status_icon_set_tooltip_markup : no return generator
-
-// Unsupported : gtk_status_icon_set_tooltip_text : no return generator
-
-// Unsupported : gtk_status_icon_set_visible : no return generator
 
 // Statusbar is a wrapper around the C record GtkStatusbar.
 type Statusbar struct {
@@ -8778,7 +9489,14 @@ func (recv *Statusbar) GetContextId(contextDescription string) uint32 {
 	return retGo
 }
 
-// Unsupported : gtk_statusbar_pop : no return generator
+// Pop is a wrapper around the C function gtk_statusbar_pop.
+func (recv *Statusbar) Pop(contextId uint32) {
+	c_context_id := (C.guint)(contextId)
+
+	C.gtk_statusbar_pop((*C.GtkStatusbar)(recv.native), c_context_id)
+
+	return
+}
 
 // Push is a wrapper around the C function gtk_statusbar_push.
 func (recv *Statusbar) Push(contextId uint32, text string) uint32 {
@@ -8793,9 +9511,16 @@ func (recv *Statusbar) Push(contextId uint32, text string) uint32 {
 	return retGo
 }
 
-// Unsupported : gtk_statusbar_remove : no return generator
+// Remove is a wrapper around the C function gtk_statusbar_remove.
+func (recv *Statusbar) Remove(contextId uint32, messageId uint32) {
+	c_context_id := (C.guint)(contextId)
 
-// Unsupported : gtk_statusbar_remove_all : no return generator
+	c_message_id := (C.guint)(messageId)
+
+	C.gtk_statusbar_remove((*C.GtkStatusbar)(recv.native), c_context_id, c_message_id)
+
+	return
+}
 
 // StatusbarAccessible is a wrapper around the C record GtkStatusbarAccessible.
 type StatusbarAccessible struct {
@@ -8879,7 +9604,26 @@ func StyleNew() *Style {
 	return retGo
 }
 
-// Unsupported : gtk_style_apply_default_background : no return generator
+// ApplyDefaultBackground is a wrapper around the C function gtk_style_apply_default_background.
+func (recv *Style) ApplyDefaultBackground(cr *cairo.Context, window *gdk.Window, stateType StateType, x int32, y int32, width int32, height int32) {
+	c_cr := (*C.cairo_t)(cr.ToC())
+
+	c_window := (*C.GdkWindow)(window.ToC())
+
+	c_state_type := (C.GtkStateType)(stateType)
+
+	c_x := (C.gint)(x)
+
+	c_y := (C.gint)(y)
+
+	c_width := (C.gint)(width)
+
+	c_height := (C.gint)(height)
+
+	C.gtk_style_apply_default_background((*C.GtkStyle)(recv.native), c_cr, c_window, c_state_type, c_x, c_y, c_width, c_height)
+
+	return
+}
 
 // Attach is a wrapper around the C function gtk_style_attach.
 func (recv *Style) Attach(window *gdk.Window) *Style {
@@ -8899,7 +9643,12 @@ func (recv *Style) Copy() *Style {
 	return retGo
 }
 
-// Unsupported : gtk_style_detach : no return generator
+// Detach is a wrapper around the C function gtk_style_detach.
+func (recv *Style) Detach() {
+	C.gtk_style_detach((*C.GtkStyle)(recv.native))
+
+	return
+}
 
 // Unsupported : gtk_style_get : unsupported parameter widget_type : no type generator for GType, GType
 
@@ -8920,7 +9669,16 @@ func (recv *Style) LookupIconSet(stockId string) *IconSet {
 
 // Unsupported : gtk_style_render_icon : unsupported parameter size : no type generator for gint, GtkIconSize
 
-// Unsupported : gtk_style_set_background : no return generator
+// SetBackground is a wrapper around the C function gtk_style_set_background.
+func (recv *Style) SetBackground(window *gdk.Window, stateType StateType) {
+	c_window := (*C.GdkWindow)(window.ToC())
+
+	c_state_type := (C.GtkStateType)(stateType)
+
+	C.gtk_style_set_background((*C.GtkStyle)(recv.native), c_window, c_state_type)
+
+	return
+}
 
 // StyleContext is a wrapper around the C record GtkStyleContext.
 type StyleContext struct {
@@ -8953,29 +9711,9 @@ func StyleContextNew() *StyleContext {
 	return retGo
 }
 
-// Unsupported : gtk_style_context_add_class : no return generator
-
 // Unsupported : gtk_style_context_add_provider : unsupported parameter provider : no type generator for StyleProvider, GtkStyleProvider*
 
-// Unsupported : gtk_style_context_add_region : no return generator
-
-// Unsupported : gtk_style_context_cancel_animations : no return generator
-
 // Unsupported : gtk_style_context_get : unsupported parameter ... : varargs
-
-// Unsupported : gtk_style_context_get_background_color : no return generator
-
-// Unsupported : gtk_style_context_get_border : no return generator
-
-// Unsupported : gtk_style_context_get_border_color : no return generator
-
-// Unsupported : gtk_style_context_get_color : no return generator
-
-// Unsupported : gtk_style_context_get_margin : no return generator
-
-// Unsupported : gtk_style_context_get_padding : no return generator
-
-// Unsupported : gtk_style_context_get_property : no return generator
 
 // GetScreen is a wrapper around the C function gtk_style_context_get_screen.
 func (recv *StyleContext) GetScreen() *gdk.Screen {
@@ -8998,15 +9736,23 @@ func (recv *StyleContext) GetSection(property string) *CssSection {
 
 // Unsupported : gtk_style_context_get_style : unsupported parameter ... : varargs
 
-// Unsupported : gtk_style_context_get_style_property : no return generator
+// GetStyleProperty is a wrapper around the C function gtk_style_context_get_style_property.
+func (recv *StyleContext) GetStyleProperty(propertyName string, value *gobject.Value) {
+	c_property_name := C.CString(propertyName)
+	defer C.free(unsafe.Pointer(c_property_name))
+
+	c_value := (*C.GValue)(value.ToC())
+
+	C.gtk_style_context_get_style_property((*C.GtkStyleContext)(recv.native), c_property_name, c_value)
+
+	return
+}
 
 // Unsupported : gtk_style_context_get_style_valist : unsupported parameter args : no type generator for va_list, va_list
 
 // Unsupported : gtk_style_context_get_valist : unsupported parameter args : no type generator for va_list, va_list
 
 // Unsupported : gtk_style_context_has_region : unsupported parameter flags_return : GtkRegionFlags* with indirection level of 1
-
-// Unsupported : gtk_style_context_invalidate : no return generator
 
 // LookupColor is a wrapper around the C function gtk_style_context_lookup_color.
 func (recv *StyleContext) LookupColor(colorName string) (bool, *gdk.RGBA) {
@@ -9034,41 +9780,7 @@ func (recv *StyleContext) LookupIconSet(stockId string) *IconSet {
 	return retGo
 }
 
-// Unsupported : gtk_style_context_notify_state_change : no return generator
-
-// Unsupported : gtk_style_context_pop_animatable_region : no return generator
-
-// Unsupported : gtk_style_context_push_animatable_region : no return generator
-
-// Unsupported : gtk_style_context_remove_class : no return generator
-
 // Unsupported : gtk_style_context_remove_provider : unsupported parameter provider : no type generator for StyleProvider, GtkStyleProvider*
-
-// Unsupported : gtk_style_context_remove_region : no return generator
-
-// Unsupported : gtk_style_context_restore : no return generator
-
-// Unsupported : gtk_style_context_save : no return generator
-
-// Unsupported : gtk_style_context_scroll_animations : no return generator
-
-// Unsupported : gtk_style_context_set_background : no return generator
-
-// Unsupported : gtk_style_context_set_direction : no return generator
-
-// Unsupported : gtk_style_context_set_frame_clock : no return generator
-
-// Unsupported : gtk_style_context_set_junction_sides : no return generator
-
-// Unsupported : gtk_style_context_set_parent : no return generator
-
-// Unsupported : gtk_style_context_set_path : no return generator
-
-// Unsupported : gtk_style_context_set_scale : no return generator
-
-// Unsupported : gtk_style_context_set_screen : no return generator
-
-// Unsupported : gtk_style_context_set_state : no return generator
 
 // Unsupported : gtk_style_context_state_is_running : unsupported parameter progress : no type generator for gdouble, gdouble*
 
@@ -9103,23 +9815,20 @@ func StylePropertiesNew() *StyleProperties {
 	return retGo
 }
 
-// Unsupported : gtk_style_properties_clear : no return generator
+// Clear is a wrapper around the C function gtk_style_properties_clear.
+func (recv *StyleProperties) Clear() {
+	C.gtk_style_properties_clear((*C.GtkStyleProperties)(recv.native))
+
+	return
+}
 
 // Unsupported : gtk_style_properties_get : unsupported parameter ... : varargs
 
 // Unsupported : gtk_style_properties_get_valist : unsupported parameter args : no type generator for va_list, va_list
 
-// Unsupported : gtk_style_properties_map_color : no return generator
-
-// Unsupported : gtk_style_properties_merge : no return generator
-
 // Unsupported : gtk_style_properties_set : unsupported parameter ... : varargs
 
-// Unsupported : gtk_style_properties_set_property : no return generator
-
 // Unsupported : gtk_style_properties_set_valist : unsupported parameter args : no type generator for va_list, va_list
-
-// Unsupported : gtk_style_properties_unset_property : no return generator
 
 // Switch is a wrapper around the C record GtkSwitch.
 type Switch struct {
@@ -9143,10 +9852,6 @@ func (recv *Switch) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
-
-// Unsupported : gtk_switch_set_active : no return generator
-
-// Unsupported : gtk_switch_set_state : no return generator
 
 // SwitchAccessible is a wrapper around the C record GtkSwitchAccessible.
 type SwitchAccessible struct {
@@ -9209,9 +9914,47 @@ func TableNew(rows uint32, columns uint32, homogeneous bool) *Widget {
 	return retGo
 }
 
-// Unsupported : gtk_table_attach : no return generator
+// Attach is a wrapper around the C function gtk_table_attach.
+func (recv *Table) Attach(child *Widget, leftAttach uint32, rightAttach uint32, topAttach uint32, bottomAttach uint32, xoptions AttachOptions, yoptions AttachOptions, xpadding uint32, ypadding uint32) {
+	c_child := (*C.GtkWidget)(child.ToC())
 
-// Unsupported : gtk_table_attach_defaults : no return generator
+	c_left_attach := (C.guint)(leftAttach)
+
+	c_right_attach := (C.guint)(rightAttach)
+
+	c_top_attach := (C.guint)(topAttach)
+
+	c_bottom_attach := (C.guint)(bottomAttach)
+
+	c_xoptions := (C.GtkAttachOptions)(xoptions)
+
+	c_yoptions := (C.GtkAttachOptions)(yoptions)
+
+	c_xpadding := (C.guint)(xpadding)
+
+	c_ypadding := (C.guint)(ypadding)
+
+	C.gtk_table_attach((*C.GtkTable)(recv.native), c_child, c_left_attach, c_right_attach, c_top_attach, c_bottom_attach, c_xoptions, c_yoptions, c_xpadding, c_ypadding)
+
+	return
+}
+
+// AttachDefaults is a wrapper around the C function gtk_table_attach_defaults.
+func (recv *Table) AttachDefaults(widget *Widget, leftAttach uint32, rightAttach uint32, topAttach uint32, bottomAttach uint32) {
+	c_widget := (*C.GtkWidget)(widget.ToC())
+
+	c_left_attach := (C.guint)(leftAttach)
+
+	c_right_attach := (C.guint)(rightAttach)
+
+	c_top_attach := (C.guint)(topAttach)
+
+	c_bottom_attach := (C.guint)(bottomAttach)
+
+	C.gtk_table_attach_defaults((*C.GtkTable)(recv.native), c_widget, c_left_attach, c_right_attach, c_top_attach, c_bottom_attach)
+
+	return
+}
 
 // GetColSpacing is a wrapper around the C function gtk_table_get_col_spacing.
 func (recv *Table) GetColSpacing(column uint32) uint32 {
@@ -9259,17 +10002,66 @@ func (recv *Table) GetRowSpacing(row uint32) uint32 {
 
 // Unsupported : gtk_table_get_size : unsupported parameter rows : no type generator for guint, guint*
 
-// Unsupported : gtk_table_resize : no return generator
+// Resize is a wrapper around the C function gtk_table_resize.
+func (recv *Table) Resize(rows uint32, columns uint32) {
+	c_rows := (C.guint)(rows)
 
-// Unsupported : gtk_table_set_col_spacing : no return generator
+	c_columns := (C.guint)(columns)
 
-// Unsupported : gtk_table_set_col_spacings : no return generator
+	C.gtk_table_resize((*C.GtkTable)(recv.native), c_rows, c_columns)
 
-// Unsupported : gtk_table_set_homogeneous : no return generator
+	return
+}
 
-// Unsupported : gtk_table_set_row_spacing : no return generator
+// SetColSpacing is a wrapper around the C function gtk_table_set_col_spacing.
+func (recv *Table) SetColSpacing(column uint32, spacing uint32) {
+	c_column := (C.guint)(column)
 
-// Unsupported : gtk_table_set_row_spacings : no return generator
+	c_spacing := (C.guint)(spacing)
+
+	C.gtk_table_set_col_spacing((*C.GtkTable)(recv.native), c_column, c_spacing)
+
+	return
+}
+
+// SetColSpacings is a wrapper around the C function gtk_table_set_col_spacings.
+func (recv *Table) SetColSpacings(spacing uint32) {
+	c_spacing := (C.guint)(spacing)
+
+	C.gtk_table_set_col_spacings((*C.GtkTable)(recv.native), c_spacing)
+
+	return
+}
+
+// SetHomogeneous is a wrapper around the C function gtk_table_set_homogeneous.
+func (recv *Table) SetHomogeneous(homogeneous bool) {
+	c_homogeneous :=
+		boolToGboolean(homogeneous)
+
+	C.gtk_table_set_homogeneous((*C.GtkTable)(recv.native), c_homogeneous)
+
+	return
+}
+
+// SetRowSpacing is a wrapper around the C function gtk_table_set_row_spacing.
+func (recv *Table) SetRowSpacing(row uint32, spacing uint32) {
+	c_row := (C.guint)(row)
+
+	c_spacing := (C.guint)(spacing)
+
+	C.gtk_table_set_row_spacing((*C.GtkTable)(recv.native), c_row, c_spacing)
+
+	return
+}
+
+// SetRowSpacings is a wrapper around the C function gtk_table_set_row_spacings.
+func (recv *Table) SetRowSpacings(spacing uint32) {
+	c_spacing := (C.guint)(spacing)
+
+	C.gtk_table_set_row_spacings((*C.GtkTable)(recv.native), c_spacing)
+
+	return
+}
 
 // TearoffMenuItem is a wrapper around the C record GtkTearoffMenuItem.
 type TearoffMenuItem struct {
@@ -9335,17 +10127,57 @@ func TextBufferNew(table *TextTagTable) *TextBuffer {
 	return retGo
 }
 
-// Unsupported : gtk_text_buffer_add_mark : no return generator
+// AddSelectionClipboard is a wrapper around the C function gtk_text_buffer_add_selection_clipboard.
+func (recv *TextBuffer) AddSelectionClipboard(clipboard *Clipboard) {
+	c_clipboard := (*C.GtkClipboard)(clipboard.ToC())
 
-// Unsupported : gtk_text_buffer_add_selection_clipboard : no return generator
+	C.gtk_text_buffer_add_selection_clipboard((*C.GtkTextBuffer)(recv.native), c_clipboard)
 
-// Unsupported : gtk_text_buffer_apply_tag : no return generator
+	return
+}
 
-// Unsupported : gtk_text_buffer_apply_tag_by_name : no return generator
+// ApplyTag is a wrapper around the C function gtk_text_buffer_apply_tag.
+func (recv *TextBuffer) ApplyTag(tag *TextTag, start *TextIter, end *TextIter) {
+	c_tag := (*C.GtkTextTag)(tag.ToC())
 
-// Unsupported : gtk_text_buffer_begin_user_action : no return generator
+	c_start := (*C.GtkTextIter)(start.ToC())
 
-// Unsupported : gtk_text_buffer_copy_clipboard : no return generator
+	c_end := (*C.GtkTextIter)(end.ToC())
+
+	C.gtk_text_buffer_apply_tag((*C.GtkTextBuffer)(recv.native), c_tag, c_start, c_end)
+
+	return
+}
+
+// ApplyTagByName is a wrapper around the C function gtk_text_buffer_apply_tag_by_name.
+func (recv *TextBuffer) ApplyTagByName(name string, start *TextIter, end *TextIter) {
+	c_name := C.CString(name)
+	defer C.free(unsafe.Pointer(c_name))
+
+	c_start := (*C.GtkTextIter)(start.ToC())
+
+	c_end := (*C.GtkTextIter)(end.ToC())
+
+	C.gtk_text_buffer_apply_tag_by_name((*C.GtkTextBuffer)(recv.native), c_name, c_start, c_end)
+
+	return
+}
+
+// BeginUserAction is a wrapper around the C function gtk_text_buffer_begin_user_action.
+func (recv *TextBuffer) BeginUserAction() {
+	C.gtk_text_buffer_begin_user_action((*C.GtkTextBuffer)(recv.native))
+
+	return
+}
+
+// CopyClipboard is a wrapper around the C function gtk_text_buffer_copy_clipboard.
+func (recv *TextBuffer) CopyClipboard(clipboard *Clipboard) {
+	c_clipboard := (*C.GtkClipboard)(clipboard.ToC())
+
+	C.gtk_text_buffer_copy_clipboard((*C.GtkTextBuffer)(recv.native), c_clipboard)
+
+	return
+}
 
 // CreateChildAnchor is a wrapper around the C function gtk_text_buffer_create_child_anchor.
 func (recv *TextBuffer) CreateChildAnchor(iter *TextIter) *TextChildAnchor {
@@ -9375,9 +10207,28 @@ func (recv *TextBuffer) CreateMark(markName string, where *TextIter, leftGravity
 
 // Unsupported : gtk_text_buffer_create_tag : unsupported parameter ... : varargs
 
-// Unsupported : gtk_text_buffer_cut_clipboard : no return generator
+// CutClipboard is a wrapper around the C function gtk_text_buffer_cut_clipboard.
+func (recv *TextBuffer) CutClipboard(clipboard *Clipboard, defaultEditable bool) {
+	c_clipboard := (*C.GtkClipboard)(clipboard.ToC())
 
-// Unsupported : gtk_text_buffer_delete : no return generator
+	c_default_editable :=
+		boolToGboolean(defaultEditable)
+
+	C.gtk_text_buffer_cut_clipboard((*C.GtkTextBuffer)(recv.native), c_clipboard, c_default_editable)
+
+	return
+}
+
+// Delete is a wrapper around the C function gtk_text_buffer_delete.
+func (recv *TextBuffer) Delete(start *TextIter, end *TextIter) {
+	c_start := (*C.GtkTextIter)(start.ToC())
+
+	c_end := (*C.GtkTextIter)(end.ToC())
+
+	C.gtk_text_buffer_delete((*C.GtkTextBuffer)(recv.native), c_start, c_end)
+
+	return
+}
 
 // DeleteInteractive is a wrapper around the C function gtk_text_buffer_delete_interactive.
 func (recv *TextBuffer) DeleteInteractive(startIter *TextIter, endIter *TextIter, defaultEditable bool) bool {
@@ -9394,9 +10245,24 @@ func (recv *TextBuffer) DeleteInteractive(startIter *TextIter, endIter *TextIter
 	return retGo
 }
 
-// Unsupported : gtk_text_buffer_delete_mark : no return generator
+// DeleteMark is a wrapper around the C function gtk_text_buffer_delete_mark.
+func (recv *TextBuffer) DeleteMark(mark *TextMark) {
+	c_mark := (*C.GtkTextMark)(mark.ToC())
 
-// Unsupported : gtk_text_buffer_delete_mark_by_name : no return generator
+	C.gtk_text_buffer_delete_mark((*C.GtkTextBuffer)(recv.native), c_mark)
+
+	return
+}
+
+// DeleteMarkByName is a wrapper around the C function gtk_text_buffer_delete_mark_by_name.
+func (recv *TextBuffer) DeleteMarkByName(name string) {
+	c_name := C.CString(name)
+	defer C.free(unsafe.Pointer(c_name))
+
+	C.gtk_text_buffer_delete_mark_by_name((*C.GtkTextBuffer)(recv.native), c_name)
+
+	return
+}
 
 // DeleteSelection is a wrapper around the C function gtk_text_buffer_delete_selection.
 func (recv *TextBuffer) DeleteSelection(interactive bool, defaultEditable bool) bool {
@@ -9418,9 +10284,27 @@ func (recv *TextBuffer) DeleteSelection(interactive bool, defaultEditable bool) 
 
 // Unsupported : gtk_text_buffer_deserialize_set_can_create_tags : unsupported parameter format : Blacklisted record : GdkAtom
 
-// Unsupported : gtk_text_buffer_end_user_action : no return generator
+// EndUserAction is a wrapper around the C function gtk_text_buffer_end_user_action.
+func (recv *TextBuffer) EndUserAction() {
+	C.gtk_text_buffer_end_user_action((*C.GtkTextBuffer)(recv.native))
 
-// Unsupported : gtk_text_buffer_get_bounds : no return generator
+	return
+}
+
+// GetBounds is a wrapper around the C function gtk_text_buffer_get_bounds.
+func (recv *TextBuffer) GetBounds() (*TextIter, *TextIter) {
+	var c_start C.GtkTextIter
+
+	var c_end C.GtkTextIter
+
+	C.gtk_text_buffer_get_bounds((*C.GtkTextBuffer)(recv.native), &c_start, &c_end)
+
+	start := TextIterNewFromC(unsafe.Pointer(&c_start))
+
+	end := TextIterNewFromC(unsafe.Pointer(&c_end))
+
+	return start, end
+}
 
 // GetCharCount is a wrapper around the C function gtk_text_buffer_get_char_count.
 func (recv *TextBuffer) GetCharCount() int32 {
@@ -9432,7 +10316,16 @@ func (recv *TextBuffer) GetCharCount() int32 {
 
 // Unsupported : gtk_text_buffer_get_deserialize_formats : unsupported parameter n_formats : no type generator for gint, gint*
 
-// Unsupported : gtk_text_buffer_get_end_iter : no return generator
+// GetEndIter is a wrapper around the C function gtk_text_buffer_get_end_iter.
+func (recv *TextBuffer) GetEndIter() *TextIter {
+	var c_iter C.GtkTextIter
+
+	C.gtk_text_buffer_get_end_iter((*C.GtkTextBuffer)(recv.native), &c_iter)
+
+	iter := TextIterNewFromC(unsafe.Pointer(&c_iter))
+
+	return iter
+}
 
 // GetInsert is a wrapper around the C function gtk_text_buffer_get_insert.
 func (recv *TextBuffer) GetInsert() *TextMark {
@@ -9442,17 +10335,87 @@ func (recv *TextBuffer) GetInsert() *TextMark {
 	return retGo
 }
 
-// Unsupported : gtk_text_buffer_get_iter_at_child_anchor : no return generator
+// GetIterAtChildAnchor is a wrapper around the C function gtk_text_buffer_get_iter_at_child_anchor.
+func (recv *TextBuffer) GetIterAtChildAnchor(anchor *TextChildAnchor) *TextIter {
+	var c_iter C.GtkTextIter
 
-// Unsupported : gtk_text_buffer_get_iter_at_line : no return generator
+	c_anchor := (*C.GtkTextChildAnchor)(anchor.ToC())
 
-// Unsupported : gtk_text_buffer_get_iter_at_line_index : no return generator
+	C.gtk_text_buffer_get_iter_at_child_anchor((*C.GtkTextBuffer)(recv.native), &c_iter, c_anchor)
 
-// Unsupported : gtk_text_buffer_get_iter_at_line_offset : no return generator
+	iter := TextIterNewFromC(unsafe.Pointer(&c_iter))
 
-// Unsupported : gtk_text_buffer_get_iter_at_mark : no return generator
+	return iter
+}
 
-// Unsupported : gtk_text_buffer_get_iter_at_offset : no return generator
+// GetIterAtLine is a wrapper around the C function gtk_text_buffer_get_iter_at_line.
+func (recv *TextBuffer) GetIterAtLine(lineNumber int32) *TextIter {
+	var c_iter C.GtkTextIter
+
+	c_line_number := (C.gint)(lineNumber)
+
+	C.gtk_text_buffer_get_iter_at_line((*C.GtkTextBuffer)(recv.native), &c_iter, c_line_number)
+
+	iter := TextIterNewFromC(unsafe.Pointer(&c_iter))
+
+	return iter
+}
+
+// GetIterAtLineIndex is a wrapper around the C function gtk_text_buffer_get_iter_at_line_index.
+func (recv *TextBuffer) GetIterAtLineIndex(lineNumber int32, byteIndex int32) *TextIter {
+	var c_iter C.GtkTextIter
+
+	c_line_number := (C.gint)(lineNumber)
+
+	c_byte_index := (C.gint)(byteIndex)
+
+	C.gtk_text_buffer_get_iter_at_line_index((*C.GtkTextBuffer)(recv.native), &c_iter, c_line_number, c_byte_index)
+
+	iter := TextIterNewFromC(unsafe.Pointer(&c_iter))
+
+	return iter
+}
+
+// GetIterAtLineOffset is a wrapper around the C function gtk_text_buffer_get_iter_at_line_offset.
+func (recv *TextBuffer) GetIterAtLineOffset(lineNumber int32, charOffset int32) *TextIter {
+	var c_iter C.GtkTextIter
+
+	c_line_number := (C.gint)(lineNumber)
+
+	c_char_offset := (C.gint)(charOffset)
+
+	C.gtk_text_buffer_get_iter_at_line_offset((*C.GtkTextBuffer)(recv.native), &c_iter, c_line_number, c_char_offset)
+
+	iter := TextIterNewFromC(unsafe.Pointer(&c_iter))
+
+	return iter
+}
+
+// GetIterAtMark is a wrapper around the C function gtk_text_buffer_get_iter_at_mark.
+func (recv *TextBuffer) GetIterAtMark(mark *TextMark) *TextIter {
+	var c_iter C.GtkTextIter
+
+	c_mark := (*C.GtkTextMark)(mark.ToC())
+
+	C.gtk_text_buffer_get_iter_at_mark((*C.GtkTextBuffer)(recv.native), &c_iter, c_mark)
+
+	iter := TextIterNewFromC(unsafe.Pointer(&c_iter))
+
+	return iter
+}
+
+// GetIterAtOffset is a wrapper around the C function gtk_text_buffer_get_iter_at_offset.
+func (recv *TextBuffer) GetIterAtOffset(charOffset int32) *TextIter {
+	var c_iter C.GtkTextIter
+
+	c_char_offset := (C.gint)(charOffset)
+
+	C.gtk_text_buffer_get_iter_at_offset((*C.GtkTextBuffer)(recv.native), &c_iter, c_char_offset)
+
+	iter := TextIterNewFromC(unsafe.Pointer(&c_iter))
+
+	return iter
+}
 
 // GetLineCount is a wrapper around the C function gtk_text_buffer_get_line_count.
 func (recv *TextBuffer) GetLineCount() int32 {
@@ -9523,7 +10486,16 @@ func (recv *TextBuffer) GetSlice(start *TextIter, end *TextIter, includeHiddenCh
 	return retGo
 }
 
-// Unsupported : gtk_text_buffer_get_start_iter : no return generator
+// GetStartIter is a wrapper around the C function gtk_text_buffer_get_start_iter.
+func (recv *TextBuffer) GetStartIter() *TextIter {
+	var c_iter C.GtkTextIter
+
+	C.gtk_text_buffer_get_start_iter((*C.GtkTextBuffer)(recv.native), &c_iter)
+
+	iter := TextIterNewFromC(unsafe.Pointer(&c_iter))
+
+	return iter
+}
 
 // GetTagTable is a wrapper around the C function gtk_text_buffer_get_tag_table.
 func (recv *TextBuffer) GetTagTable() *TextTagTable {
@@ -9549,11 +10521,42 @@ func (recv *TextBuffer) GetText(start *TextIter, end *TextIter, includeHiddenCha
 	return retGo
 }
 
-// Unsupported : gtk_text_buffer_insert : no return generator
+// Insert is a wrapper around the C function gtk_text_buffer_insert.
+func (recv *TextBuffer) Insert(iter *TextIter, text string, len int32) {
+	c_iter := (*C.GtkTextIter)(iter.ToC())
 
-// Unsupported : gtk_text_buffer_insert_at_cursor : no return generator
+	c_text := C.CString(text)
+	defer C.free(unsafe.Pointer(c_text))
 
-// Unsupported : gtk_text_buffer_insert_child_anchor : no return generator
+	c_len := (C.gint)(len)
+
+	C.gtk_text_buffer_insert((*C.GtkTextBuffer)(recv.native), c_iter, c_text, c_len)
+
+	return
+}
+
+// InsertAtCursor is a wrapper around the C function gtk_text_buffer_insert_at_cursor.
+func (recv *TextBuffer) InsertAtCursor(text string, len int32) {
+	c_text := C.CString(text)
+	defer C.free(unsafe.Pointer(c_text))
+
+	c_len := (C.gint)(len)
+
+	C.gtk_text_buffer_insert_at_cursor((*C.GtkTextBuffer)(recv.native), c_text, c_len)
+
+	return
+}
+
+// InsertChildAnchor is a wrapper around the C function gtk_text_buffer_insert_child_anchor.
+func (recv *TextBuffer) InsertChildAnchor(iter *TextIter, anchor *TextChildAnchor) {
+	c_iter := (*C.GtkTextIter)(iter.ToC())
+
+	c_anchor := (*C.GtkTextChildAnchor)(anchor.ToC())
+
+	C.gtk_text_buffer_insert_child_anchor((*C.GtkTextBuffer)(recv.native), c_iter, c_anchor)
+
+	return
+}
 
 // InsertInteractive is a wrapper around the C function gtk_text_buffer_insert_interactive.
 func (recv *TextBuffer) InsertInteractive(iter *TextIter, text string, len int32, defaultEditable bool) bool {
@@ -9589,11 +10592,29 @@ func (recv *TextBuffer) InsertInteractiveAtCursor(text string, len int32, defaul
 	return retGo
 }
 
-// Unsupported : gtk_text_buffer_insert_markup : no return generator
+// InsertPixbuf is a wrapper around the C function gtk_text_buffer_insert_pixbuf.
+func (recv *TextBuffer) InsertPixbuf(iter *TextIter, pixbuf *gdkpixbuf.Pixbuf) {
+	c_iter := (*C.GtkTextIter)(iter.ToC())
 
-// Unsupported : gtk_text_buffer_insert_pixbuf : no return generator
+	c_pixbuf := (*C.GdkPixbuf)(pixbuf.ToC())
 
-// Unsupported : gtk_text_buffer_insert_range : no return generator
+	C.gtk_text_buffer_insert_pixbuf((*C.GtkTextBuffer)(recv.native), c_iter, c_pixbuf)
+
+	return
+}
+
+// InsertRange is a wrapper around the C function gtk_text_buffer_insert_range.
+func (recv *TextBuffer) InsertRange(iter *TextIter, start *TextIter, end *TextIter) {
+	c_iter := (*C.GtkTextIter)(iter.ToC())
+
+	c_start := (*C.GtkTextIter)(start.ToC())
+
+	c_end := (*C.GtkTextIter)(end.ToC())
+
+	C.gtk_text_buffer_insert_range((*C.GtkTextBuffer)(recv.native), c_iter, c_start, c_end)
+
+	return
+}
 
 // InsertRangeInteractive is a wrapper around the C function gtk_text_buffer_insert_range_interactive.
 func (recv *TextBuffer) InsertRangeInteractive(iter *TextIter, start *TextIter, end *TextIter, defaultEditable bool) bool {
@@ -9616,13 +10637,51 @@ func (recv *TextBuffer) InsertRangeInteractive(iter *TextIter, start *TextIter, 
 
 // Unsupported : gtk_text_buffer_insert_with_tags_by_name : unsupported parameter ... : varargs
 
-// Unsupported : gtk_text_buffer_move_mark : no return generator
+// MoveMark is a wrapper around the C function gtk_text_buffer_move_mark.
+func (recv *TextBuffer) MoveMark(mark *TextMark, where *TextIter) {
+	c_mark := (*C.GtkTextMark)(mark.ToC())
 
-// Unsupported : gtk_text_buffer_move_mark_by_name : no return generator
+	c_where := (*C.GtkTextIter)(where.ToC())
 
-// Unsupported : gtk_text_buffer_paste_clipboard : no return generator
+	C.gtk_text_buffer_move_mark((*C.GtkTextBuffer)(recv.native), c_mark, c_where)
 
-// Unsupported : gtk_text_buffer_place_cursor : no return generator
+	return
+}
+
+// MoveMarkByName is a wrapper around the C function gtk_text_buffer_move_mark_by_name.
+func (recv *TextBuffer) MoveMarkByName(name string, where *TextIter) {
+	c_name := C.CString(name)
+	defer C.free(unsafe.Pointer(c_name))
+
+	c_where := (*C.GtkTextIter)(where.ToC())
+
+	C.gtk_text_buffer_move_mark_by_name((*C.GtkTextBuffer)(recv.native), c_name, c_where)
+
+	return
+}
+
+// PasteClipboard is a wrapper around the C function gtk_text_buffer_paste_clipboard.
+func (recv *TextBuffer) PasteClipboard(clipboard *Clipboard, overrideLocation *TextIter, defaultEditable bool) {
+	c_clipboard := (*C.GtkClipboard)(clipboard.ToC())
+
+	c_override_location := (*C.GtkTextIter)(overrideLocation.ToC())
+
+	c_default_editable :=
+		boolToGboolean(defaultEditable)
+
+	C.gtk_text_buffer_paste_clipboard((*C.GtkTextBuffer)(recv.native), c_clipboard, c_override_location, c_default_editable)
+
+	return
+}
+
+// PlaceCursor is a wrapper around the C function gtk_text_buffer_place_cursor.
+func (recv *TextBuffer) PlaceCursor(where *TextIter) {
+	c_where := (*C.GtkTextIter)(where.ToC())
+
+	C.gtk_text_buffer_place_cursor((*C.GtkTextBuffer)(recv.native), c_where)
+
+	return
+}
 
 // Unsupported : gtk_text_buffer_register_deserialize_format : unsupported parameter function : no type generator for TextBufferDeserializeFunc, GtkTextBufferDeserializeFunc
 
@@ -9632,21 +10691,76 @@ func (recv *TextBuffer) InsertRangeInteractive(iter *TextIter, start *TextIter, 
 
 // Unsupported : gtk_text_buffer_register_serialize_tagset : return type : Blacklisted record : GdkAtom
 
-// Unsupported : gtk_text_buffer_remove_all_tags : no return generator
+// RemoveAllTags is a wrapper around the C function gtk_text_buffer_remove_all_tags.
+func (recv *TextBuffer) RemoveAllTags(start *TextIter, end *TextIter) {
+	c_start := (*C.GtkTextIter)(start.ToC())
 
-// Unsupported : gtk_text_buffer_remove_selection_clipboard : no return generator
+	c_end := (*C.GtkTextIter)(end.ToC())
 
-// Unsupported : gtk_text_buffer_remove_tag : no return generator
+	C.gtk_text_buffer_remove_all_tags((*C.GtkTextBuffer)(recv.native), c_start, c_end)
 
-// Unsupported : gtk_text_buffer_remove_tag_by_name : no return generator
+	return
+}
 
-// Unsupported : gtk_text_buffer_select_range : no return generator
+// RemoveSelectionClipboard is a wrapper around the C function gtk_text_buffer_remove_selection_clipboard.
+func (recv *TextBuffer) RemoveSelectionClipboard(clipboard *Clipboard) {
+	c_clipboard := (*C.GtkClipboard)(clipboard.ToC())
+
+	C.gtk_text_buffer_remove_selection_clipboard((*C.GtkTextBuffer)(recv.native), c_clipboard)
+
+	return
+}
+
+// RemoveTag is a wrapper around the C function gtk_text_buffer_remove_tag.
+func (recv *TextBuffer) RemoveTag(tag *TextTag, start *TextIter, end *TextIter) {
+	c_tag := (*C.GtkTextTag)(tag.ToC())
+
+	c_start := (*C.GtkTextIter)(start.ToC())
+
+	c_end := (*C.GtkTextIter)(end.ToC())
+
+	C.gtk_text_buffer_remove_tag((*C.GtkTextBuffer)(recv.native), c_tag, c_start, c_end)
+
+	return
+}
+
+// RemoveTagByName is a wrapper around the C function gtk_text_buffer_remove_tag_by_name.
+func (recv *TextBuffer) RemoveTagByName(name string, start *TextIter, end *TextIter) {
+	c_name := C.CString(name)
+	defer C.free(unsafe.Pointer(c_name))
+
+	c_start := (*C.GtkTextIter)(start.ToC())
+
+	c_end := (*C.GtkTextIter)(end.ToC())
+
+	C.gtk_text_buffer_remove_tag_by_name((*C.GtkTextBuffer)(recv.native), c_name, c_start, c_end)
+
+	return
+}
 
 // Unsupported : gtk_text_buffer_serialize : unsupported parameter format : Blacklisted record : GdkAtom
 
-// Unsupported : gtk_text_buffer_set_modified : no return generator
+// SetModified is a wrapper around the C function gtk_text_buffer_set_modified.
+func (recv *TextBuffer) SetModified(setting bool) {
+	c_setting :=
+		boolToGboolean(setting)
 
-// Unsupported : gtk_text_buffer_set_text : no return generator
+	C.gtk_text_buffer_set_modified((*C.GtkTextBuffer)(recv.native), c_setting)
+
+	return
+}
+
+// SetText is a wrapper around the C function gtk_text_buffer_set_text.
+func (recv *TextBuffer) SetText(text string, len int32) {
+	c_text := C.CString(text)
+	defer C.free(unsafe.Pointer(c_text))
+
+	c_len := (C.gint)(len)
+
+	C.gtk_text_buffer_set_text((*C.GtkTextBuffer)(recv.native), c_text, c_len)
+
+	return
+}
 
 // Unsupported : gtk_text_buffer_unregister_deserialize_format : unsupported parameter format : Blacklisted record : GdkAtom
 
@@ -9785,7 +10899,15 @@ func (recv *TextMark) GetVisible() bool {
 	return retGo
 }
 
-// Unsupported : gtk_text_mark_set_visible : no return generator
+// SetVisible is a wrapper around the C function gtk_text_mark_set_visible.
+func (recv *TextMark) SetVisible(setting bool) {
+	c_setting :=
+		boolToGboolean(setting)
+
+	C.gtk_text_mark_set_visible((*C.GtkTextMark)(recv.native), c_setting)
+
+	return
+}
 
 // TextTag is a wrapper around the C record GtkTextTag.
 type TextTag struct {
@@ -9821,8 +10943,6 @@ func TextTagNew(name string) *TextTag {
 	return retGo
 }
 
-// Unsupported : gtk_text_tag_changed : no return generator
-
 // Unsupported : gtk_text_tag_event : unsupported parameter event : no type generator for Gdk.Event, GdkEvent*
 
 // GetPriority is a wrapper around the C function gtk_text_tag_get_priority.
@@ -9833,7 +10953,14 @@ func (recv *TextTag) GetPriority() int32 {
 	return retGo
 }
 
-// Unsupported : gtk_text_tag_set_priority : no return generator
+// SetPriority is a wrapper around the C function gtk_text_tag_set_priority.
+func (recv *TextTag) SetPriority(priority int32) {
+	c_priority := (C.gint)(priority)
+
+	C.gtk_text_tag_set_priority((*C.GtkTextTag)(recv.native), c_priority)
+
+	return
+}
 
 // TextTagTable is a wrapper around the C record GtkTextTagTable.
 type TextTagTable struct {
@@ -9897,7 +11024,14 @@ func (recv *TextTagTable) Lookup(name string) *TextTag {
 	return retGo
 }
 
-// Unsupported : gtk_text_tag_table_remove : no return generator
+// Remove is a wrapper around the C function gtk_text_tag_table_remove.
+func (recv *TextTagTable) Remove(tag *TextTag) {
+	c_tag := (*C.GtkTextTag)(tag.ToC())
+
+	C.gtk_text_tag_table_remove((*C.GtkTextTagTable)(recv.native), c_tag)
+
+	return
+}
 
 // TextView is a wrapper around the C record GtkTextView.
 type TextView struct {
@@ -9940,9 +11074,31 @@ func TextViewNewWithBuffer(buffer *TextBuffer) *Widget {
 	return retGo
 }
 
-// Unsupported : gtk_text_view_add_child_at_anchor : no return generator
+// AddChildAtAnchor is a wrapper around the C function gtk_text_view_add_child_at_anchor.
+func (recv *TextView) AddChildAtAnchor(child *Widget, anchor *TextChildAnchor) {
+	c_child := (*C.GtkWidget)(child.ToC())
 
-// Unsupported : gtk_text_view_add_child_in_window : no return generator
+	c_anchor := (*C.GtkTextChildAnchor)(anchor.ToC())
+
+	C.gtk_text_view_add_child_at_anchor((*C.GtkTextView)(recv.native), c_child, c_anchor)
+
+	return
+}
+
+// AddChildInWindow is a wrapper around the C function gtk_text_view_add_child_in_window.
+func (recv *TextView) AddChildInWindow(child *Widget, whichWindow TextWindowType, xpos int32, ypos int32) {
+	c_child := (*C.GtkWidget)(child.ToC())
+
+	c_which_window := (C.GtkTextWindowType)(whichWindow)
+
+	c_xpos := (C.gint)(xpos)
+
+	c_ypos := (C.gint)(ypos)
+
+	C.gtk_text_view_add_child_in_window((*C.GtkTextView)(recv.native), c_child, c_which_window, c_xpos, c_ypos)
+
+	return
+}
 
 // BackwardDisplayLine is a wrapper around the C function gtk_text_view_backward_display_line.
 func (recv *TextView) BackwardDisplayLine(iter *TextIter) bool {
@@ -10038,7 +11194,20 @@ func (recv *TextView) GetIndent() int32 {
 	return retGo
 }
 
-// Unsupported : gtk_text_view_get_iter_at_location : no return generator
+// GetIterAtLocation is a wrapper around the C function gtk_text_view_get_iter_at_location.
+func (recv *TextView) GetIterAtLocation(x int32, y int32) *TextIter {
+	var c_iter C.GtkTextIter
+
+	c_x := (C.gint)(x)
+
+	c_y := (C.gint)(y)
+
+	C.gtk_text_view_get_iter_at_location((*C.GtkTextView)(recv.native), &c_iter, c_x, c_y)
+
+	iter := TextIterNewFromC(unsafe.Pointer(&c_iter))
+
+	return iter
+}
 
 // Unsupported : gtk_text_view_get_iter_at_position : unsupported parameter trailing : no type generator for gint, gint*
 
@@ -10134,7 +11303,18 @@ func (recv *TextView) GetWrapMode() WrapMode {
 	return retGo
 }
 
-// Unsupported : gtk_text_view_move_child : no return generator
+// MoveChild is a wrapper around the C function gtk_text_view_move_child.
+func (recv *TextView) MoveChild(child *Widget, xpos int32, ypos int32) {
+	c_child := (*C.GtkWidget)(child.ToC())
+
+	c_xpos := (C.gint)(xpos)
+
+	c_ypos := (C.gint)(ypos)
+
+	C.gtk_text_view_move_child((*C.GtkTextView)(recv.native), c_child, c_xpos, c_ypos)
+
+	return
+}
 
 // MoveMarkOnscreen is a wrapper around the C function gtk_text_view_move_mark_onscreen.
 func (recv *TextView) MoveMarkOnscreen(mark *TextMark) bool {
@@ -10166,11 +11346,14 @@ func (recv *TextView) PlaceCursorOnscreen() bool {
 	return retGo
 }
 
-// Unsupported : gtk_text_view_reset_cursor_blink : no return generator
+// ScrollMarkOnscreen is a wrapper around the C function gtk_text_view_scroll_mark_onscreen.
+func (recv *TextView) ScrollMarkOnscreen(mark *TextMark) {
+	c_mark := (*C.GtkTextMark)(mark.ToC())
 
-// Unsupported : gtk_text_view_reset_im_context : no return generator
+	C.gtk_text_view_scroll_mark_onscreen((*C.GtkTextView)(recv.native), c_mark)
 
-// Unsupported : gtk_text_view_scroll_mark_onscreen : no return generator
+	return
+}
 
 // ScrollToIter is a wrapper around the C function gtk_text_view_scroll_to_iter.
 func (recv *TextView) ScrollToIter(iter *TextIter, withinMargin float64, useAlign bool, xalign float64, yalign float64) bool {
@@ -10191,47 +11374,144 @@ func (recv *TextView) ScrollToIter(iter *TextIter, withinMargin float64, useAlig
 	return retGo
 }
 
-// Unsupported : gtk_text_view_scroll_to_mark : no return generator
+// ScrollToMark is a wrapper around the C function gtk_text_view_scroll_to_mark.
+func (recv *TextView) ScrollToMark(mark *TextMark, withinMargin float64, useAlign bool, xalign float64, yalign float64) {
+	c_mark := (*C.GtkTextMark)(mark.ToC())
 
-// Unsupported : gtk_text_view_set_accepts_tab : no return generator
+	c_within_margin := (C.gdouble)(withinMargin)
 
-// Unsupported : gtk_text_view_set_border_window_size : no return generator
+	c_use_align :=
+		boolToGboolean(useAlign)
 
-// Unsupported : gtk_text_view_set_bottom_margin : no return generator
+	c_xalign := (C.gdouble)(xalign)
 
-// Unsupported : gtk_text_view_set_buffer : no return generator
+	c_yalign := (C.gdouble)(yalign)
 
-// Unsupported : gtk_text_view_set_cursor_visible : no return generator
+	C.gtk_text_view_scroll_to_mark((*C.GtkTextView)(recv.native), c_mark, c_within_margin, c_use_align, c_xalign, c_yalign)
 
-// Unsupported : gtk_text_view_set_editable : no return generator
+	return
+}
 
-// Unsupported : gtk_text_view_set_indent : no return generator
+// SetBorderWindowSize is a wrapper around the C function gtk_text_view_set_border_window_size.
+func (recv *TextView) SetBorderWindowSize(type_ TextWindowType, size int32) {
+	c_type := (C.GtkTextWindowType)(type_)
 
-// Unsupported : gtk_text_view_set_input_hints : no return generator
+	c_size := (C.gint)(size)
 
-// Unsupported : gtk_text_view_set_input_purpose : no return generator
+	C.gtk_text_view_set_border_window_size((*C.GtkTextView)(recv.native), c_type, c_size)
 
-// Unsupported : gtk_text_view_set_justification : no return generator
+	return
+}
 
-// Unsupported : gtk_text_view_set_left_margin : no return generator
+// SetBuffer is a wrapper around the C function gtk_text_view_set_buffer.
+func (recv *TextView) SetBuffer(buffer *TextBuffer) {
+	c_buffer := (*C.GtkTextBuffer)(buffer.ToC())
 
-// Unsupported : gtk_text_view_set_monospace : no return generator
+	C.gtk_text_view_set_buffer((*C.GtkTextView)(recv.native), c_buffer)
 
-// Unsupported : gtk_text_view_set_overwrite : no return generator
+	return
+}
 
-// Unsupported : gtk_text_view_set_pixels_above_lines : no return generator
+// SetCursorVisible is a wrapper around the C function gtk_text_view_set_cursor_visible.
+func (recv *TextView) SetCursorVisible(setting bool) {
+	c_setting :=
+		boolToGboolean(setting)
 
-// Unsupported : gtk_text_view_set_pixels_below_lines : no return generator
+	C.gtk_text_view_set_cursor_visible((*C.GtkTextView)(recv.native), c_setting)
 
-// Unsupported : gtk_text_view_set_pixels_inside_wrap : no return generator
+	return
+}
 
-// Unsupported : gtk_text_view_set_right_margin : no return generator
+// SetEditable is a wrapper around the C function gtk_text_view_set_editable.
+func (recv *TextView) SetEditable(setting bool) {
+	c_setting :=
+		boolToGboolean(setting)
 
-// Unsupported : gtk_text_view_set_tabs : no return generator
+	C.gtk_text_view_set_editable((*C.GtkTextView)(recv.native), c_setting)
 
-// Unsupported : gtk_text_view_set_top_margin : no return generator
+	return
+}
 
-// Unsupported : gtk_text_view_set_wrap_mode : no return generator
+// SetIndent is a wrapper around the C function gtk_text_view_set_indent.
+func (recv *TextView) SetIndent(indent int32) {
+	c_indent := (C.gint)(indent)
+
+	C.gtk_text_view_set_indent((*C.GtkTextView)(recv.native), c_indent)
+
+	return
+}
+
+// SetJustification is a wrapper around the C function gtk_text_view_set_justification.
+func (recv *TextView) SetJustification(justification Justification) {
+	c_justification := (C.GtkJustification)(justification)
+
+	C.gtk_text_view_set_justification((*C.GtkTextView)(recv.native), c_justification)
+
+	return
+}
+
+// SetLeftMargin is a wrapper around the C function gtk_text_view_set_left_margin.
+func (recv *TextView) SetLeftMargin(leftMargin int32) {
+	c_left_margin := (C.gint)(leftMargin)
+
+	C.gtk_text_view_set_left_margin((*C.GtkTextView)(recv.native), c_left_margin)
+
+	return
+}
+
+// SetPixelsAboveLines is a wrapper around the C function gtk_text_view_set_pixels_above_lines.
+func (recv *TextView) SetPixelsAboveLines(pixelsAboveLines int32) {
+	c_pixels_above_lines := (C.gint)(pixelsAboveLines)
+
+	C.gtk_text_view_set_pixels_above_lines((*C.GtkTextView)(recv.native), c_pixels_above_lines)
+
+	return
+}
+
+// SetPixelsBelowLines is a wrapper around the C function gtk_text_view_set_pixels_below_lines.
+func (recv *TextView) SetPixelsBelowLines(pixelsBelowLines int32) {
+	c_pixels_below_lines := (C.gint)(pixelsBelowLines)
+
+	C.gtk_text_view_set_pixels_below_lines((*C.GtkTextView)(recv.native), c_pixels_below_lines)
+
+	return
+}
+
+// SetPixelsInsideWrap is a wrapper around the C function gtk_text_view_set_pixels_inside_wrap.
+func (recv *TextView) SetPixelsInsideWrap(pixelsInsideWrap int32) {
+	c_pixels_inside_wrap := (C.gint)(pixelsInsideWrap)
+
+	C.gtk_text_view_set_pixels_inside_wrap((*C.GtkTextView)(recv.native), c_pixels_inside_wrap)
+
+	return
+}
+
+// SetRightMargin is a wrapper around the C function gtk_text_view_set_right_margin.
+func (recv *TextView) SetRightMargin(rightMargin int32) {
+	c_right_margin := (C.gint)(rightMargin)
+
+	C.gtk_text_view_set_right_margin((*C.GtkTextView)(recv.native), c_right_margin)
+
+	return
+}
+
+// SetTabs is a wrapper around the C function gtk_text_view_set_tabs.
+func (recv *TextView) SetTabs(tabs *pango.TabArray) {
+	c_tabs := (*C.PangoTabArray)(tabs.ToC())
+
+	C.gtk_text_view_set_tabs((*C.GtkTextView)(recv.native), c_tabs)
+
+	return
+}
+
+// SetWrapMode is a wrapper around the C function gtk_text_view_set_wrap_mode.
+func (recv *TextView) SetWrapMode(wrapMode WrapMode) {
+	c_wrap_mode := (C.GtkWrapMode)(wrapMode)
+
+	C.gtk_text_view_set_wrap_mode((*C.GtkTextView)(recv.native), c_wrap_mode)
+
+	return
+}
 
 // StartsDisplayLine is a wrapper around the C function gtk_text_view_starts_display_line.
 func (recv *TextView) StartsDisplayLine(iter *TextIter) bool {
@@ -10293,20 +11573,6 @@ func (recv *ThemingEngine) ToC() unsafe.Pointer {
 
 // Unsupported : gtk_theming_engine_get : unsupported parameter ... : varargs
 
-// Unsupported : gtk_theming_engine_get_background_color : no return generator
-
-// Unsupported : gtk_theming_engine_get_border : no return generator
-
-// Unsupported : gtk_theming_engine_get_border_color : no return generator
-
-// Unsupported : gtk_theming_engine_get_color : no return generator
-
-// Unsupported : gtk_theming_engine_get_margin : no return generator
-
-// Unsupported : gtk_theming_engine_get_padding : no return generator
-
-// Unsupported : gtk_theming_engine_get_property : no return generator
-
 // GetScreen is a wrapper around the C function gtk_theming_engine_get_screen.
 func (recv *ThemingEngine) GetScreen() *gdk.Screen {
 	retC := C.gtk_theming_engine_get_screen((*C.GtkThemingEngine)(recv.native))
@@ -10316,8 +11582,6 @@ func (recv *ThemingEngine) GetScreen() *gdk.Screen {
 }
 
 // Unsupported : gtk_theming_engine_get_style : unsupported parameter ... : varargs
-
-// Unsupported : gtk_theming_engine_get_style_property : no return generator
 
 // Unsupported : gtk_theming_engine_get_style_valist : unsupported parameter args : no type generator for va_list, va_list
 
@@ -10349,12 +11613,6 @@ func (recv *ToggleAction) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
-
-// Unsupported : gtk_toggle_action_set_active : no return generator
-
-// Unsupported : gtk_toggle_action_set_draw_as_radio : no return generator
-
-// Unsupported : gtk_toggle_action_toggled : no return generator
 
 // ToggleButton is a wrapper around the C record GtkToggleButton.
 type ToggleButton struct {
@@ -10433,13 +11691,42 @@ func (recv *ToggleButton) GetMode() bool {
 	return retGo
 }
 
-// Unsupported : gtk_toggle_button_set_active : no return generator
+// SetActive is a wrapper around the C function gtk_toggle_button_set_active.
+func (recv *ToggleButton) SetActive(isActive bool) {
+	c_is_active :=
+		boolToGboolean(isActive)
 
-// Unsupported : gtk_toggle_button_set_inconsistent : no return generator
+	C.gtk_toggle_button_set_active((*C.GtkToggleButton)(recv.native), c_is_active)
 
-// Unsupported : gtk_toggle_button_set_mode : no return generator
+	return
+}
 
-// Unsupported : gtk_toggle_button_toggled : no return generator
+// SetInconsistent is a wrapper around the C function gtk_toggle_button_set_inconsistent.
+func (recv *ToggleButton) SetInconsistent(setting bool) {
+	c_setting :=
+		boolToGboolean(setting)
+
+	C.gtk_toggle_button_set_inconsistent((*C.GtkToggleButton)(recv.native), c_setting)
+
+	return
+}
+
+// SetMode is a wrapper around the C function gtk_toggle_button_set_mode.
+func (recv *ToggleButton) SetMode(drawIndicator bool) {
+	c_draw_indicator :=
+		boolToGboolean(drawIndicator)
+
+	C.gtk_toggle_button_set_mode((*C.GtkToggleButton)(recv.native), c_draw_indicator)
+
+	return
+}
+
+// Toggled is a wrapper around the C function gtk_toggle_button_toggled.
+func (recv *ToggleButton) Toggled() {
+	C.gtk_toggle_button_toggled((*C.GtkToggleButton)(recv.native))
+
+	return
+}
 
 // ToggleButtonAccessible is a wrapper around the C record GtkToggleButtonAccessible.
 type ToggleButtonAccessible struct {
@@ -10487,8 +11774,6 @@ func (recv *ToggleToolButton) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : gtk_toggle_tool_button_set_active : no return generator
-
 // ToolButton is a wrapper around the C record GtkToolButton.
 type ToolButton struct {
 	native *C.GtkToolButton
@@ -10511,18 +11796,6 @@ func (recv *ToolButton) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
-
-// Unsupported : gtk_tool_button_set_icon_name : no return generator
-
-// Unsupported : gtk_tool_button_set_icon_widget : no return generator
-
-// Unsupported : gtk_tool_button_set_label : no return generator
-
-// Unsupported : gtk_tool_button_set_label_widget : no return generator
-
-// Unsupported : gtk_tool_button_set_stock_id : no return generator
-
-// Unsupported : gtk_tool_button_set_use_underline : no return generator
 
 // ToolItem is a wrapper around the C record GtkToolItem.
 type ToolItem struct {
@@ -10549,28 +11822,6 @@ func (recv *ToolItem) ToC() unsafe.Pointer {
 
 // Unsupported : gtk_tool_item_get_icon_size : no return generator
 
-// Unsupported : gtk_tool_item_rebuild_menu : no return generator
-
-// Unsupported : gtk_tool_item_set_expand : no return generator
-
-// Unsupported : gtk_tool_item_set_homogeneous : no return generator
-
-// Unsupported : gtk_tool_item_set_is_important : no return generator
-
-// Unsupported : gtk_tool_item_set_proxy_menu_item : no return generator
-
-// Unsupported : gtk_tool_item_set_tooltip_markup : no return generator
-
-// Unsupported : gtk_tool_item_set_tooltip_text : no return generator
-
-// Unsupported : gtk_tool_item_set_use_drag_window : no return generator
-
-// Unsupported : gtk_tool_item_set_visible_horizontal : no return generator
-
-// Unsupported : gtk_tool_item_set_visible_vertical : no return generator
-
-// Unsupported : gtk_tool_item_toolbar_reconfigured : no return generator
-
 // ToolItemGroup is a wrapper around the C record GtkToolItemGroup.
 type ToolItemGroup struct {
 	native *C.GtkToolItemGroup
@@ -10593,20 +11844,6 @@ func (recv *ToolItemGroup) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
-
-// Unsupported : gtk_tool_item_group_insert : no return generator
-
-// Unsupported : gtk_tool_item_group_set_collapsed : no return generator
-
-// Unsupported : gtk_tool_item_group_set_ellipsize : no return generator
-
-// Unsupported : gtk_tool_item_group_set_header_relief : no return generator
-
-// Unsupported : gtk_tool_item_group_set_item_position : no return generator
-
-// Unsupported : gtk_tool_item_group_set_label : no return generator
-
-// Unsupported : gtk_tool_item_group_set_label_widget : no return generator
 
 // ToolPalette is a wrapper around the C record GtkToolPalette.
 type ToolPalette struct {
@@ -10631,25 +11868,9 @@ func (recv *ToolPalette) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : gtk_tool_palette_add_drag_dest : no return generator
-
 // Unsupported : gtk_tool_palette_get_icon_size : no return generator
 
-// Unsupported : gtk_tool_palette_set_drag_source : no return generator
-
-// Unsupported : gtk_tool_palette_set_exclusive : no return generator
-
-// Unsupported : gtk_tool_palette_set_expand : no return generator
-
-// Unsupported : gtk_tool_palette_set_group_position : no return generator
-
 // Unsupported : gtk_tool_palette_set_icon_size : unsupported parameter icon_size : no type generator for gint, GtkIconSize
-
-// Unsupported : gtk_tool_palette_set_style : no return generator
-
-// Unsupported : gtk_tool_palette_unset_icon_size : no return generator
-
-// Unsupported : gtk_tool_palette_unset_style : no return generator
 
 // Toolbar is a wrapper around the C record GtkToolbar.
 type Toolbar struct {
@@ -10698,19 +11919,37 @@ func (recv *Toolbar) GetStyle() ToolbarStyle {
 	return retGo
 }
 
-// Unsupported : gtk_toolbar_insert : no return generator
+// SetIconSize is a wrapper around the C function gtk_toolbar_set_icon_size.
+func (recv *Toolbar) SetIconSize(iconSize IconSize) {
+	c_icon_size := (C.GtkIconSize)(iconSize)
 
-// Unsupported : gtk_toolbar_set_drop_highlight_item : no return generator
+	C.gtk_toolbar_set_icon_size((*C.GtkToolbar)(recv.native), c_icon_size)
 
-// Unsupported : gtk_toolbar_set_icon_size : no return generator
+	return
+}
 
-// Unsupported : gtk_toolbar_set_show_arrow : no return generator
+// SetStyle is a wrapper around the C function gtk_toolbar_set_style.
+func (recv *Toolbar) SetStyle(style ToolbarStyle) {
+	c_style := (C.GtkToolbarStyle)(style)
 
-// Unsupported : gtk_toolbar_set_style : no return generator
+	C.gtk_toolbar_set_style((*C.GtkToolbar)(recv.native), c_style)
 
-// Unsupported : gtk_toolbar_unset_icon_size : no return generator
+	return
+}
 
-// Unsupported : gtk_toolbar_unset_style : no return generator
+// UnsetIconSize is a wrapper around the C function gtk_toolbar_unset_icon_size.
+func (recv *Toolbar) UnsetIconSize() {
+	C.gtk_toolbar_unset_icon_size((*C.GtkToolbar)(recv.native))
+
+	return
+}
+
+// UnsetStyle is a wrapper around the C function gtk_toolbar_unset_style.
+func (recv *Toolbar) UnsetStyle() {
+	C.gtk_toolbar_unset_style((*C.GtkToolbar)(recv.native))
+
+	return
+}
 
 // Tooltip is a wrapper around the C record GtkTooltip.
 type Tooltip struct {
@@ -10733,19 +11972,11 @@ func (recv *Tooltip) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : gtk_tooltip_set_custom : no return generator
-
-// Unsupported : gtk_tooltip_set_icon : no return generator
-
 // Unsupported : gtk_tooltip_set_icon_from_gicon : unsupported parameter gicon : no type generator for Gio.Icon, GIcon*
 
 // Unsupported : gtk_tooltip_set_icon_from_icon_name : unsupported parameter size : no type generator for gint, GtkIconSize
 
 // Unsupported : gtk_tooltip_set_icon_from_stock : unsupported parameter size : no type generator for gint, GtkIconSize
-
-// Unsupported : gtk_tooltip_set_markup : no return generator
-
-// Unsupported : gtk_tooltip_set_text : no return generator
 
 // Unsupported : gtk_tooltip_set_tip_area : unsupported parameter rect : Blacklisted record : GdkRectangle
 
@@ -10803,17 +12034,9 @@ func (recv *TreeModelFilter) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : gtk_tree_model_filter_clear_cache : no return generator
-
-// Unsupported : gtk_tree_model_filter_convert_iter_to_child_iter : no return generator
-
 // Unsupported : gtk_tree_model_filter_get_model : no return generator
 
-// Unsupported : gtk_tree_model_filter_refilter : no return generator
-
 // Unsupported : gtk_tree_model_filter_set_modify_func : unsupported parameter types : no param type
-
-// Unsupported : gtk_tree_model_filter_set_visible_column : no return generator
 
 // Unsupported : gtk_tree_model_filter_set_visible_func : unsupported parameter func : no type generator for TreeModelFilterVisibleFunc, GtkTreeModelFilterVisibleFunc
 
@@ -10840,7 +12063,12 @@ func (recv *TreeModelSort) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : gtk_tree_model_sort_clear_cache : no return generator
+// ClearCache is a wrapper around the C function gtk_tree_model_sort_clear_cache.
+func (recv *TreeModelSort) ClearCache() {
+	C.gtk_tree_model_sort_clear_cache((*C.GtkTreeModelSort)(recv.native))
+
+	return
+}
 
 // ConvertChildIterToIter is a wrapper around the C function gtk_tree_model_sort_convert_child_iter_to_iter.
 func (recv *TreeModelSort) ConvertChildIterToIter(childIter *TreeIter) (bool, *TreeIter) {
@@ -10866,7 +12094,18 @@ func (recv *TreeModelSort) ConvertChildPathToPath(childPath *TreePath) *TreePath
 	return retGo
 }
 
-// Unsupported : gtk_tree_model_sort_convert_iter_to_child_iter : no return generator
+// ConvertIterToChildIter is a wrapper around the C function gtk_tree_model_sort_convert_iter_to_child_iter.
+func (recv *TreeModelSort) ConvertIterToChildIter(sortedIter *TreeIter) *TreeIter {
+	var c_child_iter C.GtkTreeIter
+
+	c_sorted_iter := (*C.GtkTreeIter)(sortedIter.ToC())
+
+	C.gtk_tree_model_sort_convert_iter_to_child_iter((*C.GtkTreeModelSort)(recv.native), &c_child_iter, c_sorted_iter)
+
+	childIter := TreeIterNewFromC(unsafe.Pointer(&c_child_iter))
+
+	return childIter
+}
 
 // ConvertPathToChildPath is a wrapper around the C function gtk_tree_model_sort_convert_path_to_child_path.
 func (recv *TreeModelSort) ConvertPathToChildPath(sortedPath *TreePath) *TreePath {
@@ -10880,7 +12119,12 @@ func (recv *TreeModelSort) ConvertPathToChildPath(sortedPath *TreePath) *TreePat
 
 // Unsupported : gtk_tree_model_sort_get_model : no return generator
 
-// Unsupported : gtk_tree_model_sort_reset_default_sort_func : no return generator
+// ResetDefaultSortFunc is a wrapper around the C function gtk_tree_model_sort_reset_default_sort_func.
+func (recv *TreeModelSort) ResetDefaultSortFunc() {
+	C.gtk_tree_model_sort_reset_default_sort_func((*C.GtkTreeModelSort)(recv.native))
+
+	return
+}
 
 // TreeSelection is a wrapper around the C record GtkTreeSelection.
 type TreeSelection struct {
@@ -10955,27 +12199,79 @@ func (recv *TreeSelection) PathIsSelected(path *TreePath) bool {
 	return retGo
 }
 
-// Unsupported : gtk_tree_selection_select_all : no return generator
+// SelectAll is a wrapper around the C function gtk_tree_selection_select_all.
+func (recv *TreeSelection) SelectAll() {
+	C.gtk_tree_selection_select_all((*C.GtkTreeSelection)(recv.native))
 
-// Unsupported : gtk_tree_selection_select_iter : no return generator
+	return
+}
 
-// Unsupported : gtk_tree_selection_select_path : no return generator
+// SelectIter is a wrapper around the C function gtk_tree_selection_select_iter.
+func (recv *TreeSelection) SelectIter(iter *TreeIter) {
+	c_iter := (*C.GtkTreeIter)(iter.ToC())
 
-// Unsupported : gtk_tree_selection_select_range : no return generator
+	C.gtk_tree_selection_select_iter((*C.GtkTreeSelection)(recv.native), c_iter)
+
+	return
+}
+
+// SelectPath is a wrapper around the C function gtk_tree_selection_select_path.
+func (recv *TreeSelection) SelectPath(path *TreePath) {
+	c_path := (*C.GtkTreePath)(path.ToC())
+
+	C.gtk_tree_selection_select_path((*C.GtkTreeSelection)(recv.native), c_path)
+
+	return
+}
+
+// SelectRange is a wrapper around the C function gtk_tree_selection_select_range.
+func (recv *TreeSelection) SelectRange(startPath *TreePath, endPath *TreePath) {
+	c_start_path := (*C.GtkTreePath)(startPath.ToC())
+
+	c_end_path := (*C.GtkTreePath)(endPath.ToC())
+
+	C.gtk_tree_selection_select_range((*C.GtkTreeSelection)(recv.native), c_start_path, c_end_path)
+
+	return
+}
 
 // Unsupported : gtk_tree_selection_selected_foreach : unsupported parameter func : no type generator for TreeSelectionForeachFunc, GtkTreeSelectionForeachFunc
 
-// Unsupported : gtk_tree_selection_set_mode : no return generator
+// SetMode is a wrapper around the C function gtk_tree_selection_set_mode.
+func (recv *TreeSelection) SetMode(type_ SelectionMode) {
+	c_type := (C.GtkSelectionMode)(type_)
+
+	C.gtk_tree_selection_set_mode((*C.GtkTreeSelection)(recv.native), c_type)
+
+	return
+}
 
 // Unsupported : gtk_tree_selection_set_select_function : unsupported parameter func : no type generator for TreeSelectionFunc, GtkTreeSelectionFunc
 
-// Unsupported : gtk_tree_selection_unselect_all : no return generator
+// UnselectAll is a wrapper around the C function gtk_tree_selection_unselect_all.
+func (recv *TreeSelection) UnselectAll() {
+	C.gtk_tree_selection_unselect_all((*C.GtkTreeSelection)(recv.native))
 
-// Unsupported : gtk_tree_selection_unselect_iter : no return generator
+	return
+}
 
-// Unsupported : gtk_tree_selection_unselect_path : no return generator
+// UnselectIter is a wrapper around the C function gtk_tree_selection_unselect_iter.
+func (recv *TreeSelection) UnselectIter(iter *TreeIter) {
+	c_iter := (*C.GtkTreeIter)(iter.ToC())
 
-// Unsupported : gtk_tree_selection_unselect_range : no return generator
+	C.gtk_tree_selection_unselect_iter((*C.GtkTreeSelection)(recv.native), c_iter)
+
+	return
+}
+
+// UnselectPath is a wrapper around the C function gtk_tree_selection_unselect_path.
+func (recv *TreeSelection) UnselectPath(path *TreePath) {
+	c_path := (*C.GtkTreePath)(path.ToC())
+
+	C.gtk_tree_selection_unselect_path((*C.GtkTreeSelection)(recv.native), c_path)
+
+	return
+}
 
 // TreeStore is a wrapper around the C record GtkTreeStore.
 type TreeStore struct {
@@ -11004,15 +12300,70 @@ func (recv *TreeStore) ToC() unsafe.Pointer {
 
 // Unsupported : gtk_tree_store_newv : unsupported parameter types : no param type
 
-// Unsupported : gtk_tree_store_append : no return generator
+// Append is a wrapper around the C function gtk_tree_store_append.
+func (recv *TreeStore) Append(parent *TreeIter) *TreeIter {
+	var c_iter C.GtkTreeIter
 
-// Unsupported : gtk_tree_store_clear : no return generator
+	c_parent := (*C.GtkTreeIter)(parent.ToC())
 
-// Unsupported : gtk_tree_store_insert : no return generator
+	C.gtk_tree_store_append((*C.GtkTreeStore)(recv.native), &c_iter, c_parent)
 
-// Unsupported : gtk_tree_store_insert_after : no return generator
+	iter := TreeIterNewFromC(unsafe.Pointer(&c_iter))
 
-// Unsupported : gtk_tree_store_insert_before : no return generator
+	return iter
+}
+
+// Clear is a wrapper around the C function gtk_tree_store_clear.
+func (recv *TreeStore) Clear() {
+	C.gtk_tree_store_clear((*C.GtkTreeStore)(recv.native))
+
+	return
+}
+
+// Insert is a wrapper around the C function gtk_tree_store_insert.
+func (recv *TreeStore) Insert(parent *TreeIter, position int32) *TreeIter {
+	var c_iter C.GtkTreeIter
+
+	c_parent := (*C.GtkTreeIter)(parent.ToC())
+
+	c_position := (C.gint)(position)
+
+	C.gtk_tree_store_insert((*C.GtkTreeStore)(recv.native), &c_iter, c_parent, c_position)
+
+	iter := TreeIterNewFromC(unsafe.Pointer(&c_iter))
+
+	return iter
+}
+
+// InsertAfter is a wrapper around the C function gtk_tree_store_insert_after.
+func (recv *TreeStore) InsertAfter(parent *TreeIter, sibling *TreeIter) *TreeIter {
+	var c_iter C.GtkTreeIter
+
+	c_parent := (*C.GtkTreeIter)(parent.ToC())
+
+	c_sibling := (*C.GtkTreeIter)(sibling.ToC())
+
+	C.gtk_tree_store_insert_after((*C.GtkTreeStore)(recv.native), &c_iter, c_parent, c_sibling)
+
+	iter := TreeIterNewFromC(unsafe.Pointer(&c_iter))
+
+	return iter
+}
+
+// InsertBefore is a wrapper around the C function gtk_tree_store_insert_before.
+func (recv *TreeStore) InsertBefore(parent *TreeIter, sibling *TreeIter) *TreeIter {
+	var c_iter C.GtkTreeIter
+
+	c_parent := (*C.GtkTreeIter)(parent.ToC())
+
+	c_sibling := (*C.GtkTreeIter)(sibling.ToC())
+
+	C.gtk_tree_store_insert_before((*C.GtkTreeStore)(recv.native), &c_iter, c_parent, c_sibling)
+
+	iter := TreeIterNewFromC(unsafe.Pointer(&c_iter))
+
+	return iter
+}
 
 // Unsupported : gtk_tree_store_insert_with_values : unsupported parameter ... : varargs
 
@@ -11040,11 +12391,18 @@ func (recv *TreeStore) IterDepth(iter *TreeIter) int32 {
 	return retGo
 }
 
-// Unsupported : gtk_tree_store_move_after : no return generator
+// Prepend is a wrapper around the C function gtk_tree_store_prepend.
+func (recv *TreeStore) Prepend(parent *TreeIter) *TreeIter {
+	var c_iter C.GtkTreeIter
 
-// Unsupported : gtk_tree_store_move_before : no return generator
+	c_parent := (*C.GtkTreeIter)(parent.ToC())
 
-// Unsupported : gtk_tree_store_prepend : no return generator
+	C.gtk_tree_store_prepend((*C.GtkTreeStore)(recv.native), &c_iter, c_parent)
+
+	iter := TreeIterNewFromC(unsafe.Pointer(&c_iter))
+
+	return iter
+}
 
 // Remove is a wrapper around the C function gtk_tree_store_remove.
 func (recv *TreeStore) Remove(iter *TreeIter) bool {
@@ -11064,11 +12422,20 @@ func (recv *TreeStore) Remove(iter *TreeIter) bool {
 
 // Unsupported : gtk_tree_store_set_valist : unsupported parameter var_args : no type generator for va_list, va_list
 
-// Unsupported : gtk_tree_store_set_value : no return generator
+// SetValue is a wrapper around the C function gtk_tree_store_set_value.
+func (recv *TreeStore) SetValue(iter *TreeIter, column int32, value *gobject.Value) {
+	c_iter := (*C.GtkTreeIter)(iter.ToC())
+
+	c_column := (C.gint)(column)
+
+	c_value := (*C.GValue)(value.ToC())
+
+	C.gtk_tree_store_set_value((*C.GtkTreeStore)(recv.native), c_iter, c_column, c_value)
+
+	return
+}
 
 // Unsupported : gtk_tree_store_set_valuesv : unsupported parameter columns : no param type
-
-// Unsupported : gtk_tree_store_swap : no return generator
 
 // TreeView is a wrapper around the C record GtkTreeView.
 type TreeView struct {
@@ -11113,7 +12480,12 @@ func (recv *TreeView) AppendColumn(column *TreeViewColumn) int32 {
 	return retGo
 }
 
-// Unsupported : gtk_tree_view_collapse_all : no return generator
+// CollapseAll is a wrapper around the C function gtk_tree_view_collapse_all.
+func (recv *TreeView) CollapseAll() {
+	C.gtk_tree_view_collapse_all((*C.GtkTreeView)(recv.native))
+
+	return
+}
 
 // CollapseRow is a wrapper around the C function gtk_tree_view_collapse_row.
 func (recv *TreeView) CollapseRow(path *TreePath) bool {
@@ -11125,7 +12497,12 @@ func (recv *TreeView) CollapseRow(path *TreePath) bool {
 	return retGo
 }
 
-// Unsupported : gtk_tree_view_columns_autosize : no return generator
+// ColumnsAutosize is a wrapper around the C function gtk_tree_view_columns_autosize.
+func (recv *TreeView) ColumnsAutosize() {
+	C.gtk_tree_view_columns_autosize((*C.GtkTreeView)(recv.native))
+
+	return
+}
 
 // Unsupported : gtk_tree_view_convert_bin_window_to_tree_coords : unsupported parameter tx : no type generator for gint, gint*
 
@@ -11153,7 +12530,12 @@ func (recv *TreeView) CreateRowDragIcon(path *TreePath) *cairo.Surface {
 
 // Unsupported : gtk_tree_view_enable_model_drag_source : unsupported parameter targets : no param type
 
-// Unsupported : gtk_tree_view_expand_all : no return generator
+// ExpandAll is a wrapper around the C function gtk_tree_view_expand_all.
+func (recv *TreeView) ExpandAll() {
+	C.gtk_tree_view_expand_all((*C.GtkTreeView)(recv.native))
+
+	return
+}
 
 // ExpandRow is a wrapper around the C function gtk_tree_view_expand_row.
 func (recv *TreeView) ExpandRow(path *TreePath, openAll bool) bool {
@@ -11167,8 +12549,6 @@ func (recv *TreeView) ExpandRow(path *TreePath, openAll bool) bool {
 
 	return retGo
 }
-
-// Unsupported : gtk_tree_view_expand_to_path : no return generator
 
 // Unsupported : gtk_tree_view_get_background_area : unsupported parameter rect : Blacklisted record : GdkRectangle
 
@@ -11314,7 +12694,16 @@ func (recv *TreeView) InsertColumn(column *TreeViewColumn, position int32) int32
 
 // Unsupported : gtk_tree_view_map_expanded_rows : unsupported parameter func : no type generator for TreeViewMappingFunc, GtkTreeViewMappingFunc
 
-// Unsupported : gtk_tree_view_move_column_after : no return generator
+// MoveColumnAfter is a wrapper around the C function gtk_tree_view_move_column_after.
+func (recv *TreeView) MoveColumnAfter(column *TreeViewColumn, baseColumn *TreeViewColumn) {
+	c_column := (*C.GtkTreeViewColumn)(column.ToC())
+
+	c_base_column := (*C.GtkTreeViewColumn)(baseColumn.ToC())
+
+	C.gtk_tree_view_move_column_after((*C.GtkTreeView)(recv.native), c_column, c_base_column)
+
+	return
+}
 
 // RemoveColumn is a wrapper around the C function gtk_tree_view_remove_column.
 func (recv *TreeView) RemoveColumn(column *TreeViewColumn) int32 {
@@ -11326,7 +12715,16 @@ func (recv *TreeView) RemoveColumn(column *TreeViewColumn) int32 {
 	return retGo
 }
 
-// Unsupported : gtk_tree_view_row_activated : no return generator
+// RowActivated is a wrapper around the C function gtk_tree_view_row_activated.
+func (recv *TreeView) RowActivated(path *TreePath, column *TreeViewColumn) {
+	c_path := (*C.GtkTreePath)(path.ToC())
+
+	c_column := (*C.GtkTreeViewColumn)(column.ToC())
+
+	C.gtk_tree_view_row_activated((*C.GtkTreeView)(recv.native), c_path, c_column)
+
+	return
+}
 
 // RowExpanded is a wrapper around the C function gtk_tree_view_row_expanded.
 func (recv *TreeView) RowExpanded(path *TreePath) bool {
@@ -11338,75 +12736,171 @@ func (recv *TreeView) RowExpanded(path *TreePath) bool {
 	return retGo
 }
 
-// Unsupported : gtk_tree_view_scroll_to_cell : no return generator
+// ScrollToCell is a wrapper around the C function gtk_tree_view_scroll_to_cell.
+func (recv *TreeView) ScrollToCell(path *TreePath, column *TreeViewColumn, useAlign bool, rowAlign float32, colAlign float32) {
+	c_path := (*C.GtkTreePath)(path.ToC())
 
-// Unsupported : gtk_tree_view_scroll_to_point : no return generator
+	c_column := (*C.GtkTreeViewColumn)(column.ToC())
 
-// Unsupported : gtk_tree_view_set_activate_on_single_click : no return generator
+	c_use_align :=
+		boolToGboolean(useAlign)
+
+	c_row_align := (C.gfloat)(rowAlign)
+
+	c_col_align := (C.gfloat)(colAlign)
+
+	C.gtk_tree_view_scroll_to_cell((*C.GtkTreeView)(recv.native), c_path, c_column, c_use_align, c_row_align, c_col_align)
+
+	return
+}
+
+// ScrollToPoint is a wrapper around the C function gtk_tree_view_scroll_to_point.
+func (recv *TreeView) ScrollToPoint(treeX int32, treeY int32) {
+	c_tree_x := (C.gint)(treeX)
+
+	c_tree_y := (C.gint)(treeY)
+
+	C.gtk_tree_view_scroll_to_point((*C.GtkTreeView)(recv.native), c_tree_x, c_tree_y)
+
+	return
+}
 
 // Unsupported : gtk_tree_view_set_column_drag_function : unsupported parameter func : no type generator for TreeViewColumnDropFunc, GtkTreeViewColumnDropFunc
 
-// Unsupported : gtk_tree_view_set_cursor : no return generator
+// SetCursor is a wrapper around the C function gtk_tree_view_set_cursor.
+func (recv *TreeView) SetCursor(path *TreePath, focusColumn *TreeViewColumn, startEditing bool) {
+	c_path := (*C.GtkTreePath)(path.ToC())
 
-// Unsupported : gtk_tree_view_set_cursor_on_cell : no return generator
+	c_focus_column := (*C.GtkTreeViewColumn)(focusColumn.ToC())
+
+	c_start_editing :=
+		boolToGboolean(startEditing)
+
+	C.gtk_tree_view_set_cursor((*C.GtkTreeView)(recv.native), c_path, c_focus_column, c_start_editing)
+
+	return
+}
 
 // Unsupported : gtk_tree_view_set_destroy_count_func : unsupported parameter func : no type generator for TreeDestroyCountFunc, GtkTreeDestroyCountFunc
 
-// Unsupported : gtk_tree_view_set_drag_dest_row : no return generator
+// SetDragDestRow is a wrapper around the C function gtk_tree_view_set_drag_dest_row.
+func (recv *TreeView) SetDragDestRow(path *TreePath, pos TreeViewDropPosition) {
+	c_path := (*C.GtkTreePath)(path.ToC())
 
-// Unsupported : gtk_tree_view_set_enable_search : no return generator
+	c_pos := (C.GtkTreeViewDropPosition)(pos)
 
-// Unsupported : gtk_tree_view_set_enable_tree_lines : no return generator
+	C.gtk_tree_view_set_drag_dest_row((*C.GtkTreeView)(recv.native), c_path, c_pos)
 
-// Unsupported : gtk_tree_view_set_expander_column : no return generator
+	return
+}
 
-// Unsupported : gtk_tree_view_set_fixed_height_mode : no return generator
+// SetEnableSearch is a wrapper around the C function gtk_tree_view_set_enable_search.
+func (recv *TreeView) SetEnableSearch(enableSearch bool) {
+	c_enable_search :=
+		boolToGboolean(enableSearch)
 
-// Unsupported : gtk_tree_view_set_grid_lines : no return generator
+	C.gtk_tree_view_set_enable_search((*C.GtkTreeView)(recv.native), c_enable_search)
 
-// Unsupported : gtk_tree_view_set_hadjustment : no return generator
+	return
+}
 
-// Unsupported : gtk_tree_view_set_headers_clickable : no return generator
+// SetExpanderColumn is a wrapper around the C function gtk_tree_view_set_expander_column.
+func (recv *TreeView) SetExpanderColumn(column *TreeViewColumn) {
+	c_column := (*C.GtkTreeViewColumn)(column.ToC())
 
-// Unsupported : gtk_tree_view_set_headers_visible : no return generator
+	C.gtk_tree_view_set_expander_column((*C.GtkTreeView)(recv.native), c_column)
 
-// Unsupported : gtk_tree_view_set_hover_expand : no return generator
+	return
+}
 
-// Unsupported : gtk_tree_view_set_hover_selection : no return generator
+// SetHadjustment is a wrapper around the C function gtk_tree_view_set_hadjustment.
+func (recv *TreeView) SetHadjustment(adjustment *Adjustment) {
+	c_adjustment := (*C.GtkAdjustment)(adjustment.ToC())
 
-// Unsupported : gtk_tree_view_set_level_indentation : no return generator
+	C.gtk_tree_view_set_hadjustment((*C.GtkTreeView)(recv.native), c_adjustment)
+
+	return
+}
+
+// SetHeadersClickable is a wrapper around the C function gtk_tree_view_set_headers_clickable.
+func (recv *TreeView) SetHeadersClickable(setting bool) {
+	c_setting :=
+		boolToGboolean(setting)
+
+	C.gtk_tree_view_set_headers_clickable((*C.GtkTreeView)(recv.native), c_setting)
+
+	return
+}
+
+// SetHeadersVisible is a wrapper around the C function gtk_tree_view_set_headers_visible.
+func (recv *TreeView) SetHeadersVisible(headersVisible bool) {
+	c_headers_visible :=
+		boolToGboolean(headersVisible)
+
+	C.gtk_tree_view_set_headers_visible((*C.GtkTreeView)(recv.native), c_headers_visible)
+
+	return
+}
 
 // Unsupported : gtk_tree_view_set_model : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
 
-// Unsupported : gtk_tree_view_set_reorderable : no return generator
+// SetReorderable is a wrapper around the C function gtk_tree_view_set_reorderable.
+func (recv *TreeView) SetReorderable(reorderable bool) {
+	c_reorderable :=
+		boolToGboolean(reorderable)
+
+	C.gtk_tree_view_set_reorderable((*C.GtkTreeView)(recv.native), c_reorderable)
+
+	return
+}
 
 // Unsupported : gtk_tree_view_set_row_separator_func : unsupported parameter func : no type generator for TreeViewRowSeparatorFunc, GtkTreeViewRowSeparatorFunc
 
-// Unsupported : gtk_tree_view_set_rubber_banding : no return generator
+// SetRulesHint is a wrapper around the C function gtk_tree_view_set_rules_hint.
+func (recv *TreeView) SetRulesHint(setting bool) {
+	c_setting :=
+		boolToGboolean(setting)
 
-// Unsupported : gtk_tree_view_set_rules_hint : no return generator
+	C.gtk_tree_view_set_rules_hint((*C.GtkTreeView)(recv.native), c_setting)
 
-// Unsupported : gtk_tree_view_set_search_column : no return generator
+	return
+}
 
-// Unsupported : gtk_tree_view_set_search_entry : no return generator
+// SetSearchColumn is a wrapper around the C function gtk_tree_view_set_search_column.
+func (recv *TreeView) SetSearchColumn(column int32) {
+	c_column := (C.gint)(column)
+
+	C.gtk_tree_view_set_search_column((*C.GtkTreeView)(recv.native), c_column)
+
+	return
+}
 
 // Unsupported : gtk_tree_view_set_search_equal_func : unsupported parameter search_equal_func : no type generator for TreeViewSearchEqualFunc, GtkTreeViewSearchEqualFunc
 
 // Unsupported : gtk_tree_view_set_search_position_func : unsupported parameter func : no type generator for TreeViewSearchPositionFunc, GtkTreeViewSearchPositionFunc
 
-// Unsupported : gtk_tree_view_set_show_expanders : no return generator
+// SetVadjustment is a wrapper around the C function gtk_tree_view_set_vadjustment.
+func (recv *TreeView) SetVadjustment(adjustment *Adjustment) {
+	c_adjustment := (*C.GtkAdjustment)(adjustment.ToC())
 
-// Unsupported : gtk_tree_view_set_tooltip_cell : no return generator
+	C.gtk_tree_view_set_vadjustment((*C.GtkTreeView)(recv.native), c_adjustment)
 
-// Unsupported : gtk_tree_view_set_tooltip_column : no return generator
+	return
+}
 
-// Unsupported : gtk_tree_view_set_tooltip_row : no return generator
+// UnsetRowsDragDest is a wrapper around the C function gtk_tree_view_unset_rows_drag_dest.
+func (recv *TreeView) UnsetRowsDragDest() {
+	C.gtk_tree_view_unset_rows_drag_dest((*C.GtkTreeView)(recv.native))
 
-// Unsupported : gtk_tree_view_set_vadjustment : no return generator
+	return
+}
 
-// Unsupported : gtk_tree_view_unset_rows_drag_dest : no return generator
+// UnsetRowsDragSource is a wrapper around the C function gtk_tree_view_unset_rows_drag_source.
+func (recv *TreeView) UnsetRowsDragSource() {
+	C.gtk_tree_view_unset_rows_drag_source((*C.GtkTreeView)(recv.native))
 
-// Unsupported : gtk_tree_view_unset_rows_drag_source : no return generator
+	return
+}
 
 // TreeViewAccessible is a wrapper around the C record GtkTreeViewAccessible.
 type TreeViewAccessible struct {
@@ -11464,7 +12958,19 @@ func TreeViewColumnNew() *TreeViewColumn {
 
 // Unsupported : gtk_tree_view_column_new_with_attributes : unsupported parameter ... : varargs
 
-// Unsupported : gtk_tree_view_column_add_attribute : no return generator
+// AddAttribute is a wrapper around the C function gtk_tree_view_column_add_attribute.
+func (recv *TreeViewColumn) AddAttribute(cellRenderer *CellRenderer, attribute string, column int32) {
+	c_cell_renderer := (*C.GtkCellRenderer)(cellRenderer.ToC())
+
+	c_attribute := C.CString(attribute)
+	defer C.free(unsafe.Pointer(c_attribute))
+
+	c_column := (C.gint)(column)
+
+	C.gtk_tree_view_column_add_attribute((*C.GtkTreeViewColumn)(recv.native), c_cell_renderer, c_attribute, c_column)
+
+	return
+}
 
 // Unsupported : gtk_tree_view_column_cell_get_position : unsupported parameter x_offset : no type generator for gint, gint*
 
@@ -11480,13 +12986,28 @@ func (recv *TreeViewColumn) CellIsVisible() bool {
 
 // Unsupported : gtk_tree_view_column_cell_set_cell_data : unsupported parameter tree_model : no type generator for TreeModel, GtkTreeModel*
 
-// Unsupported : gtk_tree_view_column_clear : no return generator
+// Clear is a wrapper around the C function gtk_tree_view_column_clear.
+func (recv *TreeViewColumn) Clear() {
+	C.gtk_tree_view_column_clear((*C.GtkTreeViewColumn)(recv.native))
 
-// Unsupported : gtk_tree_view_column_clear_attributes : no return generator
+	return
+}
 
-// Unsupported : gtk_tree_view_column_clicked : no return generator
+// ClearAttributes is a wrapper around the C function gtk_tree_view_column_clear_attributes.
+func (recv *TreeViewColumn) ClearAttributes(cellRenderer *CellRenderer) {
+	c_cell_renderer := (*C.GtkCellRenderer)(cellRenderer.ToC())
 
-// Unsupported : gtk_tree_view_column_focus_cell : no return generator
+	C.gtk_tree_view_column_clear_attributes((*C.GtkTreeViewColumn)(recv.native), c_cell_renderer)
+
+	return
+}
+
+// Clicked is a wrapper around the C function gtk_tree_view_column_clicked.
+func (recv *TreeViewColumn) Clicked() {
+	C.gtk_tree_view_column_clicked((*C.GtkTreeViewColumn)(recv.native))
+
+	return
+}
 
 // GetAlignment is a wrapper around the C function gtk_tree_view_column_get_alignment.
 func (recv *TreeViewColumn) GetAlignment() float32 {
@@ -11616,47 +13137,174 @@ func (recv *TreeViewColumn) GetWidth() int32 {
 	return retGo
 }
 
-// Unsupported : gtk_tree_view_column_pack_end : no return generator
+// PackEnd is a wrapper around the C function gtk_tree_view_column_pack_end.
+func (recv *TreeViewColumn) PackEnd(cell *CellRenderer, expand bool) {
+	c_cell := (*C.GtkCellRenderer)(cell.ToC())
 
-// Unsupported : gtk_tree_view_column_pack_start : no return generator
+	c_expand :=
+		boolToGboolean(expand)
 
-// Unsupported : gtk_tree_view_column_queue_resize : no return generator
+	C.gtk_tree_view_column_pack_end((*C.GtkTreeViewColumn)(recv.native), c_cell, c_expand)
 
-// Unsupported : gtk_tree_view_column_set_alignment : no return generator
+	return
+}
+
+// PackStart is a wrapper around the C function gtk_tree_view_column_pack_start.
+func (recv *TreeViewColumn) PackStart(cell *CellRenderer, expand bool) {
+	c_cell := (*C.GtkCellRenderer)(cell.ToC())
+
+	c_expand :=
+		boolToGboolean(expand)
+
+	C.gtk_tree_view_column_pack_start((*C.GtkTreeViewColumn)(recv.native), c_cell, c_expand)
+
+	return
+}
+
+// SetAlignment is a wrapper around the C function gtk_tree_view_column_set_alignment.
+func (recv *TreeViewColumn) SetAlignment(xalign float32) {
+	c_xalign := (C.gfloat)(xalign)
+
+	C.gtk_tree_view_column_set_alignment((*C.GtkTreeViewColumn)(recv.native), c_xalign)
+
+	return
+}
 
 // Unsupported : gtk_tree_view_column_set_attributes : unsupported parameter ... : varargs
 
 // Unsupported : gtk_tree_view_column_set_cell_data_func : unsupported parameter func : no type generator for TreeCellDataFunc, GtkTreeCellDataFunc
 
-// Unsupported : gtk_tree_view_column_set_clickable : no return generator
+// SetClickable is a wrapper around the C function gtk_tree_view_column_set_clickable.
+func (recv *TreeViewColumn) SetClickable(clickable bool) {
+	c_clickable :=
+		boolToGboolean(clickable)
 
-// Unsupported : gtk_tree_view_column_set_expand : no return generator
+	C.gtk_tree_view_column_set_clickable((*C.GtkTreeViewColumn)(recv.native), c_clickable)
 
-// Unsupported : gtk_tree_view_column_set_fixed_width : no return generator
+	return
+}
 
-// Unsupported : gtk_tree_view_column_set_max_width : no return generator
+// SetFixedWidth is a wrapper around the C function gtk_tree_view_column_set_fixed_width.
+func (recv *TreeViewColumn) SetFixedWidth(fixedWidth int32) {
+	c_fixed_width := (C.gint)(fixedWidth)
 
-// Unsupported : gtk_tree_view_column_set_min_width : no return generator
+	C.gtk_tree_view_column_set_fixed_width((*C.GtkTreeViewColumn)(recv.native), c_fixed_width)
 
-// Unsupported : gtk_tree_view_column_set_reorderable : no return generator
+	return
+}
 
-// Unsupported : gtk_tree_view_column_set_resizable : no return generator
+// SetMaxWidth is a wrapper around the C function gtk_tree_view_column_set_max_width.
+func (recv *TreeViewColumn) SetMaxWidth(maxWidth int32) {
+	c_max_width := (C.gint)(maxWidth)
 
-// Unsupported : gtk_tree_view_column_set_sizing : no return generator
+	C.gtk_tree_view_column_set_max_width((*C.GtkTreeViewColumn)(recv.native), c_max_width)
 
-// Unsupported : gtk_tree_view_column_set_sort_column_id : no return generator
+	return
+}
 
-// Unsupported : gtk_tree_view_column_set_sort_indicator : no return generator
+// SetMinWidth is a wrapper around the C function gtk_tree_view_column_set_min_width.
+func (recv *TreeViewColumn) SetMinWidth(minWidth int32) {
+	c_min_width := (C.gint)(minWidth)
 
-// Unsupported : gtk_tree_view_column_set_sort_order : no return generator
+	C.gtk_tree_view_column_set_min_width((*C.GtkTreeViewColumn)(recv.native), c_min_width)
 
-// Unsupported : gtk_tree_view_column_set_spacing : no return generator
+	return
+}
 
-// Unsupported : gtk_tree_view_column_set_title : no return generator
+// SetReorderable is a wrapper around the C function gtk_tree_view_column_set_reorderable.
+func (recv *TreeViewColumn) SetReorderable(reorderable bool) {
+	c_reorderable :=
+		boolToGboolean(reorderable)
 
-// Unsupported : gtk_tree_view_column_set_visible : no return generator
+	C.gtk_tree_view_column_set_reorderable((*C.GtkTreeViewColumn)(recv.native), c_reorderable)
 
-// Unsupported : gtk_tree_view_column_set_widget : no return generator
+	return
+}
+
+// SetResizable is a wrapper around the C function gtk_tree_view_column_set_resizable.
+func (recv *TreeViewColumn) SetResizable(resizable bool) {
+	c_resizable :=
+		boolToGboolean(resizable)
+
+	C.gtk_tree_view_column_set_resizable((*C.GtkTreeViewColumn)(recv.native), c_resizable)
+
+	return
+}
+
+// SetSizing is a wrapper around the C function gtk_tree_view_column_set_sizing.
+func (recv *TreeViewColumn) SetSizing(type_ TreeViewColumnSizing) {
+	c_type := (C.GtkTreeViewColumnSizing)(type_)
+
+	C.gtk_tree_view_column_set_sizing((*C.GtkTreeViewColumn)(recv.native), c_type)
+
+	return
+}
+
+// SetSortColumnId is a wrapper around the C function gtk_tree_view_column_set_sort_column_id.
+func (recv *TreeViewColumn) SetSortColumnId(sortColumnId int32) {
+	c_sort_column_id := (C.gint)(sortColumnId)
+
+	C.gtk_tree_view_column_set_sort_column_id((*C.GtkTreeViewColumn)(recv.native), c_sort_column_id)
+
+	return
+}
+
+// SetSortIndicator is a wrapper around the C function gtk_tree_view_column_set_sort_indicator.
+func (recv *TreeViewColumn) SetSortIndicator(setting bool) {
+	c_setting :=
+		boolToGboolean(setting)
+
+	C.gtk_tree_view_column_set_sort_indicator((*C.GtkTreeViewColumn)(recv.native), c_setting)
+
+	return
+}
+
+// SetSortOrder is a wrapper around the C function gtk_tree_view_column_set_sort_order.
+func (recv *TreeViewColumn) SetSortOrder(order SortType) {
+	c_order := (C.GtkSortType)(order)
+
+	C.gtk_tree_view_column_set_sort_order((*C.GtkTreeViewColumn)(recv.native), c_order)
+
+	return
+}
+
+// SetSpacing is a wrapper around the C function gtk_tree_view_column_set_spacing.
+func (recv *TreeViewColumn) SetSpacing(spacing int32) {
+	c_spacing := (C.gint)(spacing)
+
+	C.gtk_tree_view_column_set_spacing((*C.GtkTreeViewColumn)(recv.native), c_spacing)
+
+	return
+}
+
+// SetTitle is a wrapper around the C function gtk_tree_view_column_set_title.
+func (recv *TreeViewColumn) SetTitle(title string) {
+	c_title := C.CString(title)
+	defer C.free(unsafe.Pointer(c_title))
+
+	C.gtk_tree_view_column_set_title((*C.GtkTreeViewColumn)(recv.native), c_title)
+
+	return
+}
+
+// SetVisible is a wrapper around the C function gtk_tree_view_column_set_visible.
+func (recv *TreeViewColumn) SetVisible(visible bool) {
+	c_visible :=
+		boolToGboolean(visible)
+
+	C.gtk_tree_view_column_set_visible((*C.GtkTreeViewColumn)(recv.native), c_visible)
+
+	return
+}
+
+// SetWidget is a wrapper around the C function gtk_tree_view_column_set_widget.
+func (recv *TreeViewColumn) SetWidget(widget *Widget) {
+	c_widget := (*C.GtkWidget)(widget.ToC())
+
+	C.gtk_tree_view_column_set_widget((*C.GtkTreeViewColumn)(recv.native), c_widget)
+
+	return
+}
 
 // UIManager is a wrapper around the C record GtkUIManager.
 type UIManager struct {
@@ -11680,18 +13328,6 @@ func (recv *UIManager) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
-
-// Unsupported : gtk_ui_manager_add_ui : no return generator
-
-// Unsupported : gtk_ui_manager_ensure_update : no return generator
-
-// Unsupported : gtk_ui_manager_insert_action_group : no return generator
-
-// Unsupported : gtk_ui_manager_remove_action_group : no return generator
-
-// Unsupported : gtk_ui_manager_remove_ui : no return generator
-
-// Unsupported : gtk_ui_manager_set_add_tearoffs : no return generator
 
 // VBox is a wrapper around the C record GtkVBox.
 type VBox struct {
@@ -11955,11 +13591,32 @@ func (recv *Viewport) GetVadjustment() *Adjustment {
 	return retGo
 }
 
-// Unsupported : gtk_viewport_set_hadjustment : no return generator
+// SetHadjustment is a wrapper around the C function gtk_viewport_set_hadjustment.
+func (recv *Viewport) SetHadjustment(adjustment *Adjustment) {
+	c_adjustment := (*C.GtkAdjustment)(adjustment.ToC())
 
-// Unsupported : gtk_viewport_set_shadow_type : no return generator
+	C.gtk_viewport_set_hadjustment((*C.GtkViewport)(recv.native), c_adjustment)
 
-// Unsupported : gtk_viewport_set_vadjustment : no return generator
+	return
+}
+
+// SetShadowType is a wrapper around the C function gtk_viewport_set_shadow_type.
+func (recv *Viewport) SetShadowType(type_ ShadowType) {
+	c_type := (C.GtkShadowType)(type_)
+
+	C.gtk_viewport_set_shadow_type((*C.GtkViewport)(recv.native), c_type)
+
+	return
+}
+
+// SetVadjustment is a wrapper around the C function gtk_viewport_set_vadjustment.
+func (recv *Viewport) SetVadjustment(adjustment *Adjustment) {
+	c_adjustment := (*C.GtkAdjustment)(adjustment.ToC())
+
+	C.gtk_viewport_set_vadjustment((*C.GtkViewport)(recv.native), c_adjustment)
+
+	return
+}
 
 // VolumeButton is a wrapper around the C record GtkVolumeButton.
 type VolumeButton struct {
@@ -12016,13 +13673,32 @@ func (recv *Widget) Activate() bool {
 	return retGo
 }
 
-// Unsupported : gtk_widget_add_accelerator : no return generator
+// AddAccelerator is a wrapper around the C function gtk_widget_add_accelerator.
+func (recv *Widget) AddAccelerator(accelSignal string, accelGroup *AccelGroup, accelKey uint32, accelMods gdk.ModifierType, accelFlags AccelFlags) {
+	c_accel_signal := C.CString(accelSignal)
+	defer C.free(unsafe.Pointer(c_accel_signal))
 
-// Unsupported : gtk_widget_add_device_events : no return generator
+	c_accel_group := (*C.GtkAccelGroup)(accelGroup.ToC())
 
-// Unsupported : gtk_widget_add_events : no return generator
+	c_accel_key := (C.guint)(accelKey)
 
-// Unsupported : gtk_widget_add_mnemonic_label : no return generator
+	c_accel_mods := (C.GdkModifierType)(accelMods)
+
+	c_accel_flags := (C.GtkAccelFlags)(accelFlags)
+
+	C.gtk_widget_add_accelerator((*C.GtkWidget)(recv.native), c_accel_signal, c_accel_group, c_accel_key, c_accel_mods, c_accel_flags)
+
+	return
+}
+
+// AddEvents is a wrapper around the C function gtk_widget_add_events.
+func (recv *Widget) AddEvents(events int32) {
+	c_events := (C.gint)(events)
+
+	C.gtk_widget_add_events((*C.GtkWidget)(recv.native), c_events)
+
+	return
+}
 
 // Unsupported : gtk_widget_add_tick_callback : unsupported parameter callback : no type generator for TickCallback, GtkTickCallback
 
@@ -12036,7 +13712,15 @@ func (recv *Widget) ChildFocus(direction DirectionType) bool {
 	return retGo
 }
 
-// Unsupported : gtk_widget_child_notify : no return generator
+// ChildNotify is a wrapper around the C function gtk_widget_child_notify.
+func (recv *Widget) ChildNotify(childProperty string) {
+	c_child_property := C.CString(childProperty)
+	defer C.free(unsafe.Pointer(c_child_property))
+
+	C.gtk_widget_child_notify((*C.GtkWidget)(recv.native), c_child_property)
+
+	return
+}
 
 // Unsupported : gtk_widget_class_path : unsupported parameter path_length : no type generator for guint, guint*
 
@@ -12069,7 +13753,12 @@ func (recv *Widget) CreatePangoLayout(text string) *pango.Layout {
 	return retGo
 }
 
-// Unsupported : gtk_widget_destroy : no return generator
+// Destroy is a wrapper around the C function gtk_widget_destroy.
+func (recv *Widget) Destroy() {
+	C.gtk_widget_destroy((*C.GtkWidget)(recv.native))
+
+	return
+}
 
 // Unsupported : gtk_widget_destroyed : unsupported parameter widget_pointer : record with indirection level of 2
 
@@ -12093,12 +13782,6 @@ func (recv *Widget) DragCheckThreshold(startX int32, startY int32, currentX int3
 	return retGo
 }
 
-// Unsupported : gtk_drag_dest_add_image_targets : no return generator
-
-// Unsupported : gtk_drag_dest_add_text_targets : no return generator
-
-// Unsupported : gtk_drag_dest_add_uri_targets : no return generator
-
 // Unsupported : gtk_drag_dest_find_target : return type : Blacklisted record : GdkAtom
 
 // DragDestGetTargetList is a wrapper around the C function gtk_drag_dest_get_target_list.
@@ -12111,49 +13794,97 @@ func (recv *Widget) DragDestGetTargetList() *TargetList {
 
 // Unsupported : gtk_drag_dest_set : unsupported parameter targets : no param type
 
-// Unsupported : gtk_drag_dest_set_proxy : no return generator
+// DragDestSetProxy is a wrapper around the C function gtk_drag_dest_set_proxy.
+func (recv *Widget) DragDestSetProxy(proxyWindow *gdk.Window, protocol gdk.DragProtocol, useCoordinates bool) {
+	c_proxy_window := (*C.GdkWindow)(proxyWindow.ToC())
 
-// Unsupported : gtk_drag_dest_set_target_list : no return generator
+	c_protocol := (C.GdkDragProtocol)(protocol)
 
-// Unsupported : gtk_drag_dest_set_track_motion : no return generator
+	c_use_coordinates :=
+		boolToGboolean(useCoordinates)
 
-// Unsupported : gtk_drag_dest_unset : no return generator
+	C.gtk_drag_dest_set_proxy((*C.GtkWidget)(recv.native), c_proxy_window, c_protocol, c_use_coordinates)
+
+	return
+}
+
+// DragDestSetTargetList is a wrapper around the C function gtk_drag_dest_set_target_list.
+func (recv *Widget) DragDestSetTargetList(targetList *TargetList) {
+	c_target_list := (*C.GtkTargetList)(targetList.ToC())
+
+	C.gtk_drag_dest_set_target_list((*C.GtkWidget)(recv.native), c_target_list)
+
+	return
+}
+
+// DragDestUnset is a wrapper around the C function gtk_drag_dest_unset.
+func (recv *Widget) DragDestUnset() {
+	C.gtk_drag_dest_unset((*C.GtkWidget)(recv.native))
+
+	return
+}
 
 // Unsupported : gtk_drag_get_data : unsupported parameter target : Blacklisted record : GdkAtom
 
-// Unsupported : gtk_drag_highlight : no return generator
+// DragHighlight is a wrapper around the C function gtk_drag_highlight.
+func (recv *Widget) DragHighlight() {
+	C.gtk_drag_highlight((*C.GtkWidget)(recv.native))
 
-// Unsupported : gtk_drag_source_add_image_targets : no return generator
-
-// Unsupported : gtk_drag_source_add_text_targets : no return generator
-
-// Unsupported : gtk_drag_source_add_uri_targets : no return generator
+	return
+}
 
 // Unsupported : gtk_drag_source_set : unsupported parameter targets : no param type
 
 // Unsupported : gtk_drag_source_set_icon_gicon : unsupported parameter icon : no type generator for Gio.Icon, GIcon*
 
-// Unsupported : gtk_drag_source_set_icon_name : no return generator
+// DragSourceSetIconPixbuf is a wrapper around the C function gtk_drag_source_set_icon_pixbuf.
+func (recv *Widget) DragSourceSetIconPixbuf(pixbuf *gdkpixbuf.Pixbuf) {
+	c_pixbuf := (*C.GdkPixbuf)(pixbuf.ToC())
 
-// Unsupported : gtk_drag_source_set_icon_pixbuf : no return generator
+	C.gtk_drag_source_set_icon_pixbuf((*C.GtkWidget)(recv.native), c_pixbuf)
 
-// Unsupported : gtk_drag_source_set_icon_stock : no return generator
+	return
+}
 
-// Unsupported : gtk_drag_source_set_target_list : no return generator
+// DragSourceSetIconStock is a wrapper around the C function gtk_drag_source_set_icon_stock.
+func (recv *Widget) DragSourceSetIconStock(stockId string) {
+	c_stock_id := C.CString(stockId)
+	defer C.free(unsafe.Pointer(c_stock_id))
 
-// Unsupported : gtk_drag_source_unset : no return generator
+	C.gtk_drag_source_set_icon_stock((*C.GtkWidget)(recv.native), c_stock_id)
 
-// Unsupported : gtk_drag_unhighlight : no return generator
+	return
+}
 
-// Unsupported : gtk_widget_draw : no return generator
+// DragSourceUnset is a wrapper around the C function gtk_drag_source_unset.
+func (recv *Widget) DragSourceUnset() {
+	C.gtk_drag_source_unset((*C.GtkWidget)(recv.native))
 
-// Unsupported : gtk_widget_ensure_style : no return generator
+	return
+}
 
-// Unsupported : gtk_widget_error_bell : no return generator
+// DragUnhighlight is a wrapper around the C function gtk_drag_unhighlight.
+func (recv *Widget) DragUnhighlight() {
+	C.gtk_drag_unhighlight((*C.GtkWidget)(recv.native))
+
+	return
+}
+
+// EnsureStyle is a wrapper around the C function gtk_widget_ensure_style.
+func (recv *Widget) EnsureStyle() {
+	C.gtk_widget_ensure_style((*C.GtkWidget)(recv.native))
+
+	return
+}
 
 // Unsupported : gtk_widget_event : unsupported parameter event : no type generator for Gdk.Event, GdkEvent*
 
-// Unsupported : gtk_widget_freeze_child_notify : no return generator
+// FreezeChildNotify is a wrapper around the C function gtk_widget_freeze_child_notify.
+func (recv *Widget) FreezeChildNotify() {
+	C.gtk_widget_freeze_child_notify((*C.GtkWidget)(recv.native))
+
+	return
+}
 
 // GetAccessible is a wrapper around the C function gtk_widget_get_accessible.
 func (recv *Widget) GetAccessible() *atk.Object {
@@ -12187,7 +13918,16 @@ func (recv *Widget) GetAllocatedWidth() int32 {
 
 // Unsupported : gtk_widget_get_ancestor : unsupported parameter widget_type : no type generator for GType, GType
 
-// Unsupported : gtk_widget_get_child_requisition : no return generator
+// GetChildRequisition is a wrapper around the C function gtk_widget_get_child_requisition.
+func (recv *Widget) GetChildRequisition() *Requisition {
+	var c_requisition C.GtkRequisition
+
+	C.gtk_widget_get_child_requisition((*C.GtkWidget)(recv.native), &c_requisition)
+
+	requisition := RequisitionNewFromC(unsafe.Pointer(&c_requisition))
+
+	return requisition
+}
 
 // GetChildVisible is a wrapper around the C function gtk_widget_get_child_visible.
 func (recv *Widget) GetChildVisible() bool {
@@ -12306,13 +14046,9 @@ func (recv *Widget) GetPath() *WidgetPath {
 
 // Unsupported : gtk_widget_get_preferred_height_for_width : unsupported parameter minimum_height : no type generator for gint, gint*
 
-// Unsupported : gtk_widget_get_preferred_size : no return generator
-
 // Unsupported : gtk_widget_get_preferred_width : unsupported parameter minimum_width : no type generator for gint, gint*
 
 // Unsupported : gtk_widget_get_preferred_width_for_height : unsupported parameter minimum_width : no type generator for gint, gint*
-
-// Unsupported : gtk_widget_get_requisition : no return generator
 
 // GetSettings is a wrapper around the C function gtk_widget_get_settings.
 func (recv *Widget) GetSettings() *Settings {
@@ -12390,15 +14126,40 @@ func (recv *Widget) GetVisual() *gdk.Visual {
 	return retGo
 }
 
-// Unsupported : gtk_grab_add : no return generator
+// GrabAdd is a wrapper around the C function gtk_grab_add.
+func (recv *Widget) GrabAdd() {
+	C.gtk_grab_add((*C.GtkWidget)(recv.native))
 
-// Unsupported : gtk_widget_grab_default : no return generator
+	return
+}
 
-// Unsupported : gtk_widget_grab_focus : no return generator
+// GrabDefault is a wrapper around the C function gtk_widget_grab_default.
+func (recv *Widget) GrabDefault() {
+	C.gtk_widget_grab_default((*C.GtkWidget)(recv.native))
 
-// Unsupported : gtk_grab_remove : no return generator
+	return
+}
 
-// Unsupported : gtk_widget_hide : no return generator
+// GrabFocus is a wrapper around the C function gtk_widget_grab_focus.
+func (recv *Widget) GrabFocus() {
+	C.gtk_widget_grab_focus((*C.GtkWidget)(recv.native))
+
+	return
+}
+
+// GrabRemove is a wrapper around the C function gtk_grab_remove.
+func (recv *Widget) GrabRemove() {
+	C.gtk_grab_remove((*C.GtkWidget)(recv.native))
+
+	return
+}
+
+// Hide is a wrapper around the C function gtk_widget_hide.
+func (recv *Widget) Hide() {
+	C.gtk_widget_hide((*C.GtkWidget)(recv.native))
+
+	return
+}
 
 // HideOnDelete is a wrapper around the C function gtk_widget_hide_on_delete.
 func (recv *Widget) HideOnDelete() bool {
@@ -12415,10 +14176,6 @@ func (recv *Widget) InDestruction() bool {
 
 	return retGo
 }
-
-// Unsupported : gtk_widget_init_template : no return generator
-
-// Unsupported : gtk_widget_input_shape_combine_region : no return generator
 
 // Unsupported : gtk_widget_insert_action_group : unsupported parameter group : no type generator for Gio.ActionGroup, GActionGroup*
 
@@ -12452,7 +14209,12 @@ func (recv *Widget) ListAccelClosures() *glib.List {
 
 // Unsupported : gtk_widget_list_action_prefixes : no return type
 
-// Unsupported : gtk_widget_map : no return generator
+// Map is a wrapper around the C function gtk_widget_map.
+func (recv *Widget) Map() {
+	C.gtk_widget_map((*C.GtkWidget)(recv.native))
+
+	return
+}
 
 // MnemonicActivate is a wrapper around the C function gtk_widget_mnemonic_activate.
 func (recv *Widget) MnemonicActivate(groupCycling bool) bool {
@@ -12465,47 +14227,112 @@ func (recv *Widget) MnemonicActivate(groupCycling bool) bool {
 	return retGo
 }
 
-// Unsupported : gtk_widget_modify_base : no return generator
+// ModifyBase is a wrapper around the C function gtk_widget_modify_base.
+func (recv *Widget) ModifyBase(state StateType, color *gdk.Color) {
+	c_state := (C.GtkStateType)(state)
 
-// Unsupported : gtk_widget_modify_bg : no return generator
+	c_color := (*C.GdkColor)(color.ToC())
 
-// Unsupported : gtk_widget_modify_cursor : no return generator
+	C.gtk_widget_modify_base((*C.GtkWidget)(recv.native), c_state, c_color)
 
-// Unsupported : gtk_widget_modify_fg : no return generator
+	return
+}
 
-// Unsupported : gtk_widget_modify_font : no return generator
+// ModifyBg is a wrapper around the C function gtk_widget_modify_bg.
+func (recv *Widget) ModifyBg(state StateType, color *gdk.Color) {
+	c_state := (C.GtkStateType)(state)
 
-// Unsupported : gtk_widget_modify_style : no return generator
+	c_color := (*C.GdkColor)(color.ToC())
 
-// Unsupported : gtk_widget_modify_text : no return generator
+	C.gtk_widget_modify_bg((*C.GtkWidget)(recv.native), c_state, c_color)
 
-// Unsupported : gtk_widget_override_background_color : no return generator
+	return
+}
 
-// Unsupported : gtk_widget_override_color : no return generator
+// ModifyFg is a wrapper around the C function gtk_widget_modify_fg.
+func (recv *Widget) ModifyFg(state StateType, color *gdk.Color) {
+	c_state := (C.GtkStateType)(state)
 
-// Unsupported : gtk_widget_override_cursor : no return generator
+	c_color := (*C.GdkColor)(color.ToC())
 
-// Unsupported : gtk_widget_override_font : no return generator
+	C.gtk_widget_modify_fg((*C.GtkWidget)(recv.native), c_state, c_color)
 
-// Unsupported : gtk_widget_override_symbolic_color : no return generator
+	return
+}
+
+// ModifyFont is a wrapper around the C function gtk_widget_modify_font.
+func (recv *Widget) ModifyFont(fontDesc *pango.FontDescription) {
+	c_font_desc := (*C.PangoFontDescription)(fontDesc.ToC())
+
+	C.gtk_widget_modify_font((*C.GtkWidget)(recv.native), c_font_desc)
+
+	return
+}
+
+// ModifyStyle is a wrapper around the C function gtk_widget_modify_style.
+func (recv *Widget) ModifyStyle(style *RcStyle) {
+	c_style := (*C.GtkRcStyle)(style.ToC())
+
+	C.gtk_widget_modify_style((*C.GtkWidget)(recv.native), c_style)
+
+	return
+}
+
+// ModifyText is a wrapper around the C function gtk_widget_modify_text.
+func (recv *Widget) ModifyText(state StateType, color *gdk.Color) {
+	c_state := (C.GtkStateType)(state)
+
+	c_color := (*C.GdkColor)(color.ToC())
+
+	C.gtk_widget_modify_text((*C.GtkWidget)(recv.native), c_state, c_color)
+
+	return
+}
 
 // Unsupported : gtk_widget_path : unsupported parameter path_length : no type generator for guint, guint*
 
-// Unsupported : gtk_widget_queue_allocate : no return generator
+// QueueComputeExpand is a wrapper around the C function gtk_widget_queue_compute_expand.
+func (recv *Widget) QueueComputeExpand() {
+	C.gtk_widget_queue_compute_expand((*C.GtkWidget)(recv.native))
 
-// Unsupported : gtk_widget_queue_compute_expand : no return generator
+	return
+}
 
-// Unsupported : gtk_widget_queue_draw : no return generator
+// QueueDraw is a wrapper around the C function gtk_widget_queue_draw.
+func (recv *Widget) QueueDraw() {
+	C.gtk_widget_queue_draw((*C.GtkWidget)(recv.native))
 
-// Unsupported : gtk_widget_queue_draw_area : no return generator
+	return
+}
 
-// Unsupported : gtk_widget_queue_draw_region : no return generator
+// QueueDrawArea is a wrapper around the C function gtk_widget_queue_draw_area.
+func (recv *Widget) QueueDrawArea(x int32, y int32, width int32, height int32) {
+	c_x := (C.gint)(x)
 
-// Unsupported : gtk_widget_queue_resize : no return generator
+	c_y := (C.gint)(y)
 
-// Unsupported : gtk_widget_queue_resize_no_redraw : no return generator
+	c_width := (C.gint)(width)
 
-// Unsupported : gtk_widget_realize : no return generator
+	c_height := (C.gint)(height)
+
+	C.gtk_widget_queue_draw_area((*C.GtkWidget)(recv.native), c_x, c_y, c_width, c_height)
+
+	return
+}
+
+// QueueResize is a wrapper around the C function gtk_widget_queue_resize.
+func (recv *Widget) QueueResize() {
+	C.gtk_widget_queue_resize((*C.GtkWidget)(recv.native))
+
+	return
+}
+
+// Realize is a wrapper around the C function gtk_widget_realize.
+func (recv *Widget) Realize() {
+	C.gtk_widget_realize((*C.GtkWidget)(recv.native))
+
+	return
+}
 
 // RegionIntersect is a wrapper around the C function gtk_widget_region_intersect.
 func (recv *Widget) RegionIntersect(region *cairo.Region) *cairo.Region {
@@ -12516,8 +14343,6 @@ func (recv *Widget) RegionIntersect(region *cairo.Region) *cairo.Region {
 
 	return retGo
 }
-
-// Unsupported : gtk_widget_register_window : no return generator
 
 // RemoveAccelerator is a wrapper around the C function gtk_widget_remove_accelerator.
 func (recv *Widget) RemoveAccelerator(accelGroup *AccelGroup, accelKey uint32, accelMods gdk.ModifierType) bool {
@@ -12533,163 +14358,329 @@ func (recv *Widget) RemoveAccelerator(accelGroup *AccelGroup, accelKey uint32, a
 	return retGo
 }
 
-// Unsupported : gtk_widget_remove_mnemonic_label : no return generator
-
-// Unsupported : gtk_widget_remove_tick_callback : no return generator
-
 // Unsupported : gtk_widget_render_icon : unsupported parameter size : no type generator for gint, GtkIconSize
 
 // Unsupported : gtk_widget_render_icon_pixbuf : unsupported parameter size : no type generator for gint, GtkIconSize
 
-// Unsupported : gtk_widget_reparent : no return generator
+// Reparent is a wrapper around the C function gtk_widget_reparent.
+func (recv *Widget) Reparent(newParent *Widget) {
+	c_new_parent := (*C.GtkWidget)(newParent.ToC())
 
-// Unsupported : gtk_widget_reset_rc_styles : no return generator
+	C.gtk_widget_reparent((*C.GtkWidget)(recv.native), c_new_parent)
 
-// Unsupported : gtk_widget_reset_style : no return generator
+	return
+}
+
+// ResetRcStyles is a wrapper around the C function gtk_widget_reset_rc_styles.
+func (recv *Widget) ResetRcStyles() {
+	C.gtk_widget_reset_rc_styles((*C.GtkWidget)(recv.native))
+
+	return
+}
 
 // Unsupported : gtk_widget_send_expose : unsupported parameter event : no type generator for Gdk.Event, GdkEvent*
 
 // Unsupported : gtk_widget_send_focus_change : unsupported parameter event : no type generator for Gdk.Event, GdkEvent*
 
-// Unsupported : gtk_widget_set_accel_path : no return generator
+// SetAccelPath is a wrapper around the C function gtk_widget_set_accel_path.
+func (recv *Widget) SetAccelPath(accelPath string, accelGroup *AccelGroup) {
+	c_accel_path := C.CString(accelPath)
+	defer C.free(unsafe.Pointer(c_accel_path))
+
+	c_accel_group := (*C.GtkAccelGroup)(accelGroup.ToC())
+
+	C.gtk_widget_set_accel_path((*C.GtkWidget)(recv.native), c_accel_path, c_accel_group)
+
+	return
+}
 
 // Unsupported : gtk_widget_set_allocation : unsupported parameter allocation : Blacklisted record : GdkRectangle
 
-// Unsupported : gtk_widget_set_app_paintable : no return generator
+// SetAppPaintable is a wrapper around the C function gtk_widget_set_app_paintable.
+func (recv *Widget) SetAppPaintable(appPaintable bool) {
+	c_app_paintable :=
+		boolToGboolean(appPaintable)
 
-// Unsupported : gtk_widget_set_can_default : no return generator
+	C.gtk_widget_set_app_paintable((*C.GtkWidget)(recv.native), c_app_paintable)
 
-// Unsupported : gtk_widget_set_can_focus : no return generator
+	return
+}
 
-// Unsupported : gtk_widget_set_child_visible : no return generator
+// SetChildVisible is a wrapper around the C function gtk_widget_set_child_visible.
+func (recv *Widget) SetChildVisible(isVisible bool) {
+	c_is_visible :=
+		boolToGboolean(isVisible)
+
+	C.gtk_widget_set_child_visible((*C.GtkWidget)(recv.native), c_is_visible)
+
+	return
+}
 
 // Unsupported : gtk_widget_set_clip : unsupported parameter clip : Blacklisted record : GdkRectangle
 
-// Unsupported : gtk_widget_set_composite_name : no return generator
+// SetCompositeName is a wrapper around the C function gtk_widget_set_composite_name.
+func (recv *Widget) SetCompositeName(name string) {
+	c_name := C.CString(name)
+	defer C.free(unsafe.Pointer(c_name))
 
-// Unsupported : gtk_widget_set_device_enabled : no return generator
+	C.gtk_widget_set_composite_name((*C.GtkWidget)(recv.native), c_name)
 
-// Unsupported : gtk_widget_set_device_events : no return generator
+	return
+}
 
-// Unsupported : gtk_widget_set_direction : no return generator
+// SetDirection is a wrapper around the C function gtk_widget_set_direction.
+func (recv *Widget) SetDirection(dir TextDirection) {
+	c_dir := (C.GtkTextDirection)(dir)
 
-// Unsupported : gtk_widget_set_double_buffered : no return generator
+	C.gtk_widget_set_direction((*C.GtkWidget)(recv.native), c_dir)
 
-// Unsupported : gtk_widget_set_events : no return generator
+	return
+}
 
-// Unsupported : gtk_widget_set_focus_on_click : no return generator
+// SetDoubleBuffered is a wrapper around the C function gtk_widget_set_double_buffered.
+func (recv *Widget) SetDoubleBuffered(doubleBuffered bool) {
+	c_double_buffered :=
+		boolToGboolean(doubleBuffered)
 
-// Unsupported : gtk_widget_set_font_map : no return generator
+	C.gtk_widget_set_double_buffered((*C.GtkWidget)(recv.native), c_double_buffered)
 
-// Unsupported : gtk_widget_set_font_options : no return generator
+	return
+}
 
-// Unsupported : gtk_widget_set_halign : no return generator
+// SetEvents is a wrapper around the C function gtk_widget_set_events.
+func (recv *Widget) SetEvents(events int32) {
+	c_events := (C.gint)(events)
 
-// Unsupported : gtk_widget_set_has_tooltip : no return generator
+	C.gtk_widget_set_events((*C.GtkWidget)(recv.native), c_events)
 
-// Unsupported : gtk_widget_set_has_window : no return generator
+	return
+}
 
-// Unsupported : gtk_widget_set_hexpand : no return generator
+// SetHalign is a wrapper around the C function gtk_widget_set_halign.
+func (recv *Widget) SetHalign(align Align) {
+	c_align := (C.GtkAlign)(align)
 
-// Unsupported : gtk_widget_set_hexpand_set : no return generator
+	C.gtk_widget_set_halign((*C.GtkWidget)(recv.native), c_align)
 
-// Unsupported : gtk_widget_set_mapped : no return generator
+	return
+}
 
-// Unsupported : gtk_widget_set_margin_bottom : no return generator
+// SetHexpand is a wrapper around the C function gtk_widget_set_hexpand.
+func (recv *Widget) SetHexpand(expand bool) {
+	c_expand :=
+		boolToGboolean(expand)
 
-// Unsupported : gtk_widget_set_margin_end : no return generator
+	C.gtk_widget_set_hexpand((*C.GtkWidget)(recv.native), c_expand)
 
-// Unsupported : gtk_widget_set_margin_left : no return generator
+	return
+}
 
-// Unsupported : gtk_widget_set_margin_right : no return generator
+// SetHexpandSet is a wrapper around the C function gtk_widget_set_hexpand_set.
+func (recv *Widget) SetHexpandSet(set bool) {
+	c_set :=
+		boolToGboolean(set)
 
-// Unsupported : gtk_widget_set_margin_start : no return generator
+	C.gtk_widget_set_hexpand_set((*C.GtkWidget)(recv.native), c_set)
 
-// Unsupported : gtk_widget_set_margin_top : no return generator
+	return
+}
 
-// Unsupported : gtk_widget_set_name : no return generator
+// SetName is a wrapper around the C function gtk_widget_set_name.
+func (recv *Widget) SetName(name string) {
+	c_name := C.CString(name)
+	defer C.free(unsafe.Pointer(c_name))
 
-// Unsupported : gtk_widget_set_no_show_all : no return generator
+	C.gtk_widget_set_name((*C.GtkWidget)(recv.native), c_name)
 
-// Unsupported : gtk_widget_set_opacity : no return generator
+	return
+}
 
-// Unsupported : gtk_widget_set_parent : no return generator
+// SetParent is a wrapper around the C function gtk_widget_set_parent.
+func (recv *Widget) SetParent(parent *Widget) {
+	c_parent := (*C.GtkWidget)(parent.ToC())
 
-// Unsupported : gtk_widget_set_parent_window : no return generator
+	C.gtk_widget_set_parent((*C.GtkWidget)(recv.native), c_parent)
 
-// Unsupported : gtk_widget_set_realized : no return generator
+	return
+}
 
-// Unsupported : gtk_widget_set_receives_default : no return generator
+// SetParentWindow is a wrapper around the C function gtk_widget_set_parent_window.
+func (recv *Widget) SetParentWindow(parentWindow *gdk.Window) {
+	c_parent_window := (*C.GdkWindow)(parentWindow.ToC())
 
-// Unsupported : gtk_widget_set_redraw_on_allocate : no return generator
+	C.gtk_widget_set_parent_window((*C.GtkWidget)(recv.native), c_parent_window)
 
-// Unsupported : gtk_widget_set_sensitive : no return generator
+	return
+}
 
-// Unsupported : gtk_widget_set_size_request : no return generator
+// SetRedrawOnAllocate is a wrapper around the C function gtk_widget_set_redraw_on_allocate.
+func (recv *Widget) SetRedrawOnAllocate(redrawOnAllocate bool) {
+	c_redraw_on_allocate :=
+		boolToGboolean(redrawOnAllocate)
 
-// Unsupported : gtk_widget_set_state : no return generator
+	C.gtk_widget_set_redraw_on_allocate((*C.GtkWidget)(recv.native), c_redraw_on_allocate)
 
-// Unsupported : gtk_widget_set_state_flags : no return generator
+	return
+}
 
-// Unsupported : gtk_widget_set_style : no return generator
+// SetSensitive is a wrapper around the C function gtk_widget_set_sensitive.
+func (recv *Widget) SetSensitive(sensitive bool) {
+	c_sensitive :=
+		boolToGboolean(sensitive)
 
-// Unsupported : gtk_widget_set_support_multidevice : no return generator
+	C.gtk_widget_set_sensitive((*C.GtkWidget)(recv.native), c_sensitive)
 
-// Unsupported : gtk_widget_set_tooltip_markup : no return generator
+	return
+}
 
-// Unsupported : gtk_widget_set_tooltip_text : no return generator
+// SetSizeRequest is a wrapper around the C function gtk_widget_set_size_request.
+func (recv *Widget) SetSizeRequest(width int32, height int32) {
+	c_width := (C.gint)(width)
 
-// Unsupported : gtk_widget_set_tooltip_window : no return generator
+	c_height := (C.gint)(height)
 
-// Unsupported : gtk_widget_set_valign : no return generator
+	C.gtk_widget_set_size_request((*C.GtkWidget)(recv.native), c_width, c_height)
 
-// Unsupported : gtk_widget_set_vexpand : no return generator
+	return
+}
 
-// Unsupported : gtk_widget_set_vexpand_set : no return generator
+// SetState is a wrapper around the C function gtk_widget_set_state.
+func (recv *Widget) SetState(state StateType) {
+	c_state := (C.GtkStateType)(state)
 
-// Unsupported : gtk_widget_set_visible : no return generator
+	C.gtk_widget_set_state((*C.GtkWidget)(recv.native), c_state)
 
-// Unsupported : gtk_widget_set_visual : no return generator
+	return
+}
 
-// Unsupported : gtk_widget_set_window : no return generator
+// SetStyle is a wrapper around the C function gtk_widget_set_style.
+func (recv *Widget) SetStyle(style *Style) {
+	c_style := (*C.GtkStyle)(style.ToC())
 
-// Unsupported : gtk_widget_shape_combine_region : no return generator
+	C.gtk_widget_set_style((*C.GtkWidget)(recv.native), c_style)
 
-// Unsupported : gtk_widget_show : no return generator
+	return
+}
 
-// Unsupported : gtk_widget_show_all : no return generator
+// SetValign is a wrapper around the C function gtk_widget_set_valign.
+func (recv *Widget) SetValign(align Align) {
+	c_align := (C.GtkAlign)(align)
 
-// Unsupported : gtk_widget_show_now : no return generator
+	C.gtk_widget_set_valign((*C.GtkWidget)(recv.native), c_align)
+
+	return
+}
+
+// SetVexpand is a wrapper around the C function gtk_widget_set_vexpand.
+func (recv *Widget) SetVexpand(expand bool) {
+	c_expand :=
+		boolToGboolean(expand)
+
+	C.gtk_widget_set_vexpand((*C.GtkWidget)(recv.native), c_expand)
+
+	return
+}
+
+// SetVexpandSet is a wrapper around the C function gtk_widget_set_vexpand_set.
+func (recv *Widget) SetVexpandSet(set bool) {
+	c_set :=
+		boolToGboolean(set)
+
+	C.gtk_widget_set_vexpand_set((*C.GtkWidget)(recv.native), c_set)
+
+	return
+}
+
+// SetVisual is a wrapper around the C function gtk_widget_set_visual.
+func (recv *Widget) SetVisual(visual *gdk.Visual) {
+	c_visual := (*C.GdkVisual)(visual.ToC())
+
+	C.gtk_widget_set_visual((*C.GtkWidget)(recv.native), c_visual)
+
+	return
+}
+
+// Show is a wrapper around the C function gtk_widget_show.
+func (recv *Widget) Show() {
+	C.gtk_widget_show((*C.GtkWidget)(recv.native))
+
+	return
+}
+
+// ShowAll is a wrapper around the C function gtk_widget_show_all.
+func (recv *Widget) ShowAll() {
+	C.gtk_widget_show_all((*C.GtkWidget)(recv.native))
+
+	return
+}
+
+// ShowNow is a wrapper around the C function gtk_widget_show_now.
+func (recv *Widget) ShowNow() {
+	C.gtk_widget_show_now((*C.GtkWidget)(recv.native))
+
+	return
+}
 
 // Unsupported : gtk_widget_size_allocate : unsupported parameter allocation : Blacklisted record : GdkRectangle
 
 // Unsupported : gtk_widget_size_allocate_with_baseline : unsupported parameter allocation : Blacklisted record : GdkRectangle
 
-// Unsupported : gtk_widget_size_request : no return generator
+// SizeRequest is a wrapper around the C function gtk_widget_size_request.
+func (recv *Widget) SizeRequest() *Requisition {
+	var c_requisition C.GtkRequisition
 
-// Unsupported : gtk_widget_style_attach : no return generator
+	C.gtk_widget_size_request((*C.GtkWidget)(recv.native), &c_requisition)
+
+	requisition := RequisitionNewFromC(unsafe.Pointer(&c_requisition))
+
+	return requisition
+}
 
 // Unsupported : gtk_widget_style_get : unsupported parameter ... : varargs
 
-// Unsupported : gtk_widget_style_get_property : no return generator
+// StyleGetProperty is a wrapper around the C function gtk_widget_style_get_property.
+func (recv *Widget) StyleGetProperty(propertyName string, value *gobject.Value) {
+	c_property_name := C.CString(propertyName)
+	defer C.free(unsafe.Pointer(c_property_name))
+
+	c_value := (*C.GValue)(value.ToC())
+
+	C.gtk_widget_style_get_property((*C.GtkWidget)(recv.native), c_property_name, c_value)
+
+	return
+}
 
 // Unsupported : gtk_widget_style_get_valist : unsupported parameter var_args : no type generator for va_list, va_list
 
-// Unsupported : gtk_widget_thaw_child_notify : no return generator
+// ThawChildNotify is a wrapper around the C function gtk_widget_thaw_child_notify.
+func (recv *Widget) ThawChildNotify() {
+	C.gtk_widget_thaw_child_notify((*C.GtkWidget)(recv.native))
+
+	return
+}
 
 // Unsupported : gtk_widget_translate_coordinates : unsupported parameter dest_x : no type generator for gint, gint*
 
-// Unsupported : gtk_widget_trigger_tooltip_query : no return generator
+// Unmap is a wrapper around the C function gtk_widget_unmap.
+func (recv *Widget) Unmap() {
+	C.gtk_widget_unmap((*C.GtkWidget)(recv.native))
 
-// Unsupported : gtk_widget_unmap : no return generator
+	return
+}
 
-// Unsupported : gtk_widget_unparent : no return generator
+// Unparent is a wrapper around the C function gtk_widget_unparent.
+func (recv *Widget) Unparent() {
+	C.gtk_widget_unparent((*C.GtkWidget)(recv.native))
 
-// Unsupported : gtk_widget_unrealize : no return generator
+	return
+}
 
-// Unsupported : gtk_widget_unregister_window : no return generator
+// Unrealize is a wrapper around the C function gtk_widget_unrealize.
+func (recv *Widget) Unrealize() {
+	C.gtk_widget_unrealize((*C.GtkWidget)(recv.native))
 
-// Unsupported : gtk_widget_unset_state_flags : no return generator
+	return
+}
 
 // WidgetAccessible is a wrapper around the C record GtkWidgetAccessible.
 type WidgetAccessible struct {
@@ -12763,21 +14754,64 @@ func (recv *Window) ActivateFocus() bool {
 	return retGo
 }
 
-// Unsupported : gtk_window_add_accel_group : no return generator
+// AddAccelGroup is a wrapper around the C function gtk_window_add_accel_group.
+func (recv *Window) AddAccelGroup(accelGroup *AccelGroup) {
+	c_accel_group := (*C.GtkAccelGroup)(accelGroup.ToC())
 
-// Unsupported : gtk_window_add_mnemonic : no return generator
+	C.gtk_window_add_accel_group((*C.GtkWindow)(recv.native), c_accel_group)
 
-// Unsupported : gtk_window_begin_move_drag : no return generator
+	return
+}
 
-// Unsupported : gtk_window_begin_resize_drag : no return generator
+// AddMnemonic is a wrapper around the C function gtk_window_add_mnemonic.
+func (recv *Window) AddMnemonic(keyval uint32, target *Widget) {
+	c_keyval := (C.guint)(keyval)
 
-// Unsupported : gtk_window_close : no return generator
+	c_target := (*C.GtkWidget)(target.ToC())
 
-// Unsupported : gtk_window_deiconify : no return generator
+	C.gtk_window_add_mnemonic((*C.GtkWindow)(recv.native), c_keyval, c_target)
 
-// Unsupported : gtk_window_fullscreen : no return generator
+	return
+}
 
-// Unsupported : gtk_window_fullscreen_on_monitor : no return generator
+// BeginMoveDrag is a wrapper around the C function gtk_window_begin_move_drag.
+func (recv *Window) BeginMoveDrag(button int32, rootX int32, rootY int32, timestamp uint32) {
+	c_button := (C.gint)(button)
+
+	c_root_x := (C.gint)(rootX)
+
+	c_root_y := (C.gint)(rootY)
+
+	c_timestamp := (C.guint32)(timestamp)
+
+	C.gtk_window_begin_move_drag((*C.GtkWindow)(recv.native), c_button, c_root_x, c_root_y, c_timestamp)
+
+	return
+}
+
+// BeginResizeDrag is a wrapper around the C function gtk_window_begin_resize_drag.
+func (recv *Window) BeginResizeDrag(edge gdk.WindowEdge, button int32, rootX int32, rootY int32, timestamp uint32) {
+	c_edge := (C.GdkWindowEdge)(edge)
+
+	c_button := (C.gint)(button)
+
+	c_root_x := (C.gint)(rootX)
+
+	c_root_y := (C.gint)(rootY)
+
+	c_timestamp := (C.guint32)(timestamp)
+
+	C.gtk_window_begin_resize_drag((*C.GtkWindow)(recv.native), c_edge, c_button, c_root_x, c_root_y, c_timestamp)
+
+	return
+}
+
+// Deiconify is a wrapper around the C function gtk_window_deiconify.
+func (recv *Window) Deiconify() {
+	C.gtk_window_deiconify((*C.GtkWindow)(recv.native))
+
+	return
+}
 
 // GetDecorated is a wrapper around the C function gtk_window_get_decorated.
 func (recv *Window) GetDecorated() bool {
@@ -12899,9 +14933,19 @@ func (recv *Window) HasGroup() bool {
 	return retGo
 }
 
-// Unsupported : gtk_window_iconify : no return generator
+// Iconify is a wrapper around the C function gtk_window_iconify.
+func (recv *Window) Iconify() {
+	C.gtk_window_iconify((*C.GtkWindow)(recv.native))
 
-// Unsupported : gtk_window_maximize : no return generator
+	return
+}
+
+// Maximize is a wrapper around the C function gtk_window_maximize.
+func (recv *Window) Maximize() {
+	C.gtk_window_maximize((*C.GtkWindow)(recv.native))
+
+	return
+}
 
 // MnemonicActivate is a wrapper around the C function gtk_window_mnemonic_activate.
 func (recv *Window) MnemonicActivate(keyval uint32, modifier gdk.ModifierType) bool {
@@ -12915,7 +14959,16 @@ func (recv *Window) MnemonicActivate(keyval uint32, modifier gdk.ModifierType) b
 	return retGo
 }
 
-// Unsupported : gtk_window_move : no return generator
+// Move is a wrapper around the C function gtk_window_move.
+func (recv *Window) Move(x int32, y int32) {
+	c_x := (C.gint)(x)
+
+	c_y := (C.gint)(y)
+
+	C.gtk_window_move((*C.GtkWindow)(recv.native), c_x, c_y)
+
+	return
+}
 
 // ParseGeometry is a wrapper around the C function gtk_window_parse_geometry.
 func (recv *Window) ParseGeometry(geometry string) bool {
@@ -12928,105 +14981,249 @@ func (recv *Window) ParseGeometry(geometry string) bool {
 	return retGo
 }
 
-// Unsupported : gtk_window_present : no return generator
+// Present is a wrapper around the C function gtk_window_present.
+func (recv *Window) Present() {
+	C.gtk_window_present((*C.GtkWindow)(recv.native))
 
-// Unsupported : gtk_window_present_with_time : no return generator
+	return
+}
 
-// Unsupported : gtk_window_remove_accel_group : no return generator
+// RemoveAccelGroup is a wrapper around the C function gtk_window_remove_accel_group.
+func (recv *Window) RemoveAccelGroup(accelGroup *AccelGroup) {
+	c_accel_group := (*C.GtkAccelGroup)(accelGroup.ToC())
 
-// Unsupported : gtk_window_remove_mnemonic : no return generator
+	C.gtk_window_remove_accel_group((*C.GtkWindow)(recv.native), c_accel_group)
 
-// Unsupported : gtk_window_reshow_with_initial_size : no return generator
+	return
+}
 
-// Unsupported : gtk_window_resize : no return generator
+// RemoveMnemonic is a wrapper around the C function gtk_window_remove_mnemonic.
+func (recv *Window) RemoveMnemonic(keyval uint32, target *Widget) {
+	c_keyval := (C.guint)(keyval)
 
-// Unsupported : gtk_window_resize_to_geometry : no return generator
+	c_target := (*C.GtkWidget)(target.ToC())
 
-// Unsupported : gtk_window_set_accept_focus : no return generator
+	C.gtk_window_remove_mnemonic((*C.GtkWindow)(recv.native), c_keyval, c_target)
 
-// Unsupported : gtk_window_set_application : no return generator
+	return
+}
 
-// Unsupported : gtk_window_set_attached_to : no return generator
+// ReshowWithInitialSize is a wrapper around the C function gtk_window_reshow_with_initial_size.
+func (recv *Window) ReshowWithInitialSize() {
+	C.gtk_window_reshow_with_initial_size((*C.GtkWindow)(recv.native))
 
-// Unsupported : gtk_window_set_decorated : no return generator
+	return
+}
 
-// Unsupported : gtk_window_set_default : no return generator
+// Resize is a wrapper around the C function gtk_window_resize.
+func (recv *Window) Resize(width int32, height int32) {
+	c_width := (C.gint)(width)
 
-// Unsupported : gtk_window_set_default_geometry : no return generator
+	c_height := (C.gint)(height)
 
-// Unsupported : gtk_window_set_default_size : no return generator
+	C.gtk_window_resize((*C.GtkWindow)(recv.native), c_width, c_height)
 
-// Unsupported : gtk_window_set_deletable : no return generator
+	return
+}
 
-// Unsupported : gtk_window_set_destroy_with_parent : no return generator
+// SetDecorated is a wrapper around the C function gtk_window_set_decorated.
+func (recv *Window) SetDecorated(setting bool) {
+	c_setting :=
+		boolToGboolean(setting)
 
-// Unsupported : gtk_window_set_focus : no return generator
+	C.gtk_window_set_decorated((*C.GtkWindow)(recv.native), c_setting)
 
-// Unsupported : gtk_window_set_focus_on_map : no return generator
+	return
+}
 
-// Unsupported : gtk_window_set_focus_visible : no return generator
+// SetDefault is a wrapper around the C function gtk_window_set_default.
+func (recv *Window) SetDefault(defaultWidget *Widget) {
+	c_default_widget := (*C.GtkWidget)(defaultWidget.ToC())
 
-// Unsupported : gtk_window_set_geometry_hints : no return generator
+	C.gtk_window_set_default((*C.GtkWindow)(recv.native), c_default_widget)
 
-// Unsupported : gtk_window_set_gravity : no return generator
+	return
+}
 
-// Unsupported : gtk_window_set_has_resize_grip : no return generator
+// SetDefaultSize is a wrapper around the C function gtk_window_set_default_size.
+func (recv *Window) SetDefaultSize(width int32, height int32) {
+	c_width := (C.gint)(width)
 
-// Unsupported : gtk_window_set_has_user_ref_count : no return generator
+	c_height := (C.gint)(height)
 
-// Unsupported : gtk_window_set_hide_titlebar_when_maximized : no return generator
+	C.gtk_window_set_default_size((*C.GtkWindow)(recv.native), c_width, c_height)
 
-// Unsupported : gtk_window_set_icon : no return generator
+	return
+}
 
-// Unsupported : gtk_window_set_icon_list : no return generator
+// SetDestroyWithParent is a wrapper around the C function gtk_window_set_destroy_with_parent.
+func (recv *Window) SetDestroyWithParent(setting bool) {
+	c_setting :=
+		boolToGboolean(setting)
 
-// Unsupported : gtk_window_set_icon_name : no return generator
+	C.gtk_window_set_destroy_with_parent((*C.GtkWindow)(recv.native), c_setting)
 
-// Unsupported : gtk_window_set_keep_above : no return generator
+	return
+}
 
-// Unsupported : gtk_window_set_keep_below : no return generator
+// SetFocus is a wrapper around the C function gtk_window_set_focus.
+func (recv *Window) SetFocus(focus *Widget) {
+	c_focus := (*C.GtkWidget)(focus.ToC())
 
-// Unsupported : gtk_window_set_mnemonic_modifier : no return generator
+	C.gtk_window_set_focus((*C.GtkWindow)(recv.native), c_focus)
 
-// Unsupported : gtk_window_set_mnemonics_visible : no return generator
+	return
+}
 
-// Unsupported : gtk_window_set_modal : no return generator
+// SetGeometryHints is a wrapper around the C function gtk_window_set_geometry_hints.
+func (recv *Window) SetGeometryHints(geometryWidget *Widget, geometry *gdk.Geometry, geomMask gdk.WindowHints) {
+	c_geometry_widget := (*C.GtkWidget)(geometryWidget.ToC())
 
-// Unsupported : gtk_window_set_opacity : no return generator
+	c_geometry := (*C.GdkGeometry)(geometry.ToC())
 
-// Unsupported : gtk_window_set_position : no return generator
+	c_geom_mask := (C.GdkWindowHints)(geomMask)
 
-// Unsupported : gtk_window_set_resizable : no return generator
+	C.gtk_window_set_geometry_hints((*C.GtkWindow)(recv.native), c_geometry_widget, c_geometry, c_geom_mask)
 
-// Unsupported : gtk_window_set_role : no return generator
+	return
+}
 
-// Unsupported : gtk_window_set_screen : no return generator
+// SetGravity is a wrapper around the C function gtk_window_set_gravity.
+func (recv *Window) SetGravity(gravity gdk.Gravity) {
+	c_gravity := (C.GdkGravity)(gravity)
 
-// Unsupported : gtk_window_set_skip_pager_hint : no return generator
+	C.gtk_window_set_gravity((*C.GtkWindow)(recv.native), c_gravity)
 
-// Unsupported : gtk_window_set_skip_taskbar_hint : no return generator
+	return
+}
 
-// Unsupported : gtk_window_set_startup_id : no return generator
+// SetIcon is a wrapper around the C function gtk_window_set_icon.
+func (recv *Window) SetIcon(icon *gdkpixbuf.Pixbuf) {
+	c_icon := (*C.GdkPixbuf)(icon.ToC())
 
-// Unsupported : gtk_window_set_title : no return generator
+	C.gtk_window_set_icon((*C.GtkWindow)(recv.native), c_icon)
 
-// Unsupported : gtk_window_set_titlebar : no return generator
+	return
+}
 
-// Unsupported : gtk_window_set_transient_for : no return generator
+// SetIconList is a wrapper around the C function gtk_window_set_icon_list.
+func (recv *Window) SetIconList(list *glib.List) {
+	c_list := (*C.GList)(list.ToC())
 
-// Unsupported : gtk_window_set_type_hint : no return generator
+	C.gtk_window_set_icon_list((*C.GtkWindow)(recv.native), c_list)
 
-// Unsupported : gtk_window_set_urgency_hint : no return generator
+	return
+}
 
-// Unsupported : gtk_window_set_wmclass : no return generator
+// SetMnemonicModifier is a wrapper around the C function gtk_window_set_mnemonic_modifier.
+func (recv *Window) SetMnemonicModifier(modifier gdk.ModifierType) {
+	c_modifier := (C.GdkModifierType)(modifier)
 
-// Unsupported : gtk_window_stick : no return generator
+	C.gtk_window_set_mnemonic_modifier((*C.GtkWindow)(recv.native), c_modifier)
 
-// Unsupported : gtk_window_unfullscreen : no return generator
+	return
+}
 
-// Unsupported : gtk_window_unmaximize : no return generator
+// SetModal is a wrapper around the C function gtk_window_set_modal.
+func (recv *Window) SetModal(modal bool) {
+	c_modal :=
+		boolToGboolean(modal)
 
-// Unsupported : gtk_window_unstick : no return generator
+	C.gtk_window_set_modal((*C.GtkWindow)(recv.native), c_modal)
+
+	return
+}
+
+// SetPosition is a wrapper around the C function gtk_window_set_position.
+func (recv *Window) SetPosition(position WindowPosition) {
+	c_position := (C.GtkWindowPosition)(position)
+
+	C.gtk_window_set_position((*C.GtkWindow)(recv.native), c_position)
+
+	return
+}
+
+// SetResizable is a wrapper around the C function gtk_window_set_resizable.
+func (recv *Window) SetResizable(resizable bool) {
+	c_resizable :=
+		boolToGboolean(resizable)
+
+	C.gtk_window_set_resizable((*C.GtkWindow)(recv.native), c_resizable)
+
+	return
+}
+
+// SetRole is a wrapper around the C function gtk_window_set_role.
+func (recv *Window) SetRole(role string) {
+	c_role := C.CString(role)
+	defer C.free(unsafe.Pointer(c_role))
+
+	C.gtk_window_set_role((*C.GtkWindow)(recv.native), c_role)
+
+	return
+}
+
+// SetTitle is a wrapper around the C function gtk_window_set_title.
+func (recv *Window) SetTitle(title string) {
+	c_title := C.CString(title)
+	defer C.free(unsafe.Pointer(c_title))
+
+	C.gtk_window_set_title((*C.GtkWindow)(recv.native), c_title)
+
+	return
+}
+
+// SetTransientFor is a wrapper around the C function gtk_window_set_transient_for.
+func (recv *Window) SetTransientFor(parent *Window) {
+	c_parent := (*C.GtkWindow)(parent.ToC())
+
+	C.gtk_window_set_transient_for((*C.GtkWindow)(recv.native), c_parent)
+
+	return
+}
+
+// SetTypeHint is a wrapper around the C function gtk_window_set_type_hint.
+func (recv *Window) SetTypeHint(hint gdk.WindowTypeHint) {
+	c_hint := (C.GdkWindowTypeHint)(hint)
+
+	C.gtk_window_set_type_hint((*C.GtkWindow)(recv.native), c_hint)
+
+	return
+}
+
+// SetWmclass is a wrapper around the C function gtk_window_set_wmclass.
+func (recv *Window) SetWmclass(wmclassName string, wmclassClass string) {
+	c_wmclass_name := C.CString(wmclassName)
+	defer C.free(unsafe.Pointer(c_wmclass_name))
+
+	c_wmclass_class := C.CString(wmclassClass)
+	defer C.free(unsafe.Pointer(c_wmclass_class))
+
+	C.gtk_window_set_wmclass((*C.GtkWindow)(recv.native), c_wmclass_name, c_wmclass_class)
+
+	return
+}
+
+// Stick is a wrapper around the C function gtk_window_stick.
+func (recv *Window) Stick() {
+	C.gtk_window_stick((*C.GtkWindow)(recv.native))
+
+	return
+}
+
+// Unmaximize is a wrapper around the C function gtk_window_unmaximize.
+func (recv *Window) Unmaximize() {
+	C.gtk_window_unmaximize((*C.GtkWindow)(recv.native))
+
+	return
+}
+
+// Unstick is a wrapper around the C function gtk_window_unstick.
+func (recv *Window) Unstick() {
+	C.gtk_window_unstick((*C.GtkWindow)(recv.native))
+
+	return
+}
 
 // WindowAccessible is a wrapper around the C record GtkWindowAccessible.
 type WindowAccessible struct {
@@ -13082,6 +15279,20 @@ func WindowGroupNew() *WindowGroup {
 	return retGo
 }
 
-// Unsupported : gtk_window_group_add_window : no return generator
+// AddWindow is a wrapper around the C function gtk_window_group_add_window.
+func (recv *WindowGroup) AddWindow(window *Window) {
+	c_window := (*C.GtkWindow)(window.ToC())
 
-// Unsupported : gtk_window_group_remove_window : no return generator
+	C.gtk_window_group_add_window((*C.GtkWindowGroup)(recv.native), c_window)
+
+	return
+}
+
+// RemoveWindow is a wrapper around the C function gtk_window_group_remove_window.
+func (recv *WindowGroup) RemoveWindow(window *Window) {
+	c_window := (*C.GtkWindow)(window.ToC())
+
+	C.gtk_window_group_remove_window((*C.GtkWindowGroup)(recv.native), c_window)
+
+	return
+}

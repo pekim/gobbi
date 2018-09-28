@@ -104,6 +104,14 @@ func StripContext(msgid string, msgval string) string {
 
 // Unsupported : g_unichar_get_mirror_char : unsupported parameter mirrored_ch : no type generator for gunichar, gunichar*
 
-// Unsupported : g_unsetenv : no return generator
+// Unsetenv is a wrapper around the C function g_unsetenv.
+func Unsetenv(variable string) {
+	c_variable := C.CString(variable)
+	defer C.free(unsafe.Pointer(c_variable))
+
+	C.g_unsetenv(c_variable)
+
+	return
+}
 
 // Unsupported : g_vasprintf : unsupported parameter string : in string with indirection level of 2

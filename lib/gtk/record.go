@@ -1207,7 +1207,19 @@ func (recv *BindingSet) Activate(keyval uint32, modifiers gdk.ModifierType, obje
 	return retGo
 }
 
-// Unsupported : gtk_binding_set_add_path : no return generator
+// AddPath is a wrapper around the C function gtk_binding_set_add_path.
+func (recv *BindingSet) AddPath(pathType PathType, pathPattern string, priority PathPriorityType) {
+	c_path_type := (C.GtkPathType)(pathType)
+
+	c_path_pattern := C.CString(pathPattern)
+	defer C.free(unsafe.Pointer(c_path_pattern))
+
+	c_priority := (C.GtkPathPriorityType)(priority)
+
+	C.gtk_binding_set_add_path((*C.GtkBindingSet)(recv.native), c_path_type, c_path_pattern, c_priority)
+
+	return
+}
 
 // BindingSignal is a wrapper around the C record GtkBindingSignal.
 type BindingSignal struct {
@@ -1332,7 +1344,12 @@ func (recv *Border) Copy() *Border {
 	return retGo
 }
 
-// Unsupported : gtk_border_free : no return generator
+// Free is a wrapper around the C function gtk_border_free.
+func (recv *Border) Free() {
+	C.gtk_border_free((*C.GtkBorder)(recv.native))
+
+	return
+}
 
 // BoxClass is a wrapper around the C record GtkBoxClass.
 type BoxClass struct {
@@ -1832,8 +1849,6 @@ func (recv *CellAreaClass) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
-
-// Unsupported : gtk_cell_area_class_install_cell_property : no return generator
 
 // Unsupported : gtk_cell_area_class_list_cell_properties : unsupported parameter n_properties : no type generator for guint, guint*
 
@@ -3133,11 +3148,25 @@ func (recv *ContainerClass) ToC() unsafe.Pointer {
 
 // Blacklisted : gtk_container_class_find_child_property
 
-// Unsupported : gtk_container_class_handle_border_width : no return generator
+// HandleBorderWidth is a wrapper around the C function gtk_container_class_handle_border_width.
+func (recv *ContainerClass) HandleBorderWidth() {
+	C.gtk_container_class_handle_border_width((*C.GtkContainerClass)(recv.native))
+
+	return
+}
 
 // Unsupported : gtk_container_class_install_child_properties : unsupported parameter pspecs : no param type
 
-// Unsupported : gtk_container_class_install_child_property : no return generator
+// InstallChildProperty is a wrapper around the C function gtk_container_class_install_child_property.
+func (recv *ContainerClass) InstallChildProperty(propertyId uint32, pspec *gobject.ParamSpec) {
+	c_property_id := (C.guint)(propertyId)
+
+	c_pspec := (*C.GParamSpec)(pspec.ToC())
+
+	C.gtk_container_class_install_child_property((*C.GtkContainerClass)(recv.native), c_property_id, c_pspec)
+
+	return
+}
 
 // Unsupported : gtk_container_class_list_child_properties : unsupported parameter n_properties : no type generator for guint, guint*
 
@@ -4648,8 +4677,6 @@ func (recv *Gradient) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : gtk_gradient_add_color_stop : no return generator
-
 // Unsupported : gtk_gradient_resolve : unsupported parameter resolved_gradient : record with indirection level of 2
 
 // ResolveForContext is a wrapper around the C function gtk_gradient_resolve_for_context.
@@ -4670,8 +4697,6 @@ func (recv *Gradient) ToString() string {
 
 	return retGo
 }
-
-// Unsupported : gtk_gradient_unref : no return generator
 
 // GridClass is a wrapper around the C record GtkGridClass.
 type GridClass struct {
@@ -5285,7 +5310,14 @@ func IconSetNewFromPixbuf(pixbuf *gdkpixbuf.Pixbuf) *IconSet {
 	return retGo
 }
 
-// Unsupported : gtk_icon_set_add_source : no return generator
+// AddSource is a wrapper around the C function gtk_icon_set_add_source.
+func (recv *IconSet) AddSource(source *IconSource) {
+	c_source := (*C.GtkIconSource)(source.ToC())
+
+	C.gtk_icon_set_add_source((*C.GtkIconSet)(recv.native), c_source)
+
+	return
+}
 
 // Copy is a wrapper around the C function gtk_icon_set_copy.
 func (recv *IconSet) Copy() *IconSet {
@@ -5311,7 +5343,12 @@ func (recv *IconSet) Ref() *IconSet {
 
 // Unsupported : gtk_icon_set_render_icon_surface : unsupported parameter size : no type generator for gint, GtkIconSize
 
-// Unsupported : gtk_icon_set_unref : no return generator
+// Unref is a wrapper around the C function gtk_icon_set_unref.
+func (recv *IconSet) Unref() {
+	C.gtk_icon_set_unref((*C.GtkIconSet)(recv.native))
+
+	return
+}
 
 // IconSource is a wrapper around the C record GtkIconSource.
 type IconSource struct {
@@ -5350,7 +5387,12 @@ func (recv *IconSource) Copy() *IconSource {
 	return retGo
 }
 
-// Unsupported : gtk_icon_source_free : no return generator
+// Free is a wrapper around the C function gtk_icon_source_free.
+func (recv *IconSource) Free() {
+	C.gtk_icon_source_free((*C.GtkIconSource)(recv.native))
+
+	return
+}
 
 // GetDirection is a wrapper around the C function gtk_icon_source_get_direction.
 func (recv *IconSource) GetDirection() TextDirection {
@@ -5418,23 +5460,84 @@ func (recv *IconSource) GetStateWildcarded() bool {
 	return retGo
 }
 
-// Unsupported : gtk_icon_source_set_direction : no return generator
+// SetDirection is a wrapper around the C function gtk_icon_source_set_direction.
+func (recv *IconSource) SetDirection(direction TextDirection) {
+	c_direction := (C.GtkTextDirection)(direction)
 
-// Unsupported : gtk_icon_source_set_direction_wildcarded : no return generator
+	C.gtk_icon_source_set_direction((*C.GtkIconSource)(recv.native), c_direction)
 
-// Unsupported : gtk_icon_source_set_filename : no return generator
+	return
+}
 
-// Unsupported : gtk_icon_source_set_icon_name : no return generator
+// SetDirectionWildcarded is a wrapper around the C function gtk_icon_source_set_direction_wildcarded.
+func (recv *IconSource) SetDirectionWildcarded(setting bool) {
+	c_setting :=
+		boolToGboolean(setting)
 
-// Unsupported : gtk_icon_source_set_pixbuf : no return generator
+	C.gtk_icon_source_set_direction_wildcarded((*C.GtkIconSource)(recv.native), c_setting)
+
+	return
+}
+
+// SetFilename is a wrapper around the C function gtk_icon_source_set_filename.
+func (recv *IconSource) SetFilename(filename string) {
+	c_filename := C.CString(filename)
+	defer C.free(unsafe.Pointer(c_filename))
+
+	C.gtk_icon_source_set_filename((*C.GtkIconSource)(recv.native), c_filename)
+
+	return
+}
+
+// SetIconName is a wrapper around the C function gtk_icon_source_set_icon_name.
+func (recv *IconSource) SetIconName(iconName string) {
+	c_icon_name := C.CString(iconName)
+	defer C.free(unsafe.Pointer(c_icon_name))
+
+	C.gtk_icon_source_set_icon_name((*C.GtkIconSource)(recv.native), c_icon_name)
+
+	return
+}
+
+// SetPixbuf is a wrapper around the C function gtk_icon_source_set_pixbuf.
+func (recv *IconSource) SetPixbuf(pixbuf *gdkpixbuf.Pixbuf) {
+	c_pixbuf := (*C.GdkPixbuf)(pixbuf.ToC())
+
+	C.gtk_icon_source_set_pixbuf((*C.GtkIconSource)(recv.native), c_pixbuf)
+
+	return
+}
 
 // Unsupported : gtk_icon_source_set_size : unsupported parameter size : no type generator for gint, GtkIconSize
 
-// Unsupported : gtk_icon_source_set_size_wildcarded : no return generator
+// SetSizeWildcarded is a wrapper around the C function gtk_icon_source_set_size_wildcarded.
+func (recv *IconSource) SetSizeWildcarded(setting bool) {
+	c_setting :=
+		boolToGboolean(setting)
 
-// Unsupported : gtk_icon_source_set_state : no return generator
+	C.gtk_icon_source_set_size_wildcarded((*C.GtkIconSource)(recv.native), c_setting)
 
-// Unsupported : gtk_icon_source_set_state_wildcarded : no return generator
+	return
+}
+
+// SetState is a wrapper around the C function gtk_icon_source_set_state.
+func (recv *IconSource) SetState(state StateType) {
+	c_state := (C.GtkStateType)(state)
+
+	C.gtk_icon_source_set_state((*C.GtkIconSource)(recv.native), c_state)
+
+	return
+}
+
+// SetStateWildcarded is a wrapper around the C function gtk_icon_source_set_state_wildcarded.
+func (recv *IconSource) SetStateWildcarded(setting bool) {
+	c_setting :=
+		boolToGboolean(setting)
+
+	C.gtk_icon_source_set_state_wildcarded((*C.GtkIconSource)(recv.native), c_setting)
+
+	return
+}
 
 // IconThemeClass is a wrapper around the C record GtkIconThemeClass.
 type IconThemeClass struct {
@@ -7524,8 +7627,6 @@ func (recv *PaperSize) ToC() unsafe.Pointer {
 
 // Unsupported : gtk_paper_size_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
 
-// Unsupported : gtk_paper_size_free : no return generator
-
 // IsCustom is a wrapper around the C function gtk_paper_size_is_custom.
 func (recv *PaperSize) IsCustom() bool {
 	retC := C.gtk_paper_size_is_custom((*C.GtkPaperSize)(recv.native))
@@ -7542,11 +7643,7 @@ func (recv *PaperSize) IsIpp() bool {
 	return retGo
 }
 
-// Unsupported : gtk_paper_size_set_size : no return generator
-
 // Unsupported : gtk_paper_size_to_gvariant : return type : Blacklisted record : GVariant
-
-// Unsupported : gtk_paper_size_to_key_file : no return generator
 
 // PlacesSidebarClass is a wrapper around the C record GtkPlacesSidebarClass.
 type PlacesSidebarClass struct {
@@ -8844,7 +8941,12 @@ func (recv *Requisition) Copy() *Requisition {
 	return retGo
 }
 
-// Unsupported : gtk_requisition_free : no return generator
+// Free is a wrapper around the C function gtk_requisition_free.
+func (recv *Requisition) Free() {
+	C.gtk_requisition_free((*C.GtkRequisition)(recv.native))
+
+	return
+}
 
 // RevealerClass is a wrapper around the C record GtkRevealerClass.
 type RevealerClass struct {
@@ -9280,7 +9382,12 @@ func (recv *SelectionData) Copy() *SelectionData {
 	return retGo
 }
 
-// Unsupported : gtk_selection_data_free : no return generator
+// Free is a wrapper around the C function gtk_selection_data_free.
+func (recv *SelectionData) Free() {
+	C.gtk_selection_data_free((*C.GtkSelectionData)(recv.native))
+
+	return
+}
 
 // Unsupported : gtk_selection_data_get_data : no return type
 
@@ -10099,7 +10206,12 @@ func (recv *StockItem) Copy() *StockItem {
 	return retGo
 }
 
-// Unsupported : gtk_stock_item_free : no return generator
+// Free is a wrapper around the C function gtk_stock_item_free.
+func (recv *StockItem) Free() {
+	C.gtk_stock_item_free((*C.GtkStockItem)(recv.native))
+
+	return
+}
 
 // StyleClass is a wrapper around the C record GtkStyleClass.
 type StyleClass struct {
@@ -10404,8 +10516,6 @@ func (recv *SymbolicColor) ToString() string {
 	return retGo
 }
 
-// Unsupported : gtk_symbolic_color_unref : no return generator
-
 // TableChild is a wrapper around the C record GtkTableChild.
 type TableChild struct {
 	native *C.GtkTableChild
@@ -10605,7 +10715,12 @@ func (recv *TargetEntry) Copy() *TargetEntry {
 	return retGo
 }
 
-// Unsupported : gtk_target_entry_free : no return generator
+// Free is a wrapper around the C function gtk_target_entry_free.
+func (recv *TargetEntry) Free() {
+	C.gtk_target_entry_free((*C.GtkTargetEntry)(recv.native))
+
+	return
+}
 
 // TargetList is a wrapper around the C record GtkTargetList.
 type TargetList struct {
@@ -10632,15 +10747,7 @@ func (recv *TargetList) ToC() unsafe.Pointer {
 
 // Unsupported : gtk_target_list_add : unsupported parameter target : Blacklisted record : GdkAtom
 
-// Unsupported : gtk_target_list_add_image_targets : no return generator
-
-// Unsupported : gtk_target_list_add_rich_text_targets : no return generator
-
 // Unsupported : gtk_target_list_add_table : unsupported parameter targets : no param type
-
-// Unsupported : gtk_target_list_add_text_targets : no return generator
-
-// Unsupported : gtk_target_list_add_uri_targets : no return generator
 
 // Unsupported : gtk_target_list_find : unsupported parameter target : Blacklisted record : GdkAtom
 
@@ -10654,7 +10761,12 @@ func (recv *TargetList) Ref() *TargetList {
 
 // Unsupported : gtk_target_list_remove : unsupported parameter target : Blacklisted record : GdkAtom
 
-// Unsupported : gtk_target_list_unref : no return generator
+// Unref is a wrapper around the C function gtk_target_list_unref.
+func (recv *TargetList) Unref() {
+	C.gtk_target_list_unref((*C.GtkTargetList)(recv.native))
+
+	return
+}
 
 // TargetPair is a wrapper around the C record GtkTargetPair.
 type TargetPair struct {
@@ -10863,7 +10975,14 @@ func (recv *TextAttributes) Copy() *TextAttributes {
 	return retGo
 }
 
-// Unsupported : gtk_text_attributes_copy_values : no return generator
+// CopyValues is a wrapper around the C function gtk_text_attributes_copy_values.
+func (recv *TextAttributes) CopyValues(dest *TextAttributes) {
+	c_dest := (*C.GtkTextAttributes)(dest.ToC())
+
+	C.gtk_text_attributes_copy_values((*C.GtkTextAttributes)(recv.native), c_dest)
+
+	return
+}
 
 // Ref is a wrapper around the C function gtk_text_attributes_ref.
 func (recv *TextAttributes) Ref() *TextAttributes {
@@ -10873,7 +10992,12 @@ func (recv *TextAttributes) Ref() *TextAttributes {
 	return retGo
 }
 
-// Unsupported : gtk_text_attributes_unref : no return generator
+// Unref is a wrapper around the C function gtk_text_attributes_unref.
+func (recv *TextAttributes) Unref() {
+	C.gtk_text_attributes_unref((*C.GtkTextAttributes)(recv.native))
+
+	return
+}
 
 // TextBTree is a wrapper around the C record GtkTextBTree.
 type TextBTree struct {
@@ -11059,8 +11183,6 @@ func (recv *TextIter) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
-
-// Unsupported : gtk_text_iter_assign : no return generator
 
 // BackwardChar is a wrapper around the C function gtk_text_iter_backward_char.
 func (recv *TextIter) BackwardChar() bool {
@@ -11378,7 +11500,12 @@ func (recv *TextIter) ForwardSentenceEnds(count int32) bool {
 	return retGo
 }
 
-// Unsupported : gtk_text_iter_forward_to_end : no return generator
+// ForwardToEnd is a wrapper around the C function gtk_text_iter_forward_to_end.
+func (recv *TextIter) ForwardToEnd() {
+	C.gtk_text_iter_forward_to_end((*C.GtkTextIter)(recv.native))
+
+	return
+}
 
 // ForwardToLineEnd is a wrapper around the C function gtk_text_iter_forward_to_line_end.
 func (recv *TextIter) ForwardToLineEnd() bool {
@@ -11416,7 +11543,12 @@ func (recv *TextIter) ForwardWordEnds(count int32) bool {
 	return retGo
 }
 
-// Unsupported : gtk_text_iter_free : no return generator
+// Free is a wrapper around the C function gtk_text_iter_free.
+func (recv *TextIter) Free() {
+	C.gtk_text_iter_free((*C.GtkTextIter)(recv.native))
+
+	return
+}
 
 // GetAttributes is a wrapper around the C function gtk_text_iter_get_attributes.
 func (recv *TextIter) GetAttributes() (bool, *TextAttributes) {
@@ -11667,19 +11799,68 @@ func (recv *TextIter) IsStart() bool {
 	return retGo
 }
 
-// Unsupported : gtk_text_iter_order : no return generator
+// Order is a wrapper around the C function gtk_text_iter_order.
+func (recv *TextIter) Order(second *TextIter) {
+	c_second := (*C.GtkTextIter)(second.ToC())
 
-// Unsupported : gtk_text_iter_set_line : no return generator
+	C.gtk_text_iter_order((*C.GtkTextIter)(recv.native), c_second)
 
-// Unsupported : gtk_text_iter_set_line_index : no return generator
+	return
+}
 
-// Unsupported : gtk_text_iter_set_line_offset : no return generator
+// SetLine is a wrapper around the C function gtk_text_iter_set_line.
+func (recv *TextIter) SetLine(lineNumber int32) {
+	c_line_number := (C.gint)(lineNumber)
 
-// Unsupported : gtk_text_iter_set_offset : no return generator
+	C.gtk_text_iter_set_line((*C.GtkTextIter)(recv.native), c_line_number)
 
-// Unsupported : gtk_text_iter_set_visible_line_index : no return generator
+	return
+}
 
-// Unsupported : gtk_text_iter_set_visible_line_offset : no return generator
+// SetLineIndex is a wrapper around the C function gtk_text_iter_set_line_index.
+func (recv *TextIter) SetLineIndex(byteOnLine int32) {
+	c_byte_on_line := (C.gint)(byteOnLine)
+
+	C.gtk_text_iter_set_line_index((*C.GtkTextIter)(recv.native), c_byte_on_line)
+
+	return
+}
+
+// SetLineOffset is a wrapper around the C function gtk_text_iter_set_line_offset.
+func (recv *TextIter) SetLineOffset(charOnLine int32) {
+	c_char_on_line := (C.gint)(charOnLine)
+
+	C.gtk_text_iter_set_line_offset((*C.GtkTextIter)(recv.native), c_char_on_line)
+
+	return
+}
+
+// SetOffset is a wrapper around the C function gtk_text_iter_set_offset.
+func (recv *TextIter) SetOffset(charOffset int32) {
+	c_char_offset := (C.gint)(charOffset)
+
+	C.gtk_text_iter_set_offset((*C.GtkTextIter)(recv.native), c_char_offset)
+
+	return
+}
+
+// SetVisibleLineIndex is a wrapper around the C function gtk_text_iter_set_visible_line_index.
+func (recv *TextIter) SetVisibleLineIndex(byteOnLine int32) {
+	c_byte_on_line := (C.gint)(byteOnLine)
+
+	C.gtk_text_iter_set_visible_line_index((*C.GtkTextIter)(recv.native), c_byte_on_line)
+
+	return
+}
+
+// SetVisibleLineOffset is a wrapper around the C function gtk_text_iter_set_visible_line_offset.
+func (recv *TextIter) SetVisibleLineOffset(charOnLine int32) {
+	c_char_on_line := (C.gint)(charOnLine)
+
+	C.gtk_text_iter_set_visible_line_offset((*C.GtkTextIter)(recv.native), c_char_on_line)
+
+	return
+}
 
 // StartsLine is a wrapper around the C function gtk_text_iter_starts_line.
 func (recv *TextIter) StartsLine() bool {
@@ -12672,7 +12853,12 @@ func (recv *TreeIter) Copy() *TreeIter {
 	return retGo
 }
 
-// Unsupported : gtk_tree_iter_free : no return generator
+// Free is a wrapper around the C function gtk_tree_iter_free.
+func (recv *TreeIter) Free() {
+	C.gtk_tree_iter_free((*C.GtkTreeIter)(recv.native))
+
+	return
+}
 
 // TreeModelFilterClass is a wrapper around the C record GtkTreeModelFilterClass.
 type TreeModelFilterClass struct {
@@ -12864,7 +13050,14 @@ func TreePathNewFromString(path string) *TreePath {
 	return retGo
 }
 
-// Unsupported : gtk_tree_path_append_index : no return generator
+// AppendIndex is a wrapper around the C function gtk_tree_path_append_index.
+func (recv *TreePath) AppendIndex(index int32) {
+	c_index_ := (C.gint)(index)
+
+	C.gtk_tree_path_append_index((*C.GtkTreePath)(recv.native), c_index_)
+
+	return
+}
 
 // Compare is a wrapper around the C function gtk_tree_path_compare.
 func (recv *TreePath) Compare(b *TreePath) int32 {
@@ -12884,9 +13077,19 @@ func (recv *TreePath) Copy() *TreePath {
 	return retGo
 }
 
-// Unsupported : gtk_tree_path_down : no return generator
+// Down is a wrapper around the C function gtk_tree_path_down.
+func (recv *TreePath) Down() {
+	C.gtk_tree_path_down((*C.GtkTreePath)(recv.native))
 
-// Unsupported : gtk_tree_path_free : no return generator
+	return
+}
+
+// Free is a wrapper around the C function gtk_tree_path_free.
+func (recv *TreePath) Free() {
+	C.gtk_tree_path_free((*C.GtkTreePath)(recv.native))
+
+	return
+}
 
 // GetDepth is a wrapper around the C function gtk_tree_path_get_depth.
 func (recv *TreePath) GetDepth() int32 {
@@ -12920,9 +13123,21 @@ func (recv *TreePath) IsDescendant(ancestor *TreePath) bool {
 	return retGo
 }
 
-// Unsupported : gtk_tree_path_next : no return generator
+// Next is a wrapper around the C function gtk_tree_path_next.
+func (recv *TreePath) Next() {
+	C.gtk_tree_path_next((*C.GtkTreePath)(recv.native))
 
-// Unsupported : gtk_tree_path_prepend_index : no return generator
+	return
+}
+
+// PrependIndex is a wrapper around the C function gtk_tree_path_prepend_index.
+func (recv *TreePath) PrependIndex(index int32) {
+	c_index_ := (C.gint)(index)
+
+	C.gtk_tree_path_prepend_index((*C.GtkTreePath)(recv.native), c_index_)
+
+	return
+}
 
 // Prev is a wrapper around the C function gtk_tree_path_prev.
 func (recv *TreePath) Prev() bool {
@@ -12974,7 +13189,12 @@ func (recv *TreeRowReference) ToC() unsafe.Pointer {
 
 // Unsupported : gtk_tree_row_reference_new_proxy : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
 
-// Unsupported : gtk_tree_row_reference_free : no return generator
+// Free is a wrapper around the C function gtk_tree_row_reference_free.
+func (recv *TreeRowReference) Free() {
+	C.gtk_tree_row_reference_free((*C.GtkTreeRowReference)(recv.native))
+
+	return
+}
 
 // Unsupported : gtk_tree_row_reference_get_model : no return generator
 
@@ -13693,25 +13913,22 @@ func (recv *WidgetClass) ToC() unsafe.Pointer {
 
 // Unsupported : gtk_widget_class_bind_template_callback_full : unsupported parameter callback_symbol : no type generator for GObject.Callback, GCallback
 
-// Unsupported : gtk_widget_class_bind_template_child_full : no return generator
+// InstallStyleProperty is a wrapper around the C function gtk_widget_class_install_style_property.
+func (recv *WidgetClass) InstallStyleProperty(pspec *gobject.ParamSpec) {
+	c_pspec := (*C.GParamSpec)(pspec.ToC())
 
-// Unsupported : gtk_widget_class_install_style_property : no return generator
+	C.gtk_widget_class_install_style_property((*C.GtkWidgetClass)(recv.native), c_pspec)
+
+	return
+}
 
 // Unsupported : gtk_widget_class_install_style_property_parser : unsupported parameter parser : no type generator for RcPropertyParser, GtkRcPropertyParser
 
 // Unsupported : gtk_widget_class_list_style_properties : unsupported parameter n_properties : no type generator for guint, guint*
 
-// Unsupported : gtk_widget_class_set_accessible_role : no return generator
-
 // Unsupported : gtk_widget_class_set_accessible_type : unsupported parameter type : no type generator for GType, GType
 
 // Unsupported : gtk_widget_class_set_connect_func : unsupported parameter connect_func : no type generator for BuilderConnectFunc, GtkBuilderConnectFunc
-
-// Unsupported : gtk_widget_class_set_css_name : no return generator
-
-// Unsupported : gtk_widget_class_set_template : no return generator
-
-// Unsupported : gtk_widget_class_set_template_from_resource : no return generator
 
 // WidgetClassPrivate is a wrapper around the C record GtkWidgetClassPrivate.
 type WidgetClassPrivate struct {
@@ -13757,21 +13974,11 @@ func (recv *WidgetPath) ToC() unsafe.Pointer {
 
 // Unsupported : gtk_widget_path_append_type : unsupported parameter type : no type generator for GType, GType
 
-// Unsupported : gtk_widget_path_free : no return generator
-
 // Unsupported : gtk_widget_path_get_object_type : no return generator
 
 // Unsupported : gtk_widget_path_has_parent : unsupported parameter type : no type generator for GType, GType
 
 // Unsupported : gtk_widget_path_is_type : unsupported parameter type : no type generator for GType, GType
-
-// Unsupported : gtk_widget_path_iter_add_class : no return generator
-
-// Unsupported : gtk_widget_path_iter_add_region : no return generator
-
-// Unsupported : gtk_widget_path_iter_clear_classes : no return generator
-
-// Unsupported : gtk_widget_path_iter_clear_regions : no return generator
 
 // IterGetName is a wrapper around the C function gtk_widget_path_iter_get_name.
 func (recv *WidgetPath) IterGetName(pos int32) string {
@@ -13809,21 +14016,9 @@ func (recv *WidgetPath) IterGetSiblings(pos int32) *WidgetPath {
 
 // Unsupported : gtk_widget_path_iter_has_region : unsupported parameter flags : GtkRegionFlags* with indirection level of 1
 
-// Unsupported : gtk_widget_path_iter_remove_class : no return generator
-
-// Unsupported : gtk_widget_path_iter_remove_region : no return generator
-
-// Unsupported : gtk_widget_path_iter_set_name : no return generator
-
-// Unsupported : gtk_widget_path_iter_set_object_name : no return generator
-
 // Unsupported : gtk_widget_path_iter_set_object_type : unsupported parameter type : no type generator for GType, GType
 
-// Unsupported : gtk_widget_path_iter_set_state : no return generator
-
 // Unsupported : gtk_widget_path_prepend_type : unsupported parameter type : no type generator for GType, GType
-
-// Unsupported : gtk_widget_path_unref : no return generator
 
 // WidgetPrivate is a wrapper around the C record GtkWidgetPrivate.
 type WidgetPrivate struct {

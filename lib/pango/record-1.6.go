@@ -57,7 +57,14 @@ func (recv *Matrix) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : pango_matrix_concat : no return generator
+// Concat is a wrapper around the C function pango_matrix_concat.
+func (recv *Matrix) Concat(newMatrix *Matrix) {
+	c_new_matrix := (*C.PangoMatrix)(newMatrix.ToC())
+
+	C.pango_matrix_concat((*C.PangoMatrix)(recv.native), c_new_matrix)
+
+	return
+}
 
 // Copy is a wrapper around the C function pango_matrix_copy.
 func (recv *Matrix) Copy() *Matrix {
@@ -67,20 +74,46 @@ func (recv *Matrix) Copy() *Matrix {
 	return retGo
 }
 
-// Unsupported : pango_matrix_free : no return generator
+// Free is a wrapper around the C function pango_matrix_free.
+func (recv *Matrix) Free() {
+	C.pango_matrix_free((*C.PangoMatrix)(recv.native))
+
+	return
+}
 
 // Unsupported : pango_matrix_get_font_scale_factors : unsupported parameter xscale : no type generator for gdouble, double*
 
-// Unsupported : pango_matrix_rotate : no return generator
+// Rotate is a wrapper around the C function pango_matrix_rotate.
+func (recv *Matrix) Rotate(degrees float64) {
+	c_degrees := (C.double)(degrees)
 
-// Unsupported : pango_matrix_scale : no return generator
+	C.pango_matrix_rotate((*C.PangoMatrix)(recv.native), c_degrees)
+
+	return
+}
+
+// Scale is a wrapper around the C function pango_matrix_scale.
+func (recv *Matrix) Scale(scaleX float64, scaleY float64) {
+	c_scale_x := (C.double)(scaleX)
+
+	c_scale_y := (C.double)(scaleY)
+
+	C.pango_matrix_scale((*C.PangoMatrix)(recv.native), c_scale_x, c_scale_y)
+
+	return
+}
 
 // Unsupported : pango_matrix_transform_distance : unsupported parameter dx : no type generator for gdouble, double*
 
-// Unsupported : pango_matrix_transform_pixel_rectangle : no return generator
-
 // Unsupported : pango_matrix_transform_point : unsupported parameter x : no type generator for gdouble, double*
 
-// Unsupported : pango_matrix_transform_rectangle : no return generator
+// Translate is a wrapper around the C function pango_matrix_translate.
+func (recv *Matrix) Translate(tx float64, ty float64) {
+	c_tx := (C.double)(tx)
 
-// Unsupported : pango_matrix_translate : no return generator
+	c_ty := (C.double)(ty)
+
+	C.pango_matrix_translate((*C.PangoMatrix)(recv.native), c_tx, c_ty)
+
+	return
+}

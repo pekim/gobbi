@@ -90,9 +90,29 @@ func SequenceInsertBefore(iter *SequenceIter, data uintptr) *SequenceIter {
 	return retGo
 }
 
-// Unsupported : g_sequence_move : no return generator
+// SequenceMove is a wrapper around the C function g_sequence_move.
+func SequenceMove(src *SequenceIter, dest *SequenceIter) {
+	c_src := (*C.GSequenceIter)(src.ToC())
 
-// Unsupported : g_sequence_move_range : no return generator
+	c_dest := (*C.GSequenceIter)(dest.ToC())
+
+	C.g_sequence_move(c_src, c_dest)
+
+	return
+}
+
+// SequenceMoveRange is a wrapper around the C function g_sequence_move_range.
+func SequenceMoveRange(dest *SequenceIter, begin *SequenceIter, end *SequenceIter) {
+	c_dest := (*C.GSequenceIter)(dest.ToC())
+
+	c_begin := (*C.GSequenceIter)(begin.ToC())
+
+	c_end := (*C.GSequenceIter)(end.ToC())
+
+	C.g_sequence_move_range(c_dest, c_begin, c_end)
+
+	return
+}
 
 // SequenceRangeGetMidpoint is a wrapper around the C function g_sequence_range_get_midpoint.
 func SequenceRangeGetMidpoint(begin *SequenceIter, end *SequenceIter) *SequenceIter {
@@ -106,13 +126,47 @@ func SequenceRangeGetMidpoint(begin *SequenceIter, end *SequenceIter) *SequenceI
 	return retGo
 }
 
-// Unsupported : g_sequence_remove : no return generator
+// SequenceRemove is a wrapper around the C function g_sequence_remove.
+func SequenceRemove(iter *SequenceIter) {
+	c_iter := (*C.GSequenceIter)(iter.ToC())
 
-// Unsupported : g_sequence_remove_range : no return generator
+	C.g_sequence_remove(c_iter)
 
-// Unsupported : g_sequence_set : no return generator
+	return
+}
 
-// Unsupported : g_sequence_swap : no return generator
+// SequenceRemoveRange is a wrapper around the C function g_sequence_remove_range.
+func SequenceRemoveRange(begin *SequenceIter, end *SequenceIter) {
+	c_begin := (*C.GSequenceIter)(begin.ToC())
+
+	c_end := (*C.GSequenceIter)(end.ToC())
+
+	C.g_sequence_remove_range(c_begin, c_end)
+
+	return
+}
+
+// SequenceSet is a wrapper around the C function g_sequence_set.
+func SequenceSet(iter *SequenceIter, data uintptr) {
+	c_iter := (*C.GSequenceIter)(iter.ToC())
+
+	c_data := (C.gpointer)(data)
+
+	C.g_sequence_set(c_iter, c_data)
+
+	return
+}
+
+// SequenceSwap is a wrapper around the C function g_sequence_swap.
+func SequenceSwap(a *SequenceIter, b *SequenceIter) {
+	c_a := (*C.GSequenceIter)(a.ToC())
+
+	c_b := (*C.GSequenceIter)(b.ToC())
+
+	C.g_sequence_swap(c_a, c_b)
+
+	return
+}
 
 // SliceCopy is a wrapper around the C function g_slice_copy.
 func SliceCopy(blockSize uint64, memBlock uintptr) uintptr {

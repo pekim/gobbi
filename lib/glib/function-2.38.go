@@ -3,6 +3,8 @@
 
 package glib
 
+import "unsafe"
+
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <glib.h>
 // #include <glib/gstdio.h>
@@ -32,11 +34,32 @@ func TestGetDir(fileType TestFileType) string {
 
 // Unsupported : g_test_get_filename : unsupported parameter ... : varargs
 
-// Unsupported : g_test_incomplete : no return generator
+// TestIncomplete is a wrapper around the C function g_test_incomplete.
+func TestIncomplete(msg string) {
+	c_msg := C.CString(msg)
+	defer C.free(unsafe.Pointer(c_msg))
 
-// Unsupported : g_test_set_nonfatal_assertions : no return generator
+	C.g_test_incomplete(c_msg)
 
-// Unsupported : g_test_skip : no return generator
+	return
+}
+
+// TestSetNonfatalAssertions is a wrapper around the C function g_test_set_nonfatal_assertions.
+func TestSetNonfatalAssertions() {
+	C.g_test_set_nonfatal_assertions()
+
+	return
+}
+
+// TestSkip is a wrapper around the C function g_test_skip.
+func TestSkip(msg string) {
+	c_msg := C.CString(msg)
+	defer C.free(unsafe.Pointer(c_msg))
+
+	C.g_test_skip(c_msg)
+
+	return
+}
 
 // TestSubprocess is a wrapper around the C function g_test_subprocess.
 func TestSubprocess() bool {
@@ -46,4 +69,16 @@ func TestSubprocess() bool {
 	return retGo
 }
 
-// Unsupported : g_test_trap_subprocess : no return generator
+// TestTrapSubprocess is a wrapper around the C function g_test_trap_subprocess.
+func TestTrapSubprocess(testPath string, usecTimeout uint64, testFlags TestSubprocessFlags) {
+	c_test_path := C.CString(testPath)
+	defer C.free(unsafe.Pointer(c_test_path))
+
+	c_usec_timeout := (C.guint64)(usecTimeout)
+
+	c_test_flags := (C.GTestSubprocessFlags)(testFlags)
+
+	C.g_test_trap_subprocess(c_test_path, c_usec_timeout, c_test_flags)
+
+	return
+}

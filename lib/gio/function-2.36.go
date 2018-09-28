@@ -34,4 +34,9 @@ func DbusAddressEscapeValue(string string) string {
 
 // Unsupported : g_file_new_for_commandline_arg_and_cwd : no return generator
 
-// Unsupported : g_networking_init : no return generator
+// NetworkingInit is a wrapper around the C function g_networking_init.
+func NetworkingInit() {
+	C.g_networking_init()
+
+	return
+}

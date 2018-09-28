@@ -3,6 +3,8 @@
 
 package gio
 
+import "unsafe"
+
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <gio/gdesktopappinfo.h>
 // #include <gio/gfiledescriptorbased.h>
@@ -18,4 +20,12 @@ package gio
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : g_io_modules_scan_all_in_directory : no return generator
+// IoModulesScanAllInDirectory is a wrapper around the C function g_io_modules_scan_all_in_directory.
+func IoModulesScanAllInDirectory(dirname string) {
+	c_dirname := C.CString(dirname)
+	defer C.free(unsafe.Pointer(c_dirname))
+
+	C.g_io_modules_scan_all_in_directory(c_dirname)
+
+	return
+}

@@ -91,9 +91,25 @@ func Strcmp0(str1 string, str2 string) int32 {
 
 // Unsupported : g_test_add_func : unsupported parameter test_func : no type generator for TestFunc, GTestFunc
 
-// Unsupported : g_test_bug : no return generator
+// TestBug is a wrapper around the C function g_test_bug.
+func TestBug(bugUriSnippet string) {
+	c_bug_uri_snippet := C.CString(bugUriSnippet)
+	defer C.free(unsafe.Pointer(c_bug_uri_snippet))
 
-// Unsupported : g_test_bug_base : no return generator
+	C.g_test_bug(c_bug_uri_snippet)
+
+	return
+}
+
+// TestBugBase is a wrapper around the C function g_test_bug_base.
+func TestBugBase(uriPattern string) {
+	c_uri_pattern := C.CString(uriPattern)
+	defer C.free(unsafe.Pointer(c_uri_pattern))
+
+	C.g_test_bug_base(c_uri_pattern)
+
+	return
+}
 
 // Unsupported : g_test_create_case : unsupported parameter data_setup : no type generator for TestFixtureFunc, GTestFixtureFunc
 
@@ -126,7 +142,14 @@ func TestGetRoot() *TestSuite {
 
 // Unsupported : g_test_queue_destroy : unsupported parameter destroy_func : no type generator for DestroyNotify, GDestroyNotify
 
-// Unsupported : g_test_queue_free : no return generator
+// TestQueueFree is a wrapper around the C function g_test_queue_free.
+func TestQueueFree(gfreePointer uintptr) {
+	c_gfree_pointer := (C.gpointer)(gfreePointer)
+
+	C.g_test_queue_free(c_gfree_pointer)
+
+	return
+}
 
 // TestRandDouble is a wrapper around the C function g_test_rand_double.
 func TestRandDouble() float64 {
@@ -202,7 +225,12 @@ func TestTimerLast() float64 {
 	return retGo
 }
 
-// Unsupported : g_test_timer_start : no return generator
+// TestTimerStart is a wrapper around the C function g_test_timer_start.
+func TestTimerStart() {
+	C.g_test_timer_start()
+
+	return
+}
 
 // TestTrapFork is a wrapper around the C function g_test_trap_fork.
 func TestTrapFork(usecTimeout uint64, testTrapFlags TestTrapFlags) bool {

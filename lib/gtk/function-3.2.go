@@ -3,6 +3,11 @@
 
 package gtk
 
+import (
+	cairo "github.com/pekim/gobbi/lib/cairo"
+	gdkpixbuf "github.com/pekim/gobbi/lib/gdkpixbuf"
+)
+
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <gtk/gtk-a11y.h>
 // #include <gtk/gtk.h>
@@ -12,4 +17,19 @@ import "C"
 
 // Unsupported : gtk_drag_set_icon_gicon : unsupported parameter icon : no type generator for Gio.Icon, GIcon*
 
-// Unsupported : gtk_render_icon : no return generator
+// RenderIcon is a wrapper around the C function gtk_render_icon.
+func RenderIcon(context *StyleContext, cr *cairo.Context, pixbuf *gdkpixbuf.Pixbuf, x float64, y float64) {
+	c_context := (*C.GtkStyleContext)(context.ToC())
+
+	c_cr := (*C.cairo_t)(cr.ToC())
+
+	c_pixbuf := (*C.GdkPixbuf)(pixbuf.ToC())
+
+	c_x := (C.gdouble)(x)
+
+	c_y := (C.gdouble)(y)
+
+	C.gtk_render_icon(c_context, c_cr, c_pixbuf, c_x, c_y)
+
+	return
+}

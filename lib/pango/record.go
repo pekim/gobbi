@@ -214,7 +214,12 @@ func (recv *AttrIterator) Copy() *AttrIterator {
 	return retGo
 }
 
-// Unsupported : pango_attr_iterator_destroy : no return generator
+// Destroy is a wrapper around the C function pango_attr_iterator_destroy.
+func (recv *AttrIterator) Destroy() {
+	C.pango_attr_iterator_destroy((*C.PangoAttrIterator)(recv.native))
+
+	return
+}
 
 // Get is a wrapper around the C function pango_attr_iterator_get.
 func (recv *AttrIterator) Get(type_ AttrType) *Attribute {
@@ -290,7 +295,14 @@ func AttrListNew() *AttrList {
 	return retGo
 }
 
-// Unsupported : pango_attr_list_change : no return generator
+// Change is a wrapper around the C function pango_attr_list_change.
+func (recv *AttrList) Change(attr *Attribute) {
+	c_attr := (*C.PangoAttribute)(attr.ToC())
+
+	C.pango_attr_list_change((*C.PangoAttrList)(recv.native), c_attr)
+
+	return
+}
 
 // Copy is a wrapper around the C function pango_attr_list_copy.
 func (recv *AttrList) Copy() *AttrList {
@@ -310,13 +322,43 @@ func (recv *AttrList) GetIterator() *AttrIterator {
 	return retGo
 }
 
-// Unsupported : pango_attr_list_insert : no return generator
+// Insert is a wrapper around the C function pango_attr_list_insert.
+func (recv *AttrList) Insert(attr *Attribute) {
+	c_attr := (*C.PangoAttribute)(attr.ToC())
 
-// Unsupported : pango_attr_list_insert_before : no return generator
+	C.pango_attr_list_insert((*C.PangoAttrList)(recv.native), c_attr)
 
-// Unsupported : pango_attr_list_splice : no return generator
+	return
+}
 
-// Unsupported : pango_attr_list_unref : no return generator
+// InsertBefore is a wrapper around the C function pango_attr_list_insert_before.
+func (recv *AttrList) InsertBefore(attr *Attribute) {
+	c_attr := (*C.PangoAttribute)(attr.ToC())
+
+	C.pango_attr_list_insert_before((*C.PangoAttrList)(recv.native), c_attr)
+
+	return
+}
+
+// Splice is a wrapper around the C function pango_attr_list_splice.
+func (recv *AttrList) Splice(other *AttrList, pos int32, len int32) {
+	c_other := (*C.PangoAttrList)(other.ToC())
+
+	c_pos := (C.gint)(pos)
+
+	c_len := (C.gint)(len)
+
+	C.pango_attr_list_splice((*C.PangoAttrList)(recv.native), c_other, c_pos, c_len)
+
+	return
+}
+
+// Unref is a wrapper around the C function pango_attr_list_unref.
+func (recv *AttrList) Unref() {
+	C.pango_attr_list_unref((*C.PangoAttrList)(recv.native))
+
+	return
+}
 
 // AttrShape is a wrapper around the C record PangoAttrShape.
 type AttrShape struct {
@@ -447,7 +489,12 @@ func (recv *Attribute) Copy() *Attribute {
 	return retGo
 }
 
-// Unsupported : pango_attribute_destroy : no return generator
+// Destroy is a wrapper around the C function pango_attribute_destroy.
+func (recv *Attribute) Destroy() {
+	C.pango_attribute_destroy((*C.PangoAttribute)(recv.native))
+
+	return
+}
 
 // Equal is a wrapper around the C function pango_attribute_equal.
 func (recv *Attribute) Equal(attr2 *Attribute) bool {
@@ -458,8 +505,6 @@ func (recv *Attribute) Equal(attr2 *Attribute) bool {
 
 	return retGo
 }
-
-// Unsupported : pango_attribute_init : no return generator
 
 // Color is a wrapper around the C record PangoColor.
 type Color struct {
@@ -504,7 +549,12 @@ func (recv *Color) Copy() *Color {
 	return retGo
 }
 
-// Unsupported : pango_color_free : no return generator
+// Free is a wrapper around the C function pango_color_free.
+func (recv *Color) Free() {
+	C.pango_color_free((*C.PangoColor)(recv.native))
+
+	return
+}
 
 // Parse is a wrapper around the C function pango_color_parse.
 func (recv *Color) Parse(spec string) bool {
@@ -577,7 +627,14 @@ func (recv *Coverage) Get(index int32) CoverageLevel {
 	return retGo
 }
 
-// Unsupported : pango_coverage_max : no return generator
+// Max is a wrapper around the C function pango_coverage_max.
+func (recv *Coverage) Max(other *Coverage) {
+	c_other := (*C.PangoCoverage)(other.ToC())
+
+	C.pango_coverage_max((*C.PangoCoverage)(recv.native), c_other)
+
+	return
+}
 
 // Ref is a wrapper around the C function pango_coverage_ref.
 func (recv *Coverage) Ref() *Coverage {
@@ -587,11 +644,25 @@ func (recv *Coverage) Ref() *Coverage {
 	return retGo
 }
 
-// Unsupported : pango_coverage_set : no return generator
+// Set is a wrapper around the C function pango_coverage_set.
+func (recv *Coverage) Set(index int32, level CoverageLevel) {
+	c_index_ := (C.int)(index)
+
+	c_level := (C.PangoCoverageLevel)(level)
+
+	C.pango_coverage_set((*C.PangoCoverage)(recv.native), c_index_, c_level)
+
+	return
+}
 
 // Unsupported : pango_coverage_to_bytes : unsupported parameter bytes : no param type
 
-// Unsupported : pango_coverage_unref : no return generator
+// Unref is a wrapper around the C function pango_coverage_unref.
+func (recv *Coverage) Unref() {
+	C.pango_coverage_unref((*C.PangoCoverage)(recv.native))
+
+	return
+}
 
 // Blacklisted : PangoEngineClass
 
@@ -672,7 +743,12 @@ func (recv *FontDescription) Equal(desc2 *FontDescription) bool {
 	return retGo
 }
 
-// Unsupported : pango_font_description_free : no return generator
+// Free is a wrapper around the C function pango_font_description_free.
+func (recv *FontDescription) Free() {
+	C.pango_font_description_free((*C.PangoFontDescription)(recv.native))
+
+	return
+}
 
 // GetFamily is a wrapper around the C function pango_font_description_get_family.
 func (recv *FontDescription) GetFamily() string {
@@ -738,27 +814,94 @@ func (recv *FontDescription) Hash() uint32 {
 	return retGo
 }
 
-// Unsupported : pango_font_description_merge : no return generator
+// Merge is a wrapper around the C function pango_font_description_merge.
+func (recv *FontDescription) Merge(descToMerge *FontDescription, replaceExisting bool) {
+	c_desc_to_merge := (*C.PangoFontDescription)(descToMerge.ToC())
 
-// Unsupported : pango_font_description_merge_static : no return generator
+	c_replace_existing :=
+		boolToGboolean(replaceExisting)
 
-// Unsupported : pango_font_description_set_absolute_size : no return generator
+	C.pango_font_description_merge((*C.PangoFontDescription)(recv.native), c_desc_to_merge, c_replace_existing)
 
-// Unsupported : pango_font_description_set_family : no return generator
+	return
+}
 
-// Unsupported : pango_font_description_set_family_static : no return generator
+// MergeStatic is a wrapper around the C function pango_font_description_merge_static.
+func (recv *FontDescription) MergeStatic(descToMerge *FontDescription, replaceExisting bool) {
+	c_desc_to_merge := (*C.PangoFontDescription)(descToMerge.ToC())
 
-// Unsupported : pango_font_description_set_gravity : no return generator
+	c_replace_existing :=
+		boolToGboolean(replaceExisting)
 
-// Unsupported : pango_font_description_set_size : no return generator
+	C.pango_font_description_merge_static((*C.PangoFontDescription)(recv.native), c_desc_to_merge, c_replace_existing)
 
-// Unsupported : pango_font_description_set_stretch : no return generator
+	return
+}
 
-// Unsupported : pango_font_description_set_style : no return generator
+// SetFamily is a wrapper around the C function pango_font_description_set_family.
+func (recv *FontDescription) SetFamily(family string) {
+	c_family := C.CString(family)
+	defer C.free(unsafe.Pointer(c_family))
 
-// Unsupported : pango_font_description_set_variant : no return generator
+	C.pango_font_description_set_family((*C.PangoFontDescription)(recv.native), c_family)
 
-// Unsupported : pango_font_description_set_weight : no return generator
+	return
+}
+
+// SetFamilyStatic is a wrapper around the C function pango_font_description_set_family_static.
+func (recv *FontDescription) SetFamilyStatic(family string) {
+	c_family := C.CString(family)
+	defer C.free(unsafe.Pointer(c_family))
+
+	C.pango_font_description_set_family_static((*C.PangoFontDescription)(recv.native), c_family)
+
+	return
+}
+
+// SetSize is a wrapper around the C function pango_font_description_set_size.
+func (recv *FontDescription) SetSize(size int32) {
+	c_size := (C.gint)(size)
+
+	C.pango_font_description_set_size((*C.PangoFontDescription)(recv.native), c_size)
+
+	return
+}
+
+// SetStretch is a wrapper around the C function pango_font_description_set_stretch.
+func (recv *FontDescription) SetStretch(stretch Stretch) {
+	c_stretch := (C.PangoStretch)(stretch)
+
+	C.pango_font_description_set_stretch((*C.PangoFontDescription)(recv.native), c_stretch)
+
+	return
+}
+
+// SetStyle is a wrapper around the C function pango_font_description_set_style.
+func (recv *FontDescription) SetStyle(style Style) {
+	c_style := (C.PangoStyle)(style)
+
+	C.pango_font_description_set_style((*C.PangoFontDescription)(recv.native), c_style)
+
+	return
+}
+
+// SetVariant is a wrapper around the C function pango_font_description_set_variant.
+func (recv *FontDescription) SetVariant(variant Variant) {
+	c_variant := (C.PangoVariant)(variant)
+
+	C.pango_font_description_set_variant((*C.PangoFontDescription)(recv.native), c_variant)
+
+	return
+}
+
+// SetWeight is a wrapper around the C function pango_font_description_set_weight.
+func (recv *FontDescription) SetWeight(weight Weight) {
+	c_weight := (C.PangoWeight)(weight)
+
+	C.pango_font_description_set_weight((*C.PangoFontDescription)(recv.native), c_weight)
+
+	return
+}
 
 // ToFilename is a wrapper around the C function pango_font_description_to_filename.
 func (recv *FontDescription) ToFilename() string {
@@ -778,7 +921,14 @@ func (recv *FontDescription) ToString() string {
 	return retGo
 }
 
-// Unsupported : pango_font_description_unset_fields : no return generator
+// UnsetFields is a wrapper around the C function pango_font_description_unset_fields.
+func (recv *FontDescription) UnsetFields(toUnset FontMask) {
+	c_to_unset := (C.PangoFontMask)(toUnset)
+
+	C.pango_font_description_unset_fields((*C.PangoFontDescription)(recv.native), c_to_unset)
+
+	return
+}
 
 // Blacklisted : PangoFontFaceClass
 
@@ -879,8 +1029,6 @@ func (recv *GlyphItem) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : pango_glyph_item_free : no return generator
-
 // Unsupported : pango_glyph_item_get_logical_widths : unsupported parameter logical_widths : no param type
 
 // Unsupported : pango_glyph_item_letter_space : unsupported parameter log_attrs : no param type
@@ -931,17 +1079,63 @@ func (recv *GlyphString) Copy() *GlyphString {
 	return retGo
 }
 
-// Unsupported : pango_glyph_string_extents : no return generator
+// Extents is a wrapper around the C function pango_glyph_string_extents.
+func (recv *GlyphString) Extents(font *Font) (*Rectangle, *Rectangle) {
+	c_font := (*C.PangoFont)(font.ToC())
 
-// Unsupported : pango_glyph_string_extents_range : no return generator
+	var c_ink_rect C.PangoRectangle
 
-// Unsupported : pango_glyph_string_free : no return generator
+	var c_logical_rect C.PangoRectangle
+
+	C.pango_glyph_string_extents((*C.PangoGlyphString)(recv.native), c_font, &c_ink_rect, &c_logical_rect)
+
+	inkRect := RectangleNewFromC(unsafe.Pointer(&c_ink_rect))
+
+	logicalRect := RectangleNewFromC(unsafe.Pointer(&c_logical_rect))
+
+	return inkRect, logicalRect
+}
+
+// ExtentsRange is a wrapper around the C function pango_glyph_string_extents_range.
+func (recv *GlyphString) ExtentsRange(start int32, end int32, font *Font) (*Rectangle, *Rectangle) {
+	c_start := (C.int)(start)
+
+	c_end := (C.int)(end)
+
+	c_font := (*C.PangoFont)(font.ToC())
+
+	var c_ink_rect C.PangoRectangle
+
+	var c_logical_rect C.PangoRectangle
+
+	C.pango_glyph_string_extents_range((*C.PangoGlyphString)(recv.native), c_start, c_end, c_font, &c_ink_rect, &c_logical_rect)
+
+	inkRect := RectangleNewFromC(unsafe.Pointer(&c_ink_rect))
+
+	logicalRect := RectangleNewFromC(unsafe.Pointer(&c_logical_rect))
+
+	return inkRect, logicalRect
+}
+
+// Free is a wrapper around the C function pango_glyph_string_free.
+func (recv *GlyphString) Free() {
+	C.pango_glyph_string_free((*C.PangoGlyphString)(recv.native))
+
+	return
+}
 
 // Unsupported : pango_glyph_string_get_logical_widths : unsupported parameter logical_widths : no param type
 
 // Unsupported : pango_glyph_string_index_to_x : unsupported parameter x_pos : no type generator for gint, int*
 
-// Unsupported : pango_glyph_string_set_size : no return generator
+// SetSize is a wrapper around the C function pango_glyph_string_set_size.
+func (recv *GlyphString) SetSize(newLen int32) {
+	c_new_len := (C.gint)(newLen)
+
+	C.pango_glyph_string_set_size((*C.PangoGlyphString)(recv.native), c_new_len)
+
+	return
+}
 
 // Unsupported : pango_glyph_string_x_to_index : unsupported parameter index_ : no type generator for gint, int*
 
@@ -1021,7 +1215,12 @@ func (recv *Item) Copy() *Item {
 	return retGo
 }
 
-// Unsupported : pango_item_free : no return generator
+// Free is a wrapper around the C function pango_item_free.
+func (recv *Item) Free() {
+	C.pango_item_free((*C.PangoItem)(recv.native))
+
+	return
+}
 
 // Split is a wrapper around the C function pango_item_split.
 func (recv *Item) Split(splitIndex int32, splitOffset int32) *Item {
@@ -1143,15 +1342,46 @@ func (recv *LayoutLine) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : pango_layout_line_get_extents : no return generator
+// GetExtents is a wrapper around the C function pango_layout_line_get_extents.
+func (recv *LayoutLine) GetExtents() (*Rectangle, *Rectangle) {
+	var c_ink_rect C.PangoRectangle
 
-// Unsupported : pango_layout_line_get_pixel_extents : no return generator
+	var c_logical_rect C.PangoRectangle
+
+	C.pango_layout_line_get_extents((*C.PangoLayoutLine)(recv.native), &c_ink_rect, &c_logical_rect)
+
+	inkRect := RectangleNewFromC(unsafe.Pointer(&c_ink_rect))
+
+	logicalRect := RectangleNewFromC(unsafe.Pointer(&c_logical_rect))
+
+	return inkRect, logicalRect
+}
+
+// GetPixelExtents is a wrapper around the C function pango_layout_line_get_pixel_extents.
+func (recv *LayoutLine) GetPixelExtents() (*Rectangle, *Rectangle) {
+	var c_ink_rect C.PangoRectangle
+
+	var c_logical_rect C.PangoRectangle
+
+	C.pango_layout_line_get_pixel_extents((*C.PangoLayoutLine)(recv.native), &c_ink_rect, &c_logical_rect)
+
+	inkRect := RectangleNewFromC(unsafe.Pointer(&c_ink_rect))
+
+	logicalRect := RectangleNewFromC(unsafe.Pointer(&c_logical_rect))
+
+	return inkRect, logicalRect
+}
 
 // Unsupported : pango_layout_line_get_x_ranges : unsupported parameter ranges : no param type
 
 // Unsupported : pango_layout_line_index_to_x : unsupported parameter x_pos : no type generator for gint, int*
 
-// Unsupported : pango_layout_line_unref : no return generator
+// Unref is a wrapper around the C function pango_layout_line_unref.
+func (recv *LayoutLine) Unref() {
+	C.pango_layout_line_unref((*C.PangoLayoutLine)(recv.native))
+
+	return
+}
 
 // Unsupported : pango_layout_line_x_to_index : unsupported parameter index_ : no type generator for gint, int*
 
@@ -1276,8 +1506,6 @@ func (recv *ScriptIter) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : pango_script_iter_free : no return generator
-
 // Unsupported : pango_script_iter_get_range : unsupported parameter script : PangoScript* with indirection level of 1
 
 // TabArray is a wrapper around the C record PangoTabArray.
@@ -1324,7 +1552,12 @@ func (recv *TabArray) Copy() *TabArray {
 	return retGo
 }
 
-// Unsupported : pango_tab_array_free : no return generator
+// Free is a wrapper around the C function pango_tab_array_free.
+func (recv *TabArray) Free() {
+	C.pango_tab_array_free((*C.PangoTabArray)(recv.native))
+
+	return
+}
 
 // GetPositionsInPixels is a wrapper around the C function pango_tab_array_get_positions_in_pixels.
 func (recv *TabArray) GetPositionsInPixels() bool {
@@ -1346,6 +1579,24 @@ func (recv *TabArray) GetSize() int32 {
 
 // Unsupported : pango_tab_array_get_tabs : unsupported parameter alignments : PangoTabAlign** with indirection level of 2
 
-// Unsupported : pango_tab_array_resize : no return generator
+// Resize is a wrapper around the C function pango_tab_array_resize.
+func (recv *TabArray) Resize(newSize int32) {
+	c_new_size := (C.gint)(newSize)
 
-// Unsupported : pango_tab_array_set_tab : no return generator
+	C.pango_tab_array_resize((*C.PangoTabArray)(recv.native), c_new_size)
+
+	return
+}
+
+// SetTab is a wrapper around the C function pango_tab_array_set_tab.
+func (recv *TabArray) SetTab(tabIndex int32, alignment TabAlign, location int32) {
+	c_tab_index := (C.gint)(tabIndex)
+
+	c_alignment := (C.PangoTabAlign)(alignment)
+
+	c_location := (C.gint)(location)
+
+	C.pango_tab_array_set_tab((*C.PangoTabArray)(recv.native), c_tab_index, c_alignment, c_location)
+
+	return
+}

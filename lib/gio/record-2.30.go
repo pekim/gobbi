@@ -248,9 +248,22 @@ func (recv *IOModuleScope) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : g_io_module_scope_block : no return generator
+// Block is a wrapper around the C function g_io_module_scope_block.
+func (recv *IOModuleScope) Block(basename string) {
+	c_basename := C.CString(basename)
+	defer C.free(unsafe.Pointer(c_basename))
 
-// Unsupported : g_io_module_scope_free : no return generator
+	C.g_io_module_scope_block((*C.GIOModuleScope)(recv.native), c_basename)
+
+	return
+}
+
+// Free is a wrapper around the C function g_io_module_scope_free.
+func (recv *IOModuleScope) Free() {
+	C.g_io_module_scope_free((*C.GIOModuleScope)(recv.native))
+
+	return
+}
 
 // TlsDatabaseClass is a wrapper around the C record GTlsDatabaseClass.
 type TlsDatabaseClass struct {

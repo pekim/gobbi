@@ -359,21 +359,34 @@ func (recv *Socket) Listen() (bool, error) {
 
 // Unsupported : g_socket_send_with_blocking : unsupported parameter buffer : no param type
 
-// Unsupported : g_socket_set_blocking : no return generator
+// SetBlocking is a wrapper around the C function g_socket_set_blocking.
+func (recv *Socket) SetBlocking(blocking bool) {
+	c_blocking :=
+		boolToGboolean(blocking)
 
-// Unsupported : g_socket_set_broadcast : no return generator
+	C.g_socket_set_blocking((*C.GSocket)(recv.native), c_blocking)
 
-// Unsupported : g_socket_set_keepalive : no return generator
+	return
+}
 
-// Unsupported : g_socket_set_listen_backlog : no return generator
+// SetKeepalive is a wrapper around the C function g_socket_set_keepalive.
+func (recv *Socket) SetKeepalive(keepalive bool) {
+	c_keepalive :=
+		boolToGboolean(keepalive)
 
-// Unsupported : g_socket_set_multicast_loopback : no return generator
+	C.g_socket_set_keepalive((*C.GSocket)(recv.native), c_keepalive)
 
-// Unsupported : g_socket_set_multicast_ttl : no return generator
+	return
+}
 
-// Unsupported : g_socket_set_timeout : no return generator
+// SetListenBacklog is a wrapper around the C function g_socket_set_listen_backlog.
+func (recv *Socket) SetListenBacklog(backlog int32) {
+	c_backlog := (C.gint)(backlog)
 
-// Unsupported : g_socket_set_ttl : no return generator
+	C.g_socket_set_listen_backlog((*C.GSocket)(recv.native), c_backlog)
+
+	return
+}
 
 // Shutdown is a wrapper around the C function g_socket_shutdown.
 func (recv *Socket) Shutdown(shutdownRead bool, shutdownWrite bool) (bool, error) {
@@ -435,7 +448,15 @@ func SocketClientNew() *SocketClient {
 	return retGo
 }
 
-// Unsupported : g_socket_client_add_application_proxy : no return generator
+// AddApplicationProxy is a wrapper around the C function g_socket_client_add_application_proxy.
+func (recv *SocketClient) AddApplicationProxy(protocol string) {
+	c_protocol := C.CString(protocol)
+	defer C.free(unsafe.Pointer(c_protocol))
+
+	C.g_socket_client_add_application_proxy((*C.GSocketClient)(recv.native), c_protocol)
+
+	return
+}
 
 // Unsupported : g_socket_client_connect : unsupported parameter connectable : no type generator for SocketConnectable, GSocketConnectable*
 
@@ -534,23 +555,43 @@ func (recv *SocketClient) GetSocketType() SocketType {
 	return retGo
 }
 
-// Unsupported : g_socket_client_set_enable_proxy : no return generator
+// SetFamily is a wrapper around the C function g_socket_client_set_family.
+func (recv *SocketClient) SetFamily(family SocketFamily) {
+	c_family := (C.GSocketFamily)(family)
 
-// Unsupported : g_socket_client_set_family : no return generator
+	C.g_socket_client_set_family((*C.GSocketClient)(recv.native), c_family)
 
-// Unsupported : g_socket_client_set_local_address : no return generator
+	return
+}
 
-// Unsupported : g_socket_client_set_protocol : no return generator
+// SetLocalAddress is a wrapper around the C function g_socket_client_set_local_address.
+func (recv *SocketClient) SetLocalAddress(address *SocketAddress) {
+	c_address := (*C.GSocketAddress)(address.ToC())
+
+	C.g_socket_client_set_local_address((*C.GSocketClient)(recv.native), c_address)
+
+	return
+}
+
+// SetProtocol is a wrapper around the C function g_socket_client_set_protocol.
+func (recv *SocketClient) SetProtocol(protocol SocketProtocol) {
+	c_protocol := (C.GSocketProtocol)(protocol)
+
+	C.g_socket_client_set_protocol((*C.GSocketClient)(recv.native), c_protocol)
+
+	return
+}
 
 // Unsupported : g_socket_client_set_proxy_resolver : unsupported parameter proxy_resolver : no type generator for ProxyResolver, GProxyResolver*
 
-// Unsupported : g_socket_client_set_socket_type : no return generator
+// SetSocketType is a wrapper around the C function g_socket_client_set_socket_type.
+func (recv *SocketClient) SetSocketType(type_ SocketType) {
+	c_type := (C.GSocketType)(type_)
 
-// Unsupported : g_socket_client_set_timeout : no return generator
+	C.g_socket_client_set_socket_type((*C.GSocketClient)(recv.native), c_type)
 
-// Unsupported : g_socket_client_set_tls : no return generator
-
-// Unsupported : g_socket_client_set_tls_validation_flags : no return generator
+	return
+}
 
 // SocketConnection is a wrapper around the C record GSocketConnection.
 type SocketConnection struct {
@@ -700,9 +741,21 @@ func (recv *SocketListener) AddSocket(socket *Socket, sourceObject *gobject.Obje
 	return retGo, goThrowableError
 }
 
-// Unsupported : g_socket_listener_close : no return generator
+// Close is a wrapper around the C function g_socket_listener_close.
+func (recv *SocketListener) Close() {
+	C.g_socket_listener_close((*C.GSocketListener)(recv.native))
 
-// Unsupported : g_socket_listener_set_backlog : no return generator
+	return
+}
+
+// SetBacklog is a wrapper around the C function g_socket_listener_set_backlog.
+func (recv *SocketListener) SetBacklog(listenBacklog int32) {
+	c_listen_backlog := (C.int)(listenBacklog)
+
+	C.g_socket_listener_set_backlog((*C.GSocketListener)(recv.native), c_listen_backlog)
+
+	return
+}
 
 // SocketService is a wrapper around the C record GSocketService.
 type SocketService struct {
@@ -743,9 +796,19 @@ func (recv *SocketService) IsActive() bool {
 	return retGo
 }
 
-// Unsupported : g_socket_service_start : no return generator
+// Start is a wrapper around the C function g_socket_service_start.
+func (recv *SocketService) Start() {
+	C.g_socket_service_start((*C.GSocketService)(recv.native))
 
-// Unsupported : g_socket_service_stop : no return generator
+	return
+}
+
+// Stop is a wrapper around the C function g_socket_service_stop.
+func (recv *SocketService) Stop() {
+	C.g_socket_service_stop((*C.GSocketService)(recv.native))
+
+	return
+}
 
 // TcpConnection is a wrapper around the C record GTcpConnection.
 type TcpConnection struct {
@@ -778,7 +841,15 @@ func (recv *TcpConnection) GetGracefulDisconnect() bool {
 	return retGo
 }
 
-// Unsupported : g_tcp_connection_set_graceful_disconnect : no return generator
+// SetGracefulDisconnect is a wrapper around the C function g_tcp_connection_set_graceful_disconnect.
+func (recv *TcpConnection) SetGracefulDisconnect(gracefulDisconnect bool) {
+	c_graceful_disconnect :=
+		boolToGboolean(gracefulDisconnect)
+
+	C.g_tcp_connection_set_graceful_disconnect((*C.GTcpConnection)(recv.native), c_graceful_disconnect)
+
+	return
+}
 
 // ThreadedSocketService is a wrapper around the C record GThreadedSocketService.
 type ThreadedSocketService struct {

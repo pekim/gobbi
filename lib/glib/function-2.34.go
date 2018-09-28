@@ -50,4 +50,17 @@ func SpawnCheckExitStatus(exitStatus int32) (bool, error) {
 
 // Unsupported : g_test_add_data_func_full : unsupported parameter test_func : no type generator for TestDataFunc, GTestDataFunc
 
-// Unsupported : g_test_expect_message : no return generator
+// TestExpectMessage is a wrapper around the C function g_test_expect_message.
+func TestExpectMessage(logDomain string, logLevel LogLevelFlags, pattern string) {
+	c_log_domain := C.CString(logDomain)
+	defer C.free(unsafe.Pointer(c_log_domain))
+
+	c_log_level := (C.GLogLevelFlags)(logLevel)
+
+	c_pattern := C.CString(pattern)
+	defer C.free(unsafe.Pointer(c_pattern))
+
+	C.g_test_expect_message(c_log_domain, c_log_level, c_pattern)
+
+	return
+}

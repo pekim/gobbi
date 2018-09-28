@@ -31,4 +31,14 @@ func DragBeginFromPoint(window *Window, device *Device, targets *glib.List, xRoo
 	return retGo
 }
 
-// Unsupported : gdk_drag_drop_done : no return generator
+// DragDropDone is a wrapper around the C function gdk_drag_drop_done.
+func DragDropDone(context *DragContext, success bool) {
+	c_context := (*C.GdkDragContext)(context.ToC())
+
+	c_success :=
+		boolToGboolean(success)
+
+	C.gdk_drag_drop_done(c_context, c_success)
+
+	return
+}

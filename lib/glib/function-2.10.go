@@ -12,7 +12,14 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : g_hash_table_unref : no return generator
+// HashTableUnref is a wrapper around the C function g_hash_table_unref.
+func HashTableUnref(hashTable *HashTable) {
+	c_hash_table := (*C.GHashTable)(hashTable.ToC())
+
+	C.g_hash_table_unref(c_hash_table)
+
+	return
+}
 
 // InternStaticString is a wrapper around the C function g_intern_static_string.
 func InternStaticString(string string) string {
@@ -56,9 +63,29 @@ func SliceAlloc0(blockSize uint64) uintptr {
 	return retGo
 }
 
-// Unsupported : g_slice_free1 : no return generator
+// SliceFree1 is a wrapper around the C function g_slice_free1.
+func SliceFree1(blockSize uint64, memBlock uintptr) {
+	c_block_size := (C.gsize)(blockSize)
 
-// Unsupported : g_slice_free_chain_with_offset : no return generator
+	c_mem_block := (C.gpointer)(memBlock)
+
+	C.g_slice_free1(c_block_size, c_mem_block)
+
+	return
+}
+
+// SliceFreeChainWithOffset is a wrapper around the C function g_slice_free_chain_with_offset.
+func SliceFreeChainWithOffset(blockSize uint64, memChain uintptr, nextOffset uint64) {
+	c_block_size := (C.gsize)(blockSize)
+
+	c_mem_chain := (C.gpointer)(memChain)
+
+	c_next_offset := (C.gsize)(nextOffset)
+
+	C.g_slice_free_chain_with_offset(c_block_size, c_mem_chain, c_next_offset)
+
+	return
+}
 
 // ThreadPoolGetMaxIdleTime is a wrapper around the C function g_thread_pool_get_max_idle_time.
 func ThreadPoolGetMaxIdleTime() uint32 {
@@ -68,4 +95,11 @@ func ThreadPoolGetMaxIdleTime() uint32 {
 	return retGo
 }
 
-// Unsupported : g_thread_pool_set_max_idle_time : no return generator
+// ThreadPoolSetMaxIdleTime is a wrapper around the C function g_thread_pool_set_max_idle_time.
+func ThreadPoolSetMaxIdleTime(interval uint32) {
+	c_interval := (C.guint)(interval)
+
+	C.g_thread_pool_set_max_idle_time(c_interval)
+
+	return
+}

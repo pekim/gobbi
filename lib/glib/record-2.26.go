@@ -457,7 +457,12 @@ func (recv *DateTime) ToUtc() *DateTime {
 	return retGo
 }
 
-// Unsupported : g_date_time_unref : no return generator
+// Unref is a wrapper around the C function g_date_time_unref.
+func (recv *DateTime) Unref() {
+	C.g_date_time_unref((*C.GDateTime)(recv.native))
+
+	return
+}
 
 // TimeZone is a wrapper around the C record GTimeZone.
 type TimeZone struct {
@@ -559,4 +564,9 @@ func (recv *TimeZone) Ref() *TimeZone {
 	return retGo
 }
 
-// Unsupported : g_time_zone_unref : no return generator
+// Unref is a wrapper around the C function g_time_zone_unref.
+func (recv *TimeZone) Unref() {
+	C.g_time_zone_unref((*C.GTimeZone)(recv.native))
+
+	return
+}

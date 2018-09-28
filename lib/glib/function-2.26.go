@@ -62,4 +62,14 @@ func Dcgettext(domain string, msgid string, category int32) string {
 	return retGo
 }
 
-// Unsupported : g_source_set_name_by_id : no return generator
+// SourceSetNameById is a wrapper around the C function g_source_set_name_by_id.
+func SourceSetNameById(tag uint32, name string) {
+	c_tag := (C.guint)(tag)
+
+	c_name := C.CString(name)
+	defer C.free(unsafe.Pointer(c_name))
+
+	C.g_source_set_name_by_id(c_tag, c_name)
+
+	return
+}

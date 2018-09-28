@@ -5,6 +5,7 @@ package gdk
 
 import (
 	cairo "github.com/pekim/gobbi/lib/cairo"
+	gdkpixbuf "github.com/pekim/gobbi/lib/gdkpixbuf"
 	"unsafe"
 )
 
@@ -25,8 +26,39 @@ func CairoCreate(window *Window) *cairo.Context {
 
 // Unsupported : gdk_cairo_rectangle : unsupported parameter rectangle : Blacklisted record : GdkRectangle
 
-// Unsupported : gdk_cairo_region : no return generator
+// CairoRegion is a wrapper around the C function gdk_cairo_region.
+func CairoRegion(cr *cairo.Context, region *cairo.Region) {
+	c_cr := (*C.cairo_t)(cr.ToC())
 
-// Unsupported : gdk_cairo_set_source_color : no return generator
+	c_region := (*C.cairo_region_t)(region.ToC())
 
-// Unsupported : gdk_cairo_set_source_pixbuf : no return generator
+	C.gdk_cairo_region(c_cr, c_region)
+
+	return
+}
+
+// CairoSetSourceColor is a wrapper around the C function gdk_cairo_set_source_color.
+func CairoSetSourceColor(cr *cairo.Context, color *Color) {
+	c_cr := (*C.cairo_t)(cr.ToC())
+
+	c_color := (*C.GdkColor)(color.ToC())
+
+	C.gdk_cairo_set_source_color(c_cr, c_color)
+
+	return
+}
+
+// CairoSetSourcePixbuf is a wrapper around the C function gdk_cairo_set_source_pixbuf.
+func CairoSetSourcePixbuf(cr *cairo.Context, pixbuf *gdkpixbuf.Pixbuf, pixbufX float64, pixbufY float64) {
+	c_cr := (*C.cairo_t)(cr.ToC())
+
+	c_pixbuf := (*C.GdkPixbuf)(pixbuf.ToC())
+
+	c_pixbuf_x := (C.gdouble)(pixbufX)
+
+	c_pixbuf_y := (C.gdouble)(pixbufY)
+
+	C.gdk_cairo_set_source_pixbuf(c_cr, c_pixbuf, c_pixbuf_x, c_pixbuf_y)
+
+	return
+}

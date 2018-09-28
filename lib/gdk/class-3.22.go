@@ -239,5 +239,3 @@ func (recv *Seat) GetDisplay() *Display {
 }
 
 // Unsupported : gdk_seat_grab : unsupported parameter event : no type generator for Event, const GdkEvent*
-
-// Unsupported : gdk_seat_ungrab : no return generator

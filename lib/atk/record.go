@@ -595,8 +595,6 @@ func (recv *Range) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : atk_range_free : no return generator
-
 // Rectangle is a wrapper around the C record AtkRectangle.
 type Rectangle struct {
 	native *C.AtkRectangle

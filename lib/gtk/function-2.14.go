@@ -79,7 +79,12 @@ func TestFindLabel(widget *Widget, labelPattern string) *Widget {
 
 // Unsupported : gtk_test_list_all_types : unsupported parameter n_types : no type generator for guint, guint*
 
-// Unsupported : gtk_test_register_all_types : no return generator
+// TestRegisterAllTypes is a wrapper around the C function gtk_test_register_all_types.
+func TestRegisterAllTypes() {
+	C.gtk_test_register_all_types()
+
+	return
+}
 
 // TestSliderGetValue is a wrapper around the C function gtk_test_slider_get_value.
 func TestSliderGetValue(widget *Widget) float64 {
@@ -91,7 +96,16 @@ func TestSliderGetValue(widget *Widget) float64 {
 	return retGo
 }
 
-// Unsupported : gtk_test_slider_set_perc : no return generator
+// TestSliderSetPerc is a wrapper around the C function gtk_test_slider_set_perc.
+func TestSliderSetPerc(widget *Widget, percentage float64) {
+	c_widget := (*C.GtkWidget)(widget.ToC())
+
+	c_percentage := (C.double)(percentage)
+
+	C.gtk_test_slider_set_perc(c_widget, c_percentage)
+
+	return
+}
 
 // TestSpinButtonClick is a wrapper around the C function gtk_test_spin_button_click.
 func TestSpinButtonClick(spinner *SpinButton, button uint32, upwards bool) bool {
@@ -119,7 +133,17 @@ func TestTextGet(widget *Widget) string {
 	return retGo
 }
 
-// Unsupported : gtk_test_text_set : no return generator
+// TestTextSet is a wrapper around the C function gtk_test_text_set.
+func TestTextSet(widget *Widget, string string) {
+	c_widget := (*C.GtkWidget)(widget.ToC())
+
+	c_string := C.CString(string)
+	defer C.free(unsafe.Pointer(c_string))
+
+	C.gtk_test_text_set(c_widget, c_string)
+
+	return
+}
 
 // TestWidgetClick is a wrapper around the C function gtk_test_widget_click.
 func TestWidgetClick(widget *Widget, button uint32, modifiers gdk.ModifierType) bool {

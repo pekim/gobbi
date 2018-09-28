@@ -39,9 +39,23 @@ func AsciiStrtoll(nptr string, base uint32) (int64, string) {
 
 // Unsupported : g_base64_encode_step : unsupported parameter in : no param type
 
-// Unsupported : g_hash_table_remove_all : no return generator
+// HashTableRemoveAll is a wrapper around the C function g_hash_table_remove_all.
+func HashTableRemoveAll(hashTable *HashTable) {
+	c_hash_table := (*C.GHashTable)(hashTable.ToC())
 
-// Unsupported : g_hash_table_steal_all : no return generator
+	C.g_hash_table_remove_all(c_hash_table)
+
+	return
+}
+
+// HashTableStealAll is a wrapper around the C function g_hash_table_steal_all.
+func HashTableStealAll(hashTable *HashTable) {
+	c_hash_table := (*C.GHashTable)(hashTable.ToC())
+
+	C.g_hash_table_steal_all(c_hash_table)
+
+	return
+}
 
 // MainCurrentSource is a wrapper around the C function g_main_current_source.
 func MainCurrentSource() *Source {

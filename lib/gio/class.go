@@ -60,11 +60,15 @@ func AppLaunchContextNew() *AppLaunchContext {
 
 // Unsupported : g_app_launch_context_get_startup_notify_id : unsupported parameter info : no type generator for AppInfo, GAppInfo*
 
-// Unsupported : g_app_launch_context_launch_failed : no return generator
+// LaunchFailed is a wrapper around the C function g_app_launch_context_launch_failed.
+func (recv *AppLaunchContext) LaunchFailed(startupNotifyId string) {
+	c_startup_notify_id := C.CString(startupNotifyId)
+	defer C.free(unsafe.Pointer(c_startup_notify_id))
 
-// Unsupported : g_app_launch_context_setenv : no return generator
+	C.g_app_launch_context_launch_failed((*C.GAppLaunchContext)(recv.native), c_startup_notify_id)
 
-// Unsupported : g_app_launch_context_unsetenv : no return generator
+	return
+}
 
 // ApplicationCommandLine is a wrapper around the C record GApplicationCommandLine.
 type ApplicationCommandLine struct {
@@ -100,8 +104,6 @@ func (recv *ApplicationCommandLine) ToC() unsafe.Pointer {
 // Unsupported : g_application_command_line_print : unsupported parameter ... : varargs
 
 // Unsupported : g_application_command_line_printerr : unsupported parameter ... : varargs
-
-// Unsupported : g_application_command_line_set_exit_status : no return generator
 
 // BufferedInputStream is a wrapper around the C record GBufferedInputStream.
 type BufferedInputStream struct {
@@ -208,7 +210,14 @@ func (recv *BufferedInputStream) ReadByte(cancellable *Cancellable) (int32, erro
 	return retGo, goThrowableError
 }
 
-// Unsupported : g_buffered_input_stream_set_buffer_size : no return generator
+// SetBufferSize is a wrapper around the C function g_buffered_input_stream_set_buffer_size.
+func (recv *BufferedInputStream) SetBufferSize(size uint64) {
+	c_size := (C.gsize)(size)
+
+	C.g_buffered_input_stream_set_buffer_size((*C.GBufferedInputStream)(recv.native), c_size)
+
+	return
+}
 
 // BufferedOutputStream is a wrapper around the C record GBufferedOutputStream.
 type BufferedOutputStream struct {
@@ -271,9 +280,24 @@ func (recv *BufferedOutputStream) GetBufferSize() uint64 {
 	return retGo
 }
 
-// Unsupported : g_buffered_output_stream_set_auto_grow : no return generator
+// SetAutoGrow is a wrapper around the C function g_buffered_output_stream_set_auto_grow.
+func (recv *BufferedOutputStream) SetAutoGrow(autoGrow bool) {
+	c_auto_grow :=
+		boolToGboolean(autoGrow)
 
-// Unsupported : g_buffered_output_stream_set_buffer_size : no return generator
+	C.g_buffered_output_stream_set_auto_grow((*C.GBufferedOutputStream)(recv.native), c_auto_grow)
+
+	return
+}
+
+// SetBufferSize is a wrapper around the C function g_buffered_output_stream_set_buffer_size.
+func (recv *BufferedOutputStream) SetBufferSize(size uint64) {
+	c_size := (C.gsize)(size)
+
+	C.g_buffered_output_stream_set_buffer_size((*C.GBufferedOutputStream)(recv.native), c_size)
+
+	return
+}
 
 // BytesIcon is a wrapper around the C record GBytesIcon.
 type BytesIcon struct {
@@ -327,11 +351,14 @@ func CancellableNew() *Cancellable {
 	return retGo
 }
 
-// Unsupported : g_cancellable_cancel : no return generator
+// Cancel is a wrapper around the C function g_cancellable_cancel.
+func (recv *Cancellable) Cancel() {
+	C.g_cancellable_cancel((*C.GCancellable)(recv.native))
+
+	return
+}
 
 // Unsupported : g_cancellable_connect : unsupported parameter callback : no type generator for GObject.Callback, GCallback
-
-// Unsupported : g_cancellable_disconnect : no return generator
 
 // GetFd is a wrapper around the C function g_cancellable_get_fd.
 func (recv *Cancellable) GetFd() int32 {
@@ -349,13 +376,26 @@ func (recv *Cancellable) IsCancelled() bool {
 	return retGo
 }
 
-// Unsupported : g_cancellable_pop_current : no return generator
+// PopCurrent is a wrapper around the C function g_cancellable_pop_current.
+func (recv *Cancellable) PopCurrent() {
+	C.g_cancellable_pop_current((*C.GCancellable)(recv.native))
 
-// Unsupported : g_cancellable_push_current : no return generator
+	return
+}
 
-// Unsupported : g_cancellable_release_fd : no return generator
+// PushCurrent is a wrapper around the C function g_cancellable_push_current.
+func (recv *Cancellable) PushCurrent() {
+	C.g_cancellable_push_current((*C.GCancellable)(recv.native))
 
-// Unsupported : g_cancellable_reset : no return generator
+	return
+}
+
+// Reset is a wrapper around the C function g_cancellable_reset.
+func (recv *Cancellable) Reset() {
+	C.g_cancellable_reset((*C.GCancellable)(recv.native))
+
+	return
+}
 
 // SetErrorIfCancelled is a wrapper around the C function g_cancellable_set_error_if_cancelled.
 func (recv *Cancellable) SetErrorIfCancelled() (bool, error) {
@@ -392,8 +432,6 @@ func (recv *CharsetConverter) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
-
-// Unsupported : g_charset_converter_set_use_fallback : no return generator
 
 // ConverterInputStream is a wrapper around the C record GConverterInputStream.
 type ConverterInputStream struct {
@@ -681,9 +719,23 @@ func (recv *DataInputStream) ReadUint64(cancellable *Cancellable) (uint64, error
 
 // Unsupported : g_data_input_stream_read_upto_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
 
-// Unsupported : g_data_input_stream_set_byte_order : no return generator
+// SetByteOrder is a wrapper around the C function g_data_input_stream_set_byte_order.
+func (recv *DataInputStream) SetByteOrder(order DataStreamByteOrder) {
+	c_order := (C.GDataStreamByteOrder)(order)
 
-// Unsupported : g_data_input_stream_set_newline_type : no return generator
+	C.g_data_input_stream_set_byte_order((*C.GDataInputStream)(recv.native), c_order)
+
+	return
+}
+
+// SetNewlineType is a wrapper around the C function g_data_input_stream_set_newline_type.
+func (recv *DataInputStream) SetNewlineType(type_ DataStreamNewlineType) {
+	c_type := (C.GDataStreamNewlineType)(type_)
+
+	C.g_data_input_stream_set_newline_type((*C.GDataInputStream)(recv.native), c_type)
+
+	return
+}
 
 // DataOutputStream is a wrapper around the C record GDataOutputStream.
 type DataOutputStream struct {
@@ -879,7 +931,14 @@ func (recv *DataOutputStream) PutUint64(data uint64, cancellable *Cancellable) (
 	return retGo, goThrowableError
 }
 
-// Unsupported : g_data_output_stream_set_byte_order : no return generator
+// SetByteOrder is a wrapper around the C function g_data_output_stream_set_byte_order.
+func (recv *DataOutputStream) SetByteOrder(order DataStreamByteOrder) {
+	c_order := (C.GDataStreamByteOrder)(order)
+
+	C.g_data_output_stream_set_byte_order((*C.GDataOutputStream)(recv.native), c_order)
+
+	return
+}
 
 // DesktopAppInfo is a wrapper around the C record GDesktopAppInfo.
 type DesktopAppInfo struct {
@@ -950,8 +1009,6 @@ func (recv *DesktopAppInfo) GetIsHidden() bool {
 
 // Unsupported : g_desktop_app_info_get_keywords : no return type
 
-// Unsupported : g_desktop_app_info_launch_action : no return generator
-
 // Unsupported : g_desktop_app_info_launch_uris_as_manager : unsupported parameter user_setup : no type generator for GLib.SpawnChildSetupFunc, GSpawnChildSetupFunc
 
 // Unsupported : g_desktop_app_info_list_actions : no return type
@@ -1007,10 +1064,6 @@ func (recv *EmblemedIcon) ToC() unsafe.Pointer {
 }
 
 // Unsupported : g_emblemed_icon_new : unsupported parameter icon : no type generator for Icon, GIcon*
-
-// Unsupported : g_emblemed_icon_add_emblem : no return generator
-
-// Unsupported : g_emblemed_icon_clear_emblems : no return generator
 
 // Unsupported : g_emblemed_icon_get_icon : no return generator
 
@@ -1101,7 +1154,15 @@ func (recv *FileEnumerator) NextFile(cancellable *Cancellable) (*FileInfo, error
 
 // Unsupported : g_file_enumerator_next_files_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
 
-// Unsupported : g_file_enumerator_set_pending : no return generator
+// SetPending is a wrapper around the C function g_file_enumerator_set_pending.
+func (recv *FileEnumerator) SetPending(pending bool) {
+	c_pending :=
+		boolToGboolean(pending)
+
+	C.g_file_enumerator_set_pending((*C.GFileEnumerator)(recv.native), c_pending)
+
+	return
+}
 
 // FileIOStream is a wrapper around the C record GFileIOStream.
 type FileIOStream struct {
@@ -1184,9 +1245,21 @@ func FileInfoNew() *FileInfo {
 	return retGo
 }
 
-// Unsupported : g_file_info_clear_status : no return generator
+// ClearStatus is a wrapper around the C function g_file_info_clear_status.
+func (recv *FileInfo) ClearStatus() {
+	C.g_file_info_clear_status((*C.GFileInfo)(recv.native))
 
-// Unsupported : g_file_info_copy_into : no return generator
+	return
+}
+
+// CopyInto is a wrapper around the C function g_file_info_copy_into.
+func (recv *FileInfo) CopyInto(destInfo *FileInfo) {
+	c_dest_info := (*C.GFileInfo)(destInfo.ToC())
+
+	C.g_file_info_copy_into((*C.GFileInfo)(recv.native), c_dest_info)
+
+	return
+}
 
 // Dup is a wrapper around the C function g_file_info_dup.
 func (recv *FileInfo) Dup() *FileInfo {
@@ -1388,7 +1461,16 @@ func (recv *FileInfo) GetIsSymlink() bool {
 	return retGo
 }
 
-// Unsupported : g_file_info_get_modification_time : no return generator
+// GetModificationTime is a wrapper around the C function g_file_info_get_modification_time.
+func (recv *FileInfo) GetModificationTime() *glib.TimeVal {
+	var c_result C.GTimeVal
+
+	C.g_file_info_get_modification_time((*C.GFileInfo)(recv.native), &c_result)
+
+	result := glib.TimeValNewFromC(unsafe.Pointer(&c_result))
+
+	return result
+}
 
 // GetName is a wrapper around the C function g_file_info_get_name.
 func (recv *FileInfo) GetName() string {
@@ -1437,57 +1519,256 @@ func (recv *FileInfo) HasAttribute(attribute string) bool {
 
 // Unsupported : g_file_info_list_attributes : no return type
 
-// Unsupported : g_file_info_remove_attribute : no return generator
+// RemoveAttribute is a wrapper around the C function g_file_info_remove_attribute.
+func (recv *FileInfo) RemoveAttribute(attribute string) {
+	c_attribute := C.CString(attribute)
+	defer C.free(unsafe.Pointer(c_attribute))
 
-// Unsupported : g_file_info_set_attribute : no return generator
+	C.g_file_info_remove_attribute((*C.GFileInfo)(recv.native), c_attribute)
 
-// Unsupported : g_file_info_set_attribute_boolean : no return generator
+	return
+}
 
-// Unsupported : g_file_info_set_attribute_byte_string : no return generator
+// SetAttribute is a wrapper around the C function g_file_info_set_attribute.
+func (recv *FileInfo) SetAttribute(attribute string, type_ FileAttributeType, valueP uintptr) {
+	c_attribute := C.CString(attribute)
+	defer C.free(unsafe.Pointer(c_attribute))
 
-// Unsupported : g_file_info_set_attribute_int32 : no return generator
+	c_type := (C.GFileAttributeType)(type_)
 
-// Unsupported : g_file_info_set_attribute_int64 : no return generator
+	c_value_p := (C.gpointer)(valueP)
 
-// Unsupported : g_file_info_set_attribute_mask : no return generator
+	C.g_file_info_set_attribute((*C.GFileInfo)(recv.native), c_attribute, c_type, c_value_p)
 
-// Unsupported : g_file_info_set_attribute_object : no return generator
+	return
+}
 
-// Unsupported : g_file_info_set_attribute_string : no return generator
+// SetAttributeBoolean is a wrapper around the C function g_file_info_set_attribute_boolean.
+func (recv *FileInfo) SetAttributeBoolean(attribute string, attrValue bool) {
+	c_attribute := C.CString(attribute)
+	defer C.free(unsafe.Pointer(c_attribute))
+
+	c_attr_value :=
+		boolToGboolean(attrValue)
+
+	C.g_file_info_set_attribute_boolean((*C.GFileInfo)(recv.native), c_attribute, c_attr_value)
+
+	return
+}
+
+// SetAttributeByteString is a wrapper around the C function g_file_info_set_attribute_byte_string.
+func (recv *FileInfo) SetAttributeByteString(attribute string, attrValue string) {
+	c_attribute := C.CString(attribute)
+	defer C.free(unsafe.Pointer(c_attribute))
+
+	c_attr_value := C.CString(attrValue)
+	defer C.free(unsafe.Pointer(c_attr_value))
+
+	C.g_file_info_set_attribute_byte_string((*C.GFileInfo)(recv.native), c_attribute, c_attr_value)
+
+	return
+}
+
+// SetAttributeInt32 is a wrapper around the C function g_file_info_set_attribute_int32.
+func (recv *FileInfo) SetAttributeInt32(attribute string, attrValue int32) {
+	c_attribute := C.CString(attribute)
+	defer C.free(unsafe.Pointer(c_attribute))
+
+	c_attr_value := (C.gint32)(attrValue)
+
+	C.g_file_info_set_attribute_int32((*C.GFileInfo)(recv.native), c_attribute, c_attr_value)
+
+	return
+}
+
+// SetAttributeInt64 is a wrapper around the C function g_file_info_set_attribute_int64.
+func (recv *FileInfo) SetAttributeInt64(attribute string, attrValue int64) {
+	c_attribute := C.CString(attribute)
+	defer C.free(unsafe.Pointer(c_attribute))
+
+	c_attr_value := (C.gint64)(attrValue)
+
+	C.g_file_info_set_attribute_int64((*C.GFileInfo)(recv.native), c_attribute, c_attr_value)
+
+	return
+}
+
+// SetAttributeMask is a wrapper around the C function g_file_info_set_attribute_mask.
+func (recv *FileInfo) SetAttributeMask(mask *FileAttributeMatcher) {
+	c_mask := (*C.GFileAttributeMatcher)(mask.ToC())
+
+	C.g_file_info_set_attribute_mask((*C.GFileInfo)(recv.native), c_mask)
+
+	return
+}
+
+// SetAttributeObject is a wrapper around the C function g_file_info_set_attribute_object.
+func (recv *FileInfo) SetAttributeObject(attribute string, attrValue *gobject.Object) {
+	c_attribute := C.CString(attribute)
+	defer C.free(unsafe.Pointer(c_attribute))
+
+	c_attr_value := (*C.GObject)(attrValue.ToC())
+
+	C.g_file_info_set_attribute_object((*C.GFileInfo)(recv.native), c_attribute, c_attr_value)
+
+	return
+}
+
+// SetAttributeString is a wrapper around the C function g_file_info_set_attribute_string.
+func (recv *FileInfo) SetAttributeString(attribute string, attrValue string) {
+	c_attribute := C.CString(attribute)
+	defer C.free(unsafe.Pointer(c_attribute))
+
+	c_attr_value := C.CString(attrValue)
+	defer C.free(unsafe.Pointer(c_attr_value))
+
+	C.g_file_info_set_attribute_string((*C.GFileInfo)(recv.native), c_attribute, c_attr_value)
+
+	return
+}
 
 // Unsupported : g_file_info_set_attribute_stringv : unsupported parameter attr_value : no param type
 
-// Unsupported : g_file_info_set_attribute_uint32 : no return generator
+// SetAttributeUint32 is a wrapper around the C function g_file_info_set_attribute_uint32.
+func (recv *FileInfo) SetAttributeUint32(attribute string, attrValue uint32) {
+	c_attribute := C.CString(attribute)
+	defer C.free(unsafe.Pointer(c_attribute))
 
-// Unsupported : g_file_info_set_attribute_uint64 : no return generator
+	c_attr_value := (C.guint32)(attrValue)
 
-// Unsupported : g_file_info_set_content_type : no return generator
+	C.g_file_info_set_attribute_uint32((*C.GFileInfo)(recv.native), c_attribute, c_attr_value)
 
-// Unsupported : g_file_info_set_display_name : no return generator
+	return
+}
 
-// Unsupported : g_file_info_set_edit_name : no return generator
+// SetAttributeUint64 is a wrapper around the C function g_file_info_set_attribute_uint64.
+func (recv *FileInfo) SetAttributeUint64(attribute string, attrValue uint64) {
+	c_attribute := C.CString(attribute)
+	defer C.free(unsafe.Pointer(c_attribute))
 
-// Unsupported : g_file_info_set_file_type : no return generator
+	c_attr_value := (C.guint64)(attrValue)
+
+	C.g_file_info_set_attribute_uint64((*C.GFileInfo)(recv.native), c_attribute, c_attr_value)
+
+	return
+}
+
+// SetContentType is a wrapper around the C function g_file_info_set_content_type.
+func (recv *FileInfo) SetContentType(contentType string) {
+	c_content_type := C.CString(contentType)
+	defer C.free(unsafe.Pointer(c_content_type))
+
+	C.g_file_info_set_content_type((*C.GFileInfo)(recv.native), c_content_type)
+
+	return
+}
+
+// SetDisplayName is a wrapper around the C function g_file_info_set_display_name.
+func (recv *FileInfo) SetDisplayName(displayName string) {
+	c_display_name := C.CString(displayName)
+	defer C.free(unsafe.Pointer(c_display_name))
+
+	C.g_file_info_set_display_name((*C.GFileInfo)(recv.native), c_display_name)
+
+	return
+}
+
+// SetEditName is a wrapper around the C function g_file_info_set_edit_name.
+func (recv *FileInfo) SetEditName(editName string) {
+	c_edit_name := C.CString(editName)
+	defer C.free(unsafe.Pointer(c_edit_name))
+
+	C.g_file_info_set_edit_name((*C.GFileInfo)(recv.native), c_edit_name)
+
+	return
+}
+
+// SetFileType is a wrapper around the C function g_file_info_set_file_type.
+func (recv *FileInfo) SetFileType(type_ FileType) {
+	c_type := (C.GFileType)(type_)
+
+	C.g_file_info_set_file_type((*C.GFileInfo)(recv.native), c_type)
+
+	return
+}
 
 // Unsupported : g_file_info_set_icon : unsupported parameter icon : no type generator for Icon, GIcon*
 
-// Unsupported : g_file_info_set_is_hidden : no return generator
+// SetIsHidden is a wrapper around the C function g_file_info_set_is_hidden.
+func (recv *FileInfo) SetIsHidden(isHidden bool) {
+	c_is_hidden :=
+		boolToGboolean(isHidden)
 
-// Unsupported : g_file_info_set_is_symlink : no return generator
+	C.g_file_info_set_is_hidden((*C.GFileInfo)(recv.native), c_is_hidden)
 
-// Unsupported : g_file_info_set_modification_time : no return generator
+	return
+}
 
-// Unsupported : g_file_info_set_name : no return generator
+// SetIsSymlink is a wrapper around the C function g_file_info_set_is_symlink.
+func (recv *FileInfo) SetIsSymlink(isSymlink bool) {
+	c_is_symlink :=
+		boolToGboolean(isSymlink)
 
-// Unsupported : g_file_info_set_size : no return generator
+	C.g_file_info_set_is_symlink((*C.GFileInfo)(recv.native), c_is_symlink)
 
-// Unsupported : g_file_info_set_sort_order : no return generator
+	return
+}
+
+// SetModificationTime is a wrapper around the C function g_file_info_set_modification_time.
+func (recv *FileInfo) SetModificationTime(mtime *glib.TimeVal) {
+	c_mtime := (*C.GTimeVal)(mtime.ToC())
+
+	C.g_file_info_set_modification_time((*C.GFileInfo)(recv.native), c_mtime)
+
+	return
+}
+
+// SetName is a wrapper around the C function g_file_info_set_name.
+func (recv *FileInfo) SetName(name string) {
+	c_name := C.CString(name)
+	defer C.free(unsafe.Pointer(c_name))
+
+	C.g_file_info_set_name((*C.GFileInfo)(recv.native), c_name)
+
+	return
+}
+
+// SetSize is a wrapper around the C function g_file_info_set_size.
+func (recv *FileInfo) SetSize(size uint64) {
+	c_size := (C.goffset)(size)
+
+	C.g_file_info_set_size((*C.GFileInfo)(recv.native), c_size)
+
+	return
+}
+
+// SetSortOrder is a wrapper around the C function g_file_info_set_sort_order.
+func (recv *FileInfo) SetSortOrder(sortOrder int32) {
+	c_sort_order := (C.gint32)(sortOrder)
+
+	C.g_file_info_set_sort_order((*C.GFileInfo)(recv.native), c_sort_order)
+
+	return
+}
 
 // Unsupported : g_file_info_set_symbolic_icon : unsupported parameter icon : no type generator for Icon, GIcon*
 
-// Unsupported : g_file_info_set_symlink_target : no return generator
+// SetSymlinkTarget is a wrapper around the C function g_file_info_set_symlink_target.
+func (recv *FileInfo) SetSymlinkTarget(symlinkTarget string) {
+	c_symlink_target := C.CString(symlinkTarget)
+	defer C.free(unsafe.Pointer(c_symlink_target))
 
-// Unsupported : g_file_info_unset_attribute_mask : no return generator
+	C.g_file_info_set_symlink_target((*C.GFileInfo)(recv.native), c_symlink_target)
+
+	return
+}
+
+// UnsetAttributeMask is a wrapper around the C function g_file_info_unset_attribute_mask.
+func (recv *FileInfo) UnsetAttributeMask() {
+	C.g_file_info_unset_attribute_mask((*C.GFileInfo)(recv.native))
+
+	return
+}
 
 // FileInputStream is a wrapper around the C record GFileInputStream.
 type FileInputStream struct {
@@ -1577,7 +1858,14 @@ func (recv *FileMonitor) IsCancelled() bool {
 	return retGo
 }
 
-// Unsupported : g_file_monitor_set_rate_limit : no return generator
+// SetRateLimit is a wrapper around the C function g_file_monitor_set_rate_limit.
+func (recv *FileMonitor) SetRateLimit(limitMsecs int32) {
+	c_limit_msecs := (C.gint)(limitMsecs)
+
+	C.g_file_monitor_set_rate_limit((*C.GFileMonitor)(recv.native), c_limit_msecs)
+
+	return
+}
 
 // FileOutputStream is a wrapper around the C record GFileOutputStream.
 type FileOutputStream struct {
@@ -1678,7 +1966,15 @@ func (recv *FilenameCompleter) GetCompletionSuffix(initialText string) string {
 
 // Unsupported : g_filename_completer_get_completions : no return type
 
-// Unsupported : g_filename_completer_set_dirs_only : no return generator
+// SetDirsOnly is a wrapper around the C function g_filename_completer_set_dirs_only.
+func (recv *FilenameCompleter) SetDirsOnly(dirsOnly bool) {
+	c_dirs_only :=
+		boolToGboolean(dirsOnly)
+
+	C.g_filename_completer_set_dirs_only((*C.GFilenameCompleter)(recv.native), c_dirs_only)
+
+	return
+}
 
 // FilterInputStream is a wrapper around the C record GFilterInputStream.
 type FilterInputStream struct {
@@ -1719,7 +2015,15 @@ func (recv *FilterInputStream) GetCloseBaseStream() bool {
 	return retGo
 }
 
-// Unsupported : g_filter_input_stream_set_close_base_stream : no return generator
+// SetCloseBaseStream is a wrapper around the C function g_filter_input_stream_set_close_base_stream.
+func (recv *FilterInputStream) SetCloseBaseStream(closeBase bool) {
+	c_close_base :=
+		boolToGboolean(closeBase)
+
+	C.g_filter_input_stream_set_close_base_stream((*C.GFilterInputStream)(recv.native), c_close_base)
+
+	return
+}
 
 // FilterOutputStream is a wrapper around the C record GFilterOutputStream.
 type FilterOutputStream struct {
@@ -1760,7 +2064,15 @@ func (recv *FilterOutputStream) GetCloseBaseStream() bool {
 	return retGo
 }
 
-// Unsupported : g_filter_output_stream_set_close_base_stream : no return generator
+// SetCloseBaseStream is a wrapper around the C function g_filter_output_stream_set_close_base_stream.
+func (recv *FilterOutputStream) SetCloseBaseStream(closeBase bool) {
+	c_close_base :=
+		boolToGboolean(closeBase)
+
+	C.g_filter_output_stream_set_close_base_stream((*C.GFilterOutputStream)(recv.native), c_close_base)
+
+	return
+}
 
 // IOModule is a wrapper around the C record GIOModule.
 type IOModule struct {
@@ -1794,9 +2106,9 @@ func IOModuleNew(filename string) *IOModule {
 	return retGo
 }
 
-// Unsupported : g_io_module_load : no return generator
+// Blacklisted : g_io_module_load
 
-// Unsupported : g_io_module_unload : no return generator
+// Blacklisted : g_io_module_unload
 
 // IOStream is a wrapper around the C record GIOStream.
 type IOStream struct {
@@ -1820,8 +2132,6 @@ func (recv *IOStream) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
-
-// Unsupported : g_io_stream_clear_pending : no return generator
 
 // Unsupported : g_io_stream_close_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
 
@@ -1902,7 +2212,12 @@ func (recv *InputStream) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : g_input_stream_clear_pending : no return generator
+// ClearPending is a wrapper around the C function g_input_stream_clear_pending.
+func (recv *InputStream) ClearPending() {
+	C.g_input_stream_clear_pending((*C.GInputStream)(recv.native))
+
+	return
+}
 
 // Close is a wrapper around the C function g_input_stream_close.
 func (recv *InputStream) Close(cancellable *Cancellable) (bool, error) {
@@ -2018,15 +2333,7 @@ func (recv *ListStore) ToC() unsafe.Pointer {
 
 // Unsupported : g_list_store_new : unsupported parameter item_type : no type generator for GType, GType
 
-// Unsupported : g_list_store_append : no return generator
-
-// Unsupported : g_list_store_insert : no return generator
-
 // Unsupported : g_list_store_insert_sorted : unsupported parameter compare_func : no type generator for GLib.CompareDataFunc, GCompareDataFunc
-
-// Unsupported : g_list_store_remove : no return generator
-
-// Unsupported : g_list_store_remove_all : no return generator
 
 // Unsupported : g_list_store_sort : unsupported parameter compare_func : no type generator for GLib.CompareDataFunc, GCompareDataFunc
 
@@ -2064,8 +2371,6 @@ func MemoryInputStreamNew() *InputStream {
 }
 
 // Unsupported : g_memory_input_stream_new_from_data : unsupported parameter data : no param type
-
-// Unsupported : g_memory_input_stream_add_bytes : no return generator
 
 // Unsupported : g_memory_input_stream_add_data : unsupported parameter data : no param type
 
@@ -2189,19 +2494,72 @@ func (recv *MountOperation) GetUsername() string {
 	return retGo
 }
 
-// Unsupported : g_mount_operation_reply : no return generator
+// Reply is a wrapper around the C function g_mount_operation_reply.
+func (recv *MountOperation) Reply(result MountOperationResult) {
+	c_result := (C.GMountOperationResult)(result)
 
-// Unsupported : g_mount_operation_set_anonymous : no return generator
+	C.g_mount_operation_reply((*C.GMountOperation)(recv.native), c_result)
 
-// Unsupported : g_mount_operation_set_choice : no return generator
+	return
+}
 
-// Unsupported : g_mount_operation_set_domain : no return generator
+// SetAnonymous is a wrapper around the C function g_mount_operation_set_anonymous.
+func (recv *MountOperation) SetAnonymous(anonymous bool) {
+	c_anonymous :=
+		boolToGboolean(anonymous)
 
-// Unsupported : g_mount_operation_set_password : no return generator
+	C.g_mount_operation_set_anonymous((*C.GMountOperation)(recv.native), c_anonymous)
 
-// Unsupported : g_mount_operation_set_password_save : no return generator
+	return
+}
 
-// Unsupported : g_mount_operation_set_username : no return generator
+// SetChoice is a wrapper around the C function g_mount_operation_set_choice.
+func (recv *MountOperation) SetChoice(choice int32) {
+	c_choice := (C.int)(choice)
+
+	C.g_mount_operation_set_choice((*C.GMountOperation)(recv.native), c_choice)
+
+	return
+}
+
+// SetDomain is a wrapper around the C function g_mount_operation_set_domain.
+func (recv *MountOperation) SetDomain(domain string) {
+	c_domain := C.CString(domain)
+	defer C.free(unsafe.Pointer(c_domain))
+
+	C.g_mount_operation_set_domain((*C.GMountOperation)(recv.native), c_domain)
+
+	return
+}
+
+// SetPassword is a wrapper around the C function g_mount_operation_set_password.
+func (recv *MountOperation) SetPassword(password string) {
+	c_password := C.CString(password)
+	defer C.free(unsafe.Pointer(c_password))
+
+	C.g_mount_operation_set_password((*C.GMountOperation)(recv.native), c_password)
+
+	return
+}
+
+// SetPasswordSave is a wrapper around the C function g_mount_operation_set_password_save.
+func (recv *MountOperation) SetPasswordSave(save PasswordSave) {
+	c_save := (C.GPasswordSave)(save)
+
+	C.g_mount_operation_set_password_save((*C.GMountOperation)(recv.native), c_save)
+
+	return
+}
+
+// SetUsername is a wrapper around the C function g_mount_operation_set_username.
+func (recv *MountOperation) SetUsername(username string) {
+	c_username := C.CString(username)
+	defer C.free(unsafe.Pointer(c_username))
+
+	C.g_mount_operation_set_username((*C.GMountOperation)(recv.native), c_username)
+
+	return
+}
 
 // NativeVolumeMonitor is a wrapper around the C record GNativeVolumeMonitor.
 type NativeVolumeMonitor struct {
@@ -2271,8 +2629,6 @@ func (recv *NetworkService) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : g_network_service_set_scheme : no return generator
-
 // OutputStream is a wrapper around the C record GOutputStream.
 type OutputStream struct {
 	native *C.GOutputStream
@@ -2296,7 +2652,12 @@ func (recv *OutputStream) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : g_output_stream_clear_pending : no return generator
+// ClearPending is a wrapper around the C function g_output_stream_clear_pending.
+func (recv *OutputStream) ClearPending() {
+	C.g_output_stream_clear_pending((*C.GOutputStream)(recv.native))
+
+	return
+}
 
 // Close is a wrapper around the C function g_output_stream_close.
 func (recv *OutputStream) Close(cancellable *Cancellable) (bool, error) {
@@ -2445,8 +2806,6 @@ func (recv *Permission) ToC() unsafe.Pointer {
 
 // Unsupported : g_permission_acquire_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
 
-// Unsupported : g_permission_impl_update : no return generator
-
 // Unsupported : g_permission_release_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
 
 // Unsupported : g_permission_release_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
@@ -2513,8 +2872,6 @@ func (recv *Resolver) ToC() unsafe.Pointer {
 
 // Unsupported : g_resolver_lookup_service_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
 
-// Unsupported : g_resolver_set_default : no return generator
-
 // Settings is a wrapper around the C record GSettings.
 type Settings struct {
 	native *C.GSettings
@@ -2538,17 +2895,16 @@ func (recv *Settings) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : g_settings_apply : no return generator
+// Apply is a wrapper around the C function g_settings_apply.
+func (recv *Settings) Apply() {
+	C.g_settings_apply((*C.GSettings)(recv.native))
 
-// Unsupported : g_settings_bind : no return generator
+	return
+}
 
 // Unsupported : g_settings_bind_with_mapping : unsupported parameter get_mapping : no type generator for SettingsBindGetMapping, GSettingsBindGetMapping
 
-// Unsupported : g_settings_bind_writable : no return generator
-
 // Unsupported : g_settings_create_action : no return generator
-
-// Unsupported : g_settings_delay : no return generator
 
 // Unsupported : g_settings_get : unsupported parameter ... : varargs
 
@@ -2570,9 +2926,22 @@ func (recv *Settings) ToC() unsafe.Pointer {
 
 // Unsupported : g_settings_range_check : unsupported parameter value : Blacklisted record : GVariant
 
-// Unsupported : g_settings_reset : no return generator
+// Reset is a wrapper around the C function g_settings_reset.
+func (recv *Settings) Reset(key string) {
+	c_key := C.CString(key)
+	defer C.free(unsafe.Pointer(c_key))
 
-// Unsupported : g_settings_revert : no return generator
+	C.g_settings_reset((*C.GSettings)(recv.native), c_key)
+
+	return
+}
+
+// Revert is a wrapper around the C function g_settings_revert.
+func (recv *Settings) Revert() {
+	C.g_settings_revert((*C.GSettings)(recv.native))
+
+	return
+}
 
 // Unsupported : g_settings_set : unsupported parameter ... : varargs
 
@@ -2629,17 +2998,7 @@ func (recv *SettingsBackend) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : g_settings_backend_changed : no return generator
-
-// Unsupported : g_settings_backend_changed_tree : no return generator
-
 // Unsupported : g_settings_backend_keys_changed : unsupported parameter items : no param type
-
-// Unsupported : g_settings_backend_path_changed : no return generator
-
-// Unsupported : g_settings_backend_path_writable_changed : no return generator
-
-// Unsupported : g_settings_backend_writable_changed : no return generator
 
 // SimpleAction is a wrapper around the C record GSimpleAction.
 type SimpleAction struct {
@@ -2665,8 +3024,6 @@ func (recv *SimpleAction) ToC() unsafe.Pointer {
 // Unsupported : g_simple_action_new : unsupported parameter parameter_type : Blacklisted record : GVariantType
 
 // Unsupported : g_simple_action_new_stateful : unsupported parameter parameter_type : Blacklisted record : GVariantType
-
-// Unsupported : g_simple_action_set_enabled : no return generator
 
 // Unsupported : g_simple_action_set_state : unsupported parameter value : Blacklisted record : GVariant
 
@@ -2701,9 +3058,19 @@ func (recv *SimpleAsyncResult) ToC() unsafe.Pointer {
 
 // Unsupported : g_simple_async_result_new_take_error : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
 
-// Unsupported : g_simple_async_result_complete : no return generator
+// Complete is a wrapper around the C function g_simple_async_result_complete.
+func (recv *SimpleAsyncResult) Complete() {
+	C.g_simple_async_result_complete((*C.GSimpleAsyncResult)(recv.native))
 
-// Unsupported : g_simple_async_result_complete_in_idle : no return generator
+	return
+}
+
+// CompleteInIdle is a wrapper around the C function g_simple_async_result_complete_in_idle.
+func (recv *SimpleAsyncResult) CompleteInIdle() {
+	C.g_simple_async_result_complete_in_idle((*C.GSimpleAsyncResult)(recv.native))
+
+	return
+}
 
 // GetOpResGboolean is a wrapper around the C function g_simple_async_result_get_op_res_gboolean.
 func (recv *SimpleAsyncResult) GetOpResGboolean() bool {
@@ -2754,23 +3121,49 @@ func (recv *SimpleAsyncResult) PropagateError() (bool, error) {
 
 // Unsupported : g_simple_async_result_run_in_thread : unsupported parameter func : no type generator for SimpleAsyncThreadFunc, GSimpleAsyncThreadFunc
 
-// Unsupported : g_simple_async_result_set_check_cancellable : no return generator
-
 // Unsupported : g_simple_async_result_set_error : unsupported parameter ... : varargs
 
 // Unsupported : g_simple_async_result_set_error_va : unsupported parameter args : no type generator for va_list, va_list
 
-// Unsupported : g_simple_async_result_set_from_error : no return generator
+// SetFromError is a wrapper around the C function g_simple_async_result_set_from_error.
+func (recv *SimpleAsyncResult) SetFromError(error *glib.Error) {
+	c_error := (*C.GError)(error.ToC())
 
-// Unsupported : g_simple_async_result_set_handle_cancellation : no return generator
+	C.g_simple_async_result_set_from_error((*C.GSimpleAsyncResult)(recv.native), c_error)
 
-// Unsupported : g_simple_async_result_set_op_res_gboolean : no return generator
+	return
+}
+
+// SetHandleCancellation is a wrapper around the C function g_simple_async_result_set_handle_cancellation.
+func (recv *SimpleAsyncResult) SetHandleCancellation(handleCancellation bool) {
+	c_handle_cancellation :=
+		boolToGboolean(handleCancellation)
+
+	C.g_simple_async_result_set_handle_cancellation((*C.GSimpleAsyncResult)(recv.native), c_handle_cancellation)
+
+	return
+}
+
+// SetOpResGboolean is a wrapper around the C function g_simple_async_result_set_op_res_gboolean.
+func (recv *SimpleAsyncResult) SetOpResGboolean(opRes bool) {
+	c_op_res :=
+		boolToGboolean(opRes)
+
+	C.g_simple_async_result_set_op_res_gboolean((*C.GSimpleAsyncResult)(recv.native), c_op_res)
+
+	return
+}
 
 // Unsupported : g_simple_async_result_set_op_res_gpointer : unsupported parameter destroy_op_res : no type generator for GLib.DestroyNotify, GDestroyNotify
 
-// Unsupported : g_simple_async_result_set_op_res_gssize : no return generator
+// SetOpResGssize is a wrapper around the C function g_simple_async_result_set_op_res_gssize.
+func (recv *SimpleAsyncResult) SetOpResGssize(opRes int64) {
+	c_op_res := (C.gssize)(opRes)
 
-// Unsupported : g_simple_async_result_take_error : no return generator
+	C.g_simple_async_result_set_op_res_gssize((*C.GSimpleAsyncResult)(recv.native), c_op_res)
+
+	return
+}
 
 // SimplePermission is a wrapper around the C record GSimplePermission.
 type SimplePermission struct {
@@ -2816,11 +3209,7 @@ func (recv *SimpleProxyResolver) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : g_simple_proxy_resolver_set_default_proxy : no return generator
-
 // Unsupported : g_simple_proxy_resolver_set_ignore_hosts : unsupported parameter ignore_hosts : in string with indirection level of 2
-
-// Unsupported : g_simple_proxy_resolver_set_uri_proxy : no return generator
 
 // SocketAddress is a wrapper around the C record GSocketAddress.
 type SocketAddress struct {
@@ -2910,8 +3299,6 @@ func (recv *SocketControlMessage) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : g_socket_control_message_serialize : no return generator
-
 // Task is a wrapper around the C record GTask.
 type Task struct {
 	native *C.GTask
@@ -2937,12 +3324,6 @@ func (recv *Task) ToC() unsafe.Pointer {
 
 // Unsupported : g_task_attach_source : unsupported parameter callback : no type generator for GLib.SourceFunc, GSourceFunc
 
-// Unsupported : g_task_return_boolean : no return generator
-
-// Unsupported : g_task_return_error : no return generator
-
-// Unsupported : g_task_return_int : no return generator
-
 // Unsupported : g_task_return_new_error : unsupported parameter ... : varargs
 
 // Unsupported : g_task_return_pointer : unsupported parameter result_destroy : no type generator for GLib.DestroyNotify, GDestroyNotify
@@ -2950,12 +3331,6 @@ func (recv *Task) ToC() unsafe.Pointer {
 // Unsupported : g_task_run_in_thread : unsupported parameter task_func : no type generator for TaskThreadFunc, GTaskThreadFunc
 
 // Unsupported : g_task_run_in_thread_sync : unsupported parameter task_func : no type generator for TaskThreadFunc, GTaskThreadFunc
-
-// Unsupported : g_task_set_check_cancellable : no return generator
-
-// Unsupported : g_task_set_priority : no return generator
-
-// Unsupported : g_task_set_source_tag : no return generator
 
 // Unsupported : g_task_set_task_data : unsupported parameter task_data_destroy : no type generator for GLib.DestroyNotify, GDestroyNotify
 
@@ -3035,11 +3410,17 @@ func ThemedIconNewWithDefaultFallbacks(iconname string) *ThemedIcon {
 	return retGo
 }
 
-// Unsupported : g_themed_icon_append_name : no return generator
+// AppendName is a wrapper around the C function g_themed_icon_append_name.
+func (recv *ThemedIcon) AppendName(iconname string) {
+	c_iconname := C.CString(iconname)
+	defer C.free(unsafe.Pointer(c_iconname))
+
+	C.g_themed_icon_append_name((*C.GThemedIcon)(recv.native), c_iconname)
+
+	return
+}
 
 // Unsupported : g_themed_icon_get_names : no return type
-
-// Unsupported : g_themed_icon_prepend_name : no return generator
 
 // UnixConnection is a wrapper around the C record GUnixConnection.
 type UnixConnection struct {
@@ -3162,8 +3543,6 @@ func UnixInputStreamNew(fd int32, closeFd bool) *InputStream {
 	return retGo
 }
 
-// Unsupported : g_unix_input_stream_set_close_fd : no return generator
-
 // UnixMountMonitor is a wrapper around the C record GUnixMountMonitor.
 type UnixMountMonitor struct {
 	native *C.GUnixMountMonitor
@@ -3192,8 +3571,6 @@ func UnixMountMonitorNew() *UnixMountMonitor {
 
 	return retGo
 }
-
-// Unsupported : g_unix_mount_monitor_set_rate_limit : no return generator
 
 // UnixOutputStream is a wrapper around the C record GUnixOutputStream.
 type UnixOutputStream struct {
@@ -3230,8 +3607,6 @@ func UnixOutputStreamNew(fd int32, closeFd bool) *OutputStream {
 
 	return retGo
 }
-
-// Unsupported : g_unix_output_stream_set_close_fd : no return generator
 
 // UnixSocketAddress is a wrapper around the C record GUnixSocketAddress.
 type UnixSocketAddress struct {
@@ -3371,8 +3746,6 @@ func (recv *ZlibCompressor) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
-
-// Unsupported : g_zlib_compressor_set_file_info : no return generator
 
 // ZlibDecompressor is a wrapper around the C record GZlibDecompressor.
 type ZlibDecompressor struct {

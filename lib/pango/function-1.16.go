@@ -30,7 +30,16 @@ func AttrGravityNew(gravity Gravity) *Attribute {
 	return retGo
 }
 
-// Unsupported : pango_extents_to_pixels : no return generator
+// ExtentsToPixels is a wrapper around the C function pango_extents_to_pixels.
+func ExtentsToPixels(inclusive *Rectangle, nearest *Rectangle) {
+	c_inclusive := (*C.PangoRectangle)(inclusive.ToC())
+
+	c_nearest := (*C.PangoRectangle)(nearest.ToC())
+
+	C.pango_extents_to_pixels(c_inclusive, c_nearest)
+
+	return
+}
 
 // GravityGetForMatrix is a wrapper around the C function pango_gravity_get_for_matrix.
 func GravityGetForMatrix(matrix *Matrix) Gravity {

@@ -95,9 +95,73 @@ func (recv *Pixbuf) AddAlpha(substituteColor bool, r uint8, g uint8, b uint8) *P
 	return retGo
 }
 
-// Unsupported : gdk_pixbuf_composite : no return generator
+// Composite is a wrapper around the C function gdk_pixbuf_composite.
+func (recv *Pixbuf) Composite(dest *Pixbuf, destX int32, destY int32, destWidth int32, destHeight int32, offsetX float64, offsetY float64, scaleX float64, scaleY float64, interpType InterpType, overallAlpha int32) {
+	c_dest := (*C.GdkPixbuf)(dest.ToC())
 
-// Unsupported : gdk_pixbuf_composite_color : no return generator
+	c_dest_x := (C.int)(destX)
+
+	c_dest_y := (C.int)(destY)
+
+	c_dest_width := (C.int)(destWidth)
+
+	c_dest_height := (C.int)(destHeight)
+
+	c_offset_x := (C.double)(offsetX)
+
+	c_offset_y := (C.double)(offsetY)
+
+	c_scale_x := (C.double)(scaleX)
+
+	c_scale_y := (C.double)(scaleY)
+
+	c_interp_type := (C.GdkInterpType)(interpType)
+
+	c_overall_alpha := (C.int)(overallAlpha)
+
+	C.gdk_pixbuf_composite((*C.GdkPixbuf)(recv.native), c_dest, c_dest_x, c_dest_y, c_dest_width, c_dest_height, c_offset_x, c_offset_y, c_scale_x, c_scale_y, c_interp_type, c_overall_alpha)
+
+	return
+}
+
+// CompositeColor is a wrapper around the C function gdk_pixbuf_composite_color.
+func (recv *Pixbuf) CompositeColor(dest *Pixbuf, destX int32, destY int32, destWidth int32, destHeight int32, offsetX float64, offsetY float64, scaleX float64, scaleY float64, interpType InterpType, overallAlpha int32, checkX int32, checkY int32, checkSize int32, color1 uint32, color2 uint32) {
+	c_dest := (*C.GdkPixbuf)(dest.ToC())
+
+	c_dest_x := (C.int)(destX)
+
+	c_dest_y := (C.int)(destY)
+
+	c_dest_width := (C.int)(destWidth)
+
+	c_dest_height := (C.int)(destHeight)
+
+	c_offset_x := (C.double)(offsetX)
+
+	c_offset_y := (C.double)(offsetY)
+
+	c_scale_x := (C.double)(scaleX)
+
+	c_scale_y := (C.double)(scaleY)
+
+	c_interp_type := (C.GdkInterpType)(interpType)
+
+	c_overall_alpha := (C.int)(overallAlpha)
+
+	c_check_x := (C.int)(checkX)
+
+	c_check_y := (C.int)(checkY)
+
+	c_check_size := (C.int)(checkSize)
+
+	c_color1 := (C.guint32)(color1)
+
+	c_color2 := (C.guint32)(color2)
+
+	C.gdk_pixbuf_composite_color((*C.GdkPixbuf)(recv.native), c_dest, c_dest_x, c_dest_y, c_dest_width, c_dest_height, c_offset_x, c_offset_y, c_scale_x, c_scale_y, c_interp_type, c_overall_alpha, c_check_x, c_check_y, c_check_size, c_color1, c_color2)
+
+	return
+}
 
 // CompositeColorSimple is a wrapper around the C function gdk_pixbuf_composite_color_simple.
 func (recv *Pixbuf) CompositeColorSimple(destWidth int32, destHeight int32, interpType InterpType, overallAlpha int32, checkSize int32, color1 uint32, color2 uint32) *Pixbuf {
@@ -129,9 +193,35 @@ func (recv *Pixbuf) Copy() *Pixbuf {
 	return retGo
 }
 
-// Unsupported : gdk_pixbuf_copy_area : no return generator
+// CopyArea is a wrapper around the C function gdk_pixbuf_copy_area.
+func (recv *Pixbuf) CopyArea(srcX int32, srcY int32, width int32, height int32, destPixbuf *Pixbuf, destX int32, destY int32) {
+	c_src_x := (C.int)(srcX)
 
-// Unsupported : gdk_pixbuf_fill : no return generator
+	c_src_y := (C.int)(srcY)
+
+	c_width := (C.int)(width)
+
+	c_height := (C.int)(height)
+
+	c_dest_pixbuf := (*C.GdkPixbuf)(destPixbuf.ToC())
+
+	c_dest_x := (C.int)(destX)
+
+	c_dest_y := (C.int)(destY)
+
+	C.gdk_pixbuf_copy_area((*C.GdkPixbuf)(recv.native), c_src_x, c_src_y, c_width, c_height, c_dest_pixbuf, c_dest_x, c_dest_y)
+
+	return
+}
+
+// Fill is a wrapper around the C function gdk_pixbuf_fill.
+func (recv *Pixbuf) Fill(pixel uint32) {
+	c_pixel := (C.guint32)(pixel)
+
+	C.gdk_pixbuf_fill((*C.GdkPixbuf)(recv.native), c_pixel)
+
+	return
+}
 
 // GetBitsPerSample is a wrapper around the C function gdk_pixbuf_get_bits_per_sample.
 func (recv *Pixbuf) GetBitsPerSample() int32 {
@@ -230,7 +320,19 @@ func (recv *Pixbuf) Ref() *Pixbuf {
 	return retGo
 }
 
-// Unsupported : gdk_pixbuf_saturate_and_pixelate : no return generator
+// SaturateAndPixelate is a wrapper around the C function gdk_pixbuf_saturate_and_pixelate.
+func (recv *Pixbuf) SaturateAndPixelate(dest *Pixbuf, saturation float32, pixelate bool) {
+	c_dest := (*C.GdkPixbuf)(dest.ToC())
+
+	c_saturation := (C.gfloat)(saturation)
+
+	c_pixelate :=
+		boolToGboolean(pixelate)
+
+	C.gdk_pixbuf_saturate_and_pixelate((*C.GdkPixbuf)(recv.native), c_dest, c_saturation, c_pixelate)
+
+	return
+}
 
 // Unsupported : gdk_pixbuf_save : unsupported parameter error : record with indirection level of 2
 
@@ -252,7 +354,32 @@ func (recv *Pixbuf) Ref() *Pixbuf {
 
 // Unsupported : gdk_pixbuf_savev : unsupported parameter option_keys : no param type
 
-// Unsupported : gdk_pixbuf_scale : no return generator
+// Scale is a wrapper around the C function gdk_pixbuf_scale.
+func (recv *Pixbuf) Scale(dest *Pixbuf, destX int32, destY int32, destWidth int32, destHeight int32, offsetX float64, offsetY float64, scaleX float64, scaleY float64, interpType InterpType) {
+	c_dest := (*C.GdkPixbuf)(dest.ToC())
+
+	c_dest_x := (C.int)(destX)
+
+	c_dest_y := (C.int)(destY)
+
+	c_dest_width := (C.int)(destWidth)
+
+	c_dest_height := (C.int)(destHeight)
+
+	c_offset_x := (C.double)(offsetX)
+
+	c_offset_y := (C.double)(offsetY)
+
+	c_scale_x := (C.double)(scaleX)
+
+	c_scale_y := (C.double)(scaleY)
+
+	c_interp_type := (C.GdkInterpType)(interpType)
+
+	C.gdk_pixbuf_scale((*C.GdkPixbuf)(recv.native), c_dest, c_dest_x, c_dest_y, c_dest_width, c_dest_height, c_offset_x, c_offset_y, c_scale_x, c_scale_y, c_interp_type)
+
+	return
+}
 
 // ScaleSimple is a wrapper around the C function gdk_pixbuf_scale_simple.
 func (recv *Pixbuf) ScaleSimple(destWidth int32, destHeight int32, interpType InterpType) *Pixbuf {
@@ -268,7 +395,12 @@ func (recv *Pixbuf) ScaleSimple(destWidth int32, destHeight int32, interpType In
 	return retGo
 }
 
-// Unsupported : gdk_pixbuf_unref : no return generator
+// Unref is a wrapper around the C function gdk_pixbuf_unref.
+func (recv *Pixbuf) Unref() {
+	C.gdk_pixbuf_unref((*C.GdkPixbuf)(recv.native))
+
+	return
+}
 
 // PixbufAnimation is a wrapper around the C record GdkPixbufAnimation.
 type PixbufAnimation struct {
@@ -361,7 +493,12 @@ func (recv *PixbufAnimation) Ref() *PixbufAnimation {
 	return retGo
 }
 
-// Unsupported : gdk_pixbuf_animation_unref : no return generator
+// Unref is a wrapper around the C function gdk_pixbuf_animation_unref.
+func (recv *PixbufAnimation) Unref() {
+	C.gdk_pixbuf_animation_unref((*C.GdkPixbufAnimation)(recv.native))
+
+	return
+}
 
 // PixbufAnimationIter is a wrapper around the C record GdkPixbufAnimationIter.
 type PixbufAnimationIter struct {
@@ -498,8 +635,6 @@ func (recv *PixbufLoader) GetPixbuf() *Pixbuf {
 	return retGo
 }
 
-// Unsupported : gdk_pixbuf_loader_set_size : no return generator
-
 // Unsupported : gdk_pixbuf_loader_write : unsupported parameter buf : no param type
 
 // PixbufSimpleAnim is a wrapper around the C record GdkPixbufSimpleAnim.
@@ -522,9 +657,5 @@ func (recv *PixbufSimpleAnim) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
-
-// Unsupported : gdk_pixbuf_simple_anim_add_frame : no return generator
-
-// Unsupported : gdk_pixbuf_simple_anim_set_loop : no return generator
 
 // Unsupported : PixbufSimpleAnimIter : no CType

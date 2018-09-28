@@ -104,7 +104,12 @@ func ClosureNewSimple(sizeofClosure uint32, data uintptr) *Closure {
 
 // Unsupported : g_closure_add_marshal_guards : unsupported parameter pre_marshal_notify : no type generator for ClosureNotify, GClosureNotify
 
-// Unsupported : g_closure_invalidate : no return generator
+// Invalidate is a wrapper around the C function g_closure_invalidate.
+func (recv *Closure) Invalidate() {
+	C.g_closure_invalidate((*C.GClosure)(recv.native))
+
+	return
+}
 
 // Unsupported : g_closure_invoke : unsupported parameter param_values : no param type
 
@@ -124,9 +129,19 @@ func (recv *Closure) Ref() *Closure {
 
 // Unsupported : g_closure_set_meta_marshal : unsupported parameter meta_marshal : no type generator for ClosureMarshal, GClosureMarshal
 
-// Unsupported : g_closure_sink : no return generator
+// Sink is a wrapper around the C function g_closure_sink.
+func (recv *Closure) Sink() {
+	C.g_closure_sink((*C.GClosure)(recv.native))
 
-// Unsupported : g_closure_unref : no return generator
+	return
+}
+
+// Unref is a wrapper around the C function g_closure_unref.
+func (recv *Closure) Unref() {
+	C.g_closure_unref((*C.GClosure)(recv.native))
+
+	return
+}
 
 // ClosureNotifyData is a wrapper around the C record GClosureNotifyData.
 type ClosureNotifyData struct {
@@ -404,11 +419,18 @@ func (recv *ObjectClass) FindProperty(propertyName string) *ParamSpec {
 
 // Unsupported : g_object_class_install_properties : unsupported parameter pspecs : no param type
 
-// Unsupported : g_object_class_install_property : no return generator
+// InstallProperty is a wrapper around the C function g_object_class_install_property.
+func (recv *ObjectClass) InstallProperty(propertyId uint32, pspec *ParamSpec) {
+	c_property_id := (C.guint)(propertyId)
+
+	c_pspec := (*C.GParamSpec)(pspec.ToC())
+
+	C.g_object_class_install_property((*C.GObjectClass)(recv.native), c_property_id, c_pspec)
+
+	return
+}
 
 // Unsupported : g_object_class_list_properties : unsupported parameter n_properties : no type generator for guint, guint*
-
-// Unsupported : g_object_class_override_property : no return generator
 
 // ObjectConstructParam is a wrapper around the C record GObjectConstructParam.
 type ObjectConstructParam struct {
@@ -490,7 +512,14 @@ func (recv *ParamSpecPool) ToC() unsafe.Pointer {
 
 // Unsupported : g_param_spec_pool_lookup : unsupported parameter owner_type : no type generator for GType, GType
 
-// Unsupported : g_param_spec_pool_remove : no return generator
+// Remove is a wrapper around the C function g_param_spec_pool_remove.
+func (recv *ParamSpecPool) Remove(pspec *ParamSpec) {
+	c_pspec := (*C.GParamSpec)(pspec.ToC())
+
+	C.g_param_spec_pool_remove((*C.GParamSpecPool)(recv.native), c_pspec)
+
+	return
+}
 
 // ParamSpecTypeInfo is a wrapper around the C record GParamSpecTypeInfo.
 type ParamSpecTypeInfo struct {
@@ -656,8 +685,6 @@ func (recv *TypeClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : g_type_class_add_private : no return generator
-
 // Unsupported : g_type_class_get_private : unsupported parameter private_type : no type generator for GType, GType
 
 // PeekParent is a wrapper around the C function g_type_class_peek_parent.
@@ -668,9 +695,19 @@ func (recv *TypeClass) PeekParent() uintptr {
 	return retGo
 }
 
-// Unsupported : g_type_class_unref : no return generator
+// Unref is a wrapper around the C function g_type_class_unref.
+func (recv *TypeClass) Unref() {
+	C.g_type_class_unref((C.gpointer)(recv.native))
 
-// Unsupported : g_type_class_unref_uncached : no return generator
+	return
+}
+
+// UnrefUncached is a wrapper around the C function g_type_class_unref_uncached.
+func (recv *TypeClass) UnrefUncached() {
+	C.g_type_class_unref_uncached((C.gpointer)(recv.native))
+
+	return
+}
 
 // TypeFundamentalInfo is a wrapper around the C record GTypeFundamentalInfo.
 type TypeFundamentalInfo struct {
@@ -949,7 +986,14 @@ func (recv *Value) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : g_value_copy : no return generator
+// Copy is a wrapper around the C function g_value_copy.
+func (recv *Value) Copy(destValue *Value) {
+	c_dest_value := (*C.GValue)(destValue.ToC())
+
+	C.g_value_copy((*C.GValue)(recv.native), c_dest_value)
+
+	return
+}
 
 // DupBoxed is a wrapper around the C function g_value_dup_boxed.
 func (recv *Value) DupBoxed() uintptr {
@@ -1144,8 +1188,6 @@ func (recv *Value) GetUlong() uint64 {
 
 // Unsupported : g_value_init : unsupported parameter g_type : no type generator for GType, GType
 
-// Unsupported : g_value_init_from_instance : no return generator
-
 // PeekPointer is a wrapper around the C function g_value_peek_pointer.
 func (recv *Value) PeekPointer() uintptr {
 	retC := C.g_value_peek_pointer((*C.GValue)(recv.native))
@@ -1162,69 +1204,238 @@ func (recv *Value) Reset() *Value {
 	return retGo
 }
 
-// Unsupported : g_value_set_boolean : no return generator
+// SetBoolean is a wrapper around the C function g_value_set_boolean.
+func (recv *Value) SetBoolean(vBoolean bool) {
+	c_v_boolean :=
+		boolToGboolean(vBoolean)
 
-// Unsupported : g_value_set_boxed : no return generator
+	C.g_value_set_boolean((*C.GValue)(recv.native), c_v_boolean)
 
-// Unsupported : g_value_set_boxed_take_ownership : no return generator
+	return
+}
 
-// Unsupported : g_value_set_char : no return generator
+// SetBoxed is a wrapper around the C function g_value_set_boxed.
+func (recv *Value) SetBoxed(vBoxed uintptr) {
+	c_v_boxed := (C.gconstpointer)(vBoxed)
 
-// Unsupported : g_value_set_double : no return generator
+	C.g_value_set_boxed((*C.GValue)(recv.native), c_v_boxed)
 
-// Unsupported : g_value_set_enum : no return generator
+	return
+}
 
-// Unsupported : g_value_set_flags : no return generator
+// SetBoxedTakeOwnership is a wrapper around the C function g_value_set_boxed_take_ownership.
+func (recv *Value) SetBoxedTakeOwnership(vBoxed uintptr) {
+	c_v_boxed := (C.gconstpointer)(vBoxed)
 
-// Unsupported : g_value_set_float : no return generator
+	C.g_value_set_boxed_take_ownership((*C.GValue)(recv.native), c_v_boxed)
+
+	return
+}
+
+// SetChar is a wrapper around the C function g_value_set_char.
+func (recv *Value) SetChar(vChar rune) {
+	c_v_char := (C.gchar)(vChar)
+
+	C.g_value_set_char((*C.GValue)(recv.native), c_v_char)
+
+	return
+}
+
+// SetDouble is a wrapper around the C function g_value_set_double.
+func (recv *Value) SetDouble(vDouble float64) {
+	c_v_double := (C.gdouble)(vDouble)
+
+	C.g_value_set_double((*C.GValue)(recv.native), c_v_double)
+
+	return
+}
+
+// SetEnum is a wrapper around the C function g_value_set_enum.
+func (recv *Value) SetEnum(vEnum int32) {
+	c_v_enum := (C.gint)(vEnum)
+
+	C.g_value_set_enum((*C.GValue)(recv.native), c_v_enum)
+
+	return
+}
+
+// SetFlags is a wrapper around the C function g_value_set_flags.
+func (recv *Value) SetFlags(vFlags uint32) {
+	c_v_flags := (C.guint)(vFlags)
+
+	C.g_value_set_flags((*C.GValue)(recv.native), c_v_flags)
+
+	return
+}
+
+// SetFloat is a wrapper around the C function g_value_set_float.
+func (recv *Value) SetFloat(vFloat float32) {
+	c_v_float := (C.gfloat)(vFloat)
+
+	C.g_value_set_float((*C.GValue)(recv.native), c_v_float)
+
+	return
+}
 
 // Unsupported : g_value_set_gtype : unsupported parameter v_gtype : no type generator for GType, GType
 
-// Unsupported : g_value_set_instance : no return generator
+// SetInstance is a wrapper around the C function g_value_set_instance.
+func (recv *Value) SetInstance(instance uintptr) {
+	c_instance := (C.gpointer)(instance)
 
-// Unsupported : g_value_set_int : no return generator
+	C.g_value_set_instance((*C.GValue)(recv.native), c_instance)
 
-// Unsupported : g_value_set_int64 : no return generator
+	return
+}
 
-// Unsupported : g_value_set_long : no return generator
+// SetInt is a wrapper around the C function g_value_set_int.
+func (recv *Value) SetInt(vInt int32) {
+	c_v_int := (C.gint)(vInt)
 
-// Unsupported : g_value_set_object : no return generator
+	C.g_value_set_int((*C.GValue)(recv.native), c_v_int)
 
-// Unsupported : g_value_set_object_take_ownership : no return generator
+	return
+}
 
-// Unsupported : g_value_set_param : no return generator
+// SetInt64 is a wrapper around the C function g_value_set_int64.
+func (recv *Value) SetInt64(vInt64 int64) {
+	c_v_int64 := (C.gint64)(vInt64)
 
-// Unsupported : g_value_set_param_take_ownership : no return generator
+	C.g_value_set_int64((*C.GValue)(recv.native), c_v_int64)
 
-// Unsupported : g_value_set_pointer : no return generator
+	return
+}
 
-// Unsupported : g_value_set_schar : no return generator
+// SetLong is a wrapper around the C function g_value_set_long.
+func (recv *Value) SetLong(vLong int64) {
+	c_v_long := (C.glong)(vLong)
 
-// Unsupported : g_value_set_static_boxed : no return generator
+	C.g_value_set_long((*C.GValue)(recv.native), c_v_long)
 
-// Unsupported : g_value_set_static_string : no return generator
+	return
+}
 
-// Unsupported : g_value_set_string : no return generator
+// SetObject is a wrapper around the C function g_value_set_object.
+func (recv *Value) SetObject(vObject uintptr) {
+	c_v_object := (C.gpointer)(vObject)
 
-// Unsupported : g_value_set_string_take_ownership : no return generator
+	C.g_value_set_object((*C.GValue)(recv.native), c_v_object)
 
-// Unsupported : g_value_set_uchar : no return generator
+	return
+}
 
-// Unsupported : g_value_set_uint : no return generator
+// SetObjectTakeOwnership is a wrapper around the C function g_value_set_object_take_ownership.
+func (recv *Value) SetObjectTakeOwnership(vObject uintptr) {
+	c_v_object := (C.gpointer)(vObject)
 
-// Unsupported : g_value_set_uint64 : no return generator
+	C.g_value_set_object_take_ownership((*C.GValue)(recv.native), c_v_object)
 
-// Unsupported : g_value_set_ulong : no return generator
+	return
+}
+
+// SetParam is a wrapper around the C function g_value_set_param.
+func (recv *Value) SetParam(param *ParamSpec) {
+	c_param := (*C.GParamSpec)(param.ToC())
+
+	C.g_value_set_param((*C.GValue)(recv.native), c_param)
+
+	return
+}
+
+// SetParamTakeOwnership is a wrapper around the C function g_value_set_param_take_ownership.
+func (recv *Value) SetParamTakeOwnership(param *ParamSpec) {
+	c_param := (*C.GParamSpec)(param.ToC())
+
+	C.g_value_set_param_take_ownership((*C.GValue)(recv.native), c_param)
+
+	return
+}
+
+// SetPointer is a wrapper around the C function g_value_set_pointer.
+func (recv *Value) SetPointer(vPointer uintptr) {
+	c_v_pointer := (C.gpointer)(vPointer)
+
+	C.g_value_set_pointer((*C.GValue)(recv.native), c_v_pointer)
+
+	return
+}
+
+// SetStaticBoxed is a wrapper around the C function g_value_set_static_boxed.
+func (recv *Value) SetStaticBoxed(vBoxed uintptr) {
+	c_v_boxed := (C.gconstpointer)(vBoxed)
+
+	C.g_value_set_static_boxed((*C.GValue)(recv.native), c_v_boxed)
+
+	return
+}
+
+// SetStaticString is a wrapper around the C function g_value_set_static_string.
+func (recv *Value) SetStaticString(vString string) {
+	c_v_string := C.CString(vString)
+	defer C.free(unsafe.Pointer(c_v_string))
+
+	C.g_value_set_static_string((*C.GValue)(recv.native), c_v_string)
+
+	return
+}
+
+// SetString is a wrapper around the C function g_value_set_string.
+func (recv *Value) SetString(vString string) {
+	c_v_string := C.CString(vString)
+	defer C.free(unsafe.Pointer(c_v_string))
+
+	C.g_value_set_string((*C.GValue)(recv.native), c_v_string)
+
+	return
+}
+
+// SetStringTakeOwnership is a wrapper around the C function g_value_set_string_take_ownership.
+func (recv *Value) SetStringTakeOwnership(vString string) {
+	c_v_string := C.CString(vString)
+	defer C.free(unsafe.Pointer(c_v_string))
+
+	C.g_value_set_string_take_ownership((*C.GValue)(recv.native), c_v_string)
+
+	return
+}
+
+// SetUchar is a wrapper around the C function g_value_set_uchar.
+func (recv *Value) SetUchar(vUchar uint8) {
+	c_v_uchar := (C.guchar)(vUchar)
+
+	C.g_value_set_uchar((*C.GValue)(recv.native), c_v_uchar)
+
+	return
+}
+
+// SetUint is a wrapper around the C function g_value_set_uint.
+func (recv *Value) SetUint(vUint uint32) {
+	c_v_uint := (C.guint)(vUint)
+
+	C.g_value_set_uint((*C.GValue)(recv.native), c_v_uint)
+
+	return
+}
+
+// SetUint64 is a wrapper around the C function g_value_set_uint64.
+func (recv *Value) SetUint64(vUint64 uint64) {
+	c_v_uint64 := (C.guint64)(vUint64)
+
+	C.g_value_set_uint64((*C.GValue)(recv.native), c_v_uint64)
+
+	return
+}
+
+// SetUlong is a wrapper around the C function g_value_set_ulong.
+func (recv *Value) SetUlong(vUlong uint64) {
+	c_v_ulong := (C.gulong)(vUlong)
+
+	C.g_value_set_ulong((*C.GValue)(recv.native), c_v_ulong)
+
+	return
+}
 
 // Unsupported : g_value_set_variant : unsupported parameter variant : Blacklisted record : GVariant
-
-// Unsupported : g_value_take_boxed : no return generator
-
-// Unsupported : g_value_take_object : no return generator
-
-// Unsupported : g_value_take_param : no return generator
-
-// Unsupported : g_value_take_string : no return generator
 
 // Unsupported : g_value_take_variant : unsupported parameter variant : Blacklisted record : GVariant
 
@@ -1238,7 +1449,12 @@ func (recv *Value) Transform(destValue *Value) bool {
 	return retGo
 }
 
-// Unsupported : g_value_unset : no return generator
+// Unset is a wrapper around the C function g_value_unset.
+func (recv *Value) Unset() {
+	C.g_value_unset((*C.GValue)(recv.native))
+
+	return
+}
 
 // ValueArray is a wrapper around the C record GValueArray.
 type ValueArray struct {
@@ -1297,7 +1513,12 @@ func (recv *ValueArray) Copy() *ValueArray {
 	return retGo
 }
 
-// Unsupported : g_value_array_free : no return generator
+// Free is a wrapper around the C function g_value_array_free.
+func (recv *ValueArray) Free() {
+	C.g_value_array_free((*C.GValueArray)(recv.native))
+
+	return
+}
 
 // GetNth is a wrapper around the C function g_value_array_get_nth.
 func (recv *ValueArray) GetNth(index uint32) *Value {
@@ -1365,9 +1586,3 @@ func (recv *WeakRef) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
-
-// Unsupported : g_weak_ref_clear : no return generator
-
-// Unsupported : g_weak_ref_init : no return generator
-
-// Unsupported : g_weak_ref_set : no return generator

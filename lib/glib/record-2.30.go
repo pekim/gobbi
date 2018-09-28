@@ -59,6 +59,11 @@ func (recv *Hmac) Ref() *Hmac {
 	return retGo
 }
 
-// Unsupported : g_hmac_unref : no return generator
+// Unref is a wrapper around the C function g_hmac_unref.
+func (recv *Hmac) Unref() {
+	C.g_hmac_unref((*C.GHmac)(recv.native))
+
+	return
+}
 
 // Unsupported : g_hmac_update : unsupported parameter data : no param type

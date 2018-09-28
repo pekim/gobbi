@@ -138,6 +138,11 @@ func MkstempFull(tmpl string, flags int32, mode int32) int32 {
 	return retGo
 }
 
-// Unsupported : g_reload_user_special_dirs_cache : no return generator
+// ReloadUserSpecialDirsCache is a wrapper around the C function g_reload_user_special_dirs_cache.
+func ReloadUserSpecialDirsCache() {
+	C.g_reload_user_special_dirs_cache()
+
+	return
+}
 
 // Unsupported : g_test_log_set_fatal_handler : unsupported parameter log_func : no type generator for TestLogFatalFunc, GTestLogFatalFunc

@@ -943,7 +943,19 @@ func FileAttributeInfoListNew() *FileAttributeInfoList {
 	return retGo
 }
 
-// Unsupported : g_file_attribute_info_list_add : no return generator
+// Add is a wrapper around the C function g_file_attribute_info_list_add.
+func (recv *FileAttributeInfoList) Add(name string, type_ FileAttributeType, flags FileAttributeInfoFlags) {
+	c_name := C.CString(name)
+	defer C.free(unsafe.Pointer(c_name))
+
+	c_type := (C.GFileAttributeType)(type_)
+
+	c_flags := (C.GFileAttributeInfoFlags)(flags)
+
+	C.g_file_attribute_info_list_add((*C.GFileAttributeInfoList)(recv.native), c_name, c_type, c_flags)
+
+	return
+}
 
 // Dup is a wrapper around the C function g_file_attribute_info_list_dup.
 func (recv *FileAttributeInfoList) Dup() *FileAttributeInfoList {
@@ -972,7 +984,12 @@ func (recv *FileAttributeInfoList) Ref() *FileAttributeInfoList {
 	return retGo
 }
 
-// Unsupported : g_file_attribute_info_list_unref : no return generator
+// Unref is a wrapper around the C function g_file_attribute_info_list_unref.
+func (recv *FileAttributeInfoList) Unref() {
+	C.g_file_attribute_info_list_unref((*C.GFileAttributeInfoList)(recv.native))
+
+	return
+}
 
 // FileAttributeMatcher is a wrapper around the C record GFileAttributeMatcher.
 type FileAttributeMatcher struct {
@@ -1065,7 +1082,12 @@ func (recv *FileAttributeMatcher) Subtract(subtract *FileAttributeMatcher) *File
 	return retGo
 }
 
-// Unsupported : g_file_attribute_matcher_unref : no return generator
+// Unref is a wrapper around the C function g_file_attribute_matcher_unref.
+func (recv *FileAttributeMatcher) Unref() {
+	C.g_file_attribute_matcher_unref((*C.GFileAttributeMatcher)(recv.native))
+
+	return
+}
 
 // FileDescriptorBasedIface is a wrapper around the C record GFileDescriptorBasedIface.
 type FileDescriptorBasedIface struct {
@@ -2939,8 +2961,6 @@ func (recv *SettingsSchemaKey) ToC() unsafe.Pointer {
 
 // Unsupported : g_settings_schema_key_range_check : unsupported parameter value : Blacklisted record : GVariant
 
-// Unsupported : g_settings_schema_key_unref : no return generator
-
 // SimpleActionGroupClass is a wrapper around the C record GSimpleActionGroupClass.
 type SimpleActionGroupClass struct {
 	native *C.GSimpleActionGroupClass
@@ -3453,8 +3473,6 @@ func (recv *SrvTarget) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : g_srv_target_free : no return generator
-
 // StaticResource is a wrapper around the C record GStaticResource.
 type StaticResource struct {
 	native *C.GStaticResource
@@ -3480,10 +3498,6 @@ func (recv *StaticResource) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
-
-// Unsupported : g_static_resource_fini : no return generator
-
-// Unsupported : g_static_resource_init : no return generator
 
 // TaskClass is a wrapper around the C record GTaskClass.
 type TaskClass struct {
@@ -4145,7 +4159,12 @@ func (recv *UnixMountPoint) Compare(mount2 *UnixMountPoint) int32 {
 	return retGo
 }
 
-// Unsupported : g_unix_mount_point_free : no return generator
+// Free is a wrapper around the C function g_unix_mount_point_free.
+func (recv *UnixMountPoint) Free() {
+	C.g_unix_mount_point_free((*C.GUnixMountPoint)(recv.native))
+
+	return
+}
 
 // GetDevicePath is a wrapper around the C function g_unix_mount_point_get_device_path.
 func (recv *UnixMountPoint) GetDevicePath() string {

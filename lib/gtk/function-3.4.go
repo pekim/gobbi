@@ -4,7 +4,9 @@
 package gtk
 
 import (
+	cairo "github.com/pekim/gobbi/lib/cairo"
 	gdk "github.com/pekim/gobbi/lib/gdk"
+	pango "github.com/pekim/gobbi/lib/pango"
 	"unsafe"
 )
 
@@ -51,4 +53,23 @@ func AcceleratorNameWithKeycode(display *gdk.Display, acceleratorKey uint32, key
 
 // Unsupported : gtk_accelerator_parse_with_keycode : unsupported parameter accelerator_key : no type generator for guint, guint*
 
-// Unsupported : gtk_render_insertion_cursor : no return generator
+// RenderInsertionCursor is a wrapper around the C function gtk_render_insertion_cursor.
+func RenderInsertionCursor(context *StyleContext, cr *cairo.Context, x float64, y float64, layout *pango.Layout, index int32, direction pango.Direction) {
+	c_context := (*C.GtkStyleContext)(context.ToC())
+
+	c_cr := (*C.cairo_t)(cr.ToC())
+
+	c_x := (C.gdouble)(x)
+
+	c_y := (C.gdouble)(y)
+
+	c_layout := (*C.PangoLayout)(layout.ToC())
+
+	c_index := (C.int)(index)
+
+	c_direction := (C.PangoDirection)(direction)
+
+	C.gtk_render_insertion_cursor(c_context, c_cr, c_x, c_y, c_layout, c_index, c_direction)
+
+	return
+}

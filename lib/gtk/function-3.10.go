@@ -3,6 +3,8 @@
 
 package gtk
 
+import cairo "github.com/pekim/gobbi/lib/cairo"
+
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <gtk/gtk-a11y.h>
 // #include <gtk/gtk.h>
@@ -10,6 +12,28 @@ package gtk
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : gtk_render_icon_surface : no return generator
+// RenderIconSurface is a wrapper around the C function gtk_render_icon_surface.
+func RenderIconSurface(context *StyleContext, cr *cairo.Context, surface *cairo.Surface, x float64, y float64) {
+	c_context := (*C.GtkStyleContext)(context.ToC())
 
-// Unsupported : gtk_test_widget_wait_for_draw : no return generator
+	c_cr := (*C.cairo_t)(cr.ToC())
+
+	c_surface := (*C.cairo_surface_t)(surface.ToC())
+
+	c_x := (C.gdouble)(x)
+
+	c_y := (C.gdouble)(y)
+
+	C.gtk_render_icon_surface(c_context, c_cr, c_surface, c_x, c_y)
+
+	return
+}
+
+// TestWidgetWaitForDraw is a wrapper around the C function gtk_test_widget_wait_for_draw.
+func TestWidgetWaitForDraw(widget *Widget) {
+	c_widget := (*C.GtkWidget)(widget.ToC())
+
+	C.gtk_test_widget_wait_for_draw(c_widget)
+
+	return
+}

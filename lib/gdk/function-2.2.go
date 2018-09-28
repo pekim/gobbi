@@ -23,7 +23,12 @@ func GetDisplayArgName() string {
 	return retGo
 }
 
-// Unsupported : gdk_notify_startup_complete : no return generator
+// NotifyStartupComplete is a wrapper around the C function gdk_notify_startup_complete.
+func NotifyStartupComplete() {
+	C.gdk_notify_startup_complete()
+
+	return
+}
 
 // PangoContextGetForScreen is a wrapper around the C function gdk_pango_context_get_for_screen.
 func PangoContextGetForScreen(screen *Screen) *pango.Context {

@@ -165,35 +165,167 @@ func MenuNew() *Menu {
 	return retGo
 }
 
-// Unsupported : g_menu_append : no return generator
+// Append is a wrapper around the C function g_menu_append.
+func (recv *Menu) Append(label string, detailedAction string) {
+	c_label := C.CString(label)
+	defer C.free(unsafe.Pointer(c_label))
 
-// Unsupported : g_menu_append_item : no return generator
+	c_detailed_action := C.CString(detailedAction)
+	defer C.free(unsafe.Pointer(c_detailed_action))
 
-// Unsupported : g_menu_append_section : no return generator
+	C.g_menu_append((*C.GMenu)(recv.native), c_label, c_detailed_action)
 
-// Unsupported : g_menu_append_submenu : no return generator
+	return
+}
 
-// Unsupported : g_menu_freeze : no return generator
+// AppendItem is a wrapper around the C function g_menu_append_item.
+func (recv *Menu) AppendItem(item *MenuItem) {
+	c_item := (*C.GMenuItem)(item.ToC())
 
-// Unsupported : g_menu_insert : no return generator
+	C.g_menu_append_item((*C.GMenu)(recv.native), c_item)
 
-// Unsupported : g_menu_insert_item : no return generator
+	return
+}
 
-// Unsupported : g_menu_insert_section : no return generator
+// AppendSection is a wrapper around the C function g_menu_append_section.
+func (recv *Menu) AppendSection(label string, section *MenuModel) {
+	c_label := C.CString(label)
+	defer C.free(unsafe.Pointer(c_label))
 
-// Unsupported : g_menu_insert_submenu : no return generator
+	c_section := (*C.GMenuModel)(section.ToC())
 
-// Unsupported : g_menu_prepend : no return generator
+	C.g_menu_append_section((*C.GMenu)(recv.native), c_label, c_section)
 
-// Unsupported : g_menu_prepend_item : no return generator
+	return
+}
 
-// Unsupported : g_menu_prepend_section : no return generator
+// AppendSubmenu is a wrapper around the C function g_menu_append_submenu.
+func (recv *Menu) AppendSubmenu(label string, submenu *MenuModel) {
+	c_label := C.CString(label)
+	defer C.free(unsafe.Pointer(c_label))
 
-// Unsupported : g_menu_prepend_submenu : no return generator
+	c_submenu := (*C.GMenuModel)(submenu.ToC())
 
-// Unsupported : g_menu_remove : no return generator
+	C.g_menu_append_submenu((*C.GMenu)(recv.native), c_label, c_submenu)
 
-// Unsupported : g_menu_remove_all : no return generator
+	return
+}
+
+// Freeze is a wrapper around the C function g_menu_freeze.
+func (recv *Menu) Freeze() {
+	C.g_menu_freeze((*C.GMenu)(recv.native))
+
+	return
+}
+
+// Insert is a wrapper around the C function g_menu_insert.
+func (recv *Menu) Insert(position int32, label string, detailedAction string) {
+	c_position := (C.gint)(position)
+
+	c_label := C.CString(label)
+	defer C.free(unsafe.Pointer(c_label))
+
+	c_detailed_action := C.CString(detailedAction)
+	defer C.free(unsafe.Pointer(c_detailed_action))
+
+	C.g_menu_insert((*C.GMenu)(recv.native), c_position, c_label, c_detailed_action)
+
+	return
+}
+
+// InsertItem is a wrapper around the C function g_menu_insert_item.
+func (recv *Menu) InsertItem(position int32, item *MenuItem) {
+	c_position := (C.gint)(position)
+
+	c_item := (*C.GMenuItem)(item.ToC())
+
+	C.g_menu_insert_item((*C.GMenu)(recv.native), c_position, c_item)
+
+	return
+}
+
+// InsertSection is a wrapper around the C function g_menu_insert_section.
+func (recv *Menu) InsertSection(position int32, label string, section *MenuModel) {
+	c_position := (C.gint)(position)
+
+	c_label := C.CString(label)
+	defer C.free(unsafe.Pointer(c_label))
+
+	c_section := (*C.GMenuModel)(section.ToC())
+
+	C.g_menu_insert_section((*C.GMenu)(recv.native), c_position, c_label, c_section)
+
+	return
+}
+
+// InsertSubmenu is a wrapper around the C function g_menu_insert_submenu.
+func (recv *Menu) InsertSubmenu(position int32, label string, submenu *MenuModel) {
+	c_position := (C.gint)(position)
+
+	c_label := C.CString(label)
+	defer C.free(unsafe.Pointer(c_label))
+
+	c_submenu := (*C.GMenuModel)(submenu.ToC())
+
+	C.g_menu_insert_submenu((*C.GMenu)(recv.native), c_position, c_label, c_submenu)
+
+	return
+}
+
+// Prepend is a wrapper around the C function g_menu_prepend.
+func (recv *Menu) Prepend(label string, detailedAction string) {
+	c_label := C.CString(label)
+	defer C.free(unsafe.Pointer(c_label))
+
+	c_detailed_action := C.CString(detailedAction)
+	defer C.free(unsafe.Pointer(c_detailed_action))
+
+	C.g_menu_prepend((*C.GMenu)(recv.native), c_label, c_detailed_action)
+
+	return
+}
+
+// PrependItem is a wrapper around the C function g_menu_prepend_item.
+func (recv *Menu) PrependItem(item *MenuItem) {
+	c_item := (*C.GMenuItem)(item.ToC())
+
+	C.g_menu_prepend_item((*C.GMenu)(recv.native), c_item)
+
+	return
+}
+
+// PrependSection is a wrapper around the C function g_menu_prepend_section.
+func (recv *Menu) PrependSection(label string, section *MenuModel) {
+	c_label := C.CString(label)
+	defer C.free(unsafe.Pointer(c_label))
+
+	c_section := (*C.GMenuModel)(section.ToC())
+
+	C.g_menu_prepend_section((*C.GMenu)(recv.native), c_label, c_section)
+
+	return
+}
+
+// PrependSubmenu is a wrapper around the C function g_menu_prepend_submenu.
+func (recv *Menu) PrependSubmenu(label string, submenu *MenuModel) {
+	c_label := C.CString(label)
+	defer C.free(unsafe.Pointer(c_label))
+
+	c_submenu := (*C.GMenuModel)(submenu.ToC())
+
+	C.g_menu_prepend_submenu((*C.GMenu)(recv.native), c_label, c_submenu)
+
+	return
+}
+
+// Remove is a wrapper around the C function g_menu_remove.
+func (recv *Menu) Remove(position int32) {
+	c_position := (C.gint)(position)
+
+	C.g_menu_remove((*C.GMenu)(recv.native), c_position)
+
+	return
+}
 
 // MenuAttributeIter is a wrapper around the C record GMenuAttributeIter.
 type MenuAttributeIter struct {
@@ -311,17 +443,57 @@ func MenuItemNewSubmenu(label string, submenu *MenuModel) *MenuItem {
 
 // Unsupported : g_menu_item_set_attribute_value : unsupported parameter value : Blacklisted record : GVariant
 
-// Unsupported : g_menu_item_set_detailed_action : no return generator
+// SetDetailedAction is a wrapper around the C function g_menu_item_set_detailed_action.
+func (recv *MenuItem) SetDetailedAction(detailedAction string) {
+	c_detailed_action := C.CString(detailedAction)
+	defer C.free(unsafe.Pointer(c_detailed_action))
+
+	C.g_menu_item_set_detailed_action((*C.GMenuItem)(recv.native), c_detailed_action)
+
+	return
+}
 
 // Unsupported : g_menu_item_set_icon : unsupported parameter icon : no type generator for Icon, GIcon*
 
-// Unsupported : g_menu_item_set_label : no return generator
+// SetLabel is a wrapper around the C function g_menu_item_set_label.
+func (recv *MenuItem) SetLabel(label string) {
+	c_label := C.CString(label)
+	defer C.free(unsafe.Pointer(c_label))
 
-// Unsupported : g_menu_item_set_link : no return generator
+	C.g_menu_item_set_label((*C.GMenuItem)(recv.native), c_label)
 
-// Unsupported : g_menu_item_set_section : no return generator
+	return
+}
 
-// Unsupported : g_menu_item_set_submenu : no return generator
+// SetLink is a wrapper around the C function g_menu_item_set_link.
+func (recv *MenuItem) SetLink(link string, model *MenuModel) {
+	c_link := C.CString(link)
+	defer C.free(unsafe.Pointer(c_link))
+
+	c_model := (*C.GMenuModel)(model.ToC())
+
+	C.g_menu_item_set_link((*C.GMenuItem)(recv.native), c_link, c_model)
+
+	return
+}
+
+// SetSection is a wrapper around the C function g_menu_item_set_section.
+func (recv *MenuItem) SetSection(section *MenuModel) {
+	c_section := (*C.GMenuModel)(section.ToC())
+
+	C.g_menu_item_set_section((*C.GMenuItem)(recv.native), c_section)
+
+	return
+}
+
+// SetSubmenu is a wrapper around the C function g_menu_item_set_submenu.
+func (recv *MenuItem) SetSubmenu(submenu *MenuModel) {
+	c_submenu := (*C.GMenuModel)(submenu.ToC())
+
+	C.g_menu_item_set_submenu((*C.GMenuItem)(recv.native), c_submenu)
+
+	return
+}
 
 // MenuLinkIter is a wrapper around the C record GMenuLinkIter.
 type MenuLinkIter struct {
@@ -428,7 +600,18 @@ func (recv *MenuModel) IsMutable() bool {
 	return retGo
 }
 
-// Unsupported : g_menu_model_items_changed : no return generator
+// ItemsChanged is a wrapper around the C function g_menu_model_items_changed.
+func (recv *MenuModel) ItemsChanged(position int32, removed int32, added int32) {
+	c_position := (C.gint)(position)
+
+	c_removed := (C.gint)(removed)
+
+	c_added := (C.gint)(added)
+
+	C.g_menu_model_items_changed((*C.GMenuModel)(recv.native), c_position, c_removed, c_added)
+
+	return
+}
 
 // IterateItemAttributes is a wrapper around the C function g_menu_model_iterate_item_attributes.
 func (recv *MenuModel) IterateItemAttributes(itemIndex int32) *MenuAttributeIter {

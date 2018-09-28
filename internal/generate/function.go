@@ -142,8 +142,13 @@ func (f *Function) generateCParameterVars(g *jen.Group) {
 
 func (f *Function) generateCall(g *jen.Group) *jen.Statement {
 	return g.
-		Id("retC").
-		Op(":=").
+		Do(func(s *jen.Statement) {
+			if f.ReturnValue.Type.Name != "none" {
+				s.
+					Id("retC").
+					Op(":=")
+			}
+		}).
 		Qual("C", f.CIdentifier).
 		CallFunc(func(g *jen.Group) {
 			// Assumption that receiver is always first agumment.
@@ -184,14 +189,19 @@ func (f *Function) generateGoReturnVars(g *jen.Group) {
 
 func (f *Function) generateReturn(g *jen.Group) {
 	g.ReturnFunc(func(g *jen.Group) {
-		g.Id("retGo")
+		if f.ReturnValue.Type.Name != "none" {
+			g.Id("retGo")
+		}
+
 		f.Parameters.generateOutputParamsReturns(g)
 		f.generateThrowableReturn(g)
 	})
 }
 
 func (f *Function) generateReturnGoVar(g *jen.Group) {
-	f.ReturnValue.generateCToGo(g, "retC", "retGo")
+	if f.ReturnValue.Type.Name != "none" {
+		f.ReturnValue.generateCToGo(g, "retC", "retGo")
+	}
 	g.Line()
 }
 

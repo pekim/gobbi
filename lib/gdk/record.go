@@ -68,7 +68,12 @@ func (recv *Color) Equal(colorb *Color) bool {
 	return retGo
 }
 
-// Unsupported : gdk_color_free : no return generator
+// Free is a wrapper around the C function gdk_color_free.
+func (recv *Color) Free() {
+	C.gdk_color_free((*C.GdkColor)(recv.native))
+
+	return
+}
 
 // Hash is a wrapper around the C function gdk_color_hash.
 func (recv *Color) Hash() uint32 {
@@ -1142,8 +1147,6 @@ func (recv *FrameTimings) GetFrameTime() int64 {
 	return retGo
 }
 
-// Unsupported : gdk_frame_timings_unref : no return generator
-
 // Geometry is a wrapper around the C record GdkGeometry.
 type Geometry struct {
 	native     *C.GdkGeometry
@@ -1315,8 +1318,6 @@ func (recv *RGBA) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
-
-// Unsupported : gdk_rgba_free : no return generator
 
 // Blacklisted : GdkRectangle
 

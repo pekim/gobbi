@@ -83,7 +83,16 @@ func (recv *Credentials) IsSameUser(otherCredentials *Credentials) (bool, error)
 	return retGo, goThrowableError
 }
 
-// Unsupported : g_credentials_set_native : no return generator
+// SetNative is a wrapper around the C function g_credentials_set_native.
+func (recv *Credentials) SetNative(nativeType CredentialsType, native uintptr) {
+	c_native_type := (C.GCredentialsType)(nativeType)
+
+	c_native := (C.gpointer)(native)
+
+	C.g_credentials_set_native((*C.GCredentials)(recv.native), c_native_type, c_native)
+
+	return
+}
 
 // Unsupported : g_credentials_set_unix_user : unsupported parameter uid : no type generator for guint, uid_t
 
@@ -332,7 +341,14 @@ func (recv *DBusConnection) IsClosed() bool {
 
 // Unsupported : g_dbus_connection_register_subtree : unsupported parameter user_data_free_func : no type generator for GLib.DestroyNotify, GDestroyNotify
 
-// Unsupported : g_dbus_connection_remove_filter : no return generator
+// RemoveFilter is a wrapper around the C function g_dbus_connection_remove_filter.
+func (recv *DBusConnection) RemoveFilter(filterId uint32) {
+	c_filter_id := (C.guint)(filterId)
+
+	C.g_dbus_connection_remove_filter((*C.GDBusConnection)(recv.native), c_filter_id)
+
+	return
+}
 
 // Unsupported : g_dbus_connection_send_message : unsupported parameter out_serial : no type generator for guint32, volatile guint32*
 
@@ -342,17 +358,33 @@ func (recv *DBusConnection) IsClosed() bool {
 
 // Unsupported : g_dbus_connection_send_message_with_reply_sync : unsupported parameter out_serial : no type generator for guint32, volatile guint32*
 
-// Unsupported : g_dbus_connection_set_exit_on_close : no return generator
+// SetExitOnClose is a wrapper around the C function g_dbus_connection_set_exit_on_close.
+func (recv *DBusConnection) SetExitOnClose(exitOnClose bool) {
+	c_exit_on_close :=
+		boolToGboolean(exitOnClose)
+
+	C.g_dbus_connection_set_exit_on_close((*C.GDBusConnection)(recv.native), c_exit_on_close)
+
+	return
+}
 
 // Unsupported : g_dbus_connection_signal_subscribe : unsupported parameter callback : no type generator for DBusSignalCallback, GDBusSignalCallback
 
-// Unsupported : g_dbus_connection_signal_unsubscribe : no return generator
+// SignalUnsubscribe is a wrapper around the C function g_dbus_connection_signal_unsubscribe.
+func (recv *DBusConnection) SignalUnsubscribe(subscriptionId uint32) {
+	c_subscription_id := (C.guint)(subscriptionId)
 
-// Unsupported : g_dbus_connection_start_message_processing : no return generator
+	C.g_dbus_connection_signal_unsubscribe((*C.GDBusConnection)(recv.native), c_subscription_id)
 
-// Unsupported : g_dbus_connection_unexport_action_group : no return generator
+	return
+}
 
-// Unsupported : g_dbus_connection_unexport_menu_model : no return generator
+// StartMessageProcessing is a wrapper around the C function g_dbus_connection_start_message_processing.
+func (recv *DBusConnection) StartMessageProcessing() {
+	C.g_dbus_connection_start_message_processing((*C.GDBusConnection)(recv.native))
+
+	return
+}
 
 // UnregisterObject is a wrapper around the C function g_dbus_connection_unregister_object.
 func (recv *DBusConnection) UnregisterObject(registrationId uint32) bool {
@@ -591,7 +623,12 @@ func (recv *DBusMessage) GetUnixFdList() *UnixFDList {
 	return retGo
 }
 
-// Unsupported : g_dbus_message_lock : no return generator
+// Lock is a wrapper around the C function g_dbus_message_lock.
+func (recv *DBusMessage) Lock() {
+	C.g_dbus_message_lock((*C.GDBusMessage)(recv.native))
+
+	return
+}
 
 // Unsupported : g_dbus_message_new_method_error : unsupported parameter ... : varargs
 
@@ -632,35 +669,140 @@ func (recv *DBusMessage) Print(indent uint32) string {
 
 // Unsupported : g_dbus_message_set_body : unsupported parameter body : Blacklisted record : GVariant
 
-// Unsupported : g_dbus_message_set_byte_order : no return generator
+// SetByteOrder is a wrapper around the C function g_dbus_message_set_byte_order.
+func (recv *DBusMessage) SetByteOrder(byteOrder DBusMessageByteOrder) {
+	c_byte_order := (C.GDBusMessageByteOrder)(byteOrder)
 
-// Unsupported : g_dbus_message_set_destination : no return generator
+	C.g_dbus_message_set_byte_order((*C.GDBusMessage)(recv.native), c_byte_order)
 
-// Unsupported : g_dbus_message_set_error_name : no return generator
+	return
+}
 
-// Unsupported : g_dbus_message_set_flags : no return generator
+// SetDestination is a wrapper around the C function g_dbus_message_set_destination.
+func (recv *DBusMessage) SetDestination(value string) {
+	c_value := C.CString(value)
+	defer C.free(unsafe.Pointer(c_value))
+
+	C.g_dbus_message_set_destination((*C.GDBusMessage)(recv.native), c_value)
+
+	return
+}
+
+// SetErrorName is a wrapper around the C function g_dbus_message_set_error_name.
+func (recv *DBusMessage) SetErrorName(value string) {
+	c_value := C.CString(value)
+	defer C.free(unsafe.Pointer(c_value))
+
+	C.g_dbus_message_set_error_name((*C.GDBusMessage)(recv.native), c_value)
+
+	return
+}
+
+// SetFlags is a wrapper around the C function g_dbus_message_set_flags.
+func (recv *DBusMessage) SetFlags(flags DBusMessageFlags) {
+	c_flags := (C.GDBusMessageFlags)(flags)
+
+	C.g_dbus_message_set_flags((*C.GDBusMessage)(recv.native), c_flags)
+
+	return
+}
 
 // Unsupported : g_dbus_message_set_header : unsupported parameter value : Blacklisted record : GVariant
 
-// Unsupported : g_dbus_message_set_interface : no return generator
+// SetInterface is a wrapper around the C function g_dbus_message_set_interface.
+func (recv *DBusMessage) SetInterface(value string) {
+	c_value := C.CString(value)
+	defer C.free(unsafe.Pointer(c_value))
 
-// Unsupported : g_dbus_message_set_member : no return generator
+	C.g_dbus_message_set_interface((*C.GDBusMessage)(recv.native), c_value)
 
-// Unsupported : g_dbus_message_set_message_type : no return generator
+	return
+}
 
-// Unsupported : g_dbus_message_set_num_unix_fds : no return generator
+// SetMember is a wrapper around the C function g_dbus_message_set_member.
+func (recv *DBusMessage) SetMember(value string) {
+	c_value := C.CString(value)
+	defer C.free(unsafe.Pointer(c_value))
 
-// Unsupported : g_dbus_message_set_path : no return generator
+	C.g_dbus_message_set_member((*C.GDBusMessage)(recv.native), c_value)
 
-// Unsupported : g_dbus_message_set_reply_serial : no return generator
+	return
+}
 
-// Unsupported : g_dbus_message_set_sender : no return generator
+// SetMessageType is a wrapper around the C function g_dbus_message_set_message_type.
+func (recv *DBusMessage) SetMessageType(type_ DBusMessageType) {
+	c_type := (C.GDBusMessageType)(type_)
 
-// Unsupported : g_dbus_message_set_serial : no return generator
+	C.g_dbus_message_set_message_type((*C.GDBusMessage)(recv.native), c_type)
 
-// Unsupported : g_dbus_message_set_signature : no return generator
+	return
+}
 
-// Unsupported : g_dbus_message_set_unix_fd_list : no return generator
+// SetNumUnixFds is a wrapper around the C function g_dbus_message_set_num_unix_fds.
+func (recv *DBusMessage) SetNumUnixFds(value uint32) {
+	c_value := (C.guint32)(value)
+
+	C.g_dbus_message_set_num_unix_fds((*C.GDBusMessage)(recv.native), c_value)
+
+	return
+}
+
+// SetPath is a wrapper around the C function g_dbus_message_set_path.
+func (recv *DBusMessage) SetPath(value string) {
+	c_value := C.CString(value)
+	defer C.free(unsafe.Pointer(c_value))
+
+	C.g_dbus_message_set_path((*C.GDBusMessage)(recv.native), c_value)
+
+	return
+}
+
+// SetReplySerial is a wrapper around the C function g_dbus_message_set_reply_serial.
+func (recv *DBusMessage) SetReplySerial(value uint32) {
+	c_value := (C.guint32)(value)
+
+	C.g_dbus_message_set_reply_serial((*C.GDBusMessage)(recv.native), c_value)
+
+	return
+}
+
+// SetSender is a wrapper around the C function g_dbus_message_set_sender.
+func (recv *DBusMessage) SetSender(value string) {
+	c_value := C.CString(value)
+	defer C.free(unsafe.Pointer(c_value))
+
+	C.g_dbus_message_set_sender((*C.GDBusMessage)(recv.native), c_value)
+
+	return
+}
+
+// SetSerial is a wrapper around the C function g_dbus_message_set_serial.
+func (recv *DBusMessage) SetSerial(serial uint32) {
+	c_serial := (C.guint32)(serial)
+
+	C.g_dbus_message_set_serial((*C.GDBusMessage)(recv.native), c_serial)
+
+	return
+}
+
+// SetSignature is a wrapper around the C function g_dbus_message_set_signature.
+func (recv *DBusMessage) SetSignature(value string) {
+	c_value := C.CString(value)
+	defer C.free(unsafe.Pointer(c_value))
+
+	C.g_dbus_message_set_signature((*C.GDBusMessage)(recv.native), c_value)
+
+	return
+}
+
+// SetUnixFdList is a wrapper around the C function g_dbus_message_set_unix_fd_list.
+func (recv *DBusMessage) SetUnixFdList(fdList *UnixFDList) {
+	c_fd_list := (*C.GUnixFDList)(fdList.ToC())
+
+	C.g_dbus_message_set_unix_fd_list((*C.GDBusMessage)(recv.native), c_fd_list)
+
+	return
+}
 
 // Unsupported : g_dbus_message_to_blob : unsupported parameter out_size : no type generator for gsize, gsize*
 
@@ -766,21 +908,49 @@ func (recv *DBusMethodInvocation) GetUserData() uintptr {
 	return retGo
 }
 
-// Unsupported : g_dbus_method_invocation_return_dbus_error : no return generator
+// ReturnDbusError is a wrapper around the C function g_dbus_method_invocation_return_dbus_error.
+func (recv *DBusMethodInvocation) ReturnDbusError(errorName string, errorMessage string) {
+	c_error_name := C.CString(errorName)
+	defer C.free(unsafe.Pointer(c_error_name))
+
+	c_error_message := C.CString(errorMessage)
+	defer C.free(unsafe.Pointer(c_error_message))
+
+	C.g_dbus_method_invocation_return_dbus_error((*C.GDBusMethodInvocation)(recv.native), c_error_name, c_error_message)
+
+	return
+}
 
 // Unsupported : g_dbus_method_invocation_return_error : unsupported parameter ... : varargs
 
-// Unsupported : g_dbus_method_invocation_return_error_literal : no return generator
+// ReturnErrorLiteral is a wrapper around the C function g_dbus_method_invocation_return_error_literal.
+func (recv *DBusMethodInvocation) ReturnErrorLiteral(domain glib.Quark, code int32, message string) {
+	c_domain := (C.GQuark)(domain)
+
+	c_code := (C.gint)(code)
+
+	c_message := C.CString(message)
+	defer C.free(unsafe.Pointer(c_message))
+
+	C.g_dbus_method_invocation_return_error_literal((*C.GDBusMethodInvocation)(recv.native), c_domain, c_code, c_message)
+
+	return
+}
 
 // Unsupported : g_dbus_method_invocation_return_error_valist : unsupported parameter var_args : no type generator for va_list, va_list
 
-// Unsupported : g_dbus_method_invocation_return_gerror : no return generator
+// ReturnGerror is a wrapper around the C function g_dbus_method_invocation_return_gerror.
+func (recv *DBusMethodInvocation) ReturnGerror(error *glib.Error) {
+	c_error := (*C.GError)(error.ToC())
+
+	C.g_dbus_method_invocation_return_gerror((*C.GDBusMethodInvocation)(recv.native), c_error)
+
+	return
+}
 
 // Unsupported : g_dbus_method_invocation_return_value : unsupported parameter parameters : Blacklisted record : GVariant
 
 // Unsupported : g_dbus_method_invocation_return_value_with_unix_fd_list : unsupported parameter parameters : Blacklisted record : GVariant
-
-// Unsupported : g_dbus_method_invocation_take_error : no return generator
 
 // DBusProxy is a wrapper around the C record GDBusProxy.
 type DBusProxy struct {
@@ -956,9 +1126,23 @@ func (recv *DBusProxy) GetObjectPath() string {
 
 // Unsupported : g_dbus_proxy_set_cached_property : unsupported parameter value : Blacklisted record : GVariant
 
-// Unsupported : g_dbus_proxy_set_default_timeout : no return generator
+// SetDefaultTimeout is a wrapper around the C function g_dbus_proxy_set_default_timeout.
+func (recv *DBusProxy) SetDefaultTimeout(timeoutMsec int32) {
+	c_timeout_msec := (C.gint)(timeoutMsec)
 
-// Unsupported : g_dbus_proxy_set_interface_info : no return generator
+	C.g_dbus_proxy_set_default_timeout((*C.GDBusProxy)(recv.native), c_timeout_msec)
+
+	return
+}
+
+// SetInterfaceInfo is a wrapper around the C function g_dbus_proxy_set_interface_info.
+func (recv *DBusProxy) SetInterfaceInfo(info *DBusInterfaceInfo) {
+	c_info := (*C.GDBusInterfaceInfo)(info.ToC())
+
+	C.g_dbus_proxy_set_interface_info((*C.GDBusProxy)(recv.native), c_info)
+
+	return
+}
 
 // DBusServer is a wrapper around the C record GDBusServer.
 type DBusServer struct {
@@ -1040,9 +1224,19 @@ func (recv *DBusServer) IsActive() bool {
 	return retGo
 }
 
-// Unsupported : g_dbus_server_start : no return generator
+// Start is a wrapper around the C function g_dbus_server_start.
+func (recv *DBusServer) Start() {
+	C.g_dbus_server_start((*C.GDBusServer)(recv.native))
 
-// Unsupported : g_dbus_server_stop : no return generator
+	return
+}
+
+// Stop is a wrapper around the C function g_dbus_server_stop.
+func (recv *DBusServer) Stop() {
+	C.g_dbus_server_stop((*C.GDBusServer)(recv.native))
+
+	return
+}
 
 // ProxyAddress is a wrapper around the C record GProxyAddress.
 type ProxyAddress struct {

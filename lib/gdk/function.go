@@ -16,11 +16,23 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : gdk_add_option_entries_libgtk_only : no return generator
+// AddOptionEntriesLibgtkOnly is a wrapper around the C function gdk_add_option_entries_libgtk_only.
+func AddOptionEntriesLibgtkOnly(group *glib.OptionGroup) {
+	c_group := (*C.GOptionGroup)(group.ToC())
+
+	C.gdk_add_option_entries_libgtk_only(c_group)
+
+	return
+}
 
 // Unsupported : gdk_atom_intern : return type : Blacklisted record : GdkAtom
 
-// Unsupported : gdk_beep : no return generator
+// Beep is a wrapper around the C function gdk_beep.
+func Beep() {
+	C.gdk_beep()
+
+	return
+}
 
 // Unsupported : gdk_cairo_get_clip_rectangle : unsupported parameter rect : Blacklisted record : GdkRectangle
 
@@ -36,7 +48,16 @@ func CairoRegionCreateFromSurface(surface *cairo.Surface) *cairo.Region {
 
 // Blacklisted : gdk_color_parse
 
-// Unsupported : gdk_drag_abort : no return generator
+// DragAbort is a wrapper around the C function gdk_drag_abort.
+func DragAbort(context *DragContext, time uint32) {
+	c_context := (*C.GdkDragContext)(context.ToC())
+
+	c_time_ := (C.guint32)(time)
+
+	C.gdk_drag_abort(c_context, c_time_)
+
+	return
+}
 
 // DragBegin is a wrapper around the C function gdk_drag_begin.
 func DragBegin(window *Window, targets *glib.List) *DragContext {
@@ -64,7 +85,16 @@ func DragBeginForDevice(window *Window, device *Device, targets *glib.List) *Dra
 	return retGo
 }
 
-// Unsupported : gdk_drag_drop : no return generator
+// DragDrop is a wrapper around the C function gdk_drag_drop.
+func DragDrop(context *DragContext, time uint32) {
+	c_context := (*C.GdkDragContext)(context.ToC())
+
+	c_time_ := (C.guint32)(time)
+
+	C.gdk_drag_drop(c_context, c_time_)
+
+	return
+}
 
 // Unsupported : gdk_drag_get_selection : return type : Blacklisted record : GdkAtom
 
@@ -92,11 +122,46 @@ func DragMotion(context *DragContext, destWindow *Window, protocol DragProtocol,
 	return retGo
 }
 
-// Unsupported : gdk_drag_status : no return generator
+// DragStatus is a wrapper around the C function gdk_drag_status.
+func DragStatus(context *DragContext, action DragAction, time uint32) {
+	c_context := (*C.GdkDragContext)(context.ToC())
 
-// Unsupported : gdk_drop_finish : no return generator
+	c_action := (C.GdkDragAction)(action)
 
-// Unsupported : gdk_drop_reply : no return generator
+	c_time_ := (C.guint32)(time)
+
+	C.gdk_drag_status(c_context, c_action, c_time_)
+
+	return
+}
+
+// DropFinish is a wrapper around the C function gdk_drop_finish.
+func DropFinish(context *DragContext, success bool, time uint32) {
+	c_context := (*C.GdkDragContext)(context.ToC())
+
+	c_success :=
+		boolToGboolean(success)
+
+	c_time_ := (C.guint32)(time)
+
+	C.gdk_drop_finish(c_context, c_success, c_time_)
+
+	return
+}
+
+// DropReply is a wrapper around the C function gdk_drop_reply.
+func DropReply(context *DragContext, accepted bool, time uint32) {
+	c_context := (*C.GdkDragContext)(context.ToC())
+
+	c_accepted :=
+		boolToGboolean(accepted)
+
+	c_time_ := (C.guint32)(time)
+
+	C.gdk_drop_reply(c_context, c_accepted, c_time_)
+
+	return
+}
 
 // ErrorTrapPop is a wrapper around the C function gdk_error_trap_pop.
 func ErrorTrapPop() int32 {
@@ -106,7 +171,12 @@ func ErrorTrapPop() int32 {
 	return retGo
 }
 
-// Unsupported : gdk_error_trap_push : no return generator
+// ErrorTrapPush is a wrapper around the C function gdk_error_trap_push.
+func ErrorTrapPush() {
+	C.gdk_error_trap_push()
+
+	return
+}
 
 // Unsupported : gdk_event_get : no return generator
 
@@ -122,7 +192,12 @@ func EventsPending() bool {
 	return retGo
 }
 
-// Unsupported : gdk_flush : no return generator
+// Flush is a wrapper around the C function gdk_flush.
+func Flush() {
+	C.gdk_flush()
+
+	return
+}
 
 // GetDefaultRootWindow is a wrapper around the C function gdk_get_default_root_window.
 func GetDefaultRootWindow() *Window {
@@ -184,7 +259,14 @@ func KeyboardGrab(window *Window, ownerEvents bool, time uint32) GrabStatus {
 	return retGo
 }
 
-// Unsupported : gdk_keyboard_ungrab : no return generator
+// KeyboardUngrab is a wrapper around the C function gdk_keyboard_ungrab.
+func KeyboardUngrab(time uint32) {
+	c_time_ := (C.guint32)(time)
+
+	C.gdk_keyboard_ungrab(c_time_)
+
+	return
+}
 
 // Unsupported : gdk_keyval_convert_case : unsupported parameter lower : no type generator for guint, guint*
 
@@ -354,9 +436,21 @@ func PointerIsGrabbed() bool {
 	return retGo
 }
 
-// Unsupported : gdk_pointer_ungrab : no return generator
+// PointerUngrab is a wrapper around the C function gdk_pointer_ungrab.
+func PointerUngrab(time uint32) {
+	c_time_ := (C.guint32)(time)
 
-// Unsupported : gdk_pre_parse_libgtk_only : no return generator
+	C.gdk_pointer_ungrab(c_time_)
+
+	return
+}
+
+// PreParseLibgtkOnly is a wrapper around the C function gdk_pre_parse_libgtk_only.
+func PreParseLibgtkOnly() {
+	C.gdk_pre_parse_libgtk_only()
+
+	return
+}
 
 // Unsupported : gdk_property_change : unsupported parameter property : Blacklisted record : GdkAtom
 
@@ -378,11 +472,34 @@ func PointerIsGrabbed() bool {
 
 // Unsupported : gdk_selection_send_notify : unsupported parameter selection : Blacklisted record : GdkAtom
 
-// Unsupported : gdk_set_double_click_time : no return generator
+// SetDoubleClickTime is a wrapper around the C function gdk_set_double_click_time.
+func SetDoubleClickTime(msec uint32) {
+	c_msec := (C.guint)(msec)
 
-// Unsupported : gdk_set_program_class : no return generator
+	C.gdk_set_double_click_time(c_msec)
 
-// Unsupported : gdk_set_show_events : no return generator
+	return
+}
+
+// SetProgramClass is a wrapper around the C function gdk_set_program_class.
+func SetProgramClass(programClass string) {
+	c_program_class := C.CString(programClass)
+	defer C.free(unsafe.Pointer(c_program_class))
+
+	C.gdk_set_program_class(c_program_class)
+
+	return
+}
+
+// SetShowEvents is a wrapper around the C function gdk_set_show_events.
+func SetShowEvents(showEvents bool) {
+	c_show_events :=
+		boolToGboolean(showEvents)
+
+	C.gdk_set_show_events(c_show_events)
+
+	return
+}
 
 // SettingGet is a wrapper around the C function gdk_setting_get.
 func SettingGet(name string, value *gobject.Value) bool {
@@ -397,13 +514,39 @@ func SettingGet(name string, value *gobject.Value) bool {
 	return retGo
 }
 
-// Unsupported : gdk_synthesize_window_state : no return generator
+// SynthesizeWindowState is a wrapper around the C function gdk_synthesize_window_state.
+func SynthesizeWindowState(window *Window, unsetFlags WindowState, setFlags WindowState) {
+	c_window := (*C.GdkWindow)(window.ToC())
 
-// Unsupported : gdk_threads_enter : no return generator
+	c_unset_flags := (C.GdkWindowState)(unsetFlags)
 
-// Unsupported : gdk_threads_init : no return generator
+	c_set_flags := (C.GdkWindowState)(setFlags)
 
-// Unsupported : gdk_threads_leave : no return generator
+	C.gdk_synthesize_window_state(c_window, c_unset_flags, c_set_flags)
+
+	return
+}
+
+// ThreadsEnter is a wrapper around the C function gdk_threads_enter.
+func ThreadsEnter() {
+	C.gdk_threads_enter()
+
+	return
+}
+
+// ThreadsInit is a wrapper around the C function gdk_threads_init.
+func ThreadsInit() {
+	C.gdk_threads_init()
+
+	return
+}
+
+// ThreadsLeave is a wrapper around the C function gdk_threads_leave.
+func ThreadsLeave() {
+	C.gdk_threads_leave()
+
+	return
+}
 
 // UnicodeToKeyval is a wrapper around the C function gdk_unicode_to_keyval.
 func UnicodeToKeyval(wc uint32) uint32 {

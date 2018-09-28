@@ -51,7 +51,12 @@ func (recv *Checksum) Copy() *Checksum {
 	return retGo
 }
 
-// Unsupported : g_checksum_free : no return generator
+// Free is a wrapper around the C function g_checksum_free.
+func (recv *Checksum) Free() {
+	C.g_checksum_free((*C.GChecksum)(recv.native))
+
+	return
+}
 
 // Unsupported : g_checksum_get_digest : unsupported parameter buffer : no type generator for guint8, guint8*
 
@@ -62,7 +67,5 @@ func (recv *Checksum) GetString() string {
 
 	return retGo
 }
-
-// Unsupported : g_checksum_reset : no return generator
 
 // Unsupported : g_checksum_update : unsupported parameter data : no param type

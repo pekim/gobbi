@@ -71,8 +71,6 @@ func (recv *Binding) GetTargetProperty() string {
 	return retGo
 }
 
-// Unsupported : g_binding_unbind : no return generator
-
 // ParamSpecVariant is a wrapper around the C record GParamSpecVariant.
 type ParamSpecVariant struct {
 	native *C.GParamSpecVariant

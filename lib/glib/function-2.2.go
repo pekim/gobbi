@@ -41,7 +41,15 @@ func GetApplicationName() string {
 
 // Unsupported : g_printf : unsupported parameter ... : varargs
 
-// Unsupported : g_set_application_name : no return generator
+// SetApplicationName is a wrapper around the C function g_set_application_name.
+func SetApplicationName(applicationName string) {
+	c_application_name := C.CString(applicationName)
+	defer C.free(unsafe.Pointer(c_application_name))
+
+	C.g_set_application_name(c_application_name)
+
+	return
+}
 
 // Unsupported : g_sprintf : unsupported parameter ... : varargs
 

@@ -47,6 +47,13 @@ func SignalAccumulatorTrueHandled(ihint *SignalInvocationHint, returnAccu *Value
 
 // Unsupported : g_type_default_interface_ref : unsupported parameter g_type : no type generator for GType, GType
 
-// Unsupported : g_type_default_interface_unref : no return generator
+// TypeDefaultInterfaceUnref is a wrapper around the C function g_type_default_interface_unref.
+func TypeDefaultInterfaceUnref(gIface uintptr) {
+	c_g_iface := (C.gpointer)(gIface)
+
+	C.g_type_default_interface_unref(c_g_iface)
+
+	return
+}
 
 // Unsupported : g_type_remove_interface_check : unsupported parameter check_func : no type generator for TypeInterfaceCheckFunc, GTypeInterfaceCheckFunc

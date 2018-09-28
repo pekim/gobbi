@@ -8,7 +8,14 @@ package gdk
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : gdk_test_render_sync : no return generator
+// TestRenderSync is a wrapper around the C function gdk_test_render_sync.
+func TestRenderSync(window *Window) {
+	c_window := (*C.GdkWindow)(window.ToC())
+
+	C.gdk_test_render_sync(c_window)
+
+	return
+}
 
 // TestSimulateButton is a wrapper around the C function gdk_test_simulate_button.
 func TestSimulateButton(window *Window, x int32, y int32, button uint32, modifiers ModifierType, buttonPressrelease EventType) bool {

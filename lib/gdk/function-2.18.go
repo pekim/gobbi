@@ -20,4 +20,13 @@ func OffscreenWindowGetEmbedder(window *Window) *Window {
 	return retGo
 }
 
-// Unsupported : gdk_offscreen_window_set_embedder : no return generator
+// OffscreenWindowSetEmbedder is a wrapper around the C function gdk_offscreen_window_set_embedder.
+func OffscreenWindowSetEmbedder(window *Window, embedder *Window) {
+	c_window := (*C.GdkWindow)(window.ToC())
+
+	c_embedder := (*C.GdkWindow)(embedder.ToC())
+
+	C.gdk_offscreen_window_set_embedder(c_window, c_embedder)
+
+	return
+}

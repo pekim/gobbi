@@ -51,9 +51,22 @@ func TestDBusNew(flags TestDBusFlags) *TestDBus {
 	return retGo
 }
 
-// Unsupported : g_test_dbus_add_service_dir : no return generator
+// AddServiceDir is a wrapper around the C function g_test_dbus_add_service_dir.
+func (recv *TestDBus) AddServiceDir(path string) {
+	c_path := C.CString(path)
+	defer C.free(unsafe.Pointer(c_path))
 
-// Unsupported : g_test_dbus_down : no return generator
+	C.g_test_dbus_add_service_dir((*C.GTestDBus)(recv.native), c_path)
+
+	return
+}
+
+// Down is a wrapper around the C function g_test_dbus_down.
+func (recv *TestDBus) Down() {
+	C.g_test_dbus_down((*C.GTestDBus)(recv.native))
+
+	return
+}
 
 // GetBusAddress is a wrapper around the C function g_test_dbus_get_bus_address.
 func (recv *TestDBus) GetBusAddress() string {
@@ -71,6 +84,16 @@ func (recv *TestDBus) GetFlags() TestDBusFlags {
 	return retGo
 }
 
-// Unsupported : g_test_dbus_stop : no return generator
+// Stop is a wrapper around the C function g_test_dbus_stop.
+func (recv *TestDBus) Stop() {
+	C.g_test_dbus_stop((*C.GTestDBus)(recv.native))
 
-// Unsupported : g_test_dbus_up : no return generator
+	return
+}
+
+// Up is a wrapper around the C function g_test_dbus_up.
+func (recv *TestDBus) Up() {
+	C.g_test_dbus_up((*C.GTestDBus)(recv.native))
+
+	return
+}

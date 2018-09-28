@@ -116,4 +116,9 @@ func (recv *Regex) Ref() *Regex {
 
 // Unsupported : g_regex_split_full : unsupported parameter string : no param type
 
-// Unsupported : g_regex_unref : no return generator
+// Unref is a wrapper around the C function g_regex_unref.
+func (recv *Regex) Unref() {
+	C.g_regex_unref((*C.GRegex)(recv.native))
+
+	return
+}

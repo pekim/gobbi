@@ -15,11 +15,25 @@ import "C"
 
 // Unsupported : atk_add_key_event_listener : unsupported parameter listener : no type generator for KeySnoopFunc, AtkKeySnoopFunc
 
-// Unsupported : atk_attribute_set_free : no return generator
+// AttributeSetFree is a wrapper around the C function atk_attribute_set_free.
+func AttributeSetFree(attribSet *AttributeSet) {
+	c_attrib_set := (*C.AtkAttributeSet)(attribSet.ToC())
+
+	C.atk_attribute_set_free(c_attrib_set)
+
+	return
+}
 
 // Unsupported : atk_focus_tracker_init : unsupported parameter init : no type generator for EventListenerInit, AtkEventListenerInit
 
-// Unsupported : atk_focus_tracker_notify : no return generator
+// FocusTrackerNotify is a wrapper around the C function atk_focus_tracker_notify.
+func FocusTrackerNotify(object *Object) {
+	c_object := (*C.AtkObject)(object.ToC())
+
+	C.atk_focus_tracker_notify(c_object)
+
+	return
+}
 
 // GetDefaultRegistry is a wrapper around the C function atk_get_default_registry.
 func GetDefaultRegistry() *Registry {
@@ -85,11 +99,32 @@ func RelationTypeRegister(name string) RelationType {
 	return retGo
 }
 
-// Unsupported : atk_remove_focus_tracker : no return generator
+// RemoveFocusTracker is a wrapper around the C function atk_remove_focus_tracker.
+func RemoveFocusTracker(trackerId uint32) {
+	c_tracker_id := (C.guint)(trackerId)
 
-// Unsupported : atk_remove_global_event_listener : no return generator
+	C.atk_remove_focus_tracker(c_tracker_id)
 
-// Unsupported : atk_remove_key_event_listener : no return generator
+	return
+}
+
+// RemoveGlobalEventListener is a wrapper around the C function atk_remove_global_event_listener.
+func RemoveGlobalEventListener(listenerId uint32) {
+	c_listener_id := (C.guint)(listenerId)
+
+	C.atk_remove_global_event_listener(c_listener_id)
+
+	return
+}
+
+// RemoveKeyEventListener is a wrapper around the C function atk_remove_key_event_listener.
+func RemoveKeyEventListener(listenerId uint32) {
+	c_listener_id := (C.guint)(listenerId)
+
+	C.atk_remove_key_event_listener(c_listener_id)
+
+	return
+}
 
 // RoleForName is a wrapper around the C function atk_role_for_name.
 func RoleForName(name string) Role {

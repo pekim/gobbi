@@ -3,9 +3,24 @@
 
 package gdk
 
+import cairo "github.com/pekim/gobbi/lib/cairo"
+
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <gdk/gdk.h>
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : gdk_cairo_set_source_window : no return generator
+// CairoSetSourceWindow is a wrapper around the C function gdk_cairo_set_source_window.
+func CairoSetSourceWindow(cr *cairo.Context, window *Window, x float64, y float64) {
+	c_cr := (*C.cairo_t)(cr.ToC())
+
+	c_window := (*C.GdkWindow)(window.ToC())
+
+	c_x := (C.gdouble)(x)
+
+	c_y := (C.gdouble)(y)
+
+	C.gdk_cairo_set_source_window(c_cr, c_window, c_x, c_y)
+
+	return
+}

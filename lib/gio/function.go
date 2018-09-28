@@ -232,7 +232,12 @@ func IoModulesLoadAllInDirectory(dirname string) *glib.List {
 	return retGo
 }
 
-// Unsupported : g_io_scheduler_cancel_all_jobs : no return generator
+// IoSchedulerCancelAllJobs is a wrapper around the C function g_io_scheduler_cancel_all_jobs.
+func IoSchedulerCancelAllJobs() {
+	C.g_io_scheduler_cancel_all_jobs()
+
+	return
+}
 
 // Unsupported : g_io_scheduler_push_job : unsupported parameter job_func : no type generator for IOSchedulerJobFunc, GIOSchedulerJobFunc
 
@@ -267,7 +272,14 @@ func UnixMountCompare(mount1 *UnixMountEntry, mount2 *UnixMountEntry) int32 {
 	return retGo
 }
 
-// Unsupported : g_unix_mount_free : no return generator
+// UnixMountFree is a wrapper around the C function g_unix_mount_free.
+func UnixMountFree(mountEntry *UnixMountEntry) {
+	c_mount_entry := (*C.GUnixMountEntry)(mountEntry.ToC())
+
+	C.g_unix_mount_free(c_mount_entry)
+
+	return
+}
 
 // UnixMountGetDevicePath is a wrapper around the C function g_unix_mount_get_device_path.
 func UnixMountGetDevicePath(mountEntry *UnixMountEntry) string {

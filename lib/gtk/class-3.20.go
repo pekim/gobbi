@@ -70,9 +70,25 @@ func (recv *FileChooserNative) GetCancelLabel() string {
 	return retGo
 }
 
-// Unsupported : gtk_file_chooser_native_set_accept_label : no return generator
+// SetAcceptLabel is a wrapper around the C function gtk_file_chooser_native_set_accept_label.
+func (recv *FileChooserNative) SetAcceptLabel(acceptLabel string) {
+	c_accept_label := C.CString(acceptLabel)
+	defer C.free(unsafe.Pointer(c_accept_label))
 
-// Unsupported : gtk_file_chooser_native_set_cancel_label : no return generator
+	C.gtk_file_chooser_native_set_accept_label((*C.GtkFileChooserNative)(recv.native), c_accept_label)
+
+	return
+}
+
+// SetCancelLabel is a wrapper around the C function gtk_file_chooser_native_set_cancel_label.
+func (recv *FileChooserNative) SetCancelLabel(cancelLabel string) {
+	c_cancel_label := C.CString(cancelLabel)
+	defer C.free(unsafe.Pointer(c_cancel_label))
+
+	C.gtk_file_chooser_native_set_cancel_label((*C.GtkFileChooserNative)(recv.native), c_cancel_label)
+
+	return
+}
 
 // NativeDialog is a wrapper around the C record GtkNativeDialog.
 type NativeDialog struct {
@@ -96,7 +112,12 @@ func (recv *NativeDialog) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : gtk_native_dialog_destroy : no return generator
+// Destroy is a wrapper around the C function gtk_native_dialog_destroy.
+func (recv *NativeDialog) Destroy() {
+	C.gtk_native_dialog_destroy((*C.GtkNativeDialog)(recv.native))
+
+	return
+}
 
 // GetModal is a wrapper around the C function gtk_native_dialog_get_modal.
 func (recv *NativeDialog) GetModal() bool {
@@ -130,7 +151,12 @@ func (recv *NativeDialog) GetVisible() bool {
 	return retGo
 }
 
-// Unsupported : gtk_native_dialog_hide : no return generator
+// Hide is a wrapper around the C function gtk_native_dialog_hide.
+func (recv *NativeDialog) Hide() {
+	C.gtk_native_dialog_hide((*C.GtkNativeDialog)(recv.native))
+
+	return
+}
 
 // Run is a wrapper around the C function gtk_native_dialog_run.
 func (recv *NativeDialog) Run() int32 {
@@ -140,13 +166,41 @@ func (recv *NativeDialog) Run() int32 {
 	return retGo
 }
 
-// Unsupported : gtk_native_dialog_set_modal : no return generator
+// SetModal is a wrapper around the C function gtk_native_dialog_set_modal.
+func (recv *NativeDialog) SetModal(modal bool) {
+	c_modal :=
+		boolToGboolean(modal)
 
-// Unsupported : gtk_native_dialog_set_title : no return generator
+	C.gtk_native_dialog_set_modal((*C.GtkNativeDialog)(recv.native), c_modal)
 
-// Unsupported : gtk_native_dialog_set_transient_for : no return generator
+	return
+}
 
-// Unsupported : gtk_native_dialog_show : no return generator
+// SetTitle is a wrapper around the C function gtk_native_dialog_set_title.
+func (recv *NativeDialog) SetTitle(title string) {
+	c_title := C.CString(title)
+	defer C.free(unsafe.Pointer(c_title))
+
+	C.gtk_native_dialog_set_title((*C.GtkNativeDialog)(recv.native), c_title)
+
+	return
+}
+
+// SetTransientFor is a wrapper around the C function gtk_native_dialog_set_transient_for.
+func (recv *NativeDialog) SetTransientFor(parent *Window) {
+	c_parent := (*C.GtkWindow)(parent.ToC())
+
+	C.gtk_native_dialog_set_transient_for((*C.GtkNativeDialog)(recv.native), c_parent)
+
+	return
+}
+
+// Show is a wrapper around the C function gtk_native_dialog_show.
+func (recv *NativeDialog) Show() {
+	C.gtk_native_dialog_show((*C.GtkNativeDialog)(recv.native))
+
+	return
+}
 
 // PadController is a wrapper around the C record GtkPadController.
 type PadController struct {
@@ -171,8 +225,6 @@ func (recv *PadController) ToC() unsafe.Pointer {
 
 // Unsupported : gtk_pad_controller_new : unsupported parameter group : no type generator for Gio.ActionGroup, GActionGroup*
 
-// Unsupported : gtk_pad_controller_set_action : no return generator
-
 // Unsupported : gtk_pad_controller_set_action_entries : unsupported parameter entries : no param type
 
 // ShortcutLabel is a wrapper around the C record GtkShortcutLabel.
@@ -195,10 +247,6 @@ func (recv *ShortcutLabel) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
-
-// Unsupported : gtk_shortcut_label_set_accelerator : no return generator
-
-// Unsupported : gtk_shortcut_label_set_disabled_text : no return generator
 
 // ShortcutsGroup is a wrapper around the C record GtkShortcutsGroup.
 type ShortcutsGroup struct {

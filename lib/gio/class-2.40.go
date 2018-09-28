@@ -76,15 +76,42 @@ func NotificationNew(title string) *Notification {
 	return retGo
 }
 
-// Unsupported : g_notification_add_button : no return generator
+// AddButton is a wrapper around the C function g_notification_add_button.
+func (recv *Notification) AddButton(label string, detailedAction string) {
+	c_label := C.CString(label)
+	defer C.free(unsafe.Pointer(c_label))
+
+	c_detailed_action := C.CString(detailedAction)
+	defer C.free(unsafe.Pointer(c_detailed_action))
+
+	C.g_notification_add_button((*C.GNotification)(recv.native), c_label, c_detailed_action)
+
+	return
+}
 
 // Unsupported : g_notification_add_button_with_target : unsupported parameter ... : varargs
 
 // Unsupported : g_notification_add_button_with_target_value : unsupported parameter target : Blacklisted record : GVariant
 
-// Unsupported : g_notification_set_body : no return generator
+// SetBody is a wrapper around the C function g_notification_set_body.
+func (recv *Notification) SetBody(body string) {
+	c_body := C.CString(body)
+	defer C.free(unsafe.Pointer(c_body))
 
-// Unsupported : g_notification_set_default_action : no return generator
+	C.g_notification_set_body((*C.GNotification)(recv.native), c_body)
+
+	return
+}
+
+// SetDefaultAction is a wrapper around the C function g_notification_set_default_action.
+func (recv *Notification) SetDefaultAction(detailedAction string) {
+	c_detailed_action := C.CString(detailedAction)
+	defer C.free(unsafe.Pointer(c_detailed_action))
+
+	C.g_notification_set_default_action((*C.GNotification)(recv.native), c_detailed_action)
+
+	return
+}
 
 // Unsupported : g_notification_set_default_action_and_target : unsupported parameter ... : varargs
 
@@ -92,11 +119,34 @@ func NotificationNew(title string) *Notification {
 
 // Unsupported : g_notification_set_icon : unsupported parameter icon : no type generator for Icon, GIcon*
 
-// Unsupported : g_notification_set_priority : no return generator
+// SetPriority is a wrapper around the C function g_notification_set_priority.
+func (recv *Notification) SetPriority(priority NotificationPriority) {
+	c_priority := (C.GNotificationPriority)(priority)
 
-// Unsupported : g_notification_set_title : no return generator
+	C.g_notification_set_priority((*C.GNotification)(recv.native), c_priority)
 
-// Unsupported : g_notification_set_urgent : no return generator
+	return
+}
+
+// SetTitle is a wrapper around the C function g_notification_set_title.
+func (recv *Notification) SetTitle(title string) {
+	c_title := C.CString(title)
+	defer C.free(unsafe.Pointer(c_title))
+
+	C.g_notification_set_title((*C.GNotification)(recv.native), c_title)
+
+	return
+}
+
+// SetUrgent is a wrapper around the C function g_notification_set_urgent.
+func (recv *Notification) SetUrgent(urgent bool) {
+	c_urgent :=
+		boolToGboolean(urgent)
+
+	C.g_notification_set_urgent((*C.GNotification)(recv.native), c_urgent)
+
+	return
+}
 
 // Subprocess is a wrapper around the C record GSubprocess.
 type Subprocess struct {
@@ -163,7 +213,12 @@ func (recv *Subprocess) CommunicateUtf8(stdinBuf string, cancellable *Cancellabl
 
 // Unsupported : g_subprocess_communicate_utf8_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
 
-// Unsupported : g_subprocess_force_exit : no return generator
+// ForceExit is a wrapper around the C function g_subprocess_force_exit.
+func (recv *Subprocess) ForceExit() {
+	C.g_subprocess_force_exit((*C.GSubprocess)(recv.native))
+
+	return
+}
 
 // GetExitStatus is a wrapper around the C function g_subprocess_get_exit_status.
 func (recv *Subprocess) GetExitStatus() int32 {
@@ -245,7 +300,14 @@ func (recv *Subprocess) GetTermSig() int32 {
 	return retGo
 }
 
-// Unsupported : g_subprocess_send_signal : no return generator
+// SendSignal is a wrapper around the C function g_subprocess_send_signal.
+func (recv *Subprocess) SendSignal(signalNum int32) {
+	c_signal_num := (C.gint)(signalNum)
+
+	C.g_subprocess_send_signal((*C.GSubprocess)(recv.native), c_signal_num)
+
+	return
+}
 
 // Wait is a wrapper around the C function g_subprocess_wait.
 func (recv *Subprocess) Wait(cancellable *Cancellable) (bool, error) {
@@ -333,30 +395,121 @@ func (recv *SubprocessLauncher) Getenv(variable string) string {
 
 // Unsupported : g_subprocess_launcher_set_child_setup : unsupported parameter child_setup : no type generator for GLib.SpawnChildSetupFunc, GSpawnChildSetupFunc
 
-// Unsupported : g_subprocess_launcher_set_cwd : no return generator
+// SetCwd is a wrapper around the C function g_subprocess_launcher_set_cwd.
+func (recv *SubprocessLauncher) SetCwd(cwd string) {
+	c_cwd := C.CString(cwd)
+	defer C.free(unsafe.Pointer(c_cwd))
+
+	C.g_subprocess_launcher_set_cwd((*C.GSubprocessLauncher)(recv.native), c_cwd)
+
+	return
+}
 
 // Unsupported : g_subprocess_launcher_set_environ : unsupported parameter env : no param type
 
-// Unsupported : g_subprocess_launcher_set_flags : no return generator
+// SetFlags is a wrapper around the C function g_subprocess_launcher_set_flags.
+func (recv *SubprocessLauncher) SetFlags(flags SubprocessFlags) {
+	c_flags := (C.GSubprocessFlags)(flags)
 
-// Unsupported : g_subprocess_launcher_set_stderr_file_path : no return generator
+	C.g_subprocess_launcher_set_flags((*C.GSubprocessLauncher)(recv.native), c_flags)
 
-// Unsupported : g_subprocess_launcher_set_stdin_file_path : no return generator
+	return
+}
 
-// Unsupported : g_subprocess_launcher_set_stdout_file_path : no return generator
+// SetStderrFilePath is a wrapper around the C function g_subprocess_launcher_set_stderr_file_path.
+func (recv *SubprocessLauncher) SetStderrFilePath(path string) {
+	c_path := C.CString(path)
+	defer C.free(unsafe.Pointer(c_path))
 
-// Unsupported : g_subprocess_launcher_setenv : no return generator
+	C.g_subprocess_launcher_set_stderr_file_path((*C.GSubprocessLauncher)(recv.native), c_path)
+
+	return
+}
+
+// SetStdinFilePath is a wrapper around the C function g_subprocess_launcher_set_stdin_file_path.
+func (recv *SubprocessLauncher) SetStdinFilePath(path string) {
+	c_path := C.CString(path)
+	defer C.free(unsafe.Pointer(c_path))
+
+	C.g_subprocess_launcher_set_stdin_file_path((*C.GSubprocessLauncher)(recv.native), c_path)
+
+	return
+}
+
+// SetStdoutFilePath is a wrapper around the C function g_subprocess_launcher_set_stdout_file_path.
+func (recv *SubprocessLauncher) SetStdoutFilePath(path string) {
+	c_path := C.CString(path)
+	defer C.free(unsafe.Pointer(c_path))
+
+	C.g_subprocess_launcher_set_stdout_file_path((*C.GSubprocessLauncher)(recv.native), c_path)
+
+	return
+}
+
+// Setenv is a wrapper around the C function g_subprocess_launcher_setenv.
+func (recv *SubprocessLauncher) Setenv(variable string, value string, overwrite bool) {
+	c_variable := C.CString(variable)
+	defer C.free(unsafe.Pointer(c_variable))
+
+	c_value := C.CString(value)
+	defer C.free(unsafe.Pointer(c_value))
+
+	c_overwrite :=
+		boolToGboolean(overwrite)
+
+	C.g_subprocess_launcher_setenv((*C.GSubprocessLauncher)(recv.native), c_variable, c_value, c_overwrite)
+
+	return
+}
 
 // Unsupported : g_subprocess_launcher_spawn : unsupported parameter error : record with indirection level of 2
 
 // Unsupported : g_subprocess_launcher_spawnv : unsupported parameter argv : no param type
 
-// Unsupported : g_subprocess_launcher_take_fd : no return generator
+// TakeFd is a wrapper around the C function g_subprocess_launcher_take_fd.
+func (recv *SubprocessLauncher) TakeFd(sourceFd int32, targetFd int32) {
+	c_source_fd := (C.gint)(sourceFd)
 
-// Unsupported : g_subprocess_launcher_take_stderr_fd : no return generator
+	c_target_fd := (C.gint)(targetFd)
 
-// Unsupported : g_subprocess_launcher_take_stdin_fd : no return generator
+	C.g_subprocess_launcher_take_fd((*C.GSubprocessLauncher)(recv.native), c_source_fd, c_target_fd)
 
-// Unsupported : g_subprocess_launcher_take_stdout_fd : no return generator
+	return
+}
 
-// Unsupported : g_subprocess_launcher_unsetenv : no return generator
+// TakeStderrFd is a wrapper around the C function g_subprocess_launcher_take_stderr_fd.
+func (recv *SubprocessLauncher) TakeStderrFd(fd int32) {
+	c_fd := (C.gint)(fd)
+
+	C.g_subprocess_launcher_take_stderr_fd((*C.GSubprocessLauncher)(recv.native), c_fd)
+
+	return
+}
+
+// TakeStdinFd is a wrapper around the C function g_subprocess_launcher_take_stdin_fd.
+func (recv *SubprocessLauncher) TakeStdinFd(fd int32) {
+	c_fd := (C.gint)(fd)
+
+	C.g_subprocess_launcher_take_stdin_fd((*C.GSubprocessLauncher)(recv.native), c_fd)
+
+	return
+}
+
+// TakeStdoutFd is a wrapper around the C function g_subprocess_launcher_take_stdout_fd.
+func (recv *SubprocessLauncher) TakeStdoutFd(fd int32) {
+	c_fd := (C.gint)(fd)
+
+	C.g_subprocess_launcher_take_stdout_fd((*C.GSubprocessLauncher)(recv.native), c_fd)
+
+	return
+}
+
+// Unsetenv is a wrapper around the C function g_subprocess_launcher_unsetenv.
+func (recv *SubprocessLauncher) Unsetenv(variable string) {
+	c_variable := C.CString(variable)
+	defer C.free(unsafe.Pointer(c_variable))
+
+	C.g_subprocess_launcher_unsetenv((*C.GSubprocessLauncher)(recv.native), c_variable)
+
+	return
+}

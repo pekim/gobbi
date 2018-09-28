@@ -85,7 +85,12 @@ func (recv *DBusAnnotationInfo) Ref() *DBusAnnotationInfo {
 	return retGo
 }
 
-// Unsupported : g_dbus_annotation_info_unref : no return generator
+// Unref is a wrapper around the C function g_dbus_annotation_info_unref.
+func (recv *DBusAnnotationInfo) Unref() {
+	C.g_dbus_annotation_info_unref((*C.GDBusAnnotationInfo)(recv.native))
+
+	return
+}
 
 // DBusArgInfo is a wrapper around the C record GDBusArgInfo.
 type DBusArgInfo struct {
@@ -128,7 +133,12 @@ func (recv *DBusArgInfo) Ref() *DBusArgInfo {
 	return retGo
 }
 
-// Unsupported : g_dbus_arg_info_unref : no return generator
+// Unref is a wrapper around the C function g_dbus_arg_info_unref.
+func (recv *DBusArgInfo) Unref() {
+	C.g_dbus_arg_info_unref((*C.GDBusArgInfo)(recv.native))
+
+	return
+}
 
 // DBusErrorEntry is a wrapper around the C record GDBusErrorEntry.
 type DBusErrorEntry struct {
@@ -193,11 +203,16 @@ func (recv *DBusInterfaceInfo) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : g_dbus_interface_info_cache_build : no return generator
+// GenerateXml is a wrapper around the C function g_dbus_interface_info_generate_xml.
+func (recv *DBusInterfaceInfo) GenerateXml(indent uint32, stringBuilder *glib.String) {
+	c_indent := (C.guint)(indent)
 
-// Unsupported : g_dbus_interface_info_cache_release : no return generator
+	c_string_builder := (*C.GString)(stringBuilder.ToC())
 
-// Unsupported : g_dbus_interface_info_generate_xml : no return generator
+	C.g_dbus_interface_info_generate_xml((*C.GDBusInterfaceInfo)(recv.native), c_indent, c_string_builder)
+
+	return
+}
 
 // LookupMethod is a wrapper around the C function g_dbus_interface_info_lookup_method.
 func (recv *DBusInterfaceInfo) LookupMethod(name string) *DBusMethodInfo {
@@ -240,7 +255,12 @@ func (recv *DBusInterfaceInfo) Ref() *DBusInterfaceInfo {
 	return retGo
 }
 
-// Unsupported : g_dbus_interface_info_unref : no return generator
+// Unref is a wrapper around the C function g_dbus_interface_info_unref.
+func (recv *DBusInterfaceInfo) Unref() {
+	C.g_dbus_interface_info_unref((*C.GDBusInterfaceInfo)(recv.native))
+
+	return
+}
 
 // DBusInterfaceVTable is a wrapper around the C record GDBusInterfaceVTable.
 type DBusInterfaceVTable struct {
@@ -306,7 +326,12 @@ func (recv *DBusMethodInfo) Ref() *DBusMethodInfo {
 	return retGo
 }
 
-// Unsupported : g_dbus_method_info_unref : no return generator
+// Unref is a wrapper around the C function g_dbus_method_info_unref.
+func (recv *DBusMethodInfo) Unref() {
+	C.g_dbus_method_info_unref((*C.GDBusMethodInfo)(recv.native))
+
+	return
+}
 
 // DBusNodeInfo is a wrapper around the C record GDBusNodeInfo.
 type DBusNodeInfo struct {
@@ -357,7 +382,16 @@ func DBusNodeInfoNewForXml(xmlData string) (*DBusNodeInfo, error) {
 	return retGo, goThrowableError
 }
 
-// Unsupported : g_dbus_node_info_generate_xml : no return generator
+// GenerateXml is a wrapper around the C function g_dbus_node_info_generate_xml.
+func (recv *DBusNodeInfo) GenerateXml(indent uint32, stringBuilder *glib.String) {
+	c_indent := (C.guint)(indent)
+
+	c_string_builder := (*C.GString)(stringBuilder.ToC())
+
+	C.g_dbus_node_info_generate_xml((*C.GDBusNodeInfo)(recv.native), c_indent, c_string_builder)
+
+	return
+}
 
 // LookupInterface is a wrapper around the C function g_dbus_node_info_lookup_interface.
 func (recv *DBusNodeInfo) LookupInterface(name string) *DBusInterfaceInfo {
@@ -378,7 +412,12 @@ func (recv *DBusNodeInfo) Ref() *DBusNodeInfo {
 	return retGo
 }
 
-// Unsupported : g_dbus_node_info_unref : no return generator
+// Unref is a wrapper around the C function g_dbus_node_info_unref.
+func (recv *DBusNodeInfo) Unref() {
+	C.g_dbus_node_info_unref((*C.GDBusNodeInfo)(recv.native))
+
+	return
+}
 
 // DBusPropertyInfo is a wrapper around the C record GDBusPropertyInfo.
 type DBusPropertyInfo struct {
@@ -425,7 +464,12 @@ func (recv *DBusPropertyInfo) Ref() *DBusPropertyInfo {
 	return retGo
 }
 
-// Unsupported : g_dbus_property_info_unref : no return generator
+// Unref is a wrapper around the C function g_dbus_property_info_unref.
+func (recv *DBusPropertyInfo) Unref() {
+	C.g_dbus_property_info_unref((*C.GDBusPropertyInfo)(recv.native))
+
+	return
+}
 
 // DBusProxyClass is a wrapper around the C record GDBusProxyClass.
 type DBusProxyClass struct {
@@ -490,7 +534,12 @@ func (recv *DBusSignalInfo) Ref() *DBusSignalInfo {
 	return retGo
 }
 
-// Unsupported : g_dbus_signal_info_unref : no return generator
+// Unref is a wrapper around the C function g_dbus_signal_info_unref.
+func (recv *DBusSignalInfo) Unref() {
+	C.g_dbus_signal_info_unref((*C.GDBusSignalInfo)(recv.native))
+
+	return
+}
 
 // DBusSubtreeVTable is a wrapper around the C record GDBusSubtreeVTable.
 type DBusSubtreeVTable struct {

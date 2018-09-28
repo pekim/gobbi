@@ -161,15 +161,106 @@ func AsciiXdigitValue(c rune) int32 {
 
 // Unsupported : g_assert_warning : unsupported parameter line : no type generator for gint, const int
 
-// Unsupported : g_assertion_message : no return generator
+// AssertionMessage is a wrapper around the C function g_assertion_message.
+func AssertionMessage(domain string, file string, line int32, func_ string, message string) {
+	c_domain := C.CString(domain)
+	defer C.free(unsafe.Pointer(c_domain))
+
+	c_file := C.CString(file)
+	defer C.free(unsafe.Pointer(c_file))
+
+	c_line := (C.int)(line)
+
+	c_func := C.CString(func_)
+	defer C.free(unsafe.Pointer(c_func))
+
+	c_message := C.CString(message)
+	defer C.free(unsafe.Pointer(c_message))
+
+	C.g_assertion_message(c_domain, c_file, c_line, c_func, c_message)
+
+	return
+}
 
 // Unsupported : g_assertion_message_cmpnum : unsupported parameter arg1 : no type generator for long double, long double
 
-// Unsupported : g_assertion_message_cmpstr : no return generator
+// AssertionMessageCmpstr is a wrapper around the C function g_assertion_message_cmpstr.
+func AssertionMessageCmpstr(domain string, file string, line int32, func_ string, expr string, arg1 string, cmp string, arg2 string) {
+	c_domain := C.CString(domain)
+	defer C.free(unsafe.Pointer(c_domain))
 
-// Unsupported : g_assertion_message_error : no return generator
+	c_file := C.CString(file)
+	defer C.free(unsafe.Pointer(c_file))
 
-// Unsupported : g_assertion_message_expr : no return generator
+	c_line := (C.int)(line)
+
+	c_func := C.CString(func_)
+	defer C.free(unsafe.Pointer(c_func))
+
+	c_expr := C.CString(expr)
+	defer C.free(unsafe.Pointer(c_expr))
+
+	c_arg1 := C.CString(arg1)
+	defer C.free(unsafe.Pointer(c_arg1))
+
+	c_cmp := C.CString(cmp)
+	defer C.free(unsafe.Pointer(c_cmp))
+
+	c_arg2 := C.CString(arg2)
+	defer C.free(unsafe.Pointer(c_arg2))
+
+	C.g_assertion_message_cmpstr(c_domain, c_file, c_line, c_func, c_expr, c_arg1, c_cmp, c_arg2)
+
+	return
+}
+
+// AssertionMessageError is a wrapper around the C function g_assertion_message_error.
+func AssertionMessageError(domain string, file string, line int32, func_ string, expr string, error *Error, errorDomain Quark, errorCode int32) {
+	c_domain := C.CString(domain)
+	defer C.free(unsafe.Pointer(c_domain))
+
+	c_file := C.CString(file)
+	defer C.free(unsafe.Pointer(c_file))
+
+	c_line := (C.int)(line)
+
+	c_func := C.CString(func_)
+	defer C.free(unsafe.Pointer(c_func))
+
+	c_expr := C.CString(expr)
+	defer C.free(unsafe.Pointer(c_expr))
+
+	c_error := (*C.GError)(error.ToC())
+
+	c_error_domain := (C.GQuark)(errorDomain)
+
+	c_error_code := (C.int)(errorCode)
+
+	C.g_assertion_message_error(c_domain, c_file, c_line, c_func, c_expr, c_error, c_error_domain, c_error_code)
+
+	return
+}
+
+// AssertionMessageExpr is a wrapper around the C function g_assertion_message_expr.
+func AssertionMessageExpr(domain string, file string, line int32, func_ string, expr string) {
+	c_domain := C.CString(domain)
+	defer C.free(unsafe.Pointer(c_domain))
+
+	c_file := C.CString(file)
+	defer C.free(unsafe.Pointer(c_file))
+
+	c_line := (C.int)(line)
+
+	c_func := C.CString(func_)
+	defer C.free(unsafe.Pointer(c_func))
+
+	c_expr := C.CString(expr)
+	defer C.free(unsafe.Pointer(c_expr))
+
+	C.g_assertion_message_expr(c_domain, c_file, c_line, c_func, c_expr)
+
+	return
+}
 
 // Unsupported : g_atexit : unsupported parameter func : no type generator for VoidFunc, GVoidFunc
 
@@ -234,7 +325,19 @@ func BookmarkFileErrorQuark() Quark {
 
 // Unsupported : g_byte_array_new : no return type
 
-// Unsupported : g_clear_error : no return generator
+// ClearError is a wrapper around the C function g_clear_error.
+func ClearError() error {
+	var cThrowableError *C.GError
+
+	C.g_clear_error(&cThrowableError)
+
+	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return goThrowableError
+}
 
 // Unsupported : g_convert : unsupported parameter str : no param type
 
@@ -264,7 +367,14 @@ func ConvertErrorQuark() Quark {
 
 // Unsupported : g_datalist_init : unsupported parameter datalist : record with indirection level of 2
 
-// Unsupported : g_dataset_destroy : no return generator
+// DatasetDestroy is a wrapper around the C function g_dataset_destroy.
+func DatasetDestroy(datasetLocation uintptr) {
+	c_dataset_location := (C.gconstpointer)(datasetLocation)
+
+	C.g_dataset_destroy(c_dataset_location)
+
+	return
+}
 
 // Unsupported : g_dataset_foreach : unsupported parameter func : no type generator for DataForeachFunc, GDataForeachFunc
 
@@ -558,7 +668,14 @@ func FindProgramInPath(program string) string {
 	return retGo
 }
 
-// Unsupported : g_free : no return generator
+// Free is a wrapper around the C function g_free.
+func Free(mem uintptr) {
+	c_mem := (C.gpointer)(mem)
+
+	C.g_free(c_mem)
+
+	return
+}
 
 // GetCharset is a wrapper around the C function g_get_charset.
 func GetCharset() (bool, string) {
@@ -590,7 +707,14 @@ func GetCurrentDir() string {
 	return retGo
 }
 
-// Unsupported : g_get_current_time : no return generator
+// GetCurrentTime is a wrapper around the C function g_get_current_time.
+func GetCurrentTime(result *TimeVal) {
+	c_result := (*C.GTimeVal)(result.ToC())
+
+	C.g_get_current_time(c_result)
+
+	return
+}
 
 // GetHomeDir is a wrapper around the C function g_get_home_dir.
 func GetHomeDir() string {
@@ -643,7 +767,14 @@ func Getenv(variable string) string {
 	return retGo
 }
 
-// Unsupported : g_hash_table_destroy : no return generator
+// HashTableDestroy is a wrapper around the C function g_hash_table_destroy.
+func HashTableDestroy(hashTable *HashTable) {
+	c_hash_table := (*C.GHashTable)(hashTable.ToC())
+
+	C.g_hash_table_destroy(c_hash_table)
+
+	return
+}
 
 // HashTableInsert is a wrapper around the C function g_hash_table_insert.
 func HashTableInsert(hashTable *HashTable, key uintptr, value uintptr) bool {
@@ -733,15 +864,62 @@ func HookDestroy(hookList *HookList, hookId uint64) bool {
 	return retGo
 }
 
-// Unsupported : g_hook_destroy_link : no return generator
+// HookDestroyLink is a wrapper around the C function g_hook_destroy_link.
+func HookDestroyLink(hookList *HookList, hook *Hook) {
+	c_hook_list := (*C.GHookList)(hookList.ToC())
 
-// Unsupported : g_hook_free : no return generator
+	c_hook := (*C.GHook)(hook.ToC())
 
-// Unsupported : g_hook_insert_before : no return generator
+	C.g_hook_destroy_link(c_hook_list, c_hook)
 
-// Unsupported : g_hook_prepend : no return generator
+	return
+}
 
-// Unsupported : g_hook_unref : no return generator
+// HookFree is a wrapper around the C function g_hook_free.
+func HookFree(hookList *HookList, hook *Hook) {
+	c_hook_list := (*C.GHookList)(hookList.ToC())
+
+	c_hook := (*C.GHook)(hook.ToC())
+
+	C.g_hook_free(c_hook_list, c_hook)
+
+	return
+}
+
+// HookInsertBefore is a wrapper around the C function g_hook_insert_before.
+func HookInsertBefore(hookList *HookList, sibling *Hook, hook *Hook) {
+	c_hook_list := (*C.GHookList)(hookList.ToC())
+
+	c_sibling := (*C.GHook)(sibling.ToC())
+
+	c_hook := (*C.GHook)(hook.ToC())
+
+	C.g_hook_insert_before(c_hook_list, c_sibling, c_hook)
+
+	return
+}
+
+// HookPrepend is a wrapper around the C function g_hook_prepend.
+func HookPrepend(hookList *HookList, hook *Hook) {
+	c_hook_list := (*C.GHookList)(hookList.ToC())
+
+	c_hook := (*C.GHook)(hook.ToC())
+
+	C.g_hook_prepend(c_hook_list, c_hook)
+
+	return
+}
+
+// HookUnref is a wrapper around the C function g_hook_unref.
+func HookUnref(hookList *HookList, hook *Hook) {
+	c_hook_list := (*C.GHookList)(hookList.ToC())
+
+	c_hook := (*C.GHook)(hook.ToC())
+
+	C.g_hook_unref(c_hook_list, c_hook)
+
+	return
+}
 
 // Unsupported : g_iconv : unsupported parameter converter : Blacklisted record : GIConv
 
@@ -829,9 +1007,34 @@ func KeyFileErrorQuark() Quark {
 
 // Unsupported : g_log : unsupported parameter ... : varargs
 
-// Unsupported : g_log_default_handler : no return generator
+// LogDefaultHandler is a wrapper around the C function g_log_default_handler.
+func LogDefaultHandler(logDomain string, logLevel LogLevelFlags, message string, unusedData uintptr) {
+	c_log_domain := C.CString(logDomain)
+	defer C.free(unsafe.Pointer(c_log_domain))
 
-// Unsupported : g_log_remove_handler : no return generator
+	c_log_level := (C.GLogLevelFlags)(logLevel)
+
+	c_message := C.CString(message)
+	defer C.free(unsafe.Pointer(c_message))
+
+	c_unused_data := (C.gpointer)(unusedData)
+
+	C.g_log_default_handler(c_log_domain, c_log_level, c_message, c_unused_data)
+
+	return
+}
+
+// LogRemoveHandler is a wrapper around the C function g_log_remove_handler.
+func LogRemoveHandler(logDomain string, handlerId uint32) {
+	c_log_domain := C.CString(logDomain)
+	defer C.free(unsafe.Pointer(c_log_domain))
+
+	c_handler_id := (C.guint)(handlerId)
+
+	C.g_log_remove_handler(c_log_domain, c_handler_id)
+
+	return
+}
 
 // LogSetAlwaysFatal is a wrapper around the C function g_log_set_always_fatal.
 func LogSetAlwaysFatal(fatalMask LogLevelFlags) LogLevelFlags {
@@ -928,9 +1131,21 @@ func MemIsSystemMalloc() bool {
 	return retGo
 }
 
-// Unsupported : g_mem_profile : no return generator
+// MemProfile is a wrapper around the C function g_mem_profile.
+func MemProfile() {
+	C.g_mem_profile()
 
-// Unsupported : g_mem_set_vtable : no return generator
+	return
+}
+
+// MemSetVtable is a wrapper around the C function g_mem_set_vtable.
+func MemSetVtable(vtable *MemVTable) {
+	c_vtable := (*C.GMemVTable)(vtable.ToC())
+
+	C.g_mem_set_vtable(c_vtable)
+
+	return
+}
 
 // Memdup is a wrapper around the C function g_memdup.
 func Memdup(mem uintptr, byteSize uint32) uintptr {
@@ -959,9 +1174,25 @@ func Mkstemp(tmpl string) int32 {
 
 // Blacklisted : g_number_parser_error_quark
 
-// Unsupported : g_on_error_query : no return generator
+// OnErrorQuery is a wrapper around the C function g_on_error_query.
+func OnErrorQuery(prgName string) {
+	c_prg_name := C.CString(prgName)
+	defer C.free(unsafe.Pointer(c_prg_name))
 
-// Unsupported : g_on_error_stack_trace : no return generator
+	C.g_on_error_query(c_prg_name)
+
+	return
+}
+
+// OnErrorStackTrace is a wrapper around the C function g_on_error_stack_trace.
+func OnErrorStackTrace(prgName string) {
+	c_prg_name := C.CString(prgName)
+	defer C.free(unsafe.Pointer(c_prg_name))
+
+	C.g_on_error_stack_trace(c_prg_name)
+
+	return
+}
 
 // OptionErrorQuark is a wrapper around the C function g_option_error_quark.
 func OptionErrorQuark() Quark {
@@ -1157,7 +1388,14 @@ func RandomIntRange(begin int32, end int32) int32 {
 	return retGo
 }
 
-// Unsupported : g_random_set_seed : no return generator
+// RandomSetSeed is a wrapper around the C function g_random_set_seed.
+func RandomSetSeed(seed uint32) {
+	c_seed := (C.guint32)(seed)
+
+	C.g_random_set_seed(c_seed)
+
+	return
+}
 
 // Realloc is a wrapper around the C function g_realloc.
 func Realloc(mem uintptr, nBytes uint64) uintptr {
@@ -1179,11 +1417,33 @@ func RegexErrorQuark() Quark {
 	return retGo
 }
 
-// Unsupported : g_return_if_fail_warning : no return generator
+// ReturnIfFailWarning is a wrapper around the C function g_return_if_fail_warning.
+func ReturnIfFailWarning(logDomain string, prettyFunction string, expression string) {
+	c_log_domain := C.CString(logDomain)
+	defer C.free(unsafe.Pointer(c_log_domain))
+
+	c_pretty_function := C.CString(prettyFunction)
+	defer C.free(unsafe.Pointer(c_pretty_function))
+
+	c_expression := C.CString(expression)
+	defer C.free(unsafe.Pointer(c_expression))
+
+	C.g_return_if_fail_warning(c_log_domain, c_pretty_function, c_expression)
+
+	return
+}
 
 // Unsupported : g_set_error : unsupported parameter err : record with indirection level of 2
 
-// Unsupported : g_set_prgname : no return generator
+// SetPrgname is a wrapper around the C function g_set_prgname.
+func SetPrgname(prgname string) {
+	c_prgname := C.CString(prgname)
+	defer C.free(unsafe.Pointer(c_prgname))
+
+	C.g_set_prgname(c_prgname)
+
+	return
+}
 
 // Unsupported : g_set_print_handler : unsupported parameter func : no type generator for PrintFunc, GPrintFunc
 
@@ -1242,7 +1502,16 @@ func SliceGetConfig(ckey SliceConfig) int64 {
 
 // Unsupported : g_slice_get_config_state : unsupported parameter n_values : no type generator for guint, guint*
 
-// Unsupported : g_slice_set_config : no return generator
+// SliceSetConfig is a wrapper around the C function g_slice_set_config.
+func SliceSetConfig(ckey SliceConfig, value int64) {
+	c_ckey := (C.GSliceConfig)(ckey)
+
+	c_value := (C.gint64)(value)
+
+	C.g_slice_set_config(c_ckey, c_value)
+
+	return
+}
 
 // Unsupported : g_snprintf : unsupported parameter ... : varargs
 
@@ -1292,7 +1561,14 @@ func SpacedPrimesClosest(num uint32) uint32 {
 
 // Unsupported : g_spawn_async_with_pipes : unsupported parameter argv : no param type
 
-// Unsupported : g_spawn_close_pid : no return generator
+// SpawnClosePid is a wrapper around the C function g_spawn_close_pid.
+func SpawnClosePid(pid Pid) {
+	c_pid := (C.GPid)(pid)
+
+	C.g_spawn_close_pid(c_pid)
+
+	return
+}
 
 // SpawnCommandLineAsync is a wrapper around the C function g_spawn_command_line_async.
 func SpawnCommandLineAsync(commandLine string) (bool, error) {
@@ -1728,7 +2004,23 @@ func Strup(string string) string {
 
 // Unsupported : g_test_add_vtable : unsupported parameter data_setup : no type generator for TestFixtureFunc, GTestFixtureFunc
 
-// Unsupported : g_test_assert_expected_messages_internal : no return generator
+// TestAssertExpectedMessagesInternal is a wrapper around the C function g_test_assert_expected_messages_internal.
+func TestAssertExpectedMessagesInternal(domain string, file string, line int32, func_ string) {
+	c_domain := C.CString(domain)
+	defer C.free(unsafe.Pointer(c_domain))
+
+	c_file := C.CString(file)
+	defer C.free(unsafe.Pointer(c_file))
+
+	c_line := (C.int)(line)
+
+	c_func := C.CString(func_)
+	defer C.free(unsafe.Pointer(c_func))
+
+	C.g_test_assert_expected_messages_internal(c_domain, c_file, c_line, c_func)
+
+	return
+}
 
 // TestLogTypeName is a wrapper around the C function g_test_log_type_name.
 func TestLogTypeName(logType TestLogType) string {
@@ -1740,7 +2032,28 @@ func TestLogTypeName(logType TestLogType) string {
 	return retGo
 }
 
-// Unsupported : g_test_trap_assertions : no return generator
+// TestTrapAssertions is a wrapper around the C function g_test_trap_assertions.
+func TestTrapAssertions(domain string, file string, line int32, func_ string, assertionFlags uint64, pattern string) {
+	c_domain := C.CString(domain)
+	defer C.free(unsafe.Pointer(c_domain))
+
+	c_file := C.CString(file)
+	defer C.free(unsafe.Pointer(c_file))
+
+	c_line := (C.int)(line)
+
+	c_func := C.CString(func_)
+	defer C.free(unsafe.Pointer(c_func))
+
+	c_assertion_flags := (C.guint64)(assertionFlags)
+
+	c_pattern := C.CString(pattern)
+	defer C.free(unsafe.Pointer(c_pattern))
+
+	C.g_test_trap_assertions(c_domain, c_file, c_line, c_func, c_assertion_flags, c_pattern)
+
+	return
+}
 
 // ThreadErrorQuark is a wrapper around the C function g_thread_error_quark.
 func ThreadErrorQuark() Quark {
@@ -1750,7 +2063,14 @@ func ThreadErrorQuark() Quark {
 	return retGo
 }
 
-// Unsupported : g_thread_exit : no return generator
+// ThreadExit is a wrapper around the C function g_thread_exit.
+func ThreadExit(retval uintptr) {
+	c_retval := (C.gpointer)(retval)
+
+	C.g_thread_exit(c_retval)
+
+	return
+}
 
 // ThreadPoolGetMaxUnusedThreads is a wrapper around the C function g_thread_pool_get_max_unused_threads.
 func ThreadPoolGetMaxUnusedThreads() int32 {
@@ -1768,9 +2088,21 @@ func ThreadPoolGetNumUnusedThreads() uint32 {
 	return retGo
 }
 
-// Unsupported : g_thread_pool_set_max_unused_threads : no return generator
+// ThreadPoolSetMaxUnusedThreads is a wrapper around the C function g_thread_pool_set_max_unused_threads.
+func ThreadPoolSetMaxUnusedThreads(maxThreads int32) {
+	c_max_threads := (C.gint)(maxThreads)
 
-// Unsupported : g_thread_pool_stop_unused_threads : no return generator
+	C.g_thread_pool_set_max_unused_threads(c_max_threads)
+
+	return
+}
+
+// ThreadPoolStopUnusedThreads is a wrapper around the C function g_thread_pool_stop_unused_threads.
+func ThreadPoolStopUnusedThreads() {
+	C.g_thread_pool_stop_unused_threads()
+
+	return
+}
 
 // ThreadSelf is a wrapper around the C function g_thread_self.
 func ThreadSelf() *Thread {
@@ -1780,7 +2112,12 @@ func ThreadSelf() *Thread {
 	return retGo
 }
 
-// Unsupported : g_thread_yield : no return generator
+// ThreadYield is a wrapper around the C function g_thread_yield.
+func ThreadYield() {
+	C.g_thread_yield()
+
+	return
+}
 
 // Unsupported : g_timeout_add : unsupported parameter function : no type generator for SourceFunc, GSourceFunc
 
@@ -2058,7 +2395,14 @@ func UnicharXdigitValue(c rune) int32 {
 
 // Blacklisted : g_unix_error_quark
 
-// Unsupported : g_usleep : no return generator
+// Usleep is a wrapper around the C function g_usleep.
+func Usleep(microseconds uint64) {
+	c_microseconds := (C.gulong)(microseconds)
+
+	C.g_usleep(c_microseconds)
+
+	return
+}
 
 // Unsupported : g_utf16_to_ucs4 : unsupported parameter str : no type generator for guint16, const gunichar2*
 
@@ -2349,4 +2693,23 @@ func VariantTypeStringIsValid(typeString string) bool {
 
 // Unsupported : g_vsnprintf : unsupported parameter args : no type generator for va_list, va_list
 
-// Unsupported : g_warn_message : no return generator
+// WarnMessage is a wrapper around the C function g_warn_message.
+func WarnMessage(domain string, file string, line int32, func_ string, warnexpr string) {
+	c_domain := C.CString(domain)
+	defer C.free(unsafe.Pointer(c_domain))
+
+	c_file := C.CString(file)
+	defer C.free(unsafe.Pointer(c_file))
+
+	c_line := (C.int)(line)
+
+	c_func := C.CString(func_)
+	defer C.free(unsafe.Pointer(c_func))
+
+	c_warnexpr := C.CString(warnexpr)
+	defer C.free(unsafe.Pointer(c_warnexpr))
+
+	C.g_warn_message(c_domain, c_file, c_line, c_func, c_warnexpr)
+
+	return
+}

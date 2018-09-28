@@ -99,7 +99,12 @@ func (recv *Bytes) Ref() *Bytes {
 	return retGo
 }
 
-// Unsupported : g_bytes_unref : no return generator
+// Unref is a wrapper around the C function g_bytes_unref.
+func (recv *Bytes) Unref() {
+	C.g_bytes_unref((*C.GBytes)(recv.native))
+
+	return
+}
 
 // Unsupported : g_bytes_unref_to_array : no return type
 
@@ -128,11 +133,26 @@ func (recv *RWLock) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : g_rw_lock_clear : no return generator
+// Clear is a wrapper around the C function g_rw_lock_clear.
+func (recv *RWLock) Clear() {
+	C.g_rw_lock_clear((*C.GRWLock)(recv.native))
 
-// Unsupported : g_rw_lock_init : no return generator
+	return
+}
 
-// Unsupported : g_rw_lock_reader_lock : no return generator
+// Init is a wrapper around the C function g_rw_lock_init.
+func (recv *RWLock) Init() {
+	C.g_rw_lock_init((*C.GRWLock)(recv.native))
+
+	return
+}
+
+// ReaderLock is a wrapper around the C function g_rw_lock_reader_lock.
+func (recv *RWLock) ReaderLock() {
+	C.g_rw_lock_reader_lock((*C.GRWLock)(recv.native))
+
+	return
+}
 
 // ReaderTrylock is a wrapper around the C function g_rw_lock_reader_trylock.
 func (recv *RWLock) ReaderTrylock() bool {
@@ -142,9 +162,19 @@ func (recv *RWLock) ReaderTrylock() bool {
 	return retGo
 }
 
-// Unsupported : g_rw_lock_reader_unlock : no return generator
+// ReaderUnlock is a wrapper around the C function g_rw_lock_reader_unlock.
+func (recv *RWLock) ReaderUnlock() {
+	C.g_rw_lock_reader_unlock((*C.GRWLock)(recv.native))
 
-// Unsupported : g_rw_lock_writer_lock : no return generator
+	return
+}
+
+// WriterLock is a wrapper around the C function g_rw_lock_writer_lock.
+func (recv *RWLock) WriterLock() {
+	C.g_rw_lock_writer_lock((*C.GRWLock)(recv.native))
+
+	return
+}
 
 // WriterTrylock is a wrapper around the C function g_rw_lock_writer_trylock.
 func (recv *RWLock) WriterTrylock() bool {
@@ -154,7 +184,12 @@ func (recv *RWLock) WriterTrylock() bool {
 	return retGo
 }
 
-// Unsupported : g_rw_lock_writer_unlock : no return generator
+// WriterUnlock is a wrapper around the C function g_rw_lock_writer_unlock.
+func (recv *RWLock) WriterUnlock() {
+	C.g_rw_lock_writer_unlock((*C.GRWLock)(recv.native))
+
+	return
+}
 
 // RecMutex is a wrapper around the C record GRecMutex.
 type RecMutex struct {
@@ -179,11 +214,26 @@ func (recv *RecMutex) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : g_rec_mutex_clear : no return generator
+// Clear is a wrapper around the C function g_rec_mutex_clear.
+func (recv *RecMutex) Clear() {
+	C.g_rec_mutex_clear((*C.GRecMutex)(recv.native))
 
-// Unsupported : g_rec_mutex_init : no return generator
+	return
+}
 
-// Unsupported : g_rec_mutex_lock : no return generator
+// Init is a wrapper around the C function g_rec_mutex_init.
+func (recv *RecMutex) Init() {
+	C.g_rec_mutex_init((*C.GRecMutex)(recv.native))
+
+	return
+}
+
+// Lock is a wrapper around the C function g_rec_mutex_lock.
+func (recv *RecMutex) Lock() {
+	C.g_rec_mutex_lock((*C.GRecMutex)(recv.native))
+
+	return
+}
 
 // Trylock is a wrapper around the C function g_rec_mutex_trylock.
 func (recv *RecMutex) Trylock() bool {
@@ -193,4 +243,9 @@ func (recv *RecMutex) Trylock() bool {
 	return retGo
 }
 
-// Unsupported : g_rec_mutex_unlock : no return generator
+// Unlock is a wrapper around the C function g_rec_mutex_unlock.
+func (recv *RecMutex) Unlock() {
+	C.g_rec_mutex_unlock((*C.GRecMutex)(recv.native))
+
+	return
+}

@@ -193,7 +193,12 @@ func (recv *RecentInfo) Ref() *RecentInfo {
 	return retGo
 }
 
-// Unsupported : gtk_recent_info_unref : no return generator
+// Unref is a wrapper around the C function gtk_recent_info_unref.
+func (recv *RecentInfo) Unref() {
+	C.gtk_recent_info_unref((*C.GtkRecentInfo)(recv.native))
+
+	return
+}
 
 // RecentManagerClass is a wrapper around the C record GtkRecentManagerClass.
 type RecentManagerClass struct {

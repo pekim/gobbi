@@ -3,16 +3,37 @@
 
 package gdk
 
+import cairo "github.com/pekim/gobbi/lib/cairo"
+
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <gdk/gdk.h>
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : gdk_cairo_set_source_rgba : no return generator
+// CairoSetSourceRgba is a wrapper around the C function gdk_cairo_set_source_rgba.
+func CairoSetSourceRgba(cr *cairo.Context, rgba *RGBA) {
+	c_cr := (*C.cairo_t)(cr.ToC())
 
-// Unsupported : gdk_disable_multidevice : no return generator
+	c_rgba := (*C.GdkRGBA)(rgba.ToC())
 
-// Unsupported : gdk_error_trap_pop_ignored : no return generator
+	C.gdk_cairo_set_source_rgba(c_cr, c_rgba)
+
+	return
+}
+
+// DisableMultidevice is a wrapper around the C function gdk_disable_multidevice.
+func DisableMultidevice() {
+	C.gdk_disable_multidevice()
+
+	return
+}
+
+// ErrorTrapPopIgnored is a wrapper around the C function gdk_error_trap_pop_ignored.
+func ErrorTrapPopIgnored() {
+	C.gdk_error_trap_pop_ignored()
+
+	return
+}
 
 // Unsupported : gdk_events_get_angle : unsupported parameter event1 : no type generator for Event, GdkEvent*
 

@@ -36,4 +36,11 @@ func FileChooserErrorQuark() glib.Quark {
 	return retGo
 }
 
-// Unsupported : gtk_rc_reset_styles : no return generator
+// RcResetStyles is a wrapper around the C function gtk_rc_reset_styles.
+func RcResetStyles(settings *Settings) {
+	c_settings := (*C.GtkSettings)(settings.ToC())
+
+	C.gtk_rc_reset_styles(c_settings)
+
+	return
+}

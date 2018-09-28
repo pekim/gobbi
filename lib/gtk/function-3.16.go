@@ -3,6 +3,8 @@
 
 package gtk
 
+import gdk "github.com/pekim/gobbi/lib/gdk"
+
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <gtk/gtk-a11y.h>
 // #include <gtk/gtk.h>
@@ -10,4 +12,11 @@ package gtk
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : gtk_drag_cancel : no return generator
+// DragCancel is a wrapper around the C function gtk_drag_cancel.
+func DragCancel(context *gdk.DragContext) {
+	c_context := (*C.GdkDragContext)(context.ToC())
+
+	C.gtk_drag_cancel(c_context)
+
+	return
+}

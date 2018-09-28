@@ -59,15 +59,16 @@ func ApplicationNew(applicationId string, flags ApplicationFlags) *Application {
 	return retGo
 }
 
-// Unsupported : g_application_activate : no return generator
+// Activate is a wrapper around the C function g_application_activate.
+func (recv *Application) Activate() {
+	C.g_application_activate((*C.GApplication)(recv.native))
+
+	return
+}
 
 // Unsupported : g_application_add_main_option : unsupported parameter short_name : no type generator for gchar, char
 
 // Unsupported : g_application_add_main_option_entries : unsupported parameter entries : no param type
-
-// Unsupported : g_application_add_option_group : no return generator
-
-// Unsupported : g_application_bind_busy_property : no return generator
 
 // GetApplicationId is a wrapper around the C function g_application_get_application_id.
 func (recv *Application) GetApplicationId() string {
@@ -109,13 +110,14 @@ func (recv *Application) GetIsRemote() bool {
 	return retGo
 }
 
-// Unsupported : g_application_hold : no return generator
+// Hold is a wrapper around the C function g_application_hold.
+func (recv *Application) Hold() {
+	C.g_application_hold((*C.GApplication)(recv.native))
 
-// Unsupported : g_application_mark_busy : no return generator
+	return
+}
 
 // Unsupported : g_application_open : unsupported parameter files : no param type
-
-// Unsupported : g_application_quit : no return generator
 
 // Register is a wrapper around the C function g_application_register.
 func (recv *Application) Register(cancellable *Cancellable) (bool, error) {
@@ -134,35 +136,44 @@ func (recv *Application) Register(cancellable *Cancellable) (bool, error) {
 	return retGo, goThrowableError
 }
 
-// Unsupported : g_application_release : no return generator
+// Release is a wrapper around the C function g_application_release.
+func (recv *Application) Release() {
+	C.g_application_release((*C.GApplication)(recv.native))
+
+	return
+}
 
 // Unsupported : g_application_run : unsupported parameter argv : no param type
 
-// Unsupported : g_application_send_notification : no return generator
-
 // Unsupported : g_application_set_action_group : unsupported parameter action_group : no type generator for ActionGroup, GActionGroup*
 
-// Unsupported : g_application_set_application_id : no return generator
+// SetApplicationId is a wrapper around the C function g_application_set_application_id.
+func (recv *Application) SetApplicationId(applicationId string) {
+	c_application_id := C.CString(applicationId)
+	defer C.free(unsafe.Pointer(c_application_id))
 
-// Unsupported : g_application_set_default : no return generator
+	C.g_application_set_application_id((*C.GApplication)(recv.native), c_application_id)
 
-// Unsupported : g_application_set_flags : no return generator
+	return
+}
 
-// Unsupported : g_application_set_inactivity_timeout : no return generator
+// SetFlags is a wrapper around the C function g_application_set_flags.
+func (recv *Application) SetFlags(flags ApplicationFlags) {
+	c_flags := (C.GApplicationFlags)(flags)
 
-// Unsupported : g_application_set_option_context_description : no return generator
+	C.g_application_set_flags((*C.GApplication)(recv.native), c_flags)
 
-// Unsupported : g_application_set_option_context_parameter_string : no return generator
+	return
+}
 
-// Unsupported : g_application_set_option_context_summary : no return generator
+// SetInactivityTimeout is a wrapper around the C function g_application_set_inactivity_timeout.
+func (recv *Application) SetInactivityTimeout(inactivityTimeout uint32) {
+	c_inactivity_timeout := (C.guint)(inactivityTimeout)
 
-// Unsupported : g_application_set_resource_base_path : no return generator
+	C.g_application_set_inactivity_timeout((*C.GApplication)(recv.native), c_inactivity_timeout)
 
-// Unsupported : g_application_unbind_busy_property : no return generator
-
-// Unsupported : g_application_unmark_busy : no return generator
-
-// Unsupported : g_application_withdraw_notification : no return generator
+	return
+}
 
 // SimpleActionGroup is a wrapper around the C record GSimpleActionGroup.
 type SimpleActionGroup struct {
@@ -201,7 +212,15 @@ func SimpleActionGroupNew() *SimpleActionGroup {
 
 // Unsupported : g_simple_action_group_lookup : no return generator
 
-// Unsupported : g_simple_action_group_remove : no return generator
+// Remove is a wrapper around the C function g_simple_action_group_remove.
+func (recv *SimpleActionGroup) Remove(actionName string) {
+	c_action_name := C.CString(actionName)
+	defer C.free(unsafe.Pointer(c_action_name))
+
+	C.g_simple_action_group_remove((*C.GSimpleActionGroup)(recv.native), c_action_name)
+
+	return
+}
 
 // TlsCertificate is a wrapper around the C record GTlsCertificate.
 type TlsCertificate struct {
@@ -399,14 +418,40 @@ func (recv *TlsConnection) Handshake(cancellable *Cancellable) (bool, error) {
 
 // Unsupported : g_tls_connection_handshake_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
 
-// Unsupported : g_tls_connection_set_certificate : no return generator
+// SetCertificate is a wrapper around the C function g_tls_connection_set_certificate.
+func (recv *TlsConnection) SetCertificate(certificate *TlsCertificate) {
+	c_certificate := (*C.GTlsCertificate)(certificate.ToC())
 
-// Unsupported : g_tls_connection_set_database : no return generator
+	C.g_tls_connection_set_certificate((*C.GTlsConnection)(recv.native), c_certificate)
 
-// Unsupported : g_tls_connection_set_interaction : no return generator
+	return
+}
 
-// Unsupported : g_tls_connection_set_rehandshake_mode : no return generator
+// SetRehandshakeMode is a wrapper around the C function g_tls_connection_set_rehandshake_mode.
+func (recv *TlsConnection) SetRehandshakeMode(mode TlsRehandshakeMode) {
+	c_mode := (C.GTlsRehandshakeMode)(mode)
 
-// Unsupported : g_tls_connection_set_require_close_notify : no return generator
+	C.g_tls_connection_set_rehandshake_mode((*C.GTlsConnection)(recv.native), c_mode)
 
-// Unsupported : g_tls_connection_set_use_system_certdb : no return generator
+	return
+}
+
+// SetRequireCloseNotify is a wrapper around the C function g_tls_connection_set_require_close_notify.
+func (recv *TlsConnection) SetRequireCloseNotify(requireCloseNotify bool) {
+	c_require_close_notify :=
+		boolToGboolean(requireCloseNotify)
+
+	C.g_tls_connection_set_require_close_notify((*C.GTlsConnection)(recv.native), c_require_close_notify)
+
+	return
+}
+
+// SetUseSystemCertdb is a wrapper around the C function g_tls_connection_set_use_system_certdb.
+func (recv *TlsConnection) SetUseSystemCertdb(useSystemCertdb bool) {
+	c_use_system_certdb :=
+		boolToGboolean(useSystemCertdb)
+
+	C.g_tls_connection_set_use_system_certdb((*C.GTlsConnection)(recv.native), c_use_system_certdb)
+
+	return
+}

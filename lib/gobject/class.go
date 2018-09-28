@@ -78,9 +78,12 @@ func (recv *Object) ToC() unsafe.Pointer {
 
 // Unsupported : g_object_dup_qdata : unsupported parameter dup_func : no type generator for GLib.DuplicateFunc, GDuplicateFunc
 
-// Unsupported : g_object_force_floating : no return generator
+// FreezeNotify is a wrapper around the C function g_object_freeze_notify.
+func (recv *Object) FreezeNotify() {
+	C.g_object_freeze_notify((*C.GObject)(recv.native))
 
-// Unsupported : g_object_freeze_notify : no return generator
+	return
+}
 
 // Unsupported : g_object_get : unsupported parameter ... : varargs
 
@@ -95,7 +98,17 @@ func (recv *Object) GetData(key string) uintptr {
 	return retGo
 }
 
-// Unsupported : g_object_get_property : no return generator
+// GetProperty is a wrapper around the C function g_object_get_property.
+func (recv *Object) GetProperty(propertyName string, value *Value) {
+	c_property_name := C.CString(propertyName)
+	defer C.free(unsafe.Pointer(c_property_name))
+
+	c_value := (*C.GValue)(value.ToC())
+
+	C.g_object_get_property((*C.GObject)(recv.native), c_property_name, c_value)
+
+	return
+}
 
 // GetQdata is a wrapper around the C function g_object_get_qdata.
 func (recv *Object) GetQdata(quark glib.Quark) uintptr {
@@ -111,9 +124,15 @@ func (recv *Object) GetQdata(quark glib.Quark) uintptr {
 
 // Unsupported : g_object_getv : unsupported parameter names : no param type
 
-// Unsupported : g_object_notify : no return generator
+// Notify is a wrapper around the C function g_object_notify.
+func (recv *Object) Notify(propertyName string) {
+	c_property_name := C.CString(propertyName)
+	defer C.free(unsafe.Pointer(c_property_name))
 
-// Unsupported : g_object_notify_by_pspec : no return generator
+	C.g_object_notify((*C.GObject)(recv.native), c_property_name)
+
+	return
+}
 
 // Ref is a wrapper around the C function g_object_ref.
 func (recv *Object) Ref() uintptr {
@@ -131,17 +150,51 @@ func (recv *Object) Ref() uintptr {
 
 // Unsupported : g_object_replace_qdata : unsupported parameter destroy : no type generator for GLib.DestroyNotify, GDestroyNotify
 
-// Unsupported : g_object_run_dispose : no return generator
+// RunDispose is a wrapper around the C function g_object_run_dispose.
+func (recv *Object) RunDispose() {
+	C.g_object_run_dispose((*C.GObject)(recv.native))
+
+	return
+}
 
 // Unsupported : g_object_set : unsupported parameter ... : varargs
 
-// Unsupported : g_object_set_data : no return generator
+// SetData is a wrapper around the C function g_object_set_data.
+func (recv *Object) SetData(key string, data uintptr) {
+	c_key := C.CString(key)
+	defer C.free(unsafe.Pointer(c_key))
+
+	c_data := (C.gpointer)(data)
+
+	C.g_object_set_data((*C.GObject)(recv.native), c_key, c_data)
+
+	return
+}
 
 // Unsupported : g_object_set_data_full : unsupported parameter destroy : no type generator for GLib.DestroyNotify, GDestroyNotify
 
-// Unsupported : g_object_set_property : no return generator
+// SetProperty is a wrapper around the C function g_object_set_property.
+func (recv *Object) SetProperty(propertyName string, value *Value) {
+	c_property_name := C.CString(propertyName)
+	defer C.free(unsafe.Pointer(c_property_name))
 
-// Unsupported : g_object_set_qdata : no return generator
+	c_value := (*C.GValue)(value.ToC())
+
+	C.g_object_set_property((*C.GObject)(recv.native), c_property_name, c_value)
+
+	return
+}
+
+// SetQdata is a wrapper around the C function g_object_set_qdata.
+func (recv *Object) SetQdata(quark glib.Quark, data uintptr) {
+	c_quark := (C.GQuark)(quark)
+
+	c_data := (C.gpointer)(data)
+
+	C.g_object_set_qdata((*C.GObject)(recv.native), c_quark, c_data)
+
+	return
+}
 
 // Unsupported : g_object_set_qdata_full : unsupported parameter destroy : no type generator for GLib.DestroyNotify, GDestroyNotify
 
@@ -170,11 +223,28 @@ func (recv *Object) StealQdata(quark glib.Quark) uintptr {
 	return retGo
 }
 
-// Unsupported : g_object_thaw_notify : no return generator
+// ThawNotify is a wrapper around the C function g_object_thaw_notify.
+func (recv *Object) ThawNotify() {
+	C.g_object_thaw_notify((*C.GObject)(recv.native))
 
-// Unsupported : g_object_unref : no return generator
+	return
+}
 
-// Unsupported : g_object_watch_closure : no return generator
+// Unref is a wrapper around the C function g_object_unref.
+func (recv *Object) Unref() {
+	C.g_object_unref((C.gpointer)(recv.native))
+
+	return
+}
+
+// WatchClosure is a wrapper around the C function g_object_watch_closure.
+func (recv *Object) WatchClosure(closure *Closure) {
+	c_closure := (*C.GClosure)(closure.ToC())
+
+	C.g_object_watch_closure((*C.GObject)(recv.native), c_closure)
+
+	return
+}
 
 // Unsupported : g_object_weak_ref : unsupported parameter notify : no type generator for WeakNotify, GWeakNotify
 
@@ -261,11 +331,25 @@ func (recv *ParamSpec) Ref() *ParamSpec {
 	return retGo
 }
 
-// Unsupported : g_param_spec_set_qdata : no return generator
+// SetQdata is a wrapper around the C function g_param_spec_set_qdata.
+func (recv *ParamSpec) SetQdata(quark glib.Quark, data uintptr) {
+	c_quark := (C.GQuark)(quark)
+
+	c_data := (C.gpointer)(data)
+
+	C.g_param_spec_set_qdata((*C.GParamSpec)(recv.native), c_quark, c_data)
+
+	return
+}
 
 // Unsupported : g_param_spec_set_qdata_full : unsupported parameter destroy : no type generator for GLib.DestroyNotify, GDestroyNotify
 
-// Unsupported : g_param_spec_sink : no return generator
+// Sink is a wrapper around the C function g_param_spec_sink.
+func (recv *ParamSpec) Sink() {
+	C.g_param_spec_sink((*C.GParamSpec)(recv.native))
+
+	return
+}
 
 // StealQdata is a wrapper around the C function g_param_spec_steal_qdata.
 func (recv *ParamSpec) StealQdata(quark glib.Quark) uintptr {
@@ -277,7 +361,12 @@ func (recv *ParamSpec) StealQdata(quark glib.Quark) uintptr {
 	return retGo
 }
 
-// Unsupported : g_param_spec_unref : no return generator
+// Unref is a wrapper around the C function g_param_spec_unref.
+func (recv *ParamSpec) Unref() {
+	C.g_param_spec_unref((*C.GParamSpec)(recv.native))
+
+	return
+}
 
 // ParamSpecBoolean is a wrapper around the C record GParamSpecBoolean.
 type ParamSpecBoolean struct {
@@ -962,9 +1051,22 @@ func (recv *TypeModule) ToC() unsafe.Pointer {
 
 // Unsupported : g_type_module_register_type : unsupported parameter parent_type : no type generator for GType, GType
 
-// Unsupported : g_type_module_set_name : no return generator
+// SetName is a wrapper around the C function g_type_module_set_name.
+func (recv *TypeModule) SetName(name string) {
+	c_name := C.CString(name)
+	defer C.free(unsafe.Pointer(c_name))
 
-// Unsupported : g_type_module_unuse : no return generator
+	C.g_type_module_set_name((*C.GTypeModule)(recv.native), c_name)
+
+	return
+}
+
+// Unuse is a wrapper around the C function g_type_module_unuse.
+func (recv *TypeModule) Unuse() {
+	C.g_type_module_unuse((*C.GTypeModule)(recv.native))
+
+	return
+}
 
 // Use is a wrapper around the C function g_type_module_use.
 func (recv *TypeModule) Use() bool {

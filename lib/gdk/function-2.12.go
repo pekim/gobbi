@@ -3,14 +3,31 @@
 
 package gdk
 
+import "unsafe"
+
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <gdk/gdk.h>
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : gdk_event_request_motions : no return generator
+// EventRequestMotions is a wrapper around the C function gdk_event_request_motions.
+func EventRequestMotions(event *EventMotion) {
+	c_event := (*C.GdkEventMotion)(event.ToC())
 
-// Unsupported : gdk_notify_startup_complete_with_id : no return generator
+	C.gdk_event_request_motions(c_event)
+
+	return
+}
+
+// NotifyStartupCompleteWithId is a wrapper around the C function gdk_notify_startup_complete_with_id.
+func NotifyStartupCompleteWithId(startupId string) {
+	c_startup_id := C.CString(startupId)
+	defer C.free(unsafe.Pointer(c_startup_id))
+
+	C.gdk_notify_startup_complete_with_id(c_startup_id)
+
+	return
+}
 
 // Unsupported : gdk_threads_add_idle : unsupported parameter function : no type generator for GLib.SourceFunc, GSourceFunc
 

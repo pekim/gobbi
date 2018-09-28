@@ -91,4 +91,9 @@ func (recv *CssSection) Ref() *CssSection {
 	return retGo
 }
 
-// Unsupported : gtk_css_section_unref : no return generator
+// Unref is a wrapper around the C function gtk_css_section_unref.
+func (recv *CssSection) Unref() {
+	C.gtk_css_section_unref((*C.GtkCssSection)(recv.native))
+
+	return
+}

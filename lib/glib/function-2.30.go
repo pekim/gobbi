@@ -119,7 +119,12 @@ func RegexEscapeNul(string string, length int32) string {
 	return retGo
 }
 
-// Unsupported : g_test_fail : no return generator
+// TestFail is a wrapper around the C function g_test_fail.
+func TestFail() {
+	C.g_test_fail()
+
+	return
+}
 
 // Unsupported : g_unichar_compose : unsupported parameter ch : no type generator for gunichar, gunichar*
 

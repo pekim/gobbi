@@ -42,6 +42,11 @@ func (r *ReturnValue) isSupported() (bool, string) {
 	if r.Type == nil {
 		return false, "no return type"
 	}
+
+	if r.Type.Name == "none" {
+		return true, ""
+	}
+
 	if r.Type.generator == nil {
 		return false, "no return generator"
 	}
@@ -54,10 +59,18 @@ func (r *ReturnValue) isSupported() (bool, string) {
 }
 
 func (r *ReturnValue) generateFunctionDeclaration(g *jen.Group) {
+	if r.Type.Name == "none" {
+		return
+	}
+
 	r.Type.generator.generateReturnFunctionDeclaration(g)
 }
 
 func (r *ReturnValue) generateCToGo(g *jen.Group, cVarName string, goVarName string) {
+	if r.Type.Name == "none" {
+		return
+	}
+
 	pkg := ""
 	if r.Type.qname.ns != r.Namespace {
 		pkg = r.Type.qname.ns.fullGoPackageName

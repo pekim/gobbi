@@ -28,4 +28,12 @@ func CairoSurfaceCreateFromPixbuf(pixbuf *gdkpixbuf.Pixbuf, scale int32, forWind
 	return retGo
 }
 
-// Unsupported : gdk_set_allowed_backends : no return generator
+// SetAllowedBackends is a wrapper around the C function gdk_set_allowed_backends.
+func SetAllowedBackends(backends string) {
+	c_backends := C.CString(backends)
+	defer C.free(unsafe.Pointer(c_backends))
+
+	C.gdk_set_allowed_backends(c_backends)
+
+	return
+}

@@ -70,7 +70,12 @@ func (recv *GlyphItemIter) Copy() *GlyphItemIter {
 	return retGo
 }
 
-// Unsupported : pango_glyph_item_iter_free : no return generator
+// Free is a wrapper around the C function pango_glyph_item_iter_free.
+func (recv *GlyphItemIter) Free() {
+	C.pango_glyph_item_iter_free((*C.PangoGlyphItemIter)(recv.native))
+
+	return
+}
 
 // InitEnd is a wrapper around the C function pango_glyph_item_iter_init_end.
 func (recv *GlyphItemIter) InitEnd(glyphItem *GlyphItem, text string) bool {
