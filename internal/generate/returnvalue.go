@@ -27,6 +27,15 @@ func (r *ReturnValue) mergeAddenda(addenda *ReturnValue) {
 	if addenda.TransferOwnership != "" {
 		r.TransferOwnership = addenda.TransferOwnership
 	}
+
+	if addenda.Type != nil {
+		if addenda.Type.Name != "" {
+			r.Type.Name = addenda.Type.Name
+		}
+		if addenda.Type.CType != "" {
+			r.Type.CType = addenda.Type.CType
+		}
+	}
 }
 
 func (r *ReturnValue) isSupported() (bool, string) {

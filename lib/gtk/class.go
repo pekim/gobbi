@@ -10038,21 +10038,7 @@ func (recv *TextView) GetIndent() int32 {
 	return retGo
 }
 
-// GetIterAtLocation is a wrapper around the C function gtk_text_view_get_iter_at_location.
-func (recv *TextView) GetIterAtLocation(x int32, y int32) (bool, *TextIter) {
-	var c_iter C.GtkTextIter
-
-	c_x := (C.gint)(x)
-
-	c_y := (C.gint)(y)
-
-	retC := C.gtk_text_view_get_iter_at_location((*C.GtkTextView)(recv.native), &c_iter, c_x, c_y)
-	retGo := retC == C.TRUE
-
-	iter := TextIterNewFromC(unsafe.Pointer(&c_iter))
-
-	return retGo, iter
-}
+// Unsupported : gtk_text_view_get_iter_at_location : no return generator
 
 // Unsupported : gtk_text_view_get_iter_at_position : unsupported parameter trailing : no type generator for gint, gint*
 

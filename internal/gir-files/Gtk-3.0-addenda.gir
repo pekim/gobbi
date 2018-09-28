@@ -124,6 +124,14 @@
     <class blacklist="true" name="Socket"/>
     <class blacklist="true" name="StackAccessible"/>
 
+    <class name="TextView">
+      <method c:identifier="gtk_text_view_get_iter_at_location">
+        <return-value>
+          <type name="none" c:type="void"/>
+        </return-value>
+      </method>
+    </class>
+
     <class version="3.20" name="FileChooserNative"/>
     <class version="3.20" name="NativeDialog"/>
     <class version="3.20" name="PadController"/>
