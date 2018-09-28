@@ -221,7 +221,7 @@ func (f *Function) generateThrowableReturnGoVar(g *jen.Group) {
 		pkg = f.Namespace.get("GLib").fullGoPackageName
 	}
 
-	f.throwableErrorType.generator.generateReturnCToGo(g,
+	f.throwableErrorType.generator.generateReturnCToGo(g, false,
 		f.throwableErrorCVarName, f.throwableErrorGoVarName,
 		pkg, "")
 

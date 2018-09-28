@@ -99,9 +99,14 @@ func (t *TypeGeneratorRecord) generateReturnFunctionDeclaration(g *jen.Group) {
 		Do(t.typ.qname.generate)
 }
 
-func (t *TypeGeneratorRecord) generateReturnCToGo(g *jen.Group,
+func (t *TypeGeneratorRecord) generateReturnCToGo(g *jen.Group, isParam bool,
 	cVarName string, goVarName string, pkg string,
 	transferOwnership string) {
+
+	cVarRef := jen.Id(cVarName)
+	if isParam && t.typ.indirectLevel == 1 {
+		cVarRef = jen.Op("&").Id(cVarName)
+	}
 
 	g.
 		Id(goVarName).
@@ -115,7 +120,7 @@ func (t *TypeGeneratorRecord) generateReturnCToGo(g *jen.Group,
 		}).
 		Call(jen.
 			Qual("unsafe", "Pointer").
-			Call(jen.Id(cVarName)))
+			Call(cVarRef))
 }
 
 func (t *TypeGeneratorRecord) generateCToGo(pkg string, cVarReference *jen.Statement) *jen.Statement {

@@ -452,7 +452,7 @@ func RcParseColor(scanner *glib.Scanner) (uint32, *gdk.Color) {
 	retC := C.gtk_rc_parse_color(c_scanner, &c_color)
 	retGo := (uint32)(retC)
 
-	color := gdk.ColorNewFromC(unsafe.Pointer(c_color))
+	color := gdk.ColorNewFromC(unsafe.Pointer(&c_color))
 
 	return retGo, color
 }
@@ -616,7 +616,7 @@ func StockLookup(stockId string) (bool, *StockItem) {
 	retC := C.gtk_stock_lookup(c_stock_id, &c_item)
 	retGo := retC == C.TRUE
 
-	item := StockItemNewFromC(unsafe.Pointer(c_item))
+	item := StockItemNewFromC(unsafe.Pointer(&c_item))
 
 	return retGo, item
 }

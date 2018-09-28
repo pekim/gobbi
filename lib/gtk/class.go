@@ -9214,7 +9214,7 @@ func (recv *StyleContext) LookupColor(colorName string) (bool, *gdk.RGBA) {
 	retC := C.gtk_style_context_lookup_color((*C.GtkStyleContext)(recv.native), c_color_name, &c_color)
 	retGo := retC == C.TRUE
 
-	color := gdk.RGBANewFromC(unsafe.Pointer(c_color))
+	color := gdk.RGBANewFromC(unsafe.Pointer(&c_color))
 
 	return retGo, color
 }
@@ -9694,9 +9694,9 @@ func (recv *TextBuffer) GetSelectionBounds() (bool, *TextIter, *TextIter) {
 	retC := C.gtk_text_buffer_get_selection_bounds((*C.GtkTextBuffer)(recv.native), &c_start, &c_end)
 	retGo := retC == C.TRUE
 
-	start := TextIterNewFromC(unsafe.Pointer(c_start))
+	start := TextIterNewFromC(unsafe.Pointer(&c_start))
 
-	end := TextIterNewFromC(unsafe.Pointer(c_end))
+	end := TextIterNewFromC(unsafe.Pointer(&c_end))
 
 	return retGo, start, end
 }
@@ -10245,7 +10245,7 @@ func (recv *TextView) GetIterAtLocation(x int32, y int32) (bool, *TextIter) {
 	retC := C.gtk_text_view_get_iter_at_location((*C.GtkTextView)(recv.native), &c_iter, c_x, c_y)
 	retGo := retC == C.TRUE
 
-	iter := TextIterNewFromC(unsafe.Pointer(c_iter))
+	iter := TextIterNewFromC(unsafe.Pointer(&c_iter))
 
 	return retGo, iter
 }
@@ -11061,7 +11061,7 @@ func (recv *TreeModelSort) ConvertChildIterToIter(childIter *TreeIter) (bool, *T
 	retC := C.gtk_tree_model_sort_convert_child_iter_to_iter((*C.GtkTreeModelSort)(recv.native), &c_sort_iter, c_child_iter)
 	retGo := retC == C.TRUE
 
-	sortIter := TreeIterNewFromC(unsafe.Pointer(c_sort_iter))
+	sortIter := TreeIterNewFromC(unsafe.Pointer(&c_sort_iter))
 
 	return retGo, sortIter
 }

@@ -40,7 +40,7 @@ func RcParseColorFull(scanner *glib.Scanner, style *RcStyle) (uint32, *gdk.Color
 	retC := C.gtk_rc_parse_color_full(c_scanner, c_style, &c_color)
 	retGo := (uint32)(retC)
 
-	color := gdk.ColorNewFromC(unsafe.Pointer(c_color))
+	color := gdk.ColorNewFromC(unsafe.Pointer(&c_color))
 
 	return retGo, color
 }

@@ -66,7 +66,7 @@ func (t *TypeGeneratorInteger) generateReturnFunctionDeclaration(g *jen.Group) {
 	g.Do(t.typ.qname.generate)
 }
 
-func (t *TypeGeneratorInteger) generateReturnCToGo(g *jen.Group,
+func (t *TypeGeneratorInteger) generateReturnCToGo(g *jen.Group, isParam bool,
 	cVarName string, goVarName string, pkg string, transferOwnership string) {
 	g.
 		Id(goVarName).

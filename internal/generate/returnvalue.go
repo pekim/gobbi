@@ -54,5 +54,5 @@ func (r *ReturnValue) generateCToGo(g *jen.Group, cVarName string, goVarName str
 		pkg = r.Type.qname.ns.fullGoPackageName
 	}
 
-	r.Type.generator.generateReturnCToGo(g, cVarName, goVarName, pkg, r.TransferOwnership)
+	r.Type.generator.generateReturnCToGo(g, false, cVarName, goVarName, pkg, r.TransferOwnership)
 }

@@ -54,7 +54,7 @@ func (t *TypeGeneratorBoolean) generateReturnFunctionDeclaration(g *jen.Group) {
 	g.Id("bool")
 }
 
-func (t *TypeGeneratorBoolean) generateReturnCToGo(g *jen.Group,
+func (t *TypeGeneratorBoolean) generateReturnCToGo(g *jen.Group, isParam bool,
 	cVarName string, goVarName string, pkg string, transferOwnership string) {
 
 	g.

@@ -11373,9 +11373,9 @@ func (recv *TextIter) BackwardSearch(str string, flags TextSearchFlags, limit *T
 	retC := C.gtk_text_iter_backward_search((*C.GtkTextIter)(recv.native), c_str, c_flags, &c_match_start, &c_match_end, c_limit)
 	retGo := retC == C.TRUE
 
-	matchStart := TextIterNewFromC(unsafe.Pointer(c_match_start))
+	matchStart := TextIterNewFromC(unsafe.Pointer(&c_match_start))
 
-	matchEnd := TextIterNewFromC(unsafe.Pointer(c_match_end))
+	matchEnd := TextIterNewFromC(unsafe.Pointer(&c_match_end))
 
 	return retGo, matchStart, matchEnd
 }
@@ -11592,9 +11592,9 @@ func (recv *TextIter) ForwardSearch(str string, flags TextSearchFlags, limit *Te
 	retC := C.gtk_text_iter_forward_search((*C.GtkTextIter)(recv.native), c_str, c_flags, &c_match_start, &c_match_end, c_limit)
 	retGo := retC == C.TRUE
 
-	matchStart := TextIterNewFromC(unsafe.Pointer(c_match_start))
+	matchStart := TextIterNewFromC(unsafe.Pointer(&c_match_start))
 
-	matchEnd := TextIterNewFromC(unsafe.Pointer(c_match_end))
+	matchEnd := TextIterNewFromC(unsafe.Pointer(&c_match_end))
 
 	return retGo, matchStart, matchEnd
 }
@@ -11664,7 +11664,7 @@ func (recv *TextIter) GetAttributes() (bool, *TextAttributes) {
 	retC := C.gtk_text_iter_get_attributes((*C.GtkTextIter)(recv.native), &c_values)
 	retGo := retC == C.TRUE
 
-	values := TextAttributesNewFromC(unsafe.Pointer(c_values))
+	values := TextAttributesNewFromC(unsafe.Pointer(&c_values))
 
 	return retGo, values
 }

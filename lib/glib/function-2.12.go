@@ -61,7 +61,7 @@ func TimeValFromIso8601(isoDate string) (bool, *TimeVal) {
 	retC := C.g_time_val_from_iso8601(c_iso_date, &c_time_)
 	retGo := retC == C.TRUE
 
-	time := TimeValNewFromC(unsafe.Pointer(c_time_))
+	time := TimeValNewFromC(unsafe.Pointer(&c_time_))
 
 	return retGo, time
 }
