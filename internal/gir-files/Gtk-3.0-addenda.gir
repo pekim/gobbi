@@ -121,6 +121,9 @@
     <class blacklist="true" name="StackAccessible"/>
 
     <record blacklist="true" name="StackAccessibleClass"/>
+    <record name="ContainerClass">
+      <method blacklist="true" c:identifier="gtk_container_class_find_child_property"/>
+    </record>
   </namespace>
 </repository>
 

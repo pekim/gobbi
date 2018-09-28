@@ -3131,16 +3131,7 @@ func (recv *ContainerClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// FindChildProperty is a wrapper around the C function gtk_container_class_find_child_property.
-func (recv *ContainerClass) FindChildProperty(propertyName string) *gobject.ParamSpec {
-	c_property_name := C.CString(propertyName)
-	defer C.free(unsafe.Pointer(c_property_name))
-
-	retC := C.gtk_container_class_find_child_property((*C.GObjectClass)(recv.native), c_property_name)
-	retGo := gobject.ParamSpecNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Blacklisted : gtk_container_class_find_child_property
 
 // Unsupported : gtk_container_class_handle_border_width : no return generator
 
