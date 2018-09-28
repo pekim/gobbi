@@ -124,6 +124,11 @@
     <record name="ContainerClass">
       <method blacklist="true" c:identifier="gtk_container_class_find_child_property"/>
     </record>
+
+    <!-- has a string return value of type "guchar*" -->
+    <record name="SelectionData">
+      <method blacklist="true" c:identifier="gtk_selection_data_get_text"/>
+    </record>
   </namespace>
 </repository>
 

@@ -9409,14 +9409,7 @@ func (recv *SelectionData) Copy() *SelectionData {
 
 // Unsupported : gtk_selection_data_get_targets : unsupported parameter targets : no param type
 
-// GetText is a wrapper around the C function gtk_selection_data_get_text.
-func (recv *SelectionData) GetText() string {
-	retC := C.gtk_selection_data_get_text((*C.GtkSelectionData)(recv.native))
-	retGo := C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Blacklisted : gtk_selection_data_get_text
 
 // Unsupported : gtk_selection_data_get_uris : no return type
 
