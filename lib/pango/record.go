@@ -312,8 +312,6 @@ func (recv *AttrList) Copy() *AttrList {
 	return retGo
 }
 
-// Unsupported : pango_attr_list_filter : unsupported parameter func : no type generator for AttrFilterFunc, PangoAttrFilterFunc
-
 // GetIterator is a wrapper around the C function pango_attr_list_get_iterator.
 func (recv *AttrList) GetIterator() *AttrIterator {
 	retC := C.pango_attr_list_get_iterator((*C.PangoAttrList)(recv.native))
@@ -1029,10 +1027,6 @@ func (recv *GlyphItem) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : pango_glyph_item_get_logical_widths : unsupported parameter logical_widths : no param type
-
-// Unsupported : pango_glyph_item_letter_space : unsupported parameter log_attrs : no param type
-
 // GlyphString is a wrapper around the C record PangoGlyphString.
 type GlyphString struct {
 	native    *C.PangoGlyphString
@@ -1263,8 +1257,6 @@ func (recv *Language) GetSampleString() string {
 	return retGo
 }
 
-// Unsupported : pango_language_get_scripts : unsupported parameter num_scripts : no type generator for gint, int*
-
 // Matches is a wrapper around the C function pango_language_matches.
 func (recv *Language) Matches(rangeList string) bool {
 	c_range_list := C.CString(rangeList)
@@ -1423,12 +1415,6 @@ func (recv *LogAttr) ToC() unsafe.Pointer {
 
 // Blacklisted : PangoMapEntry
 
-// Unsupported : pango_matrix_get_font_scale_factors : unsupported parameter xscale : no type generator for gdouble, double*
-
-// Unsupported : pango_matrix_transform_distance : unsupported parameter dx : no type generator for gdouble, double*
-
-// Unsupported : pango_matrix_transform_point : unsupported parameter x : no type generator for gdouble, double*
-
 // Rectangle is a wrapper around the C record PangoRectangle.
 type Rectangle struct {
 	native *C.PangoRectangle
@@ -1511,8 +1497,6 @@ func (recv *ScriptIter) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
-
-// Unsupported : pango_script_iter_get_range : unsupported parameter script : PangoScript* with indirection level of 1
 
 // TabArray is a wrapper around the C record PangoTabArray.
 type TabArray struct {

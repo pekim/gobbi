@@ -282,8 +282,6 @@ func (recv *FontFace) GetFaceName() string {
 	return retGo
 }
 
-// Unsupported : pango_font_face_list_sizes : unsupported parameter sizes : no param type
-
 // FontFamily is a wrapper around the C record PangoFontFamily.
 type FontFamily struct {
 	native *C.PangoFontFamily
@@ -387,8 +385,6 @@ func (recv *Fontset) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
-
-// Unsupported : pango_fontset_foreach : unsupported parameter func : no type generator for FontsetForeachFunc, PangoFontsetForeachFunc
 
 // GetFont is a wrapper around the C function pango_fontset_get_font.
 func (recv *Fontset) GetFont(wc uint32) *Font {
@@ -551,8 +547,6 @@ func (recv *Layout) GetLines() *glib.SList {
 }
 
 // Unsupported : pango_layout_get_log_attrs : unsupported parameter attrs : no param type
-
-// Unsupported : pango_layout_get_log_attrs_readonly : unsupported parameter n_attrs : no type generator for gint, gint*
 
 // GetPixelExtents is a wrapper around the C function pango_layout_get_pixel_extents.
 func (recv *Layout) GetPixelExtents() (*Rectangle, *Rectangle) {

@@ -10,10 +10,6 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : gdk_pixbuf_format_get_extensions : no return type
-
-// Unsupported : gdk_pixbuf_format_get_mime_types : no return type
-
 // IsSaveOptionSupported is a wrapper around the C function gdk_pixbuf_format_is_save_option_supported.
 func (recv *PixbufFormat) IsSaveOptionSupported(optionKey string) bool {
 	c_option_key := C.CString(optionKey)

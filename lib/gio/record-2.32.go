@@ -57,16 +57,6 @@ func (recv *FileAttributeMatcher) ToString() string {
 	return retGo
 }
 
-// Unsupported : g_io_extension_get_type : no return generator
-
-// Unsupported : g_io_extension_point_get_required_type : no return generator
-
-// Unsupported : g_io_extension_point_set_required_type : unsupported parameter type : no type generator for GType, GType
-
-// Unsupported : g_io_scheduler_job_send_to_mainloop : unsupported parameter func : no type generator for GLib.SourceFunc, GSourceFunc
-
-// Unsupported : g_io_scheduler_job_send_to_mainloop_async : unsupported parameter func : no type generator for GLib.SourceFunc, GSourceFunc
-
 // NetworkMonitorInterface is a wrapper around the C record GNetworkMonitorInterface.
 type NetworkMonitorInterface struct {
 	native *C.GNetworkMonitorInterface
@@ -265,10 +255,6 @@ func (recv *SettingsSchema) GetPath() string {
 	return retGo
 }
 
-// Unsupported : g_settings_schema_list_children : no return type
-
-// Unsupported : g_settings_schema_list_keys : no return type
-
 // Ref is a wrapper around the C function g_settings_schema_ref.
 func (recv *SettingsSchema) Ref() *SettingsSchema {
 	retC := C.g_settings_schema_ref((*C.GSettingsSchema)(recv.native))
@@ -283,14 +269,6 @@ func (recv *SettingsSchema) Unref() {
 
 	return
 }
-
-// Unsupported : g_settings_schema_key_get_default_value : return type : Blacklisted record : GVariant
-
-// Unsupported : g_settings_schema_key_get_range : return type : Blacklisted record : GVariant
-
-// Unsupported : g_settings_schema_key_get_value_type : return type : Blacklisted record : GVariantType
-
-// Unsupported : g_settings_schema_key_range_check : unsupported parameter value : Blacklisted record : GVariant
 
 // SettingsSchemaSource is a wrapper around the C record GSettingsSchemaSource.
 type SettingsSchemaSource struct {
@@ -335,8 +313,6 @@ func SettingsSchemaSourceNewFromDirectory(directory string, parent *SettingsSche
 
 	return retGo, goThrowableError
 }
-
-// Unsupported : g_settings_schema_source_list_schemas : unsupported parameter non_relocatable : no param type
 
 // Lookup is a wrapper around the C function g_settings_schema_source_lookup.
 func (recv *SettingsSchemaSource) Lookup(schemaId string, recursive bool) *SettingsSchema {
@@ -396,7 +372,3 @@ func (recv *UnixMountPoint) GetOptions() string {
 
 	return retGo
 }
-
-// Unsupported : g_unix_mount_point_guess_icon : no return generator
-
-// Unsupported : g_unix_mount_point_guess_symbolic_icon : no return generator

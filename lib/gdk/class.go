@@ -35,8 +35,6 @@ func (recv *AppLaunchContext) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : gdk_app_launch_context_set_icon : unsupported parameter icon : no type generator for Gio.Icon, GIcon*
-
 // Cursor is a wrapper around the C record GdkCursor.
 type Cursor struct {
 	native *C.GdkCursor
@@ -67,8 +65,6 @@ func CursorNew(cursorType CursorType) *Cursor {
 
 	return retGo
 }
-
-// Unsupported : gdk_cursor_get_surface : unsupported parameter x_hot : no type generator for gdouble, gdouble*
 
 // Ref is a wrapper around the C function gdk_cursor_ref.
 func (recv *Cursor) Ref() *Cursor {
@@ -108,21 +104,9 @@ func (recv *Device) ToC() unsafe.Pointer {
 
 // Unsupported : gdk_device_get_axis : unsupported parameter axes : no param type
 
-// Unsupported : gdk_device_get_axis_value : unsupported parameter axes : no param type
-
 // Unsupported : gdk_device_get_history : unsupported parameter events : no param type
 
-// Unsupported : gdk_device_get_key : unsupported parameter keyval : no type generator for guint, guint*
-
-// Unsupported : gdk_device_get_position : unsupported parameter screen : record with indirection level of 2
-
-// Unsupported : gdk_device_get_position_double : unsupported parameter screen : record with indirection level of 2
-
 // Unsupported : gdk_device_get_state : unsupported parameter axes : no param type
-
-// Unsupported : gdk_device_get_window_at_position : unsupported parameter win_x : no type generator for gint, gint*
-
-// Unsupported : gdk_device_get_window_at_position_double : unsupported parameter win_x : no type generator for gdouble, gdouble*
 
 // ListSlaveDevices is a wrapper around the C function gdk_device_list_slave_devices.
 func (recv *Device) ListSlaveDevices() *glib.List {
@@ -218,22 +202,6 @@ func (recv *Display) DeviceIsGrabbed(device *Device) bool {
 	return retGo
 }
 
-// Unsupported : gdk_display_get_event : no return generator
-
-// Unsupported : gdk_display_get_maximal_cursor_size : unsupported parameter width : no type generator for guint, guint*
-
-// Unsupported : gdk_display_get_pointer : unsupported parameter screen : record with indirection level of 2
-
-// Unsupported : gdk_display_get_window_at_pointer : unsupported parameter win_x : no type generator for gint, gint*
-
-// Unsupported : gdk_display_peek_event : no return generator
-
-// Unsupported : gdk_display_put_event : unsupported parameter event : no type generator for Event, const GdkEvent*
-
-// Unsupported : gdk_display_request_selection_notification : unsupported parameter selection : Blacklisted record : GdkAtom
-
-// Unsupported : gdk_display_store_clipboard : unsupported parameter targets : no param type
-
 // DisplayManager is a wrapper around the C record GdkDisplayManager.
 type DisplayManager struct {
 	native *C.GdkDisplayManager
@@ -314,8 +282,6 @@ func (recv *FrameClock) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : gdk_frame_clock_get_refresh_info : unsupported parameter refresh_interval_return : no type generator for gint64, gint64*
-
 // GLContext is a wrapper around the C record GdkGLContext.
 type GLContext struct {
 	native *C.GdkGLContext
@@ -337,10 +303,6 @@ func (recv *GLContext) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : gdk_gl_context_get_required_version : unsupported parameter major : no type generator for gint, int*
-
-// Unsupported : gdk_gl_context_get_version : unsupported parameter major : no type generator for gint, int*
-
 // Keymap is a wrapper around the C record GdkKeymap.
 type Keymap struct {
 	native *C.GdkKeymap
@@ -361,8 +323,6 @@ func (recv *Keymap) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
-
-// Unsupported : gdk_keymap_add_virtual_modifiers : unsupported parameter state : GdkModifierType* with indirection level of 1
 
 // GetDirection is a wrapper around the C function gdk_keymap_get_direction.
 func (recv *Keymap) GetDirection() pango.Direction {
@@ -386,13 +346,7 @@ func (recv *Keymap) LookupKey(key *KeymapKey) uint32 {
 	return retGo
 }
 
-// Unsupported : gdk_keymap_map_virtual_modifiers : unsupported parameter state : GdkModifierType* with indirection level of 1
-
 // Unsupported : gdk_keymap_translate_keyboard_state : unsupported parameter keyval : no type generator for guint, guint*
-
-// Unsupported : gdk_monitor_get_geometry : unsupported parameter geometry : Blacklisted record : GdkRectangle
-
-// Unsupported : gdk_monitor_get_workarea : unsupported parameter workarea : Blacklisted record : GdkRectangle
 
 // Screen is a wrapper around the C record GdkScreen.
 type Screen struct {
@@ -415,12 +369,6 @@ func (recv *Screen) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : gdk_screen_get_monitor_geometry : unsupported parameter dest : Blacklisted record : GdkRectangle
-
-// Unsupported : gdk_screen_get_monitor_workarea : unsupported parameter dest : Blacklisted record : GdkRectangle
-
-// Unsupported : gdk_seat_grab : unsupported parameter event : no type generator for Event, const GdkEvent*
-
 // Visual is a wrapper around the C record GdkVisual.
 type Visual struct {
 	native *C.GdkVisual
@@ -441,12 +389,6 @@ func (recv *Visual) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
-
-// Unsupported : gdk_visual_get_blue_pixel_details : unsupported parameter mask : no type generator for guint32, guint32*
-
-// Unsupported : gdk_visual_get_green_pixel_details : unsupported parameter mask : no type generator for guint32, guint32*
-
-// Unsupported : gdk_visual_get_red_pixel_details : unsupported parameter mask : no type generator for guint32, guint32*
 
 // Window is a wrapper around the C record GdkWindow.
 type Window struct {
@@ -528,12 +470,6 @@ func (recv *Window) BeginResizeDrag(edge WindowEdge, button int32, rootX int32, 
 	return
 }
 
-// Unsupported : gdk_window_coords_from_parent : unsupported parameter x : no type generator for gdouble, gdouble*
-
-// Unsupported : gdk_window_coords_to_parent : unsupported parameter parent_x : no type generator for gdouble, gdouble*
-
-// Unsupported : gdk_window_create_similar_image_surface : unsupported parameter format : no type generator for gint, cairo_format_t
-
 // Deiconify is a wrapper around the C function gdk_window_deiconify.
 func (recv *Window) Deiconify() {
 	C.gdk_window_deiconify((*C.GdkWindow)(recv.native))
@@ -607,12 +543,6 @@ func (recv *Window) GetClipRegion() *cairo.Region {
 
 // Unsupported : gdk_window_get_decorations : unsupported parameter decorations : GdkWMDecoration* with indirection level of 1
 
-// Unsupported : gdk_window_get_device_position : unsupported parameter x : no type generator for gint, gint*
-
-// Unsupported : gdk_window_get_device_position_double : unsupported parameter x : no type generator for gdouble, gdouble*
-
-// Unsupported : gdk_window_get_drag_protocol : unsupported parameter target : record with indirection level of 2
-
 // GetEvents is a wrapper around the C function gdk_window_get_events.
 func (recv *Window) GetEvents() EventMask {
 	retC := C.gdk_window_get_events((*C.GdkWindow)(recv.native))
@@ -638,8 +568,6 @@ func (recv *Window) GetParent() *Window {
 // Unsupported : gdk_window_get_pointer : unsupported parameter x : no type generator for gint, gint*
 
 // Unsupported : gdk_window_get_position : unsupported parameter x : no type generator for gint, gint*
-
-// Unsupported : gdk_window_get_root_coords : unsupported parameter root_x : no type generator for gint, gint*
 
 // Unsupported : gdk_window_get_root_origin : unsupported parameter x : no type generator for gint, gint*
 
@@ -966,8 +894,6 @@ func (recv *Window) SetIconName(name string) {
 	return
 }
 
-// Unsupported : gdk_window_set_invalidate_handler : unsupported parameter handler : no type generator for WindowInvalidateHandlerFunc, GdkWindowInvalidateHandlerFunc
-
 // SetModalHint is a wrapper around the C function gdk_window_set_modal_hint.
 func (recv *Window) SetModalHint(modal bool) {
 	c_modal :=
@@ -1072,8 +998,6 @@ func (recv *Window) ShowUnraised() {
 
 	return
 }
-
-// Unsupported : gdk_window_show_window_menu : unsupported parameter event : no type generator for Event, GdkEvent*
 
 // Stick is a wrapper around the C function gdk_window_stick.
 func (recv *Window) Stick() {

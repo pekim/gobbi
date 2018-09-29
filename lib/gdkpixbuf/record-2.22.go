@@ -24,7 +24,3 @@ func (recv *PixbufFormat) Free() {
 
 	return
 }
-
-// Unsupported : gdk_pixbuf_format_get_extensions : no return type
-
-// Unsupported : gdk_pixbuf_format_get_mime_types : no return type

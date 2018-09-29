@@ -241,12 +241,6 @@ func (recv *DBusObjectSkeletonClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : g_io_extension_get_type : no return generator
-
-// Unsupported : g_io_extension_point_get_required_type : no return generator
-
-// Unsupported : g_io_extension_point_set_required_type : unsupported parameter type : no type generator for GType, GType
-
 // IOModuleScope is a wrapper around the C record GIOModuleScope.
 type IOModuleScope struct {
 	native *C.GIOModuleScope
@@ -284,28 +278,6 @@ func (recv *IOModuleScope) Free() {
 
 	return
 }
-
-// Unsupported : g_io_scheduler_job_send_to_mainloop : unsupported parameter func : no type generator for GLib.SourceFunc, GSourceFunc
-
-// Unsupported : g_io_scheduler_job_send_to_mainloop_async : unsupported parameter func : no type generator for GLib.SourceFunc, GSourceFunc
-
-// Unsupported : g_resource_enumerate_children : no return type
-
-// Unsupported : g_resource_get_info : unsupported parameter size : no type generator for gsize, gsize*
-
-// Unsupported : g_settings_schema_list_children : no return type
-
-// Unsupported : g_settings_schema_list_keys : no return type
-
-// Unsupported : g_settings_schema_key_get_default_value : return type : Blacklisted record : GVariant
-
-// Unsupported : g_settings_schema_key_get_range : return type : Blacklisted record : GVariant
-
-// Unsupported : g_settings_schema_key_get_value_type : return type : Blacklisted record : GVariantType
-
-// Unsupported : g_settings_schema_key_range_check : unsupported parameter value : Blacklisted record : GVariant
-
-// Unsupported : g_settings_schema_source_list_schemas : unsupported parameter non_relocatable : no param type
 
 // TlsDatabaseClass is a wrapper around the C record GTlsDatabaseClass.
 type TlsDatabaseClass struct {
@@ -371,7 +343,3 @@ func (recv *TlsInteractionClass) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
-
-// Unsupported : g_unix_mount_point_guess_icon : no return generator
-
-// Unsupported : g_unix_mount_point_guess_symbolic_icon : no return generator

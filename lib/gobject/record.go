@@ -417,8 +417,6 @@ func (recv *ObjectClass) FindProperty(propertyName string) *ParamSpec {
 	return retGo
 }
 
-// Unsupported : g_object_class_install_properties : unsupported parameter pspecs : no param type
-
 // InstallProperty is a wrapper around the C function g_object_class_install_property.
 func (recv *ObjectClass) InstallProperty(propertyId uint32, pspec *ParamSpec) {
 	c_property_id := (C.guint)(propertyId)
@@ -1028,8 +1026,6 @@ func (recv *Value) DupString() string {
 	return retGo
 }
 
-// Unsupported : g_value_dup_variant : return type : Blacklisted record : GVariant
-
 // FitsPointer is a wrapper around the C function g_value_fits_pointer.
 func (recv *Value) FitsPointer() bool {
 	retC := C.g_value_fits_pointer((*C.GValue)(recv.native))
@@ -1093,8 +1089,6 @@ func (recv *Value) GetFloat() float32 {
 
 	return retGo
 }
-
-// Unsupported : g_value_get_gtype : no return generator
 
 // GetInt is a wrapper around the C function g_value_get_int.
 func (recv *Value) GetInt() int32 {
@@ -1183,8 +1177,6 @@ func (recv *Value) GetUlong() uint64 {
 
 	return retGo
 }
-
-// Unsupported : g_value_get_variant : return type : Blacklisted record : GVariant
 
 // Unsupported : g_value_init : unsupported parameter g_type : no type generator for GType, GType
 
@@ -1276,8 +1268,6 @@ func (recv *Value) SetFloat(vFloat float32) {
 
 	return
 }
-
-// Unsupported : g_value_set_gtype : unsupported parameter v_gtype : no type generator for GType, GType
 
 // SetInstance is a wrapper around the C function g_value_set_instance.
 func (recv *Value) SetInstance(instance uintptr) {
@@ -1434,10 +1424,6 @@ func (recv *Value) SetUlong(vUlong uint64) {
 
 	return
 }
-
-// Unsupported : g_value_set_variant : unsupported parameter variant : Blacklisted record : GVariant
-
-// Unsupported : g_value_take_variant : unsupported parameter variant : Blacklisted record : GVariant
 
 // Transform is a wrapper around the C function g_value_transform.
 func (recv *Value) Transform(destValue *Value) bool {

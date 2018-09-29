@@ -18,14 +18,14 @@ func (m *Method) init(ns *Namespace, record *Record) {
 }
 
 func (m *Method) generate(g *jen.Group, version *Version) {
+	if !supportedByVersion(m, version) {
+		return
+	}
+
 	supported, reason := m.supported()
 	if !supported {
 		g.Commentf("Unsupported : %s", reason)
 		g.Line()
-		return
-	}
-
-	if !supportedByVersion(m, version) {
 		return
 	}
 

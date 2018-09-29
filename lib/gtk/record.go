@@ -1850,8 +1850,6 @@ func (recv *CellAreaClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : gtk_cell_area_class_list_cell_properties : unsupported parameter n_properties : no type generator for guint, guint*
-
 // CellAreaContextClass is a wrapper around the C record GtkCellAreaContextClass.
 type CellAreaContextClass struct {
 	native *C.GtkCellAreaContextClass
@@ -3155,8 +3153,6 @@ func (recv *ContainerClass) HandleBorderWidth() {
 	return
 }
 
-// Unsupported : gtk_container_class_install_child_properties : unsupported parameter pspecs : no param type
-
 // InstallChildProperty is a wrapper around the C function gtk_container_class_install_child_property.
 func (recv *ContainerClass) InstallChildProperty(propertyId uint32, pspec *gobject.ParamSpec) {
 	c_property_id := (C.guint)(propertyId)
@@ -3237,8 +3233,6 @@ func (recv *CssProviderPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
-
-// Unsupported : gtk_css_section_get_file : no return generator
 
 // DialogClass is a wrapper around the C record GtkDialogClass.
 type DialogClass struct {
@@ -4679,8 +4673,6 @@ func (recv *Gradient) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : gtk_gradient_resolve : unsupported parameter resolved_gradient : record with indirection level of 2
-
 // ResolveForContext is a wrapper around the C function gtk_gradient_resolve_for_context.
 func (recv *Gradient) ResolveForContext(context *StyleContext) *cairo.Pattern {
 	c_context := (*C.GtkStyleContext)(context.ToC())
@@ -5340,10 +5332,6 @@ func (recv *IconSet) Ref() *IconSet {
 }
 
 // Unsupported : gtk_icon_set_render_icon : unsupported parameter size : no type generator for gint, GtkIconSize
-
-// Unsupported : gtk_icon_set_render_icon_pixbuf : unsupported parameter size : no type generator for gint, GtkIconSize
-
-// Unsupported : gtk_icon_set_render_icon_surface : unsupported parameter size : no type generator for gint, GtkIconSize
 
 // Unref is a wrapper around the C function gtk_icon_set_unref.
 func (recv *IconSet) Unref() {
@@ -7645,8 +7633,6 @@ func (recv *PaperSize) IsIpp() bool {
 	return retGo
 }
 
-// Unsupported : gtk_paper_size_to_gvariant : return type : Blacklisted record : GVariant
-
 // PlacesSidebarClass is a wrapper around the C record GtkPlacesSidebarClass.
 type PlacesSidebarClass struct {
 	native *C.GtkPlacesSidebarClass
@@ -8805,22 +8791,6 @@ func (recv *RecentFilterInfo) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : gtk_recent_info_create_app_info : no return generator
-
-// Unsupported : gtk_recent_info_get_added : no return generator
-
-// Unsupported : gtk_recent_info_get_application_info : unsupported parameter count : no type generator for guint, guint*
-
-// Unsupported : gtk_recent_info_get_applications : unsupported parameter length : no type generator for gsize, gsize*
-
-// Unsupported : gtk_recent_info_get_gicon : no return generator
-
-// Unsupported : gtk_recent_info_get_groups : unsupported parameter length : no type generator for gsize, gsize*
-
-// Unsupported : gtk_recent_info_get_modified : no return generator
-
-// Unsupported : gtk_recent_info_get_visited : no return generator
-
 // RecentManagerPrivate is a wrapper around the C record GtkRecentManagerPrivate.
 type RecentManagerPrivate struct {
 	native *C.GtkRecentManagerPrivate
@@ -9407,21 +9377,9 @@ func (recv *SelectionData) Free() {
 	return
 }
 
-// Unsupported : gtk_selection_data_get_data : no return type
-
-// Unsupported : gtk_selection_data_get_data_type : return type : Blacklisted record : GdkAtom
-
-// Unsupported : gtk_selection_data_get_data_with_length : unsupported parameter length : no type generator for gint, gint*
-
-// Unsupported : gtk_selection_data_get_selection : return type : Blacklisted record : GdkAtom
-
-// Unsupported : gtk_selection_data_get_target : return type : Blacklisted record : GdkAtom
-
 // Unsupported : gtk_selection_data_get_targets : unsupported parameter targets : no param type
 
 // Blacklisted : gtk_selection_data_get_text
-
-// Unsupported : gtk_selection_data_get_uris : no return type
 
 // Unsupported : gtk_selection_data_set : unsupported parameter type : Blacklisted record : GdkAtom
 
@@ -9437,8 +9395,6 @@ func (recv *SelectionData) SetText(str string, len int32) bool {
 
 	return retGo
 }
-
-// Unsupported : gtk_selection_data_set_uris : unsupported parameter uris : no param type
 
 // TargetsIncludeText is a wrapper around the C function gtk_selection_data_targets_include_text.
 func (recv *SelectionData) TargetsIncludeText() bool {
@@ -13119,8 +13075,6 @@ func (recv *TreePath) GetDepth() int32 {
 
 // Unsupported : gtk_tree_path_get_indices : no return generator
 
-// Unsupported : gtk_tree_path_get_indices_with_depth : unsupported parameter depth : no type generator for gint, gint*
-
 // IsAncestor is a wrapper around the C function gtk_tree_path_is_ancestor.
 func (recv *TreePath) IsAncestor(descendant *TreePath) bool {
 	c_descendant := (*C.GtkTreePath)(descendant.ToC())
@@ -13213,8 +13167,6 @@ func (recv *TreeRowReference) Free() {
 
 	return
 }
-
-// Unsupported : gtk_tree_row_reference_get_model : no return generator
 
 // GetPath is a wrapper around the C function gtk_tree_row_reference_get_path.
 func (recv *TreeRowReference) GetPath() *TreePath {
@@ -13929,8 +13881,6 @@ func (recv *WidgetClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : gtk_widget_class_bind_template_callback_full : unsupported parameter callback_symbol : no type generator for GObject.Callback, GCallback
-
 // InstallStyleProperty is a wrapper around the C function gtk_widget_class_install_style_property.
 func (recv *WidgetClass) InstallStyleProperty(pspec *gobject.ParamSpec) {
 	c_pspec := (*C.GParamSpec)(pspec.ToC())
@@ -13941,12 +13891,6 @@ func (recv *WidgetClass) InstallStyleProperty(pspec *gobject.ParamSpec) {
 }
 
 // Unsupported : gtk_widget_class_install_style_property_parser : unsupported parameter parser : no type generator for RcPropertyParser, GtkRcPropertyParser
-
-// Unsupported : gtk_widget_class_list_style_properties : unsupported parameter n_properties : no type generator for guint, guint*
-
-// Unsupported : gtk_widget_class_set_accessible_type : unsupported parameter type : no type generator for GType, GType
-
-// Unsupported : gtk_widget_class_set_connect_func : unsupported parameter connect_func : no type generator for BuilderConnectFunc, GtkBuilderConnectFunc
 
 // WidgetClassPrivate is a wrapper around the C record GtkWidgetClassPrivate.
 type WidgetClassPrivate struct {
@@ -13990,14 +13934,6 @@ func (recv *WidgetPath) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : gtk_widget_path_append_type : unsupported parameter type : no type generator for GType, GType
-
-// Unsupported : gtk_widget_path_get_object_type : no return generator
-
-// Unsupported : gtk_widget_path_has_parent : unsupported parameter type : no type generator for GType, GType
-
-// Unsupported : gtk_widget_path_is_type : unsupported parameter type : no type generator for GType, GType
-
 // IterGetName is a wrapper around the C function gtk_widget_path_iter_get_name.
 func (recv *WidgetPath) IterGetName(pos int32) string {
 	c_pos := (C.gint)(pos)
@@ -14007,8 +13943,6 @@ func (recv *WidgetPath) IterGetName(pos int32) string {
 
 	return retGo
 }
-
-// Unsupported : gtk_widget_path_iter_get_object_type : no return generator
 
 // IterGetSiblingIndex is a wrapper around the C function gtk_widget_path_iter_get_sibling_index.
 func (recv *WidgetPath) IterGetSiblingIndex(pos int32) uint32 {
@@ -14029,14 +13963,6 @@ func (recv *WidgetPath) IterGetSiblings(pos int32) *WidgetPath {
 
 	return retGo
 }
-
-// Unsupported : gtk_widget_path_iter_has_qregion : unsupported parameter flags : GtkRegionFlags* with indirection level of 1
-
-// Unsupported : gtk_widget_path_iter_has_region : unsupported parameter flags : GtkRegionFlags* with indirection level of 1
-
-// Unsupported : gtk_widget_path_iter_set_object_type : unsupported parameter type : no type generator for GType, GType
-
-// Unsupported : gtk_widget_path_prepend_type : unsupported parameter type : no type generator for GType, GType
 
 // WidgetPrivate is a wrapper around the C record GtkWidgetPrivate.
 type WidgetPrivate struct {

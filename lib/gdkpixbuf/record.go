@@ -30,10 +30,6 @@ func (recv *PixbufFormat) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : gdk_pixbuf_format_get_extensions : no return type
-
-// Unsupported : gdk_pixbuf_format_get_mime_types : no return type
-
 // PixbufLoaderClass is a wrapper around the C record GdkPixbufLoaderClass.
 type PixbufLoaderClass struct {
 	native *C.GdkPixbufLoaderClass

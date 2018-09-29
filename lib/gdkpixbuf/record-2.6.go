@@ -10,8 +10,6 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : gdk_pixbuf_format_get_extensions : no return type
-
 // GetLicense is a wrapper around the C function gdk_pixbuf_format_get_license.
 func (recv *PixbufFormat) GetLicense() string {
 	retC := C.gdk_pixbuf_format_get_license((*C.GdkPixbufFormat)(recv.native))
@@ -20,8 +18,6 @@ func (recv *PixbufFormat) GetLicense() string {
 
 	return retGo
 }
-
-// Unsupported : gdk_pixbuf_format_get_mime_types : no return type
 
 // IsDisabled is a wrapper around the C function gdk_pixbuf_format_is_disabled.
 func (recv *PixbufFormat) IsDisabled() bool {

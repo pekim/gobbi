@@ -8,16 +8,6 @@ package atk
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : atk_object_connect_property_change_handler : unsupported parameter handler : no type generator for PropertyChangeHandler, AtkPropertyChangeHandler*
-
-// Unsupported : atk_object_factory_get_accessible_type : no return generator
-
-// Unsupported : atk_registry_get_factory : unsupported parameter type : no type generator for GType, GType
-
-// Unsupported : atk_registry_get_factory_type : unsupported parameter type : no type generator for GType, GType
-
-// Unsupported : atk_registry_set_factory_type : unsupported parameter type : no type generator for GType, GType
-
 // Unsupported : atk_relation_new : unsupported parameter targets : no param type
 
 // AddTarget is a wrapper around the C function atk_relation_add_target.
@@ -29,8 +19,6 @@ func (recv *Relation) AddTarget(target *Object) {
 	return
 }
 
-// Unsupported : atk_relation_get_target : no return type
-
 // AddRelationByType is a wrapper around the C function atk_relation_set_add_relation_by_type.
 func (recv *RelationSet) AddRelationByType(relationship RelationType, target *Object) {
 	c_relationship := (C.AtkRelationType)(relationship)
@@ -41,7 +29,3 @@ func (recv *RelationSet) AddRelationByType(relationship RelationType, target *Ob
 
 	return
 }
-
-// Unsupported : atk_state_set_add_states : unsupported parameter types : no param type
-
-// Unsupported : atk_state_set_contains_states : unsupported parameter types : no param type

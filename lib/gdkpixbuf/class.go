@@ -276,8 +276,6 @@ func (recv *Pixbuf) GetOption(key string) string {
 
 // Unsupported : gdk_pixbuf_get_pixels : no return type
 
-// Unsupported : gdk_pixbuf_get_pixels_with_length : unsupported parameter length : no type generator for guint, guint*
-
 // GetRowstride is a wrapper around the C function gdk_pixbuf_get_rowstride.
 func (recv *Pixbuf) GetRowstride() int32 {
 	retC := C.gdk_pixbuf_get_rowstride((*C.GdkPixbuf)(recv.native))
@@ -310,8 +308,6 @@ func (recv *Pixbuf) NewSubpixbuf(srcX int32, srcY int32, width int32, height int
 	return retGo
 }
 
-// Unsupported : gdk_pixbuf_read_pixels : no return generator
-
 // Ref is a wrapper around the C function gdk_pixbuf_ref.
 func (recv *Pixbuf) Ref() *Pixbuf {
 	retC := C.gdk_pixbuf_ref((*C.GdkPixbuf)(recv.native))
@@ -335,22 +331,6 @@ func (recv *Pixbuf) SaturateAndPixelate(dest *Pixbuf, saturation float32, pixela
 }
 
 // Unsupported : gdk_pixbuf_save : unsupported parameter error : record with indirection level of 2
-
-// Unsupported : gdk_pixbuf_save_to_buffer : unsupported parameter buffer : no param type
-
-// Unsupported : gdk_pixbuf_save_to_bufferv : unsupported parameter buffer : no param type
-
-// Unsupported : gdk_pixbuf_save_to_callback : unsupported parameter save_func : no type generator for PixbufSaveFunc, GdkPixbufSaveFunc
-
-// Unsupported : gdk_pixbuf_save_to_callbackv : unsupported parameter save_func : no type generator for PixbufSaveFunc, GdkPixbufSaveFunc
-
-// Unsupported : gdk_pixbuf_save_to_stream : unsupported parameter error : record with indirection level of 2
-
-// Unsupported : gdk_pixbuf_save_to_stream_async : unsupported parameter callback : no type generator for Gio.AsyncReadyCallback, GAsyncReadyCallback
-
-// Unsupported : gdk_pixbuf_save_to_streamv : unsupported parameter option_keys : no param type
-
-// Unsupported : gdk_pixbuf_save_to_streamv_async : unsupported parameter option_keys : no param type
 
 // Unsupported : gdk_pixbuf_savev : unsupported parameter option_keys : no param type
 
