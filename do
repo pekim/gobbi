@@ -29,7 +29,7 @@ build () {
 }
 
 generate () {
-    go run internal/cmd/generate/main.go
+    go run internal/cmd/generate/*.go
 }
 
 test () {
