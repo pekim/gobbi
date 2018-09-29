@@ -8,22 +8,7 @@ import (
 
 func main() {
 	start := time.Now()
+	generate.FromRoot("Gtk", "3.0")
+	fmt.Printf("\ngeneration %.0fms\n\n", time.Now().Sub(start).Seconds()*1000)
 
-	girs := generate.GirNewRoot("Gtk", "3.0")
-
-	parseDuration := time.Now().Sub(start)
-	start = time.Now()
-
-	for _, gir := range girs {
-		gir.Generate()
-	}
-
-	generateDuration := time.Now().Sub(start)
-
-	durationMessage("parse", parseDuration)
-	durationMessage("generate", generateDuration)
-}
-
-func durationMessage(action string, duration time.Duration) {
-	fmt.Printf("  %-8s %.0fms\n", action, duration.Seconds()*1000)
 }

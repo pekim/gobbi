@@ -13,9 +13,17 @@ type Gir struct {
 	addendaRepo *Repository
 }
 
-func GirNewRoot(name string, version string) []*Gir {
+func FromRoot(name, version string) {
+	girs := girNewRoot("Gtk", "3.0")
+
+	for _, gir := range girs {
+		gir.generate()
+	}
+}
+
+func girNewRoot(name string, version string) []*Gir {
 	girsMap := map[string]*Gir{}
-	GirNew(name, version, girsMap)
+	girNew(name, version, girsMap)
 
 	// create a map of namespaces
 	nn := make(map[string]*Namespace)
@@ -46,7 +54,7 @@ func GirNewRoot(name string, version string) []*Gir {
 	return girs
 }
 
-func GirNew(name string, version string, girs map[string]*Gir) {
+func girNew(name string, version string, girs map[string]*Gir) {
 	fullname := name + "-" + version
 
 	if _, haveGir := girs[fullname]; haveGir {
@@ -61,13 +69,13 @@ func GirNew(name string, version string, girs map[string]*Gir) {
 	girs[fullname] = g
 
 	for _, i := range g.repo.Includes {
-		GirNew(i.Name, i.Version, girs)
+		girNew(i.Name, i.Version, girs)
 	}
 
 	return
 }
 
-func (g *Gir) Generate() {
+func (g *Gir) generate() {
 	g.repo.Generate()
 }
 
