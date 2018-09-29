@@ -542,12 +542,7 @@ func (recv *Window) Destroy() {
 	return
 }
 
-// DestroyNotify is a wrapper around the C function gdk_window_destroy_notify.
-func (recv *Window) DestroyNotify() {
-	C.gdk_window_destroy_notify((*C.GdkWindow)(recv.native))
-
-	return
-}
+// Blacklisted : gdk_window_destroy_notify
 
 // EndPaint is a wrapper around the C function gdk_window_end_paint.
 func (recv *Window) EndPaint() {

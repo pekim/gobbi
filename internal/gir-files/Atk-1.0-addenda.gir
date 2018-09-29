@@ -11,5 +11,8 @@
 
     <function blacklist="true" c:identifier="atk_add_focus_tracker" />
     <function blacklist="true" c:identifier="atk_focus_tracker_init" />
+
+    <!-- depends on an alias (AttributeSet) to *glib.SList; not supported yet -->
+    <function blacklist="true" c:identifier="atk_attribute_set_free" />
   </namespace>
 </repository>

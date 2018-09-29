@@ -6,4 +6,8 @@
 >
   <c:include name="glib/gstdio.h"/>
   <c:include name="cairo/cairo.h"/>
+
+  <namespace>
+    <function blacklist="true" c:identifier="cairo_image_surface_create"/>
+  </namespace>
 </repository>

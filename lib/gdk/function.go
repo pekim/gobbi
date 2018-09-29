@@ -514,18 +514,7 @@ func SettingGet(name string, value *gobject.Value) bool {
 	return retGo
 }
 
-// SynthesizeWindowState is a wrapper around the C function gdk_synthesize_window_state.
-func SynthesizeWindowState(window *Window, unsetFlags WindowState, setFlags WindowState) {
-	c_window := (*C.GdkWindow)(window.ToC())
-
-	c_unset_flags := (C.GdkWindowState)(unsetFlags)
-
-	c_set_flags := (C.GdkWindowState)(setFlags)
-
-	C.gdk_synthesize_window_state(c_window, c_unset_flags, c_set_flags)
-
-	return
-}
+// Blacklisted : gdk_synthesize_window_state
 
 // ThreadsEnter is a wrapper around the C function gdk_threads_enter.
 func ThreadsEnter() {

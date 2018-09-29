@@ -4798,15 +4798,7 @@ func IMContextSimpleNew() *IMContext {
 	return retGo
 }
 
-// AddComposeFile is a wrapper around the C function gtk_im_context_simple_add_compose_file.
-func (recv *IMContextSimple) AddComposeFile(composeFile string) {
-	c_compose_file := C.CString(composeFile)
-	defer C.free(unsafe.Pointer(c_compose_file))
-
-	C.gtk_im_context_simple_add_compose_file((*C.GtkIMContextSimple)(recv.native), c_compose_file)
-
-	return
-}
+// Blacklisted : gtk_im_context_simple_add_compose_file
 
 // Unsupported : gtk_im_context_simple_add_table : unsupported parameter data : no param type
 

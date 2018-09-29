@@ -15,14 +15,7 @@ import "C"
 
 // Unsupported : atk_add_key_event_listener : unsupported parameter listener : no type generator for KeySnoopFunc, AtkKeySnoopFunc
 
-// AttributeSetFree is a wrapper around the C function atk_attribute_set_free.
-func AttributeSetFree(attribSet *AttributeSet) {
-	c_attrib_set := (*C.AtkAttributeSet)(attribSet.ToC())
-
-	C.atk_attribute_set_free(c_attrib_set)
-
-	return
-}
+// Blacklisted : atk_attribute_set_free
 
 // Unsupported : atk_focus_tracker_init : unsupported parameter init : no type generator for EventListenerInit, AtkEventListenerInit
 

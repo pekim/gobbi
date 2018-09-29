@@ -149,23 +149,7 @@ func AttrWeightNew(weight Weight) *Attribute {
 
 // Blacklisted : pango_config_key_get_system
 
-// DefaultBreak is a wrapper around the C function pango_default_break.
-func DefaultBreak(text string, length int32, analysis *Analysis, attrs *LogAttr, attrsLen int32) {
-	c_text := C.CString(text)
-	defer C.free(unsafe.Pointer(c_text))
-
-	c_length := (C.int)(length)
-
-	c_analysis := (*C.PangoAnalysis)(analysis.ToC())
-
-	c_attrs := (*C.PangoLogAttr)(attrs.ToC())
-
-	c_attrs_len := (C.int)(attrsLen)
-
-	C.pango_default_break(c_text, c_length, c_analysis, c_attrs, c_attrs_len)
-
-	return
-}
+// Blacklisted : pango_default_break
 
 // Unsupported : pango_find_map : return type : Blacklisted record : PangoMap
 

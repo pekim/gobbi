@@ -8,9 +8,4 @@ package cairo
 // #include <stdlib.h>
 import "C"
 
-// ImageSurfaceCreate is a wrapper around the C function cairo_image_surface_create.
-func ImageSurfaceCreate() {
-	C.cairo_image_surface_create()
-
-	return
-}
+// Blacklisted : cairo_image_surface_create
