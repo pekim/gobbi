@@ -48,6 +48,25 @@ func (recv *ActionMapInterface) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// ToString is a wrapper around the C function g_file_attribute_matcher_to_string.
+func (recv *FileAttributeMatcher) ToString() string {
+	retC := C.g_file_attribute_matcher_to_string((*C.GFileAttributeMatcher)(recv.native))
+	retGo := C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// Unsupported : g_io_extension_get_type : no return generator
+
+// Unsupported : g_io_extension_point_get_required_type : no return generator
+
+// Unsupported : g_io_extension_point_set_required_type : unsupported parameter type : no type generator for GType, GType
+
+// Unsupported : g_io_scheduler_job_send_to_mainloop : unsupported parameter func : no type generator for GLib.SourceFunc, GSourceFunc
+
+// Unsupported : g_io_scheduler_job_send_to_mainloop_async : unsupported parameter func : no type generator for GLib.SourceFunc, GSourceFunc
+
 // NetworkMonitorInterface is a wrapper around the C record GNetworkMonitorInterface.
 type NetworkMonitorInterface struct {
 	native *C.GNetworkMonitorInterface
@@ -209,6 +228,10 @@ func (recv *Resource) Unref() {
 	return
 }
 
+// Blacklisted : GSettingsBackendClass
+
+// Blacklisted : GSettingsBackendPrivate
+
 // SettingsSchema is a wrapper around the C record GSettingsSchema.
 type SettingsSchema struct {
 	native *C.GSettingsSchema
@@ -264,6 +287,14 @@ func (recv *SettingsSchema) Unref() {
 
 	return
 }
+
+// Unsupported : g_settings_schema_key_get_default_value : return type : Blacklisted record : GVariant
+
+// Unsupported : g_settings_schema_key_get_range : return type : Blacklisted record : GVariant
+
+// Unsupported : g_settings_schema_key_get_value_type : return type : Blacklisted record : GVariantType
+
+// Unsupported : g_settings_schema_key_range_check : unsupported parameter value : Blacklisted record : GVariant
 
 // SettingsSchemaSource is a wrapper around the C record GSettingsSchemaSource.
 type SettingsSchemaSource struct {
@@ -339,3 +370,37 @@ func (recv *SettingsSchemaSource) Unref() {
 
 	return
 }
+
+// Fini is a wrapper around the C function g_static_resource_fini.
+func (recv *StaticResource) Fini() {
+	C.g_static_resource_fini((*C.GStaticResource)(recv.native))
+
+	return
+}
+
+// GetResource is a wrapper around the C function g_static_resource_get_resource.
+func (recv *StaticResource) GetResource() *Resource {
+	retC := C.g_static_resource_get_resource((*C.GStaticResource)(recv.native))
+	retGo := ResourceNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// Init is a wrapper around the C function g_static_resource_init.
+func (recv *StaticResource) Init() {
+	C.g_static_resource_init((*C.GStaticResource)(recv.native))
+
+	return
+}
+
+// GetOptions is a wrapper around the C function g_unix_mount_point_get_options.
+func (recv *UnixMountPoint) GetOptions() string {
+	retC := C.g_unix_mount_point_get_options((*C.GUnixMountPoint)(recv.native))
+	retGo := C.GoString(retC)
+
+	return retGo
+}
+
+// Unsupported : g_unix_mount_point_guess_icon : no return generator
+
+// Unsupported : g_unix_mount_point_guess_symbolic_icon : no return generator

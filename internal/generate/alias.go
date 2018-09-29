@@ -27,7 +27,7 @@ func (a *Alias) init(ns *Namespace) {
 	}
 }
 
-func (a *Alias) version() string {
+func (a Alias) version() string {
 	return ""
 }
 
@@ -51,6 +51,10 @@ func (a *Alias) mergeAddenda(addenda *Alias) {
 }
 
 func (a Alias) generate(g *jen.Group, version *Version) {
+	if !supportedByVersion(a, version) {
+		return
+	}
+
 	g.Commentf("%s is a representation of the C alias of the same name.", a.Name)
 
 	g.Type()

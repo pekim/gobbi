@@ -66,9 +66,12 @@ func (r *Record) mergeAddenda(addenda *Record) {
 }
 
 func (r *Record) generate(g *jen.Group, version *Version) {
-	r.generateType(g)
-	(&RecordNewFromCFunc{r}).generate(g)
-	(&RecordToCFunc{r}).generate(g)
+	if supportedByVersion(r, version) {
+		r.generateType(g)
+		(&RecordNewFromCFunc{r}).generate(g)
+		(&RecordToCFunc{r}).generate(g)
+	}
+
 	r.Constructors.generate(g, version)
 	r.Methods.generate(g, version)
 }

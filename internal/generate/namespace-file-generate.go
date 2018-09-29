@@ -98,10 +98,6 @@ func (ns *Namespace) generateEntityVersionedFile(filename string, version Versio
 		ns.generateVersionDebugFunction(f, version.value)
 
 		for _, entity := range generatables.entities() {
-			if !supportedByVersion(entity, &version) {
-				continue
-			}
-
 			if supported, reason := entity.supported(); !supported {
 				f.Commentf("Unsupported : %s", reason)
 				f.Line()
@@ -113,6 +109,10 @@ func (ns *Namespace) generateEntityVersionedFile(filename string, version Versio
 				f.Line()
 				continue
 			}
+
+			//if !supportedByVersion(entity, &version) {
+			//	continue
+			//}
 
 			entity.generate(f.Group, &version)
 		}

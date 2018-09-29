@@ -97,6 +97,10 @@ func (f *Function) supported() (supported bool, reason string) {
 }
 
 func (f *Function) generate(g *jen.Group, version *Version) {
+	if !supportedByVersion(f, version) {
+		return
+	}
+
 	g.Commentf("%s is a wrapper around the C function %s.", f.GoName, f.CIdentifier)
 
 	g.

@@ -10,6 +10,8 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
+// Blacklisted : GdkAtom
+
 // DevicePadInterface is a wrapper around the C record GdkDevicePadInterface.
 type DevicePadInterface struct {
 	native *C.GdkDevicePadInterface
@@ -216,3 +218,5 @@ func (recv *MonitorClass) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+// Blacklisted : GdkRectangle

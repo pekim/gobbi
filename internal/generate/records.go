@@ -15,6 +15,17 @@ func (rr Records) versionList() Versions {
 		if r.Version != "" {
 			versions = append(versions, VersionNew(r.Version))
 		}
+
+		for _, ctor := range r.Constructors {
+			if ctor.Version != "" {
+				versions = append(versions, VersionNew(ctor.Version))
+			}
+		}
+		for _, m := range r.Methods {
+			if m.Version != "" {
+				versions = append(versions, VersionNew(m.Version))
+			}
+		}
 	}
 
 	return versions

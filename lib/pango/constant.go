@@ -13,6 +13,8 @@ import "C"
 
 // Unsupported : type Glyph for GLYPH_EMPTY
 
+// Unsupported : type Glyph for GLYPH_INVALID_INPUT
+
 // Unsupported : type Glyph for GLYPH_UNKNOWN_FLAG
 
 // Blacklisted : RENDER_TYPE_NONE
@@ -22,3 +24,5 @@ const SCALE int = C.PANGO_SCALE
 // Blacklisted : UNKNOWN_GLYPH_HEIGHT
 
 // Blacklisted : UNKNOWN_GLYPH_WIDTH
+
+// Blacklisted : VERSION_MIN_REQUIRED

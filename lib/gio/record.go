@@ -2853,6 +2853,10 @@ func (recv *ResolverPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Unsupported : g_resource_enumerate_children : no return type
+
+// Unsupported : g_resource_get_info : unsupported parameter size : no type generator for gsize, gsize*
+
 // SeekableIface is a wrapper around the C record GSeekableIface.
 type SeekableIface struct {
 	native *C.GSeekableIface
@@ -2932,6 +2936,10 @@ func (recv *SettingsPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Unsupported : g_settings_schema_list_children : no return type
+
+// Unsupported : g_settings_schema_list_keys : no return type
+
 // SettingsSchemaKey is a wrapper around the C record GSettingsSchemaKey.
 type SettingsSchemaKey struct {
 	native *C.GSettingsSchemaKey
@@ -2960,6 +2968,8 @@ func (recv *SettingsSchemaKey) ToC() unsafe.Pointer {
 // Unsupported : g_settings_schema_key_get_value_type : return type : Blacklisted record : GVariantType
 
 // Unsupported : g_settings_schema_key_range_check : unsupported parameter value : Blacklisted record : GVariant
+
+// Unsupported : g_settings_schema_source_list_schemas : unsupported parameter non_relocatable : no param type
 
 // SimpleActionGroupClass is a wrapper around the C record GSimpleActionGroupClass.
 type SimpleActionGroupClass struct {

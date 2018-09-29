@@ -1423,6 +1423,12 @@ func (recv *LogAttr) ToC() unsafe.Pointer {
 
 // Blacklisted : PangoMapEntry
 
+// Unsupported : pango_matrix_get_font_scale_factors : unsupported parameter xscale : no type generator for gdouble, double*
+
+// Unsupported : pango_matrix_transform_distance : unsupported parameter dx : no type generator for gdouble, double*
+
+// Unsupported : pango_matrix_transform_point : unsupported parameter x : no type generator for gdouble, double*
+
 // Rectangle is a wrapper around the C record PangoRectangle.
 type Rectangle struct {
 	native *C.PangoRectangle

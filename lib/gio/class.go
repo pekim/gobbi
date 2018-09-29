@@ -70,6 +70,16 @@ func (recv *AppLaunchContext) LaunchFailed(startupNotifyId string) {
 	return
 }
 
+// Unsupported : g_application_add_main_option : unsupported parameter short_name : no type generator for gchar, char
+
+// Unsupported : g_application_add_main_option_entries : unsupported parameter entries : no param type
+
+// Unsupported : g_application_open : unsupported parameter files : no param type
+
+// Unsupported : g_application_run : unsupported parameter argv : no param type
+
+// Unsupported : g_application_set_action_group : unsupported parameter action_group : no type generator for ActionGroup, GActionGroup*
+
 // ApplicationCommandLine is a wrapper around the C record GApplicationCommandLine.
 type ApplicationCommandLine struct {
 	native *C.GApplicationCommandLine
@@ -487,6 +497,12 @@ func (recv *ConverterOutputStream) ToC() unsafe.Pointer {
 
 // Unsupported : g_converter_output_stream_get_converter : no return generator
 
+// Unsupported : g_credentials_get_unix_pid : no return generator
+
+// Unsupported : g_credentials_get_unix_user : no return generator
+
+// Unsupported : g_credentials_set_unix_user : unsupported parameter uid : no type generator for guint, uid_t
+
 // DBusActionGroup is a wrapper around the C record GDBusActionGroup.
 type DBusActionGroup struct {
 	native *C.GDBusActionGroup
@@ -508,6 +524,52 @@ func (recv *DBusActionGroup) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Unsupported : g_dbus_connection_new_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
+
+// Unsupported : g_dbus_connection_new_for_address_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
+
+// Unsupported : g_dbus_connection_add_filter : unsupported parameter filter_function : no type generator for DBusMessageFilterFunction, GDBusMessageFilterFunction
+
+// Unsupported : g_dbus_connection_call : unsupported parameter parameters : Blacklisted record : GVariant
+
+// Unsupported : g_dbus_connection_call_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
+
+// Unsupported : g_dbus_connection_call_sync : unsupported parameter parameters : Blacklisted record : GVariant
+
+// Unsupported : g_dbus_connection_call_with_unix_fd_list : unsupported parameter parameters : Blacklisted record : GVariant
+
+// Unsupported : g_dbus_connection_call_with_unix_fd_list_finish : unsupported parameter out_fd_list : record with indirection level of 2
+
+// Unsupported : g_dbus_connection_call_with_unix_fd_list_sync : unsupported parameter parameters : Blacklisted record : GVariant
+
+// Unsupported : g_dbus_connection_close : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+
+// Unsupported : g_dbus_connection_close_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
+
+// Unsupported : g_dbus_connection_emit_signal : unsupported parameter parameters : Blacklisted record : GVariant
+
+// Unsupported : g_dbus_connection_export_action_group : unsupported parameter action_group : no type generator for ActionGroup, GActionGroup*
+
+// Unsupported : g_dbus_connection_flush : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+
+// Unsupported : g_dbus_connection_flush_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
+
+// Unsupported : g_dbus_connection_register_object : unsupported parameter user_data_free_func : no type generator for GLib.DestroyNotify, GDestroyNotify
+
+// Unsupported : g_dbus_connection_register_subtree : unsupported parameter user_data_free_func : no type generator for GLib.DestroyNotify, GDestroyNotify
+
+// Unsupported : g_dbus_connection_send_message : unsupported parameter out_serial : no type generator for guint32, volatile guint32*
+
+// Unsupported : g_dbus_connection_send_message_with_reply : unsupported parameter out_serial : no type generator for guint32, volatile guint32*
+
+// Unsupported : g_dbus_connection_send_message_with_reply_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
+
+// Unsupported : g_dbus_connection_send_message_with_reply_sync : unsupported parameter out_serial : no type generator for guint32, volatile guint32*
+
+// Unsupported : g_dbus_connection_signal_subscribe : unsupported parameter callback : no type generator for DBusSignalCallback, GDBusSignalCallback
+
+// Unsupported : g_dbus_interface_skeleton_get_properties : return type : Blacklisted record : GVariant
+
 // DBusMenuModel is a wrapper around the C record GDBusMenuModel.
 type DBusMenuModel struct {
 	native *C.GDBusMenuModel
@@ -528,6 +590,64 @@ func (recv *DBusMenuModel) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+// Unsupported : g_dbus_message_new_from_blob : unsupported parameter blob : no param type
+
+// Unsupported : g_dbus_message_get_body : return type : Blacklisted record : GVariant
+
+// Unsupported : g_dbus_message_get_header : return type : Blacklisted record : GVariant
+
+// Unsupported : g_dbus_message_get_header_fields : no return type
+
+// Unsupported : g_dbus_message_new_method_error : unsupported parameter ... : varargs
+
+// Unsupported : g_dbus_message_new_method_error_valist : unsupported parameter var_args : no type generator for va_list, va_list
+
+// Unsupported : g_dbus_message_set_body : unsupported parameter body : Blacklisted record : GVariant
+
+// Unsupported : g_dbus_message_set_header : unsupported parameter value : Blacklisted record : GVariant
+
+// Unsupported : g_dbus_message_to_blob : unsupported parameter out_size : no type generator for gsize, gsize*
+
+// Unsupported : g_dbus_method_invocation_get_parameters : return type : Blacklisted record : GVariant
+
+// Unsupported : g_dbus_method_invocation_return_error : unsupported parameter ... : varargs
+
+// Unsupported : g_dbus_method_invocation_return_error_valist : unsupported parameter var_args : no type generator for va_list, va_list
+
+// Unsupported : g_dbus_method_invocation_return_value : unsupported parameter parameters : Blacklisted record : GVariant
+
+// Unsupported : g_dbus_method_invocation_return_value_with_unix_fd_list : unsupported parameter parameters : Blacklisted record : GVariant
+
+// Unsupported : g_dbus_object_manager_client_new_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
+
+// Unsupported : g_dbus_object_manager_client_new_for_bus_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
+
+// Unsupported : g_dbus_object_manager_client_new_for_bus_sync : unsupported parameter get_proxy_type_func : no type generator for DBusProxyTypeFunc, GDBusProxyTypeFunc
+
+// Unsupported : g_dbus_object_manager_client_new_sync : unsupported parameter get_proxy_type_func : no type generator for DBusProxyTypeFunc, GDBusProxyTypeFunc
+
+// Unsupported : g_dbus_proxy_new_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
+
+// Unsupported : g_dbus_proxy_new_for_bus_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
+
+// Unsupported : g_dbus_proxy_call : unsupported parameter parameters : Blacklisted record : GVariant
+
+// Unsupported : g_dbus_proxy_call_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
+
+// Unsupported : g_dbus_proxy_call_sync : unsupported parameter parameters : Blacklisted record : GVariant
+
+// Unsupported : g_dbus_proxy_call_with_unix_fd_list : unsupported parameter parameters : Blacklisted record : GVariant
+
+// Unsupported : g_dbus_proxy_call_with_unix_fd_list_finish : unsupported parameter out_fd_list : record with indirection level of 2
+
+// Unsupported : g_dbus_proxy_call_with_unix_fd_list_sync : unsupported parameter parameters : Blacklisted record : GVariant
+
+// Unsupported : g_dbus_proxy_get_cached_property : return type : Blacklisted record : GVariant
+
+// Unsupported : g_dbus_proxy_get_cached_property_names : no return type
+
+// Unsupported : g_dbus_proxy_set_cached_property : unsupported parameter value : Blacklisted record : GVariant
 
 // DataInputStream is a wrapper around the C record GDataInputStream.
 type DataInputStream struct {
@@ -2415,6 +2535,30 @@ func (recv *MemoryOutputStream) GetSize() uint64 {
 	return retGo
 }
 
+// Unsupported : g_menu_attribute_iter_get_next : unsupported parameter value : Blacklisted record : GVariant
+
+// Unsupported : g_menu_attribute_iter_get_value : return type : Blacklisted record : GVariant
+
+// Unsupported : g_menu_item_get_attribute : unsupported parameter ... : varargs
+
+// Unsupported : g_menu_item_get_attribute_value : unsupported parameter expected_type : Blacklisted record : GVariantType
+
+// Unsupported : g_menu_item_set_action_and_target : unsupported parameter ... : varargs
+
+// Unsupported : g_menu_item_set_action_and_target_value : unsupported parameter target_value : Blacklisted record : GVariant
+
+// Unsupported : g_menu_item_set_attribute : unsupported parameter ... : varargs
+
+// Unsupported : g_menu_item_set_attribute_value : unsupported parameter value : Blacklisted record : GVariant
+
+// Unsupported : g_menu_item_set_icon : unsupported parameter icon : no type generator for Icon, GIcon*
+
+// Unsupported : g_menu_link_iter_get_next : unsupported parameter value : record with indirection level of 2
+
+// Unsupported : g_menu_model_get_item_attribute : unsupported parameter ... : varargs
+
+// Unsupported : g_menu_model_get_item_attribute_value : unsupported parameter expected_type : Blacklisted record : GVariantType
+
 // MountOperation is a wrapper around the C record GMountOperation.
 type MountOperation struct {
 	native *C.GMountOperation
@@ -2628,6 +2772,16 @@ func (recv *NetworkService) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+// Unsupported : g_notification_add_button_with_target : unsupported parameter ... : varargs
+
+// Unsupported : g_notification_add_button_with_target_value : unsupported parameter target : Blacklisted record : GVariant
+
+// Unsupported : g_notification_set_default_action_and_target : unsupported parameter ... : varargs
+
+// Unsupported : g_notification_set_default_action_and_target_value : unsupported parameter target : Blacklisted record : GVariant
+
+// Unsupported : g_notification_set_icon : unsupported parameter icon : no type generator for Icon, GIcon*
 
 // OutputStream is a wrapper around the C record GOutputStream.
 type OutputStream struct {
@@ -3029,6 +3183,12 @@ func (recv *SimpleAction) ToC() unsafe.Pointer {
 
 // Unsupported : g_simple_action_set_state_hint : unsupported parameter state_hint : Blacklisted record : GVariant
 
+// Unsupported : g_simple_action_group_add_entries : unsupported parameter entries : no param type
+
+// Unsupported : g_simple_action_group_insert : unsupported parameter action : no type generator for Action, GAction*
+
+// Unsupported : g_simple_action_group_lookup : no return generator
+
 // SimpleAsyncResult is a wrapper around the C record GSimpleAsyncResult.
 type SimpleAsyncResult struct {
 	native *C.GSimpleAsyncResult
@@ -3211,6 +3371,28 @@ func (recv *SimpleProxyResolver) ToC() unsafe.Pointer {
 
 // Unsupported : g_simple_proxy_resolver_set_ignore_hosts : unsupported parameter ignore_hosts : in string with indirection level of 2
 
+// Unsupported : g_socket_get_option : unsupported parameter value : no type generator for gint, gint*
+
+// Unsupported : g_socket_receive : unsupported parameter buffer : no param type
+
+// Unsupported : g_socket_receive_from : unsupported parameter address : record with indirection level of 2
+
+// Unsupported : g_socket_receive_message : unsupported parameter address : record with indirection level of 2
+
+// Unsupported : g_socket_receive_messages : unsupported parameter messages : no param type
+
+// Unsupported : g_socket_receive_with_blocking : unsupported parameter buffer : no param type
+
+// Unsupported : g_socket_send : unsupported parameter buffer : no param type
+
+// Unsupported : g_socket_send_message : unsupported parameter vectors : no param type
+
+// Unsupported : g_socket_send_messages : unsupported parameter messages : no param type
+
+// Unsupported : g_socket_send_to : unsupported parameter buffer : no param type
+
+// Unsupported : g_socket_send_with_blocking : unsupported parameter buffer : no param type
+
 // SocketAddress is a wrapper around the C record GSocketAddress.
 type SocketAddress struct {
 	native *C.GSocketAddress
@@ -3276,6 +3458,32 @@ func (recv *SocketAddressEnumerator) Next(cancellable *Cancellable) (*SocketAddr
 
 // Unsupported : g_socket_address_enumerator_next_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
 
+// Unsupported : g_socket_client_connect : unsupported parameter connectable : no type generator for SocketConnectable, GSocketConnectable*
+
+// Unsupported : g_socket_client_connect_async : unsupported parameter connectable : no type generator for SocketConnectable, GSocketConnectable*
+
+// Unsupported : g_socket_client_connect_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+
+// Unsupported : g_socket_client_connect_to_host_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+
+// Unsupported : g_socket_client_connect_to_host_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+
+// Unsupported : g_socket_client_connect_to_service_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+
+// Unsupported : g_socket_client_connect_to_service_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+
+// Unsupported : g_socket_client_connect_to_uri_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+
+// Unsupported : g_socket_client_connect_to_uri_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+
+// Unsupported : g_socket_client_get_proxy_resolver : no return generator
+
+// Unsupported : g_socket_client_set_proxy_resolver : unsupported parameter proxy_resolver : no type generator for ProxyResolver, GProxyResolver*
+
+// Unsupported : g_socket_connection_connect_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+
+// Unsupported : g_socket_connection_connect_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+
 // SocketControlMessage is a wrapper around the C record GSocketControlMessage.
 type SocketControlMessage struct {
 	native *C.GSocketControlMessage
@@ -3298,6 +3506,50 @@ func (recv *SocketControlMessage) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+// Unsupported : g_socket_listener_accept : unsupported parameter source_object : record with indirection level of 2
+
+// Unsupported : g_socket_listener_accept_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+
+// Unsupported : g_socket_listener_accept_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+
+// Unsupported : g_socket_listener_accept_socket : unsupported parameter source_object : record with indirection level of 2
+
+// Unsupported : g_socket_listener_accept_socket_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+
+// Unsupported : g_socket_listener_accept_socket_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+
+// Unsupported : g_socket_listener_add_address : unsupported parameter effective_address : record with indirection level of 2
+
+// Unsupported : g_subprocess_new : unsupported parameter error : record with indirection level of 2
+
+// Unsupported : g_subprocess_newv : unsupported parameter argv : no param type
+
+// Unsupported : g_subprocess_communicate : unsupported parameter stdout_buf : record with indirection level of 2
+
+// Unsupported : g_subprocess_communicate_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+
+// Unsupported : g_subprocess_communicate_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+
+// Unsupported : g_subprocess_communicate_utf8_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+
+// Unsupported : g_subprocess_communicate_utf8_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+
+// Unsupported : g_subprocess_wait_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+
+// Unsupported : g_subprocess_wait_check_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+
+// Unsupported : g_subprocess_wait_check_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+
+// Unsupported : g_subprocess_wait_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+
+// Unsupported : g_subprocess_launcher_set_child_setup : unsupported parameter child_setup : no type generator for GLib.SpawnChildSetupFunc, GSpawnChildSetupFunc
+
+// Unsupported : g_subprocess_launcher_set_environ : unsupported parameter env : no param type
+
+// Unsupported : g_subprocess_launcher_spawn : unsupported parameter error : record with indirection level of 2
+
+// Unsupported : g_subprocess_launcher_spawnv : unsupported parameter argv : no param type
 
 // Task is a wrapper around the C record GTask.
 type Task struct {
@@ -3421,6 +3673,46 @@ func (recv *ThemedIcon) AppendName(iconname string) {
 }
 
 // Unsupported : g_themed_icon_get_names : no return type
+
+// Unsupported : g_tls_certificate_verify : unsupported parameter identity : no type generator for SocketConnectable, GSocketConnectable*
+
+// Unsupported : g_tls_connection_handshake_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+
+// Unsupported : g_tls_connection_handshake_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+
+// Unsupported : g_tls_database_lookup_certificate_for_handle_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+
+// Unsupported : g_tls_database_lookup_certificate_for_handle_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+
+// Unsupported : g_tls_database_lookup_certificate_issuer_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+
+// Unsupported : g_tls_database_lookup_certificate_issuer_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+
+// Unsupported : g_tls_database_lookup_certificates_issued_by : unsupported parameter issuer_raw_dn : no param type
+
+// Unsupported : g_tls_database_lookup_certificates_issued_by_async : unsupported parameter issuer_raw_dn : no param type
+
+// Unsupported : g_tls_database_lookup_certificates_issued_by_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+
+// Unsupported : g_tls_database_verify_chain : unsupported parameter identity : no type generator for SocketConnectable, GSocketConnectable*
+
+// Unsupported : g_tls_database_verify_chain_async : unsupported parameter identity : no type generator for SocketConnectable, GSocketConnectable*
+
+// Unsupported : g_tls_database_verify_chain_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+
+// Unsupported : g_tls_interaction_ask_password_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+
+// Unsupported : g_tls_interaction_ask_password_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+
+// Unsupported : g_tls_interaction_request_certificate_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+
+// Unsupported : g_tls_interaction_request_certificate_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+
+// Unsupported : g_tls_password_get_value : unsupported parameter length : no type generator for gsize, gsize*
+
+// Unsupported : g_tls_password_set_value : unsupported parameter value : no param type
+
+// Unsupported : g_tls_password_set_value_full : unsupported parameter value : no param type
 
 // UnixConnection is a wrapper around the C record GUnixConnection.
 type UnixConnection struct {

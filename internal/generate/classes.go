@@ -15,6 +15,17 @@ func (cc Classes) versionList() Versions {
 		if c.Version != "" {
 			versions = append(versions, VersionNew(c.Version))
 		}
+
+		for _, ctor := range c.Constructors {
+			if ctor.Version != "" {
+				versions = append(versions, VersionNew(ctor.Version))
+			}
+		}
+		for _, m := range c.Methods {
+			if m.Version != "" {
+				versions = append(versions, VersionNew(m.Version))
+			}
+		}
 	}
 
 	return versions

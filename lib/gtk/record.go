@@ -3238,6 +3238,8 @@ func (recv *CssProviderPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Unsupported : gtk_css_section_get_file : no return generator
+
 // DialogClass is a wrapper around the C record GtkDialogClass.
 type DialogClass struct {
 	native *C.GtkDialogClass
@@ -8802,6 +8804,22 @@ func (recv *RecentFilterInfo) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+// Unsupported : gtk_recent_info_create_app_info : no return generator
+
+// Unsupported : gtk_recent_info_get_added : no return generator
+
+// Unsupported : gtk_recent_info_get_application_info : unsupported parameter count : no type generator for guint, guint*
+
+// Unsupported : gtk_recent_info_get_applications : unsupported parameter length : no type generator for gsize, gsize*
+
+// Unsupported : gtk_recent_info_get_gicon : no return generator
+
+// Unsupported : gtk_recent_info_get_groups : unsupported parameter length : no type generator for gsize, gsize*
+
+// Unsupported : gtk_recent_info_get_modified : no return generator
+
+// Unsupported : gtk_recent_info_get_visited : no return generator
 
 // RecentManagerPrivate is a wrapper around the C record GtkRecentManagerPrivate.
 type RecentManagerPrivate struct {

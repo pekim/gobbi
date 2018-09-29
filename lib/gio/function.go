@@ -22,6 +22,10 @@ import (
 // #include <stdlib.h>
 import "C"
 
+// Unsupported : g_action_parse_detailed_name : unsupported parameter target_value : Blacklisted record : GVariant
+
+// Unsupported : g_action_print_detailed_name : unsupported parameter target_value : Blacklisted record : GVariant
+
 // Unsupported : g_app_info_create_from_commandline : no return generator
 
 // AppInfoGetAll is a wrapper around the C function g_app_info_get_all.
@@ -66,6 +70,24 @@ func AppInfoLaunchDefaultForUri(uri string, context *AppLaunchContext) (bool, er
 
 	return retGo, goThrowableError
 }
+
+// Unsupported : g_app_info_launch_default_for_uri_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+
+// Unsupported : g_app_info_launch_default_for_uri_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+
+// Unsupported : g_async_initable_newv_async : unsupported parameter object_type : no type generator for GType, GType
+
+// Unsupported : g_bus_get : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+
+// Unsupported : g_bus_get_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
+
+// Unsupported : g_bus_own_name : unsupported parameter bus_acquired_handler : no type generator for BusAcquiredCallback, GBusAcquiredCallback
+
+// Unsupported : g_bus_own_name_on_connection : unsupported parameter name_acquired_handler : no type generator for BusNameAcquiredCallback, GBusNameAcquiredCallback
+
+// Unsupported : g_bus_watch_name : unsupported parameter name_appeared_handler : no type generator for BusNameAppearedCallback, GBusNameAppearedCallback
+
+// Unsupported : g_bus_watch_name_on_connection : unsupported parameter name_appeared_handler : no type generator for BusNameAppearedCallback, GBusNameAppearedCallback
 
 // ContentTypeCanBeExecutable is a wrapper around the C function g_content_type_can_be_executable.
 func ContentTypeCanBeExecutable(type_ string) bool {
@@ -118,7 +140,11 @@ func ContentTypeGetMimeType(type_ string) string {
 	return retGo
 }
 
+// Unsupported : g_content_type_get_symbolic_icon : no return generator
+
 // Unsupported : g_content_type_guess : unsupported parameter data : no param type
+
+// Unsupported : g_content_type_guess_for_tree : unsupported parameter root : no type generator for File, GFile*
 
 // ContentTypeIsA is a wrapper around the C function g_content_type_is_a.
 func ContentTypeIsA(type_ string, supertype string) bool {
@@ -153,6 +179,12 @@ func ContentTypesGetRegistered() *glib.List {
 	return retGo
 }
 
+// Unsupported : g_dbus_address_get_stream : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+
+// Unsupported : g_dbus_address_get_stream_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
+
+// Unsupported : g_dbus_annotation_info_lookup : unsupported parameter annotations : no param type
+
 // DbusErrorQuark is a wrapper around the C function g_dbus_error_quark.
 func DbusErrorQuark() glib.Quark {
 	retC := C.g_dbus_error_quark()
@@ -161,13 +193,29 @@ func DbusErrorQuark() glib.Quark {
 	return retGo
 }
 
+// Unsupported : g_dbus_error_register_error_domain : unsupported parameter quark_volatile : no type generator for gsize, volatile gsize*
+
+// Unsupported : g_dbus_gvalue_to_gvariant : unsupported parameter type : Blacklisted record : GVariantType
+
+// Unsupported : g_dbus_gvariant_to_gvalue : unsupported parameter value : Blacklisted record : GVariant
+
+// Unsupported : g_dtls_client_connection_new : unsupported parameter base_socket : no type generator for DatagramBased, GDatagramBased*
+
+// Unsupported : g_dtls_server_connection_new : unsupported parameter base_socket : no type generator for DatagramBased, GDatagramBased*
+
 // Unsupported : g_file_new_for_commandline_arg : no return generator
+
+// Unsupported : g_file_new_for_commandline_arg_and_cwd : no return generator
 
 // Unsupported : g_file_new_for_path : no return generator
 
 // Unsupported : g_file_new_for_uri : no return generator
 
+// Unsupported : g_file_new_tmp : unsupported parameter iostream : record with indirection level of 2
+
 // Unsupported : g_file_parse_name : no return generator
+
+// Unsupported : g_icon_deserialize : unsupported parameter value : Blacklisted record : GVariant
 
 // IconHash is a wrapper around the C function g_icon_hash.
 func IconHash(icon uintptr) uint32 {
@@ -178,6 +226,10 @@ func IconHash(icon uintptr) uint32 {
 
 	return retGo
 }
+
+// Unsupported : g_icon_new_for_string : no return generator
+
+// Unsupported : g_initable_newv : unsupported parameter object_type : no type generator for GType, GType
 
 // IoErrorFromErrno is a wrapper around the C function g_io_error_from_errno.
 func IoErrorFromErrno(errNo int32) IOErrorEnum {
@@ -243,9 +295,39 @@ func IoSchedulerCancelAllJobs() {
 
 // Blacklisted : g_keyfile_settings_backend_new
 
+// Blacklisted : g_memory_settings_backend_new
+
+// Unsupported : g_network_monitor_get_default : no return generator
+
+// Blacklisted : g_null_settings_backend_new
+
+// Unsupported : g_pollable_stream_read : unsupported parameter buffer : no param type
+
+// Unsupported : g_pollable_stream_write : unsupported parameter buffer : no param type
+
+// Unsupported : g_pollable_stream_write_all : unsupported parameter buffer : no param type
+
+// Unsupported : g_proxy_get_default_for_protocol : no return generator
+
+// Unsupported : g_proxy_resolver_get_default : no return generator
+
+// Unsupported : g_resources_enumerate_children : no return type
+
+// Unsupported : g_resources_get_info : unsupported parameter size : no type generator for gsize, gsize*
+
 // Unsupported : g_simple_async_report_error_in_idle : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
 
 // Unsupported : g_simple_async_report_gerror_in_idle : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+
+// Unsupported : g_simple_async_report_take_gerror_in_idle : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+
+// Unsupported : g_tls_backend_get_default : no return generator
+
+// Unsupported : g_tls_client_connection_new : unsupported parameter server_identity : no type generator for SocketConnectable, GSocketConnectable*
+
+// Unsupported : g_tls_file_database_new : no return generator
+
+// Unsupported : g_tls_server_connection_new : no return generator
 
 // UnixIsMountPathSystemInternal is a wrapper around the C function g_unix_is_mount_path_system_internal.
 func UnixIsMountPathSystemInternal(mountPath string) bool {
@@ -271,6 +353,8 @@ func UnixMountCompare(mount1 *UnixMountEntry, mount2 *UnixMountEntry) int32 {
 
 	return retGo
 }
+
+// Unsupported : g_unix_mount_for : unsupported parameter time_read : no type generator for guint64, guint64*
 
 // UnixMountFree is a wrapper around the C function g_unix_mount_free.
 func UnixMountFree(mountEntry *UnixMountEntry) {
@@ -343,6 +427,8 @@ func UnixMountGuessShouldDisplay(mountEntry *UnixMountEntry) bool {
 
 	return retGo
 }
+
+// Unsupported : g_unix_mount_guess_symbolic_icon : no return generator
 
 // UnixMountIsReadonly is a wrapper around the C function g_unix_mount_is_readonly.
 func UnixMountIsReadonly(mountEntry *UnixMountEntry) bool {

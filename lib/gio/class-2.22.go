@@ -24,6 +24,909 @@ import (
 // #include <stdlib.h>
 import "C"
 
+// Unsupported : g_app_launch_context_get_display : unsupported parameter info : no type generator for AppInfo, GAppInfo*
+
+// Unsupported : g_app_launch_context_get_environment : no return type
+
+// Unsupported : g_app_launch_context_get_startup_notify_id : unsupported parameter info : no type generator for AppInfo, GAppInfo*
+
+// Unsupported : g_application_add_main_option : unsupported parameter short_name : no type generator for gchar, char
+
+// Unsupported : g_application_add_main_option_entries : unsupported parameter entries : no param type
+
+// Unsupported : g_application_open : unsupported parameter files : no param type
+
+// Unsupported : g_application_run : unsupported parameter argv : no param type
+
+// Unsupported : g_application_set_action_group : unsupported parameter action_group : no type generator for ActionGroup, GActionGroup*
+
+// Unsupported : g_application_command_line_create_file_for_arg : no return generator
+
+// Unsupported : g_application_command_line_get_arguments : unsupported parameter argc : no type generator for gint, int*
+
+// Unsupported : g_application_command_line_get_environ : no return type
+
+// Unsupported : g_application_command_line_get_platform_data : return type : Blacklisted record : GVariant
+
+// Unsupported : g_application_command_line_print : unsupported parameter ... : varargs
+
+// Unsupported : g_application_command_line_printerr : unsupported parameter ... : varargs
+
+// Unsupported : g_buffered_input_stream_fill_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+
+// Unsupported : g_buffered_input_stream_fill_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+
+// Unsupported : g_buffered_input_stream_peek : unsupported parameter buffer : no param type
+
+// Unsupported : g_buffered_input_stream_peek_buffer : unsupported parameter count : no type generator for gsize, gsize*
+
+// Unsupported : g_cancellable_connect : unsupported parameter callback : no type generator for GObject.Callback, GCallback
+
+// Disconnect is a wrapper around the C function g_cancellable_disconnect.
+func (recv *Cancellable) Disconnect(handlerId uint64) {
+	c_handler_id := (C.gulong)(handlerId)
+
+	C.g_cancellable_disconnect((*C.GCancellable)(recv.native), c_handler_id)
+
+	return
+}
+
+// MakePollfd is a wrapper around the C function g_cancellable_make_pollfd.
+func (recv *Cancellable) MakePollfd(pollfd *glib.PollFD) bool {
+	c_pollfd := (*C.GPollFD)(pollfd.ToC())
+
+	retC := C.g_cancellable_make_pollfd((*C.GCancellable)(recv.native), c_pollfd)
+	retGo := retC == C.TRUE
+
+	return retGo
+}
+
+// ReleaseFd is a wrapper around the C function g_cancellable_release_fd.
+func (recv *Cancellable) ReleaseFd() {
+	C.g_cancellable_release_fd((*C.GCancellable)(recv.native))
+
+	return
+}
+
+// Unsupported : g_converter_input_stream_new : unsupported parameter converter : no type generator for Converter, GConverter*
+
+// Unsupported : g_converter_input_stream_get_converter : no return generator
+
+// Unsupported : g_converter_output_stream_new : unsupported parameter converter : no type generator for Converter, GConverter*
+
+// Unsupported : g_converter_output_stream_get_converter : no return generator
+
+// Unsupported : g_credentials_get_unix_pid : no return generator
+
+// Unsupported : g_credentials_get_unix_user : no return generator
+
+// Unsupported : g_credentials_set_unix_user : unsupported parameter uid : no type generator for guint, uid_t
+
+// Unsupported : g_dbus_connection_new_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
+
+// Unsupported : g_dbus_connection_new_for_address_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
+
+// Unsupported : g_dbus_connection_add_filter : unsupported parameter filter_function : no type generator for DBusMessageFilterFunction, GDBusMessageFilterFunction
+
+// Unsupported : g_dbus_connection_call : unsupported parameter parameters : Blacklisted record : GVariant
+
+// Unsupported : g_dbus_connection_call_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
+
+// Unsupported : g_dbus_connection_call_sync : unsupported parameter parameters : Blacklisted record : GVariant
+
+// Unsupported : g_dbus_connection_call_with_unix_fd_list : unsupported parameter parameters : Blacklisted record : GVariant
+
+// Unsupported : g_dbus_connection_call_with_unix_fd_list_finish : unsupported parameter out_fd_list : record with indirection level of 2
+
+// Unsupported : g_dbus_connection_call_with_unix_fd_list_sync : unsupported parameter parameters : Blacklisted record : GVariant
+
+// Unsupported : g_dbus_connection_close : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+
+// Unsupported : g_dbus_connection_close_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
+
+// Unsupported : g_dbus_connection_emit_signal : unsupported parameter parameters : Blacklisted record : GVariant
+
+// Unsupported : g_dbus_connection_export_action_group : unsupported parameter action_group : no type generator for ActionGroup, GActionGroup*
+
+// Unsupported : g_dbus_connection_flush : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+
+// Unsupported : g_dbus_connection_flush_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
+
+// Unsupported : g_dbus_connection_register_object : unsupported parameter user_data_free_func : no type generator for GLib.DestroyNotify, GDestroyNotify
+
+// Unsupported : g_dbus_connection_register_subtree : unsupported parameter user_data_free_func : no type generator for GLib.DestroyNotify, GDestroyNotify
+
+// Unsupported : g_dbus_connection_send_message : unsupported parameter out_serial : no type generator for guint32, volatile guint32*
+
+// Unsupported : g_dbus_connection_send_message_with_reply : unsupported parameter out_serial : no type generator for guint32, volatile guint32*
+
+// Unsupported : g_dbus_connection_send_message_with_reply_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
+
+// Unsupported : g_dbus_connection_send_message_with_reply_sync : unsupported parameter out_serial : no type generator for guint32, volatile guint32*
+
+// Unsupported : g_dbus_connection_signal_subscribe : unsupported parameter callback : no type generator for DBusSignalCallback, GDBusSignalCallback
+
+// Unsupported : g_dbus_interface_skeleton_get_properties : return type : Blacklisted record : GVariant
+
+// Unsupported : g_dbus_message_new_from_blob : unsupported parameter blob : no param type
+
+// Unsupported : g_dbus_message_get_body : return type : Blacklisted record : GVariant
+
+// Unsupported : g_dbus_message_get_header : return type : Blacklisted record : GVariant
+
+// Unsupported : g_dbus_message_get_header_fields : no return type
+
+// Unsupported : g_dbus_message_new_method_error : unsupported parameter ... : varargs
+
+// Unsupported : g_dbus_message_new_method_error_valist : unsupported parameter var_args : no type generator for va_list, va_list
+
+// Unsupported : g_dbus_message_set_body : unsupported parameter body : Blacklisted record : GVariant
+
+// Unsupported : g_dbus_message_set_header : unsupported parameter value : Blacklisted record : GVariant
+
+// Unsupported : g_dbus_message_to_blob : unsupported parameter out_size : no type generator for gsize, gsize*
+
+// Unsupported : g_dbus_method_invocation_get_parameters : return type : Blacklisted record : GVariant
+
+// Unsupported : g_dbus_method_invocation_return_error : unsupported parameter ... : varargs
+
+// Unsupported : g_dbus_method_invocation_return_error_valist : unsupported parameter var_args : no type generator for va_list, va_list
+
+// Unsupported : g_dbus_method_invocation_return_value : unsupported parameter parameters : Blacklisted record : GVariant
+
+// Unsupported : g_dbus_method_invocation_return_value_with_unix_fd_list : unsupported parameter parameters : Blacklisted record : GVariant
+
+// Unsupported : g_dbus_object_manager_client_new_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
+
+// Unsupported : g_dbus_object_manager_client_new_for_bus_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
+
+// Unsupported : g_dbus_object_manager_client_new_for_bus_sync : unsupported parameter get_proxy_type_func : no type generator for DBusProxyTypeFunc, GDBusProxyTypeFunc
+
+// Unsupported : g_dbus_object_manager_client_new_sync : unsupported parameter get_proxy_type_func : no type generator for DBusProxyTypeFunc, GDBusProxyTypeFunc
+
+// Unsupported : g_dbus_proxy_new_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
+
+// Unsupported : g_dbus_proxy_new_for_bus_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
+
+// Unsupported : g_dbus_proxy_call : unsupported parameter parameters : Blacklisted record : GVariant
+
+// Unsupported : g_dbus_proxy_call_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
+
+// Unsupported : g_dbus_proxy_call_sync : unsupported parameter parameters : Blacklisted record : GVariant
+
+// Unsupported : g_dbus_proxy_call_with_unix_fd_list : unsupported parameter parameters : Blacklisted record : GVariant
+
+// Unsupported : g_dbus_proxy_call_with_unix_fd_list_finish : unsupported parameter out_fd_list : record with indirection level of 2
+
+// Unsupported : g_dbus_proxy_call_with_unix_fd_list_sync : unsupported parameter parameters : Blacklisted record : GVariant
+
+// Unsupported : g_dbus_proxy_get_cached_property : return type : Blacklisted record : GVariant
+
+// Unsupported : g_dbus_proxy_get_cached_property_names : no return type
+
+// Unsupported : g_dbus_proxy_set_cached_property : unsupported parameter value : Blacklisted record : GVariant
+
+// Unsupported : g_data_input_stream_read_line : unsupported parameter length : no type generator for gsize, gsize*
+
+// Unsupported : g_data_input_stream_read_line_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+
+// Unsupported : g_data_input_stream_read_line_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+
+// Unsupported : g_data_input_stream_read_line_finish_utf8 : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+
+// Unsupported : g_data_input_stream_read_line_utf8 : unsupported parameter length : no type generator for gsize, gsize*
+
+// Unsupported : g_data_input_stream_read_until : unsupported parameter length : no type generator for gsize, gsize*
+
+// Unsupported : g_data_input_stream_read_until_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+
+// Unsupported : g_data_input_stream_read_until_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+
+// Unsupported : g_data_input_stream_read_upto : unsupported parameter length : no type generator for gsize, gsize*
+
+// Unsupported : g_data_input_stream_read_upto_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+
+// Unsupported : g_data_input_stream_read_upto_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+
+// Unsupported : g_desktop_app_info_get_keywords : no return type
+
+// Unsupported : g_desktop_app_info_launch_uris_as_manager : unsupported parameter user_setup : no type generator for GLib.SpawnChildSetupFunc, GSpawnChildSetupFunc
+
+// Unsupported : g_desktop_app_info_list_actions : no return type
+
+// Unsupported : g_emblem_new : unsupported parameter icon : no type generator for Icon, GIcon*
+
+// Unsupported : g_emblem_new_with_origin : unsupported parameter icon : no type generator for Icon, GIcon*
+
+// Unsupported : g_emblem_get_icon : no return generator
+
+// Unsupported : g_emblemed_icon_new : unsupported parameter icon : no type generator for Icon, GIcon*
+
+// Unsupported : g_emblemed_icon_get_icon : no return generator
+
+// Unsupported : g_file_enumerator_close_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+
+// Unsupported : g_file_enumerator_close_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+
+// Unsupported : g_file_enumerator_get_child : no return generator
+
+// Unsupported : g_file_enumerator_get_container : no return generator
+
+// Unsupported : g_file_enumerator_iterate : unsupported parameter out_info : record with indirection level of 2
+
+// Unsupported : g_file_enumerator_next_files_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+
+// Unsupported : g_file_enumerator_next_files_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+
+// GetEtag is a wrapper around the C function g_file_io_stream_get_etag.
+func (recv *FileIOStream) GetEtag() string {
+	retC := C.g_file_io_stream_get_etag((*C.GFileIOStream)(recv.native))
+	retGo := C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// QueryInfo is a wrapper around the C function g_file_io_stream_query_info.
+func (recv *FileIOStream) QueryInfo(attributes string, cancellable *Cancellable) (*FileInfo, error) {
+	c_attributes := C.CString(attributes)
+	defer C.free(unsafe.Pointer(c_attributes))
+
+	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_file_io_stream_query_info((*C.GFileIOStream)(recv.native), c_attributes, c_cancellable, &cThrowableError)
+	retGo := FileInfoNewFromC(unsafe.Pointer(retC))
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
+
+// Unsupported : g_file_io_stream_query_info_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+
+// Unsupported : g_file_io_stream_query_info_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+
+// Unsupported : g_file_icon_new : unsupported parameter file : no type generator for File, GFile*
+
+// Unsupported : g_file_icon_get_file : no return generator
+
+// Unsupported : g_file_info_get_attribute_data : unsupported parameter type : GFileAttributeType* with indirection level of 1
+
+// Unsupported : g_file_info_get_attribute_stringv : no return type
+
+// Unsupported : g_file_info_get_icon : no return generator
+
+// Unsupported : g_file_info_get_symbolic_icon : no return generator
+
+// HasNamespace is a wrapper around the C function g_file_info_has_namespace.
+func (recv *FileInfo) HasNamespace(nameSpace string) bool {
+	c_name_space := C.CString(nameSpace)
+	defer C.free(unsafe.Pointer(c_name_space))
+
+	retC := C.g_file_info_has_namespace((*C.GFileInfo)(recv.native), c_name_space)
+	retGo := retC == C.TRUE
+
+	return retGo
+}
+
+// Unsupported : g_file_info_list_attributes : no return type
+
+// SetAttributeStatus is a wrapper around the C function g_file_info_set_attribute_status.
+func (recv *FileInfo) SetAttributeStatus(attribute string, status FileAttributeStatus) bool {
+	c_attribute := C.CString(attribute)
+	defer C.free(unsafe.Pointer(c_attribute))
+
+	c_status := (C.GFileAttributeStatus)(status)
+
+	retC := C.g_file_info_set_attribute_status((*C.GFileInfo)(recv.native), c_attribute, c_status)
+	retGo := retC == C.TRUE
+
+	return retGo
+}
+
+// Unsupported : g_file_info_set_attribute_stringv : unsupported parameter attr_value : no param type
+
+// Unsupported : g_file_info_set_icon : unsupported parameter icon : no type generator for Icon, GIcon*
+
+// Unsupported : g_file_info_set_symbolic_icon : unsupported parameter icon : no type generator for Icon, GIcon*
+
+// Unsupported : g_file_input_stream_query_info_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+
+// Unsupported : g_file_input_stream_query_info_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+
+// Unsupported : g_file_monitor_emit_event : unsupported parameter child : no type generator for File, GFile*
+
+// Unsupported : g_file_output_stream_query_info_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+
+// Unsupported : g_file_output_stream_query_info_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+
+// Unsupported : g_filename_completer_get_completions : no return type
+
+// ClearPending is a wrapper around the C function g_io_stream_clear_pending.
+func (recv *IOStream) ClearPending() {
+	C.g_io_stream_clear_pending((*C.GIOStream)(recv.native))
+
+	return
+}
+
+// Close is a wrapper around the C function g_io_stream_close.
+func (recv *IOStream) Close(cancellable *Cancellable) (bool, error) {
+	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_io_stream_close((*C.GIOStream)(recv.native), c_cancellable, &cThrowableError)
+	retGo := retC == C.TRUE
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
+
+// Unsupported : g_io_stream_close_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+
+// Unsupported : g_io_stream_close_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+
+// GetInputStream is a wrapper around the C function g_io_stream_get_input_stream.
+func (recv *IOStream) GetInputStream() *InputStream {
+	retC := C.g_io_stream_get_input_stream((*C.GIOStream)(recv.native))
+	retGo := InputStreamNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// GetOutputStream is a wrapper around the C function g_io_stream_get_output_stream.
+func (recv *IOStream) GetOutputStream() *OutputStream {
+	retC := C.g_io_stream_get_output_stream((*C.GIOStream)(recv.native))
+	retGo := OutputStreamNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// HasPending is a wrapper around the C function g_io_stream_has_pending.
+func (recv *IOStream) HasPending() bool {
+	retC := C.g_io_stream_has_pending((*C.GIOStream)(recv.native))
+	retGo := retC == C.TRUE
+
+	return retGo
+}
+
+// IsClosed is a wrapper around the C function g_io_stream_is_closed.
+func (recv *IOStream) IsClosed() bool {
+	retC := C.g_io_stream_is_closed((*C.GIOStream)(recv.native))
+	retGo := retC == C.TRUE
+
+	return retGo
+}
+
+// SetPending is a wrapper around the C function g_io_stream_set_pending.
+func (recv *IOStream) SetPending() (bool, error) {
+	var cThrowableError *C.GError
+
+	retC := C.g_io_stream_set_pending((*C.GIOStream)(recv.native), &cThrowableError)
+	retGo := retC == C.TRUE
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
+
+// Unsupported : g_io_stream_splice_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+
+// InetAddressNewAny is a wrapper around the C function g_inet_address_new_any.
+func InetAddressNewAny(family SocketFamily) *InetAddress {
+	c_family := (C.GSocketFamily)(family)
+
+	retC := C.g_inet_address_new_any(c_family)
+	retGo := InetAddressNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// Unsupported : g_inet_address_new_from_bytes : unsupported parameter bytes : no param type
+
+// InetAddressNewFromString is a wrapper around the C function g_inet_address_new_from_string.
+func InetAddressNewFromString(string string) *InetAddress {
+	c_string := C.CString(string)
+	defer C.free(unsafe.Pointer(c_string))
+
+	retC := C.g_inet_address_new_from_string(c_string)
+	retGo := InetAddressNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// InetAddressNewLoopback is a wrapper around the C function g_inet_address_new_loopback.
+func InetAddressNewLoopback(family SocketFamily) *InetAddress {
+	c_family := (C.GSocketFamily)(family)
+
+	retC := C.g_inet_address_new_loopback(c_family)
+	retGo := InetAddressNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// GetFamily is a wrapper around the C function g_inet_address_get_family.
+func (recv *InetAddress) GetFamily() SocketFamily {
+	retC := C.g_inet_address_get_family((*C.GInetAddress)(recv.native))
+	retGo := (SocketFamily)(retC)
+
+	return retGo
+}
+
+// GetIsAny is a wrapper around the C function g_inet_address_get_is_any.
+func (recv *InetAddress) GetIsAny() bool {
+	retC := C.g_inet_address_get_is_any((*C.GInetAddress)(recv.native))
+	retGo := retC == C.TRUE
+
+	return retGo
+}
+
+// GetIsLinkLocal is a wrapper around the C function g_inet_address_get_is_link_local.
+func (recv *InetAddress) GetIsLinkLocal() bool {
+	retC := C.g_inet_address_get_is_link_local((*C.GInetAddress)(recv.native))
+	retGo := retC == C.TRUE
+
+	return retGo
+}
+
+// GetIsLoopback is a wrapper around the C function g_inet_address_get_is_loopback.
+func (recv *InetAddress) GetIsLoopback() bool {
+	retC := C.g_inet_address_get_is_loopback((*C.GInetAddress)(recv.native))
+	retGo := retC == C.TRUE
+
+	return retGo
+}
+
+// GetIsMcGlobal is a wrapper around the C function g_inet_address_get_is_mc_global.
+func (recv *InetAddress) GetIsMcGlobal() bool {
+	retC := C.g_inet_address_get_is_mc_global((*C.GInetAddress)(recv.native))
+	retGo := retC == C.TRUE
+
+	return retGo
+}
+
+// GetIsMcLinkLocal is a wrapper around the C function g_inet_address_get_is_mc_link_local.
+func (recv *InetAddress) GetIsMcLinkLocal() bool {
+	retC := C.g_inet_address_get_is_mc_link_local((*C.GInetAddress)(recv.native))
+	retGo := retC == C.TRUE
+
+	return retGo
+}
+
+// GetIsMcNodeLocal is a wrapper around the C function g_inet_address_get_is_mc_node_local.
+func (recv *InetAddress) GetIsMcNodeLocal() bool {
+	retC := C.g_inet_address_get_is_mc_node_local((*C.GInetAddress)(recv.native))
+	retGo := retC == C.TRUE
+
+	return retGo
+}
+
+// GetIsMcOrgLocal is a wrapper around the C function g_inet_address_get_is_mc_org_local.
+func (recv *InetAddress) GetIsMcOrgLocal() bool {
+	retC := C.g_inet_address_get_is_mc_org_local((*C.GInetAddress)(recv.native))
+	retGo := retC == C.TRUE
+
+	return retGo
+}
+
+// GetIsMcSiteLocal is a wrapper around the C function g_inet_address_get_is_mc_site_local.
+func (recv *InetAddress) GetIsMcSiteLocal() bool {
+	retC := C.g_inet_address_get_is_mc_site_local((*C.GInetAddress)(recv.native))
+	retGo := retC == C.TRUE
+
+	return retGo
+}
+
+// GetIsMulticast is a wrapper around the C function g_inet_address_get_is_multicast.
+func (recv *InetAddress) GetIsMulticast() bool {
+	retC := C.g_inet_address_get_is_multicast((*C.GInetAddress)(recv.native))
+	retGo := retC == C.TRUE
+
+	return retGo
+}
+
+// GetIsSiteLocal is a wrapper around the C function g_inet_address_get_is_site_local.
+func (recv *InetAddress) GetIsSiteLocal() bool {
+	retC := C.g_inet_address_get_is_site_local((*C.GInetAddress)(recv.native))
+	retGo := retC == C.TRUE
+
+	return retGo
+}
+
+// GetNativeSize is a wrapper around the C function g_inet_address_get_native_size.
+func (recv *InetAddress) GetNativeSize() uint64 {
+	retC := C.g_inet_address_get_native_size((*C.GInetAddress)(recv.native))
+	retGo := (uint64)(retC)
+
+	return retGo
+}
+
+// Unsupported : g_inet_address_to_bytes : no return generator
+
+// ToString is a wrapper around the C function g_inet_address_to_string.
+func (recv *InetAddress) ToString() string {
+	retC := C.g_inet_address_to_string((*C.GInetAddress)(recv.native))
+	retGo := C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// InetSocketAddressNew is a wrapper around the C function g_inet_socket_address_new.
+func InetSocketAddressNew(address *InetAddress, port uint16) *SocketAddress {
+	c_address := (*C.GInetAddress)(address.ToC())
+
+	c_port := (C.guint16)(port)
+
+	retC := C.g_inet_socket_address_new(c_address, c_port)
+	retGo := SocketAddressNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// GetAddress is a wrapper around the C function g_inet_socket_address_get_address.
+func (recv *InetSocketAddress) GetAddress() *InetAddress {
+	retC := C.g_inet_socket_address_get_address((*C.GInetSocketAddress)(recv.native))
+	retGo := InetAddressNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// GetPort is a wrapper around the C function g_inet_socket_address_get_port.
+func (recv *InetSocketAddress) GetPort() uint16 {
+	retC := C.g_inet_socket_address_get_port((*C.GInetSocketAddress)(recv.native))
+	retGo := (uint16)(retC)
+
+	return retGo
+}
+
+// Unsupported : g_input_stream_close_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+
+// Unsupported : g_input_stream_close_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+
+// Unsupported : g_input_stream_read : unsupported parameter buffer : no param type
+
+// Unsupported : g_input_stream_read_all : unsupported parameter buffer : no param type
+
+// Unsupported : g_input_stream_read_all_async : unsupported parameter buffer : no param type
+
+// Unsupported : g_input_stream_read_all_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+
+// Unsupported : g_input_stream_read_async : unsupported parameter buffer : no param type
+
+// Unsupported : g_input_stream_read_bytes_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+
+// Unsupported : g_input_stream_read_bytes_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+
+// Unsupported : g_input_stream_read_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+
+// Unsupported : g_input_stream_skip_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+
+// Unsupported : g_input_stream_skip_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+
+// Unsupported : g_list_store_new : unsupported parameter item_type : no type generator for GType, GType
+
+// Unsupported : g_list_store_insert_sorted : unsupported parameter compare_func : no type generator for GLib.CompareDataFunc, GCompareDataFunc
+
+// Unsupported : g_list_store_sort : unsupported parameter compare_func : no type generator for GLib.CompareDataFunc, GCompareDataFunc
+
+// Unsupported : g_list_store_splice : unsupported parameter additions : no param type
+
+// Unsupported : g_memory_input_stream_new_from_data : unsupported parameter data : no param type
+
+// Unsupported : g_memory_input_stream_add_data : unsupported parameter data : no param type
+
+// Unsupported : g_memory_output_stream_new : unsupported parameter realloc_function : no type generator for ReallocFunc, GReallocFunc
+
+// Unsupported : g_menu_attribute_iter_get_next : unsupported parameter value : Blacklisted record : GVariant
+
+// Unsupported : g_menu_attribute_iter_get_value : return type : Blacklisted record : GVariant
+
+// Unsupported : g_menu_item_get_attribute : unsupported parameter ... : varargs
+
+// Unsupported : g_menu_item_get_attribute_value : unsupported parameter expected_type : Blacklisted record : GVariantType
+
+// Unsupported : g_menu_item_set_action_and_target : unsupported parameter ... : varargs
+
+// Unsupported : g_menu_item_set_action_and_target_value : unsupported parameter target_value : Blacklisted record : GVariant
+
+// Unsupported : g_menu_item_set_attribute : unsupported parameter ... : varargs
+
+// Unsupported : g_menu_item_set_attribute_value : unsupported parameter value : Blacklisted record : GVariant
+
+// Unsupported : g_menu_item_set_icon : unsupported parameter icon : no type generator for Icon, GIcon*
+
+// Unsupported : g_menu_link_iter_get_next : unsupported parameter value : record with indirection level of 2
+
+// Unsupported : g_menu_model_get_item_attribute : unsupported parameter ... : varargs
+
+// Unsupported : g_menu_model_get_item_attribute_value : unsupported parameter expected_type : Blacklisted record : GVariantType
+
+// NetworkAddressNew is a wrapper around the C function g_network_address_new.
+func NetworkAddressNew(hostname string, port uint16) *NetworkAddress {
+	c_hostname := C.CString(hostname)
+	defer C.free(unsafe.Pointer(c_hostname))
+
+	c_port := (C.guint16)(port)
+
+	retC := C.g_network_address_new(c_hostname, c_port)
+	retGo := NetworkAddressNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// GetHostname is a wrapper around the C function g_network_address_get_hostname.
+func (recv *NetworkAddress) GetHostname() string {
+	retC := C.g_network_address_get_hostname((*C.GNetworkAddress)(recv.native))
+	retGo := C.GoString(retC)
+
+	return retGo
+}
+
+// GetPort is a wrapper around the C function g_network_address_get_port.
+func (recv *NetworkAddress) GetPort() uint16 {
+	retC := C.g_network_address_get_port((*C.GNetworkAddress)(recv.native))
+	retGo := (uint16)(retC)
+
+	return retGo
+}
+
+// NetworkServiceNew is a wrapper around the C function g_network_service_new.
+func NetworkServiceNew(service string, protocol string, domain string) *NetworkService {
+	c_service := C.CString(service)
+	defer C.free(unsafe.Pointer(c_service))
+
+	c_protocol := C.CString(protocol)
+	defer C.free(unsafe.Pointer(c_protocol))
+
+	c_domain := C.CString(domain)
+	defer C.free(unsafe.Pointer(c_domain))
+
+	retC := C.g_network_service_new(c_service, c_protocol, c_domain)
+	retGo := NetworkServiceNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// GetDomain is a wrapper around the C function g_network_service_get_domain.
+func (recv *NetworkService) GetDomain() string {
+	retC := C.g_network_service_get_domain((*C.GNetworkService)(recv.native))
+	retGo := C.GoString(retC)
+
+	return retGo
+}
+
+// GetProtocol is a wrapper around the C function g_network_service_get_protocol.
+func (recv *NetworkService) GetProtocol() string {
+	retC := C.g_network_service_get_protocol((*C.GNetworkService)(recv.native))
+	retGo := C.GoString(retC)
+
+	return retGo
+}
+
+// GetService is a wrapper around the C function g_network_service_get_service.
+func (recv *NetworkService) GetService() string {
+	retC := C.g_network_service_get_service((*C.GNetworkService)(recv.native))
+	retGo := C.GoString(retC)
+
+	return retGo
+}
+
+// Unsupported : g_notification_add_button_with_target : unsupported parameter ... : varargs
+
+// Unsupported : g_notification_add_button_with_target_value : unsupported parameter target : Blacklisted record : GVariant
+
+// Unsupported : g_notification_set_default_action_and_target : unsupported parameter ... : varargs
+
+// Unsupported : g_notification_set_default_action_and_target_value : unsupported parameter target : Blacklisted record : GVariant
+
+// Unsupported : g_notification_set_icon : unsupported parameter icon : no type generator for Icon, GIcon*
+
+// Unsupported : g_output_stream_close_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+
+// Unsupported : g_output_stream_close_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+
+// Unsupported : g_output_stream_flush_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+
+// Unsupported : g_output_stream_flush_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+
+// Unsupported : g_output_stream_printf : unsupported parameter bytes_written : no type generator for gsize, gsize*
+
+// Unsupported : g_output_stream_splice_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+
+// Unsupported : g_output_stream_splice_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+
+// Unsupported : g_output_stream_vprintf : unsupported parameter bytes_written : no type generator for gsize, gsize*
+
+// Unsupported : g_output_stream_write : unsupported parameter buffer : no param type
+
+// Unsupported : g_output_stream_write_all : unsupported parameter buffer : no param type
+
+// Unsupported : g_output_stream_write_all_async : unsupported parameter buffer : no param type
+
+// Unsupported : g_output_stream_write_all_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+
+// Unsupported : g_output_stream_write_async : unsupported parameter buffer : no param type
+
+// Unsupported : g_output_stream_write_bytes_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+
+// Unsupported : g_output_stream_write_bytes_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+
+// Unsupported : g_output_stream_write_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+
+// Unsupported : g_permission_acquire_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+
+// Unsupported : g_permission_acquire_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+
+// Unsupported : g_permission_release_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+
+// Unsupported : g_permission_release_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+
+// LookupByAddress is a wrapper around the C function g_resolver_lookup_by_address.
+func (recv *Resolver) LookupByAddress(address *InetAddress, cancellable *Cancellable) (string, error) {
+	c_address := (*C.GInetAddress)(address.ToC())
+
+	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_resolver_lookup_by_address((*C.GResolver)(recv.native), c_address, c_cancellable, &cThrowableError)
+	retGo := C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
+
+// Unsupported : g_resolver_lookup_by_address_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+
+// Unsupported : g_resolver_lookup_by_address_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+
+// LookupByName is a wrapper around the C function g_resolver_lookup_by_name.
+func (recv *Resolver) LookupByName(hostname string, cancellable *Cancellable) (*glib.List, error) {
+	c_hostname := C.CString(hostname)
+	defer C.free(unsafe.Pointer(c_hostname))
+
+	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_resolver_lookup_by_name((*C.GResolver)(recv.native), c_hostname, c_cancellable, &cThrowableError)
+	retGo := glib.ListNewFromC(unsafe.Pointer(retC))
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
+
+// Unsupported : g_resolver_lookup_by_name_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+
+// Unsupported : g_resolver_lookup_by_name_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+
+// Unsupported : g_resolver_lookup_records_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+
+// Unsupported : g_resolver_lookup_records_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+
+// LookupService is a wrapper around the C function g_resolver_lookup_service.
+func (recv *Resolver) LookupService(service string, protocol string, domain string, cancellable *Cancellable) (*glib.List, error) {
+	c_service := C.CString(service)
+	defer C.free(unsafe.Pointer(c_service))
+
+	c_protocol := C.CString(protocol)
+	defer C.free(unsafe.Pointer(c_protocol))
+
+	c_domain := C.CString(domain)
+	defer C.free(unsafe.Pointer(c_domain))
+
+	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_resolver_lookup_service((*C.GResolver)(recv.native), c_service, c_protocol, c_domain, c_cancellable, &cThrowableError)
+	retGo := glib.ListNewFromC(unsafe.Pointer(retC))
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
+
+// Unsupported : g_resolver_lookup_service_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+
+// Unsupported : g_resolver_lookup_service_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+
+// SetDefault is a wrapper around the C function g_resolver_set_default.
+func (recv *Resolver) SetDefault() {
+	C.g_resolver_set_default((*C.GResolver)(recv.native))
+
+	return
+}
+
+// Unsupported : g_settings_bind_with_mapping : unsupported parameter get_mapping : no type generator for SettingsBindGetMapping, GSettingsBindGetMapping
+
+// Unsupported : g_settings_create_action : no return generator
+
+// Unsupported : g_settings_get : unsupported parameter ... : varargs
+
+// Unsupported : g_settings_get_default_value : return type : Blacklisted record : GVariant
+
+// Unsupported : g_settings_get_mapped : unsupported parameter mapping : no type generator for SettingsGetMapping, GSettingsGetMapping
+
+// Unsupported : g_settings_get_range : return type : Blacklisted record : GVariant
+
+// Unsupported : g_settings_get_strv : no return type
+
+// Unsupported : g_settings_get_user_value : return type : Blacklisted record : GVariant
+
+// Unsupported : g_settings_get_value : return type : Blacklisted record : GVariant
+
+// Unsupported : g_settings_list_children : no return type
+
+// Unsupported : g_settings_list_keys : no return type
+
+// Unsupported : g_settings_range_check : unsupported parameter value : Blacklisted record : GVariant
+
+// Unsupported : g_settings_set : unsupported parameter ... : varargs
+
+// Unsupported : g_settings_set_strv : unsupported parameter value : no param type
+
+// Unsupported : g_settings_set_value : unsupported parameter value : Blacklisted record : GVariant
+
+// Unsupported : g_settings_backend_keys_changed : unsupported parameter items : no param type
+
+// Unsupported : g_simple_action_new : unsupported parameter parameter_type : Blacklisted record : GVariantType
+
+// Unsupported : g_simple_action_new_stateful : unsupported parameter parameter_type : Blacklisted record : GVariantType
+
+// Unsupported : g_simple_action_set_state : unsupported parameter value : Blacklisted record : GVariant
+
+// Unsupported : g_simple_action_set_state_hint : unsupported parameter state_hint : Blacklisted record : GVariant
+
+// Unsupported : g_simple_action_group_add_entries : unsupported parameter entries : no param type
+
+// Unsupported : g_simple_action_group_insert : unsupported parameter action : no type generator for Action, GAction*
+
+// Unsupported : g_simple_action_group_lookup : no return generator
+
+// Unsupported : g_simple_async_result_new : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+
+// Unsupported : g_simple_async_result_new_error : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+
+// Unsupported : g_simple_async_result_new_from_error : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+
+// Unsupported : g_simple_async_result_new_take_error : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+
+// Unsupported : g_simple_async_result_run_in_thread : unsupported parameter func : no type generator for SimpleAsyncThreadFunc, GSimpleAsyncThreadFunc
+
+// Unsupported : g_simple_async_result_set_error : unsupported parameter ... : varargs
+
+// Unsupported : g_simple_async_result_set_error_va : unsupported parameter args : no type generator for va_list, va_list
+
+// Unsupported : g_simple_async_result_set_op_res_gpointer : unsupported parameter destroy_op_res : no type generator for GLib.DestroyNotify, GDestroyNotify
+
+// Unsupported : g_simple_proxy_resolver_set_ignore_hosts : unsupported parameter ignore_hosts : in string with indirection level of 2
+
 // Socket is a wrapper around the C record GSocket.
 type Socket struct {
 	native *C.GSocket
@@ -417,6 +1320,57 @@ func (recv *Socket) SpeaksIpv4() bool {
 	return retGo
 }
 
+// SocketAddressNewFromNative is a wrapper around the C function g_socket_address_new_from_native.
+func SocketAddressNewFromNative(native uintptr, len uint64) *SocketAddress {
+	c_native := (C.gpointer)(native)
+
+	c_len := (C.gsize)(len)
+
+	retC := C.g_socket_address_new_from_native(c_native, c_len)
+	retGo := SocketAddressNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// GetFamily is a wrapper around the C function g_socket_address_get_family.
+func (recv *SocketAddress) GetFamily() SocketFamily {
+	retC := C.g_socket_address_get_family((*C.GSocketAddress)(recv.native))
+	retGo := (SocketFamily)(retC)
+
+	return retGo
+}
+
+// GetNativeSize is a wrapper around the C function g_socket_address_get_native_size.
+func (recv *SocketAddress) GetNativeSize() int64 {
+	retC := C.g_socket_address_get_native_size((*C.GSocketAddress)(recv.native))
+	retGo := (int64)(retC)
+
+	return retGo
+}
+
+// ToNative is a wrapper around the C function g_socket_address_to_native.
+func (recv *SocketAddress) ToNative(dest uintptr, destlen uint64) (bool, error) {
+	c_dest := (C.gpointer)(dest)
+
+	c_destlen := (C.gsize)(destlen)
+
+	var cThrowableError *C.GError
+
+	retC := C.g_socket_address_to_native((*C.GSocketAddress)(recv.native), c_dest, c_destlen, &cThrowableError)
+	retGo := retC == C.TRUE
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
+
+// Unsupported : g_socket_address_enumerator_next_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+
+// Unsupported : g_socket_address_enumerator_next_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+
 // SocketClient is a wrapper around the C record GSocketClient.
 type SocketClient struct {
 	native *C.GSocketClient
@@ -658,6 +1612,39 @@ func (recv *SocketConnection) GetSocket() *Socket {
 	return retGo
 }
 
+// GetLevel is a wrapper around the C function g_socket_control_message_get_level.
+func (recv *SocketControlMessage) GetLevel() int32 {
+	retC := C.g_socket_control_message_get_level((*C.GSocketControlMessage)(recv.native))
+	retGo := (int32)(retC)
+
+	return retGo
+}
+
+// GetMsgType is a wrapper around the C function g_socket_control_message_get_msg_type.
+func (recv *SocketControlMessage) GetMsgType() int32 {
+	retC := C.g_socket_control_message_get_msg_type((*C.GSocketControlMessage)(recv.native))
+	retGo := (int32)(retC)
+
+	return retGo
+}
+
+// GetSize is a wrapper around the C function g_socket_control_message_get_size.
+func (recv *SocketControlMessage) GetSize() uint64 {
+	retC := C.g_socket_control_message_get_size((*C.GSocketControlMessage)(recv.native))
+	retGo := (uint64)(retC)
+
+	return retGo
+}
+
+// Serialize is a wrapper around the C function g_socket_control_message_serialize.
+func (recv *SocketControlMessage) Serialize(data uintptr) {
+	c_data := (C.gpointer)(data)
+
+	C.g_socket_control_message_serialize((*C.GSocketControlMessage)(recv.native), c_data)
+
+	return
+}
+
 // SocketListener is a wrapper around the C record GSocketListener.
 type SocketListener struct {
 	native *C.GSocketListener
@@ -810,6 +1797,50 @@ func (recv *SocketService) Stop() {
 	return
 }
 
+// Unsupported : g_subprocess_new : unsupported parameter error : record with indirection level of 2
+
+// Unsupported : g_subprocess_newv : unsupported parameter argv : no param type
+
+// Unsupported : g_subprocess_communicate : unsupported parameter stdout_buf : record with indirection level of 2
+
+// Unsupported : g_subprocess_communicate_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+
+// Unsupported : g_subprocess_communicate_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+
+// Unsupported : g_subprocess_communicate_utf8_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+
+// Unsupported : g_subprocess_communicate_utf8_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+
+// Unsupported : g_subprocess_wait_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+
+// Unsupported : g_subprocess_wait_check_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+
+// Unsupported : g_subprocess_wait_check_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+
+// Unsupported : g_subprocess_wait_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+
+// Unsupported : g_subprocess_launcher_set_child_setup : unsupported parameter child_setup : no type generator for GLib.SpawnChildSetupFunc, GSpawnChildSetupFunc
+
+// Unsupported : g_subprocess_launcher_set_environ : unsupported parameter env : no param type
+
+// Unsupported : g_subprocess_launcher_spawn : unsupported parameter error : record with indirection level of 2
+
+// Unsupported : g_subprocess_launcher_spawnv : unsupported parameter argv : no param type
+
+// Unsupported : g_task_new : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+
+// Unsupported : g_task_attach_source : unsupported parameter callback : no type generator for GLib.SourceFunc, GSourceFunc
+
+// Unsupported : g_task_return_new_error : unsupported parameter ... : varargs
+
+// Unsupported : g_task_return_pointer : unsupported parameter result_destroy : no type generator for GLib.DestroyNotify, GDestroyNotify
+
+// Unsupported : g_task_run_in_thread : unsupported parameter task_func : no type generator for TaskThreadFunc, GTaskThreadFunc
+
+// Unsupported : g_task_run_in_thread_sync : unsupported parameter task_func : no type generator for TaskThreadFunc, GTaskThreadFunc
+
+// Unsupported : g_task_set_task_data : unsupported parameter task_data_destroy : no type generator for GLib.DestroyNotify, GDestroyNotify
+
 // TcpConnection is a wrapper around the C record GTcpConnection.
 type TcpConnection struct {
 	native *C.GTcpConnection
@@ -851,6 +1882,10 @@ func (recv *TcpConnection) SetGracefulDisconnect(gracefulDisconnect bool) {
 	return
 }
 
+// Unsupported : g_themed_icon_new_from_names : unsupported parameter iconnames : no param type
+
+// Unsupported : g_themed_icon_get_names : no return type
+
 // ThreadedSocketService is a wrapper around the C record GThreadedSocketService.
 type ThreadedSocketService struct {
 	native *C.GThreadedSocketService
@@ -883,3 +1918,173 @@ func ThreadedSocketServiceNew(maxThreads int32) *SocketService {
 
 	return retGo
 }
+
+// Unsupported : g_tls_certificate_verify : unsupported parameter identity : no type generator for SocketConnectable, GSocketConnectable*
+
+// Unsupported : g_tls_connection_handshake_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+
+// Unsupported : g_tls_connection_handshake_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+
+// Unsupported : g_tls_database_lookup_certificate_for_handle_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+
+// Unsupported : g_tls_database_lookup_certificate_for_handle_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+
+// Unsupported : g_tls_database_lookup_certificate_issuer_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+
+// Unsupported : g_tls_database_lookup_certificate_issuer_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+
+// Unsupported : g_tls_database_lookup_certificates_issued_by : unsupported parameter issuer_raw_dn : no param type
+
+// Unsupported : g_tls_database_lookup_certificates_issued_by_async : unsupported parameter issuer_raw_dn : no param type
+
+// Unsupported : g_tls_database_lookup_certificates_issued_by_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+
+// Unsupported : g_tls_database_verify_chain : unsupported parameter identity : no type generator for SocketConnectable, GSocketConnectable*
+
+// Unsupported : g_tls_database_verify_chain_async : unsupported parameter identity : no type generator for SocketConnectable, GSocketConnectable*
+
+// Unsupported : g_tls_database_verify_chain_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+
+// Unsupported : g_tls_interaction_ask_password_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+
+// Unsupported : g_tls_interaction_ask_password_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+
+// Unsupported : g_tls_interaction_request_certificate_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+
+// Unsupported : g_tls_interaction_request_certificate_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+
+// Unsupported : g_tls_password_get_value : unsupported parameter length : no type generator for gsize, gsize*
+
+// Unsupported : g_tls_password_set_value : unsupported parameter value : no param type
+
+// Unsupported : g_tls_password_set_value_full : unsupported parameter value : no param type
+
+// Unsupported : g_unix_connection_receive_credentials_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+
+// Unsupported : g_unix_connection_receive_credentials_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+
+// ReceiveFd is a wrapper around the C function g_unix_connection_receive_fd.
+func (recv *UnixConnection) ReceiveFd(cancellable *Cancellable) (int32, error) {
+	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_unix_connection_receive_fd((*C.GUnixConnection)(recv.native), c_cancellable, &cThrowableError)
+	retGo := (int32)(retC)
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
+
+// Unsupported : g_unix_connection_send_credentials_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+
+// Unsupported : g_unix_connection_send_credentials_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+
+// SendFd is a wrapper around the C function g_unix_connection_send_fd.
+func (recv *UnixConnection) SendFd(fd int32, cancellable *Cancellable) (bool, error) {
+	c_fd := (C.gint)(fd)
+
+	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_unix_connection_send_fd((*C.GUnixConnection)(recv.native), c_fd, c_cancellable, &cThrowableError)
+	retGo := retC == C.TRUE
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
+
+// Unsupported : g_unix_fd_list_new_from_array : unsupported parameter fds : no param type
+
+// Unsupported : g_unix_fd_list_peek_fds : unsupported parameter length : no type generator for gint, gint*
+
+// Unsupported : g_unix_fd_list_steal_fds : unsupported parameter length : no type generator for gint, gint*
+
+// UnixFDMessageNew is a wrapper around the C function g_unix_fd_message_new.
+func UnixFDMessageNew() *SocketControlMessage {
+	retC := C.g_unix_fd_message_new()
+	retGo := SocketControlMessageNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// AppendFd is a wrapper around the C function g_unix_fd_message_append_fd.
+func (recv *UnixFDMessage) AppendFd(fd int32) (bool, error) {
+	c_fd := (C.gint)(fd)
+
+	var cThrowableError *C.GError
+
+	retC := C.g_unix_fd_message_append_fd((*C.GUnixFDMessage)(recv.native), c_fd, &cThrowableError)
+	retGo := retC == C.TRUE
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
+
+// Unsupported : g_unix_fd_message_steal_fds : unsupported parameter length : no type generator for gint, gint*
+
+// UnixSocketAddressNew is a wrapper around the C function g_unix_socket_address_new.
+func UnixSocketAddressNew(path string) *SocketAddress {
+	c_path := C.CString(path)
+	defer C.free(unsafe.Pointer(c_path))
+
+	retC := C.g_unix_socket_address_new(c_path)
+	retGo := SocketAddressNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// Unsupported : g_unix_socket_address_new_abstract : unsupported parameter path : no param type
+
+// Unsupported : g_unix_socket_address_new_with_type : unsupported parameter path : no param type
+
+// GetIsAbstract is a wrapper around the C function g_unix_socket_address_get_is_abstract.
+func (recv *UnixSocketAddress) GetIsAbstract() bool {
+	retC := C.g_unix_socket_address_get_is_abstract((*C.GUnixSocketAddress)(recv.native))
+	retGo := retC == C.TRUE
+
+	return retGo
+}
+
+// GetPath is a wrapper around the C function g_unix_socket_address_get_path.
+func (recv *UnixSocketAddress) GetPath() string {
+	retC := C.g_unix_socket_address_get_path((*C.GUnixSocketAddress)(recv.native))
+	retGo := C.GoString(retC)
+
+	return retGo
+}
+
+// GetPathLen is a wrapper around the C function g_unix_socket_address_get_path_len.
+func (recv *UnixSocketAddress) GetPathLen() uint64 {
+	retC := C.g_unix_socket_address_get_path_len((*C.GUnixSocketAddress)(recv.native))
+	retGo := (uint64)(retC)
+
+	return retGo
+}
+
+// Unsupported : g_vfs_get_file_for_path : no return generator
+
+// Unsupported : g_vfs_get_file_for_uri : no return generator
+
+// Unsupported : g_vfs_get_supported_uri_schemes : no return type
+
+// Unsupported : g_vfs_parse_name : no return generator
+
+// Unsupported : g_vfs_register_uri_scheme : unsupported parameter uri_func : no type generator for VfsFileLookupFunc, GVfsFileLookupFunc
+
+// Unsupported : g_volume_monitor_get_mount_for_uuid : no return generator
+
+// Unsupported : g_volume_monitor_get_volume_for_uuid : no return generator

@@ -297,6 +297,24 @@ func (recv *ByteArray) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Unsupported : g_bytes_new : unsupported parameter data : no param type
+
+// Unsupported : g_bytes_new_static : unsupported parameter data : no param type
+
+// Unsupported : g_bytes_new_take : unsupported parameter data : no param type
+
+// Unsupported : g_bytes_new_with_free_func : unsupported parameter data : no param type
+
+// Unsupported : g_bytes_get_data : unsupported parameter size : no type generator for gsize, gsize*
+
+// Unsupported : g_bytes_unref_to_array : no return type
+
+// Unsupported : g_bytes_unref_to_data : unsupported parameter size : no type generator for gsize, gsize*
+
+// Unsupported : g_checksum_get_digest : unsupported parameter buffer : no type generator for guint8, guint8*
+
+// Unsupported : g_checksum_update : unsupported parameter data : no param type
+
 // Cond is a wrapper around the C record GCond.
 type Cond struct {
 	native *C.GCond
@@ -688,6 +706,8 @@ func (recv *Date) Valid() bool {
 	return retGo
 }
 
+// Unsupported : g_date_time_get_ymd : unsupported parameter year : no type generator for gint, gint*
+
 // DebugKey is a wrapper around the C record GDebugKey.
 type DebugKey struct {
 	native *C.GDebugKey
@@ -892,6 +912,10 @@ func (recv *HashTableIter) ToC() unsafe.Pointer {
 }
 
 // Unsupported : g_hash_table_iter_next : unsupported parameter key : no type generator for gpointer, gpointer*
+
+// Unsupported : g_hmac_get_digest : unsupported parameter buffer : no type generator for guint8, guint8*
+
+// Unsupported : g_hmac_update : unsupported parameter data : no param type
 
 // Hook is a wrapper around the C record GHook.
 type Hook struct {
@@ -1794,6 +1818,8 @@ func (recv *Node) Unlink() {
 	return
 }
 
+// Unsupported : g_once_impl : unsupported parameter func : no type generator for ThreadFunc, GThreadFunc
+
 // OptionContext is a wrapper around the C record GOptionContext.
 type OptionContext struct {
 	native *C.GOptionContext
@@ -2259,6 +2285,24 @@ func (recv *Rand) SetSeed(seed uint32) {
 }
 
 // Unsupported : g_rand_set_seed_array : unsupported parameter seed : no type generator for guint32, const guint32*
+
+// Unsupported : g_regex_match : unsupported parameter match_info : record with indirection level of 2
+
+// Unsupported : g_regex_match_all : unsupported parameter match_info : record with indirection level of 2
+
+// Unsupported : g_regex_match_all_full : unsupported parameter string : no param type
+
+// Unsupported : g_regex_match_full : unsupported parameter string : no param type
+
+// Unsupported : g_regex_replace : unsupported parameter string : no param type
+
+// Unsupported : g_regex_replace_eval : unsupported parameter string : no param type
+
+// Unsupported : g_regex_replace_literal : unsupported parameter string : no param type
+
+// Unsupported : g_regex_split : no return type
+
+// Unsupported : g_regex_split_full : unsupported parameter string : no param type
 
 // SList is a wrapper around the C record GSList.
 type SList struct {
@@ -3539,6 +3583,8 @@ func (recv *TimeVal) Add(microseconds int64) {
 	return
 }
 
+// Unsupported : g_time_zone_adjust_time : unsupported parameter time_ : no type generator for gint64, gint64*
+
 // Timer is a wrapper around the C record GTimer.
 type Timer struct {
 	native *C.GTimer
@@ -3716,6 +3762,8 @@ func (recv *Tree) Steal(key uintptr) bool {
 
 // Unsupported : g_tree_traverse : unsupported parameter traverse_func : no type generator for TraverseFunc, GTraverseFunc
 
+// Blacklisted : GVariant
+
 // VariantBuilder is a wrapper around the C record GVariantBuilder.
 type VariantBuilder struct {
 	native *C.GVariantBuilder
@@ -3750,6 +3798,20 @@ func (recv *VariantBuilder) ToC() unsafe.Pointer {
 // Unsupported : g_variant_builder_init : unsupported parameter type : Blacklisted record : GVariantType
 
 // Unsupported : g_variant_builder_open : unsupported parameter type : Blacklisted record : GVariantType
+
+// Unsupported : g_variant_dict_new : unsupported parameter from_asv : Blacklisted record : GVariant
+
+// Unsupported : g_variant_dict_end : return type : Blacklisted record : GVariant
+
+// Unsupported : g_variant_dict_init : unsupported parameter from_asv : Blacklisted record : GVariant
+
+// Unsupported : g_variant_dict_insert : unsupported parameter ... : varargs
+
+// Unsupported : g_variant_dict_insert_value : unsupported parameter value : Blacklisted record : GVariant
+
+// Unsupported : g_variant_dict_lookup : unsupported parameter ... : varargs
+
+// Unsupported : g_variant_dict_lookup_value : unsupported parameter expected_type : Blacklisted record : GVariantType
 
 // VariantIter is a wrapper around the C record GVariantIter.
 type VariantIter struct {

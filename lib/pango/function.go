@@ -206,9 +206,15 @@ func LanguageFromString(language string) *Language {
 	return retGo
 }
 
+// Unsupported : pango_log2vis_get_embedding_levels : unsupported parameter pbase_dir : PangoDirection* with indirection level of 1
+
 // Unsupported : pango_lookup_aliases : unsupported parameter families : no param type
 
+// Unsupported : pango_markup_parser_finish : unsupported parameter attr_list : record with indirection level of 2
+
 // Unsupported : pango_module_register : unsupported parameter module : Blacklisted record : PangoIncludedModule
+
+// Unsupported : pango_parse_enum : unsupported parameter type : no type generator for GType, GType
 
 // Unsupported : pango_parse_markup : unsupported parameter attr_list : record with indirection level of 2
 
@@ -219,6 +225,8 @@ func LanguageFromString(language string) *Language {
 // Unsupported : pango_parse_variant : unsupported parameter variant : PangoVariant* with indirection level of 1
 
 // Unsupported : pango_parse_weight : unsupported parameter weight : PangoWeight* with indirection level of 1
+
+// Unsupported : pango_quantize_line_geometry : unsupported parameter thickness : no type generator for gint, int*
 
 // Unsupported : pango_read_line : unsupported parameter stream : no type generator for gpointer, FILE*
 

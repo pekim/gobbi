@@ -44,6 +44,10 @@ func (c *Constant) supported() (supported bool, reason string) {
 }
 
 func (c *Constant) generate(g *jen.Group, version *Version) {
+	if !supportedByVersion(c, version) {
+		return
+	}
+
 	var goTypeName string
 	switch c.Type.Name {
 	case "gint":

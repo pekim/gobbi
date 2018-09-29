@@ -58,6 +58,10 @@ func (e *Enumeration) supported() (supported bool, reason string) {
 }
 
 func (e *Enumeration) generate(g *jen.Group, version *Version) {
+	if !supportedByVersion(e, version) {
+		return
+	}
+
 	// define the type
 	g.
 		Type().

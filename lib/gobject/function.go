@@ -444,6 +444,8 @@ func CclosureMarshalVoidVoid(closure *Closure, returnValue *Value, nParamValues 
 
 // Unsupported : g_cclosure_new_swap : unsupported parameter callback_func : no type generator for Callback, GCallback
 
+// Unsupported : g_clear_object : unsupported parameter object_ptr : record with indirection level of 2
+
 // Unsupported : g_enum_complete_type_info : unsupported parameter g_enum_type : no type generator for GType, GType
 
 // EnumGetValue is a wrapper around the C function g_enum_get_value.
@@ -486,6 +488,8 @@ func EnumGetValueByNick(enumClass *EnumClass, nick string) *EnumValue {
 
 // Unsupported : g_enum_register_static : no return generator
 
+// Unsupported : g_enum_to_string : unsupported parameter g_enum_type : no type generator for GType, GType
+
 // Unsupported : g_flags_complete_type_info : unsupported parameter g_flags_type : no type generator for GType, GType
 
 // FlagsGetFirstValue is a wrapper around the C function g_flags_get_first_value.
@@ -527,6 +531,8 @@ func FlagsGetValueByNick(flagsClass *FlagsClass, nick string) *FlagsValue {
 }
 
 // Unsupported : g_flags_register_static : no return generator
+
+// Unsupported : g_flags_to_string : unsupported parameter flags_type : no type generator for GType, GType
 
 // Unsupported : g_gtype_get_type : no return generator
 
@@ -632,6 +638,8 @@ func ParamSpecFloat_(name string, nick string, blurb string, minimum float32, ma
 
 	return retGo
 }
+
+// Unsupported : g_param_spec_gtype : unsupported parameter is_a_type : no type generator for GType, GType
 
 // ParamSpecInt_ is a wrapper around the C function g_param_spec_int.
 func ParamSpecInt_(name string, nick string, blurb string, minimum int32, maximum int32, defaultValue int32, flags ParamFlags) *ParamSpec {
@@ -906,6 +914,8 @@ func ParamSpecValueArray_(name string, nick string, blurb string, elementSpec *P
 	return retGo
 }
 
+// Unsupported : g_param_spec_variant : unsupported parameter type : Blacklisted record : GVariantType
+
 // Unsupported : g_param_type_register_static : no return generator
 
 // ParamValueConvert is a wrapper around the C function g_param_value_convert.
@@ -979,6 +989,8 @@ func ParamValuesCmp(pspec *ParamSpec, value1 *Value, value2 *Value) int32 {
 // Unsupported : g_signal_add_emission_hook : unsupported parameter hook_func : no type generator for SignalEmissionHook, GSignalEmissionHook
 
 // Unsupported : g_signal_chain_from_overridden : unsupported parameter instance_and_params : no param type
+
+// Unsupported : g_signal_chain_from_overridden_handler : unsupported parameter ... : varargs
 
 // SignalConnectClosure is a wrapper around the C function g_signal_connect_closure.
 func SignalConnectClosure(instance uintptr, detailedSignal string, closure *Closure, after bool) uint64 {
@@ -1214,11 +1226,15 @@ func SignalName(signalId uint32) string {
 
 // Unsupported : g_signal_new : unsupported parameter itype : no type generator for GType, GType
 
+// Unsupported : g_signal_new_class_handler : unsupported parameter itype : no type generator for GType, GType
+
 // Unsupported : g_signal_new_valist : unsupported parameter itype : no type generator for GType, GType
 
 // Unsupported : g_signal_newv : unsupported parameter itype : no type generator for GType, GType
 
 // Unsupported : g_signal_override_class_closure : unsupported parameter instance_type : no type generator for GType, GType
+
+// Unsupported : g_signal_override_class_handler : unsupported parameter instance_type : no type generator for GType, GType
 
 // Unsupported : g_signal_parse_name : unsupported parameter itype : no type generator for GType, GType
 
@@ -1245,6 +1261,8 @@ func SignalRemoveEmissionHook(signalId uint32, hookId uint64) {
 
 	return
 }
+
+// Unsupported : g_signal_set_va_marshaller : unsupported parameter instance_type : no type generator for GType, GType
 
 // SignalStopEmission is a wrapper around the C function g_signal_stop_emission.
 func SignalStopEmission(instance uintptr, signalId uint32, detail glib.Quark) {
@@ -1306,7 +1324,11 @@ func StrdupValueContents(value *Value) string {
 
 // Unsupported : g_type_add_class_cache_func : unsupported parameter cache_func : no type generator for TypeClassCacheFunc, GTypeClassCacheFunc
 
+// Unsupported : g_type_add_class_private : unsupported parameter class_type : no type generator for GType, GType
+
 // Unsupported : g_type_add_instance_private : unsupported parameter class_type : no type generator for GType, GType
+
+// Unsupported : g_type_add_interface_check : unsupported parameter check_func : no type generator for TypeInterfaceCheckFunc, GTypeInterfaceCheckFunc
 
 // Unsupported : g_type_add_interface_dynamic : unsupported parameter instance_type : no type generator for GType, GType
 
@@ -1352,11 +1374,19 @@ func TypeCheckValue(value *Value) bool {
 
 // Unsupported : g_type_class_peek : unsupported parameter type : no type generator for GType, GType
 
+// Unsupported : g_type_class_peek_static : unsupported parameter type : no type generator for GType, GType
+
 // Unsupported : g_type_class_ref : unsupported parameter type : no type generator for GType, GType
 
 // Unsupported : g_type_create_instance : unsupported parameter type : no type generator for GType, GType
 
+// Unsupported : g_type_default_interface_peek : unsupported parameter g_type : no type generator for GType, GType
+
+// Unsupported : g_type_default_interface_ref : unsupported parameter g_type : no type generator for GType, GType
+
 // Unsupported : g_type_depth : unsupported parameter type : no type generator for GType, GType
+
+// Unsupported : g_type_ensure : unsupported parameter type : no type generator for GType, GType
 
 // TypeFreeInstance is a wrapper around the C function g_type_free_instance.
 func TypeFreeInstance(instance *TypeInstance) {
@@ -1372,6 +1402,8 @@ func TypeFreeInstance(instance *TypeInstance) {
 // Unsupported : g_type_fundamental : unsupported parameter type_id : no type generator for GType, GType
 
 // Unsupported : g_type_fundamental_next : no return generator
+
+// Unsupported : g_type_get_instance_count : unsupported parameter type : no type generator for GType, GType
 
 // Unsupported : g_type_get_plugin : unsupported parameter type : no type generator for GType, GType
 
@@ -1398,6 +1430,8 @@ func TypeInitWithDebugFlags(debugFlags TypeDebugFlags) {
 // Unsupported : g_type_interface_get_plugin : unsupported parameter instance_type : no type generator for GType, GType
 
 // Unsupported : g_type_interface_peek : unsupported parameter iface_type : no type generator for GType, GType
+
+// Unsupported : g_type_interface_prerequisites : unsupported parameter interface_type : no type generator for GType, GType
 
 // Unsupported : g_type_interfaces : unsupported parameter type : no type generator for GType, GType
 
@@ -1439,7 +1473,11 @@ func TypeNameFromInstance(instance *TypeInstance) string {
 
 // Unsupported : g_type_register_static : unsupported parameter parent_type : no type generator for GType, GType
 
+// Unsupported : g_type_register_static_simple : unsupported parameter parent_type : no type generator for GType, GType
+
 // Unsupported : g_type_remove_class_cache_func : unsupported parameter cache_func : no type generator for TypeClassCacheFunc, GTypeClassCacheFunc
+
+// Unsupported : g_type_remove_interface_check : unsupported parameter check_func : no type generator for TypeInterfaceCheckFunc, GTypeInterfaceCheckFunc
 
 // Unsupported : g_type_set_qdata : unsupported parameter type : no type generator for GType, GType
 

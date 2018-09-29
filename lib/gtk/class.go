@@ -3987,6 +3987,8 @@ func (recv *FrameAccessible) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Unsupported : gtk_gl_area_get_required_version : unsupported parameter major : no type generator for gint, gint*
+
 // Gesture is a wrapper around the C record GtkGesture.
 type Gesture struct {
 	native *C.GtkGesture
@@ -7334,6 +7336,10 @@ func (recv *Overlay) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+// Unsupported : gtk_pad_controller_new : unsupported parameter group : no type generator for Gio.ActionGroup, GActionGroup*
+
+// Unsupported : gtk_pad_controller_set_action_entries : unsupported parameter entries : no param type
 
 // PageSetup is a wrapper around the C record GtkPageSetup.
 type PageSetup struct {

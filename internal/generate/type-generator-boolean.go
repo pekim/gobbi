@@ -48,6 +48,10 @@ func (t *TypeGeneratorBoolean) generateParamCVar(g *jen.Group, cVarName string, 
 }
 
 func (t *TypeGeneratorBoolean) generateParamOutCVar(g *jen.Group, cVarName string) {
+	g.
+		Var().
+		Id(cVarName).
+		Qual("C", "gboolean")
 }
 
 func (t *TypeGeneratorBoolean) generateReturnFunctionDeclaration(g *jen.Group) {

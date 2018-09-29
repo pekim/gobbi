@@ -18,4 +18,8 @@ package gio
 // #include <stdlib.h>
 import "C"
 
+// Blacklisted : FILE_ATTRIBUTE_FILESYSTEM_REMOTE
+
 const PROXY_EXTENSION_POINT_NAME string = C.G_PROXY_EXTENSION_POINT_NAME
+
+// Blacklisted : SETTINGS_BACKEND_EXTENSION_POINT_NAME

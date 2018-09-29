@@ -390,6 +390,10 @@ func (recv *Keymap) LookupKey(key *KeymapKey) uint32 {
 
 // Unsupported : gdk_keymap_translate_keyboard_state : unsupported parameter keyval : no type generator for guint, guint*
 
+// Unsupported : gdk_monitor_get_geometry : unsupported parameter geometry : Blacklisted record : GdkRectangle
+
+// Unsupported : gdk_monitor_get_workarea : unsupported parameter workarea : Blacklisted record : GdkRectangle
+
 // Screen is a wrapper around the C record GdkScreen.
 type Screen struct {
 	native *C.GdkScreen
@@ -414,6 +418,8 @@ func (recv *Screen) ToC() unsafe.Pointer {
 // Unsupported : gdk_screen_get_monitor_geometry : unsupported parameter dest : Blacklisted record : GdkRectangle
 
 // Unsupported : gdk_screen_get_monitor_workarea : unsupported parameter dest : Blacklisted record : GdkRectangle
+
+// Unsupported : gdk_seat_grab : unsupported parameter event : no type generator for Event, const GdkEvent*
 
 // Visual is a wrapper around the C record GdkVisual.
 type Visual struct {
