@@ -3,7 +3,7 @@ set -e
 set -u
 
 exampleDir=internal/example
-tags="glib_2.48 gio_2.32 gtk_3.18"
+tags="glib_2.48 gdk_3.4 gio_2.32 gtk_3.18"
 
 usage () {
     echo "Usage:"

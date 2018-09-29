@@ -12,8 +12,6 @@ import "C"
 
 // Unsupported : type gdouble for E
 
-// Blacklisted : KEY_FILE_DESKTOP_ACTION_GROUP_PREFIX
-
 // Unsupported : type gdouble for LN10
 
 // Unsupported : type gdouble for LN2
@@ -70,5 +68,3 @@ import "C"
 
 const UNICHAR_MAX_DECOMPOSITION_LENGTH int = C.G_UNICHAR_MAX_DECOMPOSITION_LENGTH
 const VERSION_MIN_REQUIRED int = C.GLIB_VERSION_MIN_REQUIRED
-
-// Blacklisted : WIN32_MSG_HANDLE

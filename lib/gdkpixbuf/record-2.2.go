@@ -39,5 +39,3 @@ func (recv *PixbufFormat) IsWritable() bool {
 
 	return retGo
 }
-
-// Blacklisted : GdkPixdata

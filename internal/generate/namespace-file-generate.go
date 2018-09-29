@@ -105,14 +105,14 @@ func (ns *Namespace) generateEntityVersionedFile(filename string, version Versio
 			}
 
 			if blacklisted, detail := entity.blacklisted(); blacklisted {
+				if !supportedByVersion(entity, &version) {
+					continue
+				}
+
 				f.Commentf("Blacklisted : %s", detail)
 				f.Line()
 				continue
 			}
-
-			//if !supportedByVersion(entity, &version) {
-			//	continue
-			//}
 
 			entity.generate(f.Group, &version)
 		}

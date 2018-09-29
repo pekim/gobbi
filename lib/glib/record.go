@@ -3762,8 +3762,6 @@ func (recv *Tree) Steal(key uintptr) bool {
 
 // Unsupported : g_tree_traverse : unsupported parameter traverse_func : no type generator for TraverseFunc, GTraverseFunc
 
-// Blacklisted : GVariant
-
 // VariantBuilder is a wrapper around the C record GVariantBuilder.
 type VariantBuilder struct {
 	native *C.GVariantBuilder

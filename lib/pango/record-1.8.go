@@ -18,18 +18,6 @@ import "C"
 
 // Unsupported : pango_coverage_to_bytes : unsupported parameter bytes : no param type
 
-// Blacklisted : PangoEngineClass
-
-// Blacklisted : PangoEngineInfo
-
-// Blacklisted : PangoEngineLangClass
-
-// Blacklisted : PangoEngineScriptInfo
-
-// Blacklisted : PangoEngineShapeClass
-
-// Blacklisted : PangoFontClass
-
 // GetSizeIsAbsolute is a wrapper around the C function pango_font_description_get_size_is_absolute.
 func (recv *FontDescription) GetSizeIsAbsolute() bool {
 	retC := C.pango_font_description_get_size_is_absolute((*C.PangoFontDescription)(recv.native))
@@ -47,18 +35,6 @@ func (recv *FontDescription) SetAbsoluteSize(size float64) {
 	return
 }
 
-// Blacklisted : PangoFontFaceClass
-
-// Blacklisted : PangoFontFamilyClass
-
-// Blacklisted : PangoFontMapClass
-
-// Blacklisted : PangoFontMetrics
-
-// Blacklisted : PangoFontsetClass
-
-// Blacklisted : PangoFontsetSimpleClass
-
 // Unsupported : pango_glyph_item_get_logical_widths : unsupported parameter logical_widths : no param type
 
 // Unsupported : pango_glyph_item_letter_space : unsupported parameter log_attrs : no param type
@@ -69,21 +45,13 @@ func (recv *FontDescription) SetAbsoluteSize(size float64) {
 
 // Unsupported : pango_glyph_string_x_to_index : unsupported parameter index_ : no type generator for gint, int*
 
-// Blacklisted : PangoIncludedModule
-
 // Unsupported : pango_language_get_scripts : unsupported parameter num_scripts : no type generator for gint, int*
-
-// Blacklisted : PangoLayoutIter
 
 // Unsupported : pango_layout_line_get_x_ranges : unsupported parameter ranges : no param type
 
 // Unsupported : pango_layout_line_index_to_x : unsupported parameter x_pos : no type generator for gint, int*
 
 // Unsupported : pango_layout_line_x_to_index : unsupported parameter index_ : no type generator for gint, int*
-
-// Blacklisted : PangoMap
-
-// Blacklisted : PangoMapEntry
 
 // Unsupported : pango_matrix_get_font_scale_factors : unsupported parameter xscale : no type generator for gdouble, double*
 
@@ -126,8 +94,6 @@ func (recv *RendererClass) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
-
-// Blacklisted : PangoScriptForLang
 
 // Unsupported : pango_script_iter_get_range : unsupported parameter script : PangoScript* with indirection level of 1
 

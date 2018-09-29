@@ -10,8 +10,6 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// Blacklisted : GdkAtom
-
 // GetComplete is a wrapper around the C function gdk_frame_timings_get_complete.
 func (recv *FrameTimings) GetComplete() bool {
 	retC := C.gdk_frame_timings_get_complete((*C.GdkFrameTimings)(recv.native))
@@ -66,5 +64,3 @@ func (recv *FrameTimings) Unref() {
 
 	return
 }
-
-// Blacklisted : GdkRectangle

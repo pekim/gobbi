@@ -19,5 +19,3 @@ const (
 	CHECKSUM_SHA512 ChecksumType = 3
 	CHECKSUM_SHA384 ChecksumType = 4
 )
-
-// Blacklisted : GTestResult

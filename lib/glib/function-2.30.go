@@ -297,8 +297,6 @@ func MkdtempFull(tmpl string, mode int32) string {
 
 // Unsupported : g_nullify_pointer : unsupported parameter nullify_location : no type generator for gpointer, gpointer*
 
-// Blacklisted : g_number_parser_error_quark
-
 // Unsupported : g_once_init_enter : unsupported parameter location : no type generator for gpointer, void*
 
 // Unsupported : g_once_init_leave : unsupported parameter location : no type generator for gpointer, void*
@@ -458,8 +456,6 @@ func TestFail() {
 
 // Unsupported : g_unichar_get_mirror_char : unsupported parameter mirrored_ch : no type generator for gunichar, gunichar*
 
-// Blacklisted : g_unichar_to_utf8
-
 // Unsupported : g_unicode_canonical_decomposition : unsupported parameter result_len : no type generator for gsize, gsize*
 
 // Unsupported : g_unicode_canonical_ordering : unsupported parameter string : no type generator for gunichar, gunichar*
@@ -483,8 +479,6 @@ func UnicodeScriptToIso15924(script UnicodeScript) uint32 {
 
 	return retGo
 }
-
-// Blacklisted : g_unix_error_quark
 
 // Unsupported : g_unix_fd_add : unsupported parameter function : no type generator for UnixFDSourceFunc, GUnixFDSourceFunc
 

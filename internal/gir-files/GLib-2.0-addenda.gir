@@ -34,7 +34,9 @@
     <function blacklist="true" c:identifier="g_atomic_int_set"/>
     <function blacklist="true" c:identifier="g_atomic_pointer_compare_and_exchange"/>
     <function blacklist="true" c:identifier="g_atomic_pointer_set"/>
+    <function blacklist="true" c:identifier="g_strv_contains"/>
     <function blacklist="true" c:identifier="g_unichar_to_utf8"/>
+
 
     <!--cgo-gcc-prolog: In function ‘_cgo_5905a9f56549_Cfunc_g_atomic_pointer_get’:-->
     <!--/usr/include/glib-2.0/glib/gmacros.h:232:53: error: size of array ‘_GStaticAssertCompileTimeAssertion_3’ is negative-->

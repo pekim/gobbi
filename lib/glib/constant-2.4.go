@@ -16,8 +16,6 @@ const GINT16_MODIFIER string = C.G_GINT16_MODIFIER
 const GINT32_MODIFIER string = C.G_GINT32_MODIFIER
 const GINT64_MODIFIER string = C.G_GINT64_MODIFIER
 
-// Blacklisted : KEY_FILE_DESKTOP_ACTION_GROUP_PREFIX
-
 // Unsupported : type gdouble for LN10
 
 // Unsupported : type gdouble for LN2
@@ -71,5 +69,3 @@ const GINT64_MODIFIER string = C.G_GINT64_MODIFIER
 // Unsupported : type gint64 for TIME_SPAN_MINUTE
 
 // Unsupported : type gint64 for TIME_SPAN_SECOND
-
-// Blacklisted : WIN32_MSG_HANDLE

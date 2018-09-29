@@ -632,8 +632,6 @@ func (recv *PlacesSidebar) SetShowTrash(showTrash bool) {
 	return
 }
 
-// Blacklisted : GtkPlug
-
 // GetDefaultWidget is a wrapper around the C function gtk_popover_get_default_widget.
 func (recv *Popover) GetDefaultWidget() *Widget {
 	retC := C.gtk_popover_get_default_widget((*C.GtkPopover)(recv.native))
@@ -698,8 +696,6 @@ func (recv *RadioMenuItem) JoinGroup(groupSource *RadioMenuItem) {
 
 // Unsupported : gtk_search_entry_handle_event : unsupported parameter event : no type generator for Gdk.Event, GdkEvent*
 
-// Blacklisted : GtkSocket
-
 // Unsupported : gtk_spin_button_get_increments : unsupported parameter step : no type generator for gdouble, gdouble*
 
 // Unsupported : gtk_spin_button_get_range : unsupported parameter min : no type generator for gdouble, gdouble*
@@ -721,8 +717,6 @@ func (recv *Stack) SetInterpolateSize(interpolateSize bool) {
 
 	return
 }
-
-// Blacklisted : GtkStackAccessible
 
 // Unsupported : gtk_status_icon_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon, GIcon*
 

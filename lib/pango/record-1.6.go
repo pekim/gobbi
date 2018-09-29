@@ -18,30 +18,6 @@ import "C"
 
 // Unsupported : pango_coverage_to_bytes : unsupported parameter bytes : no param type
 
-// Blacklisted : PangoEngineClass
-
-// Blacklisted : PangoEngineInfo
-
-// Blacklisted : PangoEngineLangClass
-
-// Blacklisted : PangoEngineScriptInfo
-
-// Blacklisted : PangoEngineShapeClass
-
-// Blacklisted : PangoFontClass
-
-// Blacklisted : PangoFontFaceClass
-
-// Blacklisted : PangoFontFamilyClass
-
-// Blacklisted : PangoFontMapClass
-
-// Blacklisted : PangoFontMetrics
-
-// Blacklisted : PangoFontsetClass
-
-// Blacklisted : PangoFontsetSimpleClass
-
 // Free is a wrapper around the C function pango_glyph_item_free.
 func (recv *GlyphItem) Free() {
 	C.pango_glyph_item_free((*C.PangoGlyphItem)(recv.native))
@@ -59,21 +35,13 @@ func (recv *GlyphItem) Free() {
 
 // Unsupported : pango_glyph_string_x_to_index : unsupported parameter index_ : no type generator for gint, int*
 
-// Blacklisted : PangoIncludedModule
-
 // Unsupported : pango_language_get_scripts : unsupported parameter num_scripts : no type generator for gint, int*
-
-// Blacklisted : PangoLayoutIter
 
 // Unsupported : pango_layout_line_get_x_ranges : unsupported parameter ranges : no param type
 
 // Unsupported : pango_layout_line_index_to_x : unsupported parameter x_pos : no type generator for gint, int*
 
 // Unsupported : pango_layout_line_x_to_index : unsupported parameter index_ : no type generator for gint, int*
-
-// Blacklisted : PangoMap
-
-// Blacklisted : PangoMapEntry
 
 // Matrix is a wrapper around the C record PangoMatrix.
 type Matrix struct {
@@ -182,8 +150,6 @@ func (recv *Matrix) Translate(tx float64, ty float64) {
 
 	return
 }
-
-// Blacklisted : PangoScriptForLang
 
 // Unsupported : pango_script_iter_get_range : unsupported parameter script : PangoScript* with indirection level of 1
 

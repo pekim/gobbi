@@ -16,5 +16,3 @@ const (
 	LOG_WRITER_HANDLED   LogWriterOutput = 1
 	LOG_WRITER_UNHANDLED LogWriterOutput = 0
 )
-
-// Blacklisted : GTestResult

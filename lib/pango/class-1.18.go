@@ -12,8 +12,6 @@ import "C"
 
 // Unsupported : pango_context_list_families : unsupported parameter families : no param type
 
-// Blacklisted : PangoEngine
-
 // Unsupported : pango_font_get_metrics : return type : Blacklisted record : PangoFontMetrics
 
 // IsSynthesized is a wrapper around the C function pango_font_face_is_synthesized.
@@ -33,8 +31,6 @@ func (recv *FontFace) IsSynthesized() bool {
 // Unsupported : pango_fontset_foreach : unsupported parameter func : no type generator for FontsetForeachFunc, PangoFontsetForeachFunc
 
 // Unsupported : pango_fontset_get_metrics : return type : Blacklisted record : PangoFontMetrics
-
-// Blacklisted : PangoFontsetSimple
 
 // Unsupported : pango_layout_get_iter : return type : Blacklisted record : PangoLayoutIter
 

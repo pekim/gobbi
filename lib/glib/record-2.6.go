@@ -98,10 +98,6 @@ func (recv *Date) GetIso8601WeekOfYear() uint32 {
 
 // Unsupported : g_hook_list_marshal_check : unsupported parameter marshaller : no type generator for HookCheckMarshaller, GHookCheckMarshaller
 
-// Blacklisted : GIConv
-
-// Blacklisted : GIOChannel
-
 // KeyFileNew is a wrapper around the C function g_key_file_new.
 func KeyFileNew() *KeyFile {
 	retC := C.g_key_file_new()
@@ -782,10 +778,6 @@ func (recv *OptionGroup) SetTranslationDomain(domain string) {
 
 // Unsupported : g_string_vprintf : unsupported parameter args : no type generator for va_list, va_list
 
-// Blacklisted : GTestLogBuffer
-
-// Blacklisted : GTestLogMsg
-
 // Unsupported : g_thread_new : unsupported parameter func : no type generator for ThreadFunc, GThreadFunc
 
 // Unsupported : g_thread_try_new : unsupported parameter func : no type generator for ThreadFunc, GThreadFunc
@@ -803,8 +795,6 @@ func (recv *OptionGroup) SetTranslationDomain(domain string) {
 // Unsupported : g_tree_search : unsupported parameter search_func : no type generator for CompareFunc, GCompareFunc
 
 // Unsupported : g_tree_traverse : unsupported parameter traverse_func : no type generator for TraverseFunc, GTraverseFunc
-
-// Blacklisted : GVariant
 
 // Unsupported : g_variant_builder_new : unsupported parameter type : Blacklisted record : GVariantType
 
@@ -841,5 +831,3 @@ func (recv *OptionGroup) SetTranslationDomain(domain string) {
 // Unsupported : g_variant_iter_next : unsupported parameter ... : varargs
 
 // Unsupported : g_variant_iter_next_value : return type : Blacklisted record : GVariant
-
-// Blacklisted : GVariantType

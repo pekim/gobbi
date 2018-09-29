@@ -12,8 +12,6 @@ import "C"
 
 // Unsupported : type gdouble for E
 
-// Blacklisted : KEY_FILE_DESKTOP_ACTION_GROUP_PREFIX
-
 const KEY_FILE_DESKTOP_KEY_ACTIONS string = C.G_KEY_FILE_DESKTOP_KEY_ACTIONS
 const KEY_FILE_DESKTOP_KEY_DBUS_ACTIVATABLE string = C.G_KEY_FILE_DESKTOP_KEY_DBUS_ACTIVATABLE
 
@@ -70,5 +68,3 @@ const KEY_FILE_DESKTOP_KEY_DBUS_ACTIVATABLE string = C.G_KEY_FILE_DESKTOP_KEY_DB
 // Unsupported : type gint64 for TIME_SPAN_MINUTE
 
 // Unsupported : type gint64 for TIME_SPAN_SECOND
-
-// Blacklisted : WIN32_MSG_HANDLE

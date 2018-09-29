@@ -175,10 +175,6 @@ func (recv *HashTableIter) Steal() {
 
 // Unsupported : g_hook_list_marshal_check : unsupported parameter marshaller : no type generator for HookCheckMarshaller, GHookCheckMarshaller
 
-// Blacklisted : GIConv
-
-// Blacklisted : GIOChannel
-
 // Unsupported : g_key_file_get_boolean_list : unsupported parameter length : no type generator for gsize, gsize*
 
 // Unsupported : g_key_file_get_double_list : unsupported parameter length : no type generator for gsize, gsize*
@@ -346,10 +342,6 @@ func (recv *String) AppendUriEscaped(unescaped string, reservedCharsAllowed stri
 
 // Unsupported : g_string_vprintf : unsupported parameter args : no type generator for va_list, va_list
 
-// Blacklisted : GTestLogBuffer
-
-// Blacklisted : GTestLogMsg
-
 // Add is a wrapper around the C function g_test_suite_add.
 func (recv *TestSuite) Add(testCase *TestCase) {
 	c_test_case := (*C.GTestCase)(testCase.ToC())
@@ -386,8 +378,6 @@ func (recv *TestSuite) AddSuite(nestedsuite *TestSuite) {
 
 // Unsupported : g_tree_traverse : unsupported parameter traverse_func : no type generator for TraverseFunc, GTraverseFunc
 
-// Blacklisted : GVariant
-
 // Unsupported : g_variant_builder_new : unsupported parameter type : Blacklisted record : GVariantType
 
 // Unsupported : g_variant_builder_add : unsupported parameter ... : varargs
@@ -423,5 +413,3 @@ func (recv *TestSuite) AddSuite(nestedsuite *TestSuite) {
 // Unsupported : g_variant_iter_next : unsupported parameter ... : varargs
 
 // Unsupported : g_variant_iter_next_value : return type : Blacklisted record : GVariant
-
-// Blacklisted : GVariantType

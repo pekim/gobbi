@@ -16,8 +16,6 @@ import "C"
 
 // Unsupported : atk_add_key_event_listener : unsupported parameter listener : no type generator for KeySnoopFunc, AtkKeySnoopFunc
 
-// Blacklisted : atk_attribute_set_free
-
 // Unsupported : atk_focus_tracker_init : unsupported parameter init : no type generator for EventListenerInit, AtkEventListenerInit
 
 // GetFocusObject is a wrapper around the C function atk_get_focus_object.

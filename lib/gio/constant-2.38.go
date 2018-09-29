@@ -18,8 +18,4 @@ package gio
 // #include <stdlib.h>
 import "C"
 
-// Blacklisted : FILE_ATTRIBUTE_FILESYSTEM_REMOTE
-
 const MENU_ATTRIBUTE_ICON string = C.G_MENU_ATTRIBUTE_ICON
-
-// Blacklisted : SETTINGS_BACKEND_EXTENSION_POINT_NAME

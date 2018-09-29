@@ -72,8 +72,6 @@ const (
 	REGEX_ERROR_CHARACTER_VALUE_TOO_LARGE                    RegexError = 176
 )
 
-// Blacklisted : GTestResult
-
 type UserDirectory C.GUserDirectory
 
 const (

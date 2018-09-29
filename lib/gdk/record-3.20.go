@@ -7,7 +7,3 @@ package gdk
 // #include <gdk/gdk.h>
 // #include <stdlib.h>
 import "C"
-
-// Blacklisted : GdkAtom
-
-// Blacklisted : GdkRectangle

@@ -24,5 +24,3 @@ func (recv *PixbufFormat) IsSaveOptionSupported(optionKey string) bool {
 
 	return retGo
 }
-
-// Blacklisted : GdkPixdata

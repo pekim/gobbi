@@ -1150,8 +1150,6 @@ func (recv *PlacesSidebar) SetShowDesktop(showDesktop bool) {
 	return
 }
 
-// Blacklisted : GtkPlug
-
 // Unsupported : gtk_popover_get_pointing_to : unsupported parameter rect : Blacklisted record : GdkRectangle
 
 // Unsupported : gtk_popover_set_pointing_to : unsupported parameter rect : Blacklisted record : GdkRectangle
@@ -1311,8 +1309,6 @@ func (recv *SearchBar) SetShowCloseButton(visible bool) {
 
 // Unsupported : gtk_search_entry_handle_event : unsupported parameter event : no type generator for Gdk.Event, GdkEvent*
 
-// Blacklisted : GtkSocket
-
 // Unsupported : gtk_spin_button_get_increments : unsupported parameter step : no type generator for gdouble, gdouble*
 
 // Unsupported : gtk_spin_button_get_range : unsupported parameter min : no type generator for gdouble, gdouble*
@@ -1450,8 +1446,6 @@ func (recv *Stack) SetVisibleChildName(name string) {
 
 	return
 }
-
-// Blacklisted : GtkStackAccessible
 
 // StackSwitcherNew is a wrapper around the C function gtk_stack_switcher_new.
 func StackSwitcherNew() *Widget {

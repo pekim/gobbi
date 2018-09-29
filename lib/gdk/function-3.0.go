@@ -29,8 +29,6 @@ func CairoSetSourceRgba(cr *cairo.Context, rgba *RGBA) {
 	return
 }
 
-// Blacklisted : gdk_color_parse
-
 // DisableMultidevice is a wrapper around the C function gdk_disable_multidevice.
 func DisableMultidevice() {
 	C.gdk_disable_multidevice()
@@ -98,8 +96,6 @@ func ErrorTrapPopIgnored() {
 // Unsupported : gdk_selection_send_notify : unsupported parameter selection : Blacklisted record : GdkAtom
 
 // Unsupported : gdk_selection_send_notify_for_display : unsupported parameter selection : Blacklisted record : GdkAtom
-
-// Blacklisted : gdk_synthesize_window_state
 
 // Unsupported : gdk_text_property_to_utf8_list_for_display : unsupported parameter encoding : Blacklisted record : GdkAtom
 

@@ -297,8 +297,6 @@ func (recv *ShortcutsWindowClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Blacklisted : GtkStackAccessibleClass
-
 // Unsupported : gtk_target_list_new : unsupported parameter targets : no param type
 
 // Unsupported : gtk_target_list_add : unsupported parameter target : Blacklisted record : GdkAtom

@@ -106,8 +106,6 @@ func (recv *SelectionData) TargetsIncludeImage(writable bool) bool {
 	return retGo
 }
 
-// Blacklisted : GtkStackAccessibleClass
-
 // Unsupported : gtk_target_list_new : unsupported parameter targets : no param type
 
 // Unsupported : gtk_target_list_add : unsupported parameter target : Blacklisted record : GdkAtom

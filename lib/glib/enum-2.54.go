@@ -16,5 +16,3 @@ const (
 	NUMBER_PARSER_ERROR_INVALID       NumberParserError = 0
 	NUMBER_PARSER_ERROR_OUT_OF_BOUNDS NumberParserError = 1
 )
-
-// Blacklisted : GTestResult

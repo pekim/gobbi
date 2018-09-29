@@ -120,8 +120,6 @@ func AppInfoGetRecommendedForType(contentType string) *glib.List {
 
 // Unsupported : g_io_scheduler_push_job : unsupported parameter job_func : no type generator for IOSchedulerJobFunc, GIOSchedulerJobFunc
 
-// Blacklisted : g_keyfile_settings_backend_new
-
 // Blacklisted : g_memory_settings_backend_new
 
 // Unsupported : g_network_monitor_get_default : no return generator

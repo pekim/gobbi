@@ -18,8 +18,4 @@ package gio
 // #include <stdlib.h>
 import "C"
 
-// Blacklisted : FILE_ATTRIBUTE_FILESYSTEM_REMOTE
-
 const FILE_ATTRIBUTE_THUMBNAIL_IS_VALID string = C.G_FILE_ATTRIBUTE_THUMBNAIL_IS_VALID
-
-// Blacklisted : SETTINGS_BACKEND_EXTENSION_POINT_NAME

@@ -34,10 +34,6 @@ import "C"
 
 // Unsupported : g_resource_get_info : unsupported parameter size : no type generator for gsize, gsize*
 
-// Blacklisted : GSettingsBackendClass
-
-// Blacklisted : GSettingsBackendPrivate
-
 // GetKey is a wrapper around the C function g_settings_schema_get_key.
 func (recv *SettingsSchema) GetKey(name string) *SettingsSchemaKey {
 	c_name := C.CString(name)

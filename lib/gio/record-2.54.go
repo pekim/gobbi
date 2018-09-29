@@ -34,10 +34,6 @@ import "C"
 
 // Unsupported : g_resource_get_info : unsupported parameter size : no type generator for gsize, gsize*
 
-// Blacklisted : GSettingsBackendClass
-
-// Blacklisted : GSettingsBackendPrivate
-
 // Unsupported : g_settings_schema_list_children : no return type
 
 // Unsupported : g_settings_schema_list_keys : no return type

@@ -12,8 +12,6 @@ import "C"
 
 // Unsupported : type gdouble for E
 
-// Blacklisted : KEY_FILE_DESKTOP_ACTION_GROUP_PREFIX
-
 // Unsupported : type gdouble for LN10
 
 // Unsupported : type gdouble for LN2
@@ -67,5 +65,3 @@ import "C"
 // Unsupported : type gint64 for TIME_SPAN_MINUTE
 
 // Unsupported : type gint64 for TIME_SPAN_SECOND
-
-// Blacklisted : WIN32_MSG_HANDLE

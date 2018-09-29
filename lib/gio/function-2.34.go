@@ -109,13 +109,7 @@ func ContentTypeGetGenericIconName(type_ string) string {
 
 // Unsupported : g_io_scheduler_push_job : unsupported parameter job_func : no type generator for IOSchedulerJobFunc, GIOSchedulerJobFunc
 
-// Blacklisted : g_keyfile_settings_backend_new
-
-// Blacklisted : g_memory_settings_backend_new
-
 // Unsupported : g_network_monitor_get_default : no return generator
-
-// Blacklisted : g_null_settings_backend_new
 
 // PollableSourceNewFull is a wrapper around the C function g_pollable_source_new_full.
 func PollableSourceNewFull(pollableStream uintptr, childSource *glib.Source, cancellable *Cancellable) *glib.Source {

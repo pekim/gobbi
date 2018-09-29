@@ -17,5 +17,3 @@ const (
 	ONCE_STATUS_PROGRESS  OnceStatus = 1
 	ONCE_STATUS_READY     OnceStatus = 2
 )
-
-// Blacklisted : GTestResult

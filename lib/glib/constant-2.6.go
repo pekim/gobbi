@@ -17,8 +17,6 @@ const GSIZE_MODIFIER string = C.G_GSIZE_MODIFIER
 const GSSIZE_FORMAT string = C.G_GSSIZE_FORMAT
 const GSSIZE_MODIFIER string = C.G_GSSIZE_MODIFIER
 
-// Blacklisted : KEY_FILE_DESKTOP_ACTION_GROUP_PREFIX
-
 // Unsupported : type gdouble for LN10
 
 // Unsupported : type gdouble for LN2
@@ -74,5 +72,3 @@ const OPTION_REMAINING string = C.G_OPTION_REMAINING
 // Unsupported : type gint64 for TIME_SPAN_MINUTE
 
 // Unsupported : type gint64 for TIME_SPAN_SECOND
-
-// Blacklisted : WIN32_MSG_HANDLE

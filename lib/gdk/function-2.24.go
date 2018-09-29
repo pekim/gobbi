@@ -33,8 +33,6 @@ func CairoSetSourceWindow(cr *cairo.Context, window *Window, x float64, y float6
 	return
 }
 
-// Blacklisted : gdk_color_parse
-
 // Unsupported : gdk_drag_find_window_for_screen : unsupported parameter dest_window : record with indirection level of 2
 
 // Unsupported : gdk_drag_get_selection : return type : Blacklisted record : GdkAtom
@@ -88,8 +86,6 @@ func CairoSetSourceWindow(cr *cairo.Context, window *Window, x float64, y float6
 // Unsupported : gdk_selection_send_notify : unsupported parameter selection : Blacklisted record : GdkAtom
 
 // Unsupported : gdk_selection_send_notify_for_display : unsupported parameter selection : Blacklisted record : GdkAtom
-
-// Blacklisted : gdk_synthesize_window_state
 
 // Unsupported : gdk_text_property_to_utf8_list_for_display : unsupported parameter encoding : Blacklisted record : GdkAtom
 

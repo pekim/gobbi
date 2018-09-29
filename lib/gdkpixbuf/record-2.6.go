@@ -48,5 +48,3 @@ func (recv *PixbufFormat) SetDisabled(disabled bool) {
 
 	return
 }
-
-// Blacklisted : GdkPixdata

@@ -16,30 +16,6 @@ import "C"
 
 // Unsupported : pango_coverage_to_bytes : unsupported parameter bytes : no param type
 
-// Blacklisted : PangoEngineClass
-
-// Blacklisted : PangoEngineInfo
-
-// Blacklisted : PangoEngineLangClass
-
-// Blacklisted : PangoEngineScriptInfo
-
-// Blacklisted : PangoEngineShapeClass
-
-// Blacklisted : PangoFontClass
-
-// Blacklisted : PangoFontFaceClass
-
-// Blacklisted : PangoFontFamilyClass
-
-// Blacklisted : PangoFontMapClass
-
-// Blacklisted : PangoFontMetrics
-
-// Blacklisted : PangoFontsetClass
-
-// Blacklisted : PangoFontsetSimpleClass
-
 // Unsupported : pango_glyph_item_get_logical_widths : unsupported parameter logical_widths : no param type
 
 // Unsupported : pango_glyph_item_letter_space : unsupported parameter log_attrs : no param type
@@ -49,8 +25,6 @@ import "C"
 // Unsupported : pango_glyph_string_index_to_x : unsupported parameter x_pos : no type generator for gint, int*
 
 // Unsupported : pango_glyph_string_x_to_index : unsupported parameter index_ : no type generator for gint, int*
-
-// Blacklisted : PangoIncludedModule
 
 // Unsupported : pango_language_get_scripts : unsupported parameter num_scripts : no type generator for gint, int*
 
@@ -64,25 +38,17 @@ func (recv *Language) IncludesScript(script Script) bool {
 	return retGo
 }
 
-// Blacklisted : PangoLayoutIter
-
 // Unsupported : pango_layout_line_get_x_ranges : unsupported parameter ranges : no param type
 
 // Unsupported : pango_layout_line_index_to_x : unsupported parameter x_pos : no type generator for gint, int*
 
 // Unsupported : pango_layout_line_x_to_index : unsupported parameter index_ : no type generator for gint, int*
 
-// Blacklisted : PangoMap
-
-// Blacklisted : PangoMapEntry
-
 // Unsupported : pango_matrix_get_font_scale_factors : unsupported parameter xscale : no type generator for gdouble, double*
 
 // Unsupported : pango_matrix_transform_distance : unsupported parameter dx : no type generator for gdouble, double*
 
 // Unsupported : pango_matrix_transform_point : unsupported parameter x : no type generator for gdouble, double*
-
-// Blacklisted : PangoScriptForLang
 
 // Free is a wrapper around the C function pango_script_iter_free.
 func (recv *ScriptIter) Free() {

@@ -540,10 +540,6 @@ func (recv *DateTime) Unref() {
 
 // Unsupported : g_hook_list_marshal_check : unsupported parameter marshaller : no type generator for HookCheckMarshaller, GHookCheckMarshaller
 
-// Blacklisted : GIConv
-
-// Blacklisted : GIOChannel
-
 // Unsupported : g_key_file_get_boolean_list : unsupported parameter length : no type generator for gsize, gsize*
 
 // Unsupported : g_key_file_get_double_list : unsupported parameter length : no type generator for gsize, gsize*
@@ -792,10 +788,6 @@ func (recv *Source) SetName(name string) {
 
 // Unsupported : g_string_vprintf : unsupported parameter args : no type generator for va_list, va_list
 
-// Blacklisted : GTestLogBuffer
-
-// Blacklisted : GTestLogMsg
-
 // Unsupported : g_thread_new : unsupported parameter func : no type generator for ThreadFunc, GThreadFunc
 
 // Unsupported : g_thread_try_new : unsupported parameter func : no type generator for ThreadFunc, GThreadFunc
@@ -919,8 +911,6 @@ func (recv *TimeZone) Unref() {
 
 // Unsupported : g_tree_traverse : unsupported parameter traverse_func : no type generator for TraverseFunc, GTraverseFunc
 
-// Blacklisted : GVariant
-
 // Unsupported : g_variant_builder_new : unsupported parameter type : Blacklisted record : GVariantType
 
 // Unsupported : g_variant_builder_add : unsupported parameter ... : varargs
@@ -956,5 +946,3 @@ func (recv *TimeZone) Unref() {
 // Unsupported : g_variant_iter_next : unsupported parameter ... : varargs
 
 // Unsupported : g_variant_iter_next_value : return type : Blacklisted record : GVariant
-
-// Blacklisted : GVariantType

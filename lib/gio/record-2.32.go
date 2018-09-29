@@ -228,10 +228,6 @@ func (recv *Resource) Unref() {
 	return
 }
 
-// Blacklisted : GSettingsBackendClass
-
-// Blacklisted : GSettingsBackendPrivate
-
 // SettingsSchema is a wrapper around the C record GSettingsSchema.
 type SettingsSchema struct {
 	native *C.GSettingsSchema

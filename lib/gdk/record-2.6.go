@@ -10,8 +10,6 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// Blacklisted : GdkAtom
-
 // EventOwnerChange is a wrapper around the C record GdkEventOwnerChange.
 type EventOwnerChange struct {
 	native *C.GdkEventOwnerChange
@@ -57,5 +55,3 @@ func (recv *EventOwnerChange) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
-
-// Blacklisted : GdkRectangle

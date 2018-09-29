@@ -26,12 +26,6 @@ func AttrFallbackNew(enableFallback bool) *Attribute {
 
 // Unsupported : pango_break : unsupported parameter attrs : no param type
 
-// Blacklisted : pango_config_key_get
-
-// Blacklisted : pango_config_key_get_system
-
-// Blacklisted : pango_default_break
-
 // FindBaseDir is a wrapper around the C function pango_find_base_dir.
 func FindBaseDir(text string, length int32) Direction {
 	c_text := C.CString(text)
@@ -49,13 +43,9 @@ func FindBaseDir(text string, length int32) Direction {
 
 // Unsupported : pango_find_paragraph_boundary : unsupported parameter paragraph_delimiter_index : no type generator for gint, gint*
 
-// Blacklisted : pango_get_lib_subdirectory
-
 // Unsupported : pango_get_log_attrs : unsupported parameter log_attrs : no param type
 
 // Unsupported : pango_get_mirror_char : unsupported parameter mirrored_ch : no type generator for gunichar, gunichar*
-
-// Blacklisted : pango_get_sysconf_subdirectory
 
 // ItemizeWithBaseDir is a wrapper around the C function pango_itemize_with_base_dir.
 func ItemizeWithBaseDir(context *Context, baseDir Direction, text string, startIndex int32, length int32, attrs *AttrList, cachedIter *AttrIterator) *glib.List {

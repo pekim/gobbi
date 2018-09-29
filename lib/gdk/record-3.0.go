@@ -10,8 +10,6 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// Blacklisted : GdkAtom
-
 // Copy is a wrapper around the C function gdk_rgba_copy.
 func (recv *RGBA) Copy() *RGBA {
 	retC := C.gdk_rgba_copy((*C.GdkRGBA)(recv.native))
@@ -64,5 +62,3 @@ func (recv *RGBA) ToString() string {
 
 	return retGo
 }
-
-// Blacklisted : GdkRectangle

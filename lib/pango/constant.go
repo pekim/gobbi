@@ -24,5 +24,3 @@ const SCALE int = C.PANGO_SCALE
 // Blacklisted : UNKNOWN_GLYPH_HEIGHT
 
 // Blacklisted : UNKNOWN_GLYPH_WIDTH
-
-// Blacklisted : VERSION_MIN_REQUIRED

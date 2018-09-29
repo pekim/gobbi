@@ -109,8 +109,6 @@ func (recv *SelectionData) GetLength() int32 {
 
 // Unsupported : gtk_selection_data_set_uris : unsupported parameter uris : no param type
 
-// Blacklisted : GtkStackAccessibleClass
-
 // Unsupported : gtk_target_list_new : unsupported parameter targets : no param type
 
 // Unsupported : gtk_target_list_add : unsupported parameter target : Blacklisted record : GdkAtom

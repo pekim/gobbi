@@ -10,8 +10,6 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// Blacklisted : GdkAtom
-
 // ToString is a wrapper around the C function gdk_color_to_string.
 func (recv *Color) ToString() string {
 	retC := C.gdk_color_to_string((*C.GdkColor)(recv.native))
@@ -20,5 +18,3 @@ func (recv *Color) ToString() string {
 
 	return retGo
 }
-
-// Blacklisted : GdkRectangle

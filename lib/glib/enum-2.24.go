@@ -10,8 +10,6 @@ package glib
 // #include <stdlib.h>
 import "C"
 
-// Blacklisted : GTestResult
-
 type VariantClass C.GVariantClass
 
 const (

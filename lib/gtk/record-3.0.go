@@ -171,8 +171,6 @@ func RequisitionNew() *Requisition {
 
 // Unsupported : gtk_selection_data_set_uris : unsupported parameter uris : no param type
 
-// Blacklisted : GtkStackAccessibleClass
-
 // SymbolicColorNewAlpha is a wrapper around the C function gtk_symbolic_color_new_alpha.
 func SymbolicColorNewAlpha(color *SymbolicColor, factor float64) *SymbolicColor {
 	c_color := (*C.GtkSymbolicColor)(color.ToC())

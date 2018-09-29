@@ -39,8 +39,6 @@ func (recv *Context) SetMatrix(matrix *Matrix) {
 	return
 }
 
-// Blacklisted : PangoEngine
-
 // Unsupported : pango_font_get_metrics : return type : Blacklisted record : PangoFontMetrics
 
 // Unsupported : pango_font_face_list_sizes : unsupported parameter sizes : no param type
@@ -52,8 +50,6 @@ func (recv *Context) SetMatrix(matrix *Matrix) {
 // Unsupported : pango_fontset_foreach : unsupported parameter func : no type generator for FontsetForeachFunc, PangoFontsetForeachFunc
 
 // Unsupported : pango_fontset_get_metrics : return type : Blacklisted record : PangoFontMetrics
-
-// Blacklisted : PangoFontsetSimple
 
 // GetEllipsize is a wrapper around the C function pango_layout_get_ellipsize.
 func (recv *Layout) GetEllipsize() EllipsizeMode {

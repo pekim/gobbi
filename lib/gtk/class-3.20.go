@@ -722,8 +722,6 @@ func (recv *PadController) ToC() unsafe.Pointer {
 
 // Unsupported : gtk_places_sidebar_set_location : unsupported parameter location : no type generator for Gio.File, GFile*
 
-// Blacklisted : GtkPlug
-
 // GetConstrainTo is a wrapper around the C function gtk_popover_get_constrain_to.
 func (recv *Popover) GetConstrainTo() PopoverConstraint {
 	retC := C.gtk_popover_get_constrain_to((*C.GtkPopover)(recv.native))
@@ -895,13 +893,9 @@ func (recv *ShortcutsWindow) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Blacklisted : GtkSocket
-
 // Unsupported : gtk_spin_button_get_increments : unsupported parameter step : no type generator for gdouble, gdouble*
 
 // Unsupported : gtk_spin_button_get_range : unsupported parameter min : no type generator for gdouble, gdouble*
-
-// Blacklisted : GtkStackAccessible
 
 // Unsupported : gtk_status_icon_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon, GIcon*
 

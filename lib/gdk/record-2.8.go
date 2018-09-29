@@ -10,8 +10,6 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// Blacklisted : GdkAtom
-
 // EventGrabBroken is a wrapper around the C record GdkEventGrabBroken.
 type EventGrabBroken struct {
 	native *C.GdkEventGrabBroken
@@ -52,5 +50,3 @@ func (recv *EventGrabBroken) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
-
-// Blacklisted : GdkRectangle

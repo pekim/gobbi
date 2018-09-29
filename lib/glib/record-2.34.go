@@ -90,10 +90,6 @@ import "C"
 
 // Unsupported : g_hook_list_marshal_check : unsupported parameter marshaller : no type generator for HookCheckMarshaller, GHookCheckMarshaller
 
-// Blacklisted : GIConv
-
-// Blacklisted : GIOChannel
-
 // Unsupported : g_key_file_get_boolean_list : unsupported parameter length : no type generator for gsize, gsize*
 
 // Unsupported : g_key_file_get_double_list : unsupported parameter length : no type generator for gsize, gsize*
@@ -260,10 +256,6 @@ func (recv *String) FreeToBytes() *Bytes {
 
 // Unsupported : g_string_vprintf : unsupported parameter args : no type generator for va_list, va_list
 
-// Blacklisted : GTestLogBuffer
-
-// Blacklisted : GTestLogMsg
-
 // Unsupported : g_thread_new : unsupported parameter func : no type generator for ThreadFunc, GThreadFunc
 
 // Unsupported : g_thread_try_new : unsupported parameter func : no type generator for ThreadFunc, GThreadFunc
@@ -281,8 +273,6 @@ func (recv *String) FreeToBytes() *Bytes {
 // Unsupported : g_tree_search : unsupported parameter search_func : no type generator for CompareFunc, GCompareFunc
 
 // Unsupported : g_tree_traverse : unsupported parameter traverse_func : no type generator for TraverseFunc, GTraverseFunc
-
-// Blacklisted : GVariant
 
 // Unsupported : g_variant_builder_new : unsupported parameter type : Blacklisted record : GVariantType
 
@@ -319,5 +309,3 @@ func (recv *String) FreeToBytes() *Bytes {
 // Unsupported : g_variant_iter_next : unsupported parameter ... : varargs
 
 // Unsupported : g_variant_iter_next_value : return type : Blacklisted record : GVariant
-
-// Blacklisted : GVariantType

@@ -16,8 +16,6 @@ import "C"
 
 // Unsupported : gdk_cairo_rectangle : unsupported parameter rectangle : Blacklisted record : GdkRectangle
 
-// Blacklisted : gdk_color_parse
-
 // DragDropSucceeded is a wrapper around the C function gdk_drag_drop_succeeded.
 func DragDropSucceeded(context *DragContext) bool {
 	c_context := (*C.GdkDragContext)(context.ToC())
@@ -81,8 +79,6 @@ func DragDropSucceeded(context *DragContext) bool {
 // Unsupported : gdk_selection_send_notify : unsupported parameter selection : Blacklisted record : GdkAtom
 
 // Unsupported : gdk_selection_send_notify_for_display : unsupported parameter selection : Blacklisted record : GdkAtom
-
-// Blacklisted : gdk_synthesize_window_state
 
 // Unsupported : gdk_text_property_to_utf8_list_for_display : unsupported parameter encoding : Blacklisted record : GdkAtom
 

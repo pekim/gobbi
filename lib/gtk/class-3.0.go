@@ -1547,8 +1547,6 @@ func PanedNew(orientation Orientation) *Widget {
 
 // Unsupported : gtk_places_sidebar_set_location : unsupported parameter location : no type generator for Gio.File, GFile*
 
-// Blacklisted : GtkPlug
-
 // Unsupported : gtk_popover_get_pointing_to : unsupported parameter rect : Blacklisted record : GdkRectangle
 
 // Unsupported : gtk_popover_set_pointing_to : unsupported parameter rect : Blacklisted record : GdkRectangle
@@ -1707,13 +1705,9 @@ func SeparatorNew(orientation Orientation) *Widget {
 	return retGo
 }
 
-// Blacklisted : GtkSocket
-
 // Unsupported : gtk_spin_button_get_increments : unsupported parameter step : no type generator for gdouble, gdouble*
 
 // Unsupported : gtk_spin_button_get_range : unsupported parameter min : no type generator for gdouble, gdouble*
-
-// Blacklisted : GtkStackAccessible
 
 // Unsupported : gtk_status_icon_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon, GIcon*
 

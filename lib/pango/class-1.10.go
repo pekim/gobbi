@@ -14,8 +14,6 @@ import "C"
 
 // Unsupported : pango_context_list_families : unsupported parameter families : no param type
 
-// Blacklisted : PangoEngine
-
 // GetFontMap is a wrapper around the C function pango_font_get_font_map.
 func (recv *Font) GetFontMap() *FontMap {
 	retC := C.pango_font_get_font_map((*C.PangoFont)(recv.native))
@@ -35,8 +33,6 @@ func (recv *Font) GetFontMap() *FontMap {
 // Unsupported : pango_fontset_foreach : unsupported parameter func : no type generator for FontsetForeachFunc, PangoFontsetForeachFunc
 
 // Unsupported : pango_fontset_get_metrics : return type : Blacklisted record : PangoFontMetrics
-
-// Blacklisted : PangoFontsetSimple
 
 // Unsupported : pango_layout_get_iter : return type : Blacklisted record : PangoLayoutIter
 

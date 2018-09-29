@@ -16,5 +16,3 @@ const (
 	TEST_DIST  TestFileType = 0
 	TEST_BUILT TestFileType = 1
 )
-
-// Blacklisted : GTestResult

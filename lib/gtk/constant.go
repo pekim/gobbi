@@ -56,8 +56,6 @@ const PRINT_SETTINGS_WIN32_DRIVER_EXTRA string = C.GTK_PRINT_SETTINGS_WIN32_DRIV
 const PRINT_SETTINGS_WIN32_DRIVER_VERSION string = C.GTK_PRINT_SETTINGS_WIN32_DRIVER_VERSION
 const PRIORITY_RESIZE int = C.GTK_PRIORITY_RESIZE
 
-// Blacklisted : STOCK_ABOUT
-
 // Blacklisted : STOCK_ADD
 
 // Blacklisted : STOCK_APPLY
@@ -66,17 +64,11 @@ const PRIORITY_RESIZE int = C.GTK_PRIORITY_RESIZE
 
 // Blacklisted : STOCK_CANCEL
 
-// Blacklisted : STOCK_CAPS_LOCK_WARNING
-
 // Blacklisted : STOCK_CDROM
 
 // Blacklisted : STOCK_CLEAR
 
 // Blacklisted : STOCK_CLOSE
-
-// Blacklisted : STOCK_COLOR_PICKER
-
-// Blacklisted : STOCK_CONNECT
 
 // Blacklisted : STOCK_CONVERT
 
@@ -86,8 +78,6 @@ const PRIORITY_RESIZE int = C.GTK_PRIORITY_RESIZE
 
 // Blacklisted : STOCK_DELETE
 
-// Blacklisted : STOCK_DIALOG_AUTHENTICATION
-
 // Blacklisted : STOCK_DIALOG_ERROR
 
 // Blacklisted : STOCK_DIALOG_INFO
@@ -96,29 +86,17 @@ const PRIORITY_RESIZE int = C.GTK_PRIORITY_RESIZE
 
 // Blacklisted : STOCK_DIALOG_WARNING
 
-// Blacklisted : STOCK_DIRECTORY
-
-// Blacklisted : STOCK_DISCARD
-
-// Blacklisted : STOCK_DISCONNECT
-
 // Blacklisted : STOCK_DND
 
 // Blacklisted : STOCK_DND_MULTIPLE
 
-// Blacklisted : STOCK_EDIT
-
 // Blacklisted : STOCK_EXECUTE
-
-// Blacklisted : STOCK_FILE
 
 // Blacklisted : STOCK_FIND
 
 // Blacklisted : STOCK_FIND_AND_REPLACE
 
 // Blacklisted : STOCK_FLOPPY
-
-// Blacklisted : STOCK_FULLSCREEN
 
 // Blacklisted : STOCK_GOTO_BOTTOM
 
@@ -136,17 +114,11 @@ const PRIORITY_RESIZE int = C.GTK_PRIORITY_RESIZE
 
 // Blacklisted : STOCK_GO_UP
 
-// Blacklisted : STOCK_HARDDISK
-
 // Blacklisted : STOCK_HELP
 
 // Blacklisted : STOCK_HOME
 
-// Blacklisted : STOCK_INDENT
-
 // Blacklisted : STOCK_INDEX
-
-// Blacklisted : STOCK_INFO
 
 // Blacklisted : STOCK_ITALIC
 
@@ -160,27 +132,7 @@ const PRIORITY_RESIZE int = C.GTK_PRIORITY_RESIZE
 
 // Blacklisted : STOCK_JUSTIFY_RIGHT
 
-// Blacklisted : STOCK_LEAVE_FULLSCREEN
-
-// Blacklisted : STOCK_MEDIA_FORWARD
-
-// Blacklisted : STOCK_MEDIA_NEXT
-
-// Blacklisted : STOCK_MEDIA_PAUSE
-
-// Blacklisted : STOCK_MEDIA_PLAY
-
-// Blacklisted : STOCK_MEDIA_PREVIOUS
-
-// Blacklisted : STOCK_MEDIA_RECORD
-
-// Blacklisted : STOCK_MEDIA_REWIND
-
-// Blacklisted : STOCK_MEDIA_STOP
-
 // Blacklisted : STOCK_MISSING_IMAGE
-
-// Blacklisted : STOCK_NETWORK
 
 // Blacklisted : STOCK_NEW
 
@@ -190,31 +142,13 @@ const PRIORITY_RESIZE int = C.GTK_PRIORITY_RESIZE
 
 // Blacklisted : STOCK_OPEN
 
-// Blacklisted : STOCK_ORIENTATION_LANDSCAPE
-
-// Blacklisted : STOCK_ORIENTATION_PORTRAIT
-
-// Blacklisted : STOCK_ORIENTATION_REVERSE_LANDSCAPE
-
-// Blacklisted : STOCK_ORIENTATION_REVERSE_PORTRAIT
-
-// Blacklisted : STOCK_PAGE_SETUP
-
 // Blacklisted : STOCK_PASTE
 
 // Blacklisted : STOCK_PREFERENCES
 
 // Blacklisted : STOCK_PRINT
 
-// Blacklisted : STOCK_PRINT_ERROR
-
-// Blacklisted : STOCK_PRINT_PAUSED
-
 // Blacklisted : STOCK_PRINT_PREVIEW
-
-// Blacklisted : STOCK_PRINT_REPORT
-
-// Blacklisted : STOCK_PRINT_WARNING
 
 // Blacklisted : STOCK_PROPERTIES
 
@@ -231,8 +165,6 @@ const PRIORITY_RESIZE int = C.GTK_PRIORITY_RESIZE
 // Blacklisted : STOCK_SAVE
 
 // Blacklisted : STOCK_SAVE_AS
-
-// Blacklisted : STOCK_SELECT_ALL
 
 // Blacklisted : STOCK_SELECT_COLOR
 
@@ -253,8 +185,6 @@ const PRIORITY_RESIZE int = C.GTK_PRIORITY_RESIZE
 // Blacklisted : STOCK_UNDERLINE
 
 // Blacklisted : STOCK_UNDO
-
-// Blacklisted : STOCK_UNINDENT
 
 // Blacklisted : STOCK_YES
 

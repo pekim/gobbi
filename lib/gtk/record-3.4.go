@@ -74,8 +74,6 @@ import "C"
 
 // Unsupported : gtk_selection_data_set_uris : unsupported parameter uris : no param type
 
-// Blacklisted : GtkStackAccessibleClass
-
 // SymbolicColorNewWin32 is a wrapper around the C function gtk_symbolic_color_new_win32.
 func SymbolicColorNewWin32(themeClass string, id int32) *SymbolicColor {
 	c_theme_class := C.CString(themeClass)

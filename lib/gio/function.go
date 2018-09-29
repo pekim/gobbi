@@ -295,11 +295,7 @@ func IoSchedulerCancelAllJobs() {
 
 // Blacklisted : g_keyfile_settings_backend_new
 
-// Blacklisted : g_memory_settings_backend_new
-
 // Unsupported : g_network_monitor_get_default : no return generator
-
-// Blacklisted : g_null_settings_backend_new
 
 // Unsupported : g_pollable_stream_read : unsupported parameter buffer : no param type
 
