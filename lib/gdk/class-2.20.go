@@ -26,7 +26,7 @@ func (recv *Device) GetHasCursor() bool {
 	return retGo
 }
 
-// Unsupported : gdk_device_get_key : unsupported parameter keyval : no type generator for guint, guint*
+// Unsupported : gdk_device_get_key : unsupported parameter modifiers : GdkModifierType* with indirection level of 1
 
 // GetMode is a wrapper around the C function gdk_device_get_mode.
 func (recv *Device) GetMode() InputMode {

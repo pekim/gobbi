@@ -143,8 +143,6 @@ func CclosureMarshalGeneric(closure *Closure, returnGvalue *Value, nParamValues 
 
 // Unsupported : g_type_children : unsupported parameter type : no type generator for GType, GType
 
-// Unsupported : g_type_class_adjust_private_offset : unsupported parameter private_size_or_offset : no type generator for gint, gint*
-
 // Unsupported : g_type_class_peek : unsupported parameter type : no type generator for GType, GType
 
 // Unsupported : g_type_class_peek_static : unsupported parameter type : no type generator for GType, GType

@@ -346,7 +346,7 @@ func (recv *Keymap) LookupKey(key *KeymapKey) uint32 {
 	return retGo
 }
 
-// Unsupported : gdk_keymap_translate_keyboard_state : unsupported parameter keyval : no type generator for guint, guint*
+// Unsupported : gdk_keymap_translate_keyboard_state : unsupported parameter consumed_modifiers : GdkModifierType* with indirection level of 1
 
 // Screen is a wrapper around the C record GdkScreen.
 type Screen struct {
@@ -553,9 +553,44 @@ func (recv *Window) GetEvents() EventMask {
 
 // Unsupported : gdk_window_get_frame_extents : unsupported parameter rect : Blacklisted record : GdkRectangle
 
-// Unsupported : gdk_window_get_geometry : unsupported parameter x : no type generator for gint, gint*
+// GetGeometry is a wrapper around the C function gdk_window_get_geometry.
+func (recv *Window) GetGeometry() (*int32, *int32, *int32, *int32) {
+	var c_x C.gint
 
-// Unsupported : gdk_window_get_origin : unsupported parameter x : no type generator for gint, gint*
+	var c_y C.gint
+
+	var c_width C.gint
+
+	var c_height C.gint
+
+	C.gdk_window_get_geometry((*C.GdkWindow)(recv.native), &c_x, &c_y, &c_width, &c_height)
+
+	x := (*int32)(&c_x)
+
+	y := (*int32)(&c_y)
+
+	width := (*int32)(&c_width)
+
+	height := (*int32)(&c_height)
+
+	return x, y, width, height
+}
+
+// GetOrigin is a wrapper around the C function gdk_window_get_origin.
+func (recv *Window) GetOrigin() (int32, *int32, *int32) {
+	var c_x C.gint
+
+	var c_y C.gint
+
+	retC := C.gdk_window_get_origin((*C.GdkWindow)(recv.native), &c_x, &c_y)
+	retGo := (int32)(retC)
+
+	x := (*int32)(&c_x)
+
+	y := (*int32)(&c_y)
+
+	return retGo, x, y
+}
 
 // GetParent is a wrapper around the C function gdk_window_get_parent.
 func (recv *Window) GetParent() *Window {
@@ -565,11 +600,37 @@ func (recv *Window) GetParent() *Window {
 	return retGo
 }
 
-// Unsupported : gdk_window_get_pointer : unsupported parameter x : no type generator for gint, gint*
+// Unsupported : gdk_window_get_pointer : unsupported parameter mask : GdkModifierType* with indirection level of 1
 
-// Unsupported : gdk_window_get_position : unsupported parameter x : no type generator for gint, gint*
+// GetPosition is a wrapper around the C function gdk_window_get_position.
+func (recv *Window) GetPosition() (*int32, *int32) {
+	var c_x C.gint
 
-// Unsupported : gdk_window_get_root_origin : unsupported parameter x : no type generator for gint, gint*
+	var c_y C.gint
+
+	C.gdk_window_get_position((*C.GdkWindow)(recv.native), &c_x, &c_y)
+
+	x := (*int32)(&c_x)
+
+	y := (*int32)(&c_y)
+
+	return x, y
+}
+
+// GetRootOrigin is a wrapper around the C function gdk_window_get_root_origin.
+func (recv *Window) GetRootOrigin() (*int32, *int32) {
+	var c_x C.gint
+
+	var c_y C.gint
+
+	C.gdk_window_get_root_origin((*C.GdkWindow)(recv.native), &c_x, &c_y)
+
+	x := (*int32)(&c_x)
+
+	y := (*int32)(&c_y)
+
+	return x, y
+}
 
 // GetSourceEvents is a wrapper around the C function gdk_window_get_source_events.
 func (recv *Window) GetSourceEvents(source InputSource) EventMask {
@@ -605,7 +666,16 @@ func (recv *Window) GetUpdateArea() *cairo.Region {
 	return retGo
 }
 
-// Unsupported : gdk_window_get_user_data : unsupported parameter data : no type generator for gpointer, gpointer*
+// GetUserData is a wrapper around the C function gdk_window_get_user_data.
+func (recv *Window) GetUserData() *uintptr {
+	var c_data C.gpointer
+
+	C.gdk_window_get_user_data((*C.GdkWindow)(recv.native), &c_data)
+
+	data := (*uintptr)(unsafe.Pointer(&c_data))
+
+	return data
+}
 
 // GetVisibleRegion is a wrapper around the C function gdk_window_get_visible_region.
 func (recv *Window) GetVisibleRegion() *cairo.Region {

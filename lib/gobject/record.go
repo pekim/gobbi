@@ -428,7 +428,7 @@ func (recv *ObjectClass) InstallProperty(propertyId uint32, pspec *ParamSpec) {
 	return
 }
 
-// Unsupported : g_object_class_list_properties : unsupported parameter n_properties : no type generator for guint, guint*
+// Unsupported : g_object_class_list_properties : no return type
 
 // ObjectConstructParam is a wrapper around the C record GObjectConstructParam.
 type ObjectConstructParam struct {
@@ -996,7 +996,7 @@ func (recv *Value) Copy(destValue *Value) {
 // DupBoxed is a wrapper around the C function g_value_dup_boxed.
 func (recv *Value) DupBoxed() uintptr {
 	retC := C.g_value_dup_boxed((*C.GValue)(recv.native))
-	retGo := (uintptr)(retC)
+	retGo := (uintptr)(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -1045,7 +1045,7 @@ func (recv *Value) GetBoolean() bool {
 // GetBoxed is a wrapper around the C function g_value_get_boxed.
 func (recv *Value) GetBoxed() uintptr {
 	retC := C.g_value_get_boxed((*C.GValue)(recv.native))
-	retGo := (uintptr)(retC)
+	retGo := (uintptr)(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -1133,7 +1133,7 @@ func (recv *Value) GetParam() *ParamSpec {
 // GetPointer is a wrapper around the C function g_value_get_pointer.
 func (recv *Value) GetPointer() uintptr {
 	retC := C.g_value_get_pointer((*C.GValue)(recv.native))
-	retGo := (uintptr)(retC)
+	retGo := (uintptr)(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -1183,7 +1183,7 @@ func (recv *Value) GetUlong() uint64 {
 // PeekPointer is a wrapper around the C function g_value_peek_pointer.
 func (recv *Value) PeekPointer() uintptr {
 	retC := C.g_value_peek_pointer((*C.GValue)(recv.native))
-	retGo := (uintptr)(retC)
+	retGo := (uintptr)(unsafe.Pointer(retC))
 
 	return retGo
 }

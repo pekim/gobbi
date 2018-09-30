@@ -61,7 +61,7 @@ func (recv *Bytes) Equal(bytes2 uintptr) bool {
 	return retGo
 }
 
-// Unsupported : g_bytes_get_data : unsupported parameter size : no type generator for gsize, gsize*
+// Unsupported : g_bytes_get_data : no return type
 
 // GetSize is a wrapper around the C function g_bytes_get_size.
 func (recv *Bytes) GetSize() uint64 {
@@ -108,7 +108,7 @@ func (recv *Bytes) Unref() {
 
 // Unsupported : g_bytes_unref_to_array : no return type
 
-// Unsupported : g_bytes_unref_to_data : unsupported parameter size : no type generator for gsize, gsize*
+// Unsupported : g_bytes_unref_to_data : no return type
 
 // Clear is a wrapper around the C function g_cond_clear.
 func (recv *Cond) Clear() {

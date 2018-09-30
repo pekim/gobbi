@@ -1135,7 +1135,7 @@ func (recv *PrintSettings) GetOutputBin() string {
 	return retGo
 }
 
-// Unsupported : gtk_print_settings_get_page_ranges : unsupported parameter num_ranges : no type generator for gint, gint*
+// Unsupported : gtk_print_settings_get_page_ranges : no return type
 
 // GetPageSet is a wrapper around the C function gtk_print_settings_get_page_set.
 func (recv *PrintSettings) GetPageSet() PageSet {
@@ -2073,7 +2073,7 @@ func (recv *TextBuffer) GetCopyTargetList() *TargetList {
 	return retGo
 }
 
-// Unsupported : gtk_text_buffer_get_deserialize_formats : unsupported parameter n_formats : no type generator for gint, gint*
+// Unsupported : gtk_text_buffer_get_deserialize_formats : no return type
 
 // GetHasSelection is a wrapper around the C function gtk_text_buffer_get_has_selection.
 func (recv *TextBuffer) GetHasSelection() bool {
@@ -2091,7 +2091,7 @@ func (recv *TextBuffer) GetPasteTargetList() *TargetList {
 	return retGo
 }
 
-// Unsupported : gtk_text_buffer_get_serialize_formats : unsupported parameter n_formats : no type generator for gint, gint*
+// Unsupported : gtk_text_buffer_get_serialize_formats : no return type
 
 // Unsupported : gtk_text_buffer_register_deserialize_format : unsupported parameter function : no type generator for TextBufferDeserializeFunc, GtkTextBufferDeserializeFunc
 

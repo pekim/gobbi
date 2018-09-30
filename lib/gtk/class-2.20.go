@@ -147,7 +147,29 @@ func (recv *Paned) GetHandleWindow() *gdk.Window {
 	return retGo
 }
 
-// Unsupported : gtk_print_context_get_hard_margins : unsupported parameter top : no type generator for gdouble, gdouble*
+// GetHardMargins is a wrapper around the C function gtk_print_context_get_hard_margins.
+func (recv *PrintContext) GetHardMargins() (bool, *float64, *float64, *float64, *float64) {
+	var c_top C.gdouble
+
+	var c_bottom C.gdouble
+
+	var c_left C.gdouble
+
+	var c_right C.gdouble
+
+	retC := C.gtk_print_context_get_hard_margins((*C.GtkPrintContext)(recv.native), &c_top, &c_bottom, &c_left, &c_right)
+	retGo := retC == C.TRUE
+
+	top := (*float64)(&c_top)
+
+	bottom := (*float64)(&c_bottom)
+
+	left := (*float64)(&c_left)
+
+	right := (*float64)(&c_right)
+
+	return retGo, top, bottom, left, right
+}
 
 // Unsupported : gtk_print_settings_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
 
@@ -161,7 +183,20 @@ func (recv *Range) GetMinSliderSize() int32 {
 
 // Unsupported : gtk_range_get_range_rect : unsupported parameter range_rect : Blacklisted record : GdkRectangle
 
-// Unsupported : gtk_range_get_slider_range : unsupported parameter slider_start : no type generator for gint, gint*
+// GetSliderRange is a wrapper around the C function gtk_range_get_slider_range.
+func (recv *Range) GetSliderRange() (*int32, *int32) {
+	var c_slider_start C.gint
+
+	var c_slider_end C.gint
+
+	C.gtk_range_get_slider_range((*C.GtkRange)(recv.native), &c_slider_start, &c_slider_end)
+
+	sliderStart := (*int32)(&c_slider_start)
+
+	sliderEnd := (*int32)(&c_slider_end)
+
+	return sliderStart, sliderEnd
+}
 
 // GetSliderSizeFixed is a wrapper around the C function gtk_range_get_slider_size_fixed.
 func (recv *Range) GetSliderSizeFixed() bool {

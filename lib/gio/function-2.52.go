@@ -76,7 +76,7 @@ func ContentTypeIsMimeType(type_ string, mimeType string) bool {
 
 // Unsupported : g_dbus_annotation_info_lookup : unsupported parameter annotations : no param type
 
-// Unsupported : g_dbus_error_register_error_domain : unsupported parameter quark_volatile : no type generator for gsize, volatile gsize*
+// Unsupported : g_dbus_error_register_error_domain : unsupported parameter entries : no param type
 
 // Unsupported : g_dbus_gvalue_to_gvariant : unsupported parameter type : Blacklisted record : GVariantType
 
@@ -122,8 +122,6 @@ func ContentTypeIsMimeType(type_ string, mimeType string) bool {
 
 // Unsupported : g_resources_enumerate_children : no return type
 
-// Unsupported : g_resources_get_info : unsupported parameter size : no type generator for gsize, gsize*
-
 // Unsupported : g_simple_async_report_error_in_idle : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
 
 // Unsupported : g_simple_async_report_gerror_in_idle : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
@@ -138,14 +136,21 @@ func ContentTypeIsMimeType(type_ string, mimeType string) bool {
 
 // Unsupported : g_tls_server_connection_new : no return generator
 
-// Unsupported : g_unix_mount_at : unsupported parameter time_read : no type generator for guint64, guint64*
+// UnixMountFor is a wrapper around the C function g_unix_mount_for.
+func UnixMountFor(filePath string) (*UnixMountEntry, *uint64) {
+	c_file_path := C.CString(filePath)
+	defer C.free(unsafe.Pointer(c_file_path))
 
-// Unsupported : g_unix_mount_for : unsupported parameter time_read : no type generator for guint64, guint64*
+	var c_time_read C.guint64
+
+	retC := C.g_unix_mount_for(c_file_path, &c_time_read)
+	retGo := UnixMountEntryNewFromC(unsafe.Pointer(retC))
+
+	timeRead := (*uint64)(&c_time_read)
+
+	return retGo, timeRead
+}
 
 // Unsupported : g_unix_mount_guess_icon : no return generator
 
 // Unsupported : g_unix_mount_guess_symbolic_icon : no return generator
-
-// Unsupported : g_unix_mount_points_get : unsupported parameter time_read : no type generator for guint64, guint64*
-
-// Unsupported : g_unix_mounts_get : unsupported parameter time_read : no type generator for guint64, guint64*

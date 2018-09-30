@@ -12,35 +12,9 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : g_ascii_string_to_signed : unsupported parameter out_num : no type generator for gint64, gint64*
-
-// Unsupported : g_ascii_string_to_unsigned : unsupported parameter out_num : no type generator for guint64, guint64*
-
-// Unsupported : g_assert_warning : unsupported parameter line : no type generator for gint, const int
-
-// Unsupported : g_assertion_message_cmpnum : unsupported parameter arg1 : no type generator for long double, long double
+// Unsupported : g_assertion_message_cmpnum : unsupported parameter numtype : no type generator for gchar, char
 
 // Unsupported : g_atexit : unsupported parameter func : no type generator for VoidFunc, GVoidFunc
-
-// Unsupported : g_atomic_int_add : unsupported parameter atomic : no type generator for gint, volatile gint*
-
-// Unsupported : g_atomic_int_and : unsupported parameter atomic : no type generator for guint, volatile guint*
-
-// Unsupported : g_atomic_int_compare_and_exchange : unsupported parameter atomic : no type generator for gint, volatile gint*
-
-// Unsupported : g_atomic_int_dec_and_test : unsupported parameter atomic : no type generator for gint, volatile gint*
-
-// Unsupported : g_atomic_int_exchange_and_add : unsupported parameter atomic : no type generator for gint, volatile gint*
-
-// Unsupported : g_atomic_int_get : unsupported parameter atomic : no type generator for gint, volatile const gint*
-
-// Unsupported : g_atomic_int_inc : unsupported parameter atomic : no type generator for gint, volatile gint*
-
-// Unsupported : g_atomic_int_or : unsupported parameter atomic : no type generator for guint, volatile guint*
-
-// Unsupported : g_atomic_int_set : unsupported parameter atomic : no type generator for gint, volatile gint*
-
-// Unsupported : g_atomic_int_xor : unsupported parameter atomic : no type generator for guint, volatile guint*
 
 // Unsupported : g_atomic_pointer_add : unsupported parameter atomic : no type generator for gpointer, void*
 
@@ -56,7 +30,7 @@ import "C"
 
 // Unsupported : g_atomic_pointer_xor : unsupported parameter atomic : no type generator for gpointer, void*
 
-// Unsupported : g_base64_decode : unsupported parameter out_len : no type generator for gsize, gsize*
+// Unsupported : g_base64_decode : no return type
 
 // Unsupported : g_base64_decode_inplace : unsupported parameter text : no param type
 
@@ -68,11 +42,39 @@ import "C"
 
 // Unsupported : g_base64_encode_step : unsupported parameter in : no param type
 
-// Unsupported : g_bit_lock : unsupported parameter address : no type generator for gint, volatile gint*
+// BitLock is a wrapper around the C function g_bit_lock.
+func BitLock(address int32, lockBit int32) {
+	c_address := (C.gint)(address)
 
-// Unsupported : g_bit_trylock : unsupported parameter address : no type generator for gint, volatile gint*
+	c_lock_bit := (C.gint)(lockBit)
 
-// Unsupported : g_bit_unlock : unsupported parameter address : no type generator for gint, volatile gint*
+	C.g_bit_lock(&c_address, c_lock_bit)
+
+	return
+}
+
+// BitTrylock is a wrapper around the C function g_bit_trylock.
+func BitTrylock(address int32, lockBit int32) bool {
+	c_address := (C.gint)(address)
+
+	c_lock_bit := (C.gint)(lockBit)
+
+	retC := C.g_bit_trylock(&c_address, c_lock_bit)
+	retGo := retC == C.TRUE
+
+	return retGo
+}
+
+// BitUnlock is a wrapper around the C function g_bit_unlock.
+func BitUnlock(address int32, lockBit int32) {
+	c_address := (C.gint)(address)
+
+	c_lock_bit := (C.gint)(lockBit)
+
+	C.g_bit_unlock(&c_address, c_lock_bit)
+
+	return
+}
 
 // Unsupported : g_build_filename : unsupported parameter ... : varargs
 
@@ -98,9 +100,9 @@ import "C"
 
 // Unsupported : g_child_watch_add_full : unsupported parameter function : no type generator for ChildWatchFunc, GChildWatchFunc
 
-// Unsupported : g_clear_handle_id : unsupported parameter tag_ptr : no type generator for guint, guint*
+// Unsupported : g_clear_handle_id : unsupported parameter clear_func : no type generator for ClearHandleFunc, GClearHandleFunc
 
-// Unsupported : g_clear_pointer : unsupported parameter pp : no type generator for gpointer, gpointer*
+// Unsupported : g_clear_pointer : unsupported parameter destroy : no type generator for DestroyNotify, GDestroyNotify
 
 // Unsupported : g_compute_checksum_for_data : unsupported parameter data : no param type
 
@@ -152,10 +154,6 @@ import "C"
 
 // Unsupported : g_file_set_contents : unsupported parameter contents : no param type
 
-// Unsupported : g_filename_from_utf8 : unsupported parameter bytes_read : no type generator for gsize, gsize*
-
-// Unsupported : g_filename_to_utf8 : unsupported parameter bytes_read : no type generator for gsize, gsize*
-
 // Unsupported : g_fprintf : unsupported parameter file : no type generator for gpointer, FILE*
 
 // Unsupported : g_get_environ : no return type
@@ -169,8 +167,6 @@ import "C"
 // Unsupported : g_get_system_config_dirs : no return type
 
 // Unsupported : g_get_system_data_dirs : no return type
-
-// Unsupported : g_hash_table_lookup_extended : unsupported parameter orig_key : no type generator for gpointer, gpointer*
 
 // Unsupported : g_iconv : unsupported parameter converter : Blacklisted record : GIConv
 
@@ -188,7 +184,7 @@ import "C"
 
 // Unsupported : g_listenv : no return type
 
-// Unsupported : g_locale_from_utf8 : unsupported parameter bytes_read : no type generator for gsize, gsize*
+// Unsupported : g_locale_from_utf8 : no return type
 
 // Unsupported : g_locale_to_utf8 : unsupported parameter opsysstring : no param type
 
@@ -227,7 +223,7 @@ func Malloc0N(nBlocks uint64, nBlockBytes uint64) uintptr {
 	c_n_block_bytes := (C.gsize)(nBlockBytes)
 
 	retC := C.g_malloc0_n(c_n_blocks, c_n_block_bytes)
-	retGo := (uintptr)(retC)
+	retGo := (uintptr)(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -239,7 +235,7 @@ func MallocN(nBlocks uint64, nBlockBytes uint64) uintptr {
 	c_n_block_bytes := (C.gsize)(nBlockBytes)
 
 	retC := C.g_malloc_n(c_n_blocks, c_n_block_bytes)
-	retGo := (uintptr)(retC)
+	retGo := (uintptr)(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -249,8 +245,6 @@ func MallocN(nBlocks uint64, nBlockBytes uint64) uintptr {
 // Unsupported : g_markup_printf_escaped : unsupported parameter ... : varargs
 
 // Unsupported : g_markup_vprintf_escaped : unsupported parameter args : no type generator for va_list, va_list
-
-// Unsupported : g_nullify_pointer : unsupported parameter nullify_location : no type generator for gpointer, gpointer*
 
 // Unsupported : g_once_init_enter : unsupported parameter location : no type generator for gpointer, void*
 
@@ -293,7 +287,7 @@ func ReallocN(mem uintptr, nBlocks uint64, nBlockBytes uint64) uintptr {
 	c_n_block_bytes := (C.gsize)(nBlockBytes)
 
 	retC := C.g_realloc_n(c_mem, c_n_blocks, c_n_block_bytes)
-	retGo := (uintptr)(retC)
+	retGo := (uintptr)(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -310,9 +304,7 @@ func ReallocN(mem uintptr, nBlocks uint64, nBlockBytes uint64) uintptr {
 
 // Unsupported : g_set_printerr_handler : unsupported parameter func : no type generator for PrintFunc, GPrintFunc
 
-// Unsupported : g_shell_parse_argv : unsupported parameter argcp : no type generator for gint, gint*
-
-// Unsupported : g_slice_get_config_state : unsupported parameter n_values : no type generator for guint, guint*
+// Unsupported : g_shell_parse_argv : unsupported parameter argvp : no param type
 
 // Unsupported : g_snprintf : unsupported parameter ... : varargs
 
@@ -364,7 +356,7 @@ func ReallocN(mem uintptr, nBlocks uint64, nBlockBytes uint64) uintptr {
 
 // Unsupported : g_test_get_filename : unsupported parameter ... : varargs
 
-// Unsupported : g_test_init : unsupported parameter argc : no type generator for gint, int*
+// Unsupported : g_test_init : unsupported parameter argv : in string with indirection level of 3
 
 // Unsupported : g_test_log_set_fatal_handler : unsupported parameter log_func : no type generator for TestLogFatalFunc, GTestLogFatalFunc
 
@@ -399,7 +391,7 @@ func TryMalloc0N(nBlocks uint64, nBlockBytes uint64) uintptr {
 	c_n_block_bytes := (C.gsize)(nBlockBytes)
 
 	retC := C.g_try_malloc0_n(c_n_blocks, c_n_block_bytes)
-	retGo := (uintptr)(retC)
+	retGo := (uintptr)(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -411,7 +403,7 @@ func TryMallocN(nBlocks uint64, nBlockBytes uint64) uintptr {
 	c_n_block_bytes := (C.gsize)(nBlockBytes)
 
 	retC := C.g_try_malloc_n(c_n_blocks, c_n_block_bytes)
-	retGo := (uintptr)(retC)
+	retGo := (uintptr)(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -425,32 +417,16 @@ func TryReallocN(mem uintptr, nBlocks uint64, nBlockBytes uint64) uintptr {
 	c_n_block_bytes := (C.gsize)(nBlockBytes)
 
 	retC := C.g_try_realloc_n(c_mem, c_n_blocks, c_n_block_bytes)
-	retGo := (uintptr)(retC)
+	retGo := (uintptr)(unsafe.Pointer(retC))
 
 	return retGo
 }
 
-// Unsupported : g_ucs4_to_utf16 : unsupported parameter str : no type generator for gunichar, const gunichar*
-
-// Unsupported : g_ucs4_to_utf8 : unsupported parameter str : no type generator for gunichar, const gunichar*
-
-// Unsupported : g_unichar_compose : unsupported parameter ch : no type generator for gunichar, gunichar*
-
-// Unsupported : g_unichar_decompose : unsupported parameter a : no type generator for gunichar, gunichar*
-
-// Unsupported : g_unichar_fully_decompose : unsupported parameter result : no type generator for gunichar, gunichar*
-
-// Unsupported : g_unichar_get_mirror_char : unsupported parameter mirrored_ch : no type generator for gunichar, gunichar*
-
-// Unsupported : g_unicode_canonical_decomposition : unsupported parameter result_len : no type generator for gsize, gsize*
-
-// Unsupported : g_unicode_canonical_ordering : unsupported parameter string : no type generator for gunichar, gunichar*
+// Unsupported : g_ucs4_to_utf16 : no return generator
 
 // Unsupported : g_unix_fd_add : unsupported parameter function : no type generator for UnixFDSourceFunc, GUnixFDSourceFunc
 
 // Unsupported : g_unix_fd_add_full : unsupported parameter function : no type generator for UnixFDSourceFunc, GUnixFDSourceFunc
-
-// Unsupported : g_unix_open_pipe : unsupported parameter fds : no type generator for gint, gint*
 
 // Unsupported : g_unix_signal_add : unsupported parameter handler : no type generator for SourceFunc, GSourceFunc
 
@@ -462,11 +438,7 @@ func TryReallocN(mem uintptr, nBlocks uint64, nBlockBytes uint64) uintptr {
 
 // Unsupported : g_utf16_to_utf8 : unsupported parameter str : no type generator for guint16, const gunichar2*
 
-// Unsupported : g_utf8_to_ucs4 : unsupported parameter items_read : no type generator for glong, glong*
-
-// Unsupported : g_utf8_to_ucs4_fast : unsupported parameter items_written : no type generator for glong, glong*
-
-// Unsupported : g_utf8_to_utf16 : unsupported parameter items_read : no type generator for glong, glong*
+// Unsupported : g_utf8_to_utf16 : no return generator
 
 // Unsupported : g_utf8_validate : unsupported parameter str : no param type
 

@@ -220,9 +220,9 @@ func (recv *UnixFDList) GetLength() int32 {
 	return retGo
 }
 
-// Unsupported : g_unix_fd_list_peek_fds : unsupported parameter length : no type generator for gint, gint*
+// Unsupported : g_unix_fd_list_peek_fds : no return type
 
-// Unsupported : g_unix_fd_list_steal_fds : unsupported parameter length : no type generator for gint, gint*
+// Unsupported : g_unix_fd_list_steal_fds : no return type
 
 // UnixFDMessageNewWithFdList is a wrapper around the C function g_unix_fd_message_new_with_fd_list.
 func UnixFDMessageNewWithFdList(fdList *UnixFDList) *SocketControlMessage {

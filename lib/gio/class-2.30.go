@@ -437,7 +437,27 @@ func (recv *DBusObjectSkeleton) SetObjectPath(objectPath string) {
 
 // Unsupported : g_data_input_stream_read_line_finish_utf8 : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
 
-// Unsupported : g_data_input_stream_read_line_utf8 : unsupported parameter length : no type generator for gsize, gsize*
+// ReadLineUtf8 is a wrapper around the C function g_data_input_stream_read_line_utf8.
+func (recv *DataInputStream) ReadLineUtf8(cancellable *Cancellable) (string, *uint64, error) {
+	var c_length C.gsize
+
+	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_data_input_stream_read_line_utf8((*C.GDataInputStream)(recv.native), &c_length, c_cancellable, &cThrowableError)
+	retGo := C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	length := (*uint64)(&c_length)
+
+	return retGo, length, goThrowableError
+}
 
 // GetNodisplay is a wrapper around the C function g_desktop_app_info_get_nodisplay.
 func (recv *DesktopAppInfo) GetNodisplay() bool {
@@ -784,7 +804,15 @@ func (recv *TlsPassword) GetFlags() TlsPasswordFlags {
 	return retGo
 }
 
-// Unsupported : g_tls_password_get_value : unsupported parameter length : no type generator for gsize, gsize*
+// GetValue is a wrapper around the C function g_tls_password_get_value.
+func (recv *TlsPassword) GetValue(length uint64) *uint8 {
+	c_length := (C.gsize)(length)
+
+	retC := C.g_tls_password_get_value((*C.GTlsPassword)(recv.native), &c_length)
+	retGo := (*uint8)(&retC)
+
+	return retGo
+}
 
 // GetWarning is a wrapper around the C function g_tls_password_get_warning.
 func (recv *TlsPassword) GetWarning() string {

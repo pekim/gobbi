@@ -46,10 +46,10 @@ func (recv *CredentialsClass) ToC() unsafe.Pointer {
 
 // DBusAnnotationInfo is a wrapper around the C record GDBusAnnotationInfo.
 type DBusAnnotationInfo struct {
-	native *C.GDBusAnnotationInfo
-	// ref_count : no type generator for gint, volatile gint
-	Key   string
-	Value string
+	native   *C.GDBusAnnotationInfo
+	RefCount int32
+	Key      string
+	Value    string
 	// no type for annotations
 }
 
@@ -60,15 +60,18 @@ func DBusAnnotationInfoNewFromC(u unsafe.Pointer) *DBusAnnotationInfo {
 	}
 
 	g := &DBusAnnotationInfo{
-		Key:    C.GoString(c.key),
-		Value:  C.GoString(c.value),
-		native: c,
+		Key:      C.GoString(c.key),
+		RefCount: (int32)(c.ref_count),
+		Value:    C.GoString(c.value),
+		native:   c,
 	}
 
 	return g
 }
 
 func (recv *DBusAnnotationInfo) ToC() unsafe.Pointer {
+	recv.native.ref_count =
+		(C.gint)(recv.RefCount)
 	recv.native.key =
 		C.CString(recv.Key)
 	recv.native.value =
@@ -94,8 +97,8 @@ func (recv *DBusAnnotationInfo) Unref() {
 
 // DBusArgInfo is a wrapper around the C record GDBusArgInfo.
 type DBusArgInfo struct {
-	native *C.GDBusArgInfo
-	// ref_count : no type generator for gint, volatile gint
+	native    *C.GDBusArgInfo
+	RefCount  int32
 	Name      string
 	Signature string
 	// no type for annotations
@@ -109,6 +112,7 @@ func DBusArgInfoNewFromC(u unsafe.Pointer) *DBusArgInfo {
 
 	g := &DBusArgInfo{
 		Name:      C.GoString(c.name),
+		RefCount:  (int32)(c.ref_count),
 		Signature: C.GoString(c.signature),
 		native:    c,
 	}
@@ -117,6 +121,8 @@ func DBusArgInfoNewFromC(u unsafe.Pointer) *DBusArgInfo {
 }
 
 func (recv *DBusArgInfo) ToC() unsafe.Pointer {
+	recv.native.ref_count =
+		(C.gint)(recv.RefCount)
 	recv.native.name =
 		C.CString(recv.Name)
 	recv.native.signature =
@@ -173,9 +179,9 @@ func (recv *DBusErrorEntry) ToC() unsafe.Pointer {
 
 // DBusInterfaceInfo is a wrapper around the C record GDBusInterfaceInfo.
 type DBusInterfaceInfo struct {
-	native *C.GDBusInterfaceInfo
-	// ref_count : no type generator for gint, volatile gint
-	Name string
+	native   *C.GDBusInterfaceInfo
+	RefCount int32
+	Name     string
 	// no type for methods
 	// no type for signals
 	// no type for properties
@@ -189,14 +195,17 @@ func DBusInterfaceInfoNewFromC(u unsafe.Pointer) *DBusInterfaceInfo {
 	}
 
 	g := &DBusInterfaceInfo{
-		Name:   C.GoString(c.name),
-		native: c,
+		Name:     C.GoString(c.name),
+		RefCount: (int32)(c.ref_count),
+		native:   c,
 	}
 
 	return g
 }
 
 func (recv *DBusInterfaceInfo) ToC() unsafe.Pointer {
+	recv.native.ref_count =
+		(C.gint)(recv.RefCount)
 	recv.native.name =
 		C.CString(recv.Name)
 
@@ -289,9 +298,9 @@ func (recv *DBusInterfaceVTable) ToC() unsafe.Pointer {
 
 // DBusMethodInfo is a wrapper around the C record GDBusMethodInfo.
 type DBusMethodInfo struct {
-	native *C.GDBusMethodInfo
-	// ref_count : no type generator for gint, volatile gint
-	Name string
+	native   *C.GDBusMethodInfo
+	RefCount int32
+	Name     string
 	// no type for in_args
 	// no type for out_args
 	// no type for annotations
@@ -304,14 +313,17 @@ func DBusMethodInfoNewFromC(u unsafe.Pointer) *DBusMethodInfo {
 	}
 
 	g := &DBusMethodInfo{
-		Name:   C.GoString(c.name),
-		native: c,
+		Name:     C.GoString(c.name),
+		RefCount: (int32)(c.ref_count),
+		native:   c,
 	}
 
 	return g
 }
 
 func (recv *DBusMethodInfo) ToC() unsafe.Pointer {
+	recv.native.ref_count =
+		(C.gint)(recv.RefCount)
 	recv.native.name =
 		C.CString(recv.Name)
 
@@ -335,9 +347,9 @@ func (recv *DBusMethodInfo) Unref() {
 
 // DBusNodeInfo is a wrapper around the C record GDBusNodeInfo.
 type DBusNodeInfo struct {
-	native *C.GDBusNodeInfo
-	// ref_count : no type generator for gint, volatile gint
-	Path string
+	native   *C.GDBusNodeInfo
+	RefCount int32
+	Path     string
 	// no type for interfaces
 	// no type for nodes
 	// no type for annotations
@@ -350,14 +362,17 @@ func DBusNodeInfoNewFromC(u unsafe.Pointer) *DBusNodeInfo {
 	}
 
 	g := &DBusNodeInfo{
-		Path:   C.GoString(c.path),
-		native: c,
+		Path:     C.GoString(c.path),
+		RefCount: (int32)(c.ref_count),
+		native:   c,
 	}
 
 	return g
 }
 
 func (recv *DBusNodeInfo) ToC() unsafe.Pointer {
+	recv.native.ref_count =
+		(C.gint)(recv.RefCount)
 	recv.native.path =
 		C.CString(recv.Path)
 
@@ -421,8 +436,8 @@ func (recv *DBusNodeInfo) Unref() {
 
 // DBusPropertyInfo is a wrapper around the C record GDBusPropertyInfo.
 type DBusPropertyInfo struct {
-	native *C.GDBusPropertyInfo
-	// ref_count : no type generator for gint, volatile gint
+	native    *C.GDBusPropertyInfo
+	RefCount  int32
 	Name      string
 	Signature string
 	Flags     DBusPropertyInfoFlags
@@ -438,6 +453,7 @@ func DBusPropertyInfoNewFromC(u unsafe.Pointer) *DBusPropertyInfo {
 	g := &DBusPropertyInfo{
 		Flags:     (DBusPropertyInfoFlags)(c.flags),
 		Name:      C.GoString(c.name),
+		RefCount:  (int32)(c.ref_count),
 		Signature: C.GoString(c.signature),
 		native:    c,
 	}
@@ -446,6 +462,8 @@ func DBusPropertyInfoNewFromC(u unsafe.Pointer) *DBusPropertyInfo {
 }
 
 func (recv *DBusPropertyInfo) ToC() unsafe.Pointer {
+	recv.native.ref_count =
+		(C.gint)(recv.RefCount)
 	recv.native.name =
 		C.CString(recv.Name)
 	recv.native.signature =
@@ -498,9 +516,9 @@ func (recv *DBusProxyClass) ToC() unsafe.Pointer {
 
 // DBusSignalInfo is a wrapper around the C record GDBusSignalInfo.
 type DBusSignalInfo struct {
-	native *C.GDBusSignalInfo
-	// ref_count : no type generator for gint, volatile gint
-	Name string
+	native   *C.GDBusSignalInfo
+	RefCount int32
+	Name     string
 	// no type for args
 	// no type for annotations
 }
@@ -512,14 +530,17 @@ func DBusSignalInfoNewFromC(u unsafe.Pointer) *DBusSignalInfo {
 	}
 
 	g := &DBusSignalInfo{
-		Name:   C.GoString(c.name),
-		native: c,
+		Name:     C.GoString(c.name),
+		RefCount: (int32)(c.ref_count),
+		native:   c,
 	}
 
 	return g
 }
 
 func (recv *DBusSignalInfo) ToC() unsafe.Pointer {
+	recv.native.ref_count =
+		(C.gint)(recv.RefCount)
 	recv.native.name =
 		C.CString(recv.Name)
 

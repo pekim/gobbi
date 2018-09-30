@@ -32,7 +32,7 @@ import "C"
 type Once struct {
 	native *C.GOnce
 	Status OnceStatus
-	// retval : no type generator for gpointer, volatile gpointer
+	Retval uintptr
 }
 
 func OnceNewFromC(u unsafe.Pointer) *Once {
@@ -42,6 +42,7 @@ func OnceNewFromC(u unsafe.Pointer) *Once {
 	}
 
 	g := &Once{
+		Retval: (uintptr)(c.retval),
 		Status: (OnceStatus)(c.status),
 		native: c,
 	}
@@ -52,6 +53,8 @@ func OnceNewFromC(u unsafe.Pointer) *Once {
 func (recv *Once) ToC() unsafe.Pointer {
 	recv.native.status =
 		(C.GOnceStatus)(recv.Status)
+	recv.native.retval =
+		(C.gpointer)(recv.Retval)
 
 	return (unsafe.Pointer)(recv.native)
 }
@@ -156,7 +159,7 @@ func (recv *Queue) PeekNth(n uint32) uintptr {
 	c_n := (C.guint)(n)
 
 	retC := C.g_queue_peek_nth((*C.GQueue)(recv.native), c_n)
-	retGo := (uintptr)(retC)
+	retGo := (uintptr)(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -184,7 +187,7 @@ func (recv *Queue) PopNth(n uint32) uintptr {
 	c_n := (C.guint)(n)
 
 	retC := C.g_queue_pop_nth((*C.GQueue)(recv.native), c_n)
-	retGo := (uintptr)(retC)
+	retGo := (uintptr)(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -267,7 +270,16 @@ func (recv *Rand) Copy() *Rand {
 	return retGo
 }
 
-// Unsupported : g_rand_set_seed_array : unsupported parameter seed : no type generator for guint32, const guint32*
+// SetSeedArray is a wrapper around the C function g_rand_set_seed_array.
+func (recv *Rand) SetSeedArray(seed uint32, seedLength uint32) {
+	c_seed := (C.guint32)(seed)
+
+	c_seed_length := (C.guint)(seedLength)
+
+	C.g_rand_set_seed_array((*C.GRand)(recv.native), &c_seed, c_seed_length)
+
+	return
+}
 
 // InsertLen is a wrapper around the C function g_string_chunk_insert_len.
 func (recv *StringChunk) InsertLen(string string, len int64) string {

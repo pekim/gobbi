@@ -43,11 +43,9 @@ func EventRequestMotions(event *EventMotion) {
 
 // Unsupported : gdk_events_get_distance : unsupported parameter event1 : no type generator for Event, GdkEvent*
 
-// Unsupported : gdk_init : unsupported parameter argc : no type generator for gint, gint*
+// Unsupported : gdk_init : unsupported parameter argv : no param type
 
-// Unsupported : gdk_init_check : unsupported parameter argc : no type generator for gint, gint*
-
-// Unsupported : gdk_keyval_convert_case : unsupported parameter lower : no type generator for guint, guint*
+// Unsupported : gdk_init_check : unsupported parameter argv : no param type
 
 // NotifyStartupCompleteWithId is a wrapper around the C function gdk_notify_startup_complete_with_id.
 func NotifyStartupCompleteWithId(startupId string) {
@@ -59,11 +57,9 @@ func NotifyStartupCompleteWithId(startupId string) {
 	return
 }
 
-// Unsupported : gdk_pango_layout_get_clip_region : unsupported parameter index_ranges : no type generator for gint, const gint*
-
 // Unsupported : gdk_pango_layout_line_get_clip_region : unsupported parameter index_ranges : no param type
 
-// Unsupported : gdk_parse_args : unsupported parameter argc : no type generator for gint, gint*
+// Unsupported : gdk_parse_args : unsupported parameter argv : no param type
 
 // Unsupported : gdk_property_change : unsupported parameter property : Blacklisted record : GdkAtom
 
@@ -85,7 +81,7 @@ func NotifyStartupCompleteWithId(startupId string) {
 
 // Unsupported : gdk_selection_owner_set_for_display : unsupported parameter selection : Blacklisted record : GdkAtom
 
-// Unsupported : gdk_selection_property_get : unsupported parameter data : no type generator for guint8, guchar**
+// Unsupported : gdk_selection_property_get : unsupported parameter data : guchar** with indirection level of 2
 
 // Unsupported : gdk_selection_send_notify : unsupported parameter selection : Blacklisted record : GdkAtom
 

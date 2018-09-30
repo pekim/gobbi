@@ -240,9 +240,9 @@ func (recv *Notification) SetUrgent(urgent bool) {
 	return
 }
 
-// Unsupported : g_output_stream_printf : unsupported parameter bytes_written : no type generator for gsize, gsize*
+// Unsupported : g_output_stream_printf : unsupported parameter error : record with indirection level of 2
 
-// Unsupported : g_output_stream_vprintf : unsupported parameter bytes_written : no type generator for gsize, gsize*
+// Unsupported : g_output_stream_vprintf : unsupported parameter error : record with indirection level of 2
 
 // Unsupported : g_settings_get_default_value : return type : Blacklisted record : GVariant
 

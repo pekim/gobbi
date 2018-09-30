@@ -48,11 +48,9 @@ func CairoGetDrawingContext(cr *cairo.Context) *DrawingContext {
 
 // Unsupported : gdk_events_get_distance : unsupported parameter event1 : no type generator for Event, GdkEvent*
 
-// Unsupported : gdk_init : unsupported parameter argc : no type generator for gint, gint*
+// Unsupported : gdk_init : unsupported parameter argv : no param type
 
-// Unsupported : gdk_init_check : unsupported parameter argc : no type generator for gint, gint*
-
-// Unsupported : gdk_keyval_convert_case : unsupported parameter lower : no type generator for guint, guint*
+// Unsupported : gdk_init_check : unsupported parameter argv : no param type
 
 // PangoContextGetForDisplay is a wrapper around the C function gdk_pango_context_get_for_display.
 func PangoContextGetForDisplay(display *Display) *pango.Context {
@@ -64,11 +62,9 @@ func PangoContextGetForDisplay(display *Display) *pango.Context {
 	return retGo
 }
 
-// Unsupported : gdk_pango_layout_get_clip_region : unsupported parameter index_ranges : no type generator for gint, const gint*
-
 // Unsupported : gdk_pango_layout_line_get_clip_region : unsupported parameter index_ranges : no param type
 
-// Unsupported : gdk_parse_args : unsupported parameter argc : no type generator for gint, gint*
+// Unsupported : gdk_parse_args : unsupported parameter argv : no param type
 
 // Unsupported : gdk_property_change : unsupported parameter property : Blacklisted record : GdkAtom
 
@@ -90,7 +86,7 @@ func PangoContextGetForDisplay(display *Display) *pango.Context {
 
 // Unsupported : gdk_selection_owner_set_for_display : unsupported parameter selection : Blacklisted record : GdkAtom
 
-// Unsupported : gdk_selection_property_get : unsupported parameter data : no type generator for guint8, guchar**
+// Unsupported : gdk_selection_property_get : unsupported parameter data : guchar** with indirection level of 2
 
 // Unsupported : gdk_selection_send_notify : unsupported parameter selection : Blacklisted record : GdkAtom
 

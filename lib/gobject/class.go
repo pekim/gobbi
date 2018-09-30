@@ -64,7 +64,14 @@ func (recv *Object) ToC() unsafe.Pointer {
 
 // Unsupported : g_object_newv : unsupported parameter object_type : no type generator for GType, GType
 
-// Unsupported : g_object_add_weak_pointer : unsupported parameter weak_pointer_location : no type generator for gpointer, gpointer*
+// AddWeakPointer is a wrapper around the C function g_object_add_weak_pointer.
+func (recv *Object) AddWeakPointer(weakPointerLocation uintptr) {
+	c_weak_pointer_location := (C.gpointer)(weakPointerLocation)
+
+	C.g_object_add_weak_pointer((*C.GObject)(recv.native), &c_weak_pointer_location)
+
+	return
+}
 
 // Unsupported : g_object_connect : unsupported parameter ... : varargs
 
@@ -85,7 +92,7 @@ func (recv *Object) GetData(key string) uintptr {
 	defer C.free(unsafe.Pointer(c_key))
 
 	retC := C.g_object_get_data((*C.GObject)(recv.native), c_key)
-	retGo := (uintptr)(retC)
+	retGo := (uintptr)(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -107,7 +114,7 @@ func (recv *Object) GetQdata(quark glib.Quark) uintptr {
 	c_quark := (C.GQuark)(quark)
 
 	retC := C.g_object_get_qdata((*C.GObject)(recv.native), c_quark)
-	retGo := (uintptr)(retC)
+	retGo := (uintptr)(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -132,7 +139,14 @@ func (recv *Object) Ref() uintptr {
 	return retGo
 }
 
-// Unsupported : g_object_remove_weak_pointer : unsupported parameter weak_pointer_location : no type generator for gpointer, gpointer*
+// RemoveWeakPointer is a wrapper around the C function g_object_remove_weak_pointer.
+func (recv *Object) RemoveWeakPointer(weakPointerLocation uintptr) {
+	c_weak_pointer_location := (C.gpointer)(weakPointerLocation)
+
+	C.g_object_remove_weak_pointer((*C.GObject)(recv.native), &c_weak_pointer_location)
+
+	return
+}
 
 // RunDispose is a wrapper around the C function g_object_run_dispose.
 func (recv *Object) RunDispose() {
@@ -190,7 +204,7 @@ func (recv *Object) StealData(key string) uintptr {
 	defer C.free(unsafe.Pointer(c_key))
 
 	retC := C.g_object_steal_data((*C.GObject)(recv.native), c_key)
-	retGo := (uintptr)(retC)
+	retGo := (uintptr)(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -200,7 +214,7 @@ func (recv *Object) StealQdata(quark glib.Quark) uintptr {
 	c_quark := (C.GQuark)(quark)
 
 	retC := C.g_object_steal_qdata((*C.GObject)(recv.native), c_quark)
-	retGo := (uintptr)(retC)
+	retGo := (uintptr)(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -300,7 +314,7 @@ func (recv *ParamSpec) GetQdata(quark glib.Quark) uintptr {
 	c_quark := (C.GQuark)(quark)
 
 	retC := C.g_param_spec_get_qdata((*C.GParamSpec)(recv.native), c_quark)
-	retGo := (uintptr)(retC)
+	retGo := (uintptr)(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -338,7 +352,7 @@ func (recv *ParamSpec) StealQdata(quark glib.Quark) uintptr {
 	c_quark := (C.GQuark)(quark)
 
 	retC := C.g_param_spec_steal_qdata((*C.GParamSpec)(recv.native), c_quark)
-	retGo := (uintptr)(retC)
+	retGo := (uintptr)(unsafe.Pointer(retC))
 
 	return retGo
 }

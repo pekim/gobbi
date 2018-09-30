@@ -46,4 +46,4 @@ func (recv *WidgetClass) FindStyleProperty(propertyName string) *gobject.ParamSp
 	return retGo
 }
 
-// Unsupported : gtk_widget_class_list_style_properties : unsupported parameter n_properties : no type generator for guint, guint*
+// Unsupported : gtk_widget_class_list_style_properties : no return type

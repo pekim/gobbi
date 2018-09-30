@@ -287,7 +287,7 @@ func DbusErrorRegisterError(errorDomain glib.Quark, errorCode int32, dbusErrorNa
 	return retGo
 }
 
-// Unsupported : g_dbus_error_register_error_domain : unsupported parameter quark_volatile : no type generator for gsize, volatile gsize*
+// Unsupported : g_dbus_error_register_error_domain : unsupported parameter entries : no param type
 
 // DbusErrorStripRemoteError is a wrapper around the C function g_dbus_error_strip_remote_error.
 func DbusErrorStripRemoteError(error *glib.Error) bool {
@@ -451,8 +451,6 @@ func DbusIsUniqueName(string string) bool {
 
 // Unsupported : g_resources_enumerate_children : no return type
 
-// Unsupported : g_resources_get_info : unsupported parameter size : no type generator for gsize, gsize*
-
 // Unsupported : g_simple_async_report_error_in_idle : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
 
 // Unsupported : g_simple_async_report_gerror_in_idle : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
@@ -467,14 +465,6 @@ func DbusIsUniqueName(string string) bool {
 
 // Unsupported : g_tls_server_connection_new : no return generator
 
-// Unsupported : g_unix_mount_at : unsupported parameter time_read : no type generator for guint64, guint64*
-
-// Unsupported : g_unix_mount_for : unsupported parameter time_read : no type generator for guint64, guint64*
-
 // Unsupported : g_unix_mount_guess_icon : no return generator
 
 // Unsupported : g_unix_mount_guess_symbolic_icon : no return generator
-
-// Unsupported : g_unix_mount_points_get : unsupported parameter time_read : no type generator for guint64, guint64*
-
-// Unsupported : g_unix_mounts_get : unsupported parameter time_read : no type generator for guint64, guint64*

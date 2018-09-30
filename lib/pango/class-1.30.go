@@ -16,4 +16,4 @@ func (recv *Layout) GetCharacterCount() int32 {
 	return retGo
 }
 
-// Unsupported : pango_layout_get_log_attrs_readonly : unsupported parameter n_attrs : no type generator for gint, gint*
+// Unsupported : pango_layout_get_log_attrs_readonly : no return type

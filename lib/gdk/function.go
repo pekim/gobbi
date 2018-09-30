@@ -252,9 +252,9 @@ func GlErrorQuark() glib.Quark {
 	return retGo
 }
 
-// Unsupported : gdk_init : unsupported parameter argc : no type generator for gint, gint*
+// Unsupported : gdk_init : unsupported parameter argv : no param type
 
-// Unsupported : gdk_init_check : unsupported parameter argc : no type generator for gint, gint*
+// Unsupported : gdk_init_check : unsupported parameter argv : no param type
 
 // KeyboardGrab is a wrapper around the C function gdk_keyboard_grab.
 func KeyboardGrab(window *Window, ownerEvents bool, time uint32) GrabStatus {
@@ -280,7 +280,22 @@ func KeyboardUngrab(time uint32) {
 	return
 }
 
-// Unsupported : gdk_keyval_convert_case : unsupported parameter lower : no type generator for guint, guint*
+// KeyvalConvertCase is a wrapper around the C function gdk_keyval_convert_case.
+func KeyvalConvertCase(symbol uint32) (*uint32, *uint32) {
+	c_symbol := (C.guint)(symbol)
+
+	var c_lower C.guint
+
+	var c_upper C.guint
+
+	C.gdk_keyval_convert_case(c_symbol, &c_lower, &c_upper)
+
+	lower := (*uint32)(&c_lower)
+
+	upper := (*uint32)(&c_upper)
+
+	return lower, upper
+}
 
 // KeyvalFromName is a wrapper around the C function gdk_keyval_from_name.
 func KeyvalFromName(keyvalName string) uint32 {
@@ -379,11 +394,27 @@ func PangoContextGet() *pango.Context {
 	return retGo
 }
 
-// Unsupported : gdk_pango_layout_get_clip_region : unsupported parameter index_ranges : no type generator for gint, const gint*
+// PangoLayoutGetClipRegion is a wrapper around the C function gdk_pango_layout_get_clip_region.
+func PangoLayoutGetClipRegion(layout *pango.Layout, xOrigin int32, yOrigin int32, indexRanges int32, nRanges int32) *cairo.Region {
+	c_layout := (*C.PangoLayout)(layout.ToC())
+
+	c_x_origin := (C.gint)(xOrigin)
+
+	c_y_origin := (C.gint)(yOrigin)
+
+	c_index_ranges := (C.gint)(indexRanges)
+
+	c_n_ranges := (C.gint)(nRanges)
+
+	retC := C.gdk_pango_layout_get_clip_region(c_layout, c_x_origin, c_y_origin, &c_index_ranges, c_n_ranges)
+	retGo := cairo.RegionNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // Unsupported : gdk_pango_layout_line_get_clip_region : unsupported parameter index_ranges : no param type
 
-// Unsupported : gdk_parse_args : unsupported parameter argc : no type generator for gint, gint*
+// Unsupported : gdk_parse_args : unsupported parameter argv : no param type
 
 // PixbufGetFromSurface is a wrapper around the C function gdk_pixbuf_get_from_surface.
 func PixbufGetFromSurface(surface *cairo.Surface, srcX int32, srcY int32, width int32, height int32) *gdkpixbuf.Pixbuf {
@@ -486,7 +517,7 @@ func PreParseLibgtkOnly() {
 
 // Unsupported : gdk_selection_owner_set_for_display : unsupported parameter selection : Blacklisted record : GdkAtom
 
-// Unsupported : gdk_selection_property_get : unsupported parameter data : no type generator for guint8, guchar**
+// Unsupported : gdk_selection_property_get : unsupported parameter data : guchar** with indirection level of 2
 
 // Unsupported : gdk_selection_send_notify : unsupported parameter selection : Blacklisted record : GdkAtom
 

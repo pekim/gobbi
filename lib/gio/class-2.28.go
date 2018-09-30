@@ -171,7 +171,7 @@ func (recv *Application) SetInactivityTimeout(inactivityTimeout uint32) {
 	return
 }
 
-// Unsupported : g_application_command_line_get_arguments : unsupported parameter argc : no type generator for gint, int*
+// Unsupported : g_application_command_line_get_arguments : no return type
 
 // GetCwd is a wrapper around the C function g_application_command_line_get_cwd.
 func (recv *ApplicationCommandLine) GetCwd() string {

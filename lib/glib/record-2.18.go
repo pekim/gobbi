@@ -3,6 +3,8 @@
 
 package glib
 
+import "unsafe"
+
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <glib.h>
 // #include <glib/gstdio.h>
@@ -34,7 +36,7 @@ func (recv *Checksum) Reset() {
 // GetUserData is a wrapper around the C function g_markup_parse_context_get_user_data.
 func (recv *MarkupParseContext) GetUserData() uintptr {
 	retC := C.g_markup_parse_context_get_user_data((*C.GMarkupParseContext)(recv.native))
-	retGo := (uintptr)(retC)
+	retGo := (uintptr)(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -42,7 +44,7 @@ func (recv *MarkupParseContext) GetUserData() uintptr {
 // Pop is a wrapper around the C function g_markup_parse_context_pop.
 func (recv *MarkupParseContext) Pop() uintptr {
 	retC := C.g_markup_parse_context_pop((*C.GMarkupParseContext)(recv.native))
-	retGo := (uintptr)(retC)
+	retGo := (uintptr)(unsafe.Pointer(retC))
 
 	return retGo
 }

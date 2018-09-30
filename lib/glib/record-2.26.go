@@ -403,7 +403,24 @@ func (recv *DateTime) GetYear() int32 {
 	return retGo
 }
 
-// Unsupported : g_date_time_get_ymd : unsupported parameter year : no type generator for gint, gint*
+// GetYmd is a wrapper around the C function g_date_time_get_ymd.
+func (recv *DateTime) GetYmd() (*int32, *int32, *int32) {
+	var c_year C.gint
+
+	var c_month C.gint
+
+	var c_day C.gint
+
+	C.g_date_time_get_ymd((*C.GDateTime)(recv.native), &c_year, &c_month, &c_day)
+
+	year := (*int32)(&c_year)
+
+	month := (*int32)(&c_month)
+
+	day := (*int32)(&c_day)
+
+	return year, month, day
+}
 
 // IsDaylightSavings is a wrapper around the C function g_date_time_is_daylight_savings.
 func (recv *DateTime) IsDaylightSavings() bool {
@@ -638,7 +655,17 @@ func TimeZoneNewUtc() *TimeZone {
 	return retGo
 }
 
-// Unsupported : g_time_zone_adjust_time : unsupported parameter time_ : no type generator for gint64, gint64*
+// AdjustTime is a wrapper around the C function g_time_zone_adjust_time.
+func (recv *TimeZone) AdjustTime(type_ TimeType, time int64) int32 {
+	c_type := (C.GTimeType)(type_)
+
+	c_time_ := (C.gint64)(time)
+
+	retC := C.g_time_zone_adjust_time((*C.GTimeZone)(recv.native), c_type, &c_time_)
+	retGo := (int32)(retC)
+
+	return retGo
+}
 
 // FindInterval is a wrapper around the C function g_time_zone_find_interval.
 func (recv *TimeZone) FindInterval(type_ TimeType, time int64) int32 {

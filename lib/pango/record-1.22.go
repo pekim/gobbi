@@ -119,6 +119,6 @@ func (recv *GlyphItemIter) PrevCluster() bool {
 	return retGo
 }
 
-// Unsupported : pango_language_get_scripts : unsupported parameter num_scripts : no type generator for gint, int*
+// Unsupported : pango_language_get_scripts : no return type
 
 // Unsupported : pango_tab_array_new_with_positions : unsupported parameter ... : varargs

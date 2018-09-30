@@ -241,7 +241,20 @@ func (recv *AttrIterator) Next() bool {
 	return retGo
 }
 
-// Unsupported : pango_attr_iterator_range : unsupported parameter start : no type generator for gint, gint*
+// Range is a wrapper around the C function pango_attr_iterator_range.
+func (recv *AttrIterator) Range() (*int32, *int32) {
+	var c_start C.gint
+
+	var c_end C.gint
+
+	C.pango_attr_iterator_range((*C.PangoAttrIterator)(recv.native), &c_start, &c_end)
+
+	start := (*int32)(&c_start)
+
+	end := (*int32)(&c_end)
+
+	return start, end
+}
 
 // AttrLanguage is a wrapper around the C record PangoAttrLanguage.
 type AttrLanguage struct {
@@ -1032,7 +1045,7 @@ type GlyphString struct {
 	native    *C.PangoGlyphString
 	NumGlyphs int32
 	// no type for glyphs
-	// log_clusters : no type generator for gint, gint*
+	LogClusters int32
 	// Private : space
 }
 
@@ -1043,8 +1056,9 @@ func GlyphStringNewFromC(u unsafe.Pointer) *GlyphString {
 	}
 
 	g := &GlyphString{
-		NumGlyphs: (int32)(c.num_glyphs),
-		native:    c,
+		LogClusters: (*int32)(&c.log_clusters),
+		NumGlyphs:   (int32)(c.num_glyphs),
+		native:      c,
 	}
 
 	return g
@@ -1053,6 +1067,8 @@ func GlyphStringNewFromC(u unsafe.Pointer) *GlyphString {
 func (recv *GlyphString) ToC() unsafe.Pointer {
 	recv.native.num_glyphs =
 		(C.gint)(recv.NumGlyphs)
+	recv.native.log_clusters =
+		(C.gint)(recv.LogClusters)
 
 	return (unsafe.Pointer)(recv.native)
 }
@@ -1120,7 +1136,28 @@ func (recv *GlyphString) Free() {
 
 // Unsupported : pango_glyph_string_get_logical_widths : unsupported parameter logical_widths : no param type
 
-// Unsupported : pango_glyph_string_index_to_x : unsupported parameter x_pos : no type generator for gint, int*
+// IndexToX is a wrapper around the C function pango_glyph_string_index_to_x.
+func (recv *GlyphString) IndexToX(text string, length int32, analysis *Analysis, index int32, trailing bool) *int32 {
+	c_text := C.CString(text)
+	defer C.free(unsafe.Pointer(c_text))
+
+	c_length := (C.int)(length)
+
+	c_analysis := (*C.PangoAnalysis)(analysis.ToC())
+
+	c_index_ := (C.int)(index)
+
+	c_trailing :=
+		boolToGboolean(trailing)
+
+	var c_x_pos C.int
+
+	C.pango_glyph_string_index_to_x((*C.PangoGlyphString)(recv.native), c_text, c_length, c_analysis, c_index_, c_trailing, &c_x_pos)
+
+	xPos := (*int32)(&c_x_pos)
+
+	return xPos
+}
 
 // SetSize is a wrapper around the C function pango_glyph_string_set_size.
 func (recv *GlyphString) SetSize(newLen int32) {
@@ -1131,7 +1168,29 @@ func (recv *GlyphString) SetSize(newLen int32) {
 	return
 }
 
-// Unsupported : pango_glyph_string_x_to_index : unsupported parameter index_ : no type generator for gint, int*
+// XToIndex is a wrapper around the C function pango_glyph_string_x_to_index.
+func (recv *GlyphString) XToIndex(text string, length int32, analysis *Analysis, xPos int32) (*int32, *int32) {
+	c_text := C.CString(text)
+	defer C.free(unsafe.Pointer(c_text))
+
+	c_length := (C.int)(length)
+
+	c_analysis := (*C.PangoAnalysis)(analysis.ToC())
+
+	c_x_pos := (C.int)(xPos)
+
+	var c_index_ C.int
+
+	var c_trailing C.int
+
+	C.pango_glyph_string_x_to_index((*C.PangoGlyphString)(recv.native), c_text, c_length, c_analysis, c_x_pos, &c_index_, &c_trailing)
+
+	index := (*int32)(&c_index_)
+
+	trailing := (*int32)(&c_trailing)
+
+	return index, trailing
+}
 
 // GlyphVisAttr is a wrapper around the C record PangoGlyphVisAttr.
 type GlyphVisAttr struct {
@@ -1366,7 +1425,21 @@ func (recv *LayoutLine) GetPixelExtents() (*Rectangle, *Rectangle) {
 
 // Unsupported : pango_layout_line_get_x_ranges : unsupported parameter ranges : no param type
 
-// Unsupported : pango_layout_line_index_to_x : unsupported parameter x_pos : no type generator for gint, int*
+// IndexToX is a wrapper around the C function pango_layout_line_index_to_x.
+func (recv *LayoutLine) IndexToX(index int32, trailing bool) *int32 {
+	c_index_ := (C.int)(index)
+
+	c_trailing :=
+		boolToGboolean(trailing)
+
+	var c_x_pos C.int
+
+	C.pango_layout_line_index_to_x((*C.PangoLayoutLine)(recv.native), c_index_, c_trailing, &c_x_pos)
+
+	xPos := (*int32)(&c_x_pos)
+
+	return xPos
+}
 
 // Unref is a wrapper around the C function pango_layout_line_unref.
 func (recv *LayoutLine) Unref() {
@@ -1375,7 +1448,23 @@ func (recv *LayoutLine) Unref() {
 	return
 }
 
-// Unsupported : pango_layout_line_x_to_index : unsupported parameter index_ : no type generator for gint, int*
+// XToIndex is a wrapper around the C function pango_layout_line_x_to_index.
+func (recv *LayoutLine) XToIndex(xPos int32) (bool, *int32, *int32) {
+	c_x_pos := (C.int)(xPos)
+
+	var c_index_ C.int
+
+	var c_trailing C.int
+
+	retC := C.pango_layout_line_x_to_index((*C.PangoLayoutLine)(recv.native), c_x_pos, &c_index_, &c_trailing)
+	retGo := retC == C.TRUE
+
+	index := (*int32)(&c_index_)
+
+	trailing := (*int32)(&c_trailing)
+
+	return retGo, index, trailing
+}
 
 // LogAttr is a wrapper around the C record PangoLogAttr.
 type LogAttr struct {

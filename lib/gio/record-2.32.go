@@ -161,7 +161,33 @@ func (recv *Resource) Unregister() {
 
 // Unsupported : g_resource_enumerate_children : no return type
 
-// Unsupported : g_resource_get_info : unsupported parameter size : no type generator for gsize, gsize*
+// GetInfo is a wrapper around the C function g_resource_get_info.
+func (recv *Resource) GetInfo(path string, lookupFlags ResourceLookupFlags) (bool, *uint64, *uint32, error) {
+	c_path := C.CString(path)
+	defer C.free(unsafe.Pointer(c_path))
+
+	c_lookup_flags := (C.GResourceLookupFlags)(lookupFlags)
+
+	var c_size C.gsize
+
+	var c_flags C.guint32
+
+	var cThrowableError *C.GError
+
+	retC := C.g_resource_get_info((*C.GResource)(recv.native), c_path, c_lookup_flags, &c_size, &c_flags, &cThrowableError)
+	retGo := retC == C.TRUE
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	size := (*uint64)(&c_size)
+
+	flags := (*uint32)(&c_flags)
+
+	return retGo, size, flags, goThrowableError
+}
 
 // LookupData is a wrapper around the C function g_resource_lookup_data.
 func (recv *Resource) LookupData(path string, lookupFlags ResourceLookupFlags) (*glib.Bytes, error) {

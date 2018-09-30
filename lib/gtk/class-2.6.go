@@ -1111,7 +1111,25 @@ func (recv *TextBuffer) Backspace(iter *TextIter, interactive bool, defaultEdita
 	return retGo
 }
 
-// Unsupported : gtk_text_view_get_iter_at_position : unsupported parameter trailing : no type generator for gint, gint*
+// GetIterAtPosition is a wrapper around the C function gtk_text_view_get_iter_at_position.
+func (recv *TextView) GetIterAtPosition(x int32, y int32) (bool, *TextIter, *int32) {
+	var c_iter C.GtkTextIter
+
+	var c_trailing C.gint
+
+	c_x := (C.gint)(x)
+
+	c_y := (C.gint)(y)
+
+	retC := C.gtk_text_view_get_iter_at_position((*C.GtkTextView)(recv.native), &c_iter, &c_trailing, c_x, c_y)
+	retGo := retC == C.TRUE
+
+	iter := TextIterNewFromC(unsafe.Pointer(&c_iter))
+
+	trailing := (*int32)(&c_trailing)
+
+	return retGo, iter, trailing
+}
 
 // RebuildMenu is a wrapper around the C function gtk_tool_item_rebuild_menu.
 func (recv *ToolItem) RebuildMenu() {

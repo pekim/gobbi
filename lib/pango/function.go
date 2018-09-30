@@ -153,7 +153,25 @@ func AttrWeightNew(weight Weight) *Attribute {
 
 // Unsupported : pango_find_map : return type : Blacklisted record : PangoMap
 
-// Unsupported : pango_find_paragraph_boundary : unsupported parameter paragraph_delimiter_index : no type generator for gint, gint*
+// FindParagraphBoundary is a wrapper around the C function pango_find_paragraph_boundary.
+func FindParagraphBoundary(text string, length int32) (*int32, *int32) {
+	c_text := C.CString(text)
+	defer C.free(unsafe.Pointer(c_text))
+
+	c_length := (C.gint)(length)
+
+	var c_paragraph_delimiter_index C.gint
+
+	var c_next_paragraph_start C.gint
+
+	C.pango_find_paragraph_boundary(c_text, c_length, &c_paragraph_delimiter_index, &c_next_paragraph_start)
+
+	paragraphDelimiterIndex := (*int32)(&c_paragraph_delimiter_index)
+
+	nextParagraphStart := (*int32)(&c_next_paragraph_start)
+
+	return paragraphDelimiterIndex, nextParagraphStart
+}
 
 // FontDescriptionFromString is a wrapper around the C function pango_font_description_from_string.
 func FontDescriptionFromString(str string) *FontDescription {
@@ -170,7 +188,17 @@ func FontDescriptionFromString(str string) *FontDescription {
 
 // Unsupported : pango_get_log_attrs : unsupported parameter log_attrs : no param type
 
-// Unsupported : pango_get_mirror_char : unsupported parameter mirrored_ch : no type generator for gunichar, gunichar*
+// GetMirrorChar is a wrapper around the C function pango_get_mirror_char.
+func GetMirrorChar(ch rune, mirroredCh rune) bool {
+	c_ch := (C.gunichar)(ch)
+
+	c_mirrored_ch := (C.gunichar)(mirroredCh)
+
+	retC := C.pango_get_mirror_char(c_ch, &c_mirrored_ch)
+	retGo := retC == C.TRUE
+
+	return retGo
+}
 
 // Blacklisted : pango_get_sysconf_subdirectory
 
@@ -225,8 +253,6 @@ func LanguageFromString(language string) *Language {
 // Unsupported : pango_parse_variant : unsupported parameter variant : PangoVariant* with indirection level of 1
 
 // Unsupported : pango_parse_weight : unsupported parameter weight : PangoWeight* with indirection level of 1
-
-// Unsupported : pango_quantize_line_geometry : unsupported parameter thickness : no type generator for gint, int*
 
 // Unsupported : pango_read_line : unsupported parameter stream : no type generator for gpointer, FILE*
 

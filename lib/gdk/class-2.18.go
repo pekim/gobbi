@@ -40,7 +40,24 @@ func (recv *Window) GetCursor() *Cursor {
 	return retGo
 }
 
-// Unsupported : gdk_window_get_root_coords : unsupported parameter root_x : no type generator for gint, gint*
+// GetRootCoords is a wrapper around the C function gdk_window_get_root_coords.
+func (recv *Window) GetRootCoords(x int32, y int32) (*int32, *int32) {
+	c_x := (C.gint)(x)
+
+	c_y := (C.gint)(y)
+
+	var c_root_x C.gint
+
+	var c_root_y C.gint
+
+	C.gdk_window_get_root_coords((*C.GdkWindow)(recv.native), c_x, c_y, &c_root_x, &c_root_y)
+
+	rootX := (*int32)(&c_root_x)
+
+	rootY := (*int32)(&c_root_y)
+
+	return rootX, rootY
+}
 
 // IsDestroyed is a wrapper around the C function gdk_window_is_destroyed.
 func (recv *Window) IsDestroyed() bool {

@@ -86,7 +86,21 @@ func (recv *Display) GetScreen(screenNum int32) *Screen {
 	return retGo
 }
 
-// Unsupported : gdk_display_get_window_at_pointer : unsupported parameter win_x : no type generator for gint, gint*
+// GetWindowAtPointer is a wrapper around the C function gdk_display_get_window_at_pointer.
+func (recv *Display) GetWindowAtPointer() (*Window, *int32, *int32) {
+	var c_win_x C.gint
+
+	var c_win_y C.gint
+
+	retC := C.gdk_display_get_window_at_pointer((*C.GdkDisplay)(recv.native), &c_win_x, &c_win_y)
+	retGo := WindowNewFromC(unsafe.Pointer(retC))
+
+	winX := (*int32)(&c_win_x)
+
+	winY := (*int32)(&c_win_y)
+
+	return retGo, winX, winY
+}
 
 // KeyboardUngrab is a wrapper around the C function gdk_display_keyboard_ungrab.
 func (recv *Display) KeyboardUngrab(time uint32) {

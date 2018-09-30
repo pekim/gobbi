@@ -49,9 +49,37 @@ func (recv *Device) GetNAxes() int32 {
 
 // Unsupported : gdk_device_get_position : unsupported parameter screen : record with indirection level of 2
 
-// Unsupported : gdk_device_get_window_at_position : unsupported parameter win_x : no type generator for gint, gint*
+// GetWindowAtPosition is a wrapper around the C function gdk_device_get_window_at_position.
+func (recv *Device) GetWindowAtPosition() (*Window, *int32, *int32) {
+	var c_win_x C.gint
 
-// Unsupported : gdk_device_get_window_at_position_double : unsupported parameter win_x : no type generator for gdouble, gdouble*
+	var c_win_y C.gint
+
+	retC := C.gdk_device_get_window_at_position((*C.GdkDevice)(recv.native), &c_win_x, &c_win_y)
+	retGo := WindowNewFromC(unsafe.Pointer(retC))
+
+	winX := (*int32)(&c_win_x)
+
+	winY := (*int32)(&c_win_y)
+
+	return retGo, winX, winY
+}
+
+// GetWindowAtPositionDouble is a wrapper around the C function gdk_device_get_window_at_position_double.
+func (recv *Device) GetWindowAtPositionDouble() (*Window, *float64, *float64) {
+	var c_win_x C.gdouble
+
+	var c_win_y C.gdouble
+
+	retC := C.gdk_device_get_window_at_position_double((*C.GdkDevice)(recv.native), &c_win_x, &c_win_y)
+	retGo := WindowNewFromC(unsafe.Pointer(retC))
+
+	winX := (*float64)(&c_win_x)
+
+	winY := (*float64)(&c_win_y)
+
+	return retGo, winX, winY
+}
 
 // Grab is a wrapper around the C function gdk_device_grab.
 func (recv *Device) Grab(window *Window, grabOwnership GrabOwnership, ownerEvents bool, eventMask EventMask, cursor *Cursor, time uint32) GrabStatus {
@@ -219,7 +247,7 @@ func (recv *Window) GetDeviceEvents(device *Device) EventMask {
 	return retGo
 }
 
-// Unsupported : gdk_window_get_device_position : unsupported parameter x : no type generator for gint, gint*
+// Unsupported : gdk_window_get_device_position : unsupported parameter mask : GdkModifierType* with indirection level of 1
 
 // Unsupported : gdk_window_get_drag_protocol : unsupported parameter target : record with indirection level of 2
 

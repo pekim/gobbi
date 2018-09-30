@@ -563,7 +563,20 @@ func (recv *Layout) GetPixelExtents() (*Rectangle, *Rectangle) {
 	return inkRect, logicalRect
 }
 
-// Unsupported : pango_layout_get_pixel_size : unsupported parameter width : no type generator for gint, int*
+// GetPixelSize is a wrapper around the C function pango_layout_get_pixel_size.
+func (recv *Layout) GetPixelSize() (*int32, *int32) {
+	var c_width C.int
+
+	var c_height C.int
+
+	C.pango_layout_get_pixel_size((*C.PangoLayout)(recv.native), &c_width, &c_height)
+
+	width := (*int32)(&c_width)
+
+	height := (*int32)(&c_height)
+
+	return width, height
+}
 
 // GetSingleParagraphMode is a wrapper around the C function pango_layout_get_single_paragraph_mode.
 func (recv *Layout) GetSingleParagraphMode() bool {
@@ -573,7 +586,20 @@ func (recv *Layout) GetSingleParagraphMode() bool {
 	return retGo
 }
 
-// Unsupported : pango_layout_get_size : unsupported parameter width : no type generator for gint, int*
+// GetSize is a wrapper around the C function pango_layout_get_size.
+func (recv *Layout) GetSize() (*int32, *int32) {
+	var c_width C.int
+
+	var c_height C.int
+
+	C.pango_layout_get_size((*C.PangoLayout)(recv.native), &c_width, &c_height)
+
+	width := (*int32)(&c_width)
+
+	height := (*int32)(&c_height)
+
+	return width, height
+}
 
 // GetSpacing is a wrapper around the C function pango_layout_get_spacing.
 func (recv *Layout) GetSpacing() int32 {
@@ -615,7 +641,25 @@ func (recv *Layout) GetWrap() WrapMode {
 	return retGo
 }
 
-// Unsupported : pango_layout_index_to_line_x : unsupported parameter line : no type generator for gint, int*
+// IndexToLineX is a wrapper around the C function pango_layout_index_to_line_x.
+func (recv *Layout) IndexToLineX(index int32, trailing bool) (*int32, *int32) {
+	c_index_ := (C.int)(index)
+
+	c_trailing :=
+		boolToGboolean(trailing)
+
+	var c_line C.int
+
+	var c_x_pos C.int
+
+	C.pango_layout_index_to_line_x((*C.PangoLayout)(recv.native), c_index_, c_trailing, &c_line, &c_x_pos)
+
+	line := (*int32)(&c_line)
+
+	xPos := (*int32)(&c_x_pos)
+
+	return line, xPos
+}
 
 // IndexToPos is a wrapper around the C function pango_layout_index_to_pos.
 func (recv *Layout) IndexToPos(index int32) *Rectangle {
@@ -630,7 +674,29 @@ func (recv *Layout) IndexToPos(index int32) *Rectangle {
 	return pos
 }
 
-// Unsupported : pango_layout_move_cursor_visually : unsupported parameter new_index : no type generator for gint, int*
+// MoveCursorVisually is a wrapper around the C function pango_layout_move_cursor_visually.
+func (recv *Layout) MoveCursorVisually(strong bool, oldIndex int32, oldTrailing int32, direction int32) (*int32, *int32) {
+	c_strong :=
+		boolToGboolean(strong)
+
+	c_old_index := (C.int)(oldIndex)
+
+	c_old_trailing := (C.int)(oldTrailing)
+
+	c_direction := (C.int)(direction)
+
+	var c_new_index C.int
+
+	var c_new_trailing C.int
+
+	C.pango_layout_move_cursor_visually((*C.PangoLayout)(recv.native), c_strong, c_old_index, c_old_trailing, c_direction, &c_new_index, &c_new_trailing)
+
+	newIndex := (*int32)(&c_new_index)
+
+	newTrailing := (*int32)(&c_new_trailing)
+
+	return newIndex, newTrailing
+}
 
 // SetAlignment is a wrapper around the C function pango_layout_set_alignment.
 func (recv *Layout) SetAlignment(alignment Alignment) {
@@ -690,7 +756,23 @@ func (recv *Layout) SetMarkup(markup string, length int32) {
 	return
 }
 
-// Unsupported : pango_layout_set_markup_with_accel : unsupported parameter accel_char : no type generator for gunichar, gunichar*
+// SetMarkupWithAccel is a wrapper around the C function pango_layout_set_markup_with_accel.
+func (recv *Layout) SetMarkupWithAccel(markup string, length int32, accelMarker rune) *rune {
+	c_markup := C.CString(markup)
+	defer C.free(unsafe.Pointer(c_markup))
+
+	c_length := (C.int)(length)
+
+	c_accel_marker := (C.gunichar)(accelMarker)
+
+	var c_accel_char C.gunichar
+
+	C.pango_layout_set_markup_with_accel((*C.PangoLayout)(recv.native), c_markup, c_length, c_accel_marker, &c_accel_char)
+
+	accelChar := (*rune)(&c_accel_char)
+
+	return accelChar
+}
 
 // SetSingleParagraphMode is a wrapper around the C function pango_layout_set_single_paragraph_mode.
 func (recv *Layout) SetSingleParagraphMode(setting bool) {
@@ -750,4 +832,22 @@ func (recv *Layout) SetWrap(wrap WrapMode) {
 	return
 }
 
-// Unsupported : pango_layout_xy_to_index : unsupported parameter index_ : no type generator for gint, int*
+// XyToIndex is a wrapper around the C function pango_layout_xy_to_index.
+func (recv *Layout) XyToIndex(x int32, y int32) (bool, *int32, *int32) {
+	c_x := (C.int)(x)
+
+	c_y := (C.int)(y)
+
+	var c_index_ C.int
+
+	var c_trailing C.int
+
+	retC := C.pango_layout_xy_to_index((*C.PangoLayout)(recv.native), c_x, c_y, &c_index_, &c_trailing)
+	retGo := retC == C.TRUE
+
+	index := (*int32)(&c_index_)
+
+	trailing := (*int32)(&c_trailing)
+
+	return retGo, index, trailing
+}

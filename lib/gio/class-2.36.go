@@ -154,7 +154,28 @@ func (recv *SimpleProxyResolver) SetUriProxy(uriScheme string, proxy string) {
 	return
 }
 
-// Unsupported : g_socket_get_option : unsupported parameter value : no type generator for gint, gint*
+// GetOption is a wrapper around the C function g_socket_get_option.
+func (recv *Socket) GetOption(level int32, optname int32) (bool, *int32, error) {
+	c_level := (C.gint)(level)
+
+	c_optname := (C.gint)(optname)
+
+	var c_value C.gint
+
+	var cThrowableError *C.GError
+
+	retC := C.g_socket_get_option((*C.GSocket)(recv.native), c_level, c_optname, &c_value, &cThrowableError)
+	retGo := retC == C.TRUE
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	value := (*int32)(&c_value)
+
+	return retGo, value, goThrowableError
+}
 
 // SetOption is a wrapper around the C function g_socket_set_option.
 func (recv *Socket) SetOption(level int32, optname int32, value int32) (bool, error) {
@@ -240,7 +261,7 @@ func (recv *Task) GetSourceObject() uintptr {
 // GetSourceTag is a wrapper around the C function g_task_get_source_tag.
 func (recv *Task) GetSourceTag() uintptr {
 	retC := C.g_task_get_source_tag((*C.GTask)(recv.native))
-	retGo := (uintptr)(retC)
+	retGo := (uintptr)(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -248,7 +269,7 @@ func (recv *Task) GetSourceTag() uintptr {
 // GetTaskData is a wrapper around the C function g_task_get_task_data.
 func (recv *Task) GetTaskData() uintptr {
 	retC := C.g_task_get_task_data((*C.GTask)(recv.native))
-	retGo := (uintptr)(retC)
+	retGo := (uintptr)(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -296,7 +317,7 @@ func (recv *Task) PropagatePointer() (uintptr, error) {
 	var cThrowableError *C.GError
 
 	retC := C.g_task_propagate_pointer((*C.GTask)(recv.native), &cThrowableError)
-	retGo := (uintptr)(retC)
+	retGo := (uintptr)(unsafe.Pointer(retC))
 
 	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
 	if cThrowableError != nil {

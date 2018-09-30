@@ -229,9 +229,9 @@ func (recv *RecentInfo) GetAge() int32 {
 	return retGo
 }
 
-// Unsupported : gtk_recent_info_get_application_info : unsupported parameter count : no type generator for guint, guint*
+// Unsupported : gtk_recent_info_get_application_info : unsupported parameter time_ : no type generator for glong, time_t*
 
-// Unsupported : gtk_recent_info_get_applications : unsupported parameter length : no type generator for gsize, gsize*
+// Unsupported : gtk_recent_info_get_applications : no return type
 
 // GetDescription is a wrapper around the C function gtk_recent_info_get_description.
 func (recv *RecentInfo) GetDescription() string {
@@ -249,7 +249,7 @@ func (recv *RecentInfo) GetDisplayName() string {
 	return retGo
 }
 
-// Unsupported : gtk_recent_info_get_groups : unsupported parameter length : no type generator for gsize, gsize*
+// Unsupported : gtk_recent_info_get_groups : no return type
 
 // GetIcon is a wrapper around the C function gtk_recent_info_get_icon.
 func (recv *RecentInfo) GetIcon(size int32) *gdkpixbuf.Pixbuf {

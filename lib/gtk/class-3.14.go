@@ -103,7 +103,21 @@ func (recv *EventController) SetPropagationPhase(phase PropagationPhase) {
 
 // Unsupported : gtk_gesture_get_bounding_box : unsupported parameter rect : Blacklisted record : GdkRectangle
 
-// Unsupported : gtk_gesture_get_bounding_box_center : unsupported parameter x : no type generator for gdouble, gdouble*
+// GetBoundingBoxCenter is a wrapper around the C function gtk_gesture_get_bounding_box_center.
+func (recv *Gesture) GetBoundingBoxCenter() (bool, *float64, *float64) {
+	var c_x C.gdouble
+
+	var c_y C.gdouble
+
+	retC := C.gtk_gesture_get_bounding_box_center((*C.GtkGesture)(recv.native), &c_x, &c_y)
+	retGo := retC == C.TRUE
+
+	x := (*float64)(&c_x)
+
+	y := (*float64)(&c_y)
+
+	return retGo, x, y
+}
 
 // GetDevice is a wrapper around the C function gtk_gesture_get_device.
 func (recv *Gesture) GetDevice() *gdk.Device {
@@ -129,7 +143,23 @@ func (recv *Gesture) GetLastUpdatedSequence() *gdk.EventSequence {
 	return retGo
 }
 
-// Unsupported : gtk_gesture_get_point : unsupported parameter x : no type generator for gdouble, gdouble*
+// GetPoint is a wrapper around the C function gtk_gesture_get_point.
+func (recv *Gesture) GetPoint(sequence *gdk.EventSequence) (bool, *float64, *float64) {
+	c_sequence := (*C.GdkEventSequence)(sequence.ToC())
+
+	var c_x C.gdouble
+
+	var c_y C.gdouble
+
+	retC := C.gtk_gesture_get_point((*C.GtkGesture)(recv.native), c_sequence, &c_x, &c_y)
+	retGo := retC == C.TRUE
+
+	x := (*float64)(&c_x)
+
+	y := (*float64)(&c_y)
+
+	return retGo, x, y
+}
 
 // GetSequenceState is a wrapper around the C function gtk_gesture_get_sequence_state.
 func (recv *Gesture) GetSequenceState(sequence *gdk.EventSequence) EventSequenceState {
@@ -250,9 +280,37 @@ func GestureDragNew(widget *Widget) *Gesture {
 	return retGo
 }
 
-// Unsupported : gtk_gesture_drag_get_offset : unsupported parameter x : no type generator for gdouble, gdouble*
+// GetOffset is a wrapper around the C function gtk_gesture_drag_get_offset.
+func (recv *GestureDrag) GetOffset() (bool, *float64, *float64) {
+	var c_x C.gdouble
 
-// Unsupported : gtk_gesture_drag_get_start_point : unsupported parameter x : no type generator for gdouble, gdouble*
+	var c_y C.gdouble
+
+	retC := C.gtk_gesture_drag_get_offset((*C.GtkGestureDrag)(recv.native), &c_x, &c_y)
+	retGo := retC == C.TRUE
+
+	x := (*float64)(&c_x)
+
+	y := (*float64)(&c_y)
+
+	return retGo, x, y
+}
+
+// GetStartPoint is a wrapper around the C function gtk_gesture_drag_get_start_point.
+func (recv *GestureDrag) GetStartPoint() (bool, *float64, *float64) {
+	var c_x C.gdouble
+
+	var c_y C.gdouble
+
+	retC := C.gtk_gesture_drag_get_start_point((*C.GtkGestureDrag)(recv.native), &c_x, &c_y)
+	retGo := retC == C.TRUE
+
+	x := (*float64)(&c_x)
+
+	y := (*float64)(&c_y)
+
+	return retGo, x, y
+}
 
 // GestureLongPressNew is a wrapper around the C function gtk_gesture_long_press_new.
 func GestureLongPressNew(widget *Widget) *Gesture {
@@ -404,7 +462,21 @@ func GestureSwipeNew(widget *Widget) *Gesture {
 	return retGo
 }
 
-// Unsupported : gtk_gesture_swipe_get_velocity : unsupported parameter velocity_x : no type generator for gdouble, gdouble*
+// GetVelocity is a wrapper around the C function gtk_gesture_swipe_get_velocity.
+func (recv *GestureSwipe) GetVelocity() (bool, *float64, *float64) {
+	var c_velocity_x C.gdouble
+
+	var c_velocity_y C.gdouble
+
+	retC := C.gtk_gesture_swipe_get_velocity((*C.GtkGestureSwipe)(recv.native), &c_velocity_x, &c_velocity_y)
+	retGo := retC == C.TRUE
+
+	velocityX := (*float64)(&c_velocity_x)
+
+	velocityY := (*float64)(&c_velocity_y)
+
+	return retGo, velocityX, velocityY
+}
 
 // GestureZoomNew is a wrapper around the C function gtk_gesture_zoom_new.
 func GestureZoomNew(widget *Widget) *Gesture {

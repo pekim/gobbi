@@ -30,7 +30,21 @@ func CursorNewFromSurface(display *Display, surface *cairo.Surface, x float64, y
 	return retGo
 }
 
-// Unsupported : gdk_cursor_get_surface : unsupported parameter x_hot : no type generator for gdouble, gdouble*
+// GetSurface is a wrapper around the C function gdk_cursor_get_surface.
+func (recv *Cursor) GetSurface() (*cairo.Surface, *float64, *float64) {
+	var c_x_hot C.gdouble
+
+	var c_y_hot C.gdouble
+
+	retC := C.gdk_cursor_get_surface((*C.GdkCursor)(recv.native), &c_x_hot, &c_y_hot)
+	retGo := cairo.SurfaceNewFromC(unsafe.Pointer(retC))
+
+	xHot := (*float64)(&c_x_hot)
+
+	yHot := (*float64)(&c_y_hot)
+
+	return retGo, xHot, yHot
+}
 
 // Unsupported : gdk_device_get_position_double : unsupported parameter screen : record with indirection level of 2
 
@@ -56,7 +70,7 @@ func (recv *Window) GetChildrenWithUserData(userData uintptr) *glib.List {
 	return retGo
 }
 
-// Unsupported : gdk_window_get_device_position_double : unsupported parameter x : no type generator for gdouble, gdouble*
+// Unsupported : gdk_window_get_device_position_double : unsupported parameter mask : GdkModifierType* with indirection level of 1
 
 // GetScaleFactor is a wrapper around the C function gdk_window_get_scale_factor.
 func (recv *Window) GetScaleFactor() int32 {

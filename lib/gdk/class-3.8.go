@@ -56,7 +56,22 @@ func (recv *FrameClock) GetHistoryStart() int64 {
 	return retGo
 }
 
-// Unsupported : gdk_frame_clock_get_refresh_info : unsupported parameter refresh_interval_return : no type generator for gint64, gint64*
+// GetRefreshInfo is a wrapper around the C function gdk_frame_clock_get_refresh_info.
+func (recv *FrameClock) GetRefreshInfo(baseTime int64) (*int64, *int64) {
+	c_base_time := (C.gint64)(baseTime)
+
+	var c_refresh_interval_return C.gint64
+
+	var c_presentation_time_return C.gint64
+
+	C.gdk_frame_clock_get_refresh_info((*C.GdkFrameClock)(recv.native), c_base_time, &c_refresh_interval_return, &c_presentation_time_return)
+
+	refreshIntervalReturn := (*int64)(&c_refresh_interval_return)
+
+	presentationTimeReturn := (*int64)(&c_presentation_time_return)
+
+	return refreshIntervalReturn, presentationTimeReturn
+}
 
 // GetTimings is a wrapper around the C function gdk_frame_clock_get_timings.
 func (recv *FrameClock) GetTimings(frameCounter int64) *FrameTimings {

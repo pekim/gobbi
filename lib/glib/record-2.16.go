@@ -66,7 +66,16 @@ func (recv *Checksum) Free() {
 	return
 }
 
-// Unsupported : g_checksum_get_digest : unsupported parameter buffer : no type generator for guint8, guint8*
+// GetDigest is a wrapper around the C function g_checksum_get_digest.
+func (recv *Checksum) GetDigest(buffer uint8, digestLen uint64) {
+	c_buffer := (C.guint8)(buffer)
+
+	c_digest_len := (C.gsize)(digestLen)
+
+	C.g_checksum_get_digest((*C.GChecksum)(recv.native), &c_buffer, &c_digest_len)
+
+	return
+}
 
 // GetString is a wrapper around the C function g_checksum_get_string.
 func (recv *Checksum) GetString() string {
@@ -99,7 +108,21 @@ func (recv *HashTableIter) Init(hashTable *HashTable) {
 	return
 }
 
-// Unsupported : g_hash_table_iter_next : unsupported parameter key : no type generator for gpointer, gpointer*
+// Next is a wrapper around the C function g_hash_table_iter_next.
+func (recv *HashTableIter) Next() (bool, *uintptr, *uintptr) {
+	var c_key C.gpointer
+
+	var c_value C.gpointer
+
+	retC := C.g_hash_table_iter_next((*C.GHashTableIter)(recv.native), &c_key, &c_value)
+	retGo := retC == C.TRUE
+
+	key := (*uintptr)(unsafe.Pointer(&c_key))
+
+	value := (*uintptr)(unsafe.Pointer(&c_value))
+
+	return retGo, key, value
+}
 
 // Remove is a wrapper around the C function g_hash_table_iter_remove.
 func (recv *HashTableIter) Remove() {

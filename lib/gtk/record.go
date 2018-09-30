@@ -3164,7 +3164,7 @@ func (recv *ContainerClass) InstallChildProperty(propertyId uint32, pspec *gobje
 	return
 }
 
-// Unsupported : gtk_container_class_list_child_properties : unsupported parameter n_properties : no type generator for guint, guint*
+// Unsupported : gtk_container_class_list_child_properties : no return type
 
 // ContainerPrivate is a wrapper around the C record GtkContainerPrivate.
 type ContainerPrivate struct {
@@ -13073,7 +13073,13 @@ func (recv *TreePath) GetDepth() int32 {
 	return retGo
 }
 
-// Unsupported : gtk_tree_path_get_indices : no return generator
+// GetIndices is a wrapper around the C function gtk_tree_path_get_indices.
+func (recv *TreePath) GetIndices() *int32 {
+	retC := C.gtk_tree_path_get_indices((*C.GtkTreePath)(recv.native))
+	retGo := (*int32)(&retC)
+
+	return retGo
+}
 
 // IsAncestor is a wrapper around the C function gtk_tree_path_is_ancestor.
 func (recv *TreePath) IsAncestor(descendant *TreePath) bool {

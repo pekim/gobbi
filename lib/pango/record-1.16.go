@@ -36,7 +36,16 @@ func (recv *FontDescription) SetGravity(gravity Gravity) {
 	return
 }
 
-// Unsupported : pango_matrix_transform_distance : unsupported parameter dx : no type generator for gdouble, double*
+// TransformDistance is a wrapper around the C function pango_matrix_transform_distance.
+func (recv *Matrix) TransformDistance(dx float64, dy float64) {
+	c_dx := (C.double)(dx)
+
+	c_dy := (C.double)(dy)
+
+	C.pango_matrix_transform_distance((*C.PangoMatrix)(recv.native), &c_dx, &c_dy)
+
+	return
+}
 
 // TransformPixelRectangle is a wrapper around the C function pango_matrix_transform_pixel_rectangle.
 func (recv *Matrix) TransformPixelRectangle(rect *Rectangle) {
@@ -47,7 +56,16 @@ func (recv *Matrix) TransformPixelRectangle(rect *Rectangle) {
 	return
 }
 
-// Unsupported : pango_matrix_transform_point : unsupported parameter x : no type generator for gdouble, double*
+// TransformPoint is a wrapper around the C function pango_matrix_transform_point.
+func (recv *Matrix) TransformPoint(x float64, y float64) {
+	c_x := (C.double)(x)
+
+	c_y := (C.double)(y)
+
+	C.pango_matrix_transform_point((*C.PangoMatrix)(recv.native), &c_x, &c_y)
+
+	return
+}
 
 // TransformRectangle is a wrapper around the C function pango_matrix_transform_rectangle.
 func (recv *Matrix) TransformRectangle(rect *Rectangle) {

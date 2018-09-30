@@ -10,9 +10,8 @@ type Type struct {
 	Name  string `xml:"name,attr"`
 	CType string `xml:"http://www.gtk.org/introspection/c/1.0 type,attr"`
 
-	generator TypeGenerator
-	qname     *QName
-	//goType        string
+	generator     TypeGenerator
+	qname         *QName
 	cTypeName     string // the C type, such as "gchar"
 	indirectLevel int    // the level of pointer indirection
 }
@@ -38,13 +37,13 @@ func (t *Type) qnameAndGenerator(targetType *Type) (*QName, TypeGenerator) {
 		return QNameNew(t.Namespace, "bool"), TypeGeneratorBooleanNew(targetType)
 	}
 
-	goType, isInteger := integerCTypeMap[t.CType]
-	if isInteger {
-		return QNameNew(t.Namespace, goType), TypeGeneratorIntegerNew(targetType)
-	}
-
 	if t.Name == "utf8" || t.Name == "filename" {
 		return QNameNew(t.Namespace, "string"), TypeGeneratorStringNew(targetType)
+	}
+
+	goType, isInteger := integerCTypeMap[t.cTypeName]
+	if isInteger {
+		return QNameNew(t.Namespace, goType), TypeGeneratorIntegerNew(targetType)
 	}
 
 	qname := QNameNew(t.Namespace, t.Name)
@@ -53,6 +52,7 @@ func (t *Type) qnameAndGenerator(targetType *Type) (*QName, TypeGenerator) {
 	if found {
 		// Use a generator for the alias' Type rather than
 		// this Type.
+		alias.Type.init(t.Namespace)
 		_, typeGenerator := alias.Type.qnameAndGenerator(t)
 		return qname, typeGenerator
 	}

@@ -17,11 +17,7 @@ import "C"
 
 // Unsupported : pango_find_map : return type : Blacklisted record : PangoMap
 
-// Unsupported : pango_find_paragraph_boundary : unsupported parameter paragraph_delimiter_index : no type generator for gint, gint*
-
 // Unsupported : pango_get_log_attrs : unsupported parameter log_attrs : no param type
-
-// Unsupported : pango_get_mirror_char : unsupported parameter mirrored_ch : no type generator for gunichar, gunichar*
 
 // Unsupported : pango_log2vis_get_embedding_levels : unsupported parameter pbase_dir : PangoDirection* with indirection level of 1
 
@@ -52,8 +48,6 @@ func MarkupParserNew(accelMarker rune) *glib.MarkupParseContext {
 // Unsupported : pango_parse_variant : unsupported parameter variant : PangoVariant* with indirection level of 1
 
 // Unsupported : pango_parse_weight : unsupported parameter weight : PangoWeight* with indirection level of 1
-
-// Unsupported : pango_quantize_line_geometry : unsupported parameter thickness : no type generator for gint, int*
 
 // Unsupported : pango_read_line : unsupported parameter stream : no type generator for gpointer, FILE*
 

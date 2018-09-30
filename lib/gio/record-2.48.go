@@ -129,7 +129,7 @@ type InputMessage struct {
 	BytesReceived uint64
 	Flags         int32
 	// no type for control_messages
-	// num_control_messages : no type generator for guint, guint*
+	NumControlMessages uint32
 }
 
 func InputMessageNewFromC(u unsafe.Pointer) *InputMessage {
@@ -139,10 +139,11 @@ func InputMessageNewFromC(u unsafe.Pointer) *InputMessage {
 	}
 
 	g := &InputMessage{
-		BytesReceived: (uint64)(c.bytes_received),
-		Flags:         (int32)(c.flags),
-		NumVectors:    (uint32)(c.num_vectors),
-		native:        c,
+		BytesReceived:      (uint64)(c.bytes_received),
+		Flags:              (int32)(c.flags),
+		NumControlMessages: (*uint32)(&c.num_control_messages),
+		NumVectors:         (uint32)(c.num_vectors),
+		native:             c,
 	}
 
 	return g
@@ -155,6 +156,8 @@ func (recv *InputMessage) ToC() unsafe.Pointer {
 		(C.gsize)(recv.BytesReceived)
 	recv.native.flags =
 		(C.gint)(recv.Flags)
+	recv.native.num_control_messages =
+		(C.guint)(recv.NumControlMessages)
 
 	return (unsafe.Pointer)(recv.native)
 }

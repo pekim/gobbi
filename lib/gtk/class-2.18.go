@@ -19,9 +19,35 @@ import "C"
 
 // Unsupported : gtk_button_new_from_icon_name : unsupported parameter size : no type generator for gint, GtkIconSize
 
-// Unsupported : gtk_cell_renderer_get_alignment : unsupported parameter xalign : no type generator for gfloat, gfloat*
+// GetAlignment is a wrapper around the C function gtk_cell_renderer_get_alignment.
+func (recv *CellRenderer) GetAlignment() (*float32, *float32) {
+	var c_xalign C.gfloat
 
-// Unsupported : gtk_cell_renderer_get_padding : unsupported parameter xpad : no type generator for gint, gint*
+	var c_yalign C.gfloat
+
+	C.gtk_cell_renderer_get_alignment((*C.GtkCellRenderer)(recv.native), &c_xalign, &c_yalign)
+
+	xalign := (*float32)(&c_xalign)
+
+	yalign := (*float32)(&c_yalign)
+
+	return xalign, yalign
+}
+
+// GetPadding is a wrapper around the C function gtk_cell_renderer_get_padding.
+func (recv *CellRenderer) GetPadding() (*int32, *int32) {
+	var c_xpad C.gint
+
+	var c_ypad C.gint
+
+	C.gtk_cell_renderer_get_padding((*C.GtkCellRenderer)(recv.native), &c_xpad, &c_ypad)
+
+	xpad := (*int32)(&c_xpad)
+
+	ypad := (*int32)(&c_ypad)
+
+	return xpad, ypad
+}
 
 // GetSensitive is a wrapper around the C function gtk_cell_renderer_get_sensitive.
 func (recv *CellRenderer) GetSensitive() bool {

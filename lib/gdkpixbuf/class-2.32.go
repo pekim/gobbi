@@ -60,7 +60,13 @@ func (recv *Pixbuf) ReadPixelBytes() *glib.Bytes {
 	return retGo
 }
 
-// Unsupported : gdk_pixbuf_read_pixels : no return generator
+// ReadPixels is a wrapper around the C function gdk_pixbuf_read_pixels.
+func (recv *Pixbuf) ReadPixels() *uint8 {
+	retC := C.gdk_pixbuf_read_pixels((*C.GdkPixbuf)(recv.native))
+	retGo := (*uint8)(&retC)
+
+	return retGo
+}
 
 // Unsupported : gdk_pixbuf_animation_new_from_stream_finish : unsupported parameter async_result : no type generator for Gio.AsyncResult, GAsyncResult*
 

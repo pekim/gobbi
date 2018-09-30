@@ -52,7 +52,20 @@ func (recv *Display) GetDefaultGroup() *Window {
 	return retGo
 }
 
-// Unsupported : gdk_display_get_maximal_cursor_size : unsupported parameter width : no type generator for guint, guint*
+// GetMaximalCursorSize is a wrapper around the C function gdk_display_get_maximal_cursor_size.
+func (recv *Display) GetMaximalCursorSize() (*uint32, *uint32) {
+	var c_width C.guint
+
+	var c_height C.guint
+
+	C.gdk_display_get_maximal_cursor_size((*C.GdkDisplay)(recv.native), &c_width, &c_height)
+
+	width := (*uint32)(&c_width)
+
+	height := (*uint32)(&c_height)
+
+	return width, height
+}
 
 // SetDoubleClickDistance is a wrapper around the C function gdk_display_set_double_click_distance.
 func (recv *Display) SetDoubleClickDistance(distance uint32) {

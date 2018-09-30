@@ -62,7 +62,16 @@ func (recv *Hmac) Copy() *Hmac {
 	return retGo
 }
 
-// Unsupported : g_hmac_get_digest : unsupported parameter buffer : no type generator for guint8, guint8*
+// GetDigest is a wrapper around the C function g_hmac_get_digest.
+func (recv *Hmac) GetDigest(buffer uint8, digestLen uint64) {
+	c_buffer := (C.guint8)(buffer)
+
+	c_digest_len := (C.gsize)(digestLen)
+
+	C.g_hmac_get_digest((*C.GHmac)(recv.native), &c_buffer, &c_digest_len)
+
+	return
+}
 
 // GetString is a wrapper around the C function g_hmac_get_string.
 func (recv *Hmac) GetString() string {

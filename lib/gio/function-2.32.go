@@ -65,7 +65,7 @@ import "C"
 
 // Unsupported : g_dbus_annotation_info_lookup : unsupported parameter annotations : no param type
 
-// Unsupported : g_dbus_error_register_error_domain : unsupported parameter quark_volatile : no type generator for gsize, volatile gsize*
+// Unsupported : g_dbus_error_register_error_domain : unsupported parameter entries : no param type
 
 // Unsupported : g_dbus_gvalue_to_gvariant : unsupported parameter type : Blacklisted record : GVariantType
 
@@ -137,7 +137,33 @@ func ResourceLoad(filename string) (*Resource, error) {
 
 // Unsupported : g_resources_enumerate_children : no return type
 
-// Unsupported : g_resources_get_info : unsupported parameter size : no type generator for gsize, gsize*
+// ResourcesGetInfo is a wrapper around the C function g_resources_get_info.
+func ResourcesGetInfo(path string, lookupFlags ResourceLookupFlags) (bool, *uint64, *uint32, error) {
+	c_path := C.CString(path)
+	defer C.free(unsafe.Pointer(c_path))
+
+	c_lookup_flags := (C.GResourceLookupFlags)(lookupFlags)
+
+	var c_size C.gsize
+
+	var c_flags C.guint32
+
+	var cThrowableError *C.GError
+
+	retC := C.g_resources_get_info(c_path, c_lookup_flags, &c_size, &c_flags, &cThrowableError)
+	retGo := retC == C.TRUE
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	size := (*uint64)(&c_size)
+
+	flags := (*uint32)(&c_flags)
+
+	return retGo, size, flags, goThrowableError
+}
 
 // ResourcesLookupData is a wrapper around the C function g_resources_lookup_data.
 func ResourcesLookupData(path string, lookupFlags ResourceLookupFlags) (*glib.Bytes, error) {
@@ -219,14 +245,6 @@ func SettingsSchemaSourceGetDefault() *SettingsSchemaSource {
 
 // Unsupported : g_tls_server_connection_new : no return generator
 
-// Unsupported : g_unix_mount_at : unsupported parameter time_read : no type generator for guint64, guint64*
-
-// Unsupported : g_unix_mount_for : unsupported parameter time_read : no type generator for guint64, guint64*
-
 // Unsupported : g_unix_mount_guess_icon : no return generator
 
 // Unsupported : g_unix_mount_guess_symbolic_icon : no return generator
-
-// Unsupported : g_unix_mount_points_get : unsupported parameter time_read : no type generator for guint64, guint64*
-
-// Unsupported : g_unix_mounts_get : unsupported parameter time_read : no type generator for guint64, guint64*

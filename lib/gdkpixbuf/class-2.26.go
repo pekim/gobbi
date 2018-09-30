@@ -72,7 +72,7 @@ func (recv *Pixbuf) GetByteLength() uint64 {
 	return retGo
 }
 
-// Unsupported : gdk_pixbuf_get_pixels_with_length : unsupported parameter length : no type generator for guint, guint*
+// Unsupported : gdk_pixbuf_get_pixels_with_length : no return type
 
 // Unsupported : gdk_pixbuf_animation_new_from_stream_finish : unsupported parameter async_result : no type generator for Gio.AsyncResult, GAsyncResult*
 

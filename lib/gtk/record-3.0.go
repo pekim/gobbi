@@ -39,7 +39,7 @@ func (recv *CellAreaClass) InstallCellProperty(propertyId uint32, pspec *gobject
 	return
 }
 
-// Unsupported : gtk_cell_area_class_list_cell_properties : unsupported parameter n_properties : no type generator for guint, guint*
+// Unsupported : gtk_cell_area_class_list_cell_properties : no return type
 
 // GradientNewLinear is a wrapper around the C function gtk_gradient_new_linear.
 func GradientNewLinear(x0 float64, y0 float64, x1 float64, y1 float64) *Gradient {
@@ -117,7 +117,7 @@ func RequisitionNew() *Requisition {
 	return retGo
 }
 
-// Unsupported : gtk_selection_data_get_data_with_length : unsupported parameter length : no type generator for gint, gint*
+// Unsupported : gtk_selection_data_get_data_with_length : no return type
 
 // SymbolicColorNewAlpha is a wrapper around the C function gtk_symbolic_color_new_alpha.
 func SymbolicColorNewAlpha(color *SymbolicColor, factor float64) *SymbolicColor {
@@ -213,7 +213,7 @@ func (recv *SymbolicColor) Unref() {
 
 // Unsupported : gtk_tree_path_new_from_indicesv : unsupported parameter indices : no param type
 
-// Unsupported : gtk_tree_path_get_indices_with_depth : unsupported parameter depth : no type generator for gint, gint*
+// Unsupported : gtk_tree_path_get_indices_with_depth : no return type
 
 // Unsupported : gtk_tree_row_reference_new : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
 

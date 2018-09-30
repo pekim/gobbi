@@ -237,7 +237,24 @@ func (recv *IconTheme) ListContexts() *glib.List {
 
 // Unsupported : gtk_icon_view_new_with_model : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
 
-// Unsupported : gtk_icon_view_convert_widget_to_bin_window_coords : unsupported parameter bx : no type generator for gint, gint*
+// ConvertWidgetToBinWindowCoords is a wrapper around the C function gtk_icon_view_convert_widget_to_bin_window_coords.
+func (recv *IconView) ConvertWidgetToBinWindowCoords(wx int32, wy int32) (*int32, *int32) {
+	c_wx := (C.gint)(wx)
+
+	c_wy := (C.gint)(wy)
+
+	var c_bx C.gint
+
+	var c_by C.gint
+
+	C.gtk_icon_view_convert_widget_to_bin_window_coords((*C.GtkIconView)(recv.native), c_wx, c_wy, &c_bx, &c_by)
+
+	bx := (*int32)(&c_bx)
+
+	by := (*int32)(&c_by)
+
+	return bx, by
+}
 
 // GetTooltipColumn is a wrapper around the C function gtk_icon_view_get_tooltip_column.
 func (recv *IconView) GetTooltipColumn() int32 {
@@ -247,7 +264,7 @@ func (recv *IconView) GetTooltipColumn() int32 {
 	return retGo
 }
 
-// Unsupported : gtk_icon_view_get_tooltip_context : unsupported parameter x : no type generator for gint, gint*
+// Unsupported : gtk_icon_view_get_tooltip_context : unsupported parameter model : no type generator for TreeModel, GtkTreeModel**
 
 // SetTooltipCell is a wrapper around the C function gtk_icon_view_set_tooltip_cell.
 func (recv *IconView) SetTooltipCell(tooltip *Tooltip, path *TreePath, cell *CellRenderer) {
@@ -733,17 +750,119 @@ func (recv *Tooltip) SetText(text string) {
 
 // Unsupported : gtk_tree_view_new_with_model : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
 
-// Unsupported : gtk_tree_view_convert_bin_window_to_tree_coords : unsupported parameter tx : no type generator for gint, gint*
+// ConvertBinWindowToTreeCoords is a wrapper around the C function gtk_tree_view_convert_bin_window_to_tree_coords.
+func (recv *TreeView) ConvertBinWindowToTreeCoords(bx int32, by int32) (*int32, *int32) {
+	c_bx := (C.gint)(bx)
 
-// Unsupported : gtk_tree_view_convert_bin_window_to_widget_coords : unsupported parameter wx : no type generator for gint, gint*
+	c_by := (C.gint)(by)
 
-// Unsupported : gtk_tree_view_convert_tree_to_bin_window_coords : unsupported parameter bx : no type generator for gint, gint*
+	var c_tx C.gint
 
-// Unsupported : gtk_tree_view_convert_tree_to_widget_coords : unsupported parameter wx : no type generator for gint, gint*
+	var c_ty C.gint
 
-// Unsupported : gtk_tree_view_convert_widget_to_bin_window_coords : unsupported parameter bx : no type generator for gint, gint*
+	C.gtk_tree_view_convert_bin_window_to_tree_coords((*C.GtkTreeView)(recv.native), c_bx, c_by, &c_tx, &c_ty)
 
-// Unsupported : gtk_tree_view_convert_widget_to_tree_coords : unsupported parameter tx : no type generator for gint, gint*
+	tx := (*int32)(&c_tx)
+
+	ty := (*int32)(&c_ty)
+
+	return tx, ty
+}
+
+// ConvertBinWindowToWidgetCoords is a wrapper around the C function gtk_tree_view_convert_bin_window_to_widget_coords.
+func (recv *TreeView) ConvertBinWindowToWidgetCoords(bx int32, by int32) (*int32, *int32) {
+	c_bx := (C.gint)(bx)
+
+	c_by := (C.gint)(by)
+
+	var c_wx C.gint
+
+	var c_wy C.gint
+
+	C.gtk_tree_view_convert_bin_window_to_widget_coords((*C.GtkTreeView)(recv.native), c_bx, c_by, &c_wx, &c_wy)
+
+	wx := (*int32)(&c_wx)
+
+	wy := (*int32)(&c_wy)
+
+	return wx, wy
+}
+
+// ConvertTreeToBinWindowCoords is a wrapper around the C function gtk_tree_view_convert_tree_to_bin_window_coords.
+func (recv *TreeView) ConvertTreeToBinWindowCoords(tx int32, ty int32) (*int32, *int32) {
+	c_tx := (C.gint)(tx)
+
+	c_ty := (C.gint)(ty)
+
+	var c_bx C.gint
+
+	var c_by C.gint
+
+	C.gtk_tree_view_convert_tree_to_bin_window_coords((*C.GtkTreeView)(recv.native), c_tx, c_ty, &c_bx, &c_by)
+
+	bx := (*int32)(&c_bx)
+
+	by := (*int32)(&c_by)
+
+	return bx, by
+}
+
+// ConvertTreeToWidgetCoords is a wrapper around the C function gtk_tree_view_convert_tree_to_widget_coords.
+func (recv *TreeView) ConvertTreeToWidgetCoords(tx int32, ty int32) (*int32, *int32) {
+	c_tx := (C.gint)(tx)
+
+	c_ty := (C.gint)(ty)
+
+	var c_wx C.gint
+
+	var c_wy C.gint
+
+	C.gtk_tree_view_convert_tree_to_widget_coords((*C.GtkTreeView)(recv.native), c_tx, c_ty, &c_wx, &c_wy)
+
+	wx := (*int32)(&c_wx)
+
+	wy := (*int32)(&c_wy)
+
+	return wx, wy
+}
+
+// ConvertWidgetToBinWindowCoords is a wrapper around the C function gtk_tree_view_convert_widget_to_bin_window_coords.
+func (recv *TreeView) ConvertWidgetToBinWindowCoords(wx int32, wy int32) (*int32, *int32) {
+	c_wx := (C.gint)(wx)
+
+	c_wy := (C.gint)(wy)
+
+	var c_bx C.gint
+
+	var c_by C.gint
+
+	C.gtk_tree_view_convert_widget_to_bin_window_coords((*C.GtkTreeView)(recv.native), c_wx, c_wy, &c_bx, &c_by)
+
+	bx := (*int32)(&c_bx)
+
+	by := (*int32)(&c_by)
+
+	return bx, by
+}
+
+// ConvertWidgetToTreeCoords is a wrapper around the C function gtk_tree_view_convert_widget_to_tree_coords.
+func (recv *TreeView) ConvertWidgetToTreeCoords(wx int32, wy int32) (*int32, *int32) {
+	c_wx := (C.gint)(wx)
+
+	c_wy := (C.gint)(wy)
+
+	var c_tx C.gint
+
+	var c_ty C.gint
+
+	C.gtk_tree_view_convert_widget_to_tree_coords((*C.GtkTreeView)(recv.native), c_wx, c_wy, &c_tx, &c_ty)
+
+	tx := (*int32)(&c_tx)
+
+	ty := (*int32)(&c_ty)
+
+	return tx, ty
+}
 
 // GetLevelIndentation is a wrapper around the C function gtk_tree_view_get_level_indentation.
 func (recv *TreeView) GetLevelIndentation() int32 {
@@ -769,7 +888,7 @@ func (recv *TreeView) GetTooltipColumn() int32 {
 	return retGo
 }
 
-// Unsupported : gtk_tree_view_get_tooltip_context : unsupported parameter x : no type generator for gint, gint*
+// Unsupported : gtk_tree_view_get_tooltip_context : unsupported parameter model : no type generator for TreeModel, GtkTreeModel**
 
 // IsRubberBandingActive is a wrapper around the C function gtk_tree_view_is_rubber_banding_active.
 func (recv *TreeView) IsRubberBandingActive() bool {

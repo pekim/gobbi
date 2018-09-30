@@ -148,7 +148,7 @@ func (recv *AccelGroup) Lock() {
 	return
 }
 
-// Unsupported : gtk_accel_group_query : unsupported parameter n_entries : no type generator for guint, guint*
+// Unsupported : gtk_accel_group_query : no return type
 
 // Unlock is a wrapper around the C function gtk_accel_group_unlock.
 func (recv *AccelGroup) Unlock() {
@@ -932,7 +932,7 @@ func (recv *Box) PackStart(child *Widget, expand bool, fill bool, padding uint32
 	return
 }
 
-// Unsupported : gtk_box_query_child_packing : unsupported parameter padding : no type generator for guint, guint*
+// Unsupported : gtk_box_query_child_packing : unsupported parameter pack_type : GtkPackType* with indirection level of 1
 
 // ReorderChild is a wrapper around the C function gtk_box_reorder_child.
 func (recv *Box) ReorderChild(child *Widget, position int32) {
@@ -1293,7 +1293,24 @@ func (recv *Calendar) ClearMarks() {
 	return
 }
 
-// Unsupported : gtk_calendar_get_date : unsupported parameter year : no type generator for guint, guint*
+// GetDate is a wrapper around the C function gtk_calendar_get_date.
+func (recv *Calendar) GetDate() (*uint32, *uint32, *uint32) {
+	var c_year C.guint
+
+	var c_month C.guint
+
+	var c_day C.guint
+
+	C.gtk_calendar_get_date((*C.GtkCalendar)(recv.native), &c_year, &c_month, &c_day)
+
+	year := (*uint32)(&c_year)
+
+	month := (*uint32)(&c_month)
+
+	day := (*uint32)(&c_day)
+
+	return year, month, day
+}
 
 // MarkDay is a wrapper around the C function gtk_calendar_mark_day.
 func (recv *Calendar) MarkDay(day uint32) {
@@ -1468,7 +1485,20 @@ func (recv *CellRenderer) ToC() unsafe.Pointer {
 
 // Unsupported : gtk_cell_renderer_activate : unsupported parameter event : no type generator for Gdk.Event, GdkEvent*
 
-// Unsupported : gtk_cell_renderer_get_fixed_size : unsupported parameter width : no type generator for gint, gint*
+// GetFixedSize is a wrapper around the C function gtk_cell_renderer_get_fixed_size.
+func (recv *CellRenderer) GetFixedSize() (*int32, *int32) {
+	var c_width C.gint
+
+	var c_height C.gint
+
+	C.gtk_cell_renderer_get_fixed_size((*C.GtkCellRenderer)(recv.native), &c_width, &c_height)
+
+	width := (*int32)(&c_width)
+
+	height := (*int32)(&c_height)
+
+	return width, height
+}
 
 // Unsupported : gtk_cell_renderer_get_size : unsupported parameter cell_area : Blacklisted record : GdkRectangle
 
@@ -2919,7 +2949,20 @@ func (recv *Entry) GetLayout() *pango.Layout {
 	return retGo
 }
 
-// Unsupported : gtk_entry_get_layout_offsets : unsupported parameter x : no type generator for gint, gint*
+// GetLayoutOffsets is a wrapper around the C function gtk_entry_get_layout_offsets.
+func (recv *Entry) GetLayoutOffsets() (*int32, *int32) {
+	var c_x C.gint
+
+	var c_y C.gint
+
+	C.gtk_entry_get_layout_offsets((*C.GtkEntry)(recv.native), &c_x, &c_y)
+
+	x := (*int32)(&c_x)
+
+	y := (*int32)(&c_y)
+
+	return x, y
+}
 
 // GetMaxLength is a wrapper around the C function gtk_entry_get_max_length.
 func (recv *Entry) GetMaxLength() int32 {
@@ -3701,7 +3744,20 @@ func (recv *Frame) GetLabel() string {
 	return retGo
 }
 
-// Unsupported : gtk_frame_get_label_align : unsupported parameter xalign : no type generator for gfloat, gfloat*
+// GetLabelAlign is a wrapper around the C function gtk_frame_get_label_align.
+func (recv *Frame) GetLabelAlign() (*float32, *float32) {
+	var c_xalign C.gfloat
+
+	var c_yalign C.gfloat
+
+	C.gtk_frame_get_label_align((*C.GtkFrame)(recv.native), &c_xalign, &c_yalign)
+
+	xalign := (*float32)(&c_xalign)
+
+	yalign := (*float32)(&c_yalign)
+
+	return xalign, yalign
+}
 
 // GetLabelWidget is a wrapper around the C function gtk_frame_get_label_widget.
 func (recv *Frame) GetLabelWidget() *Widget {
@@ -4497,7 +4553,22 @@ func (recv *IMContext) FocusOut() {
 
 // Unsupported : gtk_im_context_get_preedit_string : unsupported parameter attrs : record with indirection level of 2
 
-// Unsupported : gtk_im_context_get_surrounding : unsupported parameter cursor_index : no type generator for gint, gint*
+// GetSurrounding is a wrapper around the C function gtk_im_context_get_surrounding.
+func (recv *IMContext) GetSurrounding() (bool, string, *int32) {
+	var c_text *C.gchar
+
+	var c_cursor_index C.gint
+
+	retC := C.gtk_im_context_get_surrounding((*C.GtkIMContext)(recv.native), &c_text, &c_cursor_index)
+	retGo := retC == C.TRUE
+
+	text := C.GoString(c_text)
+	defer C.free(unsafe.Pointer(c_text))
+
+	cursorIndex := (*int32)(&c_cursor_index)
+
+	return retGo, text, cursorIndex
+}
 
 // Reset is a wrapper around the C function gtk_im_context_reset.
 func (recv *IMContext) Reset() {
@@ -5178,7 +5249,20 @@ func (recv *Label) GetLayout() *pango.Layout {
 	return retGo
 }
 
-// Unsupported : gtk_label_get_layout_offsets : unsupported parameter x : no type generator for gint, gint*
+// GetLayoutOffsets is a wrapper around the C function gtk_label_get_layout_offsets.
+func (recv *Label) GetLayoutOffsets() (*int32, *int32) {
+	var c_x C.gint
+
+	var c_y C.gint
+
+	C.gtk_label_get_layout_offsets((*C.GtkLabel)(recv.native), &c_x, &c_y)
+
+	x := (*int32)(&c_x)
+
+	y := (*int32)(&c_y)
+
+	return x, y
+}
 
 // GetLineWrap is a wrapper around the C function gtk_label_get_line_wrap.
 func (recv *Label) GetLineWrap() bool {
@@ -5212,7 +5296,21 @@ func (recv *Label) GetSelectable() bool {
 	return retGo
 }
 
-// Unsupported : gtk_label_get_selection_bounds : unsupported parameter start : no type generator for gint, gint*
+// GetSelectionBounds is a wrapper around the C function gtk_label_get_selection_bounds.
+func (recv *Label) GetSelectionBounds() (bool, *int32, *int32) {
+	var c_start C.gint
+
+	var c_end C.gint
+
+	retC := C.gtk_label_get_selection_bounds((*C.GtkLabel)(recv.native), &c_start, &c_end)
+	retGo := retC == C.TRUE
+
+	start := (*int32)(&c_start)
+
+	end := (*int32)(&c_end)
+
+	return retGo, start, end
+}
 
 // GetText is a wrapper around the C function gtk_label_get_text.
 func (recv *Label) GetText() string {
@@ -5442,7 +5540,20 @@ func (recv *Layout) GetHadjustment() *Adjustment {
 	return retGo
 }
 
-// Unsupported : gtk_layout_get_size : unsupported parameter width : no type generator for guint, guint*
+// GetSize is a wrapper around the C function gtk_layout_get_size.
+func (recv *Layout) GetSize() (*uint32, *uint32) {
+	var c_width C.guint
+
+	var c_height C.guint
+
+	C.gtk_layout_get_size((*C.GtkLayout)(recv.native), &c_width, &c_height)
+
+	width := (*uint32)(&c_width)
+
+	height := (*uint32)(&c_height)
+
+	return width, height
+}
 
 // GetVadjustment is a wrapper around the C function gtk_layout_get_vadjustment.
 func (recv *Layout) GetVadjustment() *Adjustment {
@@ -6241,7 +6352,14 @@ func (recv *MenuItem) ToggleSizeAllocate(allocation int32) {
 	return
 }
 
-// Unsupported : gtk_menu_item_toggle_size_request : unsupported parameter requisition : no type generator for gint, gint*
+// ToggleSizeRequest is a wrapper around the C function gtk_menu_item_toggle_size_request.
+func (recv *MenuItem) ToggleSizeRequest(requisition int32) {
+	c_requisition := (C.gint)(requisition)
+
+	C.gtk_menu_item_toggle_size_request((*C.GtkMenuItem)(recv.native), &c_requisition)
+
+	return
+}
 
 // MenuItemAccessible is a wrapper around the C record GtkMenuItemAccessible.
 type MenuItemAccessible struct {
@@ -6449,9 +6567,35 @@ func (recv *Misc) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : gtk_misc_get_alignment : unsupported parameter xalign : no type generator for gfloat, gfloat*
+// GetAlignment is a wrapper around the C function gtk_misc_get_alignment.
+func (recv *Misc) GetAlignment() (*float32, *float32) {
+	var c_xalign C.gfloat
 
-// Unsupported : gtk_misc_get_padding : unsupported parameter xpad : no type generator for gint, gint*
+	var c_yalign C.gfloat
+
+	C.gtk_misc_get_alignment((*C.GtkMisc)(recv.native), &c_xalign, &c_yalign)
+
+	xalign := (*float32)(&c_xalign)
+
+	yalign := (*float32)(&c_yalign)
+
+	return xalign, yalign
+}
+
+// GetPadding is a wrapper around the C function gtk_misc_get_padding.
+func (recv *Misc) GetPadding() (*int32, *int32) {
+	var c_xpad C.gint
+
+	var c_ypad C.gint
+
+	C.gtk_misc_get_padding((*C.GtkMisc)(recv.native), &c_xpad, &c_ypad)
+
+	xpad := (*int32)(&c_xpad)
+
+	ypad := (*int32)(&c_ypad)
+
+	return xpad, ypad
+}
 
 // SetAlignment is a wrapper around the C function gtk_misc_set_alignment.
 func (recv *Misc) SetAlignment(xalign float32, yalign float32) {
@@ -8749,7 +8893,20 @@ func (recv *SpinButton) GetDigits() uint32 {
 	return retGo
 }
 
-// Unsupported : gtk_spin_button_get_increments : unsupported parameter step : no type generator for gdouble, gdouble*
+// GetIncrements is a wrapper around the C function gtk_spin_button_get_increments.
+func (recv *SpinButton) GetIncrements() (*float64, *float64) {
+	var c_step C.gdouble
+
+	var c_page C.gdouble
+
+	C.gtk_spin_button_get_increments((*C.GtkSpinButton)(recv.native), &c_step, &c_page)
+
+	step := (*float64)(&c_step)
+
+	page := (*float64)(&c_page)
+
+	return step, page
+}
 
 // GetNumeric is a wrapper around the C function gtk_spin_button_get_numeric.
 func (recv *SpinButton) GetNumeric() bool {
@@ -8759,7 +8916,20 @@ func (recv *SpinButton) GetNumeric() bool {
 	return retGo
 }
 
-// Unsupported : gtk_spin_button_get_range : unsupported parameter min : no type generator for gdouble, gdouble*
+// GetRange is a wrapper around the C function gtk_spin_button_get_range.
+func (recv *SpinButton) GetRange() (*float64, *float64) {
+	var c_min C.gdouble
+
+	var c_max C.gdouble
+
+	C.gtk_spin_button_get_range((*C.GtkSpinButton)(recv.native), &c_min, &c_max)
+
+	min := (*float64)(&c_min)
+
+	max := (*float64)(&c_max)
+
+	return min, max
+}
 
 // GetSnapToTicks is a wrapper around the C function gtk_spin_button_get_snap_to_ticks.
 func (recv *SpinButton) GetSnapToTicks() bool {
@@ -10686,7 +10856,26 @@ func (recv *TextView) BackwardDisplayLineStart(iter *TextIter) bool {
 	return retGo
 }
 
-// Unsupported : gtk_text_view_buffer_to_window_coords : unsupported parameter window_x : no type generator for gint, gint*
+// BufferToWindowCoords is a wrapper around the C function gtk_text_view_buffer_to_window_coords.
+func (recv *TextView) BufferToWindowCoords(win TextWindowType, bufferX int32, bufferY int32) (*int32, *int32) {
+	c_win := (C.GtkTextWindowType)(win)
+
+	c_buffer_x := (C.gint)(bufferX)
+
+	c_buffer_y := (C.gint)(bufferY)
+
+	var c_window_x C.gint
+
+	var c_window_y C.gint
+
+	C.gtk_text_view_buffer_to_window_coords((*C.GtkTextView)(recv.native), c_win, c_buffer_x, c_buffer_y, &c_window_x, &c_window_y)
+
+	windowX := (*int32)(&c_window_x)
+
+	windowY := (*int32)(&c_window_y)
+
+	return windowX, windowY
+}
 
 // ForwardDisplayLine is a wrapper around the C function gtk_text_view_forward_display_line.
 func (recv *TextView) ForwardDisplayLine(iter *TextIter) bool {
@@ -10791,9 +10980,39 @@ func (recv *TextView) GetLeftMargin() int32 {
 	return retGo
 }
 
-// Unsupported : gtk_text_view_get_line_at_y : unsupported parameter line_top : no type generator for gint, gint*
+// GetLineAtY is a wrapper around the C function gtk_text_view_get_line_at_y.
+func (recv *TextView) GetLineAtY(y int32) (*TextIter, *int32) {
+	var c_target_iter C.GtkTextIter
 
-// Unsupported : gtk_text_view_get_line_yrange : unsupported parameter y : no type generator for gint, gint*
+	c_y := (C.gint)(y)
+
+	var c_line_top C.gint
+
+	C.gtk_text_view_get_line_at_y((*C.GtkTextView)(recv.native), &c_target_iter, c_y, &c_line_top)
+
+	targetIter := TextIterNewFromC(unsafe.Pointer(&c_target_iter))
+
+	lineTop := (*int32)(&c_line_top)
+
+	return targetIter, lineTop
+}
+
+// GetLineYrange is a wrapper around the C function gtk_text_view_get_line_yrange.
+func (recv *TextView) GetLineYrange(iter *TextIter) (*int32, *int32) {
+	c_iter := (*C.GtkTextIter)(iter.ToC())
+
+	var c_y C.gint
+
+	var c_height C.gint
+
+	C.gtk_text_view_get_line_yrange((*C.GtkTextView)(recv.native), c_iter, &c_y, &c_height)
+
+	y := (*int32)(&c_y)
+
+	height := (*int32)(&c_height)
+
+	return y, height
+}
 
 // GetPixelsAboveLines is a wrapper around the C function gtk_text_view_get_pixels_above_lines.
 func (recv *TextView) GetPixelsAboveLines() int32 {
@@ -11085,7 +11304,26 @@ func (recv *TextView) StartsDisplayLine(iter *TextIter) bool {
 	return retGo
 }
 
-// Unsupported : gtk_text_view_window_to_buffer_coords : unsupported parameter buffer_x : no type generator for gint, gint*
+// WindowToBufferCoords is a wrapper around the C function gtk_text_view_window_to_buffer_coords.
+func (recv *TextView) WindowToBufferCoords(win TextWindowType, windowX int32, windowY int32) (*int32, *int32) {
+	c_win := (C.GtkTextWindowType)(win)
+
+	c_window_x := (C.gint)(windowX)
+
+	c_window_y := (C.gint)(windowY)
+
+	var c_buffer_x C.gint
+
+	var c_buffer_y C.gint
+
+	C.gtk_text_view_window_to_buffer_coords((*C.GtkTextView)(recv.native), c_win, c_window_x, c_window_y, &c_buffer_x, &c_buffer_y)
+
+	bufferX := (*int32)(&c_buffer_x)
+
+	bufferY := (*int32)(&c_buffer_y)
+
+	return bufferX, bufferY
+}
 
 // TextViewAccessible is a wrapper around the C record GtkTextViewAccessible.
 type TextViewAccessible struct {
@@ -11700,7 +11938,7 @@ func (recv *TreeSelection) GetTreeView() *TreeView {
 // GetUserData is a wrapper around the C function gtk_tree_selection_get_user_data.
 func (recv *TreeSelection) GetUserData() uintptr {
 	retC := C.gtk_tree_selection_get_user_data((*C.GtkTreeSelection)(recv.native))
-	retGo := (uintptr)(retC)
+	retGo := (uintptr)(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -12464,7 +12702,23 @@ func (recv *TreeViewColumn) AddAttribute(cellRenderer *CellRenderer, attribute s
 	return
 }
 
-// Unsupported : gtk_tree_view_column_cell_get_position : unsupported parameter x_offset : no type generator for gint, gint*
+// CellGetPosition is a wrapper around the C function gtk_tree_view_column_cell_get_position.
+func (recv *TreeViewColumn) CellGetPosition(cellRenderer *CellRenderer) (bool, *int32, *int32) {
+	c_cell_renderer := (*C.GtkCellRenderer)(cellRenderer.ToC())
+
+	var c_x_offset C.gint
+
+	var c_width C.gint
+
+	retC := C.gtk_tree_view_column_cell_get_position((*C.GtkTreeViewColumn)(recv.native), c_cell_renderer, &c_x_offset, &c_width)
+	retGo := retC == C.TRUE
+
+	xOffset := (*int32)(&c_x_offset)
+
+	width := (*int32)(&c_width)
+
+	return retGo, xOffset, width
+}
 
 // Unsupported : gtk_tree_view_column_cell_get_size : unsupported parameter cell_area : Blacklisted record : GdkRectangle
 
@@ -13212,7 +13466,26 @@ func (recv *Widget) ChildNotify(childProperty string) {
 	return
 }
 
-// Unsupported : gtk_widget_class_path : unsupported parameter path_length : no type generator for guint, guint*
+// ClassPath is a wrapper around the C function gtk_widget_class_path.
+func (recv *Widget) ClassPath() (*uint32, string, string) {
+	var c_path_length C.guint
+
+	var c_path *C.gchar
+
+	var c_path_reversed *C.gchar
+
+	C.gtk_widget_class_path((*C.GtkWidget)(recv.native), &c_path_length, &c_path, &c_path_reversed)
+
+	pathLength := (*uint32)(&c_path_length)
+
+	path := C.GoString(c_path)
+	defer C.free(unsafe.Pointer(c_path))
+
+	pathReversed := C.GoString(c_path_reversed)
+	defer C.free(unsafe.Pointer(c_path_reversed))
+
+	return pathLength, path, pathReversed
+}
 
 // ComputeExpand is a wrapper around the C function gtk_widget_compute_expand.
 func (recv *Widget) ComputeExpand(orientation Orientation) bool {
@@ -13514,7 +13787,20 @@ func (recv *Widget) GetPath() *WidgetPath {
 	return retGo
 }
 
-// Unsupported : gtk_widget_get_pointer : unsupported parameter x : no type generator for gint, gint*
+// GetPointer is a wrapper around the C function gtk_widget_get_pointer.
+func (recv *Widget) GetPointer() (*int32, *int32) {
+	var c_x C.gint
+
+	var c_y C.gint
+
+	C.gtk_widget_get_pointer((*C.GtkWidget)(recv.native), &c_x, &c_y)
+
+	x := (*int32)(&c_x)
+
+	y := (*int32)(&c_y)
+
+	return x, y
+}
 
 // GetSettings is a wrapper around the C function gtk_widget_get_settings.
 func (recv *Widget) GetSettings() *Settings {
@@ -13524,7 +13810,20 @@ func (recv *Widget) GetSettings() *Settings {
 	return retGo
 }
 
-// Unsupported : gtk_widget_get_size_request : unsupported parameter width : no type generator for gint, gint*
+// GetSizeRequest is a wrapper around the C function gtk_widget_get_size_request.
+func (recv *Widget) GetSizeRequest() (*int32, *int32) {
+	var c_width C.gint
+
+	var c_height C.gint
+
+	C.gtk_widget_get_size_request((*C.GtkWidget)(recv.native), &c_width, &c_height)
+
+	width := (*int32)(&c_width)
+
+	height := (*int32)(&c_height)
+
+	return width, height
+}
 
 // GetStyle is a wrapper around the C function gtk_widget_get_style.
 func (recv *Widget) GetStyle() *Style {
@@ -13751,7 +14050,26 @@ func (recv *Widget) ModifyText(state StateType, color *gdk.Color) {
 	return
 }
 
-// Unsupported : gtk_widget_path : unsupported parameter path_length : no type generator for guint, guint*
+// Path is a wrapper around the C function gtk_widget_path.
+func (recv *Widget) Path() (*uint32, string, string) {
+	var c_path_length C.guint
+
+	var c_path *C.gchar
+
+	var c_path_reversed *C.gchar
+
+	C.gtk_widget_path((*C.GtkWidget)(recv.native), &c_path_length, &c_path, &c_path_reversed)
+
+	pathLength := (*uint32)(&c_path_length)
+
+	path := C.GoString(c_path)
+	defer C.free(unsafe.Pointer(c_path))
+
+	pathReversed := C.GoString(c_path_reversed)
+	defer C.free(unsafe.Pointer(c_path_reversed))
+
+	return pathLength, path, pathReversed
+}
 
 // QueueComputeExpand is a wrapper around the C function gtk_widget_queue_compute_expand.
 func (recv *Widget) QueueComputeExpand() {
@@ -14111,7 +14429,27 @@ func (recv *Widget) ThawChildNotify() {
 	return
 }
 
-// Unsupported : gtk_widget_translate_coordinates : unsupported parameter dest_x : no type generator for gint, gint*
+// TranslateCoordinates is a wrapper around the C function gtk_widget_translate_coordinates.
+func (recv *Widget) TranslateCoordinates(destWidget *Widget, srcX int32, srcY int32) (bool, *int32, *int32) {
+	c_dest_widget := (*C.GtkWidget)(destWidget.ToC())
+
+	c_src_x := (C.gint)(srcX)
+
+	c_src_y := (C.gint)(srcY)
+
+	var c_dest_x C.gint
+
+	var c_dest_y C.gint
+
+	retC := C.gtk_widget_translate_coordinates((*C.GtkWidget)(recv.native), c_dest_widget, c_src_x, c_src_y, &c_dest_x, &c_dest_y)
+	retGo := retC == C.TRUE
+
+	destX := (*int32)(&c_dest_x)
+
+	destY := (*int32)(&c_dest_y)
+
+	return retGo, destX, destY
+}
 
 // Unmap is a wrapper around the C function gtk_widget_unmap.
 func (recv *Widget) Unmap() {
@@ -14273,7 +14611,20 @@ func (recv *Window) GetDecorated() bool {
 	return retGo
 }
 
-// Unsupported : gtk_window_get_default_size : unsupported parameter width : no type generator for gint, gint*
+// GetDefaultSize is a wrapper around the C function gtk_window_get_default_size.
+func (recv *Window) GetDefaultSize() (*int32, *int32) {
+	var c_width C.gint
+
+	var c_height C.gint
+
+	C.gtk_window_get_default_size((*C.GtkWindow)(recv.native), &c_width, &c_height)
+
+	width := (*int32)(&c_width)
+
+	height := (*int32)(&c_height)
+
+	return width, height
+}
 
 // GetDestroyWithParent is a wrapper around the C function gtk_window_get_destroy_with_parent.
 func (recv *Window) GetDestroyWithParent() bool {
@@ -14331,7 +14682,20 @@ func (recv *Window) GetModal() bool {
 	return retGo
 }
 
-// Unsupported : gtk_window_get_position : unsupported parameter root_x : no type generator for gint, gint*
+// GetPosition is a wrapper around the C function gtk_window_get_position.
+func (recv *Window) GetPosition() (*int32, *int32) {
+	var c_root_x C.gint
+
+	var c_root_y C.gint
+
+	C.gtk_window_get_position((*C.GtkWindow)(recv.native), &c_root_x, &c_root_y)
+
+	rootX := (*int32)(&c_root_x)
+
+	rootY := (*int32)(&c_root_y)
+
+	return rootX, rootY
+}
 
 // GetResizable is a wrapper around the C function gtk_window_get_resizable.
 func (recv *Window) GetResizable() bool {
@@ -14349,7 +14713,20 @@ func (recv *Window) GetRole() string {
 	return retGo
 }
 
-// Unsupported : gtk_window_get_size : unsupported parameter width : no type generator for gint, gint*
+// GetSize is a wrapper around the C function gtk_window_get_size.
+func (recv *Window) GetSize() (*int32, *int32) {
+	var c_width C.gint
+
+	var c_height C.gint
+
+	C.gtk_window_get_size((*C.GtkWindow)(recv.native), &c_width, &c_height)
+
+	width := (*int32)(&c_width)
+
+	height := (*int32)(&c_height)
+
+	return width, height
+}
 
 // GetTitle is a wrapper around the C function gtk_window_get_title.
 func (recv *Window) GetTitle() string {

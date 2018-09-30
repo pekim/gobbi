@@ -272,7 +272,28 @@ func (recv *ActionGroup) SetVisible(visible bool) {
 	return
 }
 
-// Unsupported : gtk_alignment_get_padding : unsupported parameter padding_top : no type generator for guint, guint*
+// GetPadding is a wrapper around the C function gtk_alignment_get_padding.
+func (recv *Alignment) GetPadding() (*uint32, *uint32, *uint32, *uint32) {
+	var c_padding_top C.guint
+
+	var c_padding_bottom C.guint
+
+	var c_padding_left C.guint
+
+	var c_padding_right C.guint
+
+	C.gtk_alignment_get_padding((*C.GtkAlignment)(recv.native), &c_padding_top, &c_padding_bottom, &c_padding_left, &c_padding_right)
+
+	paddingTop := (*uint32)(&c_padding_top)
+
+	paddingBottom := (*uint32)(&c_padding_bottom)
+
+	paddingLeft := (*uint32)(&c_padding_left)
+
+	paddingRight := (*uint32)(&c_padding_right)
+
+	return paddingTop, paddingBottom, paddingLeft, paddingRight
+}
 
 // SetPadding is a wrapper around the C function gtk_alignment_set_padding.
 func (recv *Alignment) SetPadding(paddingTop uint32, paddingBottom uint32, paddingLeft uint32, paddingRight uint32) {
@@ -293,7 +314,20 @@ func (recv *Alignment) SetPadding(paddingTop uint32, paddingBottom uint32, paddi
 
 // Unsupported : gtk_button_new_from_icon_name : unsupported parameter size : no type generator for gint, GtkIconSize
 
-// Unsupported : gtk_button_get_alignment : unsupported parameter xalign : no type generator for gfloat, gfloat*
+// GetAlignment is a wrapper around the C function gtk_button_get_alignment.
+func (recv *Button) GetAlignment() (*float32, *float32) {
+	var c_xalign C.gfloat
+
+	var c_yalign C.gfloat
+
+	C.gtk_button_get_alignment((*C.GtkButton)(recv.native), &c_xalign, &c_yalign)
+
+	xalign := (*float32)(&c_xalign)
+
+	yalign := (*float32)(&c_yalign)
+
+	return xalign, yalign
+}
 
 // GetFocusOnClick is a wrapper around the C function gtk_button_get_focus_on_click.
 func (recv *Button) GetFocusOnClick() bool {
@@ -1503,7 +1537,20 @@ func (recv *Scale) GetLayout() *pango.Layout {
 	return retGo
 }
 
-// Unsupported : gtk_scale_get_layout_offsets : unsupported parameter x : no type generator for gint, gint*
+// GetLayoutOffsets is a wrapper around the C function gtk_scale_get_layout_offsets.
+func (recv *Scale) GetLayoutOffsets() (*int32, *int32) {
+	var c_x C.gint
+
+	var c_y C.gint
+
+	C.gtk_scale_get_layout_offsets((*C.GtkScale)(recv.native), &c_x, &c_y)
+
+	x := (*int32)(&c_x)
+
+	y := (*int32)(&c_y)
+
+	return x, y
+}
 
 // Unsupported : gtk_scale_button_new : unsupported parameter size : no type generator for gint, GtkIconSize
 

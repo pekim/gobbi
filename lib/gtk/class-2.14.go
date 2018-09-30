@@ -370,9 +370,39 @@ func HSVNew() *Widget {
 	return retGo
 }
 
-// Unsupported : gtk_hsv_get_color : unsupported parameter h : no type generator for gdouble, gdouble*
+// GetColor is a wrapper around the C function gtk_hsv_get_color.
+func (recv *HSV) GetColor() (*float64, *float64, *float64) {
+	var c_h C.gdouble
 
-// Unsupported : gtk_hsv_get_metrics : unsupported parameter size : no type generator for gint, gint*
+	var c_s C.gdouble
+
+	var c_v C.gdouble
+
+	C.gtk_hsv_get_color((*C.GtkHSV)(recv.native), &c_h, &c_s, &c_v)
+
+	h := (*float64)(&c_h)
+
+	s := (*float64)(&c_s)
+
+	v := (*float64)(&c_v)
+
+	return h, s, v
+}
+
+// GetMetrics is a wrapper around the C function gtk_hsv_get_metrics.
+func (recv *HSV) GetMetrics() (*int32, *int32) {
+	var c_size C.gint
+
+	var c_ring_width C.gint
+
+	C.gtk_hsv_get_metrics((*C.GtkHSV)(recv.native), &c_size, &c_ring_width)
+
+	size := (*int32)(&c_size)
+
+	ringWidth := (*int32)(&c_ring_width)
+
+	return size, ringWidth
+}
 
 // IsAdjusting is a wrapper around the C function gtk_hsv_is_adjusting.
 func (recv *HSV) IsAdjusting() bool {

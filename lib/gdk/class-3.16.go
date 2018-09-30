@@ -54,7 +54,20 @@ func (recv *GLContext) GetForwardCompatible() bool {
 	return retGo
 }
 
-// Unsupported : gdk_gl_context_get_required_version : unsupported parameter major : no type generator for gint, int*
+// GetRequiredVersion is a wrapper around the C function gdk_gl_context_get_required_version.
+func (recv *GLContext) GetRequiredVersion() (*int32, *int32) {
+	var c_major C.int
+
+	var c_minor C.int
+
+	C.gdk_gl_context_get_required_version((*C.GdkGLContext)(recv.native), &c_major, &c_minor)
+
+	major := (*int32)(&c_major)
+
+	minor := (*int32)(&c_minor)
+
+	return major, minor
+}
 
 // GetSharedContext is a wrapper around the C function gdk_gl_context_get_shared_context.
 func (recv *GLContext) GetSharedContext() *GLContext {
@@ -64,7 +77,20 @@ func (recv *GLContext) GetSharedContext() *GLContext {
 	return retGo
 }
 
-// Unsupported : gdk_gl_context_get_version : unsupported parameter major : no type generator for gint, int*
+// GetVersion is a wrapper around the C function gdk_gl_context_get_version.
+func (recv *GLContext) GetVersion() (*int32, *int32) {
+	var c_major C.int
+
+	var c_minor C.int
+
+	C.gdk_gl_context_get_version((*C.GdkGLContext)(recv.native), &c_major, &c_minor)
+
+	major := (*int32)(&c_major)
+
+	minor := (*int32)(&c_minor)
+
+	return major, minor
+}
 
 // GetWindow is a wrapper around the C function gdk_gl_context_get_window.
 func (recv *GLContext) GetWindow() *Window {

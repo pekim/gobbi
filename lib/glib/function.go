@@ -84,10 +84,6 @@ func AsciiStrdown(str string, len int64) string {
 	return retGo
 }
 
-// Unsupported : g_ascii_string_to_signed : unsupported parameter out_num : no type generator for gint64, gint64*
-
-// Unsupported : g_ascii_string_to_unsigned : unsupported parameter out_num : no type generator for guint64, guint64*
-
 // AsciiStrncasecmp is a wrapper around the C function g_ascii_strncasecmp.
 func AsciiStrncasecmp(s1 string, s2 string, n uint64) int32 {
 	c_s1 := C.CString(s1)
@@ -163,7 +159,26 @@ func AsciiXdigitValue(c rune) int32 {
 	return retGo
 }
 
-// Unsupported : g_assert_warning : unsupported parameter line : no type generator for gint, const int
+// AssertWarning is a wrapper around the C function g_assert_warning.
+func AssertWarning(logDomain string, file string, line int32, prettyFunction string, expression string) {
+	c_log_domain := C.CString(logDomain)
+	defer C.free(unsafe.Pointer(c_log_domain))
+
+	c_file := C.CString(file)
+	defer C.free(unsafe.Pointer(c_file))
+
+	c_line := (C.int)(line)
+
+	c_pretty_function := C.CString(prettyFunction)
+	defer C.free(unsafe.Pointer(c_pretty_function))
+
+	c_expression := C.CString(expression)
+	defer C.free(unsafe.Pointer(c_expression))
+
+	C.g_assert_warning(c_log_domain, c_file, c_line, c_pretty_function, c_expression)
+
+	return
+}
 
 // AssertionMessage is a wrapper around the C function g_assertion_message.
 func AssertionMessage(domain string, file string, line int32, func_ string, message string) {
@@ -186,7 +201,7 @@ func AssertionMessage(domain string, file string, line int32, func_ string, mess
 	return
 }
 
-// Unsupported : g_assertion_message_cmpnum : unsupported parameter arg1 : no type generator for long double, long double
+// Unsupported : g_assertion_message_cmpnum : unsupported parameter numtype : no type generator for gchar, char
 
 // AssertionMessageCmpstr is a wrapper around the C function g_assertion_message_cmpstr.
 func AssertionMessageCmpstr(domain string, file string, line int32, func_ string, expr string, arg1 string, cmp string, arg2 string) {
@@ -268,26 +283,6 @@ func AssertionMessageExpr(domain string, file string, line int32, func_ string, 
 
 // Unsupported : g_atexit : unsupported parameter func : no type generator for VoidFunc, GVoidFunc
 
-// Unsupported : g_atomic_int_add : unsupported parameter atomic : no type generator for gint, volatile gint*
-
-// Unsupported : g_atomic_int_and : unsupported parameter atomic : no type generator for guint, volatile guint*
-
-// Unsupported : g_atomic_int_compare_and_exchange : unsupported parameter atomic : no type generator for gint, volatile gint*
-
-// Unsupported : g_atomic_int_dec_and_test : unsupported parameter atomic : no type generator for gint, volatile gint*
-
-// Unsupported : g_atomic_int_exchange_and_add : unsupported parameter atomic : no type generator for gint, volatile gint*
-
-// Unsupported : g_atomic_int_get : unsupported parameter atomic : no type generator for gint, volatile const gint*
-
-// Unsupported : g_atomic_int_inc : unsupported parameter atomic : no type generator for gint, volatile gint*
-
-// Unsupported : g_atomic_int_or : unsupported parameter atomic : no type generator for guint, volatile guint*
-
-// Unsupported : g_atomic_int_set : unsupported parameter atomic : no type generator for gint, volatile gint*
-
-// Unsupported : g_atomic_int_xor : unsupported parameter atomic : no type generator for guint, volatile guint*
-
 // Unsupported : g_atomic_pointer_add : unsupported parameter atomic : no type generator for gpointer, void*
 
 // Unsupported : g_atomic_pointer_and : unsupported parameter atomic : no type generator for gpointer, void*
@@ -302,7 +297,7 @@ func AssertionMessageExpr(domain string, file string, line int32, func_ string, 
 
 // Unsupported : g_atomic_pointer_xor : unsupported parameter atomic : no type generator for gpointer, void*
 
-// Unsupported : g_base64_decode : unsupported parameter out_len : no type generator for gsize, gsize*
+// Unsupported : g_base64_decode : no return type
 
 // Unsupported : g_base64_decode_inplace : unsupported parameter text : no param type
 
@@ -324,8 +319,6 @@ func Basename(fileName string) string {
 
 	return retGo
 }
-
-// Unsupported : g_bit_lock : unsupported parameter address : no type generator for gint, volatile gint*
 
 // BitNthLsf is a wrapper around the C function g_bit_nth_lsf.
 func BitNthLsf(mask uint64, nthBit int32) int32 {
@@ -360,10 +353,6 @@ func BitStorage(number uint64) uint32 {
 
 	return retGo
 }
-
-// Unsupported : g_bit_trylock : unsupported parameter address : no type generator for gint, volatile gint*
-
-// Unsupported : g_bit_unlock : unsupported parameter address : no type generator for gint, volatile gint*
 
 // BookmarkFileErrorQuark is a wrapper around the C function g_bookmark_file_error_quark.
 func BookmarkFileErrorQuark() Quark {
@@ -411,9 +400,9 @@ func ClearError() error {
 	return goThrowableError
 }
 
-// Unsupported : g_clear_handle_id : unsupported parameter tag_ptr : no type generator for guint, guint*
+// Unsupported : g_clear_handle_id : unsupported parameter clear_func : no type generator for ClearHandleFunc, GClearHandleFunc
 
-// Unsupported : g_clear_pointer : unsupported parameter pp : no type generator for gpointer, gpointer*
+// Unsupported : g_clear_pointer : unsupported parameter destroy : no type generator for DestroyNotify, GDestroyNotify
 
 // Unsupported : g_compute_checksum_for_data : unsupported parameter data : no param type
 
@@ -477,7 +466,7 @@ func DatasetIdGetData(datasetLocation uintptr, keyId Quark) uintptr {
 	c_key_id := (C.GQuark)(keyId)
 
 	retC := C.g_dataset_id_get_data(c_dataset_location, c_key_id)
-	retGo := (uintptr)(retC)
+	retGo := (uintptr)(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -489,7 +478,7 @@ func DatasetIdRemoveNoNotify(datasetLocation uintptr, keyId Quark) uintptr {
 	c_key_id := (C.GQuark)(keyId)
 
 	retC := C.g_dataset_id_remove_no_notify(c_dataset_location, c_key_id)
-	retGo := (uintptr)(retC)
+	retGo := (uintptr)(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -730,7 +719,34 @@ func FilenameFromUri(uri string) (string, string, error) {
 	return retGo, hostname, goThrowableError
 }
 
-// Unsupported : g_filename_from_utf8 : unsupported parameter bytes_read : no type generator for gsize, gsize*
+// FilenameFromUtf8 is a wrapper around the C function g_filename_from_utf8.
+func FilenameFromUtf8(utf8string string, len int64) (string, *uint64, *uint64, error) {
+	c_utf8string := C.CString(utf8string)
+	defer C.free(unsafe.Pointer(c_utf8string))
+
+	c_len := (C.gssize)(len)
+
+	var c_bytes_read C.gsize
+
+	var c_bytes_written C.gsize
+
+	var cThrowableError *C.GError
+
+	retC := C.g_filename_from_utf8(c_utf8string, c_len, &c_bytes_read, &c_bytes_written, &cThrowableError)
+	retGo := C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
+
+	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	bytesRead := (*uint64)(&c_bytes_read)
+
+	bytesWritten := (*uint64)(&c_bytes_written)
+
+	return retGo, bytesRead, bytesWritten, goThrowableError
+}
 
 // FilenameToUri is a wrapper around the C function g_filename_to_uri.
 func FilenameToUri(filename string, hostname string) (string, error) {
@@ -754,7 +770,34 @@ func FilenameToUri(filename string, hostname string) (string, error) {
 	return retGo, goThrowableError
 }
 
-// Unsupported : g_filename_to_utf8 : unsupported parameter bytes_read : no type generator for gsize, gsize*
+// FilenameToUtf8 is a wrapper around the C function g_filename_to_utf8.
+func FilenameToUtf8(opsysstring string, len int64) (string, *uint64, *uint64, error) {
+	c_opsysstring := C.CString(opsysstring)
+	defer C.free(unsafe.Pointer(c_opsysstring))
+
+	c_len := (C.gssize)(len)
+
+	var c_bytes_read C.gsize
+
+	var c_bytes_written C.gsize
+
+	var cThrowableError *C.GError
+
+	retC := C.g_filename_to_utf8(c_opsysstring, c_len, &c_bytes_read, &c_bytes_written, &cThrowableError)
+	retGo := C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
+
+	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	bytesRead := (*uint64)(&c_bytes_read)
+
+	bytesWritten := (*uint64)(&c_bytes_written)
+
+	return retGo, bytesRead, bytesWritten, goThrowableError
+}
 
 // FindProgramInPath is a wrapper around the C function g_find_program_in_path.
 func FindProgramInPath(program string) string {
@@ -911,12 +954,30 @@ func HashTableLookup(hashTable *HashTable, key uintptr) uintptr {
 	c_key := (C.gconstpointer)(key)
 
 	retC := C.g_hash_table_lookup(c_hash_table, c_key)
-	retGo := (uintptr)(retC)
+	retGo := (uintptr)(unsafe.Pointer(retC))
 
 	return retGo
 }
 
-// Unsupported : g_hash_table_lookup_extended : unsupported parameter orig_key : no type generator for gpointer, gpointer*
+// HashTableLookupExtended is a wrapper around the C function g_hash_table_lookup_extended.
+func HashTableLookupExtended(hashTable *HashTable, lookupKey uintptr) (bool, *uintptr, *uintptr) {
+	c_hash_table := (*C.GHashTable)(hashTable.ToC())
+
+	c_lookup_key := (C.gconstpointer)(lookupKey)
+
+	var c_orig_key C.gpointer
+
+	var c_value C.gpointer
+
+	retC := C.g_hash_table_lookup_extended(c_hash_table, c_lookup_key, &c_orig_key, &c_value)
+	retGo := retC == C.TRUE
+
+	origKey := (*uintptr)(unsafe.Pointer(&c_orig_key))
+
+	value := (*uintptr)(unsafe.Pointer(&c_value))
+
+	return retGo, origKey, value
+}
 
 // HashTableRemove is a wrapper around the C function g_hash_table_remove.
 func HashTableRemove(hashTable *HashTable, key uintptr) bool {
@@ -1117,7 +1178,7 @@ func KeyFileErrorQuark() Quark {
 
 // Unsupported : g_listenv : no return type
 
-// Unsupported : g_locale_from_utf8 : unsupported parameter bytes_read : no type generator for gsize, gsize*
+// Unsupported : g_locale_from_utf8 : no return type
 
 // Unsupported : g_locale_to_utf8 : unsupported parameter opsysstring : no param type
 
@@ -1222,7 +1283,7 @@ func Malloc(nBytes uint64) uintptr {
 	c_n_bytes := (C.gsize)(nBytes)
 
 	retC := C.g_malloc(c_n_bytes)
-	retGo := (uintptr)(retC)
+	retGo := (uintptr)(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -1232,7 +1293,7 @@ func Malloc0(nBytes uint64) uintptr {
 	c_n_bytes := (C.gsize)(nBytes)
 
 	retC := C.g_malloc0(c_n_bytes)
-	retGo := (uintptr)(retC)
+	retGo := (uintptr)(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -1296,7 +1357,7 @@ func Memdup(mem uintptr, byteSize uint32) uintptr {
 	c_byte_size := (C.guint)(byteSize)
 
 	retC := C.g_memdup(c_mem, c_byte_size)
-	retGo := (uintptr)(retC)
+	retGo := (uintptr)(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -1312,7 +1373,14 @@ func Mkstemp(tmpl string) int32 {
 	return retGo
 }
 
-// Unsupported : g_nullify_pointer : unsupported parameter nullify_location : no type generator for gpointer, gpointer*
+// NullifyPointer is a wrapper around the C function g_nullify_pointer.
+func NullifyPointer(nullifyLocation uintptr) {
+	c_nullify_location := (C.gpointer)(nullifyLocation)
+
+	C.g_nullify_pointer(&c_nullify_location)
+
+	return
+}
 
 // Blacklisted : g_number_parser_error_quark
 
@@ -1566,7 +1634,7 @@ func Realloc(mem uintptr, nBytes uint64) uintptr {
 	c_n_bytes := (C.gsize)(nBytes)
 
 	retC := C.g_realloc(c_mem, c_n_bytes)
-	retGo := (uintptr)(retC)
+	retGo := (uintptr)(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -1625,7 +1693,7 @@ func ShellErrorQuark() Quark {
 	return retGo
 }
 
-// Unsupported : g_shell_parse_argv : unsupported parameter argcp : no type generator for gint, gint*
+// Unsupported : g_shell_parse_argv : unsupported parameter argvp : no param type
 
 // ShellQuote is a wrapper around the C function g_shell_quote.
 func ShellQuote(unquotedString string) string {
@@ -1668,7 +1736,19 @@ func SliceGetConfig(ckey SliceConfig) int64 {
 	return retGo
 }
 
-// Unsupported : g_slice_get_config_state : unsupported parameter n_values : no type generator for guint, guint*
+// SliceGetConfigState is a wrapper around the C function g_slice_get_config_state.
+func SliceGetConfigState(ckey SliceConfig, address int64, nValues uint32) *int64 {
+	c_ckey := (C.GSliceConfig)(ckey)
+
+	c_address := (C.gint64)(address)
+
+	c_n_values := (C.guint)(nValues)
+
+	retC := C.g_slice_get_config_state(c_ckey, c_address, &c_n_values)
+	retGo := (*int64)(&retC)
+
+	return retGo
+}
 
 // SliceSetConfig is a wrapper around the C function g_slice_set_config.
 func SliceSetConfig(ckey SliceConfig, value int64) {
@@ -2210,7 +2290,7 @@ func TestAssertExpectedMessagesInternal(domain string, file string, line int32, 
 
 // Unsupported : g_test_get_filename : unsupported parameter ... : varargs
 
-// Unsupported : g_test_init : unsupported parameter argc : no type generator for gint, int*
+// Unsupported : g_test_init : unsupported parameter argv : in string with indirection level of 3
 
 // Unsupported : g_test_log_set_fatal_handler : unsupported parameter log_func : no type generator for TestLogFatalFunc, GTestLogFatalFunc
 
@@ -2350,7 +2430,7 @@ func TryMalloc(nBytes uint64) uintptr {
 	c_n_bytes := (C.gsize)(nBytes)
 
 	retC := C.g_try_malloc(c_n_bytes)
-	retGo := (uintptr)(retC)
+	retGo := (uintptr)(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -2362,14 +2442,40 @@ func TryRealloc(mem uintptr, nBytes uint64) uintptr {
 	c_n_bytes := (C.gsize)(nBytes)
 
 	retC := C.g_try_realloc(c_mem, c_n_bytes)
-	retGo := (uintptr)(retC)
+	retGo := (uintptr)(unsafe.Pointer(retC))
 
 	return retGo
 }
 
-// Unsupported : g_ucs4_to_utf16 : unsupported parameter str : no type generator for gunichar, const gunichar*
+// Unsupported : g_ucs4_to_utf16 : no return generator
 
-// Unsupported : g_ucs4_to_utf8 : unsupported parameter str : no type generator for gunichar, const gunichar*
+// Ucs4ToUtf8 is a wrapper around the C function g_ucs4_to_utf8.
+func Ucs4ToUtf8(str rune, len int64) (string, *int64, *int64, error) {
+	c_str := (C.gunichar)(str)
+
+	c_len := (C.glong)(len)
+
+	var c_items_read C.glong
+
+	var c_items_written C.glong
+
+	var cThrowableError *C.GError
+
+	retC := C.g_ucs4_to_utf8(&c_str, c_len, &c_items_read, &c_items_written, &cThrowableError)
+	retGo := C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
+
+	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	itemsRead := (*int64)(&c_items_read)
+
+	itemsWritten := (*int64)(&c_items_written)
+
+	return retGo, itemsRead, itemsWritten, goThrowableError
+}
 
 // UnicharBreakType is a wrapper around the C function g_unichar_break_type.
 func UnicharBreakType(c rune) UnicodeBreakType {
@@ -2381,10 +2487,6 @@ func UnicharBreakType(c rune) UnicodeBreakType {
 	return retGo
 }
 
-// Unsupported : g_unichar_compose : unsupported parameter ch : no type generator for gunichar, gunichar*
-
-// Unsupported : g_unichar_decompose : unsupported parameter a : no type generator for gunichar, gunichar*
-
 // UnicharDigitValue is a wrapper around the C function g_unichar_digit_value.
 func UnicharDigitValue(c rune) int32 {
 	c_c := (C.gunichar)(c)
@@ -2394,10 +2496,6 @@ func UnicharDigitValue(c rune) int32 {
 
 	return retGo
 }
-
-// Unsupported : g_unichar_fully_decompose : unsupported parameter result : no type generator for gunichar, gunichar*
-
-// Unsupported : g_unichar_get_mirror_char : unsupported parameter mirrored_ch : no type generator for gunichar, gunichar*
 
 // UnicharIsalnum is a wrapper around the C function g_unichar_isalnum.
 func UnicharIsalnum(c rune) bool {
@@ -2601,17 +2699,34 @@ func UnicharXdigitValue(c rune) int32 {
 	return retGo
 }
 
-// Unsupported : g_unicode_canonical_decomposition : unsupported parameter result_len : no type generator for gsize, gsize*
+// UnicodeCanonicalDecomposition is a wrapper around the C function g_unicode_canonical_decomposition.
+func UnicodeCanonicalDecomposition(ch rune, resultLen uint64) *rune {
+	c_ch := (C.gunichar)(ch)
 
-// Unsupported : g_unicode_canonical_ordering : unsupported parameter string : no type generator for gunichar, gunichar*
+	c_result_len := (C.gsize)(resultLen)
+
+	retC := C.g_unicode_canonical_decomposition(c_ch, &c_result_len)
+	retGo := (*rune)(&retC)
+
+	return retGo
+}
+
+// UnicodeCanonicalOrdering is a wrapper around the C function g_unicode_canonical_ordering.
+func UnicodeCanonicalOrdering(string rune, len uint64) {
+	c_string := (C.gunichar)(string)
+
+	c_len := (C.gsize)(len)
+
+	C.g_unicode_canonical_ordering(&c_string, c_len)
+
+	return
+}
 
 // Blacklisted : g_unix_error_quark
 
 // Unsupported : g_unix_fd_add : unsupported parameter function : no type generator for UnixFDSourceFunc, GUnixFDSourceFunc
 
 // Unsupported : g_unix_fd_add_full : unsupported parameter function : no type generator for UnixFDSourceFunc, GUnixFDSourceFunc
-
-// Unsupported : g_unix_open_pipe : unsupported parameter fds : no type generator for gint, gint*
 
 // Unsupported : g_unix_signal_add : unsupported parameter handler : no type generator for SourceFunc, GSourceFunc
 
@@ -2874,11 +2989,52 @@ func Utf8Strup(str string, len int64) string {
 	return retGo
 }
 
-// Unsupported : g_utf8_to_ucs4 : unsupported parameter items_read : no type generator for glong, glong*
+// Utf8ToUcs4 is a wrapper around the C function g_utf8_to_ucs4.
+func Utf8ToUcs4(str string, len int64) (*rune, *int64, *int64, error) {
+	c_str := C.CString(str)
+	defer C.free(unsafe.Pointer(c_str))
 
-// Unsupported : g_utf8_to_ucs4_fast : unsupported parameter items_written : no type generator for glong, glong*
+	c_len := (C.glong)(len)
 
-// Unsupported : g_utf8_to_utf16 : unsupported parameter items_read : no type generator for glong, glong*
+	var c_items_read C.glong
+
+	var c_items_written C.glong
+
+	var cThrowableError *C.GError
+
+	retC := C.g_utf8_to_ucs4(c_str, c_len, &c_items_read, &c_items_written, &cThrowableError)
+	retGo := (*rune)(&retC)
+
+	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	itemsRead := (*int64)(&c_items_read)
+
+	itemsWritten := (*int64)(&c_items_written)
+
+	return retGo, itemsRead, itemsWritten, goThrowableError
+}
+
+// Utf8ToUcs4Fast is a wrapper around the C function g_utf8_to_ucs4_fast.
+func Utf8ToUcs4Fast(str string, len int64) (*rune, *int64) {
+	c_str := C.CString(str)
+	defer C.free(unsafe.Pointer(c_str))
+
+	c_len := (C.glong)(len)
+
+	var c_items_written C.glong
+
+	retC := C.g_utf8_to_ucs4_fast(c_str, c_len, &c_items_written)
+	retGo := (*rune)(&retC)
+
+	itemsWritten := (*int64)(&c_items_written)
+
+	return retGo, itemsWritten
+}
+
+// Unsupported : g_utf8_to_utf16 : no return generator
 
 // Unsupported : g_utf8_validate : unsupported parameter str : no param type
 

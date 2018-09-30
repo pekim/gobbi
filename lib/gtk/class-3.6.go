@@ -226,7 +226,20 @@ func (recv *LevelBar) GetMode() LevelBarMode {
 	return retGo
 }
 
-// Unsupported : gtk_level_bar_get_offset_value : unsupported parameter value : no type generator for gdouble, gdouble*
+// GetOffsetValue is a wrapper around the C function gtk_level_bar_get_offset_value.
+func (recv *LevelBar) GetOffsetValue(name string) (bool, *float64) {
+	c_name := C.CString(name)
+	defer C.free(unsafe.Pointer(c_name))
+
+	var c_value C.gdouble
+
+	retC := C.gtk_level_bar_get_offset_value((*C.GtkLevelBar)(recv.native), c_name, &c_value)
+	retGo := retC == C.TRUE
+
+	value := (*float64)(&c_value)
+
+	return retGo, value
+}
 
 // GetValue is a wrapper around the C function gtk_level_bar_get_value.
 func (recv *LevelBar) GetValue() float64 {

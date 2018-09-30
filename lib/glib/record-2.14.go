@@ -72,9 +72,42 @@ func (recv *MatchInfo) FetchNamed(name string) string {
 	return retGo
 }
 
-// Unsupported : g_match_info_fetch_named_pos : unsupported parameter start_pos : no type generator for gint, gint*
+// FetchNamedPos is a wrapper around the C function g_match_info_fetch_named_pos.
+func (recv *MatchInfo) FetchNamedPos(name string) (bool, *int32, *int32) {
+	c_name := C.CString(name)
+	defer C.free(unsafe.Pointer(c_name))
 
-// Unsupported : g_match_info_fetch_pos : unsupported parameter start_pos : no type generator for gint, gint*
+	var c_start_pos C.gint
+
+	var c_end_pos C.gint
+
+	retC := C.g_match_info_fetch_named_pos((*C.GMatchInfo)(recv.native), c_name, &c_start_pos, &c_end_pos)
+	retGo := retC == C.TRUE
+
+	startPos := (*int32)(&c_start_pos)
+
+	endPos := (*int32)(&c_end_pos)
+
+	return retGo, startPos, endPos
+}
+
+// FetchPos is a wrapper around the C function g_match_info_fetch_pos.
+func (recv *MatchInfo) FetchPos(matchNum int32) (bool, *int32, *int32) {
+	c_match_num := (C.gint)(matchNum)
+
+	var c_start_pos C.gint
+
+	var c_end_pos C.gint
+
+	retC := C.g_match_info_fetch_pos((*C.GMatchInfo)(recv.native), c_match_num, &c_start_pos, &c_end_pos)
+	retGo := retC == C.TRUE
+
+	startPos := (*int32)(&c_start_pos)
+
+	endPos := (*int32)(&c_end_pos)
+
+	return retGo, startPos, endPos
+}
 
 // Free is a wrapper around the C function g_match_info_free.
 func (recv *MatchInfo) Free() {

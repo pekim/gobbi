@@ -1370,7 +1370,16 @@ func TypeCheckValue(value *Value) bool {
 
 // Unsupported : g_type_children : unsupported parameter type : no type generator for GType, GType
 
-// Unsupported : g_type_class_adjust_private_offset : unsupported parameter private_size_or_offset : no type generator for gint, gint*
+// TypeClassAdjustPrivateOffset is a wrapper around the C function g_type_class_adjust_private_offset.
+func TypeClassAdjustPrivateOffset(gClass uintptr, privateSizeOrOffset int32) {
+	c_g_class := (C.gpointer)(gClass)
+
+	c_private_size_or_offset := (C.gint)(privateSizeOrOffset)
+
+	C.g_type_class_adjust_private_offset(c_g_class, &c_private_size_or_offset)
+
+	return
+}
 
 // Unsupported : g_type_class_peek : unsupported parameter type : no type generator for GType, GType
 

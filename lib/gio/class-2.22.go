@@ -345,7 +345,13 @@ func (recv *InetAddress) GetNativeSize() uint64 {
 	return retGo
 }
 
-// Unsupported : g_inet_address_to_bytes : no return generator
+// ToBytes is a wrapper around the C function g_inet_address_to_bytes.
+func (recv *InetAddress) ToBytes() *uint8 {
+	retC := C.g_inet_address_to_bytes((*C.GInetAddress)(recv.native))
+	retGo := (*uint8)(&retC)
+
+	return retGo
+}
 
 // ToString is a wrapper around the C function g_inet_address_to_string.
 func (recv *InetAddress) ToString() string {
@@ -1546,7 +1552,7 @@ func (recv *UnixFDMessage) AppendFd(fd int32) (bool, error) {
 	return retGo, goThrowableError
 }
 
-// Unsupported : g_unix_fd_message_steal_fds : unsupported parameter length : no type generator for gint, gint*
+// Unsupported : g_unix_fd_message_steal_fds : no return type
 
 // UnixSocketAddressNew is a wrapper around the C function g_unix_socket_address_new.
 func UnixSocketAddressNew(path string) *SocketAddress {

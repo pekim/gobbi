@@ -134,7 +134,20 @@ func (recv *GLArea) GetHasStencilBuffer() bool {
 	return retGo
 }
 
-// Unsupported : gtk_gl_area_get_required_version : unsupported parameter major : no type generator for gint, gint*
+// GetRequiredVersion is a wrapper around the C function gtk_gl_area_get_required_version.
+func (recv *GLArea) GetRequiredVersion() (*int32, *int32) {
+	var c_major C.gint
+
+	var c_minor C.gint
+
+	C.gtk_gl_area_get_required_version((*C.GtkGLArea)(recv.native), &c_major, &c_minor)
+
+	major := (*int32)(&c_major)
+
+	minor := (*int32)(&c_minor)
+
+	return major, minor
+}
 
 // MakeCurrent is a wrapper around the C function gtk_gl_area_make_current.
 func (recv *GLArea) MakeCurrent() {

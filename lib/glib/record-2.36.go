@@ -50,7 +50,7 @@ func (recv *Source) AddUnixFd(fd int32, events IOCondition) uintptr {
 	c_events := (C.GIOCondition)(events)
 
 	retC := C.g_source_add_unix_fd((*C.GSource)(recv.native), c_fd, c_events)
-	retGo := (uintptr)(retC)
+	retGo := (uintptr)(unsafe.Pointer(retC))
 
 	return retGo
 }

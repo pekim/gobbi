@@ -78,7 +78,24 @@ func (recv *Visual) GetBitsPerRgb() int32 {
 	return retGo
 }
 
-// Unsupported : gdk_visual_get_blue_pixel_details : unsupported parameter mask : no type generator for guint32, guint32*
+// GetBluePixelDetails is a wrapper around the C function gdk_visual_get_blue_pixel_details.
+func (recv *Visual) GetBluePixelDetails() (*uint32, *int32, *int32) {
+	var c_mask C.guint32
+
+	var c_shift C.gint
+
+	var c_precision C.gint
+
+	C.gdk_visual_get_blue_pixel_details((*C.GdkVisual)(recv.native), &c_mask, &c_shift, &c_precision)
+
+	mask := (*uint32)(&c_mask)
+
+	shift := (*int32)(&c_shift)
+
+	precision := (*int32)(&c_precision)
+
+	return mask, shift, precision
+}
 
 // GetByteOrder is a wrapper around the C function gdk_visual_get_byte_order.
 func (recv *Visual) GetByteOrder() ByteOrder {
@@ -104,9 +121,43 @@ func (recv *Visual) GetDepth() int32 {
 	return retGo
 }
 
-// Unsupported : gdk_visual_get_green_pixel_details : unsupported parameter mask : no type generator for guint32, guint32*
+// GetGreenPixelDetails is a wrapper around the C function gdk_visual_get_green_pixel_details.
+func (recv *Visual) GetGreenPixelDetails() (*uint32, *int32, *int32) {
+	var c_mask C.guint32
 
-// Unsupported : gdk_visual_get_red_pixel_details : unsupported parameter mask : no type generator for guint32, guint32*
+	var c_shift C.gint
+
+	var c_precision C.gint
+
+	C.gdk_visual_get_green_pixel_details((*C.GdkVisual)(recv.native), &c_mask, &c_shift, &c_precision)
+
+	mask := (*uint32)(&c_mask)
+
+	shift := (*int32)(&c_shift)
+
+	precision := (*int32)(&c_precision)
+
+	return mask, shift, precision
+}
+
+// GetRedPixelDetails is a wrapper around the C function gdk_visual_get_red_pixel_details.
+func (recv *Visual) GetRedPixelDetails() (*uint32, *int32, *int32) {
+	var c_mask C.guint32
+
+	var c_shift C.gint
+
+	var c_precision C.gint
+
+	C.gdk_visual_get_red_pixel_details((*C.GdkVisual)(recv.native), &c_mask, &c_shift, &c_precision)
+
+	mask := (*uint32)(&c_mask)
+
+	shift := (*int32)(&c_shift)
+
+	precision := (*int32)(&c_precision)
+
+	return mask, shift, precision
+}
 
 // GetVisualType is a wrapper around the C function gdk_visual_get_visual_type.
 func (recv *Visual) GetVisualType() VisualType {
@@ -116,9 +167,43 @@ func (recv *Visual) GetVisualType() VisualType {
 	return retGo
 }
 
-// Unsupported : gdk_window_coords_from_parent : unsupported parameter x : no type generator for gdouble, gdouble*
+// CoordsFromParent is a wrapper around the C function gdk_window_coords_from_parent.
+func (recv *Window) CoordsFromParent(parentX float64, parentY float64) (*float64, *float64) {
+	c_parent_x := (C.gdouble)(parentX)
 
-// Unsupported : gdk_window_coords_to_parent : unsupported parameter parent_x : no type generator for gdouble, gdouble*
+	c_parent_y := (C.gdouble)(parentY)
+
+	var c_x C.gdouble
+
+	var c_y C.gdouble
+
+	C.gdk_window_coords_from_parent((*C.GdkWindow)(recv.native), c_parent_x, c_parent_y, &c_x, &c_y)
+
+	x := (*float64)(&c_x)
+
+	y := (*float64)(&c_y)
+
+	return x, y
+}
+
+// CoordsToParent is a wrapper around the C function gdk_window_coords_to_parent.
+func (recv *Window) CoordsToParent(x float64, y float64) (*float64, *float64) {
+	c_x := (C.gdouble)(x)
+
+	c_y := (C.gdouble)(y)
+
+	var c_parent_x C.gdouble
+
+	var c_parent_y C.gdouble
+
+	C.gdk_window_coords_to_parent((*C.GdkWindow)(recv.native), c_x, c_y, &c_parent_x, &c_parent_y)
+
+	parentX := (*float64)(&c_parent_x)
+
+	parentY := (*float64)(&c_parent_y)
+
+	return parentX, parentY
+}
 
 // CreateSimilarSurface is a wrapper around the C function gdk_window_create_similar_surface.
 func (recv *Window) CreateSimilarSurface(content cairo.Content, width int32, height int32) *cairo.Surface {

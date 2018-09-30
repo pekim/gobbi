@@ -50,9 +50,9 @@ func (recv *BookmarkFile) Free() {
 
 // Unsupported : g_bookmark_file_get_added : no return generator
 
-// Unsupported : g_bookmark_file_get_app_info : unsupported parameter count : no type generator for guint, guint*
+// Unsupported : g_bookmark_file_get_app_info : unsupported parameter stamp : no type generator for glong, time_t*
 
-// Unsupported : g_bookmark_file_get_applications : unsupported parameter length : no type generator for gsize, gsize*
+// Unsupported : g_bookmark_file_get_applications : no return type
 
 // GetDescription is a wrapper around the C function g_bookmark_file_get_description.
 func (recv *BookmarkFile) GetDescription(uri string) (string, error) {
@@ -73,7 +73,7 @@ func (recv *BookmarkFile) GetDescription(uri string) (string, error) {
 	return retGo, goThrowableError
 }
 
-// Unsupported : g_bookmark_file_get_groups : unsupported parameter length : no type generator for gsize, gsize*
+// Unsupported : g_bookmark_file_get_groups : no return type
 
 // GetIcon is a wrapper around the C function g_bookmark_file_get_icon.
 func (recv *BookmarkFile) GetIcon(uri string) (bool, string, string, error) {
@@ -169,7 +169,7 @@ func (recv *BookmarkFile) GetTitle(uri string) (string, error) {
 	return retGo, goThrowableError
 }
 
-// Unsupported : g_bookmark_file_get_uris : unsupported parameter length : no type generator for gsize, gsize*
+// Unsupported : g_bookmark_file_get_uris : no return type
 
 // Unsupported : g_bookmark_file_get_visited : no return generator
 
@@ -428,7 +428,7 @@ func (recv *BookmarkFile) SetTitle(uri string, title string) {
 
 // Unsupported : g_bookmark_file_set_visited : unsupported parameter visited : no type generator for glong, time_t
 
-// Unsupported : g_bookmark_file_to_data : unsupported parameter length : no type generator for gsize, gsize*
+// Unsupported : g_bookmark_file_to_data : no return type
 
 // ToFile is a wrapper around the C function g_bookmark_file_to_file.
 func (recv *BookmarkFile) ToFile(filename string) (bool, error) {
@@ -481,7 +481,7 @@ func (recv *KeyFile) GetDouble(groupName string, key string) (float64, error) {
 	return retGo, goThrowableError
 }
 
-// Unsupported : g_key_file_get_double_list : unsupported parameter length : no type generator for gsize, gsize*
+// Unsupported : g_key_file_get_double_list : no return type
 
 // SetDouble is a wrapper around the C function g_key_file_set_double.
 func (recv *KeyFile) SetDouble(groupName string, key string, value float64) {

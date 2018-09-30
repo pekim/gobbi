@@ -12,35 +12,45 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : g_ascii_string_to_signed : unsupported parameter out_num : no type generator for gint64, gint64*
-
-// Unsupported : g_ascii_string_to_unsigned : unsupported parameter out_num : no type generator for guint64, guint64*
-
-// Unsupported : g_assert_warning : unsupported parameter line : no type generator for gint, const int
-
-// Unsupported : g_assertion_message_cmpnum : unsupported parameter arg1 : no type generator for long double, long double
+// Unsupported : g_assertion_message_cmpnum : unsupported parameter numtype : no type generator for gchar, char
 
 // Unsupported : g_atexit : unsupported parameter func : no type generator for VoidFunc, GVoidFunc
 
-// Unsupported : g_atomic_int_add : unsupported parameter atomic : no type generator for gint, volatile gint*
+// AtomicIntAnd is a wrapper around the C function g_atomic_int_and.
+func AtomicIntAnd(atomic uint32, val uint32) uint32 {
+	c_atomic := (C.guint)(atomic)
 
-// Unsupported : g_atomic_int_and : unsupported parameter atomic : no type generator for guint, volatile guint*
+	c_val := (C.guint)(val)
 
-// Unsupported : g_atomic_int_compare_and_exchange : unsupported parameter atomic : no type generator for gint, volatile gint*
+	retC := C.g_atomic_int_and(&c_atomic, c_val)
+	retGo := (uint32)(retC)
 
-// Unsupported : g_atomic_int_dec_and_test : unsupported parameter atomic : no type generator for gint, volatile gint*
+	return retGo
+}
 
-// Unsupported : g_atomic_int_exchange_and_add : unsupported parameter atomic : no type generator for gint, volatile gint*
+// AtomicIntOr is a wrapper around the C function g_atomic_int_or.
+func AtomicIntOr(atomic uint32, val uint32) uint32 {
+	c_atomic := (C.guint)(atomic)
 
-// Unsupported : g_atomic_int_get : unsupported parameter atomic : no type generator for gint, volatile const gint*
+	c_val := (C.guint)(val)
 
-// Unsupported : g_atomic_int_inc : unsupported parameter atomic : no type generator for gint, volatile gint*
+	retC := C.g_atomic_int_or(&c_atomic, c_val)
+	retGo := (uint32)(retC)
 
-// Unsupported : g_atomic_int_or : unsupported parameter atomic : no type generator for guint, volatile guint*
+	return retGo
+}
 
-// Unsupported : g_atomic_int_set : unsupported parameter atomic : no type generator for gint, volatile gint*
+// AtomicIntXor is a wrapper around the C function g_atomic_int_xor.
+func AtomicIntXor(atomic uint32, val uint32) uint32 {
+	c_atomic := (C.guint)(atomic)
 
-// Unsupported : g_atomic_int_xor : unsupported parameter atomic : no type generator for guint, volatile guint*
+	c_val := (C.guint)(val)
+
+	retC := C.g_atomic_int_xor(&c_atomic, c_val)
+	retGo := (uint32)(retC)
+
+	return retGo
+}
 
 // Unsupported : g_atomic_pointer_add : unsupported parameter atomic : no type generator for gpointer, void*
 
@@ -56,7 +66,7 @@ import "C"
 
 // Unsupported : g_atomic_pointer_xor : unsupported parameter atomic : no type generator for gpointer, void*
 
-// Unsupported : g_base64_decode : unsupported parameter out_len : no type generator for gsize, gsize*
+// Unsupported : g_base64_decode : no return type
 
 // Unsupported : g_base64_decode_inplace : unsupported parameter text : no param type
 
@@ -67,12 +77,6 @@ import "C"
 // Unsupported : g_base64_encode_close : unsupported parameter out : no param type
 
 // Unsupported : g_base64_encode_step : unsupported parameter in : no param type
-
-// Unsupported : g_bit_lock : unsupported parameter address : no type generator for gint, volatile gint*
-
-// Unsupported : g_bit_trylock : unsupported parameter address : no type generator for gint, volatile gint*
-
-// Unsupported : g_bit_unlock : unsupported parameter address : no type generator for gint, volatile gint*
 
 // Unsupported : g_build_filename : unsupported parameter ... : varargs
 
@@ -98,9 +102,9 @@ import "C"
 
 // Unsupported : g_child_watch_add_full : unsupported parameter function : no type generator for ChildWatchFunc, GChildWatchFunc
 
-// Unsupported : g_clear_handle_id : unsupported parameter tag_ptr : no type generator for guint, guint*
+// Unsupported : g_clear_handle_id : unsupported parameter clear_func : no type generator for ClearHandleFunc, GClearHandleFunc
 
-// Unsupported : g_clear_pointer : unsupported parameter pp : no type generator for gpointer, gpointer*
+// Unsupported : g_clear_pointer : unsupported parameter destroy : no type generator for DestroyNotify, GDestroyNotify
 
 // Unsupported : g_compute_checksum_for_data : unsupported parameter data : no param type
 
@@ -171,10 +175,6 @@ func DirMakeTmp(tmpl string) (string, error) {
 
 // Unsupported : g_file_set_contents : unsupported parameter contents : no param type
 
-// Unsupported : g_filename_from_utf8 : unsupported parameter bytes_read : no type generator for gsize, gsize*
-
-// Unsupported : g_filename_to_utf8 : unsupported parameter bytes_read : no type generator for gsize, gsize*
-
 // FormatSize is a wrapper around the C function g_format_size.
 func FormatSize(size uint64) string {
 	c_size := (C.guint64)(size)
@@ -213,8 +213,6 @@ func FormatSizeFull(size uint64, flags FormatSizeFlags) string {
 
 // Unsupported : g_get_system_data_dirs : no return type
 
-// Unsupported : g_hash_table_lookup_extended : unsupported parameter orig_key : no type generator for gpointer, gpointer*
-
 // Unsupported : g_iconv : unsupported parameter converter : Blacklisted record : GIConv
 
 // Unsupported : g_iconv_open : return type : Blacklisted record : GIConv
@@ -231,7 +229,7 @@ func FormatSizeFull(size uint64, flags FormatSizeFlags) string {
 
 // Unsupported : g_listenv : no return type
 
-// Unsupported : g_locale_from_utf8 : unsupported parameter bytes_read : no type generator for gsize, gsize*
+// Unsupported : g_locale_from_utf8 : no return type
 
 // Unsupported : g_locale_to_utf8 : unsupported parameter opsysstring : no param type
 
@@ -295,8 +293,6 @@ func MkdtempFull(tmpl string, mode int32) string {
 	return retGo
 }
 
-// Unsupported : g_nullify_pointer : unsupported parameter nullify_location : no type generator for gpointer, gpointer*
-
 // Unsupported : g_once_init_enter : unsupported parameter location : no type generator for gpointer, void*
 
 // Unsupported : g_once_init_leave : unsupported parameter location : no type generator for gpointer, void*
@@ -355,9 +351,7 @@ func RegexEscapeNul(string string, length int32) string {
 
 // Unsupported : g_set_printerr_handler : unsupported parameter func : no type generator for PrintFunc, GPrintFunc
 
-// Unsupported : g_shell_parse_argv : unsupported parameter argcp : no type generator for gint, gint*
-
-// Unsupported : g_slice_get_config_state : unsupported parameter n_values : no type generator for guint, guint*
+// Unsupported : g_shell_parse_argv : unsupported parameter argvp : no param type
 
 // Unsupported : g_snprintf : unsupported parameter ... : varargs
 
@@ -416,7 +410,7 @@ func TestFail() {
 
 // Unsupported : g_test_get_filename : unsupported parameter ... : varargs
 
-// Unsupported : g_test_init : unsupported parameter argc : no type generator for gint, int*
+// Unsupported : g_test_init : unsupported parameter argv : in string with indirection level of 3
 
 // Unsupported : g_test_log_set_fatal_handler : unsupported parameter log_func : no type generator for TestLogFatalFunc, GTestLogFatalFunc
 
@@ -444,21 +438,52 @@ func TestFail() {
 
 // Unsupported : g_trash_stack_push : unsupported parameter stack_p : record with indirection level of 2
 
-// Unsupported : g_ucs4_to_utf16 : unsupported parameter str : no type generator for gunichar, const gunichar*
+// Unsupported : g_ucs4_to_utf16 : no return generator
 
-// Unsupported : g_ucs4_to_utf8 : unsupported parameter str : no type generator for gunichar, const gunichar*
+// UnicharCompose is a wrapper around the C function g_unichar_compose.
+func UnicharCompose(a rune, b rune, ch rune) bool {
+	c_a := (C.gunichar)(a)
 
-// Unsupported : g_unichar_compose : unsupported parameter ch : no type generator for gunichar, gunichar*
+	c_b := (C.gunichar)(b)
 
-// Unsupported : g_unichar_decompose : unsupported parameter a : no type generator for gunichar, gunichar*
+	c_ch := (C.gunichar)(ch)
 
-// Unsupported : g_unichar_fully_decompose : unsupported parameter result : no type generator for gunichar, gunichar*
+	retC := C.g_unichar_compose(c_a, c_b, &c_ch)
+	retGo := retC == C.TRUE
 
-// Unsupported : g_unichar_get_mirror_char : unsupported parameter mirrored_ch : no type generator for gunichar, gunichar*
+	return retGo
+}
 
-// Unsupported : g_unicode_canonical_decomposition : unsupported parameter result_len : no type generator for gsize, gsize*
+// UnicharDecompose is a wrapper around the C function g_unichar_decompose.
+func UnicharDecompose(ch rune, a rune, b rune) bool {
+	c_ch := (C.gunichar)(ch)
 
-// Unsupported : g_unicode_canonical_ordering : unsupported parameter string : no type generator for gunichar, gunichar*
+	c_a := (C.gunichar)(a)
+
+	c_b := (C.gunichar)(b)
+
+	retC := C.g_unichar_decompose(c_ch, &c_a, &c_b)
+	retGo := retC == C.TRUE
+
+	return retGo
+}
+
+// UnicharFullyDecompose is a wrapper around the C function g_unichar_fully_decompose.
+func UnicharFullyDecompose(ch rune, compat bool, result rune, resultLen uint64) uint64 {
+	c_ch := (C.gunichar)(ch)
+
+	c_compat :=
+		boolToGboolean(compat)
+
+	c_result := (C.gunichar)(result)
+
+	c_result_len := (C.gsize)(resultLen)
+
+	retC := C.g_unichar_fully_decompose(c_ch, c_compat, &c_result, c_result_len)
+	retGo := (uint64)(retC)
+
+	return retGo
+}
 
 // UnicodeScriptFromIso15924 is a wrapper around the C function g_unicode_script_from_iso15924.
 func UnicodeScriptFromIso15924(iso15924 uint32) UnicodeScript {
@@ -484,7 +509,24 @@ func UnicodeScriptToIso15924(script UnicodeScript) uint32 {
 
 // Unsupported : g_unix_fd_add_full : unsupported parameter function : no type generator for UnixFDSourceFunc, GUnixFDSourceFunc
 
-// Unsupported : g_unix_open_pipe : unsupported parameter fds : no type generator for gint, gint*
+// UnixOpenPipe is a wrapper around the C function g_unix_open_pipe.
+func UnixOpenPipe(fds int32, flags int32) (bool, error) {
+	c_fds := (C.gint)(fds)
+
+	c_flags := (C.gint)(flags)
+
+	var cThrowableError *C.GError
+
+	retC := C.g_unix_open_pipe(&c_fds, c_flags, &cThrowableError)
+	retGo := retC == C.TRUE
+
+	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // UnixSetFdNonblocking is a wrapper around the C function g_unix_set_fd_nonblocking.
 func UnixSetFdNonblocking(fd int32, nonblock bool) (bool, error) {
@@ -542,11 +584,7 @@ func Utf8Substring(str string, startPos int64, endPos int64) string {
 	return retGo
 }
 
-// Unsupported : g_utf8_to_ucs4 : unsupported parameter items_read : no type generator for glong, glong*
-
-// Unsupported : g_utf8_to_ucs4_fast : unsupported parameter items_written : no type generator for glong, glong*
-
-// Unsupported : g_utf8_to_utf16 : unsupported parameter items_read : no type generator for glong, glong*
+// Unsupported : g_utf8_to_utf16 : no return generator
 
 // Unsupported : g_utf8_validate : unsupported parameter str : no param type
 

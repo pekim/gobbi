@@ -16,7 +16,7 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : gtk_accel_label_get_accel : unsupported parameter accelerator_key : no type generator for guint, guint*
+// Unsupported : gtk_accel_label_get_accel : unsupported parameter accelerator_mods : GdkModifierType* with indirection level of 1
 
 // ActionBarNew is a wrapper around the C function gtk_action_bar_new.
 func ActionBarNew() *Widget {

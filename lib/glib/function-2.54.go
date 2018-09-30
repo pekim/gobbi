@@ -3,6 +3,8 @@
 
 package glib
 
+import "unsafe"
+
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <glib.h>
 // #include <glib/gstdio.h>
@@ -10,35 +12,65 @@ package glib
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : g_ascii_string_to_signed : unsupported parameter out_num : no type generator for gint64, gint64*
+// AsciiStringToSigned is a wrapper around the C function g_ascii_string_to_signed.
+func AsciiStringToSigned(str string, base uint32, min int64, max int64) (bool, *int64, error) {
+	c_str := C.CString(str)
+	defer C.free(unsafe.Pointer(c_str))
 
-// Unsupported : g_ascii_string_to_unsigned : unsupported parameter out_num : no type generator for guint64, guint64*
+	c_base := (C.guint)(base)
 
-// Unsupported : g_assert_warning : unsupported parameter line : no type generator for gint, const int
+	c_min := (C.gint64)(min)
 
-// Unsupported : g_assertion_message_cmpnum : unsupported parameter arg1 : no type generator for long double, long double
+	c_max := (C.gint64)(max)
+
+	var c_out_num C.gint64
+
+	var cThrowableError *C.GError
+
+	retC := C.g_ascii_string_to_signed(c_str, c_base, c_min, c_max, &c_out_num, &cThrowableError)
+	retGo := retC == C.TRUE
+
+	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	outNum := (*int64)(&c_out_num)
+
+	return retGo, outNum, goThrowableError
+}
+
+// AsciiStringToUnsigned is a wrapper around the C function g_ascii_string_to_unsigned.
+func AsciiStringToUnsigned(str string, base uint32, min uint64, max uint64) (bool, *uint64, error) {
+	c_str := C.CString(str)
+	defer C.free(unsafe.Pointer(c_str))
+
+	c_base := (C.guint)(base)
+
+	c_min := (C.guint64)(min)
+
+	c_max := (C.guint64)(max)
+
+	var c_out_num C.guint64
+
+	var cThrowableError *C.GError
+
+	retC := C.g_ascii_string_to_unsigned(c_str, c_base, c_min, c_max, &c_out_num, &cThrowableError)
+	retGo := retC == C.TRUE
+
+	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	outNum := (*uint64)(&c_out_num)
+
+	return retGo, outNum, goThrowableError
+}
+
+// Unsupported : g_assertion_message_cmpnum : unsupported parameter numtype : no type generator for gchar, char
 
 // Unsupported : g_atexit : unsupported parameter func : no type generator for VoidFunc, GVoidFunc
-
-// Unsupported : g_atomic_int_add : unsupported parameter atomic : no type generator for gint, volatile gint*
-
-// Unsupported : g_atomic_int_and : unsupported parameter atomic : no type generator for guint, volatile guint*
-
-// Unsupported : g_atomic_int_compare_and_exchange : unsupported parameter atomic : no type generator for gint, volatile gint*
-
-// Unsupported : g_atomic_int_dec_and_test : unsupported parameter atomic : no type generator for gint, volatile gint*
-
-// Unsupported : g_atomic_int_exchange_and_add : unsupported parameter atomic : no type generator for gint, volatile gint*
-
-// Unsupported : g_atomic_int_get : unsupported parameter atomic : no type generator for gint, volatile const gint*
-
-// Unsupported : g_atomic_int_inc : unsupported parameter atomic : no type generator for gint, volatile gint*
-
-// Unsupported : g_atomic_int_or : unsupported parameter atomic : no type generator for guint, volatile guint*
-
-// Unsupported : g_atomic_int_set : unsupported parameter atomic : no type generator for gint, volatile gint*
-
-// Unsupported : g_atomic_int_xor : unsupported parameter atomic : no type generator for guint, volatile guint*
 
 // Unsupported : g_atomic_pointer_add : unsupported parameter atomic : no type generator for gpointer, void*
 
@@ -54,7 +86,7 @@ import "C"
 
 // Unsupported : g_atomic_pointer_xor : unsupported parameter atomic : no type generator for gpointer, void*
 
-// Unsupported : g_base64_decode : unsupported parameter out_len : no type generator for gsize, gsize*
+// Unsupported : g_base64_decode : no return type
 
 // Unsupported : g_base64_decode_inplace : unsupported parameter text : no param type
 
@@ -65,12 +97,6 @@ import "C"
 // Unsupported : g_base64_encode_close : unsupported parameter out : no param type
 
 // Unsupported : g_base64_encode_step : unsupported parameter in : no param type
-
-// Unsupported : g_bit_lock : unsupported parameter address : no type generator for gint, volatile gint*
-
-// Unsupported : g_bit_trylock : unsupported parameter address : no type generator for gint, volatile gint*
-
-// Unsupported : g_bit_unlock : unsupported parameter address : no type generator for gint, volatile gint*
 
 // Unsupported : g_build_filename : unsupported parameter ... : varargs
 
@@ -96,9 +122,9 @@ import "C"
 
 // Unsupported : g_child_watch_add_full : unsupported parameter function : no type generator for ChildWatchFunc, GChildWatchFunc
 
-// Unsupported : g_clear_handle_id : unsupported parameter tag_ptr : no type generator for guint, guint*
+// Unsupported : g_clear_handle_id : unsupported parameter clear_func : no type generator for ClearHandleFunc, GClearHandleFunc
 
-// Unsupported : g_clear_pointer : unsupported parameter pp : no type generator for gpointer, gpointer*
+// Unsupported : g_clear_pointer : unsupported parameter destroy : no type generator for DestroyNotify, GDestroyNotify
 
 // Unsupported : g_compute_checksum_for_data : unsupported parameter data : no param type
 
@@ -150,10 +176,6 @@ import "C"
 
 // Unsupported : g_file_set_contents : unsupported parameter contents : no param type
 
-// Unsupported : g_filename_from_utf8 : unsupported parameter bytes_read : no type generator for gsize, gsize*
-
-// Unsupported : g_filename_to_utf8 : unsupported parameter bytes_read : no type generator for gsize, gsize*
-
 // Unsupported : g_fprintf : unsupported parameter file : no type generator for gpointer, FILE*
 
 // Unsupported : g_get_environ : no return type
@@ -167,8 +189,6 @@ import "C"
 // Unsupported : g_get_system_config_dirs : no return type
 
 // Unsupported : g_get_system_data_dirs : no return type
-
-// Unsupported : g_hash_table_lookup_extended : unsupported parameter orig_key : no type generator for gpointer, gpointer*
 
 // Unsupported : g_iconv : unsupported parameter converter : Blacklisted record : GIConv
 
@@ -186,7 +206,7 @@ import "C"
 
 // Unsupported : g_listenv : no return type
 
-// Unsupported : g_locale_from_utf8 : unsupported parameter bytes_read : no type generator for gsize, gsize*
+// Unsupported : g_locale_from_utf8 : no return type
 
 // Unsupported : g_locale_to_utf8 : unsupported parameter opsysstring : no param type
 
@@ -223,8 +243,6 @@ import "C"
 // Unsupported : g_markup_printf_escaped : unsupported parameter ... : varargs
 
 // Unsupported : g_markup_vprintf_escaped : unsupported parameter args : no type generator for va_list, va_list
-
-// Unsupported : g_nullify_pointer : unsupported parameter nullify_location : no type generator for gpointer, gpointer*
 
 // Unsupported : g_once_init_enter : unsupported parameter location : no type generator for gpointer, void*
 
@@ -270,9 +288,7 @@ import "C"
 
 // Unsupported : g_set_printerr_handler : unsupported parameter func : no type generator for PrintFunc, GPrintFunc
 
-// Unsupported : g_shell_parse_argv : unsupported parameter argcp : no type generator for gint, gint*
-
-// Unsupported : g_slice_get_config_state : unsupported parameter n_values : no type generator for guint, guint*
+// Unsupported : g_shell_parse_argv : unsupported parameter argvp : no param type
 
 // Unsupported : g_snprintf : unsupported parameter ... : varargs
 
@@ -324,7 +340,7 @@ import "C"
 
 // Unsupported : g_test_get_filename : unsupported parameter ... : varargs
 
-// Unsupported : g_test_init : unsupported parameter argc : no type generator for gint, int*
+// Unsupported : g_test_init : unsupported parameter argv : in string with indirection level of 3
 
 // Unsupported : g_test_log_set_fatal_handler : unsupported parameter log_func : no type generator for TestLogFatalFunc, GTestLogFatalFunc
 
@@ -352,27 +368,11 @@ import "C"
 
 // Unsupported : g_trash_stack_push : unsupported parameter stack_p : record with indirection level of 2
 
-// Unsupported : g_ucs4_to_utf16 : unsupported parameter str : no type generator for gunichar, const gunichar*
-
-// Unsupported : g_ucs4_to_utf8 : unsupported parameter str : no type generator for gunichar, const gunichar*
-
-// Unsupported : g_unichar_compose : unsupported parameter ch : no type generator for gunichar, gunichar*
-
-// Unsupported : g_unichar_decompose : unsupported parameter a : no type generator for gunichar, gunichar*
-
-// Unsupported : g_unichar_fully_decompose : unsupported parameter result : no type generator for gunichar, gunichar*
-
-// Unsupported : g_unichar_get_mirror_char : unsupported parameter mirrored_ch : no type generator for gunichar, gunichar*
-
-// Unsupported : g_unicode_canonical_decomposition : unsupported parameter result_len : no type generator for gsize, gsize*
-
-// Unsupported : g_unicode_canonical_ordering : unsupported parameter string : no type generator for gunichar, gunichar*
+// Unsupported : g_ucs4_to_utf16 : no return generator
 
 // Unsupported : g_unix_fd_add : unsupported parameter function : no type generator for UnixFDSourceFunc, GUnixFDSourceFunc
 
 // Unsupported : g_unix_fd_add_full : unsupported parameter function : no type generator for UnixFDSourceFunc, GUnixFDSourceFunc
-
-// Unsupported : g_unix_open_pipe : unsupported parameter fds : no type generator for gint, gint*
 
 // Unsupported : g_unix_signal_add : unsupported parameter handler : no type generator for SourceFunc, GSourceFunc
 
@@ -384,11 +384,7 @@ import "C"
 
 // Unsupported : g_utf16_to_utf8 : unsupported parameter str : no type generator for guint16, const gunichar2*
 
-// Unsupported : g_utf8_to_ucs4 : unsupported parameter items_read : no type generator for glong, glong*
-
-// Unsupported : g_utf8_to_ucs4_fast : unsupported parameter items_written : no type generator for glong, glong*
-
-// Unsupported : g_utf8_to_utf16 : unsupported parameter items_read : no type generator for glong, glong*
+// Unsupported : g_utf8_to_utf16 : no return generator
 
 // Unsupported : g_utf8_validate : unsupported parameter str : no param type
 

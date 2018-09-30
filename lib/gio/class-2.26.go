@@ -61,7 +61,7 @@ func (recv *Credentials) GetNative(nativeType CredentialsType) uintptr {
 	c_native_type := (C.GCredentialsType)(nativeType)
 
 	retC := C.g_credentials_get_native((*C.GCredentials)(recv.native), c_native_type)
-	retGo := (uintptr)(retC)
+	retGo := (uintptr)(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -344,13 +344,59 @@ func (recv *DBusConnection) RemoveFilter(filterId uint32) {
 	return
 }
 
-// Unsupported : g_dbus_connection_send_message : unsupported parameter out_serial : no type generator for guint32, volatile guint32*
+// SendMessage is a wrapper around the C function g_dbus_connection_send_message.
+func (recv *DBusConnection) SendMessage(message *DBusMessage, flags DBusSendMessageFlags) (bool, *uint32, error) {
+	c_message := (*C.GDBusMessage)(message.ToC())
 
-// Unsupported : g_dbus_connection_send_message_with_reply : unsupported parameter out_serial : no type generator for guint32, volatile guint32*
+	c_flags := (C.GDBusSendMessageFlags)(flags)
+
+	var c_out_serial C.guint32
+
+	var cThrowableError *C.GError
+
+	retC := C.g_dbus_connection_send_message((*C.GDBusConnection)(recv.native), c_message, c_flags, &c_out_serial, &cThrowableError)
+	retGo := retC == C.TRUE
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	outSerial := (*uint32)(&c_out_serial)
+
+	return retGo, outSerial, goThrowableError
+}
+
+// Unsupported : g_dbus_connection_send_message_with_reply : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
 
 // Unsupported : g_dbus_connection_send_message_with_reply_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
 
-// Unsupported : g_dbus_connection_send_message_with_reply_sync : unsupported parameter out_serial : no type generator for guint32, volatile guint32*
+// SendMessageWithReplySync is a wrapper around the C function g_dbus_connection_send_message_with_reply_sync.
+func (recv *DBusConnection) SendMessageWithReplySync(message *DBusMessage, flags DBusSendMessageFlags, timeoutMsec int32, cancellable *Cancellable) (*DBusMessage, *uint32, error) {
+	c_message := (*C.GDBusMessage)(message.ToC())
+
+	c_flags := (C.GDBusSendMessageFlags)(flags)
+
+	c_timeout_msec := (C.gint)(timeoutMsec)
+
+	var c_out_serial C.guint32
+
+	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_dbus_connection_send_message_with_reply_sync((*C.GDBusConnection)(recv.native), c_message, c_flags, c_timeout_msec, &c_out_serial, c_cancellable, &cThrowableError)
+	retGo := DBusMessageNewFromC(unsafe.Pointer(retC))
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	outSerial := (*uint32)(&c_out_serial)
+
+	return retGo, outSerial, goThrowableError
+}
 
 // SetExitOnClose is a wrapper around the C function g_dbus_connection_set_exit_on_close.
 func (recv *DBusConnection) SetExitOnClose(exitOnClose bool) {
@@ -798,7 +844,7 @@ func (recv *DBusMessage) SetUnixFdList(fdList *UnixFDList) {
 	return
 }
 
-// Unsupported : g_dbus_message_to_blob : unsupported parameter out_size : no type generator for gsize, gsize*
+// Unsupported : g_dbus_message_to_blob : no return type
 
 // ToGerror is a wrapper around the C function g_dbus_message_to_gerror.
 func (recv *DBusMessage) ToGerror() (bool, error) {
@@ -897,7 +943,7 @@ func (recv *DBusMethodInvocation) GetSender() string {
 // GetUserData is a wrapper around the C function g_dbus_method_invocation_get_user_data.
 func (recv *DBusMethodInvocation) GetUserData() uintptr {
 	retC := C.g_dbus_method_invocation_get_user_data((*C.GDBusMethodInvocation)(recv.native))
-	retGo := (uintptr)(retC)
+	retGo := (uintptr)(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -1232,7 +1278,32 @@ func (recv *DBusServer) Stop() {
 	return
 }
 
-// Unsupported : g_data_input_stream_read_upto : unsupported parameter length : no type generator for gsize, gsize*
+// ReadUpto is a wrapper around the C function g_data_input_stream_read_upto.
+func (recv *DataInputStream) ReadUpto(stopChars string, stopCharsLen int64, cancellable *Cancellable) (string, *uint64, error) {
+	c_stop_chars := C.CString(stopChars)
+	defer C.free(unsafe.Pointer(c_stop_chars))
+
+	c_stop_chars_len := (C.gssize)(stopCharsLen)
+
+	var c_length C.gsize
+
+	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_data_input_stream_read_upto((*C.GDataInputStream)(recv.native), c_stop_chars, c_stop_chars_len, &c_length, c_cancellable, &cThrowableError)
+	retGo := C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	length := (*uint64)(&c_length)
+
+	return retGo, length, goThrowableError
+}
 
 // Unsupported : g_data_input_stream_read_upto_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
 
@@ -1255,7 +1326,7 @@ func (recv *DBusServer) Stop() {
 // StealData is a wrapper around the C function g_memory_output_stream_steal_data.
 func (recv *MemoryOutputStream) StealData() uintptr {
 	retC := C.g_memory_output_stream_steal_data((*C.GMemoryOutputStream)(recv.native))
-	retGo := (uintptr)(retC)
+	retGo := (uintptr)(unsafe.Pointer(retC))
 
 	return retGo
 }

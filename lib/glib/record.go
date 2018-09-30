@@ -89,7 +89,7 @@ func (recv *AsyncQueue) Lock() {
 // Pop is a wrapper around the C function g_async_queue_pop.
 func (recv *AsyncQueue) Pop() uintptr {
 	retC := C.g_async_queue_pop((*C.GAsyncQueue)(recv.native))
-	retGo := (uintptr)(retC)
+	retGo := (uintptr)(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -97,7 +97,7 @@ func (recv *AsyncQueue) Pop() uintptr {
 // PopUnlocked is a wrapper around the C function g_async_queue_pop_unlocked.
 func (recv *AsyncQueue) PopUnlocked() uintptr {
 	retC := C.g_async_queue_pop_unlocked((*C.GAsyncQueue)(recv.native))
-	retGo := (uintptr)(retC)
+	retGo := (uintptr)(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -140,7 +140,7 @@ func (recv *AsyncQueue) TimedPop(endTime *TimeVal) uintptr {
 	c_end_time := (*C.GTimeVal)(endTime.ToC())
 
 	retC := C.g_async_queue_timed_pop((*C.GAsyncQueue)(recv.native), c_end_time)
-	retGo := (uintptr)(retC)
+	retGo := (uintptr)(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -150,7 +150,7 @@ func (recv *AsyncQueue) TimedPopUnlocked(endTime *TimeVal) uintptr {
 	c_end_time := (*C.GTimeVal)(endTime.ToC())
 
 	retC := C.g_async_queue_timed_pop_unlocked((*C.GAsyncQueue)(recv.native), c_end_time)
-	retGo := (uintptr)(retC)
+	retGo := (uintptr)(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -160,7 +160,7 @@ func (recv *AsyncQueue) TimeoutPop(timeout uint64) uintptr {
 	c_timeout := (C.guint64)(timeout)
 
 	retC := C.g_async_queue_timeout_pop((*C.GAsyncQueue)(recv.native), c_timeout)
-	retGo := (uintptr)(retC)
+	retGo := (uintptr)(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -170,7 +170,7 @@ func (recv *AsyncQueue) TimeoutPopUnlocked(timeout uint64) uintptr {
 	c_timeout := (C.guint64)(timeout)
 
 	retC := C.g_async_queue_timeout_pop_unlocked((*C.GAsyncQueue)(recv.native), c_timeout)
-	retGo := (uintptr)(retC)
+	retGo := (uintptr)(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -178,7 +178,7 @@ func (recv *AsyncQueue) TimeoutPopUnlocked(timeout uint64) uintptr {
 // TryPop is a wrapper around the C function g_async_queue_try_pop.
 func (recv *AsyncQueue) TryPop() uintptr {
 	retC := C.g_async_queue_try_pop((*C.GAsyncQueue)(recv.native))
-	retGo := (uintptr)(retC)
+	retGo := (uintptr)(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -186,7 +186,7 @@ func (recv *AsyncQueue) TryPop() uintptr {
 // TryPopUnlocked is a wrapper around the C function g_async_queue_try_pop_unlocked.
 func (recv *AsyncQueue) TryPopUnlocked() uintptr {
 	retC := C.g_async_queue_try_pop_unlocked((*C.GAsyncQueue)(recv.native))
-	retGo := (uintptr)(retC)
+	retGo := (uintptr)(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -236,8 +236,8 @@ func (recv *BookmarkFile) ToC() unsafe.Pointer {
 // ByteArray is a wrapper around the C record GByteArray.
 type ByteArray struct {
 	native *C.GByteArray
-	// data : no type generator for guint8, guint8*
-	Len uint32
+	Data   uint8
+	Len    uint32
 }
 
 func ByteArrayNewFromC(u unsafe.Pointer) *ByteArray {
@@ -247,6 +247,7 @@ func ByteArrayNewFromC(u unsafe.Pointer) *ByteArray {
 	}
 
 	g := &ByteArray{
+		Data:   (*uint8)(&c.data),
 		Len:    (uint32)(c.len),
 		native: c,
 	}
@@ -255,6 +256,8 @@ func ByteArrayNewFromC(u unsafe.Pointer) *ByteArray {
 }
 
 func (recv *ByteArray) ToC() unsafe.Pointer {
+	recv.native.data =
+		(C.guint8)(recv.Data)
 	recv.native.len =
 		(C.guint)(recv.Len)
 
@@ -1184,9 +1187,17 @@ func (recv *MainContext) Pending() bool {
 	return retGo
 }
 
-// Unsupported : g_main_context_prepare : unsupported parameter priority : no type generator for gint, gint*
+// Prepare is a wrapper around the C function g_main_context_prepare.
+func (recv *MainContext) Prepare(priority int32) bool {
+	c_priority := (C.gint)(priority)
 
-// Unsupported : g_main_context_query : unsupported parameter timeout_ : no type generator for gint, gint*
+	retC := C.g_main_context_prepare((*C.GMainContext)(recv.native), &c_priority)
+	retGo := retC == C.TRUE
+
+	return retGo
+}
+
+// Unsupported : g_main_context_query : unsupported parameter fds : no param type
 
 // Ref is a wrapper around the C function g_main_context_ref.
 func (recv *MainContext) Ref() *MainContext {
@@ -1382,7 +1393,16 @@ func (recv *MarkupParseContext) Free() {
 	return
 }
 
-// Unsupported : g_markup_parse_context_get_position : unsupported parameter line_number : no type generator for gint, gint*
+// GetPosition is a wrapper around the C function g_markup_parse_context_get_position.
+func (recv *MarkupParseContext) GetPosition(lineNumber int32, charNumber int32) {
+	c_line_number := (C.gint)(lineNumber)
+
+	c_char_number := (C.gint)(charNumber)
+
+	C.g_markup_parse_context_get_position((*C.GMarkupParseContext)(recv.native), &c_line_number, &c_char_number)
+
+	return
+}
 
 // Parse is a wrapper around the C function g_markup_parse_context_parse.
 func (recv *MarkupParseContext) Parse(text string, textLen int64) (bool, error) {
@@ -1915,7 +1935,7 @@ func (recv *Private) ToC() unsafe.Pointer {
 // Get is a wrapper around the C function g_private_get.
 func (recv *Private) Get() uintptr {
 	retC := C.g_private_get((*C.GPrivate)(recv.native))
-	retGo := (uintptr)(retC)
+	retGo := (uintptr)(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -1932,8 +1952,8 @@ func (recv *Private) Set(value uintptr) {
 // PtrArray is a wrapper around the C record GPtrArray.
 type PtrArray struct {
 	native *C.GPtrArray
-	// pdata : no type generator for gpointer, gpointer*
-	Len uint32
+	Pdata  uintptr
+	Len    uint32
 }
 
 func PtrArrayNewFromC(u unsafe.Pointer) *PtrArray {
@@ -1944,6 +1964,7 @@ func PtrArrayNewFromC(u unsafe.Pointer) *PtrArray {
 
 	g := &PtrArray{
 		Len:    (uint32)(c.len),
+		Pdata:  (*uintptr)(&c.pdata),
 		native: c,
 	}
 
@@ -1951,6 +1972,8 @@ func PtrArrayNewFromC(u unsafe.Pointer) *PtrArray {
 }
 
 func (recv *PtrArray) ToC() unsafe.Pointer {
+	recv.native.pdata =
+		(C.gpointer)(recv.Pdata)
 	recv.native.len =
 		(C.guint)(recv.Len)
 
@@ -2004,7 +2027,7 @@ func (recv *Queue) IsEmpty() bool {
 // PeekHead is a wrapper around the C function g_queue_peek_head.
 func (recv *Queue) PeekHead() uintptr {
 	retC := C.g_queue_peek_head((*C.GQueue)(recv.native))
-	retGo := (uintptr)(retC)
+	retGo := (uintptr)(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -2012,7 +2035,7 @@ func (recv *Queue) PeekHead() uintptr {
 // PeekTail is a wrapper around the C function g_queue_peek_tail.
 func (recv *Queue) PeekTail() uintptr {
 	retC := C.g_queue_peek_tail((*C.GQueue)(recv.native))
-	retGo := (uintptr)(retC)
+	retGo := (uintptr)(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -2020,7 +2043,7 @@ func (recv *Queue) PeekTail() uintptr {
 // PopHead is a wrapper around the C function g_queue_pop_head.
 func (recv *Queue) PopHead() uintptr {
 	retC := C.g_queue_pop_head((*C.GQueue)(recv.native))
-	retGo := (uintptr)(retC)
+	retGo := (uintptr)(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -2036,7 +2059,7 @@ func (recv *Queue) PopHeadLink() *List {
 // PopTail is a wrapper around the C function g_queue_pop_tail.
 func (recv *Queue) PopTail() uintptr {
 	retC := C.g_queue_pop_tail((*C.GQueue)(recv.native))
-	retGo := (uintptr)(retC)
+	retGo := (uintptr)(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -2342,7 +2365,7 @@ func (recv *Scanner) LookupSymbol(symbol string) uintptr {
 	defer C.free(unsafe.Pointer(c_symbol))
 
 	retC := C.g_scanner_lookup_symbol((*C.GScanner)(recv.native), c_symbol)
-	retGo := (uintptr)(retC)
+	retGo := (uintptr)(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -2379,7 +2402,7 @@ func (recv *Scanner) ScopeLookupSymbol(scopeId uint32, symbol string) uintptr {
 	defer C.free(unsafe.Pointer(c_symbol))
 
 	retC := C.g_scanner_scope_lookup_symbol((*C.GScanner)(recv.native), c_scope_id, c_symbol)
-	retGo := (uintptr)(retC)
+	retGo := (uintptr)(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -3269,7 +3292,7 @@ func (recv *Thread) ToC() unsafe.Pointer {
 // Join is a wrapper around the C function g_thread_join.
 func (recv *Thread) Join() uintptr {
 	retC := C.g_thread_join((*C.GThread)(recv.native))
-	retGo := (uintptr)(retC)
+	retGo := (uintptr)(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -3445,7 +3468,15 @@ func (recv *Timer) Destroy() {
 	return
 }
 
-// Unsupported : g_timer_elapsed : unsupported parameter microseconds : no type generator for gulong, gulong*
+// Elapsed is a wrapper around the C function g_timer_elapsed.
+func (recv *Timer) Elapsed(microseconds uint64) float64 {
+	c_microseconds := (C.gulong)(microseconds)
+
+	retC := C.g_timer_elapsed((*C.GTimer)(recv.native), &c_microseconds)
+	retGo := (float64)(retC)
+
+	return retGo
+}
 
 // Reset is a wrapper around the C function g_timer_reset.
 func (recv *Timer) Reset() {
@@ -3544,12 +3575,24 @@ func (recv *Tree) Lookup(key uintptr) uintptr {
 	c_key := (C.gconstpointer)(key)
 
 	retC := C.g_tree_lookup((*C.GTree)(recv.native), c_key)
-	retGo := (uintptr)(retC)
+	retGo := (uintptr)(unsafe.Pointer(retC))
 
 	return retGo
 }
 
-// Unsupported : g_tree_lookup_extended : unsupported parameter orig_key : no type generator for gpointer, gpointer*
+// LookupExtended is a wrapper around the C function g_tree_lookup_extended.
+func (recv *Tree) LookupExtended(lookupKey uintptr, origKey uintptr, value uintptr) bool {
+	c_lookup_key := (C.gconstpointer)(lookupKey)
+
+	c_orig_key := (C.gpointer)(origKey)
+
+	c_value := (C.gpointer)(value)
+
+	retC := C.g_tree_lookup_extended((*C.GTree)(recv.native), c_lookup_key, &c_orig_key, &c_value)
+	retGo := retC == C.TRUE
+
+	return retGo
+}
 
 // Nnodes is a wrapper around the C function g_tree_nnodes.
 func (recv *Tree) Nnodes() int32 {

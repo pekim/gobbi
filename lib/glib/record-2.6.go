@@ -68,7 +68,7 @@ func (recv *KeyFile) GetBoolean(groupName string, key string) (bool, error) {
 	return retGo, goThrowableError
 }
 
-// Unsupported : g_key_file_get_boolean_list : unsupported parameter length : no type generator for gsize, gsize*
+// Unsupported : g_key_file_get_boolean_list : no return type
 
 // GetComment is a wrapper around the C function g_key_file_get_comment.
 func (recv *KeyFile) GetComment(groupName string, key string) (string, error) {
@@ -92,7 +92,7 @@ func (recv *KeyFile) GetComment(groupName string, key string) (string, error) {
 	return retGo, goThrowableError
 }
 
-// Unsupported : g_key_file_get_groups : unsupported parameter length : no type generator for gsize, gsize*
+// Unsupported : g_key_file_get_groups : no return type
 
 // GetInteger is a wrapper around the C function g_key_file_get_integer.
 func (recv *KeyFile) GetInteger(groupName string, key string) (int32, error) {
@@ -115,9 +115,9 @@ func (recv *KeyFile) GetInteger(groupName string, key string) (int32, error) {
 	return retGo, goThrowableError
 }
 
-// Unsupported : g_key_file_get_integer_list : unsupported parameter length : no type generator for gsize, gsize*
+// Unsupported : g_key_file_get_integer_list : no return type
 
-// Unsupported : g_key_file_get_keys : unsupported parameter length : no type generator for gsize, gsize*
+// Unsupported : g_key_file_get_keys : no return type
 
 // GetLocaleString is a wrapper around the C function g_key_file_get_locale_string.
 func (recv *KeyFile) GetLocaleString(groupName string, key string, locale string) (string, error) {
@@ -144,7 +144,7 @@ func (recv *KeyFile) GetLocaleString(groupName string, key string, locale string
 	return retGo, goThrowableError
 }
 
-// Unsupported : g_key_file_get_locale_string_list : unsupported parameter length : no type generator for gsize, gsize*
+// Unsupported : g_key_file_get_locale_string_list : no return type
 
 // GetStartGroup is a wrapper around the C function g_key_file_get_start_group.
 func (recv *KeyFile) GetStartGroup() string {
@@ -177,7 +177,7 @@ func (recv *KeyFile) GetString(groupName string, key string) (string, error) {
 	return retGo, goThrowableError
 }
 
-// Unsupported : g_key_file_get_string_list : unsupported parameter length : no type generator for gsize, gsize*
+// Unsupported : g_key_file_get_string_list : no return type
 
 // GetValue is a wrapper around the C function g_key_file_get_value.
 func (recv *KeyFile) GetValue(groupName string, key string) (string, error) {
@@ -483,7 +483,25 @@ func (recv *KeyFile) SetValue(groupName string, key string, value string) {
 	return
 }
 
-// Unsupported : g_key_file_to_data : unsupported parameter length : no type generator for gsize, gsize*
+// ToData is a wrapper around the C function g_key_file_to_data.
+func (recv *KeyFile) ToData() (string, *uint64, error) {
+	var c_length C.gsize
+
+	var cThrowableError *C.GError
+
+	retC := C.g_key_file_to_data((*C.GKeyFile)(recv.native), &c_length, &cThrowableError)
+	retGo := C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
+
+	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	length := (*uint64)(&c_length)
+
+	return retGo, length, goThrowableError
+}
 
 // Unsupported : g_markup_parse_context_new : unsupported parameter user_data_dnotify : no type generator for DestroyNotify, GDestroyNotify
 
@@ -539,7 +557,7 @@ func (recv *OptionContext) GetMainGroup() *OptionGroup {
 	return retGo
 }
 
-// Unsupported : g_option_context_parse : unsupported parameter argc : no type generator for gint, gint*
+// Unsupported : g_option_context_parse : unsupported parameter argv : no param type
 
 // SetHelpEnabled is a wrapper around the C function g_option_context_set_help_enabled.
 func (recv *OptionContext) SetHelpEnabled(helpEnabled bool) {

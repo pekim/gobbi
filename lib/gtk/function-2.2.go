@@ -10,9 +10,9 @@ package gtk
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : gtk_accelerator_parse : unsupported parameter accelerator_key : no type generator for guint, guint*
+// Unsupported : gtk_accelerator_parse : unsupported parameter accelerator_mods : GdkModifierType* with indirection level of 1
 
-// Unsupported : gtk_accelerator_parse_with_keycode : unsupported parameter accelerator_key : no type generator for guint, guint*
+// Unsupported : gtk_accelerator_parse_with_keycode : unsupported parameter accelerator_codes : no param type
 
 // Unsupported : gtk_drag_set_icon_gicon : unsupported parameter icon : no type generator for Gio.Icon, GIcon*
 
@@ -36,17 +36,17 @@ import "C"
 
 // Unsupported : gtk_icon_size_register_alias : unsupported parameter target : no type generator for gint, GtkIconSize
 
-// Unsupported : gtk_init : unsupported parameter argc : no type generator for gint, int*
+// Unsupported : gtk_init : unsupported parameter argv : no param type
 
-// Unsupported : gtk_init_check : unsupported parameter argc : no type generator for gint, int*
+// Unsupported : gtk_init_check : unsupported parameter argv : no param type
 
-// Unsupported : gtk_init_with_args : unsupported parameter argc : no type generator for gint, gint*
+// Unsupported : gtk_init_with_args : unsupported parameter argv : no param type
 
 // Unsupported : gtk_key_snooper_install : unsupported parameter snooper : no type generator for KeySnoopFunc, GtkKeySnoopFunc
 
 // Unsupported : gtk_main_do_event : unsupported parameter event : no type generator for Gdk.Event, GdkEvent*
 
-// Unsupported : gtk_parse_args : unsupported parameter argc : no type generator for gint, int*
+// Unsupported : gtk_parse_args : unsupported parameter argv : no param type
 
 // Unsupported : gtk_print_run_page_setup_dialog_async : unsupported parameter done_cb : no type generator for PageSetupDoneFunc, GtkPageSetupDoneFunc
 
@@ -65,8 +65,6 @@ import "C"
 // Unsupported : gtk_render_background_get_clip : unsupported parameter out_clip : Blacklisted record : GdkRectangle
 
 // Unsupported : gtk_render_icon_pixbuf : unsupported parameter size : no type generator for gint, GtkIconSize
-
-// Unsupported : gtk_rgb_to_hsv : unsupported parameter h : no type generator for gdouble, gdouble*
 
 // Unsupported : gtk_selection_add_target : unsupported parameter selection : Blacklisted record : GdkAtom
 
@@ -90,7 +88,7 @@ import "C"
 
 // Unsupported : gtk_target_table_free : unsupported parameter targets : no param type
 
-// Unsupported : gtk_target_table_new_from_list : unsupported parameter n_targets : no type generator for gint, gint*
+// Unsupported : gtk_target_table_new_from_list : no return type
 
 // Unsupported : gtk_targets_include_image : unsupported parameter targets : no param type
 
@@ -108,9 +106,9 @@ import "C"
 
 // Unsupported : gtk_test_find_widget : unsupported parameter widget_type : no type generator for GType, GType
 
-// Unsupported : gtk_test_init : unsupported parameter argcp : no type generator for gint, int*
+// Unsupported : gtk_test_init : unsupported parameter argvp : no param type
 
-// Unsupported : gtk_test_list_all_types : unsupported parameter n_types : no type generator for guint, guint*
+// Unsupported : gtk_test_list_all_types : no return type
 
 // Unsupported : gtk_tree_get_row_drag_data : unsupported parameter tree_model : no type generator for TreeModel, GtkTreeModel**
 

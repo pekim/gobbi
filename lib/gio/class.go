@@ -177,7 +177,7 @@ func (recv *BufferedInputStream) GetBufferSize() uint64 {
 
 // Unsupported : g_buffered_input_stream_peek : unsupported parameter buffer : no param type
 
-// Unsupported : g_buffered_input_stream_peek_buffer : unsupported parameter count : no type generator for gsize, gsize*
+// Unsupported : g_buffered_input_stream_peek_buffer : no return type
 
 // ReadByte is a wrapper around the C function g_buffered_input_stream_read_byte.
 func (recv *BufferedInputStream) ReadByte(cancellable *Cancellable) (int32, error) {
@@ -644,7 +644,7 @@ func (recv *DataInputStream) ReadInt64(cancellable *Cancellable) (int64, error) 
 	return retGo, goThrowableError
 }
 
-// Unsupported : g_data_input_stream_read_line : unsupported parameter length : no type generator for gsize, gsize*
+// Unsupported : g_data_input_stream_read_line : no return type
 
 // ReadUint16 is a wrapper around the C function g_data_input_stream_read_uint16.
 func (recv *DataInputStream) ReadUint16(cancellable *Cancellable) (uint16, error) {
@@ -697,7 +697,30 @@ func (recv *DataInputStream) ReadUint64(cancellable *Cancellable) (uint64, error
 	return retGo, goThrowableError
 }
 
-// Unsupported : g_data_input_stream_read_until : unsupported parameter length : no type generator for gsize, gsize*
+// ReadUntil is a wrapper around the C function g_data_input_stream_read_until.
+func (recv *DataInputStream) ReadUntil(stopChars string, cancellable *Cancellable) (string, *uint64, error) {
+	c_stop_chars := C.CString(stopChars)
+	defer C.free(unsafe.Pointer(c_stop_chars))
+
+	var c_length C.gsize
+
+	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_data_input_stream_read_until((*C.GDataInputStream)(recv.native), c_stop_chars, &c_length, c_cancellable, &cThrowableError)
+	retGo := C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	length := (*uint64)(&c_length)
+
+	return retGo, length, goThrowableError
+}
 
 // SetByteOrder is a wrapper around the C function g_data_input_stream_set_byte_order.
 func (recv *DataInputStream) SetByteOrder(order DataStreamByteOrder) {
@@ -2336,7 +2359,7 @@ func (recv *MemoryOutputStream) ToC() unsafe.Pointer {
 // GetData is a wrapper around the C function g_memory_output_stream_get_data.
 func (recv *MemoryOutputStream) GetData() uintptr {
 	retC := C.g_memory_output_stream_get_data((*C.GMemoryOutputStream)(recv.native))
-	retGo := (uintptr)(retC)
+	retGo := (uintptr)(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -2955,7 +2978,7 @@ func (recv *SimpleAsyncResult) GetOpResGboolean() bool {
 // GetOpResGpointer is a wrapper around the C function g_simple_async_result_get_op_res_gpointer.
 func (recv *SimpleAsyncResult) GetOpResGpointer() uintptr {
 	retC := C.g_simple_async_result_get_op_res_gpointer((*C.GSimpleAsyncResult)(recv.native))
-	retGo := (uintptr)(retC)
+	retGo := (uintptr)(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -2971,7 +2994,7 @@ func (recv *SimpleAsyncResult) GetOpResGssize() int64 {
 // GetSourceTag is a wrapper around the C function g_simple_async_result_get_source_tag.
 func (recv *SimpleAsyncResult) GetSourceTag() uintptr {
 	retC := C.g_simple_async_result_get_source_tag((*C.GSimpleAsyncResult)(recv.native))
-	retGo := (uintptr)(retC)
+	retGo := (uintptr)(unsafe.Pointer(retC))
 
 	return retGo
 }
