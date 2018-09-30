@@ -33,7 +33,7 @@ generate () {
 }
 
 test () {
-    go test -tags "$tags" ./...
+    go test -tags "$tags" github.com/pekim/gobbi/internal/test/...
 }
 
 examples () {
