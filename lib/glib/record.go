@@ -233,36 +233,7 @@ func (recv *BookmarkFile) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ByteArray is a wrapper around the C record GByteArray.
-type ByteArray struct {
-	native *C.GByteArray
-	Data   uint8
-	Len    uint32
-}
-
-func ByteArrayNewFromC(u unsafe.Pointer) *ByteArray {
-	c := (*C.GByteArray)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &ByteArray{
-		Data:   (*uint8)(&c.data),
-		Len:    (uint32)(c.len),
-		native: c,
-	}
-
-	return g
-}
-
-func (recv *ByteArray) ToC() unsafe.Pointer {
-	recv.native.data =
-		(C.guint8)(recv.Data)
-	recv.native.len =
-		(C.guint)(recv.Len)
-
-	return (unsafe.Pointer)(recv.native)
-}
+// Blacklisted : GByteArray
 
 // Unsupported : g_bytes_new : unsupported parameter data : no param type
 
@@ -1949,36 +1920,7 @@ func (recv *Private) Set(value uintptr) {
 	return
 }
 
-// PtrArray is a wrapper around the C record GPtrArray.
-type PtrArray struct {
-	native *C.GPtrArray
-	Pdata  uintptr
-	Len    uint32
-}
-
-func PtrArrayNewFromC(u unsafe.Pointer) *PtrArray {
-	c := (*C.GPtrArray)(u)
-	if c == nil {
-		return nil
-	}
-
-	g := &PtrArray{
-		Len:    (uint32)(c.len),
-		Pdata:  (*uintptr)(&c.pdata),
-		native: c,
-	}
-
-	return g
-}
-
-func (recv *PtrArray) ToC() unsafe.Pointer {
-	recv.native.pdata =
-		(C.gpointer)(recv.Pdata)
-	recv.native.len =
-		(C.guint)(recv.Len)
-
-	return (unsafe.Pointer)(recv.native)
-}
+// Blacklisted : GPtrArray
 
 // Queue is a wrapper around the C record GQueue.
 type Queue struct {

@@ -1736,19 +1736,7 @@ func SliceGetConfig(ckey SliceConfig) int64 {
 	return retGo
 }
 
-// SliceGetConfigState is a wrapper around the C function g_slice_get_config_state.
-func SliceGetConfigState(ckey SliceConfig, address int64, nValues uint32) *int64 {
-	c_ckey := (C.GSliceConfig)(ckey)
-
-	c_address := (C.gint64)(address)
-
-	c_n_values := (C.guint)(nValues)
-
-	retC := C.g_slice_get_config_state(c_ckey, c_address, &c_n_values)
-	retGo := (*int64)(&retC)
-
-	return retGo
-}
+// Blacklisted : g_slice_get_config_state
 
 // SliceSetConfig is a wrapper around the C function g_slice_set_config.
 func SliceSetConfig(ckey SliceConfig, value int64) {
@@ -2699,17 +2687,7 @@ func UnicharXdigitValue(c rune) int32 {
 	return retGo
 }
 
-// UnicodeCanonicalDecomposition is a wrapper around the C function g_unicode_canonical_decomposition.
-func UnicodeCanonicalDecomposition(ch rune, resultLen uint64) *rune {
-	c_ch := (C.gunichar)(ch)
-
-	c_result_len := (C.gsize)(resultLen)
-
-	retC := C.g_unicode_canonical_decomposition(c_ch, &c_result_len)
-	retGo := (*rune)(&retC)
-
-	return retGo
-}
+// Blacklisted : g_unicode_canonical_decomposition
 
 // UnicodeCanonicalOrdering is a wrapper around the C function g_unicode_canonical_ordering.
 func UnicodeCanonicalOrdering(string rune, len uint64) {
@@ -2989,50 +2967,9 @@ func Utf8Strup(str string, len int64) string {
 	return retGo
 }
 
-// Utf8ToUcs4 is a wrapper around the C function g_utf8_to_ucs4.
-func Utf8ToUcs4(str string, len int64) (*rune, *int64, *int64, error) {
-	c_str := C.CString(str)
-	defer C.free(unsafe.Pointer(c_str))
+// Blacklisted : g_utf8_to_ucs4
 
-	c_len := (C.glong)(len)
-
-	var c_items_read C.glong
-
-	var c_items_written C.glong
-
-	var cThrowableError *C.GError
-
-	retC := C.g_utf8_to_ucs4(c_str, c_len, &c_items_read, &c_items_written, &cThrowableError)
-	retGo := (*rune)(&retC)
-
-	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
-	if cThrowableError != nil {
-		C.g_error_free(cThrowableError)
-	}
-
-	itemsRead := (*int64)(&c_items_read)
-
-	itemsWritten := (*int64)(&c_items_written)
-
-	return retGo, itemsRead, itemsWritten, goThrowableError
-}
-
-// Utf8ToUcs4Fast is a wrapper around the C function g_utf8_to_ucs4_fast.
-func Utf8ToUcs4Fast(str string, len int64) (*rune, *int64) {
-	c_str := C.CString(str)
-	defer C.free(unsafe.Pointer(c_str))
-
-	c_len := (C.glong)(len)
-
-	var c_items_written C.glong
-
-	retC := C.g_utf8_to_ucs4_fast(c_str, c_len, &c_items_written)
-	retGo := (*rune)(&retC)
-
-	itemsWritten := (*int64)(&c_items_written)
-
-	return retGo, itemsWritten
-}
+// Blacklisted : g_utf8_to_ucs4_fast
 
 // Unsupported : g_utf8_to_utf16 : no return generator
 

@@ -37,6 +37,11 @@
     <function blacklist="true" c:identifier="g_strv_contains"/>
     <function blacklist="true" c:identifier="g_unichar_to_utf8"/>
 
+    <function blacklist="true" c:identifier="g_slice_get_config_state"/>
+    <function blacklist="true" c:identifier="g_unicode_canonical_decomposition"/>
+    <function blacklist="true" c:identifier="g_utf8_to_ucs4"/>
+    <function blacklist="true" c:identifier="g_utf8_to_ucs4_fast"/>
+
 
     <!--cgo-gcc-prolog: In function ‘_cgo_5905a9f56549_Cfunc_g_atomic_pointer_get’:-->
     <!--/usr/include/glib-2.0/glib/gmacros.h:232:53: error: size of array ‘_GStaticAssertCompileTimeAssertion_3’ is negative-->
@@ -108,6 +113,9 @@
     <!-- contains a long double, which is not supported by cgo -->
     <record blacklist="true" name="TestLogMsg"/>
     <record blacklist="true" name="TestLogBuffer"/>
+
+    <record blacklist="true" name="ByteArray"/>
+    <record blacklist="true" name="PtrArray"/>
 
     <!-- the types in some method do not appear to match the data in gir file -->
     <record blacklist="true" name="IConv"/>
