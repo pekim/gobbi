@@ -8,6 +8,10 @@
     <class blacklist="true" name="Engine"/>
     <class blacklist="true" name="FontsetSimple"/>
 
+    <class name="Layout">
+      <method blacklist="true" c:identifier="pango_layout_set_markup_with_accel"/>
+    </class>
+
     <constant blacklist="true" name="VERSION_MIN_REQUIRED"/>
     <constant blacklist="true" name="ENGINE_TYPE_LANG"/>
     <constant blacklist="true" name="ENGINE_TYPE_SHAPE"/>
@@ -39,6 +43,8 @@
     <record blacklist="true" name="Map"/>
     <record blacklist="true" name="MapEntry"/>
     <record blacklist="true" name="ScriptForLang"/>
+
+    <record blacklist="true" name="GlyphString"/>
 
     <record blacklist="true" name="LayoutIter">
       <method blacklist="true" c:identifier="pango_layout_iter_get_run"/>

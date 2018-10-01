@@ -345,13 +345,7 @@ func (recv *InetAddress) GetNativeSize() uint64 {
 	return retGo
 }
 
-// ToBytes is a wrapper around the C function g_inet_address_to_bytes.
-func (recv *InetAddress) ToBytes() *uint8 {
-	retC := C.g_inet_address_to_bytes((*C.GInetAddress)(recv.native))
-	retGo := (*uint8)(&retC)
-
-	return retGo
-}
+// Blacklisted : g_inet_address_to_bytes
 
 // ToString is a wrapper around the C function g_inet_address_to_string.
 func (recv *InetAddress) ToString() string {
@@ -799,20 +793,7 @@ func (recv *Socket) GetListenBacklog() int32 {
 	return retGo
 }
 
-// GetLocalAddress is a wrapper around the C function g_socket_get_local_address.
-func (recv *Socket) GetLocalAddress() (*SocketAddress, error) {
-	var cThrowableError *C.GError
-
-	retC := C.g_socket_get_local_address((*C.GSocket)(recv.native), &cThrowableError)
-	retGo := SocketAddressNewFromC(unsafe.Pointer(retC))
-
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-	if cThrowableError != nil {
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goThrowableError
-}
+// Blacklisted : g_socket_get_local_address
 
 // GetProtocol is a wrapper around the C function g_socket_get_protocol.
 func (recv *Socket) GetProtocol() SocketProtocol {

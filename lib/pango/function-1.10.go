@@ -52,6 +52,10 @@ func IsZeroWidth(ch rune) bool {
 
 // Unsupported : pango_scan_word : unsupported parameter pos : in string with indirection level of 2
 
+// Unsupported : pango_shape : unsupported parameter glyphs : Blacklisted record : PangoGlyphString
+
+// Unsupported : pango_shape_full : unsupported parameter glyphs : Blacklisted record : PangoGlyphString
+
 // Unsupported : pango_skip_space : unsupported parameter pos : in string with indirection level of 2
 
 // Unsupported : pango_split_file_list : no return type

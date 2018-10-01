@@ -89,20 +89,7 @@ func (recv *Renderer) DrawGlyph(font *Font, glyph Glyph, x float64, y float64) {
 	return
 }
 
-// DrawGlyphs is a wrapper around the C function pango_renderer_draw_glyphs.
-func (recv *Renderer) DrawGlyphs(font *Font, glyphs *GlyphString, x int32, y int32) {
-	c_font := (*C.PangoFont)(font.ToC())
-
-	c_glyphs := (*C.PangoGlyphString)(glyphs.ToC())
-
-	c_x := (C.int)(x)
-
-	c_y := (C.int)(y)
-
-	C.pango_renderer_draw_glyphs((*C.PangoRenderer)(recv.native), c_font, c_glyphs, c_x, c_y)
-
-	return
-}
+// Unsupported : pango_renderer_draw_glyphs : unsupported parameter glyphs : Blacklisted record : PangoGlyphString
 
 // DrawLayout is a wrapper around the C function pango_renderer_draw_layout.
 func (recv *Renderer) DrawLayout(layout *Layout, x int32, y int32) {

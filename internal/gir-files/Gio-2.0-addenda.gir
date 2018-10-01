@@ -31,6 +31,16 @@
       <method blacklist="true" c:identifier="g_io_module_unload"/>
     </class>
 
+    <class name="InetAddress">
+      <method blacklist="true" c:identifier="g_inet_address_to_bytes"/>
+    </class>
+    <class name="Socket">
+      <method blacklist="true" c:identifier="g_socket_get_local_address"/>
+    </class>
+    <class name="TlsPassword">
+      <method blacklist="true" c:identifier="g_tls_password_get_value"/>
+    </class>
+
     <function blacklist="true" c:identifier="g_keyfile_settings_backend_new"/>
     <function blacklist="true" c:identifier="g_memory_settings_backend_new"/>
     <function blacklist="true" c:identifier="g_null_settings_backend_new"/>

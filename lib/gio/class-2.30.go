@@ -804,15 +804,7 @@ func (recv *TlsPassword) GetFlags() TlsPasswordFlags {
 	return retGo
 }
 
-// GetValue is a wrapper around the C function g_tls_password_get_value.
-func (recv *TlsPassword) GetValue(length uint64) *uint8 {
-	c_length := (C.gsize)(length)
-
-	retC := C.g_tls_password_get_value((*C.GTlsPassword)(recv.native), &c_length)
-	retGo := (*uint8)(&retC)
-
-	return retGo
-}
+// Blacklisted : g_tls_password_get_value
 
 // GetWarning is a wrapper around the C function g_tls_password_get_warning.
 func (recv *TlsPassword) GetWarning() string {

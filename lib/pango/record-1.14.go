@@ -8,12 +8,4 @@ package pango
 // #include <stdlib.h>
 import "C"
 
-// GetWidth is a wrapper around the C function pango_glyph_string_get_width.
-func (recv *GlyphString) GetWidth() int32 {
-	retC := C.pango_glyph_string_get_width((*C.PangoGlyphString)(recv.native))
-	retGo := (int32)(retC)
-
-	return retGo
-}
-
 // Unsupported : pango_tab_array_new_with_positions : unsupported parameter ... : varargs

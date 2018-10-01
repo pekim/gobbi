@@ -128,6 +128,10 @@
       <method blacklist="true" c:identifier="gtk_im_context_simple_add_compose_file"/>
     </class>
 
+    <class name="TreePath">
+      <method blacklist="true" c:identifier="gtk_tree_path_get_indices"/>
+    </class>
+
     <class name="TextView">
       <method c:identifier="gtk_text_view_get_iter_at_location">
         <return-value>

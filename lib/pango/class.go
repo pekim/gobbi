@@ -756,23 +756,7 @@ func (recv *Layout) SetMarkup(markup string, length int32) {
 	return
 }
 
-// SetMarkupWithAccel is a wrapper around the C function pango_layout_set_markup_with_accel.
-func (recv *Layout) SetMarkupWithAccel(markup string, length int32, accelMarker rune) *rune {
-	c_markup := C.CString(markup)
-	defer C.free(unsafe.Pointer(c_markup))
-
-	c_length := (C.int)(length)
-
-	c_accel_marker := (C.gunichar)(accelMarker)
-
-	var c_accel_char C.gunichar
-
-	C.pango_layout_set_markup_with_accel((*C.PangoLayout)(recv.native), c_markup, c_length, c_accel_marker, &c_accel_char)
-
-	accelChar := (*rune)(&c_accel_char)
-
-	return accelChar
-}
+// Blacklisted : pango_layout_set_markup_with_accel
 
 // SetSingleParagraphMode is a wrapper around the C function pango_layout_set_single_paragraph_mode.
 func (recv *Layout) SetSingleParagraphMode(setting bool) {

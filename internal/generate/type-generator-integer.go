@@ -26,6 +26,11 @@ func (t *TypeGeneratorInteger) isSupportedAsParam(direction string) (supported b
 }
 
 func (t *TypeGeneratorInteger) isSupportedAsField() (supported bool, reason string) {
+	if t.typ.indirectLevel > 0 {
+		return false, fmt.Sprintf("%s with indirection level of %d",
+			t.typ.CType, t.typ.indirectLevel)
+	}
+
 	return true, ""
 }
 

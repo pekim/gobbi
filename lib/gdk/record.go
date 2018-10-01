@@ -124,9 +124,9 @@ type EventButton struct {
 	Time      uint32
 	X         float64
 	Y         float64
-	Axes      float64
-	State     ModifierType
-	Button    uint32
+	// axes : gdouble* with indirection level of 1
+	State  ModifierType
+	Button uint32
 	// device : record
 	XRoot float64
 	YRoot float64
@@ -139,7 +139,6 @@ func EventButtonNewFromC(u unsafe.Pointer) *EventButton {
 	}
 
 	g := &EventButton{
-		Axes:      (*float64)(&c.axes),
 		Button:    (uint32)(c.button),
 		SendEvent: (int8)(c.send_event),
 		State:     (ModifierType)(c.state),
@@ -166,8 +165,6 @@ func (recv *EventButton) ToC() unsafe.Pointer {
 		(C.gdouble)(recv.X)
 	recv.native.y =
 		(C.gdouble)(recv.Y)
-	recv.native.axes =
-		(C.gdouble)(recv.Axes)
 	recv.native.state =
 		(C.guint)(recv.State)
 	recv.native.button =
@@ -486,9 +483,9 @@ type EventMotion struct {
 	Time      uint32
 	X         float64
 	Y         float64
-	Axes      float64
-	State     ModifierType
-	IsHint    int16
+	// axes : gdouble* with indirection level of 1
+	State  ModifierType
+	IsHint int16
 	// device : record
 	XRoot float64
 	YRoot float64
@@ -501,7 +498,6 @@ func EventMotionNewFromC(u unsafe.Pointer) *EventMotion {
 	}
 
 	g := &EventMotion{
-		Axes:      (*float64)(&c.axes),
 		IsHint:    (int16)(c.is_hint),
 		SendEvent: (int8)(c.send_event),
 		State:     (ModifierType)(c.state),
@@ -528,8 +524,6 @@ func (recv *EventMotion) ToC() unsafe.Pointer {
 		(C.gdouble)(recv.X)
 	recv.native.y =
 		(C.gdouble)(recv.Y)
-	recv.native.axes =
-		(C.gdouble)(recv.Axes)
 	recv.native.state =
 		(C.guint)(recv.State)
 	recv.native.is_hint =
@@ -800,8 +794,8 @@ type EventTouch struct {
 	Time      uint32
 	X         float64
 	Y         float64
-	Axes      float64
-	State     ModifierType
+	// axes : gdouble* with indirection level of 1
+	State ModifierType
 	// sequence : record
 	EmulatingPointer bool
 	// device : record
@@ -816,7 +810,6 @@ func EventTouchNewFromC(u unsafe.Pointer) *EventTouch {
 	}
 
 	g := &EventTouch{
-		Axes:             (*float64)(&c.axes),
 		EmulatingPointer: c.emulating_pointer == C.TRUE,
 		SendEvent:        (int8)(c.send_event),
 		State:            (ModifierType)(c.state),
@@ -843,8 +836,6 @@ func (recv *EventTouch) ToC() unsafe.Pointer {
 		(C.gdouble)(recv.X)
 	recv.native.y =
 		(C.gdouble)(recv.Y)
-	recv.native.axes =
-		(C.gdouble)(recv.Axes)
 	recv.native.state =
 		(C.guint)(recv.State)
 	recv.native.emulating_pointer =
