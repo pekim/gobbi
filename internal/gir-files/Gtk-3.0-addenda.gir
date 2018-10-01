@@ -128,10 +128,6 @@
       <method blacklist="true" c:identifier="gtk_im_context_simple_add_compose_file"/>
     </class>
 
-    <class name="TreePath">
-      <method blacklist="true" c:identifier="gtk_tree_path_get_indices"/>
-    </class>
-
     <class name="TextView">
       <method c:identifier="gtk_text_view_get_iter_at_location">
         <return-value>
@@ -168,6 +164,10 @@
     <!-- has a string return value of type "guchar*" -->
     <record name="SelectionData">
       <method blacklist="true" c:identifier="gtk_selection_data_get_text"/>
+    </record>
+
+    <record name="TreePath">
+      <method blacklist="true" c:identifier="gtk_tree_path_get_indices"/>
     </record>
   </namespace>
 </repository>

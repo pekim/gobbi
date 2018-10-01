@@ -13073,13 +13073,7 @@ func (recv *TreePath) GetDepth() int32 {
 	return retGo
 }
 
-// GetIndices is a wrapper around the C function gtk_tree_path_get_indices.
-func (recv *TreePath) GetIndices() *int32 {
-	retC := C.gtk_tree_path_get_indices((*C.GtkTreePath)(recv.native))
-	retGo := (*int32)(&retC)
-
-	return retGo
-}
+// Blacklisted : gtk_tree_path_get_indices
 
 // IsAncestor is a wrapper around the C function gtk_tree_path_is_ancestor.
 func (recv *TreePath) IsAncestor(descendant *TreePath) bool {
