@@ -139,7 +139,7 @@ func (recv *Application) Release() {
 	return
 }
 
-// Unsupported : g_application_run : unsupported parameter argv : no param type
+// Unsupported : g_application_run : unsupported parameter args : no type generator for argcargv,
 
 // Unsupported : g_application_set_action_group : unsupported parameter action_group : no type generator for ActionGroup, GActionGroup*
 

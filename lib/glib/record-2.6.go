@@ -557,7 +557,7 @@ func (recv *OptionContext) GetMainGroup() *OptionGroup {
 	return retGo
 }
 
-// Unsupported : g_option_context_parse : unsupported parameter argv : no param type
+// Unsupported : g_option_context_parse : unsupported parameter args : no type generator for argcargv,
 
 // SetHelpEnabled is a wrapper around the C function g_option_context_set_help_enabled.
 func (recv *OptionContext) SetHelpEnabled(helpEnabled bool) {

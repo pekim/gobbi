@@ -12,6 +12,36 @@ func (pp Parameters) init(ns *Namespace) {
 	for _, param := range pp {
 		param.init(ns)
 	}
+
+	pp.fixupArgcArgv()
+}
+
+func (pp Parameters) fixupArgcArgv() {
+	var previous *Parameter
+
+	for i, p := range pp {
+		if previous != nil && previous.Name == "argc" && p.Name == "argv" {
+			pp.replaceArgcArgv(i - 1)
+			break
+		}
+
+		previous = p
+	}
+}
+
+func (pp Parameters) replaceArgcArgv(index int) {
+	pp[index] = &Parameter{
+		Name: "args",
+		Type: &Type{
+			Name: "argcargv",
+		},
+	}
+
+	pp[index+1] = &Parameter{
+		Type: &Type{
+			Name: "ignore",
+		},
+	}
 }
 
 func (pp Parameters) generateFunctionDeclaration(g *jen.Group) {

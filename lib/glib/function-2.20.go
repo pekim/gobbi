@@ -296,7 +296,7 @@ func Poll(fds *PollFD, nfds uint32, timeout int32) int32 {
 
 // Unsupported : g_test_get_filename : unsupported parameter ... : varargs
 
-// Unsupported : g_test_init : unsupported parameter argv : in string with indirection level of 3
+// Unsupported : g_test_init : unsupported parameter args : no type generator for argcargv,
 
 // Unsupported : g_test_log_set_fatal_handler : unsupported parameter log_func : no type generator for TestLogFatalFunc, GTestLogFatalFunc
 

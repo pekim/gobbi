@@ -396,11 +396,11 @@ func IconThemeErrorQuark() glib.Quark {
 	return retGo
 }
 
-// Unsupported : gtk_init : unsupported parameter argv : no param type
+// Unsupported : gtk_init : unsupported parameter args : no type generator for argcargv,
 
-// Unsupported : gtk_init_check : unsupported parameter argv : no param type
+// Unsupported : gtk_init_check : unsupported parameter args : no type generator for argcargv,
 
-// Unsupported : gtk_init_with_args : unsupported parameter argv : no param type
+// Unsupported : gtk_init_with_args : unsupported parameter args : no type generator for argcargv,
 
 // Unsupported : gtk_key_snooper_install : unsupported parameter snooper : no type generator for KeySnoopFunc, GtkKeySnoopFunc
 
@@ -1024,7 +1024,7 @@ func PaintVline(style *Style, cr *cairo.Context, stateType StateType, widget *Wi
 	return
 }
 
-// Unsupported : gtk_parse_args : unsupported parameter argv : no param type
+// Unsupported : gtk_parse_args : unsupported parameter args : no type generator for argcargv,
 
 // Unsupported : gtk_print_run_page_setup_dialog_async : unsupported parameter done_cb : no type generator for PageSetupDoneFunc, GtkPageSetupDoneFunc
 

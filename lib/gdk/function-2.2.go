@@ -45,9 +45,9 @@ func GetDisplayArgName() string {
 	return retGo
 }
 
-// Unsupported : gdk_init : unsupported parameter argv : no param type
+// Unsupported : gdk_init : unsupported parameter args : no type generator for argcargv,
 
-// Unsupported : gdk_init_check : unsupported parameter argv : no param type
+// Unsupported : gdk_init_check : unsupported parameter args : no type generator for argcargv,
 
 // NotifyStartupComplete is a wrapper around the C function gdk_notify_startup_complete.
 func NotifyStartupComplete() {
@@ -68,7 +68,7 @@ func PangoContextGetForScreen(screen *Screen) *pango.Context {
 
 // Unsupported : gdk_pango_layout_line_get_clip_region : unsupported parameter index_ranges : no param type
 
-// Unsupported : gdk_parse_args : unsupported parameter argv : no param type
+// Unsupported : gdk_parse_args : unsupported parameter args : no type generator for argcargv,
 
 // Unsupported : gdk_property_change : unsupported parameter property : Blacklisted record : GdkAtom
 
