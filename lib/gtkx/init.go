@@ -18,22 +18,26 @@ static inline void set_string(gchar** strings, int n, gchar* str) {
 
 */
 import "C"
-import (
-	"unsafe"
-)
+import "unsafe"
 
-func argsIn(args []string) (*C.int, ***C.char) {
-	cArgc := (C.gint)(len(args))
+/*
+argsIn converts a string slice in to argc/argv pointers
+suitable for use with some library functions.
 
-	cArgv := (**C.gchar)(C.malloc(C.sizeof_gpointer * (C.ulong)(cArgc)))
+The caller must be sure to free the returned argv at some point.
+*/
+func argsIn(args []string) (C.int, **C.char) {
+	argc := (C.gint)(len(args))
+
+	argv := (**C.gchar)(C.malloc(C.sizeof_gpointer * (C.ulong)(argc)))
 
 	for i, arg := range args {
 		cstr := C.CString(arg)
-		C.set_string(cArgv, C.int(i), (*C.gchar)(cstr))
+		C.set_string(argv, C.int(i), (*C.gchar)(cstr))
 	}
 
-	return (*C.int)(unsafe.Pointer(&cArgc)),
-		(***C.char)(unsafe.Pointer(&cArgv))
+	return argc,
+		(**C.char)(unsafe.Pointer(argv))
 }
 
 func argsOut(argc C.int, argv **C.char) []string {
@@ -49,9 +53,9 @@ func argsOut(argc C.int, argv **C.char) []string {
 
 func Init(args []string) []string {
 	cArgc, cArgv := argsIn(args)
-	defer C.free(unsafe.Pointer(*cArgv))
+	defer C.free(unsafe.Pointer(cArgv))
 
-	C.gtk_init(cArgc, cArgv)
+	C.gtk_init(&cArgc, &cArgv)
 
-	return argsOut(*cArgc, *cArgv)
+	return argsOut(cArgc, cArgv)
 }
