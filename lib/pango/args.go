@@ -1,4 +1,4 @@
-package template
+package pango
 
 // #include <stdlib.h>
 // #include <glib.h>

@@ -1,4 +1,4 @@
-package template
+package cairo
 
 // #include <stdlib.h>
 // #include <glib.h>

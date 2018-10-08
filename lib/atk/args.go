@@ -1,4 +1,4 @@
-package template
+package atk
 
 // #include <stdlib.h>
 // #include <glib.h>

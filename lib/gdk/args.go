@@ -1,4 +1,4 @@
-package template
+package gdk
 
 // #include <stdlib.h>
 // #include <glib.h>

@@ -1,4 +1,4 @@
-package template
+package glib
 
 // #include <stdlib.h>
 // #include <glib.h>

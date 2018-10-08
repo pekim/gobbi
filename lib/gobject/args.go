@@ -1,4 +1,4 @@
-package template
+package gobject
 
 // #include <stdlib.h>
 // #include <glib.h>

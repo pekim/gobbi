@@ -1,4 +1,4 @@
-package template
+package gdkpixbuf
 
 // #include <stdlib.h>
 // #include <glib.h>

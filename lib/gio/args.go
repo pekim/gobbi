@@ -1,4 +1,4 @@
-package template
+package gio
 
 // #include <stdlib.h>
 // #include <glib.h>
