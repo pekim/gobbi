@@ -32,9 +32,7 @@ func (pp Parameters) fixupArgcArgv() {
 func (pp Parameters) replaceArgcArgv(index int) {
 	p1 := pp[index]
 	p1.Name = "args"
-	p1.Type = &Type{
-		Name: "argcargv",
-	}
+	p1.Type.Name = "argcargv"
 
 	p2 := pp[index+1]
 	p2.Type = &Type{

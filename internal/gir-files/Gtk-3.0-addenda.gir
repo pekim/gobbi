@@ -134,6 +134,12 @@
           <type name="none" c:type="void"/>
         </return-value>
       </method>
+
+      <method c:identifier="gtk_text_view_get_iter_at_position">
+        <return-value>
+          <type name="none" c:type="void"/>
+        </return-value>
+      </method>
     </class>
 
     <class version="3.20" name="FileChooserNative"/>

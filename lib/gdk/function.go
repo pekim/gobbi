@@ -254,18 +254,18 @@ func GlErrorQuark() glib.Quark {
 
 // Init is a wrapper around the C function gdk_init.
 func Init(args []string) {
-	var cArgc C.gint = len(args)
+	cArgc, cArgv := argsIn(args)
 
-	C.gdk_init(&cArgc)
+	C.gdk_init(&cArgc, &cArgv)
 
 	return
 }
 
 // InitCheck is a wrapper around the C function gdk_init_check.
 func InitCheck(args []string) bool {
-	var cArgc C.gint = len(args)
+	cArgc, cArgv := argsIn(args)
 
-	retC := C.gdk_init_check(&cArgc)
+	retC := C.gdk_init_check(&cArgc, &cArgv)
 	retGo := retC == C.TRUE
 
 	return retGo

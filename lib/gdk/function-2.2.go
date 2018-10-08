@@ -66,9 +66,9 @@ func PangoContextGetForScreen(screen *Screen) *pango.Context {
 
 // ParseArgs is a wrapper around the C function gdk_parse_args.
 func ParseArgs(args []string) {
-	var cArgc C.gint = len(args)
+	cArgc, cArgv := argsIn(args)
 
-	C.gdk_parse_args(&cArgc)
+	C.gdk_parse_args(&cArgc, &cArgv)
 
 	return
 }

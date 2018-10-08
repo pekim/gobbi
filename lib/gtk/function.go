@@ -398,18 +398,18 @@ func IconThemeErrorQuark() glib.Quark {
 
 // Init is a wrapper around the C function gtk_init.
 func Init(args []string) {
-	var cArgc C.gint = len(args)
+	cArgc, cArgv := argsIn(args)
 
-	C.gtk_init(&cArgc)
+	C.gtk_init(&cArgc, &cArgv)
 
 	return
 }
 
 // InitCheck is a wrapper around the C function gtk_init_check.
 func InitCheck(args []string) bool {
-	var cArgc C.gint = len(args)
+	cArgc, cArgv := argsIn(args)
 
-	retC := C.gtk_init_check(&cArgc)
+	retC := C.gtk_init_check(&cArgc, &cArgv)
 	retGo := retC == C.TRUE
 
 	return retGo
@@ -1041,9 +1041,9 @@ func PaintVline(style *Style, cr *cairo.Context, stateType StateType, widget *Wi
 
 // ParseArgs is a wrapper around the C function gtk_parse_args.
 func ParseArgs(args []string) bool {
-	var cArgc C.gint = len(args)
+	cArgc, cArgv := argsIn(args)
 
-	retC := C.gtk_parse_args(&cArgc)
+	retC := C.gtk_parse_args(&cArgc, &cArgv)
 	retGo := retC == C.TRUE
 
 	return retGo

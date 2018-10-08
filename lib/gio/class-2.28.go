@@ -141,9 +141,9 @@ func (recv *Application) Release() {
 
 // Run is a wrapper around the C function g_application_run.
 func (recv *Application) Run(args []string) int32 {
-	var cArgc C.gint = len(args)
+	cArgc, cArgv := argsIn(args)
 
-	retC := C.g_application_run((*C.GApplication)(recv.native), &cArgc)
+	retC := C.g_application_run((*C.GApplication)(recv.native), cArgc, cArgv)
 	retGo := (int32)(retC)
 
 	return retGo

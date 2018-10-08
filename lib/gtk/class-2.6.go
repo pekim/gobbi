@@ -1112,7 +1112,7 @@ func (recv *TextBuffer) Backspace(iter *TextIter, interactive bool, defaultEdita
 }
 
 // GetIterAtPosition is a wrapper around the C function gtk_text_view_get_iter_at_position.
-func (recv *TextView) GetIterAtPosition(x int32, y int32) (bool, *TextIter, *int32) {
+func (recv *TextView) GetIterAtPosition(x int32, y int32) (*TextIter, *int32) {
 	var c_iter C.GtkTextIter
 
 	var c_trailing C.gint
@@ -1121,14 +1121,13 @@ func (recv *TextView) GetIterAtPosition(x int32, y int32) (bool, *TextIter, *int
 
 	c_y := (C.gint)(y)
 
-	retC := C.gtk_text_view_get_iter_at_position((*C.GtkTextView)(recv.native), &c_iter, &c_trailing, c_x, c_y)
-	retGo := retC == C.TRUE
+	C.gtk_text_view_get_iter_at_position((*C.GtkTextView)(recv.native), &c_iter, &c_trailing, c_x, c_y)
 
 	iter := TextIterNewFromC(unsafe.Pointer(&c_iter))
 
 	trailing := (*int32)(&c_trailing)
 
-	return retGo, iter, trailing
+	return iter, trailing
 }
 
 // RebuildMenu is a wrapper around the C function gtk_tool_item_rebuild_menu.

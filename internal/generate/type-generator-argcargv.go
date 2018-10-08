@@ -34,11 +34,19 @@ func (t *TypeGeneratorArgcArgv) generateDeclaration(g *jen.Group, goVarName stri
 }
 
 func (t *TypeGeneratorArgcArgv) generateParamCallArgument(g *jen.Group, cVarName string) {
-	g.
-		Op("&").
-		Id("cArgc")
-
-	//g.Id(cVarName)
+	if t.typ.indirectLevel > 0 {
+		g.
+			Op("&").
+			Id("cArgc").
+			Op(",").
+			Op("&").
+			Id("cArgv")
+	} else {
+		g.
+			Id("cArgc").
+			Op(",").
+			Id("cArgv")
+	}
 }
 
 func (t *TypeGeneratorArgcArgv) generateParamOutCallArgument(g *jen.Group, cVarName string) {
@@ -46,11 +54,12 @@ func (t *TypeGeneratorArgcArgv) generateParamOutCallArgument(g *jen.Group, cVarN
 
 func (t *TypeGeneratorArgcArgv) generateParamCVar(g *jen.Group, cVarName string, goVarName string, transferOwnership string) {
 	g.
-		Var().
 		Id("cArgc").
-		Qual("C", "gint").
-		Op("=").
-		Len(jen.Id(goVarName))
+		Op(",").
+		Id("cArgv").
+		Op(":=").
+		Id("argsIn").
+		Call(jen.Id("args"))
 }
 
 func (t *TypeGeneratorArgcArgv) generateParamOutCVar(g *jen.Group, cVarName string) {

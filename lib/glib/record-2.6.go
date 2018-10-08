@@ -559,11 +559,11 @@ func (recv *OptionContext) GetMainGroup() *OptionGroup {
 
 // Parse is a wrapper around the C function g_option_context_parse.
 func (recv *OptionContext) Parse(args []string) (bool, error) {
-	var cArgc C.gint = len(args)
+	cArgc, cArgv := argsIn(args)
 
 	var cThrowableError *C.GError
 
-	retC := C.g_option_context_parse((*C.GOptionContext)(recv.native), &cArgc, &cThrowableError)
+	retC := C.g_option_context_parse((*C.GOptionContext)(recv.native), &cArgc, &cArgv, &cThrowableError)
 	retGo := retC == C.TRUE
 
 	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
