@@ -9,11 +9,11 @@ import (
 type Parameters []*Parameter
 
 func (pp Parameters) init(ns *Namespace) {
+	//pp.fixupArgcArgv()
+
 	for _, param := range pp {
 		param.init(ns)
 	}
-
-	pp.fixupArgcArgv()
 }
 
 func (pp Parameters) fixupArgcArgv() {
@@ -30,17 +30,15 @@ func (pp Parameters) fixupArgcArgv() {
 }
 
 func (pp Parameters) replaceArgcArgv(index int) {
-	pp[index] = &Parameter{
-		Name: "args",
-		Type: &Type{
-			Name: "argcargv",
-		},
+	p1 := pp[index]
+	p1.Name = "args"
+	p1.Type = &Type{
+		Name: "argcargv",
 	}
 
-	pp[index+1] = &Parameter{
-		Type: &Type{
-			Name: "ignore",
-		},
+	p2 := pp[index+1]
+	p2.Type = &Type{
+		Name: "ignore",
 	}
 }
 

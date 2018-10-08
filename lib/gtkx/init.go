@@ -18,7 +18,9 @@ static inline void set_string(gchar** strings, int n, gchar* str) {
 
 */
 import "C"
-import "unsafe"
+import (
+	"unsafe"
+)
 
 /*
 argsIn converts a string slice in to argc/argv pointers

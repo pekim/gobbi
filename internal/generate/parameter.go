@@ -89,6 +89,7 @@ func (p *Parameter) generateOutputParamGoVar(g *jen.Group) {
 }
 
 func (p *Parameter) generateOutputParamReturnDeclaration(g *jen.Group) {
+	//if p.Direction == "out" || p.Direction == "inout" {
 	if p.Direction == "out" {
 		p.Type.generator.generateReturnFunctionDeclaration(g)
 	}

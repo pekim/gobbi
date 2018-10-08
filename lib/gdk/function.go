@@ -252,9 +252,9 @@ func GlErrorQuark() glib.Quark {
 	return retGo
 }
 
-// Unsupported : gdk_init : unsupported parameter args : no type generator for argcargv,
+// Unsupported : gdk_init : unsupported parameter argv : no param type
 
-// Unsupported : gdk_init_check : unsupported parameter args : no type generator for argcargv,
+// Unsupported : gdk_init_check : unsupported parameter argv : no param type
 
 // KeyboardGrab is a wrapper around the C function gdk_keyboard_grab.
 func KeyboardGrab(window *Window, ownerEvents bool, time uint32) GrabStatus {
@@ -414,7 +414,7 @@ func PangoLayoutGetClipRegion(layout *pango.Layout, xOrigin int32, yOrigin int32
 
 // Unsupported : gdk_pango_layout_line_get_clip_region : unsupported parameter index_ranges : no param type
 
-// Unsupported : gdk_parse_args : unsupported parameter args : no type generator for argcargv,
+// Unsupported : gdk_parse_args : unsupported parameter argv : no param type
 
 // PixbufGetFromSurface is a wrapper around the C function gdk_pixbuf_get_from_surface.
 func PixbufGetFromSurface(surface *cairo.Surface, srcX int32, srcY int32, width int32, height int32) *gdkpixbuf.Pixbuf {
