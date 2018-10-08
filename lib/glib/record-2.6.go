@@ -558,7 +558,7 @@ func (recv *OptionContext) GetMainGroup() *OptionGroup {
 }
 
 // Parse is a wrapper around the C function g_option_context_parse.
-func (recv *OptionContext) Parse(args []string) (bool, error) {
+func (recv *OptionContext) Parse(args []string) (bool, []string, error) {
 	cArgc, cArgv := argsIn(args)
 
 	var cThrowableError *C.GError
@@ -571,7 +571,9 @@ func (recv *OptionContext) Parse(args []string) (bool, error) {
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	args = argsOut(cArgc, cArgv)
+
+	return retGo, args, goThrowableError
 }
 
 // SetHelpEnabled is a wrapper around the C function g_option_context_set_help_enabled.

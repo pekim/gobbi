@@ -65,12 +65,14 @@ func PangoContextGetForScreen(screen *Screen) *pango.Context {
 // Unsupported : gdk_pango_layout_line_get_clip_region : unsupported parameter index_ranges : no param type
 
 // ParseArgs is a wrapper around the C function gdk_parse_args.
-func ParseArgs(args []string) {
+func ParseArgs(args []string) []string {
 	cArgc, cArgv := argsIn(args)
 
 	C.gdk_parse_args(&cArgc, &cArgv)
 
-	return
+	args = argsOut(cArgc, cArgv)
+
+	return args
 }
 
 // Unsupported : gdk_property_change : unsupported parameter property : Blacklisted record : GdkAtom

@@ -397,22 +397,26 @@ func IconThemeErrorQuark() glib.Quark {
 }
 
 // Init is a wrapper around the C function gtk_init.
-func Init(args []string) {
+func Init(args []string) []string {
 	cArgc, cArgv := argsIn(args)
 
 	C.gtk_init(&cArgc, &cArgv)
 
-	return
+	args = argsOut(cArgc, cArgv)
+
+	return args
 }
 
 // InitCheck is a wrapper around the C function gtk_init_check.
-func InitCheck(args []string) bool {
+func InitCheck(args []string) (bool, []string) {
 	cArgc, cArgv := argsIn(args)
 
 	retC := C.gtk_init_check(&cArgc, &cArgv)
 	retGo := retC == C.TRUE
 
-	return retGo
+	args = argsOut(cArgc, cArgv)
+
+	return retGo, args
 }
 
 // Unsupported : gtk_init_with_args : unsupported parameter entries : no param type
@@ -1040,13 +1044,15 @@ func PaintVline(style *Style, cr *cairo.Context, stateType StateType, widget *Wi
 }
 
 // ParseArgs is a wrapper around the C function gtk_parse_args.
-func ParseArgs(args []string) bool {
+func ParseArgs(args []string) (bool, []string) {
 	cArgc, cArgv := argsIn(args)
 
 	retC := C.gtk_parse_args(&cArgc, &cArgv)
 	retGo := retC == C.TRUE
 
-	return retGo
+	args = argsOut(cArgc, cArgv)
+
+	return retGo, args
 }
 
 // Unsupported : gtk_print_run_page_setup_dialog_async : unsupported parameter done_cb : no type generator for PageSetupDoneFunc, GtkPageSetupDoneFunc

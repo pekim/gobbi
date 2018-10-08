@@ -77,17 +77,17 @@ func (t *TypeGeneratorArgcArgv) generateReturnCToGo(g *jen.Group, isParam bool,
 	cVarName string, goVarName string, pkg string, transferOwnership string) {
 
 	g.
-		Id(goVarName).
-		Op(":=").
-		Id(cVarName).
-		Op("==").
-		Qual("C", "TRUE")
+		Id("args").
+		Op("=").
+		Id("argsOut").
+		Call(jen.
+			Id("cArgc").
+			Op(",").
+			Id("cArgv"))
 }
 
 func (t *TypeGeneratorArgcArgv) generateCToGo(pkg string, cVarReference *jen.Statement) *jen.Statement {
-	return cVarReference.
-		Op("==").
-		Qual("C", "TRUE")
+	panic("unexpected")
 }
 
 func (t *TypeGeneratorArgcArgv) generateGoToC(g *jen.Group, goVarReference *jen.Statement) {
@@ -95,7 +95,4 @@ func (t *TypeGeneratorArgcArgv) generateGoToC(g *jen.Group, goVarReference *jen.
 }
 
 func (t *TypeGeneratorArgcArgv) generateCallBoolToGboolean(g *jen.Group, goVarReference *jen.Statement) {
-	g.
-		Id("boolToGboolean").
-		Call(goVarReference)
 }

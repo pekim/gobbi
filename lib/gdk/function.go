@@ -253,22 +253,26 @@ func GlErrorQuark() glib.Quark {
 }
 
 // Init is a wrapper around the C function gdk_init.
-func Init(args []string) {
+func Init(args []string) []string {
 	cArgc, cArgv := argsIn(args)
 
 	C.gdk_init(&cArgc, &cArgv)
 
-	return
+	args = argsOut(cArgc, cArgv)
+
+	return args
 }
 
 // InitCheck is a wrapper around the C function gdk_init_check.
-func InitCheck(args []string) bool {
+func InitCheck(args []string) (bool, []string) {
 	cArgc, cArgv := argsIn(args)
 
 	retC := C.gdk_init_check(&cArgc, &cArgv)
 	retGo := retC == C.TRUE
 
-	return retGo
+	args = argsOut(cArgc, cArgv)
+
+	return retGo, args
 }
 
 // KeyboardGrab is a wrapper around the C function gdk_keyboard_grab.
