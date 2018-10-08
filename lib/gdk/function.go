@@ -252,9 +252,24 @@ func GlErrorQuark() glib.Quark {
 	return retGo
 }
 
-// Unsupported : gdk_init : unsupported parameter argv : no param type
+// Init is a wrapper around the C function gdk_init.
+func Init(args []string) {
+	var cArgc C.gint = len(args)
 
-// Unsupported : gdk_init_check : unsupported parameter argv : no param type
+	C.gdk_init(&cArgc)
+
+	return
+}
+
+// InitCheck is a wrapper around the C function gdk_init_check.
+func InitCheck(args []string) bool {
+	var cArgc C.gint = len(args)
+
+	retC := C.gdk_init_check(&cArgc)
+	retGo := retC == C.TRUE
+
+	return retGo
+}
 
 // KeyboardGrab is a wrapper around the C function gdk_keyboard_grab.
 func KeyboardGrab(window *Window, ownerEvents bool, time uint32) GrabStatus {
@@ -413,8 +428,6 @@ func PangoLayoutGetClipRegion(layout *pango.Layout, xOrigin int32, yOrigin int32
 }
 
 // Unsupported : gdk_pango_layout_line_get_clip_region : unsupported parameter index_ranges : no param type
-
-// Unsupported : gdk_parse_args : unsupported parameter argv : no param type
 
 // PixbufGetFromSurface is a wrapper around the C function gdk_pixbuf_get_from_surface.
 func PixbufGetFromSurface(surface *cairo.Surface, srcX int32, srcY int32, width int32, height int32) *gdkpixbuf.Pixbuf {

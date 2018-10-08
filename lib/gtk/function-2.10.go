@@ -41,11 +41,7 @@ import "C"
 
 // Unsupported : gtk_icon_size_register_alias : unsupported parameter target : no type generator for gint, GtkIconSize
 
-// Unsupported : gtk_init : unsupported parameter argv : no param type
-
-// Unsupported : gtk_init_check : unsupported parameter argv : no param type
-
-// Unsupported : gtk_init_with_args : unsupported parameter argv : no param type
+// Unsupported : gtk_init_with_args : unsupported parameter entries : no param type
 
 // Unsupported : gtk_key_snooper_install : unsupported parameter snooper : no type generator for KeySnoopFunc, GtkKeySnoopFunc
 
@@ -58,8 +54,6 @@ func PaperSizeGetDefault() string {
 
 	return retGo
 }
-
-// Unsupported : gtk_parse_args : unsupported parameter argv : no param type
 
 // PrintErrorQuark is a wrapper around the C function gtk_print_error_quark.
 func PrintErrorQuark() glib.Quark {

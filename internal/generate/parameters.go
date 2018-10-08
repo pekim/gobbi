@@ -9,7 +9,7 @@ import (
 type Parameters []*Parameter
 
 func (pp Parameters) init(ns *Namespace) {
-	//pp.fixupArgcArgv()
+	pp.fixupArgcArgv()
 
 	for _, param := range pp {
 		param.init(ns)

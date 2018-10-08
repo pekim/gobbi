@@ -334,7 +334,7 @@ func Dpgettext2(domain string, context string, msgid string) string {
 
 // Unsupported : g_test_get_filename : unsupported parameter ... : varargs
 
-// Unsupported : g_test_init : unsupported parameter argv : in string with indirection level of 3
+// Unsupported : g_test_init : unsupported parameter ... : varargs
 
 // Unsupported : g_test_log_set_fatal_handler : unsupported parameter log_func : no type generator for TestLogFatalFunc, GTestLogFatalFunc
 

@@ -44,17 +44,11 @@ func GetLocaleDirection() TextDirection {
 
 // Unsupported : gtk_icon_size_register_alias : unsupported parameter target : no type generator for gint, GtkIconSize
 
-// Unsupported : gtk_init : unsupported parameter argv : no param type
-
-// Unsupported : gtk_init_check : unsupported parameter argv : no param type
-
-// Unsupported : gtk_init_with_args : unsupported parameter argv : no param type
+// Unsupported : gtk_init_with_args : unsupported parameter entries : no param type
 
 // Unsupported : gtk_key_snooper_install : unsupported parameter snooper : no type generator for KeySnoopFunc, GtkKeySnoopFunc
 
 // Unsupported : gtk_main_do_event : unsupported parameter event : no type generator for Gdk.Event, GdkEvent*
-
-// Unsupported : gtk_parse_args : unsupported parameter argv : no param type
 
 // Unsupported : gtk_print_run_page_setup_dialog_async : unsupported parameter done_cb : no type generator for PageSetupDoneFunc, GtkPageSetupDoneFunc
 

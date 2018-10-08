@@ -45,10 +45,6 @@ func GetDisplayArgName() string {
 	return retGo
 }
 
-// Unsupported : gdk_init : unsupported parameter argv : no param type
-
-// Unsupported : gdk_init_check : unsupported parameter argv : no param type
-
 // NotifyStartupComplete is a wrapper around the C function gdk_notify_startup_complete.
 func NotifyStartupComplete() {
 	C.gdk_notify_startup_complete()
@@ -68,7 +64,14 @@ func PangoContextGetForScreen(screen *Screen) *pango.Context {
 
 // Unsupported : gdk_pango_layout_line_get_clip_region : unsupported parameter index_ranges : no param type
 
-// Unsupported : gdk_parse_args : unsupported parameter argv : no param type
+// ParseArgs is a wrapper around the C function gdk_parse_args.
+func ParseArgs(args []string) {
+	var cArgc C.gint = len(args)
+
+	C.gdk_parse_args(&cArgc)
+
+	return
+}
 
 // Unsupported : gdk_property_change : unsupported parameter property : Blacklisted record : GdkAtom
 
