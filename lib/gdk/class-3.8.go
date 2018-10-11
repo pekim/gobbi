@@ -3,12 +3,34 @@
 
 package gdk
 
-import "unsafe"
+import (
+	gio "github.com/pekim/gobbi/lib/gio"
+	gobject "github.com/pekim/gobbi/lib/gobject"
+	"unsafe"
+)
 
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <gdk/gdk.h>
 // #include <stdlib.h>
 import "C"
+
+func (recv *AppLaunchContext) AppLaunchContext() *gio.AppLaunchContext {}
+
+func (recv *Cursor) Object() *gobject.Object {}
+
+func (recv *Device) Object() *gobject.Object {}
+
+func (recv *DeviceManager) Object() *gobject.Object {}
+
+func (recv *DeviceTool) Object() *gobject.Object {}
+
+func (recv *Display) Object() *gobject.Object {}
+
+func (recv *DisplayManager) Object() *gobject.Object {}
+
+func (recv *DragContext) Object() *gobject.Object {}
+
+func (recv *DrawingContext) Object() *gobject.Object {}
 
 // BeginUpdating is a wrapper around the C function gdk_frame_clock_begin_updating.
 func (recv *FrameClock) BeginUpdating() {
@@ -92,6 +114,20 @@ func (recv *FrameClock) RequestPhase(phase FrameClockPhase) {
 	return
 }
 
+func (recv *FrameClock) Object() *gobject.Object {}
+
+func (recv *GLContext) Object() *gobject.Object {}
+
+func (recv *Keymap) Object() *gobject.Object {}
+
+func (recv *Monitor) Object() *gobject.Object {}
+
+func (recv *Screen) Object() *gobject.Object {}
+
+func (recv *Seat) Object() *gobject.Object {}
+
+func (recv *Visual) Object() *gobject.Object {}
+
 // GetFrameClock is a wrapper around the C function gdk_window_get_frame_clock.
 func (recv *Window) GetFrameClock() *FrameClock {
 	retC := C.gdk_window_get_frame_clock((*C.GdkWindow)(recv.native))
@@ -116,3 +152,5 @@ func (recv *Window) SetFullscreenMode(mode FullscreenMode) {
 
 	return
 }
+
+func (recv *Window) Object() *gobject.Object {}

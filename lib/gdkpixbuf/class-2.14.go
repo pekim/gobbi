@@ -6,6 +6,7 @@ package gdkpixbuf
 import (
 	gio "github.com/pekim/gobbi/lib/gio"
 	glib "github.com/pekim/gobbi/lib/glib"
+	gobject "github.com/pekim/gobbi/lib/gobject"
 	"unsafe"
 )
 
@@ -69,6 +70,16 @@ func PixbufNewFromStreamAtScale(stream *gio.InputStream, width int32, height int
 
 // Unsupported : gdk_pixbuf_save_to_stream : unsupported parameter error : record with indirection level of 2
 
+func (recv *Pixbuf) Object() *gobject.Object {}
+
 // Unsupported : gdk_pixbuf_animation_new_from_stream_finish : unsupported parameter async_result : no type generator for Gio.AsyncResult, GAsyncResult*
+
+func (recv *PixbufAnimation) Object() *gobject.Object {}
+
+func (recv *PixbufAnimationIter) Object() *gobject.Object {}
+
+func (recv *PixbufLoader) Object() *gobject.Object {}
+
+func (recv *PixbufSimpleAnim) PixbufAnimation() *PixbufAnimation {}
 
 // Unsupported : PixbufSimpleAnimIter : no CType

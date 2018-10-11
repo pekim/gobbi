@@ -3,12 +3,24 @@
 
 package pango
 
+import gobject "github.com/pekim/gobbi/lib/gobject"
+
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <pango/pango.h>
 // #include <stdlib.h>
 import "C"
 
+func (recv *Context) Object() *gobject.Object {}
+
+func (recv *EngineLang) Engine() *Engine {}
+
+func (recv *EngineShape) Engine() *Engine {}
+
+func (recv *Font) Object() *gobject.Object {}
+
 // Unsupported : pango_font_face_list_sizes : unsupported parameter sizes : no param type
+
+func (recv *FontFace) Object() *gobject.Object {}
 
 // IsMonospace is a wrapper around the C function pango_font_family_is_monospace.
 func (recv *FontFamily) IsMonospace() bool {
@@ -18,6 +30,8 @@ func (recv *FontFamily) IsMonospace() bool {
 	return retGo
 }
 
+func (recv *FontFamily) Object() *gobject.Object {}
+
 // GetShapeEngineType is a wrapper around the C function pango_font_map_get_shape_engine_type.
 func (recv *FontMap) GetShapeEngineType() string {
 	retC := C.pango_font_map_get_shape_engine_type((*C.PangoFontMap)(recv.native))
@@ -26,7 +40,11 @@ func (recv *FontMap) GetShapeEngineType() string {
 	return retGo
 }
 
+func (recv *FontMap) Object() *gobject.Object {}
+
 // Unsupported : pango_fontset_foreach : unsupported parameter func : no type generator for FontsetForeachFunc, PangoFontsetForeachFunc
+
+func (recv *Fontset) Object() *gobject.Object {}
 
 // GetAutoDir is a wrapper around the C function pango_layout_get_auto_dir.
 func (recv *Layout) GetAutoDir() bool {
@@ -45,3 +63,7 @@ func (recv *Layout) SetAutoDir(autoDir bool) {
 
 	return
 }
+
+func (recv *Layout) Object() *gobject.Object {}
+
+func (recv *Renderer) Object() *gobject.Object {}

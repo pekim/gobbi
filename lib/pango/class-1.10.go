@@ -3,12 +3,21 @@
 
 package pango
 
-import "unsafe"
+import (
+	gobject "github.com/pekim/gobbi/lib/gobject"
+	"unsafe"
+)
 
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <pango/pango.h>
 // #include <stdlib.h>
 import "C"
+
+func (recv *Context) Object() *gobject.Object {}
+
+func (recv *EngineLang) Engine() *Engine {}
+
+func (recv *EngineShape) Engine() *Engine {}
 
 // GetFontMap is a wrapper around the C function pango_font_get_font_map.
 func (recv *Font) GetFontMap() *FontMap {
@@ -17,3 +26,17 @@ func (recv *Font) GetFontMap() *FontMap {
 
 	return retGo
 }
+
+func (recv *Font) Object() *gobject.Object {}
+
+func (recv *FontFace) Object() *gobject.Object {}
+
+func (recv *FontFamily) Object() *gobject.Object {}
+
+func (recv *FontMap) Object() *gobject.Object {}
+
+func (recv *Fontset) Object() *gobject.Object {}
+
+func (recv *Layout) Object() *gobject.Object {}
+
+func (recv *Renderer) Object() *gobject.Object {}

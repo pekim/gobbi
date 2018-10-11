@@ -6,6 +6,7 @@ package gdkpixbuf
 import (
 	gio "github.com/pekim/gobbi/lib/gio"
 	glib "github.com/pekim/gobbi/lib/glib"
+	gobject "github.com/pekim/gobbi/lib/gobject"
 	"unsafe"
 )
 
@@ -21,6 +22,8 @@ import "C"
 // Unsupported : gdk_pixbuf_new_from_stream_finish : unsupported parameter async_result : no type generator for Gio.AsyncResult, GAsyncResult*
 
 // Unsupported : gdk_pixbuf_new_from_xpm_data : unsupported parameter data : no param type
+
+func (recv *Pixbuf) Object() *gobject.Object {}
 
 // PixbufAnimationNewFromResource is a wrapper around the C function gdk_pixbuf_animation_new_from_resource.
 func PixbufAnimationNewFromResource(resourcePath string) (*PixbufAnimation, error) {
@@ -60,5 +63,13 @@ func PixbufAnimationNewFromStream(stream *gio.InputStream, cancellable *gio.Canc
 }
 
 // Unsupported : gdk_pixbuf_animation_new_from_stream_finish : unsupported parameter async_result : no type generator for Gio.AsyncResult, GAsyncResult*
+
+func (recv *PixbufAnimation) Object() *gobject.Object {}
+
+func (recv *PixbufAnimationIter) Object() *gobject.Object {}
+
+func (recv *PixbufLoader) Object() *gobject.Object {}
+
+func (recv *PixbufSimpleAnim) PixbufAnimation() *PixbufAnimation {}
 
 // Unsupported : PixbufSimpleAnimIter : no CType

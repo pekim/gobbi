@@ -7,6 +7,7 @@ import (
 	cairo "github.com/pekim/gobbi/lib/cairo"
 	gdk "github.com/pekim/gobbi/lib/gdk"
 	gdkpixbuf "github.com/pekim/gobbi/lib/gdkpixbuf"
+	gio "github.com/pekim/gobbi/lib/gio"
 	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	pango "github.com/pekim/gobbi/lib/pango"
@@ -42,6 +43,8 @@ func (recv *AboutDialog) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+func (recv *AboutDialog) Dialog() *Dialog {}
 
 // AccelGroup is a wrapper around the C record GtkAccelGroup.
 type AccelGroup struct {
@@ -157,6 +160,8 @@ func (recv *AccelGroup) Unlock() {
 	return
 }
 
+func (recv *AccelGroup) Object() *gobject.Object {}
+
 // AccelLabel is a wrapper around the C record GtkAccelLabel.
 type AccelLabel struct {
 	native *C.GtkAccelLabel
@@ -233,6 +238,8 @@ func (recv *AccelLabel) SetAccelWidget(accelWidget *Widget) {
 	return
 }
 
+func (recv *AccelLabel) Label() *Label {}
+
 // AccelMap is a wrapper around the C record GtkAccelMap.
 type AccelMap struct {
 	native *C.GtkAccelMap
@@ -253,6 +260,8 @@ func (recv *AccelMap) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+func (recv *AccelMap) Object() *gobject.Object {}
 
 // Accessible is a wrapper around the C record GtkAccessible.
 type Accessible struct {
@@ -284,6 +293,8 @@ func (recv *Accessible) ConnectWidgetDestroyed() {
 	return
 }
 
+func (recv *Accessible) Object() *atk.Object {}
+
 // Action is a wrapper around the C record GtkAction.
 type Action struct {
 	native *C.GtkAction
@@ -307,6 +318,8 @@ func (recv *Action) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+func (recv *Action) Object() *gobject.Object {}
+
 // ActionBar is a wrapper around the C record GtkActionBar.
 type ActionBar struct {
 	native *C.GtkActionBar
@@ -328,6 +341,8 @@ func (recv *ActionBar) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+func (recv *ActionBar) Bin() *Bin {}
 
 // ActionGroup is a wrapper around the C record GtkActionGroup.
 type ActionGroup struct {
@@ -351,6 +366,8 @@ func (recv *ActionGroup) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+func (recv *ActionGroup) Object() *gobject.Object {}
 
 // Adjustment is a wrapper around the C record GtkAdjustment.
 type Adjustment struct {
@@ -437,6 +454,8 @@ func (recv *Adjustment) ValueChanged() {
 	return
 }
 
+func (recv *Adjustment) InitiallyUnowned() *gobject.InitiallyUnowned {}
+
 // Alignment is a wrapper around the C record GtkAlignment.
 type Alignment struct {
 	native *C.GtkAlignment
@@ -491,6 +510,8 @@ func (recv *Alignment) Set(xalign float32, yalign float32, xscale float32, yscal
 	return
 }
 
+func (recv *Alignment) Bin() *Bin {}
+
 // AppChooserButton is a wrapper around the C record GtkAppChooserButton.
 type AppChooserButton struct {
 	native *C.GtkAppChooserButton
@@ -531,6 +552,8 @@ func (recv *AppChooserButton) SetHeading(heading string) {
 
 	return
 }
+
+func (recv *AppChooserButton) ComboBox() *ComboBox {}
 
 // AppChooserDialog is a wrapper around the C record GtkAppChooserDialog.
 type AppChooserDialog struct {
@@ -575,6 +598,8 @@ func (recv *AppChooserDialog) SetHeading(heading string) {
 	return
 }
 
+func (recv *AppChooserDialog) Dialog() *Dialog {}
+
 // AppChooserWidget is a wrapper around the C record GtkAppChooserWidget.
 type AppChooserWidget struct {
 	native *C.GtkAppChooserWidget
@@ -608,6 +633,8 @@ func (recv *AppChooserWidget) SetDefaultText(text string) {
 	return
 }
 
+func (recv *AppChooserWidget) Box() *Box {}
+
 // Application is a wrapper around the C record GtkApplication.
 type Application struct {
 	native *C.GtkApplication
@@ -631,6 +658,8 @@ func (recv *Application) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+func (recv *Application) Application() *gio.Application {}
+
 // ApplicationWindow is a wrapper around the C record GtkApplicationWindow.
 type ApplicationWindow struct {
 	native *C.GtkApplicationWindow
@@ -653,6 +682,8 @@ func (recv *ApplicationWindow) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+func (recv *ApplicationWindow) Window() *Window {}
 
 // Arrow is a wrapper around the C record GtkArrow.
 type Arrow struct {
@@ -700,6 +731,8 @@ func (recv *Arrow) Set(arrowType ArrowType, shadowType ShadowType) {
 	return
 }
 
+func (recv *Arrow) Misc() *Misc {}
+
 // ArrowAccessible is a wrapper around the C record GtkArrowAccessible.
 type ArrowAccessible struct {
 	native *C.GtkArrowAccessible
@@ -722,6 +755,8 @@ func (recv *ArrowAccessible) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+func (recv *ArrowAccessible) WidgetAccessible() *WidgetAccessible {}
 
 // AspectFrame is a wrapper around the C record GtkAspectFrame.
 type AspectFrame struct {
@@ -782,6 +817,8 @@ func (recv *AspectFrame) Set(xalign float32, yalign float32, ratio float32, obey
 	return
 }
 
+func (recv *AspectFrame) Frame() *Frame {}
+
 // Assistant is a wrapper around the C record GtkAssistant.
 type Assistant struct {
 	native *C.GtkAssistant
@@ -804,6 +841,8 @@ func (recv *Assistant) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+func (recv *Assistant) Window() *Window {}
 
 // Bin is a wrapper around the C record GtkBin.
 type Bin struct {
@@ -836,6 +875,8 @@ func (recv *Bin) GetChild() *Widget {
 	return retGo
 }
 
+func (recv *Bin) Container() *Container {}
+
 // BooleanCellAccessible is a wrapper around the C record GtkBooleanCellAccessible.
 type BooleanCellAccessible struct {
 	native *C.GtkBooleanCellAccessible
@@ -858,6 +899,8 @@ func (recv *BooleanCellAccessible) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+func (recv *BooleanCellAccessible) RendererCellAccessible() *RendererCellAccessible {}
 
 // Box is a wrapper around the C record GtkBox.
 type Box struct {
@@ -983,6 +1026,8 @@ func (recv *Box) SetSpacing(spacing int32) {
 	return
 }
 
+func (recv *Box) Container() *Container {}
+
 // Builder is a wrapper around the C record GtkBuilder.
 type Builder struct {
 	native *C.GtkBuilder
@@ -1007,6 +1052,8 @@ func (recv *Builder) ToC() unsafe.Pointer {
 }
 
 // Unsupported : gtk_builder_extend_with_template : unsupported parameter template_type : no type generator for GType, GType
+
+func (recv *Builder) Object() *gobject.Object {}
 
 // Button is a wrapper around the C record GtkButton.
 type Button struct {
@@ -1180,6 +1227,8 @@ func (recv *Button) SetUseUnderline(useUnderline bool) {
 	return
 }
 
+func (recv *Button) Bin() *Bin {}
+
 // ButtonAccessible is a wrapper around the C record GtkButtonAccessible.
 type ButtonAccessible struct {
 	native *C.GtkButtonAccessible
@@ -1202,6 +1251,8 @@ func (recv *ButtonAccessible) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+func (recv *ButtonAccessible) ContainerAccessible() *ContainerAccessible {}
 
 // ButtonBox is a wrapper around the C record GtkButtonBox.
 type ButtonBox struct {
@@ -1254,6 +1305,8 @@ func (recv *ButtonBox) SetLayout(layoutStyle ButtonBoxStyle) {
 
 	return
 }
+
+func (recv *ButtonBox) Box() *Box {}
 
 // Calendar is a wrapper around the C record GtkCalendar.
 type Calendar struct {
@@ -1350,6 +1403,8 @@ func (recv *Calendar) UnmarkDay(day uint32) {
 	return
 }
 
+func (recv *Calendar) Widget() *Widget {}
+
 // CellAccessible is a wrapper around the C record GtkCellAccessible.
 type CellAccessible struct {
 	native *C.GtkCellAccessible
@@ -1372,6 +1427,8 @@ func (recv *CellAccessible) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+func (recv *CellAccessible) Accessible() *Accessible {}
 
 // CellArea is a wrapper around the C record GtkCellArea.
 type CellArea struct {
@@ -1396,6 +1453,8 @@ func (recv *CellArea) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+func (recv *CellArea) InitiallyUnowned() *gobject.InitiallyUnowned {}
+
 // CellAreaBox is a wrapper around the C record GtkCellAreaBox.
 type CellAreaBox struct {
 	native *C.GtkCellAreaBox
@@ -1418,6 +1477,8 @@ func (recv *CellAreaBox) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+func (recv *CellAreaBox) CellArea() *CellArea {}
 
 // CellAreaContext is a wrapper around the C record GtkCellAreaContext.
 type CellAreaContext struct {
@@ -1459,6 +1520,8 @@ func (recv *CellAreaContext) Reset() {
 
 	return
 }
+
+func (recv *CellAreaContext) Object() *gobject.Object {}
 
 // CellRenderer is a wrapper around the C record GtkCellRenderer.
 type CellRenderer struct {
@@ -1517,6 +1580,8 @@ func (recv *CellRenderer) SetFixedSize(width int32, height int32) {
 
 // Unsupported : gtk_cell_renderer_start_editing : unsupported parameter event : no type generator for Gdk.Event, GdkEvent*
 
+func (recv *CellRenderer) InitiallyUnowned() *gobject.InitiallyUnowned {}
+
 // CellRendererAccel is a wrapper around the C record GtkCellRendererAccel.
 type CellRendererAccel struct {
 	native *C.GtkCellRendererAccel
@@ -1540,6 +1605,8 @@ func (recv *CellRendererAccel) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+func (recv *CellRendererAccel) CellRendererText() *CellRendererText {}
+
 // CellRendererCombo is a wrapper around the C record GtkCellRendererCombo.
 type CellRendererCombo struct {
 	native *C.GtkCellRendererCombo
@@ -1562,6 +1629,8 @@ func (recv *CellRendererCombo) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+func (recv *CellRendererCombo) CellRendererText() *CellRendererText {}
 
 // CellRendererPixbuf is a wrapper around the C record GtkCellRendererPixbuf.
 type CellRendererPixbuf struct {
@@ -1594,6 +1663,8 @@ func CellRendererPixbufNew() *CellRendererPixbuf {
 	return retGo
 }
 
+func (recv *CellRendererPixbuf) CellRenderer() *CellRenderer {}
+
 // CellRendererProgress is a wrapper around the C record GtkCellRendererProgress.
 type CellRendererProgress struct {
 	native *C.GtkCellRendererProgress
@@ -1616,6 +1687,8 @@ func (recv *CellRendererProgress) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+func (recv *CellRendererProgress) CellRenderer() *CellRenderer {}
 
 // CellRendererSpin is a wrapper around the C record GtkCellRendererSpin.
 type CellRendererSpin struct {
@@ -1640,6 +1713,8 @@ func (recv *CellRendererSpin) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+func (recv *CellRendererSpin) CellRendererText() *CellRendererText {}
+
 // CellRendererSpinner is a wrapper around the C record GtkCellRendererSpinner.
 type CellRendererSpinner struct {
 	native *C.GtkCellRendererSpinner
@@ -1662,6 +1737,8 @@ func (recv *CellRendererSpinner) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+func (recv *CellRendererSpinner) CellRenderer() *CellRenderer {}
 
 // CellRendererText is a wrapper around the C record GtkCellRendererText.
 type CellRendererText struct {
@@ -1702,6 +1779,8 @@ func (recv *CellRendererText) SetFixedHeightFromFont(numberOfRows int32) {
 
 	return
 }
+
+func (recv *CellRendererText) CellRenderer() *CellRenderer {}
 
 // CellRendererToggle is a wrapper around the C record GtkCellRendererToggle.
 type CellRendererToggle struct {
@@ -1770,6 +1849,8 @@ func (recv *CellRendererToggle) SetRadio(radio bool) {
 	return
 }
 
+func (recv *CellRendererToggle) CellRenderer() *CellRenderer {}
+
 // CellView is a wrapper around the C record GtkCellView.
 type CellView struct {
 	native *C.GtkCellView
@@ -1792,6 +1873,8 @@ func (recv *CellView) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+func (recv *CellView) Widget() *Widget {}
 
 // CheckButton is a wrapper around the C record GtkCheckButton.
 type CheckButton struct {
@@ -1844,6 +1927,8 @@ func CheckButtonNewWithMnemonic(label string) *CheckButton {
 
 	return retGo
 }
+
+func (recv *CheckButton) ToggleButton() *ToggleButton {}
 
 // CheckMenuItem is a wrapper around the C record GtkCheckMenuItem.
 type CheckMenuItem struct {
@@ -1941,6 +2026,8 @@ func (recv *CheckMenuItem) Toggled() {
 	return
 }
 
+func (recv *CheckMenuItem) MenuItem() *MenuItem {}
+
 // CheckMenuItemAccessible is a wrapper around the C record GtkCheckMenuItemAccessible.
 type CheckMenuItemAccessible struct {
 	native *C.GtkCheckMenuItemAccessible
@@ -1963,6 +2050,8 @@ func (recv *CheckMenuItemAccessible) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+func (recv *CheckMenuItemAccessible) MenuItemAccessible() *MenuItemAccessible {}
 
 // Clipboard is a wrapper around the C record GtkClipboard.
 type Clipboard struct {
@@ -2039,6 +2128,8 @@ func (recv *Clipboard) WaitIsTextAvailable() bool {
 	return retGo
 }
 
+func (recv *Clipboard) Object() *gobject.Object {}
+
 // ColorButton is a wrapper around the C record GtkColorButton.
 type ColorButton struct {
 	native *C.GtkColorButton
@@ -2061,6 +2152,8 @@ func (recv *ColorButton) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+func (recv *ColorButton) Button() *Button {}
 
 // ColorChooserDialog is a wrapper around the C record GtkColorChooserDialog.
 type ColorChooserDialog struct {
@@ -2085,6 +2178,8 @@ func (recv *ColorChooserDialog) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+func (recv *ColorChooserDialog) Dialog() *Dialog {}
+
 // ColorChooserWidget is a wrapper around the C record GtkColorChooserWidget.
 type ColorChooserWidget struct {
 	native *C.GtkColorChooserWidget
@@ -2107,6 +2202,8 @@ func (recv *ColorChooserWidget) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+func (recv *ColorChooserWidget) Box() *Box {}
 
 // ColorSelection is a wrapper around the C record GtkColorSelection.
 type ColorSelection struct {
@@ -2257,6 +2354,8 @@ func (recv *ColorSelection) SetPreviousColor(color *gdk.Color) {
 	return
 }
 
+func (recv *ColorSelection) Box() *Box {}
+
 // ColorSelectionDialog is a wrapper around the C record GtkColorSelectionDialog.
 type ColorSelectionDialog struct {
 	native *C.GtkColorSelectionDialog
@@ -2290,6 +2389,8 @@ func ColorSelectionDialogNew(title string) *ColorSelectionDialog {
 
 	return retGo
 }
+
+func (recv *ColorSelectionDialog) Dialog() *Dialog {}
 
 // ComboBox is a wrapper around the C record GtkComboBox.
 type ComboBox struct {
@@ -2346,6 +2447,8 @@ func (recv *ComboBox) GetAddTearoffs() bool {
 	return retGo
 }
 
+func (recv *ComboBox) Bin() *Bin {}
+
 // ComboBoxAccessible is a wrapper around the C record GtkComboBoxAccessible.
 type ComboBoxAccessible struct {
 	native *C.GtkComboBoxAccessible
@@ -2369,6 +2472,8 @@ func (recv *ComboBoxAccessible) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+func (recv *ComboBoxAccessible) ContainerAccessible() *ContainerAccessible {}
+
 // ComboBoxText is a wrapper around the C record GtkComboBoxText.
 type ComboBoxText struct {
 	native *C.GtkComboBoxText
@@ -2391,6 +2496,8 @@ func (recv *ComboBoxText) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+func (recv *ComboBoxText) ComboBox() *ComboBox {}
 
 // Container is a wrapper around the C record GtkContainer.
 type Container struct {
@@ -2625,6 +2732,8 @@ func (recv *Container) UnsetFocusChain() {
 	return
 }
 
+func (recv *Container) Widget() *Widget {}
+
 // ContainerAccessible is a wrapper around the C record GtkContainerAccessible.
 type ContainerAccessible struct {
 	native *C.GtkContainerAccessible
@@ -2647,6 +2756,8 @@ func (recv *ContainerAccessible) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+func (recv *ContainerAccessible) WidgetAccessible() *WidgetAccessible {}
 
 // ContainerCellAccessible is a wrapper around the C record GtkContainerCellAccessible.
 type ContainerCellAccessible struct {
@@ -2705,6 +2816,8 @@ func (recv *ContainerCellAccessible) RemoveChild(child *CellAccessible) {
 	return
 }
 
+func (recv *ContainerCellAccessible) CellAccessible() *CellAccessible {}
+
 // CssProvider is a wrapper around the C record GtkCssProvider.
 type CssProvider struct {
 	native *C.GtkCssProvider
@@ -2757,6 +2870,8 @@ func (recv *CssProvider) LoadFromPath(path string) (bool, error) {
 
 	return retGo, goThrowableError
 }
+
+func (recv *CssProvider) Object() *gobject.Object {}
 
 // Dialog is a wrapper around the C record GtkDialog.
 type Dialog struct {
@@ -2855,6 +2970,8 @@ func (recv *Dialog) SetResponseSensitive(responseId int32, setting bool) {
 	return
 }
 
+func (recv *Dialog) Window() *Window {}
+
 // DrawingArea is a wrapper around the C record GtkDrawingArea.
 type DrawingArea struct {
 	native *C.GtkDrawingArea
@@ -2885,6 +3002,8 @@ func DrawingAreaNew() *DrawingArea {
 
 	return retGo
 }
+
+func (recv *DrawingArea) Widget() *Widget {}
 
 // Entry is a wrapper around the C record GtkEntry.
 type Entry struct {
@@ -3083,6 +3202,8 @@ func (recv *Entry) TextIndexToLayoutIndex(textIndex int32) int32 {
 	return retGo
 }
 
+func (recv *Entry) Widget() *Widget {}
+
 // EntryAccessible is a wrapper around the C record GtkEntryAccessible.
 type EntryAccessible struct {
 	native *C.GtkEntryAccessible
@@ -3105,6 +3226,8 @@ func (recv *EntryAccessible) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+func (recv *EntryAccessible) WidgetAccessible() *WidgetAccessible {}
 
 // EntryBuffer is a wrapper around the C record GtkEntryBuffer.
 type EntryBuffer struct {
@@ -3129,6 +3252,8 @@ func (recv *EntryBuffer) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+func (recv *EntryBuffer) Object() *gobject.Object {}
+
 // EntryCompletion is a wrapper around the C record GtkEntryCompletion.
 type EntryCompletion struct {
 	native *C.GtkEntryCompletion
@@ -3151,6 +3276,8 @@ func (recv *EntryCompletion) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+func (recv *EntryCompletion) Object() *gobject.Object {}
 
 // Unsupported : EntryIconAccessible : no CType
 
@@ -3185,6 +3312,8 @@ func EventBoxNew() *EventBox {
 	return retGo
 }
 
+func (recv *EventBox) Bin() *Bin {}
+
 // EventController is a wrapper around the C record GtkEventController.
 type EventController struct {
 	native *C.GtkEventController
@@ -3205,6 +3334,8 @@ func (recv *EventController) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+func (recv *EventController) Object() *gobject.Object {}
 
 // Expander is a wrapper around the C record GtkExpander.
 type Expander struct {
@@ -3229,6 +3360,8 @@ func (recv *Expander) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+func (recv *Expander) Bin() *Bin {}
+
 // ExpanderAccessible is a wrapper around the C record GtkExpanderAccessible.
 type ExpanderAccessible struct {
 	native *C.GtkExpanderAccessible
@@ -3252,6 +3385,8 @@ func (recv *ExpanderAccessible) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+func (recv *ExpanderAccessible) ContainerAccessible() *ContainerAccessible {}
+
 // FileChooserButton is a wrapper around the C record GtkFileChooserButton.
 type FileChooserButton struct {
 	native *C.GtkFileChooserButton
@@ -3274,6 +3409,8 @@ func (recv *FileChooserButton) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+func (recv *FileChooserButton) Box() *Box {}
 
 // FileChooserDialog is a wrapper around the C record GtkFileChooserDialog.
 type FileChooserDialog struct {
@@ -3300,6 +3437,10 @@ func (recv *FileChooserDialog) ToC() unsafe.Pointer {
 
 // Unsupported : gtk_file_chooser_dialog_new : unsupported parameter ... : varargs
 
+func (recv *FileChooserDialog) Dialog() *Dialog {}
+
+func (recv *FileChooserNative) NativeDialog() *NativeDialog {}
+
 // FileChooserWidget is a wrapper around the C record GtkFileChooserWidget.
 type FileChooserWidget struct {
 	native *C.GtkFileChooserWidget
@@ -3323,6 +3464,8 @@ func (recv *FileChooserWidget) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+func (recv *FileChooserWidget) Box() *Box {}
+
 // FileFilter is a wrapper around the C record GtkFileFilter.
 type FileFilter struct {
 	native *C.GtkFileFilter
@@ -3345,6 +3488,8 @@ func (recv *FileFilter) ToC() unsafe.Pointer {
 }
 
 // Unsupported : gtk_file_filter_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
+
+func (recv *FileFilter) InitiallyUnowned() *gobject.InitiallyUnowned {}
 
 // Fixed is a wrapper around the C record GtkFixed.
 type Fixed struct {
@@ -3403,6 +3548,8 @@ func (recv *Fixed) Put(widget *Widget, x int32, y int32) {
 	return
 }
 
+func (recv *Fixed) Container() *Container {}
+
 // FlowBox is a wrapper around the C record GtkFlowBox.
 type FlowBox struct {
 	native *C.GtkFlowBox
@@ -3424,6 +3571,8 @@ func (recv *FlowBox) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+func (recv *FlowBox) Container() *Container {}
 
 // FlowBoxAccessible is a wrapper around the C record GtkFlowBoxAccessible.
 type FlowBoxAccessible struct {
@@ -3448,6 +3597,8 @@ func (recv *FlowBoxAccessible) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+func (recv *FlowBoxAccessible) ContainerAccessible() *ContainerAccessible {}
+
 // FlowBoxChild is a wrapper around the C record GtkFlowBoxChild.
 type FlowBoxChild struct {
 	native *C.GtkFlowBoxChild
@@ -3470,6 +3621,8 @@ func (recv *FlowBoxChild) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+func (recv *FlowBoxChild) Bin() *Bin {}
+
 // FlowBoxChildAccessible is a wrapper around the C record GtkFlowBoxChildAccessible.
 type FlowBoxChildAccessible struct {
 	native *C.GtkFlowBoxChildAccessible
@@ -3491,6 +3644,8 @@ func (recv *FlowBoxChildAccessible) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+func (recv *FlowBoxChildAccessible) ContainerAccessible() *ContainerAccessible {}
 
 // FontButton is a wrapper around the C record GtkFontButton.
 type FontButton struct {
@@ -3515,6 +3670,8 @@ func (recv *FontButton) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+func (recv *FontButton) Button() *Button {}
+
 // FontChooserDialog is a wrapper around the C record GtkFontChooserDialog.
 type FontChooserDialog struct {
 	native *C.GtkFontChooserDialog
@@ -3538,6 +3695,8 @@ func (recv *FontChooserDialog) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+func (recv *FontChooserDialog) Dialog() *Dialog {}
+
 // FontChooserWidget is a wrapper around the C record GtkFontChooserWidget.
 type FontChooserWidget struct {
 	native *C.GtkFontChooserWidget
@@ -3560,6 +3719,8 @@ func (recv *FontChooserWidget) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+func (recv *FontChooserWidget) Box() *Box {}
 
 // FontSelection is a wrapper around the C record GtkFontSelection.
 type FontSelection struct {
@@ -3629,6 +3790,8 @@ func (recv *FontSelection) SetPreviewText(text string) {
 
 	return
 }
+
+func (recv *FontSelection) Box() *Box {}
 
 // FontSelectionDialog is a wrapper around the C record GtkFontSelectionDialog.
 type FontSelectionDialog struct {
@@ -3701,6 +3864,8 @@ func (recv *FontSelectionDialog) SetPreviewText(text string) {
 
 	return
 }
+
+func (recv *FontSelectionDialog) Dialog() *Dialog {}
 
 // Frame is a wrapper around the C record GtkFrame.
 type Frame struct {
@@ -3814,6 +3979,8 @@ func (recv *Frame) SetShadowType(type_ ShadowType) {
 	return
 }
 
+func (recv *Frame) Bin() *Bin {}
+
 // FrameAccessible is a wrapper around the C record GtkFrameAccessible.
 type FrameAccessible struct {
 	native *C.GtkFrameAccessible
@@ -3836,6 +4003,10 @@ func (recv *FrameAccessible) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+func (recv *FrameAccessible) ContainerAccessible() *ContainerAccessible {}
+
+func (recv *GLArea) Widget() *Widget {}
 
 // Gesture is a wrapper around the C record GtkGesture.
 type Gesture struct {
@@ -3860,6 +4031,8 @@ func (recv *Gesture) ToC() unsafe.Pointer {
 
 // Unsupported : gtk_gesture_get_last_event : no return generator
 
+func (recv *Gesture) EventController() *EventController {}
+
 // GestureDrag is a wrapper around the C record GtkGestureDrag.
 type GestureDrag struct {
 	native *C.GtkGestureDrag
@@ -3880,6 +4053,8 @@ func (recv *GestureDrag) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+func (recv *GestureDrag) GestureSingle() *GestureSingle {}
 
 // GestureLongPress is a wrapper around the C record GtkGestureLongPress.
 type GestureLongPress struct {
@@ -3902,6 +4077,8 @@ func (recv *GestureLongPress) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+func (recv *GestureLongPress) GestureSingle() *GestureSingle {}
+
 // GestureMultiPress is a wrapper around the C record GtkGestureMultiPress.
 type GestureMultiPress struct {
 	native *C.GtkGestureMultiPress
@@ -3922,6 +4099,8 @@ func (recv *GestureMultiPress) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+func (recv *GestureMultiPress) GestureSingle() *GestureSingle {}
 
 // GesturePan is a wrapper around the C record GtkGesturePan.
 type GesturePan struct {
@@ -3944,6 +4123,8 @@ func (recv *GesturePan) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+func (recv *GesturePan) GestureDrag() *GestureDrag {}
+
 // GestureRotate is a wrapper around the C record GtkGestureRotate.
 type GestureRotate struct {
 	native *C.GtkGestureRotate
@@ -3964,6 +4145,8 @@ func (recv *GestureRotate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+func (recv *GestureRotate) Gesture() *Gesture {}
 
 // GestureSingle is a wrapper around the C record GtkGestureSingle.
 type GestureSingle struct {
@@ -3986,6 +4169,8 @@ func (recv *GestureSingle) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+func (recv *GestureSingle) Gesture() *Gesture {}
+
 // GestureSwipe is a wrapper around the C record GtkGestureSwipe.
 type GestureSwipe struct {
 	native *C.GtkGestureSwipe
@@ -4007,6 +4192,8 @@ func (recv *GestureSwipe) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+func (recv *GestureSwipe) GestureSingle() *GestureSingle {}
+
 // GestureZoom is a wrapper around the C record GtkGestureZoom.
 type GestureZoom struct {
 	native *C.GtkGestureZoom
@@ -4027,6 +4214,8 @@ func (recv *GestureZoom) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+func (recv *GestureZoom) Gesture() *Gesture {}
 
 // Grid is a wrapper around the C record GtkGrid.
 type Grid struct {
@@ -4163,6 +4352,8 @@ func (recv *Grid) SetRowSpacing(spacing uint32) {
 	return
 }
 
+func (recv *Grid) Container() *Container {}
+
 // HBox is a wrapper around the C record GtkHBox.
 type HBox struct {
 	native *C.GtkHBox
@@ -4198,6 +4389,8 @@ func HBoxNew(homogeneous bool, spacing int32) *HBox {
 	return retGo
 }
 
+func (recv *HBox) Box() *Box {}
+
 // HButtonBox is a wrapper around the C record GtkHButtonBox.
 type HButtonBox struct {
 	native *C.GtkHButtonBox
@@ -4227,6 +4420,8 @@ func HButtonBoxNew() *HButtonBox {
 
 	return retGo
 }
+
+func (recv *HButtonBox) ButtonBox() *ButtonBox {}
 
 // HPaned is a wrapper around the C record GtkHPaned.
 type HPaned struct {
@@ -4258,6 +4453,8 @@ func HPanedNew() *HPaned {
 	return retGo
 }
 
+func (recv *HPaned) Paned() *Paned {}
+
 // HSV is a wrapper around the C record GtkHSV.
 type HSV struct {
 	native *C.GtkHSV
@@ -4280,6 +4477,8 @@ func (recv *HSV) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+func (recv *HSV) Widget() *Widget {}
 
 // HScale is a wrapper around the C record GtkHScale.
 type HScale struct {
@@ -4327,6 +4526,8 @@ func HScaleNewWithRange(min float64, max float64, step float64) *HScale {
 	return retGo
 }
 
+func (recv *HScale) Scale() *Scale {}
+
 // HScrollbar is a wrapper around the C record GtkHScrollbar.
 type HScrollbar struct {
 	native *C.GtkHScrollbar
@@ -4359,6 +4560,8 @@ func HScrollbarNew(adjustment *Adjustment) *HScrollbar {
 	return retGo
 }
 
+func (recv *HScrollbar) Scrollbar() *Scrollbar {}
+
 // HSeparator is a wrapper around the C record GtkHSeparator.
 type HSeparator struct {
 	native *C.GtkHSeparator
@@ -4388,6 +4591,8 @@ func HSeparatorNew() *HSeparator {
 
 	return retGo
 }
+
+func (recv *HSeparator) Separator() *Separator {}
 
 // HandleBox is a wrapper around the C record GtkHandleBox.
 type HandleBox struct {
@@ -4471,6 +4676,8 @@ func (recv *HandleBox) SetSnapEdge(edge PositionType) {
 	return
 }
 
+func (recv *HandleBox) Bin() *Bin {}
+
 // HeaderBar is a wrapper around the C record GtkHeaderBar.
 type HeaderBar struct {
 	native *C.GtkHeaderBar
@@ -4492,6 +4699,8 @@ func (recv *HeaderBar) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+func (recv *HeaderBar) Container() *Container {}
 
 // IMContext is a wrapper around the C record GtkIMContext.
 type IMContext struct {
@@ -4612,6 +4821,8 @@ func (recv *IMContext) SetUsePreedit(usePreedit bool) {
 	return
 }
 
+func (recv *IMContext) Object() *gobject.Object {}
+
 // IMContextSimple is a wrapper around the C record GtkIMContextSimple.
 type IMContextSimple struct {
 	native *C.GtkIMContextSimple
@@ -4646,6 +4857,8 @@ func IMContextSimpleNew() *IMContextSimple {
 // Blacklisted : gtk_im_context_simple_add_compose_file
 
 // Unsupported : gtk_im_context_simple_add_table : unsupported parameter data : no param type
+
+func (recv *IMContextSimple) IMContext() *IMContext {}
 
 // IMMulticontext is a wrapper around the C record GtkIMMulticontext.
 type IMMulticontext struct {
@@ -4686,6 +4899,8 @@ func (recv *IMMulticontext) AppendMenuitems(menushell *MenuShell) {
 
 	return
 }
+
+func (recv *IMMulticontext) IMContext() *IMContext {}
 
 // IconFactory is a wrapper around the C record GtkIconFactory.
 type IconFactory struct {
@@ -4755,6 +4970,8 @@ func (recv *IconFactory) RemoveDefault() {
 	return
 }
 
+func (recv *IconFactory) Object() *gobject.Object {}
+
 // IconInfo is a wrapper around the C record GtkIconInfo.
 type IconInfo struct {
 	native *C.GtkIconInfo
@@ -4775,6 +4992,8 @@ func (recv *IconInfo) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+func (recv *IconInfo) Object() *gobject.Object {}
 
 // IconTheme is a wrapper around the C record GtkIconTheme.
 type IconTheme struct {
@@ -4798,6 +5017,8 @@ func (recv *IconTheme) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+func (recv *IconTheme) Object() *gobject.Object {}
 
 // IconView is a wrapper around the C record GtkIconView.
 type IconView struct {
@@ -4824,6 +5045,8 @@ func (recv *IconView) ToC() unsafe.Pointer {
 
 // Unsupported : gtk_icon_view_new_with_model : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
 
+func (recv *IconView) Container() *Container {}
+
 // IconViewAccessible is a wrapper around the C record GtkIconViewAccessible.
 type IconViewAccessible struct {
 	native *C.GtkIconViewAccessible
@@ -4846,6 +5069,8 @@ func (recv *IconViewAccessible) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+func (recv *IconViewAccessible) ContainerAccessible() *ContainerAccessible {}
 
 // Image is a wrapper around the C record GtkImage.
 type Image struct {
@@ -4987,6 +5212,8 @@ func (recv *Image) SetFromResource(resourcePath string) {
 
 // Unsupported : gtk_image_set_from_stock : unsupported parameter size : no type generator for gint, GtkIconSize
 
+func (recv *Image) Misc() *Misc {}
+
 // ImageAccessible is a wrapper around the C record GtkImageAccessible.
 type ImageAccessible struct {
 	native *C.GtkImageAccessible
@@ -5010,6 +5237,8 @@ func (recv *ImageAccessible) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+func (recv *ImageAccessible) WidgetAccessible() *WidgetAccessible {}
+
 // ImageCellAccessible is a wrapper around the C record GtkImageCellAccessible.
 type ImageCellAccessible struct {
 	native *C.GtkImageCellAccessible
@@ -5032,6 +5261,8 @@ func (recv *ImageCellAccessible) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+func (recv *ImageCellAccessible) RendererCellAccessible() *RendererCellAccessible {}
 
 // ImageMenuItem is a wrapper around the C record GtkImageMenuItem.
 type ImageMenuItem struct {
@@ -5116,6 +5347,8 @@ func (recv *ImageMenuItem) SetImage(image *Widget) {
 	return
 }
 
+func (recv *ImageMenuItem) MenuItem() *MenuItem {}
+
 // InfoBar is a wrapper around the C record GtkInfoBar.
 type InfoBar struct {
 	native *C.GtkInfoBar
@@ -5140,6 +5373,8 @@ func (recv *InfoBar) ToC() unsafe.Pointer {
 }
 
 // Unsupported : gtk_info_bar_new_with_buttons : unsupported parameter ... : varargs
+
+func (recv *InfoBar) Box() *Box {}
 
 // Invisible is a wrapper around the C record GtkInvisible.
 type Invisible struct {
@@ -5171,6 +5406,8 @@ func InvisibleNew() *Invisible {
 
 	return retGo
 }
+
+func (recv *Invisible) Widget() *Widget {}
 
 // Label is a wrapper around the C record GtkLabel.
 type Label struct {
@@ -5474,6 +5711,8 @@ func (recv *Label) SetUseUnderline(setting bool) {
 	return
 }
 
+func (recv *Label) Misc() *Misc {}
+
 // LabelAccessible is a wrapper around the C record GtkLabelAccessible.
 type LabelAccessible struct {
 	native *C.GtkLabelAccessible
@@ -5496,6 +5735,8 @@ func (recv *LabelAccessible) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+func (recv *LabelAccessible) WidgetAccessible() *WidgetAccessible {}
 
 // Layout is a wrapper around the C record GtkLayout.
 type Layout struct {
@@ -5618,6 +5859,8 @@ func (recv *Layout) SetVadjustment(adjustment *Adjustment) {
 	return
 }
 
+func (recv *Layout) Container() *Container {}
+
 // LevelBar is a wrapper around the C record GtkLevelBar.
 type LevelBar struct {
 	native *C.GtkLevelBar
@@ -5640,6 +5883,8 @@ func (recv *LevelBar) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+func (recv *LevelBar) Widget() *Widget {}
 
 // LevelBarAccessible is a wrapper around the C record GtkLevelBarAccessible.
 type LevelBarAccessible struct {
@@ -5664,6 +5909,8 @@ func (recv *LevelBarAccessible) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+func (recv *LevelBarAccessible) WidgetAccessible() *WidgetAccessible {}
+
 // LinkButton is a wrapper around the C record GtkLinkButton.
 type LinkButton struct {
 	native *C.GtkLinkButton
@@ -5686,6 +5933,8 @@ func (recv *LinkButton) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+func (recv *LinkButton) Button() *Button {}
 
 // LinkButtonAccessible is a wrapper around the C record GtkLinkButtonAccessible.
 type LinkButtonAccessible struct {
@@ -5710,6 +5959,8 @@ func (recv *LinkButtonAccessible) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+func (recv *LinkButtonAccessible) ButtonAccessible() *ButtonAccessible {}
+
 // ListBox is a wrapper around the C record GtkListBox.
 type ListBox struct {
 	native *C.GtkListBox
@@ -5731,6 +5982,8 @@ func (recv *ListBox) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+func (recv *ListBox) Container() *Container {}
 
 // ListBoxAccessible is a wrapper around the C record GtkListBoxAccessible.
 type ListBoxAccessible struct {
@@ -5755,6 +6008,8 @@ func (recv *ListBoxAccessible) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+func (recv *ListBoxAccessible) ContainerAccessible() *ContainerAccessible {}
+
 // ListBoxRow is a wrapper around the C record GtkListBoxRow.
 type ListBoxRow struct {
 	native *C.GtkListBoxRow
@@ -5777,6 +6032,8 @@ func (recv *ListBoxRow) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+func (recv *ListBoxRow) Bin() *Bin {}
+
 // ListBoxRowAccessible is a wrapper around the C record GtkListBoxRowAccessible.
 type ListBoxRowAccessible struct {
 	native *C.GtkListBoxRowAccessible
@@ -5798,6 +6055,8 @@ func (recv *ListBoxRowAccessible) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+func (recv *ListBoxRowAccessible) ContainerAccessible() *ContainerAccessible {}
 
 // ListStore is a wrapper around the C record GtkListStore.
 type ListStore struct {
@@ -5923,6 +6182,8 @@ func (recv *ListStore) SetValue(iter *TreeIter, column int32, value *gobject.Val
 	return
 }
 
+func (recv *ListStore) Object() *gobject.Object {}
+
 // LockButton is a wrapper around the C record GtkLockButton.
 type LockButton struct {
 	native *C.GtkLockButton
@@ -5946,6 +6207,8 @@ func (recv *LockButton) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+func (recv *LockButton) Button() *Button {}
+
 // LockButtonAccessible is a wrapper around the C record GtkLockButtonAccessible.
 type LockButtonAccessible struct {
 	native *C.GtkLockButtonAccessible
@@ -5968,6 +6231,8 @@ func (recv *LockButtonAccessible) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+func (recv *LockButtonAccessible) ButtonAccessible() *ButtonAccessible {}
 
 // Menu is a wrapper around the C record GtkMenu.
 type Menu struct {
@@ -6124,6 +6389,8 @@ func (recv *Menu) SetTitle(title string) {
 	return
 }
 
+func (recv *Menu) MenuShell() *MenuShell {}
+
 // MenuAccessible is a wrapper around the C record GtkMenuAccessible.
 type MenuAccessible struct {
 	native *C.GtkMenuAccessible
@@ -6146,6 +6413,8 @@ func (recv *MenuAccessible) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+func (recv *MenuAccessible) MenuShellAccessible() *MenuShellAccessible {}
 
 // MenuBar is a wrapper around the C record GtkMenuBar.
 type MenuBar struct {
@@ -6178,6 +6447,8 @@ func MenuBarNew() *MenuBar {
 	return retGo
 }
 
+func (recv *MenuBar) MenuShell() *MenuShell {}
+
 // MenuButton is a wrapper around the C record GtkMenuButton.
 type MenuButton struct {
 	native *C.GtkMenuButton
@@ -6201,6 +6472,8 @@ func (recv *MenuButton) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+func (recv *MenuButton) ToggleButton() *ToggleButton {}
+
 // MenuButtonAccessible is a wrapper around the C record GtkMenuButtonAccessible.
 type MenuButtonAccessible struct {
 	native *C.GtkMenuButtonAccessible
@@ -6223,6 +6496,8 @@ func (recv *MenuButtonAccessible) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+func (recv *MenuButtonAccessible) ToggleButtonAccessible() *ToggleButtonAccessible {}
 
 // MenuItem is a wrapper around the C record GtkMenuItem.
 type MenuItem struct {
@@ -6361,6 +6636,8 @@ func (recv *MenuItem) ToggleSizeRequest(requisition int32) {
 	return
 }
 
+func (recv *MenuItem) Bin() *Bin {}
+
 // MenuItemAccessible is a wrapper around the C record GtkMenuItemAccessible.
 type MenuItemAccessible struct {
 	native *C.GtkMenuItemAccessible
@@ -6383,6 +6660,8 @@ func (recv *MenuItemAccessible) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+func (recv *MenuItemAccessible) ContainerAccessible() *ContainerAccessible {}
 
 // MenuShell is a wrapper around the C record GtkMenuShell.
 type MenuShell struct {
@@ -6471,6 +6750,8 @@ func (recv *MenuShell) SelectItem(menuItem *Widget) {
 	return
 }
 
+func (recv *MenuShell) Container() *Container {}
+
 // MenuShellAccessible is a wrapper around the C record GtkMenuShellAccessible.
 type MenuShellAccessible struct {
 	native *C.GtkMenuShellAccessible
@@ -6494,6 +6775,8 @@ func (recv *MenuShellAccessible) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+func (recv *MenuShellAccessible) ContainerAccessible() *ContainerAccessible {}
+
 // MenuToolButton is a wrapper around the C record GtkMenuToolButton.
 type MenuToolButton struct {
 	native *C.GtkMenuToolButton
@@ -6516,6 +6799,8 @@ func (recv *MenuToolButton) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+func (recv *MenuToolButton) ToolButton() *ToolButton {}
 
 // MessageDialog is a wrapper around the C record GtkMessageDialog.
 type MessageDialog struct {
@@ -6543,6 +6828,8 @@ func (recv *MessageDialog) ToC() unsafe.Pointer {
 // Unsupported : gtk_message_dialog_new : unsupported parameter ... : varargs
 
 // Unsupported : gtk_message_dialog_new_with_markup : unsupported parameter ... : varargs
+
+func (recv *MessageDialog) Dialog() *Dialog {}
 
 // Misc is a wrapper around the C record GtkMisc.
 type Misc struct {
@@ -6619,6 +6906,8 @@ func (recv *Misc) SetPadding(xpad int32, ypad int32) {
 	return
 }
 
+func (recv *Misc) Widget() *Widget {}
+
 // ModelButton is a wrapper around the C record GtkModelButton.
 type ModelButton struct {
 	native *C.GtkModelButton
@@ -6639,6 +6928,8 @@ func (recv *ModelButton) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+func (recv *ModelButton) Button() *Button {}
 
 // MountOperation is a wrapper around the C record GtkMountOperation.
 type MountOperation struct {
@@ -6662,6 +6953,10 @@ func (recv *MountOperation) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+func (recv *MountOperation) MountOperation() *gio.MountOperation {}
+
+func (recv *NativeDialog) Object() *gobject.Object {}
 
 // Notebook is a wrapper around the C record GtkNotebook.
 type Notebook struct {
@@ -7018,6 +7313,8 @@ func (recv *Notebook) SetTabPos(pos PositionType) {
 	return
 }
 
+func (recv *Notebook) Container() *Container {}
+
 // NotebookAccessible is a wrapper around the C record GtkNotebookAccessible.
 type NotebookAccessible struct {
 	native *C.GtkNotebookAccessible
@@ -7040,6 +7337,8 @@ func (recv *NotebookAccessible) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+func (recv *NotebookAccessible) ContainerAccessible() *ContainerAccessible {}
 
 // NotebookPageAccessible is a wrapper around the C record GtkNotebookPageAccessible.
 type NotebookPageAccessible struct {
@@ -7083,6 +7382,8 @@ func (recv *NotebookPageAccessible) Invalidate() {
 	return
 }
 
+func (recv *NotebookPageAccessible) Object() *atk.Object {}
+
 // NumerableIcon is a wrapper around the C record GtkNumerableIcon.
 type NumerableIcon struct {
 	native *C.GtkNumerableIcon
@@ -7106,6 +7407,8 @@ func (recv *NumerableIcon) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+func (recv *NumerableIcon) EmblemedIcon() *gio.EmblemedIcon {}
+
 // OffscreenWindow is a wrapper around the C record GtkOffscreenWindow.
 type OffscreenWindow struct {
 	native *C.GtkOffscreenWindow
@@ -7127,6 +7430,8 @@ func (recv *OffscreenWindow) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+func (recv *OffscreenWindow) Window() *Window {}
 
 // Overlay is a wrapper around the C record GtkOverlay.
 type Overlay struct {
@@ -7151,7 +7456,11 @@ func (recv *Overlay) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+func (recv *Overlay) Bin() *Bin {}
+
 // Unsupported : gtk_pad_controller_new : unsupported parameter group : no type generator for Gio.ActionGroup, GActionGroup*
+
+func (recv *PadController) EventController() *EventController {}
 
 // PageSetup is a wrapper around the C record GtkPageSetup.
 type PageSetup struct {
@@ -7175,6 +7484,8 @@ func (recv *PageSetup) ToC() unsafe.Pointer {
 }
 
 // Unsupported : gtk_page_setup_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
+
+func (recv *PageSetup) Object() *gobject.Object {}
 
 // Paned is a wrapper around the C record GtkPaned.
 type Paned struct {
@@ -7264,6 +7575,8 @@ func (recv *Paned) SetPosition(position int32) {
 	return
 }
 
+func (recv *Paned) Container() *Container {}
+
 // PanedAccessible is a wrapper around the C record GtkPanedAccessible.
 type PanedAccessible struct {
 	native *C.GtkPanedAccessible
@@ -7286,6 +7599,8 @@ func (recv *PanedAccessible) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+func (recv *PanedAccessible) ContainerAccessible() *ContainerAccessible {}
 
 // PlacesSidebar is a wrapper around the C record GtkPlacesSidebar.
 type PlacesSidebar struct {
@@ -7315,6 +7630,8 @@ func (recv *PlacesSidebar) GetShowConnectToServer() bool {
 
 	return retGo
 }
+
+func (recv *PlacesSidebar) ScrolledWindow() *ScrolledWindow {}
 
 // Blacklisted : GtkPlug
 
@@ -7351,6 +7668,8 @@ func (recv *Popover) GetPosition() PositionType {
 	return retGo
 }
 
+func (recv *Popover) Bin() *Bin {}
+
 // PopoverAccessible is a wrapper around the C record GtkPopoverAccessible.
 type PopoverAccessible struct {
 	native *C.GtkPopoverAccessible
@@ -7373,6 +7692,8 @@ func (recv *PopoverAccessible) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+func (recv *PopoverAccessible) ContainerAccessible() *ContainerAccessible {}
+
 // PopoverMenu is a wrapper around the C record GtkPopoverMenu.
 type PopoverMenu struct {
 	native *C.GtkPopoverMenu
@@ -7394,6 +7715,8 @@ func (recv *PopoverMenu) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+func (recv *PopoverMenu) Popover() *Popover {}
+
 // PrintContext is a wrapper around the C record GtkPrintContext.
 type PrintContext struct {
 	native *C.GtkPrintContext
@@ -7414,6 +7737,8 @@ func (recv *PrintContext) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+func (recv *PrintContext) Object() *gobject.Object {}
 
 // PrintOperation is a wrapper around the C record GtkPrintOperation.
 type PrintOperation struct {
@@ -7438,6 +7763,8 @@ func (recv *PrintOperation) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+func (recv *PrintOperation) Object() *gobject.Object {}
+
 // PrintSettings is a wrapper around the C record GtkPrintSettings.
 type PrintSettings struct {
 	native *C.GtkPrintSettings
@@ -7460,6 +7787,8 @@ func (recv *PrintSettings) ToC() unsafe.Pointer {
 }
 
 // Unsupported : gtk_print_settings_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
+
+func (recv *PrintSettings) Object() *gobject.Object {}
 
 // ProgressBar is a wrapper around the C record GtkProgressBar.
 type ProgressBar struct {
@@ -7569,6 +7898,8 @@ func (recv *ProgressBar) SetText(text string) {
 	return
 }
 
+func (recv *ProgressBar) Widget() *Widget {}
+
 // ProgressBarAccessible is a wrapper around the C record GtkProgressBarAccessible.
 type ProgressBarAccessible struct {
 	native *C.GtkProgressBarAccessible
@@ -7592,6 +7923,8 @@ func (recv *ProgressBarAccessible) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+func (recv *ProgressBarAccessible) WidgetAccessible() *WidgetAccessible {}
+
 // RadioAction is a wrapper around the C record GtkRadioAction.
 type RadioAction struct {
 	native *C.GtkRadioAction
@@ -7614,6 +7947,8 @@ func (recv *RadioAction) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+func (recv *RadioAction) ToggleAction() *ToggleAction {}
 
 // RadioButton is a wrapper around the C record GtkRadioButton.
 type RadioButton struct {
@@ -7727,6 +8062,8 @@ func (recv *RadioButton) SetGroup(group *glib.SList) {
 	return
 }
 
+func (recv *RadioButton) CheckButton() *CheckButton {}
+
 // RadioButtonAccessible is a wrapper around the C record GtkRadioButtonAccessible.
 type RadioButtonAccessible struct {
 	native *C.GtkRadioButtonAccessible
@@ -7749,6 +8086,8 @@ func (recv *RadioButtonAccessible) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+func (recv *RadioButtonAccessible) ToggleButtonAccessible() *ToggleButtonAccessible {}
 
 // RadioMenuItem is a wrapper around the C record GtkRadioMenuItem.
 type RadioMenuItem struct {
@@ -7826,6 +8165,8 @@ func (recv *RadioMenuItem) SetGroup(group *glib.SList) {
 	return
 }
 
+func (recv *RadioMenuItem) CheckMenuItem() *CheckMenuItem {}
+
 // RadioMenuItemAccessible is a wrapper around the C record GtkRadioMenuItemAccessible.
 type RadioMenuItemAccessible struct {
 	native *C.GtkRadioMenuItemAccessible
@@ -7849,6 +8190,8 @@ func (recv *RadioMenuItemAccessible) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+func (recv *RadioMenuItemAccessible) CheckMenuItemAccessible() *CheckMenuItemAccessible {}
+
 // RadioToolButton is a wrapper around the C record GtkRadioToolButton.
 type RadioToolButton struct {
 	native *C.GtkRadioToolButton
@@ -7870,6 +8213,8 @@ func (recv *RadioToolButton) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+func (recv *RadioToolButton) ToggleToolButton() *ToggleToolButton {}
 
 // Range is a wrapper around the C record GtkRange.
 type Range struct {
@@ -7968,6 +8313,8 @@ func (recv *Range) SetValue(value float64) {
 	return
 }
 
+func (recv *Range) Widget() *Widget {}
+
 // RangeAccessible is a wrapper around the C record GtkRangeAccessible.
 type RangeAccessible struct {
 	native *C.GtkRangeAccessible
@@ -7990,6 +8337,8 @@ func (recv *RangeAccessible) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+func (recv *RangeAccessible) WidgetAccessible() *WidgetAccessible {}
 
 // RcStyle is a wrapper around the C record GtkRcStyle.
 type RcStyle struct {
@@ -8054,6 +8403,8 @@ func (recv *RcStyle) Copy() *RcStyle {
 	return retGo
 }
 
+func (recv *RcStyle) Object() *gobject.Object {}
+
 // RecentAction is a wrapper around the C record GtkRecentAction.
 type RecentAction struct {
 	native *C.GtkRecentAction
@@ -8076,6 +8427,8 @@ func (recv *RecentAction) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+func (recv *RecentAction) Action() *Action {}
 
 // RecentChooserDialog is a wrapper around the C record GtkRecentChooserDialog.
 type RecentChooserDialog struct {
@@ -8104,6 +8457,8 @@ func (recv *RecentChooserDialog) ToC() unsafe.Pointer {
 
 // Unsupported : gtk_recent_chooser_dialog_new_for_manager : unsupported parameter ... : varargs
 
+func (recv *RecentChooserDialog) Dialog() *Dialog {}
+
 // RecentChooserMenu is a wrapper around the C record GtkRecentChooserMenu.
 type RecentChooserMenu struct {
 	native *C.GtkRecentChooserMenu
@@ -8126,6 +8481,8 @@ func (recv *RecentChooserMenu) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+func (recv *RecentChooserMenu) Menu() *Menu {}
 
 // RecentChooserWidget is a wrapper around the C record GtkRecentChooserWidget.
 type RecentChooserWidget struct {
@@ -8150,6 +8507,8 @@ func (recv *RecentChooserWidget) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+func (recv *RecentChooserWidget) Box() *Box {}
+
 // RecentFilter is a wrapper around the C record GtkRecentFilter.
 type RecentFilter struct {
 	native *C.GtkRecentFilter
@@ -8170,6 +8529,10 @@ func (recv *RecentFilter) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+func (recv *RecentFilter) InitiallyUnowned() *gobject.InitiallyUnowned {}
+
+func (recv *RecentManager) Object() *gobject.Object {}
 
 // RendererCellAccessible is a wrapper around the C record GtkRendererCellAccessible.
 type RendererCellAccessible struct {
@@ -8204,6 +8567,8 @@ func RendererCellAccessibleNew(renderer *CellRenderer) *RendererCellAccessible {
 	return retGo
 }
 
+func (recv *RendererCellAccessible) CellAccessible() *CellAccessible {}
+
 // Revealer is a wrapper around the C record GtkRevealer.
 type Revealer struct {
 	native *C.GtkRevealer
@@ -8225,6 +8590,8 @@ func (recv *Revealer) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+func (recv *Revealer) Bin() *Bin {}
 
 // Scale is a wrapper around the C record GtkScale.
 type Scale struct {
@@ -8301,6 +8668,8 @@ func (recv *Scale) SetValuePos(pos PositionType) {
 	return
 }
 
+func (recv *Scale) Range() *Range {}
+
 // ScaleAccessible is a wrapper around the C record GtkScaleAccessible.
 type ScaleAccessible struct {
 	native *C.GtkScaleAccessible
@@ -8323,6 +8692,8 @@ func (recv *ScaleAccessible) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+func (recv *ScaleAccessible) RangeAccessible() *RangeAccessible {}
 
 // ScaleButton is a wrapper around the C record GtkScaleButton.
 type ScaleButton struct {
@@ -8349,6 +8720,8 @@ func (recv *ScaleButton) ToC() unsafe.Pointer {
 
 // Unsupported : gtk_scale_button_new : unsupported parameter size : no type generator for gint, GtkIconSize
 
+func (recv *ScaleButton) Button() *Button {}
+
 // ScaleButtonAccessible is a wrapper around the C record GtkScaleButtonAccessible.
 type ScaleButtonAccessible struct {
 	native *C.GtkScaleButtonAccessible
@@ -8372,6 +8745,8 @@ func (recv *ScaleButtonAccessible) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+func (recv *ScaleButtonAccessible) ButtonAccessible() *ButtonAccessible {}
+
 // Scrollbar is a wrapper around the C record GtkScrollbar.
 type Scrollbar struct {
 	native *C.GtkScrollbar
@@ -8393,6 +8768,8 @@ func (recv *Scrollbar) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+func (recv *Scrollbar) Range() *Range {}
 
 // ScrolledWindow is a wrapper around the C record GtkScrolledWindow.
 type ScrolledWindow struct {
@@ -8519,6 +8896,8 @@ func (recv *ScrolledWindow) SetVadjustment(vadjustment *Adjustment) {
 	return
 }
 
+func (recv *ScrolledWindow) Bin() *Bin {}
+
 // ScrolledWindowAccessible is a wrapper around the C record GtkScrolledWindowAccessible.
 type ScrolledWindowAccessible struct {
 	native *C.GtkScrolledWindowAccessible
@@ -8542,6 +8921,8 @@ func (recv *ScrolledWindowAccessible) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+func (recv *ScrolledWindowAccessible) ContainerAccessible() *ContainerAccessible {}
+
 // SearchBar is a wrapper around the C record GtkSearchBar.
 type SearchBar struct {
 	native *C.GtkSearchBar
@@ -8563,6 +8944,8 @@ func (recv *SearchBar) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+func (recv *SearchBar) Bin() *Bin {}
 
 // SearchEntry is a wrapper around the C record GtkSearchEntry.
 type SearchEntry struct {
@@ -8586,6 +8969,8 @@ func (recv *SearchEntry) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+func (recv *SearchEntry) Entry() *Entry {}
+
 // Separator is a wrapper around the C record GtkSeparator.
 type Separator struct {
 	native *C.GtkSeparator
@@ -8608,6 +8993,8 @@ func (recv *Separator) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+func (recv *Separator) Widget() *Widget {}
 
 // SeparatorMenuItem is a wrapper around the C record GtkSeparatorMenuItem.
 type SeparatorMenuItem struct {
@@ -8639,6 +9026,8 @@ func SeparatorMenuItemNew() *SeparatorMenuItem {
 	return retGo
 }
 
+func (recv *SeparatorMenuItem) MenuItem() *MenuItem {}
+
 // SeparatorToolItem is a wrapper around the C record GtkSeparatorToolItem.
 type SeparatorToolItem struct {
 	native *C.GtkSeparatorToolItem
@@ -8661,6 +9050,8 @@ func (recv *SeparatorToolItem) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+func (recv *SeparatorToolItem) ToolItem() *ToolItem {}
 
 // Settings is a wrapper around the C record GtkSettings.
 type Settings struct {
@@ -8743,6 +9134,18 @@ func (recv *Settings) SetStringProperty(name string, vString string, origin stri
 	return
 }
 
+func (recv *Settings) Object() *gobject.Object {}
+
+func (recv *ShortcutLabel) Box() *Box {}
+
+func (recv *ShortcutsGroup) Box() *Box {}
+
+func (recv *ShortcutsSection) Box() *Box {}
+
+func (recv *ShortcutsShortcut) Box() *Box {}
+
+func (recv *ShortcutsWindow) Window() *Window {}
+
 // SizeGroup is a wrapper around the C record GtkSizeGroup.
 type SizeGroup struct {
 	native *C.GtkSizeGroup
@@ -8810,6 +9213,8 @@ func (recv *SizeGroup) SetMode(mode SizeGroupMode) {
 
 	return
 }
+
+func (recv *SizeGroup) Object() *gobject.Object {}
 
 // Blacklisted : GtkSocket
 
@@ -9077,6 +9482,8 @@ func (recv *SpinButton) Update() {
 	return
 }
 
+func (recv *SpinButton) Entry() *Entry {}
+
 // SpinButtonAccessible is a wrapper around the C record GtkSpinButtonAccessible.
 type SpinButtonAccessible struct {
 	native *C.GtkSpinButtonAccessible
@@ -9099,6 +9506,8 @@ func (recv *SpinButtonAccessible) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+func (recv *SpinButtonAccessible) EntryAccessible() *EntryAccessible {}
 
 // Spinner is a wrapper around the C record GtkSpinner.
 type Spinner struct {
@@ -9123,6 +9532,8 @@ func (recv *Spinner) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+func (recv *Spinner) Widget() *Widget {}
+
 // SpinnerAccessible is a wrapper around the C record GtkSpinnerAccessible.
 type SpinnerAccessible struct {
 	native *C.GtkSpinnerAccessible
@@ -9146,6 +9557,8 @@ func (recv *SpinnerAccessible) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+func (recv *SpinnerAccessible) WidgetAccessible() *WidgetAccessible {}
+
 // Stack is a wrapper around the C record GtkStack.
 type Stack struct {
 	native *C.GtkStack
@@ -9167,6 +9580,8 @@ func (recv *Stack) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+func (recv *Stack) Container() *Container {}
 
 // Blacklisted : GtkStackAccessible
 
@@ -9192,6 +9607,8 @@ func (recv *StackSidebar) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+func (recv *StackSidebar) Bin() *Bin {}
+
 // StackSwitcher is a wrapper around the C record GtkStackSwitcher.
 type StackSwitcher struct {
 	native *C.GtkStackSwitcher
@@ -9213,6 +9630,8 @@ func (recv *StackSwitcher) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+func (recv *StackSwitcher) Box() *Box {}
 
 // StatusIcon is a wrapper around the C record GtkStatusIcon.
 type StatusIcon struct {
@@ -9238,6 +9657,8 @@ func (recv *StatusIcon) ToC() unsafe.Pointer {
 }
 
 // Unsupported : gtk_status_icon_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon, GIcon*
+
+func (recv *StatusIcon) Object() *gobject.Object {}
 
 // Statusbar is a wrapper around the C record GtkStatusbar.
 type Statusbar struct {
@@ -9314,6 +9735,8 @@ func (recv *Statusbar) Remove(contextId uint32, messageId uint32) {
 	return
 }
 
+func (recv *Statusbar) Box() *Box {}
+
 // StatusbarAccessible is a wrapper around the C record GtkStatusbarAccessible.
 type StatusbarAccessible struct {
 	native *C.GtkStatusbarAccessible
@@ -9336,6 +9759,8 @@ func (recv *StatusbarAccessible) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+func (recv *StatusbarAccessible) ContainerAccessible() *ContainerAccessible {}
 
 // Style is a wrapper around the C record GtkStyle.
 type Style struct {
@@ -9466,6 +9891,8 @@ func (recv *Style) SetBackground(window *gdk.Window, stateType StateType) {
 	return
 }
 
+func (recv *Style) Object() *gobject.Object {}
+
 // StyleContext is a wrapper around the C record GtkStyleContext.
 type StyleContext struct {
 	native *C.GtkStyleContext
@@ -9554,6 +9981,8 @@ func (recv *StyleContext) LookupIconSet(stockId string) *IconSet {
 	return retGo
 }
 
+func (recv *StyleContext) Object() *gobject.Object {}
+
 // StyleProperties is a wrapper around the C record GtkStyleProperties.
 type StyleProperties struct {
 	native *C.GtkStyleProperties
@@ -9592,6 +10021,8 @@ func (recv *StyleProperties) Clear() {
 	return
 }
 
+func (recv *StyleProperties) Object() *gobject.Object {}
+
 // Switch is a wrapper around the C record GtkSwitch.
 type Switch struct {
 	native *C.GtkSwitch
@@ -9615,6 +10046,8 @@ func (recv *Switch) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+func (recv *Switch) Widget() *Widget {}
+
 // SwitchAccessible is a wrapper around the C record GtkSwitchAccessible.
 type SwitchAccessible struct {
 	native *C.GtkSwitchAccessible
@@ -9637,6 +10070,8 @@ func (recv *SwitchAccessible) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+func (recv *SwitchAccessible) WidgetAccessible() *WidgetAccessible {}
 
 // Table is a wrapper around the C record GtkTable.
 type Table struct {
@@ -9823,6 +10258,8 @@ func (recv *Table) SetRowSpacings(spacing uint32) {
 	return
 }
 
+func (recv *Table) Container() *Container {}
+
 // TearoffMenuItem is a wrapper around the C record GtkTearoffMenuItem.
 type TearoffMenuItem struct {
 	native *C.GtkTearoffMenuItem
@@ -9853,6 +10290,8 @@ func TearoffMenuItemNew() *TearoffMenuItem {
 
 	return retGo
 }
+
+func (recv *TearoffMenuItem) MenuItem() *MenuItem {}
 
 // TextBuffer is a wrapper around the C record GtkTextBuffer.
 type TextBuffer struct {
@@ -10502,6 +10941,8 @@ func (recv *TextBuffer) SetText(text string, len int32) {
 	return
 }
 
+func (recv *TextBuffer) Object() *gobject.Object {}
+
 // TextCellAccessible is a wrapper around the C record GtkTextCellAccessible.
 type TextCellAccessible struct {
 	native *C.GtkTextCellAccessible
@@ -10524,6 +10965,8 @@ func (recv *TextCellAccessible) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+func (recv *TextCellAccessible) RendererCellAccessible() *RendererCellAccessible {}
 
 // TextChildAnchor is a wrapper around the C record GtkTextChildAnchor.
 type TextChildAnchor struct {
@@ -10571,6 +11014,8 @@ func (recv *TextChildAnchor) GetWidgets() *glib.List {
 
 	return retGo
 }
+
+func (recv *TextChildAnchor) Object() *gobject.Object {}
 
 // TextMark is a wrapper around the C record GtkTextMark.
 type TextMark struct {
@@ -10645,6 +11090,8 @@ func (recv *TextMark) SetVisible(setting bool) {
 	return
 }
 
+func (recv *TextMark) Object() *gobject.Object {}
+
 // TextTag is a wrapper around the C record GtkTextTag.
 type TextTag struct {
 	native *C.GtkTextTag
@@ -10697,6 +11144,8 @@ func (recv *TextTag) SetPriority(priority int32) {
 
 	return
 }
+
+func (recv *TextTag) Object() *gobject.Object {}
 
 // TextTagTable is a wrapper around the C record GtkTextTagTable.
 type TextTagTable struct {
@@ -10768,6 +11217,8 @@ func (recv *TextTagTable) Remove(tag *TextTag) {
 
 	return
 }
+
+func (recv *TextTagTable) Object() *gobject.Object {}
 
 // TextView is a wrapper around the C record GtkTextView.
 type TextView struct {
@@ -11325,6 +11776,8 @@ func (recv *TextView) WindowToBufferCoords(win TextWindowType, windowX int32, wi
 	return bufferX, bufferY
 }
 
+func (recv *TextView) Container() *Container {}
+
 // TextViewAccessible is a wrapper around the C record GtkTextViewAccessible.
 type TextViewAccessible struct {
 	native *C.GtkTextViewAccessible
@@ -11347,6 +11800,8 @@ func (recv *TextViewAccessible) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+func (recv *TextViewAccessible) ContainerAccessible() *ContainerAccessible {}
 
 // ThemingEngine is a wrapper around the C record GtkThemingEngine.
 type ThemingEngine struct {
@@ -11379,6 +11834,8 @@ func (recv *ThemingEngine) GetScreen() *gdk.Screen {
 	return retGo
 }
 
+func (recv *ThemingEngine) Object() *gobject.Object {}
+
 // ToggleAction is a wrapper around the C record GtkToggleAction.
 type ToggleAction struct {
 	native *C.GtkToggleAction
@@ -11401,6 +11858,8 @@ func (recv *ToggleAction) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+func (recv *ToggleAction) Action() *Action {}
 
 // ToggleButton is a wrapper around the C record GtkToggleButton.
 type ToggleButton struct {
@@ -11516,6 +11975,8 @@ func (recv *ToggleButton) Toggled() {
 	return
 }
 
+func (recv *ToggleButton) Button() *Button {}
+
 // ToggleButtonAccessible is a wrapper around the C record GtkToggleButtonAccessible.
 type ToggleButtonAccessible struct {
 	native *C.GtkToggleButtonAccessible
@@ -11538,6 +11999,8 @@ func (recv *ToggleButtonAccessible) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+func (recv *ToggleButtonAccessible) ButtonAccessible() *ButtonAccessible {}
 
 // ToggleToolButton is a wrapper around the C record GtkToggleToolButton.
 type ToggleToolButton struct {
@@ -11562,6 +12025,8 @@ func (recv *ToggleToolButton) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+func (recv *ToggleToolButton) ToolButton() *ToolButton {}
+
 // ToolButton is a wrapper around the C record GtkToolButton.
 type ToolButton struct {
 	native *C.GtkToolButton
@@ -11584,6 +12049,8 @@ func (recv *ToolButton) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+func (recv *ToolButton) ToolItem() *ToolItem {}
 
 // ToolItem is a wrapper around the C record GtkToolItem.
 type ToolItem struct {
@@ -11608,6 +12075,8 @@ func (recv *ToolItem) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+func (recv *ToolItem) Bin() *Bin {}
+
 // ToolItemGroup is a wrapper around the C record GtkToolItemGroup.
 type ToolItemGroup struct {
 	native *C.GtkToolItemGroup
@@ -11631,6 +12100,8 @@ func (recv *ToolItemGroup) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+func (recv *ToolItemGroup) Container() *Container {}
+
 // ToolPalette is a wrapper around the C record GtkToolPalette.
 type ToolPalette struct {
 	native *C.GtkToolPalette
@@ -11653,6 +12124,8 @@ func (recv *ToolPalette) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+func (recv *ToolPalette) Container() *Container {}
 
 // Toolbar is a wrapper around the C record GtkToolbar.
 type Toolbar struct {
@@ -11733,6 +12206,8 @@ func (recv *Toolbar) UnsetStyle() {
 	return
 }
 
+func (recv *Toolbar) Container() *Container {}
+
 // Tooltip is a wrapper around the C record GtkTooltip.
 type Tooltip struct {
 	native *C.GtkTooltip
@@ -11753,6 +12228,8 @@ func (recv *Tooltip) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+func (recv *Tooltip) Object() *gobject.Object {}
 
 // ToplevelAccessible is a wrapper around the C record GtkToplevelAccessible.
 type ToplevelAccessible struct {
@@ -11785,6 +12262,8 @@ func (recv *ToplevelAccessible) GetChildren() *glib.List {
 	return retGo
 }
 
+func (recv *ToplevelAccessible) Object() *atk.Object {}
+
 // TreeModelFilter is a wrapper around the C record GtkTreeModelFilter.
 type TreeModelFilter struct {
 	native *C.GtkTreeModelFilter
@@ -11807,6 +12286,8 @@ func (recv *TreeModelFilter) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+func (recv *TreeModelFilter) Object() *gobject.Object {}
 
 // TreeModelSort is a wrapper around the C record GtkTreeModelSort.
 type TreeModelSort struct {
@@ -11893,6 +12374,8 @@ func (recv *TreeModelSort) ResetDefaultSortFunc() {
 
 	return
 }
+
+func (recv *TreeModelSort) Object() *gobject.Object {}
 
 // TreeSelection is a wrapper around the C record GtkTreeSelection.
 type TreeSelection struct {
@@ -12036,6 +12519,8 @@ func (recv *TreeSelection) UnselectPath(path *TreePath) {
 
 	return
 }
+
+func (recv *TreeSelection) Object() *gobject.Object {}
 
 // TreeStore is a wrapper around the C record GtkTreeStore.
 type TreeStore struct {
@@ -12192,6 +12677,8 @@ func (recv *TreeStore) SetValue(iter *TreeIter, column int32, value *gobject.Val
 
 	return
 }
+
+func (recv *TreeStore) Object() *gobject.Object {}
 
 // TreeView is a wrapper around the C record GtkTreeView.
 type TreeView struct {
@@ -12632,6 +13119,8 @@ func (recv *TreeView) UnsetRowsDragSource() {
 	return
 }
 
+func (recv *TreeView) Container() *Container {}
+
 // TreeViewAccessible is a wrapper around the C record GtkTreeViewAccessible.
 type TreeViewAccessible struct {
 	native *C.GtkTreeViewAccessible
@@ -12654,6 +13143,8 @@ func (recv *TreeViewAccessible) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+func (recv *TreeViewAccessible) ContainerAccessible() *ContainerAccessible {}
 
 // TreeViewColumn is a wrapper around the C record GtkTreeViewColumn.
 type TreeViewColumn struct {
@@ -13052,6 +13543,8 @@ func (recv *TreeViewColumn) SetWidget(widget *Widget) {
 	return
 }
 
+func (recv *TreeViewColumn) InitiallyUnowned() *gobject.InitiallyUnowned {}
+
 // UIManager is a wrapper around the C record GtkUIManager.
 type UIManager struct {
 	native *C.GtkUIManager
@@ -13074,6 +13567,8 @@ func (recv *UIManager) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+func (recv *UIManager) Object() *gobject.Object {}
 
 // VBox is a wrapper around the C record GtkVBox.
 type VBox struct {
@@ -13110,6 +13605,8 @@ func VBoxNew(homogeneous bool, spacing int32) *VBox {
 	return retGo
 }
 
+func (recv *VBox) Box() *Box {}
+
 // VButtonBox is a wrapper around the C record GtkVButtonBox.
 type VButtonBox struct {
 	native *C.GtkVButtonBox
@@ -13140,6 +13637,8 @@ func VButtonBoxNew() *VButtonBox {
 	return retGo
 }
 
+func (recv *VButtonBox) ButtonBox() *ButtonBox {}
+
 // VPaned is a wrapper around the C record GtkVPaned.
 type VPaned struct {
 	native *C.GtkVPaned
@@ -13169,6 +13668,8 @@ func VPanedNew() *VPaned {
 
 	return retGo
 }
+
+func (recv *VPaned) Paned() *Paned {}
 
 // VScale is a wrapper around the C record GtkVScale.
 type VScale struct {
@@ -13216,6 +13717,8 @@ func VScaleNewWithRange(min float64, max float64, step float64) *VScale {
 	return retGo
 }
 
+func (recv *VScale) Scale() *Scale {}
+
 // VScrollbar is a wrapper around the C record GtkVScrollbar.
 type VScrollbar struct {
 	native *C.GtkVScrollbar
@@ -13248,6 +13751,8 @@ func VScrollbarNew(adjustment *Adjustment) *VScrollbar {
 	return retGo
 }
 
+func (recv *VScrollbar) Scrollbar() *Scrollbar {}
+
 // VSeparator is a wrapper around the C record GtkVSeparator.
 type VSeparator struct {
 	native *C.GtkVSeparator
@@ -13277,6 +13782,8 @@ func VSeparatorNew() *VSeparator {
 
 	return retGo
 }
+
+func (recv *VSeparator) Separator() *Separator {}
 
 // Viewport is a wrapper around the C record GtkViewport.
 type Viewport struct {
@@ -13364,6 +13871,8 @@ func (recv *Viewport) SetVadjustment(adjustment *Adjustment) {
 	return
 }
 
+func (recv *Viewport) Bin() *Bin {}
+
 // VolumeButton is a wrapper around the C record GtkVolumeButton.
 type VolumeButton struct {
 	native *C.GtkVolumeButton
@@ -13385,6 +13894,8 @@ func (recv *VolumeButton) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+func (recv *VolumeButton) ScaleButton() *ScaleButton {}
 
 // Widget is a wrapper around the C record GtkWidget.
 type Widget struct {
@@ -14472,6 +14983,8 @@ func (recv *Widget) Unrealize() {
 	return
 }
 
+func (recv *Widget) InitiallyUnowned() *gobject.InitiallyUnowned {}
+
 // WidgetAccessible is a wrapper around the C record GtkWidgetAccessible.
 type WidgetAccessible struct {
 	native *C.GtkWidgetAccessible
@@ -14494,6 +15007,8 @@ func (recv *WidgetAccessible) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+func (recv *WidgetAccessible) Accessible() *Accessible {}
 
 // Window is a wrapper around the C record GtkWindow.
 type Window struct {
@@ -15052,6 +15567,8 @@ func (recv *Window) Unstick() {
 	return
 }
 
+func (recv *Window) Bin() *Bin {}
+
 // WindowAccessible is a wrapper around the C record GtkWindowAccessible.
 type WindowAccessible struct {
 	native *C.GtkWindowAccessible
@@ -15074,6 +15591,8 @@ func (recv *WindowAccessible) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+func (recv *WindowAccessible) ContainerAccessible() *ContainerAccessible {}
 
 // WindowGroup is a wrapper around the C record GtkWindowGroup.
 type WindowGroup struct {
@@ -15123,3 +15642,5 @@ func (recv *WindowGroup) RemoveWindow(window *Window) {
 
 	return
 }
+
+func (recv *WindowGroup) Object() *gobject.Object {}

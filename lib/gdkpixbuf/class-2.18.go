@@ -3,6 +3,8 @@
 
 package gdkpixbuf
 
+import gobject "github.com/pekim/gobbi/lib/gobject"
+
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <gdk-pixbuf/gdk-pixbuf.h>
 // #include <stdlib.h>
@@ -16,7 +18,15 @@ import "C"
 
 // Unsupported : gdk_pixbuf_new_from_xpm_data : unsupported parameter data : no param type
 
+func (recv *Pixbuf) Object() *gobject.Object {}
+
 // Unsupported : gdk_pixbuf_animation_new_from_stream_finish : unsupported parameter async_result : no type generator for Gio.AsyncResult, GAsyncResult*
+
+func (recv *PixbufAnimation) Object() *gobject.Object {}
+
+func (recv *PixbufAnimationIter) Object() *gobject.Object {}
+
+func (recv *PixbufLoader) Object() *gobject.Object {}
 
 // GetLoop is a wrapper around the C function gdk_pixbuf_simple_anim_get_loop.
 func (recv *PixbufSimpleAnim) GetLoop() bool {
@@ -35,5 +45,7 @@ func (recv *PixbufSimpleAnim) SetLoop(loop bool) {
 
 	return
 }
+
+func (recv *PixbufSimpleAnim) PixbufAnimation() *PixbufAnimation {}
 
 // Unsupported : PixbufSimpleAnimIter : no CType

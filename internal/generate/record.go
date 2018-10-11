@@ -74,6 +74,7 @@ func (r *Record) generate(g *jen.Group, version *Version) {
 
 	r.Constructors.generate(g, version)
 	r.Methods.generate(g, version)
+	r.generateUpcast(g)
 }
 
 func (r *Record) generateType(g *jen.Group) {
@@ -95,4 +96,29 @@ func (r *Record) generateType(g *jen.Group) {
 			}
 		})
 	g.Line()
+}
+
+func (r *Record) generateUpcast(g *jen.Group) {
+	if r.ParentName == "" {
+		return
+	}
+
+	qname := QNameNew(r.Namespace, r.ParentName)
+
+	g.
+		Func().
+		Parens(jen.Id("recv").Op("*").Id(r.GoName)). //  receiver declaration
+		Id(qname.name).                              // func name
+		Params().                                    // params
+		ParamsFunc(func(g *jen.Group) {              // return value
+			if qname.sameNamespace {
+				g.Op("*").Id(qname.name)
+			} else {
+				g.Op("*").Qual(qname.ns.fullGoPackageName, qname.name)
+			}
+		}).
+		BlockFunc(func(g *jen.Group) { // body
+
+		}).
+		Line()
 }

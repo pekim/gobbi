@@ -3,6 +3,8 @@
 
 package pango
 
+import gobject "github.com/pekim/gobbi/lib/gobject"
+
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <pango/pango.h>
 // #include <stdlib.h>
@@ -23,6 +25,18 @@ func (recv *Context) GetSerial() uint32 {
 	return retGo
 }
 
+func (recv *Context) Object() *gobject.Object {}
+
+func (recv *EngineLang) Engine() *Engine {}
+
+func (recv *EngineShape) Engine() *Engine {}
+
+func (recv *Font) Object() *gobject.Object {}
+
+func (recv *FontFace) Object() *gobject.Object {}
+
+func (recv *FontFamily) Object() *gobject.Object {}
+
 // GetSerial is a wrapper around the C function pango_font_map_get_serial.
 func (recv *FontMap) GetSerial() uint32 {
 	retC := C.pango_font_map_get_serial((*C.PangoFontMap)(recv.native))
@@ -31,6 +45,10 @@ func (recv *FontMap) GetSerial() uint32 {
 	return retGo
 }
 
+func (recv *FontMap) Object() *gobject.Object {}
+
+func (recv *Fontset) Object() *gobject.Object {}
+
 // GetSerial is a wrapper around the C function pango_layout_get_serial.
 func (recv *Layout) GetSerial() uint32 {
 	retC := C.pango_layout_get_serial((*C.PangoLayout)(recv.native))
@@ -38,3 +56,7 @@ func (recv *Layout) GetSerial() uint32 {
 
 	return retGo
 }
+
+func (recv *Layout) Object() *gobject.Object {}
+
+func (recv *Renderer) Object() *gobject.Object {}

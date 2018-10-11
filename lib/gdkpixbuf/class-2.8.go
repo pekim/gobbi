@@ -3,7 +3,10 @@
 
 package gdkpixbuf
 
-import "unsafe"
+import (
+	gobject "github.com/pekim/gobbi/lib/gobject"
+	"unsafe"
+)
 
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <gdk-pixbuf/gdk-pixbuf.h>
@@ -18,7 +21,15 @@ import "C"
 
 // Unsupported : gdk_pixbuf_new_from_xpm_data : unsupported parameter data : no param type
 
+func (recv *Pixbuf) Object() *gobject.Object {}
+
 // Unsupported : gdk_pixbuf_animation_new_from_stream_finish : unsupported parameter async_result : no type generator for Gio.AsyncResult, GAsyncResult*
+
+func (recv *PixbufAnimation) Object() *gobject.Object {}
+
+func (recv *PixbufAnimationIter) Object() *gobject.Object {}
+
+func (recv *PixbufLoader) Object() *gobject.Object {}
 
 // PixbufSimpleAnimNew is a wrapper around the C function gdk_pixbuf_simple_anim_new.
 func PixbufSimpleAnimNew(width int32, height int32, rate float32) *PixbufSimpleAnim {
@@ -42,5 +53,7 @@ func (recv *PixbufSimpleAnim) AddFrame(pixbuf *Pixbuf) {
 
 	return
 }
+
+func (recv *PixbufSimpleAnim) PixbufAnimation() *PixbufAnimation {}
 
 // Unsupported : PixbufSimpleAnimIter : no CType

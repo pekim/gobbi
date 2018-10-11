@@ -3,10 +3,37 @@
 
 package gdk
 
+import (
+	gio "github.com/pekim/gobbi/lib/gio"
+	gobject "github.com/pekim/gobbi/lib/gobject"
+)
+
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <gdk/gdk.h>
 // #include <stdlib.h>
 import "C"
+
+func (recv *AppLaunchContext) AppLaunchContext() *gio.AppLaunchContext {}
+
+func (recv *Cursor) Object() *gobject.Object {}
+
+func (recv *Device) Object() *gobject.Object {}
+
+func (recv *DeviceManager) Object() *gobject.Object {}
+
+func (recv *DeviceTool) Object() *gobject.Object {}
+
+func (recv *Display) Object() *gobject.Object {}
+
+func (recv *DisplayManager) Object() *gobject.Object {}
+
+func (recv *DragContext) Object() *gobject.Object {}
+
+func (recv *DrawingContext) Object() *gobject.Object {}
+
+func (recv *FrameClock) Object() *gobject.Object {}
+
+func (recv *GLContext) Object() *gobject.Object {}
 
 // GetModifierMask is a wrapper around the C function gdk_keymap_get_modifier_mask.
 func (recv *Keymap) GetModifierMask(intent ModifierIntent) ModifierType {
@@ -26,7 +53,17 @@ func (recv *Keymap) GetModifierState() uint32 {
 	return retGo
 }
 
+func (recv *Keymap) Object() *gobject.Object {}
+
+func (recv *Monitor) Object() *gobject.Object {}
+
 // Unsupported : gdk_screen_get_monitor_workarea : unsupported parameter dest : Blacklisted record : GdkRectangle
+
+func (recv *Screen) Object() *gobject.Object {}
+
+func (recv *Seat) Object() *gobject.Object {}
+
+func (recv *Visual) Object() *gobject.Object {}
 
 // BeginMoveDragForDevice is a wrapper around the C function gdk_window_begin_move_drag_for_device.
 func (recv *Window) BeginMoveDragForDevice(device *Device, button int32, rootX int32, rootY int32, timestamp uint32) {
@@ -63,3 +100,5 @@ func (recv *Window) BeginResizeDragForDevice(edge WindowEdge, device *Device, bu
 
 	return
 }
+
+func (recv *Window) Object() *gobject.Object {}

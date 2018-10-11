@@ -5,6 +5,8 @@ package gdk
 
 import (
 	gdkpixbuf "github.com/pekim/gobbi/lib/gdkpixbuf"
+	gio "github.com/pekim/gobbi/lib/gio"
+	gobject "github.com/pekim/gobbi/lib/gobject"
 	"unsafe"
 )
 
@@ -12,6 +14,8 @@ import (
 // #include <gdk/gdk.h>
 // #include <stdlib.h>
 import "C"
+
+func (recv *AppLaunchContext) AppLaunchContext() *gio.AppLaunchContext {}
 
 // CursorNewFromPixbuf is a wrapper around the C function gdk_cursor_new_from_pixbuf.
 func CursorNewFromPixbuf(display *Display, pixbuf *gdkpixbuf.Pixbuf, x int32, y int32) *Cursor {
@@ -28,6 +32,14 @@ func CursorNewFromPixbuf(display *Display, pixbuf *gdkpixbuf.Pixbuf, x int32, y 
 
 	return retGo
 }
+
+func (recv *Cursor) Object() *gobject.Object {}
+
+func (recv *Device) Object() *gobject.Object {}
+
+func (recv *DeviceManager) Object() *gobject.Object {}
+
+func (recv *DeviceTool) Object() *gobject.Object {}
 
 // Flush is a wrapper around the C function gdk_display_flush.
 func (recv *Display) Flush() {
@@ -92,6 +104,28 @@ func (recv *Display) SupportsCursorColor() bool {
 	return retGo
 }
 
+func (recv *Display) Object() *gobject.Object {}
+
+func (recv *DisplayManager) Object() *gobject.Object {}
+
+func (recv *DragContext) Object() *gobject.Object {}
+
+func (recv *DrawingContext) Object() *gobject.Object {}
+
+func (recv *FrameClock) Object() *gobject.Object {}
+
+func (recv *GLContext) Object() *gobject.Object {}
+
+func (recv *Keymap) Object() *gobject.Object {}
+
+func (recv *Monitor) Object() *gobject.Object {}
+
+func (recv *Screen) Object() *gobject.Object {}
+
+func (recv *Seat) Object() *gobject.Object {}
+
+func (recv *Visual) Object() *gobject.Object {}
+
 // GetGroup is a wrapper around the C function gdk_window_get_group.
 func (recv *Window) GetGroup() *Window {
 	retC := C.gdk_window_get_group((*C.GdkWindow)(recv.native))
@@ -129,3 +163,5 @@ func (recv *Window) SetKeepBelow(setting bool) {
 
 	return
 }
+
+func (recv *Window) Object() *gobject.Object {}

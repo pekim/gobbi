@@ -42,6 +42,8 @@ func (recv *GObjectAccessible) GetObject() *gobject.Object {
 	return retGo
 }
 
+func (recv *GObjectAccessible) Object() *Object {}
+
 // Hyperlink is a wrapper around the C record AtkHyperlink.
 type Hyperlink struct {
 	native *C.AtkHyperlink
@@ -125,6 +127,8 @@ func (recv *Hyperlink) IsValid() bool {
 	return retGo
 }
 
+func (recv *Hyperlink) Object() *gobject.Object {}
+
 // Misc is a wrapper around the C record AtkMisc.
 type Misc struct {
 	native *C.AtkMisc
@@ -146,6 +150,8 @@ func (recv *Misc) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+func (recv *Misc) Object() *gobject.Object {}
 
 // NoOpObject is a wrapper around the C record AtkNoOpObject.
 type NoOpObject struct {
@@ -179,6 +185,8 @@ func NoOpObjectNew(obj *gobject.Object) *NoOpObject {
 	return retGo
 }
 
+func (recv *NoOpObject) Object() *Object {}
+
 // NoOpObjectFactory is a wrapper around the C record AtkNoOpObjectFactory.
 type NoOpObjectFactory struct {
 	native *C.AtkNoOpObjectFactory
@@ -208,6 +216,8 @@ func NoOpObjectFactoryNew() *NoOpObjectFactory {
 
 	return retGo
 }
+
+func (recv *NoOpObjectFactory) ObjectFactory() *ObjectFactory {}
 
 // Object is a wrapper around the C record AtkObject.
 type Object struct {
@@ -443,6 +453,8 @@ func (recv *Object) SetRole(role Role) {
 	return
 }
 
+func (recv *Object) Object() *gobject.Object {}
+
 // ObjectFactory is a wrapper around the C record AtkObjectFactory.
 type ObjectFactory struct {
 	native *C.AtkObjectFactory
@@ -484,6 +496,8 @@ func (recv *ObjectFactory) Invalidate() {
 	return
 }
 
+func (recv *ObjectFactory) Object() *gobject.Object {}
+
 // Plug is a wrapper around the C record AtkPlug.
 type Plug struct {
 	native *C.AtkPlug
@@ -514,6 +528,8 @@ func PlugNew() *Plug {
 	return retGo
 }
 
+func (recv *Plug) Object() *Object {}
+
 // Registry is a wrapper around the C record AtkRegistry.
 type Registry struct {
 	native *C.AtkRegistry
@@ -543,6 +559,8 @@ func (recv *Registry) ToC() unsafe.Pointer {
 // Unsupported : atk_registry_get_factory_type : unsupported parameter type : no type generator for GType, GType
 
 // Unsupported : atk_registry_set_factory_type : unsupported parameter type : no type generator for GType, GType
+
+func (recv *Registry) Object() *gobject.Object {}
 
 // Relation is a wrapper around the C record AtkRelation.
 type Relation struct {
@@ -594,6 +612,8 @@ func (recv *Relation) RemoveTarget(target *Object) bool {
 
 	return retGo
 }
+
+func (recv *Relation) Object() *gobject.Object {}
 
 // RelationSet is a wrapper around the C record AtkRelationSet.
 type RelationSet struct {
@@ -694,6 +714,8 @@ func (recv *RelationSet) Remove(relation *Relation) {
 	return
 }
 
+func (recv *RelationSet) Object() *gobject.Object {}
+
 // Socket is a wrapper around the C record AtkSocket.
 type Socket struct {
 	native *C.AtkSocket
@@ -724,6 +746,8 @@ func SocketNew() *Socket {
 
 	return retGo
 }
+
+func (recv *Socket) Object() *Object {}
 
 // StateSet is a wrapper around the C record AtkStateSet.
 type StateSet struct {
@@ -834,6 +858,8 @@ func (recv *StateSet) XorSets(compareSet *StateSet) *StateSet {
 	return retGo
 }
 
+func (recv *StateSet) Object() *gobject.Object {}
+
 // Util is a wrapper around the C record AtkUtil.
 type Util struct {
 	native *C.AtkUtil
@@ -855,3 +881,5 @@ func (recv *Util) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+func (recv *Util) Object() *gobject.Object {}

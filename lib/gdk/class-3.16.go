@@ -5,7 +5,9 @@ package gdk
 
 import (
 	cairo "github.com/pekim/gobbi/lib/cairo"
+	gio "github.com/pekim/gobbi/lib/gio"
 	glib "github.com/pekim/gobbi/lib/glib"
+	gobject "github.com/pekim/gobbi/lib/gobject"
 	"unsafe"
 )
 
@@ -13,6 +15,10 @@ import (
 // #include <gdk/gdk.h>
 // #include <stdlib.h>
 import "C"
+
+func (recv *AppLaunchContext) AppLaunchContext() *gio.AppLaunchContext {}
+
+func (recv *Cursor) Object() *gobject.Object {}
 
 // GetProductId is a wrapper around the C function gdk_device_get_product_id.
 func (recv *Device) GetProductId() string {
@@ -29,6 +35,22 @@ func (recv *Device) GetVendorId() string {
 
 	return retGo
 }
+
+func (recv *Device) Object() *gobject.Object {}
+
+func (recv *DeviceManager) Object() *gobject.Object {}
+
+func (recv *DeviceTool) Object() *gobject.Object {}
+
+func (recv *Display) Object() *gobject.Object {}
+
+func (recv *DisplayManager) Object() *gobject.Object {}
+
+func (recv *DragContext) Object() *gobject.Object {}
+
+func (recv *DrawingContext) Object() *gobject.Object {}
+
+func (recv *FrameClock) Object() *gobject.Object {}
 
 // GetDebugEnabled is a wrapper around the C function gdk_gl_context_get_debug_enabled.
 func (recv *GLContext) GetDebugEnabled() bool {
@@ -153,6 +175,18 @@ func (recv *GLContext) SetRequiredVersion(major int32, minor int32) {
 	return
 }
 
+func (recv *GLContext) Object() *gobject.Object {}
+
+func (recv *Keymap) Object() *gobject.Object {}
+
+func (recv *Monitor) Object() *gobject.Object {}
+
+func (recv *Screen) Object() *gobject.Object {}
+
+func (recv *Seat) Object() *gobject.Object {}
+
+func (recv *Visual) Object() *gobject.Object {}
+
 // CreateGlContext is a wrapper around the C function gdk_window_create_gl_context.
 func (recv *Window) CreateGlContext() (*GLContext, error) {
 	var cThrowableError *C.GError
@@ -176,3 +210,5 @@ func (recv *Window) MarkPaintFromClip(cr *cairo.Context) {
 
 	return
 }
+
+func (recv *Window) Object() *gobject.Object {}

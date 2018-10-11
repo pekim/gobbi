@@ -4,6 +4,7 @@ package gdkpixbuf
 
 import (
 	glib "github.com/pekim/gobbi/lib/glib"
+	gobject "github.com/pekim/gobbi/lib/gobject"
 	"unsafe"
 )
 
@@ -382,6 +383,8 @@ func (recv *Pixbuf) Unref() {
 	return
 }
 
+func (recv *Pixbuf) Object() *gobject.Object {}
+
 // PixbufAnimation is a wrapper around the C record GdkPixbufAnimation.
 type PixbufAnimation struct {
 	native *C.GdkPixbufAnimation
@@ -480,6 +483,8 @@ func (recv *PixbufAnimation) Unref() {
 	return
 }
 
+func (recv *PixbufAnimation) Object() *gobject.Object {}
+
 // PixbufAnimationIter is a wrapper around the C record GdkPixbufAnimationIter.
 type PixbufAnimationIter struct {
 	native *C.GdkPixbufAnimationIter
@@ -534,6 +539,8 @@ func (recv *PixbufAnimationIter) OnCurrentlyLoadingFrame() bool {
 
 	return retGo
 }
+
+func (recv *PixbufAnimationIter) Object() *gobject.Object {}
 
 // PixbufLoader is a wrapper around the C record GdkPixbufLoader.
 type PixbufLoader struct {
@@ -617,6 +624,8 @@ func (recv *PixbufLoader) GetPixbuf() *Pixbuf {
 
 // Unsupported : gdk_pixbuf_loader_write : unsupported parameter buf : no param type
 
+func (recv *PixbufLoader) Object() *gobject.Object {}
+
 // PixbufSimpleAnim is a wrapper around the C record GdkPixbufSimpleAnim.
 type PixbufSimpleAnim struct {
 	native *C.GdkPixbufSimpleAnim
@@ -637,5 +646,7 @@ func (recv *PixbufSimpleAnim) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+func (recv *PixbufSimpleAnim) PixbufAnimation() *PixbufAnimation {}
 
 // Unsupported : PixbufSimpleAnimIter : no CType

@@ -3,12 +3,26 @@
 
 package gdk
 
-import "unsafe"
+import (
+	gio "github.com/pekim/gobbi/lib/gio"
+	gobject "github.com/pekim/gobbi/lib/gobject"
+	"unsafe"
+)
 
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <gdk/gdk.h>
 // #include <stdlib.h>
 import "C"
+
+func (recv *AppLaunchContext) AppLaunchContext() *gio.AppLaunchContext {}
+
+func (recv *Cursor) Object() *gobject.Object {}
+
+func (recv *Device) Object() *gobject.Object {}
+
+func (recv *DeviceManager) Object() *gobject.Object {}
+
+func (recv *DeviceTool) Object() *gobject.Object {}
 
 // SupportsComposite is a wrapper around the C function gdk_display_supports_composite.
 func (recv *Display) SupportsComposite() bool {
@@ -18,6 +32,18 @@ func (recv *Display) SupportsComposite() bool {
 	return retGo
 }
 
+func (recv *Display) Object() *gobject.Object {}
+
+func (recv *DisplayManager) Object() *gobject.Object {}
+
+func (recv *DragContext) Object() *gobject.Object {}
+
+func (recv *DrawingContext) Object() *gobject.Object {}
+
+func (recv *FrameClock) Object() *gobject.Object {}
+
+func (recv *GLContext) Object() *gobject.Object {}
+
 // HaveBidiLayouts is a wrapper around the C function gdk_keymap_have_bidi_layouts.
 func (recv *Keymap) HaveBidiLayouts() bool {
 	retC := C.gdk_keymap_have_bidi_layouts((*C.GdkKeymap)(recv.native))
@@ -25,6 +51,16 @@ func (recv *Keymap) HaveBidiLayouts() bool {
 
 	return retGo
 }
+
+func (recv *Keymap) Object() *gobject.Object {}
+
+func (recv *Monitor) Object() *gobject.Object {}
+
+func (recv *Screen) Object() *gobject.Object {}
+
+func (recv *Seat) Object() *gobject.Object {}
+
+func (recv *Visual) Object() *gobject.Object {}
 
 // Beep is a wrapper around the C function gdk_window_beep.
 func (recv *Window) Beep() {
@@ -61,3 +97,5 @@ func (recv *Window) SetStartupId(startupId string) {
 
 	return
 }
+
+func (recv *Window) Object() *gobject.Object {}

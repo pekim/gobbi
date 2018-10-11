@@ -4,6 +4,7 @@ package pango
 
 import (
 	glib "github.com/pekim/gobbi/lib/glib"
+	gobject "github.com/pekim/gobbi/lib/gobject"
 	"unsafe"
 )
 
@@ -127,6 +128,8 @@ func (recv *Context) SetLanguage(language *Language) {
 	return
 }
 
+func (recv *Context) Object() *gobject.Object {}
+
 // Blacklisted : PangoEngine
 
 // EngineLang is a wrapper around the C record PangoEngineLang.
@@ -151,6 +154,8 @@ func (recv *EngineLang) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+func (recv *EngineLang) Engine() *Engine {}
+
 // EngineShape is a wrapper around the C record PangoEngineShape.
 type EngineShape struct {
 	native *C.PangoEngineShape
@@ -172,6 +177,8 @@ func (recv *EngineShape) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+func (recv *EngineShape) Engine() *Engine {}
 
 // Font is a wrapper around the C record PangoFont.
 type Font struct {
@@ -244,6 +251,8 @@ func (recv *Font) GetGlyphExtents(glyph Glyph) (*Rectangle, *Rectangle) {
 
 // Unsupported : pango_font_get_metrics : return type : Blacklisted record : PangoFontMetrics
 
+func (recv *Font) Object() *gobject.Object {}
+
 // FontFace is a wrapper around the C record PangoFontFace.
 type FontFace struct {
 	native *C.PangoFontFace
@@ -282,6 +291,8 @@ func (recv *FontFace) GetFaceName() string {
 	return retGo
 }
 
+func (recv *FontFace) Object() *gobject.Object {}
+
 // FontFamily is a wrapper around the C record PangoFontFamily.
 type FontFamily struct {
 	native *C.PangoFontFamily
@@ -313,6 +324,8 @@ func (recv *FontFamily) GetName() string {
 }
 
 // Unsupported : pango_font_family_list_faces : unsupported parameter faces : no param type
+
+func (recv *FontFamily) Object() *gobject.Object {}
 
 // FontMap is a wrapper around the C record PangoFontMap.
 type FontMap struct {
@@ -364,6 +377,8 @@ func (recv *FontMap) LoadFontset(context *Context, desc *FontDescription, langua
 	return retGo
 }
 
+func (recv *FontMap) Object() *gobject.Object {}
+
 // Fontset is a wrapper around the C record PangoFontset.
 type Fontset struct {
 	native *C.PangoFontset
@@ -397,6 +412,8 @@ func (recv *Fontset) GetFont(wc uint32) *Font {
 }
 
 // Unsupported : pango_fontset_get_metrics : return type : Blacklisted record : PangoFontMetrics
+
+func (recv *Fontset) Object() *gobject.Object {}
 
 // Blacklisted : PangoFontsetSimple
 
@@ -835,3 +852,7 @@ func (recv *Layout) XyToIndex(x int32, y int32) (bool, *int32, *int32) {
 
 	return retGo, index, trailing
 }
+
+func (recv *Layout) Object() *gobject.Object {}
+
+func (recv *Renderer) Object() *gobject.Object {}

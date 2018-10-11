@@ -6,6 +6,8 @@ package gdk
 import (
 	cairo "github.com/pekim/gobbi/lib/cairo"
 	gdkpixbuf "github.com/pekim/gobbi/lib/gdkpixbuf"
+	gio "github.com/pekim/gobbi/lib/gio"
+	gobject "github.com/pekim/gobbi/lib/gobject"
 	"unsafe"
 )
 
@@ -13,6 +15,8 @@ import (
 // #include <gdk/gdk.h>
 // #include <stdlib.h>
 import "C"
+
+func (recv *AppLaunchContext) AppLaunchContext() *gio.AppLaunchContext {}
 
 // CursorNewFromName is a wrapper around the C function gdk_cursor_new_from_name.
 func CursorNewFromName(display *Display, name string) *Cursor {
@@ -35,6 +39,14 @@ func (recv *Cursor) GetImage() *gdkpixbuf.Pixbuf {
 	return retGo
 }
 
+func (recv *Cursor) Object() *gobject.Object {}
+
+func (recv *Device) Object() *gobject.Object {}
+
+func (recv *DeviceManager) Object() *gobject.Object {}
+
+func (recv *DeviceTool) Object() *gobject.Object {}
+
 // WarpPointer is a wrapper around the C function gdk_display_warp_pointer.
 func (recv *Display) WarpPointer(screen *Screen, x int32, y int32) {
 	c_screen := (*C.GdkScreen)(screen.ToC())
@@ -48,6 +60,22 @@ func (recv *Display) WarpPointer(screen *Screen, x int32, y int32) {
 	return
 }
 
+func (recv *Display) Object() *gobject.Object {}
+
+func (recv *DisplayManager) Object() *gobject.Object {}
+
+func (recv *DragContext) Object() *gobject.Object {}
+
+func (recv *DrawingContext) Object() *gobject.Object {}
+
+func (recv *FrameClock) Object() *gobject.Object {}
+
+func (recv *GLContext) Object() *gobject.Object {}
+
+func (recv *Keymap) Object() *gobject.Object {}
+
+func (recv *Monitor) Object() *gobject.Object {}
+
 // GetRgbaVisual is a wrapper around the C function gdk_screen_get_rgba_visual.
 func (recv *Screen) GetRgbaVisual() *Visual {
 	retC := C.gdk_screen_get_rgba_visual((*C.GdkScreen)(recv.native))
@@ -55,6 +83,12 @@ func (recv *Screen) GetRgbaVisual() *Visual {
 
 	return retGo
 }
+
+func (recv *Screen) Object() *gobject.Object {}
+
+func (recv *Seat) Object() *gobject.Object {}
+
+func (recv *Visual) Object() *gobject.Object {}
 
 // MoveRegion is a wrapper around the C function gdk_window_move_region.
 func (recv *Window) MoveRegion(region *cairo.Region, dx int32, dy int32) {
@@ -78,3 +112,5 @@ func (recv *Window) SetUrgencyHint(urgent bool) {
 
 	return
 }
+
+func (recv *Window) Object() *gobject.Object {}
