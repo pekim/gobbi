@@ -50,7 +50,7 @@ func (recv *Renderer) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *Renderer) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // Activate is a wrapper around the C function pango_renderer_activate.

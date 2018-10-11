@@ -18,14 +18,6 @@ import "C"
 
 // Unsupported : g_object_newv : unsupported parameter object_type : no type generator for GType, GType
 
-// GetRedirectTarget is a wrapper around the C function g_param_spec_get_redirect_target.
-func (recv *ParamSpec) GetRedirectTarget() *ParamSpec {
-	retC := C.g_param_spec_get_redirect_target((*C.GParamSpec)(recv.native))
-	retGo := ParamSpecNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
 // ParamSpecOverride is a wrapper around the C record GParamSpecOverride.
 type ParamSpecOverride struct {
 	native *C.GParamSpecOverride
@@ -47,9 +39,4 @@ func ParamSpecOverrideNewFromC(u unsafe.Pointer) *ParamSpecOverride {
 func (recv *ParamSpecOverride) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
-}
-
-// ParamSpec upcasts to *ParamSpec
-func (recv *ParamSpecOverride) ParamSpec() *ParamSpec {
-	return ParamSpecNewFromC(recv.native)
 }

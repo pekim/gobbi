@@ -46,7 +46,7 @@ func (recv *AboutDialog) ToC() unsafe.Pointer {
 
 // Dialog upcasts to *Dialog
 func (recv *AboutDialog) Dialog() *Dialog {
-	return DialogNewFromC(recv.native)
+	return DialogNewFromC(unsafe.Pointer(recv.native))
 }
 
 // AccelGroup is a wrapper around the C record GtkAccelGroup.
@@ -74,7 +74,7 @@ func (recv *AccelGroup) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *AccelGroup) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // AccelGroupNew is a wrapper around the C function gtk_accel_group_new.
@@ -193,7 +193,7 @@ func (recv *AccelLabel) ToC() unsafe.Pointer {
 
 // Label upcasts to *Label
 func (recv *AccelLabel) Label() *Label {
-	return LabelNewFromC(recv.native)
+	return LabelNewFromC(unsafe.Pointer(recv.native))
 }
 
 // AccelLabelNew is a wrapper around the C function gtk_accel_label_new.
@@ -272,7 +272,7 @@ func (recv *AccelMap) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *AccelMap) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // Accessible is a wrapper around the C record GtkAccessible.
@@ -300,7 +300,7 @@ func (recv *Accessible) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *Accessible) Object() *atk.Object {
-	return atk.ObjectNewFromC(recv.native)
+	return atk.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // ConnectWidgetDestroyed is a wrapper around the C function gtk_accessible_connect_widget_destroyed.
@@ -335,7 +335,7 @@ func (recv *Action) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *Action) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // ActionBar is a wrapper around the C record GtkActionBar.
@@ -362,7 +362,7 @@ func (recv *ActionBar) ToC() unsafe.Pointer {
 
 // Bin upcasts to *Bin
 func (recv *ActionBar) Bin() *Bin {
-	return BinNewFromC(recv.native)
+	return BinNewFromC(unsafe.Pointer(recv.native))
 }
 
 // ActionGroup is a wrapper around the C record GtkActionGroup.
@@ -390,7 +390,7 @@ func (recv *ActionGroup) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *ActionGroup) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // Adjustment is a wrapper around the C record GtkAdjustment.
@@ -418,7 +418,7 @@ func (recv *Adjustment) ToC() unsafe.Pointer {
 
 // InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *Adjustment) InitiallyUnowned() *gobject.InitiallyUnowned {
-	return gobject.InitiallyUnownedNewFromC(recv.native)
+	return gobject.InitiallyUnownedNewFromC(unsafe.Pointer(recv.native))
 }
 
 // AdjustmentNew is a wrapper around the C function gtk_adjustment_new.
@@ -508,7 +508,7 @@ func (recv *Alignment) ToC() unsafe.Pointer {
 
 // Bin upcasts to *Bin
 func (recv *Alignment) Bin() *Bin {
-	return BinNewFromC(recv.native)
+	return BinNewFromC(unsafe.Pointer(recv.native))
 }
 
 // AlignmentNew is a wrapper around the C function gtk_alignment_new.
@@ -567,7 +567,7 @@ func (recv *AppChooserButton) ToC() unsafe.Pointer {
 
 // ComboBox upcasts to *ComboBox
 func (recv *AppChooserButton) ComboBox() *ComboBox {
-	return ComboBoxNewFromC(recv.native)
+	return ComboBoxNewFromC(unsafe.Pointer(recv.native))
 }
 
 // GetHeading is a wrapper around the C function gtk_app_chooser_button_get_heading.
@@ -613,7 +613,7 @@ func (recv *AppChooserDialog) ToC() unsafe.Pointer {
 
 // Dialog upcasts to *Dialog
 func (recv *AppChooserDialog) Dialog() *Dialog {
-	return DialogNewFromC(recv.native)
+	return DialogNewFromC(unsafe.Pointer(recv.native))
 }
 
 // Unsupported : gtk_app_chooser_dialog_new : unsupported parameter file : no type generator for Gio.File, GFile*
@@ -661,7 +661,7 @@ func (recv *AppChooserWidget) ToC() unsafe.Pointer {
 
 // Box upcasts to *Box
 func (recv *AppChooserWidget) Box() *Box {
-	return BoxNewFromC(recv.native)
+	return BoxNewFromC(unsafe.Pointer(recv.native))
 }
 
 // SetDefaultText is a wrapper around the C function gtk_app_chooser_widget_set_default_text.
@@ -699,7 +699,7 @@ func (recv *Application) ToC() unsafe.Pointer {
 
 // Application upcasts to *Application
 func (recv *Application) Application() *gio.Application {
-	return gio.ApplicationNewFromC(recv.native)
+	return gio.ApplicationNewFromC(unsafe.Pointer(recv.native))
 }
 
 // ApplicationWindow is a wrapper around the C record GtkApplicationWindow.
@@ -727,7 +727,7 @@ func (recv *ApplicationWindow) ToC() unsafe.Pointer {
 
 // Window upcasts to *Window
 func (recv *ApplicationWindow) Window() *Window {
-	return WindowNewFromC(recv.native)
+	return WindowNewFromC(unsafe.Pointer(recv.native))
 }
 
 // Arrow is a wrapper around the C record GtkArrow.
@@ -755,7 +755,7 @@ func (recv *Arrow) ToC() unsafe.Pointer {
 
 // Misc upcasts to *Misc
 func (recv *Arrow) Misc() *Misc {
-	return MiscNewFromC(recv.native)
+	return MiscNewFromC(unsafe.Pointer(recv.native))
 }
 
 // ArrowNew is a wrapper around the C function gtk_arrow_new.
@@ -806,7 +806,7 @@ func (recv *ArrowAccessible) ToC() unsafe.Pointer {
 
 // WidgetAccessible upcasts to *WidgetAccessible
 func (recv *ArrowAccessible) WidgetAccessible() *WidgetAccessible {
-	return WidgetAccessibleNewFromC(recv.native)
+	return WidgetAccessibleNewFromC(unsafe.Pointer(recv.native))
 }
 
 // AspectFrame is a wrapper around the C record GtkAspectFrame.
@@ -834,7 +834,7 @@ func (recv *AspectFrame) ToC() unsafe.Pointer {
 
 // Frame upcasts to *Frame
 func (recv *AspectFrame) Frame() *Frame {
-	return FrameNewFromC(recv.native)
+	return FrameNewFromC(unsafe.Pointer(recv.native))
 }
 
 // AspectFrameNew is a wrapper around the C function gtk_aspect_frame_new.
@@ -898,7 +898,7 @@ func (recv *Assistant) ToC() unsafe.Pointer {
 
 // Window upcasts to *Window
 func (recv *Assistant) Window() *Window {
-	return WindowNewFromC(recv.native)
+	return WindowNewFromC(unsafe.Pointer(recv.native))
 }
 
 // Bin is a wrapper around the C record GtkBin.
@@ -926,7 +926,7 @@ func (recv *Bin) ToC() unsafe.Pointer {
 
 // Container upcasts to *Container
 func (recv *Bin) Container() *Container {
-	return ContainerNewFromC(recv.native)
+	return ContainerNewFromC(unsafe.Pointer(recv.native))
 }
 
 // GetChild is a wrapper around the C function gtk_bin_get_child.
@@ -962,7 +962,7 @@ func (recv *BooleanCellAccessible) ToC() unsafe.Pointer {
 
 // RendererCellAccessible upcasts to *RendererCellAccessible
 func (recv *BooleanCellAccessible) RendererCellAccessible() *RendererCellAccessible {
-	return RendererCellAccessibleNewFromC(recv.native)
+	return RendererCellAccessibleNewFromC(unsafe.Pointer(recv.native))
 }
 
 // Box is a wrapper around the C record GtkBox.
@@ -990,7 +990,7 @@ func (recv *Box) ToC() unsafe.Pointer {
 
 // Container upcasts to *Container
 func (recv *Box) Container() *Container {
-	return ContainerNewFromC(recv.native)
+	return ContainerNewFromC(unsafe.Pointer(recv.native))
 }
 
 // GetHomogeneous is a wrapper around the C function gtk_box_get_homogeneous.
@@ -1119,7 +1119,7 @@ func (recv *Builder) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *Builder) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // Unsupported : gtk_builder_extend_with_template : unsupported parameter template_type : no type generator for GType, GType
@@ -1149,7 +1149,7 @@ func (recv *Button) ToC() unsafe.Pointer {
 
 // Bin upcasts to *Bin
 func (recv *Button) Bin() *Bin {
-	return BinNewFromC(recv.native)
+	return BinNewFromC(unsafe.Pointer(recv.native))
 }
 
 // ButtonNew is a wrapper around the C function gtk_button_new.
@@ -1326,7 +1326,7 @@ func (recv *ButtonAccessible) ToC() unsafe.Pointer {
 
 // ContainerAccessible upcasts to *ContainerAccessible
 func (recv *ButtonAccessible) ContainerAccessible() *ContainerAccessible {
-	return ContainerAccessibleNewFromC(recv.native)
+	return ContainerAccessibleNewFromC(unsafe.Pointer(recv.native))
 }
 
 // ButtonBox is a wrapper around the C record GtkButtonBox.
@@ -1354,7 +1354,7 @@ func (recv *ButtonBox) ToC() unsafe.Pointer {
 
 // Box upcasts to *Box
 func (recv *ButtonBox) Box() *Box {
-	return BoxNewFromC(recv.native)
+	return BoxNewFromC(unsafe.Pointer(recv.native))
 }
 
 // GetLayout is a wrapper around the C function gtk_button_box_get_layout.
@@ -1411,7 +1411,7 @@ func (recv *Calendar) ToC() unsafe.Pointer {
 
 // Widget upcasts to *Widget
 func (recv *Calendar) Widget() *Widget {
-	return WidgetNewFromC(recv.native)
+	return WidgetNewFromC(unsafe.Pointer(recv.native))
 }
 
 // CalendarNew is a wrapper around the C function gtk_calendar_new.
@@ -1511,7 +1511,7 @@ func (recv *CellAccessible) ToC() unsafe.Pointer {
 
 // Accessible upcasts to *Accessible
 func (recv *CellAccessible) Accessible() *Accessible {
-	return AccessibleNewFromC(recv.native)
+	return AccessibleNewFromC(unsafe.Pointer(recv.native))
 }
 
 // CellArea is a wrapper around the C record GtkCellArea.
@@ -1539,7 +1539,7 @@ func (recv *CellArea) ToC() unsafe.Pointer {
 
 // InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *CellArea) InitiallyUnowned() *gobject.InitiallyUnowned {
-	return gobject.InitiallyUnownedNewFromC(recv.native)
+	return gobject.InitiallyUnownedNewFromC(unsafe.Pointer(recv.native))
 }
 
 // CellAreaBox is a wrapper around the C record GtkCellAreaBox.
@@ -1567,7 +1567,7 @@ func (recv *CellAreaBox) ToC() unsafe.Pointer {
 
 // CellArea upcasts to *CellArea
 func (recv *CellAreaBox) CellArea() *CellArea {
-	return CellAreaNewFromC(recv.native)
+	return CellAreaNewFromC(unsafe.Pointer(recv.native))
 }
 
 // CellAreaContext is a wrapper around the C record GtkCellAreaContext.
@@ -1595,7 +1595,7 @@ func (recv *CellAreaContext) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *CellAreaContext) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // Allocate is a wrapper around the C function gtk_cell_area_context_allocate.
@@ -1641,7 +1641,7 @@ func (recv *CellRenderer) ToC() unsafe.Pointer {
 
 // InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *CellRenderer) InitiallyUnowned() *gobject.InitiallyUnowned {
-	return gobject.InitiallyUnownedNewFromC(recv.native)
+	return gobject.InitiallyUnownedNewFromC(unsafe.Pointer(recv.native))
 }
 
 // Unsupported : gtk_cell_renderer_activate : unsupported parameter event : no type generator for Gdk.Event, GdkEvent*
@@ -1703,7 +1703,7 @@ func (recv *CellRendererAccel) ToC() unsafe.Pointer {
 
 // CellRendererText upcasts to *CellRendererText
 func (recv *CellRendererAccel) CellRendererText() *CellRendererText {
-	return CellRendererTextNewFromC(recv.native)
+	return CellRendererTextNewFromC(unsafe.Pointer(recv.native))
 }
 
 // CellRendererCombo is a wrapper around the C record GtkCellRendererCombo.
@@ -1731,7 +1731,7 @@ func (recv *CellRendererCombo) ToC() unsafe.Pointer {
 
 // CellRendererText upcasts to *CellRendererText
 func (recv *CellRendererCombo) CellRendererText() *CellRendererText {
-	return CellRendererTextNewFromC(recv.native)
+	return CellRendererTextNewFromC(unsafe.Pointer(recv.native))
 }
 
 // CellRendererPixbuf is a wrapper around the C record GtkCellRendererPixbuf.
@@ -1759,7 +1759,7 @@ func (recv *CellRendererPixbuf) ToC() unsafe.Pointer {
 
 // CellRenderer upcasts to *CellRenderer
 func (recv *CellRendererPixbuf) CellRenderer() *CellRenderer {
-	return CellRendererNewFromC(recv.native)
+	return CellRendererNewFromC(unsafe.Pointer(recv.native))
 }
 
 // CellRendererPixbufNew is a wrapper around the C function gtk_cell_renderer_pixbuf_new.
@@ -1795,7 +1795,7 @@ func (recv *CellRendererProgress) ToC() unsafe.Pointer {
 
 // CellRenderer upcasts to *CellRenderer
 func (recv *CellRendererProgress) CellRenderer() *CellRenderer {
-	return CellRendererNewFromC(recv.native)
+	return CellRendererNewFromC(unsafe.Pointer(recv.native))
 }
 
 // CellRendererSpin is a wrapper around the C record GtkCellRendererSpin.
@@ -1823,7 +1823,7 @@ func (recv *CellRendererSpin) ToC() unsafe.Pointer {
 
 // CellRendererText upcasts to *CellRendererText
 func (recv *CellRendererSpin) CellRendererText() *CellRendererText {
-	return CellRendererTextNewFromC(recv.native)
+	return CellRendererTextNewFromC(unsafe.Pointer(recv.native))
 }
 
 // CellRendererSpinner is a wrapper around the C record GtkCellRendererSpinner.
@@ -1851,7 +1851,7 @@ func (recv *CellRendererSpinner) ToC() unsafe.Pointer {
 
 // CellRenderer upcasts to *CellRenderer
 func (recv *CellRendererSpinner) CellRenderer() *CellRenderer {
-	return CellRendererNewFromC(recv.native)
+	return CellRendererNewFromC(unsafe.Pointer(recv.native))
 }
 
 // CellRendererText is a wrapper around the C record GtkCellRendererText.
@@ -1879,7 +1879,7 @@ func (recv *CellRendererText) ToC() unsafe.Pointer {
 
 // CellRenderer upcasts to *CellRenderer
 func (recv *CellRendererText) CellRenderer() *CellRenderer {
-	return CellRendererNewFromC(recv.native)
+	return CellRendererNewFromC(unsafe.Pointer(recv.native))
 }
 
 // CellRendererTextNew is a wrapper around the C function gtk_cell_renderer_text_new.
@@ -1924,7 +1924,7 @@ func (recv *CellRendererToggle) ToC() unsafe.Pointer {
 
 // CellRenderer upcasts to *CellRenderer
 func (recv *CellRendererToggle) CellRenderer() *CellRenderer {
-	return CellRendererNewFromC(recv.native)
+	return CellRendererNewFromC(unsafe.Pointer(recv.native))
 }
 
 // CellRendererToggleNew is a wrapper around the C function gtk_cell_renderer_toggle_new.
@@ -1996,7 +1996,7 @@ func (recv *CellView) ToC() unsafe.Pointer {
 
 // Widget upcasts to *Widget
 func (recv *CellView) Widget() *Widget {
-	return WidgetNewFromC(recv.native)
+	return WidgetNewFromC(unsafe.Pointer(recv.native))
 }
 
 // CheckButton is a wrapper around the C record GtkCheckButton.
@@ -2023,7 +2023,7 @@ func (recv *CheckButton) ToC() unsafe.Pointer {
 
 // ToggleButton upcasts to *ToggleButton
 func (recv *CheckButton) ToggleButton() *ToggleButton {
-	return ToggleButtonNewFromC(recv.native)
+	return ToggleButtonNewFromC(unsafe.Pointer(recv.native))
 }
 
 // CheckButtonNew is a wrapper around the C function gtk_check_button_new.
@@ -2081,7 +2081,7 @@ func (recv *CheckMenuItem) ToC() unsafe.Pointer {
 
 // MenuItem upcasts to *MenuItem
 func (recv *CheckMenuItem) MenuItem() *MenuItem {
-	return MenuItemNewFromC(recv.native)
+	return MenuItemNewFromC(unsafe.Pointer(recv.native))
 }
 
 // CheckMenuItemNew is a wrapper around the C function gtk_check_menu_item_new.
@@ -2182,7 +2182,7 @@ func (recv *CheckMenuItemAccessible) ToC() unsafe.Pointer {
 
 // MenuItemAccessible upcasts to *MenuItemAccessible
 func (recv *CheckMenuItemAccessible) MenuItemAccessible() *MenuItemAccessible {
-	return MenuItemAccessibleNewFromC(recv.native)
+	return MenuItemAccessibleNewFromC(unsafe.Pointer(recv.native))
 }
 
 // Clipboard is a wrapper around the C record GtkClipboard.
@@ -2208,7 +2208,7 @@ func (recv *Clipboard) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *Clipboard) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // Clear is a wrapper around the C function gtk_clipboard_clear.
@@ -2290,7 +2290,7 @@ func (recv *ColorButton) ToC() unsafe.Pointer {
 
 // Button upcasts to *Button
 func (recv *ColorButton) Button() *Button {
-	return ButtonNewFromC(recv.native)
+	return ButtonNewFromC(unsafe.Pointer(recv.native))
 }
 
 // ColorChooserDialog is a wrapper around the C record GtkColorChooserDialog.
@@ -2318,7 +2318,7 @@ func (recv *ColorChooserDialog) ToC() unsafe.Pointer {
 
 // Dialog upcasts to *Dialog
 func (recv *ColorChooserDialog) Dialog() *Dialog {
-	return DialogNewFromC(recv.native)
+	return DialogNewFromC(unsafe.Pointer(recv.native))
 }
 
 // ColorChooserWidget is a wrapper around the C record GtkColorChooserWidget.
@@ -2346,7 +2346,7 @@ func (recv *ColorChooserWidget) ToC() unsafe.Pointer {
 
 // Box upcasts to *Box
 func (recv *ColorChooserWidget) Box() *Box {
-	return BoxNewFromC(recv.native)
+	return BoxNewFromC(unsafe.Pointer(recv.native))
 }
 
 // ColorSelection is a wrapper around the C record GtkColorSelection.
@@ -2374,7 +2374,7 @@ func (recv *ColorSelection) ToC() unsafe.Pointer {
 
 // Box upcasts to *Box
 func (recv *ColorSelection) Box() *Box {
-	return BoxNewFromC(recv.native)
+	return BoxNewFromC(unsafe.Pointer(recv.native))
 }
 
 // ColorSelectionNew is a wrapper around the C function gtk_color_selection_new.
@@ -2528,7 +2528,7 @@ func (recv *ColorSelectionDialog) ToC() unsafe.Pointer {
 
 // Dialog upcasts to *Dialog
 func (recv *ColorSelectionDialog) Dialog() *Dialog {
-	return DialogNewFromC(recv.native)
+	return DialogNewFromC(unsafe.Pointer(recv.native))
 }
 
 // ColorSelectionDialogNew is a wrapper around the C function gtk_color_selection_dialog_new.
@@ -2567,7 +2567,7 @@ func (recv *ComboBox) ToC() unsafe.Pointer {
 
 // Bin upcasts to *Bin
 func (recv *ComboBox) Bin() *Bin {
-	return BinNewFromC(recv.native)
+	return BinNewFromC(unsafe.Pointer(recv.native))
 }
 
 // ComboBoxNewWithArea is a wrapper around the C function gtk_combo_box_new_with_area.
@@ -2627,7 +2627,7 @@ func (recv *ComboBoxAccessible) ToC() unsafe.Pointer {
 
 // ContainerAccessible upcasts to *ContainerAccessible
 func (recv *ComboBoxAccessible) ContainerAccessible() *ContainerAccessible {
-	return ContainerAccessibleNewFromC(recv.native)
+	return ContainerAccessibleNewFromC(unsafe.Pointer(recv.native))
 }
 
 // ComboBoxText is a wrapper around the C record GtkComboBoxText.
@@ -2655,7 +2655,7 @@ func (recv *ComboBoxText) ToC() unsafe.Pointer {
 
 // ComboBox upcasts to *ComboBox
 func (recv *ComboBoxText) ComboBox() *ComboBox {
-	return ComboBoxNewFromC(recv.native)
+	return ComboBoxNewFromC(unsafe.Pointer(recv.native))
 }
 
 // Container is a wrapper around the C record GtkContainer.
@@ -2683,7 +2683,7 @@ func (recv *Container) ToC() unsafe.Pointer {
 
 // Widget upcasts to *Widget
 func (recv *Container) Widget() *Widget {
-	return WidgetNewFromC(recv.native)
+	return WidgetNewFromC(unsafe.Pointer(recv.native))
 }
 
 // Add is a wrapper around the C function gtk_container_add.
@@ -2921,7 +2921,7 @@ func (recv *ContainerAccessible) ToC() unsafe.Pointer {
 
 // WidgetAccessible upcasts to *WidgetAccessible
 func (recv *ContainerAccessible) WidgetAccessible() *WidgetAccessible {
-	return WidgetAccessibleNewFromC(recv.native)
+	return WidgetAccessibleNewFromC(unsafe.Pointer(recv.native))
 }
 
 // ContainerCellAccessible is a wrapper around the C record GtkContainerCellAccessible.
@@ -2949,7 +2949,7 @@ func (recv *ContainerCellAccessible) ToC() unsafe.Pointer {
 
 // CellAccessible upcasts to *CellAccessible
 func (recv *ContainerCellAccessible) CellAccessible() *CellAccessible {
-	return CellAccessibleNewFromC(recv.native)
+	return CellAccessibleNewFromC(unsafe.Pointer(recv.native))
 }
 
 // ContainerCellAccessibleNew is a wrapper around the C function gtk_container_cell_accessible_new.
@@ -3011,7 +3011,7 @@ func (recv *CssProvider) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *CssProvider) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // CssProviderNew is a wrapper around the C function gtk_css_provider_new.
@@ -3069,7 +3069,7 @@ func (recv *Dialog) ToC() unsafe.Pointer {
 
 // Window upcasts to *Window
 func (recv *Dialog) Window() *Window {
-	return WindowNewFromC(recv.native)
+	return WindowNewFromC(unsafe.Pointer(recv.native))
 }
 
 // DialogNew is a wrapper around the C function gtk_dialog_new.
@@ -3171,7 +3171,7 @@ func (recv *DrawingArea) ToC() unsafe.Pointer {
 
 // Widget upcasts to *Widget
 func (recv *DrawingArea) Widget() *Widget {
-	return WidgetNewFromC(recv.native)
+	return WidgetNewFromC(unsafe.Pointer(recv.native))
 }
 
 // DrawingAreaNew is a wrapper around the C function gtk_drawing_area_new.
@@ -3207,7 +3207,7 @@ func (recv *Entry) ToC() unsafe.Pointer {
 
 // Widget upcasts to *Widget
 func (recv *Entry) Widget() *Widget {
-	return WidgetNewFromC(recv.native)
+	return WidgetNewFromC(unsafe.Pointer(recv.native))
 }
 
 // EntryNew is a wrapper around the C function gtk_entry_new.
@@ -3409,7 +3409,7 @@ func (recv *EntryAccessible) ToC() unsafe.Pointer {
 
 // WidgetAccessible upcasts to *WidgetAccessible
 func (recv *EntryAccessible) WidgetAccessible() *WidgetAccessible {
-	return WidgetAccessibleNewFromC(recv.native)
+	return WidgetAccessibleNewFromC(unsafe.Pointer(recv.native))
 }
 
 // EntryBuffer is a wrapper around the C record GtkEntryBuffer.
@@ -3437,7 +3437,7 @@ func (recv *EntryBuffer) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *EntryBuffer) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // EntryCompletion is a wrapper around the C record GtkEntryCompletion.
@@ -3465,7 +3465,7 @@ func (recv *EntryCompletion) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *EntryCompletion) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // Unsupported : EntryIconAccessible : no CType
@@ -3495,7 +3495,7 @@ func (recv *EventBox) ToC() unsafe.Pointer {
 
 // Bin upcasts to *Bin
 func (recv *EventBox) Bin() *Bin {
-	return BinNewFromC(recv.native)
+	return BinNewFromC(unsafe.Pointer(recv.native))
 }
 
 // EventBoxNew is a wrapper around the C function gtk_event_box_new.
@@ -3529,7 +3529,7 @@ func (recv *EventController) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *EventController) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // Expander is a wrapper around the C record GtkExpander.
@@ -3557,7 +3557,7 @@ func (recv *Expander) ToC() unsafe.Pointer {
 
 // Bin upcasts to *Bin
 func (recv *Expander) Bin() *Bin {
-	return BinNewFromC(recv.native)
+	return BinNewFromC(unsafe.Pointer(recv.native))
 }
 
 // ExpanderAccessible is a wrapper around the C record GtkExpanderAccessible.
@@ -3585,7 +3585,7 @@ func (recv *ExpanderAccessible) ToC() unsafe.Pointer {
 
 // ContainerAccessible upcasts to *ContainerAccessible
 func (recv *ExpanderAccessible) ContainerAccessible() *ContainerAccessible {
-	return ContainerAccessibleNewFromC(recv.native)
+	return ContainerAccessibleNewFromC(unsafe.Pointer(recv.native))
 }
 
 // FileChooserButton is a wrapper around the C record GtkFileChooserButton.
@@ -3613,7 +3613,7 @@ func (recv *FileChooserButton) ToC() unsafe.Pointer {
 
 // Box upcasts to *Box
 func (recv *FileChooserButton) Box() *Box {
-	return BoxNewFromC(recv.native)
+	return BoxNewFromC(unsafe.Pointer(recv.native))
 }
 
 // FileChooserDialog is a wrapper around the C record GtkFileChooserDialog.
@@ -3641,7 +3641,7 @@ func (recv *FileChooserDialog) ToC() unsafe.Pointer {
 
 // Dialog upcasts to *Dialog
 func (recv *FileChooserDialog) Dialog() *Dialog {
-	return DialogNewFromC(recv.native)
+	return DialogNewFromC(unsafe.Pointer(recv.native))
 }
 
 // Unsupported : gtk_file_chooser_dialog_new : unsupported parameter ... : varargs
@@ -3671,7 +3671,7 @@ func (recv *FileChooserWidget) ToC() unsafe.Pointer {
 
 // Box upcasts to *Box
 func (recv *FileChooserWidget) Box() *Box {
-	return BoxNewFromC(recv.native)
+	return BoxNewFromC(unsafe.Pointer(recv.native))
 }
 
 // FileFilter is a wrapper around the C record GtkFileFilter.
@@ -3697,7 +3697,7 @@ func (recv *FileFilter) ToC() unsafe.Pointer {
 
 // InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *FileFilter) InitiallyUnowned() *gobject.InitiallyUnowned {
-	return gobject.InitiallyUnownedNewFromC(recv.native)
+	return gobject.InitiallyUnownedNewFromC(unsafe.Pointer(recv.native))
 }
 
 // Unsupported : gtk_file_filter_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
@@ -3727,7 +3727,7 @@ func (recv *Fixed) ToC() unsafe.Pointer {
 
 // Container upcasts to *Container
 func (recv *Fixed) Container() *Container {
-	return ContainerNewFromC(recv.native)
+	return ContainerNewFromC(unsafe.Pointer(recv.native))
 }
 
 // FixedNew is a wrapper around the C function gtk_fixed_new.
@@ -3788,7 +3788,7 @@ func (recv *FlowBox) ToC() unsafe.Pointer {
 
 // Container upcasts to *Container
 func (recv *FlowBox) Container() *Container {
-	return ContainerNewFromC(recv.native)
+	return ContainerNewFromC(unsafe.Pointer(recv.native))
 }
 
 // FlowBoxAccessible is a wrapper around the C record GtkFlowBoxAccessible.
@@ -3816,7 +3816,7 @@ func (recv *FlowBoxAccessible) ToC() unsafe.Pointer {
 
 // ContainerAccessible upcasts to *ContainerAccessible
 func (recv *FlowBoxAccessible) ContainerAccessible() *ContainerAccessible {
-	return ContainerAccessibleNewFromC(recv.native)
+	return ContainerAccessibleNewFromC(unsafe.Pointer(recv.native))
 }
 
 // FlowBoxChild is a wrapper around the C record GtkFlowBoxChild.
@@ -3843,7 +3843,7 @@ func (recv *FlowBoxChild) ToC() unsafe.Pointer {
 
 // Bin upcasts to *Bin
 func (recv *FlowBoxChild) Bin() *Bin {
-	return BinNewFromC(recv.native)
+	return BinNewFromC(unsafe.Pointer(recv.native))
 }
 
 // FlowBoxChildAccessible is a wrapper around the C record GtkFlowBoxChildAccessible.
@@ -3870,7 +3870,7 @@ func (recv *FlowBoxChildAccessible) ToC() unsafe.Pointer {
 
 // ContainerAccessible upcasts to *ContainerAccessible
 func (recv *FlowBoxChildAccessible) ContainerAccessible() *ContainerAccessible {
-	return ContainerAccessibleNewFromC(recv.native)
+	return ContainerAccessibleNewFromC(unsafe.Pointer(recv.native))
 }
 
 // FontButton is a wrapper around the C record GtkFontButton.
@@ -3898,7 +3898,7 @@ func (recv *FontButton) ToC() unsafe.Pointer {
 
 // Button upcasts to *Button
 func (recv *FontButton) Button() *Button {
-	return ButtonNewFromC(recv.native)
+	return ButtonNewFromC(unsafe.Pointer(recv.native))
 }
 
 // FontChooserDialog is a wrapper around the C record GtkFontChooserDialog.
@@ -3926,7 +3926,7 @@ func (recv *FontChooserDialog) ToC() unsafe.Pointer {
 
 // Dialog upcasts to *Dialog
 func (recv *FontChooserDialog) Dialog() *Dialog {
-	return DialogNewFromC(recv.native)
+	return DialogNewFromC(unsafe.Pointer(recv.native))
 }
 
 // FontChooserWidget is a wrapper around the C record GtkFontChooserWidget.
@@ -3954,7 +3954,7 @@ func (recv *FontChooserWidget) ToC() unsafe.Pointer {
 
 // Box upcasts to *Box
 func (recv *FontChooserWidget) Box() *Box {
-	return BoxNewFromC(recv.native)
+	return BoxNewFromC(unsafe.Pointer(recv.native))
 }
 
 // FontSelection is a wrapper around the C record GtkFontSelection.
@@ -3982,7 +3982,7 @@ func (recv *FontSelection) ToC() unsafe.Pointer {
 
 // Box upcasts to *Box
 func (recv *FontSelection) Box() *Box {
-	return BoxNewFromC(recv.native)
+	return BoxNewFromC(unsafe.Pointer(recv.native))
 }
 
 // FontSelectionNew is a wrapper around the C function gtk_font_selection_new.
@@ -4056,7 +4056,7 @@ func (recv *FontSelectionDialog) ToC() unsafe.Pointer {
 
 // Dialog upcasts to *Dialog
 func (recv *FontSelectionDialog) Dialog() *Dialog {
-	return DialogNewFromC(recv.native)
+	return DialogNewFromC(unsafe.Pointer(recv.native))
 }
 
 // FontSelectionDialogNew is a wrapper around the C function gtk_font_selection_dialog_new.
@@ -4133,7 +4133,7 @@ func (recv *Frame) ToC() unsafe.Pointer {
 
 // Bin upcasts to *Bin
 func (recv *Frame) Bin() *Bin {
-	return BinNewFromC(recv.native)
+	return BinNewFromC(unsafe.Pointer(recv.native))
 }
 
 // FrameNew is a wrapper around the C function gtk_frame_new.
@@ -4250,7 +4250,7 @@ func (recv *FrameAccessible) ToC() unsafe.Pointer {
 
 // ContainerAccessible upcasts to *ContainerAccessible
 func (recv *FrameAccessible) ContainerAccessible() *ContainerAccessible {
-	return ContainerAccessibleNewFromC(recv.native)
+	return ContainerAccessibleNewFromC(unsafe.Pointer(recv.native))
 }
 
 // Gesture is a wrapper around the C record GtkGesture.
@@ -4276,7 +4276,7 @@ func (recv *Gesture) ToC() unsafe.Pointer {
 
 // EventController upcasts to *EventController
 func (recv *Gesture) EventController() *EventController {
-	return EventControllerNewFromC(recv.native)
+	return EventControllerNewFromC(unsafe.Pointer(recv.native))
 }
 
 // Unsupported : gtk_gesture_get_last_event : no return generator
@@ -4304,7 +4304,7 @@ func (recv *GestureDrag) ToC() unsafe.Pointer {
 
 // GestureSingle upcasts to *GestureSingle
 func (recv *GestureDrag) GestureSingle() *GestureSingle {
-	return GestureSingleNewFromC(recv.native)
+	return GestureSingleNewFromC(unsafe.Pointer(recv.native))
 }
 
 // GestureLongPress is a wrapper around the C record GtkGestureLongPress.
@@ -4330,7 +4330,7 @@ func (recv *GestureLongPress) ToC() unsafe.Pointer {
 
 // GestureSingle upcasts to *GestureSingle
 func (recv *GestureLongPress) GestureSingle() *GestureSingle {
-	return GestureSingleNewFromC(recv.native)
+	return GestureSingleNewFromC(unsafe.Pointer(recv.native))
 }
 
 // GestureMultiPress is a wrapper around the C record GtkGestureMultiPress.
@@ -4356,7 +4356,7 @@ func (recv *GestureMultiPress) ToC() unsafe.Pointer {
 
 // GestureSingle upcasts to *GestureSingle
 func (recv *GestureMultiPress) GestureSingle() *GestureSingle {
-	return GestureSingleNewFromC(recv.native)
+	return GestureSingleNewFromC(unsafe.Pointer(recv.native))
 }
 
 // GesturePan is a wrapper around the C record GtkGesturePan.
@@ -4382,7 +4382,7 @@ func (recv *GesturePan) ToC() unsafe.Pointer {
 
 // GestureDrag upcasts to *GestureDrag
 func (recv *GesturePan) GestureDrag() *GestureDrag {
-	return GestureDragNewFromC(recv.native)
+	return GestureDragNewFromC(unsafe.Pointer(recv.native))
 }
 
 // GestureRotate is a wrapper around the C record GtkGestureRotate.
@@ -4408,7 +4408,7 @@ func (recv *GestureRotate) ToC() unsafe.Pointer {
 
 // Gesture upcasts to *Gesture
 func (recv *GestureRotate) Gesture() *Gesture {
-	return GestureNewFromC(recv.native)
+	return GestureNewFromC(unsafe.Pointer(recv.native))
 }
 
 // GestureSingle is a wrapper around the C record GtkGestureSingle.
@@ -4434,7 +4434,7 @@ func (recv *GestureSingle) ToC() unsafe.Pointer {
 
 // Gesture upcasts to *Gesture
 func (recv *GestureSingle) Gesture() *Gesture {
-	return GestureNewFromC(recv.native)
+	return GestureNewFromC(unsafe.Pointer(recv.native))
 }
 
 // GestureSwipe is a wrapper around the C record GtkGestureSwipe.
@@ -4460,7 +4460,7 @@ func (recv *GestureSwipe) ToC() unsafe.Pointer {
 
 // GestureSingle upcasts to *GestureSingle
 func (recv *GestureSwipe) GestureSingle() *GestureSingle {
-	return GestureSingleNewFromC(recv.native)
+	return GestureSingleNewFromC(unsafe.Pointer(recv.native))
 }
 
 // GestureZoom is a wrapper around the C record GtkGestureZoom.
@@ -4486,7 +4486,7 @@ func (recv *GestureZoom) ToC() unsafe.Pointer {
 
 // Gesture upcasts to *Gesture
 func (recv *GestureZoom) Gesture() *Gesture {
-	return GestureNewFromC(recv.native)
+	return GestureNewFromC(unsafe.Pointer(recv.native))
 }
 
 // Grid is a wrapper around the C record GtkGrid.
@@ -4514,7 +4514,7 @@ func (recv *Grid) ToC() unsafe.Pointer {
 
 // Container upcasts to *Container
 func (recv *Grid) Container() *Container {
-	return ContainerNewFromC(recv.native)
+	return ContainerNewFromC(unsafe.Pointer(recv.native))
 }
 
 // GridNew is a wrapper around the C function gtk_grid_new.
@@ -4653,7 +4653,7 @@ func (recv *HBox) ToC() unsafe.Pointer {
 
 // Box upcasts to *Box
 func (recv *HBox) Box() *Box {
-	return BoxNewFromC(recv.native)
+	return BoxNewFromC(unsafe.Pointer(recv.native))
 }
 
 // HBoxNew is a wrapper around the C function gtk_hbox_new.
@@ -4693,7 +4693,7 @@ func (recv *HButtonBox) ToC() unsafe.Pointer {
 
 // ButtonBox upcasts to *ButtonBox
 func (recv *HButtonBox) ButtonBox() *ButtonBox {
-	return ButtonBoxNewFromC(recv.native)
+	return ButtonBoxNewFromC(unsafe.Pointer(recv.native))
 }
 
 // HButtonBoxNew is a wrapper around the C function gtk_hbutton_box_new.
@@ -4728,7 +4728,7 @@ func (recv *HPaned) ToC() unsafe.Pointer {
 
 // Paned upcasts to *Paned
 func (recv *HPaned) Paned() *Paned {
-	return PanedNewFromC(recv.native)
+	return PanedNewFromC(unsafe.Pointer(recv.native))
 }
 
 // HPanedNew is a wrapper around the C function gtk_hpaned_new.
@@ -4764,7 +4764,7 @@ func (recv *HSV) ToC() unsafe.Pointer {
 
 // Widget upcasts to *Widget
 func (recv *HSV) Widget() *Widget {
-	return WidgetNewFromC(recv.native)
+	return WidgetNewFromC(unsafe.Pointer(recv.native))
 }
 
 // HScale is a wrapper around the C record GtkHScale.
@@ -4791,7 +4791,7 @@ func (recv *HScale) ToC() unsafe.Pointer {
 
 // Scale upcasts to *Scale
 func (recv *HScale) Scale() *Scale {
-	return ScaleNewFromC(recv.native)
+	return ScaleNewFromC(unsafe.Pointer(recv.native))
 }
 
 // HScaleNew is a wrapper around the C function gtk_hscale_new.
@@ -4842,7 +4842,7 @@ func (recv *HScrollbar) ToC() unsafe.Pointer {
 
 // Scrollbar upcasts to *Scrollbar
 func (recv *HScrollbar) Scrollbar() *Scrollbar {
-	return ScrollbarNewFromC(recv.native)
+	return ScrollbarNewFromC(unsafe.Pointer(recv.native))
 }
 
 // HScrollbarNew is a wrapper around the C function gtk_hscrollbar_new.
@@ -4879,7 +4879,7 @@ func (recv *HSeparator) ToC() unsafe.Pointer {
 
 // Separator upcasts to *Separator
 func (recv *HSeparator) Separator() *Separator {
-	return SeparatorNewFromC(recv.native)
+	return SeparatorNewFromC(unsafe.Pointer(recv.native))
 }
 
 // HSeparatorNew is a wrapper around the C function gtk_hseparator_new.
@@ -4915,7 +4915,7 @@ func (recv *HandleBox) ToC() unsafe.Pointer {
 
 // Bin upcasts to *Bin
 func (recv *HandleBox) Bin() *Bin {
-	return BinNewFromC(recv.native)
+	return BinNewFromC(unsafe.Pointer(recv.native))
 }
 
 // HandleBoxNew is a wrapper around the C function gtk_handle_box_new.
@@ -5001,7 +5001,7 @@ func (recv *HeaderBar) ToC() unsafe.Pointer {
 
 // Container upcasts to *Container
 func (recv *HeaderBar) Container() *Container {
-	return ContainerNewFromC(recv.native)
+	return ContainerNewFromC(unsafe.Pointer(recv.native))
 }
 
 // IMContext is a wrapper around the C record GtkIMContext.
@@ -5028,7 +5028,7 @@ func (recv *IMContext) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *IMContext) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // DeleteSurrounding is a wrapper around the C function gtk_im_context_delete_surrounding.
@@ -5153,7 +5153,7 @@ func (recv *IMContextSimple) ToC() unsafe.Pointer {
 
 // IMContext upcasts to *IMContext
 func (recv *IMContextSimple) IMContext() *IMContext {
-	return IMContextNewFromC(recv.native)
+	return IMContextNewFromC(unsafe.Pointer(recv.native))
 }
 
 // IMContextSimpleNew is a wrapper around the C function gtk_im_context_simple_new.
@@ -5193,7 +5193,7 @@ func (recv *IMMulticontext) ToC() unsafe.Pointer {
 
 // IMContext upcasts to *IMContext
 func (recv *IMMulticontext) IMContext() *IMContext {
-	return IMContextNewFromC(recv.native)
+	return IMContextNewFromC(unsafe.Pointer(recv.native))
 }
 
 // IMMulticontextNew is a wrapper around the C function gtk_im_multicontext_new.
@@ -5238,7 +5238,7 @@ func (recv *IconFactory) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *IconFactory) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // IconFactoryNew is a wrapper around the C function gtk_icon_factory_new.
@@ -5309,7 +5309,7 @@ func (recv *IconInfo) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *IconInfo) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // IconTheme is a wrapper around the C record GtkIconTheme.
@@ -5337,7 +5337,7 @@ func (recv *IconTheme) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *IconTheme) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // IconView is a wrapper around the C record GtkIconView.
@@ -5365,7 +5365,7 @@ func (recv *IconView) ToC() unsafe.Pointer {
 
 // Container upcasts to *Container
 func (recv *IconView) Container() *Container {
-	return ContainerNewFromC(recv.native)
+	return ContainerNewFromC(unsafe.Pointer(recv.native))
 }
 
 // Unsupported : gtk_icon_view_new_with_model : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
@@ -5395,7 +5395,7 @@ func (recv *IconViewAccessible) ToC() unsafe.Pointer {
 
 // ContainerAccessible upcasts to *ContainerAccessible
 func (recv *IconViewAccessible) ContainerAccessible() *ContainerAccessible {
-	return ContainerAccessibleNewFromC(recv.native)
+	return ContainerAccessibleNewFromC(unsafe.Pointer(recv.native))
 }
 
 // Image is a wrapper around the C record GtkImage.
@@ -5423,7 +5423,7 @@ func (recv *Image) ToC() unsafe.Pointer {
 
 // Misc upcasts to *Misc
 func (recv *Image) Misc() *Misc {
-	return MiscNewFromC(recv.native)
+	return MiscNewFromC(unsafe.Pointer(recv.native))
 }
 
 // ImageNew is a wrapper around the C function gtk_image_new.
@@ -5568,7 +5568,7 @@ func (recv *ImageAccessible) ToC() unsafe.Pointer {
 
 // WidgetAccessible upcasts to *WidgetAccessible
 func (recv *ImageAccessible) WidgetAccessible() *WidgetAccessible {
-	return WidgetAccessibleNewFromC(recv.native)
+	return WidgetAccessibleNewFromC(unsafe.Pointer(recv.native))
 }
 
 // ImageCellAccessible is a wrapper around the C record GtkImageCellAccessible.
@@ -5596,7 +5596,7 @@ func (recv *ImageCellAccessible) ToC() unsafe.Pointer {
 
 // RendererCellAccessible upcasts to *RendererCellAccessible
 func (recv *ImageCellAccessible) RendererCellAccessible() *RendererCellAccessible {
-	return RendererCellAccessibleNewFromC(recv.native)
+	return RendererCellAccessibleNewFromC(unsafe.Pointer(recv.native))
 }
 
 // ImageMenuItem is a wrapper around the C record GtkImageMenuItem.
@@ -5624,7 +5624,7 @@ func (recv *ImageMenuItem) ToC() unsafe.Pointer {
 
 // MenuItem upcasts to *MenuItem
 func (recv *ImageMenuItem) MenuItem() *MenuItem {
-	return MenuItemNewFromC(recv.native)
+	return MenuItemNewFromC(unsafe.Pointer(recv.native))
 }
 
 // ImageMenuItemNew is a wrapper around the C function gtk_image_menu_item_new.
@@ -5712,7 +5712,7 @@ func (recv *InfoBar) ToC() unsafe.Pointer {
 
 // Box upcasts to *Box
 func (recv *InfoBar) Box() *Box {
-	return BoxNewFromC(recv.native)
+	return BoxNewFromC(unsafe.Pointer(recv.native))
 }
 
 // Unsupported : gtk_info_bar_new_with_buttons : unsupported parameter ... : varargs
@@ -5742,7 +5742,7 @@ func (recv *Invisible) ToC() unsafe.Pointer {
 
 // Widget upcasts to *Widget
 func (recv *Invisible) Widget() *Widget {
-	return WidgetNewFromC(recv.native)
+	return WidgetNewFromC(unsafe.Pointer(recv.native))
 }
 
 // InvisibleNew is a wrapper around the C function gtk_invisible_new.
@@ -5778,7 +5778,7 @@ func (recv *Label) ToC() unsafe.Pointer {
 
 // Misc upcasts to *Misc
 func (recv *Label) Misc() *Misc {
-	return MiscNewFromC(recv.native)
+	return MiscNewFromC(unsafe.Pointer(recv.native))
 }
 
 // LabelNew is a wrapper around the C function gtk_label_new.
@@ -6085,7 +6085,7 @@ func (recv *LabelAccessible) ToC() unsafe.Pointer {
 
 // WidgetAccessible upcasts to *WidgetAccessible
 func (recv *LabelAccessible) WidgetAccessible() *WidgetAccessible {
-	return WidgetAccessibleNewFromC(recv.native)
+	return WidgetAccessibleNewFromC(unsafe.Pointer(recv.native))
 }
 
 // Layout is a wrapper around the C record GtkLayout.
@@ -6113,7 +6113,7 @@ func (recv *Layout) ToC() unsafe.Pointer {
 
 // Container upcasts to *Container
 func (recv *Layout) Container() *Container {
-	return ContainerNewFromC(recv.native)
+	return ContainerNewFromC(unsafe.Pointer(recv.native))
 }
 
 // LayoutNew is a wrapper around the C function gtk_layout_new.
@@ -6239,7 +6239,7 @@ func (recv *LevelBar) ToC() unsafe.Pointer {
 
 // Widget upcasts to *Widget
 func (recv *LevelBar) Widget() *Widget {
-	return WidgetNewFromC(recv.native)
+	return WidgetNewFromC(unsafe.Pointer(recv.native))
 }
 
 // LevelBarAccessible is a wrapper around the C record GtkLevelBarAccessible.
@@ -6267,7 +6267,7 @@ func (recv *LevelBarAccessible) ToC() unsafe.Pointer {
 
 // WidgetAccessible upcasts to *WidgetAccessible
 func (recv *LevelBarAccessible) WidgetAccessible() *WidgetAccessible {
-	return WidgetAccessibleNewFromC(recv.native)
+	return WidgetAccessibleNewFromC(unsafe.Pointer(recv.native))
 }
 
 // LinkButton is a wrapper around the C record GtkLinkButton.
@@ -6295,7 +6295,7 @@ func (recv *LinkButton) ToC() unsafe.Pointer {
 
 // Button upcasts to *Button
 func (recv *LinkButton) Button() *Button {
-	return ButtonNewFromC(recv.native)
+	return ButtonNewFromC(unsafe.Pointer(recv.native))
 }
 
 // LinkButtonAccessible is a wrapper around the C record GtkLinkButtonAccessible.
@@ -6323,7 +6323,7 @@ func (recv *LinkButtonAccessible) ToC() unsafe.Pointer {
 
 // ButtonAccessible upcasts to *ButtonAccessible
 func (recv *LinkButtonAccessible) ButtonAccessible() *ButtonAccessible {
-	return ButtonAccessibleNewFromC(recv.native)
+	return ButtonAccessibleNewFromC(unsafe.Pointer(recv.native))
 }
 
 // ListBox is a wrapper around the C record GtkListBox.
@@ -6350,7 +6350,7 @@ func (recv *ListBox) ToC() unsafe.Pointer {
 
 // Container upcasts to *Container
 func (recv *ListBox) Container() *Container {
-	return ContainerNewFromC(recv.native)
+	return ContainerNewFromC(unsafe.Pointer(recv.native))
 }
 
 // ListBoxAccessible is a wrapper around the C record GtkListBoxAccessible.
@@ -6378,7 +6378,7 @@ func (recv *ListBoxAccessible) ToC() unsafe.Pointer {
 
 // ContainerAccessible upcasts to *ContainerAccessible
 func (recv *ListBoxAccessible) ContainerAccessible() *ContainerAccessible {
-	return ContainerAccessibleNewFromC(recv.native)
+	return ContainerAccessibleNewFromC(unsafe.Pointer(recv.native))
 }
 
 // ListBoxRow is a wrapper around the C record GtkListBoxRow.
@@ -6405,7 +6405,7 @@ func (recv *ListBoxRow) ToC() unsafe.Pointer {
 
 // Bin upcasts to *Bin
 func (recv *ListBoxRow) Bin() *Bin {
-	return BinNewFromC(recv.native)
+	return BinNewFromC(unsafe.Pointer(recv.native))
 }
 
 // ListBoxRowAccessible is a wrapper around the C record GtkListBoxRowAccessible.
@@ -6432,7 +6432,7 @@ func (recv *ListBoxRowAccessible) ToC() unsafe.Pointer {
 
 // ContainerAccessible upcasts to *ContainerAccessible
 func (recv *ListBoxRowAccessible) ContainerAccessible() *ContainerAccessible {
-	return ContainerAccessibleNewFromC(recv.native)
+	return ContainerAccessibleNewFromC(unsafe.Pointer(recv.native))
 }
 
 // ListStore is a wrapper around the C record GtkListStore.
@@ -6460,7 +6460,7 @@ func (recv *ListStore) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *ListStore) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // Unsupported : gtk_list_store_new : unsupported parameter ... : varargs
@@ -6589,7 +6589,7 @@ func (recv *LockButton) ToC() unsafe.Pointer {
 
 // Button upcasts to *Button
 func (recv *LockButton) Button() *Button {
-	return ButtonNewFromC(recv.native)
+	return ButtonNewFromC(unsafe.Pointer(recv.native))
 }
 
 // LockButtonAccessible is a wrapper around the C record GtkLockButtonAccessible.
@@ -6617,7 +6617,7 @@ func (recv *LockButtonAccessible) ToC() unsafe.Pointer {
 
 // ButtonAccessible upcasts to *ButtonAccessible
 func (recv *LockButtonAccessible) ButtonAccessible() *ButtonAccessible {
-	return ButtonAccessibleNewFromC(recv.native)
+	return ButtonAccessibleNewFromC(unsafe.Pointer(recv.native))
 }
 
 // Menu is a wrapper around the C record GtkMenu.
@@ -6645,7 +6645,7 @@ func (recv *Menu) ToC() unsafe.Pointer {
 
 // MenuShell upcasts to *MenuShell
 func (recv *Menu) MenuShell() *MenuShell {
-	return MenuShellNewFromC(recv.native)
+	return MenuShellNewFromC(unsafe.Pointer(recv.native))
 }
 
 // MenuNew is a wrapper around the C function gtk_menu_new.
@@ -6805,7 +6805,7 @@ func (recv *MenuAccessible) ToC() unsafe.Pointer {
 
 // MenuShellAccessible upcasts to *MenuShellAccessible
 func (recv *MenuAccessible) MenuShellAccessible() *MenuShellAccessible {
-	return MenuShellAccessibleNewFromC(recv.native)
+	return MenuShellAccessibleNewFromC(unsafe.Pointer(recv.native))
 }
 
 // MenuBar is a wrapper around the C record GtkMenuBar.
@@ -6833,7 +6833,7 @@ func (recv *MenuBar) ToC() unsafe.Pointer {
 
 // MenuShell upcasts to *MenuShell
 func (recv *MenuBar) MenuShell() *MenuShell {
-	return MenuShellNewFromC(recv.native)
+	return MenuShellNewFromC(unsafe.Pointer(recv.native))
 }
 
 // MenuBarNew is a wrapper around the C function gtk_menu_bar_new.
@@ -6869,7 +6869,7 @@ func (recv *MenuButton) ToC() unsafe.Pointer {
 
 // ToggleButton upcasts to *ToggleButton
 func (recv *MenuButton) ToggleButton() *ToggleButton {
-	return ToggleButtonNewFromC(recv.native)
+	return ToggleButtonNewFromC(unsafe.Pointer(recv.native))
 }
 
 // MenuButtonAccessible is a wrapper around the C record GtkMenuButtonAccessible.
@@ -6897,7 +6897,7 @@ func (recv *MenuButtonAccessible) ToC() unsafe.Pointer {
 
 // ToggleButtonAccessible upcasts to *ToggleButtonAccessible
 func (recv *MenuButtonAccessible) ToggleButtonAccessible() *ToggleButtonAccessible {
-	return ToggleButtonAccessibleNewFromC(recv.native)
+	return ToggleButtonAccessibleNewFromC(unsafe.Pointer(recv.native))
 }
 
 // MenuItem is a wrapper around the C record GtkMenuItem.
@@ -6925,7 +6925,7 @@ func (recv *MenuItem) ToC() unsafe.Pointer {
 
 // Bin upcasts to *Bin
 func (recv *MenuItem) Bin() *Bin {
-	return BinNewFromC(recv.native)
+	return BinNewFromC(unsafe.Pointer(recv.native))
 }
 
 // MenuItemNew is a wrapper around the C function gtk_menu_item_new.
@@ -7067,7 +7067,7 @@ func (recv *MenuItemAccessible) ToC() unsafe.Pointer {
 
 // ContainerAccessible upcasts to *ContainerAccessible
 func (recv *MenuItemAccessible) ContainerAccessible() *ContainerAccessible {
-	return ContainerAccessibleNewFromC(recv.native)
+	return ContainerAccessibleNewFromC(unsafe.Pointer(recv.native))
 }
 
 // MenuShell is a wrapper around the C record GtkMenuShell.
@@ -7095,7 +7095,7 @@ func (recv *MenuShell) ToC() unsafe.Pointer {
 
 // Container upcasts to *Container
 func (recv *MenuShell) Container() *Container {
-	return ContainerNewFromC(recv.native)
+	return ContainerNewFromC(unsafe.Pointer(recv.native))
 }
 
 // ActivateItem is a wrapper around the C function gtk_menu_shell_activate_item.
@@ -7187,7 +7187,7 @@ func (recv *MenuShellAccessible) ToC() unsafe.Pointer {
 
 // ContainerAccessible upcasts to *ContainerAccessible
 func (recv *MenuShellAccessible) ContainerAccessible() *ContainerAccessible {
-	return ContainerAccessibleNewFromC(recv.native)
+	return ContainerAccessibleNewFromC(unsafe.Pointer(recv.native))
 }
 
 // MenuToolButton is a wrapper around the C record GtkMenuToolButton.
@@ -7215,7 +7215,7 @@ func (recv *MenuToolButton) ToC() unsafe.Pointer {
 
 // ToolButton upcasts to *ToolButton
 func (recv *MenuToolButton) ToolButton() *ToolButton {
-	return ToolButtonNewFromC(recv.native)
+	return ToolButtonNewFromC(unsafe.Pointer(recv.native))
 }
 
 // MessageDialog is a wrapper around the C record GtkMessageDialog.
@@ -7243,7 +7243,7 @@ func (recv *MessageDialog) ToC() unsafe.Pointer {
 
 // Dialog upcasts to *Dialog
 func (recv *MessageDialog) Dialog() *Dialog {
-	return DialogNewFromC(recv.native)
+	return DialogNewFromC(unsafe.Pointer(recv.native))
 }
 
 // Unsupported : gtk_message_dialog_new : unsupported parameter ... : varargs
@@ -7275,7 +7275,7 @@ func (recv *Misc) ToC() unsafe.Pointer {
 
 // Widget upcasts to *Widget
 func (recv *Misc) Widget() *Widget {
-	return WidgetNewFromC(recv.native)
+	return WidgetNewFromC(unsafe.Pointer(recv.native))
 }
 
 // GetAlignment is a wrapper around the C function gtk_misc_get_alignment.
@@ -7353,7 +7353,7 @@ func (recv *ModelButton) ToC() unsafe.Pointer {
 
 // Button upcasts to *Button
 func (recv *ModelButton) Button() *Button {
-	return ButtonNewFromC(recv.native)
+	return ButtonNewFromC(unsafe.Pointer(recv.native))
 }
 
 // MountOperation is a wrapper around the C record GtkMountOperation.
@@ -7381,7 +7381,7 @@ func (recv *MountOperation) ToC() unsafe.Pointer {
 
 // MountOperation upcasts to *MountOperation
 func (recv *MountOperation) MountOperation() *gio.MountOperation {
-	return gio.MountOperationNewFromC(recv.native)
+	return gio.MountOperationNewFromC(unsafe.Pointer(recv.native))
 }
 
 // Notebook is a wrapper around the C record GtkNotebook.
@@ -7409,7 +7409,7 @@ func (recv *Notebook) ToC() unsafe.Pointer {
 
 // Container upcasts to *Container
 func (recv *Notebook) Container() *Container {
-	return ContainerNewFromC(recv.native)
+	return ContainerNewFromC(unsafe.Pointer(recv.native))
 }
 
 // NotebookNew is a wrapper around the C function gtk_notebook_new.
@@ -7769,7 +7769,7 @@ func (recv *NotebookAccessible) ToC() unsafe.Pointer {
 
 // ContainerAccessible upcasts to *ContainerAccessible
 func (recv *NotebookAccessible) ContainerAccessible() *ContainerAccessible {
-	return ContainerAccessibleNewFromC(recv.native)
+	return ContainerAccessibleNewFromC(unsafe.Pointer(recv.native))
 }
 
 // NotebookPageAccessible is a wrapper around the C record GtkNotebookPageAccessible.
@@ -7797,7 +7797,7 @@ func (recv *NotebookPageAccessible) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *NotebookPageAccessible) Object() *atk.Object {
-	return atk.ObjectNewFromC(recv.native)
+	return atk.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // NotebookPageAccessibleNew is a wrapper around the C function gtk_notebook_page_accessible_new.
@@ -7844,7 +7844,7 @@ func (recv *NumerableIcon) ToC() unsafe.Pointer {
 
 // EmblemedIcon upcasts to *EmblemedIcon
 func (recv *NumerableIcon) EmblemedIcon() *gio.EmblemedIcon {
-	return gio.EmblemedIconNewFromC(recv.native)
+	return gio.EmblemedIconNewFromC(unsafe.Pointer(recv.native))
 }
 
 // OffscreenWindow is a wrapper around the C record GtkOffscreenWindow.
@@ -7871,7 +7871,7 @@ func (recv *OffscreenWindow) ToC() unsafe.Pointer {
 
 // Window upcasts to *Window
 func (recv *OffscreenWindow) Window() *Window {
-	return WindowNewFromC(recv.native)
+	return WindowNewFromC(unsafe.Pointer(recv.native))
 }
 
 // Overlay is a wrapper around the C record GtkOverlay.
@@ -7899,7 +7899,7 @@ func (recv *Overlay) ToC() unsafe.Pointer {
 
 // Bin upcasts to *Bin
 func (recv *Overlay) Bin() *Bin {
-	return BinNewFromC(recv.native)
+	return BinNewFromC(unsafe.Pointer(recv.native))
 }
 
 // Unsupported : gtk_pad_controller_new : unsupported parameter group : no type generator for Gio.ActionGroup, GActionGroup*
@@ -7927,7 +7927,7 @@ func (recv *PageSetup) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *PageSetup) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // Unsupported : gtk_page_setup_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
@@ -7957,7 +7957,7 @@ func (recv *Paned) ToC() unsafe.Pointer {
 
 // Container upcasts to *Container
 func (recv *Paned) Container() *Container {
-	return ContainerNewFromC(recv.native)
+	return ContainerNewFromC(unsafe.Pointer(recv.native))
 }
 
 // Add1 is a wrapper around the C function gtk_paned_add1.
@@ -8050,7 +8050,7 @@ func (recv *PanedAccessible) ToC() unsafe.Pointer {
 
 // ContainerAccessible upcasts to *ContainerAccessible
 func (recv *PanedAccessible) ContainerAccessible() *ContainerAccessible {
-	return ContainerAccessibleNewFromC(recv.native)
+	return ContainerAccessibleNewFromC(unsafe.Pointer(recv.native))
 }
 
 // PlacesSidebar is a wrapper around the C record GtkPlacesSidebar.
@@ -8076,7 +8076,7 @@ func (recv *PlacesSidebar) ToC() unsafe.Pointer {
 
 // ScrolledWindow upcasts to *ScrolledWindow
 func (recv *PlacesSidebar) ScrolledWindow() *ScrolledWindow {
-	return ScrolledWindowNewFromC(recv.native)
+	return ScrolledWindowNewFromC(unsafe.Pointer(recv.native))
 }
 
 // GetShowConnectToServer is a wrapper around the C function gtk_places_sidebar_get_show_connect_to_server.
@@ -8114,7 +8114,7 @@ func (recv *Popover) ToC() unsafe.Pointer {
 
 // Bin upcasts to *Bin
 func (recv *Popover) Bin() *Bin {
-	return BinNewFromC(recv.native)
+	return BinNewFromC(unsafe.Pointer(recv.native))
 }
 
 // Unsupported : gtk_popover_get_pointing_to : unsupported parameter rect : Blacklisted record : GdkRectangle
@@ -8151,7 +8151,7 @@ func (recv *PopoverAccessible) ToC() unsafe.Pointer {
 
 // ContainerAccessible upcasts to *ContainerAccessible
 func (recv *PopoverAccessible) ContainerAccessible() *ContainerAccessible {
-	return ContainerAccessibleNewFromC(recv.native)
+	return ContainerAccessibleNewFromC(unsafe.Pointer(recv.native))
 }
 
 // PopoverMenu is a wrapper around the C record GtkPopoverMenu.
@@ -8177,7 +8177,7 @@ func (recv *PopoverMenu) ToC() unsafe.Pointer {
 
 // Popover upcasts to *Popover
 func (recv *PopoverMenu) Popover() *Popover {
-	return PopoverNewFromC(recv.native)
+	return PopoverNewFromC(unsafe.Pointer(recv.native))
 }
 
 // PrintContext is a wrapper around the C record GtkPrintContext.
@@ -8203,7 +8203,7 @@ func (recv *PrintContext) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *PrintContext) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // PrintOperation is a wrapper around the C record GtkPrintOperation.
@@ -8231,7 +8231,7 @@ func (recv *PrintOperation) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *PrintOperation) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // PrintSettings is a wrapper around the C record GtkPrintSettings.
@@ -8257,7 +8257,7 @@ func (recv *PrintSettings) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *PrintSettings) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // Unsupported : gtk_print_settings_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
@@ -8287,7 +8287,7 @@ func (recv *ProgressBar) ToC() unsafe.Pointer {
 
 // Widget upcasts to *Widget
 func (recv *ProgressBar) Widget() *Widget {
-	return WidgetNewFromC(recv.native)
+	return WidgetNewFromC(unsafe.Pointer(recv.native))
 }
 
 // ProgressBarNew is a wrapper around the C function gtk_progress_bar_new.
@@ -8400,7 +8400,7 @@ func (recv *ProgressBarAccessible) ToC() unsafe.Pointer {
 
 // WidgetAccessible upcasts to *WidgetAccessible
 func (recv *ProgressBarAccessible) WidgetAccessible() *WidgetAccessible {
-	return WidgetAccessibleNewFromC(recv.native)
+	return WidgetAccessibleNewFromC(unsafe.Pointer(recv.native))
 }
 
 // RadioAction is a wrapper around the C record GtkRadioAction.
@@ -8428,7 +8428,7 @@ func (recv *RadioAction) ToC() unsafe.Pointer {
 
 // ToggleAction upcasts to *ToggleAction
 func (recv *RadioAction) ToggleAction() *ToggleAction {
-	return ToggleActionNewFromC(recv.native)
+	return ToggleActionNewFromC(unsafe.Pointer(recv.native))
 }
 
 // RadioButton is a wrapper around the C record GtkRadioButton.
@@ -8456,7 +8456,7 @@ func (recv *RadioButton) ToC() unsafe.Pointer {
 
 // CheckButton upcasts to *CheckButton
 func (recv *RadioButton) CheckButton() *CheckButton {
-	return CheckButtonNewFromC(recv.native)
+	return CheckButtonNewFromC(unsafe.Pointer(recv.native))
 }
 
 // RadioButtonNew is a wrapper around the C function gtk_radio_button_new.
@@ -8573,7 +8573,7 @@ func (recv *RadioButtonAccessible) ToC() unsafe.Pointer {
 
 // ToggleButtonAccessible upcasts to *ToggleButtonAccessible
 func (recv *RadioButtonAccessible) ToggleButtonAccessible() *ToggleButtonAccessible {
-	return ToggleButtonAccessibleNewFromC(recv.native)
+	return ToggleButtonAccessibleNewFromC(unsafe.Pointer(recv.native))
 }
 
 // RadioMenuItem is a wrapper around the C record GtkRadioMenuItem.
@@ -8601,7 +8601,7 @@ func (recv *RadioMenuItem) ToC() unsafe.Pointer {
 
 // CheckMenuItem upcasts to *CheckMenuItem
 func (recv *RadioMenuItem) CheckMenuItem() *CheckMenuItem {
-	return CheckMenuItemNewFromC(recv.native)
+	return CheckMenuItemNewFromC(unsafe.Pointer(recv.native))
 }
 
 // RadioMenuItemNew is a wrapper around the C function gtk_radio_menu_item_new.
@@ -8682,7 +8682,7 @@ func (recv *RadioMenuItemAccessible) ToC() unsafe.Pointer {
 
 // CheckMenuItemAccessible upcasts to *CheckMenuItemAccessible
 func (recv *RadioMenuItemAccessible) CheckMenuItemAccessible() *CheckMenuItemAccessible {
-	return CheckMenuItemAccessibleNewFromC(recv.native)
+	return CheckMenuItemAccessibleNewFromC(unsafe.Pointer(recv.native))
 }
 
 // RadioToolButton is a wrapper around the C record GtkRadioToolButton.
@@ -8709,7 +8709,7 @@ func (recv *RadioToolButton) ToC() unsafe.Pointer {
 
 // ToggleToolButton upcasts to *ToggleToolButton
 func (recv *RadioToolButton) ToggleToolButton() *ToggleToolButton {
-	return ToggleToolButtonNewFromC(recv.native)
+	return ToggleToolButtonNewFromC(unsafe.Pointer(recv.native))
 }
 
 // Range is a wrapper around the C record GtkRange.
@@ -8737,7 +8737,7 @@ func (recv *Range) ToC() unsafe.Pointer {
 
 // Widget upcasts to *Widget
 func (recv *Range) Widget() *Widget {
-	return WidgetNewFromC(recv.native)
+	return WidgetNewFromC(unsafe.Pointer(recv.native))
 }
 
 // GetAdjustment is a wrapper around the C function gtk_range_get_adjustment.
@@ -8839,7 +8839,7 @@ func (recv *RangeAccessible) ToC() unsafe.Pointer {
 
 // WidgetAccessible upcasts to *WidgetAccessible
 func (recv *RangeAccessible) WidgetAccessible() *WidgetAccessible {
-	return WidgetAccessibleNewFromC(recv.native)
+	return WidgetAccessibleNewFromC(unsafe.Pointer(recv.native))
 }
 
 // RcStyle is a wrapper around the C record GtkRcStyle.
@@ -8891,7 +8891,7 @@ func (recv *RcStyle) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *RcStyle) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // RcStyleNew is a wrapper around the C function gtk_rc_style_new.
@@ -8935,7 +8935,7 @@ func (recv *RecentAction) ToC() unsafe.Pointer {
 
 // Action upcasts to *Action
 func (recv *RecentAction) Action() *Action {
-	return ActionNewFromC(recv.native)
+	return ActionNewFromC(unsafe.Pointer(recv.native))
 }
 
 // RecentChooserDialog is a wrapper around the C record GtkRecentChooserDialog.
@@ -8963,7 +8963,7 @@ func (recv *RecentChooserDialog) ToC() unsafe.Pointer {
 
 // Dialog upcasts to *Dialog
 func (recv *RecentChooserDialog) Dialog() *Dialog {
-	return DialogNewFromC(recv.native)
+	return DialogNewFromC(unsafe.Pointer(recv.native))
 }
 
 // Unsupported : gtk_recent_chooser_dialog_new : unsupported parameter ... : varargs
@@ -8995,7 +8995,7 @@ func (recv *RecentChooserMenu) ToC() unsafe.Pointer {
 
 // Menu upcasts to *Menu
 func (recv *RecentChooserMenu) Menu() *Menu {
-	return MenuNewFromC(recv.native)
+	return MenuNewFromC(unsafe.Pointer(recv.native))
 }
 
 // RecentChooserWidget is a wrapper around the C record GtkRecentChooserWidget.
@@ -9023,7 +9023,7 @@ func (recv *RecentChooserWidget) ToC() unsafe.Pointer {
 
 // Box upcasts to *Box
 func (recv *RecentChooserWidget) Box() *Box {
-	return BoxNewFromC(recv.native)
+	return BoxNewFromC(unsafe.Pointer(recv.native))
 }
 
 // RecentFilter is a wrapper around the C record GtkRecentFilter.
@@ -9049,7 +9049,7 @@ func (recv *RecentFilter) ToC() unsafe.Pointer {
 
 // InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *RecentFilter) InitiallyUnowned() *gobject.InitiallyUnowned {
-	return gobject.InitiallyUnownedNewFromC(recv.native)
+	return gobject.InitiallyUnownedNewFromC(unsafe.Pointer(recv.native))
 }
 
 // RendererCellAccessible is a wrapper around the C record GtkRendererCellAccessible.
@@ -9077,7 +9077,7 @@ func (recv *RendererCellAccessible) ToC() unsafe.Pointer {
 
 // CellAccessible upcasts to *CellAccessible
 func (recv *RendererCellAccessible) CellAccessible() *CellAccessible {
-	return CellAccessibleNewFromC(recv.native)
+	return CellAccessibleNewFromC(unsafe.Pointer(recv.native))
 }
 
 // RendererCellAccessibleNew is a wrapper around the C function gtk_renderer_cell_accessible_new.
@@ -9114,7 +9114,7 @@ func (recv *Revealer) ToC() unsafe.Pointer {
 
 // Bin upcasts to *Bin
 func (recv *Revealer) Bin() *Bin {
-	return BinNewFromC(recv.native)
+	return BinNewFromC(unsafe.Pointer(recv.native))
 }
 
 // Scale is a wrapper around the C record GtkScale.
@@ -9142,7 +9142,7 @@ func (recv *Scale) ToC() unsafe.Pointer {
 
 // Range upcasts to *Range
 func (recv *Scale) Range() *Range {
-	return RangeNewFromC(recv.native)
+	return RangeNewFromC(unsafe.Pointer(recv.native))
 }
 
 // GetDigits is a wrapper around the C function gtk_scale_get_digits.
@@ -9222,7 +9222,7 @@ func (recv *ScaleAccessible) ToC() unsafe.Pointer {
 
 // RangeAccessible upcasts to *RangeAccessible
 func (recv *ScaleAccessible) RangeAccessible() *RangeAccessible {
-	return RangeAccessibleNewFromC(recv.native)
+	return RangeAccessibleNewFromC(unsafe.Pointer(recv.native))
 }
 
 // ScaleButton is a wrapper around the C record GtkScaleButton.
@@ -9250,7 +9250,7 @@ func (recv *ScaleButton) ToC() unsafe.Pointer {
 
 // Button upcasts to *Button
 func (recv *ScaleButton) Button() *Button {
-	return ButtonNewFromC(recv.native)
+	return ButtonNewFromC(unsafe.Pointer(recv.native))
 }
 
 // Unsupported : gtk_scale_button_new : unsupported parameter size : no type generator for gint, GtkIconSize
@@ -9280,7 +9280,7 @@ func (recv *ScaleButtonAccessible) ToC() unsafe.Pointer {
 
 // ButtonAccessible upcasts to *ButtonAccessible
 func (recv *ScaleButtonAccessible) ButtonAccessible() *ButtonAccessible {
-	return ButtonAccessibleNewFromC(recv.native)
+	return ButtonAccessibleNewFromC(unsafe.Pointer(recv.native))
 }
 
 // Scrollbar is a wrapper around the C record GtkScrollbar.
@@ -9307,7 +9307,7 @@ func (recv *Scrollbar) ToC() unsafe.Pointer {
 
 // Range upcasts to *Range
 func (recv *Scrollbar) Range() *Range {
-	return RangeNewFromC(recv.native)
+	return RangeNewFromC(unsafe.Pointer(recv.native))
 }
 
 // ScrolledWindow is a wrapper around the C record GtkScrolledWindow.
@@ -9335,7 +9335,7 @@ func (recv *ScrolledWindow) ToC() unsafe.Pointer {
 
 // Bin upcasts to *Bin
 func (recv *ScrolledWindow) Bin() *Bin {
-	return BinNewFromC(recv.native)
+	return BinNewFromC(unsafe.Pointer(recv.native))
 }
 
 // ScrolledWindowNew is a wrapper around the C function gtk_scrolled_window_new.
@@ -9465,7 +9465,7 @@ func (recv *ScrolledWindowAccessible) ToC() unsafe.Pointer {
 
 // ContainerAccessible upcasts to *ContainerAccessible
 func (recv *ScrolledWindowAccessible) ContainerAccessible() *ContainerAccessible {
-	return ContainerAccessibleNewFromC(recv.native)
+	return ContainerAccessibleNewFromC(unsafe.Pointer(recv.native))
 }
 
 // SearchBar is a wrapper around the C record GtkSearchBar.
@@ -9492,7 +9492,7 @@ func (recv *SearchBar) ToC() unsafe.Pointer {
 
 // Bin upcasts to *Bin
 func (recv *SearchBar) Bin() *Bin {
-	return BinNewFromC(recv.native)
+	return BinNewFromC(unsafe.Pointer(recv.native))
 }
 
 // SearchEntry is a wrapper around the C record GtkSearchEntry.
@@ -9519,7 +9519,7 @@ func (recv *SearchEntry) ToC() unsafe.Pointer {
 
 // Entry upcasts to *Entry
 func (recv *SearchEntry) Entry() *Entry {
-	return EntryNewFromC(recv.native)
+	return EntryNewFromC(unsafe.Pointer(recv.native))
 }
 
 // Separator is a wrapper around the C record GtkSeparator.
@@ -9547,7 +9547,7 @@ func (recv *Separator) ToC() unsafe.Pointer {
 
 // Widget upcasts to *Widget
 func (recv *Separator) Widget() *Widget {
-	return WidgetNewFromC(recv.native)
+	return WidgetNewFromC(unsafe.Pointer(recv.native))
 }
 
 // SeparatorMenuItem is a wrapper around the C record GtkSeparatorMenuItem.
@@ -9574,7 +9574,7 @@ func (recv *SeparatorMenuItem) ToC() unsafe.Pointer {
 
 // MenuItem upcasts to *MenuItem
 func (recv *SeparatorMenuItem) MenuItem() *MenuItem {
-	return MenuItemNewFromC(recv.native)
+	return MenuItemNewFromC(unsafe.Pointer(recv.native))
 }
 
 // SeparatorMenuItemNew is a wrapper around the C function gtk_separator_menu_item_new.
@@ -9610,7 +9610,7 @@ func (recv *SeparatorToolItem) ToC() unsafe.Pointer {
 
 // ToolItem upcasts to *ToolItem
 func (recv *SeparatorToolItem) ToolItem() *ToolItem {
-	return ToolItemNewFromC(recv.native)
+	return ToolItemNewFromC(unsafe.Pointer(recv.native))
 }
 
 // Settings is a wrapper around the C record GtkSettings.
@@ -9638,7 +9638,7 @@ func (recv *Settings) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *Settings) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // SetDoubleProperty is a wrapper around the C function gtk_settings_set_double_property.
@@ -9724,7 +9724,7 @@ func (recv *SizeGroup) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *SizeGroup) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // SizeGroupNew is a wrapper around the C function gtk_size_group_new.
@@ -9799,7 +9799,7 @@ func (recv *SpinButton) ToC() unsafe.Pointer {
 
 // Entry upcasts to *Entry
 func (recv *SpinButton) Entry() *Entry {
-	return EntryNewFromC(recv.native)
+	return EntryNewFromC(unsafe.Pointer(recv.native))
 }
 
 // SpinButtonNew is a wrapper around the C function gtk_spin_button_new.
@@ -10068,7 +10068,7 @@ func (recv *SpinButtonAccessible) ToC() unsafe.Pointer {
 
 // EntryAccessible upcasts to *EntryAccessible
 func (recv *SpinButtonAccessible) EntryAccessible() *EntryAccessible {
-	return EntryAccessibleNewFromC(recv.native)
+	return EntryAccessibleNewFromC(unsafe.Pointer(recv.native))
 }
 
 // Spinner is a wrapper around the C record GtkSpinner.
@@ -10096,7 +10096,7 @@ func (recv *Spinner) ToC() unsafe.Pointer {
 
 // Widget upcasts to *Widget
 func (recv *Spinner) Widget() *Widget {
-	return WidgetNewFromC(recv.native)
+	return WidgetNewFromC(unsafe.Pointer(recv.native))
 }
 
 // SpinnerAccessible is a wrapper around the C record GtkSpinnerAccessible.
@@ -10124,7 +10124,7 @@ func (recv *SpinnerAccessible) ToC() unsafe.Pointer {
 
 // WidgetAccessible upcasts to *WidgetAccessible
 func (recv *SpinnerAccessible) WidgetAccessible() *WidgetAccessible {
-	return WidgetAccessibleNewFromC(recv.native)
+	return WidgetAccessibleNewFromC(unsafe.Pointer(recv.native))
 }
 
 // Stack is a wrapper around the C record GtkStack.
@@ -10151,7 +10151,7 @@ func (recv *Stack) ToC() unsafe.Pointer {
 
 // Container upcasts to *Container
 func (recv *Stack) Container() *Container {
-	return ContainerNewFromC(recv.native)
+	return ContainerNewFromC(unsafe.Pointer(recv.native))
 }
 
 // Blacklisted : GtkStackAccessible
@@ -10180,7 +10180,7 @@ func (recv *StackSidebar) ToC() unsafe.Pointer {
 
 // Bin upcasts to *Bin
 func (recv *StackSidebar) Bin() *Bin {
-	return BinNewFromC(recv.native)
+	return BinNewFromC(unsafe.Pointer(recv.native))
 }
 
 // StackSwitcher is a wrapper around the C record GtkStackSwitcher.
@@ -10207,7 +10207,7 @@ func (recv *StackSwitcher) ToC() unsafe.Pointer {
 
 // Box upcasts to *Box
 func (recv *StackSwitcher) Box() *Box {
-	return BoxNewFromC(recv.native)
+	return BoxNewFromC(unsafe.Pointer(recv.native))
 }
 
 // StatusIcon is a wrapper around the C record GtkStatusIcon.
@@ -10235,7 +10235,7 @@ func (recv *StatusIcon) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *StatusIcon) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // Unsupported : gtk_status_icon_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon, GIcon*
@@ -10265,7 +10265,7 @@ func (recv *Statusbar) ToC() unsafe.Pointer {
 
 // Box upcasts to *Box
 func (recv *Statusbar) Box() *Box {
-	return BoxNewFromC(recv.native)
+	return BoxNewFromC(unsafe.Pointer(recv.native))
 }
 
 // StatusbarNew is a wrapper around the C function gtk_statusbar_new.
@@ -10345,7 +10345,7 @@ func (recv *StatusbarAccessible) ToC() unsafe.Pointer {
 
 // ContainerAccessible upcasts to *ContainerAccessible
 func (recv *StatusbarAccessible) ContainerAccessible() *ContainerAccessible {
-	return ContainerAccessibleNewFromC(recv.native)
+	return ContainerAccessibleNewFromC(unsafe.Pointer(recv.native))
 }
 
 // Style is a wrapper around the C record GtkStyle.
@@ -10401,7 +10401,7 @@ func (recv *Style) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *Style) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // StyleNew is a wrapper around the C function gtk_style_new.
@@ -10507,7 +10507,7 @@ func (recv *StyleContext) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *StyleContext) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // StyleContextNew is a wrapper around the C function gtk_style_context_new.
@@ -10600,7 +10600,7 @@ func (recv *StyleProperties) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *StyleProperties) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // StylePropertiesNew is a wrapper around the C function gtk_style_properties_new.
@@ -10643,7 +10643,7 @@ func (recv *Switch) ToC() unsafe.Pointer {
 
 // Widget upcasts to *Widget
 func (recv *Switch) Widget() *Widget {
-	return WidgetNewFromC(recv.native)
+	return WidgetNewFromC(unsafe.Pointer(recv.native))
 }
 
 // SwitchAccessible is a wrapper around the C record GtkSwitchAccessible.
@@ -10671,7 +10671,7 @@ func (recv *SwitchAccessible) ToC() unsafe.Pointer {
 
 // WidgetAccessible upcasts to *WidgetAccessible
 func (recv *SwitchAccessible) WidgetAccessible() *WidgetAccessible {
-	return WidgetAccessibleNewFromC(recv.native)
+	return WidgetAccessibleNewFromC(unsafe.Pointer(recv.native))
 }
 
 // Table is a wrapper around the C record GtkTable.
@@ -10699,7 +10699,7 @@ func (recv *Table) ToC() unsafe.Pointer {
 
 // Container upcasts to *Container
 func (recv *Table) Container() *Container {
-	return ContainerNewFromC(recv.native)
+	return ContainerNewFromC(unsafe.Pointer(recv.native))
 }
 
 // TableNew is a wrapper around the C function gtk_table_new.
@@ -10889,7 +10889,7 @@ func (recv *TearoffMenuItem) ToC() unsafe.Pointer {
 
 // MenuItem upcasts to *MenuItem
 func (recv *TearoffMenuItem) MenuItem() *MenuItem {
-	return MenuItemNewFromC(recv.native)
+	return MenuItemNewFromC(unsafe.Pointer(recv.native))
 }
 
 // TearoffMenuItemNew is a wrapper around the C function gtk_tearoff_menu_item_new.
@@ -10925,7 +10925,7 @@ func (recv *TextBuffer) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *TextBuffer) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // TextBufferNew is a wrapper around the C function gtk_text_buffer_new.
@@ -11578,7 +11578,7 @@ func (recv *TextCellAccessible) ToC() unsafe.Pointer {
 
 // RendererCellAccessible upcasts to *RendererCellAccessible
 func (recv *TextCellAccessible) RendererCellAccessible() *RendererCellAccessible {
-	return RendererCellAccessibleNewFromC(recv.native)
+	return RendererCellAccessibleNewFromC(unsafe.Pointer(recv.native))
 }
 
 // TextChildAnchor is a wrapper around the C record GtkTextChildAnchor.
@@ -11606,7 +11606,7 @@ func (recv *TextChildAnchor) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *TextChildAnchor) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // TextChildAnchorNew is a wrapper around the C function gtk_text_child_anchor_new.
@@ -11658,7 +11658,7 @@ func (recv *TextMark) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *TextMark) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // GetBuffer is a wrapper around the C function gtk_text_mark_get_buffer.
@@ -11736,7 +11736,7 @@ func (recv *TextTag) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *TextTag) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // TextTagNew is a wrapper around the C function gtk_text_tag_new.
@@ -11794,7 +11794,7 @@ func (recv *TextTagTable) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *TextTagTable) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // TextTagTableNew is a wrapper around the C function gtk_text_tag_table_new.
@@ -11870,7 +11870,7 @@ func (recv *TextView) ToC() unsafe.Pointer {
 
 // Container upcasts to *Container
 func (recv *TextView) Container() *Container {
-	return ContainerNewFromC(recv.native)
+	return ContainerNewFromC(unsafe.Pointer(recv.native))
 }
 
 // TextViewNew is a wrapper around the C function gtk_text_view_new.
@@ -12431,7 +12431,7 @@ func (recv *TextViewAccessible) ToC() unsafe.Pointer {
 
 // ContainerAccessible upcasts to *ContainerAccessible
 func (recv *TextViewAccessible) ContainerAccessible() *ContainerAccessible {
-	return ContainerAccessibleNewFromC(recv.native)
+	return ContainerAccessibleNewFromC(unsafe.Pointer(recv.native))
 }
 
 // ThemingEngine is a wrapper around the C record GtkThemingEngine.
@@ -12459,7 +12459,7 @@ func (recv *ThemingEngine) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *ThemingEngine) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // GetScreen is a wrapper around the C function gtk_theming_engine_get_screen.
@@ -12495,7 +12495,7 @@ func (recv *ToggleAction) ToC() unsafe.Pointer {
 
 // Action upcasts to *Action
 func (recv *ToggleAction) Action() *Action {
-	return ActionNewFromC(recv.native)
+	return ActionNewFromC(unsafe.Pointer(recv.native))
 }
 
 // ToggleButton is a wrapper around the C record GtkToggleButton.
@@ -12523,7 +12523,7 @@ func (recv *ToggleButton) ToC() unsafe.Pointer {
 
 // Button upcasts to *Button
 func (recv *ToggleButton) Button() *Button {
-	return ButtonNewFromC(recv.native)
+	return ButtonNewFromC(unsafe.Pointer(recv.native))
 }
 
 // ToggleButtonNew is a wrapper around the C function gtk_toggle_button_new.
@@ -12642,7 +12642,7 @@ func (recv *ToggleButtonAccessible) ToC() unsafe.Pointer {
 
 // ButtonAccessible upcasts to *ButtonAccessible
 func (recv *ToggleButtonAccessible) ButtonAccessible() *ButtonAccessible {
-	return ButtonAccessibleNewFromC(recv.native)
+	return ButtonAccessibleNewFromC(unsafe.Pointer(recv.native))
 }
 
 // ToggleToolButton is a wrapper around the C record GtkToggleToolButton.
@@ -12670,7 +12670,7 @@ func (recv *ToggleToolButton) ToC() unsafe.Pointer {
 
 // ToolButton upcasts to *ToolButton
 func (recv *ToggleToolButton) ToolButton() *ToolButton {
-	return ToolButtonNewFromC(recv.native)
+	return ToolButtonNewFromC(unsafe.Pointer(recv.native))
 }
 
 // ToolButton is a wrapper around the C record GtkToolButton.
@@ -12698,7 +12698,7 @@ func (recv *ToolButton) ToC() unsafe.Pointer {
 
 // ToolItem upcasts to *ToolItem
 func (recv *ToolButton) ToolItem() *ToolItem {
-	return ToolItemNewFromC(recv.native)
+	return ToolItemNewFromC(unsafe.Pointer(recv.native))
 }
 
 // ToolItem is a wrapper around the C record GtkToolItem.
@@ -12726,7 +12726,7 @@ func (recv *ToolItem) ToC() unsafe.Pointer {
 
 // Bin upcasts to *Bin
 func (recv *ToolItem) Bin() *Bin {
-	return BinNewFromC(recv.native)
+	return BinNewFromC(unsafe.Pointer(recv.native))
 }
 
 // ToolItemGroup is a wrapper around the C record GtkToolItemGroup.
@@ -12754,7 +12754,7 @@ func (recv *ToolItemGroup) ToC() unsafe.Pointer {
 
 // Container upcasts to *Container
 func (recv *ToolItemGroup) Container() *Container {
-	return ContainerNewFromC(recv.native)
+	return ContainerNewFromC(unsafe.Pointer(recv.native))
 }
 
 // ToolPalette is a wrapper around the C record GtkToolPalette.
@@ -12782,7 +12782,7 @@ func (recv *ToolPalette) ToC() unsafe.Pointer {
 
 // Container upcasts to *Container
 func (recv *ToolPalette) Container() *Container {
-	return ContainerNewFromC(recv.native)
+	return ContainerNewFromC(unsafe.Pointer(recv.native))
 }
 
 // Toolbar is a wrapper around the C record GtkToolbar.
@@ -12810,7 +12810,7 @@ func (recv *Toolbar) ToC() unsafe.Pointer {
 
 // Container upcasts to *Container
 func (recv *Toolbar) Container() *Container {
-	return ContainerNewFromC(recv.native)
+	return ContainerNewFromC(unsafe.Pointer(recv.native))
 }
 
 // ToolbarNew is a wrapper around the C function gtk_toolbar_new.
@@ -12892,7 +12892,7 @@ func (recv *Tooltip) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *Tooltip) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // ToplevelAccessible is a wrapper around the C record GtkToplevelAccessible.
@@ -12920,7 +12920,7 @@ func (recv *ToplevelAccessible) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *ToplevelAccessible) Object() *atk.Object {
-	return atk.ObjectNewFromC(recv.native)
+	return atk.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // GetChildren is a wrapper around the C function gtk_toplevel_accessible_get_children.
@@ -12956,7 +12956,7 @@ func (recv *TreeModelFilter) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *TreeModelFilter) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // TreeModelSort is a wrapper around the C record GtkTreeModelSort.
@@ -12984,7 +12984,7 @@ func (recv *TreeModelSort) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *TreeModelSort) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // ClearCache is a wrapper around the C function gtk_tree_model_sort_clear_cache.
@@ -13075,7 +13075,7 @@ func (recv *TreeSelection) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *TreeSelection) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // GetMode is a wrapper around the C function gtk_tree_selection_get_mode.
@@ -13223,7 +13223,7 @@ func (recv *TreeStore) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *TreeStore) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // Unsupported : gtk_tree_store_new : unsupported parameter ... : varargs
@@ -13384,7 +13384,7 @@ func (recv *TreeView) ToC() unsafe.Pointer {
 
 // Container upcasts to *Container
 func (recv *TreeView) Container() *Container {
-	return ContainerNewFromC(recv.native)
+	return ContainerNewFromC(unsafe.Pointer(recv.native))
 }
 
 // TreeViewNew is a wrapper around the C function gtk_tree_view_new.
@@ -13828,7 +13828,7 @@ func (recv *TreeViewAccessible) ToC() unsafe.Pointer {
 
 // ContainerAccessible upcasts to *ContainerAccessible
 func (recv *TreeViewAccessible) ContainerAccessible() *ContainerAccessible {
-	return ContainerAccessibleNewFromC(recv.native)
+	return ContainerAccessibleNewFromC(unsafe.Pointer(recv.native))
 }
 
 // TreeViewColumn is a wrapper around the C record GtkTreeViewColumn.
@@ -13856,7 +13856,7 @@ func (recv *TreeViewColumn) ToC() unsafe.Pointer {
 
 // InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *TreeViewColumn) InitiallyUnowned() *gobject.InitiallyUnowned {
-	return gobject.InitiallyUnownedNewFromC(recv.native)
+	return gobject.InitiallyUnownedNewFromC(unsafe.Pointer(recv.native))
 }
 
 // TreeViewColumnNew is a wrapper around the C function gtk_tree_view_column_new.
@@ -14258,7 +14258,7 @@ func (recv *UIManager) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *UIManager) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // VBox is a wrapper around the C record GtkVBox.
@@ -14285,7 +14285,7 @@ func (recv *VBox) ToC() unsafe.Pointer {
 
 // Box upcasts to *Box
 func (recv *VBox) Box() *Box {
-	return BoxNewFromC(recv.native)
+	return BoxNewFromC(unsafe.Pointer(recv.native))
 }
 
 // VBoxNew is a wrapper around the C function gtk_vbox_new.
@@ -14325,7 +14325,7 @@ func (recv *VButtonBox) ToC() unsafe.Pointer {
 
 // ButtonBox upcasts to *ButtonBox
 func (recv *VButtonBox) ButtonBox() *ButtonBox {
-	return ButtonBoxNewFromC(recv.native)
+	return ButtonBoxNewFromC(unsafe.Pointer(recv.native))
 }
 
 // VButtonBoxNew is a wrapper around the C function gtk_vbutton_box_new.
@@ -14360,7 +14360,7 @@ func (recv *VPaned) ToC() unsafe.Pointer {
 
 // Paned upcasts to *Paned
 func (recv *VPaned) Paned() *Paned {
-	return PanedNewFromC(recv.native)
+	return PanedNewFromC(unsafe.Pointer(recv.native))
 }
 
 // VPanedNew is a wrapper around the C function gtk_vpaned_new.
@@ -14395,7 +14395,7 @@ func (recv *VScale) ToC() unsafe.Pointer {
 
 // Scale upcasts to *Scale
 func (recv *VScale) Scale() *Scale {
-	return ScaleNewFromC(recv.native)
+	return ScaleNewFromC(unsafe.Pointer(recv.native))
 }
 
 // VScaleNew is a wrapper around the C function gtk_vscale_new.
@@ -14446,7 +14446,7 @@ func (recv *VScrollbar) ToC() unsafe.Pointer {
 
 // Scrollbar upcasts to *Scrollbar
 func (recv *VScrollbar) Scrollbar() *Scrollbar {
-	return ScrollbarNewFromC(recv.native)
+	return ScrollbarNewFromC(unsafe.Pointer(recv.native))
 }
 
 // VScrollbarNew is a wrapper around the C function gtk_vscrollbar_new.
@@ -14483,7 +14483,7 @@ func (recv *VSeparator) ToC() unsafe.Pointer {
 
 // Separator upcasts to *Separator
 func (recv *VSeparator) Separator() *Separator {
-	return SeparatorNewFromC(recv.native)
+	return SeparatorNewFromC(unsafe.Pointer(recv.native))
 }
 
 // VSeparatorNew is a wrapper around the C function gtk_vseparator_new.
@@ -14519,7 +14519,7 @@ func (recv *Viewport) ToC() unsafe.Pointer {
 
 // Bin upcasts to *Bin
 func (recv *Viewport) Bin() *Bin {
-	return BinNewFromC(recv.native)
+	return BinNewFromC(unsafe.Pointer(recv.native))
 }
 
 // ViewportNew is a wrapper around the C function gtk_viewport_new.
@@ -14609,7 +14609,7 @@ func (recv *VolumeButton) ToC() unsafe.Pointer {
 
 // ScaleButton upcasts to *ScaleButton
 func (recv *VolumeButton) ScaleButton() *ScaleButton {
-	return ScaleButtonNewFromC(recv.native)
+	return ScaleButtonNewFromC(unsafe.Pointer(recv.native))
 }
 
 // Widget is a wrapper around the C record GtkWidget.
@@ -14637,7 +14637,7 @@ func (recv *Widget) ToC() unsafe.Pointer {
 
 // InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *Widget) InitiallyUnowned() *gobject.InitiallyUnowned {
-	return gobject.InitiallyUnownedNewFromC(recv.native)
+	return gobject.InitiallyUnownedNewFromC(unsafe.Pointer(recv.native))
 }
 
 // Unsupported : gtk_widget_new : unsupported parameter type : no type generator for GType, GType
@@ -15728,7 +15728,7 @@ func (recv *WidgetAccessible) ToC() unsafe.Pointer {
 
 // Accessible upcasts to *Accessible
 func (recv *WidgetAccessible) Accessible() *Accessible {
-	return AccessibleNewFromC(recv.native)
+	return AccessibleNewFromC(unsafe.Pointer(recv.native))
 }
 
 // Window is a wrapper around the C record GtkWindow.
@@ -15756,7 +15756,7 @@ func (recv *Window) ToC() unsafe.Pointer {
 
 // Bin upcasts to *Bin
 func (recv *Window) Bin() *Bin {
-	return BinNewFromC(recv.native)
+	return BinNewFromC(unsafe.Pointer(recv.native))
 }
 
 // WindowNew is a wrapper around the C function gtk_window_new.
@@ -16318,7 +16318,7 @@ func (recv *WindowAccessible) ToC() unsafe.Pointer {
 
 // ContainerAccessible upcasts to *ContainerAccessible
 func (recv *WindowAccessible) ContainerAccessible() *ContainerAccessible {
-	return ContainerAccessibleNewFromC(recv.native)
+	return ContainerAccessibleNewFromC(unsafe.Pointer(recv.native))
 }
 
 // WindowGroup is a wrapper around the C record GtkWindowGroup.
@@ -16346,7 +16346,7 @@ func (recv *WindowGroup) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *WindowGroup) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // WindowGroupNew is a wrapper around the C function gtk_window_group_new.

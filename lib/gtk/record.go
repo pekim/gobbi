@@ -3144,7 +3144,7 @@ func (recv *ContainerClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Blacklisted : gtk_container_class_find_child_property
+// Unsupported : gtk_container_class_find_child_property : return type : Blacklisted record : GParamSpec
 
 // HandleBorderWidth is a wrapper around the C function gtk_container_class_handle_border_width.
 func (recv *ContainerClass) HandleBorderWidth() {
@@ -3153,16 +3153,7 @@ func (recv *ContainerClass) HandleBorderWidth() {
 	return
 }
 
-// InstallChildProperty is a wrapper around the C function gtk_container_class_install_child_property.
-func (recv *ContainerClass) InstallChildProperty(propertyId uint32, pspec *gobject.ParamSpec) {
-	c_property_id := (C.guint)(propertyId)
-
-	c_pspec := (*C.GParamSpec)(pspec.ToC())
-
-	C.gtk_container_class_install_child_property((*C.GtkContainerClass)(recv.native), c_property_id, c_pspec)
-
-	return
-}
+// Unsupported : gtk_container_class_install_child_property : unsupported parameter pspec : Blacklisted record : GParamSpec
 
 // Unsupported : gtk_container_class_list_child_properties : no return type
 
@@ -13881,16 +13872,9 @@ func (recv *WidgetClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// InstallStyleProperty is a wrapper around the C function gtk_widget_class_install_style_property.
-func (recv *WidgetClass) InstallStyleProperty(pspec *gobject.ParamSpec) {
-	c_pspec := (*C.GParamSpec)(pspec.ToC())
+// Unsupported : gtk_widget_class_install_style_property : unsupported parameter pspec : Blacklisted record : GParamSpec
 
-	C.gtk_widget_class_install_style_property((*C.GtkWidgetClass)(recv.native), c_pspec)
-
-	return
-}
-
-// Unsupported : gtk_widget_class_install_style_property_parser : unsupported parameter parser : no type generator for RcPropertyParser, GtkRcPropertyParser
+// Unsupported : gtk_widget_class_install_style_property_parser : unsupported parameter pspec : Blacklisted record : GParamSpec
 
 // WidgetClassPrivate is a wrapper around the C record GtkWidgetClassPrivate.
 type WidgetClassPrivate struct {

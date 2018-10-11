@@ -15,7 +15,3 @@ import "C"
 // Unsupported : g_object_new_with_properties : unsupported parameter object_type : no type generator for GType, GType
 
 // Unsupported : g_object_newv : unsupported parameter object_type : no type generator for GType, GType
-
-// Unsupported : g_type_module_register_enum : no return generator
-
-// Unsupported : g_type_module_register_flags : no return generator

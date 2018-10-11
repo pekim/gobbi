@@ -189,7 +189,7 @@ func (recv *InetAddressMask) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *InetAddressMask) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // InetAddressMaskNew is a wrapper around the C function g_inet_address_mask_new.
@@ -327,7 +327,7 @@ func (recv *Menu) ToC() unsafe.Pointer {
 
 // MenuModel upcasts to *MenuModel
 func (recv *Menu) MenuModel() *MenuModel {
-	return MenuModelNewFromC(recv.native)
+	return MenuModelNewFromC(unsafe.Pointer(recv.native))
 }
 
 // MenuNew is a wrapper around the C function g_menu_new.
@@ -525,7 +525,7 @@ func (recv *MenuAttributeIter) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *MenuAttributeIter) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // GetName is a wrapper around the C function g_menu_attribute_iter_get_name.
@@ -571,7 +571,7 @@ func (recv *MenuItem) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *MenuItem) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // MenuItemNew is a wrapper around the C function g_menu_item_new.
@@ -697,7 +697,7 @@ func (recv *MenuLinkIter) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *MenuLinkIter) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // GetName is a wrapper around the C function g_menu_link_iter_get_name.
@@ -751,7 +751,7 @@ func (recv *MenuModel) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *MenuModel) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // Unsupported : g_menu_model_get_item_attribute : unsupported parameter ... : varargs

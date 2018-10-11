@@ -44,6 +44,29 @@
     <class name="InitiallyUnowned" fieldsPrivate="true"/>
     <class name="Object" fieldsPrivate="true"/>
 
+    <class blacklist="true" name="ParamSpec"/>
+    <class blacklist="true" name="ParamSpecBoolean"/>
+    <class blacklist="true" name="ParamSpecBoxed"/>
+    <class blacklist="true" name="ParamSpecChar"/>
+    <class blacklist="true" name="ParamSpecDouble"/>
+    <class blacklist="true" name="ParamSpecEnum"/>
+    <class blacklist="true" name="ParamSpecFlags"/>
+    <class blacklist="true" name="ParamSpecFloat"/>
+    <class blacklist="true" name="ParamSpecInt"/>
+    <class blacklist="true" name="ParamSpecInt64"/>
+    <class blacklist="true" name="ParamSpecLong"/>
+    <class blacklist="true" name="ParamSpecObject"/>
+    <class blacklist="true" name="ParamSpecParam"/>
+    <class blacklist="true" name="ParamSpecPointer"/>
+    <class blacklist="true" name="ParamSpecString"/>
+    <class blacklist="true" name="ParamSpecUChar"/>
+    <class blacklist="true" name="ParamSpecUInt"/>
+    <class blacklist="true" name="ParamSpecUInt64"/>
+    <class blacklist="true" name="ParamSpecULong"/>
+    <class blacklist="true" name="ParamSpecUnichar"/>
+    <class blacklist="true" name="ParamSpecValueArray"/>
+    <class blacklist="true" name="TypeModule"/>
+
     <!--<record name="Closure" blacklist="true">-->
       <!--&lt;!&ndash;-->
       <!--<method blacklist="true" c:identifier="g_closure_add_finalize_notifier"/>-->

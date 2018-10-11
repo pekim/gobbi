@@ -100,6 +100,16 @@ func RcParseColorFull(scanner *glib.Scanner, style *RcStyle) (uint32, *gdk.Color
 
 // Unsupported : gtk_rc_parse_state : unsupported parameter state : GtkStateType* with indirection level of 1
 
+// Unsupported : gtk_rc_property_parse_border : unsupported parameter pspec : Blacklisted record : GParamSpec
+
+// Unsupported : gtk_rc_property_parse_color : unsupported parameter pspec : Blacklisted record : GParamSpec
+
+// Unsupported : gtk_rc_property_parse_enum : unsupported parameter pspec : Blacklisted record : GParamSpec
+
+// Unsupported : gtk_rc_property_parse_flags : unsupported parameter pspec : Blacklisted record : GParamSpec
+
+// Unsupported : gtk_rc_property_parse_requisition : unsupported parameter pspec : Blacklisted record : GParamSpec
+
 // Unsupported : gtk_rc_set_default_files : unsupported parameter filenames : no param type
 
 // Unsupported : gtk_render_background_get_clip : unsupported parameter out_clip : Blacklisted record : GdkRectangle

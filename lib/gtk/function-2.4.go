@@ -80,6 +80,16 @@ func FileChooserErrorQuark() glib.Quark {
 
 // Unsupported : gtk_rc_parse_state : unsupported parameter state : GtkStateType* with indirection level of 1
 
+// Unsupported : gtk_rc_property_parse_border : unsupported parameter pspec : Blacklisted record : GParamSpec
+
+// Unsupported : gtk_rc_property_parse_color : unsupported parameter pspec : Blacklisted record : GParamSpec
+
+// Unsupported : gtk_rc_property_parse_enum : unsupported parameter pspec : Blacklisted record : GParamSpec
+
+// Unsupported : gtk_rc_property_parse_flags : unsupported parameter pspec : Blacklisted record : GParamSpec
+
+// Unsupported : gtk_rc_property_parse_requisition : unsupported parameter pspec : Blacklisted record : GParamSpec
+
 // RcResetStyles is a wrapper around the C function gtk_rc_reset_styles.
 func RcResetStyles(settings *Settings) {
 	c_settings := (*C.GtkSettings)(settings.ToC())

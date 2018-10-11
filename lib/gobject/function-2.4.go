@@ -3,8 +3,6 @@
 
 package gobject
 
-import "unsafe"
-
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <glib-object.h>
 // #include <stdlib.h>
@@ -40,34 +38,63 @@ import "C"
 
 // Unsupported : g_gtype_get_type : no return generator
 
+// Unsupported : g_param_spec_boolean : return type : Blacklisted record : GParamSpec
+
 // Unsupported : g_param_spec_boxed : unsupported parameter boxed_type : no type generator for GType, GType
+
+// Unsupported : g_param_spec_char : return type : Blacklisted record : GParamSpec
+
+// Unsupported : g_param_spec_double : return type : Blacklisted record : GParamSpec
 
 // Unsupported : g_param_spec_enum : unsupported parameter enum_type : no type generator for GType, GType
 
 // Unsupported : g_param_spec_flags : unsupported parameter flags_type : no type generator for GType, GType
 
+// Unsupported : g_param_spec_float : return type : Blacklisted record : GParamSpec
+
 // Unsupported : g_param_spec_gtype : unsupported parameter is_a_type : no type generator for GType, GType
+
+// Unsupported : g_param_spec_int : return type : Blacklisted record : GParamSpec
+
+// Unsupported : g_param_spec_int64 : return type : Blacklisted record : GParamSpec
+
+// Unsupported : g_param_spec_long : return type : Blacklisted record : GParamSpec
 
 // Unsupported : g_param_spec_object : unsupported parameter object_type : no type generator for GType, GType
 
-// ParamSpecOverride is a wrapper around the C function g_param_spec_override.
-func ParamSpecOverride(name string, overridden *ParamSpec) *ParamSpec {
-	c_name := C.CString(name)
-	defer C.free(unsafe.Pointer(c_name))
-
-	c_overridden := (*C.GParamSpec)(overridden.ToC())
-
-	retC := C.g_param_spec_override(c_name, c_overridden)
-	retGo := ParamSpecNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Unsupported : g_param_spec_override : unsupported parameter overridden : Blacklisted record : GParamSpec
 
 // Unsupported : g_param_spec_param : unsupported parameter param_type : no type generator for GType, GType
+
+// Unsupported : g_param_spec_pointer : return type : Blacklisted record : GParamSpec
+
+// Unsupported : g_param_spec_string : return type : Blacklisted record : GParamSpec
+
+// Unsupported : g_param_spec_uchar : return type : Blacklisted record : GParamSpec
+
+// Unsupported : g_param_spec_uint : return type : Blacklisted record : GParamSpec
+
+// Unsupported : g_param_spec_uint64 : return type : Blacklisted record : GParamSpec
+
+// Unsupported : g_param_spec_ulong : return type : Blacklisted record : GParamSpec
+
+// Unsupported : g_param_spec_unichar : return type : Blacklisted record : GParamSpec
+
+// Unsupported : g_param_spec_value_array : unsupported parameter element_spec : Blacklisted record : GParamSpec
 
 // Unsupported : g_param_spec_variant : unsupported parameter type : Blacklisted record : GVariantType
 
 // Unsupported : g_param_type_register_static : no return generator
+
+// Unsupported : g_param_value_convert : unsupported parameter pspec : Blacklisted record : GParamSpec
+
+// Unsupported : g_param_value_defaults : unsupported parameter pspec : Blacklisted record : GParamSpec
+
+// Unsupported : g_param_value_set_default : unsupported parameter pspec : Blacklisted record : GParamSpec
+
+// Unsupported : g_param_value_validate : unsupported parameter pspec : Blacklisted record : GParamSpec
+
+// Unsupported : g_param_values_cmp : unsupported parameter pspec : Blacklisted record : GParamSpec
 
 // Unsupported : g_pointer_type_register_static : no return generator
 

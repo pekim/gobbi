@@ -39,7 +39,7 @@ func (recv *AppLaunchContext) ToC() unsafe.Pointer {
 
 // AppLaunchContext upcasts to *AppLaunchContext
 func (recv *AppLaunchContext) AppLaunchContext() *gio.AppLaunchContext {
-	return gio.AppLaunchContextNewFromC(recv.native)
+	return gio.AppLaunchContextNewFromC(unsafe.Pointer(recv.native))
 }
 
 // Cursor is a wrapper around the C record GdkCursor.
@@ -65,7 +65,7 @@ func (recv *Cursor) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *Cursor) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // CursorNew is a wrapper around the C function gdk_cursor_new.
@@ -116,7 +116,7 @@ func (recv *Device) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *Device) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // Unsupported : gdk_device_get_axis : unsupported parameter axes : no param type
@@ -190,7 +190,7 @@ func (recv *DeviceManager) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *DeviceManager) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // Display is a wrapper around the C record GdkDisplay.
@@ -216,7 +216,7 @@ func (recv *Display) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *Display) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // DeviceIsGrabbed is a wrapper around the C function gdk_display_device_is_grabbed.
@@ -252,7 +252,7 @@ func (recv *DisplayManager) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *DisplayManager) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // DragContext is a wrapper around the C record GdkDragContext.
@@ -278,7 +278,7 @@ func (recv *DragContext) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *DragContext) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // GetDevice is a wrapper around the C function gdk_drag_context_get_device.
@@ -321,7 +321,7 @@ func (recv *FrameClock) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *FrameClock) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // GLContext is a wrapper around the C record GdkGLContext.
@@ -347,7 +347,7 @@ func (recv *GLContext) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *GLContext) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // Keymap is a wrapper around the C record GdkKeymap.
@@ -373,7 +373,7 @@ func (recv *Keymap) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *Keymap) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // GetDirection is a wrapper around the C function gdk_keymap_get_direction.
@@ -423,7 +423,7 @@ func (recv *Screen) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *Screen) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // Visual is a wrapper around the C record GdkVisual.
@@ -449,7 +449,7 @@ func (recv *Visual) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *Visual) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // Window is a wrapper around the C record GdkWindow.
@@ -475,7 +475,7 @@ func (recv *Window) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *Window) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // WindowNew is a wrapper around the C function gdk_window_new.

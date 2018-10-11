@@ -105,6 +105,14 @@ func (r *Record) generateUpcast(g *jen.Group) {
 
 	qname := QNameNew(r.Namespace, r.ParentName)
 
+	parent, found := qname.ns.recordOrClassRecordForName(qname.name)
+	if !found {
+		panic(fmt.Sprintf("Failed to find parent %s for %s", r.ParentName, r.Name))
+	}
+	if parent.Blacklist {
+		return
+	}
+
 	g.Commentf("%s upcasts to *%s", qname.name, qname.name)
 
 	g.
@@ -120,21 +128,20 @@ func (r *Record) generateUpcast(g *jen.Group) {
 			}
 		}).
 		BlockFunc(func(g *jen.Group) { // body
-			parent, found := qname.ns.recordOrClassRecordForName(qname.name)
-			if !found {
-				panic(fmt.Sprintf("Failed to find parent %s for %s", r.ParentName, r.Name))
-			}
+			nativeAsUnsafePointer := jen.
+				Qual("unsafe", "Pointer").
+				Call(jen.Id("recv").Op(".").Id("native"))
 
 			if qname.sameNamespace {
 				g.
 					Return().
 					Id(parent.newFromCFuncName).
-					Call(jen.Id("recv").Op(".").Id("native"))
+					Call(nativeAsUnsafePointer)
 			} else {
 				g.
 					Return().
 					Qual(qname.ns.fullGoPackageName, parent.newFromCFuncName).
-					Call(jen.Id("recv").Op(".").Id("native"))
+					Call(nativeAsUnsafePointer)
 			}
 		}).
 		Line()

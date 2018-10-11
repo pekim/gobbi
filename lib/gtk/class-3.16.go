@@ -73,7 +73,7 @@ func (recv *GLArea) ToC() unsafe.Pointer {
 
 // Widget upcasts to *Widget
 func (recv *GLArea) Widget() *Widget {
-	return WidgetNewFromC(recv.native)
+	return WidgetNewFromC(unsafe.Pointer(recv.native))
 }
 
 // GLAreaNew is a wrapper around the C function gtk_gl_area_new.

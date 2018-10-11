@@ -69,7 +69,7 @@ func (recv *FileChooserNative) ToC() unsafe.Pointer {
 
 // NativeDialog upcasts to *NativeDialog
 func (recv *FileChooserNative) NativeDialog() *NativeDialog {
-	return NativeDialogNewFromC(recv.native)
+	return NativeDialogNewFromC(unsafe.Pointer(recv.native))
 }
 
 // FileChooserNativeNew is a wrapper around the C function gtk_file_chooser_native_new.
@@ -175,7 +175,7 @@ func (recv *NativeDialog) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *NativeDialog) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // Destroy is a wrapper around the C function gtk_native_dialog_destroy.
@@ -291,7 +291,7 @@ func (recv *PadController) ToC() unsafe.Pointer {
 
 // EventController upcasts to *EventController
 func (recv *PadController) EventController() *EventController {
-	return EventControllerNewFromC(recv.native)
+	return EventControllerNewFromC(unsafe.Pointer(recv.native))
 }
 
 // Unsupported : gtk_pad_controller_new : unsupported parameter group : no type generator for Gio.ActionGroup, GActionGroup*
@@ -356,7 +356,7 @@ func (recv *ShortcutLabel) ToC() unsafe.Pointer {
 
 // Box upcasts to *Box
 func (recv *ShortcutLabel) Box() *Box {
-	return BoxNewFromC(recv.native)
+	return BoxNewFromC(unsafe.Pointer(recv.native))
 }
 
 // ShortcutsGroup is a wrapper around the C record GtkShortcutsGroup.
@@ -382,7 +382,7 @@ func (recv *ShortcutsGroup) ToC() unsafe.Pointer {
 
 // Box upcasts to *Box
 func (recv *ShortcutsGroup) Box() *Box {
-	return BoxNewFromC(recv.native)
+	return BoxNewFromC(unsafe.Pointer(recv.native))
 }
 
 // ShortcutsSection is a wrapper around the C record GtkShortcutsSection.
@@ -408,7 +408,7 @@ func (recv *ShortcutsSection) ToC() unsafe.Pointer {
 
 // Box upcasts to *Box
 func (recv *ShortcutsSection) Box() *Box {
-	return BoxNewFromC(recv.native)
+	return BoxNewFromC(unsafe.Pointer(recv.native))
 }
 
 // ShortcutsShortcut is a wrapper around the C record GtkShortcutsShortcut.
@@ -434,7 +434,7 @@ func (recv *ShortcutsShortcut) ToC() unsafe.Pointer {
 
 // Box upcasts to *Box
 func (recv *ShortcutsShortcut) Box() *Box {
-	return BoxNewFromC(recv.native)
+	return BoxNewFromC(unsafe.Pointer(recv.native))
 }
 
 // ShortcutsWindow is a wrapper around the C record GtkShortcutsWindow.
@@ -461,7 +461,7 @@ func (recv *ShortcutsWindow) ToC() unsafe.Pointer {
 
 // Window upcasts to *Window
 func (recv *ShortcutsWindow) Window() *Window {
-	return WindowNewFromC(recv.native)
+	return WindowNewFromC(unsafe.Pointer(recv.native))
 }
 
 // Unsupported : gtk_status_icon_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon, GIcon*

@@ -48,7 +48,7 @@ func (recv *AppLaunchContext) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *AppLaunchContext) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // AppLaunchContextNew is a wrapper around the C function g_app_launch_context_new.
@@ -98,7 +98,7 @@ func (recv *ApplicationCommandLine) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *ApplicationCommandLine) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // BufferedInputStream is a wrapper around the C record GBufferedInputStream.
@@ -126,7 +126,7 @@ func (recv *BufferedInputStream) ToC() unsafe.Pointer {
 
 // FilterInputStream upcasts to *FilterInputStream
 func (recv *BufferedInputStream) FilterInputStream() *FilterInputStream {
-	return FilterInputStreamNewFromC(recv.native)
+	return FilterInputStreamNewFromC(unsafe.Pointer(recv.native))
 }
 
 // BufferedInputStreamNew is a wrapper around the C function g_buffered_input_stream_new.
@@ -245,7 +245,7 @@ func (recv *BufferedOutputStream) ToC() unsafe.Pointer {
 
 // FilterOutputStream upcasts to *FilterOutputStream
 func (recv *BufferedOutputStream) FilterOutputStream() *FilterOutputStream {
-	return FilterOutputStreamNewFromC(recv.native)
+	return FilterOutputStreamNewFromC(unsafe.Pointer(recv.native))
 }
 
 // BufferedOutputStreamNew is a wrapper around the C function g_buffered_output_stream_new.
@@ -328,7 +328,7 @@ func (recv *BytesIcon) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *BytesIcon) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // Cancellable is a wrapper around the C record GCancellable.
@@ -356,7 +356,7 @@ func (recv *Cancellable) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *Cancellable) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // CancellableNew is a wrapper around the C function g_cancellable_new.
@@ -449,7 +449,7 @@ func (recv *CharsetConverter) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *CharsetConverter) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // ConverterInputStream is a wrapper around the C record GConverterInputStream.
@@ -477,7 +477,7 @@ func (recv *ConverterInputStream) ToC() unsafe.Pointer {
 
 // FilterInputStream upcasts to *FilterInputStream
 func (recv *ConverterInputStream) FilterInputStream() *FilterInputStream {
-	return FilterInputStreamNewFromC(recv.native)
+	return FilterInputStreamNewFromC(unsafe.Pointer(recv.native))
 }
 
 // Unsupported : g_converter_input_stream_new : unsupported parameter converter : no type generator for Converter, GConverter*
@@ -507,7 +507,7 @@ func (recv *ConverterOutputStream) ToC() unsafe.Pointer {
 
 // FilterOutputStream upcasts to *FilterOutputStream
 func (recv *ConverterOutputStream) FilterOutputStream() *FilterOutputStream {
-	return FilterOutputStreamNewFromC(recv.native)
+	return FilterOutputStreamNewFromC(unsafe.Pointer(recv.native))
 }
 
 // Unsupported : g_converter_output_stream_new : unsupported parameter converter : no type generator for Converter, GConverter*
@@ -535,7 +535,7 @@ func (recv *DBusActionGroup) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *DBusActionGroup) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // Unsupported : g_dbus_connection_new_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
@@ -565,7 +565,7 @@ func (recv *DBusMenuModel) ToC() unsafe.Pointer {
 
 // MenuModel upcasts to *MenuModel
 func (recv *DBusMenuModel) MenuModel() *MenuModel {
-	return MenuModelNewFromC(recv.native)
+	return MenuModelNewFromC(unsafe.Pointer(recv.native))
 }
 
 // Unsupported : g_dbus_message_new_from_blob : unsupported parameter blob : no param type
@@ -607,7 +607,7 @@ func (recv *DataInputStream) ToC() unsafe.Pointer {
 
 // BufferedInputStream upcasts to *BufferedInputStream
 func (recv *DataInputStream) BufferedInputStream() *BufferedInputStream {
-	return BufferedInputStreamNewFromC(recv.native)
+	return BufferedInputStreamNewFromC(unsafe.Pointer(recv.native))
 }
 
 // DataInputStreamNew is a wrapper around the C function g_data_input_stream_new.
@@ -825,7 +825,7 @@ func (recv *DataOutputStream) ToC() unsafe.Pointer {
 
 // FilterOutputStream upcasts to *FilterOutputStream
 func (recv *DataOutputStream) FilterOutputStream() *FilterOutputStream {
-	return FilterOutputStreamNewFromC(recv.native)
+	return FilterOutputStreamNewFromC(unsafe.Pointer(recv.native))
 }
 
 // DataOutputStreamNew is a wrapper around the C function g_data_output_stream_new.
@@ -1031,7 +1031,7 @@ func (recv *DesktopAppInfo) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *DesktopAppInfo) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // DesktopAppInfoNew is a wrapper around the C function g_desktop_app_info_new.
@@ -1105,7 +1105,7 @@ func (recv *Emblem) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *Emblem) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // Unsupported : g_emblem_new : unsupported parameter icon : no type generator for Icon, GIcon*
@@ -1137,7 +1137,7 @@ func (recv *EmblemedIcon) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *EmblemedIcon) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // Unsupported : g_emblemed_icon_new : unsupported parameter icon : no type generator for Icon, GIcon*
@@ -1167,7 +1167,7 @@ func (recv *FileEnumerator) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *FileEnumerator) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // Close is a wrapper around the C function g_file_enumerator_close.
@@ -1263,7 +1263,7 @@ func (recv *FileIOStream) ToC() unsafe.Pointer {
 
 // IOStream upcasts to *IOStream
 func (recv *FileIOStream) IOStream() *IOStream {
-	return IOStreamNewFromC(recv.native)
+	return IOStreamNewFromC(unsafe.Pointer(recv.native))
 }
 
 // FileIcon is a wrapper around the C record GFileIcon.
@@ -1289,7 +1289,7 @@ func (recv *FileIcon) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *FileIcon) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // Unsupported : g_file_icon_new : unsupported parameter file : no type generator for File, GFile*
@@ -1319,7 +1319,7 @@ func (recv *FileInfo) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *FileInfo) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // FileInfoNew is a wrapper around the C function g_file_info_new.
@@ -1874,7 +1874,7 @@ func (recv *FileInputStream) ToC() unsafe.Pointer {
 
 // InputStream upcasts to *InputStream
 func (recv *FileInputStream) InputStream() *InputStream {
-	return InputStreamNewFromC(recv.native)
+	return InputStreamNewFromC(unsafe.Pointer(recv.native))
 }
 
 // QueryInfo is a wrapper around the C function g_file_input_stream_query_info.
@@ -1926,7 +1926,7 @@ func (recv *FileMonitor) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *FileMonitor) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // Cancel is a wrapper around the C function g_file_monitor_cancel.
@@ -1981,7 +1981,7 @@ func (recv *FileOutputStream) ToC() unsafe.Pointer {
 
 // OutputStream upcasts to *OutputStream
 func (recv *FileOutputStream) OutputStream() *OutputStream {
-	return OutputStreamNewFromC(recv.native)
+	return OutputStreamNewFromC(unsafe.Pointer(recv.native))
 }
 
 // GetEtag is a wrapper around the C function g_file_output_stream_get_etag.
@@ -2040,7 +2040,7 @@ func (recv *FilenameCompleter) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *FilenameCompleter) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // FilenameCompleterNew is a wrapper around the C function g_filename_completer_new.
@@ -2100,7 +2100,7 @@ func (recv *FilterInputStream) ToC() unsafe.Pointer {
 
 // InputStream upcasts to *InputStream
 func (recv *FilterInputStream) InputStream() *InputStream {
-	return InputStreamNewFromC(recv.native)
+	return InputStreamNewFromC(unsafe.Pointer(recv.native))
 }
 
 // GetBaseStream is a wrapper around the C function g_filter_input_stream_get_base_stream.
@@ -2154,7 +2154,7 @@ func (recv *FilterOutputStream) ToC() unsafe.Pointer {
 
 // OutputStream upcasts to *OutputStream
 func (recv *FilterOutputStream) OutputStream() *OutputStream {
-	return OutputStreamNewFromC(recv.native)
+	return OutputStreamNewFromC(unsafe.Pointer(recv.native))
 }
 
 // GetBaseStream is a wrapper around the C function g_filter_output_stream_get_base_stream.
@@ -2204,11 +2204,6 @@ func (recv *IOModule) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// TypeModule upcasts to *TypeModule
-func (recv *IOModule) TypeModule() *gobject.TypeModule {
-	return gobject.TypeModuleNewFromC(recv.native)
-}
-
 // IOModuleNew is a wrapper around the C function g_io_module_new.
 func IOModuleNew(filename string) *IOModule {
 	c_filename := C.CString(filename)
@@ -2249,7 +2244,7 @@ func (recv *IOStream) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *IOStream) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // InetAddress is a wrapper around the C record GInetAddress.
@@ -2277,7 +2272,7 @@ func (recv *InetAddress) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *InetAddress) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // Unsupported : g_inet_address_new_from_bytes : unsupported parameter bytes : no param type
@@ -2307,7 +2302,7 @@ func (recv *InetSocketAddress) ToC() unsafe.Pointer {
 
 // SocketAddress upcasts to *SocketAddress
 func (recv *InetSocketAddress) SocketAddress() *SocketAddress {
-	return SocketAddressNewFromC(recv.native)
+	return SocketAddressNewFromC(unsafe.Pointer(recv.native))
 }
 
 // InputStream is a wrapper around the C record GInputStream.
@@ -2335,7 +2330,7 @@ func (recv *InputStream) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *InputStream) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // ClearPending is a wrapper around the C function g_input_stream_clear_pending.
@@ -2451,7 +2446,7 @@ func (recv *ListStore) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *ListStore) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // Unsupported : g_list_store_new : unsupported parameter item_type : no type generator for GType, GType
@@ -2481,7 +2476,7 @@ func (recv *MemoryInputStream) ToC() unsafe.Pointer {
 
 // InputStream upcasts to *InputStream
 func (recv *MemoryInputStream) InputStream() *InputStream {
-	return InputStreamNewFromC(recv.native)
+	return InputStreamNewFromC(unsafe.Pointer(recv.native))
 }
 
 // MemoryInputStreamNew is a wrapper around the C function g_memory_input_stream_new.
@@ -2521,7 +2516,7 @@ func (recv *MemoryOutputStream) ToC() unsafe.Pointer {
 
 // OutputStream upcasts to *OutputStream
 func (recv *MemoryOutputStream) OutputStream() *OutputStream {
-	return OutputStreamNewFromC(recv.native)
+	return OutputStreamNewFromC(unsafe.Pointer(recv.native))
 }
 
 // Unsupported : g_memory_output_stream_new : unsupported parameter realloc_function : no type generator for ReallocFunc, GReallocFunc
@@ -2567,7 +2562,7 @@ func (recv *MountOperation) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *MountOperation) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // MountOperationNew is a wrapper around the C function g_mount_operation_new.
@@ -2717,7 +2712,7 @@ func (recv *NativeVolumeMonitor) ToC() unsafe.Pointer {
 
 // VolumeMonitor upcasts to *VolumeMonitor
 func (recv *NativeVolumeMonitor) VolumeMonitor() *VolumeMonitor {
-	return VolumeMonitorNewFromC(recv.native)
+	return VolumeMonitorNewFromC(unsafe.Pointer(recv.native))
 }
 
 // NetworkAddress is a wrapper around the C record GNetworkAddress.
@@ -2745,7 +2740,7 @@ func (recv *NetworkAddress) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *NetworkAddress) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // NetworkService is a wrapper around the C record GNetworkService.
@@ -2773,7 +2768,7 @@ func (recv *NetworkService) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *NetworkService) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // OutputStream is a wrapper around the C record GOutputStream.
@@ -2801,7 +2796,7 @@ func (recv *OutputStream) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *OutputStream) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // ClearPending is a wrapper around the C function g_output_stream_clear_pending.
@@ -2948,7 +2943,7 @@ func (recv *Permission) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *Permission) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // ProxyAddressEnumerator is a wrapper around the C record GProxyAddressEnumerator.
@@ -2976,7 +2971,7 @@ func (recv *ProxyAddressEnumerator) ToC() unsafe.Pointer {
 
 // SocketAddressEnumerator upcasts to *SocketAddressEnumerator
 func (recv *ProxyAddressEnumerator) SocketAddressEnumerator() *SocketAddressEnumerator {
-	return SocketAddressEnumeratorNewFromC(recv.native)
+	return SocketAddressEnumeratorNewFromC(unsafe.Pointer(recv.native))
 }
 
 // Resolver is a wrapper around the C record GResolver.
@@ -3004,7 +2999,7 @@ func (recv *Resolver) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *Resolver) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // Settings is a wrapper around the C record GSettings.
@@ -3032,7 +3027,7 @@ func (recv *Settings) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *Settings) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // Apply is a wrapper around the C function g_settings_apply.
@@ -3116,7 +3111,7 @@ func (recv *SettingsBackend) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *SettingsBackend) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // SimpleAction is a wrapper around the C record GSimpleAction.
@@ -3142,7 +3137,7 @@ func (recv *SimpleAction) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *SimpleAction) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // Unsupported : g_simple_action_new : unsupported parameter parameter_type : Blacklisted record : GVariantType
@@ -3172,7 +3167,7 @@ func (recv *SimpleAsyncResult) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *SimpleAsyncResult) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // Unsupported : g_simple_async_result_new : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
@@ -3313,7 +3308,7 @@ func (recv *SimplePermission) ToC() unsafe.Pointer {
 
 // Permission upcasts to *Permission
 func (recv *SimplePermission) Permission() *Permission {
-	return PermissionNewFromC(recv.native)
+	return PermissionNewFromC(unsafe.Pointer(recv.native))
 }
 
 // SimpleProxyResolver is a wrapper around the C record GSimpleProxyResolver.
@@ -3341,7 +3336,7 @@ func (recv *SimpleProxyResolver) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *SimpleProxyResolver) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // SocketAddress is a wrapper around the C record GSocketAddress.
@@ -3368,7 +3363,7 @@ func (recv *SocketAddress) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *SocketAddress) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // SocketAddressEnumerator is a wrapper around the C record GSocketAddressEnumerator.
@@ -3395,7 +3390,7 @@ func (recv *SocketAddressEnumerator) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *SocketAddressEnumerator) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // Next is a wrapper around the C function g_socket_address_enumerator_next.
@@ -3444,7 +3439,7 @@ func (recv *SocketControlMessage) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *SocketControlMessage) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // Unsupported : g_subprocess_new : unsupported parameter error : record with indirection level of 2
@@ -3474,7 +3469,7 @@ func (recv *Task) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *Task) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // Unsupported : g_task_new : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
@@ -3504,7 +3499,7 @@ func (recv *TcpWrapperConnection) ToC() unsafe.Pointer {
 
 // TcpConnection upcasts to *TcpConnection
 func (recv *TcpWrapperConnection) TcpConnection() *TcpConnection {
-	return TcpConnectionNewFromC(recv.native)
+	return TcpConnectionNewFromC(unsafe.Pointer(recv.native))
 }
 
 // GetBaseIoStream is a wrapper around the C function g_tcp_wrapper_connection_get_base_io_stream.
@@ -3538,7 +3533,7 @@ func (recv *ThemedIcon) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *ThemedIcon) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // ThemedIconNew is a wrapper around the C function g_themed_icon_new.
@@ -3602,7 +3597,7 @@ func (recv *UnixConnection) ToC() unsafe.Pointer {
 
 // SocketConnection upcasts to *SocketConnection
 func (recv *UnixConnection) SocketConnection() *SocketConnection {
-	return SocketConnectionNewFromC(recv.native)
+	return SocketConnectionNewFromC(unsafe.Pointer(recv.native))
 }
 
 // UnixFDList is a wrapper around the C record GUnixFDList.
@@ -3630,7 +3625,7 @@ func (recv *UnixFDList) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *UnixFDList) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // Unsupported : g_unix_fd_list_new_from_array : unsupported parameter fds : no param type
@@ -3660,7 +3655,7 @@ func (recv *UnixFDMessage) ToC() unsafe.Pointer {
 
 // SocketControlMessage upcasts to *SocketControlMessage
 func (recv *UnixFDMessage) SocketControlMessage() *SocketControlMessage {
-	return SocketControlMessageNewFromC(recv.native)
+	return SocketControlMessageNewFromC(unsafe.Pointer(recv.native))
 }
 
 // UnixInputStream is a wrapper around the C record GUnixInputStream.
@@ -3688,7 +3683,7 @@ func (recv *UnixInputStream) ToC() unsafe.Pointer {
 
 // InputStream upcasts to *InputStream
 func (recv *UnixInputStream) InputStream() *InputStream {
-	return InputStreamNewFromC(recv.native)
+	return InputStreamNewFromC(unsafe.Pointer(recv.native))
 }
 
 // UnixInputStreamNew is a wrapper around the C function g_unix_input_stream_new.
@@ -3727,7 +3722,7 @@ func (recv *UnixMountMonitor) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *UnixMountMonitor) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // UnixMountMonitorNew is a wrapper around the C function g_unix_mount_monitor_new.
@@ -3763,7 +3758,7 @@ func (recv *UnixOutputStream) ToC() unsafe.Pointer {
 
 // OutputStream upcasts to *OutputStream
 func (recv *UnixOutputStream) OutputStream() *OutputStream {
-	return OutputStreamNewFromC(recv.native)
+	return OutputStreamNewFromC(unsafe.Pointer(recv.native))
 }
 
 // UnixOutputStreamNew is a wrapper around the C function g_unix_output_stream_new.
@@ -3804,7 +3799,7 @@ func (recv *UnixSocketAddress) ToC() unsafe.Pointer {
 
 // SocketAddress upcasts to *SocketAddress
 func (recv *UnixSocketAddress) SocketAddress() *SocketAddress {
-	return SocketAddressNewFromC(recv.native)
+	return SocketAddressNewFromC(unsafe.Pointer(recv.native))
 }
 
 // Unsupported : g_unix_socket_address_new_abstract : unsupported parameter path : no param type
@@ -3835,7 +3830,7 @@ func (recv *Vfs) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *Vfs) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // Unsupported : g_vfs_get_file_for_path : no return generator
@@ -3879,7 +3874,7 @@ func (recv *VolumeMonitor) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *VolumeMonitor) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // GetConnectedDrives is a wrapper around the C function g_volume_monitor_get_connected_drives.
@@ -3933,7 +3928,7 @@ func (recv *ZlibCompressor) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *ZlibCompressor) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // ZlibDecompressor is a wrapper around the C record GZlibDecompressor.
@@ -3959,5 +3954,5 @@ func (recv *ZlibDecompressor) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *ZlibDecompressor) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }

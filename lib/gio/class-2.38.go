@@ -160,7 +160,7 @@ func (recv *PropertyAction) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *PropertyAction) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // PropertyActionNew is a wrapper around the C function g_property_action_new.

@@ -49,14 +49,7 @@ func (recv *Value) TakeObject(vObject uintptr) {
 	return
 }
 
-// TakeParam is a wrapper around the C function g_value_take_param.
-func (recv *Value) TakeParam(param *ParamSpec) {
-	c_param := (*C.GParamSpec)(param.ToC())
-
-	C.g_value_take_param((*C.GValue)(recv.native), c_param)
-
-	return
-}
+// Unsupported : g_value_take_param : unsupported parameter param : Blacklisted record : GParamSpec
 
 // TakeString is a wrapper around the C function g_value_take_string.
 func (recv *Value) TakeString(vString string) {

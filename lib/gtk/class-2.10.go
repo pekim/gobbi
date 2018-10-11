@@ -1747,7 +1747,7 @@ func (recv *RecentManager) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *RecentManager) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // RecentManagerNew is a wrapper around the C function gtk_recent_manager_new.

@@ -49,7 +49,7 @@ func (recv *Application) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *Application) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // ApplicationNew is a wrapper around the C function g_application_new.
@@ -337,7 +337,7 @@ func (recv *SimpleActionGroup) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *SimpleActionGroup) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // SimpleActionGroupNew is a wrapper around the C function g_simple_action_group_new.
@@ -459,7 +459,7 @@ func (recv *TlsCertificate) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *TlsCertificate) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // TlsCertificateNewFromFile is a wrapper around the C function g_tls_certificate_new_from_file.
@@ -556,7 +556,7 @@ func (recv *TlsConnection) ToC() unsafe.Pointer {
 
 // IOStream upcasts to *IOStream
 func (recv *TlsConnection) IOStream() *IOStream {
-	return IOStreamNewFromC(recv.native)
+	return IOStreamNewFromC(unsafe.Pointer(recv.native))
 }
 
 // EmitAcceptCertificate is a wrapper around the C function g_tls_connection_emit_accept_certificate.

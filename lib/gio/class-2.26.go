@@ -51,7 +51,7 @@ func (recv *Credentials) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *Credentials) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // CredentialsNew is a wrapper around the C function g_credentials_new.
@@ -136,7 +136,7 @@ func (recv *DBusAuthObserver) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *DBusAuthObserver) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // DBusAuthObserverNew is a wrapper around the C function g_dbus_auth_observer_new.
@@ -182,7 +182,7 @@ func (recv *DBusConnection) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *DBusConnection) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // Unsupported : g_dbus_connection_new_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
@@ -485,7 +485,7 @@ func (recv *DBusMessage) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *DBusMessage) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // DBusMessageNew is a wrapper around the C function g_dbus_message_new.
@@ -905,7 +905,7 @@ func (recv *DBusMethodInvocation) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *DBusMethodInvocation) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // GetConnection is a wrapper around the C function g_dbus_method_invocation_get_connection.
@@ -1049,7 +1049,7 @@ func (recv *DBusProxy) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *DBusProxy) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // Unsupported : g_dbus_proxy_new_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
@@ -1238,7 +1238,7 @@ func (recv *DBusServer) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *DBusServer) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // DBusServerNewSync is a wrapper around the C function g_dbus_server_new_sync.
@@ -1500,7 +1500,7 @@ func (recv *ProxyAddress) ToC() unsafe.Pointer {
 
 // InetSocketAddress upcasts to *InetSocketAddress
 func (recv *ProxyAddress) InetSocketAddress() *InetSocketAddress {
-	return InetSocketAddressNewFromC(recv.native)
+	return InetSocketAddressNewFromC(unsafe.Pointer(recv.native))
 }
 
 // ProxyAddressNew is a wrapper around the C function g_proxy_address_new.
@@ -2029,7 +2029,7 @@ func (recv *UnixCredentialsMessage) ToC() unsafe.Pointer {
 
 // SocketControlMessage upcasts to *SocketControlMessage
 func (recv *UnixCredentialsMessage) SocketControlMessage() *SocketControlMessage {
-	return SocketControlMessageNewFromC(recv.native)
+	return SocketControlMessageNewFromC(unsafe.Pointer(recv.native))
 }
 
 // UnixCredentialsMessageNew is a wrapper around the C function g_unix_credentials_message_new.

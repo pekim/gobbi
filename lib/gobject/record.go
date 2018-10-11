@@ -406,27 +406,9 @@ func (recv *ObjectClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// FindProperty is a wrapper around the C function g_object_class_find_property.
-func (recv *ObjectClass) FindProperty(propertyName string) *ParamSpec {
-	c_property_name := C.CString(propertyName)
-	defer C.free(unsafe.Pointer(c_property_name))
+// Unsupported : g_object_class_find_property : return type : Blacklisted record : GParamSpec
 
-	retC := C.g_object_class_find_property((*C.GObjectClass)(recv.native), c_property_name)
-	retGo := ParamSpecNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// InstallProperty is a wrapper around the C function g_object_class_install_property.
-func (recv *ObjectClass) InstallProperty(propertyId uint32, pspec *ParamSpec) {
-	c_property_id := (C.guint)(propertyId)
-
-	c_pspec := (*C.GParamSpec)(pspec.ToC())
-
-	C.g_object_class_install_property((*C.GObjectClass)(recv.native), c_property_id, c_pspec)
-
-	return
-}
+// Unsupported : g_object_class_install_property : unsupported parameter pspec : Blacklisted record : GParamSpec
 
 // Unsupported : g_object_class_list_properties : no return type
 
@@ -502,7 +484,7 @@ func (recv *ParamSpecPool) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : g_param_spec_pool_insert : unsupported parameter owner_type : no type generator for GType, GType
+// Unsupported : g_param_spec_pool_insert : unsupported parameter pspec : Blacklisted record : GParamSpec
 
 // Unsupported : g_param_spec_pool_list : unsupported parameter owner_type : no type generator for GType, GType
 
@@ -510,14 +492,7 @@ func (recv *ParamSpecPool) ToC() unsafe.Pointer {
 
 // Unsupported : g_param_spec_pool_lookup : unsupported parameter owner_type : no type generator for GType, GType
 
-// Remove is a wrapper around the C function g_param_spec_pool_remove.
-func (recv *ParamSpecPool) Remove(pspec *ParamSpec) {
-	c_pspec := (*C.GParamSpec)(pspec.ToC())
-
-	C.g_param_spec_pool_remove((*C.GParamSpecPool)(recv.native), c_pspec)
-
-	return
-}
+// Unsupported : g_param_spec_pool_remove : unsupported parameter pspec : Blacklisted record : GParamSpec
 
 // ParamSpecTypeInfo is a wrapper around the C record GParamSpecTypeInfo.
 type ParamSpecTypeInfo struct {
@@ -1009,13 +984,7 @@ func (recv *Value) DupObject() uintptr {
 	return retGo
 }
 
-// DupParam is a wrapper around the C function g_value_dup_param.
-func (recv *Value) DupParam() *ParamSpec {
-	retC := C.g_value_dup_param((*C.GValue)(recv.native))
-	retGo := ParamSpecNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Unsupported : g_value_dup_param : return type : Blacklisted record : GParamSpec
 
 // DupString is a wrapper around the C function g_value_dup_string.
 func (recv *Value) DupString() string {
@@ -1122,13 +1091,7 @@ func (recv *Value) GetObject() uintptr {
 	return retGo
 }
 
-// GetParam is a wrapper around the C function g_value_get_param.
-func (recv *Value) GetParam() *ParamSpec {
-	retC := C.g_value_get_param((*C.GValue)(recv.native))
-	retGo := ParamSpecNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
+// Unsupported : g_value_get_param : return type : Blacklisted record : GParamSpec
 
 // GetPointer is a wrapper around the C function g_value_get_pointer.
 func (recv *Value) GetPointer() uintptr {
@@ -1323,23 +1286,9 @@ func (recv *Value) SetObjectTakeOwnership(vObject uintptr) {
 	return
 }
 
-// SetParam is a wrapper around the C function g_value_set_param.
-func (recv *Value) SetParam(param *ParamSpec) {
-	c_param := (*C.GParamSpec)(param.ToC())
+// Unsupported : g_value_set_param : unsupported parameter param : Blacklisted record : GParamSpec
 
-	C.g_value_set_param((*C.GValue)(recv.native), c_param)
-
-	return
-}
-
-// SetParamTakeOwnership is a wrapper around the C function g_value_set_param_take_ownership.
-func (recv *Value) SetParamTakeOwnership(param *ParamSpec) {
-	c_param := (*C.GParamSpec)(param.ToC())
-
-	C.g_value_set_param_take_ownership((*C.GValue)(recv.native), c_param)
-
-	return
-}
+// Unsupported : g_value_set_param_take_ownership : unsupported parameter param : Blacklisted record : GParamSpec
 
 // SetPointer is a wrapper around the C function g_value_set_pointer.
 func (recv *Value) SetPointer(vPointer uintptr) {

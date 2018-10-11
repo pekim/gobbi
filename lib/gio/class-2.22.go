@@ -582,7 +582,7 @@ func (recv *Socket) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *Socket) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // SocketNew is a wrapper around the C function g_socket_new.
@@ -1004,7 +1004,7 @@ func (recv *SocketClient) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *SocketClient) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // SocketClientNew is a wrapper around the C function g_socket_client_new.
@@ -1177,7 +1177,7 @@ func (recv *SocketConnection) ToC() unsafe.Pointer {
 
 // IOStream upcasts to *IOStream
 func (recv *SocketConnection) IOStream() *IOStream {
-	return IOStreamNewFromC(recv.native)
+	return IOStreamNewFromC(unsafe.Pointer(recv.native))
 }
 
 // GetLocalAddress is a wrapper around the C function g_socket_connection_get_local_address.
@@ -1276,7 +1276,7 @@ func (recv *SocketListener) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *SocketListener) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // SocketListenerNew is a wrapper around the C function g_socket_listener_new.
@@ -1380,7 +1380,7 @@ func (recv *SocketService) ToC() unsafe.Pointer {
 
 // SocketListener upcasts to *SocketListener
 func (recv *SocketService) SocketListener() *SocketListener {
-	return SocketListenerNewFromC(recv.native)
+	return SocketListenerNewFromC(unsafe.Pointer(recv.native))
 }
 
 // SocketServiceNew is a wrapper around the C function g_socket_service_new.
@@ -1444,7 +1444,7 @@ func (recv *TcpConnection) ToC() unsafe.Pointer {
 
 // SocketConnection upcasts to *SocketConnection
 func (recv *TcpConnection) SocketConnection() *SocketConnection {
-	return SocketConnectionNewFromC(recv.native)
+	return SocketConnectionNewFromC(unsafe.Pointer(recv.native))
 }
 
 // GetGracefulDisconnect is a wrapper around the C function g_tcp_connection_get_graceful_disconnect.
@@ -1492,7 +1492,7 @@ func (recv *ThreadedSocketService) ToC() unsafe.Pointer {
 
 // SocketService upcasts to *SocketService
 func (recv *ThreadedSocketService) SocketService() *SocketService {
-	return SocketServiceNewFromC(recv.native)
+	return SocketServiceNewFromC(unsafe.Pointer(recv.native))
 }
 
 // ThreadedSocketServiceNew is a wrapper around the C function g_threaded_socket_service_new.

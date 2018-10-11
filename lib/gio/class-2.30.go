@@ -63,7 +63,7 @@ func (recv *DBusInterfaceSkeleton) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *DBusInterfaceSkeleton) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // Export is a wrapper around the C function g_dbus_interface_skeleton_export.
@@ -189,7 +189,7 @@ func (recv *DBusObjectManagerClient) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *DBusObjectManagerClient) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // Unsupported : g_dbus_object_manager_client_new_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
@@ -258,7 +258,7 @@ func (recv *DBusObjectManagerServer) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *DBusObjectManagerServer) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // DBusObjectManagerServerNew is a wrapper around the C function g_dbus_object_manager_server_new.
@@ -343,7 +343,7 @@ func (recv *DBusObjectProxy) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *DBusObjectProxy) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // DBusObjectProxyNew is a wrapper around the C function g_dbus_object_proxy_new.
@@ -392,7 +392,7 @@ func (recv *DBusObjectSkeleton) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *DBusObjectSkeleton) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // DBusObjectSkeletonNew is a wrapper around the C function g_dbus_object_skeleton_new.
@@ -637,7 +637,7 @@ func (recv *TlsDatabase) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *TlsDatabase) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // CreateCertificateHandle is a wrapper around the C function g_tls_database_create_certificate_handle.
@@ -743,7 +743,7 @@ func (recv *TlsInteraction) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *TlsInteraction) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // AskPassword is a wrapper around the C function g_tls_interaction_ask_password.
@@ -813,7 +813,7 @@ func (recv *TlsPassword) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *TlsPassword) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // TlsPasswordNew is a wrapper around the C function g_tls_password_new.

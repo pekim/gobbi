@@ -6,7 +6,6 @@ package gtk
 import (
 	cairo "github.com/pekim/gobbi/lib/cairo"
 	gdk "github.com/pekim/gobbi/lib/gdk"
-	gobject "github.com/pekim/gobbi/lib/gobject"
 	pango "github.com/pekim/gobbi/lib/pango"
 	"unsafe"
 )
@@ -48,16 +47,7 @@ func (recv *Assistant) SetPageHasPadding(page *Widget, hasPadding bool) {
 
 // Unsupported : gtk_combo_box_new_with_model_and_entry : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
 
-// ChildNotifyByPspec is a wrapper around the C function gtk_container_child_notify_by_pspec.
-func (recv *Container) ChildNotifyByPspec(child *Widget, pspec *gobject.ParamSpec) {
-	c_child := (*C.GtkWidget)(child.ToC())
-
-	c_pspec := (*C.GParamSpec)(pspec.ToC())
-
-	C.gtk_container_child_notify_by_pspec((*C.GtkContainer)(recv.native), c_child, c_pspec)
-
-	return
-}
+// Unsupported : gtk_container_child_notify_by_pspec : unsupported parameter pspec : Blacklisted record : GParamSpec
 
 // Unsupported : gtk_dialog_new_with_buttons : unsupported parameter ... : varargs
 

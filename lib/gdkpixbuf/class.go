@@ -36,7 +36,7 @@ func (recv *Pixbuf) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *Pixbuf) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // PixbufNew is a wrapper around the C function gdk_pixbuf_new.
@@ -411,7 +411,7 @@ func (recv *PixbufAnimation) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *PixbufAnimation) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // PixbufAnimationNewFromFile is a wrapper around the C function gdk_pixbuf_animation_new_from_file.
@@ -514,7 +514,7 @@ func (recv *PixbufAnimationIter) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *PixbufAnimationIter) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // Advance is a wrapper around the C function gdk_pixbuf_animation_iter_advance.
@@ -576,7 +576,7 @@ func (recv *PixbufLoader) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *PixbufLoader) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // PixbufLoaderNew is a wrapper around the C function gdk_pixbuf_loader_new.
@@ -661,7 +661,7 @@ func (recv *PixbufSimpleAnim) ToC() unsafe.Pointer {
 
 // PixbufAnimation upcasts to *PixbufAnimation
 func (recv *PixbufSimpleAnim) PixbufAnimation() *PixbufAnimation {
-	return PixbufAnimationNewFromC(recv.native)
+	return PixbufAnimationNewFromC(unsafe.Pointer(recv.native))
 }
 
 // Unsupported : PixbufSimpleAnimIter : no CType

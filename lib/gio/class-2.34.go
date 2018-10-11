@@ -287,7 +287,7 @@ func (recv *TestDBus) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *TestDBus) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // TestDBusNew is a wrapper around the C function g_test_dbus_new.

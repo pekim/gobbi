@@ -47,7 +47,7 @@ func (recv *AppInfoMonitor) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *AppInfoMonitor) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // Unsupported : g_application_add_main_option_entries : unsupported parameter entries : no param type
@@ -165,7 +165,7 @@ func (recv *Notification) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *Notification) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // NotificationNew is a wrapper around the C function g_notification_new.
@@ -294,7 +294,7 @@ func (recv *Subprocess) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *Subprocess) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // Unsupported : g_subprocess_new : unsupported parameter error : record with indirection level of 2
@@ -502,7 +502,7 @@ func (recv *SubprocessLauncher) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *SubprocessLauncher) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // SubprocessLauncherNew is a wrapper around the C function g_subprocess_launcher_new.

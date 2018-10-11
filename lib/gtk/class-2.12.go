@@ -142,29 +142,7 @@ func (recv *Builder) SetTranslationDomain(domain string) {
 	return
 }
 
-// ValueFromString is a wrapper around the C function gtk_builder_value_from_string.
-func (recv *Builder) ValueFromString(pspec *gobject.ParamSpec, string string) (bool, *gobject.Value, error) {
-	c_pspec := (*C.GParamSpec)(pspec.ToC())
-
-	c_string := C.CString(string)
-	defer C.free(unsafe.Pointer(c_string))
-
-	var c_value C.GValue
-
-	var cThrowableError *C.GError
-
-	retC := C.gtk_builder_value_from_string((*C.GtkBuilder)(recv.native), c_pspec, c_string, &c_value, &cThrowableError)
-	retGo := retC == C.TRUE
-
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-	if cThrowableError != nil {
-		C.g_error_free(cThrowableError)
-	}
-
-	value := gobject.ValueNewFromC(unsafe.Pointer(&c_value))
-
-	return retGo, value, goThrowableError
-}
+// Unsupported : gtk_builder_value_from_string : unsupported parameter pspec : Blacklisted record : GParamSpec
 
 // Unsupported : gtk_builder_value_from_string_type : unsupported parameter type : no type generator for GType, GType
 

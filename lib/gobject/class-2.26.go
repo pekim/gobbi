@@ -33,7 +33,7 @@ func (recv *Binding) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *Binding) Object() *Object {
-	return ObjectNewFromC(recv.native)
+	return ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // GetFlags is a wrapper around the C function g_binding_get_flags.
@@ -126,14 +126,7 @@ func (recv *Object) BindPropertyWithClosures(sourceProperty string, target uintp
 	return retGo
 }
 
-// NotifyByPspec is a wrapper around the C function g_object_notify_by_pspec.
-func (recv *Object) NotifyByPspec(pspec *ParamSpec) {
-	c_pspec := (*C.GParamSpec)(pspec.ToC())
-
-	C.g_object_notify_by_pspec((*C.GObject)(recv.native), c_pspec)
-
-	return
-}
+// Unsupported : g_object_notify_by_pspec : unsupported parameter pspec : Blacklisted record : GParamSpec
 
 // ParamSpecVariant is a wrapper around the C record GParamSpecVariant.
 type ParamSpecVariant struct {
@@ -158,9 +151,4 @@ func ParamSpecVariantNewFromC(u unsafe.Pointer) *ParamSpecVariant {
 func (recv *ParamSpecVariant) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
-}
-
-// ParamSpec upcasts to *ParamSpec
-func (recv *ParamSpecVariant) ParamSpec() *ParamSpec {
-	return ParamSpecNewFromC(recv.native)
 }

@@ -36,7 +36,7 @@ func (recv *GObjectAccessible) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *GObjectAccessible) Object() *Object {
-	return ObjectNewFromC(recv.native)
+	return ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // GetObject is a wrapper around the C function atk_gobject_accessible_get_object.
@@ -71,7 +71,7 @@ func (recv *Hyperlink) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *Hyperlink) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // GetEndIndex is a wrapper around the C function atk_hyperlink_get_end_index.
@@ -159,7 +159,7 @@ func (recv *Misc) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *Misc) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // NoOpObject is a wrapper around the C record AtkNoOpObject.
@@ -186,7 +186,7 @@ func (recv *NoOpObject) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *NoOpObject) Object() *Object {
-	return ObjectNewFromC(recv.native)
+	return ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // NoOpObjectNew is a wrapper around the C function atk_no_op_object_new.
@@ -223,7 +223,7 @@ func (recv *NoOpObjectFactory) ToC() unsafe.Pointer {
 
 // ObjectFactory upcasts to *ObjectFactory
 func (recv *NoOpObjectFactory) ObjectFactory() *ObjectFactory {
-	return ObjectFactoryNewFromC(recv.native)
+	return ObjectFactoryNewFromC(unsafe.Pointer(recv.native))
 }
 
 // NoOpObjectFactoryNew is a wrapper around the C function atk_no_op_object_factory_new.
@@ -278,7 +278,7 @@ func (recv *Object) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *Object) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // AddRelationship is a wrapper around the C function atk_object_add_relationship.
@@ -497,7 +497,7 @@ func (recv *ObjectFactory) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *ObjectFactory) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // CreateAccessible is a wrapper around the C function atk_object_factory_create_accessible.
@@ -543,7 +543,7 @@ func (recv *Plug) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *Plug) Object() *Object {
-	return ObjectNewFromC(recv.native)
+	return ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // PlugNew is a wrapper around the C function atk_plug_new.
@@ -580,7 +580,7 @@ func (recv *Registry) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *Registry) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // Unsupported : atk_registry_get_factory : unsupported parameter type : no type generator for GType, GType
@@ -620,7 +620,7 @@ func (recv *Relation) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *Relation) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // Unsupported : atk_relation_new : unsupported parameter targets : no param type
@@ -670,7 +670,7 @@ func (recv *RelationSet) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *RelationSet) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // RelationSetNew is a wrapper around the C function atk_relation_set_new.
@@ -774,7 +774,7 @@ func (recv *Socket) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *Socket) Object() *Object {
-	return ObjectNewFromC(recv.native)
+	return ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // SocketNew is a wrapper around the C function atk_socket_new.
@@ -809,7 +809,7 @@ func (recv *StateSet) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *StateSet) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // StateSetNew is a wrapper around the C function atk_state_set_new.
@@ -923,5 +923,5 @@ func (recv *Util) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *Util) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }

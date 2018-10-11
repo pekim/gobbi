@@ -1185,75 +1185,15 @@ func RcParseString(rcString string) {
 	return
 }
 
-// RcPropertyParseBorder is a wrapper around the C function gtk_rc_property_parse_border.
-func RcPropertyParseBorder(pspec *gobject.ParamSpec, gstring *glib.String, propertyValue *gobject.Value) bool {
-	c_pspec := (*C.GParamSpec)(pspec.ToC())
+// Unsupported : gtk_rc_property_parse_border : unsupported parameter pspec : Blacklisted record : GParamSpec
 
-	c_gstring := (*C.GString)(gstring.ToC())
+// Unsupported : gtk_rc_property_parse_color : unsupported parameter pspec : Blacklisted record : GParamSpec
 
-	c_property_value := (*C.GValue)(propertyValue.ToC())
+// Unsupported : gtk_rc_property_parse_enum : unsupported parameter pspec : Blacklisted record : GParamSpec
 
-	retC := C.gtk_rc_property_parse_border(c_pspec, c_gstring, c_property_value)
-	retGo := retC == C.TRUE
+// Unsupported : gtk_rc_property_parse_flags : unsupported parameter pspec : Blacklisted record : GParamSpec
 
-	return retGo
-}
-
-// RcPropertyParseColor is a wrapper around the C function gtk_rc_property_parse_color.
-func RcPropertyParseColor(pspec *gobject.ParamSpec, gstring *glib.String, propertyValue *gobject.Value) bool {
-	c_pspec := (*C.GParamSpec)(pspec.ToC())
-
-	c_gstring := (*C.GString)(gstring.ToC())
-
-	c_property_value := (*C.GValue)(propertyValue.ToC())
-
-	retC := C.gtk_rc_property_parse_color(c_pspec, c_gstring, c_property_value)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// RcPropertyParseEnum is a wrapper around the C function gtk_rc_property_parse_enum.
-func RcPropertyParseEnum(pspec *gobject.ParamSpec, gstring *glib.String, propertyValue *gobject.Value) bool {
-	c_pspec := (*C.GParamSpec)(pspec.ToC())
-
-	c_gstring := (*C.GString)(gstring.ToC())
-
-	c_property_value := (*C.GValue)(propertyValue.ToC())
-
-	retC := C.gtk_rc_property_parse_enum(c_pspec, c_gstring, c_property_value)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// RcPropertyParseFlags is a wrapper around the C function gtk_rc_property_parse_flags.
-func RcPropertyParseFlags(pspec *gobject.ParamSpec, gstring *glib.String, propertyValue *gobject.Value) bool {
-	c_pspec := (*C.GParamSpec)(pspec.ToC())
-
-	c_gstring := (*C.GString)(gstring.ToC())
-
-	c_property_value := (*C.GValue)(propertyValue.ToC())
-
-	retC := C.gtk_rc_property_parse_flags(c_pspec, c_gstring, c_property_value)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// RcPropertyParseRequisition is a wrapper around the C function gtk_rc_property_parse_requisition.
-func RcPropertyParseRequisition(pspec *gobject.ParamSpec, gstring *glib.String, propertyValue *gobject.Value) bool {
-	c_pspec := (*C.GParamSpec)(pspec.ToC())
-
-	c_gstring := (*C.GString)(gstring.ToC())
-
-	c_property_value := (*C.GValue)(propertyValue.ToC())
-
-	retC := C.gtk_rc_property_parse_requisition(c_pspec, c_gstring, c_property_value)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
+// Unsupported : gtk_rc_property_parse_requisition : unsupported parameter pspec : Blacklisted record : GParamSpec
 
 // RcReparseAll is a wrapper around the C function gtk_rc_reparse_all.
 func RcReparseAll() bool {

@@ -45,7 +45,7 @@ func (recv *DeviceTool) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *DeviceTool) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // GetHardwareId is a wrapper around the C function gdk_device_tool_get_hardware_id.
@@ -143,7 +143,7 @@ func (recv *DrawingContext) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *DrawingContext) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // GetCairoContext is a wrapper around the C function gdk_drawing_context_get_cairo_context.
@@ -218,7 +218,7 @@ func (recv *Monitor) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *Monitor) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // GetDisplay is a wrapper around the C function gdk_monitor_get_display.
@@ -321,7 +321,7 @@ func (recv *Seat) ToC() unsafe.Pointer {
 
 // Object upcasts to *Object
 func (recv *Seat) Object() *gobject.Object {
-	return gobject.ObjectNewFromC(recv.native)
+	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
 // GetDisplay is a wrapper around the C function gdk_seat_get_display.

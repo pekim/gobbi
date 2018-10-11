@@ -187,7 +187,7 @@ func (recv *SimpleIOStream) ToC() unsafe.Pointer {
 
 // IOStream upcasts to *IOStream
 func (recv *SimpleIOStream) IOStream() *IOStream {
-	return IOStreamNewFromC(recv.native)
+	return IOStreamNewFromC(unsafe.Pointer(recv.native))
 }
 
 // SimpleIOStreamNew is a wrapper around the C function g_simple_io_stream_new.
