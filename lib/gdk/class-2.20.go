@@ -3,19 +3,10 @@
 
 package gdk
 
-import (
-	gio "github.com/pekim/gobbi/lib/gio"
-	gobject "github.com/pekim/gobbi/lib/gobject"
-)
-
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <gdk/gdk.h>
 // #include <stdlib.h>
 import "C"
-
-func (recv *AppLaunchContext) AppLaunchContext() *gio.AppLaunchContext {}
-
-func (recv *Cursor) Object() *gobject.Object {}
 
 // GetAxisUse is a wrapper around the C function gdk_device_get_axis_use.
 func (recv *Device) GetAxisUse(index uint32) AxisUse {
@@ -61,31 +52,9 @@ func (recv *Device) GetSource() InputSource {
 	return retGo
 }
 
-func (recv *Device) Object() *gobject.Object {}
-
-func (recv *DeviceManager) Object() *gobject.Object {}
-
-func (recv *DeviceTool) Object() *gobject.Object {}
-
-func (recv *Display) Object() *gobject.Object {}
-
-func (recv *DisplayManager) Object() *gobject.Object {}
-
-func (recv *DragContext) Object() *gobject.Object {}
-
-func (recv *DrawingContext) Object() *gobject.Object {}
-
-func (recv *FrameClock) Object() *gobject.Object {}
-
-func (recv *GLContext) Object() *gobject.Object {}
-
 // Unsupported : gdk_keymap_add_virtual_modifiers : unsupported parameter state : GdkModifierType* with indirection level of 1
 
 // Unsupported : gdk_keymap_map_virtual_modifiers : unsupported parameter state : GdkModifierType* with indirection level of 1
-
-func (recv *Keymap) Object() *gobject.Object {}
-
-func (recv *Monitor) Object() *gobject.Object {}
 
 // GetPrimaryMonitor is a wrapper around the C function gdk_screen_get_primary_monitor.
 func (recv *Screen) GetPrimaryMonitor() int32 {
@@ -94,11 +63,3 @@ func (recv *Screen) GetPrimaryMonitor() int32 {
 
 	return retGo
 }
-
-func (recv *Screen) Object() *gobject.Object {}
-
-func (recv *Seat) Object() *gobject.Object {}
-
-func (recv *Visual) Object() *gobject.Object {}
-
-func (recv *Window) Object() *gobject.Object {}

@@ -13,22 +13,6 @@ import (
 // #include <stdlib.h>
 import "C"
 
-func (recv *Context) Object() *gobject.Object {}
-
-func (recv *EngineLang) Engine() *Engine {}
-
-func (recv *EngineShape) Engine() *Engine {}
-
-func (recv *Font) Object() *gobject.Object {}
-
-func (recv *FontFace) Object() *gobject.Object {}
-
-func (recv *FontFamily) Object() *gobject.Object {}
-
-func (recv *FontMap) Object() *gobject.Object {}
-
-func (recv *Fontset) Object() *gobject.Object {}
-
 // GetFontDescription is a wrapper around the C function pango_layout_get_font_description.
 func (recv *Layout) GetFontDescription() *FontDescription {
 	retC := C.pango_layout_get_font_description((*C.PangoLayout)(recv.native))
@@ -36,8 +20,6 @@ func (recv *Layout) GetFontDescription() *FontDescription {
 
 	return retGo
 }
-
-func (recv *Layout) Object() *gobject.Object {}
 
 // Renderer is a wrapper around the C record PangoRenderer.
 type Renderer struct {
@@ -64,6 +46,11 @@ func RendererNewFromC(u unsafe.Pointer) *Renderer {
 func (recv *Renderer) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Object upcasts to *Object
+func (recv *Renderer) Object() *gobject.Object {
+	return gobject.ObjectNewFromC(recv.native)
 }
 
 // Activate is a wrapper around the C function pango_renderer_activate.
@@ -222,5 +209,3 @@ func (recv *Renderer) SetMatrix(matrix *Matrix) {
 
 	return
 }
-
-func (recv *Renderer) Object() *gobject.Object {}

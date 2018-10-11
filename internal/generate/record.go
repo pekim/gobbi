@@ -70,11 +70,11 @@ func (r *Record) generate(g *jen.Group, version *Version) {
 		r.generateType(g)
 		(&RecordNewFromCFunc{r}).generate(g)
 		(&RecordToCFunc{r}).generate(g)
+		r.generateUpcast(g)
 	}
 
 	r.Constructors.generate(g, version)
 	r.Methods.generate(g, version)
-	r.generateUpcast(g)
 }
 
 func (r *Record) generateType(g *jen.Group) {
@@ -105,6 +105,8 @@ func (r *Record) generateUpcast(g *jen.Group) {
 
 	qname := QNameNew(r.Namespace, r.ParentName)
 
+	g.Commentf("%s upcasts to *%s", qname.name, qname.name)
+
 	g.
 		Func().
 		Parens(jen.Id("recv").Op("*").Id(r.GoName)). //  receiver declaration
@@ -118,7 +120,22 @@ func (r *Record) generateUpcast(g *jen.Group) {
 			}
 		}).
 		BlockFunc(func(g *jen.Group) { // body
+			parent, found := qname.ns.recordOrClassRecordForName(qname.name)
+			if !found {
+				panic(fmt.Sprintf("Failed to find parent %s for %s", r.ParentName, r.Name))
+			}
 
+			if qname.sameNamespace {
+				g.
+					Return().
+					Id(parent.newFromCFuncName).
+					Call(jen.Id("recv").Op(".").Id("native"))
+			} else {
+				g.
+					Return().
+					Qual(qname.ns.fullGoPackageName, parent.newFromCFuncName).
+					Call(jen.Id("recv").Op(".").Id("native"))
+			}
 		}).
 		Line()
 }

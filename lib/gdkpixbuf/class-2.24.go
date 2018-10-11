@@ -3,8 +3,6 @@
 
 package gdkpixbuf
 
-import gobject "github.com/pekim/gobbi/lib/gobject"
-
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <gdk-pixbuf/gdk-pixbuf.h>
 // #include <stdlib.h>
@@ -20,16 +18,6 @@ import "C"
 
 // Unsupported : gdk_pixbuf_save_to_stream_async : unsupported parameter callback : no type generator for Gio.AsyncReadyCallback, GAsyncReadyCallback
 
-func (recv *Pixbuf) Object() *gobject.Object {}
-
 // Unsupported : gdk_pixbuf_animation_new_from_stream_finish : unsupported parameter async_result : no type generator for Gio.AsyncResult, GAsyncResult*
-
-func (recv *PixbufAnimation) Object() *gobject.Object {}
-
-func (recv *PixbufAnimationIter) Object() *gobject.Object {}
-
-func (recv *PixbufLoader) Object() *gobject.Object {}
-
-func (recv *PixbufSimpleAnim) PixbufAnimation() *PixbufAnimation {}
 
 // Unsupported : PixbufSimpleAnimIter : no CType

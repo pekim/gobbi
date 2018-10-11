@@ -34,6 +34,11 @@ func (recv *Pixbuf) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Object upcasts to *Object
+func (recv *Pixbuf) Object() *gobject.Object {
+	return gobject.ObjectNewFromC(recv.native)
+}
+
 // PixbufNew is a wrapper around the C function gdk_pixbuf_new.
 func PixbufNew(colorspace Colorspace, hasAlpha bool, bitsPerSample int32, width int32, height int32) *Pixbuf {
 	c_colorspace := (C.GdkColorspace)(colorspace)
@@ -383,8 +388,6 @@ func (recv *Pixbuf) Unref() {
 	return
 }
 
-func (recv *Pixbuf) Object() *gobject.Object {}
-
 // PixbufAnimation is a wrapper around the C record GdkPixbufAnimation.
 type PixbufAnimation struct {
 	native *C.GdkPixbufAnimation
@@ -404,6 +407,11 @@ func PixbufAnimationNewFromC(u unsafe.Pointer) *PixbufAnimation {
 func (recv *PixbufAnimation) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Object upcasts to *Object
+func (recv *PixbufAnimation) Object() *gobject.Object {
+	return gobject.ObjectNewFromC(recv.native)
 }
 
 // PixbufAnimationNewFromFile is a wrapper around the C function gdk_pixbuf_animation_new_from_file.
@@ -483,8 +491,6 @@ func (recv *PixbufAnimation) Unref() {
 	return
 }
 
-func (recv *PixbufAnimation) Object() *gobject.Object {}
-
 // PixbufAnimationIter is a wrapper around the C record GdkPixbufAnimationIter.
 type PixbufAnimationIter struct {
 	native *C.GdkPixbufAnimationIter
@@ -504,6 +510,11 @@ func PixbufAnimationIterNewFromC(u unsafe.Pointer) *PixbufAnimationIter {
 func (recv *PixbufAnimationIter) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Object upcasts to *Object
+func (recv *PixbufAnimationIter) Object() *gobject.Object {
+	return gobject.ObjectNewFromC(recv.native)
 }
 
 // Advance is a wrapper around the C function gdk_pixbuf_animation_iter_advance.
@@ -540,8 +551,6 @@ func (recv *PixbufAnimationIter) OnCurrentlyLoadingFrame() bool {
 	return retGo
 }
 
-func (recv *PixbufAnimationIter) Object() *gobject.Object {}
-
 // PixbufLoader is a wrapper around the C record GdkPixbufLoader.
 type PixbufLoader struct {
 	native *C.GdkPixbufLoader
@@ -563,6 +572,11 @@ func PixbufLoaderNewFromC(u unsafe.Pointer) *PixbufLoader {
 func (recv *PixbufLoader) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Object upcasts to *Object
+func (recv *PixbufLoader) Object() *gobject.Object {
+	return gobject.ObjectNewFromC(recv.native)
 }
 
 // PixbufLoaderNew is a wrapper around the C function gdk_pixbuf_loader_new.
@@ -624,8 +638,6 @@ func (recv *PixbufLoader) GetPixbuf() *Pixbuf {
 
 // Unsupported : gdk_pixbuf_loader_write : unsupported parameter buf : no param type
 
-func (recv *PixbufLoader) Object() *gobject.Object {}
-
 // PixbufSimpleAnim is a wrapper around the C record GdkPixbufSimpleAnim.
 type PixbufSimpleAnim struct {
 	native *C.GdkPixbufSimpleAnim
@@ -647,6 +659,9 @@ func (recv *PixbufSimpleAnim) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-func (recv *PixbufSimpleAnim) PixbufAnimation() *PixbufAnimation {}
+// PixbufAnimation upcasts to *PixbufAnimation
+func (recv *PixbufSimpleAnim) PixbufAnimation() *PixbufAnimation {
+	return PixbufAnimationNewFromC(recv.native)
+}
 
 // Unsupported : PixbufSimpleAnimIter : no CType

@@ -4,7 +4,6 @@
 package gdk
 
 import (
-	gio "github.com/pekim/gobbi/lib/gio"
 	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	"unsafe"
@@ -14,8 +13,6 @@ import (
 // #include <gdk/gdk.h>
 // #include <stdlib.h>
 import "C"
-
-func (recv *AppLaunchContext) AppLaunchContext() *gio.AppLaunchContext {}
 
 // CursorNewForDisplay is a wrapper around the C function gdk_cursor_new_for_display.
 func CursorNewForDisplay(display *Display, cursorType CursorType) *Cursor {
@@ -36,14 +33,6 @@ func (recv *Cursor) GetDisplay() *Display {
 
 	return retGo
 }
-
-func (recv *Cursor) Object() *gobject.Object {}
-
-func (recv *Device) Object() *gobject.Object {}
-
-func (recv *DeviceManager) Object() *gobject.Object {}
-
-func (recv *DeviceTool) Object() *gobject.Object {}
 
 // Beep is a wrapper around the C function gdk_display_beep.
 func (recv *Display) Beep() {
@@ -167,8 +156,6 @@ func (recv *Display) Sync() {
 	return
 }
 
-func (recv *Display) Object() *gobject.Object {}
-
 // GetDefaultDisplay is a wrapper around the C function gdk_display_manager_get_default_display.
 func (recv *DisplayManager) GetDefaultDisplay() *Display {
 	retC := C.gdk_display_manager_get_default_display((*C.GdkDisplayManager)(recv.native))
@@ -193,20 +180,6 @@ func (recv *DisplayManager) SetDefaultDisplay(display *Display) {
 
 	return
 }
-
-func (recv *DisplayManager) Object() *gobject.Object {}
-
-func (recv *DragContext) Object() *gobject.Object {}
-
-func (recv *DrawingContext) Object() *gobject.Object {}
-
-func (recv *FrameClock) Object() *gobject.Object {}
-
-func (recv *GLContext) Object() *gobject.Object {}
-
-func (recv *Keymap) Object() *gobject.Object {}
-
-func (recv *Monitor) Object() *gobject.Object {}
 
 // GetDisplay is a wrapper around the C function gdk_screen_get_display.
 func (recv *Screen) GetDisplay() *Display {
@@ -342,10 +315,6 @@ func (recv *Screen) MakeDisplayName() string {
 	return retGo
 }
 
-func (recv *Screen) Object() *gobject.Object {}
-
-func (recv *Seat) Object() *gobject.Object {}
-
 // GetScreen is a wrapper around the C function gdk_visual_get_screen.
 func (recv *Visual) GetScreen() *Screen {
 	retC := C.gdk_visual_get_screen((*C.GdkVisual)(recv.native))
@@ -353,8 +322,6 @@ func (recv *Visual) GetScreen() *Screen {
 
 	return retGo
 }
-
-func (recv *Visual) Object() *gobject.Object {}
 
 // Fullscreen is a wrapper around the C function gdk_window_fullscreen.
 func (recv *Window) Fullscreen() {
@@ -389,5 +356,3 @@ func (recv *Window) Unfullscreen() {
 
 	return
 }
-
-func (recv *Window) Object() *gobject.Object {}

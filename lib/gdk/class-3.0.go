@@ -4,9 +4,7 @@
 package gdk
 
 import (
-	gio "github.com/pekim/gobbi/lib/gio"
 	glib "github.com/pekim/gobbi/lib/glib"
-	gobject "github.com/pekim/gobbi/lib/gobject"
 	"unsafe"
 )
 
@@ -14,10 +12,6 @@ import (
 // #include <gdk/gdk.h>
 // #include <stdlib.h>
 import "C"
-
-func (recv *AppLaunchContext) AppLaunchContext() *gio.AppLaunchContext {}
-
-func (recv *Cursor) Object() *gobject.Object {}
 
 // GetAssociatedDevice is a wrapper around the C function gdk_device_get_associated_device.
 func (recv *Device) GetAssociatedDevice() *Device {
@@ -138,8 +132,6 @@ func (recv *Device) Warp(screen *Screen, x int32, y int32) {
 	return
 }
 
-func (recv *Device) Object() *gobject.Object {}
-
 // GetClientPointer is a wrapper around the C function gdk_device_manager_get_client_pointer.
 func (recv *DeviceManager) GetClientPointer() *Device {
 	retC := C.gdk_device_manager_get_client_pointer((*C.GdkDeviceManager)(recv.native))
@@ -165,10 +157,6 @@ func (recv *DeviceManager) ListDevices(type_ DeviceType) *glib.List {
 
 	return retGo
 }
-
-func (recv *DeviceManager) Object() *gobject.Object {}
-
-func (recv *DeviceTool) Object() *gobject.Object {}
 
 // GetAppLaunchContext is a wrapper around the C function gdk_display_get_app_launch_context.
 func (recv *Display) GetAppLaunchContext() *AppLaunchContext {
@@ -204,8 +192,6 @@ func (recv *Display) NotifyStartupComplete(startupId string) {
 	return
 }
 
-func (recv *Display) Object() *gobject.Object {}
-
 // OpenDisplay is a wrapper around the C function gdk_display_manager_open_display.
 func (recv *DisplayManager) OpenDisplay(name string) *Display {
 	c_name := C.CString(name)
@@ -216,8 +202,6 @@ func (recv *DisplayManager) OpenDisplay(name string) *Display {
 
 	return retGo
 }
-
-func (recv *DisplayManager) Object() *gobject.Object {}
 
 // GetDestWindow is a wrapper around the C function gdk_drag_context_get_dest_window.
 func (recv *DragContext) GetDestWindow() *Window {
@@ -235,14 +219,6 @@ func (recv *DragContext) GetProtocol() DragProtocol {
 	return retGo
 }
 
-func (recv *DragContext) Object() *gobject.Object {}
-
-func (recv *DrawingContext) Object() *gobject.Object {}
-
-func (recv *FrameClock) Object() *gobject.Object {}
-
-func (recv *GLContext) Object() *gobject.Object {}
-
 // GetNumLockState is a wrapper around the C function gdk_keymap_get_num_lock_state.
 func (recv *Keymap) GetNumLockState() bool {
 	retC := C.gdk_keymap_get_num_lock_state((*C.GdkKeymap)(recv.native))
@@ -250,16 +226,6 @@ func (recv *Keymap) GetNumLockState() bool {
 
 	return retGo
 }
-
-func (recv *Keymap) Object() *gobject.Object {}
-
-func (recv *Monitor) Object() *gobject.Object {}
-
-func (recv *Screen) Object() *gobject.Object {}
-
-func (recv *Seat) Object() *gobject.Object {}
-
-func (recv *Visual) Object() *gobject.Object {}
 
 // GetDeviceCursor is a wrapper around the C function gdk_window_get_device_cursor.
 func (recv *Window) GetDeviceCursor(device *Device) *Cursor {
@@ -335,5 +301,3 @@ func (recv *Window) SetSupportMultidevice(supportMultidevice bool) {
 
 	return
 }
-
-func (recv *Window) Object() *gobject.Object {}

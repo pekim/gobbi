@@ -5,9 +5,7 @@ package gdk
 
 import (
 	cairo "github.com/pekim/gobbi/lib/cairo"
-	gio "github.com/pekim/gobbi/lib/gio"
 	glib "github.com/pekim/gobbi/lib/glib"
-	gobject "github.com/pekim/gobbi/lib/gobject"
 	"unsafe"
 )
 
@@ -15,8 +13,6 @@ import (
 // #include <gdk/gdk.h>
 // #include <stdlib.h>
 import "C"
-
-func (recv *AppLaunchContext) AppLaunchContext() *gio.AppLaunchContext {}
 
 // GetCursorType is a wrapper around the C function gdk_cursor_get_cursor_type.
 func (recv *Cursor) GetCursorType() CursorType {
@@ -26,14 +22,6 @@ func (recv *Cursor) GetCursorType() CursorType {
 	return retGo
 }
 
-func (recv *Cursor) Object() *gobject.Object {}
-
-func (recv *Device) Object() *gobject.Object {}
-
-func (recv *DeviceManager) Object() *gobject.Object {}
-
-func (recv *DeviceTool) Object() *gobject.Object {}
-
 // IsClosed is a wrapper around the C function gdk_display_is_closed.
 func (recv *Display) IsClosed() bool {
 	retC := C.gdk_display_is_closed((*C.GdkDisplay)(recv.native))
@@ -41,10 +29,6 @@ func (recv *Display) IsClosed() bool {
 
 	return retGo
 }
-
-func (recv *Display) Object() *gobject.Object {}
-
-func (recv *DisplayManager) Object() *gobject.Object {}
 
 // GetActions is a wrapper around the C function gdk_drag_context_get_actions.
 func (recv *DragContext) GetActions() DragAction {
@@ -85,22 +69,6 @@ func (recv *DragContext) ListTargets() *glib.List {
 
 	return retGo
 }
-
-func (recv *DragContext) Object() *gobject.Object {}
-
-func (recv *DrawingContext) Object() *gobject.Object {}
-
-func (recv *FrameClock) Object() *gobject.Object {}
-
-func (recv *GLContext) Object() *gobject.Object {}
-
-func (recv *Keymap) Object() *gobject.Object {}
-
-func (recv *Monitor) Object() *gobject.Object {}
-
-func (recv *Screen) Object() *gobject.Object {}
-
-func (recv *Seat) Object() *gobject.Object {}
 
 // GetBitsPerRgb is a wrapper around the C function gdk_visual_get_bits_per_rgb.
 func (recv *Visual) GetBitsPerRgb() int32 {
@@ -198,8 +166,6 @@ func (recv *Visual) GetVisualType() VisualType {
 
 	return retGo
 }
-
-func (recv *Visual) Object() *gobject.Object {}
 
 // CoordsFromParent is a wrapper around the C function gdk_window_coords_from_parent.
 func (recv *Window) CoordsFromParent(parentX float64, parentY float64) (*float64, *float64) {
@@ -332,5 +298,3 @@ func (recv *Window) IsShaped() bool {
 
 	return retGo
 }
-
-func (recv *Window) Object() *gobject.Object {}

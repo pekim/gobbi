@@ -12,8 +12,6 @@ import (
 // #include <stdlib.h>
 import "C"
 
-func (recv *Binding) Object() *Object {}
-
 // InitiallyUnowned is a wrapper around the C record GInitiallyUnowned.
 type InitiallyUnowned struct {
 	native *C.GInitiallyUnowned
@@ -36,7 +34,10 @@ func (recv *InitiallyUnowned) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-func (recv *InitiallyUnowned) Object() *Object {}
+// Object upcasts to *Object
+func (recv *InitiallyUnowned) Object() *Object {
+	return ObjectNewFromC(recv.native)
+}
 
 // Object is a wrapper around the C record GObject.
 type Object struct {
@@ -396,7 +397,10 @@ func (recv *ParamSpecBoolean) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-func (recv *ParamSpecBoolean) ParamSpec() *ParamSpec {}
+// ParamSpec upcasts to *ParamSpec
+func (recv *ParamSpecBoolean) ParamSpec() *ParamSpec {
+	return ParamSpecNewFromC(recv.native)
+}
 
 // ParamSpecBoxed is a wrapper around the C record GParamSpecBoxed.
 type ParamSpecBoxed struct {
@@ -420,7 +424,10 @@ func (recv *ParamSpecBoxed) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-func (recv *ParamSpecBoxed) ParamSpec() *ParamSpec {}
+// ParamSpec upcasts to *ParamSpec
+func (recv *ParamSpecBoxed) ParamSpec() *ParamSpec {
+	return ParamSpecNewFromC(recv.native)
+}
 
 // ParamSpecChar is a wrapper around the C record GParamSpecChar.
 type ParamSpecChar struct {
@@ -458,7 +465,10 @@ func (recv *ParamSpecChar) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-func (recv *ParamSpecChar) ParamSpec() *ParamSpec {}
+// ParamSpec upcasts to *ParamSpec
+func (recv *ParamSpecChar) ParamSpec() *ParamSpec {
+	return ParamSpecNewFromC(recv.native)
+}
 
 // ParamSpecDouble is a wrapper around the C record GParamSpecDouble.
 type ParamSpecDouble struct {
@@ -500,7 +510,10 @@ func (recv *ParamSpecDouble) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-func (recv *ParamSpecDouble) ParamSpec() *ParamSpec {}
+// ParamSpec upcasts to *ParamSpec
+func (recv *ParamSpecDouble) ParamSpec() *ParamSpec {
+	return ParamSpecNewFromC(recv.native)
+}
 
 // ParamSpecEnum is a wrapper around the C record GParamSpecEnum.
 type ParamSpecEnum struct {
@@ -531,7 +544,10 @@ func (recv *ParamSpecEnum) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-func (recv *ParamSpecEnum) ParamSpec() *ParamSpec {}
+// ParamSpec upcasts to *ParamSpec
+func (recv *ParamSpecEnum) ParamSpec() *ParamSpec {
+	return ParamSpecNewFromC(recv.native)
+}
 
 // ParamSpecFlags is a wrapper around the C record GParamSpecFlags.
 type ParamSpecFlags struct {
@@ -562,7 +578,10 @@ func (recv *ParamSpecFlags) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-func (recv *ParamSpecFlags) ParamSpec() *ParamSpec {}
+// ParamSpec upcasts to *ParamSpec
+func (recv *ParamSpecFlags) ParamSpec() *ParamSpec {
+	return ParamSpecNewFromC(recv.native)
+}
 
 // ParamSpecFloat is a wrapper around the C record GParamSpecFloat.
 type ParamSpecFloat struct {
@@ -604,9 +623,10 @@ func (recv *ParamSpecFloat) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-func (recv *ParamSpecFloat) ParamSpec() *ParamSpec {}
-
-func (recv *ParamSpecGType) ParamSpec() *ParamSpec {}
+// ParamSpec upcasts to *ParamSpec
+func (recv *ParamSpecFloat) ParamSpec() *ParamSpec {
+	return ParamSpecNewFromC(recv.native)
+}
 
 // ParamSpecInt is a wrapper around the C record GParamSpecInt.
 type ParamSpecInt struct {
@@ -644,7 +664,10 @@ func (recv *ParamSpecInt) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-func (recv *ParamSpecInt) ParamSpec() *ParamSpec {}
+// ParamSpec upcasts to *ParamSpec
+func (recv *ParamSpecInt) ParamSpec() *ParamSpec {
+	return ParamSpecNewFromC(recv.native)
+}
 
 // ParamSpecInt64 is a wrapper around the C record GParamSpecInt64.
 type ParamSpecInt64 struct {
@@ -682,7 +705,10 @@ func (recv *ParamSpecInt64) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-func (recv *ParamSpecInt64) ParamSpec() *ParamSpec {}
+// ParamSpec upcasts to *ParamSpec
+func (recv *ParamSpecInt64) ParamSpec() *ParamSpec {
+	return ParamSpecNewFromC(recv.native)
+}
 
 // ParamSpecLong is a wrapper around the C record GParamSpecLong.
 type ParamSpecLong struct {
@@ -720,7 +746,10 @@ func (recv *ParamSpecLong) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-func (recv *ParamSpecLong) ParamSpec() *ParamSpec {}
+// ParamSpec upcasts to *ParamSpec
+func (recv *ParamSpecLong) ParamSpec() *ParamSpec {
+	return ParamSpecNewFromC(recv.native)
+}
 
 // ParamSpecObject is a wrapper around the C record GParamSpecObject.
 type ParamSpecObject struct {
@@ -744,9 +773,10 @@ func (recv *ParamSpecObject) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-func (recv *ParamSpecObject) ParamSpec() *ParamSpec {}
-
-func (recv *ParamSpecOverride) ParamSpec() *ParamSpec {}
+// ParamSpec upcasts to *ParamSpec
+func (recv *ParamSpecObject) ParamSpec() *ParamSpec {
+	return ParamSpecNewFromC(recv.native)
+}
 
 // ParamSpecParam is a wrapper around the C record GParamSpecParam.
 type ParamSpecParam struct {
@@ -770,7 +800,10 @@ func (recv *ParamSpecParam) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-func (recv *ParamSpecParam) ParamSpec() *ParamSpec {}
+// ParamSpec upcasts to *ParamSpec
+func (recv *ParamSpecParam) ParamSpec() *ParamSpec {
+	return ParamSpecNewFromC(recv.native)
+}
 
 // ParamSpecPointer is a wrapper around the C record GParamSpecPointer.
 type ParamSpecPointer struct {
@@ -794,7 +827,10 @@ func (recv *ParamSpecPointer) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-func (recv *ParamSpecPointer) ParamSpec() *ParamSpec {}
+// ParamSpec upcasts to *ParamSpec
+func (recv *ParamSpecPointer) ParamSpec() *ParamSpec {
+	return ParamSpecNewFromC(recv.native)
+}
 
 // ParamSpecString is a wrapper around the C record GParamSpecString.
 type ParamSpecString struct {
@@ -838,7 +874,10 @@ func (recv *ParamSpecString) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-func (recv *ParamSpecString) ParamSpec() *ParamSpec {}
+// ParamSpec upcasts to *ParamSpec
+func (recv *ParamSpecString) ParamSpec() *ParamSpec {
+	return ParamSpecNewFromC(recv.native)
+}
 
 // ParamSpecUChar is a wrapper around the C record GParamSpecUChar.
 type ParamSpecUChar struct {
@@ -876,7 +915,10 @@ func (recv *ParamSpecUChar) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-func (recv *ParamSpecUChar) ParamSpec() *ParamSpec {}
+// ParamSpec upcasts to *ParamSpec
+func (recv *ParamSpecUChar) ParamSpec() *ParamSpec {
+	return ParamSpecNewFromC(recv.native)
+}
 
 // ParamSpecUInt is a wrapper around the C record GParamSpecUInt.
 type ParamSpecUInt struct {
@@ -914,7 +956,10 @@ func (recv *ParamSpecUInt) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-func (recv *ParamSpecUInt) ParamSpec() *ParamSpec {}
+// ParamSpec upcasts to *ParamSpec
+func (recv *ParamSpecUInt) ParamSpec() *ParamSpec {
+	return ParamSpecNewFromC(recv.native)
+}
 
 // ParamSpecUInt64 is a wrapper around the C record GParamSpecUInt64.
 type ParamSpecUInt64 struct {
@@ -952,7 +997,10 @@ func (recv *ParamSpecUInt64) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-func (recv *ParamSpecUInt64) ParamSpec() *ParamSpec {}
+// ParamSpec upcasts to *ParamSpec
+func (recv *ParamSpecUInt64) ParamSpec() *ParamSpec {
+	return ParamSpecNewFromC(recv.native)
+}
 
 // ParamSpecULong is a wrapper around the C record GParamSpecULong.
 type ParamSpecULong struct {
@@ -990,7 +1038,10 @@ func (recv *ParamSpecULong) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-func (recv *ParamSpecULong) ParamSpec() *ParamSpec {}
+// ParamSpec upcasts to *ParamSpec
+func (recv *ParamSpecULong) ParamSpec() *ParamSpec {
+	return ParamSpecNewFromC(recv.native)
+}
 
 // ParamSpecUnichar is a wrapper around the C record GParamSpecUnichar.
 type ParamSpecUnichar struct {
@@ -1020,7 +1071,10 @@ func (recv *ParamSpecUnichar) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-func (recv *ParamSpecUnichar) ParamSpec() *ParamSpec {}
+// ParamSpec upcasts to *ParamSpec
+func (recv *ParamSpecUnichar) ParamSpec() *ParamSpec {
+	return ParamSpecNewFromC(recv.native)
+}
 
 // ParamSpecValueArray is a wrapper around the C record GParamSpecValueArray.
 type ParamSpecValueArray struct {
@@ -1051,9 +1105,10 @@ func (recv *ParamSpecValueArray) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-func (recv *ParamSpecValueArray) ParamSpec() *ParamSpec {}
-
-func (recv *ParamSpecVariant) ParamSpec() *ParamSpec {}
+// ParamSpec upcasts to *ParamSpec
+func (recv *ParamSpecValueArray) ParamSpec() *ParamSpec {
+	return ParamSpecNewFromC(recv.native)
+}
 
 // TypeModule is a wrapper around the C record GTypeModule.
 type TypeModule struct {
@@ -1089,6 +1144,11 @@ func (recv *TypeModule) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Object upcasts to *Object
+func (recv *TypeModule) Object() *Object {
+	return ObjectNewFromC(recv.native)
+}
+
 // Unsupported : g_type_module_add_interface : unsupported parameter instance_type : no type generator for GType, GType
 
 // Unsupported : g_type_module_register_type : unsupported parameter parent_type : no type generator for GType, GType
@@ -1117,5 +1177,3 @@ func (recv *TypeModule) Use() bool {
 
 	return retGo
 }
-
-func (recv *TypeModule) Object() *Object {}

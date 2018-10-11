@@ -3,20 +3,12 @@
 
 package gdk
 
-import (
-	gio "github.com/pekim/gobbi/lib/gio"
-	gobject "github.com/pekim/gobbi/lib/gobject"
-	"unsafe"
-)
+import "unsafe"
 
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <gdk/gdk.h>
 // #include <stdlib.h>
 import "C"
-
-func (recv *AppLaunchContext) AppLaunchContext() *gio.AppLaunchContext {}
-
-func (recv *Cursor) Object() *gobject.Object {}
 
 // GetLastEventWindow is a wrapper around the C function gdk_device_get_last_event_window.
 func (recv *Device) GetLastEventWindow() *Window {
@@ -25,34 +17,6 @@ func (recv *Device) GetLastEventWindow() *Window {
 
 	return retGo
 }
-
-func (recv *Device) Object() *gobject.Object {}
-
-func (recv *DeviceManager) Object() *gobject.Object {}
-
-func (recv *DeviceTool) Object() *gobject.Object {}
-
-func (recv *Display) Object() *gobject.Object {}
-
-func (recv *DisplayManager) Object() *gobject.Object {}
-
-func (recv *DragContext) Object() *gobject.Object {}
-
-func (recv *DrawingContext) Object() *gobject.Object {}
-
-func (recv *FrameClock) Object() *gobject.Object {}
-
-func (recv *GLContext) Object() *gobject.Object {}
-
-func (recv *Keymap) Object() *gobject.Object {}
-
-func (recv *Monitor) Object() *gobject.Object {}
-
-func (recv *Screen) Object() *gobject.Object {}
-
-func (recv *Seat) Object() *gobject.Object {}
-
-func (recv *Visual) Object() *gobject.Object {}
 
 // GetEventCompression is a wrapper around the C function gdk_window_get_event_compression.
 func (recv *Window) GetEventCompression() bool {
@@ -86,5 +50,3 @@ func (recv *Window) SetShadowWidth(left int32, right int32, top int32, bottom in
 
 	return
 }
-
-func (recv *Window) Object() *gobject.Object {}

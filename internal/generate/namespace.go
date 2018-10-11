@@ -111,6 +111,19 @@ func (ns *Namespace) classForName(name string) (*Class, bool) {
 	return class, class != nil
 }
 
+func (ns *Namespace) recordOrClassRecordForName(name string) (*Record, bool) {
+	if record, found := ns.recordForName(name); found {
+		return record, found
+	}
+
+	class, found := ns.classForName(name)
+	if found {
+		return class.Record, found
+	}
+
+	return nil, false
+}
+
 func (ns *Namespace) get(name string) *Namespace {
 	for _, namespace := range ns.namespaces {
 		if namespace.Name == name {

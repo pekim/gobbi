@@ -5,9 +5,7 @@ package gdk
 
 import (
 	cairo "github.com/pekim/gobbi/lib/cairo"
-	gio "github.com/pekim/gobbi/lib/gio"
 	glib "github.com/pekim/gobbi/lib/glib"
-	gobject "github.com/pekim/gobbi/lib/gobject"
 	"unsafe"
 )
 
@@ -15,8 +13,6 @@ import (
 // #include <gdk/gdk.h>
 // #include <stdlib.h>
 import "C"
-
-func (recv *AppLaunchContext) AppLaunchContext() *gio.AppLaunchContext {}
 
 // CursorNewFromSurface is a wrapper around the C function gdk_cursor_new_from_surface.
 func CursorNewFromSurface(display *Display, surface *cairo.Surface, x float64, y float64) *Cursor {
@@ -50,31 +46,7 @@ func (recv *Cursor) GetSurface() (*cairo.Surface, *float64, *float64) {
 	return retGo, xHot, yHot
 }
 
-func (recv *Cursor) Object() *gobject.Object {}
-
 // Unsupported : gdk_device_get_position_double : unsupported parameter screen : record with indirection level of 2
-
-func (recv *Device) Object() *gobject.Object {}
-
-func (recv *DeviceManager) Object() *gobject.Object {}
-
-func (recv *DeviceTool) Object() *gobject.Object {}
-
-func (recv *Display) Object() *gobject.Object {}
-
-func (recv *DisplayManager) Object() *gobject.Object {}
-
-func (recv *DragContext) Object() *gobject.Object {}
-
-func (recv *DrawingContext) Object() *gobject.Object {}
-
-func (recv *FrameClock) Object() *gobject.Object {}
-
-func (recv *GLContext) Object() *gobject.Object {}
-
-func (recv *Keymap) Object() *gobject.Object {}
-
-func (recv *Monitor) Object() *gobject.Object {}
 
 // GetMonitorScaleFactor is a wrapper around the C function gdk_screen_get_monitor_scale_factor.
 func (recv *Screen) GetMonitorScaleFactor(monitorNum int32) int32 {
@@ -85,12 +57,6 @@ func (recv *Screen) GetMonitorScaleFactor(monitorNum int32) int32 {
 
 	return retGo
 }
-
-func (recv *Screen) Object() *gobject.Object {}
-
-func (recv *Seat) Object() *gobject.Object {}
-
-func (recv *Visual) Object() *gobject.Object {}
 
 // Unsupported : gdk_window_create_similar_image_surface : unsupported parameter format : no type generator for gint, cairo_format_t
 
@@ -124,5 +90,3 @@ func (recv *Window) SetOpaqueRegion(region *cairo.Region) {
 
 	return
 }
-
-func (recv *Window) Object() *gobject.Object {}

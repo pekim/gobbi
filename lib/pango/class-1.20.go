@@ -3,31 +3,12 @@
 
 package pango
 
-import (
-	gobject "github.com/pekim/gobbi/lib/gobject"
-	"unsafe"
-)
+import "unsafe"
 
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <pango/pango.h>
 // #include <stdlib.h>
 import "C"
-
-func (recv *Context) Object() *gobject.Object {}
-
-func (recv *EngineLang) Engine() *Engine {}
-
-func (recv *EngineShape) Engine() *Engine {}
-
-func (recv *Font) Object() *gobject.Object {}
-
-func (recv *FontFace) Object() *gobject.Object {}
-
-func (recv *FontFamily) Object() *gobject.Object {}
-
-func (recv *FontMap) Object() *gobject.Object {}
-
-func (recv *Fontset) Object() *gobject.Object {}
 
 // GetHeight is a wrapper around the C function pango_layout_get_height.
 func (recv *Layout) GetHeight() int32 {
@@ -46,8 +27,6 @@ func (recv *Layout) SetHeight(height int32) {
 	return
 }
 
-func (recv *Layout) Object() *gobject.Object {}
-
 // GetLayout is a wrapper around the C function pango_renderer_get_layout.
 func (recv *Renderer) GetLayout() *Layout {
 	retC := C.pango_renderer_get_layout((*C.PangoRenderer)(recv.native))
@@ -63,5 +42,3 @@ func (recv *Renderer) GetLayoutLine() *LayoutLine {
 
 	return retGo
 }
-
-func (recv *Renderer) Object() *gobject.Object {}

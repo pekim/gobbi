@@ -3,27 +3,12 @@
 
 package pango
 
-import (
-	gobject "github.com/pekim/gobbi/lib/gobject"
-	"unsafe"
-)
+import "unsafe"
 
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <pango/pango.h>
 // #include <stdlib.h>
 import "C"
-
-func (recv *Context) Object() *gobject.Object {}
-
-func (recv *EngineLang) Engine() *Engine {}
-
-func (recv *EngineShape) Engine() *Engine {}
-
-func (recv *Font) Object() *gobject.Object {}
-
-func (recv *FontFace) Object() *gobject.Object {}
-
-func (recv *FontFamily) Object() *gobject.Object {}
 
 // CreateContext is a wrapper around the C function pango_font_map_create_context.
 func (recv *FontMap) CreateContext() *Context {
@@ -33,10 +18,6 @@ func (recv *FontMap) CreateContext() *Context {
 	return retGo
 }
 
-func (recv *FontMap) Object() *gobject.Object {}
-
-func (recv *Fontset) Object() *gobject.Object {}
-
 // GetBaseline is a wrapper around the C function pango_layout_get_baseline.
 func (recv *Layout) GetBaseline() int32 {
 	retC := C.pango_layout_get_baseline((*C.PangoLayout)(recv.native))
@@ -44,8 +25,6 @@ func (recv *Layout) GetBaseline() int32 {
 
 	return retGo
 }
-
-func (recv *Layout) Object() *gobject.Object {}
 
 // DrawGlyphItem is a wrapper around the C function pango_renderer_draw_glyph_item.
 func (recv *Renderer) DrawGlyphItem(text string, glyphItem *GlyphItem, x int32, y int32) {
@@ -62,5 +41,3 @@ func (recv *Renderer) DrawGlyphItem(text string, glyphItem *GlyphItem, x int32, 
 
 	return
 }
-
-func (recv *Renderer) Object() *gobject.Object {}

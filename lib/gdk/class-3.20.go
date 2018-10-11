@@ -4,9 +4,7 @@
 package gdk
 
 import (
-	gio "github.com/pekim/gobbi/lib/gio"
 	glib "github.com/pekim/gobbi/lib/glib"
-	gobject "github.com/pekim/gobbi/lib/gobject"
 	"unsafe"
 )
 
@@ -15,10 +13,6 @@ import (
 // #include <stdlib.h>
 import "C"
 
-func (recv *AppLaunchContext) AppLaunchContext() *gio.AppLaunchContext {}
-
-func (recv *Cursor) Object() *gobject.Object {}
-
 // GetSeat is a wrapper around the C function gdk_device_get_seat.
 func (recv *Device) GetSeat() *Seat {
 	retC := C.gdk_device_get_seat((*C.GdkDevice)(recv.native))
@@ -26,12 +20,6 @@ func (recv *Device) GetSeat() *Seat {
 
 	return retGo
 }
-
-func (recv *Device) Object() *gobject.Object {}
-
-func (recv *DeviceManager) Object() *gobject.Object {}
-
-func (recv *DeviceTool) Object() *gobject.Object {}
 
 // GetDefaultSeat is a wrapper around the C function gdk_display_get_default_seat.
 func (recv *Display) GetDefaultSeat() *Seat {
@@ -48,10 +36,6 @@ func (recv *Display) ListSeats() *glib.List {
 
 	return retGo
 }
-
-func (recv *Display) Object() *gobject.Object {}
-
-func (recv *DisplayManager) Object() *gobject.Object {}
 
 // GetDragWindow is a wrapper around the C function gdk_drag_context_get_drag_window.
 func (recv *DragContext) GetDragWindow() *Window {
@@ -84,12 +68,6 @@ func (recv *DragContext) SetHotspot(hotX int32, hotY int32) {
 	return
 }
 
-func (recv *DragContext) Object() *gobject.Object {}
-
-func (recv *DrawingContext) Object() *gobject.Object {}
-
-func (recv *FrameClock) Object() *gobject.Object {}
-
 // IsLegacy is a wrapper around the C function gdk_gl_context_is_legacy.
 func (recv *GLContext) IsLegacy() bool {
 	retC := C.gdk_gl_context_is_legacy((*C.GdkGLContext)(recv.native))
@@ -97,14 +75,6 @@ func (recv *GLContext) IsLegacy() bool {
 
 	return retGo
 }
-
-func (recv *GLContext) Object() *gobject.Object {}
-
-func (recv *Keymap) Object() *gobject.Object {}
-
-func (recv *Monitor) Object() *gobject.Object {}
-
-func (recv *Screen) Object() *gobject.Object {}
 
 // GetCapabilities is a wrapper around the C function gdk_seat_get_capabilities.
 func (recv *Seat) GetCapabilities() SeatCapabilities {
@@ -148,9 +118,3 @@ func (recv *Seat) Ungrab() {
 
 	return
 }
-
-func (recv *Seat) Object() *gobject.Object {}
-
-func (recv *Visual) Object() *gobject.Object {}
-
-func (recv *Window) Object() *gobject.Object {}

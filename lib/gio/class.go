@@ -23,8 +23,6 @@ import (
 // #include <stdlib.h>
 import "C"
 
-func (recv *AppInfoMonitor) Object() *gobject.Object {}
-
 // AppLaunchContext is a wrapper around the C record GAppLaunchContext.
 type AppLaunchContext struct {
 	native *C.GAppLaunchContext
@@ -46,6 +44,11 @@ func AppLaunchContextNewFromC(u unsafe.Pointer) *AppLaunchContext {
 func (recv *AppLaunchContext) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Object upcasts to *Object
+func (recv *AppLaunchContext) Object() *gobject.Object {
+	return gobject.ObjectNewFromC(recv.native)
 }
 
 // AppLaunchContextNew is a wrapper around the C function g_app_launch_context_new.
@@ -70,10 +73,6 @@ func (recv *AppLaunchContext) LaunchFailed(startupNotifyId string) {
 	return
 }
 
-func (recv *AppLaunchContext) Object() *gobject.Object {}
-
-func (recv *Application) Object() *gobject.Object {}
-
 // ApplicationCommandLine is a wrapper around the C record GApplicationCommandLine.
 type ApplicationCommandLine struct {
 	native *C.GApplicationCommandLine
@@ -97,7 +96,10 @@ func (recv *ApplicationCommandLine) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-func (recv *ApplicationCommandLine) Object() *gobject.Object {}
+// Object upcasts to *Object
+func (recv *ApplicationCommandLine) Object() *gobject.Object {
+	return gobject.ObjectNewFromC(recv.native)
+}
 
 // BufferedInputStream is a wrapper around the C record GBufferedInputStream.
 type BufferedInputStream struct {
@@ -120,6 +122,11 @@ func BufferedInputStreamNewFromC(u unsafe.Pointer) *BufferedInputStream {
 func (recv *BufferedInputStream) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// FilterInputStream upcasts to *FilterInputStream
+func (recv *BufferedInputStream) FilterInputStream() *FilterInputStream {
+	return FilterInputStreamNewFromC(recv.native)
 }
 
 // BufferedInputStreamNew is a wrapper around the C function g_buffered_input_stream_new.
@@ -213,8 +220,6 @@ func (recv *BufferedInputStream) SetBufferSize(size uint64) {
 	return
 }
 
-func (recv *BufferedInputStream) FilterInputStream() *FilterInputStream {}
-
 // BufferedOutputStream is a wrapper around the C record GBufferedOutputStream.
 type BufferedOutputStream struct {
 	native *C.GBufferedOutputStream
@@ -236,6 +241,11 @@ func BufferedOutputStreamNewFromC(u unsafe.Pointer) *BufferedOutputStream {
 func (recv *BufferedOutputStream) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// FilterOutputStream upcasts to *FilterOutputStream
+func (recv *BufferedOutputStream) FilterOutputStream() *FilterOutputStream {
+	return FilterOutputStreamNewFromC(recv.native)
 }
 
 // BufferedOutputStreamNew is a wrapper around the C function g_buffered_output_stream_new.
@@ -295,8 +305,6 @@ func (recv *BufferedOutputStream) SetBufferSize(size uint64) {
 	return
 }
 
-func (recv *BufferedOutputStream) FilterOutputStream() *FilterOutputStream {}
-
 // BytesIcon is a wrapper around the C record GBytesIcon.
 type BytesIcon struct {
 	native *C.GBytesIcon
@@ -318,7 +326,10 @@ func (recv *BytesIcon) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-func (recv *BytesIcon) Object() *gobject.Object {}
+// Object upcasts to *Object
+func (recv *BytesIcon) Object() *gobject.Object {
+	return gobject.ObjectNewFromC(recv.native)
+}
 
 // Cancellable is a wrapper around the C record GCancellable.
 type Cancellable struct {
@@ -341,6 +352,11 @@ func CancellableNewFromC(u unsafe.Pointer) *Cancellable {
 func (recv *Cancellable) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Object upcasts to *Object
+func (recv *Cancellable) Object() *gobject.Object {
+	return gobject.ObjectNewFromC(recv.native)
 }
 
 // CancellableNew is a wrapper around the C function g_cancellable_new.
@@ -410,8 +426,6 @@ func (recv *Cancellable) SetErrorIfCancelled() (bool, error) {
 	return retGo, goThrowableError
 }
 
-func (recv *Cancellable) Object() *gobject.Object {}
-
 // CharsetConverter is a wrapper around the C record GCharsetConverter.
 type CharsetConverter struct {
 	native *C.GCharsetConverter
@@ -433,7 +447,10 @@ func (recv *CharsetConverter) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-func (recv *CharsetConverter) Object() *gobject.Object {}
+// Object upcasts to *Object
+func (recv *CharsetConverter) Object() *gobject.Object {
+	return gobject.ObjectNewFromC(recv.native)
+}
 
 // ConverterInputStream is a wrapper around the C record GConverterInputStream.
 type ConverterInputStream struct {
@@ -458,9 +475,12 @@ func (recv *ConverterInputStream) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : g_converter_input_stream_new : unsupported parameter converter : no type generator for Converter, GConverter*
+// FilterInputStream upcasts to *FilterInputStream
+func (recv *ConverterInputStream) FilterInputStream() *FilterInputStream {
+	return FilterInputStreamNewFromC(recv.native)
+}
 
-func (recv *ConverterInputStream) FilterInputStream() *FilterInputStream {}
+// Unsupported : g_converter_input_stream_new : unsupported parameter converter : no type generator for Converter, GConverter*
 
 // ConverterOutputStream is a wrapper around the C record GConverterOutputStream.
 type ConverterOutputStream struct {
@@ -485,11 +505,12 @@ func (recv *ConverterOutputStream) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// FilterOutputStream upcasts to *FilterOutputStream
+func (recv *ConverterOutputStream) FilterOutputStream() *FilterOutputStream {
+	return FilterOutputStreamNewFromC(recv.native)
+}
+
 // Unsupported : g_converter_output_stream_new : unsupported parameter converter : no type generator for Converter, GConverter*
-
-func (recv *ConverterOutputStream) FilterOutputStream() *FilterOutputStream {}
-
-func (recv *Credentials) Object() *gobject.Object {}
 
 // DBusActionGroup is a wrapper around the C record GDBusActionGroup.
 type DBusActionGroup struct {
@@ -512,17 +533,14 @@ func (recv *DBusActionGroup) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-func (recv *DBusActionGroup) Object() *gobject.Object {}
-
-func (recv *DBusAuthObserver) Object() *gobject.Object {}
+// Object upcasts to *Object
+func (recv *DBusActionGroup) Object() *gobject.Object {
+	return gobject.ObjectNewFromC(recv.native)
+}
 
 // Unsupported : g_dbus_connection_new_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
 
 // Unsupported : g_dbus_connection_new_for_address_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
-
-func (recv *DBusConnection) Object() *gobject.Object {}
-
-func (recv *DBusInterfaceSkeleton) Object() *gobject.Object {}
 
 // DBusMenuModel is a wrapper around the C record GDBusMenuModel.
 type DBusMenuModel struct {
@@ -545,13 +563,12 @@ func (recv *DBusMenuModel) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-func (recv *DBusMenuModel) MenuModel() *MenuModel {}
+// MenuModel upcasts to *MenuModel
+func (recv *DBusMenuModel) MenuModel() *MenuModel {
+	return MenuModelNewFromC(recv.native)
+}
 
 // Unsupported : g_dbus_message_new_from_blob : unsupported parameter blob : no param type
-
-func (recv *DBusMessage) Object() *gobject.Object {}
-
-func (recv *DBusMethodInvocation) Object() *gobject.Object {}
 
 // Unsupported : g_dbus_object_manager_client_new_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
 
@@ -561,21 +578,9 @@ func (recv *DBusMethodInvocation) Object() *gobject.Object {}
 
 // Unsupported : g_dbus_object_manager_client_new_sync : unsupported parameter get_proxy_type_func : no type generator for DBusProxyTypeFunc, GDBusProxyTypeFunc
 
-func (recv *DBusObjectManagerClient) Object() *gobject.Object {}
-
-func (recv *DBusObjectManagerServer) Object() *gobject.Object {}
-
-func (recv *DBusObjectProxy) Object() *gobject.Object {}
-
-func (recv *DBusObjectSkeleton) Object() *gobject.Object {}
-
 // Unsupported : g_dbus_proxy_new_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
 
 // Unsupported : g_dbus_proxy_new_for_bus_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
-
-func (recv *DBusProxy) Object() *gobject.Object {}
-
-func (recv *DBusServer) Object() *gobject.Object {}
 
 // DataInputStream is a wrapper around the C record GDataInputStream.
 type DataInputStream struct {
@@ -598,6 +603,11 @@ func DataInputStreamNewFromC(u unsafe.Pointer) *DataInputStream {
 func (recv *DataInputStream) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// BufferedInputStream upcasts to *BufferedInputStream
+func (recv *DataInputStream) BufferedInputStream() *BufferedInputStream {
+	return BufferedInputStreamNewFromC(recv.native)
 }
 
 // DataInputStreamNew is a wrapper around the C function g_data_input_stream_new.
@@ -790,8 +800,6 @@ func (recv *DataInputStream) SetNewlineType(type_ DataStreamNewlineType) {
 	return
 }
 
-func (recv *DataInputStream) BufferedInputStream() *BufferedInputStream {}
-
 // DataOutputStream is a wrapper around the C record GDataOutputStream.
 type DataOutputStream struct {
 	native *C.GDataOutputStream
@@ -813,6 +821,11 @@ func DataOutputStreamNewFromC(u unsafe.Pointer) *DataOutputStream {
 func (recv *DataOutputStream) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// FilterOutputStream upcasts to *FilterOutputStream
+func (recv *DataOutputStream) FilterOutputStream() *FilterOutputStream {
+	return FilterOutputStreamNewFromC(recv.native)
 }
 
 // DataOutputStreamNew is a wrapper around the C function g_data_output_stream_new.
@@ -995,8 +1008,6 @@ func (recv *DataOutputStream) SetByteOrder(order DataStreamByteOrder) {
 	return
 }
 
-func (recv *DataOutputStream) FilterOutputStream() *FilterOutputStream {}
-
 // DesktopAppInfo is a wrapper around the C record GDesktopAppInfo.
 type DesktopAppInfo struct {
 	native *C.GDesktopAppInfo
@@ -1016,6 +1027,11 @@ func DesktopAppInfoNewFromC(u unsafe.Pointer) *DesktopAppInfo {
 func (recv *DesktopAppInfo) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Object upcasts to *Object
+func (recv *DesktopAppInfo) Object() *gobject.Object {
+	return gobject.ObjectNewFromC(recv.native)
 }
 
 // DesktopAppInfoNew is a wrapper around the C function g_desktop_app_info_new.
@@ -1066,8 +1082,6 @@ func (recv *DesktopAppInfo) GetIsHidden() bool {
 
 // Unsupported : g_desktop_app_info_launch_uris_as_manager : unsupported parameter user_setup : no type generator for GLib.SpawnChildSetupFunc, GSpawnChildSetupFunc
 
-func (recv *DesktopAppInfo) Object() *gobject.Object {}
-
 // Emblem is a wrapper around the C record GEmblem.
 type Emblem struct {
 	native *C.GEmblem
@@ -1089,11 +1103,14 @@ func (recv *Emblem) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Object upcasts to *Object
+func (recv *Emblem) Object() *gobject.Object {
+	return gobject.ObjectNewFromC(recv.native)
+}
+
 // Unsupported : g_emblem_new : unsupported parameter icon : no type generator for Icon, GIcon*
 
 // Unsupported : g_emblem_new_with_origin : unsupported parameter icon : no type generator for Icon, GIcon*
-
-func (recv *Emblem) Object() *gobject.Object {}
 
 // EmblemedIcon is a wrapper around the C record GEmblemedIcon.
 type EmblemedIcon struct {
@@ -1118,9 +1135,12 @@ func (recv *EmblemedIcon) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : g_emblemed_icon_new : unsupported parameter icon : no type generator for Icon, GIcon*
+// Object upcasts to *Object
+func (recv *EmblemedIcon) Object() *gobject.Object {
+	return gobject.ObjectNewFromC(recv.native)
+}
 
-func (recv *EmblemedIcon) Object() *gobject.Object {}
+// Unsupported : g_emblemed_icon_new : unsupported parameter icon : no type generator for Icon, GIcon*
 
 // FileEnumerator is a wrapper around the C record GFileEnumerator.
 type FileEnumerator struct {
@@ -1143,6 +1163,11 @@ func FileEnumeratorNewFromC(u unsafe.Pointer) *FileEnumerator {
 func (recv *FileEnumerator) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Object upcasts to *Object
+func (recv *FileEnumerator) Object() *gobject.Object {
+	return gobject.ObjectNewFromC(recv.native)
 }
 
 // Close is a wrapper around the C function g_file_enumerator_close.
@@ -1213,8 +1238,6 @@ func (recv *FileEnumerator) SetPending(pending bool) {
 	return
 }
 
-func (recv *FileEnumerator) Object() *gobject.Object {}
-
 // FileIOStream is a wrapper around the C record GFileIOStream.
 type FileIOStream struct {
 	native *C.GFileIOStream
@@ -1238,7 +1261,10 @@ func (recv *FileIOStream) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-func (recv *FileIOStream) IOStream() *IOStream {}
+// IOStream upcasts to *IOStream
+func (recv *FileIOStream) IOStream() *IOStream {
+	return IOStreamNewFromC(recv.native)
+}
 
 // FileIcon is a wrapper around the C record GFileIcon.
 type FileIcon struct {
@@ -1261,11 +1287,14 @@ func (recv *FileIcon) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Object upcasts to *Object
+func (recv *FileIcon) Object() *gobject.Object {
+	return gobject.ObjectNewFromC(recv.native)
+}
+
 // Unsupported : g_file_icon_new : unsupported parameter file : no type generator for File, GFile*
 
 // Unsupported : g_file_icon_get_file : no return generator
-
-func (recv *FileIcon) Object() *gobject.Object {}
 
 // FileInfo is a wrapper around the C record GFileInfo.
 type FileInfo struct {
@@ -1286,6 +1315,11 @@ func FileInfoNewFromC(u unsafe.Pointer) *FileInfo {
 func (recv *FileInfo) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Object upcasts to *Object
+func (recv *FileInfo) Object() *gobject.Object {
+	return gobject.ObjectNewFromC(recv.native)
 }
 
 // FileInfoNew is a wrapper around the C function g_file_info_new.
@@ -1815,8 +1849,6 @@ func (recv *FileInfo) UnsetAttributeMask() {
 	return
 }
 
-func (recv *FileInfo) Object() *gobject.Object {}
-
 // FileInputStream is a wrapper around the C record GFileInputStream.
 type FileInputStream struct {
 	native *C.GFileInputStream
@@ -1838,6 +1870,11 @@ func FileInputStreamNewFromC(u unsafe.Pointer) *FileInputStream {
 func (recv *FileInputStream) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// InputStream upcasts to *InputStream
+func (recv *FileInputStream) InputStream() *InputStream {
+	return InputStreamNewFromC(recv.native)
 }
 
 // QueryInfo is a wrapper around the C function g_file_input_stream_query_info.
@@ -1864,8 +1901,6 @@ func (recv *FileInputStream) QueryInfo(attributes string, cancellable *Cancellab
 
 // Unsupported : g_file_input_stream_query_info_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
 
-func (recv *FileInputStream) InputStream() *InputStream {}
-
 // FileMonitor is a wrapper around the C record GFileMonitor.
 type FileMonitor struct {
 	native *C.GFileMonitor
@@ -1887,6 +1922,11 @@ func FileMonitorNewFromC(u unsafe.Pointer) *FileMonitor {
 func (recv *FileMonitor) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Object upcasts to *Object
+func (recv *FileMonitor) Object() *gobject.Object {
+	return gobject.ObjectNewFromC(recv.native)
 }
 
 // Cancel is a wrapper around the C function g_file_monitor_cancel.
@@ -1916,8 +1956,6 @@ func (recv *FileMonitor) SetRateLimit(limitMsecs int32) {
 	return
 }
 
-func (recv *FileMonitor) Object() *gobject.Object {}
-
 // FileOutputStream is a wrapper around the C record GFileOutputStream.
 type FileOutputStream struct {
 	native *C.GFileOutputStream
@@ -1939,6 +1977,11 @@ func FileOutputStreamNewFromC(u unsafe.Pointer) *FileOutputStream {
 func (recv *FileOutputStream) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// OutputStream upcasts to *OutputStream
+func (recv *FileOutputStream) OutputStream() *OutputStream {
+	return OutputStreamNewFromC(recv.native)
 }
 
 // GetEtag is a wrapper around the C function g_file_output_stream_get_etag.
@@ -1974,8 +2017,6 @@ func (recv *FileOutputStream) QueryInfo(attributes string, cancellable *Cancella
 
 // Unsupported : g_file_output_stream_query_info_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
 
-func (recv *FileOutputStream) OutputStream() *OutputStream {}
-
 // FilenameCompleter is a wrapper around the C record GFilenameCompleter.
 type FilenameCompleter struct {
 	native *C.GFilenameCompleter
@@ -1995,6 +2036,11 @@ func FilenameCompleterNewFromC(u unsafe.Pointer) *FilenameCompleter {
 func (recv *FilenameCompleter) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Object upcasts to *Object
+func (recv *FilenameCompleter) Object() *gobject.Object {
+	return gobject.ObjectNewFromC(recv.native)
 }
 
 // FilenameCompleterNew is a wrapper around the C function g_filename_completer_new.
@@ -2029,8 +2075,6 @@ func (recv *FilenameCompleter) SetDirsOnly(dirsOnly bool) {
 	return
 }
 
-func (recv *FilenameCompleter) Object() *gobject.Object {}
-
 // FilterInputStream is a wrapper around the C record GFilterInputStream.
 type FilterInputStream struct {
 	native *C.GFilterInputStream
@@ -2052,6 +2096,11 @@ func FilterInputStreamNewFromC(u unsafe.Pointer) *FilterInputStream {
 func (recv *FilterInputStream) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// InputStream upcasts to *InputStream
+func (recv *FilterInputStream) InputStream() *InputStream {
+	return InputStreamNewFromC(recv.native)
 }
 
 // GetBaseStream is a wrapper around the C function g_filter_input_stream_get_base_stream.
@@ -2080,8 +2129,6 @@ func (recv *FilterInputStream) SetCloseBaseStream(closeBase bool) {
 	return
 }
 
-func (recv *FilterInputStream) InputStream() *InputStream {}
-
 // FilterOutputStream is a wrapper around the C record GFilterOutputStream.
 type FilterOutputStream struct {
 	native *C.GFilterOutputStream
@@ -2103,6 +2150,11 @@ func FilterOutputStreamNewFromC(u unsafe.Pointer) *FilterOutputStream {
 func (recv *FilterOutputStream) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// OutputStream upcasts to *OutputStream
+func (recv *FilterOutputStream) OutputStream() *OutputStream {
+	return OutputStreamNewFromC(recv.native)
 }
 
 // GetBaseStream is a wrapper around the C function g_filter_output_stream_get_base_stream.
@@ -2131,8 +2183,6 @@ func (recv *FilterOutputStream) SetCloseBaseStream(closeBase bool) {
 	return
 }
 
-func (recv *FilterOutputStream) OutputStream() *OutputStream {}
-
 // IOModule is a wrapper around the C record GIOModule.
 type IOModule struct {
 	native *C.GIOModule
@@ -2154,6 +2204,11 @@ func (recv *IOModule) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// TypeModule upcasts to *TypeModule
+func (recv *IOModule) TypeModule() *gobject.TypeModule {
+	return gobject.TypeModuleNewFromC(recv.native)
+}
+
 // IOModuleNew is a wrapper around the C function g_io_module_new.
 func IOModuleNew(filename string) *IOModule {
 	c_filename := C.CString(filename)
@@ -2168,8 +2223,6 @@ func IOModuleNew(filename string) *IOModule {
 // Blacklisted : g_io_module_load
 
 // Blacklisted : g_io_module_unload
-
-func (recv *IOModule) TypeModule() *gobject.TypeModule {}
 
 // IOStream is a wrapper around the C record GIOStream.
 type IOStream struct {
@@ -2194,7 +2247,10 @@ func (recv *IOStream) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-func (recv *IOStream) Object() *gobject.Object {}
+// Object upcasts to *Object
+func (recv *IOStream) Object() *gobject.Object {
+	return gobject.ObjectNewFromC(recv.native)
+}
 
 // InetAddress is a wrapper around the C record GInetAddress.
 type InetAddress struct {
@@ -2219,11 +2275,12 @@ func (recv *InetAddress) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Object upcasts to *Object
+func (recv *InetAddress) Object() *gobject.Object {
+	return gobject.ObjectNewFromC(recv.native)
+}
+
 // Unsupported : g_inet_address_new_from_bytes : unsupported parameter bytes : no param type
-
-func (recv *InetAddress) Object() *gobject.Object {}
-
-func (recv *InetAddressMask) Object() *gobject.Object {}
 
 // InetSocketAddress is a wrapper around the C record GInetSocketAddress.
 type InetSocketAddress struct {
@@ -2248,7 +2305,10 @@ func (recv *InetSocketAddress) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-func (recv *InetSocketAddress) SocketAddress() *SocketAddress {}
+// SocketAddress upcasts to *SocketAddress
+func (recv *InetSocketAddress) SocketAddress() *SocketAddress {
+	return SocketAddressNewFromC(recv.native)
+}
 
 // InputStream is a wrapper around the C record GInputStream.
 type InputStream struct {
@@ -2271,6 +2331,11 @@ func InputStreamNewFromC(u unsafe.Pointer) *InputStream {
 func (recv *InputStream) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Object upcasts to *Object
+func (recv *InputStream) Object() *gobject.Object {
+	return gobject.ObjectNewFromC(recv.native)
 }
 
 // ClearPending is a wrapper around the C function g_input_stream_clear_pending.
@@ -2363,8 +2428,6 @@ func (recv *InputStream) Skip(count uint64, cancellable *Cancellable) (int64, er
 
 // Unsupported : g_input_stream_skip_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
 
-func (recv *InputStream) Object() *gobject.Object {}
-
 // ListStore is a wrapper around the C record GListStore.
 type ListStore struct {
 	native *C.GListStore
@@ -2386,9 +2449,12 @@ func (recv *ListStore) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : g_list_store_new : unsupported parameter item_type : no type generator for GType, GType
+// Object upcasts to *Object
+func (recv *ListStore) Object() *gobject.Object {
+	return gobject.ObjectNewFromC(recv.native)
+}
 
-func (recv *ListStore) Object() *gobject.Object {}
+// Unsupported : g_list_store_new : unsupported parameter item_type : no type generator for GType, GType
 
 // MemoryInputStream is a wrapper around the C record GMemoryInputStream.
 type MemoryInputStream struct {
@@ -2413,6 +2479,11 @@ func (recv *MemoryInputStream) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// InputStream upcasts to *InputStream
+func (recv *MemoryInputStream) InputStream() *InputStream {
+	return InputStreamNewFromC(recv.native)
+}
+
 // MemoryInputStreamNew is a wrapper around the C function g_memory_input_stream_new.
 func MemoryInputStreamNew() *MemoryInputStream {
 	retC := C.g_memory_input_stream_new()
@@ -2424,8 +2495,6 @@ func MemoryInputStreamNew() *MemoryInputStream {
 // Unsupported : g_memory_input_stream_new_from_data : unsupported parameter data : no param type
 
 // Unsupported : g_memory_input_stream_add_data : unsupported parameter data : no param type
-
-func (recv *MemoryInputStream) InputStream() *InputStream {}
 
 // MemoryOutputStream is a wrapper around the C record GMemoryOutputStream.
 type MemoryOutputStream struct {
@@ -2450,6 +2519,11 @@ func (recv *MemoryOutputStream) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// OutputStream upcasts to *OutputStream
+func (recv *MemoryOutputStream) OutputStream() *OutputStream {
+	return OutputStreamNewFromC(recv.native)
+}
+
 // Unsupported : g_memory_output_stream_new : unsupported parameter realloc_function : no type generator for ReallocFunc, GReallocFunc
 
 // GetData is a wrapper around the C function g_memory_output_stream_get_data.
@@ -2467,18 +2541,6 @@ func (recv *MemoryOutputStream) GetSize() uint64 {
 
 	return retGo
 }
-
-func (recv *MemoryOutputStream) OutputStream() *OutputStream {}
-
-func (recv *Menu) MenuModel() *MenuModel {}
-
-func (recv *MenuAttributeIter) Object() *gobject.Object {}
-
-func (recv *MenuItem) Object() *gobject.Object {}
-
-func (recv *MenuLinkIter) Object() *gobject.Object {}
-
-func (recv *MenuModel) Object() *gobject.Object {}
 
 // MountOperation is a wrapper around the C record GMountOperation.
 type MountOperation struct {
@@ -2501,6 +2563,11 @@ func MountOperationNewFromC(u unsafe.Pointer) *MountOperation {
 func (recv *MountOperation) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Object upcasts to *Object
+func (recv *MountOperation) Object() *gobject.Object {
+	return gobject.ObjectNewFromC(recv.native)
 }
 
 // MountOperationNew is a wrapper around the C function g_mount_operation_new.
@@ -2626,8 +2693,6 @@ func (recv *MountOperation) SetUsername(username string) {
 	return
 }
 
-func (recv *MountOperation) Object() *gobject.Object {}
-
 // NativeVolumeMonitor is a wrapper around the C record GNativeVolumeMonitor.
 type NativeVolumeMonitor struct {
 	native *C.GNativeVolumeMonitor
@@ -2650,7 +2715,10 @@ func (recv *NativeVolumeMonitor) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-func (recv *NativeVolumeMonitor) VolumeMonitor() *VolumeMonitor {}
+// VolumeMonitor upcasts to *VolumeMonitor
+func (recv *NativeVolumeMonitor) VolumeMonitor() *VolumeMonitor {
+	return VolumeMonitorNewFromC(recv.native)
+}
 
 // NetworkAddress is a wrapper around the C record GNetworkAddress.
 type NetworkAddress struct {
@@ -2675,7 +2743,10 @@ func (recv *NetworkAddress) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-func (recv *NetworkAddress) Object() *gobject.Object {}
+// Object upcasts to *Object
+func (recv *NetworkAddress) Object() *gobject.Object {
+	return gobject.ObjectNewFromC(recv.native)
+}
 
 // NetworkService is a wrapper around the C record GNetworkService.
 type NetworkService struct {
@@ -2700,9 +2771,10 @@ func (recv *NetworkService) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-func (recv *NetworkService) Object() *gobject.Object {}
-
-func (recv *Notification) Object() *gobject.Object {}
+// Object upcasts to *Object
+func (recv *NetworkService) Object() *gobject.Object {
+	return gobject.ObjectNewFromC(recv.native)
+}
 
 // OutputStream is a wrapper around the C record GOutputStream.
 type OutputStream struct {
@@ -2725,6 +2797,11 @@ func OutputStreamNewFromC(u unsafe.Pointer) *OutputStream {
 func (recv *OutputStream) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Object upcasts to *Object
+func (recv *OutputStream) Object() *gobject.Object {
+	return gobject.ObjectNewFromC(recv.native)
 }
 
 // ClearPending is a wrapper around the C function g_output_stream_clear_pending.
@@ -2846,8 +2923,6 @@ func (recv *OutputStream) Splice(source *InputStream, flags OutputStreamSpliceFl
 
 // Unsupported : g_output_stream_write_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
 
-func (recv *OutputStream) Object() *gobject.Object {}
-
 // Permission is a wrapper around the C record GPermission.
 type Permission struct {
 	native *C.GPermission
@@ -2871,11 +2946,10 @@ func (recv *Permission) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-func (recv *Permission) Object() *gobject.Object {}
-
-func (recv *PropertyAction) Object() *gobject.Object {}
-
-func (recv *ProxyAddress) InetSocketAddress() *InetSocketAddress {}
+// Object upcasts to *Object
+func (recv *Permission) Object() *gobject.Object {
+	return gobject.ObjectNewFromC(recv.native)
+}
 
 // ProxyAddressEnumerator is a wrapper around the C record GProxyAddressEnumerator.
 type ProxyAddressEnumerator struct {
@@ -2900,7 +2974,10 @@ func (recv *ProxyAddressEnumerator) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-func (recv *ProxyAddressEnumerator) SocketAddressEnumerator() *SocketAddressEnumerator {}
+// SocketAddressEnumerator upcasts to *SocketAddressEnumerator
+func (recv *ProxyAddressEnumerator) SocketAddressEnumerator() *SocketAddressEnumerator {
+	return SocketAddressEnumeratorNewFromC(recv.native)
+}
 
 // Resolver is a wrapper around the C record GResolver.
 type Resolver struct {
@@ -2925,7 +3002,10 @@ func (recv *Resolver) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-func (recv *Resolver) Object() *gobject.Object {}
+// Object upcasts to *Object
+func (recv *Resolver) Object() *gobject.Object {
+	return gobject.ObjectNewFromC(recv.native)
+}
 
 // Settings is a wrapper around the C record GSettings.
 type Settings struct {
@@ -2948,6 +3028,11 @@ func SettingsNewFromC(u unsafe.Pointer) *Settings {
 func (recv *Settings) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Object upcasts to *Object
+func (recv *Settings) Object() *gobject.Object {
+	return gobject.ObjectNewFromC(recv.native)
 }
 
 // Apply is a wrapper around the C function g_settings_apply.
@@ -3006,8 +3091,6 @@ func (recv *Settings) SetFlags(key string, value uint32) bool {
 	return retGo
 }
 
-func (recv *Settings) Object() *gobject.Object {}
-
 // SettingsBackend is a wrapper around the C record GSettingsBackend.
 type SettingsBackend struct {
 	native *C.GSettingsBackend
@@ -3031,7 +3114,10 @@ func (recv *SettingsBackend) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-func (recv *SettingsBackend) Object() *gobject.Object {}
+// Object upcasts to *Object
+func (recv *SettingsBackend) Object() *gobject.Object {
+	return gobject.ObjectNewFromC(recv.native)
+}
 
 // SimpleAction is a wrapper around the C record GSimpleAction.
 type SimpleAction struct {
@@ -3054,13 +3140,14 @@ func (recv *SimpleAction) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Object upcasts to *Object
+func (recv *SimpleAction) Object() *gobject.Object {
+	return gobject.ObjectNewFromC(recv.native)
+}
+
 // Unsupported : g_simple_action_new : unsupported parameter parameter_type : Blacklisted record : GVariantType
 
 // Unsupported : g_simple_action_new_stateful : unsupported parameter parameter_type : Blacklisted record : GVariantType
-
-func (recv *SimpleAction) Object() *gobject.Object {}
-
-func (recv *SimpleActionGroup) Object() *gobject.Object {}
 
 // SimpleAsyncResult is a wrapper around the C record GSimpleAsyncResult.
 type SimpleAsyncResult struct {
@@ -3081,6 +3168,11 @@ func SimpleAsyncResultNewFromC(u unsafe.Pointer) *SimpleAsyncResult {
 func (recv *SimpleAsyncResult) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Object upcasts to *Object
+func (recv *SimpleAsyncResult) Object() *gobject.Object {
+	return gobject.ObjectNewFromC(recv.native)
 }
 
 // Unsupported : g_simple_async_result_new : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
@@ -3198,10 +3290,6 @@ func (recv *SimpleAsyncResult) SetOpResGssize(opRes int64) {
 	return
 }
 
-func (recv *SimpleAsyncResult) Object() *gobject.Object {}
-
-func (recv *SimpleIOStream) IOStream() *IOStream {}
-
 // SimplePermission is a wrapper around the C record GSimplePermission.
 type SimplePermission struct {
 	native *C.GSimplePermission
@@ -3223,7 +3311,10 @@ func (recv *SimplePermission) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-func (recv *SimplePermission) Permission() *Permission {}
+// Permission upcasts to *Permission
+func (recv *SimplePermission) Permission() *Permission {
+	return PermissionNewFromC(recv.native)
+}
 
 // SimpleProxyResolver is a wrapper around the C record GSimpleProxyResolver.
 type SimpleProxyResolver struct {
@@ -3248,9 +3339,10 @@ func (recv *SimpleProxyResolver) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-func (recv *SimpleProxyResolver) Object() *gobject.Object {}
-
-func (recv *Socket) Object() *gobject.Object {}
+// Object upcasts to *Object
+func (recv *SimpleProxyResolver) Object() *gobject.Object {
+	return gobject.ObjectNewFromC(recv.native)
+}
 
 // SocketAddress is a wrapper around the C record GSocketAddress.
 type SocketAddress struct {
@@ -3274,7 +3366,10 @@ func (recv *SocketAddress) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-func (recv *SocketAddress) Object() *gobject.Object {}
+// Object upcasts to *Object
+func (recv *SocketAddress) Object() *gobject.Object {
+	return gobject.ObjectNewFromC(recv.native)
+}
 
 // SocketAddressEnumerator is a wrapper around the C record GSocketAddressEnumerator.
 type SocketAddressEnumerator struct {
@@ -3298,6 +3393,11 @@ func (recv *SocketAddressEnumerator) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Object upcasts to *Object
+func (recv *SocketAddressEnumerator) Object() *gobject.Object {
+	return gobject.ObjectNewFromC(recv.native)
+}
+
 // Next is a wrapper around the C function g_socket_address_enumerator_next.
 func (recv *SocketAddressEnumerator) Next(cancellable *Cancellable) (*SocketAddress, error) {
 	c_cancellable := (*C.GCancellable)(cancellable.ToC())
@@ -3318,12 +3418,6 @@ func (recv *SocketAddressEnumerator) Next(cancellable *Cancellable) (*SocketAddr
 // Unsupported : g_socket_address_enumerator_next_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
 
 // Unsupported : g_socket_address_enumerator_next_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
-
-func (recv *SocketAddressEnumerator) Object() *gobject.Object {}
-
-func (recv *SocketClient) Object() *gobject.Object {}
-
-func (recv *SocketConnection) IOStream() *IOStream {}
 
 // SocketControlMessage is a wrapper around the C record GSocketControlMessage.
 type SocketControlMessage struct {
@@ -3348,19 +3442,14 @@ func (recv *SocketControlMessage) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-func (recv *SocketControlMessage) Object() *gobject.Object {}
-
-func (recv *SocketListener) Object() *gobject.Object {}
-
-func (recv *SocketService) SocketListener() *SocketListener {}
+// Object upcasts to *Object
+func (recv *SocketControlMessage) Object() *gobject.Object {
+	return gobject.ObjectNewFromC(recv.native)
+}
 
 // Unsupported : g_subprocess_new : unsupported parameter error : record with indirection level of 2
 
 // Unsupported : g_subprocess_newv : unsupported parameter argv : no param type
-
-func (recv *Subprocess) Object() *gobject.Object {}
-
-func (recv *SubprocessLauncher) Object() *gobject.Object {}
 
 // Task is a wrapper around the C record GTask.
 type Task struct {
@@ -3383,11 +3472,12 @@ func (recv *Task) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Object upcasts to *Object
+func (recv *Task) Object() *gobject.Object {
+	return gobject.ObjectNewFromC(recv.native)
+}
+
 // Unsupported : g_task_new : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
-
-func (recv *Task) Object() *gobject.Object {}
-
-func (recv *TcpConnection) SocketConnection() *SocketConnection {}
 
 // TcpWrapperConnection is a wrapper around the C record GTcpWrapperConnection.
 type TcpWrapperConnection struct {
@@ -3412,6 +3502,11 @@ func (recv *TcpWrapperConnection) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// TcpConnection upcasts to *TcpConnection
+func (recv *TcpWrapperConnection) TcpConnection() *TcpConnection {
+	return TcpConnectionNewFromC(recv.native)
+}
+
 // GetBaseIoStream is a wrapper around the C function g_tcp_wrapper_connection_get_base_io_stream.
 func (recv *TcpWrapperConnection) GetBaseIoStream() *IOStream {
 	retC := C.g_tcp_wrapper_connection_get_base_io_stream((*C.GTcpWrapperConnection)(recv.native))
@@ -3419,10 +3514,6 @@ func (recv *TcpWrapperConnection) GetBaseIoStream() *IOStream {
 
 	return retGo
 }
-
-func (recv *TcpWrapperConnection) TcpConnection() *TcpConnection {}
-
-func (recv *TestDBus) Object() *gobject.Object {}
 
 // ThemedIcon is a wrapper around the C record GThemedIcon.
 type ThemedIcon struct {
@@ -3443,6 +3534,11 @@ func ThemedIconNewFromC(u unsafe.Pointer) *ThemedIcon {
 func (recv *ThemedIcon) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Object upcasts to *Object
+func (recv *ThemedIcon) Object() *gobject.Object {
+	return gobject.ObjectNewFromC(recv.native)
 }
 
 // ThemedIconNew is a wrapper around the C function g_themed_icon_new.
@@ -3481,20 +3577,6 @@ func (recv *ThemedIcon) AppendName(iconname string) {
 
 // Unsupported : g_themed_icon_get_names : no return type
 
-func (recv *ThemedIcon) Object() *gobject.Object {}
-
-func (recv *ThreadedSocketService) SocketService() *SocketService {}
-
-func (recv *TlsCertificate) Object() *gobject.Object {}
-
-func (recv *TlsConnection) IOStream() *IOStream {}
-
-func (recv *TlsDatabase) Object() *gobject.Object {}
-
-func (recv *TlsInteraction) Object() *gobject.Object {}
-
-func (recv *TlsPassword) Object() *gobject.Object {}
-
 // UnixConnection is a wrapper around the C record GUnixConnection.
 type UnixConnection struct {
 	native *C.GUnixConnection
@@ -3518,9 +3600,10 @@ func (recv *UnixConnection) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-func (recv *UnixConnection) SocketConnection() *SocketConnection {}
-
-func (recv *UnixCredentialsMessage) SocketControlMessage() *SocketControlMessage {}
+// SocketConnection upcasts to *SocketConnection
+func (recv *UnixConnection) SocketConnection() *SocketConnection {
+	return SocketConnectionNewFromC(recv.native)
+}
 
 // UnixFDList is a wrapper around the C record GUnixFDList.
 type UnixFDList struct {
@@ -3545,9 +3628,12 @@ func (recv *UnixFDList) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : g_unix_fd_list_new_from_array : unsupported parameter fds : no param type
+// Object upcasts to *Object
+func (recv *UnixFDList) Object() *gobject.Object {
+	return gobject.ObjectNewFromC(recv.native)
+}
 
-func (recv *UnixFDList) Object() *gobject.Object {}
+// Unsupported : g_unix_fd_list_new_from_array : unsupported parameter fds : no param type
 
 // UnixFDMessage is a wrapper around the C record GUnixFDMessage.
 type UnixFDMessage struct {
@@ -3572,7 +3658,10 @@ func (recv *UnixFDMessage) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-func (recv *UnixFDMessage) SocketControlMessage() *SocketControlMessage {}
+// SocketControlMessage upcasts to *SocketControlMessage
+func (recv *UnixFDMessage) SocketControlMessage() *SocketControlMessage {
+	return SocketControlMessageNewFromC(recv.native)
+}
 
 // UnixInputStream is a wrapper around the C record GUnixInputStream.
 type UnixInputStream struct {
@@ -3597,6 +3686,11 @@ func (recv *UnixInputStream) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// InputStream upcasts to *InputStream
+func (recv *UnixInputStream) InputStream() *InputStream {
+	return InputStreamNewFromC(recv.native)
+}
+
 // UnixInputStreamNew is a wrapper around the C function g_unix_input_stream_new.
 func UnixInputStreamNew(fd int32, closeFd bool) *UnixInputStream {
 	c_fd := (C.gint)(fd)
@@ -3609,8 +3703,6 @@ func UnixInputStreamNew(fd int32, closeFd bool) *UnixInputStream {
 
 	return retGo
 }
-
-func (recv *UnixInputStream) InputStream() *InputStream {}
 
 // UnixMountMonitor is a wrapper around the C record GUnixMountMonitor.
 type UnixMountMonitor struct {
@@ -3633,6 +3725,11 @@ func (recv *UnixMountMonitor) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Object upcasts to *Object
+func (recv *UnixMountMonitor) Object() *gobject.Object {
+	return gobject.ObjectNewFromC(recv.native)
+}
+
 // UnixMountMonitorNew is a wrapper around the C function g_unix_mount_monitor_new.
 func UnixMountMonitorNew() *UnixMountMonitor {
 	retC := C.g_unix_mount_monitor_new()
@@ -3640,8 +3737,6 @@ func UnixMountMonitorNew() *UnixMountMonitor {
 
 	return retGo
 }
-
-func (recv *UnixMountMonitor) Object() *gobject.Object {}
 
 // UnixOutputStream is a wrapper around the C record GUnixOutputStream.
 type UnixOutputStream struct {
@@ -3666,6 +3761,11 @@ func (recv *UnixOutputStream) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// OutputStream upcasts to *OutputStream
+func (recv *UnixOutputStream) OutputStream() *OutputStream {
+	return OutputStreamNewFromC(recv.native)
+}
+
 // UnixOutputStreamNew is a wrapper around the C function g_unix_output_stream_new.
 func UnixOutputStreamNew(fd int32, closeFd bool) *UnixOutputStream {
 	c_fd := (C.gint)(fd)
@@ -3678,8 +3778,6 @@ func UnixOutputStreamNew(fd int32, closeFd bool) *UnixOutputStream {
 
 	return retGo
 }
-
-func (recv *UnixOutputStream) OutputStream() *OutputStream {}
 
 // UnixSocketAddress is a wrapper around the C record GUnixSocketAddress.
 type UnixSocketAddress struct {
@@ -3704,11 +3802,14 @@ func (recv *UnixSocketAddress) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// SocketAddress upcasts to *SocketAddress
+func (recv *UnixSocketAddress) SocketAddress() *SocketAddress {
+	return SocketAddressNewFromC(recv.native)
+}
+
 // Unsupported : g_unix_socket_address_new_abstract : unsupported parameter path : no param type
 
 // Unsupported : g_unix_socket_address_new_with_type : unsupported parameter path : no param type
-
-func (recv *UnixSocketAddress) SocketAddress() *SocketAddress {}
 
 // Vfs is a wrapper around the C record GVfs.
 type Vfs struct {
@@ -3732,6 +3833,11 @@ func (recv *Vfs) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Object upcasts to *Object
+func (recv *Vfs) Object() *gobject.Object {
+	return gobject.ObjectNewFromC(recv.native)
+}
+
 // Unsupported : g_vfs_get_file_for_path : no return generator
 
 // Unsupported : g_vfs_get_file_for_uri : no return generator
@@ -3747,8 +3853,6 @@ func (recv *Vfs) IsActive() bool {
 }
 
 // Unsupported : g_vfs_parse_name : no return generator
-
-func (recv *Vfs) Object() *gobject.Object {}
 
 // VolumeMonitor is a wrapper around the C record GVolumeMonitor.
 type VolumeMonitor struct {
@@ -3771,6 +3875,11 @@ func VolumeMonitorNewFromC(u unsafe.Pointer) *VolumeMonitor {
 func (recv *VolumeMonitor) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Object upcasts to *Object
+func (recv *VolumeMonitor) Object() *gobject.Object {
+	return gobject.ObjectNewFromC(recv.native)
 }
 
 // GetConnectedDrives is a wrapper around the C function g_volume_monitor_get_connected_drives.
@@ -3801,8 +3910,6 @@ func (recv *VolumeMonitor) GetVolumes() *glib.List {
 	return retGo
 }
 
-func (recv *VolumeMonitor) Object() *gobject.Object {}
-
 // ZlibCompressor is a wrapper around the C record GZlibCompressor.
 type ZlibCompressor struct {
 	native *C.GZlibCompressor
@@ -3824,7 +3931,10 @@ func (recv *ZlibCompressor) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-func (recv *ZlibCompressor) Object() *gobject.Object {}
+// Object upcasts to *Object
+func (recv *ZlibCompressor) Object() *gobject.Object {
+	return gobject.ObjectNewFromC(recv.native)
+}
 
 // ZlibDecompressor is a wrapper around the C record GZlibDecompressor.
 type ZlibDecompressor struct {
@@ -3847,4 +3957,7 @@ func (recv *ZlibDecompressor) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-func (recv *ZlibDecompressor) Object() *gobject.Object {}
+// Object upcasts to *Object
+func (recv *ZlibDecompressor) Object() *gobject.Object {
+	return gobject.ObjectNewFromC(recv.native)
+}

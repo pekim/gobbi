@@ -3,10 +3,7 @@
 
 package pango
 
-import (
-	gobject "github.com/pekim/gobbi/lib/gobject"
-	"unsafe"
-)
+import "unsafe"
 
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <pango/pango.h>
@@ -38,22 +35,6 @@ func (recv *Context) SetMatrix(matrix *Matrix) {
 	return
 }
 
-func (recv *Context) Object() *gobject.Object {}
-
-func (recv *EngineLang) Engine() *Engine {}
-
-func (recv *EngineShape) Engine() *Engine {}
-
-func (recv *Font) Object() *gobject.Object {}
-
-func (recv *FontFace) Object() *gobject.Object {}
-
-func (recv *FontFamily) Object() *gobject.Object {}
-
-func (recv *FontMap) Object() *gobject.Object {}
-
-func (recv *Fontset) Object() *gobject.Object {}
-
 // GetEllipsize is a wrapper around the C function pango_layout_get_ellipsize.
 func (recv *Layout) GetEllipsize() EllipsizeMode {
 	retC := C.pango_layout_get_ellipsize((*C.PangoLayout)(recv.native))
@@ -70,7 +51,3 @@ func (recv *Layout) SetEllipsize(ellipsize EllipsizeMode) {
 
 	return
 }
-
-func (recv *Layout) Object() *gobject.Object {}
-
-func (recv *Renderer) Object() *gobject.Object {}

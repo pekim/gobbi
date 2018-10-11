@@ -31,6 +31,11 @@ func (recv *Binding) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Object upcasts to *Object
+func (recv *Binding) Object() *Object {
+	return ObjectNewFromC(recv.native)
+}
+
 // GetFlags is a wrapper around the C function g_binding_get_flags.
 func (recv *Binding) GetFlags() BindingFlags {
 	retC := C.g_binding_get_flags((*C.GBinding)(recv.native))
@@ -70,10 +75,6 @@ func (recv *Binding) GetTargetProperty() string {
 
 	return retGo
 }
-
-func (recv *Binding) Object() *Object {}
-
-func (recv *InitiallyUnowned) Object() *Object {}
 
 // Unsupported : g_object_new : unsupported parameter object_type : no type generator for GType, GType
 
@@ -134,50 +135,6 @@ func (recv *Object) NotifyByPspec(pspec *ParamSpec) {
 	return
 }
 
-func (recv *ParamSpecBoolean) ParamSpec() *ParamSpec {}
-
-func (recv *ParamSpecBoxed) ParamSpec() *ParamSpec {}
-
-func (recv *ParamSpecChar) ParamSpec() *ParamSpec {}
-
-func (recv *ParamSpecDouble) ParamSpec() *ParamSpec {}
-
-func (recv *ParamSpecEnum) ParamSpec() *ParamSpec {}
-
-func (recv *ParamSpecFlags) ParamSpec() *ParamSpec {}
-
-func (recv *ParamSpecFloat) ParamSpec() *ParamSpec {}
-
-func (recv *ParamSpecGType) ParamSpec() *ParamSpec {}
-
-func (recv *ParamSpecInt) ParamSpec() *ParamSpec {}
-
-func (recv *ParamSpecInt64) ParamSpec() *ParamSpec {}
-
-func (recv *ParamSpecLong) ParamSpec() *ParamSpec {}
-
-func (recv *ParamSpecObject) ParamSpec() *ParamSpec {}
-
-func (recv *ParamSpecOverride) ParamSpec() *ParamSpec {}
-
-func (recv *ParamSpecParam) ParamSpec() *ParamSpec {}
-
-func (recv *ParamSpecPointer) ParamSpec() *ParamSpec {}
-
-func (recv *ParamSpecString) ParamSpec() *ParamSpec {}
-
-func (recv *ParamSpecUChar) ParamSpec() *ParamSpec {}
-
-func (recv *ParamSpecUInt) ParamSpec() *ParamSpec {}
-
-func (recv *ParamSpecUInt64) ParamSpec() *ParamSpec {}
-
-func (recv *ParamSpecULong) ParamSpec() *ParamSpec {}
-
-func (recv *ParamSpecUnichar) ParamSpec() *ParamSpec {}
-
-func (recv *ParamSpecValueArray) ParamSpec() *ParamSpec {}
-
 // ParamSpecVariant is a wrapper around the C record GParamSpecVariant.
 type ParamSpecVariant struct {
 	native *C.GParamSpecVariant
@@ -203,6 +160,7 @@ func (recv *ParamSpecVariant) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-func (recv *ParamSpecVariant) ParamSpec() *ParamSpec {}
-
-func (recv *TypeModule) Object() *Object {}
+// ParamSpec upcasts to *ParamSpec
+func (recv *ParamSpecVariant) ParamSpec() *ParamSpec {
+	return ParamSpecNewFromC(recv.native)
+}

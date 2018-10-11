@@ -34,6 +34,11 @@ func (recv *Context) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Object upcasts to *Object
+func (recv *Context) Object() *gobject.Object {
+	return gobject.ObjectNewFromC(recv.native)
+}
+
 // ContextNew is a wrapper around the C function pango_context_new.
 func ContextNew() *Context {
 	retC := C.pango_context_new()
@@ -128,8 +133,6 @@ func (recv *Context) SetLanguage(language *Language) {
 	return
 }
 
-func (recv *Context) Object() *gobject.Object {}
-
 // Blacklisted : PangoEngine
 
 // EngineLang is a wrapper around the C record PangoEngineLang.
@@ -154,7 +157,10 @@ func (recv *EngineLang) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-func (recv *EngineLang) Engine() *Engine {}
+// Engine upcasts to *Engine
+func (recv *EngineLang) Engine() *Engine {
+	return EngineNewFromC(recv.native)
+}
 
 // EngineShape is a wrapper around the C record PangoEngineShape.
 type EngineShape struct {
@@ -178,7 +184,10 @@ func (recv *EngineShape) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-func (recv *EngineShape) Engine() *Engine {}
+// Engine upcasts to *Engine
+func (recv *EngineShape) Engine() *Engine {
+	return EngineNewFromC(recv.native)
+}
 
 // Font is a wrapper around the C record PangoFont.
 type Font struct {
@@ -200,6 +209,11 @@ func FontNewFromC(u unsafe.Pointer) *Font {
 func (recv *Font) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Object upcasts to *Object
+func (recv *Font) Object() *gobject.Object {
+	return gobject.ObjectNewFromC(recv.native)
 }
 
 // Describe is a wrapper around the C function pango_font_describe.
@@ -251,8 +265,6 @@ func (recv *Font) GetGlyphExtents(glyph Glyph) (*Rectangle, *Rectangle) {
 
 // Unsupported : pango_font_get_metrics : return type : Blacklisted record : PangoFontMetrics
 
-func (recv *Font) Object() *gobject.Object {}
-
 // FontFace is a wrapper around the C record PangoFontFace.
 type FontFace struct {
 	native *C.PangoFontFace
@@ -275,6 +287,11 @@ func (recv *FontFace) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Object upcasts to *Object
+func (recv *FontFace) Object() *gobject.Object {
+	return gobject.ObjectNewFromC(recv.native)
+}
+
 // Describe is a wrapper around the C function pango_font_face_describe.
 func (recv *FontFace) Describe() *FontDescription {
 	retC := C.pango_font_face_describe((*C.PangoFontFace)(recv.native))
@@ -290,8 +307,6 @@ func (recv *FontFace) GetFaceName() string {
 
 	return retGo
 }
-
-func (recv *FontFace) Object() *gobject.Object {}
 
 // FontFamily is a wrapper around the C record PangoFontFamily.
 type FontFamily struct {
@@ -315,6 +330,11 @@ func (recv *FontFamily) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Object upcasts to *Object
+func (recv *FontFamily) Object() *gobject.Object {
+	return gobject.ObjectNewFromC(recv.native)
+}
+
 // GetName is a wrapper around the C function pango_font_family_get_name.
 func (recv *FontFamily) GetName() string {
 	retC := C.pango_font_family_get_name((*C.PangoFontFamily)(recv.native))
@@ -324,8 +344,6 @@ func (recv *FontFamily) GetName() string {
 }
 
 // Unsupported : pango_font_family_list_faces : unsupported parameter faces : no param type
-
-func (recv *FontFamily) Object() *gobject.Object {}
 
 // FontMap is a wrapper around the C record PangoFontMap.
 type FontMap struct {
@@ -347,6 +365,11 @@ func FontMapNewFromC(u unsafe.Pointer) *FontMap {
 func (recv *FontMap) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Object upcasts to *Object
+func (recv *FontMap) Object() *gobject.Object {
+	return gobject.ObjectNewFromC(recv.native)
 }
 
 // Unsupported : pango_font_map_list_families : unsupported parameter families : no param type
@@ -377,8 +400,6 @@ func (recv *FontMap) LoadFontset(context *Context, desc *FontDescription, langua
 	return retGo
 }
 
-func (recv *FontMap) Object() *gobject.Object {}
-
 // Fontset is a wrapper around the C record PangoFontset.
 type Fontset struct {
 	native *C.PangoFontset
@@ -401,6 +422,11 @@ func (recv *Fontset) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Object upcasts to *Object
+func (recv *Fontset) Object() *gobject.Object {
+	return gobject.ObjectNewFromC(recv.native)
+}
+
 // GetFont is a wrapper around the C function pango_fontset_get_font.
 func (recv *Fontset) GetFont(wc uint32) *Font {
 	c_wc := (C.guint)(wc)
@@ -412,8 +438,6 @@ func (recv *Fontset) GetFont(wc uint32) *Font {
 }
 
 // Unsupported : pango_fontset_get_metrics : return type : Blacklisted record : PangoFontMetrics
-
-func (recv *Fontset) Object() *gobject.Object {}
 
 // Blacklisted : PangoFontsetSimple
 
@@ -436,6 +460,11 @@ func LayoutNewFromC(u unsafe.Pointer) *Layout {
 func (recv *Layout) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Object upcasts to *Object
+func (recv *Layout) Object() *gobject.Object {
+	return gobject.ObjectNewFromC(recv.native)
 }
 
 // LayoutNew is a wrapper around the C function pango_layout_new.
@@ -852,7 +881,3 @@ func (recv *Layout) XyToIndex(x int32, y int32) (bool, *int32, *int32) {
 
 	return retGo, index, trailing
 }
-
-func (recv *Layout) Object() *gobject.Object {}
-
-func (recv *Renderer) Object() *gobject.Object {}

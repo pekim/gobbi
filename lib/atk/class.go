@@ -34,6 +34,11 @@ func (recv *GObjectAccessible) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Object upcasts to *Object
+func (recv *GObjectAccessible) Object() *Object {
+	return ObjectNewFromC(recv.native)
+}
+
 // GetObject is a wrapper around the C function atk_gobject_accessible_get_object.
 func (recv *GObjectAccessible) GetObject() *gobject.Object {
 	retC := C.atk_gobject_accessible_get_object((*C.AtkGObjectAccessible)(recv.native))
@@ -41,8 +46,6 @@ func (recv *GObjectAccessible) GetObject() *gobject.Object {
 
 	return retGo
 }
-
-func (recv *GObjectAccessible) Object() *Object {}
 
 // Hyperlink is a wrapper around the C record AtkHyperlink.
 type Hyperlink struct {
@@ -64,6 +67,11 @@ func HyperlinkNewFromC(u unsafe.Pointer) *Hyperlink {
 func (recv *Hyperlink) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Object upcasts to *Object
+func (recv *Hyperlink) Object() *gobject.Object {
+	return gobject.ObjectNewFromC(recv.native)
 }
 
 // GetEndIndex is a wrapper around the C function atk_hyperlink_get_end_index.
@@ -127,8 +135,6 @@ func (recv *Hyperlink) IsValid() bool {
 	return retGo
 }
 
-func (recv *Hyperlink) Object() *gobject.Object {}
-
 // Misc is a wrapper around the C record AtkMisc.
 type Misc struct {
 	native *C.AtkMisc
@@ -151,7 +157,10 @@ func (recv *Misc) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-func (recv *Misc) Object() *gobject.Object {}
+// Object upcasts to *Object
+func (recv *Misc) Object() *gobject.Object {
+	return gobject.ObjectNewFromC(recv.native)
+}
 
 // NoOpObject is a wrapper around the C record AtkNoOpObject.
 type NoOpObject struct {
@@ -175,6 +184,11 @@ func (recv *NoOpObject) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Object upcasts to *Object
+func (recv *NoOpObject) Object() *Object {
+	return ObjectNewFromC(recv.native)
+}
+
 // NoOpObjectNew is a wrapper around the C function atk_no_op_object_new.
 func NoOpObjectNew(obj *gobject.Object) *NoOpObject {
 	c_obj := (*C.GObject)(obj.ToC())
@@ -184,8 +198,6 @@ func NoOpObjectNew(obj *gobject.Object) *NoOpObject {
 
 	return retGo
 }
-
-func (recv *NoOpObject) Object() *Object {}
 
 // NoOpObjectFactory is a wrapper around the C record AtkNoOpObjectFactory.
 type NoOpObjectFactory struct {
@@ -209,6 +221,11 @@ func (recv *NoOpObjectFactory) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// ObjectFactory upcasts to *ObjectFactory
+func (recv *NoOpObjectFactory) ObjectFactory() *ObjectFactory {
+	return ObjectFactoryNewFromC(recv.native)
+}
+
 // NoOpObjectFactoryNew is a wrapper around the C function atk_no_op_object_factory_new.
 func NoOpObjectFactoryNew() *NoOpObjectFactory {
 	retC := C.atk_no_op_object_factory_new()
@@ -216,8 +233,6 @@ func NoOpObjectFactoryNew() *NoOpObjectFactory {
 
 	return retGo
 }
-
-func (recv *NoOpObjectFactory) ObjectFactory() *ObjectFactory {}
 
 // Object is a wrapper around the C record AtkObject.
 type Object struct {
@@ -259,6 +274,11 @@ func (recv *Object) ToC() unsafe.Pointer {
 		(C.AtkLayer)(recv.Layer)
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Object upcasts to *Object
+func (recv *Object) Object() *gobject.Object {
+	return gobject.ObjectNewFromC(recv.native)
 }
 
 // AddRelationship is a wrapper around the C function atk_object_add_relationship.
@@ -453,8 +473,6 @@ func (recv *Object) SetRole(role Role) {
 	return
 }
 
-func (recv *Object) Object() *gobject.Object {}
-
 // ObjectFactory is a wrapper around the C record AtkObjectFactory.
 type ObjectFactory struct {
 	native *C.AtkObjectFactory
@@ -477,6 +495,11 @@ func (recv *ObjectFactory) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Object upcasts to *Object
+func (recv *ObjectFactory) Object() *gobject.Object {
+	return gobject.ObjectNewFromC(recv.native)
+}
+
 // CreateAccessible is a wrapper around the C function atk_object_factory_create_accessible.
 func (recv *ObjectFactory) CreateAccessible(obj *gobject.Object) *Object {
 	c_obj := (*C.GObject)(obj.ToC())
@@ -495,8 +518,6 @@ func (recv *ObjectFactory) Invalidate() {
 
 	return
 }
-
-func (recv *ObjectFactory) Object() *gobject.Object {}
 
 // Plug is a wrapper around the C record AtkPlug.
 type Plug struct {
@@ -520,6 +541,11 @@ func (recv *Plug) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Object upcasts to *Object
+func (recv *Plug) Object() *Object {
+	return ObjectNewFromC(recv.native)
+}
+
 // PlugNew is a wrapper around the C function atk_plug_new.
 func PlugNew() *Plug {
 	retC := C.atk_plug_new()
@@ -527,8 +553,6 @@ func PlugNew() *Plug {
 
 	return retGo
 }
-
-func (recv *Plug) Object() *Object {}
 
 // Registry is a wrapper around the C record AtkRegistry.
 type Registry struct {
@@ -554,13 +578,16 @@ func (recv *Registry) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Object upcasts to *Object
+func (recv *Registry) Object() *gobject.Object {
+	return gobject.ObjectNewFromC(recv.native)
+}
+
 // Unsupported : atk_registry_get_factory : unsupported parameter type : no type generator for GType, GType
 
 // Unsupported : atk_registry_get_factory_type : unsupported parameter type : no type generator for GType, GType
 
 // Unsupported : atk_registry_set_factory_type : unsupported parameter type : no type generator for GType, GType
-
-func (recv *Registry) Object() *gobject.Object {}
 
 // Relation is a wrapper around the C record AtkRelation.
 type Relation struct {
@@ -591,6 +618,11 @@ func (recv *Relation) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Object upcasts to *Object
+func (recv *Relation) Object() *gobject.Object {
+	return gobject.ObjectNewFromC(recv.native)
+}
+
 // Unsupported : atk_relation_new : unsupported parameter targets : no param type
 
 // GetRelationType is a wrapper around the C function atk_relation_get_relation_type.
@@ -613,8 +645,6 @@ func (recv *Relation) RemoveTarget(target *Object) bool {
 	return retGo
 }
 
-func (recv *Relation) Object() *gobject.Object {}
-
 // RelationSet is a wrapper around the C record AtkRelationSet.
 type RelationSet struct {
 	native *C.AtkRelationSet
@@ -636,6 +666,11 @@ func RelationSetNewFromC(u unsafe.Pointer) *RelationSet {
 func (recv *RelationSet) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Object upcasts to *Object
+func (recv *RelationSet) Object() *gobject.Object {
+	return gobject.ObjectNewFromC(recv.native)
 }
 
 // RelationSetNew is a wrapper around the C function atk_relation_set_new.
@@ -714,8 +749,6 @@ func (recv *RelationSet) Remove(relation *Relation) {
 	return
 }
 
-func (recv *RelationSet) Object() *gobject.Object {}
-
 // Socket is a wrapper around the C record AtkSocket.
 type Socket struct {
 	native *C.AtkSocket
@@ -739,6 +772,11 @@ func (recv *Socket) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Object upcasts to *Object
+func (recv *Socket) Object() *Object {
+	return ObjectNewFromC(recv.native)
+}
+
 // SocketNew is a wrapper around the C function atk_socket_new.
 func SocketNew() *Socket {
 	retC := C.atk_socket_new()
@@ -746,8 +784,6 @@ func SocketNew() *Socket {
 
 	return retGo
 }
-
-func (recv *Socket) Object() *Object {}
 
 // StateSet is a wrapper around the C record AtkStateSet.
 type StateSet struct {
@@ -769,6 +805,11 @@ func StateSetNewFromC(u unsafe.Pointer) *StateSet {
 func (recv *StateSet) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Object upcasts to *Object
+func (recv *StateSet) Object() *gobject.Object {
+	return gobject.ObjectNewFromC(recv.native)
 }
 
 // StateSetNew is a wrapper around the C function atk_state_set_new.
@@ -858,8 +899,6 @@ func (recv *StateSet) XorSets(compareSet *StateSet) *StateSet {
 	return retGo
 }
 
-func (recv *StateSet) Object() *gobject.Object {}
-
 // Util is a wrapper around the C record AtkUtil.
 type Util struct {
 	native *C.AtkUtil
@@ -882,4 +921,7 @@ func (recv *Util) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-func (recv *Util) Object() *gobject.Object {}
+// Object upcasts to *Object
+func (recv *Util) Object() *gobject.Object {
+	return gobject.ObjectNewFromC(recv.native)
+}

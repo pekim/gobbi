@@ -37,7 +37,10 @@ func (recv *AppLaunchContext) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-func (recv *AppLaunchContext) AppLaunchContext() *gio.AppLaunchContext {}
+// AppLaunchContext upcasts to *AppLaunchContext
+func (recv *AppLaunchContext) AppLaunchContext() *gio.AppLaunchContext {
+	return gio.AppLaunchContextNewFromC(recv.native)
+}
 
 // Cursor is a wrapper around the C record GdkCursor.
 type Cursor struct {
@@ -58,6 +61,11 @@ func CursorNewFromC(u unsafe.Pointer) *Cursor {
 func (recv *Cursor) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Object upcasts to *Object
+func (recv *Cursor) Object() *gobject.Object {
+	return gobject.ObjectNewFromC(recv.native)
 }
 
 // CursorNew is a wrapper around the C function gdk_cursor_new.
@@ -85,8 +93,6 @@ func (recv *Cursor) Unref() {
 	return
 }
 
-func (recv *Cursor) Object() *gobject.Object {}
-
 // Device is a wrapper around the C record GdkDevice.
 type Device struct {
 	native *C.GdkDevice
@@ -106,6 +112,11 @@ func DeviceNewFromC(u unsafe.Pointer) *Device {
 func (recv *Device) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Object upcasts to *Object
+func (recv *Device) Object() *gobject.Object {
+	return gobject.ObjectNewFromC(recv.native)
 }
 
 // Unsupported : gdk_device_get_axis : unsupported parameter axes : no param type
@@ -156,8 +167,6 @@ func (recv *Device) SetMode(mode InputMode) bool {
 	return retGo
 }
 
-func (recv *Device) Object() *gobject.Object {}
-
 // DeviceManager is a wrapper around the C record GdkDeviceManager.
 type DeviceManager struct {
 	native *C.GdkDeviceManager
@@ -179,9 +188,10 @@ func (recv *DeviceManager) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-func (recv *DeviceManager) Object() *gobject.Object {}
-
-func (recv *DeviceTool) Object() *gobject.Object {}
+// Object upcasts to *Object
+func (recv *DeviceManager) Object() *gobject.Object {
+	return gobject.ObjectNewFromC(recv.native)
+}
 
 // Display is a wrapper around the C record GdkDisplay.
 type Display struct {
@@ -204,6 +214,11 @@ func (recv *Display) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Object upcasts to *Object
+func (recv *Display) Object() *gobject.Object {
+	return gobject.ObjectNewFromC(recv.native)
+}
+
 // DeviceIsGrabbed is a wrapper around the C function gdk_display_device_is_grabbed.
 func (recv *Display) DeviceIsGrabbed(device *Device) bool {
 	c_device := (*C.GdkDevice)(device.ToC())
@@ -213,8 +228,6 @@ func (recv *Display) DeviceIsGrabbed(device *Device) bool {
 
 	return retGo
 }
-
-func (recv *Display) Object() *gobject.Object {}
 
 // DisplayManager is a wrapper around the C record GdkDisplayManager.
 type DisplayManager struct {
@@ -237,7 +250,10 @@ func (recv *DisplayManager) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-func (recv *DisplayManager) Object() *gobject.Object {}
+// Object upcasts to *Object
+func (recv *DisplayManager) Object() *gobject.Object {
+	return gobject.ObjectNewFromC(recv.native)
+}
 
 // DragContext is a wrapper around the C record GdkDragContext.
 type DragContext struct {
@@ -260,6 +276,11 @@ func (recv *DragContext) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Object upcasts to *Object
+func (recv *DragContext) Object() *gobject.Object {
+	return gobject.ObjectNewFromC(recv.native)
+}
+
 // GetDevice is a wrapper around the C function gdk_drag_context_get_device.
 func (recv *DragContext) GetDevice() *Device {
 	retC := C.gdk_drag_context_get_device((*C.GdkDragContext)(recv.native))
@@ -276,10 +297,6 @@ func (recv *DragContext) SetDevice(device *Device) {
 
 	return
 }
-
-func (recv *DragContext) Object() *gobject.Object {}
-
-func (recv *DrawingContext) Object() *gobject.Object {}
 
 // FrameClock is a wrapper around the C record GdkFrameClock.
 type FrameClock struct {
@@ -302,7 +319,10 @@ func (recv *FrameClock) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-func (recv *FrameClock) Object() *gobject.Object {}
+// Object upcasts to *Object
+func (recv *FrameClock) Object() *gobject.Object {
+	return gobject.ObjectNewFromC(recv.native)
+}
 
 // GLContext is a wrapper around the C record GdkGLContext.
 type GLContext struct {
@@ -325,7 +345,10 @@ func (recv *GLContext) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-func (recv *GLContext) Object() *gobject.Object {}
+// Object upcasts to *Object
+func (recv *GLContext) Object() *gobject.Object {
+	return gobject.ObjectNewFromC(recv.native)
+}
 
 // Keymap is a wrapper around the C record GdkKeymap.
 type Keymap struct {
@@ -346,6 +369,11 @@ func KeymapNewFromC(u unsafe.Pointer) *Keymap {
 func (recv *Keymap) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Object upcasts to *Object
+func (recv *Keymap) Object() *gobject.Object {
+	return gobject.ObjectNewFromC(recv.native)
 }
 
 // GetDirection is a wrapper around the C function gdk_keymap_get_direction.
@@ -372,10 +400,6 @@ func (recv *Keymap) LookupKey(key *KeymapKey) uint32 {
 
 // Unsupported : gdk_keymap_translate_keyboard_state : unsupported parameter consumed_modifiers : GdkModifierType* with indirection level of 1
 
-func (recv *Keymap) Object() *gobject.Object {}
-
-func (recv *Monitor) Object() *gobject.Object {}
-
 // Screen is a wrapper around the C record GdkScreen.
 type Screen struct {
 	native *C.GdkScreen
@@ -397,9 +421,10 @@ func (recv *Screen) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-func (recv *Screen) Object() *gobject.Object {}
-
-func (recv *Seat) Object() *gobject.Object {}
+// Object upcasts to *Object
+func (recv *Screen) Object() *gobject.Object {
+	return gobject.ObjectNewFromC(recv.native)
+}
 
 // Visual is a wrapper around the C record GdkVisual.
 type Visual struct {
@@ -422,7 +447,10 @@ func (recv *Visual) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-func (recv *Visual) Object() *gobject.Object {}
+// Object upcasts to *Object
+func (recv *Visual) Object() *gobject.Object {
+	return gobject.ObjectNewFromC(recv.native)
+}
 
 // Window is a wrapper around the C record GdkWindow.
 type Window struct {
@@ -443,6 +471,11 @@ func WindowNewFromC(u unsafe.Pointer) *Window {
 func (recv *Window) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Object upcasts to *Object
+func (recv *Window) Object() *gobject.Object {
+	return gobject.ObjectNewFromC(recv.native)
 }
 
 // WindowNew is a wrapper around the C function gdk_window_new.
@@ -1144,5 +1177,3 @@ func (recv *Window) Withdraw() {
 
 	return
 }
-
-func (recv *Window) Object() *gobject.Object {}

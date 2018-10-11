@@ -3,11 +3,7 @@
 
 package gdk
 
-import (
-	gio "github.com/pekim/gobbi/lib/gio"
-	gobject "github.com/pekim/gobbi/lib/gobject"
-	"unsafe"
-)
+import "unsafe"
 
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <gdk/gdk.h>
@@ -70,32 +66,6 @@ func (recv *AppLaunchContext) SetTimestamp(timestamp uint32) {
 	return
 }
 
-func (recv *AppLaunchContext) AppLaunchContext() *gio.AppLaunchContext {}
-
-func (recv *Cursor) Object() *gobject.Object {}
-
-func (recv *Device) Object() *gobject.Object {}
-
-func (recv *DeviceManager) Object() *gobject.Object {}
-
-func (recv *DeviceTool) Object() *gobject.Object {}
-
-func (recv *Display) Object() *gobject.Object {}
-
-func (recv *DisplayManager) Object() *gobject.Object {}
-
-func (recv *DragContext) Object() *gobject.Object {}
-
-func (recv *DrawingContext) Object() *gobject.Object {}
-
-func (recv *FrameClock) Object() *gobject.Object {}
-
-func (recv *GLContext) Object() *gobject.Object {}
-
-func (recv *Keymap) Object() *gobject.Object {}
-
-func (recv *Monitor) Object() *gobject.Object {}
-
 // GetMonitorHeightMm is a wrapper around the C function gdk_screen_get_monitor_height_mm.
 func (recv *Screen) GetMonitorHeightMm(monitorNum int32) int32 {
 	c_monitor_num := (C.gint)(monitorNum)
@@ -126,11 +96,3 @@ func (recv *Screen) GetMonitorWidthMm(monitorNum int32) int32 {
 
 	return retGo
 }
-
-func (recv *Screen) Object() *gobject.Object {}
-
-func (recv *Seat) Object() *gobject.Object {}
-
-func (recv *Visual) Object() *gobject.Object {}
-
-func (recv *Window) Object() *gobject.Object {}

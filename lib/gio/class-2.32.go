@@ -24,8 +24,6 @@ import (
 // #include <stdlib.h>
 import "C"
 
-func (recv *AppInfoMonitor) Object() *gobject.Object {}
-
 // Unsupported : g_app_launch_context_get_environment : no return type
 
 // Setenv is a wrapper around the C function g_app_launch_context_setenv.
@@ -51,8 +49,6 @@ func (recv *AppLaunchContext) Unsetenv(variable string) {
 	return
 }
 
-func (recv *AppLaunchContext) Object() *gobject.Object {}
-
 // Quit is a wrapper around the C function g_application_quit.
 func (recv *Application) Quit() {
 	C.g_application_quit((*C.GApplication)(recv.native))
@@ -67,33 +63,9 @@ func (recv *Application) SetDefault() {
 	return
 }
 
-func (recv *Application) Object() *gobject.Object {}
-
-func (recv *ApplicationCommandLine) Object() *gobject.Object {}
-
-func (recv *BufferedInputStream) FilterInputStream() *FilterInputStream {}
-
-func (recv *BufferedOutputStream) FilterOutputStream() *FilterOutputStream {}
-
-func (recv *BytesIcon) Object() *gobject.Object {}
-
-func (recv *Cancellable) Object() *gobject.Object {}
-
-func (recv *CharsetConverter) Object() *gobject.Object {}
-
 // Unsupported : g_converter_input_stream_new : unsupported parameter converter : no type generator for Converter, GConverter*
 
-func (recv *ConverterInputStream) FilterInputStream() *FilterInputStream {}
-
 // Unsupported : g_converter_output_stream_new : unsupported parameter converter : no type generator for Converter, GConverter*
-
-func (recv *ConverterOutputStream) FilterOutputStream() *FilterOutputStream {}
-
-func (recv *Credentials) Object() *gobject.Object {}
-
-func (recv *DBusActionGroup) Object() *gobject.Object {}
-
-func (recv *DBusAuthObserver) Object() *gobject.Object {}
 
 // Unsupported : g_dbus_connection_new_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
 
@@ -139,8 +111,6 @@ func (recv *DBusConnection) UnexportMenuModel(exportId uint32) {
 	return
 }
 
-func (recv *DBusConnection) Object() *gobject.Object {}
-
 // GetConnections is a wrapper around the C function g_dbus_interface_skeleton_get_connections.
 func (recv *DBusInterfaceSkeleton) GetConnections() *glib.List {
 	retC := C.g_dbus_interface_skeleton_get_connections((*C.GDBusInterfaceSkeleton)(recv.native))
@@ -168,15 +138,7 @@ func (recv *DBusInterfaceSkeleton) UnexportFromConnection(connection *DBusConnec
 	return
 }
 
-func (recv *DBusInterfaceSkeleton) Object() *gobject.Object {}
-
-func (recv *DBusMenuModel) MenuModel() *MenuModel {}
-
 // Unsupported : g_dbus_message_new_from_blob : unsupported parameter blob : no param type
-
-func (recv *DBusMessage) Object() *gobject.Object {}
-
-func (recv *DBusMethodInvocation) Object() *gobject.Object {}
 
 // Unsupported : g_dbus_object_manager_client_new_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
 
@@ -186,69 +148,21 @@ func (recv *DBusMethodInvocation) Object() *gobject.Object {}
 
 // Unsupported : g_dbus_object_manager_client_new_sync : unsupported parameter get_proxy_type_func : no type generator for DBusProxyTypeFunc, GDBusProxyTypeFunc
 
-func (recv *DBusObjectManagerClient) Object() *gobject.Object {}
-
-func (recv *DBusObjectManagerServer) Object() *gobject.Object {}
-
-func (recv *DBusObjectProxy) Object() *gobject.Object {}
-
-func (recv *DBusObjectSkeleton) Object() *gobject.Object {}
-
 // Unsupported : g_dbus_proxy_new_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
 
 // Unsupported : g_dbus_proxy_new_for_bus_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
 
-func (recv *DBusProxy) Object() *gobject.Object {}
-
-func (recv *DBusServer) Object() *gobject.Object {}
-
-func (recv *DataInputStream) BufferedInputStream() *BufferedInputStream {}
-
-func (recv *DataOutputStream) FilterOutputStream() *FilterOutputStream {}
-
 // Unsupported : g_desktop_app_info_get_keywords : no return type
-
-func (recv *DesktopAppInfo) Object() *gobject.Object {}
 
 // Unsupported : g_emblem_new : unsupported parameter icon : no type generator for Icon, GIcon*
 
 // Unsupported : g_emblem_new_with_origin : unsupported parameter icon : no type generator for Icon, GIcon*
 
-func (recv *Emblem) Object() *gobject.Object {}
-
 // Unsupported : g_emblemed_icon_new : unsupported parameter icon : no type generator for Icon, GIcon*
-
-func (recv *EmblemedIcon) Object() *gobject.Object {}
-
-func (recv *FileEnumerator) Object() *gobject.Object {}
-
-func (recv *FileIOStream) IOStream() *IOStream {}
 
 // Unsupported : g_file_icon_new : unsupported parameter file : no type generator for File, GFile*
 
-func (recv *FileIcon) Object() *gobject.Object {}
-
-func (recv *FileInfo) Object() *gobject.Object {}
-
-func (recv *FileInputStream) InputStream() *InputStream {}
-
-func (recv *FileMonitor) Object() *gobject.Object {}
-
-func (recv *FileOutputStream) OutputStream() *OutputStream {}
-
-func (recv *FilenameCompleter) Object() *gobject.Object {}
-
-func (recv *FilterInputStream) InputStream() *InputStream {}
-
-func (recv *FilterOutputStream) OutputStream() *OutputStream {}
-
-func (recv *IOModule) TypeModule() *gobject.TypeModule {}
-
-func (recv *IOStream) Object() *gobject.Object {}
-
 // Unsupported : g_inet_address_new_from_bytes : unsupported parameter bytes : no param type
-
-func (recv *InetAddress) Object() *gobject.Object {}
 
 // InetAddressMask is a wrapper around the C record GInetAddressMask.
 type InetAddressMask struct {
@@ -271,6 +185,11 @@ func InetAddressMaskNewFromC(u unsafe.Pointer) *InetAddressMask {
 func (recv *InetAddressMask) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Object upcasts to *Object
+func (recv *InetAddressMask) Object() *gobject.Object {
+	return gobject.ObjectNewFromC(recv.native)
 }
 
 // InetAddressMaskNew is a wrapper around the C function g_inet_address_mask_new.
@@ -363,8 +282,6 @@ func (recv *InetAddressMask) ToString() string {
 	return retGo
 }
 
-func (recv *InetAddressMask) Object() *gobject.Object {}
-
 // GetFlowinfo is a wrapper around the C function g_inet_socket_address_get_flowinfo.
 func (recv *InetSocketAddress) GetFlowinfo() uint32 {
 	retC := C.g_inet_socket_address_get_flowinfo((*C.GInetSocketAddress)(recv.native))
@@ -381,21 +298,11 @@ func (recv *InetSocketAddress) GetScopeId() uint32 {
 	return retGo
 }
 
-func (recv *InetSocketAddress) SocketAddress() *SocketAddress {}
-
-func (recv *InputStream) Object() *gobject.Object {}
-
 // Unsupported : g_list_store_new : unsupported parameter item_type : no type generator for GType, GType
-
-func (recv *ListStore) Object() *gobject.Object {}
 
 // Unsupported : g_memory_input_stream_new_from_data : unsupported parameter data : no param type
 
-func (recv *MemoryInputStream) InputStream() *InputStream {}
-
 // Unsupported : g_memory_output_stream_new : unsupported parameter realloc_function : no type generator for ReallocFunc, GReallocFunc
-
-func (recv *MemoryOutputStream) OutputStream() *OutputStream {}
 
 // Menu is a wrapper around the C record GMenu.
 type Menu struct {
@@ -416,6 +323,11 @@ func MenuNewFromC(u unsafe.Pointer) *Menu {
 func (recv *Menu) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// MenuModel upcasts to *MenuModel
+func (recv *Menu) MenuModel() *MenuModel {
+	return MenuModelNewFromC(recv.native)
 }
 
 // MenuNew is a wrapper around the C function g_menu_new.
@@ -588,8 +500,6 @@ func (recv *Menu) Remove(position int32) {
 	return
 }
 
-func (recv *Menu) MenuModel() *MenuModel {}
-
 // MenuAttributeIter is a wrapper around the C record GMenuAttributeIter.
 type MenuAttributeIter struct {
 	native *C.GMenuAttributeIter
@@ -613,6 +523,11 @@ func (recv *MenuAttributeIter) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Object upcasts to *Object
+func (recv *MenuAttributeIter) Object() *gobject.Object {
+	return gobject.ObjectNewFromC(recv.native)
+}
+
 // GetName is a wrapper around the C function g_menu_attribute_iter_get_name.
 func (recv *MenuAttributeIter) GetName() string {
 	retC := C.g_menu_attribute_iter_get_name((*C.GMenuAttributeIter)(recv.native))
@@ -633,8 +548,6 @@ func (recv *MenuAttributeIter) Next() bool {
 	return retGo
 }
 
-func (recv *MenuAttributeIter) Object() *gobject.Object {}
-
 // MenuItem is a wrapper around the C record GMenuItem.
 type MenuItem struct {
 	native *C.GMenuItem
@@ -654,6 +567,11 @@ func MenuItemNewFromC(u unsafe.Pointer) *MenuItem {
 func (recv *MenuItem) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Object upcasts to *Object
+func (recv *MenuItem) Object() *gobject.Object {
+	return gobject.ObjectNewFromC(recv.native)
 }
 
 // MenuItemNew is a wrapper around the C function g_menu_item_new.
@@ -754,8 +672,6 @@ func (recv *MenuItem) SetSubmenu(submenu *MenuModel) {
 	return
 }
 
-func (recv *MenuItem) Object() *gobject.Object {}
-
 // MenuLinkIter is a wrapper around the C record GMenuLinkIter.
 type MenuLinkIter struct {
 	native *C.GMenuLinkIter
@@ -777,6 +693,11 @@ func MenuLinkIterNewFromC(u unsafe.Pointer) *MenuLinkIter {
 func (recv *MenuLinkIter) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Object upcasts to *Object
+func (recv *MenuLinkIter) Object() *gobject.Object {
+	return gobject.ObjectNewFromC(recv.native)
 }
 
 // GetName is a wrapper around the C function g_menu_link_iter_get_name.
@@ -805,8 +726,6 @@ func (recv *MenuLinkIter) Next() bool {
 	return retGo
 }
 
-func (recv *MenuLinkIter) Object() *gobject.Object {}
-
 // MenuModel is a wrapper around the C record GMenuModel.
 type MenuModel struct {
 	native *C.GMenuModel
@@ -828,6 +747,11 @@ func MenuModelNewFromC(u unsafe.Pointer) *MenuModel {
 func (recv *MenuModel) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Object upcasts to *Object
+func (recv *MenuModel) Object() *gobject.Object {
+	return gobject.ObjectNewFromC(recv.native)
 }
 
 // Unsupported : g_menu_model_get_item_attribute : unsupported parameter ... : varargs
@@ -896,30 +820,6 @@ func (recv *MenuModel) IterateItemLinks(itemIndex int32) *MenuLinkIter {
 	return retGo
 }
 
-func (recv *MenuModel) Object() *gobject.Object {}
-
-func (recv *MountOperation) Object() *gobject.Object {}
-
-func (recv *NativeVolumeMonitor) VolumeMonitor() *VolumeMonitor {}
-
-func (recv *NetworkAddress) Object() *gobject.Object {}
-
-func (recv *NetworkService) Object() *gobject.Object {}
-
-func (recv *Notification) Object() *gobject.Object {}
-
-func (recv *OutputStream) Object() *gobject.Object {}
-
-func (recv *Permission) Object() *gobject.Object {}
-
-func (recv *PropertyAction) Object() *gobject.Object {}
-
-func (recv *ProxyAddress) InetSocketAddress() *InetSocketAddress {}
-
-func (recv *ProxyAddressEnumerator) SocketAddressEnumerator() *SocketAddressEnumerator {}
-
-func (recv *Resolver) Object() *gobject.Object {}
-
 // SettingsNewFull is a wrapper around the C function g_settings_new_full.
 func SettingsNewFull(schema *SettingsSchema, backend *SettingsBackend, path string) *Settings {
 	c_schema := (*C.GSettingsSchema)(schema.ToC())
@@ -937,17 +837,9 @@ func SettingsNewFull(schema *SettingsSchema, backend *SettingsBackend, path stri
 
 // Unsupported : g_settings_create_action : no return generator
 
-func (recv *Settings) Object() *gobject.Object {}
-
-func (recv *SettingsBackend) Object() *gobject.Object {}
-
 // Unsupported : g_simple_action_new : unsupported parameter parameter_type : Blacklisted record : GVariantType
 
 // Unsupported : g_simple_action_new_stateful : unsupported parameter parameter_type : Blacklisted record : GVariantType
-
-func (recv *SimpleAction) Object() *gobject.Object {}
-
-func (recv *SimpleActionGroup) Object() *gobject.Object {}
 
 // Unsupported : g_simple_async_result_new : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
 
@@ -965,14 +857,6 @@ func (recv *SimpleAsyncResult) SetCheckCancellable(checkCancellable *Cancellable
 
 	return
 }
-
-func (recv *SimpleAsyncResult) Object() *gobject.Object {}
-
-func (recv *SimpleIOStream) IOStream() *IOStream {}
-
-func (recv *SimplePermission) Permission() *Permission {}
-
-func (recv *SimpleProxyResolver) Object() *gobject.Object {}
 
 // ConditionTimedWait is a wrapper around the C function g_socket_condition_timed_wait.
 func (recv *Socket) ConditionTimedWait(condition glib.IOCondition, timeout int64, cancellable *Cancellable) (bool, error) {
@@ -1119,14 +1003,6 @@ func (recv *Socket) SetTtl(ttl uint32) {
 	return
 }
 
-func (recv *Socket) Object() *gobject.Object {}
-
-func (recv *SocketAddress) Object() *gobject.Object {}
-
-func (recv *SocketAddressEnumerator) Object() *gobject.Object {}
-
-func (recv *SocketClient) Object() *gobject.Object {}
-
 // Connect is a wrapper around the C function g_socket_connection_connect.
 func (recv *SocketConnection) Connect(address *SocketAddress, cancellable *Cancellable) (bool, error) {
 	c_address := (*C.GSocketAddress)(address.ToC())
@@ -1158,47 +1034,13 @@ func (recv *SocketConnection) IsConnected() bool {
 	return retGo
 }
 
-func (recv *SocketConnection) IOStream() *IOStream {}
-
-func (recv *SocketControlMessage) Object() *gobject.Object {}
-
-func (recv *SocketListener) Object() *gobject.Object {}
-
-func (recv *SocketService) SocketListener() *SocketListener {}
-
 // Unsupported : g_subprocess_new : unsupported parameter error : record with indirection level of 2
 
 // Unsupported : g_subprocess_newv : unsupported parameter argv : no param type
 
-func (recv *Subprocess) Object() *gobject.Object {}
-
-func (recv *SubprocessLauncher) Object() *gobject.Object {}
-
 // Unsupported : g_task_new : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
 
-func (recv *Task) Object() *gobject.Object {}
-
-func (recv *TcpConnection) SocketConnection() *SocketConnection {}
-
-func (recv *TcpWrapperConnection) TcpConnection() *TcpConnection {}
-
-func (recv *TestDBus) Object() *gobject.Object {}
-
 // Unsupported : g_themed_icon_new_from_names : unsupported parameter iconnames : no param type
-
-func (recv *ThemedIcon) Object() *gobject.Object {}
-
-func (recv *ThreadedSocketService) SocketService() *SocketService {}
-
-func (recv *TlsCertificate) Object() *gobject.Object {}
-
-func (recv *TlsConnection) IOStream() *IOStream {}
-
-func (recv *TlsDatabase) Object() *gobject.Object {}
-
-func (recv *TlsInteraction) Object() *gobject.Object {}
-
-func (recv *TlsPassword) Object() *gobject.Object {}
 
 // Unsupported : g_unix_connection_receive_credentials_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
 
@@ -1208,32 +1050,8 @@ func (recv *TlsPassword) Object() *gobject.Object {}
 
 // Unsupported : g_unix_connection_send_credentials_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
 
-func (recv *UnixConnection) SocketConnection() *SocketConnection {}
-
-func (recv *UnixCredentialsMessage) SocketControlMessage() *SocketControlMessage {}
-
 // Unsupported : g_unix_fd_list_new_from_array : unsupported parameter fds : no param type
-
-func (recv *UnixFDList) Object() *gobject.Object {}
-
-func (recv *UnixFDMessage) SocketControlMessage() *SocketControlMessage {}
-
-func (recv *UnixInputStream) InputStream() *InputStream {}
-
-func (recv *UnixMountMonitor) Object() *gobject.Object {}
-
-func (recv *UnixOutputStream) OutputStream() *OutputStream {}
 
 // Unsupported : g_unix_socket_address_new_abstract : unsupported parameter path : no param type
 
 // Unsupported : g_unix_socket_address_new_with_type : unsupported parameter path : no param type
-
-func (recv *UnixSocketAddress) SocketAddress() *SocketAddress {}
-
-func (recv *Vfs) Object() *gobject.Object {}
-
-func (recv *VolumeMonitor) Object() *gobject.Object {}
-
-func (recv *ZlibCompressor) Object() *gobject.Object {}
-
-func (recv *ZlibDecompressor) Object() *gobject.Object {}

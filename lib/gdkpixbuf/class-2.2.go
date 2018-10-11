@@ -3,10 +3,7 @@
 
 package gdkpixbuf
 
-import (
-	gobject "github.com/pekim/gobbi/lib/gobject"
-	"unsafe"
-)
+import "unsafe"
 
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <gdk-pixbuf/gdk-pixbuf.h>
@@ -35,13 +32,7 @@ func (recv *Pixbuf) SetOption(key string, value string) bool {
 	return retGo
 }
 
-func (recv *Pixbuf) Object() *gobject.Object {}
-
 // Unsupported : gdk_pixbuf_animation_new_from_stream_finish : unsupported parameter async_result : no type generator for Gio.AsyncResult, GAsyncResult*
-
-func (recv *PixbufAnimation) Object() *gobject.Object {}
-
-func (recv *PixbufAnimationIter) Object() *gobject.Object {}
 
 // GetFormat is a wrapper around the C function gdk_pixbuf_loader_get_format.
 func (recv *PixbufLoader) GetFormat() *PixbufFormat {
@@ -61,9 +52,5 @@ func (recv *PixbufLoader) SetSize(width int32, height int32) {
 
 	return
 }
-
-func (recv *PixbufLoader) Object() *gobject.Object {}
-
-func (recv *PixbufSimpleAnim) PixbufAnimation() *PixbufAnimation {}
 
 // Unsupported : PixbufSimpleAnimIter : no CType

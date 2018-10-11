@@ -5,7 +5,6 @@ package gdk
 
 import (
 	cairo "github.com/pekim/gobbi/lib/cairo"
-	gio "github.com/pekim/gobbi/lib/gio"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	"unsafe"
 )
@@ -15,10 +14,6 @@ import (
 // #include <stdlib.h>
 import "C"
 
-func (recv *AppLaunchContext) AppLaunchContext() *gio.AppLaunchContext {}
-
-func (recv *Cursor) Object() *gobject.Object {}
-
 // GetAxes is a wrapper around the C function gdk_device_get_axes.
 func (recv *Device) GetAxes() AxisFlags {
 	retC := C.gdk_device_get_axes((*C.GdkDevice)(recv.native))
@@ -26,10 +21,6 @@ func (recv *Device) GetAxes() AxisFlags {
 
 	return retGo
 }
-
-func (recv *Device) Object() *gobject.Object {}
-
-func (recv *DeviceManager) Object() *gobject.Object {}
 
 // DeviceTool is a wrapper around the C record GdkDeviceTool.
 type DeviceTool struct {
@@ -50,6 +41,11 @@ func DeviceToolNewFromC(u unsafe.Pointer) *DeviceTool {
 func (recv *DeviceTool) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Object upcasts to *Object
+func (recv *DeviceTool) Object() *gobject.Object {
+	return gobject.ObjectNewFromC(recv.native)
 }
 
 // GetHardwareId is a wrapper around the C function gdk_device_tool_get_hardware_id.
@@ -75,8 +71,6 @@ func (recv *DeviceTool) GetToolType() DeviceToolType {
 
 	return retGo
 }
-
-func (recv *DeviceTool) Object() *gobject.Object {}
 
 // GetMonitor is a wrapper around the C function gdk_display_get_monitor.
 func (recv *Display) GetMonitor(monitorNum int32) *Monitor {
@@ -126,12 +120,6 @@ func (recv *Display) GetPrimaryMonitor() *Monitor {
 	return retGo
 }
 
-func (recv *Display) Object() *gobject.Object {}
-
-func (recv *DisplayManager) Object() *gobject.Object {}
-
-func (recv *DragContext) Object() *gobject.Object {}
-
 // DrawingContext is a wrapper around the C record GdkDrawingContext.
 type DrawingContext struct {
 	native *C.GdkDrawingContext
@@ -151,6 +139,11 @@ func DrawingContextNewFromC(u unsafe.Pointer) *DrawingContext {
 func (recv *DrawingContext) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Object upcasts to *Object
+func (recv *DrawingContext) Object() *gobject.Object {
+	return gobject.ObjectNewFromC(recv.native)
 }
 
 // GetCairoContext is a wrapper around the C function gdk_drawing_context_get_cairo_context.
@@ -185,10 +178,6 @@ func (recv *DrawingContext) IsValid() bool {
 	return retGo
 }
 
-func (recv *DrawingContext) Object() *gobject.Object {}
-
-func (recv *FrameClock) Object() *gobject.Object {}
-
 // GetUseEs is a wrapper around the C function gdk_gl_context_get_use_es.
 func (recv *GLContext) GetUseEs() bool {
 	retC := C.gdk_gl_context_get_use_es((*C.GdkGLContext)(recv.native))
@@ -205,10 +194,6 @@ func (recv *GLContext) SetUseEs(useEs int32) {
 
 	return
 }
-
-func (recv *GLContext) Object() *gobject.Object {}
-
-func (recv *Keymap) Object() *gobject.Object {}
 
 // Monitor is a wrapper around the C record GdkMonitor.
 type Monitor struct {
@@ -229,6 +214,11 @@ func MonitorNewFromC(u unsafe.Pointer) *Monitor {
 func (recv *Monitor) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Object upcasts to *Object
+func (recv *Monitor) Object() *gobject.Object {
+	return gobject.ObjectNewFromC(recv.native)
 }
 
 // GetDisplay is a wrapper around the C function gdk_monitor_get_display.
@@ -307,10 +297,6 @@ func (recv *Monitor) IsPrimary() bool {
 	return retGo
 }
 
-func (recv *Monitor) Object() *gobject.Object {}
-
-func (recv *Screen) Object() *gobject.Object {}
-
 // Seat is a wrapper around the C record GdkSeat.
 type Seat struct {
 	native *C.GdkSeat
@@ -333,6 +319,11 @@ func (recv *Seat) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Object upcasts to *Object
+func (recv *Seat) Object() *gobject.Object {
+	return gobject.ObjectNewFromC(recv.native)
+}
+
 // GetDisplay is a wrapper around the C function gdk_seat_get_display.
 func (recv *Seat) GetDisplay() *Display {
 	retC := C.gdk_seat_get_display((*C.GdkSeat)(recv.native))
@@ -340,10 +331,6 @@ func (recv *Seat) GetDisplay() *Display {
 
 	return retGo
 }
-
-func (recv *Seat) Object() *gobject.Object {}
-
-func (recv *Visual) Object() *gobject.Object {}
 
 // BeginDrawFrame is a wrapper around the C function gdk_window_begin_draw_frame.
 func (recv *Window) BeginDrawFrame(region *cairo.Region) *DrawingContext {
@@ -363,5 +350,3 @@ func (recv *Window) EndDrawFrame(context *DrawingContext) {
 
 	return
 }
-
-func (recv *Window) Object() *gobject.Object {}

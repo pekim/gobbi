@@ -3,29 +3,12 @@
 
 package atk
 
-import (
-	gobject "github.com/pekim/gobbi/lib/gobject"
-	"unsafe"
-)
+import "unsafe"
 
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <atk/atk.h>
 // #include <stdlib.h>
 import "C"
-
-func (recv *GObjectAccessible) Object() *Object {}
-
-func (recv *Hyperlink) Object() *gobject.Object {}
-
-func (recv *Misc) Object() *gobject.Object {}
-
-func (recv *NoOpObject) Object() *Object {}
-
-func (recv *NoOpObjectFactory) ObjectFactory() *ObjectFactory {}
-
-func (recv *Object) Object() *gobject.Object {}
-
-func (recv *ObjectFactory) Object() *gobject.Object {}
 
 // GetId is a wrapper around the C function atk_plug_get_id.
 func (recv *Plug) GetId() string {
@@ -36,15 +19,7 @@ func (recv *Plug) GetId() string {
 	return retGo
 }
 
-func (recv *Plug) Object() *Object {}
-
-func (recv *Registry) Object() *gobject.Object {}
-
 // Unsupported : atk_relation_new : unsupported parameter targets : no param type
-
-func (recv *Relation) Object() *gobject.Object {}
-
-func (recv *RelationSet) Object() *gobject.Object {}
 
 // Embed is a wrapper around the C function atk_socket_embed.
 func (recv *Socket) Embed(plugId string) {
@@ -63,9 +38,3 @@ func (recv *Socket) IsOccupied() bool {
 
 	return retGo
 }
-
-func (recv *Socket) Object() *Object {}
-
-func (recv *StateSet) Object() *gobject.Object {}
-
-func (recv *Util) Object() *gobject.Object {}

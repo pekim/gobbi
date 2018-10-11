@@ -5,7 +5,6 @@ package gdkpixbuf
 
 import (
 	glib "github.com/pekim/gobbi/lib/glib"
-	gobject "github.com/pekim/gobbi/lib/gobject"
 	"unsafe"
 )
 
@@ -52,13 +51,7 @@ func PixbufNewFromFileAtSize(filename string, width int32, height int32) (*Pixbu
 
 // Unsupported : gdk_pixbuf_save_to_callbackv : unsupported parameter save_func : no type generator for PixbufSaveFunc, GdkPixbufSaveFunc
 
-func (recv *Pixbuf) Object() *gobject.Object {}
-
 // Unsupported : gdk_pixbuf_animation_new_from_stream_finish : unsupported parameter async_result : no type generator for Gio.AsyncResult, GAsyncResult*
-
-func (recv *PixbufAnimation) Object() *gobject.Object {}
-
-func (recv *PixbufAnimationIter) Object() *gobject.Object {}
 
 // PixbufLoaderNewWithMimeType is a wrapper around the C function gdk_pixbuf_loader_new_with_mime_type.
 func PixbufLoaderNewWithMimeType(mimeType string) (*PixbufLoader, error) {
@@ -77,9 +70,5 @@ func PixbufLoaderNewWithMimeType(mimeType string) (*PixbufLoader, error) {
 
 	return retGo, goThrowableError
 }
-
-func (recv *PixbufLoader) Object() *gobject.Object {}
-
-func (recv *PixbufSimpleAnim) PixbufAnimation() *PixbufAnimation {}
 
 // Unsupported : PixbufSimpleAnimIter : no CType
