@@ -118,14 +118,14 @@ func (recv *ApplicationCommandLine) GetOptionsDict() *glib.VariantDict {
 // Unsupported : g_inet_address_new_from_bytes : unsupported parameter bytes : no param type
 
 // InetSocketAddressNewFromString is a wrapper around the C function g_inet_socket_address_new_from_string.
-func InetSocketAddressNewFromString(address string, port uint32) *SocketAddress {
+func InetSocketAddressNewFromString(address string, port uint32) *InetSocketAddress {
 	c_address := C.CString(address)
 	defer C.free(unsafe.Pointer(c_address))
 
 	c_port := (C.guint)(port)
 
 	retC := C.g_inet_socket_address_new_from_string(c_address, c_port)
-	retGo := SocketAddressNewFromC(unsafe.Pointer(retC))
+	retGo := InetSocketAddressNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }

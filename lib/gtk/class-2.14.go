@@ -6,7 +6,6 @@ package gtk
 import (
 	gdk "github.com/pekim/gobbi/lib/gdk"
 	gdkpixbuf "github.com/pekim/gobbi/lib/gdkpixbuf"
-	gio "github.com/pekim/gobbi/lib/gio"
 	glib "github.com/pekim/gobbi/lib/glib"
 	pango "github.com/pekim/gobbi/lib/pango"
 	"unsafe"
@@ -363,9 +362,9 @@ func (recv *FontSelectionDialog) GetOkButton() *Widget {
 }
 
 // HSVNew is a wrapper around the C function gtk_hsv_new.
-func HSVNew() *Widget {
+func HSVNew() *HSV {
 	retC := C.gtk_hsv_new()
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	retGo := HSVNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -541,11 +540,11 @@ func (recv *MessageDialog) GetImage() *Widget {
 }
 
 // MountOperationNew is a wrapper around the C function gtk_mount_operation_new.
-func MountOperationNew(parent *Window) *gio.MountOperation {
+func MountOperationNew(parent *Window) *MountOperation {
 	c_parent := (*C.GtkWindow)(parent.ToC())
 
 	retC := C.gtk_mount_operation_new(c_parent)
-	retGo := gio.MountOperationNewFromC(unsafe.Pointer(retC))
+	retGo := MountOperationNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }

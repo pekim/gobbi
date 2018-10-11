@@ -271,11 +271,11 @@ func (recv *Gesture) Ungroup() {
 }
 
 // GestureDragNew is a wrapper around the C function gtk_gesture_drag_new.
-func GestureDragNew(widget *Widget) *Gesture {
+func GestureDragNew(widget *Widget) *GestureDrag {
 	c_widget := (*C.GtkWidget)(widget.ToC())
 
 	retC := C.gtk_gesture_drag_new(c_widget)
-	retGo := GestureNewFromC(unsafe.Pointer(retC))
+	retGo := GestureDragNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -313,21 +313,21 @@ func (recv *GestureDrag) GetStartPoint() (bool, *float64, *float64) {
 }
 
 // GestureLongPressNew is a wrapper around the C function gtk_gesture_long_press_new.
-func GestureLongPressNew(widget *Widget) *Gesture {
+func GestureLongPressNew(widget *Widget) *GestureLongPress {
 	c_widget := (*C.GtkWidget)(widget.ToC())
 
 	retC := C.gtk_gesture_long_press_new(c_widget)
-	retGo := GestureNewFromC(unsafe.Pointer(retC))
+	retGo := GestureLongPressNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
 
 // GestureMultiPressNew is a wrapper around the C function gtk_gesture_multi_press_new.
-func GestureMultiPressNew(widget *Widget) *Gesture {
+func GestureMultiPressNew(widget *Widget) *GestureMultiPress {
 	c_widget := (*C.GtkWidget)(widget.ToC())
 
 	retC := C.gtk_gesture_multi_press_new(c_widget)
-	retGo := GestureNewFromC(unsafe.Pointer(retC))
+	retGo := GestureMultiPressNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -337,13 +337,13 @@ func GestureMultiPressNew(widget *Widget) *Gesture {
 // Unsupported : gtk_gesture_multi_press_set_area : unsupported parameter rect : Blacklisted record : GdkRectangle
 
 // GesturePanNew is a wrapper around the C function gtk_gesture_pan_new.
-func GesturePanNew(widget *Widget, orientation Orientation) *Gesture {
+func GesturePanNew(widget *Widget, orientation Orientation) *GesturePan {
 	c_widget := (*C.GtkWidget)(widget.ToC())
 
 	c_orientation := (C.GtkOrientation)(orientation)
 
 	retC := C.gtk_gesture_pan_new(c_widget, c_orientation)
-	retGo := GestureNewFromC(unsafe.Pointer(retC))
+	retGo := GesturePanNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -366,11 +366,11 @@ func (recv *GesturePan) SetOrientation(orientation Orientation) {
 }
 
 // GestureRotateNew is a wrapper around the C function gtk_gesture_rotate_new.
-func GestureRotateNew(widget *Widget) *Gesture {
+func GestureRotateNew(widget *Widget) *GestureRotate {
 	c_widget := (*C.GtkWidget)(widget.ToC())
 
 	retC := C.gtk_gesture_rotate_new(c_widget)
-	retGo := GestureNewFromC(unsafe.Pointer(retC))
+	retGo := GestureRotateNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -453,11 +453,11 @@ func (recv *GestureSingle) SetTouchOnly(touchOnly bool) {
 }
 
 // GestureSwipeNew is a wrapper around the C function gtk_gesture_swipe_new.
-func GestureSwipeNew(widget *Widget) *Gesture {
+func GestureSwipeNew(widget *Widget) *GestureSwipe {
 	c_widget := (*C.GtkWidget)(widget.ToC())
 
 	retC := C.gtk_gesture_swipe_new(c_widget)
-	retGo := GestureNewFromC(unsafe.Pointer(retC))
+	retGo := GestureSwipeNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -479,11 +479,11 @@ func (recv *GestureSwipe) GetVelocity() (bool, *float64, *float64) {
 }
 
 // GestureZoomNew is a wrapper around the C function gtk_gesture_zoom_new.
-func GestureZoomNew(widget *Widget) *Gesture {
+func GestureZoomNew(widget *Widget) *GestureZoom {
 	c_widget := (*C.GtkWidget)(widget.ToC())
 
 	retC := C.gtk_gesture_zoom_new(c_widget)
-	retGo := GestureNewFromC(unsafe.Pointer(retC))
+	retGo := GestureZoomNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }

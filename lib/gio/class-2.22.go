@@ -357,13 +357,13 @@ func (recv *InetAddress) ToString() string {
 }
 
 // InetSocketAddressNew is a wrapper around the C function g_inet_socket_address_new.
-func InetSocketAddressNew(address *InetAddress, port uint16) *SocketAddress {
+func InetSocketAddressNew(address *InetAddress, port uint16) *InetSocketAddress {
 	c_address := (*C.GInetAddress)(address.ToC())
 
 	c_port := (C.guint16)(port)
 
 	retC := C.g_inet_socket_address_new(c_address, c_port)
-	retGo := SocketAddressNewFromC(unsafe.Pointer(retC))
+	retGo := InetSocketAddressNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -1461,11 +1461,11 @@ func (recv *ThreadedSocketService) ToC() unsafe.Pointer {
 }
 
 // ThreadedSocketServiceNew is a wrapper around the C function g_threaded_socket_service_new.
-func ThreadedSocketServiceNew(maxThreads int32) *SocketService {
+func ThreadedSocketServiceNew(maxThreads int32) *ThreadedSocketService {
 	c_max_threads := (C.int)(maxThreads)
 
 	retC := C.g_threaded_socket_service_new(c_max_threads)
-	retGo := SocketServiceNewFromC(unsafe.Pointer(retC))
+	retGo := ThreadedSocketServiceNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -1509,9 +1509,9 @@ func (recv *UnixConnection) SendFd(fd int32, cancellable *Cancellable) (bool, er
 // Unsupported : g_unix_fd_list_new_from_array : unsupported parameter fds : no param type
 
 // UnixFDMessageNew is a wrapper around the C function g_unix_fd_message_new.
-func UnixFDMessageNew() *SocketControlMessage {
+func UnixFDMessageNew() *UnixFDMessage {
 	retC := C.g_unix_fd_message_new()
-	retGo := SocketControlMessageNewFromC(unsafe.Pointer(retC))
+	retGo := UnixFDMessageNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -1536,12 +1536,12 @@ func (recv *UnixFDMessage) AppendFd(fd int32) (bool, error) {
 // Unsupported : g_unix_fd_message_steal_fds : no return type
 
 // UnixSocketAddressNew is a wrapper around the C function g_unix_socket_address_new.
-func UnixSocketAddressNew(path string) *SocketAddress {
+func UnixSocketAddressNew(path string) *UnixSocketAddress {
 	c_path := C.CString(path)
 	defer C.free(unsafe.Pointer(c_path))
 
 	retC := C.g_unix_socket_address_new(c_path)
-	retGo := SocketAddressNewFromC(unsafe.Pointer(retC))
+	retGo := UnixSocketAddressNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }

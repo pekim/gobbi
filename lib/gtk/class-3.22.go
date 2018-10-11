@@ -210,12 +210,12 @@ func (recv *ScrolledWindow) SetPropagateNaturalWidth(propagate bool) {
 }
 
 // ShortcutLabelNew is a wrapper around the C function gtk_shortcut_label_new.
-func ShortcutLabelNew(accelerator string) *Widget {
+func ShortcutLabelNew(accelerator string) *ShortcutLabel {
 	c_accelerator := C.CString(accelerator)
 	defer C.free(unsafe.Pointer(c_accelerator))
 
 	retC := C.gtk_shortcut_label_new(c_accelerator)
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	retGo := ShortcutLabelNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }

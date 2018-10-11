@@ -535,7 +535,7 @@ func (recv *Range) SetShowFillLevel(showFillLevel bool) {
 }
 
 // RecentActionNew is a wrapper around the C function gtk_recent_action_new.
-func RecentActionNew(name string, label string, tooltip string, stockId string) *Action {
+func RecentActionNew(name string, label string, tooltip string, stockId string) *RecentAction {
 	c_name := C.CString(name)
 	defer C.free(unsafe.Pointer(c_name))
 
@@ -549,13 +549,13 @@ func RecentActionNew(name string, label string, tooltip string, stockId string) 
 	defer C.free(unsafe.Pointer(c_stock_id))
 
 	retC := C.gtk_recent_action_new(c_name, c_label, c_tooltip, c_stock_id)
-	retGo := ActionNewFromC(unsafe.Pointer(retC))
+	retGo := RecentActionNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
 
 // RecentActionNewForManager is a wrapper around the C function gtk_recent_action_new_for_manager.
-func RecentActionNewForManager(name string, label string, tooltip string, stockId string, manager *RecentManager) *Action {
+func RecentActionNewForManager(name string, label string, tooltip string, stockId string, manager *RecentManager) *RecentAction {
 	c_name := C.CString(name)
 	defer C.free(unsafe.Pointer(c_name))
 
@@ -571,7 +571,7 @@ func RecentActionNewForManager(name string, label string, tooltip string, stockI
 	c_manager := (*C.GtkRecentManager)(manager.ToC())
 
 	retC := C.gtk_recent_action_new_for_manager(c_name, c_label, c_tooltip, c_stock_id, c_manager)
-	retGo := ActionNewFromC(unsafe.Pointer(retC))
+	retGo := RecentActionNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -963,9 +963,9 @@ func (recv *TreeViewColumn) GetTreeView() *Widget {
 }
 
 // VolumeButtonNew is a wrapper around the C function gtk_volume_button_new.
-func VolumeButtonNew() *Widget {
+func VolumeButtonNew() *VolumeButton {
 	retC := C.gtk_volume_button_new()
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	retGo := VolumeButtonNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }

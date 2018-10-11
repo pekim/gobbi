@@ -72,9 +72,9 @@ func (recv *GLArea) ToC() unsafe.Pointer {
 }
 
 // GLAreaNew is a wrapper around the C function gtk_gl_area_new.
-func GLAreaNew() *Widget {
+func GLAreaNew() *GLArea {
 	retC := C.gtk_gl_area_new()
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	retGo := GLAreaNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -280,9 +280,9 @@ func (recv *Label) SetYalign(yalign float32) {
 // Unsupported : gtk_message_dialog_new_with_markup : unsupported parameter ... : varargs
 
 // ModelButtonNew is a wrapper around the C function gtk_model_button_new.
-func ModelButtonNew() *Widget {
+func ModelButtonNew() *ModelButton {
 	retC := C.gtk_model_button_new()
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	retGo := ModelButtonNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -337,9 +337,9 @@ func (recv *Popover) SetTransitionsEnabled(transitionsEnabled bool) {
 }
 
 // PopoverMenuNew is a wrapper around the C function gtk_popover_menu_new.
-func PopoverMenuNew() *Widget {
+func PopoverMenuNew() *PopoverMenu {
 	retC := C.gtk_popover_menu_new()
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	retGo := PopoverMenuNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -419,9 +419,9 @@ func (recv *Stack) SetVhomogeneous(vhomogeneous bool) {
 }
 
 // StackSidebarNew is a wrapper around the C function gtk_stack_sidebar_new.
-func StackSidebarNew() *Widget {
+func StackSidebarNew() *StackSidebar {
 	retC := C.gtk_stack_sidebar_new()
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	retGo := StackSidebarNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }

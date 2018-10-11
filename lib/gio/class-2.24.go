@@ -225,11 +225,11 @@ func (recv *UnixFDList) GetLength() int32 {
 // Unsupported : g_unix_fd_list_steal_fds : no return type
 
 // UnixFDMessageNewWithFdList is a wrapper around the C function g_unix_fd_message_new_with_fd_list.
-func UnixFDMessageNewWithFdList(fdList *UnixFDList) *SocketControlMessage {
+func UnixFDMessageNewWithFdList(fdList *UnixFDList) *UnixFDMessage {
 	c_fd_list := (*C.GUnixFDList)(fdList.ToC())
 
 	retC := C.g_unix_fd_message_new_with_fd_list(c_fd_list)
-	retGo := SocketControlMessageNewFromC(unsafe.Pointer(retC))
+	retGo := UnixFDMessageNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }

@@ -22,9 +22,9 @@ import "C"
 // Unsupported : gtk_app_chooser_dialog_new : unsupported parameter file : no type generator for Gio.File, GFile*
 
 // AssistantNew is a wrapper around the C function gtk_assistant_new.
-func AssistantNew() *Widget {
+func AssistantNew() *Assistant {
 	retC := C.gtk_assistant_new()
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	retGo := AssistantNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -250,17 +250,17 @@ func (recv *Button) SetImagePosition(position PositionType) {
 }
 
 // CellRendererAccelNew is a wrapper around the C function gtk_cell_renderer_accel_new.
-func CellRendererAccelNew() *CellRenderer {
+func CellRendererAccelNew() *CellRendererAccel {
 	retC := C.gtk_cell_renderer_accel_new()
-	retGo := CellRendererNewFromC(unsafe.Pointer(retC))
+	retGo := CellRendererAccelNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
 
 // CellRendererSpinNew is a wrapper around the C function gtk_cell_renderer_spin_new.
-func CellRendererSpinNew() *CellRenderer {
+func CellRendererSpinNew() *CellRendererSpin {
 	retC := C.gtk_cell_renderer_spin_new()
-	retGo := CellRendererNewFromC(unsafe.Pointer(retC))
+	retGo := CellRendererSpinNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -374,18 +374,18 @@ func (recv *Label) SetLineWrapMode(wrapMode pango.WrapMode) {
 }
 
 // LinkButtonNew is a wrapper around the C function gtk_link_button_new.
-func LinkButtonNew(uri string) *Widget {
+func LinkButtonNew(uri string) *LinkButton {
 	c_uri := C.CString(uri)
 	defer C.free(unsafe.Pointer(c_uri))
 
 	retC := C.gtk_link_button_new(c_uri)
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	retGo := LinkButtonNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
 
 // LinkButtonNewWithLabel is a wrapper around the C function gtk_link_button_new_with_label.
-func LinkButtonNewWithLabel(uri string, label string) *Widget {
+func LinkButtonNewWithLabel(uri string, label string) *LinkButton {
 	c_uri := C.CString(uri)
 	defer C.free(unsafe.Pointer(c_uri))
 
@@ -393,7 +393,7 @@ func LinkButtonNewWithLabel(uri string, label string) *Widget {
 	defer C.free(unsafe.Pointer(c_label))
 
 	retC := C.gtk_link_button_new_with_label(c_uri, c_label)
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	retGo := LinkButtonNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -1566,19 +1566,19 @@ func (recv *Range) SetUpperStepperSensitivity(sensitivity SensitivityType) {
 // Unsupported : gtk_recent_chooser_dialog_new_for_manager : unsupported parameter ... : varargs
 
 // RecentChooserMenuNew is a wrapper around the C function gtk_recent_chooser_menu_new.
-func RecentChooserMenuNew() *Widget {
+func RecentChooserMenuNew() *RecentChooserMenu {
 	retC := C.gtk_recent_chooser_menu_new()
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	retGo := RecentChooserMenuNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
 
 // RecentChooserMenuNewForManager is a wrapper around the C function gtk_recent_chooser_menu_new_for_manager.
-func RecentChooserMenuNewForManager(manager *RecentManager) *Widget {
+func RecentChooserMenuNewForManager(manager *RecentManager) *RecentChooserMenu {
 	c_manager := (*C.GtkRecentManager)(manager.ToC())
 
 	retC := C.gtk_recent_chooser_menu_new_for_manager(c_manager)
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	retGo := RecentChooserMenuNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -1602,19 +1602,19 @@ func (recv *RecentChooserMenu) SetShowNumbers(showNumbers bool) {
 }
 
 // RecentChooserWidgetNew is a wrapper around the C function gtk_recent_chooser_widget_new.
-func RecentChooserWidgetNew() *Widget {
+func RecentChooserWidgetNew() *RecentChooserWidget {
 	retC := C.gtk_recent_chooser_widget_new()
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	retGo := RecentChooserWidgetNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
 
 // RecentChooserWidgetNewForManager is a wrapper around the C function gtk_recent_chooser_widget_new_for_manager.
-func RecentChooserWidgetNewForManager(manager *RecentManager) *Widget {
+func RecentChooserWidgetNewForManager(manager *RecentManager) *RecentChooserWidget {
 	c_manager := (*C.GtkRecentManager)(manager.ToC())
 
 	retC := C.gtk_recent_chooser_widget_new_for_manager(c_manager)
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	retGo := RecentChooserWidgetNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }

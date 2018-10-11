@@ -110,9 +110,9 @@ func (recv *FileInfo) GetDeletionDate() *glib.DateTime {
 // Unsupported : g_memory_output_stream_new : unsupported parameter realloc_function : no type generator for ReallocFunc, GReallocFunc
 
 // MemoryOutputStreamNewResizable is a wrapper around the C function g_memory_output_stream_new_resizable.
-func MemoryOutputStreamNewResizable() *OutputStream {
+func MemoryOutputStreamNewResizable() *MemoryOutputStream {
 	retC := C.g_memory_output_stream_new_resizable()
-	retGo := OutputStreamNewFromC(unsafe.Pointer(retC))
+	retGo := MemoryOutputStreamNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }

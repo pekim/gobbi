@@ -1463,7 +1463,7 @@ func (recv *ProxyAddress) ToC() unsafe.Pointer {
 }
 
 // ProxyAddressNew is a wrapper around the C function g_proxy_address_new.
-func ProxyAddressNew(inetaddr *InetAddress, port uint16, protocol string, destHostname string, destPort uint16, username string, password string) *SocketAddress {
+func ProxyAddressNew(inetaddr *InetAddress, port uint16, protocol string, destHostname string, destPort uint16, username string, password string) *ProxyAddress {
 	c_inetaddr := (*C.GInetAddress)(inetaddr.ToC())
 
 	c_port := (C.guint16)(port)
@@ -1483,7 +1483,7 @@ func ProxyAddressNew(inetaddr *InetAddress, port uint16, protocol string, destHo
 	defer C.free(unsafe.Pointer(c_password))
 
 	retC := C.g_proxy_address_new(c_inetaddr, c_port, c_protocol, c_dest_hostname, c_dest_port, c_username, c_password)
-	retGo := SocketAddressNewFromC(unsafe.Pointer(retC))
+	retGo := ProxyAddressNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -1814,12 +1814,12 @@ func (recv *Settings) SetString(key string, value string) bool {
 // Unsupported : g_simple_async_result_new_take_error : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
 
 // SimplePermissionNew is a wrapper around the C function g_simple_permission_new.
-func SimplePermissionNew(allowed bool) *Permission {
+func SimplePermissionNew(allowed bool) *SimplePermission {
 	c_allowed :=
 		boolToGboolean(allowed)
 
 	retC := C.g_simple_permission_new(c_allowed)
-	retGo := PermissionNewFromC(unsafe.Pointer(retC))
+	retGo := SimplePermissionNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -1987,19 +1987,19 @@ func (recv *UnixCredentialsMessage) ToC() unsafe.Pointer {
 }
 
 // UnixCredentialsMessageNew is a wrapper around the C function g_unix_credentials_message_new.
-func UnixCredentialsMessageNew() *SocketControlMessage {
+func UnixCredentialsMessageNew() *UnixCredentialsMessage {
 	retC := C.g_unix_credentials_message_new()
-	retGo := SocketControlMessageNewFromC(unsafe.Pointer(retC))
+	retGo := UnixCredentialsMessageNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
 
 // UnixCredentialsMessageNewWithCredentials is a wrapper around the C function g_unix_credentials_message_new_with_credentials.
-func UnixCredentialsMessageNewWithCredentials(credentials *Credentials) *SocketControlMessage {
+func UnixCredentialsMessageNewWithCredentials(credentials *Credentials) *UnixCredentialsMessage {
 	c_credentials := (*C.GCredentials)(credentials.ToC())
 
 	retC := C.g_unix_credentials_message_new_with_credentials(c_credentials)
-	retGo := SocketControlMessageNewFromC(unsafe.Pointer(retC))
+	retGo := UnixCredentialsMessageNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }

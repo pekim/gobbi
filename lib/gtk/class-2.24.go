@@ -17,9 +17,9 @@ import "C"
 // Unsupported : gtk_button_new_from_icon_name : unsupported parameter size : no type generator for gint, GtkIconSize
 
 // ComboBoxNewWithEntry is a wrapper around the C function gtk_combo_box_new_with_entry.
-func ComboBoxNewWithEntry() *Widget {
+func ComboBoxNewWithEntry() *ComboBox {
 	retC := C.gtk_combo_box_new_with_entry()
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	retGo := ComboBoxNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -54,17 +54,17 @@ func (recv *ComboBox) SetEntryTextColumn(textColumn int32) {
 }
 
 // ComboBoxTextNew is a wrapper around the C function gtk_combo_box_text_new.
-func ComboBoxTextNew() *Widget {
+func ComboBoxTextNew() *ComboBoxText {
 	retC := C.gtk_combo_box_text_new()
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	retGo := ComboBoxTextNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
 
 // ComboBoxTextNewWithEntry is a wrapper around the C function gtk_combo_box_text_new_with_entry.
-func ComboBoxTextNewWithEntry() *Widget {
+func ComboBoxTextNewWithEntry() *ComboBoxText {
 	retC := C.gtk_combo_box_text_new_with_entry()
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	retGo := ComboBoxTextNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }

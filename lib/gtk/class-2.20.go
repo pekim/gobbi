@@ -41,9 +41,9 @@ func (recv *Action) SetAlwaysShowImage(alwaysShow bool) {
 // Unsupported : gtk_button_new_from_icon_name : unsupported parameter size : no type generator for gint, GtkIconSize
 
 // CellRendererSpinnerNew is a wrapper around the C function gtk_cell_renderer_spinner_new.
-func CellRendererSpinnerNew() *CellRenderer {
+func CellRendererSpinnerNew() *CellRendererSpinner {
 	retC := C.gtk_cell_renderer_spinner_new()
-	retGo := CellRendererNewFromC(unsafe.Pointer(retC))
+	retGo := CellRendererSpinnerNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -112,9 +112,9 @@ func (recv *Notebook) SetActionWidget(widget *Widget, packType PackType) {
 }
 
 // OffscreenWindowNew is a wrapper around the C function gtk_offscreen_window_new.
-func OffscreenWindowNew() *Widget {
+func OffscreenWindowNew() *OffscreenWindow {
 	retC := C.gtk_offscreen_window_new()
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	retGo := OffscreenWindowNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -232,9 +232,9 @@ func (recv *Range) SetSliderSizeFixed(sizeFixed bool) {
 // Unsupported : gtk_scale_button_new : unsupported parameter size : no type generator for gint, GtkIconSize
 
 // SpinnerNew is a wrapper around the C function gtk_spinner_new.
-func SpinnerNew() *Widget {
+func SpinnerNew() *Spinner {
 	retC := C.gtk_spinner_new()
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	retGo := SpinnerNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -306,12 +306,12 @@ func (recv *ToolItem) GetTextSizeGroup() *SizeGroup {
 }
 
 // ToolItemGroupNew is a wrapper around the C function gtk_tool_item_group_new.
-func ToolItemGroupNew(label string) *Widget {
+func ToolItemGroupNew(label string) *ToolItemGroup {
 	c_label := C.CString(label)
 	defer C.free(unsafe.Pointer(c_label))
 
 	retC := C.gtk_tool_item_group_new(c_label)
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	retGo := ToolItemGroupNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -466,9 +466,9 @@ func (recv *ToolItemGroup) SetLabelWidget(labelWidget *Widget) {
 }
 
 // ToolPaletteNew is a wrapper around the C function gtk_tool_palette_new.
-func ToolPaletteNew() *Widget {
+func ToolPaletteNew() *ToolPalette {
 	retC := C.gtk_tool_palette_new()
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	retGo := ToolPaletteNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }

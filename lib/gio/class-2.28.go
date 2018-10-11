@@ -410,13 +410,13 @@ func (recv *SocketClient) SetTlsValidationFlags(flags TlsCertificateFlags) {
 // Unsupported : g_task_new : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
 
 // TcpWrapperConnectionNew is a wrapper around the C function g_tcp_wrapper_connection_new.
-func TcpWrapperConnectionNew(baseIoStream *IOStream, socket *Socket) *SocketConnection {
+func TcpWrapperConnectionNew(baseIoStream *IOStream, socket *Socket) *TcpWrapperConnection {
 	c_base_io_stream := (*C.GIOStream)(baseIoStream.ToC())
 
 	c_socket := (*C.GSocket)(socket.ToC())
 
 	retC := C.g_tcp_wrapper_connection_new(c_base_io_stream, c_socket)
-	retGo := SocketConnectionNewFromC(unsafe.Pointer(retC))
+	retGo := TcpWrapperConnectionNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }

@@ -171,21 +171,21 @@ func (recv *Entry) SetInputPurpose(purpose InputPurpose) {
 // Unsupported : gtk_info_bar_new_with_buttons : unsupported parameter ... : varargs
 
 // LevelBarNew is a wrapper around the C function gtk_level_bar_new.
-func LevelBarNew() *Widget {
+func LevelBarNew() *LevelBar {
 	retC := C.gtk_level_bar_new()
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	retGo := LevelBarNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
 
 // LevelBarNewForInterval is a wrapper around the C function gtk_level_bar_new_for_interval.
-func LevelBarNewForInterval(minValue float64, maxValue float64) *Widget {
+func LevelBarNewForInterval(minValue float64, maxValue float64) *LevelBar {
 	c_min_value := (C.gdouble)(minValue)
 
 	c_max_value := (C.gdouble)(maxValue)
 
 	retC := C.gtk_level_bar_new_for_interval(c_min_value, c_max_value)
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	retGo := LevelBarNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -300,9 +300,9 @@ func (recv *LevelBar) SetValue(value float64) {
 // Unsupported : gtk_list_store_newv : unsupported parameter types : no param type
 
 // MenuButtonNew is a wrapper around the C function gtk_menu_button_new.
-func MenuButtonNew() *Widget {
+func MenuButtonNew() *MenuButton {
 	retC := C.gtk_menu_button_new()
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	retGo := MenuButtonNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -407,9 +407,9 @@ func (recv *MenuShell) BindModel(model *gio.MenuModel, actionNamespace string, w
 // Unsupported : gtk_scale_button_new : unsupported parameter size : no type generator for gint, GtkIconSize
 
 // SearchEntryNew is a wrapper around the C function gtk_search_entry_new.
-func SearchEntryNew() *Widget {
+func SearchEntryNew() *SearchEntry {
 	retC := C.gtk_search_entry_new()
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	retGo := SearchEntryNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }

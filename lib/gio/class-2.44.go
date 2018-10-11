@@ -186,13 +186,13 @@ func (recv *SimpleIOStream) ToC() unsafe.Pointer {
 }
 
 // SimpleIOStreamNew is a wrapper around the C function g_simple_io_stream_new.
-func SimpleIOStreamNew(inputStream *InputStream, outputStream *OutputStream) *IOStream {
+func SimpleIOStreamNew(inputStream *InputStream, outputStream *OutputStream) *SimpleIOStream {
 	c_input_stream := (*C.GInputStream)(inputStream.ToC())
 
 	c_output_stream := (*C.GOutputStream)(outputStream.ToC())
 
 	retC := C.g_simple_io_stream_new(c_input_stream, c_output_stream)
-	retGo := IOStreamNewFromC(unsafe.Pointer(retC))
+	retGo := SimpleIOStreamNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }

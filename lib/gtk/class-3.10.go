@@ -184,9 +184,9 @@ func (recv *Grid) SetRowBaselinePosition(row int32, pos BaselinePosition) {
 }
 
 // HeaderBarNew is a wrapper around the C function gtk_header_bar_new.
-func HeaderBarNew() *Widget {
+func HeaderBarNew() *HeaderBar {
 	retC := C.gtk_header_bar_new()
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	retGo := HeaderBarNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -387,11 +387,11 @@ func (recv *IconTheme) LookupIconForScale(iconName string, size int32, scale int
 // Unsupported : gtk_image_new_from_stock : unsupported parameter size : no type generator for gint, GtkIconSize
 
 // ImageNewFromSurface is a wrapper around the C function gtk_image_new_from_surface.
-func ImageNewFromSurface(surface *cairo.Surface) *Widget {
+func ImageNewFromSurface(surface *cairo.Surface) *Image {
 	c_surface := (*C.cairo_surface_t)(surface.ToC())
 
 	retC := C.gtk_image_new_from_surface(c_surface)
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	retGo := ImageNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -443,9 +443,9 @@ func (recv *Label) SetLines(lines int32) {
 }
 
 // ListBoxNew is a wrapper around the C function gtk_list_box_new.
-func ListBoxNew() *Widget {
+func ListBoxNew() *ListBox {
 	retC := C.gtk_list_box_new()
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	retGo := ListBoxNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -612,9 +612,9 @@ func (recv *ListBox) SetSelectionMode(mode SelectionMode) {
 // Unsupported : gtk_list_box_set_sort_func : unsupported parameter sort_func : no type generator for ListBoxSortFunc, GtkListBoxSortFunc
 
 // ListBoxRowNew is a wrapper around the C function gtk_list_box_row_new.
-func ListBoxRowNew() *Widget {
+func ListBoxRowNew() *ListBoxRow {
 	retC := C.gtk_list_box_row_new()
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	retGo := ListBoxRowNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -664,9 +664,9 @@ func (recv *ListBoxRow) SetHeader(header *Widget) {
 // Unsupported : gtk_page_setup_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
 
 // PlacesSidebarNew is a wrapper around the C function gtk_places_sidebar_new.
-func PlacesSidebarNew() *Widget {
+func PlacesSidebarNew() *PlacesSidebar {
 	retC := C.gtk_places_sidebar_new()
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	retGo := PlacesSidebarNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -741,9 +741,9 @@ func (recv *PlacesSidebar) SetShowDesktop(showDesktop bool) {
 // Unsupported : gtk_recent_chooser_dialog_new_for_manager : unsupported parameter ... : varargs
 
 // RevealerNew is a wrapper around the C function gtk_revealer_new.
-func RevealerNew() *Widget {
+func RevealerNew() *Revealer {
 	retC := C.gtk_revealer_new()
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	retGo := RevealerNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -811,9 +811,9 @@ func (recv *Revealer) SetTransitionType(transition RevealerTransitionType) {
 // Unsupported : gtk_scale_button_new : unsupported parameter size : no type generator for gint, GtkIconSize
 
 // SearchBarNew is a wrapper around the C function gtk_search_bar_new.
-func SearchBarNew() *Widget {
+func SearchBarNew() *SearchBar {
 	retC := C.gtk_search_bar_new()
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	retGo := SearchBarNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -866,9 +866,9 @@ func (recv *SearchBar) SetShowCloseButton(visible bool) {
 }
 
 // StackNew is a wrapper around the C function gtk_stack_new.
-func StackNew() *Widget {
+func StackNew() *Stack {
 	retC := C.gtk_stack_new()
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	retGo := StackNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -1000,9 +1000,9 @@ func (recv *Stack) SetVisibleChildName(name string) {
 }
 
 // StackSwitcherNew is a wrapper around the C function gtk_stack_switcher_new.
-func StackSwitcherNew() *Widget {
+func StackSwitcherNew() *StackSwitcher {
 	retC := C.gtk_stack_switcher_new()
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	retGo := StackSwitcherNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }

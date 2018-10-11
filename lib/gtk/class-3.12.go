@@ -19,9 +19,9 @@ import "C"
 // Unsupported : gtk_accel_label_get_accel : unsupported parameter accelerator_mods : GdkModifierType* with indirection level of 1
 
 // ActionBarNew is a wrapper around the C function gtk_action_bar_new.
-func ActionBarNew() *Widget {
+func ActionBarNew() *ActionBar {
 	retC := C.gtk_action_bar_new()
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	retGo := ActionBarNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -126,9 +126,9 @@ func (recv *Entry) SetMaxWidthChars(nChars int32) {
 // Unsupported : gtk_file_filter_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
 
 // FlowBoxNew is a wrapper around the C function gtk_flow_box_new.
-func FlowBoxNew() *Widget {
+func FlowBoxNew() *FlowBox {
 	retC := C.gtk_flow_box_new()
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	retGo := FlowBoxNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -354,9 +354,9 @@ func (recv *FlowBox) UnselectChild(child *FlowBoxChild) {
 }
 
 // FlowBoxChildNew is a wrapper around the C function gtk_flow_box_child_new.
-func FlowBoxChildNew() *Widget {
+func FlowBoxChildNew() *FlowBoxChild {
 	retC := C.gtk_flow_box_child_new()
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	retGo := FlowBoxChildNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -506,23 +506,23 @@ func (recv *PlacesSidebar) SetLocalOnly(localOnly bool) {
 }
 
 // PopoverNew is a wrapper around the C function gtk_popover_new.
-func PopoverNew(relativeTo *Widget) *Widget {
+func PopoverNew(relativeTo *Widget) *Popover {
 	c_relative_to := (*C.GtkWidget)(relativeTo.ToC())
 
 	retC := C.gtk_popover_new(c_relative_to)
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	retGo := PopoverNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
 
 // PopoverNewFromModel is a wrapper around the C function gtk_popover_new_from_model.
-func PopoverNewFromModel(relativeTo *Widget, model *gio.MenuModel) *Widget {
+func PopoverNewFromModel(relativeTo *Widget, model *gio.MenuModel) *Popover {
 	c_relative_to := (*C.GtkWidget)(relativeTo.ToC())
 
 	c_model := (*C.GMenuModel)(model.ToC())
 
 	retC := C.gtk_popover_new_from_model(c_relative_to, c_model)
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	retGo := PopoverNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }

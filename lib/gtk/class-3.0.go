@@ -39,12 +39,12 @@ func (recv *AboutDialog) SetLicenseType(licenseType License) {
 }
 
 // AppChooserButtonNew is a wrapper around the C function gtk_app_chooser_button_new.
-func AppChooserButtonNew(contentType string) *Widget {
+func AppChooserButtonNew(contentType string) *AppChooserButton {
 	c_content_type := C.CString(contentType)
 	defer C.free(unsafe.Pointer(c_content_type))
 
 	retC := C.gtk_app_chooser_button_new(c_content_type)
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	retGo := AppChooserButtonNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -89,7 +89,7 @@ func (recv *AppChooserButton) SetShowDialogItem(setting bool) {
 // Unsupported : gtk_app_chooser_dialog_new : unsupported parameter file : no type generator for Gio.File, GFile*
 
 // AppChooserDialogNewForContentType is a wrapper around the C function gtk_app_chooser_dialog_new_for_content_type.
-func AppChooserDialogNewForContentType(parent *Window, flags DialogFlags, contentType string) *Widget {
+func AppChooserDialogNewForContentType(parent *Window, flags DialogFlags, contentType string) *AppChooserDialog {
 	c_parent := (*C.GtkWindow)(parent.ToC())
 
 	c_flags := (C.GtkDialogFlags)(flags)
@@ -98,7 +98,7 @@ func AppChooserDialogNewForContentType(parent *Window, flags DialogFlags, conten
 	defer C.free(unsafe.Pointer(c_content_type))
 
 	retC := C.gtk_app_chooser_dialog_new_for_content_type(c_parent, c_flags, c_content_type)
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	retGo := AppChooserDialogNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -112,12 +112,12 @@ func (recv *AppChooserDialog) GetWidget() *Widget {
 }
 
 // AppChooserWidgetNew is a wrapper around the C function gtk_app_chooser_widget_new.
-func AppChooserWidgetNew(contentType string) *Widget {
+func AppChooserWidgetNew(contentType string) *AppChooserWidget {
 	c_content_type := C.CString(contentType)
 	defer C.free(unsafe.Pointer(c_content_type))
 
 	retC := C.gtk_app_chooser_widget_new(c_content_type)
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	retGo := AppChooserWidgetNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -274,13 +274,13 @@ func (recv *Assistant) PreviousPage() {
 }
 
 // BoxNew is a wrapper around the C function gtk_box_new.
-func BoxNew(orientation Orientation, spacing int32) *Widget {
+func BoxNew(orientation Orientation, spacing int32) *Box {
 	c_orientation := (C.GtkOrientation)(orientation)
 
 	c_spacing := (C.gint)(spacing)
 
 	retC := C.gtk_box_new(c_orientation, c_spacing)
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	retGo := BoxNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -288,11 +288,11 @@ func BoxNew(orientation Orientation, spacing int32) *Widget {
 // Unsupported : gtk_button_new_from_icon_name : unsupported parameter size : no type generator for gint, GtkIconSize
 
 // ButtonBoxNew is a wrapper around the C function gtk_button_box_new.
-func ButtonBoxNew(orientation Orientation) *Widget {
+func ButtonBoxNew(orientation Orientation) *ButtonBox {
 	c_orientation := (C.GtkOrientation)(orientation)
 
 	retC := C.gtk_button_box_new(c_orientation)
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	retGo := ButtonBoxNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -666,9 +666,9 @@ func (recv *CellArea) StopEditing(canceled bool) {
 }
 
 // CellAreaBoxNew is a wrapper around the C function gtk_cell_area_box_new.
-func CellAreaBoxNew() *CellArea {
+func CellAreaBoxNew() *CellAreaBox {
 	retC := C.gtk_cell_area_box_new()
-	retGo := CellAreaNewFromC(unsafe.Pointer(retC))
+	retGo := CellAreaBoxNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -1000,11 +1000,11 @@ func (recv *CellView) SetFitModel(fitModel bool) {
 }
 
 // ColorButtonNewWithRgba is a wrapper around the C function gtk_color_button_new_with_rgba.
-func ColorButtonNewWithRgba(rgba *gdk.RGBA) *Widget {
+func ColorButtonNewWithRgba(rgba *gdk.RGBA) *ColorButton {
 	c_rgba := (*C.GdkRGBA)(rgba.ToC())
 
 	retC := C.gtk_color_button_new_with_rgba(c_rgba)
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	retGo := ColorButtonNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -1252,11 +1252,11 @@ func (recv *IconInfo) LoadSymbolicForStyle(style *Style, state StateType) (*gdkp
 }
 
 // IconViewNewWithArea is a wrapper around the C function gtk_icon_view_new_with_area.
-func IconViewNewWithArea(area *CellArea) *Widget {
+func IconViewNewWithArea(area *CellArea) *IconView {
 	c_area := (*C.GtkCellArea)(area.ToC())
 
 	retC := C.gtk_icon_view_new_with_area(c_area)
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	retGo := IconViewNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -1396,11 +1396,11 @@ func (recv *NumerableIcon) SetStyleContext(style *StyleContext) {
 // Unsupported : gtk_page_setup_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
 
 // PanedNew is a wrapper around the C function gtk_paned_new.
-func PanedNew(orientation Orientation) *Widget {
+func PanedNew(orientation Orientation) *Paned {
 	c_orientation := (C.GtkOrientation)(orientation)
 
 	retC := C.gtk_paned_new(c_orientation)
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	retGo := PanedNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -1448,19 +1448,19 @@ func (recv *RadioButton) JoinGroup(groupSource *RadioButton) {
 // Unsupported : gtk_recent_chooser_dialog_new_for_manager : unsupported parameter ... : varargs
 
 // ScaleNew is a wrapper around the C function gtk_scale_new.
-func ScaleNew(orientation Orientation, adjustment *Adjustment) *Widget {
+func ScaleNew(orientation Orientation, adjustment *Adjustment) *Scale {
 	c_orientation := (C.GtkOrientation)(orientation)
 
 	c_adjustment := (*C.GtkAdjustment)(adjustment.ToC())
 
 	retC := C.gtk_scale_new(c_orientation, c_adjustment)
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	retGo := ScaleNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
 
 // ScaleNewWithRange is a wrapper around the C function gtk_scale_new_with_range.
-func ScaleNewWithRange(orientation Orientation, min float64, max float64, step float64) *Widget {
+func ScaleNewWithRange(orientation Orientation, min float64, max float64, step float64) *Scale {
 	c_orientation := (C.GtkOrientation)(orientation)
 
 	c_min := (C.gdouble)(min)
@@ -1470,7 +1470,7 @@ func ScaleNewWithRange(orientation Orientation, min float64, max float64, step f
 	c_step := (C.gdouble)(step)
 
 	retC := C.gtk_scale_new_with_range(c_orientation, c_min, c_max, c_step)
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	retGo := ScaleNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -1478,13 +1478,13 @@ func ScaleNewWithRange(orientation Orientation, min float64, max float64, step f
 // Unsupported : gtk_scale_button_new : unsupported parameter size : no type generator for gint, GtkIconSize
 
 // ScrollbarNew is a wrapper around the C function gtk_scrollbar_new.
-func ScrollbarNew(orientation Orientation, adjustment *Adjustment) *Widget {
+func ScrollbarNew(orientation Orientation, adjustment *Adjustment) *Scrollbar {
 	c_orientation := (C.GtkOrientation)(orientation)
 
 	c_adjustment := (*C.GtkAdjustment)(adjustment.ToC())
 
 	retC := C.gtk_scrollbar_new(c_orientation, c_adjustment)
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	retGo := ScrollbarNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -1524,11 +1524,11 @@ func (recv *ScrolledWindow) SetMinContentWidth(width int32) {
 }
 
 // SeparatorNew is a wrapper around the C function gtk_separator_new.
-func SeparatorNew(orientation Orientation) *Widget {
+func SeparatorNew(orientation Orientation) *Separator {
 	c_orientation := (C.GtkOrientation)(orientation)
 
 	retC := C.gtk_separator_new(c_orientation)
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	retGo := SeparatorNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -1992,9 +1992,9 @@ func (recv *StyleProperties) UnsetProperty(property string, state StateFlags) {
 }
 
 // SwitchNew is a wrapper around the C function gtk_switch_new.
-func SwitchNew() *Widget {
+func SwitchNew() *Switch {
 	retC := C.gtk_switch_new()
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	retGo := SwitchNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }

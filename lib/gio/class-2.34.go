@@ -146,11 +146,11 @@ func (recv *InputStream) ReadBytes(count uint64, cancellable *Cancellable) (*gli
 // Unsupported : g_list_store_new : unsupported parameter item_type : no type generator for GType, GType
 
 // MemoryInputStreamNewFromBytes is a wrapper around the C function g_memory_input_stream_new_from_bytes.
-func MemoryInputStreamNewFromBytes(bytes *glib.Bytes) *InputStream {
+func MemoryInputStreamNewFromBytes(bytes *glib.Bytes) *MemoryInputStream {
 	c_bytes := (*C.GBytes)(bytes.ToC())
 
 	retC := C.g_memory_input_stream_new_from_bytes(c_bytes)
-	retGo := InputStreamNewFromC(unsafe.Pointer(retC))
+	retGo := MemoryInputStreamNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }

@@ -146,22 +146,22 @@ func (recv *Expander) SetResizeToplevel(resizeToplevel bool) {
 // Unsupported : gtk_file_filter_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
 
 // FontChooserDialogNew is a wrapper around the C function gtk_font_chooser_dialog_new.
-func FontChooserDialogNew(title string, parent *Window) *Widget {
+func FontChooserDialogNew(title string, parent *Window) *FontChooserDialog {
 	c_title := C.CString(title)
 	defer C.free(unsafe.Pointer(c_title))
 
 	c_parent := (*C.GtkWindow)(parent.ToC())
 
 	retC := C.gtk_font_chooser_dialog_new(c_title, c_parent)
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	retGo := FontChooserDialogNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
 
 // FontChooserWidgetNew is a wrapper around the C function gtk_font_chooser_widget_new.
-func FontChooserWidgetNew() *Widget {
+func FontChooserWidgetNew() *FontChooserWidget {
 	retC := C.gtk_font_chooser_widget_new()
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	retGo := FontChooserWidgetNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -224,11 +224,11 @@ func (recv *Grid) InsertRow(position int32) {
 // Unsupported : gtk_list_store_newv : unsupported parameter types : no param type
 
 // LockButtonNew is a wrapper around the C function gtk_lock_button_new.
-func LockButtonNew(permission *gio.Permission) *Widget {
+func LockButtonNew(permission *gio.Permission) *LockButton {
 	c_permission := (*C.GPermission)(permission.ToC())
 
 	retC := C.gtk_lock_button_new(c_permission)
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	retGo := LockButtonNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -255,9 +255,9 @@ func (recv *LockButton) SetPermission(permission *gio.Permission) {
 // Unsupported : gtk_message_dialog_new_with_markup : unsupported parameter ... : varargs
 
 // OverlayNew is a wrapper around the C function gtk_overlay_new.
-func OverlayNew() *Widget {
+func OverlayNew() *Overlay {
 	retC := C.gtk_overlay_new()
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	retGo := OverlayNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }

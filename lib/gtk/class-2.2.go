@@ -53,11 +53,11 @@ func (recv *Clipboard) GetDisplay() *gdk.Display {
 // Unsupported : gtk_info_bar_new_with_buttons : unsupported parameter ... : varargs
 
 // InvisibleNewForScreen is a wrapper around the C function gtk_invisible_new_for_screen.
-func InvisibleNewForScreen(screen *gdk.Screen) *Widget {
+func InvisibleNewForScreen(screen *gdk.Screen) *Invisible {
 	c_screen := (*C.GdkScreen)(screen.ToC())
 
 	retC := C.gtk_invisible_new_for_screen(c_screen)
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	retGo := InvisibleNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }

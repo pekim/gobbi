@@ -132,11 +132,11 @@ func (recv *CellRendererToggle) SetActivatable(setting bool) {
 // Unsupported : gtk_dialog_new_with_buttons : unsupported parameter ... : varargs
 
 // EntryNewWithBuffer is a wrapper around the C function gtk_entry_new_with_buffer.
-func EntryNewWithBuffer(buffer *EntryBuffer) *Widget {
+func EntryNewWithBuffer(buffer *EntryBuffer) *Entry {
 	c_buffer := (*C.GtkEntryBuffer)(buffer.ToC())
 
 	retC := C.gtk_entry_new_with_buffer(c_buffer)
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	retGo := EntryNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -310,9 +310,9 @@ func (recv *IconView) SetItemPadding(itemPadding int32) {
 // Unsupported : gtk_image_new_from_stock : unsupported parameter size : no type generator for gint, GtkIconSize
 
 // InfoBarNew is a wrapper around the C function gtk_info_bar_new.
-func InfoBarNew() *Widget {
+func InfoBarNew() *InfoBar {
 	retC := C.gtk_info_bar_new()
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	retGo := InfoBarNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }

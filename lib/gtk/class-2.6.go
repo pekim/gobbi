@@ -20,9 +20,9 @@ import (
 import "C"
 
 // AboutDialogNew is a wrapper around the C function gtk_about_dialog_new.
-func AboutDialogNew() *Widget {
+func AboutDialogNew() *AboutDialog {
 	retC := C.gtk_about_dialog_new()
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	retGo := AboutDialogNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -271,69 +271,69 @@ func (recv *CellRenderer) StopEditing(canceled bool) {
 }
 
 // CellRendererComboNew is a wrapper around the C function gtk_cell_renderer_combo_new.
-func CellRendererComboNew() *CellRenderer {
+func CellRendererComboNew() *CellRendererCombo {
 	retC := C.gtk_cell_renderer_combo_new()
-	retGo := CellRendererNewFromC(unsafe.Pointer(retC))
+	retGo := CellRendererComboNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
 
 // CellRendererProgressNew is a wrapper around the C function gtk_cell_renderer_progress_new.
-func CellRendererProgressNew() *CellRenderer {
+func CellRendererProgressNew() *CellRendererProgress {
 	retC := C.gtk_cell_renderer_progress_new()
-	retGo := CellRendererNewFromC(unsafe.Pointer(retC))
+	retGo := CellRendererProgressNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
 
 // CellViewNew is a wrapper around the C function gtk_cell_view_new.
-func CellViewNew() *Widget {
+func CellViewNew() *CellView {
 	retC := C.gtk_cell_view_new()
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	retGo := CellViewNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
 
 // CellViewNewWithContext is a wrapper around the C function gtk_cell_view_new_with_context.
-func CellViewNewWithContext(area *CellArea, context *CellAreaContext) *Widget {
+func CellViewNewWithContext(area *CellArea, context *CellAreaContext) *CellView {
 	c_area := (*C.GtkCellArea)(area.ToC())
 
 	c_context := (*C.GtkCellAreaContext)(context.ToC())
 
 	retC := C.gtk_cell_view_new_with_context(c_area, c_context)
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	retGo := CellViewNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
 
 // CellViewNewWithMarkup is a wrapper around the C function gtk_cell_view_new_with_markup.
-func CellViewNewWithMarkup(markup string) *Widget {
+func CellViewNewWithMarkup(markup string) *CellView {
 	c_markup := C.CString(markup)
 	defer C.free(unsafe.Pointer(c_markup))
 
 	retC := C.gtk_cell_view_new_with_markup(c_markup)
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	retGo := CellViewNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
 
 // CellViewNewWithPixbuf is a wrapper around the C function gtk_cell_view_new_with_pixbuf.
-func CellViewNewWithPixbuf(pixbuf *gdkpixbuf.Pixbuf) *Widget {
+func CellViewNewWithPixbuf(pixbuf *gdkpixbuf.Pixbuf) *CellView {
 	c_pixbuf := (*C.GdkPixbuf)(pixbuf.ToC())
 
 	retC := C.gtk_cell_view_new_with_pixbuf(c_pixbuf)
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	retGo := CellViewNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
 
 // CellViewNewWithText is a wrapper around the C function gtk_cell_view_new_with_text.
-func CellViewNewWithText(text string) *Widget {
+func CellViewNewWithText(text string) *CellView {
 	c_text := C.CString(text)
 	defer C.free(unsafe.Pointer(c_text))
 
 	retC := C.gtk_cell_view_new_with_text(c_text)
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	retGo := CellViewNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -546,24 +546,24 @@ func (recv *EntryCompletion) SetPopupCompletion(popupCompletion bool) {
 // Unsupported : EntryIconAccessible : no CType
 
 // FileChooserButtonNew is a wrapper around the C function gtk_file_chooser_button_new.
-func FileChooserButtonNew(title string, action FileChooserAction) *Widget {
+func FileChooserButtonNew(title string, action FileChooserAction) *FileChooserButton {
 	c_title := C.CString(title)
 	defer C.free(unsafe.Pointer(c_title))
 
 	c_action := (C.GtkFileChooserAction)(action)
 
 	retC := C.gtk_file_chooser_button_new(c_title, c_action)
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	retGo := FileChooserButtonNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
 
 // FileChooserButtonNewWithDialog is a wrapper around the C function gtk_file_chooser_button_new_with_dialog.
-func FileChooserButtonNewWithDialog(dialog *Dialog) *Widget {
+func FileChooserButtonNewWithDialog(dialog *Dialog) *FileChooserButton {
 	c_dialog := (*C.GtkWidget)(dialog.ToC())
 
 	retC := C.gtk_file_chooser_button_new_with_dialog(c_dialog)
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	retGo := FileChooserButtonNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -617,9 +617,9 @@ func (recv *FileFilter) AddPixbufFormats() {
 // Unsupported : gtk_icon_theme_get_icon_sizes : no return type
 
 // IconViewNew is a wrapper around the C function gtk_icon_view_new.
-func IconViewNew() *Widget {
+func IconViewNew() *IconView {
 	retC := C.gtk_icon_view_new()
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	retGo := IconViewNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -1016,25 +1016,25 @@ func (recv *Label) SetWidthChars(nChars int32) {
 // Unsupported : gtk_list_store_insert_with_valuesv : unsupported parameter columns : no param type
 
 // MenuToolButtonNew is a wrapper around the C function gtk_menu_tool_button_new.
-func MenuToolButtonNew(iconWidget *Widget, label string) *ToolItem {
+func MenuToolButtonNew(iconWidget *Widget, label string) *MenuToolButton {
 	c_icon_widget := (*C.GtkWidget)(iconWidget.ToC())
 
 	c_label := C.CString(label)
 	defer C.free(unsafe.Pointer(c_label))
 
 	retC := C.gtk_menu_tool_button_new(c_icon_widget, c_label)
-	retGo := ToolItemNewFromC(unsafe.Pointer(retC))
+	retGo := MenuToolButtonNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
 
 // MenuToolButtonNewFromStock is a wrapper around the C function gtk_menu_tool_button_new_from_stock.
-func MenuToolButtonNewFromStock(stockId string) *ToolItem {
+func MenuToolButtonNewFromStock(stockId string) *MenuToolButton {
 	c_stock_id := C.CString(stockId)
 	defer C.free(unsafe.Pointer(c_stock_id))
 
 	retC := C.gtk_menu_tool_button_new_from_stock(c_stock_id)
-	retGo := ToolItemNewFromC(unsafe.Pointer(retC))
+	retGo := MenuToolButtonNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }

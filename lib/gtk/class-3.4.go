@@ -94,11 +94,11 @@ func (recv *Application) Uninhibit(cookie uint32) {
 }
 
 // ApplicationWindowNew is a wrapper around the C function gtk_application_window_new.
-func ApplicationWindowNew(application *Application) *Widget {
+func ApplicationWindowNew(application *Application) *ApplicationWindow {
 	c_application := (*C.GtkApplication)(application.ToC())
 
 	retC := C.gtk_application_window_new(c_application)
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	retGo := ApplicationWindowNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -144,22 +144,22 @@ func (recv *Builder) AddFromResource(resourcePath string) (uint32, error) {
 // Unsupported : gtk_button_new_from_icon_name : unsupported parameter size : no type generator for gint, GtkIconSize
 
 // ColorChooserDialogNew is a wrapper around the C function gtk_color_chooser_dialog_new.
-func ColorChooserDialogNew(title string, parent *Window) *Widget {
+func ColorChooserDialogNew(title string, parent *Window) *ColorChooserDialog {
 	c_title := C.CString(title)
 	defer C.free(unsafe.Pointer(c_title))
 
 	c_parent := (*C.GtkWindow)(parent.ToC())
 
 	retC := C.gtk_color_chooser_dialog_new(c_title, c_parent)
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	retGo := ColorChooserDialogNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
 
 // ColorChooserWidgetNew is a wrapper around the C function gtk_color_chooser_widget_new.
-func ColorChooserWidgetNew() *Widget {
+func ColorChooserWidgetNew() *ColorChooserWidget {
 	retC := C.gtk_color_chooser_widget_new()
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	retGo := ColorChooserWidgetNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -197,12 +197,12 @@ func (recv *EntryCompletion) ComputePrefix(key string) string {
 // Unsupported : gtk_image_new_from_icon_set : unsupported parameter size : no type generator for gint, GtkIconSize
 
 // ImageNewFromResource is a wrapper around the C function gtk_image_new_from_resource.
-func ImageNewFromResource(resourcePath string) *Widget {
+func ImageNewFromResource(resourcePath string) *Image {
 	c_resource_path := C.CString(resourcePath)
 	defer C.free(unsafe.Pointer(c_resource_path))
 
 	retC := C.gtk_image_new_from_resource(c_resource_path)
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	retGo := ImageNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -216,21 +216,21 @@ func ImageNewFromResource(resourcePath string) *Widget {
 // Unsupported : gtk_list_store_newv : unsupported parameter types : no param type
 
 // MenuNewFromModel is a wrapper around the C function gtk_menu_new_from_model.
-func MenuNewFromModel(model *gio.MenuModel) *Widget {
+func MenuNewFromModel(model *gio.MenuModel) *Menu {
 	c_model := (*C.GMenuModel)(model.ToC())
 
 	retC := C.gtk_menu_new_from_model(c_model)
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	retGo := MenuNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
 
 // MenuBarNewFromModel is a wrapper around the C function gtk_menu_bar_new_from_model.
-func MenuBarNewFromModel(model *gio.MenuModel) *Widget {
+func MenuBarNewFromModel(model *gio.MenuModel) *MenuBar {
 	c_model := (*C.GMenuModel)(model.ToC())
 
 	retC := C.gtk_menu_bar_new_from_model(c_model)
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	retGo := MenuBarNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }

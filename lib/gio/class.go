@@ -115,23 +115,23 @@ func (recv *BufferedInputStream) ToC() unsafe.Pointer {
 }
 
 // BufferedInputStreamNew is a wrapper around the C function g_buffered_input_stream_new.
-func BufferedInputStreamNew(baseStream *InputStream) *InputStream {
+func BufferedInputStreamNew(baseStream *InputStream) *BufferedInputStream {
 	c_base_stream := (*C.GInputStream)(baseStream.ToC())
 
 	retC := C.g_buffered_input_stream_new(c_base_stream)
-	retGo := InputStreamNewFromC(unsafe.Pointer(retC))
+	retGo := BufferedInputStreamNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
 
 // BufferedInputStreamNewSized is a wrapper around the C function g_buffered_input_stream_new_sized.
-func BufferedInputStreamNewSized(baseStream *InputStream, size uint64) *InputStream {
+func BufferedInputStreamNewSized(baseStream *InputStream, size uint64) *BufferedInputStream {
 	c_base_stream := (*C.GInputStream)(baseStream.ToC())
 
 	c_size := (C.gsize)(size)
 
 	retC := C.g_buffered_input_stream_new_sized(c_base_stream, c_size)
-	retGo := InputStreamNewFromC(unsafe.Pointer(retC))
+	retGo := BufferedInputStreamNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -229,23 +229,23 @@ func (recv *BufferedOutputStream) ToC() unsafe.Pointer {
 }
 
 // BufferedOutputStreamNew is a wrapper around the C function g_buffered_output_stream_new.
-func BufferedOutputStreamNew(baseStream *OutputStream) *OutputStream {
+func BufferedOutputStreamNew(baseStream *OutputStream) *BufferedOutputStream {
 	c_base_stream := (*C.GOutputStream)(baseStream.ToC())
 
 	retC := C.g_buffered_output_stream_new(c_base_stream)
-	retGo := OutputStreamNewFromC(unsafe.Pointer(retC))
+	retGo := BufferedOutputStreamNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
 
 // BufferedOutputStreamNewSized is a wrapper around the C function g_buffered_output_stream_new_sized.
-func BufferedOutputStreamNewSized(baseStream *OutputStream, size uint64) *OutputStream {
+func BufferedOutputStreamNewSized(baseStream *OutputStream, size uint64) *BufferedOutputStream {
 	c_base_stream := (*C.GOutputStream)(baseStream.ToC())
 
 	c_size := (C.gsize)(size)
 
 	retC := C.g_buffered_output_stream_new_sized(c_base_stream, c_size)
-	retGo := OutputStreamNewFromC(unsafe.Pointer(retC))
+	retGo := BufferedOutputStreamNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -2320,9 +2320,9 @@ func (recv *MemoryInputStream) ToC() unsafe.Pointer {
 }
 
 // MemoryInputStreamNew is a wrapper around the C function g_memory_input_stream_new.
-func MemoryInputStreamNew() *InputStream {
+func MemoryInputStreamNew() *MemoryInputStream {
 	retC := C.g_memory_input_stream_new()
-	retGo := InputStreamNewFromC(unsafe.Pointer(retC))
+	retGo := MemoryInputStreamNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -3402,14 +3402,14 @@ func (recv *UnixInputStream) ToC() unsafe.Pointer {
 }
 
 // UnixInputStreamNew is a wrapper around the C function g_unix_input_stream_new.
-func UnixInputStreamNew(fd int32, closeFd bool) *InputStream {
+func UnixInputStreamNew(fd int32, closeFd bool) *UnixInputStream {
 	c_fd := (C.gint)(fd)
 
 	c_close_fd :=
 		boolToGboolean(closeFd)
 
 	retC := C.g_unix_input_stream_new(c_fd, c_close_fd)
-	retGo := InputStreamNewFromC(unsafe.Pointer(retC))
+	retGo := UnixInputStreamNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -3467,14 +3467,14 @@ func (recv *UnixOutputStream) ToC() unsafe.Pointer {
 }
 
 // UnixOutputStreamNew is a wrapper around the C function g_unix_output_stream_new.
-func UnixOutputStreamNew(fd int32, closeFd bool) *OutputStream {
+func UnixOutputStreamNew(fd int32, closeFd bool) *UnixOutputStream {
 	c_fd := (C.gint)(fd)
 
 	c_close_fd :=
 		boolToGboolean(closeFd)
 
 	retC := C.g_unix_output_stream_new(c_fd, c_close_fd)
-	retGo := OutputStreamNewFromC(unsafe.Pointer(retC))
+	retGo := UnixOutputStreamNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }

@@ -170,11 +170,11 @@ func (recv *NoOpObject) ToC() unsafe.Pointer {
 }
 
 // NoOpObjectNew is a wrapper around the C function atk_no_op_object_new.
-func NoOpObjectNew(obj *gobject.Object) *Object {
+func NoOpObjectNew(obj *gobject.Object) *NoOpObject {
 	c_obj := (*C.GObject)(obj.ToC())
 
 	retC := C.atk_no_op_object_new(c_obj)
-	retGo := ObjectNewFromC(unsafe.Pointer(retC))
+	retGo := NoOpObjectNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -202,9 +202,9 @@ func (recv *NoOpObjectFactory) ToC() unsafe.Pointer {
 }
 
 // NoOpObjectFactoryNew is a wrapper around the C function atk_no_op_object_factory_new.
-func NoOpObjectFactoryNew() *ObjectFactory {
+func NoOpObjectFactoryNew() *NoOpObjectFactory {
 	retC := C.atk_no_op_object_factory_new()
-	retGo := ObjectFactoryNewFromC(unsafe.Pointer(retC))
+	retGo := NoOpObjectFactoryNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -507,9 +507,9 @@ func (recv *Plug) ToC() unsafe.Pointer {
 }
 
 // PlugNew is a wrapper around the C function atk_plug_new.
-func PlugNew() *Object {
+func PlugNew() *Plug {
 	retC := C.atk_plug_new()
-	retGo := ObjectNewFromC(unsafe.Pointer(retC))
+	retGo := PlugNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -718,9 +718,9 @@ func (recv *Socket) ToC() unsafe.Pointer {
 }
 
 // SocketNew is a wrapper around the C function atk_socket_new.
-func SocketNew() *Object {
+func SocketNew() *Socket {
 	retC := C.atk_socket_new()
-	retGo := ObjectNewFromC(unsafe.Pointer(retC))
+	retGo := SocketNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }

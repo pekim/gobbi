@@ -408,19 +408,19 @@ func (recv *CheckMenuItem) SetDrawAsRadio(drawAsRadio bool) {
 // Unsupported : gtk_clipboard_wait_for_targets : unsupported parameter targets : no param type
 
 // ColorButtonNew is a wrapper around the C function gtk_color_button_new.
-func ColorButtonNew() *Widget {
+func ColorButtonNew() *ColorButton {
 	retC := C.gtk_color_button_new()
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	retGo := ColorButtonNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
 
 // ColorButtonNewWithColor is a wrapper around the C function gtk_color_button_new_with_color.
-func ColorButtonNewWithColor(color *gdk.Color) *Widget {
+func ColorButtonNewWithColor(color *gdk.Color) *ColorButton {
 	c_color := (*C.GdkColor)(color.ToC())
 
 	retC := C.gtk_color_button_new_with_color(c_color)
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	retGo := ColorButtonNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -499,9 +499,9 @@ func (recv *ColorButton) SetUseAlpha(useAlpha bool) {
 }
 
 // ComboBoxNew is a wrapper around the C function gtk_combo_box_new.
-func ComboBoxNew() *Widget {
+func ComboBoxNew() *ComboBox {
 	retC := C.gtk_combo_box_new()
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	retGo := ComboBoxNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -756,23 +756,23 @@ func (recv *EventBox) SetVisibleWindow(visibleWindow bool) {
 }
 
 // ExpanderNew is a wrapper around the C function gtk_expander_new.
-func ExpanderNew(label string) *Widget {
+func ExpanderNew(label string) *Expander {
 	c_label := C.CString(label)
 	defer C.free(unsafe.Pointer(c_label))
 
 	retC := C.gtk_expander_new(c_label)
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	retGo := ExpanderNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
 
 // ExpanderNewWithMnemonic is a wrapper around the C function gtk_expander_new_with_mnemonic.
-func ExpanderNewWithMnemonic(label string) *Widget {
+func ExpanderNewWithMnemonic(label string) *Expander {
 	c_label := C.CString(label)
 	defer C.free(unsafe.Pointer(c_label))
 
 	retC := C.gtk_expander_new_with_mnemonic(c_label)
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	retGo := ExpanderNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -886,11 +886,11 @@ func (recv *Expander) SetUseUnderline(useUnderline bool) {
 // Unsupported : gtk_file_chooser_dialog_new : unsupported parameter ... : varargs
 
 // FileChooserWidgetNew is a wrapper around the C function gtk_file_chooser_widget_new.
-func FileChooserWidgetNew(action FileChooserAction) *Widget {
+func FileChooserWidgetNew(action FileChooserAction) *FileChooserWidget {
 	c_action := (C.GtkFileChooserAction)(action)
 
 	retC := C.gtk_file_chooser_widget_new(c_action)
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	retGo := FileChooserWidgetNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -964,20 +964,20 @@ func (recv *FileFilter) SetName(name string) {
 }
 
 // FontButtonNew is a wrapper around the C function gtk_font_button_new.
-func FontButtonNew() *Widget {
+func FontButtonNew() *FontButton {
 	retC := C.gtk_font_button_new()
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	retGo := FontButtonNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
 
 // FontButtonNewWithFont is a wrapper around the C function gtk_font_button_new_with_font.
-func FontButtonNewWithFont(fontname string) *Widget {
+func FontButtonNewWithFont(fontname string) *FontButton {
 	c_fontname := C.CString(fontname)
 	defer C.free(unsafe.Pointer(c_fontname))
 
 	retC := C.gtk_font_button_new_with_font(c_fontname)
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	retGo := FontButtonNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -1427,83 +1427,83 @@ func (recv *RadioAction) SetGroup(group *glib.SList) {
 }
 
 // RadioMenuItemNewFromWidget is a wrapper around the C function gtk_radio_menu_item_new_from_widget.
-func RadioMenuItemNewFromWidget(group *RadioMenuItem) *Widget {
+func RadioMenuItemNewFromWidget(group *RadioMenuItem) *RadioMenuItem {
 	c_group := (*C.GtkRadioMenuItem)(group.ToC())
 
 	retC := C.gtk_radio_menu_item_new_from_widget(c_group)
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	retGo := RadioMenuItemNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
 
 // RadioMenuItemNewWithLabelFromWidget is a wrapper around the C function gtk_radio_menu_item_new_with_label_from_widget.
-func RadioMenuItemNewWithLabelFromWidget(group *RadioMenuItem, label string) *Widget {
+func RadioMenuItemNewWithLabelFromWidget(group *RadioMenuItem, label string) *RadioMenuItem {
 	c_group := (*C.GtkRadioMenuItem)(group.ToC())
 
 	c_label := C.CString(label)
 	defer C.free(unsafe.Pointer(c_label))
 
 	retC := C.gtk_radio_menu_item_new_with_label_from_widget(c_group, c_label)
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	retGo := RadioMenuItemNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
 
 // RadioMenuItemNewWithMnemonicFromWidget is a wrapper around the C function gtk_radio_menu_item_new_with_mnemonic_from_widget.
-func RadioMenuItemNewWithMnemonicFromWidget(group *RadioMenuItem, label string) *Widget {
+func RadioMenuItemNewWithMnemonicFromWidget(group *RadioMenuItem, label string) *RadioMenuItem {
 	c_group := (*C.GtkRadioMenuItem)(group.ToC())
 
 	c_label := C.CString(label)
 	defer C.free(unsafe.Pointer(c_label))
 
 	retC := C.gtk_radio_menu_item_new_with_mnemonic_from_widget(c_group, c_label)
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	retGo := RadioMenuItemNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
 
 // RadioToolButtonNew is a wrapper around the C function gtk_radio_tool_button_new.
-func RadioToolButtonNew(group *glib.SList) *ToolItem {
+func RadioToolButtonNew(group *glib.SList) *RadioToolButton {
 	c_group := (*C.GSList)(group.ToC())
 
 	retC := C.gtk_radio_tool_button_new(c_group)
-	retGo := ToolItemNewFromC(unsafe.Pointer(retC))
+	retGo := RadioToolButtonNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
 
 // RadioToolButtonNewFromStock is a wrapper around the C function gtk_radio_tool_button_new_from_stock.
-func RadioToolButtonNewFromStock(group *glib.SList, stockId string) *ToolItem {
+func RadioToolButtonNewFromStock(group *glib.SList, stockId string) *RadioToolButton {
 	c_group := (*C.GSList)(group.ToC())
 
 	c_stock_id := C.CString(stockId)
 	defer C.free(unsafe.Pointer(c_stock_id))
 
 	retC := C.gtk_radio_tool_button_new_from_stock(c_group, c_stock_id)
-	retGo := ToolItemNewFromC(unsafe.Pointer(retC))
+	retGo := RadioToolButtonNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
 
 // RadioToolButtonNewFromWidget is a wrapper around the C function gtk_radio_tool_button_new_from_widget.
-func RadioToolButtonNewFromWidget(group *RadioToolButton) *ToolItem {
+func RadioToolButtonNewFromWidget(group *RadioToolButton) *RadioToolButton {
 	c_group := (*C.GtkRadioToolButton)(group.ToC())
 
 	retC := C.gtk_radio_tool_button_new_from_widget(c_group)
-	retGo := ToolItemNewFromC(unsafe.Pointer(retC))
+	retGo := RadioToolButtonNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
 
 // RadioToolButtonNewWithStockFromWidget is a wrapper around the C function gtk_radio_tool_button_new_with_stock_from_widget.
-func RadioToolButtonNewWithStockFromWidget(group *RadioToolButton, stockId string) *ToolItem {
+func RadioToolButtonNewWithStockFromWidget(group *RadioToolButton, stockId string) *RadioToolButton {
 	c_group := (*C.GtkRadioToolButton)(group.ToC())
 
 	c_stock_id := C.CString(stockId)
 	defer C.free(unsafe.Pointer(c_stock_id))
 
 	retC := C.gtk_radio_tool_button_new_with_stock_from_widget(c_group, c_stock_id)
-	retGo := ToolItemNewFromC(unsafe.Pointer(retC))
+	retGo := RadioToolButtonNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -1555,9 +1555,9 @@ func (recv *Scale) GetLayoutOffsets() (*int32, *int32) {
 // Unsupported : gtk_scale_button_new : unsupported parameter size : no type generator for gint, GtkIconSize
 
 // SeparatorToolItemNew is a wrapper around the C function gtk_separator_tool_item_new.
-func SeparatorToolItemNew() *ToolItem {
+func SeparatorToolItemNew() *SeparatorToolItem {
 	retC := C.gtk_separator_tool_item_new()
-	retGo := ToolItemNewFromC(unsafe.Pointer(retC))
+	retGo := SeparatorToolItemNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -1693,20 +1693,20 @@ func (recv *ToggleAction) Toggled() {
 }
 
 // ToggleToolButtonNew is a wrapper around the C function gtk_toggle_tool_button_new.
-func ToggleToolButtonNew() *ToolItem {
+func ToggleToolButtonNew() *ToggleToolButton {
 	retC := C.gtk_toggle_tool_button_new()
-	retGo := ToolItemNewFromC(unsafe.Pointer(retC))
+	retGo := ToggleToolButtonNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
 
 // ToggleToolButtonNewFromStock is a wrapper around the C function gtk_toggle_tool_button_new_from_stock.
-func ToggleToolButtonNewFromStock(stockId string) *ToolItem {
+func ToggleToolButtonNewFromStock(stockId string) *ToggleToolButton {
 	c_stock_id := C.CString(stockId)
 	defer C.free(unsafe.Pointer(c_stock_id))
 
 	retC := C.gtk_toggle_tool_button_new_from_stock(c_stock_id)
-	retGo := ToolItemNewFromC(unsafe.Pointer(retC))
+	retGo := ToggleToolButtonNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -1730,25 +1730,25 @@ func (recv *ToggleToolButton) SetActive(isActive bool) {
 }
 
 // ToolButtonNew is a wrapper around the C function gtk_tool_button_new.
-func ToolButtonNew(iconWidget *Widget, label string) *ToolItem {
+func ToolButtonNew(iconWidget *Widget, label string) *ToolButton {
 	c_icon_widget := (*C.GtkWidget)(iconWidget.ToC())
 
 	c_label := C.CString(label)
 	defer C.free(unsafe.Pointer(c_label))
 
 	retC := C.gtk_tool_button_new(c_icon_widget, c_label)
-	retGo := ToolItemNewFromC(unsafe.Pointer(retC))
+	retGo := ToolButtonNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
 
 // ToolButtonNewFromStock is a wrapper around the C function gtk_tool_button_new_from_stock.
-func ToolButtonNewFromStock(stockId string) *ToolItem {
+func ToolButtonNewFromStock(stockId string) *ToolButton {
 	c_stock_id := C.CString(stockId)
 	defer C.free(unsafe.Pointer(c_stock_id))
 
 	retC := C.gtk_tool_button_new_from_stock(c_stock_id)
-	retGo := ToolItemNewFromC(unsafe.Pointer(retC))
+	retGo := ToolButtonNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
