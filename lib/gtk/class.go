@@ -353,11 +353,6 @@ func (recv *Accessible) Object() *atk.Object {
 	return atk.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// Object upcasts to *Object
-func (recv *Accessible) Object() *gobject.Object {
-	return recv.Object().Object()
-}
-
 // ConnectWidgetDestroyed is a wrapper around the C function gtk_accessible_connect_widget_destroyed.
 func (recv *Accessible) ConnectWidgetDestroyed() {
 	C.gtk_accessible_connect_widget_destroyed((*C.GtkAccessible)(recv.native))
@@ -1039,11 +1034,6 @@ func (recv *ArrowAccessible) Object() *atk.Object {
 	return recv.WidgetAccessible().Object()
 }
 
-// Object upcasts to *Object
-func (recv *ArrowAccessible) Object() *gobject.Object {
-	return recv.WidgetAccessible().Object()
-}
-
 // AspectFrame is a wrapper around the C record GtkAspectFrame.
 type AspectFrame struct {
 	native *C.GtkAspectFrame
@@ -1277,11 +1267,6 @@ func (recv *BooleanCellAccessible) Accessible() *Accessible {
 
 // Object upcasts to *Object
 func (recv *BooleanCellAccessible) Object() *atk.Object {
-	return recv.RendererCellAccessible().Object()
-}
-
-// Object upcasts to *Object
-func (recv *BooleanCellAccessible) Object() *gobject.Object {
 	return recv.RendererCellAccessible().Object()
 }
 
@@ -1699,11 +1684,6 @@ func (recv *ButtonAccessible) Object() *atk.Object {
 	return recv.ContainerAccessible().Object()
 }
 
-// Object upcasts to *Object
-func (recv *ButtonAccessible) Object() *gobject.Object {
-	return recv.ContainerAccessible().Object()
-}
-
 // ButtonBox is a wrapper around the C record GtkButtonBox.
 type ButtonBox struct {
 	native *C.GtkButtonBox
@@ -1921,11 +1901,6 @@ func (recv *CellAccessible) Accessible() *Accessible {
 
 // Object upcasts to *Object
 func (recv *CellAccessible) Object() *atk.Object {
-	return recv.Accessible().Object()
-}
-
-// Object upcasts to *Object
-func (recv *CellAccessible) Object() *gobject.Object {
 	return recv.Accessible().Object()
 }
 
@@ -2800,11 +2775,6 @@ func (recv *CheckMenuItemAccessible) Object() *atk.Object {
 	return recv.MenuItemAccessible().Object()
 }
 
-// Object upcasts to *Object
-func (recv *CheckMenuItemAccessible) Object() *gobject.Object {
-	return recv.MenuItemAccessible().Object()
-}
-
 // Clipboard is a wrapper around the C record GtkClipboard.
 type Clipboard struct {
 	native *C.GtkClipboard
@@ -3410,11 +3380,6 @@ func (recv *ComboBoxAccessible) Object() *atk.Object {
 	return recv.ContainerAccessible().Object()
 }
 
-// Object upcasts to *Object
-func (recv *ComboBoxAccessible) Object() *gobject.Object {
-	return recv.ContainerAccessible().Object()
-}
-
 // ComboBoxText is a wrapper around the C record GtkComboBoxText.
 type ComboBoxText struct {
 	native *C.GtkComboBoxText
@@ -3754,11 +3719,6 @@ func (recv *ContainerAccessible) Object() *atk.Object {
 	return recv.WidgetAccessible().Object()
 }
 
-// Object upcasts to *Object
-func (recv *ContainerAccessible) Object() *gobject.Object {
-	return recv.WidgetAccessible().Object()
-}
-
 // ContainerCellAccessible is a wrapper around the C record GtkContainerCellAccessible.
 type ContainerCellAccessible struct {
 	native *C.GtkContainerCellAccessible
@@ -3794,11 +3754,6 @@ func (recv *ContainerCellAccessible) Accessible() *Accessible {
 
 // Object upcasts to *Object
 func (recv *ContainerCellAccessible) Object() *atk.Object {
-	return recv.CellAccessible().Object()
-}
-
-// Object upcasts to *Object
-func (recv *ContainerCellAccessible) Object() *gobject.Object {
 	return recv.CellAccessible().Object()
 }
 
@@ -4317,11 +4272,6 @@ func (recv *EntryAccessible) Object() *atk.Object {
 	return recv.WidgetAccessible().Object()
 }
 
-// Object upcasts to *Object
-func (recv *EntryAccessible) Object() *gobject.Object {
-	return recv.WidgetAccessible().Object()
-}
-
 // EntryBuffer is a wrapper around the C record GtkEntryBuffer.
 type EntryBuffer struct {
 	native *C.GtkEntryBuffer
@@ -4550,11 +4500,6 @@ func (recv *ExpanderAccessible) Accessible() *Accessible {
 
 // Object upcasts to *Object
 func (recv *ExpanderAccessible) Object() *atk.Object {
-	return recv.ContainerAccessible().Object()
-}
-
-// Object upcasts to *Object
-func (recv *ExpanderAccessible) Object() *gobject.Object {
 	return recv.ContainerAccessible().Object()
 }
 
@@ -4909,11 +4854,6 @@ func (recv *FlowBoxAccessible) Object() *atk.Object {
 	return recv.ContainerAccessible().Object()
 }
 
-// Object upcasts to *Object
-func (recv *FlowBoxAccessible) Object() *gobject.Object {
-	return recv.ContainerAccessible().Object()
-}
-
 // FlowBoxChild is a wrapper around the C record GtkFlowBoxChild.
 type FlowBoxChild struct {
 	native *C.GtkFlowBoxChild
@@ -5000,11 +4940,6 @@ func (recv *FlowBoxChildAccessible) Accessible() *Accessible {
 
 // Object upcasts to *Object
 func (recv *FlowBoxChildAccessible) Object() *atk.Object {
-	return recv.ContainerAccessible().Object()
-}
-
-// Object upcasts to *Object
-func (recv *FlowBoxChildAccessible) Object() *gobject.Object {
 	return recv.ContainerAccessible().Object()
 }
 
@@ -5545,11 +5480,6 @@ func (recv *FrameAccessible) Accessible() *Accessible {
 
 // Object upcasts to *Object
 func (recv *FrameAccessible) Object() *atk.Object {
-	return recv.ContainerAccessible().Object()
-}
-
-// Object upcasts to *Object
-func (recv *FrameAccessible) Object() *gobject.Object {
 	return recv.ContainerAccessible().Object()
 }
 
@@ -7033,11 +6963,6 @@ func (recv *IconViewAccessible) Object() *atk.Object {
 	return recv.ContainerAccessible().Object()
 }
 
-// Object upcasts to *Object
-func (recv *IconViewAccessible) Object() *gobject.Object {
-	return recv.ContainerAccessible().Object()
-}
-
 // Image is a wrapper around the C record GtkImage.
 type Image struct {
 	native *C.GtkImage
@@ -7236,11 +7161,6 @@ func (recv *ImageAccessible) Object() *atk.Object {
 	return recv.WidgetAccessible().Object()
 }
 
-// Object upcasts to *Object
-func (recv *ImageAccessible) Object() *gobject.Object {
-	return recv.WidgetAccessible().Object()
-}
-
 // ImageCellAccessible is a wrapper around the C record GtkImageCellAccessible.
 type ImageCellAccessible struct {
 	native *C.GtkImageCellAccessible
@@ -7281,11 +7201,6 @@ func (recv *ImageCellAccessible) Accessible() *Accessible {
 
 // Object upcasts to *Object
 func (recv *ImageCellAccessible) Object() *atk.Object {
-	return recv.RendererCellAccessible().Object()
-}
-
-// Object upcasts to *Object
-func (recv *ImageCellAccessible) Object() *gobject.Object {
 	return recv.RendererCellAccessible().Object()
 }
 
@@ -7858,11 +7773,6 @@ func (recv *LabelAccessible) Object() *atk.Object {
 	return recv.WidgetAccessible().Object()
 }
 
-// Object upcasts to *Object
-func (recv *LabelAccessible) Object() *gobject.Object {
-	return recv.WidgetAccessible().Object()
-}
-
 // Layout is a wrapper around the C record GtkLayout.
 type Layout struct {
 	native *C.GtkLayout
@@ -8080,11 +7990,6 @@ func (recv *LevelBarAccessible) Object() *atk.Object {
 	return recv.WidgetAccessible().Object()
 }
 
-// Object upcasts to *Object
-func (recv *LevelBarAccessible) Object() *gobject.Object {
-	return recv.WidgetAccessible().Object()
-}
-
 // LinkButton is a wrapper around the C record GtkLinkButton.
 type LinkButton struct {
 	native *C.GtkLinkButton
@@ -8186,11 +8091,6 @@ func (recv *LinkButtonAccessible) Object() *atk.Object {
 	return recv.ButtonAccessible().Object()
 }
 
-// Object upcasts to *Object
-func (recv *LinkButtonAccessible) Object() *gobject.Object {
-	return recv.ButtonAccessible().Object()
-}
-
 // ListBox is a wrapper around the C record GtkListBox.
 type ListBox struct {
 	native *C.GtkListBox
@@ -8273,11 +8173,6 @@ func (recv *ListBoxAccessible) Accessible() *Accessible {
 
 // Object upcasts to *Object
 func (recv *ListBoxAccessible) Object() *atk.Object {
-	return recv.ContainerAccessible().Object()
-}
-
-// Object upcasts to *Object
-func (recv *ListBoxAccessible) Object() *gobject.Object {
 	return recv.ContainerAccessible().Object()
 }
 
@@ -8367,11 +8262,6 @@ func (recv *ListBoxRowAccessible) Accessible() *Accessible {
 
 // Object upcasts to *Object
 func (recv *ListBoxRowAccessible) Object() *atk.Object {
-	return recv.ContainerAccessible().Object()
-}
-
-// Object upcasts to *Object
-func (recv *ListBoxRowAccessible) Object() *gobject.Object {
 	return recv.ContainerAccessible().Object()
 }
 
@@ -8605,11 +8495,6 @@ func (recv *LockButtonAccessible) Object() *atk.Object {
 	return recv.ButtonAccessible().Object()
 }
 
-// Object upcasts to *Object
-func (recv *LockButtonAccessible) Object() *gobject.Object {
-	return recv.ButtonAccessible().Object()
-}
-
 // Menu is a wrapper around the C record GtkMenu.
 type Menu struct {
 	native *C.GtkMenu
@@ -8838,11 +8723,6 @@ func (recv *MenuAccessible) Object() *atk.Object {
 	return recv.MenuShellAccessible().Object()
 }
 
-// Object upcasts to *Object
-func (recv *MenuAccessible) Object() *gobject.Object {
-	return recv.MenuShellAccessible().Object()
-}
-
 // MenuBar is a wrapper around the C record GtkMenuBar.
 type MenuBar struct {
 	native *C.GtkMenuBar
@@ -9007,11 +8887,6 @@ func (recv *MenuButtonAccessible) Accessible() *Accessible {
 
 // Object upcasts to *Object
 func (recv *MenuButtonAccessible) Object() *atk.Object {
-	return recv.ToggleButtonAccessible().Object()
-}
-
-// Object upcasts to *Object
-func (recv *MenuButtonAccessible) Object() *gobject.Object {
 	return recv.ToggleButtonAccessible().Object()
 }
 
@@ -9220,11 +9095,6 @@ func (recv *MenuItemAccessible) Object() *atk.Object {
 	return recv.ContainerAccessible().Object()
 }
 
-// Object upcasts to *Object
-func (recv *MenuItemAccessible) Object() *gobject.Object {
-	return recv.ContainerAccessible().Object()
-}
-
 // MenuShell is a wrapper around the C record GtkMenuShell.
 type MenuShell struct {
 	native *C.GtkMenuShell
@@ -9372,11 +9242,6 @@ func (recv *MenuShellAccessible) Accessible() *Accessible {
 
 // Object upcasts to *Object
 func (recv *MenuShellAccessible) Object() *atk.Object {
-	return recv.ContainerAccessible().Object()
-}
-
-// Object upcasts to *Object
-func (recv *MenuShellAccessible) Object() *gobject.Object {
 	return recv.ContainerAccessible().Object()
 }
 
@@ -10092,11 +9957,6 @@ func (recv *NotebookAccessible) Object() *atk.Object {
 	return recv.ContainerAccessible().Object()
 }
 
-// Object upcasts to *Object
-func (recv *NotebookAccessible) Object() *gobject.Object {
-	return recv.ContainerAccessible().Object()
-}
-
 // NotebookPageAccessible is a wrapper around the C record GtkNotebookPageAccessible.
 type NotebookPageAccessible struct {
 	native *C.GtkNotebookPageAccessible
@@ -10123,11 +9983,6 @@ func (recv *NotebookPageAccessible) ToC() unsafe.Pointer {
 // Object upcasts to *Object
 func (recv *NotebookPageAccessible) Object() *atk.Object {
 	return atk.ObjectNewFromC(unsafe.Pointer(recv.native))
-}
-
-// Object upcasts to *Object
-func (recv *NotebookPageAccessible) Object() *gobject.Object {
-	return recv.Object().Object()
 }
 
 // NotebookPageAccessibleNew is a wrapper around the C function gtk_notebook_page_accessible_new.
@@ -10463,11 +10318,6 @@ func (recv *PanedAccessible) Object() *atk.Object {
 	return recv.ContainerAccessible().Object()
 }
 
-// Object upcasts to *Object
-func (recv *PanedAccessible) Object() *gobject.Object {
-	return recv.ContainerAccessible().Object()
-}
-
 // PlacesSidebar is a wrapper around the C record GtkPlacesSidebar.
 type PlacesSidebar struct {
 	native *C.GtkPlacesSidebar
@@ -10626,11 +10476,6 @@ func (recv *PopoverAccessible) Accessible() *Accessible {
 
 // Object upcasts to *Object
 func (recv *PopoverAccessible) Object() *atk.Object {
-	return recv.ContainerAccessible().Object()
-}
-
-// Object upcasts to *Object
-func (recv *PopoverAccessible) Object() *gobject.Object {
 	return recv.ContainerAccessible().Object()
 }
 
@@ -10928,11 +10773,6 @@ func (recv *ProgressBarAccessible) Object() *atk.Object {
 	return recv.WidgetAccessible().Object()
 }
 
-// Object upcasts to *Object
-func (recv *ProgressBarAccessible) Object() *gobject.Object {
-	return recv.WidgetAccessible().Object()
-}
-
 // RadioAction is a wrapper around the C record GtkRadioAction.
 type RadioAction struct {
 	native *C.GtkRadioAction
@@ -11176,11 +11016,6 @@ func (recv *RadioButtonAccessible) Object() *atk.Object {
 	return recv.ToggleButtonAccessible().Object()
 }
 
-// Object upcasts to *Object
-func (recv *RadioButtonAccessible) Object() *gobject.Object {
-	return recv.ToggleButtonAccessible().Object()
-}
-
 // RadioMenuItem is a wrapper around the C record GtkRadioMenuItem.
 type RadioMenuItem struct {
 	native *C.GtkRadioMenuItem
@@ -11342,11 +11177,6 @@ func (recv *RadioMenuItemAccessible) Accessible() *Accessible {
 
 // Object upcasts to *Object
 func (recv *RadioMenuItemAccessible) Object() *atk.Object {
-	return recv.CheckMenuItemAccessible().Object()
-}
-
-// Object upcasts to *Object
-func (recv *RadioMenuItemAccessible) Object() *gobject.Object {
 	return recv.CheckMenuItemAccessible().Object()
 }
 
@@ -11559,11 +11389,6 @@ func (recv *RangeAccessible) Accessible() *Accessible {
 
 // Object upcasts to *Object
 func (recv *RangeAccessible) Object() *atk.Object {
-	return recv.WidgetAccessible().Object()
-}
-
-// Object upcasts to *Object
-func (recv *RangeAccessible) Object() *gobject.Object {
 	return recv.WidgetAccessible().Object()
 }
 
@@ -11900,11 +11725,6 @@ func (recv *RendererCellAccessible) Object() *atk.Object {
 	return recv.CellAccessible().Object()
 }
 
-// Object upcasts to *Object
-func (recv *RendererCellAccessible) Object() *gobject.Object {
-	return recv.CellAccessible().Object()
-}
-
 // RendererCellAccessibleNew is a wrapper around the C function gtk_renderer_cell_accessible_new.
 func RendererCellAccessibleNew(renderer *CellRenderer) *RendererCellAccessible {
 	c_renderer := (*C.GtkCellRenderer)(renderer.ToC())
@@ -12100,11 +11920,6 @@ func (recv *ScaleAccessible) Object() *atk.Object {
 	return recv.RangeAccessible().Object()
 }
 
-// Object upcasts to *Object
-func (recv *ScaleAccessible) Object() *gobject.Object {
-	return recv.RangeAccessible().Object()
-}
-
 // ScaleButton is a wrapper around the C record GtkScaleButton.
 type ScaleButton struct {
 	native *C.GtkScaleButton
@@ -12205,11 +12020,6 @@ func (recv *ScaleButtonAccessible) Accessible() *Accessible {
 
 // Object upcasts to *Object
 func (recv *ScaleButtonAccessible) Object() *atk.Object {
-	return recv.ButtonAccessible().Object()
-}
-
-// Object upcasts to *Object
-func (recv *ScaleButtonAccessible) Object() *gobject.Object {
 	return recv.ButtonAccessible().Object()
 }
 
@@ -12445,11 +12255,6 @@ func (recv *ScrolledWindowAccessible) Accessible() *Accessible {
 
 // Object upcasts to *Object
 func (recv *ScrolledWindowAccessible) Object() *atk.Object {
-	return recv.ContainerAccessible().Object()
-}
-
-// Object upcasts to *Object
-func (recv *ScrolledWindowAccessible) Object() *gobject.Object {
 	return recv.ContainerAccessible().Object()
 }
 
@@ -13181,11 +12986,6 @@ func (recv *SpinButtonAccessible) Object() *atk.Object {
 	return recv.EntryAccessible().Object()
 }
 
-// Object upcasts to *Object
-func (recv *SpinButtonAccessible) Object() *gobject.Object {
-	return recv.EntryAccessible().Object()
-}
-
 // Spinner is a wrapper around the C record GtkSpinner.
 type Spinner struct {
 	native *C.GtkSpinner
@@ -13259,11 +13059,6 @@ func (recv *SpinnerAccessible) Accessible() *Accessible {
 
 // Object upcasts to *Object
 func (recv *SpinnerAccessible) Object() *atk.Object {
-	return recv.WidgetAccessible().Object()
-}
-
-// Object upcasts to *Object
-func (recv *SpinnerAccessible) Object() *gobject.Object {
 	return recv.WidgetAccessible().Object()
 }
 
@@ -13575,11 +13370,6 @@ func (recv *StatusbarAccessible) Accessible() *Accessible {
 
 // Object upcasts to *Object
 func (recv *StatusbarAccessible) Object() *atk.Object {
-	return recv.ContainerAccessible().Object()
-}
-
-// Object upcasts to *Object
-func (recv *StatusbarAccessible) Object() *gobject.Object {
 	return recv.ContainerAccessible().Object()
 }
 
@@ -13926,11 +13716,6 @@ func (recv *SwitchAccessible) Accessible() *Accessible {
 
 // Object upcasts to *Object
 func (recv *SwitchAccessible) Object() *atk.Object {
-	return recv.WidgetAccessible().Object()
-}
-
-// Object upcasts to *Object
-func (recv *SwitchAccessible) Object() *gobject.Object {
 	return recv.WidgetAccessible().Object()
 }
 
@@ -14896,11 +14681,6 @@ func (recv *TextCellAccessible) Object() *atk.Object {
 	return recv.RendererCellAccessible().Object()
 }
 
-// Object upcasts to *Object
-func (recv *TextCellAccessible) Object() *gobject.Object {
-	return recv.RendererCellAccessible().Object()
-}
-
 // TextChildAnchor is a wrapper around the C record GtkTextChildAnchor.
 type TextChildAnchor struct {
 	native *C.GtkTextChildAnchor
@@ -15784,11 +15564,6 @@ func (recv *TextViewAccessible) Object() *atk.Object {
 	return recv.ContainerAccessible().Object()
 }
 
-// Object upcasts to *Object
-func (recv *TextViewAccessible) Object() *gobject.Object {
-	return recv.ContainerAccessible().Object()
-}
-
 // ThemingEngine is a wrapper around the C record GtkThemingEngine.
 type ThemingEngine struct {
 	native *C.GtkThemingEngine
@@ -16047,11 +15822,6 @@ func (recv *ToggleButtonAccessible) Accessible() *Accessible {
 
 // Object upcasts to *Object
 func (recv *ToggleButtonAccessible) Object() *atk.Object {
-	return recv.ButtonAccessible().Object()
-}
-
-// Object upcasts to *Object
-func (recv *ToggleButtonAccessible) Object() *gobject.Object {
 	return recv.ButtonAccessible().Object()
 }
 
@@ -16451,11 +16221,6 @@ func (recv *ToplevelAccessible) ToC() unsafe.Pointer {
 // Object upcasts to *Object
 func (recv *ToplevelAccessible) Object() *atk.Object {
 	return atk.ObjectNewFromC(unsafe.Pointer(recv.native))
-}
-
-// Object upcasts to *Object
-func (recv *ToplevelAccessible) Object() *gobject.Object {
-	return recv.Object().Object()
 }
 
 // GetChildren is a wrapper around the C function gtk_toplevel_accessible_get_children.
@@ -17393,11 +17158,6 @@ func (recv *TreeViewAccessible) Accessible() *Accessible {
 
 // Object upcasts to *Object
 func (recv *TreeViewAccessible) Object() *atk.Object {
-	return recv.ContainerAccessible().Object()
-}
-
-// Object upcasts to *Object
-func (recv *TreeViewAccessible) Object() *gobject.Object {
 	return recv.ContainerAccessible().Object()
 }
 
@@ -19486,11 +19246,6 @@ func (recv *WidgetAccessible) Object() *atk.Object {
 	return recv.Accessible().Object()
 }
 
-// Object upcasts to *Object
-func (recv *WidgetAccessible) Object() *gobject.Object {
-	return recv.Accessible().Object()
-}
-
 // Window is a wrapper around the C record GtkWindow.
 type Window struct {
 	native *C.GtkWindow
@@ -20113,11 +19868,6 @@ func (recv *WindowAccessible) Accessible() *Accessible {
 
 // Object upcasts to *Object
 func (recv *WindowAccessible) Object() *atk.Object {
-	return recv.ContainerAccessible().Object()
-}
-
-// Object upcasts to *Object
-func (recv *WindowAccessible) Object() *gobject.Object {
 	return recv.ContainerAccessible().Object()
 }
 

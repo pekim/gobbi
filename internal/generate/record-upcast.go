@@ -10,7 +10,10 @@ func (r *Record) generateUpcasts(g *jen.Group) {
 		return
 	}
 
+	methodNames := make(map[string]bool)
+
 	qname := QNameNew(r.Namespace, r.ParentName)
+	methodNames[qname.name] = true
 
 	parent, found := qname.ns.recordOrClassRecordForName(qname.name)
 	if !found {
@@ -29,6 +32,14 @@ func (r *Record) generateUpcasts(g *jen.Group) {
 
 	for ancestorName != "" {
 		qname = QNameNew(qname.ns, ancestorName)
+
+		if _, nameUsedPreviously := methodNames[qname.name]; nameUsedPreviously {
+			// A method for this ancestor would have the same name as an earlier one.
+			// So skip it, and all further ancestors.
+			// This will affect relatively few methods, notably those around Atk.Object.
+			return
+		}
+		methodNames[qname.name] = true
 
 		ancestor, found := qname.ns.recordOrClassRecordForName(qname.name)
 		if !found {
