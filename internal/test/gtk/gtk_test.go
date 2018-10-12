@@ -25,3 +25,25 @@ func TestCreateWindow(t *testing.T) {
 	window := gtk.WindowNew(gtk.GTK_WINDOW_TOPLEVEL)
 	assert.NotNil(t, window)
 }
+
+func TestIndirectUpcasting(t *testing.T) {
+	gtk.Init([]string{})
+
+	window := gtk.WindowNew(gtk.GTK_WINDOW_TOPLEVEL)
+	widget := window.Bin().Container().Widget()
+
+	assert.False(t, widget.IsVisible())
+	widget.ShowAll()
+	assert.True(t, widget.IsVisible())
+}
+
+func TestDirectUpcasting(t *testing.T) {
+	gtk.Init([]string{})
+
+	window := gtk.WindowNew(gtk.GTK_WINDOW_TOPLEVEL)
+	widget := window.Widget()
+
+	assert.False(t, widget.IsVisible())
+	widget.ShowAll()
+	assert.True(t, widget.IsVisible())
+}
