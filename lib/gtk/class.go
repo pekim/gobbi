@@ -49,6 +49,36 @@ func (recv *AboutDialog) Dialog() *Dialog {
 	return DialogNewFromC(unsafe.Pointer(recv.native))
 }
 
+// Window upcasts to *Window
+func (recv *AboutDialog) Window() *Window {
+	return recv.Dialog().Window()
+}
+
+// Bin upcasts to *Bin
+func (recv *AboutDialog) Bin() *Bin {
+	return recv.Dialog().Bin()
+}
+
+// Container upcasts to *Container
+func (recv *AboutDialog) Container() *Container {
+	return recv.Dialog().Container()
+}
+
+// Widget upcasts to *Widget
+func (recv *AboutDialog) Widget() *Widget {
+	return recv.Dialog().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *AboutDialog) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Dialog().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *AboutDialog) Object() *gobject.Object {
+	return recv.Dialog().Object()
+}
+
 // AccelGroup is a wrapper around the C record GtkAccelGroup.
 type AccelGroup struct {
 	native *C.GtkAccelGroup
@@ -196,6 +226,26 @@ func (recv *AccelLabel) Label() *Label {
 	return LabelNewFromC(unsafe.Pointer(recv.native))
 }
 
+// Misc upcasts to *Misc
+func (recv *AccelLabel) Misc() *Misc {
+	return recv.Label().Misc()
+}
+
+// Widget upcasts to *Widget
+func (recv *AccelLabel) Widget() *Widget {
+	return recv.Label().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *AccelLabel) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Label().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *AccelLabel) Object() *gobject.Object {
+	return recv.Label().Object()
+}
+
 // AccelLabelNew is a wrapper around the C function gtk_accel_label_new.
 func AccelLabelNew(string string) *AccelLabel {
 	c_string := C.CString(string)
@@ -303,6 +353,11 @@ func (recv *Accessible) Object() *atk.Object {
 	return atk.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
+// Object upcasts to *Object
+func (recv *Accessible) Object() *gobject.Object {
+	return recv.Object().Object()
+}
+
 // ConnectWidgetDestroyed is a wrapper around the C function gtk_accessible_connect_widget_destroyed.
 func (recv *Accessible) ConnectWidgetDestroyed() {
 	C.gtk_accessible_connect_widget_destroyed((*C.GtkAccessible)(recv.native))
@@ -365,6 +420,26 @@ func (recv *ActionBar) Bin() *Bin {
 	return BinNewFromC(unsafe.Pointer(recv.native))
 }
 
+// Container upcasts to *Container
+func (recv *ActionBar) Container() *Container {
+	return recv.Bin().Container()
+}
+
+// Widget upcasts to *Widget
+func (recv *ActionBar) Widget() *Widget {
+	return recv.Bin().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *ActionBar) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Bin().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *ActionBar) Object() *gobject.Object {
+	return recv.Bin().Object()
+}
+
 // ActionGroup is a wrapper around the C record GtkActionGroup.
 type ActionGroup struct {
 	native *C.GtkActionGroup
@@ -419,6 +494,11 @@ func (recv *Adjustment) ToC() unsafe.Pointer {
 // InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *Adjustment) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromC(unsafe.Pointer(recv.native))
+}
+
+// Object upcasts to *Object
+func (recv *Adjustment) Object() *gobject.Object {
+	return recv.InitiallyUnowned().Object()
 }
 
 // AdjustmentNew is a wrapper around the C function gtk_adjustment_new.
@@ -511,6 +591,26 @@ func (recv *Alignment) Bin() *Bin {
 	return BinNewFromC(unsafe.Pointer(recv.native))
 }
 
+// Container upcasts to *Container
+func (recv *Alignment) Container() *Container {
+	return recv.Bin().Container()
+}
+
+// Widget upcasts to *Widget
+func (recv *Alignment) Widget() *Widget {
+	return recv.Bin().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *Alignment) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Bin().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *Alignment) Object() *gobject.Object {
+	return recv.Bin().Object()
+}
+
 // AlignmentNew is a wrapper around the C function gtk_alignment_new.
 func AlignmentNew(xalign float32, yalign float32, xscale float32, yscale float32) *Alignment {
 	c_xalign := (C.gfloat)(xalign)
@@ -570,6 +670,31 @@ func (recv *AppChooserButton) ComboBox() *ComboBox {
 	return ComboBoxNewFromC(unsafe.Pointer(recv.native))
 }
 
+// Bin upcasts to *Bin
+func (recv *AppChooserButton) Bin() *Bin {
+	return recv.ComboBox().Bin()
+}
+
+// Container upcasts to *Container
+func (recv *AppChooserButton) Container() *Container {
+	return recv.ComboBox().Container()
+}
+
+// Widget upcasts to *Widget
+func (recv *AppChooserButton) Widget() *Widget {
+	return recv.ComboBox().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *AppChooserButton) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.ComboBox().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *AppChooserButton) Object() *gobject.Object {
+	return recv.ComboBox().Object()
+}
+
 // GetHeading is a wrapper around the C function gtk_app_chooser_button_get_heading.
 func (recv *AppChooserButton) GetHeading() string {
 	retC := C.gtk_app_chooser_button_get_heading((*C.GtkAppChooserButton)(recv.native))
@@ -614,6 +739,36 @@ func (recv *AppChooserDialog) ToC() unsafe.Pointer {
 // Dialog upcasts to *Dialog
 func (recv *AppChooserDialog) Dialog() *Dialog {
 	return DialogNewFromC(unsafe.Pointer(recv.native))
+}
+
+// Window upcasts to *Window
+func (recv *AppChooserDialog) Window() *Window {
+	return recv.Dialog().Window()
+}
+
+// Bin upcasts to *Bin
+func (recv *AppChooserDialog) Bin() *Bin {
+	return recv.Dialog().Bin()
+}
+
+// Container upcasts to *Container
+func (recv *AppChooserDialog) Container() *Container {
+	return recv.Dialog().Container()
+}
+
+// Widget upcasts to *Widget
+func (recv *AppChooserDialog) Widget() *Widget {
+	return recv.Dialog().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *AppChooserDialog) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Dialog().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *AppChooserDialog) Object() *gobject.Object {
+	return recv.Dialog().Object()
 }
 
 // Unsupported : gtk_app_chooser_dialog_new : unsupported parameter file : no type generator for Gio.File, GFile*
@@ -664,6 +819,26 @@ func (recv *AppChooserWidget) Box() *Box {
 	return BoxNewFromC(unsafe.Pointer(recv.native))
 }
 
+// Container upcasts to *Container
+func (recv *AppChooserWidget) Container() *Container {
+	return recv.Box().Container()
+}
+
+// Widget upcasts to *Widget
+func (recv *AppChooserWidget) Widget() *Widget {
+	return recv.Box().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *AppChooserWidget) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Box().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *AppChooserWidget) Object() *gobject.Object {
+	return recv.Box().Object()
+}
+
 // SetDefaultText is a wrapper around the C function gtk_app_chooser_widget_set_default_text.
 func (recv *AppChooserWidget) SetDefaultText(text string) {
 	c_text := C.CString(text)
@@ -702,6 +877,11 @@ func (recv *Application) Application() *gio.Application {
 	return gio.ApplicationNewFromC(unsafe.Pointer(recv.native))
 }
 
+// Object upcasts to *Object
+func (recv *Application) Object() *gobject.Object {
+	return recv.Application().Object()
+}
+
 // ApplicationWindow is a wrapper around the C record GtkApplicationWindow.
 type ApplicationWindow struct {
 	native *C.GtkApplicationWindow
@@ -730,6 +910,31 @@ func (recv *ApplicationWindow) Window() *Window {
 	return WindowNewFromC(unsafe.Pointer(recv.native))
 }
 
+// Bin upcasts to *Bin
+func (recv *ApplicationWindow) Bin() *Bin {
+	return recv.Window().Bin()
+}
+
+// Container upcasts to *Container
+func (recv *ApplicationWindow) Container() *Container {
+	return recv.Window().Container()
+}
+
+// Widget upcasts to *Widget
+func (recv *ApplicationWindow) Widget() *Widget {
+	return recv.Window().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *ApplicationWindow) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Window().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *ApplicationWindow) Object() *gobject.Object {
+	return recv.Window().Object()
+}
+
 // Arrow is a wrapper around the C record GtkArrow.
 type Arrow struct {
 	native *C.GtkArrow
@@ -756,6 +961,21 @@ func (recv *Arrow) ToC() unsafe.Pointer {
 // Misc upcasts to *Misc
 func (recv *Arrow) Misc() *Misc {
 	return MiscNewFromC(unsafe.Pointer(recv.native))
+}
+
+// Widget upcasts to *Widget
+func (recv *Arrow) Widget() *Widget {
+	return recv.Misc().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *Arrow) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Misc().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *Arrow) Object() *gobject.Object {
+	return recv.Misc().Object()
 }
 
 // ArrowNew is a wrapper around the C function gtk_arrow_new.
@@ -809,6 +1029,21 @@ func (recv *ArrowAccessible) WidgetAccessible() *WidgetAccessible {
 	return WidgetAccessibleNewFromC(unsafe.Pointer(recv.native))
 }
 
+// Accessible upcasts to *Accessible
+func (recv *ArrowAccessible) Accessible() *Accessible {
+	return recv.WidgetAccessible().Accessible()
+}
+
+// Object upcasts to *Object
+func (recv *ArrowAccessible) Object() *atk.Object {
+	return recv.WidgetAccessible().Object()
+}
+
+// Object upcasts to *Object
+func (recv *ArrowAccessible) Object() *gobject.Object {
+	return recv.WidgetAccessible().Object()
+}
+
 // AspectFrame is a wrapper around the C record GtkAspectFrame.
 type AspectFrame struct {
 	native *C.GtkAspectFrame
@@ -835,6 +1070,31 @@ func (recv *AspectFrame) ToC() unsafe.Pointer {
 // Frame upcasts to *Frame
 func (recv *AspectFrame) Frame() *Frame {
 	return FrameNewFromC(unsafe.Pointer(recv.native))
+}
+
+// Bin upcasts to *Bin
+func (recv *AspectFrame) Bin() *Bin {
+	return recv.Frame().Bin()
+}
+
+// Container upcasts to *Container
+func (recv *AspectFrame) Container() *Container {
+	return recv.Frame().Container()
+}
+
+// Widget upcasts to *Widget
+func (recv *AspectFrame) Widget() *Widget {
+	return recv.Frame().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *AspectFrame) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Frame().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *AspectFrame) Object() *gobject.Object {
+	return recv.Frame().Object()
 }
 
 // AspectFrameNew is a wrapper around the C function gtk_aspect_frame_new.
@@ -901,6 +1161,31 @@ func (recv *Assistant) Window() *Window {
 	return WindowNewFromC(unsafe.Pointer(recv.native))
 }
 
+// Bin upcasts to *Bin
+func (recv *Assistant) Bin() *Bin {
+	return recv.Window().Bin()
+}
+
+// Container upcasts to *Container
+func (recv *Assistant) Container() *Container {
+	return recv.Window().Container()
+}
+
+// Widget upcasts to *Widget
+func (recv *Assistant) Widget() *Widget {
+	return recv.Window().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *Assistant) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Window().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *Assistant) Object() *gobject.Object {
+	return recv.Window().Object()
+}
+
 // Bin is a wrapper around the C record GtkBin.
 type Bin struct {
 	native *C.GtkBin
@@ -927,6 +1212,21 @@ func (recv *Bin) ToC() unsafe.Pointer {
 // Container upcasts to *Container
 func (recv *Bin) Container() *Container {
 	return ContainerNewFromC(unsafe.Pointer(recv.native))
+}
+
+// Widget upcasts to *Widget
+func (recv *Bin) Widget() *Widget {
+	return recv.Container().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *Bin) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Container().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *Bin) Object() *gobject.Object {
+	return recv.Container().Object()
 }
 
 // GetChild is a wrapper around the C function gtk_bin_get_child.
@@ -965,6 +1265,26 @@ func (recv *BooleanCellAccessible) RendererCellAccessible() *RendererCellAccessi
 	return RendererCellAccessibleNewFromC(unsafe.Pointer(recv.native))
 }
 
+// CellAccessible upcasts to *CellAccessible
+func (recv *BooleanCellAccessible) CellAccessible() *CellAccessible {
+	return recv.RendererCellAccessible().CellAccessible()
+}
+
+// Accessible upcasts to *Accessible
+func (recv *BooleanCellAccessible) Accessible() *Accessible {
+	return recv.RendererCellAccessible().Accessible()
+}
+
+// Object upcasts to *Object
+func (recv *BooleanCellAccessible) Object() *atk.Object {
+	return recv.RendererCellAccessible().Object()
+}
+
+// Object upcasts to *Object
+func (recv *BooleanCellAccessible) Object() *gobject.Object {
+	return recv.RendererCellAccessible().Object()
+}
+
 // Box is a wrapper around the C record GtkBox.
 type Box struct {
 	native *C.GtkBox
@@ -991,6 +1311,21 @@ func (recv *Box) ToC() unsafe.Pointer {
 // Container upcasts to *Container
 func (recv *Box) Container() *Container {
 	return ContainerNewFromC(unsafe.Pointer(recv.native))
+}
+
+// Widget upcasts to *Widget
+func (recv *Box) Widget() *Widget {
+	return recv.Container().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *Box) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Container().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *Box) Object() *gobject.Object {
+	return recv.Container().Object()
 }
 
 // GetHomogeneous is a wrapper around the C function gtk_box_get_homogeneous.
@@ -1150,6 +1485,26 @@ func (recv *Button) ToC() unsafe.Pointer {
 // Bin upcasts to *Bin
 func (recv *Button) Bin() *Bin {
 	return BinNewFromC(unsafe.Pointer(recv.native))
+}
+
+// Container upcasts to *Container
+func (recv *Button) Container() *Container {
+	return recv.Bin().Container()
+}
+
+// Widget upcasts to *Widget
+func (recv *Button) Widget() *Widget {
+	return recv.Bin().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *Button) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Bin().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *Button) Object() *gobject.Object {
+	return recv.Bin().Object()
 }
 
 // ButtonNew is a wrapper around the C function gtk_button_new.
@@ -1329,6 +1684,26 @@ func (recv *ButtonAccessible) ContainerAccessible() *ContainerAccessible {
 	return ContainerAccessibleNewFromC(unsafe.Pointer(recv.native))
 }
 
+// WidgetAccessible upcasts to *WidgetAccessible
+func (recv *ButtonAccessible) WidgetAccessible() *WidgetAccessible {
+	return recv.ContainerAccessible().WidgetAccessible()
+}
+
+// Accessible upcasts to *Accessible
+func (recv *ButtonAccessible) Accessible() *Accessible {
+	return recv.ContainerAccessible().Accessible()
+}
+
+// Object upcasts to *Object
+func (recv *ButtonAccessible) Object() *atk.Object {
+	return recv.ContainerAccessible().Object()
+}
+
+// Object upcasts to *Object
+func (recv *ButtonAccessible) Object() *gobject.Object {
+	return recv.ContainerAccessible().Object()
+}
+
 // ButtonBox is a wrapper around the C record GtkButtonBox.
 type ButtonBox struct {
 	native *C.GtkButtonBox
@@ -1355,6 +1730,26 @@ func (recv *ButtonBox) ToC() unsafe.Pointer {
 // Box upcasts to *Box
 func (recv *ButtonBox) Box() *Box {
 	return BoxNewFromC(unsafe.Pointer(recv.native))
+}
+
+// Container upcasts to *Container
+func (recv *ButtonBox) Container() *Container {
+	return recv.Box().Container()
+}
+
+// Widget upcasts to *Widget
+func (recv *ButtonBox) Widget() *Widget {
+	return recv.Box().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *ButtonBox) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Box().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *ButtonBox) Object() *gobject.Object {
+	return recv.Box().Object()
 }
 
 // GetLayout is a wrapper around the C function gtk_button_box_get_layout.
@@ -1412,6 +1807,16 @@ func (recv *Calendar) ToC() unsafe.Pointer {
 // Widget upcasts to *Widget
 func (recv *Calendar) Widget() *Widget {
 	return WidgetNewFromC(unsafe.Pointer(recv.native))
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *Calendar) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Widget().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *Calendar) Object() *gobject.Object {
+	return recv.Widget().Object()
 }
 
 // CalendarNew is a wrapper around the C function gtk_calendar_new.
@@ -1514,6 +1919,16 @@ func (recv *CellAccessible) Accessible() *Accessible {
 	return AccessibleNewFromC(unsafe.Pointer(recv.native))
 }
 
+// Object upcasts to *Object
+func (recv *CellAccessible) Object() *atk.Object {
+	return recv.Accessible().Object()
+}
+
+// Object upcasts to *Object
+func (recv *CellAccessible) Object() *gobject.Object {
+	return recv.Accessible().Object()
+}
+
 // CellArea is a wrapper around the C record GtkCellArea.
 type CellArea struct {
 	native *C.GtkCellArea
@@ -1542,6 +1957,11 @@ func (recv *CellArea) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromC(unsafe.Pointer(recv.native))
 }
 
+// Object upcasts to *Object
+func (recv *CellArea) Object() *gobject.Object {
+	return recv.InitiallyUnowned().Object()
+}
+
 // CellAreaBox is a wrapper around the C record GtkCellAreaBox.
 type CellAreaBox struct {
 	native *C.GtkCellAreaBox
@@ -1568,6 +1988,16 @@ func (recv *CellAreaBox) ToC() unsafe.Pointer {
 // CellArea upcasts to *CellArea
 func (recv *CellAreaBox) CellArea() *CellArea {
 	return CellAreaNewFromC(unsafe.Pointer(recv.native))
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *CellAreaBox) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.CellArea().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *CellAreaBox) Object() *gobject.Object {
+	return recv.CellArea().Object()
 }
 
 // CellAreaContext is a wrapper around the C record GtkCellAreaContext.
@@ -1644,6 +2074,11 @@ func (recv *CellRenderer) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromC(unsafe.Pointer(recv.native))
 }
 
+// Object upcasts to *Object
+func (recv *CellRenderer) Object() *gobject.Object {
+	return recv.InitiallyUnowned().Object()
+}
+
 // Unsupported : gtk_cell_renderer_activate : unsupported parameter event : no type generator for Gdk.Event, GdkEvent*
 
 // GetFixedSize is a wrapper around the C function gtk_cell_renderer_get_fixed_size.
@@ -1706,6 +2141,21 @@ func (recv *CellRendererAccel) CellRendererText() *CellRendererText {
 	return CellRendererTextNewFromC(unsafe.Pointer(recv.native))
 }
 
+// CellRenderer upcasts to *CellRenderer
+func (recv *CellRendererAccel) CellRenderer() *CellRenderer {
+	return recv.CellRendererText().CellRenderer()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *CellRendererAccel) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.CellRendererText().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *CellRendererAccel) Object() *gobject.Object {
+	return recv.CellRendererText().Object()
+}
+
 // CellRendererCombo is a wrapper around the C record GtkCellRendererCombo.
 type CellRendererCombo struct {
 	native *C.GtkCellRendererCombo
@@ -1734,6 +2184,21 @@ func (recv *CellRendererCombo) CellRendererText() *CellRendererText {
 	return CellRendererTextNewFromC(unsafe.Pointer(recv.native))
 }
 
+// CellRenderer upcasts to *CellRenderer
+func (recv *CellRendererCombo) CellRenderer() *CellRenderer {
+	return recv.CellRendererText().CellRenderer()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *CellRendererCombo) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.CellRendererText().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *CellRendererCombo) Object() *gobject.Object {
+	return recv.CellRendererText().Object()
+}
+
 // CellRendererPixbuf is a wrapper around the C record GtkCellRendererPixbuf.
 type CellRendererPixbuf struct {
 	native *C.GtkCellRendererPixbuf
@@ -1760,6 +2225,16 @@ func (recv *CellRendererPixbuf) ToC() unsafe.Pointer {
 // CellRenderer upcasts to *CellRenderer
 func (recv *CellRendererPixbuf) CellRenderer() *CellRenderer {
 	return CellRendererNewFromC(unsafe.Pointer(recv.native))
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *CellRendererPixbuf) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.CellRenderer().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *CellRendererPixbuf) Object() *gobject.Object {
+	return recv.CellRenderer().Object()
 }
 
 // CellRendererPixbufNew is a wrapper around the C function gtk_cell_renderer_pixbuf_new.
@@ -1798,6 +2273,16 @@ func (recv *CellRendererProgress) CellRenderer() *CellRenderer {
 	return CellRendererNewFromC(unsafe.Pointer(recv.native))
 }
 
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *CellRendererProgress) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.CellRenderer().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *CellRendererProgress) Object() *gobject.Object {
+	return recv.CellRenderer().Object()
+}
+
 // CellRendererSpin is a wrapper around the C record GtkCellRendererSpin.
 type CellRendererSpin struct {
 	native *C.GtkCellRendererSpin
@@ -1824,6 +2309,21 @@ func (recv *CellRendererSpin) ToC() unsafe.Pointer {
 // CellRendererText upcasts to *CellRendererText
 func (recv *CellRendererSpin) CellRendererText() *CellRendererText {
 	return CellRendererTextNewFromC(unsafe.Pointer(recv.native))
+}
+
+// CellRenderer upcasts to *CellRenderer
+func (recv *CellRendererSpin) CellRenderer() *CellRenderer {
+	return recv.CellRendererText().CellRenderer()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *CellRendererSpin) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.CellRendererText().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *CellRendererSpin) Object() *gobject.Object {
+	return recv.CellRendererText().Object()
 }
 
 // CellRendererSpinner is a wrapper around the C record GtkCellRendererSpinner.
@@ -1854,6 +2354,16 @@ func (recv *CellRendererSpinner) CellRenderer() *CellRenderer {
 	return CellRendererNewFromC(unsafe.Pointer(recv.native))
 }
 
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *CellRendererSpinner) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.CellRenderer().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *CellRendererSpinner) Object() *gobject.Object {
+	return recv.CellRenderer().Object()
+}
+
 // CellRendererText is a wrapper around the C record GtkCellRendererText.
 type CellRendererText struct {
 	native *C.GtkCellRendererText
@@ -1880,6 +2390,16 @@ func (recv *CellRendererText) ToC() unsafe.Pointer {
 // CellRenderer upcasts to *CellRenderer
 func (recv *CellRendererText) CellRenderer() *CellRenderer {
 	return CellRendererNewFromC(unsafe.Pointer(recv.native))
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *CellRendererText) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.CellRenderer().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *CellRendererText) Object() *gobject.Object {
+	return recv.CellRenderer().Object()
 }
 
 // CellRendererTextNew is a wrapper around the C function gtk_cell_renderer_text_new.
@@ -1925,6 +2445,16 @@ func (recv *CellRendererToggle) ToC() unsafe.Pointer {
 // CellRenderer upcasts to *CellRenderer
 func (recv *CellRendererToggle) CellRenderer() *CellRenderer {
 	return CellRendererNewFromC(unsafe.Pointer(recv.native))
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *CellRendererToggle) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.CellRenderer().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *CellRendererToggle) Object() *gobject.Object {
+	return recv.CellRenderer().Object()
 }
 
 // CellRendererToggleNew is a wrapper around the C function gtk_cell_renderer_toggle_new.
@@ -1999,6 +2529,16 @@ func (recv *CellView) Widget() *Widget {
 	return WidgetNewFromC(unsafe.Pointer(recv.native))
 }
 
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *CellView) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Widget().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *CellView) Object() *gobject.Object {
+	return recv.Widget().Object()
+}
+
 // CheckButton is a wrapper around the C record GtkCheckButton.
 type CheckButton struct {
 	native *C.GtkCheckButton
@@ -2024,6 +2564,36 @@ func (recv *CheckButton) ToC() unsafe.Pointer {
 // ToggleButton upcasts to *ToggleButton
 func (recv *CheckButton) ToggleButton() *ToggleButton {
 	return ToggleButtonNewFromC(unsafe.Pointer(recv.native))
+}
+
+// Button upcasts to *Button
+func (recv *CheckButton) Button() *Button {
+	return recv.ToggleButton().Button()
+}
+
+// Bin upcasts to *Bin
+func (recv *CheckButton) Bin() *Bin {
+	return recv.ToggleButton().Bin()
+}
+
+// Container upcasts to *Container
+func (recv *CheckButton) Container() *Container {
+	return recv.ToggleButton().Container()
+}
+
+// Widget upcasts to *Widget
+func (recv *CheckButton) Widget() *Widget {
+	return recv.ToggleButton().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *CheckButton) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.ToggleButton().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *CheckButton) Object() *gobject.Object {
+	return recv.ToggleButton().Object()
 }
 
 // CheckButtonNew is a wrapper around the C function gtk_check_button_new.
@@ -2082,6 +2652,31 @@ func (recv *CheckMenuItem) ToC() unsafe.Pointer {
 // MenuItem upcasts to *MenuItem
 func (recv *CheckMenuItem) MenuItem() *MenuItem {
 	return MenuItemNewFromC(unsafe.Pointer(recv.native))
+}
+
+// Bin upcasts to *Bin
+func (recv *CheckMenuItem) Bin() *Bin {
+	return recv.MenuItem().Bin()
+}
+
+// Container upcasts to *Container
+func (recv *CheckMenuItem) Container() *Container {
+	return recv.MenuItem().Container()
+}
+
+// Widget upcasts to *Widget
+func (recv *CheckMenuItem) Widget() *Widget {
+	return recv.MenuItem().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *CheckMenuItem) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.MenuItem().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *CheckMenuItem) Object() *gobject.Object {
+	return recv.MenuItem().Object()
 }
 
 // CheckMenuItemNew is a wrapper around the C function gtk_check_menu_item_new.
@@ -2183,6 +2778,31 @@ func (recv *CheckMenuItemAccessible) ToC() unsafe.Pointer {
 // MenuItemAccessible upcasts to *MenuItemAccessible
 func (recv *CheckMenuItemAccessible) MenuItemAccessible() *MenuItemAccessible {
 	return MenuItemAccessibleNewFromC(unsafe.Pointer(recv.native))
+}
+
+// ContainerAccessible upcasts to *ContainerAccessible
+func (recv *CheckMenuItemAccessible) ContainerAccessible() *ContainerAccessible {
+	return recv.MenuItemAccessible().ContainerAccessible()
+}
+
+// WidgetAccessible upcasts to *WidgetAccessible
+func (recv *CheckMenuItemAccessible) WidgetAccessible() *WidgetAccessible {
+	return recv.MenuItemAccessible().WidgetAccessible()
+}
+
+// Accessible upcasts to *Accessible
+func (recv *CheckMenuItemAccessible) Accessible() *Accessible {
+	return recv.MenuItemAccessible().Accessible()
+}
+
+// Object upcasts to *Object
+func (recv *CheckMenuItemAccessible) Object() *atk.Object {
+	return recv.MenuItemAccessible().Object()
+}
+
+// Object upcasts to *Object
+func (recv *CheckMenuItemAccessible) Object() *gobject.Object {
+	return recv.MenuItemAccessible().Object()
 }
 
 // Clipboard is a wrapper around the C record GtkClipboard.
@@ -2293,6 +2913,31 @@ func (recv *ColorButton) Button() *Button {
 	return ButtonNewFromC(unsafe.Pointer(recv.native))
 }
 
+// Bin upcasts to *Bin
+func (recv *ColorButton) Bin() *Bin {
+	return recv.Button().Bin()
+}
+
+// Container upcasts to *Container
+func (recv *ColorButton) Container() *Container {
+	return recv.Button().Container()
+}
+
+// Widget upcasts to *Widget
+func (recv *ColorButton) Widget() *Widget {
+	return recv.Button().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *ColorButton) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Button().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *ColorButton) Object() *gobject.Object {
+	return recv.Button().Object()
+}
+
 // ColorChooserDialog is a wrapper around the C record GtkColorChooserDialog.
 type ColorChooserDialog struct {
 	native *C.GtkColorChooserDialog
@@ -2319,6 +2964,36 @@ func (recv *ColorChooserDialog) ToC() unsafe.Pointer {
 // Dialog upcasts to *Dialog
 func (recv *ColorChooserDialog) Dialog() *Dialog {
 	return DialogNewFromC(unsafe.Pointer(recv.native))
+}
+
+// Window upcasts to *Window
+func (recv *ColorChooserDialog) Window() *Window {
+	return recv.Dialog().Window()
+}
+
+// Bin upcasts to *Bin
+func (recv *ColorChooserDialog) Bin() *Bin {
+	return recv.Dialog().Bin()
+}
+
+// Container upcasts to *Container
+func (recv *ColorChooserDialog) Container() *Container {
+	return recv.Dialog().Container()
+}
+
+// Widget upcasts to *Widget
+func (recv *ColorChooserDialog) Widget() *Widget {
+	return recv.Dialog().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *ColorChooserDialog) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Dialog().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *ColorChooserDialog) Object() *gobject.Object {
+	return recv.Dialog().Object()
 }
 
 // ColorChooserWidget is a wrapper around the C record GtkColorChooserWidget.
@@ -2349,6 +3024,26 @@ func (recv *ColorChooserWidget) Box() *Box {
 	return BoxNewFromC(unsafe.Pointer(recv.native))
 }
 
+// Container upcasts to *Container
+func (recv *ColorChooserWidget) Container() *Container {
+	return recv.Box().Container()
+}
+
+// Widget upcasts to *Widget
+func (recv *ColorChooserWidget) Widget() *Widget {
+	return recv.Box().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *ColorChooserWidget) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Box().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *ColorChooserWidget) Object() *gobject.Object {
+	return recv.Box().Object()
+}
+
 // ColorSelection is a wrapper around the C record GtkColorSelection.
 type ColorSelection struct {
 	native *C.GtkColorSelection
@@ -2375,6 +3070,26 @@ func (recv *ColorSelection) ToC() unsafe.Pointer {
 // Box upcasts to *Box
 func (recv *ColorSelection) Box() *Box {
 	return BoxNewFromC(unsafe.Pointer(recv.native))
+}
+
+// Container upcasts to *Container
+func (recv *ColorSelection) Container() *Container {
+	return recv.Box().Container()
+}
+
+// Widget upcasts to *Widget
+func (recv *ColorSelection) Widget() *Widget {
+	return recv.Box().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *ColorSelection) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Box().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *ColorSelection) Object() *gobject.Object {
+	return recv.Box().Object()
 }
 
 // ColorSelectionNew is a wrapper around the C function gtk_color_selection_new.
@@ -2531,6 +3246,36 @@ func (recv *ColorSelectionDialog) Dialog() *Dialog {
 	return DialogNewFromC(unsafe.Pointer(recv.native))
 }
 
+// Window upcasts to *Window
+func (recv *ColorSelectionDialog) Window() *Window {
+	return recv.Dialog().Window()
+}
+
+// Bin upcasts to *Bin
+func (recv *ColorSelectionDialog) Bin() *Bin {
+	return recv.Dialog().Bin()
+}
+
+// Container upcasts to *Container
+func (recv *ColorSelectionDialog) Container() *Container {
+	return recv.Dialog().Container()
+}
+
+// Widget upcasts to *Widget
+func (recv *ColorSelectionDialog) Widget() *Widget {
+	return recv.Dialog().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *ColorSelectionDialog) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Dialog().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *ColorSelectionDialog) Object() *gobject.Object {
+	return recv.Dialog().Object()
+}
+
 // ColorSelectionDialogNew is a wrapper around the C function gtk_color_selection_dialog_new.
 func ColorSelectionDialogNew(title string) *ColorSelectionDialog {
 	c_title := C.CString(title)
@@ -2568,6 +3313,26 @@ func (recv *ComboBox) ToC() unsafe.Pointer {
 // Bin upcasts to *Bin
 func (recv *ComboBox) Bin() *Bin {
 	return BinNewFromC(unsafe.Pointer(recv.native))
+}
+
+// Container upcasts to *Container
+func (recv *ComboBox) Container() *Container {
+	return recv.Bin().Container()
+}
+
+// Widget upcasts to *Widget
+func (recv *ComboBox) Widget() *Widget {
+	return recv.Bin().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *ComboBox) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Bin().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *ComboBox) Object() *gobject.Object {
+	return recv.Bin().Object()
 }
 
 // ComboBoxNewWithArea is a wrapper around the C function gtk_combo_box_new_with_area.
@@ -2630,6 +3395,26 @@ func (recv *ComboBoxAccessible) ContainerAccessible() *ContainerAccessible {
 	return ContainerAccessibleNewFromC(unsafe.Pointer(recv.native))
 }
 
+// WidgetAccessible upcasts to *WidgetAccessible
+func (recv *ComboBoxAccessible) WidgetAccessible() *WidgetAccessible {
+	return recv.ContainerAccessible().WidgetAccessible()
+}
+
+// Accessible upcasts to *Accessible
+func (recv *ComboBoxAccessible) Accessible() *Accessible {
+	return recv.ContainerAccessible().Accessible()
+}
+
+// Object upcasts to *Object
+func (recv *ComboBoxAccessible) Object() *atk.Object {
+	return recv.ContainerAccessible().Object()
+}
+
+// Object upcasts to *Object
+func (recv *ComboBoxAccessible) Object() *gobject.Object {
+	return recv.ContainerAccessible().Object()
+}
+
 // ComboBoxText is a wrapper around the C record GtkComboBoxText.
 type ComboBoxText struct {
 	native *C.GtkComboBoxText
@@ -2658,6 +3443,31 @@ func (recv *ComboBoxText) ComboBox() *ComboBox {
 	return ComboBoxNewFromC(unsafe.Pointer(recv.native))
 }
 
+// Bin upcasts to *Bin
+func (recv *ComboBoxText) Bin() *Bin {
+	return recv.ComboBox().Bin()
+}
+
+// Container upcasts to *Container
+func (recv *ComboBoxText) Container() *Container {
+	return recv.ComboBox().Container()
+}
+
+// Widget upcasts to *Widget
+func (recv *ComboBoxText) Widget() *Widget {
+	return recv.ComboBox().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *ComboBoxText) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.ComboBox().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *ComboBoxText) Object() *gobject.Object {
+	return recv.ComboBox().Object()
+}
+
 // Container is a wrapper around the C record GtkContainer.
 type Container struct {
 	native *C.GtkContainer
@@ -2684,6 +3494,16 @@ func (recv *Container) ToC() unsafe.Pointer {
 // Widget upcasts to *Widget
 func (recv *Container) Widget() *Widget {
 	return WidgetNewFromC(unsafe.Pointer(recv.native))
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *Container) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Widget().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *Container) Object() *gobject.Object {
+	return recv.Widget().Object()
 }
 
 // Add is a wrapper around the C function gtk_container_add.
@@ -2924,6 +3744,21 @@ func (recv *ContainerAccessible) WidgetAccessible() *WidgetAccessible {
 	return WidgetAccessibleNewFromC(unsafe.Pointer(recv.native))
 }
 
+// Accessible upcasts to *Accessible
+func (recv *ContainerAccessible) Accessible() *Accessible {
+	return recv.WidgetAccessible().Accessible()
+}
+
+// Object upcasts to *Object
+func (recv *ContainerAccessible) Object() *atk.Object {
+	return recv.WidgetAccessible().Object()
+}
+
+// Object upcasts to *Object
+func (recv *ContainerAccessible) Object() *gobject.Object {
+	return recv.WidgetAccessible().Object()
+}
+
 // ContainerCellAccessible is a wrapper around the C record GtkContainerCellAccessible.
 type ContainerCellAccessible struct {
 	native *C.GtkContainerCellAccessible
@@ -2950,6 +3785,21 @@ func (recv *ContainerCellAccessible) ToC() unsafe.Pointer {
 // CellAccessible upcasts to *CellAccessible
 func (recv *ContainerCellAccessible) CellAccessible() *CellAccessible {
 	return CellAccessibleNewFromC(unsafe.Pointer(recv.native))
+}
+
+// Accessible upcasts to *Accessible
+func (recv *ContainerCellAccessible) Accessible() *Accessible {
+	return recv.CellAccessible().Accessible()
+}
+
+// Object upcasts to *Object
+func (recv *ContainerCellAccessible) Object() *atk.Object {
+	return recv.CellAccessible().Object()
+}
+
+// Object upcasts to *Object
+func (recv *ContainerCellAccessible) Object() *gobject.Object {
+	return recv.CellAccessible().Object()
 }
 
 // ContainerCellAccessibleNew is a wrapper around the C function gtk_container_cell_accessible_new.
@@ -3072,6 +3922,31 @@ func (recv *Dialog) Window() *Window {
 	return WindowNewFromC(unsafe.Pointer(recv.native))
 }
 
+// Bin upcasts to *Bin
+func (recv *Dialog) Bin() *Bin {
+	return recv.Window().Bin()
+}
+
+// Container upcasts to *Container
+func (recv *Dialog) Container() *Container {
+	return recv.Window().Container()
+}
+
+// Widget upcasts to *Widget
+func (recv *Dialog) Widget() *Widget {
+	return recv.Window().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *Dialog) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Window().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *Dialog) Object() *gobject.Object {
+	return recv.Window().Object()
+}
+
 // DialogNew is a wrapper around the C function gtk_dialog_new.
 func DialogNew() *Dialog {
 	retC := C.gtk_dialog_new()
@@ -3174,6 +4049,16 @@ func (recv *DrawingArea) Widget() *Widget {
 	return WidgetNewFromC(unsafe.Pointer(recv.native))
 }
 
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *DrawingArea) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Widget().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *DrawingArea) Object() *gobject.Object {
+	return recv.Widget().Object()
+}
+
 // DrawingAreaNew is a wrapper around the C function gtk_drawing_area_new.
 func DrawingAreaNew() *DrawingArea {
 	retC := C.gtk_drawing_area_new()
@@ -3208,6 +4093,16 @@ func (recv *Entry) ToC() unsafe.Pointer {
 // Widget upcasts to *Widget
 func (recv *Entry) Widget() *Widget {
 	return WidgetNewFromC(unsafe.Pointer(recv.native))
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *Entry) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Widget().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *Entry) Object() *gobject.Object {
+	return recv.Widget().Object()
 }
 
 // EntryNew is a wrapper around the C function gtk_entry_new.
@@ -3412,6 +4307,21 @@ func (recv *EntryAccessible) WidgetAccessible() *WidgetAccessible {
 	return WidgetAccessibleNewFromC(unsafe.Pointer(recv.native))
 }
 
+// Accessible upcasts to *Accessible
+func (recv *EntryAccessible) Accessible() *Accessible {
+	return recv.WidgetAccessible().Accessible()
+}
+
+// Object upcasts to *Object
+func (recv *EntryAccessible) Object() *atk.Object {
+	return recv.WidgetAccessible().Object()
+}
+
+// Object upcasts to *Object
+func (recv *EntryAccessible) Object() *gobject.Object {
+	return recv.WidgetAccessible().Object()
+}
+
 // EntryBuffer is a wrapper around the C record GtkEntryBuffer.
 type EntryBuffer struct {
 	native *C.GtkEntryBuffer
@@ -3498,6 +4408,26 @@ func (recv *EventBox) Bin() *Bin {
 	return BinNewFromC(unsafe.Pointer(recv.native))
 }
 
+// Container upcasts to *Container
+func (recv *EventBox) Container() *Container {
+	return recv.Bin().Container()
+}
+
+// Widget upcasts to *Widget
+func (recv *EventBox) Widget() *Widget {
+	return recv.Bin().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *EventBox) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Bin().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *EventBox) Object() *gobject.Object {
+	return recv.Bin().Object()
+}
+
 // EventBoxNew is a wrapper around the C function gtk_event_box_new.
 func EventBoxNew() *EventBox {
 	retC := C.gtk_event_box_new()
@@ -3560,6 +4490,26 @@ func (recv *Expander) Bin() *Bin {
 	return BinNewFromC(unsafe.Pointer(recv.native))
 }
 
+// Container upcasts to *Container
+func (recv *Expander) Container() *Container {
+	return recv.Bin().Container()
+}
+
+// Widget upcasts to *Widget
+func (recv *Expander) Widget() *Widget {
+	return recv.Bin().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *Expander) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Bin().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *Expander) Object() *gobject.Object {
+	return recv.Bin().Object()
+}
+
 // ExpanderAccessible is a wrapper around the C record GtkExpanderAccessible.
 type ExpanderAccessible struct {
 	native *C.GtkExpanderAccessible
@@ -3586,6 +4536,26 @@ func (recv *ExpanderAccessible) ToC() unsafe.Pointer {
 // ContainerAccessible upcasts to *ContainerAccessible
 func (recv *ExpanderAccessible) ContainerAccessible() *ContainerAccessible {
 	return ContainerAccessibleNewFromC(unsafe.Pointer(recv.native))
+}
+
+// WidgetAccessible upcasts to *WidgetAccessible
+func (recv *ExpanderAccessible) WidgetAccessible() *WidgetAccessible {
+	return recv.ContainerAccessible().WidgetAccessible()
+}
+
+// Accessible upcasts to *Accessible
+func (recv *ExpanderAccessible) Accessible() *Accessible {
+	return recv.ContainerAccessible().Accessible()
+}
+
+// Object upcasts to *Object
+func (recv *ExpanderAccessible) Object() *atk.Object {
+	return recv.ContainerAccessible().Object()
+}
+
+// Object upcasts to *Object
+func (recv *ExpanderAccessible) Object() *gobject.Object {
+	return recv.ContainerAccessible().Object()
 }
 
 // FileChooserButton is a wrapper around the C record GtkFileChooserButton.
@@ -3616,6 +4586,26 @@ func (recv *FileChooserButton) Box() *Box {
 	return BoxNewFromC(unsafe.Pointer(recv.native))
 }
 
+// Container upcasts to *Container
+func (recv *FileChooserButton) Container() *Container {
+	return recv.Box().Container()
+}
+
+// Widget upcasts to *Widget
+func (recv *FileChooserButton) Widget() *Widget {
+	return recv.Box().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *FileChooserButton) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Box().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *FileChooserButton) Object() *gobject.Object {
+	return recv.Box().Object()
+}
+
 // FileChooserDialog is a wrapper around the C record GtkFileChooserDialog.
 type FileChooserDialog struct {
 	native *C.GtkFileChooserDialog
@@ -3642,6 +4632,36 @@ func (recv *FileChooserDialog) ToC() unsafe.Pointer {
 // Dialog upcasts to *Dialog
 func (recv *FileChooserDialog) Dialog() *Dialog {
 	return DialogNewFromC(unsafe.Pointer(recv.native))
+}
+
+// Window upcasts to *Window
+func (recv *FileChooserDialog) Window() *Window {
+	return recv.Dialog().Window()
+}
+
+// Bin upcasts to *Bin
+func (recv *FileChooserDialog) Bin() *Bin {
+	return recv.Dialog().Bin()
+}
+
+// Container upcasts to *Container
+func (recv *FileChooserDialog) Container() *Container {
+	return recv.Dialog().Container()
+}
+
+// Widget upcasts to *Widget
+func (recv *FileChooserDialog) Widget() *Widget {
+	return recv.Dialog().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *FileChooserDialog) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Dialog().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *FileChooserDialog) Object() *gobject.Object {
+	return recv.Dialog().Object()
 }
 
 // Unsupported : gtk_file_chooser_dialog_new : unsupported parameter ... : varargs
@@ -3674,6 +4694,26 @@ func (recv *FileChooserWidget) Box() *Box {
 	return BoxNewFromC(unsafe.Pointer(recv.native))
 }
 
+// Container upcasts to *Container
+func (recv *FileChooserWidget) Container() *Container {
+	return recv.Box().Container()
+}
+
+// Widget upcasts to *Widget
+func (recv *FileChooserWidget) Widget() *Widget {
+	return recv.Box().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *FileChooserWidget) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Box().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *FileChooserWidget) Object() *gobject.Object {
+	return recv.Box().Object()
+}
+
 // FileFilter is a wrapper around the C record GtkFileFilter.
 type FileFilter struct {
 	native *C.GtkFileFilter
@@ -3698,6 +4738,11 @@ func (recv *FileFilter) ToC() unsafe.Pointer {
 // InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *FileFilter) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromC(unsafe.Pointer(recv.native))
+}
+
+// Object upcasts to *Object
+func (recv *FileFilter) Object() *gobject.Object {
+	return recv.InitiallyUnowned().Object()
 }
 
 // Unsupported : gtk_file_filter_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
@@ -3728,6 +4773,21 @@ func (recv *Fixed) ToC() unsafe.Pointer {
 // Container upcasts to *Container
 func (recv *Fixed) Container() *Container {
 	return ContainerNewFromC(unsafe.Pointer(recv.native))
+}
+
+// Widget upcasts to *Widget
+func (recv *Fixed) Widget() *Widget {
+	return recv.Container().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *Fixed) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Container().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *Fixed) Object() *gobject.Object {
+	return recv.Container().Object()
 }
 
 // FixedNew is a wrapper around the C function gtk_fixed_new.
@@ -3791,6 +4851,21 @@ func (recv *FlowBox) Container() *Container {
 	return ContainerNewFromC(unsafe.Pointer(recv.native))
 }
 
+// Widget upcasts to *Widget
+func (recv *FlowBox) Widget() *Widget {
+	return recv.Container().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *FlowBox) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Container().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *FlowBox) Object() *gobject.Object {
+	return recv.Container().Object()
+}
+
 // FlowBoxAccessible is a wrapper around the C record GtkFlowBoxAccessible.
 type FlowBoxAccessible struct {
 	native *C.GtkFlowBoxAccessible
@@ -3817,6 +4892,26 @@ func (recv *FlowBoxAccessible) ToC() unsafe.Pointer {
 // ContainerAccessible upcasts to *ContainerAccessible
 func (recv *FlowBoxAccessible) ContainerAccessible() *ContainerAccessible {
 	return ContainerAccessibleNewFromC(unsafe.Pointer(recv.native))
+}
+
+// WidgetAccessible upcasts to *WidgetAccessible
+func (recv *FlowBoxAccessible) WidgetAccessible() *WidgetAccessible {
+	return recv.ContainerAccessible().WidgetAccessible()
+}
+
+// Accessible upcasts to *Accessible
+func (recv *FlowBoxAccessible) Accessible() *Accessible {
+	return recv.ContainerAccessible().Accessible()
+}
+
+// Object upcasts to *Object
+func (recv *FlowBoxAccessible) Object() *atk.Object {
+	return recv.ContainerAccessible().Object()
+}
+
+// Object upcasts to *Object
+func (recv *FlowBoxAccessible) Object() *gobject.Object {
+	return recv.ContainerAccessible().Object()
 }
 
 // FlowBoxChild is a wrapper around the C record GtkFlowBoxChild.
@@ -3846,6 +4941,26 @@ func (recv *FlowBoxChild) Bin() *Bin {
 	return BinNewFromC(unsafe.Pointer(recv.native))
 }
 
+// Container upcasts to *Container
+func (recv *FlowBoxChild) Container() *Container {
+	return recv.Bin().Container()
+}
+
+// Widget upcasts to *Widget
+func (recv *FlowBoxChild) Widget() *Widget {
+	return recv.Bin().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *FlowBoxChild) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Bin().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *FlowBoxChild) Object() *gobject.Object {
+	return recv.Bin().Object()
+}
+
 // FlowBoxChildAccessible is a wrapper around the C record GtkFlowBoxChildAccessible.
 type FlowBoxChildAccessible struct {
 	native *C.GtkFlowBoxChildAccessible
@@ -3871,6 +4986,26 @@ func (recv *FlowBoxChildAccessible) ToC() unsafe.Pointer {
 // ContainerAccessible upcasts to *ContainerAccessible
 func (recv *FlowBoxChildAccessible) ContainerAccessible() *ContainerAccessible {
 	return ContainerAccessibleNewFromC(unsafe.Pointer(recv.native))
+}
+
+// WidgetAccessible upcasts to *WidgetAccessible
+func (recv *FlowBoxChildAccessible) WidgetAccessible() *WidgetAccessible {
+	return recv.ContainerAccessible().WidgetAccessible()
+}
+
+// Accessible upcasts to *Accessible
+func (recv *FlowBoxChildAccessible) Accessible() *Accessible {
+	return recv.ContainerAccessible().Accessible()
+}
+
+// Object upcasts to *Object
+func (recv *FlowBoxChildAccessible) Object() *atk.Object {
+	return recv.ContainerAccessible().Object()
+}
+
+// Object upcasts to *Object
+func (recv *FlowBoxChildAccessible) Object() *gobject.Object {
+	return recv.ContainerAccessible().Object()
 }
 
 // FontButton is a wrapper around the C record GtkFontButton.
@@ -3901,6 +5036,31 @@ func (recv *FontButton) Button() *Button {
 	return ButtonNewFromC(unsafe.Pointer(recv.native))
 }
 
+// Bin upcasts to *Bin
+func (recv *FontButton) Bin() *Bin {
+	return recv.Button().Bin()
+}
+
+// Container upcasts to *Container
+func (recv *FontButton) Container() *Container {
+	return recv.Button().Container()
+}
+
+// Widget upcasts to *Widget
+func (recv *FontButton) Widget() *Widget {
+	return recv.Button().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *FontButton) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Button().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *FontButton) Object() *gobject.Object {
+	return recv.Button().Object()
+}
+
 // FontChooserDialog is a wrapper around the C record GtkFontChooserDialog.
 type FontChooserDialog struct {
 	native *C.GtkFontChooserDialog
@@ -3927,6 +5087,36 @@ func (recv *FontChooserDialog) ToC() unsafe.Pointer {
 // Dialog upcasts to *Dialog
 func (recv *FontChooserDialog) Dialog() *Dialog {
 	return DialogNewFromC(unsafe.Pointer(recv.native))
+}
+
+// Window upcasts to *Window
+func (recv *FontChooserDialog) Window() *Window {
+	return recv.Dialog().Window()
+}
+
+// Bin upcasts to *Bin
+func (recv *FontChooserDialog) Bin() *Bin {
+	return recv.Dialog().Bin()
+}
+
+// Container upcasts to *Container
+func (recv *FontChooserDialog) Container() *Container {
+	return recv.Dialog().Container()
+}
+
+// Widget upcasts to *Widget
+func (recv *FontChooserDialog) Widget() *Widget {
+	return recv.Dialog().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *FontChooserDialog) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Dialog().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *FontChooserDialog) Object() *gobject.Object {
+	return recv.Dialog().Object()
 }
 
 // FontChooserWidget is a wrapper around the C record GtkFontChooserWidget.
@@ -3957,6 +5147,26 @@ func (recv *FontChooserWidget) Box() *Box {
 	return BoxNewFromC(unsafe.Pointer(recv.native))
 }
 
+// Container upcasts to *Container
+func (recv *FontChooserWidget) Container() *Container {
+	return recv.Box().Container()
+}
+
+// Widget upcasts to *Widget
+func (recv *FontChooserWidget) Widget() *Widget {
+	return recv.Box().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *FontChooserWidget) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Box().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *FontChooserWidget) Object() *gobject.Object {
+	return recv.Box().Object()
+}
+
 // FontSelection is a wrapper around the C record GtkFontSelection.
 type FontSelection struct {
 	native *C.GtkFontSelection
@@ -3983,6 +5193,26 @@ func (recv *FontSelection) ToC() unsafe.Pointer {
 // Box upcasts to *Box
 func (recv *FontSelection) Box() *Box {
 	return BoxNewFromC(unsafe.Pointer(recv.native))
+}
+
+// Container upcasts to *Container
+func (recv *FontSelection) Container() *Container {
+	return recv.Box().Container()
+}
+
+// Widget upcasts to *Widget
+func (recv *FontSelection) Widget() *Widget {
+	return recv.Box().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *FontSelection) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Box().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *FontSelection) Object() *gobject.Object {
+	return recv.Box().Object()
 }
 
 // FontSelectionNew is a wrapper around the C function gtk_font_selection_new.
@@ -4057,6 +5287,36 @@ func (recv *FontSelectionDialog) ToC() unsafe.Pointer {
 // Dialog upcasts to *Dialog
 func (recv *FontSelectionDialog) Dialog() *Dialog {
 	return DialogNewFromC(unsafe.Pointer(recv.native))
+}
+
+// Window upcasts to *Window
+func (recv *FontSelectionDialog) Window() *Window {
+	return recv.Dialog().Window()
+}
+
+// Bin upcasts to *Bin
+func (recv *FontSelectionDialog) Bin() *Bin {
+	return recv.Dialog().Bin()
+}
+
+// Container upcasts to *Container
+func (recv *FontSelectionDialog) Container() *Container {
+	return recv.Dialog().Container()
+}
+
+// Widget upcasts to *Widget
+func (recv *FontSelectionDialog) Widget() *Widget {
+	return recv.Dialog().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *FontSelectionDialog) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Dialog().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *FontSelectionDialog) Object() *gobject.Object {
+	return recv.Dialog().Object()
 }
 
 // FontSelectionDialogNew is a wrapper around the C function gtk_font_selection_dialog_new.
@@ -4134,6 +5394,26 @@ func (recv *Frame) ToC() unsafe.Pointer {
 // Bin upcasts to *Bin
 func (recv *Frame) Bin() *Bin {
 	return BinNewFromC(unsafe.Pointer(recv.native))
+}
+
+// Container upcasts to *Container
+func (recv *Frame) Container() *Container {
+	return recv.Bin().Container()
+}
+
+// Widget upcasts to *Widget
+func (recv *Frame) Widget() *Widget {
+	return recv.Bin().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *Frame) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Bin().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *Frame) Object() *gobject.Object {
+	return recv.Bin().Object()
 }
 
 // FrameNew is a wrapper around the C function gtk_frame_new.
@@ -4253,6 +5533,26 @@ func (recv *FrameAccessible) ContainerAccessible() *ContainerAccessible {
 	return ContainerAccessibleNewFromC(unsafe.Pointer(recv.native))
 }
 
+// WidgetAccessible upcasts to *WidgetAccessible
+func (recv *FrameAccessible) WidgetAccessible() *WidgetAccessible {
+	return recv.ContainerAccessible().WidgetAccessible()
+}
+
+// Accessible upcasts to *Accessible
+func (recv *FrameAccessible) Accessible() *Accessible {
+	return recv.ContainerAccessible().Accessible()
+}
+
+// Object upcasts to *Object
+func (recv *FrameAccessible) Object() *atk.Object {
+	return recv.ContainerAccessible().Object()
+}
+
+// Object upcasts to *Object
+func (recv *FrameAccessible) Object() *gobject.Object {
+	return recv.ContainerAccessible().Object()
+}
+
 // Gesture is a wrapper around the C record GtkGesture.
 type Gesture struct {
 	native *C.GtkGesture
@@ -4277,6 +5577,11 @@ func (recv *Gesture) ToC() unsafe.Pointer {
 // EventController upcasts to *EventController
 func (recv *Gesture) EventController() *EventController {
 	return EventControllerNewFromC(unsafe.Pointer(recv.native))
+}
+
+// Object upcasts to *Object
+func (recv *Gesture) Object() *gobject.Object {
+	return recv.EventController().Object()
 }
 
 // Unsupported : gtk_gesture_get_last_event : no return generator
@@ -4307,6 +5612,21 @@ func (recv *GestureDrag) GestureSingle() *GestureSingle {
 	return GestureSingleNewFromC(unsafe.Pointer(recv.native))
 }
 
+// Gesture upcasts to *Gesture
+func (recv *GestureDrag) Gesture() *Gesture {
+	return recv.GestureSingle().Gesture()
+}
+
+// EventController upcasts to *EventController
+func (recv *GestureDrag) EventController() *EventController {
+	return recv.GestureSingle().EventController()
+}
+
+// Object upcasts to *Object
+func (recv *GestureDrag) Object() *gobject.Object {
+	return recv.GestureSingle().Object()
+}
+
 // GestureLongPress is a wrapper around the C record GtkGestureLongPress.
 type GestureLongPress struct {
 	native *C.GtkGestureLongPress
@@ -4331,6 +5651,21 @@ func (recv *GestureLongPress) ToC() unsafe.Pointer {
 // GestureSingle upcasts to *GestureSingle
 func (recv *GestureLongPress) GestureSingle() *GestureSingle {
 	return GestureSingleNewFromC(unsafe.Pointer(recv.native))
+}
+
+// Gesture upcasts to *Gesture
+func (recv *GestureLongPress) Gesture() *Gesture {
+	return recv.GestureSingle().Gesture()
+}
+
+// EventController upcasts to *EventController
+func (recv *GestureLongPress) EventController() *EventController {
+	return recv.GestureSingle().EventController()
+}
+
+// Object upcasts to *Object
+func (recv *GestureLongPress) Object() *gobject.Object {
+	return recv.GestureSingle().Object()
 }
 
 // GestureMultiPress is a wrapper around the C record GtkGestureMultiPress.
@@ -4359,6 +5694,21 @@ func (recv *GestureMultiPress) GestureSingle() *GestureSingle {
 	return GestureSingleNewFromC(unsafe.Pointer(recv.native))
 }
 
+// Gesture upcasts to *Gesture
+func (recv *GestureMultiPress) Gesture() *Gesture {
+	return recv.GestureSingle().Gesture()
+}
+
+// EventController upcasts to *EventController
+func (recv *GestureMultiPress) EventController() *EventController {
+	return recv.GestureSingle().EventController()
+}
+
+// Object upcasts to *Object
+func (recv *GestureMultiPress) Object() *gobject.Object {
+	return recv.GestureSingle().Object()
+}
+
 // GesturePan is a wrapper around the C record GtkGesturePan.
 type GesturePan struct {
 	native *C.GtkGesturePan
@@ -4383,6 +5733,26 @@ func (recv *GesturePan) ToC() unsafe.Pointer {
 // GestureDrag upcasts to *GestureDrag
 func (recv *GesturePan) GestureDrag() *GestureDrag {
 	return GestureDragNewFromC(unsafe.Pointer(recv.native))
+}
+
+// GestureSingle upcasts to *GestureSingle
+func (recv *GesturePan) GestureSingle() *GestureSingle {
+	return recv.GestureDrag().GestureSingle()
+}
+
+// Gesture upcasts to *Gesture
+func (recv *GesturePan) Gesture() *Gesture {
+	return recv.GestureDrag().Gesture()
+}
+
+// EventController upcasts to *EventController
+func (recv *GesturePan) EventController() *EventController {
+	return recv.GestureDrag().EventController()
+}
+
+// Object upcasts to *Object
+func (recv *GesturePan) Object() *gobject.Object {
+	return recv.GestureDrag().Object()
 }
 
 // GestureRotate is a wrapper around the C record GtkGestureRotate.
@@ -4411,6 +5781,16 @@ func (recv *GestureRotate) Gesture() *Gesture {
 	return GestureNewFromC(unsafe.Pointer(recv.native))
 }
 
+// EventController upcasts to *EventController
+func (recv *GestureRotate) EventController() *EventController {
+	return recv.Gesture().EventController()
+}
+
+// Object upcasts to *Object
+func (recv *GestureRotate) Object() *gobject.Object {
+	return recv.Gesture().Object()
+}
+
 // GestureSingle is a wrapper around the C record GtkGestureSingle.
 type GestureSingle struct {
 	native *C.GtkGestureSingle
@@ -4435,6 +5815,16 @@ func (recv *GestureSingle) ToC() unsafe.Pointer {
 // Gesture upcasts to *Gesture
 func (recv *GestureSingle) Gesture() *Gesture {
 	return GestureNewFromC(unsafe.Pointer(recv.native))
+}
+
+// EventController upcasts to *EventController
+func (recv *GestureSingle) EventController() *EventController {
+	return recv.Gesture().EventController()
+}
+
+// Object upcasts to *Object
+func (recv *GestureSingle) Object() *gobject.Object {
+	return recv.Gesture().Object()
 }
 
 // GestureSwipe is a wrapper around the C record GtkGestureSwipe.
@@ -4463,6 +5853,21 @@ func (recv *GestureSwipe) GestureSingle() *GestureSingle {
 	return GestureSingleNewFromC(unsafe.Pointer(recv.native))
 }
 
+// Gesture upcasts to *Gesture
+func (recv *GestureSwipe) Gesture() *Gesture {
+	return recv.GestureSingle().Gesture()
+}
+
+// EventController upcasts to *EventController
+func (recv *GestureSwipe) EventController() *EventController {
+	return recv.GestureSingle().EventController()
+}
+
+// Object upcasts to *Object
+func (recv *GestureSwipe) Object() *gobject.Object {
+	return recv.GestureSingle().Object()
+}
+
 // GestureZoom is a wrapper around the C record GtkGestureZoom.
 type GestureZoom struct {
 	native *C.GtkGestureZoom
@@ -4487,6 +5892,16 @@ func (recv *GestureZoom) ToC() unsafe.Pointer {
 // Gesture upcasts to *Gesture
 func (recv *GestureZoom) Gesture() *Gesture {
 	return GestureNewFromC(unsafe.Pointer(recv.native))
+}
+
+// EventController upcasts to *EventController
+func (recv *GestureZoom) EventController() *EventController {
+	return recv.Gesture().EventController()
+}
+
+// Object upcasts to *Object
+func (recv *GestureZoom) Object() *gobject.Object {
+	return recv.Gesture().Object()
 }
 
 // Grid is a wrapper around the C record GtkGrid.
@@ -4515,6 +5930,21 @@ func (recv *Grid) ToC() unsafe.Pointer {
 // Container upcasts to *Container
 func (recv *Grid) Container() *Container {
 	return ContainerNewFromC(unsafe.Pointer(recv.native))
+}
+
+// Widget upcasts to *Widget
+func (recv *Grid) Widget() *Widget {
+	return recv.Container().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *Grid) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Container().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *Grid) Object() *gobject.Object {
+	return recv.Container().Object()
 }
 
 // GridNew is a wrapper around the C function gtk_grid_new.
@@ -4656,6 +6086,26 @@ func (recv *HBox) Box() *Box {
 	return BoxNewFromC(unsafe.Pointer(recv.native))
 }
 
+// Container upcasts to *Container
+func (recv *HBox) Container() *Container {
+	return recv.Box().Container()
+}
+
+// Widget upcasts to *Widget
+func (recv *HBox) Widget() *Widget {
+	return recv.Box().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *HBox) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Box().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *HBox) Object() *gobject.Object {
+	return recv.Box().Object()
+}
+
 // HBoxNew is a wrapper around the C function gtk_hbox_new.
 func HBoxNew(homogeneous bool, spacing int32) *HBox {
 	c_homogeneous :=
@@ -4696,6 +6146,31 @@ func (recv *HButtonBox) ButtonBox() *ButtonBox {
 	return ButtonBoxNewFromC(unsafe.Pointer(recv.native))
 }
 
+// Box upcasts to *Box
+func (recv *HButtonBox) Box() *Box {
+	return recv.ButtonBox().Box()
+}
+
+// Container upcasts to *Container
+func (recv *HButtonBox) Container() *Container {
+	return recv.ButtonBox().Container()
+}
+
+// Widget upcasts to *Widget
+func (recv *HButtonBox) Widget() *Widget {
+	return recv.ButtonBox().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *HButtonBox) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.ButtonBox().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *HButtonBox) Object() *gobject.Object {
+	return recv.ButtonBox().Object()
+}
+
 // HButtonBoxNew is a wrapper around the C function gtk_hbutton_box_new.
 func HButtonBoxNew() *HButtonBox {
 	retC := C.gtk_hbutton_box_new()
@@ -4729,6 +6204,26 @@ func (recv *HPaned) ToC() unsafe.Pointer {
 // Paned upcasts to *Paned
 func (recv *HPaned) Paned() *Paned {
 	return PanedNewFromC(unsafe.Pointer(recv.native))
+}
+
+// Container upcasts to *Container
+func (recv *HPaned) Container() *Container {
+	return recv.Paned().Container()
+}
+
+// Widget upcasts to *Widget
+func (recv *HPaned) Widget() *Widget {
+	return recv.Paned().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *HPaned) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Paned().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *HPaned) Object() *gobject.Object {
+	return recv.Paned().Object()
 }
 
 // HPanedNew is a wrapper around the C function gtk_hpaned_new.
@@ -4767,6 +6262,16 @@ func (recv *HSV) Widget() *Widget {
 	return WidgetNewFromC(unsafe.Pointer(recv.native))
 }
 
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *HSV) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Widget().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *HSV) Object() *gobject.Object {
+	return recv.Widget().Object()
+}
+
 // HScale is a wrapper around the C record GtkHScale.
 type HScale struct {
 	native *C.GtkHScale
@@ -4792,6 +6297,26 @@ func (recv *HScale) ToC() unsafe.Pointer {
 // Scale upcasts to *Scale
 func (recv *HScale) Scale() *Scale {
 	return ScaleNewFromC(unsafe.Pointer(recv.native))
+}
+
+// Range upcasts to *Range
+func (recv *HScale) Range() *Range {
+	return recv.Scale().Range()
+}
+
+// Widget upcasts to *Widget
+func (recv *HScale) Widget() *Widget {
+	return recv.Scale().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *HScale) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Scale().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *HScale) Object() *gobject.Object {
+	return recv.Scale().Object()
 }
 
 // HScaleNew is a wrapper around the C function gtk_hscale_new.
@@ -4845,6 +6370,26 @@ func (recv *HScrollbar) Scrollbar() *Scrollbar {
 	return ScrollbarNewFromC(unsafe.Pointer(recv.native))
 }
 
+// Range upcasts to *Range
+func (recv *HScrollbar) Range() *Range {
+	return recv.Scrollbar().Range()
+}
+
+// Widget upcasts to *Widget
+func (recv *HScrollbar) Widget() *Widget {
+	return recv.Scrollbar().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *HScrollbar) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Scrollbar().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *HScrollbar) Object() *gobject.Object {
+	return recv.Scrollbar().Object()
+}
+
 // HScrollbarNew is a wrapper around the C function gtk_hscrollbar_new.
 func HScrollbarNew(adjustment *Adjustment) *HScrollbar {
 	c_adjustment := (*C.GtkAdjustment)(adjustment.ToC())
@@ -4882,6 +6427,21 @@ func (recv *HSeparator) Separator() *Separator {
 	return SeparatorNewFromC(unsafe.Pointer(recv.native))
 }
 
+// Widget upcasts to *Widget
+func (recv *HSeparator) Widget() *Widget {
+	return recv.Separator().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *HSeparator) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Separator().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *HSeparator) Object() *gobject.Object {
+	return recv.Separator().Object()
+}
+
 // HSeparatorNew is a wrapper around the C function gtk_hseparator_new.
 func HSeparatorNew() *HSeparator {
 	retC := C.gtk_hseparator_new()
@@ -4916,6 +6476,26 @@ func (recv *HandleBox) ToC() unsafe.Pointer {
 // Bin upcasts to *Bin
 func (recv *HandleBox) Bin() *Bin {
 	return BinNewFromC(unsafe.Pointer(recv.native))
+}
+
+// Container upcasts to *Container
+func (recv *HandleBox) Container() *Container {
+	return recv.Bin().Container()
+}
+
+// Widget upcasts to *Widget
+func (recv *HandleBox) Widget() *Widget {
+	return recv.Bin().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *HandleBox) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Bin().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *HandleBox) Object() *gobject.Object {
+	return recv.Bin().Object()
 }
 
 // HandleBoxNew is a wrapper around the C function gtk_handle_box_new.
@@ -5002,6 +6582,21 @@ func (recv *HeaderBar) ToC() unsafe.Pointer {
 // Container upcasts to *Container
 func (recv *HeaderBar) Container() *Container {
 	return ContainerNewFromC(unsafe.Pointer(recv.native))
+}
+
+// Widget upcasts to *Widget
+func (recv *HeaderBar) Widget() *Widget {
+	return recv.Container().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *HeaderBar) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Container().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *HeaderBar) Object() *gobject.Object {
+	return recv.Container().Object()
 }
 
 // IMContext is a wrapper around the C record GtkIMContext.
@@ -5156,6 +6751,11 @@ func (recv *IMContextSimple) IMContext() *IMContext {
 	return IMContextNewFromC(unsafe.Pointer(recv.native))
 }
 
+// Object upcasts to *Object
+func (recv *IMContextSimple) Object() *gobject.Object {
+	return recv.IMContext().Object()
+}
+
 // IMContextSimpleNew is a wrapper around the C function gtk_im_context_simple_new.
 func IMContextSimpleNew() *IMContextSimple {
 	retC := C.gtk_im_context_simple_new()
@@ -5194,6 +6794,11 @@ func (recv *IMMulticontext) ToC() unsafe.Pointer {
 // IMContext upcasts to *IMContext
 func (recv *IMMulticontext) IMContext() *IMContext {
 	return IMContextNewFromC(unsafe.Pointer(recv.native))
+}
+
+// Object upcasts to *Object
+func (recv *IMMulticontext) Object() *gobject.Object {
+	return recv.IMContext().Object()
 }
 
 // IMMulticontextNew is a wrapper around the C function gtk_im_multicontext_new.
@@ -5368,6 +6973,21 @@ func (recv *IconView) Container() *Container {
 	return ContainerNewFromC(unsafe.Pointer(recv.native))
 }
 
+// Widget upcasts to *Widget
+func (recv *IconView) Widget() *Widget {
+	return recv.Container().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *IconView) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Container().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *IconView) Object() *gobject.Object {
+	return recv.Container().Object()
+}
+
 // Unsupported : gtk_icon_view_new_with_model : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
 
 // IconViewAccessible is a wrapper around the C record GtkIconViewAccessible.
@@ -5398,6 +7018,26 @@ func (recv *IconViewAccessible) ContainerAccessible() *ContainerAccessible {
 	return ContainerAccessibleNewFromC(unsafe.Pointer(recv.native))
 }
 
+// WidgetAccessible upcasts to *WidgetAccessible
+func (recv *IconViewAccessible) WidgetAccessible() *WidgetAccessible {
+	return recv.ContainerAccessible().WidgetAccessible()
+}
+
+// Accessible upcasts to *Accessible
+func (recv *IconViewAccessible) Accessible() *Accessible {
+	return recv.ContainerAccessible().Accessible()
+}
+
+// Object upcasts to *Object
+func (recv *IconViewAccessible) Object() *atk.Object {
+	return recv.ContainerAccessible().Object()
+}
+
+// Object upcasts to *Object
+func (recv *IconViewAccessible) Object() *gobject.Object {
+	return recv.ContainerAccessible().Object()
+}
+
 // Image is a wrapper around the C record GtkImage.
 type Image struct {
 	native *C.GtkImage
@@ -5424,6 +7064,21 @@ func (recv *Image) ToC() unsafe.Pointer {
 // Misc upcasts to *Misc
 func (recv *Image) Misc() *Misc {
 	return MiscNewFromC(unsafe.Pointer(recv.native))
+}
+
+// Widget upcasts to *Widget
+func (recv *Image) Widget() *Widget {
+	return recv.Misc().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *Image) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Misc().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *Image) Object() *gobject.Object {
+	return recv.Misc().Object()
 }
 
 // ImageNew is a wrapper around the C function gtk_image_new.
@@ -5571,6 +7226,21 @@ func (recv *ImageAccessible) WidgetAccessible() *WidgetAccessible {
 	return WidgetAccessibleNewFromC(unsafe.Pointer(recv.native))
 }
 
+// Accessible upcasts to *Accessible
+func (recv *ImageAccessible) Accessible() *Accessible {
+	return recv.WidgetAccessible().Accessible()
+}
+
+// Object upcasts to *Object
+func (recv *ImageAccessible) Object() *atk.Object {
+	return recv.WidgetAccessible().Object()
+}
+
+// Object upcasts to *Object
+func (recv *ImageAccessible) Object() *gobject.Object {
+	return recv.WidgetAccessible().Object()
+}
+
 // ImageCellAccessible is a wrapper around the C record GtkImageCellAccessible.
 type ImageCellAccessible struct {
 	native *C.GtkImageCellAccessible
@@ -5599,6 +7269,26 @@ func (recv *ImageCellAccessible) RendererCellAccessible() *RendererCellAccessibl
 	return RendererCellAccessibleNewFromC(unsafe.Pointer(recv.native))
 }
 
+// CellAccessible upcasts to *CellAccessible
+func (recv *ImageCellAccessible) CellAccessible() *CellAccessible {
+	return recv.RendererCellAccessible().CellAccessible()
+}
+
+// Accessible upcasts to *Accessible
+func (recv *ImageCellAccessible) Accessible() *Accessible {
+	return recv.RendererCellAccessible().Accessible()
+}
+
+// Object upcasts to *Object
+func (recv *ImageCellAccessible) Object() *atk.Object {
+	return recv.RendererCellAccessible().Object()
+}
+
+// Object upcasts to *Object
+func (recv *ImageCellAccessible) Object() *gobject.Object {
+	return recv.RendererCellAccessible().Object()
+}
+
 // ImageMenuItem is a wrapper around the C record GtkImageMenuItem.
 type ImageMenuItem struct {
 	native *C.GtkImageMenuItem
@@ -5625,6 +7315,31 @@ func (recv *ImageMenuItem) ToC() unsafe.Pointer {
 // MenuItem upcasts to *MenuItem
 func (recv *ImageMenuItem) MenuItem() *MenuItem {
 	return MenuItemNewFromC(unsafe.Pointer(recv.native))
+}
+
+// Bin upcasts to *Bin
+func (recv *ImageMenuItem) Bin() *Bin {
+	return recv.MenuItem().Bin()
+}
+
+// Container upcasts to *Container
+func (recv *ImageMenuItem) Container() *Container {
+	return recv.MenuItem().Container()
+}
+
+// Widget upcasts to *Widget
+func (recv *ImageMenuItem) Widget() *Widget {
+	return recv.MenuItem().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *ImageMenuItem) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.MenuItem().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *ImageMenuItem) Object() *gobject.Object {
+	return recv.MenuItem().Object()
 }
 
 // ImageMenuItemNew is a wrapper around the C function gtk_image_menu_item_new.
@@ -5715,6 +7430,26 @@ func (recv *InfoBar) Box() *Box {
 	return BoxNewFromC(unsafe.Pointer(recv.native))
 }
 
+// Container upcasts to *Container
+func (recv *InfoBar) Container() *Container {
+	return recv.Box().Container()
+}
+
+// Widget upcasts to *Widget
+func (recv *InfoBar) Widget() *Widget {
+	return recv.Box().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *InfoBar) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Box().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *InfoBar) Object() *gobject.Object {
+	return recv.Box().Object()
+}
+
 // Unsupported : gtk_info_bar_new_with_buttons : unsupported parameter ... : varargs
 
 // Invisible is a wrapper around the C record GtkInvisible.
@@ -5743,6 +7478,16 @@ func (recv *Invisible) ToC() unsafe.Pointer {
 // Widget upcasts to *Widget
 func (recv *Invisible) Widget() *Widget {
 	return WidgetNewFromC(unsafe.Pointer(recv.native))
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *Invisible) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Widget().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *Invisible) Object() *gobject.Object {
+	return recv.Widget().Object()
 }
 
 // InvisibleNew is a wrapper around the C function gtk_invisible_new.
@@ -5779,6 +7524,21 @@ func (recv *Label) ToC() unsafe.Pointer {
 // Misc upcasts to *Misc
 func (recv *Label) Misc() *Misc {
 	return MiscNewFromC(unsafe.Pointer(recv.native))
+}
+
+// Widget upcasts to *Widget
+func (recv *Label) Widget() *Widget {
+	return recv.Misc().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *Label) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Misc().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *Label) Object() *gobject.Object {
+	return recv.Misc().Object()
 }
 
 // LabelNew is a wrapper around the C function gtk_label_new.
@@ -6088,6 +7848,21 @@ func (recv *LabelAccessible) WidgetAccessible() *WidgetAccessible {
 	return WidgetAccessibleNewFromC(unsafe.Pointer(recv.native))
 }
 
+// Accessible upcasts to *Accessible
+func (recv *LabelAccessible) Accessible() *Accessible {
+	return recv.WidgetAccessible().Accessible()
+}
+
+// Object upcasts to *Object
+func (recv *LabelAccessible) Object() *atk.Object {
+	return recv.WidgetAccessible().Object()
+}
+
+// Object upcasts to *Object
+func (recv *LabelAccessible) Object() *gobject.Object {
+	return recv.WidgetAccessible().Object()
+}
+
 // Layout is a wrapper around the C record GtkLayout.
 type Layout struct {
 	native *C.GtkLayout
@@ -6114,6 +7889,21 @@ func (recv *Layout) ToC() unsafe.Pointer {
 // Container upcasts to *Container
 func (recv *Layout) Container() *Container {
 	return ContainerNewFromC(unsafe.Pointer(recv.native))
+}
+
+// Widget upcasts to *Widget
+func (recv *Layout) Widget() *Widget {
+	return recv.Container().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *Layout) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Container().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *Layout) Object() *gobject.Object {
+	return recv.Container().Object()
 }
 
 // LayoutNew is a wrapper around the C function gtk_layout_new.
@@ -6242,6 +8032,16 @@ func (recv *LevelBar) Widget() *Widget {
 	return WidgetNewFromC(unsafe.Pointer(recv.native))
 }
 
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *LevelBar) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Widget().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *LevelBar) Object() *gobject.Object {
+	return recv.Widget().Object()
+}
+
 // LevelBarAccessible is a wrapper around the C record GtkLevelBarAccessible.
 type LevelBarAccessible struct {
 	native *C.GtkLevelBarAccessible
@@ -6268,6 +8068,21 @@ func (recv *LevelBarAccessible) ToC() unsafe.Pointer {
 // WidgetAccessible upcasts to *WidgetAccessible
 func (recv *LevelBarAccessible) WidgetAccessible() *WidgetAccessible {
 	return WidgetAccessibleNewFromC(unsafe.Pointer(recv.native))
+}
+
+// Accessible upcasts to *Accessible
+func (recv *LevelBarAccessible) Accessible() *Accessible {
+	return recv.WidgetAccessible().Accessible()
+}
+
+// Object upcasts to *Object
+func (recv *LevelBarAccessible) Object() *atk.Object {
+	return recv.WidgetAccessible().Object()
+}
+
+// Object upcasts to *Object
+func (recv *LevelBarAccessible) Object() *gobject.Object {
+	return recv.WidgetAccessible().Object()
 }
 
 // LinkButton is a wrapper around the C record GtkLinkButton.
@@ -6298,6 +8113,31 @@ func (recv *LinkButton) Button() *Button {
 	return ButtonNewFromC(unsafe.Pointer(recv.native))
 }
 
+// Bin upcasts to *Bin
+func (recv *LinkButton) Bin() *Bin {
+	return recv.Button().Bin()
+}
+
+// Container upcasts to *Container
+func (recv *LinkButton) Container() *Container {
+	return recv.Button().Container()
+}
+
+// Widget upcasts to *Widget
+func (recv *LinkButton) Widget() *Widget {
+	return recv.Button().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *LinkButton) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Button().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *LinkButton) Object() *gobject.Object {
+	return recv.Button().Object()
+}
+
 // LinkButtonAccessible is a wrapper around the C record GtkLinkButtonAccessible.
 type LinkButtonAccessible struct {
 	native *C.GtkLinkButtonAccessible
@@ -6326,6 +8166,31 @@ func (recv *LinkButtonAccessible) ButtonAccessible() *ButtonAccessible {
 	return ButtonAccessibleNewFromC(unsafe.Pointer(recv.native))
 }
 
+// ContainerAccessible upcasts to *ContainerAccessible
+func (recv *LinkButtonAccessible) ContainerAccessible() *ContainerAccessible {
+	return recv.ButtonAccessible().ContainerAccessible()
+}
+
+// WidgetAccessible upcasts to *WidgetAccessible
+func (recv *LinkButtonAccessible) WidgetAccessible() *WidgetAccessible {
+	return recv.ButtonAccessible().WidgetAccessible()
+}
+
+// Accessible upcasts to *Accessible
+func (recv *LinkButtonAccessible) Accessible() *Accessible {
+	return recv.ButtonAccessible().Accessible()
+}
+
+// Object upcasts to *Object
+func (recv *LinkButtonAccessible) Object() *atk.Object {
+	return recv.ButtonAccessible().Object()
+}
+
+// Object upcasts to *Object
+func (recv *LinkButtonAccessible) Object() *gobject.Object {
+	return recv.ButtonAccessible().Object()
+}
+
 // ListBox is a wrapper around the C record GtkListBox.
 type ListBox struct {
 	native *C.GtkListBox
@@ -6351,6 +8216,21 @@ func (recv *ListBox) ToC() unsafe.Pointer {
 // Container upcasts to *Container
 func (recv *ListBox) Container() *Container {
 	return ContainerNewFromC(unsafe.Pointer(recv.native))
+}
+
+// Widget upcasts to *Widget
+func (recv *ListBox) Widget() *Widget {
+	return recv.Container().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *ListBox) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Container().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *ListBox) Object() *gobject.Object {
+	return recv.Container().Object()
 }
 
 // ListBoxAccessible is a wrapper around the C record GtkListBoxAccessible.
@@ -6381,6 +8261,26 @@ func (recv *ListBoxAccessible) ContainerAccessible() *ContainerAccessible {
 	return ContainerAccessibleNewFromC(unsafe.Pointer(recv.native))
 }
 
+// WidgetAccessible upcasts to *WidgetAccessible
+func (recv *ListBoxAccessible) WidgetAccessible() *WidgetAccessible {
+	return recv.ContainerAccessible().WidgetAccessible()
+}
+
+// Accessible upcasts to *Accessible
+func (recv *ListBoxAccessible) Accessible() *Accessible {
+	return recv.ContainerAccessible().Accessible()
+}
+
+// Object upcasts to *Object
+func (recv *ListBoxAccessible) Object() *atk.Object {
+	return recv.ContainerAccessible().Object()
+}
+
+// Object upcasts to *Object
+func (recv *ListBoxAccessible) Object() *gobject.Object {
+	return recv.ContainerAccessible().Object()
+}
+
 // ListBoxRow is a wrapper around the C record GtkListBoxRow.
 type ListBoxRow struct {
 	native *C.GtkListBoxRow
@@ -6408,6 +8308,26 @@ func (recv *ListBoxRow) Bin() *Bin {
 	return BinNewFromC(unsafe.Pointer(recv.native))
 }
 
+// Container upcasts to *Container
+func (recv *ListBoxRow) Container() *Container {
+	return recv.Bin().Container()
+}
+
+// Widget upcasts to *Widget
+func (recv *ListBoxRow) Widget() *Widget {
+	return recv.Bin().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *ListBoxRow) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Bin().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *ListBoxRow) Object() *gobject.Object {
+	return recv.Bin().Object()
+}
+
 // ListBoxRowAccessible is a wrapper around the C record GtkListBoxRowAccessible.
 type ListBoxRowAccessible struct {
 	native *C.GtkListBoxRowAccessible
@@ -6433,6 +8353,26 @@ func (recv *ListBoxRowAccessible) ToC() unsafe.Pointer {
 // ContainerAccessible upcasts to *ContainerAccessible
 func (recv *ListBoxRowAccessible) ContainerAccessible() *ContainerAccessible {
 	return ContainerAccessibleNewFromC(unsafe.Pointer(recv.native))
+}
+
+// WidgetAccessible upcasts to *WidgetAccessible
+func (recv *ListBoxRowAccessible) WidgetAccessible() *WidgetAccessible {
+	return recv.ContainerAccessible().WidgetAccessible()
+}
+
+// Accessible upcasts to *Accessible
+func (recv *ListBoxRowAccessible) Accessible() *Accessible {
+	return recv.ContainerAccessible().Accessible()
+}
+
+// Object upcasts to *Object
+func (recv *ListBoxRowAccessible) Object() *atk.Object {
+	return recv.ContainerAccessible().Object()
+}
+
+// Object upcasts to *Object
+func (recv *ListBoxRowAccessible) Object() *gobject.Object {
+	return recv.ContainerAccessible().Object()
 }
 
 // ListStore is a wrapper around the C record GtkListStore.
@@ -6592,6 +8532,31 @@ func (recv *LockButton) Button() *Button {
 	return ButtonNewFromC(unsafe.Pointer(recv.native))
 }
 
+// Bin upcasts to *Bin
+func (recv *LockButton) Bin() *Bin {
+	return recv.Button().Bin()
+}
+
+// Container upcasts to *Container
+func (recv *LockButton) Container() *Container {
+	return recv.Button().Container()
+}
+
+// Widget upcasts to *Widget
+func (recv *LockButton) Widget() *Widget {
+	return recv.Button().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *LockButton) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Button().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *LockButton) Object() *gobject.Object {
+	return recv.Button().Object()
+}
+
 // LockButtonAccessible is a wrapper around the C record GtkLockButtonAccessible.
 type LockButtonAccessible struct {
 	native *C.GtkLockButtonAccessible
@@ -6620,6 +8585,31 @@ func (recv *LockButtonAccessible) ButtonAccessible() *ButtonAccessible {
 	return ButtonAccessibleNewFromC(unsafe.Pointer(recv.native))
 }
 
+// ContainerAccessible upcasts to *ContainerAccessible
+func (recv *LockButtonAccessible) ContainerAccessible() *ContainerAccessible {
+	return recv.ButtonAccessible().ContainerAccessible()
+}
+
+// WidgetAccessible upcasts to *WidgetAccessible
+func (recv *LockButtonAccessible) WidgetAccessible() *WidgetAccessible {
+	return recv.ButtonAccessible().WidgetAccessible()
+}
+
+// Accessible upcasts to *Accessible
+func (recv *LockButtonAccessible) Accessible() *Accessible {
+	return recv.ButtonAccessible().Accessible()
+}
+
+// Object upcasts to *Object
+func (recv *LockButtonAccessible) Object() *atk.Object {
+	return recv.ButtonAccessible().Object()
+}
+
+// Object upcasts to *Object
+func (recv *LockButtonAccessible) Object() *gobject.Object {
+	return recv.ButtonAccessible().Object()
+}
+
 // Menu is a wrapper around the C record GtkMenu.
 type Menu struct {
 	native *C.GtkMenu
@@ -6646,6 +8636,26 @@ func (recv *Menu) ToC() unsafe.Pointer {
 // MenuShell upcasts to *MenuShell
 func (recv *Menu) MenuShell() *MenuShell {
 	return MenuShellNewFromC(unsafe.Pointer(recv.native))
+}
+
+// Container upcasts to *Container
+func (recv *Menu) Container() *Container {
+	return recv.MenuShell().Container()
+}
+
+// Widget upcasts to *Widget
+func (recv *Menu) Widget() *Widget {
+	return recv.MenuShell().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *Menu) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.MenuShell().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *Menu) Object() *gobject.Object {
+	return recv.MenuShell().Object()
 }
 
 // MenuNew is a wrapper around the C function gtk_menu_new.
@@ -6808,6 +8818,31 @@ func (recv *MenuAccessible) MenuShellAccessible() *MenuShellAccessible {
 	return MenuShellAccessibleNewFromC(unsafe.Pointer(recv.native))
 }
 
+// ContainerAccessible upcasts to *ContainerAccessible
+func (recv *MenuAccessible) ContainerAccessible() *ContainerAccessible {
+	return recv.MenuShellAccessible().ContainerAccessible()
+}
+
+// WidgetAccessible upcasts to *WidgetAccessible
+func (recv *MenuAccessible) WidgetAccessible() *WidgetAccessible {
+	return recv.MenuShellAccessible().WidgetAccessible()
+}
+
+// Accessible upcasts to *Accessible
+func (recv *MenuAccessible) Accessible() *Accessible {
+	return recv.MenuShellAccessible().Accessible()
+}
+
+// Object upcasts to *Object
+func (recv *MenuAccessible) Object() *atk.Object {
+	return recv.MenuShellAccessible().Object()
+}
+
+// Object upcasts to *Object
+func (recv *MenuAccessible) Object() *gobject.Object {
+	return recv.MenuShellAccessible().Object()
+}
+
 // MenuBar is a wrapper around the C record GtkMenuBar.
 type MenuBar struct {
 	native *C.GtkMenuBar
@@ -6834,6 +8869,26 @@ func (recv *MenuBar) ToC() unsafe.Pointer {
 // MenuShell upcasts to *MenuShell
 func (recv *MenuBar) MenuShell() *MenuShell {
 	return MenuShellNewFromC(unsafe.Pointer(recv.native))
+}
+
+// Container upcasts to *Container
+func (recv *MenuBar) Container() *Container {
+	return recv.MenuShell().Container()
+}
+
+// Widget upcasts to *Widget
+func (recv *MenuBar) Widget() *Widget {
+	return recv.MenuShell().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *MenuBar) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.MenuShell().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *MenuBar) Object() *gobject.Object {
+	return recv.MenuShell().Object()
 }
 
 // MenuBarNew is a wrapper around the C function gtk_menu_bar_new.
@@ -6872,6 +8927,36 @@ func (recv *MenuButton) ToggleButton() *ToggleButton {
 	return ToggleButtonNewFromC(unsafe.Pointer(recv.native))
 }
 
+// Button upcasts to *Button
+func (recv *MenuButton) Button() *Button {
+	return recv.ToggleButton().Button()
+}
+
+// Bin upcasts to *Bin
+func (recv *MenuButton) Bin() *Bin {
+	return recv.ToggleButton().Bin()
+}
+
+// Container upcasts to *Container
+func (recv *MenuButton) Container() *Container {
+	return recv.ToggleButton().Container()
+}
+
+// Widget upcasts to *Widget
+func (recv *MenuButton) Widget() *Widget {
+	return recv.ToggleButton().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *MenuButton) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.ToggleButton().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *MenuButton) Object() *gobject.Object {
+	return recv.ToggleButton().Object()
+}
+
 // MenuButtonAccessible is a wrapper around the C record GtkMenuButtonAccessible.
 type MenuButtonAccessible struct {
 	native *C.GtkMenuButtonAccessible
@@ -6900,6 +8985,36 @@ func (recv *MenuButtonAccessible) ToggleButtonAccessible() *ToggleButtonAccessib
 	return ToggleButtonAccessibleNewFromC(unsafe.Pointer(recv.native))
 }
 
+// ButtonAccessible upcasts to *ButtonAccessible
+func (recv *MenuButtonAccessible) ButtonAccessible() *ButtonAccessible {
+	return recv.ToggleButtonAccessible().ButtonAccessible()
+}
+
+// ContainerAccessible upcasts to *ContainerAccessible
+func (recv *MenuButtonAccessible) ContainerAccessible() *ContainerAccessible {
+	return recv.ToggleButtonAccessible().ContainerAccessible()
+}
+
+// WidgetAccessible upcasts to *WidgetAccessible
+func (recv *MenuButtonAccessible) WidgetAccessible() *WidgetAccessible {
+	return recv.ToggleButtonAccessible().WidgetAccessible()
+}
+
+// Accessible upcasts to *Accessible
+func (recv *MenuButtonAccessible) Accessible() *Accessible {
+	return recv.ToggleButtonAccessible().Accessible()
+}
+
+// Object upcasts to *Object
+func (recv *MenuButtonAccessible) Object() *atk.Object {
+	return recv.ToggleButtonAccessible().Object()
+}
+
+// Object upcasts to *Object
+func (recv *MenuButtonAccessible) Object() *gobject.Object {
+	return recv.ToggleButtonAccessible().Object()
+}
+
 // MenuItem is a wrapper around the C record GtkMenuItem.
 type MenuItem struct {
 	native *C.GtkMenuItem
@@ -6926,6 +9041,26 @@ func (recv *MenuItem) ToC() unsafe.Pointer {
 // Bin upcasts to *Bin
 func (recv *MenuItem) Bin() *Bin {
 	return BinNewFromC(unsafe.Pointer(recv.native))
+}
+
+// Container upcasts to *Container
+func (recv *MenuItem) Container() *Container {
+	return recv.Bin().Container()
+}
+
+// Widget upcasts to *Widget
+func (recv *MenuItem) Widget() *Widget {
+	return recv.Bin().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *MenuItem) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Bin().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *MenuItem) Object() *gobject.Object {
+	return recv.Bin().Object()
 }
 
 // MenuItemNew is a wrapper around the C function gtk_menu_item_new.
@@ -7070,6 +9205,26 @@ func (recv *MenuItemAccessible) ContainerAccessible() *ContainerAccessible {
 	return ContainerAccessibleNewFromC(unsafe.Pointer(recv.native))
 }
 
+// WidgetAccessible upcasts to *WidgetAccessible
+func (recv *MenuItemAccessible) WidgetAccessible() *WidgetAccessible {
+	return recv.ContainerAccessible().WidgetAccessible()
+}
+
+// Accessible upcasts to *Accessible
+func (recv *MenuItemAccessible) Accessible() *Accessible {
+	return recv.ContainerAccessible().Accessible()
+}
+
+// Object upcasts to *Object
+func (recv *MenuItemAccessible) Object() *atk.Object {
+	return recv.ContainerAccessible().Object()
+}
+
+// Object upcasts to *Object
+func (recv *MenuItemAccessible) Object() *gobject.Object {
+	return recv.ContainerAccessible().Object()
+}
+
 // MenuShell is a wrapper around the C record GtkMenuShell.
 type MenuShell struct {
 	native *C.GtkMenuShell
@@ -7096,6 +9251,21 @@ func (recv *MenuShell) ToC() unsafe.Pointer {
 // Container upcasts to *Container
 func (recv *MenuShell) Container() *Container {
 	return ContainerNewFromC(unsafe.Pointer(recv.native))
+}
+
+// Widget upcasts to *Widget
+func (recv *MenuShell) Widget() *Widget {
+	return recv.Container().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *MenuShell) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Container().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *MenuShell) Object() *gobject.Object {
+	return recv.Container().Object()
 }
 
 // ActivateItem is a wrapper around the C function gtk_menu_shell_activate_item.
@@ -7190,6 +9360,26 @@ func (recv *MenuShellAccessible) ContainerAccessible() *ContainerAccessible {
 	return ContainerAccessibleNewFromC(unsafe.Pointer(recv.native))
 }
 
+// WidgetAccessible upcasts to *WidgetAccessible
+func (recv *MenuShellAccessible) WidgetAccessible() *WidgetAccessible {
+	return recv.ContainerAccessible().WidgetAccessible()
+}
+
+// Accessible upcasts to *Accessible
+func (recv *MenuShellAccessible) Accessible() *Accessible {
+	return recv.ContainerAccessible().Accessible()
+}
+
+// Object upcasts to *Object
+func (recv *MenuShellAccessible) Object() *atk.Object {
+	return recv.ContainerAccessible().Object()
+}
+
+// Object upcasts to *Object
+func (recv *MenuShellAccessible) Object() *gobject.Object {
+	return recv.ContainerAccessible().Object()
+}
+
 // MenuToolButton is a wrapper around the C record GtkMenuToolButton.
 type MenuToolButton struct {
 	native *C.GtkMenuToolButton
@@ -7218,6 +9408,36 @@ func (recv *MenuToolButton) ToolButton() *ToolButton {
 	return ToolButtonNewFromC(unsafe.Pointer(recv.native))
 }
 
+// ToolItem upcasts to *ToolItem
+func (recv *MenuToolButton) ToolItem() *ToolItem {
+	return recv.ToolButton().ToolItem()
+}
+
+// Bin upcasts to *Bin
+func (recv *MenuToolButton) Bin() *Bin {
+	return recv.ToolButton().Bin()
+}
+
+// Container upcasts to *Container
+func (recv *MenuToolButton) Container() *Container {
+	return recv.ToolButton().Container()
+}
+
+// Widget upcasts to *Widget
+func (recv *MenuToolButton) Widget() *Widget {
+	return recv.ToolButton().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *MenuToolButton) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.ToolButton().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *MenuToolButton) Object() *gobject.Object {
+	return recv.ToolButton().Object()
+}
+
 // MessageDialog is a wrapper around the C record GtkMessageDialog.
 type MessageDialog struct {
 	native *C.GtkMessageDialog
@@ -7244,6 +9464,36 @@ func (recv *MessageDialog) ToC() unsafe.Pointer {
 // Dialog upcasts to *Dialog
 func (recv *MessageDialog) Dialog() *Dialog {
 	return DialogNewFromC(unsafe.Pointer(recv.native))
+}
+
+// Window upcasts to *Window
+func (recv *MessageDialog) Window() *Window {
+	return recv.Dialog().Window()
+}
+
+// Bin upcasts to *Bin
+func (recv *MessageDialog) Bin() *Bin {
+	return recv.Dialog().Bin()
+}
+
+// Container upcasts to *Container
+func (recv *MessageDialog) Container() *Container {
+	return recv.Dialog().Container()
+}
+
+// Widget upcasts to *Widget
+func (recv *MessageDialog) Widget() *Widget {
+	return recv.Dialog().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *MessageDialog) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Dialog().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *MessageDialog) Object() *gobject.Object {
+	return recv.Dialog().Object()
 }
 
 // Unsupported : gtk_message_dialog_new : unsupported parameter ... : varargs
@@ -7276,6 +9526,16 @@ func (recv *Misc) ToC() unsafe.Pointer {
 // Widget upcasts to *Widget
 func (recv *Misc) Widget() *Widget {
 	return WidgetNewFromC(unsafe.Pointer(recv.native))
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *Misc) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Widget().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *Misc) Object() *gobject.Object {
+	return recv.Widget().Object()
 }
 
 // GetAlignment is a wrapper around the C function gtk_misc_get_alignment.
@@ -7356,6 +9616,31 @@ func (recv *ModelButton) Button() *Button {
 	return ButtonNewFromC(unsafe.Pointer(recv.native))
 }
 
+// Bin upcasts to *Bin
+func (recv *ModelButton) Bin() *Bin {
+	return recv.Button().Bin()
+}
+
+// Container upcasts to *Container
+func (recv *ModelButton) Container() *Container {
+	return recv.Button().Container()
+}
+
+// Widget upcasts to *Widget
+func (recv *ModelButton) Widget() *Widget {
+	return recv.Button().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *ModelButton) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Button().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *ModelButton) Object() *gobject.Object {
+	return recv.Button().Object()
+}
+
 // MountOperation is a wrapper around the C record GtkMountOperation.
 type MountOperation struct {
 	native *C.GtkMountOperation
@@ -7384,6 +9669,11 @@ func (recv *MountOperation) MountOperation() *gio.MountOperation {
 	return gio.MountOperationNewFromC(unsafe.Pointer(recv.native))
 }
 
+// Object upcasts to *Object
+func (recv *MountOperation) Object() *gobject.Object {
+	return recv.MountOperation().Object()
+}
+
 // Notebook is a wrapper around the C record GtkNotebook.
 type Notebook struct {
 	native *C.GtkNotebook
@@ -7410,6 +9700,21 @@ func (recv *Notebook) ToC() unsafe.Pointer {
 // Container upcasts to *Container
 func (recv *Notebook) Container() *Container {
 	return ContainerNewFromC(unsafe.Pointer(recv.native))
+}
+
+// Widget upcasts to *Widget
+func (recv *Notebook) Widget() *Widget {
+	return recv.Container().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *Notebook) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Container().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *Notebook) Object() *gobject.Object {
+	return recv.Container().Object()
 }
 
 // NotebookNew is a wrapper around the C function gtk_notebook_new.
@@ -7772,6 +10077,26 @@ func (recv *NotebookAccessible) ContainerAccessible() *ContainerAccessible {
 	return ContainerAccessibleNewFromC(unsafe.Pointer(recv.native))
 }
 
+// WidgetAccessible upcasts to *WidgetAccessible
+func (recv *NotebookAccessible) WidgetAccessible() *WidgetAccessible {
+	return recv.ContainerAccessible().WidgetAccessible()
+}
+
+// Accessible upcasts to *Accessible
+func (recv *NotebookAccessible) Accessible() *Accessible {
+	return recv.ContainerAccessible().Accessible()
+}
+
+// Object upcasts to *Object
+func (recv *NotebookAccessible) Object() *atk.Object {
+	return recv.ContainerAccessible().Object()
+}
+
+// Object upcasts to *Object
+func (recv *NotebookAccessible) Object() *gobject.Object {
+	return recv.ContainerAccessible().Object()
+}
+
 // NotebookPageAccessible is a wrapper around the C record GtkNotebookPageAccessible.
 type NotebookPageAccessible struct {
 	native *C.GtkNotebookPageAccessible
@@ -7798,6 +10123,11 @@ func (recv *NotebookPageAccessible) ToC() unsafe.Pointer {
 // Object upcasts to *Object
 func (recv *NotebookPageAccessible) Object() *atk.Object {
 	return atk.ObjectNewFromC(unsafe.Pointer(recv.native))
+}
+
+// Object upcasts to *Object
+func (recv *NotebookPageAccessible) Object() *gobject.Object {
+	return recv.Object().Object()
 }
 
 // NotebookPageAccessibleNew is a wrapper around the C function gtk_notebook_page_accessible_new.
@@ -7847,6 +10177,11 @@ func (recv *NumerableIcon) EmblemedIcon() *gio.EmblemedIcon {
 	return gio.EmblemedIconNewFromC(unsafe.Pointer(recv.native))
 }
 
+// Object upcasts to *Object
+func (recv *NumerableIcon) Object() *gobject.Object {
+	return recv.EmblemedIcon().Object()
+}
+
 // OffscreenWindow is a wrapper around the C record GtkOffscreenWindow.
 type OffscreenWindow struct {
 	native *C.GtkOffscreenWindow
@@ -7872,6 +10207,31 @@ func (recv *OffscreenWindow) ToC() unsafe.Pointer {
 // Window upcasts to *Window
 func (recv *OffscreenWindow) Window() *Window {
 	return WindowNewFromC(unsafe.Pointer(recv.native))
+}
+
+// Bin upcasts to *Bin
+func (recv *OffscreenWindow) Bin() *Bin {
+	return recv.Window().Bin()
+}
+
+// Container upcasts to *Container
+func (recv *OffscreenWindow) Container() *Container {
+	return recv.Window().Container()
+}
+
+// Widget upcasts to *Widget
+func (recv *OffscreenWindow) Widget() *Widget {
+	return recv.Window().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *OffscreenWindow) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Window().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *OffscreenWindow) Object() *gobject.Object {
+	return recv.Window().Object()
 }
 
 // Overlay is a wrapper around the C record GtkOverlay.
@@ -7900,6 +10260,26 @@ func (recv *Overlay) ToC() unsafe.Pointer {
 // Bin upcasts to *Bin
 func (recv *Overlay) Bin() *Bin {
 	return BinNewFromC(unsafe.Pointer(recv.native))
+}
+
+// Container upcasts to *Container
+func (recv *Overlay) Container() *Container {
+	return recv.Bin().Container()
+}
+
+// Widget upcasts to *Widget
+func (recv *Overlay) Widget() *Widget {
+	return recv.Bin().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *Overlay) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Bin().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *Overlay) Object() *gobject.Object {
+	return recv.Bin().Object()
 }
 
 // Unsupported : gtk_pad_controller_new : unsupported parameter group : no type generator for Gio.ActionGroup, GActionGroup*
@@ -7958,6 +10338,21 @@ func (recv *Paned) ToC() unsafe.Pointer {
 // Container upcasts to *Container
 func (recv *Paned) Container() *Container {
 	return ContainerNewFromC(unsafe.Pointer(recv.native))
+}
+
+// Widget upcasts to *Widget
+func (recv *Paned) Widget() *Widget {
+	return recv.Container().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *Paned) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Container().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *Paned) Object() *gobject.Object {
+	return recv.Container().Object()
 }
 
 // Add1 is a wrapper around the C function gtk_paned_add1.
@@ -8053,6 +10448,26 @@ func (recv *PanedAccessible) ContainerAccessible() *ContainerAccessible {
 	return ContainerAccessibleNewFromC(unsafe.Pointer(recv.native))
 }
 
+// WidgetAccessible upcasts to *WidgetAccessible
+func (recv *PanedAccessible) WidgetAccessible() *WidgetAccessible {
+	return recv.ContainerAccessible().WidgetAccessible()
+}
+
+// Accessible upcasts to *Accessible
+func (recv *PanedAccessible) Accessible() *Accessible {
+	return recv.ContainerAccessible().Accessible()
+}
+
+// Object upcasts to *Object
+func (recv *PanedAccessible) Object() *atk.Object {
+	return recv.ContainerAccessible().Object()
+}
+
+// Object upcasts to *Object
+func (recv *PanedAccessible) Object() *gobject.Object {
+	return recv.ContainerAccessible().Object()
+}
+
 // PlacesSidebar is a wrapper around the C record GtkPlacesSidebar.
 type PlacesSidebar struct {
 	native *C.GtkPlacesSidebar
@@ -8077,6 +10492,31 @@ func (recv *PlacesSidebar) ToC() unsafe.Pointer {
 // ScrolledWindow upcasts to *ScrolledWindow
 func (recv *PlacesSidebar) ScrolledWindow() *ScrolledWindow {
 	return ScrolledWindowNewFromC(unsafe.Pointer(recv.native))
+}
+
+// Bin upcasts to *Bin
+func (recv *PlacesSidebar) Bin() *Bin {
+	return recv.ScrolledWindow().Bin()
+}
+
+// Container upcasts to *Container
+func (recv *PlacesSidebar) Container() *Container {
+	return recv.ScrolledWindow().Container()
+}
+
+// Widget upcasts to *Widget
+func (recv *PlacesSidebar) Widget() *Widget {
+	return recv.ScrolledWindow().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *PlacesSidebar) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.ScrolledWindow().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *PlacesSidebar) Object() *gobject.Object {
+	return recv.ScrolledWindow().Object()
 }
 
 // GetShowConnectToServer is a wrapper around the C function gtk_places_sidebar_get_show_connect_to_server.
@@ -8117,6 +10557,26 @@ func (recv *Popover) Bin() *Bin {
 	return BinNewFromC(unsafe.Pointer(recv.native))
 }
 
+// Container upcasts to *Container
+func (recv *Popover) Container() *Container {
+	return recv.Bin().Container()
+}
+
+// Widget upcasts to *Widget
+func (recv *Popover) Widget() *Widget {
+	return recv.Bin().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *Popover) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Bin().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *Popover) Object() *gobject.Object {
+	return recv.Bin().Object()
+}
+
 // Unsupported : gtk_popover_get_pointing_to : unsupported parameter rect : Blacklisted record : GdkRectangle
 
 // GetPosition is a wrapper around the C function gtk_popover_get_position.
@@ -8154,6 +10614,26 @@ func (recv *PopoverAccessible) ContainerAccessible() *ContainerAccessible {
 	return ContainerAccessibleNewFromC(unsafe.Pointer(recv.native))
 }
 
+// WidgetAccessible upcasts to *WidgetAccessible
+func (recv *PopoverAccessible) WidgetAccessible() *WidgetAccessible {
+	return recv.ContainerAccessible().WidgetAccessible()
+}
+
+// Accessible upcasts to *Accessible
+func (recv *PopoverAccessible) Accessible() *Accessible {
+	return recv.ContainerAccessible().Accessible()
+}
+
+// Object upcasts to *Object
+func (recv *PopoverAccessible) Object() *atk.Object {
+	return recv.ContainerAccessible().Object()
+}
+
+// Object upcasts to *Object
+func (recv *PopoverAccessible) Object() *gobject.Object {
+	return recv.ContainerAccessible().Object()
+}
+
 // PopoverMenu is a wrapper around the C record GtkPopoverMenu.
 type PopoverMenu struct {
 	native *C.GtkPopoverMenu
@@ -8178,6 +10658,31 @@ func (recv *PopoverMenu) ToC() unsafe.Pointer {
 // Popover upcasts to *Popover
 func (recv *PopoverMenu) Popover() *Popover {
 	return PopoverNewFromC(unsafe.Pointer(recv.native))
+}
+
+// Bin upcasts to *Bin
+func (recv *PopoverMenu) Bin() *Bin {
+	return recv.Popover().Bin()
+}
+
+// Container upcasts to *Container
+func (recv *PopoverMenu) Container() *Container {
+	return recv.Popover().Container()
+}
+
+// Widget upcasts to *Widget
+func (recv *PopoverMenu) Widget() *Widget {
+	return recv.Popover().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *PopoverMenu) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Popover().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *PopoverMenu) Object() *gobject.Object {
+	return recv.Popover().Object()
 }
 
 // PrintContext is a wrapper around the C record GtkPrintContext.
@@ -8288,6 +10793,16 @@ func (recv *ProgressBar) ToC() unsafe.Pointer {
 // Widget upcasts to *Widget
 func (recv *ProgressBar) Widget() *Widget {
 	return WidgetNewFromC(unsafe.Pointer(recv.native))
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *ProgressBar) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Widget().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *ProgressBar) Object() *gobject.Object {
+	return recv.Widget().Object()
 }
 
 // ProgressBarNew is a wrapper around the C function gtk_progress_bar_new.
@@ -8403,6 +10918,21 @@ func (recv *ProgressBarAccessible) WidgetAccessible() *WidgetAccessible {
 	return WidgetAccessibleNewFromC(unsafe.Pointer(recv.native))
 }
 
+// Accessible upcasts to *Accessible
+func (recv *ProgressBarAccessible) Accessible() *Accessible {
+	return recv.WidgetAccessible().Accessible()
+}
+
+// Object upcasts to *Object
+func (recv *ProgressBarAccessible) Object() *atk.Object {
+	return recv.WidgetAccessible().Object()
+}
+
+// Object upcasts to *Object
+func (recv *ProgressBarAccessible) Object() *gobject.Object {
+	return recv.WidgetAccessible().Object()
+}
+
 // RadioAction is a wrapper around the C record GtkRadioAction.
 type RadioAction struct {
 	native *C.GtkRadioAction
@@ -8431,6 +10961,16 @@ func (recv *RadioAction) ToggleAction() *ToggleAction {
 	return ToggleActionNewFromC(unsafe.Pointer(recv.native))
 }
 
+// Action upcasts to *Action
+func (recv *RadioAction) Action() *Action {
+	return recv.ToggleAction().Action()
+}
+
+// Object upcasts to *Object
+func (recv *RadioAction) Object() *gobject.Object {
+	return recv.ToggleAction().Object()
+}
+
 // RadioButton is a wrapper around the C record GtkRadioButton.
 type RadioButton struct {
 	native *C.GtkRadioButton
@@ -8457,6 +10997,41 @@ func (recv *RadioButton) ToC() unsafe.Pointer {
 // CheckButton upcasts to *CheckButton
 func (recv *RadioButton) CheckButton() *CheckButton {
 	return CheckButtonNewFromC(unsafe.Pointer(recv.native))
+}
+
+// ToggleButton upcasts to *ToggleButton
+func (recv *RadioButton) ToggleButton() *ToggleButton {
+	return recv.CheckButton().ToggleButton()
+}
+
+// Button upcasts to *Button
+func (recv *RadioButton) Button() *Button {
+	return recv.CheckButton().Button()
+}
+
+// Bin upcasts to *Bin
+func (recv *RadioButton) Bin() *Bin {
+	return recv.CheckButton().Bin()
+}
+
+// Container upcasts to *Container
+func (recv *RadioButton) Container() *Container {
+	return recv.CheckButton().Container()
+}
+
+// Widget upcasts to *Widget
+func (recv *RadioButton) Widget() *Widget {
+	return recv.CheckButton().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *RadioButton) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.CheckButton().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *RadioButton) Object() *gobject.Object {
+	return recv.CheckButton().Object()
 }
 
 // RadioButtonNew is a wrapper around the C function gtk_radio_button_new.
@@ -8576,6 +11151,36 @@ func (recv *RadioButtonAccessible) ToggleButtonAccessible() *ToggleButtonAccessi
 	return ToggleButtonAccessibleNewFromC(unsafe.Pointer(recv.native))
 }
 
+// ButtonAccessible upcasts to *ButtonAccessible
+func (recv *RadioButtonAccessible) ButtonAccessible() *ButtonAccessible {
+	return recv.ToggleButtonAccessible().ButtonAccessible()
+}
+
+// ContainerAccessible upcasts to *ContainerAccessible
+func (recv *RadioButtonAccessible) ContainerAccessible() *ContainerAccessible {
+	return recv.ToggleButtonAccessible().ContainerAccessible()
+}
+
+// WidgetAccessible upcasts to *WidgetAccessible
+func (recv *RadioButtonAccessible) WidgetAccessible() *WidgetAccessible {
+	return recv.ToggleButtonAccessible().WidgetAccessible()
+}
+
+// Accessible upcasts to *Accessible
+func (recv *RadioButtonAccessible) Accessible() *Accessible {
+	return recv.ToggleButtonAccessible().Accessible()
+}
+
+// Object upcasts to *Object
+func (recv *RadioButtonAccessible) Object() *atk.Object {
+	return recv.ToggleButtonAccessible().Object()
+}
+
+// Object upcasts to *Object
+func (recv *RadioButtonAccessible) Object() *gobject.Object {
+	return recv.ToggleButtonAccessible().Object()
+}
+
 // RadioMenuItem is a wrapper around the C record GtkRadioMenuItem.
 type RadioMenuItem struct {
 	native *C.GtkRadioMenuItem
@@ -8602,6 +11207,36 @@ func (recv *RadioMenuItem) ToC() unsafe.Pointer {
 // CheckMenuItem upcasts to *CheckMenuItem
 func (recv *RadioMenuItem) CheckMenuItem() *CheckMenuItem {
 	return CheckMenuItemNewFromC(unsafe.Pointer(recv.native))
+}
+
+// MenuItem upcasts to *MenuItem
+func (recv *RadioMenuItem) MenuItem() *MenuItem {
+	return recv.CheckMenuItem().MenuItem()
+}
+
+// Bin upcasts to *Bin
+func (recv *RadioMenuItem) Bin() *Bin {
+	return recv.CheckMenuItem().Bin()
+}
+
+// Container upcasts to *Container
+func (recv *RadioMenuItem) Container() *Container {
+	return recv.CheckMenuItem().Container()
+}
+
+// Widget upcasts to *Widget
+func (recv *RadioMenuItem) Widget() *Widget {
+	return recv.CheckMenuItem().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *RadioMenuItem) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.CheckMenuItem().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *RadioMenuItem) Object() *gobject.Object {
+	return recv.CheckMenuItem().Object()
 }
 
 // RadioMenuItemNew is a wrapper around the C function gtk_radio_menu_item_new.
@@ -8685,6 +11320,36 @@ func (recv *RadioMenuItemAccessible) CheckMenuItemAccessible() *CheckMenuItemAcc
 	return CheckMenuItemAccessibleNewFromC(unsafe.Pointer(recv.native))
 }
 
+// MenuItemAccessible upcasts to *MenuItemAccessible
+func (recv *RadioMenuItemAccessible) MenuItemAccessible() *MenuItemAccessible {
+	return recv.CheckMenuItemAccessible().MenuItemAccessible()
+}
+
+// ContainerAccessible upcasts to *ContainerAccessible
+func (recv *RadioMenuItemAccessible) ContainerAccessible() *ContainerAccessible {
+	return recv.CheckMenuItemAccessible().ContainerAccessible()
+}
+
+// WidgetAccessible upcasts to *WidgetAccessible
+func (recv *RadioMenuItemAccessible) WidgetAccessible() *WidgetAccessible {
+	return recv.CheckMenuItemAccessible().WidgetAccessible()
+}
+
+// Accessible upcasts to *Accessible
+func (recv *RadioMenuItemAccessible) Accessible() *Accessible {
+	return recv.CheckMenuItemAccessible().Accessible()
+}
+
+// Object upcasts to *Object
+func (recv *RadioMenuItemAccessible) Object() *atk.Object {
+	return recv.CheckMenuItemAccessible().Object()
+}
+
+// Object upcasts to *Object
+func (recv *RadioMenuItemAccessible) Object() *gobject.Object {
+	return recv.CheckMenuItemAccessible().Object()
+}
+
 // RadioToolButton is a wrapper around the C record GtkRadioToolButton.
 type RadioToolButton struct {
 	native *C.GtkRadioToolButton
@@ -8710,6 +11375,41 @@ func (recv *RadioToolButton) ToC() unsafe.Pointer {
 // ToggleToolButton upcasts to *ToggleToolButton
 func (recv *RadioToolButton) ToggleToolButton() *ToggleToolButton {
 	return ToggleToolButtonNewFromC(unsafe.Pointer(recv.native))
+}
+
+// ToolButton upcasts to *ToolButton
+func (recv *RadioToolButton) ToolButton() *ToolButton {
+	return recv.ToggleToolButton().ToolButton()
+}
+
+// ToolItem upcasts to *ToolItem
+func (recv *RadioToolButton) ToolItem() *ToolItem {
+	return recv.ToggleToolButton().ToolItem()
+}
+
+// Bin upcasts to *Bin
+func (recv *RadioToolButton) Bin() *Bin {
+	return recv.ToggleToolButton().Bin()
+}
+
+// Container upcasts to *Container
+func (recv *RadioToolButton) Container() *Container {
+	return recv.ToggleToolButton().Container()
+}
+
+// Widget upcasts to *Widget
+func (recv *RadioToolButton) Widget() *Widget {
+	return recv.ToggleToolButton().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *RadioToolButton) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.ToggleToolButton().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *RadioToolButton) Object() *gobject.Object {
+	return recv.ToggleToolButton().Object()
 }
 
 // Range is a wrapper around the C record GtkRange.
@@ -8738,6 +11438,16 @@ func (recv *Range) ToC() unsafe.Pointer {
 // Widget upcasts to *Widget
 func (recv *Range) Widget() *Widget {
 	return WidgetNewFromC(unsafe.Pointer(recv.native))
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *Range) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Widget().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *Range) Object() *gobject.Object {
+	return recv.Widget().Object()
 }
 
 // GetAdjustment is a wrapper around the C function gtk_range_get_adjustment.
@@ -8842,6 +11552,21 @@ func (recv *RangeAccessible) WidgetAccessible() *WidgetAccessible {
 	return WidgetAccessibleNewFromC(unsafe.Pointer(recv.native))
 }
 
+// Accessible upcasts to *Accessible
+func (recv *RangeAccessible) Accessible() *Accessible {
+	return recv.WidgetAccessible().Accessible()
+}
+
+// Object upcasts to *Object
+func (recv *RangeAccessible) Object() *atk.Object {
+	return recv.WidgetAccessible().Object()
+}
+
+// Object upcasts to *Object
+func (recv *RangeAccessible) Object() *gobject.Object {
+	return recv.WidgetAccessible().Object()
+}
+
 // RcStyle is a wrapper around the C record GtkRcStyle.
 type RcStyle struct {
 	native *C.GtkRcStyle
@@ -8938,6 +11663,11 @@ func (recv *RecentAction) Action() *Action {
 	return ActionNewFromC(unsafe.Pointer(recv.native))
 }
 
+// Object upcasts to *Object
+func (recv *RecentAction) Object() *gobject.Object {
+	return recv.Action().Object()
+}
+
 // RecentChooserDialog is a wrapper around the C record GtkRecentChooserDialog.
 type RecentChooserDialog struct {
 	native *C.GtkRecentChooserDialog
@@ -8964,6 +11694,36 @@ func (recv *RecentChooserDialog) ToC() unsafe.Pointer {
 // Dialog upcasts to *Dialog
 func (recv *RecentChooserDialog) Dialog() *Dialog {
 	return DialogNewFromC(unsafe.Pointer(recv.native))
+}
+
+// Window upcasts to *Window
+func (recv *RecentChooserDialog) Window() *Window {
+	return recv.Dialog().Window()
+}
+
+// Bin upcasts to *Bin
+func (recv *RecentChooserDialog) Bin() *Bin {
+	return recv.Dialog().Bin()
+}
+
+// Container upcasts to *Container
+func (recv *RecentChooserDialog) Container() *Container {
+	return recv.Dialog().Container()
+}
+
+// Widget upcasts to *Widget
+func (recv *RecentChooserDialog) Widget() *Widget {
+	return recv.Dialog().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *RecentChooserDialog) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Dialog().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *RecentChooserDialog) Object() *gobject.Object {
+	return recv.Dialog().Object()
 }
 
 // Unsupported : gtk_recent_chooser_dialog_new : unsupported parameter ... : varargs
@@ -8998,6 +11758,31 @@ func (recv *RecentChooserMenu) Menu() *Menu {
 	return MenuNewFromC(unsafe.Pointer(recv.native))
 }
 
+// MenuShell upcasts to *MenuShell
+func (recv *RecentChooserMenu) MenuShell() *MenuShell {
+	return recv.Menu().MenuShell()
+}
+
+// Container upcasts to *Container
+func (recv *RecentChooserMenu) Container() *Container {
+	return recv.Menu().Container()
+}
+
+// Widget upcasts to *Widget
+func (recv *RecentChooserMenu) Widget() *Widget {
+	return recv.Menu().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *RecentChooserMenu) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Menu().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *RecentChooserMenu) Object() *gobject.Object {
+	return recv.Menu().Object()
+}
+
 // RecentChooserWidget is a wrapper around the C record GtkRecentChooserWidget.
 type RecentChooserWidget struct {
 	native *C.GtkRecentChooserWidget
@@ -9026,6 +11811,26 @@ func (recv *RecentChooserWidget) Box() *Box {
 	return BoxNewFromC(unsafe.Pointer(recv.native))
 }
 
+// Container upcasts to *Container
+func (recv *RecentChooserWidget) Container() *Container {
+	return recv.Box().Container()
+}
+
+// Widget upcasts to *Widget
+func (recv *RecentChooserWidget) Widget() *Widget {
+	return recv.Box().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *RecentChooserWidget) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Box().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *RecentChooserWidget) Object() *gobject.Object {
+	return recv.Box().Object()
+}
+
 // RecentFilter is a wrapper around the C record GtkRecentFilter.
 type RecentFilter struct {
 	native *C.GtkRecentFilter
@@ -9050,6 +11855,11 @@ func (recv *RecentFilter) ToC() unsafe.Pointer {
 // InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *RecentFilter) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromC(unsafe.Pointer(recv.native))
+}
+
+// Object upcasts to *Object
+func (recv *RecentFilter) Object() *gobject.Object {
+	return recv.InitiallyUnowned().Object()
 }
 
 // RendererCellAccessible is a wrapper around the C record GtkRendererCellAccessible.
@@ -9078,6 +11888,21 @@ func (recv *RendererCellAccessible) ToC() unsafe.Pointer {
 // CellAccessible upcasts to *CellAccessible
 func (recv *RendererCellAccessible) CellAccessible() *CellAccessible {
 	return CellAccessibleNewFromC(unsafe.Pointer(recv.native))
+}
+
+// Accessible upcasts to *Accessible
+func (recv *RendererCellAccessible) Accessible() *Accessible {
+	return recv.CellAccessible().Accessible()
+}
+
+// Object upcasts to *Object
+func (recv *RendererCellAccessible) Object() *atk.Object {
+	return recv.CellAccessible().Object()
+}
+
+// Object upcasts to *Object
+func (recv *RendererCellAccessible) Object() *gobject.Object {
+	return recv.CellAccessible().Object()
 }
 
 // RendererCellAccessibleNew is a wrapper around the C function gtk_renderer_cell_accessible_new.
@@ -9117,6 +11942,26 @@ func (recv *Revealer) Bin() *Bin {
 	return BinNewFromC(unsafe.Pointer(recv.native))
 }
 
+// Container upcasts to *Container
+func (recv *Revealer) Container() *Container {
+	return recv.Bin().Container()
+}
+
+// Widget upcasts to *Widget
+func (recv *Revealer) Widget() *Widget {
+	return recv.Bin().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *Revealer) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Bin().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *Revealer) Object() *gobject.Object {
+	return recv.Bin().Object()
+}
+
 // Scale is a wrapper around the C record GtkScale.
 type Scale struct {
 	native *C.GtkScale
@@ -9143,6 +11988,21 @@ func (recv *Scale) ToC() unsafe.Pointer {
 // Range upcasts to *Range
 func (recv *Scale) Range() *Range {
 	return RangeNewFromC(unsafe.Pointer(recv.native))
+}
+
+// Widget upcasts to *Widget
+func (recv *Scale) Widget() *Widget {
+	return recv.Range().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *Scale) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Range().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *Scale) Object() *gobject.Object {
+	return recv.Range().Object()
 }
 
 // GetDigits is a wrapper around the C function gtk_scale_get_digits.
@@ -9225,6 +12085,26 @@ func (recv *ScaleAccessible) RangeAccessible() *RangeAccessible {
 	return RangeAccessibleNewFromC(unsafe.Pointer(recv.native))
 }
 
+// WidgetAccessible upcasts to *WidgetAccessible
+func (recv *ScaleAccessible) WidgetAccessible() *WidgetAccessible {
+	return recv.RangeAccessible().WidgetAccessible()
+}
+
+// Accessible upcasts to *Accessible
+func (recv *ScaleAccessible) Accessible() *Accessible {
+	return recv.RangeAccessible().Accessible()
+}
+
+// Object upcasts to *Object
+func (recv *ScaleAccessible) Object() *atk.Object {
+	return recv.RangeAccessible().Object()
+}
+
+// Object upcasts to *Object
+func (recv *ScaleAccessible) Object() *gobject.Object {
+	return recv.RangeAccessible().Object()
+}
+
 // ScaleButton is a wrapper around the C record GtkScaleButton.
 type ScaleButton struct {
 	native *C.GtkScaleButton
@@ -9251,6 +12131,31 @@ func (recv *ScaleButton) ToC() unsafe.Pointer {
 // Button upcasts to *Button
 func (recv *ScaleButton) Button() *Button {
 	return ButtonNewFromC(unsafe.Pointer(recv.native))
+}
+
+// Bin upcasts to *Bin
+func (recv *ScaleButton) Bin() *Bin {
+	return recv.Button().Bin()
+}
+
+// Container upcasts to *Container
+func (recv *ScaleButton) Container() *Container {
+	return recv.Button().Container()
+}
+
+// Widget upcasts to *Widget
+func (recv *ScaleButton) Widget() *Widget {
+	return recv.Button().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *ScaleButton) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Button().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *ScaleButton) Object() *gobject.Object {
+	return recv.Button().Object()
 }
 
 // Unsupported : gtk_scale_button_new : unsupported parameter size : no type generator for gint, GtkIconSize
@@ -9283,6 +12188,31 @@ func (recv *ScaleButtonAccessible) ButtonAccessible() *ButtonAccessible {
 	return ButtonAccessibleNewFromC(unsafe.Pointer(recv.native))
 }
 
+// ContainerAccessible upcasts to *ContainerAccessible
+func (recv *ScaleButtonAccessible) ContainerAccessible() *ContainerAccessible {
+	return recv.ButtonAccessible().ContainerAccessible()
+}
+
+// WidgetAccessible upcasts to *WidgetAccessible
+func (recv *ScaleButtonAccessible) WidgetAccessible() *WidgetAccessible {
+	return recv.ButtonAccessible().WidgetAccessible()
+}
+
+// Accessible upcasts to *Accessible
+func (recv *ScaleButtonAccessible) Accessible() *Accessible {
+	return recv.ButtonAccessible().Accessible()
+}
+
+// Object upcasts to *Object
+func (recv *ScaleButtonAccessible) Object() *atk.Object {
+	return recv.ButtonAccessible().Object()
+}
+
+// Object upcasts to *Object
+func (recv *ScaleButtonAccessible) Object() *gobject.Object {
+	return recv.ButtonAccessible().Object()
+}
+
 // Scrollbar is a wrapper around the C record GtkScrollbar.
 type Scrollbar struct {
 	native *C.GtkScrollbar
@@ -9308,6 +12238,21 @@ func (recv *Scrollbar) ToC() unsafe.Pointer {
 // Range upcasts to *Range
 func (recv *Scrollbar) Range() *Range {
 	return RangeNewFromC(unsafe.Pointer(recv.native))
+}
+
+// Widget upcasts to *Widget
+func (recv *Scrollbar) Widget() *Widget {
+	return recv.Range().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *Scrollbar) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Range().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *Scrollbar) Object() *gobject.Object {
+	return recv.Range().Object()
 }
 
 // ScrolledWindow is a wrapper around the C record GtkScrolledWindow.
@@ -9336,6 +12281,26 @@ func (recv *ScrolledWindow) ToC() unsafe.Pointer {
 // Bin upcasts to *Bin
 func (recv *ScrolledWindow) Bin() *Bin {
 	return BinNewFromC(unsafe.Pointer(recv.native))
+}
+
+// Container upcasts to *Container
+func (recv *ScrolledWindow) Container() *Container {
+	return recv.Bin().Container()
+}
+
+// Widget upcasts to *Widget
+func (recv *ScrolledWindow) Widget() *Widget {
+	return recv.Bin().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *ScrolledWindow) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Bin().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *ScrolledWindow) Object() *gobject.Object {
+	return recv.Bin().Object()
 }
 
 // ScrolledWindowNew is a wrapper around the C function gtk_scrolled_window_new.
@@ -9468,6 +12433,26 @@ func (recv *ScrolledWindowAccessible) ContainerAccessible() *ContainerAccessible
 	return ContainerAccessibleNewFromC(unsafe.Pointer(recv.native))
 }
 
+// WidgetAccessible upcasts to *WidgetAccessible
+func (recv *ScrolledWindowAccessible) WidgetAccessible() *WidgetAccessible {
+	return recv.ContainerAccessible().WidgetAccessible()
+}
+
+// Accessible upcasts to *Accessible
+func (recv *ScrolledWindowAccessible) Accessible() *Accessible {
+	return recv.ContainerAccessible().Accessible()
+}
+
+// Object upcasts to *Object
+func (recv *ScrolledWindowAccessible) Object() *atk.Object {
+	return recv.ContainerAccessible().Object()
+}
+
+// Object upcasts to *Object
+func (recv *ScrolledWindowAccessible) Object() *gobject.Object {
+	return recv.ContainerAccessible().Object()
+}
+
 // SearchBar is a wrapper around the C record GtkSearchBar.
 type SearchBar struct {
 	native *C.GtkSearchBar
@@ -9495,6 +12480,26 @@ func (recv *SearchBar) Bin() *Bin {
 	return BinNewFromC(unsafe.Pointer(recv.native))
 }
 
+// Container upcasts to *Container
+func (recv *SearchBar) Container() *Container {
+	return recv.Bin().Container()
+}
+
+// Widget upcasts to *Widget
+func (recv *SearchBar) Widget() *Widget {
+	return recv.Bin().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *SearchBar) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Bin().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *SearchBar) Object() *gobject.Object {
+	return recv.Bin().Object()
+}
+
 // SearchEntry is a wrapper around the C record GtkSearchEntry.
 type SearchEntry struct {
 	native *C.GtkSearchEntry
@@ -9520,6 +12525,21 @@ func (recv *SearchEntry) ToC() unsafe.Pointer {
 // Entry upcasts to *Entry
 func (recv *SearchEntry) Entry() *Entry {
 	return EntryNewFromC(unsafe.Pointer(recv.native))
+}
+
+// Widget upcasts to *Widget
+func (recv *SearchEntry) Widget() *Widget {
+	return recv.Entry().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *SearchEntry) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Entry().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *SearchEntry) Object() *gobject.Object {
+	return recv.Entry().Object()
 }
 
 // Separator is a wrapper around the C record GtkSeparator.
@@ -9550,6 +12570,16 @@ func (recv *Separator) Widget() *Widget {
 	return WidgetNewFromC(unsafe.Pointer(recv.native))
 }
 
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *Separator) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Widget().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *Separator) Object() *gobject.Object {
+	return recv.Widget().Object()
+}
+
 // SeparatorMenuItem is a wrapper around the C record GtkSeparatorMenuItem.
 type SeparatorMenuItem struct {
 	native *C.GtkSeparatorMenuItem
@@ -9575,6 +12605,31 @@ func (recv *SeparatorMenuItem) ToC() unsafe.Pointer {
 // MenuItem upcasts to *MenuItem
 func (recv *SeparatorMenuItem) MenuItem() *MenuItem {
 	return MenuItemNewFromC(unsafe.Pointer(recv.native))
+}
+
+// Bin upcasts to *Bin
+func (recv *SeparatorMenuItem) Bin() *Bin {
+	return recv.MenuItem().Bin()
+}
+
+// Container upcasts to *Container
+func (recv *SeparatorMenuItem) Container() *Container {
+	return recv.MenuItem().Container()
+}
+
+// Widget upcasts to *Widget
+func (recv *SeparatorMenuItem) Widget() *Widget {
+	return recv.MenuItem().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *SeparatorMenuItem) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.MenuItem().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *SeparatorMenuItem) Object() *gobject.Object {
+	return recv.MenuItem().Object()
 }
 
 // SeparatorMenuItemNew is a wrapper around the C function gtk_separator_menu_item_new.
@@ -9611,6 +12666,31 @@ func (recv *SeparatorToolItem) ToC() unsafe.Pointer {
 // ToolItem upcasts to *ToolItem
 func (recv *SeparatorToolItem) ToolItem() *ToolItem {
 	return ToolItemNewFromC(unsafe.Pointer(recv.native))
+}
+
+// Bin upcasts to *Bin
+func (recv *SeparatorToolItem) Bin() *Bin {
+	return recv.ToolItem().Bin()
+}
+
+// Container upcasts to *Container
+func (recv *SeparatorToolItem) Container() *Container {
+	return recv.ToolItem().Container()
+}
+
+// Widget upcasts to *Widget
+func (recv *SeparatorToolItem) Widget() *Widget {
+	return recv.ToolItem().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *SeparatorToolItem) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.ToolItem().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *SeparatorToolItem) Object() *gobject.Object {
+	return recv.ToolItem().Object()
 }
 
 // Settings is a wrapper around the C record GtkSettings.
@@ -9800,6 +12880,21 @@ func (recv *SpinButton) ToC() unsafe.Pointer {
 // Entry upcasts to *Entry
 func (recv *SpinButton) Entry() *Entry {
 	return EntryNewFromC(unsafe.Pointer(recv.native))
+}
+
+// Widget upcasts to *Widget
+func (recv *SpinButton) Widget() *Widget {
+	return recv.Entry().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *SpinButton) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Entry().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *SpinButton) Object() *gobject.Object {
+	return recv.Entry().Object()
 }
 
 // SpinButtonNew is a wrapper around the C function gtk_spin_button_new.
@@ -10071,6 +13166,26 @@ func (recv *SpinButtonAccessible) EntryAccessible() *EntryAccessible {
 	return EntryAccessibleNewFromC(unsafe.Pointer(recv.native))
 }
 
+// WidgetAccessible upcasts to *WidgetAccessible
+func (recv *SpinButtonAccessible) WidgetAccessible() *WidgetAccessible {
+	return recv.EntryAccessible().WidgetAccessible()
+}
+
+// Accessible upcasts to *Accessible
+func (recv *SpinButtonAccessible) Accessible() *Accessible {
+	return recv.EntryAccessible().Accessible()
+}
+
+// Object upcasts to *Object
+func (recv *SpinButtonAccessible) Object() *atk.Object {
+	return recv.EntryAccessible().Object()
+}
+
+// Object upcasts to *Object
+func (recv *SpinButtonAccessible) Object() *gobject.Object {
+	return recv.EntryAccessible().Object()
+}
+
 // Spinner is a wrapper around the C record GtkSpinner.
 type Spinner struct {
 	native *C.GtkSpinner
@@ -10097,6 +13212,16 @@ func (recv *Spinner) ToC() unsafe.Pointer {
 // Widget upcasts to *Widget
 func (recv *Spinner) Widget() *Widget {
 	return WidgetNewFromC(unsafe.Pointer(recv.native))
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *Spinner) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Widget().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *Spinner) Object() *gobject.Object {
+	return recv.Widget().Object()
 }
 
 // SpinnerAccessible is a wrapper around the C record GtkSpinnerAccessible.
@@ -10127,6 +13252,21 @@ func (recv *SpinnerAccessible) WidgetAccessible() *WidgetAccessible {
 	return WidgetAccessibleNewFromC(unsafe.Pointer(recv.native))
 }
 
+// Accessible upcasts to *Accessible
+func (recv *SpinnerAccessible) Accessible() *Accessible {
+	return recv.WidgetAccessible().Accessible()
+}
+
+// Object upcasts to *Object
+func (recv *SpinnerAccessible) Object() *atk.Object {
+	return recv.WidgetAccessible().Object()
+}
+
+// Object upcasts to *Object
+func (recv *SpinnerAccessible) Object() *gobject.Object {
+	return recv.WidgetAccessible().Object()
+}
+
 // Stack is a wrapper around the C record GtkStack.
 type Stack struct {
 	native *C.GtkStack
@@ -10152,6 +13292,21 @@ func (recv *Stack) ToC() unsafe.Pointer {
 // Container upcasts to *Container
 func (recv *Stack) Container() *Container {
 	return ContainerNewFromC(unsafe.Pointer(recv.native))
+}
+
+// Widget upcasts to *Widget
+func (recv *Stack) Widget() *Widget {
+	return recv.Container().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *Stack) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Container().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *Stack) Object() *gobject.Object {
+	return recv.Container().Object()
 }
 
 // Blacklisted : GtkStackAccessible
@@ -10183,6 +13338,26 @@ func (recv *StackSidebar) Bin() *Bin {
 	return BinNewFromC(unsafe.Pointer(recv.native))
 }
 
+// Container upcasts to *Container
+func (recv *StackSidebar) Container() *Container {
+	return recv.Bin().Container()
+}
+
+// Widget upcasts to *Widget
+func (recv *StackSidebar) Widget() *Widget {
+	return recv.Bin().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *StackSidebar) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Bin().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *StackSidebar) Object() *gobject.Object {
+	return recv.Bin().Object()
+}
+
 // StackSwitcher is a wrapper around the C record GtkStackSwitcher.
 type StackSwitcher struct {
 	native *C.GtkStackSwitcher
@@ -10208,6 +13383,26 @@ func (recv *StackSwitcher) ToC() unsafe.Pointer {
 // Box upcasts to *Box
 func (recv *StackSwitcher) Box() *Box {
 	return BoxNewFromC(unsafe.Pointer(recv.native))
+}
+
+// Container upcasts to *Container
+func (recv *StackSwitcher) Container() *Container {
+	return recv.Box().Container()
+}
+
+// Widget upcasts to *Widget
+func (recv *StackSwitcher) Widget() *Widget {
+	return recv.Box().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *StackSwitcher) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Box().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *StackSwitcher) Object() *gobject.Object {
+	return recv.Box().Object()
 }
 
 // StatusIcon is a wrapper around the C record GtkStatusIcon.
@@ -10266,6 +13461,26 @@ func (recv *Statusbar) ToC() unsafe.Pointer {
 // Box upcasts to *Box
 func (recv *Statusbar) Box() *Box {
 	return BoxNewFromC(unsafe.Pointer(recv.native))
+}
+
+// Container upcasts to *Container
+func (recv *Statusbar) Container() *Container {
+	return recv.Box().Container()
+}
+
+// Widget upcasts to *Widget
+func (recv *Statusbar) Widget() *Widget {
+	return recv.Box().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *Statusbar) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Box().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *Statusbar) Object() *gobject.Object {
+	return recv.Box().Object()
 }
 
 // StatusbarNew is a wrapper around the C function gtk_statusbar_new.
@@ -10346,6 +13561,26 @@ func (recv *StatusbarAccessible) ToC() unsafe.Pointer {
 // ContainerAccessible upcasts to *ContainerAccessible
 func (recv *StatusbarAccessible) ContainerAccessible() *ContainerAccessible {
 	return ContainerAccessibleNewFromC(unsafe.Pointer(recv.native))
+}
+
+// WidgetAccessible upcasts to *WidgetAccessible
+func (recv *StatusbarAccessible) WidgetAccessible() *WidgetAccessible {
+	return recv.ContainerAccessible().WidgetAccessible()
+}
+
+// Accessible upcasts to *Accessible
+func (recv *StatusbarAccessible) Accessible() *Accessible {
+	return recv.ContainerAccessible().Accessible()
+}
+
+// Object upcasts to *Object
+func (recv *StatusbarAccessible) Object() *atk.Object {
+	return recv.ContainerAccessible().Object()
+}
+
+// Object upcasts to *Object
+func (recv *StatusbarAccessible) Object() *gobject.Object {
+	return recv.ContainerAccessible().Object()
 }
 
 // Style is a wrapper around the C record GtkStyle.
@@ -10646,6 +13881,16 @@ func (recv *Switch) Widget() *Widget {
 	return WidgetNewFromC(unsafe.Pointer(recv.native))
 }
 
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *Switch) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Widget().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *Switch) Object() *gobject.Object {
+	return recv.Widget().Object()
+}
+
 // SwitchAccessible is a wrapper around the C record GtkSwitchAccessible.
 type SwitchAccessible struct {
 	native *C.GtkSwitchAccessible
@@ -10674,6 +13919,21 @@ func (recv *SwitchAccessible) WidgetAccessible() *WidgetAccessible {
 	return WidgetAccessibleNewFromC(unsafe.Pointer(recv.native))
 }
 
+// Accessible upcasts to *Accessible
+func (recv *SwitchAccessible) Accessible() *Accessible {
+	return recv.WidgetAccessible().Accessible()
+}
+
+// Object upcasts to *Object
+func (recv *SwitchAccessible) Object() *atk.Object {
+	return recv.WidgetAccessible().Object()
+}
+
+// Object upcasts to *Object
+func (recv *SwitchAccessible) Object() *gobject.Object {
+	return recv.WidgetAccessible().Object()
+}
+
 // Table is a wrapper around the C record GtkTable.
 type Table struct {
 	native *C.GtkTable
@@ -10700,6 +13960,21 @@ func (recv *Table) ToC() unsafe.Pointer {
 // Container upcasts to *Container
 func (recv *Table) Container() *Container {
 	return ContainerNewFromC(unsafe.Pointer(recv.native))
+}
+
+// Widget upcasts to *Widget
+func (recv *Table) Widget() *Widget {
+	return recv.Container().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *Table) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Container().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *Table) Object() *gobject.Object {
+	return recv.Container().Object()
 }
 
 // TableNew is a wrapper around the C function gtk_table_new.
@@ -10890,6 +14165,31 @@ func (recv *TearoffMenuItem) ToC() unsafe.Pointer {
 // MenuItem upcasts to *MenuItem
 func (recv *TearoffMenuItem) MenuItem() *MenuItem {
 	return MenuItemNewFromC(unsafe.Pointer(recv.native))
+}
+
+// Bin upcasts to *Bin
+func (recv *TearoffMenuItem) Bin() *Bin {
+	return recv.MenuItem().Bin()
+}
+
+// Container upcasts to *Container
+func (recv *TearoffMenuItem) Container() *Container {
+	return recv.MenuItem().Container()
+}
+
+// Widget upcasts to *Widget
+func (recv *TearoffMenuItem) Widget() *Widget {
+	return recv.MenuItem().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *TearoffMenuItem) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.MenuItem().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *TearoffMenuItem) Object() *gobject.Object {
+	return recv.MenuItem().Object()
 }
 
 // TearoffMenuItemNew is a wrapper around the C function gtk_tearoff_menu_item_new.
@@ -11581,6 +14881,26 @@ func (recv *TextCellAccessible) RendererCellAccessible() *RendererCellAccessible
 	return RendererCellAccessibleNewFromC(unsafe.Pointer(recv.native))
 }
 
+// CellAccessible upcasts to *CellAccessible
+func (recv *TextCellAccessible) CellAccessible() *CellAccessible {
+	return recv.RendererCellAccessible().CellAccessible()
+}
+
+// Accessible upcasts to *Accessible
+func (recv *TextCellAccessible) Accessible() *Accessible {
+	return recv.RendererCellAccessible().Accessible()
+}
+
+// Object upcasts to *Object
+func (recv *TextCellAccessible) Object() *atk.Object {
+	return recv.RendererCellAccessible().Object()
+}
+
+// Object upcasts to *Object
+func (recv *TextCellAccessible) Object() *gobject.Object {
+	return recv.RendererCellAccessible().Object()
+}
+
 // TextChildAnchor is a wrapper around the C record GtkTextChildAnchor.
 type TextChildAnchor struct {
 	native *C.GtkTextChildAnchor
@@ -11871,6 +15191,21 @@ func (recv *TextView) ToC() unsafe.Pointer {
 // Container upcasts to *Container
 func (recv *TextView) Container() *Container {
 	return ContainerNewFromC(unsafe.Pointer(recv.native))
+}
+
+// Widget upcasts to *Widget
+func (recv *TextView) Widget() *Widget {
+	return recv.Container().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *TextView) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Container().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *TextView) Object() *gobject.Object {
+	return recv.Container().Object()
 }
 
 // TextViewNew is a wrapper around the C function gtk_text_view_new.
@@ -12434,6 +15769,26 @@ func (recv *TextViewAccessible) ContainerAccessible() *ContainerAccessible {
 	return ContainerAccessibleNewFromC(unsafe.Pointer(recv.native))
 }
 
+// WidgetAccessible upcasts to *WidgetAccessible
+func (recv *TextViewAccessible) WidgetAccessible() *WidgetAccessible {
+	return recv.ContainerAccessible().WidgetAccessible()
+}
+
+// Accessible upcasts to *Accessible
+func (recv *TextViewAccessible) Accessible() *Accessible {
+	return recv.ContainerAccessible().Accessible()
+}
+
+// Object upcasts to *Object
+func (recv *TextViewAccessible) Object() *atk.Object {
+	return recv.ContainerAccessible().Object()
+}
+
+// Object upcasts to *Object
+func (recv *TextViewAccessible) Object() *gobject.Object {
+	return recv.ContainerAccessible().Object()
+}
+
 // ThemingEngine is a wrapper around the C record GtkThemingEngine.
 type ThemingEngine struct {
 	native *C.GtkThemingEngine
@@ -12498,6 +15853,11 @@ func (recv *ToggleAction) Action() *Action {
 	return ActionNewFromC(unsafe.Pointer(recv.native))
 }
 
+// Object upcasts to *Object
+func (recv *ToggleAction) Object() *gobject.Object {
+	return recv.Action().Object()
+}
+
 // ToggleButton is a wrapper around the C record GtkToggleButton.
 type ToggleButton struct {
 	native *C.GtkToggleButton
@@ -12524,6 +15884,31 @@ func (recv *ToggleButton) ToC() unsafe.Pointer {
 // Button upcasts to *Button
 func (recv *ToggleButton) Button() *Button {
 	return ButtonNewFromC(unsafe.Pointer(recv.native))
+}
+
+// Bin upcasts to *Bin
+func (recv *ToggleButton) Bin() *Bin {
+	return recv.Button().Bin()
+}
+
+// Container upcasts to *Container
+func (recv *ToggleButton) Container() *Container {
+	return recv.Button().Container()
+}
+
+// Widget upcasts to *Widget
+func (recv *ToggleButton) Widget() *Widget {
+	return recv.Button().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *ToggleButton) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Button().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *ToggleButton) Object() *gobject.Object {
+	return recv.Button().Object()
 }
 
 // ToggleButtonNew is a wrapper around the C function gtk_toggle_button_new.
@@ -12645,6 +16030,31 @@ func (recv *ToggleButtonAccessible) ButtonAccessible() *ButtonAccessible {
 	return ButtonAccessibleNewFromC(unsafe.Pointer(recv.native))
 }
 
+// ContainerAccessible upcasts to *ContainerAccessible
+func (recv *ToggleButtonAccessible) ContainerAccessible() *ContainerAccessible {
+	return recv.ButtonAccessible().ContainerAccessible()
+}
+
+// WidgetAccessible upcasts to *WidgetAccessible
+func (recv *ToggleButtonAccessible) WidgetAccessible() *WidgetAccessible {
+	return recv.ButtonAccessible().WidgetAccessible()
+}
+
+// Accessible upcasts to *Accessible
+func (recv *ToggleButtonAccessible) Accessible() *Accessible {
+	return recv.ButtonAccessible().Accessible()
+}
+
+// Object upcasts to *Object
+func (recv *ToggleButtonAccessible) Object() *atk.Object {
+	return recv.ButtonAccessible().Object()
+}
+
+// Object upcasts to *Object
+func (recv *ToggleButtonAccessible) Object() *gobject.Object {
+	return recv.ButtonAccessible().Object()
+}
+
 // ToggleToolButton is a wrapper around the C record GtkToggleToolButton.
 type ToggleToolButton struct {
 	native *C.GtkToggleToolButton
@@ -12671,6 +16081,36 @@ func (recv *ToggleToolButton) ToC() unsafe.Pointer {
 // ToolButton upcasts to *ToolButton
 func (recv *ToggleToolButton) ToolButton() *ToolButton {
 	return ToolButtonNewFromC(unsafe.Pointer(recv.native))
+}
+
+// ToolItem upcasts to *ToolItem
+func (recv *ToggleToolButton) ToolItem() *ToolItem {
+	return recv.ToolButton().ToolItem()
+}
+
+// Bin upcasts to *Bin
+func (recv *ToggleToolButton) Bin() *Bin {
+	return recv.ToolButton().Bin()
+}
+
+// Container upcasts to *Container
+func (recv *ToggleToolButton) Container() *Container {
+	return recv.ToolButton().Container()
+}
+
+// Widget upcasts to *Widget
+func (recv *ToggleToolButton) Widget() *Widget {
+	return recv.ToolButton().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *ToggleToolButton) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.ToolButton().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *ToggleToolButton) Object() *gobject.Object {
+	return recv.ToolButton().Object()
 }
 
 // ToolButton is a wrapper around the C record GtkToolButton.
@@ -12701,6 +16141,31 @@ func (recv *ToolButton) ToolItem() *ToolItem {
 	return ToolItemNewFromC(unsafe.Pointer(recv.native))
 }
 
+// Bin upcasts to *Bin
+func (recv *ToolButton) Bin() *Bin {
+	return recv.ToolItem().Bin()
+}
+
+// Container upcasts to *Container
+func (recv *ToolButton) Container() *Container {
+	return recv.ToolItem().Container()
+}
+
+// Widget upcasts to *Widget
+func (recv *ToolButton) Widget() *Widget {
+	return recv.ToolItem().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *ToolButton) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.ToolItem().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *ToolButton) Object() *gobject.Object {
+	return recv.ToolItem().Object()
+}
+
 // ToolItem is a wrapper around the C record GtkToolItem.
 type ToolItem struct {
 	native *C.GtkToolItem
@@ -12727,6 +16192,26 @@ func (recv *ToolItem) ToC() unsafe.Pointer {
 // Bin upcasts to *Bin
 func (recv *ToolItem) Bin() *Bin {
 	return BinNewFromC(unsafe.Pointer(recv.native))
+}
+
+// Container upcasts to *Container
+func (recv *ToolItem) Container() *Container {
+	return recv.Bin().Container()
+}
+
+// Widget upcasts to *Widget
+func (recv *ToolItem) Widget() *Widget {
+	return recv.Bin().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *ToolItem) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Bin().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *ToolItem) Object() *gobject.Object {
+	return recv.Bin().Object()
 }
 
 // ToolItemGroup is a wrapper around the C record GtkToolItemGroup.
@@ -12757,6 +16242,21 @@ func (recv *ToolItemGroup) Container() *Container {
 	return ContainerNewFromC(unsafe.Pointer(recv.native))
 }
 
+// Widget upcasts to *Widget
+func (recv *ToolItemGroup) Widget() *Widget {
+	return recv.Container().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *ToolItemGroup) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Container().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *ToolItemGroup) Object() *gobject.Object {
+	return recv.Container().Object()
+}
+
 // ToolPalette is a wrapper around the C record GtkToolPalette.
 type ToolPalette struct {
 	native *C.GtkToolPalette
@@ -12785,6 +16285,21 @@ func (recv *ToolPalette) Container() *Container {
 	return ContainerNewFromC(unsafe.Pointer(recv.native))
 }
 
+// Widget upcasts to *Widget
+func (recv *ToolPalette) Widget() *Widget {
+	return recv.Container().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *ToolPalette) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Container().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *ToolPalette) Object() *gobject.Object {
+	return recv.Container().Object()
+}
+
 // Toolbar is a wrapper around the C record GtkToolbar.
 type Toolbar struct {
 	native *C.GtkToolbar
@@ -12811,6 +16326,21 @@ func (recv *Toolbar) ToC() unsafe.Pointer {
 // Container upcasts to *Container
 func (recv *Toolbar) Container() *Container {
 	return ContainerNewFromC(unsafe.Pointer(recv.native))
+}
+
+// Widget upcasts to *Widget
+func (recv *Toolbar) Widget() *Widget {
+	return recv.Container().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *Toolbar) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Container().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *Toolbar) Object() *gobject.Object {
+	return recv.Container().Object()
 }
 
 // ToolbarNew is a wrapper around the C function gtk_toolbar_new.
@@ -12921,6 +16451,11 @@ func (recv *ToplevelAccessible) ToC() unsafe.Pointer {
 // Object upcasts to *Object
 func (recv *ToplevelAccessible) Object() *atk.Object {
 	return atk.ObjectNewFromC(unsafe.Pointer(recv.native))
+}
+
+// Object upcasts to *Object
+func (recv *ToplevelAccessible) Object() *gobject.Object {
+	return recv.Object().Object()
 }
 
 // GetChildren is a wrapper around the C function gtk_toplevel_accessible_get_children.
@@ -13387,6 +16922,21 @@ func (recv *TreeView) Container() *Container {
 	return ContainerNewFromC(unsafe.Pointer(recv.native))
 }
 
+// Widget upcasts to *Widget
+func (recv *TreeView) Widget() *Widget {
+	return recv.Container().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *TreeView) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Container().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *TreeView) Object() *gobject.Object {
+	return recv.Container().Object()
+}
+
 // TreeViewNew is a wrapper around the C function gtk_tree_view_new.
 func TreeViewNew() *TreeView {
 	retC := C.gtk_tree_view_new()
@@ -13831,6 +17381,26 @@ func (recv *TreeViewAccessible) ContainerAccessible() *ContainerAccessible {
 	return ContainerAccessibleNewFromC(unsafe.Pointer(recv.native))
 }
 
+// WidgetAccessible upcasts to *WidgetAccessible
+func (recv *TreeViewAccessible) WidgetAccessible() *WidgetAccessible {
+	return recv.ContainerAccessible().WidgetAccessible()
+}
+
+// Accessible upcasts to *Accessible
+func (recv *TreeViewAccessible) Accessible() *Accessible {
+	return recv.ContainerAccessible().Accessible()
+}
+
+// Object upcasts to *Object
+func (recv *TreeViewAccessible) Object() *atk.Object {
+	return recv.ContainerAccessible().Object()
+}
+
+// Object upcasts to *Object
+func (recv *TreeViewAccessible) Object() *gobject.Object {
+	return recv.ContainerAccessible().Object()
+}
+
 // TreeViewColumn is a wrapper around the C record GtkTreeViewColumn.
 type TreeViewColumn struct {
 	native *C.GtkTreeViewColumn
@@ -13857,6 +17427,11 @@ func (recv *TreeViewColumn) ToC() unsafe.Pointer {
 // InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *TreeViewColumn) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromC(unsafe.Pointer(recv.native))
+}
+
+// Object upcasts to *Object
+func (recv *TreeViewColumn) Object() *gobject.Object {
+	return recv.InitiallyUnowned().Object()
 }
 
 // TreeViewColumnNew is a wrapper around the C function gtk_tree_view_column_new.
@@ -14288,6 +17863,26 @@ func (recv *VBox) Box() *Box {
 	return BoxNewFromC(unsafe.Pointer(recv.native))
 }
 
+// Container upcasts to *Container
+func (recv *VBox) Container() *Container {
+	return recv.Box().Container()
+}
+
+// Widget upcasts to *Widget
+func (recv *VBox) Widget() *Widget {
+	return recv.Box().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *VBox) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Box().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *VBox) Object() *gobject.Object {
+	return recv.Box().Object()
+}
+
 // VBoxNew is a wrapper around the C function gtk_vbox_new.
 func VBoxNew(homogeneous bool, spacing int32) *VBox {
 	c_homogeneous :=
@@ -14328,6 +17923,31 @@ func (recv *VButtonBox) ButtonBox() *ButtonBox {
 	return ButtonBoxNewFromC(unsafe.Pointer(recv.native))
 }
 
+// Box upcasts to *Box
+func (recv *VButtonBox) Box() *Box {
+	return recv.ButtonBox().Box()
+}
+
+// Container upcasts to *Container
+func (recv *VButtonBox) Container() *Container {
+	return recv.ButtonBox().Container()
+}
+
+// Widget upcasts to *Widget
+func (recv *VButtonBox) Widget() *Widget {
+	return recv.ButtonBox().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *VButtonBox) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.ButtonBox().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *VButtonBox) Object() *gobject.Object {
+	return recv.ButtonBox().Object()
+}
+
 // VButtonBoxNew is a wrapper around the C function gtk_vbutton_box_new.
 func VButtonBoxNew() *VButtonBox {
 	retC := C.gtk_vbutton_box_new()
@@ -14363,6 +17983,26 @@ func (recv *VPaned) Paned() *Paned {
 	return PanedNewFromC(unsafe.Pointer(recv.native))
 }
 
+// Container upcasts to *Container
+func (recv *VPaned) Container() *Container {
+	return recv.Paned().Container()
+}
+
+// Widget upcasts to *Widget
+func (recv *VPaned) Widget() *Widget {
+	return recv.Paned().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *VPaned) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Paned().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *VPaned) Object() *gobject.Object {
+	return recv.Paned().Object()
+}
+
 // VPanedNew is a wrapper around the C function gtk_vpaned_new.
 func VPanedNew() *VPaned {
 	retC := C.gtk_vpaned_new()
@@ -14396,6 +18036,26 @@ func (recv *VScale) ToC() unsafe.Pointer {
 // Scale upcasts to *Scale
 func (recv *VScale) Scale() *Scale {
 	return ScaleNewFromC(unsafe.Pointer(recv.native))
+}
+
+// Range upcasts to *Range
+func (recv *VScale) Range() *Range {
+	return recv.Scale().Range()
+}
+
+// Widget upcasts to *Widget
+func (recv *VScale) Widget() *Widget {
+	return recv.Scale().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *VScale) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Scale().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *VScale) Object() *gobject.Object {
+	return recv.Scale().Object()
 }
 
 // VScaleNew is a wrapper around the C function gtk_vscale_new.
@@ -14449,6 +18109,26 @@ func (recv *VScrollbar) Scrollbar() *Scrollbar {
 	return ScrollbarNewFromC(unsafe.Pointer(recv.native))
 }
 
+// Range upcasts to *Range
+func (recv *VScrollbar) Range() *Range {
+	return recv.Scrollbar().Range()
+}
+
+// Widget upcasts to *Widget
+func (recv *VScrollbar) Widget() *Widget {
+	return recv.Scrollbar().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *VScrollbar) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Scrollbar().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *VScrollbar) Object() *gobject.Object {
+	return recv.Scrollbar().Object()
+}
+
 // VScrollbarNew is a wrapper around the C function gtk_vscrollbar_new.
 func VScrollbarNew(adjustment *Adjustment) *VScrollbar {
 	c_adjustment := (*C.GtkAdjustment)(adjustment.ToC())
@@ -14486,6 +18166,21 @@ func (recv *VSeparator) Separator() *Separator {
 	return SeparatorNewFromC(unsafe.Pointer(recv.native))
 }
 
+// Widget upcasts to *Widget
+func (recv *VSeparator) Widget() *Widget {
+	return recv.Separator().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *VSeparator) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Separator().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *VSeparator) Object() *gobject.Object {
+	return recv.Separator().Object()
+}
+
 // VSeparatorNew is a wrapper around the C function gtk_vseparator_new.
 func VSeparatorNew() *VSeparator {
 	retC := C.gtk_vseparator_new()
@@ -14520,6 +18215,26 @@ func (recv *Viewport) ToC() unsafe.Pointer {
 // Bin upcasts to *Bin
 func (recv *Viewport) Bin() *Bin {
 	return BinNewFromC(unsafe.Pointer(recv.native))
+}
+
+// Container upcasts to *Container
+func (recv *Viewport) Container() *Container {
+	return recv.Bin().Container()
+}
+
+// Widget upcasts to *Widget
+func (recv *Viewport) Widget() *Widget {
+	return recv.Bin().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *Viewport) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Bin().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *Viewport) Object() *gobject.Object {
+	return recv.Bin().Object()
 }
 
 // ViewportNew is a wrapper around the C function gtk_viewport_new.
@@ -14612,6 +18327,36 @@ func (recv *VolumeButton) ScaleButton() *ScaleButton {
 	return ScaleButtonNewFromC(unsafe.Pointer(recv.native))
 }
 
+// Button upcasts to *Button
+func (recv *VolumeButton) Button() *Button {
+	return recv.ScaleButton().Button()
+}
+
+// Bin upcasts to *Bin
+func (recv *VolumeButton) Bin() *Bin {
+	return recv.ScaleButton().Bin()
+}
+
+// Container upcasts to *Container
+func (recv *VolumeButton) Container() *Container {
+	return recv.ScaleButton().Container()
+}
+
+// Widget upcasts to *Widget
+func (recv *VolumeButton) Widget() *Widget {
+	return recv.ScaleButton().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *VolumeButton) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.ScaleButton().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *VolumeButton) Object() *gobject.Object {
+	return recv.ScaleButton().Object()
+}
+
 // Widget is a wrapper around the C record GtkWidget.
 type Widget struct {
 	native *C.GtkWidget
@@ -14638,6 +18383,11 @@ func (recv *Widget) ToC() unsafe.Pointer {
 // InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *Widget) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromC(unsafe.Pointer(recv.native))
+}
+
+// Object upcasts to *Object
+func (recv *Widget) Object() *gobject.Object {
+	return recv.InitiallyUnowned().Object()
 }
 
 // Unsupported : gtk_widget_new : unsupported parameter type : no type generator for GType, GType
@@ -15731,6 +19481,16 @@ func (recv *WidgetAccessible) Accessible() *Accessible {
 	return AccessibleNewFromC(unsafe.Pointer(recv.native))
 }
 
+// Object upcasts to *Object
+func (recv *WidgetAccessible) Object() *atk.Object {
+	return recv.Accessible().Object()
+}
+
+// Object upcasts to *Object
+func (recv *WidgetAccessible) Object() *gobject.Object {
+	return recv.Accessible().Object()
+}
+
 // Window is a wrapper around the C record GtkWindow.
 type Window struct {
 	native *C.GtkWindow
@@ -15757,6 +19517,26 @@ func (recv *Window) ToC() unsafe.Pointer {
 // Bin upcasts to *Bin
 func (recv *Window) Bin() *Bin {
 	return BinNewFromC(unsafe.Pointer(recv.native))
+}
+
+// Container upcasts to *Container
+func (recv *Window) Container() *Container {
+	return recv.Bin().Container()
+}
+
+// Widget upcasts to *Widget
+func (recv *Window) Widget() *Widget {
+	return recv.Bin().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *Window) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Bin().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *Window) Object() *gobject.Object {
+	return recv.Bin().Object()
 }
 
 // WindowNew is a wrapper around the C function gtk_window_new.
@@ -16319,6 +20099,26 @@ func (recv *WindowAccessible) ToC() unsafe.Pointer {
 // ContainerAccessible upcasts to *ContainerAccessible
 func (recv *WindowAccessible) ContainerAccessible() *ContainerAccessible {
 	return ContainerAccessibleNewFromC(unsafe.Pointer(recv.native))
+}
+
+// WidgetAccessible upcasts to *WidgetAccessible
+func (recv *WindowAccessible) WidgetAccessible() *WidgetAccessible {
+	return recv.ContainerAccessible().WidgetAccessible()
+}
+
+// Accessible upcasts to *Accessible
+func (recv *WindowAccessible) Accessible() *Accessible {
+	return recv.ContainerAccessible().Accessible()
+}
+
+// Object upcasts to *Object
+func (recv *WindowAccessible) Object() *atk.Object {
+	return recv.ContainerAccessible().Object()
+}
+
+// Object upcasts to *Object
+func (recv *WindowAccessible) Object() *gobject.Object {
+	return recv.ContainerAccessible().Object()
 }
 
 // WindowGroup is a wrapper around the C record GtkWindowGroup.

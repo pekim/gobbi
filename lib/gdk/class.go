@@ -42,6 +42,11 @@ func (recv *AppLaunchContext) AppLaunchContext() *gio.AppLaunchContext {
 	return gio.AppLaunchContextNewFromC(unsafe.Pointer(recv.native))
 }
 
+// Object upcasts to *Object
+func (recv *AppLaunchContext) Object() *gobject.Object {
+	return recv.AppLaunchContext().Object()
+}
+
 // Cursor is a wrapper around the C record GdkCursor.
 type Cursor struct {
 	native *C.GdkCursor

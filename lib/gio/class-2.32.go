@@ -330,6 +330,11 @@ func (recv *Menu) MenuModel() *MenuModel {
 	return MenuModelNewFromC(unsafe.Pointer(recv.native))
 }
 
+// Object upcasts to *Object
+func (recv *Menu) Object() *gobject.Object {
+	return recv.MenuModel().Object()
+}
+
 // MenuNew is a wrapper around the C function g_menu_new.
 func MenuNew() *Menu {
 	retC := C.g_menu_new()

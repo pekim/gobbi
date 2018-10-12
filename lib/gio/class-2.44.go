@@ -3,7 +3,10 @@
 
 package gio
 
-import "unsafe"
+import (
+	gobject "github.com/pekim/gobbi/lib/gobject"
+	"unsafe"
+)
 
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <gio/gdesktopappinfo.h>
@@ -188,6 +191,11 @@ func (recv *SimpleIOStream) ToC() unsafe.Pointer {
 // IOStream upcasts to *IOStream
 func (recv *SimpleIOStream) IOStream() *IOStream {
 	return IOStreamNewFromC(unsafe.Pointer(recv.native))
+}
+
+// Object upcasts to *Object
+func (recv *SimpleIOStream) Object() *gobject.Object {
+	return recv.IOStream().Object()
 }
 
 // SimpleIOStreamNew is a wrapper around the C function g_simple_io_stream_new.

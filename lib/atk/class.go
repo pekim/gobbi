@@ -39,6 +39,11 @@ func (recv *GObjectAccessible) Object() *Object {
 	return ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
+// Object upcasts to *Object
+func (recv *GObjectAccessible) Object() *gobject.Object {
+	return recv.Object().Object()
+}
+
 // GetObject is a wrapper around the C function atk_gobject_accessible_get_object.
 func (recv *GObjectAccessible) GetObject() *gobject.Object {
 	retC := C.atk_gobject_accessible_get_object((*C.AtkGObjectAccessible)(recv.native))
@@ -189,6 +194,11 @@ func (recv *NoOpObject) Object() *Object {
 	return ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
+// Object upcasts to *Object
+func (recv *NoOpObject) Object() *gobject.Object {
+	return recv.Object().Object()
+}
+
 // NoOpObjectNew is a wrapper around the C function atk_no_op_object_new.
 func NoOpObjectNew(obj *gobject.Object) *NoOpObject {
 	c_obj := (*C.GObject)(obj.ToC())
@@ -224,6 +234,11 @@ func (recv *NoOpObjectFactory) ToC() unsafe.Pointer {
 // ObjectFactory upcasts to *ObjectFactory
 func (recv *NoOpObjectFactory) ObjectFactory() *ObjectFactory {
 	return ObjectFactoryNewFromC(unsafe.Pointer(recv.native))
+}
+
+// Object upcasts to *Object
+func (recv *NoOpObjectFactory) Object() *gobject.Object {
+	return recv.ObjectFactory().Object()
 }
 
 // NoOpObjectFactoryNew is a wrapper around the C function atk_no_op_object_factory_new.
@@ -546,6 +561,11 @@ func (recv *Plug) Object() *Object {
 	return ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
+// Object upcasts to *Object
+func (recv *Plug) Object() *gobject.Object {
+	return recv.Object().Object()
+}
+
 // PlugNew is a wrapper around the C function atk_plug_new.
 func PlugNew() *Plug {
 	retC := C.atk_plug_new()
@@ -775,6 +795,11 @@ func (recv *Socket) ToC() unsafe.Pointer {
 // Object upcasts to *Object
 func (recv *Socket) Object() *Object {
 	return ObjectNewFromC(unsafe.Pointer(recv.native))
+}
+
+// Object upcasts to *Object
+func (recv *Socket) Object() *gobject.Object {
+	return recv.Object().Object()
 }
 
 // SocketNew is a wrapper around the C function atk_socket_new.

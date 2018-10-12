@@ -559,6 +559,11 @@ func (recv *TlsConnection) IOStream() *IOStream {
 	return IOStreamNewFromC(unsafe.Pointer(recv.native))
 }
 
+// Object upcasts to *Object
+func (recv *TlsConnection) Object() *gobject.Object {
+	return recv.IOStream().Object()
+}
+
 // EmitAcceptCertificate is a wrapper around the C function g_tls_connection_emit_accept_certificate.
 func (recv *TlsConnection) EmitAcceptCertificate(peerCert *TlsCertificate, errors TlsCertificateFlags) bool {
 	c_peer_cert := (*C.GTlsCertificate)(peerCert.ToC())

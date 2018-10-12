@@ -6,6 +6,7 @@ package gtk
 import (
 	gdk "github.com/pekim/gobbi/lib/gdk"
 	glib "github.com/pekim/gobbi/lib/glib"
+	gobject "github.com/pekim/gobbi/lib/gobject"
 	"unsafe"
 )
 
@@ -74,6 +75,16 @@ func (recv *GLArea) ToC() unsafe.Pointer {
 // Widget upcasts to *Widget
 func (recv *GLArea) Widget() *Widget {
 	return WidgetNewFromC(unsafe.Pointer(recv.native))
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *GLArea) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Widget().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *GLArea) Object() *gobject.Object {
+	return recv.Widget().Object()
 }
 
 // GLAreaNew is a wrapper around the C function gtk_gl_area_new.

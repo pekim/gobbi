@@ -1503,6 +1503,16 @@ func (recv *ProxyAddress) InetSocketAddress() *InetSocketAddress {
 	return InetSocketAddressNewFromC(unsafe.Pointer(recv.native))
 }
 
+// SocketAddress upcasts to *SocketAddress
+func (recv *ProxyAddress) SocketAddress() *SocketAddress {
+	return recv.InetSocketAddress().SocketAddress()
+}
+
+// Object upcasts to *Object
+func (recv *ProxyAddress) Object() *gobject.Object {
+	return recv.InetSocketAddress().Object()
+}
+
 // ProxyAddressNew is a wrapper around the C function g_proxy_address_new.
 func ProxyAddressNew(inetaddr *InetAddress, port uint16, protocol string, destHostname string, destPort uint16, username string, password string) *ProxyAddress {
 	c_inetaddr := (*C.GInetAddress)(inetaddr.ToC())
@@ -2030,6 +2040,11 @@ func (recv *UnixCredentialsMessage) ToC() unsafe.Pointer {
 // SocketControlMessage upcasts to *SocketControlMessage
 func (recv *UnixCredentialsMessage) SocketControlMessage() *SocketControlMessage {
 	return SocketControlMessageNewFromC(unsafe.Pointer(recv.native))
+}
+
+// Object upcasts to *Object
+func (recv *UnixCredentialsMessage) Object() *gobject.Object {
+	return recv.SocketControlMessage().Object()
 }
 
 // UnixCredentialsMessageNew is a wrapper around the C function g_unix_credentials_message_new.

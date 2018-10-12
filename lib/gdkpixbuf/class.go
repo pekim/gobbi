@@ -664,4 +664,9 @@ func (recv *PixbufSimpleAnim) PixbufAnimation() *PixbufAnimation {
 	return PixbufAnimationNewFromC(unsafe.Pointer(recv.native))
 }
 
+// Object upcasts to *Object
+func (recv *PixbufSimpleAnim) Object() *gobject.Object {
+	return recv.PixbufAnimation().Object()
+}
+
 // Unsupported : PixbufSimpleAnimIter : no CType

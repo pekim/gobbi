@@ -1180,6 +1180,11 @@ func (recv *SocketConnection) IOStream() *IOStream {
 	return IOStreamNewFromC(unsafe.Pointer(recv.native))
 }
 
+// Object upcasts to *Object
+func (recv *SocketConnection) Object() *gobject.Object {
+	return recv.IOStream().Object()
+}
+
 // GetLocalAddress is a wrapper around the C function g_socket_connection_get_local_address.
 func (recv *SocketConnection) GetLocalAddress() (*SocketAddress, error) {
 	var cThrowableError *C.GError
@@ -1383,6 +1388,11 @@ func (recv *SocketService) SocketListener() *SocketListener {
 	return SocketListenerNewFromC(unsafe.Pointer(recv.native))
 }
 
+// Object upcasts to *Object
+func (recv *SocketService) Object() *gobject.Object {
+	return recv.SocketListener().Object()
+}
+
 // SocketServiceNew is a wrapper around the C function g_socket_service_new.
 func SocketServiceNew() *SocketService {
 	retC := C.g_socket_service_new()
@@ -1447,6 +1457,16 @@ func (recv *TcpConnection) SocketConnection() *SocketConnection {
 	return SocketConnectionNewFromC(unsafe.Pointer(recv.native))
 }
 
+// IOStream upcasts to *IOStream
+func (recv *TcpConnection) IOStream() *IOStream {
+	return recv.SocketConnection().IOStream()
+}
+
+// Object upcasts to *Object
+func (recv *TcpConnection) Object() *gobject.Object {
+	return recv.SocketConnection().Object()
+}
+
 // GetGracefulDisconnect is a wrapper around the C function g_tcp_connection_get_graceful_disconnect.
 func (recv *TcpConnection) GetGracefulDisconnect() bool {
 	retC := C.g_tcp_connection_get_graceful_disconnect((*C.GTcpConnection)(recv.native))
@@ -1493,6 +1513,16 @@ func (recv *ThreadedSocketService) ToC() unsafe.Pointer {
 // SocketService upcasts to *SocketService
 func (recv *ThreadedSocketService) SocketService() *SocketService {
 	return SocketServiceNewFromC(unsafe.Pointer(recv.native))
+}
+
+// SocketListener upcasts to *SocketListener
+func (recv *ThreadedSocketService) SocketListener() *SocketListener {
+	return recv.SocketService().SocketListener()
+}
+
+// Object upcasts to *Object
+func (recv *ThreadedSocketService) Object() *gobject.Object {
+	return recv.SocketService().Object()
 }
 
 // ThreadedSocketServiceNew is a wrapper around the C function g_threaded_socket_service_new.

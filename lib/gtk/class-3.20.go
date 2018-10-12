@@ -72,6 +72,11 @@ func (recv *FileChooserNative) NativeDialog() *NativeDialog {
 	return NativeDialogNewFromC(unsafe.Pointer(recv.native))
 }
 
+// Object upcasts to *Object
+func (recv *FileChooserNative) Object() *gobject.Object {
+	return recv.NativeDialog().Object()
+}
+
 // FileChooserNativeNew is a wrapper around the C function gtk_file_chooser_native_new.
 func FileChooserNativeNew(title string, parent *Window, action FileChooserAction, acceptLabel string, cancelLabel string) *FileChooserNative {
 	c_title := C.CString(title)
@@ -294,6 +299,11 @@ func (recv *PadController) EventController() *EventController {
 	return EventControllerNewFromC(unsafe.Pointer(recv.native))
 }
 
+// Object upcasts to *Object
+func (recv *PadController) Object() *gobject.Object {
+	return recv.EventController().Object()
+}
+
 // Unsupported : gtk_pad_controller_new : unsupported parameter group : no type generator for Gio.ActionGroup, GActionGroup*
 
 // Unsupported : gtk_page_setup_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
@@ -359,6 +369,26 @@ func (recv *ShortcutLabel) Box() *Box {
 	return BoxNewFromC(unsafe.Pointer(recv.native))
 }
 
+// Container upcasts to *Container
+func (recv *ShortcutLabel) Container() *Container {
+	return recv.Box().Container()
+}
+
+// Widget upcasts to *Widget
+func (recv *ShortcutLabel) Widget() *Widget {
+	return recv.Box().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *ShortcutLabel) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Box().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *ShortcutLabel) Object() *gobject.Object {
+	return recv.Box().Object()
+}
+
 // ShortcutsGroup is a wrapper around the C record GtkShortcutsGroup.
 type ShortcutsGroup struct {
 	native *C.GtkShortcutsGroup
@@ -383,6 +413,26 @@ func (recv *ShortcutsGroup) ToC() unsafe.Pointer {
 // Box upcasts to *Box
 func (recv *ShortcutsGroup) Box() *Box {
 	return BoxNewFromC(unsafe.Pointer(recv.native))
+}
+
+// Container upcasts to *Container
+func (recv *ShortcutsGroup) Container() *Container {
+	return recv.Box().Container()
+}
+
+// Widget upcasts to *Widget
+func (recv *ShortcutsGroup) Widget() *Widget {
+	return recv.Box().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *ShortcutsGroup) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Box().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *ShortcutsGroup) Object() *gobject.Object {
+	return recv.Box().Object()
 }
 
 // ShortcutsSection is a wrapper around the C record GtkShortcutsSection.
@@ -411,6 +461,26 @@ func (recv *ShortcutsSection) Box() *Box {
 	return BoxNewFromC(unsafe.Pointer(recv.native))
 }
 
+// Container upcasts to *Container
+func (recv *ShortcutsSection) Container() *Container {
+	return recv.Box().Container()
+}
+
+// Widget upcasts to *Widget
+func (recv *ShortcutsSection) Widget() *Widget {
+	return recv.Box().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *ShortcutsSection) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Box().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *ShortcutsSection) Object() *gobject.Object {
+	return recv.Box().Object()
+}
+
 // ShortcutsShortcut is a wrapper around the C record GtkShortcutsShortcut.
 type ShortcutsShortcut struct {
 	native *C.GtkShortcutsShortcut
@@ -435,6 +505,26 @@ func (recv *ShortcutsShortcut) ToC() unsafe.Pointer {
 // Box upcasts to *Box
 func (recv *ShortcutsShortcut) Box() *Box {
 	return BoxNewFromC(unsafe.Pointer(recv.native))
+}
+
+// Container upcasts to *Container
+func (recv *ShortcutsShortcut) Container() *Container {
+	return recv.Box().Container()
+}
+
+// Widget upcasts to *Widget
+func (recv *ShortcutsShortcut) Widget() *Widget {
+	return recv.Box().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *ShortcutsShortcut) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Box().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *ShortcutsShortcut) Object() *gobject.Object {
+	return recv.Box().Object()
 }
 
 // ShortcutsWindow is a wrapper around the C record GtkShortcutsWindow.
@@ -462,6 +552,31 @@ func (recv *ShortcutsWindow) ToC() unsafe.Pointer {
 // Window upcasts to *Window
 func (recv *ShortcutsWindow) Window() *Window {
 	return WindowNewFromC(unsafe.Pointer(recv.native))
+}
+
+// Bin upcasts to *Bin
+func (recv *ShortcutsWindow) Bin() *Bin {
+	return recv.Window().Bin()
+}
+
+// Container upcasts to *Container
+func (recv *ShortcutsWindow) Container() *Container {
+	return recv.Window().Container()
+}
+
+// Widget upcasts to *Widget
+func (recv *ShortcutsWindow) Widget() *Widget {
+	return recv.Window().Widget()
+}
+
+// InitiallyUnowned upcasts to *InitiallyUnowned
+func (recv *ShortcutsWindow) InitiallyUnowned() *gobject.InitiallyUnowned {
+	return recv.Window().InitiallyUnowned()
+}
+
+// Object upcasts to *Object
+func (recv *ShortcutsWindow) Object() *gobject.Object {
+	return recv.Window().Object()
 }
 
 // Unsupported : gtk_status_icon_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon, GIcon*
