@@ -55,16 +55,16 @@ func (recv *GLContext) GetForwardCompatible() bool {
 }
 
 // GetRequiredVersion is a wrapper around the C function gdk_gl_context_get_required_version.
-func (recv *GLContext) GetRequiredVersion() (*int32, *int32) {
+func (recv *GLContext) GetRequiredVersion() (int32, int32) {
 	var c_major C.int
 
 	var c_minor C.int
 
 	C.gdk_gl_context_get_required_version((*C.GdkGLContext)(recv.native), &c_major, &c_minor)
 
-	major := (*int32)(&c_major)
+	major := (int32)(c_major)
 
-	minor := (*int32)(&c_minor)
+	minor := (int32)(c_minor)
 
 	return major, minor
 }
@@ -78,16 +78,16 @@ func (recv *GLContext) GetSharedContext() *GLContext {
 }
 
 // GetVersion is a wrapper around the C function gdk_gl_context_get_version.
-func (recv *GLContext) GetVersion() (*int32, *int32) {
+func (recv *GLContext) GetVersion() (int32, int32) {
 	var c_major C.int
 
 	var c_minor C.int
 
 	C.gdk_gl_context_get_version((*C.GdkGLContext)(recv.native), &c_major, &c_minor)
 
-	major := (*int32)(&c_major)
+	major := (int32)(c_major)
 
-	minor := (*int32)(&c_minor)
+	minor := (int32)(c_minor)
 
 	return major, minor
 }

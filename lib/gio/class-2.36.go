@@ -155,7 +155,7 @@ func (recv *SimpleProxyResolver) SetUriProxy(uriScheme string, proxy string) {
 }
 
 // GetOption is a wrapper around the C function g_socket_get_option.
-func (recv *Socket) GetOption(level int32, optname int32) (bool, *int32, error) {
+func (recv *Socket) GetOption(level int32, optname int32) (bool, int32, error) {
 	c_level := (C.gint)(level)
 
 	c_optname := (C.gint)(optname)
@@ -172,7 +172,7 @@ func (recv *Socket) GetOption(level int32, optname int32) (bool, *int32, error) 
 		C.g_error_free(cThrowableError)
 	}
 
-	value := (*int32)(&c_value)
+	value := (int32)(c_value)
 
 	return retGo, value, goThrowableError
 }

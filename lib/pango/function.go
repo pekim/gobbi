@@ -154,7 +154,7 @@ func AttrWeightNew(weight Weight) *Attribute {
 // Unsupported : pango_find_map : return type : Blacklisted record : PangoMap
 
 // FindParagraphBoundary is a wrapper around the C function pango_find_paragraph_boundary.
-func FindParagraphBoundary(text string, length int32) (*int32, *int32) {
+func FindParagraphBoundary(text string, length int32) (int32, int32) {
 	c_text := C.CString(text)
 	defer C.free(unsafe.Pointer(c_text))
 
@@ -166,9 +166,9 @@ func FindParagraphBoundary(text string, length int32) (*int32, *int32) {
 
 	C.pango_find_paragraph_boundary(c_text, c_length, &c_paragraph_delimiter_index, &c_next_paragraph_start)
 
-	paragraphDelimiterIndex := (*int32)(&c_paragraph_delimiter_index)
+	paragraphDelimiterIndex := (int32)(c_paragraph_delimiter_index)
 
-	nextParagraphStart := (*int32)(&c_next_paragraph_start)
+	nextParagraphStart := (int32)(c_next_paragraph_start)
 
 	return paragraphDelimiterIndex, nextParagraphStart
 }

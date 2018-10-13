@@ -148,7 +148,7 @@ func (recv *Paned) GetHandleWindow() *gdk.Window {
 }
 
 // GetHardMargins is a wrapper around the C function gtk_print_context_get_hard_margins.
-func (recv *PrintContext) GetHardMargins() (bool, *float64, *float64, *float64, *float64) {
+func (recv *PrintContext) GetHardMargins() (bool, float64, float64, float64, float64) {
 	var c_top C.gdouble
 
 	var c_bottom C.gdouble
@@ -160,13 +160,13 @@ func (recv *PrintContext) GetHardMargins() (bool, *float64, *float64, *float64, 
 	retC := C.gtk_print_context_get_hard_margins((*C.GtkPrintContext)(recv.native), &c_top, &c_bottom, &c_left, &c_right)
 	retGo := retC == C.TRUE
 
-	top := (*float64)(&c_top)
+	top := (float64)(c_top)
 
-	bottom := (*float64)(&c_bottom)
+	bottom := (float64)(c_bottom)
 
-	left := (*float64)(&c_left)
+	left := (float64)(c_left)
 
-	right := (*float64)(&c_right)
+	right := (float64)(c_right)
 
 	return retGo, top, bottom, left, right
 }
@@ -184,16 +184,16 @@ func (recv *Range) GetMinSliderSize() int32 {
 // Unsupported : gtk_range_get_range_rect : unsupported parameter range_rect : Blacklisted record : GdkRectangle
 
 // GetSliderRange is a wrapper around the C function gtk_range_get_slider_range.
-func (recv *Range) GetSliderRange() (*int32, *int32) {
+func (recv *Range) GetSliderRange() (int32, int32) {
 	var c_slider_start C.gint
 
 	var c_slider_end C.gint
 
 	C.gtk_range_get_slider_range((*C.GtkRange)(recv.native), &c_slider_start, &c_slider_end)
 
-	sliderStart := (*int32)(&c_slider_start)
+	sliderStart := (int32)(c_slider_start)
 
-	sliderEnd := (*int32)(&c_slider_end)
+	sliderEnd := (int32)(c_slider_end)
 
 	return sliderStart, sliderEnd
 }

@@ -1064,7 +1064,7 @@ func (recv *Widget) GetAllocatedBaseline() int32 {
 }
 
 // GetPreferredHeightAndBaselineForWidth is a wrapper around the C function gtk_widget_get_preferred_height_and_baseline_for_width.
-func (recv *Widget) GetPreferredHeightAndBaselineForWidth(width int32) (*int32, *int32, *int32, *int32) {
+func (recv *Widget) GetPreferredHeightAndBaselineForWidth(width int32) (int32, int32, int32, int32) {
 	c_width := (C.gint)(width)
 
 	var c_minimum_height C.gint
@@ -1077,13 +1077,13 @@ func (recv *Widget) GetPreferredHeightAndBaselineForWidth(width int32) (*int32, 
 
 	C.gtk_widget_get_preferred_height_and_baseline_for_width((*C.GtkWidget)(recv.native), c_width, &c_minimum_height, &c_natural_height, &c_minimum_baseline, &c_natural_baseline)
 
-	minimumHeight := (*int32)(&c_minimum_height)
+	minimumHeight := (int32)(c_minimum_height)
 
-	naturalHeight := (*int32)(&c_natural_height)
+	naturalHeight := (int32)(c_natural_height)
 
-	minimumBaseline := (*int32)(&c_minimum_baseline)
+	minimumBaseline := (int32)(c_minimum_baseline)
 
-	naturalBaseline := (*int32)(&c_natural_baseline)
+	naturalBaseline := (int32)(c_natural_baseline)
 
 	return minimumHeight, naturalHeight, minimumBaseline, naturalBaseline
 }

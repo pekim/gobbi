@@ -50,7 +50,7 @@ func (recv *Device) GetNAxes() int32 {
 // Unsupported : gdk_device_get_position : unsupported parameter screen : record with indirection level of 2
 
 // GetWindowAtPosition is a wrapper around the C function gdk_device_get_window_at_position.
-func (recv *Device) GetWindowAtPosition() (*Window, *int32, *int32) {
+func (recv *Device) GetWindowAtPosition() (*Window, int32, int32) {
 	var c_win_x C.gint
 
 	var c_win_y C.gint
@@ -58,15 +58,15 @@ func (recv *Device) GetWindowAtPosition() (*Window, *int32, *int32) {
 	retC := C.gdk_device_get_window_at_position((*C.GdkDevice)(recv.native), &c_win_x, &c_win_y)
 	retGo := WindowNewFromC(unsafe.Pointer(retC))
 
-	winX := (*int32)(&c_win_x)
+	winX := (int32)(c_win_x)
 
-	winY := (*int32)(&c_win_y)
+	winY := (int32)(c_win_y)
 
 	return retGo, winX, winY
 }
 
 // GetWindowAtPositionDouble is a wrapper around the C function gdk_device_get_window_at_position_double.
-func (recv *Device) GetWindowAtPositionDouble() (*Window, *float64, *float64) {
+func (recv *Device) GetWindowAtPositionDouble() (*Window, float64, float64) {
 	var c_win_x C.gdouble
 
 	var c_win_y C.gdouble
@@ -74,9 +74,9 @@ func (recv *Device) GetWindowAtPositionDouble() (*Window, *float64, *float64) {
 	retC := C.gdk_device_get_window_at_position_double((*C.GdkDevice)(recv.native), &c_win_x, &c_win_y)
 	retGo := WindowNewFromC(unsafe.Pointer(retC))
 
-	winX := (*float64)(&c_win_x)
+	winX := (float64)(c_win_x)
 
-	winY := (*float64)(&c_win_y)
+	winY := (float64)(c_win_y)
 
 	return retGo, winX, winY
 }

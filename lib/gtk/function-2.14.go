@@ -77,7 +77,7 @@ import "C"
 // Unsupported : gtk_render_icon_pixbuf : unsupported parameter size : no type generator for gint, GtkIconSize
 
 // RgbToHsv is a wrapper around the C function gtk_rgb_to_hsv.
-func RgbToHsv(r float64, g float64, b float64) (*float64, *float64, *float64) {
+func RgbToHsv(r float64, g float64, b float64) (float64, float64, float64) {
 	c_r := (C.gdouble)(r)
 
 	c_g := (C.gdouble)(g)
@@ -92,11 +92,11 @@ func RgbToHsv(r float64, g float64, b float64) (*float64, *float64, *float64) {
 
 	C.gtk_rgb_to_hsv(c_r, c_g, c_b, &c_h, &c_s, &c_v)
 
-	h := (*float64)(&c_h)
+	h := (float64)(c_h)
 
-	s := (*float64)(&c_s)
+	s := (float64)(c_s)
 
-	v := (*float64)(&c_v)
+	v := (float64)(c_v)
 
 	return h, s, v
 }

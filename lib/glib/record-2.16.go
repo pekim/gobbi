@@ -109,7 +109,7 @@ func (recv *HashTableIter) Init(hashTable *HashTable) {
 }
 
 // Next is a wrapper around the C function g_hash_table_iter_next.
-func (recv *HashTableIter) Next() (bool, *uintptr, *uintptr) {
+func (recv *HashTableIter) Next() (bool, uintptr, uintptr) {
 	var c_key C.gpointer
 
 	var c_value C.gpointer
@@ -117,9 +117,9 @@ func (recv *HashTableIter) Next() (bool, *uintptr, *uintptr) {
 	retC := C.g_hash_table_iter_next((*C.GHashTableIter)(recv.native), &c_key, &c_value)
 	retGo := retC == C.TRUE
 
-	key := (*uintptr)(unsafe.Pointer(&c_key))
+	key := (uintptr)(unsafe.Pointer(&c_key))
 
-	value := (*uintptr)(unsafe.Pointer(&c_value))
+	value := (uintptr)(unsafe.Pointer(&c_value))
 
 	return retGo, key, value
 }

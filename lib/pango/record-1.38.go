@@ -39,16 +39,16 @@ func (recv *AttrFontFeatures) ToC() unsafe.Pointer {
 }
 
 // GetFontScaleFactors is a wrapper around the C function pango_matrix_get_font_scale_factors.
-func (recv *Matrix) GetFontScaleFactors() (*float64, *float64) {
+func (recv *Matrix) GetFontScaleFactors() (float64, float64) {
 	var c_xscale C.double
 
 	var c_yscale C.double
 
 	C.pango_matrix_get_font_scale_factors((*C.PangoMatrix)(recv.native), &c_xscale, &c_yscale)
 
-	xscale := (*float64)(&c_xscale)
+	xscale := (float64)(c_xscale)
 
-	yscale := (*float64)(&c_yscale)
+	yscale := (float64)(c_yscale)
 
 	return xscale, yscale
 }

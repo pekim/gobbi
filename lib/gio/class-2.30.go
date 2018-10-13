@@ -494,7 +494,7 @@ func (recv *DBusObjectSkeleton) SetObjectPath(objectPath string) {
 // Unsupported : g_data_input_stream_read_line_finish_utf8 : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
 
 // ReadLineUtf8 is a wrapper around the C function g_data_input_stream_read_line_utf8.
-func (recv *DataInputStream) ReadLineUtf8(cancellable *Cancellable) (string, *uint64, error) {
+func (recv *DataInputStream) ReadLineUtf8(cancellable *Cancellable) (string, uint64, error) {
 	var c_length C.gsize
 
 	c_cancellable := (*C.GCancellable)(cancellable.ToC())
@@ -510,7 +510,7 @@ func (recv *DataInputStream) ReadLineUtf8(cancellable *Cancellable) (string, *ui
 		C.g_error_free(cThrowableError)
 	}
 
-	length := (*uint64)(&c_length)
+	length := (uint64)(c_length)
 
 	return retGo, length, goThrowableError
 }

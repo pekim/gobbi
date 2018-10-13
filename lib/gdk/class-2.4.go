@@ -53,16 +53,16 @@ func (recv *Display) GetDefaultGroup() *Window {
 }
 
 // GetMaximalCursorSize is a wrapper around the C function gdk_display_get_maximal_cursor_size.
-func (recv *Display) GetMaximalCursorSize() (*uint32, *uint32) {
+func (recv *Display) GetMaximalCursorSize() (uint32, uint32) {
 	var c_width C.guint
 
 	var c_height C.guint
 
 	C.gdk_display_get_maximal_cursor_size((*C.GdkDisplay)(recv.native), &c_width, &c_height)
 
-	width := (*uint32)(&c_width)
+	width := (uint32)(c_width)
 
-	height := (*uint32)(&c_height)
+	height := (uint32)(c_height)
 
 	return width, height
 }

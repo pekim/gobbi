@@ -1112,7 +1112,7 @@ func (recv *TextBuffer) Backspace(iter *TextIter, interactive bool, defaultEdita
 }
 
 // GetIterAtPosition is a wrapper around the C function gtk_text_view_get_iter_at_position.
-func (recv *TextView) GetIterAtPosition(x int32, y int32) (*TextIter, *int32) {
+func (recv *TextView) GetIterAtPosition(x int32, y int32) (*TextIter, int32) {
 	var c_iter C.GtkTextIter
 
 	var c_trailing C.gint
@@ -1125,7 +1125,7 @@ func (recv *TextView) GetIterAtPosition(x int32, y int32) (*TextIter, *int32) {
 
 	iter := TextIterNewFromC(unsafe.Pointer(&c_iter))
 
-	trailing := (*int32)(&c_trailing)
+	trailing := (int32)(c_trailing)
 
 	return iter, trailing
 }

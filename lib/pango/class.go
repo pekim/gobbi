@@ -654,16 +654,16 @@ func (recv *Layout) GetPixelExtents() (*Rectangle, *Rectangle) {
 }
 
 // GetPixelSize is a wrapper around the C function pango_layout_get_pixel_size.
-func (recv *Layout) GetPixelSize() (*int32, *int32) {
+func (recv *Layout) GetPixelSize() (int32, int32) {
 	var c_width C.int
 
 	var c_height C.int
 
 	C.pango_layout_get_pixel_size((*C.PangoLayout)(recv.native), &c_width, &c_height)
 
-	width := (*int32)(&c_width)
+	width := (int32)(c_width)
 
-	height := (*int32)(&c_height)
+	height := (int32)(c_height)
 
 	return width, height
 }
@@ -677,16 +677,16 @@ func (recv *Layout) GetSingleParagraphMode() bool {
 }
 
 // GetSize is a wrapper around the C function pango_layout_get_size.
-func (recv *Layout) GetSize() (*int32, *int32) {
+func (recv *Layout) GetSize() (int32, int32) {
 	var c_width C.int
 
 	var c_height C.int
 
 	C.pango_layout_get_size((*C.PangoLayout)(recv.native), &c_width, &c_height)
 
-	width := (*int32)(&c_width)
+	width := (int32)(c_width)
 
-	height := (*int32)(&c_height)
+	height := (int32)(c_height)
 
 	return width, height
 }
@@ -732,7 +732,7 @@ func (recv *Layout) GetWrap() WrapMode {
 }
 
 // IndexToLineX is a wrapper around the C function pango_layout_index_to_line_x.
-func (recv *Layout) IndexToLineX(index int32, trailing bool) (*int32, *int32) {
+func (recv *Layout) IndexToLineX(index int32, trailing bool) (int32, int32) {
 	c_index_ := (C.int)(index)
 
 	c_trailing :=
@@ -744,9 +744,9 @@ func (recv *Layout) IndexToLineX(index int32, trailing bool) (*int32, *int32) {
 
 	C.pango_layout_index_to_line_x((*C.PangoLayout)(recv.native), c_index_, c_trailing, &c_line, &c_x_pos)
 
-	line := (*int32)(&c_line)
+	line := (int32)(c_line)
 
-	xPos := (*int32)(&c_x_pos)
+	xPos := (int32)(c_x_pos)
 
 	return line, xPos
 }
@@ -765,7 +765,7 @@ func (recv *Layout) IndexToPos(index int32) *Rectangle {
 }
 
 // MoveCursorVisually is a wrapper around the C function pango_layout_move_cursor_visually.
-func (recv *Layout) MoveCursorVisually(strong bool, oldIndex int32, oldTrailing int32, direction int32) (*int32, *int32) {
+func (recv *Layout) MoveCursorVisually(strong bool, oldIndex int32, oldTrailing int32, direction int32) (int32, int32) {
 	c_strong :=
 		boolToGboolean(strong)
 
@@ -781,9 +781,9 @@ func (recv *Layout) MoveCursorVisually(strong bool, oldIndex int32, oldTrailing 
 
 	C.pango_layout_move_cursor_visually((*C.PangoLayout)(recv.native), c_strong, c_old_index, c_old_trailing, c_direction, &c_new_index, &c_new_trailing)
 
-	newIndex := (*int32)(&c_new_index)
+	newIndex := (int32)(c_new_index)
 
-	newTrailing := (*int32)(&c_new_trailing)
+	newTrailing := (int32)(c_new_trailing)
 
 	return newIndex, newTrailing
 }
@@ -907,7 +907,7 @@ func (recv *Layout) SetWrap(wrap WrapMode) {
 }
 
 // XyToIndex is a wrapper around the C function pango_layout_xy_to_index.
-func (recv *Layout) XyToIndex(x int32, y int32) (bool, *int32, *int32) {
+func (recv *Layout) XyToIndex(x int32, y int32) (bool, int32, int32) {
 	c_x := (C.int)(x)
 
 	c_y := (C.int)(y)
@@ -919,9 +919,9 @@ func (recv *Layout) XyToIndex(x int32, y int32) (bool, *int32, *int32) {
 	retC := C.pango_layout_xy_to_index((*C.PangoLayout)(recv.native), c_x, c_y, &c_index_, &c_trailing)
 	retGo := retC == C.TRUE
 
-	index := (*int32)(&c_index_)
+	index := (int32)(c_index_)
 
-	trailing := (*int32)(&c_trailing)
+	trailing := (int32)(c_trailing)
 
 	return retGo, index, trailing
 }

@@ -1977,7 +1977,7 @@ func (recv *Calendar) ClearMarks() {
 }
 
 // GetDate is a wrapper around the C function gtk_calendar_get_date.
-func (recv *Calendar) GetDate() (*uint32, *uint32, *uint32) {
+func (recv *Calendar) GetDate() (uint32, uint32, uint32) {
 	var c_year C.guint
 
 	var c_month C.guint
@@ -1986,11 +1986,11 @@ func (recv *Calendar) GetDate() (*uint32, *uint32, *uint32) {
 
 	C.gtk_calendar_get_date((*C.GtkCalendar)(recv.native), &c_year, &c_month, &c_day)
 
-	year := (*uint32)(&c_year)
+	year := (uint32)(c_year)
 
-	month := (*uint32)(&c_month)
+	month := (uint32)(c_month)
 
-	day := (*uint32)(&c_day)
+	day := (uint32)(c_day)
 
 	return year, month, day
 }
@@ -2249,16 +2249,16 @@ func CastToCellRenderer(object *gobject.Object) *CellRenderer {
 // Unsupported : gtk_cell_renderer_activate : unsupported parameter event : no type generator for Gdk.Event, GdkEvent*
 
 // GetFixedSize is a wrapper around the C function gtk_cell_renderer_get_fixed_size.
-func (recv *CellRenderer) GetFixedSize() (*int32, *int32) {
+func (recv *CellRenderer) GetFixedSize() (int32, int32) {
 	var c_width C.gint
 
 	var c_height C.gint
 
 	C.gtk_cell_renderer_get_fixed_size((*C.GtkCellRenderer)(recv.native), &c_width, &c_height)
 
-	width := (*int32)(&c_width)
+	width := (int32)(c_width)
 
-	height := (*int32)(&c_height)
+	height := (int32)(c_height)
 
 	return width, height
 }
@@ -4461,16 +4461,16 @@ func (recv *Entry) GetLayout() *pango.Layout {
 }
 
 // GetLayoutOffsets is a wrapper around the C function gtk_entry_get_layout_offsets.
-func (recv *Entry) GetLayoutOffsets() (*int32, *int32) {
+func (recv *Entry) GetLayoutOffsets() (int32, int32) {
 	var c_x C.gint
 
 	var c_y C.gint
 
 	C.gtk_entry_get_layout_offsets((*C.GtkEntry)(recv.native), &c_x, &c_y)
 
-	x := (*int32)(&c_x)
+	x := (int32)(c_x)
 
-	y := (*int32)(&c_y)
+	y := (int32)(c_y)
 
 	return x, y
 }
@@ -5863,16 +5863,16 @@ func (recv *Frame) GetLabel() string {
 }
 
 // GetLabelAlign is a wrapper around the C function gtk_frame_get_label_align.
-func (recv *Frame) GetLabelAlign() (*float32, *float32) {
+func (recv *Frame) GetLabelAlign() (float32, float32) {
 	var c_xalign C.gfloat
 
 	var c_yalign C.gfloat
 
 	C.gtk_frame_get_label_align((*C.GtkFrame)(recv.native), &c_xalign, &c_yalign)
 
-	xalign := (*float32)(&c_xalign)
+	xalign := (float32)(c_xalign)
 
-	yalign := (*float32)(&c_yalign)
+	yalign := (float32)(c_yalign)
 
 	return xalign, yalign
 }
@@ -7213,7 +7213,7 @@ func (recv *IMContext) FocusOut() {
 // Unsupported : gtk_im_context_get_preedit_string : unsupported parameter attrs : record with indirection level of 2
 
 // GetSurrounding is a wrapper around the C function gtk_im_context_get_surrounding.
-func (recv *IMContext) GetSurrounding() (bool, string, *int32) {
+func (recv *IMContext) GetSurrounding() (bool, string, int32) {
 	var c_text *C.gchar
 
 	var c_cursor_index C.gint
@@ -7224,7 +7224,7 @@ func (recv *IMContext) GetSurrounding() (bool, string, *int32) {
 	text := C.GoString(c_text)
 	defer C.free(unsafe.Pointer(c_text))
 
-	cursorIndex := (*int32)(&c_cursor_index)
+	cursorIndex := (int32)(c_cursor_index)
 
 	return retGo, text, cursorIndex
 }
@@ -8213,16 +8213,16 @@ func (recv *Label) GetLayout() *pango.Layout {
 }
 
 // GetLayoutOffsets is a wrapper around the C function gtk_label_get_layout_offsets.
-func (recv *Label) GetLayoutOffsets() (*int32, *int32) {
+func (recv *Label) GetLayoutOffsets() (int32, int32) {
 	var c_x C.gint
 
 	var c_y C.gint
 
 	C.gtk_label_get_layout_offsets((*C.GtkLabel)(recv.native), &c_x, &c_y)
 
-	x := (*int32)(&c_x)
+	x := (int32)(c_x)
 
-	y := (*int32)(&c_y)
+	y := (int32)(c_y)
 
 	return x, y
 }
@@ -8260,7 +8260,7 @@ func (recv *Label) GetSelectable() bool {
 }
 
 // GetSelectionBounds is a wrapper around the C function gtk_label_get_selection_bounds.
-func (recv *Label) GetSelectionBounds() (bool, *int32, *int32) {
+func (recv *Label) GetSelectionBounds() (bool, int32, int32) {
 	var c_start C.gint
 
 	var c_end C.gint
@@ -8268,9 +8268,9 @@ func (recv *Label) GetSelectionBounds() (bool, *int32, *int32) {
 	retC := C.gtk_label_get_selection_bounds((*C.GtkLabel)(recv.native), &c_start, &c_end)
 	retGo := retC == C.TRUE
 
-	start := (*int32)(&c_start)
+	start := (int32)(c_start)
 
-	end := (*int32)(&c_end)
+	end := (int32)(c_end)
 
 	return retGo, start, end
 }
@@ -8551,16 +8551,16 @@ func (recv *Layout) GetHadjustment() *Adjustment {
 }
 
 // GetSize is a wrapper around the C function gtk_layout_get_size.
-func (recv *Layout) GetSize() (*uint32, *uint32) {
+func (recv *Layout) GetSize() (uint32, uint32) {
 	var c_width C.guint
 
 	var c_height C.guint
 
 	C.gtk_layout_get_size((*C.GtkLayout)(recv.native), &c_width, &c_height)
 
-	width := (*uint32)(&c_width)
+	width := (uint32)(c_width)
 
-	height := (*uint32)(&c_height)
+	height := (uint32)(c_height)
 
 	return width, height
 }
@@ -10256,31 +10256,31 @@ func CastToMisc(object *gobject.Object) *Misc {
 }
 
 // GetAlignment is a wrapper around the C function gtk_misc_get_alignment.
-func (recv *Misc) GetAlignment() (*float32, *float32) {
+func (recv *Misc) GetAlignment() (float32, float32) {
 	var c_xalign C.gfloat
 
 	var c_yalign C.gfloat
 
 	C.gtk_misc_get_alignment((*C.GtkMisc)(recv.native), &c_xalign, &c_yalign)
 
-	xalign := (*float32)(&c_xalign)
+	xalign := (float32)(c_xalign)
 
-	yalign := (*float32)(&c_yalign)
+	yalign := (float32)(c_yalign)
 
 	return xalign, yalign
 }
 
 // GetPadding is a wrapper around the C function gtk_misc_get_padding.
-func (recv *Misc) GetPadding() (*int32, *int32) {
+func (recv *Misc) GetPadding() (int32, int32) {
 	var c_xpad C.gint
 
 	var c_ypad C.gint
 
 	C.gtk_misc_get_padding((*C.GtkMisc)(recv.native), &c_xpad, &c_ypad)
 
-	xpad := (*int32)(&c_xpad)
+	xpad := (int32)(c_xpad)
 
-	ypad := (*int32)(&c_ypad)
+	ypad := (int32)(c_ypad)
 
 	return xpad, ypad
 }
@@ -13918,16 +13918,16 @@ func (recv *SpinButton) GetDigits() uint32 {
 }
 
 // GetIncrements is a wrapper around the C function gtk_spin_button_get_increments.
-func (recv *SpinButton) GetIncrements() (*float64, *float64) {
+func (recv *SpinButton) GetIncrements() (float64, float64) {
 	var c_step C.gdouble
 
 	var c_page C.gdouble
 
 	C.gtk_spin_button_get_increments((*C.GtkSpinButton)(recv.native), &c_step, &c_page)
 
-	step := (*float64)(&c_step)
+	step := (float64)(c_step)
 
-	page := (*float64)(&c_page)
+	page := (float64)(c_page)
 
 	return step, page
 }
@@ -13941,16 +13941,16 @@ func (recv *SpinButton) GetNumeric() bool {
 }
 
 // GetRange is a wrapper around the C function gtk_spin_button_get_range.
-func (recv *SpinButton) GetRange() (*float64, *float64) {
+func (recv *SpinButton) GetRange() (float64, float64) {
 	var c_min C.gdouble
 
 	var c_max C.gdouble
 
 	C.gtk_spin_button_get_range((*C.GtkSpinButton)(recv.native), &c_min, &c_max)
 
-	min := (*float64)(&c_min)
+	min := (float64)(c_min)
 
-	max := (*float64)(&c_max)
+	max := (float64)(c_max)
 
 	return min, max
 }
@@ -16349,7 +16349,7 @@ func (recv *TextView) BackwardDisplayLineStart(iter *TextIter) bool {
 }
 
 // BufferToWindowCoords is a wrapper around the C function gtk_text_view_buffer_to_window_coords.
-func (recv *TextView) BufferToWindowCoords(win TextWindowType, bufferX int32, bufferY int32) (*int32, *int32) {
+func (recv *TextView) BufferToWindowCoords(win TextWindowType, bufferX int32, bufferY int32) (int32, int32) {
 	c_win := (C.GtkTextWindowType)(win)
 
 	c_buffer_x := (C.gint)(bufferX)
@@ -16362,9 +16362,9 @@ func (recv *TextView) BufferToWindowCoords(win TextWindowType, bufferX int32, bu
 
 	C.gtk_text_view_buffer_to_window_coords((*C.GtkTextView)(recv.native), c_win, c_buffer_x, c_buffer_y, &c_window_x, &c_window_y)
 
-	windowX := (*int32)(&c_window_x)
+	windowX := (int32)(c_window_x)
 
-	windowY := (*int32)(&c_window_y)
+	windowY := (int32)(c_window_y)
 
 	return windowX, windowY
 }
@@ -16473,7 +16473,7 @@ func (recv *TextView) GetLeftMargin() int32 {
 }
 
 // GetLineAtY is a wrapper around the C function gtk_text_view_get_line_at_y.
-func (recv *TextView) GetLineAtY(y int32) (*TextIter, *int32) {
+func (recv *TextView) GetLineAtY(y int32) (*TextIter, int32) {
 	var c_target_iter C.GtkTextIter
 
 	c_y := (C.gint)(y)
@@ -16484,13 +16484,13 @@ func (recv *TextView) GetLineAtY(y int32) (*TextIter, *int32) {
 
 	targetIter := TextIterNewFromC(unsafe.Pointer(&c_target_iter))
 
-	lineTop := (*int32)(&c_line_top)
+	lineTop := (int32)(c_line_top)
 
 	return targetIter, lineTop
 }
 
 // GetLineYrange is a wrapper around the C function gtk_text_view_get_line_yrange.
-func (recv *TextView) GetLineYrange(iter *TextIter) (*int32, *int32) {
+func (recv *TextView) GetLineYrange(iter *TextIter) (int32, int32) {
 	c_iter := (*C.GtkTextIter)(iter.ToC())
 
 	var c_y C.gint
@@ -16499,9 +16499,9 @@ func (recv *TextView) GetLineYrange(iter *TextIter) (*int32, *int32) {
 
 	C.gtk_text_view_get_line_yrange((*C.GtkTextView)(recv.native), c_iter, &c_y, &c_height)
 
-	y := (*int32)(&c_y)
+	y := (int32)(c_y)
 
-	height := (*int32)(&c_height)
+	height := (int32)(c_height)
 
 	return y, height
 }
@@ -16797,7 +16797,7 @@ func (recv *TextView) StartsDisplayLine(iter *TextIter) bool {
 }
 
 // WindowToBufferCoords is a wrapper around the C function gtk_text_view_window_to_buffer_coords.
-func (recv *TextView) WindowToBufferCoords(win TextWindowType, windowX int32, windowY int32) (*int32, *int32) {
+func (recv *TextView) WindowToBufferCoords(win TextWindowType, windowX int32, windowY int32) (int32, int32) {
 	c_win := (C.GtkTextWindowType)(win)
 
 	c_window_x := (C.gint)(windowX)
@@ -16810,9 +16810,9 @@ func (recv *TextView) WindowToBufferCoords(win TextWindowType, windowX int32, wi
 
 	C.gtk_text_view_window_to_buffer_coords((*C.GtkTextView)(recv.native), c_win, c_window_x, c_window_y, &c_buffer_x, &c_buffer_y)
 
-	bufferX := (*int32)(&c_buffer_x)
+	bufferX := (int32)(c_buffer_x)
 
-	bufferY := (*int32)(&c_buffer_y)
+	bufferY := (int32)(c_buffer_y)
 
 	return bufferX, bufferY
 }
@@ -18635,7 +18635,7 @@ func (recv *TreeViewColumn) AddAttribute(cellRenderer *CellRenderer, attribute s
 }
 
 // CellGetPosition is a wrapper around the C function gtk_tree_view_column_cell_get_position.
-func (recv *TreeViewColumn) CellGetPosition(cellRenderer *CellRenderer) (bool, *int32, *int32) {
+func (recv *TreeViewColumn) CellGetPosition(cellRenderer *CellRenderer) (bool, int32, int32) {
 	c_cell_renderer := (*C.GtkCellRenderer)(cellRenderer.ToC())
 
 	var c_x_offset C.gint
@@ -18645,9 +18645,9 @@ func (recv *TreeViewColumn) CellGetPosition(cellRenderer *CellRenderer) (bool, *
 	retC := C.gtk_tree_view_column_cell_get_position((*C.GtkTreeViewColumn)(recv.native), c_cell_renderer, &c_x_offset, &c_width)
 	retGo := retC == C.TRUE
 
-	xOffset := (*int32)(&c_x_offset)
+	xOffset := (int32)(c_x_offset)
 
-	width := (*int32)(&c_width)
+	width := (int32)(c_width)
 
 	return retGo, xOffset, width
 }
@@ -19684,7 +19684,7 @@ func (recv *Widget) ChildNotify(childProperty string) {
 }
 
 // ClassPath is a wrapper around the C function gtk_widget_class_path.
-func (recv *Widget) ClassPath() (*uint32, string, string) {
+func (recv *Widget) ClassPath() (uint32, string, string) {
 	var c_path_length C.guint
 
 	var c_path *C.gchar
@@ -19693,7 +19693,7 @@ func (recv *Widget) ClassPath() (*uint32, string, string) {
 
 	C.gtk_widget_class_path((*C.GtkWidget)(recv.native), &c_path_length, &c_path, &c_path_reversed)
 
-	pathLength := (*uint32)(&c_path_length)
+	pathLength := (uint32)(c_path_length)
 
 	path := C.GoString(c_path)
 	defer C.free(unsafe.Pointer(c_path))
@@ -20005,16 +20005,16 @@ func (recv *Widget) GetPath() *WidgetPath {
 }
 
 // GetPointer is a wrapper around the C function gtk_widget_get_pointer.
-func (recv *Widget) GetPointer() (*int32, *int32) {
+func (recv *Widget) GetPointer() (int32, int32) {
 	var c_x C.gint
 
 	var c_y C.gint
 
 	C.gtk_widget_get_pointer((*C.GtkWidget)(recv.native), &c_x, &c_y)
 
-	x := (*int32)(&c_x)
+	x := (int32)(c_x)
 
-	y := (*int32)(&c_y)
+	y := (int32)(c_y)
 
 	return x, y
 }
@@ -20028,16 +20028,16 @@ func (recv *Widget) GetSettings() *Settings {
 }
 
 // GetSizeRequest is a wrapper around the C function gtk_widget_get_size_request.
-func (recv *Widget) GetSizeRequest() (*int32, *int32) {
+func (recv *Widget) GetSizeRequest() (int32, int32) {
 	var c_width C.gint
 
 	var c_height C.gint
 
 	C.gtk_widget_get_size_request((*C.GtkWidget)(recv.native), &c_width, &c_height)
 
-	width := (*int32)(&c_width)
+	width := (int32)(c_width)
 
-	height := (*int32)(&c_height)
+	height := (int32)(c_height)
 
 	return width, height
 }
@@ -20268,7 +20268,7 @@ func (recv *Widget) ModifyText(state StateType, color *gdk.Color) {
 }
 
 // Path is a wrapper around the C function gtk_widget_path.
-func (recv *Widget) Path() (*uint32, string, string) {
+func (recv *Widget) Path() (uint32, string, string) {
 	var c_path_length C.guint
 
 	var c_path *C.gchar
@@ -20277,7 +20277,7 @@ func (recv *Widget) Path() (*uint32, string, string) {
 
 	C.gtk_widget_path((*C.GtkWidget)(recv.native), &c_path_length, &c_path, &c_path_reversed)
 
-	pathLength := (*uint32)(&c_path_length)
+	pathLength := (uint32)(c_path_length)
 
 	path := C.GoString(c_path)
 	defer C.free(unsafe.Pointer(c_path))
@@ -20647,7 +20647,7 @@ func (recv *Widget) ThawChildNotify() {
 }
 
 // TranslateCoordinates is a wrapper around the C function gtk_widget_translate_coordinates.
-func (recv *Widget) TranslateCoordinates(destWidget *Widget, srcX int32, srcY int32) (bool, *int32, *int32) {
+func (recv *Widget) TranslateCoordinates(destWidget *Widget, srcX int32, srcY int32) (bool, int32, int32) {
 	c_dest_widget := (*C.GtkWidget)(destWidget.ToC())
 
 	c_src_x := (C.gint)(srcX)
@@ -20661,9 +20661,9 @@ func (recv *Widget) TranslateCoordinates(destWidget *Widget, srcX int32, srcY in
 	retC := C.gtk_widget_translate_coordinates((*C.GtkWidget)(recv.native), c_dest_widget, c_src_x, c_src_y, &c_dest_x, &c_dest_y)
 	retGo := retC == C.TRUE
 
-	destX := (*int32)(&c_dest_x)
+	destX := (int32)(c_dest_x)
 
-	destY := (*int32)(&c_dest_y)
+	destY := (int32)(c_dest_y)
 
 	return retGo, destX, destY
 }
@@ -20876,16 +20876,16 @@ func (recv *Window) GetDecorated() bool {
 }
 
 // GetDefaultSize is a wrapper around the C function gtk_window_get_default_size.
-func (recv *Window) GetDefaultSize() (*int32, *int32) {
+func (recv *Window) GetDefaultSize() (int32, int32) {
 	var c_width C.gint
 
 	var c_height C.gint
 
 	C.gtk_window_get_default_size((*C.GtkWindow)(recv.native), &c_width, &c_height)
 
-	width := (*int32)(&c_width)
+	width := (int32)(c_width)
 
-	height := (*int32)(&c_height)
+	height := (int32)(c_height)
 
 	return width, height
 }
@@ -20947,16 +20947,16 @@ func (recv *Window) GetModal() bool {
 }
 
 // GetPosition is a wrapper around the C function gtk_window_get_position.
-func (recv *Window) GetPosition() (*int32, *int32) {
+func (recv *Window) GetPosition() (int32, int32) {
 	var c_root_x C.gint
 
 	var c_root_y C.gint
 
 	C.gtk_window_get_position((*C.GtkWindow)(recv.native), &c_root_x, &c_root_y)
 
-	rootX := (*int32)(&c_root_x)
+	rootX := (int32)(c_root_x)
 
-	rootY := (*int32)(&c_root_y)
+	rootY := (int32)(c_root_y)
 
 	return rootX, rootY
 }
@@ -20978,16 +20978,16 @@ func (recv *Window) GetRole() string {
 }
 
 // GetSize is a wrapper around the C function gtk_window_get_size.
-func (recv *Window) GetSize() (*int32, *int32) {
+func (recv *Window) GetSize() (int32, int32) {
 	var c_width C.gint
 
 	var c_height C.gint
 
 	C.gtk_window_get_size((*C.GtkWindow)(recv.native), &c_width, &c_height)
 
-	width := (*int32)(&c_width)
+	width := (int32)(c_width)
 
-	height := (*int32)(&c_height)
+	height := (int32)(c_height)
 
 	return width, height
 }

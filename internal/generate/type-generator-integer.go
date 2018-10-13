@@ -76,12 +76,7 @@ func (t *TypeGeneratorInteger) generateParamOutCVar(g *jen.Group, cVarName strin
 }
 
 func (t *TypeGeneratorInteger) generateReturnFunctionDeclaration(g *jen.Group) {
-	g.Do(func(s *jen.Statement) {
-		if t.typ.indirectLevel == 1 {
-			s.Op("*")
-		}
-		t.typ.qname.generate(s)
-	})
+	g.Do(t.typ.qname.generate)
 }
 
 func (t *TypeGeneratorInteger) generateReturnCToGo(g *jen.Group, isParam bool,
@@ -89,12 +84,7 @@ func (t *TypeGeneratorInteger) generateReturnCToGo(g *jen.Group, isParam bool,
 	g.
 		Id(goVarName).
 		Op(":=").
-		Parens(jen.Do(func(s *jen.Statement) {
-			if t.typ.indirectLevel == 1 {
-				s.Op("*")
-			}
-			t.typ.qname.generate(s)
-		})).
+		Parens(jen.Do(t.typ.qname.generate)).
 		Parens(jen.Do(func(s *jen.Statement) {
 			if t.typ.Name == "gpointer" {
 				s.
@@ -109,9 +99,6 @@ func (t *TypeGeneratorInteger) generateReturnCToGo(g *jen.Group, isParam bool,
 						}
 					})
 			} else {
-				if t.typ.indirectLevel == 1 {
-					s.Op("&")
-				}
 				s.Id(cVarName)
 			}
 		}))

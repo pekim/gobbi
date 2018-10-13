@@ -242,16 +242,16 @@ func (recv *AttrIterator) Next() bool {
 }
 
 // Range is a wrapper around the C function pango_attr_iterator_range.
-func (recv *AttrIterator) Range() (*int32, *int32) {
+func (recv *AttrIterator) Range() (int32, int32) {
 	var c_start C.gint
 
 	var c_end C.gint
 
 	C.pango_attr_iterator_range((*C.PangoAttrIterator)(recv.native), &c_start, &c_end)
 
-	start := (*int32)(&c_start)
+	start := (int32)(c_start)
 
-	end := (*int32)(&c_end)
+	end := (int32)(c_end)
 
 	return start, end
 }
@@ -1276,7 +1276,7 @@ func (recv *LayoutLine) GetPixelExtents() (*Rectangle, *Rectangle) {
 // Unsupported : pango_layout_line_get_x_ranges : unsupported parameter ranges : no param type
 
 // IndexToX is a wrapper around the C function pango_layout_line_index_to_x.
-func (recv *LayoutLine) IndexToX(index int32, trailing bool) *int32 {
+func (recv *LayoutLine) IndexToX(index int32, trailing bool) int32 {
 	c_index_ := (C.int)(index)
 
 	c_trailing :=
@@ -1286,7 +1286,7 @@ func (recv *LayoutLine) IndexToX(index int32, trailing bool) *int32 {
 
 	C.pango_layout_line_index_to_x((*C.PangoLayoutLine)(recv.native), c_index_, c_trailing, &c_x_pos)
 
-	xPos := (*int32)(&c_x_pos)
+	xPos := (int32)(c_x_pos)
 
 	return xPos
 }
@@ -1299,7 +1299,7 @@ func (recv *LayoutLine) Unref() {
 }
 
 // XToIndex is a wrapper around the C function pango_layout_line_x_to_index.
-func (recv *LayoutLine) XToIndex(xPos int32) (bool, *int32, *int32) {
+func (recv *LayoutLine) XToIndex(xPos int32) (bool, int32, int32) {
 	c_x_pos := (C.int)(xPos)
 
 	var c_index_ C.int
@@ -1309,9 +1309,9 @@ func (recv *LayoutLine) XToIndex(xPos int32) (bool, *int32, *int32) {
 	retC := C.pango_layout_line_x_to_index((*C.PangoLayoutLine)(recv.native), c_x_pos, &c_index_, &c_trailing)
 	retGo := retC == C.TRUE
 
-	index := (*int32)(&c_index_)
+	index := (int32)(c_index_)
 
-	trailing := (*int32)(&c_trailing)
+	trailing := (int32)(c_trailing)
 
 	return retGo, index, trailing
 }

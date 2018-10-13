@@ -216,7 +216,7 @@ func (recv *IconTheme) ListContexts() *glib.List {
 // Unsupported : gtk_icon_view_new_with_model : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
 
 // ConvertWidgetToBinWindowCoords is a wrapper around the C function gtk_icon_view_convert_widget_to_bin_window_coords.
-func (recv *IconView) ConvertWidgetToBinWindowCoords(wx int32, wy int32) (*int32, *int32) {
+func (recv *IconView) ConvertWidgetToBinWindowCoords(wx int32, wy int32) (int32, int32) {
 	c_wx := (C.gint)(wx)
 
 	c_wy := (C.gint)(wy)
@@ -227,9 +227,9 @@ func (recv *IconView) ConvertWidgetToBinWindowCoords(wx int32, wy int32) (*int32
 
 	C.gtk_icon_view_convert_widget_to_bin_window_coords((*C.GtkIconView)(recv.native), c_wx, c_wy, &c_bx, &c_by)
 
-	bx := (*int32)(&c_bx)
+	bx := (int32)(c_bx)
 
-	by := (*int32)(&c_by)
+	by := (int32)(c_by)
 
 	return bx, by
 }
@@ -729,7 +729,7 @@ func (recv *Tooltip) SetText(text string) {
 // Unsupported : gtk_tree_view_new_with_model : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
 
 // ConvertBinWindowToTreeCoords is a wrapper around the C function gtk_tree_view_convert_bin_window_to_tree_coords.
-func (recv *TreeView) ConvertBinWindowToTreeCoords(bx int32, by int32) (*int32, *int32) {
+func (recv *TreeView) ConvertBinWindowToTreeCoords(bx int32, by int32) (int32, int32) {
 	c_bx := (C.gint)(bx)
 
 	c_by := (C.gint)(by)
@@ -740,15 +740,15 @@ func (recv *TreeView) ConvertBinWindowToTreeCoords(bx int32, by int32) (*int32, 
 
 	C.gtk_tree_view_convert_bin_window_to_tree_coords((*C.GtkTreeView)(recv.native), c_bx, c_by, &c_tx, &c_ty)
 
-	tx := (*int32)(&c_tx)
+	tx := (int32)(c_tx)
 
-	ty := (*int32)(&c_ty)
+	ty := (int32)(c_ty)
 
 	return tx, ty
 }
 
 // ConvertBinWindowToWidgetCoords is a wrapper around the C function gtk_tree_view_convert_bin_window_to_widget_coords.
-func (recv *TreeView) ConvertBinWindowToWidgetCoords(bx int32, by int32) (*int32, *int32) {
+func (recv *TreeView) ConvertBinWindowToWidgetCoords(bx int32, by int32) (int32, int32) {
 	c_bx := (C.gint)(bx)
 
 	c_by := (C.gint)(by)
@@ -759,15 +759,15 @@ func (recv *TreeView) ConvertBinWindowToWidgetCoords(bx int32, by int32) (*int32
 
 	C.gtk_tree_view_convert_bin_window_to_widget_coords((*C.GtkTreeView)(recv.native), c_bx, c_by, &c_wx, &c_wy)
 
-	wx := (*int32)(&c_wx)
+	wx := (int32)(c_wx)
 
-	wy := (*int32)(&c_wy)
+	wy := (int32)(c_wy)
 
 	return wx, wy
 }
 
 // ConvertTreeToBinWindowCoords is a wrapper around the C function gtk_tree_view_convert_tree_to_bin_window_coords.
-func (recv *TreeView) ConvertTreeToBinWindowCoords(tx int32, ty int32) (*int32, *int32) {
+func (recv *TreeView) ConvertTreeToBinWindowCoords(tx int32, ty int32) (int32, int32) {
 	c_tx := (C.gint)(tx)
 
 	c_ty := (C.gint)(ty)
@@ -778,15 +778,15 @@ func (recv *TreeView) ConvertTreeToBinWindowCoords(tx int32, ty int32) (*int32, 
 
 	C.gtk_tree_view_convert_tree_to_bin_window_coords((*C.GtkTreeView)(recv.native), c_tx, c_ty, &c_bx, &c_by)
 
-	bx := (*int32)(&c_bx)
+	bx := (int32)(c_bx)
 
-	by := (*int32)(&c_by)
+	by := (int32)(c_by)
 
 	return bx, by
 }
 
 // ConvertTreeToWidgetCoords is a wrapper around the C function gtk_tree_view_convert_tree_to_widget_coords.
-func (recv *TreeView) ConvertTreeToWidgetCoords(tx int32, ty int32) (*int32, *int32) {
+func (recv *TreeView) ConvertTreeToWidgetCoords(tx int32, ty int32) (int32, int32) {
 	c_tx := (C.gint)(tx)
 
 	c_ty := (C.gint)(ty)
@@ -797,15 +797,15 @@ func (recv *TreeView) ConvertTreeToWidgetCoords(tx int32, ty int32) (*int32, *in
 
 	C.gtk_tree_view_convert_tree_to_widget_coords((*C.GtkTreeView)(recv.native), c_tx, c_ty, &c_wx, &c_wy)
 
-	wx := (*int32)(&c_wx)
+	wx := (int32)(c_wx)
 
-	wy := (*int32)(&c_wy)
+	wy := (int32)(c_wy)
 
 	return wx, wy
 }
 
 // ConvertWidgetToBinWindowCoords is a wrapper around the C function gtk_tree_view_convert_widget_to_bin_window_coords.
-func (recv *TreeView) ConvertWidgetToBinWindowCoords(wx int32, wy int32) (*int32, *int32) {
+func (recv *TreeView) ConvertWidgetToBinWindowCoords(wx int32, wy int32) (int32, int32) {
 	c_wx := (C.gint)(wx)
 
 	c_wy := (C.gint)(wy)
@@ -816,15 +816,15 @@ func (recv *TreeView) ConvertWidgetToBinWindowCoords(wx int32, wy int32) (*int32
 
 	C.gtk_tree_view_convert_widget_to_bin_window_coords((*C.GtkTreeView)(recv.native), c_wx, c_wy, &c_bx, &c_by)
 
-	bx := (*int32)(&c_bx)
+	bx := (int32)(c_bx)
 
-	by := (*int32)(&c_by)
+	by := (int32)(c_by)
 
 	return bx, by
 }
 
 // ConvertWidgetToTreeCoords is a wrapper around the C function gtk_tree_view_convert_widget_to_tree_coords.
-func (recv *TreeView) ConvertWidgetToTreeCoords(wx int32, wy int32) (*int32, *int32) {
+func (recv *TreeView) ConvertWidgetToTreeCoords(wx int32, wy int32) (int32, int32) {
 	c_wx := (C.gint)(wx)
 
 	c_wy := (C.gint)(wy)
@@ -835,9 +835,9 @@ func (recv *TreeView) ConvertWidgetToTreeCoords(wx int32, wy int32) (*int32, *in
 
 	C.gtk_tree_view_convert_widget_to_tree_coords((*C.GtkTreeView)(recv.native), c_wx, c_wy, &c_tx, &c_ty)
 
-	tx := (*int32)(&c_tx)
+	tx := (int32)(c_tx)
 
-	ty := (*int32)(&c_ty)
+	ty := (int32)(c_ty)
 
 	return tx, ty
 }

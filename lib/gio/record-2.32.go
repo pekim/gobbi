@@ -162,7 +162,7 @@ func (recv *Resource) Unregister() {
 // Unsupported : g_resource_enumerate_children : no return type
 
 // GetInfo is a wrapper around the C function g_resource_get_info.
-func (recv *Resource) GetInfo(path string, lookupFlags ResourceLookupFlags) (bool, *uint64, *uint32, error) {
+func (recv *Resource) GetInfo(path string, lookupFlags ResourceLookupFlags) (bool, uint64, uint32, error) {
 	c_path := C.CString(path)
 	defer C.free(unsafe.Pointer(c_path))
 
@@ -182,9 +182,9 @@ func (recv *Resource) GetInfo(path string, lookupFlags ResourceLookupFlags) (boo
 		C.g_error_free(cThrowableError)
 	}
 
-	size := (*uint64)(&c_size)
+	size := (uint64)(c_size)
 
-	flags := (*uint32)(&c_flags)
+	flags := (uint32)(c_flags)
 
 	return retGo, size, flags, goThrowableError
 }

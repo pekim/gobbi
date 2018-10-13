@@ -137,7 +137,7 @@ func ContentTypeIsMimeType(type_ string, mimeType string) bool {
 // Unsupported : g_tls_server_connection_new : no return generator
 
 // UnixMountFor is a wrapper around the C function g_unix_mount_for.
-func UnixMountFor(filePath string) (*UnixMountEntry, *uint64) {
+func UnixMountFor(filePath string) (*UnixMountEntry, uint64) {
 	c_file_path := C.CString(filePath)
 	defer C.free(unsafe.Pointer(c_file_path))
 
@@ -146,7 +146,7 @@ func UnixMountFor(filePath string) (*UnixMountEntry, *uint64) {
 	retC := C.g_unix_mount_for(c_file_path, &c_time_read)
 	retGo := UnixMountEntryNewFromC(unsafe.Pointer(retC))
 
-	timeRead := (*uint64)(&c_time_read)
+	timeRead := (uint64)(c_time_read)
 
 	return retGo, timeRead
 }

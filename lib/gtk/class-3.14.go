@@ -104,7 +104,7 @@ func (recv *EventController) SetPropagationPhase(phase PropagationPhase) {
 // Unsupported : gtk_gesture_get_bounding_box : unsupported parameter rect : Blacklisted record : GdkRectangle
 
 // GetBoundingBoxCenter is a wrapper around the C function gtk_gesture_get_bounding_box_center.
-func (recv *Gesture) GetBoundingBoxCenter() (bool, *float64, *float64) {
+func (recv *Gesture) GetBoundingBoxCenter() (bool, float64, float64) {
 	var c_x C.gdouble
 
 	var c_y C.gdouble
@@ -112,9 +112,9 @@ func (recv *Gesture) GetBoundingBoxCenter() (bool, *float64, *float64) {
 	retC := C.gtk_gesture_get_bounding_box_center((*C.GtkGesture)(recv.native), &c_x, &c_y)
 	retGo := retC == C.TRUE
 
-	x := (*float64)(&c_x)
+	x := (float64)(c_x)
 
-	y := (*float64)(&c_y)
+	y := (float64)(c_y)
 
 	return retGo, x, y
 }
@@ -144,7 +144,7 @@ func (recv *Gesture) GetLastUpdatedSequence() *gdk.EventSequence {
 }
 
 // GetPoint is a wrapper around the C function gtk_gesture_get_point.
-func (recv *Gesture) GetPoint(sequence *gdk.EventSequence) (bool, *float64, *float64) {
+func (recv *Gesture) GetPoint(sequence *gdk.EventSequence) (bool, float64, float64) {
 	c_sequence := (*C.GdkEventSequence)(sequence.ToC())
 
 	var c_x C.gdouble
@@ -154,9 +154,9 @@ func (recv *Gesture) GetPoint(sequence *gdk.EventSequence) (bool, *float64, *flo
 	retC := C.gtk_gesture_get_point((*C.GtkGesture)(recv.native), c_sequence, &c_x, &c_y)
 	retGo := retC == C.TRUE
 
-	x := (*float64)(&c_x)
+	x := (float64)(c_x)
 
-	y := (*float64)(&c_y)
+	y := (float64)(c_y)
 
 	return retGo, x, y
 }
@@ -281,7 +281,7 @@ func GestureDragNew(widget *Widget) *GestureDrag {
 }
 
 // GetOffset is a wrapper around the C function gtk_gesture_drag_get_offset.
-func (recv *GestureDrag) GetOffset() (bool, *float64, *float64) {
+func (recv *GestureDrag) GetOffset() (bool, float64, float64) {
 	var c_x C.gdouble
 
 	var c_y C.gdouble
@@ -289,15 +289,15 @@ func (recv *GestureDrag) GetOffset() (bool, *float64, *float64) {
 	retC := C.gtk_gesture_drag_get_offset((*C.GtkGestureDrag)(recv.native), &c_x, &c_y)
 	retGo := retC == C.TRUE
 
-	x := (*float64)(&c_x)
+	x := (float64)(c_x)
 
-	y := (*float64)(&c_y)
+	y := (float64)(c_y)
 
 	return retGo, x, y
 }
 
 // GetStartPoint is a wrapper around the C function gtk_gesture_drag_get_start_point.
-func (recv *GestureDrag) GetStartPoint() (bool, *float64, *float64) {
+func (recv *GestureDrag) GetStartPoint() (bool, float64, float64) {
 	var c_x C.gdouble
 
 	var c_y C.gdouble
@@ -305,9 +305,9 @@ func (recv *GestureDrag) GetStartPoint() (bool, *float64, *float64) {
 	retC := C.gtk_gesture_drag_get_start_point((*C.GtkGestureDrag)(recv.native), &c_x, &c_y)
 	retGo := retC == C.TRUE
 
-	x := (*float64)(&c_x)
+	x := (float64)(c_x)
 
-	y := (*float64)(&c_y)
+	y := (float64)(c_y)
 
 	return retGo, x, y
 }
@@ -463,7 +463,7 @@ func GestureSwipeNew(widget *Widget) *GestureSwipe {
 }
 
 // GetVelocity is a wrapper around the C function gtk_gesture_swipe_get_velocity.
-func (recv *GestureSwipe) GetVelocity() (bool, *float64, *float64) {
+func (recv *GestureSwipe) GetVelocity() (bool, float64, float64) {
 	var c_velocity_x C.gdouble
 
 	var c_velocity_y C.gdouble
@@ -471,9 +471,9 @@ func (recv *GestureSwipe) GetVelocity() (bool, *float64, *float64) {
 	retC := C.gtk_gesture_swipe_get_velocity((*C.GtkGestureSwipe)(recv.native), &c_velocity_x, &c_velocity_y)
 	retGo := retC == C.TRUE
 
-	velocityX := (*float64)(&c_velocity_x)
+	velocityX := (float64)(c_velocity_x)
 
-	velocityY := (*float64)(&c_velocity_y)
+	velocityY := (float64)(c_velocity_y)
 
 	return retGo, velocityX, velocityY
 }

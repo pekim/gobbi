@@ -41,7 +41,7 @@ func (recv *Window) GetCursor() *Cursor {
 }
 
 // GetRootCoords is a wrapper around the C function gdk_window_get_root_coords.
-func (recv *Window) GetRootCoords(x int32, y int32) (*int32, *int32) {
+func (recv *Window) GetRootCoords(x int32, y int32) (int32, int32) {
 	c_x := (C.gint)(x)
 
 	c_y := (C.gint)(y)
@@ -52,9 +52,9 @@ func (recv *Window) GetRootCoords(x int32, y int32) (*int32, *int32) {
 
 	C.gdk_window_get_root_coords((*C.GdkWindow)(recv.native), c_x, c_y, &c_root_x, &c_root_y)
 
-	rootX := (*int32)(&c_root_x)
+	rootX := (int32)(c_root_x)
 
-	rootY := (*int32)(&c_root_y)
+	rootY := (int32)(c_root_y)
 
 	return rootX, rootY
 }

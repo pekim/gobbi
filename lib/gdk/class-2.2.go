@@ -87,7 +87,7 @@ func (recv *Display) GetScreen(screenNum int32) *Screen {
 }
 
 // GetWindowAtPointer is a wrapper around the C function gdk_display_get_window_at_pointer.
-func (recv *Display) GetWindowAtPointer() (*Window, *int32, *int32) {
+func (recv *Display) GetWindowAtPointer() (*Window, int32, int32) {
 	var c_win_x C.gint
 
 	var c_win_y C.gint
@@ -95,9 +95,9 @@ func (recv *Display) GetWindowAtPointer() (*Window, *int32, *int32) {
 	retC := C.gdk_display_get_window_at_pointer((*C.GdkDisplay)(recv.native), &c_win_x, &c_win_y)
 	retGo := WindowNewFromC(unsafe.Pointer(retC))
 
-	winX := (*int32)(&c_win_x)
+	winX := (int32)(c_win_x)
 
-	winY := (*int32)(&c_win_y)
+	winY := (int32)(c_win_y)
 
 	return retGo, winX, winY
 }

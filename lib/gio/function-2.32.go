@@ -138,7 +138,7 @@ func ResourceLoad(filename string) (*Resource, error) {
 // Unsupported : g_resources_enumerate_children : no return type
 
 // ResourcesGetInfo is a wrapper around the C function g_resources_get_info.
-func ResourcesGetInfo(path string, lookupFlags ResourceLookupFlags) (bool, *uint64, *uint32, error) {
+func ResourcesGetInfo(path string, lookupFlags ResourceLookupFlags) (bool, uint64, uint32, error) {
 	c_path := C.CString(path)
 	defer C.free(unsafe.Pointer(c_path))
 
@@ -158,9 +158,9 @@ func ResourcesGetInfo(path string, lookupFlags ResourceLookupFlags) (bool, *uint
 		C.g_error_free(cThrowableError)
 	}
 
-	size := (*uint64)(&c_size)
+	size := (uint64)(c_size)
 
-	flags := (*uint32)(&c_flags)
+	flags := (uint32)(c_flags)
 
 	return retGo, size, flags, goThrowableError
 }

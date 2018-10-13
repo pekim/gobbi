@@ -335,7 +335,7 @@ func UnixIsMountPathSystemInternal(mountPath string) bool {
 }
 
 // UnixMountAt is a wrapper around the C function g_unix_mount_at.
-func UnixMountAt(mountPath string) (*UnixMountEntry, *uint64) {
+func UnixMountAt(mountPath string) (*UnixMountEntry, uint64) {
 	c_mount_path := C.CString(mountPath)
 	defer C.free(unsafe.Pointer(c_mount_path))
 
@@ -344,7 +344,7 @@ func UnixMountAt(mountPath string) (*UnixMountEntry, *uint64) {
 	retC := C.g_unix_mount_at(c_mount_path, &c_time_read)
 	retGo := UnixMountEntryNewFromC(unsafe.Pointer(retC))
 
-	timeRead := (*uint64)(&c_time_read)
+	timeRead := (uint64)(c_time_read)
 
 	return retGo, timeRead
 }
@@ -466,13 +466,13 @@ func UnixMountPointsChangedSince(time uint64) bool {
 }
 
 // UnixMountPointsGet is a wrapper around the C function g_unix_mount_points_get.
-func UnixMountPointsGet() (*glib.List, *uint64) {
+func UnixMountPointsGet() (*glib.List, uint64) {
 	var c_time_read C.guint64
 
 	retC := C.g_unix_mount_points_get(&c_time_read)
 	retGo := glib.ListNewFromC(unsafe.Pointer(retC))
 
-	timeRead := (*uint64)(&c_time_read)
+	timeRead := (uint64)(c_time_read)
 
 	return retGo, timeRead
 }
@@ -488,13 +488,13 @@ func UnixMountsChangedSince(time uint64) bool {
 }
 
 // UnixMountsGet is a wrapper around the C function g_unix_mounts_get.
-func UnixMountsGet() (*glib.List, *uint64) {
+func UnixMountsGet() (*glib.List, uint64) {
 	var c_time_read C.guint64
 
 	retC := C.g_unix_mounts_get(&c_time_read)
 	retGo := glib.ListNewFromC(unsafe.Pointer(retC))
 
-	timeRead := (*uint64)(&c_time_read)
+	timeRead := (uint64)(c_time_read)
 
 	return retGo, timeRead
 }

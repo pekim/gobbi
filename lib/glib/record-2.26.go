@@ -404,7 +404,7 @@ func (recv *DateTime) GetYear() int32 {
 }
 
 // GetYmd is a wrapper around the C function g_date_time_get_ymd.
-func (recv *DateTime) GetYmd() (*int32, *int32, *int32) {
+func (recv *DateTime) GetYmd() (int32, int32, int32) {
 	var c_year C.gint
 
 	var c_month C.gint
@@ -413,11 +413,11 @@ func (recv *DateTime) GetYmd() (*int32, *int32, *int32) {
 
 	C.g_date_time_get_ymd((*C.GDateTime)(recv.native), &c_year, &c_month, &c_day)
 
-	year := (*int32)(&c_year)
+	year := (int32)(c_year)
 
-	month := (*int32)(&c_month)
+	month := (int32)(c_month)
 
-	day := (*int32)(&c_day)
+	day := (int32)(c_day)
 
 	return year, month, day
 }

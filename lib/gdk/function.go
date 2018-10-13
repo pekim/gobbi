@@ -300,7 +300,7 @@ func KeyboardUngrab(time uint32) {
 }
 
 // KeyvalConvertCase is a wrapper around the C function gdk_keyval_convert_case.
-func KeyvalConvertCase(symbol uint32) (*uint32, *uint32) {
+func KeyvalConvertCase(symbol uint32) (uint32, uint32) {
 	c_symbol := (C.guint)(symbol)
 
 	var c_lower C.guint
@@ -309,9 +309,9 @@ func KeyvalConvertCase(symbol uint32) (*uint32, *uint32) {
 
 	C.gdk_keyval_convert_case(c_symbol, &c_lower, &c_upper)
 
-	lower := (*uint32)(&c_lower)
+	lower := (uint32)(c_lower)
 
-	upper := (*uint32)(&c_upper)
+	upper := (uint32)(c_upper)
 
 	return lower, upper
 }

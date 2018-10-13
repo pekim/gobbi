@@ -31,7 +31,7 @@ func CursorNewFromSurface(display *Display, surface *cairo.Surface, x float64, y
 }
 
 // GetSurface is a wrapper around the C function gdk_cursor_get_surface.
-func (recv *Cursor) GetSurface() (*cairo.Surface, *float64, *float64) {
+func (recv *Cursor) GetSurface() (*cairo.Surface, float64, float64) {
 	var c_x_hot C.gdouble
 
 	var c_y_hot C.gdouble
@@ -39,9 +39,9 @@ func (recv *Cursor) GetSurface() (*cairo.Surface, *float64, *float64) {
 	retC := C.gdk_cursor_get_surface((*C.GdkCursor)(recv.native), &c_x_hot, &c_y_hot)
 	retGo := cairo.SurfaceNewFromC(unsafe.Pointer(retC))
 
-	xHot := (*float64)(&c_x_hot)
+	xHot := (float64)(c_x_hot)
 
-	yHot := (*float64)(&c_y_hot)
+	yHot := (float64)(c_y_hot)
 
 	return retGo, xHot, yHot
 }

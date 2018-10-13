@@ -379,7 +379,7 @@ func (recv *DBusConnection) RemoveFilter(filterId uint32) {
 }
 
 // SendMessage is a wrapper around the C function g_dbus_connection_send_message.
-func (recv *DBusConnection) SendMessage(message *DBusMessage, flags DBusSendMessageFlags) (bool, *uint32, error) {
+func (recv *DBusConnection) SendMessage(message *DBusMessage, flags DBusSendMessageFlags) (bool, uint32, error) {
 	c_message := (*C.GDBusMessage)(message.ToC())
 
 	c_flags := (C.GDBusSendMessageFlags)(flags)
@@ -396,7 +396,7 @@ func (recv *DBusConnection) SendMessage(message *DBusMessage, flags DBusSendMess
 		C.g_error_free(cThrowableError)
 	}
 
-	outSerial := (*uint32)(&c_out_serial)
+	outSerial := (uint32)(c_out_serial)
 
 	return retGo, outSerial, goThrowableError
 }
@@ -406,7 +406,7 @@ func (recv *DBusConnection) SendMessage(message *DBusMessage, flags DBusSendMess
 // Unsupported : g_dbus_connection_send_message_with_reply_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
 
 // SendMessageWithReplySync is a wrapper around the C function g_dbus_connection_send_message_with_reply_sync.
-func (recv *DBusConnection) SendMessageWithReplySync(message *DBusMessage, flags DBusSendMessageFlags, timeoutMsec int32, cancellable *Cancellable) (*DBusMessage, *uint32, error) {
+func (recv *DBusConnection) SendMessageWithReplySync(message *DBusMessage, flags DBusSendMessageFlags, timeoutMsec int32, cancellable *Cancellable) (*DBusMessage, uint32, error) {
 	c_message := (*C.GDBusMessage)(message.ToC())
 
 	c_flags := (C.GDBusSendMessageFlags)(flags)
@@ -427,7 +427,7 @@ func (recv *DBusConnection) SendMessageWithReplySync(message *DBusMessage, flags
 		C.g_error_free(cThrowableError)
 	}
 
-	outSerial := (*uint32)(&c_out_serial)
+	outSerial := (uint32)(c_out_serial)
 
 	return retGo, outSerial, goThrowableError
 }
@@ -1357,7 +1357,7 @@ func (recv *DBusServer) Stop() {
 }
 
 // ReadUpto is a wrapper around the C function g_data_input_stream_read_upto.
-func (recv *DataInputStream) ReadUpto(stopChars string, stopCharsLen int64, cancellable *Cancellable) (string, *uint64, error) {
+func (recv *DataInputStream) ReadUpto(stopChars string, stopCharsLen int64, cancellable *Cancellable) (string, uint64, error) {
 	c_stop_chars := C.CString(stopChars)
 	defer C.free(unsafe.Pointer(c_stop_chars))
 
@@ -1378,7 +1378,7 @@ func (recv *DataInputStream) ReadUpto(stopChars string, stopCharsLen int64, canc
 		C.g_error_free(cThrowableError)
 	}
 
-	length := (*uint64)(&c_length)
+	length := (uint64)(c_length)
 
 	return retGo, length, goThrowableError
 }

@@ -704,7 +704,7 @@ func (recv *Window) GetEvents() EventMask {
 // Unsupported : gdk_window_get_frame_extents : unsupported parameter rect : Blacklisted record : GdkRectangle
 
 // GetGeometry is a wrapper around the C function gdk_window_get_geometry.
-func (recv *Window) GetGeometry() (*int32, *int32, *int32, *int32) {
+func (recv *Window) GetGeometry() (int32, int32, int32, int32) {
 	var c_x C.gint
 
 	var c_y C.gint
@@ -715,19 +715,19 @@ func (recv *Window) GetGeometry() (*int32, *int32, *int32, *int32) {
 
 	C.gdk_window_get_geometry((*C.GdkWindow)(recv.native), &c_x, &c_y, &c_width, &c_height)
 
-	x := (*int32)(&c_x)
+	x := (int32)(c_x)
 
-	y := (*int32)(&c_y)
+	y := (int32)(c_y)
 
-	width := (*int32)(&c_width)
+	width := (int32)(c_width)
 
-	height := (*int32)(&c_height)
+	height := (int32)(c_height)
 
 	return x, y, width, height
 }
 
 // GetOrigin is a wrapper around the C function gdk_window_get_origin.
-func (recv *Window) GetOrigin() (int32, *int32, *int32) {
+func (recv *Window) GetOrigin() (int32, int32, int32) {
 	var c_x C.gint
 
 	var c_y C.gint
@@ -735,9 +735,9 @@ func (recv *Window) GetOrigin() (int32, *int32, *int32) {
 	retC := C.gdk_window_get_origin((*C.GdkWindow)(recv.native), &c_x, &c_y)
 	retGo := (int32)(retC)
 
-	x := (*int32)(&c_x)
+	x := (int32)(c_x)
 
-	y := (*int32)(&c_y)
+	y := (int32)(c_y)
 
 	return retGo, x, y
 }
@@ -753,31 +753,31 @@ func (recv *Window) GetParent() *Window {
 // Unsupported : gdk_window_get_pointer : unsupported parameter mask : GdkModifierType* with indirection level of 1
 
 // GetPosition is a wrapper around the C function gdk_window_get_position.
-func (recv *Window) GetPosition() (*int32, *int32) {
+func (recv *Window) GetPosition() (int32, int32) {
 	var c_x C.gint
 
 	var c_y C.gint
 
 	C.gdk_window_get_position((*C.GdkWindow)(recv.native), &c_x, &c_y)
 
-	x := (*int32)(&c_x)
+	x := (int32)(c_x)
 
-	y := (*int32)(&c_y)
+	y := (int32)(c_y)
 
 	return x, y
 }
 
 // GetRootOrigin is a wrapper around the C function gdk_window_get_root_origin.
-func (recv *Window) GetRootOrigin() (*int32, *int32) {
+func (recv *Window) GetRootOrigin() (int32, int32) {
 	var c_x C.gint
 
 	var c_y C.gint
 
 	C.gdk_window_get_root_origin((*C.GdkWindow)(recv.native), &c_x, &c_y)
 
-	x := (*int32)(&c_x)
+	x := (int32)(c_x)
 
-	y := (*int32)(&c_y)
+	y := (int32)(c_y)
 
 	return x, y
 }
@@ -817,12 +817,12 @@ func (recv *Window) GetUpdateArea() *cairo.Region {
 }
 
 // GetUserData is a wrapper around the C function gdk_window_get_user_data.
-func (recv *Window) GetUserData() *uintptr {
+func (recv *Window) GetUserData() uintptr {
 	var c_data C.gpointer
 
 	C.gdk_window_get_user_data((*C.GdkWindow)(recv.native), &c_data)
 
-	data := (*uintptr)(unsafe.Pointer(&c_data))
+	data := (uintptr)(unsafe.Pointer(&c_data))
 
 	return data
 }

@@ -79,7 +79,7 @@ func (recv *Visual) GetBitsPerRgb() int32 {
 }
 
 // GetBluePixelDetails is a wrapper around the C function gdk_visual_get_blue_pixel_details.
-func (recv *Visual) GetBluePixelDetails() (*uint32, *int32, *int32) {
+func (recv *Visual) GetBluePixelDetails() (uint32, int32, int32) {
 	var c_mask C.guint32
 
 	var c_shift C.gint
@@ -88,11 +88,11 @@ func (recv *Visual) GetBluePixelDetails() (*uint32, *int32, *int32) {
 
 	C.gdk_visual_get_blue_pixel_details((*C.GdkVisual)(recv.native), &c_mask, &c_shift, &c_precision)
 
-	mask := (*uint32)(&c_mask)
+	mask := (uint32)(c_mask)
 
-	shift := (*int32)(&c_shift)
+	shift := (int32)(c_shift)
 
-	precision := (*int32)(&c_precision)
+	precision := (int32)(c_precision)
 
 	return mask, shift, precision
 }
@@ -122,7 +122,7 @@ func (recv *Visual) GetDepth() int32 {
 }
 
 // GetGreenPixelDetails is a wrapper around the C function gdk_visual_get_green_pixel_details.
-func (recv *Visual) GetGreenPixelDetails() (*uint32, *int32, *int32) {
+func (recv *Visual) GetGreenPixelDetails() (uint32, int32, int32) {
 	var c_mask C.guint32
 
 	var c_shift C.gint
@@ -131,17 +131,17 @@ func (recv *Visual) GetGreenPixelDetails() (*uint32, *int32, *int32) {
 
 	C.gdk_visual_get_green_pixel_details((*C.GdkVisual)(recv.native), &c_mask, &c_shift, &c_precision)
 
-	mask := (*uint32)(&c_mask)
+	mask := (uint32)(c_mask)
 
-	shift := (*int32)(&c_shift)
+	shift := (int32)(c_shift)
 
-	precision := (*int32)(&c_precision)
+	precision := (int32)(c_precision)
 
 	return mask, shift, precision
 }
 
 // GetRedPixelDetails is a wrapper around the C function gdk_visual_get_red_pixel_details.
-func (recv *Visual) GetRedPixelDetails() (*uint32, *int32, *int32) {
+func (recv *Visual) GetRedPixelDetails() (uint32, int32, int32) {
 	var c_mask C.guint32
 
 	var c_shift C.gint
@@ -150,11 +150,11 @@ func (recv *Visual) GetRedPixelDetails() (*uint32, *int32, *int32) {
 
 	C.gdk_visual_get_red_pixel_details((*C.GdkVisual)(recv.native), &c_mask, &c_shift, &c_precision)
 
-	mask := (*uint32)(&c_mask)
+	mask := (uint32)(c_mask)
 
-	shift := (*int32)(&c_shift)
+	shift := (int32)(c_shift)
 
-	precision := (*int32)(&c_precision)
+	precision := (int32)(c_precision)
 
 	return mask, shift, precision
 }
@@ -168,7 +168,7 @@ func (recv *Visual) GetVisualType() VisualType {
 }
 
 // CoordsFromParent is a wrapper around the C function gdk_window_coords_from_parent.
-func (recv *Window) CoordsFromParent(parentX float64, parentY float64) (*float64, *float64) {
+func (recv *Window) CoordsFromParent(parentX float64, parentY float64) (float64, float64) {
 	c_parent_x := (C.gdouble)(parentX)
 
 	c_parent_y := (C.gdouble)(parentY)
@@ -179,15 +179,15 @@ func (recv *Window) CoordsFromParent(parentX float64, parentY float64) (*float64
 
 	C.gdk_window_coords_from_parent((*C.GdkWindow)(recv.native), c_parent_x, c_parent_y, &c_x, &c_y)
 
-	x := (*float64)(&c_x)
+	x := (float64)(c_x)
 
-	y := (*float64)(&c_y)
+	y := (float64)(c_y)
 
 	return x, y
 }
 
 // CoordsToParent is a wrapper around the C function gdk_window_coords_to_parent.
-func (recv *Window) CoordsToParent(x float64, y float64) (*float64, *float64) {
+func (recv *Window) CoordsToParent(x float64, y float64) (float64, float64) {
 	c_x := (C.gdouble)(x)
 
 	c_y := (C.gdouble)(y)
@@ -198,9 +198,9 @@ func (recv *Window) CoordsToParent(x float64, y float64) (*float64, *float64) {
 
 	C.gdk_window_coords_to_parent((*C.GdkWindow)(recv.native), c_x, c_y, &c_parent_x, &c_parent_y)
 
-	parentX := (*float64)(&c_parent_x)
+	parentX := (float64)(c_parent_x)
 
-	parentY := (*float64)(&c_parent_y)
+	parentY := (float64)(c_parent_y)
 
 	return parentX, parentY
 }

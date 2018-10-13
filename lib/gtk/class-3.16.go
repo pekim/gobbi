@@ -157,16 +157,16 @@ func (recv *GLArea) GetHasStencilBuffer() bool {
 }
 
 // GetRequiredVersion is a wrapper around the C function gtk_gl_area_get_required_version.
-func (recv *GLArea) GetRequiredVersion() (*int32, *int32) {
+func (recv *GLArea) GetRequiredVersion() (int32, int32) {
 	var c_major C.gint
 
 	var c_minor C.gint
 
 	C.gtk_gl_area_get_required_version((*C.GtkGLArea)(recv.native), &c_major, &c_minor)
 
-	major := (*int32)(&c_major)
+	major := (int32)(c_major)
 
-	minor := (*int32)(&c_minor)
+	minor := (int32)(c_minor)
 
 	return major, minor
 }

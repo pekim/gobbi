@@ -720,7 +720,7 @@ func FilenameFromUri(uri string) (string, string, error) {
 }
 
 // FilenameFromUtf8 is a wrapper around the C function g_filename_from_utf8.
-func FilenameFromUtf8(utf8string string, len int64) (string, *uint64, *uint64, error) {
+func FilenameFromUtf8(utf8string string, len int64) (string, uint64, uint64, error) {
 	c_utf8string := C.CString(utf8string)
 	defer C.free(unsafe.Pointer(c_utf8string))
 
@@ -741,9 +741,9 @@ func FilenameFromUtf8(utf8string string, len int64) (string, *uint64, *uint64, e
 		C.g_error_free(cThrowableError)
 	}
 
-	bytesRead := (*uint64)(&c_bytes_read)
+	bytesRead := (uint64)(c_bytes_read)
 
-	bytesWritten := (*uint64)(&c_bytes_written)
+	bytesWritten := (uint64)(c_bytes_written)
 
 	return retGo, bytesRead, bytesWritten, goThrowableError
 }
@@ -771,7 +771,7 @@ func FilenameToUri(filename string, hostname string) (string, error) {
 }
 
 // FilenameToUtf8 is a wrapper around the C function g_filename_to_utf8.
-func FilenameToUtf8(opsysstring string, len int64) (string, *uint64, *uint64, error) {
+func FilenameToUtf8(opsysstring string, len int64) (string, uint64, uint64, error) {
 	c_opsysstring := C.CString(opsysstring)
 	defer C.free(unsafe.Pointer(c_opsysstring))
 
@@ -792,9 +792,9 @@ func FilenameToUtf8(opsysstring string, len int64) (string, *uint64, *uint64, er
 		C.g_error_free(cThrowableError)
 	}
 
-	bytesRead := (*uint64)(&c_bytes_read)
+	bytesRead := (uint64)(c_bytes_read)
 
-	bytesWritten := (*uint64)(&c_bytes_written)
+	bytesWritten := (uint64)(c_bytes_written)
 
 	return retGo, bytesRead, bytesWritten, goThrowableError
 }
@@ -960,7 +960,7 @@ func HashTableLookup(hashTable *HashTable, key uintptr) uintptr {
 }
 
 // HashTableLookupExtended is a wrapper around the C function g_hash_table_lookup_extended.
-func HashTableLookupExtended(hashTable *HashTable, lookupKey uintptr) (bool, *uintptr, *uintptr) {
+func HashTableLookupExtended(hashTable *HashTable, lookupKey uintptr) (bool, uintptr, uintptr) {
 	c_hash_table := (*C.GHashTable)(hashTable.ToC())
 
 	c_lookup_key := (C.gconstpointer)(lookupKey)
@@ -972,9 +972,9 @@ func HashTableLookupExtended(hashTable *HashTable, lookupKey uintptr) (bool, *ui
 	retC := C.g_hash_table_lookup_extended(c_hash_table, c_lookup_key, &c_orig_key, &c_value)
 	retGo := retC == C.TRUE
 
-	origKey := (*uintptr)(unsafe.Pointer(&c_orig_key))
+	origKey := (uintptr)(unsafe.Pointer(&c_orig_key))
 
-	value := (*uintptr)(unsafe.Pointer(&c_value))
+	value := (uintptr)(unsafe.Pointer(&c_value))
 
 	return retGo, origKey, value
 }
@@ -2438,7 +2438,7 @@ func TryRealloc(mem uintptr, nBytes uint64) uintptr {
 // Unsupported : g_ucs4_to_utf16 : no return generator
 
 // Ucs4ToUtf8 is a wrapper around the C function g_ucs4_to_utf8.
-func Ucs4ToUtf8(str rune, len int64) (string, *int64, *int64, error) {
+func Ucs4ToUtf8(str rune, len int64) (string, int64, int64, error) {
 	c_str := (C.gunichar)(str)
 
 	c_len := (C.glong)(len)
@@ -2458,9 +2458,9 @@ func Ucs4ToUtf8(str rune, len int64) (string, *int64, *int64, error) {
 		C.g_error_free(cThrowableError)
 	}
 
-	itemsRead := (*int64)(&c_items_read)
+	itemsRead := (int64)(c_items_read)
 
-	itemsWritten := (*int64)(&c_items_written)
+	itemsWritten := (int64)(c_items_written)
 
 	return retGo, itemsRead, itemsWritten, goThrowableError
 }

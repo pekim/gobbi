@@ -194,16 +194,16 @@ func (recv *Statusbar) RemoveAll(contextId uint32) {
 }
 
 // GetSize is a wrapper around the C function gtk_table_get_size.
-func (recv *Table) GetSize() (*uint32, *uint32) {
+func (recv *Table) GetSize() (uint32, uint32) {
 	var c_rows C.guint
 
 	var c_columns C.guint
 
 	C.gtk_table_get_size((*C.GtkTable)(recv.native), &c_rows, &c_columns)
 
-	rows := (*uint32)(&c_rows)
+	rows := (uint32)(c_rows)
 
-	columns := (*uint32)(&c_columns)
+	columns := (uint32)(c_columns)
 
 	return rows, columns
 }

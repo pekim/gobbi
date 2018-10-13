@@ -484,7 +484,7 @@ func (recv *KeyFile) SetValue(groupName string, key string, value string) {
 }
 
 // ToData is a wrapper around the C function g_key_file_to_data.
-func (recv *KeyFile) ToData() (string, *uint64, error) {
+func (recv *KeyFile) ToData() (string, uint64, error) {
 	var c_length C.gsize
 
 	var cThrowableError *C.GError
@@ -498,7 +498,7 @@ func (recv *KeyFile) ToData() (string, *uint64, error) {
 		C.g_error_free(cThrowableError)
 	}
 
-	length := (*uint64)(&c_length)
+	length := (uint64)(c_length)
 
 	return retGo, length, goThrowableError
 }

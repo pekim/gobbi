@@ -13,7 +13,7 @@ import "unsafe"
 import "C"
 
 // AsciiStringToSigned is a wrapper around the C function g_ascii_string_to_signed.
-func AsciiStringToSigned(str string, base uint32, min int64, max int64) (bool, *int64, error) {
+func AsciiStringToSigned(str string, base uint32, min int64, max int64) (bool, int64, error) {
 	c_str := C.CString(str)
 	defer C.free(unsafe.Pointer(c_str))
 
@@ -35,13 +35,13 @@ func AsciiStringToSigned(str string, base uint32, min int64, max int64) (bool, *
 		C.g_error_free(cThrowableError)
 	}
 
-	outNum := (*int64)(&c_out_num)
+	outNum := (int64)(c_out_num)
 
 	return retGo, outNum, goThrowableError
 }
 
 // AsciiStringToUnsigned is a wrapper around the C function g_ascii_string_to_unsigned.
-func AsciiStringToUnsigned(str string, base uint32, min uint64, max uint64) (bool, *uint64, error) {
+func AsciiStringToUnsigned(str string, base uint32, min uint64, max uint64) (bool, uint64, error) {
 	c_str := C.CString(str)
 	defer C.free(unsafe.Pointer(c_str))
 
@@ -63,7 +63,7 @@ func AsciiStringToUnsigned(str string, base uint32, min uint64, max uint64) (boo
 		C.g_error_free(cThrowableError)
 	}
 
-	outNum := (*uint64)(&c_out_num)
+	outNum := (uint64)(c_out_num)
 
 	return retGo, outNum, goThrowableError
 }

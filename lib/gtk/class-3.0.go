@@ -482,7 +482,7 @@ func (recv *CellArea) GetFocusSiblings(renderer *CellRenderer) *glib.List {
 }
 
 // GetPreferredHeight is a wrapper around the C function gtk_cell_area_get_preferred_height.
-func (recv *CellArea) GetPreferredHeight(context *CellAreaContext, widget *Widget) (*int32, *int32) {
+func (recv *CellArea) GetPreferredHeight(context *CellAreaContext, widget *Widget) (int32, int32) {
 	c_context := (*C.GtkCellAreaContext)(context.ToC())
 
 	c_widget := (*C.GtkWidget)(widget.ToC())
@@ -493,15 +493,15 @@ func (recv *CellArea) GetPreferredHeight(context *CellAreaContext, widget *Widge
 
 	C.gtk_cell_area_get_preferred_height((*C.GtkCellArea)(recv.native), c_context, c_widget, &c_minimum_height, &c_natural_height)
 
-	minimumHeight := (*int32)(&c_minimum_height)
+	minimumHeight := (int32)(c_minimum_height)
 
-	naturalHeight := (*int32)(&c_natural_height)
+	naturalHeight := (int32)(c_natural_height)
 
 	return minimumHeight, naturalHeight
 }
 
 // GetPreferredHeightForWidth is a wrapper around the C function gtk_cell_area_get_preferred_height_for_width.
-func (recv *CellArea) GetPreferredHeightForWidth(context *CellAreaContext, widget *Widget, width int32) (*int32, *int32) {
+func (recv *CellArea) GetPreferredHeightForWidth(context *CellAreaContext, widget *Widget, width int32) (int32, int32) {
 	c_context := (*C.GtkCellAreaContext)(context.ToC())
 
 	c_widget := (*C.GtkWidget)(widget.ToC())
@@ -514,15 +514,15 @@ func (recv *CellArea) GetPreferredHeightForWidth(context *CellAreaContext, widge
 
 	C.gtk_cell_area_get_preferred_height_for_width((*C.GtkCellArea)(recv.native), c_context, c_widget, c_width, &c_minimum_height, &c_natural_height)
 
-	minimumHeight := (*int32)(&c_minimum_height)
+	minimumHeight := (int32)(c_minimum_height)
 
-	naturalHeight := (*int32)(&c_natural_height)
+	naturalHeight := (int32)(c_natural_height)
 
 	return minimumHeight, naturalHeight
 }
 
 // GetPreferredWidth is a wrapper around the C function gtk_cell_area_get_preferred_width.
-func (recv *CellArea) GetPreferredWidth(context *CellAreaContext, widget *Widget) (*int32, *int32) {
+func (recv *CellArea) GetPreferredWidth(context *CellAreaContext, widget *Widget) (int32, int32) {
 	c_context := (*C.GtkCellAreaContext)(context.ToC())
 
 	c_widget := (*C.GtkWidget)(widget.ToC())
@@ -533,15 +533,15 @@ func (recv *CellArea) GetPreferredWidth(context *CellAreaContext, widget *Widget
 
 	C.gtk_cell_area_get_preferred_width((*C.GtkCellArea)(recv.native), c_context, c_widget, &c_minimum_width, &c_natural_width)
 
-	minimumWidth := (*int32)(&c_minimum_width)
+	minimumWidth := (int32)(c_minimum_width)
 
-	naturalWidth := (*int32)(&c_natural_width)
+	naturalWidth := (int32)(c_natural_width)
 
 	return minimumWidth, naturalWidth
 }
 
 // GetPreferredWidthForHeight is a wrapper around the C function gtk_cell_area_get_preferred_width_for_height.
-func (recv *CellArea) GetPreferredWidthForHeight(context *CellAreaContext, widget *Widget, height int32) (*int32, *int32) {
+func (recv *CellArea) GetPreferredWidthForHeight(context *CellAreaContext, widget *Widget, height int32) (int32, int32) {
 	c_context := (*C.GtkCellAreaContext)(context.ToC())
 
 	c_widget := (*C.GtkWidget)(widget.ToC())
@@ -554,9 +554,9 @@ func (recv *CellArea) GetPreferredWidthForHeight(context *CellAreaContext, widge
 
 	C.gtk_cell_area_get_preferred_width_for_height((*C.GtkCellArea)(recv.native), c_context, c_widget, c_height, &c_minimum_width, &c_natural_width)
 
-	minimumWidth := (*int32)(&c_minimum_width)
+	minimumWidth := (int32)(c_minimum_width)
 
-	naturalWidth := (*int32)(&c_natural_width)
+	naturalWidth := (int32)(c_natural_width)
 
 	return minimumWidth, naturalWidth
 }
@@ -624,7 +624,7 @@ func (recv *CellArea) RemoveFocusSibling(renderer *CellRenderer, sibling *CellRe
 // Unsupported : gtk_cell_area_render : unsupported parameter background_area : Blacklisted record : GdkRectangle
 
 // RequestRenderer is a wrapper around the C function gtk_cell_area_request_renderer.
-func (recv *CellArea) RequestRenderer(renderer *CellRenderer, orientation Orientation, widget *Widget, forSize int32) (*int32, *int32) {
+func (recv *CellArea) RequestRenderer(renderer *CellRenderer, orientation Orientation, widget *Widget, forSize int32) (int32, int32) {
 	c_renderer := (*C.GtkCellRenderer)(renderer.ToC())
 
 	c_orientation := (C.GtkOrientation)(orientation)
@@ -639,9 +639,9 @@ func (recv *CellArea) RequestRenderer(renderer *CellRenderer, orientation Orient
 
 	C.gtk_cell_area_request_renderer((*C.GtkCellArea)(recv.native), c_renderer, c_orientation, c_widget, c_for_size, &c_minimum_size, &c_natural_size)
 
-	minimumSize := (*int32)(&c_minimum_size)
+	minimumSize := (int32)(c_minimum_size)
 
-	naturalSize := (*int32)(&c_natural_size)
+	naturalSize := (int32)(c_natural_size)
 
 	return minimumSize, naturalSize
 }
@@ -727,16 +727,16 @@ func (recv *CellAreaBox) SetSpacing(spacing int32) {
 }
 
 // GetAllocation is a wrapper around the C function gtk_cell_area_context_get_allocation.
-func (recv *CellAreaContext) GetAllocation() (*int32, *int32) {
+func (recv *CellAreaContext) GetAllocation() (int32, int32) {
 	var c_width C.gint
 
 	var c_height C.gint
 
 	C.gtk_cell_area_context_get_allocation((*C.GtkCellAreaContext)(recv.native), &c_width, &c_height)
 
-	width := (*int32)(&c_width)
+	width := (int32)(c_width)
 
-	height := (*int32)(&c_height)
+	height := (int32)(c_height)
 
 	return width, height
 }
@@ -750,22 +750,22 @@ func (recv *CellAreaContext) GetArea() *CellArea {
 }
 
 // GetPreferredHeight is a wrapper around the C function gtk_cell_area_context_get_preferred_height.
-func (recv *CellAreaContext) GetPreferredHeight() (*int32, *int32) {
+func (recv *CellAreaContext) GetPreferredHeight() (int32, int32) {
 	var c_minimum_height C.gint
 
 	var c_natural_height C.gint
 
 	C.gtk_cell_area_context_get_preferred_height((*C.GtkCellAreaContext)(recv.native), &c_minimum_height, &c_natural_height)
 
-	minimumHeight := (*int32)(&c_minimum_height)
+	minimumHeight := (int32)(c_minimum_height)
 
-	naturalHeight := (*int32)(&c_natural_height)
+	naturalHeight := (int32)(c_natural_height)
 
 	return minimumHeight, naturalHeight
 }
 
 // GetPreferredHeightForWidth is a wrapper around the C function gtk_cell_area_context_get_preferred_height_for_width.
-func (recv *CellAreaContext) GetPreferredHeightForWidth(width int32) (*int32, *int32) {
+func (recv *CellAreaContext) GetPreferredHeightForWidth(width int32) (int32, int32) {
 	c_width := (C.gint)(width)
 
 	var c_minimum_height C.gint
@@ -774,30 +774,30 @@ func (recv *CellAreaContext) GetPreferredHeightForWidth(width int32) (*int32, *i
 
 	C.gtk_cell_area_context_get_preferred_height_for_width((*C.GtkCellAreaContext)(recv.native), c_width, &c_minimum_height, &c_natural_height)
 
-	minimumHeight := (*int32)(&c_minimum_height)
+	minimumHeight := (int32)(c_minimum_height)
 
-	naturalHeight := (*int32)(&c_natural_height)
+	naturalHeight := (int32)(c_natural_height)
 
 	return minimumHeight, naturalHeight
 }
 
 // GetPreferredWidth is a wrapper around the C function gtk_cell_area_context_get_preferred_width.
-func (recv *CellAreaContext) GetPreferredWidth() (*int32, *int32) {
+func (recv *CellAreaContext) GetPreferredWidth() (int32, int32) {
 	var c_minimum_width C.gint
 
 	var c_natural_width C.gint
 
 	C.gtk_cell_area_context_get_preferred_width((*C.GtkCellAreaContext)(recv.native), &c_minimum_width, &c_natural_width)
 
-	minimumWidth := (*int32)(&c_minimum_width)
+	minimumWidth := (int32)(c_minimum_width)
 
-	naturalWidth := (*int32)(&c_natural_width)
+	naturalWidth := (int32)(c_natural_width)
 
 	return minimumWidth, naturalWidth
 }
 
 // GetPreferredWidthForHeight is a wrapper around the C function gtk_cell_area_context_get_preferred_width_for_height.
-func (recv *CellAreaContext) GetPreferredWidthForHeight(height int32) (*int32, *int32) {
+func (recv *CellAreaContext) GetPreferredWidthForHeight(height int32) (int32, int32) {
 	c_height := (C.gint)(height)
 
 	var c_minimum_width C.gint
@@ -806,9 +806,9 @@ func (recv *CellAreaContext) GetPreferredWidthForHeight(height int32) (*int32, *
 
 	C.gtk_cell_area_context_get_preferred_width_for_height((*C.GtkCellAreaContext)(recv.native), c_height, &c_minimum_width, &c_natural_width)
 
-	minimumWidth := (*int32)(&c_minimum_width)
+	minimumWidth := (int32)(c_minimum_width)
 
-	naturalWidth := (*int32)(&c_natural_width)
+	naturalWidth := (int32)(c_natural_width)
 
 	return minimumWidth, naturalWidth
 }
@@ -838,7 +838,7 @@ func (recv *CellAreaContext) PushPreferredWidth(minimumWidth int32, naturalWidth
 // Unsupported : gtk_cell_renderer_get_aligned_area : unsupported parameter cell_area : Blacklisted record : GdkRectangle
 
 // GetPreferredHeight is a wrapper around the C function gtk_cell_renderer_get_preferred_height.
-func (recv *CellRenderer) GetPreferredHeight(widget *Widget) (*int32, *int32) {
+func (recv *CellRenderer) GetPreferredHeight(widget *Widget) (int32, int32) {
 	c_widget := (*C.GtkWidget)(widget.ToC())
 
 	var c_minimum_size C.gint
@@ -847,15 +847,15 @@ func (recv *CellRenderer) GetPreferredHeight(widget *Widget) (*int32, *int32) {
 
 	C.gtk_cell_renderer_get_preferred_height((*C.GtkCellRenderer)(recv.native), c_widget, &c_minimum_size, &c_natural_size)
 
-	minimumSize := (*int32)(&c_minimum_size)
+	minimumSize := (int32)(c_minimum_size)
 
-	naturalSize := (*int32)(&c_natural_size)
+	naturalSize := (int32)(c_natural_size)
 
 	return minimumSize, naturalSize
 }
 
 // GetPreferredHeightForWidth is a wrapper around the C function gtk_cell_renderer_get_preferred_height_for_width.
-func (recv *CellRenderer) GetPreferredHeightForWidth(widget *Widget, width int32) (*int32, *int32) {
+func (recv *CellRenderer) GetPreferredHeightForWidth(widget *Widget, width int32) (int32, int32) {
 	c_widget := (*C.GtkWidget)(widget.ToC())
 
 	c_width := (C.gint)(width)
@@ -866,9 +866,9 @@ func (recv *CellRenderer) GetPreferredHeightForWidth(widget *Widget, width int32
 
 	C.gtk_cell_renderer_get_preferred_height_for_width((*C.GtkCellRenderer)(recv.native), c_widget, c_width, &c_minimum_height, &c_natural_height)
 
-	minimumHeight := (*int32)(&c_minimum_height)
+	minimumHeight := (int32)(c_minimum_height)
 
-	naturalHeight := (*int32)(&c_natural_height)
+	naturalHeight := (int32)(c_natural_height)
 
 	return minimumHeight, naturalHeight
 }
@@ -891,7 +891,7 @@ func (recv *CellRenderer) GetPreferredSize(widget *Widget) (*Requisition, *Requi
 }
 
 // GetPreferredWidth is a wrapper around the C function gtk_cell_renderer_get_preferred_width.
-func (recv *CellRenderer) GetPreferredWidth(widget *Widget) (*int32, *int32) {
+func (recv *CellRenderer) GetPreferredWidth(widget *Widget) (int32, int32) {
 	c_widget := (*C.GtkWidget)(widget.ToC())
 
 	var c_minimum_size C.gint
@@ -900,15 +900,15 @@ func (recv *CellRenderer) GetPreferredWidth(widget *Widget) (*int32, *int32) {
 
 	C.gtk_cell_renderer_get_preferred_width((*C.GtkCellRenderer)(recv.native), c_widget, &c_minimum_size, &c_natural_size)
 
-	minimumSize := (*int32)(&c_minimum_size)
+	minimumSize := (int32)(c_minimum_size)
 
-	naturalSize := (*int32)(&c_natural_size)
+	naturalSize := (int32)(c_natural_size)
 
 	return minimumSize, naturalSize
 }
 
 // GetPreferredWidthForHeight is a wrapper around the C function gtk_cell_renderer_get_preferred_width_for_height.
-func (recv *CellRenderer) GetPreferredWidthForHeight(widget *Widget, height int32) (*int32, *int32) {
+func (recv *CellRenderer) GetPreferredWidthForHeight(widget *Widget, height int32) (int32, int32) {
 	c_widget := (*C.GtkWidget)(widget.ToC())
 
 	c_height := (C.gint)(height)
@@ -919,9 +919,9 @@ func (recv *CellRenderer) GetPreferredWidthForHeight(widget *Widget, height int3
 
 	C.gtk_cell_renderer_get_preferred_width_for_height((*C.GtkCellRenderer)(recv.native), c_widget, c_height, &c_minimum_width, &c_natural_width)
 
-	minimumWidth := (*int32)(&c_minimum_width)
+	minimumWidth := (int32)(c_minimum_width)
 
-	naturalWidth := (*int32)(&c_natural_width)
+	naturalWidth := (int32)(c_natural_width)
 
 	return minimumWidth, naturalWidth
 }
@@ -1892,7 +1892,7 @@ func (recv *StyleContext) SetState(flags StateFlags) {
 }
 
 // StateIsRunning is a wrapper around the C function gtk_style_context_state_is_running.
-func (recv *StyleContext) StateIsRunning(state StateType) (bool, *float64) {
+func (recv *StyleContext) StateIsRunning(state StateType) (bool, float64) {
 	c_state := (C.GtkStateType)(state)
 
 	var c_progress C.gdouble
@@ -1900,7 +1900,7 @@ func (recv *StyleContext) StateIsRunning(state StateType) (bool, *float64) {
 	retC := C.gtk_style_context_state_is_running((*C.GtkStyleContext)(recv.native), c_state, &c_progress)
 	retGo := retC == C.TRUE
 
-	progress := (*float64)(&c_progress)
+	progress := (float64)(c_progress)
 
 	return retGo, progress
 }
@@ -2206,7 +2206,7 @@ func (recv *ThemingEngine) LookupColor(colorName string) (bool, *gdk.RGBA) {
 }
 
 // StateIsRunning is a wrapper around the C function gtk_theming_engine_state_is_running.
-func (recv *ThemingEngine) StateIsRunning(state StateType) (bool, *float64) {
+func (recv *ThemingEngine) StateIsRunning(state StateType) (bool, float64) {
 	c_state := (C.GtkStateType)(state)
 
 	var c_progress C.gdouble
@@ -2214,7 +2214,7 @@ func (recv *ThemingEngine) StateIsRunning(state StateType) (bool, *float64) {
 	retC := C.gtk_theming_engine_state_is_running((*C.GtkThemingEngine)(recv.native), c_state, &c_progress)
 	retGo := retC == C.TRUE
 
-	progress := (*float64)(&c_progress)
+	progress := (float64)(c_progress)
 
 	return retGo, progress
 }
@@ -2332,22 +2332,22 @@ func (recv *Widget) GetMarginTop() int32 {
 }
 
 // GetPreferredHeight is a wrapper around the C function gtk_widget_get_preferred_height.
-func (recv *Widget) GetPreferredHeight() (*int32, *int32) {
+func (recv *Widget) GetPreferredHeight() (int32, int32) {
 	var c_minimum_height C.gint
 
 	var c_natural_height C.gint
 
 	C.gtk_widget_get_preferred_height((*C.GtkWidget)(recv.native), &c_minimum_height, &c_natural_height)
 
-	minimumHeight := (*int32)(&c_minimum_height)
+	minimumHeight := (int32)(c_minimum_height)
 
-	naturalHeight := (*int32)(&c_natural_height)
+	naturalHeight := (int32)(c_natural_height)
 
 	return minimumHeight, naturalHeight
 }
 
 // GetPreferredHeightForWidth is a wrapper around the C function gtk_widget_get_preferred_height_for_width.
-func (recv *Widget) GetPreferredHeightForWidth(width int32) (*int32, *int32) {
+func (recv *Widget) GetPreferredHeightForWidth(width int32) (int32, int32) {
 	c_width := (C.gint)(width)
 
 	var c_minimum_height C.gint
@@ -2356,9 +2356,9 @@ func (recv *Widget) GetPreferredHeightForWidth(width int32) (*int32, *int32) {
 
 	C.gtk_widget_get_preferred_height_for_width((*C.GtkWidget)(recv.native), c_width, &c_minimum_height, &c_natural_height)
 
-	minimumHeight := (*int32)(&c_minimum_height)
+	minimumHeight := (int32)(c_minimum_height)
 
-	naturalHeight := (*int32)(&c_natural_height)
+	naturalHeight := (int32)(c_natural_height)
 
 	return minimumHeight, naturalHeight
 }
@@ -2379,22 +2379,22 @@ func (recv *Widget) GetPreferredSize() (*Requisition, *Requisition) {
 }
 
 // GetPreferredWidth is a wrapper around the C function gtk_widget_get_preferred_width.
-func (recv *Widget) GetPreferredWidth() (*int32, *int32) {
+func (recv *Widget) GetPreferredWidth() (int32, int32) {
 	var c_minimum_width C.gint
 
 	var c_natural_width C.gint
 
 	C.gtk_widget_get_preferred_width((*C.GtkWidget)(recv.native), &c_minimum_width, &c_natural_width)
 
-	minimumWidth := (*int32)(&c_minimum_width)
+	minimumWidth := (int32)(c_minimum_width)
 
-	naturalWidth := (*int32)(&c_natural_width)
+	naturalWidth := (int32)(c_natural_width)
 
 	return minimumWidth, naturalWidth
 }
 
 // GetPreferredWidthForHeight is a wrapper around the C function gtk_widget_get_preferred_width_for_height.
-func (recv *Widget) GetPreferredWidthForHeight(height int32) (*int32, *int32) {
+func (recv *Widget) GetPreferredWidthForHeight(height int32) (int32, int32) {
 	c_height := (C.gint)(height)
 
 	var c_minimum_width C.gint
@@ -2403,9 +2403,9 @@ func (recv *Widget) GetPreferredWidthForHeight(height int32) (*int32, *int32) {
 
 	C.gtk_widget_get_preferred_width_for_height((*C.GtkWidget)(recv.native), c_height, &c_minimum_width, &c_natural_width)
 
-	minimumWidth := (*int32)(&c_minimum_width)
+	minimumWidth := (int32)(c_minimum_width)
 
-	naturalWidth := (*int32)(&c_natural_width)
+	naturalWidth := (int32)(c_natural_width)
 
 	return minimumWidth, naturalWidth
 }
