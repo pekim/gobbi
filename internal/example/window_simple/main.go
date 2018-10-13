@@ -2,7 +2,12 @@ package main
 
 import (
 	"github.com/pekim/gobbi/lib/gtk"
+	"runtime"
 )
+
+func init() {
+	runtime.LockOSThread()
+}
 
 func main() {
 	gtk.Init([]string{})
