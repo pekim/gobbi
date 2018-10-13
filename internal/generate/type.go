@@ -81,14 +81,9 @@ func (t *Type) qnameAndGenerator(targetType *Type) (*QName, TypeGenerator) {
 		return qname, TypeGeneratorEnumerationNew(targetType, enum)
 	}
 
-	record, found := qname.ns.recordForName(qname.name)
+	record, found := qname.ns.recordOrClassRecordForName(qname.name)
 	if found {
 		return qname, TypeGeneratorRecordNew(targetType, record)
-	}
-
-	class, found := qname.ns.classForName(qname.name)
-	if found {
-		return qname, TypeGeneratorRecordNew(targetType, class.Record)
 	}
 
 	return nil, nil
