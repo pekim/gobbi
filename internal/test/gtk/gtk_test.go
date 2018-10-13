@@ -10,6 +10,7 @@ import (
 func TestCleanBuild(t *testing.T) {
 	app := gtk.ApplicationNew("pekim.gobbi.test", gio.APPLICATION_FLAGS_NONE)
 	assert.NotNil(t, app)
+
 }
 
 func TestInit(t *testing.T) {
@@ -24,6 +25,7 @@ func TestCreateWindow(t *testing.T) {
 
 	window := gtk.WindowNew(gtk.GTK_WINDOW_TOPLEVEL)
 	assert.NotNil(t, window)
+	window.Widget().Destroy()
 }
 
 func TestIndirectUpcasting(t *testing.T) {
@@ -35,6 +37,8 @@ func TestIndirectUpcasting(t *testing.T) {
 	assert.False(t, widget.IsVisible())
 	widget.ShowAll()
 	assert.True(t, widget.IsVisible())
+
+	window.Widget().Destroy()
 }
 
 func TestDirectUpcasting(t *testing.T) {
@@ -46,6 +50,8 @@ func TestDirectUpcasting(t *testing.T) {
 	assert.False(t, widget.IsVisible())
 	widget.ShowAll()
 	assert.True(t, widget.IsVisible())
+
+	window.Widget().Destroy()
 }
 
 func TestDowncasting(t *testing.T) {
@@ -57,4 +63,6 @@ func TestDowncasting(t *testing.T) {
 	widget := window.Widget()
 	window2 := gtk.CastToWindow(widget.Object())
 	assert.Equal(t, "qaz", window2.GetTitle())
+
+	window.Widget().Destroy()
 }
