@@ -47,6 +47,12 @@ func (recv *AppLaunchContext) Object() *gobject.Object {
 	return recv.AppLaunchContext().Object()
 }
 
+// CastToWidget down casts any arbitary Object to AppLaunchContext.
+// Exercise care, as this is a potentially dangerous function if the Object is not a AppLaunchContext.
+func CastToAppLaunchContext(object *gobject.Object) *AppLaunchContext {
+	return AppLaunchContextNewFromC(object.ToC())
+}
+
 // Cursor is a wrapper around the C record GdkCursor.
 type Cursor struct {
 	native *C.GdkCursor
@@ -71,6 +77,12 @@ func (recv *Cursor) ToC() unsafe.Pointer {
 // Object upcasts to *Object
 func (recv *Cursor) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
+}
+
+// CastToWidget down casts any arbitary Object to Cursor.
+// Exercise care, as this is a potentially dangerous function if the Object is not a Cursor.
+func CastToCursor(object *gobject.Object) *Cursor {
+	return CursorNewFromC(object.ToC())
 }
 
 // CursorNew is a wrapper around the C function gdk_cursor_new.
@@ -122,6 +134,12 @@ func (recv *Device) ToC() unsafe.Pointer {
 // Object upcasts to *Object
 func (recv *Device) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
+}
+
+// CastToWidget down casts any arbitary Object to Device.
+// Exercise care, as this is a potentially dangerous function if the Object is not a Device.
+func CastToDevice(object *gobject.Object) *Device {
+	return DeviceNewFromC(object.ToC())
 }
 
 // Unsupported : gdk_device_get_axis : unsupported parameter axes : no param type
@@ -198,6 +216,12 @@ func (recv *DeviceManager) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
+// CastToWidget down casts any arbitary Object to DeviceManager.
+// Exercise care, as this is a potentially dangerous function if the Object is not a DeviceManager.
+func CastToDeviceManager(object *gobject.Object) *DeviceManager {
+	return DeviceManagerNewFromC(object.ToC())
+}
+
 // Display is a wrapper around the C record GdkDisplay.
 type Display struct {
 	native *C.GdkDisplay
@@ -222,6 +246,12 @@ func (recv *Display) ToC() unsafe.Pointer {
 // Object upcasts to *Object
 func (recv *Display) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
+}
+
+// CastToWidget down casts any arbitary Object to Display.
+// Exercise care, as this is a potentially dangerous function if the Object is not a Display.
+func CastToDisplay(object *gobject.Object) *Display {
+	return DisplayNewFromC(object.ToC())
 }
 
 // DeviceIsGrabbed is a wrapper around the C function gdk_display_device_is_grabbed.
@@ -260,6 +290,12 @@ func (recv *DisplayManager) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
+// CastToWidget down casts any arbitary Object to DisplayManager.
+// Exercise care, as this is a potentially dangerous function if the Object is not a DisplayManager.
+func CastToDisplayManager(object *gobject.Object) *DisplayManager {
+	return DisplayManagerNewFromC(object.ToC())
+}
+
 // DragContext is a wrapper around the C record GdkDragContext.
 type DragContext struct {
 	native *C.GdkDragContext
@@ -284,6 +320,12 @@ func (recv *DragContext) ToC() unsafe.Pointer {
 // Object upcasts to *Object
 func (recv *DragContext) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
+}
+
+// CastToWidget down casts any arbitary Object to DragContext.
+// Exercise care, as this is a potentially dangerous function if the Object is not a DragContext.
+func CastToDragContext(object *gobject.Object) *DragContext {
+	return DragContextNewFromC(object.ToC())
 }
 
 // GetDevice is a wrapper around the C function gdk_drag_context_get_device.
@@ -329,6 +371,12 @@ func (recv *FrameClock) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
+// CastToWidget down casts any arbitary Object to FrameClock.
+// Exercise care, as this is a potentially dangerous function if the Object is not a FrameClock.
+func CastToFrameClock(object *gobject.Object) *FrameClock {
+	return FrameClockNewFromC(object.ToC())
+}
+
 // GLContext is a wrapper around the C record GdkGLContext.
 type GLContext struct {
 	native *C.GdkGLContext
@@ -355,6 +403,12 @@ func (recv *GLContext) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
+// CastToWidget down casts any arbitary Object to GLContext.
+// Exercise care, as this is a potentially dangerous function if the Object is not a GLContext.
+func CastToGLContext(object *gobject.Object) *GLContext {
+	return GLContextNewFromC(object.ToC())
+}
+
 // Keymap is a wrapper around the C record GdkKeymap.
 type Keymap struct {
 	native *C.GdkKeymap
@@ -379,6 +433,12 @@ func (recv *Keymap) ToC() unsafe.Pointer {
 // Object upcasts to *Object
 func (recv *Keymap) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
+}
+
+// CastToWidget down casts any arbitary Object to Keymap.
+// Exercise care, as this is a potentially dangerous function if the Object is not a Keymap.
+func CastToKeymap(object *gobject.Object) *Keymap {
+	return KeymapNewFromC(object.ToC())
 }
 
 // GetDirection is a wrapper around the C function gdk_keymap_get_direction.
@@ -431,6 +491,12 @@ func (recv *Screen) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
+// CastToWidget down casts any arbitary Object to Screen.
+// Exercise care, as this is a potentially dangerous function if the Object is not a Screen.
+func CastToScreen(object *gobject.Object) *Screen {
+	return ScreenNewFromC(object.ToC())
+}
+
 // Visual is a wrapper around the C record GdkVisual.
 type Visual struct {
 	native *C.GdkVisual
@@ -457,6 +523,12 @@ func (recv *Visual) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
+// CastToWidget down casts any arbitary Object to Visual.
+// Exercise care, as this is a potentially dangerous function if the Object is not a Visual.
+func CastToVisual(object *gobject.Object) *Visual {
+	return VisualNewFromC(object.ToC())
+}
+
 // Window is a wrapper around the C record GdkWindow.
 type Window struct {
 	native *C.GdkWindow
@@ -481,6 +553,12 @@ func (recv *Window) ToC() unsafe.Pointer {
 // Object upcasts to *Object
 func (recv *Window) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
+}
+
+// CastToWidget down casts any arbitary Object to Window.
+// Exercise care, as this is a potentially dangerous function if the Object is not a Window.
+func CastToWindow(object *gobject.Object) *Window {
+	return WindowNewFromC(object.ToC())
 }
 
 // WindowNew is a wrapper around the C function gdk_window_new.

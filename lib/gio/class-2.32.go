@@ -192,6 +192,12 @@ func (recv *InetAddressMask) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
+// CastToWidget down casts any arbitary Object to InetAddressMask.
+// Exercise care, as this is a potentially dangerous function if the Object is not a InetAddressMask.
+func CastToInetAddressMask(object *gobject.Object) *InetAddressMask {
+	return InetAddressMaskNewFromC(object.ToC())
+}
+
 // InetAddressMaskNew is a wrapper around the C function g_inet_address_mask_new.
 func InetAddressMaskNew(addr *InetAddress, length uint32) (*InetAddressMask, error) {
 	c_addr := (*C.GInetAddress)(addr.ToC())
@@ -333,6 +339,12 @@ func (recv *Menu) MenuModel() *MenuModel {
 // Object upcasts to *Object
 func (recv *Menu) Object() *gobject.Object {
 	return recv.MenuModel().Object()
+}
+
+// CastToWidget down casts any arbitary Object to Menu.
+// Exercise care, as this is a potentially dangerous function if the Object is not a Menu.
+func CastToMenu(object *gobject.Object) *Menu {
+	return MenuNewFromC(object.ToC())
 }
 
 // MenuNew is a wrapper around the C function g_menu_new.
@@ -533,6 +545,12 @@ func (recv *MenuAttributeIter) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
+// CastToWidget down casts any arbitary Object to MenuAttributeIter.
+// Exercise care, as this is a potentially dangerous function if the Object is not a MenuAttributeIter.
+func CastToMenuAttributeIter(object *gobject.Object) *MenuAttributeIter {
+	return MenuAttributeIterNewFromC(object.ToC())
+}
+
 // GetName is a wrapper around the C function g_menu_attribute_iter_get_name.
 func (recv *MenuAttributeIter) GetName() string {
 	retC := C.g_menu_attribute_iter_get_name((*C.GMenuAttributeIter)(recv.native))
@@ -577,6 +595,12 @@ func (recv *MenuItem) ToC() unsafe.Pointer {
 // Object upcasts to *Object
 func (recv *MenuItem) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
+}
+
+// CastToWidget down casts any arbitary Object to MenuItem.
+// Exercise care, as this is a potentially dangerous function if the Object is not a MenuItem.
+func CastToMenuItem(object *gobject.Object) *MenuItem {
+	return MenuItemNewFromC(object.ToC())
 }
 
 // MenuItemNew is a wrapper around the C function g_menu_item_new.
@@ -705,6 +729,12 @@ func (recv *MenuLinkIter) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
+// CastToWidget down casts any arbitary Object to MenuLinkIter.
+// Exercise care, as this is a potentially dangerous function if the Object is not a MenuLinkIter.
+func CastToMenuLinkIter(object *gobject.Object) *MenuLinkIter {
+	return MenuLinkIterNewFromC(object.ToC())
+}
+
 // GetName is a wrapper around the C function g_menu_link_iter_get_name.
 func (recv *MenuLinkIter) GetName() string {
 	retC := C.g_menu_link_iter_get_name((*C.GMenuLinkIter)(recv.native))
@@ -757,6 +787,12 @@ func (recv *MenuModel) ToC() unsafe.Pointer {
 // Object upcasts to *Object
 func (recv *MenuModel) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
+}
+
+// CastToWidget down casts any arbitary Object to MenuModel.
+// Exercise care, as this is a potentially dangerous function if the Object is not a MenuModel.
+func CastToMenuModel(object *gobject.Object) *MenuModel {
+	return MenuModelNewFromC(object.ToC())
 }
 
 // Unsupported : g_menu_model_get_item_attribute : unsupported parameter ... : varargs

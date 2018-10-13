@@ -290,6 +290,12 @@ func (recv *TestDBus) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
+// CastToWidget down casts any arbitary Object to TestDBus.
+// Exercise care, as this is a potentially dangerous function if the Object is not a TestDBus.
+func CastToTestDBus(object *gobject.Object) *TestDBus {
+	return TestDBusNewFromC(object.ToC())
+}
+
 // TestDBusNew is a wrapper around the C function g_test_dbus_new.
 func TestDBusNew(flags TestDBusFlags) *TestDBus {
 	c_flags := (C.GTestDBusFlags)(flags)

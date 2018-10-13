@@ -71,6 +71,7 @@ func (r *Record) generate(g *jen.Group, version *Version) {
 		(&RecordNewFromCFunc{r}).generate(g)
 		(&RecordToCFunc{r}).generate(g)
 		r.generateUpcasts(g)
+		r.generateDowncast(g)
 	}
 
 	r.Constructors.generate(g, version)
@@ -96,4 +97,17 @@ func (r *Record) generateType(g *jen.Group) {
 			}
 		})
 	g.Line()
+}
+
+func (r *Record) root() *Record {
+	if r.ParentName == "" {
+		return r
+	}
+
+	qname := QNameNew(r.Namespace, r.ParentName)
+	parent, found := qname.ns.recordOrClassRecordForName(qname.name)
+	if !found {
+		panic(fmt.Sprintf("Failed to find parent %s for %s", r.ParentName, r.Name))
+	}
+	return parent.root()
 }

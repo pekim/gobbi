@@ -36,6 +36,12 @@ func (recv *Binding) Object() *Object {
 	return ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
+// CastToWidget down casts any arbitary Object to Binding.
+// Exercise care, as this is a potentially dangerous function if the Object is not a Binding.
+func CastToBinding(object *Object) *Binding {
+	return BindingNewFromC(object.ToC())
+}
+
 // GetFlags is a wrapper around the C function g_binding_get_flags.
 func (recv *Binding) GetFlags() BindingFlags {
 	retC := C.g_binding_get_flags((*C.GBinding)(recv.native))

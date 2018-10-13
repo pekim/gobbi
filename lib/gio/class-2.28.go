@@ -52,6 +52,12 @@ func (recv *Application) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
+// CastToWidget down casts any arbitary Object to Application.
+// Exercise care, as this is a potentially dangerous function if the Object is not a Application.
+func CastToApplication(object *gobject.Object) *Application {
+	return ApplicationNewFromC(object.ToC())
+}
+
 // ApplicationNew is a wrapper around the C function g_application_new.
 func ApplicationNew(applicationId string, flags ApplicationFlags) *Application {
 	c_application_id := C.CString(applicationId)
@@ -340,6 +346,12 @@ func (recv *SimpleActionGroup) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
+// CastToWidget down casts any arbitary Object to SimpleActionGroup.
+// Exercise care, as this is a potentially dangerous function if the Object is not a SimpleActionGroup.
+func CastToSimpleActionGroup(object *gobject.Object) *SimpleActionGroup {
+	return SimpleActionGroupNewFromC(object.ToC())
+}
+
 // SimpleActionGroupNew is a wrapper around the C function g_simple_action_group_new.
 func SimpleActionGroupNew() *SimpleActionGroup {
 	retC := C.g_simple_action_group_new()
@@ -462,6 +474,12 @@ func (recv *TlsCertificate) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
+// CastToWidget down casts any arbitary Object to TlsCertificate.
+// Exercise care, as this is a potentially dangerous function if the Object is not a TlsCertificate.
+func CastToTlsCertificate(object *gobject.Object) *TlsCertificate {
+	return TlsCertificateNewFromC(object.ToC())
+}
+
 // TlsCertificateNewFromFile is a wrapper around the C function g_tls_certificate_new_from_file.
 func TlsCertificateNewFromFile(file string) (*TlsCertificate, error) {
 	c_file := C.CString(file)
@@ -562,6 +580,12 @@ func (recv *TlsConnection) IOStream() *IOStream {
 // Object upcasts to *Object
 func (recv *TlsConnection) Object() *gobject.Object {
 	return recv.IOStream().Object()
+}
+
+// CastToWidget down casts any arbitary Object to TlsConnection.
+// Exercise care, as this is a potentially dangerous function if the Object is not a TlsConnection.
+func CastToTlsConnection(object *gobject.Object) *TlsConnection {
+	return TlsConnectionNewFromC(object.ToC())
 }
 
 // EmitAcceptCertificate is a wrapper around the C function g_tls_connection_emit_accept_certificate.

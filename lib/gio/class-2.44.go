@@ -198,6 +198,12 @@ func (recv *SimpleIOStream) Object() *gobject.Object {
 	return recv.IOStream().Object()
 }
 
+// CastToWidget down casts any arbitary Object to SimpleIOStream.
+// Exercise care, as this is a potentially dangerous function if the Object is not a SimpleIOStream.
+func CastToSimpleIOStream(object *gobject.Object) *SimpleIOStream {
+	return SimpleIOStreamNewFromC(object.ToC())
+}
+
 // SimpleIOStreamNew is a wrapper around the C function g_simple_io_stream_new.
 func SimpleIOStreamNew(inputStream *InputStream, outputStream *OutputStream) *SimpleIOStream {
 	c_input_stream := (*C.GInputStream)(inputStream.ToC())

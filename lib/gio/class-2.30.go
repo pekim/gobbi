@@ -66,6 +66,12 @@ func (recv *DBusInterfaceSkeleton) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
+// CastToWidget down casts any arbitary Object to DBusInterfaceSkeleton.
+// Exercise care, as this is a potentially dangerous function if the Object is not a DBusInterfaceSkeleton.
+func CastToDBusInterfaceSkeleton(object *gobject.Object) *DBusInterfaceSkeleton {
+	return DBusInterfaceSkeletonNewFromC(object.ToC())
+}
+
 // Export is a wrapper around the C function g_dbus_interface_skeleton_export.
 func (recv *DBusInterfaceSkeleton) Export(connection *DBusConnection, objectPath string) (bool, error) {
 	c_connection := (*C.GDBusConnection)(connection.ToC())
@@ -192,6 +198,12 @@ func (recv *DBusObjectManagerClient) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
+// CastToWidget down casts any arbitary Object to DBusObjectManagerClient.
+// Exercise care, as this is a potentially dangerous function if the Object is not a DBusObjectManagerClient.
+func CastToDBusObjectManagerClient(object *gobject.Object) *DBusObjectManagerClient {
+	return DBusObjectManagerClientNewFromC(object.ToC())
+}
+
 // Unsupported : g_dbus_object_manager_client_new_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
 
 // Unsupported : g_dbus_object_manager_client_new_for_bus_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
@@ -259,6 +271,12 @@ func (recv *DBusObjectManagerServer) ToC() unsafe.Pointer {
 // Object upcasts to *Object
 func (recv *DBusObjectManagerServer) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
+}
+
+// CastToWidget down casts any arbitary Object to DBusObjectManagerServer.
+// Exercise care, as this is a potentially dangerous function if the Object is not a DBusObjectManagerServer.
+func CastToDBusObjectManagerServer(object *gobject.Object) *DBusObjectManagerServer {
+	return DBusObjectManagerServerNewFromC(object.ToC())
 }
 
 // DBusObjectManagerServerNew is a wrapper around the C function g_dbus_object_manager_server_new.
@@ -346,6 +364,12 @@ func (recv *DBusObjectProxy) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
+// CastToWidget down casts any arbitary Object to DBusObjectProxy.
+// Exercise care, as this is a potentially dangerous function if the Object is not a DBusObjectProxy.
+func CastToDBusObjectProxy(object *gobject.Object) *DBusObjectProxy {
+	return DBusObjectProxyNewFromC(object.ToC())
+}
+
 // DBusObjectProxyNew is a wrapper around the C function g_dbus_object_proxy_new.
 func DBusObjectProxyNew(connection *DBusConnection, objectPath string) *DBusObjectProxy {
 	c_connection := (*C.GDBusConnection)(connection.ToC())
@@ -393,6 +417,12 @@ func (recv *DBusObjectSkeleton) ToC() unsafe.Pointer {
 // Object upcasts to *Object
 func (recv *DBusObjectSkeleton) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
+}
+
+// CastToWidget down casts any arbitary Object to DBusObjectSkeleton.
+// Exercise care, as this is a potentially dangerous function if the Object is not a DBusObjectSkeleton.
+func CastToDBusObjectSkeleton(object *gobject.Object) *DBusObjectSkeleton {
+	return DBusObjectSkeletonNewFromC(object.ToC())
 }
 
 // DBusObjectSkeletonNew is a wrapper around the C function g_dbus_object_skeleton_new.
@@ -640,6 +670,12 @@ func (recv *TlsDatabase) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
+// CastToWidget down casts any arbitary Object to TlsDatabase.
+// Exercise care, as this is a potentially dangerous function if the Object is not a TlsDatabase.
+func CastToTlsDatabase(object *gobject.Object) *TlsDatabase {
+	return TlsDatabaseNewFromC(object.ToC())
+}
+
 // CreateCertificateHandle is a wrapper around the C function g_tls_database_create_certificate_handle.
 func (recv *TlsDatabase) CreateCertificateHandle(certificate *TlsCertificate) string {
 	c_certificate := (*C.GTlsCertificate)(certificate.ToC())
@@ -746,6 +782,12 @@ func (recv *TlsInteraction) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
+// CastToWidget down casts any arbitary Object to TlsInteraction.
+// Exercise care, as this is a potentially dangerous function if the Object is not a TlsInteraction.
+func CastToTlsInteraction(object *gobject.Object) *TlsInteraction {
+	return TlsInteractionNewFromC(object.ToC())
+}
+
 // AskPassword is a wrapper around the C function g_tls_interaction_ask_password.
 func (recv *TlsInteraction) AskPassword(password *TlsPassword, cancellable *Cancellable) (TlsInteractionResult, error) {
 	c_password := (*C.GTlsPassword)(password.ToC())
@@ -814,6 +856,12 @@ func (recv *TlsPassword) ToC() unsafe.Pointer {
 // Object upcasts to *Object
 func (recv *TlsPassword) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
+}
+
+// CastToWidget down casts any arbitary Object to TlsPassword.
+// Exercise care, as this is a potentially dangerous function if the Object is not a TlsPassword.
+func CastToTlsPassword(object *gobject.Object) *TlsPassword {
+	return TlsPasswordNewFromC(object.ToC())
 }
 
 // TlsPasswordNew is a wrapper around the C function g_tls_password_new.

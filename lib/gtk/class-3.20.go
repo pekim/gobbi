@@ -77,6 +77,12 @@ func (recv *FileChooserNative) Object() *gobject.Object {
 	return recv.NativeDialog().Object()
 }
 
+// CastToWidget down casts any arbitary Object to FileChooserNative.
+// Exercise care, as this is a potentially dangerous function if the Object is not a FileChooserNative.
+func CastToFileChooserNative(object *gobject.Object) *FileChooserNative {
+	return FileChooserNativeNewFromC(object.ToC())
+}
+
 // FileChooserNativeNew is a wrapper around the C function gtk_file_chooser_native_new.
 func FileChooserNativeNew(title string, parent *Window, action FileChooserAction, acceptLabel string, cancelLabel string) *FileChooserNative {
 	c_title := C.CString(title)
@@ -181,6 +187,12 @@ func (recv *NativeDialog) ToC() unsafe.Pointer {
 // Object upcasts to *Object
 func (recv *NativeDialog) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
+}
+
+// CastToWidget down casts any arbitary Object to NativeDialog.
+// Exercise care, as this is a potentially dangerous function if the Object is not a NativeDialog.
+func CastToNativeDialog(object *gobject.Object) *NativeDialog {
+	return NativeDialogNewFromC(object.ToC())
 }
 
 // Destroy is a wrapper around the C function gtk_native_dialog_destroy.
@@ -304,6 +316,12 @@ func (recv *PadController) Object() *gobject.Object {
 	return recv.EventController().Object()
 }
 
+// CastToWidget down casts any arbitary Object to PadController.
+// Exercise care, as this is a potentially dangerous function if the Object is not a PadController.
+func CastToPadController(object *gobject.Object) *PadController {
+	return PadControllerNewFromC(object.ToC())
+}
+
 // Unsupported : gtk_pad_controller_new : unsupported parameter group : no type generator for Gio.ActionGroup, GActionGroup*
 
 // Unsupported : gtk_page_setup_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
@@ -389,6 +407,12 @@ func (recv *ShortcutLabel) Object() *gobject.Object {
 	return recv.Box().Object()
 }
 
+// CastToWidget down casts any arbitary Object to ShortcutLabel.
+// Exercise care, as this is a potentially dangerous function if the Object is not a ShortcutLabel.
+func CastToShortcutLabel(object *gobject.Object) *ShortcutLabel {
+	return ShortcutLabelNewFromC(object.ToC())
+}
+
 // ShortcutsGroup is a wrapper around the C record GtkShortcutsGroup.
 type ShortcutsGroup struct {
 	native *C.GtkShortcutsGroup
@@ -433,6 +457,12 @@ func (recv *ShortcutsGroup) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *ShortcutsGroup) Object() *gobject.Object {
 	return recv.Box().Object()
+}
+
+// CastToWidget down casts any arbitary Object to ShortcutsGroup.
+// Exercise care, as this is a potentially dangerous function if the Object is not a ShortcutsGroup.
+func CastToShortcutsGroup(object *gobject.Object) *ShortcutsGroup {
+	return ShortcutsGroupNewFromC(object.ToC())
 }
 
 // ShortcutsSection is a wrapper around the C record GtkShortcutsSection.
@@ -481,6 +511,12 @@ func (recv *ShortcutsSection) Object() *gobject.Object {
 	return recv.Box().Object()
 }
 
+// CastToWidget down casts any arbitary Object to ShortcutsSection.
+// Exercise care, as this is a potentially dangerous function if the Object is not a ShortcutsSection.
+func CastToShortcutsSection(object *gobject.Object) *ShortcutsSection {
+	return ShortcutsSectionNewFromC(object.ToC())
+}
+
 // ShortcutsShortcut is a wrapper around the C record GtkShortcutsShortcut.
 type ShortcutsShortcut struct {
 	native *C.GtkShortcutsShortcut
@@ -525,6 +561,12 @@ func (recv *ShortcutsShortcut) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *ShortcutsShortcut) Object() *gobject.Object {
 	return recv.Box().Object()
+}
+
+// CastToWidget down casts any arbitary Object to ShortcutsShortcut.
+// Exercise care, as this is a potentially dangerous function if the Object is not a ShortcutsShortcut.
+func CastToShortcutsShortcut(object *gobject.Object) *ShortcutsShortcut {
+	return ShortcutsShortcutNewFromC(object.ToC())
 }
 
 // ShortcutsWindow is a wrapper around the C record GtkShortcutsWindow.
@@ -577,6 +619,12 @@ func (recv *ShortcutsWindow) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *ShortcutsWindow) Object() *gobject.Object {
 	return recv.Window().Object()
+}
+
+// CastToWidget down casts any arbitary Object to ShortcutsWindow.
+// Exercise care, as this is a potentially dangerous function if the Object is not a ShortcutsWindow.
+func CastToShortcutsWindow(object *gobject.Object) *ShortcutsWindow {
+	return ShortcutsWindowNewFromC(object.ToC())
 }
 
 // Unsupported : gtk_status_icon_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon, GIcon*

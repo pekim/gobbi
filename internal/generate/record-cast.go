@@ -120,3 +120,33 @@ func (r *Record) generateAncestorUpcast(g *jen.Group, parentQName *QName, qname 
 		}).
 		Line()
 }
+
+func (r *Record) generateDowncast(g *jen.Group) {
+	if r.root().Name != "Object" {
+		return
+	}
+
+	g.Commentf("CastToWidget down casts any arbitary Object to %s.", r.Name)
+	g.Commentf("Exercise care, as this is a potentially dangerous function if the Object is not a %s.", r.Name)
+
+	g.
+		Func().
+		Id("CastTo" + r.Name).
+		ParamsFunc(func(g *jen.Group) {
+			if r.Namespace.Name == "GObject" {
+				g.Id("object").Op("*").Id("Object")
+			} else {
+				g.Id("object").Op("*").Qual("github.com/pekim/gobbi/lib/gobject", "Object")
+			}
+		}).
+		Params(jen.Op("*").Id(r.Name)).
+		Block(jen.
+			Return().
+			Id(r.Name + "NewFromC").
+			Call(jen.
+				Id("object").
+				Op(".").
+				Id("ToC").
+				Call()))
+
+}

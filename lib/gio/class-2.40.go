@@ -50,6 +50,12 @@ func (recv *AppInfoMonitor) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
+// CastToWidget down casts any arbitary Object to AppInfoMonitor.
+// Exercise care, as this is a potentially dangerous function if the Object is not a AppInfoMonitor.
+func CastToAppInfoMonitor(object *gobject.Object) *AppInfoMonitor {
+	return AppInfoMonitorNewFromC(object.ToC())
+}
+
 // Unsupported : g_application_add_main_option_entries : unsupported parameter entries : no param type
 
 // AddOptionGroup is a wrapper around the C function g_application_add_option_group.
@@ -166,6 +172,12 @@ func (recv *Notification) ToC() unsafe.Pointer {
 // Object upcasts to *Object
 func (recv *Notification) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
+}
+
+// CastToWidget down casts any arbitary Object to Notification.
+// Exercise care, as this is a potentially dangerous function if the Object is not a Notification.
+func CastToNotification(object *gobject.Object) *Notification {
+	return NotificationNewFromC(object.ToC())
 }
 
 // NotificationNew is a wrapper around the C function g_notification_new.
@@ -295,6 +307,12 @@ func (recv *Subprocess) ToC() unsafe.Pointer {
 // Object upcasts to *Object
 func (recv *Subprocess) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
+}
+
+// CastToWidget down casts any arbitary Object to Subprocess.
+// Exercise care, as this is a potentially dangerous function if the Object is not a Subprocess.
+func CastToSubprocess(object *gobject.Object) *Subprocess {
+	return SubprocessNewFromC(object.ToC())
 }
 
 // Unsupported : g_subprocess_new : unsupported parameter error : record with indirection level of 2
@@ -503,6 +521,12 @@ func (recv *SubprocessLauncher) ToC() unsafe.Pointer {
 // Object upcasts to *Object
 func (recv *SubprocessLauncher) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
+}
+
+// CastToWidget down casts any arbitary Object to SubprocessLauncher.
+// Exercise care, as this is a potentially dangerous function if the Object is not a SubprocessLauncher.
+func CastToSubprocessLauncher(object *gobject.Object) *SubprocessLauncher {
+	return SubprocessLauncherNewFromC(object.ToC())
 }
 
 // SubprocessLauncherNew is a wrapper around the C function g_subprocess_launcher_new.

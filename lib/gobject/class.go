@@ -39,6 +39,12 @@ func (recv *InitiallyUnowned) Object() *Object {
 	return ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
+// CastToWidget down casts any arbitary Object to InitiallyUnowned.
+// Exercise care, as this is a potentially dangerous function if the Object is not a InitiallyUnowned.
+func CastToInitiallyUnowned(object *Object) *InitiallyUnowned {
+	return InitiallyUnownedNewFromC(object.ToC())
+}
+
 // Object is a wrapper around the C record GObject.
 type Object struct {
 	native *C.GObject
@@ -59,6 +65,12 @@ func ObjectNewFromC(u unsafe.Pointer) *Object {
 func (recv *Object) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// CastToWidget down casts any arbitary Object to Object.
+// Exercise care, as this is a potentially dangerous function if the Object is not a Object.
+func CastToObject(object *Object) *Object {
+	return ObjectNewFromC(object.ToC())
 }
 
 // Unsupported : g_object_new : unsupported parameter object_type : no type generator for GType, GType

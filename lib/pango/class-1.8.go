@@ -53,6 +53,12 @@ func (recv *Renderer) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
+// CastToWidget down casts any arbitary Object to Renderer.
+// Exercise care, as this is a potentially dangerous function if the Object is not a Renderer.
+func CastToRenderer(object *gobject.Object) *Renderer {
+	return RendererNewFromC(object.ToC())
+}
+
 // Activate is a wrapper around the C function pango_renderer_activate.
 func (recv *Renderer) Activate() {
 	C.pango_renderer_activate((*C.PangoRenderer)(recv.native))

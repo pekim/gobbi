@@ -39,6 +39,12 @@ func (recv *Pixbuf) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
+// CastToWidget down casts any arbitary Object to Pixbuf.
+// Exercise care, as this is a potentially dangerous function if the Object is not a Pixbuf.
+func CastToPixbuf(object *gobject.Object) *Pixbuf {
+	return PixbufNewFromC(object.ToC())
+}
+
 // PixbufNew is a wrapper around the C function gdk_pixbuf_new.
 func PixbufNew(colorspace Colorspace, hasAlpha bool, bitsPerSample int32, width int32, height int32) *Pixbuf {
 	c_colorspace := (C.GdkColorspace)(colorspace)
@@ -414,6 +420,12 @@ func (recv *PixbufAnimation) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
+// CastToWidget down casts any arbitary Object to PixbufAnimation.
+// Exercise care, as this is a potentially dangerous function if the Object is not a PixbufAnimation.
+func CastToPixbufAnimation(object *gobject.Object) *PixbufAnimation {
+	return PixbufAnimationNewFromC(object.ToC())
+}
+
 // PixbufAnimationNewFromFile is a wrapper around the C function gdk_pixbuf_animation_new_from_file.
 func PixbufAnimationNewFromFile(filename string) (*PixbufAnimation, error) {
 	c_filename := C.CString(filename)
@@ -517,6 +529,12 @@ func (recv *PixbufAnimationIter) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
+// CastToWidget down casts any arbitary Object to PixbufAnimationIter.
+// Exercise care, as this is a potentially dangerous function if the Object is not a PixbufAnimationIter.
+func CastToPixbufAnimationIter(object *gobject.Object) *PixbufAnimationIter {
+	return PixbufAnimationIterNewFromC(object.ToC())
+}
+
 // Advance is a wrapper around the C function gdk_pixbuf_animation_iter_advance.
 func (recv *PixbufAnimationIter) Advance(currentTime *glib.TimeVal) bool {
 	c_current_time := (*C.GTimeVal)(currentTime.ToC())
@@ -577,6 +595,12 @@ func (recv *PixbufLoader) ToC() unsafe.Pointer {
 // Object upcasts to *Object
 func (recv *PixbufLoader) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
+}
+
+// CastToWidget down casts any arbitary Object to PixbufLoader.
+// Exercise care, as this is a potentially dangerous function if the Object is not a PixbufLoader.
+func CastToPixbufLoader(object *gobject.Object) *PixbufLoader {
+	return PixbufLoaderNewFromC(object.ToC())
 }
 
 // PixbufLoaderNew is a wrapper around the C function gdk_pixbuf_loader_new.
@@ -667,6 +691,12 @@ func (recv *PixbufSimpleAnim) PixbufAnimation() *PixbufAnimation {
 // Object upcasts to *Object
 func (recv *PixbufSimpleAnim) Object() *gobject.Object {
 	return recv.PixbufAnimation().Object()
+}
+
+// CastToWidget down casts any arbitary Object to PixbufSimpleAnim.
+// Exercise care, as this is a potentially dangerous function if the Object is not a PixbufSimpleAnim.
+func CastToPixbufSimpleAnim(object *gobject.Object) *PixbufSimpleAnim {
+	return PixbufSimpleAnimNewFromC(object.ToC())
 }
 
 // Unsupported : PixbufSimpleAnimIter : no CType

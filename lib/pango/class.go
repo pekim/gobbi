@@ -39,6 +39,12 @@ func (recv *Context) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
+// CastToWidget down casts any arbitary Object to Context.
+// Exercise care, as this is a potentially dangerous function if the Object is not a Context.
+func CastToContext(object *gobject.Object) *Context {
+	return ContextNewFromC(object.ToC())
+}
+
 // ContextNew is a wrapper around the C function pango_context_new.
 func ContextNew() *Context {
 	retC := C.pango_context_new()
@@ -157,6 +163,12 @@ func (recv *EngineLang) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// CastToWidget down casts any arbitary Object to EngineLang.
+// Exercise care, as this is a potentially dangerous function if the Object is not a EngineLang.
+func CastToEngineLang(object *gobject.Object) *EngineLang {
+	return EngineLangNewFromC(object.ToC())
+}
+
 // EngineShape is a wrapper around the C record PangoEngineShape.
 type EngineShape struct {
 	native *C.PangoEngineShape
@@ -177,6 +189,12 @@ func EngineShapeNewFromC(u unsafe.Pointer) *EngineShape {
 func (recv *EngineShape) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// CastToWidget down casts any arbitary Object to EngineShape.
+// Exercise care, as this is a potentially dangerous function if the Object is not a EngineShape.
+func CastToEngineShape(object *gobject.Object) *EngineShape {
+	return EngineShapeNewFromC(object.ToC())
 }
 
 // Font is a wrapper around the C record PangoFont.
@@ -204,6 +222,12 @@ func (recv *Font) ToC() unsafe.Pointer {
 // Object upcasts to *Object
 func (recv *Font) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
+}
+
+// CastToWidget down casts any arbitary Object to Font.
+// Exercise care, as this is a potentially dangerous function if the Object is not a Font.
+func CastToFont(object *gobject.Object) *Font {
+	return FontNewFromC(object.ToC())
 }
 
 // Describe is a wrapper around the C function pango_font_describe.
@@ -282,6 +306,12 @@ func (recv *FontFace) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
+// CastToWidget down casts any arbitary Object to FontFace.
+// Exercise care, as this is a potentially dangerous function if the Object is not a FontFace.
+func CastToFontFace(object *gobject.Object) *FontFace {
+	return FontFaceNewFromC(object.ToC())
+}
+
 // Describe is a wrapper around the C function pango_font_face_describe.
 func (recv *FontFace) Describe() *FontDescription {
 	retC := C.pango_font_face_describe((*C.PangoFontFace)(recv.native))
@@ -325,6 +355,12 @@ func (recv *FontFamily) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
+// CastToWidget down casts any arbitary Object to FontFamily.
+// Exercise care, as this is a potentially dangerous function if the Object is not a FontFamily.
+func CastToFontFamily(object *gobject.Object) *FontFamily {
+	return FontFamilyNewFromC(object.ToC())
+}
+
 // GetName is a wrapper around the C function pango_font_family_get_name.
 func (recv *FontFamily) GetName() string {
 	retC := C.pango_font_family_get_name((*C.PangoFontFamily)(recv.native))
@@ -360,6 +396,12 @@ func (recv *FontMap) ToC() unsafe.Pointer {
 // Object upcasts to *Object
 func (recv *FontMap) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
+}
+
+// CastToWidget down casts any arbitary Object to FontMap.
+// Exercise care, as this is a potentially dangerous function if the Object is not a FontMap.
+func CastToFontMap(object *gobject.Object) *FontMap {
+	return FontMapNewFromC(object.ToC())
 }
 
 // Unsupported : pango_font_map_list_families : unsupported parameter families : no param type
@@ -417,6 +459,12 @@ func (recv *Fontset) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
+// CastToWidget down casts any arbitary Object to Fontset.
+// Exercise care, as this is a potentially dangerous function if the Object is not a Fontset.
+func CastToFontset(object *gobject.Object) *Fontset {
+	return FontsetNewFromC(object.ToC())
+}
+
 // GetFont is a wrapper around the C function pango_fontset_get_font.
 func (recv *Fontset) GetFont(wc uint32) *Font {
 	c_wc := (C.guint)(wc)
@@ -455,6 +503,12 @@ func (recv *Layout) ToC() unsafe.Pointer {
 // Object upcasts to *Object
 func (recv *Layout) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
+}
+
+// CastToWidget down casts any arbitary Object to Layout.
+// Exercise care, as this is a potentially dangerous function if the Object is not a Layout.
+func CastToLayout(object *gobject.Object) *Layout {
+	return LayoutNewFromC(object.ToC())
 }
 
 // LayoutNew is a wrapper around the C function pango_layout_new.

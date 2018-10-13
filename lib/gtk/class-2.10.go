@@ -1750,6 +1750,12 @@ func (recv *RecentManager) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
+// CastToWidget down casts any arbitary Object to RecentManager.
+// Exercise care, as this is a potentially dangerous function if the Object is not a RecentManager.
+func CastToRecentManager(object *gobject.Object) *RecentManager {
+	return RecentManagerNewFromC(object.ToC())
+}
+
 // RecentManagerNew is a wrapper around the C function gtk_recent_manager_new.
 func RecentManagerNew() *RecentManager {
 	retC := C.gtk_recent_manager_new()

@@ -39,6 +39,12 @@ func (recv *GObjectAccessible) Object() *Object {
 	return ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
+// CastToWidget down casts any arbitary Object to GObjectAccessible.
+// Exercise care, as this is a potentially dangerous function if the Object is not a GObjectAccessible.
+func CastToGObjectAccessible(object *gobject.Object) *GObjectAccessible {
+	return GObjectAccessibleNewFromC(object.ToC())
+}
+
 // GetObject is a wrapper around the C function atk_gobject_accessible_get_object.
 func (recv *GObjectAccessible) GetObject() *gobject.Object {
 	retC := C.atk_gobject_accessible_get_object((*C.AtkGObjectAccessible)(recv.native))
@@ -72,6 +78,12 @@ func (recv *Hyperlink) ToC() unsafe.Pointer {
 // Object upcasts to *Object
 func (recv *Hyperlink) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
+}
+
+// CastToWidget down casts any arbitary Object to Hyperlink.
+// Exercise care, as this is a potentially dangerous function if the Object is not a Hyperlink.
+func CastToHyperlink(object *gobject.Object) *Hyperlink {
+	return HyperlinkNewFromC(object.ToC())
 }
 
 // GetEndIndex is a wrapper around the C function atk_hyperlink_get_end_index.
@@ -162,6 +174,12 @@ func (recv *Misc) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
+// CastToWidget down casts any arbitary Object to Misc.
+// Exercise care, as this is a potentially dangerous function if the Object is not a Misc.
+func CastToMisc(object *gobject.Object) *Misc {
+	return MiscNewFromC(object.ToC())
+}
+
 // NoOpObject is a wrapper around the C record AtkNoOpObject.
 type NoOpObject struct {
 	native *C.AtkNoOpObject
@@ -187,6 +205,12 @@ func (recv *NoOpObject) ToC() unsafe.Pointer {
 // Object upcasts to *Object
 func (recv *NoOpObject) Object() *Object {
 	return ObjectNewFromC(unsafe.Pointer(recv.native))
+}
+
+// CastToWidget down casts any arbitary Object to NoOpObject.
+// Exercise care, as this is a potentially dangerous function if the Object is not a NoOpObject.
+func CastToNoOpObject(object *gobject.Object) *NoOpObject {
+	return NoOpObjectNewFromC(object.ToC())
 }
 
 // NoOpObjectNew is a wrapper around the C function atk_no_op_object_new.
@@ -229,6 +253,12 @@ func (recv *NoOpObjectFactory) ObjectFactory() *ObjectFactory {
 // Object upcasts to *Object
 func (recv *NoOpObjectFactory) Object() *gobject.Object {
 	return recv.ObjectFactory().Object()
+}
+
+// CastToWidget down casts any arbitary Object to NoOpObjectFactory.
+// Exercise care, as this is a potentially dangerous function if the Object is not a NoOpObjectFactory.
+func CastToNoOpObjectFactory(object *gobject.Object) *NoOpObjectFactory {
+	return NoOpObjectFactoryNewFromC(object.ToC())
 }
 
 // NoOpObjectFactoryNew is a wrapper around the C function atk_no_op_object_factory_new.
@@ -284,6 +314,12 @@ func (recv *Object) ToC() unsafe.Pointer {
 // Object upcasts to *Object
 func (recv *Object) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
+}
+
+// CastToWidget down casts any arbitary Object to Object.
+// Exercise care, as this is a potentially dangerous function if the Object is not a Object.
+func CastToObject(object *gobject.Object) *Object {
+	return ObjectNewFromC(object.ToC())
 }
 
 // AddRelationship is a wrapper around the C function atk_object_add_relationship.
@@ -505,6 +541,12 @@ func (recv *ObjectFactory) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
+// CastToWidget down casts any arbitary Object to ObjectFactory.
+// Exercise care, as this is a potentially dangerous function if the Object is not a ObjectFactory.
+func CastToObjectFactory(object *gobject.Object) *ObjectFactory {
+	return ObjectFactoryNewFromC(object.ToC())
+}
+
 // CreateAccessible is a wrapper around the C function atk_object_factory_create_accessible.
 func (recv *ObjectFactory) CreateAccessible(obj *gobject.Object) *Object {
 	c_obj := (*C.GObject)(obj.ToC())
@@ -551,6 +593,12 @@ func (recv *Plug) Object() *Object {
 	return ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
+// CastToWidget down casts any arbitary Object to Plug.
+// Exercise care, as this is a potentially dangerous function if the Object is not a Plug.
+func CastToPlug(object *gobject.Object) *Plug {
+	return PlugNewFromC(object.ToC())
+}
+
 // PlugNew is a wrapper around the C function atk_plug_new.
 func PlugNew() *Plug {
 	retC := C.atk_plug_new()
@@ -586,6 +634,12 @@ func (recv *Registry) ToC() unsafe.Pointer {
 // Object upcasts to *Object
 func (recv *Registry) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
+}
+
+// CastToWidget down casts any arbitary Object to Registry.
+// Exercise care, as this is a potentially dangerous function if the Object is not a Registry.
+func CastToRegistry(object *gobject.Object) *Registry {
+	return RegistryNewFromC(object.ToC())
 }
 
 // Unsupported : atk_registry_get_factory : unsupported parameter type : no type generator for GType, GType
@@ -626,6 +680,12 @@ func (recv *Relation) ToC() unsafe.Pointer {
 // Object upcasts to *Object
 func (recv *Relation) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
+}
+
+// CastToWidget down casts any arbitary Object to Relation.
+// Exercise care, as this is a potentially dangerous function if the Object is not a Relation.
+func CastToRelation(object *gobject.Object) *Relation {
+	return RelationNewFromC(object.ToC())
 }
 
 // Unsupported : atk_relation_new : unsupported parameter targets : no param type
@@ -676,6 +736,12 @@ func (recv *RelationSet) ToC() unsafe.Pointer {
 // Object upcasts to *Object
 func (recv *RelationSet) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
+}
+
+// CastToWidget down casts any arbitary Object to RelationSet.
+// Exercise care, as this is a potentially dangerous function if the Object is not a RelationSet.
+func CastToRelationSet(object *gobject.Object) *RelationSet {
+	return RelationSetNewFromC(object.ToC())
 }
 
 // RelationSetNew is a wrapper around the C function atk_relation_set_new.
@@ -782,6 +848,12 @@ func (recv *Socket) Object() *Object {
 	return ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
+// CastToWidget down casts any arbitary Object to Socket.
+// Exercise care, as this is a potentially dangerous function if the Object is not a Socket.
+func CastToSocket(object *gobject.Object) *Socket {
+	return SocketNewFromC(object.ToC())
+}
+
 // SocketNew is a wrapper around the C function atk_socket_new.
 func SocketNew() *Socket {
 	retC := C.atk_socket_new()
@@ -815,6 +887,12 @@ func (recv *StateSet) ToC() unsafe.Pointer {
 // Object upcasts to *Object
 func (recv *StateSet) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
+}
+
+// CastToWidget down casts any arbitary Object to StateSet.
+// Exercise care, as this is a potentially dangerous function if the Object is not a StateSet.
+func CastToStateSet(object *gobject.Object) *StateSet {
+	return StateSetNewFromC(object.ToC())
 }
 
 // StateSetNew is a wrapper around the C function atk_state_set_new.
@@ -929,4 +1007,10 @@ func (recv *Util) ToC() unsafe.Pointer {
 // Object upcasts to *Object
 func (recv *Util) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
+}
+
+// CastToWidget down casts any arbitary Object to Util.
+// Exercise care, as this is a potentially dangerous function if the Object is not a Util.
+func CastToUtil(object *gobject.Object) *Util {
+	return UtilNewFromC(object.ToC())
 }

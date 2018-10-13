@@ -47,3 +47,14 @@ func TestDirectUpcasting(t *testing.T) {
 	widget.ShowAll()
 	assert.True(t, widget.IsVisible())
 }
+
+func TestDowncasting(t *testing.T) {
+	gtk.Init([]string{})
+
+	window := gtk.WindowNew(gtk.GTK_WINDOW_TOPLEVEL)
+	window.SetTitle("qaz")
+
+	widget := window.Widget()
+	window2 := gtk.CastToWindow(widget.Object())
+	assert.Equal(t, "qaz", window2.GetTitle())
+}

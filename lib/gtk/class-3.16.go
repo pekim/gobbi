@@ -87,6 +87,12 @@ func (recv *GLArea) Object() *gobject.Object {
 	return recv.Widget().Object()
 }
 
+// CastToWidget down casts any arbitary Object to GLArea.
+// Exercise care, as this is a potentially dangerous function if the Object is not a GLArea.
+func CastToGLArea(object *gobject.Object) *GLArea {
+	return GLAreaNewFromC(object.ToC())
+}
+
 // GLAreaNew is a wrapper around the C function gtk_gl_area_new.
 func GLAreaNew() *GLArea {
 	retC := C.gtk_gl_area_new()

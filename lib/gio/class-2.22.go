@@ -585,6 +585,12 @@ func (recv *Socket) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
+// CastToWidget down casts any arbitary Object to Socket.
+// Exercise care, as this is a potentially dangerous function if the Object is not a Socket.
+func CastToSocket(object *gobject.Object) *Socket {
+	return SocketNewFromC(object.ToC())
+}
+
 // SocketNew is a wrapper around the C function g_socket_new.
 func SocketNew(family SocketFamily, type_ SocketType, protocol SocketProtocol) (*Socket, error) {
 	c_family := (C.GSocketFamily)(family)
@@ -1007,6 +1013,12 @@ func (recv *SocketClient) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
+// CastToWidget down casts any arbitary Object to SocketClient.
+// Exercise care, as this is a potentially dangerous function if the Object is not a SocketClient.
+func CastToSocketClient(object *gobject.Object) *SocketClient {
+	return SocketClientNewFromC(object.ToC())
+}
+
 // SocketClientNew is a wrapper around the C function g_socket_client_new.
 func SocketClientNew() *SocketClient {
 	retC := C.g_socket_client_new()
@@ -1185,6 +1197,12 @@ func (recv *SocketConnection) Object() *gobject.Object {
 	return recv.IOStream().Object()
 }
 
+// CastToWidget down casts any arbitary Object to SocketConnection.
+// Exercise care, as this is a potentially dangerous function if the Object is not a SocketConnection.
+func CastToSocketConnection(object *gobject.Object) *SocketConnection {
+	return SocketConnectionNewFromC(object.ToC())
+}
+
 // GetLocalAddress is a wrapper around the C function g_socket_connection_get_local_address.
 func (recv *SocketConnection) GetLocalAddress() (*SocketAddress, error) {
 	var cThrowableError *C.GError
@@ -1282,6 +1300,12 @@ func (recv *SocketListener) ToC() unsafe.Pointer {
 // Object upcasts to *Object
 func (recv *SocketListener) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
+}
+
+// CastToWidget down casts any arbitary Object to SocketListener.
+// Exercise care, as this is a potentially dangerous function if the Object is not a SocketListener.
+func CastToSocketListener(object *gobject.Object) *SocketListener {
+	return SocketListenerNewFromC(object.ToC())
 }
 
 // SocketListenerNew is a wrapper around the C function g_socket_listener_new.
@@ -1393,6 +1417,12 @@ func (recv *SocketService) Object() *gobject.Object {
 	return recv.SocketListener().Object()
 }
 
+// CastToWidget down casts any arbitary Object to SocketService.
+// Exercise care, as this is a potentially dangerous function if the Object is not a SocketService.
+func CastToSocketService(object *gobject.Object) *SocketService {
+	return SocketServiceNewFromC(object.ToC())
+}
+
 // SocketServiceNew is a wrapper around the C function g_socket_service_new.
 func SocketServiceNew() *SocketService {
 	retC := C.g_socket_service_new()
@@ -1467,6 +1497,12 @@ func (recv *TcpConnection) Object() *gobject.Object {
 	return recv.SocketConnection().Object()
 }
 
+// CastToWidget down casts any arbitary Object to TcpConnection.
+// Exercise care, as this is a potentially dangerous function if the Object is not a TcpConnection.
+func CastToTcpConnection(object *gobject.Object) *TcpConnection {
+	return TcpConnectionNewFromC(object.ToC())
+}
+
 // GetGracefulDisconnect is a wrapper around the C function g_tcp_connection_get_graceful_disconnect.
 func (recv *TcpConnection) GetGracefulDisconnect() bool {
 	retC := C.g_tcp_connection_get_graceful_disconnect((*C.GTcpConnection)(recv.native))
@@ -1523,6 +1559,12 @@ func (recv *ThreadedSocketService) SocketListener() *SocketListener {
 // Object upcasts to *Object
 func (recv *ThreadedSocketService) Object() *gobject.Object {
 	return recv.SocketService().Object()
+}
+
+// CastToWidget down casts any arbitary Object to ThreadedSocketService.
+// Exercise care, as this is a potentially dangerous function if the Object is not a ThreadedSocketService.
+func CastToThreadedSocketService(object *gobject.Object) *ThreadedSocketService {
+	return ThreadedSocketServiceNewFromC(object.ToC())
 }
 
 // ThreadedSocketServiceNew is a wrapper around the C function g_threaded_socket_service_new.

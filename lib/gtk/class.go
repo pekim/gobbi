@@ -79,6 +79,12 @@ func (recv *AboutDialog) Object() *gobject.Object {
 	return recv.Dialog().Object()
 }
 
+// CastToWidget down casts any arbitary Object to AboutDialog.
+// Exercise care, as this is a potentially dangerous function if the Object is not a AboutDialog.
+func CastToAboutDialog(object *gobject.Object) *AboutDialog {
+	return AboutDialogNewFromC(object.ToC())
+}
+
 // AccelGroup is a wrapper around the C record GtkAccelGroup.
 type AccelGroup struct {
 	native *C.GtkAccelGroup
@@ -105,6 +111,12 @@ func (recv *AccelGroup) ToC() unsafe.Pointer {
 // Object upcasts to *Object
 func (recv *AccelGroup) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
+}
+
+// CastToWidget down casts any arbitary Object to AccelGroup.
+// Exercise care, as this is a potentially dangerous function if the Object is not a AccelGroup.
+func CastToAccelGroup(object *gobject.Object) *AccelGroup {
+	return AccelGroupNewFromC(object.ToC())
 }
 
 // AccelGroupNew is a wrapper around the C function gtk_accel_group_new.
@@ -246,6 +258,12 @@ func (recv *AccelLabel) Object() *gobject.Object {
 	return recv.Label().Object()
 }
 
+// CastToWidget down casts any arbitary Object to AccelLabel.
+// Exercise care, as this is a potentially dangerous function if the Object is not a AccelLabel.
+func CastToAccelLabel(object *gobject.Object) *AccelLabel {
+	return AccelLabelNewFromC(object.ToC())
+}
+
 // AccelLabelNew is a wrapper around the C function gtk_accel_label_new.
 func AccelLabelNew(string string) *AccelLabel {
 	c_string := C.CString(string)
@@ -325,6 +343,12 @@ func (recv *AccelMap) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
+// CastToWidget down casts any arbitary Object to AccelMap.
+// Exercise care, as this is a potentially dangerous function if the Object is not a AccelMap.
+func CastToAccelMap(object *gobject.Object) *AccelMap {
+	return AccelMapNewFromC(object.ToC())
+}
+
 // Accessible is a wrapper around the C record GtkAccessible.
 type Accessible struct {
 	native *C.GtkAccessible
@@ -351,6 +375,12 @@ func (recv *Accessible) ToC() unsafe.Pointer {
 // Object upcasts to *Object
 func (recv *Accessible) Object() *atk.Object {
 	return atk.ObjectNewFromC(unsafe.Pointer(recv.native))
+}
+
+// CastToWidget down casts any arbitary Object to Accessible.
+// Exercise care, as this is a potentially dangerous function if the Object is not a Accessible.
+func CastToAccessible(object *gobject.Object) *Accessible {
+	return AccessibleNewFromC(object.ToC())
 }
 
 // ConnectWidgetDestroyed is a wrapper around the C function gtk_accessible_connect_widget_destroyed.
@@ -386,6 +416,12 @@ func (recv *Action) ToC() unsafe.Pointer {
 // Object upcasts to *Object
 func (recv *Action) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
+}
+
+// CastToWidget down casts any arbitary Object to Action.
+// Exercise care, as this is a potentially dangerous function if the Object is not a Action.
+func CastToAction(object *gobject.Object) *Action {
+	return ActionNewFromC(object.ToC())
 }
 
 // ActionBar is a wrapper around the C record GtkActionBar.
@@ -435,6 +471,12 @@ func (recv *ActionBar) Object() *gobject.Object {
 	return recv.Bin().Object()
 }
 
+// CastToWidget down casts any arbitary Object to ActionBar.
+// Exercise care, as this is a potentially dangerous function if the Object is not a ActionBar.
+func CastToActionBar(object *gobject.Object) *ActionBar {
+	return ActionBarNewFromC(object.ToC())
+}
+
 // ActionGroup is a wrapper around the C record GtkActionGroup.
 type ActionGroup struct {
 	native *C.GtkActionGroup
@@ -461,6 +503,12 @@ func (recv *ActionGroup) ToC() unsafe.Pointer {
 // Object upcasts to *Object
 func (recv *ActionGroup) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
+}
+
+// CastToWidget down casts any arbitary Object to ActionGroup.
+// Exercise care, as this is a potentially dangerous function if the Object is not a ActionGroup.
+func CastToActionGroup(object *gobject.Object) *ActionGroup {
+	return ActionGroupNewFromC(object.ToC())
 }
 
 // Adjustment is a wrapper around the C record GtkAdjustment.
@@ -494,6 +542,12 @@ func (recv *Adjustment) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *Adjustment) Object() *gobject.Object {
 	return recv.InitiallyUnowned().Object()
+}
+
+// CastToWidget down casts any arbitary Object to Adjustment.
+// Exercise care, as this is a potentially dangerous function if the Object is not a Adjustment.
+func CastToAdjustment(object *gobject.Object) *Adjustment {
+	return AdjustmentNewFromC(object.ToC())
 }
 
 // AdjustmentNew is a wrapper around the C function gtk_adjustment_new.
@@ -606,6 +660,12 @@ func (recv *Alignment) Object() *gobject.Object {
 	return recv.Bin().Object()
 }
 
+// CastToWidget down casts any arbitary Object to Alignment.
+// Exercise care, as this is a potentially dangerous function if the Object is not a Alignment.
+func CastToAlignment(object *gobject.Object) *Alignment {
+	return AlignmentNewFromC(object.ToC())
+}
+
 // AlignmentNew is a wrapper around the C function gtk_alignment_new.
 func AlignmentNew(xalign float32, yalign float32, xscale float32, yscale float32) *Alignment {
 	c_xalign := (C.gfloat)(xalign)
@@ -690,6 +750,12 @@ func (recv *AppChooserButton) Object() *gobject.Object {
 	return recv.ComboBox().Object()
 }
 
+// CastToWidget down casts any arbitary Object to AppChooserButton.
+// Exercise care, as this is a potentially dangerous function if the Object is not a AppChooserButton.
+func CastToAppChooserButton(object *gobject.Object) *AppChooserButton {
+	return AppChooserButtonNewFromC(object.ToC())
+}
+
 // GetHeading is a wrapper around the C function gtk_app_chooser_button_get_heading.
 func (recv *AppChooserButton) GetHeading() string {
 	retC := C.gtk_app_chooser_button_get_heading((*C.GtkAppChooserButton)(recv.native))
@@ -766,6 +832,12 @@ func (recv *AppChooserDialog) Object() *gobject.Object {
 	return recv.Dialog().Object()
 }
 
+// CastToWidget down casts any arbitary Object to AppChooserDialog.
+// Exercise care, as this is a potentially dangerous function if the Object is not a AppChooserDialog.
+func CastToAppChooserDialog(object *gobject.Object) *AppChooserDialog {
+	return AppChooserDialogNewFromC(object.ToC())
+}
+
 // Unsupported : gtk_app_chooser_dialog_new : unsupported parameter file : no type generator for Gio.File, GFile*
 
 // GetHeading is a wrapper around the C function gtk_app_chooser_dialog_get_heading.
@@ -834,6 +906,12 @@ func (recv *AppChooserWidget) Object() *gobject.Object {
 	return recv.Box().Object()
 }
 
+// CastToWidget down casts any arbitary Object to AppChooserWidget.
+// Exercise care, as this is a potentially dangerous function if the Object is not a AppChooserWidget.
+func CastToAppChooserWidget(object *gobject.Object) *AppChooserWidget {
+	return AppChooserWidgetNewFromC(object.ToC())
+}
+
 // SetDefaultText is a wrapper around the C function gtk_app_chooser_widget_set_default_text.
 func (recv *AppChooserWidget) SetDefaultText(text string) {
 	c_text := C.CString(text)
@@ -875,6 +953,12 @@ func (recv *Application) Application() *gio.Application {
 // Object upcasts to *Object
 func (recv *Application) Object() *gobject.Object {
 	return recv.Application().Object()
+}
+
+// CastToWidget down casts any arbitary Object to Application.
+// Exercise care, as this is a potentially dangerous function if the Object is not a Application.
+func CastToApplication(object *gobject.Object) *Application {
+	return ApplicationNewFromC(object.ToC())
 }
 
 // ApplicationWindow is a wrapper around the C record GtkApplicationWindow.
@@ -930,6 +1014,12 @@ func (recv *ApplicationWindow) Object() *gobject.Object {
 	return recv.Window().Object()
 }
 
+// CastToWidget down casts any arbitary Object to ApplicationWindow.
+// Exercise care, as this is a potentially dangerous function if the Object is not a ApplicationWindow.
+func CastToApplicationWindow(object *gobject.Object) *ApplicationWindow {
+	return ApplicationWindowNewFromC(object.ToC())
+}
+
 // Arrow is a wrapper around the C record GtkArrow.
 type Arrow struct {
 	native *C.GtkArrow
@@ -971,6 +1061,12 @@ func (recv *Arrow) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *Arrow) Object() *gobject.Object {
 	return recv.Misc().Object()
+}
+
+// CastToWidget down casts any arbitary Object to Arrow.
+// Exercise care, as this is a potentially dangerous function if the Object is not a Arrow.
+func CastToArrow(object *gobject.Object) *Arrow {
+	return ArrowNewFromC(object.ToC())
 }
 
 // ArrowNew is a wrapper around the C function gtk_arrow_new.
@@ -1034,6 +1130,12 @@ func (recv *ArrowAccessible) Object() *atk.Object {
 	return recv.WidgetAccessible().Object()
 }
 
+// CastToWidget down casts any arbitary Object to ArrowAccessible.
+// Exercise care, as this is a potentially dangerous function if the Object is not a ArrowAccessible.
+func CastToArrowAccessible(object *gobject.Object) *ArrowAccessible {
+	return ArrowAccessibleNewFromC(object.ToC())
+}
+
 // AspectFrame is a wrapper around the C record GtkAspectFrame.
 type AspectFrame struct {
 	native *C.GtkAspectFrame
@@ -1085,6 +1187,12 @@ func (recv *AspectFrame) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *AspectFrame) Object() *gobject.Object {
 	return recv.Frame().Object()
+}
+
+// CastToWidget down casts any arbitary Object to AspectFrame.
+// Exercise care, as this is a potentially dangerous function if the Object is not a AspectFrame.
+func CastToAspectFrame(object *gobject.Object) *AspectFrame {
+	return AspectFrameNewFromC(object.ToC())
 }
 
 // AspectFrameNew is a wrapper around the C function gtk_aspect_frame_new.
@@ -1176,6 +1284,12 @@ func (recv *Assistant) Object() *gobject.Object {
 	return recv.Window().Object()
 }
 
+// CastToWidget down casts any arbitary Object to Assistant.
+// Exercise care, as this is a potentially dangerous function if the Object is not a Assistant.
+func CastToAssistant(object *gobject.Object) *Assistant {
+	return AssistantNewFromC(object.ToC())
+}
+
 // Bin is a wrapper around the C record GtkBin.
 type Bin struct {
 	native *C.GtkBin
@@ -1217,6 +1331,12 @@ func (recv *Bin) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *Bin) Object() *gobject.Object {
 	return recv.Container().Object()
+}
+
+// CastToWidget down casts any arbitary Object to Bin.
+// Exercise care, as this is a potentially dangerous function if the Object is not a Bin.
+func CastToBin(object *gobject.Object) *Bin {
+	return BinNewFromC(object.ToC())
 }
 
 // GetChild is a wrapper around the C function gtk_bin_get_child.
@@ -1270,6 +1390,12 @@ func (recv *BooleanCellAccessible) Object() *atk.Object {
 	return recv.RendererCellAccessible().Object()
 }
 
+// CastToWidget down casts any arbitary Object to BooleanCellAccessible.
+// Exercise care, as this is a potentially dangerous function if the Object is not a BooleanCellAccessible.
+func CastToBooleanCellAccessible(object *gobject.Object) *BooleanCellAccessible {
+	return BooleanCellAccessibleNewFromC(object.ToC())
+}
+
 // Box is a wrapper around the C record GtkBox.
 type Box struct {
 	native *C.GtkBox
@@ -1311,6 +1437,12 @@ func (recv *Box) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *Box) Object() *gobject.Object {
 	return recv.Container().Object()
+}
+
+// CastToWidget down casts any arbitary Object to Box.
+// Exercise care, as this is a potentially dangerous function if the Object is not a Box.
+func CastToBox(object *gobject.Object) *Box {
+	return BoxNewFromC(object.ToC())
 }
 
 // GetHomogeneous is a wrapper around the C function gtk_box_get_homogeneous.
@@ -1442,6 +1574,12 @@ func (recv *Builder) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
+// CastToWidget down casts any arbitary Object to Builder.
+// Exercise care, as this is a potentially dangerous function if the Object is not a Builder.
+func CastToBuilder(object *gobject.Object) *Builder {
+	return BuilderNewFromC(object.ToC())
+}
+
 // Unsupported : gtk_builder_extend_with_template : unsupported parameter template_type : no type generator for GType, GType
 
 // Button is a wrapper around the C record GtkButton.
@@ -1490,6 +1628,12 @@ func (recv *Button) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *Button) Object() *gobject.Object {
 	return recv.Bin().Object()
+}
+
+// CastToWidget down casts any arbitary Object to Button.
+// Exercise care, as this is a potentially dangerous function if the Object is not a Button.
+func CastToButton(object *gobject.Object) *Button {
+	return ButtonNewFromC(object.ToC())
 }
 
 // ButtonNew is a wrapper around the C function gtk_button_new.
@@ -1684,6 +1828,12 @@ func (recv *ButtonAccessible) Object() *atk.Object {
 	return recv.ContainerAccessible().Object()
 }
 
+// CastToWidget down casts any arbitary Object to ButtonAccessible.
+// Exercise care, as this is a potentially dangerous function if the Object is not a ButtonAccessible.
+func CastToButtonAccessible(object *gobject.Object) *ButtonAccessible {
+	return ButtonAccessibleNewFromC(object.ToC())
+}
+
 // ButtonBox is a wrapper around the C record GtkButtonBox.
 type ButtonBox struct {
 	native *C.GtkButtonBox
@@ -1730,6 +1880,12 @@ func (recv *ButtonBox) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *ButtonBox) Object() *gobject.Object {
 	return recv.Box().Object()
+}
+
+// CastToWidget down casts any arbitary Object to ButtonBox.
+// Exercise care, as this is a potentially dangerous function if the Object is not a ButtonBox.
+func CastToButtonBox(object *gobject.Object) *ButtonBox {
+	return ButtonBoxNewFromC(object.ToC())
 }
 
 // GetLayout is a wrapper around the C function gtk_button_box_get_layout.
@@ -1797,6 +1953,12 @@ func (recv *Calendar) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *Calendar) Object() *gobject.Object {
 	return recv.Widget().Object()
+}
+
+// CastToWidget down casts any arbitary Object to Calendar.
+// Exercise care, as this is a potentially dangerous function if the Object is not a Calendar.
+func CastToCalendar(object *gobject.Object) *Calendar {
+	return CalendarNewFromC(object.ToC())
 }
 
 // CalendarNew is a wrapper around the C function gtk_calendar_new.
@@ -1904,6 +2066,12 @@ func (recv *CellAccessible) Object() *atk.Object {
 	return recv.Accessible().Object()
 }
 
+// CastToWidget down casts any arbitary Object to CellAccessible.
+// Exercise care, as this is a potentially dangerous function if the Object is not a CellAccessible.
+func CastToCellAccessible(object *gobject.Object) *CellAccessible {
+	return CellAccessibleNewFromC(object.ToC())
+}
+
 // CellArea is a wrapper around the C record GtkCellArea.
 type CellArea struct {
 	native *C.GtkCellArea
@@ -1935,6 +2103,12 @@ func (recv *CellArea) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *CellArea) Object() *gobject.Object {
 	return recv.InitiallyUnowned().Object()
+}
+
+// CastToWidget down casts any arbitary Object to CellArea.
+// Exercise care, as this is a potentially dangerous function if the Object is not a CellArea.
+func CastToCellArea(object *gobject.Object) *CellArea {
+	return CellAreaNewFromC(object.ToC())
 }
 
 // CellAreaBox is a wrapper around the C record GtkCellAreaBox.
@@ -1975,6 +2149,12 @@ func (recv *CellAreaBox) Object() *gobject.Object {
 	return recv.CellArea().Object()
 }
 
+// CastToWidget down casts any arbitary Object to CellAreaBox.
+// Exercise care, as this is a potentially dangerous function if the Object is not a CellAreaBox.
+func CastToCellAreaBox(object *gobject.Object) *CellAreaBox {
+	return CellAreaBoxNewFromC(object.ToC())
+}
+
 // CellAreaContext is a wrapper around the C record GtkCellAreaContext.
 type CellAreaContext struct {
 	native *C.GtkCellAreaContext
@@ -2001,6 +2181,12 @@ func (recv *CellAreaContext) ToC() unsafe.Pointer {
 // Object upcasts to *Object
 func (recv *CellAreaContext) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
+}
+
+// CastToWidget down casts any arbitary Object to CellAreaContext.
+// Exercise care, as this is a potentially dangerous function if the Object is not a CellAreaContext.
+func CastToCellAreaContext(object *gobject.Object) *CellAreaContext {
+	return CellAreaContextNewFromC(object.ToC())
 }
 
 // Allocate is a wrapper around the C function gtk_cell_area_context_allocate.
@@ -2052,6 +2238,12 @@ func (recv *CellRenderer) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *CellRenderer) Object() *gobject.Object {
 	return recv.InitiallyUnowned().Object()
+}
+
+// CastToWidget down casts any arbitary Object to CellRenderer.
+// Exercise care, as this is a potentially dangerous function if the Object is not a CellRenderer.
+func CastToCellRenderer(object *gobject.Object) *CellRenderer {
+	return CellRendererNewFromC(object.ToC())
 }
 
 // Unsupported : gtk_cell_renderer_activate : unsupported parameter event : no type generator for Gdk.Event, GdkEvent*
@@ -2131,6 +2323,12 @@ func (recv *CellRendererAccel) Object() *gobject.Object {
 	return recv.CellRendererText().Object()
 }
 
+// CastToWidget down casts any arbitary Object to CellRendererAccel.
+// Exercise care, as this is a potentially dangerous function if the Object is not a CellRendererAccel.
+func CastToCellRendererAccel(object *gobject.Object) *CellRendererAccel {
+	return CellRendererAccelNewFromC(object.ToC())
+}
+
 // CellRendererCombo is a wrapper around the C record GtkCellRendererCombo.
 type CellRendererCombo struct {
 	native *C.GtkCellRendererCombo
@@ -2174,6 +2372,12 @@ func (recv *CellRendererCombo) Object() *gobject.Object {
 	return recv.CellRendererText().Object()
 }
 
+// CastToWidget down casts any arbitary Object to CellRendererCombo.
+// Exercise care, as this is a potentially dangerous function if the Object is not a CellRendererCombo.
+func CastToCellRendererCombo(object *gobject.Object) *CellRendererCombo {
+	return CellRendererComboNewFromC(object.ToC())
+}
+
 // CellRendererPixbuf is a wrapper around the C record GtkCellRendererPixbuf.
 type CellRendererPixbuf struct {
 	native *C.GtkCellRendererPixbuf
@@ -2210,6 +2414,12 @@ func (recv *CellRendererPixbuf) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *CellRendererPixbuf) Object() *gobject.Object {
 	return recv.CellRenderer().Object()
+}
+
+// CastToWidget down casts any arbitary Object to CellRendererPixbuf.
+// Exercise care, as this is a potentially dangerous function if the Object is not a CellRendererPixbuf.
+func CastToCellRendererPixbuf(object *gobject.Object) *CellRendererPixbuf {
+	return CellRendererPixbufNewFromC(object.ToC())
 }
 
 // CellRendererPixbufNew is a wrapper around the C function gtk_cell_renderer_pixbuf_new.
@@ -2258,6 +2468,12 @@ func (recv *CellRendererProgress) Object() *gobject.Object {
 	return recv.CellRenderer().Object()
 }
 
+// CastToWidget down casts any arbitary Object to CellRendererProgress.
+// Exercise care, as this is a potentially dangerous function if the Object is not a CellRendererProgress.
+func CastToCellRendererProgress(object *gobject.Object) *CellRendererProgress {
+	return CellRendererProgressNewFromC(object.ToC())
+}
+
 // CellRendererSpin is a wrapper around the C record GtkCellRendererSpin.
 type CellRendererSpin struct {
 	native *C.GtkCellRendererSpin
@@ -2301,6 +2517,12 @@ func (recv *CellRendererSpin) Object() *gobject.Object {
 	return recv.CellRendererText().Object()
 }
 
+// CastToWidget down casts any arbitary Object to CellRendererSpin.
+// Exercise care, as this is a potentially dangerous function if the Object is not a CellRendererSpin.
+func CastToCellRendererSpin(object *gobject.Object) *CellRendererSpin {
+	return CellRendererSpinNewFromC(object.ToC())
+}
+
 // CellRendererSpinner is a wrapper around the C record GtkCellRendererSpinner.
 type CellRendererSpinner struct {
 	native *C.GtkCellRendererSpinner
@@ -2339,6 +2561,12 @@ func (recv *CellRendererSpinner) Object() *gobject.Object {
 	return recv.CellRenderer().Object()
 }
 
+// CastToWidget down casts any arbitary Object to CellRendererSpinner.
+// Exercise care, as this is a potentially dangerous function if the Object is not a CellRendererSpinner.
+func CastToCellRendererSpinner(object *gobject.Object) *CellRendererSpinner {
+	return CellRendererSpinnerNewFromC(object.ToC())
+}
+
 // CellRendererText is a wrapper around the C record GtkCellRendererText.
 type CellRendererText struct {
 	native *C.GtkCellRendererText
@@ -2375,6 +2603,12 @@ func (recv *CellRendererText) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *CellRendererText) Object() *gobject.Object {
 	return recv.CellRenderer().Object()
+}
+
+// CastToWidget down casts any arbitary Object to CellRendererText.
+// Exercise care, as this is a potentially dangerous function if the Object is not a CellRendererText.
+func CastToCellRendererText(object *gobject.Object) *CellRendererText {
+	return CellRendererTextNewFromC(object.ToC())
 }
 
 // CellRendererTextNew is a wrapper around the C function gtk_cell_renderer_text_new.
@@ -2430,6 +2664,12 @@ func (recv *CellRendererToggle) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *CellRendererToggle) Object() *gobject.Object {
 	return recv.CellRenderer().Object()
+}
+
+// CastToWidget down casts any arbitary Object to CellRendererToggle.
+// Exercise care, as this is a potentially dangerous function if the Object is not a CellRendererToggle.
+func CastToCellRendererToggle(object *gobject.Object) *CellRendererToggle {
+	return CellRendererToggleNewFromC(object.ToC())
 }
 
 // CellRendererToggleNew is a wrapper around the C function gtk_cell_renderer_toggle_new.
@@ -2514,6 +2754,12 @@ func (recv *CellView) Object() *gobject.Object {
 	return recv.Widget().Object()
 }
 
+// CastToWidget down casts any arbitary Object to CellView.
+// Exercise care, as this is a potentially dangerous function if the Object is not a CellView.
+func CastToCellView(object *gobject.Object) *CellView {
+	return CellViewNewFromC(object.ToC())
+}
+
 // CheckButton is a wrapper around the C record GtkCheckButton.
 type CheckButton struct {
 	native *C.GtkCheckButton
@@ -2569,6 +2815,12 @@ func (recv *CheckButton) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *CheckButton) Object() *gobject.Object {
 	return recv.ToggleButton().Object()
+}
+
+// CastToWidget down casts any arbitary Object to CheckButton.
+// Exercise care, as this is a potentially dangerous function if the Object is not a CheckButton.
+func CastToCheckButton(object *gobject.Object) *CheckButton {
+	return CheckButtonNewFromC(object.ToC())
 }
 
 // CheckButtonNew is a wrapper around the C function gtk_check_button_new.
@@ -2652,6 +2904,12 @@ func (recv *CheckMenuItem) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *CheckMenuItem) Object() *gobject.Object {
 	return recv.MenuItem().Object()
+}
+
+// CastToWidget down casts any arbitary Object to CheckMenuItem.
+// Exercise care, as this is a potentially dangerous function if the Object is not a CheckMenuItem.
+func CastToCheckMenuItem(object *gobject.Object) *CheckMenuItem {
+	return CheckMenuItemNewFromC(object.ToC())
 }
 
 // CheckMenuItemNew is a wrapper around the C function gtk_check_menu_item_new.
@@ -2775,6 +3033,12 @@ func (recv *CheckMenuItemAccessible) Object() *atk.Object {
 	return recv.MenuItemAccessible().Object()
 }
 
+// CastToWidget down casts any arbitary Object to CheckMenuItemAccessible.
+// Exercise care, as this is a potentially dangerous function if the Object is not a CheckMenuItemAccessible.
+func CastToCheckMenuItemAccessible(object *gobject.Object) *CheckMenuItemAccessible {
+	return CheckMenuItemAccessibleNewFromC(object.ToC())
+}
+
 // Clipboard is a wrapper around the C record GtkClipboard.
 type Clipboard struct {
 	native *C.GtkClipboard
@@ -2799,6 +3063,12 @@ func (recv *Clipboard) ToC() unsafe.Pointer {
 // Object upcasts to *Object
 func (recv *Clipboard) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
+}
+
+// CastToWidget down casts any arbitary Object to Clipboard.
+// Exercise care, as this is a potentially dangerous function if the Object is not a Clipboard.
+func CastToClipboard(object *gobject.Object) *Clipboard {
+	return ClipboardNewFromC(object.ToC())
 }
 
 // Clear is a wrapper around the C function gtk_clipboard_clear.
@@ -2908,6 +3178,12 @@ func (recv *ColorButton) Object() *gobject.Object {
 	return recv.Button().Object()
 }
 
+// CastToWidget down casts any arbitary Object to ColorButton.
+// Exercise care, as this is a potentially dangerous function if the Object is not a ColorButton.
+func CastToColorButton(object *gobject.Object) *ColorButton {
+	return ColorButtonNewFromC(object.ToC())
+}
+
 // ColorChooserDialog is a wrapper around the C record GtkColorChooserDialog.
 type ColorChooserDialog struct {
 	native *C.GtkColorChooserDialog
@@ -2966,6 +3242,12 @@ func (recv *ColorChooserDialog) Object() *gobject.Object {
 	return recv.Dialog().Object()
 }
 
+// CastToWidget down casts any arbitary Object to ColorChooserDialog.
+// Exercise care, as this is a potentially dangerous function if the Object is not a ColorChooserDialog.
+func CastToColorChooserDialog(object *gobject.Object) *ColorChooserDialog {
+	return ColorChooserDialogNewFromC(object.ToC())
+}
+
 // ColorChooserWidget is a wrapper around the C record GtkColorChooserWidget.
 type ColorChooserWidget struct {
 	native *C.GtkColorChooserWidget
@@ -3014,6 +3296,12 @@ func (recv *ColorChooserWidget) Object() *gobject.Object {
 	return recv.Box().Object()
 }
 
+// CastToWidget down casts any arbitary Object to ColorChooserWidget.
+// Exercise care, as this is a potentially dangerous function if the Object is not a ColorChooserWidget.
+func CastToColorChooserWidget(object *gobject.Object) *ColorChooserWidget {
+	return ColorChooserWidgetNewFromC(object.ToC())
+}
+
 // ColorSelection is a wrapper around the C record GtkColorSelection.
 type ColorSelection struct {
 	native *C.GtkColorSelection
@@ -3060,6 +3348,12 @@ func (recv *ColorSelection) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *ColorSelection) Object() *gobject.Object {
 	return recv.Box().Object()
+}
+
+// CastToWidget down casts any arbitary Object to ColorSelection.
+// Exercise care, as this is a potentially dangerous function if the Object is not a ColorSelection.
+func CastToColorSelection(object *gobject.Object) *ColorSelection {
+	return ColorSelectionNewFromC(object.ToC())
 }
 
 // ColorSelectionNew is a wrapper around the C function gtk_color_selection_new.
@@ -3246,6 +3540,12 @@ func (recv *ColorSelectionDialog) Object() *gobject.Object {
 	return recv.Dialog().Object()
 }
 
+// CastToWidget down casts any arbitary Object to ColorSelectionDialog.
+// Exercise care, as this is a potentially dangerous function if the Object is not a ColorSelectionDialog.
+func CastToColorSelectionDialog(object *gobject.Object) *ColorSelectionDialog {
+	return ColorSelectionDialogNewFromC(object.ToC())
+}
+
 // ColorSelectionDialogNew is a wrapper around the C function gtk_color_selection_dialog_new.
 func ColorSelectionDialogNew(title string) *ColorSelectionDialog {
 	c_title := C.CString(title)
@@ -3303,6 +3603,12 @@ func (recv *ComboBox) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *ComboBox) Object() *gobject.Object {
 	return recv.Bin().Object()
+}
+
+// CastToWidget down casts any arbitary Object to ComboBox.
+// Exercise care, as this is a potentially dangerous function if the Object is not a ComboBox.
+func CastToComboBox(object *gobject.Object) *ComboBox {
+	return ComboBoxNewFromC(object.ToC())
 }
 
 // ComboBoxNewWithArea is a wrapper around the C function gtk_combo_box_new_with_area.
@@ -3380,6 +3686,12 @@ func (recv *ComboBoxAccessible) Object() *atk.Object {
 	return recv.ContainerAccessible().Object()
 }
 
+// CastToWidget down casts any arbitary Object to ComboBoxAccessible.
+// Exercise care, as this is a potentially dangerous function if the Object is not a ComboBoxAccessible.
+func CastToComboBoxAccessible(object *gobject.Object) *ComboBoxAccessible {
+	return ComboBoxAccessibleNewFromC(object.ToC())
+}
+
 // ComboBoxText is a wrapper around the C record GtkComboBoxText.
 type ComboBoxText struct {
 	native *C.GtkComboBoxText
@@ -3433,6 +3745,12 @@ func (recv *ComboBoxText) Object() *gobject.Object {
 	return recv.ComboBox().Object()
 }
 
+// CastToWidget down casts any arbitary Object to ComboBoxText.
+// Exercise care, as this is a potentially dangerous function if the Object is not a ComboBoxText.
+func CastToComboBoxText(object *gobject.Object) *ComboBoxText {
+	return ComboBoxTextNewFromC(object.ToC())
+}
+
 // Container is a wrapper around the C record GtkContainer.
 type Container struct {
 	native *C.GtkContainer
@@ -3469,6 +3787,12 @@ func (recv *Container) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *Container) Object() *gobject.Object {
 	return recv.Widget().Object()
+}
+
+// CastToWidget down casts any arbitary Object to Container.
+// Exercise care, as this is a potentially dangerous function if the Object is not a Container.
+func CastToContainer(object *gobject.Object) *Container {
+	return ContainerNewFromC(object.ToC())
 }
 
 // Add is a wrapper around the C function gtk_container_add.
@@ -3719,6 +4043,12 @@ func (recv *ContainerAccessible) Object() *atk.Object {
 	return recv.WidgetAccessible().Object()
 }
 
+// CastToWidget down casts any arbitary Object to ContainerAccessible.
+// Exercise care, as this is a potentially dangerous function if the Object is not a ContainerAccessible.
+func CastToContainerAccessible(object *gobject.Object) *ContainerAccessible {
+	return ContainerAccessibleNewFromC(object.ToC())
+}
+
 // ContainerCellAccessible is a wrapper around the C record GtkContainerCellAccessible.
 type ContainerCellAccessible struct {
 	native *C.GtkContainerCellAccessible
@@ -3755,6 +4085,12 @@ func (recv *ContainerCellAccessible) Accessible() *Accessible {
 // Object upcasts to *Object
 func (recv *ContainerCellAccessible) Object() *atk.Object {
 	return recv.CellAccessible().Object()
+}
+
+// CastToWidget down casts any arbitary Object to ContainerCellAccessible.
+// Exercise care, as this is a potentially dangerous function if the Object is not a ContainerCellAccessible.
+func CastToContainerCellAccessible(object *gobject.Object) *ContainerCellAccessible {
+	return ContainerCellAccessibleNewFromC(object.ToC())
 }
 
 // ContainerCellAccessibleNew is a wrapper around the C function gtk_container_cell_accessible_new.
@@ -3817,6 +4153,12 @@ func (recv *CssProvider) ToC() unsafe.Pointer {
 // Object upcasts to *Object
 func (recv *CssProvider) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
+}
+
+// CastToWidget down casts any arbitary Object to CssProvider.
+// Exercise care, as this is a potentially dangerous function if the Object is not a CssProvider.
+func CastToCssProvider(object *gobject.Object) *CssProvider {
+	return CssProviderNewFromC(object.ToC())
 }
 
 // CssProviderNew is a wrapper around the C function gtk_css_provider_new.
@@ -3900,6 +4242,12 @@ func (recv *Dialog) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *Dialog) Object() *gobject.Object {
 	return recv.Window().Object()
+}
+
+// CastToWidget down casts any arbitary Object to Dialog.
+// Exercise care, as this is a potentially dangerous function if the Object is not a Dialog.
+func CastToDialog(object *gobject.Object) *Dialog {
+	return DialogNewFromC(object.ToC())
 }
 
 // DialogNew is a wrapper around the C function gtk_dialog_new.
@@ -4014,6 +4362,12 @@ func (recv *DrawingArea) Object() *gobject.Object {
 	return recv.Widget().Object()
 }
 
+// CastToWidget down casts any arbitary Object to DrawingArea.
+// Exercise care, as this is a potentially dangerous function if the Object is not a DrawingArea.
+func CastToDrawingArea(object *gobject.Object) *DrawingArea {
+	return DrawingAreaNewFromC(object.ToC())
+}
+
 // DrawingAreaNew is a wrapper around the C function gtk_drawing_area_new.
 func DrawingAreaNew() *DrawingArea {
 	retC := C.gtk_drawing_area_new()
@@ -4058,6 +4412,12 @@ func (recv *Entry) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *Entry) Object() *gobject.Object {
 	return recv.Widget().Object()
+}
+
+// CastToWidget down casts any arbitary Object to Entry.
+// Exercise care, as this is a potentially dangerous function if the Object is not a Entry.
+func CastToEntry(object *gobject.Object) *Entry {
+	return EntryNewFromC(object.ToC())
 }
 
 // EntryNew is a wrapper around the C function gtk_entry_new.
@@ -4272,6 +4632,12 @@ func (recv *EntryAccessible) Object() *atk.Object {
 	return recv.WidgetAccessible().Object()
 }
 
+// CastToWidget down casts any arbitary Object to EntryAccessible.
+// Exercise care, as this is a potentially dangerous function if the Object is not a EntryAccessible.
+func CastToEntryAccessible(object *gobject.Object) *EntryAccessible {
+	return EntryAccessibleNewFromC(object.ToC())
+}
+
 // EntryBuffer is a wrapper around the C record GtkEntryBuffer.
 type EntryBuffer struct {
 	native *C.GtkEntryBuffer
@@ -4300,6 +4666,12 @@ func (recv *EntryBuffer) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
+// CastToWidget down casts any arbitary Object to EntryBuffer.
+// Exercise care, as this is a potentially dangerous function if the Object is not a EntryBuffer.
+func CastToEntryBuffer(object *gobject.Object) *EntryBuffer {
+	return EntryBufferNewFromC(object.ToC())
+}
+
 // EntryCompletion is a wrapper around the C record GtkEntryCompletion.
 type EntryCompletion struct {
 	native *C.GtkEntryCompletion
@@ -4326,6 +4698,12 @@ func (recv *EntryCompletion) ToC() unsafe.Pointer {
 // Object upcasts to *Object
 func (recv *EntryCompletion) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
+}
+
+// CastToWidget down casts any arbitary Object to EntryCompletion.
+// Exercise care, as this is a potentially dangerous function if the Object is not a EntryCompletion.
+func CastToEntryCompletion(object *gobject.Object) *EntryCompletion {
+	return EntryCompletionNewFromC(object.ToC())
 }
 
 // Unsupported : EntryIconAccessible : no CType
@@ -4378,6 +4756,12 @@ func (recv *EventBox) Object() *gobject.Object {
 	return recv.Bin().Object()
 }
 
+// CastToWidget down casts any arbitary Object to EventBox.
+// Exercise care, as this is a potentially dangerous function if the Object is not a EventBox.
+func CastToEventBox(object *gobject.Object) *EventBox {
+	return EventBoxNewFromC(object.ToC())
+}
+
 // EventBoxNew is a wrapper around the C function gtk_event_box_new.
 func EventBoxNew() *EventBox {
 	retC := C.gtk_event_box_new()
@@ -4410,6 +4794,12 @@ func (recv *EventController) ToC() unsafe.Pointer {
 // Object upcasts to *Object
 func (recv *EventController) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
+}
+
+// CastToWidget down casts any arbitary Object to EventController.
+// Exercise care, as this is a potentially dangerous function if the Object is not a EventController.
+func CastToEventController(object *gobject.Object) *EventController {
+	return EventControllerNewFromC(object.ToC())
 }
 
 // Expander is a wrapper around the C record GtkExpander.
@@ -4460,6 +4850,12 @@ func (recv *Expander) Object() *gobject.Object {
 	return recv.Bin().Object()
 }
 
+// CastToWidget down casts any arbitary Object to Expander.
+// Exercise care, as this is a potentially dangerous function if the Object is not a Expander.
+func CastToExpander(object *gobject.Object) *Expander {
+	return ExpanderNewFromC(object.ToC())
+}
+
 // ExpanderAccessible is a wrapper around the C record GtkExpanderAccessible.
 type ExpanderAccessible struct {
 	native *C.GtkExpanderAccessible
@@ -4501,6 +4897,12 @@ func (recv *ExpanderAccessible) Accessible() *Accessible {
 // Object upcasts to *Object
 func (recv *ExpanderAccessible) Object() *atk.Object {
 	return recv.ContainerAccessible().Object()
+}
+
+// CastToWidget down casts any arbitary Object to ExpanderAccessible.
+// Exercise care, as this is a potentially dangerous function if the Object is not a ExpanderAccessible.
+func CastToExpanderAccessible(object *gobject.Object) *ExpanderAccessible {
+	return ExpanderAccessibleNewFromC(object.ToC())
 }
 
 // FileChooserButton is a wrapper around the C record GtkFileChooserButton.
@@ -4549,6 +4951,12 @@ func (recv *FileChooserButton) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *FileChooserButton) Object() *gobject.Object {
 	return recv.Box().Object()
+}
+
+// CastToWidget down casts any arbitary Object to FileChooserButton.
+// Exercise care, as this is a potentially dangerous function if the Object is not a FileChooserButton.
+func CastToFileChooserButton(object *gobject.Object) *FileChooserButton {
+	return FileChooserButtonNewFromC(object.ToC())
 }
 
 // FileChooserDialog is a wrapper around the C record GtkFileChooserDialog.
@@ -4609,6 +5017,12 @@ func (recv *FileChooserDialog) Object() *gobject.Object {
 	return recv.Dialog().Object()
 }
 
+// CastToWidget down casts any arbitary Object to FileChooserDialog.
+// Exercise care, as this is a potentially dangerous function if the Object is not a FileChooserDialog.
+func CastToFileChooserDialog(object *gobject.Object) *FileChooserDialog {
+	return FileChooserDialogNewFromC(object.ToC())
+}
+
 // Unsupported : gtk_file_chooser_dialog_new : unsupported parameter ... : varargs
 
 // FileChooserWidget is a wrapper around the C record GtkFileChooserWidget.
@@ -4659,6 +5073,12 @@ func (recv *FileChooserWidget) Object() *gobject.Object {
 	return recv.Box().Object()
 }
 
+// CastToWidget down casts any arbitary Object to FileChooserWidget.
+// Exercise care, as this is a potentially dangerous function if the Object is not a FileChooserWidget.
+func CastToFileChooserWidget(object *gobject.Object) *FileChooserWidget {
+	return FileChooserWidgetNewFromC(object.ToC())
+}
+
 // FileFilter is a wrapper around the C record GtkFileFilter.
 type FileFilter struct {
 	native *C.GtkFileFilter
@@ -4688,6 +5108,12 @@ func (recv *FileFilter) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *FileFilter) Object() *gobject.Object {
 	return recv.InitiallyUnowned().Object()
+}
+
+// CastToWidget down casts any arbitary Object to FileFilter.
+// Exercise care, as this is a potentially dangerous function if the Object is not a FileFilter.
+func CastToFileFilter(object *gobject.Object) *FileFilter {
+	return FileFilterNewFromC(object.ToC())
 }
 
 // Unsupported : gtk_file_filter_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
@@ -4733,6 +5159,12 @@ func (recv *Fixed) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *Fixed) Object() *gobject.Object {
 	return recv.Container().Object()
+}
+
+// CastToWidget down casts any arbitary Object to Fixed.
+// Exercise care, as this is a potentially dangerous function if the Object is not a Fixed.
+func CastToFixed(object *gobject.Object) *Fixed {
+	return FixedNewFromC(object.ToC())
 }
 
 // FixedNew is a wrapper around the C function gtk_fixed_new.
@@ -4811,6 +5243,12 @@ func (recv *FlowBox) Object() *gobject.Object {
 	return recv.Container().Object()
 }
 
+// CastToWidget down casts any arbitary Object to FlowBox.
+// Exercise care, as this is a potentially dangerous function if the Object is not a FlowBox.
+func CastToFlowBox(object *gobject.Object) *FlowBox {
+	return FlowBoxNewFromC(object.ToC())
+}
+
 // FlowBoxAccessible is a wrapper around the C record GtkFlowBoxAccessible.
 type FlowBoxAccessible struct {
 	native *C.GtkFlowBoxAccessible
@@ -4852,6 +5290,12 @@ func (recv *FlowBoxAccessible) Accessible() *Accessible {
 // Object upcasts to *Object
 func (recv *FlowBoxAccessible) Object() *atk.Object {
 	return recv.ContainerAccessible().Object()
+}
+
+// CastToWidget down casts any arbitary Object to FlowBoxAccessible.
+// Exercise care, as this is a potentially dangerous function if the Object is not a FlowBoxAccessible.
+func CastToFlowBoxAccessible(object *gobject.Object) *FlowBoxAccessible {
+	return FlowBoxAccessibleNewFromC(object.ToC())
 }
 
 // FlowBoxChild is a wrapper around the C record GtkFlowBoxChild.
@@ -4901,6 +5345,12 @@ func (recv *FlowBoxChild) Object() *gobject.Object {
 	return recv.Bin().Object()
 }
 
+// CastToWidget down casts any arbitary Object to FlowBoxChild.
+// Exercise care, as this is a potentially dangerous function if the Object is not a FlowBoxChild.
+func CastToFlowBoxChild(object *gobject.Object) *FlowBoxChild {
+	return FlowBoxChildNewFromC(object.ToC())
+}
+
 // FlowBoxChildAccessible is a wrapper around the C record GtkFlowBoxChildAccessible.
 type FlowBoxChildAccessible struct {
 	native *C.GtkFlowBoxChildAccessible
@@ -4941,6 +5391,12 @@ func (recv *FlowBoxChildAccessible) Accessible() *Accessible {
 // Object upcasts to *Object
 func (recv *FlowBoxChildAccessible) Object() *atk.Object {
 	return recv.ContainerAccessible().Object()
+}
+
+// CastToWidget down casts any arbitary Object to FlowBoxChildAccessible.
+// Exercise care, as this is a potentially dangerous function if the Object is not a FlowBoxChildAccessible.
+func CastToFlowBoxChildAccessible(object *gobject.Object) *FlowBoxChildAccessible {
+	return FlowBoxChildAccessibleNewFromC(object.ToC())
 }
 
 // FontButton is a wrapper around the C record GtkFontButton.
@@ -4994,6 +5450,12 @@ func (recv *FontButton) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *FontButton) Object() *gobject.Object {
 	return recv.Button().Object()
+}
+
+// CastToWidget down casts any arbitary Object to FontButton.
+// Exercise care, as this is a potentially dangerous function if the Object is not a FontButton.
+func CastToFontButton(object *gobject.Object) *FontButton {
+	return FontButtonNewFromC(object.ToC())
 }
 
 // FontChooserDialog is a wrapper around the C record GtkFontChooserDialog.
@@ -5054,6 +5516,12 @@ func (recv *FontChooserDialog) Object() *gobject.Object {
 	return recv.Dialog().Object()
 }
 
+// CastToWidget down casts any arbitary Object to FontChooserDialog.
+// Exercise care, as this is a potentially dangerous function if the Object is not a FontChooserDialog.
+func CastToFontChooserDialog(object *gobject.Object) *FontChooserDialog {
+	return FontChooserDialogNewFromC(object.ToC())
+}
+
 // FontChooserWidget is a wrapper around the C record GtkFontChooserWidget.
 type FontChooserWidget struct {
 	native *C.GtkFontChooserWidget
@@ -5102,6 +5570,12 @@ func (recv *FontChooserWidget) Object() *gobject.Object {
 	return recv.Box().Object()
 }
 
+// CastToWidget down casts any arbitary Object to FontChooserWidget.
+// Exercise care, as this is a potentially dangerous function if the Object is not a FontChooserWidget.
+func CastToFontChooserWidget(object *gobject.Object) *FontChooserWidget {
+	return FontChooserWidgetNewFromC(object.ToC())
+}
+
 // FontSelection is a wrapper around the C record GtkFontSelection.
 type FontSelection struct {
 	native *C.GtkFontSelection
@@ -5148,6 +5622,12 @@ func (recv *FontSelection) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *FontSelection) Object() *gobject.Object {
 	return recv.Box().Object()
+}
+
+// CastToWidget down casts any arbitary Object to FontSelection.
+// Exercise care, as this is a potentially dangerous function if the Object is not a FontSelection.
+func CastToFontSelection(object *gobject.Object) *FontSelection {
+	return FontSelectionNewFromC(object.ToC())
 }
 
 // FontSelectionNew is a wrapper around the C function gtk_font_selection_new.
@@ -5254,6 +5734,12 @@ func (recv *FontSelectionDialog) Object() *gobject.Object {
 	return recv.Dialog().Object()
 }
 
+// CastToWidget down casts any arbitary Object to FontSelectionDialog.
+// Exercise care, as this is a potentially dangerous function if the Object is not a FontSelectionDialog.
+func CastToFontSelectionDialog(object *gobject.Object) *FontSelectionDialog {
+	return FontSelectionDialogNewFromC(object.ToC())
+}
+
 // FontSelectionDialogNew is a wrapper around the C function gtk_font_selection_dialog_new.
 func FontSelectionDialogNew(title string) *FontSelectionDialog {
 	c_title := C.CString(title)
@@ -5349,6 +5835,12 @@ func (recv *Frame) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *Frame) Object() *gobject.Object {
 	return recv.Bin().Object()
+}
+
+// CastToWidget down casts any arbitary Object to Frame.
+// Exercise care, as this is a potentially dangerous function if the Object is not a Frame.
+func CastToFrame(object *gobject.Object) *Frame {
+	return FrameNewFromC(object.ToC())
 }
 
 // FrameNew is a wrapper around the C function gtk_frame_new.
@@ -5483,6 +5975,12 @@ func (recv *FrameAccessible) Object() *atk.Object {
 	return recv.ContainerAccessible().Object()
 }
 
+// CastToWidget down casts any arbitary Object to FrameAccessible.
+// Exercise care, as this is a potentially dangerous function if the Object is not a FrameAccessible.
+func CastToFrameAccessible(object *gobject.Object) *FrameAccessible {
+	return FrameAccessibleNewFromC(object.ToC())
+}
+
 // Gesture is a wrapper around the C record GtkGesture.
 type Gesture struct {
 	native *C.GtkGesture
@@ -5512,6 +6010,12 @@ func (recv *Gesture) EventController() *EventController {
 // Object upcasts to *Object
 func (recv *Gesture) Object() *gobject.Object {
 	return recv.EventController().Object()
+}
+
+// CastToWidget down casts any arbitary Object to Gesture.
+// Exercise care, as this is a potentially dangerous function if the Object is not a Gesture.
+func CastToGesture(object *gobject.Object) *Gesture {
+	return GestureNewFromC(object.ToC())
 }
 
 // Unsupported : gtk_gesture_get_last_event : no return generator
@@ -5557,6 +6061,12 @@ func (recv *GestureDrag) Object() *gobject.Object {
 	return recv.GestureSingle().Object()
 }
 
+// CastToWidget down casts any arbitary Object to GestureDrag.
+// Exercise care, as this is a potentially dangerous function if the Object is not a GestureDrag.
+func CastToGestureDrag(object *gobject.Object) *GestureDrag {
+	return GestureDragNewFromC(object.ToC())
+}
+
 // GestureLongPress is a wrapper around the C record GtkGestureLongPress.
 type GestureLongPress struct {
 	native *C.GtkGestureLongPress
@@ -5598,6 +6108,12 @@ func (recv *GestureLongPress) Object() *gobject.Object {
 	return recv.GestureSingle().Object()
 }
 
+// CastToWidget down casts any arbitary Object to GestureLongPress.
+// Exercise care, as this is a potentially dangerous function if the Object is not a GestureLongPress.
+func CastToGestureLongPress(object *gobject.Object) *GestureLongPress {
+	return GestureLongPressNewFromC(object.ToC())
+}
+
 // GestureMultiPress is a wrapper around the C record GtkGestureMultiPress.
 type GestureMultiPress struct {
 	native *C.GtkGestureMultiPress
@@ -5637,6 +6153,12 @@ func (recv *GestureMultiPress) EventController() *EventController {
 // Object upcasts to *Object
 func (recv *GestureMultiPress) Object() *gobject.Object {
 	return recv.GestureSingle().Object()
+}
+
+// CastToWidget down casts any arbitary Object to GestureMultiPress.
+// Exercise care, as this is a potentially dangerous function if the Object is not a GestureMultiPress.
+func CastToGestureMultiPress(object *gobject.Object) *GestureMultiPress {
+	return GestureMultiPressNewFromC(object.ToC())
 }
 
 // GesturePan is a wrapper around the C record GtkGesturePan.
@@ -5685,6 +6207,12 @@ func (recv *GesturePan) Object() *gobject.Object {
 	return recv.GestureDrag().Object()
 }
 
+// CastToWidget down casts any arbitary Object to GesturePan.
+// Exercise care, as this is a potentially dangerous function if the Object is not a GesturePan.
+func CastToGesturePan(object *gobject.Object) *GesturePan {
+	return GesturePanNewFromC(object.ToC())
+}
+
 // GestureRotate is a wrapper around the C record GtkGestureRotate.
 type GestureRotate struct {
 	native *C.GtkGestureRotate
@@ -5721,6 +6249,12 @@ func (recv *GestureRotate) Object() *gobject.Object {
 	return recv.Gesture().Object()
 }
 
+// CastToWidget down casts any arbitary Object to GestureRotate.
+// Exercise care, as this is a potentially dangerous function if the Object is not a GestureRotate.
+func CastToGestureRotate(object *gobject.Object) *GestureRotate {
+	return GestureRotateNewFromC(object.ToC())
+}
+
 // GestureSingle is a wrapper around the C record GtkGestureSingle.
 type GestureSingle struct {
 	native *C.GtkGestureSingle
@@ -5755,6 +6289,12 @@ func (recv *GestureSingle) EventController() *EventController {
 // Object upcasts to *Object
 func (recv *GestureSingle) Object() *gobject.Object {
 	return recv.Gesture().Object()
+}
+
+// CastToWidget down casts any arbitary Object to GestureSingle.
+// Exercise care, as this is a potentially dangerous function if the Object is not a GestureSingle.
+func CastToGestureSingle(object *gobject.Object) *GestureSingle {
+	return GestureSingleNewFromC(object.ToC())
 }
 
 // GestureSwipe is a wrapper around the C record GtkGestureSwipe.
@@ -5798,6 +6338,12 @@ func (recv *GestureSwipe) Object() *gobject.Object {
 	return recv.GestureSingle().Object()
 }
 
+// CastToWidget down casts any arbitary Object to GestureSwipe.
+// Exercise care, as this is a potentially dangerous function if the Object is not a GestureSwipe.
+func CastToGestureSwipe(object *gobject.Object) *GestureSwipe {
+	return GestureSwipeNewFromC(object.ToC())
+}
+
 // GestureZoom is a wrapper around the C record GtkGestureZoom.
 type GestureZoom struct {
 	native *C.GtkGestureZoom
@@ -5832,6 +6378,12 @@ func (recv *GestureZoom) EventController() *EventController {
 // Object upcasts to *Object
 func (recv *GestureZoom) Object() *gobject.Object {
 	return recv.Gesture().Object()
+}
+
+// CastToWidget down casts any arbitary Object to GestureZoom.
+// Exercise care, as this is a potentially dangerous function if the Object is not a GestureZoom.
+func CastToGestureZoom(object *gobject.Object) *GestureZoom {
+	return GestureZoomNewFromC(object.ToC())
 }
 
 // Grid is a wrapper around the C record GtkGrid.
@@ -5875,6 +6427,12 @@ func (recv *Grid) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *Grid) Object() *gobject.Object {
 	return recv.Container().Object()
+}
+
+// CastToWidget down casts any arbitary Object to Grid.
+// Exercise care, as this is a potentially dangerous function if the Object is not a Grid.
+func CastToGrid(object *gobject.Object) *Grid {
+	return GridNewFromC(object.ToC())
 }
 
 // GridNew is a wrapper around the C function gtk_grid_new.
@@ -6036,6 +6594,12 @@ func (recv *HBox) Object() *gobject.Object {
 	return recv.Box().Object()
 }
 
+// CastToWidget down casts any arbitary Object to HBox.
+// Exercise care, as this is a potentially dangerous function if the Object is not a HBox.
+func CastToHBox(object *gobject.Object) *HBox {
+	return HBoxNewFromC(object.ToC())
+}
+
 // HBoxNew is a wrapper around the C function gtk_hbox_new.
 func HBoxNew(homogeneous bool, spacing int32) *HBox {
 	c_homogeneous :=
@@ -6101,6 +6665,12 @@ func (recv *HButtonBox) Object() *gobject.Object {
 	return recv.ButtonBox().Object()
 }
 
+// CastToWidget down casts any arbitary Object to HButtonBox.
+// Exercise care, as this is a potentially dangerous function if the Object is not a HButtonBox.
+func CastToHButtonBox(object *gobject.Object) *HButtonBox {
+	return HButtonBoxNewFromC(object.ToC())
+}
+
 // HButtonBoxNew is a wrapper around the C function gtk_hbutton_box_new.
 func HButtonBoxNew() *HButtonBox {
 	retC := C.gtk_hbutton_box_new()
@@ -6156,6 +6726,12 @@ func (recv *HPaned) Object() *gobject.Object {
 	return recv.Paned().Object()
 }
 
+// CastToWidget down casts any arbitary Object to HPaned.
+// Exercise care, as this is a potentially dangerous function if the Object is not a HPaned.
+func CastToHPaned(object *gobject.Object) *HPaned {
+	return HPanedNewFromC(object.ToC())
+}
+
 // HPanedNew is a wrapper around the C function gtk_hpaned_new.
 func HPanedNew() *HPaned {
 	retC := C.gtk_hpaned_new()
@@ -6200,6 +6776,12 @@ func (recv *HSV) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *HSV) Object() *gobject.Object {
 	return recv.Widget().Object()
+}
+
+// CastToWidget down casts any arbitary Object to HSV.
+// Exercise care, as this is a potentially dangerous function if the Object is not a HSV.
+func CastToHSV(object *gobject.Object) *HSV {
+	return HSVNewFromC(object.ToC())
 }
 
 // HScale is a wrapper around the C record GtkHScale.
@@ -6247,6 +6829,12 @@ func (recv *HScale) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *HScale) Object() *gobject.Object {
 	return recv.Scale().Object()
+}
+
+// CastToWidget down casts any arbitary Object to HScale.
+// Exercise care, as this is a potentially dangerous function if the Object is not a HScale.
+func CastToHScale(object *gobject.Object) *HScale {
+	return HScaleNewFromC(object.ToC())
 }
 
 // HScaleNew is a wrapper around the C function gtk_hscale_new.
@@ -6320,6 +6908,12 @@ func (recv *HScrollbar) Object() *gobject.Object {
 	return recv.Scrollbar().Object()
 }
 
+// CastToWidget down casts any arbitary Object to HScrollbar.
+// Exercise care, as this is a potentially dangerous function if the Object is not a HScrollbar.
+func CastToHScrollbar(object *gobject.Object) *HScrollbar {
+	return HScrollbarNewFromC(object.ToC())
+}
+
 // HScrollbarNew is a wrapper around the C function gtk_hscrollbar_new.
 func HScrollbarNew(adjustment *Adjustment) *HScrollbar {
 	c_adjustment := (*C.GtkAdjustment)(adjustment.ToC())
@@ -6370,6 +6964,12 @@ func (recv *HSeparator) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *HSeparator) Object() *gobject.Object {
 	return recv.Separator().Object()
+}
+
+// CastToWidget down casts any arbitary Object to HSeparator.
+// Exercise care, as this is a potentially dangerous function if the Object is not a HSeparator.
+func CastToHSeparator(object *gobject.Object) *HSeparator {
+	return HSeparatorNewFromC(object.ToC())
 }
 
 // HSeparatorNew is a wrapper around the C function gtk_hseparator_new.
@@ -6426,6 +7026,12 @@ func (recv *HandleBox) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *HandleBox) Object() *gobject.Object {
 	return recv.Bin().Object()
+}
+
+// CastToWidget down casts any arbitary Object to HandleBox.
+// Exercise care, as this is a potentially dangerous function if the Object is not a HandleBox.
+func CastToHandleBox(object *gobject.Object) *HandleBox {
+	return HandleBoxNewFromC(object.ToC())
 }
 
 // HandleBoxNew is a wrapper around the C function gtk_handle_box_new.
@@ -6529,6 +7135,12 @@ func (recv *HeaderBar) Object() *gobject.Object {
 	return recv.Container().Object()
 }
 
+// CastToWidget down casts any arbitary Object to HeaderBar.
+// Exercise care, as this is a potentially dangerous function if the Object is not a HeaderBar.
+func CastToHeaderBar(object *gobject.Object) *HeaderBar {
+	return HeaderBarNewFromC(object.ToC())
+}
+
 // IMContext is a wrapper around the C record GtkIMContext.
 type IMContext struct {
 	native *C.GtkIMContext
@@ -6554,6 +7166,12 @@ func (recv *IMContext) ToC() unsafe.Pointer {
 // Object upcasts to *Object
 func (recv *IMContext) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
+}
+
+// CastToWidget down casts any arbitary Object to IMContext.
+// Exercise care, as this is a potentially dangerous function if the Object is not a IMContext.
+func CastToIMContext(object *gobject.Object) *IMContext {
+	return IMContextNewFromC(object.ToC())
 }
 
 // DeleteSurrounding is a wrapper around the C function gtk_im_context_delete_surrounding.
@@ -6686,6 +7304,12 @@ func (recv *IMContextSimple) Object() *gobject.Object {
 	return recv.IMContext().Object()
 }
 
+// CastToWidget down casts any arbitary Object to IMContextSimple.
+// Exercise care, as this is a potentially dangerous function if the Object is not a IMContextSimple.
+func CastToIMContextSimple(object *gobject.Object) *IMContextSimple {
+	return IMContextSimpleNewFromC(object.ToC())
+}
+
 // IMContextSimpleNew is a wrapper around the C function gtk_im_context_simple_new.
 func IMContextSimpleNew() *IMContextSimple {
 	retC := C.gtk_im_context_simple_new()
@@ -6731,6 +7355,12 @@ func (recv *IMMulticontext) Object() *gobject.Object {
 	return recv.IMContext().Object()
 }
 
+// CastToWidget down casts any arbitary Object to IMMulticontext.
+// Exercise care, as this is a potentially dangerous function if the Object is not a IMMulticontext.
+func CastToIMMulticontext(object *gobject.Object) *IMMulticontext {
+	return IMMulticontextNewFromC(object.ToC())
+}
+
 // IMMulticontextNew is a wrapper around the C function gtk_im_multicontext_new.
 func IMMulticontextNew() *IMMulticontext {
 	retC := C.gtk_im_multicontext_new()
@@ -6774,6 +7404,12 @@ func (recv *IconFactory) ToC() unsafe.Pointer {
 // Object upcasts to *Object
 func (recv *IconFactory) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
+}
+
+// CastToWidget down casts any arbitary Object to IconFactory.
+// Exercise care, as this is a potentially dangerous function if the Object is not a IconFactory.
+func CastToIconFactory(object *gobject.Object) *IconFactory {
+	return IconFactoryNewFromC(object.ToC())
 }
 
 // IconFactoryNew is a wrapper around the C function gtk_icon_factory_new.
@@ -6847,6 +7483,12 @@ func (recv *IconInfo) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
+// CastToWidget down casts any arbitary Object to IconInfo.
+// Exercise care, as this is a potentially dangerous function if the Object is not a IconInfo.
+func CastToIconInfo(object *gobject.Object) *IconInfo {
+	return IconInfoNewFromC(object.ToC())
+}
+
 // IconTheme is a wrapper around the C record GtkIconTheme.
 type IconTheme struct {
 	native *C.GtkIconTheme
@@ -6873,6 +7515,12 @@ func (recv *IconTheme) ToC() unsafe.Pointer {
 // Object upcasts to *Object
 func (recv *IconTheme) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
+}
+
+// CastToWidget down casts any arbitary Object to IconTheme.
+// Exercise care, as this is a potentially dangerous function if the Object is not a IconTheme.
+func CastToIconTheme(object *gobject.Object) *IconTheme {
+	return IconThemeNewFromC(object.ToC())
 }
 
 // IconView is a wrapper around the C record GtkIconView.
@@ -6916,6 +7564,12 @@ func (recv *IconView) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *IconView) Object() *gobject.Object {
 	return recv.Container().Object()
+}
+
+// CastToWidget down casts any arbitary Object to IconView.
+// Exercise care, as this is a potentially dangerous function if the Object is not a IconView.
+func CastToIconView(object *gobject.Object) *IconView {
+	return IconViewNewFromC(object.ToC())
 }
 
 // Unsupported : gtk_icon_view_new_with_model : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
@@ -6963,6 +7617,12 @@ func (recv *IconViewAccessible) Object() *atk.Object {
 	return recv.ContainerAccessible().Object()
 }
 
+// CastToWidget down casts any arbitary Object to IconViewAccessible.
+// Exercise care, as this is a potentially dangerous function if the Object is not a IconViewAccessible.
+func CastToIconViewAccessible(object *gobject.Object) *IconViewAccessible {
+	return IconViewAccessibleNewFromC(object.ToC())
+}
+
 // Image is a wrapper around the C record GtkImage.
 type Image struct {
 	native *C.GtkImage
@@ -7004,6 +7664,12 @@ func (recv *Image) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *Image) Object() *gobject.Object {
 	return recv.Misc().Object()
+}
+
+// CastToWidget down casts any arbitary Object to Image.
+// Exercise care, as this is a potentially dangerous function if the Object is not a Image.
+func CastToImage(object *gobject.Object) *Image {
+	return ImageNewFromC(object.ToC())
 }
 
 // ImageNew is a wrapper around the C function gtk_image_new.
@@ -7161,6 +7827,12 @@ func (recv *ImageAccessible) Object() *atk.Object {
 	return recv.WidgetAccessible().Object()
 }
 
+// CastToWidget down casts any arbitary Object to ImageAccessible.
+// Exercise care, as this is a potentially dangerous function if the Object is not a ImageAccessible.
+func CastToImageAccessible(object *gobject.Object) *ImageAccessible {
+	return ImageAccessibleNewFromC(object.ToC())
+}
+
 // ImageCellAccessible is a wrapper around the C record GtkImageCellAccessible.
 type ImageCellAccessible struct {
 	native *C.GtkImageCellAccessible
@@ -7202,6 +7874,12 @@ func (recv *ImageCellAccessible) Accessible() *Accessible {
 // Object upcasts to *Object
 func (recv *ImageCellAccessible) Object() *atk.Object {
 	return recv.RendererCellAccessible().Object()
+}
+
+// CastToWidget down casts any arbitary Object to ImageCellAccessible.
+// Exercise care, as this is a potentially dangerous function if the Object is not a ImageCellAccessible.
+func CastToImageCellAccessible(object *gobject.Object) *ImageCellAccessible {
+	return ImageCellAccessibleNewFromC(object.ToC())
 }
 
 // ImageMenuItem is a wrapper around the C record GtkImageMenuItem.
@@ -7255,6 +7933,12 @@ func (recv *ImageMenuItem) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *ImageMenuItem) Object() *gobject.Object {
 	return recv.MenuItem().Object()
+}
+
+// CastToWidget down casts any arbitary Object to ImageMenuItem.
+// Exercise care, as this is a potentially dangerous function if the Object is not a ImageMenuItem.
+func CastToImageMenuItem(object *gobject.Object) *ImageMenuItem {
+	return ImageMenuItemNewFromC(object.ToC())
 }
 
 // ImageMenuItemNew is a wrapper around the C function gtk_image_menu_item_new.
@@ -7365,6 +8049,12 @@ func (recv *InfoBar) Object() *gobject.Object {
 	return recv.Box().Object()
 }
 
+// CastToWidget down casts any arbitary Object to InfoBar.
+// Exercise care, as this is a potentially dangerous function if the Object is not a InfoBar.
+func CastToInfoBar(object *gobject.Object) *InfoBar {
+	return InfoBarNewFromC(object.ToC())
+}
+
 // Unsupported : gtk_info_bar_new_with_buttons : unsupported parameter ... : varargs
 
 // Invisible is a wrapper around the C record GtkInvisible.
@@ -7403,6 +8093,12 @@ func (recv *Invisible) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *Invisible) Object() *gobject.Object {
 	return recv.Widget().Object()
+}
+
+// CastToWidget down casts any arbitary Object to Invisible.
+// Exercise care, as this is a potentially dangerous function if the Object is not a Invisible.
+func CastToInvisible(object *gobject.Object) *Invisible {
+	return InvisibleNewFromC(object.ToC())
 }
 
 // InvisibleNew is a wrapper around the C function gtk_invisible_new.
@@ -7454,6 +8150,12 @@ func (recv *Label) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *Label) Object() *gobject.Object {
 	return recv.Misc().Object()
+}
+
+// CastToWidget down casts any arbitary Object to Label.
+// Exercise care, as this is a potentially dangerous function if the Object is not a Label.
+func CastToLabel(object *gobject.Object) *Label {
+	return LabelNewFromC(object.ToC())
 }
 
 // LabelNew is a wrapper around the C function gtk_label_new.
@@ -7773,6 +8475,12 @@ func (recv *LabelAccessible) Object() *atk.Object {
 	return recv.WidgetAccessible().Object()
 }
 
+// CastToWidget down casts any arbitary Object to LabelAccessible.
+// Exercise care, as this is a potentially dangerous function if the Object is not a LabelAccessible.
+func CastToLabelAccessible(object *gobject.Object) *LabelAccessible {
+	return LabelAccessibleNewFromC(object.ToC())
+}
+
 // Layout is a wrapper around the C record GtkLayout.
 type Layout struct {
 	native *C.GtkLayout
@@ -7814,6 +8522,12 @@ func (recv *Layout) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *Layout) Object() *gobject.Object {
 	return recv.Container().Object()
+}
+
+// CastToWidget down casts any arbitary Object to Layout.
+// Exercise care, as this is a potentially dangerous function if the Object is not a Layout.
+func CastToLayout(object *gobject.Object) *Layout {
+	return LayoutNewFromC(object.ToC())
 }
 
 // LayoutNew is a wrapper around the C function gtk_layout_new.
@@ -7952,6 +8666,12 @@ func (recv *LevelBar) Object() *gobject.Object {
 	return recv.Widget().Object()
 }
 
+// CastToWidget down casts any arbitary Object to LevelBar.
+// Exercise care, as this is a potentially dangerous function if the Object is not a LevelBar.
+func CastToLevelBar(object *gobject.Object) *LevelBar {
+	return LevelBarNewFromC(object.ToC())
+}
+
 // LevelBarAccessible is a wrapper around the C record GtkLevelBarAccessible.
 type LevelBarAccessible struct {
 	native *C.GtkLevelBarAccessible
@@ -7988,6 +8708,12 @@ func (recv *LevelBarAccessible) Accessible() *Accessible {
 // Object upcasts to *Object
 func (recv *LevelBarAccessible) Object() *atk.Object {
 	return recv.WidgetAccessible().Object()
+}
+
+// CastToWidget down casts any arbitary Object to LevelBarAccessible.
+// Exercise care, as this is a potentially dangerous function if the Object is not a LevelBarAccessible.
+func CastToLevelBarAccessible(object *gobject.Object) *LevelBarAccessible {
+	return LevelBarAccessibleNewFromC(object.ToC())
 }
 
 // LinkButton is a wrapper around the C record GtkLinkButton.
@@ -8043,6 +8769,12 @@ func (recv *LinkButton) Object() *gobject.Object {
 	return recv.Button().Object()
 }
 
+// CastToWidget down casts any arbitary Object to LinkButton.
+// Exercise care, as this is a potentially dangerous function if the Object is not a LinkButton.
+func CastToLinkButton(object *gobject.Object) *LinkButton {
+	return LinkButtonNewFromC(object.ToC())
+}
+
 // LinkButtonAccessible is a wrapper around the C record GtkLinkButtonAccessible.
 type LinkButtonAccessible struct {
 	native *C.GtkLinkButtonAccessible
@@ -8091,6 +8823,12 @@ func (recv *LinkButtonAccessible) Object() *atk.Object {
 	return recv.ButtonAccessible().Object()
 }
 
+// CastToWidget down casts any arbitary Object to LinkButtonAccessible.
+// Exercise care, as this is a potentially dangerous function if the Object is not a LinkButtonAccessible.
+func CastToLinkButtonAccessible(object *gobject.Object) *LinkButtonAccessible {
+	return LinkButtonAccessibleNewFromC(object.ToC())
+}
+
 // ListBox is a wrapper around the C record GtkListBox.
 type ListBox struct {
 	native *C.GtkListBox
@@ -8131,6 +8869,12 @@ func (recv *ListBox) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *ListBox) Object() *gobject.Object {
 	return recv.Container().Object()
+}
+
+// CastToWidget down casts any arbitary Object to ListBox.
+// Exercise care, as this is a potentially dangerous function if the Object is not a ListBox.
+func CastToListBox(object *gobject.Object) *ListBox {
+	return ListBoxNewFromC(object.ToC())
 }
 
 // ListBoxAccessible is a wrapper around the C record GtkListBoxAccessible.
@@ -8174,6 +8918,12 @@ func (recv *ListBoxAccessible) Accessible() *Accessible {
 // Object upcasts to *Object
 func (recv *ListBoxAccessible) Object() *atk.Object {
 	return recv.ContainerAccessible().Object()
+}
+
+// CastToWidget down casts any arbitary Object to ListBoxAccessible.
+// Exercise care, as this is a potentially dangerous function if the Object is not a ListBoxAccessible.
+func CastToListBoxAccessible(object *gobject.Object) *ListBoxAccessible {
+	return ListBoxAccessibleNewFromC(object.ToC())
 }
 
 // ListBoxRow is a wrapper around the C record GtkListBoxRow.
@@ -8223,6 +8973,12 @@ func (recv *ListBoxRow) Object() *gobject.Object {
 	return recv.Bin().Object()
 }
 
+// CastToWidget down casts any arbitary Object to ListBoxRow.
+// Exercise care, as this is a potentially dangerous function if the Object is not a ListBoxRow.
+func CastToListBoxRow(object *gobject.Object) *ListBoxRow {
+	return ListBoxRowNewFromC(object.ToC())
+}
+
 // ListBoxRowAccessible is a wrapper around the C record GtkListBoxRowAccessible.
 type ListBoxRowAccessible struct {
 	native *C.GtkListBoxRowAccessible
@@ -8265,6 +9021,12 @@ func (recv *ListBoxRowAccessible) Object() *atk.Object {
 	return recv.ContainerAccessible().Object()
 }
 
+// CastToWidget down casts any arbitary Object to ListBoxRowAccessible.
+// Exercise care, as this is a potentially dangerous function if the Object is not a ListBoxRowAccessible.
+func CastToListBoxRowAccessible(object *gobject.Object) *ListBoxRowAccessible {
+	return ListBoxRowAccessibleNewFromC(object.ToC())
+}
+
 // ListStore is a wrapper around the C record GtkListStore.
 type ListStore struct {
 	native *C.GtkListStore
@@ -8291,6 +9053,12 @@ func (recv *ListStore) ToC() unsafe.Pointer {
 // Object upcasts to *Object
 func (recv *ListStore) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
+}
+
+// CastToWidget down casts any arbitary Object to ListStore.
+// Exercise care, as this is a potentially dangerous function if the Object is not a ListStore.
+func CastToListStore(object *gobject.Object) *ListStore {
+	return ListStoreNewFromC(object.ToC())
 }
 
 // Unsupported : gtk_list_store_new : unsupported parameter ... : varargs
@@ -8447,6 +9215,12 @@ func (recv *LockButton) Object() *gobject.Object {
 	return recv.Button().Object()
 }
 
+// CastToWidget down casts any arbitary Object to LockButton.
+// Exercise care, as this is a potentially dangerous function if the Object is not a LockButton.
+func CastToLockButton(object *gobject.Object) *LockButton {
+	return LockButtonNewFromC(object.ToC())
+}
+
 // LockButtonAccessible is a wrapper around the C record GtkLockButtonAccessible.
 type LockButtonAccessible struct {
 	native *C.GtkLockButtonAccessible
@@ -8495,6 +9269,12 @@ func (recv *LockButtonAccessible) Object() *atk.Object {
 	return recv.ButtonAccessible().Object()
 }
 
+// CastToWidget down casts any arbitary Object to LockButtonAccessible.
+// Exercise care, as this is a potentially dangerous function if the Object is not a LockButtonAccessible.
+func CastToLockButtonAccessible(object *gobject.Object) *LockButtonAccessible {
+	return LockButtonAccessibleNewFromC(object.ToC())
+}
+
 // Menu is a wrapper around the C record GtkMenu.
 type Menu struct {
 	native *C.GtkMenu
@@ -8541,6 +9321,12 @@ func (recv *Menu) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *Menu) Object() *gobject.Object {
 	return recv.MenuShell().Object()
+}
+
+// CastToWidget down casts any arbitary Object to Menu.
+// Exercise care, as this is a potentially dangerous function if the Object is not a Menu.
+func CastToMenu(object *gobject.Object) *Menu {
+	return MenuNewFromC(object.ToC())
 }
 
 // MenuNew is a wrapper around the C function gtk_menu_new.
@@ -8723,6 +9509,12 @@ func (recv *MenuAccessible) Object() *atk.Object {
 	return recv.MenuShellAccessible().Object()
 }
 
+// CastToWidget down casts any arbitary Object to MenuAccessible.
+// Exercise care, as this is a potentially dangerous function if the Object is not a MenuAccessible.
+func CastToMenuAccessible(object *gobject.Object) *MenuAccessible {
+	return MenuAccessibleNewFromC(object.ToC())
+}
+
 // MenuBar is a wrapper around the C record GtkMenuBar.
 type MenuBar struct {
 	native *C.GtkMenuBar
@@ -8769,6 +9561,12 @@ func (recv *MenuBar) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *MenuBar) Object() *gobject.Object {
 	return recv.MenuShell().Object()
+}
+
+// CastToWidget down casts any arbitary Object to MenuBar.
+// Exercise care, as this is a potentially dangerous function if the Object is not a MenuBar.
+func CastToMenuBar(object *gobject.Object) *MenuBar {
+	return MenuBarNewFromC(object.ToC())
 }
 
 // MenuBarNew is a wrapper around the C function gtk_menu_bar_new.
@@ -8837,6 +9635,12 @@ func (recv *MenuButton) Object() *gobject.Object {
 	return recv.ToggleButton().Object()
 }
 
+// CastToWidget down casts any arbitary Object to MenuButton.
+// Exercise care, as this is a potentially dangerous function if the Object is not a MenuButton.
+func CastToMenuButton(object *gobject.Object) *MenuButton {
+	return MenuButtonNewFromC(object.ToC())
+}
+
 // MenuButtonAccessible is a wrapper around the C record GtkMenuButtonAccessible.
 type MenuButtonAccessible struct {
 	native *C.GtkMenuButtonAccessible
@@ -8890,6 +9694,12 @@ func (recv *MenuButtonAccessible) Object() *atk.Object {
 	return recv.ToggleButtonAccessible().Object()
 }
 
+// CastToWidget down casts any arbitary Object to MenuButtonAccessible.
+// Exercise care, as this is a potentially dangerous function if the Object is not a MenuButtonAccessible.
+func CastToMenuButtonAccessible(object *gobject.Object) *MenuButtonAccessible {
+	return MenuButtonAccessibleNewFromC(object.ToC())
+}
+
 // MenuItem is a wrapper around the C record GtkMenuItem.
 type MenuItem struct {
 	native *C.GtkMenuItem
@@ -8936,6 +9746,12 @@ func (recv *MenuItem) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *MenuItem) Object() *gobject.Object {
 	return recv.Bin().Object()
+}
+
+// CastToWidget down casts any arbitary Object to MenuItem.
+// Exercise care, as this is a potentially dangerous function if the Object is not a MenuItem.
+func CastToMenuItem(object *gobject.Object) *MenuItem {
+	return MenuItemNewFromC(object.ToC())
 }
 
 // MenuItemNew is a wrapper around the C function gtk_menu_item_new.
@@ -9095,6 +9911,12 @@ func (recv *MenuItemAccessible) Object() *atk.Object {
 	return recv.ContainerAccessible().Object()
 }
 
+// CastToWidget down casts any arbitary Object to MenuItemAccessible.
+// Exercise care, as this is a potentially dangerous function if the Object is not a MenuItemAccessible.
+func CastToMenuItemAccessible(object *gobject.Object) *MenuItemAccessible {
+	return MenuItemAccessibleNewFromC(object.ToC())
+}
+
 // MenuShell is a wrapper around the C record GtkMenuShell.
 type MenuShell struct {
 	native *C.GtkMenuShell
@@ -9136,6 +9958,12 @@ func (recv *MenuShell) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *MenuShell) Object() *gobject.Object {
 	return recv.Container().Object()
+}
+
+// CastToWidget down casts any arbitary Object to MenuShell.
+// Exercise care, as this is a potentially dangerous function if the Object is not a MenuShell.
+func CastToMenuShell(object *gobject.Object) *MenuShell {
+	return MenuShellNewFromC(object.ToC())
 }
 
 // ActivateItem is a wrapper around the C function gtk_menu_shell_activate_item.
@@ -9245,6 +10073,12 @@ func (recv *MenuShellAccessible) Object() *atk.Object {
 	return recv.ContainerAccessible().Object()
 }
 
+// CastToWidget down casts any arbitary Object to MenuShellAccessible.
+// Exercise care, as this is a potentially dangerous function if the Object is not a MenuShellAccessible.
+func CastToMenuShellAccessible(object *gobject.Object) *MenuShellAccessible {
+	return MenuShellAccessibleNewFromC(object.ToC())
+}
+
 // MenuToolButton is a wrapper around the C record GtkMenuToolButton.
 type MenuToolButton struct {
 	native *C.GtkMenuToolButton
@@ -9301,6 +10135,12 @@ func (recv *MenuToolButton) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *MenuToolButton) Object() *gobject.Object {
 	return recv.ToolButton().Object()
+}
+
+// CastToWidget down casts any arbitary Object to MenuToolButton.
+// Exercise care, as this is a potentially dangerous function if the Object is not a MenuToolButton.
+func CastToMenuToolButton(object *gobject.Object) *MenuToolButton {
+	return MenuToolButtonNewFromC(object.ToC())
 }
 
 // MessageDialog is a wrapper around the C record GtkMessageDialog.
@@ -9361,6 +10201,12 @@ func (recv *MessageDialog) Object() *gobject.Object {
 	return recv.Dialog().Object()
 }
 
+// CastToWidget down casts any arbitary Object to MessageDialog.
+// Exercise care, as this is a potentially dangerous function if the Object is not a MessageDialog.
+func CastToMessageDialog(object *gobject.Object) *MessageDialog {
+	return MessageDialogNewFromC(object.ToC())
+}
+
 // Unsupported : gtk_message_dialog_new : unsupported parameter ... : varargs
 
 // Unsupported : gtk_message_dialog_new_with_markup : unsupported parameter ... : varargs
@@ -9401,6 +10247,12 @@ func (recv *Misc) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *Misc) Object() *gobject.Object {
 	return recv.Widget().Object()
+}
+
+// CastToWidget down casts any arbitary Object to Misc.
+// Exercise care, as this is a potentially dangerous function if the Object is not a Misc.
+func CastToMisc(object *gobject.Object) *Misc {
+	return MiscNewFromC(object.ToC())
 }
 
 // GetAlignment is a wrapper around the C function gtk_misc_get_alignment.
@@ -9506,6 +10358,12 @@ func (recv *ModelButton) Object() *gobject.Object {
 	return recv.Button().Object()
 }
 
+// CastToWidget down casts any arbitary Object to ModelButton.
+// Exercise care, as this is a potentially dangerous function if the Object is not a ModelButton.
+func CastToModelButton(object *gobject.Object) *ModelButton {
+	return ModelButtonNewFromC(object.ToC())
+}
+
 // MountOperation is a wrapper around the C record GtkMountOperation.
 type MountOperation struct {
 	native *C.GtkMountOperation
@@ -9537,6 +10395,12 @@ func (recv *MountOperation) MountOperation() *gio.MountOperation {
 // Object upcasts to *Object
 func (recv *MountOperation) Object() *gobject.Object {
 	return recv.MountOperation().Object()
+}
+
+// CastToWidget down casts any arbitary Object to MountOperation.
+// Exercise care, as this is a potentially dangerous function if the Object is not a MountOperation.
+func CastToMountOperation(object *gobject.Object) *MountOperation {
+	return MountOperationNewFromC(object.ToC())
 }
 
 // Notebook is a wrapper around the C record GtkNotebook.
@@ -9580,6 +10444,12 @@ func (recv *Notebook) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *Notebook) Object() *gobject.Object {
 	return recv.Container().Object()
+}
+
+// CastToWidget down casts any arbitary Object to Notebook.
+// Exercise care, as this is a potentially dangerous function if the Object is not a Notebook.
+func CastToNotebook(object *gobject.Object) *Notebook {
+	return NotebookNewFromC(object.ToC())
 }
 
 // NotebookNew is a wrapper around the C function gtk_notebook_new.
@@ -9957,6 +10827,12 @@ func (recv *NotebookAccessible) Object() *atk.Object {
 	return recv.ContainerAccessible().Object()
 }
 
+// CastToWidget down casts any arbitary Object to NotebookAccessible.
+// Exercise care, as this is a potentially dangerous function if the Object is not a NotebookAccessible.
+func CastToNotebookAccessible(object *gobject.Object) *NotebookAccessible {
+	return NotebookAccessibleNewFromC(object.ToC())
+}
+
 // NotebookPageAccessible is a wrapper around the C record GtkNotebookPageAccessible.
 type NotebookPageAccessible struct {
 	native *C.GtkNotebookPageAccessible
@@ -9983,6 +10859,12 @@ func (recv *NotebookPageAccessible) ToC() unsafe.Pointer {
 // Object upcasts to *Object
 func (recv *NotebookPageAccessible) Object() *atk.Object {
 	return atk.ObjectNewFromC(unsafe.Pointer(recv.native))
+}
+
+// CastToWidget down casts any arbitary Object to NotebookPageAccessible.
+// Exercise care, as this is a potentially dangerous function if the Object is not a NotebookPageAccessible.
+func CastToNotebookPageAccessible(object *gobject.Object) *NotebookPageAccessible {
+	return NotebookPageAccessibleNewFromC(object.ToC())
 }
 
 // NotebookPageAccessibleNew is a wrapper around the C function gtk_notebook_page_accessible_new.
@@ -10037,6 +10919,12 @@ func (recv *NumerableIcon) Object() *gobject.Object {
 	return recv.EmblemedIcon().Object()
 }
 
+// CastToWidget down casts any arbitary Object to NumerableIcon.
+// Exercise care, as this is a potentially dangerous function if the Object is not a NumerableIcon.
+func CastToNumerableIcon(object *gobject.Object) *NumerableIcon {
+	return NumerableIconNewFromC(object.ToC())
+}
+
 // OffscreenWindow is a wrapper around the C record GtkOffscreenWindow.
 type OffscreenWindow struct {
 	native *C.GtkOffscreenWindow
@@ -10089,6 +10977,12 @@ func (recv *OffscreenWindow) Object() *gobject.Object {
 	return recv.Window().Object()
 }
 
+// CastToWidget down casts any arbitary Object to OffscreenWindow.
+// Exercise care, as this is a potentially dangerous function if the Object is not a OffscreenWindow.
+func CastToOffscreenWindow(object *gobject.Object) *OffscreenWindow {
+	return OffscreenWindowNewFromC(object.ToC())
+}
+
 // Overlay is a wrapper around the C record GtkOverlay.
 type Overlay struct {
 	native *C.GtkOverlay
@@ -10137,6 +11031,12 @@ func (recv *Overlay) Object() *gobject.Object {
 	return recv.Bin().Object()
 }
 
+// CastToWidget down casts any arbitary Object to Overlay.
+// Exercise care, as this is a potentially dangerous function if the Object is not a Overlay.
+func CastToOverlay(object *gobject.Object) *Overlay {
+	return OverlayNewFromC(object.ToC())
+}
+
 // Unsupported : gtk_pad_controller_new : unsupported parameter group : no type generator for Gio.ActionGroup, GActionGroup*
 
 // PageSetup is a wrapper around the C record GtkPageSetup.
@@ -10163,6 +11063,12 @@ func (recv *PageSetup) ToC() unsafe.Pointer {
 // Object upcasts to *Object
 func (recv *PageSetup) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
+}
+
+// CastToWidget down casts any arbitary Object to PageSetup.
+// Exercise care, as this is a potentially dangerous function if the Object is not a PageSetup.
+func CastToPageSetup(object *gobject.Object) *PageSetup {
+	return PageSetupNewFromC(object.ToC())
 }
 
 // Unsupported : gtk_page_setup_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
@@ -10208,6 +11114,12 @@ func (recv *Paned) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *Paned) Object() *gobject.Object {
 	return recv.Container().Object()
+}
+
+// CastToWidget down casts any arbitary Object to Paned.
+// Exercise care, as this is a potentially dangerous function if the Object is not a Paned.
+func CastToPaned(object *gobject.Object) *Paned {
+	return PanedNewFromC(object.ToC())
 }
 
 // Add1 is a wrapper around the C function gtk_paned_add1.
@@ -10318,6 +11230,12 @@ func (recv *PanedAccessible) Object() *atk.Object {
 	return recv.ContainerAccessible().Object()
 }
 
+// CastToWidget down casts any arbitary Object to PanedAccessible.
+// Exercise care, as this is a potentially dangerous function if the Object is not a PanedAccessible.
+func CastToPanedAccessible(object *gobject.Object) *PanedAccessible {
+	return PanedAccessibleNewFromC(object.ToC())
+}
+
 // PlacesSidebar is a wrapper around the C record GtkPlacesSidebar.
 type PlacesSidebar struct {
 	native *C.GtkPlacesSidebar
@@ -10367,6 +11285,12 @@ func (recv *PlacesSidebar) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *PlacesSidebar) Object() *gobject.Object {
 	return recv.ScrolledWindow().Object()
+}
+
+// CastToWidget down casts any arbitary Object to PlacesSidebar.
+// Exercise care, as this is a potentially dangerous function if the Object is not a PlacesSidebar.
+func CastToPlacesSidebar(object *gobject.Object) *PlacesSidebar {
+	return PlacesSidebarNewFromC(object.ToC())
 }
 
 // GetShowConnectToServer is a wrapper around the C function gtk_places_sidebar_get_show_connect_to_server.
@@ -10427,6 +11351,12 @@ func (recv *Popover) Object() *gobject.Object {
 	return recv.Bin().Object()
 }
 
+// CastToWidget down casts any arbitary Object to Popover.
+// Exercise care, as this is a potentially dangerous function if the Object is not a Popover.
+func CastToPopover(object *gobject.Object) *Popover {
+	return PopoverNewFromC(object.ToC())
+}
+
 // Unsupported : gtk_popover_get_pointing_to : unsupported parameter rect : Blacklisted record : GdkRectangle
 
 // GetPosition is a wrapper around the C function gtk_popover_get_position.
@@ -10477,6 +11407,12 @@ func (recv *PopoverAccessible) Accessible() *Accessible {
 // Object upcasts to *Object
 func (recv *PopoverAccessible) Object() *atk.Object {
 	return recv.ContainerAccessible().Object()
+}
+
+// CastToWidget down casts any arbitary Object to PopoverAccessible.
+// Exercise care, as this is a potentially dangerous function if the Object is not a PopoverAccessible.
+func CastToPopoverAccessible(object *gobject.Object) *PopoverAccessible {
+	return PopoverAccessibleNewFromC(object.ToC())
 }
 
 // PopoverMenu is a wrapper around the C record GtkPopoverMenu.
@@ -10530,6 +11466,12 @@ func (recv *PopoverMenu) Object() *gobject.Object {
 	return recv.Popover().Object()
 }
 
+// CastToWidget down casts any arbitary Object to PopoverMenu.
+// Exercise care, as this is a potentially dangerous function if the Object is not a PopoverMenu.
+func CastToPopoverMenu(object *gobject.Object) *PopoverMenu {
+	return PopoverMenuNewFromC(object.ToC())
+}
+
 // PrintContext is a wrapper around the C record GtkPrintContext.
 type PrintContext struct {
 	native *C.GtkPrintContext
@@ -10554,6 +11496,12 @@ func (recv *PrintContext) ToC() unsafe.Pointer {
 // Object upcasts to *Object
 func (recv *PrintContext) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
+}
+
+// CastToWidget down casts any arbitary Object to PrintContext.
+// Exercise care, as this is a potentially dangerous function if the Object is not a PrintContext.
+func CastToPrintContext(object *gobject.Object) *PrintContext {
+	return PrintContextNewFromC(object.ToC())
 }
 
 // PrintOperation is a wrapper around the C record GtkPrintOperation.
@@ -10584,6 +11532,12 @@ func (recv *PrintOperation) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
+// CastToWidget down casts any arbitary Object to PrintOperation.
+// Exercise care, as this is a potentially dangerous function if the Object is not a PrintOperation.
+func CastToPrintOperation(object *gobject.Object) *PrintOperation {
+	return PrintOperationNewFromC(object.ToC())
+}
+
 // PrintSettings is a wrapper around the C record GtkPrintSettings.
 type PrintSettings struct {
 	native *C.GtkPrintSettings
@@ -10608,6 +11562,12 @@ func (recv *PrintSettings) ToC() unsafe.Pointer {
 // Object upcasts to *Object
 func (recv *PrintSettings) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
+}
+
+// CastToWidget down casts any arbitary Object to PrintSettings.
+// Exercise care, as this is a potentially dangerous function if the Object is not a PrintSettings.
+func CastToPrintSettings(object *gobject.Object) *PrintSettings {
+	return PrintSettingsNewFromC(object.ToC())
 }
 
 // Unsupported : gtk_print_settings_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
@@ -10648,6 +11608,12 @@ func (recv *ProgressBar) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *ProgressBar) Object() *gobject.Object {
 	return recv.Widget().Object()
+}
+
+// CastToWidget down casts any arbitary Object to ProgressBar.
+// Exercise care, as this is a potentially dangerous function if the Object is not a ProgressBar.
+func CastToProgressBar(object *gobject.Object) *ProgressBar {
+	return ProgressBarNewFromC(object.ToC())
 }
 
 // ProgressBarNew is a wrapper around the C function gtk_progress_bar_new.
@@ -10773,6 +11739,12 @@ func (recv *ProgressBarAccessible) Object() *atk.Object {
 	return recv.WidgetAccessible().Object()
 }
 
+// CastToWidget down casts any arbitary Object to ProgressBarAccessible.
+// Exercise care, as this is a potentially dangerous function if the Object is not a ProgressBarAccessible.
+func CastToProgressBarAccessible(object *gobject.Object) *ProgressBarAccessible {
+	return ProgressBarAccessibleNewFromC(object.ToC())
+}
+
 // RadioAction is a wrapper around the C record GtkRadioAction.
 type RadioAction struct {
 	native *C.GtkRadioAction
@@ -10809,6 +11781,12 @@ func (recv *RadioAction) Action() *Action {
 // Object upcasts to *Object
 func (recv *RadioAction) Object() *gobject.Object {
 	return recv.ToggleAction().Object()
+}
+
+// CastToWidget down casts any arbitary Object to RadioAction.
+// Exercise care, as this is a potentially dangerous function if the Object is not a RadioAction.
+func CastToRadioAction(object *gobject.Object) *RadioAction {
+	return RadioActionNewFromC(object.ToC())
 }
 
 // RadioButton is a wrapper around the C record GtkRadioButton.
@@ -10872,6 +11850,12 @@ func (recv *RadioButton) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *RadioButton) Object() *gobject.Object {
 	return recv.CheckButton().Object()
+}
+
+// CastToWidget down casts any arbitary Object to RadioButton.
+// Exercise care, as this is a potentially dangerous function if the Object is not a RadioButton.
+func CastToRadioButton(object *gobject.Object) *RadioButton {
+	return RadioButtonNewFromC(object.ToC())
 }
 
 // RadioButtonNew is a wrapper around the C function gtk_radio_button_new.
@@ -11016,6 +12000,12 @@ func (recv *RadioButtonAccessible) Object() *atk.Object {
 	return recv.ToggleButtonAccessible().Object()
 }
 
+// CastToWidget down casts any arbitary Object to RadioButtonAccessible.
+// Exercise care, as this is a potentially dangerous function if the Object is not a RadioButtonAccessible.
+func CastToRadioButtonAccessible(object *gobject.Object) *RadioButtonAccessible {
+	return RadioButtonAccessibleNewFromC(object.ToC())
+}
+
 // RadioMenuItem is a wrapper around the C record GtkRadioMenuItem.
 type RadioMenuItem struct {
 	native *C.GtkRadioMenuItem
@@ -11072,6 +12062,12 @@ func (recv *RadioMenuItem) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *RadioMenuItem) Object() *gobject.Object {
 	return recv.CheckMenuItem().Object()
+}
+
+// CastToWidget down casts any arbitary Object to RadioMenuItem.
+// Exercise care, as this is a potentially dangerous function if the Object is not a RadioMenuItem.
+func CastToRadioMenuItem(object *gobject.Object) *RadioMenuItem {
+	return RadioMenuItemNewFromC(object.ToC())
 }
 
 // RadioMenuItemNew is a wrapper around the C function gtk_radio_menu_item_new.
@@ -11180,6 +12176,12 @@ func (recv *RadioMenuItemAccessible) Object() *atk.Object {
 	return recv.CheckMenuItemAccessible().Object()
 }
 
+// CastToWidget down casts any arbitary Object to RadioMenuItemAccessible.
+// Exercise care, as this is a potentially dangerous function if the Object is not a RadioMenuItemAccessible.
+func CastToRadioMenuItemAccessible(object *gobject.Object) *RadioMenuItemAccessible {
+	return RadioMenuItemAccessibleNewFromC(object.ToC())
+}
+
 // RadioToolButton is a wrapper around the C record GtkRadioToolButton.
 type RadioToolButton struct {
 	native *C.GtkRadioToolButton
@@ -11242,6 +12244,12 @@ func (recv *RadioToolButton) Object() *gobject.Object {
 	return recv.ToggleToolButton().Object()
 }
 
+// CastToWidget down casts any arbitary Object to RadioToolButton.
+// Exercise care, as this is a potentially dangerous function if the Object is not a RadioToolButton.
+func CastToRadioToolButton(object *gobject.Object) *RadioToolButton {
+	return RadioToolButtonNewFromC(object.ToC())
+}
+
 // Range is a wrapper around the C record GtkRange.
 type Range struct {
 	native *C.GtkRange
@@ -11278,6 +12286,12 @@ func (recv *Range) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *Range) Object() *gobject.Object {
 	return recv.Widget().Object()
+}
+
+// CastToWidget down casts any arbitary Object to Range.
+// Exercise care, as this is a potentially dangerous function if the Object is not a Range.
+func CastToRange(object *gobject.Object) *Range {
+	return RangeNewFromC(object.ToC())
 }
 
 // GetAdjustment is a wrapper around the C function gtk_range_get_adjustment.
@@ -11392,6 +12406,12 @@ func (recv *RangeAccessible) Object() *atk.Object {
 	return recv.WidgetAccessible().Object()
 }
 
+// CastToWidget down casts any arbitary Object to RangeAccessible.
+// Exercise care, as this is a potentially dangerous function if the Object is not a RangeAccessible.
+func CastToRangeAccessible(object *gobject.Object) *RangeAccessible {
+	return RangeAccessibleNewFromC(object.ToC())
+}
+
 // RcStyle is a wrapper around the C record GtkRcStyle.
 type RcStyle struct {
 	native *C.GtkRcStyle
@@ -11444,6 +12464,12 @@ func (recv *RcStyle) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
+// CastToWidget down casts any arbitary Object to RcStyle.
+// Exercise care, as this is a potentially dangerous function if the Object is not a RcStyle.
+func CastToRcStyle(object *gobject.Object) *RcStyle {
+	return RcStyleNewFromC(object.ToC())
+}
+
 // RcStyleNew is a wrapper around the C function gtk_rc_style_new.
 func RcStyleNew() *RcStyle {
 	retC := C.gtk_rc_style_new()
@@ -11491,6 +12517,12 @@ func (recv *RecentAction) Action() *Action {
 // Object upcasts to *Object
 func (recv *RecentAction) Object() *gobject.Object {
 	return recv.Action().Object()
+}
+
+// CastToWidget down casts any arbitary Object to RecentAction.
+// Exercise care, as this is a potentially dangerous function if the Object is not a RecentAction.
+func CastToRecentAction(object *gobject.Object) *RecentAction {
+	return RecentActionNewFromC(object.ToC())
 }
 
 // RecentChooserDialog is a wrapper around the C record GtkRecentChooserDialog.
@@ -11551,6 +12583,12 @@ func (recv *RecentChooserDialog) Object() *gobject.Object {
 	return recv.Dialog().Object()
 }
 
+// CastToWidget down casts any arbitary Object to RecentChooserDialog.
+// Exercise care, as this is a potentially dangerous function if the Object is not a RecentChooserDialog.
+func CastToRecentChooserDialog(object *gobject.Object) *RecentChooserDialog {
+	return RecentChooserDialogNewFromC(object.ToC())
+}
+
 // Unsupported : gtk_recent_chooser_dialog_new : unsupported parameter ... : varargs
 
 // Unsupported : gtk_recent_chooser_dialog_new_for_manager : unsupported parameter ... : varargs
@@ -11608,6 +12646,12 @@ func (recv *RecentChooserMenu) Object() *gobject.Object {
 	return recv.Menu().Object()
 }
 
+// CastToWidget down casts any arbitary Object to RecentChooserMenu.
+// Exercise care, as this is a potentially dangerous function if the Object is not a RecentChooserMenu.
+func CastToRecentChooserMenu(object *gobject.Object) *RecentChooserMenu {
+	return RecentChooserMenuNewFromC(object.ToC())
+}
+
 // RecentChooserWidget is a wrapper around the C record GtkRecentChooserWidget.
 type RecentChooserWidget struct {
 	native *C.GtkRecentChooserWidget
@@ -11656,6 +12700,12 @@ func (recv *RecentChooserWidget) Object() *gobject.Object {
 	return recv.Box().Object()
 }
 
+// CastToWidget down casts any arbitary Object to RecentChooserWidget.
+// Exercise care, as this is a potentially dangerous function if the Object is not a RecentChooserWidget.
+func CastToRecentChooserWidget(object *gobject.Object) *RecentChooserWidget {
+	return RecentChooserWidgetNewFromC(object.ToC())
+}
+
 // RecentFilter is a wrapper around the C record GtkRecentFilter.
 type RecentFilter struct {
 	native *C.GtkRecentFilter
@@ -11685,6 +12735,12 @@ func (recv *RecentFilter) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *RecentFilter) Object() *gobject.Object {
 	return recv.InitiallyUnowned().Object()
+}
+
+// CastToWidget down casts any arbitary Object to RecentFilter.
+// Exercise care, as this is a potentially dangerous function if the Object is not a RecentFilter.
+func CastToRecentFilter(object *gobject.Object) *RecentFilter {
+	return RecentFilterNewFromC(object.ToC())
 }
 
 // RendererCellAccessible is a wrapper around the C record GtkRendererCellAccessible.
@@ -11723,6 +12779,12 @@ func (recv *RendererCellAccessible) Accessible() *Accessible {
 // Object upcasts to *Object
 func (recv *RendererCellAccessible) Object() *atk.Object {
 	return recv.CellAccessible().Object()
+}
+
+// CastToWidget down casts any arbitary Object to RendererCellAccessible.
+// Exercise care, as this is a potentially dangerous function if the Object is not a RendererCellAccessible.
+func CastToRendererCellAccessible(object *gobject.Object) *RendererCellAccessible {
+	return RendererCellAccessibleNewFromC(object.ToC())
 }
 
 // RendererCellAccessibleNew is a wrapper around the C function gtk_renderer_cell_accessible_new.
@@ -11782,6 +12844,12 @@ func (recv *Revealer) Object() *gobject.Object {
 	return recv.Bin().Object()
 }
 
+// CastToWidget down casts any arbitary Object to Revealer.
+// Exercise care, as this is a potentially dangerous function if the Object is not a Revealer.
+func CastToRevealer(object *gobject.Object) *Revealer {
+	return RevealerNewFromC(object.ToC())
+}
+
 // Scale is a wrapper around the C record GtkScale.
 type Scale struct {
 	native *C.GtkScale
@@ -11823,6 +12891,12 @@ func (recv *Scale) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *Scale) Object() *gobject.Object {
 	return recv.Range().Object()
+}
+
+// CastToWidget down casts any arbitary Object to Scale.
+// Exercise care, as this is a potentially dangerous function if the Object is not a Scale.
+func CastToScale(object *gobject.Object) *Scale {
+	return ScaleNewFromC(object.ToC())
 }
 
 // GetDigits is a wrapper around the C function gtk_scale_get_digits.
@@ -11920,6 +12994,12 @@ func (recv *ScaleAccessible) Object() *atk.Object {
 	return recv.RangeAccessible().Object()
 }
 
+// CastToWidget down casts any arbitary Object to ScaleAccessible.
+// Exercise care, as this is a potentially dangerous function if the Object is not a ScaleAccessible.
+func CastToScaleAccessible(object *gobject.Object) *ScaleAccessible {
+	return ScaleAccessibleNewFromC(object.ToC())
+}
+
 // ScaleButton is a wrapper around the C record GtkScaleButton.
 type ScaleButton struct {
 	native *C.GtkScaleButton
@@ -11973,6 +13053,12 @@ func (recv *ScaleButton) Object() *gobject.Object {
 	return recv.Button().Object()
 }
 
+// CastToWidget down casts any arbitary Object to ScaleButton.
+// Exercise care, as this is a potentially dangerous function if the Object is not a ScaleButton.
+func CastToScaleButton(object *gobject.Object) *ScaleButton {
+	return ScaleButtonNewFromC(object.ToC())
+}
+
 // Unsupported : gtk_scale_button_new : unsupported parameter size : no type generator for gint, GtkIconSize
 
 // ScaleButtonAccessible is a wrapper around the C record GtkScaleButtonAccessible.
@@ -12023,6 +13109,12 @@ func (recv *ScaleButtonAccessible) Object() *atk.Object {
 	return recv.ButtonAccessible().Object()
 }
 
+// CastToWidget down casts any arbitary Object to ScaleButtonAccessible.
+// Exercise care, as this is a potentially dangerous function if the Object is not a ScaleButtonAccessible.
+func CastToScaleButtonAccessible(object *gobject.Object) *ScaleButtonAccessible {
+	return ScaleButtonAccessibleNewFromC(object.ToC())
+}
+
 // Scrollbar is a wrapper around the C record GtkScrollbar.
 type Scrollbar struct {
 	native *C.GtkScrollbar
@@ -12063,6 +13155,12 @@ func (recv *Scrollbar) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *Scrollbar) Object() *gobject.Object {
 	return recv.Range().Object()
+}
+
+// CastToWidget down casts any arbitary Object to Scrollbar.
+// Exercise care, as this is a potentially dangerous function if the Object is not a Scrollbar.
+func CastToScrollbar(object *gobject.Object) *Scrollbar {
+	return ScrollbarNewFromC(object.ToC())
 }
 
 // ScrolledWindow is a wrapper around the C record GtkScrolledWindow.
@@ -12111,6 +13209,12 @@ func (recv *ScrolledWindow) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *ScrolledWindow) Object() *gobject.Object {
 	return recv.Bin().Object()
+}
+
+// CastToWidget down casts any arbitary Object to ScrolledWindow.
+// Exercise care, as this is a potentially dangerous function if the Object is not a ScrolledWindow.
+func CastToScrolledWindow(object *gobject.Object) *ScrolledWindow {
+	return ScrolledWindowNewFromC(object.ToC())
 }
 
 // ScrolledWindowNew is a wrapper around the C function gtk_scrolled_window_new.
@@ -12258,6 +13362,12 @@ func (recv *ScrolledWindowAccessible) Object() *atk.Object {
 	return recv.ContainerAccessible().Object()
 }
 
+// CastToWidget down casts any arbitary Object to ScrolledWindowAccessible.
+// Exercise care, as this is a potentially dangerous function if the Object is not a ScrolledWindowAccessible.
+func CastToScrolledWindowAccessible(object *gobject.Object) *ScrolledWindowAccessible {
+	return ScrolledWindowAccessibleNewFromC(object.ToC())
+}
+
 // SearchBar is a wrapper around the C record GtkSearchBar.
 type SearchBar struct {
 	native *C.GtkSearchBar
@@ -12305,6 +13415,12 @@ func (recv *SearchBar) Object() *gobject.Object {
 	return recv.Bin().Object()
 }
 
+// CastToWidget down casts any arbitary Object to SearchBar.
+// Exercise care, as this is a potentially dangerous function if the Object is not a SearchBar.
+func CastToSearchBar(object *gobject.Object) *SearchBar {
+	return SearchBarNewFromC(object.ToC())
+}
+
 // SearchEntry is a wrapper around the C record GtkSearchEntry.
 type SearchEntry struct {
 	native *C.GtkSearchEntry
@@ -12347,6 +13463,12 @@ func (recv *SearchEntry) Object() *gobject.Object {
 	return recv.Entry().Object()
 }
 
+// CastToWidget down casts any arbitary Object to SearchEntry.
+// Exercise care, as this is a potentially dangerous function if the Object is not a SearchEntry.
+func CastToSearchEntry(object *gobject.Object) *SearchEntry {
+	return SearchEntryNewFromC(object.ToC())
+}
+
 // Separator is a wrapper around the C record GtkSeparator.
 type Separator struct {
 	native *C.GtkSeparator
@@ -12383,6 +13505,12 @@ func (recv *Separator) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *Separator) Object() *gobject.Object {
 	return recv.Widget().Object()
+}
+
+// CastToWidget down casts any arbitary Object to Separator.
+// Exercise care, as this is a potentially dangerous function if the Object is not a Separator.
+func CastToSeparator(object *gobject.Object) *Separator {
+	return SeparatorNewFromC(object.ToC())
 }
 
 // SeparatorMenuItem is a wrapper around the C record GtkSeparatorMenuItem.
@@ -12435,6 +13563,12 @@ func (recv *SeparatorMenuItem) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *SeparatorMenuItem) Object() *gobject.Object {
 	return recv.MenuItem().Object()
+}
+
+// CastToWidget down casts any arbitary Object to SeparatorMenuItem.
+// Exercise care, as this is a potentially dangerous function if the Object is not a SeparatorMenuItem.
+func CastToSeparatorMenuItem(object *gobject.Object) *SeparatorMenuItem {
+	return SeparatorMenuItemNewFromC(object.ToC())
 }
 
 // SeparatorMenuItemNew is a wrapper around the C function gtk_separator_menu_item_new.
@@ -12498,6 +13632,12 @@ func (recv *SeparatorToolItem) Object() *gobject.Object {
 	return recv.ToolItem().Object()
 }
 
+// CastToWidget down casts any arbitary Object to SeparatorToolItem.
+// Exercise care, as this is a potentially dangerous function if the Object is not a SeparatorToolItem.
+func CastToSeparatorToolItem(object *gobject.Object) *SeparatorToolItem {
+	return SeparatorToolItemNewFromC(object.ToC())
+}
+
 // Settings is a wrapper around the C record GtkSettings.
 type Settings struct {
 	native *C.GtkSettings
@@ -12524,6 +13664,12 @@ func (recv *Settings) ToC() unsafe.Pointer {
 // Object upcasts to *Object
 func (recv *Settings) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
+}
+
+// CastToWidget down casts any arbitary Object to Settings.
+// Exercise care, as this is a potentially dangerous function if the Object is not a Settings.
+func CastToSettings(object *gobject.Object) *Settings {
+	return SettingsNewFromC(object.ToC())
 }
 
 // SetDoubleProperty is a wrapper around the C function gtk_settings_set_double_property.
@@ -12610,6 +13756,12 @@ func (recv *SizeGroup) ToC() unsafe.Pointer {
 // Object upcasts to *Object
 func (recv *SizeGroup) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
+}
+
+// CastToWidget down casts any arbitary Object to SizeGroup.
+// Exercise care, as this is a potentially dangerous function if the Object is not a SizeGroup.
+func CastToSizeGroup(object *gobject.Object) *SizeGroup {
+	return SizeGroupNewFromC(object.ToC())
 }
 
 // SizeGroupNew is a wrapper around the C function gtk_size_group_new.
@@ -12700,6 +13852,12 @@ func (recv *SpinButton) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *SpinButton) Object() *gobject.Object {
 	return recv.Entry().Object()
+}
+
+// CastToWidget down casts any arbitary Object to SpinButton.
+// Exercise care, as this is a potentially dangerous function if the Object is not a SpinButton.
+func CastToSpinButton(object *gobject.Object) *SpinButton {
+	return SpinButtonNewFromC(object.ToC())
 }
 
 // SpinButtonNew is a wrapper around the C function gtk_spin_button_new.
@@ -12986,6 +14144,12 @@ func (recv *SpinButtonAccessible) Object() *atk.Object {
 	return recv.EntryAccessible().Object()
 }
 
+// CastToWidget down casts any arbitary Object to SpinButtonAccessible.
+// Exercise care, as this is a potentially dangerous function if the Object is not a SpinButtonAccessible.
+func CastToSpinButtonAccessible(object *gobject.Object) *SpinButtonAccessible {
+	return SpinButtonAccessibleNewFromC(object.ToC())
+}
+
 // Spinner is a wrapper around the C record GtkSpinner.
 type Spinner struct {
 	native *C.GtkSpinner
@@ -13024,6 +14188,12 @@ func (recv *Spinner) Object() *gobject.Object {
 	return recv.Widget().Object()
 }
 
+// CastToWidget down casts any arbitary Object to Spinner.
+// Exercise care, as this is a potentially dangerous function if the Object is not a Spinner.
+func CastToSpinner(object *gobject.Object) *Spinner {
+	return SpinnerNewFromC(object.ToC())
+}
+
 // SpinnerAccessible is a wrapper around the C record GtkSpinnerAccessible.
 type SpinnerAccessible struct {
 	native *C.GtkSpinnerAccessible
@@ -13060,6 +14230,12 @@ func (recv *SpinnerAccessible) Accessible() *Accessible {
 // Object upcasts to *Object
 func (recv *SpinnerAccessible) Object() *atk.Object {
 	return recv.WidgetAccessible().Object()
+}
+
+// CastToWidget down casts any arbitary Object to SpinnerAccessible.
+// Exercise care, as this is a potentially dangerous function if the Object is not a SpinnerAccessible.
+func CastToSpinnerAccessible(object *gobject.Object) *SpinnerAccessible {
+	return SpinnerAccessibleNewFromC(object.ToC())
 }
 
 // Stack is a wrapper around the C record GtkStack.
@@ -13102,6 +14278,12 @@ func (recv *Stack) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *Stack) Object() *gobject.Object {
 	return recv.Container().Object()
+}
+
+// CastToWidget down casts any arbitary Object to Stack.
+// Exercise care, as this is a potentially dangerous function if the Object is not a Stack.
+func CastToStack(object *gobject.Object) *Stack {
+	return StackNewFromC(object.ToC())
 }
 
 // Blacklisted : GtkStackAccessible
@@ -13153,6 +14335,12 @@ func (recv *StackSidebar) Object() *gobject.Object {
 	return recv.Bin().Object()
 }
 
+// CastToWidget down casts any arbitary Object to StackSidebar.
+// Exercise care, as this is a potentially dangerous function if the Object is not a StackSidebar.
+func CastToStackSidebar(object *gobject.Object) *StackSidebar {
+	return StackSidebarNewFromC(object.ToC())
+}
+
 // StackSwitcher is a wrapper around the C record GtkStackSwitcher.
 type StackSwitcher struct {
 	native *C.GtkStackSwitcher
@@ -13200,6 +14388,12 @@ func (recv *StackSwitcher) Object() *gobject.Object {
 	return recv.Box().Object()
 }
 
+// CastToWidget down casts any arbitary Object to StackSwitcher.
+// Exercise care, as this is a potentially dangerous function if the Object is not a StackSwitcher.
+func CastToStackSwitcher(object *gobject.Object) *StackSwitcher {
+	return StackSwitcherNewFromC(object.ToC())
+}
+
 // StatusIcon is a wrapper around the C record GtkStatusIcon.
 type StatusIcon struct {
 	native *C.GtkStatusIcon
@@ -13226,6 +14420,12 @@ func (recv *StatusIcon) ToC() unsafe.Pointer {
 // Object upcasts to *Object
 func (recv *StatusIcon) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
+}
+
+// CastToWidget down casts any arbitary Object to StatusIcon.
+// Exercise care, as this is a potentially dangerous function if the Object is not a StatusIcon.
+func CastToStatusIcon(object *gobject.Object) *StatusIcon {
+	return StatusIconNewFromC(object.ToC())
 }
 
 // Unsupported : gtk_status_icon_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon, GIcon*
@@ -13276,6 +14476,12 @@ func (recv *Statusbar) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *Statusbar) Object() *gobject.Object {
 	return recv.Box().Object()
+}
+
+// CastToWidget down casts any arbitary Object to Statusbar.
+// Exercise care, as this is a potentially dangerous function if the Object is not a Statusbar.
+func CastToStatusbar(object *gobject.Object) *Statusbar {
+	return StatusbarNewFromC(object.ToC())
 }
 
 // StatusbarNew is a wrapper around the C function gtk_statusbar_new.
@@ -13373,6 +14579,12 @@ func (recv *StatusbarAccessible) Object() *atk.Object {
 	return recv.ContainerAccessible().Object()
 }
 
+// CastToWidget down casts any arbitary Object to StatusbarAccessible.
+// Exercise care, as this is a potentially dangerous function if the Object is not a StatusbarAccessible.
+func CastToStatusbarAccessible(object *gobject.Object) *StatusbarAccessible {
+	return StatusbarAccessibleNewFromC(object.ToC())
+}
+
 // Style is a wrapper around the C record GtkStyle.
 type Style struct {
 	native *C.GtkStyle
@@ -13427,6 +14639,12 @@ func (recv *Style) ToC() unsafe.Pointer {
 // Object upcasts to *Object
 func (recv *Style) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
+}
+
+// CastToWidget down casts any arbitary Object to Style.
+// Exercise care, as this is a potentially dangerous function if the Object is not a Style.
+func CastToStyle(object *gobject.Object) *Style {
+	return StyleNewFromC(object.ToC())
 }
 
 // StyleNew is a wrapper around the C function gtk_style_new.
@@ -13535,6 +14753,12 @@ func (recv *StyleContext) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
+// CastToWidget down casts any arbitary Object to StyleContext.
+// Exercise care, as this is a potentially dangerous function if the Object is not a StyleContext.
+func CastToStyleContext(object *gobject.Object) *StyleContext {
+	return StyleContextNewFromC(object.ToC())
+}
+
 // StyleContextNew is a wrapper around the C function gtk_style_context_new.
 func StyleContextNew() *StyleContext {
 	retC := C.gtk_style_context_new()
@@ -13628,6 +14852,12 @@ func (recv *StyleProperties) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
+// CastToWidget down casts any arbitary Object to StyleProperties.
+// Exercise care, as this is a potentially dangerous function if the Object is not a StyleProperties.
+func CastToStyleProperties(object *gobject.Object) *StyleProperties {
+	return StylePropertiesNewFromC(object.ToC())
+}
+
 // StylePropertiesNew is a wrapper around the C function gtk_style_properties_new.
 func StylePropertiesNew() *StyleProperties {
 	retC := C.gtk_style_properties_new()
@@ -13681,6 +14911,12 @@ func (recv *Switch) Object() *gobject.Object {
 	return recv.Widget().Object()
 }
 
+// CastToWidget down casts any arbitary Object to Switch.
+// Exercise care, as this is a potentially dangerous function if the Object is not a Switch.
+func CastToSwitch(object *gobject.Object) *Switch {
+	return SwitchNewFromC(object.ToC())
+}
+
 // SwitchAccessible is a wrapper around the C record GtkSwitchAccessible.
 type SwitchAccessible struct {
 	native *C.GtkSwitchAccessible
@@ -13717,6 +14953,12 @@ func (recv *SwitchAccessible) Accessible() *Accessible {
 // Object upcasts to *Object
 func (recv *SwitchAccessible) Object() *atk.Object {
 	return recv.WidgetAccessible().Object()
+}
+
+// CastToWidget down casts any arbitary Object to SwitchAccessible.
+// Exercise care, as this is a potentially dangerous function if the Object is not a SwitchAccessible.
+func CastToSwitchAccessible(object *gobject.Object) *SwitchAccessible {
+	return SwitchAccessibleNewFromC(object.ToC())
 }
 
 // Table is a wrapper around the C record GtkTable.
@@ -13760,6 +15002,12 @@ func (recv *Table) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *Table) Object() *gobject.Object {
 	return recv.Container().Object()
+}
+
+// CastToWidget down casts any arbitary Object to Table.
+// Exercise care, as this is a potentially dangerous function if the Object is not a Table.
+func CastToTable(object *gobject.Object) *Table {
+	return TableNewFromC(object.ToC())
 }
 
 // TableNew is a wrapper around the C function gtk_table_new.
@@ -13977,6 +15225,12 @@ func (recv *TearoffMenuItem) Object() *gobject.Object {
 	return recv.MenuItem().Object()
 }
 
+// CastToWidget down casts any arbitary Object to TearoffMenuItem.
+// Exercise care, as this is a potentially dangerous function if the Object is not a TearoffMenuItem.
+func CastToTearoffMenuItem(object *gobject.Object) *TearoffMenuItem {
+	return TearoffMenuItemNewFromC(object.ToC())
+}
+
 // TearoffMenuItemNew is a wrapper around the C function gtk_tearoff_menu_item_new.
 func TearoffMenuItemNew() *TearoffMenuItem {
 	retC := C.gtk_tearoff_menu_item_new()
@@ -14011,6 +15265,12 @@ func (recv *TextBuffer) ToC() unsafe.Pointer {
 // Object upcasts to *Object
 func (recv *TextBuffer) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
+}
+
+// CastToWidget down casts any arbitary Object to TextBuffer.
+// Exercise care, as this is a potentially dangerous function if the Object is not a TextBuffer.
+func CastToTextBuffer(object *gobject.Object) *TextBuffer {
+	return TextBufferNewFromC(object.ToC())
 }
 
 // TextBufferNew is a wrapper around the C function gtk_text_buffer_new.
@@ -14681,6 +15941,12 @@ func (recv *TextCellAccessible) Object() *atk.Object {
 	return recv.RendererCellAccessible().Object()
 }
 
+// CastToWidget down casts any arbitary Object to TextCellAccessible.
+// Exercise care, as this is a potentially dangerous function if the Object is not a TextCellAccessible.
+func CastToTextCellAccessible(object *gobject.Object) *TextCellAccessible {
+	return TextCellAccessibleNewFromC(object.ToC())
+}
+
 // TextChildAnchor is a wrapper around the C record GtkTextChildAnchor.
 type TextChildAnchor struct {
 	native *C.GtkTextChildAnchor
@@ -14707,6 +15973,12 @@ func (recv *TextChildAnchor) ToC() unsafe.Pointer {
 // Object upcasts to *Object
 func (recv *TextChildAnchor) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
+}
+
+// CastToWidget down casts any arbitary Object to TextChildAnchor.
+// Exercise care, as this is a potentially dangerous function if the Object is not a TextChildAnchor.
+func CastToTextChildAnchor(object *gobject.Object) *TextChildAnchor {
+	return TextChildAnchorNewFromC(object.ToC())
 }
 
 // TextChildAnchorNew is a wrapper around the C function gtk_text_child_anchor_new.
@@ -14759,6 +16031,12 @@ func (recv *TextMark) ToC() unsafe.Pointer {
 // Object upcasts to *Object
 func (recv *TextMark) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
+}
+
+// CastToWidget down casts any arbitary Object to TextMark.
+// Exercise care, as this is a potentially dangerous function if the Object is not a TextMark.
+func CastToTextMark(object *gobject.Object) *TextMark {
+	return TextMarkNewFromC(object.ToC())
 }
 
 // GetBuffer is a wrapper around the C function gtk_text_mark_get_buffer.
@@ -14839,6 +16117,12 @@ func (recv *TextTag) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
+// CastToWidget down casts any arbitary Object to TextTag.
+// Exercise care, as this is a potentially dangerous function if the Object is not a TextTag.
+func CastToTextTag(object *gobject.Object) *TextTag {
+	return TextTagNewFromC(object.ToC())
+}
+
 // TextTagNew is a wrapper around the C function gtk_text_tag_new.
 func TextTagNew(name string) *TextTag {
 	c_name := C.CString(name)
@@ -14895,6 +16179,12 @@ func (recv *TextTagTable) ToC() unsafe.Pointer {
 // Object upcasts to *Object
 func (recv *TextTagTable) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
+}
+
+// CastToWidget down casts any arbitary Object to TextTagTable.
+// Exercise care, as this is a potentially dangerous function if the Object is not a TextTagTable.
+func CastToTextTagTable(object *gobject.Object) *TextTagTable {
+	return TextTagTableNewFromC(object.ToC())
 }
 
 // TextTagTableNew is a wrapper around the C function gtk_text_tag_table_new.
@@ -14986,6 +16276,12 @@ func (recv *TextView) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *TextView) Object() *gobject.Object {
 	return recv.Container().Object()
+}
+
+// CastToWidget down casts any arbitary Object to TextView.
+// Exercise care, as this is a potentially dangerous function if the Object is not a TextView.
+func CastToTextView(object *gobject.Object) *TextView {
+	return TextViewNewFromC(object.ToC())
 }
 
 // TextViewNew is a wrapper around the C function gtk_text_view_new.
@@ -15564,6 +16860,12 @@ func (recv *TextViewAccessible) Object() *atk.Object {
 	return recv.ContainerAccessible().Object()
 }
 
+// CastToWidget down casts any arbitary Object to TextViewAccessible.
+// Exercise care, as this is a potentially dangerous function if the Object is not a TextViewAccessible.
+func CastToTextViewAccessible(object *gobject.Object) *TextViewAccessible {
+	return TextViewAccessibleNewFromC(object.ToC())
+}
+
 // ThemingEngine is a wrapper around the C record GtkThemingEngine.
 type ThemingEngine struct {
 	native *C.GtkThemingEngine
@@ -15590,6 +16892,12 @@ func (recv *ThemingEngine) ToC() unsafe.Pointer {
 // Object upcasts to *Object
 func (recv *ThemingEngine) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
+}
+
+// CastToWidget down casts any arbitary Object to ThemingEngine.
+// Exercise care, as this is a potentially dangerous function if the Object is not a ThemingEngine.
+func CastToThemingEngine(object *gobject.Object) *ThemingEngine {
+	return ThemingEngineNewFromC(object.ToC())
 }
 
 // GetScreen is a wrapper around the C function gtk_theming_engine_get_screen.
@@ -15631,6 +16939,12 @@ func (recv *ToggleAction) Action() *Action {
 // Object upcasts to *Object
 func (recv *ToggleAction) Object() *gobject.Object {
 	return recv.Action().Object()
+}
+
+// CastToWidget down casts any arbitary Object to ToggleAction.
+// Exercise care, as this is a potentially dangerous function if the Object is not a ToggleAction.
+func CastToToggleAction(object *gobject.Object) *ToggleAction {
+	return ToggleActionNewFromC(object.ToC())
 }
 
 // ToggleButton is a wrapper around the C record GtkToggleButton.
@@ -15684,6 +16998,12 @@ func (recv *ToggleButton) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *ToggleButton) Object() *gobject.Object {
 	return recv.Button().Object()
+}
+
+// CastToWidget down casts any arbitary Object to ToggleButton.
+// Exercise care, as this is a potentially dangerous function if the Object is not a ToggleButton.
+func CastToToggleButton(object *gobject.Object) *ToggleButton {
+	return ToggleButtonNewFromC(object.ToC())
 }
 
 // ToggleButtonNew is a wrapper around the C function gtk_toggle_button_new.
@@ -15825,6 +17145,12 @@ func (recv *ToggleButtonAccessible) Object() *atk.Object {
 	return recv.ButtonAccessible().Object()
 }
 
+// CastToWidget down casts any arbitary Object to ToggleButtonAccessible.
+// Exercise care, as this is a potentially dangerous function if the Object is not a ToggleButtonAccessible.
+func CastToToggleButtonAccessible(object *gobject.Object) *ToggleButtonAccessible {
+	return ToggleButtonAccessibleNewFromC(object.ToC())
+}
+
 // ToggleToolButton is a wrapper around the C record GtkToggleToolButton.
 type ToggleToolButton struct {
 	native *C.GtkToggleToolButton
@@ -15883,6 +17209,12 @@ func (recv *ToggleToolButton) Object() *gobject.Object {
 	return recv.ToolButton().Object()
 }
 
+// CastToWidget down casts any arbitary Object to ToggleToolButton.
+// Exercise care, as this is a potentially dangerous function if the Object is not a ToggleToolButton.
+func CastToToggleToolButton(object *gobject.Object) *ToggleToolButton {
+	return ToggleToolButtonNewFromC(object.ToC())
+}
+
 // ToolButton is a wrapper around the C record GtkToolButton.
 type ToolButton struct {
 	native *C.GtkToolButton
@@ -15936,6 +17268,12 @@ func (recv *ToolButton) Object() *gobject.Object {
 	return recv.ToolItem().Object()
 }
 
+// CastToWidget down casts any arbitary Object to ToolButton.
+// Exercise care, as this is a potentially dangerous function if the Object is not a ToolButton.
+func CastToToolButton(object *gobject.Object) *ToolButton {
+	return ToolButtonNewFromC(object.ToC())
+}
+
 // ToolItem is a wrapper around the C record GtkToolItem.
 type ToolItem struct {
 	native *C.GtkToolItem
@@ -15984,6 +17322,12 @@ func (recv *ToolItem) Object() *gobject.Object {
 	return recv.Bin().Object()
 }
 
+// CastToWidget down casts any arbitary Object to ToolItem.
+// Exercise care, as this is a potentially dangerous function if the Object is not a ToolItem.
+func CastToToolItem(object *gobject.Object) *ToolItem {
+	return ToolItemNewFromC(object.ToC())
+}
+
 // ToolItemGroup is a wrapper around the C record GtkToolItemGroup.
 type ToolItemGroup struct {
 	native *C.GtkToolItemGroup
@@ -16025,6 +17369,12 @@ func (recv *ToolItemGroup) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *ToolItemGroup) Object() *gobject.Object {
 	return recv.Container().Object()
+}
+
+// CastToWidget down casts any arbitary Object to ToolItemGroup.
+// Exercise care, as this is a potentially dangerous function if the Object is not a ToolItemGroup.
+func CastToToolItemGroup(object *gobject.Object) *ToolItemGroup {
+	return ToolItemGroupNewFromC(object.ToC())
 }
 
 // ToolPalette is a wrapper around the C record GtkToolPalette.
@@ -16070,6 +17420,12 @@ func (recv *ToolPalette) Object() *gobject.Object {
 	return recv.Container().Object()
 }
 
+// CastToWidget down casts any arbitary Object to ToolPalette.
+// Exercise care, as this is a potentially dangerous function if the Object is not a ToolPalette.
+func CastToToolPalette(object *gobject.Object) *ToolPalette {
+	return ToolPaletteNewFromC(object.ToC())
+}
+
 // Toolbar is a wrapper around the C record GtkToolbar.
 type Toolbar struct {
 	native *C.GtkToolbar
@@ -16111,6 +17467,12 @@ func (recv *Toolbar) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *Toolbar) Object() *gobject.Object {
 	return recv.Container().Object()
+}
+
+// CastToWidget down casts any arbitary Object to Toolbar.
+// Exercise care, as this is a potentially dangerous function if the Object is not a Toolbar.
+func CastToToolbar(object *gobject.Object) *Toolbar {
+	return ToolbarNewFromC(object.ToC())
 }
 
 // ToolbarNew is a wrapper around the C function gtk_toolbar_new.
@@ -16195,6 +17557,12 @@ func (recv *Tooltip) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
+// CastToWidget down casts any arbitary Object to Tooltip.
+// Exercise care, as this is a potentially dangerous function if the Object is not a Tooltip.
+func CastToTooltip(object *gobject.Object) *Tooltip {
+	return TooltipNewFromC(object.ToC())
+}
+
 // ToplevelAccessible is a wrapper around the C record GtkToplevelAccessible.
 type ToplevelAccessible struct {
 	native *C.GtkToplevelAccessible
@@ -16221,6 +17589,12 @@ func (recv *ToplevelAccessible) ToC() unsafe.Pointer {
 // Object upcasts to *Object
 func (recv *ToplevelAccessible) Object() *atk.Object {
 	return atk.ObjectNewFromC(unsafe.Pointer(recv.native))
+}
+
+// CastToWidget down casts any arbitary Object to ToplevelAccessible.
+// Exercise care, as this is a potentially dangerous function if the Object is not a ToplevelAccessible.
+func CastToToplevelAccessible(object *gobject.Object) *ToplevelAccessible {
+	return ToplevelAccessibleNewFromC(object.ToC())
 }
 
 // GetChildren is a wrapper around the C function gtk_toplevel_accessible_get_children.
@@ -16259,6 +17633,12 @@ func (recv *TreeModelFilter) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
+// CastToWidget down casts any arbitary Object to TreeModelFilter.
+// Exercise care, as this is a potentially dangerous function if the Object is not a TreeModelFilter.
+func CastToTreeModelFilter(object *gobject.Object) *TreeModelFilter {
+	return TreeModelFilterNewFromC(object.ToC())
+}
+
 // TreeModelSort is a wrapper around the C record GtkTreeModelSort.
 type TreeModelSort struct {
 	native *C.GtkTreeModelSort
@@ -16285,6 +17665,12 @@ func (recv *TreeModelSort) ToC() unsafe.Pointer {
 // Object upcasts to *Object
 func (recv *TreeModelSort) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
+}
+
+// CastToWidget down casts any arbitary Object to TreeModelSort.
+// Exercise care, as this is a potentially dangerous function if the Object is not a TreeModelSort.
+func CastToTreeModelSort(object *gobject.Object) *TreeModelSort {
+	return TreeModelSortNewFromC(object.ToC())
 }
 
 // ClearCache is a wrapper around the C function gtk_tree_model_sort_clear_cache.
@@ -16376,6 +17762,12 @@ func (recv *TreeSelection) ToC() unsafe.Pointer {
 // Object upcasts to *Object
 func (recv *TreeSelection) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
+}
+
+// CastToWidget down casts any arbitary Object to TreeSelection.
+// Exercise care, as this is a potentially dangerous function if the Object is not a TreeSelection.
+func CastToTreeSelection(object *gobject.Object) *TreeSelection {
+	return TreeSelectionNewFromC(object.ToC())
 }
 
 // GetMode is a wrapper around the C function gtk_tree_selection_get_mode.
@@ -16524,6 +17916,12 @@ func (recv *TreeStore) ToC() unsafe.Pointer {
 // Object upcasts to *Object
 func (recv *TreeStore) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
+}
+
+// CastToWidget down casts any arbitary Object to TreeStore.
+// Exercise care, as this is a potentially dangerous function if the Object is not a TreeStore.
+func CastToTreeStore(object *gobject.Object) *TreeStore {
+	return TreeStoreNewFromC(object.ToC())
 }
 
 // Unsupported : gtk_tree_store_new : unsupported parameter ... : varargs
@@ -16700,6 +18098,12 @@ func (recv *TreeView) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *TreeView) Object() *gobject.Object {
 	return recv.Container().Object()
+}
+
+// CastToWidget down casts any arbitary Object to TreeView.
+// Exercise care, as this is a potentially dangerous function if the Object is not a TreeView.
+func CastToTreeView(object *gobject.Object) *TreeView {
+	return TreeViewNewFromC(object.ToC())
 }
 
 // TreeViewNew is a wrapper around the C function gtk_tree_view_new.
@@ -17161,6 +18565,12 @@ func (recv *TreeViewAccessible) Object() *atk.Object {
 	return recv.ContainerAccessible().Object()
 }
 
+// CastToWidget down casts any arbitary Object to TreeViewAccessible.
+// Exercise care, as this is a potentially dangerous function if the Object is not a TreeViewAccessible.
+func CastToTreeViewAccessible(object *gobject.Object) *TreeViewAccessible {
+	return TreeViewAccessibleNewFromC(object.ToC())
+}
+
 // TreeViewColumn is a wrapper around the C record GtkTreeViewColumn.
 type TreeViewColumn struct {
 	native *C.GtkTreeViewColumn
@@ -17192,6 +18602,12 @@ func (recv *TreeViewColumn) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *TreeViewColumn) Object() *gobject.Object {
 	return recv.InitiallyUnowned().Object()
+}
+
+// CastToWidget down casts any arbitary Object to TreeViewColumn.
+// Exercise care, as this is a potentially dangerous function if the Object is not a TreeViewColumn.
+func CastToTreeViewColumn(object *gobject.Object) *TreeViewColumn {
+	return TreeViewColumnNewFromC(object.ToC())
 }
 
 // TreeViewColumnNew is a wrapper around the C function gtk_tree_view_column_new.
@@ -17596,6 +19012,12 @@ func (recv *UIManager) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
+// CastToWidget down casts any arbitary Object to UIManager.
+// Exercise care, as this is a potentially dangerous function if the Object is not a UIManager.
+func CastToUIManager(object *gobject.Object) *UIManager {
+	return UIManagerNewFromC(object.ToC())
+}
+
 // VBox is a wrapper around the C record GtkVBox.
 type VBox struct {
 	native *C.GtkVBox
@@ -17641,6 +19063,12 @@ func (recv *VBox) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *VBox) Object() *gobject.Object {
 	return recv.Box().Object()
+}
+
+// CastToWidget down casts any arbitary Object to VBox.
+// Exercise care, as this is a potentially dangerous function if the Object is not a VBox.
+func CastToVBox(object *gobject.Object) *VBox {
+	return VBoxNewFromC(object.ToC())
 }
 
 // VBoxNew is a wrapper around the C function gtk_vbox_new.
@@ -17708,6 +19136,12 @@ func (recv *VButtonBox) Object() *gobject.Object {
 	return recv.ButtonBox().Object()
 }
 
+// CastToWidget down casts any arbitary Object to VButtonBox.
+// Exercise care, as this is a potentially dangerous function if the Object is not a VButtonBox.
+func CastToVButtonBox(object *gobject.Object) *VButtonBox {
+	return VButtonBoxNewFromC(object.ToC())
+}
+
 // VButtonBoxNew is a wrapper around the C function gtk_vbutton_box_new.
 func VButtonBoxNew() *VButtonBox {
 	retC := C.gtk_vbutton_box_new()
@@ -17763,6 +19197,12 @@ func (recv *VPaned) Object() *gobject.Object {
 	return recv.Paned().Object()
 }
 
+// CastToWidget down casts any arbitary Object to VPaned.
+// Exercise care, as this is a potentially dangerous function if the Object is not a VPaned.
+func CastToVPaned(object *gobject.Object) *VPaned {
+	return VPanedNewFromC(object.ToC())
+}
+
 // VPanedNew is a wrapper around the C function gtk_vpaned_new.
 func VPanedNew() *VPaned {
 	retC := C.gtk_vpaned_new()
@@ -17816,6 +19256,12 @@ func (recv *VScale) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *VScale) Object() *gobject.Object {
 	return recv.Scale().Object()
+}
+
+// CastToWidget down casts any arbitary Object to VScale.
+// Exercise care, as this is a potentially dangerous function if the Object is not a VScale.
+func CastToVScale(object *gobject.Object) *VScale {
+	return VScaleNewFromC(object.ToC())
 }
 
 // VScaleNew is a wrapper around the C function gtk_vscale_new.
@@ -17889,6 +19335,12 @@ func (recv *VScrollbar) Object() *gobject.Object {
 	return recv.Scrollbar().Object()
 }
 
+// CastToWidget down casts any arbitary Object to VScrollbar.
+// Exercise care, as this is a potentially dangerous function if the Object is not a VScrollbar.
+func CastToVScrollbar(object *gobject.Object) *VScrollbar {
+	return VScrollbarNewFromC(object.ToC())
+}
+
 // VScrollbarNew is a wrapper around the C function gtk_vscrollbar_new.
 func VScrollbarNew(adjustment *Adjustment) *VScrollbar {
 	c_adjustment := (*C.GtkAdjustment)(adjustment.ToC())
@@ -17939,6 +19391,12 @@ func (recv *VSeparator) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *VSeparator) Object() *gobject.Object {
 	return recv.Separator().Object()
+}
+
+// CastToWidget down casts any arbitary Object to VSeparator.
+// Exercise care, as this is a potentially dangerous function if the Object is not a VSeparator.
+func CastToVSeparator(object *gobject.Object) *VSeparator {
+	return VSeparatorNewFromC(object.ToC())
 }
 
 // VSeparatorNew is a wrapper around the C function gtk_vseparator_new.
@@ -17995,6 +19453,12 @@ func (recv *Viewport) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *Viewport) Object() *gobject.Object {
 	return recv.Bin().Object()
+}
+
+// CastToWidget down casts any arbitary Object to Viewport.
+// Exercise care, as this is a potentially dangerous function if the Object is not a Viewport.
+func CastToViewport(object *gobject.Object) *Viewport {
+	return ViewportNewFromC(object.ToC())
 }
 
 // ViewportNew is a wrapper around the C function gtk_viewport_new.
@@ -18117,6 +19581,12 @@ func (recv *VolumeButton) Object() *gobject.Object {
 	return recv.ScaleButton().Object()
 }
 
+// CastToWidget down casts any arbitary Object to VolumeButton.
+// Exercise care, as this is a potentially dangerous function if the Object is not a VolumeButton.
+func CastToVolumeButton(object *gobject.Object) *VolumeButton {
+	return VolumeButtonNewFromC(object.ToC())
+}
+
 // Widget is a wrapper around the C record GtkWidget.
 type Widget struct {
 	native *C.GtkWidget
@@ -18148,6 +19618,12 @@ func (recv *Widget) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *Widget) Object() *gobject.Object {
 	return recv.InitiallyUnowned().Object()
+}
+
+// CastToWidget down casts any arbitary Object to Widget.
+// Exercise care, as this is a potentially dangerous function if the Object is not a Widget.
+func CastToWidget(object *gobject.Object) *Widget {
+	return WidgetNewFromC(object.ToC())
 }
 
 // Unsupported : gtk_widget_new : unsupported parameter type : no type generator for GType, GType
@@ -19246,6 +20722,12 @@ func (recv *WidgetAccessible) Object() *atk.Object {
 	return recv.Accessible().Object()
 }
 
+// CastToWidget down casts any arbitary Object to WidgetAccessible.
+// Exercise care, as this is a potentially dangerous function if the Object is not a WidgetAccessible.
+func CastToWidgetAccessible(object *gobject.Object) *WidgetAccessible {
+	return WidgetAccessibleNewFromC(object.ToC())
+}
+
 // Window is a wrapper around the C record GtkWindow.
 type Window struct {
 	native *C.GtkWindow
@@ -19292,6 +20774,12 @@ func (recv *Window) InitiallyUnowned() *gobject.InitiallyUnowned {
 // Object upcasts to *Object
 func (recv *Window) Object() *gobject.Object {
 	return recv.Bin().Object()
+}
+
+// CastToWidget down casts any arbitary Object to Window.
+// Exercise care, as this is a potentially dangerous function if the Object is not a Window.
+func CastToWindow(object *gobject.Object) *Window {
+	return WindowNewFromC(object.ToC())
 }
 
 // WindowNew is a wrapper around the C function gtk_window_new.
@@ -19871,6 +21359,12 @@ func (recv *WindowAccessible) Object() *atk.Object {
 	return recv.ContainerAccessible().Object()
 }
 
+// CastToWidget down casts any arbitary Object to WindowAccessible.
+// Exercise care, as this is a potentially dangerous function if the Object is not a WindowAccessible.
+func CastToWindowAccessible(object *gobject.Object) *WindowAccessible {
+	return WindowAccessibleNewFromC(object.ToC())
+}
+
 // WindowGroup is a wrapper around the C record GtkWindowGroup.
 type WindowGroup struct {
 	native *C.GtkWindowGroup
@@ -19897,6 +21391,12 @@ func (recv *WindowGroup) ToC() unsafe.Pointer {
 // Object upcasts to *Object
 func (recv *WindowGroup) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
+}
+
+// CastToWidget down casts any arbitary Object to WindowGroup.
+// Exercise care, as this is a potentially dangerous function if the Object is not a WindowGroup.
+func CastToWindowGroup(object *gobject.Object) *WindowGroup {
+	return WindowGroupNewFromC(object.ToC())
 }
 
 // WindowGroupNew is a wrapper around the C function gtk_window_group_new.

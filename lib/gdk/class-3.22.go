@@ -48,6 +48,12 @@ func (recv *DeviceTool) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
+// CastToWidget down casts any arbitary Object to DeviceTool.
+// Exercise care, as this is a potentially dangerous function if the Object is not a DeviceTool.
+func CastToDeviceTool(object *gobject.Object) *DeviceTool {
+	return DeviceToolNewFromC(object.ToC())
+}
+
 // GetHardwareId is a wrapper around the C function gdk_device_tool_get_hardware_id.
 func (recv *DeviceTool) GetHardwareId() uint64 {
 	retC := C.gdk_device_tool_get_hardware_id((*C.GdkDeviceTool)(recv.native))
@@ -146,6 +152,12 @@ func (recv *DrawingContext) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
+// CastToWidget down casts any arbitary Object to DrawingContext.
+// Exercise care, as this is a potentially dangerous function if the Object is not a DrawingContext.
+func CastToDrawingContext(object *gobject.Object) *DrawingContext {
+	return DrawingContextNewFromC(object.ToC())
+}
+
 // GetCairoContext is a wrapper around the C function gdk_drawing_context_get_cairo_context.
 func (recv *DrawingContext) GetCairoContext() *cairo.Context {
 	retC := C.gdk_drawing_context_get_cairo_context((*C.GdkDrawingContext)(recv.native))
@@ -219,6 +231,12 @@ func (recv *Monitor) ToC() unsafe.Pointer {
 // Object upcasts to *Object
 func (recv *Monitor) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
+}
+
+// CastToWidget down casts any arbitary Object to Monitor.
+// Exercise care, as this is a potentially dangerous function if the Object is not a Monitor.
+func CastToMonitor(object *gobject.Object) *Monitor {
+	return MonitorNewFromC(object.ToC())
 }
 
 // GetDisplay is a wrapper around the C function gdk_monitor_get_display.
@@ -322,6 +340,12 @@ func (recv *Seat) ToC() unsafe.Pointer {
 // Object upcasts to *Object
 func (recv *Seat) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
+}
+
+// CastToWidget down casts any arbitary Object to Seat.
+// Exercise care, as this is a potentially dangerous function if the Object is not a Seat.
+func CastToSeat(object *gobject.Object) *Seat {
+	return SeatNewFromC(object.ToC())
 }
 
 // GetDisplay is a wrapper around the C function gdk_seat_get_display.

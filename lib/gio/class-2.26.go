@@ -54,6 +54,12 @@ func (recv *Credentials) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
+// CastToWidget down casts any arbitary Object to Credentials.
+// Exercise care, as this is a potentially dangerous function if the Object is not a Credentials.
+func CastToCredentials(object *gobject.Object) *Credentials {
+	return CredentialsNewFromC(object.ToC())
+}
+
 // CredentialsNew is a wrapper around the C function g_credentials_new.
 func CredentialsNew() *Credentials {
 	retC := C.g_credentials_new()
@@ -139,6 +145,12 @@ func (recv *DBusAuthObserver) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
+// CastToWidget down casts any arbitary Object to DBusAuthObserver.
+// Exercise care, as this is a potentially dangerous function if the Object is not a DBusAuthObserver.
+func CastToDBusAuthObserver(object *gobject.Object) *DBusAuthObserver {
+	return DBusAuthObserverNewFromC(object.ToC())
+}
+
 // DBusAuthObserverNew is a wrapper around the C function g_dbus_auth_observer_new.
 func DBusAuthObserverNew() *DBusAuthObserver {
 	retC := C.g_dbus_auth_observer_new()
@@ -183,6 +195,12 @@ func (recv *DBusConnection) ToC() unsafe.Pointer {
 // Object upcasts to *Object
 func (recv *DBusConnection) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
+}
+
+// CastToWidget down casts any arbitary Object to DBusConnection.
+// Exercise care, as this is a potentially dangerous function if the Object is not a DBusConnection.
+func CastToDBusConnection(object *gobject.Object) *DBusConnection {
+	return DBusConnectionNewFromC(object.ToC())
 }
 
 // Unsupported : g_dbus_connection_new_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
@@ -486,6 +504,12 @@ func (recv *DBusMessage) ToC() unsafe.Pointer {
 // Object upcasts to *Object
 func (recv *DBusMessage) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
+}
+
+// CastToWidget down casts any arbitary Object to DBusMessage.
+// Exercise care, as this is a potentially dangerous function if the Object is not a DBusMessage.
+func CastToDBusMessage(object *gobject.Object) *DBusMessage {
+	return DBusMessageNewFromC(object.ToC())
 }
 
 // DBusMessageNew is a wrapper around the C function g_dbus_message_new.
@@ -908,6 +932,12 @@ func (recv *DBusMethodInvocation) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
+// CastToWidget down casts any arbitary Object to DBusMethodInvocation.
+// Exercise care, as this is a potentially dangerous function if the Object is not a DBusMethodInvocation.
+func CastToDBusMethodInvocation(object *gobject.Object) *DBusMethodInvocation {
+	return DBusMethodInvocationNewFromC(object.ToC())
+}
+
 // GetConnection is a wrapper around the C function g_dbus_method_invocation_get_connection.
 func (recv *DBusMethodInvocation) GetConnection() *DBusConnection {
 	retC := C.g_dbus_method_invocation_get_connection((*C.GDBusMethodInvocation)(recv.native))
@@ -1050,6 +1080,12 @@ func (recv *DBusProxy) ToC() unsafe.Pointer {
 // Object upcasts to *Object
 func (recv *DBusProxy) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
+}
+
+// CastToWidget down casts any arbitary Object to DBusProxy.
+// Exercise care, as this is a potentially dangerous function if the Object is not a DBusProxy.
+func CastToDBusProxy(object *gobject.Object) *DBusProxy {
+	return DBusProxyNewFromC(object.ToC())
 }
 
 // Unsupported : g_dbus_proxy_new_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
@@ -1239,6 +1275,12 @@ func (recv *DBusServer) ToC() unsafe.Pointer {
 // Object upcasts to *Object
 func (recv *DBusServer) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
+}
+
+// CastToWidget down casts any arbitary Object to DBusServer.
+// Exercise care, as this is a potentially dangerous function if the Object is not a DBusServer.
+func CastToDBusServer(object *gobject.Object) *DBusServer {
+	return DBusServerNewFromC(object.ToC())
 }
 
 // DBusServerNewSync is a wrapper around the C function g_dbus_server_new_sync.
@@ -1511,6 +1553,12 @@ func (recv *ProxyAddress) SocketAddress() *SocketAddress {
 // Object upcasts to *Object
 func (recv *ProxyAddress) Object() *gobject.Object {
 	return recv.InetSocketAddress().Object()
+}
+
+// CastToWidget down casts any arbitary Object to ProxyAddress.
+// Exercise care, as this is a potentially dangerous function if the Object is not a ProxyAddress.
+func CastToProxyAddress(object *gobject.Object) *ProxyAddress {
+	return ProxyAddressNewFromC(object.ToC())
 }
 
 // ProxyAddressNew is a wrapper around the C function g_proxy_address_new.
@@ -2045,6 +2093,12 @@ func (recv *UnixCredentialsMessage) SocketControlMessage() *SocketControlMessage
 // Object upcasts to *Object
 func (recv *UnixCredentialsMessage) Object() *gobject.Object {
 	return recv.SocketControlMessage().Object()
+}
+
+// CastToWidget down casts any arbitary Object to UnixCredentialsMessage.
+// Exercise care, as this is a potentially dangerous function if the Object is not a UnixCredentialsMessage.
+func CastToUnixCredentialsMessage(object *gobject.Object) *UnixCredentialsMessage {
+	return UnixCredentialsMessageNewFromC(object.ToC())
 }
 
 // UnixCredentialsMessageNew is a wrapper around the C function g_unix_credentials_message_new.

@@ -51,6 +51,12 @@ func (recv *AppLaunchContext) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
+// CastToWidget down casts any arbitary Object to AppLaunchContext.
+// Exercise care, as this is a potentially dangerous function if the Object is not a AppLaunchContext.
+func CastToAppLaunchContext(object *gobject.Object) *AppLaunchContext {
+	return AppLaunchContextNewFromC(object.ToC())
+}
+
 // AppLaunchContextNew is a wrapper around the C function g_app_launch_context_new.
 func AppLaunchContextNew() *AppLaunchContext {
 	retC := C.g_app_launch_context_new()
@@ -101,6 +107,12 @@ func (recv *ApplicationCommandLine) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
+// CastToWidget down casts any arbitary Object to ApplicationCommandLine.
+// Exercise care, as this is a potentially dangerous function if the Object is not a ApplicationCommandLine.
+func CastToApplicationCommandLine(object *gobject.Object) *ApplicationCommandLine {
+	return ApplicationCommandLineNewFromC(object.ToC())
+}
+
 // BufferedInputStream is a wrapper around the C record GBufferedInputStream.
 type BufferedInputStream struct {
 	native *C.GBufferedInputStream
@@ -137,6 +149,12 @@ func (recv *BufferedInputStream) InputStream() *InputStream {
 // Object upcasts to *Object
 func (recv *BufferedInputStream) Object() *gobject.Object {
 	return recv.FilterInputStream().Object()
+}
+
+// CastToWidget down casts any arbitary Object to BufferedInputStream.
+// Exercise care, as this is a potentially dangerous function if the Object is not a BufferedInputStream.
+func CastToBufferedInputStream(object *gobject.Object) *BufferedInputStream {
+	return BufferedInputStreamNewFromC(object.ToC())
 }
 
 // BufferedInputStreamNew is a wrapper around the C function g_buffered_input_stream_new.
@@ -268,6 +286,12 @@ func (recv *BufferedOutputStream) Object() *gobject.Object {
 	return recv.FilterOutputStream().Object()
 }
 
+// CastToWidget down casts any arbitary Object to BufferedOutputStream.
+// Exercise care, as this is a potentially dangerous function if the Object is not a BufferedOutputStream.
+func CastToBufferedOutputStream(object *gobject.Object) *BufferedOutputStream {
+	return BufferedOutputStreamNewFromC(object.ToC())
+}
+
 // BufferedOutputStreamNew is a wrapper around the C function g_buffered_output_stream_new.
 func BufferedOutputStreamNew(baseStream *OutputStream) *BufferedOutputStream {
 	c_base_stream := (*C.GOutputStream)(baseStream.ToC())
@@ -351,6 +375,12 @@ func (recv *BytesIcon) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
+// CastToWidget down casts any arbitary Object to BytesIcon.
+// Exercise care, as this is a potentially dangerous function if the Object is not a BytesIcon.
+func CastToBytesIcon(object *gobject.Object) *BytesIcon {
+	return BytesIconNewFromC(object.ToC())
+}
+
 // Cancellable is a wrapper around the C record GCancellable.
 type Cancellable struct {
 	native *C.GCancellable
@@ -377,6 +407,12 @@ func (recv *Cancellable) ToC() unsafe.Pointer {
 // Object upcasts to *Object
 func (recv *Cancellable) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
+}
+
+// CastToWidget down casts any arbitary Object to Cancellable.
+// Exercise care, as this is a potentially dangerous function if the Object is not a Cancellable.
+func CastToCancellable(object *gobject.Object) *Cancellable {
+	return CancellableNewFromC(object.ToC())
 }
 
 // CancellableNew is a wrapper around the C function g_cancellable_new.
@@ -472,6 +508,12 @@ func (recv *CharsetConverter) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
+// CastToWidget down casts any arbitary Object to CharsetConverter.
+// Exercise care, as this is a potentially dangerous function if the Object is not a CharsetConverter.
+func CastToCharsetConverter(object *gobject.Object) *CharsetConverter {
+	return CharsetConverterNewFromC(object.ToC())
+}
+
 // ConverterInputStream is a wrapper around the C record GConverterInputStream.
 type ConverterInputStream struct {
 	native *C.GConverterInputStream
@@ -508,6 +550,12 @@ func (recv *ConverterInputStream) InputStream() *InputStream {
 // Object upcasts to *Object
 func (recv *ConverterInputStream) Object() *gobject.Object {
 	return recv.FilterInputStream().Object()
+}
+
+// CastToWidget down casts any arbitary Object to ConverterInputStream.
+// Exercise care, as this is a potentially dangerous function if the Object is not a ConverterInputStream.
+func CastToConverterInputStream(object *gobject.Object) *ConverterInputStream {
+	return ConverterInputStreamNewFromC(object.ToC())
 }
 
 // Unsupported : g_converter_input_stream_new : unsupported parameter converter : no type generator for Converter, GConverter*
@@ -550,6 +598,12 @@ func (recv *ConverterOutputStream) Object() *gobject.Object {
 	return recv.FilterOutputStream().Object()
 }
 
+// CastToWidget down casts any arbitary Object to ConverterOutputStream.
+// Exercise care, as this is a potentially dangerous function if the Object is not a ConverterOutputStream.
+func CastToConverterOutputStream(object *gobject.Object) *ConverterOutputStream {
+	return ConverterOutputStreamNewFromC(object.ToC())
+}
+
 // Unsupported : g_converter_output_stream_new : unsupported parameter converter : no type generator for Converter, GConverter*
 
 // DBusActionGroup is a wrapper around the C record GDBusActionGroup.
@@ -576,6 +630,12 @@ func (recv *DBusActionGroup) ToC() unsafe.Pointer {
 // Object upcasts to *Object
 func (recv *DBusActionGroup) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
+}
+
+// CastToWidget down casts any arbitary Object to DBusActionGroup.
+// Exercise care, as this is a potentially dangerous function if the Object is not a DBusActionGroup.
+func CastToDBusActionGroup(object *gobject.Object) *DBusActionGroup {
+	return DBusActionGroupNewFromC(object.ToC())
 }
 
 // Unsupported : g_dbus_connection_new_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
@@ -611,6 +671,12 @@ func (recv *DBusMenuModel) MenuModel() *MenuModel {
 // Object upcasts to *Object
 func (recv *DBusMenuModel) Object() *gobject.Object {
 	return recv.MenuModel().Object()
+}
+
+// CastToWidget down casts any arbitary Object to DBusMenuModel.
+// Exercise care, as this is a potentially dangerous function if the Object is not a DBusMenuModel.
+func CastToDBusMenuModel(object *gobject.Object) *DBusMenuModel {
+	return DBusMenuModelNewFromC(object.ToC())
 }
 
 // Unsupported : g_dbus_message_new_from_blob : unsupported parameter blob : no param type
@@ -668,6 +734,12 @@ func (recv *DataInputStream) InputStream() *InputStream {
 // Object upcasts to *Object
 func (recv *DataInputStream) Object() *gobject.Object {
 	return recv.BufferedInputStream().Object()
+}
+
+// CastToWidget down casts any arbitary Object to DataInputStream.
+// Exercise care, as this is a potentially dangerous function if the Object is not a DataInputStream.
+func CastToDataInputStream(object *gobject.Object) *DataInputStream {
+	return DataInputStreamNewFromC(object.ToC())
 }
 
 // DataInputStreamNew is a wrapper around the C function g_data_input_stream_new.
@@ -898,6 +970,12 @@ func (recv *DataOutputStream) Object() *gobject.Object {
 	return recv.FilterOutputStream().Object()
 }
 
+// CastToWidget down casts any arbitary Object to DataOutputStream.
+// Exercise care, as this is a potentially dangerous function if the Object is not a DataOutputStream.
+func CastToDataOutputStream(object *gobject.Object) *DataOutputStream {
+	return DataOutputStreamNewFromC(object.ToC())
+}
+
 // DataOutputStreamNew is a wrapper around the C function g_data_output_stream_new.
 func DataOutputStreamNew(baseStream *OutputStream) *DataOutputStream {
 	c_base_stream := (*C.GOutputStream)(baseStream.ToC())
@@ -1104,6 +1182,12 @@ func (recv *DesktopAppInfo) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
+// CastToWidget down casts any arbitary Object to DesktopAppInfo.
+// Exercise care, as this is a potentially dangerous function if the Object is not a DesktopAppInfo.
+func CastToDesktopAppInfo(object *gobject.Object) *DesktopAppInfo {
+	return DesktopAppInfoNewFromC(object.ToC())
+}
+
 // DesktopAppInfoNew is a wrapper around the C function g_desktop_app_info_new.
 func DesktopAppInfoNew(desktopId string) *DesktopAppInfo {
 	c_desktop_id := C.CString(desktopId)
@@ -1178,6 +1262,12 @@ func (recv *Emblem) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
+// CastToWidget down casts any arbitary Object to Emblem.
+// Exercise care, as this is a potentially dangerous function if the Object is not a Emblem.
+func CastToEmblem(object *gobject.Object) *Emblem {
+	return EmblemNewFromC(object.ToC())
+}
+
 // Unsupported : g_emblem_new : unsupported parameter icon : no type generator for Icon, GIcon*
 
 // Unsupported : g_emblem_new_with_origin : unsupported parameter icon : no type generator for Icon, GIcon*
@@ -1210,6 +1300,12 @@ func (recv *EmblemedIcon) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
+// CastToWidget down casts any arbitary Object to EmblemedIcon.
+// Exercise care, as this is a potentially dangerous function if the Object is not a EmblemedIcon.
+func CastToEmblemedIcon(object *gobject.Object) *EmblemedIcon {
+	return EmblemedIconNewFromC(object.ToC())
+}
+
 // Unsupported : g_emblemed_icon_new : unsupported parameter icon : no type generator for Icon, GIcon*
 
 // FileEnumerator is a wrapper around the C record GFileEnumerator.
@@ -1238,6 +1334,12 @@ func (recv *FileEnumerator) ToC() unsafe.Pointer {
 // Object upcasts to *Object
 func (recv *FileEnumerator) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
+}
+
+// CastToWidget down casts any arbitary Object to FileEnumerator.
+// Exercise care, as this is a potentially dangerous function if the Object is not a FileEnumerator.
+func CastToFileEnumerator(object *gobject.Object) *FileEnumerator {
+	return FileEnumeratorNewFromC(object.ToC())
 }
 
 // Close is a wrapper around the C function g_file_enumerator_close.
@@ -1341,6 +1443,12 @@ func (recv *FileIOStream) Object() *gobject.Object {
 	return recv.IOStream().Object()
 }
 
+// CastToWidget down casts any arbitary Object to FileIOStream.
+// Exercise care, as this is a potentially dangerous function if the Object is not a FileIOStream.
+func CastToFileIOStream(object *gobject.Object) *FileIOStream {
+	return FileIOStreamNewFromC(object.ToC())
+}
+
 // FileIcon is a wrapper around the C record GFileIcon.
 type FileIcon struct {
 	native *C.GFileIcon
@@ -1365,6 +1473,12 @@ func (recv *FileIcon) ToC() unsafe.Pointer {
 // Object upcasts to *Object
 func (recv *FileIcon) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
+}
+
+// CastToWidget down casts any arbitary Object to FileIcon.
+// Exercise care, as this is a potentially dangerous function if the Object is not a FileIcon.
+func CastToFileIcon(object *gobject.Object) *FileIcon {
+	return FileIconNewFromC(object.ToC())
 }
 
 // Unsupported : g_file_icon_new : unsupported parameter file : no type generator for File, GFile*
@@ -1395,6 +1509,12 @@ func (recv *FileInfo) ToC() unsafe.Pointer {
 // Object upcasts to *Object
 func (recv *FileInfo) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
+}
+
+// CastToWidget down casts any arbitary Object to FileInfo.
+// Exercise care, as this is a potentially dangerous function if the Object is not a FileInfo.
+func CastToFileInfo(object *gobject.Object) *FileInfo {
+	return FileInfoNewFromC(object.ToC())
 }
 
 // FileInfoNew is a wrapper around the C function g_file_info_new.
@@ -1957,6 +2077,12 @@ func (recv *FileInputStream) Object() *gobject.Object {
 	return recv.InputStream().Object()
 }
 
+// CastToWidget down casts any arbitary Object to FileInputStream.
+// Exercise care, as this is a potentially dangerous function if the Object is not a FileInputStream.
+func CastToFileInputStream(object *gobject.Object) *FileInputStream {
+	return FileInputStreamNewFromC(object.ToC())
+}
+
 // QueryInfo is a wrapper around the C function g_file_input_stream_query_info.
 func (recv *FileInputStream) QueryInfo(attributes string, cancellable *Cancellable) (*FileInfo, error) {
 	c_attributes := C.CString(attributes)
@@ -2007,6 +2133,12 @@ func (recv *FileMonitor) ToC() unsafe.Pointer {
 // Object upcasts to *Object
 func (recv *FileMonitor) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
+}
+
+// CastToWidget down casts any arbitary Object to FileMonitor.
+// Exercise care, as this is a potentially dangerous function if the Object is not a FileMonitor.
+func CastToFileMonitor(object *gobject.Object) *FileMonitor {
+	return FileMonitorNewFromC(object.ToC())
 }
 
 // Cancel is a wrapper around the C function g_file_monitor_cancel.
@@ -2069,6 +2201,12 @@ func (recv *FileOutputStream) Object() *gobject.Object {
 	return recv.OutputStream().Object()
 }
 
+// CastToWidget down casts any arbitary Object to FileOutputStream.
+// Exercise care, as this is a potentially dangerous function if the Object is not a FileOutputStream.
+func CastToFileOutputStream(object *gobject.Object) *FileOutputStream {
+	return FileOutputStreamNewFromC(object.ToC())
+}
+
 // GetEtag is a wrapper around the C function g_file_output_stream_get_etag.
 func (recv *FileOutputStream) GetEtag() string {
 	retC := C.g_file_output_stream_get_etag((*C.GFileOutputStream)(recv.native))
@@ -2126,6 +2264,12 @@ func (recv *FilenameCompleter) ToC() unsafe.Pointer {
 // Object upcasts to *Object
 func (recv *FilenameCompleter) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
+}
+
+// CastToWidget down casts any arbitary Object to FilenameCompleter.
+// Exercise care, as this is a potentially dangerous function if the Object is not a FilenameCompleter.
+func CastToFilenameCompleter(object *gobject.Object) *FilenameCompleter {
+	return FilenameCompleterNewFromC(object.ToC())
 }
 
 // FilenameCompleterNew is a wrapper around the C function g_filename_completer_new.
@@ -2193,6 +2337,12 @@ func (recv *FilterInputStream) Object() *gobject.Object {
 	return recv.InputStream().Object()
 }
 
+// CastToWidget down casts any arbitary Object to FilterInputStream.
+// Exercise care, as this is a potentially dangerous function if the Object is not a FilterInputStream.
+func CastToFilterInputStream(object *gobject.Object) *FilterInputStream {
+	return FilterInputStreamNewFromC(object.ToC())
+}
+
 // GetBaseStream is a wrapper around the C function g_filter_input_stream_get_base_stream.
 func (recv *FilterInputStream) GetBaseStream() *InputStream {
 	retC := C.g_filter_input_stream_get_base_stream((*C.GFilterInputStream)(recv.native))
@@ -2252,6 +2402,12 @@ func (recv *FilterOutputStream) Object() *gobject.Object {
 	return recv.OutputStream().Object()
 }
 
+// CastToWidget down casts any arbitary Object to FilterOutputStream.
+// Exercise care, as this is a potentially dangerous function if the Object is not a FilterOutputStream.
+func CastToFilterOutputStream(object *gobject.Object) *FilterOutputStream {
+	return FilterOutputStreamNewFromC(object.ToC())
+}
+
 // GetBaseStream is a wrapper around the C function g_filter_output_stream_get_base_stream.
 func (recv *FilterOutputStream) GetBaseStream() *OutputStream {
 	retC := C.g_filter_output_stream_get_base_stream((*C.GFilterOutputStream)(recv.native))
@@ -2299,6 +2455,12 @@ func (recv *IOModule) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// CastToWidget down casts any arbitary Object to IOModule.
+// Exercise care, as this is a potentially dangerous function if the Object is not a IOModule.
+func CastToIOModule(object *gobject.Object) *IOModule {
+	return IOModuleNewFromC(object.ToC())
+}
+
 // IOModuleNew is a wrapper around the C function g_io_module_new.
 func IOModuleNew(filename string) *IOModule {
 	c_filename := C.CString(filename)
@@ -2342,6 +2504,12 @@ func (recv *IOStream) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
+// CastToWidget down casts any arbitary Object to IOStream.
+// Exercise care, as this is a potentially dangerous function if the Object is not a IOStream.
+func CastToIOStream(object *gobject.Object) *IOStream {
+	return IOStreamNewFromC(object.ToC())
+}
+
 // InetAddress is a wrapper around the C record GInetAddress.
 type InetAddress struct {
 	native *C.GInetAddress
@@ -2368,6 +2536,12 @@ func (recv *InetAddress) ToC() unsafe.Pointer {
 // Object upcasts to *Object
 func (recv *InetAddress) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
+}
+
+// CastToWidget down casts any arbitary Object to InetAddress.
+// Exercise care, as this is a potentially dangerous function if the Object is not a InetAddress.
+func CastToInetAddress(object *gobject.Object) *InetAddress {
+	return InetAddressNewFromC(object.ToC())
 }
 
 // Unsupported : g_inet_address_new_from_bytes : unsupported parameter bytes : no param type
@@ -2405,6 +2579,12 @@ func (recv *InetSocketAddress) Object() *gobject.Object {
 	return recv.SocketAddress().Object()
 }
 
+// CastToWidget down casts any arbitary Object to InetSocketAddress.
+// Exercise care, as this is a potentially dangerous function if the Object is not a InetSocketAddress.
+func CastToInetSocketAddress(object *gobject.Object) *InetSocketAddress {
+	return InetSocketAddressNewFromC(object.ToC())
+}
+
 // InputStream is a wrapper around the C record GInputStream.
 type InputStream struct {
 	native *C.GInputStream
@@ -2431,6 +2611,12 @@ func (recv *InputStream) ToC() unsafe.Pointer {
 // Object upcasts to *Object
 func (recv *InputStream) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
+}
+
+// CastToWidget down casts any arbitary Object to InputStream.
+// Exercise care, as this is a potentially dangerous function if the Object is not a InputStream.
+func CastToInputStream(object *gobject.Object) *InputStream {
+	return InputStreamNewFromC(object.ToC())
 }
 
 // ClearPending is a wrapper around the C function g_input_stream_clear_pending.
@@ -2549,6 +2735,12 @@ func (recv *ListStore) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
+// CastToWidget down casts any arbitary Object to ListStore.
+// Exercise care, as this is a potentially dangerous function if the Object is not a ListStore.
+func CastToListStore(object *gobject.Object) *ListStore {
+	return ListStoreNewFromC(object.ToC())
+}
+
 // Unsupported : g_list_store_new : unsupported parameter item_type : no type generator for GType, GType
 
 // MemoryInputStream is a wrapper around the C record GMemoryInputStream.
@@ -2582,6 +2774,12 @@ func (recv *MemoryInputStream) InputStream() *InputStream {
 // Object upcasts to *Object
 func (recv *MemoryInputStream) Object() *gobject.Object {
 	return recv.InputStream().Object()
+}
+
+// CastToWidget down casts any arbitary Object to MemoryInputStream.
+// Exercise care, as this is a potentially dangerous function if the Object is not a MemoryInputStream.
+func CastToMemoryInputStream(object *gobject.Object) *MemoryInputStream {
+	return MemoryInputStreamNewFromC(object.ToC())
 }
 
 // MemoryInputStreamNew is a wrapper around the C function g_memory_input_stream_new.
@@ -2629,6 +2827,12 @@ func (recv *MemoryOutputStream) Object() *gobject.Object {
 	return recv.OutputStream().Object()
 }
 
+// CastToWidget down casts any arbitary Object to MemoryOutputStream.
+// Exercise care, as this is a potentially dangerous function if the Object is not a MemoryOutputStream.
+func CastToMemoryOutputStream(object *gobject.Object) *MemoryOutputStream {
+	return MemoryOutputStreamNewFromC(object.ToC())
+}
+
 // Unsupported : g_memory_output_stream_new : unsupported parameter realloc_function : no type generator for ReallocFunc, GReallocFunc
 
 // GetData is a wrapper around the C function g_memory_output_stream_get_data.
@@ -2673,6 +2877,12 @@ func (recv *MountOperation) ToC() unsafe.Pointer {
 // Object upcasts to *Object
 func (recv *MountOperation) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
+}
+
+// CastToWidget down casts any arbitary Object to MountOperation.
+// Exercise care, as this is a potentially dangerous function if the Object is not a MountOperation.
+func CastToMountOperation(object *gobject.Object) *MountOperation {
+	return MountOperationNewFromC(object.ToC())
 }
 
 // MountOperationNew is a wrapper around the C function g_mount_operation_new.
@@ -2830,6 +3040,12 @@ func (recv *NativeVolumeMonitor) Object() *gobject.Object {
 	return recv.VolumeMonitor().Object()
 }
 
+// CastToWidget down casts any arbitary Object to NativeVolumeMonitor.
+// Exercise care, as this is a potentially dangerous function if the Object is not a NativeVolumeMonitor.
+func CastToNativeVolumeMonitor(object *gobject.Object) *NativeVolumeMonitor {
+	return NativeVolumeMonitorNewFromC(object.ToC())
+}
+
 // NetworkAddress is a wrapper around the C record GNetworkAddress.
 type NetworkAddress struct {
 	native *C.GNetworkAddress
@@ -2856,6 +3072,12 @@ func (recv *NetworkAddress) ToC() unsafe.Pointer {
 // Object upcasts to *Object
 func (recv *NetworkAddress) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
+}
+
+// CastToWidget down casts any arbitary Object to NetworkAddress.
+// Exercise care, as this is a potentially dangerous function if the Object is not a NetworkAddress.
+func CastToNetworkAddress(object *gobject.Object) *NetworkAddress {
+	return NetworkAddressNewFromC(object.ToC())
 }
 
 // NetworkService is a wrapper around the C record GNetworkService.
@@ -2886,6 +3108,12 @@ func (recv *NetworkService) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
+// CastToWidget down casts any arbitary Object to NetworkService.
+// Exercise care, as this is a potentially dangerous function if the Object is not a NetworkService.
+func CastToNetworkService(object *gobject.Object) *NetworkService {
+	return NetworkServiceNewFromC(object.ToC())
+}
+
 // OutputStream is a wrapper around the C record GOutputStream.
 type OutputStream struct {
 	native *C.GOutputStream
@@ -2912,6 +3140,12 @@ func (recv *OutputStream) ToC() unsafe.Pointer {
 // Object upcasts to *Object
 func (recv *OutputStream) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
+}
+
+// CastToWidget down casts any arbitary Object to OutputStream.
+// Exercise care, as this is a potentially dangerous function if the Object is not a OutputStream.
+func CastToOutputStream(object *gobject.Object) *OutputStream {
+	return OutputStreamNewFromC(object.ToC())
 }
 
 // ClearPending is a wrapper around the C function g_output_stream_clear_pending.
@@ -3061,6 +3295,12 @@ func (recv *Permission) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
+// CastToWidget down casts any arbitary Object to Permission.
+// Exercise care, as this is a potentially dangerous function if the Object is not a Permission.
+func CastToPermission(object *gobject.Object) *Permission {
+	return PermissionNewFromC(object.ToC())
+}
+
 // ProxyAddressEnumerator is a wrapper around the C record GProxyAddressEnumerator.
 type ProxyAddressEnumerator struct {
 	native *C.GProxyAddressEnumerator
@@ -3094,6 +3334,12 @@ func (recv *ProxyAddressEnumerator) Object() *gobject.Object {
 	return recv.SocketAddressEnumerator().Object()
 }
 
+// CastToWidget down casts any arbitary Object to ProxyAddressEnumerator.
+// Exercise care, as this is a potentially dangerous function if the Object is not a ProxyAddressEnumerator.
+func CastToProxyAddressEnumerator(object *gobject.Object) *ProxyAddressEnumerator {
+	return ProxyAddressEnumeratorNewFromC(object.ToC())
+}
+
 // Resolver is a wrapper around the C record GResolver.
 type Resolver struct {
 	native *C.GResolver
@@ -3122,6 +3368,12 @@ func (recv *Resolver) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
+// CastToWidget down casts any arbitary Object to Resolver.
+// Exercise care, as this is a potentially dangerous function if the Object is not a Resolver.
+func CastToResolver(object *gobject.Object) *Resolver {
+	return ResolverNewFromC(object.ToC())
+}
+
 // Settings is a wrapper around the C record GSettings.
 type Settings struct {
 	native *C.GSettings
@@ -3148,6 +3400,12 @@ func (recv *Settings) ToC() unsafe.Pointer {
 // Object upcasts to *Object
 func (recv *Settings) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
+}
+
+// CastToWidget down casts any arbitary Object to Settings.
+// Exercise care, as this is a potentially dangerous function if the Object is not a Settings.
+func CastToSettings(object *gobject.Object) *Settings {
+	return SettingsNewFromC(object.ToC())
 }
 
 // Apply is a wrapper around the C function g_settings_apply.
@@ -3234,6 +3492,12 @@ func (recv *SettingsBackend) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
+// CastToWidget down casts any arbitary Object to SettingsBackend.
+// Exercise care, as this is a potentially dangerous function if the Object is not a SettingsBackend.
+func CastToSettingsBackend(object *gobject.Object) *SettingsBackend {
+	return SettingsBackendNewFromC(object.ToC())
+}
+
 // SimpleAction is a wrapper around the C record GSimpleAction.
 type SimpleAction struct {
 	native *C.GSimpleAction
@@ -3258,6 +3522,12 @@ func (recv *SimpleAction) ToC() unsafe.Pointer {
 // Object upcasts to *Object
 func (recv *SimpleAction) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
+}
+
+// CastToWidget down casts any arbitary Object to SimpleAction.
+// Exercise care, as this is a potentially dangerous function if the Object is not a SimpleAction.
+func CastToSimpleAction(object *gobject.Object) *SimpleAction {
+	return SimpleActionNewFromC(object.ToC())
 }
 
 // Unsupported : g_simple_action_new : unsupported parameter parameter_type : Blacklisted record : GVariantType
@@ -3288,6 +3558,12 @@ func (recv *SimpleAsyncResult) ToC() unsafe.Pointer {
 // Object upcasts to *Object
 func (recv *SimpleAsyncResult) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
+}
+
+// CastToWidget down casts any arbitary Object to SimpleAsyncResult.
+// Exercise care, as this is a potentially dangerous function if the Object is not a SimpleAsyncResult.
+func CastToSimpleAsyncResult(object *gobject.Object) *SimpleAsyncResult {
+	return SimpleAsyncResultNewFromC(object.ToC())
 }
 
 // Unsupported : g_simple_async_result_new : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
@@ -3436,6 +3712,12 @@ func (recv *SimplePermission) Object() *gobject.Object {
 	return recv.Permission().Object()
 }
 
+// CastToWidget down casts any arbitary Object to SimplePermission.
+// Exercise care, as this is a potentially dangerous function if the Object is not a SimplePermission.
+func CastToSimplePermission(object *gobject.Object) *SimplePermission {
+	return SimplePermissionNewFromC(object.ToC())
+}
+
 // SimpleProxyResolver is a wrapper around the C record GSimpleProxyResolver.
 type SimpleProxyResolver struct {
 	native *C.GSimpleProxyResolver
@@ -3462,6 +3744,12 @@ func (recv *SimpleProxyResolver) ToC() unsafe.Pointer {
 // Object upcasts to *Object
 func (recv *SimpleProxyResolver) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
+}
+
+// CastToWidget down casts any arbitary Object to SimpleProxyResolver.
+// Exercise care, as this is a potentially dangerous function if the Object is not a SimpleProxyResolver.
+func CastToSimpleProxyResolver(object *gobject.Object) *SimpleProxyResolver {
+	return SimpleProxyResolverNewFromC(object.ToC())
 }
 
 // SocketAddress is a wrapper around the C record GSocketAddress.
@@ -3491,6 +3779,12 @@ func (recv *SocketAddress) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
+// CastToWidget down casts any arbitary Object to SocketAddress.
+// Exercise care, as this is a potentially dangerous function if the Object is not a SocketAddress.
+func CastToSocketAddress(object *gobject.Object) *SocketAddress {
+	return SocketAddressNewFromC(object.ToC())
+}
+
 // SocketAddressEnumerator is a wrapper around the C record GSocketAddressEnumerator.
 type SocketAddressEnumerator struct {
 	native *C.GSocketAddressEnumerator
@@ -3516,6 +3810,12 @@ func (recv *SocketAddressEnumerator) ToC() unsafe.Pointer {
 // Object upcasts to *Object
 func (recv *SocketAddressEnumerator) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
+}
+
+// CastToWidget down casts any arbitary Object to SocketAddressEnumerator.
+// Exercise care, as this is a potentially dangerous function if the Object is not a SocketAddressEnumerator.
+func CastToSocketAddressEnumerator(object *gobject.Object) *SocketAddressEnumerator {
+	return SocketAddressEnumeratorNewFromC(object.ToC())
 }
 
 // Next is a wrapper around the C function g_socket_address_enumerator_next.
@@ -3567,6 +3867,12 @@ func (recv *SocketControlMessage) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
+// CastToWidget down casts any arbitary Object to SocketControlMessage.
+// Exercise care, as this is a potentially dangerous function if the Object is not a SocketControlMessage.
+func CastToSocketControlMessage(object *gobject.Object) *SocketControlMessage {
+	return SocketControlMessageNewFromC(object.ToC())
+}
+
 // Unsupported : g_subprocess_new : unsupported parameter error : record with indirection level of 2
 
 // Unsupported : g_subprocess_newv : unsupported parameter argv : no param type
@@ -3595,6 +3901,12 @@ func (recv *Task) ToC() unsafe.Pointer {
 // Object upcasts to *Object
 func (recv *Task) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
+}
+
+// CastToWidget down casts any arbitary Object to Task.
+// Exercise care, as this is a potentially dangerous function if the Object is not a Task.
+func CastToTask(object *gobject.Object) *Task {
+	return TaskNewFromC(object.ToC())
 }
 
 // Unsupported : g_task_new : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
@@ -3642,6 +3954,12 @@ func (recv *TcpWrapperConnection) Object() *gobject.Object {
 	return recv.TcpConnection().Object()
 }
 
+// CastToWidget down casts any arbitary Object to TcpWrapperConnection.
+// Exercise care, as this is a potentially dangerous function if the Object is not a TcpWrapperConnection.
+func CastToTcpWrapperConnection(object *gobject.Object) *TcpWrapperConnection {
+	return TcpWrapperConnectionNewFromC(object.ToC())
+}
+
 // GetBaseIoStream is a wrapper around the C function g_tcp_wrapper_connection_get_base_io_stream.
 func (recv *TcpWrapperConnection) GetBaseIoStream() *IOStream {
 	retC := C.g_tcp_wrapper_connection_get_base_io_stream((*C.GTcpWrapperConnection)(recv.native))
@@ -3674,6 +3992,12 @@ func (recv *ThemedIcon) ToC() unsafe.Pointer {
 // Object upcasts to *Object
 func (recv *ThemedIcon) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
+}
+
+// CastToWidget down casts any arbitary Object to ThemedIcon.
+// Exercise care, as this is a potentially dangerous function if the Object is not a ThemedIcon.
+func CastToThemedIcon(object *gobject.Object) *ThemedIcon {
+	return ThemedIconNewFromC(object.ToC())
 }
 
 // ThemedIconNew is a wrapper around the C function g_themed_icon_new.
@@ -3750,6 +4074,12 @@ func (recv *UnixConnection) Object() *gobject.Object {
 	return recv.SocketConnection().Object()
 }
 
+// CastToWidget down casts any arbitary Object to UnixConnection.
+// Exercise care, as this is a potentially dangerous function if the Object is not a UnixConnection.
+func CastToUnixConnection(object *gobject.Object) *UnixConnection {
+	return UnixConnectionNewFromC(object.ToC())
+}
+
 // UnixFDList is a wrapper around the C record GUnixFDList.
 type UnixFDList struct {
 	native *C.GUnixFDList
@@ -3776,6 +4106,12 @@ func (recv *UnixFDList) ToC() unsafe.Pointer {
 // Object upcasts to *Object
 func (recv *UnixFDList) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
+}
+
+// CastToWidget down casts any arbitary Object to UnixFDList.
+// Exercise care, as this is a potentially dangerous function if the Object is not a UnixFDList.
+func CastToUnixFDList(object *gobject.Object) *UnixFDList {
+	return UnixFDListNewFromC(object.ToC())
 }
 
 // Unsupported : g_unix_fd_list_new_from_array : unsupported parameter fds : no param type
@@ -3813,6 +4149,12 @@ func (recv *UnixFDMessage) Object() *gobject.Object {
 	return recv.SocketControlMessage().Object()
 }
 
+// CastToWidget down casts any arbitary Object to UnixFDMessage.
+// Exercise care, as this is a potentially dangerous function if the Object is not a UnixFDMessage.
+func CastToUnixFDMessage(object *gobject.Object) *UnixFDMessage {
+	return UnixFDMessageNewFromC(object.ToC())
+}
+
 // UnixInputStream is a wrapper around the C record GUnixInputStream.
 type UnixInputStream struct {
 	native *C.GUnixInputStream
@@ -3844,6 +4186,12 @@ func (recv *UnixInputStream) InputStream() *InputStream {
 // Object upcasts to *Object
 func (recv *UnixInputStream) Object() *gobject.Object {
 	return recv.InputStream().Object()
+}
+
+// CastToWidget down casts any arbitary Object to UnixInputStream.
+// Exercise care, as this is a potentially dangerous function if the Object is not a UnixInputStream.
+func CastToUnixInputStream(object *gobject.Object) *UnixInputStream {
+	return UnixInputStreamNewFromC(object.ToC())
 }
 
 // UnixInputStreamNew is a wrapper around the C function g_unix_input_stream_new.
@@ -3885,6 +4233,12 @@ func (recv *UnixMountMonitor) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
+// CastToWidget down casts any arbitary Object to UnixMountMonitor.
+// Exercise care, as this is a potentially dangerous function if the Object is not a UnixMountMonitor.
+func CastToUnixMountMonitor(object *gobject.Object) *UnixMountMonitor {
+	return UnixMountMonitorNewFromC(object.ToC())
+}
+
 // UnixMountMonitorNew is a wrapper around the C function g_unix_mount_monitor_new.
 func UnixMountMonitorNew() *UnixMountMonitor {
 	retC := C.g_unix_mount_monitor_new()
@@ -3924,6 +4278,12 @@ func (recv *UnixOutputStream) OutputStream() *OutputStream {
 // Object upcasts to *Object
 func (recv *UnixOutputStream) Object() *gobject.Object {
 	return recv.OutputStream().Object()
+}
+
+// CastToWidget down casts any arbitary Object to UnixOutputStream.
+// Exercise care, as this is a potentially dangerous function if the Object is not a UnixOutputStream.
+func CastToUnixOutputStream(object *gobject.Object) *UnixOutputStream {
+	return UnixOutputStreamNewFromC(object.ToC())
 }
 
 // UnixOutputStreamNew is a wrapper around the C function g_unix_output_stream_new.
@@ -3972,6 +4332,12 @@ func (recv *UnixSocketAddress) Object() *gobject.Object {
 	return recv.SocketAddress().Object()
 }
 
+// CastToWidget down casts any arbitary Object to UnixSocketAddress.
+// Exercise care, as this is a potentially dangerous function if the Object is not a UnixSocketAddress.
+func CastToUnixSocketAddress(object *gobject.Object) *UnixSocketAddress {
+	return UnixSocketAddressNewFromC(object.ToC())
+}
+
 // Unsupported : g_unix_socket_address_new_abstract : unsupported parameter path : no param type
 
 // Unsupported : g_unix_socket_address_new_with_type : unsupported parameter path : no param type
@@ -4001,6 +4367,12 @@ func (recv *Vfs) ToC() unsafe.Pointer {
 // Object upcasts to *Object
 func (recv *Vfs) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
+}
+
+// CastToWidget down casts any arbitary Object to Vfs.
+// Exercise care, as this is a potentially dangerous function if the Object is not a Vfs.
+func CastToVfs(object *gobject.Object) *Vfs {
+	return VfsNewFromC(object.ToC())
 }
 
 // Unsupported : g_vfs_get_file_for_path : no return generator
@@ -4045,6 +4417,12 @@ func (recv *VolumeMonitor) ToC() unsafe.Pointer {
 // Object upcasts to *Object
 func (recv *VolumeMonitor) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
+}
+
+// CastToWidget down casts any arbitary Object to VolumeMonitor.
+// Exercise care, as this is a potentially dangerous function if the Object is not a VolumeMonitor.
+func CastToVolumeMonitor(object *gobject.Object) *VolumeMonitor {
+	return VolumeMonitorNewFromC(object.ToC())
 }
 
 // GetConnectedDrives is a wrapper around the C function g_volume_monitor_get_connected_drives.
@@ -4101,6 +4479,12 @@ func (recv *ZlibCompressor) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
+// CastToWidget down casts any arbitary Object to ZlibCompressor.
+// Exercise care, as this is a potentially dangerous function if the Object is not a ZlibCompressor.
+func CastToZlibCompressor(object *gobject.Object) *ZlibCompressor {
+	return ZlibCompressorNewFromC(object.ToC())
+}
+
 // ZlibDecompressor is a wrapper around the C record GZlibDecompressor.
 type ZlibDecompressor struct {
 	native *C.GZlibDecompressor
@@ -4125,4 +4509,10 @@ func (recv *ZlibDecompressor) ToC() unsafe.Pointer {
 // Object upcasts to *Object
 func (recv *ZlibDecompressor) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
+}
+
+// CastToWidget down casts any arbitary Object to ZlibDecompressor.
+// Exercise care, as this is a potentially dangerous function if the Object is not a ZlibDecompressor.
+func CastToZlibDecompressor(object *gobject.Object) *ZlibDecompressor {
+	return ZlibDecompressorNewFromC(object.ToC())
 }
