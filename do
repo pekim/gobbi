@@ -19,7 +19,7 @@ usage () {
 
 example () {
     exampleName=$1
-    go run -tags "$tags" $exampleDir/$exampleName/main.go
+    go run -tags "$tags" $exampleDir/$exampleName/*.go
 }
 
 build () {
