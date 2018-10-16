@@ -4,6 +4,8 @@ package main
 import "C"
 
 import (
+	"fmt"
+	"github.com/pekim/gobbi/lib/gdk"
 	"github.com/pekim/gobbi/lib/gtk"
 	"runtime"
 )
@@ -24,8 +26,9 @@ func main() {
 	})
 
 	//connectKeyPressEvent(window.Object(), func(event *gdk.EventKey) {
-	//	fmt.Println("kp", event)
-	//})
+	connectKeyPressEvent(window.Widget(), func(event *gdk.EventKey) {
+		fmt.Println("kp", event, "mod", event.State)
+	})
 
 	gtk.Main()
 }
