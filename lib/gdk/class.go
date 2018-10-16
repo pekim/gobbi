@@ -448,6 +448,12 @@ func CastToDevice(object *gobject.Object) *Device {
 	return DeviceNewFromC(object.ToC())
 }
 
+// DeviceSignalChangedCallback is a callback function for a 'changed' signal emitted from a Device.
+type DeviceSignalChangedCallback func()
+
+// DeviceSignalToolChangedCallback is a callback function for a 'tool-changed' signal emitted from a Device.
+type DeviceSignalToolChangedCallback func()
+
 // Unsupported : gdk_device_get_axis : unsupported parameter axes : no param type
 
 // Unsupported : gdk_device_get_history : unsupported parameter events : no param type
@@ -528,6 +534,15 @@ func CastToDeviceManager(object *gobject.Object) *DeviceManager {
 	return DeviceManagerNewFromC(object.ToC())
 }
 
+// DeviceManagerSignalDeviceAddedCallback is a callback function for a 'device-added' signal emitted from a DeviceManager.
+type DeviceManagerSignalDeviceAddedCallback func()
+
+// DeviceManagerSignalDeviceChangedCallback is a callback function for a 'device-changed' signal emitted from a DeviceManager.
+type DeviceManagerSignalDeviceChangedCallback func()
+
+// DeviceManagerSignalDeviceRemovedCallback is a callback function for a 'device-removed' signal emitted from a DeviceManager.
+type DeviceManagerSignalDeviceRemovedCallback func()
+
 // Display is a wrapper around the C record GdkDisplay.
 type Display struct {
 	native *C.GdkDisplay
@@ -559,6 +574,24 @@ func (recv *Display) Object() *gobject.Object {
 func CastToDisplay(object *gobject.Object) *Display {
 	return DisplayNewFromC(object.ToC())
 }
+
+// DisplaySignalClosedCallback is a callback function for a 'closed' signal emitted from a Display.
+type DisplaySignalClosedCallback func()
+
+// DisplaySignalMonitorAddedCallback is a callback function for a 'monitor-added' signal emitted from a Display.
+type DisplaySignalMonitorAddedCallback func()
+
+// DisplaySignalMonitorRemovedCallback is a callback function for a 'monitor-removed' signal emitted from a Display.
+type DisplaySignalMonitorRemovedCallback func()
+
+// DisplaySignalOpenedCallback is a callback function for a 'opened' signal emitted from a Display.
+type DisplaySignalOpenedCallback func()
+
+// DisplaySignalSeatAddedCallback is a callback function for a 'seat-added' signal emitted from a Display.
+type DisplaySignalSeatAddedCallback func()
+
+// DisplaySignalSeatRemovedCallback is a callback function for a 'seat-removed' signal emitted from a Display.
+type DisplaySignalSeatRemovedCallback func()
 
 // DeviceIsGrabbed is a wrapper around the C function gdk_display_device_is_grabbed.
 func (recv *Display) DeviceIsGrabbed(device *Device) bool {
@@ -602,6 +635,9 @@ func CastToDisplayManager(object *gobject.Object) *DisplayManager {
 	return DisplayManagerNewFromC(object.ToC())
 }
 
+// DisplayManagerSignalDisplayOpenedCallback is a callback function for a 'display-opened' signal emitted from a DisplayManager.
+type DisplayManagerSignalDisplayOpenedCallback func()
+
 // DragContext is a wrapper around the C record GdkDragContext.
 type DragContext struct {
 	native *C.GdkDragContext
@@ -633,6 +669,18 @@ func (recv *DragContext) Object() *gobject.Object {
 func CastToDragContext(object *gobject.Object) *DragContext {
 	return DragContextNewFromC(object.ToC())
 }
+
+// DragContextSignalActionChangedCallback is a callback function for a 'action-changed' signal emitted from a DragContext.
+type DragContextSignalActionChangedCallback func()
+
+// DragContextSignalCancelCallback is a callback function for a 'cancel' signal emitted from a DragContext.
+type DragContextSignalCancelCallback func()
+
+// DragContextSignalDndFinishedCallback is a callback function for a 'dnd-finished' signal emitted from a DragContext.
+type DragContextSignalDndFinishedCallback func()
+
+// DragContextSignalDropPerformedCallback is a callback function for a 'drop-performed' signal emitted from a DragContext.
+type DragContextSignalDropPerformedCallback func()
 
 // GetDevice is a wrapper around the C function gdk_drag_context_get_device.
 func (recv *DragContext) GetDevice() *Device {
@@ -682,6 +730,27 @@ func (recv *FrameClock) Object() *gobject.Object {
 func CastToFrameClock(object *gobject.Object) *FrameClock {
 	return FrameClockNewFromC(object.ToC())
 }
+
+// FrameClockSignalAfterPaintCallback is a callback function for a 'after-paint' signal emitted from a FrameClock.
+type FrameClockSignalAfterPaintCallback func()
+
+// FrameClockSignalBeforePaintCallback is a callback function for a 'before-paint' signal emitted from a FrameClock.
+type FrameClockSignalBeforePaintCallback func()
+
+// FrameClockSignalFlushEventsCallback is a callback function for a 'flush-events' signal emitted from a FrameClock.
+type FrameClockSignalFlushEventsCallback func()
+
+// FrameClockSignalLayoutCallback is a callback function for a 'layout' signal emitted from a FrameClock.
+type FrameClockSignalLayoutCallback func()
+
+// FrameClockSignalPaintCallback is a callback function for a 'paint' signal emitted from a FrameClock.
+type FrameClockSignalPaintCallback func()
+
+// FrameClockSignalResumeEventsCallback is a callback function for a 'resume-events' signal emitted from a FrameClock.
+type FrameClockSignalResumeEventsCallback func()
+
+// FrameClockSignalUpdateCallback is a callback function for a 'update' signal emitted from a FrameClock.
+type FrameClockSignalUpdateCallback func()
 
 // GLContext is a wrapper around the C record GdkGLContext.
 type GLContext struct {
@@ -747,6 +816,15 @@ func CastToKeymap(object *gobject.Object) *Keymap {
 	return KeymapNewFromC(object.ToC())
 }
 
+// KeymapSignalDirectionChangedCallback is a callback function for a 'direction-changed' signal emitted from a Keymap.
+type KeymapSignalDirectionChangedCallback func()
+
+// KeymapSignalKeysChangedCallback is a callback function for a 'keys-changed' signal emitted from a Keymap.
+type KeymapSignalKeysChangedCallback func()
+
+// KeymapSignalStateChangedCallback is a callback function for a 'state-changed' signal emitted from a Keymap.
+type KeymapSignalStateChangedCallback func()
+
 // GetDirection is a wrapper around the C function gdk_keymap_get_direction.
 func (recv *Keymap) GetDirection() pango.Direction {
 	retC := C.gdk_keymap_get_direction((*C.GdkKeymap)(recv.native))
@@ -802,6 +880,15 @@ func (recv *Screen) Object() *gobject.Object {
 func CastToScreen(object *gobject.Object) *Screen {
 	return ScreenNewFromC(object.ToC())
 }
+
+// ScreenSignalCompositedChangedCallback is a callback function for a 'composited-changed' signal emitted from a Screen.
+type ScreenSignalCompositedChangedCallback func()
+
+// ScreenSignalMonitorsChangedCallback is a callback function for a 'monitors-changed' signal emitted from a Screen.
+type ScreenSignalMonitorsChangedCallback func()
+
+// ScreenSignalSizeChangedCallback is a callback function for a 'size-changed' signal emitted from a Screen.
+type ScreenSignalSizeChangedCallback func()
 
 // Visual is a wrapper around the C record GdkVisual.
 type Visual struct {
@@ -866,6 +953,21 @@ func (recv *Window) Object() *gobject.Object {
 func CastToWindow(object *gobject.Object) *Window {
 	return WindowNewFromC(object.ToC())
 }
+
+// WindowSignalCreateSurfaceCallback is a callback function for a 'create-surface' signal emitted from a Window.
+type WindowSignalCreateSurfaceCallback func()
+
+// WindowSignalFromEmbedderCallback is a callback function for a 'from-embedder' signal emitted from a Window.
+type WindowSignalFromEmbedderCallback func()
+
+// WindowSignalMovedToRectCallback is a callback function for a 'moved-to-rect' signal emitted from a Window.
+type WindowSignalMovedToRectCallback func()
+
+// WindowSignalPickEmbeddedChildCallback is a callback function for a 'pick-embedded-child' signal emitted from a Window.
+type WindowSignalPickEmbeddedChildCallback func()
+
+// WindowSignalToEmbedderCallback is a callback function for a 'to-embedder' signal emitted from a Window.
+type WindowSignalToEmbedderCallback func()
 
 // WindowNew is a wrapper around the C function gdk_window_new.
 func WindowNew(parent *Window, attributes *WindowAttr, attributesMask int32) *Window {

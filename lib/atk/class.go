@@ -149,6 +149,9 @@ func CastToHyperlink(object *gobject.Object) *Hyperlink {
 	return HyperlinkNewFromC(object.ToC())
 }
 
+// HyperlinkSignalLinkActivatedCallback is a callback function for a 'link-activated' signal emitted from a Hyperlink.
+type HyperlinkSignalLinkActivatedCallback func()
+
 // GetEndIndex is a wrapper around the C function atk_hyperlink_get_end_index.
 func (recv *Hyperlink) GetEndIndex() int32 {
 	retC := C.atk_hyperlink_get_end_index((*C.AtkHyperlink)(recv.native))
@@ -384,6 +387,24 @@ func (recv *Object) Object() *gobject.Object {
 func CastToObject(object *gobject.Object) *Object {
 	return ObjectNewFromC(object.ToC())
 }
+
+// ObjectSignalActiveDescendantChangedCallback is a callback function for a 'active-descendant-changed' signal emitted from a Object.
+type ObjectSignalActiveDescendantChangedCallback func()
+
+// ObjectSignalChildrenChangedCallback is a callback function for a 'children-changed' signal emitted from a Object.
+type ObjectSignalChildrenChangedCallback func()
+
+// ObjectSignalFocusEventCallback is a callback function for a 'focus-event' signal emitted from a Object.
+type ObjectSignalFocusEventCallback func()
+
+// ObjectSignalPropertyChangeCallback is a callback function for a 'property-change' signal emitted from a Object.
+type ObjectSignalPropertyChangeCallback func()
+
+// ObjectSignalStateChangeCallback is a callback function for a 'state-change' signal emitted from a Object.
+type ObjectSignalStateChangeCallback func()
+
+// ObjectSignalVisibleDataChangedCallback is a callback function for a 'visible-data-changed' signal emitted from a Object.
+type ObjectSignalVisibleDataChangedCallback func()
 
 // AddRelationship is a wrapper around the C function atk_object_add_relationship.
 func (recv *Object) AddRelationship(relationship RelationType, target *Object) bool {

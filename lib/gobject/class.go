@@ -82,6 +82,9 @@ func CastToObject(object *Object) *Object {
 	return ObjectNewFromC(object.ToC())
 }
 
+// ObjectSignalNotifyCallback is a callback function for a 'notify' signal emitted from a Object.
+type ObjectSignalNotifyCallback func()
+
 // Unsupported : g_object_new : unsupported parameter object_type : no type generator for GType, GType
 
 // Unsupported : g_object_new_valist : unsupported parameter object_type : no type generator for GType, GType

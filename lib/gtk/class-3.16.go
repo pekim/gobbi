@@ -120,6 +120,15 @@ func CastToGLArea(object *gobject.Object) *GLArea {
 	return GLAreaNewFromC(object.ToC())
 }
 
+// GLAreaSignalCreateContextCallback is a callback function for a 'create-context' signal emitted from a GLArea.
+type GLAreaSignalCreateContextCallback func()
+
+// GLAreaSignalRenderCallback is a callback function for a 'render' signal emitted from a GLArea.
+type GLAreaSignalRenderCallback func()
+
+// GLAreaSignalResizeCallback is a callback function for a 'resize' signal emitted from a GLArea.
+type GLAreaSignalResizeCallback func()
+
 // GLAreaNew is a wrapper around the C function gtk_gl_area_new.
 func GLAreaNew() *GLArea {
 	retC := C.gtk_gl_area_new()

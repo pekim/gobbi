@@ -1765,6 +1765,9 @@ func CastToRecentManager(object *gobject.Object) *RecentManager {
 	return RecentManagerNewFromC(object.ToC())
 }
 
+// RecentManagerSignalChangedCallback is a callback function for a 'changed' signal emitted from a RecentManager.
+type RecentManagerSignalChangedCallback func()
+
 // RecentManagerNew is a wrapper around the C function gtk_recent_manager_new.
 func RecentManagerNew() *RecentManager {
 	retC := C.gtk_recent_manager_new()

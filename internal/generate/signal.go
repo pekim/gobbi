@@ -21,14 +21,13 @@ type Signal struct {
 	record             *Record
 	goNameHandler      string
 	cNameSignalConnect string
+	callbackTypeName   string
 }
 
 func (s *Signal) init(ns *Namespace, record *Record) {
 	s.Namespace = ns
 	s.record = record
-}
 
-func (s *Signal) generate(g *jen.Group, version *Version) {
 	s.goNameHandler = fmt.Sprintf("%s_%s_%sHandler",
 		s.Namespace.goPackageName,
 		s.record.Name,
@@ -38,7 +37,14 @@ func (s *Signal) generate(g *jen.Group, version *Version) {
 		s.record.Name,
 		strings.Replace(s.Name, "-", "_", -1))
 
+	s.callbackTypeName = fmt.Sprintf("%sSignal%sCallback",
+		s.record.Name,
+		makeExportedGoName(s.Name))
+}
+
+func (s *Signal) generate(g *jen.Group, version *Version) {
 	s.generateCgoPreamble()
+	s.generateCallbackType(g)
 }
 
 func (s *Signal) generateCgoPreamble() {
@@ -55,4 +61,19 @@ func (s *Signal) generateCgoPreamble() {
 			s.cNameSignalConnect,
 			s.Name,
 			s.goNameHandler))
+}
+
+func (s *Signal) generateCallbackType(g *jen.Group) {
+	g.Commentf("%s is a callback function for a '%s' signal emitted from a %s.",
+		s.callbackTypeName,
+		s.Name,
+		s.record.Name)
+
+	g.
+		Type().
+		Id(s.callbackTypeName).
+		Func().
+		Params()
+
+	g.Line()
 }

@@ -1055,6 +1055,9 @@ func CastToSocketClient(object *gobject.Object) *SocketClient {
 	return SocketClientNewFromC(object.ToC())
 }
 
+// SocketClientSignalEventCallback is a callback function for a 'event' signal emitted from a SocketClient.
+type SocketClientSignalEventCallback func()
+
 // SocketClientNew is a wrapper around the C function g_socket_client_new.
 func SocketClientNew() *SocketClient {
 	retC := C.g_socket_client_new()
@@ -1344,6 +1347,9 @@ func CastToSocketListener(object *gobject.Object) *SocketListener {
 	return SocketListenerNewFromC(object.ToC())
 }
 
+// SocketListenerSignalEventCallback is a callback function for a 'event' signal emitted from a SocketListener.
+type SocketListenerSignalEventCallback func()
+
 // SocketListenerNew is a wrapper around the C function g_socket_listener_new.
 func SocketListenerNew() *SocketListener {
 	retC := C.g_socket_listener_new()
@@ -1458,6 +1464,9 @@ func (recv *SocketService) Object() *gobject.Object {
 func CastToSocketService(object *gobject.Object) *SocketService {
 	return SocketServiceNewFromC(object.ToC())
 }
+
+// SocketServiceSignalIncomingCallback is a callback function for a 'incoming' signal emitted from a SocketService.
+type SocketServiceSignalIncomingCallback func()
 
 // SocketServiceNew is a wrapper around the C function g_socket_service_new.
 func SocketServiceNew() *SocketService {
@@ -1602,6 +1611,9 @@ func (recv *ThreadedSocketService) Object() *gobject.Object {
 func CastToThreadedSocketService(object *gobject.Object) *ThreadedSocketService {
 	return ThreadedSocketServiceNewFromC(object.ToC())
 }
+
+// ThreadedSocketServiceSignalRunCallback is a callback function for a 'run' signal emitted from a ThreadedSocketService.
+type ThreadedSocketServiceSignalRunCallback func()
 
 // ThreadedSocketServiceNew is a wrapper around the C function g_threaded_socket_service_new.
 func ThreadedSocketServiceNew(maxThreads int32) *ThreadedSocketService {

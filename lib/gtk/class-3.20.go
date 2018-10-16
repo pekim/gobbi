@@ -231,6 +231,9 @@ func CastToNativeDialog(object *gobject.Object) *NativeDialog {
 	return NativeDialogNewFromC(object.ToC())
 }
 
+// NativeDialogSignalResponseCallback is a callback function for a 'response' signal emitted from a NativeDialog.
+type NativeDialogSignalResponseCallback func()
+
 // Destroy is a wrapper around the C function gtk_native_dialog_destroy.
 func (recv *NativeDialog) Destroy() {
 	C.gtk_native_dialog_destroy((*C.GtkNativeDialog)(recv.native))
@@ -553,6 +556,9 @@ func CastToShortcutsSection(object *gobject.Object) *ShortcutsSection {
 	return ShortcutsSectionNewFromC(object.ToC())
 }
 
+// ShortcutsSectionSignalChangeCurrentPageCallback is a callback function for a 'change-current-page' signal emitted from a ShortcutsSection.
+type ShortcutsSectionSignalChangeCurrentPageCallback func()
+
 // ShortcutsShortcut is a wrapper around the C record GtkShortcutsShortcut.
 type ShortcutsShortcut struct {
 	native *C.GtkShortcutsShortcut
@@ -662,6 +668,12 @@ func (recv *ShortcutsWindow) Object() *gobject.Object {
 func CastToShortcutsWindow(object *gobject.Object) *ShortcutsWindow {
 	return ShortcutsWindowNewFromC(object.ToC())
 }
+
+// ShortcutsWindowSignalCloseCallback is a callback function for a 'close' signal emitted from a ShortcutsWindow.
+type ShortcutsWindowSignalCloseCallback func()
+
+// ShortcutsWindowSignalSearchCallback is a callback function for a 'search' signal emitted from a ShortcutsWindow.
+type ShortcutsWindowSignalSearchCallback func()
 
 // Unsupported : gtk_status_icon_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon, GIcon*
 

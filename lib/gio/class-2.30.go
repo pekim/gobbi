@@ -108,6 +108,9 @@ func CastToDBusInterfaceSkeleton(object *gobject.Object) *DBusInterfaceSkeleton 
 	return DBusInterfaceSkeletonNewFromC(object.ToC())
 }
 
+// DBusInterfaceSkeletonSignalGAuthorizeMethodCallback is a callback function for a 'g-authorize-method' signal emitted from a DBusInterfaceSkeleton.
+type DBusInterfaceSkeletonSignalGAuthorizeMethodCallback func()
+
 // Export is a wrapper around the C function g_dbus_interface_skeleton_export.
 func (recv *DBusInterfaceSkeleton) Export(connection *DBusConnection, objectPath string) (bool, error) {
 	c_connection := (*C.GDBusConnection)(connection.ToC())
@@ -239,6 +242,12 @@ func (recv *DBusObjectManagerClient) Object() *gobject.Object {
 func CastToDBusObjectManagerClient(object *gobject.Object) *DBusObjectManagerClient {
 	return DBusObjectManagerClientNewFromC(object.ToC())
 }
+
+// DBusObjectManagerClientSignalInterfaceProxyPropertiesChangedCallback is a callback function for a 'interface-proxy-properties-changed' signal emitted from a DBusObjectManagerClient.
+type DBusObjectManagerClientSignalInterfaceProxyPropertiesChangedCallback func()
+
+// DBusObjectManagerClientSignalInterfaceProxySignalCallback is a callback function for a 'interface-proxy-signal' signal emitted from a DBusObjectManagerClient.
+type DBusObjectManagerClientSignalInterfaceProxySignalCallback func()
 
 // Unsupported : g_dbus_object_manager_client_new_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
 
@@ -460,6 +469,9 @@ func (recv *DBusObjectSkeleton) Object() *gobject.Object {
 func CastToDBusObjectSkeleton(object *gobject.Object) *DBusObjectSkeleton {
 	return DBusObjectSkeletonNewFromC(object.ToC())
 }
+
+// DBusObjectSkeletonSignalAuthorizeMethodCallback is a callback function for a 'authorize-method' signal emitted from a DBusObjectSkeleton.
+type DBusObjectSkeletonSignalAuthorizeMethodCallback func()
 
 // DBusObjectSkeletonNew is a wrapper around the C function g_dbus_object_skeleton_new.
 func DBusObjectSkeletonNew(objectPath string) *DBusObjectSkeleton {

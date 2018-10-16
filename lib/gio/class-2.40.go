@@ -65,6 +65,9 @@ func CastToAppInfoMonitor(object *gobject.Object) *AppInfoMonitor {
 	return AppInfoMonitorNewFromC(object.ToC())
 }
 
+// AppInfoMonitorSignalChangedCallback is a callback function for a 'changed' signal emitted from a AppInfoMonitor.
+type AppInfoMonitorSignalChangedCallback func()
+
 // Unsupported : g_application_add_main_option_entries : unsupported parameter entries : no param type
 
 // AddOptionGroup is a wrapper around the C function g_application_add_option_group.

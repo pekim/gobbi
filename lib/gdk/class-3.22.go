@@ -284,6 +284,9 @@ func CastToMonitor(object *gobject.Object) *Monitor {
 	return MonitorNewFromC(object.ToC())
 }
 
+// MonitorSignalInvalidateCallback is a callback function for a 'invalidate' signal emitted from a Monitor.
+type MonitorSignalInvalidateCallback func()
+
 // GetDisplay is a wrapper around the C function gdk_monitor_get_display.
 func (recv *Monitor) GetDisplay() *Display {
 	retC := C.gdk_monitor_get_display((*C.GdkMonitor)(recv.native))
@@ -392,6 +395,18 @@ func (recv *Seat) Object() *gobject.Object {
 func CastToSeat(object *gobject.Object) *Seat {
 	return SeatNewFromC(object.ToC())
 }
+
+// SeatSignalDeviceAddedCallback is a callback function for a 'device-added' signal emitted from a Seat.
+type SeatSignalDeviceAddedCallback func()
+
+// SeatSignalDeviceRemovedCallback is a callback function for a 'device-removed' signal emitted from a Seat.
+type SeatSignalDeviceRemovedCallback func()
+
+// SeatSignalToolAddedCallback is a callback function for a 'tool-added' signal emitted from a Seat.
+type SeatSignalToolAddedCallback func()
+
+// SeatSignalToolRemovedCallback is a callback function for a 'tool-removed' signal emitted from a Seat.
+type SeatSignalToolRemovedCallback func()
 
 // GetDisplay is a wrapper around the C function gdk_seat_get_display.
 func (recv *Seat) GetDisplay() *Display {

@@ -345,6 +345,12 @@ func CastToAppLaunchContext(object *gobject.Object) *AppLaunchContext {
 	return AppLaunchContextNewFromC(object.ToC())
 }
 
+// AppLaunchContextSignalLaunchFailedCallback is a callback function for a 'launch-failed' signal emitted from a AppLaunchContext.
+type AppLaunchContextSignalLaunchFailedCallback func()
+
+// AppLaunchContextSignalLaunchedCallback is a callback function for a 'launched' signal emitted from a AppLaunchContext.
+type AppLaunchContextSignalLaunchedCallback func()
+
 // AppLaunchContextNew is a wrapper around the C function g_app_launch_context_new.
 func AppLaunchContextNew() *AppLaunchContext {
 	retC := C.g_app_launch_context_new()
@@ -702,6 +708,9 @@ func (recv *Cancellable) Object() *gobject.Object {
 func CastToCancellable(object *gobject.Object) *Cancellable {
 	return CancellableNewFromC(object.ToC())
 }
+
+// CancellableSignalCancelledCallback is a callback function for a 'cancelled' signal emitted from a Cancellable.
+type CancellableSignalCancelledCallback func()
 
 // CancellableNew is a wrapper around the C function g_cancellable_new.
 func CancellableNew() *Cancellable {
@@ -2429,6 +2438,9 @@ func CastToFileMonitor(object *gobject.Object) *FileMonitor {
 	return FileMonitorNewFromC(object.ToC())
 }
 
+// FileMonitorSignalChangedCallback is a callback function for a 'changed' signal emitted from a FileMonitor.
+type FileMonitorSignalChangedCallback func()
+
 // Cancel is a wrapper around the C function g_file_monitor_cancel.
 func (recv *FileMonitor) Cancel() bool {
 	retC := C.g_file_monitor_cancel((*C.GFileMonitor)(recv.native))
@@ -2559,6 +2571,9 @@ func (recv *FilenameCompleter) Object() *gobject.Object {
 func CastToFilenameCompleter(object *gobject.Object) *FilenameCompleter {
 	return FilenameCompleterNewFromC(object.ToC())
 }
+
+// FilenameCompleterSignalGotCompletionDataCallback is a callback function for a 'got-completion-data' signal emitted from a FilenameCompleter.
+type FilenameCompleterSignalGotCompletionDataCallback func()
 
 // FilenameCompleterNew is a wrapper around the C function g_filename_completer_new.
 func FilenameCompleterNew() *FilenameCompleter {
@@ -3173,6 +3188,24 @@ func CastToMountOperation(object *gobject.Object) *MountOperation {
 	return MountOperationNewFromC(object.ToC())
 }
 
+// MountOperationSignalAbortedCallback is a callback function for a 'aborted' signal emitted from a MountOperation.
+type MountOperationSignalAbortedCallback func()
+
+// MountOperationSignalAskPasswordCallback is a callback function for a 'ask-password' signal emitted from a MountOperation.
+type MountOperationSignalAskPasswordCallback func()
+
+// MountOperationSignalAskQuestionCallback is a callback function for a 'ask-question' signal emitted from a MountOperation.
+type MountOperationSignalAskQuestionCallback func()
+
+// MountOperationSignalReplyCallback is a callback function for a 'reply' signal emitted from a MountOperation.
+type MountOperationSignalReplyCallback func()
+
+// MountOperationSignalShowProcessesCallback is a callback function for a 'show-processes' signal emitted from a MountOperation.
+type MountOperationSignalShowProcessesCallback func()
+
+// MountOperationSignalShowUnmountProgressCallback is a callback function for a 'show-unmount-progress' signal emitted from a MountOperation.
+type MountOperationSignalShowUnmountProgressCallback func()
+
 // MountOperationNew is a wrapper around the C function g_mount_operation_new.
 func MountOperationNew() *MountOperation {
 	retC := C.g_mount_operation_new()
@@ -3662,6 +3695,9 @@ func CastToResolver(object *gobject.Object) *Resolver {
 	return ResolverNewFromC(object.ToC())
 }
 
+// ResolverSignalReloadCallback is a callback function for a 'reload' signal emitted from a Resolver.
+type ResolverSignalReloadCallback func()
+
 // Settings is a wrapper around the C record GSettings.
 type Settings struct {
 	native *C.GSettings
@@ -3695,6 +3731,18 @@ func (recv *Settings) Object() *gobject.Object {
 func CastToSettings(object *gobject.Object) *Settings {
 	return SettingsNewFromC(object.ToC())
 }
+
+// SettingsSignalChangeEventCallback is a callback function for a 'change-event' signal emitted from a Settings.
+type SettingsSignalChangeEventCallback func()
+
+// SettingsSignalChangedCallback is a callback function for a 'changed' signal emitted from a Settings.
+type SettingsSignalChangedCallback func()
+
+// SettingsSignalWritableChangeEventCallback is a callback function for a 'writable-change-event' signal emitted from a Settings.
+type SettingsSignalWritableChangeEventCallback func()
+
+// SettingsSignalWritableChangedCallback is a callback function for a 'writable-changed' signal emitted from a Settings.
+type SettingsSignalWritableChangedCallback func()
 
 // Apply is a wrapper around the C function g_settings_apply.
 func (recv *Settings) Apply() {
@@ -3817,6 +3865,12 @@ func (recv *SimpleAction) Object() *gobject.Object {
 func CastToSimpleAction(object *gobject.Object) *SimpleAction {
 	return SimpleActionNewFromC(object.ToC())
 }
+
+// SimpleActionSignalActivateCallback is a callback function for a 'activate' signal emitted from a SimpleAction.
+type SimpleActionSignalActivateCallback func()
+
+// SimpleActionSignalChangeStateCallback is a callback function for a 'change-state' signal emitted from a SimpleAction.
+type SimpleActionSignalChangeStateCallback func()
 
 // Unsupported : g_simple_action_new : unsupported parameter parameter_type : Blacklisted record : GVariantType
 
@@ -4527,6 +4581,12 @@ func CastToUnixMountMonitor(object *gobject.Object) *UnixMountMonitor {
 	return UnixMountMonitorNewFromC(object.ToC())
 }
 
+// UnixMountMonitorSignalMountpointsChangedCallback is a callback function for a 'mountpoints-changed' signal emitted from a UnixMountMonitor.
+type UnixMountMonitorSignalMountpointsChangedCallback func()
+
+// UnixMountMonitorSignalMountsChangedCallback is a callback function for a 'mounts-changed' signal emitted from a UnixMountMonitor.
+type UnixMountMonitorSignalMountsChangedCallback func()
+
 // UnixMountMonitorNew is a wrapper around the C function g_unix_mount_monitor_new.
 func UnixMountMonitorNew() *UnixMountMonitor {
 	retC := C.g_unix_mount_monitor_new()
@@ -4712,6 +4772,42 @@ func (recv *VolumeMonitor) Object() *gobject.Object {
 func CastToVolumeMonitor(object *gobject.Object) *VolumeMonitor {
 	return VolumeMonitorNewFromC(object.ToC())
 }
+
+// VolumeMonitorSignalDriveChangedCallback is a callback function for a 'drive-changed' signal emitted from a VolumeMonitor.
+type VolumeMonitorSignalDriveChangedCallback func()
+
+// VolumeMonitorSignalDriveConnectedCallback is a callback function for a 'drive-connected' signal emitted from a VolumeMonitor.
+type VolumeMonitorSignalDriveConnectedCallback func()
+
+// VolumeMonitorSignalDriveDisconnectedCallback is a callback function for a 'drive-disconnected' signal emitted from a VolumeMonitor.
+type VolumeMonitorSignalDriveDisconnectedCallback func()
+
+// VolumeMonitorSignalDriveEjectButtonCallback is a callback function for a 'drive-eject-button' signal emitted from a VolumeMonitor.
+type VolumeMonitorSignalDriveEjectButtonCallback func()
+
+// VolumeMonitorSignalDriveStopButtonCallback is a callback function for a 'drive-stop-button' signal emitted from a VolumeMonitor.
+type VolumeMonitorSignalDriveStopButtonCallback func()
+
+// VolumeMonitorSignalMountAddedCallback is a callback function for a 'mount-added' signal emitted from a VolumeMonitor.
+type VolumeMonitorSignalMountAddedCallback func()
+
+// VolumeMonitorSignalMountChangedCallback is a callback function for a 'mount-changed' signal emitted from a VolumeMonitor.
+type VolumeMonitorSignalMountChangedCallback func()
+
+// VolumeMonitorSignalMountPreUnmountCallback is a callback function for a 'mount-pre-unmount' signal emitted from a VolumeMonitor.
+type VolumeMonitorSignalMountPreUnmountCallback func()
+
+// VolumeMonitorSignalMountRemovedCallback is a callback function for a 'mount-removed' signal emitted from a VolumeMonitor.
+type VolumeMonitorSignalMountRemovedCallback func()
+
+// VolumeMonitorSignalVolumeAddedCallback is a callback function for a 'volume-added' signal emitted from a VolumeMonitor.
+type VolumeMonitorSignalVolumeAddedCallback func()
+
+// VolumeMonitorSignalVolumeChangedCallback is a callback function for a 'volume-changed' signal emitted from a VolumeMonitor.
+type VolumeMonitorSignalVolumeChangedCallback func()
+
+// VolumeMonitorSignalVolumeRemovedCallback is a callback function for a 'volume-removed' signal emitted from a VolumeMonitor.
+type VolumeMonitorSignalVolumeRemovedCallback func()
 
 // GetConnectedDrives is a wrapper around the C function g_volume_monitor_get_connected_drives.
 func (recv *VolumeMonitor) GetConnectedDrives() *glib.List {

@@ -121,6 +121,24 @@ func CastToApplication(object *gobject.Object) *Application {
 	return ApplicationNewFromC(object.ToC())
 }
 
+// ApplicationSignalActivateCallback is a callback function for a 'activate' signal emitted from a Application.
+type ApplicationSignalActivateCallback func()
+
+// ApplicationSignalCommandLineCallback is a callback function for a 'command-line' signal emitted from a Application.
+type ApplicationSignalCommandLineCallback func()
+
+// ApplicationSignalHandleLocalOptionsCallback is a callback function for a 'handle-local-options' signal emitted from a Application.
+type ApplicationSignalHandleLocalOptionsCallback func()
+
+// ApplicationSignalOpenCallback is a callback function for a 'open' signal emitted from a Application.
+type ApplicationSignalOpenCallback func()
+
+// ApplicationSignalShutdownCallback is a callback function for a 'shutdown' signal emitted from a Application.
+type ApplicationSignalShutdownCallback func()
+
+// ApplicationSignalStartupCallback is a callback function for a 'startup' signal emitted from a Application.
+type ApplicationSignalStartupCallback func()
+
 // ApplicationNew is a wrapper around the C function g_application_new.
 func ApplicationNew(applicationId string, flags ApplicationFlags) *Application {
 	c_application_id := C.CString(applicationId)
@@ -650,6 +668,9 @@ func (recv *TlsConnection) Object() *gobject.Object {
 func CastToTlsConnection(object *gobject.Object) *TlsConnection {
 	return TlsConnectionNewFromC(object.ToC())
 }
+
+// TlsConnectionSignalAcceptCertificateCallback is a callback function for a 'accept-certificate' signal emitted from a TlsConnection.
+type TlsConnectionSignalAcceptCertificateCallback func()
 
 // EmitAcceptCertificate is a wrapper around the C function g_tls_connection_emit_accept_certificate.
 func (recv *TlsConnection) EmitAcceptCertificate(peerCert *TlsCertificate, errors TlsCertificateFlags) bool {
