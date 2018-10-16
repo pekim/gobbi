@@ -18,6 +18,15 @@ import (
 // #include <gtk/gtk.h>
 // #include <gtk/gtkx.h>
 // #include <stdlib.h>
+/*
+
+extern void changedHandler();
+
+static void signal_connect_destroy(gpointer instance, gpointer data) {
+	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
+}
+
+*/
 import "C"
 
 // Unsupported : gtk_app_chooser_dialog_new : unsupported parameter file : no type generator for Gio.File, GFile*

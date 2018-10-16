@@ -22,6 +22,42 @@ import (
 // #include <gio/gunixoutputstream.h>
 // #include <gio/gunixsocketaddress.h>
 // #include <stdlib.h>
+/*
+
+extern void eventHandler();
+
+static void signal_connect_destroy(gpointer instance, gpointer data) {
+	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
+}
+
+*/
+/*
+
+extern void eventHandler();
+
+static void signal_connect_destroy(gpointer instance, gpointer data) {
+	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
+}
+
+*/
+/*
+
+extern void incomingHandler();
+
+static void signal_connect_destroy(gpointer instance, gpointer data) {
+	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
+}
+
+*/
+/*
+
+extern void runHandler();
+
+static void signal_connect_destroy(gpointer instance, gpointer data) {
+	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
+}
+
+*/
 import "C"
 
 // Unsupported : g_cancellable_connect : unsupported parameter callback : no type generator for GObject.Callback, GCallback

@@ -22,6 +22,42 @@ import (
 // #include <gio/gunixoutputstream.h>
 // #include <gio/gunixsocketaddress.h>
 // #include <stdlib.h>
+/*
+
+extern void g-authorize-methodHandler();
+
+static void signal_connect_destroy(gpointer instance, gpointer data) {
+	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
+}
+
+*/
+/*
+
+extern void interface-proxy-properties-changedHandler();
+
+static void signal_connect_destroy(gpointer instance, gpointer data) {
+	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
+}
+
+*/
+/*
+
+extern void interface-proxy-signalHandler();
+
+static void signal_connect_destroy(gpointer instance, gpointer data) {
+	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
+}
+
+*/
+/*
+
+extern void authorize-methodHandler();
+
+static void signal_connect_destroy(gpointer instance, gpointer data) {
+	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
+}
+
+*/
 import "C"
 
 // Unsupported : g_converter_input_stream_new : unsupported parameter converter : no type generator for Converter, GConverter*

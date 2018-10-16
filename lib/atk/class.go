@@ -10,6 +10,69 @@ import (
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <atk/atk.h>
 // #include <stdlib.h>
+/*
+
+extern void link-activatedHandler();
+
+static void signal_connect_destroy(gpointer instance, gpointer data) {
+	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
+}
+
+*/
+/*
+
+extern void active-descendant-changedHandler();
+
+static void signal_connect_destroy(gpointer instance, gpointer data) {
+	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
+}
+
+*/
+/*
+
+extern void children-changedHandler();
+
+static void signal_connect_destroy(gpointer instance, gpointer data) {
+	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
+}
+
+*/
+/*
+
+extern void focus-eventHandler();
+
+static void signal_connect_destroy(gpointer instance, gpointer data) {
+	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
+}
+
+*/
+/*
+
+extern void property-changeHandler();
+
+static void signal_connect_destroy(gpointer instance, gpointer data) {
+	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
+}
+
+*/
+/*
+
+extern void state-changeHandler();
+
+static void signal_connect_destroy(gpointer instance, gpointer data) {
+	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
+}
+
+*/
+/*
+
+extern void visible-data-changedHandler();
+
+static void signal_connect_destroy(gpointer instance, gpointer data) {
+	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
+}
+
+*/
 import "C"
 
 // GObjectAccessible is a wrapper around the C record AtkGObjectAccessible.

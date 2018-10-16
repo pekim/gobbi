@@ -18,6 +18,7 @@ func (ns *Namespace) generateLibDir() {
 
 func (ns *Namespace) generateFile(name string, generateContent func(f *jen.File)) {
 	file := jen.NewFile(ns.goPackageName)
+	ns.jenFile = file
 
 	file.HeaderComment(("This is a generated file - DO NOT EDIT"))
 	file.Line()

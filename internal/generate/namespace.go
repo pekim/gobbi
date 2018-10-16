@@ -2,6 +2,7 @@ package generate
 
 import (
 	"fmt"
+	"github.com/dave/jennifer/jen"
 	"strings"
 )
 
@@ -22,6 +23,7 @@ type Namespace struct {
 	Records             Records      `xml:"record"`
 
 	repo              *Repository
+	jenFile           *jen.File
 	goPackageName     string
 	fullGoPackageName string
 	allVersions       Versions

@@ -1,13 +1,21 @@
 package generate
 
+import "github.com/dave/jennifer/jen"
+
 type Signals []*Signal
 
-//func (rr Records) init(ns *Namespace) {
-//	for _, record := range rr {
-//		record.init(ns)
-//	}
-//}
-//
+func (ss Signals) init(ns *Namespace) {
+	for _, signal := range ss {
+		signal.init(ns)
+	}
+}
+
+func (ss Signals) generate(g *jen.Group, version *Version) {
+	for _, signal := range ss {
+		signal.generate(g, version)
+	}
+}
+
 //func (rr Records) versionList() Versions {
 //	var versions Versions
 //

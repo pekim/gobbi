@@ -37,6 +37,7 @@ func (r *Record) init(ns *Namespace) {
 	r.Constructors.init(ns, r)
 	r.Methods.init(ns, r)
 	r.Fields.init(ns)
+	r.Signals.init(ns)
 }
 
 func (r *Record) version() string {
@@ -73,6 +74,7 @@ func (r *Record) generate(g *jen.Group, version *Version) {
 		(&RecordToCFunc{r}).generate(g)
 		r.generateUpcasts(g)
 		r.generateDowncast(g)
+		r.Signals.generate(g, version)
 	}
 
 	r.Constructors.generate(g, version)

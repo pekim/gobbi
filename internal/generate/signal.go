@@ -1,7 +1,12 @@
 package generate
 
+import (
+	"fmt"
+	"github.com/dave/jennifer/jen"
+)
+
 type Signal struct {
-	//Namespace *Namespace
+	Namespace *Namespace
 
 	//Blacklist     bool `xml:"blacklist,attr"`
 
@@ -13,16 +18,24 @@ type Signal struct {
 	ReturnValue *ReturnValue `xml:"return-value"`
 }
 
-//func (r *Record) init(ns *Namespace) {
-//	r.Namespace = ns
-//	r.GoName = r.Name
-//	r.newFromCFuncName = fmt.Sprintf("%sNewFromC", r.Name)
-//
-//	r.Constructors.init(ns, r)
-//	r.Methods.init(ns, r)
-//	r.Fields.init(ns)
-//}
-//
+func (s *Signal) init(ns *Namespace) {
+	s.Namespace = ns
+}
+
+func (s *Signal) generate(g *jen.Group, version *Version) {
+	goNamePrefix := makeGoNameInternal(s.Name, false)
+
+	s.Namespace.jenFile.CgoPreamble(
+		fmt.Sprintf(`
+extern void %sHandler();
+
+static void signal_connect_destroy(gpointer instance, gpointer data) {
+	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
+}
+
+`, goNamePrefix))
+}
+
 //func (r *Record) version() string {
 //	return r.Version
 //}
