@@ -9,18 +9,14 @@ package main
 
 extern void destroyHandler();
 
-static void signal_connect_destroy(gpointer instance,
-                       const gchar *detailed_signal,
-                       gpointer data) {
-	g_signal_connect_data(instance, detailed_signal, destroyHandler, data, (GClosureNotify)NULL, 0);
+static void signal_connect_destroy(gpointer instance, gpointer data) {
+	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
 }
 
 extern void keyPressEventHandler();
 
-static void signal_connect_key_press_event(gpointer instance,
-                       const gchar *detailed_signal,
-                       gpointer data) {
-	g_signal_connect_data(instance, detailed_signal, keyPressEventHandler, data, (GClosureNotify)NULL, 0);
+static void signal_connect_key_press_event(gpointer instance, gpointer data) {
+	g_signal_connect_data(instance, "key-press-event", keyPressEventHandler, data, (GClosureNotify)NULL, 0);
 }
 
 */
@@ -50,11 +46,7 @@ func connectDestroy(target *gtk.Widget, callback DestroyCallback) {
 
 	instance := C.gpointer(target.Object().ToC())
 
-	detail := C.CString("destroy")
-	defer C.free(unsafe.Pointer(detail))
-
-	C.signal_connect_destroy(instance, detail,
-		C.gpointer(uintptr(signalDestroyId)))
+	C.signal_connect_destroy(instance, C.gpointer(uintptr(signalDestroyId)))
 }
 
 //export destroyHandler
@@ -80,11 +72,7 @@ func connectKeyPressEvent(target *gtk.Widget, callback KeyPressEventCallback) {
 
 	instance := C.gpointer(target.Object().ToC())
 
-	detail := C.CString("key-press-event")
-	defer C.free(unsafe.Pointer(detail))
-
-	C.signal_connect_key_press_event(instance, detail,
-		C.gpointer(uintptr(signalKeyPressEventId)))
+	C.signal_connect_key_press_event(instance, C.gpointer(uintptr(signalKeyPressEventId)))
 }
 
 //export keyPressEventHandler

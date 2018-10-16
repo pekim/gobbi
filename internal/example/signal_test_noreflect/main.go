@@ -25,9 +25,8 @@ func main() {
 		gtk.MainQuit()
 	})
 
-	//connectKeyPressEvent(window.Object(), func(event *gdk.EventKey) {
 	connectKeyPressEvent(window.Widget(), func(event *gdk.EventKey) {
-		fmt.Println("kp", event, "mod", event.State)
+		fmt.Println("kp", event)
 	})
 
 	gtk.Main()
