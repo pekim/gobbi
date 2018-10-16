@@ -24,65 +24,65 @@ import (
 // #include <stdlib.h>
 /*
 
-extern void activateHandler();
+	extern void gio_Application_activateHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
-
-*/
-/*
-
-extern void command-lineHandler();
-
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Application_signal_connect_activate(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "activate", gio_Application_activateHandler, data);
+	}
 
 */
 /*
 
-extern void handle-local-optionsHandler();
+	extern void gio_Application_commandLineHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
-
-*/
-/*
-
-extern void openHandler();
-
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Application_signal_connect_command_line(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "command-line", gio_Application_commandLineHandler, data);
+	}
 
 */
 /*
 
-extern void shutdownHandler();
+	extern void gio_Application_handleLocalOptionsHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
-
-*/
-/*
-
-extern void startupHandler();
-
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Application_signal_connect_handle_local_options(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "handle-local-options", gio_Application_handleLocalOptionsHandler, data);
+	}
 
 */
 /*
 
-extern void accept-certificateHandler();
+	extern void gio_Application_openHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Application_signal_connect_open(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "open", gio_Application_openHandler, data);
+	}
+
+*/
+/*
+
+	extern void gio_Application_shutdownHandler();
+
+	static void Application_signal_connect_shutdown(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "shutdown", gio_Application_shutdownHandler, data);
+	}
+
+*/
+/*
+
+	extern void gio_Application_startupHandler();
+
+	static void Application_signal_connect_startup(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "startup", gio_Application_startupHandler, data);
+	}
+
+*/
+/*
+
+	extern void gio_TlsConnection_acceptCertificateHandler();
+
+	static void TlsConnection_signal_connect_accept_certificate(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "accept-certificate", gio_TlsConnection_acceptCertificateHandler, data);
+	}
 
 */
 import "C"

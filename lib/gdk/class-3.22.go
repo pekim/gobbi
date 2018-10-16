@@ -14,47 +14,47 @@ import (
 // #include <stdlib.h>
 /*
 
-extern void invalidateHandler();
+	extern void gdk_Monitor_invalidateHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
-
-*/
-/*
-
-extern void device-addedHandler();
-
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Monitor_signal_connect_invalidate(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "invalidate", gdk_Monitor_invalidateHandler, data);
+	}
 
 */
 /*
 
-extern void device-removedHandler();
+	extern void gdk_Seat_deviceAddedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
-
-*/
-/*
-
-extern void tool-addedHandler();
-
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Seat_signal_connect_device_added(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "device-added", gdk_Seat_deviceAddedHandler, data);
+	}
 
 */
 /*
 
-extern void tool-removedHandler();
+	extern void gdk_Seat_deviceRemovedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Seat_signal_connect_device_removed(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "device-removed", gdk_Seat_deviceRemovedHandler, data);
+	}
+
+*/
+/*
+
+	extern void gdk_Seat_toolAddedHandler();
+
+	static void Seat_signal_connect_tool_added(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "tool-added", gdk_Seat_toolAddedHandler, data);
+	}
+
+*/
+/*
+
+	extern void gdk_Seat_toolRemovedHandler();
+
+	static void Seat_signal_connect_tool_removed(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "tool-removed", gdk_Seat_toolRemovedHandler, data);
+	}
 
 */
 import "C"

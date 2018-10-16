@@ -24,11 +24,11 @@ import (
 // #include <stdlib.h>
 /*
 
-extern void items-changedHandler();
+	extern void gio_MenuModel_itemsChangedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void MenuModel_signal_connect_items_changed(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "items-changed", gio_MenuModel_itemsChangedHandler, data);
+	}
 
 */
 import "C"

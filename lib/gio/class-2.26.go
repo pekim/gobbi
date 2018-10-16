@@ -24,56 +24,56 @@ import (
 // #include <stdlib.h>
 /*
 
-extern void allow-mechanismHandler();
+	extern void gio_DBusAuthObserver_allowMechanismHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
-
-*/
-/*
-
-extern void authorize-authenticated-peerHandler();
-
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void DBusAuthObserver_signal_connect_allow_mechanism(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "allow-mechanism", gio_DBusAuthObserver_allowMechanismHandler, data);
+	}
 
 */
 /*
 
-extern void closedHandler();
+	extern void gio_DBusAuthObserver_authorizeAuthenticatedPeerHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
-
-*/
-/*
-
-extern void g-properties-changedHandler();
-
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void DBusAuthObserver_signal_connect_authorize_authenticated_peer(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "authorize-authenticated-peer", gio_DBusAuthObserver_authorizeAuthenticatedPeerHandler, data);
+	}
 
 */
 /*
 
-extern void g-signalHandler();
+	extern void gio_DBusConnection_closedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void DBusConnection_signal_connect_closed(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "closed", gio_DBusConnection_closedHandler, data);
+	}
 
 */
 /*
 
-extern void new-connectionHandler();
+	extern void gio_DBusProxy_gPropertiesChangedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void DBusProxy_signal_connect_g_properties_changed(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "g-properties-changed", gio_DBusProxy_gPropertiesChangedHandler, data);
+	}
+
+*/
+/*
+
+	extern void gio_DBusProxy_gSignalHandler();
+
+	static void DBusProxy_signal_connect_g_signal(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "g-signal", gio_DBusProxy_gSignalHandler, data);
+	}
+
+*/
+/*
+
+	extern void gio_DBusServer_newConnectionHandler();
+
+	static void DBusServer_signal_connect_new_connection(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "new-connection", gio_DBusServer_newConnectionHandler, data);
+	}
 
 */
 import "C"

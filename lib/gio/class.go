@@ -23,290 +23,290 @@ import (
 // #include <stdlib.h>
 /*
 
-extern void launch-failedHandler();
+	extern void gio_AppLaunchContext_launchFailedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
-
-*/
-/*
-
-extern void launchedHandler();
-
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void AppLaunchContext_signal_connect_launch_failed(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "launch-failed", gio_AppLaunchContext_launchFailedHandler, data);
+	}
 
 */
 /*
 
-extern void cancelledHandler();
+	extern void gio_AppLaunchContext_launchedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
-
-*/
-/*
-
-extern void changedHandler();
-
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void AppLaunchContext_signal_connect_launched(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "launched", gio_AppLaunchContext_launchedHandler, data);
+	}
 
 */
 /*
 
-extern void got-completion-dataHandler();
+	extern void gio_Cancellable_cancelledHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
-
-*/
-/*
-
-extern void abortedHandler();
-
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Cancellable_signal_connect_cancelled(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "cancelled", gio_Cancellable_cancelledHandler, data);
+	}
 
 */
 /*
 
-extern void ask-passwordHandler();
+	extern void gio_FileMonitor_changedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
-
-*/
-/*
-
-extern void ask-questionHandler();
-
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void FileMonitor_signal_connect_changed(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "changed", gio_FileMonitor_changedHandler, data);
+	}
 
 */
 /*
 
-extern void replyHandler();
+	extern void gio_FilenameCompleter_gotCompletionDataHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
-
-*/
-/*
-
-extern void show-processesHandler();
-
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void FilenameCompleter_signal_connect_got_completion_data(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "got-completion-data", gio_FilenameCompleter_gotCompletionDataHandler, data);
+	}
 
 */
 /*
 
-extern void show-unmount-progressHandler();
+	extern void gio_MountOperation_abortedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
-
-*/
-/*
-
-extern void reloadHandler();
-
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void MountOperation_signal_connect_aborted(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "aborted", gio_MountOperation_abortedHandler, data);
+	}
 
 */
 /*
 
-extern void change-eventHandler();
+	extern void gio_MountOperation_askPasswordHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
-
-*/
-/*
-
-extern void changedHandler();
-
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void MountOperation_signal_connect_ask_password(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "ask-password", gio_MountOperation_askPasswordHandler, data);
+	}
 
 */
 /*
 
-extern void writable-change-eventHandler();
+	extern void gio_MountOperation_askQuestionHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
-
-*/
-/*
-
-extern void writable-changedHandler();
-
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void MountOperation_signal_connect_ask_question(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "ask-question", gio_MountOperation_askQuestionHandler, data);
+	}
 
 */
 /*
 
-extern void activateHandler();
+	extern void gio_MountOperation_replyHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
-
-*/
-/*
-
-extern void change-stateHandler();
-
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void MountOperation_signal_connect_reply(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "reply", gio_MountOperation_replyHandler, data);
+	}
 
 */
 /*
 
-extern void mountpoints-changedHandler();
+	extern void gio_MountOperation_showProcessesHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
-
-*/
-/*
-
-extern void mounts-changedHandler();
-
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void MountOperation_signal_connect_show_processes(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "show-processes", gio_MountOperation_showProcessesHandler, data);
+	}
 
 */
 /*
 
-extern void drive-changedHandler();
+	extern void gio_MountOperation_showUnmountProgressHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
-
-*/
-/*
-
-extern void drive-connectedHandler();
-
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void MountOperation_signal_connect_show_unmount_progress(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "show-unmount-progress", gio_MountOperation_showUnmountProgressHandler, data);
+	}
 
 */
 /*
 
-extern void drive-disconnectedHandler();
+	extern void gio_Resolver_reloadHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
-
-*/
-/*
-
-extern void drive-eject-buttonHandler();
-
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Resolver_signal_connect_reload(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "reload", gio_Resolver_reloadHandler, data);
+	}
 
 */
 /*
 
-extern void drive-stop-buttonHandler();
+	extern void gio_Settings_changeEventHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
-
-*/
-/*
-
-extern void mount-addedHandler();
-
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Settings_signal_connect_change_event(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "change-event", gio_Settings_changeEventHandler, data);
+	}
 
 */
 /*
 
-extern void mount-changedHandler();
+	extern void gio_Settings_changedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
-
-*/
-/*
-
-extern void mount-pre-unmountHandler();
-
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Settings_signal_connect_changed(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "changed", gio_Settings_changedHandler, data);
+	}
 
 */
 /*
 
-extern void mount-removedHandler();
+	extern void gio_Settings_writableChangeEventHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
-
-*/
-/*
-
-extern void volume-addedHandler();
-
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Settings_signal_connect_writable_change_event(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "writable-change-event", gio_Settings_writableChangeEventHandler, data);
+	}
 
 */
 /*
 
-extern void volume-changedHandler();
+	extern void gio_Settings_writableChangedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Settings_signal_connect_writable_changed(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "writable-changed", gio_Settings_writableChangedHandler, data);
+	}
 
 */
 /*
 
-extern void volume-removedHandler();
+	extern void gio_SimpleAction_activateHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void SimpleAction_signal_connect_activate(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "activate", gio_SimpleAction_activateHandler, data);
+	}
+
+*/
+/*
+
+	extern void gio_SimpleAction_changeStateHandler();
+
+	static void SimpleAction_signal_connect_change_state(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "change-state", gio_SimpleAction_changeStateHandler, data);
+	}
+
+*/
+/*
+
+	extern void gio_UnixMountMonitor_mountpointsChangedHandler();
+
+	static void UnixMountMonitor_signal_connect_mountpoints_changed(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "mountpoints-changed", gio_UnixMountMonitor_mountpointsChangedHandler, data);
+	}
+
+*/
+/*
+
+	extern void gio_UnixMountMonitor_mountsChangedHandler();
+
+	static void UnixMountMonitor_signal_connect_mounts_changed(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "mounts-changed", gio_UnixMountMonitor_mountsChangedHandler, data);
+	}
+
+*/
+/*
+
+	extern void gio_VolumeMonitor_driveChangedHandler();
+
+	static void VolumeMonitor_signal_connect_drive_changed(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "drive-changed", gio_VolumeMonitor_driveChangedHandler, data);
+	}
+
+*/
+/*
+
+	extern void gio_VolumeMonitor_driveConnectedHandler();
+
+	static void VolumeMonitor_signal_connect_drive_connected(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "drive-connected", gio_VolumeMonitor_driveConnectedHandler, data);
+	}
+
+*/
+/*
+
+	extern void gio_VolumeMonitor_driveDisconnectedHandler();
+
+	static void VolumeMonitor_signal_connect_drive_disconnected(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "drive-disconnected", gio_VolumeMonitor_driveDisconnectedHandler, data);
+	}
+
+*/
+/*
+
+	extern void gio_VolumeMonitor_driveEjectButtonHandler();
+
+	static void VolumeMonitor_signal_connect_drive_eject_button(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "drive-eject-button", gio_VolumeMonitor_driveEjectButtonHandler, data);
+	}
+
+*/
+/*
+
+	extern void gio_VolumeMonitor_driveStopButtonHandler();
+
+	static void VolumeMonitor_signal_connect_drive_stop_button(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "drive-stop-button", gio_VolumeMonitor_driveStopButtonHandler, data);
+	}
+
+*/
+/*
+
+	extern void gio_VolumeMonitor_mountAddedHandler();
+
+	static void VolumeMonitor_signal_connect_mount_added(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "mount-added", gio_VolumeMonitor_mountAddedHandler, data);
+	}
+
+*/
+/*
+
+	extern void gio_VolumeMonitor_mountChangedHandler();
+
+	static void VolumeMonitor_signal_connect_mount_changed(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "mount-changed", gio_VolumeMonitor_mountChangedHandler, data);
+	}
+
+*/
+/*
+
+	extern void gio_VolumeMonitor_mountPreUnmountHandler();
+
+	static void VolumeMonitor_signal_connect_mount_pre_unmount(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "mount-pre-unmount", gio_VolumeMonitor_mountPreUnmountHandler, data);
+	}
+
+*/
+/*
+
+	extern void gio_VolumeMonitor_mountRemovedHandler();
+
+	static void VolumeMonitor_signal_connect_mount_removed(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "mount-removed", gio_VolumeMonitor_mountRemovedHandler, data);
+	}
+
+*/
+/*
+
+	extern void gio_VolumeMonitor_volumeAddedHandler();
+
+	static void VolumeMonitor_signal_connect_volume_added(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "volume-added", gio_VolumeMonitor_volumeAddedHandler, data);
+	}
+
+*/
+/*
+
+	extern void gio_VolumeMonitor_volumeChangedHandler();
+
+	static void VolumeMonitor_signal_connect_volume_changed(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "volume-changed", gio_VolumeMonitor_volumeChangedHandler, data);
+	}
+
+*/
+/*
+
+	extern void gio_VolumeMonitor_volumeRemovedHandler();
+
+	static void VolumeMonitor_signal_connect_volume_removed(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "volume-removed", gio_VolumeMonitor_volumeRemovedHandler, data);
+	}
 
 */
 import "C"

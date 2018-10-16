@@ -24,38 +24,38 @@ import (
 // #include <stdlib.h>
 /*
 
-extern void eventHandler();
+	extern void gio_SocketClient_eventHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
-
-*/
-/*
-
-extern void eventHandler();
-
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void SocketClient_signal_connect_event(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "event", gio_SocketClient_eventHandler, data);
+	}
 
 */
 /*
 
-extern void incomingHandler();
+	extern void gio_SocketListener_eventHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void SocketListener_signal_connect_event(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "event", gio_SocketListener_eventHandler, data);
+	}
 
 */
 /*
 
-extern void runHandler();
+	extern void gio_SocketService_incomingHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void SocketService_signal_connect_incoming(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "incoming", gio_SocketService_incomingHandler, data);
+	}
+
+*/
+/*
+
+	extern void gio_ThreadedSocketService_runHandler();
+
+	static void ThreadedSocketService_signal_connect_run(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "run", gio_ThreadedSocketService_runHandler, data);
+	}
 
 */
 import "C"

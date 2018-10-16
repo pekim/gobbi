@@ -24,38 +24,38 @@ import (
 // #include <stdlib.h>
 /*
 
-extern void g-authorize-methodHandler();
+	extern void gio_DBusInterfaceSkeleton_gAuthorizeMethodHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
-
-*/
-/*
-
-extern void interface-proxy-properties-changedHandler();
-
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void DBusInterfaceSkeleton_signal_connect_g_authorize_method(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "g-authorize-method", gio_DBusInterfaceSkeleton_gAuthorizeMethodHandler, data);
+	}
 
 */
 /*
 
-extern void interface-proxy-signalHandler();
+	extern void gio_DBusObjectManagerClient_interfaceProxyPropertiesChangedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void DBusObjectManagerClient_signal_connect_interface_proxy_properties_changed(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "interface-proxy-properties-changed", gio_DBusObjectManagerClient_interfaceProxyPropertiesChangedHandler, data);
+	}
 
 */
 /*
 
-extern void authorize-methodHandler();
+	extern void gio_DBusObjectManagerClient_interfaceProxySignalHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void DBusObjectManagerClient_signal_connect_interface_proxy_signal(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "interface-proxy-signal", gio_DBusObjectManagerClient_interfaceProxySignalHandler, data);
+	}
+
+*/
+/*
+
+	extern void gio_DBusObjectSkeleton_authorizeMethodHandler();
+
+	static void DBusObjectSkeleton_signal_connect_authorize_method(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "authorize-method", gio_DBusObjectSkeleton_authorizeMethodHandler, data);
+	}
 
 */
 import "C"

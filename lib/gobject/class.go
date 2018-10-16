@@ -12,11 +12,11 @@ import (
 // #include <stdlib.h>
 /*
 
-extern void notifyHandler();
+	extern void gobject_Object_notifyHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Object_signal_connect_notify(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "notify", gobject_Object_notifyHandler, data);
+	}
 
 */
 import "C"

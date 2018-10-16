@@ -12,65 +12,65 @@ import (
 // #include <stdlib.h>
 /*
 
-extern void link-activatedHandler();
+	extern void atk_Hyperlink_linkActivatedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
-
-*/
-/*
-
-extern void active-descendant-changedHandler();
-
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Hyperlink_signal_connect_link_activated(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "link-activated", atk_Hyperlink_linkActivatedHandler, data);
+	}
 
 */
 /*
 
-extern void children-changedHandler();
+	extern void atk_Object_activeDescendantChangedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
-
-*/
-/*
-
-extern void focus-eventHandler();
-
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Object_signal_connect_active_descendant_changed(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "active-descendant-changed", atk_Object_activeDescendantChangedHandler, data);
+	}
 
 */
 /*
 
-extern void property-changeHandler();
+	extern void atk_Object_childrenChangedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
-
-*/
-/*
-
-extern void state-changeHandler();
-
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Object_signal_connect_children_changed(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "children-changed", atk_Object_childrenChangedHandler, data);
+	}
 
 */
 /*
 
-extern void visible-data-changedHandler();
+	extern void atk_Object_focusEventHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Object_signal_connect_focus_event(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "focus-event", atk_Object_focusEventHandler, data);
+	}
+
+*/
+/*
+
+	extern void atk_Object_propertyChangeHandler();
+
+	static void Object_signal_connect_property_change(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "property-change", atk_Object_propertyChangeHandler, data);
+	}
+
+*/
+/*
+
+	extern void atk_Object_stateChangeHandler();
+
+	static void Object_signal_connect_state_change(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "state-change", atk_Object_stateChangeHandler, data);
+	}
+
+*/
+/*
+
+	extern void atk_Object_visibleDataChangedHandler();
+
+	static void Object_signal_connect_visible_data_changed(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "visible-data-changed", atk_Object_visibleDataChangedHandler, data);
+	}
 
 */
 import "C"

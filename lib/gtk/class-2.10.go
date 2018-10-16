@@ -20,11 +20,11 @@ import (
 // #include <stdlib.h>
 /*
 
-extern void changedHandler();
+	extern void gtk_RecentManager_changedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void RecentManager_signal_connect_changed(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "changed", gtk_RecentManager_changedHandler, data);
+	}
 
 */
 import "C"

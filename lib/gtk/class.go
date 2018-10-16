@@ -21,3575 +21,3575 @@ import (
 // #include <stdlib.h>
 /*
 
-extern void activate-linkHandler();
+	extern void gtk_AboutDialog_activateLinkHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void AboutDialog_signal_connect_activate_link(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "activate-link", gtk_AboutDialog_activateLinkHandler, data);
+	}
 
 */
 /*
 
-extern void accel-activateHandler();
+	extern void gtk_AccelGroup_accelActivateHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void AccelGroup_signal_connect_accel_activate(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "accel-activate", gtk_AccelGroup_accelActivateHandler, data);
+	}
 
 */
 /*
 
-extern void accel-changedHandler();
+	extern void gtk_AccelGroup_accelChangedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void AccelGroup_signal_connect_accel_changed(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "accel-changed", gtk_AccelGroup_accelChangedHandler, data);
+	}
 
 */
 /*
 
-extern void changedHandler();
+	extern void gtk_AccelMap_changedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void AccelMap_signal_connect_changed(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "changed", gtk_AccelMap_changedHandler, data);
+	}
 
 */
 /*
 
-extern void activateHandler();
+	extern void gtk_Action_activateHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Action_signal_connect_activate(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "activate", gtk_Action_activateHandler, data);
+	}
 
 */
 /*
 
-extern void connect-proxyHandler();
+	extern void gtk_ActionGroup_connectProxyHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void ActionGroup_signal_connect_connect_proxy(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "connect-proxy", gtk_ActionGroup_connectProxyHandler, data);
+	}
 
 */
 /*
 
-extern void disconnect-proxyHandler();
+	extern void gtk_ActionGroup_disconnectProxyHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void ActionGroup_signal_connect_disconnect_proxy(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "disconnect-proxy", gtk_ActionGroup_disconnectProxyHandler, data);
+	}
 
 */
 /*
 
-extern void post-activateHandler();
+	extern void gtk_ActionGroup_postActivateHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void ActionGroup_signal_connect_post_activate(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "post-activate", gtk_ActionGroup_postActivateHandler, data);
+	}
 
 */
 /*
 
-extern void pre-activateHandler();
+	extern void gtk_ActionGroup_preActivateHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void ActionGroup_signal_connect_pre_activate(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "pre-activate", gtk_ActionGroup_preActivateHandler, data);
+	}
 
 */
 /*
 
-extern void changedHandler();
+	extern void gtk_Adjustment_changedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Adjustment_signal_connect_changed(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "changed", gtk_Adjustment_changedHandler, data);
+	}
 
 */
 /*
 
-extern void value-changedHandler();
+	extern void gtk_Adjustment_valueChangedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Adjustment_signal_connect_value_changed(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "value-changed", gtk_Adjustment_valueChangedHandler, data);
+	}
 
 */
 /*
 
-extern void custom-item-activatedHandler();
+	extern void gtk_AppChooserButton_customItemActivatedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void AppChooserButton_signal_connect_custom_item_activated(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "custom-item-activated", gtk_AppChooserButton_customItemActivatedHandler, data);
+	}
 
 */
 /*
 
-extern void application-activatedHandler();
+	extern void gtk_AppChooserWidget_applicationActivatedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void AppChooserWidget_signal_connect_application_activated(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "application-activated", gtk_AppChooserWidget_applicationActivatedHandler, data);
+	}
 
 */
 /*
 
-extern void application-selectedHandler();
+	extern void gtk_AppChooserWidget_applicationSelectedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void AppChooserWidget_signal_connect_application_selected(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "application-selected", gtk_AppChooserWidget_applicationSelectedHandler, data);
+	}
 
 */
 /*
 
-extern void populate-popupHandler();
+	extern void gtk_AppChooserWidget_populatePopupHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void AppChooserWidget_signal_connect_populate_popup(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "populate-popup", gtk_AppChooserWidget_populatePopupHandler, data);
+	}
 
 */
 /*
 
-extern void window-addedHandler();
+	extern void gtk_Application_windowAddedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Application_signal_connect_window_added(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "window-added", gtk_Application_windowAddedHandler, data);
+	}
 
 */
 /*
 
-extern void window-removedHandler();
+	extern void gtk_Application_windowRemovedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Application_signal_connect_window_removed(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "window-removed", gtk_Application_windowRemovedHandler, data);
+	}
 
 */
 /*
 
-extern void applyHandler();
+	extern void gtk_Assistant_applyHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Assistant_signal_connect_apply(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "apply", gtk_Assistant_applyHandler, data);
+	}
 
 */
 /*
 
-extern void cancelHandler();
+	extern void gtk_Assistant_cancelHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Assistant_signal_connect_cancel(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "cancel", gtk_Assistant_cancelHandler, data);
+	}
 
 */
 /*
 
-extern void closeHandler();
+	extern void gtk_Assistant_closeHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Assistant_signal_connect_close(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "close", gtk_Assistant_closeHandler, data);
+	}
 
 */
 /*
 
-extern void escapeHandler();
+	extern void gtk_Assistant_escapeHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Assistant_signal_connect_escape(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "escape", gtk_Assistant_escapeHandler, data);
+	}
 
 */
 /*
 
-extern void prepareHandler();
+	extern void gtk_Assistant_prepareHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Assistant_signal_connect_prepare(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "prepare", gtk_Assistant_prepareHandler, data);
+	}
 
 */
 /*
 
-extern void activateHandler();
+	extern void gtk_Button_activateHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Button_signal_connect_activate(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "activate", gtk_Button_activateHandler, data);
+	}
 
 */
 /*
 
-extern void clickedHandler();
+	extern void gtk_Button_clickedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Button_signal_connect_clicked(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "clicked", gtk_Button_clickedHandler, data);
+	}
 
 */
 /*
 
-extern void enterHandler();
+	extern void gtk_Button_enterHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Button_signal_connect_enter(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "enter", gtk_Button_enterHandler, data);
+	}
 
 */
 /*
 
-extern void leaveHandler();
+	extern void gtk_Button_leaveHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Button_signal_connect_leave(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "leave", gtk_Button_leaveHandler, data);
+	}
 
 */
 /*
 
-extern void pressedHandler();
+	extern void gtk_Button_pressedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Button_signal_connect_pressed(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "pressed", gtk_Button_pressedHandler, data);
+	}
 
 */
 /*
 
-extern void releasedHandler();
+	extern void gtk_Button_releasedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Button_signal_connect_released(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "released", gtk_Button_releasedHandler, data);
+	}
 
 */
 /*
 
-extern void day-selectedHandler();
+	extern void gtk_Calendar_daySelectedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Calendar_signal_connect_day_selected(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "day-selected", gtk_Calendar_daySelectedHandler, data);
+	}
 
 */
 /*
 
-extern void day-selected-double-clickHandler();
+	extern void gtk_Calendar_daySelectedDoubleClickHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Calendar_signal_connect_day_selected_double_click(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "day-selected-double-click", gtk_Calendar_daySelectedDoubleClickHandler, data);
+	}
 
 */
 /*
 
-extern void month-changedHandler();
+	extern void gtk_Calendar_monthChangedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Calendar_signal_connect_month_changed(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "month-changed", gtk_Calendar_monthChangedHandler, data);
+	}
 
 */
 /*
 
-extern void next-monthHandler();
+	extern void gtk_Calendar_nextMonthHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Calendar_signal_connect_next_month(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "next-month", gtk_Calendar_nextMonthHandler, data);
+	}
 
 */
 /*
 
-extern void next-yearHandler();
+	extern void gtk_Calendar_nextYearHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Calendar_signal_connect_next_year(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "next-year", gtk_Calendar_nextYearHandler, data);
+	}
 
 */
 /*
 
-extern void prev-monthHandler();
+	extern void gtk_Calendar_prevMonthHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Calendar_signal_connect_prev_month(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "prev-month", gtk_Calendar_prevMonthHandler, data);
+	}
 
 */
 /*
 
-extern void prev-yearHandler();
+	extern void gtk_Calendar_prevYearHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Calendar_signal_connect_prev_year(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "prev-year", gtk_Calendar_prevYearHandler, data);
+	}
 
 */
 /*
 
-extern void add-editableHandler();
+	extern void gtk_CellArea_addEditableHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void CellArea_signal_connect_add_editable(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "add-editable", gtk_CellArea_addEditableHandler, data);
+	}
 
 */
 /*
 
-extern void apply-attributesHandler();
+	extern void gtk_CellArea_applyAttributesHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void CellArea_signal_connect_apply_attributes(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "apply-attributes", gtk_CellArea_applyAttributesHandler, data);
+	}
 
 */
 /*
 
-extern void focus-changedHandler();
+	extern void gtk_CellArea_focusChangedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void CellArea_signal_connect_focus_changed(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "focus-changed", gtk_CellArea_focusChangedHandler, data);
+	}
 
 */
 /*
 
-extern void remove-editableHandler();
+	extern void gtk_CellArea_removeEditableHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void CellArea_signal_connect_remove_editable(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "remove-editable", gtk_CellArea_removeEditableHandler, data);
+	}
 
 */
 /*
 
-extern void editing-canceledHandler();
+	extern void gtk_CellRenderer_editingCanceledHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void CellRenderer_signal_connect_editing_canceled(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "editing-canceled", gtk_CellRenderer_editingCanceledHandler, data);
+	}
 
 */
 /*
 
-extern void editing-startedHandler();
+	extern void gtk_CellRenderer_editingStartedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void CellRenderer_signal_connect_editing_started(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "editing-started", gtk_CellRenderer_editingStartedHandler, data);
+	}
 
 */
 /*
 
-extern void accel-clearedHandler();
+	extern void gtk_CellRendererAccel_accelClearedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void CellRendererAccel_signal_connect_accel_cleared(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "accel-cleared", gtk_CellRendererAccel_accelClearedHandler, data);
+	}
 
 */
 /*
 
-extern void accel-editedHandler();
+	extern void gtk_CellRendererAccel_accelEditedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void CellRendererAccel_signal_connect_accel_edited(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "accel-edited", gtk_CellRendererAccel_accelEditedHandler, data);
+	}
 
 */
 /*
 
-extern void changedHandler();
+	extern void gtk_CellRendererCombo_changedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void CellRendererCombo_signal_connect_changed(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "changed", gtk_CellRendererCombo_changedHandler, data);
+	}
 
 */
 /*
 
-extern void editedHandler();
+	extern void gtk_CellRendererText_editedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void CellRendererText_signal_connect_edited(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "edited", gtk_CellRendererText_editedHandler, data);
+	}
 
 */
 /*
 
-extern void toggledHandler();
+	extern void gtk_CellRendererToggle_toggledHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void CellRendererToggle_signal_connect_toggled(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "toggled", gtk_CellRendererToggle_toggledHandler, data);
+	}
 
 */
 /*
 
-extern void toggledHandler();
+	extern void gtk_CheckMenuItem_toggledHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void CheckMenuItem_signal_connect_toggled(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "toggled", gtk_CheckMenuItem_toggledHandler, data);
+	}
 
 */
 /*
 
-extern void owner-changeHandler();
+	extern void gtk_Clipboard_ownerChangeHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Clipboard_signal_connect_owner_change(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "owner-change", gtk_Clipboard_ownerChangeHandler, data);
+	}
 
 */
 /*
 
-extern void color-setHandler();
+	extern void gtk_ColorButton_colorSetHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void ColorButton_signal_connect_color_set(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "color-set", gtk_ColorButton_colorSetHandler, data);
+	}
 
 */
 /*
 
-extern void color-changedHandler();
+	extern void gtk_ColorSelection_colorChangedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void ColorSelection_signal_connect_color_changed(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "color-changed", gtk_ColorSelection_colorChangedHandler, data);
+	}
 
 */
 /*
 
-extern void changedHandler();
+	extern void gtk_ComboBox_changedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void ComboBox_signal_connect_changed(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "changed", gtk_ComboBox_changedHandler, data);
+	}
 
 */
 /*
 
-extern void format-entry-textHandler();
+	extern void gtk_ComboBox_formatEntryTextHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void ComboBox_signal_connect_format_entry_text(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "format-entry-text", gtk_ComboBox_formatEntryTextHandler, data);
+	}
 
 */
 /*
 
-extern void move-activeHandler();
+	extern void gtk_ComboBox_moveActiveHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void ComboBox_signal_connect_move_active(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "move-active", gtk_ComboBox_moveActiveHandler, data);
+	}
 
 */
 /*
 
-extern void popdownHandler();
+	extern void gtk_ComboBox_popdownHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void ComboBox_signal_connect_popdown(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "popdown", gtk_ComboBox_popdownHandler, data);
+	}
 
 */
 /*
 
-extern void popupHandler();
+	extern void gtk_ComboBox_popupHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void ComboBox_signal_connect_popup(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "popup", gtk_ComboBox_popupHandler, data);
+	}
 
 */
 /*
 
-extern void addHandler();
+	extern void gtk_Container_addHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Container_signal_connect_add(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "add", gtk_Container_addHandler, data);
+	}
 
 */
 /*
 
-extern void check-resizeHandler();
+	extern void gtk_Container_checkResizeHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Container_signal_connect_check_resize(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "check-resize", gtk_Container_checkResizeHandler, data);
+	}
 
 */
 /*
 
-extern void removeHandler();
+	extern void gtk_Container_removeHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Container_signal_connect_remove(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "remove", gtk_Container_removeHandler, data);
+	}
 
 */
 /*
 
-extern void set-focus-childHandler();
+	extern void gtk_Container_setFocusChildHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Container_signal_connect_set_focus_child(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "set-focus-child", gtk_Container_setFocusChildHandler, data);
+	}
 
 */
 /*
 
-extern void parsing-errorHandler();
+	extern void gtk_CssProvider_parsingErrorHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void CssProvider_signal_connect_parsing_error(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "parsing-error", gtk_CssProvider_parsingErrorHandler, data);
+	}
 
 */
 /*
 
-extern void closeHandler();
+	extern void gtk_Dialog_closeHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Dialog_signal_connect_close(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "close", gtk_Dialog_closeHandler, data);
+	}
 
 */
 /*
 
-extern void responseHandler();
+	extern void gtk_Dialog_responseHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Dialog_signal_connect_response(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "response", gtk_Dialog_responseHandler, data);
+	}
 
 */
 /*
 
-extern void activateHandler();
+	extern void gtk_Entry_activateHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Entry_signal_connect_activate(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "activate", gtk_Entry_activateHandler, data);
+	}
 
 */
 /*
 
-extern void backspaceHandler();
+	extern void gtk_Entry_backspaceHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Entry_signal_connect_backspace(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "backspace", gtk_Entry_backspaceHandler, data);
+	}
 
 */
 /*
 
-extern void copy-clipboardHandler();
+	extern void gtk_Entry_copyClipboardHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Entry_signal_connect_copy_clipboard(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "copy-clipboard", gtk_Entry_copyClipboardHandler, data);
+	}
 
 */
 /*
 
-extern void cut-clipboardHandler();
+	extern void gtk_Entry_cutClipboardHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Entry_signal_connect_cut_clipboard(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "cut-clipboard", gtk_Entry_cutClipboardHandler, data);
+	}
 
 */
 /*
 
-extern void delete-from-cursorHandler();
+	extern void gtk_Entry_deleteFromCursorHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Entry_signal_connect_delete_from_cursor(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "delete-from-cursor", gtk_Entry_deleteFromCursorHandler, data);
+	}
 
 */
 /*
 
-extern void icon-pressHandler();
+	extern void gtk_Entry_iconPressHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Entry_signal_connect_icon_press(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "icon-press", gtk_Entry_iconPressHandler, data);
+	}
 
 */
 /*
 
-extern void icon-releaseHandler();
+	extern void gtk_Entry_iconReleaseHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Entry_signal_connect_icon_release(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "icon-release", gtk_Entry_iconReleaseHandler, data);
+	}
 
 */
 /*
 
-extern void insert-at-cursorHandler();
+	extern void gtk_Entry_insertAtCursorHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Entry_signal_connect_insert_at_cursor(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "insert-at-cursor", gtk_Entry_insertAtCursorHandler, data);
+	}
 
 */
 /*
 
-extern void insert-emojiHandler();
+	extern void gtk_Entry_insertEmojiHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Entry_signal_connect_insert_emoji(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "insert-emoji", gtk_Entry_insertEmojiHandler, data);
+	}
 
 */
 /*
 
-extern void move-cursorHandler();
+	extern void gtk_Entry_moveCursorHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Entry_signal_connect_move_cursor(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "move-cursor", gtk_Entry_moveCursorHandler, data);
+	}
 
 */
 /*
 
-extern void paste-clipboardHandler();
+	extern void gtk_Entry_pasteClipboardHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Entry_signal_connect_paste_clipboard(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "paste-clipboard", gtk_Entry_pasteClipboardHandler, data);
+	}
 
 */
 /*
 
-extern void populate-popupHandler();
+	extern void gtk_Entry_populatePopupHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Entry_signal_connect_populate_popup(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "populate-popup", gtk_Entry_populatePopupHandler, data);
+	}
 
 */
 /*
 
-extern void preedit-changedHandler();
+	extern void gtk_Entry_preeditChangedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Entry_signal_connect_preedit_changed(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "preedit-changed", gtk_Entry_preeditChangedHandler, data);
+	}
 
 */
 /*
 
-extern void toggle-overwriteHandler();
+	extern void gtk_Entry_toggleOverwriteHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Entry_signal_connect_toggle_overwrite(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "toggle-overwrite", gtk_Entry_toggleOverwriteHandler, data);
+	}
 
 */
 /*
 
-extern void deleted-textHandler();
+	extern void gtk_EntryBuffer_deletedTextHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void EntryBuffer_signal_connect_deleted_text(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "deleted-text", gtk_EntryBuffer_deletedTextHandler, data);
+	}
 
 */
 /*
 
-extern void inserted-textHandler();
+	extern void gtk_EntryBuffer_insertedTextHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void EntryBuffer_signal_connect_inserted_text(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "inserted-text", gtk_EntryBuffer_insertedTextHandler, data);
+	}
 
 */
 /*
 
-extern void action-activatedHandler();
+	extern void gtk_EntryCompletion_actionActivatedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void EntryCompletion_signal_connect_action_activated(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "action-activated", gtk_EntryCompletion_actionActivatedHandler, data);
+	}
 
 */
 /*
 
-extern void cursor-on-matchHandler();
+	extern void gtk_EntryCompletion_cursorOnMatchHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void EntryCompletion_signal_connect_cursor_on_match(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "cursor-on-match", gtk_EntryCompletion_cursorOnMatchHandler, data);
+	}
 
 */
 /*
 
-extern void insert-prefixHandler();
+	extern void gtk_EntryCompletion_insertPrefixHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void EntryCompletion_signal_connect_insert_prefix(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "insert-prefix", gtk_EntryCompletion_insertPrefixHandler, data);
+	}
 
 */
 /*
 
-extern void match-selectedHandler();
+	extern void gtk_EntryCompletion_matchSelectedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void EntryCompletion_signal_connect_match_selected(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "match-selected", gtk_EntryCompletion_matchSelectedHandler, data);
+	}
 
 */
 /*
 
-extern void no-matchesHandler();
+	extern void gtk_EntryCompletion_noMatchesHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void EntryCompletion_signal_connect_no_matches(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "no-matches", gtk_EntryCompletion_noMatchesHandler, data);
+	}
 
 */
 /*
 
-extern void activateHandler();
+	extern void gtk_Expander_activateHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Expander_signal_connect_activate(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "activate", gtk_Expander_activateHandler, data);
+	}
 
 */
 /*
 
-extern void file-setHandler();
+	extern void gtk_FileChooserButton_fileSetHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void FileChooserButton_signal_connect_file_set(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "file-set", gtk_FileChooserButton_fileSetHandler, data);
+	}
 
 */
 /*
 
-extern void desktop-folderHandler();
+	extern void gtk_FileChooserWidget_desktopFolderHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void FileChooserWidget_signal_connect_desktop_folder(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "desktop-folder", gtk_FileChooserWidget_desktopFolderHandler, data);
+	}
 
 */
 /*
 
-extern void down-folderHandler();
+	extern void gtk_FileChooserWidget_downFolderHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void FileChooserWidget_signal_connect_down_folder(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "down-folder", gtk_FileChooserWidget_downFolderHandler, data);
+	}
 
 */
 /*
 
-extern void home-folderHandler();
+	extern void gtk_FileChooserWidget_homeFolderHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void FileChooserWidget_signal_connect_home_folder(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "home-folder", gtk_FileChooserWidget_homeFolderHandler, data);
+	}
 
 */
 /*
 
-extern void location-popupHandler();
+	extern void gtk_FileChooserWidget_locationPopupHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void FileChooserWidget_signal_connect_location_popup(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "location-popup", gtk_FileChooserWidget_locationPopupHandler, data);
+	}
 
 */
 /*
 
-extern void location-popup-on-pasteHandler();
+	extern void gtk_FileChooserWidget_locationPopupOnPasteHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void FileChooserWidget_signal_connect_location_popup_on_paste(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "location-popup-on-paste", gtk_FileChooserWidget_locationPopupOnPasteHandler, data);
+	}
 
 */
 /*
 
-extern void location-toggle-popupHandler();
+	extern void gtk_FileChooserWidget_locationTogglePopupHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void FileChooserWidget_signal_connect_location_toggle_popup(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "location-toggle-popup", gtk_FileChooserWidget_locationTogglePopupHandler, data);
+	}
 
 */
 /*
 
-extern void places-shortcutHandler();
+	extern void gtk_FileChooserWidget_placesShortcutHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void FileChooserWidget_signal_connect_places_shortcut(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "places-shortcut", gtk_FileChooserWidget_placesShortcutHandler, data);
+	}
 
 */
 /*
 
-extern void quick-bookmarkHandler();
+	extern void gtk_FileChooserWidget_quickBookmarkHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void FileChooserWidget_signal_connect_quick_bookmark(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "quick-bookmark", gtk_FileChooserWidget_quickBookmarkHandler, data);
+	}
 
 */
 /*
 
-extern void recent-shortcutHandler();
+	extern void gtk_FileChooserWidget_recentShortcutHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void FileChooserWidget_signal_connect_recent_shortcut(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "recent-shortcut", gtk_FileChooserWidget_recentShortcutHandler, data);
+	}
 
 */
 /*
 
-extern void search-shortcutHandler();
+	extern void gtk_FileChooserWidget_searchShortcutHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void FileChooserWidget_signal_connect_search_shortcut(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "search-shortcut", gtk_FileChooserWidget_searchShortcutHandler, data);
+	}
 
 */
 /*
 
-extern void show-hiddenHandler();
+	extern void gtk_FileChooserWidget_showHiddenHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void FileChooserWidget_signal_connect_show_hidden(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "show-hidden", gtk_FileChooserWidget_showHiddenHandler, data);
+	}
 
 */
 /*
 
-extern void up-folderHandler();
+	extern void gtk_FileChooserWidget_upFolderHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void FileChooserWidget_signal_connect_up_folder(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "up-folder", gtk_FileChooserWidget_upFolderHandler, data);
+	}
 
 */
 /*
 
-extern void activate-cursor-childHandler();
+	extern void gtk_FlowBox_activateCursorChildHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void FlowBox_signal_connect_activate_cursor_child(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "activate-cursor-child", gtk_FlowBox_activateCursorChildHandler, data);
+	}
 
 */
 /*
 
-extern void child-activatedHandler();
+	extern void gtk_FlowBox_childActivatedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void FlowBox_signal_connect_child_activated(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "child-activated", gtk_FlowBox_childActivatedHandler, data);
+	}
 
 */
 /*
 
-extern void move-cursorHandler();
+	extern void gtk_FlowBox_moveCursorHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void FlowBox_signal_connect_move_cursor(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "move-cursor", gtk_FlowBox_moveCursorHandler, data);
+	}
 
 */
 /*
 
-extern void select-allHandler();
+	extern void gtk_FlowBox_selectAllHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void FlowBox_signal_connect_select_all(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "select-all", gtk_FlowBox_selectAllHandler, data);
+	}
 
 */
 /*
 
-extern void selected-children-changedHandler();
+	extern void gtk_FlowBox_selectedChildrenChangedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void FlowBox_signal_connect_selected_children_changed(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "selected-children-changed", gtk_FlowBox_selectedChildrenChangedHandler, data);
+	}
 
 */
 /*
 
-extern void toggle-cursor-childHandler();
+	extern void gtk_FlowBox_toggleCursorChildHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void FlowBox_signal_connect_toggle_cursor_child(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "toggle-cursor-child", gtk_FlowBox_toggleCursorChildHandler, data);
+	}
 
 */
 /*
 
-extern void unselect-allHandler();
+	extern void gtk_FlowBox_unselectAllHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void FlowBox_signal_connect_unselect_all(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "unselect-all", gtk_FlowBox_unselectAllHandler, data);
+	}
 
 */
 /*
 
-extern void activateHandler();
+	extern void gtk_FlowBoxChild_activateHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void FlowBoxChild_signal_connect_activate(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "activate", gtk_FlowBoxChild_activateHandler, data);
+	}
 
 */
 /*
 
-extern void font-setHandler();
+	extern void gtk_FontButton_fontSetHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void FontButton_signal_connect_font_set(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "font-set", gtk_FontButton_fontSetHandler, data);
+	}
 
 */
 /*
 
-extern void beginHandler();
+	extern void gtk_Gesture_beginHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Gesture_signal_connect_begin(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "begin", gtk_Gesture_beginHandler, data);
+	}
 
 */
 /*
 
-extern void cancelHandler();
+	extern void gtk_Gesture_cancelHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Gesture_signal_connect_cancel(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "cancel", gtk_Gesture_cancelHandler, data);
+	}
 
 */
 /*
 
-extern void endHandler();
+	extern void gtk_Gesture_endHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Gesture_signal_connect_end(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "end", gtk_Gesture_endHandler, data);
+	}
 
 */
 /*
 
-extern void sequence-state-changedHandler();
+	extern void gtk_Gesture_sequenceStateChangedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Gesture_signal_connect_sequence_state_changed(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "sequence-state-changed", gtk_Gesture_sequenceStateChangedHandler, data);
+	}
 
 */
 /*
 
-extern void updateHandler();
+	extern void gtk_Gesture_updateHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Gesture_signal_connect_update(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "update", gtk_Gesture_updateHandler, data);
+	}
 
 */
 /*
 
-extern void drag-beginHandler();
+	extern void gtk_GestureDrag_dragBeginHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void GestureDrag_signal_connect_drag_begin(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "drag-begin", gtk_GestureDrag_dragBeginHandler, data);
+	}
 
 */
 /*
 
-extern void drag-endHandler();
+	extern void gtk_GestureDrag_dragEndHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void GestureDrag_signal_connect_drag_end(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "drag-end", gtk_GestureDrag_dragEndHandler, data);
+	}
 
 */
 /*
 
-extern void drag-updateHandler();
+	extern void gtk_GestureDrag_dragUpdateHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void GestureDrag_signal_connect_drag_update(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "drag-update", gtk_GestureDrag_dragUpdateHandler, data);
+	}
 
 */
 /*
 
-extern void cancelledHandler();
+	extern void gtk_GestureLongPress_cancelledHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void GestureLongPress_signal_connect_cancelled(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "cancelled", gtk_GestureLongPress_cancelledHandler, data);
+	}
 
 */
 /*
 
-extern void pressedHandler();
+	extern void gtk_GestureLongPress_pressedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void GestureLongPress_signal_connect_pressed(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "pressed", gtk_GestureLongPress_pressedHandler, data);
+	}
 
 */
 /*
 
-extern void pressedHandler();
+	extern void gtk_GestureMultiPress_pressedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void GestureMultiPress_signal_connect_pressed(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "pressed", gtk_GestureMultiPress_pressedHandler, data);
+	}
 
 */
 /*
 
-extern void releasedHandler();
+	extern void gtk_GestureMultiPress_releasedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void GestureMultiPress_signal_connect_released(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "released", gtk_GestureMultiPress_releasedHandler, data);
+	}
 
 */
 /*
 
-extern void stoppedHandler();
+	extern void gtk_GestureMultiPress_stoppedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void GestureMultiPress_signal_connect_stopped(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "stopped", gtk_GestureMultiPress_stoppedHandler, data);
+	}
 
 */
 /*
 
-extern void panHandler();
+	extern void gtk_GesturePan_panHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void GesturePan_signal_connect_pan(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "pan", gtk_GesturePan_panHandler, data);
+	}
 
 */
 /*
 
-extern void angle-changedHandler();
+	extern void gtk_GestureRotate_angleChangedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void GestureRotate_signal_connect_angle_changed(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "angle-changed", gtk_GestureRotate_angleChangedHandler, data);
+	}
 
 */
 /*
 
-extern void swipeHandler();
+	extern void gtk_GestureSwipe_swipeHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void GestureSwipe_signal_connect_swipe(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "swipe", gtk_GestureSwipe_swipeHandler, data);
+	}
 
 */
 /*
 
-extern void scale-changedHandler();
+	extern void gtk_GestureZoom_scaleChangedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void GestureZoom_signal_connect_scale_changed(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "scale-changed", gtk_GestureZoom_scaleChangedHandler, data);
+	}
 
 */
 /*
 
-extern void changedHandler();
+	extern void gtk_HSV_changedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void HSV_signal_connect_changed(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "changed", gtk_HSV_changedHandler, data);
+	}
 
 */
 /*
 
-extern void moveHandler();
+	extern void gtk_HSV_moveHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void HSV_signal_connect_move(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "move", gtk_HSV_moveHandler, data);
+	}
 
 */
 /*
 
-extern void child-attachedHandler();
+	extern void gtk_HandleBox_childAttachedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void HandleBox_signal_connect_child_attached(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "child-attached", gtk_HandleBox_childAttachedHandler, data);
+	}
 
 */
 /*
 
-extern void child-detachedHandler();
+	extern void gtk_HandleBox_childDetachedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void HandleBox_signal_connect_child_detached(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "child-detached", gtk_HandleBox_childDetachedHandler, data);
+	}
 
 */
 /*
 
-extern void commitHandler();
+	extern void gtk_IMContext_commitHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void IMContext_signal_connect_commit(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "commit", gtk_IMContext_commitHandler, data);
+	}
 
 */
 /*
 
-extern void delete-surroundingHandler();
+	extern void gtk_IMContext_deleteSurroundingHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void IMContext_signal_connect_delete_surrounding(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "delete-surrounding", gtk_IMContext_deleteSurroundingHandler, data);
+	}
 
 */
 /*
 
-extern void preedit-changedHandler();
+	extern void gtk_IMContext_preeditChangedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void IMContext_signal_connect_preedit_changed(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "preedit-changed", gtk_IMContext_preeditChangedHandler, data);
+	}
 
 */
 /*
 
-extern void preedit-endHandler();
+	extern void gtk_IMContext_preeditEndHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void IMContext_signal_connect_preedit_end(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "preedit-end", gtk_IMContext_preeditEndHandler, data);
+	}
 
 */
 /*
 
-extern void preedit-startHandler();
+	extern void gtk_IMContext_preeditStartHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void IMContext_signal_connect_preedit_start(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "preedit-start", gtk_IMContext_preeditStartHandler, data);
+	}
 
 */
 /*
 
-extern void retrieve-surroundingHandler();
+	extern void gtk_IMContext_retrieveSurroundingHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void IMContext_signal_connect_retrieve_surrounding(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "retrieve-surrounding", gtk_IMContext_retrieveSurroundingHandler, data);
+	}
 
 */
 /*
 
-extern void changedHandler();
+	extern void gtk_IconTheme_changedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void IconTheme_signal_connect_changed(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "changed", gtk_IconTheme_changedHandler, data);
+	}
 
 */
 /*
 
-extern void activate-cursor-itemHandler();
+	extern void gtk_IconView_activateCursorItemHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void IconView_signal_connect_activate_cursor_item(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "activate-cursor-item", gtk_IconView_activateCursorItemHandler, data);
+	}
 
 */
 /*
 
-extern void item-activatedHandler();
+	extern void gtk_IconView_itemActivatedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void IconView_signal_connect_item_activated(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "item-activated", gtk_IconView_itemActivatedHandler, data);
+	}
 
 */
 /*
 
-extern void move-cursorHandler();
+	extern void gtk_IconView_moveCursorHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void IconView_signal_connect_move_cursor(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "move-cursor", gtk_IconView_moveCursorHandler, data);
+	}
 
 */
 /*
 
-extern void select-allHandler();
+	extern void gtk_IconView_selectAllHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void IconView_signal_connect_select_all(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "select-all", gtk_IconView_selectAllHandler, data);
+	}
 
 */
 /*
 
-extern void select-cursor-itemHandler();
+	extern void gtk_IconView_selectCursorItemHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void IconView_signal_connect_select_cursor_item(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "select-cursor-item", gtk_IconView_selectCursorItemHandler, data);
+	}
 
 */
 /*
 
-extern void selection-changedHandler();
+	extern void gtk_IconView_selectionChangedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void IconView_signal_connect_selection_changed(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "selection-changed", gtk_IconView_selectionChangedHandler, data);
+	}
 
 */
 /*
 
-extern void toggle-cursor-itemHandler();
+	extern void gtk_IconView_toggleCursorItemHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void IconView_signal_connect_toggle_cursor_item(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "toggle-cursor-item", gtk_IconView_toggleCursorItemHandler, data);
+	}
 
 */
 /*
 
-extern void unselect-allHandler();
+	extern void gtk_IconView_unselectAllHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void IconView_signal_connect_unselect_all(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "unselect-all", gtk_IconView_unselectAllHandler, data);
+	}
 
 */
 /*
 
-extern void closeHandler();
+	extern void gtk_InfoBar_closeHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void InfoBar_signal_connect_close(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "close", gtk_InfoBar_closeHandler, data);
+	}
 
 */
 /*
 
-extern void responseHandler();
+	extern void gtk_InfoBar_responseHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void InfoBar_signal_connect_response(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "response", gtk_InfoBar_responseHandler, data);
+	}
 
 */
 /*
 
-extern void activate-current-linkHandler();
+	extern void gtk_Label_activateCurrentLinkHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Label_signal_connect_activate_current_link(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "activate-current-link", gtk_Label_activateCurrentLinkHandler, data);
+	}
 
 */
 /*
 
-extern void activate-linkHandler();
+	extern void gtk_Label_activateLinkHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Label_signal_connect_activate_link(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "activate-link", gtk_Label_activateLinkHandler, data);
+	}
 
 */
 /*
 
-extern void copy-clipboardHandler();
+	extern void gtk_Label_copyClipboardHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Label_signal_connect_copy_clipboard(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "copy-clipboard", gtk_Label_copyClipboardHandler, data);
+	}
 
 */
 /*
 
-extern void move-cursorHandler();
+	extern void gtk_Label_moveCursorHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Label_signal_connect_move_cursor(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "move-cursor", gtk_Label_moveCursorHandler, data);
+	}
 
 */
 /*
 
-extern void populate-popupHandler();
+	extern void gtk_Label_populatePopupHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Label_signal_connect_populate_popup(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "populate-popup", gtk_Label_populatePopupHandler, data);
+	}
 
 */
 /*
 
-extern void offset-changedHandler();
+	extern void gtk_LevelBar_offsetChangedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void LevelBar_signal_connect_offset_changed(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "offset-changed", gtk_LevelBar_offsetChangedHandler, data);
+	}
 
 */
 /*
 
-extern void activate-linkHandler();
+	extern void gtk_LinkButton_activateLinkHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void LinkButton_signal_connect_activate_link(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "activate-link", gtk_LinkButton_activateLinkHandler, data);
+	}
 
 */
 /*
 
-extern void activate-cursor-rowHandler();
+	extern void gtk_ListBox_activateCursorRowHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void ListBox_signal_connect_activate_cursor_row(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "activate-cursor-row", gtk_ListBox_activateCursorRowHandler, data);
+	}
 
 */
 /*
 
-extern void move-cursorHandler();
+	extern void gtk_ListBox_moveCursorHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void ListBox_signal_connect_move_cursor(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "move-cursor", gtk_ListBox_moveCursorHandler, data);
+	}
 
 */
 /*
 
-extern void row-activatedHandler();
+	extern void gtk_ListBox_rowActivatedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void ListBox_signal_connect_row_activated(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "row-activated", gtk_ListBox_rowActivatedHandler, data);
+	}
 
 */
 /*
 
-extern void row-selectedHandler();
+	extern void gtk_ListBox_rowSelectedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void ListBox_signal_connect_row_selected(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "row-selected", gtk_ListBox_rowSelectedHandler, data);
+	}
 
 */
 /*
 
-extern void select-allHandler();
+	extern void gtk_ListBox_selectAllHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void ListBox_signal_connect_select_all(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "select-all", gtk_ListBox_selectAllHandler, data);
+	}
 
 */
 /*
 
-extern void selected-rows-changedHandler();
+	extern void gtk_ListBox_selectedRowsChangedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void ListBox_signal_connect_selected_rows_changed(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "selected-rows-changed", gtk_ListBox_selectedRowsChangedHandler, data);
+	}
 
 */
 /*
 
-extern void toggle-cursor-rowHandler();
+	extern void gtk_ListBox_toggleCursorRowHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void ListBox_signal_connect_toggle_cursor_row(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "toggle-cursor-row", gtk_ListBox_toggleCursorRowHandler, data);
+	}
 
 */
 /*
 
-extern void unselect-allHandler();
+	extern void gtk_ListBox_unselectAllHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void ListBox_signal_connect_unselect_all(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "unselect-all", gtk_ListBox_unselectAllHandler, data);
+	}
 
 */
 /*
 
-extern void activateHandler();
+	extern void gtk_ListBoxRow_activateHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void ListBoxRow_signal_connect_activate(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "activate", gtk_ListBoxRow_activateHandler, data);
+	}
 
 */
 /*
 
-extern void move-scrollHandler();
+	extern void gtk_Menu_moveScrollHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Menu_signal_connect_move_scroll(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "move-scroll", gtk_Menu_moveScrollHandler, data);
+	}
 
 */
 /*
 
-extern void popped-upHandler();
+	extern void gtk_Menu_poppedUpHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Menu_signal_connect_popped_up(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "popped-up", gtk_Menu_poppedUpHandler, data);
+	}
 
 */
 /*
 
-extern void activateHandler();
+	extern void gtk_MenuItem_activateHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void MenuItem_signal_connect_activate(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "activate", gtk_MenuItem_activateHandler, data);
+	}
 
 */
 /*
 
-extern void activate-itemHandler();
+	extern void gtk_MenuItem_activateItemHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void MenuItem_signal_connect_activate_item(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "activate-item", gtk_MenuItem_activateItemHandler, data);
+	}
 
 */
 /*
 
-extern void deselectHandler();
+	extern void gtk_MenuItem_deselectHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void MenuItem_signal_connect_deselect(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "deselect", gtk_MenuItem_deselectHandler, data);
+	}
 
 */
 /*
 
-extern void selectHandler();
+	extern void gtk_MenuItem_selectHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void MenuItem_signal_connect_select(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "select", gtk_MenuItem_selectHandler, data);
+	}
 
 */
 /*
 
-extern void toggle-size-allocateHandler();
+	extern void gtk_MenuItem_toggleSizeAllocateHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void MenuItem_signal_connect_toggle_size_allocate(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "toggle-size-allocate", gtk_MenuItem_toggleSizeAllocateHandler, data);
+	}
 
 */
 /*
 
-extern void toggle-size-requestHandler();
+	extern void gtk_MenuItem_toggleSizeRequestHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void MenuItem_signal_connect_toggle_size_request(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "toggle-size-request", gtk_MenuItem_toggleSizeRequestHandler, data);
+	}
 
 */
 /*
 
-extern void activate-currentHandler();
+	extern void gtk_MenuShell_activateCurrentHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void MenuShell_signal_connect_activate_current(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "activate-current", gtk_MenuShell_activateCurrentHandler, data);
+	}
 
 */
 /*
 
-extern void cancelHandler();
+	extern void gtk_MenuShell_cancelHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void MenuShell_signal_connect_cancel(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "cancel", gtk_MenuShell_cancelHandler, data);
+	}
 
 */
 /*
 
-extern void cycle-focusHandler();
+	extern void gtk_MenuShell_cycleFocusHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void MenuShell_signal_connect_cycle_focus(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "cycle-focus", gtk_MenuShell_cycleFocusHandler, data);
+	}
 
 */
 /*
 
-extern void deactivateHandler();
+	extern void gtk_MenuShell_deactivateHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void MenuShell_signal_connect_deactivate(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "deactivate", gtk_MenuShell_deactivateHandler, data);
+	}
 
 */
 /*
 
-extern void insertHandler();
+	extern void gtk_MenuShell_insertHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void MenuShell_signal_connect_insert(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "insert", gtk_MenuShell_insertHandler, data);
+	}
 
 */
 /*
 
-extern void move-currentHandler();
+	extern void gtk_MenuShell_moveCurrentHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void MenuShell_signal_connect_move_current(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "move-current", gtk_MenuShell_moveCurrentHandler, data);
+	}
 
 */
 /*
 
-extern void move-selectedHandler();
+	extern void gtk_MenuShell_moveSelectedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void MenuShell_signal_connect_move_selected(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "move-selected", gtk_MenuShell_moveSelectedHandler, data);
+	}
 
 */
 /*
 
-extern void selection-doneHandler();
+	extern void gtk_MenuShell_selectionDoneHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void MenuShell_signal_connect_selection_done(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "selection-done", gtk_MenuShell_selectionDoneHandler, data);
+	}
 
 */
 /*
 
-extern void show-menuHandler();
+	extern void gtk_MenuToolButton_showMenuHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void MenuToolButton_signal_connect_show_menu(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "show-menu", gtk_MenuToolButton_showMenuHandler, data);
+	}
 
 */
 /*
 
-extern void change-current-pageHandler();
+	extern void gtk_Notebook_changeCurrentPageHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Notebook_signal_connect_change_current_page(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "change-current-page", gtk_Notebook_changeCurrentPageHandler, data);
+	}
 
 */
 /*
 
-extern void create-windowHandler();
+	extern void gtk_Notebook_createWindowHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Notebook_signal_connect_create_window(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "create-window", gtk_Notebook_createWindowHandler, data);
+	}
 
 */
 /*
 
-extern void focus-tabHandler();
+	extern void gtk_Notebook_focusTabHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Notebook_signal_connect_focus_tab(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "focus-tab", gtk_Notebook_focusTabHandler, data);
+	}
 
 */
 /*
 
-extern void move-focus-outHandler();
+	extern void gtk_Notebook_moveFocusOutHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Notebook_signal_connect_move_focus_out(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "move-focus-out", gtk_Notebook_moveFocusOutHandler, data);
+	}
 
 */
 /*
 
-extern void page-addedHandler();
+	extern void gtk_Notebook_pageAddedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Notebook_signal_connect_page_added(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "page-added", gtk_Notebook_pageAddedHandler, data);
+	}
 
 */
 /*
 
-extern void page-removedHandler();
+	extern void gtk_Notebook_pageRemovedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Notebook_signal_connect_page_removed(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "page-removed", gtk_Notebook_pageRemovedHandler, data);
+	}
 
 */
 /*
 
-extern void page-reorderedHandler();
+	extern void gtk_Notebook_pageReorderedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Notebook_signal_connect_page_reordered(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "page-reordered", gtk_Notebook_pageReorderedHandler, data);
+	}
 
 */
 /*
 
-extern void reorder-tabHandler();
+	extern void gtk_Notebook_reorderTabHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Notebook_signal_connect_reorder_tab(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "reorder-tab", gtk_Notebook_reorderTabHandler, data);
+	}
 
 */
 /*
 
-extern void select-pageHandler();
+	extern void gtk_Notebook_selectPageHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Notebook_signal_connect_select_page(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "select-page", gtk_Notebook_selectPageHandler, data);
+	}
 
 */
 /*
 
-extern void switch-pageHandler();
+	extern void gtk_Notebook_switchPageHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Notebook_signal_connect_switch_page(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "switch-page", gtk_Notebook_switchPageHandler, data);
+	}
 
 */
 /*
 
-extern void get-child-positionHandler();
+	extern void gtk_Overlay_getChildPositionHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Overlay_signal_connect_get_child_position(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "get-child-position", gtk_Overlay_getChildPositionHandler, data);
+	}
 
 */
 /*
 
-extern void accept-positionHandler();
+	extern void gtk_Paned_acceptPositionHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Paned_signal_connect_accept_position(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "accept-position", gtk_Paned_acceptPositionHandler, data);
+	}
 
 */
 /*
 
-extern void cancel-positionHandler();
+	extern void gtk_Paned_cancelPositionHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Paned_signal_connect_cancel_position(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "cancel-position", gtk_Paned_cancelPositionHandler, data);
+	}
 
 */
 /*
 
-extern void cycle-child-focusHandler();
+	extern void gtk_Paned_cycleChildFocusHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Paned_signal_connect_cycle_child_focus(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "cycle-child-focus", gtk_Paned_cycleChildFocusHandler, data);
+	}
 
 */
 /*
 
-extern void cycle-handle-focusHandler();
+	extern void gtk_Paned_cycleHandleFocusHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Paned_signal_connect_cycle_handle_focus(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "cycle-handle-focus", gtk_Paned_cycleHandleFocusHandler, data);
+	}
 
 */
 /*
 
-extern void move-handleHandler();
+	extern void gtk_Paned_moveHandleHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Paned_signal_connect_move_handle(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "move-handle", gtk_Paned_moveHandleHandler, data);
+	}
 
 */
 /*
 
-extern void toggle-handle-focusHandler();
+	extern void gtk_Paned_toggleHandleFocusHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Paned_signal_connect_toggle_handle_focus(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "toggle-handle-focus", gtk_Paned_toggleHandleFocusHandler, data);
+	}
 
 */
 /*
 
-extern void drag-action-askHandler();
+	extern void gtk_PlacesSidebar_dragActionAskHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void PlacesSidebar_signal_connect_drag_action_ask(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "drag-action-ask", gtk_PlacesSidebar_dragActionAskHandler, data);
+	}
 
 */
 /*
 
-extern void drag-action-requestedHandler();
+	extern void gtk_PlacesSidebar_dragActionRequestedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void PlacesSidebar_signal_connect_drag_action_requested(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "drag-action-requested", gtk_PlacesSidebar_dragActionRequestedHandler, data);
+	}
 
 */
 /*
 
-extern void drag-perform-dropHandler();
+	extern void gtk_PlacesSidebar_dragPerformDropHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void PlacesSidebar_signal_connect_drag_perform_drop(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "drag-perform-drop", gtk_PlacesSidebar_dragPerformDropHandler, data);
+	}
 
 */
 /*
 
-extern void mountHandler();
+	extern void gtk_PlacesSidebar_mountHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void PlacesSidebar_signal_connect_mount(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "mount", gtk_PlacesSidebar_mountHandler, data);
+	}
 
 */
 /*
 
-extern void open-locationHandler();
+	extern void gtk_PlacesSidebar_openLocationHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void PlacesSidebar_signal_connect_open_location(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "open-location", gtk_PlacesSidebar_openLocationHandler, data);
+	}
 
 */
 /*
 
-extern void populate-popupHandler();
+	extern void gtk_PlacesSidebar_populatePopupHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void PlacesSidebar_signal_connect_populate_popup(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "populate-popup", gtk_PlacesSidebar_populatePopupHandler, data);
+	}
 
 */
 /*
 
-extern void show-connect-to-serverHandler();
+	extern void gtk_PlacesSidebar_showConnectToServerHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void PlacesSidebar_signal_connect_show_connect_to_server(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "show-connect-to-server", gtk_PlacesSidebar_showConnectToServerHandler, data);
+	}
 
 */
 /*
 
-extern void show-enter-locationHandler();
+	extern void gtk_PlacesSidebar_showEnterLocationHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void PlacesSidebar_signal_connect_show_enter_location(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "show-enter-location", gtk_PlacesSidebar_showEnterLocationHandler, data);
+	}
 
 */
 /*
 
-extern void show-error-messageHandler();
+	extern void gtk_PlacesSidebar_showErrorMessageHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void PlacesSidebar_signal_connect_show_error_message(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "show-error-message", gtk_PlacesSidebar_showErrorMessageHandler, data);
+	}
 
 */
 /*
 
-extern void show-other-locationsHandler();
+	extern void gtk_PlacesSidebar_showOtherLocationsHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void PlacesSidebar_signal_connect_show_other_locations(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "show-other-locations", gtk_PlacesSidebar_showOtherLocationsHandler, data);
+	}
 
 */
 /*
 
-extern void show-other-locations-with-flagsHandler();
+	extern void gtk_PlacesSidebar_showOtherLocationsWithFlagsHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void PlacesSidebar_signal_connect_show_other_locations_with_flags(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "show-other-locations-with-flags", gtk_PlacesSidebar_showOtherLocationsWithFlagsHandler, data);
+	}
 
 */
 /*
 
-extern void show-starred-locationHandler();
+	extern void gtk_PlacesSidebar_showStarredLocationHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void PlacesSidebar_signal_connect_show_starred_location(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "show-starred-location", gtk_PlacesSidebar_showStarredLocationHandler, data);
+	}
 
 */
 /*
 
-extern void unmountHandler();
+	extern void gtk_PlacesSidebar_unmountHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void PlacesSidebar_signal_connect_unmount(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "unmount", gtk_PlacesSidebar_unmountHandler, data);
+	}
 
 */
 /*
 
-extern void closedHandler();
+	extern void gtk_Popover_closedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Popover_signal_connect_closed(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "closed", gtk_Popover_closedHandler, data);
+	}
 
 */
 /*
 
-extern void begin-printHandler();
+	extern void gtk_PrintOperation_beginPrintHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void PrintOperation_signal_connect_begin_print(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "begin-print", gtk_PrintOperation_beginPrintHandler, data);
+	}
 
 */
 /*
 
-extern void create-custom-widgetHandler();
+	extern void gtk_PrintOperation_createCustomWidgetHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void PrintOperation_signal_connect_create_custom_widget(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "create-custom-widget", gtk_PrintOperation_createCustomWidgetHandler, data);
+	}
 
 */
 /*
 
-extern void custom-widget-applyHandler();
+	extern void gtk_PrintOperation_customWidgetApplyHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void PrintOperation_signal_connect_custom_widget_apply(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "custom-widget-apply", gtk_PrintOperation_customWidgetApplyHandler, data);
+	}
 
 */
 /*
 
-extern void doneHandler();
+	extern void gtk_PrintOperation_doneHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void PrintOperation_signal_connect_done(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "done", gtk_PrintOperation_doneHandler, data);
+	}
 
 */
 /*
 
-extern void draw-pageHandler();
+	extern void gtk_PrintOperation_drawPageHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void PrintOperation_signal_connect_draw_page(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "draw-page", gtk_PrintOperation_drawPageHandler, data);
+	}
 
 */
 /*
 
-extern void end-printHandler();
+	extern void gtk_PrintOperation_endPrintHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void PrintOperation_signal_connect_end_print(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "end-print", gtk_PrintOperation_endPrintHandler, data);
+	}
 
 */
 /*
 
-extern void paginateHandler();
+	extern void gtk_PrintOperation_paginateHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void PrintOperation_signal_connect_paginate(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "paginate", gtk_PrintOperation_paginateHandler, data);
+	}
 
 */
 /*
 
-extern void previewHandler();
+	extern void gtk_PrintOperation_previewHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void PrintOperation_signal_connect_preview(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "preview", gtk_PrintOperation_previewHandler, data);
+	}
 
 */
 /*
 
-extern void request-page-setupHandler();
+	extern void gtk_PrintOperation_requestPageSetupHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void PrintOperation_signal_connect_request_page_setup(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "request-page-setup", gtk_PrintOperation_requestPageSetupHandler, data);
+	}
 
 */
 /*
 
-extern void status-changedHandler();
+	extern void gtk_PrintOperation_statusChangedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void PrintOperation_signal_connect_status_changed(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "status-changed", gtk_PrintOperation_statusChangedHandler, data);
+	}
 
 */
 /*
 
-extern void update-custom-widgetHandler();
+	extern void gtk_PrintOperation_updateCustomWidgetHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void PrintOperation_signal_connect_update_custom_widget(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "update-custom-widget", gtk_PrintOperation_updateCustomWidgetHandler, data);
+	}
 
 */
 /*
 
-extern void changedHandler();
+	extern void gtk_RadioAction_changedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void RadioAction_signal_connect_changed(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "changed", gtk_RadioAction_changedHandler, data);
+	}
 
 */
 /*
 
-extern void group-changedHandler();
+	extern void gtk_RadioButton_groupChangedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void RadioButton_signal_connect_group_changed(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "group-changed", gtk_RadioButton_groupChangedHandler, data);
+	}
 
 */
 /*
 
-extern void group-changedHandler();
+	extern void gtk_RadioMenuItem_groupChangedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void RadioMenuItem_signal_connect_group_changed(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "group-changed", gtk_RadioMenuItem_groupChangedHandler, data);
+	}
 
 */
 /*
 
-extern void adjust-boundsHandler();
+	extern void gtk_Range_adjustBoundsHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Range_signal_connect_adjust_bounds(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "adjust-bounds", gtk_Range_adjustBoundsHandler, data);
+	}
 
 */
 /*
 
-extern void change-valueHandler();
+	extern void gtk_Range_changeValueHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Range_signal_connect_change_value(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "change-value", gtk_Range_changeValueHandler, data);
+	}
 
 */
 /*
 
-extern void move-sliderHandler();
+	extern void gtk_Range_moveSliderHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Range_signal_connect_move_slider(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "move-slider", gtk_Range_moveSliderHandler, data);
+	}
 
 */
 /*
 
-extern void value-changedHandler();
+	extern void gtk_Range_valueChangedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Range_signal_connect_value_changed(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "value-changed", gtk_Range_valueChangedHandler, data);
+	}
 
 */
 /*
 
-extern void format-valueHandler();
+	extern void gtk_Scale_formatValueHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Scale_signal_connect_format_value(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "format-value", gtk_Scale_formatValueHandler, data);
+	}
 
 */
 /*
 
-extern void popdownHandler();
+	extern void gtk_ScaleButton_popdownHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void ScaleButton_signal_connect_popdown(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "popdown", gtk_ScaleButton_popdownHandler, data);
+	}
 
 */
 /*
 
-extern void popupHandler();
+	extern void gtk_ScaleButton_popupHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void ScaleButton_signal_connect_popup(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "popup", gtk_ScaleButton_popupHandler, data);
+	}
 
 */
 /*
 
-extern void value-changedHandler();
+	extern void gtk_ScaleButton_valueChangedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void ScaleButton_signal_connect_value_changed(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "value-changed", gtk_ScaleButton_valueChangedHandler, data);
+	}
 
 */
 /*
 
-extern void edge-overshotHandler();
+	extern void gtk_ScrolledWindow_edgeOvershotHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void ScrolledWindow_signal_connect_edge_overshot(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "edge-overshot", gtk_ScrolledWindow_edgeOvershotHandler, data);
+	}
 
 */
 /*
 
-extern void edge-reachedHandler();
+	extern void gtk_ScrolledWindow_edgeReachedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void ScrolledWindow_signal_connect_edge_reached(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "edge-reached", gtk_ScrolledWindow_edgeReachedHandler, data);
+	}
 
 */
 /*
 
-extern void move-focus-outHandler();
+	extern void gtk_ScrolledWindow_moveFocusOutHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void ScrolledWindow_signal_connect_move_focus_out(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "move-focus-out", gtk_ScrolledWindow_moveFocusOutHandler, data);
+	}
 
 */
 /*
 
-extern void scroll-childHandler();
+	extern void gtk_ScrolledWindow_scrollChildHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void ScrolledWindow_signal_connect_scroll_child(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "scroll-child", gtk_ScrolledWindow_scrollChildHandler, data);
+	}
 
 */
 /*
 
-extern void next-matchHandler();
+	extern void gtk_SearchEntry_nextMatchHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void SearchEntry_signal_connect_next_match(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "next-match", gtk_SearchEntry_nextMatchHandler, data);
+	}
 
 */
 /*
 
-extern void previous-matchHandler();
+	extern void gtk_SearchEntry_previousMatchHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void SearchEntry_signal_connect_previous_match(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "previous-match", gtk_SearchEntry_previousMatchHandler, data);
+	}
 
 */
 /*
 
-extern void search-changedHandler();
+	extern void gtk_SearchEntry_searchChangedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void SearchEntry_signal_connect_search_changed(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "search-changed", gtk_SearchEntry_searchChangedHandler, data);
+	}
 
 */
 /*
 
-extern void stop-searchHandler();
+	extern void gtk_SearchEntry_stopSearchHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void SearchEntry_signal_connect_stop_search(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "stop-search", gtk_SearchEntry_stopSearchHandler, data);
+	}
 
 */
 /*
 
-extern void change-valueHandler();
+	extern void gtk_SpinButton_changeValueHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void SpinButton_signal_connect_change_value(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "change-value", gtk_SpinButton_changeValueHandler, data);
+	}
 
 */
 /*
 
-extern void inputHandler();
+	extern void gtk_SpinButton_inputHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void SpinButton_signal_connect_input(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "input", gtk_SpinButton_inputHandler, data);
+	}
 
 */
 /*
 
-extern void outputHandler();
+	extern void gtk_SpinButton_outputHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void SpinButton_signal_connect_output(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "output", gtk_SpinButton_outputHandler, data);
+	}
 
 */
 /*
 
-extern void value-changedHandler();
+	extern void gtk_SpinButton_valueChangedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void SpinButton_signal_connect_value_changed(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "value-changed", gtk_SpinButton_valueChangedHandler, data);
+	}
 
 */
 /*
 
-extern void wrappedHandler();
+	extern void gtk_SpinButton_wrappedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void SpinButton_signal_connect_wrapped(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "wrapped", gtk_SpinButton_wrappedHandler, data);
+	}
 
 */
 /*
 
-extern void activateHandler();
+	extern void gtk_StatusIcon_activateHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void StatusIcon_signal_connect_activate(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "activate", gtk_StatusIcon_activateHandler, data);
+	}
 
 */
 /*
 
-extern void button-press-eventHandler();
+	extern void gtk_StatusIcon_buttonPressEventHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void StatusIcon_signal_connect_button_press_event(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "button-press-event", gtk_StatusIcon_buttonPressEventHandler, data);
+	}
 
 */
 /*
 
-extern void button-release-eventHandler();
+	extern void gtk_StatusIcon_buttonReleaseEventHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void StatusIcon_signal_connect_button_release_event(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "button-release-event", gtk_StatusIcon_buttonReleaseEventHandler, data);
+	}
 
 */
 /*
 
-extern void popup-menuHandler();
+	extern void gtk_StatusIcon_popupMenuHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void StatusIcon_signal_connect_popup_menu(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "popup-menu", gtk_StatusIcon_popupMenuHandler, data);
+	}
 
 */
 /*
 
-extern void query-tooltipHandler();
+	extern void gtk_StatusIcon_queryTooltipHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void StatusIcon_signal_connect_query_tooltip(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "query-tooltip", gtk_StatusIcon_queryTooltipHandler, data);
+	}
 
 */
 /*
 
-extern void scroll-eventHandler();
+	extern void gtk_StatusIcon_scrollEventHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void StatusIcon_signal_connect_scroll_event(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "scroll-event", gtk_StatusIcon_scrollEventHandler, data);
+	}
 
 */
 /*
 
-extern void size-changedHandler();
+	extern void gtk_StatusIcon_sizeChangedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void StatusIcon_signal_connect_size_changed(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "size-changed", gtk_StatusIcon_sizeChangedHandler, data);
+	}
 
 */
 /*
 
-extern void text-poppedHandler();
+	extern void gtk_Statusbar_textPoppedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Statusbar_signal_connect_text_popped(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "text-popped", gtk_Statusbar_textPoppedHandler, data);
+	}
 
 */
 /*
 
-extern void text-pushedHandler();
+	extern void gtk_Statusbar_textPushedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Statusbar_signal_connect_text_pushed(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "text-pushed", gtk_Statusbar_textPushedHandler, data);
+	}
 
 */
 /*
 
-extern void realizeHandler();
+	extern void gtk_Style_realizeHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Style_signal_connect_realize(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "realize", gtk_Style_realizeHandler, data);
+	}
 
 */
 /*
 
-extern void unrealizeHandler();
+	extern void gtk_Style_unrealizeHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Style_signal_connect_unrealize(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "unrealize", gtk_Style_unrealizeHandler, data);
+	}
 
 */
 /*
 
-extern void changedHandler();
+	extern void gtk_StyleContext_changedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void StyleContext_signal_connect_changed(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "changed", gtk_StyleContext_changedHandler, data);
+	}
 
 */
 /*
 
-extern void activateHandler();
+	extern void gtk_Switch_activateHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Switch_signal_connect_activate(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "activate", gtk_Switch_activateHandler, data);
+	}
 
 */
 /*
 
-extern void state-setHandler();
+	extern void gtk_Switch_stateSetHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Switch_signal_connect_state_set(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "state-set", gtk_Switch_stateSetHandler, data);
+	}
 
 */
 /*
 
-extern void apply-tagHandler();
+	extern void gtk_TextBuffer_applyTagHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void TextBuffer_signal_connect_apply_tag(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "apply-tag", gtk_TextBuffer_applyTagHandler, data);
+	}
 
 */
 /*
 
-extern void begin-user-actionHandler();
+	extern void gtk_TextBuffer_beginUserActionHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void TextBuffer_signal_connect_begin_user_action(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "begin-user-action", gtk_TextBuffer_beginUserActionHandler, data);
+	}
 
 */
 /*
 
-extern void changedHandler();
+	extern void gtk_TextBuffer_changedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void TextBuffer_signal_connect_changed(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "changed", gtk_TextBuffer_changedHandler, data);
+	}
 
 */
 /*
 
-extern void delete-rangeHandler();
+	extern void gtk_TextBuffer_deleteRangeHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void TextBuffer_signal_connect_delete_range(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "delete-range", gtk_TextBuffer_deleteRangeHandler, data);
+	}
 
 */
 /*
 
-extern void end-user-actionHandler();
+	extern void gtk_TextBuffer_endUserActionHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void TextBuffer_signal_connect_end_user_action(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "end-user-action", gtk_TextBuffer_endUserActionHandler, data);
+	}
 
 */
 /*
 
-extern void insert-child-anchorHandler();
+	extern void gtk_TextBuffer_insertChildAnchorHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void TextBuffer_signal_connect_insert_child_anchor(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "insert-child-anchor", gtk_TextBuffer_insertChildAnchorHandler, data);
+	}
 
 */
 /*
 
-extern void insert-pixbufHandler();
+	extern void gtk_TextBuffer_insertPixbufHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void TextBuffer_signal_connect_insert_pixbuf(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "insert-pixbuf", gtk_TextBuffer_insertPixbufHandler, data);
+	}
 
 */
 /*
 
-extern void insert-textHandler();
+	extern void gtk_TextBuffer_insertTextHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void TextBuffer_signal_connect_insert_text(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "insert-text", gtk_TextBuffer_insertTextHandler, data);
+	}
 
 */
 /*
 
-extern void mark-deletedHandler();
+	extern void gtk_TextBuffer_markDeletedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void TextBuffer_signal_connect_mark_deleted(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "mark-deleted", gtk_TextBuffer_markDeletedHandler, data);
+	}
 
 */
 /*
 
-extern void mark-setHandler();
+	extern void gtk_TextBuffer_markSetHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void TextBuffer_signal_connect_mark_set(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "mark-set", gtk_TextBuffer_markSetHandler, data);
+	}
 
 */
 /*
 
-extern void modified-changedHandler();
+	extern void gtk_TextBuffer_modifiedChangedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void TextBuffer_signal_connect_modified_changed(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "modified-changed", gtk_TextBuffer_modifiedChangedHandler, data);
+	}
 
 */
 /*
 
-extern void paste-doneHandler();
+	extern void gtk_TextBuffer_pasteDoneHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void TextBuffer_signal_connect_paste_done(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "paste-done", gtk_TextBuffer_pasteDoneHandler, data);
+	}
 
 */
 /*
 
-extern void remove-tagHandler();
+	extern void gtk_TextBuffer_removeTagHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void TextBuffer_signal_connect_remove_tag(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "remove-tag", gtk_TextBuffer_removeTagHandler, data);
+	}
 
 */
 /*
 
-extern void eventHandler();
+	extern void gtk_TextTag_eventHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void TextTag_signal_connect_event(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "event", gtk_TextTag_eventHandler, data);
+	}
 
 */
 /*
 
-extern void tag-addedHandler();
+	extern void gtk_TextTagTable_tagAddedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void TextTagTable_signal_connect_tag_added(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "tag-added", gtk_TextTagTable_tagAddedHandler, data);
+	}
 
 */
 /*
 
-extern void tag-changedHandler();
+	extern void gtk_TextTagTable_tagChangedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void TextTagTable_signal_connect_tag_changed(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "tag-changed", gtk_TextTagTable_tagChangedHandler, data);
+	}
 
 */
 /*
 
-extern void tag-removedHandler();
+	extern void gtk_TextTagTable_tagRemovedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void TextTagTable_signal_connect_tag_removed(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "tag-removed", gtk_TextTagTable_tagRemovedHandler, data);
+	}
 
 */
 /*
 
-extern void backspaceHandler();
+	extern void gtk_TextView_backspaceHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void TextView_signal_connect_backspace(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "backspace", gtk_TextView_backspaceHandler, data);
+	}
 
 */
 /*
 
-extern void copy-clipboardHandler();
+	extern void gtk_TextView_copyClipboardHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void TextView_signal_connect_copy_clipboard(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "copy-clipboard", gtk_TextView_copyClipboardHandler, data);
+	}
 
 */
 /*
 
-extern void cut-clipboardHandler();
+	extern void gtk_TextView_cutClipboardHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void TextView_signal_connect_cut_clipboard(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "cut-clipboard", gtk_TextView_cutClipboardHandler, data);
+	}
 
 */
 /*
 
-extern void delete-from-cursorHandler();
+	extern void gtk_TextView_deleteFromCursorHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void TextView_signal_connect_delete_from_cursor(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "delete-from-cursor", gtk_TextView_deleteFromCursorHandler, data);
+	}
 
 */
 /*
 
-extern void extend-selectionHandler();
+	extern void gtk_TextView_extendSelectionHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void TextView_signal_connect_extend_selection(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "extend-selection", gtk_TextView_extendSelectionHandler, data);
+	}
 
 */
 /*
 
-extern void insert-at-cursorHandler();
+	extern void gtk_TextView_insertAtCursorHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void TextView_signal_connect_insert_at_cursor(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "insert-at-cursor", gtk_TextView_insertAtCursorHandler, data);
+	}
 
 */
 /*
 
-extern void insert-emojiHandler();
+	extern void gtk_TextView_insertEmojiHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void TextView_signal_connect_insert_emoji(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "insert-emoji", gtk_TextView_insertEmojiHandler, data);
+	}
 
 */
 /*
 
-extern void move-cursorHandler();
+	extern void gtk_TextView_moveCursorHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void TextView_signal_connect_move_cursor(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "move-cursor", gtk_TextView_moveCursorHandler, data);
+	}
 
 */
 /*
 
-extern void move-viewportHandler();
+	extern void gtk_TextView_moveViewportHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void TextView_signal_connect_move_viewport(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "move-viewport", gtk_TextView_moveViewportHandler, data);
+	}
 
 */
 /*
 
-extern void paste-clipboardHandler();
+	extern void gtk_TextView_pasteClipboardHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void TextView_signal_connect_paste_clipboard(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "paste-clipboard", gtk_TextView_pasteClipboardHandler, data);
+	}
 
 */
 /*
 
-extern void populate-popupHandler();
+	extern void gtk_TextView_populatePopupHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void TextView_signal_connect_populate_popup(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "populate-popup", gtk_TextView_populatePopupHandler, data);
+	}
 
 */
 /*
 
-extern void preedit-changedHandler();
+	extern void gtk_TextView_preeditChangedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void TextView_signal_connect_preedit_changed(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "preedit-changed", gtk_TextView_preeditChangedHandler, data);
+	}
 
 */
 /*
 
-extern void select-allHandler();
+	extern void gtk_TextView_selectAllHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void TextView_signal_connect_select_all(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "select-all", gtk_TextView_selectAllHandler, data);
+	}
 
 */
 /*
 
-extern void set-anchorHandler();
+	extern void gtk_TextView_setAnchorHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void TextView_signal_connect_set_anchor(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "set-anchor", gtk_TextView_setAnchorHandler, data);
+	}
 
 */
 /*
 
-extern void toggle-cursor-visibleHandler();
+	extern void gtk_TextView_toggleCursorVisibleHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void TextView_signal_connect_toggle_cursor_visible(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "toggle-cursor-visible", gtk_TextView_toggleCursorVisibleHandler, data);
+	}
 
 */
 /*
 
-extern void toggle-overwriteHandler();
+	extern void gtk_TextView_toggleOverwriteHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void TextView_signal_connect_toggle_overwrite(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "toggle-overwrite", gtk_TextView_toggleOverwriteHandler, data);
+	}
 
 */
 /*
 
-extern void toggledHandler();
+	extern void gtk_ToggleAction_toggledHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void ToggleAction_signal_connect_toggled(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "toggled", gtk_ToggleAction_toggledHandler, data);
+	}
 
 */
 /*
 
-extern void toggledHandler();
+	extern void gtk_ToggleButton_toggledHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void ToggleButton_signal_connect_toggled(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "toggled", gtk_ToggleButton_toggledHandler, data);
+	}
 
 */
 /*
 
-extern void toggledHandler();
+	extern void gtk_ToggleToolButton_toggledHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void ToggleToolButton_signal_connect_toggled(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "toggled", gtk_ToggleToolButton_toggledHandler, data);
+	}
 
 */
 /*
 
-extern void clickedHandler();
+	extern void gtk_ToolButton_clickedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void ToolButton_signal_connect_clicked(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "clicked", gtk_ToolButton_clickedHandler, data);
+	}
 
 */
 /*
 
-extern void create-menu-proxyHandler();
+	extern void gtk_ToolItem_createMenuProxyHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void ToolItem_signal_connect_create_menu_proxy(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "create-menu-proxy", gtk_ToolItem_createMenuProxyHandler, data);
+	}
 
 */
 /*
 
-extern void toolbar-reconfiguredHandler();
+	extern void gtk_ToolItem_toolbarReconfiguredHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void ToolItem_signal_connect_toolbar_reconfigured(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "toolbar-reconfigured", gtk_ToolItem_toolbarReconfiguredHandler, data);
+	}
 
 */
 /*
 
-extern void focus-home-or-endHandler();
+	extern void gtk_Toolbar_focusHomeOrEndHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Toolbar_signal_connect_focus_home_or_end(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "focus-home-or-end", gtk_Toolbar_focusHomeOrEndHandler, data);
+	}
 
 */
 /*
 
-extern void orientation-changedHandler();
+	extern void gtk_Toolbar_orientationChangedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Toolbar_signal_connect_orientation_changed(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "orientation-changed", gtk_Toolbar_orientationChangedHandler, data);
+	}
 
 */
 /*
 
-extern void popup-context-menuHandler();
+	extern void gtk_Toolbar_popupContextMenuHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Toolbar_signal_connect_popup_context_menu(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "popup-context-menu", gtk_Toolbar_popupContextMenuHandler, data);
+	}
 
 */
 /*
 
-extern void style-changedHandler();
+	extern void gtk_Toolbar_styleChangedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Toolbar_signal_connect_style_changed(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "style-changed", gtk_Toolbar_styleChangedHandler, data);
+	}
 
 */
 /*
 
-extern void changedHandler();
+	extern void gtk_TreeSelection_changedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void TreeSelection_signal_connect_changed(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "changed", gtk_TreeSelection_changedHandler, data);
+	}
 
 */
 /*
 
-extern void columns-changedHandler();
+	extern void gtk_TreeView_columnsChangedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void TreeView_signal_connect_columns_changed(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "columns-changed", gtk_TreeView_columnsChangedHandler, data);
+	}
 
 */
 /*
 
-extern void cursor-changedHandler();
+	extern void gtk_TreeView_cursorChangedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void TreeView_signal_connect_cursor_changed(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "cursor-changed", gtk_TreeView_cursorChangedHandler, data);
+	}
 
 */
 /*
 
-extern void expand-collapse-cursor-rowHandler();
+	extern void gtk_TreeView_expandCollapseCursorRowHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void TreeView_signal_connect_expand_collapse_cursor_row(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "expand-collapse-cursor-row", gtk_TreeView_expandCollapseCursorRowHandler, data);
+	}
 
 */
 /*
 
-extern void move-cursorHandler();
+	extern void gtk_TreeView_moveCursorHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void TreeView_signal_connect_move_cursor(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "move-cursor", gtk_TreeView_moveCursorHandler, data);
+	}
 
 */
 /*
 
-extern void row-activatedHandler();
+	extern void gtk_TreeView_rowActivatedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void TreeView_signal_connect_row_activated(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "row-activated", gtk_TreeView_rowActivatedHandler, data);
+	}
 
 */
 /*
 
-extern void row-collapsedHandler();
+	extern void gtk_TreeView_rowCollapsedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void TreeView_signal_connect_row_collapsed(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "row-collapsed", gtk_TreeView_rowCollapsedHandler, data);
+	}
 
 */
 /*
 
-extern void row-expandedHandler();
+	extern void gtk_TreeView_rowExpandedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void TreeView_signal_connect_row_expanded(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "row-expanded", gtk_TreeView_rowExpandedHandler, data);
+	}
 
 */
 /*
 
-extern void select-allHandler();
+	extern void gtk_TreeView_selectAllHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void TreeView_signal_connect_select_all(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "select-all", gtk_TreeView_selectAllHandler, data);
+	}
 
 */
 /*
 
-extern void select-cursor-parentHandler();
+	extern void gtk_TreeView_selectCursorParentHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void TreeView_signal_connect_select_cursor_parent(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "select-cursor-parent", gtk_TreeView_selectCursorParentHandler, data);
+	}
 
 */
 /*
 
-extern void select-cursor-rowHandler();
+	extern void gtk_TreeView_selectCursorRowHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void TreeView_signal_connect_select_cursor_row(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "select-cursor-row", gtk_TreeView_selectCursorRowHandler, data);
+	}
 
 */
 /*
 
-extern void start-interactive-searchHandler();
+	extern void gtk_TreeView_startInteractiveSearchHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void TreeView_signal_connect_start_interactive_search(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "start-interactive-search", gtk_TreeView_startInteractiveSearchHandler, data);
+	}
 
 */
 /*
 
-extern void test-collapse-rowHandler();
+	extern void gtk_TreeView_testCollapseRowHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void TreeView_signal_connect_test_collapse_row(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "test-collapse-row", gtk_TreeView_testCollapseRowHandler, data);
+	}
 
 */
 /*
 
-extern void test-expand-rowHandler();
+	extern void gtk_TreeView_testExpandRowHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void TreeView_signal_connect_test_expand_row(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "test-expand-row", gtk_TreeView_testExpandRowHandler, data);
+	}
 
 */
 /*
 
-extern void toggle-cursor-rowHandler();
+	extern void gtk_TreeView_toggleCursorRowHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void TreeView_signal_connect_toggle_cursor_row(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "toggle-cursor-row", gtk_TreeView_toggleCursorRowHandler, data);
+	}
 
 */
 /*
 
-extern void unselect-allHandler();
+	extern void gtk_TreeView_unselectAllHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void TreeView_signal_connect_unselect_all(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "unselect-all", gtk_TreeView_unselectAllHandler, data);
+	}
 
 */
 /*
 
-extern void clickedHandler();
+	extern void gtk_TreeViewColumn_clickedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void TreeViewColumn_signal_connect_clicked(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "clicked", gtk_TreeViewColumn_clickedHandler, data);
+	}
 
 */
 /*
 
-extern void actions-changedHandler();
+	extern void gtk_UIManager_actionsChangedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void UIManager_signal_connect_actions_changed(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "actions-changed", gtk_UIManager_actionsChangedHandler, data);
+	}
 
 */
 /*
 
-extern void add-widgetHandler();
+	extern void gtk_UIManager_addWidgetHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void UIManager_signal_connect_add_widget(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "add-widget", gtk_UIManager_addWidgetHandler, data);
+	}
 
 */
 /*
 
-extern void connect-proxyHandler();
+	extern void gtk_UIManager_connectProxyHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void UIManager_signal_connect_connect_proxy(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "connect-proxy", gtk_UIManager_connectProxyHandler, data);
+	}
 
 */
 /*
 
-extern void disconnect-proxyHandler();
+	extern void gtk_UIManager_disconnectProxyHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void UIManager_signal_connect_disconnect_proxy(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "disconnect-proxy", gtk_UIManager_disconnectProxyHandler, data);
+	}
 
 */
 /*
 
-extern void post-activateHandler();
+	extern void gtk_UIManager_postActivateHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void UIManager_signal_connect_post_activate(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "post-activate", gtk_UIManager_postActivateHandler, data);
+	}
 
 */
 /*
 
-extern void pre-activateHandler();
+	extern void gtk_UIManager_preActivateHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void UIManager_signal_connect_pre_activate(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "pre-activate", gtk_UIManager_preActivateHandler, data);
+	}
 
 */
 /*
 
-extern void accel-closures-changedHandler();
+	extern void gtk_Widget_accelClosuresChangedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Widget_signal_connect_accel_closures_changed(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "accel-closures-changed", gtk_Widget_accelClosuresChangedHandler, data);
+	}
 
 */
 /*
 
-extern void button-press-eventHandler();
+	extern void gtk_Widget_buttonPressEventHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Widget_signal_connect_button_press_event(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "button-press-event", gtk_Widget_buttonPressEventHandler, data);
+	}
 
 */
 /*
 
-extern void button-release-eventHandler();
+	extern void gtk_Widget_buttonReleaseEventHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Widget_signal_connect_button_release_event(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "button-release-event", gtk_Widget_buttonReleaseEventHandler, data);
+	}
 
 */
 /*
 
-extern void can-activate-accelHandler();
+	extern void gtk_Widget_canActivateAccelHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Widget_signal_connect_can_activate_accel(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "can-activate-accel", gtk_Widget_canActivateAccelHandler, data);
+	}
 
 */
 /*
 
-extern void child-notifyHandler();
+	extern void gtk_Widget_childNotifyHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Widget_signal_connect_child_notify(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "child-notify", gtk_Widget_childNotifyHandler, data);
+	}
 
 */
 /*
 
-extern void composited-changedHandler();
+	extern void gtk_Widget_compositedChangedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Widget_signal_connect_composited_changed(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "composited-changed", gtk_Widget_compositedChangedHandler, data);
+	}
 
 */
 /*
 
-extern void configure-eventHandler();
+	extern void gtk_Widget_configureEventHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Widget_signal_connect_configure_event(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "configure-event", gtk_Widget_configureEventHandler, data);
+	}
 
 */
 /*
 
-extern void damage-eventHandler();
+	extern void gtk_Widget_damageEventHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Widget_signal_connect_damage_event(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "damage-event", gtk_Widget_damageEventHandler, data);
+	}
 
 */
 /*
 
-extern void delete-eventHandler();
+	extern void gtk_Widget_deleteEventHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Widget_signal_connect_delete_event(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "delete-event", gtk_Widget_deleteEventHandler, data);
+	}
 
 */
 /*
 
-extern void destroyHandler();
+	extern void gtk_Widget_destroyHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Widget_signal_connect_destroy(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "destroy", gtk_Widget_destroyHandler, data);
+	}
 
 */
 /*
 
-extern void destroy-eventHandler();
+	extern void gtk_Widget_destroyEventHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Widget_signal_connect_destroy_event(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "destroy-event", gtk_Widget_destroyEventHandler, data);
+	}
 
 */
 /*
 
-extern void direction-changedHandler();
+	extern void gtk_Widget_directionChangedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Widget_signal_connect_direction_changed(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "direction-changed", gtk_Widget_directionChangedHandler, data);
+	}
 
 */
 /*
 
-extern void drag-beginHandler();
+	extern void gtk_Widget_dragBeginHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Widget_signal_connect_drag_begin(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "drag-begin", gtk_Widget_dragBeginHandler, data);
+	}
 
 */
 /*
 
-extern void drag-data-deleteHandler();
+	extern void gtk_Widget_dragDataDeleteHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Widget_signal_connect_drag_data_delete(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "drag-data-delete", gtk_Widget_dragDataDeleteHandler, data);
+	}
 
 */
 /*
 
-extern void drag-data-getHandler();
+	extern void gtk_Widget_dragDataGetHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Widget_signal_connect_drag_data_get(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "drag-data-get", gtk_Widget_dragDataGetHandler, data);
+	}
 
 */
 /*
 
-extern void drag-data-receivedHandler();
+	extern void gtk_Widget_dragDataReceivedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Widget_signal_connect_drag_data_received(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "drag-data-received", gtk_Widget_dragDataReceivedHandler, data);
+	}
 
 */
 /*
 
-extern void drag-dropHandler();
+	extern void gtk_Widget_dragDropHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Widget_signal_connect_drag_drop(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "drag-drop", gtk_Widget_dragDropHandler, data);
+	}
 
 */
 /*
 
-extern void drag-endHandler();
+	extern void gtk_Widget_dragEndHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Widget_signal_connect_drag_end(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "drag-end", gtk_Widget_dragEndHandler, data);
+	}
 
 */
 /*
 
-extern void drag-failedHandler();
+	extern void gtk_Widget_dragFailedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Widget_signal_connect_drag_failed(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "drag-failed", gtk_Widget_dragFailedHandler, data);
+	}
 
 */
 /*
 
-extern void drag-leaveHandler();
+	extern void gtk_Widget_dragLeaveHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Widget_signal_connect_drag_leave(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "drag-leave", gtk_Widget_dragLeaveHandler, data);
+	}
 
 */
 /*
 
-extern void drag-motionHandler();
+	extern void gtk_Widget_dragMotionHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Widget_signal_connect_drag_motion(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "drag-motion", gtk_Widget_dragMotionHandler, data);
+	}
 
 */
 /*
 
-extern void drawHandler();
+	extern void gtk_Widget_drawHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Widget_signal_connect_draw(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "draw", gtk_Widget_drawHandler, data);
+	}
 
 */
 /*
 
-extern void enter-notify-eventHandler();
+	extern void gtk_Widget_enterNotifyEventHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Widget_signal_connect_enter_notify_event(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "enter-notify-event", gtk_Widget_enterNotifyEventHandler, data);
+	}
 
 */
 /*
 
-extern void eventHandler();
+	extern void gtk_Widget_eventHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Widget_signal_connect_event(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "event", gtk_Widget_eventHandler, data);
+	}
 
 */
 /*
 
-extern void event-afterHandler();
+	extern void gtk_Widget_eventAfterHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Widget_signal_connect_event_after(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "event-after", gtk_Widget_eventAfterHandler, data);
+	}
 
 */
 /*
 
-extern void focusHandler();
+	extern void gtk_Widget_focusHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Widget_signal_connect_focus(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "focus", gtk_Widget_focusHandler, data);
+	}
 
 */
 /*
 
-extern void focus-in-eventHandler();
+	extern void gtk_Widget_focusInEventHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Widget_signal_connect_focus_in_event(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "focus-in-event", gtk_Widget_focusInEventHandler, data);
+	}
 
 */
 /*
 
-extern void focus-out-eventHandler();
+	extern void gtk_Widget_focusOutEventHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Widget_signal_connect_focus_out_event(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "focus-out-event", gtk_Widget_focusOutEventHandler, data);
+	}
 
 */
 /*
 
-extern void grab-broken-eventHandler();
+	extern void gtk_Widget_grabBrokenEventHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Widget_signal_connect_grab_broken_event(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "grab-broken-event", gtk_Widget_grabBrokenEventHandler, data);
+	}
 
 */
 /*
 
-extern void grab-focusHandler();
+	extern void gtk_Widget_grabFocusHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Widget_signal_connect_grab_focus(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "grab-focus", gtk_Widget_grabFocusHandler, data);
+	}
 
 */
 /*
 
-extern void grab-notifyHandler();
+	extern void gtk_Widget_grabNotifyHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Widget_signal_connect_grab_notify(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "grab-notify", gtk_Widget_grabNotifyHandler, data);
+	}
 
 */
 /*
 
-extern void hideHandler();
+	extern void gtk_Widget_hideHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Widget_signal_connect_hide(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "hide", gtk_Widget_hideHandler, data);
+	}
 
 */
 /*
 
-extern void hierarchy-changedHandler();
+	extern void gtk_Widget_hierarchyChangedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Widget_signal_connect_hierarchy_changed(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "hierarchy-changed", gtk_Widget_hierarchyChangedHandler, data);
+	}
 
 */
 /*
 
-extern void key-press-eventHandler();
+	extern void gtk_Widget_keyPressEventHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Widget_signal_connect_key_press_event(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "key-press-event", gtk_Widget_keyPressEventHandler, data);
+	}
 
 */
 /*
 
-extern void key-release-eventHandler();
+	extern void gtk_Widget_keyReleaseEventHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Widget_signal_connect_key_release_event(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "key-release-event", gtk_Widget_keyReleaseEventHandler, data);
+	}
 
 */
 /*
 
-extern void keynav-failedHandler();
+	extern void gtk_Widget_keynavFailedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Widget_signal_connect_keynav_failed(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "keynav-failed", gtk_Widget_keynavFailedHandler, data);
+	}
 
 */
 /*
 
-extern void leave-notify-eventHandler();
+	extern void gtk_Widget_leaveNotifyEventHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Widget_signal_connect_leave_notify_event(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "leave-notify-event", gtk_Widget_leaveNotifyEventHandler, data);
+	}
 
 */
 /*
 
-extern void mapHandler();
+	extern void gtk_Widget_mapHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Widget_signal_connect_map(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "map", gtk_Widget_mapHandler, data);
+	}
 
 */
 /*
 
-extern void map-eventHandler();
+	extern void gtk_Widget_mapEventHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Widget_signal_connect_map_event(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "map-event", gtk_Widget_mapEventHandler, data);
+	}
 
 */
 /*
 
-extern void mnemonic-activateHandler();
+	extern void gtk_Widget_mnemonicActivateHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Widget_signal_connect_mnemonic_activate(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "mnemonic-activate", gtk_Widget_mnemonicActivateHandler, data);
+	}
 
 */
 /*
 
-extern void motion-notify-eventHandler();
+	extern void gtk_Widget_motionNotifyEventHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Widget_signal_connect_motion_notify_event(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "motion-notify-event", gtk_Widget_motionNotifyEventHandler, data);
+	}
 
 */
 /*
 
-extern void move-focusHandler();
+	extern void gtk_Widget_moveFocusHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Widget_signal_connect_move_focus(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "move-focus", gtk_Widget_moveFocusHandler, data);
+	}
 
 */
 /*
 
-extern void parent-setHandler();
+	extern void gtk_Widget_parentSetHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Widget_signal_connect_parent_set(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "parent-set", gtk_Widget_parentSetHandler, data);
+	}
 
 */
 /*
 
-extern void popup-menuHandler();
+	extern void gtk_Widget_popupMenuHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Widget_signal_connect_popup_menu(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "popup-menu", gtk_Widget_popupMenuHandler, data);
+	}
 
 */
 /*
 
-extern void property-notify-eventHandler();
+	extern void gtk_Widget_propertyNotifyEventHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Widget_signal_connect_property_notify_event(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "property-notify-event", gtk_Widget_propertyNotifyEventHandler, data);
+	}
 
 */
 /*
 
-extern void proximity-in-eventHandler();
+	extern void gtk_Widget_proximityInEventHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Widget_signal_connect_proximity_in_event(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "proximity-in-event", gtk_Widget_proximityInEventHandler, data);
+	}
 
 */
 /*
 
-extern void proximity-out-eventHandler();
+	extern void gtk_Widget_proximityOutEventHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Widget_signal_connect_proximity_out_event(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "proximity-out-event", gtk_Widget_proximityOutEventHandler, data);
+	}
 
 */
 /*
 
-extern void query-tooltipHandler();
+	extern void gtk_Widget_queryTooltipHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Widget_signal_connect_query_tooltip(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "query-tooltip", gtk_Widget_queryTooltipHandler, data);
+	}
 
 */
 /*
 
-extern void realizeHandler();
+	extern void gtk_Widget_realizeHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Widget_signal_connect_realize(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "realize", gtk_Widget_realizeHandler, data);
+	}
 
 */
 /*
 
-extern void screen-changedHandler();
+	extern void gtk_Widget_screenChangedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Widget_signal_connect_screen_changed(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "screen-changed", gtk_Widget_screenChangedHandler, data);
+	}
 
 */
 /*
 
-extern void scroll-eventHandler();
+	extern void gtk_Widget_scrollEventHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Widget_signal_connect_scroll_event(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "scroll-event", gtk_Widget_scrollEventHandler, data);
+	}
 
 */
 /*
 
-extern void selection-clear-eventHandler();
+	extern void gtk_Widget_selectionClearEventHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Widget_signal_connect_selection_clear_event(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "selection-clear-event", gtk_Widget_selectionClearEventHandler, data);
+	}
 
 */
 /*
 
-extern void selection-getHandler();
+	extern void gtk_Widget_selectionGetHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Widget_signal_connect_selection_get(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "selection-get", gtk_Widget_selectionGetHandler, data);
+	}
 
 */
 /*
 
-extern void selection-notify-eventHandler();
+	extern void gtk_Widget_selectionNotifyEventHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Widget_signal_connect_selection_notify_event(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "selection-notify-event", gtk_Widget_selectionNotifyEventHandler, data);
+	}
 
 */
 /*
 
-extern void selection-receivedHandler();
+	extern void gtk_Widget_selectionReceivedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Widget_signal_connect_selection_received(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "selection-received", gtk_Widget_selectionReceivedHandler, data);
+	}
 
 */
 /*
 
-extern void selection-request-eventHandler();
+	extern void gtk_Widget_selectionRequestEventHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Widget_signal_connect_selection_request_event(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "selection-request-event", gtk_Widget_selectionRequestEventHandler, data);
+	}
 
 */
 /*
 
-extern void showHandler();
+	extern void gtk_Widget_showHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Widget_signal_connect_show(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "show", gtk_Widget_showHandler, data);
+	}
 
 */
 /*
 
-extern void show-helpHandler();
+	extern void gtk_Widget_showHelpHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Widget_signal_connect_show_help(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "show-help", gtk_Widget_showHelpHandler, data);
+	}
 
 */
 /*
 
-extern void size-allocateHandler();
+	extern void gtk_Widget_sizeAllocateHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Widget_signal_connect_size_allocate(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "size-allocate", gtk_Widget_sizeAllocateHandler, data);
+	}
 
 */
 /*
 
-extern void state-changedHandler();
+	extern void gtk_Widget_stateChangedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Widget_signal_connect_state_changed(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "state-changed", gtk_Widget_stateChangedHandler, data);
+	}
 
 */
 /*
 
-extern void state-flags-changedHandler();
+	extern void gtk_Widget_stateFlagsChangedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Widget_signal_connect_state_flags_changed(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "state-flags-changed", gtk_Widget_stateFlagsChangedHandler, data);
+	}
 
 */
 /*
 
-extern void style-setHandler();
+	extern void gtk_Widget_styleSetHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Widget_signal_connect_style_set(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "style-set", gtk_Widget_styleSetHandler, data);
+	}
 
 */
 /*
 
-extern void style-updatedHandler();
+	extern void gtk_Widget_styleUpdatedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Widget_signal_connect_style_updated(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "style-updated", gtk_Widget_styleUpdatedHandler, data);
+	}
 
 */
 /*
 
-extern void touch-eventHandler();
+	extern void gtk_Widget_touchEventHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Widget_signal_connect_touch_event(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "touch-event", gtk_Widget_touchEventHandler, data);
+	}
 
 */
 /*
 
-extern void unmapHandler();
+	extern void gtk_Widget_unmapHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Widget_signal_connect_unmap(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "unmap", gtk_Widget_unmapHandler, data);
+	}
 
 */
 /*
 
-extern void unmap-eventHandler();
+	extern void gtk_Widget_unmapEventHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Widget_signal_connect_unmap_event(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "unmap-event", gtk_Widget_unmapEventHandler, data);
+	}
 
 */
 /*
 
-extern void unrealizeHandler();
+	extern void gtk_Widget_unrealizeHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Widget_signal_connect_unrealize(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "unrealize", gtk_Widget_unrealizeHandler, data);
+	}
 
 */
 /*
 
-extern void visibility-notify-eventHandler();
+	extern void gtk_Widget_visibilityNotifyEventHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Widget_signal_connect_visibility_notify_event(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "visibility-notify-event", gtk_Widget_visibilityNotifyEventHandler, data);
+	}
 
 */
 /*
 
-extern void window-state-eventHandler();
+	extern void gtk_Widget_windowStateEventHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Widget_signal_connect_window_state_event(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "window-state-event", gtk_Widget_windowStateEventHandler, data);
+	}
 
 */
 /*
 
-extern void activate-defaultHandler();
+	extern void gtk_Window_activateDefaultHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Window_signal_connect_activate_default(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "activate-default", gtk_Window_activateDefaultHandler, data);
+	}
 
 */
 /*
 
-extern void activate-focusHandler();
+	extern void gtk_Window_activateFocusHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Window_signal_connect_activate_focus(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "activate-focus", gtk_Window_activateFocusHandler, data);
+	}
 
 */
 /*
 
-extern void enable-debuggingHandler();
+	extern void gtk_Window_enableDebuggingHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Window_signal_connect_enable_debugging(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "enable-debugging", gtk_Window_enableDebuggingHandler, data);
+	}
 
 */
 /*
 
-extern void keys-changedHandler();
+	extern void gtk_Window_keysChangedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Window_signal_connect_keys_changed(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "keys-changed", gtk_Window_keysChangedHandler, data);
+	}
 
 */
 /*
 
-extern void set-focusHandler();
+	extern void gtk_Window_setFocusHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Window_signal_connect_set_focus(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "set-focus", gtk_Window_setFocusHandler, data);
+	}
 
 */
 import "C"

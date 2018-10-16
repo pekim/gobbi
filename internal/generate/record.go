@@ -37,7 +37,7 @@ func (r *Record) init(ns *Namespace) {
 	r.Constructors.init(ns, r)
 	r.Methods.init(ns, r)
 	r.Fields.init(ns)
-	r.Signals.init(ns)
+	r.Signals.init(ns, r)
 }
 
 func (r *Record) version() string {

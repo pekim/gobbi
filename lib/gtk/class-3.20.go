@@ -15,38 +15,38 @@ import (
 // #include <stdlib.h>
 /*
 
-extern void responseHandler();
+	extern void gtk_NativeDialog_responseHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
-
-*/
-/*
-
-extern void change-current-pageHandler();
-
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void NativeDialog_signal_connect_response(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "response", gtk_NativeDialog_responseHandler, data);
+	}
 
 */
 /*
 
-extern void closeHandler();
+	extern void gtk_ShortcutsSection_changeCurrentPageHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void ShortcutsSection_signal_connect_change_current_page(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "change-current-page", gtk_ShortcutsSection_changeCurrentPageHandler, data);
+	}
 
 */
 /*
 
-extern void searchHandler();
+	extern void gtk_ShortcutsWindow_closeHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void ShortcutsWindow_signal_connect_close(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "close", gtk_ShortcutsWindow_closeHandler, data);
+	}
+
+*/
+/*
+
+	extern void gtk_ShortcutsWindow_searchHandler();
+
+	static void ShortcutsWindow_signal_connect_search(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "search", gtk_ShortcutsWindow_searchHandler, data);
+	}
 
 */
 import "C"

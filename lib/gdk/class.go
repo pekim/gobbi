@@ -16,308 +16,308 @@ import (
 // #include <stdlib.h>
 /*
 
-extern void changedHandler();
+	extern void gdk_Device_changedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
-
-*/
-/*
-
-extern void tool-changedHandler();
-
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Device_signal_connect_changed(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "changed", gdk_Device_changedHandler, data);
+	}
 
 */
 /*
 
-extern void device-addedHandler();
+	extern void gdk_Device_toolChangedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
-
-*/
-/*
-
-extern void device-changedHandler();
-
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Device_signal_connect_tool_changed(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "tool-changed", gdk_Device_toolChangedHandler, data);
+	}
 
 */
 /*
 
-extern void device-removedHandler();
+	extern void gdk_DeviceManager_deviceAddedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
-
-*/
-/*
-
-extern void closedHandler();
-
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void DeviceManager_signal_connect_device_added(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "device-added", gdk_DeviceManager_deviceAddedHandler, data);
+	}
 
 */
 /*
 
-extern void monitor-addedHandler();
+	extern void gdk_DeviceManager_deviceChangedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
-
-*/
-/*
-
-extern void monitor-removedHandler();
-
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void DeviceManager_signal_connect_device_changed(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "device-changed", gdk_DeviceManager_deviceChangedHandler, data);
+	}
 
 */
 /*
 
-extern void openedHandler();
+	extern void gdk_DeviceManager_deviceRemovedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
-
-*/
-/*
-
-extern void seat-addedHandler();
-
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void DeviceManager_signal_connect_device_removed(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "device-removed", gdk_DeviceManager_deviceRemovedHandler, data);
+	}
 
 */
 /*
 
-extern void seat-removedHandler();
+	extern void gdk_Display_closedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
-
-*/
-/*
-
-extern void display-openedHandler();
-
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Display_signal_connect_closed(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "closed", gdk_Display_closedHandler, data);
+	}
 
 */
 /*
 
-extern void action-changedHandler();
+	extern void gdk_Display_monitorAddedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
-
-*/
-/*
-
-extern void cancelHandler();
-
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Display_signal_connect_monitor_added(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "monitor-added", gdk_Display_monitorAddedHandler, data);
+	}
 
 */
 /*
 
-extern void dnd-finishedHandler();
+	extern void gdk_Display_monitorRemovedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
-
-*/
-/*
-
-extern void drop-performedHandler();
-
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Display_signal_connect_monitor_removed(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "monitor-removed", gdk_Display_monitorRemovedHandler, data);
+	}
 
 */
 /*
 
-extern void after-paintHandler();
+	extern void gdk_Display_openedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
-
-*/
-/*
-
-extern void before-paintHandler();
-
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Display_signal_connect_opened(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "opened", gdk_Display_openedHandler, data);
+	}
 
 */
 /*
 
-extern void flush-eventsHandler();
+	extern void gdk_Display_seatAddedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
-
-*/
-/*
-
-extern void layoutHandler();
-
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Display_signal_connect_seat_added(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "seat-added", gdk_Display_seatAddedHandler, data);
+	}
 
 */
 /*
 
-extern void paintHandler();
+	extern void gdk_Display_seatRemovedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
-
-*/
-/*
-
-extern void resume-eventsHandler();
-
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void Display_signal_connect_seat_removed(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "seat-removed", gdk_Display_seatRemovedHandler, data);
+	}
 
 */
 /*
 
-extern void updateHandler();
+	extern void gdk_DisplayManager_displayOpenedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
-
-*/
-/*
-
-extern void direction-changedHandler();
-
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void DisplayManager_signal_connect_display_opened(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "display-opened", gdk_DisplayManager_displayOpenedHandler, data);
+	}
 
 */
 /*
 
-extern void keys-changedHandler();
+	extern void gdk_DragContext_actionChangedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
-
-*/
-/*
-
-extern void state-changedHandler();
-
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void DragContext_signal_connect_action_changed(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "action-changed", gdk_DragContext_actionChangedHandler, data);
+	}
 
 */
 /*
 
-extern void composited-changedHandler();
+	extern void gdk_DragContext_cancelHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
-
-*/
-/*
-
-extern void monitors-changedHandler();
-
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void DragContext_signal_connect_cancel(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "cancel", gdk_DragContext_cancelHandler, data);
+	}
 
 */
 /*
 
-extern void size-changedHandler();
+	extern void gdk_DragContext_dndFinishedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
-
-*/
-/*
-
-extern void create-surfaceHandler();
-
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void DragContext_signal_connect_dnd_finished(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "dnd-finished", gdk_DragContext_dndFinishedHandler, data);
+	}
 
 */
 /*
 
-extern void from-embedderHandler();
+	extern void gdk_DragContext_dropPerformedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
-
-*/
-/*
-
-extern void moved-to-rectHandler();
-
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void DragContext_signal_connect_drop_performed(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "drop-performed", gdk_DragContext_dropPerformedHandler, data);
+	}
 
 */
 /*
 
-extern void pick-embedded-childHandler();
+	extern void gdk_FrameClock_afterPaintHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void FrameClock_signal_connect_after_paint(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "after-paint", gdk_FrameClock_afterPaintHandler, data);
+	}
 
 */
 /*
 
-extern void to-embedderHandler();
+	extern void gdk_FrameClock_beforePaintHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void FrameClock_signal_connect_before_paint(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "before-paint", gdk_FrameClock_beforePaintHandler, data);
+	}
+
+*/
+/*
+
+	extern void gdk_FrameClock_flushEventsHandler();
+
+	static void FrameClock_signal_connect_flush_events(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "flush-events", gdk_FrameClock_flushEventsHandler, data);
+	}
+
+*/
+/*
+
+	extern void gdk_FrameClock_layoutHandler();
+
+	static void FrameClock_signal_connect_layout(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "layout", gdk_FrameClock_layoutHandler, data);
+	}
+
+*/
+/*
+
+	extern void gdk_FrameClock_paintHandler();
+
+	static void FrameClock_signal_connect_paint(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "paint", gdk_FrameClock_paintHandler, data);
+	}
+
+*/
+/*
+
+	extern void gdk_FrameClock_resumeEventsHandler();
+
+	static void FrameClock_signal_connect_resume_events(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "resume-events", gdk_FrameClock_resumeEventsHandler, data);
+	}
+
+*/
+/*
+
+	extern void gdk_FrameClock_updateHandler();
+
+	static void FrameClock_signal_connect_update(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "update", gdk_FrameClock_updateHandler, data);
+	}
+
+*/
+/*
+
+	extern void gdk_Keymap_directionChangedHandler();
+
+	static void Keymap_signal_connect_direction_changed(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "direction-changed", gdk_Keymap_directionChangedHandler, data);
+	}
+
+*/
+/*
+
+	extern void gdk_Keymap_keysChangedHandler();
+
+	static void Keymap_signal_connect_keys_changed(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "keys-changed", gdk_Keymap_keysChangedHandler, data);
+	}
+
+*/
+/*
+
+	extern void gdk_Keymap_stateChangedHandler();
+
+	static void Keymap_signal_connect_state_changed(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "state-changed", gdk_Keymap_stateChangedHandler, data);
+	}
+
+*/
+/*
+
+	extern void gdk_Screen_compositedChangedHandler();
+
+	static void Screen_signal_connect_composited_changed(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "composited-changed", gdk_Screen_compositedChangedHandler, data);
+	}
+
+*/
+/*
+
+	extern void gdk_Screen_monitorsChangedHandler();
+
+	static void Screen_signal_connect_monitors_changed(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "monitors-changed", gdk_Screen_monitorsChangedHandler, data);
+	}
+
+*/
+/*
+
+	extern void gdk_Screen_sizeChangedHandler();
+
+	static void Screen_signal_connect_size_changed(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "size-changed", gdk_Screen_sizeChangedHandler, data);
+	}
+
+*/
+/*
+
+	extern void gdk_Window_createSurfaceHandler();
+
+	static void Window_signal_connect_create_surface(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "create-surface", gdk_Window_createSurfaceHandler, data);
+	}
+
+*/
+/*
+
+	extern void gdk_Window_fromEmbedderHandler();
+
+	static void Window_signal_connect_from_embedder(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "from-embedder", gdk_Window_fromEmbedderHandler, data);
+	}
+
+*/
+/*
+
+	extern void gdk_Window_movedToRectHandler();
+
+	static void Window_signal_connect_moved_to_rect(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "moved-to-rect", gdk_Window_movedToRectHandler, data);
+	}
+
+*/
+/*
+
+	extern void gdk_Window_pickEmbeddedChildHandler();
+
+	static void Window_signal_connect_pick_embedded_child(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "pick-embedded-child", gdk_Window_pickEmbeddedChildHandler, data);
+	}
+
+*/
+/*
+
+	extern void gdk_Window_toEmbedderHandler();
+
+	static void Window_signal_connect_to_embedder(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "to-embedder", gdk_Window_toEmbedderHandler, data);
+	}
 
 */
 import "C"

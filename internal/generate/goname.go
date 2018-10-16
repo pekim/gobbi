@@ -36,6 +36,10 @@ func makeExportedGoName(cName string) string {
 
 func makeGoNameInternal(cName string, uppercaseFirstChar bool) string {
 	cParts := strings.Split(cName, "_")
+	if len(cParts) == 1 {
+		cParts = strings.Split(cName, "-")
+	}
+
 	goParts := []string{}
 
 	for i, cPart := range cParts {

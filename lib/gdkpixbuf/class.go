@@ -13,38 +13,38 @@ import (
 // #include <stdlib.h>
 /*
 
-extern void area-preparedHandler();
+	extern void gdkpixbuf_PixbufLoader_areaPreparedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
-
-*/
-/*
-
-extern void area-updatedHandler();
-
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void PixbufLoader_signal_connect_area_prepared(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "area-prepared", gdkpixbuf_PixbufLoader_areaPreparedHandler, data);
+	}
 
 */
 /*
 
-extern void closedHandler();
+	extern void gdkpixbuf_PixbufLoader_areaUpdatedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void PixbufLoader_signal_connect_area_updated(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "area-updated", gdkpixbuf_PixbufLoader_areaUpdatedHandler, data);
+	}
 
 */
 /*
 
-extern void size-preparedHandler();
+	extern void gdkpixbuf_PixbufLoader_closedHandler();
 
-static void signal_connect_destroy(gpointer instance, gpointer data) {
-	g_signal_connect_data(instance, "destroy", destroyHandler, data, (GClosureNotify)NULL, 0);
-}
+	static void PixbufLoader_signal_connect_closed(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "closed", gdkpixbuf_PixbufLoader_closedHandler, data);
+	}
+
+*/
+/*
+
+	extern void gdkpixbuf_PixbufLoader_sizePreparedHandler();
+
+	static void PixbufLoader_signal_connect_size_prepared(gpointer instance, gpointer data) {
+		g_signal_connect(instance, "size-prepared", gdkpixbuf_PixbufLoader_sizePreparedHandler, data);
+	}
 
 */
 import "C"
