@@ -24,6 +24,7 @@ type Record struct {
 	Fields         Fields       `xml:"field"`
 	Constructors   Constructors `xml:"constructor"`
 	Methods        Methods      `xml:"method"`
+	Signals        Signals      `xml:"http://www.gtk.org/introspection/glib/1.0 signal"`
 
 	newFromCFuncName string
 }
