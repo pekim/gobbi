@@ -11,6 +11,78 @@ import (
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <gdk/gdk.h>
 // #include <stdlib.h>
+/*
+
+	void Display_seatAddedHandler();
+
+	static gulong Display_signal_connect_seat_added(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "seat-added", Display_seatAddedHandler, data);
+	}
+
+*/
+/*
+
+	void Display_seatRemovedHandler();
+
+	static gulong Display_signal_connect_seat_removed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "seat-removed", Display_seatRemovedHandler, data);
+	}
+
+*/
+/*
+
+	void DragContext_actionChangedHandler();
+
+	static gulong DragContext_signal_connect_action_changed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "action-changed", DragContext_actionChangedHandler, data);
+	}
+
+*/
+/*
+
+	void DragContext_cancelHandler();
+
+	static gulong DragContext_signal_connect_cancel(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "cancel", DragContext_cancelHandler, data);
+	}
+
+*/
+/*
+
+	void DragContext_dndFinishedHandler();
+
+	static gulong DragContext_signal_connect_dnd_finished(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "dnd-finished", DragContext_dndFinishedHandler, data);
+	}
+
+*/
+/*
+
+	void DragContext_dropPerformedHandler();
+
+	static gulong DragContext_signal_connect_drop_performed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "drop-performed", DragContext_dropPerformedHandler, data);
+	}
+
+*/
+/*
+
+	void Seat_deviceAddedHandler();
+
+	static gulong Seat_signal_connect_device_added(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "device-added", Seat_deviceAddedHandler, data);
+	}
+
+*/
+/*
+
+	void Seat_deviceRemovedHandler();
+
+	static gulong Seat_signal_connect_device_removed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "device-removed", Seat_deviceRemovedHandler, data);
+	}
+
+*/
 import "C"
 
 // GetSeat is a wrapper around the C function gdk_device_get_seat.
@@ -20,6 +92,12 @@ func (recv *Device) GetSeat() *Seat {
 
 	return retGo
 }
+
+// DisplaySignalSeatAddedCallback is a callback function for a 'seat-added' signal emitted from a Display.
+type DisplaySignalSeatAddedCallback func(seat *Seat)
+
+// DisplaySignalSeatRemovedCallback is a callback function for a 'seat-removed' signal emitted from a Display.
+type DisplaySignalSeatRemovedCallback func(seat *Seat)
 
 // GetDefaultSeat is a wrapper around the C function gdk_display_get_default_seat.
 func (recv *Display) GetDefaultSeat() *Seat {
@@ -36,6 +114,18 @@ func (recv *Display) ListSeats() *glib.List {
 
 	return retGo
 }
+
+// DragContextSignalActionChangedCallback is a callback function for a 'action-changed' signal emitted from a DragContext.
+type DragContextSignalActionChangedCallback func(action DragAction)
+
+// DragContextSignalCancelCallback is a callback function for a 'cancel' signal emitted from a DragContext.
+type DragContextSignalCancelCallback func(reason DragCancelReason)
+
+// DragContextSignalDndFinishedCallback is a callback function for a 'dnd-finished' signal emitted from a DragContext.
+type DragContextSignalDndFinishedCallback func()
+
+// DragContextSignalDropPerformedCallback is a callback function for a 'drop-performed' signal emitted from a DragContext.
+type DragContextSignalDropPerformedCallback func(time int32)
 
 // GetDragWindow is a wrapper around the C function gdk_drag_context_get_drag_window.
 func (recv *DragContext) GetDragWindow() *Window {
@@ -75,6 +165,12 @@ func (recv *GLContext) IsLegacy() bool {
 
 	return retGo
 }
+
+// SeatSignalDeviceAddedCallback is a callback function for a 'device-added' signal emitted from a Seat.
+type SeatSignalDeviceAddedCallback func(device *Device)
+
+// SeatSignalDeviceRemovedCallback is a callback function for a 'device-removed' signal emitted from a Seat.
+type SeatSignalDeviceRemovedCallback func(device *Device)
 
 // GetCapabilities is a wrapper around the C function gdk_seat_get_capabilities.
 func (recv *Seat) GetCapabilities() SeatCapabilities {

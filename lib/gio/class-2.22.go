@@ -24,15 +24,6 @@ import (
 // #include <stdlib.h>
 /*
 
-	void SocketListener_eventHandler();
-
-	static gulong SocketListener_signal_connect_event(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "event", SocketListener_eventHandler, data);
-	}
-
-*/
-/*
-
 	void SocketService_incomingHandler();
 
 	static gulong SocketService_signal_connect_incoming(gpointer instance, gpointer data) {
@@ -40,16 +31,11 @@ import (
 	}
 
 */
-/*
-
-	void ThreadedSocketService_runHandler();
-
-	static gulong ThreadedSocketService_signal_connect_run(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "run", ThreadedSocketService_runHandler, data);
-	}
-
-*/
 import "C"
+
+// Unsupported signal : unsupported parameter info : no type generator for AppInfo,
+
+// Unsupported signal : unsupported parameter files : no param type
 
 // Unsupported : g_cancellable_connect : unsupported parameter callback : no type generator for GObject.Callback, GCallback
 
@@ -89,6 +75,10 @@ func (recv *Cancellable) ReleaseFd() {
 
 // Unsupported : g_dbus_message_new_from_blob : unsupported parameter blob : no param type
 
+// Unsupported signal : unsupported parameter changed_properties : Blacklisted record : GVariant
+
+// Unsupported signal : unsupported parameter parameters : Blacklisted record : GVariant
+
 // Unsupported : g_dbus_object_manager_client_new_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
 
 // Unsupported : g_dbus_object_manager_client_new_for_bus_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
@@ -96,6 +86,10 @@ func (recv *Cancellable) ReleaseFd() {
 // Unsupported : g_dbus_object_manager_client_new_for_bus_sync : unsupported parameter get_proxy_type_func : no type generator for DBusProxyTypeFunc, GDBusProxyTypeFunc
 
 // Unsupported : g_dbus_object_manager_client_new_sync : unsupported parameter get_proxy_type_func : no type generator for DBusProxyTypeFunc, GDBusProxyTypeFunc
+
+// Unsupported signal : unsupported parameter changed_properties : Blacklisted record : GVariant
+
+// Unsupported signal : unsupported parameter parameters : Blacklisted record : GVariant
 
 // Unsupported : g_dbus_proxy_new_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
 
@@ -167,6 +161,8 @@ func (recv *FileInfo) SetAttributeStatus(attribute string, status FileAttributeS
 
 	return retGo
 }
+
+// Unsupported signal : unsupported parameter file : no type generator for File,
 
 // ClearPending is a wrapper around the C function g_io_stream_clear_pending.
 func (recv *IOStream) ClearPending() {
@@ -417,6 +413,10 @@ func (recv *InetSocketAddress) GetPort() uint16 {
 
 // Unsupported : g_memory_output_stream_new : unsupported parameter realloc_function : no type generator for ReallocFunc, GReallocFunc
 
+// Unsupported signal : unsupported parameter choices : no param type
+
+// Unsupported signal : unsupported parameter processes : no param type
+
 // NetworkAddressNew is a wrapper around the C function g_network_address_new.
 func NetworkAddressNew(hostname string, port uint16) *NetworkAddress {
 	c_hostname := C.CString(hostname)
@@ -571,6 +571,12 @@ func (recv *Resolver) SetDefault() {
 
 	return
 }
+
+// Unsupported signal : unsupported parameter keys : no param type
+
+// Unsupported signal : unsupported parameter parameter : Blacklisted record : GVariant
+
+// Unsupported signal : unsupported parameter value : Blacklisted record : GVariant
 
 // Unsupported : g_simple_action_new : unsupported parameter parameter_type : Blacklisted record : GVariantType
 
@@ -1337,9 +1343,6 @@ func CastToSocketListener(object *gobject.Object) *SocketListener {
 	return SocketListenerNewFromC(object.ToC())
 }
 
-// SocketListenerSignalEventCallback is a callback function for a 'event' signal emitted from a SocketListener.
-type SocketListenerSignalEventCallback func(event SocketListenerEvent, socket *Socket)
-
 // SocketListenerNew is a wrapper around the C function g_socket_listener_new.
 func SocketListenerNew() *SocketListener {
 	retC := C.g_socket_listener_new()
@@ -1602,9 +1605,6 @@ func CastToThreadedSocketService(object *gobject.Object) *ThreadedSocketService 
 	return ThreadedSocketServiceNewFromC(object.ToC())
 }
 
-// ThreadedSocketServiceSignalRunCallback is a callback function for a 'run' signal emitted from a ThreadedSocketService.
-type ThreadedSocketServiceSignalRunCallback func(connection *SocketConnection, sourceObject *gobject.Object) bool
-
 // ThreadedSocketServiceNew is a wrapper around the C function g_threaded_socket_service_new.
 func ThreadedSocketServiceNew(maxThreads int32) *ThreadedSocketService {
 	c_max_threads := (C.int)(maxThreads)
@@ -1718,3 +1718,27 @@ func (recv *UnixSocketAddress) GetPathLen() uint64 {
 
 	return retGo
 }
+
+// Unsupported signal : unsupported parameter drive : no type generator for Drive,
+
+// Unsupported signal : unsupported parameter drive : no type generator for Drive,
+
+// Unsupported signal : unsupported parameter drive : no type generator for Drive,
+
+// Unsupported signal : unsupported parameter drive : no type generator for Drive,
+
+// Unsupported signal : unsupported parameter drive : no type generator for Drive,
+
+// Unsupported signal : unsupported parameter mount : no type generator for Mount,
+
+// Unsupported signal : unsupported parameter mount : no type generator for Mount,
+
+// Unsupported signal : unsupported parameter mount : no type generator for Mount,
+
+// Unsupported signal : unsupported parameter mount : no type generator for Mount,
+
+// Unsupported signal : unsupported parameter volume : no type generator for Volume,
+
+// Unsupported signal : unsupported parameter volume : no type generator for Volume,
+
+// Unsupported signal : unsupported parameter volume : no type generator for Volume,

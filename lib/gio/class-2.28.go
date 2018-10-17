@@ -24,51 +24,6 @@ import (
 // #include <stdlib.h>
 /*
 
-	void Application_activateHandler();
-
-	static gulong Application_signal_connect_activate(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "activate", Application_activateHandler, data);
-	}
-
-*/
-/*
-
-	void Application_commandLineHandler();
-
-	static gulong Application_signal_connect_command_line(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "command-line", Application_commandLineHandler, data);
-	}
-
-*/
-/*
-
-	void Application_handleLocalOptionsHandler();
-
-	static gulong Application_signal_connect_handle_local_options(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "handle-local-options", Application_handleLocalOptionsHandler, data);
-	}
-
-*/
-/*
-
-	void Application_shutdownHandler();
-
-	static gulong Application_signal_connect_shutdown(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "shutdown", Application_shutdownHandler, data);
-	}
-
-*/
-/*
-
-	void Application_startupHandler();
-
-	static gulong Application_signal_connect_startup(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "startup", Application_startupHandler, data);
-	}
-
-*/
-/*
-
 	void TlsConnection_acceptCertificateHandler();
 
 	static gulong TlsConnection_signal_connect_accept_certificate(gpointer instance, gpointer data) {
@@ -77,6 +32,8 @@ import (
 
 */
 import "C"
+
+// Unsupported signal : unsupported parameter info : no type generator for AppInfo,
 
 // Application is a wrapper around the C record GApplication.
 type Application struct {
@@ -112,22 +69,7 @@ func CastToApplication(object *gobject.Object) *Application {
 	return ApplicationNewFromC(object.ToC())
 }
 
-// ApplicationSignalActivateCallback is a callback function for a 'activate' signal emitted from a Application.
-type ApplicationSignalActivateCallback func()
-
-// ApplicationSignalCommandLineCallback is a callback function for a 'command-line' signal emitted from a Application.
-type ApplicationSignalCommandLineCallback func(commandLine *ApplicationCommandLine) int32
-
-// ApplicationSignalHandleLocalOptionsCallback is a callback function for a 'handle-local-options' signal emitted from a Application.
-type ApplicationSignalHandleLocalOptionsCallback func(options *glib.VariantDict) int32
-
 // Unsupported signal : unsupported parameter files : no param type
-
-// ApplicationSignalShutdownCallback is a callback function for a 'shutdown' signal emitted from a Application.
-type ApplicationSignalShutdownCallback func()
-
-// ApplicationSignalStartupCallback is a callback function for a 'startup' signal emitted from a Application.
-type ApplicationSignalStartupCallback func()
 
 // ApplicationNew is a wrapper around the C function g_application_new.
 func ApplicationNew(applicationId string, flags ApplicationFlags) *Application {
@@ -334,6 +276,10 @@ func (recv *Cancellable) SourceNew() *glib.Source {
 
 // Unsupported : g_dbus_message_new_from_blob : unsupported parameter blob : no param type
 
+// Unsupported signal : unsupported parameter changed_properties : Blacklisted record : GVariant
+
+// Unsupported signal : unsupported parameter parameters : Blacklisted record : GVariant
+
 // Unsupported : g_dbus_object_manager_client_new_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
 
 // Unsupported : g_dbus_object_manager_client_new_for_bus_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
@@ -341,6 +287,10 @@ func (recv *Cancellable) SourceNew() *glib.Source {
 // Unsupported : g_dbus_object_manager_client_new_for_bus_sync : unsupported parameter get_proxy_type_func : no type generator for DBusProxyTypeFunc, GDBusProxyTypeFunc
 
 // Unsupported : g_dbus_object_manager_client_new_sync : unsupported parameter get_proxy_type_func : no type generator for DBusProxyTypeFunc, GDBusProxyTypeFunc
+
+// Unsupported signal : unsupported parameter changed_properties : Blacklisted record : GVariant
+
+// Unsupported signal : unsupported parameter parameters : Blacklisted record : GVariant
 
 // Unsupported : g_dbus_proxy_new_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
 
@@ -361,6 +311,8 @@ func (recv *EmblemedIcon) ClearEmblems() {
 
 // Unsupported : g_file_icon_new : unsupported parameter file : no type generator for File, GFile*
 
+// Unsupported signal : unsupported parameter file : no type generator for File,
+
 // Unsupported : g_io_stream_splice_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
 
 // Unsupported : g_inet_address_new_from_bytes : unsupported parameter bytes : no param type
@@ -371,9 +323,19 @@ func (recv *EmblemedIcon) ClearEmblems() {
 
 // Unsupported : g_memory_output_stream_new : unsupported parameter realloc_function : no type generator for ReallocFunc, GReallocFunc
 
+// Unsupported signal : unsupported parameter choices : no param type
+
+// Unsupported signal : unsupported parameter processes : no param type
+
+// Unsupported signal : unsupported parameter keys : no param type
+
 // Unsupported : g_settings_get_range : return type : Blacklisted record : GVariant
 
 // Unsupported : g_settings_range_check : unsupported parameter value : Blacklisted record : GVariant
+
+// Unsupported signal : unsupported parameter parameter : Blacklisted record : GVariant
+
+// Unsupported signal : unsupported parameter value : Blacklisted record : GVariant
 
 // Unsupported : g_simple_action_new : unsupported parameter parameter_type : Blacklisted record : GVariantType
 
@@ -461,6 +423,8 @@ func (recv *SimpleAsyncResult) TakeError(error *glib.Error) {
 
 	return
 }
+
+// Unsupported signal : unsupported parameter connectable : no type generator for SocketConnectable,
 
 // GetTls is a wrapper around the C function g_socket_client_get_tls.
 func (recv *SocketClient) GetTls() bool {
@@ -786,3 +750,27 @@ func (recv *TlsConnection) SetUseSystemCertdb(useSystemCertdb bool) {
 // Unsupported : g_unix_socket_address_new_abstract : unsupported parameter path : no param type
 
 // Unsupported : g_unix_socket_address_new_with_type : unsupported parameter path : no param type
+
+// Unsupported signal : unsupported parameter drive : no type generator for Drive,
+
+// Unsupported signal : unsupported parameter drive : no type generator for Drive,
+
+// Unsupported signal : unsupported parameter drive : no type generator for Drive,
+
+// Unsupported signal : unsupported parameter drive : no type generator for Drive,
+
+// Unsupported signal : unsupported parameter drive : no type generator for Drive,
+
+// Unsupported signal : unsupported parameter mount : no type generator for Mount,
+
+// Unsupported signal : unsupported parameter mount : no type generator for Mount,
+
+// Unsupported signal : unsupported parameter mount : no type generator for Mount,
+
+// Unsupported signal : unsupported parameter mount : no type generator for Mount,
+
+// Unsupported signal : unsupported parameter volume : no type generator for Volume,
+
+// Unsupported signal : unsupported parameter volume : no type generator for Volume,
+
+// Unsupported signal : unsupported parameter volume : no type generator for Volume,

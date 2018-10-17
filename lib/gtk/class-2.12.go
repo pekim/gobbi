@@ -16,6 +16,114 @@ import (
 // #include <gtk/gtk.h>
 // #include <gtk/gtkx.h>
 // #include <stdlib.h>
+/*
+
+	void ComboBox_moveActiveHandler();
+
+	static gulong ComboBox_signal_connect_move_active(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "move-active", ComboBox_moveActiveHandler, data);
+	}
+
+*/
+/*
+
+	void ComboBox_popdownHandler();
+
+	static gulong ComboBox_signal_connect_popdown(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "popdown", ComboBox_popdownHandler, data);
+	}
+
+*/
+/*
+
+	void ComboBox_popupHandler();
+
+	static gulong ComboBox_signal_connect_popup(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "popup", ComboBox_popupHandler, data);
+	}
+
+*/
+/*
+
+	void FileChooserButton_fileSetHandler();
+
+	static gulong FileChooserButton_signal_connect_file_set(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "file-set", FileChooserButton_fileSetHandler, data);
+	}
+
+*/
+/*
+
+	void MenuShell_moveSelectedHandler();
+
+	static gulong MenuShell_signal_connect_move_selected(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "move-selected", MenuShell_moveSelectedHandler, data);
+	}
+
+*/
+/*
+
+	void Notebook_createWindowHandler();
+
+	static gulong Notebook_signal_connect_create_window(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "create-window", Notebook_createWindowHandler, data);
+	}
+
+*/
+/*
+
+	void ScaleButton_popdownHandler();
+
+	static gulong ScaleButton_signal_connect_popdown(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "popdown", ScaleButton_popdownHandler, data);
+	}
+
+*/
+/*
+
+	void ScaleButton_popupHandler();
+
+	static gulong ScaleButton_signal_connect_popup(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "popup", ScaleButton_popupHandler, data);
+	}
+
+*/
+/*
+
+	void ScaleButton_valueChangedHandler();
+
+	static gulong ScaleButton_signal_connect_value_changed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "value-changed", ScaleButton_valueChangedHandler, data);
+	}
+
+*/
+/*
+
+	void Widget_dragFailedHandler();
+
+	static gulong Widget_signal_connect_drag_failed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "drag-failed", Widget_dragFailedHandler, data);
+	}
+
+*/
+/*
+
+	void Widget_keynavFailedHandler();
+
+	static gulong Widget_signal_connect_keynav_failed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "keynav-failed", Widget_keynavFailedHandler, data);
+	}
+
+*/
+/*
+
+	void Widget_queryTooltipHandler();
+
+	static gulong Widget_signal_connect_query_tooltip(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "query-tooltip", Widget_queryTooltipHandler, data);
+	}
+
+*/
 import "C"
 
 // GetProgramName is a wrapper around the C function gtk_about_dialog_get_program_name.
@@ -45,6 +153,12 @@ func (recv *Action) CreateMenu() *Widget {
 }
 
 // Unsupported : gtk_app_chooser_dialog_new : unsupported parameter file : no type generator for Gio.File, GFile*
+
+// Unsupported signal : unsupported parameter application : no type generator for Gio.AppInfo,
+
+// Unsupported signal : unsupported parameter application : no type generator for Gio.AppInfo,
+
+// Unsupported signal : unsupported parameter application : no type generator for Gio.AppInfo,
 
 // BuilderNew is a wrapper around the C function gtk_builder_new.
 func BuilderNew() *Builder {
@@ -148,6 +262,23 @@ func (recv *Builder) SetTranslationDomain(domain string) {
 
 // Unsupported : gtk_button_new_from_icon_name : unsupported parameter size : no type generator for gint, GtkIconSize
 
+// Unsupported signal : unsupported parameter editable : no type generator for CellEditable,
+
+// Unsupported signal : unsupported parameter model : no type generator for TreeModel,
+
+// Unsupported signal : unsupported parameter editable : no type generator for CellEditable,
+
+// Unsupported signal : unsupported parameter editable : no type generator for CellEditable,
+
+// ComboBoxSignalMoveActiveCallback is a callback function for a 'move-active' signal emitted from a ComboBox.
+type ComboBoxSignalMoveActiveCallback func(scrollType ScrollType)
+
+// ComboBoxSignalPopdownCallback is a callback function for a 'popdown' signal emitted from a ComboBox.
+type ComboBoxSignalPopdownCallback func() bool
+
+// ComboBoxSignalPopupCallback is a callback function for a 'popup' signal emitted from a ComboBox.
+type ComboBoxSignalPopupCallback func()
+
 // Unsupported : gtk_combo_box_new_with_model : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
 
 // Unsupported : gtk_combo_box_new_with_model_and_entry : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
@@ -170,6 +301,10 @@ func (recv *Entry) SetCursorHadjustment(adjustment *Adjustment) {
 
 	return
 }
+
+// Unsupported signal : unsupported parameter model : no type generator for TreeModel,
+
+// Unsupported signal : unsupported parameter model : no type generator for TreeModel,
 
 // GetCompletionPrefix is a wrapper around the C function gtk_entry_completion_get_completion_prefix.
 func (recv *EntryCompletion) GetCompletionPrefix() string {
@@ -198,6 +333,9 @@ func (recv *EntryCompletion) SetInlineSelection(inlineSelection bool) {
 }
 
 // Unsupported : EntryIconAccessible : no CType
+
+// FileChooserButtonSignalFileSetCallback is a callback function for a 'file-set' signal emitted from a FileChooserButton.
+type FileChooserButtonSignalFileSetCallback func()
 
 // Unsupported : gtk_file_chooser_dialog_new : unsupported parameter ... : varargs
 
@@ -293,6 +431,9 @@ func (recv *IconView) SetTooltipItem(tooltip *Tooltip, path *TreePath) {
 
 // Unsupported : gtk_list_store_set_valuesv : unsupported parameter columns : no param type
 
+// MenuShellSignalMoveSelectedCallback is a callback function for a 'move-selected' signal emitted from a MenuShell.
+type MenuShellSignalMoveSelectedCallback func(distance int32) bool
+
 // SetArrowTooltipMarkup is a wrapper around the C function gtk_menu_tool_button_set_arrow_tooltip_markup.
 func (recv *MenuToolButton) SetArrowTooltipMarkup(markup string) {
 	c_markup := C.CString(markup)
@@ -316,6 +457,11 @@ func (recv *MenuToolButton) SetArrowTooltipText(text string) {
 // Unsupported : gtk_message_dialog_new : unsupported parameter ... : varargs
 
 // Unsupported : gtk_message_dialog_new_with_markup : unsupported parameter ... : varargs
+
+// NotebookSignalCreateWindowCallback is a callback function for a 'create-window' signal emitted from a Notebook.
+type NotebookSignalCreateWindowCallback func(page *Widget, x int32, y int32) Notebook
+
+// Unsupported signal : unsupported parameter allocation : Blacklisted record : GdkRectangle
 
 // Unsupported : gtk_pad_controller_new : unsupported parameter group : no type generator for Gio.ActionGroup, GActionGroup*
 
@@ -388,6 +534,16 @@ func (recv *PageSetup) ToKeyFile(keyFile *glib.KeyFile, groupName string) {
 
 	return
 }
+
+// Unsupported signal : unsupported parameter dest_file : no type generator for Gio.File,
+
+// Unsupported signal : unsupported parameter dest_file : no type generator for Gio.File,
+
+// Unsupported signal : unsupported parameter location : no type generator for Gio.File,
+
+// Unsupported signal : unsupported parameter selected_item : no type generator for Gio.File,
+
+// Unsupported signal : unsupported parameter preview : no type generator for PrintOperationPreview,
 
 // PrintSettingsNewFromFile is a wrapper around the C function gtk_print_settings_new_from_file.
 func PrintSettingsNewFromFile(fileName string) (*PrintSettings, error) {
@@ -576,6 +732,15 @@ func (recv *RecentAction) SetShowNumbers(showNumbers bool) {
 
 // Unsupported : gtk_recent_chooser_dialog_new_for_manager : unsupported parameter ... : varargs
 
+// ScaleButtonSignalPopdownCallback is a callback function for a 'popdown' signal emitted from a ScaleButton.
+type ScaleButtonSignalPopdownCallback func()
+
+// ScaleButtonSignalPopupCallback is a callback function for a 'popup' signal emitted from a ScaleButton.
+type ScaleButtonSignalPopupCallback func()
+
+// ScaleButtonSignalValueChangedCallback is a callback function for a 'value-changed' signal emitted from a ScaleButton.
+type ScaleButtonSignalValueChangedCallback func(value float64)
+
 // Unsupported : gtk_scale_button_new : unsupported parameter size : no type generator for gint, GtkIconSize
 
 // GetAdjustment is a wrapper around the C function gtk_scale_button_get_adjustment.
@@ -657,6 +822,8 @@ func TextMarkNew(name string, leftGravity bool) *TextMark {
 
 	return retGo
 }
+
+// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
 
 // SetTooltipMarkup is a wrapper around the C function gtk_tool_item_set_tooltip_markup.
 func (recv *ToolItem) SetTooltipMarkup(markup string) {
@@ -947,6 +1114,29 @@ func VolumeButtonNew() *VolumeButton {
 
 	return retGo
 }
+
+// Unsupported signal : unsupported parameter child_property : Blacklisted record : GParamSpec
+
+// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
+
+// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
+
+// WidgetSignalDragFailedCallback is a callback function for a 'drag-failed' signal emitted from a Widget.
+type WidgetSignalDragFailedCallback func(context *gdk.DragContext, result DragResult) bool
+
+// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
+
+// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
+
+// WidgetSignalKeynavFailedCallback is a callback function for a 'keynav-failed' signal emitted from a Widget.
+type WidgetSignalKeynavFailedCallback func(direction DirectionType) bool
+
+// WidgetSignalQueryTooltipCallback is a callback function for a 'query-tooltip' signal emitted from a Widget.
+type WidgetSignalQueryTooltipCallback func(x int32, y int32, keyboardMode bool, tooltip *Tooltip) bool
+
+// Unsupported signal : unsupported parameter allocation : Blacklisted record : GdkRectangle
+
+// Unsupported signal : unsupported parameter object : no type generator for Gdk.Event,
 
 // Unsupported : gtk_widget_new : unsupported parameter type : no type generator for GType, GType
 

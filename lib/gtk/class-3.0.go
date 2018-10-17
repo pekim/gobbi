@@ -19,6 +19,51 @@ import (
 // #include <gtk/gtk.h>
 // #include <gtk/gtkx.h>
 // #include <stdlib.h>
+/*
+
+	void CellArea_focusChangedHandler();
+
+	static gulong CellArea_signal_connect_focus_changed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "focus-changed", CellArea_focusChangedHandler, data);
+	}
+
+*/
+/*
+
+	void StyleContext_changedHandler();
+
+	static gulong StyleContext_signal_connect_changed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "changed", StyleContext_changedHandler, data);
+	}
+
+*/
+/*
+
+	void Widget_drawHandler();
+
+	static gulong Widget_signal_connect_draw(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "draw", Widget_drawHandler, data);
+	}
+
+*/
+/*
+
+	void Widget_stateFlagsChangedHandler();
+
+	static gulong Widget_signal_connect_state_flags_changed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "state-flags-changed", Widget_stateFlagsChangedHandler, data);
+	}
+
+*/
+/*
+
+	void Widget_styleUpdatedHandler();
+
+	static gulong Widget_signal_connect_style_updated(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "style-updated", Widget_styleUpdatedHandler, data);
+	}
+
+*/
 import "C"
 
 // GetLicenseType is a wrapper around the C function gtk_about_dialog_get_license_type.
@@ -110,6 +155,12 @@ func (recv *AppChooserDialog) GetWidget() *Widget {
 
 	return retGo
 }
+
+// Unsupported signal : unsupported parameter application : no type generator for Gio.AppInfo,
+
+// Unsupported signal : unsupported parameter application : no type generator for Gio.AppInfo,
+
+// Unsupported signal : unsupported parameter application : no type generator for Gio.AppInfo,
 
 // AppChooserWidgetNew is a wrapper around the C function gtk_app_chooser_widget_new.
 func AppChooserWidgetNew(contentType string) *AppChooserWidget {
@@ -306,6 +357,15 @@ func (recv *Calendar) GetDayIsMarked(day uint32) bool {
 
 	return retGo
 }
+
+// Unsupported signal : unsupported parameter editable : no type generator for CellEditable,
+
+// Unsupported signal : unsupported parameter model : no type generator for TreeModel,
+
+// CellAreaSignalFocusChangedCallback is a callback function for a 'focus-changed' signal emitted from a CellArea.
+type CellAreaSignalFocusChangedCallback func(renderer *CellRenderer, path string)
+
+// Unsupported signal : unsupported parameter editable : no type generator for CellEditable,
 
 // Unsupported : gtk_cell_area_activate : unsupported parameter cell_area : Blacklisted record : GdkRectangle
 
@@ -835,6 +895,8 @@ func (recv *CellAreaContext) PushPreferredWidth(minimumWidth int32, naturalWidth
 	return
 }
 
+// Unsupported signal : unsupported parameter editable : no type generator for CellEditable,
+
 // Unsupported : gtk_cell_renderer_get_aligned_area : unsupported parameter cell_area : Blacklisted record : GdkRectangle
 
 // GetPreferredHeight is a wrapper around the C function gtk_cell_renderer_get_preferred_height.
@@ -1164,6 +1226,10 @@ func (recv *ComboBoxText) RemoveAll() {
 
 // Unsupported : gtk_entry_get_text_area : unsupported parameter text_area : Blacklisted record : GdkRectangle
 
+// Unsupported signal : unsupported parameter model : no type generator for TreeModel,
+
+// Unsupported signal : unsupported parameter model : no type generator for TreeModel,
+
 // EntryCompletionNewWithArea is a wrapper around the C function gtk_entry_completion_new_with_area.
 func EntryCompletionNewWithArea(area *CellArea) *EntryCompletion {
 	c_area := (*C.GtkCellArea)(area.ToC())
@@ -1391,6 +1457,8 @@ func (recv *NumerableIcon) SetStyleContext(style *StyleContext) {
 	return
 }
 
+// Unsupported signal : unsupported parameter allocation : Blacklisted record : GdkRectangle
+
 // Unsupported : gtk_pad_controller_new : unsupported parameter group : no type generator for Gio.ActionGroup, GActionGroup*
 
 // Unsupported : gtk_page_setup_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
@@ -1404,6 +1472,16 @@ func PanedNew(orientation Orientation) *Paned {
 
 	return retGo
 }
+
+// Unsupported signal : unsupported parameter dest_file : no type generator for Gio.File,
+
+// Unsupported signal : unsupported parameter dest_file : no type generator for Gio.File,
+
+// Unsupported signal : unsupported parameter location : no type generator for Gio.File,
+
+// Unsupported signal : unsupported parameter selected_item : no type generator for Gio.File,
+
+// Unsupported signal : unsupported parameter preview : no type generator for PrintOperationPreview,
 
 // Unsupported : gtk_print_settings_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
 
@@ -1542,6 +1620,9 @@ func (recv *Style) HasContext() bool {
 
 	return retGo
 }
+
+// StyleContextSignalChangedCallback is a callback function for a 'changed' signal emitted from a StyleContext.
+type StyleContextSignalChangedCallback func()
 
 // AddClass is a wrapper around the C function gtk_style_context_add_class.
 func (recv *StyleContext) AddClass(className string) {
@@ -2017,6 +2098,8 @@ func (recv *Switch) SetActive(isActive bool) {
 	return
 }
 
+// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
+
 // Unsupported : gtk_text_view_get_cursor_locations : unsupported parameter strong : Blacklisted record : GdkRectangle
 
 // Unsupported : gtk_theming_engine_get : unsupported parameter ... : varargs
@@ -2246,6 +2329,29 @@ func (recv *TreeViewColumn) GetButton() *Widget {
 
 	return retGo
 }
+
+// Unsupported signal : unsupported parameter child_property : Blacklisted record : GParamSpec
+
+// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
+
+// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
+
+// WidgetSignalDrawCallback is a callback function for a 'draw' signal emitted from a Widget.
+type WidgetSignalDrawCallback func(cr *cairo.Context) bool
+
+// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
+
+// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
+
+// Unsupported signal : unsupported parameter allocation : Blacklisted record : GdkRectangle
+
+// WidgetSignalStateFlagsChangedCallback is a callback function for a 'state-flags-changed' signal emitted from a Widget.
+type WidgetSignalStateFlagsChangedCallback func(flags StateFlags)
+
+// WidgetSignalStyleUpdatedCallback is a callback function for a 'style-updated' signal emitted from a Widget.
+type WidgetSignalStyleUpdatedCallback func()
+
+// Unsupported signal : unsupported parameter object : no type generator for Gdk.Event,
 
 // Unsupported : gtk_widget_new : unsupported parameter type : no type generator for GType, GType
 

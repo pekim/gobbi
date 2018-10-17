@@ -18,6 +18,12 @@ import "C"
 
 // Unsupported : gtk_app_chooser_dialog_new : unsupported parameter file : no type generator for Gio.File, GFile*
 
+// Unsupported signal : unsupported parameter application : no type generator for Gio.AppInfo,
+
+// Unsupported signal : unsupported parameter application : no type generator for Gio.AppInfo,
+
+// Unsupported signal : unsupported parameter application : no type generator for Gio.AppInfo,
+
 // ExposeObject is a wrapper around the C function gtk_builder_expose_object.
 func (recv *Builder) ExposeObject(name string, object *gobject.Object) {
 	c_name := C.CString(name)
@@ -32,11 +38,23 @@ func (recv *Builder) ExposeObject(name string, object *gobject.Object) {
 
 // Unsupported : gtk_button_new_from_icon_name : unsupported parameter size : no type generator for gint, GtkIconSize
 
+// Unsupported signal : unsupported parameter editable : no type generator for CellEditable,
+
+// Unsupported signal : unsupported parameter model : no type generator for TreeModel,
+
+// Unsupported signal : unsupported parameter editable : no type generator for CellEditable,
+
+// Unsupported signal : unsupported parameter editable : no type generator for CellEditable,
+
 // Unsupported : gtk_combo_box_new_with_model : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
 
 // Unsupported : gtk_combo_box_new_with_model_and_entry : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
 
 // Unsupported : gtk_dialog_new_with_buttons : unsupported parameter ... : varargs
+
+// Unsupported signal : unsupported parameter model : no type generator for TreeModel,
+
+// Unsupported signal : unsupported parameter model : no type generator for TreeModel,
 
 // Unsupported : EntryIconAccessible : no CType
 
@@ -112,9 +130,21 @@ func (recv *LevelBar) SetInverted(inverted bool) {
 
 // Unsupported : gtk_message_dialog_new_with_markup : unsupported parameter ... : varargs
 
+// Unsupported signal : unsupported parameter allocation : Blacklisted record : GdkRectangle
+
 // Unsupported : gtk_pad_controller_new : unsupported parameter group : no type generator for Gio.ActionGroup, GActionGroup*
 
 // Unsupported : gtk_page_setup_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
+
+// Unsupported signal : unsupported parameter dest_file : no type generator for Gio.File,
+
+// Unsupported signal : unsupported parameter dest_file : no type generator for Gio.File,
+
+// Unsupported signal : unsupported parameter location : no type generator for Gio.File,
+
+// Unsupported signal : unsupported parameter selected_item : no type generator for Gio.File,
+
+// Unsupported signal : unsupported parameter preview : no type generator for PrintOperationPreview,
 
 // Unsupported : gtk_print_settings_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
 
@@ -143,6 +173,8 @@ func (recv *StyleContext) SetFrameClock(frameClock *gdk.FrameClock) {
 	return
 }
 
+// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
+
 // Unsupported : gtk_tree_store_new : unsupported parameter ... : varargs
 
 // Unsupported : gtk_tree_store_newv : unsupported parameter types : no param type
@@ -168,6 +200,20 @@ func (recv *TreeView) SetActivateOnSingleClick(single bool) {
 }
 
 // Unsupported : gtk_tree_view_column_new_with_attributes : unsupported parameter ... : varargs
+
+// Unsupported signal : unsupported parameter child_property : Blacklisted record : GParamSpec
+
+// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
+
+// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
+
+// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
+
+// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
+
+// Unsupported signal : unsupported parameter allocation : Blacklisted record : GdkRectangle
+
+// Unsupported signal : unsupported parameter object : no type generator for Gdk.Event,
 
 // Unsupported : gtk_widget_new : unsupported parameter type : no type generator for GType, GType
 

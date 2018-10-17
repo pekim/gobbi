@@ -22,16 +22,9 @@ import (
 // #include <gio/gunixoutputstream.h>
 // #include <gio/gunixsocketaddress.h>
 // #include <stdlib.h>
-/*
-
-	void MenuModel_itemsChangedHandler();
-
-	static gulong MenuModel_signal_connect_items_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "items-changed", MenuModel_itemsChangedHandler, data);
-	}
-
-*/
 import "C"
+
+// Unsupported signal : unsupported parameter info : no type generator for AppInfo,
 
 // Unsupported : g_app_launch_context_get_environment : no return type
 
@@ -57,6 +50,8 @@ func (recv *AppLaunchContext) Unsetenv(variable string) {
 
 	return
 }
+
+// Unsupported signal : unsupported parameter files : no param type
 
 // Quit is a wrapper around the C function g_application_quit.
 func (recv *Application) Quit() {
@@ -149,6 +144,10 @@ func (recv *DBusInterfaceSkeleton) UnexportFromConnection(connection *DBusConnec
 
 // Unsupported : g_dbus_message_new_from_blob : unsupported parameter blob : no param type
 
+// Unsupported signal : unsupported parameter changed_properties : Blacklisted record : GVariant
+
+// Unsupported signal : unsupported parameter parameters : Blacklisted record : GVariant
+
 // Unsupported : g_dbus_object_manager_client_new_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
 
 // Unsupported : g_dbus_object_manager_client_new_for_bus_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
@@ -156,6 +155,10 @@ func (recv *DBusInterfaceSkeleton) UnexportFromConnection(connection *DBusConnec
 // Unsupported : g_dbus_object_manager_client_new_for_bus_sync : unsupported parameter get_proxy_type_func : no type generator for DBusProxyTypeFunc, GDBusProxyTypeFunc
 
 // Unsupported : g_dbus_object_manager_client_new_sync : unsupported parameter get_proxy_type_func : no type generator for DBusProxyTypeFunc, GDBusProxyTypeFunc
+
+// Unsupported signal : unsupported parameter changed_properties : Blacklisted record : GVariant
+
+// Unsupported signal : unsupported parameter parameters : Blacklisted record : GVariant
 
 // Unsupported : g_dbus_proxy_new_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
 
@@ -170,6 +173,8 @@ func (recv *DBusInterfaceSkeleton) UnexportFromConnection(connection *DBusConnec
 // Unsupported : g_emblemed_icon_new : unsupported parameter icon : no type generator for Icon, GIcon*
 
 // Unsupported : g_file_icon_new : unsupported parameter file : no type generator for File, GFile*
+
+// Unsupported signal : unsupported parameter file : no type generator for File,
 
 // Unsupported : g_inet_address_new_from_bytes : unsupported parameter bytes : no param type
 
@@ -804,9 +809,6 @@ func CastToMenuModel(object *gobject.Object) *MenuModel {
 	return MenuModelNewFromC(object.ToC())
 }
 
-// MenuModelSignalItemsChangedCallback is a callback function for a 'items-changed' signal emitted from a MenuModel.
-type MenuModelSignalItemsChangedCallback func(position int32, removed int32, added int32)
-
 // Unsupported : g_menu_model_get_item_attribute : unsupported parameter ... : varargs
 
 // Unsupported : g_menu_model_get_item_attribute_value : unsupported parameter expected_type : Blacklisted record : GVariantType
@@ -873,6 +875,12 @@ func (recv *MenuModel) IterateItemLinks(itemIndex int32) *MenuLinkIter {
 	return retGo
 }
 
+// Unsupported signal : unsupported parameter choices : no param type
+
+// Unsupported signal : unsupported parameter processes : no param type
+
+// Unsupported signal : unsupported parameter keys : no param type
+
 // SettingsNewFull is a wrapper around the C function g_settings_new_full.
 func SettingsNewFull(schema *SettingsSchema, backend *SettingsBackend, path string) *Settings {
 	c_schema := (*C.GSettingsSchema)(schema.ToC())
@@ -889,6 +897,10 @@ func SettingsNewFull(schema *SettingsSchema, backend *SettingsBackend, path stri
 }
 
 // Unsupported : g_settings_create_action : no return generator
+
+// Unsupported signal : unsupported parameter parameter : Blacklisted record : GVariant
+
+// Unsupported signal : unsupported parameter value : Blacklisted record : GVariant
 
 // Unsupported : g_simple_action_new : unsupported parameter parameter_type : Blacklisted record : GVariantType
 
@@ -1056,6 +1068,8 @@ func (recv *Socket) SetTtl(ttl uint32) {
 	return
 }
 
+// Unsupported signal : unsupported parameter connectable : no type generator for SocketConnectable,
+
 // Connect is a wrapper around the C function g_socket_connection_connect.
 func (recv *SocketConnection) Connect(address *SocketAddress, cancellable *Cancellable) (bool, error) {
 	c_address := (*C.GSocketAddress)(address.ToC())
@@ -1108,3 +1122,27 @@ func (recv *SocketConnection) IsConnected() bool {
 // Unsupported : g_unix_socket_address_new_abstract : unsupported parameter path : no param type
 
 // Unsupported : g_unix_socket_address_new_with_type : unsupported parameter path : no param type
+
+// Unsupported signal : unsupported parameter drive : no type generator for Drive,
+
+// Unsupported signal : unsupported parameter drive : no type generator for Drive,
+
+// Unsupported signal : unsupported parameter drive : no type generator for Drive,
+
+// Unsupported signal : unsupported parameter drive : no type generator for Drive,
+
+// Unsupported signal : unsupported parameter drive : no type generator for Drive,
+
+// Unsupported signal : unsupported parameter mount : no type generator for Mount,
+
+// Unsupported signal : unsupported parameter mount : no type generator for Mount,
+
+// Unsupported signal : unsupported parameter mount : no type generator for Mount,
+
+// Unsupported signal : unsupported parameter mount : no type generator for Mount,
+
+// Unsupported signal : unsupported parameter volume : no type generator for Volume,
+
+// Unsupported signal : unsupported parameter volume : no type generator for Volume,
+
+// Unsupported signal : unsupported parameter volume : no type generator for Volume,

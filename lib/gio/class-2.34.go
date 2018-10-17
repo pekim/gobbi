@@ -22,7 +22,29 @@ import (
 // #include <gio/gunixoutputstream.h>
 // #include <gio/gunixsocketaddress.h>
 // #include <stdlib.h>
+/*
+
+	void DBusAuthObserver_allowMechanismHandler();
+
+	static gulong DBusAuthObserver_signal_connect_allow_mechanism(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "allow-mechanism", DBusAuthObserver_allowMechanismHandler, data);
+	}
+
+*/
+/*
+
+	void MountOperation_showUnmountProgressHandler();
+
+	static gulong MountOperation_signal_connect_show_unmount_progress(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "show-unmount-progress", MountOperation_showUnmountProgressHandler, data);
+	}
+
+*/
 import "C"
+
+// Unsupported signal : unsupported parameter info : no type generator for AppInfo,
+
+// Unsupported signal : unsupported parameter files : no param type
 
 // GetDbusConnection is a wrapper around the C function g_application_get_dbus_connection.
 func (recv *Application) GetDbusConnection() *DBusConnection {
@@ -52,6 +74,9 @@ func (recv *ApplicationCommandLine) GetStdin() *InputStream {
 
 // Unsupported : g_converter_output_stream_new : unsupported parameter converter : no type generator for Converter, GConverter*
 
+// DBusAuthObserverSignalAllowMechanismCallback is a callback function for a 'allow-mechanism' signal emitted from a DBusAuthObserver.
+type DBusAuthObserverSignalAllowMechanismCallback func(mechanism string) bool
+
 // AllowMechanism is a wrapper around the C function g_dbus_auth_observer_allow_mechanism.
 func (recv *DBusAuthObserver) AllowMechanism(mechanism string) bool {
 	c_mechanism := C.CString(mechanism)
@@ -77,6 +102,10 @@ func (recv *DBusConnection) GetLastSerial() uint32 {
 
 // Unsupported : g_dbus_message_new_from_blob : unsupported parameter blob : no param type
 
+// Unsupported signal : unsupported parameter changed_properties : Blacklisted record : GVariant
+
+// Unsupported signal : unsupported parameter parameters : Blacklisted record : GVariant
+
 // Unsupported : g_dbus_object_manager_client_new_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
 
 // Unsupported : g_dbus_object_manager_client_new_for_bus_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
@@ -94,6 +123,10 @@ func (recv *DBusObjectManagerServer) IsExported(object *DBusObjectSkeleton) bool
 
 	return retGo
 }
+
+// Unsupported signal : unsupported parameter changed_properties : Blacklisted record : GVariant
+
+// Unsupported signal : unsupported parameter parameters : Blacklisted record : GVariant
 
 // Unsupported : g_dbus_proxy_new_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
 
@@ -118,6 +151,8 @@ func (recv *DesktopAppInfo) GetStartupWmClass() string {
 // Unsupported : g_file_info_get_symbolic_icon : no return generator
 
 // Unsupported : g_file_info_set_symbolic_icon : unsupported parameter icon : no type generator for Icon, GIcon*
+
+// Unsupported signal : unsupported parameter file : no type generator for File,
 
 // Unsupported : g_inet_address_new_from_bytes : unsupported parameter bytes : no param type
 
@@ -204,6 +239,13 @@ func (recv *MenuItem) GetLink(link string) *MenuModel {
 	return retGo
 }
 
+// Unsupported signal : unsupported parameter choices : no param type
+
+// Unsupported signal : unsupported parameter processes : no param type
+
+// MountOperationSignalShowUnmountProgressCallback is a callback function for a 'show-unmount-progress' signal emitted from a MountOperation.
+type MountOperationSignalShowUnmountProgressCallback func(message string, timeLeft int64, bytesLeft int64)
+
 // GetDestinationProtocol is a wrapper around the C function g_proxy_address_get_destination_protocol.
 func (recv *ProxyAddress) GetDestinationProtocol() string {
 	retC := C.g_proxy_address_get_destination_protocol((*C.GProxyAddress)(recv.native))
@@ -246,6 +288,12 @@ func (recv *Resolver) LookupRecords(rrname string, recordType ResolverRecordType
 
 // Unsupported : g_resolver_lookup_records_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
 
+// Unsupported signal : unsupported parameter keys : no param type
+
+// Unsupported signal : unsupported parameter parameter : Blacklisted record : GVariant
+
+// Unsupported signal : unsupported parameter value : Blacklisted record : GVariant
+
 // Unsupported : g_simple_action_new : unsupported parameter parameter_type : Blacklisted record : GVariantType
 
 // Unsupported : g_simple_action_new_stateful : unsupported parameter parameter_type : Blacklisted record : GVariantType
@@ -257,6 +305,8 @@ func (recv *Resolver) LookupRecords(rrname string, recordType ResolverRecordType
 // Unsupported : g_simple_async_result_new_from_error : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
 
 // Unsupported : g_simple_async_result_new_take_error : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+
+// Unsupported signal : unsupported parameter connectable : no type generator for SocketConnectable,
 
 // Unsupported : g_subprocess_new : unsupported parameter error : record with indirection level of 2
 
@@ -370,3 +420,27 @@ func (recv *TlsCertificate) IsSame(certTwo *TlsCertificate) bool {
 // Unsupported : g_unix_socket_address_new_abstract : unsupported parameter path : no param type
 
 // Unsupported : g_unix_socket_address_new_with_type : unsupported parameter path : no param type
+
+// Unsupported signal : unsupported parameter drive : no type generator for Drive,
+
+// Unsupported signal : unsupported parameter drive : no type generator for Drive,
+
+// Unsupported signal : unsupported parameter drive : no type generator for Drive,
+
+// Unsupported signal : unsupported parameter drive : no type generator for Drive,
+
+// Unsupported signal : unsupported parameter drive : no type generator for Drive,
+
+// Unsupported signal : unsupported parameter mount : no type generator for Mount,
+
+// Unsupported signal : unsupported parameter mount : no type generator for Mount,
+
+// Unsupported signal : unsupported parameter mount : no type generator for Mount,
+
+// Unsupported signal : unsupported parameter mount : no type generator for Mount,
+
+// Unsupported signal : unsupported parameter volume : no type generator for Volume,
+
+// Unsupported signal : unsupported parameter volume : no type generator for Volume,
+
+// Unsupported signal : unsupported parameter volume : no type generator for Volume,

@@ -20,6 +20,168 @@ import (
 // #include <stdlib.h>
 /*
 
+	void Assistant_applyHandler();
+
+	static gulong Assistant_signal_connect_apply(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "apply", Assistant_applyHandler, data);
+	}
+
+*/
+/*
+
+	void Assistant_cancelHandler();
+
+	static gulong Assistant_signal_connect_cancel(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "cancel", Assistant_cancelHandler, data);
+	}
+
+*/
+/*
+
+	void Assistant_closeHandler();
+
+	static gulong Assistant_signal_connect_close(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "close", Assistant_closeHandler, data);
+	}
+
+*/
+/*
+
+	void Assistant_prepareHandler();
+
+	static gulong Assistant_signal_connect_prepare(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "prepare", Assistant_prepareHandler, data);
+	}
+
+*/
+/*
+
+	void CellRendererAccel_accelClearedHandler();
+
+	static gulong CellRendererAccel_signal_connect_accel_cleared(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "accel-cleared", CellRendererAccel_accelClearedHandler, data);
+	}
+
+*/
+/*
+
+	void CellRendererAccel_accelEditedHandler();
+
+	static gulong CellRendererAccel_signal_connect_accel_edited(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "accel-edited", CellRendererAccel_accelEditedHandler, data);
+	}
+
+*/
+/*
+
+	void Notebook_pageAddedHandler();
+
+	static gulong Notebook_signal_connect_page_added(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "page-added", Notebook_pageAddedHandler, data);
+	}
+
+*/
+/*
+
+	void Notebook_pageRemovedHandler();
+
+	static gulong Notebook_signal_connect_page_removed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "page-removed", Notebook_pageRemovedHandler, data);
+	}
+
+*/
+/*
+
+	void Notebook_pageReorderedHandler();
+
+	static gulong Notebook_signal_connect_page_reordered(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "page-reordered", Notebook_pageReorderedHandler, data);
+	}
+
+*/
+/*
+
+	void PrintOperation_beginPrintHandler();
+
+	static gulong PrintOperation_signal_connect_begin_print(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "begin-print", PrintOperation_beginPrintHandler, data);
+	}
+
+*/
+/*
+
+	void PrintOperation_createCustomWidgetHandler();
+
+	static gulong PrintOperation_signal_connect_create_custom_widget(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "create-custom-widget", PrintOperation_createCustomWidgetHandler, data);
+	}
+
+*/
+/*
+
+	void PrintOperation_customWidgetApplyHandler();
+
+	static gulong PrintOperation_signal_connect_custom_widget_apply(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "custom-widget-apply", PrintOperation_customWidgetApplyHandler, data);
+	}
+
+*/
+/*
+
+	void PrintOperation_doneHandler();
+
+	static gulong PrintOperation_signal_connect_done(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "done", PrintOperation_doneHandler, data);
+	}
+
+*/
+/*
+
+	void PrintOperation_drawPageHandler();
+
+	static gulong PrintOperation_signal_connect_draw_page(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "draw-page", PrintOperation_drawPageHandler, data);
+	}
+
+*/
+/*
+
+	void PrintOperation_endPrintHandler();
+
+	static gulong PrintOperation_signal_connect_end_print(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "end-print", PrintOperation_endPrintHandler, data);
+	}
+
+*/
+/*
+
+	void PrintOperation_paginateHandler();
+
+	static gulong PrintOperation_signal_connect_paginate(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "paginate", PrintOperation_paginateHandler, data);
+	}
+
+*/
+/*
+
+	void PrintOperation_requestPageSetupHandler();
+
+	static gulong PrintOperation_signal_connect_request_page_setup(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "request-page-setup", PrintOperation_requestPageSetupHandler, data);
+	}
+
+*/
+/*
+
+	void PrintOperation_statusChangedHandler();
+
+	static gulong PrintOperation_signal_connect_status_changed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "status-changed", PrintOperation_statusChangedHandler, data);
+	}
+
+*/
+/*
+
 	void RecentManager_changedHandler();
 
 	static gulong RecentManager_signal_connect_changed(gpointer instance, gpointer data) {
@@ -27,9 +189,63 @@ import (
 	}
 
 */
+/*
+
+	void SpinButton_wrappedHandler();
+
+	static gulong SpinButton_signal_connect_wrapped(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "wrapped", SpinButton_wrappedHandler, data);
+	}
+
+*/
+/*
+
+	void StatusIcon_activateHandler();
+
+	static gulong StatusIcon_signal_connect_activate(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "activate", StatusIcon_activateHandler, data);
+	}
+
+*/
+/*
+
+	void StatusIcon_popupMenuHandler();
+
+	static gulong StatusIcon_signal_connect_popup_menu(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "popup-menu", StatusIcon_popupMenuHandler, data);
+	}
+
+*/
+/*
+
+	void StatusIcon_sizeChangedHandler();
+
+	static gulong StatusIcon_signal_connect_size_changed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "size-changed", StatusIcon_sizeChangedHandler, data);
+	}
+
+*/
 import "C"
 
 // Unsupported : gtk_app_chooser_dialog_new : unsupported parameter file : no type generator for Gio.File, GFile*
+
+// Unsupported signal : unsupported parameter application : no type generator for Gio.AppInfo,
+
+// Unsupported signal : unsupported parameter application : no type generator for Gio.AppInfo,
+
+// Unsupported signal : unsupported parameter application : no type generator for Gio.AppInfo,
+
+// AssistantSignalApplyCallback is a callback function for a 'apply' signal emitted from a Assistant.
+type AssistantSignalApplyCallback func()
+
+// AssistantSignalCancelCallback is a callback function for a 'cancel' signal emitted from a Assistant.
+type AssistantSignalCancelCallback func()
+
+// AssistantSignalCloseCallback is a callback function for a 'close' signal emitted from a Assistant.
+type AssistantSignalCloseCallback func()
+
+// AssistantSignalPrepareCallback is a callback function for a 'prepare' signal emitted from a Assistant.
+type AssistantSignalPrepareCallback func(page *Widget)
 
 // AssistantNew is a wrapper around the C function gtk_assistant_new.
 func AssistantNew() *Assistant {
@@ -259,6 +475,20 @@ func (recv *Button) SetImagePosition(position PositionType) {
 	return
 }
 
+// Unsupported signal : unsupported parameter editable : no type generator for CellEditable,
+
+// Unsupported signal : unsupported parameter model : no type generator for TreeModel,
+
+// Unsupported signal : unsupported parameter editable : no type generator for CellEditable,
+
+// Unsupported signal : unsupported parameter editable : no type generator for CellEditable,
+
+// CellRendererAccelSignalAccelClearedCallback is a callback function for a 'accel-cleared' signal emitted from a CellRendererAccel.
+type CellRendererAccelSignalAccelClearedCallback func(pathString string)
+
+// CellRendererAccelSignalAccelEditedCallback is a callback function for a 'accel-edited' signal emitted from a CellRendererAccel.
+type CellRendererAccelSignalAccelEditedCallback func(pathString string, accelKey uint32, accelMods gdk.ModifierType, hardwareKeycode uint32)
+
 // CellRendererAccelNew is a wrapper around the C function gtk_cell_renderer_accel_new.
 func CellRendererAccelNew() *CellRendererAccel {
 	retC := C.gtk_cell_renderer_accel_new()
@@ -329,6 +559,10 @@ func (recv *Entry) SetInnerBorder(border *Border) {
 
 	return
 }
+
+// Unsupported signal : unsupported parameter model : no type generator for TreeModel,
+
+// Unsupported signal : unsupported parameter model : no type generator for TreeModel,
 
 // Unsupported : EntryIconAccessible : no CType
 
@@ -443,6 +677,15 @@ func (recv *MessageDialog) SetImage(image *Widget) {
 	return
 }
 
+// NotebookSignalPageAddedCallback is a callback function for a 'page-added' signal emitted from a Notebook.
+type NotebookSignalPageAddedCallback func(child *Widget, pageNum uint32)
+
+// NotebookSignalPageRemovedCallback is a callback function for a 'page-removed' signal emitted from a Notebook.
+type NotebookSignalPageRemovedCallback func(child *Widget, pageNum uint32)
+
+// NotebookSignalPageReorderedCallback is a callback function for a 'page-reordered' signal emitted from a Notebook.
+type NotebookSignalPageReorderedCallback func(child *Widget, pageNum uint32)
+
 // GetTabDetachable is a wrapper around the C function gtk_notebook_get_tab_detachable.
 func (recv *Notebook) GetTabDetachable(child *Widget) bool {
 	c_child := (*C.GtkWidget)(child.ToC())
@@ -486,6 +729,8 @@ func (recv *Notebook) SetTabReorderable(child *Widget, reorderable bool) {
 
 	return
 }
+
+// Unsupported signal : unsupported parameter allocation : Blacklisted record : GdkRectangle
 
 // Unsupported : gtk_pad_controller_new : unsupported parameter group : no type generator for Gio.ActionGroup, GActionGroup*
 
@@ -674,6 +919,14 @@ func (recv *PageSetup) SetTopMargin(margin float64, unit Unit) {
 	return
 }
 
+// Unsupported signal : unsupported parameter dest_file : no type generator for Gio.File,
+
+// Unsupported signal : unsupported parameter dest_file : no type generator for Gio.File,
+
+// Unsupported signal : unsupported parameter location : no type generator for Gio.File,
+
+// Unsupported signal : unsupported parameter selected_item : no type generator for Gio.File,
+
 // CreatePangoContext is a wrapper around the C function gtk_print_context_create_pango_context.
 func (recv *PrintContext) CreatePangoContext() *pango.Context {
 	retC := C.gtk_print_context_create_pango_context((*C.GtkPrintContext)(recv.native))
@@ -758,6 +1011,35 @@ func (recv *PrintContext) SetCairoContext(cr *cairo.Context, dpiX float64, dpiY 
 
 	return
 }
+
+// PrintOperationSignalBeginPrintCallback is a callback function for a 'begin-print' signal emitted from a PrintOperation.
+type PrintOperationSignalBeginPrintCallback func(context *PrintContext)
+
+// PrintOperationSignalCreateCustomWidgetCallback is a callback function for a 'create-custom-widget' signal emitted from a PrintOperation.
+type PrintOperationSignalCreateCustomWidgetCallback func() gobject.Object
+
+// PrintOperationSignalCustomWidgetApplyCallback is a callback function for a 'custom-widget-apply' signal emitted from a PrintOperation.
+type PrintOperationSignalCustomWidgetApplyCallback func(widget *Widget)
+
+// PrintOperationSignalDoneCallback is a callback function for a 'done' signal emitted from a PrintOperation.
+type PrintOperationSignalDoneCallback func(result PrintOperationResult)
+
+// PrintOperationSignalDrawPageCallback is a callback function for a 'draw-page' signal emitted from a PrintOperation.
+type PrintOperationSignalDrawPageCallback func(context *PrintContext, pageNr int32)
+
+// PrintOperationSignalEndPrintCallback is a callback function for a 'end-print' signal emitted from a PrintOperation.
+type PrintOperationSignalEndPrintCallback func(context *PrintContext)
+
+// PrintOperationSignalPaginateCallback is a callback function for a 'paginate' signal emitted from a PrintOperation.
+type PrintOperationSignalPaginateCallback func(context *PrintContext) bool
+
+// Unsupported signal : unsupported parameter preview : no type generator for PrintOperationPreview,
+
+// PrintOperationSignalRequestPageSetupCallback is a callback function for a 'request-page-setup' signal emitted from a PrintOperation.
+type PrintOperationSignalRequestPageSetupCallback func(context *PrintContext, pageNr int32, setup *PageSetup)
+
+// PrintOperationSignalStatusChangedCallback is a callback function for a 'status-changed' signal emitted from a PrintOperation.
+type PrintOperationSignalStatusChangedCallback func()
 
 // PrintOperationNew is a wrapper around the C function gtk_print_operation_new.
 func PrintOperationNew() *PrintOperation {
@@ -1908,6 +2190,18 @@ func (recv *SizeGroup) GetWidgets() *glib.SList {
 	return retGo
 }
 
+// SpinButtonSignalWrappedCallback is a callback function for a 'wrapped' signal emitted from a SpinButton.
+type SpinButtonSignalWrappedCallback func()
+
+// StatusIconSignalActivateCallback is a callback function for a 'activate' signal emitted from a StatusIcon.
+type StatusIconSignalActivateCallback func()
+
+// StatusIconSignalPopupMenuCallback is a callback function for a 'popup-menu' signal emitted from a StatusIcon.
+type StatusIconSignalPopupMenuCallback func(button uint32, activateTime uint32)
+
+// StatusIconSignalSizeChangedCallback is a callback function for a 'size-changed' signal emitted from a StatusIcon.
+type StatusIconSignalSizeChangedCallback func(size int32) bool
+
 // StatusIconNew is a wrapper around the C function gtk_status_icon_new.
 func StatusIconNew() *StatusIcon {
 	retC := C.gtk_status_icon_new()
@@ -2131,6 +2425,8 @@ func (recv *TextBuffer) GetPasteTargetList() *TargetList {
 
 // Unsupported : gtk_text_buffer_unregister_serialize_format : unsupported parameter format : Blacklisted record : GdkAtom
 
+// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
+
 // Unsupported : gtk_tree_store_new : unsupported parameter ... : varargs
 
 // Unsupported : gtk_tree_store_newv : unsupported parameter types : no param type
@@ -2224,6 +2520,20 @@ func (recv *TreeView) SetSearchEntry(entry *Entry) {
 // Unsupported : gtk_tree_view_set_search_position_func : unsupported parameter func : no type generator for TreeViewSearchPositionFunc, GtkTreeViewSearchPositionFunc
 
 // Unsupported : gtk_tree_view_column_new_with_attributes : unsupported parameter ... : varargs
+
+// Unsupported signal : unsupported parameter child_property : Blacklisted record : GParamSpec
+
+// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
+
+// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
+
+// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
+
+// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
+
+// Unsupported signal : unsupported parameter allocation : Blacklisted record : GdkRectangle
+
+// Unsupported signal : unsupported parameter object : no type generator for Gdk.Event,
 
 // Unsupported : gtk_widget_new : unsupported parameter type : no type generator for GType, GType
 

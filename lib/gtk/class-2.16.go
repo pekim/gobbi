@@ -14,6 +14,51 @@ import (
 // #include <gtk/gtk.h>
 // #include <gtk/gtkx.h>
 // #include <stdlib.h>
+/*
+
+	void Entry_iconPressHandler();
+
+	static gulong Entry_signal_connect_icon_press(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "icon-press", Entry_iconPressHandler, data);
+	}
+
+*/
+/*
+
+	void Entry_iconReleaseHandler();
+
+	static gulong Entry_signal_connect_icon_release(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "icon-release", Entry_iconReleaseHandler, data);
+	}
+
+*/
+/*
+
+	void StatusIcon_queryTooltipHandler();
+
+	static gulong StatusIcon_signal_connect_query_tooltip(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "query-tooltip", StatusIcon_queryTooltipHandler, data);
+	}
+
+*/
+/*
+
+	void StatusIcon_scrollEventHandler();
+
+	static gulong StatusIcon_signal_connect_scroll_event(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "scroll-event", StatusIcon_scrollEventHandler, data);
+	}
+
+*/
+/*
+
+	void TextBuffer_pasteDoneHandler();
+
+	static gulong TextBuffer_signal_connect_paste_done(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "paste-done", TextBuffer_pasteDoneHandler, data);
+	}
+
+*/
 import "C"
 
 // BlockActivate is a wrapper around the C function gtk_action_block_activate.
@@ -180,7 +225,21 @@ func (recv *Action) UnblockActivate() {
 
 // Unsupported : gtk_app_chooser_dialog_new : unsupported parameter file : no type generator for Gio.File, GFile*
 
+// Unsupported signal : unsupported parameter application : no type generator for Gio.AppInfo,
+
+// Unsupported signal : unsupported parameter application : no type generator for Gio.AppInfo,
+
+// Unsupported signal : unsupported parameter application : no type generator for Gio.AppInfo,
+
 // Unsupported : gtk_button_new_from_icon_name : unsupported parameter size : no type generator for gint, GtkIconSize
+
+// Unsupported signal : unsupported parameter editable : no type generator for CellEditable,
+
+// Unsupported signal : unsupported parameter model : no type generator for TreeModel,
+
+// Unsupported signal : unsupported parameter editable : no type generator for CellEditable,
+
+// Unsupported signal : unsupported parameter editable : no type generator for CellEditable,
 
 // Unsupported : gtk_cell_view_get_model : no return generator
 
@@ -189,6 +248,12 @@ func (recv *Action) UnblockActivate() {
 // Unsupported : gtk_combo_box_new_with_model_and_entry : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
 
 // Unsupported : gtk_dialog_new_with_buttons : unsupported parameter ... : varargs
+
+// EntrySignalIconPressCallback is a callback function for a 'icon-press' signal emitted from a Entry.
+type EntrySignalIconPressCallback func(iconPos EntryIconPosition, event *gdk.EventButton)
+
+// EntrySignalIconReleaseCallback is a callback function for a 'icon-release' signal emitted from a Entry.
+type EntrySignalIconReleaseCallback func(iconPos EntryIconPosition, event *gdk.EventButton)
 
 // GetCurrentIconDragSource is a wrapper around the C function gtk_entry_get_current_icon_drag_source.
 func (recv *Entry) GetCurrentIconDragSource() int32 {
@@ -440,6 +505,10 @@ func (recv *Entry) UnsetInvisibleChar() {
 	return
 }
 
+// Unsupported signal : unsupported parameter model : no type generator for TreeModel,
+
+// Unsupported signal : unsupported parameter model : no type generator for TreeModel,
+
 // Unsupported : EntryIconAccessible : no CType
 
 // Unsupported : gtk_file_chooser_dialog_new : unsupported parameter ... : varargs
@@ -565,9 +634,21 @@ func (recv *MenuItem) SetUseUnderline(setting bool) {
 
 // Unsupported : gtk_message_dialog_new_with_markup : unsupported parameter ... : varargs
 
+// Unsupported signal : unsupported parameter allocation : Blacklisted record : GdkRectangle
+
 // Unsupported : gtk_pad_controller_new : unsupported parameter group : no type generator for Gio.ActionGroup, GActionGroup*
 
 // Unsupported : gtk_page_setup_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
+
+// Unsupported signal : unsupported parameter dest_file : no type generator for Gio.File,
+
+// Unsupported signal : unsupported parameter dest_file : no type generator for Gio.File,
+
+// Unsupported signal : unsupported parameter location : no type generator for Gio.File,
+
+// Unsupported signal : unsupported parameter selected_item : no type generator for Gio.File,
+
+// Unsupported signal : unsupported parameter preview : no type generator for PrintOperationPreview,
 
 // DrawPageFinish is a wrapper around the C function gtk_print_operation_draw_page_finish.
 func (recv *PrintOperation) DrawPageFinish() {
@@ -656,6 +737,12 @@ func (recv *Scale) ClearMarks() {
 
 // Unsupported : gtk_scale_button_new : unsupported parameter size : no type generator for gint, GtkIconSize
 
+// StatusIconSignalQueryTooltipCallback is a callback function for a 'query-tooltip' signal emitted from a StatusIcon.
+type StatusIconSignalQueryTooltipCallback func(x int32, y int32, keyboardMode bool, tooltip *Tooltip) bool
+
+// StatusIconSignalScrollEventCallback is a callback function for a 'scroll-event' signal emitted from a StatusIcon.
+type StatusIconSignalScrollEventCallback func(event *gdk.EventScroll) bool
+
 // Unsupported : gtk_status_icon_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon, GIcon*
 
 // GetHasTooltip is a wrapper around the C function gtk_status_icon_get_has_tooltip.
@@ -720,6 +807,11 @@ func (recv *StatusIcon) SetTooltipText(text string) {
 
 // Unsupported : gtk_style_get_valist : unsupported parameter widget_type : no type generator for GType, GType
 
+// TextBufferSignalPasteDoneCallback is a callback function for a 'paste-done' signal emitted from a TextBuffer.
+type TextBufferSignalPasteDoneCallback func(clipboard *Clipboard)
+
+// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
+
 // Unsupported : gtk_tree_store_new : unsupported parameter ... : varargs
 
 // Unsupported : gtk_tree_store_newv : unsupported parameter types : no param type
@@ -727,5 +819,19 @@ func (recv *StatusIcon) SetTooltipText(text string) {
 // Unsupported : gtk_tree_view_new_with_model : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
 
 // Unsupported : gtk_tree_view_column_new_with_attributes : unsupported parameter ... : varargs
+
+// Unsupported signal : unsupported parameter child_property : Blacklisted record : GParamSpec
+
+// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
+
+// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
+
+// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
+
+// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
+
+// Unsupported signal : unsupported parameter allocation : Blacklisted record : GdkRectangle
+
+// Unsupported signal : unsupported parameter object : no type generator for Gdk.Event,
 
 // Unsupported : gtk_widget_new : unsupported parameter type : no type generator for GType, GType

@@ -6,7 +6,19 @@ package gdk
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <gdk/gdk.h>
 // #include <stdlib.h>
+/*
+
+	void Keymap_stateChangedHandler();
+
+	static gulong Keymap_signal_connect_state_changed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "state-changed", Keymap_stateChangedHandler, data);
+	}
+
+*/
 import "C"
+
+// KeymapSignalStateChangedCallback is a callback function for a 'state-changed' signal emitted from a Keymap.
+type KeymapSignalStateChangedCallback func()
 
 // GetCapsLockState is a wrapper around the C function gdk_keymap_get_caps_lock_state.
 func (recv *Keymap) GetCapsLockState() bool {

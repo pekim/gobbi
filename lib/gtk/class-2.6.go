@@ -17,6 +17,33 @@ import (
 // #include <gtk/gtk.h>
 // #include <gtk/gtkx.h>
 // #include <stdlib.h>
+/*
+
+	void Clipboard_ownerChangeHandler();
+
+	static gulong Clipboard_signal_connect_owner_change(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "owner-change", Clipboard_ownerChangeHandler, data);
+	}
+
+*/
+/*
+
+	void EntryCompletion_insertPrefixHandler();
+
+	static gulong EntryCompletion_signal_connect_insert_prefix(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "insert-prefix", EntryCompletion_insertPrefixHandler, data);
+	}
+
+*/
+/*
+
+	void Range_changeValueHandler();
+
+	static gulong Range_signal_connect_change_value(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "change-value", Range_changeValueHandler, data);
+	}
+
+*/
 import "C"
 
 // AboutDialogNew is a wrapper around the C function gtk_about_dialog_new.
@@ -241,6 +268,12 @@ func (recv *ActionGroup) TranslateString(string string) string {
 
 // Unsupported : gtk_app_chooser_dialog_new : unsupported parameter file : no type generator for Gio.File, GFile*
 
+// Unsupported signal : unsupported parameter application : no type generator for Gio.AppInfo,
+
+// Unsupported signal : unsupported parameter application : no type generator for Gio.AppInfo,
+
+// Unsupported signal : unsupported parameter application : no type generator for Gio.AppInfo,
+
 // Unsupported : gtk_button_new_from_icon_name : unsupported parameter size : no type generator for gint, GtkIconSize
 
 // GetImage is a wrapper around the C function gtk_button_get_image.
@@ -259,6 +292,14 @@ func (recv *Button) SetImage(image *Widget) {
 
 	return
 }
+
+// Unsupported signal : unsupported parameter editable : no type generator for CellEditable,
+
+// Unsupported signal : unsupported parameter model : no type generator for TreeModel,
+
+// Unsupported signal : unsupported parameter editable : no type generator for CellEditable,
+
+// Unsupported signal : unsupported parameter editable : no type generator for CellEditable,
 
 // StopEditing is a wrapper around the C function gtk_cell_renderer_stop_editing.
 func (recv *CellRenderer) StopEditing(canceled bool) {
@@ -380,6 +421,9 @@ func (recv *CellView) SetDisplayedRow(path *TreePath) {
 
 // Unsupported : gtk_cell_view_set_model : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
 
+// ClipboardSignalOwnerChangeCallback is a callback function for a 'owner-change' signal emitted from a Clipboard.
+type ClipboardSignalOwnerChangeCallback func(event *gdk.EventOwnerChange)
+
 // Unsupported : gtk_clipboard_request_image : unsupported parameter callback : no type generator for ClipboardImageReceivedFunc, GtkClipboardImageReceivedFunc
 
 // Unsupported : gtk_clipboard_set_can_store : unsupported parameter targets : no param type
@@ -491,6 +535,13 @@ func (recv *ComboBox) SetFocusOnClick(focusOnClick bool) {
 // Unsupported : gtk_dialog_set_alternative_button_order : unsupported parameter ... : varargs
 
 // Unsupported : gtk_dialog_set_alternative_button_order_from_array : unsupported parameter new_order : no param type
+
+// Unsupported signal : unsupported parameter model : no type generator for TreeModel,
+
+// EntryCompletionSignalInsertPrefixCallback is a callback function for a 'insert-prefix' signal emitted from a EntryCompletion.
+type EntryCompletionSignalInsertPrefixCallback func(prefix string) bool
+
+// Unsupported signal : unsupported parameter model : no type generator for TreeModel,
 
 // GetInlineCompletion is a wrapper around the C function gtk_entry_completion_get_inline_completion.
 func (recv *EntryCompletion) GetInlineCompletion() bool {
@@ -1064,9 +1115,21 @@ func (recv *MenuToolButton) SetMenu(menu *Widget) {
 
 // Unsupported : gtk_message_dialog_format_secondary_text : unsupported parameter ... : varargs
 
+// Unsupported signal : unsupported parameter allocation : Blacklisted record : GdkRectangle
+
 // Unsupported : gtk_pad_controller_new : unsupported parameter group : no type generator for Gio.ActionGroup, GActionGroup*
 
 // Unsupported : gtk_page_setup_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
+
+// Unsupported signal : unsupported parameter dest_file : no type generator for Gio.File,
+
+// Unsupported signal : unsupported parameter dest_file : no type generator for Gio.File,
+
+// Unsupported signal : unsupported parameter location : no type generator for Gio.File,
+
+// Unsupported signal : unsupported parameter selected_item : no type generator for Gio.File,
+
+// Unsupported signal : unsupported parameter preview : no type generator for PrintOperationPreview,
 
 // Unsupported : gtk_print_settings_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
 
@@ -1086,6 +1149,9 @@ func (recv *ProgressBar) SetEllipsize(mode pango.EllipsizeMode) {
 
 	return
 }
+
+// RangeSignalChangeValueCallback is a callback function for a 'change-value' signal emitted from a Range.
+type RangeSignalChangeValueCallback func(scroll ScrollType, value float64) bool
 
 // Unsupported : gtk_recent_chooser_dialog_new : unsupported parameter ... : varargs
 
@@ -1110,6 +1176,8 @@ func (recv *TextBuffer) Backspace(iter *TextIter, interactive bool, defaultEdita
 
 	return retGo
 }
+
+// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
 
 // GetIterAtPosition is a wrapper around the C function gtk_text_view_get_iter_at_position.
 func (recv *TextView) GetIterAtPosition(x int32, y int32) (*TextIter, int32) {
@@ -1202,6 +1270,20 @@ func (recv *TreeView) SetHoverSelection(hover bool) {
 // Unsupported : gtk_tree_view_set_row_separator_func : unsupported parameter func : no type generator for TreeViewRowSeparatorFunc, GtkTreeViewRowSeparatorFunc
 
 // Unsupported : gtk_tree_view_column_new_with_attributes : unsupported parameter ... : varargs
+
+// Unsupported signal : unsupported parameter child_property : Blacklisted record : GParamSpec
+
+// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
+
+// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
+
+// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
+
+// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
+
+// Unsupported signal : unsupported parameter allocation : Blacklisted record : GdkRectangle
+
+// Unsupported signal : unsupported parameter object : no type generator for Gdk.Event,
 
 // Unsupported : gtk_widget_new : unsupported parameter type : no type generator for GType, GType
 

@@ -34,6 +34,12 @@ func (recv *Accessible) SetWidget(widget *Widget) {
 
 // Unsupported : gtk_app_chooser_dialog_new : unsupported parameter file : no type generator for Gio.File, GFile*
 
+// Unsupported signal : unsupported parameter application : no type generator for Gio.AppInfo,
+
+// Unsupported signal : unsupported parameter application : no type generator for Gio.AppInfo,
+
+// Unsupported signal : unsupported parameter application : no type generator for Gio.AppInfo,
+
 // Commit is a wrapper around the C function gtk_assistant_commit.
 func (recv *Assistant) Commit() {
 	C.gtk_assistant_commit((*C.GtkAssistant)(recv.native))
@@ -50,6 +56,14 @@ func (recv *Button) GetEventWindow() *gdk.Window {
 
 	return retGo
 }
+
+// Unsupported signal : unsupported parameter editable : no type generator for CellEditable,
+
+// Unsupported signal : unsupported parameter model : no type generator for TreeModel,
+
+// Unsupported signal : unsupported parameter editable : no type generator for CellEditable,
+
+// Unsupported signal : unsupported parameter editable : no type generator for CellEditable,
 
 // Unsupported : gtk_combo_box_new_with_model : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
 
@@ -73,6 +87,10 @@ func (recv *Entry) ResetImContext() {
 
 	return
 }
+
+// Unsupported signal : unsupported parameter model : no type generator for TreeModel,
+
+// Unsupported signal : unsupported parameter model : no type generator for TreeModel,
 
 // Unsupported : EntryIconAccessible : no CType
 
@@ -170,9 +188,21 @@ func (recv *Notebook) GetTabVborder() uint16 {
 	return retGo
 }
 
+// Unsupported signal : unsupported parameter allocation : Blacklisted record : GdkRectangle
+
 // Unsupported : gtk_pad_controller_new : unsupported parameter group : no type generator for Gio.ActionGroup, GActionGroup*
 
 // Unsupported : gtk_page_setup_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
+
+// Unsupported signal : unsupported parameter dest_file : no type generator for Gio.File,
+
+// Unsupported signal : unsupported parameter dest_file : no type generator for Gio.File,
+
+// Unsupported signal : unsupported parameter location : no type generator for Gio.File,
+
+// Unsupported signal : unsupported parameter selected_item : no type generator for Gio.File,
+
+// Unsupported signal : unsupported parameter preview : no type generator for PrintOperationPreview,
 
 // Unsupported : gtk_print_settings_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
 
@@ -207,6 +237,8 @@ func (recv *Table) GetSize() (uint32, uint32) {
 
 	return rows, columns
 }
+
+// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
 
 // GetHadjustment is a wrapper around the C function gtk_text_view_get_hadjustment.
 func (recv *TextView) GetHadjustment() *Adjustment {
@@ -256,6 +288,20 @@ func (recv *Viewport) GetViewWindow() *gdk.Window {
 
 	return retGo
 }
+
+// Unsupported signal : unsupported parameter child_property : Blacklisted record : GParamSpec
+
+// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
+
+// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
+
+// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
+
+// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
+
+// Unsupported signal : unsupported parameter allocation : Blacklisted record : GdkRectangle
+
+// Unsupported signal : unsupported parameter object : no type generator for Gdk.Event,
 
 // Unsupported : gtk_widget_new : unsupported parameter type : no type generator for GType, GType
 

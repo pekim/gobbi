@@ -23,10 +23,46 @@ import (
 // #include <stdlib.h>
 /*
 
-	void AppLaunchContext_launchFailedHandler();
+	void AppInfoMonitor_changedHandler();
 
-	static gulong AppLaunchContext_signal_connect_launch_failed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "launch-failed", AppLaunchContext_launchFailedHandler, data);
+	static gulong AppInfoMonitor_signal_connect_changed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "changed", AppInfoMonitor_changedHandler, data);
+	}
+
+*/
+/*
+
+	void Application_activateHandler();
+
+	static gulong Application_signal_connect_activate(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "activate", Application_activateHandler, data);
+	}
+
+*/
+/*
+
+	void Application_commandLineHandler();
+
+	static gulong Application_signal_connect_command_line(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "command-line", Application_commandLineHandler, data);
+	}
+
+*/
+/*
+
+	void Application_shutdownHandler();
+
+	static gulong Application_signal_connect_shutdown(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "shutdown", Application_shutdownHandler, data);
+	}
+
+*/
+/*
+
+	void Application_startupHandler();
+
+	static gulong Application_signal_connect_startup(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "startup", Application_startupHandler, data);
 	}
 
 */
@@ -50,10 +86,10 @@ import (
 */
 /*
 
-	void MountOperation_abortedHandler();
+	void MenuModel_itemsChangedHandler();
 
-	static gulong MountOperation_signal_connect_aborted(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "aborted", MountOperation_abortedHandler, data);
+	static gulong MenuModel_signal_connect_items_changed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "items-changed", MenuModel_itemsChangedHandler, data);
 	}
 
 */
@@ -72,15 +108,6 @@ import (
 
 	static gulong MountOperation_signal_connect_reply(gpointer instance, gpointer data) {
 		return g_signal_connect(instance, "reply", MountOperation_replyHandler, data);
-	}
-
-*/
-/*
-
-	void MountOperation_showUnmountProgressHandler();
-
-	static gulong MountOperation_signal_connect_show_unmount_progress(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "show-unmount-progress", MountOperation_showUnmountProgressHandler, data);
 	}
 
 */
@@ -122,6 +149,15 @@ import (
 */
 /*
 
+	void ThreadedSocketService_runHandler();
+
+	static gulong ThreadedSocketService_signal_connect_run(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "run", ThreadedSocketService_runHandler, data);
+	}
+
+*/
+/*
+
 	void UnixMountMonitor_mountpointsChangedHandler();
 
 	static gulong UnixMountMonitor_signal_connect_mountpoints_changed(gpointer instance, gpointer data) {
@@ -139,6 +175,9 @@ import (
 
 */
 import "C"
+
+// AppInfoMonitorSignalChangedCallback is a callback function for a 'changed' signal emitted from a AppInfoMonitor.
+type AppInfoMonitorSignalChangedCallback func()
 
 // AppLaunchContext is a wrapper around the C record GAppLaunchContext.
 type AppLaunchContext struct {
@@ -174,9 +213,6 @@ func CastToAppLaunchContext(object *gobject.Object) *AppLaunchContext {
 	return AppLaunchContextNewFromC(object.ToC())
 }
 
-// AppLaunchContextSignalLaunchFailedCallback is a callback function for a 'launch-failed' signal emitted from a AppLaunchContext.
-type AppLaunchContextSignalLaunchFailedCallback func(startupNotifyId string)
-
 // Unsupported signal : unsupported parameter info : no type generator for AppInfo,
 
 // AppLaunchContextNew is a wrapper around the C function g_app_launch_context_new.
@@ -200,6 +236,20 @@ func (recv *AppLaunchContext) LaunchFailed(startupNotifyId string) {
 
 	return
 }
+
+// ApplicationSignalActivateCallback is a callback function for a 'activate' signal emitted from a Application.
+type ApplicationSignalActivateCallback func()
+
+// ApplicationSignalCommandLineCallback is a callback function for a 'command-line' signal emitted from a Application.
+type ApplicationSignalCommandLineCallback func(commandLine *ApplicationCommandLine) int32
+
+// Unsupported signal : unsupported parameter files : no param type
+
+// ApplicationSignalShutdownCallback is a callback function for a 'shutdown' signal emitted from a Application.
+type ApplicationSignalShutdownCallback func()
+
+// ApplicationSignalStartupCallback is a callback function for a 'startup' signal emitted from a Application.
+type ApplicationSignalStartupCallback func()
 
 // ApplicationCommandLine is a wrapper around the C record GApplicationCommandLine.
 type ApplicationCommandLine struct {
@@ -806,6 +856,10 @@ func CastToDBusMenuModel(object *gobject.Object) *DBusMenuModel {
 
 // Unsupported : g_dbus_message_new_from_blob : unsupported parameter blob : no param type
 
+// Unsupported signal : unsupported parameter changed_properties : Blacklisted record : GVariant
+
+// Unsupported signal : unsupported parameter parameters : Blacklisted record : GVariant
+
 // Unsupported : g_dbus_object_manager_client_new_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
 
 // Unsupported : g_dbus_object_manager_client_new_for_bus_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
@@ -813,6 +867,10 @@ func CastToDBusMenuModel(object *gobject.Object) *DBusMenuModel {
 // Unsupported : g_dbus_object_manager_client_new_for_bus_sync : unsupported parameter get_proxy_type_func : no type generator for DBusProxyTypeFunc, GDBusProxyTypeFunc
 
 // Unsupported : g_dbus_object_manager_client_new_sync : unsupported parameter get_proxy_type_func : no type generator for DBusProxyTypeFunc, GDBusProxyTypeFunc
+
+// Unsupported signal : unsupported parameter changed_properties : Blacklisted record : GVariant
+
+// Unsupported signal : unsupported parameter parameters : Blacklisted record : GVariant
 
 // Unsupported : g_dbus_proxy_new_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
 
@@ -2981,6 +3039,9 @@ func (recv *MemoryOutputStream) GetSize() uint64 {
 	return retGo
 }
 
+// MenuModelSignalItemsChangedCallback is a callback function for a 'items-changed' signal emitted from a MenuModel.
+type MenuModelSignalItemsChangedCallback func(position int32, removed int32, added int32)
+
 // MountOperation is a wrapper around the C record GMountOperation.
 type MountOperation struct {
 	native *C.GMountOperation
@@ -3015,9 +3076,6 @@ func CastToMountOperation(object *gobject.Object) *MountOperation {
 	return MountOperationNewFromC(object.ToC())
 }
 
-// MountOperationSignalAbortedCallback is a callback function for a 'aborted' signal emitted from a MountOperation.
-type MountOperationSignalAbortedCallback func()
-
 // MountOperationSignalAskPasswordCallback is a callback function for a 'ask-password' signal emitted from a MountOperation.
 type MountOperationSignalAskPasswordCallback func(message string, defaultUser string, defaultDomain string, flags AskPasswordFlags)
 
@@ -3027,9 +3085,6 @@ type MountOperationSignalAskPasswordCallback func(message string, defaultUser st
 type MountOperationSignalReplyCallback func(result MountOperationResult)
 
 // Unsupported signal : unsupported parameter processes : no param type
-
-// MountOperationSignalShowUnmountProgressCallback is a callback function for a 'show-unmount-progress' signal emitted from a MountOperation.
-type MountOperationSignalShowUnmountProgressCallback func(message string, timeLeft int64, bytesLeft int64)
 
 // MountOperationNew is a wrapper around the C function g_mount_operation_new.
 func MountOperationNew() *MountOperation {
@@ -4003,6 +4058,8 @@ func (recv *SocketAddressEnumerator) Next(cancellable *Cancellable) (*SocketAddr
 
 // Unsupported : g_socket_address_enumerator_next_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
 
+// Unsupported signal : unsupported parameter connectable : no type generator for SocketConnectable,
+
 // SocketControlMessage is a wrapper around the C record GSocketControlMessage.
 type SocketControlMessage struct {
 	native *C.GSocketControlMessage
@@ -4199,6 +4256,9 @@ func (recv *ThemedIcon) AppendName(iconname string) {
 }
 
 // Unsupported : g_themed_icon_get_names : no return type
+
+// ThreadedSocketServiceSignalRunCallback is a callback function for a 'run' signal emitted from a ThreadedSocketService.
+type ThreadedSocketServiceSignalRunCallback func(connection *SocketConnection, sourceObject *gobject.Object) bool
 
 // UnixConnection is a wrapper around the C record GUnixConnection.
 type UnixConnection struct {

@@ -4,6 +4,7 @@
 package gdk
 
 import (
+	cairo "github.com/pekim/gobbi/lib/cairo"
 	glib "github.com/pekim/gobbi/lib/glib"
 	"unsafe"
 )
@@ -11,6 +12,15 @@ import (
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <gdk/gdk.h>
 // #include <stdlib.h>
+/*
+
+	void Window_createSurfaceHandler();
+
+	static gulong Window_signal_connect_create_surface(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "create-surface", Window_createSurfaceHandler, data);
+	}
+
+*/
 import "C"
 
 // GetAssociatedDevice is a wrapper around the C function gdk_device_get_associated_device.
@@ -226,6 +236,9 @@ func (recv *Keymap) GetNumLockState() bool {
 
 	return retGo
 }
+
+// WindowSignalCreateSurfaceCallback is a callback function for a 'create-surface' signal emitted from a Window.
+type WindowSignalCreateSurfaceCallback func(width int32, height int32) cairo.Surface
 
 // GetDeviceCursor is a wrapper around the C function gdk_window_get_device_cursor.
 func (recv *Window) GetDeviceCursor(device *Device) *Cursor {

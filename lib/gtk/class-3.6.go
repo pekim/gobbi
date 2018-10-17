@@ -15,6 +15,15 @@ import (
 // #include <gtk/gtk.h>
 // #include <gtk/gtkx.h>
 // #include <stdlib.h>
+/*
+
+	void LevelBar_offsetChangedHandler();
+
+	static gulong LevelBar_signal_connect_offset_changed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "offset-changed", LevelBar_offsetChangedHandler, data);
+	}
+
+*/
 import "C"
 
 // SetAccel is a wrapper around the C function gtk_accel_label_set_accel.
@@ -46,6 +55,12 @@ func (recv *ActionGroup) SetAccelGroup(accelGroup *AccelGroup) {
 }
 
 // Unsupported : gtk_app_chooser_dialog_new : unsupported parameter file : no type generator for Gio.File, GFile*
+
+// Unsupported signal : unsupported parameter application : no type generator for Gio.AppInfo,
+
+// Unsupported signal : unsupported parameter application : no type generator for Gio.AppInfo,
+
+// Unsupported signal : unsupported parameter application : no type generator for Gio.AppInfo,
 
 // GetActiveWindow is a wrapper around the C function gtk_application_get_active_window.
 func (recv *Application) GetActiveWindow() *Window {
@@ -92,6 +107,14 @@ func (recv *Button) SetAlwaysShowImage(alwaysShow bool) {
 
 	return
 }
+
+// Unsupported signal : unsupported parameter editable : no type generator for CellEditable,
+
+// Unsupported signal : unsupported parameter model : no type generator for TreeModel,
+
+// Unsupported signal : unsupported parameter editable : no type generator for CellEditable,
+
+// Unsupported signal : unsupported parameter editable : no type generator for CellEditable,
 
 // Unsupported : gtk_combo_box_new_with_model : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
 
@@ -150,6 +173,10 @@ func (recv *Entry) SetInputPurpose(purpose InputPurpose) {
 	return
 }
 
+// Unsupported signal : unsupported parameter model : no type generator for TreeModel,
+
+// Unsupported signal : unsupported parameter model : no type generator for TreeModel,
+
 // Unsupported : EntryIconAccessible : no CType
 
 // Unsupported : gtk_file_chooser_dialog_new : unsupported parameter ... : varargs
@@ -169,6 +196,9 @@ func (recv *Entry) SetInputPurpose(purpose InputPurpose) {
 // Unsupported : gtk_image_new_from_stock : unsupported parameter size : no type generator for gint, GtkIconSize
 
 // Unsupported : gtk_info_bar_new_with_buttons : unsupported parameter ... : varargs
+
+// LevelBarSignalOffsetChangedCallback is a callback function for a 'offset-changed' signal emitted from a LevelBar.
+type LevelBarSignalOffsetChangedCallback func(name string)
 
 // LevelBarNew is a wrapper around the C function gtk_level_bar_new.
 func LevelBarNew() *LevelBar {
@@ -394,9 +424,21 @@ func (recv *MenuShell) BindModel(model *gio.MenuModel, actionNamespace string, w
 
 // Unsupported : gtk_message_dialog_new_with_markup : unsupported parameter ... : varargs
 
+// Unsupported signal : unsupported parameter allocation : Blacklisted record : GdkRectangle
+
 // Unsupported : gtk_pad_controller_new : unsupported parameter group : no type generator for Gio.ActionGroup, GActionGroup*
 
 // Unsupported : gtk_page_setup_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
+
+// Unsupported signal : unsupported parameter dest_file : no type generator for Gio.File,
+
+// Unsupported signal : unsupported parameter dest_file : no type generator for Gio.File,
+
+// Unsupported signal : unsupported parameter location : no type generator for Gio.File,
+
+// Unsupported signal : unsupported parameter selected_item : no type generator for Gio.File,
+
+// Unsupported signal : unsupported parameter preview : no type generator for PrintOperationPreview,
 
 // Unsupported : gtk_print_settings_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
 
@@ -415,6 +457,8 @@ func SearchEntryNew() *SearchEntry {
 }
 
 // Unsupported : gtk_status_icon_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon, GIcon*
+
+// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
 
 // GetInputHints is a wrapper around the C function gtk_text_view_get_input_hints.
 func (recv *TextView) GetInputHints() InputHints {
@@ -457,6 +501,20 @@ func (recv *TextView) SetInputPurpose(purpose InputPurpose) {
 // Unsupported : gtk_tree_view_new_with_model : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
 
 // Unsupported : gtk_tree_view_column_new_with_attributes : unsupported parameter ... : varargs
+
+// Unsupported signal : unsupported parameter child_property : Blacklisted record : GParamSpec
+
+// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
+
+// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
+
+// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
+
+// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
+
+// Unsupported signal : unsupported parameter allocation : Blacklisted record : GdkRectangle
+
+// Unsupported signal : unsupported parameter object : no type generator for Gdk.Event,
 
 // Unsupported : gtk_widget_new : unsupported parameter type : no type generator for GType, GType
 

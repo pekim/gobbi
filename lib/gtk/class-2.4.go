@@ -16,7 +16,202 @@ import (
 // #include <gtk/gtk.h>
 // #include <gtk/gtkx.h>
 // #include <stdlib.h>
+/*
+
+	void AccelMap_changedHandler();
+
+	static gulong AccelMap_signal_connect_changed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "changed", AccelMap_changedHandler, data);
+	}
+
+*/
+/*
+
+	void Action_activateHandler();
+
+	static gulong Action_signal_connect_activate(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "activate", Action_activateHandler, data);
+	}
+
+*/
+/*
+
+	void ActionGroup_connectProxyHandler();
+
+	static gulong ActionGroup_signal_connect_connect_proxy(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "connect-proxy", ActionGroup_connectProxyHandler, data);
+	}
+
+*/
+/*
+
+	void ActionGroup_disconnectProxyHandler();
+
+	static gulong ActionGroup_signal_connect_disconnect_proxy(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "disconnect-proxy", ActionGroup_disconnectProxyHandler, data);
+	}
+
+*/
+/*
+
+	void ActionGroup_postActivateHandler();
+
+	static gulong ActionGroup_signal_connect_post_activate(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "post-activate", ActionGroup_postActivateHandler, data);
+	}
+
+*/
+/*
+
+	void ActionGroup_preActivateHandler();
+
+	static gulong ActionGroup_signal_connect_pre_activate(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "pre-activate", ActionGroup_preActivateHandler, data);
+	}
+
+*/
+/*
+
+	void CellRenderer_editingCanceledHandler();
+
+	static gulong CellRenderer_signal_connect_editing_canceled(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "editing-canceled", CellRenderer_editingCanceledHandler, data);
+	}
+
+*/
+/*
+
+	void ColorButton_colorSetHandler();
+
+	static gulong ColorButton_signal_connect_color_set(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "color-set", ColorButton_colorSetHandler, data);
+	}
+
+*/
+/*
+
+	void ComboBox_changedHandler();
+
+	static gulong ComboBox_signal_connect_changed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "changed", ComboBox_changedHandler, data);
+	}
+
+*/
+/*
+
+	void EntryCompletion_actionActivatedHandler();
+
+	static gulong EntryCompletion_signal_connect_action_activated(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "action-activated", EntryCompletion_actionActivatedHandler, data);
+	}
+
+*/
+/*
+
+	void FontButton_fontSetHandler();
+
+	static gulong FontButton_signal_connect_font_set(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "font-set", FontButton_fontSetHandler, data);
+	}
+
+*/
+/*
+
+	void RadioAction_changedHandler();
+
+	static gulong RadioAction_signal_connect_changed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "changed", RadioAction_changedHandler, data);
+	}
+
+*/
+/*
+
+	void RadioButton_groupChangedHandler();
+
+	static gulong RadioButton_signal_connect_group_changed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "group-changed", RadioButton_groupChangedHandler, data);
+	}
+
+*/
+/*
+
+	void Style_realizeHandler();
+
+	static gulong Style_signal_connect_realize(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "realize", Style_realizeHandler, data);
+	}
+
+*/
+/*
+
+	void Style_unrealizeHandler();
+
+	static gulong Style_signal_connect_unrealize(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "unrealize", Style_unrealizeHandler, data);
+	}
+
+*/
+/*
+
+	void UIManager_actionsChangedHandler();
+
+	static gulong UIManager_signal_connect_actions_changed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "actions-changed", UIManager_actionsChangedHandler, data);
+	}
+
+*/
+/*
+
+	void UIManager_addWidgetHandler();
+
+	static gulong UIManager_signal_connect_add_widget(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "add-widget", UIManager_addWidgetHandler, data);
+	}
+
+*/
+/*
+
+	void UIManager_connectProxyHandler();
+
+	static gulong UIManager_signal_connect_connect_proxy(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "connect-proxy", UIManager_connectProxyHandler, data);
+	}
+
+*/
+/*
+
+	void UIManager_disconnectProxyHandler();
+
+	static gulong UIManager_signal_connect_disconnect_proxy(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "disconnect-proxy", UIManager_disconnectProxyHandler, data);
+	}
+
+*/
+/*
+
+	void UIManager_postActivateHandler();
+
+	static gulong UIManager_signal_connect_post_activate(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "post-activate", UIManager_postActivateHandler, data);
+	}
+
+*/
+/*
+
+	void UIManager_preActivateHandler();
+
+	static gulong UIManager_signal_connect_pre_activate(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "pre-activate", UIManager_preActivateHandler, data);
+	}
+
+*/
 import "C"
+
+// AccelMapSignalChangedCallback is a callback function for a 'changed' signal emitted from a AccelMap.
+type AccelMapSignalChangedCallback func(accelPath string, accelKey uint32, accelMods gdk.ModifierType)
+
+// ActionSignalActivateCallback is a callback function for a 'activate' signal emitted from a Action.
+type ActionSignalActivateCallback func()
 
 // ActionNew is a wrapper around the C function gtk_action_new.
 func ActionNew(name string, label string, tooltip string, stockId string) *Action {
@@ -143,6 +338,18 @@ func (recv *Action) SetAccelPath(accelPath string) {
 
 	return
 }
+
+// ActionGroupSignalConnectProxyCallback is a callback function for a 'connect-proxy' signal emitted from a ActionGroup.
+type ActionGroupSignalConnectProxyCallback func(action *Action, proxy *Widget)
+
+// ActionGroupSignalDisconnectProxyCallback is a callback function for a 'disconnect-proxy' signal emitted from a ActionGroup.
+type ActionGroupSignalDisconnectProxyCallback func(action *Action, proxy *Widget)
+
+// ActionGroupSignalPostActivateCallback is a callback function for a 'post-activate' signal emitted from a ActionGroup.
+type ActionGroupSignalPostActivateCallback func(action *Action)
+
+// ActionGroupSignalPreActivateCallback is a callback function for a 'pre-activate' signal emitted from a ActionGroup.
+type ActionGroupSignalPreActivateCallback func(action *Action)
 
 // ActionGroupNew is a wrapper around the C function gtk_action_group_new.
 func ActionGroupNew(name string) *ActionGroup {
@@ -312,6 +519,12 @@ func (recv *Alignment) SetPadding(paddingTop uint32, paddingBottom uint32, paddi
 
 // Unsupported : gtk_app_chooser_dialog_new : unsupported parameter file : no type generator for Gio.File, GFile*
 
+// Unsupported signal : unsupported parameter application : no type generator for Gio.AppInfo,
+
+// Unsupported signal : unsupported parameter application : no type generator for Gio.AppInfo,
+
+// Unsupported signal : unsupported parameter application : no type generator for Gio.AppInfo,
+
 // Unsupported : gtk_button_new_from_icon_name : unsupported parameter size : no type generator for gint, GtkIconSize
 
 // GetAlignment is a wrapper around the C function gtk_button_get_alignment.
@@ -385,6 +598,17 @@ func (recv *Calendar) SetDisplayOptions(flags CalendarDisplayOptions) {
 	return
 }
 
+// Unsupported signal : unsupported parameter editable : no type generator for CellEditable,
+
+// Unsupported signal : unsupported parameter model : no type generator for TreeModel,
+
+// Unsupported signal : unsupported parameter editable : no type generator for CellEditable,
+
+// CellRendererSignalEditingCanceledCallback is a callback function for a 'editing-canceled' signal emitted from a CellRenderer.
+type CellRendererSignalEditingCanceledCallback func()
+
+// Unsupported signal : unsupported parameter editable : no type generator for CellEditable,
+
 // GetDrawAsRadio is a wrapper around the C function gtk_check_menu_item_get_draw_as_radio.
 func (recv *CheckMenuItem) GetDrawAsRadio() bool {
 	retC := C.gtk_check_menu_item_get_draw_as_radio((*C.GtkCheckMenuItem)(recv.native))
@@ -406,6 +630,9 @@ func (recv *CheckMenuItem) SetDrawAsRadio(drawAsRadio bool) {
 // Unsupported : gtk_clipboard_request_targets : unsupported parameter callback : no type generator for ClipboardTargetsReceivedFunc, GtkClipboardTargetsReceivedFunc
 
 // Unsupported : gtk_clipboard_wait_for_targets : unsupported parameter targets : no param type
+
+// ColorButtonSignalColorSetCallback is a callback function for a 'color-set' signal emitted from a ColorButton.
+type ColorButtonSignalColorSetCallback func()
 
 // ColorButtonNew is a wrapper around the C function gtk_color_button_new.
 func ColorButtonNew() *ColorButton {
@@ -497,6 +724,9 @@ func (recv *ColorButton) SetUseAlpha(useAlpha bool) {
 
 	return
 }
+
+// ComboBoxSignalChangedCallback is a callback function for a 'changed' signal emitted from a ComboBox.
+type ComboBoxSignalChangedCallback func()
 
 // ComboBoxNew is a wrapper around the C function gtk_combo_box_new.
 func ComboBoxNew() *ComboBox {
@@ -628,6 +858,13 @@ func (recv *Entry) SetCompletion(completion *EntryCompletion) {
 
 	return
 }
+
+// EntryCompletionSignalActionActivatedCallback is a callback function for a 'action-activated' signal emitted from a EntryCompletion.
+type EntryCompletionSignalActionActivatedCallback func(index int32)
+
+// Unsupported signal : unsupported parameter model : no type generator for TreeModel,
+
+// Unsupported signal : unsupported parameter model : no type generator for TreeModel,
 
 // EntryCompletionNew is a wrapper around the C function gtk_entry_completion_new.
 func EntryCompletionNew() *EntryCompletion {
@@ -962,6 +1199,9 @@ func (recv *FileFilter) SetName(name string) {
 
 	return
 }
+
+// FontButtonSignalFontSetCallback is a callback function for a 'font-set' signal emitted from a FontButton.
+type FontButtonSignalFontSetCallback func()
 
 // FontButtonNew is a wrapper around the C function gtk_font_button_new.
 func FontButtonNew() *FontButton {
@@ -1357,6 +1597,8 @@ func (recv *MessageDialog) SetMarkup(str string) {
 	return
 }
 
+// Unsupported signal : unsupported parameter allocation : Blacklisted record : GdkRectangle
+
 // Unsupported : gtk_pad_controller_new : unsupported parameter group : no type generator for Gio.ActionGroup, GActionGroup*
 
 // Unsupported : gtk_page_setup_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
@@ -1377,7 +1619,20 @@ func (recv *Paned) GetChild2() *Widget {
 	return retGo
 }
 
+// Unsupported signal : unsupported parameter dest_file : no type generator for Gio.File,
+
+// Unsupported signal : unsupported parameter dest_file : no type generator for Gio.File,
+
+// Unsupported signal : unsupported parameter location : no type generator for Gio.File,
+
+// Unsupported signal : unsupported parameter selected_item : no type generator for Gio.File,
+
+// Unsupported signal : unsupported parameter preview : no type generator for PrintOperationPreview,
+
 // Unsupported : gtk_print_settings_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
+
+// RadioActionSignalChangedCallback is a callback function for a 'changed' signal emitted from a RadioAction.
+type RadioActionSignalChangedCallback func(current *RadioAction)
 
 // RadioActionNew is a wrapper around the C function gtk_radio_action_new.
 func RadioActionNew(name string, label string, tooltip string, stockId string, value int32) *RadioAction {
@@ -1425,6 +1680,9 @@ func (recv *RadioAction) SetGroup(group *glib.SList) {
 
 	return
 }
+
+// RadioButtonSignalGroupChangedCallback is a callback function for a 'group-changed' signal emitted from a RadioButton.
+type RadioButtonSignalGroupChangedCallback func()
 
 // RadioMenuItemNewFromWidget is a wrapper around the C function gtk_radio_menu_item_new_from_widget.
 func RadioMenuItemNewFromWidget(group *RadioMenuItem) *RadioMenuItem {
@@ -1582,6 +1840,12 @@ func (recv *SeparatorToolItem) SetDraw(draw bool) {
 
 // Unsupported : gtk_status_icon_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon, GIcon*
 
+// StyleSignalRealizeCallback is a callback function for a 'realize' signal emitted from a Style.
+type StyleSignalRealizeCallback func()
+
+// StyleSignalUnrealizeCallback is a callback function for a 'unrealize' signal emitted from a Style.
+type StyleSignalUnrealizeCallback func()
+
 // SelectRange is a wrapper around the C function gtk_text_buffer_select_range.
 func (recv *TextBuffer) SelectRange(ins *TextIter, bound *TextIter) {
 	c_ins := (*C.GtkTextIter)(ins.ToC())
@@ -1592,6 +1856,8 @@ func (recv *TextBuffer) SelectRange(ins *TextIter, bound *TextIter) {
 
 	return
 }
+
+// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
 
 // GetAcceptsTab is a wrapper around the C function gtk_text_view_get_accepts_tab.
 func (recv *TextView) GetAcceptsTab() bool {
@@ -2204,6 +2470,24 @@ func (recv *TreeViewColumn) SetExpand(expand bool) {
 	return
 }
 
+// UIManagerSignalActionsChangedCallback is a callback function for a 'actions-changed' signal emitted from a UIManager.
+type UIManagerSignalActionsChangedCallback func()
+
+// UIManagerSignalAddWidgetCallback is a callback function for a 'add-widget' signal emitted from a UIManager.
+type UIManagerSignalAddWidgetCallback func(widget *Widget)
+
+// UIManagerSignalConnectProxyCallback is a callback function for a 'connect-proxy' signal emitted from a UIManager.
+type UIManagerSignalConnectProxyCallback func(action *Action, proxy *Widget)
+
+// UIManagerSignalDisconnectProxyCallback is a callback function for a 'disconnect-proxy' signal emitted from a UIManager.
+type UIManagerSignalDisconnectProxyCallback func(action *Action, proxy *Widget)
+
+// UIManagerSignalPostActivateCallback is a callback function for a 'post-activate' signal emitted from a UIManager.
+type UIManagerSignalPostActivateCallback func(action *Action)
+
+// UIManagerSignalPreActivateCallback is a callback function for a 'pre-activate' signal emitted from a UIManager.
+type UIManagerSignalPreActivateCallback func(action *Action)
+
 // UIManagerNew is a wrapper around the C function gtk_ui_manager_new.
 func UIManagerNew() *UIManager {
 	retC := C.gtk_ui_manager_new()
@@ -2391,6 +2675,20 @@ func (recv *UIManager) SetAddTearoffs(addTearoffs bool) {
 
 	return
 }
+
+// Unsupported signal : unsupported parameter child_property : Blacklisted record : GParamSpec
+
+// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
+
+// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
+
+// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
+
+// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
+
+// Unsupported signal : unsupported parameter allocation : Blacklisted record : GdkRectangle
+
+// Unsupported signal : unsupported parameter object : no type generator for Gdk.Event,
 
 // Unsupported : gtk_widget_new : unsupported parameter type : no type generator for GType, GType
 

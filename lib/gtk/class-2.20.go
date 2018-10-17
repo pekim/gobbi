@@ -16,6 +16,24 @@ import (
 // #include <gtk/gtk.h>
 // #include <gtk/gtkx.h>
 // #include <stdlib.h>
+/*
+
+	void Entry_preeditChangedHandler();
+
+	static gulong Entry_signal_connect_preedit_changed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "preedit-changed", Entry_preeditChangedHandler, data);
+	}
+
+*/
+/*
+
+	void TextView_preeditChangedHandler();
+
+	static gulong TextView_signal_connect_preedit_changed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "preedit-changed", TextView_preeditChangedHandler, data);
+	}
+
+*/
 import "C"
 
 // GetAlwaysShowImage is a wrapper around the C function gtk_action_get_always_show_image.
@@ -38,7 +56,21 @@ func (recv *Action) SetAlwaysShowImage(alwaysShow bool) {
 
 // Unsupported : gtk_app_chooser_dialog_new : unsupported parameter file : no type generator for Gio.File, GFile*
 
+// Unsupported signal : unsupported parameter application : no type generator for Gio.AppInfo,
+
+// Unsupported signal : unsupported parameter application : no type generator for Gio.AppInfo,
+
+// Unsupported signal : unsupported parameter application : no type generator for Gio.AppInfo,
+
 // Unsupported : gtk_button_new_from_icon_name : unsupported parameter size : no type generator for gint, GtkIconSize
+
+// Unsupported signal : unsupported parameter editable : no type generator for CellEditable,
+
+// Unsupported signal : unsupported parameter model : no type generator for TreeModel,
+
+// Unsupported signal : unsupported parameter editable : no type generator for CellEditable,
+
+// Unsupported signal : unsupported parameter editable : no type generator for CellEditable,
 
 // CellRendererSpinnerNew is a wrapper around the C function gtk_cell_renderer_spinner_new.
 func CellRendererSpinnerNew() *CellRendererSpinner {
@@ -63,6 +95,13 @@ func (recv *Dialog) GetWidgetForResponse(responseId int32) *Widget {
 
 	return retGo
 }
+
+// EntrySignalPreeditChangedCallback is a callback function for a 'preedit-changed' signal emitted from a Entry.
+type EntrySignalPreeditChangedCallback func(preedit string)
+
+// Unsupported signal : unsupported parameter model : no type generator for TreeModel,
+
+// Unsupported signal : unsupported parameter model : no type generator for TreeModel,
 
 // Unsupported : EntryIconAccessible : no CType
 
@@ -135,6 +174,8 @@ func (recv *OffscreenWindow) GetSurface() *cairo.Surface {
 	return retGo
 }
 
+// Unsupported signal : unsupported parameter allocation : Blacklisted record : GdkRectangle
+
 // Unsupported : gtk_pad_controller_new : unsupported parameter group : no type generator for Gio.ActionGroup, GActionGroup*
 
 // Unsupported : gtk_page_setup_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
@@ -146,6 +187,14 @@ func (recv *Paned) GetHandleWindow() *gdk.Window {
 
 	return retGo
 }
+
+// Unsupported signal : unsupported parameter dest_file : no type generator for Gio.File,
+
+// Unsupported signal : unsupported parameter dest_file : no type generator for Gio.File,
+
+// Unsupported signal : unsupported parameter location : no type generator for Gio.File,
+
+// Unsupported signal : unsupported parameter selected_item : no type generator for Gio.File,
 
 // GetHardMargins is a wrapper around the C function gtk_print_context_get_hard_margins.
 func (recv *PrintContext) GetHardMargins() (bool, float64, float64, float64, float64) {
@@ -170,6 +219,8 @@ func (recv *PrintContext) GetHardMargins() (bool, float64, float64, float64, flo
 
 	return retGo, top, bottom, left, right
 }
+
+// Unsupported signal : unsupported parameter preview : no type generator for PrintOperationPreview,
 
 // Unsupported : gtk_print_settings_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
 
@@ -272,6 +323,11 @@ func (recv *Statusbar) GetMessageArea() *Box {
 
 	return retGo
 }
+
+// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
+
+// TextViewSignalPreeditChangedCallback is a callback function for a 'preedit-changed' signal emitted from a TextView.
+type TextViewSignalPreeditChangedCallback func(preedit string)
 
 // GetEllipsizeMode is a wrapper around the C function gtk_tool_item_get_ellipsize_mode.
 func (recv *ToolItem) GetEllipsizeMode() pango.EllipsizeMode {
@@ -664,6 +720,20 @@ func (recv *Viewport) GetBinWindow() *gdk.Window {
 
 	return retGo
 }
+
+// Unsupported signal : unsupported parameter child_property : Blacklisted record : GParamSpec
+
+// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
+
+// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
+
+// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
+
+// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
+
+// Unsupported signal : unsupported parameter allocation : Blacklisted record : GdkRectangle
+
+// Unsupported signal : unsupported parameter object : no type generator for Gdk.Event,
 
 // Unsupported : gtk_widget_new : unsupported parameter type : no type generator for GType, GType
 

@@ -24,15 +24,6 @@ import (
 // #include <stdlib.h>
 /*
 
-	void DBusAuthObserver_allowMechanismHandler();
-
-	static gulong DBusAuthObserver_signal_connect_allow_mechanism(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "allow-mechanism", DBusAuthObserver_allowMechanismHandler, data);
-	}
-
-*/
-/*
-
 	void DBusAuthObserver_authorizeAuthenticatedPeerHandler();
 
 	static gulong DBusAuthObserver_signal_connect_authorize_authenticated_peer(gpointer instance, gpointer data) {
@@ -59,6 +50,10 @@ import (
 
 */
 import "C"
+
+// Unsupported signal : unsupported parameter info : no type generator for AppInfo,
+
+// Unsupported signal : unsupported parameter files : no param type
 
 // Unsupported : g_converter_input_stream_new : unsupported parameter converter : no type generator for Converter, GConverter*
 
@@ -186,9 +181,6 @@ func (recv *DBusAuthObserver) Object() *gobject.Object {
 func CastToDBusAuthObserver(object *gobject.Object) *DBusAuthObserver {
 	return DBusAuthObserverNewFromC(object.ToC())
 }
-
-// DBusAuthObserverSignalAllowMechanismCallback is a callback function for a 'allow-mechanism' signal emitted from a DBusAuthObserver.
-type DBusAuthObserverSignalAllowMechanismCallback func(mechanism string) bool
 
 // DBusAuthObserverSignalAuthorizeAuthenticatedPeerCallback is a callback function for a 'authorize-authenticated-peer' signal emitted from a DBusAuthObserver.
 type DBusAuthObserverSignalAuthorizeAuthenticatedPeerCallback func(stream *IOStream, credentials *Credentials) bool
@@ -1091,6 +1083,10 @@ func (recv *DBusMethodInvocation) ReturnGerror(error *glib.Error) {
 
 // Unsupported : g_dbus_method_invocation_return_value : unsupported parameter parameters : Blacklisted record : GVariant
 
+// Unsupported signal : unsupported parameter changed_properties : Blacklisted record : GVariant
+
+// Unsupported signal : unsupported parameter parameters : Blacklisted record : GVariant
+
 // Unsupported : g_dbus_object_manager_client_new_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
 
 // Unsupported : g_dbus_object_manager_client_new_for_bus_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
@@ -1445,6 +1441,8 @@ func (recv *DataInputStream) ReadUpto(stopChars string, stopCharsLen int64, canc
 
 // Unsupported : g_file_icon_new : unsupported parameter file : no type generator for File, GFile*
 
+// Unsupported signal : unsupported parameter file : no type generator for File,
+
 // Unsupported : g_inet_address_new_from_bytes : unsupported parameter bytes : no param type
 
 // Unsupported : g_list_store_new : unsupported parameter item_type : no type generator for GType, GType
@@ -1460,6 +1458,10 @@ func (recv *MemoryOutputStream) StealData() uintptr {
 
 	return retGo
 }
+
+// Unsupported signal : unsupported parameter choices : no param type
+
+// Unsupported signal : unsupported parameter processes : no param type
 
 // GetScheme is a wrapper around the C function g_network_address_get_scheme.
 func (recv *NetworkAddress) GetScheme() string {
@@ -1678,6 +1680,8 @@ func (recv *ProxyAddress) GetUsername() string {
 
 	return retGo
 }
+
+// Unsupported signal : unsupported parameter keys : no param type
 
 // SettingsNew is a wrapper around the C function g_settings_new.
 func SettingsNew(schemaId string) *Settings {
@@ -1952,6 +1956,10 @@ func (recv *Settings) SetString(key string, value string) bool {
 
 // Blacklisted : g_settings_backend_writable_changed
 
+// Unsupported signal : unsupported parameter parameter : Blacklisted record : GVariant
+
+// Unsupported signal : unsupported parameter value : Blacklisted record : GVariant
+
 // Unsupported : g_simple_action_new : unsupported parameter parameter_type : Blacklisted record : GVariantType
 
 // Unsupported : g_simple_action_new_stateful : unsupported parameter parameter_type : Blacklisted record : GVariantType
@@ -2010,6 +2018,8 @@ func (recv *Socket) SetTimeout(timeout uint32) {
 
 	return
 }
+
+// Unsupported signal : unsupported parameter connectable : no type generator for SocketConnectable,
 
 // ConnectToUri is a wrapper around the C function g_socket_client_connect_to_uri.
 func (recv *SocketClient) ConnectToUri(uri string, defaultPort uint16, cancellable *Cancellable) (*SocketConnection, error) {
@@ -2192,6 +2202,30 @@ func (recv *UnixSocketAddress) GetAddressType() UnixSocketAddressType {
 
 	return retGo
 }
+
+// Unsupported signal : unsupported parameter drive : no type generator for Drive,
+
+// Unsupported signal : unsupported parameter drive : no type generator for Drive,
+
+// Unsupported signal : unsupported parameter drive : no type generator for Drive,
+
+// Unsupported signal : unsupported parameter drive : no type generator for Drive,
+
+// Unsupported signal : unsupported parameter drive : no type generator for Drive,
+
+// Unsupported signal : unsupported parameter mount : no type generator for Mount,
+
+// Unsupported signal : unsupported parameter mount : no type generator for Mount,
+
+// Unsupported signal : unsupported parameter mount : no type generator for Mount,
+
+// Unsupported signal : unsupported parameter mount : no type generator for Mount,
+
+// Unsupported signal : unsupported parameter volume : no type generator for Volume,
+
+// Unsupported signal : unsupported parameter volume : no type generator for Volume,
+
+// Unsupported signal : unsupported parameter volume : no type generator for Volume,
 
 // GetFileInfo is a wrapper around the C function g_zlib_compressor_get_file_info.
 func (recv *ZlibCompressor) GetFileInfo() *FileInfo {

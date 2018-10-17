@@ -25,15 +25,6 @@ import (
 */
 /*
 
-	void Device_toolChangedHandler();
-
-	static gulong Device_signal_connect_tool_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "tool-changed", Device_toolChangedHandler, data);
-	}
-
-*/
-/*
-
 	void DeviceManager_deviceAddedHandler();
 
 	static gulong DeviceManager_signal_connect_device_added(gpointer instance, gpointer data) {
@@ -61,100 +52,10 @@ import (
 */
 /*
 
-	void Display_closedHandler();
-
-	static gulong Display_signal_connect_closed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "closed", Display_closedHandler, data);
-	}
-
-*/
-/*
-
-	void Display_monitorAddedHandler();
-
-	static gulong Display_signal_connect_monitor_added(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "monitor-added", Display_monitorAddedHandler, data);
-	}
-
-*/
-/*
-
-	void Display_monitorRemovedHandler();
-
-	static gulong Display_signal_connect_monitor_removed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "monitor-removed", Display_monitorRemovedHandler, data);
-	}
-
-*/
-/*
-
 	void Display_openedHandler();
 
 	static gulong Display_signal_connect_opened(gpointer instance, gpointer data) {
 		return g_signal_connect(instance, "opened", Display_openedHandler, data);
-	}
-
-*/
-/*
-
-	void Display_seatAddedHandler();
-
-	static gulong Display_signal_connect_seat_added(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "seat-added", Display_seatAddedHandler, data);
-	}
-
-*/
-/*
-
-	void Display_seatRemovedHandler();
-
-	static gulong Display_signal_connect_seat_removed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "seat-removed", Display_seatRemovedHandler, data);
-	}
-
-*/
-/*
-
-	void DisplayManager_displayOpenedHandler();
-
-	static gulong DisplayManager_signal_connect_display_opened(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "display-opened", DisplayManager_displayOpenedHandler, data);
-	}
-
-*/
-/*
-
-	void DragContext_actionChangedHandler();
-
-	static gulong DragContext_signal_connect_action_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "action-changed", DragContext_actionChangedHandler, data);
-	}
-
-*/
-/*
-
-	void DragContext_cancelHandler();
-
-	static gulong DragContext_signal_connect_cancel(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "cancel", DragContext_cancelHandler, data);
-	}
-
-*/
-/*
-
-	void DragContext_dndFinishedHandler();
-
-	static gulong DragContext_signal_connect_dnd_finished(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "dnd-finished", DragContext_dndFinishedHandler, data);
-	}
-
-*/
-/*
-
-	void DragContext_dropPerformedHandler();
-
-	static gulong DragContext_signal_connect_drop_performed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "drop-performed", DragContext_dropPerformedHandler, data);
 	}
 
 */
@@ -223,100 +124,10 @@ import (
 */
 /*
 
-	void Keymap_directionChangedHandler();
+	void Monitor_invalidateHandler();
 
-	static gulong Keymap_signal_connect_direction_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "direction-changed", Keymap_directionChangedHandler, data);
-	}
-
-*/
-/*
-
-	void Keymap_keysChangedHandler();
-
-	static gulong Keymap_signal_connect_keys_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "keys-changed", Keymap_keysChangedHandler, data);
-	}
-
-*/
-/*
-
-	void Keymap_stateChangedHandler();
-
-	static gulong Keymap_signal_connect_state_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "state-changed", Keymap_stateChangedHandler, data);
-	}
-
-*/
-/*
-
-	void Screen_compositedChangedHandler();
-
-	static gulong Screen_signal_connect_composited_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "composited-changed", Screen_compositedChangedHandler, data);
-	}
-
-*/
-/*
-
-	void Screen_monitorsChangedHandler();
-
-	static gulong Screen_signal_connect_monitors_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "monitors-changed", Screen_monitorsChangedHandler, data);
-	}
-
-*/
-/*
-
-	void Screen_sizeChangedHandler();
-
-	static gulong Screen_signal_connect_size_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "size-changed", Screen_sizeChangedHandler, data);
-	}
-
-*/
-/*
-
-	void Window_createSurfaceHandler();
-
-	static gulong Window_signal_connect_create_surface(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "create-surface", Window_createSurfaceHandler, data);
-	}
-
-*/
-/*
-
-	void Window_fromEmbedderHandler();
-
-	static gulong Window_signal_connect_from_embedder(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "from-embedder", Window_fromEmbedderHandler, data);
-	}
-
-*/
-/*
-
-	void Window_movedToRectHandler();
-
-	static gulong Window_signal_connect_moved_to_rect(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "moved-to-rect", Window_movedToRectHandler, data);
-	}
-
-*/
-/*
-
-	void Window_pickEmbeddedChildHandler();
-
-	static gulong Window_signal_connect_pick_embedded_child(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "pick-embedded-child", Window_pickEmbeddedChildHandler, data);
-	}
-
-*/
-/*
-
-	void Window_toEmbedderHandler();
-
-	static gulong Window_signal_connect_to_embedder(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "to-embedder", Window_toEmbedderHandler, data);
+	static gulong Monitor_signal_connect_invalidate(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "invalidate", Monitor_invalidateHandler, data);
 	}
 
 */
@@ -451,9 +262,6 @@ func CastToDevice(object *gobject.Object) *Device {
 // DeviceSignalChangedCallback is a callback function for a 'changed' signal emitted from a Device.
 type DeviceSignalChangedCallback func()
 
-// DeviceSignalToolChangedCallback is a callback function for a 'tool-changed' signal emitted from a Device.
-type DeviceSignalToolChangedCallback func(tool *DeviceTool)
-
 // Unsupported : gdk_device_get_axis : unsupported parameter axes : no param type
 
 // Unsupported : gdk_device_get_history : unsupported parameter events : no param type
@@ -575,23 +383,8 @@ func CastToDisplay(object *gobject.Object) *Display {
 	return DisplayNewFromC(object.ToC())
 }
 
-// DisplaySignalClosedCallback is a callback function for a 'closed' signal emitted from a Display.
-type DisplaySignalClosedCallback func(isError bool)
-
-// DisplaySignalMonitorAddedCallback is a callback function for a 'monitor-added' signal emitted from a Display.
-type DisplaySignalMonitorAddedCallback func(monitor *Monitor)
-
-// DisplaySignalMonitorRemovedCallback is a callback function for a 'monitor-removed' signal emitted from a Display.
-type DisplaySignalMonitorRemovedCallback func(monitor *Monitor)
-
 // DisplaySignalOpenedCallback is a callback function for a 'opened' signal emitted from a Display.
 type DisplaySignalOpenedCallback func()
-
-// DisplaySignalSeatAddedCallback is a callback function for a 'seat-added' signal emitted from a Display.
-type DisplaySignalSeatAddedCallback func(seat *Seat)
-
-// DisplaySignalSeatRemovedCallback is a callback function for a 'seat-removed' signal emitted from a Display.
-type DisplaySignalSeatRemovedCallback func(seat *Seat)
 
 // DeviceIsGrabbed is a wrapper around the C function gdk_display_device_is_grabbed.
 func (recv *Display) DeviceIsGrabbed(device *Device) bool {
@@ -635,9 +428,6 @@ func CastToDisplayManager(object *gobject.Object) *DisplayManager {
 	return DisplayManagerNewFromC(object.ToC())
 }
 
-// DisplayManagerSignalDisplayOpenedCallback is a callback function for a 'display-opened' signal emitted from a DisplayManager.
-type DisplayManagerSignalDisplayOpenedCallback func(display *Display)
-
 // DragContext is a wrapper around the C record GdkDragContext.
 type DragContext struct {
 	native *C.GdkDragContext
@@ -669,18 +459,6 @@ func (recv *DragContext) Object() *gobject.Object {
 func CastToDragContext(object *gobject.Object) *DragContext {
 	return DragContextNewFromC(object.ToC())
 }
-
-// DragContextSignalActionChangedCallback is a callback function for a 'action-changed' signal emitted from a DragContext.
-type DragContextSignalActionChangedCallback func(action DragAction)
-
-// DragContextSignalCancelCallback is a callback function for a 'cancel' signal emitted from a DragContext.
-type DragContextSignalCancelCallback func(reason DragCancelReason)
-
-// DragContextSignalDndFinishedCallback is a callback function for a 'dnd-finished' signal emitted from a DragContext.
-type DragContextSignalDndFinishedCallback func()
-
-// DragContextSignalDropPerformedCallback is a callback function for a 'drop-performed' signal emitted from a DragContext.
-type DragContextSignalDropPerformedCallback func(time int32)
 
 // GetDevice is a wrapper around the C function gdk_drag_context_get_device.
 func (recv *DragContext) GetDevice() *Device {
@@ -816,15 +594,6 @@ func CastToKeymap(object *gobject.Object) *Keymap {
 	return KeymapNewFromC(object.ToC())
 }
 
-// KeymapSignalDirectionChangedCallback is a callback function for a 'direction-changed' signal emitted from a Keymap.
-type KeymapSignalDirectionChangedCallback func()
-
-// KeymapSignalKeysChangedCallback is a callback function for a 'keys-changed' signal emitted from a Keymap.
-type KeymapSignalKeysChangedCallback func()
-
-// KeymapSignalStateChangedCallback is a callback function for a 'state-changed' signal emitted from a Keymap.
-type KeymapSignalStateChangedCallback func()
-
 // GetDirection is a wrapper around the C function gdk_keymap_get_direction.
 func (recv *Keymap) GetDirection() pango.Direction {
 	retC := C.gdk_keymap_get_direction((*C.GdkKeymap)(recv.native))
@@ -848,6 +617,9 @@ func (recv *Keymap) LookupKey(key *KeymapKey) uint32 {
 }
 
 // Unsupported : gdk_keymap_translate_keyboard_state : unsupported parameter consumed_modifiers : GdkModifierType* with indirection level of 1
+
+// MonitorSignalInvalidateCallback is a callback function for a 'invalidate' signal emitted from a Monitor.
+type MonitorSignalInvalidateCallback func()
 
 // Screen is a wrapper around the C record GdkScreen.
 type Screen struct {
@@ -880,15 +652,6 @@ func (recv *Screen) Object() *gobject.Object {
 func CastToScreen(object *gobject.Object) *Screen {
 	return ScreenNewFromC(object.ToC())
 }
-
-// ScreenSignalCompositedChangedCallback is a callback function for a 'composited-changed' signal emitted from a Screen.
-type ScreenSignalCompositedChangedCallback func()
-
-// ScreenSignalMonitorsChangedCallback is a callback function for a 'monitors-changed' signal emitted from a Screen.
-type ScreenSignalMonitorsChangedCallback func()
-
-// ScreenSignalSizeChangedCallback is a callback function for a 'size-changed' signal emitted from a Screen.
-type ScreenSignalSizeChangedCallback func()
 
 // Visual is a wrapper around the C record GdkVisual.
 type Visual struct {
@@ -953,21 +716,6 @@ func (recv *Window) Object() *gobject.Object {
 func CastToWindow(object *gobject.Object) *Window {
 	return WindowNewFromC(object.ToC())
 }
-
-// WindowSignalCreateSurfaceCallback is a callback function for a 'create-surface' signal emitted from a Window.
-type WindowSignalCreateSurfaceCallback func(width int32, height int32) cairo.Surface
-
-// WindowSignalFromEmbedderCallback is a callback function for a 'from-embedder' signal emitted from a Window.
-type WindowSignalFromEmbedderCallback func(embedderX float64, embedderY float64)
-
-// WindowSignalMovedToRectCallback is a callback function for a 'moved-to-rect' signal emitted from a Window.
-type WindowSignalMovedToRectCallback func(flippedRect uintptr, finalRect uintptr, flippedX bool, flippedY bool)
-
-// WindowSignalPickEmbeddedChildCallback is a callback function for a 'pick-embedded-child' signal emitted from a Window.
-type WindowSignalPickEmbeddedChildCallback func(x float64, y float64) Window
-
-// WindowSignalToEmbedderCallback is a callback function for a 'to-embedder' signal emitted from a Window.
-type WindowSignalToEmbedderCallback func(offscreenX float64, offscreenY float64)
 
 // WindowNew is a wrapper around the C function gdk_window_new.
 func WindowNew(parent *Window, attributes *WindowAttr, attributesMask int32) *Window {

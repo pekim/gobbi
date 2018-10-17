@@ -21,15 +21,6 @@ import (
 // #include <stdlib.h>
 /*
 
-	void AboutDialog_activateLinkHandler();
-
-	static gulong AboutDialog_signal_connect_activate_link(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "activate-link", AboutDialog_activateLinkHandler, data);
-	}
-
-*/
-/*
-
 	void AccelGroup_accelActivateHandler();
 
 	static gulong AccelGroup_signal_connect_accel_activate(gpointer instance, gpointer data) {
@@ -43,60 +34,6 @@ import (
 
 	static gulong AccelGroup_signal_connect_accel_changed(gpointer instance, gpointer data) {
 		return g_signal_connect(instance, "accel-changed", AccelGroup_accelChangedHandler, data);
-	}
-
-*/
-/*
-
-	void AccelMap_changedHandler();
-
-	static gulong AccelMap_signal_connect_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "changed", AccelMap_changedHandler, data);
-	}
-
-*/
-/*
-
-	void Action_activateHandler();
-
-	static gulong Action_signal_connect_activate(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "activate", Action_activateHandler, data);
-	}
-
-*/
-/*
-
-	void ActionGroup_connectProxyHandler();
-
-	static gulong ActionGroup_signal_connect_connect_proxy(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "connect-proxy", ActionGroup_connectProxyHandler, data);
-	}
-
-*/
-/*
-
-	void ActionGroup_disconnectProxyHandler();
-
-	static gulong ActionGroup_signal_connect_disconnect_proxy(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "disconnect-proxy", ActionGroup_disconnectProxyHandler, data);
-	}
-
-*/
-/*
-
-	void ActionGroup_postActivateHandler();
-
-	static gulong ActionGroup_signal_connect_post_activate(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "post-activate", ActionGroup_postActivateHandler, data);
-	}
-
-*/
-/*
-
-	void ActionGroup_preActivateHandler();
-
-	static gulong ActionGroup_signal_connect_pre_activate(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "pre-activate", ActionGroup_preActivateHandler, data);
 	}
 
 */
@@ -129,64 +66,10 @@ import (
 */
 /*
 
-	void Application_windowAddedHandler();
-
-	static gulong Application_signal_connect_window_added(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "window-added", Application_windowAddedHandler, data);
-	}
-
-*/
-/*
-
-	void Application_windowRemovedHandler();
-
-	static gulong Application_signal_connect_window_removed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "window-removed", Application_windowRemovedHandler, data);
-	}
-
-*/
-/*
-
-	void Assistant_applyHandler();
-
-	static gulong Assistant_signal_connect_apply(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "apply", Assistant_applyHandler, data);
-	}
-
-*/
-/*
-
-	void Assistant_cancelHandler();
-
-	static gulong Assistant_signal_connect_cancel(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "cancel", Assistant_cancelHandler, data);
-	}
-
-*/
-/*
-
-	void Assistant_closeHandler();
-
-	static gulong Assistant_signal_connect_close(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "close", Assistant_closeHandler, data);
-	}
-
-*/
-/*
-
 	void Assistant_escapeHandler();
 
 	static gulong Assistant_signal_connect_escape(gpointer instance, gpointer data) {
 		return g_signal_connect(instance, "escape", Assistant_escapeHandler, data);
-	}
-
-*/
-/*
-
-	void Assistant_prepareHandler();
-
-	static gulong Assistant_signal_connect_prepare(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "prepare", Assistant_prepareHandler, data);
 	}
 
 */
@@ -309,51 +192,6 @@ import (
 */
 /*
 
-	void CellArea_focusChangedHandler();
-
-	static gulong CellArea_signal_connect_focus_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "focus-changed", CellArea_focusChangedHandler, data);
-	}
-
-*/
-/*
-
-	void CellRenderer_editingCanceledHandler();
-
-	static gulong CellRenderer_signal_connect_editing_canceled(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "editing-canceled", CellRenderer_editingCanceledHandler, data);
-	}
-
-*/
-/*
-
-	void CellRendererAccel_accelClearedHandler();
-
-	static gulong CellRendererAccel_signal_connect_accel_cleared(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "accel-cleared", CellRendererAccel_accelClearedHandler, data);
-	}
-
-*/
-/*
-
-	void CellRendererAccel_accelEditedHandler();
-
-	static gulong CellRendererAccel_signal_connect_accel_edited(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "accel-edited", CellRendererAccel_accelEditedHandler, data);
-	}
-
-*/
-/*
-
-	void CellRendererCombo_changedHandler();
-
-	static gulong CellRendererCombo_signal_connect_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "changed", CellRendererCombo_changedHandler, data);
-	}
-
-*/
-/*
-
 	void CellRendererText_editedHandler();
 
 	static gulong CellRendererText_signal_connect_edited(gpointer instance, gpointer data) {
@@ -381,73 +219,10 @@ import (
 */
 /*
 
-	void Clipboard_ownerChangeHandler();
-
-	static gulong Clipboard_signal_connect_owner_change(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "owner-change", Clipboard_ownerChangeHandler, data);
-	}
-
-*/
-/*
-
-	void ColorButton_colorSetHandler();
-
-	static gulong ColorButton_signal_connect_color_set(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "color-set", ColorButton_colorSetHandler, data);
-	}
-
-*/
-/*
-
 	void ColorSelection_colorChangedHandler();
 
 	static gulong ColorSelection_signal_connect_color_changed(gpointer instance, gpointer data) {
 		return g_signal_connect(instance, "color-changed", ColorSelection_colorChangedHandler, data);
-	}
-
-*/
-/*
-
-	void ComboBox_changedHandler();
-
-	static gulong ComboBox_signal_connect_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "changed", ComboBox_changedHandler, data);
-	}
-
-*/
-/*
-
-	void ComboBox_formatEntryTextHandler();
-
-	static gulong ComboBox_signal_connect_format_entry_text(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "format-entry-text", ComboBox_formatEntryTextHandler, data);
-	}
-
-*/
-/*
-
-	void ComboBox_moveActiveHandler();
-
-	static gulong ComboBox_signal_connect_move_active(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "move-active", ComboBox_moveActiveHandler, data);
-	}
-
-*/
-/*
-
-	void ComboBox_popdownHandler();
-
-	static gulong ComboBox_signal_connect_popdown(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "popdown", ComboBox_popdownHandler, data);
-	}
-
-*/
-/*
-
-	void ComboBox_popupHandler();
-
-	static gulong ComboBox_signal_connect_popup(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "popup", ComboBox_popupHandler, data);
 	}
 
 */
@@ -561,37 +336,10 @@ import (
 */
 /*
 
-	void Entry_iconPressHandler();
-
-	static gulong Entry_signal_connect_icon_press(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "icon-press", Entry_iconPressHandler, data);
-	}
-
-*/
-/*
-
-	void Entry_iconReleaseHandler();
-
-	static gulong Entry_signal_connect_icon_release(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "icon-release", Entry_iconReleaseHandler, data);
-	}
-
-*/
-/*
-
 	void Entry_insertAtCursorHandler();
 
 	static gulong Entry_signal_connect_insert_at_cursor(gpointer instance, gpointer data) {
 		return g_signal_connect(instance, "insert-at-cursor", Entry_insertAtCursorHandler, data);
-	}
-
-*/
-/*
-
-	void Entry_insertEmojiHandler();
-
-	static gulong Entry_signal_connect_insert_emoji(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "insert-emoji", Entry_insertEmojiHandler, data);
 	}
 
 */
@@ -624,15 +372,6 @@ import (
 */
 /*
 
-	void Entry_preeditChangedHandler();
-
-	static gulong Entry_signal_connect_preedit_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "preedit-changed", Entry_preeditChangedHandler, data);
-	}
-
-*/
-/*
-
 	void Entry_toggleOverwriteHandler();
 
 	static gulong Entry_signal_connect_toggle_overwrite(gpointer instance, gpointer data) {
@@ -642,64 +381,10 @@ import (
 */
 /*
 
-	void EntryBuffer_deletedTextHandler();
-
-	static gulong EntryBuffer_signal_connect_deleted_text(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "deleted-text", EntryBuffer_deletedTextHandler, data);
-	}
-
-*/
-/*
-
-	void EntryBuffer_insertedTextHandler();
-
-	static gulong EntryBuffer_signal_connect_inserted_text(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "inserted-text", EntryBuffer_insertedTextHandler, data);
-	}
-
-*/
-/*
-
-	void EntryCompletion_actionActivatedHandler();
-
-	static gulong EntryCompletion_signal_connect_action_activated(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "action-activated", EntryCompletion_actionActivatedHandler, data);
-	}
-
-*/
-/*
-
-	void EntryCompletion_insertPrefixHandler();
-
-	static gulong EntryCompletion_signal_connect_insert_prefix(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "insert-prefix", EntryCompletion_insertPrefixHandler, data);
-	}
-
-*/
-/*
-
-	void EntryCompletion_noMatchesHandler();
-
-	static gulong EntryCompletion_signal_connect_no_matches(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "no-matches", EntryCompletion_noMatchesHandler, data);
-	}
-
-*/
-/*
-
 	void Expander_activateHandler();
 
 	static gulong Expander_signal_connect_activate(gpointer instance, gpointer data) {
 		return g_signal_connect(instance, "activate", Expander_activateHandler, data);
-	}
-
-*/
-/*
-
-	void FileChooserButton_fileSetHandler();
-
-	static gulong FileChooserButton_signal_connect_file_set(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "file-set", FileChooserButton_fileSetHandler, data);
 	}
 
 */
@@ -885,168 +570,6 @@ import (
 */
 /*
 
-	void FontButton_fontSetHandler();
-
-	static gulong FontButton_signal_connect_font_set(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "font-set", FontButton_fontSetHandler, data);
-	}
-
-*/
-/*
-
-	void Gesture_beginHandler();
-
-	static gulong Gesture_signal_connect_begin(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "begin", Gesture_beginHandler, data);
-	}
-
-*/
-/*
-
-	void Gesture_cancelHandler();
-
-	static gulong Gesture_signal_connect_cancel(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "cancel", Gesture_cancelHandler, data);
-	}
-
-*/
-/*
-
-	void Gesture_endHandler();
-
-	static gulong Gesture_signal_connect_end(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "end", Gesture_endHandler, data);
-	}
-
-*/
-/*
-
-	void Gesture_sequenceStateChangedHandler();
-
-	static gulong Gesture_signal_connect_sequence_state_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "sequence-state-changed", Gesture_sequenceStateChangedHandler, data);
-	}
-
-*/
-/*
-
-	void Gesture_updateHandler();
-
-	static gulong Gesture_signal_connect_update(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "update", Gesture_updateHandler, data);
-	}
-
-*/
-/*
-
-	void GestureDrag_dragBeginHandler();
-
-	static gulong GestureDrag_signal_connect_drag_begin(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "drag-begin", GestureDrag_dragBeginHandler, data);
-	}
-
-*/
-/*
-
-	void GestureDrag_dragEndHandler();
-
-	static gulong GestureDrag_signal_connect_drag_end(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "drag-end", GestureDrag_dragEndHandler, data);
-	}
-
-*/
-/*
-
-	void GestureDrag_dragUpdateHandler();
-
-	static gulong GestureDrag_signal_connect_drag_update(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "drag-update", GestureDrag_dragUpdateHandler, data);
-	}
-
-*/
-/*
-
-	void GestureLongPress_cancelledHandler();
-
-	static gulong GestureLongPress_signal_connect_cancelled(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "cancelled", GestureLongPress_cancelledHandler, data);
-	}
-
-*/
-/*
-
-	void GestureLongPress_pressedHandler();
-
-	static gulong GestureLongPress_signal_connect_pressed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "pressed", GestureLongPress_pressedHandler, data);
-	}
-
-*/
-/*
-
-	void GestureMultiPress_pressedHandler();
-
-	static gulong GestureMultiPress_signal_connect_pressed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "pressed", GestureMultiPress_pressedHandler, data);
-	}
-
-*/
-/*
-
-	void GestureMultiPress_releasedHandler();
-
-	static gulong GestureMultiPress_signal_connect_released(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "released", GestureMultiPress_releasedHandler, data);
-	}
-
-*/
-/*
-
-	void GestureMultiPress_stoppedHandler();
-
-	static gulong GestureMultiPress_signal_connect_stopped(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "stopped", GestureMultiPress_stoppedHandler, data);
-	}
-
-*/
-/*
-
-	void GesturePan_panHandler();
-
-	static gulong GesturePan_signal_connect_pan(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "pan", GesturePan_panHandler, data);
-	}
-
-*/
-/*
-
-	void GestureRotate_angleChangedHandler();
-
-	static gulong GestureRotate_signal_connect_angle_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "angle-changed", GestureRotate_angleChangedHandler, data);
-	}
-
-*/
-/*
-
-	void GestureSwipe_swipeHandler();
-
-	static gulong GestureSwipe_signal_connect_swipe(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "swipe", GestureSwipe_swipeHandler, data);
-	}
-
-*/
-/*
-
-	void GestureZoom_scaleChangedHandler();
-
-	static gulong GestureZoom_signal_connect_scale_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "scale-changed", GestureZoom_scaleChangedHandler, data);
-	}
-
-*/
-/*
-
 	void HSV_changedHandler();
 
 	static gulong HSV_signal_connect_changed(gpointer instance, gpointer data) {
@@ -1218,42 +741,6 @@ import (
 */
 /*
 
-	void InfoBar_closeHandler();
-
-	static gulong InfoBar_signal_connect_close(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "close", InfoBar_closeHandler, data);
-	}
-
-*/
-/*
-
-	void InfoBar_responseHandler();
-
-	static gulong InfoBar_signal_connect_response(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "response", InfoBar_responseHandler, data);
-	}
-
-*/
-/*
-
-	void Label_activateCurrentLinkHandler();
-
-	static gulong Label_signal_connect_activate_current_link(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "activate-current-link", Label_activateCurrentLinkHandler, data);
-	}
-
-*/
-/*
-
-	void Label_activateLinkHandler();
-
-	static gulong Label_signal_connect_activate_link(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "activate-link", Label_activateLinkHandler, data);
-	}
-
-*/
-/*
-
 	void Label_copyClipboardHandler();
 
 	static gulong Label_signal_connect_copy_clipboard(gpointer instance, gpointer data) {
@@ -1276,15 +763,6 @@ import (
 
 	static gulong Label_signal_connect_populate_popup(gpointer instance, gpointer data) {
 		return g_signal_connect(instance, "populate-popup", Label_populatePopupHandler, data);
-	}
-
-*/
-/*
-
-	void LevelBar_offsetChangedHandler();
-
-	static gulong LevelBar_signal_connect_offset_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "offset-changed", LevelBar_offsetChangedHandler, data);
 	}
 
 */
@@ -1317,42 +795,6 @@ import (
 */
 /*
 
-	void ListBox_rowActivatedHandler();
-
-	static gulong ListBox_signal_connect_row_activated(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "row-activated", ListBox_rowActivatedHandler, data);
-	}
-
-*/
-/*
-
-	void ListBox_rowSelectedHandler();
-
-	static gulong ListBox_signal_connect_row_selected(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "row-selected", ListBox_rowSelectedHandler, data);
-	}
-
-*/
-/*
-
-	void ListBox_selectAllHandler();
-
-	static gulong ListBox_signal_connect_select_all(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "select-all", ListBox_selectAllHandler, data);
-	}
-
-*/
-/*
-
-	void ListBox_selectedRowsChangedHandler();
-
-	static gulong ListBox_signal_connect_selected_rows_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "selected-rows-changed", ListBox_selectedRowsChangedHandler, data);
-	}
-
-*/
-/*
-
 	void ListBox_toggleCursorRowHandler();
 
 	static gulong ListBox_signal_connect_toggle_cursor_row(gpointer instance, gpointer data) {
@@ -1362,37 +804,10 @@ import (
 */
 /*
 
-	void ListBox_unselectAllHandler();
-
-	static gulong ListBox_signal_connect_unselect_all(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "unselect-all", ListBox_unselectAllHandler, data);
-	}
-
-*/
-/*
-
-	void ListBoxRow_activateHandler();
-
-	static gulong ListBoxRow_signal_connect_activate(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "activate", ListBoxRow_activateHandler, data);
-	}
-
-*/
-/*
-
 	void Menu_moveScrollHandler();
 
 	static gulong Menu_signal_connect_move_scroll(gpointer instance, gpointer data) {
 		return g_signal_connect(instance, "move-scroll", Menu_moveScrollHandler, data);
-	}
-
-*/
-/*
-
-	void Menu_poppedUpHandler();
-
-	static gulong Menu_signal_connect_popped_up(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "popped-up", Menu_poppedUpHandler, data);
 	}
 
 */
@@ -1488,28 +903,10 @@ import (
 */
 /*
 
-	void MenuShell_insertHandler();
-
-	static gulong MenuShell_signal_connect_insert(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "insert", MenuShell_insertHandler, data);
-	}
-
-*/
-/*
-
 	void MenuShell_moveCurrentHandler();
 
 	static gulong MenuShell_signal_connect_move_current(gpointer instance, gpointer data) {
 		return g_signal_connect(instance, "move-current", MenuShell_moveCurrentHandler, data);
-	}
-
-*/
-/*
-
-	void MenuShell_moveSelectedHandler();
-
-	static gulong MenuShell_signal_connect_move_selected(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "move-selected", MenuShell_moveSelectedHandler, data);
 	}
 
 */
@@ -1542,15 +939,6 @@ import (
 */
 /*
 
-	void Notebook_createWindowHandler();
-
-	static gulong Notebook_signal_connect_create_window(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "create-window", Notebook_createWindowHandler, data);
-	}
-
-*/
-/*
-
 	void Notebook_focusTabHandler();
 
 	static gulong Notebook_signal_connect_focus_tab(gpointer instance, gpointer data) {
@@ -1564,33 +952,6 @@ import (
 
 	static gulong Notebook_signal_connect_move_focus_out(gpointer instance, gpointer data) {
 		return g_signal_connect(instance, "move-focus-out", Notebook_moveFocusOutHandler, data);
-	}
-
-*/
-/*
-
-	void Notebook_pageAddedHandler();
-
-	static gulong Notebook_signal_connect_page_added(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "page-added", Notebook_pageAddedHandler, data);
-	}
-
-*/
-/*
-
-	void Notebook_pageRemovedHandler();
-
-	static gulong Notebook_signal_connect_page_removed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "page-removed", Notebook_pageRemovedHandler, data);
-	}
-
-*/
-/*
-
-	void Notebook_pageReorderedHandler();
-
-	static gulong Notebook_signal_connect_page_reordered(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "page-reordered", Notebook_pageReorderedHandler, data);
 	}
 
 */
@@ -1623,78 +984,6 @@ import (
 */
 /*
 
-	void Paned_acceptPositionHandler();
-
-	static gulong Paned_signal_connect_accept_position(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "accept-position", Paned_acceptPositionHandler, data);
-	}
-
-*/
-/*
-
-	void Paned_cancelPositionHandler();
-
-	static gulong Paned_signal_connect_cancel_position(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "cancel-position", Paned_cancelPositionHandler, data);
-	}
-
-*/
-/*
-
-	void Paned_cycleChildFocusHandler();
-
-	static gulong Paned_signal_connect_cycle_child_focus(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "cycle-child-focus", Paned_cycleChildFocusHandler, data);
-	}
-
-*/
-/*
-
-	void Paned_cycleHandleFocusHandler();
-
-	static gulong Paned_signal_connect_cycle_handle_focus(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "cycle-handle-focus", Paned_cycleHandleFocusHandler, data);
-	}
-
-*/
-/*
-
-	void Paned_moveHandleHandler();
-
-	static gulong Paned_signal_connect_move_handle(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "move-handle", Paned_moveHandleHandler, data);
-	}
-
-*/
-/*
-
-	void Paned_toggleHandleFocusHandler();
-
-	static gulong Paned_signal_connect_toggle_handle_focus(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "toggle-handle-focus", Paned_toggleHandleFocusHandler, data);
-	}
-
-*/
-/*
-
-	void PlacesSidebar_dragActionAskHandler();
-
-	static gulong PlacesSidebar_signal_connect_drag_action_ask(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "drag-action-ask", PlacesSidebar_dragActionAskHandler, data);
-	}
-
-*/
-/*
-
-	void PlacesSidebar_mountHandler();
-
-	static gulong PlacesSidebar_signal_connect_mount(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "mount", PlacesSidebar_mountHandler, data);
-	}
-
-*/
-/*
-
 	void PlacesSidebar_showConnectToServerHandler();
 
 	static gulong PlacesSidebar_signal_connect_show_connect_to_server(gpointer instance, gpointer data) {
@@ -1704,172 +993,10 @@ import (
 */
 /*
 
-	void PlacesSidebar_showEnterLocationHandler();
-
-	static gulong PlacesSidebar_signal_connect_show_enter_location(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "show-enter-location", PlacesSidebar_showEnterLocationHandler, data);
-	}
-
-*/
-/*
-
-	void PlacesSidebar_showErrorMessageHandler();
-
-	static gulong PlacesSidebar_signal_connect_show_error_message(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "show-error-message", PlacesSidebar_showErrorMessageHandler, data);
-	}
-
-*/
-/*
-
-	void PlacesSidebar_showOtherLocationsHandler();
-
-	static gulong PlacesSidebar_signal_connect_show_other_locations(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "show-other-locations", PlacesSidebar_showOtherLocationsHandler, data);
-	}
-
-*/
-/*
-
-	void PlacesSidebar_showOtherLocationsWithFlagsHandler();
-
-	static gulong PlacesSidebar_signal_connect_show_other_locations_with_flags(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "show-other-locations-with-flags", PlacesSidebar_showOtherLocationsWithFlagsHandler, data);
-	}
-
-*/
-/*
-
-	void PlacesSidebar_showStarredLocationHandler();
-
-	static gulong PlacesSidebar_signal_connect_show_starred_location(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "show-starred-location", PlacesSidebar_showStarredLocationHandler, data);
-	}
-
-*/
-/*
-
-	void PlacesSidebar_unmountHandler();
-
-	static gulong PlacesSidebar_signal_connect_unmount(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "unmount", PlacesSidebar_unmountHandler, data);
-	}
-
-*/
-/*
-
 	void Popover_closedHandler();
 
 	static gulong Popover_signal_connect_closed(gpointer instance, gpointer data) {
 		return g_signal_connect(instance, "closed", Popover_closedHandler, data);
-	}
-
-*/
-/*
-
-	void PrintOperation_beginPrintHandler();
-
-	static gulong PrintOperation_signal_connect_begin_print(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "begin-print", PrintOperation_beginPrintHandler, data);
-	}
-
-*/
-/*
-
-	void PrintOperation_createCustomWidgetHandler();
-
-	static gulong PrintOperation_signal_connect_create_custom_widget(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "create-custom-widget", PrintOperation_createCustomWidgetHandler, data);
-	}
-
-*/
-/*
-
-	void PrintOperation_customWidgetApplyHandler();
-
-	static gulong PrintOperation_signal_connect_custom_widget_apply(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "custom-widget-apply", PrintOperation_customWidgetApplyHandler, data);
-	}
-
-*/
-/*
-
-	void PrintOperation_doneHandler();
-
-	static gulong PrintOperation_signal_connect_done(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "done", PrintOperation_doneHandler, data);
-	}
-
-*/
-/*
-
-	void PrintOperation_drawPageHandler();
-
-	static gulong PrintOperation_signal_connect_draw_page(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "draw-page", PrintOperation_drawPageHandler, data);
-	}
-
-*/
-/*
-
-	void PrintOperation_endPrintHandler();
-
-	static gulong PrintOperation_signal_connect_end_print(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "end-print", PrintOperation_endPrintHandler, data);
-	}
-
-*/
-/*
-
-	void PrintOperation_paginateHandler();
-
-	static gulong PrintOperation_signal_connect_paginate(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "paginate", PrintOperation_paginateHandler, data);
-	}
-
-*/
-/*
-
-	void PrintOperation_requestPageSetupHandler();
-
-	static gulong PrintOperation_signal_connect_request_page_setup(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "request-page-setup", PrintOperation_requestPageSetupHandler, data);
-	}
-
-*/
-/*
-
-	void PrintOperation_statusChangedHandler();
-
-	static gulong PrintOperation_signal_connect_status_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "status-changed", PrintOperation_statusChangedHandler, data);
-	}
-
-*/
-/*
-
-	void PrintOperation_updateCustomWidgetHandler();
-
-	static gulong PrintOperation_signal_connect_update_custom_widget(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "update-custom-widget", PrintOperation_updateCustomWidgetHandler, data);
-	}
-
-*/
-/*
-
-	void RadioAction_changedHandler();
-
-	static gulong RadioAction_signal_connect_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "changed", RadioAction_changedHandler, data);
-	}
-
-*/
-/*
-
-	void RadioButton_groupChangedHandler();
-
-	static gulong RadioButton_signal_connect_group_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "group-changed", RadioButton_groupChangedHandler, data);
 	}
 
 */
@@ -1888,15 +1015,6 @@ import (
 
 	static gulong Range_signal_connect_adjust_bounds(gpointer instance, gpointer data) {
 		return g_signal_connect(instance, "adjust-bounds", Range_adjustBoundsHandler, data);
-	}
-
-*/
-/*
-
-	void Range_changeValueHandler();
-
-	static gulong Range_signal_connect_change_value(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "change-value", Range_changeValueHandler, data);
 	}
 
 */
@@ -1929,51 +1047,6 @@ import (
 */
 /*
 
-	void ScaleButton_popdownHandler();
-
-	static gulong ScaleButton_signal_connect_popdown(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "popdown", ScaleButton_popdownHandler, data);
-	}
-
-*/
-/*
-
-	void ScaleButton_popupHandler();
-
-	static gulong ScaleButton_signal_connect_popup(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "popup", ScaleButton_popupHandler, data);
-	}
-
-*/
-/*
-
-	void ScaleButton_valueChangedHandler();
-
-	static gulong ScaleButton_signal_connect_value_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "value-changed", ScaleButton_valueChangedHandler, data);
-	}
-
-*/
-/*
-
-	void ScrolledWindow_edgeOvershotHandler();
-
-	static gulong ScrolledWindow_signal_connect_edge_overshot(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "edge-overshot", ScrolledWindow_edgeOvershotHandler, data);
-	}
-
-*/
-/*
-
-	void ScrolledWindow_edgeReachedHandler();
-
-	static gulong ScrolledWindow_signal_connect_edge_reached(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "edge-reached", ScrolledWindow_edgeReachedHandler, data);
-	}
-
-*/
-/*
-
 	void ScrolledWindow_moveFocusOutHandler();
 
 	static gulong ScrolledWindow_signal_connect_move_focus_out(gpointer instance, gpointer data) {
@@ -1992,37 +1065,28 @@ import (
 */
 /*
 
-	void SearchEntry_nextMatchHandler();
+	void ShortcutsSection_changeCurrentPageHandler();
 
-	static gulong SearchEntry_signal_connect_next_match(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "next-match", SearchEntry_nextMatchHandler, data);
+	static gulong ShortcutsSection_signal_connect_change_current_page(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "change-current-page", ShortcutsSection_changeCurrentPageHandler, data);
 	}
 
 */
 /*
 
-	void SearchEntry_previousMatchHandler();
+	void ShortcutsWindow_closeHandler();
 
-	static gulong SearchEntry_signal_connect_previous_match(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "previous-match", SearchEntry_previousMatchHandler, data);
+	static gulong ShortcutsWindow_signal_connect_close(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "close", ShortcutsWindow_closeHandler, data);
 	}
 
 */
 /*
 
-	void SearchEntry_searchChangedHandler();
+	void ShortcutsWindow_searchHandler();
 
-	static gulong SearchEntry_signal_connect_search_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "search-changed", SearchEntry_searchChangedHandler, data);
-	}
-
-*/
-/*
-
-	void SearchEntry_stopSearchHandler();
-
-	static gulong SearchEntry_signal_connect_stop_search(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "stop-search", SearchEntry_stopSearchHandler, data);
+	static gulong ShortcutsWindow_signal_connect_search(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "search", ShortcutsWindow_searchHandler, data);
 	}
 
 */
@@ -2064,78 +1128,6 @@ import (
 */
 /*
 
-	void SpinButton_wrappedHandler();
-
-	static gulong SpinButton_signal_connect_wrapped(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "wrapped", SpinButton_wrappedHandler, data);
-	}
-
-*/
-/*
-
-	void StatusIcon_activateHandler();
-
-	static gulong StatusIcon_signal_connect_activate(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "activate", StatusIcon_activateHandler, data);
-	}
-
-*/
-/*
-
-	void StatusIcon_buttonPressEventHandler();
-
-	static gulong StatusIcon_signal_connect_button_press_event(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "button-press-event", StatusIcon_buttonPressEventHandler, data);
-	}
-
-*/
-/*
-
-	void StatusIcon_buttonReleaseEventHandler();
-
-	static gulong StatusIcon_signal_connect_button_release_event(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "button-release-event", StatusIcon_buttonReleaseEventHandler, data);
-	}
-
-*/
-/*
-
-	void StatusIcon_popupMenuHandler();
-
-	static gulong StatusIcon_signal_connect_popup_menu(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "popup-menu", StatusIcon_popupMenuHandler, data);
-	}
-
-*/
-/*
-
-	void StatusIcon_queryTooltipHandler();
-
-	static gulong StatusIcon_signal_connect_query_tooltip(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "query-tooltip", StatusIcon_queryTooltipHandler, data);
-	}
-
-*/
-/*
-
-	void StatusIcon_scrollEventHandler();
-
-	static gulong StatusIcon_signal_connect_scroll_event(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "scroll-event", StatusIcon_scrollEventHandler, data);
-	}
-
-*/
-/*
-
-	void StatusIcon_sizeChangedHandler();
-
-	static gulong StatusIcon_signal_connect_size_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "size-changed", StatusIcon_sizeChangedHandler, data);
-	}
-
-*/
-/*
-
 	void Statusbar_textPoppedHandler();
 
 	static gulong Statusbar_signal_connect_text_popped(gpointer instance, gpointer data) {
@@ -2154,46 +1146,10 @@ import (
 */
 /*
 
-	void Style_realizeHandler();
-
-	static gulong Style_signal_connect_realize(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "realize", Style_realizeHandler, data);
-	}
-
-*/
-/*
-
-	void Style_unrealizeHandler();
-
-	static gulong Style_signal_connect_unrealize(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "unrealize", Style_unrealizeHandler, data);
-	}
-
-*/
-/*
-
-	void StyleContext_changedHandler();
-
-	static gulong StyleContext_signal_connect_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "changed", StyleContext_changedHandler, data);
-	}
-
-*/
-/*
-
 	void Switch_activateHandler();
 
 	static gulong Switch_signal_connect_activate(gpointer instance, gpointer data) {
 		return g_signal_connect(instance, "activate", Switch_activateHandler, data);
-	}
-
-*/
-/*
-
-	void Switch_stateSetHandler();
-
-	static gulong Switch_signal_connect_state_set(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "state-set", Switch_stateSetHandler, data);
 	}
 
 */
@@ -2298,15 +1254,6 @@ import (
 */
 /*
 
-	void TextBuffer_pasteDoneHandler();
-
-	static gulong TextBuffer_signal_connect_paste_done(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "paste-done", TextBuffer_pasteDoneHandler, data);
-	}
-
-*/
-/*
-
 	void TextBuffer_removeTagHandler();
 
 	static gulong TextBuffer_signal_connect_remove_tag(gpointer instance, gpointer data) {
@@ -2379,28 +1326,10 @@ import (
 */
 /*
 
-	void TextView_extendSelectionHandler();
-
-	static gulong TextView_signal_connect_extend_selection(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "extend-selection", TextView_extendSelectionHandler, data);
-	}
-
-*/
-/*
-
 	void TextView_insertAtCursorHandler();
 
 	static gulong TextView_signal_connect_insert_at_cursor(gpointer instance, gpointer data) {
 		return g_signal_connect(instance, "insert-at-cursor", TextView_insertAtCursorHandler, data);
-	}
-
-*/
-/*
-
-	void TextView_insertEmojiHandler();
-
-	static gulong TextView_signal_connect_insert_emoji(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "insert-emoji", TextView_insertEmojiHandler, data);
 	}
 
 */
@@ -2437,15 +1366,6 @@ import (
 
 	static gulong TextView_signal_connect_populate_popup(gpointer instance, gpointer data) {
 		return g_signal_connect(instance, "populate-popup", TextView_populatePopupHandler, data);
-	}
-
-*/
-/*
-
-	void TextView_preeditChangedHandler();
-
-	static gulong TextView_signal_connect_preedit_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "preedit-changed", TextView_preeditChangedHandler, data);
 	}
 
 */
@@ -2730,60 +1650,6 @@ import (
 */
 /*
 
-	void UIManager_actionsChangedHandler();
-
-	static gulong UIManager_signal_connect_actions_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "actions-changed", UIManager_actionsChangedHandler, data);
-	}
-
-*/
-/*
-
-	void UIManager_addWidgetHandler();
-
-	static gulong UIManager_signal_connect_add_widget(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "add-widget", UIManager_addWidgetHandler, data);
-	}
-
-*/
-/*
-
-	void UIManager_connectProxyHandler();
-
-	static gulong UIManager_signal_connect_connect_proxy(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "connect-proxy", UIManager_connectProxyHandler, data);
-	}
-
-*/
-/*
-
-	void UIManager_disconnectProxyHandler();
-
-	static gulong UIManager_signal_connect_disconnect_proxy(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "disconnect-proxy", UIManager_disconnectProxyHandler, data);
-	}
-
-*/
-/*
-
-	void UIManager_postActivateHandler();
-
-	static gulong UIManager_signal_connect_post_activate(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "post-activate", UIManager_postActivateHandler, data);
-	}
-
-*/
-/*
-
-	void UIManager_preActivateHandler();
-
-	static gulong UIManager_signal_connect_pre_activate(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "pre-activate", UIManager_preActivateHandler, data);
-	}
-
-*/
-/*
-
 	void Widget_accelClosuresChangedHandler();
 
 	static gulong Widget_signal_connect_accel_closures_changed(gpointer instance, gpointer data) {
@@ -2833,15 +1699,6 @@ import (
 
 	static gulong Widget_signal_connect_configure_event(gpointer instance, gpointer data) {
 		return g_signal_connect(instance, "configure-event", Widget_configureEventHandler, data);
-	}
-
-*/
-/*
-
-	void Widget_damageEventHandler();
-
-	static gulong Widget_signal_connect_damage_event(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "damage-event", Widget_damageEventHandler, data);
 	}
 
 */
@@ -2919,15 +1776,6 @@ import (
 */
 /*
 
-	void Widget_dragFailedHandler();
-
-	static gulong Widget_signal_connect_drag_failed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "drag-failed", Widget_dragFailedHandler, data);
-	}
-
-*/
-/*
-
 	void Widget_dragLeaveHandler();
 
 	static gulong Widget_signal_connect_drag_leave(gpointer instance, gpointer data) {
@@ -2941,15 +1789,6 @@ import (
 
 	static gulong Widget_signal_connect_drag_motion(gpointer instance, gpointer data) {
 		return g_signal_connect(instance, "drag-motion", Widget_dragMotionHandler, data);
-	}
-
-*/
-/*
-
-	void Widget_drawHandler();
-
-	static gulong Widget_signal_connect_draw(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "draw", Widget_drawHandler, data);
 	}
 
 */
@@ -2986,15 +1825,6 @@ import (
 
 	static gulong Widget_signal_connect_focus_out_event(gpointer instance, gpointer data) {
 		return g_signal_connect(instance, "focus-out-event", Widget_focusOutEventHandler, data);
-	}
-
-*/
-/*
-
-	void Widget_grabBrokenEventHandler();
-
-	static gulong Widget_signal_connect_grab_broken_event(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "grab-broken-event", Widget_grabBrokenEventHandler, data);
 	}
 
 */
@@ -3049,15 +1879,6 @@ import (
 
 	static gulong Widget_signal_connect_key_release_event(gpointer instance, gpointer data) {
 		return g_signal_connect(instance, "key-release-event", Widget_keyReleaseEventHandler, data);
-	}
-
-*/
-/*
-
-	void Widget_keynavFailedHandler();
-
-	static gulong Widget_signal_connect_keynav_failed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "keynav-failed", Widget_keynavFailedHandler, data);
 	}
 
 */
@@ -3162,15 +1983,6 @@ import (
 */
 /*
 
-	void Widget_queryTooltipHandler();
-
-	static gulong Widget_signal_connect_query_tooltip(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "query-tooltip", Widget_queryTooltipHandler, data);
-	}
-
-*/
-/*
-
 	void Widget_realizeHandler();
 
 	static gulong Widget_signal_connect_realize(gpointer instance, gpointer data) {
@@ -3270,28 +2082,10 @@ import (
 */
 /*
 
-	void Widget_stateFlagsChangedHandler();
-
-	static gulong Widget_signal_connect_state_flags_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "state-flags-changed", Widget_stateFlagsChangedHandler, data);
-	}
-
-*/
-/*
-
 	void Widget_styleSetHandler();
 
 	static gulong Widget_signal_connect_style_set(gpointer instance, gpointer data) {
 		return g_signal_connect(instance, "style-set", Widget_styleSetHandler, data);
-	}
-
-*/
-/*
-
-	void Widget_styleUpdatedHandler();
-
-	static gulong Widget_signal_connect_style_updated(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "style-updated", Widget_styleUpdatedHandler, data);
 	}
 
 */
@@ -3450,9 +2244,6 @@ func (recv *AboutDialog) Object() *gobject.Object {
 func CastToAboutDialog(object *gobject.Object) *AboutDialog {
 	return AboutDialogNewFromC(object.ToC())
 }
-
-// AboutDialogSignalActivateLinkCallback is a callback function for a 'activate-link' signal emitted from a AboutDialog.
-type AboutDialogSignalActivateLinkCallback func(uri string) bool
 
 // AccelGroup is a wrapper around the C record GtkAccelGroup.
 type AccelGroup struct {
@@ -3724,9 +2515,6 @@ func CastToAccelMap(object *gobject.Object) *AccelMap {
 	return AccelMapNewFromC(object.ToC())
 }
 
-// AccelMapSignalChangedCallback is a callback function for a 'changed' signal emitted from a AccelMap.
-type AccelMapSignalChangedCallback func(accelPath string, accelKey uint32, accelMods gdk.ModifierType)
-
 // Accessible is a wrapper around the C record GtkAccessible.
 type Accessible struct {
 	native *C.GtkAccessible
@@ -3801,9 +2589,6 @@ func (recv *Action) Object() *gobject.Object {
 func CastToAction(object *gobject.Object) *Action {
 	return ActionNewFromC(object.ToC())
 }
-
-// ActionSignalActivateCallback is a callback function for a 'activate' signal emitted from a Action.
-type ActionSignalActivateCallback func()
 
 // ActionBar is a wrapper around the C record GtkActionBar.
 type ActionBar struct {
@@ -3891,18 +2676,6 @@ func (recv *ActionGroup) Object() *gobject.Object {
 func CastToActionGroup(object *gobject.Object) *ActionGroup {
 	return ActionGroupNewFromC(object.ToC())
 }
-
-// ActionGroupSignalConnectProxyCallback is a callback function for a 'connect-proxy' signal emitted from a ActionGroup.
-type ActionGroupSignalConnectProxyCallback func(action *Action, proxy *Widget)
-
-// ActionGroupSignalDisconnectProxyCallback is a callback function for a 'disconnect-proxy' signal emitted from a ActionGroup.
-type ActionGroupSignalDisconnectProxyCallback func(action *Action, proxy *Widget)
-
-// ActionGroupSignalPostActivateCallback is a callback function for a 'post-activate' signal emitted from a ActionGroup.
-type ActionGroupSignalPostActivateCallback func(action *Action)
-
-// ActionGroupSignalPreActivateCallback is a callback function for a 'pre-activate' signal emitted from a ActionGroup.
-type ActionGroupSignalPreActivateCallback func(action *Action)
 
 // Adjustment is a wrapper around the C record GtkAdjustment.
 type Adjustment struct {
@@ -4369,12 +3142,6 @@ func CastToApplication(object *gobject.Object) *Application {
 	return ApplicationNewFromC(object.ToC())
 }
 
-// ApplicationSignalWindowAddedCallback is a callback function for a 'window-added' signal emitted from a Application.
-type ApplicationSignalWindowAddedCallback func(window *Window)
-
-// ApplicationSignalWindowRemovedCallback is a callback function for a 'window-removed' signal emitted from a Application.
-type ApplicationSignalWindowRemovedCallback func(window *Window)
-
 // ApplicationWindow is a wrapper around the C record GtkApplicationWindow.
 type ApplicationWindow struct {
 	native *C.GtkApplicationWindow
@@ -4704,20 +3471,8 @@ func CastToAssistant(object *gobject.Object) *Assistant {
 	return AssistantNewFromC(object.ToC())
 }
 
-// AssistantSignalApplyCallback is a callback function for a 'apply' signal emitted from a Assistant.
-type AssistantSignalApplyCallback func()
-
-// AssistantSignalCancelCallback is a callback function for a 'cancel' signal emitted from a Assistant.
-type AssistantSignalCancelCallback func()
-
-// AssistantSignalCloseCallback is a callback function for a 'close' signal emitted from a Assistant.
-type AssistantSignalCloseCallback func()
-
 // AssistantSignalEscapeCallback is a callback function for a 'escape' signal emitted from a Assistant.
 type AssistantSignalEscapeCallback func()
-
-// AssistantSignalPrepareCallback is a callback function for a 'prepare' signal emitted from a Assistant.
-type AssistantSignalPrepareCallback func(page *Widget)
 
 // Bin is a wrapper around the C record GtkBin.
 type Bin struct {
@@ -5583,9 +4338,6 @@ func CastToCellArea(object *gobject.Object) *CellArea {
 
 // Unsupported signal : unsupported parameter model : no type generator for TreeModel,
 
-// CellAreaSignalFocusChangedCallback is a callback function for a 'focus-changed' signal emitted from a CellArea.
-type CellAreaSignalFocusChangedCallback func(renderer *CellRenderer, path string)
-
 // Unsupported signal : unsupported parameter editable : no type generator for CellEditable,
 
 // CellAreaBox is a wrapper around the C record GtkCellAreaBox.
@@ -5723,9 +4475,6 @@ func CastToCellRenderer(object *gobject.Object) *CellRenderer {
 	return CellRendererNewFromC(object.ToC())
 }
 
-// CellRendererSignalEditingCanceledCallback is a callback function for a 'editing-canceled' signal emitted from a CellRenderer.
-type CellRendererSignalEditingCanceledCallback func()
-
 // Unsupported signal : unsupported parameter editable : no type generator for CellEditable,
 
 // Unsupported : gtk_cell_renderer_activate : unsupported parameter event : no type generator for Gdk.Event, GdkEvent*
@@ -5811,12 +4560,6 @@ func CastToCellRendererAccel(object *gobject.Object) *CellRendererAccel {
 	return CellRendererAccelNewFromC(object.ToC())
 }
 
-// CellRendererAccelSignalAccelClearedCallback is a callback function for a 'accel-cleared' signal emitted from a CellRendererAccel.
-type CellRendererAccelSignalAccelClearedCallback func(pathString string)
-
-// CellRendererAccelSignalAccelEditedCallback is a callback function for a 'accel-edited' signal emitted from a CellRendererAccel.
-type CellRendererAccelSignalAccelEditedCallback func(pathString string, accelKey uint32, accelMods gdk.ModifierType, hardwareKeycode uint32)
-
 // CellRendererCombo is a wrapper around the C record GtkCellRendererCombo.
 type CellRendererCombo struct {
 	native *C.GtkCellRendererCombo
@@ -5865,9 +4608,6 @@ func (recv *CellRendererCombo) Object() *gobject.Object {
 func CastToCellRendererCombo(object *gobject.Object) *CellRendererCombo {
 	return CellRendererComboNewFromC(object.ToC())
 }
-
-// CellRendererComboSignalChangedCallback is a callback function for a 'changed' signal emitted from a CellRendererCombo.
-type CellRendererComboSignalChangedCallback func(pathString string, newIter *TreeIter)
 
 // CellRendererPixbuf is a wrapper around the C record GtkCellRendererPixbuf.
 type CellRendererPixbuf struct {
@@ -6571,9 +5311,6 @@ func CastToClipboard(object *gobject.Object) *Clipboard {
 	return ClipboardNewFromC(object.ToC())
 }
 
-// ClipboardSignalOwnerChangeCallback is a callback function for a 'owner-change' signal emitted from a Clipboard.
-type ClipboardSignalOwnerChangeCallback func(event *gdk.EventOwnerChange)
-
 // Clear is a wrapper around the C function gtk_clipboard_clear.
 func (recv *Clipboard) Clear() {
 	C.gtk_clipboard_clear((*C.GtkClipboard)(recv.native))
@@ -6686,9 +5423,6 @@ func (recv *ColorButton) Object() *gobject.Object {
 func CastToColorButton(object *gobject.Object) *ColorButton {
 	return ColorButtonNewFromC(object.ToC())
 }
-
-// ColorButtonSignalColorSetCallback is a callback function for a 'color-set' signal emitted from a ColorButton.
-type ColorButtonSignalColorSetCallback func()
 
 // ColorChooserDialog is a wrapper around the C record GtkColorChooserDialog.
 type ColorChooserDialog struct {
@@ -7119,21 +5853,6 @@ func (recv *ComboBox) Object() *gobject.Object {
 func CastToComboBox(object *gobject.Object) *ComboBox {
 	return ComboBoxNewFromC(object.ToC())
 }
-
-// ComboBoxSignalChangedCallback is a callback function for a 'changed' signal emitted from a ComboBox.
-type ComboBoxSignalChangedCallback func()
-
-// ComboBoxSignalFormatEntryTextCallback is a callback function for a 'format-entry-text' signal emitted from a ComboBox.
-type ComboBoxSignalFormatEntryTextCallback func(path string) string
-
-// ComboBoxSignalMoveActiveCallback is a callback function for a 'move-active' signal emitted from a ComboBox.
-type ComboBoxSignalMoveActiveCallback func(scrollType ScrollType)
-
-// ComboBoxSignalPopdownCallback is a callback function for a 'popdown' signal emitted from a ComboBox.
-type ComboBoxSignalPopdownCallback func() bool
-
-// ComboBoxSignalPopupCallback is a callback function for a 'popup' signal emitted from a ComboBox.
-type ComboBoxSignalPopupCallback func()
 
 // ComboBoxNewWithArea is a wrapper around the C function gtk_combo_box_new_with_area.
 func ComboBoxNewWithArea(area *CellArea) *ComboBox {
@@ -7980,17 +6699,8 @@ type EntrySignalCutClipboardCallback func()
 // EntrySignalDeleteFromCursorCallback is a callback function for a 'delete-from-cursor' signal emitted from a Entry.
 type EntrySignalDeleteFromCursorCallback func(type_ DeleteType, count int32)
 
-// EntrySignalIconPressCallback is a callback function for a 'icon-press' signal emitted from a Entry.
-type EntrySignalIconPressCallback func(iconPos EntryIconPosition, event *gdk.EventButton)
-
-// EntrySignalIconReleaseCallback is a callback function for a 'icon-release' signal emitted from a Entry.
-type EntrySignalIconReleaseCallback func(iconPos EntryIconPosition, event *gdk.EventButton)
-
 // EntrySignalInsertAtCursorCallback is a callback function for a 'insert-at-cursor' signal emitted from a Entry.
 type EntrySignalInsertAtCursorCallback func(string string)
-
-// EntrySignalInsertEmojiCallback is a callback function for a 'insert-emoji' signal emitted from a Entry.
-type EntrySignalInsertEmojiCallback func()
 
 // EntrySignalMoveCursorCallback is a callback function for a 'move-cursor' signal emitted from a Entry.
 type EntrySignalMoveCursorCallback func(step MovementStep, count int32, extendSelection bool)
@@ -8000,9 +6710,6 @@ type EntrySignalPasteClipboardCallback func()
 
 // EntrySignalPopulatePopupCallback is a callback function for a 'populate-popup' signal emitted from a Entry.
 type EntrySignalPopulatePopupCallback func(widget *Widget)
-
-// EntrySignalPreeditChangedCallback is a callback function for a 'preedit-changed' signal emitted from a Entry.
-type EntrySignalPreeditChangedCallback func(preedit string)
 
 // EntrySignalToggleOverwriteCallback is a callback function for a 'toggle-overwrite' signal emitted from a Entry.
 type EntrySignalToggleOverwriteCallback func()
@@ -8259,12 +6966,6 @@ func CastToEntryBuffer(object *gobject.Object) *EntryBuffer {
 	return EntryBufferNewFromC(object.ToC())
 }
 
-// EntryBufferSignalDeletedTextCallback is a callback function for a 'deleted-text' signal emitted from a EntryBuffer.
-type EntryBufferSignalDeletedTextCallback func(position uint32, nChars uint32)
-
-// EntryBufferSignalInsertedTextCallback is a callback function for a 'inserted-text' signal emitted from a EntryBuffer.
-type EntryBufferSignalInsertedTextCallback func(position uint32, chars string, nChars uint32)
-
 // EntryCompletion is a wrapper around the C record GtkEntryCompletion.
 type EntryCompletion struct {
 	native *C.GtkEntryCompletion
@@ -8299,18 +7000,9 @@ func CastToEntryCompletion(object *gobject.Object) *EntryCompletion {
 	return EntryCompletionNewFromC(object.ToC())
 }
 
-// EntryCompletionSignalActionActivatedCallback is a callback function for a 'action-activated' signal emitted from a EntryCompletion.
-type EntryCompletionSignalActionActivatedCallback func(index int32)
-
 // Unsupported signal : unsupported parameter model : no type generator for TreeModel,
 
-// EntryCompletionSignalInsertPrefixCallback is a callback function for a 'insert-prefix' signal emitted from a EntryCompletion.
-type EntryCompletionSignalInsertPrefixCallback func(prefix string) bool
-
 // Unsupported signal : unsupported parameter model : no type generator for TreeModel,
-
-// EntryCompletionSignalNoMatchesCallback is a callback function for a 'no-matches' signal emitted from a EntryCompletion.
-type EntryCompletionSignalNoMatchesCallback func()
 
 // Unsupported : EntryIconAccessible : no CType
 
@@ -8567,9 +7259,6 @@ func (recv *FileChooserButton) Object() *gobject.Object {
 func CastToFileChooserButton(object *gobject.Object) *FileChooserButton {
 	return FileChooserButtonNewFromC(object.ToC())
 }
-
-// FileChooserButtonSignalFileSetCallback is a callback function for a 'file-set' signal emitted from a FileChooserButton.
-type FileChooserButtonSignalFileSetCallback func()
 
 // FileChooserDialog is a wrapper around the C record GtkFileChooserDialog.
 type FileChooserDialog struct {
@@ -9129,9 +7818,6 @@ func (recv *FontButton) Object() *gobject.Object {
 func CastToFontButton(object *gobject.Object) *FontButton {
 	return FontButtonNewFromC(object.ToC())
 }
-
-// FontButtonSignalFontSetCallback is a callback function for a 'font-set' signal emitted from a FontButton.
-type FontButtonSignalFontSetCallback func()
 
 // FontChooserDialog is a wrapper around the C record GtkFontChooserDialog.
 type FontChooserDialog struct {
@@ -9693,21 +8379,6 @@ func CastToGesture(object *gobject.Object) *Gesture {
 	return GestureNewFromC(object.ToC())
 }
 
-// GestureSignalBeginCallback is a callback function for a 'begin' signal emitted from a Gesture.
-type GestureSignalBeginCallback func(sequence *gdk.EventSequence)
-
-// GestureSignalCancelCallback is a callback function for a 'cancel' signal emitted from a Gesture.
-type GestureSignalCancelCallback func(sequence *gdk.EventSequence)
-
-// GestureSignalEndCallback is a callback function for a 'end' signal emitted from a Gesture.
-type GestureSignalEndCallback func(sequence *gdk.EventSequence)
-
-// GestureSignalSequenceStateChangedCallback is a callback function for a 'sequence-state-changed' signal emitted from a Gesture.
-type GestureSignalSequenceStateChangedCallback func(sequence *gdk.EventSequence, state EventSequenceState)
-
-// GestureSignalUpdateCallback is a callback function for a 'update' signal emitted from a Gesture.
-type GestureSignalUpdateCallback func(sequence *gdk.EventSequence)
-
 // Unsupported : gtk_gesture_get_last_event : no return generator
 
 // GestureDrag is a wrapper around the C record GtkGestureDrag.
@@ -9757,15 +8428,6 @@ func CastToGestureDrag(object *gobject.Object) *GestureDrag {
 	return GestureDragNewFromC(object.ToC())
 }
 
-// GestureDragSignalDragBeginCallback is a callback function for a 'drag-begin' signal emitted from a GestureDrag.
-type GestureDragSignalDragBeginCallback func(startX float64, startY float64)
-
-// GestureDragSignalDragEndCallback is a callback function for a 'drag-end' signal emitted from a GestureDrag.
-type GestureDragSignalDragEndCallback func(offsetX float64, offsetY float64)
-
-// GestureDragSignalDragUpdateCallback is a callback function for a 'drag-update' signal emitted from a GestureDrag.
-type GestureDragSignalDragUpdateCallback func(offsetX float64, offsetY float64)
-
 // GestureLongPress is a wrapper around the C record GtkGestureLongPress.
 type GestureLongPress struct {
 	native *C.GtkGestureLongPress
@@ -9813,12 +8475,6 @@ func CastToGestureLongPress(object *gobject.Object) *GestureLongPress {
 	return GestureLongPressNewFromC(object.ToC())
 }
 
-// GestureLongPressSignalCancelledCallback is a callback function for a 'cancelled' signal emitted from a GestureLongPress.
-type GestureLongPressSignalCancelledCallback func()
-
-// GestureLongPressSignalPressedCallback is a callback function for a 'pressed' signal emitted from a GestureLongPress.
-type GestureLongPressSignalPressedCallback func(x float64, y float64)
-
 // GestureMultiPress is a wrapper around the C record GtkGestureMultiPress.
 type GestureMultiPress struct {
 	native *C.GtkGestureMultiPress
@@ -9865,15 +8521,6 @@ func (recv *GestureMultiPress) Object() *gobject.Object {
 func CastToGestureMultiPress(object *gobject.Object) *GestureMultiPress {
 	return GestureMultiPressNewFromC(object.ToC())
 }
-
-// GestureMultiPressSignalPressedCallback is a callback function for a 'pressed' signal emitted from a GestureMultiPress.
-type GestureMultiPressSignalPressedCallback func(nPress int32, x float64, y float64)
-
-// GestureMultiPressSignalReleasedCallback is a callback function for a 'released' signal emitted from a GestureMultiPress.
-type GestureMultiPressSignalReleasedCallback func(nPress int32, x float64, y float64)
-
-// GestureMultiPressSignalStoppedCallback is a callback function for a 'stopped' signal emitted from a GestureMultiPress.
-type GestureMultiPressSignalStoppedCallback func()
 
 // GesturePan is a wrapper around the C record GtkGesturePan.
 type GesturePan struct {
@@ -9927,9 +8574,6 @@ func CastToGesturePan(object *gobject.Object) *GesturePan {
 	return GesturePanNewFromC(object.ToC())
 }
 
-// GesturePanSignalPanCallback is a callback function for a 'pan' signal emitted from a GesturePan.
-type GesturePanSignalPanCallback func(direction PanDirection, offset float64)
-
 // GestureRotate is a wrapper around the C record GtkGestureRotate.
 type GestureRotate struct {
 	native *C.GtkGestureRotate
@@ -9971,9 +8615,6 @@ func (recv *GestureRotate) Object() *gobject.Object {
 func CastToGestureRotate(object *gobject.Object) *GestureRotate {
 	return GestureRotateNewFromC(object.ToC())
 }
-
-// GestureRotateSignalAngleChangedCallback is a callback function for a 'angle-changed' signal emitted from a GestureRotate.
-type GestureRotateSignalAngleChangedCallback func(angle float64, angleDelta float64)
 
 // GestureSingle is a wrapper around the C record GtkGestureSingle.
 type GestureSingle struct {
@@ -10064,9 +8705,6 @@ func CastToGestureSwipe(object *gobject.Object) *GestureSwipe {
 	return GestureSwipeNewFromC(object.ToC())
 }
 
-// GestureSwipeSignalSwipeCallback is a callback function for a 'swipe' signal emitted from a GestureSwipe.
-type GestureSwipeSignalSwipeCallback func(velocityX float64, velocityY float64)
-
 // GestureZoom is a wrapper around the C record GtkGestureZoom.
 type GestureZoom struct {
 	native *C.GtkGestureZoom
@@ -10108,9 +8746,6 @@ func (recv *GestureZoom) Object() *gobject.Object {
 func CastToGestureZoom(object *gobject.Object) *GestureZoom {
 	return GestureZoomNewFromC(object.ToC())
 }
-
-// GestureZoomSignalScaleChangedCallback is a callback function for a 'scale-changed' signal emitted from a GestureZoom.
-type GestureZoomSignalScaleChangedCallback func(scale float64)
 
 // Grid is a wrapper around the C record GtkGrid.
 type Grid struct {
@@ -11838,12 +10473,6 @@ func CastToInfoBar(object *gobject.Object) *InfoBar {
 	return InfoBarNewFromC(object.ToC())
 }
 
-// InfoBarSignalCloseCallback is a callback function for a 'close' signal emitted from a InfoBar.
-type InfoBarSignalCloseCallback func()
-
-// InfoBarSignalResponseCallback is a callback function for a 'response' signal emitted from a InfoBar.
-type InfoBarSignalResponseCallback func(responseId int32)
-
 // Unsupported : gtk_info_bar_new_with_buttons : unsupported parameter ... : varargs
 
 // Invisible is a wrapper around the C record GtkInvisible.
@@ -11946,12 +10575,6 @@ func (recv *Label) Object() *gobject.Object {
 func CastToLabel(object *gobject.Object) *Label {
 	return LabelNewFromC(object.ToC())
 }
-
-// LabelSignalActivateCurrentLinkCallback is a callback function for a 'activate-current-link' signal emitted from a Label.
-type LabelSignalActivateCurrentLinkCallback func()
-
-// LabelSignalActivateLinkCallback is a callback function for a 'activate-link' signal emitted from a Label.
-type LabelSignalActivateLinkCallback func(uri string) bool
 
 // LabelSignalCopyClipboardCallback is a callback function for a 'copy-clipboard' signal emitted from a Label.
 type LabelSignalCopyClipboardCallback func()
@@ -12476,9 +11099,6 @@ func CastToLevelBar(object *gobject.Object) *LevelBar {
 	return LevelBarNewFromC(object.ToC())
 }
 
-// LevelBarSignalOffsetChangedCallback is a callback function for a 'offset-changed' signal emitted from a LevelBar.
-type LevelBarSignalOffsetChangedCallback func(name string)
-
 // LevelBarAccessible is a wrapper around the C record GtkLevelBarAccessible.
 type LevelBarAccessible struct {
 	native *C.GtkLevelBarAccessible
@@ -12693,23 +11313,8 @@ type ListBoxSignalActivateCursorRowCallback func()
 // ListBoxSignalMoveCursorCallback is a callback function for a 'move-cursor' signal emitted from a ListBox.
 type ListBoxSignalMoveCursorCallback func(object MovementStep, p0 int32)
 
-// ListBoxSignalRowActivatedCallback is a callback function for a 'row-activated' signal emitted from a ListBox.
-type ListBoxSignalRowActivatedCallback func(row *ListBoxRow)
-
-// ListBoxSignalRowSelectedCallback is a callback function for a 'row-selected' signal emitted from a ListBox.
-type ListBoxSignalRowSelectedCallback func(row *ListBoxRow)
-
-// ListBoxSignalSelectAllCallback is a callback function for a 'select-all' signal emitted from a ListBox.
-type ListBoxSignalSelectAllCallback func()
-
-// ListBoxSignalSelectedRowsChangedCallback is a callback function for a 'selected-rows-changed' signal emitted from a ListBox.
-type ListBoxSignalSelectedRowsChangedCallback func()
-
 // ListBoxSignalToggleCursorRowCallback is a callback function for a 'toggle-cursor-row' signal emitted from a ListBox.
 type ListBoxSignalToggleCursorRowCallback func()
-
-// ListBoxSignalUnselectAllCallback is a callback function for a 'unselect-all' signal emitted from a ListBox.
-type ListBoxSignalUnselectAllCallback func()
 
 // ListBoxAccessible is a wrapper around the C record GtkListBoxAccessible.
 type ListBoxAccessible struct {
@@ -12812,9 +11417,6 @@ func (recv *ListBoxRow) Object() *gobject.Object {
 func CastToListBoxRow(object *gobject.Object) *ListBoxRow {
 	return ListBoxRowNewFromC(object.ToC())
 }
-
-// ListBoxRowSignalActivateCallback is a callback function for a 'activate' signal emitted from a ListBoxRow.
-type ListBoxRowSignalActivateCallback func()
 
 // ListBoxRowAccessible is a wrapper around the C record GtkListBoxRowAccessible.
 type ListBoxRowAccessible struct {
@@ -13168,9 +11770,6 @@ func CastToMenu(object *gobject.Object) *Menu {
 
 // MenuSignalMoveScrollCallback is a callback function for a 'move-scroll' signal emitted from a Menu.
 type MenuSignalMoveScrollCallback func(scrollType ScrollType)
-
-// MenuSignalPoppedUpCallback is a callback function for a 'popped-up' signal emitted from a Menu.
-type MenuSignalPoppedUpCallback func(flippedRect uintptr, finalRect uintptr, flippedX bool, flippedY bool)
 
 // MenuNew is a wrapper around the C function gtk_menu_new.
 func MenuNew() *Menu {
@@ -13839,14 +12438,8 @@ type MenuShellSignalCycleFocusCallback func(direction DirectionType)
 // MenuShellSignalDeactivateCallback is a callback function for a 'deactivate' signal emitted from a MenuShell.
 type MenuShellSignalDeactivateCallback func()
 
-// MenuShellSignalInsertCallback is a callback function for a 'insert' signal emitted from a MenuShell.
-type MenuShellSignalInsertCallback func(child *Widget, position int32)
-
 // MenuShellSignalMoveCurrentCallback is a callback function for a 'move-current' signal emitted from a MenuShell.
 type MenuShellSignalMoveCurrentCallback func(direction MenuDirectionType)
-
-// MenuShellSignalMoveSelectedCallback is a callback function for a 'move-selected' signal emitted from a MenuShell.
-type MenuShellSignalMoveSelectedCallback func(distance int32) bool
 
 // MenuShellSignalSelectionDoneCallback is a callback function for a 'selection-done' signal emitted from a MenuShell.
 type MenuShellSignalSelectionDoneCallback func()
@@ -14343,23 +12936,11 @@ func CastToNotebook(object *gobject.Object) *Notebook {
 // NotebookSignalChangeCurrentPageCallback is a callback function for a 'change-current-page' signal emitted from a Notebook.
 type NotebookSignalChangeCurrentPageCallback func(object int32) bool
 
-// NotebookSignalCreateWindowCallback is a callback function for a 'create-window' signal emitted from a Notebook.
-type NotebookSignalCreateWindowCallback func(page *Widget, x int32, y int32) Notebook
-
 // NotebookSignalFocusTabCallback is a callback function for a 'focus-tab' signal emitted from a Notebook.
 type NotebookSignalFocusTabCallback func(object NotebookTab) bool
 
 // NotebookSignalMoveFocusOutCallback is a callback function for a 'move-focus-out' signal emitted from a Notebook.
 type NotebookSignalMoveFocusOutCallback func(object DirectionType)
-
-// NotebookSignalPageAddedCallback is a callback function for a 'page-added' signal emitted from a Notebook.
-type NotebookSignalPageAddedCallback func(child *Widget, pageNum uint32)
-
-// NotebookSignalPageRemovedCallback is a callback function for a 'page-removed' signal emitted from a Notebook.
-type NotebookSignalPageRemovedCallback func(child *Widget, pageNum uint32)
-
-// NotebookSignalPageReorderedCallback is a callback function for a 'page-reordered' signal emitted from a Notebook.
-type NotebookSignalPageReorderedCallback func(child *Widget, pageNum uint32)
 
 // NotebookSignalReorderTabCallback is a callback function for a 'reorder-tab' signal emitted from a Notebook.
 type NotebookSignalReorderTabCallback func(object DirectionType, p0 bool) bool
@@ -15042,24 +13623,6 @@ func CastToPaned(object *gobject.Object) *Paned {
 	return PanedNewFromC(object.ToC())
 }
 
-// PanedSignalAcceptPositionCallback is a callback function for a 'accept-position' signal emitted from a Paned.
-type PanedSignalAcceptPositionCallback func() bool
-
-// PanedSignalCancelPositionCallback is a callback function for a 'cancel-position' signal emitted from a Paned.
-type PanedSignalCancelPositionCallback func() bool
-
-// PanedSignalCycleChildFocusCallback is a callback function for a 'cycle-child-focus' signal emitted from a Paned.
-type PanedSignalCycleChildFocusCallback func(reversed bool) bool
-
-// PanedSignalCycleHandleFocusCallback is a callback function for a 'cycle-handle-focus' signal emitted from a Paned.
-type PanedSignalCycleHandleFocusCallback func(reversed bool) bool
-
-// PanedSignalMoveHandleCallback is a callback function for a 'move-handle' signal emitted from a Paned.
-type PanedSignalMoveHandleCallback func(scrollType ScrollType) bool
-
-// PanedSignalToggleHandleFocusCallback is a callback function for a 'toggle-handle-focus' signal emitted from a Paned.
-type PanedSignalToggleHandleFocusCallback func() bool
-
 // Add1 is a wrapper around the C function gtk_paned_add1.
 func (recv *Paned) Add1(child *Widget) {
 	c_child := (*C.GtkWidget)(child.ToC())
@@ -15231,15 +13794,9 @@ func CastToPlacesSidebar(object *gobject.Object) *PlacesSidebar {
 	return PlacesSidebarNewFromC(object.ToC())
 }
 
-// PlacesSidebarSignalDragActionAskCallback is a callback function for a 'drag-action-ask' signal emitted from a PlacesSidebar.
-type PlacesSidebarSignalDragActionAskCallback func(actions int32) int32
-
 // Unsupported signal : unsupported parameter dest_file : no type generator for Gio.File,
 
 // Unsupported signal : unsupported parameter dest_file : no type generator for Gio.File,
-
-// PlacesSidebarSignalMountCallback is a callback function for a 'mount' signal emitted from a PlacesSidebar.
-type PlacesSidebarSignalMountCallback func(mountOperation *gio.MountOperation)
 
 // Unsupported signal : unsupported parameter location : no type generator for Gio.File,
 
@@ -15247,24 +13804,6 @@ type PlacesSidebarSignalMountCallback func(mountOperation *gio.MountOperation)
 
 // PlacesSidebarSignalShowConnectToServerCallback is a callback function for a 'show-connect-to-server' signal emitted from a PlacesSidebar.
 type PlacesSidebarSignalShowConnectToServerCallback func()
-
-// PlacesSidebarSignalShowEnterLocationCallback is a callback function for a 'show-enter-location' signal emitted from a PlacesSidebar.
-type PlacesSidebarSignalShowEnterLocationCallback func()
-
-// PlacesSidebarSignalShowErrorMessageCallback is a callback function for a 'show-error-message' signal emitted from a PlacesSidebar.
-type PlacesSidebarSignalShowErrorMessageCallback func(primary string, secondary string)
-
-// PlacesSidebarSignalShowOtherLocationsCallback is a callback function for a 'show-other-locations' signal emitted from a PlacesSidebar.
-type PlacesSidebarSignalShowOtherLocationsCallback func()
-
-// PlacesSidebarSignalShowOtherLocationsWithFlagsCallback is a callback function for a 'show-other-locations-with-flags' signal emitted from a PlacesSidebar.
-type PlacesSidebarSignalShowOtherLocationsWithFlagsCallback func(openFlags PlacesOpenFlags)
-
-// PlacesSidebarSignalShowStarredLocationCallback is a callback function for a 'show-starred-location' signal emitted from a PlacesSidebar.
-type PlacesSidebarSignalShowStarredLocationCallback func(object PlacesOpenFlags)
-
-// PlacesSidebarSignalUnmountCallback is a callback function for a 'unmount' signal emitted from a PlacesSidebar.
-type PlacesSidebarSignalUnmountCallback func(mountOperation *gio.MountOperation)
 
 // GetShowConnectToServer is a wrapper around the C function gtk_places_sidebar_get_show_connect_to_server.
 func (recv *PlacesSidebar) GetShowConnectToServer() bool {
@@ -15514,37 +14053,7 @@ func CastToPrintOperation(object *gobject.Object) *PrintOperation {
 	return PrintOperationNewFromC(object.ToC())
 }
 
-// PrintOperationSignalBeginPrintCallback is a callback function for a 'begin-print' signal emitted from a PrintOperation.
-type PrintOperationSignalBeginPrintCallback func(context *PrintContext)
-
-// PrintOperationSignalCreateCustomWidgetCallback is a callback function for a 'create-custom-widget' signal emitted from a PrintOperation.
-type PrintOperationSignalCreateCustomWidgetCallback func() gobject.Object
-
-// PrintOperationSignalCustomWidgetApplyCallback is a callback function for a 'custom-widget-apply' signal emitted from a PrintOperation.
-type PrintOperationSignalCustomWidgetApplyCallback func(widget *Widget)
-
-// PrintOperationSignalDoneCallback is a callback function for a 'done' signal emitted from a PrintOperation.
-type PrintOperationSignalDoneCallback func(result PrintOperationResult)
-
-// PrintOperationSignalDrawPageCallback is a callback function for a 'draw-page' signal emitted from a PrintOperation.
-type PrintOperationSignalDrawPageCallback func(context *PrintContext, pageNr int32)
-
-// PrintOperationSignalEndPrintCallback is a callback function for a 'end-print' signal emitted from a PrintOperation.
-type PrintOperationSignalEndPrintCallback func(context *PrintContext)
-
-// PrintOperationSignalPaginateCallback is a callback function for a 'paginate' signal emitted from a PrintOperation.
-type PrintOperationSignalPaginateCallback func(context *PrintContext) bool
-
 // Unsupported signal : unsupported parameter preview : no type generator for PrintOperationPreview,
-
-// PrintOperationSignalRequestPageSetupCallback is a callback function for a 'request-page-setup' signal emitted from a PrintOperation.
-type PrintOperationSignalRequestPageSetupCallback func(context *PrintContext, pageNr int32, setup *PageSetup)
-
-// PrintOperationSignalStatusChangedCallback is a callback function for a 'status-changed' signal emitted from a PrintOperation.
-type PrintOperationSignalStatusChangedCallback func()
-
-// PrintOperationSignalUpdateCustomWidgetCallback is a callback function for a 'update-custom-widget' signal emitted from a PrintOperation.
-type PrintOperationSignalUpdateCustomWidgetCallback func(widget *Widget, setup *PageSetup, settings *PrintSettings)
 
 // PrintSettings is a wrapper around the C record GtkPrintSettings.
 type PrintSettings struct {
@@ -15797,9 +14306,6 @@ func CastToRadioAction(object *gobject.Object) *RadioAction {
 	return RadioActionNewFromC(object.ToC())
 }
 
-// RadioActionSignalChangedCallback is a callback function for a 'changed' signal emitted from a RadioAction.
-type RadioActionSignalChangedCallback func(current *RadioAction)
-
 // RadioButton is a wrapper around the C record GtkRadioButton.
 type RadioButton struct {
 	native *C.GtkRadioButton
@@ -15868,9 +14374,6 @@ func (recv *RadioButton) Object() *gobject.Object {
 func CastToRadioButton(object *gobject.Object) *RadioButton {
 	return RadioButtonNewFromC(object.ToC())
 }
-
-// RadioButtonSignalGroupChangedCallback is a callback function for a 'group-changed' signal emitted from a RadioButton.
-type RadioButtonSignalGroupChangedCallback func()
 
 // RadioButtonNew is a wrapper around the C function gtk_radio_button_new.
 func RadioButtonNew(group *glib.SList) *RadioButton {
@@ -16313,9 +14816,6 @@ func CastToRange(object *gobject.Object) *Range {
 
 // RangeSignalAdjustBoundsCallback is a callback function for a 'adjust-bounds' signal emitted from a Range.
 type RangeSignalAdjustBoundsCallback func(value float64)
-
-// RangeSignalChangeValueCallback is a callback function for a 'change-value' signal emitted from a Range.
-type RangeSignalChangeValueCallback func(scroll ScrollType, value float64) bool
 
 // RangeSignalMoveSliderCallback is a callback function for a 'move-slider' signal emitted from a Range.
 type RangeSignalMoveSliderCallback func(step ScrollType)
@@ -17091,15 +15591,6 @@ func CastToScaleButton(object *gobject.Object) *ScaleButton {
 	return ScaleButtonNewFromC(object.ToC())
 }
 
-// ScaleButtonSignalPopdownCallback is a callback function for a 'popdown' signal emitted from a ScaleButton.
-type ScaleButtonSignalPopdownCallback func()
-
-// ScaleButtonSignalPopupCallback is a callback function for a 'popup' signal emitted from a ScaleButton.
-type ScaleButtonSignalPopupCallback func()
-
-// ScaleButtonSignalValueChangedCallback is a callback function for a 'value-changed' signal emitted from a ScaleButton.
-type ScaleButtonSignalValueChangedCallback func(value float64)
-
 // Unsupported : gtk_scale_button_new : unsupported parameter size : no type generator for gint, GtkIconSize
 
 // ScaleButtonAccessible is a wrapper around the C record GtkScaleButtonAccessible.
@@ -17257,12 +15748,6 @@ func (recv *ScrolledWindow) Object() *gobject.Object {
 func CastToScrolledWindow(object *gobject.Object) *ScrolledWindow {
 	return ScrolledWindowNewFromC(object.ToC())
 }
-
-// ScrolledWindowSignalEdgeOvershotCallback is a callback function for a 'edge-overshot' signal emitted from a ScrolledWindow.
-type ScrolledWindowSignalEdgeOvershotCallback func(pos PositionType)
-
-// ScrolledWindowSignalEdgeReachedCallback is a callback function for a 'edge-reached' signal emitted from a ScrolledWindow.
-type ScrolledWindowSignalEdgeReachedCallback func(pos PositionType)
 
 // ScrolledWindowSignalMoveFocusOutCallback is a callback function for a 'move-focus-out' signal emitted from a ScrolledWindow.
 type ScrolledWindowSignalMoveFocusOutCallback func(directionType DirectionType)
@@ -17521,18 +16006,6 @@ func (recv *SearchEntry) Object() *gobject.Object {
 func CastToSearchEntry(object *gobject.Object) *SearchEntry {
 	return SearchEntryNewFromC(object.ToC())
 }
-
-// SearchEntrySignalNextMatchCallback is a callback function for a 'next-match' signal emitted from a SearchEntry.
-type SearchEntrySignalNextMatchCallback func()
-
-// SearchEntrySignalPreviousMatchCallback is a callback function for a 'previous-match' signal emitted from a SearchEntry.
-type SearchEntrySignalPreviousMatchCallback func()
-
-// SearchEntrySignalSearchChangedCallback is a callback function for a 'search-changed' signal emitted from a SearchEntry.
-type SearchEntrySignalSearchChangedCallback func()
-
-// SearchEntrySignalStopSearchCallback is a callback function for a 'stop-search' signal emitted from a SearchEntry.
-type SearchEntrySignalStopSearchCallback func()
 
 // Separator is a wrapper around the C record GtkSeparator.
 type Separator struct {
@@ -17795,6 +16268,15 @@ func (recv *Settings) SetStringProperty(name string, vString string, origin stri
 	return
 }
 
+// ShortcutsSectionSignalChangeCurrentPageCallback is a callback function for a 'change-current-page' signal emitted from a ShortcutsSection.
+type ShortcutsSectionSignalChangeCurrentPageCallback func(object int32) bool
+
+// ShortcutsWindowSignalCloseCallback is a callback function for a 'close' signal emitted from a ShortcutsWindow.
+type ShortcutsWindowSignalCloseCallback func()
+
+// ShortcutsWindowSignalSearchCallback is a callback function for a 'search' signal emitted from a ShortcutsWindow.
+type ShortcutsWindowSignalSearchCallback func()
+
 // SizeGroup is a wrapper around the C record GtkSizeGroup.
 type SizeGroup struct {
 	native *C.GtkSizeGroup
@@ -17936,9 +16418,6 @@ type SpinButtonSignalOutputCallback func() bool
 
 // SpinButtonSignalValueChangedCallback is a callback function for a 'value-changed' signal emitted from a SpinButton.
 type SpinButtonSignalValueChangedCallback func()
-
-// SpinButtonSignalWrappedCallback is a callback function for a 'wrapped' signal emitted from a SpinButton.
-type SpinButtonSignalWrappedCallback func()
 
 // SpinButtonNew is a wrapper around the C function gtk_spin_button_new.
 func SpinButtonNew(adjustment *Adjustment, climbRate float64, digits uint32) *SpinButton {
@@ -18508,27 +16987,6 @@ func CastToStatusIcon(object *gobject.Object) *StatusIcon {
 	return StatusIconNewFromC(object.ToC())
 }
 
-// StatusIconSignalActivateCallback is a callback function for a 'activate' signal emitted from a StatusIcon.
-type StatusIconSignalActivateCallback func()
-
-// StatusIconSignalButtonPressEventCallback is a callback function for a 'button-press-event' signal emitted from a StatusIcon.
-type StatusIconSignalButtonPressEventCallback func(event *gdk.EventButton) bool
-
-// StatusIconSignalButtonReleaseEventCallback is a callback function for a 'button-release-event' signal emitted from a StatusIcon.
-type StatusIconSignalButtonReleaseEventCallback func(event *gdk.EventButton) bool
-
-// StatusIconSignalPopupMenuCallback is a callback function for a 'popup-menu' signal emitted from a StatusIcon.
-type StatusIconSignalPopupMenuCallback func(button uint32, activateTime uint32)
-
-// StatusIconSignalQueryTooltipCallback is a callback function for a 'query-tooltip' signal emitted from a StatusIcon.
-type StatusIconSignalQueryTooltipCallback func(x int32, y int32, keyboardMode bool, tooltip *Tooltip) bool
-
-// StatusIconSignalScrollEventCallback is a callback function for a 'scroll-event' signal emitted from a StatusIcon.
-type StatusIconSignalScrollEventCallback func(event *gdk.EventScroll) bool
-
-// StatusIconSignalSizeChangedCallback is a callback function for a 'size-changed' signal emitted from a StatusIcon.
-type StatusIconSignalSizeChangedCallback func(size int32) bool
-
 // Unsupported : gtk_status_icon_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon, GIcon*
 
 // Statusbar is a wrapper around the C record GtkStatusbar.
@@ -18754,12 +17212,6 @@ func CastToStyle(object *gobject.Object) *Style {
 	return StyleNewFromC(object.ToC())
 }
 
-// StyleSignalRealizeCallback is a callback function for a 'realize' signal emitted from a Style.
-type StyleSignalRealizeCallback func()
-
-// StyleSignalUnrealizeCallback is a callback function for a 'unrealize' signal emitted from a Style.
-type StyleSignalUnrealizeCallback func()
-
 // StyleNew is a wrapper around the C function gtk_style_new.
 func StyleNew() *Style {
 	retC := C.gtk_style_new()
@@ -18871,9 +17323,6 @@ func (recv *StyleContext) Object() *gobject.Object {
 func CastToStyleContext(object *gobject.Object) *StyleContext {
 	return StyleContextNewFromC(object.ToC())
 }
-
-// StyleContextSignalChangedCallback is a callback function for a 'changed' signal emitted from a StyleContext.
-type StyleContextSignalChangedCallback func()
 
 // StyleContextNew is a wrapper around the C function gtk_style_context_new.
 func StyleContextNew() *StyleContext {
@@ -19035,9 +17484,6 @@ func CastToSwitch(object *gobject.Object) *Switch {
 
 // SwitchSignalActivateCallback is a callback function for a 'activate' signal emitted from a Switch.
 type SwitchSignalActivateCallback func()
-
-// SwitchSignalStateSetCallback is a callback function for a 'state-set' signal emitted from a Switch.
-type SwitchSignalStateSetCallback func(state bool) bool
 
 // SwitchAccessible is a wrapper around the C record GtkSwitchAccessible.
 type SwitchAccessible struct {
@@ -19427,9 +17873,6 @@ type TextBufferSignalMarkSetCallback func(location *TextIter, mark *TextMark)
 
 // TextBufferSignalModifiedChangedCallback is a callback function for a 'modified-changed' signal emitted from a TextBuffer.
 type TextBufferSignalModifiedChangedCallback func()
-
-// TextBufferSignalPasteDoneCallback is a callback function for a 'paste-done' signal emitted from a TextBuffer.
-type TextBufferSignalPasteDoneCallback func(clipboard *Clipboard)
 
 // TextBufferSignalRemoveTagCallback is a callback function for a 'remove-tag' signal emitted from a TextBuffer.
 type TextBufferSignalRemoveTagCallback func(tag *TextTag, start *TextIter, end *TextIter)
@@ -20468,14 +18911,8 @@ type TextViewSignalCutClipboardCallback func()
 // TextViewSignalDeleteFromCursorCallback is a callback function for a 'delete-from-cursor' signal emitted from a TextView.
 type TextViewSignalDeleteFromCursorCallback func(type_ DeleteType, count int32)
 
-// TextViewSignalExtendSelectionCallback is a callback function for a 'extend-selection' signal emitted from a TextView.
-type TextViewSignalExtendSelectionCallback func(granularity TextExtendSelection, location *TextIter, start *TextIter, end *TextIter) bool
-
 // TextViewSignalInsertAtCursorCallback is a callback function for a 'insert-at-cursor' signal emitted from a TextView.
 type TextViewSignalInsertAtCursorCallback func(string string)
-
-// TextViewSignalInsertEmojiCallback is a callback function for a 'insert-emoji' signal emitted from a TextView.
-type TextViewSignalInsertEmojiCallback func()
 
 // TextViewSignalMoveCursorCallback is a callback function for a 'move-cursor' signal emitted from a TextView.
 type TextViewSignalMoveCursorCallback func(step MovementStep, count int32, extendSelection bool)
@@ -20488,9 +18925,6 @@ type TextViewSignalPasteClipboardCallback func()
 
 // TextViewSignalPopulatePopupCallback is a callback function for a 'populate-popup' signal emitted from a TextView.
 type TextViewSignalPopulatePopupCallback func(popup *Widget)
-
-// TextViewSignalPreeditChangedCallback is a callback function for a 'preedit-changed' signal emitted from a TextView.
-type TextViewSignalPreeditChangedCallback func(preedit string)
 
 // TextViewSignalSelectAllCallback is a callback function for a 'select-all' signal emitted from a TextView.
 type TextViewSignalSelectAllCallback func(select_ bool)
@@ -23319,24 +21753,6 @@ func CastToUIManager(object *gobject.Object) *UIManager {
 	return UIManagerNewFromC(object.ToC())
 }
 
-// UIManagerSignalActionsChangedCallback is a callback function for a 'actions-changed' signal emitted from a UIManager.
-type UIManagerSignalActionsChangedCallback func()
-
-// UIManagerSignalAddWidgetCallback is a callback function for a 'add-widget' signal emitted from a UIManager.
-type UIManagerSignalAddWidgetCallback func(widget *Widget)
-
-// UIManagerSignalConnectProxyCallback is a callback function for a 'connect-proxy' signal emitted from a UIManager.
-type UIManagerSignalConnectProxyCallback func(action *Action, proxy *Widget)
-
-// UIManagerSignalDisconnectProxyCallback is a callback function for a 'disconnect-proxy' signal emitted from a UIManager.
-type UIManagerSignalDisconnectProxyCallback func(action *Action, proxy *Widget)
-
-// UIManagerSignalPostActivateCallback is a callback function for a 'post-activate' signal emitted from a UIManager.
-type UIManagerSignalPostActivateCallback func(action *Action)
-
-// UIManagerSignalPreActivateCallback is a callback function for a 'pre-activate' signal emitted from a UIManager.
-type UIManagerSignalPreActivateCallback func(action *Action)
-
 // VBox is a wrapper around the C record GtkVBox.
 type VBox struct {
 	native *C.GtkVBox
@@ -23965,9 +22381,6 @@ type WidgetSignalCompositedChangedCallback func()
 // WidgetSignalConfigureEventCallback is a callback function for a 'configure-event' signal emitted from a Widget.
 type WidgetSignalConfigureEventCallback func(event *gdk.EventConfigure) bool
 
-// WidgetSignalDamageEventCallback is a callback function for a 'damage-event' signal emitted from a Widget.
-type WidgetSignalDamageEventCallback func(event *gdk.EventExpose) bool
-
 // Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
 
 // WidgetSignalDestroyCallback is a callback function for a 'destroy' signal emitted from a Widget.
@@ -23996,17 +22409,11 @@ type WidgetSignalDragDropCallback func(context *gdk.DragContext, x int32, y int3
 // WidgetSignalDragEndCallback is a callback function for a 'drag-end' signal emitted from a Widget.
 type WidgetSignalDragEndCallback func(context *gdk.DragContext)
 
-// WidgetSignalDragFailedCallback is a callback function for a 'drag-failed' signal emitted from a Widget.
-type WidgetSignalDragFailedCallback func(context *gdk.DragContext, result DragResult) bool
-
 // WidgetSignalDragLeaveCallback is a callback function for a 'drag-leave' signal emitted from a Widget.
 type WidgetSignalDragLeaveCallback func(context *gdk.DragContext, time uint32)
 
 // WidgetSignalDragMotionCallback is a callback function for a 'drag-motion' signal emitted from a Widget.
 type WidgetSignalDragMotionCallback func(context *gdk.DragContext, x int32, y int32, time uint32) bool
-
-// WidgetSignalDrawCallback is a callback function for a 'draw' signal emitted from a Widget.
-type WidgetSignalDrawCallback func(cr *cairo.Context) bool
 
 // WidgetSignalEnterNotifyEventCallback is a callback function for a 'enter-notify-event' signal emitted from a Widget.
 type WidgetSignalEnterNotifyEventCallback func(event *gdk.EventCrossing) bool
@@ -24023,9 +22430,6 @@ type WidgetSignalFocusInEventCallback func(event *gdk.EventFocus) bool
 
 // WidgetSignalFocusOutEventCallback is a callback function for a 'focus-out-event' signal emitted from a Widget.
 type WidgetSignalFocusOutEventCallback func(event *gdk.EventFocus) bool
-
-// WidgetSignalGrabBrokenEventCallback is a callback function for a 'grab-broken-event' signal emitted from a Widget.
-type WidgetSignalGrabBrokenEventCallback func(event *gdk.EventGrabBroken) bool
 
 // WidgetSignalGrabFocusCallback is a callback function for a 'grab-focus' signal emitted from a Widget.
 type WidgetSignalGrabFocusCallback func()
@@ -24044,9 +22448,6 @@ type WidgetSignalKeyPressEventCallback func(event *gdk.EventKey) bool
 
 // WidgetSignalKeyReleaseEventCallback is a callback function for a 'key-release-event' signal emitted from a Widget.
 type WidgetSignalKeyReleaseEventCallback func(event *gdk.EventKey) bool
-
-// WidgetSignalKeynavFailedCallback is a callback function for a 'keynav-failed' signal emitted from a Widget.
-type WidgetSignalKeynavFailedCallback func(direction DirectionType) bool
 
 // WidgetSignalLeaveNotifyEventCallback is a callback function for a 'leave-notify-event' signal emitted from a Widget.
 type WidgetSignalLeaveNotifyEventCallback func(event *gdk.EventCrossing) bool
@@ -24080,9 +22481,6 @@ type WidgetSignalProximityInEventCallback func(event *gdk.EventProximity) bool
 
 // WidgetSignalProximityOutEventCallback is a callback function for a 'proximity-out-event' signal emitted from a Widget.
 type WidgetSignalProximityOutEventCallback func(event *gdk.EventProximity) bool
-
-// WidgetSignalQueryTooltipCallback is a callback function for a 'query-tooltip' signal emitted from a Widget.
-type WidgetSignalQueryTooltipCallback func(x int32, y int32, keyboardMode bool, tooltip *Tooltip) bool
 
 // WidgetSignalRealizeCallback is a callback function for a 'realize' signal emitted from a Widget.
 type WidgetSignalRealizeCallback func()
@@ -24119,14 +22517,8 @@ type WidgetSignalShowHelpCallback func(helpType WidgetHelpType) bool
 // WidgetSignalStateChangedCallback is a callback function for a 'state-changed' signal emitted from a Widget.
 type WidgetSignalStateChangedCallback func(state StateType)
 
-// WidgetSignalStateFlagsChangedCallback is a callback function for a 'state-flags-changed' signal emitted from a Widget.
-type WidgetSignalStateFlagsChangedCallback func(flags StateFlags)
-
 // WidgetSignalStyleSetCallback is a callback function for a 'style-set' signal emitted from a Widget.
 type WidgetSignalStyleSetCallback func(previousStyle *Style)
-
-// WidgetSignalStyleUpdatedCallback is a callback function for a 'style-updated' signal emitted from a Widget.
-type WidgetSignalStyleUpdatedCallback func()
 
 // Unsupported signal : unsupported parameter object : no type generator for Gdk.Event,
 

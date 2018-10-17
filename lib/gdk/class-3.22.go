@@ -14,28 +14,28 @@ import (
 // #include <stdlib.h>
 /*
 
-	void Monitor_invalidateHandler();
+	void Device_toolChangedHandler();
 
-	static gulong Monitor_signal_connect_invalidate(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "invalidate", Monitor_invalidateHandler, data);
+	static gulong Device_signal_connect_tool_changed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "tool-changed", Device_toolChangedHandler, data);
 	}
 
 */
 /*
 
-	void Seat_deviceAddedHandler();
+	void Display_monitorAddedHandler();
 
-	static gulong Seat_signal_connect_device_added(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "device-added", Seat_deviceAddedHandler, data);
+	static gulong Display_signal_connect_monitor_added(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "monitor-added", Display_monitorAddedHandler, data);
 	}
 
 */
 /*
 
-	void Seat_deviceRemovedHandler();
+	void Display_monitorRemovedHandler();
 
-	static gulong Seat_signal_connect_device_removed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "device-removed", Seat_deviceRemovedHandler, data);
+	static gulong Display_signal_connect_monitor_removed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "monitor-removed", Display_monitorRemovedHandler, data);
 	}
 
 */
@@ -57,7 +57,19 @@ import (
 	}
 
 */
+/*
+
+	void Window_movedToRectHandler();
+
+	static gulong Window_signal_connect_moved_to_rect(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "moved-to-rect", Window_movedToRectHandler, data);
+	}
+
+*/
 import "C"
+
+// DeviceSignalToolChangedCallback is a callback function for a 'tool-changed' signal emitted from a Device.
+type DeviceSignalToolChangedCallback func(tool *DeviceTool)
 
 // GetAxes is a wrapper around the C function gdk_device_get_axes.
 func (recv *Device) GetAxes() AxisFlags {
@@ -122,6 +134,12 @@ func (recv *DeviceTool) GetToolType() DeviceToolType {
 
 	return retGo
 }
+
+// DisplaySignalMonitorAddedCallback is a callback function for a 'monitor-added' signal emitted from a Display.
+type DisplaySignalMonitorAddedCallback func(monitor *Monitor)
+
+// DisplaySignalMonitorRemovedCallback is a callback function for a 'monitor-removed' signal emitted from a Display.
+type DisplaySignalMonitorRemovedCallback func(monitor *Monitor)
 
 // GetMonitor is a wrapper around the C function gdk_display_get_monitor.
 func (recv *Display) GetMonitor(monitorNum int32) *Monitor {
@@ -284,9 +302,6 @@ func CastToMonitor(object *gobject.Object) *Monitor {
 	return MonitorNewFromC(object.ToC())
 }
 
-// MonitorSignalInvalidateCallback is a callback function for a 'invalidate' signal emitted from a Monitor.
-type MonitorSignalInvalidateCallback func()
-
 // GetDisplay is a wrapper around the C function gdk_monitor_get_display.
 func (recv *Monitor) GetDisplay() *Display {
 	retC := C.gdk_monitor_get_display((*C.GdkMonitor)(recv.native))
@@ -396,12 +411,6 @@ func CastToSeat(object *gobject.Object) *Seat {
 	return SeatNewFromC(object.ToC())
 }
 
-// SeatSignalDeviceAddedCallback is a callback function for a 'device-added' signal emitted from a Seat.
-type SeatSignalDeviceAddedCallback func(device *Device)
-
-// SeatSignalDeviceRemovedCallback is a callback function for a 'device-removed' signal emitted from a Seat.
-type SeatSignalDeviceRemovedCallback func(device *Device)
-
 // SeatSignalToolAddedCallback is a callback function for a 'tool-added' signal emitted from a Seat.
 type SeatSignalToolAddedCallback func(tool *DeviceTool)
 
@@ -415,6 +424,9 @@ func (recv *Seat) GetDisplay() *Display {
 
 	return retGo
 }
+
+// WindowSignalMovedToRectCallback is a callback function for a 'moved-to-rect' signal emitted from a Window.
+type WindowSignalMovedToRectCallback func(flippedRect uintptr, finalRect uintptr, flippedX bool, flippedY bool)
 
 // BeginDrawFrame is a wrapper around the C function gdk_window_begin_draw_frame.
 func (recv *Window) BeginDrawFrame(region *cairo.Region) *DrawingContext {

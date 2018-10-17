@@ -13,6 +13,33 @@ import (
 // #include <gtk/gtk.h>
 // #include <gtk/gtkx.h>
 // #include <stdlib.h>
+/*
+
+	void Application_windowAddedHandler();
+
+	static gulong Application_signal_connect_window_added(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "window-added", Application_windowAddedHandler, data);
+	}
+
+*/
+/*
+
+	void Application_windowRemovedHandler();
+
+	static gulong Application_signal_connect_window_removed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "window-removed", Application_windowRemovedHandler, data);
+	}
+
+*/
+/*
+
+	void MenuShell_insertHandler();
+
+	static gulong MenuShell_signal_connect_insert(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "insert", MenuShell_insertHandler, data);
+	}
+
+*/
 import "C"
 
 // GetMinimumIncrement is a wrapper around the C function gtk_adjustment_get_minimum_increment.
@@ -42,6 +69,18 @@ func (recv *AppChooserButton) SetShowDefaultItem(setting bool) {
 }
 
 // Unsupported : gtk_app_chooser_dialog_new : unsupported parameter file : no type generator for Gio.File, GFile*
+
+// Unsupported signal : unsupported parameter application : no type generator for Gio.AppInfo,
+
+// Unsupported signal : unsupported parameter application : no type generator for Gio.AppInfo,
+
+// Unsupported signal : unsupported parameter application : no type generator for Gio.AppInfo,
+
+// ApplicationSignalWindowAddedCallback is a callback function for a 'window-added' signal emitted from a Application.
+type ApplicationSignalWindowAddedCallback func(window *Window)
+
+// ApplicationSignalWindowRemovedCallback is a callback function for a 'window-removed' signal emitted from a Application.
+type ApplicationSignalWindowRemovedCallback func(window *Window)
 
 // RemovePage is a wrapper around the C function gtk_assistant_remove_page.
 func (recv *Assistant) RemovePage(pageNum int32) {
@@ -75,6 +114,14 @@ func (recv *ButtonBox) SetChildNonHomogeneous(child *Widget, nonHomogeneous bool
 
 	return
 }
+
+// Unsupported signal : unsupported parameter editable : no type generator for CellEditable,
+
+// Unsupported signal : unsupported parameter model : no type generator for TreeModel,
+
+// Unsupported signal : unsupported parameter editable : no type generator for CellEditable,
+
+// Unsupported signal : unsupported parameter editable : no type generator for CellEditable,
 
 // Unsupported : gtk_combo_box_new_with_model : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
 
@@ -120,6 +167,10 @@ func (recv *Entry) SetPlaceholderText(text string) {
 
 	return
 }
+
+// Unsupported signal : unsupported parameter model : no type generator for TreeModel,
+
+// Unsupported signal : unsupported parameter model : no type generator for TreeModel,
 
 // Unsupported : EntryIconAccessible : no CType
 
@@ -250,9 +301,14 @@ func (recv *LockButton) SetPermission(permission *gio.Permission) {
 	return
 }
 
+// MenuShellSignalInsertCallback is a callback function for a 'insert' signal emitted from a MenuShell.
+type MenuShellSignalInsertCallback func(child *Widget, position int32)
+
 // Unsupported : gtk_message_dialog_new : unsupported parameter ... : varargs
 
 // Unsupported : gtk_message_dialog_new_with_markup : unsupported parameter ... : varargs
+
+// Unsupported signal : unsupported parameter allocation : Blacklisted record : GdkRectangle
 
 // OverlayNew is a wrapper around the C function gtk_overlay_new.
 func OverlayNew() *Overlay {
@@ -275,6 +331,16 @@ func (recv *Overlay) AddOverlay(widget *Widget) {
 
 // Unsupported : gtk_page_setup_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
 
+// Unsupported signal : unsupported parameter dest_file : no type generator for Gio.File,
+
+// Unsupported signal : unsupported parameter dest_file : no type generator for Gio.File,
+
+// Unsupported signal : unsupported parameter location : no type generator for Gio.File,
+
+// Unsupported signal : unsupported parameter selected_item : no type generator for Gio.File,
+
+// Unsupported signal : unsupported parameter preview : no type generator for PrintOperationPreview,
+
 // Unsupported : gtk_print_settings_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
 
 // Unsupported : gtk_recent_chooser_dialog_new : unsupported parameter ... : varargs
@@ -284,6 +350,8 @@ func (recv *Overlay) AddOverlay(widget *Widget) {
 // Unsupported : gtk_scale_button_new : unsupported parameter size : no type generator for gint, GtkIconSize
 
 // Unsupported : gtk_status_icon_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon, GIcon*
+
+// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
 
 // Unsupported : gtk_tree_store_new : unsupported parameter ... : varargs
 
@@ -300,6 +368,20 @@ func (recv *TreeViewColumn) GetXOffset() int32 {
 
 	return retGo
 }
+
+// Unsupported signal : unsupported parameter child_property : Blacklisted record : GParamSpec
+
+// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
+
+// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
+
+// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
+
+// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
+
+// Unsupported signal : unsupported parameter allocation : Blacklisted record : GdkRectangle
+
+// Unsupported signal : unsupported parameter object : no type generator for Gdk.Event,
 
 // Unsupported : gtk_widget_new : unsupported parameter type : no type generator for GType, GType
 

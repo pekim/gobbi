@@ -12,6 +12,15 @@ import (
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <gdk/gdk.h>
 // #include <stdlib.h>
+/*
+
+	void Screen_compositedChangedHandler();
+
+	static gulong Screen_signal_connect_composited_changed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "composited-changed", Screen_compositedChangedHandler, data);
+	}
+
+*/
 import "C"
 
 // SupportsInputShapes is a wrapper around the C function gdk_display_supports_input_shapes.
@@ -29,6 +38,9 @@ func (recv *Display) SupportsShapes() bool {
 
 	return retGo
 }
+
+// ScreenSignalCompositedChangedCallback is a callback function for a 'composited-changed' signal emitted from a Screen.
+type ScreenSignalCompositedChangedCallback func()
 
 // GetActiveWindow is a wrapper around the C function gdk_screen_get_active_window.
 func (recv *Screen) GetActiveWindow() *Window {

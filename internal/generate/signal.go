@@ -47,11 +47,19 @@ func (s *Signal) init(ns *Namespace, record *Record) {
 		makeExportedGoName(s.Name))
 }
 
+func (s *Signal) version() string {
+	return s.Version
+}
+
 func (s *Signal) generate(g *jen.Group, version *Version) {
 	supported, reason := s.Parameters.allSupported()
 	if !supported {
 		g.Commentf("Unsupported signal : %s", reason)
 		g.Line()
+		return
+	}
+
+	if !supportedByVersion(s, version) {
 		return
 	}
 

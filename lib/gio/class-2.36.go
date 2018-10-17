@@ -21,7 +21,23 @@ import (
 // #include <gio/gunixoutputstream.h>
 // #include <gio/gunixsocketaddress.h>
 // #include <stdlib.h>
+/*
+
+	void AppLaunchContext_launchFailedHandler();
+
+	static gulong AppLaunchContext_signal_connect_launch_failed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "launch-failed", AppLaunchContext_launchFailedHandler, data);
+	}
+
+*/
 import "C"
+
+// AppLaunchContextSignalLaunchFailedCallback is a callback function for a 'launch-failed' signal emitted from a AppLaunchContext.
+type AppLaunchContextSignalLaunchFailedCallback func(startupNotifyId string)
+
+// Unsupported signal : unsupported parameter info : no type generator for AppInfo,
+
+// Unsupported signal : unsupported parameter files : no param type
 
 // Unsupported : g_application_command_line_create_file_for_arg : no return generator
 
@@ -37,6 +53,10 @@ import "C"
 
 // Unsupported : g_dbus_message_new_from_blob : unsupported parameter blob : no param type
 
+// Unsupported signal : unsupported parameter changed_properties : Blacklisted record : GVariant
+
+// Unsupported signal : unsupported parameter parameters : Blacklisted record : GVariant
+
 // Unsupported : g_dbus_object_manager_client_new_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
 
 // Unsupported : g_dbus_object_manager_client_new_for_bus_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
@@ -44,6 +64,10 @@ import "C"
 // Unsupported : g_dbus_object_manager_client_new_for_bus_sync : unsupported parameter get_proxy_type_func : no type generator for DBusProxyTypeFunc, GDBusProxyTypeFunc
 
 // Unsupported : g_dbus_object_manager_client_new_sync : unsupported parameter get_proxy_type_func : no type generator for DBusProxyTypeFunc, GDBusProxyTypeFunc
+
+// Unsupported signal : unsupported parameter changed_properties : Blacklisted record : GVariant
+
+// Unsupported signal : unsupported parameter parameters : Blacklisted record : GVariant
 
 // Unsupported : g_dbus_proxy_new_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
 
@@ -101,6 +125,8 @@ func (recv *FileInfo) GetDeletionDate() *glib.DateTime {
 	return retGo
 }
 
+// Unsupported signal : unsupported parameter file : no type generator for File,
+
 // Unsupported : g_inet_address_new_from_bytes : unsupported parameter bytes : no param type
 
 // Unsupported : g_list_store_new : unsupported parameter item_type : no type generator for GType, GType
@@ -116,6 +142,16 @@ func MemoryOutputStreamNewResizable() *MemoryOutputStream {
 
 	return retGo
 }
+
+// Unsupported signal : unsupported parameter choices : no param type
+
+// Unsupported signal : unsupported parameter processes : no param type
+
+// Unsupported signal : unsupported parameter keys : no param type
+
+// Unsupported signal : unsupported parameter parameter : Blacklisted record : GVariant
+
+// Unsupported signal : unsupported parameter value : Blacklisted record : GVariant
 
 // Unsupported : g_simple_action_new : unsupported parameter parameter_type : Blacklisted record : GVariantType
 
@@ -197,6 +233,8 @@ func (recv *Socket) SetOption(level int32, optname int32, value int32) (bool, er
 
 	return retGo, goThrowableError
 }
+
+// Unsupported signal : unsupported parameter connectable : no type generator for SocketConnectable,
 
 // Unsupported : g_socket_client_get_proxy_resolver : no return generator
 
@@ -419,3 +457,27 @@ func (recv *Task) SetSourceTag(sourceTag uintptr) {
 // Unsupported : g_unix_socket_address_new_abstract : unsupported parameter path : no param type
 
 // Unsupported : g_unix_socket_address_new_with_type : unsupported parameter path : no param type
+
+// Unsupported signal : unsupported parameter drive : no type generator for Drive,
+
+// Unsupported signal : unsupported parameter drive : no type generator for Drive,
+
+// Unsupported signal : unsupported parameter drive : no type generator for Drive,
+
+// Unsupported signal : unsupported parameter drive : no type generator for Drive,
+
+// Unsupported signal : unsupported parameter drive : no type generator for Drive,
+
+// Unsupported signal : unsupported parameter mount : no type generator for Mount,
+
+// Unsupported signal : unsupported parameter mount : no type generator for Mount,
+
+// Unsupported signal : unsupported parameter mount : no type generator for Mount,
+
+// Unsupported signal : unsupported parameter mount : no type generator for Mount,
+
+// Unsupported signal : unsupported parameter volume : no type generator for Volume,
+
+// Unsupported signal : unsupported parameter volume : no type generator for Volume,
+
+// Unsupported signal : unsupported parameter volume : no type generator for Volume,

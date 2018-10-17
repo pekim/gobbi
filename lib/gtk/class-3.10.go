@@ -17,9 +17,69 @@ import (
 // #include <gtk/gtk.h>
 // #include <gtk/gtkx.h>
 // #include <stdlib.h>
+/*
+
+	void ListBox_rowActivatedHandler();
+
+	static gulong ListBox_signal_connect_row_activated(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "row-activated", ListBox_rowActivatedHandler, data);
+	}
+
+*/
+/*
+
+	void ListBox_rowSelectedHandler();
+
+	static gulong ListBox_signal_connect_row_selected(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "row-selected", ListBox_rowSelectedHandler, data);
+	}
+
+*/
+/*
+
+	void ListBoxRow_activateHandler();
+
+	static gulong ListBoxRow_signal_connect_activate(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "activate", ListBoxRow_activateHandler, data);
+	}
+
+*/
+/*
+
+	void PlacesSidebar_dragActionAskHandler();
+
+	static gulong PlacesSidebar_signal_connect_drag_action_ask(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "drag-action-ask", PlacesSidebar_dragActionAskHandler, data);
+	}
+
+*/
+/*
+
+	void PlacesSidebar_showErrorMessageHandler();
+
+	static gulong PlacesSidebar_signal_connect_show_error_message(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "show-error-message", PlacesSidebar_showErrorMessageHandler, data);
+	}
+
+*/
+/*
+
+	void SearchEntry_searchChangedHandler();
+
+	static gulong SearchEntry_signal_connect_search_changed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "search-changed", SearchEntry_searchChangedHandler, data);
+	}
+
+*/
 import "C"
 
 // Unsupported : gtk_app_chooser_dialog_new : unsupported parameter file : no type generator for Gio.File, GFile*
+
+// Unsupported signal : unsupported parameter application : no type generator for Gio.AppInfo,
+
+// Unsupported signal : unsupported parameter application : no type generator for Gio.AppInfo,
+
+// Unsupported signal : unsupported parameter application : no type generator for Gio.AppInfo,
 
 // GetBaselinePosition is a wrapper around the C function gtk_box_get_baseline_position.
 func (recv *Box) GetBaselinePosition() BaselinePosition {
@@ -98,6 +158,14 @@ func (recv *Builder) SetApplication(application *Application) {
 
 // Unsupported : gtk_button_new_from_icon_name : unsupported parameter size : no type generator for gint, GtkIconSize
 
+// Unsupported signal : unsupported parameter editable : no type generator for CellEditable,
+
+// Unsupported signal : unsupported parameter model : no type generator for TreeModel,
+
+// Unsupported signal : unsupported parameter editable : no type generator for CellEditable,
+
+// Unsupported signal : unsupported parameter editable : no type generator for CellEditable,
+
 // Unsupported : gtk_combo_box_new_with_model : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
 
 // Unsupported : gtk_combo_box_new_with_model_and_entry : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
@@ -120,6 +188,10 @@ func (recv *Entry) SetTabs(tabs *pango.TabArray) {
 
 	return
 }
+
+// Unsupported signal : unsupported parameter model : no type generator for TreeModel,
+
+// Unsupported signal : unsupported parameter model : no type generator for TreeModel,
 
 // Unsupported : EntryIconAccessible : no CType
 
@@ -442,6 +514,12 @@ func (recv *Label) SetLines(lines int32) {
 	return
 }
 
+// ListBoxSignalRowActivatedCallback is a callback function for a 'row-activated' signal emitted from a ListBox.
+type ListBoxSignalRowActivatedCallback func(row *ListBoxRow)
+
+// ListBoxSignalRowSelectedCallback is a callback function for a 'row-selected' signal emitted from a ListBox.
+type ListBoxSignalRowSelectedCallback func(row *ListBoxRow)
+
 // ListBoxNew is a wrapper around the C function gtk_list_box_new.
 func ListBoxNew() *ListBox {
 	retC := C.gtk_list_box_new()
@@ -611,6 +689,9 @@ func (recv *ListBox) SetSelectionMode(mode SelectionMode) {
 
 // Unsupported : gtk_list_box_set_sort_func : unsupported parameter sort_func : no type generator for ListBoxSortFunc, GtkListBoxSortFunc
 
+// ListBoxRowSignalActivateCallback is a callback function for a 'activate' signal emitted from a ListBoxRow.
+type ListBoxRowSignalActivateCallback func()
+
 // ListBoxRowNew is a wrapper around the C function gtk_list_box_row_new.
 func ListBoxRowNew() *ListBoxRow {
 	retC := C.gtk_list_box_row_new()
@@ -659,9 +740,25 @@ func (recv *ListBoxRow) SetHeader(header *Widget) {
 
 // Unsupported : gtk_message_dialog_new_with_markup : unsupported parameter ... : varargs
 
+// Unsupported signal : unsupported parameter allocation : Blacklisted record : GdkRectangle
+
 // Unsupported : gtk_pad_controller_new : unsupported parameter group : no type generator for Gio.ActionGroup, GActionGroup*
 
 // Unsupported : gtk_page_setup_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
+
+// PlacesSidebarSignalDragActionAskCallback is a callback function for a 'drag-action-ask' signal emitted from a PlacesSidebar.
+type PlacesSidebarSignalDragActionAskCallback func(actions int32) int32
+
+// Unsupported signal : unsupported parameter dest_file : no type generator for Gio.File,
+
+// Unsupported signal : unsupported parameter dest_file : no type generator for Gio.File,
+
+// Unsupported signal : unsupported parameter location : no type generator for Gio.File,
+
+// Unsupported signal : unsupported parameter selected_item : no type generator for Gio.File,
+
+// PlacesSidebarSignalShowErrorMessageCallback is a callback function for a 'show-error-message' signal emitted from a PlacesSidebar.
+type PlacesSidebarSignalShowErrorMessageCallback func(primary string, secondary string)
 
 // PlacesSidebarNew is a wrapper around the C function gtk_places_sidebar_new.
 func PlacesSidebarNew() *PlacesSidebar {
@@ -733,6 +830,8 @@ func (recv *PlacesSidebar) SetShowDesktop(showDesktop bool) {
 
 	return
 }
+
+// Unsupported signal : unsupported parameter preview : no type generator for PrintOperationPreview,
 
 // Unsupported : gtk_print_settings_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
 
@@ -864,6 +963,9 @@ func (recv *SearchBar) SetShowCloseButton(visible bool) {
 
 	return
 }
+
+// SearchEntrySignalSearchChangedCallback is a callback function for a 'search-changed' signal emitted from a SearchEntry.
+type SearchEntrySignalSearchChangedCallback func()
 
 // StackNew is a wrapper around the C function gtk_stack_new.
 func StackNew() *Stack {
@@ -1043,6 +1145,8 @@ func (recv *StyleContext) SetScale(scale int32) {
 	return
 }
 
+// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
+
 // Unsupported : gtk_tree_store_new : unsupported parameter ... : varargs
 
 // Unsupported : gtk_tree_store_newv : unsupported parameter types : no param type
@@ -1050,6 +1154,20 @@ func (recv *StyleContext) SetScale(scale int32) {
 // Unsupported : gtk_tree_view_new_with_model : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
 
 // Unsupported : gtk_tree_view_column_new_with_attributes : unsupported parameter ... : varargs
+
+// Unsupported signal : unsupported parameter child_property : Blacklisted record : GParamSpec
+
+// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
+
+// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
+
+// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
+
+// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
+
+// Unsupported signal : unsupported parameter allocation : Blacklisted record : GdkRectangle
+
+// Unsupported signal : unsupported parameter object : no type generator for Gdk.Event,
 
 // Unsupported : gtk_widget_new : unsupported parameter type : no type generator for GType, GType
 

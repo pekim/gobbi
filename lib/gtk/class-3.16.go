@@ -42,11 +42,79 @@ import (
 	}
 
 */
+/*
+
+	void ScrolledWindow_edgeOvershotHandler();
+
+	static gulong ScrolledWindow_signal_connect_edge_overshot(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "edge-overshot", ScrolledWindow_edgeOvershotHandler, data);
+	}
+
+*/
+/*
+
+	void ScrolledWindow_edgeReachedHandler();
+
+	static gulong ScrolledWindow_signal_connect_edge_reached(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "edge-reached", ScrolledWindow_edgeReachedHandler, data);
+	}
+
+*/
+/*
+
+	void SearchEntry_nextMatchHandler();
+
+	static gulong SearchEntry_signal_connect_next_match(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "next-match", SearchEntry_nextMatchHandler, data);
+	}
+
+*/
+/*
+
+	void SearchEntry_previousMatchHandler();
+
+	static gulong SearchEntry_signal_connect_previous_match(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "previous-match", SearchEntry_previousMatchHandler, data);
+	}
+
+*/
+/*
+
+	void SearchEntry_stopSearchHandler();
+
+	static gulong SearchEntry_signal_connect_stop_search(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "stop-search", SearchEntry_stopSearchHandler, data);
+	}
+
+*/
+/*
+
+	void TextView_extendSelectionHandler();
+
+	static gulong TextView_signal_connect_extend_selection(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "extend-selection", TextView_extendSelectionHandler, data);
+	}
+
+*/
 import "C"
 
 // Unsupported : gtk_app_chooser_dialog_new : unsupported parameter file : no type generator for Gio.File, GFile*
 
+// Unsupported signal : unsupported parameter application : no type generator for Gio.AppInfo,
+
+// Unsupported signal : unsupported parameter application : no type generator for Gio.AppInfo,
+
+// Unsupported signal : unsupported parameter application : no type generator for Gio.AppInfo,
+
 // Unsupported : gtk_button_new_from_icon_name : unsupported parameter size : no type generator for gint, GtkIconSize
+
+// Unsupported signal : unsupported parameter editable : no type generator for CellEditable,
+
+// Unsupported signal : unsupported parameter model : no type generator for TreeModel,
+
+// Unsupported signal : unsupported parameter editable : no type generator for CellEditable,
+
+// Unsupported signal : unsupported parameter editable : no type generator for CellEditable,
 
 // Unsupported : gtk_combo_box_new_with_model : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
 
@@ -70,6 +138,10 @@ func (recv *Entry) GrabFocusWithoutSelecting() {
 
 	return
 }
+
+// Unsupported signal : unsupported parameter model : no type generator for TreeModel,
+
+// Unsupported signal : unsupported parameter model : no type generator for TreeModel,
 
 // Unsupported : EntryIconAccessible : no CType
 
@@ -354,6 +426,8 @@ func (recv *Notebook) DetachTab(child *Widget) {
 	return
 }
 
+// Unsupported signal : unsupported parameter allocation : Blacklisted record : GdkRectangle
+
 // Unsupported : gtk_pad_controller_new : unsupported parameter group : no type generator for Gio.ActionGroup, GActionGroup*
 
 // Unsupported : gtk_page_setup_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
@@ -375,6 +449,14 @@ func (recv *Paned) SetWideHandle(wide bool) {
 
 	return
 }
+
+// Unsupported signal : unsupported parameter dest_file : no type generator for Gio.File,
+
+// Unsupported signal : unsupported parameter dest_file : no type generator for Gio.File,
+
+// Unsupported signal : unsupported parameter location : no type generator for Gio.File,
+
+// Unsupported signal : unsupported parameter selected_item : no type generator for Gio.File,
 
 // GetTransitionsEnabled is a wrapper around the C function gtk_popover_get_transitions_enabled.
 func (recv *Popover) GetTransitionsEnabled() bool {
@@ -412,6 +494,8 @@ func (recv *PopoverMenu) OpenSubmenu(name string) {
 	return
 }
 
+// Unsupported signal : unsupported parameter preview : no type generator for PrintOperationPreview,
+
 // Unsupported : gtk_print_settings_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
 
 // Unsupported : gtk_recent_chooser_dialog_new : unsupported parameter ... : varargs
@@ -419,6 +503,12 @@ func (recv *PopoverMenu) OpenSubmenu(name string) {
 // Unsupported : gtk_recent_chooser_dialog_new_for_manager : unsupported parameter ... : varargs
 
 // Unsupported : gtk_scale_button_new : unsupported parameter size : no type generator for gint, GtkIconSize
+
+// ScrolledWindowSignalEdgeOvershotCallback is a callback function for a 'edge-overshot' signal emitted from a ScrolledWindow.
+type ScrolledWindowSignalEdgeOvershotCallback func(pos PositionType)
+
+// ScrolledWindowSignalEdgeReachedCallback is a callback function for a 'edge-reached' signal emitted from a ScrolledWindow.
+type ScrolledWindowSignalEdgeReachedCallback func(pos PositionType)
 
 // GetOverlayScrolling is a wrapper around the C function gtk_scrolled_window_get_overlay_scrolling.
 func (recv *ScrolledWindow) GetOverlayScrolling() bool {
@@ -437,6 +527,15 @@ func (recv *ScrolledWindow) SetOverlayScrolling(overlayScrolling bool) {
 
 	return
 }
+
+// SearchEntrySignalNextMatchCallback is a callback function for a 'next-match' signal emitted from a SearchEntry.
+type SearchEntrySignalNextMatchCallback func()
+
+// SearchEntrySignalPreviousMatchCallback is a callback function for a 'previous-match' signal emitted from a SearchEntry.
+type SearchEntrySignalPreviousMatchCallback func()
+
+// SearchEntrySignalStopSearchCallback is a callback function for a 'stop-search' signal emitted from a SearchEntry.
+type SearchEntrySignalStopSearchCallback func()
 
 // Unsupported : gtk_search_entry_handle_event : unsupported parameter event : no type generator for Gdk.Event, GdkEvent*
 
@@ -517,6 +616,11 @@ func (recv *TextBuffer) InsertMarkup(iter *TextIter, markup string, len int32) {
 	return
 }
 
+// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
+
+// TextViewSignalExtendSelectionCallback is a callback function for a 'extend-selection' signal emitted from a TextView.
+type TextViewSignalExtendSelectionCallback func(granularity TextExtendSelection, location *TextIter, start *TextIter, end *TextIter) bool
+
 // GetMonospace is a wrapper around the C function gtk_text_view_get_monospace.
 func (recv *TextView) GetMonospace() bool {
 	retC := C.gtk_text_view_get_monospace((*C.GtkTextView)(recv.native))
@@ -542,6 +646,20 @@ func (recv *TextView) SetMonospace(monospace bool) {
 // Unsupported : gtk_tree_view_new_with_model : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
 
 // Unsupported : gtk_tree_view_column_new_with_attributes : unsupported parameter ... : varargs
+
+// Unsupported signal : unsupported parameter child_property : Blacklisted record : GParamSpec
+
+// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
+
+// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
+
+// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
+
+// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
+
+// Unsupported signal : unsupported parameter allocation : Blacklisted record : GdkRectangle
+
+// Unsupported signal : unsupported parameter object : no type generator for Gdk.Event,
 
 // Unsupported : gtk_widget_new : unsupported parameter type : no type generator for GType, GType
 

@@ -15,9 +15,24 @@ import (
 // #include <gtk/gtk.h>
 // #include <gtk/gtkx.h>
 // #include <stdlib.h>
+/*
+
+	void PlacesSidebar_showOtherLocationsHandler();
+
+	static gulong PlacesSidebar_signal_connect_show_other_locations(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "show-other-locations", PlacesSidebar_showOtherLocationsHandler, data);
+	}
+
+*/
 import "C"
 
 // Unsupported : gtk_app_chooser_dialog_new : unsupported parameter file : no type generator for Gio.File, GFile*
+
+// Unsupported signal : unsupported parameter application : no type generator for Gio.AppInfo,
+
+// Unsupported signal : unsupported parameter application : no type generator for Gio.AppInfo,
+
+// Unsupported signal : unsupported parameter application : no type generator for Gio.AppInfo,
 
 // GetPageHasPadding is a wrapper around the C function gtk_assistant_get_page_has_padding.
 func (recv *Assistant) GetPageHasPadding(page *Widget) bool {
@@ -43,6 +58,14 @@ func (recv *Assistant) SetPageHasPadding(page *Widget, hasPadding bool) {
 
 // Unsupported : gtk_button_new_from_icon_name : unsupported parameter size : no type generator for gint, GtkIconSize
 
+// Unsupported signal : unsupported parameter editable : no type generator for CellEditable,
+
+// Unsupported signal : unsupported parameter model : no type generator for TreeModel,
+
+// Unsupported signal : unsupported parameter editable : no type generator for CellEditable,
+
+// Unsupported signal : unsupported parameter editable : no type generator for CellEditable,
+
 // Unsupported : gtk_combo_box_new_with_model : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
 
 // Unsupported : gtk_combo_box_new_with_model_and_entry : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
@@ -50,6 +73,10 @@ func (recv *Assistant) SetPageHasPadding(page *Widget, hasPadding bool) {
 // Unsupported : gtk_container_child_notify_by_pspec : unsupported parameter pspec : Blacklisted record : GParamSpec
 
 // Unsupported : gtk_dialog_new_with_buttons : unsupported parameter ... : varargs
+
+// Unsupported signal : unsupported parameter model : no type generator for TreeModel,
+
+// Unsupported signal : unsupported parameter model : no type generator for TreeModel,
 
 // Unsupported : EntryIconAccessible : no CType
 
@@ -78,6 +105,8 @@ func (recv *Assistant) SetPageHasPadding(page *Widget, hasPadding bool) {
 // Unsupported : gtk_message_dialog_new : unsupported parameter ... : varargs
 
 // Unsupported : gtk_message_dialog_new_with_markup : unsupported parameter ... : varargs
+
+// Unsupported signal : unsupported parameter allocation : Blacklisted record : GdkRectangle
 
 // GetOverlayPassThrough is a wrapper around the C function gtk_overlay_get_overlay_pass_through.
 func (recv *Overlay) GetOverlayPassThrough(widget *Widget) bool {
@@ -115,6 +144,17 @@ func (recv *Overlay) SetOverlayPassThrough(widget *Widget, passThrough bool) {
 // Unsupported : gtk_pad_controller_new : unsupported parameter group : no type generator for Gio.ActionGroup, GActionGroup*
 
 // Unsupported : gtk_page_setup_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
+
+// Unsupported signal : unsupported parameter dest_file : no type generator for Gio.File,
+
+// Unsupported signal : unsupported parameter dest_file : no type generator for Gio.File,
+
+// Unsupported signal : unsupported parameter location : no type generator for Gio.File,
+
+// Unsupported signal : unsupported parameter selected_item : no type generator for Gio.File,
+
+// PlacesSidebarSignalShowOtherLocationsCallback is a callback function for a 'show-other-locations' signal emitted from a PlacesSidebar.
+type PlacesSidebarSignalShowOtherLocationsCallback func()
 
 // GetShowOtherLocations is a wrapper around the C function gtk_places_sidebar_get_show_other_locations.
 func (recv *PlacesSidebar) GetShowOtherLocations() bool {
@@ -199,6 +239,8 @@ func (recv *Popover) SetDefaultWidget(widget *Widget) {
 	return
 }
 
+// Unsupported signal : unsupported parameter preview : no type generator for PrintOperationPreview,
+
 // Unsupported : gtk_print_settings_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
 
 // JoinGroup is a wrapper around the C function gtk_radio_menu_item_join_group.
@@ -235,6 +277,8 @@ func (recv *Stack) SetInterpolateSize(interpolateSize bool) {
 }
 
 // Unsupported : gtk_status_icon_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon, GIcon*
+
+// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
 
 // GetBottomMargin is a wrapper around the C function gtk_text_view_get_bottom_margin.
 func (recv *TextView) GetBottomMargin() int32 {
@@ -277,6 +321,20 @@ func (recv *TextView) SetTopMargin(topMargin int32) {
 // Unsupported : gtk_tree_view_new_with_model : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
 
 // Unsupported : gtk_tree_view_column_new_with_attributes : unsupported parameter ... : varargs
+
+// Unsupported signal : unsupported parameter child_property : Blacklisted record : GParamSpec
+
+// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
+
+// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
+
+// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
+
+// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
+
+// Unsupported signal : unsupported parameter allocation : Blacklisted record : GdkRectangle
+
+// Unsupported signal : unsupported parameter object : no type generator for Gdk.Event,
 
 // Unsupported : gtk_widget_new : unsupported parameter type : no type generator for GType, GType
 

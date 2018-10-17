@@ -5,6 +5,7 @@ package gtk
 
 import (
 	cairo "github.com/pekim/gobbi/lib/cairo"
+	gdk "github.com/pekim/gobbi/lib/gdk"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	"unsafe"
 )
@@ -14,6 +15,15 @@ import (
 // #include <gtk/gtk.h>
 // #include <gtk/gtkx.h>
 // #include <stdlib.h>
+/*
+
+	void Widget_grabBrokenEventHandler();
+
+	static gulong Widget_signal_connect_grab_broken_event(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "grab-broken-event", Widget_grabBrokenEventHandler, data);
+	}
+
+*/
 import "C"
 
 // GetWrapLicense is a wrapper around the C function gtk_about_dialog_get_wrap_license.
@@ -44,7 +54,21 @@ func (recv *Action) GetAccelClosure() *gobject.Closure {
 
 // Unsupported : gtk_app_chooser_dialog_new : unsupported parameter file : no type generator for Gio.File, GFile*
 
+// Unsupported signal : unsupported parameter application : no type generator for Gio.AppInfo,
+
+// Unsupported signal : unsupported parameter application : no type generator for Gio.AppInfo,
+
+// Unsupported signal : unsupported parameter application : no type generator for Gio.AppInfo,
+
 // Unsupported : gtk_button_new_from_icon_name : unsupported parameter size : no type generator for gint, GtkIconSize
+
+// Unsupported signal : unsupported parameter editable : no type generator for CellEditable,
+
+// Unsupported signal : unsupported parameter model : no type generator for TreeModel,
+
+// Unsupported signal : unsupported parameter editable : no type generator for CellEditable,
+
+// Unsupported signal : unsupported parameter editable : no type generator for CellEditable,
 
 // Unsupported : gtk_combo_box_new_with_model : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
 
@@ -61,6 +85,10 @@ func (recv *Dialog) GetResponseForWidget(widget *Widget) int32 {
 
 	return retGo
 }
+
+// Unsupported signal : unsupported parameter model : no type generator for TreeModel,
+
+// Unsupported signal : unsupported parameter model : no type generator for TreeModel,
 
 // GetPopupSetWidth is a wrapper around the C function gtk_entry_completion_get_popup_set_width.
 func (recv *EntryCompletion) GetPopupSetWidth() bool {
@@ -280,9 +308,21 @@ func (recv *MenuShell) SetTakeFocus(takeFocus bool) {
 
 // Unsupported : gtk_message_dialog_new_with_markup : unsupported parameter ... : varargs
 
+// Unsupported signal : unsupported parameter allocation : Blacklisted record : GdkRectangle
+
 // Unsupported : gtk_pad_controller_new : unsupported parameter group : no type generator for Gio.ActionGroup, GActionGroup*
 
 // Unsupported : gtk_page_setup_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
+
+// Unsupported signal : unsupported parameter dest_file : no type generator for Gio.File,
+
+// Unsupported signal : unsupported parameter dest_file : no type generator for Gio.File,
+
+// Unsupported signal : unsupported parameter location : no type generator for Gio.File,
+
+// Unsupported signal : unsupported parameter selected_item : no type generator for Gio.File,
+
+// Unsupported signal : unsupported parameter preview : no type generator for PrintOperationPreview,
 
 // Unsupported : gtk_print_settings_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
 
@@ -328,6 +368,8 @@ func (recv *SizeGroup) SetIgnoreHidden(ignoreHidden bool) {
 
 // Unsupported : gtk_status_icon_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon, GIcon*
 
+// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
+
 // GetIconName is a wrapper around the C function gtk_tool_button_get_icon_name.
 func (recv *ToolButton) GetIconName() string {
 	retC := C.gtk_tool_button_get_icon_name((*C.GtkToolButton)(recv.native))
@@ -362,6 +404,23 @@ func (recv *TreeViewColumn) QueueResize() {
 
 	return
 }
+
+// Unsupported signal : unsupported parameter child_property : Blacklisted record : GParamSpec
+
+// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
+
+// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
+
+// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
+
+// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
+
+// WidgetSignalGrabBrokenEventCallback is a callback function for a 'grab-broken-event' signal emitted from a Widget.
+type WidgetSignalGrabBrokenEventCallback func(event *gdk.EventGrabBroken) bool
+
+// Unsupported signal : unsupported parameter allocation : Blacklisted record : GdkRectangle
+
+// Unsupported signal : unsupported parameter object : no type generator for Gdk.Event,
 
 // Unsupported : gtk_widget_new : unsupported parameter type : no type generator for GType, GType
 

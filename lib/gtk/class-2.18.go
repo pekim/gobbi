@@ -13,11 +13,88 @@ import (
 // #include <gtk/gtk.h>
 // #include <gtk/gtkx.h>
 // #include <stdlib.h>
+/*
+
+	void EntryBuffer_deletedTextHandler();
+
+	static gulong EntryBuffer_signal_connect_deleted_text(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "deleted-text", EntryBuffer_deletedTextHandler, data);
+	}
+
+*/
+/*
+
+	void EntryBuffer_insertedTextHandler();
+
+	static gulong EntryBuffer_signal_connect_inserted_text(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "inserted-text", EntryBuffer_insertedTextHandler, data);
+	}
+
+*/
+/*
+
+	void InfoBar_closeHandler();
+
+	static gulong InfoBar_signal_connect_close(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "close", InfoBar_closeHandler, data);
+	}
+
+*/
+/*
+
+	void InfoBar_responseHandler();
+
+	static gulong InfoBar_signal_connect_response(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "response", InfoBar_responseHandler, data);
+	}
+
+*/
+/*
+
+	void Label_activateCurrentLinkHandler();
+
+	static gulong Label_signal_connect_activate_current_link(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "activate-current-link", Label_activateCurrentLinkHandler, data);
+	}
+
+*/
+/*
+
+	void Label_activateLinkHandler();
+
+	static gulong Label_signal_connect_activate_link(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "activate-link", Label_activateLinkHandler, data);
+	}
+
+*/
+/*
+
+	void PrintOperation_updateCustomWidgetHandler();
+
+	static gulong PrintOperation_signal_connect_update_custom_widget(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "update-custom-widget", PrintOperation_updateCustomWidgetHandler, data);
+	}
+
+*/
 import "C"
 
 // Unsupported : gtk_app_chooser_dialog_new : unsupported parameter file : no type generator for Gio.File, GFile*
 
+// Unsupported signal : unsupported parameter application : no type generator for Gio.AppInfo,
+
+// Unsupported signal : unsupported parameter application : no type generator for Gio.AppInfo,
+
+// Unsupported signal : unsupported parameter application : no type generator for Gio.AppInfo,
+
 // Unsupported : gtk_button_new_from_icon_name : unsupported parameter size : no type generator for gint, GtkIconSize
+
+// Unsupported signal : unsupported parameter editable : no type generator for CellEditable,
+
+// Unsupported signal : unsupported parameter model : no type generator for TreeModel,
+
+// Unsupported signal : unsupported parameter editable : no type generator for CellEditable,
+
+// Unsupported signal : unsupported parameter editable : no type generator for CellEditable,
 
 // GetAlignment is a wrapper around the C function gtk_cell_renderer_get_alignment.
 func (recv *CellRenderer) GetAlignment() (float32, float32) {
@@ -158,6 +235,12 @@ func (recv *Entry) SetBuffer(buffer *EntryBuffer) {
 	return
 }
 
+// EntryBufferSignalDeletedTextCallback is a callback function for a 'deleted-text' signal emitted from a EntryBuffer.
+type EntryBufferSignalDeletedTextCallback func(position uint32, nChars uint32)
+
+// EntryBufferSignalInsertedTextCallback is a callback function for a 'inserted-text' signal emitted from a EntryBuffer.
+type EntryBufferSignalInsertedTextCallback func(position uint32, chars string, nChars uint32)
+
 // EntryBufferNew is a wrapper around the C function gtk_entry_buffer_new.
 func EntryBufferNew(initialChars string, nInitialChars int32) *EntryBuffer {
 	c_initial_chars := C.CString(initialChars)
@@ -276,6 +359,10 @@ func (recv *EntryBuffer) SetText(chars string, nChars int32) {
 	return
 }
 
+// Unsupported signal : unsupported parameter model : no type generator for TreeModel,
+
+// Unsupported signal : unsupported parameter model : no type generator for TreeModel,
+
 // Unsupported : EntryIconAccessible : no CType
 
 // Unsupported : gtk_file_chooser_dialog_new : unsupported parameter ... : varargs
@@ -308,6 +395,12 @@ func (recv *IconView) SetItemPadding(itemPadding int32) {
 // Unsupported : gtk_image_new_from_icon_set : unsupported parameter size : no type generator for gint, GtkIconSize
 
 // Unsupported : gtk_image_new_from_stock : unsupported parameter size : no type generator for gint, GtkIconSize
+
+// InfoBarSignalCloseCallback is a callback function for a 'close' signal emitted from a InfoBar.
+type InfoBarSignalCloseCallback func()
+
+// InfoBarSignalResponseCallback is a callback function for a 'response' signal emitted from a InfoBar.
+type InfoBarSignalResponseCallback func(responseId int32)
 
 // InfoBarNew is a wrapper around the C function gtk_info_bar_new.
 func InfoBarNew() *InfoBar {
@@ -408,6 +501,12 @@ func (recv *InfoBar) SetResponseSensitive(responseId int32, setting bool) {
 	return
 }
 
+// LabelSignalActivateCurrentLinkCallback is a callback function for a 'activate-current-link' signal emitted from a Label.
+type LabelSignalActivateCurrentLinkCallback func()
+
+// LabelSignalActivateLinkCallback is a callback function for a 'activate-link' signal emitted from a Label.
+type LabelSignalActivateLinkCallback func(uri string) bool
+
 // GetCurrentUri is a wrapper around the C function gtk_label_get_current_uri.
 func (recv *Label) GetCurrentUri() string {
 	retC := C.gtk_label_get_current_uri((*C.GtkLabel)(recv.native))
@@ -460,9 +559,24 @@ func (recv *Menu) SetReserveToggleSize(reserveToggleSize bool) {
 
 // Unsupported : gtk_message_dialog_new_with_markup : unsupported parameter ... : varargs
 
+// Unsupported signal : unsupported parameter allocation : Blacklisted record : GdkRectangle
+
 // Unsupported : gtk_pad_controller_new : unsupported parameter group : no type generator for Gio.ActionGroup, GActionGroup*
 
 // Unsupported : gtk_page_setup_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
+
+// Unsupported signal : unsupported parameter dest_file : no type generator for Gio.File,
+
+// Unsupported signal : unsupported parameter dest_file : no type generator for Gio.File,
+
+// Unsupported signal : unsupported parameter location : no type generator for Gio.File,
+
+// Unsupported signal : unsupported parameter selected_item : no type generator for Gio.File,
+
+// Unsupported signal : unsupported parameter preview : no type generator for PrintOperationPreview,
+
+// PrintOperationSignalUpdateCustomWidgetCallback is a callback function for a 'update-custom-widget' signal emitted from a PrintOperation.
+type PrintOperationSignalUpdateCustomWidgetCallback func(widget *Widget, setup *PageSetup, settings *PrintSettings)
 
 // GetEmbedPageSetup is a wrapper around the C function gtk_print_operation_get_embed_page_setup.
 func (recv *PrintOperation) GetEmbedPageSetup() bool {
@@ -572,6 +686,8 @@ func (recv *StatusIcon) SetTitle(title string) {
 	return
 }
 
+// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
+
 // Unsupported : gtk_tree_store_new : unsupported parameter ... : varargs
 
 // Unsupported : gtk_tree_store_newv : unsupported parameter types : no param type
@@ -579,6 +695,20 @@ func (recv *StatusIcon) SetTitle(title string) {
 // Unsupported : gtk_tree_view_new_with_model : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
 
 // Unsupported : gtk_tree_view_column_new_with_attributes : unsupported parameter ... : varargs
+
+// Unsupported signal : unsupported parameter child_property : Blacklisted record : GParamSpec
+
+// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
+
+// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
+
+// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
+
+// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
+
+// Unsupported signal : unsupported parameter allocation : Blacklisted record : GdkRectangle
+
+// Unsupported signal : unsupported parameter object : no type generator for Gdk.Event,
 
 // Unsupported : gtk_widget_new : unsupported parameter type : no type generator for GType, GType
 

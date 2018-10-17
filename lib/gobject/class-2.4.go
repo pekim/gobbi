@@ -10,6 +10,8 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
+// Unsupported signal : unsupported parameter pspec : Blacklisted record : GParamSpec
+
 // Unsupported : g_object_new : unsupported parameter object_type : no type generator for GType, GType
 
 // Unsupported : g_object_new_valist : unsupported parameter object_type : no type generator for GType, GType

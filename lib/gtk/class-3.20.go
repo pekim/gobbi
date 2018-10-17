@@ -4,6 +4,7 @@
 package gtk
 
 import (
+	gio "github.com/pekim/gobbi/lib/gio"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	"unsafe"
 )
@@ -24,34 +25,40 @@ import (
 */
 /*
 
-	void ShortcutsSection_changeCurrentPageHandler();
+	void PlacesSidebar_mountHandler();
 
-	static gulong ShortcutsSection_signal_connect_change_current_page(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "change-current-page", ShortcutsSection_changeCurrentPageHandler, data);
+	static gulong PlacesSidebar_signal_connect_mount(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "mount", PlacesSidebar_mountHandler, data);
 	}
 
 */
 /*
 
-	void ShortcutsWindow_closeHandler();
+	void PlacesSidebar_showOtherLocationsWithFlagsHandler();
 
-	static gulong ShortcutsWindow_signal_connect_close(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "close", ShortcutsWindow_closeHandler, data);
+	static gulong PlacesSidebar_signal_connect_show_other_locations_with_flags(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "show-other-locations-with-flags", PlacesSidebar_showOtherLocationsWithFlagsHandler, data);
 	}
 
 */
 /*
 
-	void ShortcutsWindow_searchHandler();
+	void PlacesSidebar_unmountHandler();
 
-	static gulong ShortcutsWindow_signal_connect_search(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "search", ShortcutsWindow_searchHandler, data);
+	static gulong PlacesSidebar_signal_connect_unmount(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "unmount", PlacesSidebar_unmountHandler, data);
 	}
 
 */
 import "C"
 
 // Unsupported : gtk_app_chooser_dialog_new : unsupported parameter file : no type generator for Gio.File, GFile*
+
+// Unsupported signal : unsupported parameter application : no type generator for Gio.AppInfo,
+
+// Unsupported signal : unsupported parameter application : no type generator for Gio.AppInfo,
+
+// Unsupported signal : unsupported parameter application : no type generator for Gio.AppInfo,
 
 // GetHelpOverlay is a wrapper around the C function gtk_application_window_get_help_overlay.
 func (recv *ApplicationWindow) GetHelpOverlay() *ShortcutsWindow {
@@ -72,11 +79,23 @@ func (recv *ApplicationWindow) SetHelpOverlay(helpOverlay *ShortcutsWindow) {
 
 // Unsupported : gtk_button_new_from_icon_name : unsupported parameter size : no type generator for gint, GtkIconSize
 
+// Unsupported signal : unsupported parameter editable : no type generator for CellEditable,
+
+// Unsupported signal : unsupported parameter model : no type generator for TreeModel,
+
+// Unsupported signal : unsupported parameter editable : no type generator for CellEditable,
+
+// Unsupported signal : unsupported parameter editable : no type generator for CellEditable,
+
 // Unsupported : gtk_combo_box_new_with_model : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
 
 // Unsupported : gtk_combo_box_new_with_model_and_entry : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
 
 // Unsupported : gtk_dialog_new_with_buttons : unsupported parameter ... : varargs
+
+// Unsupported signal : unsupported parameter model : no type generator for TreeModel,
+
+// Unsupported signal : unsupported parameter model : no type generator for TreeModel,
 
 // Unsupported : EntryIconAccessible : no CType
 
@@ -324,6 +343,8 @@ func (recv *NativeDialog) Show() {
 	return
 }
 
+// Unsupported signal : unsupported parameter allocation : Blacklisted record : GdkRectangle
+
 // PadController is a wrapper around the C record GtkPadController.
 type PadController struct {
 	native *C.GtkPadController
@@ -365,6 +386,23 @@ func CastToPadController(object *gobject.Object) *PadController {
 
 // Unsupported : gtk_page_setup_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
 
+// Unsupported signal : unsupported parameter dest_file : no type generator for Gio.File,
+
+// Unsupported signal : unsupported parameter dest_file : no type generator for Gio.File,
+
+// PlacesSidebarSignalMountCallback is a callback function for a 'mount' signal emitted from a PlacesSidebar.
+type PlacesSidebarSignalMountCallback func(mountOperation *gio.MountOperation)
+
+// Unsupported signal : unsupported parameter location : no type generator for Gio.File,
+
+// Unsupported signal : unsupported parameter selected_item : no type generator for Gio.File,
+
+// PlacesSidebarSignalShowOtherLocationsWithFlagsCallback is a callback function for a 'show-other-locations-with-flags' signal emitted from a PlacesSidebar.
+type PlacesSidebarSignalShowOtherLocationsWithFlagsCallback func(openFlags PlacesOpenFlags)
+
+// PlacesSidebarSignalUnmountCallback is a callback function for a 'unmount' signal emitted from a PlacesSidebar.
+type PlacesSidebarSignalUnmountCallback func(mountOperation *gio.MountOperation)
+
 // GetConstrainTo is a wrapper around the C function gtk_popover_get_constrain_to.
 func (recv *Popover) GetConstrainTo() PopoverConstraint {
 	retC := C.gtk_popover_get_constrain_to((*C.GtkPopover)(recv.native))
@@ -381,6 +419,8 @@ func (recv *Popover) SetConstrainTo(constraint PopoverConstraint) {
 
 	return
 }
+
+// Unsupported signal : unsupported parameter preview : no type generator for PrintOperationPreview,
 
 // Unsupported : gtk_print_settings_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
 
@@ -556,9 +596,6 @@ func CastToShortcutsSection(object *gobject.Object) *ShortcutsSection {
 	return ShortcutsSectionNewFromC(object.ToC())
 }
 
-// ShortcutsSectionSignalChangeCurrentPageCallback is a callback function for a 'change-current-page' signal emitted from a ShortcutsSection.
-type ShortcutsSectionSignalChangeCurrentPageCallback func(object int32) bool
-
 // ShortcutsShortcut is a wrapper around the C record GtkShortcutsShortcut.
 type ShortcutsShortcut struct {
 	native *C.GtkShortcutsShortcut
@@ -669,12 +706,6 @@ func CastToShortcutsWindow(object *gobject.Object) *ShortcutsWindow {
 	return ShortcutsWindowNewFromC(object.ToC())
 }
 
-// ShortcutsWindowSignalCloseCallback is a callback function for a 'close' signal emitted from a ShortcutsWindow.
-type ShortcutsWindowSignalCloseCallback func()
-
-// ShortcutsWindowSignalSearchCallback is a callback function for a 'search' signal emitted from a ShortcutsWindow.
-type ShortcutsWindowSignalSearchCallback func()
-
 // Unsupported : gtk_status_icon_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon, GIcon*
 
 // ToString is a wrapper around the C function gtk_style_context_to_string.
@@ -687,6 +718,8 @@ func (recv *StyleContext) ToString(flags StyleContextPrintFlags) string {
 
 	return retGo
 }
+
+// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
 
 // Changed is a wrapper around the C function gtk_text_tag_changed.
 func (recv *TextTag) Changed(sizeChanged bool) {
@@ -712,6 +745,20 @@ func (recv *TextView) ResetCursorBlink() {
 // Unsupported : gtk_tree_view_new_with_model : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
 
 // Unsupported : gtk_tree_view_column_new_with_attributes : unsupported parameter ... : varargs
+
+// Unsupported signal : unsupported parameter child_property : Blacklisted record : GParamSpec
+
+// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
+
+// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
+
+// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
+
+// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
+
+// Unsupported signal : unsupported parameter allocation : Blacklisted record : GdkRectangle
+
+// Unsupported signal : unsupported parameter object : no type generator for Gdk.Event,
 
 // Unsupported : gtk_widget_new : unsupported parameter type : no type generator for GType, GType
 

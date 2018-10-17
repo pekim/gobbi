@@ -8,7 +8,43 @@ import "unsafe"
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <gdk/gdk.h>
 // #include <stdlib.h>
+/*
+
+	void Window_fromEmbedderHandler();
+
+	static gulong Window_signal_connect_from_embedder(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "from-embedder", Window_fromEmbedderHandler, data);
+	}
+
+*/
+/*
+
+	void Window_pickEmbeddedChildHandler();
+
+	static gulong Window_signal_connect_pick_embedded_child(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "pick-embedded-child", Window_pickEmbeddedChildHandler, data);
+	}
+
+*/
+/*
+
+	void Window_toEmbedderHandler();
+
+	static gulong Window_signal_connect_to_embedder(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "to-embedder", Window_toEmbedderHandler, data);
+	}
+
+*/
 import "C"
+
+// WindowSignalFromEmbedderCallback is a callback function for a 'from-embedder' signal emitted from a Window.
+type WindowSignalFromEmbedderCallback func(embedderX float64, embedderY float64)
+
+// WindowSignalPickEmbeddedChildCallback is a callback function for a 'pick-embedded-child' signal emitted from a Window.
+type WindowSignalPickEmbeddedChildCallback func(x float64, y float64) Window
+
+// WindowSignalToEmbedderCallback is a callback function for a 'to-embedder' signal emitted from a Window.
+type WindowSignalToEmbedderCallback func(offscreenX float64, offscreenY float64)
 
 // EnsureNative is a wrapper around the C function gdk_window_ensure_native.
 func (recv *Window) EnsureNative() bool {

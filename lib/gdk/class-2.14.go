@@ -8,6 +8,15 @@ import "unsafe"
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <gdk/gdk.h>
 // #include <stdlib.h>
+/*
+
+	void Screen_monitorsChangedHandler();
+
+	static gulong Screen_signal_connect_monitors_changed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "monitors-changed", Screen_monitorsChangedHandler, data);
+	}
+
+*/
 import "C"
 
 // AppLaunchContextNew is a wrapper around the C function gdk_app_launch_context_new.
@@ -65,6 +74,9 @@ func (recv *AppLaunchContext) SetTimestamp(timestamp uint32) {
 
 	return
 }
+
+// ScreenSignalMonitorsChangedCallback is a callback function for a 'monitors-changed' signal emitted from a Screen.
+type ScreenSignalMonitorsChangedCallback func()
 
 // GetMonitorHeightMm is a wrapper around the C function gdk_screen_get_monitor_height_mm.
 func (recv *Screen) GetMonitorHeightMm(monitorNum int32) int32 {

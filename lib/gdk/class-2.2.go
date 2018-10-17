@@ -12,6 +12,42 @@ import (
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <gdk/gdk.h>
 // #include <stdlib.h>
+/*
+
+	void Display_closedHandler();
+
+	static gulong Display_signal_connect_closed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "closed", Display_closedHandler, data);
+	}
+
+*/
+/*
+
+	void DisplayManager_displayOpenedHandler();
+
+	static gulong DisplayManager_signal_connect_display_opened(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "display-opened", DisplayManager_displayOpenedHandler, data);
+	}
+
+*/
+/*
+
+	void Keymap_keysChangedHandler();
+
+	static gulong Keymap_signal_connect_keys_changed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "keys-changed", Keymap_keysChangedHandler, data);
+	}
+
+*/
+/*
+
+	void Screen_sizeChangedHandler();
+
+	static gulong Screen_signal_connect_size_changed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "size-changed", Screen_sizeChangedHandler, data);
+	}
+
+*/
 import "C"
 
 // CursorNewForDisplay is a wrapper around the C function gdk_cursor_new_for_display.
@@ -33,6 +69,9 @@ func (recv *Cursor) GetDisplay() *Display {
 
 	return retGo
 }
+
+// DisplaySignalClosedCallback is a callback function for a 'closed' signal emitted from a Display.
+type DisplaySignalClosedCallback func(isError bool)
 
 // Beep is a wrapper around the C function gdk_display_beep.
 func (recv *Display) Beep() {
@@ -156,6 +195,9 @@ func (recv *Display) Sync() {
 	return
 }
 
+// DisplayManagerSignalDisplayOpenedCallback is a callback function for a 'display-opened' signal emitted from a DisplayManager.
+type DisplayManagerSignalDisplayOpenedCallback func(display *Display)
+
 // GetDefaultDisplay is a wrapper around the C function gdk_display_manager_get_default_display.
 func (recv *DisplayManager) GetDefaultDisplay() *Display {
 	retC := C.gdk_display_manager_get_default_display((*C.GdkDisplayManager)(recv.native))
@@ -180,6 +222,12 @@ func (recv *DisplayManager) SetDefaultDisplay(display *Display) {
 
 	return
 }
+
+// KeymapSignalKeysChangedCallback is a callback function for a 'keys-changed' signal emitted from a Keymap.
+type KeymapSignalKeysChangedCallback func()
+
+// ScreenSignalSizeChangedCallback is a callback function for a 'size-changed' signal emitted from a Screen.
+type ScreenSignalSizeChangedCallback func()
 
 // GetDisplay is a wrapper around the C function gdk_screen_get_display.
 func (recv *Screen) GetDisplay() *Display {

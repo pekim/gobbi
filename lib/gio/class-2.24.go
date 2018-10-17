@@ -24,6 +24,10 @@ import (
 // #include <stdlib.h>
 import "C"
 
+// Unsupported signal : unsupported parameter info : no type generator for AppInfo,
+
+// Unsupported signal : unsupported parameter files : no param type
+
 // CharsetConverterNew is a wrapper around the C function g_charset_converter_new.
 func CharsetConverterNew(toCharset string, fromCharset string) (*CharsetConverter, error) {
 	c_to_charset := C.CString(toCharset)
@@ -85,6 +89,10 @@ func (recv *CharsetConverter) SetUseFallback(useFallback bool) {
 
 // Unsupported : g_dbus_message_new_from_blob : unsupported parameter blob : no param type
 
+// Unsupported signal : unsupported parameter changed_properties : Blacklisted record : GVariant
+
+// Unsupported signal : unsupported parameter parameters : Blacklisted record : GVariant
+
 // Unsupported : g_dbus_object_manager_client_new_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
 
 // Unsupported : g_dbus_object_manager_client_new_for_bus_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
@@ -92,6 +100,10 @@ func (recv *CharsetConverter) SetUseFallback(useFallback bool) {
 // Unsupported : g_dbus_object_manager_client_new_for_bus_sync : unsupported parameter get_proxy_type_func : no type generator for DBusProxyTypeFunc, GDBusProxyTypeFunc
 
 // Unsupported : g_dbus_object_manager_client_new_sync : unsupported parameter get_proxy_type_func : no type generator for DBusProxyTypeFunc, GDBusProxyTypeFunc
+
+// Unsupported signal : unsupported parameter changed_properties : Blacklisted record : GVariant
+
+// Unsupported signal : unsupported parameter parameters : Blacklisted record : GVariant
 
 // Unsupported : g_dbus_proxy_new_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
 
@@ -115,6 +127,8 @@ func (recv *DesktopAppInfo) GetFilename() string {
 
 // Unsupported : g_file_icon_new : unsupported parameter file : no type generator for File, GFile*
 
+// Unsupported signal : unsupported parameter file : no type generator for File,
+
 // Unsupported : g_inet_address_new_from_bytes : unsupported parameter bytes : no param type
 
 // Unsupported : g_list_store_new : unsupported parameter item_type : no type generator for GType, GType
@@ -123,6 +137,10 @@ func (recv *DesktopAppInfo) GetFilename() string {
 
 // Unsupported : g_memory_output_stream_new : unsupported parameter realloc_function : no type generator for ReallocFunc, GReallocFunc
 
+// Unsupported signal : unsupported parameter choices : no param type
+
+// Unsupported signal : unsupported parameter processes : no param type
+
 // IsClosing is a wrapper around the C function g_output_stream_is_closing.
 func (recv *OutputStream) IsClosing() bool {
 	retC := C.g_output_stream_is_closing((*C.GOutputStream)(recv.native))
@@ -130,6 +148,12 @@ func (recv *OutputStream) IsClosing() bool {
 
 	return retGo
 }
+
+// Unsupported signal : unsupported parameter keys : no param type
+
+// Unsupported signal : unsupported parameter parameter : Blacklisted record : GVariant
+
+// Unsupported signal : unsupported parameter value : Blacklisted record : GVariant
 
 // Unsupported : g_simple_action_new : unsupported parameter parameter_type : Blacklisted record : GVariantType
 
@@ -142,6 +166,8 @@ func (recv *OutputStream) IsClosing() bool {
 // Unsupported : g_simple_async_result_new_from_error : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
 
 // Unsupported : g_simple_async_result_new_take_error : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+
+// Unsupported signal : unsupported parameter connectable : no type generator for SocketConnectable,
 
 // AddAnyInetPort is a wrapper around the C function g_socket_listener_add_any_inet_port.
 func (recv *SocketListener) AddAnyInetPort(sourceObject *gobject.Object) (uint16, error) {
@@ -245,6 +271,30 @@ func (recv *UnixFDMessage) GetFdList() *UnixFDList {
 // Unsupported : g_unix_socket_address_new_abstract : unsupported parameter path : no param type
 
 // Unsupported : g_unix_socket_address_new_with_type : unsupported parameter path : no param type
+
+// Unsupported signal : unsupported parameter drive : no type generator for Drive,
+
+// Unsupported signal : unsupported parameter drive : no type generator for Drive,
+
+// Unsupported signal : unsupported parameter drive : no type generator for Drive,
+
+// Unsupported signal : unsupported parameter drive : no type generator for Drive,
+
+// Unsupported signal : unsupported parameter drive : no type generator for Drive,
+
+// Unsupported signal : unsupported parameter mount : no type generator for Mount,
+
+// Unsupported signal : unsupported parameter mount : no type generator for Mount,
+
+// Unsupported signal : unsupported parameter mount : no type generator for Mount,
+
+// Unsupported signal : unsupported parameter mount : no type generator for Mount,
+
+// Unsupported signal : unsupported parameter volume : no type generator for Volume,
+
+// Unsupported signal : unsupported parameter volume : no type generator for Volume,
+
+// Unsupported signal : unsupported parameter volume : no type generator for Volume,
 
 // ZlibCompressorNew is a wrapper around the C function g_zlib_compressor_new.
 func ZlibCompressorNew(format ZlibCompressorFormat, level int32) *ZlibCompressor {
