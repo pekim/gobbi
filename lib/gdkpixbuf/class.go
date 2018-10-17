@@ -647,6 +647,8 @@ var signalPixbufLoaderAreaPreparedLock sync.Mutex
 // PixbufLoaderSignalAreaPreparedCallback is a callback function for a 'area-prepared' signal emitted from a PixbufLoader.
 type PixbufLoaderSignalAreaPreparedCallback func()
 
+func (recv *PixbufLoader) ConnectAreaPrepared() {}
+
 func PixbufLoader_areaPreparedHandler() {}
 
 var signalPixbufLoaderAreaUpdatedId int
@@ -655,6 +657,8 @@ var signalPixbufLoaderAreaUpdatedLock sync.Mutex
 
 // PixbufLoaderSignalAreaUpdatedCallback is a callback function for a 'area-updated' signal emitted from a PixbufLoader.
 type PixbufLoaderSignalAreaUpdatedCallback func(x int32, y int32, width int32, height int32)
+
+func (recv *PixbufLoader) ConnectAreaUpdated() {}
 
 func PixbufLoader_areaUpdatedHandler() {}
 
@@ -665,6 +669,8 @@ var signalPixbufLoaderClosedLock sync.Mutex
 // PixbufLoaderSignalClosedCallback is a callback function for a 'closed' signal emitted from a PixbufLoader.
 type PixbufLoaderSignalClosedCallback func()
 
+func (recv *PixbufLoader) ConnectClosed() {}
+
 func PixbufLoader_closedHandler() {}
 
 var signalPixbufLoaderSizePreparedId int
@@ -673,6 +679,8 @@ var signalPixbufLoaderSizePreparedLock sync.Mutex
 
 // PixbufLoaderSignalSizePreparedCallback is a callback function for a 'size-prepared' signal emitted from a PixbufLoader.
 type PixbufLoaderSignalSizePreparedCallback func(width int32, height int32)
+
+func (recv *PixbufLoader) ConnectSizePrepared() {}
 
 func PixbufLoader_sizePreparedHandler() {}
 

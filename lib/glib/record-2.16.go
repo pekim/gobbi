@@ -12,14 +12,6 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : g_bytes_new : unsupported parameter data : no param type
-
-// Unsupported : g_bytes_new_static : unsupported parameter data : no param type
-
-// Unsupported : g_bytes_new_take : unsupported parameter data : no param type
-
-// Unsupported : g_bytes_new_with_free_func : unsupported parameter data : no param type
-
 // Checksum is a wrapper around the C record GChecksum.
 type Checksum struct {
 	native *C.GChecksum
@@ -190,5 +182,3 @@ func (recv *TestSuite) AddSuite(nestedsuite *TestSuite) {
 // Unsupported : g_thread_try_new : unsupported parameter func : no type generator for ThreadFunc, GThreadFunc
 
 // Unsupported : g_variant_builder_new : unsupported parameter type : Blacklisted record : GVariantType
-
-// Unsupported : g_variant_dict_new : unsupported parameter from_asv : Blacklisted record : GVariant

@@ -18,33 +18,6 @@ import (
 // #include <stdlib.h>
 /*
 
-	void GLArea_createContextHandler();
-
-	static gulong GLArea_signal_connect_create_context(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "create-context", GLArea_createContextHandler, data);
-	}
-
-*/
-/*
-
-	void GLArea_renderHandler();
-
-	static gulong GLArea_signal_connect_render(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "render", GLArea_renderHandler, data);
-	}
-
-*/
-/*
-
-	void GLArea_resizeHandler();
-
-	static gulong GLArea_signal_connect_resize(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "resize", GLArea_resizeHandler, data);
-	}
-
-*/
-/*
-
 	void ScrolledWindow_edgeOvershotHandler();
 
 	static gulong ScrolledWindow_signal_connect_edge_overshot(gpointer instance, gpointer data) {
@@ -192,33 +165,6 @@ func (recv *GLArea) Object() *gobject.Object {
 func CastToGLArea(object *gobject.Object) *GLArea {
 	return GLAreaNewFromC(object.ToC())
 }
-
-var signalGLAreaCreateContextId int
-var signalGLAreaCreateContextMap = make(map[int]GLAreaSignalCreateContextCallback)
-var signalGLAreaCreateContextLock sync.Mutex
-
-// GLAreaSignalCreateContextCallback is a callback function for a 'create-context' signal emitted from a GLArea.
-type GLAreaSignalCreateContextCallback func() gdk.GLContext
-
-func GLArea_createContextHandler() {}
-
-var signalGLAreaRenderId int
-var signalGLAreaRenderMap = make(map[int]GLAreaSignalRenderCallback)
-var signalGLAreaRenderLock sync.Mutex
-
-// GLAreaSignalRenderCallback is a callback function for a 'render' signal emitted from a GLArea.
-type GLAreaSignalRenderCallback func(context *gdk.GLContext) bool
-
-func GLArea_renderHandler() {}
-
-var signalGLAreaResizeId int
-var signalGLAreaResizeMap = make(map[int]GLAreaSignalResizeCallback)
-var signalGLAreaResizeLock sync.Mutex
-
-// GLAreaSignalResizeCallback is a callback function for a 'resize' signal emitted from a GLArea.
-type GLAreaSignalResizeCallback func(width int32, height int32)
-
-func GLArea_resizeHandler() {}
 
 // GLAreaNew is a wrapper around the C function gtk_gl_area_new.
 func GLAreaNew() *GLArea {
@@ -447,8 +393,6 @@ func (recv *Notebook) DetachTab(child *Widget) {
 
 // Unsupported signal : unsupported parameter allocation : Blacklisted record : GdkRectangle
 
-// Unsupported : gtk_pad_controller_new : unsupported parameter group : no type generator for Gio.ActionGroup, GActionGroup*
-
 // Unsupported : gtk_page_setup_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
 
 // GetWideHandle is a wrapper around the C function gtk_paned_get_wide_handle.
@@ -530,6 +474,8 @@ var signalScrolledWindowEdgeOvershotLock sync.Mutex
 // ScrolledWindowSignalEdgeOvershotCallback is a callback function for a 'edge-overshot' signal emitted from a ScrolledWindow.
 type ScrolledWindowSignalEdgeOvershotCallback func(pos PositionType)
 
+func (recv *ScrolledWindow) ConnectEdgeOvershot() {}
+
 func ScrolledWindow_edgeOvershotHandler() {}
 
 var signalScrolledWindowEdgeReachedId int
@@ -538,6 +484,8 @@ var signalScrolledWindowEdgeReachedLock sync.Mutex
 
 // ScrolledWindowSignalEdgeReachedCallback is a callback function for a 'edge-reached' signal emitted from a ScrolledWindow.
 type ScrolledWindowSignalEdgeReachedCallback func(pos PositionType)
+
+func (recv *ScrolledWindow) ConnectEdgeReached() {}
 
 func ScrolledWindow_edgeReachedHandler() {}
 
@@ -566,6 +514,8 @@ var signalSearchEntryNextMatchLock sync.Mutex
 // SearchEntrySignalNextMatchCallback is a callback function for a 'next-match' signal emitted from a SearchEntry.
 type SearchEntrySignalNextMatchCallback func()
 
+func (recv *SearchEntry) ConnectNextMatch() {}
+
 func SearchEntry_nextMatchHandler() {}
 
 var signalSearchEntryPreviousMatchId int
@@ -575,6 +525,8 @@ var signalSearchEntryPreviousMatchLock sync.Mutex
 // SearchEntrySignalPreviousMatchCallback is a callback function for a 'previous-match' signal emitted from a SearchEntry.
 type SearchEntrySignalPreviousMatchCallback func()
 
+func (recv *SearchEntry) ConnectPreviousMatch() {}
+
 func SearchEntry_previousMatchHandler() {}
 
 var signalSearchEntryStopSearchId int
@@ -583,6 +535,8 @@ var signalSearchEntryStopSearchLock sync.Mutex
 
 // SearchEntrySignalStopSearchCallback is a callback function for a 'stop-search' signal emitted from a SearchEntry.
 type SearchEntrySignalStopSearchCallback func()
+
+func (recv *SearchEntry) ConnectStopSearch() {}
 
 func SearchEntry_stopSearchHandler() {}
 
@@ -673,6 +627,8 @@ var signalTextViewExtendSelectionLock sync.Mutex
 
 // TextViewSignalExtendSelectionCallback is a callback function for a 'extend-selection' signal emitted from a TextView.
 type TextViewSignalExtendSelectionCallback func(granularity TextExtendSelection, location *TextIter, start *TextIter, end *TextIter) bool
+
+func (recv *TextView) ConnectExtendSelection() {}
 
 func TextView_extendSelectionHandler() {}
 

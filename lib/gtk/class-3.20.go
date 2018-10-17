@@ -17,15 +17,6 @@ import (
 // #include <stdlib.h>
 /*
 
-	void NativeDialog_responseHandler();
-
-	static gulong NativeDialog_signal_connect_response(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "response", NativeDialog_responseHandler, data);
-	}
-
-*/
-/*
-
 	void PlacesSidebar_mountHandler();
 
 	static gulong PlacesSidebar_signal_connect_mount(gpointer instance, gpointer data) {
@@ -48,6 +39,33 @@ import (
 
 	static gulong PlacesSidebar_signal_connect_unmount(gpointer instance, gpointer data) {
 		return g_signal_connect(instance, "unmount", PlacesSidebar_unmountHandler, data);
+	}
+
+*/
+/*
+
+	void ShortcutsSection_changeCurrentPageHandler();
+
+	static gulong ShortcutsSection_signal_connect_change_current_page(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "change-current-page", ShortcutsSection_changeCurrentPageHandler, data);
+	}
+
+*/
+/*
+
+	void ShortcutsWindow_closeHandler();
+
+	static gulong ShortcutsWindow_signal_connect_close(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "close", ShortcutsWindow_closeHandler, data);
+	}
+
+*/
+/*
+
+	void ShortcutsWindow_searchHandler();
+
+	static gulong ShortcutsWindow_signal_connect_search(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "search", ShortcutsWindow_searchHandler, data);
 	}
 
 */
@@ -251,15 +269,6 @@ func CastToNativeDialog(object *gobject.Object) *NativeDialog {
 	return NativeDialogNewFromC(object.ToC())
 }
 
-var signalNativeDialogResponseId int
-var signalNativeDialogResponseMap = make(map[int]NativeDialogSignalResponseCallback)
-var signalNativeDialogResponseLock sync.Mutex
-
-// NativeDialogSignalResponseCallback is a callback function for a 'response' signal emitted from a NativeDialog.
-type NativeDialogSignalResponseCallback func(responseId int32)
-
-func NativeDialog_responseHandler() {}
-
 // Destroy is a wrapper around the C function gtk_native_dialog_destroy.
 func (recv *NativeDialog) Destroy() {
 	C.gtk_native_dialog_destroy((*C.GtkNativeDialog)(recv.native))
@@ -404,6 +413,8 @@ var signalPlacesSidebarMountLock sync.Mutex
 // PlacesSidebarSignalMountCallback is a callback function for a 'mount' signal emitted from a PlacesSidebar.
 type PlacesSidebarSignalMountCallback func(mountOperation *gio.MountOperation)
 
+func (recv *PlacesSidebar) ConnectMount() {}
+
 func PlacesSidebar_mountHandler() {}
 
 // Unsupported signal : unsupported parameter location : no type generator for Gio.File,
@@ -417,6 +428,8 @@ var signalPlacesSidebarShowOtherLocationsWithFlagsLock sync.Mutex
 // PlacesSidebarSignalShowOtherLocationsWithFlagsCallback is a callback function for a 'show-other-locations-with-flags' signal emitted from a PlacesSidebar.
 type PlacesSidebarSignalShowOtherLocationsWithFlagsCallback func(openFlags PlacesOpenFlags)
 
+func (recv *PlacesSidebar) ConnectShowOtherLocationsWithFlags() {}
+
 func PlacesSidebar_showOtherLocationsWithFlagsHandler() {}
 
 var signalPlacesSidebarUnmountId int
@@ -425,6 +438,8 @@ var signalPlacesSidebarUnmountLock sync.Mutex
 
 // PlacesSidebarSignalUnmountCallback is a callback function for a 'unmount' signal emitted from a PlacesSidebar.
 type PlacesSidebarSignalUnmountCallback func(mountOperation *gio.MountOperation)
+
+func (recv *PlacesSidebar) ConnectUnmount() {}
 
 func PlacesSidebar_unmountHandler() {}
 
@@ -621,6 +636,17 @@ func CastToShortcutsSection(object *gobject.Object) *ShortcutsSection {
 	return ShortcutsSectionNewFromC(object.ToC())
 }
 
+var signalShortcutsSectionChangeCurrentPageId int
+var signalShortcutsSectionChangeCurrentPageMap = make(map[int]ShortcutsSectionSignalChangeCurrentPageCallback)
+var signalShortcutsSectionChangeCurrentPageLock sync.Mutex
+
+// ShortcutsSectionSignalChangeCurrentPageCallback is a callback function for a 'change-current-page' signal emitted from a ShortcutsSection.
+type ShortcutsSectionSignalChangeCurrentPageCallback func(object int32) bool
+
+func (recv *ShortcutsSection) ConnectChangeCurrentPage() {}
+
+func ShortcutsSection_changeCurrentPageHandler() {}
+
 // ShortcutsShortcut is a wrapper around the C record GtkShortcutsShortcut.
 type ShortcutsShortcut struct {
 	native *C.GtkShortcutsShortcut
@@ -730,6 +756,28 @@ func (recv *ShortcutsWindow) Object() *gobject.Object {
 func CastToShortcutsWindow(object *gobject.Object) *ShortcutsWindow {
 	return ShortcutsWindowNewFromC(object.ToC())
 }
+
+var signalShortcutsWindowCloseId int
+var signalShortcutsWindowCloseMap = make(map[int]ShortcutsWindowSignalCloseCallback)
+var signalShortcutsWindowCloseLock sync.Mutex
+
+// ShortcutsWindowSignalCloseCallback is a callback function for a 'close' signal emitted from a ShortcutsWindow.
+type ShortcutsWindowSignalCloseCallback func()
+
+func (recv *ShortcutsWindow) ConnectClose() {}
+
+func ShortcutsWindow_closeHandler() {}
+
+var signalShortcutsWindowSearchId int
+var signalShortcutsWindowSearchMap = make(map[int]ShortcutsWindowSignalSearchCallback)
+var signalShortcutsWindowSearchLock sync.Mutex
+
+// ShortcutsWindowSignalSearchCallback is a callback function for a 'search' signal emitted from a ShortcutsWindow.
+type ShortcutsWindowSignalSearchCallback func()
+
+func (recv *ShortcutsWindow) ConnectSearch() {}
+
+func ShortcutsWindow_searchHandler() {}
 
 // Unsupported : gtk_status_icon_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon, GIcon*
 

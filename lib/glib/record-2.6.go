@@ -12,14 +12,6 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : g_bytes_new : unsupported parameter data : no param type
-
-// Unsupported : g_bytes_new_static : unsupported parameter data : no param type
-
-// Unsupported : g_bytes_new_take : unsupported parameter data : no param type
-
-// Unsupported : g_bytes_new_with_free_func : unsupported parameter data : no param type
-
 // GetIso8601WeekOfYear is a wrapper around the C function g_date_get_iso8601_week_of_year.
 func (recv *Date) GetIso8601WeekOfYear() uint32 {
 	retC := C.g_date_get_iso8601_week_of_year((*C.GDate)(recv.native))
@@ -644,5 +636,3 @@ func (recv *OptionGroup) SetTranslationDomain(domain string) {
 // Unsupported : g_thread_try_new : unsupported parameter func : no type generator for ThreadFunc, GThreadFunc
 
 // Unsupported : g_variant_builder_new : unsupported parameter type : Blacklisted record : GVariantType
-
-// Unsupported : g_variant_dict_new : unsupported parameter from_asv : Blacklisted record : GVariant

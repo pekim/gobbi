@@ -31,6 +31,8 @@ var signalAboutDialogActivateLinkLock sync.Mutex
 // AboutDialogSignalActivateLinkCallback is a callback function for a 'activate-link' signal emitted from a AboutDialog.
 type AboutDialogSignalActivateLinkCallback func(uri string) bool
 
+func (recv *AboutDialog) ConnectActivateLink() {}
+
 func AboutDialog_activateLinkHandler() {}
 
 // Unsupported : gtk_app_chooser_dialog_new : unsupported parameter file : no type generator for Gio.File, GFile*
@@ -231,8 +233,6 @@ func (recv *Notebook) SetGroupName(groupName string) {
 }
 
 // Unsupported signal : unsupported parameter allocation : Blacklisted record : GdkRectangle
-
-// Unsupported : gtk_pad_controller_new : unsupported parameter group : no type generator for Gio.ActionGroup, GActionGroup*
 
 // Unsupported : gtk_page_setup_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
 

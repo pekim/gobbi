@@ -429,6 +429,8 @@ var signalClipboardOwnerChangeLock sync.Mutex
 // ClipboardSignalOwnerChangeCallback is a callback function for a 'owner-change' signal emitted from a Clipboard.
 type ClipboardSignalOwnerChangeCallback func(event *gdk.EventOwnerChange)
 
+func (recv *Clipboard) ConnectOwnerChange() {}
+
 func Clipboard_ownerChangeHandler() {}
 
 // Unsupported : gtk_clipboard_request_image : unsupported parameter callback : no type generator for ClipboardImageReceivedFunc, GtkClipboardImageReceivedFunc
@@ -551,6 +553,8 @@ var signalEntryCompletionInsertPrefixLock sync.Mutex
 
 // EntryCompletionSignalInsertPrefixCallback is a callback function for a 'insert-prefix' signal emitted from a EntryCompletion.
 type EntryCompletionSignalInsertPrefixCallback func(prefix string) bool
+
+func (recv *EntryCompletion) ConnectInsertPrefix() {}
 
 func EntryCompletion_insertPrefixHandler() {}
 
@@ -1130,8 +1134,6 @@ func (recv *MenuToolButton) SetMenu(menu *Widget) {
 
 // Unsupported signal : unsupported parameter allocation : Blacklisted record : GdkRectangle
 
-// Unsupported : gtk_pad_controller_new : unsupported parameter group : no type generator for Gio.ActionGroup, GActionGroup*
-
 // Unsupported : gtk_page_setup_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
 
 // Unsupported signal : unsupported parameter dest_file : no type generator for Gio.File,
@@ -1169,6 +1171,8 @@ var signalRangeChangeValueLock sync.Mutex
 
 // RangeSignalChangeValueCallback is a callback function for a 'change-value' signal emitted from a Range.
 type RangeSignalChangeValueCallback func(scroll ScrollType, value float64) bool
+
+func (recv *Range) ConnectChangeValue() {}
 
 func Range_changeValueHandler() {}
 

@@ -278,6 +278,8 @@ var signalComboBoxMoveActiveLock sync.Mutex
 // ComboBoxSignalMoveActiveCallback is a callback function for a 'move-active' signal emitted from a ComboBox.
 type ComboBoxSignalMoveActiveCallback func(scrollType ScrollType)
 
+func (recv *ComboBox) ConnectMoveActive() {}
+
 func ComboBox_moveActiveHandler() {}
 
 var signalComboBoxPopdownId int
@@ -287,6 +289,8 @@ var signalComboBoxPopdownLock sync.Mutex
 // ComboBoxSignalPopdownCallback is a callback function for a 'popdown' signal emitted from a ComboBox.
 type ComboBoxSignalPopdownCallback func() bool
 
+func (recv *ComboBox) ConnectPopdown() {}
+
 func ComboBox_popdownHandler() {}
 
 var signalComboBoxPopupId int
@@ -295,6 +299,8 @@ var signalComboBoxPopupLock sync.Mutex
 
 // ComboBoxSignalPopupCallback is a callback function for a 'popup' signal emitted from a ComboBox.
 type ComboBoxSignalPopupCallback func()
+
+func (recv *ComboBox) ConnectPopup() {}
 
 func ComboBox_popupHandler() {}
 
@@ -359,6 +365,8 @@ var signalFileChooserButtonFileSetLock sync.Mutex
 
 // FileChooserButtonSignalFileSetCallback is a callback function for a 'file-set' signal emitted from a FileChooserButton.
 type FileChooserButtonSignalFileSetCallback func()
+
+func (recv *FileChooserButton) ConnectFileSet() {}
 
 func FileChooserButton_fileSetHandler() {}
 
@@ -463,6 +471,8 @@ var signalMenuShellMoveSelectedLock sync.Mutex
 // MenuShellSignalMoveSelectedCallback is a callback function for a 'move-selected' signal emitted from a MenuShell.
 type MenuShellSignalMoveSelectedCallback func(distance int32) bool
 
+func (recv *MenuShell) ConnectMoveSelected() {}
+
 func MenuShell_moveSelectedHandler() {}
 
 // SetArrowTooltipMarkup is a wrapper around the C function gtk_menu_tool_button_set_arrow_tooltip_markup.
@@ -496,11 +506,11 @@ var signalNotebookCreateWindowLock sync.Mutex
 // NotebookSignalCreateWindowCallback is a callback function for a 'create-window' signal emitted from a Notebook.
 type NotebookSignalCreateWindowCallback func(page *Widget, x int32, y int32) Notebook
 
+func (recv *Notebook) ConnectCreateWindow() {}
+
 func Notebook_createWindowHandler() {}
 
 // Unsupported signal : unsupported parameter allocation : Blacklisted record : GdkRectangle
-
-// Unsupported : gtk_pad_controller_new : unsupported parameter group : no type generator for Gio.ActionGroup, GActionGroup*
 
 // PageSetupNewFromFile is a wrapper around the C function gtk_page_setup_new_from_file.
 func PageSetupNewFromFile(fileName string) (*PageSetup, error) {
@@ -776,6 +786,8 @@ var signalScaleButtonPopdownLock sync.Mutex
 // ScaleButtonSignalPopdownCallback is a callback function for a 'popdown' signal emitted from a ScaleButton.
 type ScaleButtonSignalPopdownCallback func()
 
+func (recv *ScaleButton) ConnectPopdown() {}
+
 func ScaleButton_popdownHandler() {}
 
 var signalScaleButtonPopupId int
@@ -785,6 +797,8 @@ var signalScaleButtonPopupLock sync.Mutex
 // ScaleButtonSignalPopupCallback is a callback function for a 'popup' signal emitted from a ScaleButton.
 type ScaleButtonSignalPopupCallback func()
 
+func (recv *ScaleButton) ConnectPopup() {}
+
 func ScaleButton_popupHandler() {}
 
 var signalScaleButtonValueChangedId int
@@ -793,6 +807,8 @@ var signalScaleButtonValueChangedLock sync.Mutex
 
 // ScaleButtonSignalValueChangedCallback is a callback function for a 'value-changed' signal emitted from a ScaleButton.
 type ScaleButtonSignalValueChangedCallback func(value float64)
+
+func (recv *ScaleButton) ConnectValueChanged() {}
 
 func ScaleButton_valueChangedHandler() {}
 
@@ -1183,6 +1199,8 @@ var signalWidgetDragFailedLock sync.Mutex
 // WidgetSignalDragFailedCallback is a callback function for a 'drag-failed' signal emitted from a Widget.
 type WidgetSignalDragFailedCallback func(context *gdk.DragContext, result DragResult) bool
 
+func (recv *Widget) ConnectDragFailed() {}
+
 func Widget_dragFailedHandler() {}
 
 // Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
@@ -1196,6 +1214,8 @@ var signalWidgetKeynavFailedLock sync.Mutex
 // WidgetSignalKeynavFailedCallback is a callback function for a 'keynav-failed' signal emitted from a Widget.
 type WidgetSignalKeynavFailedCallback func(direction DirectionType) bool
 
+func (recv *Widget) ConnectKeynavFailed() {}
+
 func Widget_keynavFailedHandler() {}
 
 var signalWidgetQueryTooltipId int
@@ -1204,6 +1224,8 @@ var signalWidgetQueryTooltipLock sync.Mutex
 
 // WidgetSignalQueryTooltipCallback is a callback function for a 'query-tooltip' signal emitted from a Widget.
 type WidgetSignalQueryTooltipCallback func(x int32, y int32, keyboardMode bool, tooltip *Tooltip) bool
+
+func (recv *Widget) ConnectQueryTooltip() {}
 
 func Widget_queryTooltipHandler() {}
 

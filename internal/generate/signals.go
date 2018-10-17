@@ -10,8 +10,8 @@ func (ss Signals) init(ns *Namespace, record *Record) {
 	}
 }
 
-func (ss Signals) generate(g *jen.Group, version *Version) {
+func (ss Signals) generate(g *jen.Group, version *Version, parentVersion string) {
 	for _, signal := range ss {
-		signal.generate(g, version)
+		signal.generate(g, version, parentVersion)
 	}
 }

@@ -340,5 +340,3 @@ func (recv *Thread) Unref() {
 }
 
 // Unsupported : g_variant_builder_new : unsupported parameter type : Blacklisted record : GVariantType
-
-// Unsupported : g_variant_dict_new : unsupported parameter from_asv : Blacklisted record : GVariant

@@ -6,7 +6,6 @@ package gio
 import (
 	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
-	"sync"
 	"unsafe"
 )
 
@@ -23,24 +22,6 @@ import (
 // #include <gio/gunixoutputstream.h>
 // #include <gio/gunixsocketaddress.h>
 // #include <stdlib.h>
-/*
-
-	void DBusInterfaceSkeleton_gAuthorizeMethodHandler();
-
-	static gulong DBusInterfaceSkeleton_signal_connect_g_authorize_method(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "g-authorize-method", DBusInterfaceSkeleton_gAuthorizeMethodHandler, data);
-	}
-
-*/
-/*
-
-	void DBusObjectSkeleton_authorizeMethodHandler();
-
-	static gulong DBusObjectSkeleton_signal_connect_authorize_method(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "authorize-method", DBusObjectSkeleton_authorizeMethodHandler, data);
-	}
-
-*/
 import "C"
 
 // Unsupported signal : unsupported parameter info : no type generator for AppInfo,
@@ -94,15 +75,6 @@ func (recv *DBusInterfaceSkeleton) Object() *gobject.Object {
 func CastToDBusInterfaceSkeleton(object *gobject.Object) *DBusInterfaceSkeleton {
 	return DBusInterfaceSkeletonNewFromC(object.ToC())
 }
-
-var signalDBusInterfaceSkeletonGAuthorizeMethodId int
-var signalDBusInterfaceSkeletonGAuthorizeMethodMap = make(map[int]DBusInterfaceSkeletonSignalGAuthorizeMethodCallback)
-var signalDBusInterfaceSkeletonGAuthorizeMethodLock sync.Mutex
-
-// DBusInterfaceSkeletonSignalGAuthorizeMethodCallback is a callback function for a 'g-authorize-method' signal emitted from a DBusInterfaceSkeleton.
-type DBusInterfaceSkeletonSignalGAuthorizeMethodCallback func(invocation *DBusMethodInvocation) bool
-
-func DBusInterfaceSkeleton_gAuthorizeMethodHandler() {}
 
 // Export is a wrapper around the C function g_dbus_interface_skeleton_export.
 func (recv *DBusInterfaceSkeleton) Export(connection *DBusConnection, objectPath string) (bool, error) {
@@ -461,15 +433,6 @@ func CastToDBusObjectSkeleton(object *gobject.Object) *DBusObjectSkeleton {
 	return DBusObjectSkeletonNewFromC(object.ToC())
 }
 
-var signalDBusObjectSkeletonAuthorizeMethodId int
-var signalDBusObjectSkeletonAuthorizeMethodMap = make(map[int]DBusObjectSkeletonSignalAuthorizeMethodCallback)
-var signalDBusObjectSkeletonAuthorizeMethodLock sync.Mutex
-
-// DBusObjectSkeletonSignalAuthorizeMethodCallback is a callback function for a 'authorize-method' signal emitted from a DBusObjectSkeleton.
-type DBusObjectSkeletonSignalAuthorizeMethodCallback func(interface_ *DBusInterfaceSkeleton, invocation *DBusMethodInvocation) bool
-
-func DBusObjectSkeleton_authorizeMethodHandler() {}
-
 // DBusObjectSkeletonNew is a wrapper around the C function g_dbus_object_skeleton_new.
 func DBusObjectSkeletonNew(objectPath string) *DBusObjectSkeleton {
 	c_object_path := C.CString(objectPath)
@@ -662,10 +625,6 @@ func (recv *Settings) SetUint(key string, value uint32) bool {
 // Unsupported : g_simple_async_result_new_take_error : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
 
 // Unsupported signal : unsupported parameter connectable : no type generator for SocketConnectable,
-
-// Unsupported : g_subprocess_new : unsupported parameter error : record with indirection level of 2
-
-// Unsupported : g_subprocess_newv : unsupported parameter argv : no param type
 
 // Unsupported : g_task_new : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
 

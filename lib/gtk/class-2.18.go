@@ -243,6 +243,8 @@ var signalEntryBufferDeletedTextLock sync.Mutex
 // EntryBufferSignalDeletedTextCallback is a callback function for a 'deleted-text' signal emitted from a EntryBuffer.
 type EntryBufferSignalDeletedTextCallback func(position uint32, nChars uint32)
 
+func (recv *EntryBuffer) ConnectDeletedText() {}
+
 func EntryBuffer_deletedTextHandler() {}
 
 var signalEntryBufferInsertedTextId int
@@ -251,6 +253,8 @@ var signalEntryBufferInsertedTextLock sync.Mutex
 
 // EntryBufferSignalInsertedTextCallback is a callback function for a 'inserted-text' signal emitted from a EntryBuffer.
 type EntryBufferSignalInsertedTextCallback func(position uint32, chars string, nChars uint32)
+
+func (recv *EntryBuffer) ConnectInsertedText() {}
 
 func EntryBuffer_insertedTextHandler() {}
 
@@ -416,6 +420,8 @@ var signalInfoBarCloseLock sync.Mutex
 // InfoBarSignalCloseCallback is a callback function for a 'close' signal emitted from a InfoBar.
 type InfoBarSignalCloseCallback func()
 
+func (recv *InfoBar) ConnectClose() {}
+
 func InfoBar_closeHandler() {}
 
 var signalInfoBarResponseId int
@@ -424,6 +430,8 @@ var signalInfoBarResponseLock sync.Mutex
 
 // InfoBarSignalResponseCallback is a callback function for a 'response' signal emitted from a InfoBar.
 type InfoBarSignalResponseCallback func(responseId int32)
+
+func (recv *InfoBar) ConnectResponse() {}
 
 func InfoBar_responseHandler() {}
 
@@ -533,6 +541,8 @@ var signalLabelActivateCurrentLinkLock sync.Mutex
 // LabelSignalActivateCurrentLinkCallback is a callback function for a 'activate-current-link' signal emitted from a Label.
 type LabelSignalActivateCurrentLinkCallback func()
 
+func (recv *Label) ConnectActivateCurrentLink() {}
+
 func Label_activateCurrentLinkHandler() {}
 
 var signalLabelActivateLinkId int
@@ -541,6 +551,8 @@ var signalLabelActivateLinkLock sync.Mutex
 
 // LabelSignalActivateLinkCallback is a callback function for a 'activate-link' signal emitted from a Label.
 type LabelSignalActivateLinkCallback func(uri string) bool
+
+func (recv *Label) ConnectActivateLink() {}
 
 func Label_activateLinkHandler() {}
 
@@ -598,8 +610,6 @@ func (recv *Menu) SetReserveToggleSize(reserveToggleSize bool) {
 
 // Unsupported signal : unsupported parameter allocation : Blacklisted record : GdkRectangle
 
-// Unsupported : gtk_pad_controller_new : unsupported parameter group : no type generator for Gio.ActionGroup, GActionGroup*
-
 // Unsupported : gtk_page_setup_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
 
 // Unsupported signal : unsupported parameter dest_file : no type generator for Gio.File,
@@ -618,6 +628,8 @@ var signalPrintOperationUpdateCustomWidgetLock sync.Mutex
 
 // PrintOperationSignalUpdateCustomWidgetCallback is a callback function for a 'update-custom-widget' signal emitted from a PrintOperation.
 type PrintOperationSignalUpdateCustomWidgetCallback func(widget *Widget, setup *PageSetup, settings *PrintSettings)
+
+func (recv *PrintOperation) ConnectUpdateCustomWidget() {}
 
 func PrintOperation_updateCustomWidgetHandler() {}
 

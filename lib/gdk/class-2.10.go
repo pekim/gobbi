@@ -47,6 +47,8 @@ var signalScreenCompositedChangedLock sync.Mutex
 // ScreenSignalCompositedChangedCallback is a callback function for a 'composited-changed' signal emitted from a Screen.
 type ScreenSignalCompositedChangedCallback func()
 
+func (recv *Screen) ConnectCompositedChanged() {}
+
 func Screen_compositedChangedHandler() {}
 
 // GetActiveWindow is a wrapper around the C function gdk_screen_get_active_window.

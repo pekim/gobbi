@@ -370,6 +370,8 @@ var signalCellAreaFocusChangedLock sync.Mutex
 // CellAreaSignalFocusChangedCallback is a callback function for a 'focus-changed' signal emitted from a CellArea.
 type CellAreaSignalFocusChangedCallback func(renderer *CellRenderer, path string)
 
+func (recv *CellArea) ConnectFocusChanged() {}
+
 func CellArea_focusChangedHandler() {}
 
 // Unsupported signal : unsupported parameter editable : no type generator for CellEditable,
@@ -1466,8 +1468,6 @@ func (recv *NumerableIcon) SetStyleContext(style *StyleContext) {
 
 // Unsupported signal : unsupported parameter allocation : Blacklisted record : GdkRectangle
 
-// Unsupported : gtk_pad_controller_new : unsupported parameter group : no type generator for Gio.ActionGroup, GActionGroup*
-
 // Unsupported : gtk_page_setup_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
 
 // PanedNew is a wrapper around the C function gtk_paned_new.
@@ -1634,6 +1634,8 @@ var signalStyleContextChangedLock sync.Mutex
 
 // StyleContextSignalChangedCallback is a callback function for a 'changed' signal emitted from a StyleContext.
 type StyleContextSignalChangedCallback func()
+
+func (recv *StyleContext) ConnectChanged() {}
 
 func StyleContext_changedHandler() {}
 
@@ -2356,6 +2358,8 @@ var signalWidgetDrawLock sync.Mutex
 // WidgetSignalDrawCallback is a callback function for a 'draw' signal emitted from a Widget.
 type WidgetSignalDrawCallback func(cr *cairo.Context) bool
 
+func (recv *Widget) ConnectDraw() {}
+
 func Widget_drawHandler() {}
 
 // Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
@@ -2371,6 +2375,8 @@ var signalWidgetStateFlagsChangedLock sync.Mutex
 // WidgetSignalStateFlagsChangedCallback is a callback function for a 'state-flags-changed' signal emitted from a Widget.
 type WidgetSignalStateFlagsChangedCallback func(flags StateFlags)
 
+func (recv *Widget) ConnectStateFlagsChanged() {}
+
 func Widget_stateFlagsChangedHandler() {}
 
 var signalWidgetStyleUpdatedId int
@@ -2379,6 +2385,8 @@ var signalWidgetStyleUpdatedLock sync.Mutex
 
 // WidgetSignalStyleUpdatedCallback is a callback function for a 'style-updated' signal emitted from a Widget.
 type WidgetSignalStyleUpdatedCallback func()
+
+func (recv *Widget) ConnectStyleUpdated() {}
 
 func Widget_styleUpdatedHandler() {}
 

@@ -6,6 +6,7 @@ package gio
 import (
 	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
+	"sync"
 	"unsafe"
 )
 
@@ -22,6 +23,15 @@ import (
 // #include <gio/gunixoutputstream.h>
 // #include <gio/gunixsocketaddress.h>
 // #include <stdlib.h>
+/*
+
+	void MenuModel_itemsChangedHandler();
+
+	static gulong MenuModel_signal_connect_items_changed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "items-changed", MenuModel_itemsChangedHandler, data);
+	}
+
+*/
 import "C"
 
 // Unsupported signal : unsupported parameter info : no type generator for AppInfo,
@@ -809,6 +819,17 @@ func CastToMenuModel(object *gobject.Object) *MenuModel {
 	return MenuModelNewFromC(object.ToC())
 }
 
+var signalMenuModelItemsChangedId int
+var signalMenuModelItemsChangedMap = make(map[int]MenuModelSignalItemsChangedCallback)
+var signalMenuModelItemsChangedLock sync.Mutex
+
+// MenuModelSignalItemsChangedCallback is a callback function for a 'items-changed' signal emitted from a MenuModel.
+type MenuModelSignalItemsChangedCallback func(position int32, removed int32, added int32)
+
+func (recv *MenuModel) ConnectItemsChanged() {}
+
+func MenuModel_itemsChangedHandler() {}
+
 // Unsupported : g_menu_model_get_item_attribute : unsupported parameter ... : varargs
 
 // Unsupported : g_menu_model_get_item_attribute_value : unsupported parameter expected_type : Blacklisted record : GVariantType
@@ -1100,10 +1121,6 @@ func (recv *SocketConnection) IsConnected() bool {
 
 	return retGo
 }
-
-// Unsupported : g_subprocess_new : unsupported parameter error : record with indirection level of 2
-
-// Unsupported : g_subprocess_newv : unsupported parameter argv : no param type
 
 // Unsupported : g_task_new : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
 

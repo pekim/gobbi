@@ -240,6 +240,8 @@ var signalCellRendererComboChangedLock sync.Mutex
 // CellRendererComboSignalChangedCallback is a callback function for a 'changed' signal emitted from a CellRendererCombo.
 type CellRendererComboSignalChangedCallback func(pathString string, newIter *TreeIter)
 
+func (recv *CellRendererCombo) ConnectChanged() {}
+
 func CellRendererCombo_changedHandler() {}
 
 // Unsupported : gtk_clipboard_request_uris : unsupported parameter callback : no type generator for ClipboardURIReceivedFunc, GtkClipboardURIReceivedFunc
@@ -657,8 +659,6 @@ func (recv *MountOperation) SetScreen(screen *gdk.Screen) {
 
 // Unsupported signal : unsupported parameter allocation : Blacklisted record : GdkRectangle
 
-// Unsupported : gtk_pad_controller_new : unsupported parameter group : no type generator for Gio.ActionGroup, GActionGroup*
-
 // Unsupported : gtk_page_setup_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
 
 // LoadFile is a wrapper around the C function gtk_page_setup_load_file.
@@ -803,6 +803,8 @@ var signalStatusIconButtonPressEventLock sync.Mutex
 // StatusIconSignalButtonPressEventCallback is a callback function for a 'button-press-event' signal emitted from a StatusIcon.
 type StatusIconSignalButtonPressEventCallback func(event *gdk.EventButton) bool
 
+func (recv *StatusIcon) ConnectButtonPressEvent() {}
+
 func StatusIcon_buttonPressEventHandler() {}
 
 var signalStatusIconButtonReleaseEventId int
@@ -811,6 +813,8 @@ var signalStatusIconButtonReleaseEventLock sync.Mutex
 
 // StatusIconSignalButtonReleaseEventCallback is a callback function for a 'button-release-event' signal emitted from a StatusIcon.
 type StatusIconSignalButtonReleaseEventCallback func(event *gdk.EventButton) bool
+
+func (recv *StatusIcon) ConnectButtonReleaseEvent() {}
 
 func StatusIcon_buttonReleaseEventHandler() {}
 
@@ -857,6 +861,8 @@ var signalWidgetDamageEventLock sync.Mutex
 
 // WidgetSignalDamageEventCallback is a callback function for a 'damage-event' signal emitted from a Widget.
 type WidgetSignalDamageEventCallback func(event *gdk.EventExpose) bool
+
+func (recv *Widget) ConnectDamageEvent() {}
 
 func Widget_damageEventHandler() {}
 

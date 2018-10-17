@@ -6,7 +6,6 @@ package gio
 import (
 	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
-	"sync"
 	"unsafe"
 )
 
@@ -23,38 +22,9 @@ import (
 // #include <gio/gunixoutputstream.h>
 // #include <gio/gunixsocketaddress.h>
 // #include <stdlib.h>
-/*
-
-	void DBusAuthObserver_authorizeAuthenticatedPeerHandler();
-
-	static gulong DBusAuthObserver_signal_connect_authorize_authenticated_peer(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "authorize-authenticated-peer", DBusAuthObserver_authorizeAuthenticatedPeerHandler, data);
-	}
-
-*/
-/*
-
-	void DBusConnection_closedHandler();
-
-	static gulong DBusConnection_signal_connect_closed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "closed", DBusConnection_closedHandler, data);
-	}
-
-*/
-/*
-
-	void DBusServer_newConnectionHandler();
-
-	static gulong DBusServer_signal_connect_new_connection(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "new-connection", DBusServer_newConnectionHandler, data);
-	}
-
-*/
 import "C"
 
 // Unsupported signal : unsupported parameter info : no type generator for AppInfo,
-
-// Unsupported signal : unsupported parameter files : no param type
 
 // Unsupported : g_converter_input_stream_new : unsupported parameter converter : no type generator for Converter, GConverter*
 
@@ -183,15 +153,6 @@ func CastToDBusAuthObserver(object *gobject.Object) *DBusAuthObserver {
 	return DBusAuthObserverNewFromC(object.ToC())
 }
 
-var signalDBusAuthObserverAuthorizeAuthenticatedPeerId int
-var signalDBusAuthObserverAuthorizeAuthenticatedPeerMap = make(map[int]DBusAuthObserverSignalAuthorizeAuthenticatedPeerCallback)
-var signalDBusAuthObserverAuthorizeAuthenticatedPeerLock sync.Mutex
-
-// DBusAuthObserverSignalAuthorizeAuthenticatedPeerCallback is a callback function for a 'authorize-authenticated-peer' signal emitted from a DBusAuthObserver.
-type DBusAuthObserverSignalAuthorizeAuthenticatedPeerCallback func(stream *IOStream, credentials *Credentials) bool
-
-func DBusAuthObserver_authorizeAuthenticatedPeerHandler() {}
-
 // DBusAuthObserverNew is a wrapper around the C function g_dbus_auth_observer_new.
 func DBusAuthObserverNew() *DBusAuthObserver {
 	retC := C.g_dbus_auth_observer_new()
@@ -243,15 +204,6 @@ func (recv *DBusConnection) Object() *gobject.Object {
 func CastToDBusConnection(object *gobject.Object) *DBusConnection {
 	return DBusConnectionNewFromC(object.ToC())
 }
-
-var signalDBusConnectionClosedId int
-var signalDBusConnectionClosedMap = make(map[int]DBusConnectionSignalClosedCallback)
-var signalDBusConnectionClosedLock sync.Mutex
-
-// DBusConnectionSignalClosedCallback is a callback function for a 'closed' signal emitted from a DBusConnection.
-type DBusConnectionSignalClosedCallback func(remotePeerVanished bool, error *glib.Error)
-
-func DBusConnection_closedHandler() {}
 
 // Unsupported : g_dbus_connection_new_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
 
@@ -1096,18 +1048,6 @@ func (recv *DBusMethodInvocation) ReturnGerror(error *glib.Error) {
 
 // Unsupported : g_dbus_method_invocation_return_value : unsupported parameter parameters : Blacklisted record : GVariant
 
-// Unsupported signal : unsupported parameter changed_properties : Blacklisted record : GVariant
-
-// Unsupported signal : unsupported parameter parameters : Blacklisted record : GVariant
-
-// Unsupported : g_dbus_object_manager_client_new_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
-
-// Unsupported : g_dbus_object_manager_client_new_for_bus_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
-
-// Unsupported : g_dbus_object_manager_client_new_for_bus_sync : unsupported parameter get_proxy_type_func : no type generator for DBusProxyTypeFunc, GDBusProxyTypeFunc
-
-// Unsupported : g_dbus_object_manager_client_new_sync : unsupported parameter get_proxy_type_func : no type generator for DBusProxyTypeFunc, GDBusProxyTypeFunc
-
 // DBusProxy is a wrapper around the C record GDBusProxy.
 type DBusProxy struct {
 	native *C.GDBusProxy
@@ -1340,15 +1280,6 @@ func (recv *DBusServer) Object() *gobject.Object {
 func CastToDBusServer(object *gobject.Object) *DBusServer {
 	return DBusServerNewFromC(object.ToC())
 }
-
-var signalDBusServerNewConnectionId int
-var signalDBusServerNewConnectionMap = make(map[int]DBusServerSignalNewConnectionCallback)
-var signalDBusServerNewConnectionLock sync.Mutex
-
-// DBusServerSignalNewConnectionCallback is a callback function for a 'new-connection' signal emitted from a DBusServer.
-type DBusServerSignalNewConnectionCallback func(connection *DBusConnection) bool
-
-func DBusServer_newConnectionHandler() {}
 
 // DBusServerNewSync is a wrapper around the C function g_dbus_server_new_sync.
 func DBusServerNewSync(address string, flags DBusServerFlags, guid string, observer *DBusAuthObserver, cancellable *Cancellable) (*DBusServer, error) {
@@ -2100,10 +2031,6 @@ func (recv *SocketClient) SetTimeout(timeout uint32) {
 
 	return
 }
-
-// Unsupported : g_subprocess_new : unsupported parameter error : record with indirection level of 2
-
-// Unsupported : g_subprocess_newv : unsupported parameter argv : no param type
 
 // Unsupported : g_task_new : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
 

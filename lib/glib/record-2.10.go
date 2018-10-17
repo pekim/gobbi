@@ -18,14 +18,6 @@ import "C"
 
 // Unsupported : g_async_queue_sort_unlocked : unsupported parameter func : no type generator for CompareDataFunc, GCompareDataFunc
 
-// Unsupported : g_bytes_new : unsupported parameter data : no param type
-
-// Unsupported : g_bytes_new_static : unsupported parameter data : no param type
-
-// Unsupported : g_bytes_new_take : unsupported parameter data : no param type
-
-// Unsupported : g_bytes_new_with_free_func : unsupported parameter data : no param type
-
 // Unsupported : g_date_set_time_t : unsupported parameter timet : no type generator for glong, time_t
 
 // SetTimeVal is a wrapper around the C function g_date_set_time_val.
@@ -60,5 +52,3 @@ func (recv *MainContext) IsOwner() bool {
 // Unsupported : g_thread_pool_set_sort_function : unsupported parameter func : no type generator for CompareDataFunc, GCompareDataFunc
 
 // Unsupported : g_variant_builder_new : unsupported parameter type : Blacklisted record : GVariantType
-
-// Unsupported : g_variant_dict_new : unsupported parameter from_asv : Blacklisted record : GVariant

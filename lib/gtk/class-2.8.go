@@ -311,8 +311,6 @@ func (recv *MenuShell) SetTakeFocus(takeFocus bool) {
 
 // Unsupported signal : unsupported parameter allocation : Blacklisted record : GdkRectangle
 
-// Unsupported : gtk_pad_controller_new : unsupported parameter group : no type generator for Gio.ActionGroup, GActionGroup*
-
 // Unsupported : gtk_page_setup_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
 
 // Unsupported signal : unsupported parameter dest_file : no type generator for Gio.File,
@@ -422,6 +420,8 @@ var signalWidgetGrabBrokenEventLock sync.Mutex
 
 // WidgetSignalGrabBrokenEventCallback is a callback function for a 'grab-broken-event' signal emitted from a Widget.
 type WidgetSignalGrabBrokenEventCallback func(event *gdk.EventGrabBroken) bool
+
+func (recv *Widget) ConnectGrabBrokenEvent() {}
 
 func Widget_grabBrokenEventHandler() {}
 

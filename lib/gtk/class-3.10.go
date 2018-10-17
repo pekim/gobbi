@@ -522,6 +522,8 @@ var signalListBoxRowActivatedLock sync.Mutex
 // ListBoxSignalRowActivatedCallback is a callback function for a 'row-activated' signal emitted from a ListBox.
 type ListBoxSignalRowActivatedCallback func(row *ListBoxRow)
 
+func (recv *ListBox) ConnectRowActivated() {}
+
 func ListBox_rowActivatedHandler() {}
 
 var signalListBoxRowSelectedId int
@@ -530,6 +532,8 @@ var signalListBoxRowSelectedLock sync.Mutex
 
 // ListBoxSignalRowSelectedCallback is a callback function for a 'row-selected' signal emitted from a ListBox.
 type ListBoxSignalRowSelectedCallback func(row *ListBoxRow)
+
+func (recv *ListBox) ConnectRowSelected() {}
 
 func ListBox_rowSelectedHandler() {}
 
@@ -709,6 +713,8 @@ var signalListBoxRowActivateLock sync.Mutex
 // ListBoxRowSignalActivateCallback is a callback function for a 'activate' signal emitted from a ListBoxRow.
 type ListBoxRowSignalActivateCallback func()
 
+func (recv *ListBoxRow) ConnectActivate() {}
+
 func ListBoxRow_activateHandler() {}
 
 // ListBoxRowNew is a wrapper around the C function gtk_list_box_row_new.
@@ -761,8 +767,6 @@ func (recv *ListBoxRow) SetHeader(header *Widget) {
 
 // Unsupported signal : unsupported parameter allocation : Blacklisted record : GdkRectangle
 
-// Unsupported : gtk_pad_controller_new : unsupported parameter group : no type generator for Gio.ActionGroup, GActionGroup*
-
 // Unsupported : gtk_page_setup_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
 
 var signalPlacesSidebarDragActionAskId int
@@ -771,6 +775,8 @@ var signalPlacesSidebarDragActionAskLock sync.Mutex
 
 // PlacesSidebarSignalDragActionAskCallback is a callback function for a 'drag-action-ask' signal emitted from a PlacesSidebar.
 type PlacesSidebarSignalDragActionAskCallback func(actions int32) int32
+
+func (recv *PlacesSidebar) ConnectDragActionAsk() {}
 
 func PlacesSidebar_dragActionAskHandler() {}
 
@@ -788,6 +794,8 @@ var signalPlacesSidebarShowErrorMessageLock sync.Mutex
 
 // PlacesSidebarSignalShowErrorMessageCallback is a callback function for a 'show-error-message' signal emitted from a PlacesSidebar.
 type PlacesSidebarSignalShowErrorMessageCallback func(primary string, secondary string)
+
+func (recv *PlacesSidebar) ConnectShowErrorMessage() {}
 
 func PlacesSidebar_showErrorMessageHandler() {}
 
@@ -1001,6 +1009,8 @@ var signalSearchEntrySearchChangedLock sync.Mutex
 
 // SearchEntrySignalSearchChangedCallback is a callback function for a 'search-changed' signal emitted from a SearchEntry.
 type SearchEntrySignalSearchChangedCallback func()
+
+func (recv *SearchEntry) ConnectSearchChanged() {}
 
 func SearchEntry_searchChangedHandler() {}
 

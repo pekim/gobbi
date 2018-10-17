@@ -78,6 +78,8 @@ var signalDisplayClosedLock sync.Mutex
 // DisplaySignalClosedCallback is a callback function for a 'closed' signal emitted from a Display.
 type DisplaySignalClosedCallback func(isError bool)
 
+func (recv *Display) ConnectClosed() {}
+
 func Display_closedHandler() {}
 
 // Beep is a wrapper around the C function gdk_display_beep.
@@ -209,6 +211,8 @@ var signalDisplayManagerDisplayOpenedLock sync.Mutex
 // DisplayManagerSignalDisplayOpenedCallback is a callback function for a 'display-opened' signal emitted from a DisplayManager.
 type DisplayManagerSignalDisplayOpenedCallback func(display *Display)
 
+func (recv *DisplayManager) ConnectDisplayOpened() {}
+
 func DisplayManager_displayOpenedHandler() {}
 
 // GetDefaultDisplay is a wrapper around the C function gdk_display_manager_get_default_display.
@@ -243,6 +247,8 @@ var signalKeymapKeysChangedLock sync.Mutex
 // KeymapSignalKeysChangedCallback is a callback function for a 'keys-changed' signal emitted from a Keymap.
 type KeymapSignalKeysChangedCallback func()
 
+func (recv *Keymap) ConnectKeysChanged() {}
+
 func Keymap_keysChangedHandler() {}
 
 var signalScreenSizeChangedId int
@@ -251,6 +257,8 @@ var signalScreenSizeChangedLock sync.Mutex
 
 // ScreenSignalSizeChangedCallback is a callback function for a 'size-changed' signal emitted from a Screen.
 type ScreenSignalSizeChangedCallback func()
+
+func (recv *Screen) ConnectSizeChanged() {}
 
 func Screen_sizeChangedHandler() {}
 

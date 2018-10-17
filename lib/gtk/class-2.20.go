@@ -104,6 +104,8 @@ var signalEntryPreeditChangedLock sync.Mutex
 // EntrySignalPreeditChangedCallback is a callback function for a 'preedit-changed' signal emitted from a Entry.
 type EntrySignalPreeditChangedCallback func(preedit string)
 
+func (recv *Entry) ConnectPreeditChanged() {}
+
 func Entry_preeditChangedHandler() {}
 
 // Unsupported signal : unsupported parameter model : no type generator for TreeModel,
@@ -182,8 +184,6 @@ func (recv *OffscreenWindow) GetSurface() *cairo.Surface {
 }
 
 // Unsupported signal : unsupported parameter allocation : Blacklisted record : GdkRectangle
-
-// Unsupported : gtk_pad_controller_new : unsupported parameter group : no type generator for Gio.ActionGroup, GActionGroup*
 
 // Unsupported : gtk_page_setup_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
 
@@ -339,6 +339,8 @@ var signalTextViewPreeditChangedLock sync.Mutex
 
 // TextViewSignalPreeditChangedCallback is a callback function for a 'preedit-changed' signal emitted from a TextView.
 type TextViewSignalPreeditChangedCallback func(preedit string)
+
+func (recv *TextView) ConnectPreeditChanged() {}
 
 func TextView_preeditChangedHandler() {}
 

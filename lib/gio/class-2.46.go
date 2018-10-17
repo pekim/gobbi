@@ -6,7 +6,6 @@ package gio
 import (
 	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
-	"sync"
 	"unsafe"
 )
 
@@ -23,15 +22,6 @@ import (
 // #include <gio/gunixoutputstream.h>
 // #include <gio/gunixsocketaddress.h>
 // #include <stdlib.h>
-/*
-
-	void SocketListener_eventHandler();
-
-	static gulong SocketListener_signal_connect_event(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "event", SocketListener_eventHandler, data);
-	}
-
-*/
 import "C"
 
 // Unsupported signal : unsupported parameter info : no type generator for AppInfo,
@@ -137,15 +127,6 @@ func (recv *DBusConnection) RegisterObjectWithClosures(objectPath string, interf
 // Unsupported : g_simple_async_result_new_take_error : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
 
 // Unsupported signal : unsupported parameter connectable : no type generator for SocketConnectable,
-
-var signalSocketListenerEventId int
-var signalSocketListenerEventMap = make(map[int]SocketListenerSignalEventCallback)
-var signalSocketListenerEventLock sync.Mutex
-
-// SocketListenerSignalEventCallback is a callback function for a 'event' signal emitted from a SocketListener.
-type SocketListenerSignalEventCallback func(event SocketListenerEvent, socket *Socket)
-
-func SocketListener_eventHandler() {}
 
 // Unsupported : g_subprocess_new : unsupported parameter error : record with indirection level of 2
 

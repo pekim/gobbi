@@ -42,19 +42,10 @@ import (
 */
 /*
 
-	void Seat_toolAddedHandler();
+	void Monitor_invalidateHandler();
 
-	static gulong Seat_signal_connect_tool_added(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "tool-added", Seat_toolAddedHandler, data);
-	}
-
-*/
-/*
-
-	void Seat_toolRemovedHandler();
-
-	static gulong Seat_signal_connect_tool_removed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "tool-removed", Seat_toolRemovedHandler, data);
+	static gulong Monitor_signal_connect_invalidate(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "invalidate", Monitor_invalidateHandler, data);
 	}
 
 */
@@ -75,6 +66,8 @@ var signalDeviceToolChangedLock sync.Mutex
 
 // DeviceSignalToolChangedCallback is a callback function for a 'tool-changed' signal emitted from a Device.
 type DeviceSignalToolChangedCallback func(tool *DeviceTool)
+
+func (recv *Device) ConnectToolChanged() {}
 
 func Device_toolChangedHandler() {}
 
@@ -149,6 +142,8 @@ var signalDisplayMonitorAddedLock sync.Mutex
 // DisplaySignalMonitorAddedCallback is a callback function for a 'monitor-added' signal emitted from a Display.
 type DisplaySignalMonitorAddedCallback func(monitor *Monitor)
 
+func (recv *Display) ConnectMonitorAdded() {}
+
 func Display_monitorAddedHandler() {}
 
 var signalDisplayMonitorRemovedId int
@@ -157,6 +152,8 @@ var signalDisplayMonitorRemovedLock sync.Mutex
 
 // DisplaySignalMonitorRemovedCallback is a callback function for a 'monitor-removed' signal emitted from a Display.
 type DisplaySignalMonitorRemovedCallback func(monitor *Monitor)
+
+func (recv *Display) ConnectMonitorRemoved() {}
 
 func Display_monitorRemovedHandler() {}
 
@@ -321,6 +318,17 @@ func CastToMonitor(object *gobject.Object) *Monitor {
 	return MonitorNewFromC(object.ToC())
 }
 
+var signalMonitorInvalidateId int
+var signalMonitorInvalidateMap = make(map[int]MonitorSignalInvalidateCallback)
+var signalMonitorInvalidateLock sync.Mutex
+
+// MonitorSignalInvalidateCallback is a callback function for a 'invalidate' signal emitted from a Monitor.
+type MonitorSignalInvalidateCallback func()
+
+func (recv *Monitor) ConnectInvalidate() {}
+
+func Monitor_invalidateHandler() {}
+
 // GetDisplay is a wrapper around the C function gdk_monitor_get_display.
 func (recv *Monitor) GetDisplay() *Display {
 	retC := C.gdk_monitor_get_display((*C.GdkMonitor)(recv.native))
@@ -430,24 +438,6 @@ func CastToSeat(object *gobject.Object) *Seat {
 	return SeatNewFromC(object.ToC())
 }
 
-var signalSeatToolAddedId int
-var signalSeatToolAddedMap = make(map[int]SeatSignalToolAddedCallback)
-var signalSeatToolAddedLock sync.Mutex
-
-// SeatSignalToolAddedCallback is a callback function for a 'tool-added' signal emitted from a Seat.
-type SeatSignalToolAddedCallback func(tool *DeviceTool)
-
-func Seat_toolAddedHandler() {}
-
-var signalSeatToolRemovedId int
-var signalSeatToolRemovedMap = make(map[int]SeatSignalToolRemovedCallback)
-var signalSeatToolRemovedLock sync.Mutex
-
-// SeatSignalToolRemovedCallback is a callback function for a 'tool-removed' signal emitted from a Seat.
-type SeatSignalToolRemovedCallback func(tool *DeviceTool)
-
-func Seat_toolRemovedHandler() {}
-
 // GetDisplay is a wrapper around the C function gdk_seat_get_display.
 func (recv *Seat) GetDisplay() *Display {
 	retC := C.gdk_seat_get_display((*C.GdkSeat)(recv.native))
@@ -462,6 +452,8 @@ var signalWindowMovedToRectLock sync.Mutex
 
 // WindowSignalMovedToRectCallback is a callback function for a 'moved-to-rect' signal emitted from a Window.
 type WindowSignalMovedToRectCallback func(flippedRect uintptr, finalRect uintptr, flippedX bool, flippedY bool)
+
+func (recv *Window) ConnectMovedToRect() {}
 
 func Window_movedToRectHandler() {}
 

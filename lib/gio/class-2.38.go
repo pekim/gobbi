@@ -223,10 +223,6 @@ func PropertyActionNew(name string, object uintptr, propertyName string) *Proper
 
 // Unsupported signal : unsupported parameter connectable : no type generator for SocketConnectable,
 
-// Unsupported : g_subprocess_new : unsupported parameter error : record with indirection level of 2
-
-// Unsupported : g_subprocess_newv : unsupported parameter argv : no param type
-
 // Unsupported : g_task_new : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
 
 // Unsupported : g_themed_icon_new_from_names : unsupported parameter iconnames : no param type

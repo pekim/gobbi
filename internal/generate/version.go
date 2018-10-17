@@ -35,7 +35,16 @@ func VersionNew(value string) Version {
 	}
 }
 
+func (v Version) GTE(other Version) bool {
+	return v.version.GTE(other.version)
+}
+
 func supportedByVersion(versioned Versioned, targetVersion *Version) bool {
+	if targetVersion.value == versioned.version() {
+		//fmt.Println(targetVersion.value)
+		return true
+	}
+
 	if targetVersion == nil && versioned.version() != "" {
 		return false
 	}

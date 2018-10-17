@@ -84,6 +84,8 @@ var signalApplicationWindowAddedLock sync.Mutex
 // ApplicationSignalWindowAddedCallback is a callback function for a 'window-added' signal emitted from a Application.
 type ApplicationSignalWindowAddedCallback func(window *Window)
 
+func (recv *Application) ConnectWindowAdded() {}
+
 func Application_windowAddedHandler() {}
 
 var signalApplicationWindowRemovedId int
@@ -92,6 +94,8 @@ var signalApplicationWindowRemovedLock sync.Mutex
 
 // ApplicationSignalWindowRemovedCallback is a callback function for a 'window-removed' signal emitted from a Application.
 type ApplicationSignalWindowRemovedCallback func(window *Window)
+
+func (recv *Application) ConnectWindowRemoved() {}
 
 func Application_windowRemovedHandler() {}
 
@@ -321,6 +325,8 @@ var signalMenuShellInsertLock sync.Mutex
 // MenuShellSignalInsertCallback is a callback function for a 'insert' signal emitted from a MenuShell.
 type MenuShellSignalInsertCallback func(child *Widget, position int32)
 
+func (recv *MenuShell) ConnectInsert() {}
+
 func MenuShell_insertHandler() {}
 
 // Unsupported : gtk_message_dialog_new : unsupported parameter ... : varargs
@@ -345,8 +351,6 @@ func (recv *Overlay) AddOverlay(widget *Widget) {
 
 	return
 }
-
-// Unsupported : gtk_pad_controller_new : unsupported parameter group : no type generator for Gio.ActionGroup, GActionGroup*
 
 // Unsupported : gtk_page_setup_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
 

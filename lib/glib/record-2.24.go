@@ -12,14 +12,6 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : g_bytes_new : unsupported parameter data : no param type
-
-// Unsupported : g_bytes_new_static : unsupported parameter data : no param type
-
-// Unsupported : g_bytes_new_take : unsupported parameter data : no param type
-
-// Unsupported : g_bytes_new_with_free_func : unsupported parameter data : no param type
-
 // Unsupported : g_error_new : unsupported parameter ... : varargs
 
 // Unsupported : g_error_new_valist : unsupported parameter args : no type generator for va_list, va_list
@@ -74,8 +66,6 @@ func (recv *VariantBuilder) Unref() {
 
 	return
 }
-
-// Unsupported : g_variant_dict_new : unsupported parameter from_asv : Blacklisted record : GVariant
 
 // Copy is a wrapper around the C function g_variant_iter_copy.
 func (recv *VariantIter) Copy() *VariantIter {

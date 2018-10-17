@@ -190,8 +190,6 @@ func (recv *Notebook) GetTabVborder() uint16 {
 
 // Unsupported signal : unsupported parameter allocation : Blacklisted record : GdkRectangle
 
-// Unsupported : gtk_pad_controller_new : unsupported parameter group : no type generator for Gio.ActionGroup, GActionGroup*
-
 // Unsupported : gtk_page_setup_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
 
 // Unsupported signal : unsupported parameter dest_file : no type generator for Gio.File,

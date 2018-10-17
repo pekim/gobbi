@@ -448,14 +448,6 @@ func (recv *BookmarkFile) ToFile(filename string) (bool, error) {
 	return retGo, goThrowableError
 }
 
-// Unsupported : g_bytes_new : unsupported parameter data : no param type
-
-// Unsupported : g_bytes_new_static : unsupported parameter data : no param type
-
-// Unsupported : g_bytes_new_take : unsupported parameter data : no param type
-
-// Unsupported : g_bytes_new_with_free_func : unsupported parameter data : no param type
-
 // Unsupported : g_error_new : unsupported parameter ... : varargs
 
 // Unsupported : g_error_new_valist : unsupported parameter args : no type generator for va_list, va_list
@@ -583,5 +575,3 @@ func (recv *TimeVal) ToIso8601() string {
 }
 
 // Unsupported : g_variant_builder_new : unsupported parameter type : Blacklisted record : GVariantType
-
-// Unsupported : g_variant_dict_new : unsupported parameter from_asv : Blacklisted record : GVariant

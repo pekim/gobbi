@@ -96,6 +96,8 @@ var signalPlacesSidebarShowStarredLocationLock sync.Mutex
 // PlacesSidebarSignalShowStarredLocationCallback is a callback function for a 'show-starred-location' signal emitted from a PlacesSidebar.
 type PlacesSidebarSignalShowStarredLocationCallback func(object PlacesOpenFlags)
 
+func (recv *PlacesSidebar) ConnectShowStarredLocation() {}
+
 func PlacesSidebar_showStarredLocationHandler() {}
 
 // GetShowStarredLocation is a wrapper around the C function gtk_places_sidebar_get_show_starred_location.

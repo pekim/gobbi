@@ -123,15 +123,6 @@ import (
 	}
 
 */
-/*
-
-	void Monitor_invalidateHandler();
-
-	static gulong Monitor_signal_connect_invalidate(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "invalidate", Monitor_invalidateHandler, data);
-	}
-
-*/
 import "C"
 
 // AppLaunchContext is a wrapper around the C record GdkAppLaunchContext.
@@ -267,6 +258,8 @@ var signalDeviceChangedLock sync.Mutex
 // DeviceSignalChangedCallback is a callback function for a 'changed' signal emitted from a Device.
 type DeviceSignalChangedCallback func()
 
+func (recv *Device) ConnectChanged() {}
+
 func Device_changedHandler() {}
 
 // Unsupported : gdk_device_get_axis : unsupported parameter axes : no param type
@@ -356,6 +349,8 @@ var signalDeviceManagerDeviceAddedLock sync.Mutex
 // DeviceManagerSignalDeviceAddedCallback is a callback function for a 'device-added' signal emitted from a DeviceManager.
 type DeviceManagerSignalDeviceAddedCallback func(device *Device)
 
+func (recv *DeviceManager) ConnectDeviceAdded() {}
+
 func DeviceManager_deviceAddedHandler() {}
 
 var signalDeviceManagerDeviceChangedId int
@@ -365,6 +360,8 @@ var signalDeviceManagerDeviceChangedLock sync.Mutex
 // DeviceManagerSignalDeviceChangedCallback is a callback function for a 'device-changed' signal emitted from a DeviceManager.
 type DeviceManagerSignalDeviceChangedCallback func(device *Device)
 
+func (recv *DeviceManager) ConnectDeviceChanged() {}
+
 func DeviceManager_deviceChangedHandler() {}
 
 var signalDeviceManagerDeviceRemovedId int
@@ -373,6 +370,8 @@ var signalDeviceManagerDeviceRemovedLock sync.Mutex
 
 // DeviceManagerSignalDeviceRemovedCallback is a callback function for a 'device-removed' signal emitted from a DeviceManager.
 type DeviceManagerSignalDeviceRemovedCallback func(device *Device)
+
+func (recv *DeviceManager) ConnectDeviceRemoved() {}
 
 func DeviceManager_deviceRemovedHandler() {}
 
@@ -414,6 +413,8 @@ var signalDisplayOpenedLock sync.Mutex
 
 // DisplaySignalOpenedCallback is a callback function for a 'opened' signal emitted from a Display.
 type DisplaySignalOpenedCallback func()
+
+func (recv *Display) ConnectOpened() {}
 
 func Display_openedHandler() {}
 
@@ -547,6 +548,8 @@ var signalFrameClockAfterPaintLock sync.Mutex
 // FrameClockSignalAfterPaintCallback is a callback function for a 'after-paint' signal emitted from a FrameClock.
 type FrameClockSignalAfterPaintCallback func()
 
+func (recv *FrameClock) ConnectAfterPaint() {}
+
 func FrameClock_afterPaintHandler() {}
 
 var signalFrameClockBeforePaintId int
@@ -555,6 +558,8 @@ var signalFrameClockBeforePaintLock sync.Mutex
 
 // FrameClockSignalBeforePaintCallback is a callback function for a 'before-paint' signal emitted from a FrameClock.
 type FrameClockSignalBeforePaintCallback func()
+
+func (recv *FrameClock) ConnectBeforePaint() {}
 
 func FrameClock_beforePaintHandler() {}
 
@@ -565,6 +570,8 @@ var signalFrameClockFlushEventsLock sync.Mutex
 // FrameClockSignalFlushEventsCallback is a callback function for a 'flush-events' signal emitted from a FrameClock.
 type FrameClockSignalFlushEventsCallback func()
 
+func (recv *FrameClock) ConnectFlushEvents() {}
+
 func FrameClock_flushEventsHandler() {}
 
 var signalFrameClockLayoutId int
@@ -573,6 +580,8 @@ var signalFrameClockLayoutLock sync.Mutex
 
 // FrameClockSignalLayoutCallback is a callback function for a 'layout' signal emitted from a FrameClock.
 type FrameClockSignalLayoutCallback func()
+
+func (recv *FrameClock) ConnectLayout() {}
 
 func FrameClock_layoutHandler() {}
 
@@ -583,6 +592,8 @@ var signalFrameClockPaintLock sync.Mutex
 // FrameClockSignalPaintCallback is a callback function for a 'paint' signal emitted from a FrameClock.
 type FrameClockSignalPaintCallback func()
 
+func (recv *FrameClock) ConnectPaint() {}
+
 func FrameClock_paintHandler() {}
 
 var signalFrameClockResumeEventsId int
@@ -592,6 +603,8 @@ var signalFrameClockResumeEventsLock sync.Mutex
 // FrameClockSignalResumeEventsCallback is a callback function for a 'resume-events' signal emitted from a FrameClock.
 type FrameClockSignalResumeEventsCallback func()
 
+func (recv *FrameClock) ConnectResumeEvents() {}
+
 func FrameClock_resumeEventsHandler() {}
 
 var signalFrameClockUpdateId int
@@ -600,6 +613,8 @@ var signalFrameClockUpdateLock sync.Mutex
 
 // FrameClockSignalUpdateCallback is a callback function for a 'update' signal emitted from a FrameClock.
 type FrameClockSignalUpdateCallback func()
+
+func (recv *FrameClock) ConnectUpdate() {}
 
 func FrameClock_updateHandler() {}
 
@@ -690,15 +705,6 @@ func (recv *Keymap) LookupKey(key *KeymapKey) uint32 {
 }
 
 // Unsupported : gdk_keymap_translate_keyboard_state : unsupported parameter consumed_modifiers : GdkModifierType* with indirection level of 1
-
-var signalMonitorInvalidateId int
-var signalMonitorInvalidateMap = make(map[int]MonitorSignalInvalidateCallback)
-var signalMonitorInvalidateLock sync.Mutex
-
-// MonitorSignalInvalidateCallback is a callback function for a 'invalidate' signal emitted from a Monitor.
-type MonitorSignalInvalidateCallback func()
-
-func Monitor_invalidateHandler() {}
 
 // Screen is a wrapper around the C record GdkScreen.
 type Screen struct {

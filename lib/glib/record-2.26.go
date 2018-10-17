@@ -12,14 +12,6 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : g_bytes_new : unsupported parameter data : no param type
-
-// Unsupported : g_bytes_new_static : unsupported parameter data : no param type
-
-// Unsupported : g_bytes_new_take : unsupported parameter data : no param type
-
-// Unsupported : g_bytes_new_with_free_func : unsupported parameter data : no param type
-
 // DateTime is a wrapper around the C record GDateTime.
 type DateTime struct {
 	native *C.GDateTime
@@ -727,5 +719,3 @@ func (recv *TimeZone) Unref() {
 // Unsupported : g_variant_builder_new : unsupported parameter type : Blacklisted record : GVariantType
 
 // Unsupported : g_variant_builder_add_parsed : unsupported parameter ... : varargs
-
-// Unsupported : g_variant_dict_new : unsupported parameter from_asv : Blacklisted record : GVariant

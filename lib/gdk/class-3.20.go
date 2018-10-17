@@ -66,24 +66,6 @@ import (
 	}
 
 */
-/*
-
-	void Seat_deviceAddedHandler();
-
-	static gulong Seat_signal_connect_device_added(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "device-added", Seat_deviceAddedHandler, data);
-	}
-
-*/
-/*
-
-	void Seat_deviceRemovedHandler();
-
-	static gulong Seat_signal_connect_device_removed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "device-removed", Seat_deviceRemovedHandler, data);
-	}
-
-*/
 import "C"
 
 // GetSeat is a wrapper around the C function gdk_device_get_seat.
@@ -101,6 +83,8 @@ var signalDisplaySeatAddedLock sync.Mutex
 // DisplaySignalSeatAddedCallback is a callback function for a 'seat-added' signal emitted from a Display.
 type DisplaySignalSeatAddedCallback func(seat *Seat)
 
+func (recv *Display) ConnectSeatAdded() {}
+
 func Display_seatAddedHandler() {}
 
 var signalDisplaySeatRemovedId int
@@ -109,6 +93,8 @@ var signalDisplaySeatRemovedLock sync.Mutex
 
 // DisplaySignalSeatRemovedCallback is a callback function for a 'seat-removed' signal emitted from a Display.
 type DisplaySignalSeatRemovedCallback func(seat *Seat)
+
+func (recv *Display) ConnectSeatRemoved() {}
 
 func Display_seatRemovedHandler() {}
 
@@ -135,6 +121,8 @@ var signalDragContextActionChangedLock sync.Mutex
 // DragContextSignalActionChangedCallback is a callback function for a 'action-changed' signal emitted from a DragContext.
 type DragContextSignalActionChangedCallback func(action DragAction)
 
+func (recv *DragContext) ConnectActionChanged() {}
+
 func DragContext_actionChangedHandler() {}
 
 var signalDragContextCancelId int
@@ -143,6 +131,8 @@ var signalDragContextCancelLock sync.Mutex
 
 // DragContextSignalCancelCallback is a callback function for a 'cancel' signal emitted from a DragContext.
 type DragContextSignalCancelCallback func(reason DragCancelReason)
+
+func (recv *DragContext) ConnectCancel() {}
 
 func DragContext_cancelHandler() {}
 
@@ -153,6 +143,8 @@ var signalDragContextDndFinishedLock sync.Mutex
 // DragContextSignalDndFinishedCallback is a callback function for a 'dnd-finished' signal emitted from a DragContext.
 type DragContextSignalDndFinishedCallback func()
 
+func (recv *DragContext) ConnectDndFinished() {}
+
 func DragContext_dndFinishedHandler() {}
 
 var signalDragContextDropPerformedId int
@@ -161,6 +153,8 @@ var signalDragContextDropPerformedLock sync.Mutex
 
 // DragContextSignalDropPerformedCallback is a callback function for a 'drop-performed' signal emitted from a DragContext.
 type DragContextSignalDropPerformedCallback func(time int32)
+
+func (recv *DragContext) ConnectDropPerformed() {}
 
 func DragContext_dropPerformedHandler() {}
 
@@ -201,65 +195,4 @@ func (recv *GLContext) IsLegacy() bool {
 	retGo := retC == C.TRUE
 
 	return retGo
-}
-
-var signalSeatDeviceAddedId int
-var signalSeatDeviceAddedMap = make(map[int]SeatSignalDeviceAddedCallback)
-var signalSeatDeviceAddedLock sync.Mutex
-
-// SeatSignalDeviceAddedCallback is a callback function for a 'device-added' signal emitted from a Seat.
-type SeatSignalDeviceAddedCallback func(device *Device)
-
-func Seat_deviceAddedHandler() {}
-
-var signalSeatDeviceRemovedId int
-var signalSeatDeviceRemovedMap = make(map[int]SeatSignalDeviceRemovedCallback)
-var signalSeatDeviceRemovedLock sync.Mutex
-
-// SeatSignalDeviceRemovedCallback is a callback function for a 'device-removed' signal emitted from a Seat.
-type SeatSignalDeviceRemovedCallback func(device *Device)
-
-func Seat_deviceRemovedHandler() {}
-
-// GetCapabilities is a wrapper around the C function gdk_seat_get_capabilities.
-func (recv *Seat) GetCapabilities() SeatCapabilities {
-	retC := C.gdk_seat_get_capabilities((*C.GdkSeat)(recv.native))
-	retGo := (SeatCapabilities)(retC)
-
-	return retGo
-}
-
-// GetKeyboard is a wrapper around the C function gdk_seat_get_keyboard.
-func (recv *Seat) GetKeyboard() *Device {
-	retC := C.gdk_seat_get_keyboard((*C.GdkSeat)(recv.native))
-	retGo := DeviceNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// GetPointer is a wrapper around the C function gdk_seat_get_pointer.
-func (recv *Seat) GetPointer() *Device {
-	retC := C.gdk_seat_get_pointer((*C.GdkSeat)(recv.native))
-	retGo := DeviceNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// GetSlaves is a wrapper around the C function gdk_seat_get_slaves.
-func (recv *Seat) GetSlaves(capabilities SeatCapabilities) *glib.List {
-	c_capabilities := (C.GdkSeatCapabilities)(capabilities)
-
-	retC := C.gdk_seat_get_slaves((*C.GdkSeat)(recv.native), c_capabilities)
-	retGo := glib.ListNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// Unsupported : gdk_seat_grab : unsupported parameter event : no type generator for Event, const GdkEvent*
-
-// Ungrab is a wrapper around the C function gdk_seat_ungrab.
-func (recv *Seat) Ungrab() {
-	C.gdk_seat_ungrab((*C.GdkSeat)(recv.native))
-
-	return
 }

@@ -142,8 +142,6 @@ func (recv *Overlay) SetOverlayPassThrough(widget *Widget, passThrough bool) {
 	return
 }
 
-// Unsupported : gtk_pad_controller_new : unsupported parameter group : no type generator for Gio.ActionGroup, GActionGroup*
-
 // Unsupported : gtk_page_setup_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
 
 // Unsupported signal : unsupported parameter dest_file : no type generator for Gio.File,
@@ -160,6 +158,8 @@ var signalPlacesSidebarShowOtherLocationsLock sync.Mutex
 
 // PlacesSidebarSignalShowOtherLocationsCallback is a callback function for a 'show-other-locations' signal emitted from a PlacesSidebar.
 type PlacesSidebarSignalShowOtherLocationsCallback func()
+
+func (recv *PlacesSidebar) ConnectShowOtherLocations() {}
 
 func PlacesSidebar_showOtherLocationsHandler() {}
 

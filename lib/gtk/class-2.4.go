@@ -215,6 +215,8 @@ var signalAccelMapChangedLock sync.Mutex
 // AccelMapSignalChangedCallback is a callback function for a 'changed' signal emitted from a AccelMap.
 type AccelMapSignalChangedCallback func(accelPath string, accelKey uint32, accelMods gdk.ModifierType)
 
+func (recv *AccelMap) ConnectChanged() {}
+
 func AccelMap_changedHandler() {}
 
 var signalActionActivateId int
@@ -223,6 +225,8 @@ var signalActionActivateLock sync.Mutex
 
 // ActionSignalActivateCallback is a callback function for a 'activate' signal emitted from a Action.
 type ActionSignalActivateCallback func()
+
+func (recv *Action) ConnectActivate() {}
 
 func Action_activateHandler() {}
 
@@ -359,6 +363,8 @@ var signalActionGroupConnectProxyLock sync.Mutex
 // ActionGroupSignalConnectProxyCallback is a callback function for a 'connect-proxy' signal emitted from a ActionGroup.
 type ActionGroupSignalConnectProxyCallback func(action *Action, proxy *Widget)
 
+func (recv *ActionGroup) ConnectConnectProxy() {}
+
 func ActionGroup_connectProxyHandler() {}
 
 var signalActionGroupDisconnectProxyId int
@@ -367,6 +373,8 @@ var signalActionGroupDisconnectProxyLock sync.Mutex
 
 // ActionGroupSignalDisconnectProxyCallback is a callback function for a 'disconnect-proxy' signal emitted from a ActionGroup.
 type ActionGroupSignalDisconnectProxyCallback func(action *Action, proxy *Widget)
+
+func (recv *ActionGroup) ConnectDisconnectProxy() {}
 
 func ActionGroup_disconnectProxyHandler() {}
 
@@ -377,6 +385,8 @@ var signalActionGroupPostActivateLock sync.Mutex
 // ActionGroupSignalPostActivateCallback is a callback function for a 'post-activate' signal emitted from a ActionGroup.
 type ActionGroupSignalPostActivateCallback func(action *Action)
 
+func (recv *ActionGroup) ConnectPostActivate() {}
+
 func ActionGroup_postActivateHandler() {}
 
 var signalActionGroupPreActivateId int
@@ -385,6 +395,8 @@ var signalActionGroupPreActivateLock sync.Mutex
 
 // ActionGroupSignalPreActivateCallback is a callback function for a 'pre-activate' signal emitted from a ActionGroup.
 type ActionGroupSignalPreActivateCallback func(action *Action)
+
+func (recv *ActionGroup) ConnectPreActivate() {}
 
 func ActionGroup_preActivateHandler() {}
 
@@ -648,6 +660,8 @@ var signalCellRendererEditingCanceledLock sync.Mutex
 // CellRendererSignalEditingCanceledCallback is a callback function for a 'editing-canceled' signal emitted from a CellRenderer.
 type CellRendererSignalEditingCanceledCallback func()
 
+func (recv *CellRenderer) ConnectEditingCanceled() {}
+
 func CellRenderer_editingCanceledHandler() {}
 
 // Unsupported signal : unsupported parameter editable : no type generator for CellEditable,
@@ -680,6 +694,8 @@ var signalColorButtonColorSetLock sync.Mutex
 
 // ColorButtonSignalColorSetCallback is a callback function for a 'color-set' signal emitted from a ColorButton.
 type ColorButtonSignalColorSetCallback func()
+
+func (recv *ColorButton) ConnectColorSet() {}
 
 func ColorButton_colorSetHandler() {}
 
@@ -780,6 +796,8 @@ var signalComboBoxChangedLock sync.Mutex
 
 // ComboBoxSignalChangedCallback is a callback function for a 'changed' signal emitted from a ComboBox.
 type ComboBoxSignalChangedCallback func()
+
+func (recv *ComboBox) ConnectChanged() {}
 
 func ComboBox_changedHandler() {}
 
@@ -920,6 +938,8 @@ var signalEntryCompletionActionActivatedLock sync.Mutex
 
 // EntryCompletionSignalActionActivatedCallback is a callback function for a 'action-activated' signal emitted from a EntryCompletion.
 type EntryCompletionSignalActionActivatedCallback func(index int32)
+
+func (recv *EntryCompletion) ConnectActionActivated() {}
 
 func EntryCompletion_actionActivatedHandler() {}
 
@@ -1267,6 +1287,8 @@ var signalFontButtonFontSetLock sync.Mutex
 
 // FontButtonSignalFontSetCallback is a callback function for a 'font-set' signal emitted from a FontButton.
 type FontButtonSignalFontSetCallback func()
+
+func (recv *FontButton) ConnectFontSet() {}
 
 func FontButton_fontSetHandler() {}
 
@@ -1666,8 +1688,6 @@ func (recv *MessageDialog) SetMarkup(str string) {
 
 // Unsupported signal : unsupported parameter allocation : Blacklisted record : GdkRectangle
 
-// Unsupported : gtk_pad_controller_new : unsupported parameter group : no type generator for Gio.ActionGroup, GActionGroup*
-
 // Unsupported : gtk_page_setup_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
 
 // GetChild1 is a wrapper around the C function gtk_paned_get_child1.
@@ -1704,6 +1724,8 @@ var signalRadioActionChangedLock sync.Mutex
 
 // RadioActionSignalChangedCallback is a callback function for a 'changed' signal emitted from a RadioAction.
 type RadioActionSignalChangedCallback func(current *RadioAction)
+
+func (recv *RadioAction) ConnectChanged() {}
 
 func RadioAction_changedHandler() {}
 
@@ -1760,6 +1782,8 @@ var signalRadioButtonGroupChangedLock sync.Mutex
 
 // RadioButtonSignalGroupChangedCallback is a callback function for a 'group-changed' signal emitted from a RadioButton.
 type RadioButtonSignalGroupChangedCallback func()
+
+func (recv *RadioButton) ConnectGroupChanged() {}
 
 func RadioButton_groupChangedHandler() {}
 
@@ -1926,6 +1950,8 @@ var signalStyleRealizeLock sync.Mutex
 // StyleSignalRealizeCallback is a callback function for a 'realize' signal emitted from a Style.
 type StyleSignalRealizeCallback func()
 
+func (recv *Style) ConnectRealize() {}
+
 func Style_realizeHandler() {}
 
 var signalStyleUnrealizeId int
@@ -1934,6 +1960,8 @@ var signalStyleUnrealizeLock sync.Mutex
 
 // StyleSignalUnrealizeCallback is a callback function for a 'unrealize' signal emitted from a Style.
 type StyleSignalUnrealizeCallback func()
+
+func (recv *Style) ConnectUnrealize() {}
 
 func Style_unrealizeHandler() {}
 
@@ -2568,6 +2596,8 @@ var signalUIManagerActionsChangedLock sync.Mutex
 // UIManagerSignalActionsChangedCallback is a callback function for a 'actions-changed' signal emitted from a UIManager.
 type UIManagerSignalActionsChangedCallback func()
 
+func (recv *UIManager) ConnectActionsChanged() {}
+
 func UIManager_actionsChangedHandler() {}
 
 var signalUIManagerAddWidgetId int
@@ -2576,6 +2606,8 @@ var signalUIManagerAddWidgetLock sync.Mutex
 
 // UIManagerSignalAddWidgetCallback is a callback function for a 'add-widget' signal emitted from a UIManager.
 type UIManagerSignalAddWidgetCallback func(widget *Widget)
+
+func (recv *UIManager) ConnectAddWidget() {}
 
 func UIManager_addWidgetHandler() {}
 
@@ -2586,6 +2618,8 @@ var signalUIManagerConnectProxyLock sync.Mutex
 // UIManagerSignalConnectProxyCallback is a callback function for a 'connect-proxy' signal emitted from a UIManager.
 type UIManagerSignalConnectProxyCallback func(action *Action, proxy *Widget)
 
+func (recv *UIManager) ConnectConnectProxy() {}
+
 func UIManager_connectProxyHandler() {}
 
 var signalUIManagerDisconnectProxyId int
@@ -2594,6 +2628,8 @@ var signalUIManagerDisconnectProxyLock sync.Mutex
 
 // UIManagerSignalDisconnectProxyCallback is a callback function for a 'disconnect-proxy' signal emitted from a UIManager.
 type UIManagerSignalDisconnectProxyCallback func(action *Action, proxy *Widget)
+
+func (recv *UIManager) ConnectDisconnectProxy() {}
 
 func UIManager_disconnectProxyHandler() {}
 
@@ -2604,6 +2640,8 @@ var signalUIManagerPostActivateLock sync.Mutex
 // UIManagerSignalPostActivateCallback is a callback function for a 'post-activate' signal emitted from a UIManager.
 type UIManagerSignalPostActivateCallback func(action *Action)
 
+func (recv *UIManager) ConnectPostActivate() {}
+
 func UIManager_postActivateHandler() {}
 
 var signalUIManagerPreActivateId int
@@ -2612,6 +2650,8 @@ var signalUIManagerPreActivateLock sync.Mutex
 
 // UIManagerSignalPreActivateCallback is a callback function for a 'pre-activate' signal emitted from a UIManager.
 type UIManagerSignalPreActivateCallback func(action *Action)
+
+func (recv *UIManager) ConnectPreActivate() {}
 
 func UIManager_preActivateHandler() {}
 

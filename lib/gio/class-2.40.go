@@ -25,10 +25,10 @@ import (
 // #include <stdlib.h>
 /*
 
-	void Application_handleLocalOptionsHandler();
+	void AppInfoMonitor_changedHandler();
 
-	static gulong Application_signal_connect_handle_local_options(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "handle-local-options", Application_handleLocalOptionsHandler, data);
+	static gulong AppInfoMonitor_signal_connect_changed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "changed", AppInfoMonitor_changedHandler, data);
 	}
 
 */
@@ -66,16 +66,18 @@ func CastToAppInfoMonitor(object *gobject.Object) *AppInfoMonitor {
 	return AppInfoMonitorNewFromC(object.ToC())
 }
 
+var signalAppInfoMonitorChangedId int
+var signalAppInfoMonitorChangedMap = make(map[int]AppInfoMonitorSignalChangedCallback)
+var signalAppInfoMonitorChangedLock sync.Mutex
+
+// AppInfoMonitorSignalChangedCallback is a callback function for a 'changed' signal emitted from a AppInfoMonitor.
+type AppInfoMonitorSignalChangedCallback func()
+
+func (recv *AppInfoMonitor) ConnectChanged() {}
+
+func AppInfoMonitor_changedHandler() {}
+
 // Unsupported signal : unsupported parameter info : no type generator for AppInfo,
-
-var signalApplicationHandleLocalOptionsId int
-var signalApplicationHandleLocalOptionsMap = make(map[int]ApplicationSignalHandleLocalOptionsCallback)
-var signalApplicationHandleLocalOptionsLock sync.Mutex
-
-// ApplicationSignalHandleLocalOptionsCallback is a callback function for a 'handle-local-options' signal emitted from a Application.
-type ApplicationSignalHandleLocalOptionsCallback func(options *glib.VariantDict) int32
-
-func Application_handleLocalOptionsHandler() {}
 
 // Unsupported signal : unsupported parameter files : no param type
 

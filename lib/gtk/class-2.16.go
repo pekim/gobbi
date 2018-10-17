@@ -257,6 +257,8 @@ var signalEntryIconPressLock sync.Mutex
 // EntrySignalIconPressCallback is a callback function for a 'icon-press' signal emitted from a Entry.
 type EntrySignalIconPressCallback func(iconPos EntryIconPosition, event *gdk.EventButton)
 
+func (recv *Entry) ConnectIconPress() {}
+
 func Entry_iconPressHandler() {}
 
 var signalEntryIconReleaseId int
@@ -265,6 +267,8 @@ var signalEntryIconReleaseLock sync.Mutex
 
 // EntrySignalIconReleaseCallback is a callback function for a 'icon-release' signal emitted from a Entry.
 type EntrySignalIconReleaseCallback func(iconPos EntryIconPosition, event *gdk.EventButton)
+
+func (recv *Entry) ConnectIconRelease() {}
 
 func Entry_iconReleaseHandler() {}
 
@@ -649,8 +653,6 @@ func (recv *MenuItem) SetUseUnderline(setting bool) {
 
 // Unsupported signal : unsupported parameter allocation : Blacklisted record : GdkRectangle
 
-// Unsupported : gtk_pad_controller_new : unsupported parameter group : no type generator for Gio.ActionGroup, GActionGroup*
-
 // Unsupported : gtk_page_setup_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
 
 // Unsupported signal : unsupported parameter dest_file : no type generator for Gio.File,
@@ -757,6 +759,8 @@ var signalStatusIconQueryTooltipLock sync.Mutex
 // StatusIconSignalQueryTooltipCallback is a callback function for a 'query-tooltip' signal emitted from a StatusIcon.
 type StatusIconSignalQueryTooltipCallback func(x int32, y int32, keyboardMode bool, tooltip *Tooltip) bool
 
+func (recv *StatusIcon) ConnectQueryTooltip() {}
+
 func StatusIcon_queryTooltipHandler() {}
 
 var signalStatusIconScrollEventId int
@@ -765,6 +769,8 @@ var signalStatusIconScrollEventLock sync.Mutex
 
 // StatusIconSignalScrollEventCallback is a callback function for a 'scroll-event' signal emitted from a StatusIcon.
 type StatusIconSignalScrollEventCallback func(event *gdk.EventScroll) bool
+
+func (recv *StatusIcon) ConnectScrollEvent() {}
 
 func StatusIcon_scrollEventHandler() {}
 
@@ -838,6 +844,8 @@ var signalTextBufferPasteDoneLock sync.Mutex
 
 // TextBufferSignalPasteDoneCallback is a callback function for a 'paste-done' signal emitted from a TextBuffer.
 type TextBufferSignalPasteDoneCallback func(clipboard *Clipboard)
+
+func (recv *TextBuffer) ConnectPasteDone() {}
 
 func TextBuffer_pasteDoneHandler() {}
 

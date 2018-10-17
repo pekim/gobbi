@@ -39,5 +39,3 @@ func (recv *Regex) GetMaxLookbehind() int32 {
 // Unsupported : g_thread_try_new : unsupported parameter func : no type generator for ThreadFunc, GThreadFunc
 
 // Unsupported : g_variant_builder_new : unsupported parameter type : Blacklisted record : GVariantType
-
-// Unsupported : g_variant_dict_new : unsupported parameter from_asv : Blacklisted record : GVariant

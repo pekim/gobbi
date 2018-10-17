@@ -25,15 +25,6 @@ import (
 // #include <stdlib.h>
 /*
 
-	void DBusAuthObserver_allowMechanismHandler();
-
-	static gulong DBusAuthObserver_signal_connect_allow_mechanism(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "allow-mechanism", DBusAuthObserver_allowMechanismHandler, data);
-	}
-
-*/
-/*
-
 	void MountOperation_showUnmountProgressHandler();
 
 	static gulong MountOperation_signal_connect_show_unmount_progress(gpointer instance, gpointer data) {
@@ -74,15 +65,6 @@ func (recv *ApplicationCommandLine) GetStdin() *InputStream {
 // Unsupported : g_converter_input_stream_new : unsupported parameter converter : no type generator for Converter, GConverter*
 
 // Unsupported : g_converter_output_stream_new : unsupported parameter converter : no type generator for Converter, GConverter*
-
-var signalDBusAuthObserverAllowMechanismId int
-var signalDBusAuthObserverAllowMechanismMap = make(map[int]DBusAuthObserverSignalAllowMechanismCallback)
-var signalDBusAuthObserverAllowMechanismLock sync.Mutex
-
-// DBusAuthObserverSignalAllowMechanismCallback is a callback function for a 'allow-mechanism' signal emitted from a DBusAuthObserver.
-type DBusAuthObserverSignalAllowMechanismCallback func(mechanism string) bool
-
-func DBusAuthObserver_allowMechanismHandler() {}
 
 // AllowMechanism is a wrapper around the C function g_dbus_auth_observer_allow_mechanism.
 func (recv *DBusAuthObserver) AllowMechanism(mechanism string) bool {
@@ -257,6 +239,8 @@ var signalMountOperationShowUnmountProgressLock sync.Mutex
 // MountOperationSignalShowUnmountProgressCallback is a callback function for a 'show-unmount-progress' signal emitted from a MountOperation.
 type MountOperationSignalShowUnmountProgressCallback func(message string, timeLeft int64, bytesLeft int64)
 
+func (recv *MountOperation) ConnectShowUnmountProgress() {}
+
 func MountOperation_showUnmountProgressHandler() {}
 
 // GetDestinationProtocol is a wrapper around the C function g_proxy_address_get_destination_protocol.
@@ -320,10 +304,6 @@ func (recv *Resolver) LookupRecords(rrname string, recordType ResolverRecordType
 // Unsupported : g_simple_async_result_new_take_error : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
 
 // Unsupported signal : unsupported parameter connectable : no type generator for SocketConnectable,
-
-// Unsupported : g_subprocess_new : unsupported parameter error : record with indirection level of 2
-
-// Unsupported : g_subprocess_newv : unsupported parameter argv : no param type
 
 // Unsupported : g_task_new : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
 

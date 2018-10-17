@@ -31,37 +31,9 @@ import "C"
 
 // Unsupported signal : unsupported parameter info : no type generator for AppInfo,
 
-// Unsupported signal : unsupported parameter files : no param type
-
 // Unsupported : g_converter_input_stream_new : unsupported parameter converter : no type generator for Converter, GConverter*
 
 // Unsupported : g_converter_output_stream_new : unsupported parameter converter : no type generator for Converter, GConverter*
-
-// Unsupported : g_dbus_connection_new_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
-
-// Unsupported : g_dbus_connection_new_for_address_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
-
-// Unsupported : g_dbus_message_new_from_blob : unsupported parameter blob : no param type
-
-// Unsupported signal : unsupported parameter changed_properties : Blacklisted record : GVariant
-
-// Unsupported signal : unsupported parameter parameters : Blacklisted record : GVariant
-
-// Unsupported : g_dbus_object_manager_client_new_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
-
-// Unsupported : g_dbus_object_manager_client_new_for_bus_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
-
-// Unsupported : g_dbus_object_manager_client_new_for_bus_sync : unsupported parameter get_proxy_type_func : no type generator for DBusProxyTypeFunc, GDBusProxyTypeFunc
-
-// Unsupported : g_dbus_object_manager_client_new_sync : unsupported parameter get_proxy_type_func : no type generator for DBusProxyTypeFunc, GDBusProxyTypeFunc
-
-// Unsupported signal : unsupported parameter changed_properties : Blacklisted record : GVariant
-
-// Unsupported signal : unsupported parameter parameters : Blacklisted record : GVariant
-
-// Unsupported : g_dbus_proxy_new_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
-
-// Unsupported : g_dbus_proxy_new_for_bus_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
 
 // Unsupported : g_data_input_stream_read_line_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
 
@@ -96,6 +68,8 @@ var signalMountOperationAbortedLock sync.Mutex
 // MountOperationSignalAbortedCallback is a callback function for a 'aborted' signal emitted from a MountOperation.
 type MountOperationSignalAbortedCallback func()
 
+func (recv *MountOperation) ConnectAborted() {}
+
 func MountOperation_abortedHandler() {}
 
 // Unsupported signal : unsupported parameter choices : no param type
@@ -119,12 +93,6 @@ func MountOperation_abortedHandler() {}
 // Unsupported : g_simple_async_result_new_from_error : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
 
 // Unsupported : g_simple_async_result_new_take_error : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
-
-// Unsupported signal : unsupported parameter connectable : no type generator for SocketConnectable,
-
-// Unsupported : g_subprocess_new : unsupported parameter error : record with indirection level of 2
-
-// Unsupported : g_subprocess_newv : unsupported parameter argv : no param type
 
 // Unsupported : g_task_new : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
 

@@ -1066,33 +1066,6 @@ import (
 */
 /*
 
-	void ShortcutsSection_changeCurrentPageHandler();
-
-	static gulong ShortcutsSection_signal_connect_change_current_page(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "change-current-page", ShortcutsSection_changeCurrentPageHandler, data);
-	}
-
-*/
-/*
-
-	void ShortcutsWindow_closeHandler();
-
-	static gulong ShortcutsWindow_signal_connect_close(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "close", ShortcutsWindow_closeHandler, data);
-	}
-
-*/
-/*
-
-	void ShortcutsWindow_searchHandler();
-
-	static gulong ShortcutsWindow_signal_connect_search(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "search", ShortcutsWindow_searchHandler, data);
-	}
-
-*/
-/*
-
 	void SpinButton_changeValueHandler();
 
 	static gulong SpinButton_signal_connect_change_value(gpointer instance, gpointer data) {
@@ -2287,6 +2260,8 @@ var signalAccelGroupAccelActivateLock sync.Mutex
 // AccelGroupSignalAccelActivateCallback is a callback function for a 'accel-activate' signal emitted from a AccelGroup.
 type AccelGroupSignalAccelActivateCallback func(acceleratable *gobject.Object, keyval uint32, modifier gdk.ModifierType) bool
 
+func (recv *AccelGroup) ConnectAccelActivate() {}
+
 func AccelGroup_accelActivateHandler() {}
 
 var signalAccelGroupAccelChangedId int
@@ -2295,6 +2270,8 @@ var signalAccelGroupAccelChangedLock sync.Mutex
 
 // AccelGroupSignalAccelChangedCallback is a callback function for a 'accel-changed' signal emitted from a AccelGroup.
 type AccelGroupSignalAccelChangedCallback func(keyval uint32, modifier gdk.ModifierType, accelClosure *gobject.Closure)
+
+func (recv *AccelGroup) ConnectAccelChanged() {}
 
 func AccelGroup_accelChangedHandler() {}
 
@@ -2736,6 +2713,8 @@ var signalAdjustmentChangedLock sync.Mutex
 // AdjustmentSignalChangedCallback is a callback function for a 'changed' signal emitted from a Adjustment.
 type AdjustmentSignalChangedCallback func()
 
+func (recv *Adjustment) ConnectChanged() {}
+
 func Adjustment_changedHandler() {}
 
 var signalAdjustmentValueChangedId int
@@ -2744,6 +2723,8 @@ var signalAdjustmentValueChangedLock sync.Mutex
 
 // AdjustmentSignalValueChangedCallback is a callback function for a 'value-changed' signal emitted from a Adjustment.
 type AdjustmentSignalValueChangedCallback func()
+
+func (recv *Adjustment) ConnectValueChanged() {}
 
 func Adjustment_valueChangedHandler() {}
 
@@ -2959,6 +2940,8 @@ var signalAppChooserButtonCustomItemActivatedLock sync.Mutex
 
 // AppChooserButtonSignalCustomItemActivatedCallback is a callback function for a 'custom-item-activated' signal emitted from a AppChooserButton.
 type AppChooserButtonSignalCustomItemActivatedCallback func(itemName string)
+
+func (recv *AppChooserButton) ConnectCustomItemActivated() {}
 
 func AppChooserButton_customItemActivatedHandler() {}
 
@@ -3509,6 +3492,8 @@ var signalAssistantEscapeLock sync.Mutex
 // AssistantSignalEscapeCallback is a callback function for a 'escape' signal emitted from a Assistant.
 type AssistantSignalEscapeCallback func()
 
+func (recv *Assistant) ConnectEscape() {}
+
 func Assistant_escapeHandler() {}
 
 // Bin is a wrapper around the C record GtkBin.
@@ -3864,6 +3849,8 @@ var signalButtonActivateLock sync.Mutex
 // ButtonSignalActivateCallback is a callback function for a 'activate' signal emitted from a Button.
 type ButtonSignalActivateCallback func()
 
+func (recv *Button) ConnectActivate() {}
+
 func Button_activateHandler() {}
 
 var signalButtonClickedId int
@@ -3872,6 +3859,8 @@ var signalButtonClickedLock sync.Mutex
 
 // ButtonSignalClickedCallback is a callback function for a 'clicked' signal emitted from a Button.
 type ButtonSignalClickedCallback func()
+
+func (recv *Button) ConnectClicked() {}
 
 func Button_clickedHandler() {}
 
@@ -3882,6 +3871,8 @@ var signalButtonEnterLock sync.Mutex
 // ButtonSignalEnterCallback is a callback function for a 'enter' signal emitted from a Button.
 type ButtonSignalEnterCallback func()
 
+func (recv *Button) ConnectEnter() {}
+
 func Button_enterHandler() {}
 
 var signalButtonLeaveId int
@@ -3890,6 +3881,8 @@ var signalButtonLeaveLock sync.Mutex
 
 // ButtonSignalLeaveCallback is a callback function for a 'leave' signal emitted from a Button.
 type ButtonSignalLeaveCallback func()
+
+func (recv *Button) ConnectLeave() {}
 
 func Button_leaveHandler() {}
 
@@ -3900,6 +3893,8 @@ var signalButtonPressedLock sync.Mutex
 // ButtonSignalPressedCallback is a callback function for a 'pressed' signal emitted from a Button.
 type ButtonSignalPressedCallback func()
 
+func (recv *Button) ConnectPressed() {}
+
 func Button_pressedHandler() {}
 
 var signalButtonReleasedId int
@@ -3908,6 +3903,8 @@ var signalButtonReleasedLock sync.Mutex
 
 // ButtonSignalReleasedCallback is a callback function for a 'released' signal emitted from a Button.
 type ButtonSignalReleasedCallback func()
+
+func (recv *Button) ConnectReleased() {}
 
 func Button_releasedHandler() {}
 
@@ -4243,6 +4240,8 @@ var signalCalendarDaySelectedLock sync.Mutex
 // CalendarSignalDaySelectedCallback is a callback function for a 'day-selected' signal emitted from a Calendar.
 type CalendarSignalDaySelectedCallback func()
 
+func (recv *Calendar) ConnectDaySelected() {}
+
 func Calendar_daySelectedHandler() {}
 
 var signalCalendarDaySelectedDoubleClickId int
@@ -4251,6 +4250,8 @@ var signalCalendarDaySelectedDoubleClickLock sync.Mutex
 
 // CalendarSignalDaySelectedDoubleClickCallback is a callback function for a 'day-selected-double-click' signal emitted from a Calendar.
 type CalendarSignalDaySelectedDoubleClickCallback func()
+
+func (recv *Calendar) ConnectDaySelectedDoubleClick() {}
 
 func Calendar_daySelectedDoubleClickHandler() {}
 
@@ -4261,6 +4262,8 @@ var signalCalendarMonthChangedLock sync.Mutex
 // CalendarSignalMonthChangedCallback is a callback function for a 'month-changed' signal emitted from a Calendar.
 type CalendarSignalMonthChangedCallback func()
 
+func (recv *Calendar) ConnectMonthChanged() {}
+
 func Calendar_monthChangedHandler() {}
 
 var signalCalendarNextMonthId int
@@ -4269,6 +4272,8 @@ var signalCalendarNextMonthLock sync.Mutex
 
 // CalendarSignalNextMonthCallback is a callback function for a 'next-month' signal emitted from a Calendar.
 type CalendarSignalNextMonthCallback func()
+
+func (recv *Calendar) ConnectNextMonth() {}
 
 func Calendar_nextMonthHandler() {}
 
@@ -4279,6 +4284,8 @@ var signalCalendarNextYearLock sync.Mutex
 // CalendarSignalNextYearCallback is a callback function for a 'next-year' signal emitted from a Calendar.
 type CalendarSignalNextYearCallback func()
 
+func (recv *Calendar) ConnectNextYear() {}
+
 func Calendar_nextYearHandler() {}
 
 var signalCalendarPrevMonthId int
@@ -4288,6 +4295,8 @@ var signalCalendarPrevMonthLock sync.Mutex
 // CalendarSignalPrevMonthCallback is a callback function for a 'prev-month' signal emitted from a Calendar.
 type CalendarSignalPrevMonthCallback func()
 
+func (recv *Calendar) ConnectPrevMonth() {}
+
 func Calendar_prevMonthHandler() {}
 
 var signalCalendarPrevYearId int
@@ -4296,6 +4305,8 @@ var signalCalendarPrevYearLock sync.Mutex
 
 // CalendarSignalPrevYearCallback is a callback function for a 'prev-year' signal emitted from a Calendar.
 type CalendarSignalPrevYearCallback func()
+
+func (recv *Calendar) ConnectPrevYear() {}
 
 func Calendar_prevYearHandler() {}
 
@@ -4964,6 +4975,8 @@ var signalCellRendererTextEditedLock sync.Mutex
 // CellRendererTextSignalEditedCallback is a callback function for a 'edited' signal emitted from a CellRendererText.
 type CellRendererTextSignalEditedCallback func(path string, newText string)
 
+func (recv *CellRendererText) ConnectEdited() {}
+
 func CellRendererText_editedHandler() {}
 
 // CellRendererTextNew is a wrapper around the C function gtk_cell_renderer_text_new.
@@ -5033,6 +5046,8 @@ var signalCellRendererToggleToggledLock sync.Mutex
 
 // CellRendererToggleSignalToggledCallback is a callback function for a 'toggled' signal emitted from a CellRendererToggle.
 type CellRendererToggleSignalToggledCallback func(path string)
+
+func (recv *CellRendererToggle) ConnectToggled() {}
 
 func CellRendererToggle_toggledHandler() {}
 
@@ -5282,6 +5297,8 @@ var signalCheckMenuItemToggledLock sync.Mutex
 
 // CheckMenuItemSignalToggledCallback is a callback function for a 'toggled' signal emitted from a CheckMenuItem.
 type CheckMenuItemSignalToggledCallback func()
+
+func (recv *CheckMenuItem) ConnectToggled() {}
 
 func CheckMenuItem_toggledHandler() {}
 
@@ -5736,6 +5753,8 @@ var signalColorSelectionColorChangedLock sync.Mutex
 // ColorSelectionSignalColorChangedCallback is a callback function for a 'color-changed' signal emitted from a ColorSelection.
 type ColorSelectionSignalColorChangedCallback func()
 
+func (recv *ColorSelection) ConnectColorChanged() {}
+
 func ColorSelection_colorChangedHandler() {}
 
 // ColorSelectionNew is a wrapper around the C function gtk_color_selection_new.
@@ -6184,6 +6203,8 @@ var signalContainerAddLock sync.Mutex
 // ContainerSignalAddCallback is a callback function for a 'add' signal emitted from a Container.
 type ContainerSignalAddCallback func(object *Widget)
 
+func (recv *Container) ConnectAdd() {}
+
 func Container_addHandler() {}
 
 var signalContainerCheckResizeId int
@@ -6192,6 +6213,8 @@ var signalContainerCheckResizeLock sync.Mutex
 
 // ContainerSignalCheckResizeCallback is a callback function for a 'check-resize' signal emitted from a Container.
 type ContainerSignalCheckResizeCallback func()
+
+func (recv *Container) ConnectCheckResize() {}
 
 func Container_checkResizeHandler() {}
 
@@ -6202,6 +6225,8 @@ var signalContainerRemoveLock sync.Mutex
 // ContainerSignalRemoveCallback is a callback function for a 'remove' signal emitted from a Container.
 type ContainerSignalRemoveCallback func(object *Widget)
 
+func (recv *Container) ConnectRemove() {}
+
 func Container_removeHandler() {}
 
 var signalContainerSetFocusChildId int
@@ -6210,6 +6235,8 @@ var signalContainerSetFocusChildLock sync.Mutex
 
 // ContainerSignalSetFocusChildCallback is a callback function for a 'set-focus-child' signal emitted from a Container.
 type ContainerSignalSetFocusChildCallback func(object *Widget)
+
+func (recv *Container) ConnectSetFocusChild() {}
 
 func Container_setFocusChildHandler() {}
 
@@ -6586,6 +6613,8 @@ var signalCssProviderParsingErrorLock sync.Mutex
 // CssProviderSignalParsingErrorCallback is a callback function for a 'parsing-error' signal emitted from a CssProvider.
 type CssProviderSignalParsingErrorCallback func(section *CssSection, error *glib.Error)
 
+func (recv *CssProvider) ConnectParsingError() {}
+
 func CssProvider_parsingErrorHandler() {}
 
 // CssProviderNew is a wrapper around the C function gtk_css_provider_new.
@@ -6684,6 +6713,8 @@ var signalDialogCloseLock sync.Mutex
 // DialogSignalCloseCallback is a callback function for a 'close' signal emitted from a Dialog.
 type DialogSignalCloseCallback func()
 
+func (recv *Dialog) ConnectClose() {}
+
 func Dialog_closeHandler() {}
 
 var signalDialogResponseId int
@@ -6692,6 +6723,8 @@ var signalDialogResponseLock sync.Mutex
 
 // DialogSignalResponseCallback is a callback function for a 'response' signal emitted from a Dialog.
 type DialogSignalResponseCallback func(responseId int32)
+
+func (recv *Dialog) ConnectResponse() {}
 
 func Dialog_responseHandler() {}
 
@@ -6872,6 +6905,8 @@ var signalEntryActivateLock sync.Mutex
 // EntrySignalActivateCallback is a callback function for a 'activate' signal emitted from a Entry.
 type EntrySignalActivateCallback func()
 
+func (recv *Entry) ConnectActivate() {}
+
 func Entry_activateHandler() {}
 
 var signalEntryBackspaceId int
@@ -6880,6 +6915,8 @@ var signalEntryBackspaceLock sync.Mutex
 
 // EntrySignalBackspaceCallback is a callback function for a 'backspace' signal emitted from a Entry.
 type EntrySignalBackspaceCallback func()
+
+func (recv *Entry) ConnectBackspace() {}
 
 func Entry_backspaceHandler() {}
 
@@ -6890,6 +6927,8 @@ var signalEntryCopyClipboardLock sync.Mutex
 // EntrySignalCopyClipboardCallback is a callback function for a 'copy-clipboard' signal emitted from a Entry.
 type EntrySignalCopyClipboardCallback func()
 
+func (recv *Entry) ConnectCopyClipboard() {}
+
 func Entry_copyClipboardHandler() {}
 
 var signalEntryCutClipboardId int
@@ -6898,6 +6937,8 @@ var signalEntryCutClipboardLock sync.Mutex
 
 // EntrySignalCutClipboardCallback is a callback function for a 'cut-clipboard' signal emitted from a Entry.
 type EntrySignalCutClipboardCallback func()
+
+func (recv *Entry) ConnectCutClipboard() {}
 
 func Entry_cutClipboardHandler() {}
 
@@ -6908,6 +6949,8 @@ var signalEntryDeleteFromCursorLock sync.Mutex
 // EntrySignalDeleteFromCursorCallback is a callback function for a 'delete-from-cursor' signal emitted from a Entry.
 type EntrySignalDeleteFromCursorCallback func(type_ DeleteType, count int32)
 
+func (recv *Entry) ConnectDeleteFromCursor() {}
+
 func Entry_deleteFromCursorHandler() {}
 
 var signalEntryInsertAtCursorId int
@@ -6916,6 +6959,8 @@ var signalEntryInsertAtCursorLock sync.Mutex
 
 // EntrySignalInsertAtCursorCallback is a callback function for a 'insert-at-cursor' signal emitted from a Entry.
 type EntrySignalInsertAtCursorCallback func(string string)
+
+func (recv *Entry) ConnectInsertAtCursor() {}
 
 func Entry_insertAtCursorHandler() {}
 
@@ -6926,6 +6971,8 @@ var signalEntryMoveCursorLock sync.Mutex
 // EntrySignalMoveCursorCallback is a callback function for a 'move-cursor' signal emitted from a Entry.
 type EntrySignalMoveCursorCallback func(step MovementStep, count int32, extendSelection bool)
 
+func (recv *Entry) ConnectMoveCursor() {}
+
 func Entry_moveCursorHandler() {}
 
 var signalEntryPasteClipboardId int
@@ -6934,6 +6981,8 @@ var signalEntryPasteClipboardLock sync.Mutex
 
 // EntrySignalPasteClipboardCallback is a callback function for a 'paste-clipboard' signal emitted from a Entry.
 type EntrySignalPasteClipboardCallback func()
+
+func (recv *Entry) ConnectPasteClipboard() {}
 
 func Entry_pasteClipboardHandler() {}
 
@@ -6944,6 +6993,8 @@ var signalEntryPopulatePopupLock sync.Mutex
 // EntrySignalPopulatePopupCallback is a callback function for a 'populate-popup' signal emitted from a Entry.
 type EntrySignalPopulatePopupCallback func(widget *Widget)
 
+func (recv *Entry) ConnectPopulatePopup() {}
+
 func Entry_populatePopupHandler() {}
 
 var signalEntryToggleOverwriteId int
@@ -6952,6 +7003,8 @@ var signalEntryToggleOverwriteLock sync.Mutex
 
 // EntrySignalToggleOverwriteCallback is a callback function for a 'toggle-overwrite' signal emitted from a Entry.
 type EntrySignalToggleOverwriteCallback func()
+
+func (recv *Entry) ConnectToggleOverwrite() {}
 
 func Entry_toggleOverwriteHandler() {}
 
@@ -7402,6 +7455,8 @@ var signalExpanderActivateLock sync.Mutex
 // ExpanderSignalActivateCallback is a callback function for a 'activate' signal emitted from a Expander.
 type ExpanderSignalActivateCallback func()
 
+func (recv *Expander) ConnectActivate() {}
+
 func Expander_activateHandler() {}
 
 // ExpanderAccessible is a wrapper around the C record GtkExpanderAccessible.
@@ -7634,6 +7689,8 @@ var signalFileChooserWidgetDesktopFolderLock sync.Mutex
 // FileChooserWidgetSignalDesktopFolderCallback is a callback function for a 'desktop-folder' signal emitted from a FileChooserWidget.
 type FileChooserWidgetSignalDesktopFolderCallback func()
 
+func (recv *FileChooserWidget) ConnectDesktopFolder() {}
+
 func FileChooserWidget_desktopFolderHandler() {}
 
 var signalFileChooserWidgetDownFolderId int
@@ -7642,6 +7699,8 @@ var signalFileChooserWidgetDownFolderLock sync.Mutex
 
 // FileChooserWidgetSignalDownFolderCallback is a callback function for a 'down-folder' signal emitted from a FileChooserWidget.
 type FileChooserWidgetSignalDownFolderCallback func()
+
+func (recv *FileChooserWidget) ConnectDownFolder() {}
 
 func FileChooserWidget_downFolderHandler() {}
 
@@ -7652,6 +7711,8 @@ var signalFileChooserWidgetHomeFolderLock sync.Mutex
 // FileChooserWidgetSignalHomeFolderCallback is a callback function for a 'home-folder' signal emitted from a FileChooserWidget.
 type FileChooserWidgetSignalHomeFolderCallback func()
 
+func (recv *FileChooserWidget) ConnectHomeFolder() {}
+
 func FileChooserWidget_homeFolderHandler() {}
 
 var signalFileChooserWidgetLocationPopupId int
@@ -7660,6 +7721,8 @@ var signalFileChooserWidgetLocationPopupLock sync.Mutex
 
 // FileChooserWidgetSignalLocationPopupCallback is a callback function for a 'location-popup' signal emitted from a FileChooserWidget.
 type FileChooserWidgetSignalLocationPopupCallback func(path string)
+
+func (recv *FileChooserWidget) ConnectLocationPopup() {}
 
 func FileChooserWidget_locationPopupHandler() {}
 
@@ -7670,6 +7733,8 @@ var signalFileChooserWidgetLocationPopupOnPasteLock sync.Mutex
 // FileChooserWidgetSignalLocationPopupOnPasteCallback is a callback function for a 'location-popup-on-paste' signal emitted from a FileChooserWidget.
 type FileChooserWidgetSignalLocationPopupOnPasteCallback func()
 
+func (recv *FileChooserWidget) ConnectLocationPopupOnPaste() {}
+
 func FileChooserWidget_locationPopupOnPasteHandler() {}
 
 var signalFileChooserWidgetLocationTogglePopupId int
@@ -7678,6 +7743,8 @@ var signalFileChooserWidgetLocationTogglePopupLock sync.Mutex
 
 // FileChooserWidgetSignalLocationTogglePopupCallback is a callback function for a 'location-toggle-popup' signal emitted from a FileChooserWidget.
 type FileChooserWidgetSignalLocationTogglePopupCallback func()
+
+func (recv *FileChooserWidget) ConnectLocationTogglePopup() {}
 
 func FileChooserWidget_locationTogglePopupHandler() {}
 
@@ -7688,6 +7755,8 @@ var signalFileChooserWidgetPlacesShortcutLock sync.Mutex
 // FileChooserWidgetSignalPlacesShortcutCallback is a callback function for a 'places-shortcut' signal emitted from a FileChooserWidget.
 type FileChooserWidgetSignalPlacesShortcutCallback func()
 
+func (recv *FileChooserWidget) ConnectPlacesShortcut() {}
+
 func FileChooserWidget_placesShortcutHandler() {}
 
 var signalFileChooserWidgetQuickBookmarkId int
@@ -7696,6 +7765,8 @@ var signalFileChooserWidgetQuickBookmarkLock sync.Mutex
 
 // FileChooserWidgetSignalQuickBookmarkCallback is a callback function for a 'quick-bookmark' signal emitted from a FileChooserWidget.
 type FileChooserWidgetSignalQuickBookmarkCallback func(bookmarkIndex int32)
+
+func (recv *FileChooserWidget) ConnectQuickBookmark() {}
 
 func FileChooserWidget_quickBookmarkHandler() {}
 
@@ -7706,6 +7777,8 @@ var signalFileChooserWidgetRecentShortcutLock sync.Mutex
 // FileChooserWidgetSignalRecentShortcutCallback is a callback function for a 'recent-shortcut' signal emitted from a FileChooserWidget.
 type FileChooserWidgetSignalRecentShortcutCallback func()
 
+func (recv *FileChooserWidget) ConnectRecentShortcut() {}
+
 func FileChooserWidget_recentShortcutHandler() {}
 
 var signalFileChooserWidgetSearchShortcutId int
@@ -7714,6 +7787,8 @@ var signalFileChooserWidgetSearchShortcutLock sync.Mutex
 
 // FileChooserWidgetSignalSearchShortcutCallback is a callback function for a 'search-shortcut' signal emitted from a FileChooserWidget.
 type FileChooserWidgetSignalSearchShortcutCallback func()
+
+func (recv *FileChooserWidget) ConnectSearchShortcut() {}
 
 func FileChooserWidget_searchShortcutHandler() {}
 
@@ -7724,6 +7799,8 @@ var signalFileChooserWidgetShowHiddenLock sync.Mutex
 // FileChooserWidgetSignalShowHiddenCallback is a callback function for a 'show-hidden' signal emitted from a FileChooserWidget.
 type FileChooserWidgetSignalShowHiddenCallback func()
 
+func (recv *FileChooserWidget) ConnectShowHidden() {}
+
 func FileChooserWidget_showHiddenHandler() {}
 
 var signalFileChooserWidgetUpFolderId int
@@ -7732,6 +7809,8 @@ var signalFileChooserWidgetUpFolderLock sync.Mutex
 
 // FileChooserWidgetSignalUpFolderCallback is a callback function for a 'up-folder' signal emitted from a FileChooserWidget.
 type FileChooserWidgetSignalUpFolderCallback func()
+
+func (recv *FileChooserWidget) ConnectUpFolder() {}
 
 func FileChooserWidget_upFolderHandler() {}
 
@@ -7912,6 +7991,8 @@ var signalFlowBoxActivateCursorChildLock sync.Mutex
 // FlowBoxSignalActivateCursorChildCallback is a callback function for a 'activate-cursor-child' signal emitted from a FlowBox.
 type FlowBoxSignalActivateCursorChildCallback func()
 
+func (recv *FlowBox) ConnectActivateCursorChild() {}
+
 func FlowBox_activateCursorChildHandler() {}
 
 var signalFlowBoxChildActivatedId int
@@ -7920,6 +8001,8 @@ var signalFlowBoxChildActivatedLock sync.Mutex
 
 // FlowBoxSignalChildActivatedCallback is a callback function for a 'child-activated' signal emitted from a FlowBox.
 type FlowBoxSignalChildActivatedCallback func(child *FlowBoxChild)
+
+func (recv *FlowBox) ConnectChildActivated() {}
 
 func FlowBox_childActivatedHandler() {}
 
@@ -7930,6 +8013,8 @@ var signalFlowBoxMoveCursorLock sync.Mutex
 // FlowBoxSignalMoveCursorCallback is a callback function for a 'move-cursor' signal emitted from a FlowBox.
 type FlowBoxSignalMoveCursorCallback func(step MovementStep, count int32) bool
 
+func (recv *FlowBox) ConnectMoveCursor() {}
+
 func FlowBox_moveCursorHandler() {}
 
 var signalFlowBoxSelectAllId int
@@ -7938,6 +8023,8 @@ var signalFlowBoxSelectAllLock sync.Mutex
 
 // FlowBoxSignalSelectAllCallback is a callback function for a 'select-all' signal emitted from a FlowBox.
 type FlowBoxSignalSelectAllCallback func()
+
+func (recv *FlowBox) ConnectSelectAll() {}
 
 func FlowBox_selectAllHandler() {}
 
@@ -7948,6 +8035,8 @@ var signalFlowBoxSelectedChildrenChangedLock sync.Mutex
 // FlowBoxSignalSelectedChildrenChangedCallback is a callback function for a 'selected-children-changed' signal emitted from a FlowBox.
 type FlowBoxSignalSelectedChildrenChangedCallback func()
 
+func (recv *FlowBox) ConnectSelectedChildrenChanged() {}
+
 func FlowBox_selectedChildrenChangedHandler() {}
 
 var signalFlowBoxToggleCursorChildId int
@@ -7957,6 +8046,8 @@ var signalFlowBoxToggleCursorChildLock sync.Mutex
 // FlowBoxSignalToggleCursorChildCallback is a callback function for a 'toggle-cursor-child' signal emitted from a FlowBox.
 type FlowBoxSignalToggleCursorChildCallback func()
 
+func (recv *FlowBox) ConnectToggleCursorChild() {}
+
 func FlowBox_toggleCursorChildHandler() {}
 
 var signalFlowBoxUnselectAllId int
@@ -7965,6 +8056,8 @@ var signalFlowBoxUnselectAllLock sync.Mutex
 
 // FlowBoxSignalUnselectAllCallback is a callback function for a 'unselect-all' signal emitted from a FlowBox.
 type FlowBoxSignalUnselectAllCallback func()
+
+func (recv *FlowBox) ConnectUnselectAll() {}
 
 func FlowBox_unselectAllHandler() {}
 
@@ -8076,6 +8169,8 @@ var signalFlowBoxChildActivateLock sync.Mutex
 
 // FlowBoxChildSignalActivateCallback is a callback function for a 'activate' signal emitted from a FlowBoxChild.
 type FlowBoxChildSignalActivateCallback func()
+
+func (recv *FlowBoxChild) ConnectActivate() {}
 
 func FlowBoxChild_activateHandler() {}
 
@@ -9519,6 +9614,8 @@ var signalHSVChangedLock sync.Mutex
 // HSVSignalChangedCallback is a callback function for a 'changed' signal emitted from a HSV.
 type HSVSignalChangedCallback func()
 
+func (recv *HSV) ConnectChanged() {}
+
 func HSV_changedHandler() {}
 
 var signalHSVMoveId int
@@ -9527,6 +9624,8 @@ var signalHSVMoveLock sync.Mutex
 
 // HSVSignalMoveCallback is a callback function for a 'move' signal emitted from a HSV.
 type HSVSignalMoveCallback func(object DirectionType)
+
+func (recv *HSV) ConnectMove() {}
 
 func HSV_moveHandler() {}
 
@@ -9787,6 +9886,8 @@ var signalHandleBoxChildAttachedLock sync.Mutex
 // HandleBoxSignalChildAttachedCallback is a callback function for a 'child-attached' signal emitted from a HandleBox.
 type HandleBoxSignalChildAttachedCallback func(widget *Widget)
 
+func (recv *HandleBox) ConnectChildAttached() {}
+
 func HandleBox_childAttachedHandler() {}
 
 var signalHandleBoxChildDetachedId int
@@ -9795,6 +9896,8 @@ var signalHandleBoxChildDetachedLock sync.Mutex
 
 // HandleBoxSignalChildDetachedCallback is a callback function for a 'child-detached' signal emitted from a HandleBox.
 type HandleBoxSignalChildDetachedCallback func(widget *Widget)
+
+func (recv *HandleBox) ConnectChildDetached() {}
 
 func HandleBox_childDetachedHandler() {}
 
@@ -9945,6 +10048,8 @@ var signalIMContextCommitLock sync.Mutex
 // IMContextSignalCommitCallback is a callback function for a 'commit' signal emitted from a IMContext.
 type IMContextSignalCommitCallback func(str string)
 
+func (recv *IMContext) ConnectCommit() {}
+
 func IMContext_commitHandler() {}
 
 var signalIMContextDeleteSurroundingId int
@@ -9953,6 +10058,8 @@ var signalIMContextDeleteSurroundingLock sync.Mutex
 
 // IMContextSignalDeleteSurroundingCallback is a callback function for a 'delete-surrounding' signal emitted from a IMContext.
 type IMContextSignalDeleteSurroundingCallback func(offset int32, nChars int32) bool
+
+func (recv *IMContext) ConnectDeleteSurrounding() {}
 
 func IMContext_deleteSurroundingHandler() {}
 
@@ -9963,6 +10070,8 @@ var signalIMContextPreeditChangedLock sync.Mutex
 // IMContextSignalPreeditChangedCallback is a callback function for a 'preedit-changed' signal emitted from a IMContext.
 type IMContextSignalPreeditChangedCallback func()
 
+func (recv *IMContext) ConnectPreeditChanged() {}
+
 func IMContext_preeditChangedHandler() {}
 
 var signalIMContextPreeditEndId int
@@ -9971,6 +10080,8 @@ var signalIMContextPreeditEndLock sync.Mutex
 
 // IMContextSignalPreeditEndCallback is a callback function for a 'preedit-end' signal emitted from a IMContext.
 type IMContextSignalPreeditEndCallback func()
+
+func (recv *IMContext) ConnectPreeditEnd() {}
 
 func IMContext_preeditEndHandler() {}
 
@@ -9981,6 +10092,8 @@ var signalIMContextPreeditStartLock sync.Mutex
 // IMContextSignalPreeditStartCallback is a callback function for a 'preedit-start' signal emitted from a IMContext.
 type IMContextSignalPreeditStartCallback func()
 
+func (recv *IMContext) ConnectPreeditStart() {}
+
 func IMContext_preeditStartHandler() {}
 
 var signalIMContextRetrieveSurroundingId int
@@ -9989,6 +10102,8 @@ var signalIMContextRetrieveSurroundingLock sync.Mutex
 
 // IMContextSignalRetrieveSurroundingCallback is a callback function for a 'retrieve-surrounding' signal emitted from a IMContext.
 type IMContextSignalRetrieveSurroundingCallback func() bool
+
+func (recv *IMContext) ConnectRetrieveSurrounding() {}
 
 func IMContext_retrieveSurroundingHandler() {}
 
@@ -10348,6 +10463,8 @@ var signalIconThemeChangedLock sync.Mutex
 // IconThemeSignalChangedCallback is a callback function for a 'changed' signal emitted from a IconTheme.
 type IconThemeSignalChangedCallback func()
 
+func (recv *IconTheme) ConnectChanged() {}
+
 func IconTheme_changedHandler() {}
 
 // IconView is a wrapper around the C record GtkIconView.
@@ -10406,6 +10523,8 @@ var signalIconViewActivateCursorItemLock sync.Mutex
 // IconViewSignalActivateCursorItemCallback is a callback function for a 'activate-cursor-item' signal emitted from a IconView.
 type IconViewSignalActivateCursorItemCallback func() bool
 
+func (recv *IconView) ConnectActivateCursorItem() {}
+
 func IconView_activateCursorItemHandler() {}
 
 var signalIconViewItemActivatedId int
@@ -10414,6 +10533,8 @@ var signalIconViewItemActivatedLock sync.Mutex
 
 // IconViewSignalItemActivatedCallback is a callback function for a 'item-activated' signal emitted from a IconView.
 type IconViewSignalItemActivatedCallback func(path *TreePath)
+
+func (recv *IconView) ConnectItemActivated() {}
 
 func IconView_itemActivatedHandler() {}
 
@@ -10424,6 +10545,8 @@ var signalIconViewMoveCursorLock sync.Mutex
 // IconViewSignalMoveCursorCallback is a callback function for a 'move-cursor' signal emitted from a IconView.
 type IconViewSignalMoveCursorCallback func(step MovementStep, count int32) bool
 
+func (recv *IconView) ConnectMoveCursor() {}
+
 func IconView_moveCursorHandler() {}
 
 var signalIconViewSelectAllId int
@@ -10432,6 +10555,8 @@ var signalIconViewSelectAllLock sync.Mutex
 
 // IconViewSignalSelectAllCallback is a callback function for a 'select-all' signal emitted from a IconView.
 type IconViewSignalSelectAllCallback func()
+
+func (recv *IconView) ConnectSelectAll() {}
 
 func IconView_selectAllHandler() {}
 
@@ -10442,6 +10567,8 @@ var signalIconViewSelectCursorItemLock sync.Mutex
 // IconViewSignalSelectCursorItemCallback is a callback function for a 'select-cursor-item' signal emitted from a IconView.
 type IconViewSignalSelectCursorItemCallback func()
 
+func (recv *IconView) ConnectSelectCursorItem() {}
+
 func IconView_selectCursorItemHandler() {}
 
 var signalIconViewSelectionChangedId int
@@ -10450,6 +10577,8 @@ var signalIconViewSelectionChangedLock sync.Mutex
 
 // IconViewSignalSelectionChangedCallback is a callback function for a 'selection-changed' signal emitted from a IconView.
 type IconViewSignalSelectionChangedCallback func()
+
+func (recv *IconView) ConnectSelectionChanged() {}
 
 func IconView_selectionChangedHandler() {}
 
@@ -10460,6 +10589,8 @@ var signalIconViewToggleCursorItemLock sync.Mutex
 // IconViewSignalToggleCursorItemCallback is a callback function for a 'toggle-cursor-item' signal emitted from a IconView.
 type IconViewSignalToggleCursorItemCallback func()
 
+func (recv *IconView) ConnectToggleCursorItem() {}
+
 func IconView_toggleCursorItemHandler() {}
 
 var signalIconViewUnselectAllId int
@@ -10468,6 +10599,8 @@ var signalIconViewUnselectAllLock sync.Mutex
 
 // IconViewSignalUnselectAllCallback is a callback function for a 'unselect-all' signal emitted from a IconView.
 type IconViewSignalUnselectAllCallback func()
+
+func (recv *IconView) ConnectUnselectAll() {}
 
 func IconView_unselectAllHandler() {}
 
@@ -11064,6 +11197,8 @@ var signalLabelCopyClipboardLock sync.Mutex
 // LabelSignalCopyClipboardCallback is a callback function for a 'copy-clipboard' signal emitted from a Label.
 type LabelSignalCopyClipboardCallback func()
 
+func (recv *Label) ConnectCopyClipboard() {}
+
 func Label_copyClipboardHandler() {}
 
 var signalLabelMoveCursorId int
@@ -11073,6 +11208,8 @@ var signalLabelMoveCursorLock sync.Mutex
 // LabelSignalMoveCursorCallback is a callback function for a 'move-cursor' signal emitted from a Label.
 type LabelSignalMoveCursorCallback func(step MovementStep, count int32, extendSelection bool)
 
+func (recv *Label) ConnectMoveCursor() {}
+
 func Label_moveCursorHandler() {}
 
 var signalLabelPopulatePopupId int
@@ -11081,6 +11218,8 @@ var signalLabelPopulatePopupLock sync.Mutex
 
 // LabelSignalPopulatePopupCallback is a callback function for a 'populate-popup' signal emitted from a Label.
 type LabelSignalPopulatePopupCallback func(menu *Menu)
+
+func (recv *Label) ConnectPopulatePopup() {}
 
 func Label_populatePopupHandler() {}
 
@@ -11708,6 +11847,8 @@ var signalLinkButtonActivateLinkLock sync.Mutex
 // LinkButtonSignalActivateLinkCallback is a callback function for a 'activate-link' signal emitted from a LinkButton.
 type LinkButtonSignalActivateLinkCallback func() bool
 
+func (recv *LinkButton) ConnectActivateLink() {}
+
 func LinkButton_activateLinkHandler() {}
 
 // LinkButtonAccessible is a wrapper around the C record GtkLinkButtonAccessible.
@@ -11819,6 +11960,8 @@ var signalListBoxActivateCursorRowLock sync.Mutex
 // ListBoxSignalActivateCursorRowCallback is a callback function for a 'activate-cursor-row' signal emitted from a ListBox.
 type ListBoxSignalActivateCursorRowCallback func()
 
+func (recv *ListBox) ConnectActivateCursorRow() {}
+
 func ListBox_activateCursorRowHandler() {}
 
 var signalListBoxMoveCursorId int
@@ -11828,6 +11971,8 @@ var signalListBoxMoveCursorLock sync.Mutex
 // ListBoxSignalMoveCursorCallback is a callback function for a 'move-cursor' signal emitted from a ListBox.
 type ListBoxSignalMoveCursorCallback func(object MovementStep, p0 int32)
 
+func (recv *ListBox) ConnectMoveCursor() {}
+
 func ListBox_moveCursorHandler() {}
 
 var signalListBoxToggleCursorRowId int
@@ -11836,6 +11981,8 @@ var signalListBoxToggleCursorRowLock sync.Mutex
 
 // ListBoxSignalToggleCursorRowCallback is a callback function for a 'toggle-cursor-row' signal emitted from a ListBox.
 type ListBoxSignalToggleCursorRowCallback func()
+
+func (recv *ListBox) ConnectToggleCursorRow() {}
 
 func ListBox_toggleCursorRowHandler() {}
 
@@ -12298,6 +12445,8 @@ var signalMenuMoveScrollLock sync.Mutex
 // MenuSignalMoveScrollCallback is a callback function for a 'move-scroll' signal emitted from a Menu.
 type MenuSignalMoveScrollCallback func(scrollType ScrollType)
 
+func (recv *Menu) ConnectMoveScroll() {}
+
 func Menu_moveScrollHandler() {}
 
 // MenuNew is a wrapper around the C function gtk_menu_new.
@@ -12732,6 +12881,8 @@ var signalMenuItemActivateLock sync.Mutex
 // MenuItemSignalActivateCallback is a callback function for a 'activate' signal emitted from a MenuItem.
 type MenuItemSignalActivateCallback func()
 
+func (recv *MenuItem) ConnectActivate() {}
+
 func MenuItem_activateHandler() {}
 
 var signalMenuItemActivateItemId int
@@ -12740,6 +12891,8 @@ var signalMenuItemActivateItemLock sync.Mutex
 
 // MenuItemSignalActivateItemCallback is a callback function for a 'activate-item' signal emitted from a MenuItem.
 type MenuItemSignalActivateItemCallback func()
+
+func (recv *MenuItem) ConnectActivateItem() {}
 
 func MenuItem_activateItemHandler() {}
 
@@ -12750,6 +12903,8 @@ var signalMenuItemDeselectLock sync.Mutex
 // MenuItemSignalDeselectCallback is a callback function for a 'deselect' signal emitted from a MenuItem.
 type MenuItemSignalDeselectCallback func()
 
+func (recv *MenuItem) ConnectDeselect() {}
+
 func MenuItem_deselectHandler() {}
 
 var signalMenuItemSelectId int
@@ -12758,6 +12913,8 @@ var signalMenuItemSelectLock sync.Mutex
 
 // MenuItemSignalSelectCallback is a callback function for a 'select' signal emitted from a MenuItem.
 type MenuItemSignalSelectCallback func()
+
+func (recv *MenuItem) ConnectSelect() {}
 
 func MenuItem_selectHandler() {}
 
@@ -12768,6 +12925,8 @@ var signalMenuItemToggleSizeAllocateLock sync.Mutex
 // MenuItemSignalToggleSizeAllocateCallback is a callback function for a 'toggle-size-allocate' signal emitted from a MenuItem.
 type MenuItemSignalToggleSizeAllocateCallback func(object int32)
 
+func (recv *MenuItem) ConnectToggleSizeAllocate() {}
+
 func MenuItem_toggleSizeAllocateHandler() {}
 
 var signalMenuItemToggleSizeRequestId int
@@ -12776,6 +12935,8 @@ var signalMenuItemToggleSizeRequestLock sync.Mutex
 
 // MenuItemSignalToggleSizeRequestCallback is a callback function for a 'toggle-size-request' signal emitted from a MenuItem.
 type MenuItemSignalToggleSizeRequestCallback func(object uintptr)
+
+func (recv *MenuItem) ConnectToggleSizeRequest() {}
 
 func MenuItem_toggleSizeRequestHandler() {}
 
@@ -12998,6 +13159,8 @@ var signalMenuShellActivateCurrentLock sync.Mutex
 // MenuShellSignalActivateCurrentCallback is a callback function for a 'activate-current' signal emitted from a MenuShell.
 type MenuShellSignalActivateCurrentCallback func(forceHide bool)
 
+func (recv *MenuShell) ConnectActivateCurrent() {}
+
 func MenuShell_activateCurrentHandler() {}
 
 var signalMenuShellCancelId int
@@ -13006,6 +13169,8 @@ var signalMenuShellCancelLock sync.Mutex
 
 // MenuShellSignalCancelCallback is a callback function for a 'cancel' signal emitted from a MenuShell.
 type MenuShellSignalCancelCallback func()
+
+func (recv *MenuShell) ConnectCancel() {}
 
 func MenuShell_cancelHandler() {}
 
@@ -13016,6 +13181,8 @@ var signalMenuShellCycleFocusLock sync.Mutex
 // MenuShellSignalCycleFocusCallback is a callback function for a 'cycle-focus' signal emitted from a MenuShell.
 type MenuShellSignalCycleFocusCallback func(direction DirectionType)
 
+func (recv *MenuShell) ConnectCycleFocus() {}
+
 func MenuShell_cycleFocusHandler() {}
 
 var signalMenuShellDeactivateId int
@@ -13024,6 +13191,8 @@ var signalMenuShellDeactivateLock sync.Mutex
 
 // MenuShellSignalDeactivateCallback is a callback function for a 'deactivate' signal emitted from a MenuShell.
 type MenuShellSignalDeactivateCallback func()
+
+func (recv *MenuShell) ConnectDeactivate() {}
 
 func MenuShell_deactivateHandler() {}
 
@@ -13034,6 +13203,8 @@ var signalMenuShellMoveCurrentLock sync.Mutex
 // MenuShellSignalMoveCurrentCallback is a callback function for a 'move-current' signal emitted from a MenuShell.
 type MenuShellSignalMoveCurrentCallback func(direction MenuDirectionType)
 
+func (recv *MenuShell) ConnectMoveCurrent() {}
+
 func MenuShell_moveCurrentHandler() {}
 
 var signalMenuShellSelectionDoneId int
@@ -13042,6 +13213,8 @@ var signalMenuShellSelectionDoneLock sync.Mutex
 
 // MenuShellSignalSelectionDoneCallback is a callback function for a 'selection-done' signal emitted from a MenuShell.
 type MenuShellSignalSelectionDoneCallback func()
+
+func (recv *MenuShell) ConnectSelectionDone() {}
 
 func MenuShell_selectionDoneHandler() {}
 
@@ -13228,6 +13401,8 @@ var signalMenuToolButtonShowMenuLock sync.Mutex
 
 // MenuToolButtonSignalShowMenuCallback is a callback function for a 'show-menu' signal emitted from a MenuToolButton.
 type MenuToolButtonSignalShowMenuCallback func()
+
+func (recv *MenuToolButton) ConnectShowMenu() {}
 
 func MenuToolButton_showMenuHandler() {}
 
@@ -13547,6 +13722,8 @@ var signalNotebookChangeCurrentPageLock sync.Mutex
 // NotebookSignalChangeCurrentPageCallback is a callback function for a 'change-current-page' signal emitted from a Notebook.
 type NotebookSignalChangeCurrentPageCallback func(object int32) bool
 
+func (recv *Notebook) ConnectChangeCurrentPage() {}
+
 func Notebook_changeCurrentPageHandler() {}
 
 var signalNotebookFocusTabId int
@@ -13555,6 +13732,8 @@ var signalNotebookFocusTabLock sync.Mutex
 
 // NotebookSignalFocusTabCallback is a callback function for a 'focus-tab' signal emitted from a Notebook.
 type NotebookSignalFocusTabCallback func(object NotebookTab) bool
+
+func (recv *Notebook) ConnectFocusTab() {}
 
 func Notebook_focusTabHandler() {}
 
@@ -13565,6 +13744,8 @@ var signalNotebookMoveFocusOutLock sync.Mutex
 // NotebookSignalMoveFocusOutCallback is a callback function for a 'move-focus-out' signal emitted from a Notebook.
 type NotebookSignalMoveFocusOutCallback func(object DirectionType)
 
+func (recv *Notebook) ConnectMoveFocusOut() {}
+
 func Notebook_moveFocusOutHandler() {}
 
 var signalNotebookReorderTabId int
@@ -13573,6 +13754,8 @@ var signalNotebookReorderTabLock sync.Mutex
 
 // NotebookSignalReorderTabCallback is a callback function for a 'reorder-tab' signal emitted from a Notebook.
 type NotebookSignalReorderTabCallback func(object DirectionType, p0 bool) bool
+
+func (recv *Notebook) ConnectReorderTab() {}
 
 func Notebook_reorderTabHandler() {}
 
@@ -13583,6 +13766,8 @@ var signalNotebookSelectPageLock sync.Mutex
 // NotebookSignalSelectPageCallback is a callback function for a 'select-page' signal emitted from a Notebook.
 type NotebookSignalSelectPageCallback func(object bool) bool
 
+func (recv *Notebook) ConnectSelectPage() {}
+
 func Notebook_selectPageHandler() {}
 
 var signalNotebookSwitchPageId int
@@ -13591,6 +13776,8 @@ var signalNotebookSwitchPageLock sync.Mutex
 
 // NotebookSignalSwitchPageCallback is a callback function for a 'switch-page' signal emitted from a Notebook.
 type NotebookSignalSwitchPageCallback func(page *Widget, pageNum uint32)
+
+func (recv *Notebook) ConnectSwitchPage() {}
 
 func Notebook_switchPageHandler() {}
 
@@ -14181,8 +14368,6 @@ func CastToOverlay(object *gobject.Object) *Overlay {
 
 // Unsupported signal : unsupported parameter allocation : Blacklisted record : GdkRectangle
 
-// Unsupported : gtk_pad_controller_new : unsupported parameter group : no type generator for Gio.ActionGroup, GActionGroup*
-
 // PageSetup is a wrapper around the C record GtkPageSetup.
 type PageSetup struct {
 	native *C.GtkPageSetup
@@ -14452,6 +14637,8 @@ var signalPlacesSidebarShowConnectToServerLock sync.Mutex
 // PlacesSidebarSignalShowConnectToServerCallback is a callback function for a 'show-connect-to-server' signal emitted from a PlacesSidebar.
 type PlacesSidebarSignalShowConnectToServerCallback func()
 
+func (recv *PlacesSidebar) ConnectShowConnectToServer() {}
+
 func PlacesSidebar_showConnectToServerHandler() {}
 
 // GetShowConnectToServer is a wrapper around the C function gtk_places_sidebar_get_show_connect_to_server.
@@ -14524,6 +14711,8 @@ var signalPopoverClosedLock sync.Mutex
 
 // PopoverSignalClosedCallback is a callback function for a 'closed' signal emitted from a Popover.
 type PopoverSignalClosedCallback func()
+
+func (recv *Popover) ConnectClosed() {}
 
 func Popover_closedHandler() {}
 
@@ -15249,6 +15438,8 @@ var signalRadioMenuItemGroupChangedLock sync.Mutex
 // RadioMenuItemSignalGroupChangedCallback is a callback function for a 'group-changed' signal emitted from a RadioMenuItem.
 type RadioMenuItemSignalGroupChangedCallback func()
 
+func (recv *RadioMenuItem) ConnectGroupChanged() {}
+
 func RadioMenuItem_groupChangedHandler() {}
 
 // RadioMenuItemNew is a wrapper around the C function gtk_radio_menu_item_new.
@@ -15482,6 +15673,8 @@ var signalRangeAdjustBoundsLock sync.Mutex
 // RangeSignalAdjustBoundsCallback is a callback function for a 'adjust-bounds' signal emitted from a Range.
 type RangeSignalAdjustBoundsCallback func(value float64)
 
+func (recv *Range) ConnectAdjustBounds() {}
+
 func Range_adjustBoundsHandler() {}
 
 var signalRangeMoveSliderId int
@@ -15491,6 +15684,8 @@ var signalRangeMoveSliderLock sync.Mutex
 // RangeSignalMoveSliderCallback is a callback function for a 'move-slider' signal emitted from a Range.
 type RangeSignalMoveSliderCallback func(step ScrollType)
 
+func (recv *Range) ConnectMoveSlider() {}
+
 func Range_moveSliderHandler() {}
 
 var signalRangeValueChangedId int
@@ -15499,6 +15694,8 @@ var signalRangeValueChangedLock sync.Mutex
 
 // RangeSignalValueChangedCallback is a callback function for a 'value-changed' signal emitted from a Range.
 type RangeSignalValueChangedCallback func()
+
+func (recv *Range) ConnectValueChanged() {}
 
 func Range_valueChangedHandler() {}
 
@@ -16114,6 +16311,8 @@ var signalScaleFormatValueLock sync.Mutex
 // ScaleSignalFormatValueCallback is a callback function for a 'format-value' signal emitted from a Scale.
 type ScaleSignalFormatValueCallback func(value float64) string
 
+func (recv *Scale) ConnectFormatValue() {}
+
 func Scale_formatValueHandler() {}
 
 // GetDigits is a wrapper around the C function gtk_scale_get_digits.
@@ -16441,6 +16640,8 @@ var signalScrolledWindowMoveFocusOutLock sync.Mutex
 // ScrolledWindowSignalMoveFocusOutCallback is a callback function for a 'move-focus-out' signal emitted from a ScrolledWindow.
 type ScrolledWindowSignalMoveFocusOutCallback func(directionType DirectionType)
 
+func (recv *ScrolledWindow) ConnectMoveFocusOut() {}
+
 func ScrolledWindow_moveFocusOutHandler() {}
 
 var signalScrolledWindowScrollChildId int
@@ -16449,6 +16650,8 @@ var signalScrolledWindowScrollChildLock sync.Mutex
 
 // ScrolledWindowSignalScrollChildCallback is a callback function for a 'scroll-child' signal emitted from a ScrolledWindow.
 type ScrolledWindowSignalScrollChildCallback func(scroll ScrollType, horizontal bool) bool
+
+func (recv *ScrolledWindow) ConnectScrollChild() {}
 
 func ScrolledWindow_scrollChildHandler() {}
 
@@ -16965,33 +17168,6 @@ func (recv *Settings) SetStringProperty(name string, vString string, origin stri
 	return
 }
 
-var signalShortcutsSectionChangeCurrentPageId int
-var signalShortcutsSectionChangeCurrentPageMap = make(map[int]ShortcutsSectionSignalChangeCurrentPageCallback)
-var signalShortcutsSectionChangeCurrentPageLock sync.Mutex
-
-// ShortcutsSectionSignalChangeCurrentPageCallback is a callback function for a 'change-current-page' signal emitted from a ShortcutsSection.
-type ShortcutsSectionSignalChangeCurrentPageCallback func(object int32) bool
-
-func ShortcutsSection_changeCurrentPageHandler() {}
-
-var signalShortcutsWindowCloseId int
-var signalShortcutsWindowCloseMap = make(map[int]ShortcutsWindowSignalCloseCallback)
-var signalShortcutsWindowCloseLock sync.Mutex
-
-// ShortcutsWindowSignalCloseCallback is a callback function for a 'close' signal emitted from a ShortcutsWindow.
-type ShortcutsWindowSignalCloseCallback func()
-
-func ShortcutsWindow_closeHandler() {}
-
-var signalShortcutsWindowSearchId int
-var signalShortcutsWindowSearchMap = make(map[int]ShortcutsWindowSignalSearchCallback)
-var signalShortcutsWindowSearchLock sync.Mutex
-
-// ShortcutsWindowSignalSearchCallback is a callback function for a 'search' signal emitted from a ShortcutsWindow.
-type ShortcutsWindowSignalSearchCallback func()
-
-func ShortcutsWindow_searchHandler() {}
-
 // SizeGroup is a wrapper around the C record GtkSizeGroup.
 type SizeGroup struct {
 	native *C.GtkSizeGroup
@@ -17129,6 +17305,8 @@ var signalSpinButtonChangeValueLock sync.Mutex
 // SpinButtonSignalChangeValueCallback is a callback function for a 'change-value' signal emitted from a SpinButton.
 type SpinButtonSignalChangeValueCallback func(scroll ScrollType)
 
+func (recv *SpinButton) ConnectChangeValue() {}
+
 func SpinButton_changeValueHandler() {}
 
 var signalSpinButtonInputId int
@@ -17137,6 +17315,8 @@ var signalSpinButtonInputLock sync.Mutex
 
 // SpinButtonSignalInputCallback is a callback function for a 'input' signal emitted from a SpinButton.
 type SpinButtonSignalInputCallback func() int32
+
+func (recv *SpinButton) ConnectInput() {}
 
 func SpinButton_inputHandler() {}
 
@@ -17147,6 +17327,8 @@ var signalSpinButtonOutputLock sync.Mutex
 // SpinButtonSignalOutputCallback is a callback function for a 'output' signal emitted from a SpinButton.
 type SpinButtonSignalOutputCallback func() bool
 
+func (recv *SpinButton) ConnectOutput() {}
+
 func SpinButton_outputHandler() {}
 
 var signalSpinButtonValueChangedId int
@@ -17155,6 +17337,8 @@ var signalSpinButtonValueChangedLock sync.Mutex
 
 // SpinButtonSignalValueChangedCallback is a callback function for a 'value-changed' signal emitted from a SpinButton.
 type SpinButtonSignalValueChangedCallback func()
+
+func (recv *SpinButton) ConnectValueChanged() {}
 
 func SpinButton_valueChangedHandler() {}
 
@@ -17789,6 +17973,8 @@ var signalStatusbarTextPoppedLock sync.Mutex
 // StatusbarSignalTextPoppedCallback is a callback function for a 'text-popped' signal emitted from a Statusbar.
 type StatusbarSignalTextPoppedCallback func(contextId uint32, text string)
 
+func (recv *Statusbar) ConnectTextPopped() {}
+
 func Statusbar_textPoppedHandler() {}
 
 var signalStatusbarTextPushedId int
@@ -17797,6 +17983,8 @@ var signalStatusbarTextPushedLock sync.Mutex
 
 // StatusbarSignalTextPushedCallback is a callback function for a 'text-pushed' signal emitted from a Statusbar.
 type StatusbarSignalTextPushedCallback func(contextId uint32, text string)
+
+func (recv *Statusbar) ConnectTextPushed() {}
 
 func Statusbar_textPushedHandler() {}
 
@@ -18240,6 +18428,8 @@ var signalSwitchActivateLock sync.Mutex
 // SwitchSignalActivateCallback is a callback function for a 'activate' signal emitted from a Switch.
 type SwitchSignalActivateCallback func()
 
+func (recv *Switch) ConnectActivate() {}
+
 func Switch_activateHandler() {}
 
 // SwitchAccessible is a wrapper around the C record GtkSwitchAccessible.
@@ -18605,6 +18795,8 @@ var signalTextBufferApplyTagLock sync.Mutex
 // TextBufferSignalApplyTagCallback is a callback function for a 'apply-tag' signal emitted from a TextBuffer.
 type TextBufferSignalApplyTagCallback func(tag *TextTag, start *TextIter, end *TextIter)
 
+func (recv *TextBuffer) ConnectApplyTag() {}
+
 func TextBuffer_applyTagHandler() {}
 
 var signalTextBufferBeginUserActionId int
@@ -18613,6 +18805,8 @@ var signalTextBufferBeginUserActionLock sync.Mutex
 
 // TextBufferSignalBeginUserActionCallback is a callback function for a 'begin-user-action' signal emitted from a TextBuffer.
 type TextBufferSignalBeginUserActionCallback func()
+
+func (recv *TextBuffer) ConnectBeginUserAction() {}
 
 func TextBuffer_beginUserActionHandler() {}
 
@@ -18623,6 +18817,8 @@ var signalTextBufferChangedLock sync.Mutex
 // TextBufferSignalChangedCallback is a callback function for a 'changed' signal emitted from a TextBuffer.
 type TextBufferSignalChangedCallback func()
 
+func (recv *TextBuffer) ConnectChanged() {}
+
 func TextBuffer_changedHandler() {}
 
 var signalTextBufferDeleteRangeId int
@@ -18631,6 +18827,8 @@ var signalTextBufferDeleteRangeLock sync.Mutex
 
 // TextBufferSignalDeleteRangeCallback is a callback function for a 'delete-range' signal emitted from a TextBuffer.
 type TextBufferSignalDeleteRangeCallback func(start *TextIter, end *TextIter)
+
+func (recv *TextBuffer) ConnectDeleteRange() {}
 
 func TextBuffer_deleteRangeHandler() {}
 
@@ -18641,6 +18839,8 @@ var signalTextBufferEndUserActionLock sync.Mutex
 // TextBufferSignalEndUserActionCallback is a callback function for a 'end-user-action' signal emitted from a TextBuffer.
 type TextBufferSignalEndUserActionCallback func()
 
+func (recv *TextBuffer) ConnectEndUserAction() {}
+
 func TextBuffer_endUserActionHandler() {}
 
 var signalTextBufferInsertChildAnchorId int
@@ -18649,6 +18849,8 @@ var signalTextBufferInsertChildAnchorLock sync.Mutex
 
 // TextBufferSignalInsertChildAnchorCallback is a callback function for a 'insert-child-anchor' signal emitted from a TextBuffer.
 type TextBufferSignalInsertChildAnchorCallback func(location *TextIter, anchor *TextChildAnchor)
+
+func (recv *TextBuffer) ConnectInsertChildAnchor() {}
 
 func TextBuffer_insertChildAnchorHandler() {}
 
@@ -18659,6 +18861,8 @@ var signalTextBufferInsertPixbufLock sync.Mutex
 // TextBufferSignalInsertPixbufCallback is a callback function for a 'insert-pixbuf' signal emitted from a TextBuffer.
 type TextBufferSignalInsertPixbufCallback func(location *TextIter, pixbuf *gdkpixbuf.Pixbuf)
 
+func (recv *TextBuffer) ConnectInsertPixbuf() {}
+
 func TextBuffer_insertPixbufHandler() {}
 
 var signalTextBufferInsertTextId int
@@ -18667,6 +18871,8 @@ var signalTextBufferInsertTextLock sync.Mutex
 
 // TextBufferSignalInsertTextCallback is a callback function for a 'insert-text' signal emitted from a TextBuffer.
 type TextBufferSignalInsertTextCallback func(location *TextIter, text string, len int32)
+
+func (recv *TextBuffer) ConnectInsertText() {}
 
 func TextBuffer_insertTextHandler() {}
 
@@ -18677,6 +18883,8 @@ var signalTextBufferMarkDeletedLock sync.Mutex
 // TextBufferSignalMarkDeletedCallback is a callback function for a 'mark-deleted' signal emitted from a TextBuffer.
 type TextBufferSignalMarkDeletedCallback func(mark *TextMark)
 
+func (recv *TextBuffer) ConnectMarkDeleted() {}
+
 func TextBuffer_markDeletedHandler() {}
 
 var signalTextBufferMarkSetId int
@@ -18685,6 +18893,8 @@ var signalTextBufferMarkSetLock sync.Mutex
 
 // TextBufferSignalMarkSetCallback is a callback function for a 'mark-set' signal emitted from a TextBuffer.
 type TextBufferSignalMarkSetCallback func(location *TextIter, mark *TextMark)
+
+func (recv *TextBuffer) ConnectMarkSet() {}
 
 func TextBuffer_markSetHandler() {}
 
@@ -18695,6 +18905,8 @@ var signalTextBufferModifiedChangedLock sync.Mutex
 // TextBufferSignalModifiedChangedCallback is a callback function for a 'modified-changed' signal emitted from a TextBuffer.
 type TextBufferSignalModifiedChangedCallback func()
 
+func (recv *TextBuffer) ConnectModifiedChanged() {}
+
 func TextBuffer_modifiedChangedHandler() {}
 
 var signalTextBufferRemoveTagId int
@@ -18703,6 +18915,8 @@ var signalTextBufferRemoveTagLock sync.Mutex
 
 // TextBufferSignalRemoveTagCallback is a callback function for a 'remove-tag' signal emitted from a TextBuffer.
 type TextBufferSignalRemoveTagCallback func(tag *TextTag, start *TextIter, end *TextIter)
+
+func (recv *TextBuffer) ConnectRemoveTag() {}
 
 func TextBuffer_removeTagHandler() {}
 
@@ -19629,6 +19843,8 @@ var signalTextTagTableTagAddedLock sync.Mutex
 // TextTagTableSignalTagAddedCallback is a callback function for a 'tag-added' signal emitted from a TextTagTable.
 type TextTagTableSignalTagAddedCallback func(tag *TextTag)
 
+func (recv *TextTagTable) ConnectTagAdded() {}
+
 func TextTagTable_tagAddedHandler() {}
 
 var signalTextTagTableTagChangedId int
@@ -19638,6 +19854,8 @@ var signalTextTagTableTagChangedLock sync.Mutex
 // TextTagTableSignalTagChangedCallback is a callback function for a 'tag-changed' signal emitted from a TextTagTable.
 type TextTagTableSignalTagChangedCallback func(tag *TextTag, sizeChanged bool)
 
+func (recv *TextTagTable) ConnectTagChanged() {}
+
 func TextTagTable_tagChangedHandler() {}
 
 var signalTextTagTableTagRemovedId int
@@ -19646,6 +19864,8 @@ var signalTextTagTableTagRemovedLock sync.Mutex
 
 // TextTagTableSignalTagRemovedCallback is a callback function for a 'tag-removed' signal emitted from a TextTagTable.
 type TextTagTableSignalTagRemovedCallback func(tag *TextTag)
+
+func (recv *TextTagTable) ConnectTagRemoved() {}
 
 func TextTagTable_tagRemovedHandler() {}
 
@@ -19753,6 +19973,8 @@ var signalTextViewBackspaceLock sync.Mutex
 // TextViewSignalBackspaceCallback is a callback function for a 'backspace' signal emitted from a TextView.
 type TextViewSignalBackspaceCallback func()
 
+func (recv *TextView) ConnectBackspace() {}
+
 func TextView_backspaceHandler() {}
 
 var signalTextViewCopyClipboardId int
@@ -19761,6 +19983,8 @@ var signalTextViewCopyClipboardLock sync.Mutex
 
 // TextViewSignalCopyClipboardCallback is a callback function for a 'copy-clipboard' signal emitted from a TextView.
 type TextViewSignalCopyClipboardCallback func()
+
+func (recv *TextView) ConnectCopyClipboard() {}
 
 func TextView_copyClipboardHandler() {}
 
@@ -19771,6 +19995,8 @@ var signalTextViewCutClipboardLock sync.Mutex
 // TextViewSignalCutClipboardCallback is a callback function for a 'cut-clipboard' signal emitted from a TextView.
 type TextViewSignalCutClipboardCallback func()
 
+func (recv *TextView) ConnectCutClipboard() {}
+
 func TextView_cutClipboardHandler() {}
 
 var signalTextViewDeleteFromCursorId int
@@ -19779,6 +20005,8 @@ var signalTextViewDeleteFromCursorLock sync.Mutex
 
 // TextViewSignalDeleteFromCursorCallback is a callback function for a 'delete-from-cursor' signal emitted from a TextView.
 type TextViewSignalDeleteFromCursorCallback func(type_ DeleteType, count int32)
+
+func (recv *TextView) ConnectDeleteFromCursor() {}
 
 func TextView_deleteFromCursorHandler() {}
 
@@ -19789,6 +20017,8 @@ var signalTextViewInsertAtCursorLock sync.Mutex
 // TextViewSignalInsertAtCursorCallback is a callback function for a 'insert-at-cursor' signal emitted from a TextView.
 type TextViewSignalInsertAtCursorCallback func(string string)
 
+func (recv *TextView) ConnectInsertAtCursor() {}
+
 func TextView_insertAtCursorHandler() {}
 
 var signalTextViewMoveCursorId int
@@ -19797,6 +20027,8 @@ var signalTextViewMoveCursorLock sync.Mutex
 
 // TextViewSignalMoveCursorCallback is a callback function for a 'move-cursor' signal emitted from a TextView.
 type TextViewSignalMoveCursorCallback func(step MovementStep, count int32, extendSelection bool)
+
+func (recv *TextView) ConnectMoveCursor() {}
 
 func TextView_moveCursorHandler() {}
 
@@ -19807,6 +20039,8 @@ var signalTextViewMoveViewportLock sync.Mutex
 // TextViewSignalMoveViewportCallback is a callback function for a 'move-viewport' signal emitted from a TextView.
 type TextViewSignalMoveViewportCallback func(step ScrollStep, count int32)
 
+func (recv *TextView) ConnectMoveViewport() {}
+
 func TextView_moveViewportHandler() {}
 
 var signalTextViewPasteClipboardId int
@@ -19815,6 +20049,8 @@ var signalTextViewPasteClipboardLock sync.Mutex
 
 // TextViewSignalPasteClipboardCallback is a callback function for a 'paste-clipboard' signal emitted from a TextView.
 type TextViewSignalPasteClipboardCallback func()
+
+func (recv *TextView) ConnectPasteClipboard() {}
 
 func TextView_pasteClipboardHandler() {}
 
@@ -19825,6 +20061,8 @@ var signalTextViewPopulatePopupLock sync.Mutex
 // TextViewSignalPopulatePopupCallback is a callback function for a 'populate-popup' signal emitted from a TextView.
 type TextViewSignalPopulatePopupCallback func(popup *Widget)
 
+func (recv *TextView) ConnectPopulatePopup() {}
+
 func TextView_populatePopupHandler() {}
 
 var signalTextViewSelectAllId int
@@ -19833,6 +20071,8 @@ var signalTextViewSelectAllLock sync.Mutex
 
 // TextViewSignalSelectAllCallback is a callback function for a 'select-all' signal emitted from a TextView.
 type TextViewSignalSelectAllCallback func(select_ bool)
+
+func (recv *TextView) ConnectSelectAll() {}
 
 func TextView_selectAllHandler() {}
 
@@ -19843,6 +20083,8 @@ var signalTextViewSetAnchorLock sync.Mutex
 // TextViewSignalSetAnchorCallback is a callback function for a 'set-anchor' signal emitted from a TextView.
 type TextViewSignalSetAnchorCallback func()
 
+func (recv *TextView) ConnectSetAnchor() {}
+
 func TextView_setAnchorHandler() {}
 
 var signalTextViewToggleCursorVisibleId int
@@ -19852,6 +20094,8 @@ var signalTextViewToggleCursorVisibleLock sync.Mutex
 // TextViewSignalToggleCursorVisibleCallback is a callback function for a 'toggle-cursor-visible' signal emitted from a TextView.
 type TextViewSignalToggleCursorVisibleCallback func()
 
+func (recv *TextView) ConnectToggleCursorVisible() {}
+
 func TextView_toggleCursorVisibleHandler() {}
 
 var signalTextViewToggleOverwriteId int
@@ -19860,6 +20104,8 @@ var signalTextViewToggleOverwriteLock sync.Mutex
 
 // TextViewSignalToggleOverwriteCallback is a callback function for a 'toggle-overwrite' signal emitted from a TextView.
 type TextViewSignalToggleOverwriteCallback func()
+
+func (recv *TextView) ConnectToggleOverwrite() {}
 
 func TextView_toggleOverwriteHandler() {}
 
@@ -20533,6 +20779,8 @@ var signalToggleActionToggledLock sync.Mutex
 // ToggleActionSignalToggledCallback is a callback function for a 'toggled' signal emitted from a ToggleAction.
 type ToggleActionSignalToggledCallback func()
 
+func (recv *ToggleAction) ConnectToggled() {}
+
 func ToggleAction_toggledHandler() {}
 
 // ToggleButton is a wrapper around the C record GtkToggleButton.
@@ -20600,6 +20848,8 @@ var signalToggleButtonToggledLock sync.Mutex
 
 // ToggleButtonSignalToggledCallback is a callback function for a 'toggled' signal emitted from a ToggleButton.
 type ToggleButtonSignalToggledCallback func()
+
+func (recv *ToggleButton) ConnectToggled() {}
 
 func ToggleButton_toggledHandler() {}
 
@@ -20819,6 +21069,8 @@ var signalToggleToolButtonToggledLock sync.Mutex
 // ToggleToolButtonSignalToggledCallback is a callback function for a 'toggled' signal emitted from a ToggleToolButton.
 type ToggleToolButtonSignalToggledCallback func()
 
+func (recv *ToggleToolButton) ConnectToggled() {}
+
 func ToggleToolButton_toggledHandler() {}
 
 // ToolButton is a wrapper around the C record GtkToolButton.
@@ -20887,6 +21139,8 @@ var signalToolButtonClickedLock sync.Mutex
 // ToolButtonSignalClickedCallback is a callback function for a 'clicked' signal emitted from a ToolButton.
 type ToolButtonSignalClickedCallback func()
 
+func (recv *ToolButton) ConnectClicked() {}
+
 func ToolButton_clickedHandler() {}
 
 // ToolItem is a wrapper around the C record GtkToolItem.
@@ -20950,6 +21204,8 @@ var signalToolItemCreateMenuProxyLock sync.Mutex
 // ToolItemSignalCreateMenuProxyCallback is a callback function for a 'create-menu-proxy' signal emitted from a ToolItem.
 type ToolItemSignalCreateMenuProxyCallback func() bool
 
+func (recv *ToolItem) ConnectCreateMenuProxy() {}
+
 func ToolItem_createMenuProxyHandler() {}
 
 var signalToolItemToolbarReconfiguredId int
@@ -20958,6 +21214,8 @@ var signalToolItemToolbarReconfiguredLock sync.Mutex
 
 // ToolItemSignalToolbarReconfiguredCallback is a callback function for a 'toolbar-reconfigured' signal emitted from a ToolItem.
 type ToolItemSignalToolbarReconfiguredCallback func()
+
+func (recv *ToolItem) ConnectToolbarReconfigured() {}
 
 func ToolItem_toolbarReconfiguredHandler() {}
 
@@ -21115,6 +21373,8 @@ var signalToolbarFocusHomeOrEndLock sync.Mutex
 // ToolbarSignalFocusHomeOrEndCallback is a callback function for a 'focus-home-or-end' signal emitted from a Toolbar.
 type ToolbarSignalFocusHomeOrEndCallback func(focusHome bool) bool
 
+func (recv *Toolbar) ConnectFocusHomeOrEnd() {}
+
 func Toolbar_focusHomeOrEndHandler() {}
 
 var signalToolbarOrientationChangedId int
@@ -21123,6 +21383,8 @@ var signalToolbarOrientationChangedLock sync.Mutex
 
 // ToolbarSignalOrientationChangedCallback is a callback function for a 'orientation-changed' signal emitted from a Toolbar.
 type ToolbarSignalOrientationChangedCallback func(orientation Orientation)
+
+func (recv *Toolbar) ConnectOrientationChanged() {}
 
 func Toolbar_orientationChangedHandler() {}
 
@@ -21133,6 +21395,8 @@ var signalToolbarPopupContextMenuLock sync.Mutex
 // ToolbarSignalPopupContextMenuCallback is a callback function for a 'popup-context-menu' signal emitted from a Toolbar.
 type ToolbarSignalPopupContextMenuCallback func(x int32, y int32, button int32) bool
 
+func (recv *Toolbar) ConnectPopupContextMenu() {}
+
 func Toolbar_popupContextMenuHandler() {}
 
 var signalToolbarStyleChangedId int
@@ -21141,6 +21405,8 @@ var signalToolbarStyleChangedLock sync.Mutex
 
 // ToolbarSignalStyleChangedCallback is a callback function for a 'style-changed' signal emitted from a Toolbar.
 type ToolbarSignalStyleChangedCallback func(style ToolbarStyle)
+
+func (recv *Toolbar) ConnectStyleChanged() {}
 
 func Toolbar_styleChangedHandler() {}
 
@@ -21445,6 +21711,8 @@ var signalTreeSelectionChangedLock sync.Mutex
 
 // TreeSelectionSignalChangedCallback is a callback function for a 'changed' signal emitted from a TreeSelection.
 type TreeSelectionSignalChangedCallback func()
+
+func (recv *TreeSelection) ConnectChanged() {}
 
 func TreeSelection_changedHandler() {}
 
@@ -21791,6 +22059,8 @@ var signalTreeViewColumnsChangedLock sync.Mutex
 // TreeViewSignalColumnsChangedCallback is a callback function for a 'columns-changed' signal emitted from a TreeView.
 type TreeViewSignalColumnsChangedCallback func()
 
+func (recv *TreeView) ConnectColumnsChanged() {}
+
 func TreeView_columnsChangedHandler() {}
 
 var signalTreeViewCursorChangedId int
@@ -21799,6 +22069,8 @@ var signalTreeViewCursorChangedLock sync.Mutex
 
 // TreeViewSignalCursorChangedCallback is a callback function for a 'cursor-changed' signal emitted from a TreeView.
 type TreeViewSignalCursorChangedCallback func()
+
+func (recv *TreeView) ConnectCursorChanged() {}
 
 func TreeView_cursorChangedHandler() {}
 
@@ -21809,6 +22081,8 @@ var signalTreeViewExpandCollapseCursorRowLock sync.Mutex
 // TreeViewSignalExpandCollapseCursorRowCallback is a callback function for a 'expand-collapse-cursor-row' signal emitted from a TreeView.
 type TreeViewSignalExpandCollapseCursorRowCallback func(object bool, p0 bool, p1 bool) bool
 
+func (recv *TreeView) ConnectExpandCollapseCursorRow() {}
+
 func TreeView_expandCollapseCursorRowHandler() {}
 
 var signalTreeViewMoveCursorId int
@@ -21817,6 +22091,8 @@ var signalTreeViewMoveCursorLock sync.Mutex
 
 // TreeViewSignalMoveCursorCallback is a callback function for a 'move-cursor' signal emitted from a TreeView.
 type TreeViewSignalMoveCursorCallback func(step MovementStep, direction int32) bool
+
+func (recv *TreeView) ConnectMoveCursor() {}
 
 func TreeView_moveCursorHandler() {}
 
@@ -21827,6 +22103,8 @@ var signalTreeViewRowActivatedLock sync.Mutex
 // TreeViewSignalRowActivatedCallback is a callback function for a 'row-activated' signal emitted from a TreeView.
 type TreeViewSignalRowActivatedCallback func(path *TreePath, column *TreeViewColumn)
 
+func (recv *TreeView) ConnectRowActivated() {}
+
 func TreeView_rowActivatedHandler() {}
 
 var signalTreeViewRowCollapsedId int
@@ -21835,6 +22113,8 @@ var signalTreeViewRowCollapsedLock sync.Mutex
 
 // TreeViewSignalRowCollapsedCallback is a callback function for a 'row-collapsed' signal emitted from a TreeView.
 type TreeViewSignalRowCollapsedCallback func(iter *TreeIter, path *TreePath)
+
+func (recv *TreeView) ConnectRowCollapsed() {}
 
 func TreeView_rowCollapsedHandler() {}
 
@@ -21845,6 +22125,8 @@ var signalTreeViewRowExpandedLock sync.Mutex
 // TreeViewSignalRowExpandedCallback is a callback function for a 'row-expanded' signal emitted from a TreeView.
 type TreeViewSignalRowExpandedCallback func(iter *TreeIter, path *TreePath)
 
+func (recv *TreeView) ConnectRowExpanded() {}
+
 func TreeView_rowExpandedHandler() {}
 
 var signalTreeViewSelectAllId int
@@ -21853,6 +22135,8 @@ var signalTreeViewSelectAllLock sync.Mutex
 
 // TreeViewSignalSelectAllCallback is a callback function for a 'select-all' signal emitted from a TreeView.
 type TreeViewSignalSelectAllCallback func() bool
+
+func (recv *TreeView) ConnectSelectAll() {}
 
 func TreeView_selectAllHandler() {}
 
@@ -21863,6 +22147,8 @@ var signalTreeViewSelectCursorParentLock sync.Mutex
 // TreeViewSignalSelectCursorParentCallback is a callback function for a 'select-cursor-parent' signal emitted from a TreeView.
 type TreeViewSignalSelectCursorParentCallback func() bool
 
+func (recv *TreeView) ConnectSelectCursorParent() {}
+
 func TreeView_selectCursorParentHandler() {}
 
 var signalTreeViewSelectCursorRowId int
@@ -21871,6 +22157,8 @@ var signalTreeViewSelectCursorRowLock sync.Mutex
 
 // TreeViewSignalSelectCursorRowCallback is a callback function for a 'select-cursor-row' signal emitted from a TreeView.
 type TreeViewSignalSelectCursorRowCallback func(object bool) bool
+
+func (recv *TreeView) ConnectSelectCursorRow() {}
 
 func TreeView_selectCursorRowHandler() {}
 
@@ -21881,6 +22169,8 @@ var signalTreeViewStartInteractiveSearchLock sync.Mutex
 // TreeViewSignalStartInteractiveSearchCallback is a callback function for a 'start-interactive-search' signal emitted from a TreeView.
 type TreeViewSignalStartInteractiveSearchCallback func() bool
 
+func (recv *TreeView) ConnectStartInteractiveSearch() {}
+
 func TreeView_startInteractiveSearchHandler() {}
 
 var signalTreeViewTestCollapseRowId int
@@ -21889,6 +22179,8 @@ var signalTreeViewTestCollapseRowLock sync.Mutex
 
 // TreeViewSignalTestCollapseRowCallback is a callback function for a 'test-collapse-row' signal emitted from a TreeView.
 type TreeViewSignalTestCollapseRowCallback func(iter *TreeIter, path *TreePath) bool
+
+func (recv *TreeView) ConnectTestCollapseRow() {}
 
 func TreeView_testCollapseRowHandler() {}
 
@@ -21899,6 +22191,8 @@ var signalTreeViewTestExpandRowLock sync.Mutex
 // TreeViewSignalTestExpandRowCallback is a callback function for a 'test-expand-row' signal emitted from a TreeView.
 type TreeViewSignalTestExpandRowCallback func(iter *TreeIter, path *TreePath) bool
 
+func (recv *TreeView) ConnectTestExpandRow() {}
+
 func TreeView_testExpandRowHandler() {}
 
 var signalTreeViewToggleCursorRowId int
@@ -21908,6 +22202,8 @@ var signalTreeViewToggleCursorRowLock sync.Mutex
 // TreeViewSignalToggleCursorRowCallback is a callback function for a 'toggle-cursor-row' signal emitted from a TreeView.
 type TreeViewSignalToggleCursorRowCallback func() bool
 
+func (recv *TreeView) ConnectToggleCursorRow() {}
+
 func TreeView_toggleCursorRowHandler() {}
 
 var signalTreeViewUnselectAllId int
@@ -21916,6 +22212,8 @@ var signalTreeViewUnselectAllLock sync.Mutex
 
 // TreeViewSignalUnselectAllCallback is a callback function for a 'unselect-all' signal emitted from a TreeView.
 type TreeViewSignalUnselectAllCallback func() bool
+
+func (recv *TreeView) ConnectUnselectAll() {}
 
 func TreeView_unselectAllHandler() {}
 
@@ -22429,6 +22727,8 @@ var signalTreeViewColumnClickedLock sync.Mutex
 
 // TreeViewColumnSignalClickedCallback is a callback function for a 'clicked' signal emitted from a TreeViewColumn.
 type TreeViewColumnSignalClickedCallback func()
+
+func (recv *TreeViewColumn) ConnectClicked() {}
 
 func TreeViewColumn_clickedHandler() {}
 
@@ -23455,6 +23755,8 @@ var signalWidgetAccelClosuresChangedLock sync.Mutex
 // WidgetSignalAccelClosuresChangedCallback is a callback function for a 'accel-closures-changed' signal emitted from a Widget.
 type WidgetSignalAccelClosuresChangedCallback func()
 
+func (recv *Widget) ConnectAccelClosuresChanged() {}
+
 func Widget_accelClosuresChangedHandler() {}
 
 var signalWidgetButtonPressEventId int
@@ -23463,6 +23765,8 @@ var signalWidgetButtonPressEventLock sync.Mutex
 
 // WidgetSignalButtonPressEventCallback is a callback function for a 'button-press-event' signal emitted from a Widget.
 type WidgetSignalButtonPressEventCallback func(event *gdk.EventButton) bool
+
+func (recv *Widget) ConnectButtonPressEvent() {}
 
 func Widget_buttonPressEventHandler() {}
 
@@ -23473,6 +23777,8 @@ var signalWidgetButtonReleaseEventLock sync.Mutex
 // WidgetSignalButtonReleaseEventCallback is a callback function for a 'button-release-event' signal emitted from a Widget.
 type WidgetSignalButtonReleaseEventCallback func(event *gdk.EventButton) bool
 
+func (recv *Widget) ConnectButtonReleaseEvent() {}
+
 func Widget_buttonReleaseEventHandler() {}
 
 var signalWidgetCanActivateAccelId int
@@ -23481,6 +23787,8 @@ var signalWidgetCanActivateAccelLock sync.Mutex
 
 // WidgetSignalCanActivateAccelCallback is a callback function for a 'can-activate-accel' signal emitted from a Widget.
 type WidgetSignalCanActivateAccelCallback func(signalId uint32) bool
+
+func (recv *Widget) ConnectCanActivateAccel() {}
 
 func Widget_canActivateAccelHandler() {}
 
@@ -23493,6 +23801,8 @@ var signalWidgetCompositedChangedLock sync.Mutex
 // WidgetSignalCompositedChangedCallback is a callback function for a 'composited-changed' signal emitted from a Widget.
 type WidgetSignalCompositedChangedCallback func()
 
+func (recv *Widget) ConnectCompositedChanged() {}
+
 func Widget_compositedChangedHandler() {}
 
 var signalWidgetConfigureEventId int
@@ -23501,6 +23811,8 @@ var signalWidgetConfigureEventLock sync.Mutex
 
 // WidgetSignalConfigureEventCallback is a callback function for a 'configure-event' signal emitted from a Widget.
 type WidgetSignalConfigureEventCallback func(event *gdk.EventConfigure) bool
+
+func (recv *Widget) ConnectConfigureEvent() {}
 
 func Widget_configureEventHandler() {}
 
@@ -23513,6 +23825,8 @@ var signalWidgetDestroyLock sync.Mutex
 // WidgetSignalDestroyCallback is a callback function for a 'destroy' signal emitted from a Widget.
 type WidgetSignalDestroyCallback func()
 
+func (recv *Widget) ConnectDestroy() {}
+
 func Widget_destroyHandler() {}
 
 // Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
@@ -23524,6 +23838,8 @@ var signalWidgetDirectionChangedLock sync.Mutex
 // WidgetSignalDirectionChangedCallback is a callback function for a 'direction-changed' signal emitted from a Widget.
 type WidgetSignalDirectionChangedCallback func(previousDirection TextDirection)
 
+func (recv *Widget) ConnectDirectionChanged() {}
+
 func Widget_directionChangedHandler() {}
 
 var signalWidgetDragBeginId int
@@ -23532,6 +23848,8 @@ var signalWidgetDragBeginLock sync.Mutex
 
 // WidgetSignalDragBeginCallback is a callback function for a 'drag-begin' signal emitted from a Widget.
 type WidgetSignalDragBeginCallback func(context *gdk.DragContext)
+
+func (recv *Widget) ConnectDragBegin() {}
 
 func Widget_dragBeginHandler() {}
 
@@ -23542,6 +23860,8 @@ var signalWidgetDragDataDeleteLock sync.Mutex
 // WidgetSignalDragDataDeleteCallback is a callback function for a 'drag-data-delete' signal emitted from a Widget.
 type WidgetSignalDragDataDeleteCallback func(context *gdk.DragContext)
 
+func (recv *Widget) ConnectDragDataDelete() {}
+
 func Widget_dragDataDeleteHandler() {}
 
 var signalWidgetDragDataGetId int
@@ -23550,6 +23870,8 @@ var signalWidgetDragDataGetLock sync.Mutex
 
 // WidgetSignalDragDataGetCallback is a callback function for a 'drag-data-get' signal emitted from a Widget.
 type WidgetSignalDragDataGetCallback func(context *gdk.DragContext, data *SelectionData, info uint32, time uint32)
+
+func (recv *Widget) ConnectDragDataGet() {}
 
 func Widget_dragDataGetHandler() {}
 
@@ -23560,6 +23882,8 @@ var signalWidgetDragDataReceivedLock sync.Mutex
 // WidgetSignalDragDataReceivedCallback is a callback function for a 'drag-data-received' signal emitted from a Widget.
 type WidgetSignalDragDataReceivedCallback func(context *gdk.DragContext, x int32, y int32, data *SelectionData, info uint32, time uint32)
 
+func (recv *Widget) ConnectDragDataReceived() {}
+
 func Widget_dragDataReceivedHandler() {}
 
 var signalWidgetDragDropId int
@@ -23568,6 +23892,8 @@ var signalWidgetDragDropLock sync.Mutex
 
 // WidgetSignalDragDropCallback is a callback function for a 'drag-drop' signal emitted from a Widget.
 type WidgetSignalDragDropCallback func(context *gdk.DragContext, x int32, y int32, time uint32) bool
+
+func (recv *Widget) ConnectDragDrop() {}
 
 func Widget_dragDropHandler() {}
 
@@ -23578,6 +23904,8 @@ var signalWidgetDragEndLock sync.Mutex
 // WidgetSignalDragEndCallback is a callback function for a 'drag-end' signal emitted from a Widget.
 type WidgetSignalDragEndCallback func(context *gdk.DragContext)
 
+func (recv *Widget) ConnectDragEnd() {}
+
 func Widget_dragEndHandler() {}
 
 var signalWidgetDragLeaveId int
@@ -23586,6 +23914,8 @@ var signalWidgetDragLeaveLock sync.Mutex
 
 // WidgetSignalDragLeaveCallback is a callback function for a 'drag-leave' signal emitted from a Widget.
 type WidgetSignalDragLeaveCallback func(context *gdk.DragContext, time uint32)
+
+func (recv *Widget) ConnectDragLeave() {}
 
 func Widget_dragLeaveHandler() {}
 
@@ -23596,6 +23926,8 @@ var signalWidgetDragMotionLock sync.Mutex
 // WidgetSignalDragMotionCallback is a callback function for a 'drag-motion' signal emitted from a Widget.
 type WidgetSignalDragMotionCallback func(context *gdk.DragContext, x int32, y int32, time uint32) bool
 
+func (recv *Widget) ConnectDragMotion() {}
+
 func Widget_dragMotionHandler() {}
 
 var signalWidgetEnterNotifyEventId int
@@ -23604,6 +23936,8 @@ var signalWidgetEnterNotifyEventLock sync.Mutex
 
 // WidgetSignalEnterNotifyEventCallback is a callback function for a 'enter-notify-event' signal emitted from a Widget.
 type WidgetSignalEnterNotifyEventCallback func(event *gdk.EventCrossing) bool
+
+func (recv *Widget) ConnectEnterNotifyEvent() {}
 
 func Widget_enterNotifyEventHandler() {}
 
@@ -23618,6 +23952,8 @@ var signalWidgetFocusLock sync.Mutex
 // WidgetSignalFocusCallback is a callback function for a 'focus' signal emitted from a Widget.
 type WidgetSignalFocusCallback func(direction DirectionType) bool
 
+func (recv *Widget) ConnectFocus() {}
+
 func Widget_focusHandler() {}
 
 var signalWidgetFocusInEventId int
@@ -23626,6 +23962,8 @@ var signalWidgetFocusInEventLock sync.Mutex
 
 // WidgetSignalFocusInEventCallback is a callback function for a 'focus-in-event' signal emitted from a Widget.
 type WidgetSignalFocusInEventCallback func(event *gdk.EventFocus) bool
+
+func (recv *Widget) ConnectFocusInEvent() {}
 
 func Widget_focusInEventHandler() {}
 
@@ -23636,6 +23974,8 @@ var signalWidgetFocusOutEventLock sync.Mutex
 // WidgetSignalFocusOutEventCallback is a callback function for a 'focus-out-event' signal emitted from a Widget.
 type WidgetSignalFocusOutEventCallback func(event *gdk.EventFocus) bool
 
+func (recv *Widget) ConnectFocusOutEvent() {}
+
 func Widget_focusOutEventHandler() {}
 
 var signalWidgetGrabFocusId int
@@ -23644,6 +23984,8 @@ var signalWidgetGrabFocusLock sync.Mutex
 
 // WidgetSignalGrabFocusCallback is a callback function for a 'grab-focus' signal emitted from a Widget.
 type WidgetSignalGrabFocusCallback func()
+
+func (recv *Widget) ConnectGrabFocus() {}
 
 func Widget_grabFocusHandler() {}
 
@@ -23654,6 +23996,8 @@ var signalWidgetGrabNotifyLock sync.Mutex
 // WidgetSignalGrabNotifyCallback is a callback function for a 'grab-notify' signal emitted from a Widget.
 type WidgetSignalGrabNotifyCallback func(wasGrabbed bool)
 
+func (recv *Widget) ConnectGrabNotify() {}
+
 func Widget_grabNotifyHandler() {}
 
 var signalWidgetHideId int
@@ -23662,6 +24006,8 @@ var signalWidgetHideLock sync.Mutex
 
 // WidgetSignalHideCallback is a callback function for a 'hide' signal emitted from a Widget.
 type WidgetSignalHideCallback func()
+
+func (recv *Widget) ConnectHide() {}
 
 func Widget_hideHandler() {}
 
@@ -23672,6 +24018,8 @@ var signalWidgetHierarchyChangedLock sync.Mutex
 // WidgetSignalHierarchyChangedCallback is a callback function for a 'hierarchy-changed' signal emitted from a Widget.
 type WidgetSignalHierarchyChangedCallback func(previousToplevel *Widget)
 
+func (recv *Widget) ConnectHierarchyChanged() {}
+
 func Widget_hierarchyChangedHandler() {}
 
 var signalWidgetKeyPressEventId int
@@ -23680,6 +24028,8 @@ var signalWidgetKeyPressEventLock sync.Mutex
 
 // WidgetSignalKeyPressEventCallback is a callback function for a 'key-press-event' signal emitted from a Widget.
 type WidgetSignalKeyPressEventCallback func(event *gdk.EventKey) bool
+
+func (recv *Widget) ConnectKeyPressEvent() {}
 
 func Widget_keyPressEventHandler() {}
 
@@ -23690,6 +24040,8 @@ var signalWidgetKeyReleaseEventLock sync.Mutex
 // WidgetSignalKeyReleaseEventCallback is a callback function for a 'key-release-event' signal emitted from a Widget.
 type WidgetSignalKeyReleaseEventCallback func(event *gdk.EventKey) bool
 
+func (recv *Widget) ConnectKeyReleaseEvent() {}
+
 func Widget_keyReleaseEventHandler() {}
 
 var signalWidgetLeaveNotifyEventId int
@@ -23698,6 +24050,8 @@ var signalWidgetLeaveNotifyEventLock sync.Mutex
 
 // WidgetSignalLeaveNotifyEventCallback is a callback function for a 'leave-notify-event' signal emitted from a Widget.
 type WidgetSignalLeaveNotifyEventCallback func(event *gdk.EventCrossing) bool
+
+func (recv *Widget) ConnectLeaveNotifyEvent() {}
 
 func Widget_leaveNotifyEventHandler() {}
 
@@ -23708,6 +24062,8 @@ var signalWidgetMapLock sync.Mutex
 // WidgetSignalMapCallback is a callback function for a 'map' signal emitted from a Widget.
 type WidgetSignalMapCallback func()
 
+func (recv *Widget) ConnectMap() {}
+
 func Widget_mapHandler() {}
 
 var signalWidgetMapEventId int
@@ -23716,6 +24072,8 @@ var signalWidgetMapEventLock sync.Mutex
 
 // WidgetSignalMapEventCallback is a callback function for a 'map-event' signal emitted from a Widget.
 type WidgetSignalMapEventCallback func(event *gdk.EventAny) bool
+
+func (recv *Widget) ConnectMapEvent() {}
 
 func Widget_mapEventHandler() {}
 
@@ -23726,6 +24084,8 @@ var signalWidgetMnemonicActivateLock sync.Mutex
 // WidgetSignalMnemonicActivateCallback is a callback function for a 'mnemonic-activate' signal emitted from a Widget.
 type WidgetSignalMnemonicActivateCallback func(groupCycling bool) bool
 
+func (recv *Widget) ConnectMnemonicActivate() {}
+
 func Widget_mnemonicActivateHandler() {}
 
 var signalWidgetMotionNotifyEventId int
@@ -23734,6 +24094,8 @@ var signalWidgetMotionNotifyEventLock sync.Mutex
 
 // WidgetSignalMotionNotifyEventCallback is a callback function for a 'motion-notify-event' signal emitted from a Widget.
 type WidgetSignalMotionNotifyEventCallback func(event *gdk.EventMotion) bool
+
+func (recv *Widget) ConnectMotionNotifyEvent() {}
 
 func Widget_motionNotifyEventHandler() {}
 
@@ -23744,6 +24106,8 @@ var signalWidgetMoveFocusLock sync.Mutex
 // WidgetSignalMoveFocusCallback is a callback function for a 'move-focus' signal emitted from a Widget.
 type WidgetSignalMoveFocusCallback func(direction DirectionType)
 
+func (recv *Widget) ConnectMoveFocus() {}
+
 func Widget_moveFocusHandler() {}
 
 var signalWidgetParentSetId int
@@ -23752,6 +24116,8 @@ var signalWidgetParentSetLock sync.Mutex
 
 // WidgetSignalParentSetCallback is a callback function for a 'parent-set' signal emitted from a Widget.
 type WidgetSignalParentSetCallback func(oldParent *Widget)
+
+func (recv *Widget) ConnectParentSet() {}
 
 func Widget_parentSetHandler() {}
 
@@ -23762,6 +24128,8 @@ var signalWidgetPopupMenuLock sync.Mutex
 // WidgetSignalPopupMenuCallback is a callback function for a 'popup-menu' signal emitted from a Widget.
 type WidgetSignalPopupMenuCallback func() bool
 
+func (recv *Widget) ConnectPopupMenu() {}
+
 func Widget_popupMenuHandler() {}
 
 var signalWidgetPropertyNotifyEventId int
@@ -23770,6 +24138,8 @@ var signalWidgetPropertyNotifyEventLock sync.Mutex
 
 // WidgetSignalPropertyNotifyEventCallback is a callback function for a 'property-notify-event' signal emitted from a Widget.
 type WidgetSignalPropertyNotifyEventCallback func(event *gdk.EventProperty) bool
+
+func (recv *Widget) ConnectPropertyNotifyEvent() {}
 
 func Widget_propertyNotifyEventHandler() {}
 
@@ -23780,6 +24150,8 @@ var signalWidgetProximityInEventLock sync.Mutex
 // WidgetSignalProximityInEventCallback is a callback function for a 'proximity-in-event' signal emitted from a Widget.
 type WidgetSignalProximityInEventCallback func(event *gdk.EventProximity) bool
 
+func (recv *Widget) ConnectProximityInEvent() {}
+
 func Widget_proximityInEventHandler() {}
 
 var signalWidgetProximityOutEventId int
@@ -23788,6 +24160,8 @@ var signalWidgetProximityOutEventLock sync.Mutex
 
 // WidgetSignalProximityOutEventCallback is a callback function for a 'proximity-out-event' signal emitted from a Widget.
 type WidgetSignalProximityOutEventCallback func(event *gdk.EventProximity) bool
+
+func (recv *Widget) ConnectProximityOutEvent() {}
 
 func Widget_proximityOutEventHandler() {}
 
@@ -23798,6 +24172,8 @@ var signalWidgetRealizeLock sync.Mutex
 // WidgetSignalRealizeCallback is a callback function for a 'realize' signal emitted from a Widget.
 type WidgetSignalRealizeCallback func()
 
+func (recv *Widget) ConnectRealize() {}
+
 func Widget_realizeHandler() {}
 
 var signalWidgetScreenChangedId int
@@ -23806,6 +24182,8 @@ var signalWidgetScreenChangedLock sync.Mutex
 
 // WidgetSignalScreenChangedCallback is a callback function for a 'screen-changed' signal emitted from a Widget.
 type WidgetSignalScreenChangedCallback func(previousScreen *gdk.Screen)
+
+func (recv *Widget) ConnectScreenChanged() {}
 
 func Widget_screenChangedHandler() {}
 
@@ -23816,6 +24194,8 @@ var signalWidgetScrollEventLock sync.Mutex
 // WidgetSignalScrollEventCallback is a callback function for a 'scroll-event' signal emitted from a Widget.
 type WidgetSignalScrollEventCallback func(event *gdk.EventScroll) bool
 
+func (recv *Widget) ConnectScrollEvent() {}
+
 func Widget_scrollEventHandler() {}
 
 var signalWidgetSelectionClearEventId int
@@ -23824,6 +24204,8 @@ var signalWidgetSelectionClearEventLock sync.Mutex
 
 // WidgetSignalSelectionClearEventCallback is a callback function for a 'selection-clear-event' signal emitted from a Widget.
 type WidgetSignalSelectionClearEventCallback func(event *gdk.EventSelection) bool
+
+func (recv *Widget) ConnectSelectionClearEvent() {}
 
 func Widget_selectionClearEventHandler() {}
 
@@ -23834,6 +24216,8 @@ var signalWidgetSelectionGetLock sync.Mutex
 // WidgetSignalSelectionGetCallback is a callback function for a 'selection-get' signal emitted from a Widget.
 type WidgetSignalSelectionGetCallback func(data *SelectionData, info uint32, time uint32)
 
+func (recv *Widget) ConnectSelectionGet() {}
+
 func Widget_selectionGetHandler() {}
 
 var signalWidgetSelectionNotifyEventId int
@@ -23842,6 +24226,8 @@ var signalWidgetSelectionNotifyEventLock sync.Mutex
 
 // WidgetSignalSelectionNotifyEventCallback is a callback function for a 'selection-notify-event' signal emitted from a Widget.
 type WidgetSignalSelectionNotifyEventCallback func(event *gdk.EventSelection) bool
+
+func (recv *Widget) ConnectSelectionNotifyEvent() {}
 
 func Widget_selectionNotifyEventHandler() {}
 
@@ -23852,6 +24238,8 @@ var signalWidgetSelectionReceivedLock sync.Mutex
 // WidgetSignalSelectionReceivedCallback is a callback function for a 'selection-received' signal emitted from a Widget.
 type WidgetSignalSelectionReceivedCallback func(data *SelectionData, time uint32)
 
+func (recv *Widget) ConnectSelectionReceived() {}
+
 func Widget_selectionReceivedHandler() {}
 
 var signalWidgetSelectionRequestEventId int
@@ -23860,6 +24248,8 @@ var signalWidgetSelectionRequestEventLock sync.Mutex
 
 // WidgetSignalSelectionRequestEventCallback is a callback function for a 'selection-request-event' signal emitted from a Widget.
 type WidgetSignalSelectionRequestEventCallback func(event *gdk.EventSelection) bool
+
+func (recv *Widget) ConnectSelectionRequestEvent() {}
 
 func Widget_selectionRequestEventHandler() {}
 
@@ -23870,6 +24260,8 @@ var signalWidgetShowLock sync.Mutex
 // WidgetSignalShowCallback is a callback function for a 'show' signal emitted from a Widget.
 type WidgetSignalShowCallback func()
 
+func (recv *Widget) ConnectShow() {}
+
 func Widget_showHandler() {}
 
 var signalWidgetShowHelpId int
@@ -23878,6 +24270,8 @@ var signalWidgetShowHelpLock sync.Mutex
 
 // WidgetSignalShowHelpCallback is a callback function for a 'show-help' signal emitted from a Widget.
 type WidgetSignalShowHelpCallback func(helpType WidgetHelpType) bool
+
+func (recv *Widget) ConnectShowHelp() {}
 
 func Widget_showHelpHandler() {}
 
@@ -23890,6 +24284,8 @@ var signalWidgetStateChangedLock sync.Mutex
 // WidgetSignalStateChangedCallback is a callback function for a 'state-changed' signal emitted from a Widget.
 type WidgetSignalStateChangedCallback func(state StateType)
 
+func (recv *Widget) ConnectStateChanged() {}
+
 func Widget_stateChangedHandler() {}
 
 var signalWidgetStyleSetId int
@@ -23898,6 +24294,8 @@ var signalWidgetStyleSetLock sync.Mutex
 
 // WidgetSignalStyleSetCallback is a callback function for a 'style-set' signal emitted from a Widget.
 type WidgetSignalStyleSetCallback func(previousStyle *Style)
+
+func (recv *Widget) ConnectStyleSet() {}
 
 func Widget_styleSetHandler() {}
 
@@ -23910,6 +24308,8 @@ var signalWidgetUnmapLock sync.Mutex
 // WidgetSignalUnmapCallback is a callback function for a 'unmap' signal emitted from a Widget.
 type WidgetSignalUnmapCallback func()
 
+func (recv *Widget) ConnectUnmap() {}
+
 func Widget_unmapHandler() {}
 
 var signalWidgetUnmapEventId int
@@ -23918,6 +24318,8 @@ var signalWidgetUnmapEventLock sync.Mutex
 
 // WidgetSignalUnmapEventCallback is a callback function for a 'unmap-event' signal emitted from a Widget.
 type WidgetSignalUnmapEventCallback func(event *gdk.EventAny) bool
+
+func (recv *Widget) ConnectUnmapEvent() {}
 
 func Widget_unmapEventHandler() {}
 
@@ -23928,6 +24330,8 @@ var signalWidgetUnrealizeLock sync.Mutex
 // WidgetSignalUnrealizeCallback is a callback function for a 'unrealize' signal emitted from a Widget.
 type WidgetSignalUnrealizeCallback func()
 
+func (recv *Widget) ConnectUnrealize() {}
+
 func Widget_unrealizeHandler() {}
 
 var signalWidgetVisibilityNotifyEventId int
@@ -23937,6 +24341,8 @@ var signalWidgetVisibilityNotifyEventLock sync.Mutex
 // WidgetSignalVisibilityNotifyEventCallback is a callback function for a 'visibility-notify-event' signal emitted from a Widget.
 type WidgetSignalVisibilityNotifyEventCallback func(event *gdk.EventVisibility) bool
 
+func (recv *Widget) ConnectVisibilityNotifyEvent() {}
+
 func Widget_visibilityNotifyEventHandler() {}
 
 var signalWidgetWindowStateEventId int
@@ -23945,6 +24351,8 @@ var signalWidgetWindowStateEventLock sync.Mutex
 
 // WidgetSignalWindowStateEventCallback is a callback function for a 'window-state-event' signal emitted from a Widget.
 type WidgetSignalWindowStateEventCallback func(event *gdk.EventWindowState) bool
+
+func (recv *Widget) ConnectWindowStateEvent() {}
 
 func Widget_windowStateEventHandler() {}
 
@@ -25111,6 +25519,8 @@ var signalWindowActivateDefaultLock sync.Mutex
 // WindowSignalActivateDefaultCallback is a callback function for a 'activate-default' signal emitted from a Window.
 type WindowSignalActivateDefaultCallback func()
 
+func (recv *Window) ConnectActivateDefault() {}
+
 func Window_activateDefaultHandler() {}
 
 var signalWindowActivateFocusId int
@@ -25119,6 +25529,8 @@ var signalWindowActivateFocusLock sync.Mutex
 
 // WindowSignalActivateFocusCallback is a callback function for a 'activate-focus' signal emitted from a Window.
 type WindowSignalActivateFocusCallback func()
+
+func (recv *Window) ConnectActivateFocus() {}
 
 func Window_activateFocusHandler() {}
 
@@ -25129,6 +25541,8 @@ var signalWindowEnableDebuggingLock sync.Mutex
 // WindowSignalEnableDebuggingCallback is a callback function for a 'enable-debugging' signal emitted from a Window.
 type WindowSignalEnableDebuggingCallback func(toggle bool) bool
 
+func (recv *Window) ConnectEnableDebugging() {}
+
 func Window_enableDebuggingHandler() {}
 
 var signalWindowKeysChangedId int
@@ -25138,6 +25552,8 @@ var signalWindowKeysChangedLock sync.Mutex
 // WindowSignalKeysChangedCallback is a callback function for a 'keys-changed' signal emitted from a Window.
 type WindowSignalKeysChangedCallback func()
 
+func (recv *Window) ConnectKeysChanged() {}
+
 func Window_keysChangedHandler() {}
 
 var signalWindowSetFocusId int
@@ -25146,6 +25562,8 @@ var signalWindowSetFocusLock sync.Mutex
 
 // WindowSignalSetFocusCallback is a callback function for a 'set-focus' signal emitted from a Window.
 type WindowSignalSetFocusCallback func(object *Widget)
+
+func (recv *Window) ConnectSetFocus() {}
 
 func Window_setFocusHandler() {}
 

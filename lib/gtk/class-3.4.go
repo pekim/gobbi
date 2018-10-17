@@ -195,6 +195,8 @@ var signalComboBoxFormatEntryTextLock sync.Mutex
 // ComboBoxSignalFormatEntryTextCallback is a callback function for a 'format-entry-text' signal emitted from a ComboBox.
 type ComboBoxSignalFormatEntryTextCallback func(path string) string
 
+func (recv *ComboBox) ConnectFormatEntryText() {}
+
 func ComboBox_formatEntryTextHandler() {}
 
 // Unsupported : gtk_combo_box_new_with_model : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
@@ -277,8 +279,6 @@ func MenuBarNewFromModel(model *gio.MenuModel) *MenuBar {
 // Unsupported : gtk_message_dialog_new_with_markup : unsupported parameter ... : varargs
 
 // Unsupported signal : unsupported parameter allocation : Blacklisted record : GdkRectangle
-
-// Unsupported : gtk_pad_controller_new : unsupported parameter group : no type generator for Gio.ActionGroup, GActionGroup*
 
 // Unsupported : gtk_page_setup_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
 

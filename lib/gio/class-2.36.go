@@ -40,6 +40,8 @@ var signalAppLaunchContextLaunchFailedLock sync.Mutex
 // AppLaunchContextSignalLaunchFailedCallback is a callback function for a 'launch-failed' signal emitted from a AppLaunchContext.
 type AppLaunchContextSignalLaunchFailedCallback func(startupNotifyId string)
 
+func (recv *AppLaunchContext) ConnectLaunchFailed() {}
+
 func AppLaunchContext_launchFailedHandler() {}
 
 // Unsupported signal : unsupported parameter info : no type generator for AppInfo,
@@ -246,10 +248,6 @@ func (recv *Socket) SetOption(level int32, optname int32, value int32) (bool, er
 // Unsupported : g_socket_client_get_proxy_resolver : no return generator
 
 // Unsupported : g_socket_client_set_proxy_resolver : unsupported parameter proxy_resolver : no type generator for ProxyResolver, GProxyResolver*
-
-// Unsupported : g_subprocess_new : unsupported parameter error : record with indirection level of 2
-
-// Unsupported : g_subprocess_newv : unsupported parameter argv : no param type
 
 // Unsupported : g_task_new : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
 

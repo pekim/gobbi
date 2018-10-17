@@ -245,6 +245,8 @@ var signalWindowCreateSurfaceLock sync.Mutex
 // WindowSignalCreateSurfaceCallback is a callback function for a 'create-surface' signal emitted from a Window.
 type WindowSignalCreateSurfaceCallback func(width int32, height int32) cairo.Surface
 
+func (recv *Window) ConnectCreateSurface() {}
+
 func Window_createSurfaceHandler() {}
 
 // GetDeviceCursor is a wrapper around the C function gdk_window_get_device_cursor.

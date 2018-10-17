@@ -76,9 +76,11 @@ func (r *Record) generate(g *jen.Group, version *Version) {
 		r.generateDowncast(g)
 	}
 
-	r.Signals.generate(g, version)
-	r.Constructors.generate(g, version)
-	r.Methods.generate(g, version)
+	if r.Version == "" || version.GTE(VersionNew(r.Version)) {
+		r.Signals.generate(g, version, r.Version)
+		r.Constructors.generate(g, version)
+		r.Methods.generate(g, version)
+	}
 }
 
 func (r *Record) generateType(g *jen.Group) {

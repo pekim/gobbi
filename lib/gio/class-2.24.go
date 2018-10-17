@@ -26,8 +26,6 @@ import "C"
 
 // Unsupported signal : unsupported parameter info : no type generator for AppInfo,
 
-// Unsupported signal : unsupported parameter files : no param type
-
 // CharsetConverterNew is a wrapper around the C function g_charset_converter_new.
 func CharsetConverterNew(toCharset string, fromCharset string) (*CharsetConverter, error) {
 	c_to_charset := C.CString(toCharset)
@@ -82,32 +80,6 @@ func (recv *CharsetConverter) SetUseFallback(useFallback bool) {
 // Unsupported : g_converter_output_stream_new : unsupported parameter converter : no type generator for Converter, GConverter*
 
 // Unsupported : g_converter_output_stream_get_converter : no return generator
-
-// Unsupported : g_dbus_connection_new_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
-
-// Unsupported : g_dbus_connection_new_for_address_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
-
-// Unsupported : g_dbus_message_new_from_blob : unsupported parameter blob : no param type
-
-// Unsupported signal : unsupported parameter changed_properties : Blacklisted record : GVariant
-
-// Unsupported signal : unsupported parameter parameters : Blacklisted record : GVariant
-
-// Unsupported : g_dbus_object_manager_client_new_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
-
-// Unsupported : g_dbus_object_manager_client_new_for_bus_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
-
-// Unsupported : g_dbus_object_manager_client_new_for_bus_sync : unsupported parameter get_proxy_type_func : no type generator for DBusProxyTypeFunc, GDBusProxyTypeFunc
-
-// Unsupported : g_dbus_object_manager_client_new_sync : unsupported parameter get_proxy_type_func : no type generator for DBusProxyTypeFunc, GDBusProxyTypeFunc
-
-// Unsupported signal : unsupported parameter changed_properties : Blacklisted record : GVariant
-
-// Unsupported signal : unsupported parameter parameters : Blacklisted record : GVariant
-
-// Unsupported : g_dbus_proxy_new_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
-
-// Unsupported : g_dbus_proxy_new_for_bus_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
 
 // Unsupported : g_data_input_stream_read_upto_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
 
@@ -185,10 +157,6 @@ func (recv *SocketListener) AddAnyInetPort(sourceObject *gobject.Object) (uint16
 
 	return retGo, goThrowableError
 }
-
-// Unsupported : g_subprocess_new : unsupported parameter error : record with indirection level of 2
-
-// Unsupported : g_subprocess_newv : unsupported parameter argv : no param type
 
 // Unsupported : g_task_new : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
 

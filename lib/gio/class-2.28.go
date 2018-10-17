@@ -25,10 +25,37 @@ import (
 // #include <stdlib.h>
 /*
 
-	void TlsConnection_acceptCertificateHandler();
+	void Application_activateHandler();
 
-	static gulong TlsConnection_signal_connect_accept_certificate(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "accept-certificate", TlsConnection_acceptCertificateHandler, data);
+	static gulong Application_signal_connect_activate(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "activate", Application_activateHandler, data);
+	}
+
+*/
+/*
+
+	void Application_commandLineHandler();
+
+	static gulong Application_signal_connect_command_line(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "command-line", Application_commandLineHandler, data);
+	}
+
+*/
+/*
+
+	void Application_shutdownHandler();
+
+	static gulong Application_signal_connect_shutdown(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "shutdown", Application_shutdownHandler, data);
+	}
+
+*/
+/*
+
+	void Application_startupHandler();
+
+	static gulong Application_signal_connect_startup(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "startup", Application_startupHandler, data);
 	}
 
 */
@@ -70,7 +97,51 @@ func CastToApplication(object *gobject.Object) *Application {
 	return ApplicationNewFromC(object.ToC())
 }
 
+var signalApplicationActivateId int
+var signalApplicationActivateMap = make(map[int]ApplicationSignalActivateCallback)
+var signalApplicationActivateLock sync.Mutex
+
+// ApplicationSignalActivateCallback is a callback function for a 'activate' signal emitted from a Application.
+type ApplicationSignalActivateCallback func()
+
+func (recv *Application) ConnectActivate() {}
+
+func Application_activateHandler() {}
+
+var signalApplicationCommandLineId int
+var signalApplicationCommandLineMap = make(map[int]ApplicationSignalCommandLineCallback)
+var signalApplicationCommandLineLock sync.Mutex
+
+// ApplicationSignalCommandLineCallback is a callback function for a 'command-line' signal emitted from a Application.
+type ApplicationSignalCommandLineCallback func(commandLine *ApplicationCommandLine) int32
+
+func (recv *Application) ConnectCommandLine() {}
+
+func Application_commandLineHandler() {}
+
 // Unsupported signal : unsupported parameter files : no param type
+
+var signalApplicationShutdownId int
+var signalApplicationShutdownMap = make(map[int]ApplicationSignalShutdownCallback)
+var signalApplicationShutdownLock sync.Mutex
+
+// ApplicationSignalShutdownCallback is a callback function for a 'shutdown' signal emitted from a Application.
+type ApplicationSignalShutdownCallback func()
+
+func (recv *Application) ConnectShutdown() {}
+
+func Application_shutdownHandler() {}
+
+var signalApplicationStartupId int
+var signalApplicationStartupMap = make(map[int]ApplicationSignalStartupCallback)
+var signalApplicationStartupLock sync.Mutex
+
+// ApplicationSignalStartupCallback is a callback function for a 'startup' signal emitted from a Application.
+type ApplicationSignalStartupCallback func()
+
+func (recv *Application) ConnectStartup() {}
+
+func Application_startupHandler() {}
 
 // ApplicationNew is a wrapper around the C function g_application_new.
 func ApplicationNew(applicationId string, flags ApplicationFlags) *Application {
@@ -281,18 +352,6 @@ func (recv *Cancellable) SourceNew() *glib.Source {
 
 // Unsupported signal : unsupported parameter parameters : Blacklisted record : GVariant
 
-// Unsupported : g_dbus_object_manager_client_new_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
-
-// Unsupported : g_dbus_object_manager_client_new_for_bus_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
-
-// Unsupported : g_dbus_object_manager_client_new_for_bus_sync : unsupported parameter get_proxy_type_func : no type generator for DBusProxyTypeFunc, GDBusProxyTypeFunc
-
-// Unsupported : g_dbus_object_manager_client_new_sync : unsupported parameter get_proxy_type_func : no type generator for DBusProxyTypeFunc, GDBusProxyTypeFunc
-
-// Unsupported signal : unsupported parameter changed_properties : Blacklisted record : GVariant
-
-// Unsupported signal : unsupported parameter parameters : Blacklisted record : GVariant
-
 // Unsupported : g_dbus_proxy_new_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
 
 // Unsupported : g_dbus_proxy_new_for_bus_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
@@ -462,10 +521,6 @@ func (recv *SocketClient) SetTlsValidationFlags(flags TlsCertificateFlags) {
 	return
 }
 
-// Unsupported : g_subprocess_new : unsupported parameter error : record with indirection level of 2
-
-// Unsupported : g_subprocess_newv : unsupported parameter argv : no param type
-
 // Unsupported : g_task_new : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
 
 // TcpWrapperConnectionNew is a wrapper around the C function g_tcp_wrapper_connection_new.
@@ -623,15 +678,6 @@ func (recv *TlsConnection) Object() *gobject.Object {
 func CastToTlsConnection(object *gobject.Object) *TlsConnection {
 	return TlsConnectionNewFromC(object.ToC())
 }
-
-var signalTlsConnectionAcceptCertificateId int
-var signalTlsConnectionAcceptCertificateMap = make(map[int]TlsConnectionSignalAcceptCertificateCallback)
-var signalTlsConnectionAcceptCertificateLock sync.Mutex
-
-// TlsConnectionSignalAcceptCertificateCallback is a callback function for a 'accept-certificate' signal emitted from a TlsConnection.
-type TlsConnectionSignalAcceptCertificateCallback func(peerCert *TlsCertificate, errors TlsCertificateFlags) bool
-
-func TlsConnection_acceptCertificateHandler() {}
 
 // EmitAcceptCertificate is a wrapper around the C function g_tls_connection_emit_accept_certificate.
 func (recv *TlsConnection) EmitAcceptCertificate(peerCert *TlsCertificate, errors TlsCertificateFlags) bool {

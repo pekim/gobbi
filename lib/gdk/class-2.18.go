@@ -47,6 +47,8 @@ var signalWindowFromEmbedderLock sync.Mutex
 // WindowSignalFromEmbedderCallback is a callback function for a 'from-embedder' signal emitted from a Window.
 type WindowSignalFromEmbedderCallback func(embedderX float64, embedderY float64)
 
+func (recv *Window) ConnectFromEmbedder() {}
+
 func Window_fromEmbedderHandler() {}
 
 var signalWindowPickEmbeddedChildId int
@@ -56,6 +58,8 @@ var signalWindowPickEmbeddedChildLock sync.Mutex
 // WindowSignalPickEmbeddedChildCallback is a callback function for a 'pick-embedded-child' signal emitted from a Window.
 type WindowSignalPickEmbeddedChildCallback func(x float64, y float64) Window
 
+func (recv *Window) ConnectPickEmbeddedChild() {}
+
 func Window_pickEmbeddedChildHandler() {}
 
 var signalWindowToEmbedderId int
@@ -64,6 +68,8 @@ var signalWindowToEmbedderLock sync.Mutex
 
 // WindowSignalToEmbedderCallback is a callback function for a 'to-embedder' signal emitted from a Window.
 type WindowSignalToEmbedderCallback func(offscreenX float64, offscreenY float64)
+
+func (recv *Window) ConnectToEmbedder() {}
 
 func Window_toEmbedderHandler() {}
 

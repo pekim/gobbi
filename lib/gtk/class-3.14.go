@@ -294,6 +294,8 @@ var signalEntryCompletionNoMatchesLock sync.Mutex
 // EntryCompletionSignalNoMatchesCallback is a callback function for a 'no-matches' signal emitted from a EntryCompletion.
 type EntryCompletionSignalNoMatchesCallback func()
 
+func (recv *EntryCompletion) ConnectNoMatches() {}
+
 func EntryCompletion_noMatchesHandler() {}
 
 // Unsupported : EntryIconAccessible : no CType
@@ -343,6 +345,8 @@ var signalGestureBeginLock sync.Mutex
 // GestureSignalBeginCallback is a callback function for a 'begin' signal emitted from a Gesture.
 type GestureSignalBeginCallback func(sequence *gdk.EventSequence)
 
+func (recv *Gesture) ConnectBegin() {}
+
 func Gesture_beginHandler() {}
 
 var signalGestureCancelId int
@@ -351,6 +355,8 @@ var signalGestureCancelLock sync.Mutex
 
 // GestureSignalCancelCallback is a callback function for a 'cancel' signal emitted from a Gesture.
 type GestureSignalCancelCallback func(sequence *gdk.EventSequence)
+
+func (recv *Gesture) ConnectCancel() {}
 
 func Gesture_cancelHandler() {}
 
@@ -361,6 +367,8 @@ var signalGestureEndLock sync.Mutex
 // GestureSignalEndCallback is a callback function for a 'end' signal emitted from a Gesture.
 type GestureSignalEndCallback func(sequence *gdk.EventSequence)
 
+func (recv *Gesture) ConnectEnd() {}
+
 func Gesture_endHandler() {}
 
 var signalGestureSequenceStateChangedId int
@@ -370,6 +378,8 @@ var signalGestureSequenceStateChangedLock sync.Mutex
 // GestureSignalSequenceStateChangedCallback is a callback function for a 'sequence-state-changed' signal emitted from a Gesture.
 type GestureSignalSequenceStateChangedCallback func(sequence *gdk.EventSequence, state EventSequenceState)
 
+func (recv *Gesture) ConnectSequenceStateChanged() {}
+
 func Gesture_sequenceStateChangedHandler() {}
 
 var signalGestureUpdateId int
@@ -378,6 +388,8 @@ var signalGestureUpdateLock sync.Mutex
 
 // GestureSignalUpdateCallback is a callback function for a 'update' signal emitted from a Gesture.
 type GestureSignalUpdateCallback func(sequence *gdk.EventSequence)
+
+func (recv *Gesture) ConnectUpdate() {}
 
 func Gesture_updateHandler() {}
 
@@ -557,6 +569,8 @@ var signalGestureDragDragBeginLock sync.Mutex
 // GestureDragSignalDragBeginCallback is a callback function for a 'drag-begin' signal emitted from a GestureDrag.
 type GestureDragSignalDragBeginCallback func(startX float64, startY float64)
 
+func (recv *GestureDrag) ConnectDragBegin() {}
+
 func GestureDrag_dragBeginHandler() {}
 
 var signalGestureDragDragEndId int
@@ -566,6 +580,8 @@ var signalGestureDragDragEndLock sync.Mutex
 // GestureDragSignalDragEndCallback is a callback function for a 'drag-end' signal emitted from a GestureDrag.
 type GestureDragSignalDragEndCallback func(offsetX float64, offsetY float64)
 
+func (recv *GestureDrag) ConnectDragEnd() {}
+
 func GestureDrag_dragEndHandler() {}
 
 var signalGestureDragDragUpdateId int
@@ -574,6 +590,8 @@ var signalGestureDragDragUpdateLock sync.Mutex
 
 // GestureDragSignalDragUpdateCallback is a callback function for a 'drag-update' signal emitted from a GestureDrag.
 type GestureDragSignalDragUpdateCallback func(offsetX float64, offsetY float64)
+
+func (recv *GestureDrag) ConnectDragUpdate() {}
 
 func GestureDrag_dragUpdateHandler() {}
 
@@ -626,6 +644,8 @@ var signalGestureLongPressCancelledLock sync.Mutex
 // GestureLongPressSignalCancelledCallback is a callback function for a 'cancelled' signal emitted from a GestureLongPress.
 type GestureLongPressSignalCancelledCallback func()
 
+func (recv *GestureLongPress) ConnectCancelled() {}
+
 func GestureLongPress_cancelledHandler() {}
 
 var signalGestureLongPressPressedId int
@@ -634,6 +654,8 @@ var signalGestureLongPressPressedLock sync.Mutex
 
 // GestureLongPressSignalPressedCallback is a callback function for a 'pressed' signal emitted from a GestureLongPress.
 type GestureLongPressSignalPressedCallback func(x float64, y float64)
+
+func (recv *GestureLongPress) ConnectPressed() {}
 
 func GestureLongPress_pressedHandler() {}
 
@@ -654,6 +676,8 @@ var signalGestureMultiPressPressedLock sync.Mutex
 // GestureMultiPressSignalPressedCallback is a callback function for a 'pressed' signal emitted from a GestureMultiPress.
 type GestureMultiPressSignalPressedCallback func(nPress int32, x float64, y float64)
 
+func (recv *GestureMultiPress) ConnectPressed() {}
+
 func GestureMultiPress_pressedHandler() {}
 
 var signalGestureMultiPressReleasedId int
@@ -663,6 +687,8 @@ var signalGestureMultiPressReleasedLock sync.Mutex
 // GestureMultiPressSignalReleasedCallback is a callback function for a 'released' signal emitted from a GestureMultiPress.
 type GestureMultiPressSignalReleasedCallback func(nPress int32, x float64, y float64)
 
+func (recv *GestureMultiPress) ConnectReleased() {}
+
 func GestureMultiPress_releasedHandler() {}
 
 var signalGestureMultiPressStoppedId int
@@ -671,6 +697,8 @@ var signalGestureMultiPressStoppedLock sync.Mutex
 
 // GestureMultiPressSignalStoppedCallback is a callback function for a 'stopped' signal emitted from a GestureMultiPress.
 type GestureMultiPressSignalStoppedCallback func()
+
+func (recv *GestureMultiPress) ConnectStopped() {}
 
 func GestureMultiPress_stoppedHandler() {}
 
@@ -694,6 +722,8 @@ var signalGesturePanPanLock sync.Mutex
 
 // GesturePanSignalPanCallback is a callback function for a 'pan' signal emitted from a GesturePan.
 type GesturePanSignalPanCallback func(direction PanDirection, offset float64)
+
+func (recv *GesturePan) ConnectPan() {}
 
 func GesturePan_panHandler() {}
 
@@ -732,6 +762,8 @@ var signalGestureRotateAngleChangedLock sync.Mutex
 
 // GestureRotateSignalAngleChangedCallback is a callback function for a 'angle-changed' signal emitted from a GestureRotate.
 type GestureRotateSignalAngleChangedCallback func(angle float64, angleDelta float64)
+
+func (recv *GestureRotate) ConnectAngleChanged() {}
 
 func GestureRotate_angleChangedHandler() {}
 
@@ -829,6 +861,8 @@ var signalGestureSwipeSwipeLock sync.Mutex
 // GestureSwipeSignalSwipeCallback is a callback function for a 'swipe' signal emitted from a GestureSwipe.
 type GestureSwipeSignalSwipeCallback func(velocityX float64, velocityY float64)
 
+func (recv *GestureSwipe) ConnectSwipe() {}
+
 func GestureSwipe_swipeHandler() {}
 
 // GestureSwipeNew is a wrapper around the C function gtk_gesture_swipe_new.
@@ -863,6 +897,8 @@ var signalGestureZoomScaleChangedLock sync.Mutex
 
 // GestureZoomSignalScaleChangedCallback is a callback function for a 'scale-changed' signal emitted from a GestureZoom.
 type GestureZoomSignalScaleChangedCallback func(scale float64)
+
+func (recv *GestureZoom) ConnectScaleChanged() {}
 
 func GestureZoom_scaleChangedHandler() {}
 
@@ -913,6 +949,8 @@ var signalListBoxSelectAllLock sync.Mutex
 // ListBoxSignalSelectAllCallback is a callback function for a 'select-all' signal emitted from a ListBox.
 type ListBoxSignalSelectAllCallback func()
 
+func (recv *ListBox) ConnectSelectAll() {}
+
 func ListBox_selectAllHandler() {}
 
 var signalListBoxSelectedRowsChangedId int
@@ -922,6 +960,8 @@ var signalListBoxSelectedRowsChangedLock sync.Mutex
 // ListBoxSignalSelectedRowsChangedCallback is a callback function for a 'selected-rows-changed' signal emitted from a ListBox.
 type ListBoxSignalSelectedRowsChangedCallback func()
 
+func (recv *ListBox) ConnectSelectedRowsChanged() {}
+
 func ListBox_selectedRowsChangedHandler() {}
 
 var signalListBoxUnselectAllId int
@@ -930,6 +970,8 @@ var signalListBoxUnselectAllLock sync.Mutex
 
 // ListBoxSignalUnselectAllCallback is a callback function for a 'unselect-all' signal emitted from a ListBox.
 type ListBoxSignalUnselectAllCallback func()
+
+func (recv *ListBox) ConnectUnselectAll() {}
 
 func ListBox_unselectAllHandler() {}
 
@@ -1020,8 +1062,6 @@ func (recv *ListBoxRow) SetSelectable(selectable bool) {
 
 // Unsupported signal : unsupported parameter allocation : Blacklisted record : GdkRectangle
 
-// Unsupported : gtk_pad_controller_new : unsupported parameter group : no type generator for Gio.ActionGroup, GActionGroup*
-
 // Unsupported : gtk_page_setup_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
 
 // Unsupported signal : unsupported parameter dest_file : no type generator for Gio.File,
@@ -1038,6 +1078,8 @@ var signalPlacesSidebarShowEnterLocationLock sync.Mutex
 
 // PlacesSidebarSignalShowEnterLocationCallback is a callback function for a 'show-enter-location' signal emitted from a PlacesSidebar.
 type PlacesSidebarSignalShowEnterLocationCallback func()
+
+func (recv *PlacesSidebar) ConnectShowEnterLocation() {}
 
 func PlacesSidebar_showEnterLocationHandler() {}
 
@@ -1077,6 +1119,8 @@ var signalSwitchStateSetLock sync.Mutex
 
 // SwitchSignalStateSetCallback is a callback function for a 'state-set' signal emitted from a Switch.
 type SwitchSignalStateSetCallback func(state bool) bool
+
+func (recv *Switch) ConnectStateSet() {}
 
 func Switch_stateSetHandler() {}
 

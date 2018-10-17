@@ -104,6 +104,8 @@ var signalMenuPoppedUpLock sync.Mutex
 // MenuSignalPoppedUpCallback is a callback function for a 'popped-up' signal emitted from a Menu.
 type MenuSignalPoppedUpCallback func(flippedRect uintptr, finalRect uintptr, flippedX bool, flippedY bool)
 
+func (recv *Menu) ConnectPoppedUp() {}
+
 func Menu_poppedUpHandler() {}
 
 // PlaceOnMonitor is a wrapper around the C function gtk_menu_place_on_monitor.

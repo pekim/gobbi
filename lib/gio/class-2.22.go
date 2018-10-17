@@ -25,18 +25,16 @@ import (
 // #include <stdlib.h>
 /*
 
-	void SocketService_incomingHandler();
+	void ThreadedSocketService_runHandler();
 
-	static gulong SocketService_signal_connect_incoming(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "incoming", SocketService_incomingHandler, data);
+	static gulong ThreadedSocketService_signal_connect_run(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "run", ThreadedSocketService_runHandler, data);
 	}
 
 */
 import "C"
 
 // Unsupported signal : unsupported parameter info : no type generator for AppInfo,
-
-// Unsupported signal : unsupported parameter files : no param type
 
 // Unsupported : g_cancellable_connect : unsupported parameter callback : no type generator for GObject.Callback, GCallback
 
@@ -69,32 +67,6 @@ func (recv *Cancellable) ReleaseFd() {
 // Unsupported : g_converter_input_stream_new : unsupported parameter converter : no type generator for Converter, GConverter*
 
 // Unsupported : g_converter_output_stream_new : unsupported parameter converter : no type generator for Converter, GConverter*
-
-// Unsupported : g_dbus_connection_new_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
-
-// Unsupported : g_dbus_connection_new_for_address_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
-
-// Unsupported : g_dbus_message_new_from_blob : unsupported parameter blob : no param type
-
-// Unsupported signal : unsupported parameter changed_properties : Blacklisted record : GVariant
-
-// Unsupported signal : unsupported parameter parameters : Blacklisted record : GVariant
-
-// Unsupported : g_dbus_object_manager_client_new_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
-
-// Unsupported : g_dbus_object_manager_client_new_for_bus_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
-
-// Unsupported : g_dbus_object_manager_client_new_for_bus_sync : unsupported parameter get_proxy_type_func : no type generator for DBusProxyTypeFunc, GDBusProxyTypeFunc
-
-// Unsupported : g_dbus_object_manager_client_new_sync : unsupported parameter get_proxy_type_func : no type generator for DBusProxyTypeFunc, GDBusProxyTypeFunc
-
-// Unsupported signal : unsupported parameter changed_properties : Blacklisted record : GVariant
-
-// Unsupported signal : unsupported parameter parameters : Blacklisted record : GVariant
-
-// Unsupported : g_dbus_proxy_new_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
-
-// Unsupported : g_dbus_proxy_new_for_bus_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
 
 // Unsupported : g_emblem_new : unsupported parameter icon : no type generator for Icon, GIcon*
 
@@ -1459,15 +1431,6 @@ func CastToSocketService(object *gobject.Object) *SocketService {
 	return SocketServiceNewFromC(object.ToC())
 }
 
-var signalSocketServiceIncomingId int
-var signalSocketServiceIncomingMap = make(map[int]SocketServiceSignalIncomingCallback)
-var signalSocketServiceIncomingLock sync.Mutex
-
-// SocketServiceSignalIncomingCallback is a callback function for a 'incoming' signal emitted from a SocketService.
-type SocketServiceSignalIncomingCallback func(connection *SocketConnection, sourceObject *gobject.Object) bool
-
-func SocketService_incomingHandler() {}
-
 // SocketServiceNew is a wrapper around the C function g_socket_service_new.
 func SocketServiceNew() *SocketService {
 	retC := C.g_socket_service_new()
@@ -1497,10 +1460,6 @@ func (recv *SocketService) Stop() {
 
 	return
 }
-
-// Unsupported : g_subprocess_new : unsupported parameter error : record with indirection level of 2
-
-// Unsupported : g_subprocess_newv : unsupported parameter argv : no param type
 
 // Unsupported : g_task_new : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
 
@@ -1611,6 +1570,17 @@ func (recv *ThreadedSocketService) Object() *gobject.Object {
 func CastToThreadedSocketService(object *gobject.Object) *ThreadedSocketService {
 	return ThreadedSocketServiceNewFromC(object.ToC())
 }
+
+var signalThreadedSocketServiceRunId int
+var signalThreadedSocketServiceRunMap = make(map[int]ThreadedSocketServiceSignalRunCallback)
+var signalThreadedSocketServiceRunLock sync.Mutex
+
+// ThreadedSocketServiceSignalRunCallback is a callback function for a 'run' signal emitted from a ThreadedSocketService.
+type ThreadedSocketServiceSignalRunCallback func(connection *SocketConnection, sourceObject *gobject.Object) bool
+
+func (recv *ThreadedSocketService) ConnectRun() {}
+
+func ThreadedSocketService_runHandler() {}
 
 // ThreadedSocketServiceNew is a wrapper around the C function g_threaded_socket_service_new.
 func ThreadedSocketServiceNew(maxThreads int32) *ThreadedSocketService {

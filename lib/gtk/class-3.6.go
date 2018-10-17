@@ -205,6 +205,8 @@ var signalLevelBarOffsetChangedLock sync.Mutex
 // LevelBarSignalOffsetChangedCallback is a callback function for a 'offset-changed' signal emitted from a LevelBar.
 type LevelBarSignalOffsetChangedCallback func(name string)
 
+func (recv *LevelBar) ConnectOffsetChanged() {}
+
 func LevelBar_offsetChangedHandler() {}
 
 // LevelBarNew is a wrapper around the C function gtk_level_bar_new.
@@ -432,8 +434,6 @@ func (recv *MenuShell) BindModel(model *gio.MenuModel, actionNamespace string, w
 // Unsupported : gtk_message_dialog_new_with_markup : unsupported parameter ... : varargs
 
 // Unsupported signal : unsupported parameter allocation : Blacklisted record : GdkRectangle
-
-// Unsupported : gtk_pad_controller_new : unsupported parameter group : no type generator for Gio.ActionGroup, GActionGroup*
 
 // Unsupported : gtk_page_setup_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
 
