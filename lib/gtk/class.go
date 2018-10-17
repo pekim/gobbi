@@ -21,3574 +21,3574 @@ import (
 // #include <stdlib.h>
 /*
 
-	extern void gtk_AboutDialog_activateLinkHandler();
+	void AboutDialog_activateLinkHandler();
 
-	static void AboutDialog_signal_connect_activate_link(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "activate-link", gtk_AboutDialog_activateLinkHandler, data);
+	static gulong AboutDialog_signal_connect_activate_link(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "activate-link", AboutDialog_activateLinkHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_AccelGroup_accelActivateHandler();
+	void AccelGroup_accelActivateHandler();
 
-	static void AccelGroup_signal_connect_accel_activate(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "accel-activate", gtk_AccelGroup_accelActivateHandler, data);
+	static gulong AccelGroup_signal_connect_accel_activate(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "accel-activate", AccelGroup_accelActivateHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_AccelGroup_accelChangedHandler();
+	void AccelGroup_accelChangedHandler();
 
-	static void AccelGroup_signal_connect_accel_changed(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "accel-changed", gtk_AccelGroup_accelChangedHandler, data);
+	static gulong AccelGroup_signal_connect_accel_changed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "accel-changed", AccelGroup_accelChangedHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_AccelMap_changedHandler();
+	void AccelMap_changedHandler();
 
-	static void AccelMap_signal_connect_changed(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "changed", gtk_AccelMap_changedHandler, data);
+	static gulong AccelMap_signal_connect_changed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "changed", AccelMap_changedHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Action_activateHandler();
+	void Action_activateHandler();
 
-	static void Action_signal_connect_activate(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "activate", gtk_Action_activateHandler, data);
+	static gulong Action_signal_connect_activate(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "activate", Action_activateHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_ActionGroup_connectProxyHandler();
+	void ActionGroup_connectProxyHandler();
 
-	static void ActionGroup_signal_connect_connect_proxy(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "connect-proxy", gtk_ActionGroup_connectProxyHandler, data);
+	static gulong ActionGroup_signal_connect_connect_proxy(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "connect-proxy", ActionGroup_connectProxyHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_ActionGroup_disconnectProxyHandler();
+	void ActionGroup_disconnectProxyHandler();
 
-	static void ActionGroup_signal_connect_disconnect_proxy(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "disconnect-proxy", gtk_ActionGroup_disconnectProxyHandler, data);
+	static gulong ActionGroup_signal_connect_disconnect_proxy(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "disconnect-proxy", ActionGroup_disconnectProxyHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_ActionGroup_postActivateHandler();
+	void ActionGroup_postActivateHandler();
 
-	static void ActionGroup_signal_connect_post_activate(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "post-activate", gtk_ActionGroup_postActivateHandler, data);
+	static gulong ActionGroup_signal_connect_post_activate(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "post-activate", ActionGroup_postActivateHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_ActionGroup_preActivateHandler();
+	void ActionGroup_preActivateHandler();
 
-	static void ActionGroup_signal_connect_pre_activate(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "pre-activate", gtk_ActionGroup_preActivateHandler, data);
+	static gulong ActionGroup_signal_connect_pre_activate(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "pre-activate", ActionGroup_preActivateHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Adjustment_changedHandler();
+	void Adjustment_changedHandler();
 
-	static void Adjustment_signal_connect_changed(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "changed", gtk_Adjustment_changedHandler, data);
+	static gulong Adjustment_signal_connect_changed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "changed", Adjustment_changedHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Adjustment_valueChangedHandler();
+	void Adjustment_valueChangedHandler();
 
-	static void Adjustment_signal_connect_value_changed(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "value-changed", gtk_Adjustment_valueChangedHandler, data);
+	static gulong Adjustment_signal_connect_value_changed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "value-changed", Adjustment_valueChangedHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_AppChooserButton_customItemActivatedHandler();
+	void AppChooserButton_customItemActivatedHandler();
 
-	static void AppChooserButton_signal_connect_custom_item_activated(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "custom-item-activated", gtk_AppChooserButton_customItemActivatedHandler, data);
+	static gulong AppChooserButton_signal_connect_custom_item_activated(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "custom-item-activated", AppChooserButton_customItemActivatedHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_AppChooserWidget_applicationActivatedHandler();
+	void AppChooserWidget_applicationActivatedHandler();
 
-	static void AppChooserWidget_signal_connect_application_activated(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "application-activated", gtk_AppChooserWidget_applicationActivatedHandler, data);
+	static gulong AppChooserWidget_signal_connect_application_activated(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "application-activated", AppChooserWidget_applicationActivatedHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_AppChooserWidget_applicationSelectedHandler();
+	void AppChooserWidget_applicationSelectedHandler();
 
-	static void AppChooserWidget_signal_connect_application_selected(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "application-selected", gtk_AppChooserWidget_applicationSelectedHandler, data);
+	static gulong AppChooserWidget_signal_connect_application_selected(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "application-selected", AppChooserWidget_applicationSelectedHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_AppChooserWidget_populatePopupHandler();
+	void AppChooserWidget_populatePopupHandler();
 
-	static void AppChooserWidget_signal_connect_populate_popup(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "populate-popup", gtk_AppChooserWidget_populatePopupHandler, data);
+	static gulong AppChooserWidget_signal_connect_populate_popup(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "populate-popup", AppChooserWidget_populatePopupHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Application_windowAddedHandler();
+	void Application_windowAddedHandler();
 
-	static void Application_signal_connect_window_added(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "window-added", gtk_Application_windowAddedHandler, data);
+	static gulong Application_signal_connect_window_added(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "window-added", Application_windowAddedHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Application_windowRemovedHandler();
+	void Application_windowRemovedHandler();
 
-	static void Application_signal_connect_window_removed(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "window-removed", gtk_Application_windowRemovedHandler, data);
+	static gulong Application_signal_connect_window_removed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "window-removed", Application_windowRemovedHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Assistant_applyHandler();
+	void Assistant_applyHandler();
 
-	static void Assistant_signal_connect_apply(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "apply", gtk_Assistant_applyHandler, data);
+	static gulong Assistant_signal_connect_apply(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "apply", Assistant_applyHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Assistant_cancelHandler();
+	void Assistant_cancelHandler();
 
-	static void Assistant_signal_connect_cancel(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "cancel", gtk_Assistant_cancelHandler, data);
+	static gulong Assistant_signal_connect_cancel(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "cancel", Assistant_cancelHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Assistant_closeHandler();
+	void Assistant_closeHandler();
 
-	static void Assistant_signal_connect_close(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "close", gtk_Assistant_closeHandler, data);
+	static gulong Assistant_signal_connect_close(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "close", Assistant_closeHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Assistant_escapeHandler();
+	void Assistant_escapeHandler();
 
-	static void Assistant_signal_connect_escape(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "escape", gtk_Assistant_escapeHandler, data);
+	static gulong Assistant_signal_connect_escape(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "escape", Assistant_escapeHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Assistant_prepareHandler();
+	void Assistant_prepareHandler();
 
-	static void Assistant_signal_connect_prepare(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "prepare", gtk_Assistant_prepareHandler, data);
+	static gulong Assistant_signal_connect_prepare(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "prepare", Assistant_prepareHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Button_activateHandler();
+	void Button_activateHandler();
 
-	static void Button_signal_connect_activate(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "activate", gtk_Button_activateHandler, data);
+	static gulong Button_signal_connect_activate(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "activate", Button_activateHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Button_clickedHandler();
+	void Button_clickedHandler();
 
-	static void Button_signal_connect_clicked(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "clicked", gtk_Button_clickedHandler, data);
+	static gulong Button_signal_connect_clicked(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "clicked", Button_clickedHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Button_enterHandler();
+	void Button_enterHandler();
 
-	static void Button_signal_connect_enter(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "enter", gtk_Button_enterHandler, data);
+	static gulong Button_signal_connect_enter(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "enter", Button_enterHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Button_leaveHandler();
+	void Button_leaveHandler();
 
-	static void Button_signal_connect_leave(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "leave", gtk_Button_leaveHandler, data);
+	static gulong Button_signal_connect_leave(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "leave", Button_leaveHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Button_pressedHandler();
+	void Button_pressedHandler();
 
-	static void Button_signal_connect_pressed(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "pressed", gtk_Button_pressedHandler, data);
+	static gulong Button_signal_connect_pressed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "pressed", Button_pressedHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Button_releasedHandler();
+	void Button_releasedHandler();
 
-	static void Button_signal_connect_released(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "released", gtk_Button_releasedHandler, data);
+	static gulong Button_signal_connect_released(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "released", Button_releasedHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Calendar_daySelectedHandler();
+	void Calendar_daySelectedHandler();
 
-	static void Calendar_signal_connect_day_selected(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "day-selected", gtk_Calendar_daySelectedHandler, data);
+	static gulong Calendar_signal_connect_day_selected(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "day-selected", Calendar_daySelectedHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Calendar_daySelectedDoubleClickHandler();
+	void Calendar_daySelectedDoubleClickHandler();
 
-	static void Calendar_signal_connect_day_selected_double_click(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "day-selected-double-click", gtk_Calendar_daySelectedDoubleClickHandler, data);
+	static gulong Calendar_signal_connect_day_selected_double_click(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "day-selected-double-click", Calendar_daySelectedDoubleClickHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Calendar_monthChangedHandler();
+	void Calendar_monthChangedHandler();
 
-	static void Calendar_signal_connect_month_changed(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "month-changed", gtk_Calendar_monthChangedHandler, data);
+	static gulong Calendar_signal_connect_month_changed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "month-changed", Calendar_monthChangedHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Calendar_nextMonthHandler();
+	void Calendar_nextMonthHandler();
 
-	static void Calendar_signal_connect_next_month(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "next-month", gtk_Calendar_nextMonthHandler, data);
+	static gulong Calendar_signal_connect_next_month(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "next-month", Calendar_nextMonthHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Calendar_nextYearHandler();
+	void Calendar_nextYearHandler();
 
-	static void Calendar_signal_connect_next_year(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "next-year", gtk_Calendar_nextYearHandler, data);
+	static gulong Calendar_signal_connect_next_year(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "next-year", Calendar_nextYearHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Calendar_prevMonthHandler();
+	void Calendar_prevMonthHandler();
 
-	static void Calendar_signal_connect_prev_month(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "prev-month", gtk_Calendar_prevMonthHandler, data);
+	static gulong Calendar_signal_connect_prev_month(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "prev-month", Calendar_prevMonthHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Calendar_prevYearHandler();
+	void Calendar_prevYearHandler();
 
-	static void Calendar_signal_connect_prev_year(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "prev-year", gtk_Calendar_prevYearHandler, data);
+	static gulong Calendar_signal_connect_prev_year(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "prev-year", Calendar_prevYearHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_CellArea_addEditableHandler();
+	void CellArea_addEditableHandler();
 
-	static void CellArea_signal_connect_add_editable(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "add-editable", gtk_CellArea_addEditableHandler, data);
+	static gulong CellArea_signal_connect_add_editable(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "add-editable", CellArea_addEditableHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_CellArea_applyAttributesHandler();
+	void CellArea_applyAttributesHandler();
 
-	static void CellArea_signal_connect_apply_attributes(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "apply-attributes", gtk_CellArea_applyAttributesHandler, data);
+	static gulong CellArea_signal_connect_apply_attributes(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "apply-attributes", CellArea_applyAttributesHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_CellArea_focusChangedHandler();
+	void CellArea_focusChangedHandler();
 
-	static void CellArea_signal_connect_focus_changed(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "focus-changed", gtk_CellArea_focusChangedHandler, data);
+	static gulong CellArea_signal_connect_focus_changed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "focus-changed", CellArea_focusChangedHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_CellArea_removeEditableHandler();
+	void CellArea_removeEditableHandler();
 
-	static void CellArea_signal_connect_remove_editable(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "remove-editable", gtk_CellArea_removeEditableHandler, data);
+	static gulong CellArea_signal_connect_remove_editable(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "remove-editable", CellArea_removeEditableHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_CellRenderer_editingCanceledHandler();
+	void CellRenderer_editingCanceledHandler();
 
-	static void CellRenderer_signal_connect_editing_canceled(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "editing-canceled", gtk_CellRenderer_editingCanceledHandler, data);
+	static gulong CellRenderer_signal_connect_editing_canceled(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "editing-canceled", CellRenderer_editingCanceledHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_CellRenderer_editingStartedHandler();
+	void CellRenderer_editingStartedHandler();
 
-	static void CellRenderer_signal_connect_editing_started(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "editing-started", gtk_CellRenderer_editingStartedHandler, data);
+	static gulong CellRenderer_signal_connect_editing_started(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "editing-started", CellRenderer_editingStartedHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_CellRendererAccel_accelClearedHandler();
+	void CellRendererAccel_accelClearedHandler();
 
-	static void CellRendererAccel_signal_connect_accel_cleared(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "accel-cleared", gtk_CellRendererAccel_accelClearedHandler, data);
+	static gulong CellRendererAccel_signal_connect_accel_cleared(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "accel-cleared", CellRendererAccel_accelClearedHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_CellRendererAccel_accelEditedHandler();
+	void CellRendererAccel_accelEditedHandler();
 
-	static void CellRendererAccel_signal_connect_accel_edited(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "accel-edited", gtk_CellRendererAccel_accelEditedHandler, data);
+	static gulong CellRendererAccel_signal_connect_accel_edited(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "accel-edited", CellRendererAccel_accelEditedHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_CellRendererCombo_changedHandler();
+	void CellRendererCombo_changedHandler();
 
-	static void CellRendererCombo_signal_connect_changed(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "changed", gtk_CellRendererCombo_changedHandler, data);
+	static gulong CellRendererCombo_signal_connect_changed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "changed", CellRendererCombo_changedHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_CellRendererText_editedHandler();
+	void CellRendererText_editedHandler();
 
-	static void CellRendererText_signal_connect_edited(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "edited", gtk_CellRendererText_editedHandler, data);
+	static gulong CellRendererText_signal_connect_edited(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "edited", CellRendererText_editedHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_CellRendererToggle_toggledHandler();
+	void CellRendererToggle_toggledHandler();
 
-	static void CellRendererToggle_signal_connect_toggled(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "toggled", gtk_CellRendererToggle_toggledHandler, data);
+	static gulong CellRendererToggle_signal_connect_toggled(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "toggled", CellRendererToggle_toggledHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_CheckMenuItem_toggledHandler();
+	void CheckMenuItem_toggledHandler();
 
-	static void CheckMenuItem_signal_connect_toggled(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "toggled", gtk_CheckMenuItem_toggledHandler, data);
+	static gulong CheckMenuItem_signal_connect_toggled(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "toggled", CheckMenuItem_toggledHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Clipboard_ownerChangeHandler();
+	void Clipboard_ownerChangeHandler();
 
-	static void Clipboard_signal_connect_owner_change(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "owner-change", gtk_Clipboard_ownerChangeHandler, data);
+	static gulong Clipboard_signal_connect_owner_change(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "owner-change", Clipboard_ownerChangeHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_ColorButton_colorSetHandler();
+	void ColorButton_colorSetHandler();
 
-	static void ColorButton_signal_connect_color_set(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "color-set", gtk_ColorButton_colorSetHandler, data);
+	static gulong ColorButton_signal_connect_color_set(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "color-set", ColorButton_colorSetHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_ColorSelection_colorChangedHandler();
+	void ColorSelection_colorChangedHandler();
 
-	static void ColorSelection_signal_connect_color_changed(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "color-changed", gtk_ColorSelection_colorChangedHandler, data);
+	static gulong ColorSelection_signal_connect_color_changed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "color-changed", ColorSelection_colorChangedHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_ComboBox_changedHandler();
+	void ComboBox_changedHandler();
 
-	static void ComboBox_signal_connect_changed(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "changed", gtk_ComboBox_changedHandler, data);
+	static gulong ComboBox_signal_connect_changed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "changed", ComboBox_changedHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_ComboBox_formatEntryTextHandler();
+	void ComboBox_formatEntryTextHandler();
 
-	static void ComboBox_signal_connect_format_entry_text(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "format-entry-text", gtk_ComboBox_formatEntryTextHandler, data);
+	static gulong ComboBox_signal_connect_format_entry_text(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "format-entry-text", ComboBox_formatEntryTextHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_ComboBox_moveActiveHandler();
+	void ComboBox_moveActiveHandler();
 
-	static void ComboBox_signal_connect_move_active(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "move-active", gtk_ComboBox_moveActiveHandler, data);
+	static gulong ComboBox_signal_connect_move_active(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "move-active", ComboBox_moveActiveHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_ComboBox_popdownHandler();
+	void ComboBox_popdownHandler();
 
-	static void ComboBox_signal_connect_popdown(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "popdown", gtk_ComboBox_popdownHandler, data);
+	static gulong ComboBox_signal_connect_popdown(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "popdown", ComboBox_popdownHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_ComboBox_popupHandler();
+	void ComboBox_popupHandler();
 
-	static void ComboBox_signal_connect_popup(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "popup", gtk_ComboBox_popupHandler, data);
+	static gulong ComboBox_signal_connect_popup(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "popup", ComboBox_popupHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Container_addHandler();
+	void Container_addHandler();
 
-	static void Container_signal_connect_add(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "add", gtk_Container_addHandler, data);
+	static gulong Container_signal_connect_add(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "add", Container_addHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Container_checkResizeHandler();
+	void Container_checkResizeHandler();
 
-	static void Container_signal_connect_check_resize(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "check-resize", gtk_Container_checkResizeHandler, data);
+	static gulong Container_signal_connect_check_resize(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "check-resize", Container_checkResizeHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Container_removeHandler();
+	void Container_removeHandler();
 
-	static void Container_signal_connect_remove(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "remove", gtk_Container_removeHandler, data);
+	static gulong Container_signal_connect_remove(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "remove", Container_removeHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Container_setFocusChildHandler();
+	void Container_setFocusChildHandler();
 
-	static void Container_signal_connect_set_focus_child(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "set-focus-child", gtk_Container_setFocusChildHandler, data);
+	static gulong Container_signal_connect_set_focus_child(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "set-focus-child", Container_setFocusChildHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_CssProvider_parsingErrorHandler();
+	void CssProvider_parsingErrorHandler();
 
-	static void CssProvider_signal_connect_parsing_error(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "parsing-error", gtk_CssProvider_parsingErrorHandler, data);
+	static gulong CssProvider_signal_connect_parsing_error(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "parsing-error", CssProvider_parsingErrorHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Dialog_closeHandler();
+	void Dialog_closeHandler();
 
-	static void Dialog_signal_connect_close(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "close", gtk_Dialog_closeHandler, data);
+	static gulong Dialog_signal_connect_close(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "close", Dialog_closeHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Dialog_responseHandler();
+	void Dialog_responseHandler();
 
-	static void Dialog_signal_connect_response(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "response", gtk_Dialog_responseHandler, data);
+	static gulong Dialog_signal_connect_response(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "response", Dialog_responseHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Entry_activateHandler();
+	void Entry_activateHandler();
 
-	static void Entry_signal_connect_activate(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "activate", gtk_Entry_activateHandler, data);
+	static gulong Entry_signal_connect_activate(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "activate", Entry_activateHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Entry_backspaceHandler();
+	void Entry_backspaceHandler();
 
-	static void Entry_signal_connect_backspace(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "backspace", gtk_Entry_backspaceHandler, data);
+	static gulong Entry_signal_connect_backspace(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "backspace", Entry_backspaceHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Entry_copyClipboardHandler();
+	void Entry_copyClipboardHandler();
 
-	static void Entry_signal_connect_copy_clipboard(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "copy-clipboard", gtk_Entry_copyClipboardHandler, data);
+	static gulong Entry_signal_connect_copy_clipboard(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "copy-clipboard", Entry_copyClipboardHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Entry_cutClipboardHandler();
+	void Entry_cutClipboardHandler();
 
-	static void Entry_signal_connect_cut_clipboard(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "cut-clipboard", gtk_Entry_cutClipboardHandler, data);
+	static gulong Entry_signal_connect_cut_clipboard(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "cut-clipboard", Entry_cutClipboardHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Entry_deleteFromCursorHandler();
+	void Entry_deleteFromCursorHandler();
 
-	static void Entry_signal_connect_delete_from_cursor(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "delete-from-cursor", gtk_Entry_deleteFromCursorHandler, data);
+	static gulong Entry_signal_connect_delete_from_cursor(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "delete-from-cursor", Entry_deleteFromCursorHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Entry_iconPressHandler();
+	void Entry_iconPressHandler();
 
-	static void Entry_signal_connect_icon_press(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "icon-press", gtk_Entry_iconPressHandler, data);
+	static gulong Entry_signal_connect_icon_press(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "icon-press", Entry_iconPressHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Entry_iconReleaseHandler();
+	void Entry_iconReleaseHandler();
 
-	static void Entry_signal_connect_icon_release(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "icon-release", gtk_Entry_iconReleaseHandler, data);
+	static gulong Entry_signal_connect_icon_release(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "icon-release", Entry_iconReleaseHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Entry_insertAtCursorHandler();
+	void Entry_insertAtCursorHandler();
 
-	static void Entry_signal_connect_insert_at_cursor(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "insert-at-cursor", gtk_Entry_insertAtCursorHandler, data);
+	static gulong Entry_signal_connect_insert_at_cursor(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "insert-at-cursor", Entry_insertAtCursorHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Entry_insertEmojiHandler();
+	void Entry_insertEmojiHandler();
 
-	static void Entry_signal_connect_insert_emoji(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "insert-emoji", gtk_Entry_insertEmojiHandler, data);
+	static gulong Entry_signal_connect_insert_emoji(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "insert-emoji", Entry_insertEmojiHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Entry_moveCursorHandler();
+	void Entry_moveCursorHandler();
 
-	static void Entry_signal_connect_move_cursor(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "move-cursor", gtk_Entry_moveCursorHandler, data);
+	static gulong Entry_signal_connect_move_cursor(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "move-cursor", Entry_moveCursorHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Entry_pasteClipboardHandler();
+	void Entry_pasteClipboardHandler();
 
-	static void Entry_signal_connect_paste_clipboard(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "paste-clipboard", gtk_Entry_pasteClipboardHandler, data);
+	static gulong Entry_signal_connect_paste_clipboard(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "paste-clipboard", Entry_pasteClipboardHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Entry_populatePopupHandler();
+	void Entry_populatePopupHandler();
 
-	static void Entry_signal_connect_populate_popup(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "populate-popup", gtk_Entry_populatePopupHandler, data);
+	static gulong Entry_signal_connect_populate_popup(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "populate-popup", Entry_populatePopupHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Entry_preeditChangedHandler();
+	void Entry_preeditChangedHandler();
 
-	static void Entry_signal_connect_preedit_changed(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "preedit-changed", gtk_Entry_preeditChangedHandler, data);
+	static gulong Entry_signal_connect_preedit_changed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "preedit-changed", Entry_preeditChangedHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Entry_toggleOverwriteHandler();
+	void Entry_toggleOverwriteHandler();
 
-	static void Entry_signal_connect_toggle_overwrite(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "toggle-overwrite", gtk_Entry_toggleOverwriteHandler, data);
+	static gulong Entry_signal_connect_toggle_overwrite(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "toggle-overwrite", Entry_toggleOverwriteHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_EntryBuffer_deletedTextHandler();
+	void EntryBuffer_deletedTextHandler();
 
-	static void EntryBuffer_signal_connect_deleted_text(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "deleted-text", gtk_EntryBuffer_deletedTextHandler, data);
+	static gulong EntryBuffer_signal_connect_deleted_text(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "deleted-text", EntryBuffer_deletedTextHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_EntryBuffer_insertedTextHandler();
+	void EntryBuffer_insertedTextHandler();
 
-	static void EntryBuffer_signal_connect_inserted_text(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "inserted-text", gtk_EntryBuffer_insertedTextHandler, data);
+	static gulong EntryBuffer_signal_connect_inserted_text(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "inserted-text", EntryBuffer_insertedTextHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_EntryCompletion_actionActivatedHandler();
+	void EntryCompletion_actionActivatedHandler();
 
-	static void EntryCompletion_signal_connect_action_activated(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "action-activated", gtk_EntryCompletion_actionActivatedHandler, data);
+	static gulong EntryCompletion_signal_connect_action_activated(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "action-activated", EntryCompletion_actionActivatedHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_EntryCompletion_cursorOnMatchHandler();
+	void EntryCompletion_cursorOnMatchHandler();
 
-	static void EntryCompletion_signal_connect_cursor_on_match(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "cursor-on-match", gtk_EntryCompletion_cursorOnMatchHandler, data);
+	static gulong EntryCompletion_signal_connect_cursor_on_match(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "cursor-on-match", EntryCompletion_cursorOnMatchHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_EntryCompletion_insertPrefixHandler();
+	void EntryCompletion_insertPrefixHandler();
 
-	static void EntryCompletion_signal_connect_insert_prefix(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "insert-prefix", gtk_EntryCompletion_insertPrefixHandler, data);
+	static gulong EntryCompletion_signal_connect_insert_prefix(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "insert-prefix", EntryCompletion_insertPrefixHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_EntryCompletion_matchSelectedHandler();
+	void EntryCompletion_matchSelectedHandler();
 
-	static void EntryCompletion_signal_connect_match_selected(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "match-selected", gtk_EntryCompletion_matchSelectedHandler, data);
+	static gulong EntryCompletion_signal_connect_match_selected(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "match-selected", EntryCompletion_matchSelectedHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_EntryCompletion_noMatchesHandler();
+	void EntryCompletion_noMatchesHandler();
 
-	static void EntryCompletion_signal_connect_no_matches(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "no-matches", gtk_EntryCompletion_noMatchesHandler, data);
+	static gulong EntryCompletion_signal_connect_no_matches(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "no-matches", EntryCompletion_noMatchesHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Expander_activateHandler();
+	void Expander_activateHandler();
 
-	static void Expander_signal_connect_activate(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "activate", gtk_Expander_activateHandler, data);
+	static gulong Expander_signal_connect_activate(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "activate", Expander_activateHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_FileChooserButton_fileSetHandler();
+	void FileChooserButton_fileSetHandler();
 
-	static void FileChooserButton_signal_connect_file_set(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "file-set", gtk_FileChooserButton_fileSetHandler, data);
+	static gulong FileChooserButton_signal_connect_file_set(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "file-set", FileChooserButton_fileSetHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_FileChooserWidget_desktopFolderHandler();
+	void FileChooserWidget_desktopFolderHandler();
 
-	static void FileChooserWidget_signal_connect_desktop_folder(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "desktop-folder", gtk_FileChooserWidget_desktopFolderHandler, data);
+	static gulong FileChooserWidget_signal_connect_desktop_folder(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "desktop-folder", FileChooserWidget_desktopFolderHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_FileChooserWidget_downFolderHandler();
+	void FileChooserWidget_downFolderHandler();
 
-	static void FileChooserWidget_signal_connect_down_folder(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "down-folder", gtk_FileChooserWidget_downFolderHandler, data);
+	static gulong FileChooserWidget_signal_connect_down_folder(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "down-folder", FileChooserWidget_downFolderHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_FileChooserWidget_homeFolderHandler();
+	void FileChooserWidget_homeFolderHandler();
 
-	static void FileChooserWidget_signal_connect_home_folder(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "home-folder", gtk_FileChooserWidget_homeFolderHandler, data);
+	static gulong FileChooserWidget_signal_connect_home_folder(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "home-folder", FileChooserWidget_homeFolderHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_FileChooserWidget_locationPopupHandler();
+	void FileChooserWidget_locationPopupHandler();
 
-	static void FileChooserWidget_signal_connect_location_popup(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "location-popup", gtk_FileChooserWidget_locationPopupHandler, data);
+	static gulong FileChooserWidget_signal_connect_location_popup(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "location-popup", FileChooserWidget_locationPopupHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_FileChooserWidget_locationPopupOnPasteHandler();
+	void FileChooserWidget_locationPopupOnPasteHandler();
 
-	static void FileChooserWidget_signal_connect_location_popup_on_paste(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "location-popup-on-paste", gtk_FileChooserWidget_locationPopupOnPasteHandler, data);
+	static gulong FileChooserWidget_signal_connect_location_popup_on_paste(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "location-popup-on-paste", FileChooserWidget_locationPopupOnPasteHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_FileChooserWidget_locationTogglePopupHandler();
+	void FileChooserWidget_locationTogglePopupHandler();
 
-	static void FileChooserWidget_signal_connect_location_toggle_popup(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "location-toggle-popup", gtk_FileChooserWidget_locationTogglePopupHandler, data);
+	static gulong FileChooserWidget_signal_connect_location_toggle_popup(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "location-toggle-popup", FileChooserWidget_locationTogglePopupHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_FileChooserWidget_placesShortcutHandler();
+	void FileChooserWidget_placesShortcutHandler();
 
-	static void FileChooserWidget_signal_connect_places_shortcut(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "places-shortcut", gtk_FileChooserWidget_placesShortcutHandler, data);
+	static gulong FileChooserWidget_signal_connect_places_shortcut(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "places-shortcut", FileChooserWidget_placesShortcutHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_FileChooserWidget_quickBookmarkHandler();
+	void FileChooserWidget_quickBookmarkHandler();
 
-	static void FileChooserWidget_signal_connect_quick_bookmark(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "quick-bookmark", gtk_FileChooserWidget_quickBookmarkHandler, data);
+	static gulong FileChooserWidget_signal_connect_quick_bookmark(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "quick-bookmark", FileChooserWidget_quickBookmarkHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_FileChooserWidget_recentShortcutHandler();
+	void FileChooserWidget_recentShortcutHandler();
 
-	static void FileChooserWidget_signal_connect_recent_shortcut(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "recent-shortcut", gtk_FileChooserWidget_recentShortcutHandler, data);
+	static gulong FileChooserWidget_signal_connect_recent_shortcut(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "recent-shortcut", FileChooserWidget_recentShortcutHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_FileChooserWidget_searchShortcutHandler();
+	void FileChooserWidget_searchShortcutHandler();
 
-	static void FileChooserWidget_signal_connect_search_shortcut(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "search-shortcut", gtk_FileChooserWidget_searchShortcutHandler, data);
+	static gulong FileChooserWidget_signal_connect_search_shortcut(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "search-shortcut", FileChooserWidget_searchShortcutHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_FileChooserWidget_showHiddenHandler();
+	void FileChooserWidget_showHiddenHandler();
 
-	static void FileChooserWidget_signal_connect_show_hidden(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "show-hidden", gtk_FileChooserWidget_showHiddenHandler, data);
+	static gulong FileChooserWidget_signal_connect_show_hidden(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "show-hidden", FileChooserWidget_showHiddenHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_FileChooserWidget_upFolderHandler();
+	void FileChooserWidget_upFolderHandler();
 
-	static void FileChooserWidget_signal_connect_up_folder(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "up-folder", gtk_FileChooserWidget_upFolderHandler, data);
+	static gulong FileChooserWidget_signal_connect_up_folder(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "up-folder", FileChooserWidget_upFolderHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_FlowBox_activateCursorChildHandler();
+	void FlowBox_activateCursorChildHandler();
 
-	static void FlowBox_signal_connect_activate_cursor_child(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "activate-cursor-child", gtk_FlowBox_activateCursorChildHandler, data);
+	static gulong FlowBox_signal_connect_activate_cursor_child(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "activate-cursor-child", FlowBox_activateCursorChildHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_FlowBox_childActivatedHandler();
+	void FlowBox_childActivatedHandler();
 
-	static void FlowBox_signal_connect_child_activated(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "child-activated", gtk_FlowBox_childActivatedHandler, data);
+	static gulong FlowBox_signal_connect_child_activated(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "child-activated", FlowBox_childActivatedHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_FlowBox_moveCursorHandler();
+	void FlowBox_moveCursorHandler();
 
-	static void FlowBox_signal_connect_move_cursor(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "move-cursor", gtk_FlowBox_moveCursorHandler, data);
+	static gulong FlowBox_signal_connect_move_cursor(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "move-cursor", FlowBox_moveCursorHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_FlowBox_selectAllHandler();
+	void FlowBox_selectAllHandler();
 
-	static void FlowBox_signal_connect_select_all(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "select-all", gtk_FlowBox_selectAllHandler, data);
+	static gulong FlowBox_signal_connect_select_all(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "select-all", FlowBox_selectAllHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_FlowBox_selectedChildrenChangedHandler();
+	void FlowBox_selectedChildrenChangedHandler();
 
-	static void FlowBox_signal_connect_selected_children_changed(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "selected-children-changed", gtk_FlowBox_selectedChildrenChangedHandler, data);
+	static gulong FlowBox_signal_connect_selected_children_changed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "selected-children-changed", FlowBox_selectedChildrenChangedHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_FlowBox_toggleCursorChildHandler();
+	void FlowBox_toggleCursorChildHandler();
 
-	static void FlowBox_signal_connect_toggle_cursor_child(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "toggle-cursor-child", gtk_FlowBox_toggleCursorChildHandler, data);
+	static gulong FlowBox_signal_connect_toggle_cursor_child(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "toggle-cursor-child", FlowBox_toggleCursorChildHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_FlowBox_unselectAllHandler();
+	void FlowBox_unselectAllHandler();
 
-	static void FlowBox_signal_connect_unselect_all(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "unselect-all", gtk_FlowBox_unselectAllHandler, data);
+	static gulong FlowBox_signal_connect_unselect_all(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "unselect-all", FlowBox_unselectAllHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_FlowBoxChild_activateHandler();
+	void FlowBoxChild_activateHandler();
 
-	static void FlowBoxChild_signal_connect_activate(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "activate", gtk_FlowBoxChild_activateHandler, data);
+	static gulong FlowBoxChild_signal_connect_activate(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "activate", FlowBoxChild_activateHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_FontButton_fontSetHandler();
+	void FontButton_fontSetHandler();
 
-	static void FontButton_signal_connect_font_set(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "font-set", gtk_FontButton_fontSetHandler, data);
+	static gulong FontButton_signal_connect_font_set(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "font-set", FontButton_fontSetHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Gesture_beginHandler();
+	void Gesture_beginHandler();
 
-	static void Gesture_signal_connect_begin(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "begin", gtk_Gesture_beginHandler, data);
+	static gulong Gesture_signal_connect_begin(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "begin", Gesture_beginHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Gesture_cancelHandler();
+	void Gesture_cancelHandler();
 
-	static void Gesture_signal_connect_cancel(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "cancel", gtk_Gesture_cancelHandler, data);
+	static gulong Gesture_signal_connect_cancel(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "cancel", Gesture_cancelHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Gesture_endHandler();
+	void Gesture_endHandler();
 
-	static void Gesture_signal_connect_end(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "end", gtk_Gesture_endHandler, data);
+	static gulong Gesture_signal_connect_end(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "end", Gesture_endHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Gesture_sequenceStateChangedHandler();
+	void Gesture_sequenceStateChangedHandler();
 
-	static void Gesture_signal_connect_sequence_state_changed(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "sequence-state-changed", gtk_Gesture_sequenceStateChangedHandler, data);
+	static gulong Gesture_signal_connect_sequence_state_changed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "sequence-state-changed", Gesture_sequenceStateChangedHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Gesture_updateHandler();
+	void Gesture_updateHandler();
 
-	static void Gesture_signal_connect_update(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "update", gtk_Gesture_updateHandler, data);
+	static gulong Gesture_signal_connect_update(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "update", Gesture_updateHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_GestureDrag_dragBeginHandler();
+	void GestureDrag_dragBeginHandler();
 
-	static void GestureDrag_signal_connect_drag_begin(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "drag-begin", gtk_GestureDrag_dragBeginHandler, data);
+	static gulong GestureDrag_signal_connect_drag_begin(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "drag-begin", GestureDrag_dragBeginHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_GestureDrag_dragEndHandler();
+	void GestureDrag_dragEndHandler();
 
-	static void GestureDrag_signal_connect_drag_end(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "drag-end", gtk_GestureDrag_dragEndHandler, data);
+	static gulong GestureDrag_signal_connect_drag_end(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "drag-end", GestureDrag_dragEndHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_GestureDrag_dragUpdateHandler();
+	void GestureDrag_dragUpdateHandler();
 
-	static void GestureDrag_signal_connect_drag_update(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "drag-update", gtk_GestureDrag_dragUpdateHandler, data);
+	static gulong GestureDrag_signal_connect_drag_update(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "drag-update", GestureDrag_dragUpdateHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_GestureLongPress_cancelledHandler();
+	void GestureLongPress_cancelledHandler();
 
-	static void GestureLongPress_signal_connect_cancelled(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "cancelled", gtk_GestureLongPress_cancelledHandler, data);
+	static gulong GestureLongPress_signal_connect_cancelled(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "cancelled", GestureLongPress_cancelledHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_GestureLongPress_pressedHandler();
+	void GestureLongPress_pressedHandler();
 
-	static void GestureLongPress_signal_connect_pressed(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "pressed", gtk_GestureLongPress_pressedHandler, data);
+	static gulong GestureLongPress_signal_connect_pressed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "pressed", GestureLongPress_pressedHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_GestureMultiPress_pressedHandler();
+	void GestureMultiPress_pressedHandler();
 
-	static void GestureMultiPress_signal_connect_pressed(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "pressed", gtk_GestureMultiPress_pressedHandler, data);
+	static gulong GestureMultiPress_signal_connect_pressed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "pressed", GestureMultiPress_pressedHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_GestureMultiPress_releasedHandler();
+	void GestureMultiPress_releasedHandler();
 
-	static void GestureMultiPress_signal_connect_released(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "released", gtk_GestureMultiPress_releasedHandler, data);
+	static gulong GestureMultiPress_signal_connect_released(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "released", GestureMultiPress_releasedHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_GestureMultiPress_stoppedHandler();
+	void GestureMultiPress_stoppedHandler();
 
-	static void GestureMultiPress_signal_connect_stopped(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "stopped", gtk_GestureMultiPress_stoppedHandler, data);
+	static gulong GestureMultiPress_signal_connect_stopped(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "stopped", GestureMultiPress_stoppedHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_GesturePan_panHandler();
+	void GesturePan_panHandler();
 
-	static void GesturePan_signal_connect_pan(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "pan", gtk_GesturePan_panHandler, data);
+	static gulong GesturePan_signal_connect_pan(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "pan", GesturePan_panHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_GestureRotate_angleChangedHandler();
+	void GestureRotate_angleChangedHandler();
 
-	static void GestureRotate_signal_connect_angle_changed(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "angle-changed", gtk_GestureRotate_angleChangedHandler, data);
+	static gulong GestureRotate_signal_connect_angle_changed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "angle-changed", GestureRotate_angleChangedHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_GestureSwipe_swipeHandler();
+	void GestureSwipe_swipeHandler();
 
-	static void GestureSwipe_signal_connect_swipe(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "swipe", gtk_GestureSwipe_swipeHandler, data);
+	static gulong GestureSwipe_signal_connect_swipe(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "swipe", GestureSwipe_swipeHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_GestureZoom_scaleChangedHandler();
+	void GestureZoom_scaleChangedHandler();
 
-	static void GestureZoom_signal_connect_scale_changed(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "scale-changed", gtk_GestureZoom_scaleChangedHandler, data);
+	static gulong GestureZoom_signal_connect_scale_changed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "scale-changed", GestureZoom_scaleChangedHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_HSV_changedHandler();
+	void HSV_changedHandler();
 
-	static void HSV_signal_connect_changed(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "changed", gtk_HSV_changedHandler, data);
+	static gulong HSV_signal_connect_changed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "changed", HSV_changedHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_HSV_moveHandler();
+	void HSV_moveHandler();
 
-	static void HSV_signal_connect_move(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "move", gtk_HSV_moveHandler, data);
+	static gulong HSV_signal_connect_move(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "move", HSV_moveHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_HandleBox_childAttachedHandler();
+	void HandleBox_childAttachedHandler();
 
-	static void HandleBox_signal_connect_child_attached(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "child-attached", gtk_HandleBox_childAttachedHandler, data);
+	static gulong HandleBox_signal_connect_child_attached(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "child-attached", HandleBox_childAttachedHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_HandleBox_childDetachedHandler();
+	void HandleBox_childDetachedHandler();
 
-	static void HandleBox_signal_connect_child_detached(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "child-detached", gtk_HandleBox_childDetachedHandler, data);
+	static gulong HandleBox_signal_connect_child_detached(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "child-detached", HandleBox_childDetachedHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_IMContext_commitHandler();
+	void IMContext_commitHandler();
 
-	static void IMContext_signal_connect_commit(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "commit", gtk_IMContext_commitHandler, data);
+	static gulong IMContext_signal_connect_commit(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "commit", IMContext_commitHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_IMContext_deleteSurroundingHandler();
+	void IMContext_deleteSurroundingHandler();
 
-	static void IMContext_signal_connect_delete_surrounding(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "delete-surrounding", gtk_IMContext_deleteSurroundingHandler, data);
+	static gulong IMContext_signal_connect_delete_surrounding(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "delete-surrounding", IMContext_deleteSurroundingHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_IMContext_preeditChangedHandler();
+	void IMContext_preeditChangedHandler();
 
-	static void IMContext_signal_connect_preedit_changed(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "preedit-changed", gtk_IMContext_preeditChangedHandler, data);
+	static gulong IMContext_signal_connect_preedit_changed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "preedit-changed", IMContext_preeditChangedHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_IMContext_preeditEndHandler();
+	void IMContext_preeditEndHandler();
 
-	static void IMContext_signal_connect_preedit_end(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "preedit-end", gtk_IMContext_preeditEndHandler, data);
+	static gulong IMContext_signal_connect_preedit_end(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "preedit-end", IMContext_preeditEndHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_IMContext_preeditStartHandler();
+	void IMContext_preeditStartHandler();
 
-	static void IMContext_signal_connect_preedit_start(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "preedit-start", gtk_IMContext_preeditStartHandler, data);
+	static gulong IMContext_signal_connect_preedit_start(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "preedit-start", IMContext_preeditStartHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_IMContext_retrieveSurroundingHandler();
+	void IMContext_retrieveSurroundingHandler();
 
-	static void IMContext_signal_connect_retrieve_surrounding(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "retrieve-surrounding", gtk_IMContext_retrieveSurroundingHandler, data);
+	static gulong IMContext_signal_connect_retrieve_surrounding(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "retrieve-surrounding", IMContext_retrieveSurroundingHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_IconTheme_changedHandler();
+	void IconTheme_changedHandler();
 
-	static void IconTheme_signal_connect_changed(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "changed", gtk_IconTheme_changedHandler, data);
+	static gulong IconTheme_signal_connect_changed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "changed", IconTheme_changedHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_IconView_activateCursorItemHandler();
+	void IconView_activateCursorItemHandler();
 
-	static void IconView_signal_connect_activate_cursor_item(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "activate-cursor-item", gtk_IconView_activateCursorItemHandler, data);
+	static gulong IconView_signal_connect_activate_cursor_item(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "activate-cursor-item", IconView_activateCursorItemHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_IconView_itemActivatedHandler();
+	void IconView_itemActivatedHandler();
 
-	static void IconView_signal_connect_item_activated(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "item-activated", gtk_IconView_itemActivatedHandler, data);
+	static gulong IconView_signal_connect_item_activated(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "item-activated", IconView_itemActivatedHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_IconView_moveCursorHandler();
+	void IconView_moveCursorHandler();
 
-	static void IconView_signal_connect_move_cursor(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "move-cursor", gtk_IconView_moveCursorHandler, data);
+	static gulong IconView_signal_connect_move_cursor(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "move-cursor", IconView_moveCursorHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_IconView_selectAllHandler();
+	void IconView_selectAllHandler();
 
-	static void IconView_signal_connect_select_all(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "select-all", gtk_IconView_selectAllHandler, data);
+	static gulong IconView_signal_connect_select_all(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "select-all", IconView_selectAllHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_IconView_selectCursorItemHandler();
+	void IconView_selectCursorItemHandler();
 
-	static void IconView_signal_connect_select_cursor_item(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "select-cursor-item", gtk_IconView_selectCursorItemHandler, data);
+	static gulong IconView_signal_connect_select_cursor_item(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "select-cursor-item", IconView_selectCursorItemHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_IconView_selectionChangedHandler();
+	void IconView_selectionChangedHandler();
 
-	static void IconView_signal_connect_selection_changed(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "selection-changed", gtk_IconView_selectionChangedHandler, data);
+	static gulong IconView_signal_connect_selection_changed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "selection-changed", IconView_selectionChangedHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_IconView_toggleCursorItemHandler();
+	void IconView_toggleCursorItemHandler();
 
-	static void IconView_signal_connect_toggle_cursor_item(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "toggle-cursor-item", gtk_IconView_toggleCursorItemHandler, data);
+	static gulong IconView_signal_connect_toggle_cursor_item(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "toggle-cursor-item", IconView_toggleCursorItemHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_IconView_unselectAllHandler();
+	void IconView_unselectAllHandler();
 
-	static void IconView_signal_connect_unselect_all(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "unselect-all", gtk_IconView_unselectAllHandler, data);
+	static gulong IconView_signal_connect_unselect_all(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "unselect-all", IconView_unselectAllHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_InfoBar_closeHandler();
+	void InfoBar_closeHandler();
 
-	static void InfoBar_signal_connect_close(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "close", gtk_InfoBar_closeHandler, data);
+	static gulong InfoBar_signal_connect_close(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "close", InfoBar_closeHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_InfoBar_responseHandler();
+	void InfoBar_responseHandler();
 
-	static void InfoBar_signal_connect_response(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "response", gtk_InfoBar_responseHandler, data);
+	static gulong InfoBar_signal_connect_response(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "response", InfoBar_responseHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Label_activateCurrentLinkHandler();
+	void Label_activateCurrentLinkHandler();
 
-	static void Label_signal_connect_activate_current_link(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "activate-current-link", gtk_Label_activateCurrentLinkHandler, data);
+	static gulong Label_signal_connect_activate_current_link(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "activate-current-link", Label_activateCurrentLinkHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Label_activateLinkHandler();
+	void Label_activateLinkHandler();
 
-	static void Label_signal_connect_activate_link(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "activate-link", gtk_Label_activateLinkHandler, data);
+	static gulong Label_signal_connect_activate_link(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "activate-link", Label_activateLinkHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Label_copyClipboardHandler();
+	void Label_copyClipboardHandler();
 
-	static void Label_signal_connect_copy_clipboard(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "copy-clipboard", gtk_Label_copyClipboardHandler, data);
+	static gulong Label_signal_connect_copy_clipboard(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "copy-clipboard", Label_copyClipboardHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Label_moveCursorHandler();
+	void Label_moveCursorHandler();
 
-	static void Label_signal_connect_move_cursor(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "move-cursor", gtk_Label_moveCursorHandler, data);
+	static gulong Label_signal_connect_move_cursor(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "move-cursor", Label_moveCursorHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Label_populatePopupHandler();
+	void Label_populatePopupHandler();
 
-	static void Label_signal_connect_populate_popup(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "populate-popup", gtk_Label_populatePopupHandler, data);
+	static gulong Label_signal_connect_populate_popup(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "populate-popup", Label_populatePopupHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_LevelBar_offsetChangedHandler();
+	void LevelBar_offsetChangedHandler();
 
-	static void LevelBar_signal_connect_offset_changed(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "offset-changed", gtk_LevelBar_offsetChangedHandler, data);
+	static gulong LevelBar_signal_connect_offset_changed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "offset-changed", LevelBar_offsetChangedHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_LinkButton_activateLinkHandler();
+	void LinkButton_activateLinkHandler();
 
-	static void LinkButton_signal_connect_activate_link(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "activate-link", gtk_LinkButton_activateLinkHandler, data);
+	static gulong LinkButton_signal_connect_activate_link(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "activate-link", LinkButton_activateLinkHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_ListBox_activateCursorRowHandler();
+	void ListBox_activateCursorRowHandler();
 
-	static void ListBox_signal_connect_activate_cursor_row(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "activate-cursor-row", gtk_ListBox_activateCursorRowHandler, data);
+	static gulong ListBox_signal_connect_activate_cursor_row(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "activate-cursor-row", ListBox_activateCursorRowHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_ListBox_moveCursorHandler();
+	void ListBox_moveCursorHandler();
 
-	static void ListBox_signal_connect_move_cursor(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "move-cursor", gtk_ListBox_moveCursorHandler, data);
+	static gulong ListBox_signal_connect_move_cursor(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "move-cursor", ListBox_moveCursorHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_ListBox_rowActivatedHandler();
+	void ListBox_rowActivatedHandler();
 
-	static void ListBox_signal_connect_row_activated(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "row-activated", gtk_ListBox_rowActivatedHandler, data);
+	static gulong ListBox_signal_connect_row_activated(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "row-activated", ListBox_rowActivatedHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_ListBox_rowSelectedHandler();
+	void ListBox_rowSelectedHandler();
 
-	static void ListBox_signal_connect_row_selected(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "row-selected", gtk_ListBox_rowSelectedHandler, data);
+	static gulong ListBox_signal_connect_row_selected(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "row-selected", ListBox_rowSelectedHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_ListBox_selectAllHandler();
+	void ListBox_selectAllHandler();
 
-	static void ListBox_signal_connect_select_all(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "select-all", gtk_ListBox_selectAllHandler, data);
+	static gulong ListBox_signal_connect_select_all(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "select-all", ListBox_selectAllHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_ListBox_selectedRowsChangedHandler();
+	void ListBox_selectedRowsChangedHandler();
 
-	static void ListBox_signal_connect_selected_rows_changed(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "selected-rows-changed", gtk_ListBox_selectedRowsChangedHandler, data);
+	static gulong ListBox_signal_connect_selected_rows_changed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "selected-rows-changed", ListBox_selectedRowsChangedHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_ListBox_toggleCursorRowHandler();
+	void ListBox_toggleCursorRowHandler();
 
-	static void ListBox_signal_connect_toggle_cursor_row(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "toggle-cursor-row", gtk_ListBox_toggleCursorRowHandler, data);
+	static gulong ListBox_signal_connect_toggle_cursor_row(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "toggle-cursor-row", ListBox_toggleCursorRowHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_ListBox_unselectAllHandler();
+	void ListBox_unselectAllHandler();
 
-	static void ListBox_signal_connect_unselect_all(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "unselect-all", gtk_ListBox_unselectAllHandler, data);
+	static gulong ListBox_signal_connect_unselect_all(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "unselect-all", ListBox_unselectAllHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_ListBoxRow_activateHandler();
+	void ListBoxRow_activateHandler();
 
-	static void ListBoxRow_signal_connect_activate(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "activate", gtk_ListBoxRow_activateHandler, data);
+	static gulong ListBoxRow_signal_connect_activate(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "activate", ListBoxRow_activateHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Menu_moveScrollHandler();
+	void Menu_moveScrollHandler();
 
-	static void Menu_signal_connect_move_scroll(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "move-scroll", gtk_Menu_moveScrollHandler, data);
+	static gulong Menu_signal_connect_move_scroll(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "move-scroll", Menu_moveScrollHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Menu_poppedUpHandler();
+	void Menu_poppedUpHandler();
 
-	static void Menu_signal_connect_popped_up(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "popped-up", gtk_Menu_poppedUpHandler, data);
+	static gulong Menu_signal_connect_popped_up(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "popped-up", Menu_poppedUpHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_MenuItem_activateHandler();
+	void MenuItem_activateHandler();
 
-	static void MenuItem_signal_connect_activate(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "activate", gtk_MenuItem_activateHandler, data);
+	static gulong MenuItem_signal_connect_activate(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "activate", MenuItem_activateHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_MenuItem_activateItemHandler();
+	void MenuItem_activateItemHandler();
 
-	static void MenuItem_signal_connect_activate_item(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "activate-item", gtk_MenuItem_activateItemHandler, data);
+	static gulong MenuItem_signal_connect_activate_item(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "activate-item", MenuItem_activateItemHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_MenuItem_deselectHandler();
+	void MenuItem_deselectHandler();
 
-	static void MenuItem_signal_connect_deselect(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "deselect", gtk_MenuItem_deselectHandler, data);
+	static gulong MenuItem_signal_connect_deselect(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "deselect", MenuItem_deselectHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_MenuItem_selectHandler();
+	void MenuItem_selectHandler();
 
-	static void MenuItem_signal_connect_select(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "select", gtk_MenuItem_selectHandler, data);
+	static gulong MenuItem_signal_connect_select(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "select", MenuItem_selectHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_MenuItem_toggleSizeAllocateHandler();
+	void MenuItem_toggleSizeAllocateHandler();
 
-	static void MenuItem_signal_connect_toggle_size_allocate(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "toggle-size-allocate", gtk_MenuItem_toggleSizeAllocateHandler, data);
+	static gulong MenuItem_signal_connect_toggle_size_allocate(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "toggle-size-allocate", MenuItem_toggleSizeAllocateHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_MenuItem_toggleSizeRequestHandler();
+	void MenuItem_toggleSizeRequestHandler();
 
-	static void MenuItem_signal_connect_toggle_size_request(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "toggle-size-request", gtk_MenuItem_toggleSizeRequestHandler, data);
+	static gulong MenuItem_signal_connect_toggle_size_request(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "toggle-size-request", MenuItem_toggleSizeRequestHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_MenuShell_activateCurrentHandler();
+	void MenuShell_activateCurrentHandler();
 
-	static void MenuShell_signal_connect_activate_current(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "activate-current", gtk_MenuShell_activateCurrentHandler, data);
+	static gulong MenuShell_signal_connect_activate_current(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "activate-current", MenuShell_activateCurrentHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_MenuShell_cancelHandler();
+	void MenuShell_cancelHandler();
 
-	static void MenuShell_signal_connect_cancel(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "cancel", gtk_MenuShell_cancelHandler, data);
+	static gulong MenuShell_signal_connect_cancel(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "cancel", MenuShell_cancelHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_MenuShell_cycleFocusHandler();
+	void MenuShell_cycleFocusHandler();
 
-	static void MenuShell_signal_connect_cycle_focus(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "cycle-focus", gtk_MenuShell_cycleFocusHandler, data);
+	static gulong MenuShell_signal_connect_cycle_focus(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "cycle-focus", MenuShell_cycleFocusHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_MenuShell_deactivateHandler();
+	void MenuShell_deactivateHandler();
 
-	static void MenuShell_signal_connect_deactivate(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "deactivate", gtk_MenuShell_deactivateHandler, data);
+	static gulong MenuShell_signal_connect_deactivate(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "deactivate", MenuShell_deactivateHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_MenuShell_insertHandler();
+	void MenuShell_insertHandler();
 
-	static void MenuShell_signal_connect_insert(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "insert", gtk_MenuShell_insertHandler, data);
+	static gulong MenuShell_signal_connect_insert(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "insert", MenuShell_insertHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_MenuShell_moveCurrentHandler();
+	void MenuShell_moveCurrentHandler();
 
-	static void MenuShell_signal_connect_move_current(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "move-current", gtk_MenuShell_moveCurrentHandler, data);
+	static gulong MenuShell_signal_connect_move_current(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "move-current", MenuShell_moveCurrentHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_MenuShell_moveSelectedHandler();
+	void MenuShell_moveSelectedHandler();
 
-	static void MenuShell_signal_connect_move_selected(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "move-selected", gtk_MenuShell_moveSelectedHandler, data);
+	static gulong MenuShell_signal_connect_move_selected(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "move-selected", MenuShell_moveSelectedHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_MenuShell_selectionDoneHandler();
+	void MenuShell_selectionDoneHandler();
 
-	static void MenuShell_signal_connect_selection_done(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "selection-done", gtk_MenuShell_selectionDoneHandler, data);
+	static gulong MenuShell_signal_connect_selection_done(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "selection-done", MenuShell_selectionDoneHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_MenuToolButton_showMenuHandler();
+	void MenuToolButton_showMenuHandler();
 
-	static void MenuToolButton_signal_connect_show_menu(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "show-menu", gtk_MenuToolButton_showMenuHandler, data);
+	static gulong MenuToolButton_signal_connect_show_menu(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "show-menu", MenuToolButton_showMenuHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Notebook_changeCurrentPageHandler();
+	void Notebook_changeCurrentPageHandler();
 
-	static void Notebook_signal_connect_change_current_page(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "change-current-page", gtk_Notebook_changeCurrentPageHandler, data);
+	static gulong Notebook_signal_connect_change_current_page(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "change-current-page", Notebook_changeCurrentPageHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Notebook_createWindowHandler();
+	void Notebook_createWindowHandler();
 
-	static void Notebook_signal_connect_create_window(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "create-window", gtk_Notebook_createWindowHandler, data);
+	static gulong Notebook_signal_connect_create_window(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "create-window", Notebook_createWindowHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Notebook_focusTabHandler();
+	void Notebook_focusTabHandler();
 
-	static void Notebook_signal_connect_focus_tab(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "focus-tab", gtk_Notebook_focusTabHandler, data);
+	static gulong Notebook_signal_connect_focus_tab(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "focus-tab", Notebook_focusTabHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Notebook_moveFocusOutHandler();
+	void Notebook_moveFocusOutHandler();
 
-	static void Notebook_signal_connect_move_focus_out(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "move-focus-out", gtk_Notebook_moveFocusOutHandler, data);
+	static gulong Notebook_signal_connect_move_focus_out(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "move-focus-out", Notebook_moveFocusOutHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Notebook_pageAddedHandler();
+	void Notebook_pageAddedHandler();
 
-	static void Notebook_signal_connect_page_added(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "page-added", gtk_Notebook_pageAddedHandler, data);
+	static gulong Notebook_signal_connect_page_added(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "page-added", Notebook_pageAddedHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Notebook_pageRemovedHandler();
+	void Notebook_pageRemovedHandler();
 
-	static void Notebook_signal_connect_page_removed(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "page-removed", gtk_Notebook_pageRemovedHandler, data);
+	static gulong Notebook_signal_connect_page_removed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "page-removed", Notebook_pageRemovedHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Notebook_pageReorderedHandler();
+	void Notebook_pageReorderedHandler();
 
-	static void Notebook_signal_connect_page_reordered(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "page-reordered", gtk_Notebook_pageReorderedHandler, data);
+	static gulong Notebook_signal_connect_page_reordered(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "page-reordered", Notebook_pageReorderedHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Notebook_reorderTabHandler();
+	void Notebook_reorderTabHandler();
 
-	static void Notebook_signal_connect_reorder_tab(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "reorder-tab", gtk_Notebook_reorderTabHandler, data);
+	static gulong Notebook_signal_connect_reorder_tab(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "reorder-tab", Notebook_reorderTabHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Notebook_selectPageHandler();
+	void Notebook_selectPageHandler();
 
-	static void Notebook_signal_connect_select_page(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "select-page", gtk_Notebook_selectPageHandler, data);
+	static gulong Notebook_signal_connect_select_page(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "select-page", Notebook_selectPageHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Notebook_switchPageHandler();
+	void Notebook_switchPageHandler();
 
-	static void Notebook_signal_connect_switch_page(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "switch-page", gtk_Notebook_switchPageHandler, data);
+	static gulong Notebook_signal_connect_switch_page(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "switch-page", Notebook_switchPageHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Overlay_getChildPositionHandler();
+	void Overlay_getChildPositionHandler();
 
-	static void Overlay_signal_connect_get_child_position(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "get-child-position", gtk_Overlay_getChildPositionHandler, data);
+	static gulong Overlay_signal_connect_get_child_position(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "get-child-position", Overlay_getChildPositionHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Paned_acceptPositionHandler();
+	void Paned_acceptPositionHandler();
 
-	static void Paned_signal_connect_accept_position(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "accept-position", gtk_Paned_acceptPositionHandler, data);
+	static gulong Paned_signal_connect_accept_position(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "accept-position", Paned_acceptPositionHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Paned_cancelPositionHandler();
+	void Paned_cancelPositionHandler();
 
-	static void Paned_signal_connect_cancel_position(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "cancel-position", gtk_Paned_cancelPositionHandler, data);
+	static gulong Paned_signal_connect_cancel_position(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "cancel-position", Paned_cancelPositionHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Paned_cycleChildFocusHandler();
+	void Paned_cycleChildFocusHandler();
 
-	static void Paned_signal_connect_cycle_child_focus(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "cycle-child-focus", gtk_Paned_cycleChildFocusHandler, data);
+	static gulong Paned_signal_connect_cycle_child_focus(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "cycle-child-focus", Paned_cycleChildFocusHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Paned_cycleHandleFocusHandler();
+	void Paned_cycleHandleFocusHandler();
 
-	static void Paned_signal_connect_cycle_handle_focus(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "cycle-handle-focus", gtk_Paned_cycleHandleFocusHandler, data);
+	static gulong Paned_signal_connect_cycle_handle_focus(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "cycle-handle-focus", Paned_cycleHandleFocusHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Paned_moveHandleHandler();
+	void Paned_moveHandleHandler();
 
-	static void Paned_signal_connect_move_handle(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "move-handle", gtk_Paned_moveHandleHandler, data);
+	static gulong Paned_signal_connect_move_handle(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "move-handle", Paned_moveHandleHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Paned_toggleHandleFocusHandler();
+	void Paned_toggleHandleFocusHandler();
 
-	static void Paned_signal_connect_toggle_handle_focus(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "toggle-handle-focus", gtk_Paned_toggleHandleFocusHandler, data);
+	static gulong Paned_signal_connect_toggle_handle_focus(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "toggle-handle-focus", Paned_toggleHandleFocusHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_PlacesSidebar_dragActionAskHandler();
+	void PlacesSidebar_dragActionAskHandler();
 
-	static void PlacesSidebar_signal_connect_drag_action_ask(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "drag-action-ask", gtk_PlacesSidebar_dragActionAskHandler, data);
+	static gulong PlacesSidebar_signal_connect_drag_action_ask(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "drag-action-ask", PlacesSidebar_dragActionAskHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_PlacesSidebar_dragActionRequestedHandler();
+	void PlacesSidebar_dragActionRequestedHandler();
 
-	static void PlacesSidebar_signal_connect_drag_action_requested(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "drag-action-requested", gtk_PlacesSidebar_dragActionRequestedHandler, data);
+	static gulong PlacesSidebar_signal_connect_drag_action_requested(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "drag-action-requested", PlacesSidebar_dragActionRequestedHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_PlacesSidebar_dragPerformDropHandler();
+	void PlacesSidebar_dragPerformDropHandler();
 
-	static void PlacesSidebar_signal_connect_drag_perform_drop(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "drag-perform-drop", gtk_PlacesSidebar_dragPerformDropHandler, data);
+	static gulong PlacesSidebar_signal_connect_drag_perform_drop(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "drag-perform-drop", PlacesSidebar_dragPerformDropHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_PlacesSidebar_mountHandler();
+	void PlacesSidebar_mountHandler();
 
-	static void PlacesSidebar_signal_connect_mount(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "mount", gtk_PlacesSidebar_mountHandler, data);
+	static gulong PlacesSidebar_signal_connect_mount(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "mount", PlacesSidebar_mountHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_PlacesSidebar_openLocationHandler();
+	void PlacesSidebar_openLocationHandler();
 
-	static void PlacesSidebar_signal_connect_open_location(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "open-location", gtk_PlacesSidebar_openLocationHandler, data);
+	static gulong PlacesSidebar_signal_connect_open_location(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "open-location", PlacesSidebar_openLocationHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_PlacesSidebar_populatePopupHandler();
+	void PlacesSidebar_populatePopupHandler();
 
-	static void PlacesSidebar_signal_connect_populate_popup(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "populate-popup", gtk_PlacesSidebar_populatePopupHandler, data);
+	static gulong PlacesSidebar_signal_connect_populate_popup(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "populate-popup", PlacesSidebar_populatePopupHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_PlacesSidebar_showConnectToServerHandler();
+	void PlacesSidebar_showConnectToServerHandler();
 
-	static void PlacesSidebar_signal_connect_show_connect_to_server(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "show-connect-to-server", gtk_PlacesSidebar_showConnectToServerHandler, data);
+	static gulong PlacesSidebar_signal_connect_show_connect_to_server(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "show-connect-to-server", PlacesSidebar_showConnectToServerHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_PlacesSidebar_showEnterLocationHandler();
+	void PlacesSidebar_showEnterLocationHandler();
 
-	static void PlacesSidebar_signal_connect_show_enter_location(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "show-enter-location", gtk_PlacesSidebar_showEnterLocationHandler, data);
+	static gulong PlacesSidebar_signal_connect_show_enter_location(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "show-enter-location", PlacesSidebar_showEnterLocationHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_PlacesSidebar_showErrorMessageHandler();
+	void PlacesSidebar_showErrorMessageHandler();
 
-	static void PlacesSidebar_signal_connect_show_error_message(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "show-error-message", gtk_PlacesSidebar_showErrorMessageHandler, data);
+	static gulong PlacesSidebar_signal_connect_show_error_message(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "show-error-message", PlacesSidebar_showErrorMessageHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_PlacesSidebar_showOtherLocationsHandler();
+	void PlacesSidebar_showOtherLocationsHandler();
 
-	static void PlacesSidebar_signal_connect_show_other_locations(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "show-other-locations", gtk_PlacesSidebar_showOtherLocationsHandler, data);
+	static gulong PlacesSidebar_signal_connect_show_other_locations(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "show-other-locations", PlacesSidebar_showOtherLocationsHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_PlacesSidebar_showOtherLocationsWithFlagsHandler();
+	void PlacesSidebar_showOtherLocationsWithFlagsHandler();
 
-	static void PlacesSidebar_signal_connect_show_other_locations_with_flags(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "show-other-locations-with-flags", gtk_PlacesSidebar_showOtherLocationsWithFlagsHandler, data);
+	static gulong PlacesSidebar_signal_connect_show_other_locations_with_flags(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "show-other-locations-with-flags", PlacesSidebar_showOtherLocationsWithFlagsHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_PlacesSidebar_showStarredLocationHandler();
+	void PlacesSidebar_showStarredLocationHandler();
 
-	static void PlacesSidebar_signal_connect_show_starred_location(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "show-starred-location", gtk_PlacesSidebar_showStarredLocationHandler, data);
+	static gulong PlacesSidebar_signal_connect_show_starred_location(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "show-starred-location", PlacesSidebar_showStarredLocationHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_PlacesSidebar_unmountHandler();
+	void PlacesSidebar_unmountHandler();
 
-	static void PlacesSidebar_signal_connect_unmount(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "unmount", gtk_PlacesSidebar_unmountHandler, data);
+	static gulong PlacesSidebar_signal_connect_unmount(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "unmount", PlacesSidebar_unmountHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Popover_closedHandler();
+	void Popover_closedHandler();
 
-	static void Popover_signal_connect_closed(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "closed", gtk_Popover_closedHandler, data);
+	static gulong Popover_signal_connect_closed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "closed", Popover_closedHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_PrintOperation_beginPrintHandler();
+	void PrintOperation_beginPrintHandler();
 
-	static void PrintOperation_signal_connect_begin_print(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "begin-print", gtk_PrintOperation_beginPrintHandler, data);
+	static gulong PrintOperation_signal_connect_begin_print(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "begin-print", PrintOperation_beginPrintHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_PrintOperation_createCustomWidgetHandler();
+	void PrintOperation_createCustomWidgetHandler();
 
-	static void PrintOperation_signal_connect_create_custom_widget(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "create-custom-widget", gtk_PrintOperation_createCustomWidgetHandler, data);
+	static gulong PrintOperation_signal_connect_create_custom_widget(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "create-custom-widget", PrintOperation_createCustomWidgetHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_PrintOperation_customWidgetApplyHandler();
+	void PrintOperation_customWidgetApplyHandler();
 
-	static void PrintOperation_signal_connect_custom_widget_apply(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "custom-widget-apply", gtk_PrintOperation_customWidgetApplyHandler, data);
+	static gulong PrintOperation_signal_connect_custom_widget_apply(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "custom-widget-apply", PrintOperation_customWidgetApplyHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_PrintOperation_doneHandler();
+	void PrintOperation_doneHandler();
 
-	static void PrintOperation_signal_connect_done(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "done", gtk_PrintOperation_doneHandler, data);
+	static gulong PrintOperation_signal_connect_done(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "done", PrintOperation_doneHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_PrintOperation_drawPageHandler();
+	void PrintOperation_drawPageHandler();
 
-	static void PrintOperation_signal_connect_draw_page(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "draw-page", gtk_PrintOperation_drawPageHandler, data);
+	static gulong PrintOperation_signal_connect_draw_page(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "draw-page", PrintOperation_drawPageHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_PrintOperation_endPrintHandler();
+	void PrintOperation_endPrintHandler();
 
-	static void PrintOperation_signal_connect_end_print(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "end-print", gtk_PrintOperation_endPrintHandler, data);
+	static gulong PrintOperation_signal_connect_end_print(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "end-print", PrintOperation_endPrintHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_PrintOperation_paginateHandler();
+	void PrintOperation_paginateHandler();
 
-	static void PrintOperation_signal_connect_paginate(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "paginate", gtk_PrintOperation_paginateHandler, data);
+	static gulong PrintOperation_signal_connect_paginate(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "paginate", PrintOperation_paginateHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_PrintOperation_previewHandler();
+	void PrintOperation_previewHandler();
 
-	static void PrintOperation_signal_connect_preview(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "preview", gtk_PrintOperation_previewHandler, data);
+	static gulong PrintOperation_signal_connect_preview(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "preview", PrintOperation_previewHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_PrintOperation_requestPageSetupHandler();
+	void PrintOperation_requestPageSetupHandler();
 
-	static void PrintOperation_signal_connect_request_page_setup(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "request-page-setup", gtk_PrintOperation_requestPageSetupHandler, data);
+	static gulong PrintOperation_signal_connect_request_page_setup(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "request-page-setup", PrintOperation_requestPageSetupHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_PrintOperation_statusChangedHandler();
+	void PrintOperation_statusChangedHandler();
 
-	static void PrintOperation_signal_connect_status_changed(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "status-changed", gtk_PrintOperation_statusChangedHandler, data);
+	static gulong PrintOperation_signal_connect_status_changed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "status-changed", PrintOperation_statusChangedHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_PrintOperation_updateCustomWidgetHandler();
+	void PrintOperation_updateCustomWidgetHandler();
 
-	static void PrintOperation_signal_connect_update_custom_widget(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "update-custom-widget", gtk_PrintOperation_updateCustomWidgetHandler, data);
+	static gulong PrintOperation_signal_connect_update_custom_widget(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "update-custom-widget", PrintOperation_updateCustomWidgetHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_RadioAction_changedHandler();
+	void RadioAction_changedHandler();
 
-	static void RadioAction_signal_connect_changed(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "changed", gtk_RadioAction_changedHandler, data);
+	static gulong RadioAction_signal_connect_changed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "changed", RadioAction_changedHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_RadioButton_groupChangedHandler();
+	void RadioButton_groupChangedHandler();
 
-	static void RadioButton_signal_connect_group_changed(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "group-changed", gtk_RadioButton_groupChangedHandler, data);
+	static gulong RadioButton_signal_connect_group_changed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "group-changed", RadioButton_groupChangedHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_RadioMenuItem_groupChangedHandler();
+	void RadioMenuItem_groupChangedHandler();
 
-	static void RadioMenuItem_signal_connect_group_changed(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "group-changed", gtk_RadioMenuItem_groupChangedHandler, data);
+	static gulong RadioMenuItem_signal_connect_group_changed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "group-changed", RadioMenuItem_groupChangedHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Range_adjustBoundsHandler();
+	void Range_adjustBoundsHandler();
 
-	static void Range_signal_connect_adjust_bounds(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "adjust-bounds", gtk_Range_adjustBoundsHandler, data);
+	static gulong Range_signal_connect_adjust_bounds(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "adjust-bounds", Range_adjustBoundsHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Range_changeValueHandler();
+	void Range_changeValueHandler();
 
-	static void Range_signal_connect_change_value(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "change-value", gtk_Range_changeValueHandler, data);
+	static gulong Range_signal_connect_change_value(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "change-value", Range_changeValueHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Range_moveSliderHandler();
+	void Range_moveSliderHandler();
 
-	static void Range_signal_connect_move_slider(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "move-slider", gtk_Range_moveSliderHandler, data);
+	static gulong Range_signal_connect_move_slider(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "move-slider", Range_moveSliderHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Range_valueChangedHandler();
+	void Range_valueChangedHandler();
 
-	static void Range_signal_connect_value_changed(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "value-changed", gtk_Range_valueChangedHandler, data);
+	static gulong Range_signal_connect_value_changed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "value-changed", Range_valueChangedHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Scale_formatValueHandler();
+	void Scale_formatValueHandler();
 
-	static void Scale_signal_connect_format_value(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "format-value", gtk_Scale_formatValueHandler, data);
+	static gulong Scale_signal_connect_format_value(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "format-value", Scale_formatValueHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_ScaleButton_popdownHandler();
+	void ScaleButton_popdownHandler();
 
-	static void ScaleButton_signal_connect_popdown(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "popdown", gtk_ScaleButton_popdownHandler, data);
+	static gulong ScaleButton_signal_connect_popdown(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "popdown", ScaleButton_popdownHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_ScaleButton_popupHandler();
+	void ScaleButton_popupHandler();
 
-	static void ScaleButton_signal_connect_popup(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "popup", gtk_ScaleButton_popupHandler, data);
+	static gulong ScaleButton_signal_connect_popup(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "popup", ScaleButton_popupHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_ScaleButton_valueChangedHandler();
+	void ScaleButton_valueChangedHandler();
 
-	static void ScaleButton_signal_connect_value_changed(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "value-changed", gtk_ScaleButton_valueChangedHandler, data);
+	static gulong ScaleButton_signal_connect_value_changed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "value-changed", ScaleButton_valueChangedHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_ScrolledWindow_edgeOvershotHandler();
+	void ScrolledWindow_edgeOvershotHandler();
 
-	static void ScrolledWindow_signal_connect_edge_overshot(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "edge-overshot", gtk_ScrolledWindow_edgeOvershotHandler, data);
+	static gulong ScrolledWindow_signal_connect_edge_overshot(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "edge-overshot", ScrolledWindow_edgeOvershotHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_ScrolledWindow_edgeReachedHandler();
+	void ScrolledWindow_edgeReachedHandler();
 
-	static void ScrolledWindow_signal_connect_edge_reached(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "edge-reached", gtk_ScrolledWindow_edgeReachedHandler, data);
+	static gulong ScrolledWindow_signal_connect_edge_reached(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "edge-reached", ScrolledWindow_edgeReachedHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_ScrolledWindow_moveFocusOutHandler();
+	void ScrolledWindow_moveFocusOutHandler();
 
-	static void ScrolledWindow_signal_connect_move_focus_out(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "move-focus-out", gtk_ScrolledWindow_moveFocusOutHandler, data);
+	static gulong ScrolledWindow_signal_connect_move_focus_out(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "move-focus-out", ScrolledWindow_moveFocusOutHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_ScrolledWindow_scrollChildHandler();
+	void ScrolledWindow_scrollChildHandler();
 
-	static void ScrolledWindow_signal_connect_scroll_child(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "scroll-child", gtk_ScrolledWindow_scrollChildHandler, data);
+	static gulong ScrolledWindow_signal_connect_scroll_child(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "scroll-child", ScrolledWindow_scrollChildHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_SearchEntry_nextMatchHandler();
+	void SearchEntry_nextMatchHandler();
 
-	static void SearchEntry_signal_connect_next_match(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "next-match", gtk_SearchEntry_nextMatchHandler, data);
+	static gulong SearchEntry_signal_connect_next_match(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "next-match", SearchEntry_nextMatchHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_SearchEntry_previousMatchHandler();
+	void SearchEntry_previousMatchHandler();
 
-	static void SearchEntry_signal_connect_previous_match(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "previous-match", gtk_SearchEntry_previousMatchHandler, data);
+	static gulong SearchEntry_signal_connect_previous_match(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "previous-match", SearchEntry_previousMatchHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_SearchEntry_searchChangedHandler();
+	void SearchEntry_searchChangedHandler();
 
-	static void SearchEntry_signal_connect_search_changed(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "search-changed", gtk_SearchEntry_searchChangedHandler, data);
+	static gulong SearchEntry_signal_connect_search_changed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "search-changed", SearchEntry_searchChangedHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_SearchEntry_stopSearchHandler();
+	void SearchEntry_stopSearchHandler();
 
-	static void SearchEntry_signal_connect_stop_search(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "stop-search", gtk_SearchEntry_stopSearchHandler, data);
+	static gulong SearchEntry_signal_connect_stop_search(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "stop-search", SearchEntry_stopSearchHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_SpinButton_changeValueHandler();
+	void SpinButton_changeValueHandler();
 
-	static void SpinButton_signal_connect_change_value(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "change-value", gtk_SpinButton_changeValueHandler, data);
+	static gulong SpinButton_signal_connect_change_value(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "change-value", SpinButton_changeValueHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_SpinButton_inputHandler();
+	void SpinButton_inputHandler();
 
-	static void SpinButton_signal_connect_input(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "input", gtk_SpinButton_inputHandler, data);
+	static gulong SpinButton_signal_connect_input(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "input", SpinButton_inputHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_SpinButton_outputHandler();
+	void SpinButton_outputHandler();
 
-	static void SpinButton_signal_connect_output(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "output", gtk_SpinButton_outputHandler, data);
+	static gulong SpinButton_signal_connect_output(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "output", SpinButton_outputHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_SpinButton_valueChangedHandler();
+	void SpinButton_valueChangedHandler();
 
-	static void SpinButton_signal_connect_value_changed(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "value-changed", gtk_SpinButton_valueChangedHandler, data);
+	static gulong SpinButton_signal_connect_value_changed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "value-changed", SpinButton_valueChangedHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_SpinButton_wrappedHandler();
+	void SpinButton_wrappedHandler();
 
-	static void SpinButton_signal_connect_wrapped(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "wrapped", gtk_SpinButton_wrappedHandler, data);
+	static gulong SpinButton_signal_connect_wrapped(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "wrapped", SpinButton_wrappedHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_StatusIcon_activateHandler();
+	void StatusIcon_activateHandler();
 
-	static void StatusIcon_signal_connect_activate(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "activate", gtk_StatusIcon_activateHandler, data);
+	static gulong StatusIcon_signal_connect_activate(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "activate", StatusIcon_activateHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_StatusIcon_buttonPressEventHandler();
+	void StatusIcon_buttonPressEventHandler();
 
-	static void StatusIcon_signal_connect_button_press_event(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "button-press-event", gtk_StatusIcon_buttonPressEventHandler, data);
+	static gulong StatusIcon_signal_connect_button_press_event(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "button-press-event", StatusIcon_buttonPressEventHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_StatusIcon_buttonReleaseEventHandler();
+	void StatusIcon_buttonReleaseEventHandler();
 
-	static void StatusIcon_signal_connect_button_release_event(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "button-release-event", gtk_StatusIcon_buttonReleaseEventHandler, data);
+	static gulong StatusIcon_signal_connect_button_release_event(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "button-release-event", StatusIcon_buttonReleaseEventHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_StatusIcon_popupMenuHandler();
+	void StatusIcon_popupMenuHandler();
 
-	static void StatusIcon_signal_connect_popup_menu(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "popup-menu", gtk_StatusIcon_popupMenuHandler, data);
+	static gulong StatusIcon_signal_connect_popup_menu(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "popup-menu", StatusIcon_popupMenuHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_StatusIcon_queryTooltipHandler();
+	void StatusIcon_queryTooltipHandler();
 
-	static void StatusIcon_signal_connect_query_tooltip(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "query-tooltip", gtk_StatusIcon_queryTooltipHandler, data);
+	static gulong StatusIcon_signal_connect_query_tooltip(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "query-tooltip", StatusIcon_queryTooltipHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_StatusIcon_scrollEventHandler();
+	void StatusIcon_scrollEventHandler();
 
-	static void StatusIcon_signal_connect_scroll_event(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "scroll-event", gtk_StatusIcon_scrollEventHandler, data);
+	static gulong StatusIcon_signal_connect_scroll_event(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "scroll-event", StatusIcon_scrollEventHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_StatusIcon_sizeChangedHandler();
+	void StatusIcon_sizeChangedHandler();
 
-	static void StatusIcon_signal_connect_size_changed(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "size-changed", gtk_StatusIcon_sizeChangedHandler, data);
+	static gulong StatusIcon_signal_connect_size_changed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "size-changed", StatusIcon_sizeChangedHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Statusbar_textPoppedHandler();
+	void Statusbar_textPoppedHandler();
 
-	static void Statusbar_signal_connect_text_popped(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "text-popped", gtk_Statusbar_textPoppedHandler, data);
+	static gulong Statusbar_signal_connect_text_popped(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "text-popped", Statusbar_textPoppedHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Statusbar_textPushedHandler();
+	void Statusbar_textPushedHandler();
 
-	static void Statusbar_signal_connect_text_pushed(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "text-pushed", gtk_Statusbar_textPushedHandler, data);
+	static gulong Statusbar_signal_connect_text_pushed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "text-pushed", Statusbar_textPushedHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Style_realizeHandler();
+	void Style_realizeHandler();
 
-	static void Style_signal_connect_realize(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "realize", gtk_Style_realizeHandler, data);
+	static gulong Style_signal_connect_realize(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "realize", Style_realizeHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Style_unrealizeHandler();
+	void Style_unrealizeHandler();
 
-	static void Style_signal_connect_unrealize(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "unrealize", gtk_Style_unrealizeHandler, data);
+	static gulong Style_signal_connect_unrealize(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "unrealize", Style_unrealizeHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_StyleContext_changedHandler();
+	void StyleContext_changedHandler();
 
-	static void StyleContext_signal_connect_changed(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "changed", gtk_StyleContext_changedHandler, data);
+	static gulong StyleContext_signal_connect_changed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "changed", StyleContext_changedHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Switch_activateHandler();
+	void Switch_activateHandler();
 
-	static void Switch_signal_connect_activate(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "activate", gtk_Switch_activateHandler, data);
+	static gulong Switch_signal_connect_activate(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "activate", Switch_activateHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Switch_stateSetHandler();
+	void Switch_stateSetHandler();
 
-	static void Switch_signal_connect_state_set(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "state-set", gtk_Switch_stateSetHandler, data);
+	static gulong Switch_signal_connect_state_set(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "state-set", Switch_stateSetHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_TextBuffer_applyTagHandler();
+	void TextBuffer_applyTagHandler();
 
-	static void TextBuffer_signal_connect_apply_tag(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "apply-tag", gtk_TextBuffer_applyTagHandler, data);
+	static gulong TextBuffer_signal_connect_apply_tag(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "apply-tag", TextBuffer_applyTagHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_TextBuffer_beginUserActionHandler();
+	void TextBuffer_beginUserActionHandler();
 
-	static void TextBuffer_signal_connect_begin_user_action(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "begin-user-action", gtk_TextBuffer_beginUserActionHandler, data);
+	static gulong TextBuffer_signal_connect_begin_user_action(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "begin-user-action", TextBuffer_beginUserActionHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_TextBuffer_changedHandler();
+	void TextBuffer_changedHandler();
 
-	static void TextBuffer_signal_connect_changed(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "changed", gtk_TextBuffer_changedHandler, data);
+	static gulong TextBuffer_signal_connect_changed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "changed", TextBuffer_changedHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_TextBuffer_deleteRangeHandler();
+	void TextBuffer_deleteRangeHandler();
 
-	static void TextBuffer_signal_connect_delete_range(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "delete-range", gtk_TextBuffer_deleteRangeHandler, data);
+	static gulong TextBuffer_signal_connect_delete_range(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "delete-range", TextBuffer_deleteRangeHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_TextBuffer_endUserActionHandler();
+	void TextBuffer_endUserActionHandler();
 
-	static void TextBuffer_signal_connect_end_user_action(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "end-user-action", gtk_TextBuffer_endUserActionHandler, data);
+	static gulong TextBuffer_signal_connect_end_user_action(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "end-user-action", TextBuffer_endUserActionHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_TextBuffer_insertChildAnchorHandler();
+	void TextBuffer_insertChildAnchorHandler();
 
-	static void TextBuffer_signal_connect_insert_child_anchor(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "insert-child-anchor", gtk_TextBuffer_insertChildAnchorHandler, data);
+	static gulong TextBuffer_signal_connect_insert_child_anchor(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "insert-child-anchor", TextBuffer_insertChildAnchorHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_TextBuffer_insertPixbufHandler();
+	void TextBuffer_insertPixbufHandler();
 
-	static void TextBuffer_signal_connect_insert_pixbuf(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "insert-pixbuf", gtk_TextBuffer_insertPixbufHandler, data);
+	static gulong TextBuffer_signal_connect_insert_pixbuf(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "insert-pixbuf", TextBuffer_insertPixbufHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_TextBuffer_insertTextHandler();
+	void TextBuffer_insertTextHandler();
 
-	static void TextBuffer_signal_connect_insert_text(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "insert-text", gtk_TextBuffer_insertTextHandler, data);
+	static gulong TextBuffer_signal_connect_insert_text(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "insert-text", TextBuffer_insertTextHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_TextBuffer_markDeletedHandler();
+	void TextBuffer_markDeletedHandler();
 
-	static void TextBuffer_signal_connect_mark_deleted(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "mark-deleted", gtk_TextBuffer_markDeletedHandler, data);
+	static gulong TextBuffer_signal_connect_mark_deleted(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "mark-deleted", TextBuffer_markDeletedHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_TextBuffer_markSetHandler();
+	void TextBuffer_markSetHandler();
 
-	static void TextBuffer_signal_connect_mark_set(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "mark-set", gtk_TextBuffer_markSetHandler, data);
+	static gulong TextBuffer_signal_connect_mark_set(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "mark-set", TextBuffer_markSetHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_TextBuffer_modifiedChangedHandler();
+	void TextBuffer_modifiedChangedHandler();
 
-	static void TextBuffer_signal_connect_modified_changed(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "modified-changed", gtk_TextBuffer_modifiedChangedHandler, data);
+	static gulong TextBuffer_signal_connect_modified_changed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "modified-changed", TextBuffer_modifiedChangedHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_TextBuffer_pasteDoneHandler();
+	void TextBuffer_pasteDoneHandler();
 
-	static void TextBuffer_signal_connect_paste_done(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "paste-done", gtk_TextBuffer_pasteDoneHandler, data);
+	static gulong TextBuffer_signal_connect_paste_done(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "paste-done", TextBuffer_pasteDoneHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_TextBuffer_removeTagHandler();
+	void TextBuffer_removeTagHandler();
 
-	static void TextBuffer_signal_connect_remove_tag(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "remove-tag", gtk_TextBuffer_removeTagHandler, data);
+	static gulong TextBuffer_signal_connect_remove_tag(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "remove-tag", TextBuffer_removeTagHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_TextTag_eventHandler();
+	void TextTag_eventHandler();
 
-	static void TextTag_signal_connect_event(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "event", gtk_TextTag_eventHandler, data);
+	static gulong TextTag_signal_connect_event(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "event", TextTag_eventHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_TextTagTable_tagAddedHandler();
+	void TextTagTable_tagAddedHandler();
 
-	static void TextTagTable_signal_connect_tag_added(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "tag-added", gtk_TextTagTable_tagAddedHandler, data);
+	static gulong TextTagTable_signal_connect_tag_added(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "tag-added", TextTagTable_tagAddedHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_TextTagTable_tagChangedHandler();
+	void TextTagTable_tagChangedHandler();
 
-	static void TextTagTable_signal_connect_tag_changed(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "tag-changed", gtk_TextTagTable_tagChangedHandler, data);
+	static gulong TextTagTable_signal_connect_tag_changed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "tag-changed", TextTagTable_tagChangedHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_TextTagTable_tagRemovedHandler();
+	void TextTagTable_tagRemovedHandler();
 
-	static void TextTagTable_signal_connect_tag_removed(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "tag-removed", gtk_TextTagTable_tagRemovedHandler, data);
+	static gulong TextTagTable_signal_connect_tag_removed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "tag-removed", TextTagTable_tagRemovedHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_TextView_backspaceHandler();
+	void TextView_backspaceHandler();
 
-	static void TextView_signal_connect_backspace(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "backspace", gtk_TextView_backspaceHandler, data);
+	static gulong TextView_signal_connect_backspace(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "backspace", TextView_backspaceHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_TextView_copyClipboardHandler();
+	void TextView_copyClipboardHandler();
 
-	static void TextView_signal_connect_copy_clipboard(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "copy-clipboard", gtk_TextView_copyClipboardHandler, data);
+	static gulong TextView_signal_connect_copy_clipboard(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "copy-clipboard", TextView_copyClipboardHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_TextView_cutClipboardHandler();
+	void TextView_cutClipboardHandler();
 
-	static void TextView_signal_connect_cut_clipboard(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "cut-clipboard", gtk_TextView_cutClipboardHandler, data);
+	static gulong TextView_signal_connect_cut_clipboard(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "cut-clipboard", TextView_cutClipboardHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_TextView_deleteFromCursorHandler();
+	void TextView_deleteFromCursorHandler();
 
-	static void TextView_signal_connect_delete_from_cursor(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "delete-from-cursor", gtk_TextView_deleteFromCursorHandler, data);
+	static gulong TextView_signal_connect_delete_from_cursor(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "delete-from-cursor", TextView_deleteFromCursorHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_TextView_extendSelectionHandler();
+	void TextView_extendSelectionHandler();
 
-	static void TextView_signal_connect_extend_selection(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "extend-selection", gtk_TextView_extendSelectionHandler, data);
+	static gulong TextView_signal_connect_extend_selection(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "extend-selection", TextView_extendSelectionHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_TextView_insertAtCursorHandler();
+	void TextView_insertAtCursorHandler();
 
-	static void TextView_signal_connect_insert_at_cursor(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "insert-at-cursor", gtk_TextView_insertAtCursorHandler, data);
+	static gulong TextView_signal_connect_insert_at_cursor(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "insert-at-cursor", TextView_insertAtCursorHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_TextView_insertEmojiHandler();
+	void TextView_insertEmojiHandler();
 
-	static void TextView_signal_connect_insert_emoji(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "insert-emoji", gtk_TextView_insertEmojiHandler, data);
+	static gulong TextView_signal_connect_insert_emoji(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "insert-emoji", TextView_insertEmojiHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_TextView_moveCursorHandler();
+	void TextView_moveCursorHandler();
 
-	static void TextView_signal_connect_move_cursor(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "move-cursor", gtk_TextView_moveCursorHandler, data);
+	static gulong TextView_signal_connect_move_cursor(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "move-cursor", TextView_moveCursorHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_TextView_moveViewportHandler();
+	void TextView_moveViewportHandler();
 
-	static void TextView_signal_connect_move_viewport(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "move-viewport", gtk_TextView_moveViewportHandler, data);
+	static gulong TextView_signal_connect_move_viewport(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "move-viewport", TextView_moveViewportHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_TextView_pasteClipboardHandler();
+	void TextView_pasteClipboardHandler();
 
-	static void TextView_signal_connect_paste_clipboard(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "paste-clipboard", gtk_TextView_pasteClipboardHandler, data);
+	static gulong TextView_signal_connect_paste_clipboard(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "paste-clipboard", TextView_pasteClipboardHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_TextView_populatePopupHandler();
+	void TextView_populatePopupHandler();
 
-	static void TextView_signal_connect_populate_popup(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "populate-popup", gtk_TextView_populatePopupHandler, data);
+	static gulong TextView_signal_connect_populate_popup(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "populate-popup", TextView_populatePopupHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_TextView_preeditChangedHandler();
+	void TextView_preeditChangedHandler();
 
-	static void TextView_signal_connect_preedit_changed(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "preedit-changed", gtk_TextView_preeditChangedHandler, data);
+	static gulong TextView_signal_connect_preedit_changed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "preedit-changed", TextView_preeditChangedHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_TextView_selectAllHandler();
+	void TextView_selectAllHandler();
 
-	static void TextView_signal_connect_select_all(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "select-all", gtk_TextView_selectAllHandler, data);
+	static gulong TextView_signal_connect_select_all(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "select-all", TextView_selectAllHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_TextView_setAnchorHandler();
+	void TextView_setAnchorHandler();
 
-	static void TextView_signal_connect_set_anchor(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "set-anchor", gtk_TextView_setAnchorHandler, data);
+	static gulong TextView_signal_connect_set_anchor(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "set-anchor", TextView_setAnchorHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_TextView_toggleCursorVisibleHandler();
+	void TextView_toggleCursorVisibleHandler();
 
-	static void TextView_signal_connect_toggle_cursor_visible(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "toggle-cursor-visible", gtk_TextView_toggleCursorVisibleHandler, data);
+	static gulong TextView_signal_connect_toggle_cursor_visible(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "toggle-cursor-visible", TextView_toggleCursorVisibleHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_TextView_toggleOverwriteHandler();
+	void TextView_toggleOverwriteHandler();
 
-	static void TextView_signal_connect_toggle_overwrite(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "toggle-overwrite", gtk_TextView_toggleOverwriteHandler, data);
+	static gulong TextView_signal_connect_toggle_overwrite(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "toggle-overwrite", TextView_toggleOverwriteHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_ToggleAction_toggledHandler();
+	void ToggleAction_toggledHandler();
 
-	static void ToggleAction_signal_connect_toggled(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "toggled", gtk_ToggleAction_toggledHandler, data);
+	static gulong ToggleAction_signal_connect_toggled(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "toggled", ToggleAction_toggledHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_ToggleButton_toggledHandler();
+	void ToggleButton_toggledHandler();
 
-	static void ToggleButton_signal_connect_toggled(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "toggled", gtk_ToggleButton_toggledHandler, data);
+	static gulong ToggleButton_signal_connect_toggled(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "toggled", ToggleButton_toggledHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_ToggleToolButton_toggledHandler();
+	void ToggleToolButton_toggledHandler();
 
-	static void ToggleToolButton_signal_connect_toggled(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "toggled", gtk_ToggleToolButton_toggledHandler, data);
+	static gulong ToggleToolButton_signal_connect_toggled(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "toggled", ToggleToolButton_toggledHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_ToolButton_clickedHandler();
+	void ToolButton_clickedHandler();
 
-	static void ToolButton_signal_connect_clicked(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "clicked", gtk_ToolButton_clickedHandler, data);
+	static gulong ToolButton_signal_connect_clicked(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "clicked", ToolButton_clickedHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_ToolItem_createMenuProxyHandler();
+	void ToolItem_createMenuProxyHandler();
 
-	static void ToolItem_signal_connect_create_menu_proxy(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "create-menu-proxy", gtk_ToolItem_createMenuProxyHandler, data);
+	static gulong ToolItem_signal_connect_create_menu_proxy(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "create-menu-proxy", ToolItem_createMenuProxyHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_ToolItem_toolbarReconfiguredHandler();
+	void ToolItem_toolbarReconfiguredHandler();
 
-	static void ToolItem_signal_connect_toolbar_reconfigured(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "toolbar-reconfigured", gtk_ToolItem_toolbarReconfiguredHandler, data);
+	static gulong ToolItem_signal_connect_toolbar_reconfigured(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "toolbar-reconfigured", ToolItem_toolbarReconfiguredHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Toolbar_focusHomeOrEndHandler();
+	void Toolbar_focusHomeOrEndHandler();
 
-	static void Toolbar_signal_connect_focus_home_or_end(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "focus-home-or-end", gtk_Toolbar_focusHomeOrEndHandler, data);
+	static gulong Toolbar_signal_connect_focus_home_or_end(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "focus-home-or-end", Toolbar_focusHomeOrEndHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Toolbar_orientationChangedHandler();
+	void Toolbar_orientationChangedHandler();
 
-	static void Toolbar_signal_connect_orientation_changed(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "orientation-changed", gtk_Toolbar_orientationChangedHandler, data);
+	static gulong Toolbar_signal_connect_orientation_changed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "orientation-changed", Toolbar_orientationChangedHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Toolbar_popupContextMenuHandler();
+	void Toolbar_popupContextMenuHandler();
 
-	static void Toolbar_signal_connect_popup_context_menu(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "popup-context-menu", gtk_Toolbar_popupContextMenuHandler, data);
+	static gulong Toolbar_signal_connect_popup_context_menu(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "popup-context-menu", Toolbar_popupContextMenuHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Toolbar_styleChangedHandler();
+	void Toolbar_styleChangedHandler();
 
-	static void Toolbar_signal_connect_style_changed(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "style-changed", gtk_Toolbar_styleChangedHandler, data);
+	static gulong Toolbar_signal_connect_style_changed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "style-changed", Toolbar_styleChangedHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_TreeSelection_changedHandler();
+	void TreeSelection_changedHandler();
 
-	static void TreeSelection_signal_connect_changed(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "changed", gtk_TreeSelection_changedHandler, data);
+	static gulong TreeSelection_signal_connect_changed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "changed", TreeSelection_changedHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_TreeView_columnsChangedHandler();
+	void TreeView_columnsChangedHandler();
 
-	static void TreeView_signal_connect_columns_changed(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "columns-changed", gtk_TreeView_columnsChangedHandler, data);
+	static gulong TreeView_signal_connect_columns_changed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "columns-changed", TreeView_columnsChangedHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_TreeView_cursorChangedHandler();
+	void TreeView_cursorChangedHandler();
 
-	static void TreeView_signal_connect_cursor_changed(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "cursor-changed", gtk_TreeView_cursorChangedHandler, data);
+	static gulong TreeView_signal_connect_cursor_changed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "cursor-changed", TreeView_cursorChangedHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_TreeView_expandCollapseCursorRowHandler();
+	void TreeView_expandCollapseCursorRowHandler();
 
-	static void TreeView_signal_connect_expand_collapse_cursor_row(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "expand-collapse-cursor-row", gtk_TreeView_expandCollapseCursorRowHandler, data);
+	static gulong TreeView_signal_connect_expand_collapse_cursor_row(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "expand-collapse-cursor-row", TreeView_expandCollapseCursorRowHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_TreeView_moveCursorHandler();
+	void TreeView_moveCursorHandler();
 
-	static void TreeView_signal_connect_move_cursor(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "move-cursor", gtk_TreeView_moveCursorHandler, data);
+	static gulong TreeView_signal_connect_move_cursor(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "move-cursor", TreeView_moveCursorHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_TreeView_rowActivatedHandler();
+	void TreeView_rowActivatedHandler();
 
-	static void TreeView_signal_connect_row_activated(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "row-activated", gtk_TreeView_rowActivatedHandler, data);
+	static gulong TreeView_signal_connect_row_activated(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "row-activated", TreeView_rowActivatedHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_TreeView_rowCollapsedHandler();
+	void TreeView_rowCollapsedHandler();
 
-	static void TreeView_signal_connect_row_collapsed(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "row-collapsed", gtk_TreeView_rowCollapsedHandler, data);
+	static gulong TreeView_signal_connect_row_collapsed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "row-collapsed", TreeView_rowCollapsedHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_TreeView_rowExpandedHandler();
+	void TreeView_rowExpandedHandler();
 
-	static void TreeView_signal_connect_row_expanded(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "row-expanded", gtk_TreeView_rowExpandedHandler, data);
+	static gulong TreeView_signal_connect_row_expanded(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "row-expanded", TreeView_rowExpandedHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_TreeView_selectAllHandler();
+	void TreeView_selectAllHandler();
 
-	static void TreeView_signal_connect_select_all(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "select-all", gtk_TreeView_selectAllHandler, data);
+	static gulong TreeView_signal_connect_select_all(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "select-all", TreeView_selectAllHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_TreeView_selectCursorParentHandler();
+	void TreeView_selectCursorParentHandler();
 
-	static void TreeView_signal_connect_select_cursor_parent(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "select-cursor-parent", gtk_TreeView_selectCursorParentHandler, data);
+	static gulong TreeView_signal_connect_select_cursor_parent(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "select-cursor-parent", TreeView_selectCursorParentHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_TreeView_selectCursorRowHandler();
+	void TreeView_selectCursorRowHandler();
 
-	static void TreeView_signal_connect_select_cursor_row(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "select-cursor-row", gtk_TreeView_selectCursorRowHandler, data);
+	static gulong TreeView_signal_connect_select_cursor_row(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "select-cursor-row", TreeView_selectCursorRowHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_TreeView_startInteractiveSearchHandler();
+	void TreeView_startInteractiveSearchHandler();
 
-	static void TreeView_signal_connect_start_interactive_search(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "start-interactive-search", gtk_TreeView_startInteractiveSearchHandler, data);
+	static gulong TreeView_signal_connect_start_interactive_search(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "start-interactive-search", TreeView_startInteractiveSearchHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_TreeView_testCollapseRowHandler();
+	void TreeView_testCollapseRowHandler();
 
-	static void TreeView_signal_connect_test_collapse_row(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "test-collapse-row", gtk_TreeView_testCollapseRowHandler, data);
+	static gulong TreeView_signal_connect_test_collapse_row(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "test-collapse-row", TreeView_testCollapseRowHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_TreeView_testExpandRowHandler();
+	void TreeView_testExpandRowHandler();
 
-	static void TreeView_signal_connect_test_expand_row(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "test-expand-row", gtk_TreeView_testExpandRowHandler, data);
+	static gulong TreeView_signal_connect_test_expand_row(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "test-expand-row", TreeView_testExpandRowHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_TreeView_toggleCursorRowHandler();
+	void TreeView_toggleCursorRowHandler();
 
-	static void TreeView_signal_connect_toggle_cursor_row(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "toggle-cursor-row", gtk_TreeView_toggleCursorRowHandler, data);
+	static gulong TreeView_signal_connect_toggle_cursor_row(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "toggle-cursor-row", TreeView_toggleCursorRowHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_TreeView_unselectAllHandler();
+	void TreeView_unselectAllHandler();
 
-	static void TreeView_signal_connect_unselect_all(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "unselect-all", gtk_TreeView_unselectAllHandler, data);
+	static gulong TreeView_signal_connect_unselect_all(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "unselect-all", TreeView_unselectAllHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_TreeViewColumn_clickedHandler();
+	void TreeViewColumn_clickedHandler();
 
-	static void TreeViewColumn_signal_connect_clicked(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "clicked", gtk_TreeViewColumn_clickedHandler, data);
+	static gulong TreeViewColumn_signal_connect_clicked(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "clicked", TreeViewColumn_clickedHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_UIManager_actionsChangedHandler();
+	void UIManager_actionsChangedHandler();
 
-	static void UIManager_signal_connect_actions_changed(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "actions-changed", gtk_UIManager_actionsChangedHandler, data);
+	static gulong UIManager_signal_connect_actions_changed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "actions-changed", UIManager_actionsChangedHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_UIManager_addWidgetHandler();
+	void UIManager_addWidgetHandler();
 
-	static void UIManager_signal_connect_add_widget(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "add-widget", gtk_UIManager_addWidgetHandler, data);
+	static gulong UIManager_signal_connect_add_widget(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "add-widget", UIManager_addWidgetHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_UIManager_connectProxyHandler();
+	void UIManager_connectProxyHandler();
 
-	static void UIManager_signal_connect_connect_proxy(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "connect-proxy", gtk_UIManager_connectProxyHandler, data);
+	static gulong UIManager_signal_connect_connect_proxy(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "connect-proxy", UIManager_connectProxyHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_UIManager_disconnectProxyHandler();
+	void UIManager_disconnectProxyHandler();
 
-	static void UIManager_signal_connect_disconnect_proxy(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "disconnect-proxy", gtk_UIManager_disconnectProxyHandler, data);
+	static gulong UIManager_signal_connect_disconnect_proxy(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "disconnect-proxy", UIManager_disconnectProxyHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_UIManager_postActivateHandler();
+	void UIManager_postActivateHandler();
 
-	static void UIManager_signal_connect_post_activate(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "post-activate", gtk_UIManager_postActivateHandler, data);
+	static gulong UIManager_signal_connect_post_activate(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "post-activate", UIManager_postActivateHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_UIManager_preActivateHandler();
+	void UIManager_preActivateHandler();
 
-	static void UIManager_signal_connect_pre_activate(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "pre-activate", gtk_UIManager_preActivateHandler, data);
+	static gulong UIManager_signal_connect_pre_activate(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "pre-activate", UIManager_preActivateHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Widget_accelClosuresChangedHandler();
+	void Widget_accelClosuresChangedHandler();
 
-	static void Widget_signal_connect_accel_closures_changed(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "accel-closures-changed", gtk_Widget_accelClosuresChangedHandler, data);
+	static gulong Widget_signal_connect_accel_closures_changed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "accel-closures-changed", Widget_accelClosuresChangedHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Widget_buttonPressEventHandler();
+	void Widget_buttonPressEventHandler();
 
-	static void Widget_signal_connect_button_press_event(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "button-press-event", gtk_Widget_buttonPressEventHandler, data);
+	static gulong Widget_signal_connect_button_press_event(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "button-press-event", Widget_buttonPressEventHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Widget_buttonReleaseEventHandler();
+	void Widget_buttonReleaseEventHandler();
 
-	static void Widget_signal_connect_button_release_event(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "button-release-event", gtk_Widget_buttonReleaseEventHandler, data);
+	static gulong Widget_signal_connect_button_release_event(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "button-release-event", Widget_buttonReleaseEventHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Widget_canActivateAccelHandler();
+	void Widget_canActivateAccelHandler();
 
-	static void Widget_signal_connect_can_activate_accel(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "can-activate-accel", gtk_Widget_canActivateAccelHandler, data);
+	static gulong Widget_signal_connect_can_activate_accel(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "can-activate-accel", Widget_canActivateAccelHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Widget_childNotifyHandler();
+	void Widget_childNotifyHandler();
 
-	static void Widget_signal_connect_child_notify(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "child-notify", gtk_Widget_childNotifyHandler, data);
+	static gulong Widget_signal_connect_child_notify(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "child-notify", Widget_childNotifyHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Widget_compositedChangedHandler();
+	void Widget_compositedChangedHandler();
 
-	static void Widget_signal_connect_composited_changed(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "composited-changed", gtk_Widget_compositedChangedHandler, data);
+	static gulong Widget_signal_connect_composited_changed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "composited-changed", Widget_compositedChangedHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Widget_configureEventHandler();
+	void Widget_configureEventHandler();
 
-	static void Widget_signal_connect_configure_event(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "configure-event", gtk_Widget_configureEventHandler, data);
+	static gulong Widget_signal_connect_configure_event(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "configure-event", Widget_configureEventHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Widget_damageEventHandler();
+	void Widget_damageEventHandler();
 
-	static void Widget_signal_connect_damage_event(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "damage-event", gtk_Widget_damageEventHandler, data);
+	static gulong Widget_signal_connect_damage_event(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "damage-event", Widget_damageEventHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Widget_deleteEventHandler();
+	void Widget_deleteEventHandler();
 
-	static void Widget_signal_connect_delete_event(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "delete-event", gtk_Widget_deleteEventHandler, data);
+	static gulong Widget_signal_connect_delete_event(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "delete-event", Widget_deleteEventHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Widget_destroyHandler();
+	void Widget_destroyHandler();
 
-	static void Widget_signal_connect_destroy(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "destroy", gtk_Widget_destroyHandler, data);
+	static gulong Widget_signal_connect_destroy(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "destroy", Widget_destroyHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Widget_destroyEventHandler();
+	void Widget_destroyEventHandler();
 
-	static void Widget_signal_connect_destroy_event(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "destroy-event", gtk_Widget_destroyEventHandler, data);
+	static gulong Widget_signal_connect_destroy_event(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "destroy-event", Widget_destroyEventHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Widget_directionChangedHandler();
+	void Widget_directionChangedHandler();
 
-	static void Widget_signal_connect_direction_changed(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "direction-changed", gtk_Widget_directionChangedHandler, data);
+	static gulong Widget_signal_connect_direction_changed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "direction-changed", Widget_directionChangedHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Widget_dragBeginHandler();
+	void Widget_dragBeginHandler();
 
-	static void Widget_signal_connect_drag_begin(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "drag-begin", gtk_Widget_dragBeginHandler, data);
+	static gulong Widget_signal_connect_drag_begin(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "drag-begin", Widget_dragBeginHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Widget_dragDataDeleteHandler();
+	void Widget_dragDataDeleteHandler();
 
-	static void Widget_signal_connect_drag_data_delete(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "drag-data-delete", gtk_Widget_dragDataDeleteHandler, data);
+	static gulong Widget_signal_connect_drag_data_delete(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "drag-data-delete", Widget_dragDataDeleteHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Widget_dragDataGetHandler();
+	void Widget_dragDataGetHandler();
 
-	static void Widget_signal_connect_drag_data_get(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "drag-data-get", gtk_Widget_dragDataGetHandler, data);
+	static gulong Widget_signal_connect_drag_data_get(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "drag-data-get", Widget_dragDataGetHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Widget_dragDataReceivedHandler();
+	void Widget_dragDataReceivedHandler();
 
-	static void Widget_signal_connect_drag_data_received(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "drag-data-received", gtk_Widget_dragDataReceivedHandler, data);
+	static gulong Widget_signal_connect_drag_data_received(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "drag-data-received", Widget_dragDataReceivedHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Widget_dragDropHandler();
+	void Widget_dragDropHandler();
 
-	static void Widget_signal_connect_drag_drop(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "drag-drop", gtk_Widget_dragDropHandler, data);
+	static gulong Widget_signal_connect_drag_drop(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "drag-drop", Widget_dragDropHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Widget_dragEndHandler();
+	void Widget_dragEndHandler();
 
-	static void Widget_signal_connect_drag_end(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "drag-end", gtk_Widget_dragEndHandler, data);
+	static gulong Widget_signal_connect_drag_end(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "drag-end", Widget_dragEndHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Widget_dragFailedHandler();
+	void Widget_dragFailedHandler();
 
-	static void Widget_signal_connect_drag_failed(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "drag-failed", gtk_Widget_dragFailedHandler, data);
+	static gulong Widget_signal_connect_drag_failed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "drag-failed", Widget_dragFailedHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Widget_dragLeaveHandler();
+	void Widget_dragLeaveHandler();
 
-	static void Widget_signal_connect_drag_leave(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "drag-leave", gtk_Widget_dragLeaveHandler, data);
+	static gulong Widget_signal_connect_drag_leave(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "drag-leave", Widget_dragLeaveHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Widget_dragMotionHandler();
+	void Widget_dragMotionHandler();
 
-	static void Widget_signal_connect_drag_motion(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "drag-motion", gtk_Widget_dragMotionHandler, data);
+	static gulong Widget_signal_connect_drag_motion(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "drag-motion", Widget_dragMotionHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Widget_drawHandler();
+	void Widget_drawHandler();
 
-	static void Widget_signal_connect_draw(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "draw", gtk_Widget_drawHandler, data);
+	static gulong Widget_signal_connect_draw(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "draw", Widget_drawHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Widget_enterNotifyEventHandler();
+	void Widget_enterNotifyEventHandler();
 
-	static void Widget_signal_connect_enter_notify_event(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "enter-notify-event", gtk_Widget_enterNotifyEventHandler, data);
+	static gulong Widget_signal_connect_enter_notify_event(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "enter-notify-event", Widget_enterNotifyEventHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Widget_eventHandler();
+	void Widget_eventHandler();
 
-	static void Widget_signal_connect_event(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "event", gtk_Widget_eventHandler, data);
+	static gulong Widget_signal_connect_event(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "event", Widget_eventHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Widget_eventAfterHandler();
+	void Widget_eventAfterHandler();
 
-	static void Widget_signal_connect_event_after(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "event-after", gtk_Widget_eventAfterHandler, data);
+	static gulong Widget_signal_connect_event_after(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "event-after", Widget_eventAfterHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Widget_focusHandler();
+	void Widget_focusHandler();
 
-	static void Widget_signal_connect_focus(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "focus", gtk_Widget_focusHandler, data);
+	static gulong Widget_signal_connect_focus(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "focus", Widget_focusHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Widget_focusInEventHandler();
+	void Widget_focusInEventHandler();
 
-	static void Widget_signal_connect_focus_in_event(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "focus-in-event", gtk_Widget_focusInEventHandler, data);
+	static gulong Widget_signal_connect_focus_in_event(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "focus-in-event", Widget_focusInEventHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Widget_focusOutEventHandler();
+	void Widget_focusOutEventHandler();
 
-	static void Widget_signal_connect_focus_out_event(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "focus-out-event", gtk_Widget_focusOutEventHandler, data);
+	static gulong Widget_signal_connect_focus_out_event(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "focus-out-event", Widget_focusOutEventHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Widget_grabBrokenEventHandler();
+	void Widget_grabBrokenEventHandler();
 
-	static void Widget_signal_connect_grab_broken_event(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "grab-broken-event", gtk_Widget_grabBrokenEventHandler, data);
+	static gulong Widget_signal_connect_grab_broken_event(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "grab-broken-event", Widget_grabBrokenEventHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Widget_grabFocusHandler();
+	void Widget_grabFocusHandler();
 
-	static void Widget_signal_connect_grab_focus(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "grab-focus", gtk_Widget_grabFocusHandler, data);
+	static gulong Widget_signal_connect_grab_focus(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "grab-focus", Widget_grabFocusHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Widget_grabNotifyHandler();
+	void Widget_grabNotifyHandler();
 
-	static void Widget_signal_connect_grab_notify(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "grab-notify", gtk_Widget_grabNotifyHandler, data);
+	static gulong Widget_signal_connect_grab_notify(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "grab-notify", Widget_grabNotifyHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Widget_hideHandler();
+	void Widget_hideHandler();
 
-	static void Widget_signal_connect_hide(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "hide", gtk_Widget_hideHandler, data);
+	static gulong Widget_signal_connect_hide(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "hide", Widget_hideHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Widget_hierarchyChangedHandler();
+	void Widget_hierarchyChangedHandler();
 
-	static void Widget_signal_connect_hierarchy_changed(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "hierarchy-changed", gtk_Widget_hierarchyChangedHandler, data);
+	static gulong Widget_signal_connect_hierarchy_changed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "hierarchy-changed", Widget_hierarchyChangedHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Widget_keyPressEventHandler();
+	void Widget_keyPressEventHandler();
 
-	static void Widget_signal_connect_key_press_event(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "key-press-event", gtk_Widget_keyPressEventHandler, data);
+	static gulong Widget_signal_connect_key_press_event(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "key-press-event", Widget_keyPressEventHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Widget_keyReleaseEventHandler();
+	void Widget_keyReleaseEventHandler();
 
-	static void Widget_signal_connect_key_release_event(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "key-release-event", gtk_Widget_keyReleaseEventHandler, data);
+	static gulong Widget_signal_connect_key_release_event(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "key-release-event", Widget_keyReleaseEventHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Widget_keynavFailedHandler();
+	void Widget_keynavFailedHandler();
 
-	static void Widget_signal_connect_keynav_failed(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "keynav-failed", gtk_Widget_keynavFailedHandler, data);
+	static gulong Widget_signal_connect_keynav_failed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "keynav-failed", Widget_keynavFailedHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Widget_leaveNotifyEventHandler();
+	void Widget_leaveNotifyEventHandler();
 
-	static void Widget_signal_connect_leave_notify_event(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "leave-notify-event", gtk_Widget_leaveNotifyEventHandler, data);
+	static gulong Widget_signal_connect_leave_notify_event(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "leave-notify-event", Widget_leaveNotifyEventHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Widget_mapHandler();
+	void Widget_mapHandler();
 
-	static void Widget_signal_connect_map(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "map", gtk_Widget_mapHandler, data);
+	static gulong Widget_signal_connect_map(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "map", Widget_mapHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Widget_mapEventHandler();
+	void Widget_mapEventHandler();
 
-	static void Widget_signal_connect_map_event(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "map-event", gtk_Widget_mapEventHandler, data);
+	static gulong Widget_signal_connect_map_event(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "map-event", Widget_mapEventHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Widget_mnemonicActivateHandler();
+	void Widget_mnemonicActivateHandler();
 
-	static void Widget_signal_connect_mnemonic_activate(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "mnemonic-activate", gtk_Widget_mnemonicActivateHandler, data);
+	static gulong Widget_signal_connect_mnemonic_activate(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "mnemonic-activate", Widget_mnemonicActivateHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Widget_motionNotifyEventHandler();
+	void Widget_motionNotifyEventHandler();
 
-	static void Widget_signal_connect_motion_notify_event(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "motion-notify-event", gtk_Widget_motionNotifyEventHandler, data);
+	static gulong Widget_signal_connect_motion_notify_event(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "motion-notify-event", Widget_motionNotifyEventHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Widget_moveFocusHandler();
+	void Widget_moveFocusHandler();
 
-	static void Widget_signal_connect_move_focus(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "move-focus", gtk_Widget_moveFocusHandler, data);
+	static gulong Widget_signal_connect_move_focus(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "move-focus", Widget_moveFocusHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Widget_parentSetHandler();
+	void Widget_parentSetHandler();
 
-	static void Widget_signal_connect_parent_set(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "parent-set", gtk_Widget_parentSetHandler, data);
+	static gulong Widget_signal_connect_parent_set(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "parent-set", Widget_parentSetHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Widget_popupMenuHandler();
+	void Widget_popupMenuHandler();
 
-	static void Widget_signal_connect_popup_menu(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "popup-menu", gtk_Widget_popupMenuHandler, data);
+	static gulong Widget_signal_connect_popup_menu(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "popup-menu", Widget_popupMenuHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Widget_propertyNotifyEventHandler();
+	void Widget_propertyNotifyEventHandler();
 
-	static void Widget_signal_connect_property_notify_event(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "property-notify-event", gtk_Widget_propertyNotifyEventHandler, data);
+	static gulong Widget_signal_connect_property_notify_event(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "property-notify-event", Widget_propertyNotifyEventHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Widget_proximityInEventHandler();
+	void Widget_proximityInEventHandler();
 
-	static void Widget_signal_connect_proximity_in_event(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "proximity-in-event", gtk_Widget_proximityInEventHandler, data);
+	static gulong Widget_signal_connect_proximity_in_event(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "proximity-in-event", Widget_proximityInEventHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Widget_proximityOutEventHandler();
+	void Widget_proximityOutEventHandler();
 
-	static void Widget_signal_connect_proximity_out_event(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "proximity-out-event", gtk_Widget_proximityOutEventHandler, data);
+	static gulong Widget_signal_connect_proximity_out_event(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "proximity-out-event", Widget_proximityOutEventHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Widget_queryTooltipHandler();
+	void Widget_queryTooltipHandler();
 
-	static void Widget_signal_connect_query_tooltip(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "query-tooltip", gtk_Widget_queryTooltipHandler, data);
+	static gulong Widget_signal_connect_query_tooltip(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "query-tooltip", Widget_queryTooltipHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Widget_realizeHandler();
+	void Widget_realizeHandler();
 
-	static void Widget_signal_connect_realize(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "realize", gtk_Widget_realizeHandler, data);
+	static gulong Widget_signal_connect_realize(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "realize", Widget_realizeHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Widget_screenChangedHandler();
+	void Widget_screenChangedHandler();
 
-	static void Widget_signal_connect_screen_changed(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "screen-changed", gtk_Widget_screenChangedHandler, data);
+	static gulong Widget_signal_connect_screen_changed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "screen-changed", Widget_screenChangedHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Widget_scrollEventHandler();
+	void Widget_scrollEventHandler();
 
-	static void Widget_signal_connect_scroll_event(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "scroll-event", gtk_Widget_scrollEventHandler, data);
+	static gulong Widget_signal_connect_scroll_event(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "scroll-event", Widget_scrollEventHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Widget_selectionClearEventHandler();
+	void Widget_selectionClearEventHandler();
 
-	static void Widget_signal_connect_selection_clear_event(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "selection-clear-event", gtk_Widget_selectionClearEventHandler, data);
+	static gulong Widget_signal_connect_selection_clear_event(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "selection-clear-event", Widget_selectionClearEventHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Widget_selectionGetHandler();
+	void Widget_selectionGetHandler();
 
-	static void Widget_signal_connect_selection_get(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "selection-get", gtk_Widget_selectionGetHandler, data);
+	static gulong Widget_signal_connect_selection_get(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "selection-get", Widget_selectionGetHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Widget_selectionNotifyEventHandler();
+	void Widget_selectionNotifyEventHandler();
 
-	static void Widget_signal_connect_selection_notify_event(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "selection-notify-event", gtk_Widget_selectionNotifyEventHandler, data);
+	static gulong Widget_signal_connect_selection_notify_event(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "selection-notify-event", Widget_selectionNotifyEventHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Widget_selectionReceivedHandler();
+	void Widget_selectionReceivedHandler();
 
-	static void Widget_signal_connect_selection_received(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "selection-received", gtk_Widget_selectionReceivedHandler, data);
+	static gulong Widget_signal_connect_selection_received(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "selection-received", Widget_selectionReceivedHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Widget_selectionRequestEventHandler();
+	void Widget_selectionRequestEventHandler();
 
-	static void Widget_signal_connect_selection_request_event(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "selection-request-event", gtk_Widget_selectionRequestEventHandler, data);
+	static gulong Widget_signal_connect_selection_request_event(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "selection-request-event", Widget_selectionRequestEventHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Widget_showHandler();
+	void Widget_showHandler();
 
-	static void Widget_signal_connect_show(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "show", gtk_Widget_showHandler, data);
+	static gulong Widget_signal_connect_show(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "show", Widget_showHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Widget_showHelpHandler();
+	void Widget_showHelpHandler();
 
-	static void Widget_signal_connect_show_help(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "show-help", gtk_Widget_showHelpHandler, data);
+	static gulong Widget_signal_connect_show_help(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "show-help", Widget_showHelpHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Widget_sizeAllocateHandler();
+	void Widget_sizeAllocateHandler();
 
-	static void Widget_signal_connect_size_allocate(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "size-allocate", gtk_Widget_sizeAllocateHandler, data);
+	static gulong Widget_signal_connect_size_allocate(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "size-allocate", Widget_sizeAllocateHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Widget_stateChangedHandler();
+	void Widget_stateChangedHandler();
 
-	static void Widget_signal_connect_state_changed(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "state-changed", gtk_Widget_stateChangedHandler, data);
+	static gulong Widget_signal_connect_state_changed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "state-changed", Widget_stateChangedHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Widget_stateFlagsChangedHandler();
+	void Widget_stateFlagsChangedHandler();
 
-	static void Widget_signal_connect_state_flags_changed(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "state-flags-changed", gtk_Widget_stateFlagsChangedHandler, data);
+	static gulong Widget_signal_connect_state_flags_changed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "state-flags-changed", Widget_stateFlagsChangedHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Widget_styleSetHandler();
+	void Widget_styleSetHandler();
 
-	static void Widget_signal_connect_style_set(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "style-set", gtk_Widget_styleSetHandler, data);
+	static gulong Widget_signal_connect_style_set(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "style-set", Widget_styleSetHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Widget_styleUpdatedHandler();
+	void Widget_styleUpdatedHandler();
 
-	static void Widget_signal_connect_style_updated(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "style-updated", gtk_Widget_styleUpdatedHandler, data);
+	static gulong Widget_signal_connect_style_updated(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "style-updated", Widget_styleUpdatedHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Widget_touchEventHandler();
+	void Widget_touchEventHandler();
 
-	static void Widget_signal_connect_touch_event(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "touch-event", gtk_Widget_touchEventHandler, data);
+	static gulong Widget_signal_connect_touch_event(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "touch-event", Widget_touchEventHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Widget_unmapHandler();
+	void Widget_unmapHandler();
 
-	static void Widget_signal_connect_unmap(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "unmap", gtk_Widget_unmapHandler, data);
+	static gulong Widget_signal_connect_unmap(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "unmap", Widget_unmapHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Widget_unmapEventHandler();
+	void Widget_unmapEventHandler();
 
-	static void Widget_signal_connect_unmap_event(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "unmap-event", gtk_Widget_unmapEventHandler, data);
+	static gulong Widget_signal_connect_unmap_event(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "unmap-event", Widget_unmapEventHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Widget_unrealizeHandler();
+	void Widget_unrealizeHandler();
 
-	static void Widget_signal_connect_unrealize(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "unrealize", gtk_Widget_unrealizeHandler, data);
+	static gulong Widget_signal_connect_unrealize(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "unrealize", Widget_unrealizeHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Widget_visibilityNotifyEventHandler();
+	void Widget_visibilityNotifyEventHandler();
 
-	static void Widget_signal_connect_visibility_notify_event(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "visibility-notify-event", gtk_Widget_visibilityNotifyEventHandler, data);
+	static gulong Widget_signal_connect_visibility_notify_event(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "visibility-notify-event", Widget_visibilityNotifyEventHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Widget_windowStateEventHandler();
+	void Widget_windowStateEventHandler();
 
-	static void Widget_signal_connect_window_state_event(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "window-state-event", gtk_Widget_windowStateEventHandler, data);
+	static gulong Widget_signal_connect_window_state_event(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "window-state-event", Widget_windowStateEventHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Window_activateDefaultHandler();
+	void Window_activateDefaultHandler();
 
-	static void Window_signal_connect_activate_default(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "activate-default", gtk_Window_activateDefaultHandler, data);
+	static gulong Window_signal_connect_activate_default(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "activate-default", Window_activateDefaultHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Window_activateFocusHandler();
+	void Window_activateFocusHandler();
 
-	static void Window_signal_connect_activate_focus(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "activate-focus", gtk_Window_activateFocusHandler, data);
+	static gulong Window_signal_connect_activate_focus(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "activate-focus", Window_activateFocusHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Window_enableDebuggingHandler();
+	void Window_enableDebuggingHandler();
 
-	static void Window_signal_connect_enable_debugging(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "enable-debugging", gtk_Window_enableDebuggingHandler, data);
+	static gulong Window_signal_connect_enable_debugging(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "enable-debugging", Window_enableDebuggingHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Window_keysChangedHandler();
+	void Window_keysChangedHandler();
 
-	static void Window_signal_connect_keys_changed(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "keys-changed", gtk_Window_keysChangedHandler, data);
+	static gulong Window_signal_connect_keys_changed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "keys-changed", Window_keysChangedHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_Window_setFocusHandler();
+	void Window_setFocusHandler();
 
-	static void Window_signal_connect_set_focus(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "set-focus", gtk_Window_setFocusHandler, data);
+	static gulong Window_signal_connect_set_focus(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "set-focus", Window_setFocusHandler, data);
 	}
 
 */

@@ -12,64 +12,64 @@ import (
 // #include <stdlib.h>
 /*
 
-	extern void atk_Hyperlink_linkActivatedHandler();
+	void Hyperlink_linkActivatedHandler();
 
-	static void Hyperlink_signal_connect_link_activated(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "link-activated", atk_Hyperlink_linkActivatedHandler, data);
+	static gulong Hyperlink_signal_connect_link_activated(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "link-activated", Hyperlink_linkActivatedHandler, data);
 	}
 
 */
 /*
 
-	extern void atk_Object_activeDescendantChangedHandler();
+	void Object_activeDescendantChangedHandler();
 
-	static void Object_signal_connect_active_descendant_changed(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "active-descendant-changed", atk_Object_activeDescendantChangedHandler, data);
+	static gulong Object_signal_connect_active_descendant_changed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "active-descendant-changed", Object_activeDescendantChangedHandler, data);
 	}
 
 */
 /*
 
-	extern void atk_Object_childrenChangedHandler();
+	void Object_childrenChangedHandler();
 
-	static void Object_signal_connect_children_changed(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "children-changed", atk_Object_childrenChangedHandler, data);
+	static gulong Object_signal_connect_children_changed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "children-changed", Object_childrenChangedHandler, data);
 	}
 
 */
 /*
 
-	extern void atk_Object_focusEventHandler();
+	void Object_focusEventHandler();
 
-	static void Object_signal_connect_focus_event(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "focus-event", atk_Object_focusEventHandler, data);
+	static gulong Object_signal_connect_focus_event(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "focus-event", Object_focusEventHandler, data);
 	}
 
 */
 /*
 
-	extern void atk_Object_propertyChangeHandler();
+	void Object_propertyChangeHandler();
 
-	static void Object_signal_connect_property_change(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "property-change", atk_Object_propertyChangeHandler, data);
+	static gulong Object_signal_connect_property_change(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "property-change", Object_propertyChangeHandler, data);
 	}
 
 */
 /*
 
-	extern void atk_Object_stateChangeHandler();
+	void Object_stateChangeHandler();
 
-	static void Object_signal_connect_state_change(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "state-change", atk_Object_stateChangeHandler, data);
+	static gulong Object_signal_connect_state_change(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "state-change", Object_stateChangeHandler, data);
 	}
 
 */
 /*
 
-	extern void atk_Object_visibleDataChangedHandler();
+	void Object_visibleDataChangedHandler();
 
-	static void Object_signal_connect_visible_data_changed(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "visible-data-changed", atk_Object_visibleDataChangedHandler, data);
+	static gulong Object_signal_connect_visible_data_changed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "visible-data-changed", Object_visibleDataChangedHandler, data);
 	}
 
 */

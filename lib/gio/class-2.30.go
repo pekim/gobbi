@@ -24,37 +24,37 @@ import (
 // #include <stdlib.h>
 /*
 
-	extern void gio_DBusInterfaceSkeleton_gAuthorizeMethodHandler();
+	void DBusInterfaceSkeleton_gAuthorizeMethodHandler();
 
-	static void DBusInterfaceSkeleton_signal_connect_g_authorize_method(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "g-authorize-method", gio_DBusInterfaceSkeleton_gAuthorizeMethodHandler, data);
+	static gulong DBusInterfaceSkeleton_signal_connect_g_authorize_method(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "g-authorize-method", DBusInterfaceSkeleton_gAuthorizeMethodHandler, data);
 	}
 
 */
 /*
 
-	extern void gio_DBusObjectManagerClient_interfaceProxyPropertiesChangedHandler();
+	void DBusObjectManagerClient_interfaceProxyPropertiesChangedHandler();
 
-	static void DBusObjectManagerClient_signal_connect_interface_proxy_properties_changed(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "interface-proxy-properties-changed", gio_DBusObjectManagerClient_interfaceProxyPropertiesChangedHandler, data);
+	static gulong DBusObjectManagerClient_signal_connect_interface_proxy_properties_changed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "interface-proxy-properties-changed", DBusObjectManagerClient_interfaceProxyPropertiesChangedHandler, data);
 	}
 
 */
 /*
 
-	extern void gio_DBusObjectManagerClient_interfaceProxySignalHandler();
+	void DBusObjectManagerClient_interfaceProxySignalHandler();
 
-	static void DBusObjectManagerClient_signal_connect_interface_proxy_signal(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "interface-proxy-signal", gio_DBusObjectManagerClient_interfaceProxySignalHandler, data);
+	static gulong DBusObjectManagerClient_signal_connect_interface_proxy_signal(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "interface-proxy-signal", DBusObjectManagerClient_interfaceProxySignalHandler, data);
 	}
 
 */
 /*
 
-	extern void gio_DBusObjectSkeleton_authorizeMethodHandler();
+	void DBusObjectSkeleton_authorizeMethodHandler();
 
-	static void DBusObjectSkeleton_signal_connect_authorize_method(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "authorize-method", gio_DBusObjectSkeleton_authorizeMethodHandler, data);
+	static gulong DBusObjectSkeleton_signal_connect_authorize_method(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "authorize-method", DBusObjectSkeleton_authorizeMethodHandler, data);
 	}
 
 */

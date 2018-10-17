@@ -28,8 +28,7 @@ func (s *Signal) init(ns *Namespace, record *Record) {
 	s.Namespace = ns
 	s.record = record
 
-	s.goNameHandler = fmt.Sprintf("%s_%s_%sHandler",
-		s.Namespace.goPackageName,
+	s.goNameHandler = fmt.Sprintf("%s_%sHandler",
 		s.record.Name,
 		makeGoNameInternal(s.Name, false))
 
@@ -50,10 +49,10 @@ func (s *Signal) generate(g *jen.Group, version *Version) {
 func (s *Signal) generateCgoPreamble() {
 	s.Namespace.jenFile.CgoPreamble(
 		fmt.Sprintf(`
-	extern void %s();
+	void %s();
 
-	static void %s(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "%s", %s, data);
+	static gulong %s(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "%s", %s, data);
 	}
 
 `,

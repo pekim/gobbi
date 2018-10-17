@@ -20,10 +20,10 @@ import (
 // #include <stdlib.h>
 /*
 
-	extern void gtk_RecentManager_changedHandler();
+	void RecentManager_changedHandler();
 
-	static void RecentManager_signal_connect_changed(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "changed", gtk_RecentManager_changedHandler, data);
+	static gulong RecentManager_signal_connect_changed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "changed", RecentManager_changedHandler, data);
 	}
 
 */

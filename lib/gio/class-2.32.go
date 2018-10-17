@@ -24,10 +24,10 @@ import (
 // #include <stdlib.h>
 /*
 
-	extern void gio_MenuModel_itemsChangedHandler();
+	void MenuModel_itemsChangedHandler();
 
-	static void MenuModel_signal_connect_items_changed(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "items-changed", gio_MenuModel_itemsChangedHandler, data);
+	static gulong MenuModel_signal_connect_items_changed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "items-changed", MenuModel_itemsChangedHandler, data);
 	}
 
 */

@@ -24,37 +24,37 @@ import (
 // #include <stdlib.h>
 /*
 
-	extern void gio_SocketClient_eventHandler();
+	void SocketClient_eventHandler();
 
-	static void SocketClient_signal_connect_event(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "event", gio_SocketClient_eventHandler, data);
+	static gulong SocketClient_signal_connect_event(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "event", SocketClient_eventHandler, data);
 	}
 
 */
 /*
 
-	extern void gio_SocketListener_eventHandler();
+	void SocketListener_eventHandler();
 
-	static void SocketListener_signal_connect_event(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "event", gio_SocketListener_eventHandler, data);
+	static gulong SocketListener_signal_connect_event(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "event", SocketListener_eventHandler, data);
 	}
 
 */
 /*
 
-	extern void gio_SocketService_incomingHandler();
+	void SocketService_incomingHandler();
 
-	static void SocketService_signal_connect_incoming(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "incoming", gio_SocketService_incomingHandler, data);
+	static gulong SocketService_signal_connect_incoming(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "incoming", SocketService_incomingHandler, data);
 	}
 
 */
 /*
 
-	extern void gio_ThreadedSocketService_runHandler();
+	void ThreadedSocketService_runHandler();
 
-	static void ThreadedSocketService_signal_connect_run(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "run", gio_ThreadedSocketService_runHandler, data);
+	static gulong ThreadedSocketService_signal_connect_run(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "run", ThreadedSocketService_runHandler, data);
 	}
 
 */

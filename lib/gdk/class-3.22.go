@@ -14,46 +14,46 @@ import (
 // #include <stdlib.h>
 /*
 
-	extern void gdk_Monitor_invalidateHandler();
+	void Monitor_invalidateHandler();
 
-	static void Monitor_signal_connect_invalidate(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "invalidate", gdk_Monitor_invalidateHandler, data);
+	static gulong Monitor_signal_connect_invalidate(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "invalidate", Monitor_invalidateHandler, data);
 	}
 
 */
 /*
 
-	extern void gdk_Seat_deviceAddedHandler();
+	void Seat_deviceAddedHandler();
 
-	static void Seat_signal_connect_device_added(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "device-added", gdk_Seat_deviceAddedHandler, data);
+	static gulong Seat_signal_connect_device_added(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "device-added", Seat_deviceAddedHandler, data);
 	}
 
 */
 /*
 
-	extern void gdk_Seat_deviceRemovedHandler();
+	void Seat_deviceRemovedHandler();
 
-	static void Seat_signal_connect_device_removed(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "device-removed", gdk_Seat_deviceRemovedHandler, data);
+	static gulong Seat_signal_connect_device_removed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "device-removed", Seat_deviceRemovedHandler, data);
 	}
 
 */
 /*
 
-	extern void gdk_Seat_toolAddedHandler();
+	void Seat_toolAddedHandler();
 
-	static void Seat_signal_connect_tool_added(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "tool-added", gdk_Seat_toolAddedHandler, data);
+	static gulong Seat_signal_connect_tool_added(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "tool-added", Seat_toolAddedHandler, data);
 	}
 
 */
 /*
 
-	extern void gdk_Seat_toolRemovedHandler();
+	void Seat_toolRemovedHandler();
 
-	static void Seat_signal_connect_tool_removed(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "tool-removed", gdk_Seat_toolRemovedHandler, data);
+	static gulong Seat_signal_connect_tool_removed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "tool-removed", Seat_toolRemovedHandler, data);
 	}
 
 */

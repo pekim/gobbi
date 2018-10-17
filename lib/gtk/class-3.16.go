@@ -17,28 +17,28 @@ import (
 // #include <stdlib.h>
 /*
 
-	extern void gtk_GLArea_createContextHandler();
+	void GLArea_createContextHandler();
 
-	static void GLArea_signal_connect_create_context(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "create-context", gtk_GLArea_createContextHandler, data);
+	static gulong GLArea_signal_connect_create_context(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "create-context", GLArea_createContextHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_GLArea_renderHandler();
+	void GLArea_renderHandler();
 
-	static void GLArea_signal_connect_render(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "render", gtk_GLArea_renderHandler, data);
+	static gulong GLArea_signal_connect_render(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "render", GLArea_renderHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_GLArea_resizeHandler();
+	void GLArea_resizeHandler();
 
-	static void GLArea_signal_connect_resize(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "resize", gtk_GLArea_resizeHandler, data);
+	static gulong GLArea_signal_connect_resize(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "resize", GLArea_resizeHandler, data);
 	}
 
 */

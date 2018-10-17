@@ -12,10 +12,10 @@ import (
 // #include <stdlib.h>
 /*
 
-	extern void gobject_Object_notifyHandler();
+	void Object_notifyHandler();
 
-	static void Object_signal_connect_notify(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "notify", gobject_Object_notifyHandler, data);
+	static gulong Object_signal_connect_notify(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "notify", Object_notifyHandler, data);
 	}
 
 */

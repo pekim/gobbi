@@ -13,37 +13,37 @@ import (
 // #include <stdlib.h>
 /*
 
-	extern void gdkpixbuf_PixbufLoader_areaPreparedHandler();
+	void PixbufLoader_areaPreparedHandler();
 
-	static void PixbufLoader_signal_connect_area_prepared(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "area-prepared", gdkpixbuf_PixbufLoader_areaPreparedHandler, data);
+	static gulong PixbufLoader_signal_connect_area_prepared(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "area-prepared", PixbufLoader_areaPreparedHandler, data);
 	}
 
 */
 /*
 
-	extern void gdkpixbuf_PixbufLoader_areaUpdatedHandler();
+	void PixbufLoader_areaUpdatedHandler();
 
-	static void PixbufLoader_signal_connect_area_updated(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "area-updated", gdkpixbuf_PixbufLoader_areaUpdatedHandler, data);
+	static gulong PixbufLoader_signal_connect_area_updated(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "area-updated", PixbufLoader_areaUpdatedHandler, data);
 	}
 
 */
 /*
 
-	extern void gdkpixbuf_PixbufLoader_closedHandler();
+	void PixbufLoader_closedHandler();
 
-	static void PixbufLoader_signal_connect_closed(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "closed", gdkpixbuf_PixbufLoader_closedHandler, data);
+	static gulong PixbufLoader_signal_connect_closed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "closed", PixbufLoader_closedHandler, data);
 	}
 
 */
 /*
 
-	extern void gdkpixbuf_PixbufLoader_sizePreparedHandler();
+	void PixbufLoader_sizePreparedHandler();
 
-	static void PixbufLoader_signal_connect_size_prepared(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "size-prepared", gdkpixbuf_PixbufLoader_sizePreparedHandler, data);
+	static gulong PixbufLoader_signal_connect_size_prepared(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "size-prepared", PixbufLoader_sizePreparedHandler, data);
 	}
 
 */

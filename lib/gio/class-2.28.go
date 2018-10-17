@@ -24,64 +24,64 @@ import (
 // #include <stdlib.h>
 /*
 
-	extern void gio_Application_activateHandler();
+	void Application_activateHandler();
 
-	static void Application_signal_connect_activate(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "activate", gio_Application_activateHandler, data);
+	static gulong Application_signal_connect_activate(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "activate", Application_activateHandler, data);
 	}
 
 */
 /*
 
-	extern void gio_Application_commandLineHandler();
+	void Application_commandLineHandler();
 
-	static void Application_signal_connect_command_line(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "command-line", gio_Application_commandLineHandler, data);
+	static gulong Application_signal_connect_command_line(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "command-line", Application_commandLineHandler, data);
 	}
 
 */
 /*
 
-	extern void gio_Application_handleLocalOptionsHandler();
+	void Application_handleLocalOptionsHandler();
 
-	static void Application_signal_connect_handle_local_options(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "handle-local-options", gio_Application_handleLocalOptionsHandler, data);
+	static gulong Application_signal_connect_handle_local_options(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "handle-local-options", Application_handleLocalOptionsHandler, data);
 	}
 
 */
 /*
 
-	extern void gio_Application_openHandler();
+	void Application_openHandler();
 
-	static void Application_signal_connect_open(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "open", gio_Application_openHandler, data);
+	static gulong Application_signal_connect_open(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "open", Application_openHandler, data);
 	}
 
 */
 /*
 
-	extern void gio_Application_shutdownHandler();
+	void Application_shutdownHandler();
 
-	static void Application_signal_connect_shutdown(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "shutdown", gio_Application_shutdownHandler, data);
+	static gulong Application_signal_connect_shutdown(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "shutdown", Application_shutdownHandler, data);
 	}
 
 */
 /*
 
-	extern void gio_Application_startupHandler();
+	void Application_startupHandler();
 
-	static void Application_signal_connect_startup(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "startup", gio_Application_startupHandler, data);
+	static gulong Application_signal_connect_startup(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "startup", Application_startupHandler, data);
 	}
 
 */
 /*
 
-	extern void gio_TlsConnection_acceptCertificateHandler();
+	void TlsConnection_acceptCertificateHandler();
 
-	static void TlsConnection_signal_connect_accept_certificate(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "accept-certificate", gio_TlsConnection_acceptCertificateHandler, data);
+	static gulong TlsConnection_signal_connect_accept_certificate(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "accept-certificate", TlsConnection_acceptCertificateHandler, data);
 	}
 
 */

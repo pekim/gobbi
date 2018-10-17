@@ -24,55 +24,55 @@ import (
 // #include <stdlib.h>
 /*
 
-	extern void gio_DBusAuthObserver_allowMechanismHandler();
+	void DBusAuthObserver_allowMechanismHandler();
 
-	static void DBusAuthObserver_signal_connect_allow_mechanism(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "allow-mechanism", gio_DBusAuthObserver_allowMechanismHandler, data);
+	static gulong DBusAuthObserver_signal_connect_allow_mechanism(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "allow-mechanism", DBusAuthObserver_allowMechanismHandler, data);
 	}
 
 */
 /*
 
-	extern void gio_DBusAuthObserver_authorizeAuthenticatedPeerHandler();
+	void DBusAuthObserver_authorizeAuthenticatedPeerHandler();
 
-	static void DBusAuthObserver_signal_connect_authorize_authenticated_peer(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "authorize-authenticated-peer", gio_DBusAuthObserver_authorizeAuthenticatedPeerHandler, data);
+	static gulong DBusAuthObserver_signal_connect_authorize_authenticated_peer(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "authorize-authenticated-peer", DBusAuthObserver_authorizeAuthenticatedPeerHandler, data);
 	}
 
 */
 /*
 
-	extern void gio_DBusConnection_closedHandler();
+	void DBusConnection_closedHandler();
 
-	static void DBusConnection_signal_connect_closed(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "closed", gio_DBusConnection_closedHandler, data);
+	static gulong DBusConnection_signal_connect_closed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "closed", DBusConnection_closedHandler, data);
 	}
 
 */
 /*
 
-	extern void gio_DBusProxy_gPropertiesChangedHandler();
+	void DBusProxy_gPropertiesChangedHandler();
 
-	static void DBusProxy_signal_connect_g_properties_changed(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "g-properties-changed", gio_DBusProxy_gPropertiesChangedHandler, data);
+	static gulong DBusProxy_signal_connect_g_properties_changed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "g-properties-changed", DBusProxy_gPropertiesChangedHandler, data);
 	}
 
 */
 /*
 
-	extern void gio_DBusProxy_gSignalHandler();
+	void DBusProxy_gSignalHandler();
 
-	static void DBusProxy_signal_connect_g_signal(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "g-signal", gio_DBusProxy_gSignalHandler, data);
+	static gulong DBusProxy_signal_connect_g_signal(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "g-signal", DBusProxy_gSignalHandler, data);
 	}
 
 */
 /*
 
-	extern void gio_DBusServer_newConnectionHandler();
+	void DBusServer_newConnectionHandler();
 
-	static void DBusServer_signal_connect_new_connection(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "new-connection", gio_DBusServer_newConnectionHandler, data);
+	static gulong DBusServer_signal_connect_new_connection(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "new-connection", DBusServer_newConnectionHandler, data);
 	}
 
 */

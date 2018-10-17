@@ -24,10 +24,10 @@ import (
 // #include <stdlib.h>
 /*
 
-	extern void gio_AppInfoMonitor_changedHandler();
+	void AppInfoMonitor_changedHandler();
 
-	static void AppInfoMonitor_signal_connect_changed(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "changed", gio_AppInfoMonitor_changedHandler, data);
+	static gulong AppInfoMonitor_signal_connect_changed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "changed", AppInfoMonitor_changedHandler, data);
 	}
 
 */

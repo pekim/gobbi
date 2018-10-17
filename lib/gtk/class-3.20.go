@@ -15,37 +15,37 @@ import (
 // #include <stdlib.h>
 /*
 
-	extern void gtk_NativeDialog_responseHandler();
+	void NativeDialog_responseHandler();
 
-	static void NativeDialog_signal_connect_response(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "response", gtk_NativeDialog_responseHandler, data);
+	static gulong NativeDialog_signal_connect_response(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "response", NativeDialog_responseHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_ShortcutsSection_changeCurrentPageHandler();
+	void ShortcutsSection_changeCurrentPageHandler();
 
-	static void ShortcutsSection_signal_connect_change_current_page(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "change-current-page", gtk_ShortcutsSection_changeCurrentPageHandler, data);
+	static gulong ShortcutsSection_signal_connect_change_current_page(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "change-current-page", ShortcutsSection_changeCurrentPageHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_ShortcutsWindow_closeHandler();
+	void ShortcutsWindow_closeHandler();
 
-	static void ShortcutsWindow_signal_connect_close(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "close", gtk_ShortcutsWindow_closeHandler, data);
+	static gulong ShortcutsWindow_signal_connect_close(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "close", ShortcutsWindow_closeHandler, data);
 	}
 
 */
 /*
 
-	extern void gtk_ShortcutsWindow_searchHandler();
+	void ShortcutsWindow_searchHandler();
 
-	static void ShortcutsWindow_signal_connect_search(gpointer instance, gpointer data) {
-		g_signal_connect(instance, "search", gtk_ShortcutsWindow_searchHandler, data);
+	static gulong ShortcutsWindow_signal_connect_search(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "search", ShortcutsWindow_searchHandler, data);
 	}
 
 */
