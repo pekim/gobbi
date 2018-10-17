@@ -1,5 +1,6 @@
 package generate
 
+import "C"
 import (
 	"fmt"
 	"github.com/dave/jennifer/jen"
@@ -43,9 +44,9 @@ func (s *Signal) init(ns *Namespace, record *Record) {
 func (s *Signal) initNames() {
 	signalGoName := makeExportedGoName(s.Name)
 
-	s.varNameId = fmt.Sprintf("signal%sId", signalGoName)
-	s.varNameMap = fmt.Sprintf("signal%sMap", signalGoName)
-	s.varNameLock = fmt.Sprintf("signal%sLock", signalGoName)
+	s.varNameId = fmt.Sprintf("signal%s%sId", s.record.Name, signalGoName)
+	s.varNameMap = fmt.Sprintf("signal%s%sMap", s.record.Name, signalGoName)
+	s.varNameLock = fmt.Sprintf("signal%s%sLock", s.record.Name, signalGoName)
 
 	s.goNameHandler = fmt.Sprintf("%s_%sHandler",
 		s.record.Name,
@@ -137,3 +138,15 @@ func (s *Signal) generateVariables(g *jen.Group) {
 	g.Var().Id(s.varNameLock).Qual("sync", "Mutex")
 	g.Line()
 }
+
+//func connectKeyPressEvent(target *gtk.Widget, callback KeyPressEventCallback) {
+//	signalKeyPressEventLock.Lock()
+//	defer signalKeyPressEventLock.Unlock()
+//
+//	signalKeyPressEventId++
+//	signalKeyPressEventMap[signalKeyPressEventId] = callback
+//
+//	instance := C.gpointer(target.Object().ToC())
+//
+//	C.signal_connect_key_press_event(instance, C.gpointer(uintptr(signalKeyPressEventId)))
+//}

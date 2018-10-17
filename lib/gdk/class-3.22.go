@@ -69,9 +69,9 @@ import (
 */
 import "C"
 
-var signalToolChangedId int
-var signalToolChangedMap = make(map[int]DeviceSignalToolChangedCallback)
-var signalToolChangedLock sync.Mutex
+var signalDeviceToolChangedId int
+var signalDeviceToolChangedMap = make(map[int]DeviceSignalToolChangedCallback)
+var signalDeviceToolChangedLock sync.Mutex
 
 // DeviceSignalToolChangedCallback is a callback function for a 'tool-changed' signal emitted from a Device.
 type DeviceSignalToolChangedCallback func(tool *DeviceTool)
@@ -142,18 +142,18 @@ func (recv *DeviceTool) GetToolType() DeviceToolType {
 	return retGo
 }
 
-var signalMonitorAddedId int
-var signalMonitorAddedMap = make(map[int]DisplaySignalMonitorAddedCallback)
-var signalMonitorAddedLock sync.Mutex
+var signalDisplayMonitorAddedId int
+var signalDisplayMonitorAddedMap = make(map[int]DisplaySignalMonitorAddedCallback)
+var signalDisplayMonitorAddedLock sync.Mutex
 
 // DisplaySignalMonitorAddedCallback is a callback function for a 'monitor-added' signal emitted from a Display.
 type DisplaySignalMonitorAddedCallback func(monitor *Monitor)
 
 func Display_monitorAddedHandler() {}
 
-var signalMonitorRemovedId int
-var signalMonitorRemovedMap = make(map[int]DisplaySignalMonitorRemovedCallback)
-var signalMonitorRemovedLock sync.Mutex
+var signalDisplayMonitorRemovedId int
+var signalDisplayMonitorRemovedMap = make(map[int]DisplaySignalMonitorRemovedCallback)
+var signalDisplayMonitorRemovedLock sync.Mutex
 
 // DisplaySignalMonitorRemovedCallback is a callback function for a 'monitor-removed' signal emitted from a Display.
 type DisplaySignalMonitorRemovedCallback func(monitor *Monitor)
@@ -430,18 +430,18 @@ func CastToSeat(object *gobject.Object) *Seat {
 	return SeatNewFromC(object.ToC())
 }
 
-var signalToolAddedId int
-var signalToolAddedMap = make(map[int]SeatSignalToolAddedCallback)
-var signalToolAddedLock sync.Mutex
+var signalSeatToolAddedId int
+var signalSeatToolAddedMap = make(map[int]SeatSignalToolAddedCallback)
+var signalSeatToolAddedLock sync.Mutex
 
 // SeatSignalToolAddedCallback is a callback function for a 'tool-added' signal emitted from a Seat.
 type SeatSignalToolAddedCallback func(tool *DeviceTool)
 
 func Seat_toolAddedHandler() {}
 
-var signalToolRemovedId int
-var signalToolRemovedMap = make(map[int]SeatSignalToolRemovedCallback)
-var signalToolRemovedLock sync.Mutex
+var signalSeatToolRemovedId int
+var signalSeatToolRemovedMap = make(map[int]SeatSignalToolRemovedCallback)
+var signalSeatToolRemovedLock sync.Mutex
 
 // SeatSignalToolRemovedCallback is a callback function for a 'tool-removed' signal emitted from a Seat.
 type SeatSignalToolRemovedCallback func(tool *DeviceTool)
@@ -456,9 +456,9 @@ func (recv *Seat) GetDisplay() *Display {
 	return retGo
 }
 
-var signalMovedToRectId int
-var signalMovedToRectMap = make(map[int]WindowSignalMovedToRectCallback)
-var signalMovedToRectLock sync.Mutex
+var signalWindowMovedToRectId int
+var signalWindowMovedToRectMap = make(map[int]WindowSignalMovedToRectCallback)
+var signalWindowMovedToRectLock sync.Mutex
 
 // WindowSignalMovedToRectCallback is a callback function for a 'moved-to-rect' signal emitted from a Window.
 type WindowSignalMovedToRectCallback func(flippedRect uintptr, finalRect uintptr, flippedX bool, flippedY bool)

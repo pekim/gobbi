@@ -138,9 +138,9 @@ func (recv *DBusConnection) RegisterObjectWithClosures(objectPath string, interf
 
 // Unsupported signal : unsupported parameter connectable : no type generator for SocketConnectable,
 
-var signalEventId int
-var signalEventMap = make(map[int]SocketListenerSignalEventCallback)
-var signalEventLock sync.Mutex
+var signalSocketListenerEventId int
+var signalSocketListenerEventMap = make(map[int]SocketListenerSignalEventCallback)
+var signalSocketListenerEventLock sync.Mutex
 
 // SocketListenerSignalEventCallback is a callback function for a 'event' signal emitted from a SocketListener.
 type SocketListenerSignalEventCallback func(event SocketListenerEvent, socket *Socket)

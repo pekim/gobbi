@@ -416,9 +416,9 @@ func (recv *TreeViewColumn) QueueResize() {
 
 // Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
 
-var signalGrabBrokenEventId int
-var signalGrabBrokenEventMap = make(map[int]WidgetSignalGrabBrokenEventCallback)
-var signalGrabBrokenEventLock sync.Mutex
+var signalWidgetGrabBrokenEventId int
+var signalWidgetGrabBrokenEventMap = make(map[int]WidgetSignalGrabBrokenEventCallback)
+var signalWidgetGrabBrokenEventLock sync.Mutex
 
 // WidgetSignalGrabBrokenEventCallback is a callback function for a 'grab-broken-event' signal emitted from a Widget.
 type WidgetSignalGrabBrokenEventCallback func(event *gdk.EventGrabBroken) bool

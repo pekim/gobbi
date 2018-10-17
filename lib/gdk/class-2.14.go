@@ -78,9 +78,9 @@ func (recv *AppLaunchContext) SetTimestamp(timestamp uint32) {
 	return
 }
 
-var signalMonitorsChangedId int
-var signalMonitorsChangedMap = make(map[int]ScreenSignalMonitorsChangedCallback)
-var signalMonitorsChangedLock sync.Mutex
+var signalScreenMonitorsChangedId int
+var signalScreenMonitorsChangedMap = make(map[int]ScreenSignalMonitorsChangedCallback)
+var signalScreenMonitorsChangedLock sync.Mutex
 
 // ScreenSignalMonitorsChangedCallback is a callback function for a 'monitors-changed' signal emitted from a Screen.
 type ScreenSignalMonitorsChangedCallback func()

@@ -236,18 +236,18 @@ func (recv *Entry) SetBuffer(buffer *EntryBuffer) {
 	return
 }
 
-var signalDeletedTextId int
-var signalDeletedTextMap = make(map[int]EntryBufferSignalDeletedTextCallback)
-var signalDeletedTextLock sync.Mutex
+var signalEntryBufferDeletedTextId int
+var signalEntryBufferDeletedTextMap = make(map[int]EntryBufferSignalDeletedTextCallback)
+var signalEntryBufferDeletedTextLock sync.Mutex
 
 // EntryBufferSignalDeletedTextCallback is a callback function for a 'deleted-text' signal emitted from a EntryBuffer.
 type EntryBufferSignalDeletedTextCallback func(position uint32, nChars uint32)
 
 func EntryBuffer_deletedTextHandler() {}
 
-var signalInsertedTextId int
-var signalInsertedTextMap = make(map[int]EntryBufferSignalInsertedTextCallback)
-var signalInsertedTextLock sync.Mutex
+var signalEntryBufferInsertedTextId int
+var signalEntryBufferInsertedTextMap = make(map[int]EntryBufferSignalInsertedTextCallback)
+var signalEntryBufferInsertedTextLock sync.Mutex
 
 // EntryBufferSignalInsertedTextCallback is a callback function for a 'inserted-text' signal emitted from a EntryBuffer.
 type EntryBufferSignalInsertedTextCallback func(position uint32, chars string, nChars uint32)
@@ -409,18 +409,18 @@ func (recv *IconView) SetItemPadding(itemPadding int32) {
 
 // Unsupported : gtk_image_new_from_stock : unsupported parameter size : no type generator for gint, GtkIconSize
 
-var signalCloseId int
-var signalCloseMap = make(map[int]InfoBarSignalCloseCallback)
-var signalCloseLock sync.Mutex
+var signalInfoBarCloseId int
+var signalInfoBarCloseMap = make(map[int]InfoBarSignalCloseCallback)
+var signalInfoBarCloseLock sync.Mutex
 
 // InfoBarSignalCloseCallback is a callback function for a 'close' signal emitted from a InfoBar.
 type InfoBarSignalCloseCallback func()
 
 func InfoBar_closeHandler() {}
 
-var signalResponseId int
-var signalResponseMap = make(map[int]InfoBarSignalResponseCallback)
-var signalResponseLock sync.Mutex
+var signalInfoBarResponseId int
+var signalInfoBarResponseMap = make(map[int]InfoBarSignalResponseCallback)
+var signalInfoBarResponseLock sync.Mutex
 
 // InfoBarSignalResponseCallback is a callback function for a 'response' signal emitted from a InfoBar.
 type InfoBarSignalResponseCallback func(responseId int32)
@@ -526,18 +526,18 @@ func (recv *InfoBar) SetResponseSensitive(responseId int32, setting bool) {
 	return
 }
 
-var signalActivateCurrentLinkId int
-var signalActivateCurrentLinkMap = make(map[int]LabelSignalActivateCurrentLinkCallback)
-var signalActivateCurrentLinkLock sync.Mutex
+var signalLabelActivateCurrentLinkId int
+var signalLabelActivateCurrentLinkMap = make(map[int]LabelSignalActivateCurrentLinkCallback)
+var signalLabelActivateCurrentLinkLock sync.Mutex
 
 // LabelSignalActivateCurrentLinkCallback is a callback function for a 'activate-current-link' signal emitted from a Label.
 type LabelSignalActivateCurrentLinkCallback func()
 
 func Label_activateCurrentLinkHandler() {}
 
-var signalActivateLinkId int
-var signalActivateLinkMap = make(map[int]LabelSignalActivateLinkCallback)
-var signalActivateLinkLock sync.Mutex
+var signalLabelActivateLinkId int
+var signalLabelActivateLinkMap = make(map[int]LabelSignalActivateLinkCallback)
+var signalLabelActivateLinkLock sync.Mutex
 
 // LabelSignalActivateLinkCallback is a callback function for a 'activate-link' signal emitted from a Label.
 type LabelSignalActivateLinkCallback func(uri string) bool
@@ -612,9 +612,9 @@ func (recv *Menu) SetReserveToggleSize(reserveToggleSize bool) {
 
 // Unsupported signal : unsupported parameter preview : no type generator for PrintOperationPreview,
 
-var signalUpdateCustomWidgetId int
-var signalUpdateCustomWidgetMap = make(map[int]PrintOperationSignalUpdateCustomWidgetCallback)
-var signalUpdateCustomWidgetLock sync.Mutex
+var signalPrintOperationUpdateCustomWidgetId int
+var signalPrintOperationUpdateCustomWidgetMap = make(map[int]PrintOperationSignalUpdateCustomWidgetCallback)
+var signalPrintOperationUpdateCustomWidgetLock sync.Mutex
 
 // PrintOperationSignalUpdateCustomWidgetCallback is a callback function for a 'update-custom-widget' signal emitted from a PrintOperation.
 type PrintOperationSignalUpdateCustomWidgetCallback func(widget *Widget, setup *PageSetup, settings *PrintSettings)

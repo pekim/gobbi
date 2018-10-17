@@ -515,18 +515,18 @@ func (recv *Label) SetLines(lines int32) {
 	return
 }
 
-var signalRowActivatedId int
-var signalRowActivatedMap = make(map[int]ListBoxSignalRowActivatedCallback)
-var signalRowActivatedLock sync.Mutex
+var signalListBoxRowActivatedId int
+var signalListBoxRowActivatedMap = make(map[int]ListBoxSignalRowActivatedCallback)
+var signalListBoxRowActivatedLock sync.Mutex
 
 // ListBoxSignalRowActivatedCallback is a callback function for a 'row-activated' signal emitted from a ListBox.
 type ListBoxSignalRowActivatedCallback func(row *ListBoxRow)
 
 func ListBox_rowActivatedHandler() {}
 
-var signalRowSelectedId int
-var signalRowSelectedMap = make(map[int]ListBoxSignalRowSelectedCallback)
-var signalRowSelectedLock sync.Mutex
+var signalListBoxRowSelectedId int
+var signalListBoxRowSelectedMap = make(map[int]ListBoxSignalRowSelectedCallback)
+var signalListBoxRowSelectedLock sync.Mutex
 
 // ListBoxSignalRowSelectedCallback is a callback function for a 'row-selected' signal emitted from a ListBox.
 type ListBoxSignalRowSelectedCallback func(row *ListBoxRow)
@@ -702,9 +702,9 @@ func (recv *ListBox) SetSelectionMode(mode SelectionMode) {
 
 // Unsupported : gtk_list_box_set_sort_func : unsupported parameter sort_func : no type generator for ListBoxSortFunc, GtkListBoxSortFunc
 
-var signalActivateId int
-var signalActivateMap = make(map[int]ListBoxRowSignalActivateCallback)
-var signalActivateLock sync.Mutex
+var signalListBoxRowActivateId int
+var signalListBoxRowActivateMap = make(map[int]ListBoxRowSignalActivateCallback)
+var signalListBoxRowActivateLock sync.Mutex
 
 // ListBoxRowSignalActivateCallback is a callback function for a 'activate' signal emitted from a ListBoxRow.
 type ListBoxRowSignalActivateCallback func()
@@ -765,9 +765,9 @@ func (recv *ListBoxRow) SetHeader(header *Widget) {
 
 // Unsupported : gtk_page_setup_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
 
-var signalDragActionAskId int
-var signalDragActionAskMap = make(map[int]PlacesSidebarSignalDragActionAskCallback)
-var signalDragActionAskLock sync.Mutex
+var signalPlacesSidebarDragActionAskId int
+var signalPlacesSidebarDragActionAskMap = make(map[int]PlacesSidebarSignalDragActionAskCallback)
+var signalPlacesSidebarDragActionAskLock sync.Mutex
 
 // PlacesSidebarSignalDragActionAskCallback is a callback function for a 'drag-action-ask' signal emitted from a PlacesSidebar.
 type PlacesSidebarSignalDragActionAskCallback func(actions int32) int32
@@ -782,9 +782,9 @@ func PlacesSidebar_dragActionAskHandler() {}
 
 // Unsupported signal : unsupported parameter selected_item : no type generator for Gio.File,
 
-var signalShowErrorMessageId int
-var signalShowErrorMessageMap = make(map[int]PlacesSidebarSignalShowErrorMessageCallback)
-var signalShowErrorMessageLock sync.Mutex
+var signalPlacesSidebarShowErrorMessageId int
+var signalPlacesSidebarShowErrorMessageMap = make(map[int]PlacesSidebarSignalShowErrorMessageCallback)
+var signalPlacesSidebarShowErrorMessageLock sync.Mutex
 
 // PlacesSidebarSignalShowErrorMessageCallback is a callback function for a 'show-error-message' signal emitted from a PlacesSidebar.
 type PlacesSidebarSignalShowErrorMessageCallback func(primary string, secondary string)
@@ -995,9 +995,9 @@ func (recv *SearchBar) SetShowCloseButton(visible bool) {
 	return
 }
 
-var signalSearchChangedId int
-var signalSearchChangedMap = make(map[int]SearchEntrySignalSearchChangedCallback)
-var signalSearchChangedLock sync.Mutex
+var signalSearchEntrySearchChangedId int
+var signalSearchEntrySearchChangedMap = make(map[int]SearchEntrySignalSearchChangedCallback)
+var signalSearchEntrySearchChangedLock sync.Mutex
 
 // SearchEntrySignalSearchChangedCallback is a callback function for a 'search-changed' signal emitted from a SearchEntry.
 type SearchEntrySignalSearchChangedCallback func()

@@ -2280,18 +2280,18 @@ func CastToAccelGroup(object *gobject.Object) *AccelGroup {
 	return AccelGroupNewFromC(object.ToC())
 }
 
-var signalAccelActivateId int
-var signalAccelActivateMap = make(map[int]AccelGroupSignalAccelActivateCallback)
-var signalAccelActivateLock sync.Mutex
+var signalAccelGroupAccelActivateId int
+var signalAccelGroupAccelActivateMap = make(map[int]AccelGroupSignalAccelActivateCallback)
+var signalAccelGroupAccelActivateLock sync.Mutex
 
 // AccelGroupSignalAccelActivateCallback is a callback function for a 'accel-activate' signal emitted from a AccelGroup.
 type AccelGroupSignalAccelActivateCallback func(acceleratable *gobject.Object, keyval uint32, modifier gdk.ModifierType) bool
 
 func AccelGroup_accelActivateHandler() {}
 
-var signalAccelChangedId int
-var signalAccelChangedMap = make(map[int]AccelGroupSignalAccelChangedCallback)
-var signalAccelChangedLock sync.Mutex
+var signalAccelGroupAccelChangedId int
+var signalAccelGroupAccelChangedMap = make(map[int]AccelGroupSignalAccelChangedCallback)
+var signalAccelGroupAccelChangedLock sync.Mutex
 
 // AccelGroupSignalAccelChangedCallback is a callback function for a 'accel-changed' signal emitted from a AccelGroup.
 type AccelGroupSignalAccelChangedCallback func(keyval uint32, modifier gdk.ModifierType, accelClosure *gobject.Closure)
@@ -2729,18 +2729,18 @@ func CastToAdjustment(object *gobject.Object) *Adjustment {
 	return AdjustmentNewFromC(object.ToC())
 }
 
-var signalChangedId int
-var signalChangedMap = make(map[int]AdjustmentSignalChangedCallback)
-var signalChangedLock sync.Mutex
+var signalAdjustmentChangedId int
+var signalAdjustmentChangedMap = make(map[int]AdjustmentSignalChangedCallback)
+var signalAdjustmentChangedLock sync.Mutex
 
 // AdjustmentSignalChangedCallback is a callback function for a 'changed' signal emitted from a Adjustment.
 type AdjustmentSignalChangedCallback func()
 
 func Adjustment_changedHandler() {}
 
-var signalValueChangedId int
-var signalValueChangedMap = make(map[int]AdjustmentSignalValueChangedCallback)
-var signalValueChangedLock sync.Mutex
+var signalAdjustmentValueChangedId int
+var signalAdjustmentValueChangedMap = make(map[int]AdjustmentSignalValueChangedCallback)
+var signalAdjustmentValueChangedLock sync.Mutex
 
 // AdjustmentSignalValueChangedCallback is a callback function for a 'value-changed' signal emitted from a Adjustment.
 type AdjustmentSignalValueChangedCallback func()
@@ -2953,9 +2953,9 @@ func CastToAppChooserButton(object *gobject.Object) *AppChooserButton {
 	return AppChooserButtonNewFromC(object.ToC())
 }
 
-var signalCustomItemActivatedId int
-var signalCustomItemActivatedMap = make(map[int]AppChooserButtonSignalCustomItemActivatedCallback)
-var signalCustomItemActivatedLock sync.Mutex
+var signalAppChooserButtonCustomItemActivatedId int
+var signalAppChooserButtonCustomItemActivatedMap = make(map[int]AppChooserButtonSignalCustomItemActivatedCallback)
+var signalAppChooserButtonCustomItemActivatedLock sync.Mutex
 
 // AppChooserButtonSignalCustomItemActivatedCallback is a callback function for a 'custom-item-activated' signal emitted from a AppChooserButton.
 type AppChooserButtonSignalCustomItemActivatedCallback func(itemName string)
@@ -3502,9 +3502,9 @@ func CastToAssistant(object *gobject.Object) *Assistant {
 	return AssistantNewFromC(object.ToC())
 }
 
-var signalEscapeId int
-var signalEscapeMap = make(map[int]AssistantSignalEscapeCallback)
-var signalEscapeLock sync.Mutex
+var signalAssistantEscapeId int
+var signalAssistantEscapeMap = make(map[int]AssistantSignalEscapeCallback)
+var signalAssistantEscapeLock sync.Mutex
 
 // AssistantSignalEscapeCallback is a callback function for a 'escape' signal emitted from a Assistant.
 type AssistantSignalEscapeCallback func()
@@ -3857,54 +3857,54 @@ func CastToButton(object *gobject.Object) *Button {
 	return ButtonNewFromC(object.ToC())
 }
 
-var signalActivateId int
-var signalActivateMap = make(map[int]ButtonSignalActivateCallback)
-var signalActivateLock sync.Mutex
+var signalButtonActivateId int
+var signalButtonActivateMap = make(map[int]ButtonSignalActivateCallback)
+var signalButtonActivateLock sync.Mutex
 
 // ButtonSignalActivateCallback is a callback function for a 'activate' signal emitted from a Button.
 type ButtonSignalActivateCallback func()
 
 func Button_activateHandler() {}
 
-var signalClickedId int
-var signalClickedMap = make(map[int]ButtonSignalClickedCallback)
-var signalClickedLock sync.Mutex
+var signalButtonClickedId int
+var signalButtonClickedMap = make(map[int]ButtonSignalClickedCallback)
+var signalButtonClickedLock sync.Mutex
 
 // ButtonSignalClickedCallback is a callback function for a 'clicked' signal emitted from a Button.
 type ButtonSignalClickedCallback func()
 
 func Button_clickedHandler() {}
 
-var signalEnterId int
-var signalEnterMap = make(map[int]ButtonSignalEnterCallback)
-var signalEnterLock sync.Mutex
+var signalButtonEnterId int
+var signalButtonEnterMap = make(map[int]ButtonSignalEnterCallback)
+var signalButtonEnterLock sync.Mutex
 
 // ButtonSignalEnterCallback is a callback function for a 'enter' signal emitted from a Button.
 type ButtonSignalEnterCallback func()
 
 func Button_enterHandler() {}
 
-var signalLeaveId int
-var signalLeaveMap = make(map[int]ButtonSignalLeaveCallback)
-var signalLeaveLock sync.Mutex
+var signalButtonLeaveId int
+var signalButtonLeaveMap = make(map[int]ButtonSignalLeaveCallback)
+var signalButtonLeaveLock sync.Mutex
 
 // ButtonSignalLeaveCallback is a callback function for a 'leave' signal emitted from a Button.
 type ButtonSignalLeaveCallback func()
 
 func Button_leaveHandler() {}
 
-var signalPressedId int
-var signalPressedMap = make(map[int]ButtonSignalPressedCallback)
-var signalPressedLock sync.Mutex
+var signalButtonPressedId int
+var signalButtonPressedMap = make(map[int]ButtonSignalPressedCallback)
+var signalButtonPressedLock sync.Mutex
 
 // ButtonSignalPressedCallback is a callback function for a 'pressed' signal emitted from a Button.
 type ButtonSignalPressedCallback func()
 
 func Button_pressedHandler() {}
 
-var signalReleasedId int
-var signalReleasedMap = make(map[int]ButtonSignalReleasedCallback)
-var signalReleasedLock sync.Mutex
+var signalButtonReleasedId int
+var signalButtonReleasedMap = make(map[int]ButtonSignalReleasedCallback)
+var signalButtonReleasedLock sync.Mutex
 
 // ButtonSignalReleasedCallback is a callback function for a 'released' signal emitted from a Button.
 type ButtonSignalReleasedCallback func()
@@ -4236,63 +4236,63 @@ func CastToCalendar(object *gobject.Object) *Calendar {
 	return CalendarNewFromC(object.ToC())
 }
 
-var signalDaySelectedId int
-var signalDaySelectedMap = make(map[int]CalendarSignalDaySelectedCallback)
-var signalDaySelectedLock sync.Mutex
+var signalCalendarDaySelectedId int
+var signalCalendarDaySelectedMap = make(map[int]CalendarSignalDaySelectedCallback)
+var signalCalendarDaySelectedLock sync.Mutex
 
 // CalendarSignalDaySelectedCallback is a callback function for a 'day-selected' signal emitted from a Calendar.
 type CalendarSignalDaySelectedCallback func()
 
 func Calendar_daySelectedHandler() {}
 
-var signalDaySelectedDoubleClickId int
-var signalDaySelectedDoubleClickMap = make(map[int]CalendarSignalDaySelectedDoubleClickCallback)
-var signalDaySelectedDoubleClickLock sync.Mutex
+var signalCalendarDaySelectedDoubleClickId int
+var signalCalendarDaySelectedDoubleClickMap = make(map[int]CalendarSignalDaySelectedDoubleClickCallback)
+var signalCalendarDaySelectedDoubleClickLock sync.Mutex
 
 // CalendarSignalDaySelectedDoubleClickCallback is a callback function for a 'day-selected-double-click' signal emitted from a Calendar.
 type CalendarSignalDaySelectedDoubleClickCallback func()
 
 func Calendar_daySelectedDoubleClickHandler() {}
 
-var signalMonthChangedId int
-var signalMonthChangedMap = make(map[int]CalendarSignalMonthChangedCallback)
-var signalMonthChangedLock sync.Mutex
+var signalCalendarMonthChangedId int
+var signalCalendarMonthChangedMap = make(map[int]CalendarSignalMonthChangedCallback)
+var signalCalendarMonthChangedLock sync.Mutex
 
 // CalendarSignalMonthChangedCallback is a callback function for a 'month-changed' signal emitted from a Calendar.
 type CalendarSignalMonthChangedCallback func()
 
 func Calendar_monthChangedHandler() {}
 
-var signalNextMonthId int
-var signalNextMonthMap = make(map[int]CalendarSignalNextMonthCallback)
-var signalNextMonthLock sync.Mutex
+var signalCalendarNextMonthId int
+var signalCalendarNextMonthMap = make(map[int]CalendarSignalNextMonthCallback)
+var signalCalendarNextMonthLock sync.Mutex
 
 // CalendarSignalNextMonthCallback is a callback function for a 'next-month' signal emitted from a Calendar.
 type CalendarSignalNextMonthCallback func()
 
 func Calendar_nextMonthHandler() {}
 
-var signalNextYearId int
-var signalNextYearMap = make(map[int]CalendarSignalNextYearCallback)
-var signalNextYearLock sync.Mutex
+var signalCalendarNextYearId int
+var signalCalendarNextYearMap = make(map[int]CalendarSignalNextYearCallback)
+var signalCalendarNextYearLock sync.Mutex
 
 // CalendarSignalNextYearCallback is a callback function for a 'next-year' signal emitted from a Calendar.
 type CalendarSignalNextYearCallback func()
 
 func Calendar_nextYearHandler() {}
 
-var signalPrevMonthId int
-var signalPrevMonthMap = make(map[int]CalendarSignalPrevMonthCallback)
-var signalPrevMonthLock sync.Mutex
+var signalCalendarPrevMonthId int
+var signalCalendarPrevMonthMap = make(map[int]CalendarSignalPrevMonthCallback)
+var signalCalendarPrevMonthLock sync.Mutex
 
 // CalendarSignalPrevMonthCallback is a callback function for a 'prev-month' signal emitted from a Calendar.
 type CalendarSignalPrevMonthCallback func()
 
 func Calendar_prevMonthHandler() {}
 
-var signalPrevYearId int
-var signalPrevYearMap = make(map[int]CalendarSignalPrevYearCallback)
-var signalPrevYearLock sync.Mutex
+var signalCalendarPrevYearId int
+var signalCalendarPrevYearMap = make(map[int]CalendarSignalPrevYearCallback)
+var signalCalendarPrevYearLock sync.Mutex
 
 // CalendarSignalPrevYearCallback is a callback function for a 'prev-year' signal emitted from a Calendar.
 type CalendarSignalPrevYearCallback func()
@@ -4957,9 +4957,9 @@ func CastToCellRendererText(object *gobject.Object) *CellRendererText {
 	return CellRendererTextNewFromC(object.ToC())
 }
 
-var signalEditedId int
-var signalEditedMap = make(map[int]CellRendererTextSignalEditedCallback)
-var signalEditedLock sync.Mutex
+var signalCellRendererTextEditedId int
+var signalCellRendererTextEditedMap = make(map[int]CellRendererTextSignalEditedCallback)
+var signalCellRendererTextEditedLock sync.Mutex
 
 // CellRendererTextSignalEditedCallback is a callback function for a 'edited' signal emitted from a CellRendererText.
 type CellRendererTextSignalEditedCallback func(path string, newText string)
@@ -5027,9 +5027,9 @@ func CastToCellRendererToggle(object *gobject.Object) *CellRendererToggle {
 	return CellRendererToggleNewFromC(object.ToC())
 }
 
-var signalToggledId int
-var signalToggledMap = make(map[int]CellRendererToggleSignalToggledCallback)
-var signalToggledLock sync.Mutex
+var signalCellRendererToggleToggledId int
+var signalCellRendererToggleToggledMap = make(map[int]CellRendererToggleSignalToggledCallback)
+var signalCellRendererToggleToggledLock sync.Mutex
 
 // CellRendererToggleSignalToggledCallback is a callback function for a 'toggled' signal emitted from a CellRendererToggle.
 type CellRendererToggleSignalToggledCallback func(path string)
@@ -5276,9 +5276,9 @@ func CastToCheckMenuItem(object *gobject.Object) *CheckMenuItem {
 	return CheckMenuItemNewFromC(object.ToC())
 }
 
-var signalToggledId int
-var signalToggledMap = make(map[int]CheckMenuItemSignalToggledCallback)
-var signalToggledLock sync.Mutex
+var signalCheckMenuItemToggledId int
+var signalCheckMenuItemToggledMap = make(map[int]CheckMenuItemSignalToggledCallback)
+var signalCheckMenuItemToggledLock sync.Mutex
 
 // CheckMenuItemSignalToggledCallback is a callback function for a 'toggled' signal emitted from a CheckMenuItem.
 type CheckMenuItemSignalToggledCallback func()
@@ -5729,9 +5729,9 @@ func CastToColorSelection(object *gobject.Object) *ColorSelection {
 	return ColorSelectionNewFromC(object.ToC())
 }
 
-var signalColorChangedId int
-var signalColorChangedMap = make(map[int]ColorSelectionSignalColorChangedCallback)
-var signalColorChangedLock sync.Mutex
+var signalColorSelectionColorChangedId int
+var signalColorSelectionColorChangedMap = make(map[int]ColorSelectionSignalColorChangedCallback)
+var signalColorSelectionColorChangedLock sync.Mutex
 
 // ColorSelectionSignalColorChangedCallback is a callback function for a 'color-changed' signal emitted from a ColorSelection.
 type ColorSelectionSignalColorChangedCallback func()
@@ -6177,36 +6177,36 @@ func CastToContainer(object *gobject.Object) *Container {
 	return ContainerNewFromC(object.ToC())
 }
 
-var signalAddId int
-var signalAddMap = make(map[int]ContainerSignalAddCallback)
-var signalAddLock sync.Mutex
+var signalContainerAddId int
+var signalContainerAddMap = make(map[int]ContainerSignalAddCallback)
+var signalContainerAddLock sync.Mutex
 
 // ContainerSignalAddCallback is a callback function for a 'add' signal emitted from a Container.
 type ContainerSignalAddCallback func(object *Widget)
 
 func Container_addHandler() {}
 
-var signalCheckResizeId int
-var signalCheckResizeMap = make(map[int]ContainerSignalCheckResizeCallback)
-var signalCheckResizeLock sync.Mutex
+var signalContainerCheckResizeId int
+var signalContainerCheckResizeMap = make(map[int]ContainerSignalCheckResizeCallback)
+var signalContainerCheckResizeLock sync.Mutex
 
 // ContainerSignalCheckResizeCallback is a callback function for a 'check-resize' signal emitted from a Container.
 type ContainerSignalCheckResizeCallback func()
 
 func Container_checkResizeHandler() {}
 
-var signalRemoveId int
-var signalRemoveMap = make(map[int]ContainerSignalRemoveCallback)
-var signalRemoveLock sync.Mutex
+var signalContainerRemoveId int
+var signalContainerRemoveMap = make(map[int]ContainerSignalRemoveCallback)
+var signalContainerRemoveLock sync.Mutex
 
 // ContainerSignalRemoveCallback is a callback function for a 'remove' signal emitted from a Container.
 type ContainerSignalRemoveCallback func(object *Widget)
 
 func Container_removeHandler() {}
 
-var signalSetFocusChildId int
-var signalSetFocusChildMap = make(map[int]ContainerSignalSetFocusChildCallback)
-var signalSetFocusChildLock sync.Mutex
+var signalContainerSetFocusChildId int
+var signalContainerSetFocusChildMap = make(map[int]ContainerSignalSetFocusChildCallback)
+var signalContainerSetFocusChildLock sync.Mutex
 
 // ContainerSignalSetFocusChildCallback is a callback function for a 'set-focus-child' signal emitted from a Container.
 type ContainerSignalSetFocusChildCallback func(object *Widget)
@@ -6579,9 +6579,9 @@ func CastToCssProvider(object *gobject.Object) *CssProvider {
 	return CssProviderNewFromC(object.ToC())
 }
 
-var signalParsingErrorId int
-var signalParsingErrorMap = make(map[int]CssProviderSignalParsingErrorCallback)
-var signalParsingErrorLock sync.Mutex
+var signalCssProviderParsingErrorId int
+var signalCssProviderParsingErrorMap = make(map[int]CssProviderSignalParsingErrorCallback)
+var signalCssProviderParsingErrorLock sync.Mutex
 
 // CssProviderSignalParsingErrorCallback is a callback function for a 'parsing-error' signal emitted from a CssProvider.
 type CssProviderSignalParsingErrorCallback func(section *CssSection, error *glib.Error)
@@ -6677,18 +6677,18 @@ func CastToDialog(object *gobject.Object) *Dialog {
 	return DialogNewFromC(object.ToC())
 }
 
-var signalCloseId int
-var signalCloseMap = make(map[int]DialogSignalCloseCallback)
-var signalCloseLock sync.Mutex
+var signalDialogCloseId int
+var signalDialogCloseMap = make(map[int]DialogSignalCloseCallback)
+var signalDialogCloseLock sync.Mutex
 
 // DialogSignalCloseCallback is a callback function for a 'close' signal emitted from a Dialog.
 type DialogSignalCloseCallback func()
 
 func Dialog_closeHandler() {}
 
-var signalResponseId int
-var signalResponseMap = make(map[int]DialogSignalResponseCallback)
-var signalResponseLock sync.Mutex
+var signalDialogResponseId int
+var signalDialogResponseMap = make(map[int]DialogSignalResponseCallback)
+var signalDialogResponseLock sync.Mutex
 
 // DialogSignalResponseCallback is a callback function for a 'response' signal emitted from a Dialog.
 type DialogSignalResponseCallback func(responseId int32)
@@ -6865,90 +6865,90 @@ func CastToEntry(object *gobject.Object) *Entry {
 	return EntryNewFromC(object.ToC())
 }
 
-var signalActivateId int
-var signalActivateMap = make(map[int]EntrySignalActivateCallback)
-var signalActivateLock sync.Mutex
+var signalEntryActivateId int
+var signalEntryActivateMap = make(map[int]EntrySignalActivateCallback)
+var signalEntryActivateLock sync.Mutex
 
 // EntrySignalActivateCallback is a callback function for a 'activate' signal emitted from a Entry.
 type EntrySignalActivateCallback func()
 
 func Entry_activateHandler() {}
 
-var signalBackspaceId int
-var signalBackspaceMap = make(map[int]EntrySignalBackspaceCallback)
-var signalBackspaceLock sync.Mutex
+var signalEntryBackspaceId int
+var signalEntryBackspaceMap = make(map[int]EntrySignalBackspaceCallback)
+var signalEntryBackspaceLock sync.Mutex
 
 // EntrySignalBackspaceCallback is a callback function for a 'backspace' signal emitted from a Entry.
 type EntrySignalBackspaceCallback func()
 
 func Entry_backspaceHandler() {}
 
-var signalCopyClipboardId int
-var signalCopyClipboardMap = make(map[int]EntrySignalCopyClipboardCallback)
-var signalCopyClipboardLock sync.Mutex
+var signalEntryCopyClipboardId int
+var signalEntryCopyClipboardMap = make(map[int]EntrySignalCopyClipboardCallback)
+var signalEntryCopyClipboardLock sync.Mutex
 
 // EntrySignalCopyClipboardCallback is a callback function for a 'copy-clipboard' signal emitted from a Entry.
 type EntrySignalCopyClipboardCallback func()
 
 func Entry_copyClipboardHandler() {}
 
-var signalCutClipboardId int
-var signalCutClipboardMap = make(map[int]EntrySignalCutClipboardCallback)
-var signalCutClipboardLock sync.Mutex
+var signalEntryCutClipboardId int
+var signalEntryCutClipboardMap = make(map[int]EntrySignalCutClipboardCallback)
+var signalEntryCutClipboardLock sync.Mutex
 
 // EntrySignalCutClipboardCallback is a callback function for a 'cut-clipboard' signal emitted from a Entry.
 type EntrySignalCutClipboardCallback func()
 
 func Entry_cutClipboardHandler() {}
 
-var signalDeleteFromCursorId int
-var signalDeleteFromCursorMap = make(map[int]EntrySignalDeleteFromCursorCallback)
-var signalDeleteFromCursorLock sync.Mutex
+var signalEntryDeleteFromCursorId int
+var signalEntryDeleteFromCursorMap = make(map[int]EntrySignalDeleteFromCursorCallback)
+var signalEntryDeleteFromCursorLock sync.Mutex
 
 // EntrySignalDeleteFromCursorCallback is a callback function for a 'delete-from-cursor' signal emitted from a Entry.
 type EntrySignalDeleteFromCursorCallback func(type_ DeleteType, count int32)
 
 func Entry_deleteFromCursorHandler() {}
 
-var signalInsertAtCursorId int
-var signalInsertAtCursorMap = make(map[int]EntrySignalInsertAtCursorCallback)
-var signalInsertAtCursorLock sync.Mutex
+var signalEntryInsertAtCursorId int
+var signalEntryInsertAtCursorMap = make(map[int]EntrySignalInsertAtCursorCallback)
+var signalEntryInsertAtCursorLock sync.Mutex
 
 // EntrySignalInsertAtCursorCallback is a callback function for a 'insert-at-cursor' signal emitted from a Entry.
 type EntrySignalInsertAtCursorCallback func(string string)
 
 func Entry_insertAtCursorHandler() {}
 
-var signalMoveCursorId int
-var signalMoveCursorMap = make(map[int]EntrySignalMoveCursorCallback)
-var signalMoveCursorLock sync.Mutex
+var signalEntryMoveCursorId int
+var signalEntryMoveCursorMap = make(map[int]EntrySignalMoveCursorCallback)
+var signalEntryMoveCursorLock sync.Mutex
 
 // EntrySignalMoveCursorCallback is a callback function for a 'move-cursor' signal emitted from a Entry.
 type EntrySignalMoveCursorCallback func(step MovementStep, count int32, extendSelection bool)
 
 func Entry_moveCursorHandler() {}
 
-var signalPasteClipboardId int
-var signalPasteClipboardMap = make(map[int]EntrySignalPasteClipboardCallback)
-var signalPasteClipboardLock sync.Mutex
+var signalEntryPasteClipboardId int
+var signalEntryPasteClipboardMap = make(map[int]EntrySignalPasteClipboardCallback)
+var signalEntryPasteClipboardLock sync.Mutex
 
 // EntrySignalPasteClipboardCallback is a callback function for a 'paste-clipboard' signal emitted from a Entry.
 type EntrySignalPasteClipboardCallback func()
 
 func Entry_pasteClipboardHandler() {}
 
-var signalPopulatePopupId int
-var signalPopulatePopupMap = make(map[int]EntrySignalPopulatePopupCallback)
-var signalPopulatePopupLock sync.Mutex
+var signalEntryPopulatePopupId int
+var signalEntryPopulatePopupMap = make(map[int]EntrySignalPopulatePopupCallback)
+var signalEntryPopulatePopupLock sync.Mutex
 
 // EntrySignalPopulatePopupCallback is a callback function for a 'populate-popup' signal emitted from a Entry.
 type EntrySignalPopulatePopupCallback func(widget *Widget)
 
 func Entry_populatePopupHandler() {}
 
-var signalToggleOverwriteId int
-var signalToggleOverwriteMap = make(map[int]EntrySignalToggleOverwriteCallback)
-var signalToggleOverwriteLock sync.Mutex
+var signalEntryToggleOverwriteId int
+var signalEntryToggleOverwriteMap = make(map[int]EntrySignalToggleOverwriteCallback)
+var signalEntryToggleOverwriteLock sync.Mutex
 
 // EntrySignalToggleOverwriteCallback is a callback function for a 'toggle-overwrite' signal emitted from a Entry.
 type EntrySignalToggleOverwriteCallback func()
@@ -7395,9 +7395,9 @@ func CastToExpander(object *gobject.Object) *Expander {
 	return ExpanderNewFromC(object.ToC())
 }
 
-var signalActivateId int
-var signalActivateMap = make(map[int]ExpanderSignalActivateCallback)
-var signalActivateLock sync.Mutex
+var signalExpanderActivateId int
+var signalExpanderActivateMap = make(map[int]ExpanderSignalActivateCallback)
+var signalExpanderActivateLock sync.Mutex
 
 // ExpanderSignalActivateCallback is a callback function for a 'activate' signal emitted from a Expander.
 type ExpanderSignalActivateCallback func()
@@ -7627,108 +7627,108 @@ func CastToFileChooserWidget(object *gobject.Object) *FileChooserWidget {
 	return FileChooserWidgetNewFromC(object.ToC())
 }
 
-var signalDesktopFolderId int
-var signalDesktopFolderMap = make(map[int]FileChooserWidgetSignalDesktopFolderCallback)
-var signalDesktopFolderLock sync.Mutex
+var signalFileChooserWidgetDesktopFolderId int
+var signalFileChooserWidgetDesktopFolderMap = make(map[int]FileChooserWidgetSignalDesktopFolderCallback)
+var signalFileChooserWidgetDesktopFolderLock sync.Mutex
 
 // FileChooserWidgetSignalDesktopFolderCallback is a callback function for a 'desktop-folder' signal emitted from a FileChooserWidget.
 type FileChooserWidgetSignalDesktopFolderCallback func()
 
 func FileChooserWidget_desktopFolderHandler() {}
 
-var signalDownFolderId int
-var signalDownFolderMap = make(map[int]FileChooserWidgetSignalDownFolderCallback)
-var signalDownFolderLock sync.Mutex
+var signalFileChooserWidgetDownFolderId int
+var signalFileChooserWidgetDownFolderMap = make(map[int]FileChooserWidgetSignalDownFolderCallback)
+var signalFileChooserWidgetDownFolderLock sync.Mutex
 
 // FileChooserWidgetSignalDownFolderCallback is a callback function for a 'down-folder' signal emitted from a FileChooserWidget.
 type FileChooserWidgetSignalDownFolderCallback func()
 
 func FileChooserWidget_downFolderHandler() {}
 
-var signalHomeFolderId int
-var signalHomeFolderMap = make(map[int]FileChooserWidgetSignalHomeFolderCallback)
-var signalHomeFolderLock sync.Mutex
+var signalFileChooserWidgetHomeFolderId int
+var signalFileChooserWidgetHomeFolderMap = make(map[int]FileChooserWidgetSignalHomeFolderCallback)
+var signalFileChooserWidgetHomeFolderLock sync.Mutex
 
 // FileChooserWidgetSignalHomeFolderCallback is a callback function for a 'home-folder' signal emitted from a FileChooserWidget.
 type FileChooserWidgetSignalHomeFolderCallback func()
 
 func FileChooserWidget_homeFolderHandler() {}
 
-var signalLocationPopupId int
-var signalLocationPopupMap = make(map[int]FileChooserWidgetSignalLocationPopupCallback)
-var signalLocationPopupLock sync.Mutex
+var signalFileChooserWidgetLocationPopupId int
+var signalFileChooserWidgetLocationPopupMap = make(map[int]FileChooserWidgetSignalLocationPopupCallback)
+var signalFileChooserWidgetLocationPopupLock sync.Mutex
 
 // FileChooserWidgetSignalLocationPopupCallback is a callback function for a 'location-popup' signal emitted from a FileChooserWidget.
 type FileChooserWidgetSignalLocationPopupCallback func(path string)
 
 func FileChooserWidget_locationPopupHandler() {}
 
-var signalLocationPopupOnPasteId int
-var signalLocationPopupOnPasteMap = make(map[int]FileChooserWidgetSignalLocationPopupOnPasteCallback)
-var signalLocationPopupOnPasteLock sync.Mutex
+var signalFileChooserWidgetLocationPopupOnPasteId int
+var signalFileChooserWidgetLocationPopupOnPasteMap = make(map[int]FileChooserWidgetSignalLocationPopupOnPasteCallback)
+var signalFileChooserWidgetLocationPopupOnPasteLock sync.Mutex
 
 // FileChooserWidgetSignalLocationPopupOnPasteCallback is a callback function for a 'location-popup-on-paste' signal emitted from a FileChooserWidget.
 type FileChooserWidgetSignalLocationPopupOnPasteCallback func()
 
 func FileChooserWidget_locationPopupOnPasteHandler() {}
 
-var signalLocationTogglePopupId int
-var signalLocationTogglePopupMap = make(map[int]FileChooserWidgetSignalLocationTogglePopupCallback)
-var signalLocationTogglePopupLock sync.Mutex
+var signalFileChooserWidgetLocationTogglePopupId int
+var signalFileChooserWidgetLocationTogglePopupMap = make(map[int]FileChooserWidgetSignalLocationTogglePopupCallback)
+var signalFileChooserWidgetLocationTogglePopupLock sync.Mutex
 
 // FileChooserWidgetSignalLocationTogglePopupCallback is a callback function for a 'location-toggle-popup' signal emitted from a FileChooserWidget.
 type FileChooserWidgetSignalLocationTogglePopupCallback func()
 
 func FileChooserWidget_locationTogglePopupHandler() {}
 
-var signalPlacesShortcutId int
-var signalPlacesShortcutMap = make(map[int]FileChooserWidgetSignalPlacesShortcutCallback)
-var signalPlacesShortcutLock sync.Mutex
+var signalFileChooserWidgetPlacesShortcutId int
+var signalFileChooserWidgetPlacesShortcutMap = make(map[int]FileChooserWidgetSignalPlacesShortcutCallback)
+var signalFileChooserWidgetPlacesShortcutLock sync.Mutex
 
 // FileChooserWidgetSignalPlacesShortcutCallback is a callback function for a 'places-shortcut' signal emitted from a FileChooserWidget.
 type FileChooserWidgetSignalPlacesShortcutCallback func()
 
 func FileChooserWidget_placesShortcutHandler() {}
 
-var signalQuickBookmarkId int
-var signalQuickBookmarkMap = make(map[int]FileChooserWidgetSignalQuickBookmarkCallback)
-var signalQuickBookmarkLock sync.Mutex
+var signalFileChooserWidgetQuickBookmarkId int
+var signalFileChooserWidgetQuickBookmarkMap = make(map[int]FileChooserWidgetSignalQuickBookmarkCallback)
+var signalFileChooserWidgetQuickBookmarkLock sync.Mutex
 
 // FileChooserWidgetSignalQuickBookmarkCallback is a callback function for a 'quick-bookmark' signal emitted from a FileChooserWidget.
 type FileChooserWidgetSignalQuickBookmarkCallback func(bookmarkIndex int32)
 
 func FileChooserWidget_quickBookmarkHandler() {}
 
-var signalRecentShortcutId int
-var signalRecentShortcutMap = make(map[int]FileChooserWidgetSignalRecentShortcutCallback)
-var signalRecentShortcutLock sync.Mutex
+var signalFileChooserWidgetRecentShortcutId int
+var signalFileChooserWidgetRecentShortcutMap = make(map[int]FileChooserWidgetSignalRecentShortcutCallback)
+var signalFileChooserWidgetRecentShortcutLock sync.Mutex
 
 // FileChooserWidgetSignalRecentShortcutCallback is a callback function for a 'recent-shortcut' signal emitted from a FileChooserWidget.
 type FileChooserWidgetSignalRecentShortcutCallback func()
 
 func FileChooserWidget_recentShortcutHandler() {}
 
-var signalSearchShortcutId int
-var signalSearchShortcutMap = make(map[int]FileChooserWidgetSignalSearchShortcutCallback)
-var signalSearchShortcutLock sync.Mutex
+var signalFileChooserWidgetSearchShortcutId int
+var signalFileChooserWidgetSearchShortcutMap = make(map[int]FileChooserWidgetSignalSearchShortcutCallback)
+var signalFileChooserWidgetSearchShortcutLock sync.Mutex
 
 // FileChooserWidgetSignalSearchShortcutCallback is a callback function for a 'search-shortcut' signal emitted from a FileChooserWidget.
 type FileChooserWidgetSignalSearchShortcutCallback func()
 
 func FileChooserWidget_searchShortcutHandler() {}
 
-var signalShowHiddenId int
-var signalShowHiddenMap = make(map[int]FileChooserWidgetSignalShowHiddenCallback)
-var signalShowHiddenLock sync.Mutex
+var signalFileChooserWidgetShowHiddenId int
+var signalFileChooserWidgetShowHiddenMap = make(map[int]FileChooserWidgetSignalShowHiddenCallback)
+var signalFileChooserWidgetShowHiddenLock sync.Mutex
 
 // FileChooserWidgetSignalShowHiddenCallback is a callback function for a 'show-hidden' signal emitted from a FileChooserWidget.
 type FileChooserWidgetSignalShowHiddenCallback func()
 
 func FileChooserWidget_showHiddenHandler() {}
 
-var signalUpFolderId int
-var signalUpFolderMap = make(map[int]FileChooserWidgetSignalUpFolderCallback)
-var signalUpFolderLock sync.Mutex
+var signalFileChooserWidgetUpFolderId int
+var signalFileChooserWidgetUpFolderMap = make(map[int]FileChooserWidgetSignalUpFolderCallback)
+var signalFileChooserWidgetUpFolderLock sync.Mutex
 
 // FileChooserWidgetSignalUpFolderCallback is a callback function for a 'up-folder' signal emitted from a FileChooserWidget.
 type FileChooserWidgetSignalUpFolderCallback func()
@@ -7905,63 +7905,63 @@ func CastToFlowBox(object *gobject.Object) *FlowBox {
 	return FlowBoxNewFromC(object.ToC())
 }
 
-var signalActivateCursorChildId int
-var signalActivateCursorChildMap = make(map[int]FlowBoxSignalActivateCursorChildCallback)
-var signalActivateCursorChildLock sync.Mutex
+var signalFlowBoxActivateCursorChildId int
+var signalFlowBoxActivateCursorChildMap = make(map[int]FlowBoxSignalActivateCursorChildCallback)
+var signalFlowBoxActivateCursorChildLock sync.Mutex
 
 // FlowBoxSignalActivateCursorChildCallback is a callback function for a 'activate-cursor-child' signal emitted from a FlowBox.
 type FlowBoxSignalActivateCursorChildCallback func()
 
 func FlowBox_activateCursorChildHandler() {}
 
-var signalChildActivatedId int
-var signalChildActivatedMap = make(map[int]FlowBoxSignalChildActivatedCallback)
-var signalChildActivatedLock sync.Mutex
+var signalFlowBoxChildActivatedId int
+var signalFlowBoxChildActivatedMap = make(map[int]FlowBoxSignalChildActivatedCallback)
+var signalFlowBoxChildActivatedLock sync.Mutex
 
 // FlowBoxSignalChildActivatedCallback is a callback function for a 'child-activated' signal emitted from a FlowBox.
 type FlowBoxSignalChildActivatedCallback func(child *FlowBoxChild)
 
 func FlowBox_childActivatedHandler() {}
 
-var signalMoveCursorId int
-var signalMoveCursorMap = make(map[int]FlowBoxSignalMoveCursorCallback)
-var signalMoveCursorLock sync.Mutex
+var signalFlowBoxMoveCursorId int
+var signalFlowBoxMoveCursorMap = make(map[int]FlowBoxSignalMoveCursorCallback)
+var signalFlowBoxMoveCursorLock sync.Mutex
 
 // FlowBoxSignalMoveCursorCallback is a callback function for a 'move-cursor' signal emitted from a FlowBox.
 type FlowBoxSignalMoveCursorCallback func(step MovementStep, count int32) bool
 
 func FlowBox_moveCursorHandler() {}
 
-var signalSelectAllId int
-var signalSelectAllMap = make(map[int]FlowBoxSignalSelectAllCallback)
-var signalSelectAllLock sync.Mutex
+var signalFlowBoxSelectAllId int
+var signalFlowBoxSelectAllMap = make(map[int]FlowBoxSignalSelectAllCallback)
+var signalFlowBoxSelectAllLock sync.Mutex
 
 // FlowBoxSignalSelectAllCallback is a callback function for a 'select-all' signal emitted from a FlowBox.
 type FlowBoxSignalSelectAllCallback func()
 
 func FlowBox_selectAllHandler() {}
 
-var signalSelectedChildrenChangedId int
-var signalSelectedChildrenChangedMap = make(map[int]FlowBoxSignalSelectedChildrenChangedCallback)
-var signalSelectedChildrenChangedLock sync.Mutex
+var signalFlowBoxSelectedChildrenChangedId int
+var signalFlowBoxSelectedChildrenChangedMap = make(map[int]FlowBoxSignalSelectedChildrenChangedCallback)
+var signalFlowBoxSelectedChildrenChangedLock sync.Mutex
 
 // FlowBoxSignalSelectedChildrenChangedCallback is a callback function for a 'selected-children-changed' signal emitted from a FlowBox.
 type FlowBoxSignalSelectedChildrenChangedCallback func()
 
 func FlowBox_selectedChildrenChangedHandler() {}
 
-var signalToggleCursorChildId int
-var signalToggleCursorChildMap = make(map[int]FlowBoxSignalToggleCursorChildCallback)
-var signalToggleCursorChildLock sync.Mutex
+var signalFlowBoxToggleCursorChildId int
+var signalFlowBoxToggleCursorChildMap = make(map[int]FlowBoxSignalToggleCursorChildCallback)
+var signalFlowBoxToggleCursorChildLock sync.Mutex
 
 // FlowBoxSignalToggleCursorChildCallback is a callback function for a 'toggle-cursor-child' signal emitted from a FlowBox.
 type FlowBoxSignalToggleCursorChildCallback func()
 
 func FlowBox_toggleCursorChildHandler() {}
 
-var signalUnselectAllId int
-var signalUnselectAllMap = make(map[int]FlowBoxSignalUnselectAllCallback)
-var signalUnselectAllLock sync.Mutex
+var signalFlowBoxUnselectAllId int
+var signalFlowBoxUnselectAllMap = make(map[int]FlowBoxSignalUnselectAllCallback)
+var signalFlowBoxUnselectAllLock sync.Mutex
 
 // FlowBoxSignalUnselectAllCallback is a callback function for a 'unselect-all' signal emitted from a FlowBox.
 type FlowBoxSignalUnselectAllCallback func()
@@ -8070,9 +8070,9 @@ func CastToFlowBoxChild(object *gobject.Object) *FlowBoxChild {
 	return FlowBoxChildNewFromC(object.ToC())
 }
 
-var signalActivateId int
-var signalActivateMap = make(map[int]FlowBoxChildSignalActivateCallback)
-var signalActivateLock sync.Mutex
+var signalFlowBoxChildActivateId int
+var signalFlowBoxChildActivateMap = make(map[int]FlowBoxChildSignalActivateCallback)
+var signalFlowBoxChildActivateLock sync.Mutex
 
 // FlowBoxChildSignalActivateCallback is a callback function for a 'activate' signal emitted from a FlowBoxChild.
 type FlowBoxChildSignalActivateCallback func()
@@ -9512,18 +9512,18 @@ func CastToHSV(object *gobject.Object) *HSV {
 	return HSVNewFromC(object.ToC())
 }
 
-var signalChangedId int
-var signalChangedMap = make(map[int]HSVSignalChangedCallback)
-var signalChangedLock sync.Mutex
+var signalHSVChangedId int
+var signalHSVChangedMap = make(map[int]HSVSignalChangedCallback)
+var signalHSVChangedLock sync.Mutex
 
 // HSVSignalChangedCallback is a callback function for a 'changed' signal emitted from a HSV.
 type HSVSignalChangedCallback func()
 
 func HSV_changedHandler() {}
 
-var signalMoveId int
-var signalMoveMap = make(map[int]HSVSignalMoveCallback)
-var signalMoveLock sync.Mutex
+var signalHSVMoveId int
+var signalHSVMoveMap = make(map[int]HSVSignalMoveCallback)
+var signalHSVMoveLock sync.Mutex
 
 // HSVSignalMoveCallback is a callback function for a 'move' signal emitted from a HSV.
 type HSVSignalMoveCallback func(object DirectionType)
@@ -9780,18 +9780,18 @@ func CastToHandleBox(object *gobject.Object) *HandleBox {
 	return HandleBoxNewFromC(object.ToC())
 }
 
-var signalChildAttachedId int
-var signalChildAttachedMap = make(map[int]HandleBoxSignalChildAttachedCallback)
-var signalChildAttachedLock sync.Mutex
+var signalHandleBoxChildAttachedId int
+var signalHandleBoxChildAttachedMap = make(map[int]HandleBoxSignalChildAttachedCallback)
+var signalHandleBoxChildAttachedLock sync.Mutex
 
 // HandleBoxSignalChildAttachedCallback is a callback function for a 'child-attached' signal emitted from a HandleBox.
 type HandleBoxSignalChildAttachedCallback func(widget *Widget)
 
 func HandleBox_childAttachedHandler() {}
 
-var signalChildDetachedId int
-var signalChildDetachedMap = make(map[int]HandleBoxSignalChildDetachedCallback)
-var signalChildDetachedLock sync.Mutex
+var signalHandleBoxChildDetachedId int
+var signalHandleBoxChildDetachedMap = make(map[int]HandleBoxSignalChildDetachedCallback)
+var signalHandleBoxChildDetachedLock sync.Mutex
 
 // HandleBoxSignalChildDetachedCallback is a callback function for a 'child-detached' signal emitted from a HandleBox.
 type HandleBoxSignalChildDetachedCallback func(widget *Widget)
@@ -9938,54 +9938,54 @@ func CastToIMContext(object *gobject.Object) *IMContext {
 	return IMContextNewFromC(object.ToC())
 }
 
-var signalCommitId int
-var signalCommitMap = make(map[int]IMContextSignalCommitCallback)
-var signalCommitLock sync.Mutex
+var signalIMContextCommitId int
+var signalIMContextCommitMap = make(map[int]IMContextSignalCommitCallback)
+var signalIMContextCommitLock sync.Mutex
 
 // IMContextSignalCommitCallback is a callback function for a 'commit' signal emitted from a IMContext.
 type IMContextSignalCommitCallback func(str string)
 
 func IMContext_commitHandler() {}
 
-var signalDeleteSurroundingId int
-var signalDeleteSurroundingMap = make(map[int]IMContextSignalDeleteSurroundingCallback)
-var signalDeleteSurroundingLock sync.Mutex
+var signalIMContextDeleteSurroundingId int
+var signalIMContextDeleteSurroundingMap = make(map[int]IMContextSignalDeleteSurroundingCallback)
+var signalIMContextDeleteSurroundingLock sync.Mutex
 
 // IMContextSignalDeleteSurroundingCallback is a callback function for a 'delete-surrounding' signal emitted from a IMContext.
 type IMContextSignalDeleteSurroundingCallback func(offset int32, nChars int32) bool
 
 func IMContext_deleteSurroundingHandler() {}
 
-var signalPreeditChangedId int
-var signalPreeditChangedMap = make(map[int]IMContextSignalPreeditChangedCallback)
-var signalPreeditChangedLock sync.Mutex
+var signalIMContextPreeditChangedId int
+var signalIMContextPreeditChangedMap = make(map[int]IMContextSignalPreeditChangedCallback)
+var signalIMContextPreeditChangedLock sync.Mutex
 
 // IMContextSignalPreeditChangedCallback is a callback function for a 'preedit-changed' signal emitted from a IMContext.
 type IMContextSignalPreeditChangedCallback func()
 
 func IMContext_preeditChangedHandler() {}
 
-var signalPreeditEndId int
-var signalPreeditEndMap = make(map[int]IMContextSignalPreeditEndCallback)
-var signalPreeditEndLock sync.Mutex
+var signalIMContextPreeditEndId int
+var signalIMContextPreeditEndMap = make(map[int]IMContextSignalPreeditEndCallback)
+var signalIMContextPreeditEndLock sync.Mutex
 
 // IMContextSignalPreeditEndCallback is a callback function for a 'preedit-end' signal emitted from a IMContext.
 type IMContextSignalPreeditEndCallback func()
 
 func IMContext_preeditEndHandler() {}
 
-var signalPreeditStartId int
-var signalPreeditStartMap = make(map[int]IMContextSignalPreeditStartCallback)
-var signalPreeditStartLock sync.Mutex
+var signalIMContextPreeditStartId int
+var signalIMContextPreeditStartMap = make(map[int]IMContextSignalPreeditStartCallback)
+var signalIMContextPreeditStartLock sync.Mutex
 
 // IMContextSignalPreeditStartCallback is a callback function for a 'preedit-start' signal emitted from a IMContext.
 type IMContextSignalPreeditStartCallback func()
 
 func IMContext_preeditStartHandler() {}
 
-var signalRetrieveSurroundingId int
-var signalRetrieveSurroundingMap = make(map[int]IMContextSignalRetrieveSurroundingCallback)
-var signalRetrieveSurroundingLock sync.Mutex
+var signalIMContextRetrieveSurroundingId int
+var signalIMContextRetrieveSurroundingMap = make(map[int]IMContextSignalRetrieveSurroundingCallback)
+var signalIMContextRetrieveSurroundingLock sync.Mutex
 
 // IMContextSignalRetrieveSurroundingCallback is a callback function for a 'retrieve-surrounding' signal emitted from a IMContext.
 type IMContextSignalRetrieveSurroundingCallback func() bool
@@ -10341,9 +10341,9 @@ func CastToIconTheme(object *gobject.Object) *IconTheme {
 	return IconThemeNewFromC(object.ToC())
 }
 
-var signalChangedId int
-var signalChangedMap = make(map[int]IconThemeSignalChangedCallback)
-var signalChangedLock sync.Mutex
+var signalIconThemeChangedId int
+var signalIconThemeChangedMap = make(map[int]IconThemeSignalChangedCallback)
+var signalIconThemeChangedLock sync.Mutex
 
 // IconThemeSignalChangedCallback is a callback function for a 'changed' signal emitted from a IconTheme.
 type IconThemeSignalChangedCallback func()
@@ -10399,72 +10399,72 @@ func CastToIconView(object *gobject.Object) *IconView {
 	return IconViewNewFromC(object.ToC())
 }
 
-var signalActivateCursorItemId int
-var signalActivateCursorItemMap = make(map[int]IconViewSignalActivateCursorItemCallback)
-var signalActivateCursorItemLock sync.Mutex
+var signalIconViewActivateCursorItemId int
+var signalIconViewActivateCursorItemMap = make(map[int]IconViewSignalActivateCursorItemCallback)
+var signalIconViewActivateCursorItemLock sync.Mutex
 
 // IconViewSignalActivateCursorItemCallback is a callback function for a 'activate-cursor-item' signal emitted from a IconView.
 type IconViewSignalActivateCursorItemCallback func() bool
 
 func IconView_activateCursorItemHandler() {}
 
-var signalItemActivatedId int
-var signalItemActivatedMap = make(map[int]IconViewSignalItemActivatedCallback)
-var signalItemActivatedLock sync.Mutex
+var signalIconViewItemActivatedId int
+var signalIconViewItemActivatedMap = make(map[int]IconViewSignalItemActivatedCallback)
+var signalIconViewItemActivatedLock sync.Mutex
 
 // IconViewSignalItemActivatedCallback is a callback function for a 'item-activated' signal emitted from a IconView.
 type IconViewSignalItemActivatedCallback func(path *TreePath)
 
 func IconView_itemActivatedHandler() {}
 
-var signalMoveCursorId int
-var signalMoveCursorMap = make(map[int]IconViewSignalMoveCursorCallback)
-var signalMoveCursorLock sync.Mutex
+var signalIconViewMoveCursorId int
+var signalIconViewMoveCursorMap = make(map[int]IconViewSignalMoveCursorCallback)
+var signalIconViewMoveCursorLock sync.Mutex
 
 // IconViewSignalMoveCursorCallback is a callback function for a 'move-cursor' signal emitted from a IconView.
 type IconViewSignalMoveCursorCallback func(step MovementStep, count int32) bool
 
 func IconView_moveCursorHandler() {}
 
-var signalSelectAllId int
-var signalSelectAllMap = make(map[int]IconViewSignalSelectAllCallback)
-var signalSelectAllLock sync.Mutex
+var signalIconViewSelectAllId int
+var signalIconViewSelectAllMap = make(map[int]IconViewSignalSelectAllCallback)
+var signalIconViewSelectAllLock sync.Mutex
 
 // IconViewSignalSelectAllCallback is a callback function for a 'select-all' signal emitted from a IconView.
 type IconViewSignalSelectAllCallback func()
 
 func IconView_selectAllHandler() {}
 
-var signalSelectCursorItemId int
-var signalSelectCursorItemMap = make(map[int]IconViewSignalSelectCursorItemCallback)
-var signalSelectCursorItemLock sync.Mutex
+var signalIconViewSelectCursorItemId int
+var signalIconViewSelectCursorItemMap = make(map[int]IconViewSignalSelectCursorItemCallback)
+var signalIconViewSelectCursorItemLock sync.Mutex
 
 // IconViewSignalSelectCursorItemCallback is a callback function for a 'select-cursor-item' signal emitted from a IconView.
 type IconViewSignalSelectCursorItemCallback func()
 
 func IconView_selectCursorItemHandler() {}
 
-var signalSelectionChangedId int
-var signalSelectionChangedMap = make(map[int]IconViewSignalSelectionChangedCallback)
-var signalSelectionChangedLock sync.Mutex
+var signalIconViewSelectionChangedId int
+var signalIconViewSelectionChangedMap = make(map[int]IconViewSignalSelectionChangedCallback)
+var signalIconViewSelectionChangedLock sync.Mutex
 
 // IconViewSignalSelectionChangedCallback is a callback function for a 'selection-changed' signal emitted from a IconView.
 type IconViewSignalSelectionChangedCallback func()
 
 func IconView_selectionChangedHandler() {}
 
-var signalToggleCursorItemId int
-var signalToggleCursorItemMap = make(map[int]IconViewSignalToggleCursorItemCallback)
-var signalToggleCursorItemLock sync.Mutex
+var signalIconViewToggleCursorItemId int
+var signalIconViewToggleCursorItemMap = make(map[int]IconViewSignalToggleCursorItemCallback)
+var signalIconViewToggleCursorItemLock sync.Mutex
 
 // IconViewSignalToggleCursorItemCallback is a callback function for a 'toggle-cursor-item' signal emitted from a IconView.
 type IconViewSignalToggleCursorItemCallback func()
 
 func IconView_toggleCursorItemHandler() {}
 
-var signalUnselectAllId int
-var signalUnselectAllMap = make(map[int]IconViewSignalUnselectAllCallback)
-var signalUnselectAllLock sync.Mutex
+var signalIconViewUnselectAllId int
+var signalIconViewUnselectAllMap = make(map[int]IconViewSignalUnselectAllCallback)
+var signalIconViewUnselectAllLock sync.Mutex
 
 // IconViewSignalUnselectAllCallback is a callback function for a 'unselect-all' signal emitted from a IconView.
 type IconViewSignalUnselectAllCallback func()
@@ -11057,27 +11057,27 @@ func CastToLabel(object *gobject.Object) *Label {
 	return LabelNewFromC(object.ToC())
 }
 
-var signalCopyClipboardId int
-var signalCopyClipboardMap = make(map[int]LabelSignalCopyClipboardCallback)
-var signalCopyClipboardLock sync.Mutex
+var signalLabelCopyClipboardId int
+var signalLabelCopyClipboardMap = make(map[int]LabelSignalCopyClipboardCallback)
+var signalLabelCopyClipboardLock sync.Mutex
 
 // LabelSignalCopyClipboardCallback is a callback function for a 'copy-clipboard' signal emitted from a Label.
 type LabelSignalCopyClipboardCallback func()
 
 func Label_copyClipboardHandler() {}
 
-var signalMoveCursorId int
-var signalMoveCursorMap = make(map[int]LabelSignalMoveCursorCallback)
-var signalMoveCursorLock sync.Mutex
+var signalLabelMoveCursorId int
+var signalLabelMoveCursorMap = make(map[int]LabelSignalMoveCursorCallback)
+var signalLabelMoveCursorLock sync.Mutex
 
 // LabelSignalMoveCursorCallback is a callback function for a 'move-cursor' signal emitted from a Label.
 type LabelSignalMoveCursorCallback func(step MovementStep, count int32, extendSelection bool)
 
 func Label_moveCursorHandler() {}
 
-var signalPopulatePopupId int
-var signalPopulatePopupMap = make(map[int]LabelSignalPopulatePopupCallback)
-var signalPopulatePopupLock sync.Mutex
+var signalLabelPopulatePopupId int
+var signalLabelPopulatePopupMap = make(map[int]LabelSignalPopulatePopupCallback)
+var signalLabelPopulatePopupLock sync.Mutex
 
 // LabelSignalPopulatePopupCallback is a callback function for a 'populate-popup' signal emitted from a Label.
 type LabelSignalPopulatePopupCallback func(menu *Menu)
@@ -11701,9 +11701,9 @@ func CastToLinkButton(object *gobject.Object) *LinkButton {
 	return LinkButtonNewFromC(object.ToC())
 }
 
-var signalActivateLinkId int
-var signalActivateLinkMap = make(map[int]LinkButtonSignalActivateLinkCallback)
-var signalActivateLinkLock sync.Mutex
+var signalLinkButtonActivateLinkId int
+var signalLinkButtonActivateLinkMap = make(map[int]LinkButtonSignalActivateLinkCallback)
+var signalLinkButtonActivateLinkLock sync.Mutex
 
 // LinkButtonSignalActivateLinkCallback is a callback function for a 'activate-link' signal emitted from a LinkButton.
 type LinkButtonSignalActivateLinkCallback func() bool
@@ -11812,27 +11812,27 @@ func CastToListBox(object *gobject.Object) *ListBox {
 	return ListBoxNewFromC(object.ToC())
 }
 
-var signalActivateCursorRowId int
-var signalActivateCursorRowMap = make(map[int]ListBoxSignalActivateCursorRowCallback)
-var signalActivateCursorRowLock sync.Mutex
+var signalListBoxActivateCursorRowId int
+var signalListBoxActivateCursorRowMap = make(map[int]ListBoxSignalActivateCursorRowCallback)
+var signalListBoxActivateCursorRowLock sync.Mutex
 
 // ListBoxSignalActivateCursorRowCallback is a callback function for a 'activate-cursor-row' signal emitted from a ListBox.
 type ListBoxSignalActivateCursorRowCallback func()
 
 func ListBox_activateCursorRowHandler() {}
 
-var signalMoveCursorId int
-var signalMoveCursorMap = make(map[int]ListBoxSignalMoveCursorCallback)
-var signalMoveCursorLock sync.Mutex
+var signalListBoxMoveCursorId int
+var signalListBoxMoveCursorMap = make(map[int]ListBoxSignalMoveCursorCallback)
+var signalListBoxMoveCursorLock sync.Mutex
 
 // ListBoxSignalMoveCursorCallback is a callback function for a 'move-cursor' signal emitted from a ListBox.
 type ListBoxSignalMoveCursorCallback func(object MovementStep, p0 int32)
 
 func ListBox_moveCursorHandler() {}
 
-var signalToggleCursorRowId int
-var signalToggleCursorRowMap = make(map[int]ListBoxSignalToggleCursorRowCallback)
-var signalToggleCursorRowLock sync.Mutex
+var signalListBoxToggleCursorRowId int
+var signalListBoxToggleCursorRowMap = make(map[int]ListBoxSignalToggleCursorRowCallback)
+var signalListBoxToggleCursorRowLock sync.Mutex
 
 // ListBoxSignalToggleCursorRowCallback is a callback function for a 'toggle-cursor-row' signal emitted from a ListBox.
 type ListBoxSignalToggleCursorRowCallback func()
@@ -12291,9 +12291,9 @@ func CastToMenu(object *gobject.Object) *Menu {
 	return MenuNewFromC(object.ToC())
 }
 
-var signalMoveScrollId int
-var signalMoveScrollMap = make(map[int]MenuSignalMoveScrollCallback)
-var signalMoveScrollLock sync.Mutex
+var signalMenuMoveScrollId int
+var signalMenuMoveScrollMap = make(map[int]MenuSignalMoveScrollCallback)
+var signalMenuMoveScrollLock sync.Mutex
 
 // MenuSignalMoveScrollCallback is a callback function for a 'move-scroll' signal emitted from a Menu.
 type MenuSignalMoveScrollCallback func(scrollType ScrollType)
@@ -12725,54 +12725,54 @@ func CastToMenuItem(object *gobject.Object) *MenuItem {
 	return MenuItemNewFromC(object.ToC())
 }
 
-var signalActivateId int
-var signalActivateMap = make(map[int]MenuItemSignalActivateCallback)
-var signalActivateLock sync.Mutex
+var signalMenuItemActivateId int
+var signalMenuItemActivateMap = make(map[int]MenuItemSignalActivateCallback)
+var signalMenuItemActivateLock sync.Mutex
 
 // MenuItemSignalActivateCallback is a callback function for a 'activate' signal emitted from a MenuItem.
 type MenuItemSignalActivateCallback func()
 
 func MenuItem_activateHandler() {}
 
-var signalActivateItemId int
-var signalActivateItemMap = make(map[int]MenuItemSignalActivateItemCallback)
-var signalActivateItemLock sync.Mutex
+var signalMenuItemActivateItemId int
+var signalMenuItemActivateItemMap = make(map[int]MenuItemSignalActivateItemCallback)
+var signalMenuItemActivateItemLock sync.Mutex
 
 // MenuItemSignalActivateItemCallback is a callback function for a 'activate-item' signal emitted from a MenuItem.
 type MenuItemSignalActivateItemCallback func()
 
 func MenuItem_activateItemHandler() {}
 
-var signalDeselectId int
-var signalDeselectMap = make(map[int]MenuItemSignalDeselectCallback)
-var signalDeselectLock sync.Mutex
+var signalMenuItemDeselectId int
+var signalMenuItemDeselectMap = make(map[int]MenuItemSignalDeselectCallback)
+var signalMenuItemDeselectLock sync.Mutex
 
 // MenuItemSignalDeselectCallback is a callback function for a 'deselect' signal emitted from a MenuItem.
 type MenuItemSignalDeselectCallback func()
 
 func MenuItem_deselectHandler() {}
 
-var signalSelectId int
-var signalSelectMap = make(map[int]MenuItemSignalSelectCallback)
-var signalSelectLock sync.Mutex
+var signalMenuItemSelectId int
+var signalMenuItemSelectMap = make(map[int]MenuItemSignalSelectCallback)
+var signalMenuItemSelectLock sync.Mutex
 
 // MenuItemSignalSelectCallback is a callback function for a 'select' signal emitted from a MenuItem.
 type MenuItemSignalSelectCallback func()
 
 func MenuItem_selectHandler() {}
 
-var signalToggleSizeAllocateId int
-var signalToggleSizeAllocateMap = make(map[int]MenuItemSignalToggleSizeAllocateCallback)
-var signalToggleSizeAllocateLock sync.Mutex
+var signalMenuItemToggleSizeAllocateId int
+var signalMenuItemToggleSizeAllocateMap = make(map[int]MenuItemSignalToggleSizeAllocateCallback)
+var signalMenuItemToggleSizeAllocateLock sync.Mutex
 
 // MenuItemSignalToggleSizeAllocateCallback is a callback function for a 'toggle-size-allocate' signal emitted from a MenuItem.
 type MenuItemSignalToggleSizeAllocateCallback func(object int32)
 
 func MenuItem_toggleSizeAllocateHandler() {}
 
-var signalToggleSizeRequestId int
-var signalToggleSizeRequestMap = make(map[int]MenuItemSignalToggleSizeRequestCallback)
-var signalToggleSizeRequestLock sync.Mutex
+var signalMenuItemToggleSizeRequestId int
+var signalMenuItemToggleSizeRequestMap = make(map[int]MenuItemSignalToggleSizeRequestCallback)
+var signalMenuItemToggleSizeRequestLock sync.Mutex
 
 // MenuItemSignalToggleSizeRequestCallback is a callback function for a 'toggle-size-request' signal emitted from a MenuItem.
 type MenuItemSignalToggleSizeRequestCallback func(object uintptr)
@@ -12991,54 +12991,54 @@ func CastToMenuShell(object *gobject.Object) *MenuShell {
 	return MenuShellNewFromC(object.ToC())
 }
 
-var signalActivateCurrentId int
-var signalActivateCurrentMap = make(map[int]MenuShellSignalActivateCurrentCallback)
-var signalActivateCurrentLock sync.Mutex
+var signalMenuShellActivateCurrentId int
+var signalMenuShellActivateCurrentMap = make(map[int]MenuShellSignalActivateCurrentCallback)
+var signalMenuShellActivateCurrentLock sync.Mutex
 
 // MenuShellSignalActivateCurrentCallback is a callback function for a 'activate-current' signal emitted from a MenuShell.
 type MenuShellSignalActivateCurrentCallback func(forceHide bool)
 
 func MenuShell_activateCurrentHandler() {}
 
-var signalCancelId int
-var signalCancelMap = make(map[int]MenuShellSignalCancelCallback)
-var signalCancelLock sync.Mutex
+var signalMenuShellCancelId int
+var signalMenuShellCancelMap = make(map[int]MenuShellSignalCancelCallback)
+var signalMenuShellCancelLock sync.Mutex
 
 // MenuShellSignalCancelCallback is a callback function for a 'cancel' signal emitted from a MenuShell.
 type MenuShellSignalCancelCallback func()
 
 func MenuShell_cancelHandler() {}
 
-var signalCycleFocusId int
-var signalCycleFocusMap = make(map[int]MenuShellSignalCycleFocusCallback)
-var signalCycleFocusLock sync.Mutex
+var signalMenuShellCycleFocusId int
+var signalMenuShellCycleFocusMap = make(map[int]MenuShellSignalCycleFocusCallback)
+var signalMenuShellCycleFocusLock sync.Mutex
 
 // MenuShellSignalCycleFocusCallback is a callback function for a 'cycle-focus' signal emitted from a MenuShell.
 type MenuShellSignalCycleFocusCallback func(direction DirectionType)
 
 func MenuShell_cycleFocusHandler() {}
 
-var signalDeactivateId int
-var signalDeactivateMap = make(map[int]MenuShellSignalDeactivateCallback)
-var signalDeactivateLock sync.Mutex
+var signalMenuShellDeactivateId int
+var signalMenuShellDeactivateMap = make(map[int]MenuShellSignalDeactivateCallback)
+var signalMenuShellDeactivateLock sync.Mutex
 
 // MenuShellSignalDeactivateCallback is a callback function for a 'deactivate' signal emitted from a MenuShell.
 type MenuShellSignalDeactivateCallback func()
 
 func MenuShell_deactivateHandler() {}
 
-var signalMoveCurrentId int
-var signalMoveCurrentMap = make(map[int]MenuShellSignalMoveCurrentCallback)
-var signalMoveCurrentLock sync.Mutex
+var signalMenuShellMoveCurrentId int
+var signalMenuShellMoveCurrentMap = make(map[int]MenuShellSignalMoveCurrentCallback)
+var signalMenuShellMoveCurrentLock sync.Mutex
 
 // MenuShellSignalMoveCurrentCallback is a callback function for a 'move-current' signal emitted from a MenuShell.
 type MenuShellSignalMoveCurrentCallback func(direction MenuDirectionType)
 
 func MenuShell_moveCurrentHandler() {}
 
-var signalSelectionDoneId int
-var signalSelectionDoneMap = make(map[int]MenuShellSignalSelectionDoneCallback)
-var signalSelectionDoneLock sync.Mutex
+var signalMenuShellSelectionDoneId int
+var signalMenuShellSelectionDoneMap = make(map[int]MenuShellSignalSelectionDoneCallback)
+var signalMenuShellSelectionDoneLock sync.Mutex
 
 // MenuShellSignalSelectionDoneCallback is a callback function for a 'selection-done' signal emitted from a MenuShell.
 type MenuShellSignalSelectionDoneCallback func()
@@ -13222,9 +13222,9 @@ func CastToMenuToolButton(object *gobject.Object) *MenuToolButton {
 	return MenuToolButtonNewFromC(object.ToC())
 }
 
-var signalShowMenuId int
-var signalShowMenuMap = make(map[int]MenuToolButtonSignalShowMenuCallback)
-var signalShowMenuLock sync.Mutex
+var signalMenuToolButtonShowMenuId int
+var signalMenuToolButtonShowMenuMap = make(map[int]MenuToolButtonSignalShowMenuCallback)
+var signalMenuToolButtonShowMenuLock sync.Mutex
 
 // MenuToolButtonSignalShowMenuCallback is a callback function for a 'show-menu' signal emitted from a MenuToolButton.
 type MenuToolButtonSignalShowMenuCallback func()
@@ -13540,54 +13540,54 @@ func CastToNotebook(object *gobject.Object) *Notebook {
 	return NotebookNewFromC(object.ToC())
 }
 
-var signalChangeCurrentPageId int
-var signalChangeCurrentPageMap = make(map[int]NotebookSignalChangeCurrentPageCallback)
-var signalChangeCurrentPageLock sync.Mutex
+var signalNotebookChangeCurrentPageId int
+var signalNotebookChangeCurrentPageMap = make(map[int]NotebookSignalChangeCurrentPageCallback)
+var signalNotebookChangeCurrentPageLock sync.Mutex
 
 // NotebookSignalChangeCurrentPageCallback is a callback function for a 'change-current-page' signal emitted from a Notebook.
 type NotebookSignalChangeCurrentPageCallback func(object int32) bool
 
 func Notebook_changeCurrentPageHandler() {}
 
-var signalFocusTabId int
-var signalFocusTabMap = make(map[int]NotebookSignalFocusTabCallback)
-var signalFocusTabLock sync.Mutex
+var signalNotebookFocusTabId int
+var signalNotebookFocusTabMap = make(map[int]NotebookSignalFocusTabCallback)
+var signalNotebookFocusTabLock sync.Mutex
 
 // NotebookSignalFocusTabCallback is a callback function for a 'focus-tab' signal emitted from a Notebook.
 type NotebookSignalFocusTabCallback func(object NotebookTab) bool
 
 func Notebook_focusTabHandler() {}
 
-var signalMoveFocusOutId int
-var signalMoveFocusOutMap = make(map[int]NotebookSignalMoveFocusOutCallback)
-var signalMoveFocusOutLock sync.Mutex
+var signalNotebookMoveFocusOutId int
+var signalNotebookMoveFocusOutMap = make(map[int]NotebookSignalMoveFocusOutCallback)
+var signalNotebookMoveFocusOutLock sync.Mutex
 
 // NotebookSignalMoveFocusOutCallback is a callback function for a 'move-focus-out' signal emitted from a Notebook.
 type NotebookSignalMoveFocusOutCallback func(object DirectionType)
 
 func Notebook_moveFocusOutHandler() {}
 
-var signalReorderTabId int
-var signalReorderTabMap = make(map[int]NotebookSignalReorderTabCallback)
-var signalReorderTabLock sync.Mutex
+var signalNotebookReorderTabId int
+var signalNotebookReorderTabMap = make(map[int]NotebookSignalReorderTabCallback)
+var signalNotebookReorderTabLock sync.Mutex
 
 // NotebookSignalReorderTabCallback is a callback function for a 'reorder-tab' signal emitted from a Notebook.
 type NotebookSignalReorderTabCallback func(object DirectionType, p0 bool) bool
 
 func Notebook_reorderTabHandler() {}
 
-var signalSelectPageId int
-var signalSelectPageMap = make(map[int]NotebookSignalSelectPageCallback)
-var signalSelectPageLock sync.Mutex
+var signalNotebookSelectPageId int
+var signalNotebookSelectPageMap = make(map[int]NotebookSignalSelectPageCallback)
+var signalNotebookSelectPageLock sync.Mutex
 
 // NotebookSignalSelectPageCallback is a callback function for a 'select-page' signal emitted from a Notebook.
 type NotebookSignalSelectPageCallback func(object bool) bool
 
 func Notebook_selectPageHandler() {}
 
-var signalSwitchPageId int
-var signalSwitchPageMap = make(map[int]NotebookSignalSwitchPageCallback)
-var signalSwitchPageLock sync.Mutex
+var signalNotebookSwitchPageId int
+var signalNotebookSwitchPageMap = make(map[int]NotebookSignalSwitchPageCallback)
+var signalNotebookSwitchPageLock sync.Mutex
 
 // NotebookSignalSwitchPageCallback is a callback function for a 'switch-page' signal emitted from a Notebook.
 type NotebookSignalSwitchPageCallback func(page *Widget, pageNum uint32)
@@ -14445,9 +14445,9 @@ func CastToPlacesSidebar(object *gobject.Object) *PlacesSidebar {
 
 // Unsupported signal : unsupported parameter selected_item : no type generator for Gio.File,
 
-var signalShowConnectToServerId int
-var signalShowConnectToServerMap = make(map[int]PlacesSidebarSignalShowConnectToServerCallback)
-var signalShowConnectToServerLock sync.Mutex
+var signalPlacesSidebarShowConnectToServerId int
+var signalPlacesSidebarShowConnectToServerMap = make(map[int]PlacesSidebarSignalShowConnectToServerCallback)
+var signalPlacesSidebarShowConnectToServerLock sync.Mutex
 
 // PlacesSidebarSignalShowConnectToServerCallback is a callback function for a 'show-connect-to-server' signal emitted from a PlacesSidebar.
 type PlacesSidebarSignalShowConnectToServerCallback func()
@@ -14518,9 +14518,9 @@ func CastToPopover(object *gobject.Object) *Popover {
 	return PopoverNewFromC(object.ToC())
 }
 
-var signalClosedId int
-var signalClosedMap = make(map[int]PopoverSignalClosedCallback)
-var signalClosedLock sync.Mutex
+var signalPopoverClosedId int
+var signalPopoverClosedMap = make(map[int]PopoverSignalClosedCallback)
+var signalPopoverClosedLock sync.Mutex
 
 // PopoverSignalClosedCallback is a callback function for a 'closed' signal emitted from a Popover.
 type PopoverSignalClosedCallback func()
@@ -15242,9 +15242,9 @@ func CastToRadioMenuItem(object *gobject.Object) *RadioMenuItem {
 	return RadioMenuItemNewFromC(object.ToC())
 }
 
-var signalGroupChangedId int
-var signalGroupChangedMap = make(map[int]RadioMenuItemSignalGroupChangedCallback)
-var signalGroupChangedLock sync.Mutex
+var signalRadioMenuItemGroupChangedId int
+var signalRadioMenuItemGroupChangedMap = make(map[int]RadioMenuItemSignalGroupChangedCallback)
+var signalRadioMenuItemGroupChangedLock sync.Mutex
 
 // RadioMenuItemSignalGroupChangedCallback is a callback function for a 'group-changed' signal emitted from a RadioMenuItem.
 type RadioMenuItemSignalGroupChangedCallback func()
@@ -15475,27 +15475,27 @@ func CastToRange(object *gobject.Object) *Range {
 	return RangeNewFromC(object.ToC())
 }
 
-var signalAdjustBoundsId int
-var signalAdjustBoundsMap = make(map[int]RangeSignalAdjustBoundsCallback)
-var signalAdjustBoundsLock sync.Mutex
+var signalRangeAdjustBoundsId int
+var signalRangeAdjustBoundsMap = make(map[int]RangeSignalAdjustBoundsCallback)
+var signalRangeAdjustBoundsLock sync.Mutex
 
 // RangeSignalAdjustBoundsCallback is a callback function for a 'adjust-bounds' signal emitted from a Range.
 type RangeSignalAdjustBoundsCallback func(value float64)
 
 func Range_adjustBoundsHandler() {}
 
-var signalMoveSliderId int
-var signalMoveSliderMap = make(map[int]RangeSignalMoveSliderCallback)
-var signalMoveSliderLock sync.Mutex
+var signalRangeMoveSliderId int
+var signalRangeMoveSliderMap = make(map[int]RangeSignalMoveSliderCallback)
+var signalRangeMoveSliderLock sync.Mutex
 
 // RangeSignalMoveSliderCallback is a callback function for a 'move-slider' signal emitted from a Range.
 type RangeSignalMoveSliderCallback func(step ScrollType)
 
 func Range_moveSliderHandler() {}
 
-var signalValueChangedId int
-var signalValueChangedMap = make(map[int]RangeSignalValueChangedCallback)
-var signalValueChangedLock sync.Mutex
+var signalRangeValueChangedId int
+var signalRangeValueChangedMap = make(map[int]RangeSignalValueChangedCallback)
+var signalRangeValueChangedLock sync.Mutex
 
 // RangeSignalValueChangedCallback is a callback function for a 'value-changed' signal emitted from a Range.
 type RangeSignalValueChangedCallback func()
@@ -16107,9 +16107,9 @@ func CastToScale(object *gobject.Object) *Scale {
 	return ScaleNewFromC(object.ToC())
 }
 
-var signalFormatValueId int
-var signalFormatValueMap = make(map[int]ScaleSignalFormatValueCallback)
-var signalFormatValueLock sync.Mutex
+var signalScaleFormatValueId int
+var signalScaleFormatValueMap = make(map[int]ScaleSignalFormatValueCallback)
+var signalScaleFormatValueLock sync.Mutex
 
 // ScaleSignalFormatValueCallback is a callback function for a 'format-value' signal emitted from a Scale.
 type ScaleSignalFormatValueCallback func(value float64) string
@@ -16434,18 +16434,18 @@ func CastToScrolledWindow(object *gobject.Object) *ScrolledWindow {
 	return ScrolledWindowNewFromC(object.ToC())
 }
 
-var signalMoveFocusOutId int
-var signalMoveFocusOutMap = make(map[int]ScrolledWindowSignalMoveFocusOutCallback)
-var signalMoveFocusOutLock sync.Mutex
+var signalScrolledWindowMoveFocusOutId int
+var signalScrolledWindowMoveFocusOutMap = make(map[int]ScrolledWindowSignalMoveFocusOutCallback)
+var signalScrolledWindowMoveFocusOutLock sync.Mutex
 
 // ScrolledWindowSignalMoveFocusOutCallback is a callback function for a 'move-focus-out' signal emitted from a ScrolledWindow.
 type ScrolledWindowSignalMoveFocusOutCallback func(directionType DirectionType)
 
 func ScrolledWindow_moveFocusOutHandler() {}
 
-var signalScrollChildId int
-var signalScrollChildMap = make(map[int]ScrolledWindowSignalScrollChildCallback)
-var signalScrollChildLock sync.Mutex
+var signalScrolledWindowScrollChildId int
+var signalScrolledWindowScrollChildMap = make(map[int]ScrolledWindowSignalScrollChildCallback)
+var signalScrolledWindowScrollChildLock sync.Mutex
 
 // ScrolledWindowSignalScrollChildCallback is a callback function for a 'scroll-child' signal emitted from a ScrolledWindow.
 type ScrolledWindowSignalScrollChildCallback func(scroll ScrollType, horizontal bool) bool
@@ -16965,27 +16965,27 @@ func (recv *Settings) SetStringProperty(name string, vString string, origin stri
 	return
 }
 
-var signalChangeCurrentPageId int
-var signalChangeCurrentPageMap = make(map[int]ShortcutsSectionSignalChangeCurrentPageCallback)
-var signalChangeCurrentPageLock sync.Mutex
+var signalShortcutsSectionChangeCurrentPageId int
+var signalShortcutsSectionChangeCurrentPageMap = make(map[int]ShortcutsSectionSignalChangeCurrentPageCallback)
+var signalShortcutsSectionChangeCurrentPageLock sync.Mutex
 
 // ShortcutsSectionSignalChangeCurrentPageCallback is a callback function for a 'change-current-page' signal emitted from a ShortcutsSection.
 type ShortcutsSectionSignalChangeCurrentPageCallback func(object int32) bool
 
 func ShortcutsSection_changeCurrentPageHandler() {}
 
-var signalCloseId int
-var signalCloseMap = make(map[int]ShortcutsWindowSignalCloseCallback)
-var signalCloseLock sync.Mutex
+var signalShortcutsWindowCloseId int
+var signalShortcutsWindowCloseMap = make(map[int]ShortcutsWindowSignalCloseCallback)
+var signalShortcutsWindowCloseLock sync.Mutex
 
 // ShortcutsWindowSignalCloseCallback is a callback function for a 'close' signal emitted from a ShortcutsWindow.
 type ShortcutsWindowSignalCloseCallback func()
 
 func ShortcutsWindow_closeHandler() {}
 
-var signalSearchId int
-var signalSearchMap = make(map[int]ShortcutsWindowSignalSearchCallback)
-var signalSearchLock sync.Mutex
+var signalShortcutsWindowSearchId int
+var signalShortcutsWindowSearchMap = make(map[int]ShortcutsWindowSignalSearchCallback)
+var signalShortcutsWindowSearchLock sync.Mutex
 
 // ShortcutsWindowSignalSearchCallback is a callback function for a 'search' signal emitted from a ShortcutsWindow.
 type ShortcutsWindowSignalSearchCallback func()
@@ -17122,36 +17122,36 @@ func CastToSpinButton(object *gobject.Object) *SpinButton {
 	return SpinButtonNewFromC(object.ToC())
 }
 
-var signalChangeValueId int
-var signalChangeValueMap = make(map[int]SpinButtonSignalChangeValueCallback)
-var signalChangeValueLock sync.Mutex
+var signalSpinButtonChangeValueId int
+var signalSpinButtonChangeValueMap = make(map[int]SpinButtonSignalChangeValueCallback)
+var signalSpinButtonChangeValueLock sync.Mutex
 
 // SpinButtonSignalChangeValueCallback is a callback function for a 'change-value' signal emitted from a SpinButton.
 type SpinButtonSignalChangeValueCallback func(scroll ScrollType)
 
 func SpinButton_changeValueHandler() {}
 
-var signalInputId int
-var signalInputMap = make(map[int]SpinButtonSignalInputCallback)
-var signalInputLock sync.Mutex
+var signalSpinButtonInputId int
+var signalSpinButtonInputMap = make(map[int]SpinButtonSignalInputCallback)
+var signalSpinButtonInputLock sync.Mutex
 
 // SpinButtonSignalInputCallback is a callback function for a 'input' signal emitted from a SpinButton.
 type SpinButtonSignalInputCallback func() int32
 
 func SpinButton_inputHandler() {}
 
-var signalOutputId int
-var signalOutputMap = make(map[int]SpinButtonSignalOutputCallback)
-var signalOutputLock sync.Mutex
+var signalSpinButtonOutputId int
+var signalSpinButtonOutputMap = make(map[int]SpinButtonSignalOutputCallback)
+var signalSpinButtonOutputLock sync.Mutex
 
 // SpinButtonSignalOutputCallback is a callback function for a 'output' signal emitted from a SpinButton.
 type SpinButtonSignalOutputCallback func() bool
 
 func SpinButton_outputHandler() {}
 
-var signalValueChangedId int
-var signalValueChangedMap = make(map[int]SpinButtonSignalValueChangedCallback)
-var signalValueChangedLock sync.Mutex
+var signalSpinButtonValueChangedId int
+var signalSpinButtonValueChangedMap = make(map[int]SpinButtonSignalValueChangedCallback)
+var signalSpinButtonValueChangedLock sync.Mutex
 
 // SpinButtonSignalValueChangedCallback is a callback function for a 'value-changed' signal emitted from a SpinButton.
 type SpinButtonSignalValueChangedCallback func()
@@ -17782,18 +17782,18 @@ func CastToStatusbar(object *gobject.Object) *Statusbar {
 	return StatusbarNewFromC(object.ToC())
 }
 
-var signalTextPoppedId int
-var signalTextPoppedMap = make(map[int]StatusbarSignalTextPoppedCallback)
-var signalTextPoppedLock sync.Mutex
+var signalStatusbarTextPoppedId int
+var signalStatusbarTextPoppedMap = make(map[int]StatusbarSignalTextPoppedCallback)
+var signalStatusbarTextPoppedLock sync.Mutex
 
 // StatusbarSignalTextPoppedCallback is a callback function for a 'text-popped' signal emitted from a Statusbar.
 type StatusbarSignalTextPoppedCallback func(contextId uint32, text string)
 
 func Statusbar_textPoppedHandler() {}
 
-var signalTextPushedId int
-var signalTextPushedMap = make(map[int]StatusbarSignalTextPushedCallback)
-var signalTextPushedLock sync.Mutex
+var signalStatusbarTextPushedId int
+var signalStatusbarTextPushedMap = make(map[int]StatusbarSignalTextPushedCallback)
+var signalStatusbarTextPushedLock sync.Mutex
 
 // StatusbarSignalTextPushedCallback is a callback function for a 'text-pushed' signal emitted from a Statusbar.
 type StatusbarSignalTextPushedCallback func(contextId uint32, text string)
@@ -18233,9 +18233,9 @@ func CastToSwitch(object *gobject.Object) *Switch {
 	return SwitchNewFromC(object.ToC())
 }
 
-var signalActivateId int
-var signalActivateMap = make(map[int]SwitchSignalActivateCallback)
-var signalActivateLock sync.Mutex
+var signalSwitchActivateId int
+var signalSwitchActivateMap = make(map[int]SwitchSignalActivateCallback)
+var signalSwitchActivateLock sync.Mutex
 
 // SwitchSignalActivateCallback is a callback function for a 'activate' signal emitted from a Switch.
 type SwitchSignalActivateCallback func()
@@ -18598,108 +18598,108 @@ func CastToTextBuffer(object *gobject.Object) *TextBuffer {
 	return TextBufferNewFromC(object.ToC())
 }
 
-var signalApplyTagId int
-var signalApplyTagMap = make(map[int]TextBufferSignalApplyTagCallback)
-var signalApplyTagLock sync.Mutex
+var signalTextBufferApplyTagId int
+var signalTextBufferApplyTagMap = make(map[int]TextBufferSignalApplyTagCallback)
+var signalTextBufferApplyTagLock sync.Mutex
 
 // TextBufferSignalApplyTagCallback is a callback function for a 'apply-tag' signal emitted from a TextBuffer.
 type TextBufferSignalApplyTagCallback func(tag *TextTag, start *TextIter, end *TextIter)
 
 func TextBuffer_applyTagHandler() {}
 
-var signalBeginUserActionId int
-var signalBeginUserActionMap = make(map[int]TextBufferSignalBeginUserActionCallback)
-var signalBeginUserActionLock sync.Mutex
+var signalTextBufferBeginUserActionId int
+var signalTextBufferBeginUserActionMap = make(map[int]TextBufferSignalBeginUserActionCallback)
+var signalTextBufferBeginUserActionLock sync.Mutex
 
 // TextBufferSignalBeginUserActionCallback is a callback function for a 'begin-user-action' signal emitted from a TextBuffer.
 type TextBufferSignalBeginUserActionCallback func()
 
 func TextBuffer_beginUserActionHandler() {}
 
-var signalChangedId int
-var signalChangedMap = make(map[int]TextBufferSignalChangedCallback)
-var signalChangedLock sync.Mutex
+var signalTextBufferChangedId int
+var signalTextBufferChangedMap = make(map[int]TextBufferSignalChangedCallback)
+var signalTextBufferChangedLock sync.Mutex
 
 // TextBufferSignalChangedCallback is a callback function for a 'changed' signal emitted from a TextBuffer.
 type TextBufferSignalChangedCallback func()
 
 func TextBuffer_changedHandler() {}
 
-var signalDeleteRangeId int
-var signalDeleteRangeMap = make(map[int]TextBufferSignalDeleteRangeCallback)
-var signalDeleteRangeLock sync.Mutex
+var signalTextBufferDeleteRangeId int
+var signalTextBufferDeleteRangeMap = make(map[int]TextBufferSignalDeleteRangeCallback)
+var signalTextBufferDeleteRangeLock sync.Mutex
 
 // TextBufferSignalDeleteRangeCallback is a callback function for a 'delete-range' signal emitted from a TextBuffer.
 type TextBufferSignalDeleteRangeCallback func(start *TextIter, end *TextIter)
 
 func TextBuffer_deleteRangeHandler() {}
 
-var signalEndUserActionId int
-var signalEndUserActionMap = make(map[int]TextBufferSignalEndUserActionCallback)
-var signalEndUserActionLock sync.Mutex
+var signalTextBufferEndUserActionId int
+var signalTextBufferEndUserActionMap = make(map[int]TextBufferSignalEndUserActionCallback)
+var signalTextBufferEndUserActionLock sync.Mutex
 
 // TextBufferSignalEndUserActionCallback is a callback function for a 'end-user-action' signal emitted from a TextBuffer.
 type TextBufferSignalEndUserActionCallback func()
 
 func TextBuffer_endUserActionHandler() {}
 
-var signalInsertChildAnchorId int
-var signalInsertChildAnchorMap = make(map[int]TextBufferSignalInsertChildAnchorCallback)
-var signalInsertChildAnchorLock sync.Mutex
+var signalTextBufferInsertChildAnchorId int
+var signalTextBufferInsertChildAnchorMap = make(map[int]TextBufferSignalInsertChildAnchorCallback)
+var signalTextBufferInsertChildAnchorLock sync.Mutex
 
 // TextBufferSignalInsertChildAnchorCallback is a callback function for a 'insert-child-anchor' signal emitted from a TextBuffer.
 type TextBufferSignalInsertChildAnchorCallback func(location *TextIter, anchor *TextChildAnchor)
 
 func TextBuffer_insertChildAnchorHandler() {}
 
-var signalInsertPixbufId int
-var signalInsertPixbufMap = make(map[int]TextBufferSignalInsertPixbufCallback)
-var signalInsertPixbufLock sync.Mutex
+var signalTextBufferInsertPixbufId int
+var signalTextBufferInsertPixbufMap = make(map[int]TextBufferSignalInsertPixbufCallback)
+var signalTextBufferInsertPixbufLock sync.Mutex
 
 // TextBufferSignalInsertPixbufCallback is a callback function for a 'insert-pixbuf' signal emitted from a TextBuffer.
 type TextBufferSignalInsertPixbufCallback func(location *TextIter, pixbuf *gdkpixbuf.Pixbuf)
 
 func TextBuffer_insertPixbufHandler() {}
 
-var signalInsertTextId int
-var signalInsertTextMap = make(map[int]TextBufferSignalInsertTextCallback)
-var signalInsertTextLock sync.Mutex
+var signalTextBufferInsertTextId int
+var signalTextBufferInsertTextMap = make(map[int]TextBufferSignalInsertTextCallback)
+var signalTextBufferInsertTextLock sync.Mutex
 
 // TextBufferSignalInsertTextCallback is a callback function for a 'insert-text' signal emitted from a TextBuffer.
 type TextBufferSignalInsertTextCallback func(location *TextIter, text string, len int32)
 
 func TextBuffer_insertTextHandler() {}
 
-var signalMarkDeletedId int
-var signalMarkDeletedMap = make(map[int]TextBufferSignalMarkDeletedCallback)
-var signalMarkDeletedLock sync.Mutex
+var signalTextBufferMarkDeletedId int
+var signalTextBufferMarkDeletedMap = make(map[int]TextBufferSignalMarkDeletedCallback)
+var signalTextBufferMarkDeletedLock sync.Mutex
 
 // TextBufferSignalMarkDeletedCallback is a callback function for a 'mark-deleted' signal emitted from a TextBuffer.
 type TextBufferSignalMarkDeletedCallback func(mark *TextMark)
 
 func TextBuffer_markDeletedHandler() {}
 
-var signalMarkSetId int
-var signalMarkSetMap = make(map[int]TextBufferSignalMarkSetCallback)
-var signalMarkSetLock sync.Mutex
+var signalTextBufferMarkSetId int
+var signalTextBufferMarkSetMap = make(map[int]TextBufferSignalMarkSetCallback)
+var signalTextBufferMarkSetLock sync.Mutex
 
 // TextBufferSignalMarkSetCallback is a callback function for a 'mark-set' signal emitted from a TextBuffer.
 type TextBufferSignalMarkSetCallback func(location *TextIter, mark *TextMark)
 
 func TextBuffer_markSetHandler() {}
 
-var signalModifiedChangedId int
-var signalModifiedChangedMap = make(map[int]TextBufferSignalModifiedChangedCallback)
-var signalModifiedChangedLock sync.Mutex
+var signalTextBufferModifiedChangedId int
+var signalTextBufferModifiedChangedMap = make(map[int]TextBufferSignalModifiedChangedCallback)
+var signalTextBufferModifiedChangedLock sync.Mutex
 
 // TextBufferSignalModifiedChangedCallback is a callback function for a 'modified-changed' signal emitted from a TextBuffer.
 type TextBufferSignalModifiedChangedCallback func()
 
 func TextBuffer_modifiedChangedHandler() {}
 
-var signalRemoveTagId int
-var signalRemoveTagMap = make(map[int]TextBufferSignalRemoveTagCallback)
-var signalRemoveTagLock sync.Mutex
+var signalTextBufferRemoveTagId int
+var signalTextBufferRemoveTagMap = make(map[int]TextBufferSignalRemoveTagCallback)
+var signalTextBufferRemoveTagLock sync.Mutex
 
 // TextBufferSignalRemoveTagCallback is a callback function for a 'remove-tag' signal emitted from a TextBuffer.
 type TextBufferSignalRemoveTagCallback func(tag *TextTag, start *TextIter, end *TextIter)
@@ -19622,27 +19622,27 @@ func CastToTextTagTable(object *gobject.Object) *TextTagTable {
 	return TextTagTableNewFromC(object.ToC())
 }
 
-var signalTagAddedId int
-var signalTagAddedMap = make(map[int]TextTagTableSignalTagAddedCallback)
-var signalTagAddedLock sync.Mutex
+var signalTextTagTableTagAddedId int
+var signalTextTagTableTagAddedMap = make(map[int]TextTagTableSignalTagAddedCallback)
+var signalTextTagTableTagAddedLock sync.Mutex
 
 // TextTagTableSignalTagAddedCallback is a callback function for a 'tag-added' signal emitted from a TextTagTable.
 type TextTagTableSignalTagAddedCallback func(tag *TextTag)
 
 func TextTagTable_tagAddedHandler() {}
 
-var signalTagChangedId int
-var signalTagChangedMap = make(map[int]TextTagTableSignalTagChangedCallback)
-var signalTagChangedLock sync.Mutex
+var signalTextTagTableTagChangedId int
+var signalTextTagTableTagChangedMap = make(map[int]TextTagTableSignalTagChangedCallback)
+var signalTextTagTableTagChangedLock sync.Mutex
 
 // TextTagTableSignalTagChangedCallback is a callback function for a 'tag-changed' signal emitted from a TextTagTable.
 type TextTagTableSignalTagChangedCallback func(tag *TextTag, sizeChanged bool)
 
 func TextTagTable_tagChangedHandler() {}
 
-var signalTagRemovedId int
-var signalTagRemovedMap = make(map[int]TextTagTableSignalTagRemovedCallback)
-var signalTagRemovedLock sync.Mutex
+var signalTextTagTableTagRemovedId int
+var signalTextTagTableTagRemovedMap = make(map[int]TextTagTableSignalTagRemovedCallback)
+var signalTextTagTableTagRemovedLock sync.Mutex
 
 // TextTagTableSignalTagRemovedCallback is a callback function for a 'tag-removed' signal emitted from a TextTagTable.
 type TextTagTableSignalTagRemovedCallback func(tag *TextTag)
@@ -19746,117 +19746,117 @@ func CastToTextView(object *gobject.Object) *TextView {
 	return TextViewNewFromC(object.ToC())
 }
 
-var signalBackspaceId int
-var signalBackspaceMap = make(map[int]TextViewSignalBackspaceCallback)
-var signalBackspaceLock sync.Mutex
+var signalTextViewBackspaceId int
+var signalTextViewBackspaceMap = make(map[int]TextViewSignalBackspaceCallback)
+var signalTextViewBackspaceLock sync.Mutex
 
 // TextViewSignalBackspaceCallback is a callback function for a 'backspace' signal emitted from a TextView.
 type TextViewSignalBackspaceCallback func()
 
 func TextView_backspaceHandler() {}
 
-var signalCopyClipboardId int
-var signalCopyClipboardMap = make(map[int]TextViewSignalCopyClipboardCallback)
-var signalCopyClipboardLock sync.Mutex
+var signalTextViewCopyClipboardId int
+var signalTextViewCopyClipboardMap = make(map[int]TextViewSignalCopyClipboardCallback)
+var signalTextViewCopyClipboardLock sync.Mutex
 
 // TextViewSignalCopyClipboardCallback is a callback function for a 'copy-clipboard' signal emitted from a TextView.
 type TextViewSignalCopyClipboardCallback func()
 
 func TextView_copyClipboardHandler() {}
 
-var signalCutClipboardId int
-var signalCutClipboardMap = make(map[int]TextViewSignalCutClipboardCallback)
-var signalCutClipboardLock sync.Mutex
+var signalTextViewCutClipboardId int
+var signalTextViewCutClipboardMap = make(map[int]TextViewSignalCutClipboardCallback)
+var signalTextViewCutClipboardLock sync.Mutex
 
 // TextViewSignalCutClipboardCallback is a callback function for a 'cut-clipboard' signal emitted from a TextView.
 type TextViewSignalCutClipboardCallback func()
 
 func TextView_cutClipboardHandler() {}
 
-var signalDeleteFromCursorId int
-var signalDeleteFromCursorMap = make(map[int]TextViewSignalDeleteFromCursorCallback)
-var signalDeleteFromCursorLock sync.Mutex
+var signalTextViewDeleteFromCursorId int
+var signalTextViewDeleteFromCursorMap = make(map[int]TextViewSignalDeleteFromCursorCallback)
+var signalTextViewDeleteFromCursorLock sync.Mutex
 
 // TextViewSignalDeleteFromCursorCallback is a callback function for a 'delete-from-cursor' signal emitted from a TextView.
 type TextViewSignalDeleteFromCursorCallback func(type_ DeleteType, count int32)
 
 func TextView_deleteFromCursorHandler() {}
 
-var signalInsertAtCursorId int
-var signalInsertAtCursorMap = make(map[int]TextViewSignalInsertAtCursorCallback)
-var signalInsertAtCursorLock sync.Mutex
+var signalTextViewInsertAtCursorId int
+var signalTextViewInsertAtCursorMap = make(map[int]TextViewSignalInsertAtCursorCallback)
+var signalTextViewInsertAtCursorLock sync.Mutex
 
 // TextViewSignalInsertAtCursorCallback is a callback function for a 'insert-at-cursor' signal emitted from a TextView.
 type TextViewSignalInsertAtCursorCallback func(string string)
 
 func TextView_insertAtCursorHandler() {}
 
-var signalMoveCursorId int
-var signalMoveCursorMap = make(map[int]TextViewSignalMoveCursorCallback)
-var signalMoveCursorLock sync.Mutex
+var signalTextViewMoveCursorId int
+var signalTextViewMoveCursorMap = make(map[int]TextViewSignalMoveCursorCallback)
+var signalTextViewMoveCursorLock sync.Mutex
 
 // TextViewSignalMoveCursorCallback is a callback function for a 'move-cursor' signal emitted from a TextView.
 type TextViewSignalMoveCursorCallback func(step MovementStep, count int32, extendSelection bool)
 
 func TextView_moveCursorHandler() {}
 
-var signalMoveViewportId int
-var signalMoveViewportMap = make(map[int]TextViewSignalMoveViewportCallback)
-var signalMoveViewportLock sync.Mutex
+var signalTextViewMoveViewportId int
+var signalTextViewMoveViewportMap = make(map[int]TextViewSignalMoveViewportCallback)
+var signalTextViewMoveViewportLock sync.Mutex
 
 // TextViewSignalMoveViewportCallback is a callback function for a 'move-viewport' signal emitted from a TextView.
 type TextViewSignalMoveViewportCallback func(step ScrollStep, count int32)
 
 func TextView_moveViewportHandler() {}
 
-var signalPasteClipboardId int
-var signalPasteClipboardMap = make(map[int]TextViewSignalPasteClipboardCallback)
-var signalPasteClipboardLock sync.Mutex
+var signalTextViewPasteClipboardId int
+var signalTextViewPasteClipboardMap = make(map[int]TextViewSignalPasteClipboardCallback)
+var signalTextViewPasteClipboardLock sync.Mutex
 
 // TextViewSignalPasteClipboardCallback is a callback function for a 'paste-clipboard' signal emitted from a TextView.
 type TextViewSignalPasteClipboardCallback func()
 
 func TextView_pasteClipboardHandler() {}
 
-var signalPopulatePopupId int
-var signalPopulatePopupMap = make(map[int]TextViewSignalPopulatePopupCallback)
-var signalPopulatePopupLock sync.Mutex
+var signalTextViewPopulatePopupId int
+var signalTextViewPopulatePopupMap = make(map[int]TextViewSignalPopulatePopupCallback)
+var signalTextViewPopulatePopupLock sync.Mutex
 
 // TextViewSignalPopulatePopupCallback is a callback function for a 'populate-popup' signal emitted from a TextView.
 type TextViewSignalPopulatePopupCallback func(popup *Widget)
 
 func TextView_populatePopupHandler() {}
 
-var signalSelectAllId int
-var signalSelectAllMap = make(map[int]TextViewSignalSelectAllCallback)
-var signalSelectAllLock sync.Mutex
+var signalTextViewSelectAllId int
+var signalTextViewSelectAllMap = make(map[int]TextViewSignalSelectAllCallback)
+var signalTextViewSelectAllLock sync.Mutex
 
 // TextViewSignalSelectAllCallback is a callback function for a 'select-all' signal emitted from a TextView.
 type TextViewSignalSelectAllCallback func(select_ bool)
 
 func TextView_selectAllHandler() {}
 
-var signalSetAnchorId int
-var signalSetAnchorMap = make(map[int]TextViewSignalSetAnchorCallback)
-var signalSetAnchorLock sync.Mutex
+var signalTextViewSetAnchorId int
+var signalTextViewSetAnchorMap = make(map[int]TextViewSignalSetAnchorCallback)
+var signalTextViewSetAnchorLock sync.Mutex
 
 // TextViewSignalSetAnchorCallback is a callback function for a 'set-anchor' signal emitted from a TextView.
 type TextViewSignalSetAnchorCallback func()
 
 func TextView_setAnchorHandler() {}
 
-var signalToggleCursorVisibleId int
-var signalToggleCursorVisibleMap = make(map[int]TextViewSignalToggleCursorVisibleCallback)
-var signalToggleCursorVisibleLock sync.Mutex
+var signalTextViewToggleCursorVisibleId int
+var signalTextViewToggleCursorVisibleMap = make(map[int]TextViewSignalToggleCursorVisibleCallback)
+var signalTextViewToggleCursorVisibleLock sync.Mutex
 
 // TextViewSignalToggleCursorVisibleCallback is a callback function for a 'toggle-cursor-visible' signal emitted from a TextView.
 type TextViewSignalToggleCursorVisibleCallback func()
 
 func TextView_toggleCursorVisibleHandler() {}
 
-var signalToggleOverwriteId int
-var signalToggleOverwriteMap = make(map[int]TextViewSignalToggleOverwriteCallback)
-var signalToggleOverwriteLock sync.Mutex
+var signalTextViewToggleOverwriteId int
+var signalTextViewToggleOverwriteMap = make(map[int]TextViewSignalToggleOverwriteCallback)
+var signalTextViewToggleOverwriteLock sync.Mutex
 
 // TextViewSignalToggleOverwriteCallback is a callback function for a 'toggle-overwrite' signal emitted from a TextView.
 type TextViewSignalToggleOverwriteCallback func()
@@ -20526,9 +20526,9 @@ func CastToToggleAction(object *gobject.Object) *ToggleAction {
 	return ToggleActionNewFromC(object.ToC())
 }
 
-var signalToggledId int
-var signalToggledMap = make(map[int]ToggleActionSignalToggledCallback)
-var signalToggledLock sync.Mutex
+var signalToggleActionToggledId int
+var signalToggleActionToggledMap = make(map[int]ToggleActionSignalToggledCallback)
+var signalToggleActionToggledLock sync.Mutex
 
 // ToggleActionSignalToggledCallback is a callback function for a 'toggled' signal emitted from a ToggleAction.
 type ToggleActionSignalToggledCallback func()
@@ -20594,9 +20594,9 @@ func CastToToggleButton(object *gobject.Object) *ToggleButton {
 	return ToggleButtonNewFromC(object.ToC())
 }
 
-var signalToggledId int
-var signalToggledMap = make(map[int]ToggleButtonSignalToggledCallback)
-var signalToggledLock sync.Mutex
+var signalToggleButtonToggledId int
+var signalToggleButtonToggledMap = make(map[int]ToggleButtonSignalToggledCallback)
+var signalToggleButtonToggledLock sync.Mutex
 
 // ToggleButtonSignalToggledCallback is a callback function for a 'toggled' signal emitted from a ToggleButton.
 type ToggleButtonSignalToggledCallback func()
@@ -20812,9 +20812,9 @@ func CastToToggleToolButton(object *gobject.Object) *ToggleToolButton {
 	return ToggleToolButtonNewFromC(object.ToC())
 }
 
-var signalToggledId int
-var signalToggledMap = make(map[int]ToggleToolButtonSignalToggledCallback)
-var signalToggledLock sync.Mutex
+var signalToggleToolButtonToggledId int
+var signalToggleToolButtonToggledMap = make(map[int]ToggleToolButtonSignalToggledCallback)
+var signalToggleToolButtonToggledLock sync.Mutex
 
 // ToggleToolButtonSignalToggledCallback is a callback function for a 'toggled' signal emitted from a ToggleToolButton.
 type ToggleToolButtonSignalToggledCallback func()
@@ -20880,9 +20880,9 @@ func CastToToolButton(object *gobject.Object) *ToolButton {
 	return ToolButtonNewFromC(object.ToC())
 }
 
-var signalClickedId int
-var signalClickedMap = make(map[int]ToolButtonSignalClickedCallback)
-var signalClickedLock sync.Mutex
+var signalToolButtonClickedId int
+var signalToolButtonClickedMap = make(map[int]ToolButtonSignalClickedCallback)
+var signalToolButtonClickedLock sync.Mutex
 
 // ToolButtonSignalClickedCallback is a callback function for a 'clicked' signal emitted from a ToolButton.
 type ToolButtonSignalClickedCallback func()
@@ -20943,18 +20943,18 @@ func CastToToolItem(object *gobject.Object) *ToolItem {
 	return ToolItemNewFromC(object.ToC())
 }
 
-var signalCreateMenuProxyId int
-var signalCreateMenuProxyMap = make(map[int]ToolItemSignalCreateMenuProxyCallback)
-var signalCreateMenuProxyLock sync.Mutex
+var signalToolItemCreateMenuProxyId int
+var signalToolItemCreateMenuProxyMap = make(map[int]ToolItemSignalCreateMenuProxyCallback)
+var signalToolItemCreateMenuProxyLock sync.Mutex
 
 // ToolItemSignalCreateMenuProxyCallback is a callback function for a 'create-menu-proxy' signal emitted from a ToolItem.
 type ToolItemSignalCreateMenuProxyCallback func() bool
 
 func ToolItem_createMenuProxyHandler() {}
 
-var signalToolbarReconfiguredId int
-var signalToolbarReconfiguredMap = make(map[int]ToolItemSignalToolbarReconfiguredCallback)
-var signalToolbarReconfiguredLock sync.Mutex
+var signalToolItemToolbarReconfiguredId int
+var signalToolItemToolbarReconfiguredMap = make(map[int]ToolItemSignalToolbarReconfiguredCallback)
+var signalToolItemToolbarReconfiguredLock sync.Mutex
 
 // ToolItemSignalToolbarReconfiguredCallback is a callback function for a 'toolbar-reconfigured' signal emitted from a ToolItem.
 type ToolItemSignalToolbarReconfiguredCallback func()
@@ -21108,36 +21108,36 @@ func CastToToolbar(object *gobject.Object) *Toolbar {
 	return ToolbarNewFromC(object.ToC())
 }
 
-var signalFocusHomeOrEndId int
-var signalFocusHomeOrEndMap = make(map[int]ToolbarSignalFocusHomeOrEndCallback)
-var signalFocusHomeOrEndLock sync.Mutex
+var signalToolbarFocusHomeOrEndId int
+var signalToolbarFocusHomeOrEndMap = make(map[int]ToolbarSignalFocusHomeOrEndCallback)
+var signalToolbarFocusHomeOrEndLock sync.Mutex
 
 // ToolbarSignalFocusHomeOrEndCallback is a callback function for a 'focus-home-or-end' signal emitted from a Toolbar.
 type ToolbarSignalFocusHomeOrEndCallback func(focusHome bool) bool
 
 func Toolbar_focusHomeOrEndHandler() {}
 
-var signalOrientationChangedId int
-var signalOrientationChangedMap = make(map[int]ToolbarSignalOrientationChangedCallback)
-var signalOrientationChangedLock sync.Mutex
+var signalToolbarOrientationChangedId int
+var signalToolbarOrientationChangedMap = make(map[int]ToolbarSignalOrientationChangedCallback)
+var signalToolbarOrientationChangedLock sync.Mutex
 
 // ToolbarSignalOrientationChangedCallback is a callback function for a 'orientation-changed' signal emitted from a Toolbar.
 type ToolbarSignalOrientationChangedCallback func(orientation Orientation)
 
 func Toolbar_orientationChangedHandler() {}
 
-var signalPopupContextMenuId int
-var signalPopupContextMenuMap = make(map[int]ToolbarSignalPopupContextMenuCallback)
-var signalPopupContextMenuLock sync.Mutex
+var signalToolbarPopupContextMenuId int
+var signalToolbarPopupContextMenuMap = make(map[int]ToolbarSignalPopupContextMenuCallback)
+var signalToolbarPopupContextMenuLock sync.Mutex
 
 // ToolbarSignalPopupContextMenuCallback is a callback function for a 'popup-context-menu' signal emitted from a Toolbar.
 type ToolbarSignalPopupContextMenuCallback func(x int32, y int32, button int32) bool
 
 func Toolbar_popupContextMenuHandler() {}
 
-var signalStyleChangedId int
-var signalStyleChangedMap = make(map[int]ToolbarSignalStyleChangedCallback)
-var signalStyleChangedLock sync.Mutex
+var signalToolbarStyleChangedId int
+var signalToolbarStyleChangedMap = make(map[int]ToolbarSignalStyleChangedCallback)
+var signalToolbarStyleChangedLock sync.Mutex
 
 // ToolbarSignalStyleChangedCallback is a callback function for a 'style-changed' signal emitted from a Toolbar.
 type ToolbarSignalStyleChangedCallback func(style ToolbarStyle)
@@ -21439,9 +21439,9 @@ func CastToTreeSelection(object *gobject.Object) *TreeSelection {
 	return TreeSelectionNewFromC(object.ToC())
 }
 
-var signalChangedId int
-var signalChangedMap = make(map[int]TreeSelectionSignalChangedCallback)
-var signalChangedLock sync.Mutex
+var signalTreeSelectionChangedId int
+var signalTreeSelectionChangedMap = make(map[int]TreeSelectionSignalChangedCallback)
+var signalTreeSelectionChangedLock sync.Mutex
 
 // TreeSelectionSignalChangedCallback is a callback function for a 'changed' signal emitted from a TreeSelection.
 type TreeSelectionSignalChangedCallback func()
@@ -21784,135 +21784,135 @@ func CastToTreeView(object *gobject.Object) *TreeView {
 	return TreeViewNewFromC(object.ToC())
 }
 
-var signalColumnsChangedId int
-var signalColumnsChangedMap = make(map[int]TreeViewSignalColumnsChangedCallback)
-var signalColumnsChangedLock sync.Mutex
+var signalTreeViewColumnsChangedId int
+var signalTreeViewColumnsChangedMap = make(map[int]TreeViewSignalColumnsChangedCallback)
+var signalTreeViewColumnsChangedLock sync.Mutex
 
 // TreeViewSignalColumnsChangedCallback is a callback function for a 'columns-changed' signal emitted from a TreeView.
 type TreeViewSignalColumnsChangedCallback func()
 
 func TreeView_columnsChangedHandler() {}
 
-var signalCursorChangedId int
-var signalCursorChangedMap = make(map[int]TreeViewSignalCursorChangedCallback)
-var signalCursorChangedLock sync.Mutex
+var signalTreeViewCursorChangedId int
+var signalTreeViewCursorChangedMap = make(map[int]TreeViewSignalCursorChangedCallback)
+var signalTreeViewCursorChangedLock sync.Mutex
 
 // TreeViewSignalCursorChangedCallback is a callback function for a 'cursor-changed' signal emitted from a TreeView.
 type TreeViewSignalCursorChangedCallback func()
 
 func TreeView_cursorChangedHandler() {}
 
-var signalExpandCollapseCursorRowId int
-var signalExpandCollapseCursorRowMap = make(map[int]TreeViewSignalExpandCollapseCursorRowCallback)
-var signalExpandCollapseCursorRowLock sync.Mutex
+var signalTreeViewExpandCollapseCursorRowId int
+var signalTreeViewExpandCollapseCursorRowMap = make(map[int]TreeViewSignalExpandCollapseCursorRowCallback)
+var signalTreeViewExpandCollapseCursorRowLock sync.Mutex
 
 // TreeViewSignalExpandCollapseCursorRowCallback is a callback function for a 'expand-collapse-cursor-row' signal emitted from a TreeView.
 type TreeViewSignalExpandCollapseCursorRowCallback func(object bool, p0 bool, p1 bool) bool
 
 func TreeView_expandCollapseCursorRowHandler() {}
 
-var signalMoveCursorId int
-var signalMoveCursorMap = make(map[int]TreeViewSignalMoveCursorCallback)
-var signalMoveCursorLock sync.Mutex
+var signalTreeViewMoveCursorId int
+var signalTreeViewMoveCursorMap = make(map[int]TreeViewSignalMoveCursorCallback)
+var signalTreeViewMoveCursorLock sync.Mutex
 
 // TreeViewSignalMoveCursorCallback is a callback function for a 'move-cursor' signal emitted from a TreeView.
 type TreeViewSignalMoveCursorCallback func(step MovementStep, direction int32) bool
 
 func TreeView_moveCursorHandler() {}
 
-var signalRowActivatedId int
-var signalRowActivatedMap = make(map[int]TreeViewSignalRowActivatedCallback)
-var signalRowActivatedLock sync.Mutex
+var signalTreeViewRowActivatedId int
+var signalTreeViewRowActivatedMap = make(map[int]TreeViewSignalRowActivatedCallback)
+var signalTreeViewRowActivatedLock sync.Mutex
 
 // TreeViewSignalRowActivatedCallback is a callback function for a 'row-activated' signal emitted from a TreeView.
 type TreeViewSignalRowActivatedCallback func(path *TreePath, column *TreeViewColumn)
 
 func TreeView_rowActivatedHandler() {}
 
-var signalRowCollapsedId int
-var signalRowCollapsedMap = make(map[int]TreeViewSignalRowCollapsedCallback)
-var signalRowCollapsedLock sync.Mutex
+var signalTreeViewRowCollapsedId int
+var signalTreeViewRowCollapsedMap = make(map[int]TreeViewSignalRowCollapsedCallback)
+var signalTreeViewRowCollapsedLock sync.Mutex
 
 // TreeViewSignalRowCollapsedCallback is a callback function for a 'row-collapsed' signal emitted from a TreeView.
 type TreeViewSignalRowCollapsedCallback func(iter *TreeIter, path *TreePath)
 
 func TreeView_rowCollapsedHandler() {}
 
-var signalRowExpandedId int
-var signalRowExpandedMap = make(map[int]TreeViewSignalRowExpandedCallback)
-var signalRowExpandedLock sync.Mutex
+var signalTreeViewRowExpandedId int
+var signalTreeViewRowExpandedMap = make(map[int]TreeViewSignalRowExpandedCallback)
+var signalTreeViewRowExpandedLock sync.Mutex
 
 // TreeViewSignalRowExpandedCallback is a callback function for a 'row-expanded' signal emitted from a TreeView.
 type TreeViewSignalRowExpandedCallback func(iter *TreeIter, path *TreePath)
 
 func TreeView_rowExpandedHandler() {}
 
-var signalSelectAllId int
-var signalSelectAllMap = make(map[int]TreeViewSignalSelectAllCallback)
-var signalSelectAllLock sync.Mutex
+var signalTreeViewSelectAllId int
+var signalTreeViewSelectAllMap = make(map[int]TreeViewSignalSelectAllCallback)
+var signalTreeViewSelectAllLock sync.Mutex
 
 // TreeViewSignalSelectAllCallback is a callback function for a 'select-all' signal emitted from a TreeView.
 type TreeViewSignalSelectAllCallback func() bool
 
 func TreeView_selectAllHandler() {}
 
-var signalSelectCursorParentId int
-var signalSelectCursorParentMap = make(map[int]TreeViewSignalSelectCursorParentCallback)
-var signalSelectCursorParentLock sync.Mutex
+var signalTreeViewSelectCursorParentId int
+var signalTreeViewSelectCursorParentMap = make(map[int]TreeViewSignalSelectCursorParentCallback)
+var signalTreeViewSelectCursorParentLock sync.Mutex
 
 // TreeViewSignalSelectCursorParentCallback is a callback function for a 'select-cursor-parent' signal emitted from a TreeView.
 type TreeViewSignalSelectCursorParentCallback func() bool
 
 func TreeView_selectCursorParentHandler() {}
 
-var signalSelectCursorRowId int
-var signalSelectCursorRowMap = make(map[int]TreeViewSignalSelectCursorRowCallback)
-var signalSelectCursorRowLock sync.Mutex
+var signalTreeViewSelectCursorRowId int
+var signalTreeViewSelectCursorRowMap = make(map[int]TreeViewSignalSelectCursorRowCallback)
+var signalTreeViewSelectCursorRowLock sync.Mutex
 
 // TreeViewSignalSelectCursorRowCallback is a callback function for a 'select-cursor-row' signal emitted from a TreeView.
 type TreeViewSignalSelectCursorRowCallback func(object bool) bool
 
 func TreeView_selectCursorRowHandler() {}
 
-var signalStartInteractiveSearchId int
-var signalStartInteractiveSearchMap = make(map[int]TreeViewSignalStartInteractiveSearchCallback)
-var signalStartInteractiveSearchLock sync.Mutex
+var signalTreeViewStartInteractiveSearchId int
+var signalTreeViewStartInteractiveSearchMap = make(map[int]TreeViewSignalStartInteractiveSearchCallback)
+var signalTreeViewStartInteractiveSearchLock sync.Mutex
 
 // TreeViewSignalStartInteractiveSearchCallback is a callback function for a 'start-interactive-search' signal emitted from a TreeView.
 type TreeViewSignalStartInteractiveSearchCallback func() bool
 
 func TreeView_startInteractiveSearchHandler() {}
 
-var signalTestCollapseRowId int
-var signalTestCollapseRowMap = make(map[int]TreeViewSignalTestCollapseRowCallback)
-var signalTestCollapseRowLock sync.Mutex
+var signalTreeViewTestCollapseRowId int
+var signalTreeViewTestCollapseRowMap = make(map[int]TreeViewSignalTestCollapseRowCallback)
+var signalTreeViewTestCollapseRowLock sync.Mutex
 
 // TreeViewSignalTestCollapseRowCallback is a callback function for a 'test-collapse-row' signal emitted from a TreeView.
 type TreeViewSignalTestCollapseRowCallback func(iter *TreeIter, path *TreePath) bool
 
 func TreeView_testCollapseRowHandler() {}
 
-var signalTestExpandRowId int
-var signalTestExpandRowMap = make(map[int]TreeViewSignalTestExpandRowCallback)
-var signalTestExpandRowLock sync.Mutex
+var signalTreeViewTestExpandRowId int
+var signalTreeViewTestExpandRowMap = make(map[int]TreeViewSignalTestExpandRowCallback)
+var signalTreeViewTestExpandRowLock sync.Mutex
 
 // TreeViewSignalTestExpandRowCallback is a callback function for a 'test-expand-row' signal emitted from a TreeView.
 type TreeViewSignalTestExpandRowCallback func(iter *TreeIter, path *TreePath) bool
 
 func TreeView_testExpandRowHandler() {}
 
-var signalToggleCursorRowId int
-var signalToggleCursorRowMap = make(map[int]TreeViewSignalToggleCursorRowCallback)
-var signalToggleCursorRowLock sync.Mutex
+var signalTreeViewToggleCursorRowId int
+var signalTreeViewToggleCursorRowMap = make(map[int]TreeViewSignalToggleCursorRowCallback)
+var signalTreeViewToggleCursorRowLock sync.Mutex
 
 // TreeViewSignalToggleCursorRowCallback is a callback function for a 'toggle-cursor-row' signal emitted from a TreeView.
 type TreeViewSignalToggleCursorRowCallback func() bool
 
 func TreeView_toggleCursorRowHandler() {}
 
-var signalUnselectAllId int
-var signalUnselectAllMap = make(map[int]TreeViewSignalUnselectAllCallback)
-var signalUnselectAllLock sync.Mutex
+var signalTreeViewUnselectAllId int
+var signalTreeViewUnselectAllMap = make(map[int]TreeViewSignalUnselectAllCallback)
+var signalTreeViewUnselectAllLock sync.Mutex
 
 // TreeViewSignalUnselectAllCallback is a callback function for a 'unselect-all' signal emitted from a TreeView.
 type TreeViewSignalUnselectAllCallback func() bool
@@ -22423,9 +22423,9 @@ func CastToTreeViewColumn(object *gobject.Object) *TreeViewColumn {
 	return TreeViewColumnNewFromC(object.ToC())
 }
 
-var signalClickedId int
-var signalClickedMap = make(map[int]TreeViewColumnSignalClickedCallback)
-var signalClickedLock sync.Mutex
+var signalTreeViewColumnClickedId int
+var signalTreeViewColumnClickedMap = make(map[int]TreeViewColumnSignalClickedCallback)
+var signalTreeViewColumnClickedLock sync.Mutex
 
 // TreeViewColumnSignalClickedCallback is a callback function for a 'clicked' signal emitted from a TreeViewColumn.
 type TreeViewColumnSignalClickedCallback func()
@@ -23448,36 +23448,36 @@ func CastToWidget(object *gobject.Object) *Widget {
 	return WidgetNewFromC(object.ToC())
 }
 
-var signalAccelClosuresChangedId int
-var signalAccelClosuresChangedMap = make(map[int]WidgetSignalAccelClosuresChangedCallback)
-var signalAccelClosuresChangedLock sync.Mutex
+var signalWidgetAccelClosuresChangedId int
+var signalWidgetAccelClosuresChangedMap = make(map[int]WidgetSignalAccelClosuresChangedCallback)
+var signalWidgetAccelClosuresChangedLock sync.Mutex
 
 // WidgetSignalAccelClosuresChangedCallback is a callback function for a 'accel-closures-changed' signal emitted from a Widget.
 type WidgetSignalAccelClosuresChangedCallback func()
 
 func Widget_accelClosuresChangedHandler() {}
 
-var signalButtonPressEventId int
-var signalButtonPressEventMap = make(map[int]WidgetSignalButtonPressEventCallback)
-var signalButtonPressEventLock sync.Mutex
+var signalWidgetButtonPressEventId int
+var signalWidgetButtonPressEventMap = make(map[int]WidgetSignalButtonPressEventCallback)
+var signalWidgetButtonPressEventLock sync.Mutex
 
 // WidgetSignalButtonPressEventCallback is a callback function for a 'button-press-event' signal emitted from a Widget.
 type WidgetSignalButtonPressEventCallback func(event *gdk.EventButton) bool
 
 func Widget_buttonPressEventHandler() {}
 
-var signalButtonReleaseEventId int
-var signalButtonReleaseEventMap = make(map[int]WidgetSignalButtonReleaseEventCallback)
-var signalButtonReleaseEventLock sync.Mutex
+var signalWidgetButtonReleaseEventId int
+var signalWidgetButtonReleaseEventMap = make(map[int]WidgetSignalButtonReleaseEventCallback)
+var signalWidgetButtonReleaseEventLock sync.Mutex
 
 // WidgetSignalButtonReleaseEventCallback is a callback function for a 'button-release-event' signal emitted from a Widget.
 type WidgetSignalButtonReleaseEventCallback func(event *gdk.EventButton) bool
 
 func Widget_buttonReleaseEventHandler() {}
 
-var signalCanActivateAccelId int
-var signalCanActivateAccelMap = make(map[int]WidgetSignalCanActivateAccelCallback)
-var signalCanActivateAccelLock sync.Mutex
+var signalWidgetCanActivateAccelId int
+var signalWidgetCanActivateAccelMap = make(map[int]WidgetSignalCanActivateAccelCallback)
+var signalWidgetCanActivateAccelLock sync.Mutex
 
 // WidgetSignalCanActivateAccelCallback is a callback function for a 'can-activate-accel' signal emitted from a Widget.
 type WidgetSignalCanActivateAccelCallback func(signalId uint32) bool
@@ -23486,18 +23486,18 @@ func Widget_canActivateAccelHandler() {}
 
 // Unsupported signal : unsupported parameter child_property : Blacklisted record : GParamSpec
 
-var signalCompositedChangedId int
-var signalCompositedChangedMap = make(map[int]WidgetSignalCompositedChangedCallback)
-var signalCompositedChangedLock sync.Mutex
+var signalWidgetCompositedChangedId int
+var signalWidgetCompositedChangedMap = make(map[int]WidgetSignalCompositedChangedCallback)
+var signalWidgetCompositedChangedLock sync.Mutex
 
 // WidgetSignalCompositedChangedCallback is a callback function for a 'composited-changed' signal emitted from a Widget.
 type WidgetSignalCompositedChangedCallback func()
 
 func Widget_compositedChangedHandler() {}
 
-var signalConfigureEventId int
-var signalConfigureEventMap = make(map[int]WidgetSignalConfigureEventCallback)
-var signalConfigureEventLock sync.Mutex
+var signalWidgetConfigureEventId int
+var signalWidgetConfigureEventMap = make(map[int]WidgetSignalConfigureEventCallback)
+var signalWidgetConfigureEventLock sync.Mutex
 
 // WidgetSignalConfigureEventCallback is a callback function for a 'configure-event' signal emitted from a Widget.
 type WidgetSignalConfigureEventCallback func(event *gdk.EventConfigure) bool
@@ -23506,9 +23506,9 @@ func Widget_configureEventHandler() {}
 
 // Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
 
-var signalDestroyId int
-var signalDestroyMap = make(map[int]WidgetSignalDestroyCallback)
-var signalDestroyLock sync.Mutex
+var signalWidgetDestroyId int
+var signalWidgetDestroyMap = make(map[int]WidgetSignalDestroyCallback)
+var signalWidgetDestroyLock sync.Mutex
 
 // WidgetSignalDestroyCallback is a callback function for a 'destroy' signal emitted from a Widget.
 type WidgetSignalDestroyCallback func()
@@ -23517,90 +23517,90 @@ func Widget_destroyHandler() {}
 
 // Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
 
-var signalDirectionChangedId int
-var signalDirectionChangedMap = make(map[int]WidgetSignalDirectionChangedCallback)
-var signalDirectionChangedLock sync.Mutex
+var signalWidgetDirectionChangedId int
+var signalWidgetDirectionChangedMap = make(map[int]WidgetSignalDirectionChangedCallback)
+var signalWidgetDirectionChangedLock sync.Mutex
 
 // WidgetSignalDirectionChangedCallback is a callback function for a 'direction-changed' signal emitted from a Widget.
 type WidgetSignalDirectionChangedCallback func(previousDirection TextDirection)
 
 func Widget_directionChangedHandler() {}
 
-var signalDragBeginId int
-var signalDragBeginMap = make(map[int]WidgetSignalDragBeginCallback)
-var signalDragBeginLock sync.Mutex
+var signalWidgetDragBeginId int
+var signalWidgetDragBeginMap = make(map[int]WidgetSignalDragBeginCallback)
+var signalWidgetDragBeginLock sync.Mutex
 
 // WidgetSignalDragBeginCallback is a callback function for a 'drag-begin' signal emitted from a Widget.
 type WidgetSignalDragBeginCallback func(context *gdk.DragContext)
 
 func Widget_dragBeginHandler() {}
 
-var signalDragDataDeleteId int
-var signalDragDataDeleteMap = make(map[int]WidgetSignalDragDataDeleteCallback)
-var signalDragDataDeleteLock sync.Mutex
+var signalWidgetDragDataDeleteId int
+var signalWidgetDragDataDeleteMap = make(map[int]WidgetSignalDragDataDeleteCallback)
+var signalWidgetDragDataDeleteLock sync.Mutex
 
 // WidgetSignalDragDataDeleteCallback is a callback function for a 'drag-data-delete' signal emitted from a Widget.
 type WidgetSignalDragDataDeleteCallback func(context *gdk.DragContext)
 
 func Widget_dragDataDeleteHandler() {}
 
-var signalDragDataGetId int
-var signalDragDataGetMap = make(map[int]WidgetSignalDragDataGetCallback)
-var signalDragDataGetLock sync.Mutex
+var signalWidgetDragDataGetId int
+var signalWidgetDragDataGetMap = make(map[int]WidgetSignalDragDataGetCallback)
+var signalWidgetDragDataGetLock sync.Mutex
 
 // WidgetSignalDragDataGetCallback is a callback function for a 'drag-data-get' signal emitted from a Widget.
 type WidgetSignalDragDataGetCallback func(context *gdk.DragContext, data *SelectionData, info uint32, time uint32)
 
 func Widget_dragDataGetHandler() {}
 
-var signalDragDataReceivedId int
-var signalDragDataReceivedMap = make(map[int]WidgetSignalDragDataReceivedCallback)
-var signalDragDataReceivedLock sync.Mutex
+var signalWidgetDragDataReceivedId int
+var signalWidgetDragDataReceivedMap = make(map[int]WidgetSignalDragDataReceivedCallback)
+var signalWidgetDragDataReceivedLock sync.Mutex
 
 // WidgetSignalDragDataReceivedCallback is a callback function for a 'drag-data-received' signal emitted from a Widget.
 type WidgetSignalDragDataReceivedCallback func(context *gdk.DragContext, x int32, y int32, data *SelectionData, info uint32, time uint32)
 
 func Widget_dragDataReceivedHandler() {}
 
-var signalDragDropId int
-var signalDragDropMap = make(map[int]WidgetSignalDragDropCallback)
-var signalDragDropLock sync.Mutex
+var signalWidgetDragDropId int
+var signalWidgetDragDropMap = make(map[int]WidgetSignalDragDropCallback)
+var signalWidgetDragDropLock sync.Mutex
 
 // WidgetSignalDragDropCallback is a callback function for a 'drag-drop' signal emitted from a Widget.
 type WidgetSignalDragDropCallback func(context *gdk.DragContext, x int32, y int32, time uint32) bool
 
 func Widget_dragDropHandler() {}
 
-var signalDragEndId int
-var signalDragEndMap = make(map[int]WidgetSignalDragEndCallback)
-var signalDragEndLock sync.Mutex
+var signalWidgetDragEndId int
+var signalWidgetDragEndMap = make(map[int]WidgetSignalDragEndCallback)
+var signalWidgetDragEndLock sync.Mutex
 
 // WidgetSignalDragEndCallback is a callback function for a 'drag-end' signal emitted from a Widget.
 type WidgetSignalDragEndCallback func(context *gdk.DragContext)
 
 func Widget_dragEndHandler() {}
 
-var signalDragLeaveId int
-var signalDragLeaveMap = make(map[int]WidgetSignalDragLeaveCallback)
-var signalDragLeaveLock sync.Mutex
+var signalWidgetDragLeaveId int
+var signalWidgetDragLeaveMap = make(map[int]WidgetSignalDragLeaveCallback)
+var signalWidgetDragLeaveLock sync.Mutex
 
 // WidgetSignalDragLeaveCallback is a callback function for a 'drag-leave' signal emitted from a Widget.
 type WidgetSignalDragLeaveCallback func(context *gdk.DragContext, time uint32)
 
 func Widget_dragLeaveHandler() {}
 
-var signalDragMotionId int
-var signalDragMotionMap = make(map[int]WidgetSignalDragMotionCallback)
-var signalDragMotionLock sync.Mutex
+var signalWidgetDragMotionId int
+var signalWidgetDragMotionMap = make(map[int]WidgetSignalDragMotionCallback)
+var signalWidgetDragMotionLock sync.Mutex
 
 // WidgetSignalDragMotionCallback is a callback function for a 'drag-motion' signal emitted from a Widget.
 type WidgetSignalDragMotionCallback func(context *gdk.DragContext, x int32, y int32, time uint32) bool
 
 func Widget_dragMotionHandler() {}
 
-var signalEnterNotifyEventId int
-var signalEnterNotifyEventMap = make(map[int]WidgetSignalEnterNotifyEventCallback)
-var signalEnterNotifyEventLock sync.Mutex
+var signalWidgetEnterNotifyEventId int
+var signalWidgetEnterNotifyEventMap = make(map[int]WidgetSignalEnterNotifyEventCallback)
+var signalWidgetEnterNotifyEventLock sync.Mutex
 
 // WidgetSignalEnterNotifyEventCallback is a callback function for a 'enter-notify-event' signal emitted from a Widget.
 type WidgetSignalEnterNotifyEventCallback func(event *gdk.EventCrossing) bool
@@ -23611,270 +23611,270 @@ func Widget_enterNotifyEventHandler() {}
 
 // Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
 
-var signalFocusId int
-var signalFocusMap = make(map[int]WidgetSignalFocusCallback)
-var signalFocusLock sync.Mutex
+var signalWidgetFocusId int
+var signalWidgetFocusMap = make(map[int]WidgetSignalFocusCallback)
+var signalWidgetFocusLock sync.Mutex
 
 // WidgetSignalFocusCallback is a callback function for a 'focus' signal emitted from a Widget.
 type WidgetSignalFocusCallback func(direction DirectionType) bool
 
 func Widget_focusHandler() {}
 
-var signalFocusInEventId int
-var signalFocusInEventMap = make(map[int]WidgetSignalFocusInEventCallback)
-var signalFocusInEventLock sync.Mutex
+var signalWidgetFocusInEventId int
+var signalWidgetFocusInEventMap = make(map[int]WidgetSignalFocusInEventCallback)
+var signalWidgetFocusInEventLock sync.Mutex
 
 // WidgetSignalFocusInEventCallback is a callback function for a 'focus-in-event' signal emitted from a Widget.
 type WidgetSignalFocusInEventCallback func(event *gdk.EventFocus) bool
 
 func Widget_focusInEventHandler() {}
 
-var signalFocusOutEventId int
-var signalFocusOutEventMap = make(map[int]WidgetSignalFocusOutEventCallback)
-var signalFocusOutEventLock sync.Mutex
+var signalWidgetFocusOutEventId int
+var signalWidgetFocusOutEventMap = make(map[int]WidgetSignalFocusOutEventCallback)
+var signalWidgetFocusOutEventLock sync.Mutex
 
 // WidgetSignalFocusOutEventCallback is a callback function for a 'focus-out-event' signal emitted from a Widget.
 type WidgetSignalFocusOutEventCallback func(event *gdk.EventFocus) bool
 
 func Widget_focusOutEventHandler() {}
 
-var signalGrabFocusId int
-var signalGrabFocusMap = make(map[int]WidgetSignalGrabFocusCallback)
-var signalGrabFocusLock sync.Mutex
+var signalWidgetGrabFocusId int
+var signalWidgetGrabFocusMap = make(map[int]WidgetSignalGrabFocusCallback)
+var signalWidgetGrabFocusLock sync.Mutex
 
 // WidgetSignalGrabFocusCallback is a callback function for a 'grab-focus' signal emitted from a Widget.
 type WidgetSignalGrabFocusCallback func()
 
 func Widget_grabFocusHandler() {}
 
-var signalGrabNotifyId int
-var signalGrabNotifyMap = make(map[int]WidgetSignalGrabNotifyCallback)
-var signalGrabNotifyLock sync.Mutex
+var signalWidgetGrabNotifyId int
+var signalWidgetGrabNotifyMap = make(map[int]WidgetSignalGrabNotifyCallback)
+var signalWidgetGrabNotifyLock sync.Mutex
 
 // WidgetSignalGrabNotifyCallback is a callback function for a 'grab-notify' signal emitted from a Widget.
 type WidgetSignalGrabNotifyCallback func(wasGrabbed bool)
 
 func Widget_grabNotifyHandler() {}
 
-var signalHideId int
-var signalHideMap = make(map[int]WidgetSignalHideCallback)
-var signalHideLock sync.Mutex
+var signalWidgetHideId int
+var signalWidgetHideMap = make(map[int]WidgetSignalHideCallback)
+var signalWidgetHideLock sync.Mutex
 
 // WidgetSignalHideCallback is a callback function for a 'hide' signal emitted from a Widget.
 type WidgetSignalHideCallback func()
 
 func Widget_hideHandler() {}
 
-var signalHierarchyChangedId int
-var signalHierarchyChangedMap = make(map[int]WidgetSignalHierarchyChangedCallback)
-var signalHierarchyChangedLock sync.Mutex
+var signalWidgetHierarchyChangedId int
+var signalWidgetHierarchyChangedMap = make(map[int]WidgetSignalHierarchyChangedCallback)
+var signalWidgetHierarchyChangedLock sync.Mutex
 
 // WidgetSignalHierarchyChangedCallback is a callback function for a 'hierarchy-changed' signal emitted from a Widget.
 type WidgetSignalHierarchyChangedCallback func(previousToplevel *Widget)
 
 func Widget_hierarchyChangedHandler() {}
 
-var signalKeyPressEventId int
-var signalKeyPressEventMap = make(map[int]WidgetSignalKeyPressEventCallback)
-var signalKeyPressEventLock sync.Mutex
+var signalWidgetKeyPressEventId int
+var signalWidgetKeyPressEventMap = make(map[int]WidgetSignalKeyPressEventCallback)
+var signalWidgetKeyPressEventLock sync.Mutex
 
 // WidgetSignalKeyPressEventCallback is a callback function for a 'key-press-event' signal emitted from a Widget.
 type WidgetSignalKeyPressEventCallback func(event *gdk.EventKey) bool
 
 func Widget_keyPressEventHandler() {}
 
-var signalKeyReleaseEventId int
-var signalKeyReleaseEventMap = make(map[int]WidgetSignalKeyReleaseEventCallback)
-var signalKeyReleaseEventLock sync.Mutex
+var signalWidgetKeyReleaseEventId int
+var signalWidgetKeyReleaseEventMap = make(map[int]WidgetSignalKeyReleaseEventCallback)
+var signalWidgetKeyReleaseEventLock sync.Mutex
 
 // WidgetSignalKeyReleaseEventCallback is a callback function for a 'key-release-event' signal emitted from a Widget.
 type WidgetSignalKeyReleaseEventCallback func(event *gdk.EventKey) bool
 
 func Widget_keyReleaseEventHandler() {}
 
-var signalLeaveNotifyEventId int
-var signalLeaveNotifyEventMap = make(map[int]WidgetSignalLeaveNotifyEventCallback)
-var signalLeaveNotifyEventLock sync.Mutex
+var signalWidgetLeaveNotifyEventId int
+var signalWidgetLeaveNotifyEventMap = make(map[int]WidgetSignalLeaveNotifyEventCallback)
+var signalWidgetLeaveNotifyEventLock sync.Mutex
 
 // WidgetSignalLeaveNotifyEventCallback is a callback function for a 'leave-notify-event' signal emitted from a Widget.
 type WidgetSignalLeaveNotifyEventCallback func(event *gdk.EventCrossing) bool
 
 func Widget_leaveNotifyEventHandler() {}
 
-var signalMapId int
-var signalMapMap = make(map[int]WidgetSignalMapCallback)
-var signalMapLock sync.Mutex
+var signalWidgetMapId int
+var signalWidgetMapMap = make(map[int]WidgetSignalMapCallback)
+var signalWidgetMapLock sync.Mutex
 
 // WidgetSignalMapCallback is a callback function for a 'map' signal emitted from a Widget.
 type WidgetSignalMapCallback func()
 
 func Widget_mapHandler() {}
 
-var signalMapEventId int
-var signalMapEventMap = make(map[int]WidgetSignalMapEventCallback)
-var signalMapEventLock sync.Mutex
+var signalWidgetMapEventId int
+var signalWidgetMapEventMap = make(map[int]WidgetSignalMapEventCallback)
+var signalWidgetMapEventLock sync.Mutex
 
 // WidgetSignalMapEventCallback is a callback function for a 'map-event' signal emitted from a Widget.
 type WidgetSignalMapEventCallback func(event *gdk.EventAny) bool
 
 func Widget_mapEventHandler() {}
 
-var signalMnemonicActivateId int
-var signalMnemonicActivateMap = make(map[int]WidgetSignalMnemonicActivateCallback)
-var signalMnemonicActivateLock sync.Mutex
+var signalWidgetMnemonicActivateId int
+var signalWidgetMnemonicActivateMap = make(map[int]WidgetSignalMnemonicActivateCallback)
+var signalWidgetMnemonicActivateLock sync.Mutex
 
 // WidgetSignalMnemonicActivateCallback is a callback function for a 'mnemonic-activate' signal emitted from a Widget.
 type WidgetSignalMnemonicActivateCallback func(groupCycling bool) bool
 
 func Widget_mnemonicActivateHandler() {}
 
-var signalMotionNotifyEventId int
-var signalMotionNotifyEventMap = make(map[int]WidgetSignalMotionNotifyEventCallback)
-var signalMotionNotifyEventLock sync.Mutex
+var signalWidgetMotionNotifyEventId int
+var signalWidgetMotionNotifyEventMap = make(map[int]WidgetSignalMotionNotifyEventCallback)
+var signalWidgetMotionNotifyEventLock sync.Mutex
 
 // WidgetSignalMotionNotifyEventCallback is a callback function for a 'motion-notify-event' signal emitted from a Widget.
 type WidgetSignalMotionNotifyEventCallback func(event *gdk.EventMotion) bool
 
 func Widget_motionNotifyEventHandler() {}
 
-var signalMoveFocusId int
-var signalMoveFocusMap = make(map[int]WidgetSignalMoveFocusCallback)
-var signalMoveFocusLock sync.Mutex
+var signalWidgetMoveFocusId int
+var signalWidgetMoveFocusMap = make(map[int]WidgetSignalMoveFocusCallback)
+var signalWidgetMoveFocusLock sync.Mutex
 
 // WidgetSignalMoveFocusCallback is a callback function for a 'move-focus' signal emitted from a Widget.
 type WidgetSignalMoveFocusCallback func(direction DirectionType)
 
 func Widget_moveFocusHandler() {}
 
-var signalParentSetId int
-var signalParentSetMap = make(map[int]WidgetSignalParentSetCallback)
-var signalParentSetLock sync.Mutex
+var signalWidgetParentSetId int
+var signalWidgetParentSetMap = make(map[int]WidgetSignalParentSetCallback)
+var signalWidgetParentSetLock sync.Mutex
 
 // WidgetSignalParentSetCallback is a callback function for a 'parent-set' signal emitted from a Widget.
 type WidgetSignalParentSetCallback func(oldParent *Widget)
 
 func Widget_parentSetHandler() {}
 
-var signalPopupMenuId int
-var signalPopupMenuMap = make(map[int]WidgetSignalPopupMenuCallback)
-var signalPopupMenuLock sync.Mutex
+var signalWidgetPopupMenuId int
+var signalWidgetPopupMenuMap = make(map[int]WidgetSignalPopupMenuCallback)
+var signalWidgetPopupMenuLock sync.Mutex
 
 // WidgetSignalPopupMenuCallback is a callback function for a 'popup-menu' signal emitted from a Widget.
 type WidgetSignalPopupMenuCallback func() bool
 
 func Widget_popupMenuHandler() {}
 
-var signalPropertyNotifyEventId int
-var signalPropertyNotifyEventMap = make(map[int]WidgetSignalPropertyNotifyEventCallback)
-var signalPropertyNotifyEventLock sync.Mutex
+var signalWidgetPropertyNotifyEventId int
+var signalWidgetPropertyNotifyEventMap = make(map[int]WidgetSignalPropertyNotifyEventCallback)
+var signalWidgetPropertyNotifyEventLock sync.Mutex
 
 // WidgetSignalPropertyNotifyEventCallback is a callback function for a 'property-notify-event' signal emitted from a Widget.
 type WidgetSignalPropertyNotifyEventCallback func(event *gdk.EventProperty) bool
 
 func Widget_propertyNotifyEventHandler() {}
 
-var signalProximityInEventId int
-var signalProximityInEventMap = make(map[int]WidgetSignalProximityInEventCallback)
-var signalProximityInEventLock sync.Mutex
+var signalWidgetProximityInEventId int
+var signalWidgetProximityInEventMap = make(map[int]WidgetSignalProximityInEventCallback)
+var signalWidgetProximityInEventLock sync.Mutex
 
 // WidgetSignalProximityInEventCallback is a callback function for a 'proximity-in-event' signal emitted from a Widget.
 type WidgetSignalProximityInEventCallback func(event *gdk.EventProximity) bool
 
 func Widget_proximityInEventHandler() {}
 
-var signalProximityOutEventId int
-var signalProximityOutEventMap = make(map[int]WidgetSignalProximityOutEventCallback)
-var signalProximityOutEventLock sync.Mutex
+var signalWidgetProximityOutEventId int
+var signalWidgetProximityOutEventMap = make(map[int]WidgetSignalProximityOutEventCallback)
+var signalWidgetProximityOutEventLock sync.Mutex
 
 // WidgetSignalProximityOutEventCallback is a callback function for a 'proximity-out-event' signal emitted from a Widget.
 type WidgetSignalProximityOutEventCallback func(event *gdk.EventProximity) bool
 
 func Widget_proximityOutEventHandler() {}
 
-var signalRealizeId int
-var signalRealizeMap = make(map[int]WidgetSignalRealizeCallback)
-var signalRealizeLock sync.Mutex
+var signalWidgetRealizeId int
+var signalWidgetRealizeMap = make(map[int]WidgetSignalRealizeCallback)
+var signalWidgetRealizeLock sync.Mutex
 
 // WidgetSignalRealizeCallback is a callback function for a 'realize' signal emitted from a Widget.
 type WidgetSignalRealizeCallback func()
 
 func Widget_realizeHandler() {}
 
-var signalScreenChangedId int
-var signalScreenChangedMap = make(map[int]WidgetSignalScreenChangedCallback)
-var signalScreenChangedLock sync.Mutex
+var signalWidgetScreenChangedId int
+var signalWidgetScreenChangedMap = make(map[int]WidgetSignalScreenChangedCallback)
+var signalWidgetScreenChangedLock sync.Mutex
 
 // WidgetSignalScreenChangedCallback is a callback function for a 'screen-changed' signal emitted from a Widget.
 type WidgetSignalScreenChangedCallback func(previousScreen *gdk.Screen)
 
 func Widget_screenChangedHandler() {}
 
-var signalScrollEventId int
-var signalScrollEventMap = make(map[int]WidgetSignalScrollEventCallback)
-var signalScrollEventLock sync.Mutex
+var signalWidgetScrollEventId int
+var signalWidgetScrollEventMap = make(map[int]WidgetSignalScrollEventCallback)
+var signalWidgetScrollEventLock sync.Mutex
 
 // WidgetSignalScrollEventCallback is a callback function for a 'scroll-event' signal emitted from a Widget.
 type WidgetSignalScrollEventCallback func(event *gdk.EventScroll) bool
 
 func Widget_scrollEventHandler() {}
 
-var signalSelectionClearEventId int
-var signalSelectionClearEventMap = make(map[int]WidgetSignalSelectionClearEventCallback)
-var signalSelectionClearEventLock sync.Mutex
+var signalWidgetSelectionClearEventId int
+var signalWidgetSelectionClearEventMap = make(map[int]WidgetSignalSelectionClearEventCallback)
+var signalWidgetSelectionClearEventLock sync.Mutex
 
 // WidgetSignalSelectionClearEventCallback is a callback function for a 'selection-clear-event' signal emitted from a Widget.
 type WidgetSignalSelectionClearEventCallback func(event *gdk.EventSelection) bool
 
 func Widget_selectionClearEventHandler() {}
 
-var signalSelectionGetId int
-var signalSelectionGetMap = make(map[int]WidgetSignalSelectionGetCallback)
-var signalSelectionGetLock sync.Mutex
+var signalWidgetSelectionGetId int
+var signalWidgetSelectionGetMap = make(map[int]WidgetSignalSelectionGetCallback)
+var signalWidgetSelectionGetLock sync.Mutex
 
 // WidgetSignalSelectionGetCallback is a callback function for a 'selection-get' signal emitted from a Widget.
 type WidgetSignalSelectionGetCallback func(data *SelectionData, info uint32, time uint32)
 
 func Widget_selectionGetHandler() {}
 
-var signalSelectionNotifyEventId int
-var signalSelectionNotifyEventMap = make(map[int]WidgetSignalSelectionNotifyEventCallback)
-var signalSelectionNotifyEventLock sync.Mutex
+var signalWidgetSelectionNotifyEventId int
+var signalWidgetSelectionNotifyEventMap = make(map[int]WidgetSignalSelectionNotifyEventCallback)
+var signalWidgetSelectionNotifyEventLock sync.Mutex
 
 // WidgetSignalSelectionNotifyEventCallback is a callback function for a 'selection-notify-event' signal emitted from a Widget.
 type WidgetSignalSelectionNotifyEventCallback func(event *gdk.EventSelection) bool
 
 func Widget_selectionNotifyEventHandler() {}
 
-var signalSelectionReceivedId int
-var signalSelectionReceivedMap = make(map[int]WidgetSignalSelectionReceivedCallback)
-var signalSelectionReceivedLock sync.Mutex
+var signalWidgetSelectionReceivedId int
+var signalWidgetSelectionReceivedMap = make(map[int]WidgetSignalSelectionReceivedCallback)
+var signalWidgetSelectionReceivedLock sync.Mutex
 
 // WidgetSignalSelectionReceivedCallback is a callback function for a 'selection-received' signal emitted from a Widget.
 type WidgetSignalSelectionReceivedCallback func(data *SelectionData, time uint32)
 
 func Widget_selectionReceivedHandler() {}
 
-var signalSelectionRequestEventId int
-var signalSelectionRequestEventMap = make(map[int]WidgetSignalSelectionRequestEventCallback)
-var signalSelectionRequestEventLock sync.Mutex
+var signalWidgetSelectionRequestEventId int
+var signalWidgetSelectionRequestEventMap = make(map[int]WidgetSignalSelectionRequestEventCallback)
+var signalWidgetSelectionRequestEventLock sync.Mutex
 
 // WidgetSignalSelectionRequestEventCallback is a callback function for a 'selection-request-event' signal emitted from a Widget.
 type WidgetSignalSelectionRequestEventCallback func(event *gdk.EventSelection) bool
 
 func Widget_selectionRequestEventHandler() {}
 
-var signalShowId int
-var signalShowMap = make(map[int]WidgetSignalShowCallback)
-var signalShowLock sync.Mutex
+var signalWidgetShowId int
+var signalWidgetShowMap = make(map[int]WidgetSignalShowCallback)
+var signalWidgetShowLock sync.Mutex
 
 // WidgetSignalShowCallback is a callback function for a 'show' signal emitted from a Widget.
 type WidgetSignalShowCallback func()
 
 func Widget_showHandler() {}
 
-var signalShowHelpId int
-var signalShowHelpMap = make(map[int]WidgetSignalShowHelpCallback)
-var signalShowHelpLock sync.Mutex
+var signalWidgetShowHelpId int
+var signalWidgetShowHelpMap = make(map[int]WidgetSignalShowHelpCallback)
+var signalWidgetShowHelpLock sync.Mutex
 
 // WidgetSignalShowHelpCallback is a callback function for a 'show-help' signal emitted from a Widget.
 type WidgetSignalShowHelpCallback func(helpType WidgetHelpType) bool
@@ -23883,18 +23883,18 @@ func Widget_showHelpHandler() {}
 
 // Unsupported signal : unsupported parameter allocation : Blacklisted record : GdkRectangle
 
-var signalStateChangedId int
-var signalStateChangedMap = make(map[int]WidgetSignalStateChangedCallback)
-var signalStateChangedLock sync.Mutex
+var signalWidgetStateChangedId int
+var signalWidgetStateChangedMap = make(map[int]WidgetSignalStateChangedCallback)
+var signalWidgetStateChangedLock sync.Mutex
 
 // WidgetSignalStateChangedCallback is a callback function for a 'state-changed' signal emitted from a Widget.
 type WidgetSignalStateChangedCallback func(state StateType)
 
 func Widget_stateChangedHandler() {}
 
-var signalStyleSetId int
-var signalStyleSetMap = make(map[int]WidgetSignalStyleSetCallback)
-var signalStyleSetLock sync.Mutex
+var signalWidgetStyleSetId int
+var signalWidgetStyleSetMap = make(map[int]WidgetSignalStyleSetCallback)
+var signalWidgetStyleSetLock sync.Mutex
 
 // WidgetSignalStyleSetCallback is a callback function for a 'style-set' signal emitted from a Widget.
 type WidgetSignalStyleSetCallback func(previousStyle *Style)
@@ -23903,45 +23903,45 @@ func Widget_styleSetHandler() {}
 
 // Unsupported signal : unsupported parameter object : no type generator for Gdk.Event,
 
-var signalUnmapId int
-var signalUnmapMap = make(map[int]WidgetSignalUnmapCallback)
-var signalUnmapLock sync.Mutex
+var signalWidgetUnmapId int
+var signalWidgetUnmapMap = make(map[int]WidgetSignalUnmapCallback)
+var signalWidgetUnmapLock sync.Mutex
 
 // WidgetSignalUnmapCallback is a callback function for a 'unmap' signal emitted from a Widget.
 type WidgetSignalUnmapCallback func()
 
 func Widget_unmapHandler() {}
 
-var signalUnmapEventId int
-var signalUnmapEventMap = make(map[int]WidgetSignalUnmapEventCallback)
-var signalUnmapEventLock sync.Mutex
+var signalWidgetUnmapEventId int
+var signalWidgetUnmapEventMap = make(map[int]WidgetSignalUnmapEventCallback)
+var signalWidgetUnmapEventLock sync.Mutex
 
 // WidgetSignalUnmapEventCallback is a callback function for a 'unmap-event' signal emitted from a Widget.
 type WidgetSignalUnmapEventCallback func(event *gdk.EventAny) bool
 
 func Widget_unmapEventHandler() {}
 
-var signalUnrealizeId int
-var signalUnrealizeMap = make(map[int]WidgetSignalUnrealizeCallback)
-var signalUnrealizeLock sync.Mutex
+var signalWidgetUnrealizeId int
+var signalWidgetUnrealizeMap = make(map[int]WidgetSignalUnrealizeCallback)
+var signalWidgetUnrealizeLock sync.Mutex
 
 // WidgetSignalUnrealizeCallback is a callback function for a 'unrealize' signal emitted from a Widget.
 type WidgetSignalUnrealizeCallback func()
 
 func Widget_unrealizeHandler() {}
 
-var signalVisibilityNotifyEventId int
-var signalVisibilityNotifyEventMap = make(map[int]WidgetSignalVisibilityNotifyEventCallback)
-var signalVisibilityNotifyEventLock sync.Mutex
+var signalWidgetVisibilityNotifyEventId int
+var signalWidgetVisibilityNotifyEventMap = make(map[int]WidgetSignalVisibilityNotifyEventCallback)
+var signalWidgetVisibilityNotifyEventLock sync.Mutex
 
 // WidgetSignalVisibilityNotifyEventCallback is a callback function for a 'visibility-notify-event' signal emitted from a Widget.
 type WidgetSignalVisibilityNotifyEventCallback func(event *gdk.EventVisibility) bool
 
 func Widget_visibilityNotifyEventHandler() {}
 
-var signalWindowStateEventId int
-var signalWindowStateEventMap = make(map[int]WidgetSignalWindowStateEventCallback)
-var signalWindowStateEventLock sync.Mutex
+var signalWidgetWindowStateEventId int
+var signalWidgetWindowStateEventMap = make(map[int]WidgetSignalWindowStateEventCallback)
+var signalWidgetWindowStateEventLock sync.Mutex
 
 // WidgetSignalWindowStateEventCallback is a callback function for a 'window-state-event' signal emitted from a Widget.
 type WidgetSignalWindowStateEventCallback func(event *gdk.EventWindowState) bool
@@ -25104,45 +25104,45 @@ func CastToWindow(object *gobject.Object) *Window {
 	return WindowNewFromC(object.ToC())
 }
 
-var signalActivateDefaultId int
-var signalActivateDefaultMap = make(map[int]WindowSignalActivateDefaultCallback)
-var signalActivateDefaultLock sync.Mutex
+var signalWindowActivateDefaultId int
+var signalWindowActivateDefaultMap = make(map[int]WindowSignalActivateDefaultCallback)
+var signalWindowActivateDefaultLock sync.Mutex
 
 // WindowSignalActivateDefaultCallback is a callback function for a 'activate-default' signal emitted from a Window.
 type WindowSignalActivateDefaultCallback func()
 
 func Window_activateDefaultHandler() {}
 
-var signalActivateFocusId int
-var signalActivateFocusMap = make(map[int]WindowSignalActivateFocusCallback)
-var signalActivateFocusLock sync.Mutex
+var signalWindowActivateFocusId int
+var signalWindowActivateFocusMap = make(map[int]WindowSignalActivateFocusCallback)
+var signalWindowActivateFocusLock sync.Mutex
 
 // WindowSignalActivateFocusCallback is a callback function for a 'activate-focus' signal emitted from a Window.
 type WindowSignalActivateFocusCallback func()
 
 func Window_activateFocusHandler() {}
 
-var signalEnableDebuggingId int
-var signalEnableDebuggingMap = make(map[int]WindowSignalEnableDebuggingCallback)
-var signalEnableDebuggingLock sync.Mutex
+var signalWindowEnableDebuggingId int
+var signalWindowEnableDebuggingMap = make(map[int]WindowSignalEnableDebuggingCallback)
+var signalWindowEnableDebuggingLock sync.Mutex
 
 // WindowSignalEnableDebuggingCallback is a callback function for a 'enable-debugging' signal emitted from a Window.
 type WindowSignalEnableDebuggingCallback func(toggle bool) bool
 
 func Window_enableDebuggingHandler() {}
 
-var signalKeysChangedId int
-var signalKeysChangedMap = make(map[int]WindowSignalKeysChangedCallback)
-var signalKeysChangedLock sync.Mutex
+var signalWindowKeysChangedId int
+var signalWindowKeysChangedMap = make(map[int]WindowSignalKeysChangedCallback)
+var signalWindowKeysChangedLock sync.Mutex
 
 // WindowSignalKeysChangedCallback is a callback function for a 'keys-changed' signal emitted from a Window.
 type WindowSignalKeysChangedCallback func()
 
 func Window_keysChangedHandler() {}
 
-var signalSetFocusId int
-var signalSetFocusMap = make(map[int]WindowSignalSetFocusCallback)
-var signalSetFocusLock sync.Mutex
+var signalWindowSetFocusId int
+var signalWindowSetFocusMap = make(map[int]WindowSignalSetFocusCallback)
+var signalWindowSetFocusLock sync.Mutex
 
 // WindowSignalSetFocusCallback is a callback function for a 'set-focus' signal emitted from a Window.
 type WindowSignalSetFocusCallback func(object *Widget)

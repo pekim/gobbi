@@ -19,9 +19,9 @@ import "sync"
 */
 import "C"
 
-var signalStateChangedId int
-var signalStateChangedMap = make(map[int]KeymapSignalStateChangedCallback)
-var signalStateChangedLock sync.Mutex
+var signalKeymapStateChangedId int
+var signalKeymapStateChangedMap = make(map[int]KeymapSignalStateChangedCallback)
+var signalKeymapStateChangedLock sync.Mutex
 
 // KeymapSignalStateChangedCallback is a callback function for a 'state-changed' signal emitted from a Keymap.
 type KeymapSignalStateChangedCallback func()

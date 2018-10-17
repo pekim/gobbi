@@ -271,27 +271,27 @@ func (recv *Builder) SetTranslationDomain(domain string) {
 
 // Unsupported signal : unsupported parameter editable : no type generator for CellEditable,
 
-var signalMoveActiveId int
-var signalMoveActiveMap = make(map[int]ComboBoxSignalMoveActiveCallback)
-var signalMoveActiveLock sync.Mutex
+var signalComboBoxMoveActiveId int
+var signalComboBoxMoveActiveMap = make(map[int]ComboBoxSignalMoveActiveCallback)
+var signalComboBoxMoveActiveLock sync.Mutex
 
 // ComboBoxSignalMoveActiveCallback is a callback function for a 'move-active' signal emitted from a ComboBox.
 type ComboBoxSignalMoveActiveCallback func(scrollType ScrollType)
 
 func ComboBox_moveActiveHandler() {}
 
-var signalPopdownId int
-var signalPopdownMap = make(map[int]ComboBoxSignalPopdownCallback)
-var signalPopdownLock sync.Mutex
+var signalComboBoxPopdownId int
+var signalComboBoxPopdownMap = make(map[int]ComboBoxSignalPopdownCallback)
+var signalComboBoxPopdownLock sync.Mutex
 
 // ComboBoxSignalPopdownCallback is a callback function for a 'popdown' signal emitted from a ComboBox.
 type ComboBoxSignalPopdownCallback func() bool
 
 func ComboBox_popdownHandler() {}
 
-var signalPopupId int
-var signalPopupMap = make(map[int]ComboBoxSignalPopupCallback)
-var signalPopupLock sync.Mutex
+var signalComboBoxPopupId int
+var signalComboBoxPopupMap = make(map[int]ComboBoxSignalPopupCallback)
+var signalComboBoxPopupLock sync.Mutex
 
 // ComboBoxSignalPopupCallback is a callback function for a 'popup' signal emitted from a ComboBox.
 type ComboBoxSignalPopupCallback func()
@@ -353,9 +353,9 @@ func (recv *EntryCompletion) SetInlineSelection(inlineSelection bool) {
 
 // Unsupported : EntryIconAccessible : no CType
 
-var signalFileSetId int
-var signalFileSetMap = make(map[int]FileChooserButtonSignalFileSetCallback)
-var signalFileSetLock sync.Mutex
+var signalFileChooserButtonFileSetId int
+var signalFileChooserButtonFileSetMap = make(map[int]FileChooserButtonSignalFileSetCallback)
+var signalFileChooserButtonFileSetLock sync.Mutex
 
 // FileChooserButtonSignalFileSetCallback is a callback function for a 'file-set' signal emitted from a FileChooserButton.
 type FileChooserButtonSignalFileSetCallback func()
@@ -456,9 +456,9 @@ func (recv *IconView) SetTooltipItem(tooltip *Tooltip, path *TreePath) {
 
 // Unsupported : gtk_list_store_set_valuesv : unsupported parameter columns : no param type
 
-var signalMoveSelectedId int
-var signalMoveSelectedMap = make(map[int]MenuShellSignalMoveSelectedCallback)
-var signalMoveSelectedLock sync.Mutex
+var signalMenuShellMoveSelectedId int
+var signalMenuShellMoveSelectedMap = make(map[int]MenuShellSignalMoveSelectedCallback)
+var signalMenuShellMoveSelectedLock sync.Mutex
 
 // MenuShellSignalMoveSelectedCallback is a callback function for a 'move-selected' signal emitted from a MenuShell.
 type MenuShellSignalMoveSelectedCallback func(distance int32) bool
@@ -489,9 +489,9 @@ func (recv *MenuToolButton) SetArrowTooltipText(text string) {
 
 // Unsupported : gtk_message_dialog_new_with_markup : unsupported parameter ... : varargs
 
-var signalCreateWindowId int
-var signalCreateWindowMap = make(map[int]NotebookSignalCreateWindowCallback)
-var signalCreateWindowLock sync.Mutex
+var signalNotebookCreateWindowId int
+var signalNotebookCreateWindowMap = make(map[int]NotebookSignalCreateWindowCallback)
+var signalNotebookCreateWindowLock sync.Mutex
 
 // NotebookSignalCreateWindowCallback is a callback function for a 'create-window' signal emitted from a Notebook.
 type NotebookSignalCreateWindowCallback func(page *Widget, x int32, y int32) Notebook
@@ -769,27 +769,27 @@ func (recv *RecentAction) SetShowNumbers(showNumbers bool) {
 
 // Unsupported : gtk_recent_chooser_dialog_new_for_manager : unsupported parameter ... : varargs
 
-var signalPopdownId int
-var signalPopdownMap = make(map[int]ScaleButtonSignalPopdownCallback)
-var signalPopdownLock sync.Mutex
+var signalScaleButtonPopdownId int
+var signalScaleButtonPopdownMap = make(map[int]ScaleButtonSignalPopdownCallback)
+var signalScaleButtonPopdownLock sync.Mutex
 
 // ScaleButtonSignalPopdownCallback is a callback function for a 'popdown' signal emitted from a ScaleButton.
 type ScaleButtonSignalPopdownCallback func()
 
 func ScaleButton_popdownHandler() {}
 
-var signalPopupId int
-var signalPopupMap = make(map[int]ScaleButtonSignalPopupCallback)
-var signalPopupLock sync.Mutex
+var signalScaleButtonPopupId int
+var signalScaleButtonPopupMap = make(map[int]ScaleButtonSignalPopupCallback)
+var signalScaleButtonPopupLock sync.Mutex
 
 // ScaleButtonSignalPopupCallback is a callback function for a 'popup' signal emitted from a ScaleButton.
 type ScaleButtonSignalPopupCallback func()
 
 func ScaleButton_popupHandler() {}
 
-var signalValueChangedId int
-var signalValueChangedMap = make(map[int]ScaleButtonSignalValueChangedCallback)
-var signalValueChangedLock sync.Mutex
+var signalScaleButtonValueChangedId int
+var signalScaleButtonValueChangedMap = make(map[int]ScaleButtonSignalValueChangedCallback)
+var signalScaleButtonValueChangedLock sync.Mutex
 
 // ScaleButtonSignalValueChangedCallback is a callback function for a 'value-changed' signal emitted from a ScaleButton.
 type ScaleButtonSignalValueChangedCallback func(value float64)
@@ -1176,9 +1176,9 @@ func VolumeButtonNew() *VolumeButton {
 
 // Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
 
-var signalDragFailedId int
-var signalDragFailedMap = make(map[int]WidgetSignalDragFailedCallback)
-var signalDragFailedLock sync.Mutex
+var signalWidgetDragFailedId int
+var signalWidgetDragFailedMap = make(map[int]WidgetSignalDragFailedCallback)
+var signalWidgetDragFailedLock sync.Mutex
 
 // WidgetSignalDragFailedCallback is a callback function for a 'drag-failed' signal emitted from a Widget.
 type WidgetSignalDragFailedCallback func(context *gdk.DragContext, result DragResult) bool
@@ -1189,18 +1189,18 @@ func Widget_dragFailedHandler() {}
 
 // Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
 
-var signalKeynavFailedId int
-var signalKeynavFailedMap = make(map[int]WidgetSignalKeynavFailedCallback)
-var signalKeynavFailedLock sync.Mutex
+var signalWidgetKeynavFailedId int
+var signalWidgetKeynavFailedMap = make(map[int]WidgetSignalKeynavFailedCallback)
+var signalWidgetKeynavFailedLock sync.Mutex
 
 // WidgetSignalKeynavFailedCallback is a callback function for a 'keynav-failed' signal emitted from a Widget.
 type WidgetSignalKeynavFailedCallback func(direction DirectionType) bool
 
 func Widget_keynavFailedHandler() {}
 
-var signalQueryTooltipId int
-var signalQueryTooltipMap = make(map[int]WidgetSignalQueryTooltipCallback)
-var signalQueryTooltipLock sync.Mutex
+var signalWidgetQueryTooltipId int
+var signalWidgetQueryTooltipMap = make(map[int]WidgetSignalQueryTooltipCallback)
+var signalWidgetQueryTooltipLock sync.Mutex
 
 // WidgetSignalQueryTooltipCallback is a callback function for a 'query-tooltip' signal emitted from a Widget.
 type WidgetSignalQueryTooltipCallback func(x int32, y int32, keyboardMode bool, tooltip *Tooltip) bool

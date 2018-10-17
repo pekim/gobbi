@@ -236,36 +236,36 @@ import "C"
 
 // Unsupported signal : unsupported parameter application : no type generator for Gio.AppInfo,
 
-var signalApplyId int
-var signalApplyMap = make(map[int]AssistantSignalApplyCallback)
-var signalApplyLock sync.Mutex
+var signalAssistantApplyId int
+var signalAssistantApplyMap = make(map[int]AssistantSignalApplyCallback)
+var signalAssistantApplyLock sync.Mutex
 
 // AssistantSignalApplyCallback is a callback function for a 'apply' signal emitted from a Assistant.
 type AssistantSignalApplyCallback func()
 
 func Assistant_applyHandler() {}
 
-var signalCancelId int
-var signalCancelMap = make(map[int]AssistantSignalCancelCallback)
-var signalCancelLock sync.Mutex
+var signalAssistantCancelId int
+var signalAssistantCancelMap = make(map[int]AssistantSignalCancelCallback)
+var signalAssistantCancelLock sync.Mutex
 
 // AssistantSignalCancelCallback is a callback function for a 'cancel' signal emitted from a Assistant.
 type AssistantSignalCancelCallback func()
 
 func Assistant_cancelHandler() {}
 
-var signalCloseId int
-var signalCloseMap = make(map[int]AssistantSignalCloseCallback)
-var signalCloseLock sync.Mutex
+var signalAssistantCloseId int
+var signalAssistantCloseMap = make(map[int]AssistantSignalCloseCallback)
+var signalAssistantCloseLock sync.Mutex
 
 // AssistantSignalCloseCallback is a callback function for a 'close' signal emitted from a Assistant.
 type AssistantSignalCloseCallback func()
 
 func Assistant_closeHandler() {}
 
-var signalPrepareId int
-var signalPrepareMap = make(map[int]AssistantSignalPrepareCallback)
-var signalPrepareLock sync.Mutex
+var signalAssistantPrepareId int
+var signalAssistantPrepareMap = make(map[int]AssistantSignalPrepareCallback)
+var signalAssistantPrepareLock sync.Mutex
 
 // AssistantSignalPrepareCallback is a callback function for a 'prepare' signal emitted from a Assistant.
 type AssistantSignalPrepareCallback func(page *Widget)
@@ -508,18 +508,18 @@ func (recv *Button) SetImagePosition(position PositionType) {
 
 // Unsupported signal : unsupported parameter editable : no type generator for CellEditable,
 
-var signalAccelClearedId int
-var signalAccelClearedMap = make(map[int]CellRendererAccelSignalAccelClearedCallback)
-var signalAccelClearedLock sync.Mutex
+var signalCellRendererAccelAccelClearedId int
+var signalCellRendererAccelAccelClearedMap = make(map[int]CellRendererAccelSignalAccelClearedCallback)
+var signalCellRendererAccelAccelClearedLock sync.Mutex
 
 // CellRendererAccelSignalAccelClearedCallback is a callback function for a 'accel-cleared' signal emitted from a CellRendererAccel.
 type CellRendererAccelSignalAccelClearedCallback func(pathString string)
 
 func CellRendererAccel_accelClearedHandler() {}
 
-var signalAccelEditedId int
-var signalAccelEditedMap = make(map[int]CellRendererAccelSignalAccelEditedCallback)
-var signalAccelEditedLock sync.Mutex
+var signalCellRendererAccelAccelEditedId int
+var signalCellRendererAccelAccelEditedMap = make(map[int]CellRendererAccelSignalAccelEditedCallback)
+var signalCellRendererAccelAccelEditedLock sync.Mutex
 
 // CellRendererAccelSignalAccelEditedCallback is a callback function for a 'accel-edited' signal emitted from a CellRendererAccel.
 type CellRendererAccelSignalAccelEditedCallback func(pathString string, accelKey uint32, accelMods gdk.ModifierType, hardwareKeycode uint32)
@@ -714,27 +714,27 @@ func (recv *MessageDialog) SetImage(image *Widget) {
 	return
 }
 
-var signalPageAddedId int
-var signalPageAddedMap = make(map[int]NotebookSignalPageAddedCallback)
-var signalPageAddedLock sync.Mutex
+var signalNotebookPageAddedId int
+var signalNotebookPageAddedMap = make(map[int]NotebookSignalPageAddedCallback)
+var signalNotebookPageAddedLock sync.Mutex
 
 // NotebookSignalPageAddedCallback is a callback function for a 'page-added' signal emitted from a Notebook.
 type NotebookSignalPageAddedCallback func(child *Widget, pageNum uint32)
 
 func Notebook_pageAddedHandler() {}
 
-var signalPageRemovedId int
-var signalPageRemovedMap = make(map[int]NotebookSignalPageRemovedCallback)
-var signalPageRemovedLock sync.Mutex
+var signalNotebookPageRemovedId int
+var signalNotebookPageRemovedMap = make(map[int]NotebookSignalPageRemovedCallback)
+var signalNotebookPageRemovedLock sync.Mutex
 
 // NotebookSignalPageRemovedCallback is a callback function for a 'page-removed' signal emitted from a Notebook.
 type NotebookSignalPageRemovedCallback func(child *Widget, pageNum uint32)
 
 func Notebook_pageRemovedHandler() {}
 
-var signalPageReorderedId int
-var signalPageReorderedMap = make(map[int]NotebookSignalPageReorderedCallback)
-var signalPageReorderedLock sync.Mutex
+var signalNotebookPageReorderedId int
+var signalNotebookPageReorderedMap = make(map[int]NotebookSignalPageReorderedCallback)
+var signalNotebookPageReorderedLock sync.Mutex
 
 // NotebookSignalPageReorderedCallback is a callback function for a 'page-reordered' signal emitted from a Notebook.
 type NotebookSignalPageReorderedCallback func(child *Widget, pageNum uint32)
@@ -1067,63 +1067,63 @@ func (recv *PrintContext) SetCairoContext(cr *cairo.Context, dpiX float64, dpiY 
 	return
 }
 
-var signalBeginPrintId int
-var signalBeginPrintMap = make(map[int]PrintOperationSignalBeginPrintCallback)
-var signalBeginPrintLock sync.Mutex
+var signalPrintOperationBeginPrintId int
+var signalPrintOperationBeginPrintMap = make(map[int]PrintOperationSignalBeginPrintCallback)
+var signalPrintOperationBeginPrintLock sync.Mutex
 
 // PrintOperationSignalBeginPrintCallback is a callback function for a 'begin-print' signal emitted from a PrintOperation.
 type PrintOperationSignalBeginPrintCallback func(context *PrintContext)
 
 func PrintOperation_beginPrintHandler() {}
 
-var signalCreateCustomWidgetId int
-var signalCreateCustomWidgetMap = make(map[int]PrintOperationSignalCreateCustomWidgetCallback)
-var signalCreateCustomWidgetLock sync.Mutex
+var signalPrintOperationCreateCustomWidgetId int
+var signalPrintOperationCreateCustomWidgetMap = make(map[int]PrintOperationSignalCreateCustomWidgetCallback)
+var signalPrintOperationCreateCustomWidgetLock sync.Mutex
 
 // PrintOperationSignalCreateCustomWidgetCallback is a callback function for a 'create-custom-widget' signal emitted from a PrintOperation.
 type PrintOperationSignalCreateCustomWidgetCallback func() gobject.Object
 
 func PrintOperation_createCustomWidgetHandler() {}
 
-var signalCustomWidgetApplyId int
-var signalCustomWidgetApplyMap = make(map[int]PrintOperationSignalCustomWidgetApplyCallback)
-var signalCustomWidgetApplyLock sync.Mutex
+var signalPrintOperationCustomWidgetApplyId int
+var signalPrintOperationCustomWidgetApplyMap = make(map[int]PrintOperationSignalCustomWidgetApplyCallback)
+var signalPrintOperationCustomWidgetApplyLock sync.Mutex
 
 // PrintOperationSignalCustomWidgetApplyCallback is a callback function for a 'custom-widget-apply' signal emitted from a PrintOperation.
 type PrintOperationSignalCustomWidgetApplyCallback func(widget *Widget)
 
 func PrintOperation_customWidgetApplyHandler() {}
 
-var signalDoneId int
-var signalDoneMap = make(map[int]PrintOperationSignalDoneCallback)
-var signalDoneLock sync.Mutex
+var signalPrintOperationDoneId int
+var signalPrintOperationDoneMap = make(map[int]PrintOperationSignalDoneCallback)
+var signalPrintOperationDoneLock sync.Mutex
 
 // PrintOperationSignalDoneCallback is a callback function for a 'done' signal emitted from a PrintOperation.
 type PrintOperationSignalDoneCallback func(result PrintOperationResult)
 
 func PrintOperation_doneHandler() {}
 
-var signalDrawPageId int
-var signalDrawPageMap = make(map[int]PrintOperationSignalDrawPageCallback)
-var signalDrawPageLock sync.Mutex
+var signalPrintOperationDrawPageId int
+var signalPrintOperationDrawPageMap = make(map[int]PrintOperationSignalDrawPageCallback)
+var signalPrintOperationDrawPageLock sync.Mutex
 
 // PrintOperationSignalDrawPageCallback is a callback function for a 'draw-page' signal emitted from a PrintOperation.
 type PrintOperationSignalDrawPageCallback func(context *PrintContext, pageNr int32)
 
 func PrintOperation_drawPageHandler() {}
 
-var signalEndPrintId int
-var signalEndPrintMap = make(map[int]PrintOperationSignalEndPrintCallback)
-var signalEndPrintLock sync.Mutex
+var signalPrintOperationEndPrintId int
+var signalPrintOperationEndPrintMap = make(map[int]PrintOperationSignalEndPrintCallback)
+var signalPrintOperationEndPrintLock sync.Mutex
 
 // PrintOperationSignalEndPrintCallback is a callback function for a 'end-print' signal emitted from a PrintOperation.
 type PrintOperationSignalEndPrintCallback func(context *PrintContext)
 
 func PrintOperation_endPrintHandler() {}
 
-var signalPaginateId int
-var signalPaginateMap = make(map[int]PrintOperationSignalPaginateCallback)
-var signalPaginateLock sync.Mutex
+var signalPrintOperationPaginateId int
+var signalPrintOperationPaginateMap = make(map[int]PrintOperationSignalPaginateCallback)
+var signalPrintOperationPaginateLock sync.Mutex
 
 // PrintOperationSignalPaginateCallback is a callback function for a 'paginate' signal emitted from a PrintOperation.
 type PrintOperationSignalPaginateCallback func(context *PrintContext) bool
@@ -1132,18 +1132,18 @@ func PrintOperation_paginateHandler() {}
 
 // Unsupported signal : unsupported parameter preview : no type generator for PrintOperationPreview,
 
-var signalRequestPageSetupId int
-var signalRequestPageSetupMap = make(map[int]PrintOperationSignalRequestPageSetupCallback)
-var signalRequestPageSetupLock sync.Mutex
+var signalPrintOperationRequestPageSetupId int
+var signalPrintOperationRequestPageSetupMap = make(map[int]PrintOperationSignalRequestPageSetupCallback)
+var signalPrintOperationRequestPageSetupLock sync.Mutex
 
 // PrintOperationSignalRequestPageSetupCallback is a callback function for a 'request-page-setup' signal emitted from a PrintOperation.
 type PrintOperationSignalRequestPageSetupCallback func(context *PrintContext, pageNr int32, setup *PageSetup)
 
 func PrintOperation_requestPageSetupHandler() {}
 
-var signalStatusChangedId int
-var signalStatusChangedMap = make(map[int]PrintOperationSignalStatusChangedCallback)
-var signalStatusChangedLock sync.Mutex
+var signalPrintOperationStatusChangedId int
+var signalPrintOperationStatusChangedMap = make(map[int]PrintOperationSignalStatusChangedCallback)
+var signalPrintOperationStatusChangedLock sync.Mutex
 
 // PrintOperationSignalStatusChangedCallback is a callback function for a 'status-changed' signal emitted from a PrintOperation.
 type PrintOperationSignalStatusChangedCallback func()
@@ -2156,9 +2156,9 @@ func CastToRecentManager(object *gobject.Object) *RecentManager {
 	return RecentManagerNewFromC(object.ToC())
 }
 
-var signalChangedId int
-var signalChangedMap = make(map[int]RecentManagerSignalChangedCallback)
-var signalChangedLock sync.Mutex
+var signalRecentManagerChangedId int
+var signalRecentManagerChangedMap = make(map[int]RecentManagerSignalChangedCallback)
+var signalRecentManagerChangedLock sync.Mutex
 
 // RecentManagerSignalChangedCallback is a callback function for a 'changed' signal emitted from a RecentManager.
 type RecentManagerSignalChangedCallback func()
@@ -2305,36 +2305,36 @@ func (recv *SizeGroup) GetWidgets() *glib.SList {
 	return retGo
 }
 
-var signalWrappedId int
-var signalWrappedMap = make(map[int]SpinButtonSignalWrappedCallback)
-var signalWrappedLock sync.Mutex
+var signalSpinButtonWrappedId int
+var signalSpinButtonWrappedMap = make(map[int]SpinButtonSignalWrappedCallback)
+var signalSpinButtonWrappedLock sync.Mutex
 
 // SpinButtonSignalWrappedCallback is a callback function for a 'wrapped' signal emitted from a SpinButton.
 type SpinButtonSignalWrappedCallback func()
 
 func SpinButton_wrappedHandler() {}
 
-var signalActivateId int
-var signalActivateMap = make(map[int]StatusIconSignalActivateCallback)
-var signalActivateLock sync.Mutex
+var signalStatusIconActivateId int
+var signalStatusIconActivateMap = make(map[int]StatusIconSignalActivateCallback)
+var signalStatusIconActivateLock sync.Mutex
 
 // StatusIconSignalActivateCallback is a callback function for a 'activate' signal emitted from a StatusIcon.
 type StatusIconSignalActivateCallback func()
 
 func StatusIcon_activateHandler() {}
 
-var signalPopupMenuId int
-var signalPopupMenuMap = make(map[int]StatusIconSignalPopupMenuCallback)
-var signalPopupMenuLock sync.Mutex
+var signalStatusIconPopupMenuId int
+var signalStatusIconPopupMenuMap = make(map[int]StatusIconSignalPopupMenuCallback)
+var signalStatusIconPopupMenuLock sync.Mutex
 
 // StatusIconSignalPopupMenuCallback is a callback function for a 'popup-menu' signal emitted from a StatusIcon.
 type StatusIconSignalPopupMenuCallback func(button uint32, activateTime uint32)
 
 func StatusIcon_popupMenuHandler() {}
 
-var signalSizeChangedId int
-var signalSizeChangedMap = make(map[int]StatusIconSignalSizeChangedCallback)
-var signalSizeChangedLock sync.Mutex
+var signalStatusIconSizeChangedId int
+var signalStatusIconSizeChangedMap = make(map[int]StatusIconSignalSizeChangedCallback)
+var signalStatusIconSizeChangedLock sync.Mutex
 
 // StatusIconSignalSizeChangedCallback is a callback function for a 'size-changed' signal emitted from a StatusIcon.
 type StatusIconSignalSizeChangedCallback func(size int32) bool

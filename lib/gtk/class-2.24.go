@@ -24,9 +24,9 @@ import (
 */
 import "C"
 
-var signalActivateLinkId int
-var signalActivateLinkMap = make(map[int]AboutDialogSignalActivateLinkCallback)
-var signalActivateLinkLock sync.Mutex
+var signalAboutDialogActivateLinkId int
+var signalAboutDialogActivateLinkMap = make(map[int]AboutDialogSignalActivateLinkCallback)
+var signalAboutDialogActivateLinkLock sync.Mutex
 
 // AboutDialogSignalActivateLinkCallback is a callback function for a 'activate-link' signal emitted from a AboutDialog.
 type AboutDialogSignalActivateLinkCallback func(uri string) bool

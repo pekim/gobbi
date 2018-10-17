@@ -624,9 +624,9 @@ func CastToTlsConnection(object *gobject.Object) *TlsConnection {
 	return TlsConnectionNewFromC(object.ToC())
 }
 
-var signalAcceptCertificateId int
-var signalAcceptCertificateMap = make(map[int]TlsConnectionSignalAcceptCertificateCallback)
-var signalAcceptCertificateLock sync.Mutex
+var signalTlsConnectionAcceptCertificateId int
+var signalTlsConnectionAcceptCertificateMap = make(map[int]TlsConnectionSignalAcceptCertificateCallback)
+var signalTlsConnectionAcceptCertificateLock sync.Mutex
 
 // TlsConnectionSignalAcceptCertificateCallback is a callback function for a 'accept-certificate' signal emitted from a TlsConnection.
 type TlsConnectionSignalAcceptCertificateCallback func(peerCert *TlsCertificate, errors TlsCertificateFlags) bool

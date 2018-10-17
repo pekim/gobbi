@@ -68,9 +68,9 @@ func CastToAppInfoMonitor(object *gobject.Object) *AppInfoMonitor {
 
 // Unsupported signal : unsupported parameter info : no type generator for AppInfo,
 
-var signalHandleLocalOptionsId int
-var signalHandleLocalOptionsMap = make(map[int]ApplicationSignalHandleLocalOptionsCallback)
-var signalHandleLocalOptionsLock sync.Mutex
+var signalApplicationHandleLocalOptionsId int
+var signalApplicationHandleLocalOptionsMap = make(map[int]ApplicationSignalHandleLocalOptionsCallback)
+var signalApplicationHandleLocalOptionsLock sync.Mutex
 
 // ApplicationSignalHandleLocalOptionsCallback is a callback function for a 'handle-local-options' signal emitted from a Application.
 type ApplicationSignalHandleLocalOptionsCallback func(options *glib.VariantDict) int32

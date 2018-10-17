@@ -198,9 +198,9 @@ func (recv *Entry) SetInputPurpose(purpose InputPurpose) {
 
 // Unsupported : gtk_info_bar_new_with_buttons : unsupported parameter ... : varargs
 
-var signalOffsetChangedId int
-var signalOffsetChangedMap = make(map[int]LevelBarSignalOffsetChangedCallback)
-var signalOffsetChangedLock sync.Mutex
+var signalLevelBarOffsetChangedId int
+var signalLevelBarOffsetChangedMap = make(map[int]LevelBarSignalOffsetChangedCallback)
+var signalLevelBarOffsetChangedLock sync.Mutex
 
 // LevelBarSignalOffsetChangedCallback is a callback function for a 'offset-changed' signal emitted from a LevelBar.
 type LevelBarSignalOffsetChangedCallback func(name string)

@@ -95,9 +95,9 @@ func CastToDBusInterfaceSkeleton(object *gobject.Object) *DBusInterfaceSkeleton 
 	return DBusInterfaceSkeletonNewFromC(object.ToC())
 }
 
-var signalGAuthorizeMethodId int
-var signalGAuthorizeMethodMap = make(map[int]DBusInterfaceSkeletonSignalGAuthorizeMethodCallback)
-var signalGAuthorizeMethodLock sync.Mutex
+var signalDBusInterfaceSkeletonGAuthorizeMethodId int
+var signalDBusInterfaceSkeletonGAuthorizeMethodMap = make(map[int]DBusInterfaceSkeletonSignalGAuthorizeMethodCallback)
+var signalDBusInterfaceSkeletonGAuthorizeMethodLock sync.Mutex
 
 // DBusInterfaceSkeletonSignalGAuthorizeMethodCallback is a callback function for a 'g-authorize-method' signal emitted from a DBusInterfaceSkeleton.
 type DBusInterfaceSkeletonSignalGAuthorizeMethodCallback func(invocation *DBusMethodInvocation) bool
@@ -461,9 +461,9 @@ func CastToDBusObjectSkeleton(object *gobject.Object) *DBusObjectSkeleton {
 	return DBusObjectSkeletonNewFromC(object.ToC())
 }
 
-var signalAuthorizeMethodId int
-var signalAuthorizeMethodMap = make(map[int]DBusObjectSkeletonSignalAuthorizeMethodCallback)
-var signalAuthorizeMethodLock sync.Mutex
+var signalDBusObjectSkeletonAuthorizeMethodId int
+var signalDBusObjectSkeletonAuthorizeMethodMap = make(map[int]DBusObjectSkeletonSignalAuthorizeMethodCallback)
+var signalDBusObjectSkeletonAuthorizeMethodLock sync.Mutex
 
 // DBusObjectSkeletonSignalAuthorizeMethodCallback is a callback function for a 'authorize-method' signal emitted from a DBusObjectSkeleton.
 type DBusObjectSkeletonSignalAuthorizeMethodCallback func(interface_ *DBusInterfaceSkeleton, invocation *DBusMethodInvocation) bool

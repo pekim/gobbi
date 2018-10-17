@@ -150,9 +150,9 @@ func CastToHyperlink(object *gobject.Object) *Hyperlink {
 	return HyperlinkNewFromC(object.ToC())
 }
 
-var signalLinkActivatedId int
-var signalLinkActivatedMap = make(map[int]HyperlinkSignalLinkActivatedCallback)
-var signalLinkActivatedLock sync.Mutex
+var signalHyperlinkLinkActivatedId int
+var signalHyperlinkLinkActivatedMap = make(map[int]HyperlinkSignalLinkActivatedCallback)
+var signalHyperlinkLinkActivatedLock sync.Mutex
 
 // HyperlinkSignalLinkActivatedCallback is a callback function for a 'link-activated' signal emitted from a Hyperlink.
 type HyperlinkSignalLinkActivatedCallback func()
@@ -395,54 +395,54 @@ func CastToObject(object *gobject.Object) *Object {
 	return ObjectNewFromC(object.ToC())
 }
 
-var signalActiveDescendantChangedId int
-var signalActiveDescendantChangedMap = make(map[int]ObjectSignalActiveDescendantChangedCallback)
-var signalActiveDescendantChangedLock sync.Mutex
+var signalObjectActiveDescendantChangedId int
+var signalObjectActiveDescendantChangedMap = make(map[int]ObjectSignalActiveDescendantChangedCallback)
+var signalObjectActiveDescendantChangedLock sync.Mutex
 
 // ObjectSignalActiveDescendantChangedCallback is a callback function for a 'active-descendant-changed' signal emitted from a Object.
 type ObjectSignalActiveDescendantChangedCallback func(arg1 uintptr)
 
 func Object_activeDescendantChangedHandler() {}
 
-var signalChildrenChangedId int
-var signalChildrenChangedMap = make(map[int]ObjectSignalChildrenChangedCallback)
-var signalChildrenChangedLock sync.Mutex
+var signalObjectChildrenChangedId int
+var signalObjectChildrenChangedMap = make(map[int]ObjectSignalChildrenChangedCallback)
+var signalObjectChildrenChangedLock sync.Mutex
 
 // ObjectSignalChildrenChangedCallback is a callback function for a 'children-changed' signal emitted from a Object.
 type ObjectSignalChildrenChangedCallback func(arg1 uint32, arg2 uintptr)
 
 func Object_childrenChangedHandler() {}
 
-var signalFocusEventId int
-var signalFocusEventMap = make(map[int]ObjectSignalFocusEventCallback)
-var signalFocusEventLock sync.Mutex
+var signalObjectFocusEventId int
+var signalObjectFocusEventMap = make(map[int]ObjectSignalFocusEventCallback)
+var signalObjectFocusEventLock sync.Mutex
 
 // ObjectSignalFocusEventCallback is a callback function for a 'focus-event' signal emitted from a Object.
 type ObjectSignalFocusEventCallback func(arg1 bool)
 
 func Object_focusEventHandler() {}
 
-var signalPropertyChangeId int
-var signalPropertyChangeMap = make(map[int]ObjectSignalPropertyChangeCallback)
-var signalPropertyChangeLock sync.Mutex
+var signalObjectPropertyChangeId int
+var signalObjectPropertyChangeMap = make(map[int]ObjectSignalPropertyChangeCallback)
+var signalObjectPropertyChangeLock sync.Mutex
 
 // ObjectSignalPropertyChangeCallback is a callback function for a 'property-change' signal emitted from a Object.
 type ObjectSignalPropertyChangeCallback func(arg1 uintptr)
 
 func Object_propertyChangeHandler() {}
 
-var signalStateChangeId int
-var signalStateChangeMap = make(map[int]ObjectSignalStateChangeCallback)
-var signalStateChangeLock sync.Mutex
+var signalObjectStateChangeId int
+var signalObjectStateChangeMap = make(map[int]ObjectSignalStateChangeCallback)
+var signalObjectStateChangeLock sync.Mutex
 
 // ObjectSignalStateChangeCallback is a callback function for a 'state-change' signal emitted from a Object.
 type ObjectSignalStateChangeCallback func(arg1 string, arg2 bool)
 
 func Object_stateChangeHandler() {}
 
-var signalVisibleDataChangedId int
-var signalVisibleDataChangedMap = make(map[int]ObjectSignalVisibleDataChangedCallback)
-var signalVisibleDataChangedLock sync.Mutex
+var signalObjectVisibleDataChangedId int
+var signalObjectVisibleDataChangedMap = make(map[int]ObjectSignalVisibleDataChangedCallback)
+var signalObjectVisibleDataChangedLock sync.Mutex
 
 // ObjectSignalVisibleDataChangedCallback is a callback function for a 'visible-data-changed' signal emitted from a Object.
 type ObjectSignalVisibleDataChangedCallback func()

@@ -233,9 +233,9 @@ func (recv *Calendar) SetDetailWidthChars(chars int32) {
 
 // Unsupported signal : unsupported parameter editable : no type generator for CellEditable,
 
-var signalChangedId int
-var signalChangedMap = make(map[int]CellRendererComboSignalChangedCallback)
-var signalChangedLock sync.Mutex
+var signalCellRendererComboChangedId int
+var signalCellRendererComboChangedMap = make(map[int]CellRendererComboSignalChangedCallback)
+var signalCellRendererComboChangedLock sync.Mutex
 
 // CellRendererComboSignalChangedCallback is a callback function for a 'changed' signal emitted from a CellRendererCombo.
 type CellRendererComboSignalChangedCallback func(pathString string, newIter *TreeIter)
@@ -796,18 +796,18 @@ func (recv *ScaleButton) GetPopup() *Widget {
 	return retGo
 }
 
-var signalButtonPressEventId int
-var signalButtonPressEventMap = make(map[int]StatusIconSignalButtonPressEventCallback)
-var signalButtonPressEventLock sync.Mutex
+var signalStatusIconButtonPressEventId int
+var signalStatusIconButtonPressEventMap = make(map[int]StatusIconSignalButtonPressEventCallback)
+var signalStatusIconButtonPressEventLock sync.Mutex
 
 // StatusIconSignalButtonPressEventCallback is a callback function for a 'button-press-event' signal emitted from a StatusIcon.
 type StatusIconSignalButtonPressEventCallback func(event *gdk.EventButton) bool
 
 func StatusIcon_buttonPressEventHandler() {}
 
-var signalButtonReleaseEventId int
-var signalButtonReleaseEventMap = make(map[int]StatusIconSignalButtonReleaseEventCallback)
-var signalButtonReleaseEventLock sync.Mutex
+var signalStatusIconButtonReleaseEventId int
+var signalStatusIconButtonReleaseEventMap = make(map[int]StatusIconSignalButtonReleaseEventCallback)
+var signalStatusIconButtonReleaseEventLock sync.Mutex
 
 // StatusIconSignalButtonReleaseEventCallback is a callback function for a 'button-release-event' signal emitted from a StatusIcon.
 type StatusIconSignalButtonReleaseEventCallback func(event *gdk.EventButton) bool
@@ -851,9 +851,9 @@ func (recv *ToolItem) ToolbarReconfigured() {
 
 // Unsupported signal : unsupported parameter child_property : Blacklisted record : GParamSpec
 
-var signalDamageEventId int
-var signalDamageEventMap = make(map[int]WidgetSignalDamageEventCallback)
-var signalDamageEventLock sync.Mutex
+var signalWidgetDamageEventId int
+var signalWidgetDamageEventMap = make(map[int]WidgetSignalDamageEventCallback)
+var signalWidgetDamageEventLock sync.Mutex
 
 // WidgetSignalDamageEventCallback is a callback function for a 'damage-event' signal emitted from a Widget.
 type WidgetSignalDamageEventCallback func(event *gdk.EventExpose) bool

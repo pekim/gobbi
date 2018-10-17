@@ -75,9 +75,9 @@ func (recv *ApplicationCommandLine) GetStdin() *InputStream {
 
 // Unsupported : g_converter_output_stream_new : unsupported parameter converter : no type generator for Converter, GConverter*
 
-var signalAllowMechanismId int
-var signalAllowMechanismMap = make(map[int]DBusAuthObserverSignalAllowMechanismCallback)
-var signalAllowMechanismLock sync.Mutex
+var signalDBusAuthObserverAllowMechanismId int
+var signalDBusAuthObserverAllowMechanismMap = make(map[int]DBusAuthObserverSignalAllowMechanismCallback)
+var signalDBusAuthObserverAllowMechanismLock sync.Mutex
 
 // DBusAuthObserverSignalAllowMechanismCallback is a callback function for a 'allow-mechanism' signal emitted from a DBusAuthObserver.
 type DBusAuthObserverSignalAllowMechanismCallback func(mechanism string) bool
@@ -250,9 +250,9 @@ func (recv *MenuItem) GetLink(link string) *MenuModel {
 
 // Unsupported signal : unsupported parameter processes : no param type
 
-var signalShowUnmountProgressId int
-var signalShowUnmountProgressMap = make(map[int]MountOperationSignalShowUnmountProgressCallback)
-var signalShowUnmountProgressLock sync.Mutex
+var signalMountOperationShowUnmountProgressId int
+var signalMountOperationShowUnmountProgressMap = make(map[int]MountOperationSignalShowUnmountProgressCallback)
+var signalMountOperationShowUnmountProgressLock sync.Mutex
 
 // MountOperationSignalShowUnmountProgressCallback is a callback function for a 'show-unmount-progress' signal emitted from a MountOperation.
 type MountOperationSignalShowUnmountProgressCallback func(message string, timeLeft int64, bytesLeft int64)

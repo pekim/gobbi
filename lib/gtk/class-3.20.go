@@ -251,9 +251,9 @@ func CastToNativeDialog(object *gobject.Object) *NativeDialog {
 	return NativeDialogNewFromC(object.ToC())
 }
 
-var signalResponseId int
-var signalResponseMap = make(map[int]NativeDialogSignalResponseCallback)
-var signalResponseLock sync.Mutex
+var signalNativeDialogResponseId int
+var signalNativeDialogResponseMap = make(map[int]NativeDialogSignalResponseCallback)
+var signalNativeDialogResponseLock sync.Mutex
 
 // NativeDialogSignalResponseCallback is a callback function for a 'response' signal emitted from a NativeDialog.
 type NativeDialogSignalResponseCallback func(responseId int32)
@@ -397,9 +397,9 @@ func CastToPadController(object *gobject.Object) *PadController {
 
 // Unsupported signal : unsupported parameter dest_file : no type generator for Gio.File,
 
-var signalMountId int
-var signalMountMap = make(map[int]PlacesSidebarSignalMountCallback)
-var signalMountLock sync.Mutex
+var signalPlacesSidebarMountId int
+var signalPlacesSidebarMountMap = make(map[int]PlacesSidebarSignalMountCallback)
+var signalPlacesSidebarMountLock sync.Mutex
 
 // PlacesSidebarSignalMountCallback is a callback function for a 'mount' signal emitted from a PlacesSidebar.
 type PlacesSidebarSignalMountCallback func(mountOperation *gio.MountOperation)
@@ -410,18 +410,18 @@ func PlacesSidebar_mountHandler() {}
 
 // Unsupported signal : unsupported parameter selected_item : no type generator for Gio.File,
 
-var signalShowOtherLocationsWithFlagsId int
-var signalShowOtherLocationsWithFlagsMap = make(map[int]PlacesSidebarSignalShowOtherLocationsWithFlagsCallback)
-var signalShowOtherLocationsWithFlagsLock sync.Mutex
+var signalPlacesSidebarShowOtherLocationsWithFlagsId int
+var signalPlacesSidebarShowOtherLocationsWithFlagsMap = make(map[int]PlacesSidebarSignalShowOtherLocationsWithFlagsCallback)
+var signalPlacesSidebarShowOtherLocationsWithFlagsLock sync.Mutex
 
 // PlacesSidebarSignalShowOtherLocationsWithFlagsCallback is a callback function for a 'show-other-locations-with-flags' signal emitted from a PlacesSidebar.
 type PlacesSidebarSignalShowOtherLocationsWithFlagsCallback func(openFlags PlacesOpenFlags)
 
 func PlacesSidebar_showOtherLocationsWithFlagsHandler() {}
 
-var signalUnmountId int
-var signalUnmountMap = make(map[int]PlacesSidebarSignalUnmountCallback)
-var signalUnmountLock sync.Mutex
+var signalPlacesSidebarUnmountId int
+var signalPlacesSidebarUnmountMap = make(map[int]PlacesSidebarSignalUnmountCallback)
+var signalPlacesSidebarUnmountLock sync.Mutex
 
 // PlacesSidebarSignalUnmountCallback is a callback function for a 'unmount' signal emitted from a PlacesSidebar.
 type PlacesSidebarSignalUnmountCallback func(mountOperation *gio.MountOperation)

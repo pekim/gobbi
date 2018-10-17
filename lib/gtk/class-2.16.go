@@ -250,18 +250,18 @@ func (recv *Action) UnblockActivate() {
 
 // Unsupported : gtk_dialog_new_with_buttons : unsupported parameter ... : varargs
 
-var signalIconPressId int
-var signalIconPressMap = make(map[int]EntrySignalIconPressCallback)
-var signalIconPressLock sync.Mutex
+var signalEntryIconPressId int
+var signalEntryIconPressMap = make(map[int]EntrySignalIconPressCallback)
+var signalEntryIconPressLock sync.Mutex
 
 // EntrySignalIconPressCallback is a callback function for a 'icon-press' signal emitted from a Entry.
 type EntrySignalIconPressCallback func(iconPos EntryIconPosition, event *gdk.EventButton)
 
 func Entry_iconPressHandler() {}
 
-var signalIconReleaseId int
-var signalIconReleaseMap = make(map[int]EntrySignalIconReleaseCallback)
-var signalIconReleaseLock sync.Mutex
+var signalEntryIconReleaseId int
+var signalEntryIconReleaseMap = make(map[int]EntrySignalIconReleaseCallback)
+var signalEntryIconReleaseLock sync.Mutex
 
 // EntrySignalIconReleaseCallback is a callback function for a 'icon-release' signal emitted from a Entry.
 type EntrySignalIconReleaseCallback func(iconPos EntryIconPosition, event *gdk.EventButton)
@@ -750,18 +750,18 @@ func (recv *Scale) ClearMarks() {
 
 // Unsupported : gtk_scale_button_new : unsupported parameter size : no type generator for gint, GtkIconSize
 
-var signalQueryTooltipId int
-var signalQueryTooltipMap = make(map[int]StatusIconSignalQueryTooltipCallback)
-var signalQueryTooltipLock sync.Mutex
+var signalStatusIconQueryTooltipId int
+var signalStatusIconQueryTooltipMap = make(map[int]StatusIconSignalQueryTooltipCallback)
+var signalStatusIconQueryTooltipLock sync.Mutex
 
 // StatusIconSignalQueryTooltipCallback is a callback function for a 'query-tooltip' signal emitted from a StatusIcon.
 type StatusIconSignalQueryTooltipCallback func(x int32, y int32, keyboardMode bool, tooltip *Tooltip) bool
 
 func StatusIcon_queryTooltipHandler() {}
 
-var signalScrollEventId int
-var signalScrollEventMap = make(map[int]StatusIconSignalScrollEventCallback)
-var signalScrollEventLock sync.Mutex
+var signalStatusIconScrollEventId int
+var signalStatusIconScrollEventMap = make(map[int]StatusIconSignalScrollEventCallback)
+var signalStatusIconScrollEventLock sync.Mutex
 
 // StatusIconSignalScrollEventCallback is a callback function for a 'scroll-event' signal emitted from a StatusIcon.
 type StatusIconSignalScrollEventCallback func(event *gdk.EventScroll) bool
@@ -832,9 +832,9 @@ func (recv *StatusIcon) SetTooltipText(text string) {
 
 // Unsupported : gtk_style_get_valist : unsupported parameter widget_type : no type generator for GType, GType
 
-var signalPasteDoneId int
-var signalPasteDoneMap = make(map[int]TextBufferSignalPasteDoneCallback)
-var signalPasteDoneLock sync.Mutex
+var signalTextBufferPasteDoneId int
+var signalTextBufferPasteDoneMap = make(map[int]TextBufferSignalPasteDoneCallback)
+var signalTextBufferPasteDoneLock sync.Mutex
 
 // TextBufferSignalPasteDoneCallback is a callback function for a 'paste-done' signal emitted from a TextBuffer.
 type TextBufferSignalPasteDoneCallback func(clipboard *Clipboard)

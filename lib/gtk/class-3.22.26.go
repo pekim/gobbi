@@ -89,9 +89,9 @@ import "C"
 
 // Unsupported signal : unsupported parameter selected_item : no type generator for Gio.File,
 
-var signalShowStarredLocationId int
-var signalShowStarredLocationMap = make(map[int]PlacesSidebarSignalShowStarredLocationCallback)
-var signalShowStarredLocationLock sync.Mutex
+var signalPlacesSidebarShowStarredLocationId int
+var signalPlacesSidebarShowStarredLocationMap = make(map[int]PlacesSidebarSignalShowStarredLocationCallback)
+var signalPlacesSidebarShowStarredLocationLock sync.Mutex
 
 // PlacesSidebarSignalShowStarredLocationCallback is a callback function for a 'show-starred-location' signal emitted from a PlacesSidebar.
 type PlacesSidebarSignalShowStarredLocationCallback func(object PlacesOpenFlags)

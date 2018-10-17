@@ -177,9 +177,9 @@ import (
 */
 import "C"
 
-var signalChangedId int
-var signalChangedMap = make(map[int]AppInfoMonitorSignalChangedCallback)
-var signalChangedLock sync.Mutex
+var signalAppInfoMonitorChangedId int
+var signalAppInfoMonitorChangedMap = make(map[int]AppInfoMonitorSignalChangedCallback)
+var signalAppInfoMonitorChangedLock sync.Mutex
 
 // AppInfoMonitorSignalChangedCallback is a callback function for a 'changed' signal emitted from a AppInfoMonitor.
 type AppInfoMonitorSignalChangedCallback func()
@@ -244,18 +244,18 @@ func (recv *AppLaunchContext) LaunchFailed(startupNotifyId string) {
 	return
 }
 
-var signalActivateId int
-var signalActivateMap = make(map[int]ApplicationSignalActivateCallback)
-var signalActivateLock sync.Mutex
+var signalApplicationActivateId int
+var signalApplicationActivateMap = make(map[int]ApplicationSignalActivateCallback)
+var signalApplicationActivateLock sync.Mutex
 
 // ApplicationSignalActivateCallback is a callback function for a 'activate' signal emitted from a Application.
 type ApplicationSignalActivateCallback func()
 
 func Application_activateHandler() {}
 
-var signalCommandLineId int
-var signalCommandLineMap = make(map[int]ApplicationSignalCommandLineCallback)
-var signalCommandLineLock sync.Mutex
+var signalApplicationCommandLineId int
+var signalApplicationCommandLineMap = make(map[int]ApplicationSignalCommandLineCallback)
+var signalApplicationCommandLineLock sync.Mutex
 
 // ApplicationSignalCommandLineCallback is a callback function for a 'command-line' signal emitted from a Application.
 type ApplicationSignalCommandLineCallback func(commandLine *ApplicationCommandLine) int32
@@ -264,18 +264,18 @@ func Application_commandLineHandler() {}
 
 // Unsupported signal : unsupported parameter files : no param type
 
-var signalShutdownId int
-var signalShutdownMap = make(map[int]ApplicationSignalShutdownCallback)
-var signalShutdownLock sync.Mutex
+var signalApplicationShutdownId int
+var signalApplicationShutdownMap = make(map[int]ApplicationSignalShutdownCallback)
+var signalApplicationShutdownLock sync.Mutex
 
 // ApplicationSignalShutdownCallback is a callback function for a 'shutdown' signal emitted from a Application.
 type ApplicationSignalShutdownCallback func()
 
 func Application_shutdownHandler() {}
 
-var signalStartupId int
-var signalStartupMap = make(map[int]ApplicationSignalStartupCallback)
-var signalStartupLock sync.Mutex
+var signalApplicationStartupId int
+var signalApplicationStartupMap = make(map[int]ApplicationSignalStartupCallback)
+var signalApplicationStartupLock sync.Mutex
 
 // ApplicationSignalStartupCallback is a callback function for a 'startup' signal emitted from a Application.
 type ApplicationSignalStartupCallback func()
@@ -618,9 +618,9 @@ func CastToCancellable(object *gobject.Object) *Cancellable {
 	return CancellableNewFromC(object.ToC())
 }
 
-var signalCancelledId int
-var signalCancelledMap = make(map[int]CancellableSignalCancelledCallback)
-var signalCancelledLock sync.Mutex
+var signalCancellableCancelledId int
+var signalCancellableCancelledMap = make(map[int]CancellableSignalCancelledCallback)
+var signalCancellableCancelledLock sync.Mutex
 
 // CancellableSignalCancelledCallback is a callback function for a 'cancelled' signal emitted from a Cancellable.
 type CancellableSignalCancelledCallback func()
@@ -2494,9 +2494,9 @@ func CastToFilenameCompleter(object *gobject.Object) *FilenameCompleter {
 	return FilenameCompleterNewFromC(object.ToC())
 }
 
-var signalGotCompletionDataId int
-var signalGotCompletionDataMap = make(map[int]FilenameCompleterSignalGotCompletionDataCallback)
-var signalGotCompletionDataLock sync.Mutex
+var signalFilenameCompleterGotCompletionDataId int
+var signalFilenameCompleterGotCompletionDataMap = make(map[int]FilenameCompleterSignalGotCompletionDataCallback)
+var signalFilenameCompleterGotCompletionDataLock sync.Mutex
 
 // FilenameCompleterSignalGotCompletionDataCallback is a callback function for a 'got-completion-data' signal emitted from a FilenameCompleter.
 type FilenameCompleterSignalGotCompletionDataCallback func()
@@ -3082,9 +3082,9 @@ func (recv *MemoryOutputStream) GetSize() uint64 {
 	return retGo
 }
 
-var signalItemsChangedId int
-var signalItemsChangedMap = make(map[int]MenuModelSignalItemsChangedCallback)
-var signalItemsChangedLock sync.Mutex
+var signalMenuModelItemsChangedId int
+var signalMenuModelItemsChangedMap = make(map[int]MenuModelSignalItemsChangedCallback)
+var signalMenuModelItemsChangedLock sync.Mutex
 
 // MenuModelSignalItemsChangedCallback is a callback function for a 'items-changed' signal emitted from a MenuModel.
 type MenuModelSignalItemsChangedCallback func(position int32, removed int32, added int32)
@@ -3125,9 +3125,9 @@ func CastToMountOperation(object *gobject.Object) *MountOperation {
 	return MountOperationNewFromC(object.ToC())
 }
 
-var signalAskPasswordId int
-var signalAskPasswordMap = make(map[int]MountOperationSignalAskPasswordCallback)
-var signalAskPasswordLock sync.Mutex
+var signalMountOperationAskPasswordId int
+var signalMountOperationAskPasswordMap = make(map[int]MountOperationSignalAskPasswordCallback)
+var signalMountOperationAskPasswordLock sync.Mutex
 
 // MountOperationSignalAskPasswordCallback is a callback function for a 'ask-password' signal emitted from a MountOperation.
 type MountOperationSignalAskPasswordCallback func(message string, defaultUser string, defaultDomain string, flags AskPasswordFlags)
@@ -3136,9 +3136,9 @@ func MountOperation_askPasswordHandler() {}
 
 // Unsupported signal : unsupported parameter choices : no param type
 
-var signalReplyId int
-var signalReplyMap = make(map[int]MountOperationSignalReplyCallback)
-var signalReplyLock sync.Mutex
+var signalMountOperationReplyId int
+var signalMountOperationReplyMap = make(map[int]MountOperationSignalReplyCallback)
+var signalMountOperationReplyLock sync.Mutex
 
 // MountOperationSignalReplyCallback is a callback function for a 'reply' signal emitted from a MountOperation.
 type MountOperationSignalReplyCallback func(result MountOperationResult)
@@ -3636,9 +3636,9 @@ func CastToResolver(object *gobject.Object) *Resolver {
 	return ResolverNewFromC(object.ToC())
 }
 
-var signalReloadId int
-var signalReloadMap = make(map[int]ResolverSignalReloadCallback)
-var signalReloadLock sync.Mutex
+var signalResolverReloadId int
+var signalResolverReloadMap = make(map[int]ResolverSignalReloadCallback)
+var signalResolverReloadLock sync.Mutex
 
 // ResolverSignalReloadCallback is a callback function for a 'reload' signal emitted from a Resolver.
 type ResolverSignalReloadCallback func()
@@ -3681,27 +3681,27 @@ func CastToSettings(object *gobject.Object) *Settings {
 
 // Unsupported signal : unsupported parameter keys : no param type
 
-var signalChangedId int
-var signalChangedMap = make(map[int]SettingsSignalChangedCallback)
-var signalChangedLock sync.Mutex
+var signalSettingsChangedId int
+var signalSettingsChangedMap = make(map[int]SettingsSignalChangedCallback)
+var signalSettingsChangedLock sync.Mutex
 
 // SettingsSignalChangedCallback is a callback function for a 'changed' signal emitted from a Settings.
 type SettingsSignalChangedCallback func(key string)
 
 func Settings_changedHandler() {}
 
-var signalWritableChangeEventId int
-var signalWritableChangeEventMap = make(map[int]SettingsSignalWritableChangeEventCallback)
-var signalWritableChangeEventLock sync.Mutex
+var signalSettingsWritableChangeEventId int
+var signalSettingsWritableChangeEventMap = make(map[int]SettingsSignalWritableChangeEventCallback)
+var signalSettingsWritableChangeEventLock sync.Mutex
 
 // SettingsSignalWritableChangeEventCallback is a callback function for a 'writable-change-event' signal emitted from a Settings.
 type SettingsSignalWritableChangeEventCallback func(key uint32) bool
 
 func Settings_writableChangeEventHandler() {}
 
-var signalWritableChangedId int
-var signalWritableChangedMap = make(map[int]SettingsSignalWritableChangedCallback)
-var signalWritableChangedLock sync.Mutex
+var signalSettingsWritableChangedId int
+var signalSettingsWritableChangedMap = make(map[int]SettingsSignalWritableChangedCallback)
+var signalSettingsWritableChangedLock sync.Mutex
 
 // SettingsSignalWritableChangedCallback is a callback function for a 'writable-changed' signal emitted from a Settings.
 type SettingsSignalWritableChangedCallback func(key string)
@@ -4342,9 +4342,9 @@ func (recv *ThemedIcon) AppendName(iconname string) {
 
 // Unsupported : g_themed_icon_get_names : no return type
 
-var signalRunId int
-var signalRunMap = make(map[int]ThreadedSocketServiceSignalRunCallback)
-var signalRunLock sync.Mutex
+var signalThreadedSocketServiceRunId int
+var signalThreadedSocketServiceRunMap = make(map[int]ThreadedSocketServiceSignalRunCallback)
+var signalThreadedSocketServiceRunLock sync.Mutex
 
 // ThreadedSocketServiceSignalRunCallback is a callback function for a 'run' signal emitted from a ThreadedSocketService.
 type ThreadedSocketServiceSignalRunCallback func(connection *SocketConnection, sourceObject *gobject.Object) bool
@@ -4554,18 +4554,18 @@ func CastToUnixMountMonitor(object *gobject.Object) *UnixMountMonitor {
 	return UnixMountMonitorNewFromC(object.ToC())
 }
 
-var signalMountpointsChangedId int
-var signalMountpointsChangedMap = make(map[int]UnixMountMonitorSignalMountpointsChangedCallback)
-var signalMountpointsChangedLock sync.Mutex
+var signalUnixMountMonitorMountpointsChangedId int
+var signalUnixMountMonitorMountpointsChangedMap = make(map[int]UnixMountMonitorSignalMountpointsChangedCallback)
+var signalUnixMountMonitorMountpointsChangedLock sync.Mutex
 
 // UnixMountMonitorSignalMountpointsChangedCallback is a callback function for a 'mountpoints-changed' signal emitted from a UnixMountMonitor.
 type UnixMountMonitorSignalMountpointsChangedCallback func()
 
 func UnixMountMonitor_mountpointsChangedHandler() {}
 
-var signalMountsChangedId int
-var signalMountsChangedMap = make(map[int]UnixMountMonitorSignalMountsChangedCallback)
-var signalMountsChangedLock sync.Mutex
+var signalUnixMountMonitorMountsChangedId int
+var signalUnixMountMonitorMountsChangedMap = make(map[int]UnixMountMonitorSignalMountsChangedCallback)
+var signalUnixMountMonitorMountsChangedLock sync.Mutex
 
 // UnixMountMonitorSignalMountsChangedCallback is a callback function for a 'mounts-changed' signal emitted from a UnixMountMonitor.
 type UnixMountMonitorSignalMountsChangedCallback func()

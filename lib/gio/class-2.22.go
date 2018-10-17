@@ -1459,9 +1459,9 @@ func CastToSocketService(object *gobject.Object) *SocketService {
 	return SocketServiceNewFromC(object.ToC())
 }
 
-var signalIncomingId int
-var signalIncomingMap = make(map[int]SocketServiceSignalIncomingCallback)
-var signalIncomingLock sync.Mutex
+var signalSocketServiceIncomingId int
+var signalSocketServiceIncomingMap = make(map[int]SocketServiceSignalIncomingCallback)
+var signalSocketServiceIncomingLock sync.Mutex
 
 // SocketServiceSignalIncomingCallback is a callback function for a 'incoming' signal emitted from a SocketService.
 type SocketServiceSignalIncomingCallback func(connection *SocketConnection, sourceObject *gobject.Object) bool

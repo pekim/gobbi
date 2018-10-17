@@ -193,27 +193,27 @@ func CastToGLArea(object *gobject.Object) *GLArea {
 	return GLAreaNewFromC(object.ToC())
 }
 
-var signalCreateContextId int
-var signalCreateContextMap = make(map[int]GLAreaSignalCreateContextCallback)
-var signalCreateContextLock sync.Mutex
+var signalGLAreaCreateContextId int
+var signalGLAreaCreateContextMap = make(map[int]GLAreaSignalCreateContextCallback)
+var signalGLAreaCreateContextLock sync.Mutex
 
 // GLAreaSignalCreateContextCallback is a callback function for a 'create-context' signal emitted from a GLArea.
 type GLAreaSignalCreateContextCallback func() gdk.GLContext
 
 func GLArea_createContextHandler() {}
 
-var signalRenderId int
-var signalRenderMap = make(map[int]GLAreaSignalRenderCallback)
-var signalRenderLock sync.Mutex
+var signalGLAreaRenderId int
+var signalGLAreaRenderMap = make(map[int]GLAreaSignalRenderCallback)
+var signalGLAreaRenderLock sync.Mutex
 
 // GLAreaSignalRenderCallback is a callback function for a 'render' signal emitted from a GLArea.
 type GLAreaSignalRenderCallback func(context *gdk.GLContext) bool
 
 func GLArea_renderHandler() {}
 
-var signalResizeId int
-var signalResizeMap = make(map[int]GLAreaSignalResizeCallback)
-var signalResizeLock sync.Mutex
+var signalGLAreaResizeId int
+var signalGLAreaResizeMap = make(map[int]GLAreaSignalResizeCallback)
+var signalGLAreaResizeLock sync.Mutex
 
 // GLAreaSignalResizeCallback is a callback function for a 'resize' signal emitted from a GLArea.
 type GLAreaSignalResizeCallback func(width int32, height int32)
@@ -523,18 +523,18 @@ func (recv *PopoverMenu) OpenSubmenu(name string) {
 
 // Unsupported : gtk_scale_button_new : unsupported parameter size : no type generator for gint, GtkIconSize
 
-var signalEdgeOvershotId int
-var signalEdgeOvershotMap = make(map[int]ScrolledWindowSignalEdgeOvershotCallback)
-var signalEdgeOvershotLock sync.Mutex
+var signalScrolledWindowEdgeOvershotId int
+var signalScrolledWindowEdgeOvershotMap = make(map[int]ScrolledWindowSignalEdgeOvershotCallback)
+var signalScrolledWindowEdgeOvershotLock sync.Mutex
 
 // ScrolledWindowSignalEdgeOvershotCallback is a callback function for a 'edge-overshot' signal emitted from a ScrolledWindow.
 type ScrolledWindowSignalEdgeOvershotCallback func(pos PositionType)
 
 func ScrolledWindow_edgeOvershotHandler() {}
 
-var signalEdgeReachedId int
-var signalEdgeReachedMap = make(map[int]ScrolledWindowSignalEdgeReachedCallback)
-var signalEdgeReachedLock sync.Mutex
+var signalScrolledWindowEdgeReachedId int
+var signalScrolledWindowEdgeReachedMap = make(map[int]ScrolledWindowSignalEdgeReachedCallback)
+var signalScrolledWindowEdgeReachedLock sync.Mutex
 
 // ScrolledWindowSignalEdgeReachedCallback is a callback function for a 'edge-reached' signal emitted from a ScrolledWindow.
 type ScrolledWindowSignalEdgeReachedCallback func(pos PositionType)
@@ -559,27 +559,27 @@ func (recv *ScrolledWindow) SetOverlayScrolling(overlayScrolling bool) {
 	return
 }
 
-var signalNextMatchId int
-var signalNextMatchMap = make(map[int]SearchEntrySignalNextMatchCallback)
-var signalNextMatchLock sync.Mutex
+var signalSearchEntryNextMatchId int
+var signalSearchEntryNextMatchMap = make(map[int]SearchEntrySignalNextMatchCallback)
+var signalSearchEntryNextMatchLock sync.Mutex
 
 // SearchEntrySignalNextMatchCallback is a callback function for a 'next-match' signal emitted from a SearchEntry.
 type SearchEntrySignalNextMatchCallback func()
 
 func SearchEntry_nextMatchHandler() {}
 
-var signalPreviousMatchId int
-var signalPreviousMatchMap = make(map[int]SearchEntrySignalPreviousMatchCallback)
-var signalPreviousMatchLock sync.Mutex
+var signalSearchEntryPreviousMatchId int
+var signalSearchEntryPreviousMatchMap = make(map[int]SearchEntrySignalPreviousMatchCallback)
+var signalSearchEntryPreviousMatchLock sync.Mutex
 
 // SearchEntrySignalPreviousMatchCallback is a callback function for a 'previous-match' signal emitted from a SearchEntry.
 type SearchEntrySignalPreviousMatchCallback func()
 
 func SearchEntry_previousMatchHandler() {}
 
-var signalStopSearchId int
-var signalStopSearchMap = make(map[int]SearchEntrySignalStopSearchCallback)
-var signalStopSearchLock sync.Mutex
+var signalSearchEntryStopSearchId int
+var signalSearchEntryStopSearchMap = make(map[int]SearchEntrySignalStopSearchCallback)
+var signalSearchEntryStopSearchLock sync.Mutex
 
 // SearchEntrySignalStopSearchCallback is a callback function for a 'stop-search' signal emitted from a SearchEntry.
 type SearchEntrySignalStopSearchCallback func()
@@ -667,9 +667,9 @@ func (recv *TextBuffer) InsertMarkup(iter *TextIter, markup string, len int32) {
 
 // Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
 
-var signalExtendSelectionId int
-var signalExtendSelectionMap = make(map[int]TextViewSignalExtendSelectionCallback)
-var signalExtendSelectionLock sync.Mutex
+var signalTextViewExtendSelectionId int
+var signalTextViewExtendSelectionMap = make(map[int]TextViewSignalExtendSelectionCallback)
+var signalTextViewExtendSelectionLock sync.Mutex
 
 // TextViewSignalExtendSelectionCallback is a callback function for a 'extend-selection' signal emitted from a TextView.
 type TextViewSignalExtendSelectionCallback func(granularity TextExtendSelection, location *TextIter, start *TextIter, end *TextIter) bool

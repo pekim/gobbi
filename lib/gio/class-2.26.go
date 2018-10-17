@@ -183,9 +183,9 @@ func CastToDBusAuthObserver(object *gobject.Object) *DBusAuthObserver {
 	return DBusAuthObserverNewFromC(object.ToC())
 }
 
-var signalAuthorizeAuthenticatedPeerId int
-var signalAuthorizeAuthenticatedPeerMap = make(map[int]DBusAuthObserverSignalAuthorizeAuthenticatedPeerCallback)
-var signalAuthorizeAuthenticatedPeerLock sync.Mutex
+var signalDBusAuthObserverAuthorizeAuthenticatedPeerId int
+var signalDBusAuthObserverAuthorizeAuthenticatedPeerMap = make(map[int]DBusAuthObserverSignalAuthorizeAuthenticatedPeerCallback)
+var signalDBusAuthObserverAuthorizeAuthenticatedPeerLock sync.Mutex
 
 // DBusAuthObserverSignalAuthorizeAuthenticatedPeerCallback is a callback function for a 'authorize-authenticated-peer' signal emitted from a DBusAuthObserver.
 type DBusAuthObserverSignalAuthorizeAuthenticatedPeerCallback func(stream *IOStream, credentials *Credentials) bool
@@ -244,9 +244,9 @@ func CastToDBusConnection(object *gobject.Object) *DBusConnection {
 	return DBusConnectionNewFromC(object.ToC())
 }
 
-var signalClosedId int
-var signalClosedMap = make(map[int]DBusConnectionSignalClosedCallback)
-var signalClosedLock sync.Mutex
+var signalDBusConnectionClosedId int
+var signalDBusConnectionClosedMap = make(map[int]DBusConnectionSignalClosedCallback)
+var signalDBusConnectionClosedLock sync.Mutex
 
 // DBusConnectionSignalClosedCallback is a callback function for a 'closed' signal emitted from a DBusConnection.
 type DBusConnectionSignalClosedCallback func(remotePeerVanished bool, error *glib.Error)
@@ -1341,9 +1341,9 @@ func CastToDBusServer(object *gobject.Object) *DBusServer {
 	return DBusServerNewFromC(object.ToC())
 }
 
-var signalNewConnectionId int
-var signalNewConnectionMap = make(map[int]DBusServerSignalNewConnectionCallback)
-var signalNewConnectionLock sync.Mutex
+var signalDBusServerNewConnectionId int
+var signalDBusServerNewConnectionMap = make(map[int]DBusServerSignalNewConnectionCallback)
+var signalDBusServerNewConnectionLock sync.Mutex
 
 // DBusServerSignalNewConnectionCallback is a callback function for a 'new-connection' signal emitted from a DBusServer.
 type DBusServerSignalNewConnectionCallback func(connection *DBusConnection) bool

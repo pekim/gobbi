@@ -188,9 +188,9 @@ func ColorChooserWidgetNew() *ColorChooserWidget {
 	return retGo
 }
 
-var signalFormatEntryTextId int
-var signalFormatEntryTextMap = make(map[int]ComboBoxSignalFormatEntryTextCallback)
-var signalFormatEntryTextLock sync.Mutex
+var signalComboBoxFormatEntryTextId int
+var signalComboBoxFormatEntryTextMap = make(map[int]ComboBoxSignalFormatEntryTextCallback)
+var signalComboBoxFormatEntryTextLock sync.Mutex
 
 // ComboBoxSignalFormatEntryTextCallback is a callback function for a 'format-entry-text' signal emitted from a ComboBox.
 type ComboBoxSignalFormatEntryTextCallback func(path string) string

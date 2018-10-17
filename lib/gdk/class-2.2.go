@@ -71,9 +71,9 @@ func (recv *Cursor) GetDisplay() *Display {
 	return retGo
 }
 
-var signalClosedId int
-var signalClosedMap = make(map[int]DisplaySignalClosedCallback)
-var signalClosedLock sync.Mutex
+var signalDisplayClosedId int
+var signalDisplayClosedMap = make(map[int]DisplaySignalClosedCallback)
+var signalDisplayClosedLock sync.Mutex
 
 // DisplaySignalClosedCallback is a callback function for a 'closed' signal emitted from a Display.
 type DisplaySignalClosedCallback func(isError bool)
@@ -202,9 +202,9 @@ func (recv *Display) Sync() {
 	return
 }
 
-var signalDisplayOpenedId int
-var signalDisplayOpenedMap = make(map[int]DisplayManagerSignalDisplayOpenedCallback)
-var signalDisplayOpenedLock sync.Mutex
+var signalDisplayManagerDisplayOpenedId int
+var signalDisplayManagerDisplayOpenedMap = make(map[int]DisplayManagerSignalDisplayOpenedCallback)
+var signalDisplayManagerDisplayOpenedLock sync.Mutex
 
 // DisplayManagerSignalDisplayOpenedCallback is a callback function for a 'display-opened' signal emitted from a DisplayManager.
 type DisplayManagerSignalDisplayOpenedCallback func(display *Display)
@@ -236,18 +236,18 @@ func (recv *DisplayManager) SetDefaultDisplay(display *Display) {
 	return
 }
 
-var signalKeysChangedId int
-var signalKeysChangedMap = make(map[int]KeymapSignalKeysChangedCallback)
-var signalKeysChangedLock sync.Mutex
+var signalKeymapKeysChangedId int
+var signalKeymapKeysChangedMap = make(map[int]KeymapSignalKeysChangedCallback)
+var signalKeymapKeysChangedLock sync.Mutex
 
 // KeymapSignalKeysChangedCallback is a callback function for a 'keys-changed' signal emitted from a Keymap.
 type KeymapSignalKeysChangedCallback func()
 
 func Keymap_keysChangedHandler() {}
 
-var signalSizeChangedId int
-var signalSizeChangedMap = make(map[int]ScreenSignalSizeChangedCallback)
-var signalSizeChangedLock sync.Mutex
+var signalScreenSizeChangedId int
+var signalScreenSizeChangedMap = make(map[int]ScreenSignalSizeChangedCallback)
+var signalScreenSizeChangedLock sync.Mutex
 
 // ScreenSignalSizeChangedCallback is a callback function for a 'size-changed' signal emitted from a Screen.
 type ScreenSignalSizeChangedCallback func()

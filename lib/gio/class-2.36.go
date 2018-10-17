@@ -33,9 +33,9 @@ import (
 */
 import "C"
 
-var signalLaunchFailedId int
-var signalLaunchFailedMap = make(map[int]AppLaunchContextSignalLaunchFailedCallback)
-var signalLaunchFailedLock sync.Mutex
+var signalAppLaunchContextLaunchFailedId int
+var signalAppLaunchContextLaunchFailedMap = make(map[int]AppLaunchContextSignalLaunchFailedCallback)
+var signalAppLaunchContextLaunchFailedLock sync.Mutex
 
 // AppLaunchContextSignalLaunchFailedCallback is a callback function for a 'launch-failed' signal emitted from a AppLaunchContext.
 type AppLaunchContextSignalLaunchFailedCallback func(startupNotifyId string)

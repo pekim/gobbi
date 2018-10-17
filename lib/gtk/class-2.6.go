@@ -422,9 +422,9 @@ func (recv *CellView) SetDisplayedRow(path *TreePath) {
 
 // Unsupported : gtk_cell_view_set_model : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
 
-var signalOwnerChangeId int
-var signalOwnerChangeMap = make(map[int]ClipboardSignalOwnerChangeCallback)
-var signalOwnerChangeLock sync.Mutex
+var signalClipboardOwnerChangeId int
+var signalClipboardOwnerChangeMap = make(map[int]ClipboardSignalOwnerChangeCallback)
+var signalClipboardOwnerChangeLock sync.Mutex
 
 // ClipboardSignalOwnerChangeCallback is a callback function for a 'owner-change' signal emitted from a Clipboard.
 type ClipboardSignalOwnerChangeCallback func(event *gdk.EventOwnerChange)
@@ -545,9 +545,9 @@ func (recv *ComboBox) SetFocusOnClick(focusOnClick bool) {
 
 // Unsupported signal : unsupported parameter model : no type generator for TreeModel,
 
-var signalInsertPrefixId int
-var signalInsertPrefixMap = make(map[int]EntryCompletionSignalInsertPrefixCallback)
-var signalInsertPrefixLock sync.Mutex
+var signalEntryCompletionInsertPrefixId int
+var signalEntryCompletionInsertPrefixMap = make(map[int]EntryCompletionSignalInsertPrefixCallback)
+var signalEntryCompletionInsertPrefixLock sync.Mutex
 
 // EntryCompletionSignalInsertPrefixCallback is a callback function for a 'insert-prefix' signal emitted from a EntryCompletion.
 type EntryCompletionSignalInsertPrefixCallback func(prefix string) bool
@@ -1163,9 +1163,9 @@ func (recv *ProgressBar) SetEllipsize(mode pango.EllipsizeMode) {
 	return
 }
 
-var signalChangeValueId int
-var signalChangeValueMap = make(map[int]RangeSignalChangeValueCallback)
-var signalChangeValueLock sync.Mutex
+var signalRangeChangeValueId int
+var signalRangeChangeValueMap = make(map[int]RangeSignalChangeValueCallback)
+var signalRangeChangeValueLock sync.Mutex
 
 // RangeSignalChangeValueCallback is a callback function for a 'change-value' signal emitted from a Range.
 type RangeSignalChangeValueCallback func(scroll ScrollType, value float64) bool

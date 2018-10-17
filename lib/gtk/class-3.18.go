@@ -154,9 +154,9 @@ func (recv *Overlay) SetOverlayPassThrough(widget *Widget, passThrough bool) {
 
 // Unsupported signal : unsupported parameter selected_item : no type generator for Gio.File,
 
-var signalShowOtherLocationsId int
-var signalShowOtherLocationsMap = make(map[int]PlacesSidebarSignalShowOtherLocationsCallback)
-var signalShowOtherLocationsLock sync.Mutex
+var signalPlacesSidebarShowOtherLocationsId int
+var signalPlacesSidebarShowOtherLocationsMap = make(map[int]PlacesSidebarSignalShowOtherLocationsCallback)
+var signalPlacesSidebarShowOtherLocationsLock sync.Mutex
 
 // PlacesSidebarSignalShowOtherLocationsCallback is a callback function for a 'show-other-locations' signal emitted from a PlacesSidebar.
 type PlacesSidebarSignalShowOtherLocationsCallback func()

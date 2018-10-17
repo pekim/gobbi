@@ -640,36 +640,36 @@ func CastToPixbufLoader(object *gobject.Object) *PixbufLoader {
 	return PixbufLoaderNewFromC(object.ToC())
 }
 
-var signalAreaPreparedId int
-var signalAreaPreparedMap = make(map[int]PixbufLoaderSignalAreaPreparedCallback)
-var signalAreaPreparedLock sync.Mutex
+var signalPixbufLoaderAreaPreparedId int
+var signalPixbufLoaderAreaPreparedMap = make(map[int]PixbufLoaderSignalAreaPreparedCallback)
+var signalPixbufLoaderAreaPreparedLock sync.Mutex
 
 // PixbufLoaderSignalAreaPreparedCallback is a callback function for a 'area-prepared' signal emitted from a PixbufLoader.
 type PixbufLoaderSignalAreaPreparedCallback func()
 
 func PixbufLoader_areaPreparedHandler() {}
 
-var signalAreaUpdatedId int
-var signalAreaUpdatedMap = make(map[int]PixbufLoaderSignalAreaUpdatedCallback)
-var signalAreaUpdatedLock sync.Mutex
+var signalPixbufLoaderAreaUpdatedId int
+var signalPixbufLoaderAreaUpdatedMap = make(map[int]PixbufLoaderSignalAreaUpdatedCallback)
+var signalPixbufLoaderAreaUpdatedLock sync.Mutex
 
 // PixbufLoaderSignalAreaUpdatedCallback is a callback function for a 'area-updated' signal emitted from a PixbufLoader.
 type PixbufLoaderSignalAreaUpdatedCallback func(x int32, y int32, width int32, height int32)
 
 func PixbufLoader_areaUpdatedHandler() {}
 
-var signalClosedId int
-var signalClosedMap = make(map[int]PixbufLoaderSignalClosedCallback)
-var signalClosedLock sync.Mutex
+var signalPixbufLoaderClosedId int
+var signalPixbufLoaderClosedMap = make(map[int]PixbufLoaderSignalClosedCallback)
+var signalPixbufLoaderClosedLock sync.Mutex
 
 // PixbufLoaderSignalClosedCallback is a callback function for a 'closed' signal emitted from a PixbufLoader.
 type PixbufLoaderSignalClosedCallback func()
 
 func PixbufLoader_closedHandler() {}
 
-var signalSizePreparedId int
-var signalSizePreparedMap = make(map[int]PixbufLoaderSignalSizePreparedCallback)
-var signalSizePreparedLock sync.Mutex
+var signalPixbufLoaderSizePreparedId int
+var signalPixbufLoaderSizePreparedMap = make(map[int]PixbufLoaderSignalSizePreparedCallback)
+var signalPixbufLoaderSizePreparedLock sync.Mutex
 
 // PixbufLoaderSignalSizePreparedCallback is a callback function for a 'size-prepared' signal emitted from a PixbufLoader.
 type PixbufLoaderSignalSizePreparedCallback func(width int32, height int32)

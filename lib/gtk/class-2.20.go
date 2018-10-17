@@ -97,9 +97,9 @@ func (recv *Dialog) GetWidgetForResponse(responseId int32) *Widget {
 	return retGo
 }
 
-var signalPreeditChangedId int
-var signalPreeditChangedMap = make(map[int]EntrySignalPreeditChangedCallback)
-var signalPreeditChangedLock sync.Mutex
+var signalEntryPreeditChangedId int
+var signalEntryPreeditChangedMap = make(map[int]EntrySignalPreeditChangedCallback)
+var signalEntryPreeditChangedLock sync.Mutex
 
 // EntrySignalPreeditChangedCallback is a callback function for a 'preedit-changed' signal emitted from a Entry.
 type EntrySignalPreeditChangedCallback func(preedit string)
@@ -333,9 +333,9 @@ func (recv *Statusbar) GetMessageArea() *Box {
 
 // Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
 
-var signalPreeditChangedId int
-var signalPreeditChangedMap = make(map[int]TextViewSignalPreeditChangedCallback)
-var signalPreeditChangedLock sync.Mutex
+var signalTextViewPreeditChangedId int
+var signalTextViewPreeditChangedMap = make(map[int]TextViewSignalPreeditChangedCallback)
+var signalTextViewPreeditChangedLock sync.Mutex
 
 // TextViewSignalPreeditChangedCallback is a callback function for a 'preedit-changed' signal emitted from a TextView.
 type TextViewSignalPreeditChangedCallback func(preedit string)

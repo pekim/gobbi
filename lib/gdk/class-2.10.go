@@ -40,9 +40,9 @@ func (recv *Display) SupportsShapes() bool {
 	return retGo
 }
 
-var signalCompositedChangedId int
-var signalCompositedChangedMap = make(map[int]ScreenSignalCompositedChangedCallback)
-var signalCompositedChangedLock sync.Mutex
+var signalScreenCompositedChangedId int
+var signalScreenCompositedChangedMap = make(map[int]ScreenSignalCompositedChangedCallback)
+var signalScreenCompositedChangedLock sync.Mutex
 
 // ScreenSignalCompositedChangedCallback is a callback function for a 'composited-changed' signal emitted from a Screen.
 type ScreenSignalCompositedChangedCallback func()

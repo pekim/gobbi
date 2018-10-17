@@ -238,9 +238,9 @@ func (recv *Keymap) GetNumLockState() bool {
 	return retGo
 }
 
-var signalCreateSurfaceId int
-var signalCreateSurfaceMap = make(map[int]WindowSignalCreateSurfaceCallback)
-var signalCreateSurfaceLock sync.Mutex
+var signalWindowCreateSurfaceId int
+var signalWindowCreateSurfaceMap = make(map[int]WindowSignalCreateSurfaceCallback)
+var signalWindowCreateSurfaceLock sync.Mutex
 
 // WindowSignalCreateSurfaceCallback is a callback function for a 'create-surface' signal emitted from a Window.
 type WindowSignalCreateSurfaceCallback func(width int32, height int32) cairo.Surface

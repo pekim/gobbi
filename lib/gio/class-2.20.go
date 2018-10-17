@@ -89,9 +89,9 @@ import "C"
 
 // Unsupported : g_memory_output_stream_new : unsupported parameter realloc_function : no type generator for ReallocFunc, GReallocFunc
 
-var signalAbortedId int
-var signalAbortedMap = make(map[int]MountOperationSignalAbortedCallback)
-var signalAbortedLock sync.Mutex
+var signalMountOperationAbortedId int
+var signalMountOperationAbortedMap = make(map[int]MountOperationSignalAbortedCallback)
+var signalMountOperationAbortedLock sync.Mutex
 
 // MountOperationSignalAbortedCallback is a callback function for a 'aborted' signal emitted from a MountOperation.
 type MountOperationSignalAbortedCallback func()
