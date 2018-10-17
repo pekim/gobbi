@@ -7,6 +7,7 @@ import (
 	gdk "github.com/pekim/gobbi/lib/gdk"
 	gio "github.com/pekim/gobbi/lib/gio"
 	pango "github.com/pekim/gobbi/lib/pango"
+	"sync"
 	"unsafe"
 )
 
@@ -197,8 +198,14 @@ func (recv *Entry) SetInputPurpose(purpose InputPurpose) {
 
 // Unsupported : gtk_info_bar_new_with_buttons : unsupported parameter ... : varargs
 
+var signalOffsetChangedId int
+var signalOffsetChangedMap = make(map[int]LevelBarSignalOffsetChangedCallback)
+var signalOffsetChangedLock sync.Mutex
+
 // LevelBarSignalOffsetChangedCallback is a callback function for a 'offset-changed' signal emitted from a LevelBar.
 type LevelBarSignalOffsetChangedCallback func(name string)
+
+func LevelBar_offsetChangedHandler() {}
 
 // LevelBarNew is a wrapper around the C function gtk_level_bar_new.
 func LevelBarNew() *LevelBar {

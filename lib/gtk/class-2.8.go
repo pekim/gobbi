@@ -7,6 +7,7 @@ import (
 	cairo "github.com/pekim/gobbi/lib/cairo"
 	gdk "github.com/pekim/gobbi/lib/gdk"
 	gobject "github.com/pekim/gobbi/lib/gobject"
+	"sync"
 	"unsafe"
 )
 
@@ -415,8 +416,14 @@ func (recv *TreeViewColumn) QueueResize() {
 
 // Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
 
+var signalGrabBrokenEventId int
+var signalGrabBrokenEventMap = make(map[int]WidgetSignalGrabBrokenEventCallback)
+var signalGrabBrokenEventLock sync.Mutex
+
 // WidgetSignalGrabBrokenEventCallback is a callback function for a 'grab-broken-event' signal emitted from a Widget.
 type WidgetSignalGrabBrokenEventCallback func(event *gdk.EventGrabBroken) bool
+
+func Widget_grabBrokenEventHandler() {}
 
 // Unsupported signal : unsupported parameter allocation : Blacklisted record : GdkRectangle
 

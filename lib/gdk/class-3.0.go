@@ -6,6 +6,7 @@ package gdk
 import (
 	cairo "github.com/pekim/gobbi/lib/cairo"
 	glib "github.com/pekim/gobbi/lib/glib"
+	"sync"
 	"unsafe"
 )
 
@@ -237,8 +238,14 @@ func (recv *Keymap) GetNumLockState() bool {
 	return retGo
 }
 
+var signalCreateSurfaceId int
+var signalCreateSurfaceMap = make(map[int]WindowSignalCreateSurfaceCallback)
+var signalCreateSurfaceLock sync.Mutex
+
 // WindowSignalCreateSurfaceCallback is a callback function for a 'create-surface' signal emitted from a Window.
 type WindowSignalCreateSurfaceCallback func(width int32, height int32) cairo.Surface
+
+func Window_createSurfaceHandler() {}
 
 // GetDeviceCursor is a wrapper around the C function gdk_window_get_device_cursor.
 func (recv *Window) GetDeviceCursor(device *Device) *Cursor {

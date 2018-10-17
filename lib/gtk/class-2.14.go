@@ -8,6 +8,7 @@ import (
 	gdkpixbuf "github.com/pekim/gobbi/lib/gdkpixbuf"
 	glib "github.com/pekim/gobbi/lib/glib"
 	pango "github.com/pekim/gobbi/lib/pango"
+	"sync"
 	"unsafe"
 )
 
@@ -232,8 +233,14 @@ func (recv *Calendar) SetDetailWidthChars(chars int32) {
 
 // Unsupported signal : unsupported parameter editable : no type generator for CellEditable,
 
+var signalChangedId int
+var signalChangedMap = make(map[int]CellRendererComboSignalChangedCallback)
+var signalChangedLock sync.Mutex
+
 // CellRendererComboSignalChangedCallback is a callback function for a 'changed' signal emitted from a CellRendererCombo.
 type CellRendererComboSignalChangedCallback func(pathString string, newIter *TreeIter)
+
+func CellRendererCombo_changedHandler() {}
 
 // Unsupported : gtk_clipboard_request_uris : unsupported parameter callback : no type generator for ClipboardURIReceivedFunc, GtkClipboardURIReceivedFunc
 
@@ -789,11 +796,23 @@ func (recv *ScaleButton) GetPopup() *Widget {
 	return retGo
 }
 
+var signalButtonPressEventId int
+var signalButtonPressEventMap = make(map[int]StatusIconSignalButtonPressEventCallback)
+var signalButtonPressEventLock sync.Mutex
+
 // StatusIconSignalButtonPressEventCallback is a callback function for a 'button-press-event' signal emitted from a StatusIcon.
 type StatusIconSignalButtonPressEventCallback func(event *gdk.EventButton) bool
 
+func StatusIcon_buttonPressEventHandler() {}
+
+var signalButtonReleaseEventId int
+var signalButtonReleaseEventMap = make(map[int]StatusIconSignalButtonReleaseEventCallback)
+var signalButtonReleaseEventLock sync.Mutex
+
 // StatusIconSignalButtonReleaseEventCallback is a callback function for a 'button-release-event' signal emitted from a StatusIcon.
 type StatusIconSignalButtonReleaseEventCallback func(event *gdk.EventButton) bool
+
+func StatusIcon_buttonReleaseEventHandler() {}
 
 // Unsupported : gtk_status_icon_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon, GIcon*
 
@@ -832,8 +851,14 @@ func (recv *ToolItem) ToolbarReconfigured() {
 
 // Unsupported signal : unsupported parameter child_property : Blacklisted record : GParamSpec
 
+var signalDamageEventId int
+var signalDamageEventMap = make(map[int]WidgetSignalDamageEventCallback)
+var signalDamageEventLock sync.Mutex
+
 // WidgetSignalDamageEventCallback is a callback function for a 'damage-event' signal emitted from a Widget.
 type WidgetSignalDamageEventCallback func(event *gdk.EventExpose) bool
+
+func Widget_damageEventHandler() {}
 
 // Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
 

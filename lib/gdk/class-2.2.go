@@ -6,6 +6,7 @@ package gdk
 import (
 	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
+	"sync"
 	"unsafe"
 )
 
@@ -70,8 +71,14 @@ func (recv *Cursor) GetDisplay() *Display {
 	return retGo
 }
 
+var signalClosedId int
+var signalClosedMap = make(map[int]DisplaySignalClosedCallback)
+var signalClosedLock sync.Mutex
+
 // DisplaySignalClosedCallback is a callback function for a 'closed' signal emitted from a Display.
 type DisplaySignalClosedCallback func(isError bool)
+
+func Display_closedHandler() {}
 
 // Beep is a wrapper around the C function gdk_display_beep.
 func (recv *Display) Beep() {
@@ -195,8 +202,14 @@ func (recv *Display) Sync() {
 	return
 }
 
+var signalDisplayOpenedId int
+var signalDisplayOpenedMap = make(map[int]DisplayManagerSignalDisplayOpenedCallback)
+var signalDisplayOpenedLock sync.Mutex
+
 // DisplayManagerSignalDisplayOpenedCallback is a callback function for a 'display-opened' signal emitted from a DisplayManager.
 type DisplayManagerSignalDisplayOpenedCallback func(display *Display)
+
+func DisplayManager_displayOpenedHandler() {}
 
 // GetDefaultDisplay is a wrapper around the C function gdk_display_manager_get_default_display.
 func (recv *DisplayManager) GetDefaultDisplay() *Display {
@@ -223,11 +236,23 @@ func (recv *DisplayManager) SetDefaultDisplay(display *Display) {
 	return
 }
 
+var signalKeysChangedId int
+var signalKeysChangedMap = make(map[int]KeymapSignalKeysChangedCallback)
+var signalKeysChangedLock sync.Mutex
+
 // KeymapSignalKeysChangedCallback is a callback function for a 'keys-changed' signal emitted from a Keymap.
 type KeymapSignalKeysChangedCallback func()
 
+func Keymap_keysChangedHandler() {}
+
+var signalSizeChangedId int
+var signalSizeChangedMap = make(map[int]ScreenSignalSizeChangedCallback)
+var signalSizeChangedLock sync.Mutex
+
 // ScreenSignalSizeChangedCallback is a callback function for a 'size-changed' signal emitted from a Screen.
 type ScreenSignalSizeChangedCallback func()
+
+func Screen_sizeChangedHandler() {}
 
 // GetDisplay is a wrapper around the C function gdk_screen_get_display.
 func (recv *Screen) GetDisplay() *Display {

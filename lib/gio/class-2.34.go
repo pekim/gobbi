@@ -6,6 +6,7 @@ package gio
 import (
 	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
+	"sync"
 	"unsafe"
 )
 
@@ -74,8 +75,14 @@ func (recv *ApplicationCommandLine) GetStdin() *InputStream {
 
 // Unsupported : g_converter_output_stream_new : unsupported parameter converter : no type generator for Converter, GConverter*
 
+var signalAllowMechanismId int
+var signalAllowMechanismMap = make(map[int]DBusAuthObserverSignalAllowMechanismCallback)
+var signalAllowMechanismLock sync.Mutex
+
 // DBusAuthObserverSignalAllowMechanismCallback is a callback function for a 'allow-mechanism' signal emitted from a DBusAuthObserver.
 type DBusAuthObserverSignalAllowMechanismCallback func(mechanism string) bool
+
+func DBusAuthObserver_allowMechanismHandler() {}
 
 // AllowMechanism is a wrapper around the C function g_dbus_auth_observer_allow_mechanism.
 func (recv *DBusAuthObserver) AllowMechanism(mechanism string) bool {
@@ -243,8 +250,14 @@ func (recv *MenuItem) GetLink(link string) *MenuModel {
 
 // Unsupported signal : unsupported parameter processes : no param type
 
+var signalShowUnmountProgressId int
+var signalShowUnmountProgressMap = make(map[int]MountOperationSignalShowUnmountProgressCallback)
+var signalShowUnmountProgressLock sync.Mutex
+
 // MountOperationSignalShowUnmountProgressCallback is a callback function for a 'show-unmount-progress' signal emitted from a MountOperation.
 type MountOperationSignalShowUnmountProgressCallback func(message string, timeLeft int64, bytesLeft int64)
+
+func MountOperation_showUnmountProgressHandler() {}
 
 // GetDestinationProtocol is a wrapper around the C function g_proxy_address_get_destination_protocol.
 func (recv *ProxyAddress) GetDestinationProtocol() string {

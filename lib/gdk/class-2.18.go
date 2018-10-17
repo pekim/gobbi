@@ -3,7 +3,10 @@
 
 package gdk
 
-import "unsafe"
+import (
+	"sync"
+	"unsafe"
+)
 
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <gdk/gdk.h>
@@ -37,14 +40,32 @@ import "unsafe"
 */
 import "C"
 
+var signalFromEmbedderId int
+var signalFromEmbedderMap = make(map[int]WindowSignalFromEmbedderCallback)
+var signalFromEmbedderLock sync.Mutex
+
 // WindowSignalFromEmbedderCallback is a callback function for a 'from-embedder' signal emitted from a Window.
 type WindowSignalFromEmbedderCallback func(embedderX float64, embedderY float64)
+
+func Window_fromEmbedderHandler() {}
+
+var signalPickEmbeddedChildId int
+var signalPickEmbeddedChildMap = make(map[int]WindowSignalPickEmbeddedChildCallback)
+var signalPickEmbeddedChildLock sync.Mutex
 
 // WindowSignalPickEmbeddedChildCallback is a callback function for a 'pick-embedded-child' signal emitted from a Window.
 type WindowSignalPickEmbeddedChildCallback func(x float64, y float64) Window
 
+func Window_pickEmbeddedChildHandler() {}
+
+var signalToEmbedderId int
+var signalToEmbedderMap = make(map[int]WindowSignalToEmbedderCallback)
+var signalToEmbedderLock sync.Mutex
+
 // WindowSignalToEmbedderCallback is a callback function for a 'to-embedder' signal emitted from a Window.
 type WindowSignalToEmbedderCallback func(offscreenX float64, offscreenY float64)
+
+func Window_toEmbedderHandler() {}
 
 // EnsureNative is a wrapper around the C function gdk_window_ensure_native.
 func (recv *Window) EnsureNative() bool {

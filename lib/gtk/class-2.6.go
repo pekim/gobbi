@@ -9,6 +9,7 @@ import (
 	gdkpixbuf "github.com/pekim/gobbi/lib/gdkpixbuf"
 	glib "github.com/pekim/gobbi/lib/glib"
 	pango "github.com/pekim/gobbi/lib/pango"
+	"sync"
 	"unsafe"
 )
 
@@ -421,8 +422,14 @@ func (recv *CellView) SetDisplayedRow(path *TreePath) {
 
 // Unsupported : gtk_cell_view_set_model : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
 
+var signalOwnerChangeId int
+var signalOwnerChangeMap = make(map[int]ClipboardSignalOwnerChangeCallback)
+var signalOwnerChangeLock sync.Mutex
+
 // ClipboardSignalOwnerChangeCallback is a callback function for a 'owner-change' signal emitted from a Clipboard.
 type ClipboardSignalOwnerChangeCallback func(event *gdk.EventOwnerChange)
+
+func Clipboard_ownerChangeHandler() {}
 
 // Unsupported : gtk_clipboard_request_image : unsupported parameter callback : no type generator for ClipboardImageReceivedFunc, GtkClipboardImageReceivedFunc
 
@@ -538,8 +545,14 @@ func (recv *ComboBox) SetFocusOnClick(focusOnClick bool) {
 
 // Unsupported signal : unsupported parameter model : no type generator for TreeModel,
 
+var signalInsertPrefixId int
+var signalInsertPrefixMap = make(map[int]EntryCompletionSignalInsertPrefixCallback)
+var signalInsertPrefixLock sync.Mutex
+
 // EntryCompletionSignalInsertPrefixCallback is a callback function for a 'insert-prefix' signal emitted from a EntryCompletion.
 type EntryCompletionSignalInsertPrefixCallback func(prefix string) bool
+
+func EntryCompletion_insertPrefixHandler() {}
 
 // Unsupported signal : unsupported parameter model : no type generator for TreeModel,
 
@@ -1150,8 +1163,14 @@ func (recv *ProgressBar) SetEllipsize(mode pango.EllipsizeMode) {
 	return
 }
 
+var signalChangeValueId int
+var signalChangeValueMap = make(map[int]RangeSignalChangeValueCallback)
+var signalChangeValueLock sync.Mutex
+
 // RangeSignalChangeValueCallback is a callback function for a 'change-value' signal emitted from a Range.
 type RangeSignalChangeValueCallback func(scroll ScrollType, value float64) bool
+
+func Range_changeValueHandler() {}
 
 // Unsupported : gtk_recent_chooser_dialog_new : unsupported parameter ... : varargs
 

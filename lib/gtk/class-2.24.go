@@ -3,7 +3,10 @@
 
 package gtk
 
-import "unsafe"
+import (
+	"sync"
+	"unsafe"
+)
 
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <gtk/gtk-a11y.h>
@@ -21,8 +24,14 @@ import "unsafe"
 */
 import "C"
 
+var signalActivateLinkId int
+var signalActivateLinkMap = make(map[int]AboutDialogSignalActivateLinkCallback)
+var signalActivateLinkLock sync.Mutex
+
 // AboutDialogSignalActivateLinkCallback is a callback function for a 'activate-link' signal emitted from a AboutDialog.
 type AboutDialogSignalActivateLinkCallback func(uri string) bool
+
+func AboutDialog_activateLinkHandler() {}
 
 // Unsupported : gtk_app_chooser_dialog_new : unsupported parameter file : no type generator for Gio.File, GFile*
 

@@ -19,6 +19,9 @@ type Signal struct {
 	ReturnValue *ReturnValue `xml:"return-value"`
 
 	record             *Record
+	varNameId          string
+	varNameMap         string
+	varNameLock        string
 	goNameHandler      string
 	cNameSignalConnect string
 	callbackTypeName   string
@@ -34,6 +37,16 @@ func (s *Signal) init(ns *Namespace, record *Record) {
 		s.ReturnValue.init(ns)
 	}
 
+	s.initNames()
+}
+
+func (s *Signal) initNames() {
+	signalGoName := makeExportedGoName(s.Name)
+
+	s.varNameId = fmt.Sprintf("signal%sId", signalGoName)
+	s.varNameMap = fmt.Sprintf("signal%sMap", signalGoName)
+	s.varNameLock = fmt.Sprintf("signal%sLock", signalGoName)
+
 	s.goNameHandler = fmt.Sprintf("%s_%sHandler",
 		s.record.Name,
 		makeGoNameInternal(s.Name, false))
@@ -44,7 +57,7 @@ func (s *Signal) init(ns *Namespace, record *Record) {
 
 	s.callbackTypeName = fmt.Sprintf("%sSignal%sCallback",
 		s.record.Name,
-		makeExportedGoName(s.Name))
+		signalGoName)
 }
 
 func (s *Signal) version() string {
@@ -64,7 +77,9 @@ func (s *Signal) generate(g *jen.Group, version *Version) {
 	}
 
 	s.generateCgoPreamble()
+	s.generateVariables(g)
 	s.generateCallbackType(g)
+	s.generateHandlerFunction(g)
 }
 
 func (s *Signal) generateCgoPreamble() {
@@ -101,4 +116,24 @@ func (s *Signal) generateCallbackType(g *jen.Group) {
 
 func (s *Signal) generateCallbackReturnDeclaration(g *jen.Group) {
 	s.ReturnValue.generateFunctionDeclaration(g)
+}
+
+func (s *Signal) generateHandlerFunction(g *jen.Group) {
+	g.
+		Func().
+		Id(s.goNameHandler).
+		Params().
+		Params().
+		BlockFunc(func(g *jen.Group) {
+
+		})
+
+	g.Line()
+}
+
+func (s *Signal) generateVariables(g *jen.Group) {
+	g.Var().Id(s.varNameId).Int()
+	g.Var().Id(s.varNameMap).Op("=").Make(jen.Map(jen.Int()).Id(s.callbackTypeName))
+	g.Var().Id(s.varNameLock).Qual("sync", "Mutex")
+	g.Line()
 }

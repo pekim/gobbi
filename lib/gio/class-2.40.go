@@ -6,6 +6,7 @@ package gio
 import (
 	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
+	"sync"
 	"unsafe"
 )
 
@@ -67,8 +68,14 @@ func CastToAppInfoMonitor(object *gobject.Object) *AppInfoMonitor {
 
 // Unsupported signal : unsupported parameter info : no type generator for AppInfo,
 
+var signalHandleLocalOptionsId int
+var signalHandleLocalOptionsMap = make(map[int]ApplicationSignalHandleLocalOptionsCallback)
+var signalHandleLocalOptionsLock sync.Mutex
+
 // ApplicationSignalHandleLocalOptionsCallback is a callback function for a 'handle-local-options' signal emitted from a Application.
 type ApplicationSignalHandleLocalOptionsCallback func(options *glib.VariantDict) int32
+
+func Application_handleLocalOptionsHandler() {}
 
 // Unsupported signal : unsupported parameter files : no param type
 

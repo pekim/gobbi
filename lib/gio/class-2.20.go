@@ -3,6 +3,8 @@
 
 package gio
 
+import "sync"
+
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <gio/gdesktopappinfo.h>
 // #include <gio/gfiledescriptorbased.h>
@@ -87,8 +89,14 @@ import "C"
 
 // Unsupported : g_memory_output_stream_new : unsupported parameter realloc_function : no type generator for ReallocFunc, GReallocFunc
 
+var signalAbortedId int
+var signalAbortedMap = make(map[int]MountOperationSignalAbortedCallback)
+var signalAbortedLock sync.Mutex
+
 // MountOperationSignalAbortedCallback is a callback function for a 'aborted' signal emitted from a MountOperation.
 type MountOperationSignalAbortedCallback func()
+
+func MountOperation_abortedHandler() {}
 
 // Unsupported signal : unsupported parameter choices : no param type
 

@@ -5,6 +5,7 @@ package gtk
 
 import (
 	gdk "github.com/pekim/gobbi/lib/gdk"
+	"sync"
 	"unsafe"
 )
 
@@ -96,8 +97,14 @@ func (recv *GLArea) SetUseEs(useEs bool) {
 
 // Unsupported : gtk_list_store_newv : unsupported parameter types : no param type
 
+var signalPoppedUpId int
+var signalPoppedUpMap = make(map[int]MenuSignalPoppedUpCallback)
+var signalPoppedUpLock sync.Mutex
+
 // MenuSignalPoppedUpCallback is a callback function for a 'popped-up' signal emitted from a Menu.
 type MenuSignalPoppedUpCallback func(flippedRect uintptr, finalRect uintptr, flippedX bool, flippedY bool)
+
+func Menu_poppedUpHandler() {}
 
 // PlaceOnMonitor is a wrapper around the C function gtk_menu_place_on_monitor.
 func (recv *Menu) PlaceOnMonitor(monitor *gdk.Monitor) {

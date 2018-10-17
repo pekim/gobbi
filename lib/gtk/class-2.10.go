@@ -10,6 +10,7 @@ import (
 	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	pango "github.com/pekim/gobbi/lib/pango"
+	"sync"
 	"unsafe"
 )
 
@@ -235,17 +236,41 @@ import "C"
 
 // Unsupported signal : unsupported parameter application : no type generator for Gio.AppInfo,
 
+var signalApplyId int
+var signalApplyMap = make(map[int]AssistantSignalApplyCallback)
+var signalApplyLock sync.Mutex
+
 // AssistantSignalApplyCallback is a callback function for a 'apply' signal emitted from a Assistant.
 type AssistantSignalApplyCallback func()
+
+func Assistant_applyHandler() {}
+
+var signalCancelId int
+var signalCancelMap = make(map[int]AssistantSignalCancelCallback)
+var signalCancelLock sync.Mutex
 
 // AssistantSignalCancelCallback is a callback function for a 'cancel' signal emitted from a Assistant.
 type AssistantSignalCancelCallback func()
 
+func Assistant_cancelHandler() {}
+
+var signalCloseId int
+var signalCloseMap = make(map[int]AssistantSignalCloseCallback)
+var signalCloseLock sync.Mutex
+
 // AssistantSignalCloseCallback is a callback function for a 'close' signal emitted from a Assistant.
 type AssistantSignalCloseCallback func()
 
+func Assistant_closeHandler() {}
+
+var signalPrepareId int
+var signalPrepareMap = make(map[int]AssistantSignalPrepareCallback)
+var signalPrepareLock sync.Mutex
+
 // AssistantSignalPrepareCallback is a callback function for a 'prepare' signal emitted from a Assistant.
 type AssistantSignalPrepareCallback func(page *Widget)
+
+func Assistant_prepareHandler() {}
 
 // AssistantNew is a wrapper around the C function gtk_assistant_new.
 func AssistantNew() *Assistant {
@@ -483,11 +508,23 @@ func (recv *Button) SetImagePosition(position PositionType) {
 
 // Unsupported signal : unsupported parameter editable : no type generator for CellEditable,
 
+var signalAccelClearedId int
+var signalAccelClearedMap = make(map[int]CellRendererAccelSignalAccelClearedCallback)
+var signalAccelClearedLock sync.Mutex
+
 // CellRendererAccelSignalAccelClearedCallback is a callback function for a 'accel-cleared' signal emitted from a CellRendererAccel.
 type CellRendererAccelSignalAccelClearedCallback func(pathString string)
 
+func CellRendererAccel_accelClearedHandler() {}
+
+var signalAccelEditedId int
+var signalAccelEditedMap = make(map[int]CellRendererAccelSignalAccelEditedCallback)
+var signalAccelEditedLock sync.Mutex
+
 // CellRendererAccelSignalAccelEditedCallback is a callback function for a 'accel-edited' signal emitted from a CellRendererAccel.
 type CellRendererAccelSignalAccelEditedCallback func(pathString string, accelKey uint32, accelMods gdk.ModifierType, hardwareKeycode uint32)
+
+func CellRendererAccel_accelEditedHandler() {}
 
 // CellRendererAccelNew is a wrapper around the C function gtk_cell_renderer_accel_new.
 func CellRendererAccelNew() *CellRendererAccel {
@@ -677,14 +714,32 @@ func (recv *MessageDialog) SetImage(image *Widget) {
 	return
 }
 
+var signalPageAddedId int
+var signalPageAddedMap = make(map[int]NotebookSignalPageAddedCallback)
+var signalPageAddedLock sync.Mutex
+
 // NotebookSignalPageAddedCallback is a callback function for a 'page-added' signal emitted from a Notebook.
 type NotebookSignalPageAddedCallback func(child *Widget, pageNum uint32)
+
+func Notebook_pageAddedHandler() {}
+
+var signalPageRemovedId int
+var signalPageRemovedMap = make(map[int]NotebookSignalPageRemovedCallback)
+var signalPageRemovedLock sync.Mutex
 
 // NotebookSignalPageRemovedCallback is a callback function for a 'page-removed' signal emitted from a Notebook.
 type NotebookSignalPageRemovedCallback func(child *Widget, pageNum uint32)
 
+func Notebook_pageRemovedHandler() {}
+
+var signalPageReorderedId int
+var signalPageReorderedMap = make(map[int]NotebookSignalPageReorderedCallback)
+var signalPageReorderedLock sync.Mutex
+
 // NotebookSignalPageReorderedCallback is a callback function for a 'page-reordered' signal emitted from a Notebook.
 type NotebookSignalPageReorderedCallback func(child *Widget, pageNum uint32)
+
+func Notebook_pageReorderedHandler() {}
 
 // GetTabDetachable is a wrapper around the C function gtk_notebook_get_tab_detachable.
 func (recv *Notebook) GetTabDetachable(child *Widget) bool {
@@ -1012,34 +1067,88 @@ func (recv *PrintContext) SetCairoContext(cr *cairo.Context, dpiX float64, dpiY 
 	return
 }
 
+var signalBeginPrintId int
+var signalBeginPrintMap = make(map[int]PrintOperationSignalBeginPrintCallback)
+var signalBeginPrintLock sync.Mutex
+
 // PrintOperationSignalBeginPrintCallback is a callback function for a 'begin-print' signal emitted from a PrintOperation.
 type PrintOperationSignalBeginPrintCallback func(context *PrintContext)
+
+func PrintOperation_beginPrintHandler() {}
+
+var signalCreateCustomWidgetId int
+var signalCreateCustomWidgetMap = make(map[int]PrintOperationSignalCreateCustomWidgetCallback)
+var signalCreateCustomWidgetLock sync.Mutex
 
 // PrintOperationSignalCreateCustomWidgetCallback is a callback function for a 'create-custom-widget' signal emitted from a PrintOperation.
 type PrintOperationSignalCreateCustomWidgetCallback func() gobject.Object
 
+func PrintOperation_createCustomWidgetHandler() {}
+
+var signalCustomWidgetApplyId int
+var signalCustomWidgetApplyMap = make(map[int]PrintOperationSignalCustomWidgetApplyCallback)
+var signalCustomWidgetApplyLock sync.Mutex
+
 // PrintOperationSignalCustomWidgetApplyCallback is a callback function for a 'custom-widget-apply' signal emitted from a PrintOperation.
 type PrintOperationSignalCustomWidgetApplyCallback func(widget *Widget)
+
+func PrintOperation_customWidgetApplyHandler() {}
+
+var signalDoneId int
+var signalDoneMap = make(map[int]PrintOperationSignalDoneCallback)
+var signalDoneLock sync.Mutex
 
 // PrintOperationSignalDoneCallback is a callback function for a 'done' signal emitted from a PrintOperation.
 type PrintOperationSignalDoneCallback func(result PrintOperationResult)
 
+func PrintOperation_doneHandler() {}
+
+var signalDrawPageId int
+var signalDrawPageMap = make(map[int]PrintOperationSignalDrawPageCallback)
+var signalDrawPageLock sync.Mutex
+
 // PrintOperationSignalDrawPageCallback is a callback function for a 'draw-page' signal emitted from a PrintOperation.
 type PrintOperationSignalDrawPageCallback func(context *PrintContext, pageNr int32)
+
+func PrintOperation_drawPageHandler() {}
+
+var signalEndPrintId int
+var signalEndPrintMap = make(map[int]PrintOperationSignalEndPrintCallback)
+var signalEndPrintLock sync.Mutex
 
 // PrintOperationSignalEndPrintCallback is a callback function for a 'end-print' signal emitted from a PrintOperation.
 type PrintOperationSignalEndPrintCallback func(context *PrintContext)
 
+func PrintOperation_endPrintHandler() {}
+
+var signalPaginateId int
+var signalPaginateMap = make(map[int]PrintOperationSignalPaginateCallback)
+var signalPaginateLock sync.Mutex
+
 // PrintOperationSignalPaginateCallback is a callback function for a 'paginate' signal emitted from a PrintOperation.
 type PrintOperationSignalPaginateCallback func(context *PrintContext) bool
 
+func PrintOperation_paginateHandler() {}
+
 // Unsupported signal : unsupported parameter preview : no type generator for PrintOperationPreview,
+
+var signalRequestPageSetupId int
+var signalRequestPageSetupMap = make(map[int]PrintOperationSignalRequestPageSetupCallback)
+var signalRequestPageSetupLock sync.Mutex
 
 // PrintOperationSignalRequestPageSetupCallback is a callback function for a 'request-page-setup' signal emitted from a PrintOperation.
 type PrintOperationSignalRequestPageSetupCallback func(context *PrintContext, pageNr int32, setup *PageSetup)
 
+func PrintOperation_requestPageSetupHandler() {}
+
+var signalStatusChangedId int
+var signalStatusChangedMap = make(map[int]PrintOperationSignalStatusChangedCallback)
+var signalStatusChangedLock sync.Mutex
+
 // PrintOperationSignalStatusChangedCallback is a callback function for a 'status-changed' signal emitted from a PrintOperation.
 type PrintOperationSignalStatusChangedCallback func()
+
+func PrintOperation_statusChangedHandler() {}
 
 // PrintOperationNew is a wrapper around the C function gtk_print_operation_new.
 func PrintOperationNew() *PrintOperation {
@@ -2047,8 +2156,14 @@ func CastToRecentManager(object *gobject.Object) *RecentManager {
 	return RecentManagerNewFromC(object.ToC())
 }
 
+var signalChangedId int
+var signalChangedMap = make(map[int]RecentManagerSignalChangedCallback)
+var signalChangedLock sync.Mutex
+
 // RecentManagerSignalChangedCallback is a callback function for a 'changed' signal emitted from a RecentManager.
 type RecentManagerSignalChangedCallback func()
+
+func RecentManager_changedHandler() {}
 
 // RecentManagerNew is a wrapper around the C function gtk_recent_manager_new.
 func RecentManagerNew() *RecentManager {
@@ -2190,17 +2305,41 @@ func (recv *SizeGroup) GetWidgets() *glib.SList {
 	return retGo
 }
 
+var signalWrappedId int
+var signalWrappedMap = make(map[int]SpinButtonSignalWrappedCallback)
+var signalWrappedLock sync.Mutex
+
 // SpinButtonSignalWrappedCallback is a callback function for a 'wrapped' signal emitted from a SpinButton.
 type SpinButtonSignalWrappedCallback func()
+
+func SpinButton_wrappedHandler() {}
+
+var signalActivateId int
+var signalActivateMap = make(map[int]StatusIconSignalActivateCallback)
+var signalActivateLock sync.Mutex
 
 // StatusIconSignalActivateCallback is a callback function for a 'activate' signal emitted from a StatusIcon.
 type StatusIconSignalActivateCallback func()
 
+func StatusIcon_activateHandler() {}
+
+var signalPopupMenuId int
+var signalPopupMenuMap = make(map[int]StatusIconSignalPopupMenuCallback)
+var signalPopupMenuLock sync.Mutex
+
 // StatusIconSignalPopupMenuCallback is a callback function for a 'popup-menu' signal emitted from a StatusIcon.
 type StatusIconSignalPopupMenuCallback func(button uint32, activateTime uint32)
 
+func StatusIcon_popupMenuHandler() {}
+
+var signalSizeChangedId int
+var signalSizeChangedMap = make(map[int]StatusIconSignalSizeChangedCallback)
+var signalSizeChangedLock sync.Mutex
+
 // StatusIconSignalSizeChangedCallback is a callback function for a 'size-changed' signal emitted from a StatusIcon.
 type StatusIconSignalSizeChangedCallback func(size int32) bool
+
+func StatusIcon_sizeChangedHandler() {}
 
 // StatusIconNew is a wrapper around the C function gtk_status_icon_new.
 func StatusIconNew() *StatusIcon {

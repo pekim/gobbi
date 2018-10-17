@@ -5,6 +5,7 @@ package gtk
 
 import (
 	gdk "github.com/pekim/gobbi/lib/gdk"
+	"sync"
 	"unsafe"
 )
 
@@ -235,11 +236,23 @@ func (recv *Entry) SetBuffer(buffer *EntryBuffer) {
 	return
 }
 
+var signalDeletedTextId int
+var signalDeletedTextMap = make(map[int]EntryBufferSignalDeletedTextCallback)
+var signalDeletedTextLock sync.Mutex
+
 // EntryBufferSignalDeletedTextCallback is a callback function for a 'deleted-text' signal emitted from a EntryBuffer.
 type EntryBufferSignalDeletedTextCallback func(position uint32, nChars uint32)
 
+func EntryBuffer_deletedTextHandler() {}
+
+var signalInsertedTextId int
+var signalInsertedTextMap = make(map[int]EntryBufferSignalInsertedTextCallback)
+var signalInsertedTextLock sync.Mutex
+
 // EntryBufferSignalInsertedTextCallback is a callback function for a 'inserted-text' signal emitted from a EntryBuffer.
 type EntryBufferSignalInsertedTextCallback func(position uint32, chars string, nChars uint32)
+
+func EntryBuffer_insertedTextHandler() {}
 
 // EntryBufferNew is a wrapper around the C function gtk_entry_buffer_new.
 func EntryBufferNew(initialChars string, nInitialChars int32) *EntryBuffer {
@@ -396,11 +409,23 @@ func (recv *IconView) SetItemPadding(itemPadding int32) {
 
 // Unsupported : gtk_image_new_from_stock : unsupported parameter size : no type generator for gint, GtkIconSize
 
+var signalCloseId int
+var signalCloseMap = make(map[int]InfoBarSignalCloseCallback)
+var signalCloseLock sync.Mutex
+
 // InfoBarSignalCloseCallback is a callback function for a 'close' signal emitted from a InfoBar.
 type InfoBarSignalCloseCallback func()
 
+func InfoBar_closeHandler() {}
+
+var signalResponseId int
+var signalResponseMap = make(map[int]InfoBarSignalResponseCallback)
+var signalResponseLock sync.Mutex
+
 // InfoBarSignalResponseCallback is a callback function for a 'response' signal emitted from a InfoBar.
 type InfoBarSignalResponseCallback func(responseId int32)
+
+func InfoBar_responseHandler() {}
 
 // InfoBarNew is a wrapper around the C function gtk_info_bar_new.
 func InfoBarNew() *InfoBar {
@@ -501,11 +526,23 @@ func (recv *InfoBar) SetResponseSensitive(responseId int32, setting bool) {
 	return
 }
 
+var signalActivateCurrentLinkId int
+var signalActivateCurrentLinkMap = make(map[int]LabelSignalActivateCurrentLinkCallback)
+var signalActivateCurrentLinkLock sync.Mutex
+
 // LabelSignalActivateCurrentLinkCallback is a callback function for a 'activate-current-link' signal emitted from a Label.
 type LabelSignalActivateCurrentLinkCallback func()
 
+func Label_activateCurrentLinkHandler() {}
+
+var signalActivateLinkId int
+var signalActivateLinkMap = make(map[int]LabelSignalActivateLinkCallback)
+var signalActivateLinkLock sync.Mutex
+
 // LabelSignalActivateLinkCallback is a callback function for a 'activate-link' signal emitted from a Label.
 type LabelSignalActivateLinkCallback func(uri string) bool
+
+func Label_activateLinkHandler() {}
 
 // GetCurrentUri is a wrapper around the C function gtk_label_get_current_uri.
 func (recv *Label) GetCurrentUri() string {
@@ -575,8 +612,14 @@ func (recv *Menu) SetReserveToggleSize(reserveToggleSize bool) {
 
 // Unsupported signal : unsupported parameter preview : no type generator for PrintOperationPreview,
 
+var signalUpdateCustomWidgetId int
+var signalUpdateCustomWidgetMap = make(map[int]PrintOperationSignalUpdateCustomWidgetCallback)
+var signalUpdateCustomWidgetLock sync.Mutex
+
 // PrintOperationSignalUpdateCustomWidgetCallback is a callback function for a 'update-custom-widget' signal emitted from a PrintOperation.
 type PrintOperationSignalUpdateCustomWidgetCallback func(widget *Widget, setup *PageSetup, settings *PrintSettings)
+
+func PrintOperation_updateCustomWidgetHandler() {}
 
 // GetEmbedPageSetup is a wrapper around the C function gtk_print_operation_get_embed_page_setup.
 func (recv *PrintOperation) GetEmbedPageSetup() bool {

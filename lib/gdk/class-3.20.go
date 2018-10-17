@@ -5,6 +5,7 @@ package gdk
 
 import (
 	glib "github.com/pekim/gobbi/lib/glib"
+	"sync"
 	"unsafe"
 )
 
@@ -93,11 +94,23 @@ func (recv *Device) GetSeat() *Seat {
 	return retGo
 }
 
+var signalSeatAddedId int
+var signalSeatAddedMap = make(map[int]DisplaySignalSeatAddedCallback)
+var signalSeatAddedLock sync.Mutex
+
 // DisplaySignalSeatAddedCallback is a callback function for a 'seat-added' signal emitted from a Display.
 type DisplaySignalSeatAddedCallback func(seat *Seat)
 
+func Display_seatAddedHandler() {}
+
+var signalSeatRemovedId int
+var signalSeatRemovedMap = make(map[int]DisplaySignalSeatRemovedCallback)
+var signalSeatRemovedLock sync.Mutex
+
 // DisplaySignalSeatRemovedCallback is a callback function for a 'seat-removed' signal emitted from a Display.
 type DisplaySignalSeatRemovedCallback func(seat *Seat)
+
+func Display_seatRemovedHandler() {}
 
 // GetDefaultSeat is a wrapper around the C function gdk_display_get_default_seat.
 func (recv *Display) GetDefaultSeat() *Seat {
@@ -115,17 +128,41 @@ func (recv *Display) ListSeats() *glib.List {
 	return retGo
 }
 
+var signalActionChangedId int
+var signalActionChangedMap = make(map[int]DragContextSignalActionChangedCallback)
+var signalActionChangedLock sync.Mutex
+
 // DragContextSignalActionChangedCallback is a callback function for a 'action-changed' signal emitted from a DragContext.
 type DragContextSignalActionChangedCallback func(action DragAction)
+
+func DragContext_actionChangedHandler() {}
+
+var signalCancelId int
+var signalCancelMap = make(map[int]DragContextSignalCancelCallback)
+var signalCancelLock sync.Mutex
 
 // DragContextSignalCancelCallback is a callback function for a 'cancel' signal emitted from a DragContext.
 type DragContextSignalCancelCallback func(reason DragCancelReason)
 
+func DragContext_cancelHandler() {}
+
+var signalDndFinishedId int
+var signalDndFinishedMap = make(map[int]DragContextSignalDndFinishedCallback)
+var signalDndFinishedLock sync.Mutex
+
 // DragContextSignalDndFinishedCallback is a callback function for a 'dnd-finished' signal emitted from a DragContext.
 type DragContextSignalDndFinishedCallback func()
 
+func DragContext_dndFinishedHandler() {}
+
+var signalDropPerformedId int
+var signalDropPerformedMap = make(map[int]DragContextSignalDropPerformedCallback)
+var signalDropPerformedLock sync.Mutex
+
 // DragContextSignalDropPerformedCallback is a callback function for a 'drop-performed' signal emitted from a DragContext.
 type DragContextSignalDropPerformedCallback func(time int32)
+
+func DragContext_dropPerformedHandler() {}
 
 // GetDragWindow is a wrapper around the C function gdk_drag_context_get_drag_window.
 func (recv *DragContext) GetDragWindow() *Window {
@@ -166,11 +203,23 @@ func (recv *GLContext) IsLegacy() bool {
 	return retGo
 }
 
+var signalDeviceAddedId int
+var signalDeviceAddedMap = make(map[int]SeatSignalDeviceAddedCallback)
+var signalDeviceAddedLock sync.Mutex
+
 // SeatSignalDeviceAddedCallback is a callback function for a 'device-added' signal emitted from a Seat.
 type SeatSignalDeviceAddedCallback func(device *Device)
 
+func Seat_deviceAddedHandler() {}
+
+var signalDeviceRemovedId int
+var signalDeviceRemovedMap = make(map[int]SeatSignalDeviceRemovedCallback)
+var signalDeviceRemovedLock sync.Mutex
+
 // SeatSignalDeviceRemovedCallback is a callback function for a 'device-removed' signal emitted from a Seat.
 type SeatSignalDeviceRemovedCallback func(device *Device)
+
+func Seat_deviceRemovedHandler() {}
 
 // GetCapabilities is a wrapper around the C function gdk_seat_get_capabilities.
 func (recv *Seat) GetCapabilities() SeatCapabilities {

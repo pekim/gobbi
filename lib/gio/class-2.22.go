@@ -6,6 +6,7 @@ package gio
 import (
 	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
+	"sync"
 	"unsafe"
 )
 
@@ -1458,8 +1459,14 @@ func CastToSocketService(object *gobject.Object) *SocketService {
 	return SocketServiceNewFromC(object.ToC())
 }
 
+var signalIncomingId int
+var signalIncomingMap = make(map[int]SocketServiceSignalIncomingCallback)
+var signalIncomingLock sync.Mutex
+
 // SocketServiceSignalIncomingCallback is a callback function for a 'incoming' signal emitted from a SocketService.
 type SocketServiceSignalIncomingCallback func(connection *SocketConnection, sourceObject *gobject.Object) bool
+
+func SocketService_incomingHandler() {}
 
 // SocketServiceNew is a wrapper around the C function g_socket_service_new.
 func SocketServiceNew() *SocketService {

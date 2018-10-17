@@ -4,6 +4,7 @@ package atk
 
 import (
 	gobject "github.com/pekim/gobbi/lib/gobject"
+	"sync"
 	"unsafe"
 )
 
@@ -149,8 +150,14 @@ func CastToHyperlink(object *gobject.Object) *Hyperlink {
 	return HyperlinkNewFromC(object.ToC())
 }
 
+var signalLinkActivatedId int
+var signalLinkActivatedMap = make(map[int]HyperlinkSignalLinkActivatedCallback)
+var signalLinkActivatedLock sync.Mutex
+
 // HyperlinkSignalLinkActivatedCallback is a callback function for a 'link-activated' signal emitted from a Hyperlink.
 type HyperlinkSignalLinkActivatedCallback func()
+
+func Hyperlink_linkActivatedHandler() {}
 
 // GetEndIndex is a wrapper around the C function atk_hyperlink_get_end_index.
 func (recv *Hyperlink) GetEndIndex() int32 {
@@ -388,23 +395,59 @@ func CastToObject(object *gobject.Object) *Object {
 	return ObjectNewFromC(object.ToC())
 }
 
+var signalActiveDescendantChangedId int
+var signalActiveDescendantChangedMap = make(map[int]ObjectSignalActiveDescendantChangedCallback)
+var signalActiveDescendantChangedLock sync.Mutex
+
 // ObjectSignalActiveDescendantChangedCallback is a callback function for a 'active-descendant-changed' signal emitted from a Object.
 type ObjectSignalActiveDescendantChangedCallback func(arg1 uintptr)
+
+func Object_activeDescendantChangedHandler() {}
+
+var signalChildrenChangedId int
+var signalChildrenChangedMap = make(map[int]ObjectSignalChildrenChangedCallback)
+var signalChildrenChangedLock sync.Mutex
 
 // ObjectSignalChildrenChangedCallback is a callback function for a 'children-changed' signal emitted from a Object.
 type ObjectSignalChildrenChangedCallback func(arg1 uint32, arg2 uintptr)
 
+func Object_childrenChangedHandler() {}
+
+var signalFocusEventId int
+var signalFocusEventMap = make(map[int]ObjectSignalFocusEventCallback)
+var signalFocusEventLock sync.Mutex
+
 // ObjectSignalFocusEventCallback is a callback function for a 'focus-event' signal emitted from a Object.
 type ObjectSignalFocusEventCallback func(arg1 bool)
+
+func Object_focusEventHandler() {}
+
+var signalPropertyChangeId int
+var signalPropertyChangeMap = make(map[int]ObjectSignalPropertyChangeCallback)
+var signalPropertyChangeLock sync.Mutex
 
 // ObjectSignalPropertyChangeCallback is a callback function for a 'property-change' signal emitted from a Object.
 type ObjectSignalPropertyChangeCallback func(arg1 uintptr)
 
+func Object_propertyChangeHandler() {}
+
+var signalStateChangeId int
+var signalStateChangeMap = make(map[int]ObjectSignalStateChangeCallback)
+var signalStateChangeLock sync.Mutex
+
 // ObjectSignalStateChangeCallback is a callback function for a 'state-change' signal emitted from a Object.
 type ObjectSignalStateChangeCallback func(arg1 string, arg2 bool)
 
+func Object_stateChangeHandler() {}
+
+var signalVisibleDataChangedId int
+var signalVisibleDataChangedMap = make(map[int]ObjectSignalVisibleDataChangedCallback)
+var signalVisibleDataChangedLock sync.Mutex
+
 // ObjectSignalVisibleDataChangedCallback is a callback function for a 'visible-data-changed' signal emitted from a Object.
 type ObjectSignalVisibleDataChangedCallback func()
+
+func Object_visibleDataChangedHandler() {}
 
 // AddRelationship is a wrapper around the C function atk_object_add_relationship.
 func (recv *Object) AddRelationship(relationship RelationType, target *Object) bool {

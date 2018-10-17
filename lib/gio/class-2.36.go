@@ -5,6 +5,7 @@ package gio
 
 import (
 	glib "github.com/pekim/gobbi/lib/glib"
+	"sync"
 	"unsafe"
 )
 
@@ -32,8 +33,14 @@ import (
 */
 import "C"
 
+var signalLaunchFailedId int
+var signalLaunchFailedMap = make(map[int]AppLaunchContextSignalLaunchFailedCallback)
+var signalLaunchFailedLock sync.Mutex
+
 // AppLaunchContextSignalLaunchFailedCallback is a callback function for a 'launch-failed' signal emitted from a AppLaunchContext.
 type AppLaunchContextSignalLaunchFailedCallback func(startupNotifyId string)
+
+func AppLaunchContext_launchFailedHandler() {}
 
 // Unsupported signal : unsupported parameter info : no type generator for AppInfo,
 

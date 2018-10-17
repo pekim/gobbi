@@ -3,6 +3,8 @@
 
 package gtk
 
+import "sync"
+
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <gtk/gtk-a11y.h>
 // #include <gtk/gtk.h>
@@ -87,8 +89,14 @@ import "C"
 
 // Unsupported signal : unsupported parameter selected_item : no type generator for Gio.File,
 
+var signalShowStarredLocationId int
+var signalShowStarredLocationMap = make(map[int]PlacesSidebarSignalShowStarredLocationCallback)
+var signalShowStarredLocationLock sync.Mutex
+
 // PlacesSidebarSignalShowStarredLocationCallback is a callback function for a 'show-starred-location' signal emitted from a PlacesSidebar.
 type PlacesSidebarSignalShowStarredLocationCallback func(object PlacesOpenFlags)
+
+func PlacesSidebar_showStarredLocationHandler() {}
 
 // GetShowStarredLocation is a wrapper around the C function gtk_places_sidebar_get_show_starred_location.
 func (recv *PlacesSidebar) GetShowStarredLocation() bool {

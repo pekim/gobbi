@@ -6,6 +6,7 @@ package gdk
 import (
 	cairo "github.com/pekim/gobbi/lib/cairo"
 	glib "github.com/pekim/gobbi/lib/glib"
+	"sync"
 	"unsafe"
 )
 
@@ -39,8 +40,14 @@ func (recv *Display) SupportsShapes() bool {
 	return retGo
 }
 
+var signalCompositedChangedId int
+var signalCompositedChangedMap = make(map[int]ScreenSignalCompositedChangedCallback)
+var signalCompositedChangedLock sync.Mutex
+
 // ScreenSignalCompositedChangedCallback is a callback function for a 'composited-changed' signal emitted from a Screen.
 type ScreenSignalCompositedChangedCallback func()
+
+func Screen_compositedChangedHandler() {}
 
 // GetActiveWindow is a wrapper around the C function gdk_screen_get_active_window.
 func (recv *Screen) GetActiveWindow() *Window {

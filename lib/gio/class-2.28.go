@@ -6,6 +6,7 @@ package gio
 import (
 	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
+	"sync"
 	"unsafe"
 )
 
@@ -623,8 +624,14 @@ func CastToTlsConnection(object *gobject.Object) *TlsConnection {
 	return TlsConnectionNewFromC(object.ToC())
 }
 
+var signalAcceptCertificateId int
+var signalAcceptCertificateMap = make(map[int]TlsConnectionSignalAcceptCertificateCallback)
+var signalAcceptCertificateLock sync.Mutex
+
 // TlsConnectionSignalAcceptCertificateCallback is a callback function for a 'accept-certificate' signal emitted from a TlsConnection.
 type TlsConnectionSignalAcceptCertificateCallback func(peerCert *TlsCertificate, errors TlsCertificateFlags) bool
+
+func TlsConnection_acceptCertificateHandler() {}
 
 // EmitAcceptCertificate is a wrapper around the C function g_tls_connection_emit_accept_certificate.
 func (recv *TlsConnection) EmitAcceptCertificate(peerCert *TlsCertificate, errors TlsCertificateFlags) bool {

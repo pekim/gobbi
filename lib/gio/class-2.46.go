@@ -6,6 +6,7 @@ package gio
 import (
 	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
+	"sync"
 	"unsafe"
 )
 
@@ -137,8 +138,14 @@ func (recv *DBusConnection) RegisterObjectWithClosures(objectPath string, interf
 
 // Unsupported signal : unsupported parameter connectable : no type generator for SocketConnectable,
 
+var signalEventId int
+var signalEventMap = make(map[int]SocketListenerSignalEventCallback)
+var signalEventLock sync.Mutex
+
 // SocketListenerSignalEventCallback is a callback function for a 'event' signal emitted from a SocketListener.
 type SocketListenerSignalEventCallback func(event SocketListenerEvent, socket *Socket)
+
+func SocketListener_eventHandler() {}
 
 // Unsupported : g_subprocess_new : unsupported parameter error : record with indirection level of 2
 

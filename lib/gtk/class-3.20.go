@@ -6,6 +6,7 @@ package gtk
 import (
 	gio "github.com/pekim/gobbi/lib/gio"
 	gobject "github.com/pekim/gobbi/lib/gobject"
+	"sync"
 	"unsafe"
 )
 
@@ -250,8 +251,14 @@ func CastToNativeDialog(object *gobject.Object) *NativeDialog {
 	return NativeDialogNewFromC(object.ToC())
 }
 
+var signalResponseId int
+var signalResponseMap = make(map[int]NativeDialogSignalResponseCallback)
+var signalResponseLock sync.Mutex
+
 // NativeDialogSignalResponseCallback is a callback function for a 'response' signal emitted from a NativeDialog.
 type NativeDialogSignalResponseCallback func(responseId int32)
+
+func NativeDialog_responseHandler() {}
 
 // Destroy is a wrapper around the C function gtk_native_dialog_destroy.
 func (recv *NativeDialog) Destroy() {
@@ -390,18 +397,36 @@ func CastToPadController(object *gobject.Object) *PadController {
 
 // Unsupported signal : unsupported parameter dest_file : no type generator for Gio.File,
 
+var signalMountId int
+var signalMountMap = make(map[int]PlacesSidebarSignalMountCallback)
+var signalMountLock sync.Mutex
+
 // PlacesSidebarSignalMountCallback is a callback function for a 'mount' signal emitted from a PlacesSidebar.
 type PlacesSidebarSignalMountCallback func(mountOperation *gio.MountOperation)
+
+func PlacesSidebar_mountHandler() {}
 
 // Unsupported signal : unsupported parameter location : no type generator for Gio.File,
 
 // Unsupported signal : unsupported parameter selected_item : no type generator for Gio.File,
 
+var signalShowOtherLocationsWithFlagsId int
+var signalShowOtherLocationsWithFlagsMap = make(map[int]PlacesSidebarSignalShowOtherLocationsWithFlagsCallback)
+var signalShowOtherLocationsWithFlagsLock sync.Mutex
+
 // PlacesSidebarSignalShowOtherLocationsWithFlagsCallback is a callback function for a 'show-other-locations-with-flags' signal emitted from a PlacesSidebar.
 type PlacesSidebarSignalShowOtherLocationsWithFlagsCallback func(openFlags PlacesOpenFlags)
 
+func PlacesSidebar_showOtherLocationsWithFlagsHandler() {}
+
+var signalUnmountId int
+var signalUnmountMap = make(map[int]PlacesSidebarSignalUnmountCallback)
+var signalUnmountLock sync.Mutex
+
 // PlacesSidebarSignalUnmountCallback is a callback function for a 'unmount' signal emitted from a PlacesSidebar.
 type PlacesSidebarSignalUnmountCallback func(mountOperation *gio.MountOperation)
+
+func PlacesSidebar_unmountHandler() {}
 
 // GetConstrainTo is a wrapper around the C function gtk_popover_get_constrain_to.
 func (recv *Popover) GetConstrainTo() PopoverConstraint {

@@ -6,6 +6,7 @@ package gtk
 import (
 	gdk "github.com/pekim/gobbi/lib/gdk"
 	gdkpixbuf "github.com/pekim/gobbi/lib/gdkpixbuf"
+	"sync"
 	"unsafe"
 )
 
@@ -249,11 +250,23 @@ func (recv *Action) UnblockActivate() {
 
 // Unsupported : gtk_dialog_new_with_buttons : unsupported parameter ... : varargs
 
+var signalIconPressId int
+var signalIconPressMap = make(map[int]EntrySignalIconPressCallback)
+var signalIconPressLock sync.Mutex
+
 // EntrySignalIconPressCallback is a callback function for a 'icon-press' signal emitted from a Entry.
 type EntrySignalIconPressCallback func(iconPos EntryIconPosition, event *gdk.EventButton)
 
+func Entry_iconPressHandler() {}
+
+var signalIconReleaseId int
+var signalIconReleaseMap = make(map[int]EntrySignalIconReleaseCallback)
+var signalIconReleaseLock sync.Mutex
+
 // EntrySignalIconReleaseCallback is a callback function for a 'icon-release' signal emitted from a Entry.
 type EntrySignalIconReleaseCallback func(iconPos EntryIconPosition, event *gdk.EventButton)
+
+func Entry_iconReleaseHandler() {}
 
 // GetCurrentIconDragSource is a wrapper around the C function gtk_entry_get_current_icon_drag_source.
 func (recv *Entry) GetCurrentIconDragSource() int32 {
@@ -737,11 +750,23 @@ func (recv *Scale) ClearMarks() {
 
 // Unsupported : gtk_scale_button_new : unsupported parameter size : no type generator for gint, GtkIconSize
 
+var signalQueryTooltipId int
+var signalQueryTooltipMap = make(map[int]StatusIconSignalQueryTooltipCallback)
+var signalQueryTooltipLock sync.Mutex
+
 // StatusIconSignalQueryTooltipCallback is a callback function for a 'query-tooltip' signal emitted from a StatusIcon.
 type StatusIconSignalQueryTooltipCallback func(x int32, y int32, keyboardMode bool, tooltip *Tooltip) bool
 
+func StatusIcon_queryTooltipHandler() {}
+
+var signalScrollEventId int
+var signalScrollEventMap = make(map[int]StatusIconSignalScrollEventCallback)
+var signalScrollEventLock sync.Mutex
+
 // StatusIconSignalScrollEventCallback is a callback function for a 'scroll-event' signal emitted from a StatusIcon.
 type StatusIconSignalScrollEventCallback func(event *gdk.EventScroll) bool
+
+func StatusIcon_scrollEventHandler() {}
 
 // Unsupported : gtk_status_icon_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon, GIcon*
 
@@ -807,8 +832,14 @@ func (recv *StatusIcon) SetTooltipText(text string) {
 
 // Unsupported : gtk_style_get_valist : unsupported parameter widget_type : no type generator for GType, GType
 
+var signalPasteDoneId int
+var signalPasteDoneMap = make(map[int]TextBufferSignalPasteDoneCallback)
+var signalPasteDoneLock sync.Mutex
+
 // TextBufferSignalPasteDoneCallback is a callback function for a 'paste-done' signal emitted from a TextBuffer.
 type TextBufferSignalPasteDoneCallback func(clipboard *Clipboard)
+
+func TextBuffer_pasteDoneHandler() {}
 
 // Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
 

@@ -8,6 +8,7 @@ import (
 	gdkpixbuf "github.com/pekim/gobbi/lib/gdkpixbuf"
 	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
+	"sync"
 	"unsafe"
 )
 
@@ -270,14 +271,32 @@ func (recv *Builder) SetTranslationDomain(domain string) {
 
 // Unsupported signal : unsupported parameter editable : no type generator for CellEditable,
 
+var signalMoveActiveId int
+var signalMoveActiveMap = make(map[int]ComboBoxSignalMoveActiveCallback)
+var signalMoveActiveLock sync.Mutex
+
 // ComboBoxSignalMoveActiveCallback is a callback function for a 'move-active' signal emitted from a ComboBox.
 type ComboBoxSignalMoveActiveCallback func(scrollType ScrollType)
+
+func ComboBox_moveActiveHandler() {}
+
+var signalPopdownId int
+var signalPopdownMap = make(map[int]ComboBoxSignalPopdownCallback)
+var signalPopdownLock sync.Mutex
 
 // ComboBoxSignalPopdownCallback is a callback function for a 'popdown' signal emitted from a ComboBox.
 type ComboBoxSignalPopdownCallback func() bool
 
+func ComboBox_popdownHandler() {}
+
+var signalPopupId int
+var signalPopupMap = make(map[int]ComboBoxSignalPopupCallback)
+var signalPopupLock sync.Mutex
+
 // ComboBoxSignalPopupCallback is a callback function for a 'popup' signal emitted from a ComboBox.
 type ComboBoxSignalPopupCallback func()
+
+func ComboBox_popupHandler() {}
 
 // Unsupported : gtk_combo_box_new_with_model : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
 
@@ -334,8 +353,14 @@ func (recv *EntryCompletion) SetInlineSelection(inlineSelection bool) {
 
 // Unsupported : EntryIconAccessible : no CType
 
+var signalFileSetId int
+var signalFileSetMap = make(map[int]FileChooserButtonSignalFileSetCallback)
+var signalFileSetLock sync.Mutex
+
 // FileChooserButtonSignalFileSetCallback is a callback function for a 'file-set' signal emitted from a FileChooserButton.
 type FileChooserButtonSignalFileSetCallback func()
+
+func FileChooserButton_fileSetHandler() {}
 
 // Unsupported : gtk_file_chooser_dialog_new : unsupported parameter ... : varargs
 
@@ -431,8 +456,14 @@ func (recv *IconView) SetTooltipItem(tooltip *Tooltip, path *TreePath) {
 
 // Unsupported : gtk_list_store_set_valuesv : unsupported parameter columns : no param type
 
+var signalMoveSelectedId int
+var signalMoveSelectedMap = make(map[int]MenuShellSignalMoveSelectedCallback)
+var signalMoveSelectedLock sync.Mutex
+
 // MenuShellSignalMoveSelectedCallback is a callback function for a 'move-selected' signal emitted from a MenuShell.
 type MenuShellSignalMoveSelectedCallback func(distance int32) bool
+
+func MenuShell_moveSelectedHandler() {}
 
 // SetArrowTooltipMarkup is a wrapper around the C function gtk_menu_tool_button_set_arrow_tooltip_markup.
 func (recv *MenuToolButton) SetArrowTooltipMarkup(markup string) {
@@ -458,8 +489,14 @@ func (recv *MenuToolButton) SetArrowTooltipText(text string) {
 
 // Unsupported : gtk_message_dialog_new_with_markup : unsupported parameter ... : varargs
 
+var signalCreateWindowId int
+var signalCreateWindowMap = make(map[int]NotebookSignalCreateWindowCallback)
+var signalCreateWindowLock sync.Mutex
+
 // NotebookSignalCreateWindowCallback is a callback function for a 'create-window' signal emitted from a Notebook.
 type NotebookSignalCreateWindowCallback func(page *Widget, x int32, y int32) Notebook
+
+func Notebook_createWindowHandler() {}
 
 // Unsupported signal : unsupported parameter allocation : Blacklisted record : GdkRectangle
 
@@ -732,14 +769,32 @@ func (recv *RecentAction) SetShowNumbers(showNumbers bool) {
 
 // Unsupported : gtk_recent_chooser_dialog_new_for_manager : unsupported parameter ... : varargs
 
+var signalPopdownId int
+var signalPopdownMap = make(map[int]ScaleButtonSignalPopdownCallback)
+var signalPopdownLock sync.Mutex
+
 // ScaleButtonSignalPopdownCallback is a callback function for a 'popdown' signal emitted from a ScaleButton.
 type ScaleButtonSignalPopdownCallback func()
+
+func ScaleButton_popdownHandler() {}
+
+var signalPopupId int
+var signalPopupMap = make(map[int]ScaleButtonSignalPopupCallback)
+var signalPopupLock sync.Mutex
 
 // ScaleButtonSignalPopupCallback is a callback function for a 'popup' signal emitted from a ScaleButton.
 type ScaleButtonSignalPopupCallback func()
 
+func ScaleButton_popupHandler() {}
+
+var signalValueChangedId int
+var signalValueChangedMap = make(map[int]ScaleButtonSignalValueChangedCallback)
+var signalValueChangedLock sync.Mutex
+
 // ScaleButtonSignalValueChangedCallback is a callback function for a 'value-changed' signal emitted from a ScaleButton.
 type ScaleButtonSignalValueChangedCallback func(value float64)
+
+func ScaleButton_valueChangedHandler() {}
 
 // Unsupported : gtk_scale_button_new : unsupported parameter size : no type generator for gint, GtkIconSize
 
@@ -1121,18 +1176,36 @@ func VolumeButtonNew() *VolumeButton {
 
 // Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
 
+var signalDragFailedId int
+var signalDragFailedMap = make(map[int]WidgetSignalDragFailedCallback)
+var signalDragFailedLock sync.Mutex
+
 // WidgetSignalDragFailedCallback is a callback function for a 'drag-failed' signal emitted from a Widget.
 type WidgetSignalDragFailedCallback func(context *gdk.DragContext, result DragResult) bool
 
+func Widget_dragFailedHandler() {}
+
 // Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
 
 // Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
+
+var signalKeynavFailedId int
+var signalKeynavFailedMap = make(map[int]WidgetSignalKeynavFailedCallback)
+var signalKeynavFailedLock sync.Mutex
 
 // WidgetSignalKeynavFailedCallback is a callback function for a 'keynav-failed' signal emitted from a Widget.
 type WidgetSignalKeynavFailedCallback func(direction DirectionType) bool
 
+func Widget_keynavFailedHandler() {}
+
+var signalQueryTooltipId int
+var signalQueryTooltipMap = make(map[int]WidgetSignalQueryTooltipCallback)
+var signalQueryTooltipLock sync.Mutex
+
 // WidgetSignalQueryTooltipCallback is a callback function for a 'query-tooltip' signal emitted from a Widget.
 type WidgetSignalQueryTooltipCallback func(x int32, y int32, keyboardMode bool, tooltip *Tooltip) bool
+
+func Widget_queryTooltipHandler() {}
 
 // Unsupported signal : unsupported parameter allocation : Blacklisted record : GdkRectangle
 

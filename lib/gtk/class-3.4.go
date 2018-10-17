@@ -7,6 +7,7 @@ import (
 	gdk "github.com/pekim/gobbi/lib/gdk"
 	gio "github.com/pekim/gobbi/lib/gio"
 	glib "github.com/pekim/gobbi/lib/glib"
+	"sync"
 	"unsafe"
 )
 
@@ -187,8 +188,14 @@ func ColorChooserWidgetNew() *ColorChooserWidget {
 	return retGo
 }
 
+var signalFormatEntryTextId int
+var signalFormatEntryTextMap = make(map[int]ComboBoxSignalFormatEntryTextCallback)
+var signalFormatEntryTextLock sync.Mutex
+
 // ComboBoxSignalFormatEntryTextCallback is a callback function for a 'format-entry-text' signal emitted from a ComboBox.
 type ComboBoxSignalFormatEntryTextCallback func(path string) string
+
+func ComboBox_formatEntryTextHandler() {}
 
 // Unsupported : gtk_combo_box_new_with_model : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
 

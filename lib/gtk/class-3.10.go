@@ -9,6 +9,7 @@ import (
 	gdkpixbuf "github.com/pekim/gobbi/lib/gdkpixbuf"
 	glib "github.com/pekim/gobbi/lib/glib"
 	pango "github.com/pekim/gobbi/lib/pango"
+	"sync"
 	"unsafe"
 )
 
@@ -514,11 +515,23 @@ func (recv *Label) SetLines(lines int32) {
 	return
 }
 
+var signalRowActivatedId int
+var signalRowActivatedMap = make(map[int]ListBoxSignalRowActivatedCallback)
+var signalRowActivatedLock sync.Mutex
+
 // ListBoxSignalRowActivatedCallback is a callback function for a 'row-activated' signal emitted from a ListBox.
 type ListBoxSignalRowActivatedCallback func(row *ListBoxRow)
 
+func ListBox_rowActivatedHandler() {}
+
+var signalRowSelectedId int
+var signalRowSelectedMap = make(map[int]ListBoxSignalRowSelectedCallback)
+var signalRowSelectedLock sync.Mutex
+
 // ListBoxSignalRowSelectedCallback is a callback function for a 'row-selected' signal emitted from a ListBox.
 type ListBoxSignalRowSelectedCallback func(row *ListBoxRow)
+
+func ListBox_rowSelectedHandler() {}
 
 // ListBoxNew is a wrapper around the C function gtk_list_box_new.
 func ListBoxNew() *ListBox {
@@ -689,8 +702,14 @@ func (recv *ListBox) SetSelectionMode(mode SelectionMode) {
 
 // Unsupported : gtk_list_box_set_sort_func : unsupported parameter sort_func : no type generator for ListBoxSortFunc, GtkListBoxSortFunc
 
+var signalActivateId int
+var signalActivateMap = make(map[int]ListBoxRowSignalActivateCallback)
+var signalActivateLock sync.Mutex
+
 // ListBoxRowSignalActivateCallback is a callback function for a 'activate' signal emitted from a ListBoxRow.
 type ListBoxRowSignalActivateCallback func()
+
+func ListBoxRow_activateHandler() {}
 
 // ListBoxRowNew is a wrapper around the C function gtk_list_box_row_new.
 func ListBoxRowNew() *ListBoxRow {
@@ -746,8 +765,14 @@ func (recv *ListBoxRow) SetHeader(header *Widget) {
 
 // Unsupported : gtk_page_setup_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
 
+var signalDragActionAskId int
+var signalDragActionAskMap = make(map[int]PlacesSidebarSignalDragActionAskCallback)
+var signalDragActionAskLock sync.Mutex
+
 // PlacesSidebarSignalDragActionAskCallback is a callback function for a 'drag-action-ask' signal emitted from a PlacesSidebar.
 type PlacesSidebarSignalDragActionAskCallback func(actions int32) int32
+
+func PlacesSidebar_dragActionAskHandler() {}
 
 // Unsupported signal : unsupported parameter dest_file : no type generator for Gio.File,
 
@@ -757,8 +782,14 @@ type PlacesSidebarSignalDragActionAskCallback func(actions int32) int32
 
 // Unsupported signal : unsupported parameter selected_item : no type generator for Gio.File,
 
+var signalShowErrorMessageId int
+var signalShowErrorMessageMap = make(map[int]PlacesSidebarSignalShowErrorMessageCallback)
+var signalShowErrorMessageLock sync.Mutex
+
 // PlacesSidebarSignalShowErrorMessageCallback is a callback function for a 'show-error-message' signal emitted from a PlacesSidebar.
 type PlacesSidebarSignalShowErrorMessageCallback func(primary string, secondary string)
+
+func PlacesSidebar_showErrorMessageHandler() {}
 
 // PlacesSidebarNew is a wrapper around the C function gtk_places_sidebar_new.
 func PlacesSidebarNew() *PlacesSidebar {
@@ -964,8 +995,14 @@ func (recv *SearchBar) SetShowCloseButton(visible bool) {
 	return
 }
 
+var signalSearchChangedId int
+var signalSearchChangedMap = make(map[int]SearchEntrySignalSearchChangedCallback)
+var signalSearchChangedLock sync.Mutex
+
 // SearchEntrySignalSearchChangedCallback is a callback function for a 'search-changed' signal emitted from a SearchEntry.
 type SearchEntrySignalSearchChangedCallback func()
+
+func SearchEntry_searchChangedHandler() {}
 
 // StackNew is a wrapper around the C function gtk_stack_new.
 func StackNew() *Stack {

@@ -6,6 +6,7 @@ package gio
 import (
 	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
+	"sync"
 	"unsafe"
 )
 
@@ -94,8 +95,14 @@ func CastToDBusInterfaceSkeleton(object *gobject.Object) *DBusInterfaceSkeleton 
 	return DBusInterfaceSkeletonNewFromC(object.ToC())
 }
 
+var signalGAuthorizeMethodId int
+var signalGAuthorizeMethodMap = make(map[int]DBusInterfaceSkeletonSignalGAuthorizeMethodCallback)
+var signalGAuthorizeMethodLock sync.Mutex
+
 // DBusInterfaceSkeletonSignalGAuthorizeMethodCallback is a callback function for a 'g-authorize-method' signal emitted from a DBusInterfaceSkeleton.
 type DBusInterfaceSkeletonSignalGAuthorizeMethodCallback func(invocation *DBusMethodInvocation) bool
+
+func DBusInterfaceSkeleton_gAuthorizeMethodHandler() {}
 
 // Export is a wrapper around the C function g_dbus_interface_skeleton_export.
 func (recv *DBusInterfaceSkeleton) Export(connection *DBusConnection, objectPath string) (bool, error) {
@@ -454,8 +461,14 @@ func CastToDBusObjectSkeleton(object *gobject.Object) *DBusObjectSkeleton {
 	return DBusObjectSkeletonNewFromC(object.ToC())
 }
 
+var signalAuthorizeMethodId int
+var signalAuthorizeMethodMap = make(map[int]DBusObjectSkeletonSignalAuthorizeMethodCallback)
+var signalAuthorizeMethodLock sync.Mutex
+
 // DBusObjectSkeletonSignalAuthorizeMethodCallback is a callback function for a 'authorize-method' signal emitted from a DBusObjectSkeleton.
 type DBusObjectSkeletonSignalAuthorizeMethodCallback func(interface_ *DBusInterfaceSkeleton, invocation *DBusMethodInvocation) bool
+
+func DBusObjectSkeleton_authorizeMethodHandler() {}
 
 // DBusObjectSkeletonNew is a wrapper around the C function g_dbus_object_skeleton_new.
 func DBusObjectSkeletonNew(objectPath string) *DBusObjectSkeleton {

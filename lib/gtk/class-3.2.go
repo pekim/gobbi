@@ -5,6 +5,7 @@ package gtk
 
 import (
 	gio "github.com/pekim/gobbi/lib/gio"
+	"sync"
 	"unsafe"
 )
 
@@ -76,11 +77,23 @@ func (recv *AppChooserButton) SetShowDefaultItem(setting bool) {
 
 // Unsupported signal : unsupported parameter application : no type generator for Gio.AppInfo,
 
+var signalWindowAddedId int
+var signalWindowAddedMap = make(map[int]ApplicationSignalWindowAddedCallback)
+var signalWindowAddedLock sync.Mutex
+
 // ApplicationSignalWindowAddedCallback is a callback function for a 'window-added' signal emitted from a Application.
 type ApplicationSignalWindowAddedCallback func(window *Window)
 
+func Application_windowAddedHandler() {}
+
+var signalWindowRemovedId int
+var signalWindowRemovedMap = make(map[int]ApplicationSignalWindowRemovedCallback)
+var signalWindowRemovedLock sync.Mutex
+
 // ApplicationSignalWindowRemovedCallback is a callback function for a 'window-removed' signal emitted from a Application.
 type ApplicationSignalWindowRemovedCallback func(window *Window)
+
+func Application_windowRemovedHandler() {}
 
 // RemovePage is a wrapper around the C function gtk_assistant_remove_page.
 func (recv *Assistant) RemovePage(pageNum int32) {
@@ -301,8 +314,14 @@ func (recv *LockButton) SetPermission(permission *gio.Permission) {
 	return
 }
 
+var signalInsertId int
+var signalInsertMap = make(map[int]MenuShellSignalInsertCallback)
+var signalInsertLock sync.Mutex
+
 // MenuShellSignalInsertCallback is a callback function for a 'insert' signal emitted from a MenuShell.
 type MenuShellSignalInsertCallback func(child *Widget, position int32)
+
+func MenuShell_insertHandler() {}
 
 // Unsupported : gtk_message_dialog_new : unsupported parameter ... : varargs
 

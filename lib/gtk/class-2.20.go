@@ -8,6 +8,7 @@ import (
 	gdk "github.com/pekim/gobbi/lib/gdk"
 	gdkpixbuf "github.com/pekim/gobbi/lib/gdkpixbuf"
 	pango "github.com/pekim/gobbi/lib/pango"
+	"sync"
 	"unsafe"
 )
 
@@ -96,8 +97,14 @@ func (recv *Dialog) GetWidgetForResponse(responseId int32) *Widget {
 	return retGo
 }
 
+var signalPreeditChangedId int
+var signalPreeditChangedMap = make(map[int]EntrySignalPreeditChangedCallback)
+var signalPreeditChangedLock sync.Mutex
+
 // EntrySignalPreeditChangedCallback is a callback function for a 'preedit-changed' signal emitted from a Entry.
 type EntrySignalPreeditChangedCallback func(preedit string)
+
+func Entry_preeditChangedHandler() {}
 
 // Unsupported signal : unsupported parameter model : no type generator for TreeModel,
 
@@ -326,8 +333,14 @@ func (recv *Statusbar) GetMessageArea() *Box {
 
 // Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
 
+var signalPreeditChangedId int
+var signalPreeditChangedMap = make(map[int]TextViewSignalPreeditChangedCallback)
+var signalPreeditChangedLock sync.Mutex
+
 // TextViewSignalPreeditChangedCallback is a callback function for a 'preedit-changed' signal emitted from a TextView.
 type TextViewSignalPreeditChangedCallback func(preedit string)
+
+func TextView_preeditChangedHandler() {}
 
 // GetEllipsizeMode is a wrapper around the C function gtk_tool_item_get_ellipsize_mode.
 func (recv *ToolItem) GetEllipsizeMode() pango.EllipsizeMode {

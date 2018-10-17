@@ -7,6 +7,7 @@ import (
 	gdk "github.com/pekim/gobbi/lib/gdk"
 	gio "github.com/pekim/gobbi/lib/gio"
 	glib "github.com/pekim/gobbi/lib/glib"
+	"sync"
 	"unsafe"
 )
 
@@ -286,8 +287,14 @@ func (recv *CellArea) AttributeGetColumn(renderer *CellRenderer, attribute strin
 
 // Unsupported signal : unsupported parameter model : no type generator for TreeModel,
 
+var signalNoMatchesId int
+var signalNoMatchesMap = make(map[int]EntryCompletionSignalNoMatchesCallback)
+var signalNoMatchesLock sync.Mutex
+
 // EntryCompletionSignalNoMatchesCallback is a callback function for a 'no-matches' signal emitted from a EntryCompletion.
 type EntryCompletionSignalNoMatchesCallback func()
+
+func EntryCompletion_noMatchesHandler() {}
 
 // Unsupported : EntryIconAccessible : no CType
 
@@ -329,20 +336,50 @@ func (recv *EventController) SetPropagationPhase(phase PropagationPhase) {
 
 // Unsupported : gtk_file_filter_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
 
+var signalBeginId int
+var signalBeginMap = make(map[int]GestureSignalBeginCallback)
+var signalBeginLock sync.Mutex
+
 // GestureSignalBeginCallback is a callback function for a 'begin' signal emitted from a Gesture.
 type GestureSignalBeginCallback func(sequence *gdk.EventSequence)
+
+func Gesture_beginHandler() {}
+
+var signalCancelId int
+var signalCancelMap = make(map[int]GestureSignalCancelCallback)
+var signalCancelLock sync.Mutex
 
 // GestureSignalCancelCallback is a callback function for a 'cancel' signal emitted from a Gesture.
 type GestureSignalCancelCallback func(sequence *gdk.EventSequence)
 
+func Gesture_cancelHandler() {}
+
+var signalEndId int
+var signalEndMap = make(map[int]GestureSignalEndCallback)
+var signalEndLock sync.Mutex
+
 // GestureSignalEndCallback is a callback function for a 'end' signal emitted from a Gesture.
 type GestureSignalEndCallback func(sequence *gdk.EventSequence)
+
+func Gesture_endHandler() {}
+
+var signalSequenceStateChangedId int
+var signalSequenceStateChangedMap = make(map[int]GestureSignalSequenceStateChangedCallback)
+var signalSequenceStateChangedLock sync.Mutex
 
 // GestureSignalSequenceStateChangedCallback is a callback function for a 'sequence-state-changed' signal emitted from a Gesture.
 type GestureSignalSequenceStateChangedCallback func(sequence *gdk.EventSequence, state EventSequenceState)
 
+func Gesture_sequenceStateChangedHandler() {}
+
+var signalUpdateId int
+var signalUpdateMap = make(map[int]GestureSignalUpdateCallback)
+var signalUpdateLock sync.Mutex
+
 // GestureSignalUpdateCallback is a callback function for a 'update' signal emitted from a Gesture.
 type GestureSignalUpdateCallback func(sequence *gdk.EventSequence)
+
+func Gesture_updateHandler() {}
 
 // Unsupported : gtk_gesture_get_bounding_box : unsupported parameter rect : Blacklisted record : GdkRectangle
 
@@ -513,14 +550,32 @@ func (recv *Gesture) Ungroup() {
 	return
 }
 
+var signalDragBeginId int
+var signalDragBeginMap = make(map[int]GestureDragSignalDragBeginCallback)
+var signalDragBeginLock sync.Mutex
+
 // GestureDragSignalDragBeginCallback is a callback function for a 'drag-begin' signal emitted from a GestureDrag.
 type GestureDragSignalDragBeginCallback func(startX float64, startY float64)
+
+func GestureDrag_dragBeginHandler() {}
+
+var signalDragEndId int
+var signalDragEndMap = make(map[int]GestureDragSignalDragEndCallback)
+var signalDragEndLock sync.Mutex
 
 // GestureDragSignalDragEndCallback is a callback function for a 'drag-end' signal emitted from a GestureDrag.
 type GestureDragSignalDragEndCallback func(offsetX float64, offsetY float64)
 
+func GestureDrag_dragEndHandler() {}
+
+var signalDragUpdateId int
+var signalDragUpdateMap = make(map[int]GestureDragSignalDragUpdateCallback)
+var signalDragUpdateLock sync.Mutex
+
 // GestureDragSignalDragUpdateCallback is a callback function for a 'drag-update' signal emitted from a GestureDrag.
 type GestureDragSignalDragUpdateCallback func(offsetX float64, offsetY float64)
+
+func GestureDrag_dragUpdateHandler() {}
 
 // GestureDragNew is a wrapper around the C function gtk_gesture_drag_new.
 func GestureDragNew(widget *Widget) *GestureDrag {
@@ -564,11 +619,23 @@ func (recv *GestureDrag) GetStartPoint() (bool, float64, float64) {
 	return retGo, x, y
 }
 
+var signalCancelledId int
+var signalCancelledMap = make(map[int]GestureLongPressSignalCancelledCallback)
+var signalCancelledLock sync.Mutex
+
 // GestureLongPressSignalCancelledCallback is a callback function for a 'cancelled' signal emitted from a GestureLongPress.
 type GestureLongPressSignalCancelledCallback func()
 
+func GestureLongPress_cancelledHandler() {}
+
+var signalPressedId int
+var signalPressedMap = make(map[int]GestureLongPressSignalPressedCallback)
+var signalPressedLock sync.Mutex
+
 // GestureLongPressSignalPressedCallback is a callback function for a 'pressed' signal emitted from a GestureLongPress.
 type GestureLongPressSignalPressedCallback func(x float64, y float64)
+
+func GestureLongPress_pressedHandler() {}
 
 // GestureLongPressNew is a wrapper around the C function gtk_gesture_long_press_new.
 func GestureLongPressNew(widget *Widget) *GestureLongPress {
@@ -580,14 +647,32 @@ func GestureLongPressNew(widget *Widget) *GestureLongPress {
 	return retGo
 }
 
+var signalPressedId int
+var signalPressedMap = make(map[int]GestureMultiPressSignalPressedCallback)
+var signalPressedLock sync.Mutex
+
 // GestureMultiPressSignalPressedCallback is a callback function for a 'pressed' signal emitted from a GestureMultiPress.
 type GestureMultiPressSignalPressedCallback func(nPress int32, x float64, y float64)
+
+func GestureMultiPress_pressedHandler() {}
+
+var signalReleasedId int
+var signalReleasedMap = make(map[int]GestureMultiPressSignalReleasedCallback)
+var signalReleasedLock sync.Mutex
 
 // GestureMultiPressSignalReleasedCallback is a callback function for a 'released' signal emitted from a GestureMultiPress.
 type GestureMultiPressSignalReleasedCallback func(nPress int32, x float64, y float64)
 
+func GestureMultiPress_releasedHandler() {}
+
+var signalStoppedId int
+var signalStoppedMap = make(map[int]GestureMultiPressSignalStoppedCallback)
+var signalStoppedLock sync.Mutex
+
 // GestureMultiPressSignalStoppedCallback is a callback function for a 'stopped' signal emitted from a GestureMultiPress.
 type GestureMultiPressSignalStoppedCallback func()
+
+func GestureMultiPress_stoppedHandler() {}
 
 // GestureMultiPressNew is a wrapper around the C function gtk_gesture_multi_press_new.
 func GestureMultiPressNew(widget *Widget) *GestureMultiPress {
@@ -603,8 +688,14 @@ func GestureMultiPressNew(widget *Widget) *GestureMultiPress {
 
 // Unsupported : gtk_gesture_multi_press_set_area : unsupported parameter rect : Blacklisted record : GdkRectangle
 
+var signalPanId int
+var signalPanMap = make(map[int]GesturePanSignalPanCallback)
+var signalPanLock sync.Mutex
+
 // GesturePanSignalPanCallback is a callback function for a 'pan' signal emitted from a GesturePan.
 type GesturePanSignalPanCallback func(direction PanDirection, offset float64)
+
+func GesturePan_panHandler() {}
 
 // GesturePanNew is a wrapper around the C function gtk_gesture_pan_new.
 func GesturePanNew(widget *Widget, orientation Orientation) *GesturePan {
@@ -635,8 +726,14 @@ func (recv *GesturePan) SetOrientation(orientation Orientation) {
 	return
 }
 
+var signalAngleChangedId int
+var signalAngleChangedMap = make(map[int]GestureRotateSignalAngleChangedCallback)
+var signalAngleChangedLock sync.Mutex
+
 // GestureRotateSignalAngleChangedCallback is a callback function for a 'angle-changed' signal emitted from a GestureRotate.
 type GestureRotateSignalAngleChangedCallback func(angle float64, angleDelta float64)
+
+func GestureRotate_angleChangedHandler() {}
 
 // GestureRotateNew is a wrapper around the C function gtk_gesture_rotate_new.
 func GestureRotateNew(widget *Widget) *GestureRotate {
@@ -725,8 +822,14 @@ func (recv *GestureSingle) SetTouchOnly(touchOnly bool) {
 	return
 }
 
+var signalSwipeId int
+var signalSwipeMap = make(map[int]GestureSwipeSignalSwipeCallback)
+var signalSwipeLock sync.Mutex
+
 // GestureSwipeSignalSwipeCallback is a callback function for a 'swipe' signal emitted from a GestureSwipe.
 type GestureSwipeSignalSwipeCallback func(velocityX float64, velocityY float64)
+
+func GestureSwipe_swipeHandler() {}
 
 // GestureSwipeNew is a wrapper around the C function gtk_gesture_swipe_new.
 func GestureSwipeNew(widget *Widget) *GestureSwipe {
@@ -754,8 +857,14 @@ func (recv *GestureSwipe) GetVelocity() (bool, float64, float64) {
 	return retGo, velocityX, velocityY
 }
 
+var signalScaleChangedId int
+var signalScaleChangedMap = make(map[int]GestureZoomSignalScaleChangedCallback)
+var signalScaleChangedLock sync.Mutex
+
 // GestureZoomSignalScaleChangedCallback is a callback function for a 'scale-changed' signal emitted from a GestureZoom.
 type GestureZoomSignalScaleChangedCallback func(scale float64)
+
+func GestureZoom_scaleChangedHandler() {}
 
 // GestureZoomNew is a wrapper around the C function gtk_gesture_zoom_new.
 func GestureZoomNew(widget *Widget) *GestureZoom {
@@ -797,14 +906,32 @@ func (recv *IconTheme) AddResourcePath(path string) {
 
 // Unsupported : gtk_info_bar_new_with_buttons : unsupported parameter ... : varargs
 
+var signalSelectAllId int
+var signalSelectAllMap = make(map[int]ListBoxSignalSelectAllCallback)
+var signalSelectAllLock sync.Mutex
+
 // ListBoxSignalSelectAllCallback is a callback function for a 'select-all' signal emitted from a ListBox.
 type ListBoxSignalSelectAllCallback func()
+
+func ListBox_selectAllHandler() {}
+
+var signalSelectedRowsChangedId int
+var signalSelectedRowsChangedMap = make(map[int]ListBoxSignalSelectedRowsChangedCallback)
+var signalSelectedRowsChangedLock sync.Mutex
 
 // ListBoxSignalSelectedRowsChangedCallback is a callback function for a 'selected-rows-changed' signal emitted from a ListBox.
 type ListBoxSignalSelectedRowsChangedCallback func()
 
+func ListBox_selectedRowsChangedHandler() {}
+
+var signalUnselectAllId int
+var signalUnselectAllMap = make(map[int]ListBoxSignalUnselectAllCallback)
+var signalUnselectAllLock sync.Mutex
+
 // ListBoxSignalUnselectAllCallback is a callback function for a 'unselect-all' signal emitted from a ListBox.
 type ListBoxSignalUnselectAllCallback func()
+
+func ListBox_unselectAllHandler() {}
 
 // GetSelectedRows is a wrapper around the C function gtk_list_box_get_selected_rows.
 func (recv *ListBox) GetSelectedRows() *glib.List {
@@ -905,8 +1032,14 @@ func (recv *ListBoxRow) SetSelectable(selectable bool) {
 
 // Unsupported signal : unsupported parameter selected_item : no type generator for Gio.File,
 
+var signalShowEnterLocationId int
+var signalShowEnterLocationMap = make(map[int]PlacesSidebarSignalShowEnterLocationCallback)
+var signalShowEnterLocationLock sync.Mutex
+
 // PlacesSidebarSignalShowEnterLocationCallback is a callback function for a 'show-enter-location' signal emitted from a PlacesSidebar.
 type PlacesSidebarSignalShowEnterLocationCallback func()
+
+func PlacesSidebar_showEnterLocationHandler() {}
 
 // GetShowEnterLocation is a wrapper around the C function gtk_places_sidebar_get_show_enter_location.
 func (recv *PlacesSidebar) GetShowEnterLocation() bool {
@@ -938,8 +1071,14 @@ func (recv *PlacesSidebar) SetShowEnterLocation(showEnterLocation bool) {
 
 // Unsupported : gtk_status_icon_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon, GIcon*
 
+var signalStateSetId int
+var signalStateSetMap = make(map[int]SwitchSignalStateSetCallback)
+var signalStateSetLock sync.Mutex
+
 // SwitchSignalStateSetCallback is a callback function for a 'state-set' signal emitted from a Switch.
 type SwitchSignalStateSetCallback func(state bool) bool
+
+func Switch_stateSetHandler() {}
 
 // GetState is a wrapper around the C function gtk_switch_get_state.
 func (recv *Switch) GetState() bool {

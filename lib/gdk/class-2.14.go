@@ -3,7 +3,10 @@
 
 package gdk
 
-import "unsafe"
+import (
+	"sync"
+	"unsafe"
+)
 
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <gdk/gdk.h>
@@ -75,8 +78,14 @@ func (recv *AppLaunchContext) SetTimestamp(timestamp uint32) {
 	return
 }
 
+var signalMonitorsChangedId int
+var signalMonitorsChangedMap = make(map[int]ScreenSignalMonitorsChangedCallback)
+var signalMonitorsChangedLock sync.Mutex
+
 // ScreenSignalMonitorsChangedCallback is a callback function for a 'monitors-changed' signal emitted from a Screen.
 type ScreenSignalMonitorsChangedCallback func()
+
+func Screen_monitorsChangedHandler() {}
 
 // GetMonitorHeightMm is a wrapper around the C function gdk_screen_get_monitor_height_mm.
 func (recv *Screen) GetMonitorHeightMm(monitorNum int32) int32 {

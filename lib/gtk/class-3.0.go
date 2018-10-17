@@ -11,6 +11,7 @@ import (
 	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	pango "github.com/pekim/gobbi/lib/pango"
+	"sync"
 	"unsafe"
 )
 
@@ -362,8 +363,14 @@ func (recv *Calendar) GetDayIsMarked(day uint32) bool {
 
 // Unsupported signal : unsupported parameter model : no type generator for TreeModel,
 
+var signalFocusChangedId int
+var signalFocusChangedMap = make(map[int]CellAreaSignalFocusChangedCallback)
+var signalFocusChangedLock sync.Mutex
+
 // CellAreaSignalFocusChangedCallback is a callback function for a 'focus-changed' signal emitted from a CellArea.
 type CellAreaSignalFocusChangedCallback func(renderer *CellRenderer, path string)
+
+func CellArea_focusChangedHandler() {}
 
 // Unsupported signal : unsupported parameter editable : no type generator for CellEditable,
 
@@ -1621,8 +1628,14 @@ func (recv *Style) HasContext() bool {
 	return retGo
 }
 
+var signalChangedId int
+var signalChangedMap = make(map[int]StyleContextSignalChangedCallback)
+var signalChangedLock sync.Mutex
+
 // StyleContextSignalChangedCallback is a callback function for a 'changed' signal emitted from a StyleContext.
 type StyleContextSignalChangedCallback func()
+
+func StyleContext_changedHandler() {}
 
 // AddClass is a wrapper around the C function gtk_style_context_add_class.
 func (recv *StyleContext) AddClass(className string) {
@@ -2336,8 +2349,14 @@ func (recv *TreeViewColumn) GetButton() *Widget {
 
 // Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
 
+var signalDrawId int
+var signalDrawMap = make(map[int]WidgetSignalDrawCallback)
+var signalDrawLock sync.Mutex
+
 // WidgetSignalDrawCallback is a callback function for a 'draw' signal emitted from a Widget.
 type WidgetSignalDrawCallback func(cr *cairo.Context) bool
+
+func Widget_drawHandler() {}
 
 // Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
 
@@ -2345,11 +2364,23 @@ type WidgetSignalDrawCallback func(cr *cairo.Context) bool
 
 // Unsupported signal : unsupported parameter allocation : Blacklisted record : GdkRectangle
 
+var signalStateFlagsChangedId int
+var signalStateFlagsChangedMap = make(map[int]WidgetSignalStateFlagsChangedCallback)
+var signalStateFlagsChangedLock sync.Mutex
+
 // WidgetSignalStateFlagsChangedCallback is a callback function for a 'state-flags-changed' signal emitted from a Widget.
 type WidgetSignalStateFlagsChangedCallback func(flags StateFlags)
 
+func Widget_stateFlagsChangedHandler() {}
+
+var signalStyleUpdatedId int
+var signalStyleUpdatedMap = make(map[int]WidgetSignalStyleUpdatedCallback)
+var signalStyleUpdatedLock sync.Mutex
+
 // WidgetSignalStyleUpdatedCallback is a callback function for a 'style-updated' signal emitted from a Widget.
 type WidgetSignalStyleUpdatedCallback func()
+
+func Widget_styleUpdatedHandler() {}
 
 // Unsupported signal : unsupported parameter object : no type generator for Gdk.Event,
 

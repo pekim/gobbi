@@ -7,6 +7,7 @@ import (
 	cairo "github.com/pekim/gobbi/lib/cairo"
 	gdk "github.com/pekim/gobbi/lib/gdk"
 	pango "github.com/pekim/gobbi/lib/pango"
+	"sync"
 	"unsafe"
 )
 
@@ -153,8 +154,14 @@ func (recv *Overlay) SetOverlayPassThrough(widget *Widget, passThrough bool) {
 
 // Unsupported signal : unsupported parameter selected_item : no type generator for Gio.File,
 
+var signalShowOtherLocationsId int
+var signalShowOtherLocationsMap = make(map[int]PlacesSidebarSignalShowOtherLocationsCallback)
+var signalShowOtherLocationsLock sync.Mutex
+
 // PlacesSidebarSignalShowOtherLocationsCallback is a callback function for a 'show-other-locations' signal emitted from a PlacesSidebar.
 type PlacesSidebarSignalShowOtherLocationsCallback func()
+
+func PlacesSidebar_showOtherLocationsHandler() {}
 
 // GetShowOtherLocations is a wrapper around the C function gtk_places_sidebar_get_show_other_locations.
 func (recv *PlacesSidebar) GetShowOtherLocations() bool {

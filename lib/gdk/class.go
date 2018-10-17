@@ -8,6 +8,7 @@ import (
 	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	pango "github.com/pekim/gobbi/lib/pango"
+	"sync"
 	"unsafe"
 )
 
@@ -259,8 +260,14 @@ func CastToDevice(object *gobject.Object) *Device {
 	return DeviceNewFromC(object.ToC())
 }
 
+var signalChangedId int
+var signalChangedMap = make(map[int]DeviceSignalChangedCallback)
+var signalChangedLock sync.Mutex
+
 // DeviceSignalChangedCallback is a callback function for a 'changed' signal emitted from a Device.
 type DeviceSignalChangedCallback func()
+
+func Device_changedHandler() {}
 
 // Unsupported : gdk_device_get_axis : unsupported parameter axes : no param type
 
@@ -342,14 +349,32 @@ func CastToDeviceManager(object *gobject.Object) *DeviceManager {
 	return DeviceManagerNewFromC(object.ToC())
 }
 
+var signalDeviceAddedId int
+var signalDeviceAddedMap = make(map[int]DeviceManagerSignalDeviceAddedCallback)
+var signalDeviceAddedLock sync.Mutex
+
 // DeviceManagerSignalDeviceAddedCallback is a callback function for a 'device-added' signal emitted from a DeviceManager.
 type DeviceManagerSignalDeviceAddedCallback func(device *Device)
+
+func DeviceManager_deviceAddedHandler() {}
+
+var signalDeviceChangedId int
+var signalDeviceChangedMap = make(map[int]DeviceManagerSignalDeviceChangedCallback)
+var signalDeviceChangedLock sync.Mutex
 
 // DeviceManagerSignalDeviceChangedCallback is a callback function for a 'device-changed' signal emitted from a DeviceManager.
 type DeviceManagerSignalDeviceChangedCallback func(device *Device)
 
+func DeviceManager_deviceChangedHandler() {}
+
+var signalDeviceRemovedId int
+var signalDeviceRemovedMap = make(map[int]DeviceManagerSignalDeviceRemovedCallback)
+var signalDeviceRemovedLock sync.Mutex
+
 // DeviceManagerSignalDeviceRemovedCallback is a callback function for a 'device-removed' signal emitted from a DeviceManager.
 type DeviceManagerSignalDeviceRemovedCallback func(device *Device)
+
+func DeviceManager_deviceRemovedHandler() {}
 
 // Display is a wrapper around the C record GdkDisplay.
 type Display struct {
@@ -383,8 +408,14 @@ func CastToDisplay(object *gobject.Object) *Display {
 	return DisplayNewFromC(object.ToC())
 }
 
+var signalOpenedId int
+var signalOpenedMap = make(map[int]DisplaySignalOpenedCallback)
+var signalOpenedLock sync.Mutex
+
 // DisplaySignalOpenedCallback is a callback function for a 'opened' signal emitted from a Display.
 type DisplaySignalOpenedCallback func()
+
+func Display_openedHandler() {}
 
 // DeviceIsGrabbed is a wrapper around the C function gdk_display_device_is_grabbed.
 func (recv *Display) DeviceIsGrabbed(device *Device) bool {
@@ -509,26 +540,68 @@ func CastToFrameClock(object *gobject.Object) *FrameClock {
 	return FrameClockNewFromC(object.ToC())
 }
 
+var signalAfterPaintId int
+var signalAfterPaintMap = make(map[int]FrameClockSignalAfterPaintCallback)
+var signalAfterPaintLock sync.Mutex
+
 // FrameClockSignalAfterPaintCallback is a callback function for a 'after-paint' signal emitted from a FrameClock.
 type FrameClockSignalAfterPaintCallback func()
+
+func FrameClock_afterPaintHandler() {}
+
+var signalBeforePaintId int
+var signalBeforePaintMap = make(map[int]FrameClockSignalBeforePaintCallback)
+var signalBeforePaintLock sync.Mutex
 
 // FrameClockSignalBeforePaintCallback is a callback function for a 'before-paint' signal emitted from a FrameClock.
 type FrameClockSignalBeforePaintCallback func()
 
+func FrameClock_beforePaintHandler() {}
+
+var signalFlushEventsId int
+var signalFlushEventsMap = make(map[int]FrameClockSignalFlushEventsCallback)
+var signalFlushEventsLock sync.Mutex
+
 // FrameClockSignalFlushEventsCallback is a callback function for a 'flush-events' signal emitted from a FrameClock.
 type FrameClockSignalFlushEventsCallback func()
+
+func FrameClock_flushEventsHandler() {}
+
+var signalLayoutId int
+var signalLayoutMap = make(map[int]FrameClockSignalLayoutCallback)
+var signalLayoutLock sync.Mutex
 
 // FrameClockSignalLayoutCallback is a callback function for a 'layout' signal emitted from a FrameClock.
 type FrameClockSignalLayoutCallback func()
 
+func FrameClock_layoutHandler() {}
+
+var signalPaintId int
+var signalPaintMap = make(map[int]FrameClockSignalPaintCallback)
+var signalPaintLock sync.Mutex
+
 // FrameClockSignalPaintCallback is a callback function for a 'paint' signal emitted from a FrameClock.
 type FrameClockSignalPaintCallback func()
+
+func FrameClock_paintHandler() {}
+
+var signalResumeEventsId int
+var signalResumeEventsMap = make(map[int]FrameClockSignalResumeEventsCallback)
+var signalResumeEventsLock sync.Mutex
 
 // FrameClockSignalResumeEventsCallback is a callback function for a 'resume-events' signal emitted from a FrameClock.
 type FrameClockSignalResumeEventsCallback func()
 
+func FrameClock_resumeEventsHandler() {}
+
+var signalUpdateId int
+var signalUpdateMap = make(map[int]FrameClockSignalUpdateCallback)
+var signalUpdateLock sync.Mutex
+
 // FrameClockSignalUpdateCallback is a callback function for a 'update' signal emitted from a FrameClock.
 type FrameClockSignalUpdateCallback func()
+
+func FrameClock_updateHandler() {}
 
 // GLContext is a wrapper around the C record GdkGLContext.
 type GLContext struct {
@@ -618,8 +691,14 @@ func (recv *Keymap) LookupKey(key *KeymapKey) uint32 {
 
 // Unsupported : gdk_keymap_translate_keyboard_state : unsupported parameter consumed_modifiers : GdkModifierType* with indirection level of 1
 
+var signalInvalidateId int
+var signalInvalidateMap = make(map[int]MonitorSignalInvalidateCallback)
+var signalInvalidateLock sync.Mutex
+
 // MonitorSignalInvalidateCallback is a callback function for a 'invalidate' signal emitted from a Monitor.
 type MonitorSignalInvalidateCallback func()
+
+func Monitor_invalidateHandler() {}
 
 // Screen is a wrapper around the C record GdkScreen.
 type Screen struct {

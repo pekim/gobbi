@@ -6,6 +6,7 @@ package gio
 import (
 	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
+	"sync"
 	"unsafe"
 )
 
@@ -182,8 +183,14 @@ func CastToDBusAuthObserver(object *gobject.Object) *DBusAuthObserver {
 	return DBusAuthObserverNewFromC(object.ToC())
 }
 
+var signalAuthorizeAuthenticatedPeerId int
+var signalAuthorizeAuthenticatedPeerMap = make(map[int]DBusAuthObserverSignalAuthorizeAuthenticatedPeerCallback)
+var signalAuthorizeAuthenticatedPeerLock sync.Mutex
+
 // DBusAuthObserverSignalAuthorizeAuthenticatedPeerCallback is a callback function for a 'authorize-authenticated-peer' signal emitted from a DBusAuthObserver.
 type DBusAuthObserverSignalAuthorizeAuthenticatedPeerCallback func(stream *IOStream, credentials *Credentials) bool
+
+func DBusAuthObserver_authorizeAuthenticatedPeerHandler() {}
 
 // DBusAuthObserverNew is a wrapper around the C function g_dbus_auth_observer_new.
 func DBusAuthObserverNew() *DBusAuthObserver {
@@ -237,8 +244,14 @@ func CastToDBusConnection(object *gobject.Object) *DBusConnection {
 	return DBusConnectionNewFromC(object.ToC())
 }
 
+var signalClosedId int
+var signalClosedMap = make(map[int]DBusConnectionSignalClosedCallback)
+var signalClosedLock sync.Mutex
+
 // DBusConnectionSignalClosedCallback is a callback function for a 'closed' signal emitted from a DBusConnection.
 type DBusConnectionSignalClosedCallback func(remotePeerVanished bool, error *glib.Error)
+
+func DBusConnection_closedHandler() {}
 
 // Unsupported : g_dbus_connection_new_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
 
@@ -1328,8 +1341,14 @@ func CastToDBusServer(object *gobject.Object) *DBusServer {
 	return DBusServerNewFromC(object.ToC())
 }
 
+var signalNewConnectionId int
+var signalNewConnectionMap = make(map[int]DBusServerSignalNewConnectionCallback)
+var signalNewConnectionLock sync.Mutex
+
 // DBusServerSignalNewConnectionCallback is a callback function for a 'new-connection' signal emitted from a DBusServer.
 type DBusServerSignalNewConnectionCallback func(connection *DBusConnection) bool
+
+func DBusServer_newConnectionHandler() {}
 
 // DBusServerNewSync is a wrapper around the C function g_dbus_server_new_sync.
 func DBusServerNewSync(address string, flags DBusServerFlags, guid string, observer *DBusAuthObserver, cancellable *Cancellable) (*DBusServer, error) {
