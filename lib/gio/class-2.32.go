@@ -805,7 +805,7 @@ func CastToMenuModel(object *gobject.Object) *MenuModel {
 }
 
 // MenuModelSignalItemsChangedCallback is a callback function for a 'items-changed' signal emitted from a MenuModel.
-type MenuModelSignalItemsChangedCallback func()
+type MenuModelSignalItemsChangedCallback func(position int32, removed int32, added int32)
 
 // Unsupported : g_menu_model_get_item_attribute : unsupported parameter ... : varargs
 

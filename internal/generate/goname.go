@@ -9,6 +9,7 @@ import (
 var reservedWords = map[string]bool{
 	"func":      true,
 	"interface": true,
+	"select":    true,
 	"type":      true,
 }
 

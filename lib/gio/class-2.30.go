@@ -33,24 +33,6 @@ import (
 */
 /*
 
-	void DBusObjectManagerClient_interfaceProxyPropertiesChangedHandler();
-
-	static gulong DBusObjectManagerClient_signal_connect_interface_proxy_properties_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "interface-proxy-properties-changed", DBusObjectManagerClient_interfaceProxyPropertiesChangedHandler, data);
-	}
-
-*/
-/*
-
-	void DBusObjectManagerClient_interfaceProxySignalHandler();
-
-	static gulong DBusObjectManagerClient_signal_connect_interface_proxy_signal(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "interface-proxy-signal", DBusObjectManagerClient_interfaceProxySignalHandler, data);
-	}
-
-*/
-/*
-
 	void DBusObjectSkeleton_authorizeMethodHandler();
 
 	static gulong DBusObjectSkeleton_signal_connect_authorize_method(gpointer instance, gpointer data) {
@@ -109,7 +91,7 @@ func CastToDBusInterfaceSkeleton(object *gobject.Object) *DBusInterfaceSkeleton 
 }
 
 // DBusInterfaceSkeletonSignalGAuthorizeMethodCallback is a callback function for a 'g-authorize-method' signal emitted from a DBusInterfaceSkeleton.
-type DBusInterfaceSkeletonSignalGAuthorizeMethodCallback func()
+type DBusInterfaceSkeletonSignalGAuthorizeMethodCallback func(invocation *DBusMethodInvocation) bool
 
 // Export is a wrapper around the C function g_dbus_interface_skeleton_export.
 func (recv *DBusInterfaceSkeleton) Export(connection *DBusConnection, objectPath string) (bool, error) {
@@ -243,11 +225,9 @@ func CastToDBusObjectManagerClient(object *gobject.Object) *DBusObjectManagerCli
 	return DBusObjectManagerClientNewFromC(object.ToC())
 }
 
-// DBusObjectManagerClientSignalInterfaceProxyPropertiesChangedCallback is a callback function for a 'interface-proxy-properties-changed' signal emitted from a DBusObjectManagerClient.
-type DBusObjectManagerClientSignalInterfaceProxyPropertiesChangedCallback func()
+// Unsupported signal : unsupported parameter changed_properties : Blacklisted record : GVariant
 
-// DBusObjectManagerClientSignalInterfaceProxySignalCallback is a callback function for a 'interface-proxy-signal' signal emitted from a DBusObjectManagerClient.
-type DBusObjectManagerClientSignalInterfaceProxySignalCallback func()
+// Unsupported signal : unsupported parameter parameters : Blacklisted record : GVariant
 
 // Unsupported : g_dbus_object_manager_client_new_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
 
@@ -471,7 +451,7 @@ func CastToDBusObjectSkeleton(object *gobject.Object) *DBusObjectSkeleton {
 }
 
 // DBusObjectSkeletonSignalAuthorizeMethodCallback is a callback function for a 'authorize-method' signal emitted from a DBusObjectSkeleton.
-type DBusObjectSkeletonSignalAuthorizeMethodCallback func()
+type DBusObjectSkeletonSignalAuthorizeMethodCallback func(interface_ *DBusInterfaceSkeleton, invocation *DBusMethodInvocation) bool
 
 // DBusObjectSkeletonNew is a wrapper around the C function g_dbus_object_skeleton_new.
 func DBusObjectSkeletonNew(objectPath string) *DBusObjectSkeleton {

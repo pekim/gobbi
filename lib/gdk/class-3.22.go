@@ -397,16 +397,16 @@ func CastToSeat(object *gobject.Object) *Seat {
 }
 
 // SeatSignalDeviceAddedCallback is a callback function for a 'device-added' signal emitted from a Seat.
-type SeatSignalDeviceAddedCallback func()
+type SeatSignalDeviceAddedCallback func(device *Device)
 
 // SeatSignalDeviceRemovedCallback is a callback function for a 'device-removed' signal emitted from a Seat.
-type SeatSignalDeviceRemovedCallback func()
+type SeatSignalDeviceRemovedCallback func(device *Device)
 
 // SeatSignalToolAddedCallback is a callback function for a 'tool-added' signal emitted from a Seat.
-type SeatSignalToolAddedCallback func()
+type SeatSignalToolAddedCallback func(tool *DeviceTool)
 
 // SeatSignalToolRemovedCallback is a callback function for a 'tool-removed' signal emitted from a Seat.
-type SeatSignalToolRemovedCallback func()
+type SeatSignalToolRemovedCallback func(tool *DeviceTool)
 
 // GetDisplay is a wrapper around the C function gdk_seat_get_display.
 func (recv *Seat) GetDisplay() *Display {

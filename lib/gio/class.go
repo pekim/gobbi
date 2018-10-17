@@ -32,28 +32,10 @@ import (
 */
 /*
 
-	void AppLaunchContext_launchedHandler();
-
-	static gulong AppLaunchContext_signal_connect_launched(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "launched", AppLaunchContext_launchedHandler, data);
-	}
-
-*/
-/*
-
 	void Cancellable_cancelledHandler();
 
 	static gulong Cancellable_signal_connect_cancelled(gpointer instance, gpointer data) {
 		return g_signal_connect(instance, "cancelled", Cancellable_cancelledHandler, data);
-	}
-
-*/
-/*
-
-	void FileMonitor_changedHandler();
-
-	static gulong FileMonitor_signal_connect_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "changed", FileMonitor_changedHandler, data);
 	}
 
 */
@@ -86,28 +68,10 @@ import (
 */
 /*
 
-	void MountOperation_askQuestionHandler();
-
-	static gulong MountOperation_signal_connect_ask_question(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "ask-question", MountOperation_askQuestionHandler, data);
-	}
-
-*/
-/*
-
 	void MountOperation_replyHandler();
 
 	static gulong MountOperation_signal_connect_reply(gpointer instance, gpointer data) {
 		return g_signal_connect(instance, "reply", MountOperation_replyHandler, data);
-	}
-
-*/
-/*
-
-	void MountOperation_showProcessesHandler();
-
-	static gulong MountOperation_signal_connect_show_processes(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "show-processes", MountOperation_showProcessesHandler, data);
 	}
 
 */
@@ -126,15 +90,6 @@ import (
 
 	static gulong Resolver_signal_connect_reload(gpointer instance, gpointer data) {
 		return g_signal_connect(instance, "reload", Resolver_reloadHandler, data);
-	}
-
-*/
-/*
-
-	void Settings_changeEventHandler();
-
-	static gulong Settings_signal_connect_change_event(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "change-event", Settings_changeEventHandler, data);
 	}
 
 */
@@ -167,24 +122,6 @@ import (
 */
 /*
 
-	void SimpleAction_activateHandler();
-
-	static gulong SimpleAction_signal_connect_activate(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "activate", SimpleAction_activateHandler, data);
-	}
-
-*/
-/*
-
-	void SimpleAction_changeStateHandler();
-
-	static gulong SimpleAction_signal_connect_change_state(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "change-state", SimpleAction_changeStateHandler, data);
-	}
-
-*/
-/*
-
 	void UnixMountMonitor_mountpointsChangedHandler();
 
 	static gulong UnixMountMonitor_signal_connect_mountpoints_changed(gpointer instance, gpointer data) {
@@ -198,114 +135,6 @@ import (
 
 	static gulong UnixMountMonitor_signal_connect_mounts_changed(gpointer instance, gpointer data) {
 		return g_signal_connect(instance, "mounts-changed", UnixMountMonitor_mountsChangedHandler, data);
-	}
-
-*/
-/*
-
-	void VolumeMonitor_driveChangedHandler();
-
-	static gulong VolumeMonitor_signal_connect_drive_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "drive-changed", VolumeMonitor_driveChangedHandler, data);
-	}
-
-*/
-/*
-
-	void VolumeMonitor_driveConnectedHandler();
-
-	static gulong VolumeMonitor_signal_connect_drive_connected(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "drive-connected", VolumeMonitor_driveConnectedHandler, data);
-	}
-
-*/
-/*
-
-	void VolumeMonitor_driveDisconnectedHandler();
-
-	static gulong VolumeMonitor_signal_connect_drive_disconnected(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "drive-disconnected", VolumeMonitor_driveDisconnectedHandler, data);
-	}
-
-*/
-/*
-
-	void VolumeMonitor_driveEjectButtonHandler();
-
-	static gulong VolumeMonitor_signal_connect_drive_eject_button(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "drive-eject-button", VolumeMonitor_driveEjectButtonHandler, data);
-	}
-
-*/
-/*
-
-	void VolumeMonitor_driveStopButtonHandler();
-
-	static gulong VolumeMonitor_signal_connect_drive_stop_button(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "drive-stop-button", VolumeMonitor_driveStopButtonHandler, data);
-	}
-
-*/
-/*
-
-	void VolumeMonitor_mountAddedHandler();
-
-	static gulong VolumeMonitor_signal_connect_mount_added(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "mount-added", VolumeMonitor_mountAddedHandler, data);
-	}
-
-*/
-/*
-
-	void VolumeMonitor_mountChangedHandler();
-
-	static gulong VolumeMonitor_signal_connect_mount_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "mount-changed", VolumeMonitor_mountChangedHandler, data);
-	}
-
-*/
-/*
-
-	void VolumeMonitor_mountPreUnmountHandler();
-
-	static gulong VolumeMonitor_signal_connect_mount_pre_unmount(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "mount-pre-unmount", VolumeMonitor_mountPreUnmountHandler, data);
-	}
-
-*/
-/*
-
-	void VolumeMonitor_mountRemovedHandler();
-
-	static gulong VolumeMonitor_signal_connect_mount_removed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "mount-removed", VolumeMonitor_mountRemovedHandler, data);
-	}
-
-*/
-/*
-
-	void VolumeMonitor_volumeAddedHandler();
-
-	static gulong VolumeMonitor_signal_connect_volume_added(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "volume-added", VolumeMonitor_volumeAddedHandler, data);
-	}
-
-*/
-/*
-
-	void VolumeMonitor_volumeChangedHandler();
-
-	static gulong VolumeMonitor_signal_connect_volume_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "volume-changed", VolumeMonitor_volumeChangedHandler, data);
-	}
-
-*/
-/*
-
-	void VolumeMonitor_volumeRemovedHandler();
-
-	static gulong VolumeMonitor_signal_connect_volume_removed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "volume-removed", VolumeMonitor_volumeRemovedHandler, data);
 	}
 
 */
@@ -346,10 +175,9 @@ func CastToAppLaunchContext(object *gobject.Object) *AppLaunchContext {
 }
 
 // AppLaunchContextSignalLaunchFailedCallback is a callback function for a 'launch-failed' signal emitted from a AppLaunchContext.
-type AppLaunchContextSignalLaunchFailedCallback func()
+type AppLaunchContextSignalLaunchFailedCallback func(startupNotifyId string)
 
-// AppLaunchContextSignalLaunchedCallback is a callback function for a 'launched' signal emitted from a AppLaunchContext.
-type AppLaunchContextSignalLaunchedCallback func()
+// Unsupported signal : unsupported parameter info : no type generator for AppInfo,
 
 // AppLaunchContextNew is a wrapper around the C function g_app_launch_context_new.
 func AppLaunchContextNew() *AppLaunchContext {
@@ -2438,8 +2266,7 @@ func CastToFileMonitor(object *gobject.Object) *FileMonitor {
 	return FileMonitorNewFromC(object.ToC())
 }
 
-// FileMonitorSignalChangedCallback is a callback function for a 'changed' signal emitted from a FileMonitor.
-type FileMonitorSignalChangedCallback func()
+// Unsupported signal : unsupported parameter file : no type generator for File,
 
 // Cancel is a wrapper around the C function g_file_monitor_cancel.
 func (recv *FileMonitor) Cancel() bool {
@@ -3192,19 +3019,17 @@ func CastToMountOperation(object *gobject.Object) *MountOperation {
 type MountOperationSignalAbortedCallback func()
 
 // MountOperationSignalAskPasswordCallback is a callback function for a 'ask-password' signal emitted from a MountOperation.
-type MountOperationSignalAskPasswordCallback func()
+type MountOperationSignalAskPasswordCallback func(message string, defaultUser string, defaultDomain string, flags AskPasswordFlags)
 
-// MountOperationSignalAskQuestionCallback is a callback function for a 'ask-question' signal emitted from a MountOperation.
-type MountOperationSignalAskQuestionCallback func()
+// Unsupported signal : unsupported parameter choices : no param type
 
 // MountOperationSignalReplyCallback is a callback function for a 'reply' signal emitted from a MountOperation.
-type MountOperationSignalReplyCallback func()
+type MountOperationSignalReplyCallback func(result MountOperationResult)
 
-// MountOperationSignalShowProcessesCallback is a callback function for a 'show-processes' signal emitted from a MountOperation.
-type MountOperationSignalShowProcessesCallback func()
+// Unsupported signal : unsupported parameter processes : no param type
 
 // MountOperationSignalShowUnmountProgressCallback is a callback function for a 'show-unmount-progress' signal emitted from a MountOperation.
-type MountOperationSignalShowUnmountProgressCallback func()
+type MountOperationSignalShowUnmountProgressCallback func(message string, timeLeft int64, bytesLeft int64)
 
 // MountOperationNew is a wrapper around the C function g_mount_operation_new.
 func MountOperationNew() *MountOperation {
@@ -3732,17 +3557,16 @@ func CastToSettings(object *gobject.Object) *Settings {
 	return SettingsNewFromC(object.ToC())
 }
 
-// SettingsSignalChangeEventCallback is a callback function for a 'change-event' signal emitted from a Settings.
-type SettingsSignalChangeEventCallback func()
+// Unsupported signal : unsupported parameter keys : no param type
 
 // SettingsSignalChangedCallback is a callback function for a 'changed' signal emitted from a Settings.
-type SettingsSignalChangedCallback func()
+type SettingsSignalChangedCallback func(key string)
 
 // SettingsSignalWritableChangeEventCallback is a callback function for a 'writable-change-event' signal emitted from a Settings.
-type SettingsSignalWritableChangeEventCallback func()
+type SettingsSignalWritableChangeEventCallback func(key uint32) bool
 
 // SettingsSignalWritableChangedCallback is a callback function for a 'writable-changed' signal emitted from a Settings.
-type SettingsSignalWritableChangedCallback func()
+type SettingsSignalWritableChangedCallback func(key string)
 
 // Apply is a wrapper around the C function g_settings_apply.
 func (recv *Settings) Apply() {
@@ -3866,11 +3690,9 @@ func CastToSimpleAction(object *gobject.Object) *SimpleAction {
 	return SimpleActionNewFromC(object.ToC())
 }
 
-// SimpleActionSignalActivateCallback is a callback function for a 'activate' signal emitted from a SimpleAction.
-type SimpleActionSignalActivateCallback func()
+// Unsupported signal : unsupported parameter parameter : Blacklisted record : GVariant
 
-// SimpleActionSignalChangeStateCallback is a callback function for a 'change-state' signal emitted from a SimpleAction.
-type SimpleActionSignalChangeStateCallback func()
+// Unsupported signal : unsupported parameter value : Blacklisted record : GVariant
 
 // Unsupported : g_simple_action_new : unsupported parameter parameter_type : Blacklisted record : GVariantType
 
@@ -4773,41 +4595,29 @@ func CastToVolumeMonitor(object *gobject.Object) *VolumeMonitor {
 	return VolumeMonitorNewFromC(object.ToC())
 }
 
-// VolumeMonitorSignalDriveChangedCallback is a callback function for a 'drive-changed' signal emitted from a VolumeMonitor.
-type VolumeMonitorSignalDriveChangedCallback func()
+// Unsupported signal : unsupported parameter drive : no type generator for Drive,
 
-// VolumeMonitorSignalDriveConnectedCallback is a callback function for a 'drive-connected' signal emitted from a VolumeMonitor.
-type VolumeMonitorSignalDriveConnectedCallback func()
+// Unsupported signal : unsupported parameter drive : no type generator for Drive,
 
-// VolumeMonitorSignalDriveDisconnectedCallback is a callback function for a 'drive-disconnected' signal emitted from a VolumeMonitor.
-type VolumeMonitorSignalDriveDisconnectedCallback func()
+// Unsupported signal : unsupported parameter drive : no type generator for Drive,
 
-// VolumeMonitorSignalDriveEjectButtonCallback is a callback function for a 'drive-eject-button' signal emitted from a VolumeMonitor.
-type VolumeMonitorSignalDriveEjectButtonCallback func()
+// Unsupported signal : unsupported parameter drive : no type generator for Drive,
 
-// VolumeMonitorSignalDriveStopButtonCallback is a callback function for a 'drive-stop-button' signal emitted from a VolumeMonitor.
-type VolumeMonitorSignalDriveStopButtonCallback func()
+// Unsupported signal : unsupported parameter drive : no type generator for Drive,
 
-// VolumeMonitorSignalMountAddedCallback is a callback function for a 'mount-added' signal emitted from a VolumeMonitor.
-type VolumeMonitorSignalMountAddedCallback func()
+// Unsupported signal : unsupported parameter mount : no type generator for Mount,
 
-// VolumeMonitorSignalMountChangedCallback is a callback function for a 'mount-changed' signal emitted from a VolumeMonitor.
-type VolumeMonitorSignalMountChangedCallback func()
+// Unsupported signal : unsupported parameter mount : no type generator for Mount,
 
-// VolumeMonitorSignalMountPreUnmountCallback is a callback function for a 'mount-pre-unmount' signal emitted from a VolumeMonitor.
-type VolumeMonitorSignalMountPreUnmountCallback func()
+// Unsupported signal : unsupported parameter mount : no type generator for Mount,
 
-// VolumeMonitorSignalMountRemovedCallback is a callback function for a 'mount-removed' signal emitted from a VolumeMonitor.
-type VolumeMonitorSignalMountRemovedCallback func()
+// Unsupported signal : unsupported parameter mount : no type generator for Mount,
 
-// VolumeMonitorSignalVolumeAddedCallback is a callback function for a 'volume-added' signal emitted from a VolumeMonitor.
-type VolumeMonitorSignalVolumeAddedCallback func()
+// Unsupported signal : unsupported parameter volume : no type generator for Volume,
 
-// VolumeMonitorSignalVolumeChangedCallback is a callback function for a 'volume-changed' signal emitted from a VolumeMonitor.
-type VolumeMonitorSignalVolumeChangedCallback func()
+// Unsupported signal : unsupported parameter volume : no type generator for Volume,
 
-// VolumeMonitorSignalVolumeRemovedCallback is a callback function for a 'volume-removed' signal emitted from a VolumeMonitor.
-type VolumeMonitorSignalVolumeRemovedCallback func()
+// Unsupported signal : unsupported parameter volume : no type generator for Volume,
 
 // GetConnectedDrives is a wrapper around the C function g_volume_monitor_get_connected_drives.
 func (recv *VolumeMonitor) GetConnectedDrives() *glib.List {

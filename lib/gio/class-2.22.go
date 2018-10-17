@@ -24,15 +24,6 @@ import (
 // #include <stdlib.h>
 /*
 
-	void SocketClient_eventHandler();
-
-	static gulong SocketClient_signal_connect_event(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "event", SocketClient_eventHandler, data);
-	}
-
-*/
-/*
-
 	void SocketListener_eventHandler();
 
 	static gulong SocketListener_signal_connect_event(gpointer instance, gpointer data) {
@@ -1055,8 +1046,7 @@ func CastToSocketClient(object *gobject.Object) *SocketClient {
 	return SocketClientNewFromC(object.ToC())
 }
 
-// SocketClientSignalEventCallback is a callback function for a 'event' signal emitted from a SocketClient.
-type SocketClientSignalEventCallback func()
+// Unsupported signal : unsupported parameter connectable : no type generator for SocketConnectable,
 
 // SocketClientNew is a wrapper around the C function g_socket_client_new.
 func SocketClientNew() *SocketClient {
@@ -1348,7 +1338,7 @@ func CastToSocketListener(object *gobject.Object) *SocketListener {
 }
 
 // SocketListenerSignalEventCallback is a callback function for a 'event' signal emitted from a SocketListener.
-type SocketListenerSignalEventCallback func()
+type SocketListenerSignalEventCallback func(event SocketListenerEvent, socket *Socket)
 
 // SocketListenerNew is a wrapper around the C function g_socket_listener_new.
 func SocketListenerNew() *SocketListener {
@@ -1466,7 +1456,7 @@ func CastToSocketService(object *gobject.Object) *SocketService {
 }
 
 // SocketServiceSignalIncomingCallback is a callback function for a 'incoming' signal emitted from a SocketService.
-type SocketServiceSignalIncomingCallback func()
+type SocketServiceSignalIncomingCallback func(connection *SocketConnection, sourceObject *gobject.Object) bool
 
 // SocketServiceNew is a wrapper around the C function g_socket_service_new.
 func SocketServiceNew() *SocketService {
@@ -1613,7 +1603,7 @@ func CastToThreadedSocketService(object *gobject.Object) *ThreadedSocketService 
 }
 
 // ThreadedSocketServiceSignalRunCallback is a callback function for a 'run' signal emitted from a ThreadedSocketService.
-type ThreadedSocketServiceSignalRunCallback func()
+type ThreadedSocketServiceSignalRunCallback func(connection *SocketConnection, sourceObject *gobject.Object) bool
 
 // ThreadedSocketServiceNew is a wrapper around the C function g_threaded_socket_service_new.
 func ThreadedSocketServiceNew(maxThreads int32) *ThreadedSocketService {

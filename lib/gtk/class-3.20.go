@@ -232,7 +232,7 @@ func CastToNativeDialog(object *gobject.Object) *NativeDialog {
 }
 
 // NativeDialogSignalResponseCallback is a callback function for a 'response' signal emitted from a NativeDialog.
-type NativeDialogSignalResponseCallback func()
+type NativeDialogSignalResponseCallback func(responseId int32)
 
 // Destroy is a wrapper around the C function gtk_native_dialog_destroy.
 func (recv *NativeDialog) Destroy() {
@@ -557,7 +557,7 @@ func CastToShortcutsSection(object *gobject.Object) *ShortcutsSection {
 }
 
 // ShortcutsSectionSignalChangeCurrentPageCallback is a callback function for a 'change-current-page' signal emitted from a ShortcutsSection.
-type ShortcutsSectionSignalChangeCurrentPageCallback func()
+type ShortcutsSectionSignalChangeCurrentPageCallback func(object int32) bool
 
 // ShortcutsShortcut is a wrapper around the C record GtkShortcutsShortcut.
 type ShortcutsShortcut struct {

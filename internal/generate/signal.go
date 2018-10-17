@@ -28,6 +28,12 @@ func (s *Signal) init(ns *Namespace, record *Record) {
 	s.Namespace = ns
 	s.record = record
 
+	s.Parameters.init(ns)
+
+	if s.ReturnValue != nil {
+		s.ReturnValue.init(ns)
+	}
+
 	s.goNameHandler = fmt.Sprintf("%s_%sHandler",
 		s.record.Name,
 		makeGoNameInternal(s.Name, false))
@@ -42,6 +48,13 @@ func (s *Signal) init(ns *Namespace, record *Record) {
 }
 
 func (s *Signal) generate(g *jen.Group, version *Version) {
+	supported, reason := s.Parameters.allSupported()
+	if !supported {
+		g.Commentf("Unsupported signal : %s", reason)
+		g.Line()
+		return
+	}
+
 	s.generateCgoPreamble()
 	s.generateCallbackType(g)
 }
@@ -72,7 +85,12 @@ func (s *Signal) generateCallbackType(g *jen.Group) {
 		Type().
 		Id(s.callbackTypeName).
 		Func().
-		Params()
+		ParamsFunc(s.Parameters.generateFunctionDeclaration).
+		ParamsFunc(s.generateCallbackReturnDeclaration)
 
 	g.Line()
+}
+
+func (s *Signal) generateCallbackReturnDeclaration(g *jen.Group) {
+	s.ReturnValue.generateFunctionDeclaration(g)
 }

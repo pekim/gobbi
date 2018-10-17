@@ -389,19 +389,19 @@ func CastToObject(object *gobject.Object) *Object {
 }
 
 // ObjectSignalActiveDescendantChangedCallback is a callback function for a 'active-descendant-changed' signal emitted from a Object.
-type ObjectSignalActiveDescendantChangedCallback func()
+type ObjectSignalActiveDescendantChangedCallback func(arg1 uintptr)
 
 // ObjectSignalChildrenChangedCallback is a callback function for a 'children-changed' signal emitted from a Object.
-type ObjectSignalChildrenChangedCallback func()
+type ObjectSignalChildrenChangedCallback func(arg1 uint32, arg2 uintptr)
 
 // ObjectSignalFocusEventCallback is a callback function for a 'focus-event' signal emitted from a Object.
-type ObjectSignalFocusEventCallback func()
+type ObjectSignalFocusEventCallback func(arg1 bool)
 
 // ObjectSignalPropertyChangeCallback is a callback function for a 'property-change' signal emitted from a Object.
-type ObjectSignalPropertyChangeCallback func()
+type ObjectSignalPropertyChangeCallback func(arg1 uintptr)
 
 // ObjectSignalStateChangeCallback is a callback function for a 'state-change' signal emitted from a Object.
-type ObjectSignalStateChangeCallback func()
+type ObjectSignalStateChangeCallback func(arg1 string, arg2 bool)
 
 // ObjectSignalVisibleDataChangedCallback is a callback function for a 'visible-data-changed' signal emitted from a Object.
 type ObjectSignalVisibleDataChangedCallback func()

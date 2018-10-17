@@ -129,33 +129,6 @@ import (
 */
 /*
 
-	void AppChooserWidget_applicationActivatedHandler();
-
-	static gulong AppChooserWidget_signal_connect_application_activated(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "application-activated", AppChooserWidget_applicationActivatedHandler, data);
-	}
-
-*/
-/*
-
-	void AppChooserWidget_applicationSelectedHandler();
-
-	static gulong AppChooserWidget_signal_connect_application_selected(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "application-selected", AppChooserWidget_applicationSelectedHandler, data);
-	}
-
-*/
-/*
-
-	void AppChooserWidget_populatePopupHandler();
-
-	static gulong AppChooserWidget_signal_connect_populate_popup(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "populate-popup", AppChooserWidget_populatePopupHandler, data);
-	}
-
-*/
-/*
-
 	void Application_windowAddedHandler();
 
 	static gulong Application_signal_connect_window_added(gpointer instance, gpointer data) {
@@ -336,24 +309,6 @@ import (
 */
 /*
 
-	void CellArea_addEditableHandler();
-
-	static gulong CellArea_signal_connect_add_editable(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "add-editable", CellArea_addEditableHandler, data);
-	}
-
-*/
-/*
-
-	void CellArea_applyAttributesHandler();
-
-	static gulong CellArea_signal_connect_apply_attributes(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "apply-attributes", CellArea_applyAttributesHandler, data);
-	}
-
-*/
-/*
-
 	void CellArea_focusChangedHandler();
 
 	static gulong CellArea_signal_connect_focus_changed(gpointer instance, gpointer data) {
@@ -363,28 +318,10 @@ import (
 */
 /*
 
-	void CellArea_removeEditableHandler();
-
-	static gulong CellArea_signal_connect_remove_editable(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "remove-editable", CellArea_removeEditableHandler, data);
-	}
-
-*/
-/*
-
 	void CellRenderer_editingCanceledHandler();
 
 	static gulong CellRenderer_signal_connect_editing_canceled(gpointer instance, gpointer data) {
 		return g_signal_connect(instance, "editing-canceled", CellRenderer_editingCanceledHandler, data);
-	}
-
-*/
-/*
-
-	void CellRenderer_editingStartedHandler();
-
-	static gulong CellRenderer_signal_connect_editing_started(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "editing-started", CellRenderer_editingStartedHandler, data);
 	}
 
 */
@@ -732,28 +669,10 @@ import (
 */
 /*
 
-	void EntryCompletion_cursorOnMatchHandler();
-
-	static gulong EntryCompletion_signal_connect_cursor_on_match(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "cursor-on-match", EntryCompletion_cursorOnMatchHandler, data);
-	}
-
-*/
-/*
-
 	void EntryCompletion_insertPrefixHandler();
 
 	static gulong EntryCompletion_signal_connect_insert_prefix(gpointer instance, gpointer data) {
 		return g_signal_connect(instance, "insert-prefix", EntryCompletion_insertPrefixHandler, data);
-	}
-
-*/
-/*
-
-	void EntryCompletion_matchSelectedHandler();
-
-	static gulong EntryCompletion_signal_connect_match_selected(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "match-selected", EntryCompletion_matchSelectedHandler, data);
 	}
 
 */
@@ -1704,15 +1623,6 @@ import (
 */
 /*
 
-	void Overlay_getChildPositionHandler();
-
-	static gulong Overlay_signal_connect_get_child_position(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "get-child-position", Overlay_getChildPositionHandler, data);
-	}
-
-*/
-/*
-
 	void Paned_acceptPositionHandler();
 
 	static gulong Paned_signal_connect_accept_position(gpointer instance, gpointer data) {
@@ -1776,46 +1686,10 @@ import (
 */
 /*
 
-	void PlacesSidebar_dragActionRequestedHandler();
-
-	static gulong PlacesSidebar_signal_connect_drag_action_requested(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "drag-action-requested", PlacesSidebar_dragActionRequestedHandler, data);
-	}
-
-*/
-/*
-
-	void PlacesSidebar_dragPerformDropHandler();
-
-	static gulong PlacesSidebar_signal_connect_drag_perform_drop(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "drag-perform-drop", PlacesSidebar_dragPerformDropHandler, data);
-	}
-
-*/
-/*
-
 	void PlacesSidebar_mountHandler();
 
 	static gulong PlacesSidebar_signal_connect_mount(gpointer instance, gpointer data) {
 		return g_signal_connect(instance, "mount", PlacesSidebar_mountHandler, data);
-	}
-
-*/
-/*
-
-	void PlacesSidebar_openLocationHandler();
-
-	static gulong PlacesSidebar_signal_connect_open_location(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "open-location", PlacesSidebar_openLocationHandler, data);
-	}
-
-*/
-/*
-
-	void PlacesSidebar_populatePopupHandler();
-
-	static gulong PlacesSidebar_signal_connect_populate_popup(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "populate-popup", PlacesSidebar_populatePopupHandler, data);
 	}
 
 */
@@ -1951,15 +1825,6 @@ import (
 
 	static gulong PrintOperation_signal_connect_paginate(gpointer instance, gpointer data) {
 		return g_signal_connect(instance, "paginate", PrintOperation_paginateHandler, data);
-	}
-
-*/
-/*
-
-	void PrintOperation_previewHandler();
-
-	static gulong PrintOperation_signal_connect_preview(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "preview", PrintOperation_previewHandler, data);
 	}
 
 */
@@ -2446,15 +2311,6 @@ import (
 
 	static gulong TextBuffer_signal_connect_remove_tag(gpointer instance, gpointer data) {
 		return g_signal_connect(instance, "remove-tag", TextBuffer_removeTagHandler, data);
-	}
-
-*/
-/*
-
-	void TextTag_eventHandler();
-
-	static gulong TextTag_signal_connect_event(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "event", TextTag_eventHandler, data);
 	}
 
 */
@@ -2964,15 +2820,6 @@ import (
 */
 /*
 
-	void Widget_childNotifyHandler();
-
-	static gulong Widget_signal_connect_child_notify(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "child-notify", Widget_childNotifyHandler, data);
-	}
-
-*/
-/*
-
 	void Widget_compositedChangedHandler();
 
 	static gulong Widget_signal_connect_composited_changed(gpointer instance, gpointer data) {
@@ -3000,28 +2847,10 @@ import (
 */
 /*
 
-	void Widget_deleteEventHandler();
-
-	static gulong Widget_signal_connect_delete_event(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "delete-event", Widget_deleteEventHandler, data);
-	}
-
-*/
-/*
-
 	void Widget_destroyHandler();
 
 	static gulong Widget_signal_connect_destroy(gpointer instance, gpointer data) {
 		return g_signal_connect(instance, "destroy", Widget_destroyHandler, data);
-	}
-
-*/
-/*
-
-	void Widget_destroyEventHandler();
-
-	static gulong Widget_signal_connect_destroy_event(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "destroy-event", Widget_destroyEventHandler, data);
 	}
 
 */
@@ -3130,24 +2959,6 @@ import (
 
 	static gulong Widget_signal_connect_enter_notify_event(gpointer instance, gpointer data) {
 		return g_signal_connect(instance, "enter-notify-event", Widget_enterNotifyEventHandler, data);
-	}
-
-*/
-/*
-
-	void Widget_eventHandler();
-
-	static gulong Widget_signal_connect_event(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "event", Widget_eventHandler, data);
-	}
-
-*/
-/*
-
-	void Widget_eventAfterHandler();
-
-	static gulong Widget_signal_connect_event_after(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "event-after", Widget_eventAfterHandler, data);
 	}
 
 */
@@ -3450,15 +3261,6 @@ import (
 */
 /*
 
-	void Widget_sizeAllocateHandler();
-
-	static gulong Widget_signal_connect_size_allocate(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "size-allocate", Widget_sizeAllocateHandler, data);
-	}
-
-*/
-/*
-
 	void Widget_stateChangedHandler();
 
 	static gulong Widget_signal_connect_state_changed(gpointer instance, gpointer data) {
@@ -3490,15 +3292,6 @@ import (
 
 	static gulong Widget_signal_connect_style_updated(gpointer instance, gpointer data) {
 		return g_signal_connect(instance, "style-updated", Widget_styleUpdatedHandler, data);
-	}
-
-*/
-/*
-
-	void Widget_touchEventHandler();
-
-	static gulong Widget_signal_connect_touch_event(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "touch-event", Widget_touchEventHandler, data);
 	}
 
 */
@@ -3659,7 +3452,7 @@ func CastToAboutDialog(object *gobject.Object) *AboutDialog {
 }
 
 // AboutDialogSignalActivateLinkCallback is a callback function for a 'activate-link' signal emitted from a AboutDialog.
-type AboutDialogSignalActivateLinkCallback func()
+type AboutDialogSignalActivateLinkCallback func(uri string) bool
 
 // AccelGroup is a wrapper around the C record GtkAccelGroup.
 type AccelGroup struct {
@@ -3696,10 +3489,10 @@ func CastToAccelGroup(object *gobject.Object) *AccelGroup {
 }
 
 // AccelGroupSignalAccelActivateCallback is a callback function for a 'accel-activate' signal emitted from a AccelGroup.
-type AccelGroupSignalAccelActivateCallback func()
+type AccelGroupSignalAccelActivateCallback func(acceleratable *gobject.Object, keyval uint32, modifier gdk.ModifierType) bool
 
 // AccelGroupSignalAccelChangedCallback is a callback function for a 'accel-changed' signal emitted from a AccelGroup.
-type AccelGroupSignalAccelChangedCallback func()
+type AccelGroupSignalAccelChangedCallback func(keyval uint32, modifier gdk.ModifierType, accelClosure *gobject.Closure)
 
 // AccelGroupNew is a wrapper around the C function gtk_accel_group_new.
 func AccelGroupNew() *AccelGroup {
@@ -3932,7 +3725,7 @@ func CastToAccelMap(object *gobject.Object) *AccelMap {
 }
 
 // AccelMapSignalChangedCallback is a callback function for a 'changed' signal emitted from a AccelMap.
-type AccelMapSignalChangedCallback func()
+type AccelMapSignalChangedCallback func(accelPath string, accelKey uint32, accelMods gdk.ModifierType)
 
 // Accessible is a wrapper around the C record GtkAccessible.
 type Accessible struct {
@@ -4100,16 +3893,16 @@ func CastToActionGroup(object *gobject.Object) *ActionGroup {
 }
 
 // ActionGroupSignalConnectProxyCallback is a callback function for a 'connect-proxy' signal emitted from a ActionGroup.
-type ActionGroupSignalConnectProxyCallback func()
+type ActionGroupSignalConnectProxyCallback func(action *Action, proxy *Widget)
 
 // ActionGroupSignalDisconnectProxyCallback is a callback function for a 'disconnect-proxy' signal emitted from a ActionGroup.
-type ActionGroupSignalDisconnectProxyCallback func()
+type ActionGroupSignalDisconnectProxyCallback func(action *Action, proxy *Widget)
 
 // ActionGroupSignalPostActivateCallback is a callback function for a 'post-activate' signal emitted from a ActionGroup.
-type ActionGroupSignalPostActivateCallback func()
+type ActionGroupSignalPostActivateCallback func(action *Action)
 
 // ActionGroupSignalPreActivateCallback is a callback function for a 'pre-activate' signal emitted from a ActionGroup.
-type ActionGroupSignalPreActivateCallback func()
+type ActionGroupSignalPreActivateCallback func(action *Action)
 
 // Adjustment is a wrapper around the C record GtkAdjustment.
 type Adjustment struct {
@@ -4363,7 +4156,7 @@ func CastToAppChooserButton(object *gobject.Object) *AppChooserButton {
 }
 
 // AppChooserButtonSignalCustomItemActivatedCallback is a callback function for a 'custom-item-activated' signal emitted from a AppChooserButton.
-type AppChooserButtonSignalCustomItemActivatedCallback func()
+type AppChooserButtonSignalCustomItemActivatedCallback func(itemName string)
 
 // GetHeading is a wrapper around the C function gtk_app_chooser_button_get_heading.
 func (recv *AppChooserButton) GetHeading() string {
@@ -4521,14 +4314,11 @@ func CastToAppChooserWidget(object *gobject.Object) *AppChooserWidget {
 	return AppChooserWidgetNewFromC(object.ToC())
 }
 
-// AppChooserWidgetSignalApplicationActivatedCallback is a callback function for a 'application-activated' signal emitted from a AppChooserWidget.
-type AppChooserWidgetSignalApplicationActivatedCallback func()
+// Unsupported signal : unsupported parameter application : no type generator for Gio.AppInfo,
 
-// AppChooserWidgetSignalApplicationSelectedCallback is a callback function for a 'application-selected' signal emitted from a AppChooserWidget.
-type AppChooserWidgetSignalApplicationSelectedCallback func()
+// Unsupported signal : unsupported parameter application : no type generator for Gio.AppInfo,
 
-// AppChooserWidgetSignalPopulatePopupCallback is a callback function for a 'populate-popup' signal emitted from a AppChooserWidget.
-type AppChooserWidgetSignalPopulatePopupCallback func()
+// Unsupported signal : unsupported parameter application : no type generator for Gio.AppInfo,
 
 // SetDefaultText is a wrapper around the C function gtk_app_chooser_widget_set_default_text.
 func (recv *AppChooserWidget) SetDefaultText(text string) {
@@ -4580,10 +4370,10 @@ func CastToApplication(object *gobject.Object) *Application {
 }
 
 // ApplicationSignalWindowAddedCallback is a callback function for a 'window-added' signal emitted from a Application.
-type ApplicationSignalWindowAddedCallback func()
+type ApplicationSignalWindowAddedCallback func(window *Window)
 
 // ApplicationSignalWindowRemovedCallback is a callback function for a 'window-removed' signal emitted from a Application.
-type ApplicationSignalWindowRemovedCallback func()
+type ApplicationSignalWindowRemovedCallback func(window *Window)
 
 // ApplicationWindow is a wrapper around the C record GtkApplicationWindow.
 type ApplicationWindow struct {
@@ -4927,7 +4717,7 @@ type AssistantSignalCloseCallback func()
 type AssistantSignalEscapeCallback func()
 
 // AssistantSignalPrepareCallback is a callback function for a 'prepare' signal emitted from a Assistant.
-type AssistantSignalPrepareCallback func()
+type AssistantSignalPrepareCallback func(page *Widget)
 
 // Bin is a wrapper around the C record GtkBin.
 type Bin struct {
@@ -5789,17 +5579,14 @@ func CastToCellArea(object *gobject.Object) *CellArea {
 	return CellAreaNewFromC(object.ToC())
 }
 
-// CellAreaSignalAddEditableCallback is a callback function for a 'add-editable' signal emitted from a CellArea.
-type CellAreaSignalAddEditableCallback func()
+// Unsupported signal : unsupported parameter editable : no type generator for CellEditable,
 
-// CellAreaSignalApplyAttributesCallback is a callback function for a 'apply-attributes' signal emitted from a CellArea.
-type CellAreaSignalApplyAttributesCallback func()
+// Unsupported signal : unsupported parameter model : no type generator for TreeModel,
 
 // CellAreaSignalFocusChangedCallback is a callback function for a 'focus-changed' signal emitted from a CellArea.
-type CellAreaSignalFocusChangedCallback func()
+type CellAreaSignalFocusChangedCallback func(renderer *CellRenderer, path string)
 
-// CellAreaSignalRemoveEditableCallback is a callback function for a 'remove-editable' signal emitted from a CellArea.
-type CellAreaSignalRemoveEditableCallback func()
+// Unsupported signal : unsupported parameter editable : no type generator for CellEditable,
 
 // CellAreaBox is a wrapper around the C record GtkCellAreaBox.
 type CellAreaBox struct {
@@ -5939,8 +5726,7 @@ func CastToCellRenderer(object *gobject.Object) *CellRenderer {
 // CellRendererSignalEditingCanceledCallback is a callback function for a 'editing-canceled' signal emitted from a CellRenderer.
 type CellRendererSignalEditingCanceledCallback func()
 
-// CellRendererSignalEditingStartedCallback is a callback function for a 'editing-started' signal emitted from a CellRenderer.
-type CellRendererSignalEditingStartedCallback func()
+// Unsupported signal : unsupported parameter editable : no type generator for CellEditable,
 
 // Unsupported : gtk_cell_renderer_activate : unsupported parameter event : no type generator for Gdk.Event, GdkEvent*
 
@@ -6026,10 +5812,10 @@ func CastToCellRendererAccel(object *gobject.Object) *CellRendererAccel {
 }
 
 // CellRendererAccelSignalAccelClearedCallback is a callback function for a 'accel-cleared' signal emitted from a CellRendererAccel.
-type CellRendererAccelSignalAccelClearedCallback func()
+type CellRendererAccelSignalAccelClearedCallback func(pathString string)
 
 // CellRendererAccelSignalAccelEditedCallback is a callback function for a 'accel-edited' signal emitted from a CellRendererAccel.
-type CellRendererAccelSignalAccelEditedCallback func()
+type CellRendererAccelSignalAccelEditedCallback func(pathString string, accelKey uint32, accelMods gdk.ModifierType, hardwareKeycode uint32)
 
 // CellRendererCombo is a wrapper around the C record GtkCellRendererCombo.
 type CellRendererCombo struct {
@@ -6081,7 +5867,7 @@ func CastToCellRendererCombo(object *gobject.Object) *CellRendererCombo {
 }
 
 // CellRendererComboSignalChangedCallback is a callback function for a 'changed' signal emitted from a CellRendererCombo.
-type CellRendererComboSignalChangedCallback func()
+type CellRendererComboSignalChangedCallback func(pathString string, newIter *TreeIter)
 
 // CellRendererPixbuf is a wrapper around the C record GtkCellRendererPixbuf.
 type CellRendererPixbuf struct {
@@ -6317,7 +6103,7 @@ func CastToCellRendererText(object *gobject.Object) *CellRendererText {
 }
 
 // CellRendererTextSignalEditedCallback is a callback function for a 'edited' signal emitted from a CellRendererText.
-type CellRendererTextSignalEditedCallback func()
+type CellRendererTextSignalEditedCallback func(path string, newText string)
 
 // CellRendererTextNew is a wrapper around the C function gtk_cell_renderer_text_new.
 func CellRendererTextNew() *CellRendererText {
@@ -6381,7 +6167,7 @@ func CastToCellRendererToggle(object *gobject.Object) *CellRendererToggle {
 }
 
 // CellRendererToggleSignalToggledCallback is a callback function for a 'toggled' signal emitted from a CellRendererToggle.
-type CellRendererToggleSignalToggledCallback func()
+type CellRendererToggleSignalToggledCallback func(path string)
 
 // CellRendererToggleNew is a wrapper around the C function gtk_cell_renderer_toggle_new.
 func CellRendererToggleNew() *CellRendererToggle {
@@ -6786,7 +6572,7 @@ func CastToClipboard(object *gobject.Object) *Clipboard {
 }
 
 // ClipboardSignalOwnerChangeCallback is a callback function for a 'owner-change' signal emitted from a Clipboard.
-type ClipboardSignalOwnerChangeCallback func()
+type ClipboardSignalOwnerChangeCallback func(event *gdk.EventOwnerChange)
 
 // Clear is a wrapper around the C function gtk_clipboard_clear.
 func (recv *Clipboard) Clear() {
@@ -7338,13 +7124,13 @@ func CastToComboBox(object *gobject.Object) *ComboBox {
 type ComboBoxSignalChangedCallback func()
 
 // ComboBoxSignalFormatEntryTextCallback is a callback function for a 'format-entry-text' signal emitted from a ComboBox.
-type ComboBoxSignalFormatEntryTextCallback func()
+type ComboBoxSignalFormatEntryTextCallback func(path string) string
 
 // ComboBoxSignalMoveActiveCallback is a callback function for a 'move-active' signal emitted from a ComboBox.
-type ComboBoxSignalMoveActiveCallback func()
+type ComboBoxSignalMoveActiveCallback func(scrollType ScrollType)
 
 // ComboBoxSignalPopdownCallback is a callback function for a 'popdown' signal emitted from a ComboBox.
-type ComboBoxSignalPopdownCallback func()
+type ComboBoxSignalPopdownCallback func() bool
 
 // ComboBoxSignalPopupCallback is a callback function for a 'popup' signal emitted from a ComboBox.
 type ComboBoxSignalPopupCallback func()
@@ -7534,16 +7320,16 @@ func CastToContainer(object *gobject.Object) *Container {
 }
 
 // ContainerSignalAddCallback is a callback function for a 'add' signal emitted from a Container.
-type ContainerSignalAddCallback func()
+type ContainerSignalAddCallback func(object *Widget)
 
 // ContainerSignalCheckResizeCallback is a callback function for a 'check-resize' signal emitted from a Container.
 type ContainerSignalCheckResizeCallback func()
 
 // ContainerSignalRemoveCallback is a callback function for a 'remove' signal emitted from a Container.
-type ContainerSignalRemoveCallback func()
+type ContainerSignalRemoveCallback func(object *Widget)
 
 // ContainerSignalSetFocusChildCallback is a callback function for a 'set-focus-child' signal emitted from a Container.
-type ContainerSignalSetFocusChildCallback func()
+type ContainerSignalSetFocusChildCallback func(object *Widget)
 
 // Add is a wrapper around the C function gtk_container_add.
 func (recv *Container) Add(widget *Widget) {
@@ -7912,7 +7698,7 @@ func CastToCssProvider(object *gobject.Object) *CssProvider {
 }
 
 // CssProviderSignalParsingErrorCallback is a callback function for a 'parsing-error' signal emitted from a CssProvider.
-type CssProviderSignalParsingErrorCallback func()
+type CssProviderSignalParsingErrorCallback func(section *CssSection, error *glib.Error)
 
 // CssProviderNew is a wrapper around the C function gtk_css_provider_new.
 func CssProviderNew() *CssProvider {
@@ -8007,7 +7793,7 @@ func CastToDialog(object *gobject.Object) *Dialog {
 type DialogSignalCloseCallback func()
 
 // DialogSignalResponseCallback is a callback function for a 'response' signal emitted from a Dialog.
-type DialogSignalResponseCallback func()
+type DialogSignalResponseCallback func(responseId int32)
 
 // DialogNew is a wrapper around the C function gtk_dialog_new.
 func DialogNew() *Dialog {
@@ -8192,31 +7978,31 @@ type EntrySignalCopyClipboardCallback func()
 type EntrySignalCutClipboardCallback func()
 
 // EntrySignalDeleteFromCursorCallback is a callback function for a 'delete-from-cursor' signal emitted from a Entry.
-type EntrySignalDeleteFromCursorCallback func()
+type EntrySignalDeleteFromCursorCallback func(type_ DeleteType, count int32)
 
 // EntrySignalIconPressCallback is a callback function for a 'icon-press' signal emitted from a Entry.
-type EntrySignalIconPressCallback func()
+type EntrySignalIconPressCallback func(iconPos EntryIconPosition, event *gdk.EventButton)
 
 // EntrySignalIconReleaseCallback is a callback function for a 'icon-release' signal emitted from a Entry.
-type EntrySignalIconReleaseCallback func()
+type EntrySignalIconReleaseCallback func(iconPos EntryIconPosition, event *gdk.EventButton)
 
 // EntrySignalInsertAtCursorCallback is a callback function for a 'insert-at-cursor' signal emitted from a Entry.
-type EntrySignalInsertAtCursorCallback func()
+type EntrySignalInsertAtCursorCallback func(string string)
 
 // EntrySignalInsertEmojiCallback is a callback function for a 'insert-emoji' signal emitted from a Entry.
 type EntrySignalInsertEmojiCallback func()
 
 // EntrySignalMoveCursorCallback is a callback function for a 'move-cursor' signal emitted from a Entry.
-type EntrySignalMoveCursorCallback func()
+type EntrySignalMoveCursorCallback func(step MovementStep, count int32, extendSelection bool)
 
 // EntrySignalPasteClipboardCallback is a callback function for a 'paste-clipboard' signal emitted from a Entry.
 type EntrySignalPasteClipboardCallback func()
 
 // EntrySignalPopulatePopupCallback is a callback function for a 'populate-popup' signal emitted from a Entry.
-type EntrySignalPopulatePopupCallback func()
+type EntrySignalPopulatePopupCallback func(widget *Widget)
 
 // EntrySignalPreeditChangedCallback is a callback function for a 'preedit-changed' signal emitted from a Entry.
-type EntrySignalPreeditChangedCallback func()
+type EntrySignalPreeditChangedCallback func(preedit string)
 
 // EntrySignalToggleOverwriteCallback is a callback function for a 'toggle-overwrite' signal emitted from a Entry.
 type EntrySignalToggleOverwriteCallback func()
@@ -8474,10 +8260,10 @@ func CastToEntryBuffer(object *gobject.Object) *EntryBuffer {
 }
 
 // EntryBufferSignalDeletedTextCallback is a callback function for a 'deleted-text' signal emitted from a EntryBuffer.
-type EntryBufferSignalDeletedTextCallback func()
+type EntryBufferSignalDeletedTextCallback func(position uint32, nChars uint32)
 
 // EntryBufferSignalInsertedTextCallback is a callback function for a 'inserted-text' signal emitted from a EntryBuffer.
-type EntryBufferSignalInsertedTextCallback func()
+type EntryBufferSignalInsertedTextCallback func(position uint32, chars string, nChars uint32)
 
 // EntryCompletion is a wrapper around the C record GtkEntryCompletion.
 type EntryCompletion struct {
@@ -8514,16 +8300,14 @@ func CastToEntryCompletion(object *gobject.Object) *EntryCompletion {
 }
 
 // EntryCompletionSignalActionActivatedCallback is a callback function for a 'action-activated' signal emitted from a EntryCompletion.
-type EntryCompletionSignalActionActivatedCallback func()
+type EntryCompletionSignalActionActivatedCallback func(index int32)
 
-// EntryCompletionSignalCursorOnMatchCallback is a callback function for a 'cursor-on-match' signal emitted from a EntryCompletion.
-type EntryCompletionSignalCursorOnMatchCallback func()
+// Unsupported signal : unsupported parameter model : no type generator for TreeModel,
 
 // EntryCompletionSignalInsertPrefixCallback is a callback function for a 'insert-prefix' signal emitted from a EntryCompletion.
-type EntryCompletionSignalInsertPrefixCallback func()
+type EntryCompletionSignalInsertPrefixCallback func(prefix string) bool
 
-// EntryCompletionSignalMatchSelectedCallback is a callback function for a 'match-selected' signal emitted from a EntryCompletion.
-type EntryCompletionSignalMatchSelectedCallback func()
+// Unsupported signal : unsupported parameter model : no type generator for TreeModel,
 
 // EntryCompletionSignalNoMatchesCallback is a callback function for a 'no-matches' signal emitted from a EntryCompletion.
 type EntryCompletionSignalNoMatchesCallback func()
@@ -8917,7 +8701,7 @@ type FileChooserWidgetSignalDownFolderCallback func()
 type FileChooserWidgetSignalHomeFolderCallback func()
 
 // FileChooserWidgetSignalLocationPopupCallback is a callback function for a 'location-popup' signal emitted from a FileChooserWidget.
-type FileChooserWidgetSignalLocationPopupCallback func()
+type FileChooserWidgetSignalLocationPopupCallback func(path string)
 
 // FileChooserWidgetSignalLocationPopupOnPasteCallback is a callback function for a 'location-popup-on-paste' signal emitted from a FileChooserWidget.
 type FileChooserWidgetSignalLocationPopupOnPasteCallback func()
@@ -8929,7 +8713,7 @@ type FileChooserWidgetSignalLocationTogglePopupCallback func()
 type FileChooserWidgetSignalPlacesShortcutCallback func()
 
 // FileChooserWidgetSignalQuickBookmarkCallback is a callback function for a 'quick-bookmark' signal emitted from a FileChooserWidget.
-type FileChooserWidgetSignalQuickBookmarkCallback func()
+type FileChooserWidgetSignalQuickBookmarkCallback func(bookmarkIndex int32)
 
 // FileChooserWidgetSignalRecentShortcutCallback is a callback function for a 'recent-shortcut' signal emitted from a FileChooserWidget.
 type FileChooserWidgetSignalRecentShortcutCallback func()
@@ -9117,10 +8901,10 @@ func CastToFlowBox(object *gobject.Object) *FlowBox {
 type FlowBoxSignalActivateCursorChildCallback func()
 
 // FlowBoxSignalChildActivatedCallback is a callback function for a 'child-activated' signal emitted from a FlowBox.
-type FlowBoxSignalChildActivatedCallback func()
+type FlowBoxSignalChildActivatedCallback func(child *FlowBoxChild)
 
 // FlowBoxSignalMoveCursorCallback is a callback function for a 'move-cursor' signal emitted from a FlowBox.
-type FlowBoxSignalMoveCursorCallback func()
+type FlowBoxSignalMoveCursorCallback func(step MovementStep, count int32) bool
 
 // FlowBoxSignalSelectAllCallback is a callback function for a 'select-all' signal emitted from a FlowBox.
 type FlowBoxSignalSelectAllCallback func()
@@ -9910,19 +9694,19 @@ func CastToGesture(object *gobject.Object) *Gesture {
 }
 
 // GestureSignalBeginCallback is a callback function for a 'begin' signal emitted from a Gesture.
-type GestureSignalBeginCallback func()
+type GestureSignalBeginCallback func(sequence *gdk.EventSequence)
 
 // GestureSignalCancelCallback is a callback function for a 'cancel' signal emitted from a Gesture.
-type GestureSignalCancelCallback func()
+type GestureSignalCancelCallback func(sequence *gdk.EventSequence)
 
 // GestureSignalEndCallback is a callback function for a 'end' signal emitted from a Gesture.
-type GestureSignalEndCallback func()
+type GestureSignalEndCallback func(sequence *gdk.EventSequence)
 
 // GestureSignalSequenceStateChangedCallback is a callback function for a 'sequence-state-changed' signal emitted from a Gesture.
-type GestureSignalSequenceStateChangedCallback func()
+type GestureSignalSequenceStateChangedCallback func(sequence *gdk.EventSequence, state EventSequenceState)
 
 // GestureSignalUpdateCallback is a callback function for a 'update' signal emitted from a Gesture.
-type GestureSignalUpdateCallback func()
+type GestureSignalUpdateCallback func(sequence *gdk.EventSequence)
 
 // Unsupported : gtk_gesture_get_last_event : no return generator
 
@@ -9974,13 +9758,13 @@ func CastToGestureDrag(object *gobject.Object) *GestureDrag {
 }
 
 // GestureDragSignalDragBeginCallback is a callback function for a 'drag-begin' signal emitted from a GestureDrag.
-type GestureDragSignalDragBeginCallback func()
+type GestureDragSignalDragBeginCallback func(startX float64, startY float64)
 
 // GestureDragSignalDragEndCallback is a callback function for a 'drag-end' signal emitted from a GestureDrag.
-type GestureDragSignalDragEndCallback func()
+type GestureDragSignalDragEndCallback func(offsetX float64, offsetY float64)
 
 // GestureDragSignalDragUpdateCallback is a callback function for a 'drag-update' signal emitted from a GestureDrag.
-type GestureDragSignalDragUpdateCallback func()
+type GestureDragSignalDragUpdateCallback func(offsetX float64, offsetY float64)
 
 // GestureLongPress is a wrapper around the C record GtkGestureLongPress.
 type GestureLongPress struct {
@@ -10033,7 +9817,7 @@ func CastToGestureLongPress(object *gobject.Object) *GestureLongPress {
 type GestureLongPressSignalCancelledCallback func()
 
 // GestureLongPressSignalPressedCallback is a callback function for a 'pressed' signal emitted from a GestureLongPress.
-type GestureLongPressSignalPressedCallback func()
+type GestureLongPressSignalPressedCallback func(x float64, y float64)
 
 // GestureMultiPress is a wrapper around the C record GtkGestureMultiPress.
 type GestureMultiPress struct {
@@ -10083,10 +9867,10 @@ func CastToGestureMultiPress(object *gobject.Object) *GestureMultiPress {
 }
 
 // GestureMultiPressSignalPressedCallback is a callback function for a 'pressed' signal emitted from a GestureMultiPress.
-type GestureMultiPressSignalPressedCallback func()
+type GestureMultiPressSignalPressedCallback func(nPress int32, x float64, y float64)
 
 // GestureMultiPressSignalReleasedCallback is a callback function for a 'released' signal emitted from a GestureMultiPress.
-type GestureMultiPressSignalReleasedCallback func()
+type GestureMultiPressSignalReleasedCallback func(nPress int32, x float64, y float64)
 
 // GestureMultiPressSignalStoppedCallback is a callback function for a 'stopped' signal emitted from a GestureMultiPress.
 type GestureMultiPressSignalStoppedCallback func()
@@ -10144,7 +9928,7 @@ func CastToGesturePan(object *gobject.Object) *GesturePan {
 }
 
 // GesturePanSignalPanCallback is a callback function for a 'pan' signal emitted from a GesturePan.
-type GesturePanSignalPanCallback func()
+type GesturePanSignalPanCallback func(direction PanDirection, offset float64)
 
 // GestureRotate is a wrapper around the C record GtkGestureRotate.
 type GestureRotate struct {
@@ -10189,7 +9973,7 @@ func CastToGestureRotate(object *gobject.Object) *GestureRotate {
 }
 
 // GestureRotateSignalAngleChangedCallback is a callback function for a 'angle-changed' signal emitted from a GestureRotate.
-type GestureRotateSignalAngleChangedCallback func()
+type GestureRotateSignalAngleChangedCallback func(angle float64, angleDelta float64)
 
 // GestureSingle is a wrapper around the C record GtkGestureSingle.
 type GestureSingle struct {
@@ -10281,7 +10065,7 @@ func CastToGestureSwipe(object *gobject.Object) *GestureSwipe {
 }
 
 // GestureSwipeSignalSwipeCallback is a callback function for a 'swipe' signal emitted from a GestureSwipe.
-type GestureSwipeSignalSwipeCallback func()
+type GestureSwipeSignalSwipeCallback func(velocityX float64, velocityY float64)
 
 // GestureZoom is a wrapper around the C record GtkGestureZoom.
 type GestureZoom struct {
@@ -10326,7 +10110,7 @@ func CastToGestureZoom(object *gobject.Object) *GestureZoom {
 }
 
 // GestureZoomSignalScaleChangedCallback is a callback function for a 'scale-changed' signal emitted from a GestureZoom.
-type GestureZoomSignalScaleChangedCallback func()
+type GestureZoomSignalScaleChangedCallback func(scale float64)
 
 // Grid is a wrapper around the C record GtkGrid.
 type Grid struct {
@@ -10730,7 +10514,7 @@ func CastToHSV(object *gobject.Object) *HSV {
 type HSVSignalChangedCallback func()
 
 // HSVSignalMoveCallback is a callback function for a 'move' signal emitted from a HSV.
-type HSVSignalMoveCallback func()
+type HSVSignalMoveCallback func(object DirectionType)
 
 // HScale is a wrapper around the C record GtkHScale.
 type HScale struct {
@@ -10983,10 +10767,10 @@ func CastToHandleBox(object *gobject.Object) *HandleBox {
 }
 
 // HandleBoxSignalChildAttachedCallback is a callback function for a 'child-attached' signal emitted from a HandleBox.
-type HandleBoxSignalChildAttachedCallback func()
+type HandleBoxSignalChildAttachedCallback func(widget *Widget)
 
 // HandleBoxSignalChildDetachedCallback is a callback function for a 'child-detached' signal emitted from a HandleBox.
-type HandleBoxSignalChildDetachedCallback func()
+type HandleBoxSignalChildDetachedCallback func(widget *Widget)
 
 // HandleBoxNew is a wrapper around the C function gtk_handle_box_new.
 func HandleBoxNew() *HandleBox {
@@ -11129,10 +10913,10 @@ func CastToIMContext(object *gobject.Object) *IMContext {
 }
 
 // IMContextSignalCommitCallback is a callback function for a 'commit' signal emitted from a IMContext.
-type IMContextSignalCommitCallback func()
+type IMContextSignalCommitCallback func(str string)
 
 // IMContextSignalDeleteSurroundingCallback is a callback function for a 'delete-surrounding' signal emitted from a IMContext.
-type IMContextSignalDeleteSurroundingCallback func()
+type IMContextSignalDeleteSurroundingCallback func(offset int32, nChars int32) bool
 
 // IMContextSignalPreeditChangedCallback is a callback function for a 'preedit-changed' signal emitted from a IMContext.
 type IMContextSignalPreeditChangedCallback func()
@@ -11144,7 +10928,7 @@ type IMContextSignalPreeditEndCallback func()
 type IMContextSignalPreeditStartCallback func()
 
 // IMContextSignalRetrieveSurroundingCallback is a callback function for a 'retrieve-surrounding' signal emitted from a IMContext.
-type IMContextSignalRetrieveSurroundingCallback func()
+type IMContextSignalRetrieveSurroundingCallback func() bool
 
 // DeleteSurrounding is a wrapper around the C function gtk_im_context_delete_surrounding.
 func (recv *IMContext) DeleteSurrounding(offset int32, nChars int32) bool {
@@ -11548,13 +11332,13 @@ func CastToIconView(object *gobject.Object) *IconView {
 }
 
 // IconViewSignalActivateCursorItemCallback is a callback function for a 'activate-cursor-item' signal emitted from a IconView.
-type IconViewSignalActivateCursorItemCallback func()
+type IconViewSignalActivateCursorItemCallback func() bool
 
 // IconViewSignalItemActivatedCallback is a callback function for a 'item-activated' signal emitted from a IconView.
-type IconViewSignalItemActivatedCallback func()
+type IconViewSignalItemActivatedCallback func(path *TreePath)
 
 // IconViewSignalMoveCursorCallback is a callback function for a 'move-cursor' signal emitted from a IconView.
-type IconViewSignalMoveCursorCallback func()
+type IconViewSignalMoveCursorCallback func(step MovementStep, count int32) bool
 
 // IconViewSignalSelectAllCallback is a callback function for a 'select-all' signal emitted from a IconView.
 type IconViewSignalSelectAllCallback func()
@@ -12058,7 +11842,7 @@ func CastToInfoBar(object *gobject.Object) *InfoBar {
 type InfoBarSignalCloseCallback func()
 
 // InfoBarSignalResponseCallback is a callback function for a 'response' signal emitted from a InfoBar.
-type InfoBarSignalResponseCallback func()
+type InfoBarSignalResponseCallback func(responseId int32)
 
 // Unsupported : gtk_info_bar_new_with_buttons : unsupported parameter ... : varargs
 
@@ -12167,16 +11951,16 @@ func CastToLabel(object *gobject.Object) *Label {
 type LabelSignalActivateCurrentLinkCallback func()
 
 // LabelSignalActivateLinkCallback is a callback function for a 'activate-link' signal emitted from a Label.
-type LabelSignalActivateLinkCallback func()
+type LabelSignalActivateLinkCallback func(uri string) bool
 
 // LabelSignalCopyClipboardCallback is a callback function for a 'copy-clipboard' signal emitted from a Label.
 type LabelSignalCopyClipboardCallback func()
 
 // LabelSignalMoveCursorCallback is a callback function for a 'move-cursor' signal emitted from a Label.
-type LabelSignalMoveCursorCallback func()
+type LabelSignalMoveCursorCallback func(step MovementStep, count int32, extendSelection bool)
 
 // LabelSignalPopulatePopupCallback is a callback function for a 'populate-popup' signal emitted from a Label.
-type LabelSignalPopulatePopupCallback func()
+type LabelSignalPopulatePopupCallback func(menu *Menu)
 
 // LabelNew is a wrapper around the C function gtk_label_new.
 func LabelNew(str string) *Label {
@@ -12693,7 +12477,7 @@ func CastToLevelBar(object *gobject.Object) *LevelBar {
 }
 
 // LevelBarSignalOffsetChangedCallback is a callback function for a 'offset-changed' signal emitted from a LevelBar.
-type LevelBarSignalOffsetChangedCallback func()
+type LevelBarSignalOffsetChangedCallback func(name string)
 
 // LevelBarAccessible is a wrapper around the C record GtkLevelBarAccessible.
 type LevelBarAccessible struct {
@@ -12799,7 +12583,7 @@ func CastToLinkButton(object *gobject.Object) *LinkButton {
 }
 
 // LinkButtonSignalActivateLinkCallback is a callback function for a 'activate-link' signal emitted from a LinkButton.
-type LinkButtonSignalActivateLinkCallback func()
+type LinkButtonSignalActivateLinkCallback func() bool
 
 // LinkButtonAccessible is a wrapper around the C record GtkLinkButtonAccessible.
 type LinkButtonAccessible struct {
@@ -12907,13 +12691,13 @@ func CastToListBox(object *gobject.Object) *ListBox {
 type ListBoxSignalActivateCursorRowCallback func()
 
 // ListBoxSignalMoveCursorCallback is a callback function for a 'move-cursor' signal emitted from a ListBox.
-type ListBoxSignalMoveCursorCallback func()
+type ListBoxSignalMoveCursorCallback func(object MovementStep, p0 int32)
 
 // ListBoxSignalRowActivatedCallback is a callback function for a 'row-activated' signal emitted from a ListBox.
-type ListBoxSignalRowActivatedCallback func()
+type ListBoxSignalRowActivatedCallback func(row *ListBoxRow)
 
 // ListBoxSignalRowSelectedCallback is a callback function for a 'row-selected' signal emitted from a ListBox.
-type ListBoxSignalRowSelectedCallback func()
+type ListBoxSignalRowSelectedCallback func(row *ListBoxRow)
 
 // ListBoxSignalSelectAllCallback is a callback function for a 'select-all' signal emitted from a ListBox.
 type ListBoxSignalSelectAllCallback func()
@@ -13383,10 +13167,10 @@ func CastToMenu(object *gobject.Object) *Menu {
 }
 
 // MenuSignalMoveScrollCallback is a callback function for a 'move-scroll' signal emitted from a Menu.
-type MenuSignalMoveScrollCallback func()
+type MenuSignalMoveScrollCallback func(scrollType ScrollType)
 
 // MenuSignalPoppedUpCallback is a callback function for a 'popped-up' signal emitted from a Menu.
-type MenuSignalPoppedUpCallback func()
+type MenuSignalPoppedUpCallback func(flippedRect uintptr, finalRect uintptr, flippedX bool, flippedY bool)
 
 // MenuNew is a wrapper around the C function gtk_menu_new.
 func MenuNew() *Menu {
@@ -13826,10 +13610,10 @@ type MenuItemSignalDeselectCallback func()
 type MenuItemSignalSelectCallback func()
 
 // MenuItemSignalToggleSizeAllocateCallback is a callback function for a 'toggle-size-allocate' signal emitted from a MenuItem.
-type MenuItemSignalToggleSizeAllocateCallback func()
+type MenuItemSignalToggleSizeAllocateCallback func(object int32)
 
 // MenuItemSignalToggleSizeRequestCallback is a callback function for a 'toggle-size-request' signal emitted from a MenuItem.
-type MenuItemSignalToggleSizeRequestCallback func()
+type MenuItemSignalToggleSizeRequestCallback func(object uintptr)
 
 // MenuItemNew is a wrapper around the C function gtk_menu_item_new.
 func MenuItemNew() *MenuItem {
@@ -14044,25 +13828,25 @@ func CastToMenuShell(object *gobject.Object) *MenuShell {
 }
 
 // MenuShellSignalActivateCurrentCallback is a callback function for a 'activate-current' signal emitted from a MenuShell.
-type MenuShellSignalActivateCurrentCallback func()
+type MenuShellSignalActivateCurrentCallback func(forceHide bool)
 
 // MenuShellSignalCancelCallback is a callback function for a 'cancel' signal emitted from a MenuShell.
 type MenuShellSignalCancelCallback func()
 
 // MenuShellSignalCycleFocusCallback is a callback function for a 'cycle-focus' signal emitted from a MenuShell.
-type MenuShellSignalCycleFocusCallback func()
+type MenuShellSignalCycleFocusCallback func(direction DirectionType)
 
 // MenuShellSignalDeactivateCallback is a callback function for a 'deactivate' signal emitted from a MenuShell.
 type MenuShellSignalDeactivateCallback func()
 
 // MenuShellSignalInsertCallback is a callback function for a 'insert' signal emitted from a MenuShell.
-type MenuShellSignalInsertCallback func()
+type MenuShellSignalInsertCallback func(child *Widget, position int32)
 
 // MenuShellSignalMoveCurrentCallback is a callback function for a 'move-current' signal emitted from a MenuShell.
-type MenuShellSignalMoveCurrentCallback func()
+type MenuShellSignalMoveCurrentCallback func(direction MenuDirectionType)
 
 // MenuShellSignalMoveSelectedCallback is a callback function for a 'move-selected' signal emitted from a MenuShell.
-type MenuShellSignalMoveSelectedCallback func()
+type MenuShellSignalMoveSelectedCallback func(distance int32) bool
 
 // MenuShellSignalSelectionDoneCallback is a callback function for a 'selection-done' signal emitted from a MenuShell.
 type MenuShellSignalSelectionDoneCallback func()
@@ -14557,34 +14341,34 @@ func CastToNotebook(object *gobject.Object) *Notebook {
 }
 
 // NotebookSignalChangeCurrentPageCallback is a callback function for a 'change-current-page' signal emitted from a Notebook.
-type NotebookSignalChangeCurrentPageCallback func()
+type NotebookSignalChangeCurrentPageCallback func(object int32) bool
 
 // NotebookSignalCreateWindowCallback is a callback function for a 'create-window' signal emitted from a Notebook.
-type NotebookSignalCreateWindowCallback func()
+type NotebookSignalCreateWindowCallback func(page *Widget, x int32, y int32) Notebook
 
 // NotebookSignalFocusTabCallback is a callback function for a 'focus-tab' signal emitted from a Notebook.
-type NotebookSignalFocusTabCallback func()
+type NotebookSignalFocusTabCallback func(object NotebookTab) bool
 
 // NotebookSignalMoveFocusOutCallback is a callback function for a 'move-focus-out' signal emitted from a Notebook.
-type NotebookSignalMoveFocusOutCallback func()
+type NotebookSignalMoveFocusOutCallback func(object DirectionType)
 
 // NotebookSignalPageAddedCallback is a callback function for a 'page-added' signal emitted from a Notebook.
-type NotebookSignalPageAddedCallback func()
+type NotebookSignalPageAddedCallback func(child *Widget, pageNum uint32)
 
 // NotebookSignalPageRemovedCallback is a callback function for a 'page-removed' signal emitted from a Notebook.
-type NotebookSignalPageRemovedCallback func()
+type NotebookSignalPageRemovedCallback func(child *Widget, pageNum uint32)
 
 // NotebookSignalPageReorderedCallback is a callback function for a 'page-reordered' signal emitted from a Notebook.
-type NotebookSignalPageReorderedCallback func()
+type NotebookSignalPageReorderedCallback func(child *Widget, pageNum uint32)
 
 // NotebookSignalReorderTabCallback is a callback function for a 'reorder-tab' signal emitted from a Notebook.
-type NotebookSignalReorderTabCallback func()
+type NotebookSignalReorderTabCallback func(object DirectionType, p0 bool) bool
 
 // NotebookSignalSelectPageCallback is a callback function for a 'select-page' signal emitted from a Notebook.
-type NotebookSignalSelectPageCallback func()
+type NotebookSignalSelectPageCallback func(object bool) bool
 
 // NotebookSignalSwitchPageCallback is a callback function for a 'switch-page' signal emitted from a Notebook.
-type NotebookSignalSwitchPageCallback func()
+type NotebookSignalSwitchPageCallback func(page *Widget, pageNum uint32)
 
 // NotebookNew is a wrapper around the C function gtk_notebook_new.
 func NotebookNew() *Notebook {
@@ -15171,8 +14955,7 @@ func CastToOverlay(object *gobject.Object) *Overlay {
 	return OverlayNewFromC(object.ToC())
 }
 
-// OverlaySignalGetChildPositionCallback is a callback function for a 'get-child-position' signal emitted from a Overlay.
-type OverlaySignalGetChildPositionCallback func()
+// Unsupported signal : unsupported parameter allocation : Blacklisted record : GdkRectangle
 
 // Unsupported : gtk_pad_controller_new : unsupported parameter group : no type generator for Gio.ActionGroup, GActionGroup*
 
@@ -15260,22 +15043,22 @@ func CastToPaned(object *gobject.Object) *Paned {
 }
 
 // PanedSignalAcceptPositionCallback is a callback function for a 'accept-position' signal emitted from a Paned.
-type PanedSignalAcceptPositionCallback func()
+type PanedSignalAcceptPositionCallback func() bool
 
 // PanedSignalCancelPositionCallback is a callback function for a 'cancel-position' signal emitted from a Paned.
-type PanedSignalCancelPositionCallback func()
+type PanedSignalCancelPositionCallback func() bool
 
 // PanedSignalCycleChildFocusCallback is a callback function for a 'cycle-child-focus' signal emitted from a Paned.
-type PanedSignalCycleChildFocusCallback func()
+type PanedSignalCycleChildFocusCallback func(reversed bool) bool
 
 // PanedSignalCycleHandleFocusCallback is a callback function for a 'cycle-handle-focus' signal emitted from a Paned.
-type PanedSignalCycleHandleFocusCallback func()
+type PanedSignalCycleHandleFocusCallback func(reversed bool) bool
 
 // PanedSignalMoveHandleCallback is a callback function for a 'move-handle' signal emitted from a Paned.
-type PanedSignalMoveHandleCallback func()
+type PanedSignalMoveHandleCallback func(scrollType ScrollType) bool
 
 // PanedSignalToggleHandleFocusCallback is a callback function for a 'toggle-handle-focus' signal emitted from a Paned.
-type PanedSignalToggleHandleFocusCallback func()
+type PanedSignalToggleHandleFocusCallback func() bool
 
 // Add1 is a wrapper around the C function gtk_paned_add1.
 func (recv *Paned) Add1(child *Widget) {
@@ -15449,22 +15232,18 @@ func CastToPlacesSidebar(object *gobject.Object) *PlacesSidebar {
 }
 
 // PlacesSidebarSignalDragActionAskCallback is a callback function for a 'drag-action-ask' signal emitted from a PlacesSidebar.
-type PlacesSidebarSignalDragActionAskCallback func()
+type PlacesSidebarSignalDragActionAskCallback func(actions int32) int32
 
-// PlacesSidebarSignalDragActionRequestedCallback is a callback function for a 'drag-action-requested' signal emitted from a PlacesSidebar.
-type PlacesSidebarSignalDragActionRequestedCallback func()
+// Unsupported signal : unsupported parameter dest_file : no type generator for Gio.File,
 
-// PlacesSidebarSignalDragPerformDropCallback is a callback function for a 'drag-perform-drop' signal emitted from a PlacesSidebar.
-type PlacesSidebarSignalDragPerformDropCallback func()
+// Unsupported signal : unsupported parameter dest_file : no type generator for Gio.File,
 
 // PlacesSidebarSignalMountCallback is a callback function for a 'mount' signal emitted from a PlacesSidebar.
-type PlacesSidebarSignalMountCallback func()
+type PlacesSidebarSignalMountCallback func(mountOperation *gio.MountOperation)
 
-// PlacesSidebarSignalOpenLocationCallback is a callback function for a 'open-location' signal emitted from a PlacesSidebar.
-type PlacesSidebarSignalOpenLocationCallback func()
+// Unsupported signal : unsupported parameter location : no type generator for Gio.File,
 
-// PlacesSidebarSignalPopulatePopupCallback is a callback function for a 'populate-popup' signal emitted from a PlacesSidebar.
-type PlacesSidebarSignalPopulatePopupCallback func()
+// Unsupported signal : unsupported parameter selected_item : no type generator for Gio.File,
 
 // PlacesSidebarSignalShowConnectToServerCallback is a callback function for a 'show-connect-to-server' signal emitted from a PlacesSidebar.
 type PlacesSidebarSignalShowConnectToServerCallback func()
@@ -15473,19 +15252,19 @@ type PlacesSidebarSignalShowConnectToServerCallback func()
 type PlacesSidebarSignalShowEnterLocationCallback func()
 
 // PlacesSidebarSignalShowErrorMessageCallback is a callback function for a 'show-error-message' signal emitted from a PlacesSidebar.
-type PlacesSidebarSignalShowErrorMessageCallback func()
+type PlacesSidebarSignalShowErrorMessageCallback func(primary string, secondary string)
 
 // PlacesSidebarSignalShowOtherLocationsCallback is a callback function for a 'show-other-locations' signal emitted from a PlacesSidebar.
 type PlacesSidebarSignalShowOtherLocationsCallback func()
 
 // PlacesSidebarSignalShowOtherLocationsWithFlagsCallback is a callback function for a 'show-other-locations-with-flags' signal emitted from a PlacesSidebar.
-type PlacesSidebarSignalShowOtherLocationsWithFlagsCallback func()
+type PlacesSidebarSignalShowOtherLocationsWithFlagsCallback func(openFlags PlacesOpenFlags)
 
 // PlacesSidebarSignalShowStarredLocationCallback is a callback function for a 'show-starred-location' signal emitted from a PlacesSidebar.
-type PlacesSidebarSignalShowStarredLocationCallback func()
+type PlacesSidebarSignalShowStarredLocationCallback func(object PlacesOpenFlags)
 
 // PlacesSidebarSignalUnmountCallback is a callback function for a 'unmount' signal emitted from a PlacesSidebar.
-type PlacesSidebarSignalUnmountCallback func()
+type PlacesSidebarSignalUnmountCallback func(mountOperation *gio.MountOperation)
 
 // GetShowConnectToServer is a wrapper around the C function gtk_places_sidebar_get_show_connect_to_server.
 func (recv *PlacesSidebar) GetShowConnectToServer() bool {
@@ -15736,37 +15515,36 @@ func CastToPrintOperation(object *gobject.Object) *PrintOperation {
 }
 
 // PrintOperationSignalBeginPrintCallback is a callback function for a 'begin-print' signal emitted from a PrintOperation.
-type PrintOperationSignalBeginPrintCallback func()
+type PrintOperationSignalBeginPrintCallback func(context *PrintContext)
 
 // PrintOperationSignalCreateCustomWidgetCallback is a callback function for a 'create-custom-widget' signal emitted from a PrintOperation.
-type PrintOperationSignalCreateCustomWidgetCallback func()
+type PrintOperationSignalCreateCustomWidgetCallback func() gobject.Object
 
 // PrintOperationSignalCustomWidgetApplyCallback is a callback function for a 'custom-widget-apply' signal emitted from a PrintOperation.
-type PrintOperationSignalCustomWidgetApplyCallback func()
+type PrintOperationSignalCustomWidgetApplyCallback func(widget *Widget)
 
 // PrintOperationSignalDoneCallback is a callback function for a 'done' signal emitted from a PrintOperation.
-type PrintOperationSignalDoneCallback func()
+type PrintOperationSignalDoneCallback func(result PrintOperationResult)
 
 // PrintOperationSignalDrawPageCallback is a callback function for a 'draw-page' signal emitted from a PrintOperation.
-type PrintOperationSignalDrawPageCallback func()
+type PrintOperationSignalDrawPageCallback func(context *PrintContext, pageNr int32)
 
 // PrintOperationSignalEndPrintCallback is a callback function for a 'end-print' signal emitted from a PrintOperation.
-type PrintOperationSignalEndPrintCallback func()
+type PrintOperationSignalEndPrintCallback func(context *PrintContext)
 
 // PrintOperationSignalPaginateCallback is a callback function for a 'paginate' signal emitted from a PrintOperation.
-type PrintOperationSignalPaginateCallback func()
+type PrintOperationSignalPaginateCallback func(context *PrintContext) bool
 
-// PrintOperationSignalPreviewCallback is a callback function for a 'preview' signal emitted from a PrintOperation.
-type PrintOperationSignalPreviewCallback func()
+// Unsupported signal : unsupported parameter preview : no type generator for PrintOperationPreview,
 
 // PrintOperationSignalRequestPageSetupCallback is a callback function for a 'request-page-setup' signal emitted from a PrintOperation.
-type PrintOperationSignalRequestPageSetupCallback func()
+type PrintOperationSignalRequestPageSetupCallback func(context *PrintContext, pageNr int32, setup *PageSetup)
 
 // PrintOperationSignalStatusChangedCallback is a callback function for a 'status-changed' signal emitted from a PrintOperation.
 type PrintOperationSignalStatusChangedCallback func()
 
 // PrintOperationSignalUpdateCustomWidgetCallback is a callback function for a 'update-custom-widget' signal emitted from a PrintOperation.
-type PrintOperationSignalUpdateCustomWidgetCallback func()
+type PrintOperationSignalUpdateCustomWidgetCallback func(widget *Widget, setup *PageSetup, settings *PrintSettings)
 
 // PrintSettings is a wrapper around the C record GtkPrintSettings.
 type PrintSettings struct {
@@ -16020,7 +15798,7 @@ func CastToRadioAction(object *gobject.Object) *RadioAction {
 }
 
 // RadioActionSignalChangedCallback is a callback function for a 'changed' signal emitted from a RadioAction.
-type RadioActionSignalChangedCallback func()
+type RadioActionSignalChangedCallback func(current *RadioAction)
 
 // RadioButton is a wrapper around the C record GtkRadioButton.
 type RadioButton struct {
@@ -16534,13 +16312,13 @@ func CastToRange(object *gobject.Object) *Range {
 }
 
 // RangeSignalAdjustBoundsCallback is a callback function for a 'adjust-bounds' signal emitted from a Range.
-type RangeSignalAdjustBoundsCallback func()
+type RangeSignalAdjustBoundsCallback func(value float64)
 
 // RangeSignalChangeValueCallback is a callback function for a 'change-value' signal emitted from a Range.
-type RangeSignalChangeValueCallback func()
+type RangeSignalChangeValueCallback func(scroll ScrollType, value float64) bool
 
 // RangeSignalMoveSliderCallback is a callback function for a 'move-slider' signal emitted from a Range.
-type RangeSignalMoveSliderCallback func()
+type RangeSignalMoveSliderCallback func(step ScrollType)
 
 // RangeSignalValueChangedCallback is a callback function for a 'value-changed' signal emitted from a Range.
 type RangeSignalValueChangedCallback func()
@@ -17151,7 +16929,7 @@ func CastToScale(object *gobject.Object) *Scale {
 }
 
 // ScaleSignalFormatValueCallback is a callback function for a 'format-value' signal emitted from a Scale.
-type ScaleSignalFormatValueCallback func()
+type ScaleSignalFormatValueCallback func(value float64) string
 
 // GetDigits is a wrapper around the C function gtk_scale_get_digits.
 func (recv *Scale) GetDigits() int32 {
@@ -17320,7 +17098,7 @@ type ScaleButtonSignalPopdownCallback func()
 type ScaleButtonSignalPopupCallback func()
 
 // ScaleButtonSignalValueChangedCallback is a callback function for a 'value-changed' signal emitted from a ScaleButton.
-type ScaleButtonSignalValueChangedCallback func()
+type ScaleButtonSignalValueChangedCallback func(value float64)
 
 // Unsupported : gtk_scale_button_new : unsupported parameter size : no type generator for gint, GtkIconSize
 
@@ -17481,16 +17259,16 @@ func CastToScrolledWindow(object *gobject.Object) *ScrolledWindow {
 }
 
 // ScrolledWindowSignalEdgeOvershotCallback is a callback function for a 'edge-overshot' signal emitted from a ScrolledWindow.
-type ScrolledWindowSignalEdgeOvershotCallback func()
+type ScrolledWindowSignalEdgeOvershotCallback func(pos PositionType)
 
 // ScrolledWindowSignalEdgeReachedCallback is a callback function for a 'edge-reached' signal emitted from a ScrolledWindow.
-type ScrolledWindowSignalEdgeReachedCallback func()
+type ScrolledWindowSignalEdgeReachedCallback func(pos PositionType)
 
 // ScrolledWindowSignalMoveFocusOutCallback is a callback function for a 'move-focus-out' signal emitted from a ScrolledWindow.
-type ScrolledWindowSignalMoveFocusOutCallback func()
+type ScrolledWindowSignalMoveFocusOutCallback func(directionType DirectionType)
 
 // ScrolledWindowSignalScrollChildCallback is a callback function for a 'scroll-child' signal emitted from a ScrolledWindow.
-type ScrolledWindowSignalScrollChildCallback func()
+type ScrolledWindowSignalScrollChildCallback func(scroll ScrollType, horizontal bool) bool
 
 // ScrolledWindowNew is a wrapper around the C function gtk_scrolled_window_new.
 func ScrolledWindowNew(hadjustment *Adjustment, vadjustment *Adjustment) *ScrolledWindow {
@@ -18148,13 +17926,13 @@ func CastToSpinButton(object *gobject.Object) *SpinButton {
 }
 
 // SpinButtonSignalChangeValueCallback is a callback function for a 'change-value' signal emitted from a SpinButton.
-type SpinButtonSignalChangeValueCallback func()
+type SpinButtonSignalChangeValueCallback func(scroll ScrollType)
 
 // SpinButtonSignalInputCallback is a callback function for a 'input' signal emitted from a SpinButton.
-type SpinButtonSignalInputCallback func()
+type SpinButtonSignalInputCallback func() int32
 
 // SpinButtonSignalOutputCallback is a callback function for a 'output' signal emitted from a SpinButton.
-type SpinButtonSignalOutputCallback func()
+type SpinButtonSignalOutputCallback func() bool
 
 // SpinButtonSignalValueChangedCallback is a callback function for a 'value-changed' signal emitted from a SpinButton.
 type SpinButtonSignalValueChangedCallback func()
@@ -18734,22 +18512,22 @@ func CastToStatusIcon(object *gobject.Object) *StatusIcon {
 type StatusIconSignalActivateCallback func()
 
 // StatusIconSignalButtonPressEventCallback is a callback function for a 'button-press-event' signal emitted from a StatusIcon.
-type StatusIconSignalButtonPressEventCallback func()
+type StatusIconSignalButtonPressEventCallback func(event *gdk.EventButton) bool
 
 // StatusIconSignalButtonReleaseEventCallback is a callback function for a 'button-release-event' signal emitted from a StatusIcon.
-type StatusIconSignalButtonReleaseEventCallback func()
+type StatusIconSignalButtonReleaseEventCallback func(event *gdk.EventButton) bool
 
 // StatusIconSignalPopupMenuCallback is a callback function for a 'popup-menu' signal emitted from a StatusIcon.
-type StatusIconSignalPopupMenuCallback func()
+type StatusIconSignalPopupMenuCallback func(button uint32, activateTime uint32)
 
 // StatusIconSignalQueryTooltipCallback is a callback function for a 'query-tooltip' signal emitted from a StatusIcon.
-type StatusIconSignalQueryTooltipCallback func()
+type StatusIconSignalQueryTooltipCallback func(x int32, y int32, keyboardMode bool, tooltip *Tooltip) bool
 
 // StatusIconSignalScrollEventCallback is a callback function for a 'scroll-event' signal emitted from a StatusIcon.
-type StatusIconSignalScrollEventCallback func()
+type StatusIconSignalScrollEventCallback func(event *gdk.EventScroll) bool
 
 // StatusIconSignalSizeChangedCallback is a callback function for a 'size-changed' signal emitted from a StatusIcon.
-type StatusIconSignalSizeChangedCallback func()
+type StatusIconSignalSizeChangedCallback func(size int32) bool
 
 // Unsupported : gtk_status_icon_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon, GIcon*
 
@@ -18808,10 +18586,10 @@ func CastToStatusbar(object *gobject.Object) *Statusbar {
 }
 
 // StatusbarSignalTextPoppedCallback is a callback function for a 'text-popped' signal emitted from a Statusbar.
-type StatusbarSignalTextPoppedCallback func()
+type StatusbarSignalTextPoppedCallback func(contextId uint32, text string)
 
 // StatusbarSignalTextPushedCallback is a callback function for a 'text-pushed' signal emitted from a Statusbar.
-type StatusbarSignalTextPushedCallback func()
+type StatusbarSignalTextPushedCallback func(contextId uint32, text string)
 
 // StatusbarNew is a wrapper around the C function gtk_statusbar_new.
 func StatusbarNew() *Statusbar {
@@ -19259,7 +19037,7 @@ func CastToSwitch(object *gobject.Object) *Switch {
 type SwitchSignalActivateCallback func()
 
 // SwitchSignalStateSetCallback is a callback function for a 'state-set' signal emitted from a Switch.
-type SwitchSignalStateSetCallback func()
+type SwitchSignalStateSetCallback func(state bool) bool
 
 // SwitchAccessible is a wrapper around the C record GtkSwitchAccessible.
 type SwitchAccessible struct {
@@ -19618,7 +19396,7 @@ func CastToTextBuffer(object *gobject.Object) *TextBuffer {
 }
 
 // TextBufferSignalApplyTagCallback is a callback function for a 'apply-tag' signal emitted from a TextBuffer.
-type TextBufferSignalApplyTagCallback func()
+type TextBufferSignalApplyTagCallback func(tag *TextTag, start *TextIter, end *TextIter)
 
 // TextBufferSignalBeginUserActionCallback is a callback function for a 'begin-user-action' signal emitted from a TextBuffer.
 type TextBufferSignalBeginUserActionCallback func()
@@ -19627,34 +19405,34 @@ type TextBufferSignalBeginUserActionCallback func()
 type TextBufferSignalChangedCallback func()
 
 // TextBufferSignalDeleteRangeCallback is a callback function for a 'delete-range' signal emitted from a TextBuffer.
-type TextBufferSignalDeleteRangeCallback func()
+type TextBufferSignalDeleteRangeCallback func(start *TextIter, end *TextIter)
 
 // TextBufferSignalEndUserActionCallback is a callback function for a 'end-user-action' signal emitted from a TextBuffer.
 type TextBufferSignalEndUserActionCallback func()
 
 // TextBufferSignalInsertChildAnchorCallback is a callback function for a 'insert-child-anchor' signal emitted from a TextBuffer.
-type TextBufferSignalInsertChildAnchorCallback func()
+type TextBufferSignalInsertChildAnchorCallback func(location *TextIter, anchor *TextChildAnchor)
 
 // TextBufferSignalInsertPixbufCallback is a callback function for a 'insert-pixbuf' signal emitted from a TextBuffer.
-type TextBufferSignalInsertPixbufCallback func()
+type TextBufferSignalInsertPixbufCallback func(location *TextIter, pixbuf *gdkpixbuf.Pixbuf)
 
 // TextBufferSignalInsertTextCallback is a callback function for a 'insert-text' signal emitted from a TextBuffer.
-type TextBufferSignalInsertTextCallback func()
+type TextBufferSignalInsertTextCallback func(location *TextIter, text string, len int32)
 
 // TextBufferSignalMarkDeletedCallback is a callback function for a 'mark-deleted' signal emitted from a TextBuffer.
-type TextBufferSignalMarkDeletedCallback func()
+type TextBufferSignalMarkDeletedCallback func(mark *TextMark)
 
 // TextBufferSignalMarkSetCallback is a callback function for a 'mark-set' signal emitted from a TextBuffer.
-type TextBufferSignalMarkSetCallback func()
+type TextBufferSignalMarkSetCallback func(location *TextIter, mark *TextMark)
 
 // TextBufferSignalModifiedChangedCallback is a callback function for a 'modified-changed' signal emitted from a TextBuffer.
 type TextBufferSignalModifiedChangedCallback func()
 
 // TextBufferSignalPasteDoneCallback is a callback function for a 'paste-done' signal emitted from a TextBuffer.
-type TextBufferSignalPasteDoneCallback func()
+type TextBufferSignalPasteDoneCallback func(clipboard *Clipboard)
 
 // TextBufferSignalRemoveTagCallback is a callback function for a 'remove-tag' signal emitted from a TextBuffer.
-type TextBufferSignalRemoveTagCallback func()
+type TextBufferSignalRemoveTagCallback func(tag *TextTag, start *TextIter, end *TextIter)
 
 // TextBufferNew is a wrapper around the C function gtk_text_buffer_new.
 func TextBufferNew(table *TextTagTable) *TextBuffer {
@@ -20506,8 +20284,7 @@ func CastToTextTag(object *gobject.Object) *TextTag {
 	return TextTagNewFromC(object.ToC())
 }
 
-// TextTagSignalEventCallback is a callback function for a 'event' signal emitted from a TextTag.
-type TextTagSignalEventCallback func()
+// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
 
 // TextTagNew is a wrapper around the C function gtk_text_tag_new.
 func TextTagNew(name string) *TextTag {
@@ -20574,13 +20351,13 @@ func CastToTextTagTable(object *gobject.Object) *TextTagTable {
 }
 
 // TextTagTableSignalTagAddedCallback is a callback function for a 'tag-added' signal emitted from a TextTagTable.
-type TextTagTableSignalTagAddedCallback func()
+type TextTagTableSignalTagAddedCallback func(tag *TextTag)
 
 // TextTagTableSignalTagChangedCallback is a callback function for a 'tag-changed' signal emitted from a TextTagTable.
-type TextTagTableSignalTagChangedCallback func()
+type TextTagTableSignalTagChangedCallback func(tag *TextTag, sizeChanged bool)
 
 // TextTagTableSignalTagRemovedCallback is a callback function for a 'tag-removed' signal emitted from a TextTagTable.
-type TextTagTableSignalTagRemovedCallback func()
+type TextTagTableSignalTagRemovedCallback func(tag *TextTag)
 
 // TextTagTableNew is a wrapper around the C function gtk_text_tag_table_new.
 func TextTagTableNew() *TextTagTable {
@@ -20689,34 +20466,34 @@ type TextViewSignalCopyClipboardCallback func()
 type TextViewSignalCutClipboardCallback func()
 
 // TextViewSignalDeleteFromCursorCallback is a callback function for a 'delete-from-cursor' signal emitted from a TextView.
-type TextViewSignalDeleteFromCursorCallback func()
+type TextViewSignalDeleteFromCursorCallback func(type_ DeleteType, count int32)
 
 // TextViewSignalExtendSelectionCallback is a callback function for a 'extend-selection' signal emitted from a TextView.
-type TextViewSignalExtendSelectionCallback func()
+type TextViewSignalExtendSelectionCallback func(granularity TextExtendSelection, location *TextIter, start *TextIter, end *TextIter) bool
 
 // TextViewSignalInsertAtCursorCallback is a callback function for a 'insert-at-cursor' signal emitted from a TextView.
-type TextViewSignalInsertAtCursorCallback func()
+type TextViewSignalInsertAtCursorCallback func(string string)
 
 // TextViewSignalInsertEmojiCallback is a callback function for a 'insert-emoji' signal emitted from a TextView.
 type TextViewSignalInsertEmojiCallback func()
 
 // TextViewSignalMoveCursorCallback is a callback function for a 'move-cursor' signal emitted from a TextView.
-type TextViewSignalMoveCursorCallback func()
+type TextViewSignalMoveCursorCallback func(step MovementStep, count int32, extendSelection bool)
 
 // TextViewSignalMoveViewportCallback is a callback function for a 'move-viewport' signal emitted from a TextView.
-type TextViewSignalMoveViewportCallback func()
+type TextViewSignalMoveViewportCallback func(step ScrollStep, count int32)
 
 // TextViewSignalPasteClipboardCallback is a callback function for a 'paste-clipboard' signal emitted from a TextView.
 type TextViewSignalPasteClipboardCallback func()
 
 // TextViewSignalPopulatePopupCallback is a callback function for a 'populate-popup' signal emitted from a TextView.
-type TextViewSignalPopulatePopupCallback func()
+type TextViewSignalPopulatePopupCallback func(popup *Widget)
 
 // TextViewSignalPreeditChangedCallback is a callback function for a 'preedit-changed' signal emitted from a TextView.
-type TextViewSignalPreeditChangedCallback func()
+type TextViewSignalPreeditChangedCallback func(preedit string)
 
 // TextViewSignalSelectAllCallback is a callback function for a 'select-all' signal emitted from a TextView.
-type TextViewSignalSelectAllCallback func()
+type TextViewSignalSelectAllCallback func(select_ bool)
 
 // TextViewSignalSetAnchorCallback is a callback function for a 'set-anchor' signal emitted from a TextView.
 type TextViewSignalSetAnchorCallback func()
@@ -21784,7 +21561,7 @@ func CastToToolItem(object *gobject.Object) *ToolItem {
 }
 
 // ToolItemSignalCreateMenuProxyCallback is a callback function for a 'create-menu-proxy' signal emitted from a ToolItem.
-type ToolItemSignalCreateMenuProxyCallback func()
+type ToolItemSignalCreateMenuProxyCallback func() bool
 
 // ToolItemSignalToolbarReconfiguredCallback is a callback function for a 'toolbar-reconfigured' signal emitted from a ToolItem.
 type ToolItemSignalToolbarReconfiguredCallback func()
@@ -21937,16 +21714,16 @@ func CastToToolbar(object *gobject.Object) *Toolbar {
 }
 
 // ToolbarSignalFocusHomeOrEndCallback is a callback function for a 'focus-home-or-end' signal emitted from a Toolbar.
-type ToolbarSignalFocusHomeOrEndCallback func()
+type ToolbarSignalFocusHomeOrEndCallback func(focusHome bool) bool
 
 // ToolbarSignalOrientationChangedCallback is a callback function for a 'orientation-changed' signal emitted from a Toolbar.
-type ToolbarSignalOrientationChangedCallback func()
+type ToolbarSignalOrientationChangedCallback func(orientation Orientation)
 
 // ToolbarSignalPopupContextMenuCallback is a callback function for a 'popup-context-menu' signal emitted from a Toolbar.
-type ToolbarSignalPopupContextMenuCallback func()
+type ToolbarSignalPopupContextMenuCallback func(x int32, y int32, button int32) bool
 
 // ToolbarSignalStyleChangedCallback is a callback function for a 'style-changed' signal emitted from a Toolbar.
-type ToolbarSignalStyleChangedCallback func()
+type ToolbarSignalStyleChangedCallback func(style ToolbarStyle)
 
 // ToolbarNew is a wrapper around the C function gtk_toolbar_new.
 func ToolbarNew() *Toolbar {
@@ -22589,43 +22366,43 @@ type TreeViewSignalColumnsChangedCallback func()
 type TreeViewSignalCursorChangedCallback func()
 
 // TreeViewSignalExpandCollapseCursorRowCallback is a callback function for a 'expand-collapse-cursor-row' signal emitted from a TreeView.
-type TreeViewSignalExpandCollapseCursorRowCallback func()
+type TreeViewSignalExpandCollapseCursorRowCallback func(object bool, p0 bool, p1 bool) bool
 
 // TreeViewSignalMoveCursorCallback is a callback function for a 'move-cursor' signal emitted from a TreeView.
-type TreeViewSignalMoveCursorCallback func()
+type TreeViewSignalMoveCursorCallback func(step MovementStep, direction int32) bool
 
 // TreeViewSignalRowActivatedCallback is a callback function for a 'row-activated' signal emitted from a TreeView.
-type TreeViewSignalRowActivatedCallback func()
+type TreeViewSignalRowActivatedCallback func(path *TreePath, column *TreeViewColumn)
 
 // TreeViewSignalRowCollapsedCallback is a callback function for a 'row-collapsed' signal emitted from a TreeView.
-type TreeViewSignalRowCollapsedCallback func()
+type TreeViewSignalRowCollapsedCallback func(iter *TreeIter, path *TreePath)
 
 // TreeViewSignalRowExpandedCallback is a callback function for a 'row-expanded' signal emitted from a TreeView.
-type TreeViewSignalRowExpandedCallback func()
+type TreeViewSignalRowExpandedCallback func(iter *TreeIter, path *TreePath)
 
 // TreeViewSignalSelectAllCallback is a callback function for a 'select-all' signal emitted from a TreeView.
-type TreeViewSignalSelectAllCallback func()
+type TreeViewSignalSelectAllCallback func() bool
 
 // TreeViewSignalSelectCursorParentCallback is a callback function for a 'select-cursor-parent' signal emitted from a TreeView.
-type TreeViewSignalSelectCursorParentCallback func()
+type TreeViewSignalSelectCursorParentCallback func() bool
 
 // TreeViewSignalSelectCursorRowCallback is a callback function for a 'select-cursor-row' signal emitted from a TreeView.
-type TreeViewSignalSelectCursorRowCallback func()
+type TreeViewSignalSelectCursorRowCallback func(object bool) bool
 
 // TreeViewSignalStartInteractiveSearchCallback is a callback function for a 'start-interactive-search' signal emitted from a TreeView.
-type TreeViewSignalStartInteractiveSearchCallback func()
+type TreeViewSignalStartInteractiveSearchCallback func() bool
 
 // TreeViewSignalTestCollapseRowCallback is a callback function for a 'test-collapse-row' signal emitted from a TreeView.
-type TreeViewSignalTestCollapseRowCallback func()
+type TreeViewSignalTestCollapseRowCallback func(iter *TreeIter, path *TreePath) bool
 
 // TreeViewSignalTestExpandRowCallback is a callback function for a 'test-expand-row' signal emitted from a TreeView.
-type TreeViewSignalTestExpandRowCallback func()
+type TreeViewSignalTestExpandRowCallback func(iter *TreeIter, path *TreePath) bool
 
 // TreeViewSignalToggleCursorRowCallback is a callback function for a 'toggle-cursor-row' signal emitted from a TreeView.
-type TreeViewSignalToggleCursorRowCallback func()
+type TreeViewSignalToggleCursorRowCallback func() bool
 
 // TreeViewSignalUnselectAllCallback is a callback function for a 'unselect-all' signal emitted from a TreeView.
-type TreeViewSignalUnselectAllCallback func()
+type TreeViewSignalUnselectAllCallback func() bool
 
 // TreeViewNew is a wrapper around the C function gtk_tree_view_new.
 func TreeViewNew() *TreeView {
@@ -23546,19 +23323,19 @@ func CastToUIManager(object *gobject.Object) *UIManager {
 type UIManagerSignalActionsChangedCallback func()
 
 // UIManagerSignalAddWidgetCallback is a callback function for a 'add-widget' signal emitted from a UIManager.
-type UIManagerSignalAddWidgetCallback func()
+type UIManagerSignalAddWidgetCallback func(widget *Widget)
 
 // UIManagerSignalConnectProxyCallback is a callback function for a 'connect-proxy' signal emitted from a UIManager.
-type UIManagerSignalConnectProxyCallback func()
+type UIManagerSignalConnectProxyCallback func(action *Action, proxy *Widget)
 
 // UIManagerSignalDisconnectProxyCallback is a callback function for a 'disconnect-proxy' signal emitted from a UIManager.
-type UIManagerSignalDisconnectProxyCallback func()
+type UIManagerSignalDisconnectProxyCallback func(action *Action, proxy *Widget)
 
 // UIManagerSignalPostActivateCallback is a callback function for a 'post-activate' signal emitted from a UIManager.
-type UIManagerSignalPostActivateCallback func()
+type UIManagerSignalPostActivateCallback func(action *Action)
 
 // UIManagerSignalPreActivateCallback is a callback function for a 'pre-activate' signal emitted from a UIManager.
-type UIManagerSignalPreActivateCallback func()
+type UIManagerSignalPreActivateCallback func(action *Action)
 
 // VBox is a wrapper around the C record GtkVBox.
 type VBox struct {
@@ -24172,208 +23949,201 @@ func CastToWidget(object *gobject.Object) *Widget {
 type WidgetSignalAccelClosuresChangedCallback func()
 
 // WidgetSignalButtonPressEventCallback is a callback function for a 'button-press-event' signal emitted from a Widget.
-type WidgetSignalButtonPressEventCallback func()
+type WidgetSignalButtonPressEventCallback func(event *gdk.EventButton) bool
 
 // WidgetSignalButtonReleaseEventCallback is a callback function for a 'button-release-event' signal emitted from a Widget.
-type WidgetSignalButtonReleaseEventCallback func()
+type WidgetSignalButtonReleaseEventCallback func(event *gdk.EventButton) bool
 
 // WidgetSignalCanActivateAccelCallback is a callback function for a 'can-activate-accel' signal emitted from a Widget.
-type WidgetSignalCanActivateAccelCallback func()
+type WidgetSignalCanActivateAccelCallback func(signalId uint32) bool
 
-// WidgetSignalChildNotifyCallback is a callback function for a 'child-notify' signal emitted from a Widget.
-type WidgetSignalChildNotifyCallback func()
+// Unsupported signal : unsupported parameter child_property : Blacklisted record : GParamSpec
 
 // WidgetSignalCompositedChangedCallback is a callback function for a 'composited-changed' signal emitted from a Widget.
 type WidgetSignalCompositedChangedCallback func()
 
 // WidgetSignalConfigureEventCallback is a callback function for a 'configure-event' signal emitted from a Widget.
-type WidgetSignalConfigureEventCallback func()
+type WidgetSignalConfigureEventCallback func(event *gdk.EventConfigure) bool
 
 // WidgetSignalDamageEventCallback is a callback function for a 'damage-event' signal emitted from a Widget.
-type WidgetSignalDamageEventCallback func()
+type WidgetSignalDamageEventCallback func(event *gdk.EventExpose) bool
 
-// WidgetSignalDeleteEventCallback is a callback function for a 'delete-event' signal emitted from a Widget.
-type WidgetSignalDeleteEventCallback func()
+// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
 
 // WidgetSignalDestroyCallback is a callback function for a 'destroy' signal emitted from a Widget.
 type WidgetSignalDestroyCallback func()
 
-// WidgetSignalDestroyEventCallback is a callback function for a 'destroy-event' signal emitted from a Widget.
-type WidgetSignalDestroyEventCallback func()
+// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
 
 // WidgetSignalDirectionChangedCallback is a callback function for a 'direction-changed' signal emitted from a Widget.
-type WidgetSignalDirectionChangedCallback func()
+type WidgetSignalDirectionChangedCallback func(previousDirection TextDirection)
 
 // WidgetSignalDragBeginCallback is a callback function for a 'drag-begin' signal emitted from a Widget.
-type WidgetSignalDragBeginCallback func()
+type WidgetSignalDragBeginCallback func(context *gdk.DragContext)
 
 // WidgetSignalDragDataDeleteCallback is a callback function for a 'drag-data-delete' signal emitted from a Widget.
-type WidgetSignalDragDataDeleteCallback func()
+type WidgetSignalDragDataDeleteCallback func(context *gdk.DragContext)
 
 // WidgetSignalDragDataGetCallback is a callback function for a 'drag-data-get' signal emitted from a Widget.
-type WidgetSignalDragDataGetCallback func()
+type WidgetSignalDragDataGetCallback func(context *gdk.DragContext, data *SelectionData, info uint32, time uint32)
 
 // WidgetSignalDragDataReceivedCallback is a callback function for a 'drag-data-received' signal emitted from a Widget.
-type WidgetSignalDragDataReceivedCallback func()
+type WidgetSignalDragDataReceivedCallback func(context *gdk.DragContext, x int32, y int32, data *SelectionData, info uint32, time uint32)
 
 // WidgetSignalDragDropCallback is a callback function for a 'drag-drop' signal emitted from a Widget.
-type WidgetSignalDragDropCallback func()
+type WidgetSignalDragDropCallback func(context *gdk.DragContext, x int32, y int32, time uint32) bool
 
 // WidgetSignalDragEndCallback is a callback function for a 'drag-end' signal emitted from a Widget.
-type WidgetSignalDragEndCallback func()
+type WidgetSignalDragEndCallback func(context *gdk.DragContext)
 
 // WidgetSignalDragFailedCallback is a callback function for a 'drag-failed' signal emitted from a Widget.
-type WidgetSignalDragFailedCallback func()
+type WidgetSignalDragFailedCallback func(context *gdk.DragContext, result DragResult) bool
 
 // WidgetSignalDragLeaveCallback is a callback function for a 'drag-leave' signal emitted from a Widget.
-type WidgetSignalDragLeaveCallback func()
+type WidgetSignalDragLeaveCallback func(context *gdk.DragContext, time uint32)
 
 // WidgetSignalDragMotionCallback is a callback function for a 'drag-motion' signal emitted from a Widget.
-type WidgetSignalDragMotionCallback func()
+type WidgetSignalDragMotionCallback func(context *gdk.DragContext, x int32, y int32, time uint32) bool
 
 // WidgetSignalDrawCallback is a callback function for a 'draw' signal emitted from a Widget.
-type WidgetSignalDrawCallback func()
+type WidgetSignalDrawCallback func(cr *cairo.Context) bool
 
 // WidgetSignalEnterNotifyEventCallback is a callback function for a 'enter-notify-event' signal emitted from a Widget.
-type WidgetSignalEnterNotifyEventCallback func()
+type WidgetSignalEnterNotifyEventCallback func(event *gdk.EventCrossing) bool
 
-// WidgetSignalEventCallback is a callback function for a 'event' signal emitted from a Widget.
-type WidgetSignalEventCallback func()
+// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
 
-// WidgetSignalEventAfterCallback is a callback function for a 'event-after' signal emitted from a Widget.
-type WidgetSignalEventAfterCallback func()
+// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
 
 // WidgetSignalFocusCallback is a callback function for a 'focus' signal emitted from a Widget.
-type WidgetSignalFocusCallback func()
+type WidgetSignalFocusCallback func(direction DirectionType) bool
 
 // WidgetSignalFocusInEventCallback is a callback function for a 'focus-in-event' signal emitted from a Widget.
-type WidgetSignalFocusInEventCallback func()
+type WidgetSignalFocusInEventCallback func(event *gdk.EventFocus) bool
 
 // WidgetSignalFocusOutEventCallback is a callback function for a 'focus-out-event' signal emitted from a Widget.
-type WidgetSignalFocusOutEventCallback func()
+type WidgetSignalFocusOutEventCallback func(event *gdk.EventFocus) bool
 
 // WidgetSignalGrabBrokenEventCallback is a callback function for a 'grab-broken-event' signal emitted from a Widget.
-type WidgetSignalGrabBrokenEventCallback func()
+type WidgetSignalGrabBrokenEventCallback func(event *gdk.EventGrabBroken) bool
 
 // WidgetSignalGrabFocusCallback is a callback function for a 'grab-focus' signal emitted from a Widget.
 type WidgetSignalGrabFocusCallback func()
 
 // WidgetSignalGrabNotifyCallback is a callback function for a 'grab-notify' signal emitted from a Widget.
-type WidgetSignalGrabNotifyCallback func()
+type WidgetSignalGrabNotifyCallback func(wasGrabbed bool)
 
 // WidgetSignalHideCallback is a callback function for a 'hide' signal emitted from a Widget.
 type WidgetSignalHideCallback func()
 
 // WidgetSignalHierarchyChangedCallback is a callback function for a 'hierarchy-changed' signal emitted from a Widget.
-type WidgetSignalHierarchyChangedCallback func()
+type WidgetSignalHierarchyChangedCallback func(previousToplevel *Widget)
 
 // WidgetSignalKeyPressEventCallback is a callback function for a 'key-press-event' signal emitted from a Widget.
-type WidgetSignalKeyPressEventCallback func()
+type WidgetSignalKeyPressEventCallback func(event *gdk.EventKey) bool
 
 // WidgetSignalKeyReleaseEventCallback is a callback function for a 'key-release-event' signal emitted from a Widget.
-type WidgetSignalKeyReleaseEventCallback func()
+type WidgetSignalKeyReleaseEventCallback func(event *gdk.EventKey) bool
 
 // WidgetSignalKeynavFailedCallback is a callback function for a 'keynav-failed' signal emitted from a Widget.
-type WidgetSignalKeynavFailedCallback func()
+type WidgetSignalKeynavFailedCallback func(direction DirectionType) bool
 
 // WidgetSignalLeaveNotifyEventCallback is a callback function for a 'leave-notify-event' signal emitted from a Widget.
-type WidgetSignalLeaveNotifyEventCallback func()
+type WidgetSignalLeaveNotifyEventCallback func(event *gdk.EventCrossing) bool
 
 // WidgetSignalMapCallback is a callback function for a 'map' signal emitted from a Widget.
 type WidgetSignalMapCallback func()
 
 // WidgetSignalMapEventCallback is a callback function for a 'map-event' signal emitted from a Widget.
-type WidgetSignalMapEventCallback func()
+type WidgetSignalMapEventCallback func(event *gdk.EventAny) bool
 
 // WidgetSignalMnemonicActivateCallback is a callback function for a 'mnemonic-activate' signal emitted from a Widget.
-type WidgetSignalMnemonicActivateCallback func()
+type WidgetSignalMnemonicActivateCallback func(groupCycling bool) bool
 
 // WidgetSignalMotionNotifyEventCallback is a callback function for a 'motion-notify-event' signal emitted from a Widget.
-type WidgetSignalMotionNotifyEventCallback func()
+type WidgetSignalMotionNotifyEventCallback func(event *gdk.EventMotion) bool
 
 // WidgetSignalMoveFocusCallback is a callback function for a 'move-focus' signal emitted from a Widget.
-type WidgetSignalMoveFocusCallback func()
+type WidgetSignalMoveFocusCallback func(direction DirectionType)
 
 // WidgetSignalParentSetCallback is a callback function for a 'parent-set' signal emitted from a Widget.
-type WidgetSignalParentSetCallback func()
+type WidgetSignalParentSetCallback func(oldParent *Widget)
 
 // WidgetSignalPopupMenuCallback is a callback function for a 'popup-menu' signal emitted from a Widget.
-type WidgetSignalPopupMenuCallback func()
+type WidgetSignalPopupMenuCallback func() bool
 
 // WidgetSignalPropertyNotifyEventCallback is a callback function for a 'property-notify-event' signal emitted from a Widget.
-type WidgetSignalPropertyNotifyEventCallback func()
+type WidgetSignalPropertyNotifyEventCallback func(event *gdk.EventProperty) bool
 
 // WidgetSignalProximityInEventCallback is a callback function for a 'proximity-in-event' signal emitted from a Widget.
-type WidgetSignalProximityInEventCallback func()
+type WidgetSignalProximityInEventCallback func(event *gdk.EventProximity) bool
 
 // WidgetSignalProximityOutEventCallback is a callback function for a 'proximity-out-event' signal emitted from a Widget.
-type WidgetSignalProximityOutEventCallback func()
+type WidgetSignalProximityOutEventCallback func(event *gdk.EventProximity) bool
 
 // WidgetSignalQueryTooltipCallback is a callback function for a 'query-tooltip' signal emitted from a Widget.
-type WidgetSignalQueryTooltipCallback func()
+type WidgetSignalQueryTooltipCallback func(x int32, y int32, keyboardMode bool, tooltip *Tooltip) bool
 
 // WidgetSignalRealizeCallback is a callback function for a 'realize' signal emitted from a Widget.
 type WidgetSignalRealizeCallback func()
 
 // WidgetSignalScreenChangedCallback is a callback function for a 'screen-changed' signal emitted from a Widget.
-type WidgetSignalScreenChangedCallback func()
+type WidgetSignalScreenChangedCallback func(previousScreen *gdk.Screen)
 
 // WidgetSignalScrollEventCallback is a callback function for a 'scroll-event' signal emitted from a Widget.
-type WidgetSignalScrollEventCallback func()
+type WidgetSignalScrollEventCallback func(event *gdk.EventScroll) bool
 
 // WidgetSignalSelectionClearEventCallback is a callback function for a 'selection-clear-event' signal emitted from a Widget.
-type WidgetSignalSelectionClearEventCallback func()
+type WidgetSignalSelectionClearEventCallback func(event *gdk.EventSelection) bool
 
 // WidgetSignalSelectionGetCallback is a callback function for a 'selection-get' signal emitted from a Widget.
-type WidgetSignalSelectionGetCallback func()
+type WidgetSignalSelectionGetCallback func(data *SelectionData, info uint32, time uint32)
 
 // WidgetSignalSelectionNotifyEventCallback is a callback function for a 'selection-notify-event' signal emitted from a Widget.
-type WidgetSignalSelectionNotifyEventCallback func()
+type WidgetSignalSelectionNotifyEventCallback func(event *gdk.EventSelection) bool
 
 // WidgetSignalSelectionReceivedCallback is a callback function for a 'selection-received' signal emitted from a Widget.
-type WidgetSignalSelectionReceivedCallback func()
+type WidgetSignalSelectionReceivedCallback func(data *SelectionData, time uint32)
 
 // WidgetSignalSelectionRequestEventCallback is a callback function for a 'selection-request-event' signal emitted from a Widget.
-type WidgetSignalSelectionRequestEventCallback func()
+type WidgetSignalSelectionRequestEventCallback func(event *gdk.EventSelection) bool
 
 // WidgetSignalShowCallback is a callback function for a 'show' signal emitted from a Widget.
 type WidgetSignalShowCallback func()
 
 // WidgetSignalShowHelpCallback is a callback function for a 'show-help' signal emitted from a Widget.
-type WidgetSignalShowHelpCallback func()
+type WidgetSignalShowHelpCallback func(helpType WidgetHelpType) bool
 
-// WidgetSignalSizeAllocateCallback is a callback function for a 'size-allocate' signal emitted from a Widget.
-type WidgetSignalSizeAllocateCallback func()
+// Unsupported signal : unsupported parameter allocation : Blacklisted record : GdkRectangle
 
 // WidgetSignalStateChangedCallback is a callback function for a 'state-changed' signal emitted from a Widget.
-type WidgetSignalStateChangedCallback func()
+type WidgetSignalStateChangedCallback func(state StateType)
 
 // WidgetSignalStateFlagsChangedCallback is a callback function for a 'state-flags-changed' signal emitted from a Widget.
-type WidgetSignalStateFlagsChangedCallback func()
+type WidgetSignalStateFlagsChangedCallback func(flags StateFlags)
 
 // WidgetSignalStyleSetCallback is a callback function for a 'style-set' signal emitted from a Widget.
-type WidgetSignalStyleSetCallback func()
+type WidgetSignalStyleSetCallback func(previousStyle *Style)
 
 // WidgetSignalStyleUpdatedCallback is a callback function for a 'style-updated' signal emitted from a Widget.
 type WidgetSignalStyleUpdatedCallback func()
 
-// WidgetSignalTouchEventCallback is a callback function for a 'touch-event' signal emitted from a Widget.
-type WidgetSignalTouchEventCallback func()
+// Unsupported signal : unsupported parameter object : no type generator for Gdk.Event,
 
 // WidgetSignalUnmapCallback is a callback function for a 'unmap' signal emitted from a Widget.
 type WidgetSignalUnmapCallback func()
 
 // WidgetSignalUnmapEventCallback is a callback function for a 'unmap-event' signal emitted from a Widget.
-type WidgetSignalUnmapEventCallback func()
+type WidgetSignalUnmapEventCallback func(event *gdk.EventAny) bool
 
 // WidgetSignalUnrealizeCallback is a callback function for a 'unrealize' signal emitted from a Widget.
 type WidgetSignalUnrealizeCallback func()
 
 // WidgetSignalVisibilityNotifyEventCallback is a callback function for a 'visibility-notify-event' signal emitted from a Widget.
-type WidgetSignalVisibilityNotifyEventCallback func()
+type WidgetSignalVisibilityNotifyEventCallback func(event *gdk.EventVisibility) bool
 
 // WidgetSignalWindowStateEventCallback is a callback function for a 'window-state-event' signal emitted from a Widget.
-type WidgetSignalWindowStateEventCallback func()
+type WidgetSignalWindowStateEventCallback func(event *gdk.EventWindowState) bool
 
 // Unsupported : gtk_widget_new : unsupported parameter type : no type generator for GType, GType
 
@@ -25538,13 +25308,13 @@ type WindowSignalActivateDefaultCallback func()
 type WindowSignalActivateFocusCallback func()
 
 // WindowSignalEnableDebuggingCallback is a callback function for a 'enable-debugging' signal emitted from a Window.
-type WindowSignalEnableDebuggingCallback func()
+type WindowSignalEnableDebuggingCallback func(toggle bool) bool
 
 // WindowSignalKeysChangedCallback is a callback function for a 'keys-changed' signal emitted from a Window.
 type WindowSignalKeysChangedCallback func()
 
 // WindowSignalSetFocusCallback is a callback function for a 'set-focus' signal emitted from a Window.
-type WindowSignalSetFocusCallback func()
+type WindowSignalSetFocusCallback func(object *Widget)
 
 // WindowNew is a wrapper around the C function gtk_window_new.
 func WindowNew(type_ WindowType) *Window {

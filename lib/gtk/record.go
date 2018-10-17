@@ -6811,7 +6811,7 @@ type MenuItemClass struct {
 	// no type for toggle_size_allocate
 	// no type for set_label
 	// no type for get_label
-	// no type for select
+	// no type for _select
 	// no type for deselect
 	// no type for _gtk_reserved1
 	// no type for _gtk_reserved2

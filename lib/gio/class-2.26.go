@@ -51,24 +51,6 @@ import (
 */
 /*
 
-	void DBusProxy_gPropertiesChangedHandler();
-
-	static gulong DBusProxy_signal_connect_g_properties_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "g-properties-changed", DBusProxy_gPropertiesChangedHandler, data);
-	}
-
-*/
-/*
-
-	void DBusProxy_gSignalHandler();
-
-	static gulong DBusProxy_signal_connect_g_signal(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "g-signal", DBusProxy_gSignalHandler, data);
-	}
-
-*/
-/*
-
 	void DBusServer_newConnectionHandler();
 
 	static gulong DBusServer_signal_connect_new_connection(gpointer instance, gpointer data) {
@@ -206,10 +188,10 @@ func CastToDBusAuthObserver(object *gobject.Object) *DBusAuthObserver {
 }
 
 // DBusAuthObserverSignalAllowMechanismCallback is a callback function for a 'allow-mechanism' signal emitted from a DBusAuthObserver.
-type DBusAuthObserverSignalAllowMechanismCallback func()
+type DBusAuthObserverSignalAllowMechanismCallback func(mechanism string) bool
 
 // DBusAuthObserverSignalAuthorizeAuthenticatedPeerCallback is a callback function for a 'authorize-authenticated-peer' signal emitted from a DBusAuthObserver.
-type DBusAuthObserverSignalAuthorizeAuthenticatedPeerCallback func()
+type DBusAuthObserverSignalAuthorizeAuthenticatedPeerCallback func(stream *IOStream, credentials *Credentials) bool
 
 // DBusAuthObserverNew is a wrapper around the C function g_dbus_auth_observer_new.
 func DBusAuthObserverNew() *DBusAuthObserver {
@@ -264,7 +246,7 @@ func CastToDBusConnection(object *gobject.Object) *DBusConnection {
 }
 
 // DBusConnectionSignalClosedCallback is a callback function for a 'closed' signal emitted from a DBusConnection.
-type DBusConnectionSignalClosedCallback func()
+type DBusConnectionSignalClosedCallback func(remotePeerVanished bool, error *glib.Error)
 
 // Unsupported : g_dbus_connection_new_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
 
@@ -1151,11 +1133,9 @@ func CastToDBusProxy(object *gobject.Object) *DBusProxy {
 	return DBusProxyNewFromC(object.ToC())
 }
 
-// DBusProxySignalGPropertiesChangedCallback is a callback function for a 'g-properties-changed' signal emitted from a DBusProxy.
-type DBusProxySignalGPropertiesChangedCallback func()
+// Unsupported signal : unsupported parameter changed_properties : Blacklisted record : GVariant
 
-// DBusProxySignalGSignalCallback is a callback function for a 'g-signal' signal emitted from a DBusProxy.
-type DBusProxySignalGSignalCallback func()
+// Unsupported signal : unsupported parameter parameters : Blacklisted record : GVariant
 
 // Unsupported : g_dbus_proxy_new_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
 
@@ -1353,7 +1333,7 @@ func CastToDBusServer(object *gobject.Object) *DBusServer {
 }
 
 // DBusServerSignalNewConnectionCallback is a callback function for a 'new-connection' signal emitted from a DBusServer.
-type DBusServerSignalNewConnectionCallback func()
+type DBusServerSignalNewConnectionCallback func(connection *DBusConnection) bool
 
 // DBusServerNewSync is a wrapper around the C function g_dbus_server_new_sync.
 func DBusServerNewSync(address string, flags DBusServerFlags, guid string, observer *DBusAuthObserver, cancellable *Cancellable) (*DBusServer, error) {

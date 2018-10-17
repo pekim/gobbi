@@ -10,15 +10,6 @@ import (
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <glib-object.h>
 // #include <stdlib.h>
-/*
-
-	void Object_notifyHandler();
-
-	static gulong Object_signal_connect_notify(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "notify", Object_notifyHandler, data);
-	}
-
-*/
 import "C"
 
 // InitiallyUnowned is a wrapper around the C record GInitiallyUnowned.
@@ -82,8 +73,7 @@ func CastToObject(object *Object) *Object {
 	return ObjectNewFromC(object.ToC())
 }
 
-// ObjectSignalNotifyCallback is a callback function for a 'notify' signal emitted from a Object.
-type ObjectSignalNotifyCallback func()
+// Unsupported signal : unsupported parameter pspec : Blacklisted record : GParamSpec
 
 // Unsupported : g_object_new : unsupported parameter object_type : no type generator for GType, GType
 

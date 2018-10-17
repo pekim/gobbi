@@ -51,15 +51,6 @@ import (
 */
 /*
 
-	void Application_openHandler();
-
-	static gulong Application_signal_connect_open(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "open", Application_openHandler, data);
-	}
-
-*/
-/*
-
 	void Application_shutdownHandler();
 
 	static gulong Application_signal_connect_shutdown(gpointer instance, gpointer data) {
@@ -125,13 +116,12 @@ func CastToApplication(object *gobject.Object) *Application {
 type ApplicationSignalActivateCallback func()
 
 // ApplicationSignalCommandLineCallback is a callback function for a 'command-line' signal emitted from a Application.
-type ApplicationSignalCommandLineCallback func()
+type ApplicationSignalCommandLineCallback func(commandLine *ApplicationCommandLine) int32
 
 // ApplicationSignalHandleLocalOptionsCallback is a callback function for a 'handle-local-options' signal emitted from a Application.
-type ApplicationSignalHandleLocalOptionsCallback func()
+type ApplicationSignalHandleLocalOptionsCallback func(options *glib.VariantDict) int32
 
-// ApplicationSignalOpenCallback is a callback function for a 'open' signal emitted from a Application.
-type ApplicationSignalOpenCallback func()
+// Unsupported signal : unsupported parameter files : no param type
 
 // ApplicationSignalShutdownCallback is a callback function for a 'shutdown' signal emitted from a Application.
 type ApplicationSignalShutdownCallback func()
@@ -670,7 +660,7 @@ func CastToTlsConnection(object *gobject.Object) *TlsConnection {
 }
 
 // TlsConnectionSignalAcceptCertificateCallback is a callback function for a 'accept-certificate' signal emitted from a TlsConnection.
-type TlsConnectionSignalAcceptCertificateCallback func()
+type TlsConnectionSignalAcceptCertificateCallback func(peerCert *TlsCertificate, errors TlsCertificateFlags) bool
 
 // EmitAcceptCertificate is a wrapper around the C function g_tls_connection_emit_accept_certificate.
 func (recv *TlsConnection) EmitAcceptCertificate(peerCert *TlsCertificate, errors TlsCertificateFlags) bool {

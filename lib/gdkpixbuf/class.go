@@ -643,13 +643,13 @@ func CastToPixbufLoader(object *gobject.Object) *PixbufLoader {
 type PixbufLoaderSignalAreaPreparedCallback func()
 
 // PixbufLoaderSignalAreaUpdatedCallback is a callback function for a 'area-updated' signal emitted from a PixbufLoader.
-type PixbufLoaderSignalAreaUpdatedCallback func()
+type PixbufLoaderSignalAreaUpdatedCallback func(x int32, y int32, width int32, height int32)
 
 // PixbufLoaderSignalClosedCallback is a callback function for a 'closed' signal emitted from a PixbufLoader.
 type PixbufLoaderSignalClosedCallback func()
 
 // PixbufLoaderSignalSizePreparedCallback is a callback function for a 'size-prepared' signal emitted from a PixbufLoader.
-type PixbufLoaderSignalSizePreparedCallback func()
+type PixbufLoaderSignalSizePreparedCallback func(width int32, height int32)
 
 // PixbufLoaderNew is a wrapper around the C function gdk_pixbuf_loader_new.
 func PixbufLoaderNew() *PixbufLoader {
