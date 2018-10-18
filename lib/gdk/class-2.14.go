@@ -103,6 +103,22 @@ func (recv *Screen) ConnectMonitorsChanged(callback ScreenSignalMonitorsChangedC
 	return int(retC)
 }
 
+/*
+DisconnectMonitorsChanged disconnects a callback from the 'monitors-changed' signal for the Screen.
+
+The connectionID should be a value returned from a call to ConnectMonitorsChanged.
+*/
+func (recv *Screen) DisconnectMonitorsChanged(connectionID int) {
+	_, exists := signalScreenMonitorsChangedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalScreenMonitorsChangedMap, connectionID)
+}
+
 //export Screen_monitorsChangedHandler
 func Screen_monitorsChangedHandler() {
 	fmt.Println("cb")

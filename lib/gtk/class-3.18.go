@@ -177,6 +177,22 @@ func (recv *PlacesSidebar) ConnectShowOtherLocations(callback PlacesSidebarSigna
 	return int(retC)
 }
 
+/*
+DisconnectShowOtherLocations disconnects a callback from the 'show-other-locations' signal for the PlacesSidebar.
+
+The connectionID should be a value returned from a call to ConnectShowOtherLocations.
+*/
+func (recv *PlacesSidebar) DisconnectShowOtherLocations(connectionID int) {
+	_, exists := signalPlacesSidebarShowOtherLocationsMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalPlacesSidebarShowOtherLocationsMap, connectionID)
+}
+
 //export PlacesSidebar_showOtherLocationsHandler
 func PlacesSidebar_showOtherLocationsHandler() {
 	fmt.Println("cb")

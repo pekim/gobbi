@@ -88,6 +88,22 @@ func (recv *MountOperation) ConnectAborted(callback MountOperationSignalAbortedC
 	return int(retC)
 }
 
+/*
+DisconnectAborted disconnects a callback from the 'aborted' signal for the MountOperation.
+
+The connectionID should be a value returned from a call to ConnectAborted.
+*/
+func (recv *MountOperation) DisconnectAborted(connectionID int) {
+	_, exists := signalMountOperationAbortedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalMountOperationAbortedMap, connectionID)
+}
+
 //export MountOperation_abortedHandler
 func MountOperation_abortedHandler() {
 	fmt.Println("cb")

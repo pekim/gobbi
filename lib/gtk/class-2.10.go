@@ -252,6 +252,22 @@ func (recv *Assistant) ConnectApply(callback AssistantSignalApplyCallback) int {
 	return int(retC)
 }
 
+/*
+DisconnectApply disconnects a callback from the 'apply' signal for the Assistant.
+
+The connectionID should be a value returned from a call to ConnectApply.
+*/
+func (recv *Assistant) DisconnectApply(connectionID int) {
+	_, exists := signalAssistantApplyMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalAssistantApplyMap, connectionID)
+}
+
 //export Assistant_applyHandler
 func Assistant_applyHandler() {
 	fmt.Println("cb")
@@ -279,6 +295,22 @@ func (recv *Assistant) ConnectCancel(callback AssistantSignalCancelCallback) int
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.Assistant_signal_connect_cancel(instance, C.gpointer(uintptr(signalAssistantCancelId)))
 	return int(retC)
+}
+
+/*
+DisconnectCancel disconnects a callback from the 'cancel' signal for the Assistant.
+
+The connectionID should be a value returned from a call to ConnectCancel.
+*/
+func (recv *Assistant) DisconnectCancel(connectionID int) {
+	_, exists := signalAssistantCancelMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalAssistantCancelMap, connectionID)
 }
 
 //export Assistant_cancelHandler
@@ -310,6 +342,22 @@ func (recv *Assistant) ConnectClose(callback AssistantSignalCloseCallback) int {
 	return int(retC)
 }
 
+/*
+DisconnectClose disconnects a callback from the 'close' signal for the Assistant.
+
+The connectionID should be a value returned from a call to ConnectClose.
+*/
+func (recv *Assistant) DisconnectClose(connectionID int) {
+	_, exists := signalAssistantCloseMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalAssistantCloseMap, connectionID)
+}
+
 //export Assistant_closeHandler
 func Assistant_closeHandler() {
 	fmt.Println("cb")
@@ -337,6 +385,22 @@ func (recv *Assistant) ConnectPrepare(callback AssistantSignalPrepareCallback) i
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.Assistant_signal_connect_prepare(instance, C.gpointer(uintptr(signalAssistantPrepareId)))
 	return int(retC)
+}
+
+/*
+DisconnectPrepare disconnects a callback from the 'prepare' signal for the Assistant.
+
+The connectionID should be a value returned from a call to ConnectPrepare.
+*/
+func (recv *Assistant) DisconnectPrepare(connectionID int) {
+	_, exists := signalAssistantPrepareMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalAssistantPrepareMap, connectionID)
 }
 
 //export Assistant_prepareHandler
@@ -604,6 +668,22 @@ func (recv *CellRendererAccel) ConnectAccelCleared(callback CellRendererAccelSig
 	return int(retC)
 }
 
+/*
+DisconnectAccelCleared disconnects a callback from the 'accel-cleared' signal for the CellRendererAccel.
+
+The connectionID should be a value returned from a call to ConnectAccelCleared.
+*/
+func (recv *CellRendererAccel) DisconnectAccelCleared(connectionID int) {
+	_, exists := signalCellRendererAccelAccelClearedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalCellRendererAccelAccelClearedMap, connectionID)
+}
+
 //export CellRendererAccel_accelClearedHandler
 func CellRendererAccel_accelClearedHandler() {
 	fmt.Println("cb")
@@ -631,6 +711,22 @@ func (recv *CellRendererAccel) ConnectAccelEdited(callback CellRendererAccelSign
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.CellRendererAccel_signal_connect_accel_edited(instance, C.gpointer(uintptr(signalCellRendererAccelAccelEditedId)))
 	return int(retC)
+}
+
+/*
+DisconnectAccelEdited disconnects a callback from the 'accel-edited' signal for the CellRendererAccel.
+
+The connectionID should be a value returned from a call to ConnectAccelEdited.
+*/
+func (recv *CellRendererAccel) DisconnectAccelEdited(connectionID int) {
+	_, exists := signalCellRendererAccelAccelEditedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalCellRendererAccelAccelEditedMap, connectionID)
 }
 
 //export CellRendererAccel_accelEditedHandler
@@ -850,6 +946,22 @@ func (recv *Notebook) ConnectPageAdded(callback NotebookSignalPageAddedCallback)
 	return int(retC)
 }
 
+/*
+DisconnectPageAdded disconnects a callback from the 'page-added' signal for the Notebook.
+
+The connectionID should be a value returned from a call to ConnectPageAdded.
+*/
+func (recv *Notebook) DisconnectPageAdded(connectionID int) {
+	_, exists := signalNotebookPageAddedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalNotebookPageAddedMap, connectionID)
+}
+
 //export Notebook_pageAddedHandler
 func Notebook_pageAddedHandler() {
 	fmt.Println("cb")
@@ -879,6 +991,22 @@ func (recv *Notebook) ConnectPageRemoved(callback NotebookSignalPageRemovedCallb
 	return int(retC)
 }
 
+/*
+DisconnectPageRemoved disconnects a callback from the 'page-removed' signal for the Notebook.
+
+The connectionID should be a value returned from a call to ConnectPageRemoved.
+*/
+func (recv *Notebook) DisconnectPageRemoved(connectionID int) {
+	_, exists := signalNotebookPageRemovedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalNotebookPageRemovedMap, connectionID)
+}
+
 //export Notebook_pageRemovedHandler
 func Notebook_pageRemovedHandler() {
 	fmt.Println("cb")
@@ -906,6 +1034,22 @@ func (recv *Notebook) ConnectPageReordered(callback NotebookSignalPageReorderedC
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.Notebook_signal_connect_page_reordered(instance, C.gpointer(uintptr(signalNotebookPageReorderedId)))
 	return int(retC)
+}
+
+/*
+DisconnectPageReordered disconnects a callback from the 'page-reordered' signal for the Notebook.
+
+The connectionID should be a value returned from a call to ConnectPageReordered.
+*/
+func (recv *Notebook) DisconnectPageReordered(connectionID int) {
+	_, exists := signalNotebookPageReorderedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalNotebookPageReorderedMap, connectionID)
 }
 
 //export Notebook_pageReorderedHandler
@@ -1261,6 +1405,22 @@ func (recv *PrintOperation) ConnectBeginPrint(callback PrintOperationSignalBegin
 	return int(retC)
 }
 
+/*
+DisconnectBeginPrint disconnects a callback from the 'begin-print' signal for the PrintOperation.
+
+The connectionID should be a value returned from a call to ConnectBeginPrint.
+*/
+func (recv *PrintOperation) DisconnectBeginPrint(connectionID int) {
+	_, exists := signalPrintOperationBeginPrintMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalPrintOperationBeginPrintMap, connectionID)
+}
+
 //export PrintOperation_beginPrintHandler
 func PrintOperation_beginPrintHandler() {
 	fmt.Println("cb")
@@ -1288,6 +1448,22 @@ func (recv *PrintOperation) ConnectCreateCustomWidget(callback PrintOperationSig
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.PrintOperation_signal_connect_create_custom_widget(instance, C.gpointer(uintptr(signalPrintOperationCreateCustomWidgetId)))
 	return int(retC)
+}
+
+/*
+DisconnectCreateCustomWidget disconnects a callback from the 'create-custom-widget' signal for the PrintOperation.
+
+The connectionID should be a value returned from a call to ConnectCreateCustomWidget.
+*/
+func (recv *PrintOperation) DisconnectCreateCustomWidget(connectionID int) {
+	_, exists := signalPrintOperationCreateCustomWidgetMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalPrintOperationCreateCustomWidgetMap, connectionID)
 }
 
 //export PrintOperation_createCustomWidgetHandler
@@ -1319,6 +1495,22 @@ func (recv *PrintOperation) ConnectCustomWidgetApply(callback PrintOperationSign
 	return int(retC)
 }
 
+/*
+DisconnectCustomWidgetApply disconnects a callback from the 'custom-widget-apply' signal for the PrintOperation.
+
+The connectionID should be a value returned from a call to ConnectCustomWidgetApply.
+*/
+func (recv *PrintOperation) DisconnectCustomWidgetApply(connectionID int) {
+	_, exists := signalPrintOperationCustomWidgetApplyMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalPrintOperationCustomWidgetApplyMap, connectionID)
+}
+
 //export PrintOperation_customWidgetApplyHandler
 func PrintOperation_customWidgetApplyHandler() {
 	fmt.Println("cb")
@@ -1346,6 +1538,22 @@ func (recv *PrintOperation) ConnectDone(callback PrintOperationSignalDoneCallbac
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.PrintOperation_signal_connect_done(instance, C.gpointer(uintptr(signalPrintOperationDoneId)))
 	return int(retC)
+}
+
+/*
+DisconnectDone disconnects a callback from the 'done' signal for the PrintOperation.
+
+The connectionID should be a value returned from a call to ConnectDone.
+*/
+func (recv *PrintOperation) DisconnectDone(connectionID int) {
+	_, exists := signalPrintOperationDoneMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalPrintOperationDoneMap, connectionID)
 }
 
 //export PrintOperation_doneHandler
@@ -1377,6 +1585,22 @@ func (recv *PrintOperation) ConnectDrawPage(callback PrintOperationSignalDrawPag
 	return int(retC)
 }
 
+/*
+DisconnectDrawPage disconnects a callback from the 'draw-page' signal for the PrintOperation.
+
+The connectionID should be a value returned from a call to ConnectDrawPage.
+*/
+func (recv *PrintOperation) DisconnectDrawPage(connectionID int) {
+	_, exists := signalPrintOperationDrawPageMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalPrintOperationDrawPageMap, connectionID)
+}
+
 //export PrintOperation_drawPageHandler
 func PrintOperation_drawPageHandler() {
 	fmt.Println("cb")
@@ -1406,6 +1630,22 @@ func (recv *PrintOperation) ConnectEndPrint(callback PrintOperationSignalEndPrin
 	return int(retC)
 }
 
+/*
+DisconnectEndPrint disconnects a callback from the 'end-print' signal for the PrintOperation.
+
+The connectionID should be a value returned from a call to ConnectEndPrint.
+*/
+func (recv *PrintOperation) DisconnectEndPrint(connectionID int) {
+	_, exists := signalPrintOperationEndPrintMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalPrintOperationEndPrintMap, connectionID)
+}
+
 //export PrintOperation_endPrintHandler
 func PrintOperation_endPrintHandler() {
 	fmt.Println("cb")
@@ -1433,6 +1673,22 @@ func (recv *PrintOperation) ConnectPaginate(callback PrintOperationSignalPaginat
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.PrintOperation_signal_connect_paginate(instance, C.gpointer(uintptr(signalPrintOperationPaginateId)))
 	return int(retC)
+}
+
+/*
+DisconnectPaginate disconnects a callback from the 'paginate' signal for the PrintOperation.
+
+The connectionID should be a value returned from a call to ConnectPaginate.
+*/
+func (recv *PrintOperation) DisconnectPaginate(connectionID int) {
+	_, exists := signalPrintOperationPaginateMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalPrintOperationPaginateMap, connectionID)
 }
 
 //export PrintOperation_paginateHandler
@@ -1466,6 +1722,22 @@ func (recv *PrintOperation) ConnectRequestPageSetup(callback PrintOperationSigna
 	return int(retC)
 }
 
+/*
+DisconnectRequestPageSetup disconnects a callback from the 'request-page-setup' signal for the PrintOperation.
+
+The connectionID should be a value returned from a call to ConnectRequestPageSetup.
+*/
+func (recv *PrintOperation) DisconnectRequestPageSetup(connectionID int) {
+	_, exists := signalPrintOperationRequestPageSetupMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalPrintOperationRequestPageSetupMap, connectionID)
+}
+
 //export PrintOperation_requestPageSetupHandler
 func PrintOperation_requestPageSetupHandler() {
 	fmt.Println("cb")
@@ -1493,6 +1765,22 @@ func (recv *PrintOperation) ConnectStatusChanged(callback PrintOperationSignalSt
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.PrintOperation_signal_connect_status_changed(instance, C.gpointer(uintptr(signalPrintOperationStatusChangedId)))
 	return int(retC)
+}
+
+/*
+DisconnectStatusChanged disconnects a callback from the 'status-changed' signal for the PrintOperation.
+
+The connectionID should be a value returned from a call to ConnectStatusChanged.
+*/
+func (recv *PrintOperation) DisconnectStatusChanged(connectionID int) {
+	_, exists := signalPrintOperationStatusChangedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalPrintOperationStatusChangedMap, connectionID)
 }
 
 //export PrintOperation_statusChangedHandler
@@ -2670,6 +2958,22 @@ func (recv *SpinButton) ConnectWrapped(callback SpinButtonSignalWrappedCallback)
 	return int(retC)
 }
 
+/*
+DisconnectWrapped disconnects a callback from the 'wrapped' signal for the SpinButton.
+
+The connectionID should be a value returned from a call to ConnectWrapped.
+*/
+func (recv *SpinButton) DisconnectWrapped(connectionID int) {
+	_, exists := signalSpinButtonWrappedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalSpinButtonWrappedMap, connectionID)
+}
+
 //export SpinButton_wrappedHandler
 func SpinButton_wrappedHandler() {
 	fmt.Println("cb")
@@ -2697,6 +3001,22 @@ func (recv *StatusIcon) ConnectActivate(callback StatusIconSignalActivateCallbac
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.StatusIcon_signal_connect_activate(instance, C.gpointer(uintptr(signalStatusIconActivateId)))
 	return int(retC)
+}
+
+/*
+DisconnectActivate disconnects a callback from the 'activate' signal for the StatusIcon.
+
+The connectionID should be a value returned from a call to ConnectActivate.
+*/
+func (recv *StatusIcon) DisconnectActivate(connectionID int) {
+	_, exists := signalStatusIconActivateMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalStatusIconActivateMap, connectionID)
 }
 
 //export StatusIcon_activateHandler
@@ -2728,6 +3048,22 @@ func (recv *StatusIcon) ConnectPopupMenu(callback StatusIconSignalPopupMenuCallb
 	return int(retC)
 }
 
+/*
+DisconnectPopupMenu disconnects a callback from the 'popup-menu' signal for the StatusIcon.
+
+The connectionID should be a value returned from a call to ConnectPopupMenu.
+*/
+func (recv *StatusIcon) DisconnectPopupMenu(connectionID int) {
+	_, exists := signalStatusIconPopupMenuMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalStatusIconPopupMenuMap, connectionID)
+}
+
 //export StatusIcon_popupMenuHandler
 func StatusIcon_popupMenuHandler() {
 	fmt.Println("cb")
@@ -2755,6 +3091,22 @@ func (recv *StatusIcon) ConnectSizeChanged(callback StatusIconSignalSizeChangedC
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.StatusIcon_signal_connect_size_changed(instance, C.gpointer(uintptr(signalStatusIconSizeChangedId)))
 	return int(retC)
+}
+
+/*
+DisconnectSizeChanged disconnects a callback from the 'size-changed' signal for the StatusIcon.
+
+The connectionID should be a value returned from a call to ConnectSizeChanged.
+*/
+func (recv *StatusIcon) DisconnectSizeChanged(connectionID int) {
+	_, exists := signalStatusIconSizeChangedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalStatusIconSizeChangedMap, connectionID)
 }
 
 //export StatusIcon_sizeChangedHandler

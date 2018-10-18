@@ -87,6 +87,7 @@ func (s *Signal) generate(g *jen.Group, version *Version, parentVersion string) 
 	s.generateVariables(g)
 	s.generateCallbackType(g)
 	s.generateConnectFunction(g)
+	s.generateDisconnectFunction(g)
 	s.generateHandlerFunction(g)
 }
 
@@ -217,14 +218,56 @@ The returned value represents the connection, and may be passed to %s to remove 
 	g.Line()
 }
 
-//func connectKeyPressEvent(target *gtk.Widget, callback KeyPressEventCallback) {
-//	signalKeyPressEventLock.Lock()
-//	defer signalKeyPressEventLock.Unlock()
-//
-//	signalKeyPressEventId++
-//	signalKeyPressEventMap[signalKeyPressEventId] = callback
-//
-//	instance := C.gpointer(target.Object().ToC())
-//
-//	C.signal_connect_key_press_event(instance, C.gpointer(uintptr(signalKeyPressEventId)))
-//}
+func (s *Signal) generateDisconnectFunction(g *jen.Group) {
+	g.Commentf(
+		`%s disconnects a callback from the '%s' signal for the %s.
+
+The connectionID should be a value returned from a call to %s.`,
+		s.goNameDisconnectFunction,
+		s.Name,
+		s.record.GoName,
+		s.goNameConnectFunction)
+
+	g.
+		Func().
+		Params(jen.Id("recv").Op("*").Id(s.record.GoName)).
+		Id(s.goNameDisconnectFunction).
+		Params(jen.Id("connectionID").Int()).
+		Params().
+		BlockFunc(func(g *jen.Group) {
+			// _, exists := signalKeyPressEventMap[connectionID]
+			g.
+				Id("_").Op(",").Id("exists").
+				Op(":=").
+				Id(s.varNameMap).Index(jen.Id("connectionID"))
+
+			// if !exists { return }
+			g.
+				If(jen.Op("!").Id("exists")).
+				Block(jen.Return())
+
+			g.Line()
+
+			targetCValue := jen.Id("recv").
+				Op(".").Id("Object").Call().
+				Op(".").Id("ToC").Call()
+			//	instance := C.gpointer(recv.Object().ToC())
+			g.
+				Id("instance").Op(":=").
+				Qual("C", "gpointer").
+				Call(targetCValue)
+
+			// C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+			g.
+				Qual("C", "g_signal_handler_disconnect").
+				Call(
+					jen.Id("instance"),
+					jen.Qual("C", "gulong").Call(jen.Id("connectionID")),
+				)
+
+			//	delete(signalKeyPressEventMap, connectionId)
+			g.Delete(jen.Id(s.varNameMap), jen.Id("connectionID"))
+		})
+
+	g.Line()
+}

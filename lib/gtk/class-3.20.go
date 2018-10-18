@@ -431,6 +431,22 @@ func (recv *PlacesSidebar) ConnectMount(callback PlacesSidebarSignalMountCallbac
 	return int(retC)
 }
 
+/*
+DisconnectMount disconnects a callback from the 'mount' signal for the PlacesSidebar.
+
+The connectionID should be a value returned from a call to ConnectMount.
+*/
+func (recv *PlacesSidebar) DisconnectMount(connectionID int) {
+	_, exists := signalPlacesSidebarMountMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalPlacesSidebarMountMap, connectionID)
+}
+
 //export PlacesSidebar_mountHandler
 func PlacesSidebar_mountHandler() {
 	fmt.Println("cb")
@@ -464,6 +480,22 @@ func (recv *PlacesSidebar) ConnectShowOtherLocationsWithFlags(callback PlacesSid
 	return int(retC)
 }
 
+/*
+DisconnectShowOtherLocationsWithFlags disconnects a callback from the 'show-other-locations-with-flags' signal for the PlacesSidebar.
+
+The connectionID should be a value returned from a call to ConnectShowOtherLocationsWithFlags.
+*/
+func (recv *PlacesSidebar) DisconnectShowOtherLocationsWithFlags(connectionID int) {
+	_, exists := signalPlacesSidebarShowOtherLocationsWithFlagsMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalPlacesSidebarShowOtherLocationsWithFlagsMap, connectionID)
+}
+
 //export PlacesSidebar_showOtherLocationsWithFlagsHandler
 func PlacesSidebar_showOtherLocationsWithFlagsHandler() {
 	fmt.Println("cb")
@@ -491,6 +523,22 @@ func (recv *PlacesSidebar) ConnectUnmount(callback PlacesSidebarSignalUnmountCal
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.PlacesSidebar_signal_connect_unmount(instance, C.gpointer(uintptr(signalPlacesSidebarUnmountId)))
 	return int(retC)
+}
+
+/*
+DisconnectUnmount disconnects a callback from the 'unmount' signal for the PlacesSidebar.
+
+The connectionID should be a value returned from a call to ConnectUnmount.
+*/
+func (recv *PlacesSidebar) DisconnectUnmount(connectionID int) {
+	_, exists := signalPlacesSidebarUnmountMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalPlacesSidebarUnmountMap, connectionID)
 }
 
 //export PlacesSidebar_unmountHandler
@@ -715,6 +763,22 @@ func (recv *ShortcutsSection) ConnectChangeCurrentPage(callback ShortcutsSection
 	return int(retC)
 }
 
+/*
+DisconnectChangeCurrentPage disconnects a callback from the 'change-current-page' signal for the ShortcutsSection.
+
+The connectionID should be a value returned from a call to ConnectChangeCurrentPage.
+*/
+func (recv *ShortcutsSection) DisconnectChangeCurrentPage(connectionID int) {
+	_, exists := signalShortcutsSectionChangeCurrentPageMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalShortcutsSectionChangeCurrentPageMap, connectionID)
+}
+
 //export ShortcutsSection_changeCurrentPageHandler
 func ShortcutsSection_changeCurrentPageHandler() {
 	fmt.Println("cb")
@@ -854,6 +918,22 @@ func (recv *ShortcutsWindow) ConnectClose(callback ShortcutsWindowSignalCloseCal
 	return int(retC)
 }
 
+/*
+DisconnectClose disconnects a callback from the 'close' signal for the ShortcutsWindow.
+
+The connectionID should be a value returned from a call to ConnectClose.
+*/
+func (recv *ShortcutsWindow) DisconnectClose(connectionID int) {
+	_, exists := signalShortcutsWindowCloseMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalShortcutsWindowCloseMap, connectionID)
+}
+
 //export ShortcutsWindow_closeHandler
 func ShortcutsWindow_closeHandler() {
 	fmt.Println("cb")
@@ -881,6 +961,22 @@ func (recv *ShortcutsWindow) ConnectSearch(callback ShortcutsWindowSignalSearchC
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.ShortcutsWindow_signal_connect_search(instance, C.gpointer(uintptr(signalShortcutsWindowSearchId)))
 	return int(retC)
+}
+
+/*
+DisconnectSearch disconnects a callback from the 'search' signal for the ShortcutsWindow.
+
+The connectionID should be a value returned from a call to ConnectSearch.
+*/
+func (recv *ShortcutsWindow) DisconnectSearch(connectionID int) {
+	_, exists := signalShortcutsWindowSearchMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalShortcutsWindowSearchMap, connectionID)
 }
 
 //export ShortcutsWindow_searchHandler

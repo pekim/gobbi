@@ -275,6 +275,22 @@ func (recv *Entry) ConnectIconPress(callback EntrySignalIconPressCallback) int {
 	return int(retC)
 }
 
+/*
+DisconnectIconPress disconnects a callback from the 'icon-press' signal for the Entry.
+
+The connectionID should be a value returned from a call to ConnectIconPress.
+*/
+func (recv *Entry) DisconnectIconPress(connectionID int) {
+	_, exists := signalEntryIconPressMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalEntryIconPressMap, connectionID)
+}
+
 //export Entry_iconPressHandler
 func Entry_iconPressHandler() {
 	fmt.Println("cb")
@@ -302,6 +318,22 @@ func (recv *Entry) ConnectIconRelease(callback EntrySignalIconReleaseCallback) i
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.Entry_signal_connect_icon_release(instance, C.gpointer(uintptr(signalEntryIconReleaseId)))
 	return int(retC)
+}
+
+/*
+DisconnectIconRelease disconnects a callback from the 'icon-release' signal for the Entry.
+
+The connectionID should be a value returned from a call to ConnectIconRelease.
+*/
+func (recv *Entry) DisconnectIconRelease(connectionID int) {
+	_, exists := signalEntryIconReleaseMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalEntryIconReleaseMap, connectionID)
 }
 
 //export Entry_iconReleaseHandler
@@ -813,6 +845,22 @@ func (recv *StatusIcon) ConnectQueryTooltip(callback StatusIconSignalQueryToolti
 	return int(retC)
 }
 
+/*
+DisconnectQueryTooltip disconnects a callback from the 'query-tooltip' signal for the StatusIcon.
+
+The connectionID should be a value returned from a call to ConnectQueryTooltip.
+*/
+func (recv *StatusIcon) DisconnectQueryTooltip(connectionID int) {
+	_, exists := signalStatusIconQueryTooltipMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalStatusIconQueryTooltipMap, connectionID)
+}
+
 //export StatusIcon_queryTooltipHandler
 func StatusIcon_queryTooltipHandler() {
 	fmt.Println("cb")
@@ -840,6 +888,22 @@ func (recv *StatusIcon) ConnectScrollEvent(callback StatusIconSignalScrollEventC
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.StatusIcon_signal_connect_scroll_event(instance, C.gpointer(uintptr(signalStatusIconScrollEventId)))
 	return int(retC)
+}
+
+/*
+DisconnectScrollEvent disconnects a callback from the 'scroll-event' signal for the StatusIcon.
+
+The connectionID should be a value returned from a call to ConnectScrollEvent.
+*/
+func (recv *StatusIcon) DisconnectScrollEvent(connectionID int) {
+	_, exists := signalStatusIconScrollEventMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalStatusIconScrollEventMap, connectionID)
 }
 
 //export StatusIcon_scrollEventHandler
@@ -933,6 +997,22 @@ func (recv *TextBuffer) ConnectPasteDone(callback TextBufferSignalPasteDoneCallb
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.TextBuffer_signal_connect_paste_done(instance, C.gpointer(uintptr(signalTextBufferPasteDoneId)))
 	return int(retC)
+}
+
+/*
+DisconnectPasteDone disconnects a callback from the 'paste-done' signal for the TextBuffer.
+
+The connectionID should be a value returned from a call to ConnectPasteDone.
+*/
+func (recv *TextBuffer) DisconnectPasteDone(connectionID int) {
+	_, exists := signalTextBufferPasteDoneMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalTextBufferPasteDoneMap, connectionID)
 }
 
 //export TextBuffer_pasteDoneHandler

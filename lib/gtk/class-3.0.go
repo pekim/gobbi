@@ -388,6 +388,22 @@ func (recv *CellArea) ConnectFocusChanged(callback CellAreaSignalFocusChangedCal
 	return int(retC)
 }
 
+/*
+DisconnectFocusChanged disconnects a callback from the 'focus-changed' signal for the CellArea.
+
+The connectionID should be a value returned from a call to ConnectFocusChanged.
+*/
+func (recv *CellArea) DisconnectFocusChanged(connectionID int) {
+	_, exists := signalCellAreaFocusChangedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalCellAreaFocusChangedMap, connectionID)
+}
+
 //export CellArea_focusChangedHandler
 func CellArea_focusChangedHandler() {
 	fmt.Println("cb")
@@ -1671,6 +1687,22 @@ func (recv *StyleContext) ConnectChanged(callback StyleContextSignalChangedCallb
 	return int(retC)
 }
 
+/*
+DisconnectChanged disconnects a callback from the 'changed' signal for the StyleContext.
+
+The connectionID should be a value returned from a call to ConnectChanged.
+*/
+func (recv *StyleContext) DisconnectChanged(connectionID int) {
+	_, exists := signalStyleContextChangedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalStyleContextChangedMap, connectionID)
+}
+
 //export StyleContext_changedHandler
 func StyleContext_changedHandler() {
 	fmt.Println("cb")
@@ -2412,6 +2444,22 @@ func (recv *Widget) ConnectDraw(callback WidgetSignalDrawCallback) int {
 	return int(retC)
 }
 
+/*
+DisconnectDraw disconnects a callback from the 'draw' signal for the Widget.
+
+The connectionID should be a value returned from a call to ConnectDraw.
+*/
+func (recv *Widget) DisconnectDraw(connectionID int) {
+	_, exists := signalWidgetDrawMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalWidgetDrawMap, connectionID)
+}
+
 //export Widget_drawHandler
 func Widget_drawHandler() {
 	fmt.Println("cb")
@@ -2447,6 +2495,22 @@ func (recv *Widget) ConnectStateFlagsChanged(callback WidgetSignalStateFlagsChan
 	return int(retC)
 }
 
+/*
+DisconnectStateFlagsChanged disconnects a callback from the 'state-flags-changed' signal for the Widget.
+
+The connectionID should be a value returned from a call to ConnectStateFlagsChanged.
+*/
+func (recv *Widget) DisconnectStateFlagsChanged(connectionID int) {
+	_, exists := signalWidgetStateFlagsChangedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalWidgetStateFlagsChangedMap, connectionID)
+}
+
 //export Widget_stateFlagsChangedHandler
 func Widget_stateFlagsChangedHandler() {
 	fmt.Println("cb")
@@ -2474,6 +2538,22 @@ func (recv *Widget) ConnectStyleUpdated(callback WidgetSignalStyleUpdatedCallbac
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.Widget_signal_connect_style_updated(instance, C.gpointer(uintptr(signalWidgetStyleUpdatedId)))
 	return int(retC)
+}
+
+/*
+DisconnectStyleUpdated disconnects a callback from the 'style-updated' signal for the Widget.
+
+The connectionID should be a value returned from a call to ConnectStyleUpdated.
+*/
+func (recv *Widget) DisconnectStyleUpdated(connectionID int) {
+	_, exists := signalWidgetStyleUpdatedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalWidgetStyleUpdatedMap, connectionID)
 }
 
 //export Widget_styleUpdatedHandler

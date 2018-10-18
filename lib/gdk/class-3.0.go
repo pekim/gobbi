@@ -263,6 +263,22 @@ func (recv *Window) ConnectCreateSurface(callback WindowSignalCreateSurfaceCallb
 	return int(retC)
 }
 
+/*
+DisconnectCreateSurface disconnects a callback from the 'create-surface' signal for the Window.
+
+The connectionID should be a value returned from a call to ConnectCreateSurface.
+*/
+func (recv *Window) DisconnectCreateSurface(connectionID int) {
+	_, exists := signalWindowCreateSurfaceMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalWindowCreateSurfaceMap, connectionID)
+}
+
 //export Window_createSurfaceHandler
 func Window_createSurfaceHandler() {
 	fmt.Println("cb")

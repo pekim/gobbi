@@ -223,6 +223,22 @@ func (recv *LevelBar) ConnectOffsetChanged(callback LevelBarSignalOffsetChangedC
 	return int(retC)
 }
 
+/*
+DisconnectOffsetChanged disconnects a callback from the 'offset-changed' signal for the LevelBar.
+
+The connectionID should be a value returned from a call to ConnectOffsetChanged.
+*/
+func (recv *LevelBar) DisconnectOffsetChanged(connectionID int) {
+	_, exists := signalLevelBarOffsetChangedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalLevelBarOffsetChangedMap, connectionID)
+}
+
 //export LevelBar_offsetChangedHandler
 func LevelBar_offsetChangedHandler() {
 	fmt.Println("cb")

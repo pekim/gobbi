@@ -213,6 +213,22 @@ func (recv *ComboBox) ConnectFormatEntryText(callback ComboBoxSignalFormatEntryT
 	return int(retC)
 }
 
+/*
+DisconnectFormatEntryText disconnects a callback from the 'format-entry-text' signal for the ComboBox.
+
+The connectionID should be a value returned from a call to ConnectFormatEntryText.
+*/
+func (recv *ComboBox) DisconnectFormatEntryText(connectionID int) {
+	_, exists := signalComboBoxFormatEntryTextMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalComboBoxFormatEntryTextMap, connectionID)
+}
+
 //export ComboBox_formatEntryTextHandler
 func ComboBox_formatEntryTextHandler() {
 	fmt.Println("cb")

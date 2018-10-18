@@ -175,6 +175,22 @@ func (recv *Hyperlink) ConnectLinkActivated(callback HyperlinkSignalLinkActivate
 	return int(retC)
 }
 
+/*
+DisconnectLinkActivated disconnects a callback from the 'link-activated' signal for the Hyperlink.
+
+The connectionID should be a value returned from a call to ConnectLinkActivated.
+*/
+func (recv *Hyperlink) DisconnectLinkActivated(connectionID int) {
+	_, exists := signalHyperlinkLinkActivatedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalHyperlinkLinkActivatedMap, connectionID)
+}
+
 //export Hyperlink_linkActivatedHandler
 func Hyperlink_linkActivatedHandler() {
 	fmt.Println("cb")
@@ -440,6 +456,22 @@ func (recv *Object) ConnectActiveDescendantChanged(callback ObjectSignalActiveDe
 	return int(retC)
 }
 
+/*
+DisconnectActiveDescendantChanged disconnects a callback from the 'active-descendant-changed' signal for the Object.
+
+The connectionID should be a value returned from a call to ConnectActiveDescendantChanged.
+*/
+func (recv *Object) DisconnectActiveDescendantChanged(connectionID int) {
+	_, exists := signalObjectActiveDescendantChangedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalObjectActiveDescendantChangedMap, connectionID)
+}
+
 //export Object_activeDescendantChangedHandler
 func Object_activeDescendantChangedHandler() {
 	fmt.Println("cb")
@@ -467,6 +499,22 @@ func (recv *Object) ConnectChildrenChanged(callback ObjectSignalChildrenChangedC
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.Object_signal_connect_children_changed(instance, C.gpointer(uintptr(signalObjectChildrenChangedId)))
 	return int(retC)
+}
+
+/*
+DisconnectChildrenChanged disconnects a callback from the 'children-changed' signal for the Object.
+
+The connectionID should be a value returned from a call to ConnectChildrenChanged.
+*/
+func (recv *Object) DisconnectChildrenChanged(connectionID int) {
+	_, exists := signalObjectChildrenChangedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalObjectChildrenChangedMap, connectionID)
 }
 
 //export Object_childrenChangedHandler
@@ -498,6 +546,22 @@ func (recv *Object) ConnectFocusEvent(callback ObjectSignalFocusEventCallback) i
 	return int(retC)
 }
 
+/*
+DisconnectFocusEvent disconnects a callback from the 'focus-event' signal for the Object.
+
+The connectionID should be a value returned from a call to ConnectFocusEvent.
+*/
+func (recv *Object) DisconnectFocusEvent(connectionID int) {
+	_, exists := signalObjectFocusEventMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalObjectFocusEventMap, connectionID)
+}
+
 //export Object_focusEventHandler
 func Object_focusEventHandler() {
 	fmt.Println("cb")
@@ -525,6 +589,22 @@ func (recv *Object) ConnectPropertyChange(callback ObjectSignalPropertyChangeCal
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.Object_signal_connect_property_change(instance, C.gpointer(uintptr(signalObjectPropertyChangeId)))
 	return int(retC)
+}
+
+/*
+DisconnectPropertyChange disconnects a callback from the 'property-change' signal for the Object.
+
+The connectionID should be a value returned from a call to ConnectPropertyChange.
+*/
+func (recv *Object) DisconnectPropertyChange(connectionID int) {
+	_, exists := signalObjectPropertyChangeMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalObjectPropertyChangeMap, connectionID)
 }
 
 //export Object_propertyChangeHandler
@@ -556,6 +636,22 @@ func (recv *Object) ConnectStateChange(callback ObjectSignalStateChangeCallback)
 	return int(retC)
 }
 
+/*
+DisconnectStateChange disconnects a callback from the 'state-change' signal for the Object.
+
+The connectionID should be a value returned from a call to ConnectStateChange.
+*/
+func (recv *Object) DisconnectStateChange(connectionID int) {
+	_, exists := signalObjectStateChangeMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalObjectStateChangeMap, connectionID)
+}
+
 //export Object_stateChangeHandler
 func Object_stateChangeHandler() {
 	fmt.Println("cb")
@@ -583,6 +679,22 @@ func (recv *Object) ConnectVisibleDataChanged(callback ObjectSignalVisibleDataCh
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.Object_signal_connect_visible_data_changed(instance, C.gpointer(uintptr(signalObjectVisibleDataChangedId)))
 	return int(retC)
+}
+
+/*
+DisconnectVisibleDataChanged disconnects a callback from the 'visible-data-changed' signal for the Object.
+
+The connectionID should be a value returned from a call to ConnectVisibleDataChanged.
+*/
+func (recv *Object) DisconnectVisibleDataChanged(connectionID int) {
+	_, exists := signalObjectVisibleDataChangedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalObjectVisibleDataChangedMap, connectionID)
 }
 
 //export Object_visibleDataChangedHandler

@@ -2278,6 +2278,22 @@ func (recv *AccelGroup) ConnectAccelActivate(callback AccelGroupSignalAccelActiv
 	return int(retC)
 }
 
+/*
+DisconnectAccelActivate disconnects a callback from the 'accel-activate' signal for the AccelGroup.
+
+The connectionID should be a value returned from a call to ConnectAccelActivate.
+*/
+func (recv *AccelGroup) DisconnectAccelActivate(connectionID int) {
+	_, exists := signalAccelGroupAccelActivateMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalAccelGroupAccelActivateMap, connectionID)
+}
+
 //export AccelGroup_accelActivateHandler
 func AccelGroup_accelActivateHandler() {
 	fmt.Println("cb")
@@ -2305,6 +2321,22 @@ func (recv *AccelGroup) ConnectAccelChanged(callback AccelGroupSignalAccelChange
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.AccelGroup_signal_connect_accel_changed(instance, C.gpointer(uintptr(signalAccelGroupAccelChangedId)))
 	return int(retC)
+}
+
+/*
+DisconnectAccelChanged disconnects a callback from the 'accel-changed' signal for the AccelGroup.
+
+The connectionID should be a value returned from a call to ConnectAccelChanged.
+*/
+func (recv *AccelGroup) DisconnectAccelChanged(connectionID int) {
+	_, exists := signalAccelGroupAccelChangedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalAccelGroupAccelChangedMap, connectionID)
 }
 
 //export AccelGroup_accelChangedHandler
@@ -2767,6 +2799,22 @@ func (recv *Adjustment) ConnectChanged(callback AdjustmentSignalChangedCallback)
 	return int(retC)
 }
 
+/*
+DisconnectChanged disconnects a callback from the 'changed' signal for the Adjustment.
+
+The connectionID should be a value returned from a call to ConnectChanged.
+*/
+func (recv *Adjustment) DisconnectChanged(connectionID int) {
+	_, exists := signalAdjustmentChangedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalAdjustmentChangedMap, connectionID)
+}
+
 //export Adjustment_changedHandler
 func Adjustment_changedHandler() {
 	fmt.Println("cb")
@@ -2794,6 +2842,22 @@ func (recv *Adjustment) ConnectValueChanged(callback AdjustmentSignalValueChange
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.Adjustment_signal_connect_value_changed(instance, C.gpointer(uintptr(signalAdjustmentValueChangedId)))
 	return int(retC)
+}
+
+/*
+DisconnectValueChanged disconnects a callback from the 'value-changed' signal for the Adjustment.
+
+The connectionID should be a value returned from a call to ConnectValueChanged.
+*/
+func (recv *Adjustment) DisconnectValueChanged(connectionID int) {
+	_, exists := signalAdjustmentValueChangedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalAdjustmentValueChangedMap, connectionID)
 }
 
 //export Adjustment_valueChangedHandler
@@ -3029,6 +3093,22 @@ func (recv *AppChooserButton) ConnectCustomItemActivated(callback AppChooserButt
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.AppChooserButton_signal_connect_custom_item_activated(instance, C.gpointer(uintptr(signalAppChooserButtonCustomItemActivatedId)))
 	return int(retC)
+}
+
+/*
+DisconnectCustomItemActivated disconnects a callback from the 'custom-item-activated' signal for the AppChooserButton.
+
+The connectionID should be a value returned from a call to ConnectCustomItemActivated.
+*/
+func (recv *AppChooserButton) DisconnectCustomItemActivated(connectionID int) {
+	_, exists := signalAppChooserButtonCustomItemActivatedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalAppChooserButtonCustomItemActivatedMap, connectionID)
 }
 
 //export AppChooserButton_customItemActivatedHandler
@@ -3600,6 +3680,22 @@ func (recv *Assistant) ConnectEscape(callback AssistantSignalEscapeCallback) int
 	return int(retC)
 }
 
+/*
+DisconnectEscape disconnects a callback from the 'escape' signal for the Assistant.
+
+The connectionID should be a value returned from a call to ConnectEscape.
+*/
+func (recv *Assistant) DisconnectEscape(connectionID int) {
+	_, exists := signalAssistantEscapeMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalAssistantEscapeMap, connectionID)
+}
+
 //export Assistant_escapeHandler
 func Assistant_escapeHandler() {
 	fmt.Println("cb")
@@ -3975,6 +4071,22 @@ func (recv *Button) ConnectActivate(callback ButtonSignalActivateCallback) int {
 	return int(retC)
 }
 
+/*
+DisconnectActivate disconnects a callback from the 'activate' signal for the Button.
+
+The connectionID should be a value returned from a call to ConnectActivate.
+*/
+func (recv *Button) DisconnectActivate(connectionID int) {
+	_, exists := signalButtonActivateMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalButtonActivateMap, connectionID)
+}
+
 //export Button_activateHandler
 func Button_activateHandler() {
 	fmt.Println("cb")
@@ -4002,6 +4114,22 @@ func (recv *Button) ConnectClicked(callback ButtonSignalClickedCallback) int {
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.Button_signal_connect_clicked(instance, C.gpointer(uintptr(signalButtonClickedId)))
 	return int(retC)
+}
+
+/*
+DisconnectClicked disconnects a callback from the 'clicked' signal for the Button.
+
+The connectionID should be a value returned from a call to ConnectClicked.
+*/
+func (recv *Button) DisconnectClicked(connectionID int) {
+	_, exists := signalButtonClickedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalButtonClickedMap, connectionID)
 }
 
 //export Button_clickedHandler
@@ -4033,6 +4161,22 @@ func (recv *Button) ConnectEnter(callback ButtonSignalEnterCallback) int {
 	return int(retC)
 }
 
+/*
+DisconnectEnter disconnects a callback from the 'enter' signal for the Button.
+
+The connectionID should be a value returned from a call to ConnectEnter.
+*/
+func (recv *Button) DisconnectEnter(connectionID int) {
+	_, exists := signalButtonEnterMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalButtonEnterMap, connectionID)
+}
+
 //export Button_enterHandler
 func Button_enterHandler() {
 	fmt.Println("cb")
@@ -4060,6 +4204,22 @@ func (recv *Button) ConnectLeave(callback ButtonSignalLeaveCallback) int {
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.Button_signal_connect_leave(instance, C.gpointer(uintptr(signalButtonLeaveId)))
 	return int(retC)
+}
+
+/*
+DisconnectLeave disconnects a callback from the 'leave' signal for the Button.
+
+The connectionID should be a value returned from a call to ConnectLeave.
+*/
+func (recv *Button) DisconnectLeave(connectionID int) {
+	_, exists := signalButtonLeaveMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalButtonLeaveMap, connectionID)
 }
 
 //export Button_leaveHandler
@@ -4091,6 +4251,22 @@ func (recv *Button) ConnectPressed(callback ButtonSignalPressedCallback) int {
 	return int(retC)
 }
 
+/*
+DisconnectPressed disconnects a callback from the 'pressed' signal for the Button.
+
+The connectionID should be a value returned from a call to ConnectPressed.
+*/
+func (recv *Button) DisconnectPressed(connectionID int) {
+	_, exists := signalButtonPressedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalButtonPressedMap, connectionID)
+}
+
 //export Button_pressedHandler
 func Button_pressedHandler() {
 	fmt.Println("cb")
@@ -4118,6 +4294,22 @@ func (recv *Button) ConnectReleased(callback ButtonSignalReleasedCallback) int {
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.Button_signal_connect_released(instance, C.gpointer(uintptr(signalButtonReleasedId)))
 	return int(retC)
+}
+
+/*
+DisconnectReleased disconnects a callback from the 'released' signal for the Button.
+
+The connectionID should be a value returned from a call to ConnectReleased.
+*/
+func (recv *Button) DisconnectReleased(connectionID int) {
+	_, exists := signalButtonReleasedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalButtonReleasedMap, connectionID)
 }
 
 //export Button_releasedHandler
@@ -4474,6 +4666,22 @@ func (recv *Calendar) ConnectDaySelected(callback CalendarSignalDaySelectedCallb
 	return int(retC)
 }
 
+/*
+DisconnectDaySelected disconnects a callback from the 'day-selected' signal for the Calendar.
+
+The connectionID should be a value returned from a call to ConnectDaySelected.
+*/
+func (recv *Calendar) DisconnectDaySelected(connectionID int) {
+	_, exists := signalCalendarDaySelectedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalCalendarDaySelectedMap, connectionID)
+}
+
 //export Calendar_daySelectedHandler
 func Calendar_daySelectedHandler() {
 	fmt.Println("cb")
@@ -4501,6 +4709,22 @@ func (recv *Calendar) ConnectDaySelectedDoubleClick(callback CalendarSignalDaySe
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.Calendar_signal_connect_day_selected_double_click(instance, C.gpointer(uintptr(signalCalendarDaySelectedDoubleClickId)))
 	return int(retC)
+}
+
+/*
+DisconnectDaySelectedDoubleClick disconnects a callback from the 'day-selected-double-click' signal for the Calendar.
+
+The connectionID should be a value returned from a call to ConnectDaySelectedDoubleClick.
+*/
+func (recv *Calendar) DisconnectDaySelectedDoubleClick(connectionID int) {
+	_, exists := signalCalendarDaySelectedDoubleClickMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalCalendarDaySelectedDoubleClickMap, connectionID)
 }
 
 //export Calendar_daySelectedDoubleClickHandler
@@ -4532,6 +4756,22 @@ func (recv *Calendar) ConnectMonthChanged(callback CalendarSignalMonthChangedCal
 	return int(retC)
 }
 
+/*
+DisconnectMonthChanged disconnects a callback from the 'month-changed' signal for the Calendar.
+
+The connectionID should be a value returned from a call to ConnectMonthChanged.
+*/
+func (recv *Calendar) DisconnectMonthChanged(connectionID int) {
+	_, exists := signalCalendarMonthChangedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalCalendarMonthChangedMap, connectionID)
+}
+
 //export Calendar_monthChangedHandler
 func Calendar_monthChangedHandler() {
 	fmt.Println("cb")
@@ -4559,6 +4799,22 @@ func (recv *Calendar) ConnectNextMonth(callback CalendarSignalNextMonthCallback)
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.Calendar_signal_connect_next_month(instance, C.gpointer(uintptr(signalCalendarNextMonthId)))
 	return int(retC)
+}
+
+/*
+DisconnectNextMonth disconnects a callback from the 'next-month' signal for the Calendar.
+
+The connectionID should be a value returned from a call to ConnectNextMonth.
+*/
+func (recv *Calendar) DisconnectNextMonth(connectionID int) {
+	_, exists := signalCalendarNextMonthMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalCalendarNextMonthMap, connectionID)
 }
 
 //export Calendar_nextMonthHandler
@@ -4590,6 +4846,22 @@ func (recv *Calendar) ConnectNextYear(callback CalendarSignalNextYearCallback) i
 	return int(retC)
 }
 
+/*
+DisconnectNextYear disconnects a callback from the 'next-year' signal for the Calendar.
+
+The connectionID should be a value returned from a call to ConnectNextYear.
+*/
+func (recv *Calendar) DisconnectNextYear(connectionID int) {
+	_, exists := signalCalendarNextYearMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalCalendarNextYearMap, connectionID)
+}
+
 //export Calendar_nextYearHandler
 func Calendar_nextYearHandler() {
 	fmt.Println("cb")
@@ -4619,6 +4891,22 @@ func (recv *Calendar) ConnectPrevMonth(callback CalendarSignalPrevMonthCallback)
 	return int(retC)
 }
 
+/*
+DisconnectPrevMonth disconnects a callback from the 'prev-month' signal for the Calendar.
+
+The connectionID should be a value returned from a call to ConnectPrevMonth.
+*/
+func (recv *Calendar) DisconnectPrevMonth(connectionID int) {
+	_, exists := signalCalendarPrevMonthMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalCalendarPrevMonthMap, connectionID)
+}
+
 //export Calendar_prevMonthHandler
 func Calendar_prevMonthHandler() {
 	fmt.Println("cb")
@@ -4646,6 +4934,22 @@ func (recv *Calendar) ConnectPrevYear(callback CalendarSignalPrevYearCallback) i
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.Calendar_signal_connect_prev_year(instance, C.gpointer(uintptr(signalCalendarPrevYearId)))
 	return int(retC)
+}
+
+/*
+DisconnectPrevYear disconnects a callback from the 'prev-year' signal for the Calendar.
+
+The connectionID should be a value returned from a call to ConnectPrevYear.
+*/
+func (recv *Calendar) DisconnectPrevYear(connectionID int) {
+	_, exists := signalCalendarPrevYearMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalCalendarPrevYearMap, connectionID)
 }
 
 //export Calendar_prevYearHandler
@@ -5335,6 +5639,22 @@ func (recv *CellRendererText) ConnectEdited(callback CellRendererTextSignalEdite
 	return int(retC)
 }
 
+/*
+DisconnectEdited disconnects a callback from the 'edited' signal for the CellRendererText.
+
+The connectionID should be a value returned from a call to ConnectEdited.
+*/
+func (recv *CellRendererText) DisconnectEdited(connectionID int) {
+	_, exists := signalCellRendererTextEditedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalCellRendererTextEditedMap, connectionID)
+}
+
 //export CellRendererText_editedHandler
 func CellRendererText_editedHandler() {
 	fmt.Println("cb")
@@ -5423,6 +5743,22 @@ func (recv *CellRendererToggle) ConnectToggled(callback CellRendererToggleSignal
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.CellRendererToggle_signal_connect_toggled(instance, C.gpointer(uintptr(signalCellRendererToggleToggledId)))
 	return int(retC)
+}
+
+/*
+DisconnectToggled disconnects a callback from the 'toggled' signal for the CellRendererToggle.
+
+The connectionID should be a value returned from a call to ConnectToggled.
+*/
+func (recv *CellRendererToggle) DisconnectToggled(connectionID int) {
+	_, exists := signalCellRendererToggleToggledMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalCellRendererToggleToggledMap, connectionID)
 }
 
 //export CellRendererToggle_toggledHandler
@@ -5692,6 +6028,22 @@ func (recv *CheckMenuItem) ConnectToggled(callback CheckMenuItemSignalToggledCal
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.CheckMenuItem_signal_connect_toggled(instance, C.gpointer(uintptr(signalCheckMenuItemToggledId)))
 	return int(retC)
+}
+
+/*
+DisconnectToggled disconnects a callback from the 'toggled' signal for the CheckMenuItem.
+
+The connectionID should be a value returned from a call to ConnectToggled.
+*/
+func (recv *CheckMenuItem) DisconnectToggled(connectionID int) {
+	_, exists := signalCheckMenuItemToggledMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalCheckMenuItemToggledMap, connectionID)
 }
 
 //export CheckMenuItem_toggledHandler
@@ -6167,6 +6519,22 @@ func (recv *ColorSelection) ConnectColorChanged(callback ColorSelectionSignalCol
 	return int(retC)
 }
 
+/*
+DisconnectColorChanged disconnects a callback from the 'color-changed' signal for the ColorSelection.
+
+The connectionID should be a value returned from a call to ConnectColorChanged.
+*/
+func (recv *ColorSelection) DisconnectColorChanged(connectionID int) {
+	_, exists := signalColorSelectionColorChangedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalColorSelectionColorChangedMap, connectionID)
+}
+
 //export ColorSelection_colorChangedHandler
 func ColorSelection_colorChangedHandler() {
 	fmt.Println("cb")
@@ -6635,6 +7003,22 @@ func (recv *Container) ConnectAdd(callback ContainerSignalAddCallback) int {
 	return int(retC)
 }
 
+/*
+DisconnectAdd disconnects a callback from the 'add' signal for the Container.
+
+The connectionID should be a value returned from a call to ConnectAdd.
+*/
+func (recv *Container) DisconnectAdd(connectionID int) {
+	_, exists := signalContainerAddMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalContainerAddMap, connectionID)
+}
+
 //export Container_addHandler
 func Container_addHandler() {
 	fmt.Println("cb")
@@ -6662,6 +7046,22 @@ func (recv *Container) ConnectCheckResize(callback ContainerSignalCheckResizeCal
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.Container_signal_connect_check_resize(instance, C.gpointer(uintptr(signalContainerCheckResizeId)))
 	return int(retC)
+}
+
+/*
+DisconnectCheckResize disconnects a callback from the 'check-resize' signal for the Container.
+
+The connectionID should be a value returned from a call to ConnectCheckResize.
+*/
+func (recv *Container) DisconnectCheckResize(connectionID int) {
+	_, exists := signalContainerCheckResizeMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalContainerCheckResizeMap, connectionID)
 }
 
 //export Container_checkResizeHandler
@@ -6693,6 +7093,22 @@ func (recv *Container) ConnectRemove(callback ContainerSignalRemoveCallback) int
 	return int(retC)
 }
 
+/*
+DisconnectRemove disconnects a callback from the 'remove' signal for the Container.
+
+The connectionID should be a value returned from a call to ConnectRemove.
+*/
+func (recv *Container) DisconnectRemove(connectionID int) {
+	_, exists := signalContainerRemoveMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalContainerRemoveMap, connectionID)
+}
+
 //export Container_removeHandler
 func Container_removeHandler() {
 	fmt.Println("cb")
@@ -6720,6 +7136,22 @@ func (recv *Container) ConnectSetFocusChild(callback ContainerSignalSetFocusChil
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.Container_signal_connect_set_focus_child(instance, C.gpointer(uintptr(signalContainerSetFocusChildId)))
 	return int(retC)
+}
+
+/*
+DisconnectSetFocusChild disconnects a callback from the 'set-focus-child' signal for the Container.
+
+The connectionID should be a value returned from a call to ConnectSetFocusChild.
+*/
+func (recv *Container) DisconnectSetFocusChild(connectionID int) {
+	_, exists := signalContainerSetFocusChildMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalContainerSetFocusChildMap, connectionID)
 }
 
 //export Container_setFocusChildHandler
@@ -7117,6 +7549,22 @@ func (recv *CssProvider) ConnectParsingError(callback CssProviderSignalParsingEr
 	return int(retC)
 }
 
+/*
+DisconnectParsingError disconnects a callback from the 'parsing-error' signal for the CssProvider.
+
+The connectionID should be a value returned from a call to ConnectParsingError.
+*/
+func (recv *CssProvider) DisconnectParsingError(connectionID int) {
+	_, exists := signalCssProviderParsingErrorMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalCssProviderParsingErrorMap, connectionID)
+}
+
 //export CssProvider_parsingErrorHandler
 func CssProvider_parsingErrorHandler() {
 	fmt.Println("cb")
@@ -7235,6 +7683,22 @@ func (recv *Dialog) ConnectClose(callback DialogSignalCloseCallback) int {
 	return int(retC)
 }
 
+/*
+DisconnectClose disconnects a callback from the 'close' signal for the Dialog.
+
+The connectionID should be a value returned from a call to ConnectClose.
+*/
+func (recv *Dialog) DisconnectClose(connectionID int) {
+	_, exists := signalDialogCloseMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalDialogCloseMap, connectionID)
+}
+
 //export Dialog_closeHandler
 func Dialog_closeHandler() {
 	fmt.Println("cb")
@@ -7262,6 +7726,22 @@ func (recv *Dialog) ConnectResponse(callback DialogSignalResponseCallback) int {
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.Dialog_signal_connect_response(instance, C.gpointer(uintptr(signalDialogResponseId)))
 	return int(retC)
+}
+
+/*
+DisconnectResponse disconnects a callback from the 'response' signal for the Dialog.
+
+The connectionID should be a value returned from a call to ConnectResponse.
+*/
+func (recv *Dialog) DisconnectResponse(connectionID int) {
+	_, exists := signalDialogResponseMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalDialogResponseMap, connectionID)
 }
 
 //export Dialog_responseHandler
@@ -7463,6 +7943,22 @@ func (recv *Entry) ConnectActivate(callback EntrySignalActivateCallback) int {
 	return int(retC)
 }
 
+/*
+DisconnectActivate disconnects a callback from the 'activate' signal for the Entry.
+
+The connectionID should be a value returned from a call to ConnectActivate.
+*/
+func (recv *Entry) DisconnectActivate(connectionID int) {
+	_, exists := signalEntryActivateMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalEntryActivateMap, connectionID)
+}
+
 //export Entry_activateHandler
 func Entry_activateHandler() {
 	fmt.Println("cb")
@@ -7490,6 +7986,22 @@ func (recv *Entry) ConnectBackspace(callback EntrySignalBackspaceCallback) int {
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.Entry_signal_connect_backspace(instance, C.gpointer(uintptr(signalEntryBackspaceId)))
 	return int(retC)
+}
+
+/*
+DisconnectBackspace disconnects a callback from the 'backspace' signal for the Entry.
+
+The connectionID should be a value returned from a call to ConnectBackspace.
+*/
+func (recv *Entry) DisconnectBackspace(connectionID int) {
+	_, exists := signalEntryBackspaceMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalEntryBackspaceMap, connectionID)
 }
 
 //export Entry_backspaceHandler
@@ -7521,6 +8033,22 @@ func (recv *Entry) ConnectCopyClipboard(callback EntrySignalCopyClipboardCallbac
 	return int(retC)
 }
 
+/*
+DisconnectCopyClipboard disconnects a callback from the 'copy-clipboard' signal for the Entry.
+
+The connectionID should be a value returned from a call to ConnectCopyClipboard.
+*/
+func (recv *Entry) DisconnectCopyClipboard(connectionID int) {
+	_, exists := signalEntryCopyClipboardMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalEntryCopyClipboardMap, connectionID)
+}
+
 //export Entry_copyClipboardHandler
 func Entry_copyClipboardHandler() {
 	fmt.Println("cb")
@@ -7548,6 +8076,22 @@ func (recv *Entry) ConnectCutClipboard(callback EntrySignalCutClipboardCallback)
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.Entry_signal_connect_cut_clipboard(instance, C.gpointer(uintptr(signalEntryCutClipboardId)))
 	return int(retC)
+}
+
+/*
+DisconnectCutClipboard disconnects a callback from the 'cut-clipboard' signal for the Entry.
+
+The connectionID should be a value returned from a call to ConnectCutClipboard.
+*/
+func (recv *Entry) DisconnectCutClipboard(connectionID int) {
+	_, exists := signalEntryCutClipboardMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalEntryCutClipboardMap, connectionID)
 }
 
 //export Entry_cutClipboardHandler
@@ -7579,6 +8123,22 @@ func (recv *Entry) ConnectDeleteFromCursor(callback EntrySignalDeleteFromCursorC
 	return int(retC)
 }
 
+/*
+DisconnectDeleteFromCursor disconnects a callback from the 'delete-from-cursor' signal for the Entry.
+
+The connectionID should be a value returned from a call to ConnectDeleteFromCursor.
+*/
+func (recv *Entry) DisconnectDeleteFromCursor(connectionID int) {
+	_, exists := signalEntryDeleteFromCursorMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalEntryDeleteFromCursorMap, connectionID)
+}
+
 //export Entry_deleteFromCursorHandler
 func Entry_deleteFromCursorHandler() {
 	fmt.Println("cb")
@@ -7606,6 +8166,22 @@ func (recv *Entry) ConnectInsertAtCursor(callback EntrySignalInsertAtCursorCallb
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.Entry_signal_connect_insert_at_cursor(instance, C.gpointer(uintptr(signalEntryInsertAtCursorId)))
 	return int(retC)
+}
+
+/*
+DisconnectInsertAtCursor disconnects a callback from the 'insert-at-cursor' signal for the Entry.
+
+The connectionID should be a value returned from a call to ConnectInsertAtCursor.
+*/
+func (recv *Entry) DisconnectInsertAtCursor(connectionID int) {
+	_, exists := signalEntryInsertAtCursorMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalEntryInsertAtCursorMap, connectionID)
 }
 
 //export Entry_insertAtCursorHandler
@@ -7637,6 +8213,22 @@ func (recv *Entry) ConnectMoveCursor(callback EntrySignalMoveCursorCallback) int
 	return int(retC)
 }
 
+/*
+DisconnectMoveCursor disconnects a callback from the 'move-cursor' signal for the Entry.
+
+The connectionID should be a value returned from a call to ConnectMoveCursor.
+*/
+func (recv *Entry) DisconnectMoveCursor(connectionID int) {
+	_, exists := signalEntryMoveCursorMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalEntryMoveCursorMap, connectionID)
+}
+
 //export Entry_moveCursorHandler
 func Entry_moveCursorHandler() {
 	fmt.Println("cb")
@@ -7664,6 +8256,22 @@ func (recv *Entry) ConnectPasteClipboard(callback EntrySignalPasteClipboardCallb
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.Entry_signal_connect_paste_clipboard(instance, C.gpointer(uintptr(signalEntryPasteClipboardId)))
 	return int(retC)
+}
+
+/*
+DisconnectPasteClipboard disconnects a callback from the 'paste-clipboard' signal for the Entry.
+
+The connectionID should be a value returned from a call to ConnectPasteClipboard.
+*/
+func (recv *Entry) DisconnectPasteClipboard(connectionID int) {
+	_, exists := signalEntryPasteClipboardMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalEntryPasteClipboardMap, connectionID)
 }
 
 //export Entry_pasteClipboardHandler
@@ -7695,6 +8303,22 @@ func (recv *Entry) ConnectPopulatePopup(callback EntrySignalPopulatePopupCallbac
 	return int(retC)
 }
 
+/*
+DisconnectPopulatePopup disconnects a callback from the 'populate-popup' signal for the Entry.
+
+The connectionID should be a value returned from a call to ConnectPopulatePopup.
+*/
+func (recv *Entry) DisconnectPopulatePopup(connectionID int) {
+	_, exists := signalEntryPopulatePopupMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalEntryPopulatePopupMap, connectionID)
+}
+
 //export Entry_populatePopupHandler
 func Entry_populatePopupHandler() {
 	fmt.Println("cb")
@@ -7722,6 +8346,22 @@ func (recv *Entry) ConnectToggleOverwrite(callback EntrySignalToggleOverwriteCal
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.Entry_signal_connect_toggle_overwrite(instance, C.gpointer(uintptr(signalEntryToggleOverwriteId)))
 	return int(retC)
+}
+
+/*
+DisconnectToggleOverwrite disconnects a callback from the 'toggle-overwrite' signal for the Entry.
+
+The connectionID should be a value returned from a call to ConnectToggleOverwrite.
+*/
+func (recv *Entry) DisconnectToggleOverwrite(connectionID int) {
+	_, exists := signalEntryToggleOverwriteMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalEntryToggleOverwriteMap, connectionID)
 }
 
 //export Entry_toggleOverwriteHandler
@@ -8193,6 +8833,22 @@ func (recv *Expander) ConnectActivate(callback ExpanderSignalActivateCallback) i
 	return int(retC)
 }
 
+/*
+DisconnectActivate disconnects a callback from the 'activate' signal for the Expander.
+
+The connectionID should be a value returned from a call to ConnectActivate.
+*/
+func (recv *Expander) DisconnectActivate(connectionID int) {
+	_, exists := signalExpanderActivateMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalExpanderActivateMap, connectionID)
+}
+
 //export Expander_activateHandler
 func Expander_activateHandler() {
 	fmt.Println("cb")
@@ -8445,6 +9101,22 @@ func (recv *FileChooserWidget) ConnectDesktopFolder(callback FileChooserWidgetSi
 	return int(retC)
 }
 
+/*
+DisconnectDesktopFolder disconnects a callback from the 'desktop-folder' signal for the FileChooserWidget.
+
+The connectionID should be a value returned from a call to ConnectDesktopFolder.
+*/
+func (recv *FileChooserWidget) DisconnectDesktopFolder(connectionID int) {
+	_, exists := signalFileChooserWidgetDesktopFolderMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalFileChooserWidgetDesktopFolderMap, connectionID)
+}
+
 //export FileChooserWidget_desktopFolderHandler
 func FileChooserWidget_desktopFolderHandler() {
 	fmt.Println("cb")
@@ -8472,6 +9144,22 @@ func (recv *FileChooserWidget) ConnectDownFolder(callback FileChooserWidgetSigna
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.FileChooserWidget_signal_connect_down_folder(instance, C.gpointer(uintptr(signalFileChooserWidgetDownFolderId)))
 	return int(retC)
+}
+
+/*
+DisconnectDownFolder disconnects a callback from the 'down-folder' signal for the FileChooserWidget.
+
+The connectionID should be a value returned from a call to ConnectDownFolder.
+*/
+func (recv *FileChooserWidget) DisconnectDownFolder(connectionID int) {
+	_, exists := signalFileChooserWidgetDownFolderMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalFileChooserWidgetDownFolderMap, connectionID)
 }
 
 //export FileChooserWidget_downFolderHandler
@@ -8503,6 +9191,22 @@ func (recv *FileChooserWidget) ConnectHomeFolder(callback FileChooserWidgetSigna
 	return int(retC)
 }
 
+/*
+DisconnectHomeFolder disconnects a callback from the 'home-folder' signal for the FileChooserWidget.
+
+The connectionID should be a value returned from a call to ConnectHomeFolder.
+*/
+func (recv *FileChooserWidget) DisconnectHomeFolder(connectionID int) {
+	_, exists := signalFileChooserWidgetHomeFolderMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalFileChooserWidgetHomeFolderMap, connectionID)
+}
+
 //export FileChooserWidget_homeFolderHandler
 func FileChooserWidget_homeFolderHandler() {
 	fmt.Println("cb")
@@ -8530,6 +9234,22 @@ func (recv *FileChooserWidget) ConnectLocationPopup(callback FileChooserWidgetSi
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.FileChooserWidget_signal_connect_location_popup(instance, C.gpointer(uintptr(signalFileChooserWidgetLocationPopupId)))
 	return int(retC)
+}
+
+/*
+DisconnectLocationPopup disconnects a callback from the 'location-popup' signal for the FileChooserWidget.
+
+The connectionID should be a value returned from a call to ConnectLocationPopup.
+*/
+func (recv *FileChooserWidget) DisconnectLocationPopup(connectionID int) {
+	_, exists := signalFileChooserWidgetLocationPopupMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalFileChooserWidgetLocationPopupMap, connectionID)
 }
 
 //export FileChooserWidget_locationPopupHandler
@@ -8561,6 +9281,22 @@ func (recv *FileChooserWidget) ConnectLocationPopupOnPaste(callback FileChooserW
 	return int(retC)
 }
 
+/*
+DisconnectLocationPopupOnPaste disconnects a callback from the 'location-popup-on-paste' signal for the FileChooserWidget.
+
+The connectionID should be a value returned from a call to ConnectLocationPopupOnPaste.
+*/
+func (recv *FileChooserWidget) DisconnectLocationPopupOnPaste(connectionID int) {
+	_, exists := signalFileChooserWidgetLocationPopupOnPasteMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalFileChooserWidgetLocationPopupOnPasteMap, connectionID)
+}
+
 //export FileChooserWidget_locationPopupOnPasteHandler
 func FileChooserWidget_locationPopupOnPasteHandler() {
 	fmt.Println("cb")
@@ -8588,6 +9324,22 @@ func (recv *FileChooserWidget) ConnectLocationTogglePopup(callback FileChooserWi
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.FileChooserWidget_signal_connect_location_toggle_popup(instance, C.gpointer(uintptr(signalFileChooserWidgetLocationTogglePopupId)))
 	return int(retC)
+}
+
+/*
+DisconnectLocationTogglePopup disconnects a callback from the 'location-toggle-popup' signal for the FileChooserWidget.
+
+The connectionID should be a value returned from a call to ConnectLocationTogglePopup.
+*/
+func (recv *FileChooserWidget) DisconnectLocationTogglePopup(connectionID int) {
+	_, exists := signalFileChooserWidgetLocationTogglePopupMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalFileChooserWidgetLocationTogglePopupMap, connectionID)
 }
 
 //export FileChooserWidget_locationTogglePopupHandler
@@ -8619,6 +9371,22 @@ func (recv *FileChooserWidget) ConnectPlacesShortcut(callback FileChooserWidgetS
 	return int(retC)
 }
 
+/*
+DisconnectPlacesShortcut disconnects a callback from the 'places-shortcut' signal for the FileChooserWidget.
+
+The connectionID should be a value returned from a call to ConnectPlacesShortcut.
+*/
+func (recv *FileChooserWidget) DisconnectPlacesShortcut(connectionID int) {
+	_, exists := signalFileChooserWidgetPlacesShortcutMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalFileChooserWidgetPlacesShortcutMap, connectionID)
+}
+
 //export FileChooserWidget_placesShortcutHandler
 func FileChooserWidget_placesShortcutHandler() {
 	fmt.Println("cb")
@@ -8646,6 +9414,22 @@ func (recv *FileChooserWidget) ConnectQuickBookmark(callback FileChooserWidgetSi
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.FileChooserWidget_signal_connect_quick_bookmark(instance, C.gpointer(uintptr(signalFileChooserWidgetQuickBookmarkId)))
 	return int(retC)
+}
+
+/*
+DisconnectQuickBookmark disconnects a callback from the 'quick-bookmark' signal for the FileChooserWidget.
+
+The connectionID should be a value returned from a call to ConnectQuickBookmark.
+*/
+func (recv *FileChooserWidget) DisconnectQuickBookmark(connectionID int) {
+	_, exists := signalFileChooserWidgetQuickBookmarkMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalFileChooserWidgetQuickBookmarkMap, connectionID)
 }
 
 //export FileChooserWidget_quickBookmarkHandler
@@ -8677,6 +9461,22 @@ func (recv *FileChooserWidget) ConnectRecentShortcut(callback FileChooserWidgetS
 	return int(retC)
 }
 
+/*
+DisconnectRecentShortcut disconnects a callback from the 'recent-shortcut' signal for the FileChooserWidget.
+
+The connectionID should be a value returned from a call to ConnectRecentShortcut.
+*/
+func (recv *FileChooserWidget) DisconnectRecentShortcut(connectionID int) {
+	_, exists := signalFileChooserWidgetRecentShortcutMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalFileChooserWidgetRecentShortcutMap, connectionID)
+}
+
 //export FileChooserWidget_recentShortcutHandler
 func FileChooserWidget_recentShortcutHandler() {
 	fmt.Println("cb")
@@ -8704,6 +9504,22 @@ func (recv *FileChooserWidget) ConnectSearchShortcut(callback FileChooserWidgetS
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.FileChooserWidget_signal_connect_search_shortcut(instance, C.gpointer(uintptr(signalFileChooserWidgetSearchShortcutId)))
 	return int(retC)
+}
+
+/*
+DisconnectSearchShortcut disconnects a callback from the 'search-shortcut' signal for the FileChooserWidget.
+
+The connectionID should be a value returned from a call to ConnectSearchShortcut.
+*/
+func (recv *FileChooserWidget) DisconnectSearchShortcut(connectionID int) {
+	_, exists := signalFileChooserWidgetSearchShortcutMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalFileChooserWidgetSearchShortcutMap, connectionID)
 }
 
 //export FileChooserWidget_searchShortcutHandler
@@ -8735,6 +9551,22 @@ func (recv *FileChooserWidget) ConnectShowHidden(callback FileChooserWidgetSigna
 	return int(retC)
 }
 
+/*
+DisconnectShowHidden disconnects a callback from the 'show-hidden' signal for the FileChooserWidget.
+
+The connectionID should be a value returned from a call to ConnectShowHidden.
+*/
+func (recv *FileChooserWidget) DisconnectShowHidden(connectionID int) {
+	_, exists := signalFileChooserWidgetShowHiddenMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalFileChooserWidgetShowHiddenMap, connectionID)
+}
+
 //export FileChooserWidget_showHiddenHandler
 func FileChooserWidget_showHiddenHandler() {
 	fmt.Println("cb")
@@ -8762,6 +9594,22 @@ func (recv *FileChooserWidget) ConnectUpFolder(callback FileChooserWidgetSignalU
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.FileChooserWidget_signal_connect_up_folder(instance, C.gpointer(uintptr(signalFileChooserWidgetUpFolderId)))
 	return int(retC)
+}
+
+/*
+DisconnectUpFolder disconnects a callback from the 'up-folder' signal for the FileChooserWidget.
+
+The connectionID should be a value returned from a call to ConnectUpFolder.
+*/
+func (recv *FileChooserWidget) DisconnectUpFolder(connectionID int) {
+	_, exists := signalFileChooserWidgetUpFolderMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalFileChooserWidgetUpFolderMap, connectionID)
 }
 
 //export FileChooserWidget_upFolderHandler
@@ -8963,6 +9811,22 @@ func (recv *FlowBox) ConnectActivateCursorChild(callback FlowBoxSignalActivateCu
 	return int(retC)
 }
 
+/*
+DisconnectActivateCursorChild disconnects a callback from the 'activate-cursor-child' signal for the FlowBox.
+
+The connectionID should be a value returned from a call to ConnectActivateCursorChild.
+*/
+func (recv *FlowBox) DisconnectActivateCursorChild(connectionID int) {
+	_, exists := signalFlowBoxActivateCursorChildMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalFlowBoxActivateCursorChildMap, connectionID)
+}
+
 //export FlowBox_activateCursorChildHandler
 func FlowBox_activateCursorChildHandler() {
 	fmt.Println("cb")
@@ -8990,6 +9854,22 @@ func (recv *FlowBox) ConnectChildActivated(callback FlowBoxSignalChildActivatedC
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.FlowBox_signal_connect_child_activated(instance, C.gpointer(uintptr(signalFlowBoxChildActivatedId)))
 	return int(retC)
+}
+
+/*
+DisconnectChildActivated disconnects a callback from the 'child-activated' signal for the FlowBox.
+
+The connectionID should be a value returned from a call to ConnectChildActivated.
+*/
+func (recv *FlowBox) DisconnectChildActivated(connectionID int) {
+	_, exists := signalFlowBoxChildActivatedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalFlowBoxChildActivatedMap, connectionID)
 }
 
 //export FlowBox_childActivatedHandler
@@ -9021,6 +9901,22 @@ func (recv *FlowBox) ConnectMoveCursor(callback FlowBoxSignalMoveCursorCallback)
 	return int(retC)
 }
 
+/*
+DisconnectMoveCursor disconnects a callback from the 'move-cursor' signal for the FlowBox.
+
+The connectionID should be a value returned from a call to ConnectMoveCursor.
+*/
+func (recv *FlowBox) DisconnectMoveCursor(connectionID int) {
+	_, exists := signalFlowBoxMoveCursorMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalFlowBoxMoveCursorMap, connectionID)
+}
+
 //export FlowBox_moveCursorHandler
 func FlowBox_moveCursorHandler() {
 	fmt.Println("cb")
@@ -9048,6 +9944,22 @@ func (recv *FlowBox) ConnectSelectAll(callback FlowBoxSignalSelectAllCallback) i
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.FlowBox_signal_connect_select_all(instance, C.gpointer(uintptr(signalFlowBoxSelectAllId)))
 	return int(retC)
+}
+
+/*
+DisconnectSelectAll disconnects a callback from the 'select-all' signal for the FlowBox.
+
+The connectionID should be a value returned from a call to ConnectSelectAll.
+*/
+func (recv *FlowBox) DisconnectSelectAll(connectionID int) {
+	_, exists := signalFlowBoxSelectAllMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalFlowBoxSelectAllMap, connectionID)
 }
 
 //export FlowBox_selectAllHandler
@@ -9079,6 +9991,22 @@ func (recv *FlowBox) ConnectSelectedChildrenChanged(callback FlowBoxSignalSelect
 	return int(retC)
 }
 
+/*
+DisconnectSelectedChildrenChanged disconnects a callback from the 'selected-children-changed' signal for the FlowBox.
+
+The connectionID should be a value returned from a call to ConnectSelectedChildrenChanged.
+*/
+func (recv *FlowBox) DisconnectSelectedChildrenChanged(connectionID int) {
+	_, exists := signalFlowBoxSelectedChildrenChangedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalFlowBoxSelectedChildrenChangedMap, connectionID)
+}
+
 //export FlowBox_selectedChildrenChangedHandler
 func FlowBox_selectedChildrenChangedHandler() {
 	fmt.Println("cb")
@@ -9108,6 +10036,22 @@ func (recv *FlowBox) ConnectToggleCursorChild(callback FlowBoxSignalToggleCursor
 	return int(retC)
 }
 
+/*
+DisconnectToggleCursorChild disconnects a callback from the 'toggle-cursor-child' signal for the FlowBox.
+
+The connectionID should be a value returned from a call to ConnectToggleCursorChild.
+*/
+func (recv *FlowBox) DisconnectToggleCursorChild(connectionID int) {
+	_, exists := signalFlowBoxToggleCursorChildMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalFlowBoxToggleCursorChildMap, connectionID)
+}
+
 //export FlowBox_toggleCursorChildHandler
 func FlowBox_toggleCursorChildHandler() {
 	fmt.Println("cb")
@@ -9135,6 +10079,22 @@ func (recv *FlowBox) ConnectUnselectAll(callback FlowBoxSignalUnselectAllCallbac
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.FlowBox_signal_connect_unselect_all(instance, C.gpointer(uintptr(signalFlowBoxUnselectAllId)))
 	return int(retC)
+}
+
+/*
+DisconnectUnselectAll disconnects a callback from the 'unselect-all' signal for the FlowBox.
+
+The connectionID should be a value returned from a call to ConnectUnselectAll.
+*/
+func (recv *FlowBox) DisconnectUnselectAll(connectionID int) {
+	_, exists := signalFlowBoxUnselectAllMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalFlowBoxUnselectAllMap, connectionID)
 }
 
 //export FlowBox_unselectAllHandler
@@ -9266,6 +10226,22 @@ func (recv *FlowBoxChild) ConnectActivate(callback FlowBoxChildSignalActivateCal
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.FlowBoxChild_signal_connect_activate(instance, C.gpointer(uintptr(signalFlowBoxChildActivateId)))
 	return int(retC)
+}
+
+/*
+DisconnectActivate disconnects a callback from the 'activate' signal for the FlowBoxChild.
+
+The connectionID should be a value returned from a call to ConnectActivate.
+*/
+func (recv *FlowBoxChild) DisconnectActivate(connectionID int) {
+	_, exists := signalFlowBoxChildActivateMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalFlowBoxChildActivateMap, connectionID)
 }
 
 //export FlowBoxChild_activateHandler
@@ -10730,6 +11706,22 @@ func (recv *HSV) ConnectChanged(callback HSVSignalChangedCallback) int {
 	return int(retC)
 }
 
+/*
+DisconnectChanged disconnects a callback from the 'changed' signal for the HSV.
+
+The connectionID should be a value returned from a call to ConnectChanged.
+*/
+func (recv *HSV) DisconnectChanged(connectionID int) {
+	_, exists := signalHSVChangedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalHSVChangedMap, connectionID)
+}
+
 //export HSV_changedHandler
 func HSV_changedHandler() {
 	fmt.Println("cb")
@@ -10757,6 +11749,22 @@ func (recv *HSV) ConnectMove(callback HSVSignalMoveCallback) int {
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.HSV_signal_connect_move(instance, C.gpointer(uintptr(signalHSVMoveId)))
 	return int(retC)
+}
+
+/*
+DisconnectMove disconnects a callback from the 'move' signal for the HSV.
+
+The connectionID should be a value returned from a call to ConnectMove.
+*/
+func (recv *HSV) DisconnectMove(connectionID int) {
+	_, exists := signalHSVMoveMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalHSVMoveMap, connectionID)
 }
 
 //export HSV_moveHandler
@@ -11038,6 +12046,22 @@ func (recv *HandleBox) ConnectChildAttached(callback HandleBoxSignalChildAttache
 	return int(retC)
 }
 
+/*
+DisconnectChildAttached disconnects a callback from the 'child-attached' signal for the HandleBox.
+
+The connectionID should be a value returned from a call to ConnectChildAttached.
+*/
+func (recv *HandleBox) DisconnectChildAttached(connectionID int) {
+	_, exists := signalHandleBoxChildAttachedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalHandleBoxChildAttachedMap, connectionID)
+}
+
 //export HandleBox_childAttachedHandler
 func HandleBox_childAttachedHandler() {
 	fmt.Println("cb")
@@ -11065,6 +12089,22 @@ func (recv *HandleBox) ConnectChildDetached(callback HandleBoxSignalChildDetache
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.HandleBox_signal_connect_child_detached(instance, C.gpointer(uintptr(signalHandleBoxChildDetachedId)))
 	return int(retC)
+}
+
+/*
+DisconnectChildDetached disconnects a callback from the 'child-detached' signal for the HandleBox.
+
+The connectionID should be a value returned from a call to ConnectChildDetached.
+*/
+func (recv *HandleBox) DisconnectChildDetached(connectionID int) {
+	_, exists := signalHandleBoxChildDetachedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalHandleBoxChildDetachedMap, connectionID)
 }
 
 //export HandleBox_childDetachedHandler
@@ -11236,6 +12276,22 @@ func (recv *IMContext) ConnectCommit(callback IMContextSignalCommitCallback) int
 	return int(retC)
 }
 
+/*
+DisconnectCommit disconnects a callback from the 'commit' signal for the IMContext.
+
+The connectionID should be a value returned from a call to ConnectCommit.
+*/
+func (recv *IMContext) DisconnectCommit(connectionID int) {
+	_, exists := signalIMContextCommitMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalIMContextCommitMap, connectionID)
+}
+
 //export IMContext_commitHandler
 func IMContext_commitHandler() {
 	fmt.Println("cb")
@@ -11263,6 +12319,22 @@ func (recv *IMContext) ConnectDeleteSurrounding(callback IMContextSignalDeleteSu
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.IMContext_signal_connect_delete_surrounding(instance, C.gpointer(uintptr(signalIMContextDeleteSurroundingId)))
 	return int(retC)
+}
+
+/*
+DisconnectDeleteSurrounding disconnects a callback from the 'delete-surrounding' signal for the IMContext.
+
+The connectionID should be a value returned from a call to ConnectDeleteSurrounding.
+*/
+func (recv *IMContext) DisconnectDeleteSurrounding(connectionID int) {
+	_, exists := signalIMContextDeleteSurroundingMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalIMContextDeleteSurroundingMap, connectionID)
 }
 
 //export IMContext_deleteSurroundingHandler
@@ -11294,6 +12366,22 @@ func (recv *IMContext) ConnectPreeditChanged(callback IMContextSignalPreeditChan
 	return int(retC)
 }
 
+/*
+DisconnectPreeditChanged disconnects a callback from the 'preedit-changed' signal for the IMContext.
+
+The connectionID should be a value returned from a call to ConnectPreeditChanged.
+*/
+func (recv *IMContext) DisconnectPreeditChanged(connectionID int) {
+	_, exists := signalIMContextPreeditChangedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalIMContextPreeditChangedMap, connectionID)
+}
+
 //export IMContext_preeditChangedHandler
 func IMContext_preeditChangedHandler() {
 	fmt.Println("cb")
@@ -11321,6 +12409,22 @@ func (recv *IMContext) ConnectPreeditEnd(callback IMContextSignalPreeditEndCallb
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.IMContext_signal_connect_preedit_end(instance, C.gpointer(uintptr(signalIMContextPreeditEndId)))
 	return int(retC)
+}
+
+/*
+DisconnectPreeditEnd disconnects a callback from the 'preedit-end' signal for the IMContext.
+
+The connectionID should be a value returned from a call to ConnectPreeditEnd.
+*/
+func (recv *IMContext) DisconnectPreeditEnd(connectionID int) {
+	_, exists := signalIMContextPreeditEndMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalIMContextPreeditEndMap, connectionID)
 }
 
 //export IMContext_preeditEndHandler
@@ -11352,6 +12456,22 @@ func (recv *IMContext) ConnectPreeditStart(callback IMContextSignalPreeditStartC
 	return int(retC)
 }
 
+/*
+DisconnectPreeditStart disconnects a callback from the 'preedit-start' signal for the IMContext.
+
+The connectionID should be a value returned from a call to ConnectPreeditStart.
+*/
+func (recv *IMContext) DisconnectPreeditStart(connectionID int) {
+	_, exists := signalIMContextPreeditStartMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalIMContextPreeditStartMap, connectionID)
+}
+
 //export IMContext_preeditStartHandler
 func IMContext_preeditStartHandler() {
 	fmt.Println("cb")
@@ -11379,6 +12499,22 @@ func (recv *IMContext) ConnectRetrieveSurrounding(callback IMContextSignalRetrie
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.IMContext_signal_connect_retrieve_surrounding(instance, C.gpointer(uintptr(signalIMContextRetrieveSurroundingId)))
 	return int(retC)
+}
+
+/*
+DisconnectRetrieveSurrounding disconnects a callback from the 'retrieve-surrounding' signal for the IMContext.
+
+The connectionID should be a value returned from a call to ConnectRetrieveSurrounding.
+*/
+func (recv *IMContext) DisconnectRetrieveSurrounding(connectionID int) {
+	_, exists := signalIMContextRetrieveSurroundingMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalIMContextRetrieveSurroundingMap, connectionID)
 }
 
 //export IMContext_retrieveSurroundingHandler
@@ -11759,6 +12895,22 @@ func (recv *IconTheme) ConnectChanged(callback IconThemeSignalChangedCallback) i
 	return int(retC)
 }
 
+/*
+DisconnectChanged disconnects a callback from the 'changed' signal for the IconTheme.
+
+The connectionID should be a value returned from a call to ConnectChanged.
+*/
+func (recv *IconTheme) DisconnectChanged(connectionID int) {
+	_, exists := signalIconThemeChangedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalIconThemeChangedMap, connectionID)
+}
+
 //export IconTheme_changedHandler
 func IconTheme_changedHandler() {
 	fmt.Println("cb")
@@ -11837,6 +12989,22 @@ func (recv *IconView) ConnectActivateCursorItem(callback IconViewSignalActivateC
 	return int(retC)
 }
 
+/*
+DisconnectActivateCursorItem disconnects a callback from the 'activate-cursor-item' signal for the IconView.
+
+The connectionID should be a value returned from a call to ConnectActivateCursorItem.
+*/
+func (recv *IconView) DisconnectActivateCursorItem(connectionID int) {
+	_, exists := signalIconViewActivateCursorItemMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalIconViewActivateCursorItemMap, connectionID)
+}
+
 //export IconView_activateCursorItemHandler
 func IconView_activateCursorItemHandler() {
 	fmt.Println("cb")
@@ -11864,6 +13032,22 @@ func (recv *IconView) ConnectItemActivated(callback IconViewSignalItemActivatedC
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.IconView_signal_connect_item_activated(instance, C.gpointer(uintptr(signalIconViewItemActivatedId)))
 	return int(retC)
+}
+
+/*
+DisconnectItemActivated disconnects a callback from the 'item-activated' signal for the IconView.
+
+The connectionID should be a value returned from a call to ConnectItemActivated.
+*/
+func (recv *IconView) DisconnectItemActivated(connectionID int) {
+	_, exists := signalIconViewItemActivatedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalIconViewItemActivatedMap, connectionID)
 }
 
 //export IconView_itemActivatedHandler
@@ -11895,6 +13079,22 @@ func (recv *IconView) ConnectMoveCursor(callback IconViewSignalMoveCursorCallbac
 	return int(retC)
 }
 
+/*
+DisconnectMoveCursor disconnects a callback from the 'move-cursor' signal for the IconView.
+
+The connectionID should be a value returned from a call to ConnectMoveCursor.
+*/
+func (recv *IconView) DisconnectMoveCursor(connectionID int) {
+	_, exists := signalIconViewMoveCursorMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalIconViewMoveCursorMap, connectionID)
+}
+
 //export IconView_moveCursorHandler
 func IconView_moveCursorHandler() {
 	fmt.Println("cb")
@@ -11922,6 +13122,22 @@ func (recv *IconView) ConnectSelectAll(callback IconViewSignalSelectAllCallback)
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.IconView_signal_connect_select_all(instance, C.gpointer(uintptr(signalIconViewSelectAllId)))
 	return int(retC)
+}
+
+/*
+DisconnectSelectAll disconnects a callback from the 'select-all' signal for the IconView.
+
+The connectionID should be a value returned from a call to ConnectSelectAll.
+*/
+func (recv *IconView) DisconnectSelectAll(connectionID int) {
+	_, exists := signalIconViewSelectAllMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalIconViewSelectAllMap, connectionID)
 }
 
 //export IconView_selectAllHandler
@@ -11953,6 +13169,22 @@ func (recv *IconView) ConnectSelectCursorItem(callback IconViewSignalSelectCurso
 	return int(retC)
 }
 
+/*
+DisconnectSelectCursorItem disconnects a callback from the 'select-cursor-item' signal for the IconView.
+
+The connectionID should be a value returned from a call to ConnectSelectCursorItem.
+*/
+func (recv *IconView) DisconnectSelectCursorItem(connectionID int) {
+	_, exists := signalIconViewSelectCursorItemMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalIconViewSelectCursorItemMap, connectionID)
+}
+
 //export IconView_selectCursorItemHandler
 func IconView_selectCursorItemHandler() {
 	fmt.Println("cb")
@@ -11980,6 +13212,22 @@ func (recv *IconView) ConnectSelectionChanged(callback IconViewSignalSelectionCh
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.IconView_signal_connect_selection_changed(instance, C.gpointer(uintptr(signalIconViewSelectionChangedId)))
 	return int(retC)
+}
+
+/*
+DisconnectSelectionChanged disconnects a callback from the 'selection-changed' signal for the IconView.
+
+The connectionID should be a value returned from a call to ConnectSelectionChanged.
+*/
+func (recv *IconView) DisconnectSelectionChanged(connectionID int) {
+	_, exists := signalIconViewSelectionChangedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalIconViewSelectionChangedMap, connectionID)
 }
 
 //export IconView_selectionChangedHandler
@@ -12011,6 +13259,22 @@ func (recv *IconView) ConnectToggleCursorItem(callback IconViewSignalToggleCurso
 	return int(retC)
 }
 
+/*
+DisconnectToggleCursorItem disconnects a callback from the 'toggle-cursor-item' signal for the IconView.
+
+The connectionID should be a value returned from a call to ConnectToggleCursorItem.
+*/
+func (recv *IconView) DisconnectToggleCursorItem(connectionID int) {
+	_, exists := signalIconViewToggleCursorItemMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalIconViewToggleCursorItemMap, connectionID)
+}
+
 //export IconView_toggleCursorItemHandler
 func IconView_toggleCursorItemHandler() {
 	fmt.Println("cb")
@@ -12038,6 +13302,22 @@ func (recv *IconView) ConnectUnselectAll(callback IconViewSignalUnselectAllCallb
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.IconView_signal_connect_unselect_all(instance, C.gpointer(uintptr(signalIconViewUnselectAllId)))
 	return int(retC)
+}
+
+/*
+DisconnectUnselectAll disconnects a callback from the 'unselect-all' signal for the IconView.
+
+The connectionID should be a value returned from a call to ConnectUnselectAll.
+*/
+func (recv *IconView) DisconnectUnselectAll(connectionID int) {
+	_, exists := signalIconViewUnselectAllMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalIconViewUnselectAllMap, connectionID)
 }
 
 //export IconView_unselectAllHandler
@@ -12655,6 +13935,22 @@ func (recv *Label) ConnectCopyClipboard(callback LabelSignalCopyClipboardCallbac
 	return int(retC)
 }
 
+/*
+DisconnectCopyClipboard disconnects a callback from the 'copy-clipboard' signal for the Label.
+
+The connectionID should be a value returned from a call to ConnectCopyClipboard.
+*/
+func (recv *Label) DisconnectCopyClipboard(connectionID int) {
+	_, exists := signalLabelCopyClipboardMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalLabelCopyClipboardMap, connectionID)
+}
+
 //export Label_copyClipboardHandler
 func Label_copyClipboardHandler() {
 	fmt.Println("cb")
@@ -12684,6 +13980,22 @@ func (recv *Label) ConnectMoveCursor(callback LabelSignalMoveCursorCallback) int
 	return int(retC)
 }
 
+/*
+DisconnectMoveCursor disconnects a callback from the 'move-cursor' signal for the Label.
+
+The connectionID should be a value returned from a call to ConnectMoveCursor.
+*/
+func (recv *Label) DisconnectMoveCursor(connectionID int) {
+	_, exists := signalLabelMoveCursorMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalLabelMoveCursorMap, connectionID)
+}
+
 //export Label_moveCursorHandler
 func Label_moveCursorHandler() {
 	fmt.Println("cb")
@@ -12711,6 +14023,22 @@ func (recv *Label) ConnectPopulatePopup(callback LabelSignalPopulatePopupCallbac
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.Label_signal_connect_populate_popup(instance, C.gpointer(uintptr(signalLabelPopulatePopupId)))
 	return int(retC)
+}
+
+/*
+DisconnectPopulatePopup disconnects a callback from the 'populate-popup' signal for the Label.
+
+The connectionID should be a value returned from a call to ConnectPopulatePopup.
+*/
+func (recv *Label) DisconnectPopulatePopup(connectionID int) {
+	_, exists := signalLabelPopulatePopupMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalLabelPopulatePopupMap, connectionID)
 }
 
 //export Label_populatePopupHandler
@@ -13359,6 +14687,22 @@ func (recv *LinkButton) ConnectActivateLink(callback LinkButtonSignalActivateLin
 	return int(retC)
 }
 
+/*
+DisconnectActivateLink disconnects a callback from the 'activate-link' signal for the LinkButton.
+
+The connectionID should be a value returned from a call to ConnectActivateLink.
+*/
+func (recv *LinkButton) DisconnectActivateLink(connectionID int) {
+	_, exists := signalLinkButtonActivateLinkMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalLinkButtonActivateLinkMap, connectionID)
+}
+
 //export LinkButton_activateLinkHandler
 func LinkButton_activateLinkHandler() {
 	fmt.Println("cb")
@@ -13490,6 +14834,22 @@ func (recv *ListBox) ConnectActivateCursorRow(callback ListBoxSignalActivateCurs
 	return int(retC)
 }
 
+/*
+DisconnectActivateCursorRow disconnects a callback from the 'activate-cursor-row' signal for the ListBox.
+
+The connectionID should be a value returned from a call to ConnectActivateCursorRow.
+*/
+func (recv *ListBox) DisconnectActivateCursorRow(connectionID int) {
+	_, exists := signalListBoxActivateCursorRowMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalListBoxActivateCursorRowMap, connectionID)
+}
+
 //export ListBox_activateCursorRowHandler
 func ListBox_activateCursorRowHandler() {
 	fmt.Println("cb")
@@ -13519,6 +14879,22 @@ func (recv *ListBox) ConnectMoveCursor(callback ListBoxSignalMoveCursorCallback)
 	return int(retC)
 }
 
+/*
+DisconnectMoveCursor disconnects a callback from the 'move-cursor' signal for the ListBox.
+
+The connectionID should be a value returned from a call to ConnectMoveCursor.
+*/
+func (recv *ListBox) DisconnectMoveCursor(connectionID int) {
+	_, exists := signalListBoxMoveCursorMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalListBoxMoveCursorMap, connectionID)
+}
+
 //export ListBox_moveCursorHandler
 func ListBox_moveCursorHandler() {
 	fmt.Println("cb")
@@ -13546,6 +14922,22 @@ func (recv *ListBox) ConnectToggleCursorRow(callback ListBoxSignalToggleCursorRo
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.ListBox_signal_connect_toggle_cursor_row(instance, C.gpointer(uintptr(signalListBoxToggleCursorRowId)))
 	return int(retC)
+}
+
+/*
+DisconnectToggleCursorRow disconnects a callback from the 'toggle-cursor-row' signal for the ListBox.
+
+The connectionID should be a value returned from a call to ConnectToggleCursorRow.
+*/
+func (recv *ListBox) DisconnectToggleCursorRow(connectionID int) {
+	_, exists := signalListBoxToggleCursorRowMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalListBoxToggleCursorRowMap, connectionID)
 }
 
 //export ListBox_toggleCursorRowHandler
@@ -14029,6 +15421,22 @@ func (recv *Menu) ConnectMoveScroll(callback MenuSignalMoveScrollCallback) int {
 	return int(retC)
 }
 
+/*
+DisconnectMoveScroll disconnects a callback from the 'move-scroll' signal for the Menu.
+
+The connectionID should be a value returned from a call to ConnectMoveScroll.
+*/
+func (recv *Menu) DisconnectMoveScroll(connectionID int) {
+	_, exists := signalMenuMoveScrollMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalMenuMoveScrollMap, connectionID)
+}
+
 //export Menu_moveScrollHandler
 func Menu_moveScrollHandler() {
 	fmt.Println("cb")
@@ -14483,6 +15891,22 @@ func (recv *MenuItem) ConnectActivate(callback MenuItemSignalActivateCallback) i
 	return int(retC)
 }
 
+/*
+DisconnectActivate disconnects a callback from the 'activate' signal for the MenuItem.
+
+The connectionID should be a value returned from a call to ConnectActivate.
+*/
+func (recv *MenuItem) DisconnectActivate(connectionID int) {
+	_, exists := signalMenuItemActivateMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalMenuItemActivateMap, connectionID)
+}
+
 //export MenuItem_activateHandler
 func MenuItem_activateHandler() {
 	fmt.Println("cb")
@@ -14510,6 +15934,22 @@ func (recv *MenuItem) ConnectActivateItem(callback MenuItemSignalActivateItemCal
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.MenuItem_signal_connect_activate_item(instance, C.gpointer(uintptr(signalMenuItemActivateItemId)))
 	return int(retC)
+}
+
+/*
+DisconnectActivateItem disconnects a callback from the 'activate-item' signal for the MenuItem.
+
+The connectionID should be a value returned from a call to ConnectActivateItem.
+*/
+func (recv *MenuItem) DisconnectActivateItem(connectionID int) {
+	_, exists := signalMenuItemActivateItemMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalMenuItemActivateItemMap, connectionID)
 }
 
 //export MenuItem_activateItemHandler
@@ -14541,6 +15981,22 @@ func (recv *MenuItem) ConnectDeselect(callback MenuItemSignalDeselectCallback) i
 	return int(retC)
 }
 
+/*
+DisconnectDeselect disconnects a callback from the 'deselect' signal for the MenuItem.
+
+The connectionID should be a value returned from a call to ConnectDeselect.
+*/
+func (recv *MenuItem) DisconnectDeselect(connectionID int) {
+	_, exists := signalMenuItemDeselectMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalMenuItemDeselectMap, connectionID)
+}
+
 //export MenuItem_deselectHandler
 func MenuItem_deselectHandler() {
 	fmt.Println("cb")
@@ -14568,6 +16024,22 @@ func (recv *MenuItem) ConnectSelect(callback MenuItemSignalSelectCallback) int {
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.MenuItem_signal_connect_select(instance, C.gpointer(uintptr(signalMenuItemSelectId)))
 	return int(retC)
+}
+
+/*
+DisconnectSelect disconnects a callback from the 'select' signal for the MenuItem.
+
+The connectionID should be a value returned from a call to ConnectSelect.
+*/
+func (recv *MenuItem) DisconnectSelect(connectionID int) {
+	_, exists := signalMenuItemSelectMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalMenuItemSelectMap, connectionID)
 }
 
 //export MenuItem_selectHandler
@@ -14599,6 +16071,22 @@ func (recv *MenuItem) ConnectToggleSizeAllocate(callback MenuItemSignalToggleSiz
 	return int(retC)
 }
 
+/*
+DisconnectToggleSizeAllocate disconnects a callback from the 'toggle-size-allocate' signal for the MenuItem.
+
+The connectionID should be a value returned from a call to ConnectToggleSizeAllocate.
+*/
+func (recv *MenuItem) DisconnectToggleSizeAllocate(connectionID int) {
+	_, exists := signalMenuItemToggleSizeAllocateMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalMenuItemToggleSizeAllocateMap, connectionID)
+}
+
 //export MenuItem_toggleSizeAllocateHandler
 func MenuItem_toggleSizeAllocateHandler() {
 	fmt.Println("cb")
@@ -14626,6 +16114,22 @@ func (recv *MenuItem) ConnectToggleSizeRequest(callback MenuItemSignalToggleSize
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.MenuItem_signal_connect_toggle_size_request(instance, C.gpointer(uintptr(signalMenuItemToggleSizeRequestId)))
 	return int(retC)
+}
+
+/*
+DisconnectToggleSizeRequest disconnects a callback from the 'toggle-size-request' signal for the MenuItem.
+
+The connectionID should be a value returned from a call to ConnectToggleSizeRequest.
+*/
+func (recv *MenuItem) DisconnectToggleSizeRequest(connectionID int) {
+	_, exists := signalMenuItemToggleSizeRequestMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalMenuItemToggleSizeRequestMap, connectionID)
 }
 
 //export MenuItem_toggleSizeRequestHandler
@@ -14869,6 +16373,22 @@ func (recv *MenuShell) ConnectActivateCurrent(callback MenuShellSignalActivateCu
 	return int(retC)
 }
 
+/*
+DisconnectActivateCurrent disconnects a callback from the 'activate-current' signal for the MenuShell.
+
+The connectionID should be a value returned from a call to ConnectActivateCurrent.
+*/
+func (recv *MenuShell) DisconnectActivateCurrent(connectionID int) {
+	_, exists := signalMenuShellActivateCurrentMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalMenuShellActivateCurrentMap, connectionID)
+}
+
 //export MenuShell_activateCurrentHandler
 func MenuShell_activateCurrentHandler() {
 	fmt.Println("cb")
@@ -14896,6 +16416,22 @@ func (recv *MenuShell) ConnectCancel(callback MenuShellSignalCancelCallback) int
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.MenuShell_signal_connect_cancel(instance, C.gpointer(uintptr(signalMenuShellCancelId)))
 	return int(retC)
+}
+
+/*
+DisconnectCancel disconnects a callback from the 'cancel' signal for the MenuShell.
+
+The connectionID should be a value returned from a call to ConnectCancel.
+*/
+func (recv *MenuShell) DisconnectCancel(connectionID int) {
+	_, exists := signalMenuShellCancelMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalMenuShellCancelMap, connectionID)
 }
 
 //export MenuShell_cancelHandler
@@ -14927,6 +16463,22 @@ func (recv *MenuShell) ConnectCycleFocus(callback MenuShellSignalCycleFocusCallb
 	return int(retC)
 }
 
+/*
+DisconnectCycleFocus disconnects a callback from the 'cycle-focus' signal for the MenuShell.
+
+The connectionID should be a value returned from a call to ConnectCycleFocus.
+*/
+func (recv *MenuShell) DisconnectCycleFocus(connectionID int) {
+	_, exists := signalMenuShellCycleFocusMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalMenuShellCycleFocusMap, connectionID)
+}
+
 //export MenuShell_cycleFocusHandler
 func MenuShell_cycleFocusHandler() {
 	fmt.Println("cb")
@@ -14954,6 +16506,22 @@ func (recv *MenuShell) ConnectDeactivate(callback MenuShellSignalDeactivateCallb
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.MenuShell_signal_connect_deactivate(instance, C.gpointer(uintptr(signalMenuShellDeactivateId)))
 	return int(retC)
+}
+
+/*
+DisconnectDeactivate disconnects a callback from the 'deactivate' signal for the MenuShell.
+
+The connectionID should be a value returned from a call to ConnectDeactivate.
+*/
+func (recv *MenuShell) DisconnectDeactivate(connectionID int) {
+	_, exists := signalMenuShellDeactivateMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalMenuShellDeactivateMap, connectionID)
 }
 
 //export MenuShell_deactivateHandler
@@ -14985,6 +16553,22 @@ func (recv *MenuShell) ConnectMoveCurrent(callback MenuShellSignalMoveCurrentCal
 	return int(retC)
 }
 
+/*
+DisconnectMoveCurrent disconnects a callback from the 'move-current' signal for the MenuShell.
+
+The connectionID should be a value returned from a call to ConnectMoveCurrent.
+*/
+func (recv *MenuShell) DisconnectMoveCurrent(connectionID int) {
+	_, exists := signalMenuShellMoveCurrentMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalMenuShellMoveCurrentMap, connectionID)
+}
+
 //export MenuShell_moveCurrentHandler
 func MenuShell_moveCurrentHandler() {
 	fmt.Println("cb")
@@ -15012,6 +16596,22 @@ func (recv *MenuShell) ConnectSelectionDone(callback MenuShellSignalSelectionDon
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.MenuShell_signal_connect_selection_done(instance, C.gpointer(uintptr(signalMenuShellSelectionDoneId)))
 	return int(retC)
+}
+
+/*
+DisconnectSelectionDone disconnects a callback from the 'selection-done' signal for the MenuShell.
+
+The connectionID should be a value returned from a call to ConnectSelectionDone.
+*/
+func (recv *MenuShell) DisconnectSelectionDone(connectionID int) {
+	_, exists := signalMenuShellSelectionDoneMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalMenuShellSelectionDoneMap, connectionID)
 }
 
 //export MenuShell_selectionDoneHandler
@@ -15218,6 +16818,22 @@ func (recv *MenuToolButton) ConnectShowMenu(callback MenuToolButtonSignalShowMen
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.MenuToolButton_signal_connect_show_menu(instance, C.gpointer(uintptr(signalMenuToolButtonShowMenuId)))
 	return int(retC)
+}
+
+/*
+DisconnectShowMenu disconnects a callback from the 'show-menu' signal for the MenuToolButton.
+
+The connectionID should be a value returned from a call to ConnectShowMenu.
+*/
+func (recv *MenuToolButton) DisconnectShowMenu(connectionID int) {
+	_, exists := signalMenuToolButtonShowMenuMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalMenuToolButtonShowMenuMap, connectionID)
 }
 
 //export MenuToolButton_showMenuHandler
@@ -15558,6 +17174,22 @@ func (recv *Notebook) ConnectChangeCurrentPage(callback NotebookSignalChangeCurr
 	return int(retC)
 }
 
+/*
+DisconnectChangeCurrentPage disconnects a callback from the 'change-current-page' signal for the Notebook.
+
+The connectionID should be a value returned from a call to ConnectChangeCurrentPage.
+*/
+func (recv *Notebook) DisconnectChangeCurrentPage(connectionID int) {
+	_, exists := signalNotebookChangeCurrentPageMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalNotebookChangeCurrentPageMap, connectionID)
+}
+
 //export Notebook_changeCurrentPageHandler
 func Notebook_changeCurrentPageHandler() {
 	fmt.Println("cb")
@@ -15585,6 +17217,22 @@ func (recv *Notebook) ConnectFocusTab(callback NotebookSignalFocusTabCallback) i
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.Notebook_signal_connect_focus_tab(instance, C.gpointer(uintptr(signalNotebookFocusTabId)))
 	return int(retC)
+}
+
+/*
+DisconnectFocusTab disconnects a callback from the 'focus-tab' signal for the Notebook.
+
+The connectionID should be a value returned from a call to ConnectFocusTab.
+*/
+func (recv *Notebook) DisconnectFocusTab(connectionID int) {
+	_, exists := signalNotebookFocusTabMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalNotebookFocusTabMap, connectionID)
 }
 
 //export Notebook_focusTabHandler
@@ -15616,6 +17264,22 @@ func (recv *Notebook) ConnectMoveFocusOut(callback NotebookSignalMoveFocusOutCal
 	return int(retC)
 }
 
+/*
+DisconnectMoveFocusOut disconnects a callback from the 'move-focus-out' signal for the Notebook.
+
+The connectionID should be a value returned from a call to ConnectMoveFocusOut.
+*/
+func (recv *Notebook) DisconnectMoveFocusOut(connectionID int) {
+	_, exists := signalNotebookMoveFocusOutMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalNotebookMoveFocusOutMap, connectionID)
+}
+
 //export Notebook_moveFocusOutHandler
 func Notebook_moveFocusOutHandler() {
 	fmt.Println("cb")
@@ -15643,6 +17307,22 @@ func (recv *Notebook) ConnectReorderTab(callback NotebookSignalReorderTabCallbac
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.Notebook_signal_connect_reorder_tab(instance, C.gpointer(uintptr(signalNotebookReorderTabId)))
 	return int(retC)
+}
+
+/*
+DisconnectReorderTab disconnects a callback from the 'reorder-tab' signal for the Notebook.
+
+The connectionID should be a value returned from a call to ConnectReorderTab.
+*/
+func (recv *Notebook) DisconnectReorderTab(connectionID int) {
+	_, exists := signalNotebookReorderTabMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalNotebookReorderTabMap, connectionID)
 }
 
 //export Notebook_reorderTabHandler
@@ -15674,6 +17354,22 @@ func (recv *Notebook) ConnectSelectPage(callback NotebookSignalSelectPageCallbac
 	return int(retC)
 }
 
+/*
+DisconnectSelectPage disconnects a callback from the 'select-page' signal for the Notebook.
+
+The connectionID should be a value returned from a call to ConnectSelectPage.
+*/
+func (recv *Notebook) DisconnectSelectPage(connectionID int) {
+	_, exists := signalNotebookSelectPageMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalNotebookSelectPageMap, connectionID)
+}
+
 //export Notebook_selectPageHandler
 func Notebook_selectPageHandler() {
 	fmt.Println("cb")
@@ -15701,6 +17397,22 @@ func (recv *Notebook) ConnectSwitchPage(callback NotebookSignalSwitchPageCallbac
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.Notebook_signal_connect_switch_page(instance, C.gpointer(uintptr(signalNotebookSwitchPageId)))
 	return int(retC)
+}
+
+/*
+DisconnectSwitchPage disconnects a callback from the 'switch-page' signal for the Notebook.
+
+The connectionID should be a value returned from a call to ConnectSwitchPage.
+*/
+func (recv *Notebook) DisconnectSwitchPage(connectionID int) {
+	_, exists := signalNotebookSwitchPageMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalNotebookSwitchPageMap, connectionID)
 }
 
 //export Notebook_switchPageHandler
@@ -16581,6 +18293,22 @@ func (recv *PlacesSidebar) ConnectShowConnectToServer(callback PlacesSidebarSign
 	return int(retC)
 }
 
+/*
+DisconnectShowConnectToServer disconnects a callback from the 'show-connect-to-server' signal for the PlacesSidebar.
+
+The connectionID should be a value returned from a call to ConnectShowConnectToServer.
+*/
+func (recv *PlacesSidebar) DisconnectShowConnectToServer(connectionID int) {
+	_, exists := signalPlacesSidebarShowConnectToServerMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalPlacesSidebarShowConnectToServerMap, connectionID)
+}
+
 //export PlacesSidebar_showConnectToServerHandler
 func PlacesSidebar_showConnectToServerHandler() {
 	fmt.Println("cb")
@@ -16672,6 +18400,22 @@ func (recv *Popover) ConnectClosed(callback PopoverSignalClosedCallback) int {
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.Popover_signal_connect_closed(instance, C.gpointer(uintptr(signalPopoverClosedId)))
 	return int(retC)
+}
+
+/*
+DisconnectClosed disconnects a callback from the 'closed' signal for the Popover.
+
+The connectionID should be a value returned from a call to ConnectClosed.
+*/
+func (recv *Popover) DisconnectClosed(connectionID int) {
+	_, exists := signalPopoverClosedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalPopoverClosedMap, connectionID)
 }
 
 //export Popover_closedHandler
@@ -17418,6 +19162,22 @@ func (recv *RadioMenuItem) ConnectGroupChanged(callback RadioMenuItemSignalGroup
 	return int(retC)
 }
 
+/*
+DisconnectGroupChanged disconnects a callback from the 'group-changed' signal for the RadioMenuItem.
+
+The connectionID should be a value returned from a call to ConnectGroupChanged.
+*/
+func (recv *RadioMenuItem) DisconnectGroupChanged(connectionID int) {
+	_, exists := signalRadioMenuItemGroupChangedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalRadioMenuItemGroupChangedMap, connectionID)
+}
+
 //export RadioMenuItem_groupChangedHandler
 func RadioMenuItem_groupChangedHandler() {
 	fmt.Println("cb")
@@ -17671,6 +19431,22 @@ func (recv *Range) ConnectAdjustBounds(callback RangeSignalAdjustBoundsCallback)
 	return int(retC)
 }
 
+/*
+DisconnectAdjustBounds disconnects a callback from the 'adjust-bounds' signal for the Range.
+
+The connectionID should be a value returned from a call to ConnectAdjustBounds.
+*/
+func (recv *Range) DisconnectAdjustBounds(connectionID int) {
+	_, exists := signalRangeAdjustBoundsMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalRangeAdjustBoundsMap, connectionID)
+}
+
 //export Range_adjustBoundsHandler
 func Range_adjustBoundsHandler() {
 	fmt.Println("cb")
@@ -17700,6 +19476,22 @@ func (recv *Range) ConnectMoveSlider(callback RangeSignalMoveSliderCallback) int
 	return int(retC)
 }
 
+/*
+DisconnectMoveSlider disconnects a callback from the 'move-slider' signal for the Range.
+
+The connectionID should be a value returned from a call to ConnectMoveSlider.
+*/
+func (recv *Range) DisconnectMoveSlider(connectionID int) {
+	_, exists := signalRangeMoveSliderMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalRangeMoveSliderMap, connectionID)
+}
+
 //export Range_moveSliderHandler
 func Range_moveSliderHandler() {
 	fmt.Println("cb")
@@ -17727,6 +19519,22 @@ func (recv *Range) ConnectValueChanged(callback RangeSignalValueChangedCallback)
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.Range_signal_connect_value_changed(instance, C.gpointer(uintptr(signalRangeValueChangedId)))
 	return int(retC)
+}
+
+/*
+DisconnectValueChanged disconnects a callback from the 'value-changed' signal for the Range.
+
+The connectionID should be a value returned from a call to ConnectValueChanged.
+*/
+func (recv *Range) DisconnectValueChanged(connectionID int) {
+	_, exists := signalRangeValueChangedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalRangeValueChangedMap, connectionID)
 }
 
 //export Range_valueChangedHandler
@@ -18363,6 +20171,22 @@ func (recv *Scale) ConnectFormatValue(callback ScaleSignalFormatValueCallback) i
 	return int(retC)
 }
 
+/*
+DisconnectFormatValue disconnects a callback from the 'format-value' signal for the Scale.
+
+The connectionID should be a value returned from a call to ConnectFormatValue.
+*/
+func (recv *Scale) DisconnectFormatValue(connectionID int) {
+	_, exists := signalScaleFormatValueMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalScaleFormatValueMap, connectionID)
+}
+
 //export Scale_formatValueHandler
 func Scale_formatValueHandler() {
 	fmt.Println("cb")
@@ -18710,6 +20534,22 @@ func (recv *ScrolledWindow) ConnectMoveFocusOut(callback ScrolledWindowSignalMov
 	return int(retC)
 }
 
+/*
+DisconnectMoveFocusOut disconnects a callback from the 'move-focus-out' signal for the ScrolledWindow.
+
+The connectionID should be a value returned from a call to ConnectMoveFocusOut.
+*/
+func (recv *ScrolledWindow) DisconnectMoveFocusOut(connectionID int) {
+	_, exists := signalScrolledWindowMoveFocusOutMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalScrolledWindowMoveFocusOutMap, connectionID)
+}
+
 //export ScrolledWindow_moveFocusOutHandler
 func ScrolledWindow_moveFocusOutHandler() {
 	fmt.Println("cb")
@@ -18737,6 +20577,22 @@ func (recv *ScrolledWindow) ConnectScrollChild(callback ScrolledWindowSignalScro
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.ScrolledWindow_signal_connect_scroll_child(instance, C.gpointer(uintptr(signalScrolledWindowScrollChildId)))
 	return int(retC)
+}
+
+/*
+DisconnectScrollChild disconnects a callback from the 'scroll-child' signal for the ScrolledWindow.
+
+The connectionID should be a value returned from a call to ConnectScrollChild.
+*/
+func (recv *ScrolledWindow) DisconnectScrollChild(connectionID int) {
+	_, exists := signalScrolledWindowScrollChildMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalScrolledWindowScrollChildMap, connectionID)
 }
 
 //export ScrolledWindow_scrollChildHandler
@@ -19411,6 +21267,22 @@ func (recv *SpinButton) ConnectChangeValue(callback SpinButtonSignalChangeValueC
 	return int(retC)
 }
 
+/*
+DisconnectChangeValue disconnects a callback from the 'change-value' signal for the SpinButton.
+
+The connectionID should be a value returned from a call to ConnectChangeValue.
+*/
+func (recv *SpinButton) DisconnectChangeValue(connectionID int) {
+	_, exists := signalSpinButtonChangeValueMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalSpinButtonChangeValueMap, connectionID)
+}
+
 //export SpinButton_changeValueHandler
 func SpinButton_changeValueHandler() {
 	fmt.Println("cb")
@@ -19438,6 +21310,22 @@ func (recv *SpinButton) ConnectInput(callback SpinButtonSignalInputCallback) int
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.SpinButton_signal_connect_input(instance, C.gpointer(uintptr(signalSpinButtonInputId)))
 	return int(retC)
+}
+
+/*
+DisconnectInput disconnects a callback from the 'input' signal for the SpinButton.
+
+The connectionID should be a value returned from a call to ConnectInput.
+*/
+func (recv *SpinButton) DisconnectInput(connectionID int) {
+	_, exists := signalSpinButtonInputMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalSpinButtonInputMap, connectionID)
 }
 
 //export SpinButton_inputHandler
@@ -19469,6 +21357,22 @@ func (recv *SpinButton) ConnectOutput(callback SpinButtonSignalOutputCallback) i
 	return int(retC)
 }
 
+/*
+DisconnectOutput disconnects a callback from the 'output' signal for the SpinButton.
+
+The connectionID should be a value returned from a call to ConnectOutput.
+*/
+func (recv *SpinButton) DisconnectOutput(connectionID int) {
+	_, exists := signalSpinButtonOutputMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalSpinButtonOutputMap, connectionID)
+}
+
 //export SpinButton_outputHandler
 func SpinButton_outputHandler() {
 	fmt.Println("cb")
@@ -19496,6 +21400,22 @@ func (recv *SpinButton) ConnectValueChanged(callback SpinButtonSignalValueChange
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.SpinButton_signal_connect_value_changed(instance, C.gpointer(uintptr(signalSpinButtonValueChangedId)))
 	return int(retC)
+}
+
+/*
+DisconnectValueChanged disconnects a callback from the 'value-changed' signal for the SpinButton.
+
+The connectionID should be a value returned from a call to ConnectValueChanged.
+*/
+func (recv *SpinButton) DisconnectValueChanged(connectionID int) {
+	_, exists := signalSpinButtonValueChangedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalSpinButtonValueChangedMap, connectionID)
 }
 
 //export SpinButton_valueChangedHandler
@@ -20151,6 +22071,22 @@ func (recv *Statusbar) ConnectTextPopped(callback StatusbarSignalTextPoppedCallb
 	return int(retC)
 }
 
+/*
+DisconnectTextPopped disconnects a callback from the 'text-popped' signal for the Statusbar.
+
+The connectionID should be a value returned from a call to ConnectTextPopped.
+*/
+func (recv *Statusbar) DisconnectTextPopped(connectionID int) {
+	_, exists := signalStatusbarTextPoppedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalStatusbarTextPoppedMap, connectionID)
+}
+
 //export Statusbar_textPoppedHandler
 func Statusbar_textPoppedHandler() {
 	fmt.Println("cb")
@@ -20178,6 +22114,22 @@ func (recv *Statusbar) ConnectTextPushed(callback StatusbarSignalTextPushedCallb
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.Statusbar_signal_connect_text_pushed(instance, C.gpointer(uintptr(signalStatusbarTextPushedId)))
 	return int(retC)
+}
+
+/*
+DisconnectTextPushed disconnects a callback from the 'text-pushed' signal for the Statusbar.
+
+The connectionID should be a value returned from a call to ConnectTextPushed.
+*/
+func (recv *Statusbar) DisconnectTextPushed(connectionID int) {
+	_, exists := signalStatusbarTextPushedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalStatusbarTextPushedMap, connectionID)
 }
 
 //export Statusbar_textPushedHandler
@@ -20642,6 +22594,22 @@ func (recv *Switch) ConnectActivate(callback SwitchSignalActivateCallback) int {
 	return int(retC)
 }
 
+/*
+DisconnectActivate disconnects a callback from the 'activate' signal for the Switch.
+
+The connectionID should be a value returned from a call to ConnectActivate.
+*/
+func (recv *Switch) DisconnectActivate(connectionID int) {
+	_, exists := signalSwitchActivateMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalSwitchActivateMap, connectionID)
+}
+
 //export Switch_activateHandler
 func Switch_activateHandler() {
 	fmt.Println("cb")
@@ -21027,6 +22995,22 @@ func (recv *TextBuffer) ConnectApplyTag(callback TextBufferSignalApplyTagCallbac
 	return int(retC)
 }
 
+/*
+DisconnectApplyTag disconnects a callback from the 'apply-tag' signal for the TextBuffer.
+
+The connectionID should be a value returned from a call to ConnectApplyTag.
+*/
+func (recv *TextBuffer) DisconnectApplyTag(connectionID int) {
+	_, exists := signalTextBufferApplyTagMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalTextBufferApplyTagMap, connectionID)
+}
+
 //export TextBuffer_applyTagHandler
 func TextBuffer_applyTagHandler() {
 	fmt.Println("cb")
@@ -21054,6 +23038,22 @@ func (recv *TextBuffer) ConnectBeginUserAction(callback TextBufferSignalBeginUse
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.TextBuffer_signal_connect_begin_user_action(instance, C.gpointer(uintptr(signalTextBufferBeginUserActionId)))
 	return int(retC)
+}
+
+/*
+DisconnectBeginUserAction disconnects a callback from the 'begin-user-action' signal for the TextBuffer.
+
+The connectionID should be a value returned from a call to ConnectBeginUserAction.
+*/
+func (recv *TextBuffer) DisconnectBeginUserAction(connectionID int) {
+	_, exists := signalTextBufferBeginUserActionMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalTextBufferBeginUserActionMap, connectionID)
 }
 
 //export TextBuffer_beginUserActionHandler
@@ -21085,6 +23085,22 @@ func (recv *TextBuffer) ConnectChanged(callback TextBufferSignalChangedCallback)
 	return int(retC)
 }
 
+/*
+DisconnectChanged disconnects a callback from the 'changed' signal for the TextBuffer.
+
+The connectionID should be a value returned from a call to ConnectChanged.
+*/
+func (recv *TextBuffer) DisconnectChanged(connectionID int) {
+	_, exists := signalTextBufferChangedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalTextBufferChangedMap, connectionID)
+}
+
 //export TextBuffer_changedHandler
 func TextBuffer_changedHandler() {
 	fmt.Println("cb")
@@ -21112,6 +23128,22 @@ func (recv *TextBuffer) ConnectDeleteRange(callback TextBufferSignalDeleteRangeC
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.TextBuffer_signal_connect_delete_range(instance, C.gpointer(uintptr(signalTextBufferDeleteRangeId)))
 	return int(retC)
+}
+
+/*
+DisconnectDeleteRange disconnects a callback from the 'delete-range' signal for the TextBuffer.
+
+The connectionID should be a value returned from a call to ConnectDeleteRange.
+*/
+func (recv *TextBuffer) DisconnectDeleteRange(connectionID int) {
+	_, exists := signalTextBufferDeleteRangeMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalTextBufferDeleteRangeMap, connectionID)
 }
 
 //export TextBuffer_deleteRangeHandler
@@ -21143,6 +23175,22 @@ func (recv *TextBuffer) ConnectEndUserAction(callback TextBufferSignalEndUserAct
 	return int(retC)
 }
 
+/*
+DisconnectEndUserAction disconnects a callback from the 'end-user-action' signal for the TextBuffer.
+
+The connectionID should be a value returned from a call to ConnectEndUserAction.
+*/
+func (recv *TextBuffer) DisconnectEndUserAction(connectionID int) {
+	_, exists := signalTextBufferEndUserActionMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalTextBufferEndUserActionMap, connectionID)
+}
+
 //export TextBuffer_endUserActionHandler
 func TextBuffer_endUserActionHandler() {
 	fmt.Println("cb")
@@ -21170,6 +23218,22 @@ func (recv *TextBuffer) ConnectInsertChildAnchor(callback TextBufferSignalInsert
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.TextBuffer_signal_connect_insert_child_anchor(instance, C.gpointer(uintptr(signalTextBufferInsertChildAnchorId)))
 	return int(retC)
+}
+
+/*
+DisconnectInsertChildAnchor disconnects a callback from the 'insert-child-anchor' signal for the TextBuffer.
+
+The connectionID should be a value returned from a call to ConnectInsertChildAnchor.
+*/
+func (recv *TextBuffer) DisconnectInsertChildAnchor(connectionID int) {
+	_, exists := signalTextBufferInsertChildAnchorMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalTextBufferInsertChildAnchorMap, connectionID)
 }
 
 //export TextBuffer_insertChildAnchorHandler
@@ -21201,6 +23265,22 @@ func (recv *TextBuffer) ConnectInsertPixbuf(callback TextBufferSignalInsertPixbu
 	return int(retC)
 }
 
+/*
+DisconnectInsertPixbuf disconnects a callback from the 'insert-pixbuf' signal for the TextBuffer.
+
+The connectionID should be a value returned from a call to ConnectInsertPixbuf.
+*/
+func (recv *TextBuffer) DisconnectInsertPixbuf(connectionID int) {
+	_, exists := signalTextBufferInsertPixbufMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalTextBufferInsertPixbufMap, connectionID)
+}
+
 //export TextBuffer_insertPixbufHandler
 func TextBuffer_insertPixbufHandler() {
 	fmt.Println("cb")
@@ -21228,6 +23308,22 @@ func (recv *TextBuffer) ConnectInsertText(callback TextBufferSignalInsertTextCal
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.TextBuffer_signal_connect_insert_text(instance, C.gpointer(uintptr(signalTextBufferInsertTextId)))
 	return int(retC)
+}
+
+/*
+DisconnectInsertText disconnects a callback from the 'insert-text' signal for the TextBuffer.
+
+The connectionID should be a value returned from a call to ConnectInsertText.
+*/
+func (recv *TextBuffer) DisconnectInsertText(connectionID int) {
+	_, exists := signalTextBufferInsertTextMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalTextBufferInsertTextMap, connectionID)
 }
 
 //export TextBuffer_insertTextHandler
@@ -21259,6 +23355,22 @@ func (recv *TextBuffer) ConnectMarkDeleted(callback TextBufferSignalMarkDeletedC
 	return int(retC)
 }
 
+/*
+DisconnectMarkDeleted disconnects a callback from the 'mark-deleted' signal for the TextBuffer.
+
+The connectionID should be a value returned from a call to ConnectMarkDeleted.
+*/
+func (recv *TextBuffer) DisconnectMarkDeleted(connectionID int) {
+	_, exists := signalTextBufferMarkDeletedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalTextBufferMarkDeletedMap, connectionID)
+}
+
 //export TextBuffer_markDeletedHandler
 func TextBuffer_markDeletedHandler() {
 	fmt.Println("cb")
@@ -21286,6 +23398,22 @@ func (recv *TextBuffer) ConnectMarkSet(callback TextBufferSignalMarkSetCallback)
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.TextBuffer_signal_connect_mark_set(instance, C.gpointer(uintptr(signalTextBufferMarkSetId)))
 	return int(retC)
+}
+
+/*
+DisconnectMarkSet disconnects a callback from the 'mark-set' signal for the TextBuffer.
+
+The connectionID should be a value returned from a call to ConnectMarkSet.
+*/
+func (recv *TextBuffer) DisconnectMarkSet(connectionID int) {
+	_, exists := signalTextBufferMarkSetMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalTextBufferMarkSetMap, connectionID)
 }
 
 //export TextBuffer_markSetHandler
@@ -21317,6 +23445,22 @@ func (recv *TextBuffer) ConnectModifiedChanged(callback TextBufferSignalModified
 	return int(retC)
 }
 
+/*
+DisconnectModifiedChanged disconnects a callback from the 'modified-changed' signal for the TextBuffer.
+
+The connectionID should be a value returned from a call to ConnectModifiedChanged.
+*/
+func (recv *TextBuffer) DisconnectModifiedChanged(connectionID int) {
+	_, exists := signalTextBufferModifiedChangedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalTextBufferModifiedChangedMap, connectionID)
+}
+
 //export TextBuffer_modifiedChangedHandler
 func TextBuffer_modifiedChangedHandler() {
 	fmt.Println("cb")
@@ -21344,6 +23488,22 @@ func (recv *TextBuffer) ConnectRemoveTag(callback TextBufferSignalRemoveTagCallb
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.TextBuffer_signal_connect_remove_tag(instance, C.gpointer(uintptr(signalTextBufferRemoveTagId)))
 	return int(retC)
+}
+
+/*
+DisconnectRemoveTag disconnects a callback from the 'remove-tag' signal for the TextBuffer.
+
+The connectionID should be a value returned from a call to ConnectRemoveTag.
+*/
+func (recv *TextBuffer) DisconnectRemoveTag(connectionID int) {
+	_, exists := signalTextBufferRemoveTagMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalTextBufferRemoveTagMap, connectionID)
 }
 
 //export TextBuffer_removeTagHandler
@@ -22291,6 +24451,22 @@ func (recv *TextTagTable) ConnectTagAdded(callback TextTagTableSignalTagAddedCal
 	return int(retC)
 }
 
+/*
+DisconnectTagAdded disconnects a callback from the 'tag-added' signal for the TextTagTable.
+
+The connectionID should be a value returned from a call to ConnectTagAdded.
+*/
+func (recv *TextTagTable) DisconnectTagAdded(connectionID int) {
+	_, exists := signalTextTagTableTagAddedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalTextTagTableTagAddedMap, connectionID)
+}
+
 //export TextTagTable_tagAddedHandler
 func TextTagTable_tagAddedHandler() {
 	fmt.Println("cb")
@@ -22320,6 +24496,22 @@ func (recv *TextTagTable) ConnectTagChanged(callback TextTagTableSignalTagChange
 	return int(retC)
 }
 
+/*
+DisconnectTagChanged disconnects a callback from the 'tag-changed' signal for the TextTagTable.
+
+The connectionID should be a value returned from a call to ConnectTagChanged.
+*/
+func (recv *TextTagTable) DisconnectTagChanged(connectionID int) {
+	_, exists := signalTextTagTableTagChangedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalTextTagTableTagChangedMap, connectionID)
+}
+
 //export TextTagTable_tagChangedHandler
 func TextTagTable_tagChangedHandler() {
 	fmt.Println("cb")
@@ -22347,6 +24539,22 @@ func (recv *TextTagTable) ConnectTagRemoved(callback TextTagTableSignalTagRemove
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.TextTagTable_signal_connect_tag_removed(instance, C.gpointer(uintptr(signalTextTagTableTagRemovedId)))
 	return int(retC)
+}
+
+/*
+DisconnectTagRemoved disconnects a callback from the 'tag-removed' signal for the TextTagTable.
+
+The connectionID should be a value returned from a call to ConnectTagRemoved.
+*/
+func (recv *TextTagTable) DisconnectTagRemoved(connectionID int) {
+	_, exists := signalTextTagTableTagRemovedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalTextTagTableTagRemovedMap, connectionID)
 }
 
 //export TextTagTable_tagRemovedHandler
@@ -22475,6 +24683,22 @@ func (recv *TextView) ConnectBackspace(callback TextViewSignalBackspaceCallback)
 	return int(retC)
 }
 
+/*
+DisconnectBackspace disconnects a callback from the 'backspace' signal for the TextView.
+
+The connectionID should be a value returned from a call to ConnectBackspace.
+*/
+func (recv *TextView) DisconnectBackspace(connectionID int) {
+	_, exists := signalTextViewBackspaceMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalTextViewBackspaceMap, connectionID)
+}
+
 //export TextView_backspaceHandler
 func TextView_backspaceHandler() {
 	fmt.Println("cb")
@@ -22502,6 +24726,22 @@ func (recv *TextView) ConnectCopyClipboard(callback TextViewSignalCopyClipboardC
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.TextView_signal_connect_copy_clipboard(instance, C.gpointer(uintptr(signalTextViewCopyClipboardId)))
 	return int(retC)
+}
+
+/*
+DisconnectCopyClipboard disconnects a callback from the 'copy-clipboard' signal for the TextView.
+
+The connectionID should be a value returned from a call to ConnectCopyClipboard.
+*/
+func (recv *TextView) DisconnectCopyClipboard(connectionID int) {
+	_, exists := signalTextViewCopyClipboardMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalTextViewCopyClipboardMap, connectionID)
 }
 
 //export TextView_copyClipboardHandler
@@ -22533,6 +24773,22 @@ func (recv *TextView) ConnectCutClipboard(callback TextViewSignalCutClipboardCal
 	return int(retC)
 }
 
+/*
+DisconnectCutClipboard disconnects a callback from the 'cut-clipboard' signal for the TextView.
+
+The connectionID should be a value returned from a call to ConnectCutClipboard.
+*/
+func (recv *TextView) DisconnectCutClipboard(connectionID int) {
+	_, exists := signalTextViewCutClipboardMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalTextViewCutClipboardMap, connectionID)
+}
+
 //export TextView_cutClipboardHandler
 func TextView_cutClipboardHandler() {
 	fmt.Println("cb")
@@ -22560,6 +24816,22 @@ func (recv *TextView) ConnectDeleteFromCursor(callback TextViewSignalDeleteFromC
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.TextView_signal_connect_delete_from_cursor(instance, C.gpointer(uintptr(signalTextViewDeleteFromCursorId)))
 	return int(retC)
+}
+
+/*
+DisconnectDeleteFromCursor disconnects a callback from the 'delete-from-cursor' signal for the TextView.
+
+The connectionID should be a value returned from a call to ConnectDeleteFromCursor.
+*/
+func (recv *TextView) DisconnectDeleteFromCursor(connectionID int) {
+	_, exists := signalTextViewDeleteFromCursorMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalTextViewDeleteFromCursorMap, connectionID)
 }
 
 //export TextView_deleteFromCursorHandler
@@ -22591,6 +24863,22 @@ func (recv *TextView) ConnectInsertAtCursor(callback TextViewSignalInsertAtCurso
 	return int(retC)
 }
 
+/*
+DisconnectInsertAtCursor disconnects a callback from the 'insert-at-cursor' signal for the TextView.
+
+The connectionID should be a value returned from a call to ConnectInsertAtCursor.
+*/
+func (recv *TextView) DisconnectInsertAtCursor(connectionID int) {
+	_, exists := signalTextViewInsertAtCursorMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalTextViewInsertAtCursorMap, connectionID)
+}
+
 //export TextView_insertAtCursorHandler
 func TextView_insertAtCursorHandler() {
 	fmt.Println("cb")
@@ -22618,6 +24906,22 @@ func (recv *TextView) ConnectMoveCursor(callback TextViewSignalMoveCursorCallbac
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.TextView_signal_connect_move_cursor(instance, C.gpointer(uintptr(signalTextViewMoveCursorId)))
 	return int(retC)
+}
+
+/*
+DisconnectMoveCursor disconnects a callback from the 'move-cursor' signal for the TextView.
+
+The connectionID should be a value returned from a call to ConnectMoveCursor.
+*/
+func (recv *TextView) DisconnectMoveCursor(connectionID int) {
+	_, exists := signalTextViewMoveCursorMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalTextViewMoveCursorMap, connectionID)
 }
 
 //export TextView_moveCursorHandler
@@ -22649,6 +24953,22 @@ func (recv *TextView) ConnectMoveViewport(callback TextViewSignalMoveViewportCal
 	return int(retC)
 }
 
+/*
+DisconnectMoveViewport disconnects a callback from the 'move-viewport' signal for the TextView.
+
+The connectionID should be a value returned from a call to ConnectMoveViewport.
+*/
+func (recv *TextView) DisconnectMoveViewport(connectionID int) {
+	_, exists := signalTextViewMoveViewportMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalTextViewMoveViewportMap, connectionID)
+}
+
 //export TextView_moveViewportHandler
 func TextView_moveViewportHandler() {
 	fmt.Println("cb")
@@ -22676,6 +24996,22 @@ func (recv *TextView) ConnectPasteClipboard(callback TextViewSignalPasteClipboar
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.TextView_signal_connect_paste_clipboard(instance, C.gpointer(uintptr(signalTextViewPasteClipboardId)))
 	return int(retC)
+}
+
+/*
+DisconnectPasteClipboard disconnects a callback from the 'paste-clipboard' signal for the TextView.
+
+The connectionID should be a value returned from a call to ConnectPasteClipboard.
+*/
+func (recv *TextView) DisconnectPasteClipboard(connectionID int) {
+	_, exists := signalTextViewPasteClipboardMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalTextViewPasteClipboardMap, connectionID)
 }
 
 //export TextView_pasteClipboardHandler
@@ -22707,6 +25043,22 @@ func (recv *TextView) ConnectPopulatePopup(callback TextViewSignalPopulatePopupC
 	return int(retC)
 }
 
+/*
+DisconnectPopulatePopup disconnects a callback from the 'populate-popup' signal for the TextView.
+
+The connectionID should be a value returned from a call to ConnectPopulatePopup.
+*/
+func (recv *TextView) DisconnectPopulatePopup(connectionID int) {
+	_, exists := signalTextViewPopulatePopupMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalTextViewPopulatePopupMap, connectionID)
+}
+
 //export TextView_populatePopupHandler
 func TextView_populatePopupHandler() {
 	fmt.Println("cb")
@@ -22734,6 +25086,22 @@ func (recv *TextView) ConnectSelectAll(callback TextViewSignalSelectAllCallback)
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.TextView_signal_connect_select_all(instance, C.gpointer(uintptr(signalTextViewSelectAllId)))
 	return int(retC)
+}
+
+/*
+DisconnectSelectAll disconnects a callback from the 'select-all' signal for the TextView.
+
+The connectionID should be a value returned from a call to ConnectSelectAll.
+*/
+func (recv *TextView) DisconnectSelectAll(connectionID int) {
+	_, exists := signalTextViewSelectAllMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalTextViewSelectAllMap, connectionID)
 }
 
 //export TextView_selectAllHandler
@@ -22765,6 +25133,22 @@ func (recv *TextView) ConnectSetAnchor(callback TextViewSignalSetAnchorCallback)
 	return int(retC)
 }
 
+/*
+DisconnectSetAnchor disconnects a callback from the 'set-anchor' signal for the TextView.
+
+The connectionID should be a value returned from a call to ConnectSetAnchor.
+*/
+func (recv *TextView) DisconnectSetAnchor(connectionID int) {
+	_, exists := signalTextViewSetAnchorMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalTextViewSetAnchorMap, connectionID)
+}
+
 //export TextView_setAnchorHandler
 func TextView_setAnchorHandler() {
 	fmt.Println("cb")
@@ -22794,6 +25178,22 @@ func (recv *TextView) ConnectToggleCursorVisible(callback TextViewSignalToggleCu
 	return int(retC)
 }
 
+/*
+DisconnectToggleCursorVisible disconnects a callback from the 'toggle-cursor-visible' signal for the TextView.
+
+The connectionID should be a value returned from a call to ConnectToggleCursorVisible.
+*/
+func (recv *TextView) DisconnectToggleCursorVisible(connectionID int) {
+	_, exists := signalTextViewToggleCursorVisibleMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalTextViewToggleCursorVisibleMap, connectionID)
+}
+
 //export TextView_toggleCursorVisibleHandler
 func TextView_toggleCursorVisibleHandler() {
 	fmt.Println("cb")
@@ -22821,6 +25221,22 @@ func (recv *TextView) ConnectToggleOverwrite(callback TextViewSignalToggleOverwr
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.TextView_signal_connect_toggle_overwrite(instance, C.gpointer(uintptr(signalTextViewToggleOverwriteId)))
 	return int(retC)
+}
+
+/*
+DisconnectToggleOverwrite disconnects a callback from the 'toggle-overwrite' signal for the TextView.
+
+The connectionID should be a value returned from a call to ConnectToggleOverwrite.
+*/
+func (recv *TextView) DisconnectToggleOverwrite(connectionID int) {
+	_, exists := signalTextViewToggleOverwriteMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalTextViewToggleOverwriteMap, connectionID)
 }
 
 //export TextView_toggleOverwriteHandler
@@ -23515,6 +25931,22 @@ func (recv *ToggleAction) ConnectToggled(callback ToggleActionSignalToggledCallb
 	return int(retC)
 }
 
+/*
+DisconnectToggled disconnects a callback from the 'toggled' signal for the ToggleAction.
+
+The connectionID should be a value returned from a call to ConnectToggled.
+*/
+func (recv *ToggleAction) DisconnectToggled(connectionID int) {
+	_, exists := signalToggleActionToggledMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalToggleActionToggledMap, connectionID)
+}
+
 //export ToggleAction_toggledHandler
 func ToggleAction_toggledHandler() {
 	fmt.Println("cb")
@@ -23601,6 +26033,22 @@ func (recv *ToggleButton) ConnectToggled(callback ToggleButtonSignalToggledCallb
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.ToggleButton_signal_connect_toggled(instance, C.gpointer(uintptr(signalToggleButtonToggledId)))
 	return int(retC)
+}
+
+/*
+DisconnectToggled disconnects a callback from the 'toggled' signal for the ToggleButton.
+
+The connectionID should be a value returned from a call to ConnectToggled.
+*/
+func (recv *ToggleButton) DisconnectToggled(connectionID int) {
+	_, exists := signalToggleButtonToggledMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalToggleButtonToggledMap, connectionID)
 }
 
 //export ToggleButton_toggledHandler
@@ -23841,6 +26289,22 @@ func (recv *ToggleToolButton) ConnectToggled(callback ToggleToolButtonSignalTogg
 	return int(retC)
 }
 
+/*
+DisconnectToggled disconnects a callback from the 'toggled' signal for the ToggleToolButton.
+
+The connectionID should be a value returned from a call to ConnectToggled.
+*/
+func (recv *ToggleToolButton) DisconnectToggled(connectionID int) {
+	_, exists := signalToggleToolButtonToggledMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalToggleToolButtonToggledMap, connectionID)
+}
+
 //export ToggleToolButton_toggledHandler
 func ToggleToolButton_toggledHandler() {
 	fmt.Println("cb")
@@ -23929,6 +26393,22 @@ func (recv *ToolButton) ConnectClicked(callback ToolButtonSignalClickedCallback)
 	return int(retC)
 }
 
+/*
+DisconnectClicked disconnects a callback from the 'clicked' signal for the ToolButton.
+
+The connectionID should be a value returned from a call to ConnectClicked.
+*/
+func (recv *ToolButton) DisconnectClicked(connectionID int) {
+	_, exists := signalToolButtonClickedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalToolButtonClickedMap, connectionID)
+}
+
 //export ToolButton_clickedHandler
 func ToolButton_clickedHandler() {
 	fmt.Println("cb")
@@ -24012,6 +26492,22 @@ func (recv *ToolItem) ConnectCreateMenuProxy(callback ToolItemSignalCreateMenuPr
 	return int(retC)
 }
 
+/*
+DisconnectCreateMenuProxy disconnects a callback from the 'create-menu-proxy' signal for the ToolItem.
+
+The connectionID should be a value returned from a call to ConnectCreateMenuProxy.
+*/
+func (recv *ToolItem) DisconnectCreateMenuProxy(connectionID int) {
+	_, exists := signalToolItemCreateMenuProxyMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalToolItemCreateMenuProxyMap, connectionID)
+}
+
 //export ToolItem_createMenuProxyHandler
 func ToolItem_createMenuProxyHandler() {
 	fmt.Println("cb")
@@ -24039,6 +26535,22 @@ func (recv *ToolItem) ConnectToolbarReconfigured(callback ToolItemSignalToolbarR
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.ToolItem_signal_connect_toolbar_reconfigured(instance, C.gpointer(uintptr(signalToolItemToolbarReconfiguredId)))
 	return int(retC)
+}
+
+/*
+DisconnectToolbarReconfigured disconnects a callback from the 'toolbar-reconfigured' signal for the ToolItem.
+
+The connectionID should be a value returned from a call to ConnectToolbarReconfigured.
+*/
+func (recv *ToolItem) DisconnectToolbarReconfigured(connectionID int) {
+	_, exists := signalToolItemToolbarReconfiguredMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalToolItemToolbarReconfiguredMap, connectionID)
 }
 
 //export ToolItem_toolbarReconfiguredHandler
@@ -24217,6 +26729,22 @@ func (recv *Toolbar) ConnectFocusHomeOrEnd(callback ToolbarSignalFocusHomeOrEndC
 	return int(retC)
 }
 
+/*
+DisconnectFocusHomeOrEnd disconnects a callback from the 'focus-home-or-end' signal for the Toolbar.
+
+The connectionID should be a value returned from a call to ConnectFocusHomeOrEnd.
+*/
+func (recv *Toolbar) DisconnectFocusHomeOrEnd(connectionID int) {
+	_, exists := signalToolbarFocusHomeOrEndMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalToolbarFocusHomeOrEndMap, connectionID)
+}
+
 //export Toolbar_focusHomeOrEndHandler
 func Toolbar_focusHomeOrEndHandler() {
 	fmt.Println("cb")
@@ -24244,6 +26772,22 @@ func (recv *Toolbar) ConnectOrientationChanged(callback ToolbarSignalOrientation
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.Toolbar_signal_connect_orientation_changed(instance, C.gpointer(uintptr(signalToolbarOrientationChangedId)))
 	return int(retC)
+}
+
+/*
+DisconnectOrientationChanged disconnects a callback from the 'orientation-changed' signal for the Toolbar.
+
+The connectionID should be a value returned from a call to ConnectOrientationChanged.
+*/
+func (recv *Toolbar) DisconnectOrientationChanged(connectionID int) {
+	_, exists := signalToolbarOrientationChangedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalToolbarOrientationChangedMap, connectionID)
 }
 
 //export Toolbar_orientationChangedHandler
@@ -24275,6 +26819,22 @@ func (recv *Toolbar) ConnectPopupContextMenu(callback ToolbarSignalPopupContextM
 	return int(retC)
 }
 
+/*
+DisconnectPopupContextMenu disconnects a callback from the 'popup-context-menu' signal for the Toolbar.
+
+The connectionID should be a value returned from a call to ConnectPopupContextMenu.
+*/
+func (recv *Toolbar) DisconnectPopupContextMenu(connectionID int) {
+	_, exists := signalToolbarPopupContextMenuMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalToolbarPopupContextMenuMap, connectionID)
+}
+
 //export Toolbar_popupContextMenuHandler
 func Toolbar_popupContextMenuHandler() {
 	fmt.Println("cb")
@@ -24302,6 +26862,22 @@ func (recv *Toolbar) ConnectStyleChanged(callback ToolbarSignalStyleChangedCallb
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.Toolbar_signal_connect_style_changed(instance, C.gpointer(uintptr(signalToolbarStyleChangedId)))
 	return int(retC)
+}
+
+/*
+DisconnectStyleChanged disconnects a callback from the 'style-changed' signal for the Toolbar.
+
+The connectionID should be a value returned from a call to ConnectStyleChanged.
+*/
+func (recv *Toolbar) DisconnectStyleChanged(connectionID int) {
+	_, exists := signalToolbarStyleChangedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalToolbarStyleChangedMap, connectionID)
 }
 
 //export Toolbar_styleChangedHandler
@@ -24626,6 +27202,22 @@ func (recv *TreeSelection) ConnectChanged(callback TreeSelectionSignalChangedCal
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.TreeSelection_signal_connect_changed(instance, C.gpointer(uintptr(signalTreeSelectionChangedId)))
 	return int(retC)
+}
+
+/*
+DisconnectChanged disconnects a callback from the 'changed' signal for the TreeSelection.
+
+The connectionID should be a value returned from a call to ConnectChanged.
+*/
+func (recv *TreeSelection) DisconnectChanged(connectionID int) {
+	_, exists := signalTreeSelectionChangedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalTreeSelectionChangedMap, connectionID)
 }
 
 //export TreeSelection_changedHandler
@@ -24993,6 +27585,22 @@ func (recv *TreeView) ConnectColumnsChanged(callback TreeViewSignalColumnsChange
 	return int(retC)
 }
 
+/*
+DisconnectColumnsChanged disconnects a callback from the 'columns-changed' signal for the TreeView.
+
+The connectionID should be a value returned from a call to ConnectColumnsChanged.
+*/
+func (recv *TreeView) DisconnectColumnsChanged(connectionID int) {
+	_, exists := signalTreeViewColumnsChangedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalTreeViewColumnsChangedMap, connectionID)
+}
+
 //export TreeView_columnsChangedHandler
 func TreeView_columnsChangedHandler() {
 	fmt.Println("cb")
@@ -25020,6 +27628,22 @@ func (recv *TreeView) ConnectCursorChanged(callback TreeViewSignalCursorChangedC
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.TreeView_signal_connect_cursor_changed(instance, C.gpointer(uintptr(signalTreeViewCursorChangedId)))
 	return int(retC)
+}
+
+/*
+DisconnectCursorChanged disconnects a callback from the 'cursor-changed' signal for the TreeView.
+
+The connectionID should be a value returned from a call to ConnectCursorChanged.
+*/
+func (recv *TreeView) DisconnectCursorChanged(connectionID int) {
+	_, exists := signalTreeViewCursorChangedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalTreeViewCursorChangedMap, connectionID)
 }
 
 //export TreeView_cursorChangedHandler
@@ -25051,6 +27675,22 @@ func (recv *TreeView) ConnectExpandCollapseCursorRow(callback TreeViewSignalExpa
 	return int(retC)
 }
 
+/*
+DisconnectExpandCollapseCursorRow disconnects a callback from the 'expand-collapse-cursor-row' signal for the TreeView.
+
+The connectionID should be a value returned from a call to ConnectExpandCollapseCursorRow.
+*/
+func (recv *TreeView) DisconnectExpandCollapseCursorRow(connectionID int) {
+	_, exists := signalTreeViewExpandCollapseCursorRowMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalTreeViewExpandCollapseCursorRowMap, connectionID)
+}
+
 //export TreeView_expandCollapseCursorRowHandler
 func TreeView_expandCollapseCursorRowHandler() {
 	fmt.Println("cb")
@@ -25078,6 +27718,22 @@ func (recv *TreeView) ConnectMoveCursor(callback TreeViewSignalMoveCursorCallbac
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.TreeView_signal_connect_move_cursor(instance, C.gpointer(uintptr(signalTreeViewMoveCursorId)))
 	return int(retC)
+}
+
+/*
+DisconnectMoveCursor disconnects a callback from the 'move-cursor' signal for the TreeView.
+
+The connectionID should be a value returned from a call to ConnectMoveCursor.
+*/
+func (recv *TreeView) DisconnectMoveCursor(connectionID int) {
+	_, exists := signalTreeViewMoveCursorMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalTreeViewMoveCursorMap, connectionID)
 }
 
 //export TreeView_moveCursorHandler
@@ -25109,6 +27765,22 @@ func (recv *TreeView) ConnectRowActivated(callback TreeViewSignalRowActivatedCal
 	return int(retC)
 }
 
+/*
+DisconnectRowActivated disconnects a callback from the 'row-activated' signal for the TreeView.
+
+The connectionID should be a value returned from a call to ConnectRowActivated.
+*/
+func (recv *TreeView) DisconnectRowActivated(connectionID int) {
+	_, exists := signalTreeViewRowActivatedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalTreeViewRowActivatedMap, connectionID)
+}
+
 //export TreeView_rowActivatedHandler
 func TreeView_rowActivatedHandler() {
 	fmt.Println("cb")
@@ -25136,6 +27808,22 @@ func (recv *TreeView) ConnectRowCollapsed(callback TreeViewSignalRowCollapsedCal
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.TreeView_signal_connect_row_collapsed(instance, C.gpointer(uintptr(signalTreeViewRowCollapsedId)))
 	return int(retC)
+}
+
+/*
+DisconnectRowCollapsed disconnects a callback from the 'row-collapsed' signal for the TreeView.
+
+The connectionID should be a value returned from a call to ConnectRowCollapsed.
+*/
+func (recv *TreeView) DisconnectRowCollapsed(connectionID int) {
+	_, exists := signalTreeViewRowCollapsedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalTreeViewRowCollapsedMap, connectionID)
 }
 
 //export TreeView_rowCollapsedHandler
@@ -25167,6 +27855,22 @@ func (recv *TreeView) ConnectRowExpanded(callback TreeViewSignalRowExpandedCallb
 	return int(retC)
 }
 
+/*
+DisconnectRowExpanded disconnects a callback from the 'row-expanded' signal for the TreeView.
+
+The connectionID should be a value returned from a call to ConnectRowExpanded.
+*/
+func (recv *TreeView) DisconnectRowExpanded(connectionID int) {
+	_, exists := signalTreeViewRowExpandedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalTreeViewRowExpandedMap, connectionID)
+}
+
 //export TreeView_rowExpandedHandler
 func TreeView_rowExpandedHandler() {
 	fmt.Println("cb")
@@ -25194,6 +27898,22 @@ func (recv *TreeView) ConnectSelectAll(callback TreeViewSignalSelectAllCallback)
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.TreeView_signal_connect_select_all(instance, C.gpointer(uintptr(signalTreeViewSelectAllId)))
 	return int(retC)
+}
+
+/*
+DisconnectSelectAll disconnects a callback from the 'select-all' signal for the TreeView.
+
+The connectionID should be a value returned from a call to ConnectSelectAll.
+*/
+func (recv *TreeView) DisconnectSelectAll(connectionID int) {
+	_, exists := signalTreeViewSelectAllMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalTreeViewSelectAllMap, connectionID)
 }
 
 //export TreeView_selectAllHandler
@@ -25225,6 +27945,22 @@ func (recv *TreeView) ConnectSelectCursorParent(callback TreeViewSignalSelectCur
 	return int(retC)
 }
 
+/*
+DisconnectSelectCursorParent disconnects a callback from the 'select-cursor-parent' signal for the TreeView.
+
+The connectionID should be a value returned from a call to ConnectSelectCursorParent.
+*/
+func (recv *TreeView) DisconnectSelectCursorParent(connectionID int) {
+	_, exists := signalTreeViewSelectCursorParentMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalTreeViewSelectCursorParentMap, connectionID)
+}
+
 //export TreeView_selectCursorParentHandler
 func TreeView_selectCursorParentHandler() {
 	fmt.Println("cb")
@@ -25252,6 +27988,22 @@ func (recv *TreeView) ConnectSelectCursorRow(callback TreeViewSignalSelectCursor
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.TreeView_signal_connect_select_cursor_row(instance, C.gpointer(uintptr(signalTreeViewSelectCursorRowId)))
 	return int(retC)
+}
+
+/*
+DisconnectSelectCursorRow disconnects a callback from the 'select-cursor-row' signal for the TreeView.
+
+The connectionID should be a value returned from a call to ConnectSelectCursorRow.
+*/
+func (recv *TreeView) DisconnectSelectCursorRow(connectionID int) {
+	_, exists := signalTreeViewSelectCursorRowMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalTreeViewSelectCursorRowMap, connectionID)
 }
 
 //export TreeView_selectCursorRowHandler
@@ -25283,6 +28035,22 @@ func (recv *TreeView) ConnectStartInteractiveSearch(callback TreeViewSignalStart
 	return int(retC)
 }
 
+/*
+DisconnectStartInteractiveSearch disconnects a callback from the 'start-interactive-search' signal for the TreeView.
+
+The connectionID should be a value returned from a call to ConnectStartInteractiveSearch.
+*/
+func (recv *TreeView) DisconnectStartInteractiveSearch(connectionID int) {
+	_, exists := signalTreeViewStartInteractiveSearchMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalTreeViewStartInteractiveSearchMap, connectionID)
+}
+
 //export TreeView_startInteractiveSearchHandler
 func TreeView_startInteractiveSearchHandler() {
 	fmt.Println("cb")
@@ -25310,6 +28078,22 @@ func (recv *TreeView) ConnectTestCollapseRow(callback TreeViewSignalTestCollapse
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.TreeView_signal_connect_test_collapse_row(instance, C.gpointer(uintptr(signalTreeViewTestCollapseRowId)))
 	return int(retC)
+}
+
+/*
+DisconnectTestCollapseRow disconnects a callback from the 'test-collapse-row' signal for the TreeView.
+
+The connectionID should be a value returned from a call to ConnectTestCollapseRow.
+*/
+func (recv *TreeView) DisconnectTestCollapseRow(connectionID int) {
+	_, exists := signalTreeViewTestCollapseRowMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalTreeViewTestCollapseRowMap, connectionID)
 }
 
 //export TreeView_testCollapseRowHandler
@@ -25341,6 +28125,22 @@ func (recv *TreeView) ConnectTestExpandRow(callback TreeViewSignalTestExpandRowC
 	return int(retC)
 }
 
+/*
+DisconnectTestExpandRow disconnects a callback from the 'test-expand-row' signal for the TreeView.
+
+The connectionID should be a value returned from a call to ConnectTestExpandRow.
+*/
+func (recv *TreeView) DisconnectTestExpandRow(connectionID int) {
+	_, exists := signalTreeViewTestExpandRowMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalTreeViewTestExpandRowMap, connectionID)
+}
+
 //export TreeView_testExpandRowHandler
 func TreeView_testExpandRowHandler() {
 	fmt.Println("cb")
@@ -25370,6 +28170,22 @@ func (recv *TreeView) ConnectToggleCursorRow(callback TreeViewSignalToggleCursor
 	return int(retC)
 }
 
+/*
+DisconnectToggleCursorRow disconnects a callback from the 'toggle-cursor-row' signal for the TreeView.
+
+The connectionID should be a value returned from a call to ConnectToggleCursorRow.
+*/
+func (recv *TreeView) DisconnectToggleCursorRow(connectionID int) {
+	_, exists := signalTreeViewToggleCursorRowMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalTreeViewToggleCursorRowMap, connectionID)
+}
+
 //export TreeView_toggleCursorRowHandler
 func TreeView_toggleCursorRowHandler() {
 	fmt.Println("cb")
@@ -25397,6 +28213,22 @@ func (recv *TreeView) ConnectUnselectAll(callback TreeViewSignalUnselectAllCallb
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.TreeView_signal_connect_unselect_all(instance, C.gpointer(uintptr(signalTreeViewUnselectAllId)))
 	return int(retC)
+}
+
+/*
+DisconnectUnselectAll disconnects a callback from the 'unselect-all' signal for the TreeView.
+
+The connectionID should be a value returned from a call to ConnectUnselectAll.
+*/
+func (recv *TreeView) DisconnectUnselectAll(connectionID int) {
+	_, exists := signalTreeViewUnselectAllMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalTreeViewUnselectAllMap, connectionID)
 }
 
 //export TreeView_unselectAllHandler
@@ -25930,6 +28762,22 @@ func (recv *TreeViewColumn) ConnectClicked(callback TreeViewColumnSignalClickedC
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.TreeViewColumn_signal_connect_clicked(instance, C.gpointer(uintptr(signalTreeViewColumnClickedId)))
 	return int(retC)
+}
+
+/*
+DisconnectClicked disconnects a callback from the 'clicked' signal for the TreeViewColumn.
+
+The connectionID should be a value returned from a call to ConnectClicked.
+*/
+func (recv *TreeViewColumn) DisconnectClicked(connectionID int) {
+	_, exists := signalTreeViewColumnClickedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalTreeViewColumnClickedMap, connectionID)
 }
 
 //export TreeViewColumn_clickedHandler
@@ -26977,6 +29825,22 @@ func (recv *Widget) ConnectAccelClosuresChanged(callback WidgetSignalAccelClosur
 	return int(retC)
 }
 
+/*
+DisconnectAccelClosuresChanged disconnects a callback from the 'accel-closures-changed' signal for the Widget.
+
+The connectionID should be a value returned from a call to ConnectAccelClosuresChanged.
+*/
+func (recv *Widget) DisconnectAccelClosuresChanged(connectionID int) {
+	_, exists := signalWidgetAccelClosuresChangedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalWidgetAccelClosuresChangedMap, connectionID)
+}
+
 //export Widget_accelClosuresChangedHandler
 func Widget_accelClosuresChangedHandler() {
 	fmt.Println("cb")
@@ -27004,6 +29868,22 @@ func (recv *Widget) ConnectButtonPressEvent(callback WidgetSignalButtonPressEven
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.Widget_signal_connect_button_press_event(instance, C.gpointer(uintptr(signalWidgetButtonPressEventId)))
 	return int(retC)
+}
+
+/*
+DisconnectButtonPressEvent disconnects a callback from the 'button-press-event' signal for the Widget.
+
+The connectionID should be a value returned from a call to ConnectButtonPressEvent.
+*/
+func (recv *Widget) DisconnectButtonPressEvent(connectionID int) {
+	_, exists := signalWidgetButtonPressEventMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalWidgetButtonPressEventMap, connectionID)
 }
 
 //export Widget_buttonPressEventHandler
@@ -27035,6 +29915,22 @@ func (recv *Widget) ConnectButtonReleaseEvent(callback WidgetSignalButtonRelease
 	return int(retC)
 }
 
+/*
+DisconnectButtonReleaseEvent disconnects a callback from the 'button-release-event' signal for the Widget.
+
+The connectionID should be a value returned from a call to ConnectButtonReleaseEvent.
+*/
+func (recv *Widget) DisconnectButtonReleaseEvent(connectionID int) {
+	_, exists := signalWidgetButtonReleaseEventMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalWidgetButtonReleaseEventMap, connectionID)
+}
+
 //export Widget_buttonReleaseEventHandler
 func Widget_buttonReleaseEventHandler() {
 	fmt.Println("cb")
@@ -27062,6 +29958,22 @@ func (recv *Widget) ConnectCanActivateAccel(callback WidgetSignalCanActivateAcce
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.Widget_signal_connect_can_activate_accel(instance, C.gpointer(uintptr(signalWidgetCanActivateAccelId)))
 	return int(retC)
+}
+
+/*
+DisconnectCanActivateAccel disconnects a callback from the 'can-activate-accel' signal for the Widget.
+
+The connectionID should be a value returned from a call to ConnectCanActivateAccel.
+*/
+func (recv *Widget) DisconnectCanActivateAccel(connectionID int) {
+	_, exists := signalWidgetCanActivateAccelMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalWidgetCanActivateAccelMap, connectionID)
 }
 
 //export Widget_canActivateAccelHandler
@@ -27095,6 +30007,22 @@ func (recv *Widget) ConnectCompositedChanged(callback WidgetSignalCompositedChan
 	return int(retC)
 }
 
+/*
+DisconnectCompositedChanged disconnects a callback from the 'composited-changed' signal for the Widget.
+
+The connectionID should be a value returned from a call to ConnectCompositedChanged.
+*/
+func (recv *Widget) DisconnectCompositedChanged(connectionID int) {
+	_, exists := signalWidgetCompositedChangedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalWidgetCompositedChangedMap, connectionID)
+}
+
 //export Widget_compositedChangedHandler
 func Widget_compositedChangedHandler() {
 	fmt.Println("cb")
@@ -27122,6 +30050,22 @@ func (recv *Widget) ConnectConfigureEvent(callback WidgetSignalConfigureEventCal
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.Widget_signal_connect_configure_event(instance, C.gpointer(uintptr(signalWidgetConfigureEventId)))
 	return int(retC)
+}
+
+/*
+DisconnectConfigureEvent disconnects a callback from the 'configure-event' signal for the Widget.
+
+The connectionID should be a value returned from a call to ConnectConfigureEvent.
+*/
+func (recv *Widget) DisconnectConfigureEvent(connectionID int) {
+	_, exists := signalWidgetConfigureEventMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalWidgetConfigureEventMap, connectionID)
 }
 
 //export Widget_configureEventHandler
@@ -27155,6 +30099,22 @@ func (recv *Widget) ConnectDestroy(callback WidgetSignalDestroyCallback) int {
 	return int(retC)
 }
 
+/*
+DisconnectDestroy disconnects a callback from the 'destroy' signal for the Widget.
+
+The connectionID should be a value returned from a call to ConnectDestroy.
+*/
+func (recv *Widget) DisconnectDestroy(connectionID int) {
+	_, exists := signalWidgetDestroyMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalWidgetDestroyMap, connectionID)
+}
+
 //export Widget_destroyHandler
 func Widget_destroyHandler() {
 	fmt.Println("cb")
@@ -27186,6 +30146,22 @@ func (recv *Widget) ConnectDirectionChanged(callback WidgetSignalDirectionChange
 	return int(retC)
 }
 
+/*
+DisconnectDirectionChanged disconnects a callback from the 'direction-changed' signal for the Widget.
+
+The connectionID should be a value returned from a call to ConnectDirectionChanged.
+*/
+func (recv *Widget) DisconnectDirectionChanged(connectionID int) {
+	_, exists := signalWidgetDirectionChangedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalWidgetDirectionChangedMap, connectionID)
+}
+
 //export Widget_directionChangedHandler
 func Widget_directionChangedHandler() {
 	fmt.Println("cb")
@@ -27213,6 +30189,22 @@ func (recv *Widget) ConnectDragBegin(callback WidgetSignalDragBeginCallback) int
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.Widget_signal_connect_drag_begin(instance, C.gpointer(uintptr(signalWidgetDragBeginId)))
 	return int(retC)
+}
+
+/*
+DisconnectDragBegin disconnects a callback from the 'drag-begin' signal for the Widget.
+
+The connectionID should be a value returned from a call to ConnectDragBegin.
+*/
+func (recv *Widget) DisconnectDragBegin(connectionID int) {
+	_, exists := signalWidgetDragBeginMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalWidgetDragBeginMap, connectionID)
 }
 
 //export Widget_dragBeginHandler
@@ -27244,6 +30236,22 @@ func (recv *Widget) ConnectDragDataDelete(callback WidgetSignalDragDataDeleteCal
 	return int(retC)
 }
 
+/*
+DisconnectDragDataDelete disconnects a callback from the 'drag-data-delete' signal for the Widget.
+
+The connectionID should be a value returned from a call to ConnectDragDataDelete.
+*/
+func (recv *Widget) DisconnectDragDataDelete(connectionID int) {
+	_, exists := signalWidgetDragDataDeleteMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalWidgetDragDataDeleteMap, connectionID)
+}
+
 //export Widget_dragDataDeleteHandler
 func Widget_dragDataDeleteHandler() {
 	fmt.Println("cb")
@@ -27271,6 +30279,22 @@ func (recv *Widget) ConnectDragDataGet(callback WidgetSignalDragDataGetCallback)
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.Widget_signal_connect_drag_data_get(instance, C.gpointer(uintptr(signalWidgetDragDataGetId)))
 	return int(retC)
+}
+
+/*
+DisconnectDragDataGet disconnects a callback from the 'drag-data-get' signal for the Widget.
+
+The connectionID should be a value returned from a call to ConnectDragDataGet.
+*/
+func (recv *Widget) DisconnectDragDataGet(connectionID int) {
+	_, exists := signalWidgetDragDataGetMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalWidgetDragDataGetMap, connectionID)
 }
 
 //export Widget_dragDataGetHandler
@@ -27302,6 +30326,22 @@ func (recv *Widget) ConnectDragDataReceived(callback WidgetSignalDragDataReceive
 	return int(retC)
 }
 
+/*
+DisconnectDragDataReceived disconnects a callback from the 'drag-data-received' signal for the Widget.
+
+The connectionID should be a value returned from a call to ConnectDragDataReceived.
+*/
+func (recv *Widget) DisconnectDragDataReceived(connectionID int) {
+	_, exists := signalWidgetDragDataReceivedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalWidgetDragDataReceivedMap, connectionID)
+}
+
 //export Widget_dragDataReceivedHandler
 func Widget_dragDataReceivedHandler() {
 	fmt.Println("cb")
@@ -27329,6 +30369,22 @@ func (recv *Widget) ConnectDragDrop(callback WidgetSignalDragDropCallback) int {
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.Widget_signal_connect_drag_drop(instance, C.gpointer(uintptr(signalWidgetDragDropId)))
 	return int(retC)
+}
+
+/*
+DisconnectDragDrop disconnects a callback from the 'drag-drop' signal for the Widget.
+
+The connectionID should be a value returned from a call to ConnectDragDrop.
+*/
+func (recv *Widget) DisconnectDragDrop(connectionID int) {
+	_, exists := signalWidgetDragDropMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalWidgetDragDropMap, connectionID)
 }
 
 //export Widget_dragDropHandler
@@ -27360,6 +30416,22 @@ func (recv *Widget) ConnectDragEnd(callback WidgetSignalDragEndCallback) int {
 	return int(retC)
 }
 
+/*
+DisconnectDragEnd disconnects a callback from the 'drag-end' signal for the Widget.
+
+The connectionID should be a value returned from a call to ConnectDragEnd.
+*/
+func (recv *Widget) DisconnectDragEnd(connectionID int) {
+	_, exists := signalWidgetDragEndMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalWidgetDragEndMap, connectionID)
+}
+
 //export Widget_dragEndHandler
 func Widget_dragEndHandler() {
 	fmt.Println("cb")
@@ -27387,6 +30459,22 @@ func (recv *Widget) ConnectDragLeave(callback WidgetSignalDragLeaveCallback) int
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.Widget_signal_connect_drag_leave(instance, C.gpointer(uintptr(signalWidgetDragLeaveId)))
 	return int(retC)
+}
+
+/*
+DisconnectDragLeave disconnects a callback from the 'drag-leave' signal for the Widget.
+
+The connectionID should be a value returned from a call to ConnectDragLeave.
+*/
+func (recv *Widget) DisconnectDragLeave(connectionID int) {
+	_, exists := signalWidgetDragLeaveMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalWidgetDragLeaveMap, connectionID)
 }
 
 //export Widget_dragLeaveHandler
@@ -27418,6 +30506,22 @@ func (recv *Widget) ConnectDragMotion(callback WidgetSignalDragMotionCallback) i
 	return int(retC)
 }
 
+/*
+DisconnectDragMotion disconnects a callback from the 'drag-motion' signal for the Widget.
+
+The connectionID should be a value returned from a call to ConnectDragMotion.
+*/
+func (recv *Widget) DisconnectDragMotion(connectionID int) {
+	_, exists := signalWidgetDragMotionMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalWidgetDragMotionMap, connectionID)
+}
+
 //export Widget_dragMotionHandler
 func Widget_dragMotionHandler() {
 	fmt.Println("cb")
@@ -27445,6 +30549,22 @@ func (recv *Widget) ConnectEnterNotifyEvent(callback WidgetSignalEnterNotifyEven
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.Widget_signal_connect_enter_notify_event(instance, C.gpointer(uintptr(signalWidgetEnterNotifyEventId)))
 	return int(retC)
+}
+
+/*
+DisconnectEnterNotifyEvent disconnects a callback from the 'enter-notify-event' signal for the Widget.
+
+The connectionID should be a value returned from a call to ConnectEnterNotifyEvent.
+*/
+func (recv *Widget) DisconnectEnterNotifyEvent(connectionID int) {
+	_, exists := signalWidgetEnterNotifyEventMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalWidgetEnterNotifyEventMap, connectionID)
 }
 
 //export Widget_enterNotifyEventHandler
@@ -27480,6 +30600,22 @@ func (recv *Widget) ConnectFocus(callback WidgetSignalFocusCallback) int {
 	return int(retC)
 }
 
+/*
+DisconnectFocus disconnects a callback from the 'focus' signal for the Widget.
+
+The connectionID should be a value returned from a call to ConnectFocus.
+*/
+func (recv *Widget) DisconnectFocus(connectionID int) {
+	_, exists := signalWidgetFocusMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalWidgetFocusMap, connectionID)
+}
+
 //export Widget_focusHandler
 func Widget_focusHandler() {
 	fmt.Println("cb")
@@ -27507,6 +30643,22 @@ func (recv *Widget) ConnectFocusInEvent(callback WidgetSignalFocusInEventCallbac
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.Widget_signal_connect_focus_in_event(instance, C.gpointer(uintptr(signalWidgetFocusInEventId)))
 	return int(retC)
+}
+
+/*
+DisconnectFocusInEvent disconnects a callback from the 'focus-in-event' signal for the Widget.
+
+The connectionID should be a value returned from a call to ConnectFocusInEvent.
+*/
+func (recv *Widget) DisconnectFocusInEvent(connectionID int) {
+	_, exists := signalWidgetFocusInEventMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalWidgetFocusInEventMap, connectionID)
 }
 
 //export Widget_focusInEventHandler
@@ -27538,6 +30690,22 @@ func (recv *Widget) ConnectFocusOutEvent(callback WidgetSignalFocusOutEventCallb
 	return int(retC)
 }
 
+/*
+DisconnectFocusOutEvent disconnects a callback from the 'focus-out-event' signal for the Widget.
+
+The connectionID should be a value returned from a call to ConnectFocusOutEvent.
+*/
+func (recv *Widget) DisconnectFocusOutEvent(connectionID int) {
+	_, exists := signalWidgetFocusOutEventMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalWidgetFocusOutEventMap, connectionID)
+}
+
 //export Widget_focusOutEventHandler
 func Widget_focusOutEventHandler() {
 	fmt.Println("cb")
@@ -27565,6 +30733,22 @@ func (recv *Widget) ConnectGrabFocus(callback WidgetSignalGrabFocusCallback) int
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.Widget_signal_connect_grab_focus(instance, C.gpointer(uintptr(signalWidgetGrabFocusId)))
 	return int(retC)
+}
+
+/*
+DisconnectGrabFocus disconnects a callback from the 'grab-focus' signal for the Widget.
+
+The connectionID should be a value returned from a call to ConnectGrabFocus.
+*/
+func (recv *Widget) DisconnectGrabFocus(connectionID int) {
+	_, exists := signalWidgetGrabFocusMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalWidgetGrabFocusMap, connectionID)
 }
 
 //export Widget_grabFocusHandler
@@ -27596,6 +30780,22 @@ func (recv *Widget) ConnectGrabNotify(callback WidgetSignalGrabNotifyCallback) i
 	return int(retC)
 }
 
+/*
+DisconnectGrabNotify disconnects a callback from the 'grab-notify' signal for the Widget.
+
+The connectionID should be a value returned from a call to ConnectGrabNotify.
+*/
+func (recv *Widget) DisconnectGrabNotify(connectionID int) {
+	_, exists := signalWidgetGrabNotifyMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalWidgetGrabNotifyMap, connectionID)
+}
+
 //export Widget_grabNotifyHandler
 func Widget_grabNotifyHandler() {
 	fmt.Println("cb")
@@ -27623,6 +30823,22 @@ func (recv *Widget) ConnectHide(callback WidgetSignalHideCallback) int {
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.Widget_signal_connect_hide(instance, C.gpointer(uintptr(signalWidgetHideId)))
 	return int(retC)
+}
+
+/*
+DisconnectHide disconnects a callback from the 'hide' signal for the Widget.
+
+The connectionID should be a value returned from a call to ConnectHide.
+*/
+func (recv *Widget) DisconnectHide(connectionID int) {
+	_, exists := signalWidgetHideMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalWidgetHideMap, connectionID)
 }
 
 //export Widget_hideHandler
@@ -27654,6 +30870,22 @@ func (recv *Widget) ConnectHierarchyChanged(callback WidgetSignalHierarchyChange
 	return int(retC)
 }
 
+/*
+DisconnectHierarchyChanged disconnects a callback from the 'hierarchy-changed' signal for the Widget.
+
+The connectionID should be a value returned from a call to ConnectHierarchyChanged.
+*/
+func (recv *Widget) DisconnectHierarchyChanged(connectionID int) {
+	_, exists := signalWidgetHierarchyChangedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalWidgetHierarchyChangedMap, connectionID)
+}
+
 //export Widget_hierarchyChangedHandler
 func Widget_hierarchyChangedHandler() {
 	fmt.Println("cb")
@@ -27681,6 +30913,22 @@ func (recv *Widget) ConnectKeyPressEvent(callback WidgetSignalKeyPressEventCallb
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.Widget_signal_connect_key_press_event(instance, C.gpointer(uintptr(signalWidgetKeyPressEventId)))
 	return int(retC)
+}
+
+/*
+DisconnectKeyPressEvent disconnects a callback from the 'key-press-event' signal for the Widget.
+
+The connectionID should be a value returned from a call to ConnectKeyPressEvent.
+*/
+func (recv *Widget) DisconnectKeyPressEvent(connectionID int) {
+	_, exists := signalWidgetKeyPressEventMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalWidgetKeyPressEventMap, connectionID)
 }
 
 //export Widget_keyPressEventHandler
@@ -27712,6 +30960,22 @@ func (recv *Widget) ConnectKeyReleaseEvent(callback WidgetSignalKeyReleaseEventC
 	return int(retC)
 }
 
+/*
+DisconnectKeyReleaseEvent disconnects a callback from the 'key-release-event' signal for the Widget.
+
+The connectionID should be a value returned from a call to ConnectKeyReleaseEvent.
+*/
+func (recv *Widget) DisconnectKeyReleaseEvent(connectionID int) {
+	_, exists := signalWidgetKeyReleaseEventMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalWidgetKeyReleaseEventMap, connectionID)
+}
+
 //export Widget_keyReleaseEventHandler
 func Widget_keyReleaseEventHandler() {
 	fmt.Println("cb")
@@ -27739,6 +31003,22 @@ func (recv *Widget) ConnectLeaveNotifyEvent(callback WidgetSignalLeaveNotifyEven
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.Widget_signal_connect_leave_notify_event(instance, C.gpointer(uintptr(signalWidgetLeaveNotifyEventId)))
 	return int(retC)
+}
+
+/*
+DisconnectLeaveNotifyEvent disconnects a callback from the 'leave-notify-event' signal for the Widget.
+
+The connectionID should be a value returned from a call to ConnectLeaveNotifyEvent.
+*/
+func (recv *Widget) DisconnectLeaveNotifyEvent(connectionID int) {
+	_, exists := signalWidgetLeaveNotifyEventMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalWidgetLeaveNotifyEventMap, connectionID)
 }
 
 //export Widget_leaveNotifyEventHandler
@@ -27770,6 +31050,22 @@ func (recv *Widget) ConnectMap(callback WidgetSignalMapCallback) int {
 	return int(retC)
 }
 
+/*
+DisconnectMap disconnects a callback from the 'map' signal for the Widget.
+
+The connectionID should be a value returned from a call to ConnectMap.
+*/
+func (recv *Widget) DisconnectMap(connectionID int) {
+	_, exists := signalWidgetMapMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalWidgetMapMap, connectionID)
+}
+
 //export Widget_mapHandler
 func Widget_mapHandler() {
 	fmt.Println("cb")
@@ -27797,6 +31093,22 @@ func (recv *Widget) ConnectMapEvent(callback WidgetSignalMapEventCallback) int {
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.Widget_signal_connect_map_event(instance, C.gpointer(uintptr(signalWidgetMapEventId)))
 	return int(retC)
+}
+
+/*
+DisconnectMapEvent disconnects a callback from the 'map-event' signal for the Widget.
+
+The connectionID should be a value returned from a call to ConnectMapEvent.
+*/
+func (recv *Widget) DisconnectMapEvent(connectionID int) {
+	_, exists := signalWidgetMapEventMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalWidgetMapEventMap, connectionID)
 }
 
 //export Widget_mapEventHandler
@@ -27828,6 +31140,22 @@ func (recv *Widget) ConnectMnemonicActivate(callback WidgetSignalMnemonicActivat
 	return int(retC)
 }
 
+/*
+DisconnectMnemonicActivate disconnects a callback from the 'mnemonic-activate' signal for the Widget.
+
+The connectionID should be a value returned from a call to ConnectMnemonicActivate.
+*/
+func (recv *Widget) DisconnectMnemonicActivate(connectionID int) {
+	_, exists := signalWidgetMnemonicActivateMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalWidgetMnemonicActivateMap, connectionID)
+}
+
 //export Widget_mnemonicActivateHandler
 func Widget_mnemonicActivateHandler() {
 	fmt.Println("cb")
@@ -27855,6 +31183,22 @@ func (recv *Widget) ConnectMotionNotifyEvent(callback WidgetSignalMotionNotifyEv
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.Widget_signal_connect_motion_notify_event(instance, C.gpointer(uintptr(signalWidgetMotionNotifyEventId)))
 	return int(retC)
+}
+
+/*
+DisconnectMotionNotifyEvent disconnects a callback from the 'motion-notify-event' signal for the Widget.
+
+The connectionID should be a value returned from a call to ConnectMotionNotifyEvent.
+*/
+func (recv *Widget) DisconnectMotionNotifyEvent(connectionID int) {
+	_, exists := signalWidgetMotionNotifyEventMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalWidgetMotionNotifyEventMap, connectionID)
 }
 
 //export Widget_motionNotifyEventHandler
@@ -27886,6 +31230,22 @@ func (recv *Widget) ConnectMoveFocus(callback WidgetSignalMoveFocusCallback) int
 	return int(retC)
 }
 
+/*
+DisconnectMoveFocus disconnects a callback from the 'move-focus' signal for the Widget.
+
+The connectionID should be a value returned from a call to ConnectMoveFocus.
+*/
+func (recv *Widget) DisconnectMoveFocus(connectionID int) {
+	_, exists := signalWidgetMoveFocusMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalWidgetMoveFocusMap, connectionID)
+}
+
 //export Widget_moveFocusHandler
 func Widget_moveFocusHandler() {
 	fmt.Println("cb")
@@ -27913,6 +31273,22 @@ func (recv *Widget) ConnectParentSet(callback WidgetSignalParentSetCallback) int
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.Widget_signal_connect_parent_set(instance, C.gpointer(uintptr(signalWidgetParentSetId)))
 	return int(retC)
+}
+
+/*
+DisconnectParentSet disconnects a callback from the 'parent-set' signal for the Widget.
+
+The connectionID should be a value returned from a call to ConnectParentSet.
+*/
+func (recv *Widget) DisconnectParentSet(connectionID int) {
+	_, exists := signalWidgetParentSetMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalWidgetParentSetMap, connectionID)
 }
 
 //export Widget_parentSetHandler
@@ -27944,6 +31320,22 @@ func (recv *Widget) ConnectPopupMenu(callback WidgetSignalPopupMenuCallback) int
 	return int(retC)
 }
 
+/*
+DisconnectPopupMenu disconnects a callback from the 'popup-menu' signal for the Widget.
+
+The connectionID should be a value returned from a call to ConnectPopupMenu.
+*/
+func (recv *Widget) DisconnectPopupMenu(connectionID int) {
+	_, exists := signalWidgetPopupMenuMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalWidgetPopupMenuMap, connectionID)
+}
+
 //export Widget_popupMenuHandler
 func Widget_popupMenuHandler() {
 	fmt.Println("cb")
@@ -27971,6 +31363,22 @@ func (recv *Widget) ConnectPropertyNotifyEvent(callback WidgetSignalPropertyNoti
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.Widget_signal_connect_property_notify_event(instance, C.gpointer(uintptr(signalWidgetPropertyNotifyEventId)))
 	return int(retC)
+}
+
+/*
+DisconnectPropertyNotifyEvent disconnects a callback from the 'property-notify-event' signal for the Widget.
+
+The connectionID should be a value returned from a call to ConnectPropertyNotifyEvent.
+*/
+func (recv *Widget) DisconnectPropertyNotifyEvent(connectionID int) {
+	_, exists := signalWidgetPropertyNotifyEventMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalWidgetPropertyNotifyEventMap, connectionID)
 }
 
 //export Widget_propertyNotifyEventHandler
@@ -28002,6 +31410,22 @@ func (recv *Widget) ConnectProximityInEvent(callback WidgetSignalProximityInEven
 	return int(retC)
 }
 
+/*
+DisconnectProximityInEvent disconnects a callback from the 'proximity-in-event' signal for the Widget.
+
+The connectionID should be a value returned from a call to ConnectProximityInEvent.
+*/
+func (recv *Widget) DisconnectProximityInEvent(connectionID int) {
+	_, exists := signalWidgetProximityInEventMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalWidgetProximityInEventMap, connectionID)
+}
+
 //export Widget_proximityInEventHandler
 func Widget_proximityInEventHandler() {
 	fmt.Println("cb")
@@ -28029,6 +31453,22 @@ func (recv *Widget) ConnectProximityOutEvent(callback WidgetSignalProximityOutEv
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.Widget_signal_connect_proximity_out_event(instance, C.gpointer(uintptr(signalWidgetProximityOutEventId)))
 	return int(retC)
+}
+
+/*
+DisconnectProximityOutEvent disconnects a callback from the 'proximity-out-event' signal for the Widget.
+
+The connectionID should be a value returned from a call to ConnectProximityOutEvent.
+*/
+func (recv *Widget) DisconnectProximityOutEvent(connectionID int) {
+	_, exists := signalWidgetProximityOutEventMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalWidgetProximityOutEventMap, connectionID)
 }
 
 //export Widget_proximityOutEventHandler
@@ -28060,6 +31500,22 @@ func (recv *Widget) ConnectRealize(callback WidgetSignalRealizeCallback) int {
 	return int(retC)
 }
 
+/*
+DisconnectRealize disconnects a callback from the 'realize' signal for the Widget.
+
+The connectionID should be a value returned from a call to ConnectRealize.
+*/
+func (recv *Widget) DisconnectRealize(connectionID int) {
+	_, exists := signalWidgetRealizeMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalWidgetRealizeMap, connectionID)
+}
+
 //export Widget_realizeHandler
 func Widget_realizeHandler() {
 	fmt.Println("cb")
@@ -28087,6 +31543,22 @@ func (recv *Widget) ConnectScreenChanged(callback WidgetSignalScreenChangedCallb
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.Widget_signal_connect_screen_changed(instance, C.gpointer(uintptr(signalWidgetScreenChangedId)))
 	return int(retC)
+}
+
+/*
+DisconnectScreenChanged disconnects a callback from the 'screen-changed' signal for the Widget.
+
+The connectionID should be a value returned from a call to ConnectScreenChanged.
+*/
+func (recv *Widget) DisconnectScreenChanged(connectionID int) {
+	_, exists := signalWidgetScreenChangedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalWidgetScreenChangedMap, connectionID)
 }
 
 //export Widget_screenChangedHandler
@@ -28118,6 +31590,22 @@ func (recv *Widget) ConnectScrollEvent(callback WidgetSignalScrollEventCallback)
 	return int(retC)
 }
 
+/*
+DisconnectScrollEvent disconnects a callback from the 'scroll-event' signal for the Widget.
+
+The connectionID should be a value returned from a call to ConnectScrollEvent.
+*/
+func (recv *Widget) DisconnectScrollEvent(connectionID int) {
+	_, exists := signalWidgetScrollEventMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalWidgetScrollEventMap, connectionID)
+}
+
 //export Widget_scrollEventHandler
 func Widget_scrollEventHandler() {
 	fmt.Println("cb")
@@ -28145,6 +31633,22 @@ func (recv *Widget) ConnectSelectionClearEvent(callback WidgetSignalSelectionCle
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.Widget_signal_connect_selection_clear_event(instance, C.gpointer(uintptr(signalWidgetSelectionClearEventId)))
 	return int(retC)
+}
+
+/*
+DisconnectSelectionClearEvent disconnects a callback from the 'selection-clear-event' signal for the Widget.
+
+The connectionID should be a value returned from a call to ConnectSelectionClearEvent.
+*/
+func (recv *Widget) DisconnectSelectionClearEvent(connectionID int) {
+	_, exists := signalWidgetSelectionClearEventMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalWidgetSelectionClearEventMap, connectionID)
 }
 
 //export Widget_selectionClearEventHandler
@@ -28176,6 +31680,22 @@ func (recv *Widget) ConnectSelectionGet(callback WidgetSignalSelectionGetCallbac
 	return int(retC)
 }
 
+/*
+DisconnectSelectionGet disconnects a callback from the 'selection-get' signal for the Widget.
+
+The connectionID should be a value returned from a call to ConnectSelectionGet.
+*/
+func (recv *Widget) DisconnectSelectionGet(connectionID int) {
+	_, exists := signalWidgetSelectionGetMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalWidgetSelectionGetMap, connectionID)
+}
+
 //export Widget_selectionGetHandler
 func Widget_selectionGetHandler() {
 	fmt.Println("cb")
@@ -28203,6 +31723,22 @@ func (recv *Widget) ConnectSelectionNotifyEvent(callback WidgetSignalSelectionNo
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.Widget_signal_connect_selection_notify_event(instance, C.gpointer(uintptr(signalWidgetSelectionNotifyEventId)))
 	return int(retC)
+}
+
+/*
+DisconnectSelectionNotifyEvent disconnects a callback from the 'selection-notify-event' signal for the Widget.
+
+The connectionID should be a value returned from a call to ConnectSelectionNotifyEvent.
+*/
+func (recv *Widget) DisconnectSelectionNotifyEvent(connectionID int) {
+	_, exists := signalWidgetSelectionNotifyEventMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalWidgetSelectionNotifyEventMap, connectionID)
 }
 
 //export Widget_selectionNotifyEventHandler
@@ -28234,6 +31770,22 @@ func (recv *Widget) ConnectSelectionReceived(callback WidgetSignalSelectionRecei
 	return int(retC)
 }
 
+/*
+DisconnectSelectionReceived disconnects a callback from the 'selection-received' signal for the Widget.
+
+The connectionID should be a value returned from a call to ConnectSelectionReceived.
+*/
+func (recv *Widget) DisconnectSelectionReceived(connectionID int) {
+	_, exists := signalWidgetSelectionReceivedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalWidgetSelectionReceivedMap, connectionID)
+}
+
 //export Widget_selectionReceivedHandler
 func Widget_selectionReceivedHandler() {
 	fmt.Println("cb")
@@ -28261,6 +31813,22 @@ func (recv *Widget) ConnectSelectionRequestEvent(callback WidgetSignalSelectionR
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.Widget_signal_connect_selection_request_event(instance, C.gpointer(uintptr(signalWidgetSelectionRequestEventId)))
 	return int(retC)
+}
+
+/*
+DisconnectSelectionRequestEvent disconnects a callback from the 'selection-request-event' signal for the Widget.
+
+The connectionID should be a value returned from a call to ConnectSelectionRequestEvent.
+*/
+func (recv *Widget) DisconnectSelectionRequestEvent(connectionID int) {
+	_, exists := signalWidgetSelectionRequestEventMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalWidgetSelectionRequestEventMap, connectionID)
 }
 
 //export Widget_selectionRequestEventHandler
@@ -28292,6 +31860,22 @@ func (recv *Widget) ConnectShow(callback WidgetSignalShowCallback) int {
 	return int(retC)
 }
 
+/*
+DisconnectShow disconnects a callback from the 'show' signal for the Widget.
+
+The connectionID should be a value returned from a call to ConnectShow.
+*/
+func (recv *Widget) DisconnectShow(connectionID int) {
+	_, exists := signalWidgetShowMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalWidgetShowMap, connectionID)
+}
+
 //export Widget_showHandler
 func Widget_showHandler() {
 	fmt.Println("cb")
@@ -28319,6 +31903,22 @@ func (recv *Widget) ConnectShowHelp(callback WidgetSignalShowHelpCallback) int {
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.Widget_signal_connect_show_help(instance, C.gpointer(uintptr(signalWidgetShowHelpId)))
 	return int(retC)
+}
+
+/*
+DisconnectShowHelp disconnects a callback from the 'show-help' signal for the Widget.
+
+The connectionID should be a value returned from a call to ConnectShowHelp.
+*/
+func (recv *Widget) DisconnectShowHelp(connectionID int) {
+	_, exists := signalWidgetShowHelpMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalWidgetShowHelpMap, connectionID)
 }
 
 //export Widget_showHelpHandler
@@ -28352,6 +31952,22 @@ func (recv *Widget) ConnectStateChanged(callback WidgetSignalStateChangedCallbac
 	return int(retC)
 }
 
+/*
+DisconnectStateChanged disconnects a callback from the 'state-changed' signal for the Widget.
+
+The connectionID should be a value returned from a call to ConnectStateChanged.
+*/
+func (recv *Widget) DisconnectStateChanged(connectionID int) {
+	_, exists := signalWidgetStateChangedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalWidgetStateChangedMap, connectionID)
+}
+
 //export Widget_stateChangedHandler
 func Widget_stateChangedHandler() {
 	fmt.Println("cb")
@@ -28379,6 +31995,22 @@ func (recv *Widget) ConnectStyleSet(callback WidgetSignalStyleSetCallback) int {
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.Widget_signal_connect_style_set(instance, C.gpointer(uintptr(signalWidgetStyleSetId)))
 	return int(retC)
+}
+
+/*
+DisconnectStyleSet disconnects a callback from the 'style-set' signal for the Widget.
+
+The connectionID should be a value returned from a call to ConnectStyleSet.
+*/
+func (recv *Widget) DisconnectStyleSet(connectionID int) {
+	_, exists := signalWidgetStyleSetMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalWidgetStyleSetMap, connectionID)
 }
 
 //export Widget_styleSetHandler
@@ -28412,6 +32044,22 @@ func (recv *Widget) ConnectUnmap(callback WidgetSignalUnmapCallback) int {
 	return int(retC)
 }
 
+/*
+DisconnectUnmap disconnects a callback from the 'unmap' signal for the Widget.
+
+The connectionID should be a value returned from a call to ConnectUnmap.
+*/
+func (recv *Widget) DisconnectUnmap(connectionID int) {
+	_, exists := signalWidgetUnmapMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalWidgetUnmapMap, connectionID)
+}
+
 //export Widget_unmapHandler
 func Widget_unmapHandler() {
 	fmt.Println("cb")
@@ -28439,6 +32087,22 @@ func (recv *Widget) ConnectUnmapEvent(callback WidgetSignalUnmapEventCallback) i
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.Widget_signal_connect_unmap_event(instance, C.gpointer(uintptr(signalWidgetUnmapEventId)))
 	return int(retC)
+}
+
+/*
+DisconnectUnmapEvent disconnects a callback from the 'unmap-event' signal for the Widget.
+
+The connectionID should be a value returned from a call to ConnectUnmapEvent.
+*/
+func (recv *Widget) DisconnectUnmapEvent(connectionID int) {
+	_, exists := signalWidgetUnmapEventMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalWidgetUnmapEventMap, connectionID)
 }
 
 //export Widget_unmapEventHandler
@@ -28470,6 +32134,22 @@ func (recv *Widget) ConnectUnrealize(callback WidgetSignalUnrealizeCallback) int
 	return int(retC)
 }
 
+/*
+DisconnectUnrealize disconnects a callback from the 'unrealize' signal for the Widget.
+
+The connectionID should be a value returned from a call to ConnectUnrealize.
+*/
+func (recv *Widget) DisconnectUnrealize(connectionID int) {
+	_, exists := signalWidgetUnrealizeMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalWidgetUnrealizeMap, connectionID)
+}
+
 //export Widget_unrealizeHandler
 func Widget_unrealizeHandler() {
 	fmt.Println("cb")
@@ -28499,6 +32179,22 @@ func (recv *Widget) ConnectVisibilityNotifyEvent(callback WidgetSignalVisibility
 	return int(retC)
 }
 
+/*
+DisconnectVisibilityNotifyEvent disconnects a callback from the 'visibility-notify-event' signal for the Widget.
+
+The connectionID should be a value returned from a call to ConnectVisibilityNotifyEvent.
+*/
+func (recv *Widget) DisconnectVisibilityNotifyEvent(connectionID int) {
+	_, exists := signalWidgetVisibilityNotifyEventMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalWidgetVisibilityNotifyEventMap, connectionID)
+}
+
 //export Widget_visibilityNotifyEventHandler
 func Widget_visibilityNotifyEventHandler() {
 	fmt.Println("cb")
@@ -28526,6 +32222,22 @@ func (recv *Widget) ConnectWindowStateEvent(callback WidgetSignalWindowStateEven
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.Widget_signal_connect_window_state_event(instance, C.gpointer(uintptr(signalWidgetWindowStateEventId)))
 	return int(retC)
+}
+
+/*
+DisconnectWindowStateEvent disconnects a callback from the 'window-state-event' signal for the Widget.
+
+The connectionID should be a value returned from a call to ConnectWindowStateEvent.
+*/
+func (recv *Widget) DisconnectWindowStateEvent(connectionID int) {
+	_, exists := signalWidgetWindowStateEventMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalWidgetWindowStateEventMap, connectionID)
 }
 
 //export Widget_windowStateEventHandler
@@ -29713,6 +33425,22 @@ func (recv *Window) ConnectActivateDefault(callback WindowSignalActivateDefaultC
 	return int(retC)
 }
 
+/*
+DisconnectActivateDefault disconnects a callback from the 'activate-default' signal for the Window.
+
+The connectionID should be a value returned from a call to ConnectActivateDefault.
+*/
+func (recv *Window) DisconnectActivateDefault(connectionID int) {
+	_, exists := signalWindowActivateDefaultMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalWindowActivateDefaultMap, connectionID)
+}
+
 //export Window_activateDefaultHandler
 func Window_activateDefaultHandler() {
 	fmt.Println("cb")
@@ -29740,6 +33468,22 @@ func (recv *Window) ConnectActivateFocus(callback WindowSignalActivateFocusCallb
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.Window_signal_connect_activate_focus(instance, C.gpointer(uintptr(signalWindowActivateFocusId)))
 	return int(retC)
+}
+
+/*
+DisconnectActivateFocus disconnects a callback from the 'activate-focus' signal for the Window.
+
+The connectionID should be a value returned from a call to ConnectActivateFocus.
+*/
+func (recv *Window) DisconnectActivateFocus(connectionID int) {
+	_, exists := signalWindowActivateFocusMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalWindowActivateFocusMap, connectionID)
 }
 
 //export Window_activateFocusHandler
@@ -29771,6 +33515,22 @@ func (recv *Window) ConnectEnableDebugging(callback WindowSignalEnableDebuggingC
 	return int(retC)
 }
 
+/*
+DisconnectEnableDebugging disconnects a callback from the 'enable-debugging' signal for the Window.
+
+The connectionID should be a value returned from a call to ConnectEnableDebugging.
+*/
+func (recv *Window) DisconnectEnableDebugging(connectionID int) {
+	_, exists := signalWindowEnableDebuggingMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalWindowEnableDebuggingMap, connectionID)
+}
+
 //export Window_enableDebuggingHandler
 func Window_enableDebuggingHandler() {
 	fmt.Println("cb")
@@ -29800,6 +33560,22 @@ func (recv *Window) ConnectKeysChanged(callback WindowSignalKeysChangedCallback)
 	return int(retC)
 }
 
+/*
+DisconnectKeysChanged disconnects a callback from the 'keys-changed' signal for the Window.
+
+The connectionID should be a value returned from a call to ConnectKeysChanged.
+*/
+func (recv *Window) DisconnectKeysChanged(connectionID int) {
+	_, exists := signalWindowKeysChangedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalWindowKeysChangedMap, connectionID)
+}
+
 //export Window_keysChangedHandler
 func Window_keysChangedHandler() {
 	fmt.Println("cb")
@@ -29827,6 +33603,22 @@ func (recv *Window) ConnectSetFocus(callback WindowSignalSetFocusCallback) int {
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.Window_signal_connect_set_focus(instance, C.gpointer(uintptr(signalWindowSetFocusId)))
 	return int(retC)
+}
+
+/*
+DisconnectSetFocus disconnects a callback from the 'set-focus' signal for the Window.
+
+The connectionID should be a value returned from a call to ConnectSetFocus.
+*/
+func (recv *Window) DisconnectSetFocus(connectionID int) {
+	_, exists := signalWindowSetFocusMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalWindowSetFocusMap, connectionID)
 }
 
 //export Window_setFocusHandler

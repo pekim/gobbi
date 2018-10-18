@@ -58,6 +58,22 @@ func (recv *AppLaunchContext) ConnectLaunchFailed(callback AppLaunchContextSigna
 	return int(retC)
 }
 
+/*
+DisconnectLaunchFailed disconnects a callback from the 'launch-failed' signal for the AppLaunchContext.
+
+The connectionID should be a value returned from a call to ConnectLaunchFailed.
+*/
+func (recv *AppLaunchContext) DisconnectLaunchFailed(connectionID int) {
+	_, exists := signalAppLaunchContextLaunchFailedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalAppLaunchContextLaunchFailedMap, connectionID)
+}
+
 //export AppLaunchContext_launchFailedHandler
 func AppLaunchContext_launchFailedHandler() {
 	fmt.Println("cb")

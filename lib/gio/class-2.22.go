@@ -1596,6 +1596,22 @@ func (recv *ThreadedSocketService) ConnectRun(callback ThreadedSocketServiceSign
 	return int(retC)
 }
 
+/*
+DisconnectRun disconnects a callback from the 'run' signal for the ThreadedSocketService.
+
+The connectionID should be a value returned from a call to ConnectRun.
+*/
+func (recv *ThreadedSocketService) DisconnectRun(connectionID int) {
+	_, exists := signalThreadedSocketServiceRunMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalThreadedSocketServiceRunMap, connectionID)
+}
+
 //export ThreadedSocketService_runHandler
 func ThreadedSocketService_runHandler() {
 	fmt.Println("cb")

@@ -844,6 +844,22 @@ func (recv *MenuModel) ConnectItemsChanged(callback MenuModelSignalItemsChangedC
 	return int(retC)
 }
 
+/*
+DisconnectItemsChanged disconnects a callback from the 'items-changed' signal for the MenuModel.
+
+The connectionID should be a value returned from a call to ConnectItemsChanged.
+*/
+func (recv *MenuModel) DisconnectItemsChanged(connectionID int) {
+	_, exists := signalMenuModelItemsChangedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalMenuModelItemsChangedMap, connectionID)
+}
+
 //export MenuModel_itemsChangedHandler
 func MenuModel_itemsChangedHandler() {
 	fmt.Println("cb")

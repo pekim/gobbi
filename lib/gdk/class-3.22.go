@@ -85,6 +85,22 @@ func (recv *Device) ConnectToolChanged(callback DeviceSignalToolChangedCallback)
 	return int(retC)
 }
 
+/*
+DisconnectToolChanged disconnects a callback from the 'tool-changed' signal for the Device.
+
+The connectionID should be a value returned from a call to ConnectToolChanged.
+*/
+func (recv *Device) DisconnectToolChanged(connectionID int) {
+	_, exists := signalDeviceToolChangedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalDeviceToolChangedMap, connectionID)
+}
+
 //export Device_toolChangedHandler
 func Device_toolChangedHandler() {
 	fmt.Println("cb")
@@ -178,6 +194,22 @@ func (recv *Display) ConnectMonitorAdded(callback DisplaySignalMonitorAddedCallb
 	return int(retC)
 }
 
+/*
+DisconnectMonitorAdded disconnects a callback from the 'monitor-added' signal for the Display.
+
+The connectionID should be a value returned from a call to ConnectMonitorAdded.
+*/
+func (recv *Display) DisconnectMonitorAdded(connectionID int) {
+	_, exists := signalDisplayMonitorAddedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalDisplayMonitorAddedMap, connectionID)
+}
+
 //export Display_monitorAddedHandler
 func Display_monitorAddedHandler() {
 	fmt.Println("cb")
@@ -205,6 +237,22 @@ func (recv *Display) ConnectMonitorRemoved(callback DisplaySignalMonitorRemovedC
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.Display_signal_connect_monitor_removed(instance, C.gpointer(uintptr(signalDisplayMonitorRemovedId)))
 	return int(retC)
+}
+
+/*
+DisconnectMonitorRemoved disconnects a callback from the 'monitor-removed' signal for the Display.
+
+The connectionID should be a value returned from a call to ConnectMonitorRemoved.
+*/
+func (recv *Display) DisconnectMonitorRemoved(connectionID int) {
+	_, exists := signalDisplayMonitorRemovedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalDisplayMonitorRemovedMap, connectionID)
 }
 
 //export Display_monitorRemovedHandler
@@ -397,6 +445,22 @@ func (recv *Monitor) ConnectInvalidate(callback MonitorSignalInvalidateCallback)
 	return int(retC)
 }
 
+/*
+DisconnectInvalidate disconnects a callback from the 'invalidate' signal for the Monitor.
+
+The connectionID should be a value returned from a call to ConnectInvalidate.
+*/
+func (recv *Monitor) DisconnectInvalidate(connectionID int) {
+	_, exists := signalMonitorInvalidateMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalMonitorInvalidateMap, connectionID)
+}
+
 //export Monitor_invalidateHandler
 func Monitor_invalidateHandler() {
 	fmt.Println("cb")
@@ -541,6 +605,22 @@ func (recv *Window) ConnectMovedToRect(callback WindowSignalMovedToRectCallback)
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.Window_signal_connect_moved_to_rect(instance, C.gpointer(uintptr(signalWindowMovedToRectId)))
 	return int(retC)
+}
+
+/*
+DisconnectMovedToRect disconnects a callback from the 'moved-to-rect' signal for the Window.
+
+The connectionID should be a value returned from a call to ConnectMovedToRect.
+*/
+func (recv *Window) DisconnectMovedToRect(connectionID int) {
+	_, exists := signalWindowMovedToRectMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalWindowMovedToRectMap, connectionID)
 }
 
 //export Window_movedToRectHandler

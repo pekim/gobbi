@@ -101,6 +101,22 @@ func (recv *Display) ConnectSeatAdded(callback DisplaySignalSeatAddedCallback) i
 	return int(retC)
 }
 
+/*
+DisconnectSeatAdded disconnects a callback from the 'seat-added' signal for the Display.
+
+The connectionID should be a value returned from a call to ConnectSeatAdded.
+*/
+func (recv *Display) DisconnectSeatAdded(connectionID int) {
+	_, exists := signalDisplaySeatAddedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalDisplaySeatAddedMap, connectionID)
+}
+
 //export Display_seatAddedHandler
 func Display_seatAddedHandler() {
 	fmt.Println("cb")
@@ -128,6 +144,22 @@ func (recv *Display) ConnectSeatRemoved(callback DisplaySignalSeatRemovedCallbac
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.Display_signal_connect_seat_removed(instance, C.gpointer(uintptr(signalDisplaySeatRemovedId)))
 	return int(retC)
+}
+
+/*
+DisconnectSeatRemoved disconnects a callback from the 'seat-removed' signal for the Display.
+
+The connectionID should be a value returned from a call to ConnectSeatRemoved.
+*/
+func (recv *Display) DisconnectSeatRemoved(connectionID int) {
+	_, exists := signalDisplaySeatRemovedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalDisplaySeatRemovedMap, connectionID)
 }
 
 //export Display_seatRemovedHandler
@@ -175,6 +207,22 @@ func (recv *DragContext) ConnectActionChanged(callback DragContextSignalActionCh
 	return int(retC)
 }
 
+/*
+DisconnectActionChanged disconnects a callback from the 'action-changed' signal for the DragContext.
+
+The connectionID should be a value returned from a call to ConnectActionChanged.
+*/
+func (recv *DragContext) DisconnectActionChanged(connectionID int) {
+	_, exists := signalDragContextActionChangedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalDragContextActionChangedMap, connectionID)
+}
+
 //export DragContext_actionChangedHandler
 func DragContext_actionChangedHandler() {
 	fmt.Println("cb")
@@ -202,6 +250,22 @@ func (recv *DragContext) ConnectCancel(callback DragContextSignalCancelCallback)
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.DragContext_signal_connect_cancel(instance, C.gpointer(uintptr(signalDragContextCancelId)))
 	return int(retC)
+}
+
+/*
+DisconnectCancel disconnects a callback from the 'cancel' signal for the DragContext.
+
+The connectionID should be a value returned from a call to ConnectCancel.
+*/
+func (recv *DragContext) DisconnectCancel(connectionID int) {
+	_, exists := signalDragContextCancelMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalDragContextCancelMap, connectionID)
 }
 
 //export DragContext_cancelHandler
@@ -233,6 +297,22 @@ func (recv *DragContext) ConnectDndFinished(callback DragContextSignalDndFinishe
 	return int(retC)
 }
 
+/*
+DisconnectDndFinished disconnects a callback from the 'dnd-finished' signal for the DragContext.
+
+The connectionID should be a value returned from a call to ConnectDndFinished.
+*/
+func (recv *DragContext) DisconnectDndFinished(connectionID int) {
+	_, exists := signalDragContextDndFinishedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalDragContextDndFinishedMap, connectionID)
+}
+
 //export DragContext_dndFinishedHandler
 func DragContext_dndFinishedHandler() {
 	fmt.Println("cb")
@@ -260,6 +340,22 @@ func (recv *DragContext) ConnectDropPerformed(callback DragContextSignalDropPerf
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.DragContext_signal_connect_drop_performed(instance, C.gpointer(uintptr(signalDragContextDropPerformedId)))
 	return int(retC)
+}
+
+/*
+DisconnectDropPerformed disconnects a callback from the 'drop-performed' signal for the DragContext.
+
+The connectionID should be a value returned from a call to ConnectDropPerformed.
+*/
+func (recv *DragContext) DisconnectDropPerformed(connectionID int) {
+	_, exists := signalDragContextDropPerformedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalDragContextDropPerformedMap, connectionID)
 }
 
 //export DragContext_dropPerformedHandler

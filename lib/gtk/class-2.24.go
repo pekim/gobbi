@@ -49,6 +49,22 @@ func (recv *AboutDialog) ConnectActivateLink(callback AboutDialogSignalActivateL
 	return int(retC)
 }
 
+/*
+DisconnectActivateLink disconnects a callback from the 'activate-link' signal for the AboutDialog.
+
+The connectionID should be a value returned from a call to ConnectActivateLink.
+*/
+func (recv *AboutDialog) DisconnectActivateLink(connectionID int) {
+	_, exists := signalAboutDialogActivateLinkMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalAboutDialogActivateLinkMap, connectionID)
+}
+
 //export AboutDialog_activateLinkHandler
 func AboutDialog_activateLinkHandler() {
 	fmt.Println("cb")

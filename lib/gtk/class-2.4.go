@@ -233,6 +233,22 @@ func (recv *AccelMap) ConnectChanged(callback AccelMapSignalChangedCallback) int
 	return int(retC)
 }
 
+/*
+DisconnectChanged disconnects a callback from the 'changed' signal for the AccelMap.
+
+The connectionID should be a value returned from a call to ConnectChanged.
+*/
+func (recv *AccelMap) DisconnectChanged(connectionID int) {
+	_, exists := signalAccelMapChangedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalAccelMapChangedMap, connectionID)
+}
+
 //export AccelMap_changedHandler
 func AccelMap_changedHandler() {
 	fmt.Println("cb")
@@ -260,6 +276,22 @@ func (recv *Action) ConnectActivate(callback ActionSignalActivateCallback) int {
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.Action_signal_connect_activate(instance, C.gpointer(uintptr(signalActionActivateId)))
 	return int(retC)
+}
+
+/*
+DisconnectActivate disconnects a callback from the 'activate' signal for the Action.
+
+The connectionID should be a value returned from a call to ConnectActivate.
+*/
+func (recv *Action) DisconnectActivate(connectionID int) {
+	_, exists := signalActionActivateMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalActionActivateMap, connectionID)
 }
 
 //export Action_activateHandler
@@ -417,6 +449,22 @@ func (recv *ActionGroup) ConnectConnectProxy(callback ActionGroupSignalConnectPr
 	return int(retC)
 }
 
+/*
+DisconnectConnectProxy disconnects a callback from the 'connect-proxy' signal for the ActionGroup.
+
+The connectionID should be a value returned from a call to ConnectConnectProxy.
+*/
+func (recv *ActionGroup) DisconnectConnectProxy(connectionID int) {
+	_, exists := signalActionGroupConnectProxyMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalActionGroupConnectProxyMap, connectionID)
+}
+
 //export ActionGroup_connectProxyHandler
 func ActionGroup_connectProxyHandler() {
 	fmt.Println("cb")
@@ -444,6 +492,22 @@ func (recv *ActionGroup) ConnectDisconnectProxy(callback ActionGroupSignalDiscon
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.ActionGroup_signal_connect_disconnect_proxy(instance, C.gpointer(uintptr(signalActionGroupDisconnectProxyId)))
 	return int(retC)
+}
+
+/*
+DisconnectDisconnectProxy disconnects a callback from the 'disconnect-proxy' signal for the ActionGroup.
+
+The connectionID should be a value returned from a call to ConnectDisconnectProxy.
+*/
+func (recv *ActionGroup) DisconnectDisconnectProxy(connectionID int) {
+	_, exists := signalActionGroupDisconnectProxyMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalActionGroupDisconnectProxyMap, connectionID)
 }
 
 //export ActionGroup_disconnectProxyHandler
@@ -475,6 +539,22 @@ func (recv *ActionGroup) ConnectPostActivate(callback ActionGroupSignalPostActiv
 	return int(retC)
 }
 
+/*
+DisconnectPostActivate disconnects a callback from the 'post-activate' signal for the ActionGroup.
+
+The connectionID should be a value returned from a call to ConnectPostActivate.
+*/
+func (recv *ActionGroup) DisconnectPostActivate(connectionID int) {
+	_, exists := signalActionGroupPostActivateMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalActionGroupPostActivateMap, connectionID)
+}
+
 //export ActionGroup_postActivateHandler
 func ActionGroup_postActivateHandler() {
 	fmt.Println("cb")
@@ -502,6 +582,22 @@ func (recv *ActionGroup) ConnectPreActivate(callback ActionGroupSignalPreActivat
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.ActionGroup_signal_connect_pre_activate(instance, C.gpointer(uintptr(signalActionGroupPreActivateId)))
 	return int(retC)
+}
+
+/*
+DisconnectPreActivate disconnects a callback from the 'pre-activate' signal for the ActionGroup.
+
+The connectionID should be a value returned from a call to ConnectPreActivate.
+*/
+func (recv *ActionGroup) DisconnectPreActivate(connectionID int) {
+	_, exists := signalActionGroupPreActivateMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalActionGroupPreActivateMap, connectionID)
 }
 
 //export ActionGroup_preActivateHandler
@@ -786,6 +882,22 @@ func (recv *CellRenderer) ConnectEditingCanceled(callback CellRendererSignalEdit
 	return int(retC)
 }
 
+/*
+DisconnectEditingCanceled disconnects a callback from the 'editing-canceled' signal for the CellRenderer.
+
+The connectionID should be a value returned from a call to ConnectEditingCanceled.
+*/
+func (recv *CellRenderer) DisconnectEditingCanceled(connectionID int) {
+	_, exists := signalCellRendererEditingCanceledMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalCellRendererEditingCanceledMap, connectionID)
+}
+
 //export CellRenderer_editingCanceledHandler
 func CellRenderer_editingCanceledHandler() {
 	fmt.Println("cb")
@@ -837,6 +949,22 @@ func (recv *ColorButton) ConnectColorSet(callback ColorButtonSignalColorSetCallb
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.ColorButton_signal_connect_color_set(instance, C.gpointer(uintptr(signalColorButtonColorSetId)))
 	return int(retC)
+}
+
+/*
+DisconnectColorSet disconnects a callback from the 'color-set' signal for the ColorButton.
+
+The connectionID should be a value returned from a call to ConnectColorSet.
+*/
+func (recv *ColorButton) DisconnectColorSet(connectionID int) {
+	_, exists := signalColorButtonColorSetMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalColorButtonColorSetMap, connectionID)
 }
 
 //export ColorButton_colorSetHandler
@@ -957,6 +1085,22 @@ func (recv *ComboBox) ConnectChanged(callback ComboBoxSignalChangedCallback) int
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.ComboBox_signal_connect_changed(instance, C.gpointer(uintptr(signalComboBoxChangedId)))
 	return int(retC)
+}
+
+/*
+DisconnectChanged disconnects a callback from the 'changed' signal for the ComboBox.
+
+The connectionID should be a value returned from a call to ConnectChanged.
+*/
+func (recv *ComboBox) DisconnectChanged(connectionID int) {
+	_, exists := signalComboBoxChangedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalComboBoxChangedMap, connectionID)
 }
 
 //export ComboBox_changedHandler
@@ -1117,6 +1261,22 @@ func (recv *EntryCompletion) ConnectActionActivated(callback EntryCompletionSign
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.EntryCompletion_signal_connect_action_activated(instance, C.gpointer(uintptr(signalEntryCompletionActionActivatedId)))
 	return int(retC)
+}
+
+/*
+DisconnectActionActivated disconnects a callback from the 'action-activated' signal for the EntryCompletion.
+
+The connectionID should be a value returned from a call to ConnectActionActivated.
+*/
+func (recv *EntryCompletion) DisconnectActionActivated(connectionID int) {
+	_, exists := signalEntryCompletionActionActivatedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalEntryCompletionActionActivatedMap, connectionID)
 }
 
 //export EntryCompletion_actionActivatedHandler
@@ -1484,6 +1644,22 @@ func (recv *FontButton) ConnectFontSet(callback FontButtonSignalFontSetCallback)
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.FontButton_signal_connect_font_set(instance, C.gpointer(uintptr(signalFontButtonFontSetId)))
 	return int(retC)
+}
+
+/*
+DisconnectFontSet disconnects a callback from the 'font-set' signal for the FontButton.
+
+The connectionID should be a value returned from a call to ConnectFontSet.
+*/
+func (recv *FontButton) DisconnectFontSet(connectionID int) {
+	_, exists := signalFontButtonFontSetMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalFontButtonFontSetMap, connectionID)
 }
 
 //export FontButton_fontSetHandler
@@ -1941,6 +2117,22 @@ func (recv *RadioAction) ConnectChanged(callback RadioActionSignalChangedCallbac
 	return int(retC)
 }
 
+/*
+DisconnectChanged disconnects a callback from the 'changed' signal for the RadioAction.
+
+The connectionID should be a value returned from a call to ConnectChanged.
+*/
+func (recv *RadioAction) DisconnectChanged(connectionID int) {
+	_, exists := signalRadioActionChangedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalRadioActionChangedMap, connectionID)
+}
+
 //export RadioAction_changedHandler
 func RadioAction_changedHandler() {
 	fmt.Println("cb")
@@ -2015,6 +2207,22 @@ func (recv *RadioButton) ConnectGroupChanged(callback RadioButtonSignalGroupChan
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.RadioButton_signal_connect_group_changed(instance, C.gpointer(uintptr(signalRadioButtonGroupChangedId)))
 	return int(retC)
+}
+
+/*
+DisconnectGroupChanged disconnects a callback from the 'group-changed' signal for the RadioButton.
+
+The connectionID should be a value returned from a call to ConnectGroupChanged.
+*/
+func (recv *RadioButton) DisconnectGroupChanged(connectionID int) {
+	_, exists := signalRadioButtonGroupChangedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalRadioButtonGroupChangedMap, connectionID)
 }
 
 //export RadioButton_groupChangedHandler
@@ -2202,6 +2410,22 @@ func (recv *Style) ConnectRealize(callback StyleSignalRealizeCallback) int {
 	return int(retC)
 }
 
+/*
+DisconnectRealize disconnects a callback from the 'realize' signal for the Style.
+
+The connectionID should be a value returned from a call to ConnectRealize.
+*/
+func (recv *Style) DisconnectRealize(connectionID int) {
+	_, exists := signalStyleRealizeMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalStyleRealizeMap, connectionID)
+}
+
 //export Style_realizeHandler
 func Style_realizeHandler() {
 	fmt.Println("cb")
@@ -2229,6 +2453,22 @@ func (recv *Style) ConnectUnrealize(callback StyleSignalUnrealizeCallback) int {
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.Style_signal_connect_unrealize(instance, C.gpointer(uintptr(signalStyleUnrealizeId)))
 	return int(retC)
+}
+
+/*
+DisconnectUnrealize disconnects a callback from the 'unrealize' signal for the Style.
+
+The connectionID should be a value returned from a call to ConnectUnrealize.
+*/
+func (recv *Style) DisconnectUnrealize(connectionID int) {
+	_, exists := signalStyleUnrealizeMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalStyleUnrealizeMap, connectionID)
 }
 
 //export Style_unrealizeHandler
@@ -2884,6 +3124,22 @@ func (recv *UIManager) ConnectActionsChanged(callback UIManagerSignalActionsChan
 	return int(retC)
 }
 
+/*
+DisconnectActionsChanged disconnects a callback from the 'actions-changed' signal for the UIManager.
+
+The connectionID should be a value returned from a call to ConnectActionsChanged.
+*/
+func (recv *UIManager) DisconnectActionsChanged(connectionID int) {
+	_, exists := signalUIManagerActionsChangedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalUIManagerActionsChangedMap, connectionID)
+}
+
 //export UIManager_actionsChangedHandler
 func UIManager_actionsChangedHandler() {
 	fmt.Println("cb")
@@ -2911,6 +3167,22 @@ func (recv *UIManager) ConnectAddWidget(callback UIManagerSignalAddWidgetCallbac
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.UIManager_signal_connect_add_widget(instance, C.gpointer(uintptr(signalUIManagerAddWidgetId)))
 	return int(retC)
+}
+
+/*
+DisconnectAddWidget disconnects a callback from the 'add-widget' signal for the UIManager.
+
+The connectionID should be a value returned from a call to ConnectAddWidget.
+*/
+func (recv *UIManager) DisconnectAddWidget(connectionID int) {
+	_, exists := signalUIManagerAddWidgetMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalUIManagerAddWidgetMap, connectionID)
 }
 
 //export UIManager_addWidgetHandler
@@ -2942,6 +3214,22 @@ func (recv *UIManager) ConnectConnectProxy(callback UIManagerSignalConnectProxyC
 	return int(retC)
 }
 
+/*
+DisconnectConnectProxy disconnects a callback from the 'connect-proxy' signal for the UIManager.
+
+The connectionID should be a value returned from a call to ConnectConnectProxy.
+*/
+func (recv *UIManager) DisconnectConnectProxy(connectionID int) {
+	_, exists := signalUIManagerConnectProxyMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalUIManagerConnectProxyMap, connectionID)
+}
+
 //export UIManager_connectProxyHandler
 func UIManager_connectProxyHandler() {
 	fmt.Println("cb")
@@ -2969,6 +3257,22 @@ func (recv *UIManager) ConnectDisconnectProxy(callback UIManagerSignalDisconnect
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.UIManager_signal_connect_disconnect_proxy(instance, C.gpointer(uintptr(signalUIManagerDisconnectProxyId)))
 	return int(retC)
+}
+
+/*
+DisconnectDisconnectProxy disconnects a callback from the 'disconnect-proxy' signal for the UIManager.
+
+The connectionID should be a value returned from a call to ConnectDisconnectProxy.
+*/
+func (recv *UIManager) DisconnectDisconnectProxy(connectionID int) {
+	_, exists := signalUIManagerDisconnectProxyMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalUIManagerDisconnectProxyMap, connectionID)
 }
 
 //export UIManager_disconnectProxyHandler
@@ -3000,6 +3304,22 @@ func (recv *UIManager) ConnectPostActivate(callback UIManagerSignalPostActivateC
 	return int(retC)
 }
 
+/*
+DisconnectPostActivate disconnects a callback from the 'post-activate' signal for the UIManager.
+
+The connectionID should be a value returned from a call to ConnectPostActivate.
+*/
+func (recv *UIManager) DisconnectPostActivate(connectionID int) {
+	_, exists := signalUIManagerPostActivateMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalUIManagerPostActivateMap, connectionID)
+}
+
 //export UIManager_postActivateHandler
 func UIManager_postActivateHandler() {
 	fmt.Println("cb")
@@ -3027,6 +3347,22 @@ func (recv *UIManager) ConnectPreActivate(callback UIManagerSignalPreActivateCal
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.UIManager_signal_connect_pre_activate(instance, C.gpointer(uintptr(signalUIManagerPreActivateId)))
 	return int(retC)
+}
+
+/*
+DisconnectPreActivate disconnects a callback from the 'pre-activate' signal for the UIManager.
+
+The connectionID should be a value returned from a call to ConnectPreActivate.
+*/
+func (recv *UIManager) DisconnectPreActivate(connectionID int) {
+	_, exists := signalUIManagerPreActivateMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalUIManagerPreActivateMap, connectionID)
 }
 
 //export UIManager_preActivateHandler

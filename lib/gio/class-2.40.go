@@ -91,6 +91,22 @@ func (recv *AppInfoMonitor) ConnectChanged(callback AppInfoMonitorSignalChangedC
 	return int(retC)
 }
 
+/*
+DisconnectChanged disconnects a callback from the 'changed' signal for the AppInfoMonitor.
+
+The connectionID should be a value returned from a call to ConnectChanged.
+*/
+func (recv *AppInfoMonitor) DisconnectChanged(connectionID int) {
+	_, exists := signalAppInfoMonitorChangedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalAppInfoMonitorChangedMap, connectionID)
+}
+
 //export AppInfoMonitor_changedHandler
 func AppInfoMonitor_changedHandler() {
 	fmt.Println("cb")

@@ -276,6 +276,22 @@ func (recv *Device) ConnectChanged(callback DeviceSignalChangedCallback) int {
 	return int(retC)
 }
 
+/*
+DisconnectChanged disconnects a callback from the 'changed' signal for the Device.
+
+The connectionID should be a value returned from a call to ConnectChanged.
+*/
+func (recv *Device) DisconnectChanged(connectionID int) {
+	_, exists := signalDeviceChangedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalDeviceChangedMap, connectionID)
+}
+
 //export Device_changedHandler
 func Device_changedHandler() {
 	fmt.Println("cb")
@@ -385,6 +401,22 @@ func (recv *DeviceManager) ConnectDeviceAdded(callback DeviceManagerSignalDevice
 	return int(retC)
 }
 
+/*
+DisconnectDeviceAdded disconnects a callback from the 'device-added' signal for the DeviceManager.
+
+The connectionID should be a value returned from a call to ConnectDeviceAdded.
+*/
+func (recv *DeviceManager) DisconnectDeviceAdded(connectionID int) {
+	_, exists := signalDeviceManagerDeviceAddedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalDeviceManagerDeviceAddedMap, connectionID)
+}
+
 //export DeviceManager_deviceAddedHandler
 func DeviceManager_deviceAddedHandler() {
 	fmt.Println("cb")
@@ -414,6 +446,22 @@ func (recv *DeviceManager) ConnectDeviceChanged(callback DeviceManagerSignalDevi
 	return int(retC)
 }
 
+/*
+DisconnectDeviceChanged disconnects a callback from the 'device-changed' signal for the DeviceManager.
+
+The connectionID should be a value returned from a call to ConnectDeviceChanged.
+*/
+func (recv *DeviceManager) DisconnectDeviceChanged(connectionID int) {
+	_, exists := signalDeviceManagerDeviceChangedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalDeviceManagerDeviceChangedMap, connectionID)
+}
+
 //export DeviceManager_deviceChangedHandler
 func DeviceManager_deviceChangedHandler() {
 	fmt.Println("cb")
@@ -441,6 +489,22 @@ func (recv *DeviceManager) ConnectDeviceRemoved(callback DeviceManagerSignalDevi
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.DeviceManager_signal_connect_device_removed(instance, C.gpointer(uintptr(signalDeviceManagerDeviceRemovedId)))
 	return int(retC)
+}
+
+/*
+DisconnectDeviceRemoved disconnects a callback from the 'device-removed' signal for the DeviceManager.
+
+The connectionID should be a value returned from a call to ConnectDeviceRemoved.
+*/
+func (recv *DeviceManager) DisconnectDeviceRemoved(connectionID int) {
+	_, exists := signalDeviceManagerDeviceRemovedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalDeviceManagerDeviceRemovedMap, connectionID)
 }
 
 //export DeviceManager_deviceRemovedHandler
@@ -502,6 +566,22 @@ func (recv *Display) ConnectOpened(callback DisplaySignalOpenedCallback) int {
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.Display_signal_connect_opened(instance, C.gpointer(uintptr(signalDisplayOpenedId)))
 	return int(retC)
+}
+
+/*
+DisconnectOpened disconnects a callback from the 'opened' signal for the Display.
+
+The connectionID should be a value returned from a call to ConnectOpened.
+*/
+func (recv *Display) DisconnectOpened(connectionID int) {
+	_, exists := signalDisplayOpenedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalDisplayOpenedMap, connectionID)
 }
 
 //export Display_openedHandler
@@ -656,6 +736,22 @@ func (recv *FrameClock) ConnectAfterPaint(callback FrameClockSignalAfterPaintCal
 	return int(retC)
 }
 
+/*
+DisconnectAfterPaint disconnects a callback from the 'after-paint' signal for the FrameClock.
+
+The connectionID should be a value returned from a call to ConnectAfterPaint.
+*/
+func (recv *FrameClock) DisconnectAfterPaint(connectionID int) {
+	_, exists := signalFrameClockAfterPaintMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalFrameClockAfterPaintMap, connectionID)
+}
+
 //export FrameClock_afterPaintHandler
 func FrameClock_afterPaintHandler() {
 	fmt.Println("cb")
@@ -683,6 +779,22 @@ func (recv *FrameClock) ConnectBeforePaint(callback FrameClockSignalBeforePaintC
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.FrameClock_signal_connect_before_paint(instance, C.gpointer(uintptr(signalFrameClockBeforePaintId)))
 	return int(retC)
+}
+
+/*
+DisconnectBeforePaint disconnects a callback from the 'before-paint' signal for the FrameClock.
+
+The connectionID should be a value returned from a call to ConnectBeforePaint.
+*/
+func (recv *FrameClock) DisconnectBeforePaint(connectionID int) {
+	_, exists := signalFrameClockBeforePaintMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalFrameClockBeforePaintMap, connectionID)
 }
 
 //export FrameClock_beforePaintHandler
@@ -714,6 +826,22 @@ func (recv *FrameClock) ConnectFlushEvents(callback FrameClockSignalFlushEventsC
 	return int(retC)
 }
 
+/*
+DisconnectFlushEvents disconnects a callback from the 'flush-events' signal for the FrameClock.
+
+The connectionID should be a value returned from a call to ConnectFlushEvents.
+*/
+func (recv *FrameClock) DisconnectFlushEvents(connectionID int) {
+	_, exists := signalFrameClockFlushEventsMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalFrameClockFlushEventsMap, connectionID)
+}
+
 //export FrameClock_flushEventsHandler
 func FrameClock_flushEventsHandler() {
 	fmt.Println("cb")
@@ -741,6 +869,22 @@ func (recv *FrameClock) ConnectLayout(callback FrameClockSignalLayoutCallback) i
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.FrameClock_signal_connect_layout(instance, C.gpointer(uintptr(signalFrameClockLayoutId)))
 	return int(retC)
+}
+
+/*
+DisconnectLayout disconnects a callback from the 'layout' signal for the FrameClock.
+
+The connectionID should be a value returned from a call to ConnectLayout.
+*/
+func (recv *FrameClock) DisconnectLayout(connectionID int) {
+	_, exists := signalFrameClockLayoutMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalFrameClockLayoutMap, connectionID)
 }
 
 //export FrameClock_layoutHandler
@@ -772,6 +916,22 @@ func (recv *FrameClock) ConnectPaint(callback FrameClockSignalPaintCallback) int
 	return int(retC)
 }
 
+/*
+DisconnectPaint disconnects a callback from the 'paint' signal for the FrameClock.
+
+The connectionID should be a value returned from a call to ConnectPaint.
+*/
+func (recv *FrameClock) DisconnectPaint(connectionID int) {
+	_, exists := signalFrameClockPaintMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalFrameClockPaintMap, connectionID)
+}
+
 //export FrameClock_paintHandler
 func FrameClock_paintHandler() {
 	fmt.Println("cb")
@@ -801,6 +961,22 @@ func (recv *FrameClock) ConnectResumeEvents(callback FrameClockSignalResumeEvent
 	return int(retC)
 }
 
+/*
+DisconnectResumeEvents disconnects a callback from the 'resume-events' signal for the FrameClock.
+
+The connectionID should be a value returned from a call to ConnectResumeEvents.
+*/
+func (recv *FrameClock) DisconnectResumeEvents(connectionID int) {
+	_, exists := signalFrameClockResumeEventsMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalFrameClockResumeEventsMap, connectionID)
+}
+
 //export FrameClock_resumeEventsHandler
 func FrameClock_resumeEventsHandler() {
 	fmt.Println("cb")
@@ -828,6 +1004,22 @@ func (recv *FrameClock) ConnectUpdate(callback FrameClockSignalUpdateCallback) i
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.FrameClock_signal_connect_update(instance, C.gpointer(uintptr(signalFrameClockUpdateId)))
 	return int(retC)
+}
+
+/*
+DisconnectUpdate disconnects a callback from the 'update' signal for the FrameClock.
+
+The connectionID should be a value returned from a call to ConnectUpdate.
+*/
+func (recv *FrameClock) DisconnectUpdate(connectionID int) {
+	_, exists := signalFrameClockUpdateMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalFrameClockUpdateMap, connectionID)
 }
 
 //export FrameClock_updateHandler

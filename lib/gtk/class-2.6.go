@@ -447,6 +447,22 @@ func (recv *Clipboard) ConnectOwnerChange(callback ClipboardSignalOwnerChangeCal
 	return int(retC)
 }
 
+/*
+DisconnectOwnerChange disconnects a callback from the 'owner-change' signal for the Clipboard.
+
+The connectionID should be a value returned from a call to ConnectOwnerChange.
+*/
+func (recv *Clipboard) DisconnectOwnerChange(connectionID int) {
+	_, exists := signalClipboardOwnerChangeMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalClipboardOwnerChangeMap, connectionID)
+}
+
 //export Clipboard_ownerChangeHandler
 func Clipboard_ownerChangeHandler() {
 	fmt.Println("cb")
@@ -588,6 +604,22 @@ func (recv *EntryCompletion) ConnectInsertPrefix(callback EntryCompletionSignalI
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.EntryCompletion_signal_connect_insert_prefix(instance, C.gpointer(uintptr(signalEntryCompletionInsertPrefixId)))
 	return int(retC)
+}
+
+/*
+DisconnectInsertPrefix disconnects a callback from the 'insert-prefix' signal for the EntryCompletion.
+
+The connectionID should be a value returned from a call to ConnectInsertPrefix.
+*/
+func (recv *EntryCompletion) DisconnectInsertPrefix(connectionID int) {
+	_, exists := signalEntryCompletionInsertPrefixMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalEntryCompletionInsertPrefixMap, connectionID)
 }
 
 //export EntryCompletion_insertPrefixHandler
@@ -1224,6 +1256,22 @@ func (recv *Range) ConnectChangeValue(callback RangeSignalChangeValueCallback) i
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.Range_signal_connect_change_value(instance, C.gpointer(uintptr(signalRangeChangeValueId)))
 	return int(retC)
+}
+
+/*
+DisconnectChangeValue disconnects a callback from the 'change-value' signal for the Range.
+
+The connectionID should be a value returned from a call to ConnectChangeValue.
+*/
+func (recv *Range) DisconnectChangeValue(connectionID int) {
+	_, exists := signalRangeChangeValueMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalRangeChangeValueMap, connectionID)
 }
 
 //export Range_changeValueHandler

@@ -439,6 +439,22 @@ func (recv *Widget) ConnectGrabBrokenEvent(callback WidgetSignalGrabBrokenEventC
 	return int(retC)
 }
 
+/*
+DisconnectGrabBrokenEvent disconnects a callback from the 'grab-broken-event' signal for the Widget.
+
+The connectionID should be a value returned from a call to ConnectGrabBrokenEvent.
+*/
+func (recv *Widget) DisconnectGrabBrokenEvent(connectionID int) {
+	_, exists := signalWidgetGrabBrokenEventMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalWidgetGrabBrokenEventMap, connectionID)
+}
+
 //export Widget_grabBrokenEventHandler
 func Widget_grabBrokenEventHandler() {
 	fmt.Println("cb")

@@ -96,6 +96,22 @@ func (recv *Display) ConnectClosed(callback DisplaySignalClosedCallback) int {
 	return int(retC)
 }
 
+/*
+DisconnectClosed disconnects a callback from the 'closed' signal for the Display.
+
+The connectionID should be a value returned from a call to ConnectClosed.
+*/
+func (recv *Display) DisconnectClosed(connectionID int) {
+	_, exists := signalDisplayClosedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalDisplayClosedMap, connectionID)
+}
+
 //export Display_closedHandler
 func Display_closedHandler() {
 	fmt.Println("cb")
@@ -247,6 +263,22 @@ func (recv *DisplayManager) ConnectDisplayOpened(callback DisplayManagerSignalDi
 	return int(retC)
 }
 
+/*
+DisconnectDisplayOpened disconnects a callback from the 'display-opened' signal for the DisplayManager.
+
+The connectionID should be a value returned from a call to ConnectDisplayOpened.
+*/
+func (recv *DisplayManager) DisconnectDisplayOpened(connectionID int) {
+	_, exists := signalDisplayManagerDisplayOpenedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalDisplayManagerDisplayOpenedMap, connectionID)
+}
+
 //export DisplayManager_displayOpenedHandler
 func DisplayManager_displayOpenedHandler() {
 	fmt.Println("cb")
@@ -301,6 +333,22 @@ func (recv *Keymap) ConnectKeysChanged(callback KeymapSignalKeysChangedCallback)
 	return int(retC)
 }
 
+/*
+DisconnectKeysChanged disconnects a callback from the 'keys-changed' signal for the Keymap.
+
+The connectionID should be a value returned from a call to ConnectKeysChanged.
+*/
+func (recv *Keymap) DisconnectKeysChanged(connectionID int) {
+	_, exists := signalKeymapKeysChangedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalKeymapKeysChangedMap, connectionID)
+}
+
 //export Keymap_keysChangedHandler
 func Keymap_keysChangedHandler() {
 	fmt.Println("cb")
@@ -328,6 +376,22 @@ func (recv *Screen) ConnectSizeChanged(callback ScreenSignalSizeChangedCallback)
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.Screen_signal_connect_size_changed(instance, C.gpointer(uintptr(signalScreenSizeChangedId)))
 	return int(retC)
+}
+
+/*
+DisconnectSizeChanged disconnects a callback from the 'size-changed' signal for the Screen.
+
+The connectionID should be a value returned from a call to ConnectSizeChanged.
+*/
+func (recv *Screen) DisconnectSizeChanged(connectionID int) {
+	_, exists := signalScreenSizeChangedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalScreenSizeChangedMap, connectionID)
 }
 
 //export Screen_sizeChangedHandler

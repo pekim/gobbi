@@ -122,6 +122,22 @@ func (recv *Entry) ConnectPreeditChanged(callback EntrySignalPreeditChangedCallb
 	return int(retC)
 }
 
+/*
+DisconnectPreeditChanged disconnects a callback from the 'preedit-changed' signal for the Entry.
+
+The connectionID should be a value returned from a call to ConnectPreeditChanged.
+*/
+func (recv *Entry) DisconnectPreeditChanged(connectionID int) {
+	_, exists := signalEntryPreeditChangedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalEntryPreeditChangedMap, connectionID)
+}
+
 //export Entry_preeditChangedHandler
 func Entry_preeditChangedHandler() {
 	fmt.Println("cb")
@@ -374,6 +390,22 @@ func (recv *TextView) ConnectPreeditChanged(callback TextViewSignalPreeditChange
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.TextView_signal_connect_preedit_changed(instance, C.gpointer(uintptr(signalTextViewPreeditChangedId)))
 	return int(retC)
+}
+
+/*
+DisconnectPreeditChanged disconnects a callback from the 'preedit-changed' signal for the TextView.
+
+The connectionID should be a value returned from a call to ConnectPreeditChanged.
+*/
+func (recv *TextView) DisconnectPreeditChanged(connectionID int) {
+	_, exists := signalTextViewPreeditChangedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalTextViewPreeditChangedMap, connectionID)
 }
 
 //export TextView_preeditChangedHandler

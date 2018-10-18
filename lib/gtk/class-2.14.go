@@ -258,6 +258,22 @@ func (recv *CellRendererCombo) ConnectChanged(callback CellRendererComboSignalCh
 	return int(retC)
 }
 
+/*
+DisconnectChanged disconnects a callback from the 'changed' signal for the CellRendererCombo.
+
+The connectionID should be a value returned from a call to ConnectChanged.
+*/
+func (recv *CellRendererCombo) DisconnectChanged(connectionID int) {
+	_, exists := signalCellRendererComboChangedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalCellRendererComboChangedMap, connectionID)
+}
+
 //export CellRendererCombo_changedHandler
 func CellRendererCombo_changedHandler() {
 	fmt.Println("cb")
@@ -839,6 +855,22 @@ func (recv *StatusIcon) ConnectButtonPressEvent(callback StatusIconSignalButtonP
 	return int(retC)
 }
 
+/*
+DisconnectButtonPressEvent disconnects a callback from the 'button-press-event' signal for the StatusIcon.
+
+The connectionID should be a value returned from a call to ConnectButtonPressEvent.
+*/
+func (recv *StatusIcon) DisconnectButtonPressEvent(connectionID int) {
+	_, exists := signalStatusIconButtonPressEventMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalStatusIconButtonPressEventMap, connectionID)
+}
+
 //export StatusIcon_buttonPressEventHandler
 func StatusIcon_buttonPressEventHandler() {
 	fmt.Println("cb")
@@ -866,6 +898,22 @@ func (recv *StatusIcon) ConnectButtonReleaseEvent(callback StatusIconSignalButto
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.StatusIcon_signal_connect_button_release_event(instance, C.gpointer(uintptr(signalStatusIconButtonReleaseEventId)))
 	return int(retC)
+}
+
+/*
+DisconnectButtonReleaseEvent disconnects a callback from the 'button-release-event' signal for the StatusIcon.
+
+The connectionID should be a value returned from a call to ConnectButtonReleaseEvent.
+*/
+func (recv *StatusIcon) DisconnectButtonReleaseEvent(connectionID int) {
+	_, exists := signalStatusIconButtonReleaseEventMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalStatusIconButtonReleaseEventMap, connectionID)
 }
 
 //export StatusIcon_buttonReleaseEventHandler
@@ -932,6 +980,22 @@ func (recv *Widget) ConnectDamageEvent(callback WidgetSignalDamageEventCallback)
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.Widget_signal_connect_damage_event(instance, C.gpointer(uintptr(signalWidgetDamageEventId)))
 	return int(retC)
+}
+
+/*
+DisconnectDamageEvent disconnects a callback from the 'damage-event' signal for the Widget.
+
+The connectionID should be a value returned from a call to ConnectDamageEvent.
+*/
+func (recv *Widget) DisconnectDamageEvent(connectionID int) {
+	_, exists := signalWidgetDamageEventMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalWidgetDamageEventMap, connectionID)
 }
 
 //export Widget_damageEventHandler

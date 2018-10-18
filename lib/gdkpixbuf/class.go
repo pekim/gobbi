@@ -665,6 +665,22 @@ func (recv *PixbufLoader) ConnectAreaPrepared(callback PixbufLoaderSignalAreaPre
 	return int(retC)
 }
 
+/*
+DisconnectAreaPrepared disconnects a callback from the 'area-prepared' signal for the PixbufLoader.
+
+The connectionID should be a value returned from a call to ConnectAreaPrepared.
+*/
+func (recv *PixbufLoader) DisconnectAreaPrepared(connectionID int) {
+	_, exists := signalPixbufLoaderAreaPreparedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalPixbufLoaderAreaPreparedMap, connectionID)
+}
+
 //export PixbufLoader_areaPreparedHandler
 func PixbufLoader_areaPreparedHandler() {
 	fmt.Println("cb")
@@ -692,6 +708,22 @@ func (recv *PixbufLoader) ConnectAreaUpdated(callback PixbufLoaderSignalAreaUpda
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.PixbufLoader_signal_connect_area_updated(instance, C.gpointer(uintptr(signalPixbufLoaderAreaUpdatedId)))
 	return int(retC)
+}
+
+/*
+DisconnectAreaUpdated disconnects a callback from the 'area-updated' signal for the PixbufLoader.
+
+The connectionID should be a value returned from a call to ConnectAreaUpdated.
+*/
+func (recv *PixbufLoader) DisconnectAreaUpdated(connectionID int) {
+	_, exists := signalPixbufLoaderAreaUpdatedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalPixbufLoaderAreaUpdatedMap, connectionID)
 }
 
 //export PixbufLoader_areaUpdatedHandler
@@ -723,6 +755,22 @@ func (recv *PixbufLoader) ConnectClosed(callback PixbufLoaderSignalClosedCallbac
 	return int(retC)
 }
 
+/*
+DisconnectClosed disconnects a callback from the 'closed' signal for the PixbufLoader.
+
+The connectionID should be a value returned from a call to ConnectClosed.
+*/
+func (recv *PixbufLoader) DisconnectClosed(connectionID int) {
+	_, exists := signalPixbufLoaderClosedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalPixbufLoaderClosedMap, connectionID)
+}
+
 //export PixbufLoader_closedHandler
 func PixbufLoader_closedHandler() {
 	fmt.Println("cb")
@@ -750,6 +798,22 @@ func (recv *PixbufLoader) ConnectSizePrepared(callback PixbufLoaderSignalSizePre
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.PixbufLoader_signal_connect_size_prepared(instance, C.gpointer(uintptr(signalPixbufLoaderSizePreparedId)))
 	return int(retC)
+}
+
+/*
+DisconnectSizePrepared disconnects a callback from the 'size-prepared' signal for the PixbufLoader.
+
+The connectionID should be a value returned from a call to ConnectSizePrepared.
+*/
+func (recv *PixbufLoader) DisconnectSizePrepared(connectionID int) {
+	_, exists := signalPixbufLoaderSizePreparedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalPixbufLoaderSizePreparedMap, connectionID)
 }
 
 //export PixbufLoader_sizePreparedHandler

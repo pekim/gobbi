@@ -122,6 +122,22 @@ func (recv *Menu) ConnectPoppedUp(callback MenuSignalPoppedUpCallback) int {
 	return int(retC)
 }
 
+/*
+DisconnectPoppedUp disconnects a callback from the 'popped-up' signal for the Menu.
+
+The connectionID should be a value returned from a call to ConnectPoppedUp.
+*/
+func (recv *Menu) DisconnectPoppedUp(connectionID int) {
+	_, exists := signalMenuPoppedUpMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalMenuPoppedUpMap, connectionID)
+}
+
 //export Menu_poppedUpHandler
 func Menu_poppedUpHandler() {
 	fmt.Println("cb")

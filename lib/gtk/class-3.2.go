@@ -102,6 +102,22 @@ func (recv *Application) ConnectWindowAdded(callback ApplicationSignalWindowAdde
 	return int(retC)
 }
 
+/*
+DisconnectWindowAdded disconnects a callback from the 'window-added' signal for the Application.
+
+The connectionID should be a value returned from a call to ConnectWindowAdded.
+*/
+func (recv *Application) DisconnectWindowAdded(connectionID int) {
+	_, exists := signalApplicationWindowAddedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalApplicationWindowAddedMap, connectionID)
+}
+
 //export Application_windowAddedHandler
 func Application_windowAddedHandler() {
 	fmt.Println("cb")
@@ -129,6 +145,22 @@ func (recv *Application) ConnectWindowRemoved(callback ApplicationSignalWindowRe
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.Application_signal_connect_window_removed(instance, C.gpointer(uintptr(signalApplicationWindowRemovedId)))
 	return int(retC)
+}
+
+/*
+DisconnectWindowRemoved disconnects a callback from the 'window-removed' signal for the Application.
+
+The connectionID should be a value returned from a call to ConnectWindowRemoved.
+*/
+func (recv *Application) DisconnectWindowRemoved(connectionID int) {
+	_, exists := signalApplicationWindowRemovedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalApplicationWindowRemovedMap, connectionID)
 }
 
 //export Application_windowRemovedHandler
@@ -377,6 +409,22 @@ func (recv *MenuShell) ConnectInsert(callback MenuShellSignalInsertCallback) int
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.MenuShell_signal_connect_insert(instance, C.gpointer(uintptr(signalMenuShellInsertId)))
 	return int(retC)
+}
+
+/*
+DisconnectInsert disconnects a callback from the 'insert' signal for the MenuShell.
+
+The connectionID should be a value returned from a call to ConnectInsert.
+*/
+func (recv *MenuShell) DisconnectInsert(connectionID int) {
+	_, exists := signalMenuShellInsertMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalMenuShellInsertMap, connectionID)
 }
 
 //export MenuShell_insertHandler

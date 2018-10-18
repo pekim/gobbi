@@ -122,6 +122,22 @@ func (recv *Application) ConnectActivate(callback ApplicationSignalActivateCallb
 	return int(retC)
 }
 
+/*
+DisconnectActivate disconnects a callback from the 'activate' signal for the Application.
+
+The connectionID should be a value returned from a call to ConnectActivate.
+*/
+func (recv *Application) DisconnectActivate(connectionID int) {
+	_, exists := signalApplicationActivateMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalApplicationActivateMap, connectionID)
+}
+
 //export Application_activateHandler
 func Application_activateHandler() {
 	fmt.Println("cb")
@@ -149,6 +165,22 @@ func (recv *Application) ConnectCommandLine(callback ApplicationSignalCommandLin
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.Application_signal_connect_command_line(instance, C.gpointer(uintptr(signalApplicationCommandLineId)))
 	return int(retC)
+}
+
+/*
+DisconnectCommandLine disconnects a callback from the 'command-line' signal for the Application.
+
+The connectionID should be a value returned from a call to ConnectCommandLine.
+*/
+func (recv *Application) DisconnectCommandLine(connectionID int) {
+	_, exists := signalApplicationCommandLineMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalApplicationCommandLineMap, connectionID)
 }
 
 //export Application_commandLineHandler
@@ -182,6 +214,22 @@ func (recv *Application) ConnectShutdown(callback ApplicationSignalShutdownCallb
 	return int(retC)
 }
 
+/*
+DisconnectShutdown disconnects a callback from the 'shutdown' signal for the Application.
+
+The connectionID should be a value returned from a call to ConnectShutdown.
+*/
+func (recv *Application) DisconnectShutdown(connectionID int) {
+	_, exists := signalApplicationShutdownMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalApplicationShutdownMap, connectionID)
+}
+
 //export Application_shutdownHandler
 func Application_shutdownHandler() {
 	fmt.Println("cb")
@@ -209,6 +257,22 @@ func (recv *Application) ConnectStartup(callback ApplicationSignalStartupCallbac
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.Application_signal_connect_startup(instance, C.gpointer(uintptr(signalApplicationStartupId)))
 	return int(retC)
+}
+
+/*
+DisconnectStartup disconnects a callback from the 'startup' signal for the Application.
+
+The connectionID should be a value returned from a call to ConnectStartup.
+*/
+func (recv *Application) DisconnectStartup(connectionID int) {
+	_, exists := signalApplicationStartupMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalApplicationStartupMap, connectionID)
 }
 
 //export Application_startupHandler

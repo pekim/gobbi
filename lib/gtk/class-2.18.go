@@ -261,6 +261,22 @@ func (recv *EntryBuffer) ConnectDeletedText(callback EntryBufferSignalDeletedTex
 	return int(retC)
 }
 
+/*
+DisconnectDeletedText disconnects a callback from the 'deleted-text' signal for the EntryBuffer.
+
+The connectionID should be a value returned from a call to ConnectDeletedText.
+*/
+func (recv *EntryBuffer) DisconnectDeletedText(connectionID int) {
+	_, exists := signalEntryBufferDeletedTextMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalEntryBufferDeletedTextMap, connectionID)
+}
+
 //export EntryBuffer_deletedTextHandler
 func EntryBuffer_deletedTextHandler() {
 	fmt.Println("cb")
@@ -288,6 +304,22 @@ func (recv *EntryBuffer) ConnectInsertedText(callback EntryBufferSignalInsertedT
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.EntryBuffer_signal_connect_inserted_text(instance, C.gpointer(uintptr(signalEntryBufferInsertedTextId)))
 	return int(retC)
+}
+
+/*
+DisconnectInsertedText disconnects a callback from the 'inserted-text' signal for the EntryBuffer.
+
+The connectionID should be a value returned from a call to ConnectInsertedText.
+*/
+func (recv *EntryBuffer) DisconnectInsertedText(connectionID int) {
+	_, exists := signalEntryBufferInsertedTextMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalEntryBufferInsertedTextMap, connectionID)
 }
 
 //export EntryBuffer_insertedTextHandler
@@ -474,6 +506,22 @@ func (recv *InfoBar) ConnectClose(callback InfoBarSignalCloseCallback) int {
 	return int(retC)
 }
 
+/*
+DisconnectClose disconnects a callback from the 'close' signal for the InfoBar.
+
+The connectionID should be a value returned from a call to ConnectClose.
+*/
+func (recv *InfoBar) DisconnectClose(connectionID int) {
+	_, exists := signalInfoBarCloseMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalInfoBarCloseMap, connectionID)
+}
+
 //export InfoBar_closeHandler
 func InfoBar_closeHandler() {
 	fmt.Println("cb")
@@ -501,6 +549,22 @@ func (recv *InfoBar) ConnectResponse(callback InfoBarSignalResponseCallback) int
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.InfoBar_signal_connect_response(instance, C.gpointer(uintptr(signalInfoBarResponseId)))
 	return int(retC)
+}
+
+/*
+DisconnectResponse disconnects a callback from the 'response' signal for the InfoBar.
+
+The connectionID should be a value returned from a call to ConnectResponse.
+*/
+func (recv *InfoBar) DisconnectResponse(connectionID int) {
+	_, exists := signalInfoBarResponseMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalInfoBarResponseMap, connectionID)
 }
 
 //export InfoBar_responseHandler
@@ -631,6 +695,22 @@ func (recv *Label) ConnectActivateCurrentLink(callback LabelSignalActivateCurren
 	return int(retC)
 }
 
+/*
+DisconnectActivateCurrentLink disconnects a callback from the 'activate-current-link' signal for the Label.
+
+The connectionID should be a value returned from a call to ConnectActivateCurrentLink.
+*/
+func (recv *Label) DisconnectActivateCurrentLink(connectionID int) {
+	_, exists := signalLabelActivateCurrentLinkMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalLabelActivateCurrentLinkMap, connectionID)
+}
+
 //export Label_activateCurrentLinkHandler
 func Label_activateCurrentLinkHandler() {
 	fmt.Println("cb")
@@ -658,6 +738,22 @@ func (recv *Label) ConnectActivateLink(callback LabelSignalActivateLinkCallback)
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.Label_signal_connect_activate_link(instance, C.gpointer(uintptr(signalLabelActivateLinkId)))
 	return int(retC)
+}
+
+/*
+DisconnectActivateLink disconnects a callback from the 'activate-link' signal for the Label.
+
+The connectionID should be a value returned from a call to ConnectActivateLink.
+*/
+func (recv *Label) DisconnectActivateLink(connectionID int) {
+	_, exists := signalLabelActivateLinkMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalLabelActivateLinkMap, connectionID)
 }
 
 //export Label_activateLinkHandler
@@ -753,6 +849,22 @@ func (recv *PrintOperation) ConnectUpdateCustomWidget(callback PrintOperationSig
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.PrintOperation_signal_connect_update_custom_widget(instance, C.gpointer(uintptr(signalPrintOperationUpdateCustomWidgetId)))
 	return int(retC)
+}
+
+/*
+DisconnectUpdateCustomWidget disconnects a callback from the 'update-custom-widget' signal for the PrintOperation.
+
+The connectionID should be a value returned from a call to ConnectUpdateCustomWidget.
+*/
+func (recv *PrintOperation) DisconnectUpdateCustomWidget(connectionID int) {
+	_, exists := signalPrintOperationUpdateCustomWidgetMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalPrintOperationUpdateCustomWidgetMap, connectionID)
 }
 
 //export PrintOperation_updateCustomWidgetHandler

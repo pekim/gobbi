@@ -116,6 +116,22 @@ func (recv *PlacesSidebar) ConnectShowStarredLocation(callback PlacesSidebarSign
 	return int(retC)
 }
 
+/*
+DisconnectShowStarredLocation disconnects a callback from the 'show-starred-location' signal for the PlacesSidebar.
+
+The connectionID should be a value returned from a call to ConnectShowStarredLocation.
+*/
+func (recv *PlacesSidebar) DisconnectShowStarredLocation(connectionID int) {
+	_, exists := signalPlacesSidebarShowStarredLocationMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalPlacesSidebarShowStarredLocationMap, connectionID)
+}
+
 //export PlacesSidebar_showStarredLocationHandler
 func PlacesSidebar_showStarredLocationHandler() {
 	fmt.Println("cb")

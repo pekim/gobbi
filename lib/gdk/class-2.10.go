@@ -65,6 +65,22 @@ func (recv *Screen) ConnectCompositedChanged(callback ScreenSignalCompositedChan
 	return int(retC)
 }
 
+/*
+DisconnectCompositedChanged disconnects a callback from the 'composited-changed' signal for the Screen.
+
+The connectionID should be a value returned from a call to ConnectCompositedChanged.
+*/
+func (recv *Screen) DisconnectCompositedChanged(connectionID int) {
+	_, exists := signalScreenCompositedChangedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalScreenCompositedChangedMap, connectionID)
+}
+
 //export Screen_compositedChangedHandler
 func Screen_compositedChangedHandler() {
 	fmt.Println("cb")

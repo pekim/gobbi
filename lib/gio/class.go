@@ -533,6 +533,22 @@ func (recv *Cancellable) ConnectCancelled(callback CancellableSignalCancelledCal
 	return int(retC)
 }
 
+/*
+DisconnectCancelled disconnects a callback from the 'cancelled' signal for the Cancellable.
+
+The connectionID should be a value returned from a call to ConnectCancelled.
+*/
+func (recv *Cancellable) DisconnectCancelled(connectionID int) {
+	_, exists := signalCancellableCancelledMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalCancellableCancelledMap, connectionID)
+}
+
 //export Cancellable_cancelledHandler
 func Cancellable_cancelledHandler() {
 	fmt.Println("cb")
@@ -2403,6 +2419,22 @@ func (recv *FilenameCompleter) ConnectGotCompletionData(callback FilenameComplet
 	return int(retC)
 }
 
+/*
+DisconnectGotCompletionData disconnects a callback from the 'got-completion-data' signal for the FilenameCompleter.
+
+The connectionID should be a value returned from a call to ConnectGotCompletionData.
+*/
+func (recv *FilenameCompleter) DisconnectGotCompletionData(connectionID int) {
+	_, exists := signalFilenameCompleterGotCompletionDataMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalFilenameCompleterGotCompletionDataMap, connectionID)
+}
+
 //export FilenameCompleter_gotCompletionDataHandler
 func FilenameCompleter_gotCompletionDataHandler() {
 	fmt.Println("cb")
@@ -3045,6 +3077,22 @@ func (recv *MountOperation) ConnectAskPassword(callback MountOperationSignalAskP
 	return int(retC)
 }
 
+/*
+DisconnectAskPassword disconnects a callback from the 'ask-password' signal for the MountOperation.
+
+The connectionID should be a value returned from a call to ConnectAskPassword.
+*/
+func (recv *MountOperation) DisconnectAskPassword(connectionID int) {
+	_, exists := signalMountOperationAskPasswordMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalMountOperationAskPasswordMap, connectionID)
+}
+
 //export MountOperation_askPasswordHandler
 func MountOperation_askPasswordHandler() {
 	fmt.Println("cb")
@@ -3074,6 +3122,22 @@ func (recv *MountOperation) ConnectReply(callback MountOperationSignalReplyCallb
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.MountOperation_signal_connect_reply(instance, C.gpointer(uintptr(signalMountOperationReplyId)))
 	return int(retC)
+}
+
+/*
+DisconnectReply disconnects a callback from the 'reply' signal for the MountOperation.
+
+The connectionID should be a value returned from a call to ConnectReply.
+*/
+func (recv *MountOperation) DisconnectReply(connectionID int) {
+	_, exists := signalMountOperationReplyMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalMountOperationReplyMap, connectionID)
 }
 
 //export MountOperation_replyHandler
@@ -3596,6 +3660,22 @@ func (recv *Resolver) ConnectReload(callback ResolverSignalReloadCallback) int {
 	return int(retC)
 }
 
+/*
+DisconnectReload disconnects a callback from the 'reload' signal for the Resolver.
+
+The connectionID should be a value returned from a call to ConnectReload.
+*/
+func (recv *Resolver) DisconnectReload(connectionID int) {
+	_, exists := signalResolverReloadMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalResolverReloadMap, connectionID)
+}
+
 //export Resolver_reloadHandler
 func Resolver_reloadHandler() {
 	fmt.Println("cb")
@@ -3661,6 +3741,22 @@ func (recv *Settings) ConnectChanged(callback SettingsSignalChangedCallback) int
 	return int(retC)
 }
 
+/*
+DisconnectChanged disconnects a callback from the 'changed' signal for the Settings.
+
+The connectionID should be a value returned from a call to ConnectChanged.
+*/
+func (recv *Settings) DisconnectChanged(connectionID int) {
+	_, exists := signalSettingsChangedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalSettingsChangedMap, connectionID)
+}
+
 //export Settings_changedHandler
 func Settings_changedHandler() {
 	fmt.Println("cb")
@@ -3690,6 +3786,22 @@ func (recv *Settings) ConnectWritableChangeEvent(callback SettingsSignalWritable
 	return int(retC)
 }
 
+/*
+DisconnectWritableChangeEvent disconnects a callback from the 'writable-change-event' signal for the Settings.
+
+The connectionID should be a value returned from a call to ConnectWritableChangeEvent.
+*/
+func (recv *Settings) DisconnectWritableChangeEvent(connectionID int) {
+	_, exists := signalSettingsWritableChangeEventMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalSettingsWritableChangeEventMap, connectionID)
+}
+
 //export Settings_writableChangeEventHandler
 func Settings_writableChangeEventHandler() {
 	fmt.Println("cb")
@@ -3717,6 +3829,22 @@ func (recv *Settings) ConnectWritableChanged(callback SettingsSignalWritableChan
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.Settings_signal_connect_writable_changed(instance, C.gpointer(uintptr(signalSettingsWritableChangedId)))
 	return int(retC)
+}
+
+/*
+DisconnectWritableChanged disconnects a callback from the 'writable-changed' signal for the Settings.
+
+The connectionID should be a value returned from a call to ConnectWritableChanged.
+*/
+func (recv *Settings) DisconnectWritableChanged(connectionID int) {
+	_, exists := signalSettingsWritableChangedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalSettingsWritableChangedMap, connectionID)
 }
 
 //export Settings_writableChangedHandler
@@ -4579,6 +4707,22 @@ func (recv *UnixMountMonitor) ConnectMountpointsChanged(callback UnixMountMonito
 	return int(retC)
 }
 
+/*
+DisconnectMountpointsChanged disconnects a callback from the 'mountpoints-changed' signal for the UnixMountMonitor.
+
+The connectionID should be a value returned from a call to ConnectMountpointsChanged.
+*/
+func (recv *UnixMountMonitor) DisconnectMountpointsChanged(connectionID int) {
+	_, exists := signalUnixMountMonitorMountpointsChangedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalUnixMountMonitorMountpointsChangedMap, connectionID)
+}
+
 //export UnixMountMonitor_mountpointsChangedHandler
 func UnixMountMonitor_mountpointsChangedHandler() {
 	fmt.Println("cb")
@@ -4606,6 +4750,22 @@ func (recv *UnixMountMonitor) ConnectMountsChanged(callback UnixMountMonitorSign
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.UnixMountMonitor_signal_connect_mounts_changed(instance, C.gpointer(uintptr(signalUnixMountMonitorMountsChangedId)))
 	return int(retC)
+}
+
+/*
+DisconnectMountsChanged disconnects a callback from the 'mounts-changed' signal for the UnixMountMonitor.
+
+The connectionID should be a value returned from a call to ConnectMountsChanged.
+*/
+func (recv *UnixMountMonitor) DisconnectMountsChanged(connectionID int) {
+	_, exists := signalUnixMountMonitorMountsChangedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalUnixMountMonitorMountsChangedMap, connectionID)
 }
 
 //export UnixMountMonitor_mountsChangedHandler

@@ -46,6 +46,22 @@ func (recv *Keymap) ConnectStateChanged(callback KeymapSignalStateChangedCallbac
 	return int(retC)
 }
 
+/*
+DisconnectStateChanged disconnects a callback from the 'state-changed' signal for the Keymap.
+
+The connectionID should be a value returned from a call to ConnectStateChanged.
+*/
+func (recv *Keymap) DisconnectStateChanged(connectionID int) {
+	_, exists := signalKeymapStateChangedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalKeymapStateChangedMap, connectionID)
+}
+
 //export Keymap_stateChangedHandler
 func Keymap_stateChangedHandler() {
 	fmt.Println("cb")

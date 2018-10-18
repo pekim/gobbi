@@ -65,6 +65,22 @@ func (recv *Window) ConnectFromEmbedder(callback WindowSignalFromEmbedderCallbac
 	return int(retC)
 }
 
+/*
+DisconnectFromEmbedder disconnects a callback from the 'from-embedder' signal for the Window.
+
+The connectionID should be a value returned from a call to ConnectFromEmbedder.
+*/
+func (recv *Window) DisconnectFromEmbedder(connectionID int) {
+	_, exists := signalWindowFromEmbedderMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalWindowFromEmbedderMap, connectionID)
+}
+
 //export Window_fromEmbedderHandler
 func Window_fromEmbedderHandler() {
 	fmt.Println("cb")
@@ -94,6 +110,22 @@ func (recv *Window) ConnectPickEmbeddedChild(callback WindowSignalPickEmbeddedCh
 	return int(retC)
 }
 
+/*
+DisconnectPickEmbeddedChild disconnects a callback from the 'pick-embedded-child' signal for the Window.
+
+The connectionID should be a value returned from a call to ConnectPickEmbeddedChild.
+*/
+func (recv *Window) DisconnectPickEmbeddedChild(connectionID int) {
+	_, exists := signalWindowPickEmbeddedChildMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalWindowPickEmbeddedChildMap, connectionID)
+}
+
 //export Window_pickEmbeddedChildHandler
 func Window_pickEmbeddedChildHandler() {
 	fmt.Println("cb")
@@ -121,6 +153,22 @@ func (recv *Window) ConnectToEmbedder(callback WindowSignalToEmbedderCallback) i
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.Window_signal_connect_to_embedder(instance, C.gpointer(uintptr(signalWindowToEmbedderId)))
 	return int(retC)
+}
+
+/*
+DisconnectToEmbedder disconnects a callback from the 'to-embedder' signal for the Window.
+
+The connectionID should be a value returned from a call to ConnectToEmbedder.
+*/
+func (recv *Window) DisconnectToEmbedder(connectionID int) {
+	_, exists := signalWindowToEmbedderMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalWindowToEmbedderMap, connectionID)
 }
 
 //export Window_toEmbedderHandler

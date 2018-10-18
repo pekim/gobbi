@@ -492,6 +492,22 @@ func (recv *ScrolledWindow) ConnectEdgeOvershot(callback ScrolledWindowSignalEdg
 	return int(retC)
 }
 
+/*
+DisconnectEdgeOvershot disconnects a callback from the 'edge-overshot' signal for the ScrolledWindow.
+
+The connectionID should be a value returned from a call to ConnectEdgeOvershot.
+*/
+func (recv *ScrolledWindow) DisconnectEdgeOvershot(connectionID int) {
+	_, exists := signalScrolledWindowEdgeOvershotMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalScrolledWindowEdgeOvershotMap, connectionID)
+}
+
 //export ScrolledWindow_edgeOvershotHandler
 func ScrolledWindow_edgeOvershotHandler() {
 	fmt.Println("cb")
@@ -519,6 +535,22 @@ func (recv *ScrolledWindow) ConnectEdgeReached(callback ScrolledWindowSignalEdge
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.ScrolledWindow_signal_connect_edge_reached(instance, C.gpointer(uintptr(signalScrolledWindowEdgeReachedId)))
 	return int(retC)
+}
+
+/*
+DisconnectEdgeReached disconnects a callback from the 'edge-reached' signal for the ScrolledWindow.
+
+The connectionID should be a value returned from a call to ConnectEdgeReached.
+*/
+func (recv *ScrolledWindow) DisconnectEdgeReached(connectionID int) {
+	_, exists := signalScrolledWindowEdgeReachedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalScrolledWindowEdgeReachedMap, connectionID)
 }
 
 //export ScrolledWindow_edgeReachedHandler
@@ -568,6 +600,22 @@ func (recv *SearchEntry) ConnectNextMatch(callback SearchEntrySignalNextMatchCal
 	return int(retC)
 }
 
+/*
+DisconnectNextMatch disconnects a callback from the 'next-match' signal for the SearchEntry.
+
+The connectionID should be a value returned from a call to ConnectNextMatch.
+*/
+func (recv *SearchEntry) DisconnectNextMatch(connectionID int) {
+	_, exists := signalSearchEntryNextMatchMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalSearchEntryNextMatchMap, connectionID)
+}
+
 //export SearchEntry_nextMatchHandler
 func SearchEntry_nextMatchHandler() {
 	fmt.Println("cb")
@@ -597,6 +645,22 @@ func (recv *SearchEntry) ConnectPreviousMatch(callback SearchEntrySignalPrevious
 	return int(retC)
 }
 
+/*
+DisconnectPreviousMatch disconnects a callback from the 'previous-match' signal for the SearchEntry.
+
+The connectionID should be a value returned from a call to ConnectPreviousMatch.
+*/
+func (recv *SearchEntry) DisconnectPreviousMatch(connectionID int) {
+	_, exists := signalSearchEntryPreviousMatchMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalSearchEntryPreviousMatchMap, connectionID)
+}
+
 //export SearchEntry_previousMatchHandler
 func SearchEntry_previousMatchHandler() {
 	fmt.Println("cb")
@@ -624,6 +688,22 @@ func (recv *SearchEntry) ConnectStopSearch(callback SearchEntrySignalStopSearchC
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.SearchEntry_signal_connect_stop_search(instance, C.gpointer(uintptr(signalSearchEntryStopSearchId)))
 	return int(retC)
+}
+
+/*
+DisconnectStopSearch disconnects a callback from the 'stop-search' signal for the SearchEntry.
+
+The connectionID should be a value returned from a call to ConnectStopSearch.
+*/
+func (recv *SearchEntry) DisconnectStopSearch(connectionID int) {
+	_, exists := signalSearchEntryStopSearchMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalSearchEntryStopSearchMap, connectionID)
 }
 
 //export SearchEntry_stopSearchHandler
@@ -734,6 +814,22 @@ func (recv *TextView) ConnectExtendSelection(callback TextViewSignalExtendSelect
 	instance := C.gpointer(recv.Object().ToC())
 	retC := C.TextView_signal_connect_extend_selection(instance, C.gpointer(uintptr(signalTextViewExtendSelectionId)))
 	return int(retC)
+}
+
+/*
+DisconnectExtendSelection disconnects a callback from the 'extend-selection' signal for the TextView.
+
+The connectionID should be a value returned from a call to ConnectExtendSelection.
+*/
+func (recv *TextView) DisconnectExtendSelection(connectionID int) {
+	_, exists := signalTextViewExtendSelectionMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalTextViewExtendSelectionMap, connectionID)
 }
 
 //export TextView_extendSelectionHandler
