@@ -75,21 +75,23 @@ import "C"
 
 // Unsupported : gtk_app_chooser_dialog_new : unsupported parameter file : no type generator for Gio.File, GFile*
 
-// Unsupported signal : unsupported parameter application : no type generator for Gio.AppInfo,
+// Unsupported signal 'application-activated' for AppChooserWidget : unsupported parameter application : no type generator for Gio.AppInfo,
 
-// Unsupported signal : unsupported parameter application : no type generator for Gio.AppInfo,
+// Unsupported signal 'application-selected' for AppChooserWidget : unsupported parameter application : no type generator for Gio.AppInfo,
 
-// Unsupported signal : unsupported parameter application : no type generator for Gio.AppInfo,
+// Unsupported signal 'populate-popup' for AppChooserWidget : unsupported parameter application : no type generator for Gio.AppInfo,
 
 // Unsupported : gtk_button_new_from_icon_name : unsupported parameter size : no type generator for gint, GtkIconSize
 
-// Unsupported signal : unsupported parameter editable : no type generator for CellEditable,
+// Unsupported signal 'add-editable' for CellArea : unsupported parameter editable : no type generator for CellEditable,
 
-// Unsupported signal : unsupported parameter model : no type generator for TreeModel,
+// Unsupported signal 'apply-attributes' for CellArea : unsupported parameter model : no type generator for TreeModel,
 
-// Unsupported signal : unsupported parameter editable : no type generator for CellEditable,
+// Unsupported signal 'remove-editable' for CellArea : unsupported parameter editable : no type generator for CellEditable,
 
-// Unsupported signal : unsupported parameter editable : no type generator for CellEditable,
+// Unsupported signal 'editing-started' for CellRenderer : unsupported parameter editable : no type generator for CellEditable,
+
+// Unsupported signal 'format-entry-text' for ComboBox : return value utf8 :
 
 // Unsupported : gtk_combo_box_new_with_model : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
 
@@ -114,9 +116,9 @@ func (recv *Entry) GrabFocusWithoutSelecting() {
 	return
 }
 
-// Unsupported signal : unsupported parameter model : no type generator for TreeModel,
+// Unsupported signal 'cursor-on-match' for EntryCompletion : unsupported parameter model : no type generator for TreeModel,
 
-// Unsupported signal : unsupported parameter model : no type generator for TreeModel,
+// Unsupported signal 'match-selected' for EntryCompletion : unsupported parameter model : no type generator for TreeModel,
 
 // Unsupported : EntryIconAccessible : no CType
 
@@ -166,6 +168,8 @@ func (recv *GLArea) Object() *gobject.Object {
 func CastToGLArea(object *gobject.Object) *GLArea {
 	return GLAreaNewFromC(object.ToC())
 }
+
+// Unsupported signal 'create-context' for GLArea : return value Gdk.GLContext :
 
 // GLAreaNew is a wrapper around the C function gtk_gl_area_new.
 func GLAreaNew() *GLArea {
@@ -383,6 +387,8 @@ func ModelButtonNew() *ModelButton {
 	return retGo
 }
 
+// Unsupported signal 'create-window' for Notebook : return value Notebook :
+
 // DetachTab is a wrapper around the C function gtk_notebook_detach_tab.
 func (recv *Notebook) DetachTab(child *Widget) {
 	c_child := (*C.GtkWidget)(child.ToC())
@@ -392,7 +398,7 @@ func (recv *Notebook) DetachTab(child *Widget) {
 	return
 }
 
-// Unsupported signal : unsupported parameter allocation : Blacklisted record : GdkRectangle
+// Unsupported signal 'get-child-position' for Overlay : unsupported parameter allocation : Blacklisted record : GdkRectangle
 
 // Unsupported : gtk_page_setup_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
 
@@ -414,13 +420,15 @@ func (recv *Paned) SetWideHandle(wide bool) {
 	return
 }
 
-// Unsupported signal : unsupported parameter dest_file : no type generator for Gio.File,
+// Unsupported signal 'drag-action-ask' for PlacesSidebar : return value gint :
 
-// Unsupported signal : unsupported parameter dest_file : no type generator for Gio.File,
+// Unsupported signal 'drag-action-requested' for PlacesSidebar : unsupported parameter dest_file : no type generator for Gio.File,
 
-// Unsupported signal : unsupported parameter location : no type generator for Gio.File,
+// Unsupported signal 'drag-perform-drop' for PlacesSidebar : unsupported parameter dest_file : no type generator for Gio.File,
 
-// Unsupported signal : unsupported parameter selected_item : no type generator for Gio.File,
+// Unsupported signal 'open-location' for PlacesSidebar : unsupported parameter location : no type generator for Gio.File,
+
+// Unsupported signal 'populate-popup' for PlacesSidebar : unsupported parameter selected_item : no type generator for Gio.File,
 
 // GetTransitionsEnabled is a wrapper around the C function gtk_popover_get_transitions_enabled.
 func (recv *Popover) GetTransitionsEnabled() bool {
@@ -458,13 +466,17 @@ func (recv *PopoverMenu) OpenSubmenu(name string) {
 	return
 }
 
-// Unsupported signal : unsupported parameter preview : no type generator for PrintOperationPreview,
+// Unsupported signal 'create-custom-widget' for PrintOperation : return value GObject.Object :
+
+// Unsupported signal 'preview' for PrintOperation : unsupported parameter preview : no type generator for PrintOperationPreview,
 
 // Unsupported : gtk_print_settings_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
 
 // Unsupported : gtk_recent_chooser_dialog_new : unsupported parameter ... : varargs
 
 // Unsupported : gtk_recent_chooser_dialog_new_for_manager : unsupported parameter ... : varargs
+
+// Unsupported signal 'format-value' for Scale : return value utf8 :
 
 // Unsupported : gtk_scale_button_new : unsupported parameter size : no type generator for gint, GtkIconSize
 
@@ -713,6 +725,8 @@ func SearchEntry_stopSearchHandler() {
 
 // Unsupported : gtk_search_entry_handle_event : unsupported parameter event : no type generator for Gdk.Event, GdkEvent*
 
+// Unsupported signal 'input' for SpinButton : return value gint :
+
 // GetHhomogeneous is a wrapper around the C function gtk_stack_get_hhomogeneous.
 func (recv *Stack) GetHhomogeneous() bool {
 	retC := C.gtk_stack_get_hhomogeneous((*C.GtkStack)(recv.native))
@@ -790,7 +804,7 @@ func (recv *TextBuffer) InsertMarkup(iter *TextIter, markup string, len int32) {
 	return
 }
 
-// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
+// Unsupported signal 'event' for TextTag : unsupported parameter event : no type generator for Gdk.Event,
 
 var signalTextViewExtendSelectionId int
 var signalTextViewExtendSelectionMap = make(map[int]TextViewSignalExtendSelectionCallback)
@@ -833,7 +847,7 @@ func (recv *TextView) DisconnectExtendSelection(connectionID int) {
 }
 
 //export TextView_extendSelectionHandler
-func TextView_extendSelectionHandler() bool {
+func TextView_extendSelectionHandler() C.boolean {
 	fmt.Println("cb")
 }
 
@@ -863,19 +877,19 @@ func (recv *TextView) SetMonospace(monospace bool) {
 
 // Unsupported : gtk_tree_view_column_new_with_attributes : unsupported parameter ... : varargs
 
-// Unsupported signal : unsupported parameter child_property : Blacklisted record : GParamSpec
+// Unsupported signal 'child-notify' for Widget : unsupported parameter child_property : Blacklisted record : GParamSpec
 
-// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
+// Unsupported signal 'delete-event' for Widget : unsupported parameter event : no type generator for Gdk.Event,
 
-// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
+// Unsupported signal 'destroy-event' for Widget : unsupported parameter event : no type generator for Gdk.Event,
 
-// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
+// Unsupported signal 'event' for Widget : unsupported parameter event : no type generator for Gdk.Event,
 
-// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
+// Unsupported signal 'event-after' for Widget : unsupported parameter event : no type generator for Gdk.Event,
 
-// Unsupported signal : unsupported parameter allocation : Blacklisted record : GdkRectangle
+// Unsupported signal 'size-allocate' for Widget : unsupported parameter allocation : Blacklisted record : GdkRectangle
 
-// Unsupported signal : unsupported parameter object : no type generator for Gdk.Event,
+// Unsupported signal 'touch-event' for Widget : unsupported parameter object : no type generator for Gdk.Event,
 
 // Unsupported : gtk_widget_new : unsupported parameter type : no type generator for GType, GType
 

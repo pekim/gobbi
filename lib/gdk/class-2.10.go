@@ -144,6 +144,10 @@ func (recv *Screen) SetResolution(dpi float64) {
 	return
 }
 
+// Unsupported signal 'create-surface' for Window : return value cairo.Surface :
+
+// Unsupported signal 'pick-embedded-child' for Window : return value Window :
+
 // GetTypeHint is a wrapper around the C function gdk_window_get_type_hint.
 func (recv *Window) GetTypeHint() WindowTypeHint {
 	retC := C.gdk_window_get_type_hint((*C.GdkWindow)(recv.native))

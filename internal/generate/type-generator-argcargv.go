@@ -26,6 +26,10 @@ func (t *TypeGeneratorArgcArgv) isSupportedAsReturnValue() (supported bool, reas
 	return true, ""
 }
 
+func (t *TypeGeneratorArgcArgv) isSupportedAsReturnCValue() (supported bool, reason string) {
+	return false, ""
+}
+
 func (t *TypeGeneratorArgcArgv) generateDeclaration(g *jen.Group, goVarName string) {
 	g.
 		Id(goVarName).
@@ -71,6 +75,10 @@ func (t *TypeGeneratorArgcArgv) generateParamOutCVar(g *jen.Group, cVarName stri
 
 func (t *TypeGeneratorArgcArgv) generateReturnFunctionDeclaration(g *jen.Group) {
 	g.Op("[]").String()
+}
+
+func (t *TypeGeneratorArgcArgv) generateReturnFunctionDeclarationCtype(g *jen.Group) {
+	panic("unsupported")
 }
 
 func (t *TypeGeneratorArgcArgv) generateReturnCToGo(g *jen.Group, isParam bool,

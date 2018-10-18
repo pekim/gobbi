@@ -24,7 +24,7 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// Unsupported signal : unsupported parameter info : no type generator for AppInfo,
+// Unsupported signal 'launched' for AppLaunchContext : unsupported parameter info : no type generator for AppInfo,
 
 // Unsupported : g_converter_input_stream_new : unsupported parameter converter : no type generator for Converter, GConverter*
 
@@ -1082,9 +1082,9 @@ func CastToDBusProxy(object *gobject.Object) *DBusProxy {
 	return DBusProxyNewFromC(object.ToC())
 }
 
-// Unsupported signal : unsupported parameter changed_properties : Blacklisted record : GVariant
+// Unsupported signal 'g-properties-changed' for DBusProxy : unsupported parameter changed_properties : Blacklisted record : GVariant
 
-// Unsupported signal : unsupported parameter parameters : Blacklisted record : GVariant
+// Unsupported signal 'g-signal' for DBusProxy : unsupported parameter parameters : Blacklisted record : GVariant
 
 // Unsupported : g_dbus_proxy_new_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
 
@@ -1391,7 +1391,7 @@ func (recv *DataInputStream) ReadUpto(stopChars string, stopCharsLen int64, canc
 
 // Unsupported : g_file_icon_new : unsupported parameter file : no type generator for File, GFile*
 
-// Unsupported signal : unsupported parameter file : no type generator for File,
+// Unsupported signal 'changed' for FileMonitor : unsupported parameter file : no type generator for File,
 
 // Unsupported : g_inet_address_new_from_bytes : unsupported parameter bytes : no param type
 
@@ -1409,9 +1409,9 @@ func (recv *MemoryOutputStream) StealData() uintptr {
 	return retGo
 }
 
-// Unsupported signal : unsupported parameter choices : no param type
+// Unsupported signal 'ask-question' for MountOperation : unsupported parameter choices : no param type
 
-// Unsupported signal : unsupported parameter processes : no param type
+// Unsupported signal 'show-processes' for MountOperation : unsupported parameter processes : no param type
 
 // GetScheme is a wrapper around the C function g_network_address_get_scheme.
 func (recv *NetworkAddress) GetScheme() string {
@@ -1631,7 +1631,7 @@ func (recv *ProxyAddress) GetUsername() string {
 	return retGo
 }
 
-// Unsupported signal : unsupported parameter keys : no param type
+// Unsupported signal 'change-event' for Settings : unsupported parameter keys : no param type
 
 // SettingsNew is a wrapper around the C function g_settings_new.
 func SettingsNew(schemaId string) *Settings {
@@ -1906,9 +1906,9 @@ func (recv *Settings) SetString(key string, value string) bool {
 
 // Blacklisted : g_settings_backend_writable_changed
 
-// Unsupported signal : unsupported parameter parameter : Blacklisted record : GVariant
+// Unsupported signal 'activate' for SimpleAction : unsupported parameter parameter : Blacklisted record : GVariant
 
-// Unsupported signal : unsupported parameter value : Blacklisted record : GVariant
+// Unsupported signal 'change-state' for SimpleAction : unsupported parameter value : Blacklisted record : GVariant
 
 // Unsupported : g_simple_action_new : unsupported parameter parameter_type : Blacklisted record : GVariantType
 
@@ -1969,7 +1969,7 @@ func (recv *Socket) SetTimeout(timeout uint32) {
 	return
 }
 
-// Unsupported signal : unsupported parameter connectable : no type generator for SocketConnectable,
+// Unsupported signal 'event' for SocketClient : unsupported parameter connectable : no type generator for SocketConnectable,
 
 // ConnectToUri is a wrapper around the C function g_socket_client_connect_to_uri.
 func (recv *SocketClient) ConnectToUri(uri string, defaultPort uint16, cancellable *Cancellable) (*SocketConnection, error) {
@@ -2149,29 +2149,29 @@ func (recv *UnixSocketAddress) GetAddressType() UnixSocketAddressType {
 	return retGo
 }
 
-// Unsupported signal : unsupported parameter drive : no type generator for Drive,
+// Unsupported signal 'drive-changed' for VolumeMonitor : unsupported parameter drive : no type generator for Drive,
 
-// Unsupported signal : unsupported parameter drive : no type generator for Drive,
+// Unsupported signal 'drive-connected' for VolumeMonitor : unsupported parameter drive : no type generator for Drive,
 
-// Unsupported signal : unsupported parameter drive : no type generator for Drive,
+// Unsupported signal 'drive-disconnected' for VolumeMonitor : unsupported parameter drive : no type generator for Drive,
 
-// Unsupported signal : unsupported parameter drive : no type generator for Drive,
+// Unsupported signal 'drive-eject-button' for VolumeMonitor : unsupported parameter drive : no type generator for Drive,
 
-// Unsupported signal : unsupported parameter drive : no type generator for Drive,
+// Unsupported signal 'drive-stop-button' for VolumeMonitor : unsupported parameter drive : no type generator for Drive,
 
-// Unsupported signal : unsupported parameter mount : no type generator for Mount,
+// Unsupported signal 'mount-added' for VolumeMonitor : unsupported parameter mount : no type generator for Mount,
 
-// Unsupported signal : unsupported parameter mount : no type generator for Mount,
+// Unsupported signal 'mount-changed' for VolumeMonitor : unsupported parameter mount : no type generator for Mount,
 
-// Unsupported signal : unsupported parameter mount : no type generator for Mount,
+// Unsupported signal 'mount-pre-unmount' for VolumeMonitor : unsupported parameter mount : no type generator for Mount,
 
-// Unsupported signal : unsupported parameter mount : no type generator for Mount,
+// Unsupported signal 'mount-removed' for VolumeMonitor : unsupported parameter mount : no type generator for Mount,
 
-// Unsupported signal : unsupported parameter volume : no type generator for Volume,
+// Unsupported signal 'volume-added' for VolumeMonitor : unsupported parameter volume : no type generator for Volume,
 
-// Unsupported signal : unsupported parameter volume : no type generator for Volume,
+// Unsupported signal 'volume-changed' for VolumeMonitor : unsupported parameter volume : no type generator for Volume,
 
-// Unsupported signal : unsupported parameter volume : no type generator for Volume,
+// Unsupported signal 'volume-removed' for VolumeMonitor : unsupported parameter volume : no type generator for Volume,
 
 // GetFileInfo is a wrapper around the C function g_zlib_compressor_get_file_info.
 func (recv *ZlibCompressor) GetFileInfo() *FileInfo {

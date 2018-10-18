@@ -26,6 +26,10 @@ func (recv *Keymap) HaveBidiLayouts() bool {
 	return retGo
 }
 
+// Unsupported signal 'create-surface' for Window : return value cairo.Surface :
+
+// Unsupported signal 'pick-embedded-child' for Window : return value Window :
+
 // Beep is a wrapper around the C function gdk_window_beep.
 func (recv *Window) Beep() {
 	C.gdk_window_beep((*C.GdkWindow)(recv.native))

@@ -73,7 +73,7 @@ func CastToObject(object *Object) *Object {
 	return ObjectNewFromC(object.ToC())
 }
 
-// Unsupported signal : unsupported parameter pspec : Blacklisted record : GParamSpec
+// Unsupported signal 'notify' for Object : unsupported parameter pspec : Blacklisted record : GParamSpec
 
 // Unsupported : g_object_new : unsupported parameter object_type : no type generator for GType, GType
 

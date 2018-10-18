@@ -10,6 +10,7 @@ type TypeGenerator interface {
 	isSupportedAsField() (supported bool, reason string)
 	isSupportedAsParam(direction string) (supported bool, reason string)
 	isSupportedAsReturnValue() (supported bool, reason string)
+	isSupportedAsReturnCValue() (supported bool, reason string)
 
 	generateDeclaration(g *jen.Group, goVarName string)
 	generateCToGo(pkg string, cVarReference *jen.Statement) *jen.Statement

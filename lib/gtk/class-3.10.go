@@ -48,15 +48,6 @@ import (
 */
 /*
 
-	void PlacesSidebar_dragActionAskHandler();
-
-	static gulong PlacesSidebar_signal_connect_drag_action_ask(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "drag-action-ask", PlacesSidebar_dragActionAskHandler, data);
-	}
-
-*/
-/*
-
 	void PlacesSidebar_showErrorMessageHandler();
 
 	static gulong PlacesSidebar_signal_connect_show_error_message(gpointer instance, gpointer data) {
@@ -77,11 +68,11 @@ import "C"
 
 // Unsupported : gtk_app_chooser_dialog_new : unsupported parameter file : no type generator for Gio.File, GFile*
 
-// Unsupported signal : unsupported parameter application : no type generator for Gio.AppInfo,
+// Unsupported signal 'application-activated' for AppChooserWidget : unsupported parameter application : no type generator for Gio.AppInfo,
 
-// Unsupported signal : unsupported parameter application : no type generator for Gio.AppInfo,
+// Unsupported signal 'application-selected' for AppChooserWidget : unsupported parameter application : no type generator for Gio.AppInfo,
 
-// Unsupported signal : unsupported parameter application : no type generator for Gio.AppInfo,
+// Unsupported signal 'populate-popup' for AppChooserWidget : unsupported parameter application : no type generator for Gio.AppInfo,
 
 // GetBaselinePosition is a wrapper around the C function gtk_box_get_baseline_position.
 func (recv *Box) GetBaselinePosition() BaselinePosition {
@@ -160,13 +151,15 @@ func (recv *Builder) SetApplication(application *Application) {
 
 // Unsupported : gtk_button_new_from_icon_name : unsupported parameter size : no type generator for gint, GtkIconSize
 
-// Unsupported signal : unsupported parameter editable : no type generator for CellEditable,
+// Unsupported signal 'add-editable' for CellArea : unsupported parameter editable : no type generator for CellEditable,
 
-// Unsupported signal : unsupported parameter model : no type generator for TreeModel,
+// Unsupported signal 'apply-attributes' for CellArea : unsupported parameter model : no type generator for TreeModel,
 
-// Unsupported signal : unsupported parameter editable : no type generator for CellEditable,
+// Unsupported signal 'remove-editable' for CellArea : unsupported parameter editable : no type generator for CellEditable,
 
-// Unsupported signal : unsupported parameter editable : no type generator for CellEditable,
+// Unsupported signal 'editing-started' for CellRenderer : unsupported parameter editable : no type generator for CellEditable,
+
+// Unsupported signal 'format-entry-text' for ComboBox : return value utf8 :
 
 // Unsupported : gtk_combo_box_new_with_model : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
 
@@ -191,9 +184,9 @@ func (recv *Entry) SetTabs(tabs *pango.TabArray) {
 	return
 }
 
-// Unsupported signal : unsupported parameter model : no type generator for TreeModel,
+// Unsupported signal 'cursor-on-match' for EntryCompletion : unsupported parameter model : no type generator for TreeModel,
 
-// Unsupported signal : unsupported parameter model : no type generator for TreeModel,
+// Unsupported signal 'match-selected' for EntryCompletion : unsupported parameter model : no type generator for TreeModel,
 
 // Unsupported : EntryIconAccessible : no CType
 
@@ -868,62 +861,21 @@ func (recv *ListBoxRow) SetHeader(header *Widget) {
 
 // Unsupported : gtk_message_dialog_new_with_markup : unsupported parameter ... : varargs
 
-// Unsupported signal : unsupported parameter allocation : Blacklisted record : GdkRectangle
+// Unsupported signal 'create-window' for Notebook : return value Notebook :
+
+// Unsupported signal 'get-child-position' for Overlay : unsupported parameter allocation : Blacklisted record : GdkRectangle
 
 // Unsupported : gtk_page_setup_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
 
-var signalPlacesSidebarDragActionAskId int
-var signalPlacesSidebarDragActionAskMap = make(map[int]PlacesSidebarSignalDragActionAskCallback)
-var signalPlacesSidebarDragActionAskLock sync.Mutex
+// Unsupported signal 'drag-action-ask' for PlacesSidebar : return value gint :
 
-// PlacesSidebarSignalDragActionAskCallback is a callback function for a 'drag-action-ask' signal emitted from a PlacesSidebar.
-type PlacesSidebarSignalDragActionAskCallback func(actions int32) int32
+// Unsupported signal 'drag-action-requested' for PlacesSidebar : unsupported parameter dest_file : no type generator for Gio.File,
 
-/*
-ConnectDragActionAsk connects the callback to the 'drag-action-ask' signal for the PlacesSidebar.
+// Unsupported signal 'drag-perform-drop' for PlacesSidebar : unsupported parameter dest_file : no type generator for Gio.File,
 
-The returned value represents the connection, and may be passed to DisconnectDragActionAsk to remove it.
-*/
-func (recv *PlacesSidebar) ConnectDragActionAsk(callback PlacesSidebarSignalDragActionAskCallback) int {
-	signalPlacesSidebarDragActionAskLock.Lock()
-	defer signalPlacesSidebarDragActionAskLock.Unlock()
+// Unsupported signal 'open-location' for PlacesSidebar : unsupported parameter location : no type generator for Gio.File,
 
-	signalPlacesSidebarDragActionAskId++
-	signalPlacesSidebarDragActionAskMap[signalPlacesSidebarDragActionAskId] = callback
-
-	instance := C.gpointer(recv.Object().ToC())
-	retC := C.PlacesSidebar_signal_connect_drag_action_ask(instance, C.gpointer(uintptr(signalPlacesSidebarDragActionAskId)))
-	return int(retC)
-}
-
-/*
-DisconnectDragActionAsk disconnects a callback from the 'drag-action-ask' signal for the PlacesSidebar.
-
-The connectionID should be a value returned from a call to ConnectDragActionAsk.
-*/
-func (recv *PlacesSidebar) DisconnectDragActionAsk(connectionID int) {
-	_, exists := signalPlacesSidebarDragActionAskMap[connectionID]
-	if !exists {
-		return
-	}
-
-	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
-	delete(signalPlacesSidebarDragActionAskMap, connectionID)
-}
-
-//export PlacesSidebar_dragActionAskHandler
-func PlacesSidebar_dragActionAskHandler() int32 {
-	fmt.Println("cb")
-}
-
-// Unsupported signal : unsupported parameter dest_file : no type generator for Gio.File,
-
-// Unsupported signal : unsupported parameter dest_file : no type generator for Gio.File,
-
-// Unsupported signal : unsupported parameter location : no type generator for Gio.File,
-
-// Unsupported signal : unsupported parameter selected_item : no type generator for Gio.File,
+// Unsupported signal 'populate-popup' for PlacesSidebar : unsupported parameter selected_item : no type generator for Gio.File,
 
 var signalPlacesSidebarShowErrorMessageId int
 var signalPlacesSidebarShowErrorMessageMap = make(map[int]PlacesSidebarSignalShowErrorMessageCallback)
@@ -1041,7 +993,9 @@ func (recv *PlacesSidebar) SetShowDesktop(showDesktop bool) {
 	return
 }
 
-// Unsupported signal : unsupported parameter preview : no type generator for PrintOperationPreview,
+// Unsupported signal 'create-custom-widget' for PrintOperation : return value GObject.Object :
+
+// Unsupported signal 'preview' for PrintOperation : unsupported parameter preview : no type generator for PrintOperationPreview,
 
 // Unsupported : gtk_print_settings_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
 
@@ -1116,6 +1070,8 @@ func (recv *Revealer) SetTransitionType(transition RevealerTransitionType) {
 
 	return
 }
+
+// Unsupported signal 'format-value' for Scale : return value utf8 :
 
 // Unsupported : gtk_scale_button_new : unsupported parameter size : no type generator for gint, GtkIconSize
 
@@ -1218,6 +1174,8 @@ func (recv *SearchEntry) DisconnectSearchChanged(connectionID int) {
 func SearchEntry_searchChangedHandler() {
 	fmt.Println("cb")
 }
+
+// Unsupported signal 'input' for SpinButton : return value gint :
 
 // StackNew is a wrapper around the C function gtk_stack_new.
 func StackNew() *Stack {
@@ -1397,7 +1355,7 @@ func (recv *StyleContext) SetScale(scale int32) {
 	return
 }
 
-// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
+// Unsupported signal 'event' for TextTag : unsupported parameter event : no type generator for Gdk.Event,
 
 // Unsupported : gtk_tree_store_new : unsupported parameter ... : varargs
 
@@ -1407,19 +1365,19 @@ func (recv *StyleContext) SetScale(scale int32) {
 
 // Unsupported : gtk_tree_view_column_new_with_attributes : unsupported parameter ... : varargs
 
-// Unsupported signal : unsupported parameter child_property : Blacklisted record : GParamSpec
+// Unsupported signal 'child-notify' for Widget : unsupported parameter child_property : Blacklisted record : GParamSpec
 
-// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
+// Unsupported signal 'delete-event' for Widget : unsupported parameter event : no type generator for Gdk.Event,
 
-// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
+// Unsupported signal 'destroy-event' for Widget : unsupported parameter event : no type generator for Gdk.Event,
 
-// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
+// Unsupported signal 'event' for Widget : unsupported parameter event : no type generator for Gdk.Event,
 
-// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
+// Unsupported signal 'event-after' for Widget : unsupported parameter event : no type generator for Gdk.Event,
 
-// Unsupported signal : unsupported parameter allocation : Blacklisted record : GdkRectangle
+// Unsupported signal 'size-allocate' for Widget : unsupported parameter allocation : Blacklisted record : GdkRectangle
 
-// Unsupported signal : unsupported parameter object : no type generator for Gdk.Event,
+// Unsupported signal 'touch-event' for Widget : unsupported parameter object : no type generator for Gdk.Event,
 
 // Unsupported : gtk_widget_new : unsupported parameter type : no type generator for GType, GType
 

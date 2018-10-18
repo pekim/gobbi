@@ -178,11 +178,11 @@ func (recv *Adjustment) SetUpper(upper float64) {
 
 // Unsupported : gtk_app_chooser_dialog_new : unsupported parameter file : no type generator for Gio.File, GFile*
 
-// Unsupported signal : unsupported parameter application : no type generator for Gio.AppInfo,
+// Unsupported signal 'application-activated' for AppChooserWidget : unsupported parameter application : no type generator for Gio.AppInfo,
 
-// Unsupported signal : unsupported parameter application : no type generator for Gio.AppInfo,
+// Unsupported signal 'application-selected' for AppChooserWidget : unsupported parameter application : no type generator for Gio.AppInfo,
 
-// Unsupported signal : unsupported parameter application : no type generator for Gio.AppInfo,
+// Unsupported signal 'populate-popup' for AppChooserWidget : unsupported parameter application : no type generator for Gio.AppInfo,
 
 // Unsupported : gtk_builder_add_objects_from_file : unsupported parameter object_ids : no param type
 
@@ -226,13 +226,13 @@ func (recv *Calendar) SetDetailWidthChars(chars int32) {
 	return
 }
 
-// Unsupported signal : unsupported parameter editable : no type generator for CellEditable,
+// Unsupported signal 'add-editable' for CellArea : unsupported parameter editable : no type generator for CellEditable,
 
-// Unsupported signal : unsupported parameter model : no type generator for TreeModel,
+// Unsupported signal 'apply-attributes' for CellArea : unsupported parameter model : no type generator for TreeModel,
 
-// Unsupported signal : unsupported parameter editable : no type generator for CellEditable,
+// Unsupported signal 'remove-editable' for CellArea : unsupported parameter editable : no type generator for CellEditable,
 
-// Unsupported signal : unsupported parameter editable : no type generator for CellEditable,
+// Unsupported signal 'editing-started' for CellRenderer : unsupported parameter editable : no type generator for CellEditable,
 
 var signalCellRendererComboChangedId int
 var signalCellRendererComboChangedMap = make(map[int]CellRendererComboSignalChangedCallback)
@@ -298,6 +298,8 @@ func (recv *ColorSelectionDialog) GetColorSelection() *Widget {
 
 	return retGo
 }
+
+// Unsupported signal 'format-entry-text' for ComboBox : return value utf8 :
 
 // Unsupported : gtk_combo_box_new_with_model : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
 
@@ -372,9 +374,9 @@ func (recv *Entry) SetOverwriteMode(overwrite bool) {
 	return
 }
 
-// Unsupported signal : unsupported parameter model : no type generator for TreeModel,
+// Unsupported signal 'cursor-on-match' for EntryCompletion : unsupported parameter model : no type generator for TreeModel,
 
-// Unsupported signal : unsupported parameter model : no type generator for TreeModel,
+// Unsupported signal 'match-selected' for EntryCompletion : unsupported parameter model : no type generator for TreeModel,
 
 // Unsupported : EntryIconAccessible : no CType
 
@@ -692,7 +694,9 @@ func (recv *MountOperation) SetScreen(screen *gdk.Screen) {
 	return
 }
 
-// Unsupported signal : unsupported parameter allocation : Blacklisted record : GdkRectangle
+// Unsupported signal 'create-window' for Notebook : return value Notebook :
+
+// Unsupported signal 'get-child-position' for Overlay : unsupported parameter allocation : Blacklisted record : GdkRectangle
 
 // Unsupported : gtk_page_setup_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
 
@@ -734,15 +738,19 @@ func (recv *PageSetup) LoadKeyFile(keyFile *glib.KeyFile, groupName string) (boo
 	return retGo, goThrowableError
 }
 
-// Unsupported signal : unsupported parameter dest_file : no type generator for Gio.File,
+// Unsupported signal 'drag-action-ask' for PlacesSidebar : return value gint :
 
-// Unsupported signal : unsupported parameter dest_file : no type generator for Gio.File,
+// Unsupported signal 'drag-action-requested' for PlacesSidebar : unsupported parameter dest_file : no type generator for Gio.File,
 
-// Unsupported signal : unsupported parameter location : no type generator for Gio.File,
+// Unsupported signal 'drag-perform-drop' for PlacesSidebar : unsupported parameter dest_file : no type generator for Gio.File,
 
-// Unsupported signal : unsupported parameter selected_item : no type generator for Gio.File,
+// Unsupported signal 'open-location' for PlacesSidebar : unsupported parameter location : no type generator for Gio.File,
 
-// Unsupported signal : unsupported parameter preview : no type generator for PrintOperationPreview,
+// Unsupported signal 'populate-popup' for PlacesSidebar : unsupported parameter selected_item : no type generator for Gio.File,
+
+// Unsupported signal 'create-custom-widget' for PrintOperation : return value GObject.Object :
+
+// Unsupported signal 'preview' for PrintOperation : unsupported parameter preview : no type generator for PrintOperationPreview,
 
 // Unsupported : gtk_print_settings_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
 
@@ -805,6 +813,8 @@ func (recv *PrintSettings) SetNumberUpLayout(numberUpLayout NumberUpLayout) {
 
 // Unsupported : gtk_recent_chooser_dialog_new_for_manager : unsupported parameter ... : varargs
 
+// Unsupported signal 'format-value' for Scale : return value utf8 :
+
 // Unsupported : gtk_scale_button_new : unsupported parameter size : no type generator for gint, GtkIconSize
 
 // GetMinusButton is a wrapper around the C function gtk_scale_button_get_minus_button.
@@ -830,6 +840,8 @@ func (recv *ScaleButton) GetPopup() *Widget {
 
 	return retGo
 }
+
+// Unsupported signal 'input' for SpinButton : return value gint :
 
 var signalStatusIconButtonPressEventId int
 var signalStatusIconButtonPressEventMap = make(map[int]StatusIconSignalButtonPressEventCallback)
@@ -872,7 +884,7 @@ func (recv *StatusIcon) DisconnectButtonPressEvent(connectionID int) {
 }
 
 //export StatusIcon_buttonPressEventHandler
-func StatusIcon_buttonPressEventHandler() bool {
+func StatusIcon_buttonPressEventHandler() C.boolean {
 	fmt.Println("cb")
 }
 
@@ -917,7 +929,7 @@ func (recv *StatusIcon) DisconnectButtonReleaseEvent(connectionID int) {
 }
 
 //export StatusIcon_buttonReleaseEventHandler
-func StatusIcon_buttonReleaseEventHandler() bool {
+func StatusIcon_buttonReleaseEventHandler() C.boolean {
 	fmt.Println("cb")
 }
 
@@ -935,7 +947,7 @@ func (recv *StatusIcon) GetX11WindowId() uint32 {
 
 // Unsupported : gtk_status_icon_set_from_gicon : unsupported parameter icon : no type generator for Gio.Icon, GIcon*
 
-// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
+// Unsupported signal 'event' for TextTag : unsupported parameter event : no type generator for Gdk.Event,
 
 // ToolbarReconfigured is a wrapper around the C function gtk_tool_item_toolbar_reconfigured.
 func (recv *ToolItem) ToolbarReconfigured() {
@@ -956,7 +968,7 @@ func (recv *ToolItem) ToolbarReconfigured() {
 
 // Unsupported : gtk_tree_view_column_new_with_attributes : unsupported parameter ... : varargs
 
-// Unsupported signal : unsupported parameter child_property : Blacklisted record : GParamSpec
+// Unsupported signal 'child-notify' for Widget : unsupported parameter child_property : Blacklisted record : GParamSpec
 
 var signalWidgetDamageEventId int
 var signalWidgetDamageEventMap = make(map[int]WidgetSignalDamageEventCallback)
@@ -999,21 +1011,21 @@ func (recv *Widget) DisconnectDamageEvent(connectionID int) {
 }
 
 //export Widget_damageEventHandler
-func Widget_damageEventHandler() bool {
+func Widget_damageEventHandler() C.boolean {
 	fmt.Println("cb")
 }
 
-// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
+// Unsupported signal 'delete-event' for Widget : unsupported parameter event : no type generator for Gdk.Event,
 
-// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
+// Unsupported signal 'destroy-event' for Widget : unsupported parameter event : no type generator for Gdk.Event,
 
-// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
+// Unsupported signal 'event' for Widget : unsupported parameter event : no type generator for Gdk.Event,
 
-// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
+// Unsupported signal 'event-after' for Widget : unsupported parameter event : no type generator for Gdk.Event,
 
-// Unsupported signal : unsupported parameter allocation : Blacklisted record : GdkRectangle
+// Unsupported signal 'size-allocate' for Widget : unsupported parameter allocation : Blacklisted record : GdkRectangle
 
-// Unsupported signal : unsupported parameter object : no type generator for Gdk.Event,
+// Unsupported signal 'touch-event' for Widget : unsupported parameter object : no type generator for Gdk.Event,
 
 // Unsupported : gtk_widget_new : unsupported parameter type : no type generator for GType, GType
 

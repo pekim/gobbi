@@ -167,6 +167,10 @@ func (recv *Visual) GetVisualType() VisualType {
 	return retGo
 }
 
+// Unsupported signal 'create-surface' for Window : return value cairo.Surface :
+
+// Unsupported signal 'pick-embedded-child' for Window : return value Window :
+
 // CoordsFromParent is a wrapper around the C function gdk_window_coords_from_parent.
 func (recv *Window) CoordsFromParent(parentX float64, parentY float64) (float64, float64) {
 	c_parent_x := (C.gdouble)(parentX)

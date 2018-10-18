@@ -92,6 +92,10 @@ func (recv *FrameClock) RequestPhase(phase FrameClockPhase) {
 	return
 }
 
+// Unsupported signal 'create-surface' for Window : return value cairo.Surface :
+
+// Unsupported signal 'pick-embedded-child' for Window : return value Window :
+
 // GetFrameClock is a wrapper around the C function gdk_window_get_frame_clock.
 func (recv *Window) GetFrameClock() *FrameClock {
 	retC := C.gdk_window_get_frame_clock((*C.GdkWindow)(recv.native))

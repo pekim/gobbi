@@ -38,6 +38,10 @@ func (t *TypeGeneratorInteger) isSupportedAsReturnValue() (supported bool, reaso
 	return true, ""
 }
 
+func (t *TypeGeneratorInteger) isSupportedAsReturnCValue() (supported bool, reason string) {
+	return false, ""
+}
+
 func (t *TypeGeneratorInteger) generateDeclaration(g *jen.Group, goVarName string) {
 	g.
 		Id(goVarName).
@@ -77,6 +81,9 @@ func (t *TypeGeneratorInteger) generateParamOutCVar(g *jen.Group, cVarName strin
 
 func (t *TypeGeneratorInteger) generateReturnFunctionDeclaration(g *jen.Group) {
 	g.Do(t.typ.qname.generate)
+}
+
+func (t *TypeGeneratorInteger) generateReturnFunctionDeclarationCtype(g *jen.Group) {
 }
 
 func (t *TypeGeneratorInteger) generateReturnCToGo(g *jen.Group, isParam bool,

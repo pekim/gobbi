@@ -35,9 +35,13 @@ import (
 */
 import "C"
 
-// Unsupported signal : unsupported parameter info : no type generator for AppInfo,
+// Unsupported signal 'launched' for AppLaunchContext : unsupported parameter info : no type generator for AppInfo,
 
-// Unsupported signal : unsupported parameter files : no param type
+// Unsupported signal 'command-line' for Application : return value gint :
+
+// Unsupported signal 'handle-local-options' for Application : return value gint :
+
+// Unsupported signal 'open' for Application : unsupported parameter files : no param type
 
 // GetDbusConnection is a wrapper around the C function g_application_get_dbus_connection.
 func (recv *Application) GetDbusConnection() *DBusConnection {
@@ -92,9 +96,9 @@ func (recv *DBusConnection) GetLastSerial() uint32 {
 
 // Unsupported : g_dbus_message_new_from_blob : unsupported parameter blob : no param type
 
-// Unsupported signal : unsupported parameter changed_properties : Blacklisted record : GVariant
+// Unsupported signal 'interface-proxy-properties-changed' for DBusObjectManagerClient : unsupported parameter changed_properties : Blacklisted record : GVariant
 
-// Unsupported signal : unsupported parameter parameters : Blacklisted record : GVariant
+// Unsupported signal 'interface-proxy-signal' for DBusObjectManagerClient : unsupported parameter parameters : Blacklisted record : GVariant
 
 // Unsupported : g_dbus_object_manager_client_new_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
 
@@ -114,9 +118,9 @@ func (recv *DBusObjectManagerServer) IsExported(object *DBusObjectSkeleton) bool
 	return retGo
 }
 
-// Unsupported signal : unsupported parameter changed_properties : Blacklisted record : GVariant
+// Unsupported signal 'g-properties-changed' for DBusProxy : unsupported parameter changed_properties : Blacklisted record : GVariant
 
-// Unsupported signal : unsupported parameter parameters : Blacklisted record : GVariant
+// Unsupported signal 'g-signal' for DBusProxy : unsupported parameter parameters : Blacklisted record : GVariant
 
 // Unsupported : g_dbus_proxy_new_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
 
@@ -142,7 +146,7 @@ func (recv *DesktopAppInfo) GetStartupWmClass() string {
 
 // Unsupported : g_file_info_set_symbolic_icon : unsupported parameter icon : no type generator for Icon, GIcon*
 
-// Unsupported signal : unsupported parameter file : no type generator for File,
+// Unsupported signal 'changed' for FileMonitor : unsupported parameter file : no type generator for File,
 
 // Unsupported : g_inet_address_new_from_bytes : unsupported parameter bytes : no param type
 
@@ -229,9 +233,9 @@ func (recv *MenuItem) GetLink(link string) *MenuModel {
 	return retGo
 }
 
-// Unsupported signal : unsupported parameter choices : no param type
+// Unsupported signal 'ask-question' for MountOperation : unsupported parameter choices : no param type
 
-// Unsupported signal : unsupported parameter processes : no param type
+// Unsupported signal 'show-processes' for MountOperation : unsupported parameter processes : no param type
 
 var signalMountOperationShowUnmountProgressId int
 var signalMountOperationShowUnmountProgressMap = make(map[int]MountOperationSignalShowUnmountProgressCallback)
@@ -320,11 +324,11 @@ func (recv *Resolver) LookupRecords(rrname string, recordType ResolverRecordType
 
 // Unsupported : g_resolver_lookup_records_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
 
-// Unsupported signal : unsupported parameter keys : no param type
+// Unsupported signal 'change-event' for Settings : unsupported parameter keys : no param type
 
-// Unsupported signal : unsupported parameter parameter : Blacklisted record : GVariant
+// Unsupported signal 'activate' for SimpleAction : unsupported parameter parameter : Blacklisted record : GVariant
 
-// Unsupported signal : unsupported parameter value : Blacklisted record : GVariant
+// Unsupported signal 'change-state' for SimpleAction : unsupported parameter value : Blacklisted record : GVariant
 
 // Unsupported : g_simple_action_new : unsupported parameter parameter_type : Blacklisted record : GVariantType
 
@@ -338,7 +342,7 @@ func (recv *Resolver) LookupRecords(rrname string, recordType ResolverRecordType
 
 // Unsupported : g_simple_async_result_new_take_error : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
 
-// Unsupported signal : unsupported parameter connectable : no type generator for SocketConnectable,
+// Unsupported signal 'event' for SocketClient : unsupported parameter connectable : no type generator for SocketConnectable,
 
 // Unsupported : g_task_new : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
 
@@ -449,26 +453,26 @@ func (recv *TlsCertificate) IsSame(certTwo *TlsCertificate) bool {
 
 // Unsupported : g_unix_socket_address_new_with_type : unsupported parameter path : no param type
 
-// Unsupported signal : unsupported parameter drive : no type generator for Drive,
+// Unsupported signal 'drive-changed' for VolumeMonitor : unsupported parameter drive : no type generator for Drive,
 
-// Unsupported signal : unsupported parameter drive : no type generator for Drive,
+// Unsupported signal 'drive-connected' for VolumeMonitor : unsupported parameter drive : no type generator for Drive,
 
-// Unsupported signal : unsupported parameter drive : no type generator for Drive,
+// Unsupported signal 'drive-disconnected' for VolumeMonitor : unsupported parameter drive : no type generator for Drive,
 
-// Unsupported signal : unsupported parameter drive : no type generator for Drive,
+// Unsupported signal 'drive-eject-button' for VolumeMonitor : unsupported parameter drive : no type generator for Drive,
 
-// Unsupported signal : unsupported parameter drive : no type generator for Drive,
+// Unsupported signal 'drive-stop-button' for VolumeMonitor : unsupported parameter drive : no type generator for Drive,
 
-// Unsupported signal : unsupported parameter mount : no type generator for Mount,
+// Unsupported signal 'mount-added' for VolumeMonitor : unsupported parameter mount : no type generator for Mount,
 
-// Unsupported signal : unsupported parameter mount : no type generator for Mount,
+// Unsupported signal 'mount-changed' for VolumeMonitor : unsupported parameter mount : no type generator for Mount,
 
-// Unsupported signal : unsupported parameter mount : no type generator for Mount,
+// Unsupported signal 'mount-pre-unmount' for VolumeMonitor : unsupported parameter mount : no type generator for Mount,
 
-// Unsupported signal : unsupported parameter mount : no type generator for Mount,
+// Unsupported signal 'mount-removed' for VolumeMonitor : unsupported parameter mount : no type generator for Mount,
 
-// Unsupported signal : unsupported parameter volume : no type generator for Volume,
+// Unsupported signal 'volume-added' for VolumeMonitor : unsupported parameter volume : no type generator for Volume,
 
-// Unsupported signal : unsupported parameter volume : no type generator for Volume,
+// Unsupported signal 'volume-changed' for VolumeMonitor : unsupported parameter volume : no type generator for Volume,
 
-// Unsupported signal : unsupported parameter volume : no type generator for Volume,
+// Unsupported signal 'volume-removed' for VolumeMonitor : unsupported parameter volume : no type generator for Volume,

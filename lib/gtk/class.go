@@ -1040,15 +1040,6 @@ import (
 */
 /*
 
-	void Scale_formatValueHandler();
-
-	static gulong Scale_signal_connect_format_value(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "format-value", Scale_formatValueHandler, data);
-	}
-
-*/
-/*
-
 	void ScrolledWindow_moveFocusOutHandler();
 
 	static gulong ScrolledWindow_signal_connect_move_focus_out(gpointer instance, gpointer data) {
@@ -1071,15 +1062,6 @@ import (
 
 	static gulong SpinButton_signal_connect_change_value(gpointer instance, gpointer data) {
 		return g_signal_connect(instance, "change-value", SpinButton_changeValueHandler, data);
-	}
-
-*/
-/*
-
-	void SpinButton_inputHandler();
-
-	static gulong SpinButton_signal_connect_input(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "input", SpinButton_inputHandler, data);
 	}
 
 */
@@ -2295,7 +2277,7 @@ func (recv *AccelGroup) DisconnectAccelActivate(connectionID int) {
 }
 
 //export AccelGroup_accelActivateHandler
-func AccelGroup_accelActivateHandler() bool {
+func AccelGroup_accelActivateHandler() C.boolean {
 	fmt.Println("cb")
 }
 
@@ -3272,11 +3254,11 @@ func CastToAppChooserWidget(object *gobject.Object) *AppChooserWidget {
 	return AppChooserWidgetNewFromC(object.ToC())
 }
 
-// Unsupported signal : unsupported parameter application : no type generator for Gio.AppInfo,
+// Unsupported signal 'application-activated' for AppChooserWidget : unsupported parameter application : no type generator for Gio.AppInfo,
 
-// Unsupported signal : unsupported parameter application : no type generator for Gio.AppInfo,
+// Unsupported signal 'application-selected' for AppChooserWidget : unsupported parameter application : no type generator for Gio.AppInfo,
 
-// Unsupported signal : unsupported parameter application : no type generator for Gio.AppInfo,
+// Unsupported signal 'populate-popup' for AppChooserWidget : unsupported parameter application : no type generator for Gio.AppInfo,
 
 // SetDefaultText is a wrapper around the C function gtk_app_chooser_widget_set_default_text.
 func (recv *AppChooserWidget) SetDefaultText(text string) {
@@ -5107,11 +5089,11 @@ func CastToCellArea(object *gobject.Object) *CellArea {
 	return CellAreaNewFromC(object.ToC())
 }
 
-// Unsupported signal : unsupported parameter editable : no type generator for CellEditable,
+// Unsupported signal 'add-editable' for CellArea : unsupported parameter editable : no type generator for CellEditable,
 
-// Unsupported signal : unsupported parameter model : no type generator for TreeModel,
+// Unsupported signal 'apply-attributes' for CellArea : unsupported parameter model : no type generator for TreeModel,
 
-// Unsupported signal : unsupported parameter editable : no type generator for CellEditable,
+// Unsupported signal 'remove-editable' for CellArea : unsupported parameter editable : no type generator for CellEditable,
 
 // CellAreaBox is a wrapper around the C record GtkCellAreaBox.
 type CellAreaBox struct {
@@ -5248,7 +5230,7 @@ func CastToCellRenderer(object *gobject.Object) *CellRenderer {
 	return CellRendererNewFromC(object.ToC())
 }
 
-// Unsupported signal : unsupported parameter editable : no type generator for CellEditable,
+// Unsupported signal 'editing-started' for CellRenderer : unsupported parameter editable : no type generator for CellEditable,
 
 // Unsupported : gtk_cell_renderer_activate : unsupported parameter event : no type generator for Gdk.Event, GdkEvent*
 
@@ -6794,6 +6776,8 @@ func (recv *ComboBox) Object() *gobject.Object {
 func CastToComboBox(object *gobject.Object) *ComboBox {
 	return ComboBoxNewFromC(object.ToC())
 }
+
+// Unsupported signal 'format-entry-text' for ComboBox : return value utf8 :
 
 // ComboBoxNewWithArea is a wrapper around the C function gtk_combo_box_new_with_area.
 func ComboBoxNewWithArea(area *CellArea) *ComboBox {
@@ -8655,9 +8639,9 @@ func CastToEntryCompletion(object *gobject.Object) *EntryCompletion {
 	return EntryCompletionNewFromC(object.ToC())
 }
 
-// Unsupported signal : unsupported parameter model : no type generator for TreeModel,
+// Unsupported signal 'cursor-on-match' for EntryCompletion : unsupported parameter model : no type generator for TreeModel,
 
-// Unsupported signal : unsupported parameter model : no type generator for TreeModel,
+// Unsupported signal 'match-selected' for EntryCompletion : unsupported parameter model : no type generator for TreeModel,
 
 // Unsupported : EntryIconAccessible : no CType
 
@@ -9918,7 +9902,7 @@ func (recv *FlowBox) DisconnectMoveCursor(connectionID int) {
 }
 
 //export FlowBox_moveCursorHandler
-func FlowBox_moveCursorHandler() bool {
+func FlowBox_moveCursorHandler() C.boolean {
 	fmt.Println("cb")
 }
 
@@ -12338,7 +12322,7 @@ func (recv *IMContext) DisconnectDeleteSurrounding(connectionID int) {
 }
 
 //export IMContext_deleteSurroundingHandler
-func IMContext_deleteSurroundingHandler() bool {
+func IMContext_deleteSurroundingHandler() C.boolean {
 	fmt.Println("cb")
 }
 
@@ -12518,7 +12502,7 @@ func (recv *IMContext) DisconnectRetrieveSurrounding(connectionID int) {
 }
 
 //export IMContext_retrieveSurroundingHandler
-func IMContext_retrieveSurroundingHandler() bool {
+func IMContext_retrieveSurroundingHandler() C.boolean {
 	fmt.Println("cb")
 }
 
@@ -13006,7 +12990,7 @@ func (recv *IconView) DisconnectActivateCursorItem(connectionID int) {
 }
 
 //export IconView_activateCursorItemHandler
-func IconView_activateCursorItemHandler() bool {
+func IconView_activateCursorItemHandler() C.boolean {
 	fmt.Println("cb")
 }
 
@@ -13096,7 +13080,7 @@ func (recv *IconView) DisconnectMoveCursor(connectionID int) {
 }
 
 //export IconView_moveCursorHandler
-func IconView_moveCursorHandler() bool {
+func IconView_moveCursorHandler() C.boolean {
 	fmt.Println("cb")
 }
 
@@ -14704,7 +14688,7 @@ func (recv *LinkButton) DisconnectActivateLink(connectionID int) {
 }
 
 //export LinkButton_activateLinkHandler
-func LinkButton_activateLinkHandler() bool {
+func LinkButton_activateLinkHandler() C.boolean {
 	fmt.Println("cb")
 }
 
@@ -17191,9 +17175,11 @@ func (recv *Notebook) DisconnectChangeCurrentPage(connectionID int) {
 }
 
 //export Notebook_changeCurrentPageHandler
-func Notebook_changeCurrentPageHandler() bool {
+func Notebook_changeCurrentPageHandler() C.boolean {
 	fmt.Println("cb")
 }
+
+// Unsupported signal 'create-window' for Notebook : return value Notebook :
 
 var signalNotebookFocusTabId int
 var signalNotebookFocusTabMap = make(map[int]NotebookSignalFocusTabCallback)
@@ -17236,7 +17222,7 @@ func (recv *Notebook) DisconnectFocusTab(connectionID int) {
 }
 
 //export Notebook_focusTabHandler
-func Notebook_focusTabHandler() bool {
+func Notebook_focusTabHandler() C.boolean {
 	fmt.Println("cb")
 }
 
@@ -17326,7 +17312,7 @@ func (recv *Notebook) DisconnectReorderTab(connectionID int) {
 }
 
 //export Notebook_reorderTabHandler
-func Notebook_reorderTabHandler() bool {
+func Notebook_reorderTabHandler() C.boolean {
 	fmt.Println("cb")
 }
 
@@ -17371,7 +17357,7 @@ func (recv *Notebook) DisconnectSelectPage(connectionID int) {
 }
 
 //export Notebook_selectPageHandler
-func Notebook_selectPageHandler() bool {
+func Notebook_selectPageHandler() C.boolean {
 	fmt.Println("cb")
 }
 
@@ -18005,7 +17991,7 @@ func CastToOverlay(object *gobject.Object) *Overlay {
 	return OverlayNewFromC(object.ToC())
 }
 
-// Unsupported signal : unsupported parameter allocation : Blacklisted record : GdkRectangle
+// Unsupported signal 'get-child-position' for Overlay : unsupported parameter allocation : Blacklisted record : GdkRectangle
 
 // PageSetup is a wrapper around the C record GtkPageSetup.
 type PageSetup struct {
@@ -18261,13 +18247,15 @@ func CastToPlacesSidebar(object *gobject.Object) *PlacesSidebar {
 	return PlacesSidebarNewFromC(object.ToC())
 }
 
-// Unsupported signal : unsupported parameter dest_file : no type generator for Gio.File,
+// Unsupported signal 'drag-action-ask' for PlacesSidebar : return value gint :
 
-// Unsupported signal : unsupported parameter dest_file : no type generator for Gio.File,
+// Unsupported signal 'drag-action-requested' for PlacesSidebar : unsupported parameter dest_file : no type generator for Gio.File,
 
-// Unsupported signal : unsupported parameter location : no type generator for Gio.File,
+// Unsupported signal 'drag-perform-drop' for PlacesSidebar : unsupported parameter dest_file : no type generator for Gio.File,
 
-// Unsupported signal : unsupported parameter selected_item : no type generator for Gio.File,
+// Unsupported signal 'open-location' for PlacesSidebar : unsupported parameter location : no type generator for Gio.File,
+
+// Unsupported signal 'populate-popup' for PlacesSidebar : unsupported parameter selected_item : no type generator for Gio.File,
 
 var signalPlacesSidebarShowConnectToServerId int
 var signalPlacesSidebarShowConnectToServerMap = make(map[int]PlacesSidebarSignalShowConnectToServerCallback)
@@ -18604,7 +18592,9 @@ func CastToPrintOperation(object *gobject.Object) *PrintOperation {
 	return PrintOperationNewFromC(object.ToC())
 }
 
-// Unsupported signal : unsupported parameter preview : no type generator for PrintOperationPreview,
+// Unsupported signal 'create-custom-widget' for PrintOperation : return value GObject.Object :
+
+// Unsupported signal 'preview' for PrintOperation : unsupported parameter preview : no type generator for PrintOperationPreview,
 
 // PrintSettings is a wrapper around the C record GtkPrintSettings.
 type PrintSettings struct {
@@ -20147,50 +20137,7 @@ func CastToScale(object *gobject.Object) *Scale {
 	return ScaleNewFromC(object.ToC())
 }
 
-var signalScaleFormatValueId int
-var signalScaleFormatValueMap = make(map[int]ScaleSignalFormatValueCallback)
-var signalScaleFormatValueLock sync.Mutex
-
-// ScaleSignalFormatValueCallback is a callback function for a 'format-value' signal emitted from a Scale.
-type ScaleSignalFormatValueCallback func(value float64) string
-
-/*
-ConnectFormatValue connects the callback to the 'format-value' signal for the Scale.
-
-The returned value represents the connection, and may be passed to DisconnectFormatValue to remove it.
-*/
-func (recv *Scale) ConnectFormatValue(callback ScaleSignalFormatValueCallback) int {
-	signalScaleFormatValueLock.Lock()
-	defer signalScaleFormatValueLock.Unlock()
-
-	signalScaleFormatValueId++
-	signalScaleFormatValueMap[signalScaleFormatValueId] = callback
-
-	instance := C.gpointer(recv.Object().ToC())
-	retC := C.Scale_signal_connect_format_value(instance, C.gpointer(uintptr(signalScaleFormatValueId)))
-	return int(retC)
-}
-
-/*
-DisconnectFormatValue disconnects a callback from the 'format-value' signal for the Scale.
-
-The connectionID should be a value returned from a call to ConnectFormatValue.
-*/
-func (recv *Scale) DisconnectFormatValue(connectionID int) {
-	_, exists := signalScaleFormatValueMap[connectionID]
-	if !exists {
-		return
-	}
-
-	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
-	delete(signalScaleFormatValueMap, connectionID)
-}
-
-//export Scale_formatValueHandler
-func Scale_formatValueHandler() string {
-	fmt.Println("cb")
-}
+// Unsupported signal 'format-value' for Scale : return value utf8 :
 
 // GetDigits is a wrapper around the C function gtk_scale_get_digits.
 func (recv *Scale) GetDigits() int32 {
@@ -20596,7 +20543,7 @@ func (recv *ScrolledWindow) DisconnectScrollChild(connectionID int) {
 }
 
 //export ScrolledWindow_scrollChildHandler
-func ScrolledWindow_scrollChildHandler() bool {
+func ScrolledWindow_scrollChildHandler() C.boolean {
 	fmt.Println("cb")
 }
 
@@ -21288,50 +21235,7 @@ func SpinButton_changeValueHandler() {
 	fmt.Println("cb")
 }
 
-var signalSpinButtonInputId int
-var signalSpinButtonInputMap = make(map[int]SpinButtonSignalInputCallback)
-var signalSpinButtonInputLock sync.Mutex
-
-// SpinButtonSignalInputCallback is a callback function for a 'input' signal emitted from a SpinButton.
-type SpinButtonSignalInputCallback func() int32
-
-/*
-ConnectInput connects the callback to the 'input' signal for the SpinButton.
-
-The returned value represents the connection, and may be passed to DisconnectInput to remove it.
-*/
-func (recv *SpinButton) ConnectInput(callback SpinButtonSignalInputCallback) int {
-	signalSpinButtonInputLock.Lock()
-	defer signalSpinButtonInputLock.Unlock()
-
-	signalSpinButtonInputId++
-	signalSpinButtonInputMap[signalSpinButtonInputId] = callback
-
-	instance := C.gpointer(recv.Object().ToC())
-	retC := C.SpinButton_signal_connect_input(instance, C.gpointer(uintptr(signalSpinButtonInputId)))
-	return int(retC)
-}
-
-/*
-DisconnectInput disconnects a callback from the 'input' signal for the SpinButton.
-
-The connectionID should be a value returned from a call to ConnectInput.
-*/
-func (recv *SpinButton) DisconnectInput(connectionID int) {
-	_, exists := signalSpinButtonInputMap[connectionID]
-	if !exists {
-		return
-	}
-
-	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
-	delete(signalSpinButtonInputMap, connectionID)
-}
-
-//export SpinButton_inputHandler
-func SpinButton_inputHandler() int32 {
-	fmt.Println("cb")
-}
+// Unsupported signal 'input' for SpinButton : return value gint :
 
 var signalSpinButtonOutputId int
 var signalSpinButtonOutputMap = make(map[int]SpinButtonSignalOutputCallback)
@@ -21374,7 +21278,7 @@ func (recv *SpinButton) DisconnectOutput(connectionID int) {
 }
 
 //export SpinButton_outputHandler
-func SpinButton_outputHandler() bool {
+func SpinButton_outputHandler() C.boolean {
 	fmt.Println("cb")
 }
 
@@ -24361,7 +24265,7 @@ func CastToTextTag(object *gobject.Object) *TextTag {
 	return TextTagNewFromC(object.ToC())
 }
 
-// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
+// Unsupported signal 'event' for TextTag : unsupported parameter event : no type generator for Gdk.Event,
 
 // TextTagNew is a wrapper around the C function gtk_text_tag_new.
 func TextTagNew(name string) *TextTag {
@@ -26509,7 +26413,7 @@ func (recv *ToolItem) DisconnectCreateMenuProxy(connectionID int) {
 }
 
 //export ToolItem_createMenuProxyHandler
-func ToolItem_createMenuProxyHandler() bool {
+func ToolItem_createMenuProxyHandler() C.boolean {
 	fmt.Println("cb")
 }
 
@@ -26746,7 +26650,7 @@ func (recv *Toolbar) DisconnectFocusHomeOrEnd(connectionID int) {
 }
 
 //export Toolbar_focusHomeOrEndHandler
-func Toolbar_focusHomeOrEndHandler() bool {
+func Toolbar_focusHomeOrEndHandler() C.boolean {
 	fmt.Println("cb")
 }
 
@@ -26836,7 +26740,7 @@ func (recv *Toolbar) DisconnectPopupContextMenu(connectionID int) {
 }
 
 //export Toolbar_popupContextMenuHandler
-func Toolbar_popupContextMenuHandler() bool {
+func Toolbar_popupContextMenuHandler() C.boolean {
 	fmt.Println("cb")
 }
 
@@ -27692,7 +27596,7 @@ func (recv *TreeView) DisconnectExpandCollapseCursorRow(connectionID int) {
 }
 
 //export TreeView_expandCollapseCursorRowHandler
-func TreeView_expandCollapseCursorRowHandler() bool {
+func TreeView_expandCollapseCursorRowHandler() C.boolean {
 	fmt.Println("cb")
 }
 
@@ -27737,7 +27641,7 @@ func (recv *TreeView) DisconnectMoveCursor(connectionID int) {
 }
 
 //export TreeView_moveCursorHandler
-func TreeView_moveCursorHandler() bool {
+func TreeView_moveCursorHandler() C.boolean {
 	fmt.Println("cb")
 }
 
@@ -27917,7 +27821,7 @@ func (recv *TreeView) DisconnectSelectAll(connectionID int) {
 }
 
 //export TreeView_selectAllHandler
-func TreeView_selectAllHandler() bool {
+func TreeView_selectAllHandler() C.boolean {
 	fmt.Println("cb")
 }
 
@@ -27962,7 +27866,7 @@ func (recv *TreeView) DisconnectSelectCursorParent(connectionID int) {
 }
 
 //export TreeView_selectCursorParentHandler
-func TreeView_selectCursorParentHandler() bool {
+func TreeView_selectCursorParentHandler() C.boolean {
 	fmt.Println("cb")
 }
 
@@ -28007,7 +27911,7 @@ func (recv *TreeView) DisconnectSelectCursorRow(connectionID int) {
 }
 
 //export TreeView_selectCursorRowHandler
-func TreeView_selectCursorRowHandler() bool {
+func TreeView_selectCursorRowHandler() C.boolean {
 	fmt.Println("cb")
 }
 
@@ -28052,7 +27956,7 @@ func (recv *TreeView) DisconnectStartInteractiveSearch(connectionID int) {
 }
 
 //export TreeView_startInteractiveSearchHandler
-func TreeView_startInteractiveSearchHandler() bool {
+func TreeView_startInteractiveSearchHandler() C.boolean {
 	fmt.Println("cb")
 }
 
@@ -28097,7 +28001,7 @@ func (recv *TreeView) DisconnectTestCollapseRow(connectionID int) {
 }
 
 //export TreeView_testCollapseRowHandler
-func TreeView_testCollapseRowHandler() bool {
+func TreeView_testCollapseRowHandler() C.boolean {
 	fmt.Println("cb")
 }
 
@@ -28142,7 +28046,7 @@ func (recv *TreeView) DisconnectTestExpandRow(connectionID int) {
 }
 
 //export TreeView_testExpandRowHandler
-func TreeView_testExpandRowHandler() bool {
+func TreeView_testExpandRowHandler() C.boolean {
 	fmt.Println("cb")
 }
 
@@ -28187,7 +28091,7 @@ func (recv *TreeView) DisconnectToggleCursorRow(connectionID int) {
 }
 
 //export TreeView_toggleCursorRowHandler
-func TreeView_toggleCursorRowHandler() bool {
+func TreeView_toggleCursorRowHandler() C.boolean {
 	fmt.Println("cb")
 }
 
@@ -28232,7 +28136,7 @@ func (recv *TreeView) DisconnectUnselectAll(connectionID int) {
 }
 
 //export TreeView_unselectAllHandler
-func TreeView_unselectAllHandler() bool {
+func TreeView_unselectAllHandler() C.boolean {
 	fmt.Println("cb")
 }
 
@@ -29887,7 +29791,7 @@ func (recv *Widget) DisconnectButtonPressEvent(connectionID int) {
 }
 
 //export Widget_buttonPressEventHandler
-func Widget_buttonPressEventHandler() bool {
+func Widget_buttonPressEventHandler() C.boolean {
 	fmt.Println("cb")
 }
 
@@ -29932,7 +29836,7 @@ func (recv *Widget) DisconnectButtonReleaseEvent(connectionID int) {
 }
 
 //export Widget_buttonReleaseEventHandler
-func Widget_buttonReleaseEventHandler() bool {
+func Widget_buttonReleaseEventHandler() C.boolean {
 	fmt.Println("cb")
 }
 
@@ -29977,11 +29881,11 @@ func (recv *Widget) DisconnectCanActivateAccel(connectionID int) {
 }
 
 //export Widget_canActivateAccelHandler
-func Widget_canActivateAccelHandler() bool {
+func Widget_canActivateAccelHandler() C.boolean {
 	fmt.Println("cb")
 }
 
-// Unsupported signal : unsupported parameter child_property : Blacklisted record : GParamSpec
+// Unsupported signal 'child-notify' for Widget : unsupported parameter child_property : Blacklisted record : GParamSpec
 
 var signalWidgetCompositedChangedId int
 var signalWidgetCompositedChangedMap = make(map[int]WidgetSignalCompositedChangedCallback)
@@ -30069,11 +29973,11 @@ func (recv *Widget) DisconnectConfigureEvent(connectionID int) {
 }
 
 //export Widget_configureEventHandler
-func Widget_configureEventHandler() bool {
+func Widget_configureEventHandler() C.boolean {
 	fmt.Println("cb")
 }
 
-// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
+// Unsupported signal 'delete-event' for Widget : unsupported parameter event : no type generator for Gdk.Event,
 
 var signalWidgetDestroyId int
 var signalWidgetDestroyMap = make(map[int]WidgetSignalDestroyCallback)
@@ -30120,7 +30024,7 @@ func Widget_destroyHandler() {
 	fmt.Println("cb")
 }
 
-// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
+// Unsupported signal 'destroy-event' for Widget : unsupported parameter event : no type generator for Gdk.Event,
 
 var signalWidgetDirectionChangedId int
 var signalWidgetDirectionChangedMap = make(map[int]WidgetSignalDirectionChangedCallback)
@@ -30388,7 +30292,7 @@ func (recv *Widget) DisconnectDragDrop(connectionID int) {
 }
 
 //export Widget_dragDropHandler
-func Widget_dragDropHandler() bool {
+func Widget_dragDropHandler() C.boolean {
 	fmt.Println("cb")
 }
 
@@ -30523,7 +30427,7 @@ func (recv *Widget) DisconnectDragMotion(connectionID int) {
 }
 
 //export Widget_dragMotionHandler
-func Widget_dragMotionHandler() bool {
+func Widget_dragMotionHandler() C.boolean {
 	fmt.Println("cb")
 }
 
@@ -30568,13 +30472,13 @@ func (recv *Widget) DisconnectEnterNotifyEvent(connectionID int) {
 }
 
 //export Widget_enterNotifyEventHandler
-func Widget_enterNotifyEventHandler() bool {
+func Widget_enterNotifyEventHandler() C.boolean {
 	fmt.Println("cb")
 }
 
-// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
+// Unsupported signal 'event' for Widget : unsupported parameter event : no type generator for Gdk.Event,
 
-// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
+// Unsupported signal 'event-after' for Widget : unsupported parameter event : no type generator for Gdk.Event,
 
 var signalWidgetFocusId int
 var signalWidgetFocusMap = make(map[int]WidgetSignalFocusCallback)
@@ -30617,7 +30521,7 @@ func (recv *Widget) DisconnectFocus(connectionID int) {
 }
 
 //export Widget_focusHandler
-func Widget_focusHandler() bool {
+func Widget_focusHandler() C.boolean {
 	fmt.Println("cb")
 }
 
@@ -30662,7 +30566,7 @@ func (recv *Widget) DisconnectFocusInEvent(connectionID int) {
 }
 
 //export Widget_focusInEventHandler
-func Widget_focusInEventHandler() bool {
+func Widget_focusInEventHandler() C.boolean {
 	fmt.Println("cb")
 }
 
@@ -30707,7 +30611,7 @@ func (recv *Widget) DisconnectFocusOutEvent(connectionID int) {
 }
 
 //export Widget_focusOutEventHandler
-func Widget_focusOutEventHandler() bool {
+func Widget_focusOutEventHandler() C.boolean {
 	fmt.Println("cb")
 }
 
@@ -30932,7 +30836,7 @@ func (recv *Widget) DisconnectKeyPressEvent(connectionID int) {
 }
 
 //export Widget_keyPressEventHandler
-func Widget_keyPressEventHandler() bool {
+func Widget_keyPressEventHandler() C.boolean {
 	fmt.Println("cb")
 }
 
@@ -30977,7 +30881,7 @@ func (recv *Widget) DisconnectKeyReleaseEvent(connectionID int) {
 }
 
 //export Widget_keyReleaseEventHandler
-func Widget_keyReleaseEventHandler() bool {
+func Widget_keyReleaseEventHandler() C.boolean {
 	fmt.Println("cb")
 }
 
@@ -31022,7 +30926,7 @@ func (recv *Widget) DisconnectLeaveNotifyEvent(connectionID int) {
 }
 
 //export Widget_leaveNotifyEventHandler
-func Widget_leaveNotifyEventHandler() bool {
+func Widget_leaveNotifyEventHandler() C.boolean {
 	fmt.Println("cb")
 }
 
@@ -31112,7 +31016,7 @@ func (recv *Widget) DisconnectMapEvent(connectionID int) {
 }
 
 //export Widget_mapEventHandler
-func Widget_mapEventHandler() bool {
+func Widget_mapEventHandler() C.boolean {
 	fmt.Println("cb")
 }
 
@@ -31157,7 +31061,7 @@ func (recv *Widget) DisconnectMnemonicActivate(connectionID int) {
 }
 
 //export Widget_mnemonicActivateHandler
-func Widget_mnemonicActivateHandler() bool {
+func Widget_mnemonicActivateHandler() C.boolean {
 	fmt.Println("cb")
 }
 
@@ -31202,7 +31106,7 @@ func (recv *Widget) DisconnectMotionNotifyEvent(connectionID int) {
 }
 
 //export Widget_motionNotifyEventHandler
-func Widget_motionNotifyEventHandler() bool {
+func Widget_motionNotifyEventHandler() C.boolean {
 	fmt.Println("cb")
 }
 
@@ -31337,7 +31241,7 @@ func (recv *Widget) DisconnectPopupMenu(connectionID int) {
 }
 
 //export Widget_popupMenuHandler
-func Widget_popupMenuHandler() bool {
+func Widget_popupMenuHandler() C.boolean {
 	fmt.Println("cb")
 }
 
@@ -31382,7 +31286,7 @@ func (recv *Widget) DisconnectPropertyNotifyEvent(connectionID int) {
 }
 
 //export Widget_propertyNotifyEventHandler
-func Widget_propertyNotifyEventHandler() bool {
+func Widget_propertyNotifyEventHandler() C.boolean {
 	fmt.Println("cb")
 }
 
@@ -31427,7 +31331,7 @@ func (recv *Widget) DisconnectProximityInEvent(connectionID int) {
 }
 
 //export Widget_proximityInEventHandler
-func Widget_proximityInEventHandler() bool {
+func Widget_proximityInEventHandler() C.boolean {
 	fmt.Println("cb")
 }
 
@@ -31472,7 +31376,7 @@ func (recv *Widget) DisconnectProximityOutEvent(connectionID int) {
 }
 
 //export Widget_proximityOutEventHandler
-func Widget_proximityOutEventHandler() bool {
+func Widget_proximityOutEventHandler() C.boolean {
 	fmt.Println("cb")
 }
 
@@ -31607,7 +31511,7 @@ func (recv *Widget) DisconnectScrollEvent(connectionID int) {
 }
 
 //export Widget_scrollEventHandler
-func Widget_scrollEventHandler() bool {
+func Widget_scrollEventHandler() C.boolean {
 	fmt.Println("cb")
 }
 
@@ -31652,7 +31556,7 @@ func (recv *Widget) DisconnectSelectionClearEvent(connectionID int) {
 }
 
 //export Widget_selectionClearEventHandler
-func Widget_selectionClearEventHandler() bool {
+func Widget_selectionClearEventHandler() C.boolean {
 	fmt.Println("cb")
 }
 
@@ -31742,7 +31646,7 @@ func (recv *Widget) DisconnectSelectionNotifyEvent(connectionID int) {
 }
 
 //export Widget_selectionNotifyEventHandler
-func Widget_selectionNotifyEventHandler() bool {
+func Widget_selectionNotifyEventHandler() C.boolean {
 	fmt.Println("cb")
 }
 
@@ -31832,7 +31736,7 @@ func (recv *Widget) DisconnectSelectionRequestEvent(connectionID int) {
 }
 
 //export Widget_selectionRequestEventHandler
-func Widget_selectionRequestEventHandler() bool {
+func Widget_selectionRequestEventHandler() C.boolean {
 	fmt.Println("cb")
 }
 
@@ -31922,11 +31826,11 @@ func (recv *Widget) DisconnectShowHelp(connectionID int) {
 }
 
 //export Widget_showHelpHandler
-func Widget_showHelpHandler() bool {
+func Widget_showHelpHandler() C.boolean {
 	fmt.Println("cb")
 }
 
-// Unsupported signal : unsupported parameter allocation : Blacklisted record : GdkRectangle
+// Unsupported signal 'size-allocate' for Widget : unsupported parameter allocation : Blacklisted record : GdkRectangle
 
 var signalWidgetStateChangedId int
 var signalWidgetStateChangedMap = make(map[int]WidgetSignalStateChangedCallback)
@@ -32018,7 +31922,7 @@ func Widget_styleSetHandler() {
 	fmt.Println("cb")
 }
 
-// Unsupported signal : unsupported parameter object : no type generator for Gdk.Event,
+// Unsupported signal 'touch-event' for Widget : unsupported parameter object : no type generator for Gdk.Event,
 
 var signalWidgetUnmapId int
 var signalWidgetUnmapMap = make(map[int]WidgetSignalUnmapCallback)
@@ -32106,7 +32010,7 @@ func (recv *Widget) DisconnectUnmapEvent(connectionID int) {
 }
 
 //export Widget_unmapEventHandler
-func Widget_unmapEventHandler() bool {
+func Widget_unmapEventHandler() C.boolean {
 	fmt.Println("cb")
 }
 
@@ -32196,7 +32100,7 @@ func (recv *Widget) DisconnectVisibilityNotifyEvent(connectionID int) {
 }
 
 //export Widget_visibilityNotifyEventHandler
-func Widget_visibilityNotifyEventHandler() bool {
+func Widget_visibilityNotifyEventHandler() C.boolean {
 	fmt.Println("cb")
 }
 
@@ -32241,7 +32145,7 @@ func (recv *Widget) DisconnectWindowStateEvent(connectionID int) {
 }
 
 //export Widget_windowStateEventHandler
-func Widget_windowStateEventHandler() bool {
+func Widget_windowStateEventHandler() C.boolean {
 	fmt.Println("cb")
 }
 
@@ -33532,7 +33436,7 @@ func (recv *Window) DisconnectEnableDebugging(connectionID int) {
 }
 
 //export Window_enableDebuggingHandler
-func Window_enableDebuggingHandler() bool {
+func Window_enableDebuggingHandler() C.boolean {
 	fmt.Println("cb")
 }
 

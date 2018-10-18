@@ -23,6 +23,10 @@ func (t *TypeGeneratorIgnore) isSupportedAsReturnValue() (supported bool, reason
 	return true, ""
 }
 
+func (t *TypeGeneratorIgnore) isSupportedAsReturnCValue() (supported bool, reason string) {
+	return false, ""
+}
+
 func (t *TypeGeneratorIgnore) generateDeclaration(g *jen.Group, goVarName string) {
 }
 
@@ -39,6 +43,9 @@ func (t *TypeGeneratorIgnore) generateParamOutCVar(g *jen.Group, cVarName string
 }
 
 func (t *TypeGeneratorIgnore) generateReturnFunctionDeclaration(g *jen.Group) {
+}
+
+func (t *TypeGeneratorIgnore) generateReturnFunctionDeclarationCtype(g *jen.Group) {
 }
 
 func (t *TypeGeneratorIgnore) generateReturnCToGo(g *jen.Group, isParam bool,

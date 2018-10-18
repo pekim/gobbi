@@ -541,6 +541,10 @@ func (recv *Visual) GetScreen() *Screen {
 	return retGo
 }
 
+// Unsupported signal 'create-surface' for Window : return value cairo.Surface :
+
+// Unsupported signal 'pick-embedded-child' for Window : return value Window :
+
 // Fullscreen is a wrapper around the C function gdk_window_fullscreen.
 func (recv *Window) Fullscreen() {
 	C.gdk_window_fullscreen((*C.GdkWindow)(recv.native))

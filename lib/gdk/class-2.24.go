@@ -18,6 +18,10 @@ func (recv *Device) GetNKeys() int32 {
 	return retGo
 }
 
+// Unsupported signal 'create-surface' for Window : return value cairo.Surface :
+
+// Unsupported signal 'pick-embedded-child' for Window : return value Window :
+
 // GetDisplay is a wrapper around the C function gdk_window_get_display.
 func (recv *Window) GetDisplay() *Display {
 	retC := C.gdk_window_get_display((*C.GdkWindow)(recv.native))

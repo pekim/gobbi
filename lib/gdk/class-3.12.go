@@ -18,6 +18,10 @@ func (recv *Device) GetLastEventWindow() *Window {
 	return retGo
 }
 
+// Unsupported signal 'create-surface' for Window : return value cairo.Surface :
+
+// Unsupported signal 'pick-embedded-child' for Window : return value Window :
+
 // GetEventCompression is a wrapper around the C function gdk_window_get_event_compression.
 func (recv *Window) GetEventCompression() bool {
 	retC := C.gdk_window_get_event_compression((*C.GdkWindow)(recv.native))

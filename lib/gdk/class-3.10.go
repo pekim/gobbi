@@ -58,6 +58,10 @@ func (recv *Screen) GetMonitorScaleFactor(monitorNum int32) int32 {
 	return retGo
 }
 
+// Unsupported signal 'create-surface' for Window : return value cairo.Surface :
+
+// Unsupported signal 'pick-embedded-child' for Window : return value Window :
+
 // Unsupported : gdk_window_create_similar_image_surface : unsupported parameter format : no type generator for gint, cairo_format_t
 
 // GetChildrenWithUserData is a wrapper around the C function gdk_window_get_children_with_user_data.

@@ -112,15 +112,6 @@ import (
 */
 /*
 
-	void PrintOperation_createCustomWidgetHandler();
-
-	static gulong PrintOperation_signal_connect_create_custom_widget(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "create-custom-widget", PrintOperation_createCustomWidgetHandler, data);
-	}
-
-*/
-/*
-
 	void PrintOperation_customWidgetApplyHandler();
 
 	static gulong PrintOperation_signal_connect_custom_widget_apply(gpointer instance, gpointer data) {
@@ -222,11 +213,11 @@ import "C"
 
 // Unsupported : gtk_app_chooser_dialog_new : unsupported parameter file : no type generator for Gio.File, GFile*
 
-// Unsupported signal : unsupported parameter application : no type generator for Gio.AppInfo,
+// Unsupported signal 'application-activated' for AppChooserWidget : unsupported parameter application : no type generator for Gio.AppInfo,
 
-// Unsupported signal : unsupported parameter application : no type generator for Gio.AppInfo,
+// Unsupported signal 'application-selected' for AppChooserWidget : unsupported parameter application : no type generator for Gio.AppInfo,
 
-// Unsupported signal : unsupported parameter application : no type generator for Gio.AppInfo,
+// Unsupported signal 'populate-popup' for AppChooserWidget : unsupported parameter application : no type generator for Gio.AppInfo,
 
 var signalAssistantApplyId int
 var signalAssistantApplyMap = make(map[int]AssistantSignalApplyCallback)
@@ -636,13 +627,13 @@ func (recv *Button) SetImagePosition(position PositionType) {
 	return
 }
 
-// Unsupported signal : unsupported parameter editable : no type generator for CellEditable,
+// Unsupported signal 'add-editable' for CellArea : unsupported parameter editable : no type generator for CellEditable,
 
-// Unsupported signal : unsupported parameter model : no type generator for TreeModel,
+// Unsupported signal 'apply-attributes' for CellArea : unsupported parameter model : no type generator for TreeModel,
 
-// Unsupported signal : unsupported parameter editable : no type generator for CellEditable,
+// Unsupported signal 'remove-editable' for CellArea : unsupported parameter editable : no type generator for CellEditable,
 
-// Unsupported signal : unsupported parameter editable : no type generator for CellEditable,
+// Unsupported signal 'editing-started' for CellRenderer : unsupported parameter editable : no type generator for CellEditable,
 
 var signalCellRendererAccelAccelClearedId int
 var signalCellRendererAccelAccelClearedMap = make(map[int]CellRendererAccelSignalAccelClearedCallback)
@@ -764,6 +755,8 @@ func (recv *Clipboard) WaitIsRichTextAvailable(buffer *TextBuffer) bool {
 	return retGo
 }
 
+// Unsupported signal 'format-entry-text' for ComboBox : return value utf8 :
+
 // Unsupported : gtk_combo_box_new_with_model : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
 
 // Unsupported : gtk_combo_box_new_with_model_and_entry : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
@@ -805,9 +798,9 @@ func (recv *Entry) SetInnerBorder(border *Border) {
 	return
 }
 
-// Unsupported signal : unsupported parameter model : no type generator for TreeModel,
+// Unsupported signal 'cursor-on-match' for EntryCompletion : unsupported parameter model : no type generator for TreeModel,
 
-// Unsupported signal : unsupported parameter model : no type generator for TreeModel,
+// Unsupported signal 'match-selected' for EntryCompletion : unsupported parameter model : no type generator for TreeModel,
 
 // Unsupported : EntryIconAccessible : no CType
 
@@ -921,6 +914,8 @@ func (recv *MessageDialog) SetImage(image *Widget) {
 
 	return
 }
+
+// Unsupported signal 'create-window' for Notebook : return value Notebook :
 
 var signalNotebookPageAddedId int
 var signalNotebookPageAddedMap = make(map[int]NotebookSignalPageAddedCallback)
@@ -1101,7 +1096,7 @@ func (recv *Notebook) SetTabReorderable(child *Widget, reorderable bool) {
 	return
 }
 
-// Unsupported signal : unsupported parameter allocation : Blacklisted record : GdkRectangle
+// Unsupported signal 'get-child-position' for Overlay : unsupported parameter allocation : Blacklisted record : GdkRectangle
 
 // PageSetupNew is a wrapper around the C function gtk_page_setup_new.
 func PageSetupNew() *PageSetup {
@@ -1288,13 +1283,15 @@ func (recv *PageSetup) SetTopMargin(margin float64, unit Unit) {
 	return
 }
 
-// Unsupported signal : unsupported parameter dest_file : no type generator for Gio.File,
+// Unsupported signal 'drag-action-ask' for PlacesSidebar : return value gint :
 
-// Unsupported signal : unsupported parameter dest_file : no type generator for Gio.File,
+// Unsupported signal 'drag-action-requested' for PlacesSidebar : unsupported parameter dest_file : no type generator for Gio.File,
 
-// Unsupported signal : unsupported parameter location : no type generator for Gio.File,
+// Unsupported signal 'drag-perform-drop' for PlacesSidebar : unsupported parameter dest_file : no type generator for Gio.File,
 
-// Unsupported signal : unsupported parameter selected_item : no type generator for Gio.File,
+// Unsupported signal 'open-location' for PlacesSidebar : unsupported parameter location : no type generator for Gio.File,
+
+// Unsupported signal 'populate-popup' for PlacesSidebar : unsupported parameter selected_item : no type generator for Gio.File,
 
 // CreatePangoContext is a wrapper around the C function gtk_print_context_create_pango_context.
 func (recv *PrintContext) CreatePangoContext() *pango.Context {
@@ -1426,50 +1423,7 @@ func PrintOperation_beginPrintHandler() {
 	fmt.Println("cb")
 }
 
-var signalPrintOperationCreateCustomWidgetId int
-var signalPrintOperationCreateCustomWidgetMap = make(map[int]PrintOperationSignalCreateCustomWidgetCallback)
-var signalPrintOperationCreateCustomWidgetLock sync.Mutex
-
-// PrintOperationSignalCreateCustomWidgetCallback is a callback function for a 'create-custom-widget' signal emitted from a PrintOperation.
-type PrintOperationSignalCreateCustomWidgetCallback func() gobject.Object
-
-/*
-ConnectCreateCustomWidget connects the callback to the 'create-custom-widget' signal for the PrintOperation.
-
-The returned value represents the connection, and may be passed to DisconnectCreateCustomWidget to remove it.
-*/
-func (recv *PrintOperation) ConnectCreateCustomWidget(callback PrintOperationSignalCreateCustomWidgetCallback) int {
-	signalPrintOperationCreateCustomWidgetLock.Lock()
-	defer signalPrintOperationCreateCustomWidgetLock.Unlock()
-
-	signalPrintOperationCreateCustomWidgetId++
-	signalPrintOperationCreateCustomWidgetMap[signalPrintOperationCreateCustomWidgetId] = callback
-
-	instance := C.gpointer(recv.Object().ToC())
-	retC := C.PrintOperation_signal_connect_create_custom_widget(instance, C.gpointer(uintptr(signalPrintOperationCreateCustomWidgetId)))
-	return int(retC)
-}
-
-/*
-DisconnectCreateCustomWidget disconnects a callback from the 'create-custom-widget' signal for the PrintOperation.
-
-The connectionID should be a value returned from a call to ConnectCreateCustomWidget.
-*/
-func (recv *PrintOperation) DisconnectCreateCustomWidget(connectionID int) {
-	_, exists := signalPrintOperationCreateCustomWidgetMap[connectionID]
-	if !exists {
-		return
-	}
-
-	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
-	delete(signalPrintOperationCreateCustomWidgetMap, connectionID)
-}
-
-//export PrintOperation_createCustomWidgetHandler
-func PrintOperation_createCustomWidgetHandler() gobject.Object {
-	fmt.Println("cb")
-}
+// Unsupported signal 'create-custom-widget' for PrintOperation : return value GObject.Object :
 
 var signalPrintOperationCustomWidgetApplyId int
 var signalPrintOperationCustomWidgetApplyMap = make(map[int]PrintOperationSignalCustomWidgetApplyCallback)
@@ -1692,11 +1646,11 @@ func (recv *PrintOperation) DisconnectPaginate(connectionID int) {
 }
 
 //export PrintOperation_paginateHandler
-func PrintOperation_paginateHandler() bool {
+func PrintOperation_paginateHandler() C.boolean {
 	fmt.Println("cb")
 }
 
-// Unsupported signal : unsupported parameter preview : no type generator for PrintOperationPreview,
+// Unsupported signal 'preview' for PrintOperation : unsupported parameter preview : no type generator for PrintOperationPreview,
 
 var signalPrintOperationRequestPageSetupId int
 var signalPrintOperationRequestPageSetupMap = make(map[int]PrintOperationSignalRequestPageSetupCallback)
@@ -2917,6 +2871,8 @@ func (recv *RecentManager) RemoveItem(uri string) (bool, error) {
 	return retGo, goThrowableError
 }
 
+// Unsupported signal 'format-value' for Scale : return value utf8 :
+
 // Unsupported : gtk_scale_button_new : unsupported parameter size : no type generator for gint, GtkIconSize
 
 // UnsetPlacement is a wrapper around the C function gtk_scrolled_window_unset_placement.
@@ -2933,6 +2889,8 @@ func (recv *SizeGroup) GetWidgets() *glib.SList {
 
 	return retGo
 }
+
+// Unsupported signal 'input' for SpinButton : return value gint :
 
 var signalSpinButtonWrappedId int
 var signalSpinButtonWrappedMap = make(map[int]SpinButtonSignalWrappedCallback)
@@ -3110,7 +3068,7 @@ func (recv *StatusIcon) DisconnectSizeChanged(connectionID int) {
 }
 
 //export StatusIcon_sizeChangedHandler
-func StatusIcon_sizeChangedHandler() bool {
+func StatusIcon_sizeChangedHandler() C.boolean {
 	fmt.Println("cb")
 }
 
@@ -3337,7 +3295,7 @@ func (recv *TextBuffer) GetPasteTargetList() *TargetList {
 
 // Unsupported : gtk_text_buffer_unregister_serialize_format : unsupported parameter format : Blacklisted record : GdkAtom
 
-// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
+// Unsupported signal 'event' for TextTag : unsupported parameter event : no type generator for Gdk.Event,
 
 // Unsupported : gtk_tree_store_new : unsupported parameter ... : varargs
 
@@ -3433,19 +3391,19 @@ func (recv *TreeView) SetSearchEntry(entry *Entry) {
 
 // Unsupported : gtk_tree_view_column_new_with_attributes : unsupported parameter ... : varargs
 
-// Unsupported signal : unsupported parameter child_property : Blacklisted record : GParamSpec
+// Unsupported signal 'child-notify' for Widget : unsupported parameter child_property : Blacklisted record : GParamSpec
 
-// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
+// Unsupported signal 'delete-event' for Widget : unsupported parameter event : no type generator for Gdk.Event,
 
-// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
+// Unsupported signal 'destroy-event' for Widget : unsupported parameter event : no type generator for Gdk.Event,
 
-// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
+// Unsupported signal 'event' for Widget : unsupported parameter event : no type generator for Gdk.Event,
 
-// Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
+// Unsupported signal 'event-after' for Widget : unsupported parameter event : no type generator for Gdk.Event,
 
-// Unsupported signal : unsupported parameter allocation : Blacklisted record : GdkRectangle
+// Unsupported signal 'size-allocate' for Widget : unsupported parameter allocation : Blacklisted record : GdkRectangle
 
-// Unsupported signal : unsupported parameter object : no type generator for Gdk.Event,
+// Unsupported signal 'touch-event' for Widget : unsupported parameter object : no type generator for Gdk.Event,
 
 // Unsupported : gtk_widget_new : unsupported parameter type : no type generator for GType, GType
 

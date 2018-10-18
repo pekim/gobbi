@@ -149,7 +149,7 @@ func CastToAppLaunchContext(object *gobject.Object) *AppLaunchContext {
 	return AppLaunchContextNewFromC(object.ToC())
 }
 
-// Unsupported signal : unsupported parameter info : no type generator for AppInfo,
+// Unsupported signal 'launched' for AppLaunchContext : unsupported parameter info : no type generator for AppInfo,
 
 // AppLaunchContextNew is a wrapper around the C function g_app_launch_context_new.
 func AppLaunchContextNew() *AppLaunchContext {
@@ -2262,7 +2262,7 @@ func CastToFileMonitor(object *gobject.Object) *FileMonitor {
 	return FileMonitorNewFromC(object.ToC())
 }
 
-// Unsupported signal : unsupported parameter file : no type generator for File,
+// Unsupported signal 'changed' for FileMonitor : unsupported parameter file : no type generator for File,
 
 // Cancel is a wrapper around the C function g_file_monitor_cancel.
 func (recv *FileMonitor) Cancel() bool {
@@ -3098,7 +3098,7 @@ func MountOperation_askPasswordHandler() {
 	fmt.Println("cb")
 }
 
-// Unsupported signal : unsupported parameter choices : no param type
+// Unsupported signal 'ask-question' for MountOperation : unsupported parameter choices : no param type
 
 var signalMountOperationReplyId int
 var signalMountOperationReplyMap = make(map[int]MountOperationSignalReplyCallback)
@@ -3145,7 +3145,7 @@ func MountOperation_replyHandler() {
 	fmt.Println("cb")
 }
 
-// Unsupported signal : unsupported parameter processes : no param type
+// Unsupported signal 'show-processes' for MountOperation : unsupported parameter processes : no param type
 
 // MountOperationNew is a wrapper around the C function g_mount_operation_new.
 func MountOperationNew() *MountOperation {
@@ -3715,7 +3715,7 @@ func CastToSettings(object *gobject.Object) *Settings {
 	return SettingsNewFromC(object.ToC())
 }
 
-// Unsupported signal : unsupported parameter keys : no param type
+// Unsupported signal 'change-event' for Settings : unsupported parameter keys : no param type
 
 var signalSettingsChangedId int
 var signalSettingsChangedMap = make(map[int]SettingsSignalChangedCallback)
@@ -3803,7 +3803,7 @@ func (recv *Settings) DisconnectWritableChangeEvent(connectionID int) {
 }
 
 //export Settings_writableChangeEventHandler
-func Settings_writableChangeEventHandler() bool {
+func Settings_writableChangeEventHandler() C.boolean {
 	fmt.Println("cb")
 }
 
@@ -3974,9 +3974,9 @@ func CastToSimpleAction(object *gobject.Object) *SimpleAction {
 	return SimpleActionNewFromC(object.ToC())
 }
 
-// Unsupported signal : unsupported parameter parameter : Blacklisted record : GVariant
+// Unsupported signal 'activate' for SimpleAction : unsupported parameter parameter : Blacklisted record : GVariant
 
-// Unsupported signal : unsupported parameter value : Blacklisted record : GVariant
+// Unsupported signal 'change-state' for SimpleAction : unsupported parameter value : Blacklisted record : GVariant
 
 // Unsupported : g_simple_action_new : unsupported parameter parameter_type : Blacklisted record : GVariantType
 
@@ -4959,29 +4959,29 @@ func CastToVolumeMonitor(object *gobject.Object) *VolumeMonitor {
 	return VolumeMonitorNewFromC(object.ToC())
 }
 
-// Unsupported signal : unsupported parameter drive : no type generator for Drive,
+// Unsupported signal 'drive-changed' for VolumeMonitor : unsupported parameter drive : no type generator for Drive,
 
-// Unsupported signal : unsupported parameter drive : no type generator for Drive,
+// Unsupported signal 'drive-connected' for VolumeMonitor : unsupported parameter drive : no type generator for Drive,
 
-// Unsupported signal : unsupported parameter drive : no type generator for Drive,
+// Unsupported signal 'drive-disconnected' for VolumeMonitor : unsupported parameter drive : no type generator for Drive,
 
-// Unsupported signal : unsupported parameter drive : no type generator for Drive,
+// Unsupported signal 'drive-eject-button' for VolumeMonitor : unsupported parameter drive : no type generator for Drive,
 
-// Unsupported signal : unsupported parameter drive : no type generator for Drive,
+// Unsupported signal 'drive-stop-button' for VolumeMonitor : unsupported parameter drive : no type generator for Drive,
 
-// Unsupported signal : unsupported parameter mount : no type generator for Mount,
+// Unsupported signal 'mount-added' for VolumeMonitor : unsupported parameter mount : no type generator for Mount,
 
-// Unsupported signal : unsupported parameter mount : no type generator for Mount,
+// Unsupported signal 'mount-changed' for VolumeMonitor : unsupported parameter mount : no type generator for Mount,
 
-// Unsupported signal : unsupported parameter mount : no type generator for Mount,
+// Unsupported signal 'mount-pre-unmount' for VolumeMonitor : unsupported parameter mount : no type generator for Mount,
 
-// Unsupported signal : unsupported parameter mount : no type generator for Mount,
+// Unsupported signal 'mount-removed' for VolumeMonitor : unsupported parameter mount : no type generator for Mount,
 
-// Unsupported signal : unsupported parameter volume : no type generator for Volume,
+// Unsupported signal 'volume-added' for VolumeMonitor : unsupported parameter volume : no type generator for Volume,
 
-// Unsupported signal : unsupported parameter volume : no type generator for Volume,
+// Unsupported signal 'volume-changed' for VolumeMonitor : unsupported parameter volume : no type generator for Volume,
 
-// Unsupported signal : unsupported parameter volume : no type generator for Volume,
+// Unsupported signal 'volume-removed' for VolumeMonitor : unsupported parameter volume : no type generator for Volume,
 
 // GetConnectedDrives is a wrapper around the C function g_volume_monitor_get_connected_drives.
 func (recv *VolumeMonitor) GetConnectedDrives() *glib.List {

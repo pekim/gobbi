@@ -26,6 +26,10 @@ func (t *TypeGeneratorBoolean) isSupportedAsReturnValue() (supported bool, reaso
 	return true, ""
 }
 
+func (t *TypeGeneratorBoolean) isSupportedAsReturnCValue() (supported bool, reason string) {
+	return true, ""
+}
+
 func (t *TypeGeneratorBoolean) generateDeclaration(g *jen.Group, goVarName string) {
 	g.
 		Id(goVarName).
@@ -56,6 +60,10 @@ func (t *TypeGeneratorBoolean) generateParamOutCVar(g *jen.Group, cVarName strin
 
 func (t *TypeGeneratorBoolean) generateReturnFunctionDeclaration(g *jen.Group) {
 	g.Id("bool")
+}
+
+func (t *TypeGeneratorBoolean) generateReturnFunctionDeclarationCtype(g *jen.Group) {
+	g.Qual("C", "boolean")
 }
 
 func (t *TypeGeneratorBoolean) generateReturnCToGo(g *jen.Group, isParam bool,

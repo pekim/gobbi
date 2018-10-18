@@ -8,4 +8,8 @@ package gdk
 // #include <stdlib.h>
 import "C"
 
+// Unsupported signal 'create-surface' for Window : return value cairo.Surface :
+
+// Unsupported signal 'pick-embedded-child' for Window : return value Window :
+
 // Unsupported : gdk_window_show_window_menu : unsupported parameter event : no type generator for Event, GdkEvent*

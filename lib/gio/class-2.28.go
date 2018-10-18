@@ -35,15 +35,6 @@ import (
 */
 /*
 
-	void Application_commandLineHandler();
-
-	static gulong Application_signal_connect_command_line(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "command-line", Application_commandLineHandler, data);
-	}
-
-*/
-/*
-
 	void Application_shutdownHandler();
 
 	static gulong Application_signal_connect_shutdown(gpointer instance, gpointer data) {
@@ -62,7 +53,7 @@ import (
 */
 import "C"
 
-// Unsupported signal : unsupported parameter info : no type generator for AppInfo,
+// Unsupported signal 'launched' for AppLaunchContext : unsupported parameter info : no type generator for AppInfo,
 
 // Application is a wrapper around the C record GApplication.
 type Application struct {
@@ -143,52 +134,11 @@ func Application_activateHandler() {
 	fmt.Println("cb")
 }
 
-var signalApplicationCommandLineId int
-var signalApplicationCommandLineMap = make(map[int]ApplicationSignalCommandLineCallback)
-var signalApplicationCommandLineLock sync.Mutex
+// Unsupported signal 'command-line' for Application : return value gint :
 
-// ApplicationSignalCommandLineCallback is a callback function for a 'command-line' signal emitted from a Application.
-type ApplicationSignalCommandLineCallback func(commandLine *ApplicationCommandLine) int32
+// Unsupported signal 'handle-local-options' for Application : return value gint :
 
-/*
-ConnectCommandLine connects the callback to the 'command-line' signal for the Application.
-
-The returned value represents the connection, and may be passed to DisconnectCommandLine to remove it.
-*/
-func (recv *Application) ConnectCommandLine(callback ApplicationSignalCommandLineCallback) int {
-	signalApplicationCommandLineLock.Lock()
-	defer signalApplicationCommandLineLock.Unlock()
-
-	signalApplicationCommandLineId++
-	signalApplicationCommandLineMap[signalApplicationCommandLineId] = callback
-
-	instance := C.gpointer(recv.Object().ToC())
-	retC := C.Application_signal_connect_command_line(instance, C.gpointer(uintptr(signalApplicationCommandLineId)))
-	return int(retC)
-}
-
-/*
-DisconnectCommandLine disconnects a callback from the 'command-line' signal for the Application.
-
-The connectionID should be a value returned from a call to ConnectCommandLine.
-*/
-func (recv *Application) DisconnectCommandLine(connectionID int) {
-	_, exists := signalApplicationCommandLineMap[connectionID]
-	if !exists {
-		return
-	}
-
-	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
-	delete(signalApplicationCommandLineMap, connectionID)
-}
-
-//export Application_commandLineHandler
-func Application_commandLineHandler() int32 {
-	fmt.Println("cb")
-}
-
-// Unsupported signal : unsupported parameter files : no param type
+// Unsupported signal 'open' for Application : unsupported parameter files : no param type
 
 var signalApplicationShutdownId int
 var signalApplicationShutdownMap = make(map[int]ApplicationSignalShutdownCallback)
@@ -485,9 +435,9 @@ func (recv *Cancellable) SourceNew() *glib.Source {
 
 // Unsupported : g_dbus_message_new_from_blob : unsupported parameter blob : no param type
 
-// Unsupported signal : unsupported parameter changed_properties : Blacklisted record : GVariant
+// Unsupported signal 'g-properties-changed' for DBusProxy : unsupported parameter changed_properties : Blacklisted record : GVariant
 
-// Unsupported signal : unsupported parameter parameters : Blacklisted record : GVariant
+// Unsupported signal 'g-signal' for DBusProxy : unsupported parameter parameters : Blacklisted record : GVariant
 
 // Unsupported : g_dbus_proxy_new_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
 
@@ -508,7 +458,7 @@ func (recv *EmblemedIcon) ClearEmblems() {
 
 // Unsupported : g_file_icon_new : unsupported parameter file : no type generator for File, GFile*
 
-// Unsupported signal : unsupported parameter file : no type generator for File,
+// Unsupported signal 'changed' for FileMonitor : unsupported parameter file : no type generator for File,
 
 // Unsupported : g_io_stream_splice_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
 
@@ -520,19 +470,19 @@ func (recv *EmblemedIcon) ClearEmblems() {
 
 // Unsupported : g_memory_output_stream_new : unsupported parameter realloc_function : no type generator for ReallocFunc, GReallocFunc
 
-// Unsupported signal : unsupported parameter choices : no param type
+// Unsupported signal 'ask-question' for MountOperation : unsupported parameter choices : no param type
 
-// Unsupported signal : unsupported parameter processes : no param type
+// Unsupported signal 'show-processes' for MountOperation : unsupported parameter processes : no param type
 
-// Unsupported signal : unsupported parameter keys : no param type
+// Unsupported signal 'change-event' for Settings : unsupported parameter keys : no param type
 
 // Unsupported : g_settings_get_range : return type : Blacklisted record : GVariant
 
 // Unsupported : g_settings_range_check : unsupported parameter value : Blacklisted record : GVariant
 
-// Unsupported signal : unsupported parameter parameter : Blacklisted record : GVariant
+// Unsupported signal 'activate' for SimpleAction : unsupported parameter parameter : Blacklisted record : GVariant
 
-// Unsupported signal : unsupported parameter value : Blacklisted record : GVariant
+// Unsupported signal 'change-state' for SimpleAction : unsupported parameter value : Blacklisted record : GVariant
 
 // Unsupported : g_simple_action_new : unsupported parameter parameter_type : Blacklisted record : GVariantType
 
@@ -621,7 +571,7 @@ func (recv *SimpleAsyncResult) TakeError(error *glib.Error) {
 	return
 }
 
-// Unsupported signal : unsupported parameter connectable : no type generator for SocketConnectable,
+// Unsupported signal 'event' for SocketClient : unsupported parameter connectable : no type generator for SocketConnectable,
 
 // GetTls is a wrapper around the C function g_socket_client_get_tls.
 func (recv *SocketClient) GetTls() bool {
@@ -941,26 +891,26 @@ func (recv *TlsConnection) SetUseSystemCertdb(useSystemCertdb bool) {
 
 // Unsupported : g_unix_socket_address_new_with_type : unsupported parameter path : no param type
 
-// Unsupported signal : unsupported parameter drive : no type generator for Drive,
+// Unsupported signal 'drive-changed' for VolumeMonitor : unsupported parameter drive : no type generator for Drive,
 
-// Unsupported signal : unsupported parameter drive : no type generator for Drive,
+// Unsupported signal 'drive-connected' for VolumeMonitor : unsupported parameter drive : no type generator for Drive,
 
-// Unsupported signal : unsupported parameter drive : no type generator for Drive,
+// Unsupported signal 'drive-disconnected' for VolumeMonitor : unsupported parameter drive : no type generator for Drive,
 
-// Unsupported signal : unsupported parameter drive : no type generator for Drive,
+// Unsupported signal 'drive-eject-button' for VolumeMonitor : unsupported parameter drive : no type generator for Drive,
 
-// Unsupported signal : unsupported parameter drive : no type generator for Drive,
+// Unsupported signal 'drive-stop-button' for VolumeMonitor : unsupported parameter drive : no type generator for Drive,
 
-// Unsupported signal : unsupported parameter mount : no type generator for Mount,
+// Unsupported signal 'mount-added' for VolumeMonitor : unsupported parameter mount : no type generator for Mount,
 
-// Unsupported signal : unsupported parameter mount : no type generator for Mount,
+// Unsupported signal 'mount-changed' for VolumeMonitor : unsupported parameter mount : no type generator for Mount,
 
-// Unsupported signal : unsupported parameter mount : no type generator for Mount,
+// Unsupported signal 'mount-pre-unmount' for VolumeMonitor : unsupported parameter mount : no type generator for Mount,
 
-// Unsupported signal : unsupported parameter mount : no type generator for Mount,
+// Unsupported signal 'mount-removed' for VolumeMonitor : unsupported parameter mount : no type generator for Mount,
 
-// Unsupported signal : unsupported parameter volume : no type generator for Volume,
+// Unsupported signal 'volume-added' for VolumeMonitor : unsupported parameter volume : no type generator for Volume,
 
-// Unsupported signal : unsupported parameter volume : no type generator for Volume,
+// Unsupported signal 'volume-changed' for VolumeMonitor : unsupported parameter volume : no type generator for Volume,
 
-// Unsupported signal : unsupported parameter volume : no type generator for Volume,
+// Unsupported signal 'volume-removed' for VolumeMonitor : unsupported parameter volume : no type generator for Volume,
