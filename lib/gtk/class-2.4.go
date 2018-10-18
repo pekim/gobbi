@@ -215,8 +215,18 @@ var signalAccelMapChangedLock sync.Mutex
 // AccelMapSignalChangedCallback is a callback function for a 'changed' signal emitted from a AccelMap.
 type AccelMapSignalChangedCallback func(accelPath string, accelKey uint32, accelMods gdk.ModifierType)
 
-func (recv *AccelMap) ConnectChanged() {}
+func (recv *AccelMap) ConnectChanged(callback AccelMapSignalChangedCallback) {
+	signalAccelMapChangedLock.Lock()
+	defer signalAccelMapChangedLock.Unlock()
 
+	signalAccelMapChangedId++
+	signalAccelMapChangedMap[signalAccelMapChangedId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.AccelMap_signal_connect_changed(instance, C.gpointer(uintptr(signalAccelMapChangedId)))
+}
+
+//export AccelMap_changedHandler
 func AccelMap_changedHandler() {}
 
 var signalActionActivateId int
@@ -226,8 +236,18 @@ var signalActionActivateLock sync.Mutex
 // ActionSignalActivateCallback is a callback function for a 'activate' signal emitted from a Action.
 type ActionSignalActivateCallback func()
 
-func (recv *Action) ConnectActivate() {}
+func (recv *Action) ConnectActivate(callback ActionSignalActivateCallback) {
+	signalActionActivateLock.Lock()
+	defer signalActionActivateLock.Unlock()
 
+	signalActionActivateId++
+	signalActionActivateMap[signalActionActivateId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.Action_signal_connect_activate(instance, C.gpointer(uintptr(signalActionActivateId)))
+}
+
+//export Action_activateHandler
 func Action_activateHandler() {}
 
 // ActionNew is a wrapper around the C function gtk_action_new.
@@ -363,8 +383,18 @@ var signalActionGroupConnectProxyLock sync.Mutex
 // ActionGroupSignalConnectProxyCallback is a callback function for a 'connect-proxy' signal emitted from a ActionGroup.
 type ActionGroupSignalConnectProxyCallback func(action *Action, proxy *Widget)
 
-func (recv *ActionGroup) ConnectConnectProxy() {}
+func (recv *ActionGroup) ConnectConnectProxy(callback ActionGroupSignalConnectProxyCallback) {
+	signalActionGroupConnectProxyLock.Lock()
+	defer signalActionGroupConnectProxyLock.Unlock()
 
+	signalActionGroupConnectProxyId++
+	signalActionGroupConnectProxyMap[signalActionGroupConnectProxyId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.ActionGroup_signal_connect_connect_proxy(instance, C.gpointer(uintptr(signalActionGroupConnectProxyId)))
+}
+
+//export ActionGroup_connectProxyHandler
 func ActionGroup_connectProxyHandler() {}
 
 var signalActionGroupDisconnectProxyId int
@@ -374,8 +404,18 @@ var signalActionGroupDisconnectProxyLock sync.Mutex
 // ActionGroupSignalDisconnectProxyCallback is a callback function for a 'disconnect-proxy' signal emitted from a ActionGroup.
 type ActionGroupSignalDisconnectProxyCallback func(action *Action, proxy *Widget)
 
-func (recv *ActionGroup) ConnectDisconnectProxy() {}
+func (recv *ActionGroup) ConnectDisconnectProxy(callback ActionGroupSignalDisconnectProxyCallback) {
+	signalActionGroupDisconnectProxyLock.Lock()
+	defer signalActionGroupDisconnectProxyLock.Unlock()
 
+	signalActionGroupDisconnectProxyId++
+	signalActionGroupDisconnectProxyMap[signalActionGroupDisconnectProxyId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.ActionGroup_signal_connect_disconnect_proxy(instance, C.gpointer(uintptr(signalActionGroupDisconnectProxyId)))
+}
+
+//export ActionGroup_disconnectProxyHandler
 func ActionGroup_disconnectProxyHandler() {}
 
 var signalActionGroupPostActivateId int
@@ -385,8 +425,18 @@ var signalActionGroupPostActivateLock sync.Mutex
 // ActionGroupSignalPostActivateCallback is a callback function for a 'post-activate' signal emitted from a ActionGroup.
 type ActionGroupSignalPostActivateCallback func(action *Action)
 
-func (recv *ActionGroup) ConnectPostActivate() {}
+func (recv *ActionGroup) ConnectPostActivate(callback ActionGroupSignalPostActivateCallback) {
+	signalActionGroupPostActivateLock.Lock()
+	defer signalActionGroupPostActivateLock.Unlock()
 
+	signalActionGroupPostActivateId++
+	signalActionGroupPostActivateMap[signalActionGroupPostActivateId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.ActionGroup_signal_connect_post_activate(instance, C.gpointer(uintptr(signalActionGroupPostActivateId)))
+}
+
+//export ActionGroup_postActivateHandler
 func ActionGroup_postActivateHandler() {}
 
 var signalActionGroupPreActivateId int
@@ -396,8 +446,18 @@ var signalActionGroupPreActivateLock sync.Mutex
 // ActionGroupSignalPreActivateCallback is a callback function for a 'pre-activate' signal emitted from a ActionGroup.
 type ActionGroupSignalPreActivateCallback func(action *Action)
 
-func (recv *ActionGroup) ConnectPreActivate() {}
+func (recv *ActionGroup) ConnectPreActivate(callback ActionGroupSignalPreActivateCallback) {
+	signalActionGroupPreActivateLock.Lock()
+	defer signalActionGroupPreActivateLock.Unlock()
 
+	signalActionGroupPreActivateId++
+	signalActionGroupPreActivateMap[signalActionGroupPreActivateId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.ActionGroup_signal_connect_pre_activate(instance, C.gpointer(uintptr(signalActionGroupPreActivateId)))
+}
+
+//export ActionGroup_preActivateHandler
 func ActionGroup_preActivateHandler() {}
 
 // ActionGroupNew is a wrapper around the C function gtk_action_group_new.
@@ -660,8 +720,18 @@ var signalCellRendererEditingCanceledLock sync.Mutex
 // CellRendererSignalEditingCanceledCallback is a callback function for a 'editing-canceled' signal emitted from a CellRenderer.
 type CellRendererSignalEditingCanceledCallback func()
 
-func (recv *CellRenderer) ConnectEditingCanceled() {}
+func (recv *CellRenderer) ConnectEditingCanceled(callback CellRendererSignalEditingCanceledCallback) {
+	signalCellRendererEditingCanceledLock.Lock()
+	defer signalCellRendererEditingCanceledLock.Unlock()
 
+	signalCellRendererEditingCanceledId++
+	signalCellRendererEditingCanceledMap[signalCellRendererEditingCanceledId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.CellRenderer_signal_connect_editing_canceled(instance, C.gpointer(uintptr(signalCellRendererEditingCanceledId)))
+}
+
+//export CellRenderer_editingCanceledHandler
 func CellRenderer_editingCanceledHandler() {}
 
 // Unsupported signal : unsupported parameter editable : no type generator for CellEditable,
@@ -695,8 +765,18 @@ var signalColorButtonColorSetLock sync.Mutex
 // ColorButtonSignalColorSetCallback is a callback function for a 'color-set' signal emitted from a ColorButton.
 type ColorButtonSignalColorSetCallback func()
 
-func (recv *ColorButton) ConnectColorSet() {}
+func (recv *ColorButton) ConnectColorSet(callback ColorButtonSignalColorSetCallback) {
+	signalColorButtonColorSetLock.Lock()
+	defer signalColorButtonColorSetLock.Unlock()
 
+	signalColorButtonColorSetId++
+	signalColorButtonColorSetMap[signalColorButtonColorSetId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.ColorButton_signal_connect_color_set(instance, C.gpointer(uintptr(signalColorButtonColorSetId)))
+}
+
+//export ColorButton_colorSetHandler
 func ColorButton_colorSetHandler() {}
 
 // ColorButtonNew is a wrapper around the C function gtk_color_button_new.
@@ -797,8 +877,18 @@ var signalComboBoxChangedLock sync.Mutex
 // ComboBoxSignalChangedCallback is a callback function for a 'changed' signal emitted from a ComboBox.
 type ComboBoxSignalChangedCallback func()
 
-func (recv *ComboBox) ConnectChanged() {}
+func (recv *ComboBox) ConnectChanged(callback ComboBoxSignalChangedCallback) {
+	signalComboBoxChangedLock.Lock()
+	defer signalComboBoxChangedLock.Unlock()
 
+	signalComboBoxChangedId++
+	signalComboBoxChangedMap[signalComboBoxChangedId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.ComboBox_signal_connect_changed(instance, C.gpointer(uintptr(signalComboBoxChangedId)))
+}
+
+//export ComboBox_changedHandler
 func ComboBox_changedHandler() {}
 
 // ComboBoxNew is a wrapper around the C function gtk_combo_box_new.
@@ -939,8 +1029,18 @@ var signalEntryCompletionActionActivatedLock sync.Mutex
 // EntryCompletionSignalActionActivatedCallback is a callback function for a 'action-activated' signal emitted from a EntryCompletion.
 type EntryCompletionSignalActionActivatedCallback func(index int32)
 
-func (recv *EntryCompletion) ConnectActionActivated() {}
+func (recv *EntryCompletion) ConnectActionActivated(callback EntryCompletionSignalActionActivatedCallback) {
+	signalEntryCompletionActionActivatedLock.Lock()
+	defer signalEntryCompletionActionActivatedLock.Unlock()
 
+	signalEntryCompletionActionActivatedId++
+	signalEntryCompletionActionActivatedMap[signalEntryCompletionActionActivatedId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.EntryCompletion_signal_connect_action_activated(instance, C.gpointer(uintptr(signalEntryCompletionActionActivatedId)))
+}
+
+//export EntryCompletion_actionActivatedHandler
 func EntryCompletion_actionActivatedHandler() {}
 
 // Unsupported signal : unsupported parameter model : no type generator for TreeModel,
@@ -1288,8 +1388,18 @@ var signalFontButtonFontSetLock sync.Mutex
 // FontButtonSignalFontSetCallback is a callback function for a 'font-set' signal emitted from a FontButton.
 type FontButtonSignalFontSetCallback func()
 
-func (recv *FontButton) ConnectFontSet() {}
+func (recv *FontButton) ConnectFontSet(callback FontButtonSignalFontSetCallback) {
+	signalFontButtonFontSetLock.Lock()
+	defer signalFontButtonFontSetLock.Unlock()
 
+	signalFontButtonFontSetId++
+	signalFontButtonFontSetMap[signalFontButtonFontSetId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.FontButton_signal_connect_font_set(instance, C.gpointer(uintptr(signalFontButtonFontSetId)))
+}
+
+//export FontButton_fontSetHandler
 func FontButton_fontSetHandler() {}
 
 // FontButtonNew is a wrapper around the C function gtk_font_button_new.
@@ -1725,8 +1835,18 @@ var signalRadioActionChangedLock sync.Mutex
 // RadioActionSignalChangedCallback is a callback function for a 'changed' signal emitted from a RadioAction.
 type RadioActionSignalChangedCallback func(current *RadioAction)
 
-func (recv *RadioAction) ConnectChanged() {}
+func (recv *RadioAction) ConnectChanged(callback RadioActionSignalChangedCallback) {
+	signalRadioActionChangedLock.Lock()
+	defer signalRadioActionChangedLock.Unlock()
 
+	signalRadioActionChangedId++
+	signalRadioActionChangedMap[signalRadioActionChangedId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.RadioAction_signal_connect_changed(instance, C.gpointer(uintptr(signalRadioActionChangedId)))
+}
+
+//export RadioAction_changedHandler
 func RadioAction_changedHandler() {}
 
 // RadioActionNew is a wrapper around the C function gtk_radio_action_new.
@@ -1783,8 +1903,18 @@ var signalRadioButtonGroupChangedLock sync.Mutex
 // RadioButtonSignalGroupChangedCallback is a callback function for a 'group-changed' signal emitted from a RadioButton.
 type RadioButtonSignalGroupChangedCallback func()
 
-func (recv *RadioButton) ConnectGroupChanged() {}
+func (recv *RadioButton) ConnectGroupChanged(callback RadioButtonSignalGroupChangedCallback) {
+	signalRadioButtonGroupChangedLock.Lock()
+	defer signalRadioButtonGroupChangedLock.Unlock()
 
+	signalRadioButtonGroupChangedId++
+	signalRadioButtonGroupChangedMap[signalRadioButtonGroupChangedId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.RadioButton_signal_connect_group_changed(instance, C.gpointer(uintptr(signalRadioButtonGroupChangedId)))
+}
+
+//export RadioButton_groupChangedHandler
 func RadioButton_groupChangedHandler() {}
 
 // RadioMenuItemNewFromWidget is a wrapper around the C function gtk_radio_menu_item_new_from_widget.
@@ -1950,8 +2080,18 @@ var signalStyleRealizeLock sync.Mutex
 // StyleSignalRealizeCallback is a callback function for a 'realize' signal emitted from a Style.
 type StyleSignalRealizeCallback func()
 
-func (recv *Style) ConnectRealize() {}
+func (recv *Style) ConnectRealize(callback StyleSignalRealizeCallback) {
+	signalStyleRealizeLock.Lock()
+	defer signalStyleRealizeLock.Unlock()
 
+	signalStyleRealizeId++
+	signalStyleRealizeMap[signalStyleRealizeId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.Style_signal_connect_realize(instance, C.gpointer(uintptr(signalStyleRealizeId)))
+}
+
+//export Style_realizeHandler
 func Style_realizeHandler() {}
 
 var signalStyleUnrealizeId int
@@ -1961,8 +2101,18 @@ var signalStyleUnrealizeLock sync.Mutex
 // StyleSignalUnrealizeCallback is a callback function for a 'unrealize' signal emitted from a Style.
 type StyleSignalUnrealizeCallback func()
 
-func (recv *Style) ConnectUnrealize() {}
+func (recv *Style) ConnectUnrealize(callback StyleSignalUnrealizeCallback) {
+	signalStyleUnrealizeLock.Lock()
+	defer signalStyleUnrealizeLock.Unlock()
 
+	signalStyleUnrealizeId++
+	signalStyleUnrealizeMap[signalStyleUnrealizeId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.Style_signal_connect_unrealize(instance, C.gpointer(uintptr(signalStyleUnrealizeId)))
+}
+
+//export Style_unrealizeHandler
 func Style_unrealizeHandler() {}
 
 // SelectRange is a wrapper around the C function gtk_text_buffer_select_range.
@@ -2596,8 +2746,18 @@ var signalUIManagerActionsChangedLock sync.Mutex
 // UIManagerSignalActionsChangedCallback is a callback function for a 'actions-changed' signal emitted from a UIManager.
 type UIManagerSignalActionsChangedCallback func()
 
-func (recv *UIManager) ConnectActionsChanged() {}
+func (recv *UIManager) ConnectActionsChanged(callback UIManagerSignalActionsChangedCallback) {
+	signalUIManagerActionsChangedLock.Lock()
+	defer signalUIManagerActionsChangedLock.Unlock()
 
+	signalUIManagerActionsChangedId++
+	signalUIManagerActionsChangedMap[signalUIManagerActionsChangedId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.UIManager_signal_connect_actions_changed(instance, C.gpointer(uintptr(signalUIManagerActionsChangedId)))
+}
+
+//export UIManager_actionsChangedHandler
 func UIManager_actionsChangedHandler() {}
 
 var signalUIManagerAddWidgetId int
@@ -2607,8 +2767,18 @@ var signalUIManagerAddWidgetLock sync.Mutex
 // UIManagerSignalAddWidgetCallback is a callback function for a 'add-widget' signal emitted from a UIManager.
 type UIManagerSignalAddWidgetCallback func(widget *Widget)
 
-func (recv *UIManager) ConnectAddWidget() {}
+func (recv *UIManager) ConnectAddWidget(callback UIManagerSignalAddWidgetCallback) {
+	signalUIManagerAddWidgetLock.Lock()
+	defer signalUIManagerAddWidgetLock.Unlock()
 
+	signalUIManagerAddWidgetId++
+	signalUIManagerAddWidgetMap[signalUIManagerAddWidgetId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.UIManager_signal_connect_add_widget(instance, C.gpointer(uintptr(signalUIManagerAddWidgetId)))
+}
+
+//export UIManager_addWidgetHandler
 func UIManager_addWidgetHandler() {}
 
 var signalUIManagerConnectProxyId int
@@ -2618,8 +2788,18 @@ var signalUIManagerConnectProxyLock sync.Mutex
 // UIManagerSignalConnectProxyCallback is a callback function for a 'connect-proxy' signal emitted from a UIManager.
 type UIManagerSignalConnectProxyCallback func(action *Action, proxy *Widget)
 
-func (recv *UIManager) ConnectConnectProxy() {}
+func (recv *UIManager) ConnectConnectProxy(callback UIManagerSignalConnectProxyCallback) {
+	signalUIManagerConnectProxyLock.Lock()
+	defer signalUIManagerConnectProxyLock.Unlock()
 
+	signalUIManagerConnectProxyId++
+	signalUIManagerConnectProxyMap[signalUIManagerConnectProxyId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.UIManager_signal_connect_connect_proxy(instance, C.gpointer(uintptr(signalUIManagerConnectProxyId)))
+}
+
+//export UIManager_connectProxyHandler
 func UIManager_connectProxyHandler() {}
 
 var signalUIManagerDisconnectProxyId int
@@ -2629,8 +2809,18 @@ var signalUIManagerDisconnectProxyLock sync.Mutex
 // UIManagerSignalDisconnectProxyCallback is a callback function for a 'disconnect-proxy' signal emitted from a UIManager.
 type UIManagerSignalDisconnectProxyCallback func(action *Action, proxy *Widget)
 
-func (recv *UIManager) ConnectDisconnectProxy() {}
+func (recv *UIManager) ConnectDisconnectProxy(callback UIManagerSignalDisconnectProxyCallback) {
+	signalUIManagerDisconnectProxyLock.Lock()
+	defer signalUIManagerDisconnectProxyLock.Unlock()
 
+	signalUIManagerDisconnectProxyId++
+	signalUIManagerDisconnectProxyMap[signalUIManagerDisconnectProxyId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.UIManager_signal_connect_disconnect_proxy(instance, C.gpointer(uintptr(signalUIManagerDisconnectProxyId)))
+}
+
+//export UIManager_disconnectProxyHandler
 func UIManager_disconnectProxyHandler() {}
 
 var signalUIManagerPostActivateId int
@@ -2640,8 +2830,18 @@ var signalUIManagerPostActivateLock sync.Mutex
 // UIManagerSignalPostActivateCallback is a callback function for a 'post-activate' signal emitted from a UIManager.
 type UIManagerSignalPostActivateCallback func(action *Action)
 
-func (recv *UIManager) ConnectPostActivate() {}
+func (recv *UIManager) ConnectPostActivate(callback UIManagerSignalPostActivateCallback) {
+	signalUIManagerPostActivateLock.Lock()
+	defer signalUIManagerPostActivateLock.Unlock()
 
+	signalUIManagerPostActivateId++
+	signalUIManagerPostActivateMap[signalUIManagerPostActivateId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.UIManager_signal_connect_post_activate(instance, C.gpointer(uintptr(signalUIManagerPostActivateId)))
+}
+
+//export UIManager_postActivateHandler
 func UIManager_postActivateHandler() {}
 
 var signalUIManagerPreActivateId int
@@ -2651,8 +2851,18 @@ var signalUIManagerPreActivateLock sync.Mutex
 // UIManagerSignalPreActivateCallback is a callback function for a 'pre-activate' signal emitted from a UIManager.
 type UIManagerSignalPreActivateCallback func(action *Action)
 
-func (recv *UIManager) ConnectPreActivate() {}
+func (recv *UIManager) ConnectPreActivate(callback UIManagerSignalPreActivateCallback) {
+	signalUIManagerPreActivateLock.Lock()
+	defer signalUIManagerPreActivateLock.Unlock()
 
+	signalUIManagerPreActivateId++
+	signalUIManagerPreActivateMap[signalUIManagerPreActivateId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.UIManager_signal_connect_pre_activate(instance, C.gpointer(uintptr(signalUIManagerPreActivateId)))
+}
+
+//export UIManager_preActivateHandler
 func UIManager_preActivateHandler() {}
 
 // UIManagerNew is a wrapper around the C function gtk_ui_manager_new.

@@ -1578,8 +1578,18 @@ var signalThreadedSocketServiceRunLock sync.Mutex
 // ThreadedSocketServiceSignalRunCallback is a callback function for a 'run' signal emitted from a ThreadedSocketService.
 type ThreadedSocketServiceSignalRunCallback func(connection *SocketConnection, sourceObject *gobject.Object) bool
 
-func (recv *ThreadedSocketService) ConnectRun() {}
+func (recv *ThreadedSocketService) ConnectRun(callback ThreadedSocketServiceSignalRunCallback) {
+	signalThreadedSocketServiceRunLock.Lock()
+	defer signalThreadedSocketServiceRunLock.Unlock()
 
+	signalThreadedSocketServiceRunId++
+	signalThreadedSocketServiceRunMap[signalThreadedSocketServiceRunId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.ThreadedSocketService_signal_connect_run(instance, C.gpointer(uintptr(signalThreadedSocketServiceRunId)))
+}
+
+//export ThreadedSocketService_runHandler
 func ThreadedSocketService_runHandler() {}
 
 // ThreadedSocketServiceNew is a wrapper around the C function g_threaded_socket_service_new.

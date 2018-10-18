@@ -239,8 +239,18 @@ var signalMountOperationShowUnmountProgressLock sync.Mutex
 // MountOperationSignalShowUnmountProgressCallback is a callback function for a 'show-unmount-progress' signal emitted from a MountOperation.
 type MountOperationSignalShowUnmountProgressCallback func(message string, timeLeft int64, bytesLeft int64)
 
-func (recv *MountOperation) ConnectShowUnmountProgress() {}
+func (recv *MountOperation) ConnectShowUnmountProgress(callback MountOperationSignalShowUnmountProgressCallback) {
+	signalMountOperationShowUnmountProgressLock.Lock()
+	defer signalMountOperationShowUnmountProgressLock.Unlock()
 
+	signalMountOperationShowUnmountProgressId++
+	signalMountOperationShowUnmountProgressMap[signalMountOperationShowUnmountProgressId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.MountOperation_signal_connect_show_unmount_progress(instance, C.gpointer(uintptr(signalMountOperationShowUnmountProgressId)))
+}
+
+//export MountOperation_showUnmountProgressHandler
 func MountOperation_showUnmountProgressHandler() {}
 
 // GetDestinationProtocol is a wrapper around the C function g_proxy_address_get_destination_protocol.

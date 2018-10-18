@@ -78,8 +78,18 @@ var signalDisplayClosedLock sync.Mutex
 // DisplaySignalClosedCallback is a callback function for a 'closed' signal emitted from a Display.
 type DisplaySignalClosedCallback func(isError bool)
 
-func (recv *Display) ConnectClosed() {}
+func (recv *Display) ConnectClosed(callback DisplaySignalClosedCallback) {
+	signalDisplayClosedLock.Lock()
+	defer signalDisplayClosedLock.Unlock()
 
+	signalDisplayClosedId++
+	signalDisplayClosedMap[signalDisplayClosedId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.Display_signal_connect_closed(instance, C.gpointer(uintptr(signalDisplayClosedId)))
+}
+
+//export Display_closedHandler
 func Display_closedHandler() {}
 
 // Beep is a wrapper around the C function gdk_display_beep.
@@ -211,8 +221,18 @@ var signalDisplayManagerDisplayOpenedLock sync.Mutex
 // DisplayManagerSignalDisplayOpenedCallback is a callback function for a 'display-opened' signal emitted from a DisplayManager.
 type DisplayManagerSignalDisplayOpenedCallback func(display *Display)
 
-func (recv *DisplayManager) ConnectDisplayOpened() {}
+func (recv *DisplayManager) ConnectDisplayOpened(callback DisplayManagerSignalDisplayOpenedCallback) {
+	signalDisplayManagerDisplayOpenedLock.Lock()
+	defer signalDisplayManagerDisplayOpenedLock.Unlock()
 
+	signalDisplayManagerDisplayOpenedId++
+	signalDisplayManagerDisplayOpenedMap[signalDisplayManagerDisplayOpenedId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.DisplayManager_signal_connect_display_opened(instance, C.gpointer(uintptr(signalDisplayManagerDisplayOpenedId)))
+}
+
+//export DisplayManager_displayOpenedHandler
 func DisplayManager_displayOpenedHandler() {}
 
 // GetDefaultDisplay is a wrapper around the C function gdk_display_manager_get_default_display.
@@ -247,8 +267,18 @@ var signalKeymapKeysChangedLock sync.Mutex
 // KeymapSignalKeysChangedCallback is a callback function for a 'keys-changed' signal emitted from a Keymap.
 type KeymapSignalKeysChangedCallback func()
 
-func (recv *Keymap) ConnectKeysChanged() {}
+func (recv *Keymap) ConnectKeysChanged(callback KeymapSignalKeysChangedCallback) {
+	signalKeymapKeysChangedLock.Lock()
+	defer signalKeymapKeysChangedLock.Unlock()
 
+	signalKeymapKeysChangedId++
+	signalKeymapKeysChangedMap[signalKeymapKeysChangedId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.Keymap_signal_connect_keys_changed(instance, C.gpointer(uintptr(signalKeymapKeysChangedId)))
+}
+
+//export Keymap_keysChangedHandler
 func Keymap_keysChangedHandler() {}
 
 var signalScreenSizeChangedId int
@@ -258,8 +288,18 @@ var signalScreenSizeChangedLock sync.Mutex
 // ScreenSignalSizeChangedCallback is a callback function for a 'size-changed' signal emitted from a Screen.
 type ScreenSignalSizeChangedCallback func()
 
-func (recv *Screen) ConnectSizeChanged() {}
+func (recv *Screen) ConnectSizeChanged(callback ScreenSignalSizeChangedCallback) {
+	signalScreenSizeChangedLock.Lock()
+	defer signalScreenSizeChangedLock.Unlock()
 
+	signalScreenSizeChangedId++
+	signalScreenSizeChangedMap[signalScreenSizeChangedId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.Screen_signal_connect_size_changed(instance, C.gpointer(uintptr(signalScreenSizeChangedId)))
+}
+
+//export Screen_sizeChangedHandler
 func Screen_sizeChangedHandler() {}
 
 // GetDisplay is a wrapper around the C function gdk_screen_get_display.

@@ -474,8 +474,18 @@ var signalScrolledWindowEdgeOvershotLock sync.Mutex
 // ScrolledWindowSignalEdgeOvershotCallback is a callback function for a 'edge-overshot' signal emitted from a ScrolledWindow.
 type ScrolledWindowSignalEdgeOvershotCallback func(pos PositionType)
 
-func (recv *ScrolledWindow) ConnectEdgeOvershot() {}
+func (recv *ScrolledWindow) ConnectEdgeOvershot(callback ScrolledWindowSignalEdgeOvershotCallback) {
+	signalScrolledWindowEdgeOvershotLock.Lock()
+	defer signalScrolledWindowEdgeOvershotLock.Unlock()
 
+	signalScrolledWindowEdgeOvershotId++
+	signalScrolledWindowEdgeOvershotMap[signalScrolledWindowEdgeOvershotId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.ScrolledWindow_signal_connect_edge_overshot(instance, C.gpointer(uintptr(signalScrolledWindowEdgeOvershotId)))
+}
+
+//export ScrolledWindow_edgeOvershotHandler
 func ScrolledWindow_edgeOvershotHandler() {}
 
 var signalScrolledWindowEdgeReachedId int
@@ -485,8 +495,18 @@ var signalScrolledWindowEdgeReachedLock sync.Mutex
 // ScrolledWindowSignalEdgeReachedCallback is a callback function for a 'edge-reached' signal emitted from a ScrolledWindow.
 type ScrolledWindowSignalEdgeReachedCallback func(pos PositionType)
 
-func (recv *ScrolledWindow) ConnectEdgeReached() {}
+func (recv *ScrolledWindow) ConnectEdgeReached(callback ScrolledWindowSignalEdgeReachedCallback) {
+	signalScrolledWindowEdgeReachedLock.Lock()
+	defer signalScrolledWindowEdgeReachedLock.Unlock()
 
+	signalScrolledWindowEdgeReachedId++
+	signalScrolledWindowEdgeReachedMap[signalScrolledWindowEdgeReachedId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.ScrolledWindow_signal_connect_edge_reached(instance, C.gpointer(uintptr(signalScrolledWindowEdgeReachedId)))
+}
+
+//export ScrolledWindow_edgeReachedHandler
 func ScrolledWindow_edgeReachedHandler() {}
 
 // GetOverlayScrolling is a wrapper around the C function gtk_scrolled_window_get_overlay_scrolling.
@@ -514,8 +534,18 @@ var signalSearchEntryNextMatchLock sync.Mutex
 // SearchEntrySignalNextMatchCallback is a callback function for a 'next-match' signal emitted from a SearchEntry.
 type SearchEntrySignalNextMatchCallback func()
 
-func (recv *SearchEntry) ConnectNextMatch() {}
+func (recv *SearchEntry) ConnectNextMatch(callback SearchEntrySignalNextMatchCallback) {
+	signalSearchEntryNextMatchLock.Lock()
+	defer signalSearchEntryNextMatchLock.Unlock()
 
+	signalSearchEntryNextMatchId++
+	signalSearchEntryNextMatchMap[signalSearchEntryNextMatchId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.SearchEntry_signal_connect_next_match(instance, C.gpointer(uintptr(signalSearchEntryNextMatchId)))
+}
+
+//export SearchEntry_nextMatchHandler
 func SearchEntry_nextMatchHandler() {}
 
 var signalSearchEntryPreviousMatchId int
@@ -525,8 +555,18 @@ var signalSearchEntryPreviousMatchLock sync.Mutex
 // SearchEntrySignalPreviousMatchCallback is a callback function for a 'previous-match' signal emitted from a SearchEntry.
 type SearchEntrySignalPreviousMatchCallback func()
 
-func (recv *SearchEntry) ConnectPreviousMatch() {}
+func (recv *SearchEntry) ConnectPreviousMatch(callback SearchEntrySignalPreviousMatchCallback) {
+	signalSearchEntryPreviousMatchLock.Lock()
+	defer signalSearchEntryPreviousMatchLock.Unlock()
 
+	signalSearchEntryPreviousMatchId++
+	signalSearchEntryPreviousMatchMap[signalSearchEntryPreviousMatchId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.SearchEntry_signal_connect_previous_match(instance, C.gpointer(uintptr(signalSearchEntryPreviousMatchId)))
+}
+
+//export SearchEntry_previousMatchHandler
 func SearchEntry_previousMatchHandler() {}
 
 var signalSearchEntryStopSearchId int
@@ -536,8 +576,18 @@ var signalSearchEntryStopSearchLock sync.Mutex
 // SearchEntrySignalStopSearchCallback is a callback function for a 'stop-search' signal emitted from a SearchEntry.
 type SearchEntrySignalStopSearchCallback func()
 
-func (recv *SearchEntry) ConnectStopSearch() {}
+func (recv *SearchEntry) ConnectStopSearch(callback SearchEntrySignalStopSearchCallback) {
+	signalSearchEntryStopSearchLock.Lock()
+	defer signalSearchEntryStopSearchLock.Unlock()
 
+	signalSearchEntryStopSearchId++
+	signalSearchEntryStopSearchMap[signalSearchEntryStopSearchId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.SearchEntry_signal_connect_stop_search(instance, C.gpointer(uintptr(signalSearchEntryStopSearchId)))
+}
+
+//export SearchEntry_stopSearchHandler
 func SearchEntry_stopSearchHandler() {}
 
 // Unsupported : gtk_search_entry_handle_event : unsupported parameter event : no type generator for Gdk.Event, GdkEvent*
@@ -628,8 +678,18 @@ var signalTextViewExtendSelectionLock sync.Mutex
 // TextViewSignalExtendSelectionCallback is a callback function for a 'extend-selection' signal emitted from a TextView.
 type TextViewSignalExtendSelectionCallback func(granularity TextExtendSelection, location *TextIter, start *TextIter, end *TextIter) bool
 
-func (recv *TextView) ConnectExtendSelection() {}
+func (recv *TextView) ConnectExtendSelection(callback TextViewSignalExtendSelectionCallback) {
+	signalTextViewExtendSelectionLock.Lock()
+	defer signalTextViewExtendSelectionLock.Unlock()
 
+	signalTextViewExtendSelectionId++
+	signalTextViewExtendSelectionMap[signalTextViewExtendSelectionId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.TextView_signal_connect_extend_selection(instance, C.gpointer(uintptr(signalTextViewExtendSelectionId)))
+}
+
+//export TextView_extendSelectionHandler
 func TextView_extendSelectionHandler() {}
 
 // GetMonospace is a wrapper around the C function gtk_text_view_get_monospace.

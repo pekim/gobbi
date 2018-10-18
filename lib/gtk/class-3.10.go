@@ -522,8 +522,18 @@ var signalListBoxRowActivatedLock sync.Mutex
 // ListBoxSignalRowActivatedCallback is a callback function for a 'row-activated' signal emitted from a ListBox.
 type ListBoxSignalRowActivatedCallback func(row *ListBoxRow)
 
-func (recv *ListBox) ConnectRowActivated() {}
+func (recv *ListBox) ConnectRowActivated(callback ListBoxSignalRowActivatedCallback) {
+	signalListBoxRowActivatedLock.Lock()
+	defer signalListBoxRowActivatedLock.Unlock()
 
+	signalListBoxRowActivatedId++
+	signalListBoxRowActivatedMap[signalListBoxRowActivatedId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.ListBox_signal_connect_row_activated(instance, C.gpointer(uintptr(signalListBoxRowActivatedId)))
+}
+
+//export ListBox_rowActivatedHandler
 func ListBox_rowActivatedHandler() {}
 
 var signalListBoxRowSelectedId int
@@ -533,8 +543,18 @@ var signalListBoxRowSelectedLock sync.Mutex
 // ListBoxSignalRowSelectedCallback is a callback function for a 'row-selected' signal emitted from a ListBox.
 type ListBoxSignalRowSelectedCallback func(row *ListBoxRow)
 
-func (recv *ListBox) ConnectRowSelected() {}
+func (recv *ListBox) ConnectRowSelected(callback ListBoxSignalRowSelectedCallback) {
+	signalListBoxRowSelectedLock.Lock()
+	defer signalListBoxRowSelectedLock.Unlock()
 
+	signalListBoxRowSelectedId++
+	signalListBoxRowSelectedMap[signalListBoxRowSelectedId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.ListBox_signal_connect_row_selected(instance, C.gpointer(uintptr(signalListBoxRowSelectedId)))
+}
+
+//export ListBox_rowSelectedHandler
 func ListBox_rowSelectedHandler() {}
 
 // ListBoxNew is a wrapper around the C function gtk_list_box_new.
@@ -713,8 +733,18 @@ var signalListBoxRowActivateLock sync.Mutex
 // ListBoxRowSignalActivateCallback is a callback function for a 'activate' signal emitted from a ListBoxRow.
 type ListBoxRowSignalActivateCallback func()
 
-func (recv *ListBoxRow) ConnectActivate() {}
+func (recv *ListBoxRow) ConnectActivate(callback ListBoxRowSignalActivateCallback) {
+	signalListBoxRowActivateLock.Lock()
+	defer signalListBoxRowActivateLock.Unlock()
 
+	signalListBoxRowActivateId++
+	signalListBoxRowActivateMap[signalListBoxRowActivateId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.ListBoxRow_signal_connect_activate(instance, C.gpointer(uintptr(signalListBoxRowActivateId)))
+}
+
+//export ListBoxRow_activateHandler
 func ListBoxRow_activateHandler() {}
 
 // ListBoxRowNew is a wrapper around the C function gtk_list_box_row_new.
@@ -776,8 +806,18 @@ var signalPlacesSidebarDragActionAskLock sync.Mutex
 // PlacesSidebarSignalDragActionAskCallback is a callback function for a 'drag-action-ask' signal emitted from a PlacesSidebar.
 type PlacesSidebarSignalDragActionAskCallback func(actions int32) int32
 
-func (recv *PlacesSidebar) ConnectDragActionAsk() {}
+func (recv *PlacesSidebar) ConnectDragActionAsk(callback PlacesSidebarSignalDragActionAskCallback) {
+	signalPlacesSidebarDragActionAskLock.Lock()
+	defer signalPlacesSidebarDragActionAskLock.Unlock()
 
+	signalPlacesSidebarDragActionAskId++
+	signalPlacesSidebarDragActionAskMap[signalPlacesSidebarDragActionAskId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.PlacesSidebar_signal_connect_drag_action_ask(instance, C.gpointer(uintptr(signalPlacesSidebarDragActionAskId)))
+}
+
+//export PlacesSidebar_dragActionAskHandler
 func PlacesSidebar_dragActionAskHandler() {}
 
 // Unsupported signal : unsupported parameter dest_file : no type generator for Gio.File,
@@ -795,8 +835,18 @@ var signalPlacesSidebarShowErrorMessageLock sync.Mutex
 // PlacesSidebarSignalShowErrorMessageCallback is a callback function for a 'show-error-message' signal emitted from a PlacesSidebar.
 type PlacesSidebarSignalShowErrorMessageCallback func(primary string, secondary string)
 
-func (recv *PlacesSidebar) ConnectShowErrorMessage() {}
+func (recv *PlacesSidebar) ConnectShowErrorMessage(callback PlacesSidebarSignalShowErrorMessageCallback) {
+	signalPlacesSidebarShowErrorMessageLock.Lock()
+	defer signalPlacesSidebarShowErrorMessageLock.Unlock()
 
+	signalPlacesSidebarShowErrorMessageId++
+	signalPlacesSidebarShowErrorMessageMap[signalPlacesSidebarShowErrorMessageId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.PlacesSidebar_signal_connect_show_error_message(instance, C.gpointer(uintptr(signalPlacesSidebarShowErrorMessageId)))
+}
+
+//export PlacesSidebar_showErrorMessageHandler
 func PlacesSidebar_showErrorMessageHandler() {}
 
 // PlacesSidebarNew is a wrapper around the C function gtk_places_sidebar_new.
@@ -1010,8 +1060,18 @@ var signalSearchEntrySearchChangedLock sync.Mutex
 // SearchEntrySignalSearchChangedCallback is a callback function for a 'search-changed' signal emitted from a SearchEntry.
 type SearchEntrySignalSearchChangedCallback func()
 
-func (recv *SearchEntry) ConnectSearchChanged() {}
+func (recv *SearchEntry) ConnectSearchChanged(callback SearchEntrySignalSearchChangedCallback) {
+	signalSearchEntrySearchChangedLock.Lock()
+	defer signalSearchEntrySearchChangedLock.Unlock()
 
+	signalSearchEntrySearchChangedId++
+	signalSearchEntrySearchChangedMap[signalSearchEntrySearchChangedId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.SearchEntry_signal_connect_search_changed(instance, C.gpointer(uintptr(signalSearchEntrySearchChangedId)))
+}
+
+//export SearchEntry_searchChangedHandler
 func SearchEntry_searchChangedHandler() {}
 
 // StackNew is a wrapper around the C function gtk_stack_new.

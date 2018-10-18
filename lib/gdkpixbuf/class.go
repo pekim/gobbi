@@ -647,8 +647,18 @@ var signalPixbufLoaderAreaPreparedLock sync.Mutex
 // PixbufLoaderSignalAreaPreparedCallback is a callback function for a 'area-prepared' signal emitted from a PixbufLoader.
 type PixbufLoaderSignalAreaPreparedCallback func()
 
-func (recv *PixbufLoader) ConnectAreaPrepared() {}
+func (recv *PixbufLoader) ConnectAreaPrepared(callback PixbufLoaderSignalAreaPreparedCallback) {
+	signalPixbufLoaderAreaPreparedLock.Lock()
+	defer signalPixbufLoaderAreaPreparedLock.Unlock()
 
+	signalPixbufLoaderAreaPreparedId++
+	signalPixbufLoaderAreaPreparedMap[signalPixbufLoaderAreaPreparedId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.PixbufLoader_signal_connect_area_prepared(instance, C.gpointer(uintptr(signalPixbufLoaderAreaPreparedId)))
+}
+
+//export PixbufLoader_areaPreparedHandler
 func PixbufLoader_areaPreparedHandler() {}
 
 var signalPixbufLoaderAreaUpdatedId int
@@ -658,8 +668,18 @@ var signalPixbufLoaderAreaUpdatedLock sync.Mutex
 // PixbufLoaderSignalAreaUpdatedCallback is a callback function for a 'area-updated' signal emitted from a PixbufLoader.
 type PixbufLoaderSignalAreaUpdatedCallback func(x int32, y int32, width int32, height int32)
 
-func (recv *PixbufLoader) ConnectAreaUpdated() {}
+func (recv *PixbufLoader) ConnectAreaUpdated(callback PixbufLoaderSignalAreaUpdatedCallback) {
+	signalPixbufLoaderAreaUpdatedLock.Lock()
+	defer signalPixbufLoaderAreaUpdatedLock.Unlock()
 
+	signalPixbufLoaderAreaUpdatedId++
+	signalPixbufLoaderAreaUpdatedMap[signalPixbufLoaderAreaUpdatedId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.PixbufLoader_signal_connect_area_updated(instance, C.gpointer(uintptr(signalPixbufLoaderAreaUpdatedId)))
+}
+
+//export PixbufLoader_areaUpdatedHandler
 func PixbufLoader_areaUpdatedHandler() {}
 
 var signalPixbufLoaderClosedId int
@@ -669,8 +689,18 @@ var signalPixbufLoaderClosedLock sync.Mutex
 // PixbufLoaderSignalClosedCallback is a callback function for a 'closed' signal emitted from a PixbufLoader.
 type PixbufLoaderSignalClosedCallback func()
 
-func (recv *PixbufLoader) ConnectClosed() {}
+func (recv *PixbufLoader) ConnectClosed(callback PixbufLoaderSignalClosedCallback) {
+	signalPixbufLoaderClosedLock.Lock()
+	defer signalPixbufLoaderClosedLock.Unlock()
 
+	signalPixbufLoaderClosedId++
+	signalPixbufLoaderClosedMap[signalPixbufLoaderClosedId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.PixbufLoader_signal_connect_closed(instance, C.gpointer(uintptr(signalPixbufLoaderClosedId)))
+}
+
+//export PixbufLoader_closedHandler
 func PixbufLoader_closedHandler() {}
 
 var signalPixbufLoaderSizePreparedId int
@@ -680,8 +710,18 @@ var signalPixbufLoaderSizePreparedLock sync.Mutex
 // PixbufLoaderSignalSizePreparedCallback is a callback function for a 'size-prepared' signal emitted from a PixbufLoader.
 type PixbufLoaderSignalSizePreparedCallback func(width int32, height int32)
 
-func (recv *PixbufLoader) ConnectSizePrepared() {}
+func (recv *PixbufLoader) ConnectSizePrepared(callback PixbufLoaderSignalSizePreparedCallback) {
+	signalPixbufLoaderSizePreparedLock.Lock()
+	defer signalPixbufLoaderSizePreparedLock.Unlock()
 
+	signalPixbufLoaderSizePreparedId++
+	signalPixbufLoaderSizePreparedMap[signalPixbufLoaderSizePreparedId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.PixbufLoader_signal_connect_size_prepared(instance, C.gpointer(uintptr(signalPixbufLoaderSizePreparedId)))
+}
+
+//export PixbufLoader_sizePreparedHandler
 func PixbufLoader_sizePreparedHandler() {}
 
 // PixbufLoaderNew is a wrapper around the C function gdk_pixbuf_loader_new.

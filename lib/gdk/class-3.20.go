@@ -83,8 +83,18 @@ var signalDisplaySeatAddedLock sync.Mutex
 // DisplaySignalSeatAddedCallback is a callback function for a 'seat-added' signal emitted from a Display.
 type DisplaySignalSeatAddedCallback func(seat *Seat)
 
-func (recv *Display) ConnectSeatAdded() {}
+func (recv *Display) ConnectSeatAdded(callback DisplaySignalSeatAddedCallback) {
+	signalDisplaySeatAddedLock.Lock()
+	defer signalDisplaySeatAddedLock.Unlock()
 
+	signalDisplaySeatAddedId++
+	signalDisplaySeatAddedMap[signalDisplaySeatAddedId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.Display_signal_connect_seat_added(instance, C.gpointer(uintptr(signalDisplaySeatAddedId)))
+}
+
+//export Display_seatAddedHandler
 func Display_seatAddedHandler() {}
 
 var signalDisplaySeatRemovedId int
@@ -94,8 +104,18 @@ var signalDisplaySeatRemovedLock sync.Mutex
 // DisplaySignalSeatRemovedCallback is a callback function for a 'seat-removed' signal emitted from a Display.
 type DisplaySignalSeatRemovedCallback func(seat *Seat)
 
-func (recv *Display) ConnectSeatRemoved() {}
+func (recv *Display) ConnectSeatRemoved(callback DisplaySignalSeatRemovedCallback) {
+	signalDisplaySeatRemovedLock.Lock()
+	defer signalDisplaySeatRemovedLock.Unlock()
 
+	signalDisplaySeatRemovedId++
+	signalDisplaySeatRemovedMap[signalDisplaySeatRemovedId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.Display_signal_connect_seat_removed(instance, C.gpointer(uintptr(signalDisplaySeatRemovedId)))
+}
+
+//export Display_seatRemovedHandler
 func Display_seatRemovedHandler() {}
 
 // GetDefaultSeat is a wrapper around the C function gdk_display_get_default_seat.
@@ -121,8 +141,18 @@ var signalDragContextActionChangedLock sync.Mutex
 // DragContextSignalActionChangedCallback is a callback function for a 'action-changed' signal emitted from a DragContext.
 type DragContextSignalActionChangedCallback func(action DragAction)
 
-func (recv *DragContext) ConnectActionChanged() {}
+func (recv *DragContext) ConnectActionChanged(callback DragContextSignalActionChangedCallback) {
+	signalDragContextActionChangedLock.Lock()
+	defer signalDragContextActionChangedLock.Unlock()
 
+	signalDragContextActionChangedId++
+	signalDragContextActionChangedMap[signalDragContextActionChangedId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.DragContext_signal_connect_action_changed(instance, C.gpointer(uintptr(signalDragContextActionChangedId)))
+}
+
+//export DragContext_actionChangedHandler
 func DragContext_actionChangedHandler() {}
 
 var signalDragContextCancelId int
@@ -132,8 +162,18 @@ var signalDragContextCancelLock sync.Mutex
 // DragContextSignalCancelCallback is a callback function for a 'cancel' signal emitted from a DragContext.
 type DragContextSignalCancelCallback func(reason DragCancelReason)
 
-func (recv *DragContext) ConnectCancel() {}
+func (recv *DragContext) ConnectCancel(callback DragContextSignalCancelCallback) {
+	signalDragContextCancelLock.Lock()
+	defer signalDragContextCancelLock.Unlock()
 
+	signalDragContextCancelId++
+	signalDragContextCancelMap[signalDragContextCancelId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.DragContext_signal_connect_cancel(instance, C.gpointer(uintptr(signalDragContextCancelId)))
+}
+
+//export DragContext_cancelHandler
 func DragContext_cancelHandler() {}
 
 var signalDragContextDndFinishedId int
@@ -143,8 +183,18 @@ var signalDragContextDndFinishedLock sync.Mutex
 // DragContextSignalDndFinishedCallback is a callback function for a 'dnd-finished' signal emitted from a DragContext.
 type DragContextSignalDndFinishedCallback func()
 
-func (recv *DragContext) ConnectDndFinished() {}
+func (recv *DragContext) ConnectDndFinished(callback DragContextSignalDndFinishedCallback) {
+	signalDragContextDndFinishedLock.Lock()
+	defer signalDragContextDndFinishedLock.Unlock()
 
+	signalDragContextDndFinishedId++
+	signalDragContextDndFinishedMap[signalDragContextDndFinishedId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.DragContext_signal_connect_dnd_finished(instance, C.gpointer(uintptr(signalDragContextDndFinishedId)))
+}
+
+//export DragContext_dndFinishedHandler
 func DragContext_dndFinishedHandler() {}
 
 var signalDragContextDropPerformedId int
@@ -154,8 +204,18 @@ var signalDragContextDropPerformedLock sync.Mutex
 // DragContextSignalDropPerformedCallback is a callback function for a 'drop-performed' signal emitted from a DragContext.
 type DragContextSignalDropPerformedCallback func(time int32)
 
-func (recv *DragContext) ConnectDropPerformed() {}
+func (recv *DragContext) ConnectDropPerformed(callback DragContextSignalDropPerformedCallback) {
+	signalDragContextDropPerformedLock.Lock()
+	defer signalDragContextDropPerformedLock.Unlock()
 
+	signalDragContextDropPerformedId++
+	signalDragContextDropPerformedMap[signalDragContextDropPerformedId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.DragContext_signal_connect_drop_performed(instance, C.gpointer(uintptr(signalDragContextDropPerformedId)))
+}
+
+//export DragContext_dropPerformedHandler
 func DragContext_dropPerformedHandler() {}
 
 // GetDragWindow is a wrapper around the C function gdk_drag_context_get_drag_window.

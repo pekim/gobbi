@@ -132,6 +132,8 @@ func (s *Signal) generateCallbackReturnDeclaration(g *jen.Group) {
 }
 
 func (s *Signal) generateHandlerFunction(g *jen.Group) {
+	g.Commentf("//export %s", s.goNameHandler)
+
 	g.
 		Func().
 		Id(s.goNameHandler).
@@ -142,6 +144,13 @@ func (s *Signal) generateHandlerFunction(g *jen.Group) {
 		})
 
 	g.Line()
+
+	//func keyPressEventHandler(target *C.GObject, event *C.GdkEventKey, data uintptr) {
+	//	goEvent := gdk.EventKeyNewFromC(unsafe.Pointer(event))
+	//
+	//	cb := signalKeyPressEventMap[int(data)]
+	//	cb(goEvent)
+	//}
 }
 
 func (s *Signal) generateConnectFunction(g *jen.Group) {
@@ -149,9 +158,43 @@ func (s *Signal) generateConnectFunction(g *jen.Group) {
 		Func().
 		Params(jen.Id("recv").Op("*").Id(s.record.GoName)).
 		Id(s.goNameConnectFunction).
-		Params().
+		Params(jen.Id("callback").Id(s.callbackTypeName)).
 		BlockFunc(func(g *jen.Group) {
+			//	signalKeyPressEventLock.Lock()
+			g.Id(s.varNameLock).Op(".").Id("Lock").Call()
 
+			//	defer signalKeyPressEventLock.Unlock()
+			g.Defer().Id(s.varNameLock).Op(".").Id("Unlock").Call()
+
+			g.Line()
+
+			//	signalKeyPressEventId++
+			g.Id(s.varNameId).Op("++")
+
+			//	signalKeyPressEventMap[signalKeyPressEventId] = callback
+			g.Id(s.varNameMap).Index(jen.Id(s.varNameId)).Op("=").Id("callback")
+
+			g.Line()
+
+			targetCValue := jen.Id("recv").
+				Op(".").Id("Object").Call().
+				Op(".").Id("ToC").Call()
+			//	instance := C.gpointer(recv.Object().ToC())
+			g.
+				Id("instance").Op(":=").
+				Qual("C", "gpointer").
+				Call(targetCValue)
+
+			//	C.signal_connect_key_press_event(instance, C.gpointer(uintptr(signalKeyPressEventId)))
+			g.
+				Qual("C", s.cNameSignalConnect).
+				CallFunc(func(g *jen.Group) {
+					g.Id("instance")
+
+					g.
+						Qual("C", "gpointer").
+						Call(jen.Id("uintptr").Call(jen.Id(s.varNameId)))
+				})
 		})
 
 	g.Line()

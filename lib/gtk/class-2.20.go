@@ -104,8 +104,18 @@ var signalEntryPreeditChangedLock sync.Mutex
 // EntrySignalPreeditChangedCallback is a callback function for a 'preedit-changed' signal emitted from a Entry.
 type EntrySignalPreeditChangedCallback func(preedit string)
 
-func (recv *Entry) ConnectPreeditChanged() {}
+func (recv *Entry) ConnectPreeditChanged(callback EntrySignalPreeditChangedCallback) {
+	signalEntryPreeditChangedLock.Lock()
+	defer signalEntryPreeditChangedLock.Unlock()
 
+	signalEntryPreeditChangedId++
+	signalEntryPreeditChangedMap[signalEntryPreeditChangedId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.Entry_signal_connect_preedit_changed(instance, C.gpointer(uintptr(signalEntryPreeditChangedId)))
+}
+
+//export Entry_preeditChangedHandler
 func Entry_preeditChangedHandler() {}
 
 // Unsupported signal : unsupported parameter model : no type generator for TreeModel,
@@ -340,8 +350,18 @@ var signalTextViewPreeditChangedLock sync.Mutex
 // TextViewSignalPreeditChangedCallback is a callback function for a 'preedit-changed' signal emitted from a TextView.
 type TextViewSignalPreeditChangedCallback func(preedit string)
 
-func (recv *TextView) ConnectPreeditChanged() {}
+func (recv *TextView) ConnectPreeditChanged(callback TextViewSignalPreeditChangedCallback) {
+	signalTextViewPreeditChangedLock.Lock()
+	defer signalTextViewPreeditChangedLock.Unlock()
 
+	signalTextViewPreeditChangedId++
+	signalTextViewPreeditChangedMap[signalTextViewPreeditChangedId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.TextView_signal_connect_preedit_changed(instance, C.gpointer(uintptr(signalTextViewPreeditChangedId)))
+}
+
+//export TextView_preeditChangedHandler
 func TextView_preeditChangedHandler() {}
 
 // GetEllipsizeMode is a wrapper around the C function gtk_tool_item_get_ellipsize_mode.

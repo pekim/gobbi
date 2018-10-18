@@ -85,8 +85,18 @@ var signalScreenMonitorsChangedLock sync.Mutex
 // ScreenSignalMonitorsChangedCallback is a callback function for a 'monitors-changed' signal emitted from a Screen.
 type ScreenSignalMonitorsChangedCallback func()
 
-func (recv *Screen) ConnectMonitorsChanged() {}
+func (recv *Screen) ConnectMonitorsChanged(callback ScreenSignalMonitorsChangedCallback) {
+	signalScreenMonitorsChangedLock.Lock()
+	defer signalScreenMonitorsChangedLock.Unlock()
 
+	signalScreenMonitorsChangedId++
+	signalScreenMonitorsChangedMap[signalScreenMonitorsChangedId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.Screen_signal_connect_monitors_changed(instance, C.gpointer(uintptr(signalScreenMonitorsChangedId)))
+}
+
+//export Screen_monitorsChangedHandler
 func Screen_monitorsChangedHandler() {}
 
 // GetMonitorHeightMm is a wrapper around the C function gdk_screen_get_monitor_height_mm.

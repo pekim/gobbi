@@ -26,8 +26,18 @@ var signalKeymapStateChangedLock sync.Mutex
 // KeymapSignalStateChangedCallback is a callback function for a 'state-changed' signal emitted from a Keymap.
 type KeymapSignalStateChangedCallback func()
 
-func (recv *Keymap) ConnectStateChanged() {}
+func (recv *Keymap) ConnectStateChanged(callback KeymapSignalStateChangedCallback) {
+	signalKeymapStateChangedLock.Lock()
+	defer signalKeymapStateChangedLock.Unlock()
 
+	signalKeymapStateChangedId++
+	signalKeymapStateChangedMap[signalKeymapStateChangedId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.Keymap_signal_connect_state_changed(instance, C.gpointer(uintptr(signalKeymapStateChangedId)))
+}
+
+//export Keymap_stateChangedHandler
 func Keymap_stateChangedHandler() {}
 
 // GetCapsLockState is a wrapper around the C function gdk_keymap_get_caps_lock_state.

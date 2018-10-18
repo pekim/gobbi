@@ -278,8 +278,18 @@ var signalComboBoxMoveActiveLock sync.Mutex
 // ComboBoxSignalMoveActiveCallback is a callback function for a 'move-active' signal emitted from a ComboBox.
 type ComboBoxSignalMoveActiveCallback func(scrollType ScrollType)
 
-func (recv *ComboBox) ConnectMoveActive() {}
+func (recv *ComboBox) ConnectMoveActive(callback ComboBoxSignalMoveActiveCallback) {
+	signalComboBoxMoveActiveLock.Lock()
+	defer signalComboBoxMoveActiveLock.Unlock()
 
+	signalComboBoxMoveActiveId++
+	signalComboBoxMoveActiveMap[signalComboBoxMoveActiveId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.ComboBox_signal_connect_move_active(instance, C.gpointer(uintptr(signalComboBoxMoveActiveId)))
+}
+
+//export ComboBox_moveActiveHandler
 func ComboBox_moveActiveHandler() {}
 
 var signalComboBoxPopdownId int
@@ -289,8 +299,18 @@ var signalComboBoxPopdownLock sync.Mutex
 // ComboBoxSignalPopdownCallback is a callback function for a 'popdown' signal emitted from a ComboBox.
 type ComboBoxSignalPopdownCallback func() bool
 
-func (recv *ComboBox) ConnectPopdown() {}
+func (recv *ComboBox) ConnectPopdown(callback ComboBoxSignalPopdownCallback) {
+	signalComboBoxPopdownLock.Lock()
+	defer signalComboBoxPopdownLock.Unlock()
 
+	signalComboBoxPopdownId++
+	signalComboBoxPopdownMap[signalComboBoxPopdownId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.ComboBox_signal_connect_popdown(instance, C.gpointer(uintptr(signalComboBoxPopdownId)))
+}
+
+//export ComboBox_popdownHandler
 func ComboBox_popdownHandler() {}
 
 var signalComboBoxPopupId int
@@ -300,8 +320,18 @@ var signalComboBoxPopupLock sync.Mutex
 // ComboBoxSignalPopupCallback is a callback function for a 'popup' signal emitted from a ComboBox.
 type ComboBoxSignalPopupCallback func()
 
-func (recv *ComboBox) ConnectPopup() {}
+func (recv *ComboBox) ConnectPopup(callback ComboBoxSignalPopupCallback) {
+	signalComboBoxPopupLock.Lock()
+	defer signalComboBoxPopupLock.Unlock()
 
+	signalComboBoxPopupId++
+	signalComboBoxPopupMap[signalComboBoxPopupId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.ComboBox_signal_connect_popup(instance, C.gpointer(uintptr(signalComboBoxPopupId)))
+}
+
+//export ComboBox_popupHandler
 func ComboBox_popupHandler() {}
 
 // Unsupported : gtk_combo_box_new_with_model : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
@@ -366,8 +396,18 @@ var signalFileChooserButtonFileSetLock sync.Mutex
 // FileChooserButtonSignalFileSetCallback is a callback function for a 'file-set' signal emitted from a FileChooserButton.
 type FileChooserButtonSignalFileSetCallback func()
 
-func (recv *FileChooserButton) ConnectFileSet() {}
+func (recv *FileChooserButton) ConnectFileSet(callback FileChooserButtonSignalFileSetCallback) {
+	signalFileChooserButtonFileSetLock.Lock()
+	defer signalFileChooserButtonFileSetLock.Unlock()
 
+	signalFileChooserButtonFileSetId++
+	signalFileChooserButtonFileSetMap[signalFileChooserButtonFileSetId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.FileChooserButton_signal_connect_file_set(instance, C.gpointer(uintptr(signalFileChooserButtonFileSetId)))
+}
+
+//export FileChooserButton_fileSetHandler
 func FileChooserButton_fileSetHandler() {}
 
 // Unsupported : gtk_file_chooser_dialog_new : unsupported parameter ... : varargs
@@ -471,8 +511,18 @@ var signalMenuShellMoveSelectedLock sync.Mutex
 // MenuShellSignalMoveSelectedCallback is a callback function for a 'move-selected' signal emitted from a MenuShell.
 type MenuShellSignalMoveSelectedCallback func(distance int32) bool
 
-func (recv *MenuShell) ConnectMoveSelected() {}
+func (recv *MenuShell) ConnectMoveSelected(callback MenuShellSignalMoveSelectedCallback) {
+	signalMenuShellMoveSelectedLock.Lock()
+	defer signalMenuShellMoveSelectedLock.Unlock()
 
+	signalMenuShellMoveSelectedId++
+	signalMenuShellMoveSelectedMap[signalMenuShellMoveSelectedId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.MenuShell_signal_connect_move_selected(instance, C.gpointer(uintptr(signalMenuShellMoveSelectedId)))
+}
+
+//export MenuShell_moveSelectedHandler
 func MenuShell_moveSelectedHandler() {}
 
 // SetArrowTooltipMarkup is a wrapper around the C function gtk_menu_tool_button_set_arrow_tooltip_markup.
@@ -506,8 +556,18 @@ var signalNotebookCreateWindowLock sync.Mutex
 // NotebookSignalCreateWindowCallback is a callback function for a 'create-window' signal emitted from a Notebook.
 type NotebookSignalCreateWindowCallback func(page *Widget, x int32, y int32) Notebook
 
-func (recv *Notebook) ConnectCreateWindow() {}
+func (recv *Notebook) ConnectCreateWindow(callback NotebookSignalCreateWindowCallback) {
+	signalNotebookCreateWindowLock.Lock()
+	defer signalNotebookCreateWindowLock.Unlock()
 
+	signalNotebookCreateWindowId++
+	signalNotebookCreateWindowMap[signalNotebookCreateWindowId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.Notebook_signal_connect_create_window(instance, C.gpointer(uintptr(signalNotebookCreateWindowId)))
+}
+
+//export Notebook_createWindowHandler
 func Notebook_createWindowHandler() {}
 
 // Unsupported signal : unsupported parameter allocation : Blacklisted record : GdkRectangle
@@ -786,8 +846,18 @@ var signalScaleButtonPopdownLock sync.Mutex
 // ScaleButtonSignalPopdownCallback is a callback function for a 'popdown' signal emitted from a ScaleButton.
 type ScaleButtonSignalPopdownCallback func()
 
-func (recv *ScaleButton) ConnectPopdown() {}
+func (recv *ScaleButton) ConnectPopdown(callback ScaleButtonSignalPopdownCallback) {
+	signalScaleButtonPopdownLock.Lock()
+	defer signalScaleButtonPopdownLock.Unlock()
 
+	signalScaleButtonPopdownId++
+	signalScaleButtonPopdownMap[signalScaleButtonPopdownId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.ScaleButton_signal_connect_popdown(instance, C.gpointer(uintptr(signalScaleButtonPopdownId)))
+}
+
+//export ScaleButton_popdownHandler
 func ScaleButton_popdownHandler() {}
 
 var signalScaleButtonPopupId int
@@ -797,8 +867,18 @@ var signalScaleButtonPopupLock sync.Mutex
 // ScaleButtonSignalPopupCallback is a callback function for a 'popup' signal emitted from a ScaleButton.
 type ScaleButtonSignalPopupCallback func()
 
-func (recv *ScaleButton) ConnectPopup() {}
+func (recv *ScaleButton) ConnectPopup(callback ScaleButtonSignalPopupCallback) {
+	signalScaleButtonPopupLock.Lock()
+	defer signalScaleButtonPopupLock.Unlock()
 
+	signalScaleButtonPopupId++
+	signalScaleButtonPopupMap[signalScaleButtonPopupId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.ScaleButton_signal_connect_popup(instance, C.gpointer(uintptr(signalScaleButtonPopupId)))
+}
+
+//export ScaleButton_popupHandler
 func ScaleButton_popupHandler() {}
 
 var signalScaleButtonValueChangedId int
@@ -808,8 +888,18 @@ var signalScaleButtonValueChangedLock sync.Mutex
 // ScaleButtonSignalValueChangedCallback is a callback function for a 'value-changed' signal emitted from a ScaleButton.
 type ScaleButtonSignalValueChangedCallback func(value float64)
 
-func (recv *ScaleButton) ConnectValueChanged() {}
+func (recv *ScaleButton) ConnectValueChanged(callback ScaleButtonSignalValueChangedCallback) {
+	signalScaleButtonValueChangedLock.Lock()
+	defer signalScaleButtonValueChangedLock.Unlock()
 
+	signalScaleButtonValueChangedId++
+	signalScaleButtonValueChangedMap[signalScaleButtonValueChangedId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.ScaleButton_signal_connect_value_changed(instance, C.gpointer(uintptr(signalScaleButtonValueChangedId)))
+}
+
+//export ScaleButton_valueChangedHandler
 func ScaleButton_valueChangedHandler() {}
 
 // Unsupported : gtk_scale_button_new : unsupported parameter size : no type generator for gint, GtkIconSize
@@ -1199,8 +1289,18 @@ var signalWidgetDragFailedLock sync.Mutex
 // WidgetSignalDragFailedCallback is a callback function for a 'drag-failed' signal emitted from a Widget.
 type WidgetSignalDragFailedCallback func(context *gdk.DragContext, result DragResult) bool
 
-func (recv *Widget) ConnectDragFailed() {}
+func (recv *Widget) ConnectDragFailed(callback WidgetSignalDragFailedCallback) {
+	signalWidgetDragFailedLock.Lock()
+	defer signalWidgetDragFailedLock.Unlock()
 
+	signalWidgetDragFailedId++
+	signalWidgetDragFailedMap[signalWidgetDragFailedId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.Widget_signal_connect_drag_failed(instance, C.gpointer(uintptr(signalWidgetDragFailedId)))
+}
+
+//export Widget_dragFailedHandler
 func Widget_dragFailedHandler() {}
 
 // Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
@@ -1214,8 +1314,18 @@ var signalWidgetKeynavFailedLock sync.Mutex
 // WidgetSignalKeynavFailedCallback is a callback function for a 'keynav-failed' signal emitted from a Widget.
 type WidgetSignalKeynavFailedCallback func(direction DirectionType) bool
 
-func (recv *Widget) ConnectKeynavFailed() {}
+func (recv *Widget) ConnectKeynavFailed(callback WidgetSignalKeynavFailedCallback) {
+	signalWidgetKeynavFailedLock.Lock()
+	defer signalWidgetKeynavFailedLock.Unlock()
 
+	signalWidgetKeynavFailedId++
+	signalWidgetKeynavFailedMap[signalWidgetKeynavFailedId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.Widget_signal_connect_keynav_failed(instance, C.gpointer(uintptr(signalWidgetKeynavFailedId)))
+}
+
+//export Widget_keynavFailedHandler
 func Widget_keynavFailedHandler() {}
 
 var signalWidgetQueryTooltipId int
@@ -1225,8 +1335,18 @@ var signalWidgetQueryTooltipLock sync.Mutex
 // WidgetSignalQueryTooltipCallback is a callback function for a 'query-tooltip' signal emitted from a Widget.
 type WidgetSignalQueryTooltipCallback func(x int32, y int32, keyboardMode bool, tooltip *Tooltip) bool
 
-func (recv *Widget) ConnectQueryTooltip() {}
+func (recv *Widget) ConnectQueryTooltip(callback WidgetSignalQueryTooltipCallback) {
+	signalWidgetQueryTooltipLock.Lock()
+	defer signalWidgetQueryTooltipLock.Unlock()
 
+	signalWidgetQueryTooltipId++
+	signalWidgetQueryTooltipMap[signalWidgetQueryTooltipId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.Widget_signal_connect_query_tooltip(instance, C.gpointer(uintptr(signalWidgetQueryTooltipId)))
+}
+
+//export Widget_queryTooltipHandler
 func Widget_queryTooltipHandler() {}
 
 // Unsupported signal : unsupported parameter allocation : Blacklisted record : GdkRectangle

@@ -68,8 +68,18 @@ var signalMountOperationAbortedLock sync.Mutex
 // MountOperationSignalAbortedCallback is a callback function for a 'aborted' signal emitted from a MountOperation.
 type MountOperationSignalAbortedCallback func()
 
-func (recv *MountOperation) ConnectAborted() {}
+func (recv *MountOperation) ConnectAborted(callback MountOperationSignalAbortedCallback) {
+	signalMountOperationAbortedLock.Lock()
+	defer signalMountOperationAbortedLock.Unlock()
 
+	signalMountOperationAbortedId++
+	signalMountOperationAbortedMap[signalMountOperationAbortedId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.MountOperation_signal_connect_aborted(instance, C.gpointer(uintptr(signalMountOperationAbortedId)))
+}
+
+//export MountOperation_abortedHandler
 func MountOperation_abortedHandler() {}
 
 // Unsupported signal : unsupported parameter choices : no param type

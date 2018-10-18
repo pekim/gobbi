@@ -421,8 +421,18 @@ var signalWidgetGrabBrokenEventLock sync.Mutex
 // WidgetSignalGrabBrokenEventCallback is a callback function for a 'grab-broken-event' signal emitted from a Widget.
 type WidgetSignalGrabBrokenEventCallback func(event *gdk.EventGrabBroken) bool
 
-func (recv *Widget) ConnectGrabBrokenEvent() {}
+func (recv *Widget) ConnectGrabBrokenEvent(callback WidgetSignalGrabBrokenEventCallback) {
+	signalWidgetGrabBrokenEventLock.Lock()
+	defer signalWidgetGrabBrokenEventLock.Unlock()
 
+	signalWidgetGrabBrokenEventId++
+	signalWidgetGrabBrokenEventMap[signalWidgetGrabBrokenEventId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.Widget_signal_connect_grab_broken_event(instance, C.gpointer(uintptr(signalWidgetGrabBrokenEventId)))
+}
+
+//export Widget_grabBrokenEventHandler
 func Widget_grabBrokenEventHandler() {}
 
 // Unsupported signal : unsupported parameter allocation : Blacklisted record : GdkRectangle

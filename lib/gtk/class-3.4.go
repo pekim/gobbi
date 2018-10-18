@@ -195,8 +195,18 @@ var signalComboBoxFormatEntryTextLock sync.Mutex
 // ComboBoxSignalFormatEntryTextCallback is a callback function for a 'format-entry-text' signal emitted from a ComboBox.
 type ComboBoxSignalFormatEntryTextCallback func(path string) string
 
-func (recv *ComboBox) ConnectFormatEntryText() {}
+func (recv *ComboBox) ConnectFormatEntryText(callback ComboBoxSignalFormatEntryTextCallback) {
+	signalComboBoxFormatEntryTextLock.Lock()
+	defer signalComboBoxFormatEntryTextLock.Unlock()
 
+	signalComboBoxFormatEntryTextId++
+	signalComboBoxFormatEntryTextMap[signalComboBoxFormatEntryTextId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.ComboBox_signal_connect_format_entry_text(instance, C.gpointer(uintptr(signalComboBoxFormatEntryTextId)))
+}
+
+//export ComboBox_formatEntryTextHandler
 func ComboBox_formatEntryTextHandler() {}
 
 // Unsupported : gtk_combo_box_new_with_model : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*

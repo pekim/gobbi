@@ -159,8 +159,18 @@ var signalPlacesSidebarShowOtherLocationsLock sync.Mutex
 // PlacesSidebarSignalShowOtherLocationsCallback is a callback function for a 'show-other-locations' signal emitted from a PlacesSidebar.
 type PlacesSidebarSignalShowOtherLocationsCallback func()
 
-func (recv *PlacesSidebar) ConnectShowOtherLocations() {}
+func (recv *PlacesSidebar) ConnectShowOtherLocations(callback PlacesSidebarSignalShowOtherLocationsCallback) {
+	signalPlacesSidebarShowOtherLocationsLock.Lock()
+	defer signalPlacesSidebarShowOtherLocationsLock.Unlock()
 
+	signalPlacesSidebarShowOtherLocationsId++
+	signalPlacesSidebarShowOtherLocationsMap[signalPlacesSidebarShowOtherLocationsId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.PlacesSidebar_signal_connect_show_other_locations(instance, C.gpointer(uintptr(signalPlacesSidebarShowOtherLocationsId)))
+}
+
+//export PlacesSidebar_showOtherLocationsHandler
 func PlacesSidebar_showOtherLocationsHandler() {}
 
 // GetShowOtherLocations is a wrapper around the C function gtk_places_sidebar_get_show_other_locations.

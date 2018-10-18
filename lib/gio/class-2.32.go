@@ -826,8 +826,18 @@ var signalMenuModelItemsChangedLock sync.Mutex
 // MenuModelSignalItemsChangedCallback is a callback function for a 'items-changed' signal emitted from a MenuModel.
 type MenuModelSignalItemsChangedCallback func(position int32, removed int32, added int32)
 
-func (recv *MenuModel) ConnectItemsChanged() {}
+func (recv *MenuModel) ConnectItemsChanged(callback MenuModelSignalItemsChangedCallback) {
+	signalMenuModelItemsChangedLock.Lock()
+	defer signalMenuModelItemsChangedLock.Unlock()
 
+	signalMenuModelItemsChangedId++
+	signalMenuModelItemsChangedMap[signalMenuModelItemsChangedId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.MenuModel_signal_connect_items_changed(instance, C.gpointer(uintptr(signalMenuModelItemsChangedId)))
+}
+
+//export MenuModel_itemsChangedHandler
 func MenuModel_itemsChangedHandler() {}
 
 // Unsupported : g_menu_model_get_item_attribute : unsupported parameter ... : varargs

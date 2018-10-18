@@ -370,8 +370,18 @@ var signalCellAreaFocusChangedLock sync.Mutex
 // CellAreaSignalFocusChangedCallback is a callback function for a 'focus-changed' signal emitted from a CellArea.
 type CellAreaSignalFocusChangedCallback func(renderer *CellRenderer, path string)
 
-func (recv *CellArea) ConnectFocusChanged() {}
+func (recv *CellArea) ConnectFocusChanged(callback CellAreaSignalFocusChangedCallback) {
+	signalCellAreaFocusChangedLock.Lock()
+	defer signalCellAreaFocusChangedLock.Unlock()
 
+	signalCellAreaFocusChangedId++
+	signalCellAreaFocusChangedMap[signalCellAreaFocusChangedId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.CellArea_signal_connect_focus_changed(instance, C.gpointer(uintptr(signalCellAreaFocusChangedId)))
+}
+
+//export CellArea_focusChangedHandler
 func CellArea_focusChangedHandler() {}
 
 // Unsupported signal : unsupported parameter editable : no type generator for CellEditable,
@@ -1635,8 +1645,18 @@ var signalStyleContextChangedLock sync.Mutex
 // StyleContextSignalChangedCallback is a callback function for a 'changed' signal emitted from a StyleContext.
 type StyleContextSignalChangedCallback func()
 
-func (recv *StyleContext) ConnectChanged() {}
+func (recv *StyleContext) ConnectChanged(callback StyleContextSignalChangedCallback) {
+	signalStyleContextChangedLock.Lock()
+	defer signalStyleContextChangedLock.Unlock()
 
+	signalStyleContextChangedId++
+	signalStyleContextChangedMap[signalStyleContextChangedId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.StyleContext_signal_connect_changed(instance, C.gpointer(uintptr(signalStyleContextChangedId)))
+}
+
+//export StyleContext_changedHandler
 func StyleContext_changedHandler() {}
 
 // AddClass is a wrapper around the C function gtk_style_context_add_class.
@@ -2358,8 +2378,18 @@ var signalWidgetDrawLock sync.Mutex
 // WidgetSignalDrawCallback is a callback function for a 'draw' signal emitted from a Widget.
 type WidgetSignalDrawCallback func(cr *cairo.Context) bool
 
-func (recv *Widget) ConnectDraw() {}
+func (recv *Widget) ConnectDraw(callback WidgetSignalDrawCallback) {
+	signalWidgetDrawLock.Lock()
+	defer signalWidgetDrawLock.Unlock()
 
+	signalWidgetDrawId++
+	signalWidgetDrawMap[signalWidgetDrawId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.Widget_signal_connect_draw(instance, C.gpointer(uintptr(signalWidgetDrawId)))
+}
+
+//export Widget_drawHandler
 func Widget_drawHandler() {}
 
 // Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
@@ -2375,8 +2405,18 @@ var signalWidgetStateFlagsChangedLock sync.Mutex
 // WidgetSignalStateFlagsChangedCallback is a callback function for a 'state-flags-changed' signal emitted from a Widget.
 type WidgetSignalStateFlagsChangedCallback func(flags StateFlags)
 
-func (recv *Widget) ConnectStateFlagsChanged() {}
+func (recv *Widget) ConnectStateFlagsChanged(callback WidgetSignalStateFlagsChangedCallback) {
+	signalWidgetStateFlagsChangedLock.Lock()
+	defer signalWidgetStateFlagsChangedLock.Unlock()
 
+	signalWidgetStateFlagsChangedId++
+	signalWidgetStateFlagsChangedMap[signalWidgetStateFlagsChangedId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.Widget_signal_connect_state_flags_changed(instance, C.gpointer(uintptr(signalWidgetStateFlagsChangedId)))
+}
+
+//export Widget_stateFlagsChangedHandler
 func Widget_stateFlagsChangedHandler() {}
 
 var signalWidgetStyleUpdatedId int
@@ -2386,8 +2426,18 @@ var signalWidgetStyleUpdatedLock sync.Mutex
 // WidgetSignalStyleUpdatedCallback is a callback function for a 'style-updated' signal emitted from a Widget.
 type WidgetSignalStyleUpdatedCallback func()
 
-func (recv *Widget) ConnectStyleUpdated() {}
+func (recv *Widget) ConnectStyleUpdated(callback WidgetSignalStyleUpdatedCallback) {
+	signalWidgetStyleUpdatedLock.Lock()
+	defer signalWidgetStyleUpdatedLock.Unlock()
 
+	signalWidgetStyleUpdatedId++
+	signalWidgetStyleUpdatedMap[signalWidgetStyleUpdatedId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.Widget_signal_connect_style_updated(instance, C.gpointer(uintptr(signalWidgetStyleUpdatedId)))
+}
+
+//export Widget_styleUpdatedHandler
 func Widget_styleUpdatedHandler() {}
 
 // Unsupported signal : unsupported parameter object : no type generator for Gdk.Event,

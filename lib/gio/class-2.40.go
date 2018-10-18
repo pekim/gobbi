@@ -73,8 +73,18 @@ var signalAppInfoMonitorChangedLock sync.Mutex
 // AppInfoMonitorSignalChangedCallback is a callback function for a 'changed' signal emitted from a AppInfoMonitor.
 type AppInfoMonitorSignalChangedCallback func()
 
-func (recv *AppInfoMonitor) ConnectChanged() {}
+func (recv *AppInfoMonitor) ConnectChanged(callback AppInfoMonitorSignalChangedCallback) {
+	signalAppInfoMonitorChangedLock.Lock()
+	defer signalAppInfoMonitorChangedLock.Unlock()
 
+	signalAppInfoMonitorChangedId++
+	signalAppInfoMonitorChangedMap[signalAppInfoMonitorChangedId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.AppInfoMonitor_signal_connect_changed(instance, C.gpointer(uintptr(signalAppInfoMonitorChangedId)))
+}
+
+//export AppInfoMonitor_changedHandler
 func AppInfoMonitor_changedHandler() {}
 
 // Unsupported signal : unsupported parameter info : no type generator for AppInfo,

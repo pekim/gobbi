@@ -205,8 +205,18 @@ var signalLevelBarOffsetChangedLock sync.Mutex
 // LevelBarSignalOffsetChangedCallback is a callback function for a 'offset-changed' signal emitted from a LevelBar.
 type LevelBarSignalOffsetChangedCallback func(name string)
 
-func (recv *LevelBar) ConnectOffsetChanged() {}
+func (recv *LevelBar) ConnectOffsetChanged(callback LevelBarSignalOffsetChangedCallback) {
+	signalLevelBarOffsetChangedLock.Lock()
+	defer signalLevelBarOffsetChangedLock.Unlock()
 
+	signalLevelBarOffsetChangedId++
+	signalLevelBarOffsetChangedMap[signalLevelBarOffsetChangedId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.LevelBar_signal_connect_offset_changed(instance, C.gpointer(uintptr(signalLevelBarOffsetChangedId)))
+}
+
+//export LevelBar_offsetChangedHandler
 func LevelBar_offsetChangedHandler() {}
 
 // LevelBarNew is a wrapper around the C function gtk_level_bar_new.

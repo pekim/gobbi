@@ -245,8 +245,18 @@ var signalWindowCreateSurfaceLock sync.Mutex
 // WindowSignalCreateSurfaceCallback is a callback function for a 'create-surface' signal emitted from a Window.
 type WindowSignalCreateSurfaceCallback func(width int32, height int32) cairo.Surface
 
-func (recv *Window) ConnectCreateSurface() {}
+func (recv *Window) ConnectCreateSurface(callback WindowSignalCreateSurfaceCallback) {
+	signalWindowCreateSurfaceLock.Lock()
+	defer signalWindowCreateSurfaceLock.Unlock()
 
+	signalWindowCreateSurfaceId++
+	signalWindowCreateSurfaceMap[signalWindowCreateSurfaceId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.Window_signal_connect_create_surface(instance, C.gpointer(uintptr(signalWindowCreateSurfaceId)))
+}
+
+//export Window_createSurfaceHandler
 func Window_createSurfaceHandler() {}
 
 // GetDeviceCursor is a wrapper around the C function gdk_window_get_device_cursor.

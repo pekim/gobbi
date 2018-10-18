@@ -413,8 +413,18 @@ var signalPlacesSidebarMountLock sync.Mutex
 // PlacesSidebarSignalMountCallback is a callback function for a 'mount' signal emitted from a PlacesSidebar.
 type PlacesSidebarSignalMountCallback func(mountOperation *gio.MountOperation)
 
-func (recv *PlacesSidebar) ConnectMount() {}
+func (recv *PlacesSidebar) ConnectMount(callback PlacesSidebarSignalMountCallback) {
+	signalPlacesSidebarMountLock.Lock()
+	defer signalPlacesSidebarMountLock.Unlock()
 
+	signalPlacesSidebarMountId++
+	signalPlacesSidebarMountMap[signalPlacesSidebarMountId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.PlacesSidebar_signal_connect_mount(instance, C.gpointer(uintptr(signalPlacesSidebarMountId)))
+}
+
+//export PlacesSidebar_mountHandler
 func PlacesSidebar_mountHandler() {}
 
 // Unsupported signal : unsupported parameter location : no type generator for Gio.File,
@@ -428,8 +438,18 @@ var signalPlacesSidebarShowOtherLocationsWithFlagsLock sync.Mutex
 // PlacesSidebarSignalShowOtherLocationsWithFlagsCallback is a callback function for a 'show-other-locations-with-flags' signal emitted from a PlacesSidebar.
 type PlacesSidebarSignalShowOtherLocationsWithFlagsCallback func(openFlags PlacesOpenFlags)
 
-func (recv *PlacesSidebar) ConnectShowOtherLocationsWithFlags() {}
+func (recv *PlacesSidebar) ConnectShowOtherLocationsWithFlags(callback PlacesSidebarSignalShowOtherLocationsWithFlagsCallback) {
+	signalPlacesSidebarShowOtherLocationsWithFlagsLock.Lock()
+	defer signalPlacesSidebarShowOtherLocationsWithFlagsLock.Unlock()
 
+	signalPlacesSidebarShowOtherLocationsWithFlagsId++
+	signalPlacesSidebarShowOtherLocationsWithFlagsMap[signalPlacesSidebarShowOtherLocationsWithFlagsId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.PlacesSidebar_signal_connect_show_other_locations_with_flags(instance, C.gpointer(uintptr(signalPlacesSidebarShowOtherLocationsWithFlagsId)))
+}
+
+//export PlacesSidebar_showOtherLocationsWithFlagsHandler
 func PlacesSidebar_showOtherLocationsWithFlagsHandler() {}
 
 var signalPlacesSidebarUnmountId int
@@ -439,8 +459,18 @@ var signalPlacesSidebarUnmountLock sync.Mutex
 // PlacesSidebarSignalUnmountCallback is a callback function for a 'unmount' signal emitted from a PlacesSidebar.
 type PlacesSidebarSignalUnmountCallback func(mountOperation *gio.MountOperation)
 
-func (recv *PlacesSidebar) ConnectUnmount() {}
+func (recv *PlacesSidebar) ConnectUnmount(callback PlacesSidebarSignalUnmountCallback) {
+	signalPlacesSidebarUnmountLock.Lock()
+	defer signalPlacesSidebarUnmountLock.Unlock()
 
+	signalPlacesSidebarUnmountId++
+	signalPlacesSidebarUnmountMap[signalPlacesSidebarUnmountId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.PlacesSidebar_signal_connect_unmount(instance, C.gpointer(uintptr(signalPlacesSidebarUnmountId)))
+}
+
+//export PlacesSidebar_unmountHandler
 func PlacesSidebar_unmountHandler() {}
 
 // GetConstrainTo is a wrapper around the C function gtk_popover_get_constrain_to.
@@ -643,8 +673,18 @@ var signalShortcutsSectionChangeCurrentPageLock sync.Mutex
 // ShortcutsSectionSignalChangeCurrentPageCallback is a callback function for a 'change-current-page' signal emitted from a ShortcutsSection.
 type ShortcutsSectionSignalChangeCurrentPageCallback func(object int32) bool
 
-func (recv *ShortcutsSection) ConnectChangeCurrentPage() {}
+func (recv *ShortcutsSection) ConnectChangeCurrentPage(callback ShortcutsSectionSignalChangeCurrentPageCallback) {
+	signalShortcutsSectionChangeCurrentPageLock.Lock()
+	defer signalShortcutsSectionChangeCurrentPageLock.Unlock()
 
+	signalShortcutsSectionChangeCurrentPageId++
+	signalShortcutsSectionChangeCurrentPageMap[signalShortcutsSectionChangeCurrentPageId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.ShortcutsSection_signal_connect_change_current_page(instance, C.gpointer(uintptr(signalShortcutsSectionChangeCurrentPageId)))
+}
+
+//export ShortcutsSection_changeCurrentPageHandler
 func ShortcutsSection_changeCurrentPageHandler() {}
 
 // ShortcutsShortcut is a wrapper around the C record GtkShortcutsShortcut.
@@ -764,8 +804,18 @@ var signalShortcutsWindowCloseLock sync.Mutex
 // ShortcutsWindowSignalCloseCallback is a callback function for a 'close' signal emitted from a ShortcutsWindow.
 type ShortcutsWindowSignalCloseCallback func()
 
-func (recv *ShortcutsWindow) ConnectClose() {}
+func (recv *ShortcutsWindow) ConnectClose(callback ShortcutsWindowSignalCloseCallback) {
+	signalShortcutsWindowCloseLock.Lock()
+	defer signalShortcutsWindowCloseLock.Unlock()
 
+	signalShortcutsWindowCloseId++
+	signalShortcutsWindowCloseMap[signalShortcutsWindowCloseId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.ShortcutsWindow_signal_connect_close(instance, C.gpointer(uintptr(signalShortcutsWindowCloseId)))
+}
+
+//export ShortcutsWindow_closeHandler
 func ShortcutsWindow_closeHandler() {}
 
 var signalShortcutsWindowSearchId int
@@ -775,8 +825,18 @@ var signalShortcutsWindowSearchLock sync.Mutex
 // ShortcutsWindowSignalSearchCallback is a callback function for a 'search' signal emitted from a ShortcutsWindow.
 type ShortcutsWindowSignalSearchCallback func()
 
-func (recv *ShortcutsWindow) ConnectSearch() {}
+func (recv *ShortcutsWindow) ConnectSearch(callback ShortcutsWindowSignalSearchCallback) {
+	signalShortcutsWindowSearchLock.Lock()
+	defer signalShortcutsWindowSearchLock.Unlock()
 
+	signalShortcutsWindowSearchId++
+	signalShortcutsWindowSearchMap[signalShortcutsWindowSearchId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.ShortcutsWindow_signal_connect_search(instance, C.gpointer(uintptr(signalShortcutsWindowSearchId)))
+}
+
+//export ShortcutsWindow_searchHandler
 func ShortcutsWindow_searchHandler() {}
 
 // Unsupported : gtk_status_icon_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon, GIcon*

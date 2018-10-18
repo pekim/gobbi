@@ -234,8 +234,18 @@ var signalAssistantApplyLock sync.Mutex
 // AssistantSignalApplyCallback is a callback function for a 'apply' signal emitted from a Assistant.
 type AssistantSignalApplyCallback func()
 
-func (recv *Assistant) ConnectApply() {}
+func (recv *Assistant) ConnectApply(callback AssistantSignalApplyCallback) {
+	signalAssistantApplyLock.Lock()
+	defer signalAssistantApplyLock.Unlock()
 
+	signalAssistantApplyId++
+	signalAssistantApplyMap[signalAssistantApplyId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.Assistant_signal_connect_apply(instance, C.gpointer(uintptr(signalAssistantApplyId)))
+}
+
+//export Assistant_applyHandler
 func Assistant_applyHandler() {}
 
 var signalAssistantCancelId int
@@ -245,8 +255,18 @@ var signalAssistantCancelLock sync.Mutex
 // AssistantSignalCancelCallback is a callback function for a 'cancel' signal emitted from a Assistant.
 type AssistantSignalCancelCallback func()
 
-func (recv *Assistant) ConnectCancel() {}
+func (recv *Assistant) ConnectCancel(callback AssistantSignalCancelCallback) {
+	signalAssistantCancelLock.Lock()
+	defer signalAssistantCancelLock.Unlock()
 
+	signalAssistantCancelId++
+	signalAssistantCancelMap[signalAssistantCancelId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.Assistant_signal_connect_cancel(instance, C.gpointer(uintptr(signalAssistantCancelId)))
+}
+
+//export Assistant_cancelHandler
 func Assistant_cancelHandler() {}
 
 var signalAssistantCloseId int
@@ -256,8 +276,18 @@ var signalAssistantCloseLock sync.Mutex
 // AssistantSignalCloseCallback is a callback function for a 'close' signal emitted from a Assistant.
 type AssistantSignalCloseCallback func()
 
-func (recv *Assistant) ConnectClose() {}
+func (recv *Assistant) ConnectClose(callback AssistantSignalCloseCallback) {
+	signalAssistantCloseLock.Lock()
+	defer signalAssistantCloseLock.Unlock()
 
+	signalAssistantCloseId++
+	signalAssistantCloseMap[signalAssistantCloseId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.Assistant_signal_connect_close(instance, C.gpointer(uintptr(signalAssistantCloseId)))
+}
+
+//export Assistant_closeHandler
 func Assistant_closeHandler() {}
 
 var signalAssistantPrepareId int
@@ -267,8 +297,18 @@ var signalAssistantPrepareLock sync.Mutex
 // AssistantSignalPrepareCallback is a callback function for a 'prepare' signal emitted from a Assistant.
 type AssistantSignalPrepareCallback func(page *Widget)
 
-func (recv *Assistant) ConnectPrepare() {}
+func (recv *Assistant) ConnectPrepare(callback AssistantSignalPrepareCallback) {
+	signalAssistantPrepareLock.Lock()
+	defer signalAssistantPrepareLock.Unlock()
 
+	signalAssistantPrepareId++
+	signalAssistantPrepareMap[signalAssistantPrepareId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.Assistant_signal_connect_prepare(instance, C.gpointer(uintptr(signalAssistantPrepareId)))
+}
+
+//export Assistant_prepareHandler
 func Assistant_prepareHandler() {}
 
 // AssistantNew is a wrapper around the C function gtk_assistant_new.
@@ -514,8 +554,18 @@ var signalCellRendererAccelAccelClearedLock sync.Mutex
 // CellRendererAccelSignalAccelClearedCallback is a callback function for a 'accel-cleared' signal emitted from a CellRendererAccel.
 type CellRendererAccelSignalAccelClearedCallback func(pathString string)
 
-func (recv *CellRendererAccel) ConnectAccelCleared() {}
+func (recv *CellRendererAccel) ConnectAccelCleared(callback CellRendererAccelSignalAccelClearedCallback) {
+	signalCellRendererAccelAccelClearedLock.Lock()
+	defer signalCellRendererAccelAccelClearedLock.Unlock()
 
+	signalCellRendererAccelAccelClearedId++
+	signalCellRendererAccelAccelClearedMap[signalCellRendererAccelAccelClearedId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.CellRendererAccel_signal_connect_accel_cleared(instance, C.gpointer(uintptr(signalCellRendererAccelAccelClearedId)))
+}
+
+//export CellRendererAccel_accelClearedHandler
 func CellRendererAccel_accelClearedHandler() {}
 
 var signalCellRendererAccelAccelEditedId int
@@ -525,8 +575,18 @@ var signalCellRendererAccelAccelEditedLock sync.Mutex
 // CellRendererAccelSignalAccelEditedCallback is a callback function for a 'accel-edited' signal emitted from a CellRendererAccel.
 type CellRendererAccelSignalAccelEditedCallback func(pathString string, accelKey uint32, accelMods gdk.ModifierType, hardwareKeycode uint32)
 
-func (recv *CellRendererAccel) ConnectAccelEdited() {}
+func (recv *CellRendererAccel) ConnectAccelEdited(callback CellRendererAccelSignalAccelEditedCallback) {
+	signalCellRendererAccelAccelEditedLock.Lock()
+	defer signalCellRendererAccelAccelEditedLock.Unlock()
 
+	signalCellRendererAccelAccelEditedId++
+	signalCellRendererAccelAccelEditedMap[signalCellRendererAccelAccelEditedId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.CellRendererAccel_signal_connect_accel_edited(instance, C.gpointer(uintptr(signalCellRendererAccelAccelEditedId)))
+}
+
+//export CellRendererAccel_accelEditedHandler
 func CellRendererAccel_accelEditedHandler() {}
 
 // CellRendererAccelNew is a wrapper around the C function gtk_cell_renderer_accel_new.
@@ -724,8 +784,18 @@ var signalNotebookPageAddedLock sync.Mutex
 // NotebookSignalPageAddedCallback is a callback function for a 'page-added' signal emitted from a Notebook.
 type NotebookSignalPageAddedCallback func(child *Widget, pageNum uint32)
 
-func (recv *Notebook) ConnectPageAdded() {}
+func (recv *Notebook) ConnectPageAdded(callback NotebookSignalPageAddedCallback) {
+	signalNotebookPageAddedLock.Lock()
+	defer signalNotebookPageAddedLock.Unlock()
 
+	signalNotebookPageAddedId++
+	signalNotebookPageAddedMap[signalNotebookPageAddedId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.Notebook_signal_connect_page_added(instance, C.gpointer(uintptr(signalNotebookPageAddedId)))
+}
+
+//export Notebook_pageAddedHandler
 func Notebook_pageAddedHandler() {}
 
 var signalNotebookPageRemovedId int
@@ -735,8 +805,18 @@ var signalNotebookPageRemovedLock sync.Mutex
 // NotebookSignalPageRemovedCallback is a callback function for a 'page-removed' signal emitted from a Notebook.
 type NotebookSignalPageRemovedCallback func(child *Widget, pageNum uint32)
 
-func (recv *Notebook) ConnectPageRemoved() {}
+func (recv *Notebook) ConnectPageRemoved(callback NotebookSignalPageRemovedCallback) {
+	signalNotebookPageRemovedLock.Lock()
+	defer signalNotebookPageRemovedLock.Unlock()
 
+	signalNotebookPageRemovedId++
+	signalNotebookPageRemovedMap[signalNotebookPageRemovedId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.Notebook_signal_connect_page_removed(instance, C.gpointer(uintptr(signalNotebookPageRemovedId)))
+}
+
+//export Notebook_pageRemovedHandler
 func Notebook_pageRemovedHandler() {}
 
 var signalNotebookPageReorderedId int
@@ -746,8 +826,18 @@ var signalNotebookPageReorderedLock sync.Mutex
 // NotebookSignalPageReorderedCallback is a callback function for a 'page-reordered' signal emitted from a Notebook.
 type NotebookSignalPageReorderedCallback func(child *Widget, pageNum uint32)
 
-func (recv *Notebook) ConnectPageReordered() {}
+func (recv *Notebook) ConnectPageReordered(callback NotebookSignalPageReorderedCallback) {
+	signalNotebookPageReorderedLock.Lock()
+	defer signalNotebookPageReorderedLock.Unlock()
 
+	signalNotebookPageReorderedId++
+	signalNotebookPageReorderedMap[signalNotebookPageReorderedId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.Notebook_signal_connect_page_reordered(instance, C.gpointer(uintptr(signalNotebookPageReorderedId)))
+}
+
+//export Notebook_pageReorderedHandler
 func Notebook_pageReorderedHandler() {}
 
 // GetTabDetachable is a wrapper around the C function gtk_notebook_get_tab_detachable.
@@ -1081,8 +1171,18 @@ var signalPrintOperationBeginPrintLock sync.Mutex
 // PrintOperationSignalBeginPrintCallback is a callback function for a 'begin-print' signal emitted from a PrintOperation.
 type PrintOperationSignalBeginPrintCallback func(context *PrintContext)
 
-func (recv *PrintOperation) ConnectBeginPrint() {}
+func (recv *PrintOperation) ConnectBeginPrint(callback PrintOperationSignalBeginPrintCallback) {
+	signalPrintOperationBeginPrintLock.Lock()
+	defer signalPrintOperationBeginPrintLock.Unlock()
 
+	signalPrintOperationBeginPrintId++
+	signalPrintOperationBeginPrintMap[signalPrintOperationBeginPrintId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.PrintOperation_signal_connect_begin_print(instance, C.gpointer(uintptr(signalPrintOperationBeginPrintId)))
+}
+
+//export PrintOperation_beginPrintHandler
 func PrintOperation_beginPrintHandler() {}
 
 var signalPrintOperationCreateCustomWidgetId int
@@ -1092,8 +1192,18 @@ var signalPrintOperationCreateCustomWidgetLock sync.Mutex
 // PrintOperationSignalCreateCustomWidgetCallback is a callback function for a 'create-custom-widget' signal emitted from a PrintOperation.
 type PrintOperationSignalCreateCustomWidgetCallback func() gobject.Object
 
-func (recv *PrintOperation) ConnectCreateCustomWidget() {}
+func (recv *PrintOperation) ConnectCreateCustomWidget(callback PrintOperationSignalCreateCustomWidgetCallback) {
+	signalPrintOperationCreateCustomWidgetLock.Lock()
+	defer signalPrintOperationCreateCustomWidgetLock.Unlock()
 
+	signalPrintOperationCreateCustomWidgetId++
+	signalPrintOperationCreateCustomWidgetMap[signalPrintOperationCreateCustomWidgetId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.PrintOperation_signal_connect_create_custom_widget(instance, C.gpointer(uintptr(signalPrintOperationCreateCustomWidgetId)))
+}
+
+//export PrintOperation_createCustomWidgetHandler
 func PrintOperation_createCustomWidgetHandler() {}
 
 var signalPrintOperationCustomWidgetApplyId int
@@ -1103,8 +1213,18 @@ var signalPrintOperationCustomWidgetApplyLock sync.Mutex
 // PrintOperationSignalCustomWidgetApplyCallback is a callback function for a 'custom-widget-apply' signal emitted from a PrintOperation.
 type PrintOperationSignalCustomWidgetApplyCallback func(widget *Widget)
 
-func (recv *PrintOperation) ConnectCustomWidgetApply() {}
+func (recv *PrintOperation) ConnectCustomWidgetApply(callback PrintOperationSignalCustomWidgetApplyCallback) {
+	signalPrintOperationCustomWidgetApplyLock.Lock()
+	defer signalPrintOperationCustomWidgetApplyLock.Unlock()
 
+	signalPrintOperationCustomWidgetApplyId++
+	signalPrintOperationCustomWidgetApplyMap[signalPrintOperationCustomWidgetApplyId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.PrintOperation_signal_connect_custom_widget_apply(instance, C.gpointer(uintptr(signalPrintOperationCustomWidgetApplyId)))
+}
+
+//export PrintOperation_customWidgetApplyHandler
 func PrintOperation_customWidgetApplyHandler() {}
 
 var signalPrintOperationDoneId int
@@ -1114,8 +1234,18 @@ var signalPrintOperationDoneLock sync.Mutex
 // PrintOperationSignalDoneCallback is a callback function for a 'done' signal emitted from a PrintOperation.
 type PrintOperationSignalDoneCallback func(result PrintOperationResult)
 
-func (recv *PrintOperation) ConnectDone() {}
+func (recv *PrintOperation) ConnectDone(callback PrintOperationSignalDoneCallback) {
+	signalPrintOperationDoneLock.Lock()
+	defer signalPrintOperationDoneLock.Unlock()
 
+	signalPrintOperationDoneId++
+	signalPrintOperationDoneMap[signalPrintOperationDoneId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.PrintOperation_signal_connect_done(instance, C.gpointer(uintptr(signalPrintOperationDoneId)))
+}
+
+//export PrintOperation_doneHandler
 func PrintOperation_doneHandler() {}
 
 var signalPrintOperationDrawPageId int
@@ -1125,8 +1255,18 @@ var signalPrintOperationDrawPageLock sync.Mutex
 // PrintOperationSignalDrawPageCallback is a callback function for a 'draw-page' signal emitted from a PrintOperation.
 type PrintOperationSignalDrawPageCallback func(context *PrintContext, pageNr int32)
 
-func (recv *PrintOperation) ConnectDrawPage() {}
+func (recv *PrintOperation) ConnectDrawPage(callback PrintOperationSignalDrawPageCallback) {
+	signalPrintOperationDrawPageLock.Lock()
+	defer signalPrintOperationDrawPageLock.Unlock()
 
+	signalPrintOperationDrawPageId++
+	signalPrintOperationDrawPageMap[signalPrintOperationDrawPageId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.PrintOperation_signal_connect_draw_page(instance, C.gpointer(uintptr(signalPrintOperationDrawPageId)))
+}
+
+//export PrintOperation_drawPageHandler
 func PrintOperation_drawPageHandler() {}
 
 var signalPrintOperationEndPrintId int
@@ -1136,8 +1276,18 @@ var signalPrintOperationEndPrintLock sync.Mutex
 // PrintOperationSignalEndPrintCallback is a callback function for a 'end-print' signal emitted from a PrintOperation.
 type PrintOperationSignalEndPrintCallback func(context *PrintContext)
 
-func (recv *PrintOperation) ConnectEndPrint() {}
+func (recv *PrintOperation) ConnectEndPrint(callback PrintOperationSignalEndPrintCallback) {
+	signalPrintOperationEndPrintLock.Lock()
+	defer signalPrintOperationEndPrintLock.Unlock()
 
+	signalPrintOperationEndPrintId++
+	signalPrintOperationEndPrintMap[signalPrintOperationEndPrintId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.PrintOperation_signal_connect_end_print(instance, C.gpointer(uintptr(signalPrintOperationEndPrintId)))
+}
+
+//export PrintOperation_endPrintHandler
 func PrintOperation_endPrintHandler() {}
 
 var signalPrintOperationPaginateId int
@@ -1147,8 +1297,18 @@ var signalPrintOperationPaginateLock sync.Mutex
 // PrintOperationSignalPaginateCallback is a callback function for a 'paginate' signal emitted from a PrintOperation.
 type PrintOperationSignalPaginateCallback func(context *PrintContext) bool
 
-func (recv *PrintOperation) ConnectPaginate() {}
+func (recv *PrintOperation) ConnectPaginate(callback PrintOperationSignalPaginateCallback) {
+	signalPrintOperationPaginateLock.Lock()
+	defer signalPrintOperationPaginateLock.Unlock()
 
+	signalPrintOperationPaginateId++
+	signalPrintOperationPaginateMap[signalPrintOperationPaginateId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.PrintOperation_signal_connect_paginate(instance, C.gpointer(uintptr(signalPrintOperationPaginateId)))
+}
+
+//export PrintOperation_paginateHandler
 func PrintOperation_paginateHandler() {}
 
 // Unsupported signal : unsupported parameter preview : no type generator for PrintOperationPreview,
@@ -1160,8 +1320,18 @@ var signalPrintOperationRequestPageSetupLock sync.Mutex
 // PrintOperationSignalRequestPageSetupCallback is a callback function for a 'request-page-setup' signal emitted from a PrintOperation.
 type PrintOperationSignalRequestPageSetupCallback func(context *PrintContext, pageNr int32, setup *PageSetup)
 
-func (recv *PrintOperation) ConnectRequestPageSetup() {}
+func (recv *PrintOperation) ConnectRequestPageSetup(callback PrintOperationSignalRequestPageSetupCallback) {
+	signalPrintOperationRequestPageSetupLock.Lock()
+	defer signalPrintOperationRequestPageSetupLock.Unlock()
 
+	signalPrintOperationRequestPageSetupId++
+	signalPrintOperationRequestPageSetupMap[signalPrintOperationRequestPageSetupId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.PrintOperation_signal_connect_request_page_setup(instance, C.gpointer(uintptr(signalPrintOperationRequestPageSetupId)))
+}
+
+//export PrintOperation_requestPageSetupHandler
 func PrintOperation_requestPageSetupHandler() {}
 
 var signalPrintOperationStatusChangedId int
@@ -1171,8 +1341,18 @@ var signalPrintOperationStatusChangedLock sync.Mutex
 // PrintOperationSignalStatusChangedCallback is a callback function for a 'status-changed' signal emitted from a PrintOperation.
 type PrintOperationSignalStatusChangedCallback func()
 
-func (recv *PrintOperation) ConnectStatusChanged() {}
+func (recv *PrintOperation) ConnectStatusChanged(callback PrintOperationSignalStatusChangedCallback) {
+	signalPrintOperationStatusChangedLock.Lock()
+	defer signalPrintOperationStatusChangedLock.Unlock()
 
+	signalPrintOperationStatusChangedId++
+	signalPrintOperationStatusChangedMap[signalPrintOperationStatusChangedId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.PrintOperation_signal_connect_status_changed(instance, C.gpointer(uintptr(signalPrintOperationStatusChangedId)))
+}
+
+//export PrintOperation_statusChangedHandler
 func PrintOperation_statusChangedHandler() {}
 
 // PrintOperationNew is a wrapper around the C function gtk_print_operation_new.
@@ -2328,8 +2508,18 @@ var signalSpinButtonWrappedLock sync.Mutex
 // SpinButtonSignalWrappedCallback is a callback function for a 'wrapped' signal emitted from a SpinButton.
 type SpinButtonSignalWrappedCallback func()
 
-func (recv *SpinButton) ConnectWrapped() {}
+func (recv *SpinButton) ConnectWrapped(callback SpinButtonSignalWrappedCallback) {
+	signalSpinButtonWrappedLock.Lock()
+	defer signalSpinButtonWrappedLock.Unlock()
 
+	signalSpinButtonWrappedId++
+	signalSpinButtonWrappedMap[signalSpinButtonWrappedId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.SpinButton_signal_connect_wrapped(instance, C.gpointer(uintptr(signalSpinButtonWrappedId)))
+}
+
+//export SpinButton_wrappedHandler
 func SpinButton_wrappedHandler() {}
 
 var signalStatusIconActivateId int
@@ -2339,8 +2529,18 @@ var signalStatusIconActivateLock sync.Mutex
 // StatusIconSignalActivateCallback is a callback function for a 'activate' signal emitted from a StatusIcon.
 type StatusIconSignalActivateCallback func()
 
-func (recv *StatusIcon) ConnectActivate() {}
+func (recv *StatusIcon) ConnectActivate(callback StatusIconSignalActivateCallback) {
+	signalStatusIconActivateLock.Lock()
+	defer signalStatusIconActivateLock.Unlock()
 
+	signalStatusIconActivateId++
+	signalStatusIconActivateMap[signalStatusIconActivateId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.StatusIcon_signal_connect_activate(instance, C.gpointer(uintptr(signalStatusIconActivateId)))
+}
+
+//export StatusIcon_activateHandler
 func StatusIcon_activateHandler() {}
 
 var signalStatusIconPopupMenuId int
@@ -2350,8 +2550,18 @@ var signalStatusIconPopupMenuLock sync.Mutex
 // StatusIconSignalPopupMenuCallback is a callback function for a 'popup-menu' signal emitted from a StatusIcon.
 type StatusIconSignalPopupMenuCallback func(button uint32, activateTime uint32)
 
-func (recv *StatusIcon) ConnectPopupMenu() {}
+func (recv *StatusIcon) ConnectPopupMenu(callback StatusIconSignalPopupMenuCallback) {
+	signalStatusIconPopupMenuLock.Lock()
+	defer signalStatusIconPopupMenuLock.Unlock()
 
+	signalStatusIconPopupMenuId++
+	signalStatusIconPopupMenuMap[signalStatusIconPopupMenuId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.StatusIcon_signal_connect_popup_menu(instance, C.gpointer(uintptr(signalStatusIconPopupMenuId)))
+}
+
+//export StatusIcon_popupMenuHandler
 func StatusIcon_popupMenuHandler() {}
 
 var signalStatusIconSizeChangedId int
@@ -2361,8 +2571,18 @@ var signalStatusIconSizeChangedLock sync.Mutex
 // StatusIconSignalSizeChangedCallback is a callback function for a 'size-changed' signal emitted from a StatusIcon.
 type StatusIconSignalSizeChangedCallback func(size int32) bool
 
-func (recv *StatusIcon) ConnectSizeChanged() {}
+func (recv *StatusIcon) ConnectSizeChanged(callback StatusIconSignalSizeChangedCallback) {
+	signalStatusIconSizeChangedLock.Lock()
+	defer signalStatusIconSizeChangedLock.Unlock()
 
+	signalStatusIconSizeChangedId++
+	signalStatusIconSizeChangedMap[signalStatusIconSizeChangedId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.StatusIcon_signal_connect_size_changed(instance, C.gpointer(uintptr(signalStatusIconSizeChangedId)))
+}
+
+//export StatusIcon_sizeChangedHandler
 func StatusIcon_sizeChangedHandler() {}
 
 // StatusIconNew is a wrapper around the C function gtk_status_icon_new.

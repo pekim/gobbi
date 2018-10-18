@@ -429,8 +429,18 @@ var signalClipboardOwnerChangeLock sync.Mutex
 // ClipboardSignalOwnerChangeCallback is a callback function for a 'owner-change' signal emitted from a Clipboard.
 type ClipboardSignalOwnerChangeCallback func(event *gdk.EventOwnerChange)
 
-func (recv *Clipboard) ConnectOwnerChange() {}
+func (recv *Clipboard) ConnectOwnerChange(callback ClipboardSignalOwnerChangeCallback) {
+	signalClipboardOwnerChangeLock.Lock()
+	defer signalClipboardOwnerChangeLock.Unlock()
 
+	signalClipboardOwnerChangeId++
+	signalClipboardOwnerChangeMap[signalClipboardOwnerChangeId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.Clipboard_signal_connect_owner_change(instance, C.gpointer(uintptr(signalClipboardOwnerChangeId)))
+}
+
+//export Clipboard_ownerChangeHandler
 func Clipboard_ownerChangeHandler() {}
 
 // Unsupported : gtk_clipboard_request_image : unsupported parameter callback : no type generator for ClipboardImageReceivedFunc, GtkClipboardImageReceivedFunc
@@ -554,8 +564,18 @@ var signalEntryCompletionInsertPrefixLock sync.Mutex
 // EntryCompletionSignalInsertPrefixCallback is a callback function for a 'insert-prefix' signal emitted from a EntryCompletion.
 type EntryCompletionSignalInsertPrefixCallback func(prefix string) bool
 
-func (recv *EntryCompletion) ConnectInsertPrefix() {}
+func (recv *EntryCompletion) ConnectInsertPrefix(callback EntryCompletionSignalInsertPrefixCallback) {
+	signalEntryCompletionInsertPrefixLock.Lock()
+	defer signalEntryCompletionInsertPrefixLock.Unlock()
 
+	signalEntryCompletionInsertPrefixId++
+	signalEntryCompletionInsertPrefixMap[signalEntryCompletionInsertPrefixId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.EntryCompletion_signal_connect_insert_prefix(instance, C.gpointer(uintptr(signalEntryCompletionInsertPrefixId)))
+}
+
+//export EntryCompletion_insertPrefixHandler
 func EntryCompletion_insertPrefixHandler() {}
 
 // Unsupported signal : unsupported parameter model : no type generator for TreeModel,
@@ -1172,8 +1192,18 @@ var signalRangeChangeValueLock sync.Mutex
 // RangeSignalChangeValueCallback is a callback function for a 'change-value' signal emitted from a Range.
 type RangeSignalChangeValueCallback func(scroll ScrollType, value float64) bool
 
-func (recv *Range) ConnectChangeValue() {}
+func (recv *Range) ConnectChangeValue(callback RangeSignalChangeValueCallback) {
+	signalRangeChangeValueLock.Lock()
+	defer signalRangeChangeValueLock.Unlock()
 
+	signalRangeChangeValueId++
+	signalRangeChangeValueMap[signalRangeChangeValueId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.Range_signal_connect_change_value(instance, C.gpointer(uintptr(signalRangeChangeValueId)))
+}
+
+//export Range_changeValueHandler
 func Range_changeValueHandler() {}
 
 // Unsupported : gtk_recent_chooser_dialog_new : unsupported parameter ... : varargs

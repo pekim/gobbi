@@ -40,8 +40,18 @@ var signalAppLaunchContextLaunchFailedLock sync.Mutex
 // AppLaunchContextSignalLaunchFailedCallback is a callback function for a 'launch-failed' signal emitted from a AppLaunchContext.
 type AppLaunchContextSignalLaunchFailedCallback func(startupNotifyId string)
 
-func (recv *AppLaunchContext) ConnectLaunchFailed() {}
+func (recv *AppLaunchContext) ConnectLaunchFailed(callback AppLaunchContextSignalLaunchFailedCallback) {
+	signalAppLaunchContextLaunchFailedLock.Lock()
+	defer signalAppLaunchContextLaunchFailedLock.Unlock()
 
+	signalAppLaunchContextLaunchFailedId++
+	signalAppLaunchContextLaunchFailedMap[signalAppLaunchContextLaunchFailedId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.AppLaunchContext_signal_connect_launch_failed(instance, C.gpointer(uintptr(signalAppLaunchContextLaunchFailedId)))
+}
+
+//export AppLaunchContext_launchFailedHandler
 func AppLaunchContext_launchFailedHandler() {}
 
 // Unsupported signal : unsupported parameter info : no type generator for AppInfo,

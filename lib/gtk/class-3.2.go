@@ -84,8 +84,18 @@ var signalApplicationWindowAddedLock sync.Mutex
 // ApplicationSignalWindowAddedCallback is a callback function for a 'window-added' signal emitted from a Application.
 type ApplicationSignalWindowAddedCallback func(window *Window)
 
-func (recv *Application) ConnectWindowAdded() {}
+func (recv *Application) ConnectWindowAdded(callback ApplicationSignalWindowAddedCallback) {
+	signalApplicationWindowAddedLock.Lock()
+	defer signalApplicationWindowAddedLock.Unlock()
 
+	signalApplicationWindowAddedId++
+	signalApplicationWindowAddedMap[signalApplicationWindowAddedId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.Application_signal_connect_window_added(instance, C.gpointer(uintptr(signalApplicationWindowAddedId)))
+}
+
+//export Application_windowAddedHandler
 func Application_windowAddedHandler() {}
 
 var signalApplicationWindowRemovedId int
@@ -95,8 +105,18 @@ var signalApplicationWindowRemovedLock sync.Mutex
 // ApplicationSignalWindowRemovedCallback is a callback function for a 'window-removed' signal emitted from a Application.
 type ApplicationSignalWindowRemovedCallback func(window *Window)
 
-func (recv *Application) ConnectWindowRemoved() {}
+func (recv *Application) ConnectWindowRemoved(callback ApplicationSignalWindowRemovedCallback) {
+	signalApplicationWindowRemovedLock.Lock()
+	defer signalApplicationWindowRemovedLock.Unlock()
 
+	signalApplicationWindowRemovedId++
+	signalApplicationWindowRemovedMap[signalApplicationWindowRemovedId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.Application_signal_connect_window_removed(instance, C.gpointer(uintptr(signalApplicationWindowRemovedId)))
+}
+
+//export Application_windowRemovedHandler
 func Application_windowRemovedHandler() {}
 
 // RemovePage is a wrapper around the C function gtk_assistant_remove_page.
@@ -325,8 +345,18 @@ var signalMenuShellInsertLock sync.Mutex
 // MenuShellSignalInsertCallback is a callback function for a 'insert' signal emitted from a MenuShell.
 type MenuShellSignalInsertCallback func(child *Widget, position int32)
 
-func (recv *MenuShell) ConnectInsert() {}
+func (recv *MenuShell) ConnectInsert(callback MenuShellSignalInsertCallback) {
+	signalMenuShellInsertLock.Lock()
+	defer signalMenuShellInsertLock.Unlock()
 
+	signalMenuShellInsertId++
+	signalMenuShellInsertMap[signalMenuShellInsertId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.MenuShell_signal_connect_insert(instance, C.gpointer(uintptr(signalMenuShellInsertId)))
+}
+
+//export MenuShell_insertHandler
 func MenuShell_insertHandler() {}
 
 // Unsupported : gtk_message_dialog_new : unsupported parameter ... : varargs
