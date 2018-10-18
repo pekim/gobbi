@@ -1467,7 +1467,7 @@ func (recv *PrintOperation) DisconnectCreateCustomWidget(connectionID int) {
 }
 
 //export PrintOperation_createCustomWidgetHandler
-func PrintOperation_createCustomWidgetHandler() {
+func PrintOperation_createCustomWidgetHandler() gobject.Object {
 	fmt.Println("cb")
 }
 
@@ -1692,7 +1692,7 @@ func (recv *PrintOperation) DisconnectPaginate(connectionID int) {
 }
 
 //export PrintOperation_paginateHandler
-func PrintOperation_paginateHandler() {
+func PrintOperation_paginateHandler() bool {
 	fmt.Println("cb")
 }
 
@@ -3110,7 +3110,7 @@ func (recv *StatusIcon) DisconnectSizeChanged(connectionID int) {
 }
 
 //export StatusIcon_sizeChangedHandler
-func StatusIcon_sizeChangedHandler() {
+func StatusIcon_sizeChangedHandler() bool {
 	fmt.Println("cb")
 }
 

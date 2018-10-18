@@ -757,7 +757,7 @@ func (recv *Label) DisconnectActivateLink(connectionID int) {
 }
 
 //export Label_activateLinkHandler
-func Label_activateLinkHandler() {
+func Label_activateLinkHandler() bool {
 	fmt.Println("cb")
 }
 

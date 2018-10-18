@@ -230,7 +230,7 @@ func (recv *ComboBox) DisconnectFormatEntryText(connectionID int) {
 }
 
 //export ComboBox_formatEntryTextHandler
-func ComboBox_formatEntryTextHandler() {
+func ComboBox_formatEntryTextHandler() string {
 	fmt.Println("cb")
 }
 

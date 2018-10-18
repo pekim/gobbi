@@ -1903,7 +1903,7 @@ func (recv *Switch) DisconnectStateSet(connectionID int) {
 }
 
 //export Switch_stateSetHandler
-func Switch_stateSetHandler() {
+func Switch_stateSetHandler() bool {
 	fmt.Println("cb")
 }
 

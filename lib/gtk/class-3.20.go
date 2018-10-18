@@ -780,7 +780,7 @@ func (recv *ShortcutsSection) DisconnectChangeCurrentPage(connectionID int) {
 }
 
 //export ShortcutsSection_changeCurrentPageHandler
-func ShortcutsSection_changeCurrentPageHandler() {
+func ShortcutsSection_changeCurrentPageHandler() bool {
 	fmt.Println("cb")
 }
 

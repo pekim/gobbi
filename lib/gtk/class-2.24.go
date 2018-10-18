@@ -66,7 +66,7 @@ func (recv *AboutDialog) DisconnectActivateLink(connectionID int) {
 }
 
 //export AboutDialog_activateLinkHandler
-func AboutDialog_activateLinkHandler() {
+func AboutDialog_activateLinkHandler() bool {
 	fmt.Println("cb")
 }
 

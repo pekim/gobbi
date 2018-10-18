@@ -127,7 +127,7 @@ func (recv *Window) DisconnectPickEmbeddedChild(connectionID int) {
 }
 
 //export Window_pickEmbeddedChildHandler
-func Window_pickEmbeddedChildHandler() {
+func Window_pickEmbeddedChildHandler() Window {
 	fmt.Println("cb")
 }
 

@@ -21,5 +21,6 @@ type TypeGenerator interface {
 	generateParamOutCVar(g *jen.Group, cVarName string)
 
 	generateReturnFunctionDeclaration(g *jen.Group)
+	generateReturnFunctionDeclarationCtype(g *jen.Group)
 	generateReturnCToGo(g *jen.Group, isParam bool, cVarName string, goVarName string, pkg string, transferOwnership string)
 }

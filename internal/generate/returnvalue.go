@@ -66,6 +66,14 @@ func (r *ReturnValue) generateFunctionDeclaration(g *jen.Group) {
 	r.Type.generator.generateReturnFunctionDeclaration(g)
 }
 
+func (r *ReturnValue) generateFunctionDeclarationCtype(g *jen.Group) {
+	if r.Type.Name == "none" {
+		return
+	}
+
+	r.Type.generator.generateReturnFunctionDeclarationCtype(g)
+}
+
 func (r *ReturnValue) generateCToGo(g *jen.Group, cVarName string, goVarName string) {
 	if r.Type.Name == "none" {
 		return

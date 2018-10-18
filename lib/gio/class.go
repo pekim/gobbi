@@ -3803,7 +3803,7 @@ func (recv *Settings) DisconnectWritableChangeEvent(connectionID int) {
 }
 
 //export Settings_writableChangeEventHandler
-func Settings_writableChangeEventHandler() {
+func Settings_writableChangeEventHandler() bool {
 	fmt.Println("cb")
 }
 

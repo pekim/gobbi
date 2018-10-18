@@ -1613,7 +1613,7 @@ func (recv *ThreadedSocketService) DisconnectRun(connectionID int) {
 }
 
 //export ThreadedSocketService_runHandler
-func ThreadedSocketService_runHandler() {
+func ThreadedSocketService_runHandler() bool {
 	fmt.Println("cb")
 }
 

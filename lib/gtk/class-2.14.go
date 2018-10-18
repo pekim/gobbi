@@ -872,7 +872,7 @@ func (recv *StatusIcon) DisconnectButtonPressEvent(connectionID int) {
 }
 
 //export StatusIcon_buttonPressEventHandler
-func StatusIcon_buttonPressEventHandler() {
+func StatusIcon_buttonPressEventHandler() bool {
 	fmt.Println("cb")
 }
 
@@ -917,7 +917,7 @@ func (recv *StatusIcon) DisconnectButtonReleaseEvent(connectionID int) {
 }
 
 //export StatusIcon_buttonReleaseEventHandler
-func StatusIcon_buttonReleaseEventHandler() {
+func StatusIcon_buttonReleaseEventHandler() bool {
 	fmt.Println("cb")
 }
 
@@ -999,7 +999,7 @@ func (recv *Widget) DisconnectDamageEvent(connectionID int) {
 }
 
 //export Widget_damageEventHandler
-func Widget_damageEventHandler() {
+func Widget_damageEventHandler() bool {
 	fmt.Println("cb")
 }
 

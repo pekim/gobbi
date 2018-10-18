@@ -913,7 +913,7 @@ func (recv *PlacesSidebar) DisconnectDragActionAsk(connectionID int) {
 }
 
 //export PlacesSidebar_dragActionAskHandler
-func PlacesSidebar_dragActionAskHandler() {
+func PlacesSidebar_dragActionAskHandler() int32 {
 	fmt.Println("cb")
 }
 

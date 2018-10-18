@@ -623,7 +623,7 @@ func (recv *EntryCompletion) DisconnectInsertPrefix(connectionID int) {
 }
 
 //export EntryCompletion_insertPrefixHandler
-func EntryCompletion_insertPrefixHandler() {
+func EntryCompletion_insertPrefixHandler() bool {
 	fmt.Println("cb")
 }
 
@@ -1275,7 +1275,7 @@ func (recv *Range) DisconnectChangeValue(connectionID int) {
 }
 
 //export Range_changeValueHandler
-func Range_changeValueHandler() {
+func Range_changeValueHandler() bool {
 	fmt.Println("cb")
 }
 

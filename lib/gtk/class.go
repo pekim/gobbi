@@ -2295,7 +2295,7 @@ func (recv *AccelGroup) DisconnectAccelActivate(connectionID int) {
 }
 
 //export AccelGroup_accelActivateHandler
-func AccelGroup_accelActivateHandler() {
+func AccelGroup_accelActivateHandler() bool {
 	fmt.Println("cb")
 }
 
@@ -9918,7 +9918,7 @@ func (recv *FlowBox) DisconnectMoveCursor(connectionID int) {
 }
 
 //export FlowBox_moveCursorHandler
-func FlowBox_moveCursorHandler() {
+func FlowBox_moveCursorHandler() bool {
 	fmt.Println("cb")
 }
 
@@ -12338,7 +12338,7 @@ func (recv *IMContext) DisconnectDeleteSurrounding(connectionID int) {
 }
 
 //export IMContext_deleteSurroundingHandler
-func IMContext_deleteSurroundingHandler() {
+func IMContext_deleteSurroundingHandler() bool {
 	fmt.Println("cb")
 }
 
@@ -12518,7 +12518,7 @@ func (recv *IMContext) DisconnectRetrieveSurrounding(connectionID int) {
 }
 
 //export IMContext_retrieveSurroundingHandler
-func IMContext_retrieveSurroundingHandler() {
+func IMContext_retrieveSurroundingHandler() bool {
 	fmt.Println("cb")
 }
 
@@ -13006,7 +13006,7 @@ func (recv *IconView) DisconnectActivateCursorItem(connectionID int) {
 }
 
 //export IconView_activateCursorItemHandler
-func IconView_activateCursorItemHandler() {
+func IconView_activateCursorItemHandler() bool {
 	fmt.Println("cb")
 }
 
@@ -13096,7 +13096,7 @@ func (recv *IconView) DisconnectMoveCursor(connectionID int) {
 }
 
 //export IconView_moveCursorHandler
-func IconView_moveCursorHandler() {
+func IconView_moveCursorHandler() bool {
 	fmt.Println("cb")
 }
 
@@ -14704,7 +14704,7 @@ func (recv *LinkButton) DisconnectActivateLink(connectionID int) {
 }
 
 //export LinkButton_activateLinkHandler
-func LinkButton_activateLinkHandler() {
+func LinkButton_activateLinkHandler() bool {
 	fmt.Println("cb")
 }
 
@@ -17191,7 +17191,7 @@ func (recv *Notebook) DisconnectChangeCurrentPage(connectionID int) {
 }
 
 //export Notebook_changeCurrentPageHandler
-func Notebook_changeCurrentPageHandler() {
+func Notebook_changeCurrentPageHandler() bool {
 	fmt.Println("cb")
 }
 
@@ -17236,7 +17236,7 @@ func (recv *Notebook) DisconnectFocusTab(connectionID int) {
 }
 
 //export Notebook_focusTabHandler
-func Notebook_focusTabHandler() {
+func Notebook_focusTabHandler() bool {
 	fmt.Println("cb")
 }
 
@@ -17326,7 +17326,7 @@ func (recv *Notebook) DisconnectReorderTab(connectionID int) {
 }
 
 //export Notebook_reorderTabHandler
-func Notebook_reorderTabHandler() {
+func Notebook_reorderTabHandler() bool {
 	fmt.Println("cb")
 }
 
@@ -17371,7 +17371,7 @@ func (recv *Notebook) DisconnectSelectPage(connectionID int) {
 }
 
 //export Notebook_selectPageHandler
-func Notebook_selectPageHandler() {
+func Notebook_selectPageHandler() bool {
 	fmt.Println("cb")
 }
 
@@ -20188,7 +20188,7 @@ func (recv *Scale) DisconnectFormatValue(connectionID int) {
 }
 
 //export Scale_formatValueHandler
-func Scale_formatValueHandler() {
+func Scale_formatValueHandler() string {
 	fmt.Println("cb")
 }
 
@@ -20596,7 +20596,7 @@ func (recv *ScrolledWindow) DisconnectScrollChild(connectionID int) {
 }
 
 //export ScrolledWindow_scrollChildHandler
-func ScrolledWindow_scrollChildHandler() {
+func ScrolledWindow_scrollChildHandler() bool {
 	fmt.Println("cb")
 }
 
@@ -21329,7 +21329,7 @@ func (recv *SpinButton) DisconnectInput(connectionID int) {
 }
 
 //export SpinButton_inputHandler
-func SpinButton_inputHandler() {
+func SpinButton_inputHandler() int32 {
 	fmt.Println("cb")
 }
 
@@ -21374,7 +21374,7 @@ func (recv *SpinButton) DisconnectOutput(connectionID int) {
 }
 
 //export SpinButton_outputHandler
-func SpinButton_outputHandler() {
+func SpinButton_outputHandler() bool {
 	fmt.Println("cb")
 }
 
@@ -26509,7 +26509,7 @@ func (recv *ToolItem) DisconnectCreateMenuProxy(connectionID int) {
 }
 
 //export ToolItem_createMenuProxyHandler
-func ToolItem_createMenuProxyHandler() {
+func ToolItem_createMenuProxyHandler() bool {
 	fmt.Println("cb")
 }
 
@@ -26746,7 +26746,7 @@ func (recv *Toolbar) DisconnectFocusHomeOrEnd(connectionID int) {
 }
 
 //export Toolbar_focusHomeOrEndHandler
-func Toolbar_focusHomeOrEndHandler() {
+func Toolbar_focusHomeOrEndHandler() bool {
 	fmt.Println("cb")
 }
 
@@ -26836,7 +26836,7 @@ func (recv *Toolbar) DisconnectPopupContextMenu(connectionID int) {
 }
 
 //export Toolbar_popupContextMenuHandler
-func Toolbar_popupContextMenuHandler() {
+func Toolbar_popupContextMenuHandler() bool {
 	fmt.Println("cb")
 }
 
@@ -27692,7 +27692,7 @@ func (recv *TreeView) DisconnectExpandCollapseCursorRow(connectionID int) {
 }
 
 //export TreeView_expandCollapseCursorRowHandler
-func TreeView_expandCollapseCursorRowHandler() {
+func TreeView_expandCollapseCursorRowHandler() bool {
 	fmt.Println("cb")
 }
 
@@ -27737,7 +27737,7 @@ func (recv *TreeView) DisconnectMoveCursor(connectionID int) {
 }
 
 //export TreeView_moveCursorHandler
-func TreeView_moveCursorHandler() {
+func TreeView_moveCursorHandler() bool {
 	fmt.Println("cb")
 }
 
@@ -27917,7 +27917,7 @@ func (recv *TreeView) DisconnectSelectAll(connectionID int) {
 }
 
 //export TreeView_selectAllHandler
-func TreeView_selectAllHandler() {
+func TreeView_selectAllHandler() bool {
 	fmt.Println("cb")
 }
 
@@ -27962,7 +27962,7 @@ func (recv *TreeView) DisconnectSelectCursorParent(connectionID int) {
 }
 
 //export TreeView_selectCursorParentHandler
-func TreeView_selectCursorParentHandler() {
+func TreeView_selectCursorParentHandler() bool {
 	fmt.Println("cb")
 }
 
@@ -28007,7 +28007,7 @@ func (recv *TreeView) DisconnectSelectCursorRow(connectionID int) {
 }
 
 //export TreeView_selectCursorRowHandler
-func TreeView_selectCursorRowHandler() {
+func TreeView_selectCursorRowHandler() bool {
 	fmt.Println("cb")
 }
 
@@ -28052,7 +28052,7 @@ func (recv *TreeView) DisconnectStartInteractiveSearch(connectionID int) {
 }
 
 //export TreeView_startInteractiveSearchHandler
-func TreeView_startInteractiveSearchHandler() {
+func TreeView_startInteractiveSearchHandler() bool {
 	fmt.Println("cb")
 }
 
@@ -28097,7 +28097,7 @@ func (recv *TreeView) DisconnectTestCollapseRow(connectionID int) {
 }
 
 //export TreeView_testCollapseRowHandler
-func TreeView_testCollapseRowHandler() {
+func TreeView_testCollapseRowHandler() bool {
 	fmt.Println("cb")
 }
 
@@ -28142,7 +28142,7 @@ func (recv *TreeView) DisconnectTestExpandRow(connectionID int) {
 }
 
 //export TreeView_testExpandRowHandler
-func TreeView_testExpandRowHandler() {
+func TreeView_testExpandRowHandler() bool {
 	fmt.Println("cb")
 }
 
@@ -28187,7 +28187,7 @@ func (recv *TreeView) DisconnectToggleCursorRow(connectionID int) {
 }
 
 //export TreeView_toggleCursorRowHandler
-func TreeView_toggleCursorRowHandler() {
+func TreeView_toggleCursorRowHandler() bool {
 	fmt.Println("cb")
 }
 
@@ -28232,7 +28232,7 @@ func (recv *TreeView) DisconnectUnselectAll(connectionID int) {
 }
 
 //export TreeView_unselectAllHandler
-func TreeView_unselectAllHandler() {
+func TreeView_unselectAllHandler() bool {
 	fmt.Println("cb")
 }
 
@@ -29887,7 +29887,7 @@ func (recv *Widget) DisconnectButtonPressEvent(connectionID int) {
 }
 
 //export Widget_buttonPressEventHandler
-func Widget_buttonPressEventHandler() {
+func Widget_buttonPressEventHandler() bool {
 	fmt.Println("cb")
 }
 
@@ -29932,7 +29932,7 @@ func (recv *Widget) DisconnectButtonReleaseEvent(connectionID int) {
 }
 
 //export Widget_buttonReleaseEventHandler
-func Widget_buttonReleaseEventHandler() {
+func Widget_buttonReleaseEventHandler() bool {
 	fmt.Println("cb")
 }
 
@@ -29977,7 +29977,7 @@ func (recv *Widget) DisconnectCanActivateAccel(connectionID int) {
 }
 
 //export Widget_canActivateAccelHandler
-func Widget_canActivateAccelHandler() {
+func Widget_canActivateAccelHandler() bool {
 	fmt.Println("cb")
 }
 
@@ -30069,7 +30069,7 @@ func (recv *Widget) DisconnectConfigureEvent(connectionID int) {
 }
 
 //export Widget_configureEventHandler
-func Widget_configureEventHandler() {
+func Widget_configureEventHandler() bool {
 	fmt.Println("cb")
 }
 
@@ -30388,7 +30388,7 @@ func (recv *Widget) DisconnectDragDrop(connectionID int) {
 }
 
 //export Widget_dragDropHandler
-func Widget_dragDropHandler() {
+func Widget_dragDropHandler() bool {
 	fmt.Println("cb")
 }
 
@@ -30523,7 +30523,7 @@ func (recv *Widget) DisconnectDragMotion(connectionID int) {
 }
 
 //export Widget_dragMotionHandler
-func Widget_dragMotionHandler() {
+func Widget_dragMotionHandler() bool {
 	fmt.Println("cb")
 }
 
@@ -30568,7 +30568,7 @@ func (recv *Widget) DisconnectEnterNotifyEvent(connectionID int) {
 }
 
 //export Widget_enterNotifyEventHandler
-func Widget_enterNotifyEventHandler() {
+func Widget_enterNotifyEventHandler() bool {
 	fmt.Println("cb")
 }
 
@@ -30617,7 +30617,7 @@ func (recv *Widget) DisconnectFocus(connectionID int) {
 }
 
 //export Widget_focusHandler
-func Widget_focusHandler() {
+func Widget_focusHandler() bool {
 	fmt.Println("cb")
 }
 
@@ -30662,7 +30662,7 @@ func (recv *Widget) DisconnectFocusInEvent(connectionID int) {
 }
 
 //export Widget_focusInEventHandler
-func Widget_focusInEventHandler() {
+func Widget_focusInEventHandler() bool {
 	fmt.Println("cb")
 }
 
@@ -30707,7 +30707,7 @@ func (recv *Widget) DisconnectFocusOutEvent(connectionID int) {
 }
 
 //export Widget_focusOutEventHandler
-func Widget_focusOutEventHandler() {
+func Widget_focusOutEventHandler() bool {
 	fmt.Println("cb")
 }
 
@@ -30932,7 +30932,7 @@ func (recv *Widget) DisconnectKeyPressEvent(connectionID int) {
 }
 
 //export Widget_keyPressEventHandler
-func Widget_keyPressEventHandler() {
+func Widget_keyPressEventHandler() bool {
 	fmt.Println("cb")
 }
 
@@ -30977,7 +30977,7 @@ func (recv *Widget) DisconnectKeyReleaseEvent(connectionID int) {
 }
 
 //export Widget_keyReleaseEventHandler
-func Widget_keyReleaseEventHandler() {
+func Widget_keyReleaseEventHandler() bool {
 	fmt.Println("cb")
 }
 
@@ -31022,7 +31022,7 @@ func (recv *Widget) DisconnectLeaveNotifyEvent(connectionID int) {
 }
 
 //export Widget_leaveNotifyEventHandler
-func Widget_leaveNotifyEventHandler() {
+func Widget_leaveNotifyEventHandler() bool {
 	fmt.Println("cb")
 }
 
@@ -31112,7 +31112,7 @@ func (recv *Widget) DisconnectMapEvent(connectionID int) {
 }
 
 //export Widget_mapEventHandler
-func Widget_mapEventHandler() {
+func Widget_mapEventHandler() bool {
 	fmt.Println("cb")
 }
 
@@ -31157,7 +31157,7 @@ func (recv *Widget) DisconnectMnemonicActivate(connectionID int) {
 }
 
 //export Widget_mnemonicActivateHandler
-func Widget_mnemonicActivateHandler() {
+func Widget_mnemonicActivateHandler() bool {
 	fmt.Println("cb")
 }
 
@@ -31202,7 +31202,7 @@ func (recv *Widget) DisconnectMotionNotifyEvent(connectionID int) {
 }
 
 //export Widget_motionNotifyEventHandler
-func Widget_motionNotifyEventHandler() {
+func Widget_motionNotifyEventHandler() bool {
 	fmt.Println("cb")
 }
 
@@ -31337,7 +31337,7 @@ func (recv *Widget) DisconnectPopupMenu(connectionID int) {
 }
 
 //export Widget_popupMenuHandler
-func Widget_popupMenuHandler() {
+func Widget_popupMenuHandler() bool {
 	fmt.Println("cb")
 }
 
@@ -31382,7 +31382,7 @@ func (recv *Widget) DisconnectPropertyNotifyEvent(connectionID int) {
 }
 
 //export Widget_propertyNotifyEventHandler
-func Widget_propertyNotifyEventHandler() {
+func Widget_propertyNotifyEventHandler() bool {
 	fmt.Println("cb")
 }
 
@@ -31427,7 +31427,7 @@ func (recv *Widget) DisconnectProximityInEvent(connectionID int) {
 }
 
 //export Widget_proximityInEventHandler
-func Widget_proximityInEventHandler() {
+func Widget_proximityInEventHandler() bool {
 	fmt.Println("cb")
 }
 
@@ -31472,7 +31472,7 @@ func (recv *Widget) DisconnectProximityOutEvent(connectionID int) {
 }
 
 //export Widget_proximityOutEventHandler
-func Widget_proximityOutEventHandler() {
+func Widget_proximityOutEventHandler() bool {
 	fmt.Println("cb")
 }
 
@@ -31607,7 +31607,7 @@ func (recv *Widget) DisconnectScrollEvent(connectionID int) {
 }
 
 //export Widget_scrollEventHandler
-func Widget_scrollEventHandler() {
+func Widget_scrollEventHandler() bool {
 	fmt.Println("cb")
 }
 
@@ -31652,7 +31652,7 @@ func (recv *Widget) DisconnectSelectionClearEvent(connectionID int) {
 }
 
 //export Widget_selectionClearEventHandler
-func Widget_selectionClearEventHandler() {
+func Widget_selectionClearEventHandler() bool {
 	fmt.Println("cb")
 }
 
@@ -31742,7 +31742,7 @@ func (recv *Widget) DisconnectSelectionNotifyEvent(connectionID int) {
 }
 
 //export Widget_selectionNotifyEventHandler
-func Widget_selectionNotifyEventHandler() {
+func Widget_selectionNotifyEventHandler() bool {
 	fmt.Println("cb")
 }
 
@@ -31832,7 +31832,7 @@ func (recv *Widget) DisconnectSelectionRequestEvent(connectionID int) {
 }
 
 //export Widget_selectionRequestEventHandler
-func Widget_selectionRequestEventHandler() {
+func Widget_selectionRequestEventHandler() bool {
 	fmt.Println("cb")
 }
 
@@ -31922,7 +31922,7 @@ func (recv *Widget) DisconnectShowHelp(connectionID int) {
 }
 
 //export Widget_showHelpHandler
-func Widget_showHelpHandler() {
+func Widget_showHelpHandler() bool {
 	fmt.Println("cb")
 }
 
@@ -32106,7 +32106,7 @@ func (recv *Widget) DisconnectUnmapEvent(connectionID int) {
 }
 
 //export Widget_unmapEventHandler
-func Widget_unmapEventHandler() {
+func Widget_unmapEventHandler() bool {
 	fmt.Println("cb")
 }
 
@@ -32196,7 +32196,7 @@ func (recv *Widget) DisconnectVisibilityNotifyEvent(connectionID int) {
 }
 
 //export Widget_visibilityNotifyEventHandler
-func Widget_visibilityNotifyEventHandler() {
+func Widget_visibilityNotifyEventHandler() bool {
 	fmt.Println("cb")
 }
 
@@ -32241,7 +32241,7 @@ func (recv *Widget) DisconnectWindowStateEvent(connectionID int) {
 }
 
 //export Widget_windowStateEventHandler
-func Widget_windowStateEventHandler() {
+func Widget_windowStateEventHandler() bool {
 	fmt.Println("cb")
 }
 
@@ -33532,7 +33532,7 @@ func (recv *Window) DisconnectEnableDebugging(connectionID int) {
 }
 
 //export Window_enableDebuggingHandler
-func Window_enableDebuggingHandler() {
+func Window_enableDebuggingHandler() bool {
 	fmt.Println("cb")
 }
 

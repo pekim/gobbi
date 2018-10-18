@@ -833,7 +833,7 @@ func (recv *TextView) DisconnectExtendSelection(connectionID int) {
 }
 
 //export TextView_extendSelectionHandler
-func TextView_extendSelectionHandler() {
+func TextView_extendSelectionHandler() bool {
 	fmt.Println("cb")
 }
 

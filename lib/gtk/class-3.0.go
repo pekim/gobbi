@@ -2461,7 +2461,7 @@ func (recv *Widget) DisconnectDraw(connectionID int) {
 }
 
 //export Widget_drawHandler
-func Widget_drawHandler() {
+func Widget_drawHandler() bool {
 	fmt.Println("cb")
 }
 

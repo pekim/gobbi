@@ -456,7 +456,7 @@ func (recv *Widget) DisconnectGrabBrokenEvent(connectionID int) {
 }
 
 //export Widget_grabBrokenEventHandler
-func Widget_grabBrokenEventHandler() {
+func Widget_grabBrokenEventHandler() bool {
 	fmt.Println("cb")
 }
 

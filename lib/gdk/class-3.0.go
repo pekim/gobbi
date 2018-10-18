@@ -280,7 +280,7 @@ func (recv *Window) DisconnectCreateSurface(connectionID int) {
 }
 
 //export Window_createSurfaceHandler
-func Window_createSurfaceHandler() {
+func Window_createSurfaceHandler() cairo.Surface {
 	fmt.Println("cb")
 }
 

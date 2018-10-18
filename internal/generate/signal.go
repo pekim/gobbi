@@ -140,8 +140,8 @@ func (s *Signal) generateHandlerFunction(g *jen.Group) {
 	g.
 		Func().
 		Id(s.goNameHandler).
-		Params().
-		Params().
+		//ParamsFunc(s.Parameters.generateFunctionDeclarationCtypes).
+		ParamsFunc(s.ReturnValue.generateFunctionDeclarationCtype).
 		BlockFunc(func(g *jen.Group) {
 			g.Qual("fmt", "Println").Call(jen.Lit("cb"))
 		})

@@ -184,7 +184,7 @@ func (recv *Application) DisconnectCommandLine(connectionID int) {
 }
 
 //export Application_commandLineHandler
-func Application_commandLineHandler() {
+func Application_commandLineHandler() int32 {
 	fmt.Println("cb")
 }
 

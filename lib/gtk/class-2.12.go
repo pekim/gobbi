@@ -358,7 +358,7 @@ func (recv *ComboBox) DisconnectPopdown(connectionID int) {
 }
 
 //export ComboBox_popdownHandler
-func ComboBox_popdownHandler() {
+func ComboBox_popdownHandler() bool {
 	fmt.Println("cb")
 }
 
@@ -642,7 +642,7 @@ func (recv *MenuShell) DisconnectMoveSelected(connectionID int) {
 }
 
 //export MenuShell_moveSelectedHandler
-func MenuShell_moveSelectedHandler() {
+func MenuShell_moveSelectedHandler() bool {
 	fmt.Println("cb")
 }
 
@@ -711,7 +711,7 @@ func (recv *Notebook) DisconnectCreateWindow(connectionID int) {
 }
 
 //export Notebook_createWindowHandler
-func Notebook_createWindowHandler() {
+func Notebook_createWindowHandler() Notebook {
 	fmt.Println("cb")
 }
 
@@ -1540,7 +1540,7 @@ func (recv *Widget) DisconnectDragFailed(connectionID int) {
 }
 
 //export Widget_dragFailedHandler
-func Widget_dragFailedHandler() {
+func Widget_dragFailedHandler() bool {
 	fmt.Println("cb")
 }
 
@@ -1589,7 +1589,7 @@ func (recv *Widget) DisconnectKeynavFailed(connectionID int) {
 }
 
 //export Widget_keynavFailedHandler
-func Widget_keynavFailedHandler() {
+func Widget_keynavFailedHandler() bool {
 	fmt.Println("cb")
 }
 
@@ -1634,7 +1634,7 @@ func (recv *Widget) DisconnectQueryTooltip(connectionID int) {
 }
 
 //export Widget_queryTooltipHandler
-func Widget_queryTooltipHandler() {
+func Widget_queryTooltipHandler() bool {
 	fmt.Println("cb")
 }
 

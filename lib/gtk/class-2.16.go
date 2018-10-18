@@ -862,7 +862,7 @@ func (recv *StatusIcon) DisconnectQueryTooltip(connectionID int) {
 }
 
 //export StatusIcon_queryTooltipHandler
-func StatusIcon_queryTooltipHandler() {
+func StatusIcon_queryTooltipHandler() bool {
 	fmt.Println("cb")
 }
 
@@ -907,7 +907,7 @@ func (recv *StatusIcon) DisconnectScrollEvent(connectionID int) {
 }
 
 //export StatusIcon_scrollEventHandler
-func StatusIcon_scrollEventHandler() {
+func StatusIcon_scrollEventHandler() bool {
 	fmt.Println("cb")
 }
 
