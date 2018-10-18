@@ -4,6 +4,7 @@
 package gdk
 
 import (
+	"fmt"
 	glib "github.com/pekim/gobbi/lib/glib"
 	"sync"
 	"unsafe"
@@ -83,7 +84,12 @@ var signalDisplaySeatAddedLock sync.Mutex
 // DisplaySignalSeatAddedCallback is a callback function for a 'seat-added' signal emitted from a Display.
 type DisplaySignalSeatAddedCallback func(seat *Seat)
 
-func (recv *Display) ConnectSeatAdded(callback DisplaySignalSeatAddedCallback) {
+/*
+ConnectSeatAdded connects the callback to the 'seat-added' signal for the Display.
+
+The returned value represents the connection, and may be passed to DisconnectSeatAdded to remove it.
+*/
+func (recv *Display) ConnectSeatAdded(callback DisplaySignalSeatAddedCallback) int {
 	signalDisplaySeatAddedLock.Lock()
 	defer signalDisplaySeatAddedLock.Unlock()
 
@@ -91,11 +97,14 @@ func (recv *Display) ConnectSeatAdded(callback DisplaySignalSeatAddedCallback) {
 	signalDisplaySeatAddedMap[signalDisplaySeatAddedId] = callback
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.Display_signal_connect_seat_added(instance, C.gpointer(uintptr(signalDisplaySeatAddedId)))
+	retC := C.Display_signal_connect_seat_added(instance, C.gpointer(uintptr(signalDisplaySeatAddedId)))
+	return int(retC)
 }
 
 //export Display_seatAddedHandler
-func Display_seatAddedHandler() {}
+func Display_seatAddedHandler() {
+	fmt.Println("cb")
+}
 
 var signalDisplaySeatRemovedId int
 var signalDisplaySeatRemovedMap = make(map[int]DisplaySignalSeatRemovedCallback)
@@ -104,7 +113,12 @@ var signalDisplaySeatRemovedLock sync.Mutex
 // DisplaySignalSeatRemovedCallback is a callback function for a 'seat-removed' signal emitted from a Display.
 type DisplaySignalSeatRemovedCallback func(seat *Seat)
 
-func (recv *Display) ConnectSeatRemoved(callback DisplaySignalSeatRemovedCallback) {
+/*
+ConnectSeatRemoved connects the callback to the 'seat-removed' signal for the Display.
+
+The returned value represents the connection, and may be passed to DisconnectSeatRemoved to remove it.
+*/
+func (recv *Display) ConnectSeatRemoved(callback DisplaySignalSeatRemovedCallback) int {
 	signalDisplaySeatRemovedLock.Lock()
 	defer signalDisplaySeatRemovedLock.Unlock()
 
@@ -112,11 +126,14 @@ func (recv *Display) ConnectSeatRemoved(callback DisplaySignalSeatRemovedCallbac
 	signalDisplaySeatRemovedMap[signalDisplaySeatRemovedId] = callback
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.Display_signal_connect_seat_removed(instance, C.gpointer(uintptr(signalDisplaySeatRemovedId)))
+	retC := C.Display_signal_connect_seat_removed(instance, C.gpointer(uintptr(signalDisplaySeatRemovedId)))
+	return int(retC)
 }
 
 //export Display_seatRemovedHandler
-func Display_seatRemovedHandler() {}
+func Display_seatRemovedHandler() {
+	fmt.Println("cb")
+}
 
 // GetDefaultSeat is a wrapper around the C function gdk_display_get_default_seat.
 func (recv *Display) GetDefaultSeat() *Seat {
@@ -141,7 +158,12 @@ var signalDragContextActionChangedLock sync.Mutex
 // DragContextSignalActionChangedCallback is a callback function for a 'action-changed' signal emitted from a DragContext.
 type DragContextSignalActionChangedCallback func(action DragAction)
 
-func (recv *DragContext) ConnectActionChanged(callback DragContextSignalActionChangedCallback) {
+/*
+ConnectActionChanged connects the callback to the 'action-changed' signal for the DragContext.
+
+The returned value represents the connection, and may be passed to DisconnectActionChanged to remove it.
+*/
+func (recv *DragContext) ConnectActionChanged(callback DragContextSignalActionChangedCallback) int {
 	signalDragContextActionChangedLock.Lock()
 	defer signalDragContextActionChangedLock.Unlock()
 
@@ -149,11 +171,14 @@ func (recv *DragContext) ConnectActionChanged(callback DragContextSignalActionCh
 	signalDragContextActionChangedMap[signalDragContextActionChangedId] = callback
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.DragContext_signal_connect_action_changed(instance, C.gpointer(uintptr(signalDragContextActionChangedId)))
+	retC := C.DragContext_signal_connect_action_changed(instance, C.gpointer(uintptr(signalDragContextActionChangedId)))
+	return int(retC)
 }
 
 //export DragContext_actionChangedHandler
-func DragContext_actionChangedHandler() {}
+func DragContext_actionChangedHandler() {
+	fmt.Println("cb")
+}
 
 var signalDragContextCancelId int
 var signalDragContextCancelMap = make(map[int]DragContextSignalCancelCallback)
@@ -162,7 +187,12 @@ var signalDragContextCancelLock sync.Mutex
 // DragContextSignalCancelCallback is a callback function for a 'cancel' signal emitted from a DragContext.
 type DragContextSignalCancelCallback func(reason DragCancelReason)
 
-func (recv *DragContext) ConnectCancel(callback DragContextSignalCancelCallback) {
+/*
+ConnectCancel connects the callback to the 'cancel' signal for the DragContext.
+
+The returned value represents the connection, and may be passed to DisconnectCancel to remove it.
+*/
+func (recv *DragContext) ConnectCancel(callback DragContextSignalCancelCallback) int {
 	signalDragContextCancelLock.Lock()
 	defer signalDragContextCancelLock.Unlock()
 
@@ -170,11 +200,14 @@ func (recv *DragContext) ConnectCancel(callback DragContextSignalCancelCallback)
 	signalDragContextCancelMap[signalDragContextCancelId] = callback
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.DragContext_signal_connect_cancel(instance, C.gpointer(uintptr(signalDragContextCancelId)))
+	retC := C.DragContext_signal_connect_cancel(instance, C.gpointer(uintptr(signalDragContextCancelId)))
+	return int(retC)
 }
 
 //export DragContext_cancelHandler
-func DragContext_cancelHandler() {}
+func DragContext_cancelHandler() {
+	fmt.Println("cb")
+}
 
 var signalDragContextDndFinishedId int
 var signalDragContextDndFinishedMap = make(map[int]DragContextSignalDndFinishedCallback)
@@ -183,7 +216,12 @@ var signalDragContextDndFinishedLock sync.Mutex
 // DragContextSignalDndFinishedCallback is a callback function for a 'dnd-finished' signal emitted from a DragContext.
 type DragContextSignalDndFinishedCallback func()
 
-func (recv *DragContext) ConnectDndFinished(callback DragContextSignalDndFinishedCallback) {
+/*
+ConnectDndFinished connects the callback to the 'dnd-finished' signal for the DragContext.
+
+The returned value represents the connection, and may be passed to DisconnectDndFinished to remove it.
+*/
+func (recv *DragContext) ConnectDndFinished(callback DragContextSignalDndFinishedCallback) int {
 	signalDragContextDndFinishedLock.Lock()
 	defer signalDragContextDndFinishedLock.Unlock()
 
@@ -191,11 +229,14 @@ func (recv *DragContext) ConnectDndFinished(callback DragContextSignalDndFinishe
 	signalDragContextDndFinishedMap[signalDragContextDndFinishedId] = callback
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.DragContext_signal_connect_dnd_finished(instance, C.gpointer(uintptr(signalDragContextDndFinishedId)))
+	retC := C.DragContext_signal_connect_dnd_finished(instance, C.gpointer(uintptr(signalDragContextDndFinishedId)))
+	return int(retC)
 }
 
 //export DragContext_dndFinishedHandler
-func DragContext_dndFinishedHandler() {}
+func DragContext_dndFinishedHandler() {
+	fmt.Println("cb")
+}
 
 var signalDragContextDropPerformedId int
 var signalDragContextDropPerformedMap = make(map[int]DragContextSignalDropPerformedCallback)
@@ -204,7 +245,12 @@ var signalDragContextDropPerformedLock sync.Mutex
 // DragContextSignalDropPerformedCallback is a callback function for a 'drop-performed' signal emitted from a DragContext.
 type DragContextSignalDropPerformedCallback func(time int32)
 
-func (recv *DragContext) ConnectDropPerformed(callback DragContextSignalDropPerformedCallback) {
+/*
+ConnectDropPerformed connects the callback to the 'drop-performed' signal for the DragContext.
+
+The returned value represents the connection, and may be passed to DisconnectDropPerformed to remove it.
+*/
+func (recv *DragContext) ConnectDropPerformed(callback DragContextSignalDropPerformedCallback) int {
 	signalDragContextDropPerformedLock.Lock()
 	defer signalDragContextDropPerformedLock.Unlock()
 
@@ -212,11 +258,14 @@ func (recv *DragContext) ConnectDropPerformed(callback DragContextSignalDropPerf
 	signalDragContextDropPerformedMap[signalDragContextDropPerformedId] = callback
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.DragContext_signal_connect_drop_performed(instance, C.gpointer(uintptr(signalDragContextDropPerformedId)))
+	retC := C.DragContext_signal_connect_drop_performed(instance, C.gpointer(uintptr(signalDragContextDropPerformedId)))
+	return int(retC)
 }
 
 //export DragContext_dropPerformedHandler
-func DragContext_dropPerformedHandler() {}
+func DragContext_dropPerformedHandler() {
+	fmt.Println("cb")
+}
 
 // GetDragWindow is a wrapper around the C function gdk_drag_context_get_drag_window.
 func (recv *DragContext) GetDragWindow() *Window {

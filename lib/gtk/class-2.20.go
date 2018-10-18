@@ -4,6 +4,7 @@
 package gtk
 
 import (
+	"fmt"
 	cairo "github.com/pekim/gobbi/lib/cairo"
 	gdk "github.com/pekim/gobbi/lib/gdk"
 	gdkpixbuf "github.com/pekim/gobbi/lib/gdkpixbuf"
@@ -104,7 +105,12 @@ var signalEntryPreeditChangedLock sync.Mutex
 // EntrySignalPreeditChangedCallback is a callback function for a 'preedit-changed' signal emitted from a Entry.
 type EntrySignalPreeditChangedCallback func(preedit string)
 
-func (recv *Entry) ConnectPreeditChanged(callback EntrySignalPreeditChangedCallback) {
+/*
+ConnectPreeditChanged connects the callback to the 'preedit-changed' signal for the Entry.
+
+The returned value represents the connection, and may be passed to DisconnectPreeditChanged to remove it.
+*/
+func (recv *Entry) ConnectPreeditChanged(callback EntrySignalPreeditChangedCallback) int {
 	signalEntryPreeditChangedLock.Lock()
 	defer signalEntryPreeditChangedLock.Unlock()
 
@@ -112,11 +118,14 @@ func (recv *Entry) ConnectPreeditChanged(callback EntrySignalPreeditChangedCallb
 	signalEntryPreeditChangedMap[signalEntryPreeditChangedId] = callback
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.Entry_signal_connect_preedit_changed(instance, C.gpointer(uintptr(signalEntryPreeditChangedId)))
+	retC := C.Entry_signal_connect_preedit_changed(instance, C.gpointer(uintptr(signalEntryPreeditChangedId)))
+	return int(retC)
 }
 
 //export Entry_preeditChangedHandler
-func Entry_preeditChangedHandler() {}
+func Entry_preeditChangedHandler() {
+	fmt.Println("cb")
+}
 
 // Unsupported signal : unsupported parameter model : no type generator for TreeModel,
 
@@ -350,7 +359,12 @@ var signalTextViewPreeditChangedLock sync.Mutex
 // TextViewSignalPreeditChangedCallback is a callback function for a 'preedit-changed' signal emitted from a TextView.
 type TextViewSignalPreeditChangedCallback func(preedit string)
 
-func (recv *TextView) ConnectPreeditChanged(callback TextViewSignalPreeditChangedCallback) {
+/*
+ConnectPreeditChanged connects the callback to the 'preedit-changed' signal for the TextView.
+
+The returned value represents the connection, and may be passed to DisconnectPreeditChanged to remove it.
+*/
+func (recv *TextView) ConnectPreeditChanged(callback TextViewSignalPreeditChangedCallback) int {
 	signalTextViewPreeditChangedLock.Lock()
 	defer signalTextViewPreeditChangedLock.Unlock()
 
@@ -358,11 +372,14 @@ func (recv *TextView) ConnectPreeditChanged(callback TextViewSignalPreeditChange
 	signalTextViewPreeditChangedMap[signalTextViewPreeditChangedId] = callback
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.TextView_signal_connect_preedit_changed(instance, C.gpointer(uintptr(signalTextViewPreeditChangedId)))
+	retC := C.TextView_signal_connect_preedit_changed(instance, C.gpointer(uintptr(signalTextViewPreeditChangedId)))
+	return int(retC)
 }
 
 //export TextView_preeditChangedHandler
-func TextView_preeditChangedHandler() {}
+func TextView_preeditChangedHandler() {
+	fmt.Println("cb")
+}
 
 // GetEllipsizeMode is a wrapper around the C function gtk_tool_item_get_ellipsize_mode.
 func (recv *ToolItem) GetEllipsizeMode() pango.EllipsizeMode {

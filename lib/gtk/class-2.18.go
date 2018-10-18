@@ -4,6 +4,7 @@
 package gtk
 
 import (
+	"fmt"
 	gdk "github.com/pekim/gobbi/lib/gdk"
 	"sync"
 	"unsafe"
@@ -243,7 +244,12 @@ var signalEntryBufferDeletedTextLock sync.Mutex
 // EntryBufferSignalDeletedTextCallback is a callback function for a 'deleted-text' signal emitted from a EntryBuffer.
 type EntryBufferSignalDeletedTextCallback func(position uint32, nChars uint32)
 
-func (recv *EntryBuffer) ConnectDeletedText(callback EntryBufferSignalDeletedTextCallback) {
+/*
+ConnectDeletedText connects the callback to the 'deleted-text' signal for the EntryBuffer.
+
+The returned value represents the connection, and may be passed to DisconnectDeletedText to remove it.
+*/
+func (recv *EntryBuffer) ConnectDeletedText(callback EntryBufferSignalDeletedTextCallback) int {
 	signalEntryBufferDeletedTextLock.Lock()
 	defer signalEntryBufferDeletedTextLock.Unlock()
 
@@ -251,11 +257,14 @@ func (recv *EntryBuffer) ConnectDeletedText(callback EntryBufferSignalDeletedTex
 	signalEntryBufferDeletedTextMap[signalEntryBufferDeletedTextId] = callback
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.EntryBuffer_signal_connect_deleted_text(instance, C.gpointer(uintptr(signalEntryBufferDeletedTextId)))
+	retC := C.EntryBuffer_signal_connect_deleted_text(instance, C.gpointer(uintptr(signalEntryBufferDeletedTextId)))
+	return int(retC)
 }
 
 //export EntryBuffer_deletedTextHandler
-func EntryBuffer_deletedTextHandler() {}
+func EntryBuffer_deletedTextHandler() {
+	fmt.Println("cb")
+}
 
 var signalEntryBufferInsertedTextId int
 var signalEntryBufferInsertedTextMap = make(map[int]EntryBufferSignalInsertedTextCallback)
@@ -264,7 +273,12 @@ var signalEntryBufferInsertedTextLock sync.Mutex
 // EntryBufferSignalInsertedTextCallback is a callback function for a 'inserted-text' signal emitted from a EntryBuffer.
 type EntryBufferSignalInsertedTextCallback func(position uint32, chars string, nChars uint32)
 
-func (recv *EntryBuffer) ConnectInsertedText(callback EntryBufferSignalInsertedTextCallback) {
+/*
+ConnectInsertedText connects the callback to the 'inserted-text' signal for the EntryBuffer.
+
+The returned value represents the connection, and may be passed to DisconnectInsertedText to remove it.
+*/
+func (recv *EntryBuffer) ConnectInsertedText(callback EntryBufferSignalInsertedTextCallback) int {
 	signalEntryBufferInsertedTextLock.Lock()
 	defer signalEntryBufferInsertedTextLock.Unlock()
 
@@ -272,11 +286,14 @@ func (recv *EntryBuffer) ConnectInsertedText(callback EntryBufferSignalInsertedT
 	signalEntryBufferInsertedTextMap[signalEntryBufferInsertedTextId] = callback
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.EntryBuffer_signal_connect_inserted_text(instance, C.gpointer(uintptr(signalEntryBufferInsertedTextId)))
+	retC := C.EntryBuffer_signal_connect_inserted_text(instance, C.gpointer(uintptr(signalEntryBufferInsertedTextId)))
+	return int(retC)
 }
 
 //export EntryBuffer_insertedTextHandler
-func EntryBuffer_insertedTextHandler() {}
+func EntryBuffer_insertedTextHandler() {
+	fmt.Println("cb")
+}
 
 // EntryBufferNew is a wrapper around the C function gtk_entry_buffer_new.
 func EntryBufferNew(initialChars string, nInitialChars int32) *EntryBuffer {
@@ -440,7 +457,12 @@ var signalInfoBarCloseLock sync.Mutex
 // InfoBarSignalCloseCallback is a callback function for a 'close' signal emitted from a InfoBar.
 type InfoBarSignalCloseCallback func()
 
-func (recv *InfoBar) ConnectClose(callback InfoBarSignalCloseCallback) {
+/*
+ConnectClose connects the callback to the 'close' signal for the InfoBar.
+
+The returned value represents the connection, and may be passed to DisconnectClose to remove it.
+*/
+func (recv *InfoBar) ConnectClose(callback InfoBarSignalCloseCallback) int {
 	signalInfoBarCloseLock.Lock()
 	defer signalInfoBarCloseLock.Unlock()
 
@@ -448,11 +470,14 @@ func (recv *InfoBar) ConnectClose(callback InfoBarSignalCloseCallback) {
 	signalInfoBarCloseMap[signalInfoBarCloseId] = callback
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.InfoBar_signal_connect_close(instance, C.gpointer(uintptr(signalInfoBarCloseId)))
+	retC := C.InfoBar_signal_connect_close(instance, C.gpointer(uintptr(signalInfoBarCloseId)))
+	return int(retC)
 }
 
 //export InfoBar_closeHandler
-func InfoBar_closeHandler() {}
+func InfoBar_closeHandler() {
+	fmt.Println("cb")
+}
 
 var signalInfoBarResponseId int
 var signalInfoBarResponseMap = make(map[int]InfoBarSignalResponseCallback)
@@ -461,7 +486,12 @@ var signalInfoBarResponseLock sync.Mutex
 // InfoBarSignalResponseCallback is a callback function for a 'response' signal emitted from a InfoBar.
 type InfoBarSignalResponseCallback func(responseId int32)
 
-func (recv *InfoBar) ConnectResponse(callback InfoBarSignalResponseCallback) {
+/*
+ConnectResponse connects the callback to the 'response' signal for the InfoBar.
+
+The returned value represents the connection, and may be passed to DisconnectResponse to remove it.
+*/
+func (recv *InfoBar) ConnectResponse(callback InfoBarSignalResponseCallback) int {
 	signalInfoBarResponseLock.Lock()
 	defer signalInfoBarResponseLock.Unlock()
 
@@ -469,11 +499,14 @@ func (recv *InfoBar) ConnectResponse(callback InfoBarSignalResponseCallback) {
 	signalInfoBarResponseMap[signalInfoBarResponseId] = callback
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.InfoBar_signal_connect_response(instance, C.gpointer(uintptr(signalInfoBarResponseId)))
+	retC := C.InfoBar_signal_connect_response(instance, C.gpointer(uintptr(signalInfoBarResponseId)))
+	return int(retC)
 }
 
 //export InfoBar_responseHandler
-func InfoBar_responseHandler() {}
+func InfoBar_responseHandler() {
+	fmt.Println("cb")
+}
 
 // InfoBarNew is a wrapper around the C function gtk_info_bar_new.
 func InfoBarNew() *InfoBar {
@@ -581,7 +614,12 @@ var signalLabelActivateCurrentLinkLock sync.Mutex
 // LabelSignalActivateCurrentLinkCallback is a callback function for a 'activate-current-link' signal emitted from a Label.
 type LabelSignalActivateCurrentLinkCallback func()
 
-func (recv *Label) ConnectActivateCurrentLink(callback LabelSignalActivateCurrentLinkCallback) {
+/*
+ConnectActivateCurrentLink connects the callback to the 'activate-current-link' signal for the Label.
+
+The returned value represents the connection, and may be passed to DisconnectActivateCurrentLink to remove it.
+*/
+func (recv *Label) ConnectActivateCurrentLink(callback LabelSignalActivateCurrentLinkCallback) int {
 	signalLabelActivateCurrentLinkLock.Lock()
 	defer signalLabelActivateCurrentLinkLock.Unlock()
 
@@ -589,11 +627,14 @@ func (recv *Label) ConnectActivateCurrentLink(callback LabelSignalActivateCurren
 	signalLabelActivateCurrentLinkMap[signalLabelActivateCurrentLinkId] = callback
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.Label_signal_connect_activate_current_link(instance, C.gpointer(uintptr(signalLabelActivateCurrentLinkId)))
+	retC := C.Label_signal_connect_activate_current_link(instance, C.gpointer(uintptr(signalLabelActivateCurrentLinkId)))
+	return int(retC)
 }
 
 //export Label_activateCurrentLinkHandler
-func Label_activateCurrentLinkHandler() {}
+func Label_activateCurrentLinkHandler() {
+	fmt.Println("cb")
+}
 
 var signalLabelActivateLinkId int
 var signalLabelActivateLinkMap = make(map[int]LabelSignalActivateLinkCallback)
@@ -602,7 +643,12 @@ var signalLabelActivateLinkLock sync.Mutex
 // LabelSignalActivateLinkCallback is a callback function for a 'activate-link' signal emitted from a Label.
 type LabelSignalActivateLinkCallback func(uri string) bool
 
-func (recv *Label) ConnectActivateLink(callback LabelSignalActivateLinkCallback) {
+/*
+ConnectActivateLink connects the callback to the 'activate-link' signal for the Label.
+
+The returned value represents the connection, and may be passed to DisconnectActivateLink to remove it.
+*/
+func (recv *Label) ConnectActivateLink(callback LabelSignalActivateLinkCallback) int {
 	signalLabelActivateLinkLock.Lock()
 	defer signalLabelActivateLinkLock.Unlock()
 
@@ -610,11 +656,14 @@ func (recv *Label) ConnectActivateLink(callback LabelSignalActivateLinkCallback)
 	signalLabelActivateLinkMap[signalLabelActivateLinkId] = callback
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.Label_signal_connect_activate_link(instance, C.gpointer(uintptr(signalLabelActivateLinkId)))
+	retC := C.Label_signal_connect_activate_link(instance, C.gpointer(uintptr(signalLabelActivateLinkId)))
+	return int(retC)
 }
 
 //export Label_activateLinkHandler
-func Label_activateLinkHandler() {}
+func Label_activateLinkHandler() {
+	fmt.Println("cb")
+}
 
 // GetCurrentUri is a wrapper around the C function gtk_label_get_current_uri.
 func (recv *Label) GetCurrentUri() string {
@@ -689,7 +738,12 @@ var signalPrintOperationUpdateCustomWidgetLock sync.Mutex
 // PrintOperationSignalUpdateCustomWidgetCallback is a callback function for a 'update-custom-widget' signal emitted from a PrintOperation.
 type PrintOperationSignalUpdateCustomWidgetCallback func(widget *Widget, setup *PageSetup, settings *PrintSettings)
 
-func (recv *PrintOperation) ConnectUpdateCustomWidget(callback PrintOperationSignalUpdateCustomWidgetCallback) {
+/*
+ConnectUpdateCustomWidget connects the callback to the 'update-custom-widget' signal for the PrintOperation.
+
+The returned value represents the connection, and may be passed to DisconnectUpdateCustomWidget to remove it.
+*/
+func (recv *PrintOperation) ConnectUpdateCustomWidget(callback PrintOperationSignalUpdateCustomWidgetCallback) int {
 	signalPrintOperationUpdateCustomWidgetLock.Lock()
 	defer signalPrintOperationUpdateCustomWidgetLock.Unlock()
 
@@ -697,11 +751,14 @@ func (recv *PrintOperation) ConnectUpdateCustomWidget(callback PrintOperationSig
 	signalPrintOperationUpdateCustomWidgetMap[signalPrintOperationUpdateCustomWidgetId] = callback
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.PrintOperation_signal_connect_update_custom_widget(instance, C.gpointer(uintptr(signalPrintOperationUpdateCustomWidgetId)))
+	retC := C.PrintOperation_signal_connect_update_custom_widget(instance, C.gpointer(uintptr(signalPrintOperationUpdateCustomWidgetId)))
+	return int(retC)
 }
 
 //export PrintOperation_updateCustomWidgetHandler
-func PrintOperation_updateCustomWidgetHandler() {}
+func PrintOperation_updateCustomWidgetHandler() {
+	fmt.Println("cb")
+}
 
 // GetEmbedPageSetup is a wrapper around the C function gtk_print_operation_get_embed_page_setup.
 func (recv *PrintOperation) GetEmbedPageSetup() bool {

@@ -4,6 +4,7 @@
 package gio
 
 import (
+	"fmt"
 	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	"sync"
@@ -73,7 +74,12 @@ var signalAppInfoMonitorChangedLock sync.Mutex
 // AppInfoMonitorSignalChangedCallback is a callback function for a 'changed' signal emitted from a AppInfoMonitor.
 type AppInfoMonitorSignalChangedCallback func()
 
-func (recv *AppInfoMonitor) ConnectChanged(callback AppInfoMonitorSignalChangedCallback) {
+/*
+ConnectChanged connects the callback to the 'changed' signal for the AppInfoMonitor.
+
+The returned value represents the connection, and may be passed to DisconnectChanged to remove it.
+*/
+func (recv *AppInfoMonitor) ConnectChanged(callback AppInfoMonitorSignalChangedCallback) int {
 	signalAppInfoMonitorChangedLock.Lock()
 	defer signalAppInfoMonitorChangedLock.Unlock()
 
@@ -81,11 +87,14 @@ func (recv *AppInfoMonitor) ConnectChanged(callback AppInfoMonitorSignalChangedC
 	signalAppInfoMonitorChangedMap[signalAppInfoMonitorChangedId] = callback
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.AppInfoMonitor_signal_connect_changed(instance, C.gpointer(uintptr(signalAppInfoMonitorChangedId)))
+	retC := C.AppInfoMonitor_signal_connect_changed(instance, C.gpointer(uintptr(signalAppInfoMonitorChangedId)))
+	return int(retC)
 }
 
 //export AppInfoMonitor_changedHandler
-func AppInfoMonitor_changedHandler() {}
+func AppInfoMonitor_changedHandler() {
+	fmt.Println("cb")
+}
 
 // Unsupported signal : unsupported parameter info : no type generator for AppInfo,
 

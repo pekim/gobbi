@@ -4,6 +4,7 @@
 package gtk
 
 import (
+	"fmt"
 	cairo "github.com/pekim/gobbi/lib/cairo"
 	gdk "github.com/pekim/gobbi/lib/gdk"
 	gdkpixbuf "github.com/pekim/gobbi/lib/gdkpixbuf"
@@ -370,7 +371,12 @@ var signalCellAreaFocusChangedLock sync.Mutex
 // CellAreaSignalFocusChangedCallback is a callback function for a 'focus-changed' signal emitted from a CellArea.
 type CellAreaSignalFocusChangedCallback func(renderer *CellRenderer, path string)
 
-func (recv *CellArea) ConnectFocusChanged(callback CellAreaSignalFocusChangedCallback) {
+/*
+ConnectFocusChanged connects the callback to the 'focus-changed' signal for the CellArea.
+
+The returned value represents the connection, and may be passed to DisconnectFocusChanged to remove it.
+*/
+func (recv *CellArea) ConnectFocusChanged(callback CellAreaSignalFocusChangedCallback) int {
 	signalCellAreaFocusChangedLock.Lock()
 	defer signalCellAreaFocusChangedLock.Unlock()
 
@@ -378,11 +384,14 @@ func (recv *CellArea) ConnectFocusChanged(callback CellAreaSignalFocusChangedCal
 	signalCellAreaFocusChangedMap[signalCellAreaFocusChangedId] = callback
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.CellArea_signal_connect_focus_changed(instance, C.gpointer(uintptr(signalCellAreaFocusChangedId)))
+	retC := C.CellArea_signal_connect_focus_changed(instance, C.gpointer(uintptr(signalCellAreaFocusChangedId)))
+	return int(retC)
 }
 
 //export CellArea_focusChangedHandler
-func CellArea_focusChangedHandler() {}
+func CellArea_focusChangedHandler() {
+	fmt.Println("cb")
+}
 
 // Unsupported signal : unsupported parameter editable : no type generator for CellEditable,
 
@@ -1645,7 +1654,12 @@ var signalStyleContextChangedLock sync.Mutex
 // StyleContextSignalChangedCallback is a callback function for a 'changed' signal emitted from a StyleContext.
 type StyleContextSignalChangedCallback func()
 
-func (recv *StyleContext) ConnectChanged(callback StyleContextSignalChangedCallback) {
+/*
+ConnectChanged connects the callback to the 'changed' signal for the StyleContext.
+
+The returned value represents the connection, and may be passed to DisconnectChanged to remove it.
+*/
+func (recv *StyleContext) ConnectChanged(callback StyleContextSignalChangedCallback) int {
 	signalStyleContextChangedLock.Lock()
 	defer signalStyleContextChangedLock.Unlock()
 
@@ -1653,11 +1667,14 @@ func (recv *StyleContext) ConnectChanged(callback StyleContextSignalChangedCallb
 	signalStyleContextChangedMap[signalStyleContextChangedId] = callback
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.StyleContext_signal_connect_changed(instance, C.gpointer(uintptr(signalStyleContextChangedId)))
+	retC := C.StyleContext_signal_connect_changed(instance, C.gpointer(uintptr(signalStyleContextChangedId)))
+	return int(retC)
 }
 
 //export StyleContext_changedHandler
-func StyleContext_changedHandler() {}
+func StyleContext_changedHandler() {
+	fmt.Println("cb")
+}
 
 // AddClass is a wrapper around the C function gtk_style_context_add_class.
 func (recv *StyleContext) AddClass(className string) {
@@ -2378,7 +2395,12 @@ var signalWidgetDrawLock sync.Mutex
 // WidgetSignalDrawCallback is a callback function for a 'draw' signal emitted from a Widget.
 type WidgetSignalDrawCallback func(cr *cairo.Context) bool
 
-func (recv *Widget) ConnectDraw(callback WidgetSignalDrawCallback) {
+/*
+ConnectDraw connects the callback to the 'draw' signal for the Widget.
+
+The returned value represents the connection, and may be passed to DisconnectDraw to remove it.
+*/
+func (recv *Widget) ConnectDraw(callback WidgetSignalDrawCallback) int {
 	signalWidgetDrawLock.Lock()
 	defer signalWidgetDrawLock.Unlock()
 
@@ -2386,11 +2408,14 @@ func (recv *Widget) ConnectDraw(callback WidgetSignalDrawCallback) {
 	signalWidgetDrawMap[signalWidgetDrawId] = callback
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.Widget_signal_connect_draw(instance, C.gpointer(uintptr(signalWidgetDrawId)))
+	retC := C.Widget_signal_connect_draw(instance, C.gpointer(uintptr(signalWidgetDrawId)))
+	return int(retC)
 }
 
 //export Widget_drawHandler
-func Widget_drawHandler() {}
+func Widget_drawHandler() {
+	fmt.Println("cb")
+}
 
 // Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
 
@@ -2405,7 +2430,12 @@ var signalWidgetStateFlagsChangedLock sync.Mutex
 // WidgetSignalStateFlagsChangedCallback is a callback function for a 'state-flags-changed' signal emitted from a Widget.
 type WidgetSignalStateFlagsChangedCallback func(flags StateFlags)
 
-func (recv *Widget) ConnectStateFlagsChanged(callback WidgetSignalStateFlagsChangedCallback) {
+/*
+ConnectStateFlagsChanged connects the callback to the 'state-flags-changed' signal for the Widget.
+
+The returned value represents the connection, and may be passed to DisconnectStateFlagsChanged to remove it.
+*/
+func (recv *Widget) ConnectStateFlagsChanged(callback WidgetSignalStateFlagsChangedCallback) int {
 	signalWidgetStateFlagsChangedLock.Lock()
 	defer signalWidgetStateFlagsChangedLock.Unlock()
 
@@ -2413,11 +2443,14 @@ func (recv *Widget) ConnectStateFlagsChanged(callback WidgetSignalStateFlagsChan
 	signalWidgetStateFlagsChangedMap[signalWidgetStateFlagsChangedId] = callback
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.Widget_signal_connect_state_flags_changed(instance, C.gpointer(uintptr(signalWidgetStateFlagsChangedId)))
+	retC := C.Widget_signal_connect_state_flags_changed(instance, C.gpointer(uintptr(signalWidgetStateFlagsChangedId)))
+	return int(retC)
 }
 
 //export Widget_stateFlagsChangedHandler
-func Widget_stateFlagsChangedHandler() {}
+func Widget_stateFlagsChangedHandler() {
+	fmt.Println("cb")
+}
 
 var signalWidgetStyleUpdatedId int
 var signalWidgetStyleUpdatedMap = make(map[int]WidgetSignalStyleUpdatedCallback)
@@ -2426,7 +2459,12 @@ var signalWidgetStyleUpdatedLock sync.Mutex
 // WidgetSignalStyleUpdatedCallback is a callback function for a 'style-updated' signal emitted from a Widget.
 type WidgetSignalStyleUpdatedCallback func()
 
-func (recv *Widget) ConnectStyleUpdated(callback WidgetSignalStyleUpdatedCallback) {
+/*
+ConnectStyleUpdated connects the callback to the 'style-updated' signal for the Widget.
+
+The returned value represents the connection, and may be passed to DisconnectStyleUpdated to remove it.
+*/
+func (recv *Widget) ConnectStyleUpdated(callback WidgetSignalStyleUpdatedCallback) int {
 	signalWidgetStyleUpdatedLock.Lock()
 	defer signalWidgetStyleUpdatedLock.Unlock()
 
@@ -2434,11 +2472,14 @@ func (recv *Widget) ConnectStyleUpdated(callback WidgetSignalStyleUpdatedCallbac
 	signalWidgetStyleUpdatedMap[signalWidgetStyleUpdatedId] = callback
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.Widget_signal_connect_style_updated(instance, C.gpointer(uintptr(signalWidgetStyleUpdatedId)))
+	retC := C.Widget_signal_connect_style_updated(instance, C.gpointer(uintptr(signalWidgetStyleUpdatedId)))
+	return int(retC)
 }
 
 //export Widget_styleUpdatedHandler
-func Widget_styleUpdatedHandler() {}
+func Widget_styleUpdatedHandler() {
+	fmt.Println("cb")
+}
 
 // Unsupported signal : unsupported parameter object : no type generator for Gdk.Event,
 

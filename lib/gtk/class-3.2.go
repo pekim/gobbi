@@ -4,6 +4,7 @@
 package gtk
 
 import (
+	"fmt"
 	gio "github.com/pekim/gobbi/lib/gio"
 	"sync"
 	"unsafe"
@@ -84,7 +85,12 @@ var signalApplicationWindowAddedLock sync.Mutex
 // ApplicationSignalWindowAddedCallback is a callback function for a 'window-added' signal emitted from a Application.
 type ApplicationSignalWindowAddedCallback func(window *Window)
 
-func (recv *Application) ConnectWindowAdded(callback ApplicationSignalWindowAddedCallback) {
+/*
+ConnectWindowAdded connects the callback to the 'window-added' signal for the Application.
+
+The returned value represents the connection, and may be passed to DisconnectWindowAdded to remove it.
+*/
+func (recv *Application) ConnectWindowAdded(callback ApplicationSignalWindowAddedCallback) int {
 	signalApplicationWindowAddedLock.Lock()
 	defer signalApplicationWindowAddedLock.Unlock()
 
@@ -92,11 +98,14 @@ func (recv *Application) ConnectWindowAdded(callback ApplicationSignalWindowAdde
 	signalApplicationWindowAddedMap[signalApplicationWindowAddedId] = callback
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.Application_signal_connect_window_added(instance, C.gpointer(uintptr(signalApplicationWindowAddedId)))
+	retC := C.Application_signal_connect_window_added(instance, C.gpointer(uintptr(signalApplicationWindowAddedId)))
+	return int(retC)
 }
 
 //export Application_windowAddedHandler
-func Application_windowAddedHandler() {}
+func Application_windowAddedHandler() {
+	fmt.Println("cb")
+}
 
 var signalApplicationWindowRemovedId int
 var signalApplicationWindowRemovedMap = make(map[int]ApplicationSignalWindowRemovedCallback)
@@ -105,7 +114,12 @@ var signalApplicationWindowRemovedLock sync.Mutex
 // ApplicationSignalWindowRemovedCallback is a callback function for a 'window-removed' signal emitted from a Application.
 type ApplicationSignalWindowRemovedCallback func(window *Window)
 
-func (recv *Application) ConnectWindowRemoved(callback ApplicationSignalWindowRemovedCallback) {
+/*
+ConnectWindowRemoved connects the callback to the 'window-removed' signal for the Application.
+
+The returned value represents the connection, and may be passed to DisconnectWindowRemoved to remove it.
+*/
+func (recv *Application) ConnectWindowRemoved(callback ApplicationSignalWindowRemovedCallback) int {
 	signalApplicationWindowRemovedLock.Lock()
 	defer signalApplicationWindowRemovedLock.Unlock()
 
@@ -113,11 +127,14 @@ func (recv *Application) ConnectWindowRemoved(callback ApplicationSignalWindowRe
 	signalApplicationWindowRemovedMap[signalApplicationWindowRemovedId] = callback
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.Application_signal_connect_window_removed(instance, C.gpointer(uintptr(signalApplicationWindowRemovedId)))
+	retC := C.Application_signal_connect_window_removed(instance, C.gpointer(uintptr(signalApplicationWindowRemovedId)))
+	return int(retC)
 }
 
 //export Application_windowRemovedHandler
-func Application_windowRemovedHandler() {}
+func Application_windowRemovedHandler() {
+	fmt.Println("cb")
+}
 
 // RemovePage is a wrapper around the C function gtk_assistant_remove_page.
 func (recv *Assistant) RemovePage(pageNum int32) {
@@ -345,7 +362,12 @@ var signalMenuShellInsertLock sync.Mutex
 // MenuShellSignalInsertCallback is a callback function for a 'insert' signal emitted from a MenuShell.
 type MenuShellSignalInsertCallback func(child *Widget, position int32)
 
-func (recv *MenuShell) ConnectInsert(callback MenuShellSignalInsertCallback) {
+/*
+ConnectInsert connects the callback to the 'insert' signal for the MenuShell.
+
+The returned value represents the connection, and may be passed to DisconnectInsert to remove it.
+*/
+func (recv *MenuShell) ConnectInsert(callback MenuShellSignalInsertCallback) int {
 	signalMenuShellInsertLock.Lock()
 	defer signalMenuShellInsertLock.Unlock()
 
@@ -353,11 +375,14 @@ func (recv *MenuShell) ConnectInsert(callback MenuShellSignalInsertCallback) {
 	signalMenuShellInsertMap[signalMenuShellInsertId] = callback
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.MenuShell_signal_connect_insert(instance, C.gpointer(uintptr(signalMenuShellInsertId)))
+	retC := C.MenuShell_signal_connect_insert(instance, C.gpointer(uintptr(signalMenuShellInsertId)))
+	return int(retC)
 }
 
 //export MenuShell_insertHandler
-func MenuShell_insertHandler() {}
+func MenuShell_insertHandler() {
+	fmt.Println("cb")
+}
 
 // Unsupported : gtk_message_dialog_new : unsupported parameter ... : varargs
 

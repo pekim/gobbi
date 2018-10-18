@@ -4,6 +4,7 @@
 package gtk
 
 import (
+	"fmt"
 	gdk "github.com/pekim/gobbi/lib/gdk"
 	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
@@ -474,7 +475,12 @@ var signalScrolledWindowEdgeOvershotLock sync.Mutex
 // ScrolledWindowSignalEdgeOvershotCallback is a callback function for a 'edge-overshot' signal emitted from a ScrolledWindow.
 type ScrolledWindowSignalEdgeOvershotCallback func(pos PositionType)
 
-func (recv *ScrolledWindow) ConnectEdgeOvershot(callback ScrolledWindowSignalEdgeOvershotCallback) {
+/*
+ConnectEdgeOvershot connects the callback to the 'edge-overshot' signal for the ScrolledWindow.
+
+The returned value represents the connection, and may be passed to DisconnectEdgeOvershot to remove it.
+*/
+func (recv *ScrolledWindow) ConnectEdgeOvershot(callback ScrolledWindowSignalEdgeOvershotCallback) int {
 	signalScrolledWindowEdgeOvershotLock.Lock()
 	defer signalScrolledWindowEdgeOvershotLock.Unlock()
 
@@ -482,11 +488,14 @@ func (recv *ScrolledWindow) ConnectEdgeOvershot(callback ScrolledWindowSignalEdg
 	signalScrolledWindowEdgeOvershotMap[signalScrolledWindowEdgeOvershotId] = callback
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.ScrolledWindow_signal_connect_edge_overshot(instance, C.gpointer(uintptr(signalScrolledWindowEdgeOvershotId)))
+	retC := C.ScrolledWindow_signal_connect_edge_overshot(instance, C.gpointer(uintptr(signalScrolledWindowEdgeOvershotId)))
+	return int(retC)
 }
 
 //export ScrolledWindow_edgeOvershotHandler
-func ScrolledWindow_edgeOvershotHandler() {}
+func ScrolledWindow_edgeOvershotHandler() {
+	fmt.Println("cb")
+}
 
 var signalScrolledWindowEdgeReachedId int
 var signalScrolledWindowEdgeReachedMap = make(map[int]ScrolledWindowSignalEdgeReachedCallback)
@@ -495,7 +504,12 @@ var signalScrolledWindowEdgeReachedLock sync.Mutex
 // ScrolledWindowSignalEdgeReachedCallback is a callback function for a 'edge-reached' signal emitted from a ScrolledWindow.
 type ScrolledWindowSignalEdgeReachedCallback func(pos PositionType)
 
-func (recv *ScrolledWindow) ConnectEdgeReached(callback ScrolledWindowSignalEdgeReachedCallback) {
+/*
+ConnectEdgeReached connects the callback to the 'edge-reached' signal for the ScrolledWindow.
+
+The returned value represents the connection, and may be passed to DisconnectEdgeReached to remove it.
+*/
+func (recv *ScrolledWindow) ConnectEdgeReached(callback ScrolledWindowSignalEdgeReachedCallback) int {
 	signalScrolledWindowEdgeReachedLock.Lock()
 	defer signalScrolledWindowEdgeReachedLock.Unlock()
 
@@ -503,11 +517,14 @@ func (recv *ScrolledWindow) ConnectEdgeReached(callback ScrolledWindowSignalEdge
 	signalScrolledWindowEdgeReachedMap[signalScrolledWindowEdgeReachedId] = callback
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.ScrolledWindow_signal_connect_edge_reached(instance, C.gpointer(uintptr(signalScrolledWindowEdgeReachedId)))
+	retC := C.ScrolledWindow_signal_connect_edge_reached(instance, C.gpointer(uintptr(signalScrolledWindowEdgeReachedId)))
+	return int(retC)
 }
 
 //export ScrolledWindow_edgeReachedHandler
-func ScrolledWindow_edgeReachedHandler() {}
+func ScrolledWindow_edgeReachedHandler() {
+	fmt.Println("cb")
+}
 
 // GetOverlayScrolling is a wrapper around the C function gtk_scrolled_window_get_overlay_scrolling.
 func (recv *ScrolledWindow) GetOverlayScrolling() bool {
@@ -534,7 +551,12 @@ var signalSearchEntryNextMatchLock sync.Mutex
 // SearchEntrySignalNextMatchCallback is a callback function for a 'next-match' signal emitted from a SearchEntry.
 type SearchEntrySignalNextMatchCallback func()
 
-func (recv *SearchEntry) ConnectNextMatch(callback SearchEntrySignalNextMatchCallback) {
+/*
+ConnectNextMatch connects the callback to the 'next-match' signal for the SearchEntry.
+
+The returned value represents the connection, and may be passed to DisconnectNextMatch to remove it.
+*/
+func (recv *SearchEntry) ConnectNextMatch(callback SearchEntrySignalNextMatchCallback) int {
 	signalSearchEntryNextMatchLock.Lock()
 	defer signalSearchEntryNextMatchLock.Unlock()
 
@@ -542,11 +564,14 @@ func (recv *SearchEntry) ConnectNextMatch(callback SearchEntrySignalNextMatchCal
 	signalSearchEntryNextMatchMap[signalSearchEntryNextMatchId] = callback
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.SearchEntry_signal_connect_next_match(instance, C.gpointer(uintptr(signalSearchEntryNextMatchId)))
+	retC := C.SearchEntry_signal_connect_next_match(instance, C.gpointer(uintptr(signalSearchEntryNextMatchId)))
+	return int(retC)
 }
 
 //export SearchEntry_nextMatchHandler
-func SearchEntry_nextMatchHandler() {}
+func SearchEntry_nextMatchHandler() {
+	fmt.Println("cb")
+}
 
 var signalSearchEntryPreviousMatchId int
 var signalSearchEntryPreviousMatchMap = make(map[int]SearchEntrySignalPreviousMatchCallback)
@@ -555,7 +580,12 @@ var signalSearchEntryPreviousMatchLock sync.Mutex
 // SearchEntrySignalPreviousMatchCallback is a callback function for a 'previous-match' signal emitted from a SearchEntry.
 type SearchEntrySignalPreviousMatchCallback func()
 
-func (recv *SearchEntry) ConnectPreviousMatch(callback SearchEntrySignalPreviousMatchCallback) {
+/*
+ConnectPreviousMatch connects the callback to the 'previous-match' signal for the SearchEntry.
+
+The returned value represents the connection, and may be passed to DisconnectPreviousMatch to remove it.
+*/
+func (recv *SearchEntry) ConnectPreviousMatch(callback SearchEntrySignalPreviousMatchCallback) int {
 	signalSearchEntryPreviousMatchLock.Lock()
 	defer signalSearchEntryPreviousMatchLock.Unlock()
 
@@ -563,11 +593,14 @@ func (recv *SearchEntry) ConnectPreviousMatch(callback SearchEntrySignalPrevious
 	signalSearchEntryPreviousMatchMap[signalSearchEntryPreviousMatchId] = callback
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.SearchEntry_signal_connect_previous_match(instance, C.gpointer(uintptr(signalSearchEntryPreviousMatchId)))
+	retC := C.SearchEntry_signal_connect_previous_match(instance, C.gpointer(uintptr(signalSearchEntryPreviousMatchId)))
+	return int(retC)
 }
 
 //export SearchEntry_previousMatchHandler
-func SearchEntry_previousMatchHandler() {}
+func SearchEntry_previousMatchHandler() {
+	fmt.Println("cb")
+}
 
 var signalSearchEntryStopSearchId int
 var signalSearchEntryStopSearchMap = make(map[int]SearchEntrySignalStopSearchCallback)
@@ -576,7 +609,12 @@ var signalSearchEntryStopSearchLock sync.Mutex
 // SearchEntrySignalStopSearchCallback is a callback function for a 'stop-search' signal emitted from a SearchEntry.
 type SearchEntrySignalStopSearchCallback func()
 
-func (recv *SearchEntry) ConnectStopSearch(callback SearchEntrySignalStopSearchCallback) {
+/*
+ConnectStopSearch connects the callback to the 'stop-search' signal for the SearchEntry.
+
+The returned value represents the connection, and may be passed to DisconnectStopSearch to remove it.
+*/
+func (recv *SearchEntry) ConnectStopSearch(callback SearchEntrySignalStopSearchCallback) int {
 	signalSearchEntryStopSearchLock.Lock()
 	defer signalSearchEntryStopSearchLock.Unlock()
 
@@ -584,11 +622,14 @@ func (recv *SearchEntry) ConnectStopSearch(callback SearchEntrySignalStopSearchC
 	signalSearchEntryStopSearchMap[signalSearchEntryStopSearchId] = callback
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.SearchEntry_signal_connect_stop_search(instance, C.gpointer(uintptr(signalSearchEntryStopSearchId)))
+	retC := C.SearchEntry_signal_connect_stop_search(instance, C.gpointer(uintptr(signalSearchEntryStopSearchId)))
+	return int(retC)
 }
 
 //export SearchEntry_stopSearchHandler
-func SearchEntry_stopSearchHandler() {}
+func SearchEntry_stopSearchHandler() {
+	fmt.Println("cb")
+}
 
 // Unsupported : gtk_search_entry_handle_event : unsupported parameter event : no type generator for Gdk.Event, GdkEvent*
 
@@ -678,7 +719,12 @@ var signalTextViewExtendSelectionLock sync.Mutex
 // TextViewSignalExtendSelectionCallback is a callback function for a 'extend-selection' signal emitted from a TextView.
 type TextViewSignalExtendSelectionCallback func(granularity TextExtendSelection, location *TextIter, start *TextIter, end *TextIter) bool
 
-func (recv *TextView) ConnectExtendSelection(callback TextViewSignalExtendSelectionCallback) {
+/*
+ConnectExtendSelection connects the callback to the 'extend-selection' signal for the TextView.
+
+The returned value represents the connection, and may be passed to DisconnectExtendSelection to remove it.
+*/
+func (recv *TextView) ConnectExtendSelection(callback TextViewSignalExtendSelectionCallback) int {
 	signalTextViewExtendSelectionLock.Lock()
 	defer signalTextViewExtendSelectionLock.Unlock()
 
@@ -686,11 +732,14 @@ func (recv *TextView) ConnectExtendSelection(callback TextViewSignalExtendSelect
 	signalTextViewExtendSelectionMap[signalTextViewExtendSelectionId] = callback
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.TextView_signal_connect_extend_selection(instance, C.gpointer(uintptr(signalTextViewExtendSelectionId)))
+	retC := C.TextView_signal_connect_extend_selection(instance, C.gpointer(uintptr(signalTextViewExtendSelectionId)))
+	return int(retC)
 }
 
 //export TextView_extendSelectionHandler
-func TextView_extendSelectionHandler() {}
+func TextView_extendSelectionHandler() {
+	fmt.Println("cb")
+}
 
 // GetMonospace is a wrapper around the C function gtk_text_view_get_monospace.
 func (recv *TextView) GetMonospace() bool {

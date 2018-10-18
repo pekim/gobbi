@@ -3,6 +3,7 @@
 package atk
 
 import (
+	"fmt"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	"sync"
 	"unsafe"
@@ -157,7 +158,12 @@ var signalHyperlinkLinkActivatedLock sync.Mutex
 // HyperlinkSignalLinkActivatedCallback is a callback function for a 'link-activated' signal emitted from a Hyperlink.
 type HyperlinkSignalLinkActivatedCallback func()
 
-func (recv *Hyperlink) ConnectLinkActivated(callback HyperlinkSignalLinkActivatedCallback) {
+/*
+ConnectLinkActivated connects the callback to the 'link-activated' signal for the Hyperlink.
+
+The returned value represents the connection, and may be passed to DisconnectLinkActivated to remove it.
+*/
+func (recv *Hyperlink) ConnectLinkActivated(callback HyperlinkSignalLinkActivatedCallback) int {
 	signalHyperlinkLinkActivatedLock.Lock()
 	defer signalHyperlinkLinkActivatedLock.Unlock()
 
@@ -165,11 +171,14 @@ func (recv *Hyperlink) ConnectLinkActivated(callback HyperlinkSignalLinkActivate
 	signalHyperlinkLinkActivatedMap[signalHyperlinkLinkActivatedId] = callback
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.Hyperlink_signal_connect_link_activated(instance, C.gpointer(uintptr(signalHyperlinkLinkActivatedId)))
+	retC := C.Hyperlink_signal_connect_link_activated(instance, C.gpointer(uintptr(signalHyperlinkLinkActivatedId)))
+	return int(retC)
 }
 
 //export Hyperlink_linkActivatedHandler
-func Hyperlink_linkActivatedHandler() {}
+func Hyperlink_linkActivatedHandler() {
+	fmt.Println("cb")
+}
 
 // GetEndIndex is a wrapper around the C function atk_hyperlink_get_end_index.
 func (recv *Hyperlink) GetEndIndex() int32 {
@@ -414,7 +423,12 @@ var signalObjectActiveDescendantChangedLock sync.Mutex
 // ObjectSignalActiveDescendantChangedCallback is a callback function for a 'active-descendant-changed' signal emitted from a Object.
 type ObjectSignalActiveDescendantChangedCallback func(arg1 uintptr)
 
-func (recv *Object) ConnectActiveDescendantChanged(callback ObjectSignalActiveDescendantChangedCallback) {
+/*
+ConnectActiveDescendantChanged connects the callback to the 'active-descendant-changed' signal for the Object.
+
+The returned value represents the connection, and may be passed to DisconnectActiveDescendantChanged to remove it.
+*/
+func (recv *Object) ConnectActiveDescendantChanged(callback ObjectSignalActiveDescendantChangedCallback) int {
 	signalObjectActiveDescendantChangedLock.Lock()
 	defer signalObjectActiveDescendantChangedLock.Unlock()
 
@@ -422,11 +436,14 @@ func (recv *Object) ConnectActiveDescendantChanged(callback ObjectSignalActiveDe
 	signalObjectActiveDescendantChangedMap[signalObjectActiveDescendantChangedId] = callback
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.Object_signal_connect_active_descendant_changed(instance, C.gpointer(uintptr(signalObjectActiveDescendantChangedId)))
+	retC := C.Object_signal_connect_active_descendant_changed(instance, C.gpointer(uintptr(signalObjectActiveDescendantChangedId)))
+	return int(retC)
 }
 
 //export Object_activeDescendantChangedHandler
-func Object_activeDescendantChangedHandler() {}
+func Object_activeDescendantChangedHandler() {
+	fmt.Println("cb")
+}
 
 var signalObjectChildrenChangedId int
 var signalObjectChildrenChangedMap = make(map[int]ObjectSignalChildrenChangedCallback)
@@ -435,7 +452,12 @@ var signalObjectChildrenChangedLock sync.Mutex
 // ObjectSignalChildrenChangedCallback is a callback function for a 'children-changed' signal emitted from a Object.
 type ObjectSignalChildrenChangedCallback func(arg1 uint32, arg2 uintptr)
 
-func (recv *Object) ConnectChildrenChanged(callback ObjectSignalChildrenChangedCallback) {
+/*
+ConnectChildrenChanged connects the callback to the 'children-changed' signal for the Object.
+
+The returned value represents the connection, and may be passed to DisconnectChildrenChanged to remove it.
+*/
+func (recv *Object) ConnectChildrenChanged(callback ObjectSignalChildrenChangedCallback) int {
 	signalObjectChildrenChangedLock.Lock()
 	defer signalObjectChildrenChangedLock.Unlock()
 
@@ -443,11 +465,14 @@ func (recv *Object) ConnectChildrenChanged(callback ObjectSignalChildrenChangedC
 	signalObjectChildrenChangedMap[signalObjectChildrenChangedId] = callback
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.Object_signal_connect_children_changed(instance, C.gpointer(uintptr(signalObjectChildrenChangedId)))
+	retC := C.Object_signal_connect_children_changed(instance, C.gpointer(uintptr(signalObjectChildrenChangedId)))
+	return int(retC)
 }
 
 //export Object_childrenChangedHandler
-func Object_childrenChangedHandler() {}
+func Object_childrenChangedHandler() {
+	fmt.Println("cb")
+}
 
 var signalObjectFocusEventId int
 var signalObjectFocusEventMap = make(map[int]ObjectSignalFocusEventCallback)
@@ -456,7 +481,12 @@ var signalObjectFocusEventLock sync.Mutex
 // ObjectSignalFocusEventCallback is a callback function for a 'focus-event' signal emitted from a Object.
 type ObjectSignalFocusEventCallback func(arg1 bool)
 
-func (recv *Object) ConnectFocusEvent(callback ObjectSignalFocusEventCallback) {
+/*
+ConnectFocusEvent connects the callback to the 'focus-event' signal for the Object.
+
+The returned value represents the connection, and may be passed to DisconnectFocusEvent to remove it.
+*/
+func (recv *Object) ConnectFocusEvent(callback ObjectSignalFocusEventCallback) int {
 	signalObjectFocusEventLock.Lock()
 	defer signalObjectFocusEventLock.Unlock()
 
@@ -464,11 +494,14 @@ func (recv *Object) ConnectFocusEvent(callback ObjectSignalFocusEventCallback) {
 	signalObjectFocusEventMap[signalObjectFocusEventId] = callback
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.Object_signal_connect_focus_event(instance, C.gpointer(uintptr(signalObjectFocusEventId)))
+	retC := C.Object_signal_connect_focus_event(instance, C.gpointer(uintptr(signalObjectFocusEventId)))
+	return int(retC)
 }
 
 //export Object_focusEventHandler
-func Object_focusEventHandler() {}
+func Object_focusEventHandler() {
+	fmt.Println("cb")
+}
 
 var signalObjectPropertyChangeId int
 var signalObjectPropertyChangeMap = make(map[int]ObjectSignalPropertyChangeCallback)
@@ -477,7 +510,12 @@ var signalObjectPropertyChangeLock sync.Mutex
 // ObjectSignalPropertyChangeCallback is a callback function for a 'property-change' signal emitted from a Object.
 type ObjectSignalPropertyChangeCallback func(arg1 uintptr)
 
-func (recv *Object) ConnectPropertyChange(callback ObjectSignalPropertyChangeCallback) {
+/*
+ConnectPropertyChange connects the callback to the 'property-change' signal for the Object.
+
+The returned value represents the connection, and may be passed to DisconnectPropertyChange to remove it.
+*/
+func (recv *Object) ConnectPropertyChange(callback ObjectSignalPropertyChangeCallback) int {
 	signalObjectPropertyChangeLock.Lock()
 	defer signalObjectPropertyChangeLock.Unlock()
 
@@ -485,11 +523,14 @@ func (recv *Object) ConnectPropertyChange(callback ObjectSignalPropertyChangeCal
 	signalObjectPropertyChangeMap[signalObjectPropertyChangeId] = callback
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.Object_signal_connect_property_change(instance, C.gpointer(uintptr(signalObjectPropertyChangeId)))
+	retC := C.Object_signal_connect_property_change(instance, C.gpointer(uintptr(signalObjectPropertyChangeId)))
+	return int(retC)
 }
 
 //export Object_propertyChangeHandler
-func Object_propertyChangeHandler() {}
+func Object_propertyChangeHandler() {
+	fmt.Println("cb")
+}
 
 var signalObjectStateChangeId int
 var signalObjectStateChangeMap = make(map[int]ObjectSignalStateChangeCallback)
@@ -498,7 +539,12 @@ var signalObjectStateChangeLock sync.Mutex
 // ObjectSignalStateChangeCallback is a callback function for a 'state-change' signal emitted from a Object.
 type ObjectSignalStateChangeCallback func(arg1 string, arg2 bool)
 
-func (recv *Object) ConnectStateChange(callback ObjectSignalStateChangeCallback) {
+/*
+ConnectStateChange connects the callback to the 'state-change' signal for the Object.
+
+The returned value represents the connection, and may be passed to DisconnectStateChange to remove it.
+*/
+func (recv *Object) ConnectStateChange(callback ObjectSignalStateChangeCallback) int {
 	signalObjectStateChangeLock.Lock()
 	defer signalObjectStateChangeLock.Unlock()
 
@@ -506,11 +552,14 @@ func (recv *Object) ConnectStateChange(callback ObjectSignalStateChangeCallback)
 	signalObjectStateChangeMap[signalObjectStateChangeId] = callback
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.Object_signal_connect_state_change(instance, C.gpointer(uintptr(signalObjectStateChangeId)))
+	retC := C.Object_signal_connect_state_change(instance, C.gpointer(uintptr(signalObjectStateChangeId)))
+	return int(retC)
 }
 
 //export Object_stateChangeHandler
-func Object_stateChangeHandler() {}
+func Object_stateChangeHandler() {
+	fmt.Println("cb")
+}
 
 var signalObjectVisibleDataChangedId int
 var signalObjectVisibleDataChangedMap = make(map[int]ObjectSignalVisibleDataChangedCallback)
@@ -519,7 +568,12 @@ var signalObjectVisibleDataChangedLock sync.Mutex
 // ObjectSignalVisibleDataChangedCallback is a callback function for a 'visible-data-changed' signal emitted from a Object.
 type ObjectSignalVisibleDataChangedCallback func()
 
-func (recv *Object) ConnectVisibleDataChanged(callback ObjectSignalVisibleDataChangedCallback) {
+/*
+ConnectVisibleDataChanged connects the callback to the 'visible-data-changed' signal for the Object.
+
+The returned value represents the connection, and may be passed to DisconnectVisibleDataChanged to remove it.
+*/
+func (recv *Object) ConnectVisibleDataChanged(callback ObjectSignalVisibleDataChangedCallback) int {
 	signalObjectVisibleDataChangedLock.Lock()
 	defer signalObjectVisibleDataChangedLock.Unlock()
 
@@ -527,11 +581,14 @@ func (recv *Object) ConnectVisibleDataChanged(callback ObjectSignalVisibleDataCh
 	signalObjectVisibleDataChangedMap[signalObjectVisibleDataChangedId] = callback
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.Object_signal_connect_visible_data_changed(instance, C.gpointer(uintptr(signalObjectVisibleDataChangedId)))
+	retC := C.Object_signal_connect_visible_data_changed(instance, C.gpointer(uintptr(signalObjectVisibleDataChangedId)))
+	return int(retC)
 }
 
 //export Object_visibleDataChangedHandler
-func Object_visibleDataChangedHandler() {}
+func Object_visibleDataChangedHandler() {
+	fmt.Println("cb")
+}
 
 // AddRelationship is a wrapper around the C function atk_object_add_relationship.
 func (recv *Object) AddRelationship(relationship RelationType, target *Object) bool {

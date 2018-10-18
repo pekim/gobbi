@@ -4,6 +4,7 @@
 package gio
 
 import (
+	"fmt"
 	glib "github.com/pekim/gobbi/lib/glib"
 	"sync"
 	"unsafe"
@@ -40,7 +41,12 @@ var signalAppLaunchContextLaunchFailedLock sync.Mutex
 // AppLaunchContextSignalLaunchFailedCallback is a callback function for a 'launch-failed' signal emitted from a AppLaunchContext.
 type AppLaunchContextSignalLaunchFailedCallback func(startupNotifyId string)
 
-func (recv *AppLaunchContext) ConnectLaunchFailed(callback AppLaunchContextSignalLaunchFailedCallback) {
+/*
+ConnectLaunchFailed connects the callback to the 'launch-failed' signal for the AppLaunchContext.
+
+The returned value represents the connection, and may be passed to DisconnectLaunchFailed to remove it.
+*/
+func (recv *AppLaunchContext) ConnectLaunchFailed(callback AppLaunchContextSignalLaunchFailedCallback) int {
 	signalAppLaunchContextLaunchFailedLock.Lock()
 	defer signalAppLaunchContextLaunchFailedLock.Unlock()
 
@@ -48,11 +54,14 @@ func (recv *AppLaunchContext) ConnectLaunchFailed(callback AppLaunchContextSigna
 	signalAppLaunchContextLaunchFailedMap[signalAppLaunchContextLaunchFailedId] = callback
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.AppLaunchContext_signal_connect_launch_failed(instance, C.gpointer(uintptr(signalAppLaunchContextLaunchFailedId)))
+	retC := C.AppLaunchContext_signal_connect_launch_failed(instance, C.gpointer(uintptr(signalAppLaunchContextLaunchFailedId)))
+	return int(retC)
 }
 
 //export AppLaunchContext_launchFailedHandler
-func AppLaunchContext_launchFailedHandler() {}
+func AppLaunchContext_launchFailedHandler() {
+	fmt.Println("cb")
+}
 
 // Unsupported signal : unsupported parameter info : no type generator for AppInfo,
 

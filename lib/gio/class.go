@@ -3,6 +3,7 @@
 package gio
 
 import (
+	"fmt"
 	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	"sync"
@@ -515,7 +516,12 @@ var signalCancellableCancelledLock sync.Mutex
 // CancellableSignalCancelledCallback is a callback function for a 'cancelled' signal emitted from a Cancellable.
 type CancellableSignalCancelledCallback func()
 
-func (recv *Cancellable) ConnectCancelled(callback CancellableSignalCancelledCallback) {
+/*
+ConnectCancelled connects the callback to the 'cancelled' signal for the Cancellable.
+
+The returned value represents the connection, and may be passed to DisconnectCancelled to remove it.
+*/
+func (recv *Cancellable) ConnectCancelled(callback CancellableSignalCancelledCallback) int {
 	signalCancellableCancelledLock.Lock()
 	defer signalCancellableCancelledLock.Unlock()
 
@@ -523,11 +529,14 @@ func (recv *Cancellable) ConnectCancelled(callback CancellableSignalCancelledCal
 	signalCancellableCancelledMap[signalCancellableCancelledId] = callback
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.Cancellable_signal_connect_cancelled(instance, C.gpointer(uintptr(signalCancellableCancelledId)))
+	retC := C.Cancellable_signal_connect_cancelled(instance, C.gpointer(uintptr(signalCancellableCancelledId)))
+	return int(retC)
 }
 
 //export Cancellable_cancelledHandler
-func Cancellable_cancelledHandler() {}
+func Cancellable_cancelledHandler() {
+	fmt.Println("cb")
+}
 
 // CancellableNew is a wrapper around the C function g_cancellable_new.
 func CancellableNew() *Cancellable {
@@ -2377,7 +2386,12 @@ var signalFilenameCompleterGotCompletionDataLock sync.Mutex
 // FilenameCompleterSignalGotCompletionDataCallback is a callback function for a 'got-completion-data' signal emitted from a FilenameCompleter.
 type FilenameCompleterSignalGotCompletionDataCallback func()
 
-func (recv *FilenameCompleter) ConnectGotCompletionData(callback FilenameCompleterSignalGotCompletionDataCallback) {
+/*
+ConnectGotCompletionData connects the callback to the 'got-completion-data' signal for the FilenameCompleter.
+
+The returned value represents the connection, and may be passed to DisconnectGotCompletionData to remove it.
+*/
+func (recv *FilenameCompleter) ConnectGotCompletionData(callback FilenameCompleterSignalGotCompletionDataCallback) int {
 	signalFilenameCompleterGotCompletionDataLock.Lock()
 	defer signalFilenameCompleterGotCompletionDataLock.Unlock()
 
@@ -2385,11 +2399,14 @@ func (recv *FilenameCompleter) ConnectGotCompletionData(callback FilenameComplet
 	signalFilenameCompleterGotCompletionDataMap[signalFilenameCompleterGotCompletionDataId] = callback
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.FilenameCompleter_signal_connect_got_completion_data(instance, C.gpointer(uintptr(signalFilenameCompleterGotCompletionDataId)))
+	retC := C.FilenameCompleter_signal_connect_got_completion_data(instance, C.gpointer(uintptr(signalFilenameCompleterGotCompletionDataId)))
+	return int(retC)
 }
 
 //export FilenameCompleter_gotCompletionDataHandler
-func FilenameCompleter_gotCompletionDataHandler() {}
+func FilenameCompleter_gotCompletionDataHandler() {
+	fmt.Println("cb")
+}
 
 // FilenameCompleterNew is a wrapper around the C function g_filename_completer_new.
 func FilenameCompleterNew() *FilenameCompleter {
@@ -3011,7 +3028,12 @@ var signalMountOperationAskPasswordLock sync.Mutex
 // MountOperationSignalAskPasswordCallback is a callback function for a 'ask-password' signal emitted from a MountOperation.
 type MountOperationSignalAskPasswordCallback func(message string, defaultUser string, defaultDomain string, flags AskPasswordFlags)
 
-func (recv *MountOperation) ConnectAskPassword(callback MountOperationSignalAskPasswordCallback) {
+/*
+ConnectAskPassword connects the callback to the 'ask-password' signal for the MountOperation.
+
+The returned value represents the connection, and may be passed to DisconnectAskPassword to remove it.
+*/
+func (recv *MountOperation) ConnectAskPassword(callback MountOperationSignalAskPasswordCallback) int {
 	signalMountOperationAskPasswordLock.Lock()
 	defer signalMountOperationAskPasswordLock.Unlock()
 
@@ -3019,11 +3041,14 @@ func (recv *MountOperation) ConnectAskPassword(callback MountOperationSignalAskP
 	signalMountOperationAskPasswordMap[signalMountOperationAskPasswordId] = callback
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.MountOperation_signal_connect_ask_password(instance, C.gpointer(uintptr(signalMountOperationAskPasswordId)))
+	retC := C.MountOperation_signal_connect_ask_password(instance, C.gpointer(uintptr(signalMountOperationAskPasswordId)))
+	return int(retC)
 }
 
 //export MountOperation_askPasswordHandler
-func MountOperation_askPasswordHandler() {}
+func MountOperation_askPasswordHandler() {
+	fmt.Println("cb")
+}
 
 // Unsupported signal : unsupported parameter choices : no param type
 
@@ -3034,7 +3059,12 @@ var signalMountOperationReplyLock sync.Mutex
 // MountOperationSignalReplyCallback is a callback function for a 'reply' signal emitted from a MountOperation.
 type MountOperationSignalReplyCallback func(result MountOperationResult)
 
-func (recv *MountOperation) ConnectReply(callback MountOperationSignalReplyCallback) {
+/*
+ConnectReply connects the callback to the 'reply' signal for the MountOperation.
+
+The returned value represents the connection, and may be passed to DisconnectReply to remove it.
+*/
+func (recv *MountOperation) ConnectReply(callback MountOperationSignalReplyCallback) int {
 	signalMountOperationReplyLock.Lock()
 	defer signalMountOperationReplyLock.Unlock()
 
@@ -3042,11 +3072,14 @@ func (recv *MountOperation) ConnectReply(callback MountOperationSignalReplyCallb
 	signalMountOperationReplyMap[signalMountOperationReplyId] = callback
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.MountOperation_signal_connect_reply(instance, C.gpointer(uintptr(signalMountOperationReplyId)))
+	retC := C.MountOperation_signal_connect_reply(instance, C.gpointer(uintptr(signalMountOperationReplyId)))
+	return int(retC)
 }
 
 //export MountOperation_replyHandler
-func MountOperation_replyHandler() {}
+func MountOperation_replyHandler() {
+	fmt.Println("cb")
+}
 
 // Unsupported signal : unsupported parameter processes : no param type
 
@@ -3546,7 +3579,12 @@ var signalResolverReloadLock sync.Mutex
 // ResolverSignalReloadCallback is a callback function for a 'reload' signal emitted from a Resolver.
 type ResolverSignalReloadCallback func()
 
-func (recv *Resolver) ConnectReload(callback ResolverSignalReloadCallback) {
+/*
+ConnectReload connects the callback to the 'reload' signal for the Resolver.
+
+The returned value represents the connection, and may be passed to DisconnectReload to remove it.
+*/
+func (recv *Resolver) ConnectReload(callback ResolverSignalReloadCallback) int {
 	signalResolverReloadLock.Lock()
 	defer signalResolverReloadLock.Unlock()
 
@@ -3554,11 +3592,14 @@ func (recv *Resolver) ConnectReload(callback ResolverSignalReloadCallback) {
 	signalResolverReloadMap[signalResolverReloadId] = callback
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.Resolver_signal_connect_reload(instance, C.gpointer(uintptr(signalResolverReloadId)))
+	retC := C.Resolver_signal_connect_reload(instance, C.gpointer(uintptr(signalResolverReloadId)))
+	return int(retC)
 }
 
 //export Resolver_reloadHandler
-func Resolver_reloadHandler() {}
+func Resolver_reloadHandler() {
+	fmt.Println("cb")
+}
 
 // Settings is a wrapper around the C record GSettings.
 type Settings struct {
@@ -3603,7 +3644,12 @@ var signalSettingsChangedLock sync.Mutex
 // SettingsSignalChangedCallback is a callback function for a 'changed' signal emitted from a Settings.
 type SettingsSignalChangedCallback func(key string)
 
-func (recv *Settings) ConnectChanged(callback SettingsSignalChangedCallback) {
+/*
+ConnectChanged connects the callback to the 'changed' signal for the Settings.
+
+The returned value represents the connection, and may be passed to DisconnectChanged to remove it.
+*/
+func (recv *Settings) ConnectChanged(callback SettingsSignalChangedCallback) int {
 	signalSettingsChangedLock.Lock()
 	defer signalSettingsChangedLock.Unlock()
 
@@ -3611,11 +3657,14 @@ func (recv *Settings) ConnectChanged(callback SettingsSignalChangedCallback) {
 	signalSettingsChangedMap[signalSettingsChangedId] = callback
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.Settings_signal_connect_changed(instance, C.gpointer(uintptr(signalSettingsChangedId)))
+	retC := C.Settings_signal_connect_changed(instance, C.gpointer(uintptr(signalSettingsChangedId)))
+	return int(retC)
 }
 
 //export Settings_changedHandler
-func Settings_changedHandler() {}
+func Settings_changedHandler() {
+	fmt.Println("cb")
+}
 
 var signalSettingsWritableChangeEventId int
 var signalSettingsWritableChangeEventMap = make(map[int]SettingsSignalWritableChangeEventCallback)
@@ -3624,7 +3673,12 @@ var signalSettingsWritableChangeEventLock sync.Mutex
 // SettingsSignalWritableChangeEventCallback is a callback function for a 'writable-change-event' signal emitted from a Settings.
 type SettingsSignalWritableChangeEventCallback func(key uint32) bool
 
-func (recv *Settings) ConnectWritableChangeEvent(callback SettingsSignalWritableChangeEventCallback) {
+/*
+ConnectWritableChangeEvent connects the callback to the 'writable-change-event' signal for the Settings.
+
+The returned value represents the connection, and may be passed to DisconnectWritableChangeEvent to remove it.
+*/
+func (recv *Settings) ConnectWritableChangeEvent(callback SettingsSignalWritableChangeEventCallback) int {
 	signalSettingsWritableChangeEventLock.Lock()
 	defer signalSettingsWritableChangeEventLock.Unlock()
 
@@ -3632,11 +3686,14 @@ func (recv *Settings) ConnectWritableChangeEvent(callback SettingsSignalWritable
 	signalSettingsWritableChangeEventMap[signalSettingsWritableChangeEventId] = callback
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.Settings_signal_connect_writable_change_event(instance, C.gpointer(uintptr(signalSettingsWritableChangeEventId)))
+	retC := C.Settings_signal_connect_writable_change_event(instance, C.gpointer(uintptr(signalSettingsWritableChangeEventId)))
+	return int(retC)
 }
 
 //export Settings_writableChangeEventHandler
-func Settings_writableChangeEventHandler() {}
+func Settings_writableChangeEventHandler() {
+	fmt.Println("cb")
+}
 
 var signalSettingsWritableChangedId int
 var signalSettingsWritableChangedMap = make(map[int]SettingsSignalWritableChangedCallback)
@@ -3645,7 +3702,12 @@ var signalSettingsWritableChangedLock sync.Mutex
 // SettingsSignalWritableChangedCallback is a callback function for a 'writable-changed' signal emitted from a Settings.
 type SettingsSignalWritableChangedCallback func(key string)
 
-func (recv *Settings) ConnectWritableChanged(callback SettingsSignalWritableChangedCallback) {
+/*
+ConnectWritableChanged connects the callback to the 'writable-changed' signal for the Settings.
+
+The returned value represents the connection, and may be passed to DisconnectWritableChanged to remove it.
+*/
+func (recv *Settings) ConnectWritableChanged(callback SettingsSignalWritableChangedCallback) int {
 	signalSettingsWritableChangedLock.Lock()
 	defer signalSettingsWritableChangedLock.Unlock()
 
@@ -3653,11 +3715,14 @@ func (recv *Settings) ConnectWritableChanged(callback SettingsSignalWritableChan
 	signalSettingsWritableChangedMap[signalSettingsWritableChangedId] = callback
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.Settings_signal_connect_writable_changed(instance, C.gpointer(uintptr(signalSettingsWritableChangedId)))
+	retC := C.Settings_signal_connect_writable_changed(instance, C.gpointer(uintptr(signalSettingsWritableChangedId)))
+	return int(retC)
 }
 
 //export Settings_writableChangedHandler
-func Settings_writableChangedHandler() {}
+func Settings_writableChangedHandler() {
+	fmt.Println("cb")
+}
 
 // Apply is a wrapper around the C function g_settings_apply.
 func (recv *Settings) Apply() {
@@ -4497,7 +4562,12 @@ var signalUnixMountMonitorMountpointsChangedLock sync.Mutex
 // UnixMountMonitorSignalMountpointsChangedCallback is a callback function for a 'mountpoints-changed' signal emitted from a UnixMountMonitor.
 type UnixMountMonitorSignalMountpointsChangedCallback func()
 
-func (recv *UnixMountMonitor) ConnectMountpointsChanged(callback UnixMountMonitorSignalMountpointsChangedCallback) {
+/*
+ConnectMountpointsChanged connects the callback to the 'mountpoints-changed' signal for the UnixMountMonitor.
+
+The returned value represents the connection, and may be passed to DisconnectMountpointsChanged to remove it.
+*/
+func (recv *UnixMountMonitor) ConnectMountpointsChanged(callback UnixMountMonitorSignalMountpointsChangedCallback) int {
 	signalUnixMountMonitorMountpointsChangedLock.Lock()
 	defer signalUnixMountMonitorMountpointsChangedLock.Unlock()
 
@@ -4505,11 +4575,14 @@ func (recv *UnixMountMonitor) ConnectMountpointsChanged(callback UnixMountMonito
 	signalUnixMountMonitorMountpointsChangedMap[signalUnixMountMonitorMountpointsChangedId] = callback
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.UnixMountMonitor_signal_connect_mountpoints_changed(instance, C.gpointer(uintptr(signalUnixMountMonitorMountpointsChangedId)))
+	retC := C.UnixMountMonitor_signal_connect_mountpoints_changed(instance, C.gpointer(uintptr(signalUnixMountMonitorMountpointsChangedId)))
+	return int(retC)
 }
 
 //export UnixMountMonitor_mountpointsChangedHandler
-func UnixMountMonitor_mountpointsChangedHandler() {}
+func UnixMountMonitor_mountpointsChangedHandler() {
+	fmt.Println("cb")
+}
 
 var signalUnixMountMonitorMountsChangedId int
 var signalUnixMountMonitorMountsChangedMap = make(map[int]UnixMountMonitorSignalMountsChangedCallback)
@@ -4518,7 +4591,12 @@ var signalUnixMountMonitorMountsChangedLock sync.Mutex
 // UnixMountMonitorSignalMountsChangedCallback is a callback function for a 'mounts-changed' signal emitted from a UnixMountMonitor.
 type UnixMountMonitorSignalMountsChangedCallback func()
 
-func (recv *UnixMountMonitor) ConnectMountsChanged(callback UnixMountMonitorSignalMountsChangedCallback) {
+/*
+ConnectMountsChanged connects the callback to the 'mounts-changed' signal for the UnixMountMonitor.
+
+The returned value represents the connection, and may be passed to DisconnectMountsChanged to remove it.
+*/
+func (recv *UnixMountMonitor) ConnectMountsChanged(callback UnixMountMonitorSignalMountsChangedCallback) int {
 	signalUnixMountMonitorMountsChangedLock.Lock()
 	defer signalUnixMountMonitorMountsChangedLock.Unlock()
 
@@ -4526,11 +4604,14 @@ func (recv *UnixMountMonitor) ConnectMountsChanged(callback UnixMountMonitorSign
 	signalUnixMountMonitorMountsChangedMap[signalUnixMountMonitorMountsChangedId] = callback
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.UnixMountMonitor_signal_connect_mounts_changed(instance, C.gpointer(uintptr(signalUnixMountMonitorMountsChangedId)))
+	retC := C.UnixMountMonitor_signal_connect_mounts_changed(instance, C.gpointer(uintptr(signalUnixMountMonitorMountsChangedId)))
+	return int(retC)
 }
 
 //export UnixMountMonitor_mountsChangedHandler
-func UnixMountMonitor_mountsChangedHandler() {}
+func UnixMountMonitor_mountsChangedHandler() {
+	fmt.Println("cb")
+}
 
 // UnixMountMonitorNew is a wrapper around the C function g_unix_mount_monitor_new.
 func UnixMountMonitorNew() *UnixMountMonitor {

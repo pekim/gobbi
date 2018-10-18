@@ -3,7 +3,10 @@
 
 package gtk
 
-import "sync"
+import (
+	"fmt"
+	"sync"
+)
 
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <gtk/gtk-a11y.h>
@@ -96,7 +99,12 @@ var signalPlacesSidebarShowStarredLocationLock sync.Mutex
 // PlacesSidebarSignalShowStarredLocationCallback is a callback function for a 'show-starred-location' signal emitted from a PlacesSidebar.
 type PlacesSidebarSignalShowStarredLocationCallback func(object PlacesOpenFlags)
 
-func (recv *PlacesSidebar) ConnectShowStarredLocation(callback PlacesSidebarSignalShowStarredLocationCallback) {
+/*
+ConnectShowStarredLocation connects the callback to the 'show-starred-location' signal for the PlacesSidebar.
+
+The returned value represents the connection, and may be passed to DisconnectShowStarredLocation to remove it.
+*/
+func (recv *PlacesSidebar) ConnectShowStarredLocation(callback PlacesSidebarSignalShowStarredLocationCallback) int {
 	signalPlacesSidebarShowStarredLocationLock.Lock()
 	defer signalPlacesSidebarShowStarredLocationLock.Unlock()
 
@@ -104,11 +112,14 @@ func (recv *PlacesSidebar) ConnectShowStarredLocation(callback PlacesSidebarSign
 	signalPlacesSidebarShowStarredLocationMap[signalPlacesSidebarShowStarredLocationId] = callback
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.PlacesSidebar_signal_connect_show_starred_location(instance, C.gpointer(uintptr(signalPlacesSidebarShowStarredLocationId)))
+	retC := C.PlacesSidebar_signal_connect_show_starred_location(instance, C.gpointer(uintptr(signalPlacesSidebarShowStarredLocationId)))
+	return int(retC)
 }
 
 //export PlacesSidebar_showStarredLocationHandler
-func PlacesSidebar_showStarredLocationHandler() {}
+func PlacesSidebar_showStarredLocationHandler() {
+	fmt.Println("cb")
+}
 
 // GetShowStarredLocation is a wrapper around the C function gtk_places_sidebar_get_show_starred_location.
 func (recv *PlacesSidebar) GetShowStarredLocation() bool {

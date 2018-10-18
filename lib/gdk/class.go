@@ -3,6 +3,7 @@
 package gdk
 
 import (
+	"fmt"
 	cairo "github.com/pekim/gobbi/lib/cairo"
 	gio "github.com/pekim/gobbi/lib/gio"
 	glib "github.com/pekim/gobbi/lib/glib"
@@ -258,7 +259,12 @@ var signalDeviceChangedLock sync.Mutex
 // DeviceSignalChangedCallback is a callback function for a 'changed' signal emitted from a Device.
 type DeviceSignalChangedCallback func()
 
-func (recv *Device) ConnectChanged(callback DeviceSignalChangedCallback) {
+/*
+ConnectChanged connects the callback to the 'changed' signal for the Device.
+
+The returned value represents the connection, and may be passed to DisconnectChanged to remove it.
+*/
+func (recv *Device) ConnectChanged(callback DeviceSignalChangedCallback) int {
 	signalDeviceChangedLock.Lock()
 	defer signalDeviceChangedLock.Unlock()
 
@@ -266,11 +272,14 @@ func (recv *Device) ConnectChanged(callback DeviceSignalChangedCallback) {
 	signalDeviceChangedMap[signalDeviceChangedId] = callback
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.Device_signal_connect_changed(instance, C.gpointer(uintptr(signalDeviceChangedId)))
+	retC := C.Device_signal_connect_changed(instance, C.gpointer(uintptr(signalDeviceChangedId)))
+	return int(retC)
 }
 
 //export Device_changedHandler
-func Device_changedHandler() {}
+func Device_changedHandler() {
+	fmt.Println("cb")
+}
 
 // Unsupported : gdk_device_get_axis : unsupported parameter axes : no param type
 
@@ -359,7 +368,12 @@ var signalDeviceManagerDeviceAddedLock sync.Mutex
 // DeviceManagerSignalDeviceAddedCallback is a callback function for a 'device-added' signal emitted from a DeviceManager.
 type DeviceManagerSignalDeviceAddedCallback func(device *Device)
 
-func (recv *DeviceManager) ConnectDeviceAdded(callback DeviceManagerSignalDeviceAddedCallback) {
+/*
+ConnectDeviceAdded connects the callback to the 'device-added' signal for the DeviceManager.
+
+The returned value represents the connection, and may be passed to DisconnectDeviceAdded to remove it.
+*/
+func (recv *DeviceManager) ConnectDeviceAdded(callback DeviceManagerSignalDeviceAddedCallback) int {
 	signalDeviceManagerDeviceAddedLock.Lock()
 	defer signalDeviceManagerDeviceAddedLock.Unlock()
 
@@ -367,11 +381,14 @@ func (recv *DeviceManager) ConnectDeviceAdded(callback DeviceManagerSignalDevice
 	signalDeviceManagerDeviceAddedMap[signalDeviceManagerDeviceAddedId] = callback
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.DeviceManager_signal_connect_device_added(instance, C.gpointer(uintptr(signalDeviceManagerDeviceAddedId)))
+	retC := C.DeviceManager_signal_connect_device_added(instance, C.gpointer(uintptr(signalDeviceManagerDeviceAddedId)))
+	return int(retC)
 }
 
 //export DeviceManager_deviceAddedHandler
-func DeviceManager_deviceAddedHandler() {}
+func DeviceManager_deviceAddedHandler() {
+	fmt.Println("cb")
+}
 
 var signalDeviceManagerDeviceChangedId int
 var signalDeviceManagerDeviceChangedMap = make(map[int]DeviceManagerSignalDeviceChangedCallback)
@@ -380,7 +397,12 @@ var signalDeviceManagerDeviceChangedLock sync.Mutex
 // DeviceManagerSignalDeviceChangedCallback is a callback function for a 'device-changed' signal emitted from a DeviceManager.
 type DeviceManagerSignalDeviceChangedCallback func(device *Device)
 
-func (recv *DeviceManager) ConnectDeviceChanged(callback DeviceManagerSignalDeviceChangedCallback) {
+/*
+ConnectDeviceChanged connects the callback to the 'device-changed' signal for the DeviceManager.
+
+The returned value represents the connection, and may be passed to DisconnectDeviceChanged to remove it.
+*/
+func (recv *DeviceManager) ConnectDeviceChanged(callback DeviceManagerSignalDeviceChangedCallback) int {
 	signalDeviceManagerDeviceChangedLock.Lock()
 	defer signalDeviceManagerDeviceChangedLock.Unlock()
 
@@ -388,11 +410,14 @@ func (recv *DeviceManager) ConnectDeviceChanged(callback DeviceManagerSignalDevi
 	signalDeviceManagerDeviceChangedMap[signalDeviceManagerDeviceChangedId] = callback
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.DeviceManager_signal_connect_device_changed(instance, C.gpointer(uintptr(signalDeviceManagerDeviceChangedId)))
+	retC := C.DeviceManager_signal_connect_device_changed(instance, C.gpointer(uintptr(signalDeviceManagerDeviceChangedId)))
+	return int(retC)
 }
 
 //export DeviceManager_deviceChangedHandler
-func DeviceManager_deviceChangedHandler() {}
+func DeviceManager_deviceChangedHandler() {
+	fmt.Println("cb")
+}
 
 var signalDeviceManagerDeviceRemovedId int
 var signalDeviceManagerDeviceRemovedMap = make(map[int]DeviceManagerSignalDeviceRemovedCallback)
@@ -401,7 +426,12 @@ var signalDeviceManagerDeviceRemovedLock sync.Mutex
 // DeviceManagerSignalDeviceRemovedCallback is a callback function for a 'device-removed' signal emitted from a DeviceManager.
 type DeviceManagerSignalDeviceRemovedCallback func(device *Device)
 
-func (recv *DeviceManager) ConnectDeviceRemoved(callback DeviceManagerSignalDeviceRemovedCallback) {
+/*
+ConnectDeviceRemoved connects the callback to the 'device-removed' signal for the DeviceManager.
+
+The returned value represents the connection, and may be passed to DisconnectDeviceRemoved to remove it.
+*/
+func (recv *DeviceManager) ConnectDeviceRemoved(callback DeviceManagerSignalDeviceRemovedCallback) int {
 	signalDeviceManagerDeviceRemovedLock.Lock()
 	defer signalDeviceManagerDeviceRemovedLock.Unlock()
 
@@ -409,11 +439,14 @@ func (recv *DeviceManager) ConnectDeviceRemoved(callback DeviceManagerSignalDevi
 	signalDeviceManagerDeviceRemovedMap[signalDeviceManagerDeviceRemovedId] = callback
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.DeviceManager_signal_connect_device_removed(instance, C.gpointer(uintptr(signalDeviceManagerDeviceRemovedId)))
+	retC := C.DeviceManager_signal_connect_device_removed(instance, C.gpointer(uintptr(signalDeviceManagerDeviceRemovedId)))
+	return int(retC)
 }
 
 //export DeviceManager_deviceRemovedHandler
-func DeviceManager_deviceRemovedHandler() {}
+func DeviceManager_deviceRemovedHandler() {
+	fmt.Println("cb")
+}
 
 // Display is a wrapper around the C record GdkDisplay.
 type Display struct {
@@ -454,7 +487,12 @@ var signalDisplayOpenedLock sync.Mutex
 // DisplaySignalOpenedCallback is a callback function for a 'opened' signal emitted from a Display.
 type DisplaySignalOpenedCallback func()
 
-func (recv *Display) ConnectOpened(callback DisplaySignalOpenedCallback) {
+/*
+ConnectOpened connects the callback to the 'opened' signal for the Display.
+
+The returned value represents the connection, and may be passed to DisconnectOpened to remove it.
+*/
+func (recv *Display) ConnectOpened(callback DisplaySignalOpenedCallback) int {
 	signalDisplayOpenedLock.Lock()
 	defer signalDisplayOpenedLock.Unlock()
 
@@ -462,11 +500,14 @@ func (recv *Display) ConnectOpened(callback DisplaySignalOpenedCallback) {
 	signalDisplayOpenedMap[signalDisplayOpenedId] = callback
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.Display_signal_connect_opened(instance, C.gpointer(uintptr(signalDisplayOpenedId)))
+	retC := C.Display_signal_connect_opened(instance, C.gpointer(uintptr(signalDisplayOpenedId)))
+	return int(retC)
 }
 
 //export Display_openedHandler
-func Display_openedHandler() {}
+func Display_openedHandler() {
+	fmt.Println("cb")
+}
 
 // DeviceIsGrabbed is a wrapper around the C function gdk_display_device_is_grabbed.
 func (recv *Display) DeviceIsGrabbed(device *Device) bool {
@@ -598,7 +639,12 @@ var signalFrameClockAfterPaintLock sync.Mutex
 // FrameClockSignalAfterPaintCallback is a callback function for a 'after-paint' signal emitted from a FrameClock.
 type FrameClockSignalAfterPaintCallback func()
 
-func (recv *FrameClock) ConnectAfterPaint(callback FrameClockSignalAfterPaintCallback) {
+/*
+ConnectAfterPaint connects the callback to the 'after-paint' signal for the FrameClock.
+
+The returned value represents the connection, and may be passed to DisconnectAfterPaint to remove it.
+*/
+func (recv *FrameClock) ConnectAfterPaint(callback FrameClockSignalAfterPaintCallback) int {
 	signalFrameClockAfterPaintLock.Lock()
 	defer signalFrameClockAfterPaintLock.Unlock()
 
@@ -606,11 +652,14 @@ func (recv *FrameClock) ConnectAfterPaint(callback FrameClockSignalAfterPaintCal
 	signalFrameClockAfterPaintMap[signalFrameClockAfterPaintId] = callback
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.FrameClock_signal_connect_after_paint(instance, C.gpointer(uintptr(signalFrameClockAfterPaintId)))
+	retC := C.FrameClock_signal_connect_after_paint(instance, C.gpointer(uintptr(signalFrameClockAfterPaintId)))
+	return int(retC)
 }
 
 //export FrameClock_afterPaintHandler
-func FrameClock_afterPaintHandler() {}
+func FrameClock_afterPaintHandler() {
+	fmt.Println("cb")
+}
 
 var signalFrameClockBeforePaintId int
 var signalFrameClockBeforePaintMap = make(map[int]FrameClockSignalBeforePaintCallback)
@@ -619,7 +668,12 @@ var signalFrameClockBeforePaintLock sync.Mutex
 // FrameClockSignalBeforePaintCallback is a callback function for a 'before-paint' signal emitted from a FrameClock.
 type FrameClockSignalBeforePaintCallback func()
 
-func (recv *FrameClock) ConnectBeforePaint(callback FrameClockSignalBeforePaintCallback) {
+/*
+ConnectBeforePaint connects the callback to the 'before-paint' signal for the FrameClock.
+
+The returned value represents the connection, and may be passed to DisconnectBeforePaint to remove it.
+*/
+func (recv *FrameClock) ConnectBeforePaint(callback FrameClockSignalBeforePaintCallback) int {
 	signalFrameClockBeforePaintLock.Lock()
 	defer signalFrameClockBeforePaintLock.Unlock()
 
@@ -627,11 +681,14 @@ func (recv *FrameClock) ConnectBeforePaint(callback FrameClockSignalBeforePaintC
 	signalFrameClockBeforePaintMap[signalFrameClockBeforePaintId] = callback
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.FrameClock_signal_connect_before_paint(instance, C.gpointer(uintptr(signalFrameClockBeforePaintId)))
+	retC := C.FrameClock_signal_connect_before_paint(instance, C.gpointer(uintptr(signalFrameClockBeforePaintId)))
+	return int(retC)
 }
 
 //export FrameClock_beforePaintHandler
-func FrameClock_beforePaintHandler() {}
+func FrameClock_beforePaintHandler() {
+	fmt.Println("cb")
+}
 
 var signalFrameClockFlushEventsId int
 var signalFrameClockFlushEventsMap = make(map[int]FrameClockSignalFlushEventsCallback)
@@ -640,7 +697,12 @@ var signalFrameClockFlushEventsLock sync.Mutex
 // FrameClockSignalFlushEventsCallback is a callback function for a 'flush-events' signal emitted from a FrameClock.
 type FrameClockSignalFlushEventsCallback func()
 
-func (recv *FrameClock) ConnectFlushEvents(callback FrameClockSignalFlushEventsCallback) {
+/*
+ConnectFlushEvents connects the callback to the 'flush-events' signal for the FrameClock.
+
+The returned value represents the connection, and may be passed to DisconnectFlushEvents to remove it.
+*/
+func (recv *FrameClock) ConnectFlushEvents(callback FrameClockSignalFlushEventsCallback) int {
 	signalFrameClockFlushEventsLock.Lock()
 	defer signalFrameClockFlushEventsLock.Unlock()
 
@@ -648,11 +710,14 @@ func (recv *FrameClock) ConnectFlushEvents(callback FrameClockSignalFlushEventsC
 	signalFrameClockFlushEventsMap[signalFrameClockFlushEventsId] = callback
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.FrameClock_signal_connect_flush_events(instance, C.gpointer(uintptr(signalFrameClockFlushEventsId)))
+	retC := C.FrameClock_signal_connect_flush_events(instance, C.gpointer(uintptr(signalFrameClockFlushEventsId)))
+	return int(retC)
 }
 
 //export FrameClock_flushEventsHandler
-func FrameClock_flushEventsHandler() {}
+func FrameClock_flushEventsHandler() {
+	fmt.Println("cb")
+}
 
 var signalFrameClockLayoutId int
 var signalFrameClockLayoutMap = make(map[int]FrameClockSignalLayoutCallback)
@@ -661,7 +726,12 @@ var signalFrameClockLayoutLock sync.Mutex
 // FrameClockSignalLayoutCallback is a callback function for a 'layout' signal emitted from a FrameClock.
 type FrameClockSignalLayoutCallback func()
 
-func (recv *FrameClock) ConnectLayout(callback FrameClockSignalLayoutCallback) {
+/*
+ConnectLayout connects the callback to the 'layout' signal for the FrameClock.
+
+The returned value represents the connection, and may be passed to DisconnectLayout to remove it.
+*/
+func (recv *FrameClock) ConnectLayout(callback FrameClockSignalLayoutCallback) int {
 	signalFrameClockLayoutLock.Lock()
 	defer signalFrameClockLayoutLock.Unlock()
 
@@ -669,11 +739,14 @@ func (recv *FrameClock) ConnectLayout(callback FrameClockSignalLayoutCallback) {
 	signalFrameClockLayoutMap[signalFrameClockLayoutId] = callback
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.FrameClock_signal_connect_layout(instance, C.gpointer(uintptr(signalFrameClockLayoutId)))
+	retC := C.FrameClock_signal_connect_layout(instance, C.gpointer(uintptr(signalFrameClockLayoutId)))
+	return int(retC)
 }
 
 //export FrameClock_layoutHandler
-func FrameClock_layoutHandler() {}
+func FrameClock_layoutHandler() {
+	fmt.Println("cb")
+}
 
 var signalFrameClockPaintId int
 var signalFrameClockPaintMap = make(map[int]FrameClockSignalPaintCallback)
@@ -682,7 +755,12 @@ var signalFrameClockPaintLock sync.Mutex
 // FrameClockSignalPaintCallback is a callback function for a 'paint' signal emitted from a FrameClock.
 type FrameClockSignalPaintCallback func()
 
-func (recv *FrameClock) ConnectPaint(callback FrameClockSignalPaintCallback) {
+/*
+ConnectPaint connects the callback to the 'paint' signal for the FrameClock.
+
+The returned value represents the connection, and may be passed to DisconnectPaint to remove it.
+*/
+func (recv *FrameClock) ConnectPaint(callback FrameClockSignalPaintCallback) int {
 	signalFrameClockPaintLock.Lock()
 	defer signalFrameClockPaintLock.Unlock()
 
@@ -690,11 +768,14 @@ func (recv *FrameClock) ConnectPaint(callback FrameClockSignalPaintCallback) {
 	signalFrameClockPaintMap[signalFrameClockPaintId] = callback
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.FrameClock_signal_connect_paint(instance, C.gpointer(uintptr(signalFrameClockPaintId)))
+	retC := C.FrameClock_signal_connect_paint(instance, C.gpointer(uintptr(signalFrameClockPaintId)))
+	return int(retC)
 }
 
 //export FrameClock_paintHandler
-func FrameClock_paintHandler() {}
+func FrameClock_paintHandler() {
+	fmt.Println("cb")
+}
 
 var signalFrameClockResumeEventsId int
 var signalFrameClockResumeEventsMap = make(map[int]FrameClockSignalResumeEventsCallback)
@@ -703,7 +784,12 @@ var signalFrameClockResumeEventsLock sync.Mutex
 // FrameClockSignalResumeEventsCallback is a callback function for a 'resume-events' signal emitted from a FrameClock.
 type FrameClockSignalResumeEventsCallback func()
 
-func (recv *FrameClock) ConnectResumeEvents(callback FrameClockSignalResumeEventsCallback) {
+/*
+ConnectResumeEvents connects the callback to the 'resume-events' signal for the FrameClock.
+
+The returned value represents the connection, and may be passed to DisconnectResumeEvents to remove it.
+*/
+func (recv *FrameClock) ConnectResumeEvents(callback FrameClockSignalResumeEventsCallback) int {
 	signalFrameClockResumeEventsLock.Lock()
 	defer signalFrameClockResumeEventsLock.Unlock()
 
@@ -711,11 +797,14 @@ func (recv *FrameClock) ConnectResumeEvents(callback FrameClockSignalResumeEvent
 	signalFrameClockResumeEventsMap[signalFrameClockResumeEventsId] = callback
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.FrameClock_signal_connect_resume_events(instance, C.gpointer(uintptr(signalFrameClockResumeEventsId)))
+	retC := C.FrameClock_signal_connect_resume_events(instance, C.gpointer(uintptr(signalFrameClockResumeEventsId)))
+	return int(retC)
 }
 
 //export FrameClock_resumeEventsHandler
-func FrameClock_resumeEventsHandler() {}
+func FrameClock_resumeEventsHandler() {
+	fmt.Println("cb")
+}
 
 var signalFrameClockUpdateId int
 var signalFrameClockUpdateMap = make(map[int]FrameClockSignalUpdateCallback)
@@ -724,7 +813,12 @@ var signalFrameClockUpdateLock sync.Mutex
 // FrameClockSignalUpdateCallback is a callback function for a 'update' signal emitted from a FrameClock.
 type FrameClockSignalUpdateCallback func()
 
-func (recv *FrameClock) ConnectUpdate(callback FrameClockSignalUpdateCallback) {
+/*
+ConnectUpdate connects the callback to the 'update' signal for the FrameClock.
+
+The returned value represents the connection, and may be passed to DisconnectUpdate to remove it.
+*/
+func (recv *FrameClock) ConnectUpdate(callback FrameClockSignalUpdateCallback) int {
 	signalFrameClockUpdateLock.Lock()
 	defer signalFrameClockUpdateLock.Unlock()
 
@@ -732,11 +826,14 @@ func (recv *FrameClock) ConnectUpdate(callback FrameClockSignalUpdateCallback) {
 	signalFrameClockUpdateMap[signalFrameClockUpdateId] = callback
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.FrameClock_signal_connect_update(instance, C.gpointer(uintptr(signalFrameClockUpdateId)))
+	retC := C.FrameClock_signal_connect_update(instance, C.gpointer(uintptr(signalFrameClockUpdateId)))
+	return int(retC)
 }
 
 //export FrameClock_updateHandler
-func FrameClock_updateHandler() {}
+func FrameClock_updateHandler() {
+	fmt.Println("cb")
+}
 
 // GLContext is a wrapper around the C record GdkGLContext.
 type GLContext struct {

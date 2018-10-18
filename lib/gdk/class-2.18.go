@@ -4,6 +4,7 @@
 package gdk
 
 import (
+	"fmt"
 	"sync"
 	"unsafe"
 )
@@ -47,7 +48,12 @@ var signalWindowFromEmbedderLock sync.Mutex
 // WindowSignalFromEmbedderCallback is a callback function for a 'from-embedder' signal emitted from a Window.
 type WindowSignalFromEmbedderCallback func(embedderX float64, embedderY float64)
 
-func (recv *Window) ConnectFromEmbedder(callback WindowSignalFromEmbedderCallback) {
+/*
+ConnectFromEmbedder connects the callback to the 'from-embedder' signal for the Window.
+
+The returned value represents the connection, and may be passed to DisconnectFromEmbedder to remove it.
+*/
+func (recv *Window) ConnectFromEmbedder(callback WindowSignalFromEmbedderCallback) int {
 	signalWindowFromEmbedderLock.Lock()
 	defer signalWindowFromEmbedderLock.Unlock()
 
@@ -55,11 +61,14 @@ func (recv *Window) ConnectFromEmbedder(callback WindowSignalFromEmbedderCallbac
 	signalWindowFromEmbedderMap[signalWindowFromEmbedderId] = callback
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.Window_signal_connect_from_embedder(instance, C.gpointer(uintptr(signalWindowFromEmbedderId)))
+	retC := C.Window_signal_connect_from_embedder(instance, C.gpointer(uintptr(signalWindowFromEmbedderId)))
+	return int(retC)
 }
 
 //export Window_fromEmbedderHandler
-func Window_fromEmbedderHandler() {}
+func Window_fromEmbedderHandler() {
+	fmt.Println("cb")
+}
 
 var signalWindowPickEmbeddedChildId int
 var signalWindowPickEmbeddedChildMap = make(map[int]WindowSignalPickEmbeddedChildCallback)
@@ -68,7 +77,12 @@ var signalWindowPickEmbeddedChildLock sync.Mutex
 // WindowSignalPickEmbeddedChildCallback is a callback function for a 'pick-embedded-child' signal emitted from a Window.
 type WindowSignalPickEmbeddedChildCallback func(x float64, y float64) Window
 
-func (recv *Window) ConnectPickEmbeddedChild(callback WindowSignalPickEmbeddedChildCallback) {
+/*
+ConnectPickEmbeddedChild connects the callback to the 'pick-embedded-child' signal for the Window.
+
+The returned value represents the connection, and may be passed to DisconnectPickEmbeddedChild to remove it.
+*/
+func (recv *Window) ConnectPickEmbeddedChild(callback WindowSignalPickEmbeddedChildCallback) int {
 	signalWindowPickEmbeddedChildLock.Lock()
 	defer signalWindowPickEmbeddedChildLock.Unlock()
 
@@ -76,11 +90,14 @@ func (recv *Window) ConnectPickEmbeddedChild(callback WindowSignalPickEmbeddedCh
 	signalWindowPickEmbeddedChildMap[signalWindowPickEmbeddedChildId] = callback
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.Window_signal_connect_pick_embedded_child(instance, C.gpointer(uintptr(signalWindowPickEmbeddedChildId)))
+	retC := C.Window_signal_connect_pick_embedded_child(instance, C.gpointer(uintptr(signalWindowPickEmbeddedChildId)))
+	return int(retC)
 }
 
 //export Window_pickEmbeddedChildHandler
-func Window_pickEmbeddedChildHandler() {}
+func Window_pickEmbeddedChildHandler() {
+	fmt.Println("cb")
+}
 
 var signalWindowToEmbedderId int
 var signalWindowToEmbedderMap = make(map[int]WindowSignalToEmbedderCallback)
@@ -89,7 +106,12 @@ var signalWindowToEmbedderLock sync.Mutex
 // WindowSignalToEmbedderCallback is a callback function for a 'to-embedder' signal emitted from a Window.
 type WindowSignalToEmbedderCallback func(offscreenX float64, offscreenY float64)
 
-func (recv *Window) ConnectToEmbedder(callback WindowSignalToEmbedderCallback) {
+/*
+ConnectToEmbedder connects the callback to the 'to-embedder' signal for the Window.
+
+The returned value represents the connection, and may be passed to DisconnectToEmbedder to remove it.
+*/
+func (recv *Window) ConnectToEmbedder(callback WindowSignalToEmbedderCallback) int {
 	signalWindowToEmbedderLock.Lock()
 	defer signalWindowToEmbedderLock.Unlock()
 
@@ -97,11 +119,14 @@ func (recv *Window) ConnectToEmbedder(callback WindowSignalToEmbedderCallback) {
 	signalWindowToEmbedderMap[signalWindowToEmbedderId] = callback
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.Window_signal_connect_to_embedder(instance, C.gpointer(uintptr(signalWindowToEmbedderId)))
+	retC := C.Window_signal_connect_to_embedder(instance, C.gpointer(uintptr(signalWindowToEmbedderId)))
+	return int(retC)
 }
 
 //export Window_toEmbedderHandler
-func Window_toEmbedderHandler() {}
+func Window_toEmbedderHandler() {
+	fmt.Println("cb")
+}
 
 // EnsureNative is a wrapper around the C function gdk_window_ensure_native.
 func (recv *Window) EnsureNative() bool {

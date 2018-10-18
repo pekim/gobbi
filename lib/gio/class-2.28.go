@@ -4,6 +4,7 @@
 package gio
 
 import (
+	"fmt"
 	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	"sync"
@@ -104,7 +105,12 @@ var signalApplicationActivateLock sync.Mutex
 // ApplicationSignalActivateCallback is a callback function for a 'activate' signal emitted from a Application.
 type ApplicationSignalActivateCallback func()
 
-func (recv *Application) ConnectActivate(callback ApplicationSignalActivateCallback) {
+/*
+ConnectActivate connects the callback to the 'activate' signal for the Application.
+
+The returned value represents the connection, and may be passed to DisconnectActivate to remove it.
+*/
+func (recv *Application) ConnectActivate(callback ApplicationSignalActivateCallback) int {
 	signalApplicationActivateLock.Lock()
 	defer signalApplicationActivateLock.Unlock()
 
@@ -112,11 +118,14 @@ func (recv *Application) ConnectActivate(callback ApplicationSignalActivateCallb
 	signalApplicationActivateMap[signalApplicationActivateId] = callback
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.Application_signal_connect_activate(instance, C.gpointer(uintptr(signalApplicationActivateId)))
+	retC := C.Application_signal_connect_activate(instance, C.gpointer(uintptr(signalApplicationActivateId)))
+	return int(retC)
 }
 
 //export Application_activateHandler
-func Application_activateHandler() {}
+func Application_activateHandler() {
+	fmt.Println("cb")
+}
 
 var signalApplicationCommandLineId int
 var signalApplicationCommandLineMap = make(map[int]ApplicationSignalCommandLineCallback)
@@ -125,7 +134,12 @@ var signalApplicationCommandLineLock sync.Mutex
 // ApplicationSignalCommandLineCallback is a callback function for a 'command-line' signal emitted from a Application.
 type ApplicationSignalCommandLineCallback func(commandLine *ApplicationCommandLine) int32
 
-func (recv *Application) ConnectCommandLine(callback ApplicationSignalCommandLineCallback) {
+/*
+ConnectCommandLine connects the callback to the 'command-line' signal for the Application.
+
+The returned value represents the connection, and may be passed to DisconnectCommandLine to remove it.
+*/
+func (recv *Application) ConnectCommandLine(callback ApplicationSignalCommandLineCallback) int {
 	signalApplicationCommandLineLock.Lock()
 	defer signalApplicationCommandLineLock.Unlock()
 
@@ -133,11 +147,14 @@ func (recv *Application) ConnectCommandLine(callback ApplicationSignalCommandLin
 	signalApplicationCommandLineMap[signalApplicationCommandLineId] = callback
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.Application_signal_connect_command_line(instance, C.gpointer(uintptr(signalApplicationCommandLineId)))
+	retC := C.Application_signal_connect_command_line(instance, C.gpointer(uintptr(signalApplicationCommandLineId)))
+	return int(retC)
 }
 
 //export Application_commandLineHandler
-func Application_commandLineHandler() {}
+func Application_commandLineHandler() {
+	fmt.Println("cb")
+}
 
 // Unsupported signal : unsupported parameter files : no param type
 
@@ -148,7 +165,12 @@ var signalApplicationShutdownLock sync.Mutex
 // ApplicationSignalShutdownCallback is a callback function for a 'shutdown' signal emitted from a Application.
 type ApplicationSignalShutdownCallback func()
 
-func (recv *Application) ConnectShutdown(callback ApplicationSignalShutdownCallback) {
+/*
+ConnectShutdown connects the callback to the 'shutdown' signal for the Application.
+
+The returned value represents the connection, and may be passed to DisconnectShutdown to remove it.
+*/
+func (recv *Application) ConnectShutdown(callback ApplicationSignalShutdownCallback) int {
 	signalApplicationShutdownLock.Lock()
 	defer signalApplicationShutdownLock.Unlock()
 
@@ -156,11 +178,14 @@ func (recv *Application) ConnectShutdown(callback ApplicationSignalShutdownCallb
 	signalApplicationShutdownMap[signalApplicationShutdownId] = callback
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.Application_signal_connect_shutdown(instance, C.gpointer(uintptr(signalApplicationShutdownId)))
+	retC := C.Application_signal_connect_shutdown(instance, C.gpointer(uintptr(signalApplicationShutdownId)))
+	return int(retC)
 }
 
 //export Application_shutdownHandler
-func Application_shutdownHandler() {}
+func Application_shutdownHandler() {
+	fmt.Println("cb")
+}
 
 var signalApplicationStartupId int
 var signalApplicationStartupMap = make(map[int]ApplicationSignalStartupCallback)
@@ -169,7 +194,12 @@ var signalApplicationStartupLock sync.Mutex
 // ApplicationSignalStartupCallback is a callback function for a 'startup' signal emitted from a Application.
 type ApplicationSignalStartupCallback func()
 
-func (recv *Application) ConnectStartup(callback ApplicationSignalStartupCallback) {
+/*
+ConnectStartup connects the callback to the 'startup' signal for the Application.
+
+The returned value represents the connection, and may be passed to DisconnectStartup to remove it.
+*/
+func (recv *Application) ConnectStartup(callback ApplicationSignalStartupCallback) int {
 	signalApplicationStartupLock.Lock()
 	defer signalApplicationStartupLock.Unlock()
 
@@ -177,11 +207,14 @@ func (recv *Application) ConnectStartup(callback ApplicationSignalStartupCallbac
 	signalApplicationStartupMap[signalApplicationStartupId] = callback
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.Application_signal_connect_startup(instance, C.gpointer(uintptr(signalApplicationStartupId)))
+	retC := C.Application_signal_connect_startup(instance, C.gpointer(uintptr(signalApplicationStartupId)))
+	return int(retC)
 }
 
 //export Application_startupHandler
-func Application_startupHandler() {}
+func Application_startupHandler() {
+	fmt.Println("cb")
+}
 
 // ApplicationNew is a wrapper around the C function g_application_new.
 func ApplicationNew(applicationId string, flags ApplicationFlags) *Application {

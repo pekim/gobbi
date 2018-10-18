@@ -4,6 +4,7 @@
 package gdk
 
 import (
+	"fmt"
 	cairo "github.com/pekim/gobbi/lib/cairo"
 	glib "github.com/pekim/gobbi/lib/glib"
 	"sync"
@@ -47,7 +48,12 @@ var signalScreenCompositedChangedLock sync.Mutex
 // ScreenSignalCompositedChangedCallback is a callback function for a 'composited-changed' signal emitted from a Screen.
 type ScreenSignalCompositedChangedCallback func()
 
-func (recv *Screen) ConnectCompositedChanged(callback ScreenSignalCompositedChangedCallback) {
+/*
+ConnectCompositedChanged connects the callback to the 'composited-changed' signal for the Screen.
+
+The returned value represents the connection, and may be passed to DisconnectCompositedChanged to remove it.
+*/
+func (recv *Screen) ConnectCompositedChanged(callback ScreenSignalCompositedChangedCallback) int {
 	signalScreenCompositedChangedLock.Lock()
 	defer signalScreenCompositedChangedLock.Unlock()
 
@@ -55,11 +61,14 @@ func (recv *Screen) ConnectCompositedChanged(callback ScreenSignalCompositedChan
 	signalScreenCompositedChangedMap[signalScreenCompositedChangedId] = callback
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.Screen_signal_connect_composited_changed(instance, C.gpointer(uintptr(signalScreenCompositedChangedId)))
+	retC := C.Screen_signal_connect_composited_changed(instance, C.gpointer(uintptr(signalScreenCompositedChangedId)))
+	return int(retC)
 }
 
 //export Screen_compositedChangedHandler
-func Screen_compositedChangedHandler() {}
+func Screen_compositedChangedHandler() {
+	fmt.Println("cb")
+}
 
 // GetActiveWindow is a wrapper around the C function gdk_screen_get_active_window.
 func (recv *Screen) GetActiveWindow() *Window {

@@ -4,6 +4,7 @@
 package gtk
 
 import (
+	"fmt"
 	gdk "github.com/pekim/gobbi/lib/gdk"
 	gdkpixbuf "github.com/pekim/gobbi/lib/gdkpixbuf"
 	"sync"
@@ -257,7 +258,12 @@ var signalEntryIconPressLock sync.Mutex
 // EntrySignalIconPressCallback is a callback function for a 'icon-press' signal emitted from a Entry.
 type EntrySignalIconPressCallback func(iconPos EntryIconPosition, event *gdk.EventButton)
 
-func (recv *Entry) ConnectIconPress(callback EntrySignalIconPressCallback) {
+/*
+ConnectIconPress connects the callback to the 'icon-press' signal for the Entry.
+
+The returned value represents the connection, and may be passed to DisconnectIconPress to remove it.
+*/
+func (recv *Entry) ConnectIconPress(callback EntrySignalIconPressCallback) int {
 	signalEntryIconPressLock.Lock()
 	defer signalEntryIconPressLock.Unlock()
 
@@ -265,11 +271,14 @@ func (recv *Entry) ConnectIconPress(callback EntrySignalIconPressCallback) {
 	signalEntryIconPressMap[signalEntryIconPressId] = callback
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.Entry_signal_connect_icon_press(instance, C.gpointer(uintptr(signalEntryIconPressId)))
+	retC := C.Entry_signal_connect_icon_press(instance, C.gpointer(uintptr(signalEntryIconPressId)))
+	return int(retC)
 }
 
 //export Entry_iconPressHandler
-func Entry_iconPressHandler() {}
+func Entry_iconPressHandler() {
+	fmt.Println("cb")
+}
 
 var signalEntryIconReleaseId int
 var signalEntryIconReleaseMap = make(map[int]EntrySignalIconReleaseCallback)
@@ -278,7 +287,12 @@ var signalEntryIconReleaseLock sync.Mutex
 // EntrySignalIconReleaseCallback is a callback function for a 'icon-release' signal emitted from a Entry.
 type EntrySignalIconReleaseCallback func(iconPos EntryIconPosition, event *gdk.EventButton)
 
-func (recv *Entry) ConnectIconRelease(callback EntrySignalIconReleaseCallback) {
+/*
+ConnectIconRelease connects the callback to the 'icon-release' signal for the Entry.
+
+The returned value represents the connection, and may be passed to DisconnectIconRelease to remove it.
+*/
+func (recv *Entry) ConnectIconRelease(callback EntrySignalIconReleaseCallback) int {
 	signalEntryIconReleaseLock.Lock()
 	defer signalEntryIconReleaseLock.Unlock()
 
@@ -286,11 +300,14 @@ func (recv *Entry) ConnectIconRelease(callback EntrySignalIconReleaseCallback) {
 	signalEntryIconReleaseMap[signalEntryIconReleaseId] = callback
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.Entry_signal_connect_icon_release(instance, C.gpointer(uintptr(signalEntryIconReleaseId)))
+	retC := C.Entry_signal_connect_icon_release(instance, C.gpointer(uintptr(signalEntryIconReleaseId)))
+	return int(retC)
 }
 
 //export Entry_iconReleaseHandler
-func Entry_iconReleaseHandler() {}
+func Entry_iconReleaseHandler() {
+	fmt.Println("cb")
+}
 
 // GetCurrentIconDragSource is a wrapper around the C function gtk_entry_get_current_icon_drag_source.
 func (recv *Entry) GetCurrentIconDragSource() int32 {
@@ -779,7 +796,12 @@ var signalStatusIconQueryTooltipLock sync.Mutex
 // StatusIconSignalQueryTooltipCallback is a callback function for a 'query-tooltip' signal emitted from a StatusIcon.
 type StatusIconSignalQueryTooltipCallback func(x int32, y int32, keyboardMode bool, tooltip *Tooltip) bool
 
-func (recv *StatusIcon) ConnectQueryTooltip(callback StatusIconSignalQueryTooltipCallback) {
+/*
+ConnectQueryTooltip connects the callback to the 'query-tooltip' signal for the StatusIcon.
+
+The returned value represents the connection, and may be passed to DisconnectQueryTooltip to remove it.
+*/
+func (recv *StatusIcon) ConnectQueryTooltip(callback StatusIconSignalQueryTooltipCallback) int {
 	signalStatusIconQueryTooltipLock.Lock()
 	defer signalStatusIconQueryTooltipLock.Unlock()
 
@@ -787,11 +809,14 @@ func (recv *StatusIcon) ConnectQueryTooltip(callback StatusIconSignalQueryToolti
 	signalStatusIconQueryTooltipMap[signalStatusIconQueryTooltipId] = callback
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.StatusIcon_signal_connect_query_tooltip(instance, C.gpointer(uintptr(signalStatusIconQueryTooltipId)))
+	retC := C.StatusIcon_signal_connect_query_tooltip(instance, C.gpointer(uintptr(signalStatusIconQueryTooltipId)))
+	return int(retC)
 }
 
 //export StatusIcon_queryTooltipHandler
-func StatusIcon_queryTooltipHandler() {}
+func StatusIcon_queryTooltipHandler() {
+	fmt.Println("cb")
+}
 
 var signalStatusIconScrollEventId int
 var signalStatusIconScrollEventMap = make(map[int]StatusIconSignalScrollEventCallback)
@@ -800,7 +825,12 @@ var signalStatusIconScrollEventLock sync.Mutex
 // StatusIconSignalScrollEventCallback is a callback function for a 'scroll-event' signal emitted from a StatusIcon.
 type StatusIconSignalScrollEventCallback func(event *gdk.EventScroll) bool
 
-func (recv *StatusIcon) ConnectScrollEvent(callback StatusIconSignalScrollEventCallback) {
+/*
+ConnectScrollEvent connects the callback to the 'scroll-event' signal for the StatusIcon.
+
+The returned value represents the connection, and may be passed to DisconnectScrollEvent to remove it.
+*/
+func (recv *StatusIcon) ConnectScrollEvent(callback StatusIconSignalScrollEventCallback) int {
 	signalStatusIconScrollEventLock.Lock()
 	defer signalStatusIconScrollEventLock.Unlock()
 
@@ -808,11 +838,14 @@ func (recv *StatusIcon) ConnectScrollEvent(callback StatusIconSignalScrollEventC
 	signalStatusIconScrollEventMap[signalStatusIconScrollEventId] = callback
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.StatusIcon_signal_connect_scroll_event(instance, C.gpointer(uintptr(signalStatusIconScrollEventId)))
+	retC := C.StatusIcon_signal_connect_scroll_event(instance, C.gpointer(uintptr(signalStatusIconScrollEventId)))
+	return int(retC)
 }
 
 //export StatusIcon_scrollEventHandler
-func StatusIcon_scrollEventHandler() {}
+func StatusIcon_scrollEventHandler() {
+	fmt.Println("cb")
+}
 
 // Unsupported : gtk_status_icon_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon, GIcon*
 
@@ -885,7 +918,12 @@ var signalTextBufferPasteDoneLock sync.Mutex
 // TextBufferSignalPasteDoneCallback is a callback function for a 'paste-done' signal emitted from a TextBuffer.
 type TextBufferSignalPasteDoneCallback func(clipboard *Clipboard)
 
-func (recv *TextBuffer) ConnectPasteDone(callback TextBufferSignalPasteDoneCallback) {
+/*
+ConnectPasteDone connects the callback to the 'paste-done' signal for the TextBuffer.
+
+The returned value represents the connection, and may be passed to DisconnectPasteDone to remove it.
+*/
+func (recv *TextBuffer) ConnectPasteDone(callback TextBufferSignalPasteDoneCallback) int {
 	signalTextBufferPasteDoneLock.Lock()
 	defer signalTextBufferPasteDoneLock.Unlock()
 
@@ -893,11 +931,14 @@ func (recv *TextBuffer) ConnectPasteDone(callback TextBufferSignalPasteDoneCallb
 	signalTextBufferPasteDoneMap[signalTextBufferPasteDoneId] = callback
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.TextBuffer_signal_connect_paste_done(instance, C.gpointer(uintptr(signalTextBufferPasteDoneId)))
+	retC := C.TextBuffer_signal_connect_paste_done(instance, C.gpointer(uintptr(signalTextBufferPasteDoneId)))
+	return int(retC)
 }
 
 //export TextBuffer_pasteDoneHandler
-func TextBuffer_pasteDoneHandler() {}
+func TextBuffer_pasteDoneHandler() {
+	fmt.Println("cb")
+}
 
 // Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
 

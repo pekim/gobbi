@@ -4,6 +4,7 @@
 package gtk
 
 import (
+	"fmt"
 	"sync"
 	"unsafe"
 )
@@ -31,7 +32,12 @@ var signalAboutDialogActivateLinkLock sync.Mutex
 // AboutDialogSignalActivateLinkCallback is a callback function for a 'activate-link' signal emitted from a AboutDialog.
 type AboutDialogSignalActivateLinkCallback func(uri string) bool
 
-func (recv *AboutDialog) ConnectActivateLink(callback AboutDialogSignalActivateLinkCallback) {
+/*
+ConnectActivateLink connects the callback to the 'activate-link' signal for the AboutDialog.
+
+The returned value represents the connection, and may be passed to DisconnectActivateLink to remove it.
+*/
+func (recv *AboutDialog) ConnectActivateLink(callback AboutDialogSignalActivateLinkCallback) int {
 	signalAboutDialogActivateLinkLock.Lock()
 	defer signalAboutDialogActivateLinkLock.Unlock()
 
@@ -39,11 +45,14 @@ func (recv *AboutDialog) ConnectActivateLink(callback AboutDialogSignalActivateL
 	signalAboutDialogActivateLinkMap[signalAboutDialogActivateLinkId] = callback
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.AboutDialog_signal_connect_activate_link(instance, C.gpointer(uintptr(signalAboutDialogActivateLinkId)))
+	retC := C.AboutDialog_signal_connect_activate_link(instance, C.gpointer(uintptr(signalAboutDialogActivateLinkId)))
+	return int(retC)
 }
 
 //export AboutDialog_activateLinkHandler
-func AboutDialog_activateLinkHandler() {}
+func AboutDialog_activateLinkHandler() {
+	fmt.Println("cb")
+}
 
 // Unsupported : gtk_app_chooser_dialog_new : unsupported parameter file : no type generator for Gio.File, GFile*
 

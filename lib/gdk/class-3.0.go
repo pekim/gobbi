@@ -4,6 +4,7 @@
 package gdk
 
 import (
+	"fmt"
 	cairo "github.com/pekim/gobbi/lib/cairo"
 	glib "github.com/pekim/gobbi/lib/glib"
 	"sync"
@@ -245,7 +246,12 @@ var signalWindowCreateSurfaceLock sync.Mutex
 // WindowSignalCreateSurfaceCallback is a callback function for a 'create-surface' signal emitted from a Window.
 type WindowSignalCreateSurfaceCallback func(width int32, height int32) cairo.Surface
 
-func (recv *Window) ConnectCreateSurface(callback WindowSignalCreateSurfaceCallback) {
+/*
+ConnectCreateSurface connects the callback to the 'create-surface' signal for the Window.
+
+The returned value represents the connection, and may be passed to DisconnectCreateSurface to remove it.
+*/
+func (recv *Window) ConnectCreateSurface(callback WindowSignalCreateSurfaceCallback) int {
 	signalWindowCreateSurfaceLock.Lock()
 	defer signalWindowCreateSurfaceLock.Unlock()
 
@@ -253,11 +259,14 @@ func (recv *Window) ConnectCreateSurface(callback WindowSignalCreateSurfaceCallb
 	signalWindowCreateSurfaceMap[signalWindowCreateSurfaceId] = callback
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.Window_signal_connect_create_surface(instance, C.gpointer(uintptr(signalWindowCreateSurfaceId)))
+	retC := C.Window_signal_connect_create_surface(instance, C.gpointer(uintptr(signalWindowCreateSurfaceId)))
+	return int(retC)
 }
 
 //export Window_createSurfaceHandler
-func Window_createSurfaceHandler() {}
+func Window_createSurfaceHandler() {
+	fmt.Println("cb")
+}
 
 // GetDeviceCursor is a wrapper around the C function gdk_window_get_device_cursor.
 func (recv *Window) GetDeviceCursor(device *Device) *Cursor {

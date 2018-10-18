@@ -4,6 +4,7 @@
 package gio
 
 import (
+	"fmt"
 	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	"sync"
@@ -239,7 +240,12 @@ var signalMountOperationShowUnmountProgressLock sync.Mutex
 // MountOperationSignalShowUnmountProgressCallback is a callback function for a 'show-unmount-progress' signal emitted from a MountOperation.
 type MountOperationSignalShowUnmountProgressCallback func(message string, timeLeft int64, bytesLeft int64)
 
-func (recv *MountOperation) ConnectShowUnmountProgress(callback MountOperationSignalShowUnmountProgressCallback) {
+/*
+ConnectShowUnmountProgress connects the callback to the 'show-unmount-progress' signal for the MountOperation.
+
+The returned value represents the connection, and may be passed to DisconnectShowUnmountProgress to remove it.
+*/
+func (recv *MountOperation) ConnectShowUnmountProgress(callback MountOperationSignalShowUnmountProgressCallback) int {
 	signalMountOperationShowUnmountProgressLock.Lock()
 	defer signalMountOperationShowUnmountProgressLock.Unlock()
 
@@ -247,11 +253,14 @@ func (recv *MountOperation) ConnectShowUnmountProgress(callback MountOperationSi
 	signalMountOperationShowUnmountProgressMap[signalMountOperationShowUnmountProgressId] = callback
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.MountOperation_signal_connect_show_unmount_progress(instance, C.gpointer(uintptr(signalMountOperationShowUnmountProgressId)))
+	retC := C.MountOperation_signal_connect_show_unmount_progress(instance, C.gpointer(uintptr(signalMountOperationShowUnmountProgressId)))
+	return int(retC)
 }
 
 //export MountOperation_showUnmountProgressHandler
-func MountOperation_showUnmountProgressHandler() {}
+func MountOperation_showUnmountProgressHandler() {
+	fmt.Println("cb")
+}
 
 // GetDestinationProtocol is a wrapper around the C function g_proxy_address_get_destination_protocol.
 func (recv *ProxyAddress) GetDestinationProtocol() string {

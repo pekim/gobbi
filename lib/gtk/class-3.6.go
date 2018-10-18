@@ -4,6 +4,7 @@
 package gtk
 
 import (
+	"fmt"
 	gdk "github.com/pekim/gobbi/lib/gdk"
 	gio "github.com/pekim/gobbi/lib/gio"
 	pango "github.com/pekim/gobbi/lib/pango"
@@ -205,7 +206,12 @@ var signalLevelBarOffsetChangedLock sync.Mutex
 // LevelBarSignalOffsetChangedCallback is a callback function for a 'offset-changed' signal emitted from a LevelBar.
 type LevelBarSignalOffsetChangedCallback func(name string)
 
-func (recv *LevelBar) ConnectOffsetChanged(callback LevelBarSignalOffsetChangedCallback) {
+/*
+ConnectOffsetChanged connects the callback to the 'offset-changed' signal for the LevelBar.
+
+The returned value represents the connection, and may be passed to DisconnectOffsetChanged to remove it.
+*/
+func (recv *LevelBar) ConnectOffsetChanged(callback LevelBarSignalOffsetChangedCallback) int {
 	signalLevelBarOffsetChangedLock.Lock()
 	defer signalLevelBarOffsetChangedLock.Unlock()
 
@@ -213,11 +219,14 @@ func (recv *LevelBar) ConnectOffsetChanged(callback LevelBarSignalOffsetChangedC
 	signalLevelBarOffsetChangedMap[signalLevelBarOffsetChangedId] = callback
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.LevelBar_signal_connect_offset_changed(instance, C.gpointer(uintptr(signalLevelBarOffsetChangedId)))
+	retC := C.LevelBar_signal_connect_offset_changed(instance, C.gpointer(uintptr(signalLevelBarOffsetChangedId)))
+	return int(retC)
 }
 
 //export LevelBar_offsetChangedHandler
-func LevelBar_offsetChangedHandler() {}
+func LevelBar_offsetChangedHandler() {
+	fmt.Println("cb")
+}
 
 // LevelBarNew is a wrapper around the C function gtk_level_bar_new.
 func LevelBarNew() *LevelBar {

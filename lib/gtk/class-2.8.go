@@ -4,6 +4,7 @@
 package gtk
 
 import (
+	"fmt"
 	cairo "github.com/pekim/gobbi/lib/cairo"
 	gdk "github.com/pekim/gobbi/lib/gdk"
 	gobject "github.com/pekim/gobbi/lib/gobject"
@@ -421,7 +422,12 @@ var signalWidgetGrabBrokenEventLock sync.Mutex
 // WidgetSignalGrabBrokenEventCallback is a callback function for a 'grab-broken-event' signal emitted from a Widget.
 type WidgetSignalGrabBrokenEventCallback func(event *gdk.EventGrabBroken) bool
 
-func (recv *Widget) ConnectGrabBrokenEvent(callback WidgetSignalGrabBrokenEventCallback) {
+/*
+ConnectGrabBrokenEvent connects the callback to the 'grab-broken-event' signal for the Widget.
+
+The returned value represents the connection, and may be passed to DisconnectGrabBrokenEvent to remove it.
+*/
+func (recv *Widget) ConnectGrabBrokenEvent(callback WidgetSignalGrabBrokenEventCallback) int {
 	signalWidgetGrabBrokenEventLock.Lock()
 	defer signalWidgetGrabBrokenEventLock.Unlock()
 
@@ -429,11 +435,14 @@ func (recv *Widget) ConnectGrabBrokenEvent(callback WidgetSignalGrabBrokenEventC
 	signalWidgetGrabBrokenEventMap[signalWidgetGrabBrokenEventId] = callback
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.Widget_signal_connect_grab_broken_event(instance, C.gpointer(uintptr(signalWidgetGrabBrokenEventId)))
+	retC := C.Widget_signal_connect_grab_broken_event(instance, C.gpointer(uintptr(signalWidgetGrabBrokenEventId)))
+	return int(retC)
 }
 
 //export Widget_grabBrokenEventHandler
-func Widget_grabBrokenEventHandler() {}
+func Widget_grabBrokenEventHandler() {
+	fmt.Println("cb")
+}
 
 // Unsupported signal : unsupported parameter allocation : Blacklisted record : GdkRectangle
 

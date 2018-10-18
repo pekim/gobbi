@@ -4,6 +4,7 @@
 package gtk
 
 import (
+	"fmt"
 	gdk "github.com/pekim/gobbi/lib/gdk"
 	gio "github.com/pekim/gobbi/lib/gio"
 	glib "github.com/pekim/gobbi/lib/glib"
@@ -195,7 +196,12 @@ var signalComboBoxFormatEntryTextLock sync.Mutex
 // ComboBoxSignalFormatEntryTextCallback is a callback function for a 'format-entry-text' signal emitted from a ComboBox.
 type ComboBoxSignalFormatEntryTextCallback func(path string) string
 
-func (recv *ComboBox) ConnectFormatEntryText(callback ComboBoxSignalFormatEntryTextCallback) {
+/*
+ConnectFormatEntryText connects the callback to the 'format-entry-text' signal for the ComboBox.
+
+The returned value represents the connection, and may be passed to DisconnectFormatEntryText to remove it.
+*/
+func (recv *ComboBox) ConnectFormatEntryText(callback ComboBoxSignalFormatEntryTextCallback) int {
 	signalComboBoxFormatEntryTextLock.Lock()
 	defer signalComboBoxFormatEntryTextLock.Unlock()
 
@@ -203,11 +209,14 @@ func (recv *ComboBox) ConnectFormatEntryText(callback ComboBoxSignalFormatEntryT
 	signalComboBoxFormatEntryTextMap[signalComboBoxFormatEntryTextId] = callback
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.ComboBox_signal_connect_format_entry_text(instance, C.gpointer(uintptr(signalComboBoxFormatEntryTextId)))
+	retC := C.ComboBox_signal_connect_format_entry_text(instance, C.gpointer(uintptr(signalComboBoxFormatEntryTextId)))
+	return int(retC)
 }
 
 //export ComboBox_formatEntryTextHandler
-func ComboBox_formatEntryTextHandler() {}
+func ComboBox_formatEntryTextHandler() {
+	fmt.Println("cb")
+}
 
 // Unsupported : gtk_combo_box_new_with_model : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
 

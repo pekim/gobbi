@@ -4,6 +4,7 @@
 package gtk
 
 import (
+	"fmt"
 	cairo "github.com/pekim/gobbi/lib/cairo"
 	gdk "github.com/pekim/gobbi/lib/gdk"
 	gdkpixbuf "github.com/pekim/gobbi/lib/gdkpixbuf"
@@ -522,7 +523,12 @@ var signalListBoxRowActivatedLock sync.Mutex
 // ListBoxSignalRowActivatedCallback is a callback function for a 'row-activated' signal emitted from a ListBox.
 type ListBoxSignalRowActivatedCallback func(row *ListBoxRow)
 
-func (recv *ListBox) ConnectRowActivated(callback ListBoxSignalRowActivatedCallback) {
+/*
+ConnectRowActivated connects the callback to the 'row-activated' signal for the ListBox.
+
+The returned value represents the connection, and may be passed to DisconnectRowActivated to remove it.
+*/
+func (recv *ListBox) ConnectRowActivated(callback ListBoxSignalRowActivatedCallback) int {
 	signalListBoxRowActivatedLock.Lock()
 	defer signalListBoxRowActivatedLock.Unlock()
 
@@ -530,11 +536,14 @@ func (recv *ListBox) ConnectRowActivated(callback ListBoxSignalRowActivatedCallb
 	signalListBoxRowActivatedMap[signalListBoxRowActivatedId] = callback
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.ListBox_signal_connect_row_activated(instance, C.gpointer(uintptr(signalListBoxRowActivatedId)))
+	retC := C.ListBox_signal_connect_row_activated(instance, C.gpointer(uintptr(signalListBoxRowActivatedId)))
+	return int(retC)
 }
 
 //export ListBox_rowActivatedHandler
-func ListBox_rowActivatedHandler() {}
+func ListBox_rowActivatedHandler() {
+	fmt.Println("cb")
+}
 
 var signalListBoxRowSelectedId int
 var signalListBoxRowSelectedMap = make(map[int]ListBoxSignalRowSelectedCallback)
@@ -543,7 +552,12 @@ var signalListBoxRowSelectedLock sync.Mutex
 // ListBoxSignalRowSelectedCallback is a callback function for a 'row-selected' signal emitted from a ListBox.
 type ListBoxSignalRowSelectedCallback func(row *ListBoxRow)
 
-func (recv *ListBox) ConnectRowSelected(callback ListBoxSignalRowSelectedCallback) {
+/*
+ConnectRowSelected connects the callback to the 'row-selected' signal for the ListBox.
+
+The returned value represents the connection, and may be passed to DisconnectRowSelected to remove it.
+*/
+func (recv *ListBox) ConnectRowSelected(callback ListBoxSignalRowSelectedCallback) int {
 	signalListBoxRowSelectedLock.Lock()
 	defer signalListBoxRowSelectedLock.Unlock()
 
@@ -551,11 +565,14 @@ func (recv *ListBox) ConnectRowSelected(callback ListBoxSignalRowSelectedCallbac
 	signalListBoxRowSelectedMap[signalListBoxRowSelectedId] = callback
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.ListBox_signal_connect_row_selected(instance, C.gpointer(uintptr(signalListBoxRowSelectedId)))
+	retC := C.ListBox_signal_connect_row_selected(instance, C.gpointer(uintptr(signalListBoxRowSelectedId)))
+	return int(retC)
 }
 
 //export ListBox_rowSelectedHandler
-func ListBox_rowSelectedHandler() {}
+func ListBox_rowSelectedHandler() {
+	fmt.Println("cb")
+}
 
 // ListBoxNew is a wrapper around the C function gtk_list_box_new.
 func ListBoxNew() *ListBox {
@@ -733,7 +750,12 @@ var signalListBoxRowActivateLock sync.Mutex
 // ListBoxRowSignalActivateCallback is a callback function for a 'activate' signal emitted from a ListBoxRow.
 type ListBoxRowSignalActivateCallback func()
 
-func (recv *ListBoxRow) ConnectActivate(callback ListBoxRowSignalActivateCallback) {
+/*
+ConnectActivate connects the callback to the 'activate' signal for the ListBoxRow.
+
+The returned value represents the connection, and may be passed to DisconnectActivate to remove it.
+*/
+func (recv *ListBoxRow) ConnectActivate(callback ListBoxRowSignalActivateCallback) int {
 	signalListBoxRowActivateLock.Lock()
 	defer signalListBoxRowActivateLock.Unlock()
 
@@ -741,11 +763,14 @@ func (recv *ListBoxRow) ConnectActivate(callback ListBoxRowSignalActivateCallbac
 	signalListBoxRowActivateMap[signalListBoxRowActivateId] = callback
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.ListBoxRow_signal_connect_activate(instance, C.gpointer(uintptr(signalListBoxRowActivateId)))
+	retC := C.ListBoxRow_signal_connect_activate(instance, C.gpointer(uintptr(signalListBoxRowActivateId)))
+	return int(retC)
 }
 
 //export ListBoxRow_activateHandler
-func ListBoxRow_activateHandler() {}
+func ListBoxRow_activateHandler() {
+	fmt.Println("cb")
+}
 
 // ListBoxRowNew is a wrapper around the C function gtk_list_box_row_new.
 func ListBoxRowNew() *ListBoxRow {
@@ -806,7 +831,12 @@ var signalPlacesSidebarDragActionAskLock sync.Mutex
 // PlacesSidebarSignalDragActionAskCallback is a callback function for a 'drag-action-ask' signal emitted from a PlacesSidebar.
 type PlacesSidebarSignalDragActionAskCallback func(actions int32) int32
 
-func (recv *PlacesSidebar) ConnectDragActionAsk(callback PlacesSidebarSignalDragActionAskCallback) {
+/*
+ConnectDragActionAsk connects the callback to the 'drag-action-ask' signal for the PlacesSidebar.
+
+The returned value represents the connection, and may be passed to DisconnectDragActionAsk to remove it.
+*/
+func (recv *PlacesSidebar) ConnectDragActionAsk(callback PlacesSidebarSignalDragActionAskCallback) int {
 	signalPlacesSidebarDragActionAskLock.Lock()
 	defer signalPlacesSidebarDragActionAskLock.Unlock()
 
@@ -814,11 +844,14 @@ func (recv *PlacesSidebar) ConnectDragActionAsk(callback PlacesSidebarSignalDrag
 	signalPlacesSidebarDragActionAskMap[signalPlacesSidebarDragActionAskId] = callback
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.PlacesSidebar_signal_connect_drag_action_ask(instance, C.gpointer(uintptr(signalPlacesSidebarDragActionAskId)))
+	retC := C.PlacesSidebar_signal_connect_drag_action_ask(instance, C.gpointer(uintptr(signalPlacesSidebarDragActionAskId)))
+	return int(retC)
 }
 
 //export PlacesSidebar_dragActionAskHandler
-func PlacesSidebar_dragActionAskHandler() {}
+func PlacesSidebar_dragActionAskHandler() {
+	fmt.Println("cb")
+}
 
 // Unsupported signal : unsupported parameter dest_file : no type generator for Gio.File,
 
@@ -835,7 +868,12 @@ var signalPlacesSidebarShowErrorMessageLock sync.Mutex
 // PlacesSidebarSignalShowErrorMessageCallback is a callback function for a 'show-error-message' signal emitted from a PlacesSidebar.
 type PlacesSidebarSignalShowErrorMessageCallback func(primary string, secondary string)
 
-func (recv *PlacesSidebar) ConnectShowErrorMessage(callback PlacesSidebarSignalShowErrorMessageCallback) {
+/*
+ConnectShowErrorMessage connects the callback to the 'show-error-message' signal for the PlacesSidebar.
+
+The returned value represents the connection, and may be passed to DisconnectShowErrorMessage to remove it.
+*/
+func (recv *PlacesSidebar) ConnectShowErrorMessage(callback PlacesSidebarSignalShowErrorMessageCallback) int {
 	signalPlacesSidebarShowErrorMessageLock.Lock()
 	defer signalPlacesSidebarShowErrorMessageLock.Unlock()
 
@@ -843,11 +881,14 @@ func (recv *PlacesSidebar) ConnectShowErrorMessage(callback PlacesSidebarSignalS
 	signalPlacesSidebarShowErrorMessageMap[signalPlacesSidebarShowErrorMessageId] = callback
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.PlacesSidebar_signal_connect_show_error_message(instance, C.gpointer(uintptr(signalPlacesSidebarShowErrorMessageId)))
+	retC := C.PlacesSidebar_signal_connect_show_error_message(instance, C.gpointer(uintptr(signalPlacesSidebarShowErrorMessageId)))
+	return int(retC)
 }
 
 //export PlacesSidebar_showErrorMessageHandler
-func PlacesSidebar_showErrorMessageHandler() {}
+func PlacesSidebar_showErrorMessageHandler() {
+	fmt.Println("cb")
+}
 
 // PlacesSidebarNew is a wrapper around the C function gtk_places_sidebar_new.
 func PlacesSidebarNew() *PlacesSidebar {
@@ -1060,7 +1101,12 @@ var signalSearchEntrySearchChangedLock sync.Mutex
 // SearchEntrySignalSearchChangedCallback is a callback function for a 'search-changed' signal emitted from a SearchEntry.
 type SearchEntrySignalSearchChangedCallback func()
 
-func (recv *SearchEntry) ConnectSearchChanged(callback SearchEntrySignalSearchChangedCallback) {
+/*
+ConnectSearchChanged connects the callback to the 'search-changed' signal for the SearchEntry.
+
+The returned value represents the connection, and may be passed to DisconnectSearchChanged to remove it.
+*/
+func (recv *SearchEntry) ConnectSearchChanged(callback SearchEntrySignalSearchChangedCallback) int {
 	signalSearchEntrySearchChangedLock.Lock()
 	defer signalSearchEntrySearchChangedLock.Unlock()
 
@@ -1068,11 +1114,14 @@ func (recv *SearchEntry) ConnectSearchChanged(callback SearchEntrySignalSearchCh
 	signalSearchEntrySearchChangedMap[signalSearchEntrySearchChangedId] = callback
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.SearchEntry_signal_connect_search_changed(instance, C.gpointer(uintptr(signalSearchEntrySearchChangedId)))
+	retC := C.SearchEntry_signal_connect_search_changed(instance, C.gpointer(uintptr(signalSearchEntrySearchChangedId)))
+	return int(retC)
 }
 
 //export SearchEntry_searchChangedHandler
-func SearchEntry_searchChangedHandler() {}
+func SearchEntry_searchChangedHandler() {
+	fmt.Println("cb")
+}
 
 // StackNew is a wrapper around the C function gtk_stack_new.
 func StackNew() *Stack {

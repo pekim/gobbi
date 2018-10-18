@@ -4,6 +4,7 @@
 package gio
 
 import (
+	"fmt"
 	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	"sync"
@@ -826,7 +827,12 @@ var signalMenuModelItemsChangedLock sync.Mutex
 // MenuModelSignalItemsChangedCallback is a callback function for a 'items-changed' signal emitted from a MenuModel.
 type MenuModelSignalItemsChangedCallback func(position int32, removed int32, added int32)
 
-func (recv *MenuModel) ConnectItemsChanged(callback MenuModelSignalItemsChangedCallback) {
+/*
+ConnectItemsChanged connects the callback to the 'items-changed' signal for the MenuModel.
+
+The returned value represents the connection, and may be passed to DisconnectItemsChanged to remove it.
+*/
+func (recv *MenuModel) ConnectItemsChanged(callback MenuModelSignalItemsChangedCallback) int {
 	signalMenuModelItemsChangedLock.Lock()
 	defer signalMenuModelItemsChangedLock.Unlock()
 
@@ -834,11 +840,14 @@ func (recv *MenuModel) ConnectItemsChanged(callback MenuModelSignalItemsChangedC
 	signalMenuModelItemsChangedMap[signalMenuModelItemsChangedId] = callback
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.MenuModel_signal_connect_items_changed(instance, C.gpointer(uintptr(signalMenuModelItemsChangedId)))
+	retC := C.MenuModel_signal_connect_items_changed(instance, C.gpointer(uintptr(signalMenuModelItemsChangedId)))
+	return int(retC)
 }
 
 //export MenuModel_itemsChangedHandler
-func MenuModel_itemsChangedHandler() {}
+func MenuModel_itemsChangedHandler() {
+	fmt.Println("cb")
+}
 
 // Unsupported : g_menu_model_get_item_attribute : unsupported parameter ... : varargs
 

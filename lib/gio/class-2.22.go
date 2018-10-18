@@ -4,6 +4,7 @@
 package gio
 
 import (
+	"fmt"
 	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	"sync"
@@ -1578,7 +1579,12 @@ var signalThreadedSocketServiceRunLock sync.Mutex
 // ThreadedSocketServiceSignalRunCallback is a callback function for a 'run' signal emitted from a ThreadedSocketService.
 type ThreadedSocketServiceSignalRunCallback func(connection *SocketConnection, sourceObject *gobject.Object) bool
 
-func (recv *ThreadedSocketService) ConnectRun(callback ThreadedSocketServiceSignalRunCallback) {
+/*
+ConnectRun connects the callback to the 'run' signal for the ThreadedSocketService.
+
+The returned value represents the connection, and may be passed to DisconnectRun to remove it.
+*/
+func (recv *ThreadedSocketService) ConnectRun(callback ThreadedSocketServiceSignalRunCallback) int {
 	signalThreadedSocketServiceRunLock.Lock()
 	defer signalThreadedSocketServiceRunLock.Unlock()
 
@@ -1586,11 +1592,14 @@ func (recv *ThreadedSocketService) ConnectRun(callback ThreadedSocketServiceSign
 	signalThreadedSocketServiceRunMap[signalThreadedSocketServiceRunId] = callback
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.ThreadedSocketService_signal_connect_run(instance, C.gpointer(uintptr(signalThreadedSocketServiceRunId)))
+	retC := C.ThreadedSocketService_signal_connect_run(instance, C.gpointer(uintptr(signalThreadedSocketServiceRunId)))
+	return int(retC)
 }
 
 //export ThreadedSocketService_runHandler
-func ThreadedSocketService_runHandler() {}
+func ThreadedSocketService_runHandler() {
+	fmt.Println("cb")
+}
 
 // ThreadedSocketServiceNew is a wrapper around the C function g_threaded_socket_service_new.
 func ThreadedSocketServiceNew(maxThreads int32) *ThreadedSocketService {

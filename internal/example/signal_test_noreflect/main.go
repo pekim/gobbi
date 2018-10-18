@@ -29,5 +29,10 @@ func main() {
 		fmt.Println("kp", event)
 	})
 
+	window.Widget().ConnectKeyPressEvent(func(event *gdk.EventKey) bool {
+		fmt.Println("kp, for real!", event)
+		return false
+	})
+
 	gtk.Main()
 }

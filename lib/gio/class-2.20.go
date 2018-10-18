@@ -3,7 +3,10 @@
 
 package gio
 
-import "sync"
+import (
+	"fmt"
+	"sync"
+)
 
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <gio/gdesktopappinfo.h>
@@ -68,7 +71,12 @@ var signalMountOperationAbortedLock sync.Mutex
 // MountOperationSignalAbortedCallback is a callback function for a 'aborted' signal emitted from a MountOperation.
 type MountOperationSignalAbortedCallback func()
 
-func (recv *MountOperation) ConnectAborted(callback MountOperationSignalAbortedCallback) {
+/*
+ConnectAborted connects the callback to the 'aborted' signal for the MountOperation.
+
+The returned value represents the connection, and may be passed to DisconnectAborted to remove it.
+*/
+func (recv *MountOperation) ConnectAborted(callback MountOperationSignalAbortedCallback) int {
 	signalMountOperationAbortedLock.Lock()
 	defer signalMountOperationAbortedLock.Unlock()
 
@@ -76,11 +84,14 @@ func (recv *MountOperation) ConnectAborted(callback MountOperationSignalAbortedC
 	signalMountOperationAbortedMap[signalMountOperationAbortedId] = callback
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.MountOperation_signal_connect_aborted(instance, C.gpointer(uintptr(signalMountOperationAbortedId)))
+	retC := C.MountOperation_signal_connect_aborted(instance, C.gpointer(uintptr(signalMountOperationAbortedId)))
+	return int(retC)
 }
 
 //export MountOperation_abortedHandler
-func MountOperation_abortedHandler() {}
+func MountOperation_abortedHandler() {
+	fmt.Println("cb")
+}
 
 // Unsupported signal : unsupported parameter choices : no param type
 

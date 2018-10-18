@@ -4,6 +4,7 @@
 package gtk
 
 import (
+	"fmt"
 	cairo "github.com/pekim/gobbi/lib/cairo"
 	gdk "github.com/pekim/gobbi/lib/gdk"
 	pango "github.com/pekim/gobbi/lib/pango"
@@ -159,7 +160,12 @@ var signalPlacesSidebarShowOtherLocationsLock sync.Mutex
 // PlacesSidebarSignalShowOtherLocationsCallback is a callback function for a 'show-other-locations' signal emitted from a PlacesSidebar.
 type PlacesSidebarSignalShowOtherLocationsCallback func()
 
-func (recv *PlacesSidebar) ConnectShowOtherLocations(callback PlacesSidebarSignalShowOtherLocationsCallback) {
+/*
+ConnectShowOtherLocations connects the callback to the 'show-other-locations' signal for the PlacesSidebar.
+
+The returned value represents the connection, and may be passed to DisconnectShowOtherLocations to remove it.
+*/
+func (recv *PlacesSidebar) ConnectShowOtherLocations(callback PlacesSidebarSignalShowOtherLocationsCallback) int {
 	signalPlacesSidebarShowOtherLocationsLock.Lock()
 	defer signalPlacesSidebarShowOtherLocationsLock.Unlock()
 
@@ -167,11 +173,14 @@ func (recv *PlacesSidebar) ConnectShowOtherLocations(callback PlacesSidebarSigna
 	signalPlacesSidebarShowOtherLocationsMap[signalPlacesSidebarShowOtherLocationsId] = callback
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.PlacesSidebar_signal_connect_show_other_locations(instance, C.gpointer(uintptr(signalPlacesSidebarShowOtherLocationsId)))
+	retC := C.PlacesSidebar_signal_connect_show_other_locations(instance, C.gpointer(uintptr(signalPlacesSidebarShowOtherLocationsId)))
+	return int(retC)
 }
 
 //export PlacesSidebar_showOtherLocationsHandler
-func PlacesSidebar_showOtherLocationsHandler() {}
+func PlacesSidebar_showOtherLocationsHandler() {
+	fmt.Println("cb")
+}
 
 // GetShowOtherLocations is a wrapper around the C function gtk_places_sidebar_get_show_other_locations.
 func (recv *PlacesSidebar) GetShowOtherLocations() bool {

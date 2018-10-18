@@ -4,6 +4,7 @@
 package gtk
 
 import (
+	"fmt"
 	gdk "github.com/pekim/gobbi/lib/gdk"
 	gdkpixbuf "github.com/pekim/gobbi/lib/gdkpixbuf"
 	glib "github.com/pekim/gobbi/lib/glib"
@@ -240,7 +241,12 @@ var signalCellRendererComboChangedLock sync.Mutex
 // CellRendererComboSignalChangedCallback is a callback function for a 'changed' signal emitted from a CellRendererCombo.
 type CellRendererComboSignalChangedCallback func(pathString string, newIter *TreeIter)
 
-func (recv *CellRendererCombo) ConnectChanged(callback CellRendererComboSignalChangedCallback) {
+/*
+ConnectChanged connects the callback to the 'changed' signal for the CellRendererCombo.
+
+The returned value represents the connection, and may be passed to DisconnectChanged to remove it.
+*/
+func (recv *CellRendererCombo) ConnectChanged(callback CellRendererComboSignalChangedCallback) int {
 	signalCellRendererComboChangedLock.Lock()
 	defer signalCellRendererComboChangedLock.Unlock()
 
@@ -248,11 +254,14 @@ func (recv *CellRendererCombo) ConnectChanged(callback CellRendererComboSignalCh
 	signalCellRendererComboChangedMap[signalCellRendererComboChangedId] = callback
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.CellRendererCombo_signal_connect_changed(instance, C.gpointer(uintptr(signalCellRendererComboChangedId)))
+	retC := C.CellRendererCombo_signal_connect_changed(instance, C.gpointer(uintptr(signalCellRendererComboChangedId)))
+	return int(retC)
 }
 
 //export CellRendererCombo_changedHandler
-func CellRendererCombo_changedHandler() {}
+func CellRendererCombo_changedHandler() {
+	fmt.Println("cb")
+}
 
 // Unsupported : gtk_clipboard_request_uris : unsupported parameter callback : no type generator for ClipboardURIReceivedFunc, GtkClipboardURIReceivedFunc
 
@@ -813,7 +822,12 @@ var signalStatusIconButtonPressEventLock sync.Mutex
 // StatusIconSignalButtonPressEventCallback is a callback function for a 'button-press-event' signal emitted from a StatusIcon.
 type StatusIconSignalButtonPressEventCallback func(event *gdk.EventButton) bool
 
-func (recv *StatusIcon) ConnectButtonPressEvent(callback StatusIconSignalButtonPressEventCallback) {
+/*
+ConnectButtonPressEvent connects the callback to the 'button-press-event' signal for the StatusIcon.
+
+The returned value represents the connection, and may be passed to DisconnectButtonPressEvent to remove it.
+*/
+func (recv *StatusIcon) ConnectButtonPressEvent(callback StatusIconSignalButtonPressEventCallback) int {
 	signalStatusIconButtonPressEventLock.Lock()
 	defer signalStatusIconButtonPressEventLock.Unlock()
 
@@ -821,11 +835,14 @@ func (recv *StatusIcon) ConnectButtonPressEvent(callback StatusIconSignalButtonP
 	signalStatusIconButtonPressEventMap[signalStatusIconButtonPressEventId] = callback
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.StatusIcon_signal_connect_button_press_event(instance, C.gpointer(uintptr(signalStatusIconButtonPressEventId)))
+	retC := C.StatusIcon_signal_connect_button_press_event(instance, C.gpointer(uintptr(signalStatusIconButtonPressEventId)))
+	return int(retC)
 }
 
 //export StatusIcon_buttonPressEventHandler
-func StatusIcon_buttonPressEventHandler() {}
+func StatusIcon_buttonPressEventHandler() {
+	fmt.Println("cb")
+}
 
 var signalStatusIconButtonReleaseEventId int
 var signalStatusIconButtonReleaseEventMap = make(map[int]StatusIconSignalButtonReleaseEventCallback)
@@ -834,7 +851,12 @@ var signalStatusIconButtonReleaseEventLock sync.Mutex
 // StatusIconSignalButtonReleaseEventCallback is a callback function for a 'button-release-event' signal emitted from a StatusIcon.
 type StatusIconSignalButtonReleaseEventCallback func(event *gdk.EventButton) bool
 
-func (recv *StatusIcon) ConnectButtonReleaseEvent(callback StatusIconSignalButtonReleaseEventCallback) {
+/*
+ConnectButtonReleaseEvent connects the callback to the 'button-release-event' signal for the StatusIcon.
+
+The returned value represents the connection, and may be passed to DisconnectButtonReleaseEvent to remove it.
+*/
+func (recv *StatusIcon) ConnectButtonReleaseEvent(callback StatusIconSignalButtonReleaseEventCallback) int {
 	signalStatusIconButtonReleaseEventLock.Lock()
 	defer signalStatusIconButtonReleaseEventLock.Unlock()
 
@@ -842,11 +864,14 @@ func (recv *StatusIcon) ConnectButtonReleaseEvent(callback StatusIconSignalButto
 	signalStatusIconButtonReleaseEventMap[signalStatusIconButtonReleaseEventId] = callback
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.StatusIcon_signal_connect_button_release_event(instance, C.gpointer(uintptr(signalStatusIconButtonReleaseEventId)))
+	retC := C.StatusIcon_signal_connect_button_release_event(instance, C.gpointer(uintptr(signalStatusIconButtonReleaseEventId)))
+	return int(retC)
 }
 
 //export StatusIcon_buttonReleaseEventHandler
-func StatusIcon_buttonReleaseEventHandler() {}
+func StatusIcon_buttonReleaseEventHandler() {
+	fmt.Println("cb")
+}
 
 // Unsupported : gtk_status_icon_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon, GIcon*
 
@@ -892,7 +917,12 @@ var signalWidgetDamageEventLock sync.Mutex
 // WidgetSignalDamageEventCallback is a callback function for a 'damage-event' signal emitted from a Widget.
 type WidgetSignalDamageEventCallback func(event *gdk.EventExpose) bool
 
-func (recv *Widget) ConnectDamageEvent(callback WidgetSignalDamageEventCallback) {
+/*
+ConnectDamageEvent connects the callback to the 'damage-event' signal for the Widget.
+
+The returned value represents the connection, and may be passed to DisconnectDamageEvent to remove it.
+*/
+func (recv *Widget) ConnectDamageEvent(callback WidgetSignalDamageEventCallback) int {
 	signalWidgetDamageEventLock.Lock()
 	defer signalWidgetDamageEventLock.Unlock()
 
@@ -900,11 +930,14 @@ func (recv *Widget) ConnectDamageEvent(callback WidgetSignalDamageEventCallback)
 	signalWidgetDamageEventMap[signalWidgetDamageEventId] = callback
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.Widget_signal_connect_damage_event(instance, C.gpointer(uintptr(signalWidgetDamageEventId)))
+	retC := C.Widget_signal_connect_damage_event(instance, C.gpointer(uintptr(signalWidgetDamageEventId)))
+	return int(retC)
 }
 
 //export Widget_damageEventHandler
-func Widget_damageEventHandler() {}
+func Widget_damageEventHandler() {
+	fmt.Println("cb")
+}
 
 // Unsupported signal : unsupported parameter event : no type generator for Gdk.Event,
 

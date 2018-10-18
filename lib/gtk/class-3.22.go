@@ -4,6 +4,7 @@
 package gtk
 
 import (
+	"fmt"
 	gdk "github.com/pekim/gobbi/lib/gdk"
 	"sync"
 	"unsafe"
@@ -104,7 +105,12 @@ var signalMenuPoppedUpLock sync.Mutex
 // MenuSignalPoppedUpCallback is a callback function for a 'popped-up' signal emitted from a Menu.
 type MenuSignalPoppedUpCallback func(flippedRect uintptr, finalRect uintptr, flippedX bool, flippedY bool)
 
-func (recv *Menu) ConnectPoppedUp(callback MenuSignalPoppedUpCallback) {
+/*
+ConnectPoppedUp connects the callback to the 'popped-up' signal for the Menu.
+
+The returned value represents the connection, and may be passed to DisconnectPoppedUp to remove it.
+*/
+func (recv *Menu) ConnectPoppedUp(callback MenuSignalPoppedUpCallback) int {
 	signalMenuPoppedUpLock.Lock()
 	defer signalMenuPoppedUpLock.Unlock()
 
@@ -112,11 +118,14 @@ func (recv *Menu) ConnectPoppedUp(callback MenuSignalPoppedUpCallback) {
 	signalMenuPoppedUpMap[signalMenuPoppedUpId] = callback
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.Menu_signal_connect_popped_up(instance, C.gpointer(uintptr(signalMenuPoppedUpId)))
+	retC := C.Menu_signal_connect_popped_up(instance, C.gpointer(uintptr(signalMenuPoppedUpId)))
+	return int(retC)
 }
 
 //export Menu_poppedUpHandler
-func Menu_poppedUpHandler() {}
+func Menu_poppedUpHandler() {
+	fmt.Println("cb")
+}
 
 // PlaceOnMonitor is a wrapper around the C function gtk_menu_place_on_monitor.
 func (recv *Menu) PlaceOnMonitor(monitor *gdk.Monitor) {

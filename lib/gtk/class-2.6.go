@@ -4,6 +4,7 @@
 package gtk
 
 import (
+	"fmt"
 	atk "github.com/pekim/gobbi/lib/atk"
 	gdk "github.com/pekim/gobbi/lib/gdk"
 	gdkpixbuf "github.com/pekim/gobbi/lib/gdkpixbuf"
@@ -429,7 +430,12 @@ var signalClipboardOwnerChangeLock sync.Mutex
 // ClipboardSignalOwnerChangeCallback is a callback function for a 'owner-change' signal emitted from a Clipboard.
 type ClipboardSignalOwnerChangeCallback func(event *gdk.EventOwnerChange)
 
-func (recv *Clipboard) ConnectOwnerChange(callback ClipboardSignalOwnerChangeCallback) {
+/*
+ConnectOwnerChange connects the callback to the 'owner-change' signal for the Clipboard.
+
+The returned value represents the connection, and may be passed to DisconnectOwnerChange to remove it.
+*/
+func (recv *Clipboard) ConnectOwnerChange(callback ClipboardSignalOwnerChangeCallback) int {
 	signalClipboardOwnerChangeLock.Lock()
 	defer signalClipboardOwnerChangeLock.Unlock()
 
@@ -437,11 +443,14 @@ func (recv *Clipboard) ConnectOwnerChange(callback ClipboardSignalOwnerChangeCal
 	signalClipboardOwnerChangeMap[signalClipboardOwnerChangeId] = callback
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.Clipboard_signal_connect_owner_change(instance, C.gpointer(uintptr(signalClipboardOwnerChangeId)))
+	retC := C.Clipboard_signal_connect_owner_change(instance, C.gpointer(uintptr(signalClipboardOwnerChangeId)))
+	return int(retC)
 }
 
 //export Clipboard_ownerChangeHandler
-func Clipboard_ownerChangeHandler() {}
+func Clipboard_ownerChangeHandler() {
+	fmt.Println("cb")
+}
 
 // Unsupported : gtk_clipboard_request_image : unsupported parameter callback : no type generator for ClipboardImageReceivedFunc, GtkClipboardImageReceivedFunc
 
@@ -564,7 +573,12 @@ var signalEntryCompletionInsertPrefixLock sync.Mutex
 // EntryCompletionSignalInsertPrefixCallback is a callback function for a 'insert-prefix' signal emitted from a EntryCompletion.
 type EntryCompletionSignalInsertPrefixCallback func(prefix string) bool
 
-func (recv *EntryCompletion) ConnectInsertPrefix(callback EntryCompletionSignalInsertPrefixCallback) {
+/*
+ConnectInsertPrefix connects the callback to the 'insert-prefix' signal for the EntryCompletion.
+
+The returned value represents the connection, and may be passed to DisconnectInsertPrefix to remove it.
+*/
+func (recv *EntryCompletion) ConnectInsertPrefix(callback EntryCompletionSignalInsertPrefixCallback) int {
 	signalEntryCompletionInsertPrefixLock.Lock()
 	defer signalEntryCompletionInsertPrefixLock.Unlock()
 
@@ -572,11 +586,14 @@ func (recv *EntryCompletion) ConnectInsertPrefix(callback EntryCompletionSignalI
 	signalEntryCompletionInsertPrefixMap[signalEntryCompletionInsertPrefixId] = callback
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.EntryCompletion_signal_connect_insert_prefix(instance, C.gpointer(uintptr(signalEntryCompletionInsertPrefixId)))
+	retC := C.EntryCompletion_signal_connect_insert_prefix(instance, C.gpointer(uintptr(signalEntryCompletionInsertPrefixId)))
+	return int(retC)
 }
 
 //export EntryCompletion_insertPrefixHandler
-func EntryCompletion_insertPrefixHandler() {}
+func EntryCompletion_insertPrefixHandler() {
+	fmt.Println("cb")
+}
 
 // Unsupported signal : unsupported parameter model : no type generator for TreeModel,
 
@@ -1192,7 +1209,12 @@ var signalRangeChangeValueLock sync.Mutex
 // RangeSignalChangeValueCallback is a callback function for a 'change-value' signal emitted from a Range.
 type RangeSignalChangeValueCallback func(scroll ScrollType, value float64) bool
 
-func (recv *Range) ConnectChangeValue(callback RangeSignalChangeValueCallback) {
+/*
+ConnectChangeValue connects the callback to the 'change-value' signal for the Range.
+
+The returned value represents the connection, and may be passed to DisconnectChangeValue to remove it.
+*/
+func (recv *Range) ConnectChangeValue(callback RangeSignalChangeValueCallback) int {
 	signalRangeChangeValueLock.Lock()
 	defer signalRangeChangeValueLock.Unlock()
 
@@ -1200,11 +1222,14 @@ func (recv *Range) ConnectChangeValue(callback RangeSignalChangeValueCallback) {
 	signalRangeChangeValueMap[signalRangeChangeValueId] = callback
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.Range_signal_connect_change_value(instance, C.gpointer(uintptr(signalRangeChangeValueId)))
+	retC := C.Range_signal_connect_change_value(instance, C.gpointer(uintptr(signalRangeChangeValueId)))
+	return int(retC)
 }
 
 //export Range_changeValueHandler
-func Range_changeValueHandler() {}
+func Range_changeValueHandler() {
+	fmt.Println("cb")
+}
 
 // Unsupported : gtk_recent_chooser_dialog_new : unsupported parameter ... : varargs
 

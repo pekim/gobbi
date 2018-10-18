@@ -3,7 +3,10 @@
 
 package gdk
 
-import "sync"
+import (
+	"fmt"
+	"sync"
+)
 
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <gdk/gdk.h>
@@ -26,7 +29,12 @@ var signalKeymapStateChangedLock sync.Mutex
 // KeymapSignalStateChangedCallback is a callback function for a 'state-changed' signal emitted from a Keymap.
 type KeymapSignalStateChangedCallback func()
 
-func (recv *Keymap) ConnectStateChanged(callback KeymapSignalStateChangedCallback) {
+/*
+ConnectStateChanged connects the callback to the 'state-changed' signal for the Keymap.
+
+The returned value represents the connection, and may be passed to DisconnectStateChanged to remove it.
+*/
+func (recv *Keymap) ConnectStateChanged(callback KeymapSignalStateChangedCallback) int {
 	signalKeymapStateChangedLock.Lock()
 	defer signalKeymapStateChangedLock.Unlock()
 
@@ -34,11 +42,14 @@ func (recv *Keymap) ConnectStateChanged(callback KeymapSignalStateChangedCallbac
 	signalKeymapStateChangedMap[signalKeymapStateChangedId] = callback
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.Keymap_signal_connect_state_changed(instance, C.gpointer(uintptr(signalKeymapStateChangedId)))
+	retC := C.Keymap_signal_connect_state_changed(instance, C.gpointer(uintptr(signalKeymapStateChangedId)))
+	return int(retC)
 }
 
 //export Keymap_stateChangedHandler
-func Keymap_stateChangedHandler() {}
+func Keymap_stateChangedHandler() {
+	fmt.Println("cb")
+}
 
 // GetCapsLockState is a wrapper around the C function gdk_keymap_get_caps_lock_state.
 func (recv *Keymap) GetCapsLockState() bool {

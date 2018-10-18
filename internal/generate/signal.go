@@ -19,14 +19,15 @@ type Signal struct {
 	Parameters  Parameters   `xml:"parameters>parameter"`
 	ReturnValue *ReturnValue `xml:"return-value"`
 
-	record                *Record
-	varNameId             string
-	varNameMap            string
-	varNameLock           string
-	goNameHandler         string
-	goNameConnectFunction string
-	cNameSignalConnect    string
-	callbackTypeName      string
+	record                   *Record
+	varNameId                string
+	varNameMap               string
+	varNameLock              string
+	goNameHandler            string
+	goNameConnectFunction    string
+	goNameDisconnectFunction string
+	cNameSignalConnect       string
+	callbackTypeName         string
 }
 
 func (s *Signal) init(ns *Namespace, record *Record) {
@@ -54,6 +55,7 @@ func (s *Signal) initNames() {
 		makeGoNameInternal(s.Name, false))
 
 	s.goNameConnectFunction = fmt.Sprintf("Connect%s", signalGoName)
+	s.goNameDisconnectFunction = fmt.Sprintf("Disconnect%s", signalGoName)
 
 	s.cNameSignalConnect = fmt.Sprintf("%s_signal_connect_%s",
 		s.record.Name,
@@ -140,7 +142,7 @@ func (s *Signal) generateHandlerFunction(g *jen.Group) {
 		Params().
 		Params().
 		BlockFunc(func(g *jen.Group) {
-
+			g.Qual("fmt", "Println").Call(jen.Lit("cb"))
 		})
 
 	g.Line()
@@ -154,11 +156,21 @@ func (s *Signal) generateHandlerFunction(g *jen.Group) {
 }
 
 func (s *Signal) generateConnectFunction(g *jen.Group) {
+	g.Commentf(
+		`%s connects the callback to the '%s' signal for the %s.
+
+The returned value represents the connection, and may be passed to %s to remove it.`,
+		s.goNameConnectFunction,
+		s.Name,
+		s.record.GoName,
+		s.goNameDisconnectFunction)
+
 	g.
 		Func().
 		Params(jen.Id("recv").Op("*").Id(s.record.GoName)).
 		Id(s.goNameConnectFunction).
 		Params(jen.Id("callback").Id(s.callbackTypeName)).
+		Params(jen.Int()).
 		BlockFunc(func(g *jen.Group) {
 			//	signalKeyPressEventLock.Lock()
 			g.Id(s.varNameLock).Op(".").Id("Lock").Call()
@@ -185,8 +197,10 @@ func (s *Signal) generateConnectFunction(g *jen.Group) {
 				Qual("C", "gpointer").
 				Call(targetCValue)
 
-			//	C.signal_connect_key_press_event(instance, C.gpointer(uintptr(signalKeyPressEventId)))
+			//	retC := C.signal_connect_key_press_event(instance, C.gpointer(uintptr(signalKeyPressEventId)))
 			g.
+				Id("retC").
+				Op(":=").
 				Qual("C", s.cNameSignalConnect).
 				CallFunc(func(g *jen.Group) {
 					g.Id("instance")
@@ -195,6 +209,9 @@ func (s *Signal) generateConnectFunction(g *jen.Group) {
 						Qual("C", "gpointer").
 						Call(jen.Id("uintptr").Call(jen.Id(s.varNameId)))
 				})
+
+			// return int(retC)
+			g.Return(jen.Int().Call(jen.Id("retC")))
 		})
 
 	g.Line()
