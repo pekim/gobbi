@@ -854,6 +854,9 @@ DisconnectItemsChanged disconnects a callback from the 'items-changed' signal fo
 The connectionID should be a value returned from a call to ConnectItemsChanged.
 */
 func (recv *MenuModel) DisconnectItemsChanged(connectionID int) {
+	signalMenuModelItemsChangedLock.Lock()
+	defer signalMenuModelItemsChangedLock.Unlock()
+
 	_, exists := signalMenuModelItemsChangedMap[connectionID]
 	if !exists {
 		return

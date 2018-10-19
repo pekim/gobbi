@@ -97,6 +97,9 @@ DisconnectChanged disconnects a callback from the 'changed' signal for the AppIn
 The connectionID should be a value returned from a call to ConnectChanged.
 */
 func (recv *AppInfoMonitor) DisconnectChanged(connectionID int) {
+	signalAppInfoMonitorChangedLock.Lock()
+	defer signalAppInfoMonitorChangedLock.Unlock()
+
 	_, exists := signalAppInfoMonitorChangedMap[connectionID]
 	if !exists {
 		return

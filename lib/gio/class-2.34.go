@@ -267,6 +267,9 @@ DisconnectShowUnmountProgress disconnects a callback from the 'show-unmount-prog
 The connectionID should be a value returned from a call to ConnectShowUnmountProgress.
 */
 func (recv *MountOperation) DisconnectShowUnmountProgress(connectionID int) {
+	signalMountOperationShowUnmountProgressLock.Lock()
+	defer signalMountOperationShowUnmountProgressLock.Unlock()
+
 	_, exists := signalMountOperationShowUnmountProgressMap[connectionID]
 	if !exists {
 		return

@@ -132,6 +132,9 @@ DisconnectPoppedUp disconnects a callback from the 'popped-up' signal for the Me
 The connectionID should be a value returned from a call to ConnectPoppedUp.
 */
 func (recv *Menu) DisconnectPoppedUp(connectionID int) {
+	signalMenuPoppedUpLock.Lock()
+	defer signalMenuPoppedUpLock.Unlock()
+
 	_, exists := signalMenuPoppedUpMap[connectionID]
 	if !exists {
 		return

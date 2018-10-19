@@ -130,6 +130,9 @@ DisconnectPreeditChanged disconnects a callback from the 'preedit-changed' signa
 The connectionID should be a value returned from a call to ConnectPreeditChanged.
 */
 func (recv *Entry) DisconnectPreeditChanged(connectionID int) {
+	signalEntryPreeditChangedLock.Lock()
+	defer signalEntryPreeditChangedLock.Unlock()
+
 	_, exists := signalEntryPreeditChangedMap[connectionID]
 	if !exists {
 		return
@@ -410,6 +413,9 @@ DisconnectPreeditChanged disconnects a callback from the 'preedit-changed' signa
 The connectionID should be a value returned from a call to ConnectPreeditChanged.
 */
 func (recv *TextView) DisconnectPreeditChanged(connectionID int) {
+	signalTextViewPreeditChangedLock.Lock()
+	defer signalTextViewPreeditChangedLock.Unlock()
+
 	_, exists := signalTextViewPreeditChangedMap[connectionID]
 	if !exists {
 		return

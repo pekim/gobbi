@@ -1602,6 +1602,9 @@ DisconnectRun disconnects a callback from the 'run' signal for the ThreadedSocke
 The connectionID should be a value returned from a call to ConnectRun.
 */
 func (recv *ThreadedSocketService) DisconnectRun(connectionID int) {
+	signalThreadedSocketServiceRunLock.Lock()
+	defer signalThreadedSocketServiceRunLock.Unlock()
+
 	_, exists := signalThreadedSocketServiceRunMap[connectionID]
 	if !exists {
 		return

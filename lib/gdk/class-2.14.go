@@ -109,6 +109,9 @@ DisconnectMonitorsChanged disconnects a callback from the 'monitors-changed' sig
 The connectionID should be a value returned from a call to ConnectMonitorsChanged.
 */
 func (recv *Screen) DisconnectMonitorsChanged(connectionID int) {
+	signalScreenMonitorsChangedLock.Lock()
+	defer signalScreenMonitorsChangedLock.Unlock()
+
 	_, exists := signalScreenMonitorsChangedMap[connectionID]
 	if !exists {
 		return

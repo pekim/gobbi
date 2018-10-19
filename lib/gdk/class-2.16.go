@@ -52,6 +52,9 @@ DisconnectStateChanged disconnects a callback from the 'state-changed' signal fo
 The connectionID should be a value returned from a call to ConnectStateChanged.
 */
 func (recv *Keymap) DisconnectStateChanged(connectionID int) {
+	signalKeymapStateChangedLock.Lock()
+	defer signalKeymapStateChangedLock.Unlock()
+
 	_, exists := signalKeymapStateChangedMap[connectionID]
 	if !exists {
 		return

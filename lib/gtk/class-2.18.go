@@ -269,6 +269,9 @@ DisconnectDeletedText disconnects a callback from the 'deleted-text' signal for 
 The connectionID should be a value returned from a call to ConnectDeletedText.
 */
 func (recv *EntryBuffer) DisconnectDeletedText(connectionID int) {
+	signalEntryBufferDeletedTextLock.Lock()
+	defer signalEntryBufferDeletedTextLock.Unlock()
+
 	_, exists := signalEntryBufferDeletedTextMap[connectionID]
 	if !exists {
 		return
@@ -314,6 +317,9 @@ DisconnectInsertedText disconnects a callback from the 'inserted-text' signal fo
 The connectionID should be a value returned from a call to ConnectInsertedText.
 */
 func (recv *EntryBuffer) DisconnectInsertedText(connectionID int) {
+	signalEntryBufferInsertedTextLock.Lock()
+	defer signalEntryBufferInsertedTextLock.Unlock()
+
 	_, exists := signalEntryBufferInsertedTextMap[connectionID]
 	if !exists {
 		return
@@ -514,6 +520,9 @@ DisconnectClose disconnects a callback from the 'close' signal for the InfoBar.
 The connectionID should be a value returned from a call to ConnectClose.
 */
 func (recv *InfoBar) DisconnectClose(connectionID int) {
+	signalInfoBarCloseLock.Lock()
+	defer signalInfoBarCloseLock.Unlock()
+
 	_, exists := signalInfoBarCloseMap[connectionID]
 	if !exists {
 		return
@@ -559,6 +568,9 @@ DisconnectResponse disconnects a callback from the 'response' signal for the Inf
 The connectionID should be a value returned from a call to ConnectResponse.
 */
 func (recv *InfoBar) DisconnectResponse(connectionID int) {
+	signalInfoBarResponseLock.Lock()
+	defer signalInfoBarResponseLock.Unlock()
+
 	_, exists := signalInfoBarResponseMap[connectionID]
 	if !exists {
 		return
@@ -703,6 +715,9 @@ DisconnectActivateCurrentLink disconnects a callback from the 'activate-current-
 The connectionID should be a value returned from a call to ConnectActivateCurrentLink.
 */
 func (recv *Label) DisconnectActivateCurrentLink(connectionID int) {
+	signalLabelActivateCurrentLinkLock.Lock()
+	defer signalLabelActivateCurrentLinkLock.Unlock()
+
 	_, exists := signalLabelActivateCurrentLinkMap[connectionID]
 	if !exists {
 		return
@@ -748,6 +763,9 @@ DisconnectActivateLink disconnects a callback from the 'activate-link' signal fo
 The connectionID should be a value returned from a call to ConnectActivateLink.
 */
 func (recv *Label) DisconnectActivateLink(connectionID int) {
+	signalLabelActivateLinkLock.Lock()
+	defer signalLabelActivateLinkLock.Unlock()
+
 	_, exists := signalLabelActivateLinkMap[connectionID]
 	if !exists {
 		return
@@ -865,6 +883,9 @@ DisconnectUpdateCustomWidget disconnects a callback from the 'update-custom-widg
 The connectionID should be a value returned from a call to ConnectUpdateCustomWidget.
 */
 func (recv *PrintOperation) DisconnectUpdateCustomWidget(connectionID int) {
+	signalPrintOperationUpdateCustomWidgetLock.Lock()
+	defer signalPrintOperationUpdateCustomWidgetLock.Unlock()
+
 	_, exists := signalPrintOperationUpdateCustomWidgetMap[connectionID]
 	if !exists {
 		return

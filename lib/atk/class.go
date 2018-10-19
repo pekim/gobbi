@@ -181,6 +181,9 @@ DisconnectLinkActivated disconnects a callback from the 'link-activated' signal 
 The connectionID should be a value returned from a call to ConnectLinkActivated.
 */
 func (recv *Hyperlink) DisconnectLinkActivated(connectionID int) {
+	signalHyperlinkLinkActivatedLock.Lock()
+	defer signalHyperlinkLinkActivatedLock.Unlock()
+
 	_, exists := signalHyperlinkLinkActivatedMap[connectionID]
 	if !exists {
 		return
@@ -462,6 +465,9 @@ DisconnectActiveDescendantChanged disconnects a callback from the 'active-descen
 The connectionID should be a value returned from a call to ConnectActiveDescendantChanged.
 */
 func (recv *Object) DisconnectActiveDescendantChanged(connectionID int) {
+	signalObjectActiveDescendantChangedLock.Lock()
+	defer signalObjectActiveDescendantChangedLock.Unlock()
+
 	_, exists := signalObjectActiveDescendantChangedMap[connectionID]
 	if !exists {
 		return
@@ -507,6 +513,9 @@ DisconnectChildrenChanged disconnects a callback from the 'children-changed' sig
 The connectionID should be a value returned from a call to ConnectChildrenChanged.
 */
 func (recv *Object) DisconnectChildrenChanged(connectionID int) {
+	signalObjectChildrenChangedLock.Lock()
+	defer signalObjectChildrenChangedLock.Unlock()
+
 	_, exists := signalObjectChildrenChangedMap[connectionID]
 	if !exists {
 		return
@@ -552,6 +561,9 @@ DisconnectFocusEvent disconnects a callback from the 'focus-event' signal for th
 The connectionID should be a value returned from a call to ConnectFocusEvent.
 */
 func (recv *Object) DisconnectFocusEvent(connectionID int) {
+	signalObjectFocusEventLock.Lock()
+	defer signalObjectFocusEventLock.Unlock()
+
 	_, exists := signalObjectFocusEventMap[connectionID]
 	if !exists {
 		return
@@ -597,6 +609,9 @@ DisconnectPropertyChange disconnects a callback from the 'property-change' signa
 The connectionID should be a value returned from a call to ConnectPropertyChange.
 */
 func (recv *Object) DisconnectPropertyChange(connectionID int) {
+	signalObjectPropertyChangeLock.Lock()
+	defer signalObjectPropertyChangeLock.Unlock()
+
 	_, exists := signalObjectPropertyChangeMap[connectionID]
 	if !exists {
 		return
@@ -642,6 +657,9 @@ DisconnectStateChange disconnects a callback from the 'state-change' signal for 
 The connectionID should be a value returned from a call to ConnectStateChange.
 */
 func (recv *Object) DisconnectStateChange(connectionID int) {
+	signalObjectStateChangeLock.Lock()
+	defer signalObjectStateChangeLock.Unlock()
+
 	_, exists := signalObjectStateChangeMap[connectionID]
 	if !exists {
 		return
@@ -687,6 +705,9 @@ DisconnectVisibleDataChanged disconnects a callback from the 'visible-data-chang
 The connectionID should be a value returned from a call to ConnectVisibleDataChanged.
 */
 func (recv *Object) DisconnectVisibleDataChanged(connectionID int) {
+	signalObjectVisibleDataChangedLock.Lock()
+	defer signalObjectVisibleDataChangedLock.Unlock()
+
 	_, exists := signalObjectVisibleDataChangedMap[connectionID]
 	if !exists {
 		return

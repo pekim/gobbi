@@ -283,6 +283,9 @@ DisconnectIconPress disconnects a callback from the 'icon-press' signal for the 
 The connectionID should be a value returned from a call to ConnectIconPress.
 */
 func (recv *Entry) DisconnectIconPress(connectionID int) {
+	signalEntryIconPressLock.Lock()
+	defer signalEntryIconPressLock.Unlock()
+
 	_, exists := signalEntryIconPressMap[connectionID]
 	if !exists {
 		return
@@ -328,6 +331,9 @@ DisconnectIconRelease disconnects a callback from the 'icon-release' signal for 
 The connectionID should be a value returned from a call to ConnectIconRelease.
 */
 func (recv *Entry) DisconnectIconRelease(connectionID int) {
+	signalEntryIconReleaseLock.Lock()
+	defer signalEntryIconReleaseLock.Unlock()
+
 	_, exists := signalEntryIconReleaseMap[connectionID]
 	if !exists {
 		return
@@ -863,6 +869,9 @@ DisconnectQueryTooltip disconnects a callback from the 'query-tooltip' signal fo
 The connectionID should be a value returned from a call to ConnectQueryTooltip.
 */
 func (recv *StatusIcon) DisconnectQueryTooltip(connectionID int) {
+	signalStatusIconQueryTooltipLock.Lock()
+	defer signalStatusIconQueryTooltipLock.Unlock()
+
 	_, exists := signalStatusIconQueryTooltipMap[connectionID]
 	if !exists {
 		return
@@ -908,6 +917,9 @@ DisconnectScrollEvent disconnects a callback from the 'scroll-event' signal for 
 The connectionID should be a value returned from a call to ConnectScrollEvent.
 */
 func (recv *StatusIcon) DisconnectScrollEvent(connectionID int) {
+	signalStatusIconScrollEventLock.Lock()
+	defer signalStatusIconScrollEventLock.Unlock()
+
 	_, exists := signalStatusIconScrollEventMap[connectionID]
 	if !exists {
 		return
@@ -1017,6 +1029,9 @@ DisconnectPasteDone disconnects a callback from the 'paste-done' signal for the 
 The connectionID should be a value returned from a call to ConnectPasteDone.
 */
 func (recv *TextBuffer) DisconnectPasteDone(connectionID int) {
+	signalTextBufferPasteDoneLock.Lock()
+	defer signalTextBufferPasteDoneLock.Unlock()
+
 	_, exists := signalTextBufferPasteDoneMap[connectionID]
 	if !exists {
 		return

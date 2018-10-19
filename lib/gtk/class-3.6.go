@@ -231,6 +231,9 @@ DisconnectOffsetChanged disconnects a callback from the 'offset-changed' signal 
 The connectionID should be a value returned from a call to ConnectOffsetChanged.
 */
 func (recv *LevelBar) DisconnectOffsetChanged(connectionID int) {
+	signalLevelBarOffsetChangedLock.Lock()
+	defer signalLevelBarOffsetChangedLock.Unlock()
+
 	_, exists := signalLevelBarOffsetChangedMap[connectionID]
 	if !exists {
 		return

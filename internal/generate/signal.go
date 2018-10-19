@@ -169,6 +169,14 @@ func (s *Signal) generateHandlerFunction(g *jen.Group) {
 	//}
 }
 
+func (s *Signal) generateLockUnlock(g *jen.Group) {
+	//	signalKeyPressEventLock.Lock()
+	g.Id(s.varNameLock).Op(".").Id("Lock").Call()
+
+	//	defer signalKeyPressEventLock.Unlock()
+	g.Defer().Id(s.varNameLock).Op(".").Id("Unlock").Call()
+}
+
 func (s *Signal) generateConnectFunction(g *jen.Group) {
 	g.Commentf(
 		`%s connects the callback to the '%s' signal for the %s.
@@ -186,12 +194,7 @@ The returned value represents the connection, and may be passed to %s to remove 
 		Params(jen.Id("callback").Id(s.callbackTypeName)).
 		Params(jen.Int()).
 		BlockFunc(func(g *jen.Group) {
-			//	signalKeyPressEventLock.Lock()
-			g.Id(s.varNameLock).Op(".").Id("Lock").Call()
-
-			//	defer signalKeyPressEventLock.Unlock()
-			g.Defer().Id(s.varNameLock).Op(".").Id("Unlock").Call()
-
+			s.generateLockUnlock(g)
 			g.Line()
 
 			//	signalKeyPressEventId++
@@ -248,6 +251,9 @@ The connectionID should be a value returned from a call to %s.`,
 		Params(jen.Id("connectionID").Int()).
 		Params().
 		BlockFunc(func(g *jen.Group) {
+			s.generateLockUnlock(g)
+			g.Line()
+
 			// _, exists := signalKeyPressEventMap[connectionID]
 			g.
 				Id("_").Op(",").Id("exists").

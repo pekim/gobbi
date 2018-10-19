@@ -239,6 +239,9 @@ DisconnectChanged disconnects a callback from the 'changed' signal for the Accel
 The connectionID should be a value returned from a call to ConnectChanged.
 */
 func (recv *AccelMap) DisconnectChanged(connectionID int) {
+	signalAccelMapChangedLock.Lock()
+	defer signalAccelMapChangedLock.Unlock()
+
 	_, exists := signalAccelMapChangedMap[connectionID]
 	if !exists {
 		return
@@ -284,6 +287,9 @@ DisconnectActivate disconnects a callback from the 'activate' signal for the Act
 The connectionID should be a value returned from a call to ConnectActivate.
 */
 func (recv *Action) DisconnectActivate(connectionID int) {
+	signalActionActivateLock.Lock()
+	defer signalActionActivateLock.Unlock()
+
 	_, exists := signalActionActivateMap[connectionID]
 	if !exists {
 		return
@@ -455,6 +461,9 @@ DisconnectConnectProxy disconnects a callback from the 'connect-proxy' signal fo
 The connectionID should be a value returned from a call to ConnectConnectProxy.
 */
 func (recv *ActionGroup) DisconnectConnectProxy(connectionID int) {
+	signalActionGroupConnectProxyLock.Lock()
+	defer signalActionGroupConnectProxyLock.Unlock()
+
 	_, exists := signalActionGroupConnectProxyMap[connectionID]
 	if !exists {
 		return
@@ -500,6 +509,9 @@ DisconnectDisconnectProxy disconnects a callback from the 'disconnect-proxy' sig
 The connectionID should be a value returned from a call to ConnectDisconnectProxy.
 */
 func (recv *ActionGroup) DisconnectDisconnectProxy(connectionID int) {
+	signalActionGroupDisconnectProxyLock.Lock()
+	defer signalActionGroupDisconnectProxyLock.Unlock()
+
 	_, exists := signalActionGroupDisconnectProxyMap[connectionID]
 	if !exists {
 		return
@@ -545,6 +557,9 @@ DisconnectPostActivate disconnects a callback from the 'post-activate' signal fo
 The connectionID should be a value returned from a call to ConnectPostActivate.
 */
 func (recv *ActionGroup) DisconnectPostActivate(connectionID int) {
+	signalActionGroupPostActivateLock.Lock()
+	defer signalActionGroupPostActivateLock.Unlock()
+
 	_, exists := signalActionGroupPostActivateMap[connectionID]
 	if !exists {
 		return
@@ -590,6 +605,9 @@ DisconnectPreActivate disconnects a callback from the 'pre-activate' signal for 
 The connectionID should be a value returned from a call to ConnectPreActivate.
 */
 func (recv *ActionGroup) DisconnectPreActivate(connectionID int) {
+	signalActionGroupPreActivateLock.Lock()
+	defer signalActionGroupPreActivateLock.Unlock()
+
 	_, exists := signalActionGroupPreActivateMap[connectionID]
 	if !exists {
 		return
@@ -888,6 +906,9 @@ DisconnectEditingCanceled disconnects a callback from the 'editing-canceled' sig
 The connectionID should be a value returned from a call to ConnectEditingCanceled.
 */
 func (recv *CellRenderer) DisconnectEditingCanceled(connectionID int) {
+	signalCellRendererEditingCanceledLock.Lock()
+	defer signalCellRendererEditingCanceledLock.Unlock()
+
 	_, exists := signalCellRendererEditingCanceledMap[connectionID]
 	if !exists {
 		return
@@ -957,6 +978,9 @@ DisconnectColorSet disconnects a callback from the 'color-set' signal for the Co
 The connectionID should be a value returned from a call to ConnectColorSet.
 */
 func (recv *ColorButton) DisconnectColorSet(connectionID int) {
+	signalColorButtonColorSetLock.Lock()
+	defer signalColorButtonColorSetLock.Unlock()
+
 	_, exists := signalColorButtonColorSetMap[connectionID]
 	if !exists {
 		return
@@ -1093,6 +1117,9 @@ DisconnectChanged disconnects a callback from the 'changed' signal for the Combo
 The connectionID should be a value returned from a call to ConnectChanged.
 */
 func (recv *ComboBox) DisconnectChanged(connectionID int) {
+	signalComboBoxChangedLock.Lock()
+	defer signalComboBoxChangedLock.Unlock()
+
 	_, exists := signalComboBoxChangedMap[connectionID]
 	if !exists {
 		return
@@ -1271,6 +1298,9 @@ DisconnectActionActivated disconnects a callback from the 'action-activated' sig
 The connectionID should be a value returned from a call to ConnectActionActivated.
 */
 func (recv *EntryCompletion) DisconnectActionActivated(connectionID int) {
+	signalEntryCompletionActionActivatedLock.Lock()
+	defer signalEntryCompletionActionActivatedLock.Unlock()
+
 	_, exists := signalEntryCompletionActionActivatedMap[connectionID]
 	if !exists {
 		return
@@ -1654,6 +1684,9 @@ DisconnectFontSet disconnects a callback from the 'font-set' signal for the Font
 The connectionID should be a value returned from a call to ConnectFontSet.
 */
 func (recv *FontButton) DisconnectFontSet(connectionID int) {
+	signalFontButtonFontSetLock.Lock()
+	defer signalFontButtonFontSetLock.Unlock()
+
 	_, exists := signalFontButtonFontSetMap[connectionID]
 	if !exists {
 		return
@@ -2131,6 +2164,9 @@ DisconnectChanged disconnects a callback from the 'changed' signal for the Radio
 The connectionID should be a value returned from a call to ConnectChanged.
 */
 func (recv *RadioAction) DisconnectChanged(connectionID int) {
+	signalRadioActionChangedLock.Lock()
+	defer signalRadioActionChangedLock.Unlock()
+
 	_, exists := signalRadioActionChangedMap[connectionID]
 	if !exists {
 		return
@@ -2223,6 +2259,9 @@ DisconnectGroupChanged disconnects a callback from the 'group-changed' signal fo
 The connectionID should be a value returned from a call to ConnectGroupChanged.
 */
 func (recv *RadioButton) DisconnectGroupChanged(connectionID int) {
+	signalRadioButtonGroupChangedLock.Lock()
+	defer signalRadioButtonGroupChangedLock.Unlock()
+
 	_, exists := signalRadioButtonGroupChangedMap[connectionID]
 	if !exists {
 		return
@@ -2428,6 +2467,9 @@ DisconnectRealize disconnects a callback from the 'realize' signal for the Style
 The connectionID should be a value returned from a call to ConnectRealize.
 */
 func (recv *Style) DisconnectRealize(connectionID int) {
+	signalStyleRealizeLock.Lock()
+	defer signalStyleRealizeLock.Unlock()
+
 	_, exists := signalStyleRealizeMap[connectionID]
 	if !exists {
 		return
@@ -2473,6 +2515,9 @@ DisconnectUnrealize disconnects a callback from the 'unrealize' signal for the S
 The connectionID should be a value returned from a call to ConnectUnrealize.
 */
 func (recv *Style) DisconnectUnrealize(connectionID int) {
+	signalStyleUnrealizeLock.Lock()
+	defer signalStyleUnrealizeLock.Unlock()
+
 	_, exists := signalStyleUnrealizeMap[connectionID]
 	if !exists {
 		return
@@ -3142,6 +3187,9 @@ DisconnectActionsChanged disconnects a callback from the 'actions-changed' signa
 The connectionID should be a value returned from a call to ConnectActionsChanged.
 */
 func (recv *UIManager) DisconnectActionsChanged(connectionID int) {
+	signalUIManagerActionsChangedLock.Lock()
+	defer signalUIManagerActionsChangedLock.Unlock()
+
 	_, exists := signalUIManagerActionsChangedMap[connectionID]
 	if !exists {
 		return
@@ -3187,6 +3235,9 @@ DisconnectAddWidget disconnects a callback from the 'add-widget' signal for the 
 The connectionID should be a value returned from a call to ConnectAddWidget.
 */
 func (recv *UIManager) DisconnectAddWidget(connectionID int) {
+	signalUIManagerAddWidgetLock.Lock()
+	defer signalUIManagerAddWidgetLock.Unlock()
+
 	_, exists := signalUIManagerAddWidgetMap[connectionID]
 	if !exists {
 		return
@@ -3232,6 +3283,9 @@ DisconnectConnectProxy disconnects a callback from the 'connect-proxy' signal fo
 The connectionID should be a value returned from a call to ConnectConnectProxy.
 */
 func (recv *UIManager) DisconnectConnectProxy(connectionID int) {
+	signalUIManagerConnectProxyLock.Lock()
+	defer signalUIManagerConnectProxyLock.Unlock()
+
 	_, exists := signalUIManagerConnectProxyMap[connectionID]
 	if !exists {
 		return
@@ -3277,6 +3331,9 @@ DisconnectDisconnectProxy disconnects a callback from the 'disconnect-proxy' sig
 The connectionID should be a value returned from a call to ConnectDisconnectProxy.
 */
 func (recv *UIManager) DisconnectDisconnectProxy(connectionID int) {
+	signalUIManagerDisconnectProxyLock.Lock()
+	defer signalUIManagerDisconnectProxyLock.Unlock()
+
 	_, exists := signalUIManagerDisconnectProxyMap[connectionID]
 	if !exists {
 		return
@@ -3322,6 +3379,9 @@ DisconnectPostActivate disconnects a callback from the 'post-activate' signal fo
 The connectionID should be a value returned from a call to ConnectPostActivate.
 */
 func (recv *UIManager) DisconnectPostActivate(connectionID int) {
+	signalUIManagerPostActivateLock.Lock()
+	defer signalUIManagerPostActivateLock.Unlock()
+
 	_, exists := signalUIManagerPostActivateMap[connectionID]
 	if !exists {
 		return
@@ -3367,6 +3427,9 @@ DisconnectPreActivate disconnects a callback from the 'pre-activate' signal for 
 The connectionID should be a value returned from a call to ConnectPreActivate.
 */
 func (recv *UIManager) DisconnectPreActivate(connectionID int) {
+	signalUIManagerPreActivateLock.Lock()
+	defer signalUIManagerPreActivateLock.Unlock()
+
 	_, exists := signalUIManagerPreActivateMap[connectionID]
 	if !exists {
 		return

@@ -539,6 +539,9 @@ DisconnectCancelled disconnects a callback from the 'cancelled' signal for the C
 The connectionID should be a value returned from a call to ConnectCancelled.
 */
 func (recv *Cancellable) DisconnectCancelled(connectionID int) {
+	signalCancellableCancelledLock.Lock()
+	defer signalCancellableCancelledLock.Unlock()
+
 	_, exists := signalCancellableCancelledMap[connectionID]
 	if !exists {
 		return
@@ -2425,6 +2428,9 @@ DisconnectGotCompletionData disconnects a callback from the 'got-completion-data
 The connectionID should be a value returned from a call to ConnectGotCompletionData.
 */
 func (recv *FilenameCompleter) DisconnectGotCompletionData(connectionID int) {
+	signalFilenameCompleterGotCompletionDataLock.Lock()
+	defer signalFilenameCompleterGotCompletionDataLock.Unlock()
+
 	_, exists := signalFilenameCompleterGotCompletionDataMap[connectionID]
 	if !exists {
 		return
@@ -3083,6 +3089,9 @@ DisconnectAskPassword disconnects a callback from the 'ask-password' signal for 
 The connectionID should be a value returned from a call to ConnectAskPassword.
 */
 func (recv *MountOperation) DisconnectAskPassword(connectionID int) {
+	signalMountOperationAskPasswordLock.Lock()
+	defer signalMountOperationAskPasswordLock.Unlock()
+
 	_, exists := signalMountOperationAskPasswordMap[connectionID]
 	if !exists {
 		return
@@ -3130,6 +3139,9 @@ DisconnectReply disconnects a callback from the 'reply' signal for the MountOper
 The connectionID should be a value returned from a call to ConnectReply.
 */
 func (recv *MountOperation) DisconnectReply(connectionID int) {
+	signalMountOperationReplyLock.Lock()
+	defer signalMountOperationReplyLock.Unlock()
+
 	_, exists := signalMountOperationReplyMap[connectionID]
 	if !exists {
 		return
@@ -3666,6 +3678,9 @@ DisconnectReload disconnects a callback from the 'reload' signal for the Resolve
 The connectionID should be a value returned from a call to ConnectReload.
 */
 func (recv *Resolver) DisconnectReload(connectionID int) {
+	signalResolverReloadLock.Lock()
+	defer signalResolverReloadLock.Unlock()
+
 	_, exists := signalResolverReloadMap[connectionID]
 	if !exists {
 		return
@@ -3747,6 +3762,9 @@ DisconnectChanged disconnects a callback from the 'changed' signal for the Setti
 The connectionID should be a value returned from a call to ConnectChanged.
 */
 func (recv *Settings) DisconnectChanged(connectionID int) {
+	signalSettingsChangedLock.Lock()
+	defer signalSettingsChangedLock.Unlock()
+
 	_, exists := signalSettingsChangedMap[connectionID]
 	if !exists {
 		return
@@ -3792,6 +3810,9 @@ DisconnectWritableChangeEvent disconnects a callback from the 'writable-change-e
 The connectionID should be a value returned from a call to ConnectWritableChangeEvent.
 */
 func (recv *Settings) DisconnectWritableChangeEvent(connectionID int) {
+	signalSettingsWritableChangeEventLock.Lock()
+	defer signalSettingsWritableChangeEventLock.Unlock()
+
 	_, exists := signalSettingsWritableChangeEventMap[connectionID]
 	if !exists {
 		return
@@ -3837,6 +3858,9 @@ DisconnectWritableChanged disconnects a callback from the 'writable-changed' sig
 The connectionID should be a value returned from a call to ConnectWritableChanged.
 */
 func (recv *Settings) DisconnectWritableChanged(connectionID int) {
+	signalSettingsWritableChangedLock.Lock()
+	defer signalSettingsWritableChangedLock.Unlock()
+
 	_, exists := signalSettingsWritableChangedMap[connectionID]
 	if !exists {
 		return
@@ -4713,6 +4737,9 @@ DisconnectMountpointsChanged disconnects a callback from the 'mountpoints-change
 The connectionID should be a value returned from a call to ConnectMountpointsChanged.
 */
 func (recv *UnixMountMonitor) DisconnectMountpointsChanged(connectionID int) {
+	signalUnixMountMonitorMountpointsChangedLock.Lock()
+	defer signalUnixMountMonitorMountpointsChangedLock.Unlock()
+
 	_, exists := signalUnixMountMonitorMountpointsChangedMap[connectionID]
 	if !exists {
 		return
@@ -4758,6 +4785,9 @@ DisconnectMountsChanged disconnects a callback from the 'mounts-changed' signal 
 The connectionID should be a value returned from a call to ConnectMountsChanged.
 */
 func (recv *UnixMountMonitor) DisconnectMountsChanged(connectionID int) {
+	signalUnixMountMonitorMountsChangedLock.Lock()
+	defer signalUnixMountMonitorMountsChangedLock.Unlock()
+
 	_, exists := signalUnixMountMonitorMountsChangedMap[connectionID]
 	if !exists {
 		return

@@ -445,6 +445,9 @@ DisconnectMount disconnects a callback from the 'mount' signal for the PlacesSid
 The connectionID should be a value returned from a call to ConnectMount.
 */
 func (recv *PlacesSidebar) DisconnectMount(connectionID int) {
+	signalPlacesSidebarMountLock.Lock()
+	defer signalPlacesSidebarMountLock.Unlock()
+
 	_, exists := signalPlacesSidebarMountMap[connectionID]
 	if !exists {
 		return
@@ -494,6 +497,9 @@ DisconnectShowOtherLocationsWithFlags disconnects a callback from the 'show-othe
 The connectionID should be a value returned from a call to ConnectShowOtherLocationsWithFlags.
 */
 func (recv *PlacesSidebar) DisconnectShowOtherLocationsWithFlags(connectionID int) {
+	signalPlacesSidebarShowOtherLocationsWithFlagsLock.Lock()
+	defer signalPlacesSidebarShowOtherLocationsWithFlagsLock.Unlock()
+
 	_, exists := signalPlacesSidebarShowOtherLocationsWithFlagsMap[connectionID]
 	if !exists {
 		return
@@ -539,6 +545,9 @@ DisconnectUnmount disconnects a callback from the 'unmount' signal for the Place
 The connectionID should be a value returned from a call to ConnectUnmount.
 */
 func (recv *PlacesSidebar) DisconnectUnmount(connectionID int) {
+	signalPlacesSidebarUnmountLock.Lock()
+	defer signalPlacesSidebarUnmountLock.Unlock()
+
 	_, exists := signalPlacesSidebarUnmountMap[connectionID]
 	if !exists {
 		return
@@ -781,6 +790,9 @@ DisconnectChangeCurrentPage disconnects a callback from the 'change-current-page
 The connectionID should be a value returned from a call to ConnectChangeCurrentPage.
 */
 func (recv *ShortcutsSection) DisconnectChangeCurrentPage(connectionID int) {
+	signalShortcutsSectionChangeCurrentPageLock.Lock()
+	defer signalShortcutsSectionChangeCurrentPageLock.Unlock()
+
 	_, exists := signalShortcutsSectionChangeCurrentPageMap[connectionID]
 	if !exists {
 		return
@@ -936,6 +948,9 @@ DisconnectClose disconnects a callback from the 'close' signal for the Shortcuts
 The connectionID should be a value returned from a call to ConnectClose.
 */
 func (recv *ShortcutsWindow) DisconnectClose(connectionID int) {
+	signalShortcutsWindowCloseLock.Lock()
+	defer signalShortcutsWindowCloseLock.Unlock()
+
 	_, exists := signalShortcutsWindowCloseMap[connectionID]
 	if !exists {
 		return
@@ -981,6 +996,9 @@ DisconnectSearch disconnects a callback from the 'search' signal for the Shortcu
 The connectionID should be a value returned from a call to ConnectSearch.
 */
 func (recv *ShortcutsWindow) DisconnectSearch(connectionID int) {
+	signalShortcutsWindowSearchLock.Lock()
+	defer signalShortcutsWindowSearchLock.Unlock()
+
 	_, exists := signalShortcutsWindowSearchMap[connectionID]
 	if !exists {
 		return

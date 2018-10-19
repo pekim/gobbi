@@ -249,6 +249,9 @@ DisconnectApply disconnects a callback from the 'apply' signal for the Assistant
 The connectionID should be a value returned from a call to ConnectApply.
 */
 func (recv *Assistant) DisconnectApply(connectionID int) {
+	signalAssistantApplyLock.Lock()
+	defer signalAssistantApplyLock.Unlock()
+
 	_, exists := signalAssistantApplyMap[connectionID]
 	if !exists {
 		return
@@ -294,6 +297,9 @@ DisconnectCancel disconnects a callback from the 'cancel' signal for the Assista
 The connectionID should be a value returned from a call to ConnectCancel.
 */
 func (recv *Assistant) DisconnectCancel(connectionID int) {
+	signalAssistantCancelLock.Lock()
+	defer signalAssistantCancelLock.Unlock()
+
 	_, exists := signalAssistantCancelMap[connectionID]
 	if !exists {
 		return
@@ -339,6 +345,9 @@ DisconnectClose disconnects a callback from the 'close' signal for the Assistant
 The connectionID should be a value returned from a call to ConnectClose.
 */
 func (recv *Assistant) DisconnectClose(connectionID int) {
+	signalAssistantCloseLock.Lock()
+	defer signalAssistantCloseLock.Unlock()
+
 	_, exists := signalAssistantCloseMap[connectionID]
 	if !exists {
 		return
@@ -384,6 +393,9 @@ DisconnectPrepare disconnects a callback from the 'prepare' signal for the Assis
 The connectionID should be a value returned from a call to ConnectPrepare.
 */
 func (recv *Assistant) DisconnectPrepare(connectionID int) {
+	signalAssistantPrepareLock.Lock()
+	defer signalAssistantPrepareLock.Unlock()
+
 	_, exists := signalAssistantPrepareMap[connectionID]
 	if !exists {
 		return
@@ -665,6 +677,9 @@ DisconnectAccelCleared disconnects a callback from the 'accel-cleared' signal fo
 The connectionID should be a value returned from a call to ConnectAccelCleared.
 */
 func (recv *CellRendererAccel) DisconnectAccelCleared(connectionID int) {
+	signalCellRendererAccelAccelClearedLock.Lock()
+	defer signalCellRendererAccelAccelClearedLock.Unlock()
+
 	_, exists := signalCellRendererAccelAccelClearedMap[connectionID]
 	if !exists {
 		return
@@ -710,6 +725,9 @@ DisconnectAccelEdited disconnects a callback from the 'accel-edited' signal for 
 The connectionID should be a value returned from a call to ConnectAccelEdited.
 */
 func (recv *CellRendererAccel) DisconnectAccelEdited(connectionID int) {
+	signalCellRendererAccelAccelEditedLock.Lock()
+	defer signalCellRendererAccelAccelEditedLock.Unlock()
+
 	_, exists := signalCellRendererAccelAccelEditedMap[connectionID]
 	if !exists {
 		return
@@ -947,6 +965,9 @@ DisconnectPageAdded disconnects a callback from the 'page-added' signal for the 
 The connectionID should be a value returned from a call to ConnectPageAdded.
 */
 func (recv *Notebook) DisconnectPageAdded(connectionID int) {
+	signalNotebookPageAddedLock.Lock()
+	defer signalNotebookPageAddedLock.Unlock()
+
 	_, exists := signalNotebookPageAddedMap[connectionID]
 	if !exists {
 		return
@@ -992,6 +1013,9 @@ DisconnectPageRemoved disconnects a callback from the 'page-removed' signal for 
 The connectionID should be a value returned from a call to ConnectPageRemoved.
 */
 func (recv *Notebook) DisconnectPageRemoved(connectionID int) {
+	signalNotebookPageRemovedLock.Lock()
+	defer signalNotebookPageRemovedLock.Unlock()
+
 	_, exists := signalNotebookPageRemovedMap[connectionID]
 	if !exists {
 		return
@@ -1037,6 +1061,9 @@ DisconnectPageReordered disconnects a callback from the 'page-reordered' signal 
 The connectionID should be a value returned from a call to ConnectPageReordered.
 */
 func (recv *Notebook) DisconnectPageReordered(connectionID int) {
+	signalNotebookPageReorderedLock.Lock()
+	defer signalNotebookPageReorderedLock.Unlock()
+
 	_, exists := signalNotebookPageReorderedMap[connectionID]
 	if !exists {
 		return
@@ -1408,6 +1435,9 @@ DisconnectBeginPrint disconnects a callback from the 'begin-print' signal for th
 The connectionID should be a value returned from a call to ConnectBeginPrint.
 */
 func (recv *PrintOperation) DisconnectBeginPrint(connectionID int) {
+	signalPrintOperationBeginPrintLock.Lock()
+	defer signalPrintOperationBeginPrintLock.Unlock()
+
 	_, exists := signalPrintOperationBeginPrintMap[connectionID]
 	if !exists {
 		return
@@ -1455,6 +1485,9 @@ DisconnectCustomWidgetApply disconnects a callback from the 'custom-widget-apply
 The connectionID should be a value returned from a call to ConnectCustomWidgetApply.
 */
 func (recv *PrintOperation) DisconnectCustomWidgetApply(connectionID int) {
+	signalPrintOperationCustomWidgetApplyLock.Lock()
+	defer signalPrintOperationCustomWidgetApplyLock.Unlock()
+
 	_, exists := signalPrintOperationCustomWidgetApplyMap[connectionID]
 	if !exists {
 		return
@@ -1500,6 +1533,9 @@ DisconnectDone disconnects a callback from the 'done' signal for the PrintOperat
 The connectionID should be a value returned from a call to ConnectDone.
 */
 func (recv *PrintOperation) DisconnectDone(connectionID int) {
+	signalPrintOperationDoneLock.Lock()
+	defer signalPrintOperationDoneLock.Unlock()
+
 	_, exists := signalPrintOperationDoneMap[connectionID]
 	if !exists {
 		return
@@ -1545,6 +1581,9 @@ DisconnectDrawPage disconnects a callback from the 'draw-page' signal for the Pr
 The connectionID should be a value returned from a call to ConnectDrawPage.
 */
 func (recv *PrintOperation) DisconnectDrawPage(connectionID int) {
+	signalPrintOperationDrawPageLock.Lock()
+	defer signalPrintOperationDrawPageLock.Unlock()
+
 	_, exists := signalPrintOperationDrawPageMap[connectionID]
 	if !exists {
 		return
@@ -1590,6 +1629,9 @@ DisconnectEndPrint disconnects a callback from the 'end-print' signal for the Pr
 The connectionID should be a value returned from a call to ConnectEndPrint.
 */
 func (recv *PrintOperation) DisconnectEndPrint(connectionID int) {
+	signalPrintOperationEndPrintLock.Lock()
+	defer signalPrintOperationEndPrintLock.Unlock()
+
 	_, exists := signalPrintOperationEndPrintMap[connectionID]
 	if !exists {
 		return
@@ -1635,6 +1677,9 @@ DisconnectPaginate disconnects a callback from the 'paginate' signal for the Pri
 The connectionID should be a value returned from a call to ConnectPaginate.
 */
 func (recv *PrintOperation) DisconnectPaginate(connectionID int) {
+	signalPrintOperationPaginateLock.Lock()
+	defer signalPrintOperationPaginateLock.Unlock()
+
 	_, exists := signalPrintOperationPaginateMap[connectionID]
 	if !exists {
 		return
@@ -1682,6 +1727,9 @@ DisconnectRequestPageSetup disconnects a callback from the 'request-page-setup' 
 The connectionID should be a value returned from a call to ConnectRequestPageSetup.
 */
 func (recv *PrintOperation) DisconnectRequestPageSetup(connectionID int) {
+	signalPrintOperationRequestPageSetupLock.Lock()
+	defer signalPrintOperationRequestPageSetupLock.Unlock()
+
 	_, exists := signalPrintOperationRequestPageSetupMap[connectionID]
 	if !exists {
 		return
@@ -1727,6 +1775,9 @@ DisconnectStatusChanged disconnects a callback from the 'status-changed' signal 
 The connectionID should be a value returned from a call to ConnectStatusChanged.
 */
 func (recv *PrintOperation) DisconnectStatusChanged(connectionID int) {
+	signalPrintOperationStatusChangedLock.Lock()
+	defer signalPrintOperationStatusChangedLock.Unlock()
+
 	_, exists := signalPrintOperationStatusChangedMap[connectionID]
 	if !exists {
 		return
@@ -2922,6 +2973,9 @@ DisconnectWrapped disconnects a callback from the 'wrapped' signal for the SpinB
 The connectionID should be a value returned from a call to ConnectWrapped.
 */
 func (recv *SpinButton) DisconnectWrapped(connectionID int) {
+	signalSpinButtonWrappedLock.Lock()
+	defer signalSpinButtonWrappedLock.Unlock()
+
 	_, exists := signalSpinButtonWrappedMap[connectionID]
 	if !exists {
 		return
@@ -2967,6 +3021,9 @@ DisconnectActivate disconnects a callback from the 'activate' signal for the Sta
 The connectionID should be a value returned from a call to ConnectActivate.
 */
 func (recv *StatusIcon) DisconnectActivate(connectionID int) {
+	signalStatusIconActivateLock.Lock()
+	defer signalStatusIconActivateLock.Unlock()
+
 	_, exists := signalStatusIconActivateMap[connectionID]
 	if !exists {
 		return
@@ -3012,6 +3069,9 @@ DisconnectPopupMenu disconnects a callback from the 'popup-menu' signal for the 
 The connectionID should be a value returned from a call to ConnectPopupMenu.
 */
 func (recv *StatusIcon) DisconnectPopupMenu(connectionID int) {
+	signalStatusIconPopupMenuLock.Lock()
+	defer signalStatusIconPopupMenuLock.Unlock()
+
 	_, exists := signalStatusIconPopupMenuMap[connectionID]
 	if !exists {
 		return
@@ -3057,6 +3117,9 @@ DisconnectSizeChanged disconnects a callback from the 'size-changed' signal for 
 The connectionID should be a value returned from a call to ConnectSizeChanged.
 */
 func (recv *StatusIcon) DisconnectSizeChanged(connectionID int) {
+	signalStatusIconSizeChangedLock.Lock()
+	defer signalStatusIconSizeChangedLock.Unlock()
+
 	_, exists := signalStatusIconSizeChangedMap[connectionID]
 	if !exists {
 		return

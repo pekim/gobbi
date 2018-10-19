@@ -55,6 +55,9 @@ DisconnectActivateLink disconnects a callback from the 'activate-link' signal fo
 The connectionID should be a value returned from a call to ConnectActivateLink.
 */
 func (recv *AboutDialog) DisconnectActivateLink(connectionID int) {
+	signalAboutDialogActivateLinkLock.Lock()
+	defer signalAboutDialogActivateLinkLock.Unlock()
+
 	_, exists := signalAboutDialogActivateLinkMap[connectionID]
 	if !exists {
 		return

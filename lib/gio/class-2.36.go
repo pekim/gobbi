@@ -64,6 +64,9 @@ DisconnectLaunchFailed disconnects a callback from the 'launch-failed' signal fo
 The connectionID should be a value returned from a call to ConnectLaunchFailed.
 */
 func (recv *AppLaunchContext) DisconnectLaunchFailed(connectionID int) {
+	signalAppLaunchContextLaunchFailedLock.Lock()
+	defer signalAppLaunchContextLaunchFailedLock.Unlock()
+
 	_, exists := signalAppLaunchContextLaunchFailedMap[connectionID]
 	if !exists {
 		return

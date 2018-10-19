@@ -2266,6 +2266,9 @@ DisconnectAccelActivate disconnects a callback from the 'accel-activate' signal 
 The connectionID should be a value returned from a call to ConnectAccelActivate.
 */
 func (recv *AccelGroup) DisconnectAccelActivate(connectionID int) {
+	signalAccelGroupAccelActivateLock.Lock()
+	defer signalAccelGroupAccelActivateLock.Unlock()
+
 	_, exists := signalAccelGroupAccelActivateMap[connectionID]
 	if !exists {
 		return
@@ -2311,6 +2314,9 @@ DisconnectAccelChanged disconnects a callback from the 'accel-changed' signal fo
 The connectionID should be a value returned from a call to ConnectAccelChanged.
 */
 func (recv *AccelGroup) DisconnectAccelChanged(connectionID int) {
+	signalAccelGroupAccelChangedLock.Lock()
+	defer signalAccelGroupAccelChangedLock.Unlock()
+
 	_, exists := signalAccelGroupAccelChangedMap[connectionID]
 	if !exists {
 		return
@@ -2787,6 +2793,9 @@ DisconnectChanged disconnects a callback from the 'changed' signal for the Adjus
 The connectionID should be a value returned from a call to ConnectChanged.
 */
 func (recv *Adjustment) DisconnectChanged(connectionID int) {
+	signalAdjustmentChangedLock.Lock()
+	defer signalAdjustmentChangedLock.Unlock()
+
 	_, exists := signalAdjustmentChangedMap[connectionID]
 	if !exists {
 		return
@@ -2832,6 +2841,9 @@ DisconnectValueChanged disconnects a callback from the 'value-changed' signal fo
 The connectionID should be a value returned from a call to ConnectValueChanged.
 */
 func (recv *Adjustment) DisconnectValueChanged(connectionID int) {
+	signalAdjustmentValueChangedLock.Lock()
+	defer signalAdjustmentValueChangedLock.Unlock()
+
 	_, exists := signalAdjustmentValueChangedMap[connectionID]
 	if !exists {
 		return
@@ -3083,6 +3095,9 @@ DisconnectCustomItemActivated disconnects a callback from the 'custom-item-activ
 The connectionID should be a value returned from a call to ConnectCustomItemActivated.
 */
 func (recv *AppChooserButton) DisconnectCustomItemActivated(connectionID int) {
+	signalAppChooserButtonCustomItemActivatedLock.Lock()
+	defer signalAppChooserButtonCustomItemActivatedLock.Unlock()
+
 	_, exists := signalAppChooserButtonCustomItemActivatedMap[connectionID]
 	if !exists {
 		return
@@ -3668,6 +3683,9 @@ DisconnectEscape disconnects a callback from the 'escape' signal for the Assista
 The connectionID should be a value returned from a call to ConnectEscape.
 */
 func (recv *Assistant) DisconnectEscape(connectionID int) {
+	signalAssistantEscapeLock.Lock()
+	defer signalAssistantEscapeLock.Unlock()
+
 	_, exists := signalAssistantEscapeMap[connectionID]
 	if !exists {
 		return
@@ -4059,6 +4077,9 @@ DisconnectActivate disconnects a callback from the 'activate' signal for the But
 The connectionID should be a value returned from a call to ConnectActivate.
 */
 func (recv *Button) DisconnectActivate(connectionID int) {
+	signalButtonActivateLock.Lock()
+	defer signalButtonActivateLock.Unlock()
+
 	_, exists := signalButtonActivateMap[connectionID]
 	if !exists {
 		return
@@ -4104,6 +4125,9 @@ DisconnectClicked disconnects a callback from the 'clicked' signal for the Butto
 The connectionID should be a value returned from a call to ConnectClicked.
 */
 func (recv *Button) DisconnectClicked(connectionID int) {
+	signalButtonClickedLock.Lock()
+	defer signalButtonClickedLock.Unlock()
+
 	_, exists := signalButtonClickedMap[connectionID]
 	if !exists {
 		return
@@ -4149,6 +4173,9 @@ DisconnectEnter disconnects a callback from the 'enter' signal for the Button.
 The connectionID should be a value returned from a call to ConnectEnter.
 */
 func (recv *Button) DisconnectEnter(connectionID int) {
+	signalButtonEnterLock.Lock()
+	defer signalButtonEnterLock.Unlock()
+
 	_, exists := signalButtonEnterMap[connectionID]
 	if !exists {
 		return
@@ -4194,6 +4221,9 @@ DisconnectLeave disconnects a callback from the 'leave' signal for the Button.
 The connectionID should be a value returned from a call to ConnectLeave.
 */
 func (recv *Button) DisconnectLeave(connectionID int) {
+	signalButtonLeaveLock.Lock()
+	defer signalButtonLeaveLock.Unlock()
+
 	_, exists := signalButtonLeaveMap[connectionID]
 	if !exists {
 		return
@@ -4239,6 +4269,9 @@ DisconnectPressed disconnects a callback from the 'pressed' signal for the Butto
 The connectionID should be a value returned from a call to ConnectPressed.
 */
 func (recv *Button) DisconnectPressed(connectionID int) {
+	signalButtonPressedLock.Lock()
+	defer signalButtonPressedLock.Unlock()
+
 	_, exists := signalButtonPressedMap[connectionID]
 	if !exists {
 		return
@@ -4284,6 +4317,9 @@ DisconnectReleased disconnects a callback from the 'released' signal for the But
 The connectionID should be a value returned from a call to ConnectReleased.
 */
 func (recv *Button) DisconnectReleased(connectionID int) {
+	signalButtonReleasedLock.Lock()
+	defer signalButtonReleasedLock.Unlock()
+
 	_, exists := signalButtonReleasedMap[connectionID]
 	if !exists {
 		return
@@ -4654,6 +4690,9 @@ DisconnectDaySelected disconnects a callback from the 'day-selected' signal for 
 The connectionID should be a value returned from a call to ConnectDaySelected.
 */
 func (recv *Calendar) DisconnectDaySelected(connectionID int) {
+	signalCalendarDaySelectedLock.Lock()
+	defer signalCalendarDaySelectedLock.Unlock()
+
 	_, exists := signalCalendarDaySelectedMap[connectionID]
 	if !exists {
 		return
@@ -4699,6 +4738,9 @@ DisconnectDaySelectedDoubleClick disconnects a callback from the 'day-selected-d
 The connectionID should be a value returned from a call to ConnectDaySelectedDoubleClick.
 */
 func (recv *Calendar) DisconnectDaySelectedDoubleClick(connectionID int) {
+	signalCalendarDaySelectedDoubleClickLock.Lock()
+	defer signalCalendarDaySelectedDoubleClickLock.Unlock()
+
 	_, exists := signalCalendarDaySelectedDoubleClickMap[connectionID]
 	if !exists {
 		return
@@ -4744,6 +4786,9 @@ DisconnectMonthChanged disconnects a callback from the 'month-changed' signal fo
 The connectionID should be a value returned from a call to ConnectMonthChanged.
 */
 func (recv *Calendar) DisconnectMonthChanged(connectionID int) {
+	signalCalendarMonthChangedLock.Lock()
+	defer signalCalendarMonthChangedLock.Unlock()
+
 	_, exists := signalCalendarMonthChangedMap[connectionID]
 	if !exists {
 		return
@@ -4789,6 +4834,9 @@ DisconnectNextMonth disconnects a callback from the 'next-month' signal for the 
 The connectionID should be a value returned from a call to ConnectNextMonth.
 */
 func (recv *Calendar) DisconnectNextMonth(connectionID int) {
+	signalCalendarNextMonthLock.Lock()
+	defer signalCalendarNextMonthLock.Unlock()
+
 	_, exists := signalCalendarNextMonthMap[connectionID]
 	if !exists {
 		return
@@ -4834,6 +4882,9 @@ DisconnectNextYear disconnects a callback from the 'next-year' signal for the Ca
 The connectionID should be a value returned from a call to ConnectNextYear.
 */
 func (recv *Calendar) DisconnectNextYear(connectionID int) {
+	signalCalendarNextYearLock.Lock()
+	defer signalCalendarNextYearLock.Unlock()
+
 	_, exists := signalCalendarNextYearMap[connectionID]
 	if !exists {
 		return
@@ -4879,6 +4930,9 @@ DisconnectPrevMonth disconnects a callback from the 'prev-month' signal for the 
 The connectionID should be a value returned from a call to ConnectPrevMonth.
 */
 func (recv *Calendar) DisconnectPrevMonth(connectionID int) {
+	signalCalendarPrevMonthLock.Lock()
+	defer signalCalendarPrevMonthLock.Unlock()
+
 	_, exists := signalCalendarPrevMonthMap[connectionID]
 	if !exists {
 		return
@@ -4924,6 +4978,9 @@ DisconnectPrevYear disconnects a callback from the 'prev-year' signal for the Ca
 The connectionID should be a value returned from a call to ConnectPrevYear.
 */
 func (recv *Calendar) DisconnectPrevYear(connectionID int) {
+	signalCalendarPrevYearLock.Lock()
+	defer signalCalendarPrevYearLock.Unlock()
+
 	_, exists := signalCalendarPrevYearMap[connectionID]
 	if !exists {
 		return
@@ -5627,6 +5684,9 @@ DisconnectEdited disconnects a callback from the 'edited' signal for the CellRen
 The connectionID should be a value returned from a call to ConnectEdited.
 */
 func (recv *CellRendererText) DisconnectEdited(connectionID int) {
+	signalCellRendererTextEditedLock.Lock()
+	defer signalCellRendererTextEditedLock.Unlock()
+
 	_, exists := signalCellRendererTextEditedMap[connectionID]
 	if !exists {
 		return
@@ -5733,6 +5793,9 @@ DisconnectToggled disconnects a callback from the 'toggled' signal for the CellR
 The connectionID should be a value returned from a call to ConnectToggled.
 */
 func (recv *CellRendererToggle) DisconnectToggled(connectionID int) {
+	signalCellRendererToggleToggledLock.Lock()
+	defer signalCellRendererToggleToggledLock.Unlock()
+
 	_, exists := signalCellRendererToggleToggledMap[connectionID]
 	if !exists {
 		return
@@ -6018,6 +6081,9 @@ DisconnectToggled disconnects a callback from the 'toggled' signal for the Check
 The connectionID should be a value returned from a call to ConnectToggled.
 */
 func (recv *CheckMenuItem) DisconnectToggled(connectionID int) {
+	signalCheckMenuItemToggledLock.Lock()
+	defer signalCheckMenuItemToggledLock.Unlock()
+
 	_, exists := signalCheckMenuItemToggledMap[connectionID]
 	if !exists {
 		return
@@ -6507,6 +6573,9 @@ DisconnectColorChanged disconnects a callback from the 'color-changed' signal fo
 The connectionID should be a value returned from a call to ConnectColorChanged.
 */
 func (recv *ColorSelection) DisconnectColorChanged(connectionID int) {
+	signalColorSelectionColorChangedLock.Lock()
+	defer signalColorSelectionColorChangedLock.Unlock()
+
 	_, exists := signalColorSelectionColorChangedMap[connectionID]
 	if !exists {
 		return
@@ -6993,6 +7062,9 @@ DisconnectAdd disconnects a callback from the 'add' signal for the Container.
 The connectionID should be a value returned from a call to ConnectAdd.
 */
 func (recv *Container) DisconnectAdd(connectionID int) {
+	signalContainerAddLock.Lock()
+	defer signalContainerAddLock.Unlock()
+
 	_, exists := signalContainerAddMap[connectionID]
 	if !exists {
 		return
@@ -7038,6 +7110,9 @@ DisconnectCheckResize disconnects a callback from the 'check-resize' signal for 
 The connectionID should be a value returned from a call to ConnectCheckResize.
 */
 func (recv *Container) DisconnectCheckResize(connectionID int) {
+	signalContainerCheckResizeLock.Lock()
+	defer signalContainerCheckResizeLock.Unlock()
+
 	_, exists := signalContainerCheckResizeMap[connectionID]
 	if !exists {
 		return
@@ -7083,6 +7158,9 @@ DisconnectRemove disconnects a callback from the 'remove' signal for the Contain
 The connectionID should be a value returned from a call to ConnectRemove.
 */
 func (recv *Container) DisconnectRemove(connectionID int) {
+	signalContainerRemoveLock.Lock()
+	defer signalContainerRemoveLock.Unlock()
+
 	_, exists := signalContainerRemoveMap[connectionID]
 	if !exists {
 		return
@@ -7128,6 +7206,9 @@ DisconnectSetFocusChild disconnects a callback from the 'set-focus-child' signal
 The connectionID should be a value returned from a call to ConnectSetFocusChild.
 */
 func (recv *Container) DisconnectSetFocusChild(connectionID int) {
+	signalContainerSetFocusChildLock.Lock()
+	defer signalContainerSetFocusChildLock.Unlock()
+
 	_, exists := signalContainerSetFocusChildMap[connectionID]
 	if !exists {
 		return
@@ -7539,6 +7620,9 @@ DisconnectParsingError disconnects a callback from the 'parsing-error' signal fo
 The connectionID should be a value returned from a call to ConnectParsingError.
 */
 func (recv *CssProvider) DisconnectParsingError(connectionID int) {
+	signalCssProviderParsingErrorLock.Lock()
+	defer signalCssProviderParsingErrorLock.Unlock()
+
 	_, exists := signalCssProviderParsingErrorMap[connectionID]
 	if !exists {
 		return
@@ -7673,6 +7757,9 @@ DisconnectClose disconnects a callback from the 'close' signal for the Dialog.
 The connectionID should be a value returned from a call to ConnectClose.
 */
 func (recv *Dialog) DisconnectClose(connectionID int) {
+	signalDialogCloseLock.Lock()
+	defer signalDialogCloseLock.Unlock()
+
 	_, exists := signalDialogCloseMap[connectionID]
 	if !exists {
 		return
@@ -7718,6 +7805,9 @@ DisconnectResponse disconnects a callback from the 'response' signal for the Dia
 The connectionID should be a value returned from a call to ConnectResponse.
 */
 func (recv *Dialog) DisconnectResponse(connectionID int) {
+	signalDialogResponseLock.Lock()
+	defer signalDialogResponseLock.Unlock()
+
 	_, exists := signalDialogResponseMap[connectionID]
 	if !exists {
 		return
@@ -7933,6 +8023,9 @@ DisconnectActivate disconnects a callback from the 'activate' signal for the Ent
 The connectionID should be a value returned from a call to ConnectActivate.
 */
 func (recv *Entry) DisconnectActivate(connectionID int) {
+	signalEntryActivateLock.Lock()
+	defer signalEntryActivateLock.Unlock()
+
 	_, exists := signalEntryActivateMap[connectionID]
 	if !exists {
 		return
@@ -7978,6 +8071,9 @@ DisconnectBackspace disconnects a callback from the 'backspace' signal for the E
 The connectionID should be a value returned from a call to ConnectBackspace.
 */
 func (recv *Entry) DisconnectBackspace(connectionID int) {
+	signalEntryBackspaceLock.Lock()
+	defer signalEntryBackspaceLock.Unlock()
+
 	_, exists := signalEntryBackspaceMap[connectionID]
 	if !exists {
 		return
@@ -8023,6 +8119,9 @@ DisconnectCopyClipboard disconnects a callback from the 'copy-clipboard' signal 
 The connectionID should be a value returned from a call to ConnectCopyClipboard.
 */
 func (recv *Entry) DisconnectCopyClipboard(connectionID int) {
+	signalEntryCopyClipboardLock.Lock()
+	defer signalEntryCopyClipboardLock.Unlock()
+
 	_, exists := signalEntryCopyClipboardMap[connectionID]
 	if !exists {
 		return
@@ -8068,6 +8167,9 @@ DisconnectCutClipboard disconnects a callback from the 'cut-clipboard' signal fo
 The connectionID should be a value returned from a call to ConnectCutClipboard.
 */
 func (recv *Entry) DisconnectCutClipboard(connectionID int) {
+	signalEntryCutClipboardLock.Lock()
+	defer signalEntryCutClipboardLock.Unlock()
+
 	_, exists := signalEntryCutClipboardMap[connectionID]
 	if !exists {
 		return
@@ -8113,6 +8215,9 @@ DisconnectDeleteFromCursor disconnects a callback from the 'delete-from-cursor' 
 The connectionID should be a value returned from a call to ConnectDeleteFromCursor.
 */
 func (recv *Entry) DisconnectDeleteFromCursor(connectionID int) {
+	signalEntryDeleteFromCursorLock.Lock()
+	defer signalEntryDeleteFromCursorLock.Unlock()
+
 	_, exists := signalEntryDeleteFromCursorMap[connectionID]
 	if !exists {
 		return
@@ -8158,6 +8263,9 @@ DisconnectInsertAtCursor disconnects a callback from the 'insert-at-cursor' sign
 The connectionID should be a value returned from a call to ConnectInsertAtCursor.
 */
 func (recv *Entry) DisconnectInsertAtCursor(connectionID int) {
+	signalEntryInsertAtCursorLock.Lock()
+	defer signalEntryInsertAtCursorLock.Unlock()
+
 	_, exists := signalEntryInsertAtCursorMap[connectionID]
 	if !exists {
 		return
@@ -8203,6 +8311,9 @@ DisconnectMoveCursor disconnects a callback from the 'move-cursor' signal for th
 The connectionID should be a value returned from a call to ConnectMoveCursor.
 */
 func (recv *Entry) DisconnectMoveCursor(connectionID int) {
+	signalEntryMoveCursorLock.Lock()
+	defer signalEntryMoveCursorLock.Unlock()
+
 	_, exists := signalEntryMoveCursorMap[connectionID]
 	if !exists {
 		return
@@ -8248,6 +8359,9 @@ DisconnectPasteClipboard disconnects a callback from the 'paste-clipboard' signa
 The connectionID should be a value returned from a call to ConnectPasteClipboard.
 */
 func (recv *Entry) DisconnectPasteClipboard(connectionID int) {
+	signalEntryPasteClipboardLock.Lock()
+	defer signalEntryPasteClipboardLock.Unlock()
+
 	_, exists := signalEntryPasteClipboardMap[connectionID]
 	if !exists {
 		return
@@ -8293,6 +8407,9 @@ DisconnectPopulatePopup disconnects a callback from the 'populate-popup' signal 
 The connectionID should be a value returned from a call to ConnectPopulatePopup.
 */
 func (recv *Entry) DisconnectPopulatePopup(connectionID int) {
+	signalEntryPopulatePopupLock.Lock()
+	defer signalEntryPopulatePopupLock.Unlock()
+
 	_, exists := signalEntryPopulatePopupMap[connectionID]
 	if !exists {
 		return
@@ -8338,6 +8455,9 @@ DisconnectToggleOverwrite disconnects a callback from the 'toggle-overwrite' sig
 The connectionID should be a value returned from a call to ConnectToggleOverwrite.
 */
 func (recv *Entry) DisconnectToggleOverwrite(connectionID int) {
+	signalEntryToggleOverwriteLock.Lock()
+	defer signalEntryToggleOverwriteLock.Unlock()
+
 	_, exists := signalEntryToggleOverwriteMap[connectionID]
 	if !exists {
 		return
@@ -8823,6 +8943,9 @@ DisconnectActivate disconnects a callback from the 'activate' signal for the Exp
 The connectionID should be a value returned from a call to ConnectActivate.
 */
 func (recv *Expander) DisconnectActivate(connectionID int) {
+	signalExpanderActivateLock.Lock()
+	defer signalExpanderActivateLock.Unlock()
+
 	_, exists := signalExpanderActivateMap[connectionID]
 	if !exists {
 		return
@@ -9091,6 +9214,9 @@ DisconnectDesktopFolder disconnects a callback from the 'desktop-folder' signal 
 The connectionID should be a value returned from a call to ConnectDesktopFolder.
 */
 func (recv *FileChooserWidget) DisconnectDesktopFolder(connectionID int) {
+	signalFileChooserWidgetDesktopFolderLock.Lock()
+	defer signalFileChooserWidgetDesktopFolderLock.Unlock()
+
 	_, exists := signalFileChooserWidgetDesktopFolderMap[connectionID]
 	if !exists {
 		return
@@ -9136,6 +9262,9 @@ DisconnectDownFolder disconnects a callback from the 'down-folder' signal for th
 The connectionID should be a value returned from a call to ConnectDownFolder.
 */
 func (recv *FileChooserWidget) DisconnectDownFolder(connectionID int) {
+	signalFileChooserWidgetDownFolderLock.Lock()
+	defer signalFileChooserWidgetDownFolderLock.Unlock()
+
 	_, exists := signalFileChooserWidgetDownFolderMap[connectionID]
 	if !exists {
 		return
@@ -9181,6 +9310,9 @@ DisconnectHomeFolder disconnects a callback from the 'home-folder' signal for th
 The connectionID should be a value returned from a call to ConnectHomeFolder.
 */
 func (recv *FileChooserWidget) DisconnectHomeFolder(connectionID int) {
+	signalFileChooserWidgetHomeFolderLock.Lock()
+	defer signalFileChooserWidgetHomeFolderLock.Unlock()
+
 	_, exists := signalFileChooserWidgetHomeFolderMap[connectionID]
 	if !exists {
 		return
@@ -9226,6 +9358,9 @@ DisconnectLocationPopup disconnects a callback from the 'location-popup' signal 
 The connectionID should be a value returned from a call to ConnectLocationPopup.
 */
 func (recv *FileChooserWidget) DisconnectLocationPopup(connectionID int) {
+	signalFileChooserWidgetLocationPopupLock.Lock()
+	defer signalFileChooserWidgetLocationPopupLock.Unlock()
+
 	_, exists := signalFileChooserWidgetLocationPopupMap[connectionID]
 	if !exists {
 		return
@@ -9271,6 +9406,9 @@ DisconnectLocationPopupOnPaste disconnects a callback from the 'location-popup-o
 The connectionID should be a value returned from a call to ConnectLocationPopupOnPaste.
 */
 func (recv *FileChooserWidget) DisconnectLocationPopupOnPaste(connectionID int) {
+	signalFileChooserWidgetLocationPopupOnPasteLock.Lock()
+	defer signalFileChooserWidgetLocationPopupOnPasteLock.Unlock()
+
 	_, exists := signalFileChooserWidgetLocationPopupOnPasteMap[connectionID]
 	if !exists {
 		return
@@ -9316,6 +9454,9 @@ DisconnectLocationTogglePopup disconnects a callback from the 'location-toggle-p
 The connectionID should be a value returned from a call to ConnectLocationTogglePopup.
 */
 func (recv *FileChooserWidget) DisconnectLocationTogglePopup(connectionID int) {
+	signalFileChooserWidgetLocationTogglePopupLock.Lock()
+	defer signalFileChooserWidgetLocationTogglePopupLock.Unlock()
+
 	_, exists := signalFileChooserWidgetLocationTogglePopupMap[connectionID]
 	if !exists {
 		return
@@ -9361,6 +9502,9 @@ DisconnectPlacesShortcut disconnects a callback from the 'places-shortcut' signa
 The connectionID should be a value returned from a call to ConnectPlacesShortcut.
 */
 func (recv *FileChooserWidget) DisconnectPlacesShortcut(connectionID int) {
+	signalFileChooserWidgetPlacesShortcutLock.Lock()
+	defer signalFileChooserWidgetPlacesShortcutLock.Unlock()
+
 	_, exists := signalFileChooserWidgetPlacesShortcutMap[connectionID]
 	if !exists {
 		return
@@ -9406,6 +9550,9 @@ DisconnectQuickBookmark disconnects a callback from the 'quick-bookmark' signal 
 The connectionID should be a value returned from a call to ConnectQuickBookmark.
 */
 func (recv *FileChooserWidget) DisconnectQuickBookmark(connectionID int) {
+	signalFileChooserWidgetQuickBookmarkLock.Lock()
+	defer signalFileChooserWidgetQuickBookmarkLock.Unlock()
+
 	_, exists := signalFileChooserWidgetQuickBookmarkMap[connectionID]
 	if !exists {
 		return
@@ -9451,6 +9598,9 @@ DisconnectRecentShortcut disconnects a callback from the 'recent-shortcut' signa
 The connectionID should be a value returned from a call to ConnectRecentShortcut.
 */
 func (recv *FileChooserWidget) DisconnectRecentShortcut(connectionID int) {
+	signalFileChooserWidgetRecentShortcutLock.Lock()
+	defer signalFileChooserWidgetRecentShortcutLock.Unlock()
+
 	_, exists := signalFileChooserWidgetRecentShortcutMap[connectionID]
 	if !exists {
 		return
@@ -9496,6 +9646,9 @@ DisconnectSearchShortcut disconnects a callback from the 'search-shortcut' signa
 The connectionID should be a value returned from a call to ConnectSearchShortcut.
 */
 func (recv *FileChooserWidget) DisconnectSearchShortcut(connectionID int) {
+	signalFileChooserWidgetSearchShortcutLock.Lock()
+	defer signalFileChooserWidgetSearchShortcutLock.Unlock()
+
 	_, exists := signalFileChooserWidgetSearchShortcutMap[connectionID]
 	if !exists {
 		return
@@ -9541,6 +9694,9 @@ DisconnectShowHidden disconnects a callback from the 'show-hidden' signal for th
 The connectionID should be a value returned from a call to ConnectShowHidden.
 */
 func (recv *FileChooserWidget) DisconnectShowHidden(connectionID int) {
+	signalFileChooserWidgetShowHiddenLock.Lock()
+	defer signalFileChooserWidgetShowHiddenLock.Unlock()
+
 	_, exists := signalFileChooserWidgetShowHiddenMap[connectionID]
 	if !exists {
 		return
@@ -9586,6 +9742,9 @@ DisconnectUpFolder disconnects a callback from the 'up-folder' signal for the Fi
 The connectionID should be a value returned from a call to ConnectUpFolder.
 */
 func (recv *FileChooserWidget) DisconnectUpFolder(connectionID int) {
+	signalFileChooserWidgetUpFolderLock.Lock()
+	defer signalFileChooserWidgetUpFolderLock.Unlock()
+
 	_, exists := signalFileChooserWidgetUpFolderMap[connectionID]
 	if !exists {
 		return
@@ -9801,6 +9960,9 @@ DisconnectActivateCursorChild disconnects a callback from the 'activate-cursor-c
 The connectionID should be a value returned from a call to ConnectActivateCursorChild.
 */
 func (recv *FlowBox) DisconnectActivateCursorChild(connectionID int) {
+	signalFlowBoxActivateCursorChildLock.Lock()
+	defer signalFlowBoxActivateCursorChildLock.Unlock()
+
 	_, exists := signalFlowBoxActivateCursorChildMap[connectionID]
 	if !exists {
 		return
@@ -9846,6 +10008,9 @@ DisconnectChildActivated disconnects a callback from the 'child-activated' signa
 The connectionID should be a value returned from a call to ConnectChildActivated.
 */
 func (recv *FlowBox) DisconnectChildActivated(connectionID int) {
+	signalFlowBoxChildActivatedLock.Lock()
+	defer signalFlowBoxChildActivatedLock.Unlock()
+
 	_, exists := signalFlowBoxChildActivatedMap[connectionID]
 	if !exists {
 		return
@@ -9891,6 +10056,9 @@ DisconnectMoveCursor disconnects a callback from the 'move-cursor' signal for th
 The connectionID should be a value returned from a call to ConnectMoveCursor.
 */
 func (recv *FlowBox) DisconnectMoveCursor(connectionID int) {
+	signalFlowBoxMoveCursorLock.Lock()
+	defer signalFlowBoxMoveCursorLock.Unlock()
+
 	_, exists := signalFlowBoxMoveCursorMap[connectionID]
 	if !exists {
 		return
@@ -9936,6 +10104,9 @@ DisconnectSelectAll disconnects a callback from the 'select-all' signal for the 
 The connectionID should be a value returned from a call to ConnectSelectAll.
 */
 func (recv *FlowBox) DisconnectSelectAll(connectionID int) {
+	signalFlowBoxSelectAllLock.Lock()
+	defer signalFlowBoxSelectAllLock.Unlock()
+
 	_, exists := signalFlowBoxSelectAllMap[connectionID]
 	if !exists {
 		return
@@ -9981,6 +10152,9 @@ DisconnectSelectedChildrenChanged disconnects a callback from the 'selected-chil
 The connectionID should be a value returned from a call to ConnectSelectedChildrenChanged.
 */
 func (recv *FlowBox) DisconnectSelectedChildrenChanged(connectionID int) {
+	signalFlowBoxSelectedChildrenChangedLock.Lock()
+	defer signalFlowBoxSelectedChildrenChangedLock.Unlock()
+
 	_, exists := signalFlowBoxSelectedChildrenChangedMap[connectionID]
 	if !exists {
 		return
@@ -10026,6 +10200,9 @@ DisconnectToggleCursorChild disconnects a callback from the 'toggle-cursor-child
 The connectionID should be a value returned from a call to ConnectToggleCursorChild.
 */
 func (recv *FlowBox) DisconnectToggleCursorChild(connectionID int) {
+	signalFlowBoxToggleCursorChildLock.Lock()
+	defer signalFlowBoxToggleCursorChildLock.Unlock()
+
 	_, exists := signalFlowBoxToggleCursorChildMap[connectionID]
 	if !exists {
 		return
@@ -10071,6 +10248,9 @@ DisconnectUnselectAll disconnects a callback from the 'unselect-all' signal for 
 The connectionID should be a value returned from a call to ConnectUnselectAll.
 */
 func (recv *FlowBox) DisconnectUnselectAll(connectionID int) {
+	signalFlowBoxUnselectAllLock.Lock()
+	defer signalFlowBoxUnselectAllLock.Unlock()
+
 	_, exists := signalFlowBoxUnselectAllMap[connectionID]
 	if !exists {
 		return
@@ -10218,6 +10398,9 @@ DisconnectActivate disconnects a callback from the 'activate' signal for the Flo
 The connectionID should be a value returned from a call to ConnectActivate.
 */
 func (recv *FlowBoxChild) DisconnectActivate(connectionID int) {
+	signalFlowBoxChildActivateLock.Lock()
+	defer signalFlowBoxChildActivateLock.Unlock()
+
 	_, exists := signalFlowBoxChildActivateMap[connectionID]
 	if !exists {
 		return
@@ -11696,6 +11879,9 @@ DisconnectChanged disconnects a callback from the 'changed' signal for the HSV.
 The connectionID should be a value returned from a call to ConnectChanged.
 */
 func (recv *HSV) DisconnectChanged(connectionID int) {
+	signalHSVChangedLock.Lock()
+	defer signalHSVChangedLock.Unlock()
+
 	_, exists := signalHSVChangedMap[connectionID]
 	if !exists {
 		return
@@ -11741,6 +11927,9 @@ DisconnectMove disconnects a callback from the 'move' signal for the HSV.
 The connectionID should be a value returned from a call to ConnectMove.
 */
 func (recv *HSV) DisconnectMove(connectionID int) {
+	signalHSVMoveLock.Lock()
+	defer signalHSVMoveLock.Unlock()
+
 	_, exists := signalHSVMoveMap[connectionID]
 	if !exists {
 		return
@@ -12036,6 +12225,9 @@ DisconnectChildAttached disconnects a callback from the 'child-attached' signal 
 The connectionID should be a value returned from a call to ConnectChildAttached.
 */
 func (recv *HandleBox) DisconnectChildAttached(connectionID int) {
+	signalHandleBoxChildAttachedLock.Lock()
+	defer signalHandleBoxChildAttachedLock.Unlock()
+
 	_, exists := signalHandleBoxChildAttachedMap[connectionID]
 	if !exists {
 		return
@@ -12081,6 +12273,9 @@ DisconnectChildDetached disconnects a callback from the 'child-detached' signal 
 The connectionID should be a value returned from a call to ConnectChildDetached.
 */
 func (recv *HandleBox) DisconnectChildDetached(connectionID int) {
+	signalHandleBoxChildDetachedLock.Lock()
+	defer signalHandleBoxChildDetachedLock.Unlock()
+
 	_, exists := signalHandleBoxChildDetachedMap[connectionID]
 	if !exists {
 		return
@@ -12266,6 +12461,9 @@ DisconnectCommit disconnects a callback from the 'commit' signal for the IMConte
 The connectionID should be a value returned from a call to ConnectCommit.
 */
 func (recv *IMContext) DisconnectCommit(connectionID int) {
+	signalIMContextCommitLock.Lock()
+	defer signalIMContextCommitLock.Unlock()
+
 	_, exists := signalIMContextCommitMap[connectionID]
 	if !exists {
 		return
@@ -12311,6 +12509,9 @@ DisconnectDeleteSurrounding disconnects a callback from the 'delete-surrounding'
 The connectionID should be a value returned from a call to ConnectDeleteSurrounding.
 */
 func (recv *IMContext) DisconnectDeleteSurrounding(connectionID int) {
+	signalIMContextDeleteSurroundingLock.Lock()
+	defer signalIMContextDeleteSurroundingLock.Unlock()
+
 	_, exists := signalIMContextDeleteSurroundingMap[connectionID]
 	if !exists {
 		return
@@ -12356,6 +12557,9 @@ DisconnectPreeditChanged disconnects a callback from the 'preedit-changed' signa
 The connectionID should be a value returned from a call to ConnectPreeditChanged.
 */
 func (recv *IMContext) DisconnectPreeditChanged(connectionID int) {
+	signalIMContextPreeditChangedLock.Lock()
+	defer signalIMContextPreeditChangedLock.Unlock()
+
 	_, exists := signalIMContextPreeditChangedMap[connectionID]
 	if !exists {
 		return
@@ -12401,6 +12605,9 @@ DisconnectPreeditEnd disconnects a callback from the 'preedit-end' signal for th
 The connectionID should be a value returned from a call to ConnectPreeditEnd.
 */
 func (recv *IMContext) DisconnectPreeditEnd(connectionID int) {
+	signalIMContextPreeditEndLock.Lock()
+	defer signalIMContextPreeditEndLock.Unlock()
+
 	_, exists := signalIMContextPreeditEndMap[connectionID]
 	if !exists {
 		return
@@ -12446,6 +12653,9 @@ DisconnectPreeditStart disconnects a callback from the 'preedit-start' signal fo
 The connectionID should be a value returned from a call to ConnectPreeditStart.
 */
 func (recv *IMContext) DisconnectPreeditStart(connectionID int) {
+	signalIMContextPreeditStartLock.Lock()
+	defer signalIMContextPreeditStartLock.Unlock()
+
 	_, exists := signalIMContextPreeditStartMap[connectionID]
 	if !exists {
 		return
@@ -12491,6 +12701,9 @@ DisconnectRetrieveSurrounding disconnects a callback from the 'retrieve-surround
 The connectionID should be a value returned from a call to ConnectRetrieveSurrounding.
 */
 func (recv *IMContext) DisconnectRetrieveSurrounding(connectionID int) {
+	signalIMContextRetrieveSurroundingLock.Lock()
+	defer signalIMContextRetrieveSurroundingLock.Unlock()
+
 	_, exists := signalIMContextRetrieveSurroundingMap[connectionID]
 	if !exists {
 		return
@@ -12885,6 +13098,9 @@ DisconnectChanged disconnects a callback from the 'changed' signal for the IconT
 The connectionID should be a value returned from a call to ConnectChanged.
 */
 func (recv *IconTheme) DisconnectChanged(connectionID int) {
+	signalIconThemeChangedLock.Lock()
+	defer signalIconThemeChangedLock.Unlock()
+
 	_, exists := signalIconThemeChangedMap[connectionID]
 	if !exists {
 		return
@@ -12979,6 +13195,9 @@ DisconnectActivateCursorItem disconnects a callback from the 'activate-cursor-it
 The connectionID should be a value returned from a call to ConnectActivateCursorItem.
 */
 func (recv *IconView) DisconnectActivateCursorItem(connectionID int) {
+	signalIconViewActivateCursorItemLock.Lock()
+	defer signalIconViewActivateCursorItemLock.Unlock()
+
 	_, exists := signalIconViewActivateCursorItemMap[connectionID]
 	if !exists {
 		return
@@ -13024,6 +13243,9 @@ DisconnectItemActivated disconnects a callback from the 'item-activated' signal 
 The connectionID should be a value returned from a call to ConnectItemActivated.
 */
 func (recv *IconView) DisconnectItemActivated(connectionID int) {
+	signalIconViewItemActivatedLock.Lock()
+	defer signalIconViewItemActivatedLock.Unlock()
+
 	_, exists := signalIconViewItemActivatedMap[connectionID]
 	if !exists {
 		return
@@ -13069,6 +13291,9 @@ DisconnectMoveCursor disconnects a callback from the 'move-cursor' signal for th
 The connectionID should be a value returned from a call to ConnectMoveCursor.
 */
 func (recv *IconView) DisconnectMoveCursor(connectionID int) {
+	signalIconViewMoveCursorLock.Lock()
+	defer signalIconViewMoveCursorLock.Unlock()
+
 	_, exists := signalIconViewMoveCursorMap[connectionID]
 	if !exists {
 		return
@@ -13114,6 +13339,9 @@ DisconnectSelectAll disconnects a callback from the 'select-all' signal for the 
 The connectionID should be a value returned from a call to ConnectSelectAll.
 */
 func (recv *IconView) DisconnectSelectAll(connectionID int) {
+	signalIconViewSelectAllLock.Lock()
+	defer signalIconViewSelectAllLock.Unlock()
+
 	_, exists := signalIconViewSelectAllMap[connectionID]
 	if !exists {
 		return
@@ -13159,6 +13387,9 @@ DisconnectSelectCursorItem disconnects a callback from the 'select-cursor-item' 
 The connectionID should be a value returned from a call to ConnectSelectCursorItem.
 */
 func (recv *IconView) DisconnectSelectCursorItem(connectionID int) {
+	signalIconViewSelectCursorItemLock.Lock()
+	defer signalIconViewSelectCursorItemLock.Unlock()
+
 	_, exists := signalIconViewSelectCursorItemMap[connectionID]
 	if !exists {
 		return
@@ -13204,6 +13435,9 @@ DisconnectSelectionChanged disconnects a callback from the 'selection-changed' s
 The connectionID should be a value returned from a call to ConnectSelectionChanged.
 */
 func (recv *IconView) DisconnectSelectionChanged(connectionID int) {
+	signalIconViewSelectionChangedLock.Lock()
+	defer signalIconViewSelectionChangedLock.Unlock()
+
 	_, exists := signalIconViewSelectionChangedMap[connectionID]
 	if !exists {
 		return
@@ -13249,6 +13483,9 @@ DisconnectToggleCursorItem disconnects a callback from the 'toggle-cursor-item' 
 The connectionID should be a value returned from a call to ConnectToggleCursorItem.
 */
 func (recv *IconView) DisconnectToggleCursorItem(connectionID int) {
+	signalIconViewToggleCursorItemLock.Lock()
+	defer signalIconViewToggleCursorItemLock.Unlock()
+
 	_, exists := signalIconViewToggleCursorItemMap[connectionID]
 	if !exists {
 		return
@@ -13294,6 +13531,9 @@ DisconnectUnselectAll disconnects a callback from the 'unselect-all' signal for 
 The connectionID should be a value returned from a call to ConnectUnselectAll.
 */
 func (recv *IconView) DisconnectUnselectAll(connectionID int) {
+	signalIconViewUnselectAllLock.Lock()
+	defer signalIconViewUnselectAllLock.Unlock()
+
 	_, exists := signalIconViewUnselectAllMap[connectionID]
 	if !exists {
 		return
@@ -13925,6 +14165,9 @@ DisconnectCopyClipboard disconnects a callback from the 'copy-clipboard' signal 
 The connectionID should be a value returned from a call to ConnectCopyClipboard.
 */
 func (recv *Label) DisconnectCopyClipboard(connectionID int) {
+	signalLabelCopyClipboardLock.Lock()
+	defer signalLabelCopyClipboardLock.Unlock()
+
 	_, exists := signalLabelCopyClipboardMap[connectionID]
 	if !exists {
 		return
@@ -13970,6 +14213,9 @@ DisconnectMoveCursor disconnects a callback from the 'move-cursor' signal for th
 The connectionID should be a value returned from a call to ConnectMoveCursor.
 */
 func (recv *Label) DisconnectMoveCursor(connectionID int) {
+	signalLabelMoveCursorLock.Lock()
+	defer signalLabelMoveCursorLock.Unlock()
+
 	_, exists := signalLabelMoveCursorMap[connectionID]
 	if !exists {
 		return
@@ -14015,6 +14261,9 @@ DisconnectPopulatePopup disconnects a callback from the 'populate-popup' signal 
 The connectionID should be a value returned from a call to ConnectPopulatePopup.
 */
 func (recv *Label) DisconnectPopulatePopup(connectionID int) {
+	signalLabelPopulatePopupLock.Lock()
+	defer signalLabelPopulatePopupLock.Unlock()
+
 	_, exists := signalLabelPopulatePopupMap[connectionID]
 	if !exists {
 		return
@@ -14677,6 +14926,9 @@ DisconnectActivateLink disconnects a callback from the 'activate-link' signal fo
 The connectionID should be a value returned from a call to ConnectActivateLink.
 */
 func (recv *LinkButton) DisconnectActivateLink(connectionID int) {
+	signalLinkButtonActivateLinkLock.Lock()
+	defer signalLinkButtonActivateLinkLock.Unlock()
+
 	_, exists := signalLinkButtonActivateLinkMap[connectionID]
 	if !exists {
 		return
@@ -14824,6 +15076,9 @@ DisconnectActivateCursorRow disconnects a callback from the 'activate-cursor-row
 The connectionID should be a value returned from a call to ConnectActivateCursorRow.
 */
 func (recv *ListBox) DisconnectActivateCursorRow(connectionID int) {
+	signalListBoxActivateCursorRowLock.Lock()
+	defer signalListBoxActivateCursorRowLock.Unlock()
+
 	_, exists := signalListBoxActivateCursorRowMap[connectionID]
 	if !exists {
 		return
@@ -14869,6 +15124,9 @@ DisconnectMoveCursor disconnects a callback from the 'move-cursor' signal for th
 The connectionID should be a value returned from a call to ConnectMoveCursor.
 */
 func (recv *ListBox) DisconnectMoveCursor(connectionID int) {
+	signalListBoxMoveCursorLock.Lock()
+	defer signalListBoxMoveCursorLock.Unlock()
+
 	_, exists := signalListBoxMoveCursorMap[connectionID]
 	if !exists {
 		return
@@ -14914,6 +15172,9 @@ DisconnectToggleCursorRow disconnects a callback from the 'toggle-cursor-row' si
 The connectionID should be a value returned from a call to ConnectToggleCursorRow.
 */
 func (recv *ListBox) DisconnectToggleCursorRow(connectionID int) {
+	signalListBoxToggleCursorRowLock.Lock()
+	defer signalListBoxToggleCursorRowLock.Unlock()
+
 	_, exists := signalListBoxToggleCursorRowMap[connectionID]
 	if !exists {
 		return
@@ -15411,6 +15672,9 @@ DisconnectMoveScroll disconnects a callback from the 'move-scroll' signal for th
 The connectionID should be a value returned from a call to ConnectMoveScroll.
 */
 func (recv *Menu) DisconnectMoveScroll(connectionID int) {
+	signalMenuMoveScrollLock.Lock()
+	defer signalMenuMoveScrollLock.Unlock()
+
 	_, exists := signalMenuMoveScrollMap[connectionID]
 	if !exists {
 		return
@@ -15881,6 +16145,9 @@ DisconnectActivate disconnects a callback from the 'activate' signal for the Men
 The connectionID should be a value returned from a call to ConnectActivate.
 */
 func (recv *MenuItem) DisconnectActivate(connectionID int) {
+	signalMenuItemActivateLock.Lock()
+	defer signalMenuItemActivateLock.Unlock()
+
 	_, exists := signalMenuItemActivateMap[connectionID]
 	if !exists {
 		return
@@ -15926,6 +16193,9 @@ DisconnectActivateItem disconnects a callback from the 'activate-item' signal fo
 The connectionID should be a value returned from a call to ConnectActivateItem.
 */
 func (recv *MenuItem) DisconnectActivateItem(connectionID int) {
+	signalMenuItemActivateItemLock.Lock()
+	defer signalMenuItemActivateItemLock.Unlock()
+
 	_, exists := signalMenuItemActivateItemMap[connectionID]
 	if !exists {
 		return
@@ -15971,6 +16241,9 @@ DisconnectDeselect disconnects a callback from the 'deselect' signal for the Men
 The connectionID should be a value returned from a call to ConnectDeselect.
 */
 func (recv *MenuItem) DisconnectDeselect(connectionID int) {
+	signalMenuItemDeselectLock.Lock()
+	defer signalMenuItemDeselectLock.Unlock()
+
 	_, exists := signalMenuItemDeselectMap[connectionID]
 	if !exists {
 		return
@@ -16016,6 +16289,9 @@ DisconnectSelect disconnects a callback from the 'select' signal for the MenuIte
 The connectionID should be a value returned from a call to ConnectSelect.
 */
 func (recv *MenuItem) DisconnectSelect(connectionID int) {
+	signalMenuItemSelectLock.Lock()
+	defer signalMenuItemSelectLock.Unlock()
+
 	_, exists := signalMenuItemSelectMap[connectionID]
 	if !exists {
 		return
@@ -16061,6 +16337,9 @@ DisconnectToggleSizeAllocate disconnects a callback from the 'toggle-size-alloca
 The connectionID should be a value returned from a call to ConnectToggleSizeAllocate.
 */
 func (recv *MenuItem) DisconnectToggleSizeAllocate(connectionID int) {
+	signalMenuItemToggleSizeAllocateLock.Lock()
+	defer signalMenuItemToggleSizeAllocateLock.Unlock()
+
 	_, exists := signalMenuItemToggleSizeAllocateMap[connectionID]
 	if !exists {
 		return
@@ -16106,6 +16385,9 @@ DisconnectToggleSizeRequest disconnects a callback from the 'toggle-size-request
 The connectionID should be a value returned from a call to ConnectToggleSizeRequest.
 */
 func (recv *MenuItem) DisconnectToggleSizeRequest(connectionID int) {
+	signalMenuItemToggleSizeRequestLock.Lock()
+	defer signalMenuItemToggleSizeRequestLock.Unlock()
+
 	_, exists := signalMenuItemToggleSizeRequestMap[connectionID]
 	if !exists {
 		return
@@ -16363,6 +16645,9 @@ DisconnectActivateCurrent disconnects a callback from the 'activate-current' sig
 The connectionID should be a value returned from a call to ConnectActivateCurrent.
 */
 func (recv *MenuShell) DisconnectActivateCurrent(connectionID int) {
+	signalMenuShellActivateCurrentLock.Lock()
+	defer signalMenuShellActivateCurrentLock.Unlock()
+
 	_, exists := signalMenuShellActivateCurrentMap[connectionID]
 	if !exists {
 		return
@@ -16408,6 +16693,9 @@ DisconnectCancel disconnects a callback from the 'cancel' signal for the MenuShe
 The connectionID should be a value returned from a call to ConnectCancel.
 */
 func (recv *MenuShell) DisconnectCancel(connectionID int) {
+	signalMenuShellCancelLock.Lock()
+	defer signalMenuShellCancelLock.Unlock()
+
 	_, exists := signalMenuShellCancelMap[connectionID]
 	if !exists {
 		return
@@ -16453,6 +16741,9 @@ DisconnectCycleFocus disconnects a callback from the 'cycle-focus' signal for th
 The connectionID should be a value returned from a call to ConnectCycleFocus.
 */
 func (recv *MenuShell) DisconnectCycleFocus(connectionID int) {
+	signalMenuShellCycleFocusLock.Lock()
+	defer signalMenuShellCycleFocusLock.Unlock()
+
 	_, exists := signalMenuShellCycleFocusMap[connectionID]
 	if !exists {
 		return
@@ -16498,6 +16789,9 @@ DisconnectDeactivate disconnects a callback from the 'deactivate' signal for the
 The connectionID should be a value returned from a call to ConnectDeactivate.
 */
 func (recv *MenuShell) DisconnectDeactivate(connectionID int) {
+	signalMenuShellDeactivateLock.Lock()
+	defer signalMenuShellDeactivateLock.Unlock()
+
 	_, exists := signalMenuShellDeactivateMap[connectionID]
 	if !exists {
 		return
@@ -16543,6 +16837,9 @@ DisconnectMoveCurrent disconnects a callback from the 'move-current' signal for 
 The connectionID should be a value returned from a call to ConnectMoveCurrent.
 */
 func (recv *MenuShell) DisconnectMoveCurrent(connectionID int) {
+	signalMenuShellMoveCurrentLock.Lock()
+	defer signalMenuShellMoveCurrentLock.Unlock()
+
 	_, exists := signalMenuShellMoveCurrentMap[connectionID]
 	if !exists {
 		return
@@ -16588,6 +16885,9 @@ DisconnectSelectionDone disconnects a callback from the 'selection-done' signal 
 The connectionID should be a value returned from a call to ConnectSelectionDone.
 */
 func (recv *MenuShell) DisconnectSelectionDone(connectionID int) {
+	signalMenuShellSelectionDoneLock.Lock()
+	defer signalMenuShellSelectionDoneLock.Unlock()
+
 	_, exists := signalMenuShellSelectionDoneMap[connectionID]
 	if !exists {
 		return
@@ -16810,6 +17110,9 @@ DisconnectShowMenu disconnects a callback from the 'show-menu' signal for the Me
 The connectionID should be a value returned from a call to ConnectShowMenu.
 */
 func (recv *MenuToolButton) DisconnectShowMenu(connectionID int) {
+	signalMenuToolButtonShowMenuLock.Lock()
+	defer signalMenuToolButtonShowMenuLock.Unlock()
+
 	_, exists := signalMenuToolButtonShowMenuMap[connectionID]
 	if !exists {
 		return
@@ -17164,6 +17467,9 @@ DisconnectChangeCurrentPage disconnects a callback from the 'change-current-page
 The connectionID should be a value returned from a call to ConnectChangeCurrentPage.
 */
 func (recv *Notebook) DisconnectChangeCurrentPage(connectionID int) {
+	signalNotebookChangeCurrentPageLock.Lock()
+	defer signalNotebookChangeCurrentPageLock.Unlock()
+
 	_, exists := signalNotebookChangeCurrentPageMap[connectionID]
 	if !exists {
 		return
@@ -17211,6 +17517,9 @@ DisconnectFocusTab disconnects a callback from the 'focus-tab' signal for the No
 The connectionID should be a value returned from a call to ConnectFocusTab.
 */
 func (recv *Notebook) DisconnectFocusTab(connectionID int) {
+	signalNotebookFocusTabLock.Lock()
+	defer signalNotebookFocusTabLock.Unlock()
+
 	_, exists := signalNotebookFocusTabMap[connectionID]
 	if !exists {
 		return
@@ -17256,6 +17565,9 @@ DisconnectMoveFocusOut disconnects a callback from the 'move-focus-out' signal f
 The connectionID should be a value returned from a call to ConnectMoveFocusOut.
 */
 func (recv *Notebook) DisconnectMoveFocusOut(connectionID int) {
+	signalNotebookMoveFocusOutLock.Lock()
+	defer signalNotebookMoveFocusOutLock.Unlock()
+
 	_, exists := signalNotebookMoveFocusOutMap[connectionID]
 	if !exists {
 		return
@@ -17301,6 +17613,9 @@ DisconnectReorderTab disconnects a callback from the 'reorder-tab' signal for th
 The connectionID should be a value returned from a call to ConnectReorderTab.
 */
 func (recv *Notebook) DisconnectReorderTab(connectionID int) {
+	signalNotebookReorderTabLock.Lock()
+	defer signalNotebookReorderTabLock.Unlock()
+
 	_, exists := signalNotebookReorderTabMap[connectionID]
 	if !exists {
 		return
@@ -17346,6 +17661,9 @@ DisconnectSelectPage disconnects a callback from the 'select-page' signal for th
 The connectionID should be a value returned from a call to ConnectSelectPage.
 */
 func (recv *Notebook) DisconnectSelectPage(connectionID int) {
+	signalNotebookSelectPageLock.Lock()
+	defer signalNotebookSelectPageLock.Unlock()
+
 	_, exists := signalNotebookSelectPageMap[connectionID]
 	if !exists {
 		return
@@ -17391,6 +17709,9 @@ DisconnectSwitchPage disconnects a callback from the 'switch-page' signal for th
 The connectionID should be a value returned from a call to ConnectSwitchPage.
 */
 func (recv *Notebook) DisconnectSwitchPage(connectionID int) {
+	signalNotebookSwitchPageLock.Lock()
+	defer signalNotebookSwitchPageLock.Unlock()
+
 	_, exists := signalNotebookSwitchPageMap[connectionID]
 	if !exists {
 		return
@@ -18287,6 +18608,9 @@ DisconnectShowConnectToServer disconnects a callback from the 'show-connect-to-s
 The connectionID should be a value returned from a call to ConnectShowConnectToServer.
 */
 func (recv *PlacesSidebar) DisconnectShowConnectToServer(connectionID int) {
+	signalPlacesSidebarShowConnectToServerLock.Lock()
+	defer signalPlacesSidebarShowConnectToServerLock.Unlock()
+
 	_, exists := signalPlacesSidebarShowConnectToServerMap[connectionID]
 	if !exists {
 		return
@@ -18396,6 +18720,9 @@ DisconnectClosed disconnects a callback from the 'closed' signal for the Popover
 The connectionID should be a value returned from a call to ConnectClosed.
 */
 func (recv *Popover) DisconnectClosed(connectionID int) {
+	signalPopoverClosedLock.Lock()
+	defer signalPopoverClosedLock.Unlock()
+
 	_, exists := signalPopoverClosedMap[connectionID]
 	if !exists {
 		return
@@ -19158,6 +19485,9 @@ DisconnectGroupChanged disconnects a callback from the 'group-changed' signal fo
 The connectionID should be a value returned from a call to ConnectGroupChanged.
 */
 func (recv *RadioMenuItem) DisconnectGroupChanged(connectionID int) {
+	signalRadioMenuItemGroupChangedLock.Lock()
+	defer signalRadioMenuItemGroupChangedLock.Unlock()
+
 	_, exists := signalRadioMenuItemGroupChangedMap[connectionID]
 	if !exists {
 		return
@@ -19427,6 +19757,9 @@ DisconnectAdjustBounds disconnects a callback from the 'adjust-bounds' signal fo
 The connectionID should be a value returned from a call to ConnectAdjustBounds.
 */
 func (recv *Range) DisconnectAdjustBounds(connectionID int) {
+	signalRangeAdjustBoundsLock.Lock()
+	defer signalRangeAdjustBoundsLock.Unlock()
+
 	_, exists := signalRangeAdjustBoundsMap[connectionID]
 	if !exists {
 		return
@@ -19472,6 +19805,9 @@ DisconnectMoveSlider disconnects a callback from the 'move-slider' signal for th
 The connectionID should be a value returned from a call to ConnectMoveSlider.
 */
 func (recv *Range) DisconnectMoveSlider(connectionID int) {
+	signalRangeMoveSliderLock.Lock()
+	defer signalRangeMoveSliderLock.Unlock()
+
 	_, exists := signalRangeMoveSliderMap[connectionID]
 	if !exists {
 		return
@@ -19517,6 +19853,9 @@ DisconnectValueChanged disconnects a callback from the 'value-changed' signal fo
 The connectionID should be a value returned from a call to ConnectValueChanged.
 */
 func (recv *Range) DisconnectValueChanged(connectionID int) {
+	signalRangeValueChangedLock.Lock()
+	defer signalRangeValueChangedLock.Unlock()
+
 	_, exists := signalRangeValueChangedMap[connectionID]
 	if !exists {
 		return
@@ -20487,6 +20826,9 @@ DisconnectMoveFocusOut disconnects a callback from the 'move-focus-out' signal f
 The connectionID should be a value returned from a call to ConnectMoveFocusOut.
 */
 func (recv *ScrolledWindow) DisconnectMoveFocusOut(connectionID int) {
+	signalScrolledWindowMoveFocusOutLock.Lock()
+	defer signalScrolledWindowMoveFocusOutLock.Unlock()
+
 	_, exists := signalScrolledWindowMoveFocusOutMap[connectionID]
 	if !exists {
 		return
@@ -20532,6 +20874,9 @@ DisconnectScrollChild disconnects a callback from the 'scroll-child' signal for 
 The connectionID should be a value returned from a call to ConnectScrollChild.
 */
 func (recv *ScrolledWindow) DisconnectScrollChild(connectionID int) {
+	signalScrolledWindowScrollChildLock.Lock()
+	defer signalScrolledWindowScrollChildLock.Unlock()
+
 	_, exists := signalScrolledWindowScrollChildMap[connectionID]
 	if !exists {
 		return
@@ -21220,6 +21565,9 @@ DisconnectChangeValue disconnects a callback from the 'change-value' signal for 
 The connectionID should be a value returned from a call to ConnectChangeValue.
 */
 func (recv *SpinButton) DisconnectChangeValue(connectionID int) {
+	signalSpinButtonChangeValueLock.Lock()
+	defer signalSpinButtonChangeValueLock.Unlock()
+
 	_, exists := signalSpinButtonChangeValueMap[connectionID]
 	if !exists {
 		return
@@ -21267,6 +21615,9 @@ DisconnectOutput disconnects a callback from the 'output' signal for the SpinBut
 The connectionID should be a value returned from a call to ConnectOutput.
 */
 func (recv *SpinButton) DisconnectOutput(connectionID int) {
+	signalSpinButtonOutputLock.Lock()
+	defer signalSpinButtonOutputLock.Unlock()
+
 	_, exists := signalSpinButtonOutputMap[connectionID]
 	if !exists {
 		return
@@ -21312,6 +21663,9 @@ DisconnectValueChanged disconnects a callback from the 'value-changed' signal fo
 The connectionID should be a value returned from a call to ConnectValueChanged.
 */
 func (recv *SpinButton) DisconnectValueChanged(connectionID int) {
+	signalSpinButtonValueChangedLock.Lock()
+	defer signalSpinButtonValueChangedLock.Unlock()
+
 	_, exists := signalSpinButtonValueChangedMap[connectionID]
 	if !exists {
 		return
@@ -21981,6 +22335,9 @@ DisconnectTextPopped disconnects a callback from the 'text-popped' signal for th
 The connectionID should be a value returned from a call to ConnectTextPopped.
 */
 func (recv *Statusbar) DisconnectTextPopped(connectionID int) {
+	signalStatusbarTextPoppedLock.Lock()
+	defer signalStatusbarTextPoppedLock.Unlock()
+
 	_, exists := signalStatusbarTextPoppedMap[connectionID]
 	if !exists {
 		return
@@ -22026,6 +22383,9 @@ DisconnectTextPushed disconnects a callback from the 'text-pushed' signal for th
 The connectionID should be a value returned from a call to ConnectTextPushed.
 */
 func (recv *Statusbar) DisconnectTextPushed(connectionID int) {
+	signalStatusbarTextPushedLock.Lock()
+	defer signalStatusbarTextPushedLock.Unlock()
+
 	_, exists := signalStatusbarTextPushedMap[connectionID]
 	if !exists {
 		return
@@ -22504,6 +22864,9 @@ DisconnectActivate disconnects a callback from the 'activate' signal for the Swi
 The connectionID should be a value returned from a call to ConnectActivate.
 */
 func (recv *Switch) DisconnectActivate(connectionID int) {
+	signalSwitchActivateLock.Lock()
+	defer signalSwitchActivateLock.Unlock()
+
 	_, exists := signalSwitchActivateMap[connectionID]
 	if !exists {
 		return
@@ -22905,6 +23268,9 @@ DisconnectApplyTag disconnects a callback from the 'apply-tag' signal for the Te
 The connectionID should be a value returned from a call to ConnectApplyTag.
 */
 func (recv *TextBuffer) DisconnectApplyTag(connectionID int) {
+	signalTextBufferApplyTagLock.Lock()
+	defer signalTextBufferApplyTagLock.Unlock()
+
 	_, exists := signalTextBufferApplyTagMap[connectionID]
 	if !exists {
 		return
@@ -22950,6 +23316,9 @@ DisconnectBeginUserAction disconnects a callback from the 'begin-user-action' si
 The connectionID should be a value returned from a call to ConnectBeginUserAction.
 */
 func (recv *TextBuffer) DisconnectBeginUserAction(connectionID int) {
+	signalTextBufferBeginUserActionLock.Lock()
+	defer signalTextBufferBeginUserActionLock.Unlock()
+
 	_, exists := signalTextBufferBeginUserActionMap[connectionID]
 	if !exists {
 		return
@@ -22995,6 +23364,9 @@ DisconnectChanged disconnects a callback from the 'changed' signal for the TextB
 The connectionID should be a value returned from a call to ConnectChanged.
 */
 func (recv *TextBuffer) DisconnectChanged(connectionID int) {
+	signalTextBufferChangedLock.Lock()
+	defer signalTextBufferChangedLock.Unlock()
+
 	_, exists := signalTextBufferChangedMap[connectionID]
 	if !exists {
 		return
@@ -23040,6 +23412,9 @@ DisconnectDeleteRange disconnects a callback from the 'delete-range' signal for 
 The connectionID should be a value returned from a call to ConnectDeleteRange.
 */
 func (recv *TextBuffer) DisconnectDeleteRange(connectionID int) {
+	signalTextBufferDeleteRangeLock.Lock()
+	defer signalTextBufferDeleteRangeLock.Unlock()
+
 	_, exists := signalTextBufferDeleteRangeMap[connectionID]
 	if !exists {
 		return
@@ -23085,6 +23460,9 @@ DisconnectEndUserAction disconnects a callback from the 'end-user-action' signal
 The connectionID should be a value returned from a call to ConnectEndUserAction.
 */
 func (recv *TextBuffer) DisconnectEndUserAction(connectionID int) {
+	signalTextBufferEndUserActionLock.Lock()
+	defer signalTextBufferEndUserActionLock.Unlock()
+
 	_, exists := signalTextBufferEndUserActionMap[connectionID]
 	if !exists {
 		return
@@ -23130,6 +23508,9 @@ DisconnectInsertChildAnchor disconnects a callback from the 'insert-child-anchor
 The connectionID should be a value returned from a call to ConnectInsertChildAnchor.
 */
 func (recv *TextBuffer) DisconnectInsertChildAnchor(connectionID int) {
+	signalTextBufferInsertChildAnchorLock.Lock()
+	defer signalTextBufferInsertChildAnchorLock.Unlock()
+
 	_, exists := signalTextBufferInsertChildAnchorMap[connectionID]
 	if !exists {
 		return
@@ -23175,6 +23556,9 @@ DisconnectInsertPixbuf disconnects a callback from the 'insert-pixbuf' signal fo
 The connectionID should be a value returned from a call to ConnectInsertPixbuf.
 */
 func (recv *TextBuffer) DisconnectInsertPixbuf(connectionID int) {
+	signalTextBufferInsertPixbufLock.Lock()
+	defer signalTextBufferInsertPixbufLock.Unlock()
+
 	_, exists := signalTextBufferInsertPixbufMap[connectionID]
 	if !exists {
 		return
@@ -23220,6 +23604,9 @@ DisconnectInsertText disconnects a callback from the 'insert-text' signal for th
 The connectionID should be a value returned from a call to ConnectInsertText.
 */
 func (recv *TextBuffer) DisconnectInsertText(connectionID int) {
+	signalTextBufferInsertTextLock.Lock()
+	defer signalTextBufferInsertTextLock.Unlock()
+
 	_, exists := signalTextBufferInsertTextMap[connectionID]
 	if !exists {
 		return
@@ -23265,6 +23652,9 @@ DisconnectMarkDeleted disconnects a callback from the 'mark-deleted' signal for 
 The connectionID should be a value returned from a call to ConnectMarkDeleted.
 */
 func (recv *TextBuffer) DisconnectMarkDeleted(connectionID int) {
+	signalTextBufferMarkDeletedLock.Lock()
+	defer signalTextBufferMarkDeletedLock.Unlock()
+
 	_, exists := signalTextBufferMarkDeletedMap[connectionID]
 	if !exists {
 		return
@@ -23310,6 +23700,9 @@ DisconnectMarkSet disconnects a callback from the 'mark-set' signal for the Text
 The connectionID should be a value returned from a call to ConnectMarkSet.
 */
 func (recv *TextBuffer) DisconnectMarkSet(connectionID int) {
+	signalTextBufferMarkSetLock.Lock()
+	defer signalTextBufferMarkSetLock.Unlock()
+
 	_, exists := signalTextBufferMarkSetMap[connectionID]
 	if !exists {
 		return
@@ -23355,6 +23748,9 @@ DisconnectModifiedChanged disconnects a callback from the 'modified-changed' sig
 The connectionID should be a value returned from a call to ConnectModifiedChanged.
 */
 func (recv *TextBuffer) DisconnectModifiedChanged(connectionID int) {
+	signalTextBufferModifiedChangedLock.Lock()
+	defer signalTextBufferModifiedChangedLock.Unlock()
+
 	_, exists := signalTextBufferModifiedChangedMap[connectionID]
 	if !exists {
 		return
@@ -23400,6 +23796,9 @@ DisconnectRemoveTag disconnects a callback from the 'remove-tag' signal for the 
 The connectionID should be a value returned from a call to ConnectRemoveTag.
 */
 func (recv *TextBuffer) DisconnectRemoveTag(connectionID int) {
+	signalTextBufferRemoveTagLock.Lock()
+	defer signalTextBufferRemoveTagLock.Unlock()
+
 	_, exists := signalTextBufferRemoveTagMap[connectionID]
 	if !exists {
 		return
@@ -24361,6 +24760,9 @@ DisconnectTagAdded disconnects a callback from the 'tag-added' signal for the Te
 The connectionID should be a value returned from a call to ConnectTagAdded.
 */
 func (recv *TextTagTable) DisconnectTagAdded(connectionID int) {
+	signalTextTagTableTagAddedLock.Lock()
+	defer signalTextTagTableTagAddedLock.Unlock()
+
 	_, exists := signalTextTagTableTagAddedMap[connectionID]
 	if !exists {
 		return
@@ -24406,6 +24808,9 @@ DisconnectTagChanged disconnects a callback from the 'tag-changed' signal for th
 The connectionID should be a value returned from a call to ConnectTagChanged.
 */
 func (recv *TextTagTable) DisconnectTagChanged(connectionID int) {
+	signalTextTagTableTagChangedLock.Lock()
+	defer signalTextTagTableTagChangedLock.Unlock()
+
 	_, exists := signalTextTagTableTagChangedMap[connectionID]
 	if !exists {
 		return
@@ -24451,6 +24856,9 @@ DisconnectTagRemoved disconnects a callback from the 'tag-removed' signal for th
 The connectionID should be a value returned from a call to ConnectTagRemoved.
 */
 func (recv *TextTagTable) DisconnectTagRemoved(connectionID int) {
+	signalTextTagTableTagRemovedLock.Lock()
+	defer signalTextTagTableTagRemovedLock.Unlock()
+
 	_, exists := signalTextTagTableTagRemovedMap[connectionID]
 	if !exists {
 		return
@@ -24593,6 +25001,9 @@ DisconnectBackspace disconnects a callback from the 'backspace' signal for the T
 The connectionID should be a value returned from a call to ConnectBackspace.
 */
 func (recv *TextView) DisconnectBackspace(connectionID int) {
+	signalTextViewBackspaceLock.Lock()
+	defer signalTextViewBackspaceLock.Unlock()
+
 	_, exists := signalTextViewBackspaceMap[connectionID]
 	if !exists {
 		return
@@ -24638,6 +25049,9 @@ DisconnectCopyClipboard disconnects a callback from the 'copy-clipboard' signal 
 The connectionID should be a value returned from a call to ConnectCopyClipboard.
 */
 func (recv *TextView) DisconnectCopyClipboard(connectionID int) {
+	signalTextViewCopyClipboardLock.Lock()
+	defer signalTextViewCopyClipboardLock.Unlock()
+
 	_, exists := signalTextViewCopyClipboardMap[connectionID]
 	if !exists {
 		return
@@ -24683,6 +25097,9 @@ DisconnectCutClipboard disconnects a callback from the 'cut-clipboard' signal fo
 The connectionID should be a value returned from a call to ConnectCutClipboard.
 */
 func (recv *TextView) DisconnectCutClipboard(connectionID int) {
+	signalTextViewCutClipboardLock.Lock()
+	defer signalTextViewCutClipboardLock.Unlock()
+
 	_, exists := signalTextViewCutClipboardMap[connectionID]
 	if !exists {
 		return
@@ -24728,6 +25145,9 @@ DisconnectDeleteFromCursor disconnects a callback from the 'delete-from-cursor' 
 The connectionID should be a value returned from a call to ConnectDeleteFromCursor.
 */
 func (recv *TextView) DisconnectDeleteFromCursor(connectionID int) {
+	signalTextViewDeleteFromCursorLock.Lock()
+	defer signalTextViewDeleteFromCursorLock.Unlock()
+
 	_, exists := signalTextViewDeleteFromCursorMap[connectionID]
 	if !exists {
 		return
@@ -24773,6 +25193,9 @@ DisconnectInsertAtCursor disconnects a callback from the 'insert-at-cursor' sign
 The connectionID should be a value returned from a call to ConnectInsertAtCursor.
 */
 func (recv *TextView) DisconnectInsertAtCursor(connectionID int) {
+	signalTextViewInsertAtCursorLock.Lock()
+	defer signalTextViewInsertAtCursorLock.Unlock()
+
 	_, exists := signalTextViewInsertAtCursorMap[connectionID]
 	if !exists {
 		return
@@ -24818,6 +25241,9 @@ DisconnectMoveCursor disconnects a callback from the 'move-cursor' signal for th
 The connectionID should be a value returned from a call to ConnectMoveCursor.
 */
 func (recv *TextView) DisconnectMoveCursor(connectionID int) {
+	signalTextViewMoveCursorLock.Lock()
+	defer signalTextViewMoveCursorLock.Unlock()
+
 	_, exists := signalTextViewMoveCursorMap[connectionID]
 	if !exists {
 		return
@@ -24863,6 +25289,9 @@ DisconnectMoveViewport disconnects a callback from the 'move-viewport' signal fo
 The connectionID should be a value returned from a call to ConnectMoveViewport.
 */
 func (recv *TextView) DisconnectMoveViewport(connectionID int) {
+	signalTextViewMoveViewportLock.Lock()
+	defer signalTextViewMoveViewportLock.Unlock()
+
 	_, exists := signalTextViewMoveViewportMap[connectionID]
 	if !exists {
 		return
@@ -24908,6 +25337,9 @@ DisconnectPasteClipboard disconnects a callback from the 'paste-clipboard' signa
 The connectionID should be a value returned from a call to ConnectPasteClipboard.
 */
 func (recv *TextView) DisconnectPasteClipboard(connectionID int) {
+	signalTextViewPasteClipboardLock.Lock()
+	defer signalTextViewPasteClipboardLock.Unlock()
+
 	_, exists := signalTextViewPasteClipboardMap[connectionID]
 	if !exists {
 		return
@@ -24953,6 +25385,9 @@ DisconnectPopulatePopup disconnects a callback from the 'populate-popup' signal 
 The connectionID should be a value returned from a call to ConnectPopulatePopup.
 */
 func (recv *TextView) DisconnectPopulatePopup(connectionID int) {
+	signalTextViewPopulatePopupLock.Lock()
+	defer signalTextViewPopulatePopupLock.Unlock()
+
 	_, exists := signalTextViewPopulatePopupMap[connectionID]
 	if !exists {
 		return
@@ -24998,6 +25433,9 @@ DisconnectSelectAll disconnects a callback from the 'select-all' signal for the 
 The connectionID should be a value returned from a call to ConnectSelectAll.
 */
 func (recv *TextView) DisconnectSelectAll(connectionID int) {
+	signalTextViewSelectAllLock.Lock()
+	defer signalTextViewSelectAllLock.Unlock()
+
 	_, exists := signalTextViewSelectAllMap[connectionID]
 	if !exists {
 		return
@@ -25043,6 +25481,9 @@ DisconnectSetAnchor disconnects a callback from the 'set-anchor' signal for the 
 The connectionID should be a value returned from a call to ConnectSetAnchor.
 */
 func (recv *TextView) DisconnectSetAnchor(connectionID int) {
+	signalTextViewSetAnchorLock.Lock()
+	defer signalTextViewSetAnchorLock.Unlock()
+
 	_, exists := signalTextViewSetAnchorMap[connectionID]
 	if !exists {
 		return
@@ -25088,6 +25529,9 @@ DisconnectToggleCursorVisible disconnects a callback from the 'toggle-cursor-vis
 The connectionID should be a value returned from a call to ConnectToggleCursorVisible.
 */
 func (recv *TextView) DisconnectToggleCursorVisible(connectionID int) {
+	signalTextViewToggleCursorVisibleLock.Lock()
+	defer signalTextViewToggleCursorVisibleLock.Unlock()
+
 	_, exists := signalTextViewToggleCursorVisibleMap[connectionID]
 	if !exists {
 		return
@@ -25133,6 +25577,9 @@ DisconnectToggleOverwrite disconnects a callback from the 'toggle-overwrite' sig
 The connectionID should be a value returned from a call to ConnectToggleOverwrite.
 */
 func (recv *TextView) DisconnectToggleOverwrite(connectionID int) {
+	signalTextViewToggleOverwriteLock.Lock()
+	defer signalTextViewToggleOverwriteLock.Unlock()
+
 	_, exists := signalTextViewToggleOverwriteMap[connectionID]
 	if !exists {
 		return
@@ -25841,6 +26288,9 @@ DisconnectToggled disconnects a callback from the 'toggled' signal for the Toggl
 The connectionID should be a value returned from a call to ConnectToggled.
 */
 func (recv *ToggleAction) DisconnectToggled(connectionID int) {
+	signalToggleActionToggledLock.Lock()
+	defer signalToggleActionToggledLock.Unlock()
+
 	_, exists := signalToggleActionToggledMap[connectionID]
 	if !exists {
 		return
@@ -25945,6 +26395,9 @@ DisconnectToggled disconnects a callback from the 'toggled' signal for the Toggl
 The connectionID should be a value returned from a call to ConnectToggled.
 */
 func (recv *ToggleButton) DisconnectToggled(connectionID int) {
+	signalToggleButtonToggledLock.Lock()
+	defer signalToggleButtonToggledLock.Unlock()
+
 	_, exists := signalToggleButtonToggledMap[connectionID]
 	if !exists {
 		return
@@ -26199,6 +26652,9 @@ DisconnectToggled disconnects a callback from the 'toggled' signal for the Toggl
 The connectionID should be a value returned from a call to ConnectToggled.
 */
 func (recv *ToggleToolButton) DisconnectToggled(connectionID int) {
+	signalToggleToolButtonToggledLock.Lock()
+	defer signalToggleToolButtonToggledLock.Unlock()
+
 	_, exists := signalToggleToolButtonToggledMap[connectionID]
 	if !exists {
 		return
@@ -26303,6 +26759,9 @@ DisconnectClicked disconnects a callback from the 'clicked' signal for the ToolB
 The connectionID should be a value returned from a call to ConnectClicked.
 */
 func (recv *ToolButton) DisconnectClicked(connectionID int) {
+	signalToolButtonClickedLock.Lock()
+	defer signalToolButtonClickedLock.Unlock()
+
 	_, exists := signalToolButtonClickedMap[connectionID]
 	if !exists {
 		return
@@ -26402,6 +26861,9 @@ DisconnectCreateMenuProxy disconnects a callback from the 'create-menu-proxy' si
 The connectionID should be a value returned from a call to ConnectCreateMenuProxy.
 */
 func (recv *ToolItem) DisconnectCreateMenuProxy(connectionID int) {
+	signalToolItemCreateMenuProxyLock.Lock()
+	defer signalToolItemCreateMenuProxyLock.Unlock()
+
 	_, exists := signalToolItemCreateMenuProxyMap[connectionID]
 	if !exists {
 		return
@@ -26447,6 +26909,9 @@ DisconnectToolbarReconfigured disconnects a callback from the 'toolbar-reconfigu
 The connectionID should be a value returned from a call to ConnectToolbarReconfigured.
 */
 func (recv *ToolItem) DisconnectToolbarReconfigured(connectionID int) {
+	signalToolItemToolbarReconfiguredLock.Lock()
+	defer signalToolItemToolbarReconfiguredLock.Unlock()
+
 	_, exists := signalToolItemToolbarReconfiguredMap[connectionID]
 	if !exists {
 		return
@@ -26639,6 +27104,9 @@ DisconnectFocusHomeOrEnd disconnects a callback from the 'focus-home-or-end' sig
 The connectionID should be a value returned from a call to ConnectFocusHomeOrEnd.
 */
 func (recv *Toolbar) DisconnectFocusHomeOrEnd(connectionID int) {
+	signalToolbarFocusHomeOrEndLock.Lock()
+	defer signalToolbarFocusHomeOrEndLock.Unlock()
+
 	_, exists := signalToolbarFocusHomeOrEndMap[connectionID]
 	if !exists {
 		return
@@ -26684,6 +27152,9 @@ DisconnectOrientationChanged disconnects a callback from the 'orientation-change
 The connectionID should be a value returned from a call to ConnectOrientationChanged.
 */
 func (recv *Toolbar) DisconnectOrientationChanged(connectionID int) {
+	signalToolbarOrientationChangedLock.Lock()
+	defer signalToolbarOrientationChangedLock.Unlock()
+
 	_, exists := signalToolbarOrientationChangedMap[connectionID]
 	if !exists {
 		return
@@ -26729,6 +27200,9 @@ DisconnectPopupContextMenu disconnects a callback from the 'popup-context-menu' 
 The connectionID should be a value returned from a call to ConnectPopupContextMenu.
 */
 func (recv *Toolbar) DisconnectPopupContextMenu(connectionID int) {
+	signalToolbarPopupContextMenuLock.Lock()
+	defer signalToolbarPopupContextMenuLock.Unlock()
+
 	_, exists := signalToolbarPopupContextMenuMap[connectionID]
 	if !exists {
 		return
@@ -26774,6 +27248,9 @@ DisconnectStyleChanged disconnects a callback from the 'style-changed' signal fo
 The connectionID should be a value returned from a call to ConnectStyleChanged.
 */
 func (recv *Toolbar) DisconnectStyleChanged(connectionID int) {
+	signalToolbarStyleChangedLock.Lock()
+	defer signalToolbarStyleChangedLock.Unlock()
+
 	_, exists := signalToolbarStyleChangedMap[connectionID]
 	if !exists {
 		return
@@ -27114,6 +27591,9 @@ DisconnectChanged disconnects a callback from the 'changed' signal for the TreeS
 The connectionID should be a value returned from a call to ConnectChanged.
 */
 func (recv *TreeSelection) DisconnectChanged(connectionID int) {
+	signalTreeSelectionChangedLock.Lock()
+	defer signalTreeSelectionChangedLock.Unlock()
+
 	_, exists := signalTreeSelectionChangedMap[connectionID]
 	if !exists {
 		return
@@ -27495,6 +27975,9 @@ DisconnectColumnsChanged disconnects a callback from the 'columns-changed' signa
 The connectionID should be a value returned from a call to ConnectColumnsChanged.
 */
 func (recv *TreeView) DisconnectColumnsChanged(connectionID int) {
+	signalTreeViewColumnsChangedLock.Lock()
+	defer signalTreeViewColumnsChangedLock.Unlock()
+
 	_, exists := signalTreeViewColumnsChangedMap[connectionID]
 	if !exists {
 		return
@@ -27540,6 +28023,9 @@ DisconnectCursorChanged disconnects a callback from the 'cursor-changed' signal 
 The connectionID should be a value returned from a call to ConnectCursorChanged.
 */
 func (recv *TreeView) DisconnectCursorChanged(connectionID int) {
+	signalTreeViewCursorChangedLock.Lock()
+	defer signalTreeViewCursorChangedLock.Unlock()
+
 	_, exists := signalTreeViewCursorChangedMap[connectionID]
 	if !exists {
 		return
@@ -27585,6 +28071,9 @@ DisconnectExpandCollapseCursorRow disconnects a callback from the 'expand-collap
 The connectionID should be a value returned from a call to ConnectExpandCollapseCursorRow.
 */
 func (recv *TreeView) DisconnectExpandCollapseCursorRow(connectionID int) {
+	signalTreeViewExpandCollapseCursorRowLock.Lock()
+	defer signalTreeViewExpandCollapseCursorRowLock.Unlock()
+
 	_, exists := signalTreeViewExpandCollapseCursorRowMap[connectionID]
 	if !exists {
 		return
@@ -27630,6 +28119,9 @@ DisconnectMoveCursor disconnects a callback from the 'move-cursor' signal for th
 The connectionID should be a value returned from a call to ConnectMoveCursor.
 */
 func (recv *TreeView) DisconnectMoveCursor(connectionID int) {
+	signalTreeViewMoveCursorLock.Lock()
+	defer signalTreeViewMoveCursorLock.Unlock()
+
 	_, exists := signalTreeViewMoveCursorMap[connectionID]
 	if !exists {
 		return
@@ -27675,6 +28167,9 @@ DisconnectRowActivated disconnects a callback from the 'row-activated' signal fo
 The connectionID should be a value returned from a call to ConnectRowActivated.
 */
 func (recv *TreeView) DisconnectRowActivated(connectionID int) {
+	signalTreeViewRowActivatedLock.Lock()
+	defer signalTreeViewRowActivatedLock.Unlock()
+
 	_, exists := signalTreeViewRowActivatedMap[connectionID]
 	if !exists {
 		return
@@ -27720,6 +28215,9 @@ DisconnectRowCollapsed disconnects a callback from the 'row-collapsed' signal fo
 The connectionID should be a value returned from a call to ConnectRowCollapsed.
 */
 func (recv *TreeView) DisconnectRowCollapsed(connectionID int) {
+	signalTreeViewRowCollapsedLock.Lock()
+	defer signalTreeViewRowCollapsedLock.Unlock()
+
 	_, exists := signalTreeViewRowCollapsedMap[connectionID]
 	if !exists {
 		return
@@ -27765,6 +28263,9 @@ DisconnectRowExpanded disconnects a callback from the 'row-expanded' signal for 
 The connectionID should be a value returned from a call to ConnectRowExpanded.
 */
 func (recv *TreeView) DisconnectRowExpanded(connectionID int) {
+	signalTreeViewRowExpandedLock.Lock()
+	defer signalTreeViewRowExpandedLock.Unlock()
+
 	_, exists := signalTreeViewRowExpandedMap[connectionID]
 	if !exists {
 		return
@@ -27810,6 +28311,9 @@ DisconnectSelectAll disconnects a callback from the 'select-all' signal for the 
 The connectionID should be a value returned from a call to ConnectSelectAll.
 */
 func (recv *TreeView) DisconnectSelectAll(connectionID int) {
+	signalTreeViewSelectAllLock.Lock()
+	defer signalTreeViewSelectAllLock.Unlock()
+
 	_, exists := signalTreeViewSelectAllMap[connectionID]
 	if !exists {
 		return
@@ -27855,6 +28359,9 @@ DisconnectSelectCursorParent disconnects a callback from the 'select-cursor-pare
 The connectionID should be a value returned from a call to ConnectSelectCursorParent.
 */
 func (recv *TreeView) DisconnectSelectCursorParent(connectionID int) {
+	signalTreeViewSelectCursorParentLock.Lock()
+	defer signalTreeViewSelectCursorParentLock.Unlock()
+
 	_, exists := signalTreeViewSelectCursorParentMap[connectionID]
 	if !exists {
 		return
@@ -27900,6 +28407,9 @@ DisconnectSelectCursorRow disconnects a callback from the 'select-cursor-row' si
 The connectionID should be a value returned from a call to ConnectSelectCursorRow.
 */
 func (recv *TreeView) DisconnectSelectCursorRow(connectionID int) {
+	signalTreeViewSelectCursorRowLock.Lock()
+	defer signalTreeViewSelectCursorRowLock.Unlock()
+
 	_, exists := signalTreeViewSelectCursorRowMap[connectionID]
 	if !exists {
 		return
@@ -27945,6 +28455,9 @@ DisconnectStartInteractiveSearch disconnects a callback from the 'start-interact
 The connectionID should be a value returned from a call to ConnectStartInteractiveSearch.
 */
 func (recv *TreeView) DisconnectStartInteractiveSearch(connectionID int) {
+	signalTreeViewStartInteractiveSearchLock.Lock()
+	defer signalTreeViewStartInteractiveSearchLock.Unlock()
+
 	_, exists := signalTreeViewStartInteractiveSearchMap[connectionID]
 	if !exists {
 		return
@@ -27990,6 +28503,9 @@ DisconnectTestCollapseRow disconnects a callback from the 'test-collapse-row' si
 The connectionID should be a value returned from a call to ConnectTestCollapseRow.
 */
 func (recv *TreeView) DisconnectTestCollapseRow(connectionID int) {
+	signalTreeViewTestCollapseRowLock.Lock()
+	defer signalTreeViewTestCollapseRowLock.Unlock()
+
 	_, exists := signalTreeViewTestCollapseRowMap[connectionID]
 	if !exists {
 		return
@@ -28035,6 +28551,9 @@ DisconnectTestExpandRow disconnects a callback from the 'test-expand-row' signal
 The connectionID should be a value returned from a call to ConnectTestExpandRow.
 */
 func (recv *TreeView) DisconnectTestExpandRow(connectionID int) {
+	signalTreeViewTestExpandRowLock.Lock()
+	defer signalTreeViewTestExpandRowLock.Unlock()
+
 	_, exists := signalTreeViewTestExpandRowMap[connectionID]
 	if !exists {
 		return
@@ -28080,6 +28599,9 @@ DisconnectToggleCursorRow disconnects a callback from the 'toggle-cursor-row' si
 The connectionID should be a value returned from a call to ConnectToggleCursorRow.
 */
 func (recv *TreeView) DisconnectToggleCursorRow(connectionID int) {
+	signalTreeViewToggleCursorRowLock.Lock()
+	defer signalTreeViewToggleCursorRowLock.Unlock()
+
 	_, exists := signalTreeViewToggleCursorRowMap[connectionID]
 	if !exists {
 		return
@@ -28125,6 +28647,9 @@ DisconnectUnselectAll disconnects a callback from the 'unselect-all' signal for 
 The connectionID should be a value returned from a call to ConnectUnselectAll.
 */
 func (recv *TreeView) DisconnectUnselectAll(connectionID int) {
+	signalTreeViewUnselectAllLock.Lock()
+	defer signalTreeViewUnselectAllLock.Unlock()
+
 	_, exists := signalTreeViewUnselectAllMap[connectionID]
 	if !exists {
 		return
@@ -28674,6 +29199,9 @@ DisconnectClicked disconnects a callback from the 'clicked' signal for the TreeV
 The connectionID should be a value returned from a call to ConnectClicked.
 */
 func (recv *TreeViewColumn) DisconnectClicked(connectionID int) {
+	signalTreeViewColumnClickedLock.Lock()
+	defer signalTreeViewColumnClickedLock.Unlock()
+
 	_, exists := signalTreeViewColumnClickedMap[connectionID]
 	if !exists {
 		return
@@ -29735,6 +30263,9 @@ DisconnectAccelClosuresChanged disconnects a callback from the 'accel-closures-c
 The connectionID should be a value returned from a call to ConnectAccelClosuresChanged.
 */
 func (recv *Widget) DisconnectAccelClosuresChanged(connectionID int) {
+	signalWidgetAccelClosuresChangedLock.Lock()
+	defer signalWidgetAccelClosuresChangedLock.Unlock()
+
 	_, exists := signalWidgetAccelClosuresChangedMap[connectionID]
 	if !exists {
 		return
@@ -29780,6 +30311,9 @@ DisconnectButtonPressEvent disconnects a callback from the 'button-press-event' 
 The connectionID should be a value returned from a call to ConnectButtonPressEvent.
 */
 func (recv *Widget) DisconnectButtonPressEvent(connectionID int) {
+	signalWidgetButtonPressEventLock.Lock()
+	defer signalWidgetButtonPressEventLock.Unlock()
+
 	_, exists := signalWidgetButtonPressEventMap[connectionID]
 	if !exists {
 		return
@@ -29825,6 +30359,9 @@ DisconnectButtonReleaseEvent disconnects a callback from the 'button-release-eve
 The connectionID should be a value returned from a call to ConnectButtonReleaseEvent.
 */
 func (recv *Widget) DisconnectButtonReleaseEvent(connectionID int) {
+	signalWidgetButtonReleaseEventLock.Lock()
+	defer signalWidgetButtonReleaseEventLock.Unlock()
+
 	_, exists := signalWidgetButtonReleaseEventMap[connectionID]
 	if !exists {
 		return
@@ -29870,6 +30407,9 @@ DisconnectCanActivateAccel disconnects a callback from the 'can-activate-accel' 
 The connectionID should be a value returned from a call to ConnectCanActivateAccel.
 */
 func (recv *Widget) DisconnectCanActivateAccel(connectionID int) {
+	signalWidgetCanActivateAccelLock.Lock()
+	defer signalWidgetCanActivateAccelLock.Unlock()
+
 	_, exists := signalWidgetCanActivateAccelMap[connectionID]
 	if !exists {
 		return
@@ -29917,6 +30457,9 @@ DisconnectCompositedChanged disconnects a callback from the 'composited-changed'
 The connectionID should be a value returned from a call to ConnectCompositedChanged.
 */
 func (recv *Widget) DisconnectCompositedChanged(connectionID int) {
+	signalWidgetCompositedChangedLock.Lock()
+	defer signalWidgetCompositedChangedLock.Unlock()
+
 	_, exists := signalWidgetCompositedChangedMap[connectionID]
 	if !exists {
 		return
@@ -29962,6 +30505,9 @@ DisconnectConfigureEvent disconnects a callback from the 'configure-event' signa
 The connectionID should be a value returned from a call to ConnectConfigureEvent.
 */
 func (recv *Widget) DisconnectConfigureEvent(connectionID int) {
+	signalWidgetConfigureEventLock.Lock()
+	defer signalWidgetConfigureEventLock.Unlock()
+
 	_, exists := signalWidgetConfigureEventMap[connectionID]
 	if !exists {
 		return
@@ -30009,6 +30555,9 @@ DisconnectDestroy disconnects a callback from the 'destroy' signal for the Widge
 The connectionID should be a value returned from a call to ConnectDestroy.
 */
 func (recv *Widget) DisconnectDestroy(connectionID int) {
+	signalWidgetDestroyLock.Lock()
+	defer signalWidgetDestroyLock.Unlock()
+
 	_, exists := signalWidgetDestroyMap[connectionID]
 	if !exists {
 		return
@@ -30056,6 +30605,9 @@ DisconnectDirectionChanged disconnects a callback from the 'direction-changed' s
 The connectionID should be a value returned from a call to ConnectDirectionChanged.
 */
 func (recv *Widget) DisconnectDirectionChanged(connectionID int) {
+	signalWidgetDirectionChangedLock.Lock()
+	defer signalWidgetDirectionChangedLock.Unlock()
+
 	_, exists := signalWidgetDirectionChangedMap[connectionID]
 	if !exists {
 		return
@@ -30101,6 +30653,9 @@ DisconnectDragBegin disconnects a callback from the 'drag-begin' signal for the 
 The connectionID should be a value returned from a call to ConnectDragBegin.
 */
 func (recv *Widget) DisconnectDragBegin(connectionID int) {
+	signalWidgetDragBeginLock.Lock()
+	defer signalWidgetDragBeginLock.Unlock()
+
 	_, exists := signalWidgetDragBeginMap[connectionID]
 	if !exists {
 		return
@@ -30146,6 +30701,9 @@ DisconnectDragDataDelete disconnects a callback from the 'drag-data-delete' sign
 The connectionID should be a value returned from a call to ConnectDragDataDelete.
 */
 func (recv *Widget) DisconnectDragDataDelete(connectionID int) {
+	signalWidgetDragDataDeleteLock.Lock()
+	defer signalWidgetDragDataDeleteLock.Unlock()
+
 	_, exists := signalWidgetDragDataDeleteMap[connectionID]
 	if !exists {
 		return
@@ -30191,6 +30749,9 @@ DisconnectDragDataGet disconnects a callback from the 'drag-data-get' signal for
 The connectionID should be a value returned from a call to ConnectDragDataGet.
 */
 func (recv *Widget) DisconnectDragDataGet(connectionID int) {
+	signalWidgetDragDataGetLock.Lock()
+	defer signalWidgetDragDataGetLock.Unlock()
+
 	_, exists := signalWidgetDragDataGetMap[connectionID]
 	if !exists {
 		return
@@ -30236,6 +30797,9 @@ DisconnectDragDataReceived disconnects a callback from the 'drag-data-received' 
 The connectionID should be a value returned from a call to ConnectDragDataReceived.
 */
 func (recv *Widget) DisconnectDragDataReceived(connectionID int) {
+	signalWidgetDragDataReceivedLock.Lock()
+	defer signalWidgetDragDataReceivedLock.Unlock()
+
 	_, exists := signalWidgetDragDataReceivedMap[connectionID]
 	if !exists {
 		return
@@ -30281,6 +30845,9 @@ DisconnectDragDrop disconnects a callback from the 'drag-drop' signal for the Wi
 The connectionID should be a value returned from a call to ConnectDragDrop.
 */
 func (recv *Widget) DisconnectDragDrop(connectionID int) {
+	signalWidgetDragDropLock.Lock()
+	defer signalWidgetDragDropLock.Unlock()
+
 	_, exists := signalWidgetDragDropMap[connectionID]
 	if !exists {
 		return
@@ -30326,6 +30893,9 @@ DisconnectDragEnd disconnects a callback from the 'drag-end' signal for the Widg
 The connectionID should be a value returned from a call to ConnectDragEnd.
 */
 func (recv *Widget) DisconnectDragEnd(connectionID int) {
+	signalWidgetDragEndLock.Lock()
+	defer signalWidgetDragEndLock.Unlock()
+
 	_, exists := signalWidgetDragEndMap[connectionID]
 	if !exists {
 		return
@@ -30371,6 +30941,9 @@ DisconnectDragLeave disconnects a callback from the 'drag-leave' signal for the 
 The connectionID should be a value returned from a call to ConnectDragLeave.
 */
 func (recv *Widget) DisconnectDragLeave(connectionID int) {
+	signalWidgetDragLeaveLock.Lock()
+	defer signalWidgetDragLeaveLock.Unlock()
+
 	_, exists := signalWidgetDragLeaveMap[connectionID]
 	if !exists {
 		return
@@ -30416,6 +30989,9 @@ DisconnectDragMotion disconnects a callback from the 'drag-motion' signal for th
 The connectionID should be a value returned from a call to ConnectDragMotion.
 */
 func (recv *Widget) DisconnectDragMotion(connectionID int) {
+	signalWidgetDragMotionLock.Lock()
+	defer signalWidgetDragMotionLock.Unlock()
+
 	_, exists := signalWidgetDragMotionMap[connectionID]
 	if !exists {
 		return
@@ -30461,6 +31037,9 @@ DisconnectEnterNotifyEvent disconnects a callback from the 'enter-notify-event' 
 The connectionID should be a value returned from a call to ConnectEnterNotifyEvent.
 */
 func (recv *Widget) DisconnectEnterNotifyEvent(connectionID int) {
+	signalWidgetEnterNotifyEventLock.Lock()
+	defer signalWidgetEnterNotifyEventLock.Unlock()
+
 	_, exists := signalWidgetEnterNotifyEventMap[connectionID]
 	if !exists {
 		return
@@ -30510,6 +31089,9 @@ DisconnectFocus disconnects a callback from the 'focus' signal for the Widget.
 The connectionID should be a value returned from a call to ConnectFocus.
 */
 func (recv *Widget) DisconnectFocus(connectionID int) {
+	signalWidgetFocusLock.Lock()
+	defer signalWidgetFocusLock.Unlock()
+
 	_, exists := signalWidgetFocusMap[connectionID]
 	if !exists {
 		return
@@ -30555,6 +31137,9 @@ DisconnectFocusInEvent disconnects a callback from the 'focus-in-event' signal f
 The connectionID should be a value returned from a call to ConnectFocusInEvent.
 */
 func (recv *Widget) DisconnectFocusInEvent(connectionID int) {
+	signalWidgetFocusInEventLock.Lock()
+	defer signalWidgetFocusInEventLock.Unlock()
+
 	_, exists := signalWidgetFocusInEventMap[connectionID]
 	if !exists {
 		return
@@ -30600,6 +31185,9 @@ DisconnectFocusOutEvent disconnects a callback from the 'focus-out-event' signal
 The connectionID should be a value returned from a call to ConnectFocusOutEvent.
 */
 func (recv *Widget) DisconnectFocusOutEvent(connectionID int) {
+	signalWidgetFocusOutEventLock.Lock()
+	defer signalWidgetFocusOutEventLock.Unlock()
+
 	_, exists := signalWidgetFocusOutEventMap[connectionID]
 	if !exists {
 		return
@@ -30645,6 +31233,9 @@ DisconnectGrabFocus disconnects a callback from the 'grab-focus' signal for the 
 The connectionID should be a value returned from a call to ConnectGrabFocus.
 */
 func (recv *Widget) DisconnectGrabFocus(connectionID int) {
+	signalWidgetGrabFocusLock.Lock()
+	defer signalWidgetGrabFocusLock.Unlock()
+
 	_, exists := signalWidgetGrabFocusMap[connectionID]
 	if !exists {
 		return
@@ -30690,6 +31281,9 @@ DisconnectGrabNotify disconnects a callback from the 'grab-notify' signal for th
 The connectionID should be a value returned from a call to ConnectGrabNotify.
 */
 func (recv *Widget) DisconnectGrabNotify(connectionID int) {
+	signalWidgetGrabNotifyLock.Lock()
+	defer signalWidgetGrabNotifyLock.Unlock()
+
 	_, exists := signalWidgetGrabNotifyMap[connectionID]
 	if !exists {
 		return
@@ -30735,6 +31329,9 @@ DisconnectHide disconnects a callback from the 'hide' signal for the Widget.
 The connectionID should be a value returned from a call to ConnectHide.
 */
 func (recv *Widget) DisconnectHide(connectionID int) {
+	signalWidgetHideLock.Lock()
+	defer signalWidgetHideLock.Unlock()
+
 	_, exists := signalWidgetHideMap[connectionID]
 	if !exists {
 		return
@@ -30780,6 +31377,9 @@ DisconnectHierarchyChanged disconnects a callback from the 'hierarchy-changed' s
 The connectionID should be a value returned from a call to ConnectHierarchyChanged.
 */
 func (recv *Widget) DisconnectHierarchyChanged(connectionID int) {
+	signalWidgetHierarchyChangedLock.Lock()
+	defer signalWidgetHierarchyChangedLock.Unlock()
+
 	_, exists := signalWidgetHierarchyChangedMap[connectionID]
 	if !exists {
 		return
@@ -30825,6 +31425,9 @@ DisconnectKeyPressEvent disconnects a callback from the 'key-press-event' signal
 The connectionID should be a value returned from a call to ConnectKeyPressEvent.
 */
 func (recv *Widget) DisconnectKeyPressEvent(connectionID int) {
+	signalWidgetKeyPressEventLock.Lock()
+	defer signalWidgetKeyPressEventLock.Unlock()
+
 	_, exists := signalWidgetKeyPressEventMap[connectionID]
 	if !exists {
 		return
@@ -30870,6 +31473,9 @@ DisconnectKeyReleaseEvent disconnects a callback from the 'key-release-event' si
 The connectionID should be a value returned from a call to ConnectKeyReleaseEvent.
 */
 func (recv *Widget) DisconnectKeyReleaseEvent(connectionID int) {
+	signalWidgetKeyReleaseEventLock.Lock()
+	defer signalWidgetKeyReleaseEventLock.Unlock()
+
 	_, exists := signalWidgetKeyReleaseEventMap[connectionID]
 	if !exists {
 		return
@@ -30915,6 +31521,9 @@ DisconnectLeaveNotifyEvent disconnects a callback from the 'leave-notify-event' 
 The connectionID should be a value returned from a call to ConnectLeaveNotifyEvent.
 */
 func (recv *Widget) DisconnectLeaveNotifyEvent(connectionID int) {
+	signalWidgetLeaveNotifyEventLock.Lock()
+	defer signalWidgetLeaveNotifyEventLock.Unlock()
+
 	_, exists := signalWidgetLeaveNotifyEventMap[connectionID]
 	if !exists {
 		return
@@ -30960,6 +31569,9 @@ DisconnectMap disconnects a callback from the 'map' signal for the Widget.
 The connectionID should be a value returned from a call to ConnectMap.
 */
 func (recv *Widget) DisconnectMap(connectionID int) {
+	signalWidgetMapLock.Lock()
+	defer signalWidgetMapLock.Unlock()
+
 	_, exists := signalWidgetMapMap[connectionID]
 	if !exists {
 		return
@@ -31005,6 +31617,9 @@ DisconnectMapEvent disconnects a callback from the 'map-event' signal for the Wi
 The connectionID should be a value returned from a call to ConnectMapEvent.
 */
 func (recv *Widget) DisconnectMapEvent(connectionID int) {
+	signalWidgetMapEventLock.Lock()
+	defer signalWidgetMapEventLock.Unlock()
+
 	_, exists := signalWidgetMapEventMap[connectionID]
 	if !exists {
 		return
@@ -31050,6 +31665,9 @@ DisconnectMnemonicActivate disconnects a callback from the 'mnemonic-activate' s
 The connectionID should be a value returned from a call to ConnectMnemonicActivate.
 */
 func (recv *Widget) DisconnectMnemonicActivate(connectionID int) {
+	signalWidgetMnemonicActivateLock.Lock()
+	defer signalWidgetMnemonicActivateLock.Unlock()
+
 	_, exists := signalWidgetMnemonicActivateMap[connectionID]
 	if !exists {
 		return
@@ -31095,6 +31713,9 @@ DisconnectMotionNotifyEvent disconnects a callback from the 'motion-notify-event
 The connectionID should be a value returned from a call to ConnectMotionNotifyEvent.
 */
 func (recv *Widget) DisconnectMotionNotifyEvent(connectionID int) {
+	signalWidgetMotionNotifyEventLock.Lock()
+	defer signalWidgetMotionNotifyEventLock.Unlock()
+
 	_, exists := signalWidgetMotionNotifyEventMap[connectionID]
 	if !exists {
 		return
@@ -31140,6 +31761,9 @@ DisconnectMoveFocus disconnects a callback from the 'move-focus' signal for the 
 The connectionID should be a value returned from a call to ConnectMoveFocus.
 */
 func (recv *Widget) DisconnectMoveFocus(connectionID int) {
+	signalWidgetMoveFocusLock.Lock()
+	defer signalWidgetMoveFocusLock.Unlock()
+
 	_, exists := signalWidgetMoveFocusMap[connectionID]
 	if !exists {
 		return
@@ -31185,6 +31809,9 @@ DisconnectParentSet disconnects a callback from the 'parent-set' signal for the 
 The connectionID should be a value returned from a call to ConnectParentSet.
 */
 func (recv *Widget) DisconnectParentSet(connectionID int) {
+	signalWidgetParentSetLock.Lock()
+	defer signalWidgetParentSetLock.Unlock()
+
 	_, exists := signalWidgetParentSetMap[connectionID]
 	if !exists {
 		return
@@ -31230,6 +31857,9 @@ DisconnectPopupMenu disconnects a callback from the 'popup-menu' signal for the 
 The connectionID should be a value returned from a call to ConnectPopupMenu.
 */
 func (recv *Widget) DisconnectPopupMenu(connectionID int) {
+	signalWidgetPopupMenuLock.Lock()
+	defer signalWidgetPopupMenuLock.Unlock()
+
 	_, exists := signalWidgetPopupMenuMap[connectionID]
 	if !exists {
 		return
@@ -31275,6 +31905,9 @@ DisconnectPropertyNotifyEvent disconnects a callback from the 'property-notify-e
 The connectionID should be a value returned from a call to ConnectPropertyNotifyEvent.
 */
 func (recv *Widget) DisconnectPropertyNotifyEvent(connectionID int) {
+	signalWidgetPropertyNotifyEventLock.Lock()
+	defer signalWidgetPropertyNotifyEventLock.Unlock()
+
 	_, exists := signalWidgetPropertyNotifyEventMap[connectionID]
 	if !exists {
 		return
@@ -31320,6 +31953,9 @@ DisconnectProximityInEvent disconnects a callback from the 'proximity-in-event' 
 The connectionID should be a value returned from a call to ConnectProximityInEvent.
 */
 func (recv *Widget) DisconnectProximityInEvent(connectionID int) {
+	signalWidgetProximityInEventLock.Lock()
+	defer signalWidgetProximityInEventLock.Unlock()
+
 	_, exists := signalWidgetProximityInEventMap[connectionID]
 	if !exists {
 		return
@@ -31365,6 +32001,9 @@ DisconnectProximityOutEvent disconnects a callback from the 'proximity-out-event
 The connectionID should be a value returned from a call to ConnectProximityOutEvent.
 */
 func (recv *Widget) DisconnectProximityOutEvent(connectionID int) {
+	signalWidgetProximityOutEventLock.Lock()
+	defer signalWidgetProximityOutEventLock.Unlock()
+
 	_, exists := signalWidgetProximityOutEventMap[connectionID]
 	if !exists {
 		return
@@ -31410,6 +32049,9 @@ DisconnectRealize disconnects a callback from the 'realize' signal for the Widge
 The connectionID should be a value returned from a call to ConnectRealize.
 */
 func (recv *Widget) DisconnectRealize(connectionID int) {
+	signalWidgetRealizeLock.Lock()
+	defer signalWidgetRealizeLock.Unlock()
+
 	_, exists := signalWidgetRealizeMap[connectionID]
 	if !exists {
 		return
@@ -31455,6 +32097,9 @@ DisconnectScreenChanged disconnects a callback from the 'screen-changed' signal 
 The connectionID should be a value returned from a call to ConnectScreenChanged.
 */
 func (recv *Widget) DisconnectScreenChanged(connectionID int) {
+	signalWidgetScreenChangedLock.Lock()
+	defer signalWidgetScreenChangedLock.Unlock()
+
 	_, exists := signalWidgetScreenChangedMap[connectionID]
 	if !exists {
 		return
@@ -31500,6 +32145,9 @@ DisconnectScrollEvent disconnects a callback from the 'scroll-event' signal for 
 The connectionID should be a value returned from a call to ConnectScrollEvent.
 */
 func (recv *Widget) DisconnectScrollEvent(connectionID int) {
+	signalWidgetScrollEventLock.Lock()
+	defer signalWidgetScrollEventLock.Unlock()
+
 	_, exists := signalWidgetScrollEventMap[connectionID]
 	if !exists {
 		return
@@ -31545,6 +32193,9 @@ DisconnectSelectionClearEvent disconnects a callback from the 'selection-clear-e
 The connectionID should be a value returned from a call to ConnectSelectionClearEvent.
 */
 func (recv *Widget) DisconnectSelectionClearEvent(connectionID int) {
+	signalWidgetSelectionClearEventLock.Lock()
+	defer signalWidgetSelectionClearEventLock.Unlock()
+
 	_, exists := signalWidgetSelectionClearEventMap[connectionID]
 	if !exists {
 		return
@@ -31590,6 +32241,9 @@ DisconnectSelectionGet disconnects a callback from the 'selection-get' signal fo
 The connectionID should be a value returned from a call to ConnectSelectionGet.
 */
 func (recv *Widget) DisconnectSelectionGet(connectionID int) {
+	signalWidgetSelectionGetLock.Lock()
+	defer signalWidgetSelectionGetLock.Unlock()
+
 	_, exists := signalWidgetSelectionGetMap[connectionID]
 	if !exists {
 		return
@@ -31635,6 +32289,9 @@ DisconnectSelectionNotifyEvent disconnects a callback from the 'selection-notify
 The connectionID should be a value returned from a call to ConnectSelectionNotifyEvent.
 */
 func (recv *Widget) DisconnectSelectionNotifyEvent(connectionID int) {
+	signalWidgetSelectionNotifyEventLock.Lock()
+	defer signalWidgetSelectionNotifyEventLock.Unlock()
+
 	_, exists := signalWidgetSelectionNotifyEventMap[connectionID]
 	if !exists {
 		return
@@ -31680,6 +32337,9 @@ DisconnectSelectionReceived disconnects a callback from the 'selection-received'
 The connectionID should be a value returned from a call to ConnectSelectionReceived.
 */
 func (recv *Widget) DisconnectSelectionReceived(connectionID int) {
+	signalWidgetSelectionReceivedLock.Lock()
+	defer signalWidgetSelectionReceivedLock.Unlock()
+
 	_, exists := signalWidgetSelectionReceivedMap[connectionID]
 	if !exists {
 		return
@@ -31725,6 +32385,9 @@ DisconnectSelectionRequestEvent disconnects a callback from the 'selection-reque
 The connectionID should be a value returned from a call to ConnectSelectionRequestEvent.
 */
 func (recv *Widget) DisconnectSelectionRequestEvent(connectionID int) {
+	signalWidgetSelectionRequestEventLock.Lock()
+	defer signalWidgetSelectionRequestEventLock.Unlock()
+
 	_, exists := signalWidgetSelectionRequestEventMap[connectionID]
 	if !exists {
 		return
@@ -31770,6 +32433,9 @@ DisconnectShow disconnects a callback from the 'show' signal for the Widget.
 The connectionID should be a value returned from a call to ConnectShow.
 */
 func (recv *Widget) DisconnectShow(connectionID int) {
+	signalWidgetShowLock.Lock()
+	defer signalWidgetShowLock.Unlock()
+
 	_, exists := signalWidgetShowMap[connectionID]
 	if !exists {
 		return
@@ -31815,6 +32481,9 @@ DisconnectShowHelp disconnects a callback from the 'show-help' signal for the Wi
 The connectionID should be a value returned from a call to ConnectShowHelp.
 */
 func (recv *Widget) DisconnectShowHelp(connectionID int) {
+	signalWidgetShowHelpLock.Lock()
+	defer signalWidgetShowHelpLock.Unlock()
+
 	_, exists := signalWidgetShowHelpMap[connectionID]
 	if !exists {
 		return
@@ -31862,6 +32531,9 @@ DisconnectStateChanged disconnects a callback from the 'state-changed' signal fo
 The connectionID should be a value returned from a call to ConnectStateChanged.
 */
 func (recv *Widget) DisconnectStateChanged(connectionID int) {
+	signalWidgetStateChangedLock.Lock()
+	defer signalWidgetStateChangedLock.Unlock()
+
 	_, exists := signalWidgetStateChangedMap[connectionID]
 	if !exists {
 		return
@@ -31907,6 +32579,9 @@ DisconnectStyleSet disconnects a callback from the 'style-set' signal for the Wi
 The connectionID should be a value returned from a call to ConnectStyleSet.
 */
 func (recv *Widget) DisconnectStyleSet(connectionID int) {
+	signalWidgetStyleSetLock.Lock()
+	defer signalWidgetStyleSetLock.Unlock()
+
 	_, exists := signalWidgetStyleSetMap[connectionID]
 	if !exists {
 		return
@@ -31954,6 +32629,9 @@ DisconnectUnmap disconnects a callback from the 'unmap' signal for the Widget.
 The connectionID should be a value returned from a call to ConnectUnmap.
 */
 func (recv *Widget) DisconnectUnmap(connectionID int) {
+	signalWidgetUnmapLock.Lock()
+	defer signalWidgetUnmapLock.Unlock()
+
 	_, exists := signalWidgetUnmapMap[connectionID]
 	if !exists {
 		return
@@ -31999,6 +32677,9 @@ DisconnectUnmapEvent disconnects a callback from the 'unmap-event' signal for th
 The connectionID should be a value returned from a call to ConnectUnmapEvent.
 */
 func (recv *Widget) DisconnectUnmapEvent(connectionID int) {
+	signalWidgetUnmapEventLock.Lock()
+	defer signalWidgetUnmapEventLock.Unlock()
+
 	_, exists := signalWidgetUnmapEventMap[connectionID]
 	if !exists {
 		return
@@ -32044,6 +32725,9 @@ DisconnectUnrealize disconnects a callback from the 'unrealize' signal for the W
 The connectionID should be a value returned from a call to ConnectUnrealize.
 */
 func (recv *Widget) DisconnectUnrealize(connectionID int) {
+	signalWidgetUnrealizeLock.Lock()
+	defer signalWidgetUnrealizeLock.Unlock()
+
 	_, exists := signalWidgetUnrealizeMap[connectionID]
 	if !exists {
 		return
@@ -32089,6 +32773,9 @@ DisconnectVisibilityNotifyEvent disconnects a callback from the 'visibility-noti
 The connectionID should be a value returned from a call to ConnectVisibilityNotifyEvent.
 */
 func (recv *Widget) DisconnectVisibilityNotifyEvent(connectionID int) {
+	signalWidgetVisibilityNotifyEventLock.Lock()
+	defer signalWidgetVisibilityNotifyEventLock.Unlock()
+
 	_, exists := signalWidgetVisibilityNotifyEventMap[connectionID]
 	if !exists {
 		return
@@ -32134,6 +32821,9 @@ DisconnectWindowStateEvent disconnects a callback from the 'window-state-event' 
 The connectionID should be a value returned from a call to ConnectWindowStateEvent.
 */
 func (recv *Widget) DisconnectWindowStateEvent(connectionID int) {
+	signalWidgetWindowStateEventLock.Lock()
+	defer signalWidgetWindowStateEventLock.Unlock()
+
 	_, exists := signalWidgetWindowStateEventMap[connectionID]
 	if !exists {
 		return
@@ -33335,6 +34025,9 @@ DisconnectActivateDefault disconnects a callback from the 'activate-default' sig
 The connectionID should be a value returned from a call to ConnectActivateDefault.
 */
 func (recv *Window) DisconnectActivateDefault(connectionID int) {
+	signalWindowActivateDefaultLock.Lock()
+	defer signalWindowActivateDefaultLock.Unlock()
+
 	_, exists := signalWindowActivateDefaultMap[connectionID]
 	if !exists {
 		return
@@ -33380,6 +34073,9 @@ DisconnectActivateFocus disconnects a callback from the 'activate-focus' signal 
 The connectionID should be a value returned from a call to ConnectActivateFocus.
 */
 func (recv *Window) DisconnectActivateFocus(connectionID int) {
+	signalWindowActivateFocusLock.Lock()
+	defer signalWindowActivateFocusLock.Unlock()
+
 	_, exists := signalWindowActivateFocusMap[connectionID]
 	if !exists {
 		return
@@ -33425,6 +34121,9 @@ DisconnectEnableDebugging disconnects a callback from the 'enable-debugging' sig
 The connectionID should be a value returned from a call to ConnectEnableDebugging.
 */
 func (recv *Window) DisconnectEnableDebugging(connectionID int) {
+	signalWindowEnableDebuggingLock.Lock()
+	defer signalWindowEnableDebuggingLock.Unlock()
+
 	_, exists := signalWindowEnableDebuggingMap[connectionID]
 	if !exists {
 		return
@@ -33470,6 +34169,9 @@ DisconnectKeysChanged disconnects a callback from the 'keys-changed' signal for 
 The connectionID should be a value returned from a call to ConnectKeysChanged.
 */
 func (recv *Window) DisconnectKeysChanged(connectionID int) {
+	signalWindowKeysChangedLock.Lock()
+	defer signalWindowKeysChangedLock.Unlock()
+
 	_, exists := signalWindowKeysChangedMap[connectionID]
 	if !exists {
 		return
@@ -33515,6 +34217,9 @@ DisconnectSetFocus disconnects a callback from the 'set-focus' signal for the Wi
 The connectionID should be a value returned from a call to ConnectSetFocus.
 */
 func (recv *Window) DisconnectSetFocus(connectionID int) {
+	signalWindowSetFocusLock.Lock()
+	defer signalWindowSetFocusLock.Unlock()
+
 	_, exists := signalWindowSetFocusMap[connectionID]
 	if !exists {
 		return

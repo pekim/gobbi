@@ -453,6 +453,9 @@ DisconnectOwnerChange disconnects a callback from the 'owner-change' signal for 
 The connectionID should be a value returned from a call to ConnectOwnerChange.
 */
 func (recv *Clipboard) DisconnectOwnerChange(connectionID int) {
+	signalClipboardOwnerChangeLock.Lock()
+	defer signalClipboardOwnerChangeLock.Unlock()
+
 	_, exists := signalClipboardOwnerChangeMap[connectionID]
 	if !exists {
 		return
@@ -614,6 +617,9 @@ DisconnectInsertPrefix disconnects a callback from the 'insert-prefix' signal fo
 The connectionID should be a value returned from a call to ConnectInsertPrefix.
 */
 func (recv *EntryCompletion) DisconnectInsertPrefix(connectionID int) {
+	signalEntryCompletionInsertPrefixLock.Lock()
+	defer signalEntryCompletionInsertPrefixLock.Unlock()
+
 	_, exists := signalEntryCompletionInsertPrefixMap[connectionID]
 	if !exists {
 		return
@@ -1272,6 +1278,9 @@ DisconnectChangeValue disconnects a callback from the 'change-value' signal for 
 The connectionID should be a value returned from a call to ConnectChangeValue.
 */
 func (recv *Range) DisconnectChangeValue(connectionID int) {
+	signalRangeChangeValueLock.Lock()
+	defer signalRangeChangeValueLock.Unlock()
+
 	_, exists := signalRangeChangeValueMap[connectionID]
 	if !exists {
 		return

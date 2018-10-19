@@ -108,6 +108,9 @@ DisconnectWindowAdded disconnects a callback from the 'window-added' signal for 
 The connectionID should be a value returned from a call to ConnectWindowAdded.
 */
 func (recv *Application) DisconnectWindowAdded(connectionID int) {
+	signalApplicationWindowAddedLock.Lock()
+	defer signalApplicationWindowAddedLock.Unlock()
+
 	_, exists := signalApplicationWindowAddedMap[connectionID]
 	if !exists {
 		return
@@ -153,6 +156,9 @@ DisconnectWindowRemoved disconnects a callback from the 'window-removed' signal 
 The connectionID should be a value returned from a call to ConnectWindowRemoved.
 */
 func (recv *Application) DisconnectWindowRemoved(connectionID int) {
+	signalApplicationWindowRemovedLock.Lock()
+	defer signalApplicationWindowRemovedLock.Unlock()
+
 	_, exists := signalApplicationWindowRemovedMap[connectionID]
 	if !exists {
 		return
@@ -419,6 +425,9 @@ DisconnectInsert disconnects a callback from the 'insert' signal for the MenuShe
 The connectionID should be a value returned from a call to ConnectInsert.
 */
 func (recv *MenuShell) DisconnectInsert(connectionID int) {
+	signalMenuShellInsertLock.Lock()
+	defer signalMenuShellInsertLock.Unlock()
+
 	_, exists := signalMenuShellInsertMap[connectionID]
 	if !exists {
 		return

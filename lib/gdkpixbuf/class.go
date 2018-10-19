@@ -671,6 +671,9 @@ DisconnectAreaPrepared disconnects a callback from the 'area-prepared' signal fo
 The connectionID should be a value returned from a call to ConnectAreaPrepared.
 */
 func (recv *PixbufLoader) DisconnectAreaPrepared(connectionID int) {
+	signalPixbufLoaderAreaPreparedLock.Lock()
+	defer signalPixbufLoaderAreaPreparedLock.Unlock()
+
 	_, exists := signalPixbufLoaderAreaPreparedMap[connectionID]
 	if !exists {
 		return
@@ -716,6 +719,9 @@ DisconnectAreaUpdated disconnects a callback from the 'area-updated' signal for 
 The connectionID should be a value returned from a call to ConnectAreaUpdated.
 */
 func (recv *PixbufLoader) DisconnectAreaUpdated(connectionID int) {
+	signalPixbufLoaderAreaUpdatedLock.Lock()
+	defer signalPixbufLoaderAreaUpdatedLock.Unlock()
+
 	_, exists := signalPixbufLoaderAreaUpdatedMap[connectionID]
 	if !exists {
 		return
@@ -761,6 +767,9 @@ DisconnectClosed disconnects a callback from the 'closed' signal for the PixbufL
 The connectionID should be a value returned from a call to ConnectClosed.
 */
 func (recv *PixbufLoader) DisconnectClosed(connectionID int) {
+	signalPixbufLoaderClosedLock.Lock()
+	defer signalPixbufLoaderClosedLock.Unlock()
+
 	_, exists := signalPixbufLoaderClosedMap[connectionID]
 	if !exists {
 		return
@@ -806,6 +815,9 @@ DisconnectSizePrepared disconnects a callback from the 'size-prepared' signal fo
 The connectionID should be a value returned from a call to ConnectSizePrepared.
 */
 func (recv *PixbufLoader) DisconnectSizePrepared(connectionID int) {
+	signalPixbufLoaderSizePreparedLock.Lock()
+	defer signalPixbufLoaderSizePreparedLock.Unlock()
+
 	_, exists := signalPixbufLoaderSizePreparedMap[connectionID]
 	if !exists {
 		return

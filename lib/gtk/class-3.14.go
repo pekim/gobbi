@@ -320,6 +320,9 @@ DisconnectNoMatches disconnects a callback from the 'no-matches' signal for the 
 The connectionID should be a value returned from a call to ConnectNoMatches.
 */
 func (recv *EntryCompletion) DisconnectNoMatches(connectionID int) {
+	signalEntryCompletionNoMatchesLock.Lock()
+	defer signalEntryCompletionNoMatchesLock.Unlock()
+
 	_, exists := signalEntryCompletionNoMatchesMap[connectionID]
 	if !exists {
 		return
@@ -405,6 +408,9 @@ DisconnectBegin disconnects a callback from the 'begin' signal for the Gesture.
 The connectionID should be a value returned from a call to ConnectBegin.
 */
 func (recv *Gesture) DisconnectBegin(connectionID int) {
+	signalGestureBeginLock.Lock()
+	defer signalGestureBeginLock.Unlock()
+
 	_, exists := signalGestureBeginMap[connectionID]
 	if !exists {
 		return
@@ -450,6 +456,9 @@ DisconnectCancel disconnects a callback from the 'cancel' signal for the Gesture
 The connectionID should be a value returned from a call to ConnectCancel.
 */
 func (recv *Gesture) DisconnectCancel(connectionID int) {
+	signalGestureCancelLock.Lock()
+	defer signalGestureCancelLock.Unlock()
+
 	_, exists := signalGestureCancelMap[connectionID]
 	if !exists {
 		return
@@ -495,6 +504,9 @@ DisconnectEnd disconnects a callback from the 'end' signal for the Gesture.
 The connectionID should be a value returned from a call to ConnectEnd.
 */
 func (recv *Gesture) DisconnectEnd(connectionID int) {
+	signalGestureEndLock.Lock()
+	defer signalGestureEndLock.Unlock()
+
 	_, exists := signalGestureEndMap[connectionID]
 	if !exists {
 		return
@@ -540,6 +552,9 @@ DisconnectSequenceStateChanged disconnects a callback from the 'sequence-state-c
 The connectionID should be a value returned from a call to ConnectSequenceStateChanged.
 */
 func (recv *Gesture) DisconnectSequenceStateChanged(connectionID int) {
+	signalGestureSequenceStateChangedLock.Lock()
+	defer signalGestureSequenceStateChangedLock.Unlock()
+
 	_, exists := signalGestureSequenceStateChangedMap[connectionID]
 	if !exists {
 		return
@@ -585,6 +600,9 @@ DisconnectUpdate disconnects a callback from the 'update' signal for the Gesture
 The connectionID should be a value returned from a call to ConnectUpdate.
 */
 func (recv *Gesture) DisconnectUpdate(connectionID int) {
+	signalGestureUpdateLock.Lock()
+	defer signalGestureUpdateLock.Unlock()
+
 	_, exists := signalGestureUpdateMap[connectionID]
 	if !exists {
 		return
@@ -799,6 +817,9 @@ DisconnectDragBegin disconnects a callback from the 'drag-begin' signal for the 
 The connectionID should be a value returned from a call to ConnectDragBegin.
 */
 func (recv *GestureDrag) DisconnectDragBegin(connectionID int) {
+	signalGestureDragDragBeginLock.Lock()
+	defer signalGestureDragDragBeginLock.Unlock()
+
 	_, exists := signalGestureDragDragBeginMap[connectionID]
 	if !exists {
 		return
@@ -844,6 +865,9 @@ DisconnectDragEnd disconnects a callback from the 'drag-end' signal for the Gest
 The connectionID should be a value returned from a call to ConnectDragEnd.
 */
 func (recv *GestureDrag) DisconnectDragEnd(connectionID int) {
+	signalGestureDragDragEndLock.Lock()
+	defer signalGestureDragDragEndLock.Unlock()
+
 	_, exists := signalGestureDragDragEndMap[connectionID]
 	if !exists {
 		return
@@ -889,6 +913,9 @@ DisconnectDragUpdate disconnects a callback from the 'drag-update' signal for th
 The connectionID should be a value returned from a call to ConnectDragUpdate.
 */
 func (recv *GestureDrag) DisconnectDragUpdate(connectionID int) {
+	signalGestureDragDragUpdateLock.Lock()
+	defer signalGestureDragDragUpdateLock.Unlock()
+
 	_, exists := signalGestureDragDragUpdateMap[connectionID]
 	if !exists {
 		return
@@ -976,6 +1003,9 @@ DisconnectCancelled disconnects a callback from the 'cancelled' signal for the G
 The connectionID should be a value returned from a call to ConnectCancelled.
 */
 func (recv *GestureLongPress) DisconnectCancelled(connectionID int) {
+	signalGestureLongPressCancelledLock.Lock()
+	defer signalGestureLongPressCancelledLock.Unlock()
+
 	_, exists := signalGestureLongPressCancelledMap[connectionID]
 	if !exists {
 		return
@@ -1021,6 +1051,9 @@ DisconnectPressed disconnects a callback from the 'pressed' signal for the Gestu
 The connectionID should be a value returned from a call to ConnectPressed.
 */
 func (recv *GestureLongPress) DisconnectPressed(connectionID int) {
+	signalGestureLongPressPressedLock.Lock()
+	defer signalGestureLongPressPressedLock.Unlock()
+
 	_, exists := signalGestureLongPressPressedMap[connectionID]
 	if !exists {
 		return
@@ -1076,6 +1109,9 @@ DisconnectPressed disconnects a callback from the 'pressed' signal for the Gestu
 The connectionID should be a value returned from a call to ConnectPressed.
 */
 func (recv *GestureMultiPress) DisconnectPressed(connectionID int) {
+	signalGestureMultiPressPressedLock.Lock()
+	defer signalGestureMultiPressPressedLock.Unlock()
+
 	_, exists := signalGestureMultiPressPressedMap[connectionID]
 	if !exists {
 		return
@@ -1121,6 +1157,9 @@ DisconnectReleased disconnects a callback from the 'released' signal for the Ges
 The connectionID should be a value returned from a call to ConnectReleased.
 */
 func (recv *GestureMultiPress) DisconnectReleased(connectionID int) {
+	signalGestureMultiPressReleasedLock.Lock()
+	defer signalGestureMultiPressReleasedLock.Unlock()
+
 	_, exists := signalGestureMultiPressReleasedMap[connectionID]
 	if !exists {
 		return
@@ -1166,6 +1205,9 @@ DisconnectStopped disconnects a callback from the 'stopped' signal for the Gestu
 The connectionID should be a value returned from a call to ConnectStopped.
 */
 func (recv *GestureMultiPress) DisconnectStopped(connectionID int) {
+	signalGestureMultiPressStoppedLock.Lock()
+	defer signalGestureMultiPressStoppedLock.Unlock()
+
 	_, exists := signalGestureMultiPressStoppedMap[connectionID]
 	if !exists {
 		return
@@ -1225,6 +1267,9 @@ DisconnectPan disconnects a callback from the 'pan' signal for the GesturePan.
 The connectionID should be a value returned from a call to ConnectPan.
 */
 func (recv *GesturePan) DisconnectPan(connectionID int) {
+	signalGesturePanPanLock.Lock()
+	defer signalGesturePanPanLock.Unlock()
+
 	_, exists := signalGesturePanPanMap[connectionID]
 	if !exists {
 		return
@@ -1299,6 +1344,9 @@ DisconnectAngleChanged disconnects a callback from the 'angle-changed' signal fo
 The connectionID should be a value returned from a call to ConnectAngleChanged.
 */
 func (recv *GestureRotate) DisconnectAngleChanged(connectionID int) {
+	signalGestureRotateAngleChangedLock.Lock()
+	defer signalGestureRotateAngleChangedLock.Unlock()
+
 	_, exists := signalGestureRotateAngleChangedMap[connectionID]
 	if !exists {
 		return
@@ -1431,6 +1479,9 @@ DisconnectSwipe disconnects a callback from the 'swipe' signal for the GestureSw
 The connectionID should be a value returned from a call to ConnectSwipe.
 */
 func (recv *GestureSwipe) DisconnectSwipe(connectionID int) {
+	signalGestureSwipeSwipeLock.Lock()
+	defer signalGestureSwipeSwipeLock.Unlock()
+
 	_, exists := signalGestureSwipeSwipeMap[connectionID]
 	if !exists {
 		return
@@ -1502,6 +1553,9 @@ DisconnectScaleChanged disconnects a callback from the 'scale-changed' signal fo
 The connectionID should be a value returned from a call to ConnectScaleChanged.
 */
 func (recv *GestureZoom) DisconnectScaleChanged(connectionID int) {
+	signalGestureZoomScaleChangedLock.Lock()
+	defer signalGestureZoomScaleChangedLock.Unlock()
+
 	_, exists := signalGestureZoomScaleChangedMap[connectionID]
 	if !exists {
 		return
@@ -1587,6 +1641,9 @@ DisconnectSelectAll disconnects a callback from the 'select-all' signal for the 
 The connectionID should be a value returned from a call to ConnectSelectAll.
 */
 func (recv *ListBox) DisconnectSelectAll(connectionID int) {
+	signalListBoxSelectAllLock.Lock()
+	defer signalListBoxSelectAllLock.Unlock()
+
 	_, exists := signalListBoxSelectAllMap[connectionID]
 	if !exists {
 		return
@@ -1632,6 +1689,9 @@ DisconnectSelectedRowsChanged disconnects a callback from the 'selected-rows-cha
 The connectionID should be a value returned from a call to ConnectSelectedRowsChanged.
 */
 func (recv *ListBox) DisconnectSelectedRowsChanged(connectionID int) {
+	signalListBoxSelectedRowsChangedLock.Lock()
+	defer signalListBoxSelectedRowsChangedLock.Unlock()
+
 	_, exists := signalListBoxSelectedRowsChangedMap[connectionID]
 	if !exists {
 		return
@@ -1677,6 +1737,9 @@ DisconnectUnselectAll disconnects a callback from the 'unselect-all' signal for 
 The connectionID should be a value returned from a call to ConnectUnselectAll.
 */
 func (recv *ListBox) DisconnectUnselectAll(connectionID int) {
+	signalListBoxUnselectAllLock.Lock()
+	defer signalListBoxUnselectAllLock.Unlock()
+
 	_, exists := signalListBoxUnselectAllMap[connectionID]
 	if !exists {
 		return
@@ -1823,6 +1886,9 @@ DisconnectShowEnterLocation disconnects a callback from the 'show-enter-location
 The connectionID should be a value returned from a call to ConnectShowEnterLocation.
 */
 func (recv *PlacesSidebar) DisconnectShowEnterLocation(connectionID int) {
+	signalPlacesSidebarShowEnterLocationLock.Lock()
+	defer signalPlacesSidebarShowEnterLocationLock.Unlock()
+
 	_, exists := signalPlacesSidebarShowEnterLocationMap[connectionID]
 	if !exists {
 		return
@@ -1904,6 +1970,9 @@ DisconnectStateSet disconnects a callback from the 'state-set' signal for the Sw
 The connectionID should be a value returned from a call to ConnectStateSet.
 */
 func (recv *Switch) DisconnectStateSet(connectionID int) {
+	signalSwitchStateSetLock.Lock()
+	defer signalSwitchStateSetLock.Unlock()
+
 	_, exists := signalSwitchStateSetMap[connectionID]
 	if !exists {
 		return

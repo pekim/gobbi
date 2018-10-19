@@ -510,6 +510,9 @@ DisconnectEdgeOvershot disconnects a callback from the 'edge-overshot' signal fo
 The connectionID should be a value returned from a call to ConnectEdgeOvershot.
 */
 func (recv *ScrolledWindow) DisconnectEdgeOvershot(connectionID int) {
+	signalScrolledWindowEdgeOvershotLock.Lock()
+	defer signalScrolledWindowEdgeOvershotLock.Unlock()
+
 	_, exists := signalScrolledWindowEdgeOvershotMap[connectionID]
 	if !exists {
 		return
@@ -555,6 +558,9 @@ DisconnectEdgeReached disconnects a callback from the 'edge-reached' signal for 
 The connectionID should be a value returned from a call to ConnectEdgeReached.
 */
 func (recv *ScrolledWindow) DisconnectEdgeReached(connectionID int) {
+	signalScrolledWindowEdgeReachedLock.Lock()
+	defer signalScrolledWindowEdgeReachedLock.Unlock()
+
 	_, exists := signalScrolledWindowEdgeReachedMap[connectionID]
 	if !exists {
 		return
@@ -618,6 +624,9 @@ DisconnectNextMatch disconnects a callback from the 'next-match' signal for the 
 The connectionID should be a value returned from a call to ConnectNextMatch.
 */
 func (recv *SearchEntry) DisconnectNextMatch(connectionID int) {
+	signalSearchEntryNextMatchLock.Lock()
+	defer signalSearchEntryNextMatchLock.Unlock()
+
 	_, exists := signalSearchEntryNextMatchMap[connectionID]
 	if !exists {
 		return
@@ -663,6 +672,9 @@ DisconnectPreviousMatch disconnects a callback from the 'previous-match' signal 
 The connectionID should be a value returned from a call to ConnectPreviousMatch.
 */
 func (recv *SearchEntry) DisconnectPreviousMatch(connectionID int) {
+	signalSearchEntryPreviousMatchLock.Lock()
+	defer signalSearchEntryPreviousMatchLock.Unlock()
+
 	_, exists := signalSearchEntryPreviousMatchMap[connectionID]
 	if !exists {
 		return
@@ -708,6 +720,9 @@ DisconnectStopSearch disconnects a callback from the 'stop-search' signal for th
 The connectionID should be a value returned from a call to ConnectStopSearch.
 */
 func (recv *SearchEntry) DisconnectStopSearch(connectionID int) {
+	signalSearchEntryStopSearchLock.Lock()
+	defer signalSearchEntryStopSearchLock.Unlock()
+
 	_, exists := signalSearchEntryStopSearchMap[connectionID]
 	if !exists {
 		return
@@ -836,6 +851,9 @@ DisconnectExtendSelection disconnects a callback from the 'extend-selection' sig
 The connectionID should be a value returned from a call to ConnectExtendSelection.
 */
 func (recv *TextView) DisconnectExtendSelection(connectionID int) {
+	signalTextViewExtendSelectionLock.Lock()
+	defer signalTextViewExtendSelectionLock.Unlock()
+
 	_, exists := signalTextViewExtendSelectionMap[connectionID]
 	if !exists {
 		return

@@ -91,6 +91,9 @@ DisconnectToolChanged disconnects a callback from the 'tool-changed' signal for 
 The connectionID should be a value returned from a call to ConnectToolChanged.
 */
 func (recv *Device) DisconnectToolChanged(connectionID int) {
+	signalDeviceToolChangedLock.Lock()
+	defer signalDeviceToolChangedLock.Unlock()
+
 	_, exists := signalDeviceToolChangedMap[connectionID]
 	if !exists {
 		return
@@ -200,6 +203,9 @@ DisconnectMonitorAdded disconnects a callback from the 'monitor-added' signal fo
 The connectionID should be a value returned from a call to ConnectMonitorAdded.
 */
 func (recv *Display) DisconnectMonitorAdded(connectionID int) {
+	signalDisplayMonitorAddedLock.Lock()
+	defer signalDisplayMonitorAddedLock.Unlock()
+
 	_, exists := signalDisplayMonitorAddedMap[connectionID]
 	if !exists {
 		return
@@ -245,6 +251,9 @@ DisconnectMonitorRemoved disconnects a callback from the 'monitor-removed' signa
 The connectionID should be a value returned from a call to ConnectMonitorRemoved.
 */
 func (recv *Display) DisconnectMonitorRemoved(connectionID int) {
+	signalDisplayMonitorRemovedLock.Lock()
+	defer signalDisplayMonitorRemovedLock.Unlock()
+
 	_, exists := signalDisplayMonitorRemovedMap[connectionID]
 	if !exists {
 		return
@@ -451,6 +460,9 @@ DisconnectInvalidate disconnects a callback from the 'invalidate' signal for the
 The connectionID should be a value returned from a call to ConnectInvalidate.
 */
 func (recv *Monitor) DisconnectInvalidate(connectionID int) {
+	signalMonitorInvalidateLock.Lock()
+	defer signalMonitorInvalidateLock.Unlock()
+
 	_, exists := signalMonitorInvalidateMap[connectionID]
 	if !exists {
 		return
@@ -615,6 +627,9 @@ DisconnectMovedToRect disconnects a callback from the 'moved-to-rect' signal for
 The connectionID should be a value returned from a call to ConnectMovedToRect.
 */
 func (recv *Window) DisconnectMovedToRect(connectionID int) {
+	signalWindowMovedToRectLock.Lock()
+	defer signalWindowMovedToRectLock.Unlock()
+
 	_, exists := signalWindowMovedToRectMap[connectionID]
 	if !exists {
 		return

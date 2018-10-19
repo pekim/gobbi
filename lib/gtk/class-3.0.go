@@ -394,6 +394,9 @@ DisconnectFocusChanged disconnects a callback from the 'focus-changed' signal fo
 The connectionID should be a value returned from a call to ConnectFocusChanged.
 */
 func (recv *CellArea) DisconnectFocusChanged(connectionID int) {
+	signalCellAreaFocusChangedLock.Lock()
+	defer signalCellAreaFocusChangedLock.Unlock()
+
 	_, exists := signalCellAreaFocusChangedMap[connectionID]
 	if !exists {
 		return
@@ -1705,6 +1708,9 @@ DisconnectChanged disconnects a callback from the 'changed' signal for the Style
 The connectionID should be a value returned from a call to ConnectChanged.
 */
 func (recv *StyleContext) DisconnectChanged(connectionID int) {
+	signalStyleContextChangedLock.Lock()
+	defer signalStyleContextChangedLock.Unlock()
+
 	_, exists := signalStyleContextChangedMap[connectionID]
 	if !exists {
 		return
@@ -2462,6 +2468,9 @@ DisconnectDraw disconnects a callback from the 'draw' signal for the Widget.
 The connectionID should be a value returned from a call to ConnectDraw.
 */
 func (recv *Widget) DisconnectDraw(connectionID int) {
+	signalWidgetDrawLock.Lock()
+	defer signalWidgetDrawLock.Unlock()
+
 	_, exists := signalWidgetDrawMap[connectionID]
 	if !exists {
 		return
@@ -2513,6 +2522,9 @@ DisconnectStateFlagsChanged disconnects a callback from the 'state-flags-changed
 The connectionID should be a value returned from a call to ConnectStateFlagsChanged.
 */
 func (recv *Widget) DisconnectStateFlagsChanged(connectionID int) {
+	signalWidgetStateFlagsChangedLock.Lock()
+	defer signalWidgetStateFlagsChangedLock.Unlock()
+
 	_, exists := signalWidgetStateFlagsChangedMap[connectionID]
 	if !exists {
 		return
@@ -2558,6 +2570,9 @@ DisconnectStyleUpdated disconnects a callback from the 'style-updated' signal fo
 The connectionID should be a value returned from a call to ConnectStyleUpdated.
 */
 func (recv *Widget) DisconnectStyleUpdated(connectionID int) {
+	signalWidgetStyleUpdatedLock.Lock()
+	defer signalWidgetStyleUpdatedLock.Unlock()
+
 	_, exists := signalWidgetStyleUpdatedMap[connectionID]
 	if !exists {
 		return

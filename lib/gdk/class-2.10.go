@@ -71,6 +71,9 @@ DisconnectCompositedChanged disconnects a callback from the 'composited-changed'
 The connectionID should be a value returned from a call to ConnectCompositedChanged.
 */
 func (recv *Screen) DisconnectCompositedChanged(connectionID int) {
+	signalScreenCompositedChangedLock.Lock()
+	defer signalScreenCompositedChangedLock.Unlock()
+
 	_, exists := signalScreenCompositedChangedMap[connectionID]
 	if !exists {
 		return

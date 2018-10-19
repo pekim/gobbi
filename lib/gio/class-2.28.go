@@ -119,6 +119,9 @@ DisconnectActivate disconnects a callback from the 'activate' signal for the App
 The connectionID should be a value returned from a call to ConnectActivate.
 */
 func (recv *Application) DisconnectActivate(connectionID int) {
+	signalApplicationActivateLock.Lock()
+	defer signalApplicationActivateLock.Unlock()
+
 	_, exists := signalApplicationActivateMap[connectionID]
 	if !exists {
 		return
@@ -170,6 +173,9 @@ DisconnectShutdown disconnects a callback from the 'shutdown' signal for the App
 The connectionID should be a value returned from a call to ConnectShutdown.
 */
 func (recv *Application) DisconnectShutdown(connectionID int) {
+	signalApplicationShutdownLock.Lock()
+	defer signalApplicationShutdownLock.Unlock()
+
 	_, exists := signalApplicationShutdownMap[connectionID]
 	if !exists {
 		return
@@ -215,6 +221,9 @@ DisconnectStartup disconnects a callback from the 'startup' signal for the Appli
 The connectionID should be a value returned from a call to ConnectStartup.
 */
 func (recv *Application) DisconnectStartup(connectionID int) {
+	signalApplicationStartupLock.Lock()
+	defer signalApplicationStartupLock.Unlock()
+
 	_, exists := signalApplicationStartupMap[connectionID]
 	if !exists {
 		return

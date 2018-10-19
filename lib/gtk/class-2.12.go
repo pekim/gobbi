@@ -295,6 +295,9 @@ DisconnectMoveActive disconnects a callback from the 'move-active' signal for th
 The connectionID should be a value returned from a call to ConnectMoveActive.
 */
 func (recv *ComboBox) DisconnectMoveActive(connectionID int) {
+	signalComboBoxMoveActiveLock.Lock()
+	defer signalComboBoxMoveActiveLock.Unlock()
+
 	_, exists := signalComboBoxMoveActiveMap[connectionID]
 	if !exists {
 		return
@@ -340,6 +343,9 @@ DisconnectPopdown disconnects a callback from the 'popdown' signal for the Combo
 The connectionID should be a value returned from a call to ConnectPopdown.
 */
 func (recv *ComboBox) DisconnectPopdown(connectionID int) {
+	signalComboBoxPopdownLock.Lock()
+	defer signalComboBoxPopdownLock.Unlock()
+
 	_, exists := signalComboBoxPopdownMap[connectionID]
 	if !exists {
 		return
@@ -385,6 +391,9 @@ DisconnectPopup disconnects a callback from the 'popup' signal for the ComboBox.
 The connectionID should be a value returned from a call to ConnectPopup.
 */
 func (recv *ComboBox) DisconnectPopup(connectionID int) {
+	signalComboBoxPopupLock.Lock()
+	defer signalComboBoxPopupLock.Unlock()
+
 	_, exists := signalComboBoxPopupMap[connectionID]
 	if !exists {
 		return
@@ -485,6 +494,9 @@ DisconnectFileSet disconnects a callback from the 'file-set' signal for the File
 The connectionID should be a value returned from a call to ConnectFileSet.
 */
 func (recv *FileChooserButton) DisconnectFileSet(connectionID int) {
+	signalFileChooserButtonFileSetLock.Lock()
+	defer signalFileChooserButtonFileSetLock.Unlock()
+
 	_, exists := signalFileChooserButtonFileSetMap[connectionID]
 	if !exists {
 		return
@@ -624,6 +636,9 @@ DisconnectMoveSelected disconnects a callback from the 'move-selected' signal fo
 The connectionID should be a value returned from a call to ConnectMoveSelected.
 */
 func (recv *MenuShell) DisconnectMoveSelected(connectionID int) {
+	signalMenuShellMoveSelectedLock.Lock()
+	defer signalMenuShellMoveSelectedLock.Unlock()
+
 	_, exists := signalMenuShellMoveSelectedMap[connectionID]
 	if !exists {
 		return
@@ -970,6 +985,9 @@ DisconnectPopdown disconnects a callback from the 'popdown' signal for the Scale
 The connectionID should be a value returned from a call to ConnectPopdown.
 */
 func (recv *ScaleButton) DisconnectPopdown(connectionID int) {
+	signalScaleButtonPopdownLock.Lock()
+	defer signalScaleButtonPopdownLock.Unlock()
+
 	_, exists := signalScaleButtonPopdownMap[connectionID]
 	if !exists {
 		return
@@ -1015,6 +1033,9 @@ DisconnectPopup disconnects a callback from the 'popup' signal for the ScaleButt
 The connectionID should be a value returned from a call to ConnectPopup.
 */
 func (recv *ScaleButton) DisconnectPopup(connectionID int) {
+	signalScaleButtonPopupLock.Lock()
+	defer signalScaleButtonPopupLock.Unlock()
+
 	_, exists := signalScaleButtonPopupMap[connectionID]
 	if !exists {
 		return
@@ -1060,6 +1081,9 @@ DisconnectValueChanged disconnects a callback from the 'value-changed' signal fo
 The connectionID should be a value returned from a call to ConnectValueChanged.
 */
 func (recv *ScaleButton) DisconnectValueChanged(connectionID int) {
+	signalScaleButtonValueChangedLock.Lock()
+	defer signalScaleButtonValueChangedLock.Unlock()
+
 	_, exists := signalScaleButtonValueChangedMap[connectionID]
 	if !exists {
 		return
@@ -1487,6 +1511,9 @@ DisconnectDragFailed disconnects a callback from the 'drag-failed' signal for th
 The connectionID should be a value returned from a call to ConnectDragFailed.
 */
 func (recv *Widget) DisconnectDragFailed(connectionID int) {
+	signalWidgetDragFailedLock.Lock()
+	defer signalWidgetDragFailedLock.Unlock()
+
 	_, exists := signalWidgetDragFailedMap[connectionID]
 	if !exists {
 		return
@@ -1536,6 +1563,9 @@ DisconnectKeynavFailed disconnects a callback from the 'keynav-failed' signal fo
 The connectionID should be a value returned from a call to ConnectKeynavFailed.
 */
 func (recv *Widget) DisconnectKeynavFailed(connectionID int) {
+	signalWidgetKeynavFailedLock.Lock()
+	defer signalWidgetKeynavFailedLock.Unlock()
+
 	_, exists := signalWidgetKeynavFailedMap[connectionID]
 	if !exists {
 		return
@@ -1581,6 +1611,9 @@ DisconnectQueryTooltip disconnects a callback from the 'query-tooltip' signal fo
 The connectionID should be a value returned from a call to ConnectQueryTooltip.
 */
 func (recv *Widget) DisconnectQueryTooltip(connectionID int) {
+	signalWidgetQueryTooltipLock.Lock()
+	defer signalWidgetQueryTooltipLock.Unlock()
+
 	_, exists := signalWidgetQueryTooltipMap[connectionID]
 	if !exists {
 		return

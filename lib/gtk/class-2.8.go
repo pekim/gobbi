@@ -457,6 +457,9 @@ DisconnectGrabBrokenEvent disconnects a callback from the 'grab-broken-event' si
 The connectionID should be a value returned from a call to ConnectGrabBrokenEvent.
 */
 func (recv *Widget) DisconnectGrabBrokenEvent(connectionID int) {
+	signalWidgetGrabBrokenEventLock.Lock()
+	defer signalWidgetGrabBrokenEventLock.Unlock()
+
 	_, exists := signalWidgetGrabBrokenEventMap[connectionID]
 	if !exists {
 		return

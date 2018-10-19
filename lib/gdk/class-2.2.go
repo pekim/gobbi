@@ -102,6 +102,9 @@ DisconnectClosed disconnects a callback from the 'closed' signal for the Display
 The connectionID should be a value returned from a call to ConnectClosed.
 */
 func (recv *Display) DisconnectClosed(connectionID int) {
+	signalDisplayClosedLock.Lock()
+	defer signalDisplayClosedLock.Unlock()
+
 	_, exists := signalDisplayClosedMap[connectionID]
 	if !exists {
 		return
@@ -269,6 +272,9 @@ DisconnectDisplayOpened disconnects a callback from the 'display-opened' signal 
 The connectionID should be a value returned from a call to ConnectDisplayOpened.
 */
 func (recv *DisplayManager) DisconnectDisplayOpened(connectionID int) {
+	signalDisplayManagerDisplayOpenedLock.Lock()
+	defer signalDisplayManagerDisplayOpenedLock.Unlock()
+
 	_, exists := signalDisplayManagerDisplayOpenedMap[connectionID]
 	if !exists {
 		return
@@ -339,6 +345,9 @@ DisconnectKeysChanged disconnects a callback from the 'keys-changed' signal for 
 The connectionID should be a value returned from a call to ConnectKeysChanged.
 */
 func (recv *Keymap) DisconnectKeysChanged(connectionID int) {
+	signalKeymapKeysChangedLock.Lock()
+	defer signalKeymapKeysChangedLock.Unlock()
+
 	_, exists := signalKeymapKeysChangedMap[connectionID]
 	if !exists {
 		return
@@ -384,6 +393,9 @@ DisconnectSizeChanged disconnects a callback from the 'size-changed' signal for 
 The connectionID should be a value returned from a call to ConnectSizeChanged.
 */
 func (recv *Screen) DisconnectSizeChanged(connectionID int) {
+	signalScreenSizeChangedLock.Lock()
+	defer signalScreenSizeChangedLock.Unlock()
+
 	_, exists := signalScreenSizeChangedMap[connectionID]
 	if !exists {
 		return

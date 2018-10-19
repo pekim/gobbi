@@ -107,6 +107,9 @@ DisconnectSeatAdded disconnects a callback from the 'seat-added' signal for the 
 The connectionID should be a value returned from a call to ConnectSeatAdded.
 */
 func (recv *Display) DisconnectSeatAdded(connectionID int) {
+	signalDisplaySeatAddedLock.Lock()
+	defer signalDisplaySeatAddedLock.Unlock()
+
 	_, exists := signalDisplaySeatAddedMap[connectionID]
 	if !exists {
 		return
@@ -152,6 +155,9 @@ DisconnectSeatRemoved disconnects a callback from the 'seat-removed' signal for 
 The connectionID should be a value returned from a call to ConnectSeatRemoved.
 */
 func (recv *Display) DisconnectSeatRemoved(connectionID int) {
+	signalDisplaySeatRemovedLock.Lock()
+	defer signalDisplaySeatRemovedLock.Unlock()
+
 	_, exists := signalDisplaySeatRemovedMap[connectionID]
 	if !exists {
 		return
@@ -213,6 +219,9 @@ DisconnectActionChanged disconnects a callback from the 'action-changed' signal 
 The connectionID should be a value returned from a call to ConnectActionChanged.
 */
 func (recv *DragContext) DisconnectActionChanged(connectionID int) {
+	signalDragContextActionChangedLock.Lock()
+	defer signalDragContextActionChangedLock.Unlock()
+
 	_, exists := signalDragContextActionChangedMap[connectionID]
 	if !exists {
 		return
@@ -258,6 +267,9 @@ DisconnectCancel disconnects a callback from the 'cancel' signal for the DragCon
 The connectionID should be a value returned from a call to ConnectCancel.
 */
 func (recv *DragContext) DisconnectCancel(connectionID int) {
+	signalDragContextCancelLock.Lock()
+	defer signalDragContextCancelLock.Unlock()
+
 	_, exists := signalDragContextCancelMap[connectionID]
 	if !exists {
 		return
@@ -303,6 +315,9 @@ DisconnectDndFinished disconnects a callback from the 'dnd-finished' signal for 
 The connectionID should be a value returned from a call to ConnectDndFinished.
 */
 func (recv *DragContext) DisconnectDndFinished(connectionID int) {
+	signalDragContextDndFinishedLock.Lock()
+	defer signalDragContextDndFinishedLock.Unlock()
+
 	_, exists := signalDragContextDndFinishedMap[connectionID]
 	if !exists {
 		return
@@ -348,6 +363,9 @@ DisconnectDropPerformed disconnects a callback from the 'drop-performed' signal 
 The connectionID should be a value returned from a call to ConnectDropPerformed.
 */
 func (recv *DragContext) DisconnectDropPerformed(connectionID int) {
+	signalDragContextDropPerformedLock.Lock()
+	defer signalDragContextDropPerformedLock.Unlock()
+
 	_, exists := signalDragContextDropPerformedMap[connectionID]
 	if !exists {
 		return

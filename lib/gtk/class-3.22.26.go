@@ -130,6 +130,9 @@ DisconnectShowStarredLocation disconnects a callback from the 'show-starred-loca
 The connectionID should be a value returned from a call to ConnectShowStarredLocation.
 */
 func (recv *PlacesSidebar) DisconnectShowStarredLocation(connectionID int) {
+	signalPlacesSidebarShowStarredLocationLock.Lock()
+	defer signalPlacesSidebarShowStarredLocationLock.Unlock()
+
 	_, exists := signalPlacesSidebarShowStarredLocationMap[connectionID]
 	if !exists {
 		return

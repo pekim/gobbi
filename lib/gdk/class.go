@@ -282,6 +282,9 @@ DisconnectChanged disconnects a callback from the 'changed' signal for the Devic
 The connectionID should be a value returned from a call to ConnectChanged.
 */
 func (recv *Device) DisconnectChanged(connectionID int) {
+	signalDeviceChangedLock.Lock()
+	defer signalDeviceChangedLock.Unlock()
+
 	_, exists := signalDeviceChangedMap[connectionID]
 	if !exists {
 		return
@@ -407,6 +410,9 @@ DisconnectDeviceAdded disconnects a callback from the 'device-added' signal for 
 The connectionID should be a value returned from a call to ConnectDeviceAdded.
 */
 func (recv *DeviceManager) DisconnectDeviceAdded(connectionID int) {
+	signalDeviceManagerDeviceAddedLock.Lock()
+	defer signalDeviceManagerDeviceAddedLock.Unlock()
+
 	_, exists := signalDeviceManagerDeviceAddedMap[connectionID]
 	if !exists {
 		return
@@ -452,6 +458,9 @@ DisconnectDeviceChanged disconnects a callback from the 'device-changed' signal 
 The connectionID should be a value returned from a call to ConnectDeviceChanged.
 */
 func (recv *DeviceManager) DisconnectDeviceChanged(connectionID int) {
+	signalDeviceManagerDeviceChangedLock.Lock()
+	defer signalDeviceManagerDeviceChangedLock.Unlock()
+
 	_, exists := signalDeviceManagerDeviceChangedMap[connectionID]
 	if !exists {
 		return
@@ -497,6 +506,9 @@ DisconnectDeviceRemoved disconnects a callback from the 'device-removed' signal 
 The connectionID should be a value returned from a call to ConnectDeviceRemoved.
 */
 func (recv *DeviceManager) DisconnectDeviceRemoved(connectionID int) {
+	signalDeviceManagerDeviceRemovedLock.Lock()
+	defer signalDeviceManagerDeviceRemovedLock.Unlock()
+
 	_, exists := signalDeviceManagerDeviceRemovedMap[connectionID]
 	if !exists {
 		return
@@ -574,6 +586,9 @@ DisconnectOpened disconnects a callback from the 'opened' signal for the Display
 The connectionID should be a value returned from a call to ConnectOpened.
 */
 func (recv *Display) DisconnectOpened(connectionID int) {
+	signalDisplayOpenedLock.Lock()
+	defer signalDisplayOpenedLock.Unlock()
+
 	_, exists := signalDisplayOpenedMap[connectionID]
 	if !exists {
 		return
@@ -742,6 +757,9 @@ DisconnectAfterPaint disconnects a callback from the 'after-paint' signal for th
 The connectionID should be a value returned from a call to ConnectAfterPaint.
 */
 func (recv *FrameClock) DisconnectAfterPaint(connectionID int) {
+	signalFrameClockAfterPaintLock.Lock()
+	defer signalFrameClockAfterPaintLock.Unlock()
+
 	_, exists := signalFrameClockAfterPaintMap[connectionID]
 	if !exists {
 		return
@@ -787,6 +805,9 @@ DisconnectBeforePaint disconnects a callback from the 'before-paint' signal for 
 The connectionID should be a value returned from a call to ConnectBeforePaint.
 */
 func (recv *FrameClock) DisconnectBeforePaint(connectionID int) {
+	signalFrameClockBeforePaintLock.Lock()
+	defer signalFrameClockBeforePaintLock.Unlock()
+
 	_, exists := signalFrameClockBeforePaintMap[connectionID]
 	if !exists {
 		return
@@ -832,6 +853,9 @@ DisconnectFlushEvents disconnects a callback from the 'flush-events' signal for 
 The connectionID should be a value returned from a call to ConnectFlushEvents.
 */
 func (recv *FrameClock) DisconnectFlushEvents(connectionID int) {
+	signalFrameClockFlushEventsLock.Lock()
+	defer signalFrameClockFlushEventsLock.Unlock()
+
 	_, exists := signalFrameClockFlushEventsMap[connectionID]
 	if !exists {
 		return
@@ -877,6 +901,9 @@ DisconnectLayout disconnects a callback from the 'layout' signal for the FrameCl
 The connectionID should be a value returned from a call to ConnectLayout.
 */
 func (recv *FrameClock) DisconnectLayout(connectionID int) {
+	signalFrameClockLayoutLock.Lock()
+	defer signalFrameClockLayoutLock.Unlock()
+
 	_, exists := signalFrameClockLayoutMap[connectionID]
 	if !exists {
 		return
@@ -922,6 +949,9 @@ DisconnectPaint disconnects a callback from the 'paint' signal for the FrameCloc
 The connectionID should be a value returned from a call to ConnectPaint.
 */
 func (recv *FrameClock) DisconnectPaint(connectionID int) {
+	signalFrameClockPaintLock.Lock()
+	defer signalFrameClockPaintLock.Unlock()
+
 	_, exists := signalFrameClockPaintMap[connectionID]
 	if !exists {
 		return
@@ -967,6 +997,9 @@ DisconnectResumeEvents disconnects a callback from the 'resume-events' signal fo
 The connectionID should be a value returned from a call to ConnectResumeEvents.
 */
 func (recv *FrameClock) DisconnectResumeEvents(connectionID int) {
+	signalFrameClockResumeEventsLock.Lock()
+	defer signalFrameClockResumeEventsLock.Unlock()
+
 	_, exists := signalFrameClockResumeEventsMap[connectionID]
 	if !exists {
 		return
@@ -1012,6 +1045,9 @@ DisconnectUpdate disconnects a callback from the 'update' signal for the FrameCl
 The connectionID should be a value returned from a call to ConnectUpdate.
 */
 func (recv *FrameClock) DisconnectUpdate(connectionID int) {
+	signalFrameClockUpdateLock.Lock()
+	defer signalFrameClockUpdateLock.Unlock()
+
 	_, exists := signalFrameClockUpdateMap[connectionID]
 	if !exists {
 		return

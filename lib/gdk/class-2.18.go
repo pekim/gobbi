@@ -64,6 +64,9 @@ DisconnectFromEmbedder disconnects a callback from the 'from-embedder' signal fo
 The connectionID should be a value returned from a call to ConnectFromEmbedder.
 */
 func (recv *Window) DisconnectFromEmbedder(connectionID int) {
+	signalWindowFromEmbedderLock.Lock()
+	defer signalWindowFromEmbedderLock.Unlock()
+
 	_, exists := signalWindowFromEmbedderMap[connectionID]
 	if !exists {
 		return
@@ -111,6 +114,9 @@ DisconnectToEmbedder disconnects a callback from the 'to-embedder' signal for th
 The connectionID should be a value returned from a call to ConnectToEmbedder.
 */
 func (recv *Window) DisconnectToEmbedder(connectionID int) {
+	signalWindowToEmbedderLock.Lock()
+	defer signalWindowToEmbedderLock.Unlock()
+
 	_, exists := signalWindowToEmbedderMap[connectionID]
 	if !exists {
 		return

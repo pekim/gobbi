@@ -191,6 +191,9 @@ DisconnectShowOtherLocations disconnects a callback from the 'show-other-locatio
 The connectionID should be a value returned from a call to ConnectShowOtherLocations.
 */
 func (recv *PlacesSidebar) DisconnectShowOtherLocations(connectionID int) {
+	signalPlacesSidebarShowOtherLocationsLock.Lock()
+	defer signalPlacesSidebarShowOtherLocationsLock.Unlock()
+
 	_, exists := signalPlacesSidebarShowOtherLocationsMap[connectionID]
 	if !exists {
 		return

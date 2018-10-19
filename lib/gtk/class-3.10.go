@@ -539,6 +539,9 @@ DisconnectRowActivated disconnects a callback from the 'row-activated' signal fo
 The connectionID should be a value returned from a call to ConnectRowActivated.
 */
 func (recv *ListBox) DisconnectRowActivated(connectionID int) {
+	signalListBoxRowActivatedLock.Lock()
+	defer signalListBoxRowActivatedLock.Unlock()
+
 	_, exists := signalListBoxRowActivatedMap[connectionID]
 	if !exists {
 		return
@@ -584,6 +587,9 @@ DisconnectRowSelected disconnects a callback from the 'row-selected' signal for 
 The connectionID should be a value returned from a call to ConnectRowSelected.
 */
 func (recv *ListBox) DisconnectRowSelected(connectionID int) {
+	signalListBoxRowSelectedLock.Lock()
+	defer signalListBoxRowSelectedLock.Unlock()
+
 	_, exists := signalListBoxRowSelectedMap[connectionID]
 	if !exists {
 		return
@@ -798,6 +804,9 @@ DisconnectActivate disconnects a callback from the 'activate' signal for the Lis
 The connectionID should be a value returned from a call to ConnectActivate.
 */
 func (recv *ListBoxRow) DisconnectActivate(connectionID int) {
+	signalListBoxRowActivateLock.Lock()
+	defer signalListBoxRowActivateLock.Unlock()
+
 	_, exists := signalListBoxRowActivateMap[connectionID]
 	if !exists {
 		return
@@ -907,6 +916,9 @@ DisconnectShowErrorMessage disconnects a callback from the 'show-error-message' 
 The connectionID should be a value returned from a call to ConnectShowErrorMessage.
 */
 func (recv *PlacesSidebar) DisconnectShowErrorMessage(connectionID int) {
+	signalPlacesSidebarShowErrorMessageLock.Lock()
+	defer signalPlacesSidebarShowErrorMessageLock.Unlock()
+
 	_, exists := signalPlacesSidebarShowErrorMessageMap[connectionID]
 	if !exists {
 		return
@@ -1160,6 +1172,9 @@ DisconnectSearchChanged disconnects a callback from the 'search-changed' signal 
 The connectionID should be a value returned from a call to ConnectSearchChanged.
 */
 func (recv *SearchEntry) DisconnectSearchChanged(connectionID int) {
+	signalSearchEntrySearchChangedLock.Lock()
+	defer signalSearchEntrySearchChangedLock.Unlock()
+
 	_, exists := signalSearchEntrySearchChangedMap[connectionID]
 	if !exists {
 		return

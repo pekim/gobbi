@@ -264,6 +264,9 @@ DisconnectChanged disconnects a callback from the 'changed' signal for the CellR
 The connectionID should be a value returned from a call to ConnectChanged.
 */
 func (recv *CellRendererCombo) DisconnectChanged(connectionID int) {
+	signalCellRendererComboChangedLock.Lock()
+	defer signalCellRendererComboChangedLock.Unlock()
+
 	_, exists := signalCellRendererComboChangedMap[connectionID]
 	if !exists {
 		return
@@ -873,6 +876,9 @@ DisconnectButtonPressEvent disconnects a callback from the 'button-press-event' 
 The connectionID should be a value returned from a call to ConnectButtonPressEvent.
 */
 func (recv *StatusIcon) DisconnectButtonPressEvent(connectionID int) {
+	signalStatusIconButtonPressEventLock.Lock()
+	defer signalStatusIconButtonPressEventLock.Unlock()
+
 	_, exists := signalStatusIconButtonPressEventMap[connectionID]
 	if !exists {
 		return
@@ -918,6 +924,9 @@ DisconnectButtonReleaseEvent disconnects a callback from the 'button-release-eve
 The connectionID should be a value returned from a call to ConnectButtonReleaseEvent.
 */
 func (recv *StatusIcon) DisconnectButtonReleaseEvent(connectionID int) {
+	signalStatusIconButtonReleaseEventLock.Lock()
+	defer signalStatusIconButtonReleaseEventLock.Unlock()
+
 	_, exists := signalStatusIconButtonReleaseEventMap[connectionID]
 	if !exists {
 		return
@@ -1000,6 +1009,9 @@ DisconnectDamageEvent disconnects a callback from the 'damage-event' signal for 
 The connectionID should be a value returned from a call to ConnectDamageEvent.
 */
 func (recv *Widget) DisconnectDamageEvent(connectionID int) {
+	signalWidgetDamageEventLock.Lock()
+	defer signalWidgetDamageEventLock.Unlock()
+
 	_, exists := signalWidgetDamageEventMap[connectionID]
 	if !exists {
 		return

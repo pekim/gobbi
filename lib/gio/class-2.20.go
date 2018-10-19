@@ -94,6 +94,9 @@ DisconnectAborted disconnects a callback from the 'aborted' signal for the Mount
 The connectionID should be a value returned from a call to ConnectAborted.
 */
 func (recv *MountOperation) DisconnectAborted(connectionID int) {
+	signalMountOperationAbortedLock.Lock()
+	defer signalMountOperationAbortedLock.Unlock()
+
 	_, exists := signalMountOperationAbortedMap[connectionID]
 	if !exists {
 		return
