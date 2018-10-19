@@ -4,7 +4,6 @@
 package gtk
 
 import (
-	"fmt"
 	cairo "github.com/pekim/gobbi/lib/cairo"
 	gdk "github.com/pekim/gobbi/lib/gdk"
 	gdkpixbuf "github.com/pekim/gobbi/lib/gdkpixbuf"
@@ -176,9 +175,7 @@ func (recv *Assistant) DisconnectApply(connectionID int) {
 }
 
 //export Assistant_applyHandler
-func Assistant_applyHandler() {
-	fmt.Println("cb")
-}
+func Assistant_applyHandler() {}
 
 var signalAssistantCancelId int
 var signalAssistantCancelMap = make(map[int]AssistantSignalCancelCallback)
@@ -224,9 +221,7 @@ func (recv *Assistant) DisconnectCancel(connectionID int) {
 }
 
 //export Assistant_cancelHandler
-func Assistant_cancelHandler() {
-	fmt.Println("cb")
-}
+func Assistant_cancelHandler() {}
 
 var signalAssistantCloseId int
 var signalAssistantCloseMap = make(map[int]AssistantSignalCloseCallback)
@@ -272,9 +267,7 @@ func (recv *Assistant) DisconnectClose(connectionID int) {
 }
 
 //export Assistant_closeHandler
-func Assistant_closeHandler() {
-	fmt.Println("cb")
-}
+func Assistant_closeHandler() {}
 
 var signalAssistantPrepareId int
 var signalAssistantPrepareMap = make(map[int]AssistantSignalPrepareCallback)
@@ -321,7 +314,7 @@ func (recv *Assistant) DisconnectPrepare(connectionID int) {
 
 //export Assistant_prepareHandler
 func Assistant_prepareHandler(c_page *C.GtkWidget) {
-	fmt.Println("cb")
+
 }
 
 // AssistantNew is a wrapper around the C function gtk_assistant_new.
@@ -1105,7 +1098,7 @@ func (recv *PrintOperation) DisconnectBeginPrint(connectionID int) {
 
 //export PrintOperation_beginPrintHandler
 func PrintOperation_beginPrintHandler(c_context *C.GtkPrintContext) {
-	fmt.Println("cb")
+
 }
 
 var signalPrintOperationCreateCustomWidgetId int
@@ -1152,9 +1145,7 @@ func (recv *PrintOperation) DisconnectCreateCustomWidget(connectionID int) {
 }
 
 //export PrintOperation_createCustomWidgetHandler
-func PrintOperation_createCustomWidgetHandler() *C.GObject {
-	fmt.Println("cb")
-}
+func PrintOperation_createCustomWidgetHandler() *C.GObject {}
 
 var signalPrintOperationCustomWidgetApplyId int
 var signalPrintOperationCustomWidgetApplyMap = make(map[int]PrintOperationSignalCustomWidgetApplyCallback)
@@ -1201,7 +1192,7 @@ func (recv *PrintOperation) DisconnectCustomWidgetApply(connectionID int) {
 
 //export PrintOperation_customWidgetApplyHandler
 func PrintOperation_customWidgetApplyHandler(c_widget *C.GtkWidget) {
-	fmt.Println("cb")
+
 }
 
 // Unsupported signal 'done' for PrintOperation : unsupported parameter result : type PrintOperationResult :
@@ -1253,7 +1244,7 @@ func (recv *PrintOperation) DisconnectEndPrint(connectionID int) {
 
 //export PrintOperation_endPrintHandler
 func PrintOperation_endPrintHandler(c_context *C.GtkPrintContext) {
-	fmt.Println("cb")
+
 }
 
 var signalPrintOperationPaginateId int
@@ -1301,7 +1292,7 @@ func (recv *PrintOperation) DisconnectPaginate(connectionID int) {
 
 //export PrintOperation_paginateHandler
 func PrintOperation_paginateHandler(c_context *C.GtkPrintContext) C.gboolean {
-	fmt.Println("cb")
+
 }
 
 // Unsupported signal 'preview' for PrintOperation : unsupported parameter preview : no type generator for PrintOperationPreview,
@@ -1352,9 +1343,7 @@ func (recv *PrintOperation) DisconnectStatusChanged(connectionID int) {
 }
 
 //export PrintOperation_statusChangedHandler
-func PrintOperation_statusChangedHandler() {
-	fmt.Println("cb")
-}
+func PrintOperation_statusChangedHandler() {}
 
 // PrintOperationNew is a wrapper around the C function gtk_print_operation_new.
 func PrintOperationNew() *PrintOperation {
@@ -2546,9 +2535,7 @@ func (recv *SpinButton) DisconnectWrapped(connectionID int) {
 }
 
 //export SpinButton_wrappedHandler
-func SpinButton_wrappedHandler() {
-	fmt.Println("cb")
-}
+func SpinButton_wrappedHandler() {}
 
 var signalStatusIconActivateId int
 var signalStatusIconActivateMap = make(map[int]StatusIconSignalActivateCallback)
@@ -2594,9 +2581,7 @@ func (recv *StatusIcon) DisconnectActivate(connectionID int) {
 }
 
 //export StatusIcon_activateHandler
-func StatusIcon_activateHandler() {
-	fmt.Println("cb")
-}
+func StatusIcon_activateHandler() {}
 
 // Unsupported signal 'popup-menu' for StatusIcon : unsupported parameter button : type guint :
 

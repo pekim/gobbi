@@ -4,7 +4,6 @@
 package gtk
 
 import (
-	"fmt"
 	cairo "github.com/pekim/gobbi/lib/cairo"
 	gdk "github.com/pekim/gobbi/lib/gdk"
 	pango "github.com/pekim/gobbi/lib/pango"
@@ -169,9 +168,7 @@ func (recv *PlacesSidebar) DisconnectShowOtherLocations(connectionID int) {
 }
 
 //export PlacesSidebar_showOtherLocationsHandler
-func PlacesSidebar_showOtherLocationsHandler() {
-	fmt.Println("cb")
-}
+func PlacesSidebar_showOtherLocationsHandler() {}
 
 // GetShowOtherLocations is a wrapper around the C function gtk_places_sidebar_get_show_other_locations.
 func (recv *PlacesSidebar) GetShowOtherLocations() bool {

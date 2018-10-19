@@ -3,10 +3,7 @@
 
 package gdk
 
-import (
-	"fmt"
-	"sync"
-)
+import "sync"
 
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <gdk/gdk.h>
@@ -66,9 +63,7 @@ func (recv *Keymap) DisconnectStateChanged(connectionID int) {
 }
 
 //export Keymap_stateChangedHandler
-func Keymap_stateChangedHandler() {
-	fmt.Println("cb")
-}
+func Keymap_stateChangedHandler() {}
 
 // GetCapsLockState is a wrapper around the C function gdk_keymap_get_caps_lock_state.
 func (recv *Keymap) GetCapsLockState() bool {

@@ -4,7 +4,6 @@
 package gdk
 
 import (
-	"fmt"
 	cairo "github.com/pekim/gobbi/lib/cairo"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	"sync"
@@ -97,7 +96,7 @@ func (recv *Device) DisconnectToolChanged(connectionID int) {
 
 //export Device_toolChangedHandler
 func Device_toolChangedHandler(c_tool *C.GdkDeviceTool) {
-	fmt.Println("cb")
+
 }
 
 // GetAxes is a wrapper around the C function gdk_device_get_axes.
@@ -209,7 +208,7 @@ func (recv *Display) DisconnectMonitorAdded(connectionID int) {
 
 //export Display_monitorAddedHandler
 func Display_monitorAddedHandler(c_monitor *C.GdkMonitor) {
-	fmt.Println("cb")
+
 }
 
 var signalDisplayMonitorRemovedId int
@@ -257,7 +256,7 @@ func (recv *Display) DisconnectMonitorRemoved(connectionID int) {
 
 //export Display_monitorRemovedHandler
 func Display_monitorRemovedHandler(c_monitor *C.GdkMonitor) {
-	fmt.Println("cb")
+
 }
 
 // GetMonitor is a wrapper around the C function gdk_display_get_monitor.
@@ -465,9 +464,7 @@ func (recv *Monitor) DisconnectInvalidate(connectionID int) {
 }
 
 //export Monitor_invalidateHandler
-func Monitor_invalidateHandler() {
-	fmt.Println("cb")
-}
+func Monitor_invalidateHandler() {}
 
 // GetDisplay is a wrapper around the C function gdk_monitor_get_display.
 func (recv *Monitor) GetDisplay() *Display {

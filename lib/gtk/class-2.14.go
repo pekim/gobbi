@@ -4,7 +4,6 @@
 package gtk
 
 import (
-	"fmt"
 	gdk "github.com/pekim/gobbi/lib/gdk"
 	gdkpixbuf "github.com/pekim/gobbi/lib/gdkpixbuf"
 	glib "github.com/pekim/gobbi/lib/glib"
@@ -794,7 +793,7 @@ func (recv *StatusIcon) DisconnectButtonPressEvent(connectionID int) {
 
 //export StatusIcon_buttonPressEventHandler
 func StatusIcon_buttonPressEventHandler(c_event *C.GdkEventButton) C.gboolean {
-	fmt.Println("cb")
+
 }
 
 var signalStatusIconButtonReleaseEventId int
@@ -842,7 +841,7 @@ func (recv *StatusIcon) DisconnectButtonReleaseEvent(connectionID int) {
 
 //export StatusIcon_buttonReleaseEventHandler
 func StatusIcon_buttonReleaseEventHandler(c_event *C.GdkEventButton) C.gboolean {
-	fmt.Println("cb")
+
 }
 
 // Unsupported : gtk_status_icon_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon, GIcon*
@@ -923,7 +922,7 @@ func (recv *Widget) DisconnectDamageEvent(connectionID int) {
 
 //export Widget_damageEventHandler
 func Widget_damageEventHandler(c_event *C.GdkEventExpose) C.gboolean {
-	fmt.Println("cb")
+
 }
 
 // Unsupported : gtk_widget_new : unsupported parameter type : no type generator for GType, GType

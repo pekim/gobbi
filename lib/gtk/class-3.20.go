@@ -4,7 +4,6 @@
 package gtk
 
 import (
-	"fmt"
 	gio "github.com/pekim/gobbi/lib/gio"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	"sync"
@@ -410,7 +409,7 @@ func (recv *PlacesSidebar) DisconnectMount(connectionID int) {
 
 //export PlacesSidebar_mountHandler
 func PlacesSidebar_mountHandler(c_mount_operation *C.GMountOperation) {
-	fmt.Println("cb")
+
 }
 
 // Unsupported signal 'show-other-locations-with-flags' for PlacesSidebar : unsupported parameter open_flags : type PlacesOpenFlags :
@@ -460,7 +459,7 @@ func (recv *PlacesSidebar) DisconnectUnmount(connectionID int) {
 
 //export PlacesSidebar_unmountHandler
 func PlacesSidebar_unmountHandler(c_mount_operation *C.GMountOperation) {
-	fmt.Println("cb")
+
 }
 
 // GetConstrainTo is a wrapper around the C function gtk_popover_get_constrain_to.
@@ -810,9 +809,7 @@ func (recv *ShortcutsWindow) DisconnectClose(connectionID int) {
 }
 
 //export ShortcutsWindow_closeHandler
-func ShortcutsWindow_closeHandler() {
-	fmt.Println("cb")
-}
+func ShortcutsWindow_closeHandler() {}
 
 var signalShortcutsWindowSearchId int
 var signalShortcutsWindowSearchMap = make(map[int]ShortcutsWindowSignalSearchCallback)
@@ -858,9 +855,7 @@ func (recv *ShortcutsWindow) DisconnectSearch(connectionID int) {
 }
 
 //export ShortcutsWindow_searchHandler
-func ShortcutsWindow_searchHandler() {
-	fmt.Println("cb")
-}
+func ShortcutsWindow_searchHandler() {}
 
 // Unsupported : gtk_status_icon_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon, GIcon*
 

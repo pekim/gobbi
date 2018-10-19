@@ -86,6 +86,11 @@ func (p *Parameter) generateCVar(g *jen.Group) {
 	g.Line()
 }
 
+func (p *Parameter) generateGoVar(g *jen.Group) {
+	p.Type.generator.generateParamGoVar(g, p.goVarName, p.cVarName, p.TransferOwnership)
+	g.Line()
+}
+
 func (p *Parameter) generateCallArgument(g *jen.Group) {
 	if p.Direction == "out" {
 		p.Type.generator.generateParamOutCallArgument(g, p.cVarName)

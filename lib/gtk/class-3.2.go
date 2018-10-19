@@ -4,7 +4,6 @@
 package gtk
 
 import (
-	"fmt"
 	gio "github.com/pekim/gobbi/lib/gio"
 	"sync"
 	"unsafe"
@@ -108,7 +107,7 @@ func (recv *Application) DisconnectWindowAdded(connectionID int) {
 
 //export Application_windowAddedHandler
 func Application_windowAddedHandler(c_window *C.GtkWindow) {
-	fmt.Println("cb")
+
 }
 
 var signalApplicationWindowRemovedId int
@@ -156,7 +155,7 @@ func (recv *Application) DisconnectWindowRemoved(connectionID int) {
 
 //export Application_windowRemovedHandler
 func Application_windowRemovedHandler(c_window *C.GtkWindow) {
-	fmt.Println("cb")
+
 }
 
 // RemovePage is a wrapper around the C function gtk_assistant_remove_page.

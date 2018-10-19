@@ -4,7 +4,6 @@
 package gtk
 
 import (
-	"fmt"
 	atk "github.com/pekim/gobbi/lib/atk"
 	gdk "github.com/pekim/gobbi/lib/gdk"
 	gdkpixbuf "github.com/pekim/gobbi/lib/gdkpixbuf"
@@ -438,7 +437,7 @@ func (recv *Clipboard) DisconnectOwnerChange(connectionID int) {
 
 //export Clipboard_ownerChangeHandler
 func Clipboard_ownerChangeHandler(c_event *C.GdkEventOwnerChange) {
-	fmt.Println("cb")
+
 }
 
 // Unsupported : gtk_clipboard_request_image : unsupported parameter callback : no type generator for ClipboardImageReceivedFunc, GtkClipboardImageReceivedFunc

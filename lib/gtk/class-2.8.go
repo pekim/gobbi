@@ -4,7 +4,6 @@
 package gtk
 
 import (
-	"fmt"
 	cairo "github.com/pekim/gobbi/lib/cairo"
 	gdk "github.com/pekim/gobbi/lib/gdk"
 	gobject "github.com/pekim/gobbi/lib/gobject"
@@ -418,7 +417,7 @@ func (recv *Widget) DisconnectGrabBrokenEvent(connectionID int) {
 
 //export Widget_grabBrokenEventHandler
 func Widget_grabBrokenEventHandler(c_event *C.GdkEventGrabBroken) C.gboolean {
-	fmt.Println("cb")
+
 }
 
 // Unsupported : gtk_widget_new : unsupported parameter type : no type generator for GType, GType

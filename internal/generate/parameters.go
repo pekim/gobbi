@@ -58,6 +58,12 @@ func (pp Parameters) generateCVars(g *jen.Group) {
 	}
 }
 
+func (pp Parameters) generateGoVars(g *jen.Group) {
+	for _, p := range pp {
+		p.generateGoVar(g)
+	}
+}
+
 func (pp Parameters) generateOutputParamsReturnDeclaration(g *jen.Group) {
 	for _, p := range pp {
 		p.generateOutputParamReturnDeclaration(g)

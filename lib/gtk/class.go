@@ -3,7 +3,6 @@
 package gtk
 
 import (
-	"fmt"
 	atk "github.com/pekim/gobbi/lib/atk"
 	cairo "github.com/pekim/gobbi/lib/cairo"
 	gdk "github.com/pekim/gobbi/lib/gdk"
@@ -2202,9 +2201,7 @@ func (recv *Adjustment) DisconnectChanged(connectionID int) {
 }
 
 //export Adjustment_changedHandler
-func Adjustment_changedHandler() {
-	fmt.Println("cb")
-}
+func Adjustment_changedHandler() {}
 
 var signalAdjustmentValueChangedId int
 var signalAdjustmentValueChangedMap = make(map[int]AdjustmentSignalValueChangedCallback)
@@ -2250,9 +2247,7 @@ func (recv *Adjustment) DisconnectValueChanged(connectionID int) {
 }
 
 //export Adjustment_valueChangedHandler
-func Adjustment_valueChangedHandler() {
-	fmt.Println("cb")
-}
+func Adjustment_valueChangedHandler() {}
 
 // AdjustmentNew is a wrapper around the C function gtk_adjustment_new.
 func AdjustmentNew(value float64, lower float64, upper float64, stepIncrement float64, pageIncrement float64, pageSize float64) *Adjustment {
@@ -3046,9 +3041,7 @@ func (recv *Assistant) DisconnectEscape(connectionID int) {
 }
 
 //export Assistant_escapeHandler
-func Assistant_escapeHandler() {
-	fmt.Println("cb")
-}
+func Assistant_escapeHandler() {}
 
 // Bin is a wrapper around the C record GtkBin.
 type Bin struct {
@@ -3440,9 +3433,7 @@ func (recv *Button) DisconnectActivate(connectionID int) {
 }
 
 //export Button_activateHandler
-func Button_activateHandler() {
-	fmt.Println("cb")
-}
+func Button_activateHandler() {}
 
 var signalButtonClickedId int
 var signalButtonClickedMap = make(map[int]ButtonSignalClickedCallback)
@@ -3488,9 +3479,7 @@ func (recv *Button) DisconnectClicked(connectionID int) {
 }
 
 //export Button_clickedHandler
-func Button_clickedHandler() {
-	fmt.Println("cb")
-}
+func Button_clickedHandler() {}
 
 var signalButtonEnterId int
 var signalButtonEnterMap = make(map[int]ButtonSignalEnterCallback)
@@ -3536,9 +3525,7 @@ func (recv *Button) DisconnectEnter(connectionID int) {
 }
 
 //export Button_enterHandler
-func Button_enterHandler() {
-	fmt.Println("cb")
-}
+func Button_enterHandler() {}
 
 var signalButtonLeaveId int
 var signalButtonLeaveMap = make(map[int]ButtonSignalLeaveCallback)
@@ -3584,9 +3571,7 @@ func (recv *Button) DisconnectLeave(connectionID int) {
 }
 
 //export Button_leaveHandler
-func Button_leaveHandler() {
-	fmt.Println("cb")
-}
+func Button_leaveHandler() {}
 
 var signalButtonPressedId int
 var signalButtonPressedMap = make(map[int]ButtonSignalPressedCallback)
@@ -3632,9 +3617,7 @@ func (recv *Button) DisconnectPressed(connectionID int) {
 }
 
 //export Button_pressedHandler
-func Button_pressedHandler() {
-	fmt.Println("cb")
-}
+func Button_pressedHandler() {}
 
 var signalButtonReleasedId int
 var signalButtonReleasedMap = make(map[int]ButtonSignalReleasedCallback)
@@ -3680,9 +3663,7 @@ func (recv *Button) DisconnectReleased(connectionID int) {
 }
 
 //export Button_releasedHandler
-func Button_releasedHandler() {
-	fmt.Println("cb")
-}
+func Button_releasedHandler() {}
 
 // ButtonNew is a wrapper around the C function gtk_button_new.
 func ButtonNew() *Button {
@@ -4053,9 +4034,7 @@ func (recv *Calendar) DisconnectDaySelected(connectionID int) {
 }
 
 //export Calendar_daySelectedHandler
-func Calendar_daySelectedHandler() {
-	fmt.Println("cb")
-}
+func Calendar_daySelectedHandler() {}
 
 var signalCalendarDaySelectedDoubleClickId int
 var signalCalendarDaySelectedDoubleClickMap = make(map[int]CalendarSignalDaySelectedDoubleClickCallback)
@@ -4101,9 +4080,7 @@ func (recv *Calendar) DisconnectDaySelectedDoubleClick(connectionID int) {
 }
 
 //export Calendar_daySelectedDoubleClickHandler
-func Calendar_daySelectedDoubleClickHandler() {
-	fmt.Println("cb")
-}
+func Calendar_daySelectedDoubleClickHandler() {}
 
 var signalCalendarMonthChangedId int
 var signalCalendarMonthChangedMap = make(map[int]CalendarSignalMonthChangedCallback)
@@ -4149,9 +4126,7 @@ func (recv *Calendar) DisconnectMonthChanged(connectionID int) {
 }
 
 //export Calendar_monthChangedHandler
-func Calendar_monthChangedHandler() {
-	fmt.Println("cb")
-}
+func Calendar_monthChangedHandler() {}
 
 var signalCalendarNextMonthId int
 var signalCalendarNextMonthMap = make(map[int]CalendarSignalNextMonthCallback)
@@ -4197,9 +4172,7 @@ func (recv *Calendar) DisconnectNextMonth(connectionID int) {
 }
 
 //export Calendar_nextMonthHandler
-func Calendar_nextMonthHandler() {
-	fmt.Println("cb")
-}
+func Calendar_nextMonthHandler() {}
 
 var signalCalendarNextYearId int
 var signalCalendarNextYearMap = make(map[int]CalendarSignalNextYearCallback)
@@ -4245,9 +4218,7 @@ func (recv *Calendar) DisconnectNextYear(connectionID int) {
 }
 
 //export Calendar_nextYearHandler
-func Calendar_nextYearHandler() {
-	fmt.Println("cb")
-}
+func Calendar_nextYearHandler() {}
 
 var signalCalendarPrevMonthId int
 var signalCalendarPrevMonthMap = make(map[int]CalendarSignalPrevMonthCallback)
@@ -4293,9 +4264,7 @@ func (recv *Calendar) DisconnectPrevMonth(connectionID int) {
 }
 
 //export Calendar_prevMonthHandler
-func Calendar_prevMonthHandler() {
-	fmt.Println("cb")
-}
+func Calendar_prevMonthHandler() {}
 
 var signalCalendarPrevYearId int
 var signalCalendarPrevYearMap = make(map[int]CalendarSignalPrevYearCallback)
@@ -4341,9 +4310,7 @@ func (recv *Calendar) DisconnectPrevYear(connectionID int) {
 }
 
 //export Calendar_prevYearHandler
-func Calendar_prevYearHandler() {
-	fmt.Println("cb")
-}
+func Calendar_prevYearHandler() {}
 
 // CalendarNew is a wrapper around the C function gtk_calendar_new.
 func CalendarNew() *Calendar {
@@ -5344,9 +5311,7 @@ func (recv *CheckMenuItem) DisconnectToggled(connectionID int) {
 }
 
 //export CheckMenuItem_toggledHandler
-func CheckMenuItem_toggledHandler() {
-	fmt.Println("cb")
-}
+func CheckMenuItem_toggledHandler() {}
 
 // CheckMenuItemNew is a wrapper around the C function gtk_check_menu_item_new.
 func CheckMenuItemNew() *CheckMenuItem {
@@ -5836,9 +5801,7 @@ func (recv *ColorSelection) DisconnectColorChanged(connectionID int) {
 }
 
 //export ColorSelection_colorChangedHandler
-func ColorSelection_colorChangedHandler() {
-	fmt.Println("cb")
-}
+func ColorSelection_colorChangedHandler() {}
 
 // ColorSelectionNew is a wrapper around the C function gtk_color_selection_new.
 func ColorSelectionNew() *ColorSelection {
@@ -6324,7 +6287,7 @@ func (recv *Container) DisconnectAdd(connectionID int) {
 
 //export Container_addHandler
 func Container_addHandler(c_object *C.GtkWidget) {
-	fmt.Println("cb")
+
 }
 
 var signalContainerCheckResizeId int
@@ -6371,9 +6334,7 @@ func (recv *Container) DisconnectCheckResize(connectionID int) {
 }
 
 //export Container_checkResizeHandler
-func Container_checkResizeHandler() {
-	fmt.Println("cb")
-}
+func Container_checkResizeHandler() {}
 
 var signalContainerRemoveId int
 var signalContainerRemoveMap = make(map[int]ContainerSignalRemoveCallback)
@@ -6420,7 +6381,7 @@ func (recv *Container) DisconnectRemove(connectionID int) {
 
 //export Container_removeHandler
 func Container_removeHandler(c_object *C.GtkWidget) {
-	fmt.Println("cb")
+
 }
 
 var signalContainerSetFocusChildId int
@@ -6468,7 +6429,7 @@ func (recv *Container) DisconnectSetFocusChild(connectionID int) {
 
 //export Container_setFocusChildHandler
 func Container_setFocusChildHandler(c_object *C.GtkWidget) {
-	fmt.Println("cb")
+
 }
 
 // Add is a wrapper around the C function gtk_container_add.
@@ -6882,7 +6843,7 @@ func (recv *CssProvider) DisconnectParsingError(connectionID int) {
 
 //export CssProvider_parsingErrorHandler
 func CssProvider_parsingErrorHandler(c_section *C.GtkCssSection, c_error *C.GError) {
-	fmt.Println("cb")
+
 }
 
 // CssProviderNew is a wrapper around the C function gtk_css_provider_new.
@@ -7018,9 +6979,7 @@ func (recv *Dialog) DisconnectClose(connectionID int) {
 }
 
 //export Dialog_closeHandler
-func Dialog_closeHandler() {
-	fmt.Println("cb")
-}
+func Dialog_closeHandler() {}
 
 // Unsupported signal 'response' for Dialog : unsupported parameter response_id : type gint :
 
@@ -7238,9 +7197,7 @@ func (recv *Entry) DisconnectActivate(connectionID int) {
 }
 
 //export Entry_activateHandler
-func Entry_activateHandler() {
-	fmt.Println("cb")
-}
+func Entry_activateHandler() {}
 
 var signalEntryBackspaceId int
 var signalEntryBackspaceMap = make(map[int]EntrySignalBackspaceCallback)
@@ -7286,9 +7243,7 @@ func (recv *Entry) DisconnectBackspace(connectionID int) {
 }
 
 //export Entry_backspaceHandler
-func Entry_backspaceHandler() {
-	fmt.Println("cb")
-}
+func Entry_backspaceHandler() {}
 
 var signalEntryCopyClipboardId int
 var signalEntryCopyClipboardMap = make(map[int]EntrySignalCopyClipboardCallback)
@@ -7334,9 +7289,7 @@ func (recv *Entry) DisconnectCopyClipboard(connectionID int) {
 }
 
 //export Entry_copyClipboardHandler
-func Entry_copyClipboardHandler() {
-	fmt.Println("cb")
-}
+func Entry_copyClipboardHandler() {}
 
 var signalEntryCutClipboardId int
 var signalEntryCutClipboardMap = make(map[int]EntrySignalCutClipboardCallback)
@@ -7382,9 +7335,7 @@ func (recv *Entry) DisconnectCutClipboard(connectionID int) {
 }
 
 //export Entry_cutClipboardHandler
-func Entry_cutClipboardHandler() {
-	fmt.Println("cb")
-}
+func Entry_cutClipboardHandler() {}
 
 // Unsupported signal 'delete-from-cursor' for Entry : unsupported parameter type : type DeleteType :
 
@@ -7436,9 +7387,7 @@ func (recv *Entry) DisconnectPasteClipboard(connectionID int) {
 }
 
 //export Entry_pasteClipboardHandler
-func Entry_pasteClipboardHandler() {
-	fmt.Println("cb")
-}
+func Entry_pasteClipboardHandler() {}
 
 var signalEntryPopulatePopupId int
 var signalEntryPopulatePopupMap = make(map[int]EntrySignalPopulatePopupCallback)
@@ -7485,7 +7434,7 @@ func (recv *Entry) DisconnectPopulatePopup(connectionID int) {
 
 //export Entry_populatePopupHandler
 func Entry_populatePopupHandler(c_widget *C.GtkWidget) {
-	fmt.Println("cb")
+
 }
 
 var signalEntryToggleOverwriteId int
@@ -7532,9 +7481,7 @@ func (recv *Entry) DisconnectToggleOverwrite(connectionID int) {
 }
 
 //export Entry_toggleOverwriteHandler
-func Entry_toggleOverwriteHandler() {
-	fmt.Println("cb")
-}
+func Entry_toggleOverwriteHandler() {}
 
 // EntryNew is a wrapper around the C function gtk_entry_new.
 func EntryNew() *Entry {
@@ -8016,9 +7963,7 @@ func (recv *Expander) DisconnectActivate(connectionID int) {
 }
 
 //export Expander_activateHandler
-func Expander_activateHandler() {
-	fmt.Println("cb")
-}
+func Expander_activateHandler() {}
 
 // ExpanderAccessible is a wrapper around the C record GtkExpanderAccessible.
 type ExpanderAccessible struct {
@@ -8287,9 +8232,7 @@ func (recv *FileChooserWidget) DisconnectDesktopFolder(connectionID int) {
 }
 
 //export FileChooserWidget_desktopFolderHandler
-func FileChooserWidget_desktopFolderHandler() {
-	fmt.Println("cb")
-}
+func FileChooserWidget_desktopFolderHandler() {}
 
 var signalFileChooserWidgetDownFolderId int
 var signalFileChooserWidgetDownFolderMap = make(map[int]FileChooserWidgetSignalDownFolderCallback)
@@ -8335,9 +8278,7 @@ func (recv *FileChooserWidget) DisconnectDownFolder(connectionID int) {
 }
 
 //export FileChooserWidget_downFolderHandler
-func FileChooserWidget_downFolderHandler() {
-	fmt.Println("cb")
-}
+func FileChooserWidget_downFolderHandler() {}
 
 var signalFileChooserWidgetHomeFolderId int
 var signalFileChooserWidgetHomeFolderMap = make(map[int]FileChooserWidgetSignalHomeFolderCallback)
@@ -8383,9 +8324,7 @@ func (recv *FileChooserWidget) DisconnectHomeFolder(connectionID int) {
 }
 
 //export FileChooserWidget_homeFolderHandler
-func FileChooserWidget_homeFolderHandler() {
-	fmt.Println("cb")
-}
+func FileChooserWidget_homeFolderHandler() {}
 
 // Unsupported signal 'location-popup' for FileChooserWidget : unsupported parameter path : type utf8 :
 
@@ -8433,9 +8372,7 @@ func (recv *FileChooserWidget) DisconnectLocationPopupOnPaste(connectionID int) 
 }
 
 //export FileChooserWidget_locationPopupOnPasteHandler
-func FileChooserWidget_locationPopupOnPasteHandler() {
-	fmt.Println("cb")
-}
+func FileChooserWidget_locationPopupOnPasteHandler() {}
 
 var signalFileChooserWidgetLocationTogglePopupId int
 var signalFileChooserWidgetLocationTogglePopupMap = make(map[int]FileChooserWidgetSignalLocationTogglePopupCallback)
@@ -8481,9 +8418,7 @@ func (recv *FileChooserWidget) DisconnectLocationTogglePopup(connectionID int) {
 }
 
 //export FileChooserWidget_locationTogglePopupHandler
-func FileChooserWidget_locationTogglePopupHandler() {
-	fmt.Println("cb")
-}
+func FileChooserWidget_locationTogglePopupHandler() {}
 
 var signalFileChooserWidgetPlacesShortcutId int
 var signalFileChooserWidgetPlacesShortcutMap = make(map[int]FileChooserWidgetSignalPlacesShortcutCallback)
@@ -8529,9 +8464,7 @@ func (recv *FileChooserWidget) DisconnectPlacesShortcut(connectionID int) {
 }
 
 //export FileChooserWidget_placesShortcutHandler
-func FileChooserWidget_placesShortcutHandler() {
-	fmt.Println("cb")
-}
+func FileChooserWidget_placesShortcutHandler() {}
 
 // Unsupported signal 'quick-bookmark' for FileChooserWidget : unsupported parameter bookmark_index : type gint :
 
@@ -8579,9 +8512,7 @@ func (recv *FileChooserWidget) DisconnectRecentShortcut(connectionID int) {
 }
 
 //export FileChooserWidget_recentShortcutHandler
-func FileChooserWidget_recentShortcutHandler() {
-	fmt.Println("cb")
-}
+func FileChooserWidget_recentShortcutHandler() {}
 
 var signalFileChooserWidgetSearchShortcutId int
 var signalFileChooserWidgetSearchShortcutMap = make(map[int]FileChooserWidgetSignalSearchShortcutCallback)
@@ -8627,9 +8558,7 @@ func (recv *FileChooserWidget) DisconnectSearchShortcut(connectionID int) {
 }
 
 //export FileChooserWidget_searchShortcutHandler
-func FileChooserWidget_searchShortcutHandler() {
-	fmt.Println("cb")
-}
+func FileChooserWidget_searchShortcutHandler() {}
 
 var signalFileChooserWidgetShowHiddenId int
 var signalFileChooserWidgetShowHiddenMap = make(map[int]FileChooserWidgetSignalShowHiddenCallback)
@@ -8675,9 +8604,7 @@ func (recv *FileChooserWidget) DisconnectShowHidden(connectionID int) {
 }
 
 //export FileChooserWidget_showHiddenHandler
-func FileChooserWidget_showHiddenHandler() {
-	fmt.Println("cb")
-}
+func FileChooserWidget_showHiddenHandler() {}
 
 var signalFileChooserWidgetUpFolderId int
 var signalFileChooserWidgetUpFolderMap = make(map[int]FileChooserWidgetSignalUpFolderCallback)
@@ -8723,9 +8650,7 @@ func (recv *FileChooserWidget) DisconnectUpFolder(connectionID int) {
 }
 
 //export FileChooserWidget_upFolderHandler
-func FileChooserWidget_upFolderHandler() {
-	fmt.Println("cb")
-}
+func FileChooserWidget_upFolderHandler() {}
 
 // FileFilter is a wrapper around the C record GtkFileFilter.
 type FileFilter struct {
@@ -8941,9 +8866,7 @@ func (recv *FlowBox) DisconnectActivateCursorChild(connectionID int) {
 }
 
 //export FlowBox_activateCursorChildHandler
-func FlowBox_activateCursorChildHandler() {
-	fmt.Println("cb")
-}
+func FlowBox_activateCursorChildHandler() {}
 
 var signalFlowBoxChildActivatedId int
 var signalFlowBoxChildActivatedMap = make(map[int]FlowBoxSignalChildActivatedCallback)
@@ -8990,7 +8913,7 @@ func (recv *FlowBox) DisconnectChildActivated(connectionID int) {
 
 //export FlowBox_childActivatedHandler
 func FlowBox_childActivatedHandler(c_child *C.GtkFlowBoxChild) {
-	fmt.Println("cb")
+
 }
 
 // Unsupported signal 'move-cursor' for FlowBox : unsupported parameter step : type MovementStep :
@@ -9039,9 +8962,7 @@ func (recv *FlowBox) DisconnectSelectAll(connectionID int) {
 }
 
 //export FlowBox_selectAllHandler
-func FlowBox_selectAllHandler() {
-	fmt.Println("cb")
-}
+func FlowBox_selectAllHandler() {}
 
 var signalFlowBoxSelectedChildrenChangedId int
 var signalFlowBoxSelectedChildrenChangedMap = make(map[int]FlowBoxSignalSelectedChildrenChangedCallback)
@@ -9087,9 +9008,7 @@ func (recv *FlowBox) DisconnectSelectedChildrenChanged(connectionID int) {
 }
 
 //export FlowBox_selectedChildrenChangedHandler
-func FlowBox_selectedChildrenChangedHandler() {
-	fmt.Println("cb")
-}
+func FlowBox_selectedChildrenChangedHandler() {}
 
 var signalFlowBoxToggleCursorChildId int
 var signalFlowBoxToggleCursorChildMap = make(map[int]FlowBoxSignalToggleCursorChildCallback)
@@ -9135,9 +9054,7 @@ func (recv *FlowBox) DisconnectToggleCursorChild(connectionID int) {
 }
 
 //export FlowBox_toggleCursorChildHandler
-func FlowBox_toggleCursorChildHandler() {
-	fmt.Println("cb")
-}
+func FlowBox_toggleCursorChildHandler() {}
 
 var signalFlowBoxUnselectAllId int
 var signalFlowBoxUnselectAllMap = make(map[int]FlowBoxSignalUnselectAllCallback)
@@ -9183,9 +9100,7 @@ func (recv *FlowBox) DisconnectUnselectAll(connectionID int) {
 }
 
 //export FlowBox_unselectAllHandler
-func FlowBox_unselectAllHandler() {
-	fmt.Println("cb")
-}
+func FlowBox_unselectAllHandler() {}
 
 // FlowBoxAccessible is a wrapper around the C record GtkFlowBoxAccessible.
 type FlowBoxAccessible struct {
@@ -9333,9 +9248,7 @@ func (recv *FlowBoxChild) DisconnectActivate(connectionID int) {
 }
 
 //export FlowBoxChild_activateHandler
-func FlowBoxChild_activateHandler() {
-	fmt.Println("cb")
-}
+func FlowBoxChild_activateHandler() {}
 
 // FlowBoxChildAccessible is a wrapper around the C record GtkFlowBoxChildAccessible.
 type FlowBoxChildAccessible struct {
@@ -10814,9 +10727,7 @@ func (recv *HSV) DisconnectChanged(connectionID int) {
 }
 
 //export HSV_changedHandler
-func HSV_changedHandler() {
-	fmt.Println("cb")
-}
+func HSV_changedHandler() {}
 
 // Unsupported signal 'move' for HSV : unsupported parameter object : type DirectionType :
 
@@ -11115,7 +11026,7 @@ func (recv *HandleBox) DisconnectChildAttached(connectionID int) {
 
 //export HandleBox_childAttachedHandler
 func HandleBox_childAttachedHandler(c_widget *C.GtkWidget) {
-	fmt.Println("cb")
+
 }
 
 var signalHandleBoxChildDetachedId int
@@ -11163,7 +11074,7 @@ func (recv *HandleBox) DisconnectChildDetached(connectionID int) {
 
 //export HandleBox_childDetachedHandler
 func HandleBox_childDetachedHandler(c_widget *C.GtkWidget) {
-	fmt.Println("cb")
+
 }
 
 // HandleBoxNew is a wrapper around the C function gtk_handle_box_new.
@@ -11354,9 +11265,7 @@ func (recv *IMContext) DisconnectPreeditChanged(connectionID int) {
 }
 
 //export IMContext_preeditChangedHandler
-func IMContext_preeditChangedHandler() {
-	fmt.Println("cb")
-}
+func IMContext_preeditChangedHandler() {}
 
 var signalIMContextPreeditEndId int
 var signalIMContextPreeditEndMap = make(map[int]IMContextSignalPreeditEndCallback)
@@ -11402,9 +11311,7 @@ func (recv *IMContext) DisconnectPreeditEnd(connectionID int) {
 }
 
 //export IMContext_preeditEndHandler
-func IMContext_preeditEndHandler() {
-	fmt.Println("cb")
-}
+func IMContext_preeditEndHandler() {}
 
 var signalIMContextPreeditStartId int
 var signalIMContextPreeditStartMap = make(map[int]IMContextSignalPreeditStartCallback)
@@ -11450,9 +11357,7 @@ func (recv *IMContext) DisconnectPreeditStart(connectionID int) {
 }
 
 //export IMContext_preeditStartHandler
-func IMContext_preeditStartHandler() {
-	fmt.Println("cb")
-}
+func IMContext_preeditStartHandler() {}
 
 var signalIMContextRetrieveSurroundingId int
 var signalIMContextRetrieveSurroundingMap = make(map[int]IMContextSignalRetrieveSurroundingCallback)
@@ -11498,9 +11403,7 @@ func (recv *IMContext) DisconnectRetrieveSurrounding(connectionID int) {
 }
 
 //export IMContext_retrieveSurroundingHandler
-func IMContext_retrieveSurroundingHandler() C.gboolean {
-	fmt.Println("cb")
-}
+func IMContext_retrieveSurroundingHandler() C.gboolean {}
 
 // DeleteSurrounding is a wrapper around the C function gtk_im_context_delete_surrounding.
 func (recv *IMContext) DeleteSurrounding(offset int32, nChars int32) bool {
@@ -11895,9 +11798,7 @@ func (recv *IconTheme) DisconnectChanged(connectionID int) {
 }
 
 //export IconTheme_changedHandler
-func IconTheme_changedHandler() {
-	fmt.Println("cb")
-}
+func IconTheme_changedHandler() {}
 
 // IconView is a wrapper around the C record GtkIconView.
 type IconView struct {
@@ -11992,9 +11893,7 @@ func (recv *IconView) DisconnectActivateCursorItem(connectionID int) {
 }
 
 //export IconView_activateCursorItemHandler
-func IconView_activateCursorItemHandler() C.gboolean {
-	fmt.Println("cb")
-}
+func IconView_activateCursorItemHandler() C.gboolean {}
 
 var signalIconViewItemActivatedId int
 var signalIconViewItemActivatedMap = make(map[int]IconViewSignalItemActivatedCallback)
@@ -12041,7 +11940,7 @@ func (recv *IconView) DisconnectItemActivated(connectionID int) {
 
 //export IconView_itemActivatedHandler
 func IconView_itemActivatedHandler(c_path *C.GtkTreePath) {
-	fmt.Println("cb")
+
 }
 
 // Unsupported signal 'move-cursor' for IconView : unsupported parameter step : type MovementStep :
@@ -12090,9 +11989,7 @@ func (recv *IconView) DisconnectSelectAll(connectionID int) {
 }
 
 //export IconView_selectAllHandler
-func IconView_selectAllHandler() {
-	fmt.Println("cb")
-}
+func IconView_selectAllHandler() {}
 
 var signalIconViewSelectCursorItemId int
 var signalIconViewSelectCursorItemMap = make(map[int]IconViewSignalSelectCursorItemCallback)
@@ -12138,9 +12035,7 @@ func (recv *IconView) DisconnectSelectCursorItem(connectionID int) {
 }
 
 //export IconView_selectCursorItemHandler
-func IconView_selectCursorItemHandler() {
-	fmt.Println("cb")
-}
+func IconView_selectCursorItemHandler() {}
 
 var signalIconViewSelectionChangedId int
 var signalIconViewSelectionChangedMap = make(map[int]IconViewSignalSelectionChangedCallback)
@@ -12186,9 +12081,7 @@ func (recv *IconView) DisconnectSelectionChanged(connectionID int) {
 }
 
 //export IconView_selectionChangedHandler
-func IconView_selectionChangedHandler() {
-	fmt.Println("cb")
-}
+func IconView_selectionChangedHandler() {}
 
 var signalIconViewToggleCursorItemId int
 var signalIconViewToggleCursorItemMap = make(map[int]IconViewSignalToggleCursorItemCallback)
@@ -12234,9 +12127,7 @@ func (recv *IconView) DisconnectToggleCursorItem(connectionID int) {
 }
 
 //export IconView_toggleCursorItemHandler
-func IconView_toggleCursorItemHandler() {
-	fmt.Println("cb")
-}
+func IconView_toggleCursorItemHandler() {}
 
 var signalIconViewUnselectAllId int
 var signalIconViewUnselectAllMap = make(map[int]IconViewSignalUnselectAllCallback)
@@ -12282,9 +12173,7 @@ func (recv *IconView) DisconnectUnselectAll(connectionID int) {
 }
 
 //export IconView_unselectAllHandler
-func IconView_unselectAllHandler() {
-	fmt.Println("cb")
-}
+func IconView_unselectAllHandler() {}
 
 // Unsupported : gtk_icon_view_new_with_model : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
 
@@ -12916,9 +12805,7 @@ func (recv *Label) DisconnectCopyClipboard(connectionID int) {
 }
 
 //export Label_copyClipboardHandler
-func Label_copyClipboardHandler() {
-	fmt.Println("cb")
-}
+func Label_copyClipboardHandler() {}
 
 // Unsupported signal 'move-cursor' for Label : unsupported parameter step : type MovementStep :
 
@@ -12967,7 +12854,7 @@ func (recv *Label) DisconnectPopulatePopup(connectionID int) {
 
 //export Label_populatePopupHandler
 func Label_populatePopupHandler(c_menu *C.GtkMenu) {
-	fmt.Println("cb")
+
 }
 
 // LabelNew is a wrapper around the C function gtk_label_new.
@@ -13631,9 +13518,7 @@ func (recv *LinkButton) DisconnectActivateLink(connectionID int) {
 }
 
 //export LinkButton_activateLinkHandler
-func LinkButton_activateLinkHandler() C.gboolean {
-	fmt.Println("cb")
-}
+func LinkButton_activateLinkHandler() C.gboolean {}
 
 // LinkButtonAccessible is a wrapper around the C record GtkLinkButtonAccessible.
 type LinkButtonAccessible struct {
@@ -13781,9 +13666,7 @@ func (recv *ListBox) DisconnectActivateCursorRow(connectionID int) {
 }
 
 //export ListBox_activateCursorRowHandler
-func ListBox_activateCursorRowHandler() {
-	fmt.Println("cb")
-}
+func ListBox_activateCursorRowHandler() {}
 
 // Unsupported signal 'move-cursor' for ListBox : unsupported parameter object : type MovementStep :
 
@@ -13831,9 +13714,7 @@ func (recv *ListBox) DisconnectToggleCursorRow(connectionID int) {
 }
 
 //export ListBox_toggleCursorRowHandler
-func ListBox_toggleCursorRowHandler() {
-	fmt.Println("cb")
-}
+func ListBox_toggleCursorRowHandler() {}
 
 // ListBoxAccessible is a wrapper around the C record GtkListBoxAccessible.
 type ListBoxAccessible struct {
@@ -14758,9 +14639,7 @@ func (recv *MenuItem) DisconnectActivate(connectionID int) {
 }
 
 //export MenuItem_activateHandler
-func MenuItem_activateHandler() {
-	fmt.Println("cb")
-}
+func MenuItem_activateHandler() {}
 
 var signalMenuItemActivateItemId int
 var signalMenuItemActivateItemMap = make(map[int]MenuItemSignalActivateItemCallback)
@@ -14806,9 +14685,7 @@ func (recv *MenuItem) DisconnectActivateItem(connectionID int) {
 }
 
 //export MenuItem_activateItemHandler
-func MenuItem_activateItemHandler() {
-	fmt.Println("cb")
-}
+func MenuItem_activateItemHandler() {}
 
 var signalMenuItemDeselectId int
 var signalMenuItemDeselectMap = make(map[int]MenuItemSignalDeselectCallback)
@@ -14854,9 +14731,7 @@ func (recv *MenuItem) DisconnectDeselect(connectionID int) {
 }
 
 //export MenuItem_deselectHandler
-func MenuItem_deselectHandler() {
-	fmt.Println("cb")
-}
+func MenuItem_deselectHandler() {}
 
 var signalMenuItemSelectId int
 var signalMenuItemSelectMap = make(map[int]MenuItemSignalSelectCallback)
@@ -14902,9 +14777,7 @@ func (recv *MenuItem) DisconnectSelect(connectionID int) {
 }
 
 //export MenuItem_selectHandler
-func MenuItem_selectHandler() {
-	fmt.Println("cb")
-}
+func MenuItem_selectHandler() {}
 
 // Unsupported signal 'toggle-size-allocate' for MenuItem : unsupported parameter object : type gint :
 
@@ -15167,7 +15040,8 @@ func (recv *MenuShell) DisconnectActivateCurrent(connectionID int) {
 
 //export MenuShell_activateCurrentHandler
 func MenuShell_activateCurrentHandler(c_force_hide C.gboolean) {
-	fmt.Println("cb")
+	forceHide := c_force_hide == C.TRUE
+
 }
 
 var signalMenuShellCancelId int
@@ -15214,9 +15088,7 @@ func (recv *MenuShell) DisconnectCancel(connectionID int) {
 }
 
 //export MenuShell_cancelHandler
-func MenuShell_cancelHandler() {
-	fmt.Println("cb")
-}
+func MenuShell_cancelHandler() {}
 
 // Unsupported signal 'cycle-focus' for MenuShell : unsupported parameter direction : type DirectionType :
 
@@ -15264,9 +15136,7 @@ func (recv *MenuShell) DisconnectDeactivate(connectionID int) {
 }
 
 //export MenuShell_deactivateHandler
-func MenuShell_deactivateHandler() {
-	fmt.Println("cb")
-}
+func MenuShell_deactivateHandler() {}
 
 // Unsupported signal 'move-current' for MenuShell : unsupported parameter direction : type MenuDirectionType :
 
@@ -15314,9 +15184,7 @@ func (recv *MenuShell) DisconnectSelectionDone(connectionID int) {
 }
 
 //export MenuShell_selectionDoneHandler
-func MenuShell_selectionDoneHandler() {
-	fmt.Println("cb")
-}
+func MenuShell_selectionDoneHandler() {}
 
 // ActivateItem is a wrapper around the C function gtk_menu_shell_activate_item.
 func (recv *MenuShell) ActivateItem(menuItem *Widget, forceDeactivate bool) {
@@ -15539,9 +15407,7 @@ func (recv *MenuToolButton) DisconnectShowMenu(connectionID int) {
 }
 
 //export MenuToolButton_showMenuHandler
-func MenuToolButton_showMenuHandler() {
-	fmt.Println("cb")
-}
+func MenuToolButton_showMenuHandler() {}
 
 // MessageDialog is a wrapper around the C record GtkMessageDialog.
 type MessageDialog struct {
@@ -15905,7 +15771,8 @@ func (recv *Notebook) DisconnectSelectPage(connectionID int) {
 
 //export Notebook_selectPageHandler
 func Notebook_selectPageHandler(c_object C.gboolean) C.gboolean {
-	fmt.Println("cb")
+	object := c_object == C.TRUE
+
 }
 
 // Unsupported signal 'switch-page' for Notebook : unsupported parameter page_num : type guint :
@@ -16795,9 +16662,7 @@ func (recv *PlacesSidebar) DisconnectShowConnectToServer(connectionID int) {
 }
 
 //export PlacesSidebar_showConnectToServerHandler
-func PlacesSidebar_showConnectToServerHandler() {
-	fmt.Println("cb")
-}
+func PlacesSidebar_showConnectToServerHandler() {}
 
 // GetShowConnectToServer is a wrapper around the C function gtk_places_sidebar_get_show_connect_to_server.
 func (recv *PlacesSidebar) GetShowConnectToServer() bool {
@@ -16907,9 +16772,7 @@ func (recv *Popover) DisconnectClosed(connectionID int) {
 }
 
 //export Popover_closedHandler
-func Popover_closedHandler() {
-	fmt.Println("cb")
-}
+func Popover_closedHandler() {}
 
 // Unsupported : gtk_popover_get_pointing_to : unsupported parameter rect : Blacklisted record : GdkRectangle
 
@@ -17668,9 +17531,7 @@ func (recv *RadioMenuItem) DisconnectGroupChanged(connectionID int) {
 }
 
 //export RadioMenuItem_groupChangedHandler
-func RadioMenuItem_groupChangedHandler() {
-	fmt.Println("cb")
-}
+func RadioMenuItem_groupChangedHandler() {}
 
 // RadioMenuItemNew is a wrapper around the C function gtk_radio_menu_item_new.
 func RadioMenuItemNew(group *glib.SList) *RadioMenuItem {
@@ -17944,9 +17805,7 @@ func (recv *Range) DisconnectValueChanged(connectionID int) {
 }
 
 //export Range_valueChangedHandler
-func Range_valueChangedHandler() {
-	fmt.Println("cb")
-}
+func Range_valueChangedHandler() {}
 
 // GetAdjustment is a wrapper around the C function gtk_range_get_adjustment.
 func (recv *Range) GetAdjustment() *Adjustment {
@@ -19568,9 +19427,7 @@ func (recv *SpinButton) DisconnectOutput(connectionID int) {
 }
 
 //export SpinButton_outputHandler
-func SpinButton_outputHandler() C.gboolean {
-	fmt.Println("cb")
-}
+func SpinButton_outputHandler() C.gboolean {}
 
 var signalSpinButtonValueChangedId int
 var signalSpinButtonValueChangedMap = make(map[int]SpinButtonSignalValueChangedCallback)
@@ -19616,9 +19473,7 @@ func (recv *SpinButton) DisconnectValueChanged(connectionID int) {
 }
 
 //export SpinButton_valueChangedHandler
-func SpinButton_valueChangedHandler() {
-	fmt.Println("cb")
-}
+func SpinButton_valueChangedHandler() {}
 
 // SpinButtonNew is a wrapper around the C function gtk_spin_button_new.
 func SpinButtonNew(adjustment *Adjustment, climbRate float64, digits uint32) *SpinButton {
@@ -20725,9 +20580,7 @@ func (recv *Switch) DisconnectActivate(connectionID int) {
 }
 
 //export Switch_activateHandler
-func Switch_activateHandler() {
-	fmt.Println("cb")
-}
+func Switch_activateHandler() {}
 
 // SwitchAccessible is a wrapper around the C record GtkSwitchAccessible.
 type SwitchAccessible struct {
@@ -21130,7 +20983,7 @@ func (recv *TextBuffer) DisconnectApplyTag(connectionID int) {
 
 //export TextBuffer_applyTagHandler
 func TextBuffer_applyTagHandler(c_tag *C.GtkTextTag, c_start *C.GtkTextIter, c_end *C.GtkTextIter) {
-	fmt.Println("cb")
+
 }
 
 var signalTextBufferBeginUserActionId int
@@ -21177,9 +21030,7 @@ func (recv *TextBuffer) DisconnectBeginUserAction(connectionID int) {
 }
 
 //export TextBuffer_beginUserActionHandler
-func TextBuffer_beginUserActionHandler() {
-	fmt.Println("cb")
-}
+func TextBuffer_beginUserActionHandler() {}
 
 var signalTextBufferChangedId int
 var signalTextBufferChangedMap = make(map[int]TextBufferSignalChangedCallback)
@@ -21225,9 +21076,7 @@ func (recv *TextBuffer) DisconnectChanged(connectionID int) {
 }
 
 //export TextBuffer_changedHandler
-func TextBuffer_changedHandler() {
-	fmt.Println("cb")
-}
+func TextBuffer_changedHandler() {}
 
 var signalTextBufferDeleteRangeId int
 var signalTextBufferDeleteRangeMap = make(map[int]TextBufferSignalDeleteRangeCallback)
@@ -21274,7 +21123,7 @@ func (recv *TextBuffer) DisconnectDeleteRange(connectionID int) {
 
 //export TextBuffer_deleteRangeHandler
 func TextBuffer_deleteRangeHandler(c_start *C.GtkTextIter, c_end *C.GtkTextIter) {
-	fmt.Println("cb")
+
 }
 
 var signalTextBufferEndUserActionId int
@@ -21321,9 +21170,7 @@ func (recv *TextBuffer) DisconnectEndUserAction(connectionID int) {
 }
 
 //export TextBuffer_endUserActionHandler
-func TextBuffer_endUserActionHandler() {
-	fmt.Println("cb")
-}
+func TextBuffer_endUserActionHandler() {}
 
 var signalTextBufferInsertChildAnchorId int
 var signalTextBufferInsertChildAnchorMap = make(map[int]TextBufferSignalInsertChildAnchorCallback)
@@ -21370,7 +21217,7 @@ func (recv *TextBuffer) DisconnectInsertChildAnchor(connectionID int) {
 
 //export TextBuffer_insertChildAnchorHandler
 func TextBuffer_insertChildAnchorHandler(c_location *C.GtkTextIter, c_anchor *C.GtkTextChildAnchor) {
-	fmt.Println("cb")
+
 }
 
 var signalTextBufferInsertPixbufId int
@@ -21418,7 +21265,7 @@ func (recv *TextBuffer) DisconnectInsertPixbuf(connectionID int) {
 
 //export TextBuffer_insertPixbufHandler
 func TextBuffer_insertPixbufHandler(c_location *C.GtkTextIter, c_pixbuf *C.GdkPixbuf) {
-	fmt.Println("cb")
+
 }
 
 // Unsupported signal 'insert-text' for TextBuffer : unsupported parameter text : type utf8 :
@@ -21468,7 +21315,7 @@ func (recv *TextBuffer) DisconnectMarkDeleted(connectionID int) {
 
 //export TextBuffer_markDeletedHandler
 func TextBuffer_markDeletedHandler(c_mark *C.GtkTextMark) {
-	fmt.Println("cb")
+
 }
 
 var signalTextBufferMarkSetId int
@@ -21516,7 +21363,7 @@ func (recv *TextBuffer) DisconnectMarkSet(connectionID int) {
 
 //export TextBuffer_markSetHandler
 func TextBuffer_markSetHandler(c_location *C.GtkTextIter, c_mark *C.GtkTextMark) {
-	fmt.Println("cb")
+
 }
 
 var signalTextBufferModifiedChangedId int
@@ -21563,9 +21410,7 @@ func (recv *TextBuffer) DisconnectModifiedChanged(connectionID int) {
 }
 
 //export TextBuffer_modifiedChangedHandler
-func TextBuffer_modifiedChangedHandler() {
-	fmt.Println("cb")
-}
+func TextBuffer_modifiedChangedHandler() {}
 
 var signalTextBufferRemoveTagId int
 var signalTextBufferRemoveTagMap = make(map[int]TextBufferSignalRemoveTagCallback)
@@ -21612,7 +21457,7 @@ func (recv *TextBuffer) DisconnectRemoveTag(connectionID int) {
 
 //export TextBuffer_removeTagHandler
 func TextBuffer_removeTagHandler(c_tag *C.GtkTextTag, c_start *C.GtkTextIter, c_end *C.GtkTextIter) {
-	fmt.Println("cb")
+
 }
 
 // TextBufferNew is a wrapper around the C function gtk_text_buffer_new.
@@ -22576,7 +22421,7 @@ func (recv *TextTagTable) DisconnectTagAdded(connectionID int) {
 
 //export TextTagTable_tagAddedHandler
 func TextTagTable_tagAddedHandler(c_tag *C.GtkTextTag) {
-	fmt.Println("cb")
+
 }
 
 var signalTextTagTableTagChangedId int
@@ -22624,7 +22469,9 @@ func (recv *TextTagTable) DisconnectTagChanged(connectionID int) {
 
 //export TextTagTable_tagChangedHandler
 func TextTagTable_tagChangedHandler(c_tag *C.GtkTextTag, c_size_changed C.gboolean) {
-	fmt.Println("cb")
+
+	sizeChanged := c_size_changed == C.TRUE
+
 }
 
 var signalTextTagTableTagRemovedId int
@@ -22672,7 +22519,7 @@ func (recv *TextTagTable) DisconnectTagRemoved(connectionID int) {
 
 //export TextTagTable_tagRemovedHandler
 func TextTagTable_tagRemovedHandler(c_tag *C.GtkTextTag) {
-	fmt.Println("cb")
+
 }
 
 // TextTagTableNew is a wrapper around the C function gtk_text_tag_table_new.
@@ -22816,9 +22663,7 @@ func (recv *TextView) DisconnectBackspace(connectionID int) {
 }
 
 //export TextView_backspaceHandler
-func TextView_backspaceHandler() {
-	fmt.Println("cb")
-}
+func TextView_backspaceHandler() {}
 
 var signalTextViewCopyClipboardId int
 var signalTextViewCopyClipboardMap = make(map[int]TextViewSignalCopyClipboardCallback)
@@ -22864,9 +22709,7 @@ func (recv *TextView) DisconnectCopyClipboard(connectionID int) {
 }
 
 //export TextView_copyClipboardHandler
-func TextView_copyClipboardHandler() {
-	fmt.Println("cb")
-}
+func TextView_copyClipboardHandler() {}
 
 var signalTextViewCutClipboardId int
 var signalTextViewCutClipboardMap = make(map[int]TextViewSignalCutClipboardCallback)
@@ -22912,9 +22755,7 @@ func (recv *TextView) DisconnectCutClipboard(connectionID int) {
 }
 
 //export TextView_cutClipboardHandler
-func TextView_cutClipboardHandler() {
-	fmt.Println("cb")
-}
+func TextView_cutClipboardHandler() {}
 
 // Unsupported signal 'delete-from-cursor' for TextView : unsupported parameter type : type DeleteType :
 
@@ -22968,9 +22809,7 @@ func (recv *TextView) DisconnectPasteClipboard(connectionID int) {
 }
 
 //export TextView_pasteClipboardHandler
-func TextView_pasteClipboardHandler() {
-	fmt.Println("cb")
-}
+func TextView_pasteClipboardHandler() {}
 
 var signalTextViewPopulatePopupId int
 var signalTextViewPopulatePopupMap = make(map[int]TextViewSignalPopulatePopupCallback)
@@ -23017,7 +22856,7 @@ func (recv *TextView) DisconnectPopulatePopup(connectionID int) {
 
 //export TextView_populatePopupHandler
 func TextView_populatePopupHandler(c_popup *C.GtkWidget) {
-	fmt.Println("cb")
+
 }
 
 var signalTextViewSelectAllId int
@@ -23065,7 +22904,8 @@ func (recv *TextView) DisconnectSelectAll(connectionID int) {
 
 //export TextView_selectAllHandler
 func TextView_selectAllHandler(c_select C.gboolean) {
-	fmt.Println("cb")
+	select_ := c_select == C.TRUE
+
 }
 
 var signalTextViewSetAnchorId int
@@ -23112,9 +22952,7 @@ func (recv *TextView) DisconnectSetAnchor(connectionID int) {
 }
 
 //export TextView_setAnchorHandler
-func TextView_setAnchorHandler() {
-	fmt.Println("cb")
-}
+func TextView_setAnchorHandler() {}
 
 var signalTextViewToggleCursorVisibleId int
 var signalTextViewToggleCursorVisibleMap = make(map[int]TextViewSignalToggleCursorVisibleCallback)
@@ -23160,9 +22998,7 @@ func (recv *TextView) DisconnectToggleCursorVisible(connectionID int) {
 }
 
 //export TextView_toggleCursorVisibleHandler
-func TextView_toggleCursorVisibleHandler() {
-	fmt.Println("cb")
-}
+func TextView_toggleCursorVisibleHandler() {}
 
 var signalTextViewToggleOverwriteId int
 var signalTextViewToggleOverwriteMap = make(map[int]TextViewSignalToggleOverwriteCallback)
@@ -23208,9 +23044,7 @@ func (recv *TextView) DisconnectToggleOverwrite(connectionID int) {
 }
 
 //export TextView_toggleOverwriteHandler
-func TextView_toggleOverwriteHandler() {
-	fmt.Println("cb")
-}
+func TextView_toggleOverwriteHandler() {}
 
 // TextViewNew is a wrapper around the C function gtk_text_view_new.
 func TextViewNew() *TextView {
@@ -23919,9 +23753,7 @@ func (recv *ToggleAction) DisconnectToggled(connectionID int) {
 }
 
 //export ToggleAction_toggledHandler
-func ToggleAction_toggledHandler() {
-	fmt.Println("cb")
-}
+func ToggleAction_toggledHandler() {}
 
 // ToggleButton is a wrapper around the C record GtkToggleButton.
 type ToggleButton struct {
@@ -24026,9 +23858,7 @@ func (recv *ToggleButton) DisconnectToggled(connectionID int) {
 }
 
 //export ToggleButton_toggledHandler
-func ToggleButton_toggledHandler() {
-	fmt.Println("cb")
-}
+func ToggleButton_toggledHandler() {}
 
 // ToggleButtonNew is a wrapper around the C function gtk_toggle_button_new.
 func ToggleButtonNew() *ToggleButton {
@@ -24283,9 +24113,7 @@ func (recv *ToggleToolButton) DisconnectToggled(connectionID int) {
 }
 
 //export ToggleToolButton_toggledHandler
-func ToggleToolButton_toggledHandler() {
-	fmt.Println("cb")
-}
+func ToggleToolButton_toggledHandler() {}
 
 // ToolButton is a wrapper around the C record GtkToolButton.
 type ToolButton struct {
@@ -24390,9 +24218,7 @@ func (recv *ToolButton) DisconnectClicked(connectionID int) {
 }
 
 //export ToolButton_clickedHandler
-func ToolButton_clickedHandler() {
-	fmt.Println("cb")
-}
+func ToolButton_clickedHandler() {}
 
 // ToolItem is a wrapper around the C record GtkToolItem.
 type ToolItem struct {
@@ -24492,9 +24318,7 @@ func (recv *ToolItem) DisconnectCreateMenuProxy(connectionID int) {
 }
 
 //export ToolItem_createMenuProxyHandler
-func ToolItem_createMenuProxyHandler() C.gboolean {
-	fmt.Println("cb")
-}
+func ToolItem_createMenuProxyHandler() C.gboolean {}
 
 var signalToolItemToolbarReconfiguredId int
 var signalToolItemToolbarReconfiguredMap = make(map[int]ToolItemSignalToolbarReconfiguredCallback)
@@ -24540,9 +24364,7 @@ func (recv *ToolItem) DisconnectToolbarReconfigured(connectionID int) {
 }
 
 //export ToolItem_toolbarReconfiguredHandler
-func ToolItem_toolbarReconfiguredHandler() {
-	fmt.Println("cb")
-}
+func ToolItem_toolbarReconfiguredHandler() {}
 
 // ToolItemGroup is a wrapper around the C record GtkToolItemGroup.
 type ToolItemGroup struct {
@@ -24736,7 +24558,8 @@ func (recv *Toolbar) DisconnectFocusHomeOrEnd(connectionID int) {
 
 //export Toolbar_focusHomeOrEndHandler
 func Toolbar_focusHomeOrEndHandler(c_focus_home C.gboolean) C.gboolean {
-	fmt.Println("cb")
+	focusHome := c_focus_home == C.TRUE
+
 }
 
 // Unsupported signal 'orientation-changed' for Toolbar : unsupported parameter orientation : type Orientation :
@@ -25084,9 +24907,7 @@ func (recv *TreeSelection) DisconnectChanged(connectionID int) {
 }
 
 //export TreeSelection_changedHandler
-func TreeSelection_changedHandler() {
-	fmt.Println("cb")
-}
+func TreeSelection_changedHandler() {}
 
 // GetMode is a wrapper around the C function gtk_tree_selection_get_mode.
 func (recv *TreeSelection) GetMode() SelectionMode {
@@ -25468,9 +25289,7 @@ func (recv *TreeView) DisconnectColumnsChanged(connectionID int) {
 }
 
 //export TreeView_columnsChangedHandler
-func TreeView_columnsChangedHandler() {
-	fmt.Println("cb")
-}
+func TreeView_columnsChangedHandler() {}
 
 var signalTreeViewCursorChangedId int
 var signalTreeViewCursorChangedMap = make(map[int]TreeViewSignalCursorChangedCallback)
@@ -25516,9 +25335,7 @@ func (recv *TreeView) DisconnectCursorChanged(connectionID int) {
 }
 
 //export TreeView_cursorChangedHandler
-func TreeView_cursorChangedHandler() {
-	fmt.Println("cb")
-}
+func TreeView_cursorChangedHandler() {}
 
 var signalTreeViewExpandCollapseCursorRowId int
 var signalTreeViewExpandCollapseCursorRowMap = make(map[int]TreeViewSignalExpandCollapseCursorRowCallback)
@@ -25565,7 +25382,12 @@ func (recv *TreeView) DisconnectExpandCollapseCursorRow(connectionID int) {
 
 //export TreeView_expandCollapseCursorRowHandler
 func TreeView_expandCollapseCursorRowHandler(c_object C.gboolean, c_p0 C.gboolean, c_p1 C.gboolean) C.gboolean {
-	fmt.Println("cb")
+	object := c_object == C.TRUE
+
+	p0 := c_p0 == C.TRUE
+
+	p1 := c_p1 == C.TRUE
+
 }
 
 // Unsupported signal 'move-cursor' for TreeView : unsupported parameter step : type MovementStep :
@@ -25615,7 +25437,7 @@ func (recv *TreeView) DisconnectRowActivated(connectionID int) {
 
 //export TreeView_rowActivatedHandler
 func TreeView_rowActivatedHandler(c_path *C.GtkTreePath, c_column *C.GtkTreeViewColumn) {
-	fmt.Println("cb")
+
 }
 
 var signalTreeViewRowCollapsedId int
@@ -25663,7 +25485,7 @@ func (recv *TreeView) DisconnectRowCollapsed(connectionID int) {
 
 //export TreeView_rowCollapsedHandler
 func TreeView_rowCollapsedHandler(c_iter *C.GtkTreeIter, c_path *C.GtkTreePath) {
-	fmt.Println("cb")
+
 }
 
 var signalTreeViewRowExpandedId int
@@ -25711,7 +25533,7 @@ func (recv *TreeView) DisconnectRowExpanded(connectionID int) {
 
 //export TreeView_rowExpandedHandler
 func TreeView_rowExpandedHandler(c_iter *C.GtkTreeIter, c_path *C.GtkTreePath) {
-	fmt.Println("cb")
+
 }
 
 var signalTreeViewSelectAllId int
@@ -25758,9 +25580,7 @@ func (recv *TreeView) DisconnectSelectAll(connectionID int) {
 }
 
 //export TreeView_selectAllHandler
-func TreeView_selectAllHandler() C.gboolean {
-	fmt.Println("cb")
-}
+func TreeView_selectAllHandler() C.gboolean {}
 
 var signalTreeViewSelectCursorParentId int
 var signalTreeViewSelectCursorParentMap = make(map[int]TreeViewSignalSelectCursorParentCallback)
@@ -25806,9 +25626,7 @@ func (recv *TreeView) DisconnectSelectCursorParent(connectionID int) {
 }
 
 //export TreeView_selectCursorParentHandler
-func TreeView_selectCursorParentHandler() C.gboolean {
-	fmt.Println("cb")
-}
+func TreeView_selectCursorParentHandler() C.gboolean {}
 
 var signalTreeViewSelectCursorRowId int
 var signalTreeViewSelectCursorRowMap = make(map[int]TreeViewSignalSelectCursorRowCallback)
@@ -25855,7 +25673,8 @@ func (recv *TreeView) DisconnectSelectCursorRow(connectionID int) {
 
 //export TreeView_selectCursorRowHandler
 func TreeView_selectCursorRowHandler(c_object C.gboolean) C.gboolean {
-	fmt.Println("cb")
+	object := c_object == C.TRUE
+
 }
 
 var signalTreeViewStartInteractiveSearchId int
@@ -25902,9 +25721,7 @@ func (recv *TreeView) DisconnectStartInteractiveSearch(connectionID int) {
 }
 
 //export TreeView_startInteractiveSearchHandler
-func TreeView_startInteractiveSearchHandler() C.gboolean {
-	fmt.Println("cb")
-}
+func TreeView_startInteractiveSearchHandler() C.gboolean {}
 
 var signalTreeViewTestCollapseRowId int
 var signalTreeViewTestCollapseRowMap = make(map[int]TreeViewSignalTestCollapseRowCallback)
@@ -25951,7 +25768,7 @@ func (recv *TreeView) DisconnectTestCollapseRow(connectionID int) {
 
 //export TreeView_testCollapseRowHandler
 func TreeView_testCollapseRowHandler(c_iter *C.GtkTreeIter, c_path *C.GtkTreePath) C.gboolean {
-	fmt.Println("cb")
+
 }
 
 var signalTreeViewTestExpandRowId int
@@ -25999,7 +25816,7 @@ func (recv *TreeView) DisconnectTestExpandRow(connectionID int) {
 
 //export TreeView_testExpandRowHandler
 func TreeView_testExpandRowHandler(c_iter *C.GtkTreeIter, c_path *C.GtkTreePath) C.gboolean {
-	fmt.Println("cb")
+
 }
 
 var signalTreeViewToggleCursorRowId int
@@ -26046,9 +25863,7 @@ func (recv *TreeView) DisconnectToggleCursorRow(connectionID int) {
 }
 
 //export TreeView_toggleCursorRowHandler
-func TreeView_toggleCursorRowHandler() C.gboolean {
-	fmt.Println("cb")
-}
+func TreeView_toggleCursorRowHandler() C.gboolean {}
 
 var signalTreeViewUnselectAllId int
 var signalTreeViewUnselectAllMap = make(map[int]TreeViewSignalUnselectAllCallback)
@@ -26094,9 +25909,7 @@ func (recv *TreeView) DisconnectUnselectAll(connectionID int) {
 }
 
 //export TreeView_unselectAllHandler
-func TreeView_unselectAllHandler() C.gboolean {
-	fmt.Println("cb")
-}
+func TreeView_unselectAllHandler() C.gboolean {}
 
 // TreeViewNew is a wrapper around the C function gtk_tree_view_new.
 func TreeViewNew() *TreeView {
@@ -26646,9 +26459,7 @@ func (recv *TreeViewColumn) DisconnectClicked(connectionID int) {
 }
 
 //export TreeViewColumn_clickedHandler
-func TreeViewColumn_clickedHandler() {
-	fmt.Println("cb")
-}
+func TreeViewColumn_clickedHandler() {}
 
 // TreeViewColumnNew is a wrapper around the C function gtk_tree_view_column_new.
 func TreeViewColumnNew() *TreeViewColumn {
@@ -27710,9 +27521,7 @@ func (recv *Widget) DisconnectAccelClosuresChanged(connectionID int) {
 }
 
 //export Widget_accelClosuresChangedHandler
-func Widget_accelClosuresChangedHandler() {
-	fmt.Println("cb")
-}
+func Widget_accelClosuresChangedHandler() {}
 
 var signalWidgetButtonPressEventId int
 var signalWidgetButtonPressEventMap = make(map[int]WidgetSignalButtonPressEventCallback)
@@ -27759,7 +27568,7 @@ func (recv *Widget) DisconnectButtonPressEvent(connectionID int) {
 
 //export Widget_buttonPressEventHandler
 func Widget_buttonPressEventHandler(c_event *C.GdkEventButton) C.gboolean {
-	fmt.Println("cb")
+
 }
 
 var signalWidgetButtonReleaseEventId int
@@ -27807,7 +27616,7 @@ func (recv *Widget) DisconnectButtonReleaseEvent(connectionID int) {
 
 //export Widget_buttonReleaseEventHandler
 func Widget_buttonReleaseEventHandler(c_event *C.GdkEventButton) C.gboolean {
-	fmt.Println("cb")
+
 }
 
 // Unsupported signal 'can-activate-accel' for Widget : unsupported parameter signal_id : type guint :
@@ -27858,9 +27667,7 @@ func (recv *Widget) DisconnectCompositedChanged(connectionID int) {
 }
 
 //export Widget_compositedChangedHandler
-func Widget_compositedChangedHandler() {
-	fmt.Println("cb")
-}
+func Widget_compositedChangedHandler() {}
 
 var signalWidgetConfigureEventId int
 var signalWidgetConfigureEventMap = make(map[int]WidgetSignalConfigureEventCallback)
@@ -27907,7 +27714,7 @@ func (recv *Widget) DisconnectConfigureEvent(connectionID int) {
 
 //export Widget_configureEventHandler
 func Widget_configureEventHandler(c_event *C.GdkEventConfigure) C.gboolean {
-	fmt.Println("cb")
+
 }
 
 // Unsupported signal 'delete-event' for Widget : unsupported parameter event : no type generator for Gdk.Event,
@@ -27956,9 +27763,7 @@ func (recv *Widget) DisconnectDestroy(connectionID int) {
 }
 
 //export Widget_destroyHandler
-func Widget_destroyHandler() {
-	fmt.Println("cb")
-}
+func Widget_destroyHandler() {}
 
 // Unsupported signal 'destroy-event' for Widget : unsupported parameter event : no type generator for Gdk.Event,
 
@@ -28009,7 +27814,7 @@ func (recv *Widget) DisconnectDragBegin(connectionID int) {
 
 //export Widget_dragBeginHandler
 func Widget_dragBeginHandler(c_context *C.GdkDragContext) {
-	fmt.Println("cb")
+
 }
 
 var signalWidgetDragDataDeleteId int
@@ -28057,7 +27862,7 @@ func (recv *Widget) DisconnectDragDataDelete(connectionID int) {
 
 //export Widget_dragDataDeleteHandler
 func Widget_dragDataDeleteHandler(c_context *C.GdkDragContext) {
-	fmt.Println("cb")
+
 }
 
 // Unsupported signal 'drag-data-get' for Widget : unsupported parameter info : type guint :
@@ -28111,7 +27916,7 @@ func (recv *Widget) DisconnectDragEnd(connectionID int) {
 
 //export Widget_dragEndHandler
 func Widget_dragEndHandler(c_context *C.GdkDragContext) {
-	fmt.Println("cb")
+
 }
 
 // Unsupported signal 'drag-leave' for Widget : unsupported parameter time : type guint :
@@ -28163,7 +27968,7 @@ func (recv *Widget) DisconnectEnterNotifyEvent(connectionID int) {
 
 //export Widget_enterNotifyEventHandler
 func Widget_enterNotifyEventHandler(c_event *C.GdkEventCrossing) C.gboolean {
-	fmt.Println("cb")
+
 }
 
 // Unsupported signal 'event' for Widget : unsupported parameter event : no type generator for Gdk.Event,
@@ -28217,7 +28022,7 @@ func (recv *Widget) DisconnectFocusInEvent(connectionID int) {
 
 //export Widget_focusInEventHandler
 func Widget_focusInEventHandler(c_event *C.GdkEventFocus) C.gboolean {
-	fmt.Println("cb")
+
 }
 
 var signalWidgetFocusOutEventId int
@@ -28265,7 +28070,7 @@ func (recv *Widget) DisconnectFocusOutEvent(connectionID int) {
 
 //export Widget_focusOutEventHandler
 func Widget_focusOutEventHandler(c_event *C.GdkEventFocus) C.gboolean {
-	fmt.Println("cb")
+
 }
 
 var signalWidgetGrabFocusId int
@@ -28312,9 +28117,7 @@ func (recv *Widget) DisconnectGrabFocus(connectionID int) {
 }
 
 //export Widget_grabFocusHandler
-func Widget_grabFocusHandler() {
-	fmt.Println("cb")
-}
+func Widget_grabFocusHandler() {}
 
 var signalWidgetGrabNotifyId int
 var signalWidgetGrabNotifyMap = make(map[int]WidgetSignalGrabNotifyCallback)
@@ -28361,7 +28164,8 @@ func (recv *Widget) DisconnectGrabNotify(connectionID int) {
 
 //export Widget_grabNotifyHandler
 func Widget_grabNotifyHandler(c_was_grabbed C.gboolean) {
-	fmt.Println("cb")
+	wasGrabbed := c_was_grabbed == C.TRUE
+
 }
 
 var signalWidgetHideId int
@@ -28408,9 +28212,7 @@ func (recv *Widget) DisconnectHide(connectionID int) {
 }
 
 //export Widget_hideHandler
-func Widget_hideHandler() {
-	fmt.Println("cb")
-}
+func Widget_hideHandler() {}
 
 var signalWidgetHierarchyChangedId int
 var signalWidgetHierarchyChangedMap = make(map[int]WidgetSignalHierarchyChangedCallback)
@@ -28457,7 +28259,7 @@ func (recv *Widget) DisconnectHierarchyChanged(connectionID int) {
 
 //export Widget_hierarchyChangedHandler
 func Widget_hierarchyChangedHandler(c_previous_toplevel *C.GtkWidget) {
-	fmt.Println("cb")
+
 }
 
 var signalWidgetKeyPressEventId int
@@ -28505,7 +28307,7 @@ func (recv *Widget) DisconnectKeyPressEvent(connectionID int) {
 
 //export Widget_keyPressEventHandler
 func Widget_keyPressEventHandler(c_event *C.GdkEventKey) C.gboolean {
-	fmt.Println("cb")
+
 }
 
 var signalWidgetKeyReleaseEventId int
@@ -28553,7 +28355,7 @@ func (recv *Widget) DisconnectKeyReleaseEvent(connectionID int) {
 
 //export Widget_keyReleaseEventHandler
 func Widget_keyReleaseEventHandler(c_event *C.GdkEventKey) C.gboolean {
-	fmt.Println("cb")
+
 }
 
 var signalWidgetLeaveNotifyEventId int
@@ -28601,7 +28403,7 @@ func (recv *Widget) DisconnectLeaveNotifyEvent(connectionID int) {
 
 //export Widget_leaveNotifyEventHandler
 func Widget_leaveNotifyEventHandler(c_event *C.GdkEventCrossing) C.gboolean {
-	fmt.Println("cb")
+
 }
 
 var signalWidgetMapId int
@@ -28648,9 +28450,7 @@ func (recv *Widget) DisconnectMap(connectionID int) {
 }
 
 //export Widget_mapHandler
-func Widget_mapHandler() {
-	fmt.Println("cb")
-}
+func Widget_mapHandler() {}
 
 var signalWidgetMapEventId int
 var signalWidgetMapEventMap = make(map[int]WidgetSignalMapEventCallback)
@@ -28697,7 +28497,7 @@ func (recv *Widget) DisconnectMapEvent(connectionID int) {
 
 //export Widget_mapEventHandler
 func Widget_mapEventHandler(c_event *C.GdkEventAny) C.gboolean {
-	fmt.Println("cb")
+
 }
 
 var signalWidgetMnemonicActivateId int
@@ -28745,7 +28545,8 @@ func (recv *Widget) DisconnectMnemonicActivate(connectionID int) {
 
 //export Widget_mnemonicActivateHandler
 func Widget_mnemonicActivateHandler(c_group_cycling C.gboolean) C.gboolean {
-	fmt.Println("cb")
+	groupCycling := c_group_cycling == C.TRUE
+
 }
 
 var signalWidgetMotionNotifyEventId int
@@ -28793,7 +28594,7 @@ func (recv *Widget) DisconnectMotionNotifyEvent(connectionID int) {
 
 //export Widget_motionNotifyEventHandler
 func Widget_motionNotifyEventHandler(c_event *C.GdkEventMotion) C.gboolean {
-	fmt.Println("cb")
+
 }
 
 // Unsupported signal 'move-focus' for Widget : unsupported parameter direction : type DirectionType :
@@ -28843,7 +28644,7 @@ func (recv *Widget) DisconnectParentSet(connectionID int) {
 
 //export Widget_parentSetHandler
 func Widget_parentSetHandler(c_old_parent *C.GtkWidget) {
-	fmt.Println("cb")
+
 }
 
 var signalWidgetPopupMenuId int
@@ -28890,9 +28691,7 @@ func (recv *Widget) DisconnectPopupMenu(connectionID int) {
 }
 
 //export Widget_popupMenuHandler
-func Widget_popupMenuHandler() C.gboolean {
-	fmt.Println("cb")
-}
+func Widget_popupMenuHandler() C.gboolean {}
 
 var signalWidgetPropertyNotifyEventId int
 var signalWidgetPropertyNotifyEventMap = make(map[int]WidgetSignalPropertyNotifyEventCallback)
@@ -28939,7 +28738,7 @@ func (recv *Widget) DisconnectPropertyNotifyEvent(connectionID int) {
 
 //export Widget_propertyNotifyEventHandler
 func Widget_propertyNotifyEventHandler(c_event *C.GdkEventProperty) C.gboolean {
-	fmt.Println("cb")
+
 }
 
 var signalWidgetProximityInEventId int
@@ -28987,7 +28786,7 @@ func (recv *Widget) DisconnectProximityInEvent(connectionID int) {
 
 //export Widget_proximityInEventHandler
 func Widget_proximityInEventHandler(c_event *C.GdkEventProximity) C.gboolean {
-	fmt.Println("cb")
+
 }
 
 var signalWidgetProximityOutEventId int
@@ -29035,7 +28834,7 @@ func (recv *Widget) DisconnectProximityOutEvent(connectionID int) {
 
 //export Widget_proximityOutEventHandler
 func Widget_proximityOutEventHandler(c_event *C.GdkEventProximity) C.gboolean {
-	fmt.Println("cb")
+
 }
 
 var signalWidgetRealizeId int
@@ -29082,9 +28881,7 @@ func (recv *Widget) DisconnectRealize(connectionID int) {
 }
 
 //export Widget_realizeHandler
-func Widget_realizeHandler() {
-	fmt.Println("cb")
-}
+func Widget_realizeHandler() {}
 
 var signalWidgetScreenChangedId int
 var signalWidgetScreenChangedMap = make(map[int]WidgetSignalScreenChangedCallback)
@@ -29131,7 +28928,7 @@ func (recv *Widget) DisconnectScreenChanged(connectionID int) {
 
 //export Widget_screenChangedHandler
 func Widget_screenChangedHandler(c_previous_screen *C.GdkScreen) {
-	fmt.Println("cb")
+
 }
 
 var signalWidgetScrollEventId int
@@ -29179,7 +28976,7 @@ func (recv *Widget) DisconnectScrollEvent(connectionID int) {
 
 //export Widget_scrollEventHandler
 func Widget_scrollEventHandler(c_event *C.GdkEventScroll) C.gboolean {
-	fmt.Println("cb")
+
 }
 
 var signalWidgetSelectionClearEventId int
@@ -29227,7 +29024,7 @@ func (recv *Widget) DisconnectSelectionClearEvent(connectionID int) {
 
 //export Widget_selectionClearEventHandler
 func Widget_selectionClearEventHandler(c_event *C.GdkEventSelection) C.gboolean {
-	fmt.Println("cb")
+
 }
 
 // Unsupported signal 'selection-get' for Widget : unsupported parameter info : type guint :
@@ -29277,7 +29074,7 @@ func (recv *Widget) DisconnectSelectionNotifyEvent(connectionID int) {
 
 //export Widget_selectionNotifyEventHandler
 func Widget_selectionNotifyEventHandler(c_event *C.GdkEventSelection) C.gboolean {
-	fmt.Println("cb")
+
 }
 
 // Unsupported signal 'selection-received' for Widget : unsupported parameter time : type guint :
@@ -29327,7 +29124,7 @@ func (recv *Widget) DisconnectSelectionRequestEvent(connectionID int) {
 
 //export Widget_selectionRequestEventHandler
 func Widget_selectionRequestEventHandler(c_event *C.GdkEventSelection) C.gboolean {
-	fmt.Println("cb")
+
 }
 
 var signalWidgetShowId int
@@ -29374,9 +29171,7 @@ func (recv *Widget) DisconnectShow(connectionID int) {
 }
 
 //export Widget_showHandler
-func Widget_showHandler() {
-	fmt.Println("cb")
-}
+func Widget_showHandler() {}
 
 // Unsupported signal 'show-help' for Widget : unsupported parameter help_type : type WidgetHelpType :
 
@@ -29429,7 +29224,7 @@ func (recv *Widget) DisconnectStyleSet(connectionID int) {
 
 //export Widget_styleSetHandler
 func Widget_styleSetHandler(c_previous_style *C.GtkStyle) {
-	fmt.Println("cb")
+
 }
 
 // Unsupported signal 'touch-event' for Widget : unsupported parameter object : no type generator for Gdk.Event,
@@ -29478,9 +29273,7 @@ func (recv *Widget) DisconnectUnmap(connectionID int) {
 }
 
 //export Widget_unmapHandler
-func Widget_unmapHandler() {
-	fmt.Println("cb")
-}
+func Widget_unmapHandler() {}
 
 var signalWidgetUnmapEventId int
 var signalWidgetUnmapEventMap = make(map[int]WidgetSignalUnmapEventCallback)
@@ -29527,7 +29320,7 @@ func (recv *Widget) DisconnectUnmapEvent(connectionID int) {
 
 //export Widget_unmapEventHandler
 func Widget_unmapEventHandler(c_event *C.GdkEventAny) C.gboolean {
-	fmt.Println("cb")
+
 }
 
 var signalWidgetUnrealizeId int
@@ -29574,9 +29367,7 @@ func (recv *Widget) DisconnectUnrealize(connectionID int) {
 }
 
 //export Widget_unrealizeHandler
-func Widget_unrealizeHandler() {
-	fmt.Println("cb")
-}
+func Widget_unrealizeHandler() {}
 
 var signalWidgetVisibilityNotifyEventId int
 var signalWidgetVisibilityNotifyEventMap = make(map[int]WidgetSignalVisibilityNotifyEventCallback)
@@ -29623,7 +29414,7 @@ func (recv *Widget) DisconnectVisibilityNotifyEvent(connectionID int) {
 
 //export Widget_visibilityNotifyEventHandler
 func Widget_visibilityNotifyEventHandler(c_event *C.GdkEventVisibility) C.gboolean {
-	fmt.Println("cb")
+
 }
 
 var signalWidgetWindowStateEventId int
@@ -29671,7 +29462,7 @@ func (recv *Widget) DisconnectWindowStateEvent(connectionID int) {
 
 //export Widget_windowStateEventHandler
 func Widget_windowStateEventHandler(c_event *C.GdkEventWindowState) C.gboolean {
-	fmt.Println("cb")
+
 }
 
 // Unsupported : gtk_widget_new : unsupported parameter type : no type generator for GType, GType
@@ -30874,9 +30665,7 @@ func (recv *Window) DisconnectActivateDefault(connectionID int) {
 }
 
 //export Window_activateDefaultHandler
-func Window_activateDefaultHandler() {
-	fmt.Println("cb")
-}
+func Window_activateDefaultHandler() {}
 
 var signalWindowActivateFocusId int
 var signalWindowActivateFocusMap = make(map[int]WindowSignalActivateFocusCallback)
@@ -30922,9 +30711,7 @@ func (recv *Window) DisconnectActivateFocus(connectionID int) {
 }
 
 //export Window_activateFocusHandler
-func Window_activateFocusHandler() {
-	fmt.Println("cb")
-}
+func Window_activateFocusHandler() {}
 
 var signalWindowEnableDebuggingId int
 var signalWindowEnableDebuggingMap = make(map[int]WindowSignalEnableDebuggingCallback)
@@ -30971,7 +30758,8 @@ func (recv *Window) DisconnectEnableDebugging(connectionID int) {
 
 //export Window_enableDebuggingHandler
 func Window_enableDebuggingHandler(c_toggle C.gboolean) C.gboolean {
-	fmt.Println("cb")
+	toggle := c_toggle == C.TRUE
+
 }
 
 var signalWindowKeysChangedId int
@@ -31018,9 +30806,7 @@ func (recv *Window) DisconnectKeysChanged(connectionID int) {
 }
 
 //export Window_keysChangedHandler
-func Window_keysChangedHandler() {
-	fmt.Println("cb")
-}
+func Window_keysChangedHandler() {}
 
 var signalWindowSetFocusId int
 var signalWindowSetFocusMap = make(map[int]WindowSignalSetFocusCallback)
@@ -31067,7 +30853,7 @@ func (recv *Window) DisconnectSetFocus(connectionID int) {
 
 //export Window_setFocusHandler
 func Window_setFocusHandler(c_object *C.GtkWidget) {
-	fmt.Println("cb")
+
 }
 
 // WindowNew is a wrapper around the C function gtk_window_new.

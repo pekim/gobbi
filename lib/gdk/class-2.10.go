@@ -4,7 +4,6 @@
 package gdk
 
 import (
-	"fmt"
 	cairo "github.com/pekim/gobbi/lib/cairo"
 	glib "github.com/pekim/gobbi/lib/glib"
 	"sync"
@@ -85,9 +84,7 @@ func (recv *Screen) DisconnectCompositedChanged(connectionID int) {
 }
 
 //export Screen_compositedChangedHandler
-func Screen_compositedChangedHandler() {
-	fmt.Println("cb")
-}
+func Screen_compositedChangedHandler() {}
 
 // GetActiveWindow is a wrapper around the C function gdk_screen_get_active_window.
 func (recv *Screen) GetActiveWindow() *Window {

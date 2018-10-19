@@ -3,7 +3,6 @@
 package gio
 
 import (
-	"fmt"
 	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	"sync"
@@ -506,9 +505,7 @@ func (recv *Cancellable) DisconnectCancelled(connectionID int) {
 }
 
 //export Cancellable_cancelledHandler
-func Cancellable_cancelledHandler() {
-	fmt.Println("cb")
-}
+func Cancellable_cancelledHandler() {}
 
 // CancellableNew is a wrapper around the C function g_cancellable_new.
 func CancellableNew() *Cancellable {
@@ -2395,9 +2392,7 @@ func (recv *FilenameCompleter) DisconnectGotCompletionData(connectionID int) {
 }
 
 //export FilenameCompleter_gotCompletionDataHandler
-func FilenameCompleter_gotCompletionDataHandler() {
-	fmt.Println("cb")
-}
+func FilenameCompleter_gotCompletionDataHandler() {}
 
 // FilenameCompleterNew is a wrapper around the C function g_filename_completer_new.
 func FilenameCompleterNew() *FilenameCompleter {
@@ -3551,9 +3546,7 @@ func (recv *Resolver) DisconnectReload(connectionID int) {
 }
 
 //export Resolver_reloadHandler
-func Resolver_reloadHandler() {
-	fmt.Println("cb")
-}
+func Resolver_reloadHandler() {}
 
 // Settings is a wrapper around the C record GSettings.
 type Settings struct {
@@ -4468,9 +4461,7 @@ func (recv *UnixMountMonitor) DisconnectMountpointsChanged(connectionID int) {
 }
 
 //export UnixMountMonitor_mountpointsChangedHandler
-func UnixMountMonitor_mountpointsChangedHandler() {
-	fmt.Println("cb")
-}
+func UnixMountMonitor_mountpointsChangedHandler() {}
 
 var signalUnixMountMonitorMountsChangedId int
 var signalUnixMountMonitorMountsChangedMap = make(map[int]UnixMountMonitorSignalMountsChangedCallback)
@@ -4516,9 +4507,7 @@ func (recv *UnixMountMonitor) DisconnectMountsChanged(connectionID int) {
 }
 
 //export UnixMountMonitor_mountsChangedHandler
-func UnixMountMonitor_mountsChangedHandler() {
-	fmt.Println("cb")
-}
+func UnixMountMonitor_mountsChangedHandler() {}
 
 // UnixMountMonitorNew is a wrapper around the C function g_unix_mount_monitor_new.
 func UnixMountMonitorNew() *UnixMountMonitor {

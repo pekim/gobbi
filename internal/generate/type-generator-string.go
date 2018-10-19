@@ -87,6 +87,9 @@ func (t *TypeGeneratorString) generateParamCVar(g *jen.Group, cVarName string, g
 			Call(jen.Id(cVarName)))
 }
 
+func (t *TypeGeneratorString) generateParamGoVar(g *jen.Group, goVarName string, cVarName string, transferOwnership string) {
+}
+
 func (t *TypeGeneratorString) generateParamOutCVar(g *jen.Group, cVarName string) {
 	g.
 		Var().

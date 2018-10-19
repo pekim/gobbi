@@ -4,7 +4,6 @@
 package gdk
 
 import (
-	"fmt"
 	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	"sync"
@@ -117,7 +116,8 @@ func (recv *Display) DisconnectClosed(connectionID int) {
 
 //export Display_closedHandler
 func Display_closedHandler(c_is_error C.gboolean) {
-	fmt.Println("cb")
+	isError := c_is_error == C.TRUE
+
 }
 
 // Beep is a wrapper around the C function gdk_display_beep.
@@ -287,7 +287,7 @@ func (recv *DisplayManager) DisconnectDisplayOpened(connectionID int) {
 
 //export DisplayManager_displayOpenedHandler
 func DisplayManager_displayOpenedHandler(c_display *C.GdkDisplay) {
-	fmt.Println("cb")
+
 }
 
 // GetDefaultDisplay is a wrapper around the C function gdk_display_manager_get_default_display.
@@ -359,9 +359,7 @@ func (recv *Keymap) DisconnectKeysChanged(connectionID int) {
 }
 
 //export Keymap_keysChangedHandler
-func Keymap_keysChangedHandler() {
-	fmt.Println("cb")
-}
+func Keymap_keysChangedHandler() {}
 
 var signalScreenSizeChangedId int
 var signalScreenSizeChangedMap = make(map[int]ScreenSignalSizeChangedCallback)
@@ -407,9 +405,7 @@ func (recv *Screen) DisconnectSizeChanged(connectionID int) {
 }
 
 //export Screen_sizeChangedHandler
-func Screen_sizeChangedHandler() {
-	fmt.Println("cb")
-}
+func Screen_sizeChangedHandler() {}
 
 // GetDisplay is a wrapper around the C function gdk_screen_get_display.
 func (recv *Screen) GetDisplay() *Display {

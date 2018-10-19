@@ -4,7 +4,6 @@
 package gtk
 
 import (
-	"fmt"
 	gdk "github.com/pekim/gobbi/lib/gdk"
 	gdkpixbuf "github.com/pekim/gobbi/lib/gdkpixbuf"
 	glib "github.com/pekim/gobbi/lib/glib"
@@ -241,9 +240,7 @@ func (recv *ComboBox) DisconnectPopdown(connectionID int) {
 }
 
 //export ComboBox_popdownHandler
-func ComboBox_popdownHandler() C.gboolean {
-	fmt.Println("cb")
-}
+func ComboBox_popdownHandler() C.gboolean {}
 
 var signalComboBoxPopupId int
 var signalComboBoxPopupMap = make(map[int]ComboBoxSignalPopupCallback)
@@ -289,9 +286,7 @@ func (recv *ComboBox) DisconnectPopup(connectionID int) {
 }
 
 //export ComboBox_popupHandler
-func ComboBox_popupHandler() {
-	fmt.Println("cb")
-}
+func ComboBox_popupHandler() {}
 
 // Unsupported : gtk_combo_box_new_with_model : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
 
@@ -390,9 +385,7 @@ func (recv *FileChooserButton) DisconnectFileSet(connectionID int) {
 }
 
 //export FileChooserButton_fileSetHandler
-func FileChooserButton_fileSetHandler() {
-	fmt.Println("cb")
-}
+func FileChooserButton_fileSetHandler() {}
 
 // Unsupported : gtk_file_chooser_dialog_new : unsupported parameter ... : varargs
 
@@ -817,9 +810,7 @@ func (recv *ScaleButton) DisconnectPopdown(connectionID int) {
 }
 
 //export ScaleButton_popdownHandler
-func ScaleButton_popdownHandler() {
-	fmt.Println("cb")
-}
+func ScaleButton_popdownHandler() {}
 
 var signalScaleButtonPopupId int
 var signalScaleButtonPopupMap = make(map[int]ScaleButtonSignalPopupCallback)
@@ -865,9 +856,7 @@ func (recv *ScaleButton) DisconnectPopup(connectionID int) {
 }
 
 //export ScaleButton_popupHandler
-func ScaleButton_popupHandler() {
-	fmt.Println("cb")
-}
+func ScaleButton_popupHandler() {}
 
 // Unsupported signal 'value-changed' for ScaleButton : unsupported parameter value : type gdouble :
 

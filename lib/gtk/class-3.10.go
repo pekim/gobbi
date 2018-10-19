@@ -4,7 +4,6 @@
 package gtk
 
 import (
-	"fmt"
 	cairo "github.com/pekim/gobbi/lib/cairo"
 	gdk "github.com/pekim/gobbi/lib/gdk"
 	gdkpixbuf "github.com/pekim/gobbi/lib/gdkpixbuf"
@@ -525,7 +524,7 @@ func (recv *ListBox) DisconnectRowActivated(connectionID int) {
 
 //export ListBox_rowActivatedHandler
 func ListBox_rowActivatedHandler(c_row *C.GtkListBoxRow) {
-	fmt.Println("cb")
+
 }
 
 var signalListBoxRowSelectedId int
@@ -573,7 +572,7 @@ func (recv *ListBox) DisconnectRowSelected(connectionID int) {
 
 //export ListBox_rowSelectedHandler
 func ListBox_rowSelectedHandler(c_row *C.GtkListBoxRow) {
-	fmt.Println("cb")
+
 }
 
 // ListBoxNew is a wrapper around the C function gtk_list_box_new.
@@ -789,9 +788,7 @@ func (recv *ListBoxRow) DisconnectActivate(connectionID int) {
 }
 
 //export ListBoxRow_activateHandler
-func ListBoxRow_activateHandler() {
-	fmt.Println("cb")
-}
+func ListBoxRow_activateHandler() {}
 
 // ListBoxRowNew is a wrapper around the C function gtk_list_box_row_new.
 func ListBoxRowNew() *ListBoxRow {
@@ -1101,9 +1098,7 @@ func (recv *SearchEntry) DisconnectSearchChanged(connectionID int) {
 }
 
 //export SearchEntry_searchChangedHandler
-func SearchEntry_searchChangedHandler() {
-	fmt.Println("cb")
-}
+func SearchEntry_searchChangedHandler() {}
 
 // StackNew is a wrapper around the C function gtk_stack_new.
 func StackNew() *Stack {

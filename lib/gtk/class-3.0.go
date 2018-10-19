@@ -4,7 +4,6 @@
 package gtk
 
 import (
-	"fmt"
 	cairo "github.com/pekim/gobbi/lib/cairo"
 	gdk "github.com/pekim/gobbi/lib/gdk"
 	gdkpixbuf "github.com/pekim/gobbi/lib/gdkpixbuf"
@@ -1622,9 +1621,7 @@ func (recv *StyleContext) DisconnectChanged(connectionID int) {
 }
 
 //export StyleContext_changedHandler
-func StyleContext_changedHandler() {
-	fmt.Println("cb")
-}
+func StyleContext_changedHandler() {}
 
 // AddClass is a wrapper around the C function gtk_style_context_add_class.
 func (recv *StyleContext) AddClass(className string) {
@@ -2375,7 +2372,7 @@ func (recv *Widget) DisconnectDraw(connectionID int) {
 
 //export Widget_drawHandler
 func Widget_drawHandler(c_cr *C.cairo_t) C.gboolean {
-	fmt.Println("cb")
+
 }
 
 // Unsupported signal 'state-flags-changed' for Widget : unsupported parameter flags : type StateFlags :
@@ -2424,9 +2421,7 @@ func (recv *Widget) DisconnectStyleUpdated(connectionID int) {
 }
 
 //export Widget_styleUpdatedHandler
-func Widget_styleUpdatedHandler() {
-	fmt.Println("cb")
-}
+func Widget_styleUpdatedHandler() {}
 
 // Unsupported : gtk_widget_new : unsupported parameter type : no type generator for GType, GType
 

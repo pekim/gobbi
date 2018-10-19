@@ -3,7 +3,6 @@
 package atk
 
 import (
-	"fmt"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	"sync"
 	"unsafe"
@@ -159,9 +158,7 @@ func (recv *Hyperlink) DisconnectLinkActivated(connectionID int) {
 }
 
 //export Hyperlink_linkActivatedHandler
-func Hyperlink_linkActivatedHandler() {
-	fmt.Println("cb")
-}
+func Hyperlink_linkActivatedHandler() {}
 
 // GetEndIndex is a wrapper around the C function atk_hyperlink_get_end_index.
 func (recv *Hyperlink) GetEndIndex() int32 {
@@ -448,7 +445,8 @@ func (recv *Object) DisconnectFocusEvent(connectionID int) {
 
 //export Object_focusEventHandler
 func Object_focusEventHandler(c_arg1 C.gboolean) {
-	fmt.Println("cb")
+	arg1 := c_arg1 == C.TRUE
+
 }
 
 // Unsupported signal 'property-change' for Object : unsupported parameter arg1 : type gpointer :
@@ -499,9 +497,7 @@ func (recv *Object) DisconnectVisibleDataChanged(connectionID int) {
 }
 
 //export Object_visibleDataChangedHandler
-func Object_visibleDataChangedHandler() {
-	fmt.Println("cb")
-}
+func Object_visibleDataChangedHandler() {}
 
 // AddRelationship is a wrapper around the C function atk_object_add_relationship.
 func (recv *Object) AddRelationship(relationship RelationType, target *Object) bool {

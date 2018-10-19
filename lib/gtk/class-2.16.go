@@ -4,7 +4,6 @@
 package gtk
 
 import (
-	"fmt"
 	gdk "github.com/pekim/gobbi/lib/gdk"
 	gdkpixbuf "github.com/pekim/gobbi/lib/gdkpixbuf"
 	"sync"
@@ -725,7 +724,7 @@ func (recv *StatusIcon) DisconnectScrollEvent(connectionID int) {
 
 //export StatusIcon_scrollEventHandler
 func StatusIcon_scrollEventHandler(c_event *C.GdkEventScroll) C.gboolean {
-	fmt.Println("cb")
+
 }
 
 // Unsupported : gtk_status_icon_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon, GIcon*
@@ -837,7 +836,7 @@ func (recv *TextBuffer) DisconnectPasteDone(connectionID int) {
 
 //export TextBuffer_pasteDoneHandler
 func TextBuffer_pasteDoneHandler(c_clipboard *C.GtkClipboard) {
-	fmt.Println("cb")
+
 }
 
 // Unsupported : gtk_tree_store_new : unsupported parameter ... : varargs

@@ -3,10 +3,7 @@
 
 package gio
 
-import (
-	"fmt"
-	"sync"
-)
+import "sync"
 
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <gio/gdesktopappinfo.h>
@@ -104,9 +101,7 @@ func (recv *MountOperation) DisconnectAborted(connectionID int) {
 }
 
 //export MountOperation_abortedHandler
-func MountOperation_abortedHandler() {
-	fmt.Println("cb")
-}
+func MountOperation_abortedHandler() {}
 
 // Unsupported : g_simple_action_new : unsupported parameter parameter_type : Blacklisted record : GVariantType
 

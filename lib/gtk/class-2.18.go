@@ -4,7 +4,6 @@
 package gtk
 
 import (
-	"fmt"
 	gdk "github.com/pekim/gobbi/lib/gdk"
 	"sync"
 	"unsafe"
@@ -386,9 +385,7 @@ func (recv *InfoBar) DisconnectClose(connectionID int) {
 }
 
 //export InfoBar_closeHandler
-func InfoBar_closeHandler() {
-	fmt.Println("cb")
-}
+func InfoBar_closeHandler() {}
 
 // Unsupported signal 'response' for InfoBar : unsupported parameter response_id : type gint :
 
@@ -535,9 +532,7 @@ func (recv *Label) DisconnectActivateCurrentLink(connectionID int) {
 }
 
 //export Label_activateCurrentLinkHandler
-func Label_activateCurrentLinkHandler() {
-	fmt.Println("cb")
-}
+func Label_activateCurrentLinkHandler() {}
 
 // Unsupported signal 'activate-link' for Label : unsupported parameter uri : type utf8 :
 
@@ -640,7 +635,7 @@ func (recv *PrintOperation) DisconnectUpdateCustomWidget(connectionID int) {
 
 //export PrintOperation_updateCustomWidgetHandler
 func PrintOperation_updateCustomWidgetHandler(c_widget *C.GtkWidget, c_setup *C.GtkPageSetup, c_settings *C.GtkPrintSettings) {
-	fmt.Println("cb")
+
 }
 
 // GetEmbedPageSetup is a wrapper around the C function gtk_print_operation_get_embed_page_setup.

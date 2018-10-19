@@ -4,7 +4,6 @@
 package gdk
 
 import (
-	"fmt"
 	"sync"
 	"unsafe"
 )
@@ -123,9 +122,7 @@ func (recv *Screen) DisconnectMonitorsChanged(connectionID int) {
 }
 
 //export Screen_monitorsChangedHandler
-func Screen_monitorsChangedHandler() {
-	fmt.Println("cb")
-}
+func Screen_monitorsChangedHandler() {}
 
 // GetMonitorHeightMm is a wrapper around the C function gdk_screen_get_monitor_height_mm.
 func (recv *Screen) GetMonitorHeightMm(monitorNum int32) int32 {

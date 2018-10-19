@@ -4,7 +4,6 @@
 package gtk
 
 import (
-	"fmt"
 	gdk "github.com/pekim/gobbi/lib/gdk"
 	gdkpixbuf "github.com/pekim/gobbi/lib/gdkpixbuf"
 	glib "github.com/pekim/gobbi/lib/glib"
@@ -237,9 +236,7 @@ func (recv *Action) DisconnectActivate(connectionID int) {
 }
 
 //export Action_activateHandler
-func Action_activateHandler() {
-	fmt.Println("cb")
-}
+func Action_activateHandler() {}
 
 // ActionNew is a wrapper around the C function gtk_action_new.
 func ActionNew(name string, label string, tooltip string, stockId string) *Action {
@@ -412,7 +409,7 @@ func (recv *ActionGroup) DisconnectConnectProxy(connectionID int) {
 
 //export ActionGroup_connectProxyHandler
 func ActionGroup_connectProxyHandler(c_action *C.GtkAction, c_proxy *C.GtkWidget) {
-	fmt.Println("cb")
+
 }
 
 var signalActionGroupDisconnectProxyId int
@@ -460,7 +457,7 @@ func (recv *ActionGroup) DisconnectDisconnectProxy(connectionID int) {
 
 //export ActionGroup_disconnectProxyHandler
 func ActionGroup_disconnectProxyHandler(c_action *C.GtkAction, c_proxy *C.GtkWidget) {
-	fmt.Println("cb")
+
 }
 
 var signalActionGroupPostActivateId int
@@ -508,7 +505,7 @@ func (recv *ActionGroup) DisconnectPostActivate(connectionID int) {
 
 //export ActionGroup_postActivateHandler
 func ActionGroup_postActivateHandler(c_action *C.GtkAction) {
-	fmt.Println("cb")
+
 }
 
 var signalActionGroupPreActivateId int
@@ -556,7 +553,7 @@ func (recv *ActionGroup) DisconnectPreActivate(connectionID int) {
 
 //export ActionGroup_preActivateHandler
 func ActionGroup_preActivateHandler(c_action *C.GtkAction) {
-	fmt.Println("cb")
+
 }
 
 // ActionGroupNew is a wrapper around the C function gtk_action_group_new.
@@ -844,9 +841,7 @@ func (recv *CellRenderer) DisconnectEditingCanceled(connectionID int) {
 }
 
 //export CellRenderer_editingCanceledHandler
-func CellRenderer_editingCanceledHandler() {
-	fmt.Println("cb")
-}
+func CellRenderer_editingCanceledHandler() {}
 
 // GetDrawAsRadio is a wrapper around the C function gtk_check_menu_item_get_draw_as_radio.
 func (recv *CheckMenuItem) GetDrawAsRadio() bool {
@@ -914,9 +909,7 @@ func (recv *ColorButton) DisconnectColorSet(connectionID int) {
 }
 
 //export ColorButton_colorSetHandler
-func ColorButton_colorSetHandler() {
-	fmt.Println("cb")
-}
+func ColorButton_colorSetHandler() {}
 
 // ColorButtonNew is a wrapper around the C function gtk_color_button_new.
 func ColorButtonNew() *ColorButton {
@@ -1053,9 +1046,7 @@ func (recv *ComboBox) DisconnectChanged(connectionID int) {
 }
 
 //export ComboBox_changedHandler
-func ComboBox_changedHandler() {
-	fmt.Println("cb")
-}
+func ComboBox_changedHandler() {}
 
 // ComboBoxNew is a wrapper around the C function gtk_combo_box_new.
 func ComboBoxNew() *ComboBox {
@@ -1570,9 +1561,7 @@ func (recv *FontButton) DisconnectFontSet(connectionID int) {
 }
 
 //export FontButton_fontSetHandler
-func FontButton_fontSetHandler() {
-	fmt.Println("cb")
-}
+func FontButton_fontSetHandler() {}
 
 // FontButtonNew is a wrapper around the C function gtk_font_button_new.
 func FontButtonNew() *FontButton {
@@ -2033,7 +2022,7 @@ func (recv *RadioAction) DisconnectChanged(connectionID int) {
 
 //export RadioAction_changedHandler
 func RadioAction_changedHandler(c_current *C.GtkRadioAction) {
-	fmt.Println("cb")
+
 }
 
 // RadioActionNew is a wrapper around the C function gtk_radio_action_new.
@@ -2127,9 +2116,7 @@ func (recv *RadioButton) DisconnectGroupChanged(connectionID int) {
 }
 
 //export RadioButton_groupChangedHandler
-func RadioButton_groupChangedHandler() {
-	fmt.Println("cb")
-}
+func RadioButton_groupChangedHandler() {}
 
 // RadioMenuItemNewFromWidget is a wrapper around the C function gtk_radio_menu_item_new_from_widget.
 func RadioMenuItemNewFromWidget(group *RadioMenuItem) *RadioMenuItem {
@@ -2331,9 +2318,7 @@ func (recv *Style) DisconnectRealize(connectionID int) {
 }
 
 //export Style_realizeHandler
-func Style_realizeHandler() {
-	fmt.Println("cb")
-}
+func Style_realizeHandler() {}
 
 var signalStyleUnrealizeId int
 var signalStyleUnrealizeMap = make(map[int]StyleSignalUnrealizeCallback)
@@ -2379,9 +2364,7 @@ func (recv *Style) DisconnectUnrealize(connectionID int) {
 }
 
 //export Style_unrealizeHandler
-func Style_unrealizeHandler() {
-	fmt.Println("cb")
-}
+func Style_unrealizeHandler() {}
 
 // SelectRange is a wrapper around the C function gtk_text_buffer_select_range.
 func (recv *TextBuffer) SelectRange(ins *TextIter, bound *TextIter) {
@@ -3049,9 +3032,7 @@ func (recv *UIManager) DisconnectActionsChanged(connectionID int) {
 }
 
 //export UIManager_actionsChangedHandler
-func UIManager_actionsChangedHandler() {
-	fmt.Println("cb")
-}
+func UIManager_actionsChangedHandler() {}
 
 var signalUIManagerAddWidgetId int
 var signalUIManagerAddWidgetMap = make(map[int]UIManagerSignalAddWidgetCallback)
@@ -3098,7 +3079,7 @@ func (recv *UIManager) DisconnectAddWidget(connectionID int) {
 
 //export UIManager_addWidgetHandler
 func UIManager_addWidgetHandler(c_widget *C.GtkWidget) {
-	fmt.Println("cb")
+
 }
 
 var signalUIManagerConnectProxyId int
@@ -3146,7 +3127,7 @@ func (recv *UIManager) DisconnectConnectProxy(connectionID int) {
 
 //export UIManager_connectProxyHandler
 func UIManager_connectProxyHandler(c_action *C.GtkAction, c_proxy *C.GtkWidget) {
-	fmt.Println("cb")
+
 }
 
 var signalUIManagerDisconnectProxyId int
@@ -3194,7 +3175,7 @@ func (recv *UIManager) DisconnectDisconnectProxy(connectionID int) {
 
 //export UIManager_disconnectProxyHandler
 func UIManager_disconnectProxyHandler(c_action *C.GtkAction, c_proxy *C.GtkWidget) {
-	fmt.Println("cb")
+
 }
 
 var signalUIManagerPostActivateId int
@@ -3242,7 +3223,7 @@ func (recv *UIManager) DisconnectPostActivate(connectionID int) {
 
 //export UIManager_postActivateHandler
 func UIManager_postActivateHandler(c_action *C.GtkAction) {
-	fmt.Println("cb")
+
 }
 
 var signalUIManagerPreActivateId int
@@ -3290,7 +3271,7 @@ func (recv *UIManager) DisconnectPreActivate(connectionID int) {
 
 //export UIManager_preActivateHandler
 func UIManager_preActivateHandler(c_action *C.GtkAction) {
-	fmt.Println("cb")
+
 }
 
 // UIManagerNew is a wrapper around the C function gtk_ui_manager_new.

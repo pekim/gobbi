@@ -156,7 +156,15 @@ func (s *Signal) generateHandlerFunction(g *jen.Group) {
 		ParamsFunc(s.Parameters.generateFunctionDeclarationCtypes).
 		ParamsFunc(s.ReturnValue.generateFunctionDeclarationCtype).
 		BlockFunc(func(g *jen.Group) {
-			g.Qual("fmt", "Println").Call(jen.Lit("cb"))
+			//g.Qual("fmt", "Println").Call(jen.Lit("cb"))
+
+			s.Parameters.generateGoVars(g)
+			//s.generateCall(g)
+
+			//s.generateGoReturnVars(g)
+			//s.generateOutputParamsGoVars(g)
+			//s.generateReturn(g)
+
 		})
 
 	g.Line()

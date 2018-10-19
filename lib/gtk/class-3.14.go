@@ -4,7 +4,6 @@
 package gtk
 
 import (
-	"fmt"
 	gdk "github.com/pekim/gobbi/lib/gdk"
 	gio "github.com/pekim/gobbi/lib/gio"
 	glib "github.com/pekim/gobbi/lib/glib"
@@ -215,9 +214,7 @@ func (recv *EntryCompletion) DisconnectNoMatches(connectionID int) {
 }
 
 //export EntryCompletion_noMatchesHandler
-func EntryCompletion_noMatchesHandler() {
-	fmt.Println("cb")
-}
+func EntryCompletion_noMatchesHandler() {}
 
 // Unsupported : EntryIconAccessible : no CType
 
@@ -304,7 +301,7 @@ func (recv *Gesture) DisconnectBegin(connectionID int) {
 
 //export Gesture_beginHandler
 func Gesture_beginHandler(c_sequence *C.GdkEventSequence) {
-	fmt.Println("cb")
+
 }
 
 var signalGestureCancelId int
@@ -352,7 +349,7 @@ func (recv *Gesture) DisconnectCancel(connectionID int) {
 
 //export Gesture_cancelHandler
 func Gesture_cancelHandler(c_sequence *C.GdkEventSequence) {
-	fmt.Println("cb")
+
 }
 
 var signalGestureEndId int
@@ -400,7 +397,7 @@ func (recv *Gesture) DisconnectEnd(connectionID int) {
 
 //export Gesture_endHandler
 func Gesture_endHandler(c_sequence *C.GdkEventSequence) {
-	fmt.Println("cb")
+
 }
 
 // Unsupported signal 'sequence-state-changed' for Gesture : unsupported parameter state : type EventSequenceState :
@@ -450,7 +447,7 @@ func (recv *Gesture) DisconnectUpdate(connectionID int) {
 
 //export Gesture_updateHandler
 func Gesture_updateHandler(c_sequence *C.GdkEventSequence) {
-	fmt.Println("cb")
+
 }
 
 // Unsupported : gtk_gesture_get_bounding_box : unsupported parameter rect : Blacklisted record : GdkRectangle
@@ -714,9 +711,7 @@ func (recv *GestureLongPress) DisconnectCancelled(connectionID int) {
 }
 
 //export GestureLongPress_cancelledHandler
-func GestureLongPress_cancelledHandler() {
-	fmt.Println("cb")
-}
+func GestureLongPress_cancelledHandler() {}
 
 // Unsupported signal 'pressed' for GestureLongPress : unsupported parameter x : type gdouble :
 
@@ -778,9 +773,7 @@ func (recv *GestureMultiPress) DisconnectStopped(connectionID int) {
 }
 
 //export GestureMultiPress_stoppedHandler
-func GestureMultiPress_stoppedHandler() {
-	fmt.Println("cb")
-}
+func GestureMultiPress_stoppedHandler() {}
 
 // GestureMultiPressNew is a wrapper around the C function gtk_gesture_multi_press_new.
 func GestureMultiPressNew(widget *Widget) *GestureMultiPress {
@@ -1030,9 +1023,7 @@ func (recv *ListBox) DisconnectSelectAll(connectionID int) {
 }
 
 //export ListBox_selectAllHandler
-func ListBox_selectAllHandler() {
-	fmt.Println("cb")
-}
+func ListBox_selectAllHandler() {}
 
 var signalListBoxSelectedRowsChangedId int
 var signalListBoxSelectedRowsChangedMap = make(map[int]ListBoxSignalSelectedRowsChangedCallback)
@@ -1078,9 +1069,7 @@ func (recv *ListBox) DisconnectSelectedRowsChanged(connectionID int) {
 }
 
 //export ListBox_selectedRowsChangedHandler
-func ListBox_selectedRowsChangedHandler() {
-	fmt.Println("cb")
-}
+func ListBox_selectedRowsChangedHandler() {}
 
 var signalListBoxUnselectAllId int
 var signalListBoxUnselectAllMap = make(map[int]ListBoxSignalUnselectAllCallback)
@@ -1126,9 +1115,7 @@ func (recv *ListBox) DisconnectUnselectAll(connectionID int) {
 }
 
 //export ListBox_unselectAllHandler
-func ListBox_unselectAllHandler() {
-	fmt.Println("cb")
-}
+func ListBox_unselectAllHandler() {}
 
 // GetSelectedRows is a wrapper around the C function gtk_list_box_get_selected_rows.
 func (recv *ListBox) GetSelectedRows() *glib.List {
@@ -1261,9 +1248,7 @@ func (recv *PlacesSidebar) DisconnectShowEnterLocation(connectionID int) {
 }
 
 //export PlacesSidebar_showEnterLocationHandler
-func PlacesSidebar_showEnterLocationHandler() {
-	fmt.Println("cb")
-}
+func PlacesSidebar_showEnterLocationHandler() {}
 
 // GetShowEnterLocation is a wrapper around the C function gtk_places_sidebar_get_show_enter_location.
 func (recv *PlacesSidebar) GetShowEnterLocation() bool {
@@ -1338,7 +1323,8 @@ func (recv *Switch) DisconnectStateSet(connectionID int) {
 
 //export Switch_stateSetHandler
 func Switch_stateSetHandler(c_state C.gboolean) C.gboolean {
-	fmt.Println("cb")
+	state := c_state == C.TRUE
+
 }
 
 // GetState is a wrapper around the C function gtk_switch_get_state.

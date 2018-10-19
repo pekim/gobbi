@@ -4,7 +4,6 @@
 package gio
 
 import (
-	"fmt"
 	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	"sync"
@@ -131,9 +130,7 @@ func (recv *Application) DisconnectActivate(connectionID int) {
 }
 
 //export Application_activateHandler
-func Application_activateHandler() {
-	fmt.Println("cb")
-}
+func Application_activateHandler() {}
 
 // Unsupported signal 'command-line' for Application : return value gint :
 
@@ -183,9 +180,7 @@ func (recv *Application) DisconnectShutdown(connectionID int) {
 }
 
 //export Application_shutdownHandler
-func Application_shutdownHandler() {
-	fmt.Println("cb")
-}
+func Application_shutdownHandler() {}
 
 var signalApplicationStartupId int
 var signalApplicationStartupMap = make(map[int]ApplicationSignalStartupCallback)
@@ -231,9 +226,7 @@ func (recv *Application) DisconnectStartup(connectionID int) {
 }
 
 //export Application_startupHandler
-func Application_startupHandler() {
-	fmt.Println("cb")
-}
+func Application_startupHandler() {}
 
 // ApplicationNew is a wrapper around the C function g_application_new.
 func ApplicationNew(applicationId string, flags ApplicationFlags) *Application {

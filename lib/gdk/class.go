@@ -3,7 +3,6 @@
 package gdk
 
 import (
-	"fmt"
 	cairo "github.com/pekim/gobbi/lib/cairo"
 	gio "github.com/pekim/gobbi/lib/gio"
 	glib "github.com/pekim/gobbi/lib/glib"
@@ -296,9 +295,7 @@ func (recv *Device) DisconnectChanged(connectionID int) {
 }
 
 //export Device_changedHandler
-func Device_changedHandler() {
-	fmt.Println("cb")
-}
+func Device_changedHandler() {}
 
 // Unsupported : gdk_device_get_axis : unsupported parameter axes : no param type
 
@@ -425,7 +422,7 @@ func (recv *DeviceManager) DisconnectDeviceAdded(connectionID int) {
 
 //export DeviceManager_deviceAddedHandler
 func DeviceManager_deviceAddedHandler(c_device *C.GdkDevice) {
-	fmt.Println("cb")
+
 }
 
 var signalDeviceManagerDeviceChangedId int
@@ -473,7 +470,7 @@ func (recv *DeviceManager) DisconnectDeviceChanged(connectionID int) {
 
 //export DeviceManager_deviceChangedHandler
 func DeviceManager_deviceChangedHandler(c_device *C.GdkDevice) {
-	fmt.Println("cb")
+
 }
 
 var signalDeviceManagerDeviceRemovedId int
@@ -521,7 +518,7 @@ func (recv *DeviceManager) DisconnectDeviceRemoved(connectionID int) {
 
 //export DeviceManager_deviceRemovedHandler
 func DeviceManager_deviceRemovedHandler(c_device *C.GdkDevice) {
-	fmt.Println("cb")
+
 }
 
 // Display is a wrapper around the C record GdkDisplay.
@@ -600,9 +597,7 @@ func (recv *Display) DisconnectOpened(connectionID int) {
 }
 
 //export Display_openedHandler
-func Display_openedHandler() {
-	fmt.Println("cb")
-}
+func Display_openedHandler() {}
 
 // DeviceIsGrabbed is a wrapper around the C function gdk_display_device_is_grabbed.
 func (recv *Display) DeviceIsGrabbed(device *Device) bool {
@@ -771,9 +766,7 @@ func (recv *FrameClock) DisconnectAfterPaint(connectionID int) {
 }
 
 //export FrameClock_afterPaintHandler
-func FrameClock_afterPaintHandler() {
-	fmt.Println("cb")
-}
+func FrameClock_afterPaintHandler() {}
 
 var signalFrameClockBeforePaintId int
 var signalFrameClockBeforePaintMap = make(map[int]FrameClockSignalBeforePaintCallback)
@@ -819,9 +812,7 @@ func (recv *FrameClock) DisconnectBeforePaint(connectionID int) {
 }
 
 //export FrameClock_beforePaintHandler
-func FrameClock_beforePaintHandler() {
-	fmt.Println("cb")
-}
+func FrameClock_beforePaintHandler() {}
 
 var signalFrameClockFlushEventsId int
 var signalFrameClockFlushEventsMap = make(map[int]FrameClockSignalFlushEventsCallback)
@@ -867,9 +858,7 @@ func (recv *FrameClock) DisconnectFlushEvents(connectionID int) {
 }
 
 //export FrameClock_flushEventsHandler
-func FrameClock_flushEventsHandler() {
-	fmt.Println("cb")
-}
+func FrameClock_flushEventsHandler() {}
 
 var signalFrameClockLayoutId int
 var signalFrameClockLayoutMap = make(map[int]FrameClockSignalLayoutCallback)
@@ -915,9 +904,7 @@ func (recv *FrameClock) DisconnectLayout(connectionID int) {
 }
 
 //export FrameClock_layoutHandler
-func FrameClock_layoutHandler() {
-	fmt.Println("cb")
-}
+func FrameClock_layoutHandler() {}
 
 var signalFrameClockPaintId int
 var signalFrameClockPaintMap = make(map[int]FrameClockSignalPaintCallback)
@@ -963,9 +950,7 @@ func (recv *FrameClock) DisconnectPaint(connectionID int) {
 }
 
 //export FrameClock_paintHandler
-func FrameClock_paintHandler() {
-	fmt.Println("cb")
-}
+func FrameClock_paintHandler() {}
 
 var signalFrameClockResumeEventsId int
 var signalFrameClockResumeEventsMap = make(map[int]FrameClockSignalResumeEventsCallback)
@@ -1011,9 +996,7 @@ func (recv *FrameClock) DisconnectResumeEvents(connectionID int) {
 }
 
 //export FrameClock_resumeEventsHandler
-func FrameClock_resumeEventsHandler() {
-	fmt.Println("cb")
-}
+func FrameClock_resumeEventsHandler() {}
 
 var signalFrameClockUpdateId int
 var signalFrameClockUpdateMap = make(map[int]FrameClockSignalUpdateCallback)
@@ -1059,9 +1042,7 @@ func (recv *FrameClock) DisconnectUpdate(connectionID int) {
 }
 
 //export FrameClock_updateHandler
-func FrameClock_updateHandler() {
-	fmt.Println("cb")
-}
+func FrameClock_updateHandler() {}
 
 // GLContext is a wrapper around the C record GdkGLContext.
 type GLContext struct {

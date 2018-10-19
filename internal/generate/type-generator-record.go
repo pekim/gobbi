@@ -108,6 +108,10 @@ func (t *TypeGeneratorRecord) generateParamCVar(g *jen.Group, cVarName string, g
 			Call())
 }
 
+func (t *TypeGeneratorRecord) generateParamGoVar(g *jen.Group, goVarName string, cVarName string, transferOwnership string) {
+	fmt.Println("TODO - record")
+}
+
 func (t *TypeGeneratorRecord) generateParamOutCVar(g *jen.Group, cVarName string) {
 	g.
 		Var().

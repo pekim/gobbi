@@ -4,7 +4,6 @@
 package gio
 
 import (
-	"fmt"
 	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	"sync"
@@ -1603,7 +1602,7 @@ func (recv *ThreadedSocketService) DisconnectRun(connectionID int) {
 
 //export ThreadedSocketService_runHandler
 func ThreadedSocketService_runHandler(c_connection *C.GSocketConnection, c_source_object *C.GObject) C.gboolean {
-	fmt.Println("cb")
+
 }
 
 // ThreadedSocketServiceNew is a wrapper around the C function g_threaded_socket_service_new.

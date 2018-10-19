@@ -4,7 +4,6 @@
 package gtk
 
 import (
-	"fmt"
 	gdk "github.com/pekim/gobbi/lib/gdk"
 	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
@@ -477,9 +476,7 @@ func (recv *SearchEntry) DisconnectNextMatch(connectionID int) {
 }
 
 //export SearchEntry_nextMatchHandler
-func SearchEntry_nextMatchHandler() {
-	fmt.Println("cb")
-}
+func SearchEntry_nextMatchHandler() {}
 
 var signalSearchEntryPreviousMatchId int
 var signalSearchEntryPreviousMatchMap = make(map[int]SearchEntrySignalPreviousMatchCallback)
@@ -525,9 +522,7 @@ func (recv *SearchEntry) DisconnectPreviousMatch(connectionID int) {
 }
 
 //export SearchEntry_previousMatchHandler
-func SearchEntry_previousMatchHandler() {
-	fmt.Println("cb")
-}
+func SearchEntry_previousMatchHandler() {}
 
 var signalSearchEntryStopSearchId int
 var signalSearchEntryStopSearchMap = make(map[int]SearchEntrySignalStopSearchCallback)
@@ -573,9 +568,7 @@ func (recv *SearchEntry) DisconnectStopSearch(connectionID int) {
 }
 
 //export SearchEntry_stopSearchHandler
-func SearchEntry_stopSearchHandler() {
-	fmt.Println("cb")
-}
+func SearchEntry_stopSearchHandler() {}
 
 // Unsupported : gtk_search_entry_handle_event : unsupported parameter event : no type generator for Gdk.Event, GdkEvent*
 

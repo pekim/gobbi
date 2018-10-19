@@ -46,6 +46,9 @@ func (t *TypeGeneratorIgnore) generateParamOutCallArgument(g *jen.Group, cVarNam
 func (t *TypeGeneratorIgnore) generateParamCVar(g *jen.Group, cVarName string, goVarName string, transferOwnership string) {
 }
 
+func (t *TypeGeneratorIgnore) generateParamGoVar(g *jen.Group, goVarName string, cVarName string, transferOwnership string) {
+}
+
 func (t *TypeGeneratorIgnore) generateParamOutCVar(g *jen.Group, cVarName string) {
 }
 

@@ -4,7 +4,6 @@
 package gio
 
 import (
-	"fmt"
 	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	"sync"
@@ -111,9 +110,7 @@ func (recv *AppInfoMonitor) DisconnectChanged(connectionID int) {
 }
 
 //export AppInfoMonitor_changedHandler
-func AppInfoMonitor_changedHandler() {
-	fmt.Println("cb")
-}
+func AppInfoMonitor_changedHandler() {}
 
 // Unsupported : g_application_add_main_option_entries : unsupported parameter entries : no param type
 

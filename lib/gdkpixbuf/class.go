@@ -3,7 +3,6 @@
 package gdkpixbuf
 
 import (
-	"fmt"
 	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	"sync"
@@ -667,9 +666,7 @@ func (recv *PixbufLoader) DisconnectAreaPrepared(connectionID int) {
 }
 
 //export PixbufLoader_areaPreparedHandler
-func PixbufLoader_areaPreparedHandler() {
-	fmt.Println("cb")
-}
+func PixbufLoader_areaPreparedHandler() {}
 
 // Unsupported signal 'area-updated' for PixbufLoader : unsupported parameter x : type gint :
 
@@ -717,9 +714,7 @@ func (recv *PixbufLoader) DisconnectClosed(connectionID int) {
 }
 
 //export PixbufLoader_closedHandler
-func PixbufLoader_closedHandler() {
-	fmt.Println("cb")
-}
+func PixbufLoader_closedHandler() {}
 
 // Unsupported signal 'size-prepared' for PixbufLoader : unsupported parameter width : type gint :
 
