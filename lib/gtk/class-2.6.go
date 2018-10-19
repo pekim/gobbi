@@ -4,11 +4,13 @@
 package gtk
 
 import (
+	"fmt"
 	atk "github.com/pekim/gobbi/lib/atk"
 	gdk "github.com/pekim/gobbi/lib/gdk"
 	gdkpixbuf "github.com/pekim/gobbi/lib/gdkpixbuf"
 	glib "github.com/pekim/gobbi/lib/glib"
 	pango "github.com/pekim/gobbi/lib/pango"
+	"sync"
 	"unsafe"
 )
 
@@ -17,6 +19,15 @@ import (
 // #include <gtk/gtk.h>
 // #include <gtk/gtkx.h>
 // #include <stdlib.h>
+/*
+
+	void Clipboard_ownerChangeHandler();
+
+	static gulong Clipboard_signal_connect_owner_change(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "owner-change", Clipboard_ownerChangeHandler, data);
+	}
+
+*/
 import "C"
 
 // AboutDialogNew is a wrapper around the C function gtk_about_dialog_new.
@@ -382,7 +393,53 @@ func (recv *CellView) SetDisplayedRow(path *TreePath) {
 
 // Unsupported : gtk_cell_view_set_model : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
 
-// Unsupported signal 'owner-change' for Clipboard : unsupported parameter event : type Gdk.EventOwnerChange :
+var signalClipboardOwnerChangeId int
+var signalClipboardOwnerChangeMap = make(map[int]ClipboardSignalOwnerChangeCallback)
+var signalClipboardOwnerChangeLock sync.Mutex
+
+// ClipboardSignalOwnerChangeCallback is a callback function for a 'owner-change' signal emitted from a Clipboard.
+type ClipboardSignalOwnerChangeCallback func(event *gdk.EventOwnerChange)
+
+/*
+ConnectOwnerChange connects the callback to the 'owner-change' signal for the Clipboard.
+
+The returned value represents the connection, and may be passed to DisconnectOwnerChange to remove it.
+*/
+func (recv *Clipboard) ConnectOwnerChange(callback ClipboardSignalOwnerChangeCallback) int {
+	signalClipboardOwnerChangeLock.Lock()
+	defer signalClipboardOwnerChangeLock.Unlock()
+
+	signalClipboardOwnerChangeId++
+	signalClipboardOwnerChangeMap[signalClipboardOwnerChangeId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	retC := C.Clipboard_signal_connect_owner_change(instance, C.gpointer(uintptr(signalClipboardOwnerChangeId)))
+	return int(retC)
+}
+
+/*
+DisconnectOwnerChange disconnects a callback from the 'owner-change' signal for the Clipboard.
+
+The connectionID should be a value returned from a call to ConnectOwnerChange.
+*/
+func (recv *Clipboard) DisconnectOwnerChange(connectionID int) {
+	signalClipboardOwnerChangeLock.Lock()
+	defer signalClipboardOwnerChangeLock.Unlock()
+
+	_, exists := signalClipboardOwnerChangeMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalClipboardOwnerChangeMap, connectionID)
+}
+
+//export Clipboard_ownerChangeHandler
+func Clipboard_ownerChangeHandler(c_event *C.GdkEventOwnerChange) {
+	fmt.Println("cb")
+}
 
 // Unsupported : gtk_clipboard_request_image : unsupported parameter callback : no type generator for ClipboardImageReceivedFunc, GtkClipboardImageReceivedFunc
 

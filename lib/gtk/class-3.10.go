@@ -21,6 +21,24 @@ import (
 // #include <stdlib.h>
 /*
 
+	void ListBox_rowActivatedHandler();
+
+	static gulong ListBox_signal_connect_row_activated(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "row-activated", ListBox_rowActivatedHandler, data);
+	}
+
+*/
+/*
+
+	void ListBox_rowSelectedHandler();
+
+	static gulong ListBox_signal_connect_row_selected(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "row-selected", ListBox_rowSelectedHandler, data);
+	}
+
+*/
+/*
+
 	void ListBoxRow_activateHandler();
 
 	static gulong ListBoxRow_signal_connect_activate(gpointer instance, gpointer data) {
@@ -462,9 +480,101 @@ func (recv *Label) SetLines(lines int32) {
 	return
 }
 
-// Unsupported signal 'row-activated' for ListBox : unsupported parameter row : type ListBoxRow :
+var signalListBoxRowActivatedId int
+var signalListBoxRowActivatedMap = make(map[int]ListBoxSignalRowActivatedCallback)
+var signalListBoxRowActivatedLock sync.Mutex
 
-// Unsupported signal 'row-selected' for ListBox : unsupported parameter row : type ListBoxRow :
+// ListBoxSignalRowActivatedCallback is a callback function for a 'row-activated' signal emitted from a ListBox.
+type ListBoxSignalRowActivatedCallback func(row *ListBoxRow)
+
+/*
+ConnectRowActivated connects the callback to the 'row-activated' signal for the ListBox.
+
+The returned value represents the connection, and may be passed to DisconnectRowActivated to remove it.
+*/
+func (recv *ListBox) ConnectRowActivated(callback ListBoxSignalRowActivatedCallback) int {
+	signalListBoxRowActivatedLock.Lock()
+	defer signalListBoxRowActivatedLock.Unlock()
+
+	signalListBoxRowActivatedId++
+	signalListBoxRowActivatedMap[signalListBoxRowActivatedId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	retC := C.ListBox_signal_connect_row_activated(instance, C.gpointer(uintptr(signalListBoxRowActivatedId)))
+	return int(retC)
+}
+
+/*
+DisconnectRowActivated disconnects a callback from the 'row-activated' signal for the ListBox.
+
+The connectionID should be a value returned from a call to ConnectRowActivated.
+*/
+func (recv *ListBox) DisconnectRowActivated(connectionID int) {
+	signalListBoxRowActivatedLock.Lock()
+	defer signalListBoxRowActivatedLock.Unlock()
+
+	_, exists := signalListBoxRowActivatedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalListBoxRowActivatedMap, connectionID)
+}
+
+//export ListBox_rowActivatedHandler
+func ListBox_rowActivatedHandler(c_row *C.GtkListBoxRow) {
+	fmt.Println("cb")
+}
+
+var signalListBoxRowSelectedId int
+var signalListBoxRowSelectedMap = make(map[int]ListBoxSignalRowSelectedCallback)
+var signalListBoxRowSelectedLock sync.Mutex
+
+// ListBoxSignalRowSelectedCallback is a callback function for a 'row-selected' signal emitted from a ListBox.
+type ListBoxSignalRowSelectedCallback func(row *ListBoxRow)
+
+/*
+ConnectRowSelected connects the callback to the 'row-selected' signal for the ListBox.
+
+The returned value represents the connection, and may be passed to DisconnectRowSelected to remove it.
+*/
+func (recv *ListBox) ConnectRowSelected(callback ListBoxSignalRowSelectedCallback) int {
+	signalListBoxRowSelectedLock.Lock()
+	defer signalListBoxRowSelectedLock.Unlock()
+
+	signalListBoxRowSelectedId++
+	signalListBoxRowSelectedMap[signalListBoxRowSelectedId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	retC := C.ListBox_signal_connect_row_selected(instance, C.gpointer(uintptr(signalListBoxRowSelectedId)))
+	return int(retC)
+}
+
+/*
+DisconnectRowSelected disconnects a callback from the 'row-selected' signal for the ListBox.
+
+The connectionID should be a value returned from a call to ConnectRowSelected.
+*/
+func (recv *ListBox) DisconnectRowSelected(connectionID int) {
+	signalListBoxRowSelectedLock.Lock()
+	defer signalListBoxRowSelectedLock.Unlock()
+
+	_, exists := signalListBoxRowSelectedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalListBoxRowSelectedMap, connectionID)
+}
+
+//export ListBox_rowSelectedHandler
+func ListBox_rowSelectedHandler(c_row *C.GtkListBoxRow) {
+	fmt.Println("cb")
+}
 
 // ListBoxNew is a wrapper around the C function gtk_list_box_new.
 func ListBoxNew() *ListBox {
@@ -735,13 +845,13 @@ func (recv *ListBoxRow) SetHeader(header *Widget) {
 
 // Unsupported signal 'drag-action-ask' for PlacesSidebar : unsupported parameter actions : type gint :
 
-// Unsupported signal 'drag-action-requested' for PlacesSidebar : unsupported parameter context : type Gdk.DragContext :
+// Unsupported signal 'drag-action-requested' for PlacesSidebar : unsupported parameter dest_file : no type generator for Gio.File,
 
 // Unsupported signal 'drag-perform-drop' for PlacesSidebar : unsupported parameter dest_file : no type generator for Gio.File,
 
 // Unsupported signal 'open-location' for PlacesSidebar : unsupported parameter location : no type generator for Gio.File,
 
-// Unsupported signal 'populate-popup' for PlacesSidebar : unsupported parameter container : type Widget :
+// Unsupported signal 'populate-popup' for PlacesSidebar : unsupported parameter selected_item : no type generator for Gio.File,
 
 // Unsupported signal 'show-error-message' for PlacesSidebar : unsupported parameter primary : type utf8 :
 

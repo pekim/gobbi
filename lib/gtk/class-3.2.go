@@ -4,7 +4,9 @@
 package gtk
 
 import (
+	"fmt"
 	gio "github.com/pekim/gobbi/lib/gio"
+	"sync"
 	"unsafe"
 )
 
@@ -13,6 +15,24 @@ import (
 // #include <gtk/gtk.h>
 // #include <gtk/gtkx.h>
 // #include <stdlib.h>
+/*
+
+	void Application_windowAddedHandler();
+
+	static gulong Application_signal_connect_window_added(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "window-added", Application_windowAddedHandler, data);
+	}
+
+*/
+/*
+
+	void Application_windowRemovedHandler();
+
+	static gulong Application_signal_connect_window_removed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "window-removed", Application_windowRemovedHandler, data);
+	}
+
+*/
 import "C"
 
 // GetMinimumIncrement is a wrapper around the C function gtk_adjustment_get_minimum_increment.
@@ -43,9 +63,101 @@ func (recv *AppChooserButton) SetShowDefaultItem(setting bool) {
 
 // Unsupported : gtk_app_chooser_dialog_new : unsupported parameter file : no type generator for Gio.File, GFile*
 
-// Unsupported signal 'window-added' for Application : unsupported parameter window : type Window :
+var signalApplicationWindowAddedId int
+var signalApplicationWindowAddedMap = make(map[int]ApplicationSignalWindowAddedCallback)
+var signalApplicationWindowAddedLock sync.Mutex
 
-// Unsupported signal 'window-removed' for Application : unsupported parameter window : type Window :
+// ApplicationSignalWindowAddedCallback is a callback function for a 'window-added' signal emitted from a Application.
+type ApplicationSignalWindowAddedCallback func(window *Window)
+
+/*
+ConnectWindowAdded connects the callback to the 'window-added' signal for the Application.
+
+The returned value represents the connection, and may be passed to DisconnectWindowAdded to remove it.
+*/
+func (recv *Application) ConnectWindowAdded(callback ApplicationSignalWindowAddedCallback) int {
+	signalApplicationWindowAddedLock.Lock()
+	defer signalApplicationWindowAddedLock.Unlock()
+
+	signalApplicationWindowAddedId++
+	signalApplicationWindowAddedMap[signalApplicationWindowAddedId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	retC := C.Application_signal_connect_window_added(instance, C.gpointer(uintptr(signalApplicationWindowAddedId)))
+	return int(retC)
+}
+
+/*
+DisconnectWindowAdded disconnects a callback from the 'window-added' signal for the Application.
+
+The connectionID should be a value returned from a call to ConnectWindowAdded.
+*/
+func (recv *Application) DisconnectWindowAdded(connectionID int) {
+	signalApplicationWindowAddedLock.Lock()
+	defer signalApplicationWindowAddedLock.Unlock()
+
+	_, exists := signalApplicationWindowAddedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalApplicationWindowAddedMap, connectionID)
+}
+
+//export Application_windowAddedHandler
+func Application_windowAddedHandler(c_window *C.GtkWindow) {
+	fmt.Println("cb")
+}
+
+var signalApplicationWindowRemovedId int
+var signalApplicationWindowRemovedMap = make(map[int]ApplicationSignalWindowRemovedCallback)
+var signalApplicationWindowRemovedLock sync.Mutex
+
+// ApplicationSignalWindowRemovedCallback is a callback function for a 'window-removed' signal emitted from a Application.
+type ApplicationSignalWindowRemovedCallback func(window *Window)
+
+/*
+ConnectWindowRemoved connects the callback to the 'window-removed' signal for the Application.
+
+The returned value represents the connection, and may be passed to DisconnectWindowRemoved to remove it.
+*/
+func (recv *Application) ConnectWindowRemoved(callback ApplicationSignalWindowRemovedCallback) int {
+	signalApplicationWindowRemovedLock.Lock()
+	defer signalApplicationWindowRemovedLock.Unlock()
+
+	signalApplicationWindowRemovedId++
+	signalApplicationWindowRemovedMap[signalApplicationWindowRemovedId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	retC := C.Application_signal_connect_window_removed(instance, C.gpointer(uintptr(signalApplicationWindowRemovedId)))
+	return int(retC)
+}
+
+/*
+DisconnectWindowRemoved disconnects a callback from the 'window-removed' signal for the Application.
+
+The connectionID should be a value returned from a call to ConnectWindowRemoved.
+*/
+func (recv *Application) DisconnectWindowRemoved(connectionID int) {
+	signalApplicationWindowRemovedLock.Lock()
+	defer signalApplicationWindowRemovedLock.Unlock()
+
+	_, exists := signalApplicationWindowRemovedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalApplicationWindowRemovedMap, connectionID)
+}
+
+//export Application_windowRemovedHandler
+func Application_windowRemovedHandler(c_window *C.GtkWindow) {
+	fmt.Println("cb")
+}
 
 // RemovePage is a wrapper around the C function gtk_assistant_remove_page.
 func (recv *Assistant) RemovePage(pageNum int32) {
@@ -254,7 +366,7 @@ func (recv *LockButton) SetPermission(permission *gio.Permission) {
 	return
 }
 
-// Unsupported signal 'insert' for MenuShell : unsupported parameter child : type Widget :
+// Unsupported signal 'insert' for MenuShell : unsupported parameter position : type gint :
 
 // Unsupported : gtk_message_dialog_new : unsupported parameter ... : varargs
 

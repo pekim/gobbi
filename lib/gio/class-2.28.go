@@ -135,7 +135,7 @@ func Application_activateHandler() {
 	fmt.Println("cb")
 }
 
-// Unsupported signal 'command-line' for Application : unsupported parameter command_line : type ApplicationCommandLine :
+// Unsupported signal 'command-line' for Application : return value gint :
 
 // Unsupported signal 'open' for Application : unsupported parameter files : no param type
 
@@ -473,7 +473,7 @@ func (recv *EmblemedIcon) ClearEmblems() {
 
 // Unsupported : g_settings_range_check : unsupported parameter value : Blacklisted record : GVariant
 
-// Unsupported signal 'activate' for SimpleAction : unsupported parameter parameter : type GLib.Variant :
+// Unsupported signal 'activate' for SimpleAction : unsupported parameter parameter : type GLib.Variant : Blacklisted record : GVariant
 
 // Unsupported : g_simple_action_new : unsupported parameter parameter_type : Blacklisted record : GVariantType
 

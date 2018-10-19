@@ -514,7 +514,7 @@ func (recv *MenuToolButton) SetArrowTooltipText(text string) {
 
 // Unsupported : gtk_message_dialog_new_with_markup : unsupported parameter ... : varargs
 
-// Unsupported signal 'create-window' for Notebook : unsupported parameter page : type Widget :
+// Unsupported signal 'create-window' for Notebook : unsupported parameter x : type gint :
 
 // PageSetupNewFromFile is a wrapper around the C function gtk_page_setup_new_from_file.
 func PageSetupNewFromFile(fileName string) (*PageSetup, error) {
@@ -1243,7 +1243,7 @@ func VolumeButtonNew() *VolumeButton {
 	return retGo
 }
 
-// Unsupported signal 'drag-failed' for Widget : unsupported parameter context : type Gdk.DragContext :
+// Unsupported signal 'drag-failed' for Widget : unsupported parameter result : type DragResult :
 
 // Unsupported signal 'keynav-failed' for Widget : unsupported parameter direction : type DirectionType :
 

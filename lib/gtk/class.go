@@ -185,10 +185,46 @@ import (
 */
 /*
 
+	void Container_addHandler();
+
+	static gulong Container_signal_connect_add(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "add", Container_addHandler, data);
+	}
+
+*/
+/*
+
 	void Container_checkResizeHandler();
 
 	static gulong Container_signal_connect_check_resize(gpointer instance, gpointer data) {
 		return g_signal_connect(instance, "check-resize", Container_checkResizeHandler, data);
+	}
+
+*/
+/*
+
+	void Container_removeHandler();
+
+	static gulong Container_signal_connect_remove(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "remove", Container_removeHandler, data);
+	}
+
+*/
+/*
+
+	void Container_setFocusChildHandler();
+
+	static gulong Container_signal_connect_set_focus_child(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "set-focus-child", Container_setFocusChildHandler, data);
+	}
+
+*/
+/*
+
+	void CssProvider_parsingErrorHandler();
+
+	static gulong CssProvider_signal_connect_parsing_error(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "parsing-error", CssProvider_parsingErrorHandler, data);
 	}
 
 */
@@ -243,6 +279,15 @@ import (
 
 	static gulong Entry_signal_connect_paste_clipboard(gpointer instance, gpointer data) {
 		return g_signal_connect(instance, "paste-clipboard", Entry_pasteClipboardHandler, data);
+	}
+
+*/
+/*
+
+	void Entry_populatePopupHandler();
+
+	static gulong Entry_signal_connect_populate_popup(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "populate-popup", Entry_populatePopupHandler, data);
 	}
 
 */
@@ -365,6 +410,15 @@ import (
 */
 /*
 
+	void FlowBox_childActivatedHandler();
+
+	static gulong FlowBox_signal_connect_child_activated(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "child-activated", FlowBox_childActivatedHandler, data);
+	}
+
+*/
+/*
+
 	void FlowBox_selectAllHandler();
 
 	static gulong FlowBox_signal_connect_select_all(gpointer instance, gpointer data) {
@@ -414,6 +468,24 @@ import (
 
 	static gulong HSV_signal_connect_changed(gpointer instance, gpointer data) {
 		return g_signal_connect(instance, "changed", HSV_changedHandler, data);
+	}
+
+*/
+/*
+
+	void HandleBox_childAttachedHandler();
+
+	static gulong HandleBox_signal_connect_child_attached(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "child-attached", HandleBox_childAttachedHandler, data);
+	}
+
+*/
+/*
+
+	void HandleBox_childDetachedHandler();
+
+	static gulong HandleBox_signal_connect_child_detached(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "child-detached", HandleBox_childDetachedHandler, data);
 	}
 
 */
@@ -473,6 +545,15 @@ import (
 */
 /*
 
+	void IconView_itemActivatedHandler();
+
+	static gulong IconView_signal_connect_item_activated(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "item-activated", IconView_itemActivatedHandler, data);
+	}
+
+*/
+/*
+
 	void IconView_selectAllHandler();
 
 	static gulong IconView_signal_connect_select_all(gpointer instance, gpointer data) {
@@ -522,6 +603,15 @@ import (
 
 	static gulong Label_signal_connect_copy_clipboard(gpointer instance, gpointer data) {
 		return g_signal_connect(instance, "copy-clipboard", Label_copyClipboardHandler, data);
+	}
+
+*/
+/*
+
+	void Label_populatePopupHandler();
+
+	static gulong Label_signal_connect_populate_popup(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "populate-popup", Label_populatePopupHandler, data);
 	}
 
 */
@@ -707,6 +797,15 @@ import (
 */
 /*
 
+	void TextBuffer_applyTagHandler();
+
+	static gulong TextBuffer_signal_connect_apply_tag(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "apply-tag", TextBuffer_applyTagHandler, data);
+	}
+
+*/
+/*
+
 	void TextBuffer_beginUserActionHandler();
 
 	static gulong TextBuffer_signal_connect_begin_user_action(gpointer instance, gpointer data) {
@@ -725,6 +824,15 @@ import (
 */
 /*
 
+	void TextBuffer_deleteRangeHandler();
+
+	static gulong TextBuffer_signal_connect_delete_range(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "delete-range", TextBuffer_deleteRangeHandler, data);
+	}
+
+*/
+/*
+
 	void TextBuffer_endUserActionHandler();
 
 	static gulong TextBuffer_signal_connect_end_user_action(gpointer instance, gpointer data) {
@@ -734,10 +842,82 @@ import (
 */
 /*
 
+	void TextBuffer_insertChildAnchorHandler();
+
+	static gulong TextBuffer_signal_connect_insert_child_anchor(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "insert-child-anchor", TextBuffer_insertChildAnchorHandler, data);
+	}
+
+*/
+/*
+
+	void TextBuffer_insertPixbufHandler();
+
+	static gulong TextBuffer_signal_connect_insert_pixbuf(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "insert-pixbuf", TextBuffer_insertPixbufHandler, data);
+	}
+
+*/
+/*
+
+	void TextBuffer_markDeletedHandler();
+
+	static gulong TextBuffer_signal_connect_mark_deleted(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "mark-deleted", TextBuffer_markDeletedHandler, data);
+	}
+
+*/
+/*
+
+	void TextBuffer_markSetHandler();
+
+	static gulong TextBuffer_signal_connect_mark_set(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "mark-set", TextBuffer_markSetHandler, data);
+	}
+
+*/
+/*
+
 	void TextBuffer_modifiedChangedHandler();
 
 	static gulong TextBuffer_signal_connect_modified_changed(gpointer instance, gpointer data) {
 		return g_signal_connect(instance, "modified-changed", TextBuffer_modifiedChangedHandler, data);
+	}
+
+*/
+/*
+
+	void TextBuffer_removeTagHandler();
+
+	static gulong TextBuffer_signal_connect_remove_tag(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "remove-tag", TextBuffer_removeTagHandler, data);
+	}
+
+*/
+/*
+
+	void TextTagTable_tagAddedHandler();
+
+	static gulong TextTagTable_signal_connect_tag_added(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "tag-added", TextTagTable_tagAddedHandler, data);
+	}
+
+*/
+/*
+
+	void TextTagTable_tagChangedHandler();
+
+	static gulong TextTagTable_signal_connect_tag_changed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "tag-changed", TextTagTable_tagChangedHandler, data);
+	}
+
+*/
+/*
+
+	void TextTagTable_tagRemovedHandler();
+
+	static gulong TextTagTable_signal_connect_tag_removed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "tag-removed", TextTagTable_tagRemovedHandler, data);
 	}
 
 */
@@ -774,6 +954,15 @@ import (
 
 	static gulong TextView_signal_connect_paste_clipboard(gpointer instance, gpointer data) {
 		return g_signal_connect(instance, "paste-clipboard", TextView_pasteClipboardHandler, data);
+	}
+
+*/
+/*
+
+	void TextView_populatePopupHandler();
+
+	static gulong TextView_signal_connect_populate_popup(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "populate-popup", TextView_populatePopupHandler, data);
 	}
 
 */
@@ -914,6 +1103,33 @@ import (
 */
 /*
 
+	void TreeView_rowActivatedHandler();
+
+	static gulong TreeView_signal_connect_row_activated(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "row-activated", TreeView_rowActivatedHandler, data);
+	}
+
+*/
+/*
+
+	void TreeView_rowCollapsedHandler();
+
+	static gulong TreeView_signal_connect_row_collapsed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "row-collapsed", TreeView_rowCollapsedHandler, data);
+	}
+
+*/
+/*
+
+	void TreeView_rowExpandedHandler();
+
+	static gulong TreeView_signal_connect_row_expanded(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "row-expanded", TreeView_rowExpandedHandler, data);
+	}
+
+*/
+/*
+
 	void TreeView_selectAllHandler();
 
 	static gulong TreeView_signal_connect_select_all(gpointer instance, gpointer data) {
@@ -945,6 +1161,24 @@ import (
 
 	static gulong TreeView_signal_connect_start_interactive_search(gpointer instance, gpointer data) {
 		return g_signal_connect(instance, "start-interactive-search", TreeView_startInteractiveSearchHandler, data);
+	}
+
+*/
+/*
+
+	void TreeView_testCollapseRowHandler();
+
+	static gulong TreeView_signal_connect_test_collapse_row(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "test-collapse-row", TreeView_testCollapseRowHandler, data);
+	}
+
+*/
+/*
+
+	void TreeView_testExpandRowHandler();
+
+	static gulong TreeView_signal_connect_test_expand_row(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "test-expand-row", TreeView_testExpandRowHandler, data);
 	}
 
 */
@@ -986,6 +1220,24 @@ import (
 */
 /*
 
+	void Widget_buttonPressEventHandler();
+
+	static gulong Widget_signal_connect_button_press_event(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "button-press-event", Widget_buttonPressEventHandler, data);
+	}
+
+*/
+/*
+
+	void Widget_buttonReleaseEventHandler();
+
+	static gulong Widget_signal_connect_button_release_event(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "button-release-event", Widget_buttonReleaseEventHandler, data);
+	}
+
+*/
+/*
+
 	void Widget_compositedChangedHandler();
 
 	static gulong Widget_signal_connect_composited_changed(gpointer instance, gpointer data) {
@@ -995,10 +1247,73 @@ import (
 */
 /*
 
+	void Widget_configureEventHandler();
+
+	static gulong Widget_signal_connect_configure_event(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "configure-event", Widget_configureEventHandler, data);
+	}
+
+*/
+/*
+
 	void Widget_destroyHandler();
 
 	static gulong Widget_signal_connect_destroy(gpointer instance, gpointer data) {
 		return g_signal_connect(instance, "destroy", Widget_destroyHandler, data);
+	}
+
+*/
+/*
+
+	void Widget_dragBeginHandler();
+
+	static gulong Widget_signal_connect_drag_begin(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "drag-begin", Widget_dragBeginHandler, data);
+	}
+
+*/
+/*
+
+	void Widget_dragDataDeleteHandler();
+
+	static gulong Widget_signal_connect_drag_data_delete(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "drag-data-delete", Widget_dragDataDeleteHandler, data);
+	}
+
+*/
+/*
+
+	void Widget_dragEndHandler();
+
+	static gulong Widget_signal_connect_drag_end(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "drag-end", Widget_dragEndHandler, data);
+	}
+
+*/
+/*
+
+	void Widget_enterNotifyEventHandler();
+
+	static gulong Widget_signal_connect_enter_notify_event(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "enter-notify-event", Widget_enterNotifyEventHandler, data);
+	}
+
+*/
+/*
+
+	void Widget_focusInEventHandler();
+
+	static gulong Widget_signal_connect_focus_in_event(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "focus-in-event", Widget_focusInEventHandler, data);
+	}
+
+*/
+/*
+
+	void Widget_focusOutEventHandler();
+
+	static gulong Widget_signal_connect_focus_out_event(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "focus-out-event", Widget_focusOutEventHandler, data);
 	}
 
 */
@@ -1031,10 +1346,55 @@ import (
 */
 /*
 
+	void Widget_hierarchyChangedHandler();
+
+	static gulong Widget_signal_connect_hierarchy_changed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "hierarchy-changed", Widget_hierarchyChangedHandler, data);
+	}
+
+*/
+/*
+
+	void Widget_keyPressEventHandler();
+
+	static gulong Widget_signal_connect_key_press_event(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "key-press-event", Widget_keyPressEventHandler, data);
+	}
+
+*/
+/*
+
+	void Widget_keyReleaseEventHandler();
+
+	static gulong Widget_signal_connect_key_release_event(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "key-release-event", Widget_keyReleaseEventHandler, data);
+	}
+
+*/
+/*
+
+	void Widget_leaveNotifyEventHandler();
+
+	static gulong Widget_signal_connect_leave_notify_event(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "leave-notify-event", Widget_leaveNotifyEventHandler, data);
+	}
+
+*/
+/*
+
 	void Widget_mapHandler();
 
 	static gulong Widget_signal_connect_map(gpointer instance, gpointer data) {
 		return g_signal_connect(instance, "map", Widget_mapHandler, data);
+	}
+
+*/
+/*
+
+	void Widget_mapEventHandler();
+
+	static gulong Widget_signal_connect_map_event(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "map-event", Widget_mapEventHandler, data);
 	}
 
 */
@@ -1049,10 +1409,55 @@ import (
 */
 /*
 
+	void Widget_motionNotifyEventHandler();
+
+	static gulong Widget_signal_connect_motion_notify_event(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "motion-notify-event", Widget_motionNotifyEventHandler, data);
+	}
+
+*/
+/*
+
+	void Widget_parentSetHandler();
+
+	static gulong Widget_signal_connect_parent_set(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "parent-set", Widget_parentSetHandler, data);
+	}
+
+*/
+/*
+
 	void Widget_popupMenuHandler();
 
 	static gulong Widget_signal_connect_popup_menu(gpointer instance, gpointer data) {
 		return g_signal_connect(instance, "popup-menu", Widget_popupMenuHandler, data);
+	}
+
+*/
+/*
+
+	void Widget_propertyNotifyEventHandler();
+
+	static gulong Widget_signal_connect_property_notify_event(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "property-notify-event", Widget_propertyNotifyEventHandler, data);
+	}
+
+*/
+/*
+
+	void Widget_proximityInEventHandler();
+
+	static gulong Widget_signal_connect_proximity_in_event(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "proximity-in-event", Widget_proximityInEventHandler, data);
+	}
+
+*/
+/*
+
+	void Widget_proximityOutEventHandler();
+
+	static gulong Widget_signal_connect_proximity_out_event(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "proximity-out-event", Widget_proximityOutEventHandler, data);
 	}
 
 */
@@ -1067,10 +1472,64 @@ import (
 */
 /*
 
+	void Widget_screenChangedHandler();
+
+	static gulong Widget_signal_connect_screen_changed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "screen-changed", Widget_screenChangedHandler, data);
+	}
+
+*/
+/*
+
+	void Widget_scrollEventHandler();
+
+	static gulong Widget_signal_connect_scroll_event(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "scroll-event", Widget_scrollEventHandler, data);
+	}
+
+*/
+/*
+
+	void Widget_selectionClearEventHandler();
+
+	static gulong Widget_signal_connect_selection_clear_event(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "selection-clear-event", Widget_selectionClearEventHandler, data);
+	}
+
+*/
+/*
+
+	void Widget_selectionNotifyEventHandler();
+
+	static gulong Widget_signal_connect_selection_notify_event(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "selection-notify-event", Widget_selectionNotifyEventHandler, data);
+	}
+
+*/
+/*
+
+	void Widget_selectionRequestEventHandler();
+
+	static gulong Widget_signal_connect_selection_request_event(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "selection-request-event", Widget_selectionRequestEventHandler, data);
+	}
+
+*/
+/*
+
 	void Widget_showHandler();
 
 	static gulong Widget_signal_connect_show(gpointer instance, gpointer data) {
 		return g_signal_connect(instance, "show", Widget_showHandler, data);
+	}
+
+*/
+/*
+
+	void Widget_styleSetHandler();
+
+	static gulong Widget_signal_connect_style_set(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "style-set", Widget_styleSetHandler, data);
 	}
 
 */
@@ -1085,10 +1544,37 @@ import (
 */
 /*
 
+	void Widget_unmapEventHandler();
+
+	static gulong Widget_signal_connect_unmap_event(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "unmap-event", Widget_unmapEventHandler, data);
+	}
+
+*/
+/*
+
 	void Widget_unrealizeHandler();
 
 	static gulong Widget_signal_connect_unrealize(gpointer instance, gpointer data) {
 		return g_signal_connect(instance, "unrealize", Widget_unrealizeHandler, data);
+	}
+
+*/
+/*
+
+	void Widget_visibilityNotifyEventHandler();
+
+	static gulong Widget_signal_connect_visibility_notify_event(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "visibility-notify-event", Widget_visibilityNotifyEventHandler, data);
+	}
+
+*/
+/*
+
+	void Widget_windowStateEventHandler();
+
+	static gulong Widget_signal_connect_window_state_event(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "window-state-event", Widget_windowStateEventHandler, data);
 	}
 
 */
@@ -1125,6 +1611,15 @@ import (
 
 	static gulong Window_signal_connect_keys_changed(gpointer instance, gpointer data) {
 		return g_signal_connect(instance, "keys-changed", Window_keysChangedHandler, data);
+	}
+
+*/
+/*
+
+	void Window_setFocusHandler();
+
+	static gulong Window_signal_connect_set_focus(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "set-focus", Window_setFocusHandler, data);
 	}
 
 */
@@ -1228,7 +1723,7 @@ func CastToAccelGroup(object *gobject.Object) *AccelGroup {
 	return AccelGroupNewFromC(object.ToC())
 }
 
-// Unsupported signal 'accel-activate' for AccelGroup : unsupported parameter acceleratable : type GObject.Object :
+// Unsupported signal 'accel-activate' for AccelGroup : unsupported parameter keyval : type guint :
 
 // Unsupported signal 'accel-changed' for AccelGroup : unsupported parameter keyval : type guint :
 
@@ -2127,7 +2622,7 @@ func CastToAppChooserWidget(object *gobject.Object) *AppChooserWidget {
 
 // Unsupported signal 'application-selected' for AppChooserWidget : unsupported parameter application : no type generator for Gio.AppInfo,
 
-// Unsupported signal 'populate-popup' for AppChooserWidget : unsupported parameter menu : type Menu :
+// Unsupported signal 'populate-popup' for AppChooserWidget : unsupported parameter application : no type generator for Gio.AppInfo,
 
 // SetDefaultText is a wrapper around the C function gtk_app_chooser_widget_set_default_text.
 func (recv *AppChooserWidget) SetDefaultText(text string) {
@@ -5784,7 +6279,53 @@ func CastToContainer(object *gobject.Object) *Container {
 	return ContainerNewFromC(object.ToC())
 }
 
-// Unsupported signal 'add' for Container : unsupported parameter object : type Widget :
+var signalContainerAddId int
+var signalContainerAddMap = make(map[int]ContainerSignalAddCallback)
+var signalContainerAddLock sync.Mutex
+
+// ContainerSignalAddCallback is a callback function for a 'add' signal emitted from a Container.
+type ContainerSignalAddCallback func(object *Widget)
+
+/*
+ConnectAdd connects the callback to the 'add' signal for the Container.
+
+The returned value represents the connection, and may be passed to DisconnectAdd to remove it.
+*/
+func (recv *Container) ConnectAdd(callback ContainerSignalAddCallback) int {
+	signalContainerAddLock.Lock()
+	defer signalContainerAddLock.Unlock()
+
+	signalContainerAddId++
+	signalContainerAddMap[signalContainerAddId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	retC := C.Container_signal_connect_add(instance, C.gpointer(uintptr(signalContainerAddId)))
+	return int(retC)
+}
+
+/*
+DisconnectAdd disconnects a callback from the 'add' signal for the Container.
+
+The connectionID should be a value returned from a call to ConnectAdd.
+*/
+func (recv *Container) DisconnectAdd(connectionID int) {
+	signalContainerAddLock.Lock()
+	defer signalContainerAddLock.Unlock()
+
+	_, exists := signalContainerAddMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalContainerAddMap, connectionID)
+}
+
+//export Container_addHandler
+func Container_addHandler(c_object *C.GtkWidget) {
+	fmt.Println("cb")
+}
 
 var signalContainerCheckResizeId int
 var signalContainerCheckResizeMap = make(map[int]ContainerSignalCheckResizeCallback)
@@ -5834,9 +6375,101 @@ func Container_checkResizeHandler() {
 	fmt.Println("cb")
 }
 
-// Unsupported signal 'remove' for Container : unsupported parameter object : type Widget :
+var signalContainerRemoveId int
+var signalContainerRemoveMap = make(map[int]ContainerSignalRemoveCallback)
+var signalContainerRemoveLock sync.Mutex
 
-// Unsupported signal 'set-focus-child' for Container : unsupported parameter object : type Widget :
+// ContainerSignalRemoveCallback is a callback function for a 'remove' signal emitted from a Container.
+type ContainerSignalRemoveCallback func(object *Widget)
+
+/*
+ConnectRemove connects the callback to the 'remove' signal for the Container.
+
+The returned value represents the connection, and may be passed to DisconnectRemove to remove it.
+*/
+func (recv *Container) ConnectRemove(callback ContainerSignalRemoveCallback) int {
+	signalContainerRemoveLock.Lock()
+	defer signalContainerRemoveLock.Unlock()
+
+	signalContainerRemoveId++
+	signalContainerRemoveMap[signalContainerRemoveId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	retC := C.Container_signal_connect_remove(instance, C.gpointer(uintptr(signalContainerRemoveId)))
+	return int(retC)
+}
+
+/*
+DisconnectRemove disconnects a callback from the 'remove' signal for the Container.
+
+The connectionID should be a value returned from a call to ConnectRemove.
+*/
+func (recv *Container) DisconnectRemove(connectionID int) {
+	signalContainerRemoveLock.Lock()
+	defer signalContainerRemoveLock.Unlock()
+
+	_, exists := signalContainerRemoveMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalContainerRemoveMap, connectionID)
+}
+
+//export Container_removeHandler
+func Container_removeHandler(c_object *C.GtkWidget) {
+	fmt.Println("cb")
+}
+
+var signalContainerSetFocusChildId int
+var signalContainerSetFocusChildMap = make(map[int]ContainerSignalSetFocusChildCallback)
+var signalContainerSetFocusChildLock sync.Mutex
+
+// ContainerSignalSetFocusChildCallback is a callback function for a 'set-focus-child' signal emitted from a Container.
+type ContainerSignalSetFocusChildCallback func(object *Widget)
+
+/*
+ConnectSetFocusChild connects the callback to the 'set-focus-child' signal for the Container.
+
+The returned value represents the connection, and may be passed to DisconnectSetFocusChild to remove it.
+*/
+func (recv *Container) ConnectSetFocusChild(callback ContainerSignalSetFocusChildCallback) int {
+	signalContainerSetFocusChildLock.Lock()
+	defer signalContainerSetFocusChildLock.Unlock()
+
+	signalContainerSetFocusChildId++
+	signalContainerSetFocusChildMap[signalContainerSetFocusChildId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	retC := C.Container_signal_connect_set_focus_child(instance, C.gpointer(uintptr(signalContainerSetFocusChildId)))
+	return int(retC)
+}
+
+/*
+DisconnectSetFocusChild disconnects a callback from the 'set-focus-child' signal for the Container.
+
+The connectionID should be a value returned from a call to ConnectSetFocusChild.
+*/
+func (recv *Container) DisconnectSetFocusChild(connectionID int) {
+	signalContainerSetFocusChildLock.Lock()
+	defer signalContainerSetFocusChildLock.Unlock()
+
+	_, exists := signalContainerSetFocusChildMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalContainerSetFocusChildMap, connectionID)
+}
+
+//export Container_setFocusChildHandler
+func Container_setFocusChildHandler(c_object *C.GtkWidget) {
+	fmt.Println("cb")
+}
 
 // Add is a wrapper around the C function gtk_container_add.
 func (recv *Container) Add(widget *Widget) {
@@ -6204,7 +6837,53 @@ func CastToCssProvider(object *gobject.Object) *CssProvider {
 	return CssProviderNewFromC(object.ToC())
 }
 
-// Unsupported signal 'parsing-error' for CssProvider : unsupported parameter section : type CssSection :
+var signalCssProviderParsingErrorId int
+var signalCssProviderParsingErrorMap = make(map[int]CssProviderSignalParsingErrorCallback)
+var signalCssProviderParsingErrorLock sync.Mutex
+
+// CssProviderSignalParsingErrorCallback is a callback function for a 'parsing-error' signal emitted from a CssProvider.
+type CssProviderSignalParsingErrorCallback func(section *CssSection, error *glib.Error)
+
+/*
+ConnectParsingError connects the callback to the 'parsing-error' signal for the CssProvider.
+
+The returned value represents the connection, and may be passed to DisconnectParsingError to remove it.
+*/
+func (recv *CssProvider) ConnectParsingError(callback CssProviderSignalParsingErrorCallback) int {
+	signalCssProviderParsingErrorLock.Lock()
+	defer signalCssProviderParsingErrorLock.Unlock()
+
+	signalCssProviderParsingErrorId++
+	signalCssProviderParsingErrorMap[signalCssProviderParsingErrorId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	retC := C.CssProvider_signal_connect_parsing_error(instance, C.gpointer(uintptr(signalCssProviderParsingErrorId)))
+	return int(retC)
+}
+
+/*
+DisconnectParsingError disconnects a callback from the 'parsing-error' signal for the CssProvider.
+
+The connectionID should be a value returned from a call to ConnectParsingError.
+*/
+func (recv *CssProvider) DisconnectParsingError(connectionID int) {
+	signalCssProviderParsingErrorLock.Lock()
+	defer signalCssProviderParsingErrorLock.Unlock()
+
+	_, exists := signalCssProviderParsingErrorMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalCssProviderParsingErrorMap, connectionID)
+}
+
+//export CssProvider_parsingErrorHandler
+func CssProvider_parsingErrorHandler(c_section *C.GtkCssSection, c_error *C.GError) {
+	fmt.Println("cb")
+}
 
 // CssProviderNew is a wrapper around the C function gtk_css_provider_new.
 func CssProviderNew() *CssProvider {
@@ -6761,7 +7440,53 @@ func Entry_pasteClipboardHandler() {
 	fmt.Println("cb")
 }
 
-// Unsupported signal 'populate-popup' for Entry : unsupported parameter widget : type Widget :
+var signalEntryPopulatePopupId int
+var signalEntryPopulatePopupMap = make(map[int]EntrySignalPopulatePopupCallback)
+var signalEntryPopulatePopupLock sync.Mutex
+
+// EntrySignalPopulatePopupCallback is a callback function for a 'populate-popup' signal emitted from a Entry.
+type EntrySignalPopulatePopupCallback func(widget *Widget)
+
+/*
+ConnectPopulatePopup connects the callback to the 'populate-popup' signal for the Entry.
+
+The returned value represents the connection, and may be passed to DisconnectPopulatePopup to remove it.
+*/
+func (recv *Entry) ConnectPopulatePopup(callback EntrySignalPopulatePopupCallback) int {
+	signalEntryPopulatePopupLock.Lock()
+	defer signalEntryPopulatePopupLock.Unlock()
+
+	signalEntryPopulatePopupId++
+	signalEntryPopulatePopupMap[signalEntryPopulatePopupId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	retC := C.Entry_signal_connect_populate_popup(instance, C.gpointer(uintptr(signalEntryPopulatePopupId)))
+	return int(retC)
+}
+
+/*
+DisconnectPopulatePopup disconnects a callback from the 'populate-popup' signal for the Entry.
+
+The connectionID should be a value returned from a call to ConnectPopulatePopup.
+*/
+func (recv *Entry) DisconnectPopulatePopup(connectionID int) {
+	signalEntryPopulatePopupLock.Lock()
+	defer signalEntryPopulatePopupLock.Unlock()
+
+	_, exists := signalEntryPopulatePopupMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalEntryPopulatePopupMap, connectionID)
+}
+
+//export Entry_populatePopupHandler
+func Entry_populatePopupHandler(c_widget *C.GtkWidget) {
+	fmt.Println("cb")
+}
 
 var signalEntryToggleOverwriteId int
 var signalEntryToggleOverwriteMap = make(map[int]EntrySignalToggleOverwriteCallback)
@@ -8220,7 +8945,53 @@ func FlowBox_activateCursorChildHandler() {
 	fmt.Println("cb")
 }
 
-// Unsupported signal 'child-activated' for FlowBox : unsupported parameter child : type FlowBoxChild :
+var signalFlowBoxChildActivatedId int
+var signalFlowBoxChildActivatedMap = make(map[int]FlowBoxSignalChildActivatedCallback)
+var signalFlowBoxChildActivatedLock sync.Mutex
+
+// FlowBoxSignalChildActivatedCallback is a callback function for a 'child-activated' signal emitted from a FlowBox.
+type FlowBoxSignalChildActivatedCallback func(child *FlowBoxChild)
+
+/*
+ConnectChildActivated connects the callback to the 'child-activated' signal for the FlowBox.
+
+The returned value represents the connection, and may be passed to DisconnectChildActivated to remove it.
+*/
+func (recv *FlowBox) ConnectChildActivated(callback FlowBoxSignalChildActivatedCallback) int {
+	signalFlowBoxChildActivatedLock.Lock()
+	defer signalFlowBoxChildActivatedLock.Unlock()
+
+	signalFlowBoxChildActivatedId++
+	signalFlowBoxChildActivatedMap[signalFlowBoxChildActivatedId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	retC := C.FlowBox_signal_connect_child_activated(instance, C.gpointer(uintptr(signalFlowBoxChildActivatedId)))
+	return int(retC)
+}
+
+/*
+DisconnectChildActivated disconnects a callback from the 'child-activated' signal for the FlowBox.
+
+The connectionID should be a value returned from a call to ConnectChildActivated.
+*/
+func (recv *FlowBox) DisconnectChildActivated(connectionID int) {
+	signalFlowBoxChildActivatedLock.Lock()
+	defer signalFlowBoxChildActivatedLock.Unlock()
+
+	_, exists := signalFlowBoxChildActivatedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalFlowBoxChildActivatedMap, connectionID)
+}
+
+//export FlowBox_childActivatedHandler
+func FlowBox_childActivatedHandler(c_child *C.GtkFlowBoxChild) {
+	fmt.Println("cb")
+}
 
 // Unsupported signal 'move-cursor' for FlowBox : unsupported parameter step : type MovementStep :
 
@@ -10299,9 +11070,101 @@ func CastToHandleBox(object *gobject.Object) *HandleBox {
 	return HandleBoxNewFromC(object.ToC())
 }
 
-// Unsupported signal 'child-attached' for HandleBox : unsupported parameter widget : type Widget :
+var signalHandleBoxChildAttachedId int
+var signalHandleBoxChildAttachedMap = make(map[int]HandleBoxSignalChildAttachedCallback)
+var signalHandleBoxChildAttachedLock sync.Mutex
 
-// Unsupported signal 'child-detached' for HandleBox : unsupported parameter widget : type Widget :
+// HandleBoxSignalChildAttachedCallback is a callback function for a 'child-attached' signal emitted from a HandleBox.
+type HandleBoxSignalChildAttachedCallback func(widget *Widget)
+
+/*
+ConnectChildAttached connects the callback to the 'child-attached' signal for the HandleBox.
+
+The returned value represents the connection, and may be passed to DisconnectChildAttached to remove it.
+*/
+func (recv *HandleBox) ConnectChildAttached(callback HandleBoxSignalChildAttachedCallback) int {
+	signalHandleBoxChildAttachedLock.Lock()
+	defer signalHandleBoxChildAttachedLock.Unlock()
+
+	signalHandleBoxChildAttachedId++
+	signalHandleBoxChildAttachedMap[signalHandleBoxChildAttachedId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	retC := C.HandleBox_signal_connect_child_attached(instance, C.gpointer(uintptr(signalHandleBoxChildAttachedId)))
+	return int(retC)
+}
+
+/*
+DisconnectChildAttached disconnects a callback from the 'child-attached' signal for the HandleBox.
+
+The connectionID should be a value returned from a call to ConnectChildAttached.
+*/
+func (recv *HandleBox) DisconnectChildAttached(connectionID int) {
+	signalHandleBoxChildAttachedLock.Lock()
+	defer signalHandleBoxChildAttachedLock.Unlock()
+
+	_, exists := signalHandleBoxChildAttachedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalHandleBoxChildAttachedMap, connectionID)
+}
+
+//export HandleBox_childAttachedHandler
+func HandleBox_childAttachedHandler(c_widget *C.GtkWidget) {
+	fmt.Println("cb")
+}
+
+var signalHandleBoxChildDetachedId int
+var signalHandleBoxChildDetachedMap = make(map[int]HandleBoxSignalChildDetachedCallback)
+var signalHandleBoxChildDetachedLock sync.Mutex
+
+// HandleBoxSignalChildDetachedCallback is a callback function for a 'child-detached' signal emitted from a HandleBox.
+type HandleBoxSignalChildDetachedCallback func(widget *Widget)
+
+/*
+ConnectChildDetached connects the callback to the 'child-detached' signal for the HandleBox.
+
+The returned value represents the connection, and may be passed to DisconnectChildDetached to remove it.
+*/
+func (recv *HandleBox) ConnectChildDetached(callback HandleBoxSignalChildDetachedCallback) int {
+	signalHandleBoxChildDetachedLock.Lock()
+	defer signalHandleBoxChildDetachedLock.Unlock()
+
+	signalHandleBoxChildDetachedId++
+	signalHandleBoxChildDetachedMap[signalHandleBoxChildDetachedId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	retC := C.HandleBox_signal_connect_child_detached(instance, C.gpointer(uintptr(signalHandleBoxChildDetachedId)))
+	return int(retC)
+}
+
+/*
+DisconnectChildDetached disconnects a callback from the 'child-detached' signal for the HandleBox.
+
+The connectionID should be a value returned from a call to ConnectChildDetached.
+*/
+func (recv *HandleBox) DisconnectChildDetached(connectionID int) {
+	signalHandleBoxChildDetachedLock.Lock()
+	defer signalHandleBoxChildDetachedLock.Unlock()
+
+	_, exists := signalHandleBoxChildDetachedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalHandleBoxChildDetachedMap, connectionID)
+}
+
+//export HandleBox_childDetachedHandler
+func HandleBox_childDetachedHandler(c_widget *C.GtkWidget) {
+	fmt.Println("cb")
+}
 
 // HandleBoxNew is a wrapper around the C function gtk_handle_box_new.
 func HandleBoxNew() *HandleBox {
@@ -11133,7 +11996,53 @@ func IconView_activateCursorItemHandler() C.gboolean {
 	fmt.Println("cb")
 }
 
-// Unsupported signal 'item-activated' for IconView : unsupported parameter path : type TreePath :
+var signalIconViewItemActivatedId int
+var signalIconViewItemActivatedMap = make(map[int]IconViewSignalItemActivatedCallback)
+var signalIconViewItemActivatedLock sync.Mutex
+
+// IconViewSignalItemActivatedCallback is a callback function for a 'item-activated' signal emitted from a IconView.
+type IconViewSignalItemActivatedCallback func(path *TreePath)
+
+/*
+ConnectItemActivated connects the callback to the 'item-activated' signal for the IconView.
+
+The returned value represents the connection, and may be passed to DisconnectItemActivated to remove it.
+*/
+func (recv *IconView) ConnectItemActivated(callback IconViewSignalItemActivatedCallback) int {
+	signalIconViewItemActivatedLock.Lock()
+	defer signalIconViewItemActivatedLock.Unlock()
+
+	signalIconViewItemActivatedId++
+	signalIconViewItemActivatedMap[signalIconViewItemActivatedId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	retC := C.IconView_signal_connect_item_activated(instance, C.gpointer(uintptr(signalIconViewItemActivatedId)))
+	return int(retC)
+}
+
+/*
+DisconnectItemActivated disconnects a callback from the 'item-activated' signal for the IconView.
+
+The connectionID should be a value returned from a call to ConnectItemActivated.
+*/
+func (recv *IconView) DisconnectItemActivated(connectionID int) {
+	signalIconViewItemActivatedLock.Lock()
+	defer signalIconViewItemActivatedLock.Unlock()
+
+	_, exists := signalIconViewItemActivatedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalIconViewItemActivatedMap, connectionID)
+}
+
+//export IconView_itemActivatedHandler
+func IconView_itemActivatedHandler(c_path *C.GtkTreePath) {
+	fmt.Println("cb")
+}
 
 // Unsupported signal 'move-cursor' for IconView : unsupported parameter step : type MovementStep :
 
@@ -12013,7 +12922,53 @@ func Label_copyClipboardHandler() {
 
 // Unsupported signal 'move-cursor' for Label : unsupported parameter step : type MovementStep :
 
-// Unsupported signal 'populate-popup' for Label : unsupported parameter menu : type Menu :
+var signalLabelPopulatePopupId int
+var signalLabelPopulatePopupMap = make(map[int]LabelSignalPopulatePopupCallback)
+var signalLabelPopulatePopupLock sync.Mutex
+
+// LabelSignalPopulatePopupCallback is a callback function for a 'populate-popup' signal emitted from a Label.
+type LabelSignalPopulatePopupCallback func(menu *Menu)
+
+/*
+ConnectPopulatePopup connects the callback to the 'populate-popup' signal for the Label.
+
+The returned value represents the connection, and may be passed to DisconnectPopulatePopup to remove it.
+*/
+func (recv *Label) ConnectPopulatePopup(callback LabelSignalPopulatePopupCallback) int {
+	signalLabelPopulatePopupLock.Lock()
+	defer signalLabelPopulatePopupLock.Unlock()
+
+	signalLabelPopulatePopupId++
+	signalLabelPopulatePopupMap[signalLabelPopulatePopupId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	retC := C.Label_signal_connect_populate_popup(instance, C.gpointer(uintptr(signalLabelPopulatePopupId)))
+	return int(retC)
+}
+
+/*
+DisconnectPopulatePopup disconnects a callback from the 'populate-popup' signal for the Label.
+
+The connectionID should be a value returned from a call to ConnectPopulatePopup.
+*/
+func (recv *Label) DisconnectPopulatePopup(connectionID int) {
+	signalLabelPopulatePopupLock.Lock()
+	defer signalLabelPopulatePopupLock.Unlock()
+
+	_, exists := signalLabelPopulatePopupMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalLabelPopulatePopupMap, connectionID)
+}
+
+//export Label_populatePopupHandler
+func Label_populatePopupHandler(c_menu *C.GtkMenu) {
+	fmt.Println("cb")
+}
 
 // LabelNew is a wrapper around the C function gtk_label_new.
 func LabelNew(str string) *Label {
@@ -14211,7 +15166,7 @@ func (recv *MenuShell) DisconnectActivateCurrent(connectionID int) {
 }
 
 //export MenuShell_activateCurrentHandler
-func MenuShell_activateCurrentHandler(forceHide C.gboolean) {
+func MenuShell_activateCurrentHandler(c_force_hide C.gboolean) {
 	fmt.Println("cb")
 }
 
@@ -14949,11 +15904,11 @@ func (recv *Notebook) DisconnectSelectPage(connectionID int) {
 }
 
 //export Notebook_selectPageHandler
-func Notebook_selectPageHandler(object C.gboolean) C.gboolean {
+func Notebook_selectPageHandler(c_object C.gboolean) C.gboolean {
 	fmt.Println("cb")
 }
 
-// Unsupported signal 'switch-page' for Notebook : unsupported parameter page : type Widget :
+// Unsupported signal 'switch-page' for Notebook : unsupported parameter page_num : type guint :
 
 // NotebookNew is a wrapper around the C function gtk_notebook_new.
 func NotebookNew() *Notebook {
@@ -15540,7 +16495,7 @@ func CastToOverlay(object *gobject.Object) *Overlay {
 	return OverlayNewFromC(object.ToC())
 }
 
-// Unsupported signal 'get-child-position' for Overlay : unsupported parameter widget : type Widget :
+// Unsupported signal 'get-child-position' for Overlay : unsupported parameter allocation : type Gdk.Rectangle : Blacklisted record : GdkRectangle
 
 // PageSetup is a wrapper around the C record GtkPageSetup.
 type PageSetup struct {
@@ -20130,7 +21085,53 @@ func CastToTextBuffer(object *gobject.Object) *TextBuffer {
 	return TextBufferNewFromC(object.ToC())
 }
 
-// Unsupported signal 'apply-tag' for TextBuffer : unsupported parameter tag : type TextTag :
+var signalTextBufferApplyTagId int
+var signalTextBufferApplyTagMap = make(map[int]TextBufferSignalApplyTagCallback)
+var signalTextBufferApplyTagLock sync.Mutex
+
+// TextBufferSignalApplyTagCallback is a callback function for a 'apply-tag' signal emitted from a TextBuffer.
+type TextBufferSignalApplyTagCallback func(tag *TextTag, start *TextIter, end *TextIter)
+
+/*
+ConnectApplyTag connects the callback to the 'apply-tag' signal for the TextBuffer.
+
+The returned value represents the connection, and may be passed to DisconnectApplyTag to remove it.
+*/
+func (recv *TextBuffer) ConnectApplyTag(callback TextBufferSignalApplyTagCallback) int {
+	signalTextBufferApplyTagLock.Lock()
+	defer signalTextBufferApplyTagLock.Unlock()
+
+	signalTextBufferApplyTagId++
+	signalTextBufferApplyTagMap[signalTextBufferApplyTagId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	retC := C.TextBuffer_signal_connect_apply_tag(instance, C.gpointer(uintptr(signalTextBufferApplyTagId)))
+	return int(retC)
+}
+
+/*
+DisconnectApplyTag disconnects a callback from the 'apply-tag' signal for the TextBuffer.
+
+The connectionID should be a value returned from a call to ConnectApplyTag.
+*/
+func (recv *TextBuffer) DisconnectApplyTag(connectionID int) {
+	signalTextBufferApplyTagLock.Lock()
+	defer signalTextBufferApplyTagLock.Unlock()
+
+	_, exists := signalTextBufferApplyTagMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalTextBufferApplyTagMap, connectionID)
+}
+
+//export TextBuffer_applyTagHandler
+func TextBuffer_applyTagHandler(c_tag *C.GtkTextTag, c_start *C.GtkTextIter, c_end *C.GtkTextIter) {
+	fmt.Println("cb")
+}
 
 var signalTextBufferBeginUserActionId int
 var signalTextBufferBeginUserActionMap = make(map[int]TextBufferSignalBeginUserActionCallback)
@@ -20228,7 +21229,53 @@ func TextBuffer_changedHandler() {
 	fmt.Println("cb")
 }
 
-// Unsupported signal 'delete-range' for TextBuffer : unsupported parameter start : type TextIter :
+var signalTextBufferDeleteRangeId int
+var signalTextBufferDeleteRangeMap = make(map[int]TextBufferSignalDeleteRangeCallback)
+var signalTextBufferDeleteRangeLock sync.Mutex
+
+// TextBufferSignalDeleteRangeCallback is a callback function for a 'delete-range' signal emitted from a TextBuffer.
+type TextBufferSignalDeleteRangeCallback func(start *TextIter, end *TextIter)
+
+/*
+ConnectDeleteRange connects the callback to the 'delete-range' signal for the TextBuffer.
+
+The returned value represents the connection, and may be passed to DisconnectDeleteRange to remove it.
+*/
+func (recv *TextBuffer) ConnectDeleteRange(callback TextBufferSignalDeleteRangeCallback) int {
+	signalTextBufferDeleteRangeLock.Lock()
+	defer signalTextBufferDeleteRangeLock.Unlock()
+
+	signalTextBufferDeleteRangeId++
+	signalTextBufferDeleteRangeMap[signalTextBufferDeleteRangeId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	retC := C.TextBuffer_signal_connect_delete_range(instance, C.gpointer(uintptr(signalTextBufferDeleteRangeId)))
+	return int(retC)
+}
+
+/*
+DisconnectDeleteRange disconnects a callback from the 'delete-range' signal for the TextBuffer.
+
+The connectionID should be a value returned from a call to ConnectDeleteRange.
+*/
+func (recv *TextBuffer) DisconnectDeleteRange(connectionID int) {
+	signalTextBufferDeleteRangeLock.Lock()
+	defer signalTextBufferDeleteRangeLock.Unlock()
+
+	_, exists := signalTextBufferDeleteRangeMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalTextBufferDeleteRangeMap, connectionID)
+}
+
+//export TextBuffer_deleteRangeHandler
+func TextBuffer_deleteRangeHandler(c_start *C.GtkTextIter, c_end *C.GtkTextIter) {
+	fmt.Println("cb")
+}
 
 var signalTextBufferEndUserActionId int
 var signalTextBufferEndUserActionMap = make(map[int]TextBufferSignalEndUserActionCallback)
@@ -20278,15 +21325,199 @@ func TextBuffer_endUserActionHandler() {
 	fmt.Println("cb")
 }
 
-// Unsupported signal 'insert-child-anchor' for TextBuffer : unsupported parameter location : type TextIter :
+var signalTextBufferInsertChildAnchorId int
+var signalTextBufferInsertChildAnchorMap = make(map[int]TextBufferSignalInsertChildAnchorCallback)
+var signalTextBufferInsertChildAnchorLock sync.Mutex
 
-// Unsupported signal 'insert-pixbuf' for TextBuffer : unsupported parameter location : type TextIter :
+// TextBufferSignalInsertChildAnchorCallback is a callback function for a 'insert-child-anchor' signal emitted from a TextBuffer.
+type TextBufferSignalInsertChildAnchorCallback func(location *TextIter, anchor *TextChildAnchor)
 
-// Unsupported signal 'insert-text' for TextBuffer : unsupported parameter location : type TextIter :
+/*
+ConnectInsertChildAnchor connects the callback to the 'insert-child-anchor' signal for the TextBuffer.
 
-// Unsupported signal 'mark-deleted' for TextBuffer : unsupported parameter mark : type TextMark :
+The returned value represents the connection, and may be passed to DisconnectInsertChildAnchor to remove it.
+*/
+func (recv *TextBuffer) ConnectInsertChildAnchor(callback TextBufferSignalInsertChildAnchorCallback) int {
+	signalTextBufferInsertChildAnchorLock.Lock()
+	defer signalTextBufferInsertChildAnchorLock.Unlock()
 
-// Unsupported signal 'mark-set' for TextBuffer : unsupported parameter location : type TextIter :
+	signalTextBufferInsertChildAnchorId++
+	signalTextBufferInsertChildAnchorMap[signalTextBufferInsertChildAnchorId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	retC := C.TextBuffer_signal_connect_insert_child_anchor(instance, C.gpointer(uintptr(signalTextBufferInsertChildAnchorId)))
+	return int(retC)
+}
+
+/*
+DisconnectInsertChildAnchor disconnects a callback from the 'insert-child-anchor' signal for the TextBuffer.
+
+The connectionID should be a value returned from a call to ConnectInsertChildAnchor.
+*/
+func (recv *TextBuffer) DisconnectInsertChildAnchor(connectionID int) {
+	signalTextBufferInsertChildAnchorLock.Lock()
+	defer signalTextBufferInsertChildAnchorLock.Unlock()
+
+	_, exists := signalTextBufferInsertChildAnchorMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalTextBufferInsertChildAnchorMap, connectionID)
+}
+
+//export TextBuffer_insertChildAnchorHandler
+func TextBuffer_insertChildAnchorHandler(c_location *C.GtkTextIter, c_anchor *C.GtkTextChildAnchor) {
+	fmt.Println("cb")
+}
+
+var signalTextBufferInsertPixbufId int
+var signalTextBufferInsertPixbufMap = make(map[int]TextBufferSignalInsertPixbufCallback)
+var signalTextBufferInsertPixbufLock sync.Mutex
+
+// TextBufferSignalInsertPixbufCallback is a callback function for a 'insert-pixbuf' signal emitted from a TextBuffer.
+type TextBufferSignalInsertPixbufCallback func(location *TextIter, pixbuf *gdkpixbuf.Pixbuf)
+
+/*
+ConnectInsertPixbuf connects the callback to the 'insert-pixbuf' signal for the TextBuffer.
+
+The returned value represents the connection, and may be passed to DisconnectInsertPixbuf to remove it.
+*/
+func (recv *TextBuffer) ConnectInsertPixbuf(callback TextBufferSignalInsertPixbufCallback) int {
+	signalTextBufferInsertPixbufLock.Lock()
+	defer signalTextBufferInsertPixbufLock.Unlock()
+
+	signalTextBufferInsertPixbufId++
+	signalTextBufferInsertPixbufMap[signalTextBufferInsertPixbufId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	retC := C.TextBuffer_signal_connect_insert_pixbuf(instance, C.gpointer(uintptr(signalTextBufferInsertPixbufId)))
+	return int(retC)
+}
+
+/*
+DisconnectInsertPixbuf disconnects a callback from the 'insert-pixbuf' signal for the TextBuffer.
+
+The connectionID should be a value returned from a call to ConnectInsertPixbuf.
+*/
+func (recv *TextBuffer) DisconnectInsertPixbuf(connectionID int) {
+	signalTextBufferInsertPixbufLock.Lock()
+	defer signalTextBufferInsertPixbufLock.Unlock()
+
+	_, exists := signalTextBufferInsertPixbufMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalTextBufferInsertPixbufMap, connectionID)
+}
+
+//export TextBuffer_insertPixbufHandler
+func TextBuffer_insertPixbufHandler(c_location *C.GtkTextIter, c_pixbuf *C.GdkPixbuf) {
+	fmt.Println("cb")
+}
+
+// Unsupported signal 'insert-text' for TextBuffer : unsupported parameter text : type utf8 :
+
+var signalTextBufferMarkDeletedId int
+var signalTextBufferMarkDeletedMap = make(map[int]TextBufferSignalMarkDeletedCallback)
+var signalTextBufferMarkDeletedLock sync.Mutex
+
+// TextBufferSignalMarkDeletedCallback is a callback function for a 'mark-deleted' signal emitted from a TextBuffer.
+type TextBufferSignalMarkDeletedCallback func(mark *TextMark)
+
+/*
+ConnectMarkDeleted connects the callback to the 'mark-deleted' signal for the TextBuffer.
+
+The returned value represents the connection, and may be passed to DisconnectMarkDeleted to remove it.
+*/
+func (recv *TextBuffer) ConnectMarkDeleted(callback TextBufferSignalMarkDeletedCallback) int {
+	signalTextBufferMarkDeletedLock.Lock()
+	defer signalTextBufferMarkDeletedLock.Unlock()
+
+	signalTextBufferMarkDeletedId++
+	signalTextBufferMarkDeletedMap[signalTextBufferMarkDeletedId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	retC := C.TextBuffer_signal_connect_mark_deleted(instance, C.gpointer(uintptr(signalTextBufferMarkDeletedId)))
+	return int(retC)
+}
+
+/*
+DisconnectMarkDeleted disconnects a callback from the 'mark-deleted' signal for the TextBuffer.
+
+The connectionID should be a value returned from a call to ConnectMarkDeleted.
+*/
+func (recv *TextBuffer) DisconnectMarkDeleted(connectionID int) {
+	signalTextBufferMarkDeletedLock.Lock()
+	defer signalTextBufferMarkDeletedLock.Unlock()
+
+	_, exists := signalTextBufferMarkDeletedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalTextBufferMarkDeletedMap, connectionID)
+}
+
+//export TextBuffer_markDeletedHandler
+func TextBuffer_markDeletedHandler(c_mark *C.GtkTextMark) {
+	fmt.Println("cb")
+}
+
+var signalTextBufferMarkSetId int
+var signalTextBufferMarkSetMap = make(map[int]TextBufferSignalMarkSetCallback)
+var signalTextBufferMarkSetLock sync.Mutex
+
+// TextBufferSignalMarkSetCallback is a callback function for a 'mark-set' signal emitted from a TextBuffer.
+type TextBufferSignalMarkSetCallback func(location *TextIter, mark *TextMark)
+
+/*
+ConnectMarkSet connects the callback to the 'mark-set' signal for the TextBuffer.
+
+The returned value represents the connection, and may be passed to DisconnectMarkSet to remove it.
+*/
+func (recv *TextBuffer) ConnectMarkSet(callback TextBufferSignalMarkSetCallback) int {
+	signalTextBufferMarkSetLock.Lock()
+	defer signalTextBufferMarkSetLock.Unlock()
+
+	signalTextBufferMarkSetId++
+	signalTextBufferMarkSetMap[signalTextBufferMarkSetId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	retC := C.TextBuffer_signal_connect_mark_set(instance, C.gpointer(uintptr(signalTextBufferMarkSetId)))
+	return int(retC)
+}
+
+/*
+DisconnectMarkSet disconnects a callback from the 'mark-set' signal for the TextBuffer.
+
+The connectionID should be a value returned from a call to ConnectMarkSet.
+*/
+func (recv *TextBuffer) DisconnectMarkSet(connectionID int) {
+	signalTextBufferMarkSetLock.Lock()
+	defer signalTextBufferMarkSetLock.Unlock()
+
+	_, exists := signalTextBufferMarkSetMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalTextBufferMarkSetMap, connectionID)
+}
+
+//export TextBuffer_markSetHandler
+func TextBuffer_markSetHandler(c_location *C.GtkTextIter, c_mark *C.GtkTextMark) {
+	fmt.Println("cb")
+}
 
 var signalTextBufferModifiedChangedId int
 var signalTextBufferModifiedChangedMap = make(map[int]TextBufferSignalModifiedChangedCallback)
@@ -20336,7 +21567,53 @@ func TextBuffer_modifiedChangedHandler() {
 	fmt.Println("cb")
 }
 
-// Unsupported signal 'remove-tag' for TextBuffer : unsupported parameter tag : type TextTag :
+var signalTextBufferRemoveTagId int
+var signalTextBufferRemoveTagMap = make(map[int]TextBufferSignalRemoveTagCallback)
+var signalTextBufferRemoveTagLock sync.Mutex
+
+// TextBufferSignalRemoveTagCallback is a callback function for a 'remove-tag' signal emitted from a TextBuffer.
+type TextBufferSignalRemoveTagCallback func(tag *TextTag, start *TextIter, end *TextIter)
+
+/*
+ConnectRemoveTag connects the callback to the 'remove-tag' signal for the TextBuffer.
+
+The returned value represents the connection, and may be passed to DisconnectRemoveTag to remove it.
+*/
+func (recv *TextBuffer) ConnectRemoveTag(callback TextBufferSignalRemoveTagCallback) int {
+	signalTextBufferRemoveTagLock.Lock()
+	defer signalTextBufferRemoveTagLock.Unlock()
+
+	signalTextBufferRemoveTagId++
+	signalTextBufferRemoveTagMap[signalTextBufferRemoveTagId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	retC := C.TextBuffer_signal_connect_remove_tag(instance, C.gpointer(uintptr(signalTextBufferRemoveTagId)))
+	return int(retC)
+}
+
+/*
+DisconnectRemoveTag disconnects a callback from the 'remove-tag' signal for the TextBuffer.
+
+The connectionID should be a value returned from a call to ConnectRemoveTag.
+*/
+func (recv *TextBuffer) DisconnectRemoveTag(connectionID int) {
+	signalTextBufferRemoveTagLock.Lock()
+	defer signalTextBufferRemoveTagLock.Unlock()
+
+	_, exists := signalTextBufferRemoveTagMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalTextBufferRemoveTagMap, connectionID)
+}
+
+//export TextBuffer_removeTagHandler
+func TextBuffer_removeTagHandler(c_tag *C.GtkTextTag, c_start *C.GtkTextIter, c_end *C.GtkTextIter) {
+	fmt.Println("cb")
+}
 
 // TextBufferNew is a wrapper around the C function gtk_text_buffer_new.
 func TextBufferNew(table *TextTagTable) *TextBuffer {
@@ -21188,7 +22465,7 @@ func CastToTextTag(object *gobject.Object) *TextTag {
 	return TextTagNewFromC(object.ToC())
 }
 
-// Unsupported signal 'event' for TextTag : unsupported parameter object : type GObject.Object :
+// Unsupported signal 'event' for TextTag : unsupported parameter event : no type generator for Gdk.Event,
 
 // TextTagNew is a wrapper around the C function gtk_text_tag_new.
 func TextTagNew(name string) *TextTag {
@@ -21254,11 +22531,149 @@ func CastToTextTagTable(object *gobject.Object) *TextTagTable {
 	return TextTagTableNewFromC(object.ToC())
 }
 
-// Unsupported signal 'tag-added' for TextTagTable : unsupported parameter tag : type TextTag :
+var signalTextTagTableTagAddedId int
+var signalTextTagTableTagAddedMap = make(map[int]TextTagTableSignalTagAddedCallback)
+var signalTextTagTableTagAddedLock sync.Mutex
 
-// Unsupported signal 'tag-changed' for TextTagTable : unsupported parameter tag : type TextTag :
+// TextTagTableSignalTagAddedCallback is a callback function for a 'tag-added' signal emitted from a TextTagTable.
+type TextTagTableSignalTagAddedCallback func(tag *TextTag)
 
-// Unsupported signal 'tag-removed' for TextTagTable : unsupported parameter tag : type TextTag :
+/*
+ConnectTagAdded connects the callback to the 'tag-added' signal for the TextTagTable.
+
+The returned value represents the connection, and may be passed to DisconnectTagAdded to remove it.
+*/
+func (recv *TextTagTable) ConnectTagAdded(callback TextTagTableSignalTagAddedCallback) int {
+	signalTextTagTableTagAddedLock.Lock()
+	defer signalTextTagTableTagAddedLock.Unlock()
+
+	signalTextTagTableTagAddedId++
+	signalTextTagTableTagAddedMap[signalTextTagTableTagAddedId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	retC := C.TextTagTable_signal_connect_tag_added(instance, C.gpointer(uintptr(signalTextTagTableTagAddedId)))
+	return int(retC)
+}
+
+/*
+DisconnectTagAdded disconnects a callback from the 'tag-added' signal for the TextTagTable.
+
+The connectionID should be a value returned from a call to ConnectTagAdded.
+*/
+func (recv *TextTagTable) DisconnectTagAdded(connectionID int) {
+	signalTextTagTableTagAddedLock.Lock()
+	defer signalTextTagTableTagAddedLock.Unlock()
+
+	_, exists := signalTextTagTableTagAddedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalTextTagTableTagAddedMap, connectionID)
+}
+
+//export TextTagTable_tagAddedHandler
+func TextTagTable_tagAddedHandler(c_tag *C.GtkTextTag) {
+	fmt.Println("cb")
+}
+
+var signalTextTagTableTagChangedId int
+var signalTextTagTableTagChangedMap = make(map[int]TextTagTableSignalTagChangedCallback)
+var signalTextTagTableTagChangedLock sync.Mutex
+
+// TextTagTableSignalTagChangedCallback is a callback function for a 'tag-changed' signal emitted from a TextTagTable.
+type TextTagTableSignalTagChangedCallback func(tag *TextTag, sizeChanged bool)
+
+/*
+ConnectTagChanged connects the callback to the 'tag-changed' signal for the TextTagTable.
+
+The returned value represents the connection, and may be passed to DisconnectTagChanged to remove it.
+*/
+func (recv *TextTagTable) ConnectTagChanged(callback TextTagTableSignalTagChangedCallback) int {
+	signalTextTagTableTagChangedLock.Lock()
+	defer signalTextTagTableTagChangedLock.Unlock()
+
+	signalTextTagTableTagChangedId++
+	signalTextTagTableTagChangedMap[signalTextTagTableTagChangedId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	retC := C.TextTagTable_signal_connect_tag_changed(instance, C.gpointer(uintptr(signalTextTagTableTagChangedId)))
+	return int(retC)
+}
+
+/*
+DisconnectTagChanged disconnects a callback from the 'tag-changed' signal for the TextTagTable.
+
+The connectionID should be a value returned from a call to ConnectTagChanged.
+*/
+func (recv *TextTagTable) DisconnectTagChanged(connectionID int) {
+	signalTextTagTableTagChangedLock.Lock()
+	defer signalTextTagTableTagChangedLock.Unlock()
+
+	_, exists := signalTextTagTableTagChangedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalTextTagTableTagChangedMap, connectionID)
+}
+
+//export TextTagTable_tagChangedHandler
+func TextTagTable_tagChangedHandler(c_tag *C.GtkTextTag, c_size_changed C.gboolean) {
+	fmt.Println("cb")
+}
+
+var signalTextTagTableTagRemovedId int
+var signalTextTagTableTagRemovedMap = make(map[int]TextTagTableSignalTagRemovedCallback)
+var signalTextTagTableTagRemovedLock sync.Mutex
+
+// TextTagTableSignalTagRemovedCallback is a callback function for a 'tag-removed' signal emitted from a TextTagTable.
+type TextTagTableSignalTagRemovedCallback func(tag *TextTag)
+
+/*
+ConnectTagRemoved connects the callback to the 'tag-removed' signal for the TextTagTable.
+
+The returned value represents the connection, and may be passed to DisconnectTagRemoved to remove it.
+*/
+func (recv *TextTagTable) ConnectTagRemoved(callback TextTagTableSignalTagRemovedCallback) int {
+	signalTextTagTableTagRemovedLock.Lock()
+	defer signalTextTagTableTagRemovedLock.Unlock()
+
+	signalTextTagTableTagRemovedId++
+	signalTextTagTableTagRemovedMap[signalTextTagTableTagRemovedId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	retC := C.TextTagTable_signal_connect_tag_removed(instance, C.gpointer(uintptr(signalTextTagTableTagRemovedId)))
+	return int(retC)
+}
+
+/*
+DisconnectTagRemoved disconnects a callback from the 'tag-removed' signal for the TextTagTable.
+
+The connectionID should be a value returned from a call to ConnectTagRemoved.
+*/
+func (recv *TextTagTable) DisconnectTagRemoved(connectionID int) {
+	signalTextTagTableTagRemovedLock.Lock()
+	defer signalTextTagTableTagRemovedLock.Unlock()
+
+	_, exists := signalTextTagTableTagRemovedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalTextTagTableTagRemovedMap, connectionID)
+}
+
+//export TextTagTable_tagRemovedHandler
+func TextTagTable_tagRemovedHandler(c_tag *C.GtkTextTag) {
+	fmt.Println("cb")
+}
 
 // TextTagTableNew is a wrapper around the C function gtk_text_tag_table_new.
 func TextTagTableNew() *TextTagTable {
@@ -21557,7 +22972,53 @@ func TextView_pasteClipboardHandler() {
 	fmt.Println("cb")
 }
 
-// Unsupported signal 'populate-popup' for TextView : unsupported parameter popup : type Widget :
+var signalTextViewPopulatePopupId int
+var signalTextViewPopulatePopupMap = make(map[int]TextViewSignalPopulatePopupCallback)
+var signalTextViewPopulatePopupLock sync.Mutex
+
+// TextViewSignalPopulatePopupCallback is a callback function for a 'populate-popup' signal emitted from a TextView.
+type TextViewSignalPopulatePopupCallback func(popup *Widget)
+
+/*
+ConnectPopulatePopup connects the callback to the 'populate-popup' signal for the TextView.
+
+The returned value represents the connection, and may be passed to DisconnectPopulatePopup to remove it.
+*/
+func (recv *TextView) ConnectPopulatePopup(callback TextViewSignalPopulatePopupCallback) int {
+	signalTextViewPopulatePopupLock.Lock()
+	defer signalTextViewPopulatePopupLock.Unlock()
+
+	signalTextViewPopulatePopupId++
+	signalTextViewPopulatePopupMap[signalTextViewPopulatePopupId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	retC := C.TextView_signal_connect_populate_popup(instance, C.gpointer(uintptr(signalTextViewPopulatePopupId)))
+	return int(retC)
+}
+
+/*
+DisconnectPopulatePopup disconnects a callback from the 'populate-popup' signal for the TextView.
+
+The connectionID should be a value returned from a call to ConnectPopulatePopup.
+*/
+func (recv *TextView) DisconnectPopulatePopup(connectionID int) {
+	signalTextViewPopulatePopupLock.Lock()
+	defer signalTextViewPopulatePopupLock.Unlock()
+
+	_, exists := signalTextViewPopulatePopupMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalTextViewPopulatePopupMap, connectionID)
+}
+
+//export TextView_populatePopupHandler
+func TextView_populatePopupHandler(c_popup *C.GtkWidget) {
+	fmt.Println("cb")
+}
 
 var signalTextViewSelectAllId int
 var signalTextViewSelectAllMap = make(map[int]TextViewSignalSelectAllCallback)
@@ -21603,7 +23064,7 @@ func (recv *TextView) DisconnectSelectAll(connectionID int) {
 }
 
 //export TextView_selectAllHandler
-func TextView_selectAllHandler(select_ C.gboolean) {
+func TextView_selectAllHandler(c_select C.gboolean) {
 	fmt.Println("cb")
 }
 
@@ -23274,7 +24735,7 @@ func (recv *Toolbar) DisconnectFocusHomeOrEnd(connectionID int) {
 }
 
 //export Toolbar_focusHomeOrEndHandler
-func Toolbar_focusHomeOrEndHandler(focusHome C.gboolean) C.gboolean {
+func Toolbar_focusHomeOrEndHandler(c_focus_home C.gboolean) C.gboolean {
 	fmt.Println("cb")
 }
 
@@ -24103,17 +25564,155 @@ func (recv *TreeView) DisconnectExpandCollapseCursorRow(connectionID int) {
 }
 
 //export TreeView_expandCollapseCursorRowHandler
-func TreeView_expandCollapseCursorRowHandler(object C.gboolean, p0 C.gboolean, p1 C.gboolean) C.gboolean {
+func TreeView_expandCollapseCursorRowHandler(c_object C.gboolean, c_p0 C.gboolean, c_p1 C.gboolean) C.gboolean {
 	fmt.Println("cb")
 }
 
 // Unsupported signal 'move-cursor' for TreeView : unsupported parameter step : type MovementStep :
 
-// Unsupported signal 'row-activated' for TreeView : unsupported parameter path : type TreePath :
+var signalTreeViewRowActivatedId int
+var signalTreeViewRowActivatedMap = make(map[int]TreeViewSignalRowActivatedCallback)
+var signalTreeViewRowActivatedLock sync.Mutex
 
-// Unsupported signal 'row-collapsed' for TreeView : unsupported parameter iter : type TreeIter :
+// TreeViewSignalRowActivatedCallback is a callback function for a 'row-activated' signal emitted from a TreeView.
+type TreeViewSignalRowActivatedCallback func(path *TreePath, column *TreeViewColumn)
 
-// Unsupported signal 'row-expanded' for TreeView : unsupported parameter iter : type TreeIter :
+/*
+ConnectRowActivated connects the callback to the 'row-activated' signal for the TreeView.
+
+The returned value represents the connection, and may be passed to DisconnectRowActivated to remove it.
+*/
+func (recv *TreeView) ConnectRowActivated(callback TreeViewSignalRowActivatedCallback) int {
+	signalTreeViewRowActivatedLock.Lock()
+	defer signalTreeViewRowActivatedLock.Unlock()
+
+	signalTreeViewRowActivatedId++
+	signalTreeViewRowActivatedMap[signalTreeViewRowActivatedId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	retC := C.TreeView_signal_connect_row_activated(instance, C.gpointer(uintptr(signalTreeViewRowActivatedId)))
+	return int(retC)
+}
+
+/*
+DisconnectRowActivated disconnects a callback from the 'row-activated' signal for the TreeView.
+
+The connectionID should be a value returned from a call to ConnectRowActivated.
+*/
+func (recv *TreeView) DisconnectRowActivated(connectionID int) {
+	signalTreeViewRowActivatedLock.Lock()
+	defer signalTreeViewRowActivatedLock.Unlock()
+
+	_, exists := signalTreeViewRowActivatedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalTreeViewRowActivatedMap, connectionID)
+}
+
+//export TreeView_rowActivatedHandler
+func TreeView_rowActivatedHandler(c_path *C.GtkTreePath, c_column *C.GtkTreeViewColumn) {
+	fmt.Println("cb")
+}
+
+var signalTreeViewRowCollapsedId int
+var signalTreeViewRowCollapsedMap = make(map[int]TreeViewSignalRowCollapsedCallback)
+var signalTreeViewRowCollapsedLock sync.Mutex
+
+// TreeViewSignalRowCollapsedCallback is a callback function for a 'row-collapsed' signal emitted from a TreeView.
+type TreeViewSignalRowCollapsedCallback func(iter *TreeIter, path *TreePath)
+
+/*
+ConnectRowCollapsed connects the callback to the 'row-collapsed' signal for the TreeView.
+
+The returned value represents the connection, and may be passed to DisconnectRowCollapsed to remove it.
+*/
+func (recv *TreeView) ConnectRowCollapsed(callback TreeViewSignalRowCollapsedCallback) int {
+	signalTreeViewRowCollapsedLock.Lock()
+	defer signalTreeViewRowCollapsedLock.Unlock()
+
+	signalTreeViewRowCollapsedId++
+	signalTreeViewRowCollapsedMap[signalTreeViewRowCollapsedId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	retC := C.TreeView_signal_connect_row_collapsed(instance, C.gpointer(uintptr(signalTreeViewRowCollapsedId)))
+	return int(retC)
+}
+
+/*
+DisconnectRowCollapsed disconnects a callback from the 'row-collapsed' signal for the TreeView.
+
+The connectionID should be a value returned from a call to ConnectRowCollapsed.
+*/
+func (recv *TreeView) DisconnectRowCollapsed(connectionID int) {
+	signalTreeViewRowCollapsedLock.Lock()
+	defer signalTreeViewRowCollapsedLock.Unlock()
+
+	_, exists := signalTreeViewRowCollapsedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalTreeViewRowCollapsedMap, connectionID)
+}
+
+//export TreeView_rowCollapsedHandler
+func TreeView_rowCollapsedHandler(c_iter *C.GtkTreeIter, c_path *C.GtkTreePath) {
+	fmt.Println("cb")
+}
+
+var signalTreeViewRowExpandedId int
+var signalTreeViewRowExpandedMap = make(map[int]TreeViewSignalRowExpandedCallback)
+var signalTreeViewRowExpandedLock sync.Mutex
+
+// TreeViewSignalRowExpandedCallback is a callback function for a 'row-expanded' signal emitted from a TreeView.
+type TreeViewSignalRowExpandedCallback func(iter *TreeIter, path *TreePath)
+
+/*
+ConnectRowExpanded connects the callback to the 'row-expanded' signal for the TreeView.
+
+The returned value represents the connection, and may be passed to DisconnectRowExpanded to remove it.
+*/
+func (recv *TreeView) ConnectRowExpanded(callback TreeViewSignalRowExpandedCallback) int {
+	signalTreeViewRowExpandedLock.Lock()
+	defer signalTreeViewRowExpandedLock.Unlock()
+
+	signalTreeViewRowExpandedId++
+	signalTreeViewRowExpandedMap[signalTreeViewRowExpandedId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	retC := C.TreeView_signal_connect_row_expanded(instance, C.gpointer(uintptr(signalTreeViewRowExpandedId)))
+	return int(retC)
+}
+
+/*
+DisconnectRowExpanded disconnects a callback from the 'row-expanded' signal for the TreeView.
+
+The connectionID should be a value returned from a call to ConnectRowExpanded.
+*/
+func (recv *TreeView) DisconnectRowExpanded(connectionID int) {
+	signalTreeViewRowExpandedLock.Lock()
+	defer signalTreeViewRowExpandedLock.Unlock()
+
+	_, exists := signalTreeViewRowExpandedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalTreeViewRowExpandedMap, connectionID)
+}
+
+//export TreeView_rowExpandedHandler
+func TreeView_rowExpandedHandler(c_iter *C.GtkTreeIter, c_path *C.GtkTreePath) {
+	fmt.Println("cb")
+}
 
 var signalTreeViewSelectAllId int
 var signalTreeViewSelectAllMap = make(map[int]TreeViewSignalSelectAllCallback)
@@ -24255,7 +25854,7 @@ func (recv *TreeView) DisconnectSelectCursorRow(connectionID int) {
 }
 
 //export TreeView_selectCursorRowHandler
-func TreeView_selectCursorRowHandler(object C.gboolean) C.gboolean {
+func TreeView_selectCursorRowHandler(c_object C.gboolean) C.gboolean {
 	fmt.Println("cb")
 }
 
@@ -24307,9 +25906,101 @@ func TreeView_startInteractiveSearchHandler() C.gboolean {
 	fmt.Println("cb")
 }
 
-// Unsupported signal 'test-collapse-row' for TreeView : unsupported parameter iter : type TreeIter :
+var signalTreeViewTestCollapseRowId int
+var signalTreeViewTestCollapseRowMap = make(map[int]TreeViewSignalTestCollapseRowCallback)
+var signalTreeViewTestCollapseRowLock sync.Mutex
 
-// Unsupported signal 'test-expand-row' for TreeView : unsupported parameter iter : type TreeIter :
+// TreeViewSignalTestCollapseRowCallback is a callback function for a 'test-collapse-row' signal emitted from a TreeView.
+type TreeViewSignalTestCollapseRowCallback func(iter *TreeIter, path *TreePath) bool
+
+/*
+ConnectTestCollapseRow connects the callback to the 'test-collapse-row' signal for the TreeView.
+
+The returned value represents the connection, and may be passed to DisconnectTestCollapseRow to remove it.
+*/
+func (recv *TreeView) ConnectTestCollapseRow(callback TreeViewSignalTestCollapseRowCallback) int {
+	signalTreeViewTestCollapseRowLock.Lock()
+	defer signalTreeViewTestCollapseRowLock.Unlock()
+
+	signalTreeViewTestCollapseRowId++
+	signalTreeViewTestCollapseRowMap[signalTreeViewTestCollapseRowId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	retC := C.TreeView_signal_connect_test_collapse_row(instance, C.gpointer(uintptr(signalTreeViewTestCollapseRowId)))
+	return int(retC)
+}
+
+/*
+DisconnectTestCollapseRow disconnects a callback from the 'test-collapse-row' signal for the TreeView.
+
+The connectionID should be a value returned from a call to ConnectTestCollapseRow.
+*/
+func (recv *TreeView) DisconnectTestCollapseRow(connectionID int) {
+	signalTreeViewTestCollapseRowLock.Lock()
+	defer signalTreeViewTestCollapseRowLock.Unlock()
+
+	_, exists := signalTreeViewTestCollapseRowMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalTreeViewTestCollapseRowMap, connectionID)
+}
+
+//export TreeView_testCollapseRowHandler
+func TreeView_testCollapseRowHandler(c_iter *C.GtkTreeIter, c_path *C.GtkTreePath) C.gboolean {
+	fmt.Println("cb")
+}
+
+var signalTreeViewTestExpandRowId int
+var signalTreeViewTestExpandRowMap = make(map[int]TreeViewSignalTestExpandRowCallback)
+var signalTreeViewTestExpandRowLock sync.Mutex
+
+// TreeViewSignalTestExpandRowCallback is a callback function for a 'test-expand-row' signal emitted from a TreeView.
+type TreeViewSignalTestExpandRowCallback func(iter *TreeIter, path *TreePath) bool
+
+/*
+ConnectTestExpandRow connects the callback to the 'test-expand-row' signal for the TreeView.
+
+The returned value represents the connection, and may be passed to DisconnectTestExpandRow to remove it.
+*/
+func (recv *TreeView) ConnectTestExpandRow(callback TreeViewSignalTestExpandRowCallback) int {
+	signalTreeViewTestExpandRowLock.Lock()
+	defer signalTreeViewTestExpandRowLock.Unlock()
+
+	signalTreeViewTestExpandRowId++
+	signalTreeViewTestExpandRowMap[signalTreeViewTestExpandRowId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	retC := C.TreeView_signal_connect_test_expand_row(instance, C.gpointer(uintptr(signalTreeViewTestExpandRowId)))
+	return int(retC)
+}
+
+/*
+DisconnectTestExpandRow disconnects a callback from the 'test-expand-row' signal for the TreeView.
+
+The connectionID should be a value returned from a call to ConnectTestExpandRow.
+*/
+func (recv *TreeView) DisconnectTestExpandRow(connectionID int) {
+	signalTreeViewTestExpandRowLock.Lock()
+	defer signalTreeViewTestExpandRowLock.Unlock()
+
+	_, exists := signalTreeViewTestExpandRowMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalTreeViewTestExpandRowMap, connectionID)
+}
+
+//export TreeView_testExpandRowHandler
+func TreeView_testExpandRowHandler(c_iter *C.GtkTreeIter, c_path *C.GtkTreePath) C.gboolean {
+	fmt.Println("cb")
+}
 
 var signalTreeViewToggleCursorRowId int
 var signalTreeViewToggleCursorRowMap = make(map[int]TreeViewSignalToggleCursorRowCallback)
@@ -26023,13 +27714,105 @@ func Widget_accelClosuresChangedHandler() {
 	fmt.Println("cb")
 }
 
-// Unsupported signal 'button-press-event' for Widget : unsupported parameter event : type Gdk.EventButton :
+var signalWidgetButtonPressEventId int
+var signalWidgetButtonPressEventMap = make(map[int]WidgetSignalButtonPressEventCallback)
+var signalWidgetButtonPressEventLock sync.Mutex
 
-// Unsupported signal 'button-release-event' for Widget : unsupported parameter event : type Gdk.EventButton :
+// WidgetSignalButtonPressEventCallback is a callback function for a 'button-press-event' signal emitted from a Widget.
+type WidgetSignalButtonPressEventCallback func(event *gdk.EventButton) bool
+
+/*
+ConnectButtonPressEvent connects the callback to the 'button-press-event' signal for the Widget.
+
+The returned value represents the connection, and may be passed to DisconnectButtonPressEvent to remove it.
+*/
+func (recv *Widget) ConnectButtonPressEvent(callback WidgetSignalButtonPressEventCallback) int {
+	signalWidgetButtonPressEventLock.Lock()
+	defer signalWidgetButtonPressEventLock.Unlock()
+
+	signalWidgetButtonPressEventId++
+	signalWidgetButtonPressEventMap[signalWidgetButtonPressEventId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	retC := C.Widget_signal_connect_button_press_event(instance, C.gpointer(uintptr(signalWidgetButtonPressEventId)))
+	return int(retC)
+}
+
+/*
+DisconnectButtonPressEvent disconnects a callback from the 'button-press-event' signal for the Widget.
+
+The connectionID should be a value returned from a call to ConnectButtonPressEvent.
+*/
+func (recv *Widget) DisconnectButtonPressEvent(connectionID int) {
+	signalWidgetButtonPressEventLock.Lock()
+	defer signalWidgetButtonPressEventLock.Unlock()
+
+	_, exists := signalWidgetButtonPressEventMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalWidgetButtonPressEventMap, connectionID)
+}
+
+//export Widget_buttonPressEventHandler
+func Widget_buttonPressEventHandler(c_event *C.GdkEventButton) C.gboolean {
+	fmt.Println("cb")
+}
+
+var signalWidgetButtonReleaseEventId int
+var signalWidgetButtonReleaseEventMap = make(map[int]WidgetSignalButtonReleaseEventCallback)
+var signalWidgetButtonReleaseEventLock sync.Mutex
+
+// WidgetSignalButtonReleaseEventCallback is a callback function for a 'button-release-event' signal emitted from a Widget.
+type WidgetSignalButtonReleaseEventCallback func(event *gdk.EventButton) bool
+
+/*
+ConnectButtonReleaseEvent connects the callback to the 'button-release-event' signal for the Widget.
+
+The returned value represents the connection, and may be passed to DisconnectButtonReleaseEvent to remove it.
+*/
+func (recv *Widget) ConnectButtonReleaseEvent(callback WidgetSignalButtonReleaseEventCallback) int {
+	signalWidgetButtonReleaseEventLock.Lock()
+	defer signalWidgetButtonReleaseEventLock.Unlock()
+
+	signalWidgetButtonReleaseEventId++
+	signalWidgetButtonReleaseEventMap[signalWidgetButtonReleaseEventId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	retC := C.Widget_signal_connect_button_release_event(instance, C.gpointer(uintptr(signalWidgetButtonReleaseEventId)))
+	return int(retC)
+}
+
+/*
+DisconnectButtonReleaseEvent disconnects a callback from the 'button-release-event' signal for the Widget.
+
+The connectionID should be a value returned from a call to ConnectButtonReleaseEvent.
+*/
+func (recv *Widget) DisconnectButtonReleaseEvent(connectionID int) {
+	signalWidgetButtonReleaseEventLock.Lock()
+	defer signalWidgetButtonReleaseEventLock.Unlock()
+
+	_, exists := signalWidgetButtonReleaseEventMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalWidgetButtonReleaseEventMap, connectionID)
+}
+
+//export Widget_buttonReleaseEventHandler
+func Widget_buttonReleaseEventHandler(c_event *C.GdkEventButton) C.gboolean {
+	fmt.Println("cb")
+}
 
 // Unsupported signal 'can-activate-accel' for Widget : unsupported parameter signal_id : type guint :
 
-// Unsupported signal 'child-notify' for Widget : unsupported parameter child_property : type GObject.ParamSpec :
+// Unsupported signal 'child-notify' for Widget : unsupported parameter child_property : type GObject.ParamSpec : Blacklisted record : GParamSpec
 
 var signalWidgetCompositedChangedId int
 var signalWidgetCompositedChangedMap = make(map[int]WidgetSignalCompositedChangedCallback)
@@ -26079,7 +27862,53 @@ func Widget_compositedChangedHandler() {
 	fmt.Println("cb")
 }
 
-// Unsupported signal 'configure-event' for Widget : unsupported parameter event : type Gdk.EventConfigure :
+var signalWidgetConfigureEventId int
+var signalWidgetConfigureEventMap = make(map[int]WidgetSignalConfigureEventCallback)
+var signalWidgetConfigureEventLock sync.Mutex
+
+// WidgetSignalConfigureEventCallback is a callback function for a 'configure-event' signal emitted from a Widget.
+type WidgetSignalConfigureEventCallback func(event *gdk.EventConfigure) bool
+
+/*
+ConnectConfigureEvent connects the callback to the 'configure-event' signal for the Widget.
+
+The returned value represents the connection, and may be passed to DisconnectConfigureEvent to remove it.
+*/
+func (recv *Widget) ConnectConfigureEvent(callback WidgetSignalConfigureEventCallback) int {
+	signalWidgetConfigureEventLock.Lock()
+	defer signalWidgetConfigureEventLock.Unlock()
+
+	signalWidgetConfigureEventId++
+	signalWidgetConfigureEventMap[signalWidgetConfigureEventId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	retC := C.Widget_signal_connect_configure_event(instance, C.gpointer(uintptr(signalWidgetConfigureEventId)))
+	return int(retC)
+}
+
+/*
+DisconnectConfigureEvent disconnects a callback from the 'configure-event' signal for the Widget.
+
+The connectionID should be a value returned from a call to ConnectConfigureEvent.
+*/
+func (recv *Widget) DisconnectConfigureEvent(connectionID int) {
+	signalWidgetConfigureEventLock.Lock()
+	defer signalWidgetConfigureEventLock.Unlock()
+
+	_, exists := signalWidgetConfigureEventMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalWidgetConfigureEventMap, connectionID)
+}
+
+//export Widget_configureEventHandler
+func Widget_configureEventHandler(c_event *C.GdkEventConfigure) C.gboolean {
+	fmt.Println("cb")
+}
 
 // Unsupported signal 'delete-event' for Widget : unsupported parameter event : no type generator for Gdk.Event,
 
@@ -26135,23 +27964,207 @@ func Widget_destroyHandler() {
 
 // Unsupported signal 'direction-changed' for Widget : unsupported parameter previous_direction : type TextDirection :
 
-// Unsupported signal 'drag-begin' for Widget : unsupported parameter context : type Gdk.DragContext :
+var signalWidgetDragBeginId int
+var signalWidgetDragBeginMap = make(map[int]WidgetSignalDragBeginCallback)
+var signalWidgetDragBeginLock sync.Mutex
 
-// Unsupported signal 'drag-data-delete' for Widget : unsupported parameter context : type Gdk.DragContext :
+// WidgetSignalDragBeginCallback is a callback function for a 'drag-begin' signal emitted from a Widget.
+type WidgetSignalDragBeginCallback func(context *gdk.DragContext)
 
-// Unsupported signal 'drag-data-get' for Widget : unsupported parameter context : type Gdk.DragContext :
+/*
+ConnectDragBegin connects the callback to the 'drag-begin' signal for the Widget.
 
-// Unsupported signal 'drag-data-received' for Widget : unsupported parameter context : type Gdk.DragContext :
+The returned value represents the connection, and may be passed to DisconnectDragBegin to remove it.
+*/
+func (recv *Widget) ConnectDragBegin(callback WidgetSignalDragBeginCallback) int {
+	signalWidgetDragBeginLock.Lock()
+	defer signalWidgetDragBeginLock.Unlock()
 
-// Unsupported signal 'drag-drop' for Widget : unsupported parameter context : type Gdk.DragContext :
+	signalWidgetDragBeginId++
+	signalWidgetDragBeginMap[signalWidgetDragBeginId] = callback
 
-// Unsupported signal 'drag-end' for Widget : unsupported parameter context : type Gdk.DragContext :
+	instance := C.gpointer(recv.Object().ToC())
+	retC := C.Widget_signal_connect_drag_begin(instance, C.gpointer(uintptr(signalWidgetDragBeginId)))
+	return int(retC)
+}
 
-// Unsupported signal 'drag-leave' for Widget : unsupported parameter context : type Gdk.DragContext :
+/*
+DisconnectDragBegin disconnects a callback from the 'drag-begin' signal for the Widget.
 
-// Unsupported signal 'drag-motion' for Widget : unsupported parameter context : type Gdk.DragContext :
+The connectionID should be a value returned from a call to ConnectDragBegin.
+*/
+func (recv *Widget) DisconnectDragBegin(connectionID int) {
+	signalWidgetDragBeginLock.Lock()
+	defer signalWidgetDragBeginLock.Unlock()
 
-// Unsupported signal 'enter-notify-event' for Widget : unsupported parameter event : type Gdk.EventCrossing :
+	_, exists := signalWidgetDragBeginMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalWidgetDragBeginMap, connectionID)
+}
+
+//export Widget_dragBeginHandler
+func Widget_dragBeginHandler(c_context *C.GdkDragContext) {
+	fmt.Println("cb")
+}
+
+var signalWidgetDragDataDeleteId int
+var signalWidgetDragDataDeleteMap = make(map[int]WidgetSignalDragDataDeleteCallback)
+var signalWidgetDragDataDeleteLock sync.Mutex
+
+// WidgetSignalDragDataDeleteCallback is a callback function for a 'drag-data-delete' signal emitted from a Widget.
+type WidgetSignalDragDataDeleteCallback func(context *gdk.DragContext)
+
+/*
+ConnectDragDataDelete connects the callback to the 'drag-data-delete' signal for the Widget.
+
+The returned value represents the connection, and may be passed to DisconnectDragDataDelete to remove it.
+*/
+func (recv *Widget) ConnectDragDataDelete(callback WidgetSignalDragDataDeleteCallback) int {
+	signalWidgetDragDataDeleteLock.Lock()
+	defer signalWidgetDragDataDeleteLock.Unlock()
+
+	signalWidgetDragDataDeleteId++
+	signalWidgetDragDataDeleteMap[signalWidgetDragDataDeleteId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	retC := C.Widget_signal_connect_drag_data_delete(instance, C.gpointer(uintptr(signalWidgetDragDataDeleteId)))
+	return int(retC)
+}
+
+/*
+DisconnectDragDataDelete disconnects a callback from the 'drag-data-delete' signal for the Widget.
+
+The connectionID should be a value returned from a call to ConnectDragDataDelete.
+*/
+func (recv *Widget) DisconnectDragDataDelete(connectionID int) {
+	signalWidgetDragDataDeleteLock.Lock()
+	defer signalWidgetDragDataDeleteLock.Unlock()
+
+	_, exists := signalWidgetDragDataDeleteMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalWidgetDragDataDeleteMap, connectionID)
+}
+
+//export Widget_dragDataDeleteHandler
+func Widget_dragDataDeleteHandler(c_context *C.GdkDragContext) {
+	fmt.Println("cb")
+}
+
+// Unsupported signal 'drag-data-get' for Widget : unsupported parameter info : type guint :
+
+// Unsupported signal 'drag-data-received' for Widget : unsupported parameter x : type gint :
+
+// Unsupported signal 'drag-drop' for Widget : unsupported parameter x : type gint :
+
+var signalWidgetDragEndId int
+var signalWidgetDragEndMap = make(map[int]WidgetSignalDragEndCallback)
+var signalWidgetDragEndLock sync.Mutex
+
+// WidgetSignalDragEndCallback is a callback function for a 'drag-end' signal emitted from a Widget.
+type WidgetSignalDragEndCallback func(context *gdk.DragContext)
+
+/*
+ConnectDragEnd connects the callback to the 'drag-end' signal for the Widget.
+
+The returned value represents the connection, and may be passed to DisconnectDragEnd to remove it.
+*/
+func (recv *Widget) ConnectDragEnd(callback WidgetSignalDragEndCallback) int {
+	signalWidgetDragEndLock.Lock()
+	defer signalWidgetDragEndLock.Unlock()
+
+	signalWidgetDragEndId++
+	signalWidgetDragEndMap[signalWidgetDragEndId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	retC := C.Widget_signal_connect_drag_end(instance, C.gpointer(uintptr(signalWidgetDragEndId)))
+	return int(retC)
+}
+
+/*
+DisconnectDragEnd disconnects a callback from the 'drag-end' signal for the Widget.
+
+The connectionID should be a value returned from a call to ConnectDragEnd.
+*/
+func (recv *Widget) DisconnectDragEnd(connectionID int) {
+	signalWidgetDragEndLock.Lock()
+	defer signalWidgetDragEndLock.Unlock()
+
+	_, exists := signalWidgetDragEndMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalWidgetDragEndMap, connectionID)
+}
+
+//export Widget_dragEndHandler
+func Widget_dragEndHandler(c_context *C.GdkDragContext) {
+	fmt.Println("cb")
+}
+
+// Unsupported signal 'drag-leave' for Widget : unsupported parameter time : type guint :
+
+// Unsupported signal 'drag-motion' for Widget : unsupported parameter x : type gint :
+
+var signalWidgetEnterNotifyEventId int
+var signalWidgetEnterNotifyEventMap = make(map[int]WidgetSignalEnterNotifyEventCallback)
+var signalWidgetEnterNotifyEventLock sync.Mutex
+
+// WidgetSignalEnterNotifyEventCallback is a callback function for a 'enter-notify-event' signal emitted from a Widget.
+type WidgetSignalEnterNotifyEventCallback func(event *gdk.EventCrossing) bool
+
+/*
+ConnectEnterNotifyEvent connects the callback to the 'enter-notify-event' signal for the Widget.
+
+The returned value represents the connection, and may be passed to DisconnectEnterNotifyEvent to remove it.
+*/
+func (recv *Widget) ConnectEnterNotifyEvent(callback WidgetSignalEnterNotifyEventCallback) int {
+	signalWidgetEnterNotifyEventLock.Lock()
+	defer signalWidgetEnterNotifyEventLock.Unlock()
+
+	signalWidgetEnterNotifyEventId++
+	signalWidgetEnterNotifyEventMap[signalWidgetEnterNotifyEventId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	retC := C.Widget_signal_connect_enter_notify_event(instance, C.gpointer(uintptr(signalWidgetEnterNotifyEventId)))
+	return int(retC)
+}
+
+/*
+DisconnectEnterNotifyEvent disconnects a callback from the 'enter-notify-event' signal for the Widget.
+
+The connectionID should be a value returned from a call to ConnectEnterNotifyEvent.
+*/
+func (recv *Widget) DisconnectEnterNotifyEvent(connectionID int) {
+	signalWidgetEnterNotifyEventLock.Lock()
+	defer signalWidgetEnterNotifyEventLock.Unlock()
+
+	_, exists := signalWidgetEnterNotifyEventMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalWidgetEnterNotifyEventMap, connectionID)
+}
+
+//export Widget_enterNotifyEventHandler
+func Widget_enterNotifyEventHandler(c_event *C.GdkEventCrossing) C.gboolean {
+	fmt.Println("cb")
+}
 
 // Unsupported signal 'event' for Widget : unsupported parameter event : no type generator for Gdk.Event,
 
@@ -26159,9 +28172,101 @@ func Widget_destroyHandler() {
 
 // Unsupported signal 'focus' for Widget : unsupported parameter direction : type DirectionType :
 
-// Unsupported signal 'focus-in-event' for Widget : unsupported parameter event : type Gdk.EventFocus :
+var signalWidgetFocusInEventId int
+var signalWidgetFocusInEventMap = make(map[int]WidgetSignalFocusInEventCallback)
+var signalWidgetFocusInEventLock sync.Mutex
 
-// Unsupported signal 'focus-out-event' for Widget : unsupported parameter event : type Gdk.EventFocus :
+// WidgetSignalFocusInEventCallback is a callback function for a 'focus-in-event' signal emitted from a Widget.
+type WidgetSignalFocusInEventCallback func(event *gdk.EventFocus) bool
+
+/*
+ConnectFocusInEvent connects the callback to the 'focus-in-event' signal for the Widget.
+
+The returned value represents the connection, and may be passed to DisconnectFocusInEvent to remove it.
+*/
+func (recv *Widget) ConnectFocusInEvent(callback WidgetSignalFocusInEventCallback) int {
+	signalWidgetFocusInEventLock.Lock()
+	defer signalWidgetFocusInEventLock.Unlock()
+
+	signalWidgetFocusInEventId++
+	signalWidgetFocusInEventMap[signalWidgetFocusInEventId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	retC := C.Widget_signal_connect_focus_in_event(instance, C.gpointer(uintptr(signalWidgetFocusInEventId)))
+	return int(retC)
+}
+
+/*
+DisconnectFocusInEvent disconnects a callback from the 'focus-in-event' signal for the Widget.
+
+The connectionID should be a value returned from a call to ConnectFocusInEvent.
+*/
+func (recv *Widget) DisconnectFocusInEvent(connectionID int) {
+	signalWidgetFocusInEventLock.Lock()
+	defer signalWidgetFocusInEventLock.Unlock()
+
+	_, exists := signalWidgetFocusInEventMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalWidgetFocusInEventMap, connectionID)
+}
+
+//export Widget_focusInEventHandler
+func Widget_focusInEventHandler(c_event *C.GdkEventFocus) C.gboolean {
+	fmt.Println("cb")
+}
+
+var signalWidgetFocusOutEventId int
+var signalWidgetFocusOutEventMap = make(map[int]WidgetSignalFocusOutEventCallback)
+var signalWidgetFocusOutEventLock sync.Mutex
+
+// WidgetSignalFocusOutEventCallback is a callback function for a 'focus-out-event' signal emitted from a Widget.
+type WidgetSignalFocusOutEventCallback func(event *gdk.EventFocus) bool
+
+/*
+ConnectFocusOutEvent connects the callback to the 'focus-out-event' signal for the Widget.
+
+The returned value represents the connection, and may be passed to DisconnectFocusOutEvent to remove it.
+*/
+func (recv *Widget) ConnectFocusOutEvent(callback WidgetSignalFocusOutEventCallback) int {
+	signalWidgetFocusOutEventLock.Lock()
+	defer signalWidgetFocusOutEventLock.Unlock()
+
+	signalWidgetFocusOutEventId++
+	signalWidgetFocusOutEventMap[signalWidgetFocusOutEventId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	retC := C.Widget_signal_connect_focus_out_event(instance, C.gpointer(uintptr(signalWidgetFocusOutEventId)))
+	return int(retC)
+}
+
+/*
+DisconnectFocusOutEvent disconnects a callback from the 'focus-out-event' signal for the Widget.
+
+The connectionID should be a value returned from a call to ConnectFocusOutEvent.
+*/
+func (recv *Widget) DisconnectFocusOutEvent(connectionID int) {
+	signalWidgetFocusOutEventLock.Lock()
+	defer signalWidgetFocusOutEventLock.Unlock()
+
+	_, exists := signalWidgetFocusOutEventMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalWidgetFocusOutEventMap, connectionID)
+}
+
+//export Widget_focusOutEventHandler
+func Widget_focusOutEventHandler(c_event *C.GdkEventFocus) C.gboolean {
+	fmt.Println("cb")
+}
 
 var signalWidgetGrabFocusId int
 var signalWidgetGrabFocusMap = make(map[int]WidgetSignalGrabFocusCallback)
@@ -26255,7 +28360,7 @@ func (recv *Widget) DisconnectGrabNotify(connectionID int) {
 }
 
 //export Widget_grabNotifyHandler
-func Widget_grabNotifyHandler(wasGrabbed C.gboolean) {
+func Widget_grabNotifyHandler(c_was_grabbed C.gboolean) {
 	fmt.Println("cb")
 }
 
@@ -26307,13 +28412,197 @@ func Widget_hideHandler() {
 	fmt.Println("cb")
 }
 
-// Unsupported signal 'hierarchy-changed' for Widget : unsupported parameter previous_toplevel : type Widget :
+var signalWidgetHierarchyChangedId int
+var signalWidgetHierarchyChangedMap = make(map[int]WidgetSignalHierarchyChangedCallback)
+var signalWidgetHierarchyChangedLock sync.Mutex
 
-// Unsupported signal 'key-press-event' for Widget : unsupported parameter event : type Gdk.EventKey :
+// WidgetSignalHierarchyChangedCallback is a callback function for a 'hierarchy-changed' signal emitted from a Widget.
+type WidgetSignalHierarchyChangedCallback func(previousToplevel *Widget)
 
-// Unsupported signal 'key-release-event' for Widget : unsupported parameter event : type Gdk.EventKey :
+/*
+ConnectHierarchyChanged connects the callback to the 'hierarchy-changed' signal for the Widget.
 
-// Unsupported signal 'leave-notify-event' for Widget : unsupported parameter event : type Gdk.EventCrossing :
+The returned value represents the connection, and may be passed to DisconnectHierarchyChanged to remove it.
+*/
+func (recv *Widget) ConnectHierarchyChanged(callback WidgetSignalHierarchyChangedCallback) int {
+	signalWidgetHierarchyChangedLock.Lock()
+	defer signalWidgetHierarchyChangedLock.Unlock()
+
+	signalWidgetHierarchyChangedId++
+	signalWidgetHierarchyChangedMap[signalWidgetHierarchyChangedId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	retC := C.Widget_signal_connect_hierarchy_changed(instance, C.gpointer(uintptr(signalWidgetHierarchyChangedId)))
+	return int(retC)
+}
+
+/*
+DisconnectHierarchyChanged disconnects a callback from the 'hierarchy-changed' signal for the Widget.
+
+The connectionID should be a value returned from a call to ConnectHierarchyChanged.
+*/
+func (recv *Widget) DisconnectHierarchyChanged(connectionID int) {
+	signalWidgetHierarchyChangedLock.Lock()
+	defer signalWidgetHierarchyChangedLock.Unlock()
+
+	_, exists := signalWidgetHierarchyChangedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalWidgetHierarchyChangedMap, connectionID)
+}
+
+//export Widget_hierarchyChangedHandler
+func Widget_hierarchyChangedHandler(c_previous_toplevel *C.GtkWidget) {
+	fmt.Println("cb")
+}
+
+var signalWidgetKeyPressEventId int
+var signalWidgetKeyPressEventMap = make(map[int]WidgetSignalKeyPressEventCallback)
+var signalWidgetKeyPressEventLock sync.Mutex
+
+// WidgetSignalKeyPressEventCallback is a callback function for a 'key-press-event' signal emitted from a Widget.
+type WidgetSignalKeyPressEventCallback func(event *gdk.EventKey) bool
+
+/*
+ConnectKeyPressEvent connects the callback to the 'key-press-event' signal for the Widget.
+
+The returned value represents the connection, and may be passed to DisconnectKeyPressEvent to remove it.
+*/
+func (recv *Widget) ConnectKeyPressEvent(callback WidgetSignalKeyPressEventCallback) int {
+	signalWidgetKeyPressEventLock.Lock()
+	defer signalWidgetKeyPressEventLock.Unlock()
+
+	signalWidgetKeyPressEventId++
+	signalWidgetKeyPressEventMap[signalWidgetKeyPressEventId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	retC := C.Widget_signal_connect_key_press_event(instance, C.gpointer(uintptr(signalWidgetKeyPressEventId)))
+	return int(retC)
+}
+
+/*
+DisconnectKeyPressEvent disconnects a callback from the 'key-press-event' signal for the Widget.
+
+The connectionID should be a value returned from a call to ConnectKeyPressEvent.
+*/
+func (recv *Widget) DisconnectKeyPressEvent(connectionID int) {
+	signalWidgetKeyPressEventLock.Lock()
+	defer signalWidgetKeyPressEventLock.Unlock()
+
+	_, exists := signalWidgetKeyPressEventMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalWidgetKeyPressEventMap, connectionID)
+}
+
+//export Widget_keyPressEventHandler
+func Widget_keyPressEventHandler(c_event *C.GdkEventKey) C.gboolean {
+	fmt.Println("cb")
+}
+
+var signalWidgetKeyReleaseEventId int
+var signalWidgetKeyReleaseEventMap = make(map[int]WidgetSignalKeyReleaseEventCallback)
+var signalWidgetKeyReleaseEventLock sync.Mutex
+
+// WidgetSignalKeyReleaseEventCallback is a callback function for a 'key-release-event' signal emitted from a Widget.
+type WidgetSignalKeyReleaseEventCallback func(event *gdk.EventKey) bool
+
+/*
+ConnectKeyReleaseEvent connects the callback to the 'key-release-event' signal for the Widget.
+
+The returned value represents the connection, and may be passed to DisconnectKeyReleaseEvent to remove it.
+*/
+func (recv *Widget) ConnectKeyReleaseEvent(callback WidgetSignalKeyReleaseEventCallback) int {
+	signalWidgetKeyReleaseEventLock.Lock()
+	defer signalWidgetKeyReleaseEventLock.Unlock()
+
+	signalWidgetKeyReleaseEventId++
+	signalWidgetKeyReleaseEventMap[signalWidgetKeyReleaseEventId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	retC := C.Widget_signal_connect_key_release_event(instance, C.gpointer(uintptr(signalWidgetKeyReleaseEventId)))
+	return int(retC)
+}
+
+/*
+DisconnectKeyReleaseEvent disconnects a callback from the 'key-release-event' signal for the Widget.
+
+The connectionID should be a value returned from a call to ConnectKeyReleaseEvent.
+*/
+func (recv *Widget) DisconnectKeyReleaseEvent(connectionID int) {
+	signalWidgetKeyReleaseEventLock.Lock()
+	defer signalWidgetKeyReleaseEventLock.Unlock()
+
+	_, exists := signalWidgetKeyReleaseEventMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalWidgetKeyReleaseEventMap, connectionID)
+}
+
+//export Widget_keyReleaseEventHandler
+func Widget_keyReleaseEventHandler(c_event *C.GdkEventKey) C.gboolean {
+	fmt.Println("cb")
+}
+
+var signalWidgetLeaveNotifyEventId int
+var signalWidgetLeaveNotifyEventMap = make(map[int]WidgetSignalLeaveNotifyEventCallback)
+var signalWidgetLeaveNotifyEventLock sync.Mutex
+
+// WidgetSignalLeaveNotifyEventCallback is a callback function for a 'leave-notify-event' signal emitted from a Widget.
+type WidgetSignalLeaveNotifyEventCallback func(event *gdk.EventCrossing) bool
+
+/*
+ConnectLeaveNotifyEvent connects the callback to the 'leave-notify-event' signal for the Widget.
+
+The returned value represents the connection, and may be passed to DisconnectLeaveNotifyEvent to remove it.
+*/
+func (recv *Widget) ConnectLeaveNotifyEvent(callback WidgetSignalLeaveNotifyEventCallback) int {
+	signalWidgetLeaveNotifyEventLock.Lock()
+	defer signalWidgetLeaveNotifyEventLock.Unlock()
+
+	signalWidgetLeaveNotifyEventId++
+	signalWidgetLeaveNotifyEventMap[signalWidgetLeaveNotifyEventId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	retC := C.Widget_signal_connect_leave_notify_event(instance, C.gpointer(uintptr(signalWidgetLeaveNotifyEventId)))
+	return int(retC)
+}
+
+/*
+DisconnectLeaveNotifyEvent disconnects a callback from the 'leave-notify-event' signal for the Widget.
+
+The connectionID should be a value returned from a call to ConnectLeaveNotifyEvent.
+*/
+func (recv *Widget) DisconnectLeaveNotifyEvent(connectionID int) {
+	signalWidgetLeaveNotifyEventLock.Lock()
+	defer signalWidgetLeaveNotifyEventLock.Unlock()
+
+	_, exists := signalWidgetLeaveNotifyEventMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalWidgetLeaveNotifyEventMap, connectionID)
+}
+
+//export Widget_leaveNotifyEventHandler
+func Widget_leaveNotifyEventHandler(c_event *C.GdkEventCrossing) C.gboolean {
+	fmt.Println("cb")
+}
 
 var signalWidgetMapId int
 var signalWidgetMapMap = make(map[int]WidgetSignalMapCallback)
@@ -26363,7 +28652,53 @@ func Widget_mapHandler() {
 	fmt.Println("cb")
 }
 
-// Unsupported signal 'map-event' for Widget : unsupported parameter event : type Gdk.EventAny :
+var signalWidgetMapEventId int
+var signalWidgetMapEventMap = make(map[int]WidgetSignalMapEventCallback)
+var signalWidgetMapEventLock sync.Mutex
+
+// WidgetSignalMapEventCallback is a callback function for a 'map-event' signal emitted from a Widget.
+type WidgetSignalMapEventCallback func(event *gdk.EventAny) bool
+
+/*
+ConnectMapEvent connects the callback to the 'map-event' signal for the Widget.
+
+The returned value represents the connection, and may be passed to DisconnectMapEvent to remove it.
+*/
+func (recv *Widget) ConnectMapEvent(callback WidgetSignalMapEventCallback) int {
+	signalWidgetMapEventLock.Lock()
+	defer signalWidgetMapEventLock.Unlock()
+
+	signalWidgetMapEventId++
+	signalWidgetMapEventMap[signalWidgetMapEventId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	retC := C.Widget_signal_connect_map_event(instance, C.gpointer(uintptr(signalWidgetMapEventId)))
+	return int(retC)
+}
+
+/*
+DisconnectMapEvent disconnects a callback from the 'map-event' signal for the Widget.
+
+The connectionID should be a value returned from a call to ConnectMapEvent.
+*/
+func (recv *Widget) DisconnectMapEvent(connectionID int) {
+	signalWidgetMapEventLock.Lock()
+	defer signalWidgetMapEventLock.Unlock()
+
+	_, exists := signalWidgetMapEventMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalWidgetMapEventMap, connectionID)
+}
+
+//export Widget_mapEventHandler
+func Widget_mapEventHandler(c_event *C.GdkEventAny) C.gboolean {
+	fmt.Println("cb")
+}
 
 var signalWidgetMnemonicActivateId int
 var signalWidgetMnemonicActivateMap = make(map[int]WidgetSignalMnemonicActivateCallback)
@@ -26409,15 +28744,107 @@ func (recv *Widget) DisconnectMnemonicActivate(connectionID int) {
 }
 
 //export Widget_mnemonicActivateHandler
-func Widget_mnemonicActivateHandler(groupCycling C.gboolean) C.gboolean {
+func Widget_mnemonicActivateHandler(c_group_cycling C.gboolean) C.gboolean {
 	fmt.Println("cb")
 }
 
-// Unsupported signal 'motion-notify-event' for Widget : unsupported parameter event : type Gdk.EventMotion :
+var signalWidgetMotionNotifyEventId int
+var signalWidgetMotionNotifyEventMap = make(map[int]WidgetSignalMotionNotifyEventCallback)
+var signalWidgetMotionNotifyEventLock sync.Mutex
+
+// WidgetSignalMotionNotifyEventCallback is a callback function for a 'motion-notify-event' signal emitted from a Widget.
+type WidgetSignalMotionNotifyEventCallback func(event *gdk.EventMotion) bool
+
+/*
+ConnectMotionNotifyEvent connects the callback to the 'motion-notify-event' signal for the Widget.
+
+The returned value represents the connection, and may be passed to DisconnectMotionNotifyEvent to remove it.
+*/
+func (recv *Widget) ConnectMotionNotifyEvent(callback WidgetSignalMotionNotifyEventCallback) int {
+	signalWidgetMotionNotifyEventLock.Lock()
+	defer signalWidgetMotionNotifyEventLock.Unlock()
+
+	signalWidgetMotionNotifyEventId++
+	signalWidgetMotionNotifyEventMap[signalWidgetMotionNotifyEventId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	retC := C.Widget_signal_connect_motion_notify_event(instance, C.gpointer(uintptr(signalWidgetMotionNotifyEventId)))
+	return int(retC)
+}
+
+/*
+DisconnectMotionNotifyEvent disconnects a callback from the 'motion-notify-event' signal for the Widget.
+
+The connectionID should be a value returned from a call to ConnectMotionNotifyEvent.
+*/
+func (recv *Widget) DisconnectMotionNotifyEvent(connectionID int) {
+	signalWidgetMotionNotifyEventLock.Lock()
+	defer signalWidgetMotionNotifyEventLock.Unlock()
+
+	_, exists := signalWidgetMotionNotifyEventMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalWidgetMotionNotifyEventMap, connectionID)
+}
+
+//export Widget_motionNotifyEventHandler
+func Widget_motionNotifyEventHandler(c_event *C.GdkEventMotion) C.gboolean {
+	fmt.Println("cb")
+}
 
 // Unsupported signal 'move-focus' for Widget : unsupported parameter direction : type DirectionType :
 
-// Unsupported signal 'parent-set' for Widget : unsupported parameter old_parent : type Widget :
+var signalWidgetParentSetId int
+var signalWidgetParentSetMap = make(map[int]WidgetSignalParentSetCallback)
+var signalWidgetParentSetLock sync.Mutex
+
+// WidgetSignalParentSetCallback is a callback function for a 'parent-set' signal emitted from a Widget.
+type WidgetSignalParentSetCallback func(oldParent *Widget)
+
+/*
+ConnectParentSet connects the callback to the 'parent-set' signal for the Widget.
+
+The returned value represents the connection, and may be passed to DisconnectParentSet to remove it.
+*/
+func (recv *Widget) ConnectParentSet(callback WidgetSignalParentSetCallback) int {
+	signalWidgetParentSetLock.Lock()
+	defer signalWidgetParentSetLock.Unlock()
+
+	signalWidgetParentSetId++
+	signalWidgetParentSetMap[signalWidgetParentSetId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	retC := C.Widget_signal_connect_parent_set(instance, C.gpointer(uintptr(signalWidgetParentSetId)))
+	return int(retC)
+}
+
+/*
+DisconnectParentSet disconnects a callback from the 'parent-set' signal for the Widget.
+
+The connectionID should be a value returned from a call to ConnectParentSet.
+*/
+func (recv *Widget) DisconnectParentSet(connectionID int) {
+	signalWidgetParentSetLock.Lock()
+	defer signalWidgetParentSetLock.Unlock()
+
+	_, exists := signalWidgetParentSetMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalWidgetParentSetMap, connectionID)
+}
+
+//export Widget_parentSetHandler
+func Widget_parentSetHandler(c_old_parent *C.GtkWidget) {
+	fmt.Println("cb")
+}
 
 var signalWidgetPopupMenuId int
 var signalWidgetPopupMenuMap = make(map[int]WidgetSignalPopupMenuCallback)
@@ -26467,11 +28894,149 @@ func Widget_popupMenuHandler() C.gboolean {
 	fmt.Println("cb")
 }
 
-// Unsupported signal 'property-notify-event' for Widget : unsupported parameter event : type Gdk.EventProperty :
+var signalWidgetPropertyNotifyEventId int
+var signalWidgetPropertyNotifyEventMap = make(map[int]WidgetSignalPropertyNotifyEventCallback)
+var signalWidgetPropertyNotifyEventLock sync.Mutex
 
-// Unsupported signal 'proximity-in-event' for Widget : unsupported parameter event : type Gdk.EventProximity :
+// WidgetSignalPropertyNotifyEventCallback is a callback function for a 'property-notify-event' signal emitted from a Widget.
+type WidgetSignalPropertyNotifyEventCallback func(event *gdk.EventProperty) bool
 
-// Unsupported signal 'proximity-out-event' for Widget : unsupported parameter event : type Gdk.EventProximity :
+/*
+ConnectPropertyNotifyEvent connects the callback to the 'property-notify-event' signal for the Widget.
+
+The returned value represents the connection, and may be passed to DisconnectPropertyNotifyEvent to remove it.
+*/
+func (recv *Widget) ConnectPropertyNotifyEvent(callback WidgetSignalPropertyNotifyEventCallback) int {
+	signalWidgetPropertyNotifyEventLock.Lock()
+	defer signalWidgetPropertyNotifyEventLock.Unlock()
+
+	signalWidgetPropertyNotifyEventId++
+	signalWidgetPropertyNotifyEventMap[signalWidgetPropertyNotifyEventId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	retC := C.Widget_signal_connect_property_notify_event(instance, C.gpointer(uintptr(signalWidgetPropertyNotifyEventId)))
+	return int(retC)
+}
+
+/*
+DisconnectPropertyNotifyEvent disconnects a callback from the 'property-notify-event' signal for the Widget.
+
+The connectionID should be a value returned from a call to ConnectPropertyNotifyEvent.
+*/
+func (recv *Widget) DisconnectPropertyNotifyEvent(connectionID int) {
+	signalWidgetPropertyNotifyEventLock.Lock()
+	defer signalWidgetPropertyNotifyEventLock.Unlock()
+
+	_, exists := signalWidgetPropertyNotifyEventMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalWidgetPropertyNotifyEventMap, connectionID)
+}
+
+//export Widget_propertyNotifyEventHandler
+func Widget_propertyNotifyEventHandler(c_event *C.GdkEventProperty) C.gboolean {
+	fmt.Println("cb")
+}
+
+var signalWidgetProximityInEventId int
+var signalWidgetProximityInEventMap = make(map[int]WidgetSignalProximityInEventCallback)
+var signalWidgetProximityInEventLock sync.Mutex
+
+// WidgetSignalProximityInEventCallback is a callback function for a 'proximity-in-event' signal emitted from a Widget.
+type WidgetSignalProximityInEventCallback func(event *gdk.EventProximity) bool
+
+/*
+ConnectProximityInEvent connects the callback to the 'proximity-in-event' signal for the Widget.
+
+The returned value represents the connection, and may be passed to DisconnectProximityInEvent to remove it.
+*/
+func (recv *Widget) ConnectProximityInEvent(callback WidgetSignalProximityInEventCallback) int {
+	signalWidgetProximityInEventLock.Lock()
+	defer signalWidgetProximityInEventLock.Unlock()
+
+	signalWidgetProximityInEventId++
+	signalWidgetProximityInEventMap[signalWidgetProximityInEventId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	retC := C.Widget_signal_connect_proximity_in_event(instance, C.gpointer(uintptr(signalWidgetProximityInEventId)))
+	return int(retC)
+}
+
+/*
+DisconnectProximityInEvent disconnects a callback from the 'proximity-in-event' signal for the Widget.
+
+The connectionID should be a value returned from a call to ConnectProximityInEvent.
+*/
+func (recv *Widget) DisconnectProximityInEvent(connectionID int) {
+	signalWidgetProximityInEventLock.Lock()
+	defer signalWidgetProximityInEventLock.Unlock()
+
+	_, exists := signalWidgetProximityInEventMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalWidgetProximityInEventMap, connectionID)
+}
+
+//export Widget_proximityInEventHandler
+func Widget_proximityInEventHandler(c_event *C.GdkEventProximity) C.gboolean {
+	fmt.Println("cb")
+}
+
+var signalWidgetProximityOutEventId int
+var signalWidgetProximityOutEventMap = make(map[int]WidgetSignalProximityOutEventCallback)
+var signalWidgetProximityOutEventLock sync.Mutex
+
+// WidgetSignalProximityOutEventCallback is a callback function for a 'proximity-out-event' signal emitted from a Widget.
+type WidgetSignalProximityOutEventCallback func(event *gdk.EventProximity) bool
+
+/*
+ConnectProximityOutEvent connects the callback to the 'proximity-out-event' signal for the Widget.
+
+The returned value represents the connection, and may be passed to DisconnectProximityOutEvent to remove it.
+*/
+func (recv *Widget) ConnectProximityOutEvent(callback WidgetSignalProximityOutEventCallback) int {
+	signalWidgetProximityOutEventLock.Lock()
+	defer signalWidgetProximityOutEventLock.Unlock()
+
+	signalWidgetProximityOutEventId++
+	signalWidgetProximityOutEventMap[signalWidgetProximityOutEventId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	retC := C.Widget_signal_connect_proximity_out_event(instance, C.gpointer(uintptr(signalWidgetProximityOutEventId)))
+	return int(retC)
+}
+
+/*
+DisconnectProximityOutEvent disconnects a callback from the 'proximity-out-event' signal for the Widget.
+
+The connectionID should be a value returned from a call to ConnectProximityOutEvent.
+*/
+func (recv *Widget) DisconnectProximityOutEvent(connectionID int) {
+	signalWidgetProximityOutEventLock.Lock()
+	defer signalWidgetProximityOutEventLock.Unlock()
+
+	_, exists := signalWidgetProximityOutEventMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalWidgetProximityOutEventMap, connectionID)
+}
+
+//export Widget_proximityOutEventHandler
+func Widget_proximityOutEventHandler(c_event *C.GdkEventProximity) C.gboolean {
+	fmt.Println("cb")
+}
 
 var signalWidgetRealizeId int
 var signalWidgetRealizeMap = make(map[int]WidgetSignalRealizeCallback)
@@ -26521,19 +29086,249 @@ func Widget_realizeHandler() {
 	fmt.Println("cb")
 }
 
-// Unsupported signal 'screen-changed' for Widget : unsupported parameter previous_screen : type Gdk.Screen :
+var signalWidgetScreenChangedId int
+var signalWidgetScreenChangedMap = make(map[int]WidgetSignalScreenChangedCallback)
+var signalWidgetScreenChangedLock sync.Mutex
 
-// Unsupported signal 'scroll-event' for Widget : unsupported parameter event : type Gdk.EventScroll :
+// WidgetSignalScreenChangedCallback is a callback function for a 'screen-changed' signal emitted from a Widget.
+type WidgetSignalScreenChangedCallback func(previousScreen *gdk.Screen)
 
-// Unsupported signal 'selection-clear-event' for Widget : unsupported parameter event : type Gdk.EventSelection :
+/*
+ConnectScreenChanged connects the callback to the 'screen-changed' signal for the Widget.
 
-// Unsupported signal 'selection-get' for Widget : unsupported parameter data : type SelectionData :
+The returned value represents the connection, and may be passed to DisconnectScreenChanged to remove it.
+*/
+func (recv *Widget) ConnectScreenChanged(callback WidgetSignalScreenChangedCallback) int {
+	signalWidgetScreenChangedLock.Lock()
+	defer signalWidgetScreenChangedLock.Unlock()
 
-// Unsupported signal 'selection-notify-event' for Widget : unsupported parameter event : type Gdk.EventSelection :
+	signalWidgetScreenChangedId++
+	signalWidgetScreenChangedMap[signalWidgetScreenChangedId] = callback
 
-// Unsupported signal 'selection-received' for Widget : unsupported parameter data : type SelectionData :
+	instance := C.gpointer(recv.Object().ToC())
+	retC := C.Widget_signal_connect_screen_changed(instance, C.gpointer(uintptr(signalWidgetScreenChangedId)))
+	return int(retC)
+}
 
-// Unsupported signal 'selection-request-event' for Widget : unsupported parameter event : type Gdk.EventSelection :
+/*
+DisconnectScreenChanged disconnects a callback from the 'screen-changed' signal for the Widget.
+
+The connectionID should be a value returned from a call to ConnectScreenChanged.
+*/
+func (recv *Widget) DisconnectScreenChanged(connectionID int) {
+	signalWidgetScreenChangedLock.Lock()
+	defer signalWidgetScreenChangedLock.Unlock()
+
+	_, exists := signalWidgetScreenChangedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalWidgetScreenChangedMap, connectionID)
+}
+
+//export Widget_screenChangedHandler
+func Widget_screenChangedHandler(c_previous_screen *C.GdkScreen) {
+	fmt.Println("cb")
+}
+
+var signalWidgetScrollEventId int
+var signalWidgetScrollEventMap = make(map[int]WidgetSignalScrollEventCallback)
+var signalWidgetScrollEventLock sync.Mutex
+
+// WidgetSignalScrollEventCallback is a callback function for a 'scroll-event' signal emitted from a Widget.
+type WidgetSignalScrollEventCallback func(event *gdk.EventScroll) bool
+
+/*
+ConnectScrollEvent connects the callback to the 'scroll-event' signal for the Widget.
+
+The returned value represents the connection, and may be passed to DisconnectScrollEvent to remove it.
+*/
+func (recv *Widget) ConnectScrollEvent(callback WidgetSignalScrollEventCallback) int {
+	signalWidgetScrollEventLock.Lock()
+	defer signalWidgetScrollEventLock.Unlock()
+
+	signalWidgetScrollEventId++
+	signalWidgetScrollEventMap[signalWidgetScrollEventId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	retC := C.Widget_signal_connect_scroll_event(instance, C.gpointer(uintptr(signalWidgetScrollEventId)))
+	return int(retC)
+}
+
+/*
+DisconnectScrollEvent disconnects a callback from the 'scroll-event' signal for the Widget.
+
+The connectionID should be a value returned from a call to ConnectScrollEvent.
+*/
+func (recv *Widget) DisconnectScrollEvent(connectionID int) {
+	signalWidgetScrollEventLock.Lock()
+	defer signalWidgetScrollEventLock.Unlock()
+
+	_, exists := signalWidgetScrollEventMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalWidgetScrollEventMap, connectionID)
+}
+
+//export Widget_scrollEventHandler
+func Widget_scrollEventHandler(c_event *C.GdkEventScroll) C.gboolean {
+	fmt.Println("cb")
+}
+
+var signalWidgetSelectionClearEventId int
+var signalWidgetSelectionClearEventMap = make(map[int]WidgetSignalSelectionClearEventCallback)
+var signalWidgetSelectionClearEventLock sync.Mutex
+
+// WidgetSignalSelectionClearEventCallback is a callback function for a 'selection-clear-event' signal emitted from a Widget.
+type WidgetSignalSelectionClearEventCallback func(event *gdk.EventSelection) bool
+
+/*
+ConnectSelectionClearEvent connects the callback to the 'selection-clear-event' signal for the Widget.
+
+The returned value represents the connection, and may be passed to DisconnectSelectionClearEvent to remove it.
+*/
+func (recv *Widget) ConnectSelectionClearEvent(callback WidgetSignalSelectionClearEventCallback) int {
+	signalWidgetSelectionClearEventLock.Lock()
+	defer signalWidgetSelectionClearEventLock.Unlock()
+
+	signalWidgetSelectionClearEventId++
+	signalWidgetSelectionClearEventMap[signalWidgetSelectionClearEventId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	retC := C.Widget_signal_connect_selection_clear_event(instance, C.gpointer(uintptr(signalWidgetSelectionClearEventId)))
+	return int(retC)
+}
+
+/*
+DisconnectSelectionClearEvent disconnects a callback from the 'selection-clear-event' signal for the Widget.
+
+The connectionID should be a value returned from a call to ConnectSelectionClearEvent.
+*/
+func (recv *Widget) DisconnectSelectionClearEvent(connectionID int) {
+	signalWidgetSelectionClearEventLock.Lock()
+	defer signalWidgetSelectionClearEventLock.Unlock()
+
+	_, exists := signalWidgetSelectionClearEventMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalWidgetSelectionClearEventMap, connectionID)
+}
+
+//export Widget_selectionClearEventHandler
+func Widget_selectionClearEventHandler(c_event *C.GdkEventSelection) C.gboolean {
+	fmt.Println("cb")
+}
+
+// Unsupported signal 'selection-get' for Widget : unsupported parameter info : type guint :
+
+var signalWidgetSelectionNotifyEventId int
+var signalWidgetSelectionNotifyEventMap = make(map[int]WidgetSignalSelectionNotifyEventCallback)
+var signalWidgetSelectionNotifyEventLock sync.Mutex
+
+// WidgetSignalSelectionNotifyEventCallback is a callback function for a 'selection-notify-event' signal emitted from a Widget.
+type WidgetSignalSelectionNotifyEventCallback func(event *gdk.EventSelection) bool
+
+/*
+ConnectSelectionNotifyEvent connects the callback to the 'selection-notify-event' signal for the Widget.
+
+The returned value represents the connection, and may be passed to DisconnectSelectionNotifyEvent to remove it.
+*/
+func (recv *Widget) ConnectSelectionNotifyEvent(callback WidgetSignalSelectionNotifyEventCallback) int {
+	signalWidgetSelectionNotifyEventLock.Lock()
+	defer signalWidgetSelectionNotifyEventLock.Unlock()
+
+	signalWidgetSelectionNotifyEventId++
+	signalWidgetSelectionNotifyEventMap[signalWidgetSelectionNotifyEventId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	retC := C.Widget_signal_connect_selection_notify_event(instance, C.gpointer(uintptr(signalWidgetSelectionNotifyEventId)))
+	return int(retC)
+}
+
+/*
+DisconnectSelectionNotifyEvent disconnects a callback from the 'selection-notify-event' signal for the Widget.
+
+The connectionID should be a value returned from a call to ConnectSelectionNotifyEvent.
+*/
+func (recv *Widget) DisconnectSelectionNotifyEvent(connectionID int) {
+	signalWidgetSelectionNotifyEventLock.Lock()
+	defer signalWidgetSelectionNotifyEventLock.Unlock()
+
+	_, exists := signalWidgetSelectionNotifyEventMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalWidgetSelectionNotifyEventMap, connectionID)
+}
+
+//export Widget_selectionNotifyEventHandler
+func Widget_selectionNotifyEventHandler(c_event *C.GdkEventSelection) C.gboolean {
+	fmt.Println("cb")
+}
+
+// Unsupported signal 'selection-received' for Widget : unsupported parameter time : type guint :
+
+var signalWidgetSelectionRequestEventId int
+var signalWidgetSelectionRequestEventMap = make(map[int]WidgetSignalSelectionRequestEventCallback)
+var signalWidgetSelectionRequestEventLock sync.Mutex
+
+// WidgetSignalSelectionRequestEventCallback is a callback function for a 'selection-request-event' signal emitted from a Widget.
+type WidgetSignalSelectionRequestEventCallback func(event *gdk.EventSelection) bool
+
+/*
+ConnectSelectionRequestEvent connects the callback to the 'selection-request-event' signal for the Widget.
+
+The returned value represents the connection, and may be passed to DisconnectSelectionRequestEvent to remove it.
+*/
+func (recv *Widget) ConnectSelectionRequestEvent(callback WidgetSignalSelectionRequestEventCallback) int {
+	signalWidgetSelectionRequestEventLock.Lock()
+	defer signalWidgetSelectionRequestEventLock.Unlock()
+
+	signalWidgetSelectionRequestEventId++
+	signalWidgetSelectionRequestEventMap[signalWidgetSelectionRequestEventId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	retC := C.Widget_signal_connect_selection_request_event(instance, C.gpointer(uintptr(signalWidgetSelectionRequestEventId)))
+	return int(retC)
+}
+
+/*
+DisconnectSelectionRequestEvent disconnects a callback from the 'selection-request-event' signal for the Widget.
+
+The connectionID should be a value returned from a call to ConnectSelectionRequestEvent.
+*/
+func (recv *Widget) DisconnectSelectionRequestEvent(connectionID int) {
+	signalWidgetSelectionRequestEventLock.Lock()
+	defer signalWidgetSelectionRequestEventLock.Unlock()
+
+	_, exists := signalWidgetSelectionRequestEventMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalWidgetSelectionRequestEventMap, connectionID)
+}
+
+//export Widget_selectionRequestEventHandler
+func Widget_selectionRequestEventHandler(c_event *C.GdkEventSelection) C.gboolean {
+	fmt.Println("cb")
+}
 
 var signalWidgetShowId int
 var signalWidgetShowMap = make(map[int]WidgetSignalShowCallback)
@@ -26585,11 +29380,57 @@ func Widget_showHandler() {
 
 // Unsupported signal 'show-help' for Widget : unsupported parameter help_type : type WidgetHelpType :
 
-// Unsupported signal 'size-allocate' for Widget : unsupported parameter allocation : type Allocation :
+// Unsupported signal 'size-allocate' for Widget : unsupported parameter allocation : type Allocation : Blacklisted record : GdkRectangle
 
 // Unsupported signal 'state-changed' for Widget : unsupported parameter state : type StateType :
 
-// Unsupported signal 'style-set' for Widget : unsupported parameter previous_style : type Style :
+var signalWidgetStyleSetId int
+var signalWidgetStyleSetMap = make(map[int]WidgetSignalStyleSetCallback)
+var signalWidgetStyleSetLock sync.Mutex
+
+// WidgetSignalStyleSetCallback is a callback function for a 'style-set' signal emitted from a Widget.
+type WidgetSignalStyleSetCallback func(previousStyle *Style)
+
+/*
+ConnectStyleSet connects the callback to the 'style-set' signal for the Widget.
+
+The returned value represents the connection, and may be passed to DisconnectStyleSet to remove it.
+*/
+func (recv *Widget) ConnectStyleSet(callback WidgetSignalStyleSetCallback) int {
+	signalWidgetStyleSetLock.Lock()
+	defer signalWidgetStyleSetLock.Unlock()
+
+	signalWidgetStyleSetId++
+	signalWidgetStyleSetMap[signalWidgetStyleSetId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	retC := C.Widget_signal_connect_style_set(instance, C.gpointer(uintptr(signalWidgetStyleSetId)))
+	return int(retC)
+}
+
+/*
+DisconnectStyleSet disconnects a callback from the 'style-set' signal for the Widget.
+
+The connectionID should be a value returned from a call to ConnectStyleSet.
+*/
+func (recv *Widget) DisconnectStyleSet(connectionID int) {
+	signalWidgetStyleSetLock.Lock()
+	defer signalWidgetStyleSetLock.Unlock()
+
+	_, exists := signalWidgetStyleSetMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalWidgetStyleSetMap, connectionID)
+}
+
+//export Widget_styleSetHandler
+func Widget_styleSetHandler(c_previous_style *C.GtkStyle) {
+	fmt.Println("cb")
+}
 
 // Unsupported signal 'touch-event' for Widget : unsupported parameter object : no type generator for Gdk.Event,
 
@@ -26641,7 +29482,53 @@ func Widget_unmapHandler() {
 	fmt.Println("cb")
 }
 
-// Unsupported signal 'unmap-event' for Widget : unsupported parameter event : type Gdk.EventAny :
+var signalWidgetUnmapEventId int
+var signalWidgetUnmapEventMap = make(map[int]WidgetSignalUnmapEventCallback)
+var signalWidgetUnmapEventLock sync.Mutex
+
+// WidgetSignalUnmapEventCallback is a callback function for a 'unmap-event' signal emitted from a Widget.
+type WidgetSignalUnmapEventCallback func(event *gdk.EventAny) bool
+
+/*
+ConnectUnmapEvent connects the callback to the 'unmap-event' signal for the Widget.
+
+The returned value represents the connection, and may be passed to DisconnectUnmapEvent to remove it.
+*/
+func (recv *Widget) ConnectUnmapEvent(callback WidgetSignalUnmapEventCallback) int {
+	signalWidgetUnmapEventLock.Lock()
+	defer signalWidgetUnmapEventLock.Unlock()
+
+	signalWidgetUnmapEventId++
+	signalWidgetUnmapEventMap[signalWidgetUnmapEventId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	retC := C.Widget_signal_connect_unmap_event(instance, C.gpointer(uintptr(signalWidgetUnmapEventId)))
+	return int(retC)
+}
+
+/*
+DisconnectUnmapEvent disconnects a callback from the 'unmap-event' signal for the Widget.
+
+The connectionID should be a value returned from a call to ConnectUnmapEvent.
+*/
+func (recv *Widget) DisconnectUnmapEvent(connectionID int) {
+	signalWidgetUnmapEventLock.Lock()
+	defer signalWidgetUnmapEventLock.Unlock()
+
+	_, exists := signalWidgetUnmapEventMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalWidgetUnmapEventMap, connectionID)
+}
+
+//export Widget_unmapEventHandler
+func Widget_unmapEventHandler(c_event *C.GdkEventAny) C.gboolean {
+	fmt.Println("cb")
+}
 
 var signalWidgetUnrealizeId int
 var signalWidgetUnrealizeMap = make(map[int]WidgetSignalUnrealizeCallback)
@@ -26691,9 +29578,101 @@ func Widget_unrealizeHandler() {
 	fmt.Println("cb")
 }
 
-// Unsupported signal 'visibility-notify-event' for Widget : unsupported parameter event : type Gdk.EventVisibility :
+var signalWidgetVisibilityNotifyEventId int
+var signalWidgetVisibilityNotifyEventMap = make(map[int]WidgetSignalVisibilityNotifyEventCallback)
+var signalWidgetVisibilityNotifyEventLock sync.Mutex
 
-// Unsupported signal 'window-state-event' for Widget : unsupported parameter event : type Gdk.EventWindowState :
+// WidgetSignalVisibilityNotifyEventCallback is a callback function for a 'visibility-notify-event' signal emitted from a Widget.
+type WidgetSignalVisibilityNotifyEventCallback func(event *gdk.EventVisibility) bool
+
+/*
+ConnectVisibilityNotifyEvent connects the callback to the 'visibility-notify-event' signal for the Widget.
+
+The returned value represents the connection, and may be passed to DisconnectVisibilityNotifyEvent to remove it.
+*/
+func (recv *Widget) ConnectVisibilityNotifyEvent(callback WidgetSignalVisibilityNotifyEventCallback) int {
+	signalWidgetVisibilityNotifyEventLock.Lock()
+	defer signalWidgetVisibilityNotifyEventLock.Unlock()
+
+	signalWidgetVisibilityNotifyEventId++
+	signalWidgetVisibilityNotifyEventMap[signalWidgetVisibilityNotifyEventId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	retC := C.Widget_signal_connect_visibility_notify_event(instance, C.gpointer(uintptr(signalWidgetVisibilityNotifyEventId)))
+	return int(retC)
+}
+
+/*
+DisconnectVisibilityNotifyEvent disconnects a callback from the 'visibility-notify-event' signal for the Widget.
+
+The connectionID should be a value returned from a call to ConnectVisibilityNotifyEvent.
+*/
+func (recv *Widget) DisconnectVisibilityNotifyEvent(connectionID int) {
+	signalWidgetVisibilityNotifyEventLock.Lock()
+	defer signalWidgetVisibilityNotifyEventLock.Unlock()
+
+	_, exists := signalWidgetVisibilityNotifyEventMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalWidgetVisibilityNotifyEventMap, connectionID)
+}
+
+//export Widget_visibilityNotifyEventHandler
+func Widget_visibilityNotifyEventHandler(c_event *C.GdkEventVisibility) C.gboolean {
+	fmt.Println("cb")
+}
+
+var signalWidgetWindowStateEventId int
+var signalWidgetWindowStateEventMap = make(map[int]WidgetSignalWindowStateEventCallback)
+var signalWidgetWindowStateEventLock sync.Mutex
+
+// WidgetSignalWindowStateEventCallback is a callback function for a 'window-state-event' signal emitted from a Widget.
+type WidgetSignalWindowStateEventCallback func(event *gdk.EventWindowState) bool
+
+/*
+ConnectWindowStateEvent connects the callback to the 'window-state-event' signal for the Widget.
+
+The returned value represents the connection, and may be passed to DisconnectWindowStateEvent to remove it.
+*/
+func (recv *Widget) ConnectWindowStateEvent(callback WidgetSignalWindowStateEventCallback) int {
+	signalWidgetWindowStateEventLock.Lock()
+	defer signalWidgetWindowStateEventLock.Unlock()
+
+	signalWidgetWindowStateEventId++
+	signalWidgetWindowStateEventMap[signalWidgetWindowStateEventId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	retC := C.Widget_signal_connect_window_state_event(instance, C.gpointer(uintptr(signalWidgetWindowStateEventId)))
+	return int(retC)
+}
+
+/*
+DisconnectWindowStateEvent disconnects a callback from the 'window-state-event' signal for the Widget.
+
+The connectionID should be a value returned from a call to ConnectWindowStateEvent.
+*/
+func (recv *Widget) DisconnectWindowStateEvent(connectionID int) {
+	signalWidgetWindowStateEventLock.Lock()
+	defer signalWidgetWindowStateEventLock.Unlock()
+
+	_, exists := signalWidgetWindowStateEventMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalWidgetWindowStateEventMap, connectionID)
+}
+
+//export Widget_windowStateEventHandler
+func Widget_windowStateEventHandler(c_event *C.GdkEventWindowState) C.gboolean {
+	fmt.Println("cb")
+}
 
 // Unsupported : gtk_widget_new : unsupported parameter type : no type generator for GType, GType
 
@@ -27991,7 +30970,7 @@ func (recv *Window) DisconnectEnableDebugging(connectionID int) {
 }
 
 //export Window_enableDebuggingHandler
-func Window_enableDebuggingHandler(toggle C.gboolean) C.gboolean {
+func Window_enableDebuggingHandler(c_toggle C.gboolean) C.gboolean {
 	fmt.Println("cb")
 }
 
@@ -28043,7 +31022,53 @@ func Window_keysChangedHandler() {
 	fmt.Println("cb")
 }
 
-// Unsupported signal 'set-focus' for Window : unsupported parameter object : type Widget :
+var signalWindowSetFocusId int
+var signalWindowSetFocusMap = make(map[int]WindowSignalSetFocusCallback)
+var signalWindowSetFocusLock sync.Mutex
+
+// WindowSignalSetFocusCallback is a callback function for a 'set-focus' signal emitted from a Window.
+type WindowSignalSetFocusCallback func(object *Widget)
+
+/*
+ConnectSetFocus connects the callback to the 'set-focus' signal for the Window.
+
+The returned value represents the connection, and may be passed to DisconnectSetFocus to remove it.
+*/
+func (recv *Window) ConnectSetFocus(callback WindowSignalSetFocusCallback) int {
+	signalWindowSetFocusLock.Lock()
+	defer signalWindowSetFocusLock.Unlock()
+
+	signalWindowSetFocusId++
+	signalWindowSetFocusMap[signalWindowSetFocusId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	retC := C.Window_signal_connect_set_focus(instance, C.gpointer(uintptr(signalWindowSetFocusId)))
+	return int(retC)
+}
+
+/*
+DisconnectSetFocus disconnects a callback from the 'set-focus' signal for the Window.
+
+The connectionID should be a value returned from a call to ConnectSetFocus.
+*/
+func (recv *Window) DisconnectSetFocus(connectionID int) {
+	signalWindowSetFocusLock.Lock()
+	defer signalWindowSetFocusLock.Unlock()
+
+	_, exists := signalWindowSetFocusMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalWindowSetFocusMap, connectionID)
+}
+
+//export Window_setFocusHandler
+func Window_setFocusHandler(c_object *C.GtkWidget) {
+	fmt.Println("cb")
+}
 
 // WindowNew is a wrapper around the C function gtk_window_new.
 func WindowNew(type_ WindowType) *Window {

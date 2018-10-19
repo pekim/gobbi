@@ -4,8 +4,10 @@
 package gio
 
 import (
+	"fmt"
 	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
+	"sync"
 	"unsafe"
 )
 
@@ -22,6 +24,15 @@ import (
 // #include <gio/gunixoutputstream.h>
 // #include <gio/gunixsocketaddress.h>
 // #include <stdlib.h>
+/*
+
+	void ThreadedSocketService_runHandler();
+
+	static gulong ThreadedSocketService_signal_connect_run(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "run", ThreadedSocketService_runHandler, data);
+	}
+
+*/
 import "C"
 
 // Unsupported : g_cancellable_connect : unsupported parameter callback : no type generator for GObject.Callback, GCallback
@@ -1547,7 +1558,53 @@ func CastToThreadedSocketService(object *gobject.Object) *ThreadedSocketService 
 	return ThreadedSocketServiceNewFromC(object.ToC())
 }
 
-// Unsupported signal 'run' for ThreadedSocketService : unsupported parameter connection : type SocketConnection :
+var signalThreadedSocketServiceRunId int
+var signalThreadedSocketServiceRunMap = make(map[int]ThreadedSocketServiceSignalRunCallback)
+var signalThreadedSocketServiceRunLock sync.Mutex
+
+// ThreadedSocketServiceSignalRunCallback is a callback function for a 'run' signal emitted from a ThreadedSocketService.
+type ThreadedSocketServiceSignalRunCallback func(connection *SocketConnection, sourceObject *gobject.Object) bool
+
+/*
+ConnectRun connects the callback to the 'run' signal for the ThreadedSocketService.
+
+The returned value represents the connection, and may be passed to DisconnectRun to remove it.
+*/
+func (recv *ThreadedSocketService) ConnectRun(callback ThreadedSocketServiceSignalRunCallback) int {
+	signalThreadedSocketServiceRunLock.Lock()
+	defer signalThreadedSocketServiceRunLock.Unlock()
+
+	signalThreadedSocketServiceRunId++
+	signalThreadedSocketServiceRunMap[signalThreadedSocketServiceRunId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	retC := C.ThreadedSocketService_signal_connect_run(instance, C.gpointer(uintptr(signalThreadedSocketServiceRunId)))
+	return int(retC)
+}
+
+/*
+DisconnectRun disconnects a callback from the 'run' signal for the ThreadedSocketService.
+
+The connectionID should be a value returned from a call to ConnectRun.
+*/
+func (recv *ThreadedSocketService) DisconnectRun(connectionID int) {
+	signalThreadedSocketServiceRunLock.Lock()
+	defer signalThreadedSocketServiceRunLock.Unlock()
+
+	_, exists := signalThreadedSocketServiceRunMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalThreadedSocketServiceRunMap, connectionID)
+}
+
+//export ThreadedSocketService_runHandler
+func ThreadedSocketService_runHandler(c_connection *C.GSocketConnection, c_source_object *C.GObject) C.gboolean {
+	fmt.Println("cb")
+}
 
 // ThreadedSocketServiceNew is a wrapper around the C function g_threaded_socket_service_new.
 func ThreadedSocketServiceNew(maxThreads int32) *ThreadedSocketService {

@@ -447,7 +447,7 @@ func (recv *Object) DisconnectFocusEvent(connectionID int) {
 }
 
 //export Object_focusEventHandler
-func Object_focusEventHandler(arg1 C.gboolean) {
+func Object_focusEventHandler(c_arg1 C.gboolean) {
 	fmt.Println("cb")
 }
 

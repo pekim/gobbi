@@ -5,6 +5,7 @@ package gtk
 
 import (
 	"fmt"
+	gio "github.com/pekim/gobbi/lib/gio"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	"sync"
 	"unsafe"
@@ -15,6 +16,24 @@ import (
 // #include <gtk/gtk.h>
 // #include <gtk/gtkx.h>
 // #include <stdlib.h>
+/*
+
+	void PlacesSidebar_mountHandler();
+
+	static gulong PlacesSidebar_signal_connect_mount(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "mount", PlacesSidebar_mountHandler, data);
+	}
+
+*/
+/*
+
+	void PlacesSidebar_unmountHandler();
+
+	static gulong PlacesSidebar_signal_connect_unmount(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "unmount", PlacesSidebar_unmountHandler, data);
+	}
+
+*/
 /*
 
 	void ShortcutsWindow_closeHandler();
@@ -346,11 +365,103 @@ func CastToPadController(object *gobject.Object) *PadController {
 
 // Unsupported : gtk_page_setup_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
 
-// Unsupported signal 'mount' for PlacesSidebar : unsupported parameter mount_operation : type Gio.MountOperation :
+var signalPlacesSidebarMountId int
+var signalPlacesSidebarMountMap = make(map[int]PlacesSidebarSignalMountCallback)
+var signalPlacesSidebarMountLock sync.Mutex
+
+// PlacesSidebarSignalMountCallback is a callback function for a 'mount' signal emitted from a PlacesSidebar.
+type PlacesSidebarSignalMountCallback func(mountOperation *gio.MountOperation)
+
+/*
+ConnectMount connects the callback to the 'mount' signal for the PlacesSidebar.
+
+The returned value represents the connection, and may be passed to DisconnectMount to remove it.
+*/
+func (recv *PlacesSidebar) ConnectMount(callback PlacesSidebarSignalMountCallback) int {
+	signalPlacesSidebarMountLock.Lock()
+	defer signalPlacesSidebarMountLock.Unlock()
+
+	signalPlacesSidebarMountId++
+	signalPlacesSidebarMountMap[signalPlacesSidebarMountId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	retC := C.PlacesSidebar_signal_connect_mount(instance, C.gpointer(uintptr(signalPlacesSidebarMountId)))
+	return int(retC)
+}
+
+/*
+DisconnectMount disconnects a callback from the 'mount' signal for the PlacesSidebar.
+
+The connectionID should be a value returned from a call to ConnectMount.
+*/
+func (recv *PlacesSidebar) DisconnectMount(connectionID int) {
+	signalPlacesSidebarMountLock.Lock()
+	defer signalPlacesSidebarMountLock.Unlock()
+
+	_, exists := signalPlacesSidebarMountMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalPlacesSidebarMountMap, connectionID)
+}
+
+//export PlacesSidebar_mountHandler
+func PlacesSidebar_mountHandler(c_mount_operation *C.GMountOperation) {
+	fmt.Println("cb")
+}
 
 // Unsupported signal 'show-other-locations-with-flags' for PlacesSidebar : unsupported parameter open_flags : type PlacesOpenFlags :
 
-// Unsupported signal 'unmount' for PlacesSidebar : unsupported parameter mount_operation : type Gio.MountOperation :
+var signalPlacesSidebarUnmountId int
+var signalPlacesSidebarUnmountMap = make(map[int]PlacesSidebarSignalUnmountCallback)
+var signalPlacesSidebarUnmountLock sync.Mutex
+
+// PlacesSidebarSignalUnmountCallback is a callback function for a 'unmount' signal emitted from a PlacesSidebar.
+type PlacesSidebarSignalUnmountCallback func(mountOperation *gio.MountOperation)
+
+/*
+ConnectUnmount connects the callback to the 'unmount' signal for the PlacesSidebar.
+
+The returned value represents the connection, and may be passed to DisconnectUnmount to remove it.
+*/
+func (recv *PlacesSidebar) ConnectUnmount(callback PlacesSidebarSignalUnmountCallback) int {
+	signalPlacesSidebarUnmountLock.Lock()
+	defer signalPlacesSidebarUnmountLock.Unlock()
+
+	signalPlacesSidebarUnmountId++
+	signalPlacesSidebarUnmountMap[signalPlacesSidebarUnmountId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	retC := C.PlacesSidebar_signal_connect_unmount(instance, C.gpointer(uintptr(signalPlacesSidebarUnmountId)))
+	return int(retC)
+}
+
+/*
+DisconnectUnmount disconnects a callback from the 'unmount' signal for the PlacesSidebar.
+
+The connectionID should be a value returned from a call to ConnectUnmount.
+*/
+func (recv *PlacesSidebar) DisconnectUnmount(connectionID int) {
+	signalPlacesSidebarUnmountLock.Lock()
+	defer signalPlacesSidebarUnmountLock.Unlock()
+
+	_, exists := signalPlacesSidebarUnmountMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalPlacesSidebarUnmountMap, connectionID)
+}
+
+//export PlacesSidebar_unmountHandler
+func PlacesSidebar_unmountHandler(c_mount_operation *C.GMountOperation) {
+	fmt.Println("cb")
+}
 
 // GetConstrainTo is a wrapper around the C function gtk_popover_get_constrain_to.
 func (recv *Popover) GetConstrainTo() PopoverConstraint {

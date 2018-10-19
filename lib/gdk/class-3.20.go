@@ -15,6 +15,24 @@ import (
 // #include <stdlib.h>
 /*
 
+	void Display_seatAddedHandler();
+
+	static gulong Display_signal_connect_seat_added(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "seat-added", Display_seatAddedHandler, data);
+	}
+
+*/
+/*
+
+	void Display_seatRemovedHandler();
+
+	static gulong Display_signal_connect_seat_removed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "seat-removed", Display_seatRemovedHandler, data);
+	}
+
+*/
+/*
+
 	void DragContext_dndFinishedHandler();
 
 	static gulong DragContext_signal_connect_dnd_finished(gpointer instance, gpointer data) {
@@ -32,9 +50,101 @@ func (recv *Device) GetSeat() *Seat {
 	return retGo
 }
 
-// Unsupported signal 'seat-added' for Display : unsupported parameter seat : type Seat :
+var signalDisplaySeatAddedId int
+var signalDisplaySeatAddedMap = make(map[int]DisplaySignalSeatAddedCallback)
+var signalDisplaySeatAddedLock sync.Mutex
 
-// Unsupported signal 'seat-removed' for Display : unsupported parameter seat : type Seat :
+// DisplaySignalSeatAddedCallback is a callback function for a 'seat-added' signal emitted from a Display.
+type DisplaySignalSeatAddedCallback func(seat *Seat)
+
+/*
+ConnectSeatAdded connects the callback to the 'seat-added' signal for the Display.
+
+The returned value represents the connection, and may be passed to DisconnectSeatAdded to remove it.
+*/
+func (recv *Display) ConnectSeatAdded(callback DisplaySignalSeatAddedCallback) int {
+	signalDisplaySeatAddedLock.Lock()
+	defer signalDisplaySeatAddedLock.Unlock()
+
+	signalDisplaySeatAddedId++
+	signalDisplaySeatAddedMap[signalDisplaySeatAddedId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	retC := C.Display_signal_connect_seat_added(instance, C.gpointer(uintptr(signalDisplaySeatAddedId)))
+	return int(retC)
+}
+
+/*
+DisconnectSeatAdded disconnects a callback from the 'seat-added' signal for the Display.
+
+The connectionID should be a value returned from a call to ConnectSeatAdded.
+*/
+func (recv *Display) DisconnectSeatAdded(connectionID int) {
+	signalDisplaySeatAddedLock.Lock()
+	defer signalDisplaySeatAddedLock.Unlock()
+
+	_, exists := signalDisplaySeatAddedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalDisplaySeatAddedMap, connectionID)
+}
+
+//export Display_seatAddedHandler
+func Display_seatAddedHandler(c_seat *C.GdkSeat) {
+	fmt.Println("cb")
+}
+
+var signalDisplaySeatRemovedId int
+var signalDisplaySeatRemovedMap = make(map[int]DisplaySignalSeatRemovedCallback)
+var signalDisplaySeatRemovedLock sync.Mutex
+
+// DisplaySignalSeatRemovedCallback is a callback function for a 'seat-removed' signal emitted from a Display.
+type DisplaySignalSeatRemovedCallback func(seat *Seat)
+
+/*
+ConnectSeatRemoved connects the callback to the 'seat-removed' signal for the Display.
+
+The returned value represents the connection, and may be passed to DisconnectSeatRemoved to remove it.
+*/
+func (recv *Display) ConnectSeatRemoved(callback DisplaySignalSeatRemovedCallback) int {
+	signalDisplaySeatRemovedLock.Lock()
+	defer signalDisplaySeatRemovedLock.Unlock()
+
+	signalDisplaySeatRemovedId++
+	signalDisplaySeatRemovedMap[signalDisplaySeatRemovedId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	retC := C.Display_signal_connect_seat_removed(instance, C.gpointer(uintptr(signalDisplaySeatRemovedId)))
+	return int(retC)
+}
+
+/*
+DisconnectSeatRemoved disconnects a callback from the 'seat-removed' signal for the Display.
+
+The connectionID should be a value returned from a call to ConnectSeatRemoved.
+*/
+func (recv *Display) DisconnectSeatRemoved(connectionID int) {
+	signalDisplaySeatRemovedLock.Lock()
+	defer signalDisplaySeatRemovedLock.Unlock()
+
+	_, exists := signalDisplaySeatRemovedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalDisplaySeatRemovedMap, connectionID)
+}
+
+//export Display_seatRemovedHandler
+func Display_seatRemovedHandler(c_seat *C.GdkSeat) {
+	fmt.Println("cb")
+}
 
 // GetDefaultSeat is a wrapper around the C function gdk_display_get_default_seat.
 func (recv *Display) GetDefaultSeat() *Seat {

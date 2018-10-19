@@ -73,7 +73,7 @@ func (p *Parameter) generateFunctionDeclaration(g *jen.Group) {
 }
 
 func (p *Parameter) generateFunctionDeclarationCtype(g *jen.Group) {
-	p.Type.generator.generateDeclarationC(g, p.goVarName)
+	p.Type.generator.generateDeclarationC(g, p.cVarName)
 }
 
 func (p *Parameter) generateCVar(g *jen.Group) {

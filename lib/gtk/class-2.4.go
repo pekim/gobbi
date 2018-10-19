@@ -29,6 +29,42 @@ import (
 */
 /*
 
+	void ActionGroup_connectProxyHandler();
+
+	static gulong ActionGroup_signal_connect_connect_proxy(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "connect-proxy", ActionGroup_connectProxyHandler, data);
+	}
+
+*/
+/*
+
+	void ActionGroup_disconnectProxyHandler();
+
+	static gulong ActionGroup_signal_connect_disconnect_proxy(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "disconnect-proxy", ActionGroup_disconnectProxyHandler, data);
+	}
+
+*/
+/*
+
+	void ActionGroup_postActivateHandler();
+
+	static gulong ActionGroup_signal_connect_post_activate(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "post-activate", ActionGroup_postActivateHandler, data);
+	}
+
+*/
+/*
+
+	void ActionGroup_preActivateHandler();
+
+	static gulong ActionGroup_signal_connect_pre_activate(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "pre-activate", ActionGroup_preActivateHandler, data);
+	}
+
+*/
+/*
+
 	void CellRenderer_editingCanceledHandler();
 
 	static gulong CellRenderer_signal_connect_editing_canceled(gpointer instance, gpointer data) {
@@ -65,6 +101,15 @@ import (
 */
 /*
 
+	void RadioAction_changedHandler();
+
+	static gulong RadioAction_signal_connect_changed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "changed", RadioAction_changedHandler, data);
+	}
+
+*/
+/*
+
 	void RadioButton_groupChangedHandler();
 
 	static gulong RadioButton_signal_connect_group_changed(gpointer instance, gpointer data) {
@@ -96,6 +141,51 @@ import (
 
 	static gulong UIManager_signal_connect_actions_changed(gpointer instance, gpointer data) {
 		return g_signal_connect(instance, "actions-changed", UIManager_actionsChangedHandler, data);
+	}
+
+*/
+/*
+
+	void UIManager_addWidgetHandler();
+
+	static gulong UIManager_signal_connect_add_widget(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "add-widget", UIManager_addWidgetHandler, data);
+	}
+
+*/
+/*
+
+	void UIManager_connectProxyHandler();
+
+	static gulong UIManager_signal_connect_connect_proxy(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "connect-proxy", UIManager_connectProxyHandler, data);
+	}
+
+*/
+/*
+
+	void UIManager_disconnectProxyHandler();
+
+	static gulong UIManager_signal_connect_disconnect_proxy(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "disconnect-proxy", UIManager_disconnectProxyHandler, data);
+	}
+
+*/
+/*
+
+	void UIManager_postActivateHandler();
+
+	static gulong UIManager_signal_connect_post_activate(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "post-activate", UIManager_postActivateHandler, data);
+	}
+
+*/
+/*
+
+	void UIManager_preActivateHandler();
+
+	static gulong UIManager_signal_connect_pre_activate(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "pre-activate", UIManager_preActivateHandler, data);
 	}
 
 */
@@ -277,13 +367,197 @@ func (recv *Action) SetAccelPath(accelPath string) {
 	return
 }
 
-// Unsupported signal 'connect-proxy' for ActionGroup : unsupported parameter action : type Action :
+var signalActionGroupConnectProxyId int
+var signalActionGroupConnectProxyMap = make(map[int]ActionGroupSignalConnectProxyCallback)
+var signalActionGroupConnectProxyLock sync.Mutex
 
-// Unsupported signal 'disconnect-proxy' for ActionGroup : unsupported parameter action : type Action :
+// ActionGroupSignalConnectProxyCallback is a callback function for a 'connect-proxy' signal emitted from a ActionGroup.
+type ActionGroupSignalConnectProxyCallback func(action *Action, proxy *Widget)
 
-// Unsupported signal 'post-activate' for ActionGroup : unsupported parameter action : type Action :
+/*
+ConnectConnectProxy connects the callback to the 'connect-proxy' signal for the ActionGroup.
 
-// Unsupported signal 'pre-activate' for ActionGroup : unsupported parameter action : type Action :
+The returned value represents the connection, and may be passed to DisconnectConnectProxy to remove it.
+*/
+func (recv *ActionGroup) ConnectConnectProxy(callback ActionGroupSignalConnectProxyCallback) int {
+	signalActionGroupConnectProxyLock.Lock()
+	defer signalActionGroupConnectProxyLock.Unlock()
+
+	signalActionGroupConnectProxyId++
+	signalActionGroupConnectProxyMap[signalActionGroupConnectProxyId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	retC := C.ActionGroup_signal_connect_connect_proxy(instance, C.gpointer(uintptr(signalActionGroupConnectProxyId)))
+	return int(retC)
+}
+
+/*
+DisconnectConnectProxy disconnects a callback from the 'connect-proxy' signal for the ActionGroup.
+
+The connectionID should be a value returned from a call to ConnectConnectProxy.
+*/
+func (recv *ActionGroup) DisconnectConnectProxy(connectionID int) {
+	signalActionGroupConnectProxyLock.Lock()
+	defer signalActionGroupConnectProxyLock.Unlock()
+
+	_, exists := signalActionGroupConnectProxyMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalActionGroupConnectProxyMap, connectionID)
+}
+
+//export ActionGroup_connectProxyHandler
+func ActionGroup_connectProxyHandler(c_action *C.GtkAction, c_proxy *C.GtkWidget) {
+	fmt.Println("cb")
+}
+
+var signalActionGroupDisconnectProxyId int
+var signalActionGroupDisconnectProxyMap = make(map[int]ActionGroupSignalDisconnectProxyCallback)
+var signalActionGroupDisconnectProxyLock sync.Mutex
+
+// ActionGroupSignalDisconnectProxyCallback is a callback function for a 'disconnect-proxy' signal emitted from a ActionGroup.
+type ActionGroupSignalDisconnectProxyCallback func(action *Action, proxy *Widget)
+
+/*
+ConnectDisconnectProxy connects the callback to the 'disconnect-proxy' signal for the ActionGroup.
+
+The returned value represents the connection, and may be passed to DisconnectDisconnectProxy to remove it.
+*/
+func (recv *ActionGroup) ConnectDisconnectProxy(callback ActionGroupSignalDisconnectProxyCallback) int {
+	signalActionGroupDisconnectProxyLock.Lock()
+	defer signalActionGroupDisconnectProxyLock.Unlock()
+
+	signalActionGroupDisconnectProxyId++
+	signalActionGroupDisconnectProxyMap[signalActionGroupDisconnectProxyId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	retC := C.ActionGroup_signal_connect_disconnect_proxy(instance, C.gpointer(uintptr(signalActionGroupDisconnectProxyId)))
+	return int(retC)
+}
+
+/*
+DisconnectDisconnectProxy disconnects a callback from the 'disconnect-proxy' signal for the ActionGroup.
+
+The connectionID should be a value returned from a call to ConnectDisconnectProxy.
+*/
+func (recv *ActionGroup) DisconnectDisconnectProxy(connectionID int) {
+	signalActionGroupDisconnectProxyLock.Lock()
+	defer signalActionGroupDisconnectProxyLock.Unlock()
+
+	_, exists := signalActionGroupDisconnectProxyMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalActionGroupDisconnectProxyMap, connectionID)
+}
+
+//export ActionGroup_disconnectProxyHandler
+func ActionGroup_disconnectProxyHandler(c_action *C.GtkAction, c_proxy *C.GtkWidget) {
+	fmt.Println("cb")
+}
+
+var signalActionGroupPostActivateId int
+var signalActionGroupPostActivateMap = make(map[int]ActionGroupSignalPostActivateCallback)
+var signalActionGroupPostActivateLock sync.Mutex
+
+// ActionGroupSignalPostActivateCallback is a callback function for a 'post-activate' signal emitted from a ActionGroup.
+type ActionGroupSignalPostActivateCallback func(action *Action)
+
+/*
+ConnectPostActivate connects the callback to the 'post-activate' signal for the ActionGroup.
+
+The returned value represents the connection, and may be passed to DisconnectPostActivate to remove it.
+*/
+func (recv *ActionGroup) ConnectPostActivate(callback ActionGroupSignalPostActivateCallback) int {
+	signalActionGroupPostActivateLock.Lock()
+	defer signalActionGroupPostActivateLock.Unlock()
+
+	signalActionGroupPostActivateId++
+	signalActionGroupPostActivateMap[signalActionGroupPostActivateId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	retC := C.ActionGroup_signal_connect_post_activate(instance, C.gpointer(uintptr(signalActionGroupPostActivateId)))
+	return int(retC)
+}
+
+/*
+DisconnectPostActivate disconnects a callback from the 'post-activate' signal for the ActionGroup.
+
+The connectionID should be a value returned from a call to ConnectPostActivate.
+*/
+func (recv *ActionGroup) DisconnectPostActivate(connectionID int) {
+	signalActionGroupPostActivateLock.Lock()
+	defer signalActionGroupPostActivateLock.Unlock()
+
+	_, exists := signalActionGroupPostActivateMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalActionGroupPostActivateMap, connectionID)
+}
+
+//export ActionGroup_postActivateHandler
+func ActionGroup_postActivateHandler(c_action *C.GtkAction) {
+	fmt.Println("cb")
+}
+
+var signalActionGroupPreActivateId int
+var signalActionGroupPreActivateMap = make(map[int]ActionGroupSignalPreActivateCallback)
+var signalActionGroupPreActivateLock sync.Mutex
+
+// ActionGroupSignalPreActivateCallback is a callback function for a 'pre-activate' signal emitted from a ActionGroup.
+type ActionGroupSignalPreActivateCallback func(action *Action)
+
+/*
+ConnectPreActivate connects the callback to the 'pre-activate' signal for the ActionGroup.
+
+The returned value represents the connection, and may be passed to DisconnectPreActivate to remove it.
+*/
+func (recv *ActionGroup) ConnectPreActivate(callback ActionGroupSignalPreActivateCallback) int {
+	signalActionGroupPreActivateLock.Lock()
+	defer signalActionGroupPreActivateLock.Unlock()
+
+	signalActionGroupPreActivateId++
+	signalActionGroupPreActivateMap[signalActionGroupPreActivateId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	retC := C.ActionGroup_signal_connect_pre_activate(instance, C.gpointer(uintptr(signalActionGroupPreActivateId)))
+	return int(retC)
+}
+
+/*
+DisconnectPreActivate disconnects a callback from the 'pre-activate' signal for the ActionGroup.
+
+The connectionID should be a value returned from a call to ConnectPreActivate.
+*/
+func (recv *ActionGroup) DisconnectPreActivate(connectionID int) {
+	signalActionGroupPreActivateLock.Lock()
+	defer signalActionGroupPreActivateLock.Unlock()
+
+	_, exists := signalActionGroupPreActivateMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalActionGroupPreActivateMap, connectionID)
+}
+
+//export ActionGroup_preActivateHandler
+func ActionGroup_preActivateHandler(c_action *C.GtkAction) {
+	fmt.Println("cb")
+}
 
 // ActionGroupNew is a wrapper around the C function gtk_action_group_new.
 func ActionGroupNew(name string) *ActionGroup {
@@ -1714,7 +1988,53 @@ func (recv *Paned) GetChild2() *Widget {
 
 // Unsupported : gtk_print_settings_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
 
-// Unsupported signal 'changed' for RadioAction : unsupported parameter current : type RadioAction :
+var signalRadioActionChangedId int
+var signalRadioActionChangedMap = make(map[int]RadioActionSignalChangedCallback)
+var signalRadioActionChangedLock sync.Mutex
+
+// RadioActionSignalChangedCallback is a callback function for a 'changed' signal emitted from a RadioAction.
+type RadioActionSignalChangedCallback func(current *RadioAction)
+
+/*
+ConnectChanged connects the callback to the 'changed' signal for the RadioAction.
+
+The returned value represents the connection, and may be passed to DisconnectChanged to remove it.
+*/
+func (recv *RadioAction) ConnectChanged(callback RadioActionSignalChangedCallback) int {
+	signalRadioActionChangedLock.Lock()
+	defer signalRadioActionChangedLock.Unlock()
+
+	signalRadioActionChangedId++
+	signalRadioActionChangedMap[signalRadioActionChangedId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	retC := C.RadioAction_signal_connect_changed(instance, C.gpointer(uintptr(signalRadioActionChangedId)))
+	return int(retC)
+}
+
+/*
+DisconnectChanged disconnects a callback from the 'changed' signal for the RadioAction.
+
+The connectionID should be a value returned from a call to ConnectChanged.
+*/
+func (recv *RadioAction) DisconnectChanged(connectionID int) {
+	signalRadioActionChangedLock.Lock()
+	defer signalRadioActionChangedLock.Unlock()
+
+	_, exists := signalRadioActionChangedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalRadioActionChangedMap, connectionID)
+}
+
+//export RadioAction_changedHandler
+func RadioAction_changedHandler(c_current *C.GtkRadioAction) {
+	fmt.Println("cb")
+}
 
 // RadioActionNew is a wrapper around the C function gtk_radio_action_new.
 func RadioActionNew(name string, label string, tooltip string, stockId string, value int32) *RadioAction {
@@ -2733,15 +3053,245 @@ func UIManager_actionsChangedHandler() {
 	fmt.Println("cb")
 }
 
-// Unsupported signal 'add-widget' for UIManager : unsupported parameter widget : type Widget :
+var signalUIManagerAddWidgetId int
+var signalUIManagerAddWidgetMap = make(map[int]UIManagerSignalAddWidgetCallback)
+var signalUIManagerAddWidgetLock sync.Mutex
 
-// Unsupported signal 'connect-proxy' for UIManager : unsupported parameter action : type Action :
+// UIManagerSignalAddWidgetCallback is a callback function for a 'add-widget' signal emitted from a UIManager.
+type UIManagerSignalAddWidgetCallback func(widget *Widget)
 
-// Unsupported signal 'disconnect-proxy' for UIManager : unsupported parameter action : type Action :
+/*
+ConnectAddWidget connects the callback to the 'add-widget' signal for the UIManager.
 
-// Unsupported signal 'post-activate' for UIManager : unsupported parameter action : type Action :
+The returned value represents the connection, and may be passed to DisconnectAddWidget to remove it.
+*/
+func (recv *UIManager) ConnectAddWidget(callback UIManagerSignalAddWidgetCallback) int {
+	signalUIManagerAddWidgetLock.Lock()
+	defer signalUIManagerAddWidgetLock.Unlock()
 
-// Unsupported signal 'pre-activate' for UIManager : unsupported parameter action : type Action :
+	signalUIManagerAddWidgetId++
+	signalUIManagerAddWidgetMap[signalUIManagerAddWidgetId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	retC := C.UIManager_signal_connect_add_widget(instance, C.gpointer(uintptr(signalUIManagerAddWidgetId)))
+	return int(retC)
+}
+
+/*
+DisconnectAddWidget disconnects a callback from the 'add-widget' signal for the UIManager.
+
+The connectionID should be a value returned from a call to ConnectAddWidget.
+*/
+func (recv *UIManager) DisconnectAddWidget(connectionID int) {
+	signalUIManagerAddWidgetLock.Lock()
+	defer signalUIManagerAddWidgetLock.Unlock()
+
+	_, exists := signalUIManagerAddWidgetMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalUIManagerAddWidgetMap, connectionID)
+}
+
+//export UIManager_addWidgetHandler
+func UIManager_addWidgetHandler(c_widget *C.GtkWidget) {
+	fmt.Println("cb")
+}
+
+var signalUIManagerConnectProxyId int
+var signalUIManagerConnectProxyMap = make(map[int]UIManagerSignalConnectProxyCallback)
+var signalUIManagerConnectProxyLock sync.Mutex
+
+// UIManagerSignalConnectProxyCallback is a callback function for a 'connect-proxy' signal emitted from a UIManager.
+type UIManagerSignalConnectProxyCallback func(action *Action, proxy *Widget)
+
+/*
+ConnectConnectProxy connects the callback to the 'connect-proxy' signal for the UIManager.
+
+The returned value represents the connection, and may be passed to DisconnectConnectProxy to remove it.
+*/
+func (recv *UIManager) ConnectConnectProxy(callback UIManagerSignalConnectProxyCallback) int {
+	signalUIManagerConnectProxyLock.Lock()
+	defer signalUIManagerConnectProxyLock.Unlock()
+
+	signalUIManagerConnectProxyId++
+	signalUIManagerConnectProxyMap[signalUIManagerConnectProxyId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	retC := C.UIManager_signal_connect_connect_proxy(instance, C.gpointer(uintptr(signalUIManagerConnectProxyId)))
+	return int(retC)
+}
+
+/*
+DisconnectConnectProxy disconnects a callback from the 'connect-proxy' signal for the UIManager.
+
+The connectionID should be a value returned from a call to ConnectConnectProxy.
+*/
+func (recv *UIManager) DisconnectConnectProxy(connectionID int) {
+	signalUIManagerConnectProxyLock.Lock()
+	defer signalUIManagerConnectProxyLock.Unlock()
+
+	_, exists := signalUIManagerConnectProxyMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalUIManagerConnectProxyMap, connectionID)
+}
+
+//export UIManager_connectProxyHandler
+func UIManager_connectProxyHandler(c_action *C.GtkAction, c_proxy *C.GtkWidget) {
+	fmt.Println("cb")
+}
+
+var signalUIManagerDisconnectProxyId int
+var signalUIManagerDisconnectProxyMap = make(map[int]UIManagerSignalDisconnectProxyCallback)
+var signalUIManagerDisconnectProxyLock sync.Mutex
+
+// UIManagerSignalDisconnectProxyCallback is a callback function for a 'disconnect-proxy' signal emitted from a UIManager.
+type UIManagerSignalDisconnectProxyCallback func(action *Action, proxy *Widget)
+
+/*
+ConnectDisconnectProxy connects the callback to the 'disconnect-proxy' signal for the UIManager.
+
+The returned value represents the connection, and may be passed to DisconnectDisconnectProxy to remove it.
+*/
+func (recv *UIManager) ConnectDisconnectProxy(callback UIManagerSignalDisconnectProxyCallback) int {
+	signalUIManagerDisconnectProxyLock.Lock()
+	defer signalUIManagerDisconnectProxyLock.Unlock()
+
+	signalUIManagerDisconnectProxyId++
+	signalUIManagerDisconnectProxyMap[signalUIManagerDisconnectProxyId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	retC := C.UIManager_signal_connect_disconnect_proxy(instance, C.gpointer(uintptr(signalUIManagerDisconnectProxyId)))
+	return int(retC)
+}
+
+/*
+DisconnectDisconnectProxy disconnects a callback from the 'disconnect-proxy' signal for the UIManager.
+
+The connectionID should be a value returned from a call to ConnectDisconnectProxy.
+*/
+func (recv *UIManager) DisconnectDisconnectProxy(connectionID int) {
+	signalUIManagerDisconnectProxyLock.Lock()
+	defer signalUIManagerDisconnectProxyLock.Unlock()
+
+	_, exists := signalUIManagerDisconnectProxyMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalUIManagerDisconnectProxyMap, connectionID)
+}
+
+//export UIManager_disconnectProxyHandler
+func UIManager_disconnectProxyHandler(c_action *C.GtkAction, c_proxy *C.GtkWidget) {
+	fmt.Println("cb")
+}
+
+var signalUIManagerPostActivateId int
+var signalUIManagerPostActivateMap = make(map[int]UIManagerSignalPostActivateCallback)
+var signalUIManagerPostActivateLock sync.Mutex
+
+// UIManagerSignalPostActivateCallback is a callback function for a 'post-activate' signal emitted from a UIManager.
+type UIManagerSignalPostActivateCallback func(action *Action)
+
+/*
+ConnectPostActivate connects the callback to the 'post-activate' signal for the UIManager.
+
+The returned value represents the connection, and may be passed to DisconnectPostActivate to remove it.
+*/
+func (recv *UIManager) ConnectPostActivate(callback UIManagerSignalPostActivateCallback) int {
+	signalUIManagerPostActivateLock.Lock()
+	defer signalUIManagerPostActivateLock.Unlock()
+
+	signalUIManagerPostActivateId++
+	signalUIManagerPostActivateMap[signalUIManagerPostActivateId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	retC := C.UIManager_signal_connect_post_activate(instance, C.gpointer(uintptr(signalUIManagerPostActivateId)))
+	return int(retC)
+}
+
+/*
+DisconnectPostActivate disconnects a callback from the 'post-activate' signal for the UIManager.
+
+The connectionID should be a value returned from a call to ConnectPostActivate.
+*/
+func (recv *UIManager) DisconnectPostActivate(connectionID int) {
+	signalUIManagerPostActivateLock.Lock()
+	defer signalUIManagerPostActivateLock.Unlock()
+
+	_, exists := signalUIManagerPostActivateMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalUIManagerPostActivateMap, connectionID)
+}
+
+//export UIManager_postActivateHandler
+func UIManager_postActivateHandler(c_action *C.GtkAction) {
+	fmt.Println("cb")
+}
+
+var signalUIManagerPreActivateId int
+var signalUIManagerPreActivateMap = make(map[int]UIManagerSignalPreActivateCallback)
+var signalUIManagerPreActivateLock sync.Mutex
+
+// UIManagerSignalPreActivateCallback is a callback function for a 'pre-activate' signal emitted from a UIManager.
+type UIManagerSignalPreActivateCallback func(action *Action)
+
+/*
+ConnectPreActivate connects the callback to the 'pre-activate' signal for the UIManager.
+
+The returned value represents the connection, and may be passed to DisconnectPreActivate to remove it.
+*/
+func (recv *UIManager) ConnectPreActivate(callback UIManagerSignalPreActivateCallback) int {
+	signalUIManagerPreActivateLock.Lock()
+	defer signalUIManagerPreActivateLock.Unlock()
+
+	signalUIManagerPreActivateId++
+	signalUIManagerPreActivateMap[signalUIManagerPreActivateId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	retC := C.UIManager_signal_connect_pre_activate(instance, C.gpointer(uintptr(signalUIManagerPreActivateId)))
+	return int(retC)
+}
+
+/*
+DisconnectPreActivate disconnects a callback from the 'pre-activate' signal for the UIManager.
+
+The connectionID should be a value returned from a call to ConnectPreActivate.
+*/
+func (recv *UIManager) DisconnectPreActivate(connectionID int) {
+	signalUIManagerPreActivateLock.Lock()
+	defer signalUIManagerPreActivateLock.Unlock()
+
+	_, exists := signalUIManagerPreActivateMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalUIManagerPreActivateMap, connectionID)
+}
+
+//export UIManager_preActivateHandler
+func UIManager_preActivateHandler(c_action *C.GtkAction) {
+	fmt.Println("cb")
+}
 
 // UIManagerNew is a wrapper around the C function gtk_ui_manager_new.
 func UIManagerNew() *UIManager {

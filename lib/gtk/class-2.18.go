@@ -33,6 +33,15 @@ import (
 	}
 
 */
+/*
+
+	void PrintOperation_updateCustomWidgetHandler();
+
+	static gulong PrintOperation_signal_connect_update_custom_widget(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "update-custom-widget", PrintOperation_updateCustomWidgetHandler, data);
+	}
+
+*/
 import "C"
 
 // Unsupported : gtk_app_chooser_dialog_new : unsupported parameter file : no type generator for Gio.File, GFile*
@@ -586,7 +595,53 @@ func (recv *Menu) SetReserveToggleSize(reserveToggleSize bool) {
 
 // Unsupported : gtk_page_setup_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
 
-// Unsupported signal 'update-custom-widget' for PrintOperation : unsupported parameter widget : type Widget :
+var signalPrintOperationUpdateCustomWidgetId int
+var signalPrintOperationUpdateCustomWidgetMap = make(map[int]PrintOperationSignalUpdateCustomWidgetCallback)
+var signalPrintOperationUpdateCustomWidgetLock sync.Mutex
+
+// PrintOperationSignalUpdateCustomWidgetCallback is a callback function for a 'update-custom-widget' signal emitted from a PrintOperation.
+type PrintOperationSignalUpdateCustomWidgetCallback func(widget *Widget, setup *PageSetup, settings *PrintSettings)
+
+/*
+ConnectUpdateCustomWidget connects the callback to the 'update-custom-widget' signal for the PrintOperation.
+
+The returned value represents the connection, and may be passed to DisconnectUpdateCustomWidget to remove it.
+*/
+func (recv *PrintOperation) ConnectUpdateCustomWidget(callback PrintOperationSignalUpdateCustomWidgetCallback) int {
+	signalPrintOperationUpdateCustomWidgetLock.Lock()
+	defer signalPrintOperationUpdateCustomWidgetLock.Unlock()
+
+	signalPrintOperationUpdateCustomWidgetId++
+	signalPrintOperationUpdateCustomWidgetMap[signalPrintOperationUpdateCustomWidgetId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	retC := C.PrintOperation_signal_connect_update_custom_widget(instance, C.gpointer(uintptr(signalPrintOperationUpdateCustomWidgetId)))
+	return int(retC)
+}
+
+/*
+DisconnectUpdateCustomWidget disconnects a callback from the 'update-custom-widget' signal for the PrintOperation.
+
+The connectionID should be a value returned from a call to ConnectUpdateCustomWidget.
+*/
+func (recv *PrintOperation) DisconnectUpdateCustomWidget(connectionID int) {
+	signalPrintOperationUpdateCustomWidgetLock.Lock()
+	defer signalPrintOperationUpdateCustomWidgetLock.Unlock()
+
+	_, exists := signalPrintOperationUpdateCustomWidgetMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalPrintOperationUpdateCustomWidgetMap, connectionID)
+}
+
+//export PrintOperation_updateCustomWidgetHandler
+func PrintOperation_updateCustomWidgetHandler(c_widget *C.GtkWidget, c_setup *C.GtkPageSetup, c_settings *C.GtkPrintSettings) {
+	fmt.Println("cb")
+}
 
 // GetEmbedPageSetup is a wrapper around the C function gtk_print_operation_get_embed_page_setup.
 func (recv *PrintOperation) GetEmbedPageSetup() bool {

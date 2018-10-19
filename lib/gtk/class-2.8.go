@@ -4,8 +4,11 @@
 package gtk
 
 import (
+	"fmt"
 	cairo "github.com/pekim/gobbi/lib/cairo"
+	gdk "github.com/pekim/gobbi/lib/gdk"
 	gobject "github.com/pekim/gobbi/lib/gobject"
+	"sync"
 	"unsafe"
 )
 
@@ -14,6 +17,15 @@ import (
 // #include <gtk/gtk.h>
 // #include <gtk/gtkx.h>
 // #include <stdlib.h>
+/*
+
+	void Widget_grabBrokenEventHandler();
+
+	static gulong Widget_signal_connect_grab_broken_event(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "grab-broken-event", Widget_grabBrokenEventHandler, data);
+	}
+
+*/
 import "C"
 
 // GetWrapLicense is a wrapper around the C function gtk_about_dialog_get_wrap_license.
@@ -361,7 +373,53 @@ func (recv *TreeViewColumn) QueueResize() {
 	return
 }
 
-// Unsupported signal 'grab-broken-event' for Widget : unsupported parameter event : type Gdk.EventGrabBroken :
+var signalWidgetGrabBrokenEventId int
+var signalWidgetGrabBrokenEventMap = make(map[int]WidgetSignalGrabBrokenEventCallback)
+var signalWidgetGrabBrokenEventLock sync.Mutex
+
+// WidgetSignalGrabBrokenEventCallback is a callback function for a 'grab-broken-event' signal emitted from a Widget.
+type WidgetSignalGrabBrokenEventCallback func(event *gdk.EventGrabBroken) bool
+
+/*
+ConnectGrabBrokenEvent connects the callback to the 'grab-broken-event' signal for the Widget.
+
+The returned value represents the connection, and may be passed to DisconnectGrabBrokenEvent to remove it.
+*/
+func (recv *Widget) ConnectGrabBrokenEvent(callback WidgetSignalGrabBrokenEventCallback) int {
+	signalWidgetGrabBrokenEventLock.Lock()
+	defer signalWidgetGrabBrokenEventLock.Unlock()
+
+	signalWidgetGrabBrokenEventId++
+	signalWidgetGrabBrokenEventMap[signalWidgetGrabBrokenEventId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	retC := C.Widget_signal_connect_grab_broken_event(instance, C.gpointer(uintptr(signalWidgetGrabBrokenEventId)))
+	return int(retC)
+}
+
+/*
+DisconnectGrabBrokenEvent disconnects a callback from the 'grab-broken-event' signal for the Widget.
+
+The connectionID should be a value returned from a call to ConnectGrabBrokenEvent.
+*/
+func (recv *Widget) DisconnectGrabBrokenEvent(connectionID int) {
+	signalWidgetGrabBrokenEventLock.Lock()
+	defer signalWidgetGrabBrokenEventLock.Unlock()
+
+	_, exists := signalWidgetGrabBrokenEventMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalWidgetGrabBrokenEventMap, connectionID)
+}
+
+//export Widget_grabBrokenEventHandler
+func Widget_grabBrokenEventHandler(c_event *C.GdkEventGrabBroken) C.gboolean {
+	fmt.Println("cb")
+}
 
 // Unsupported : gtk_widget_new : unsupported parameter type : no type generator for GType, GType
 

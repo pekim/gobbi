@@ -27,6 +27,33 @@ import (
 */
 /*
 
+	void DeviceManager_deviceAddedHandler();
+
+	static gulong DeviceManager_signal_connect_device_added(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "device-added", DeviceManager_deviceAddedHandler, data);
+	}
+
+*/
+/*
+
+	void DeviceManager_deviceChangedHandler();
+
+	static gulong DeviceManager_signal_connect_device_changed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "device-changed", DeviceManager_deviceChangedHandler, data);
+	}
+
+*/
+/*
+
+	void DeviceManager_deviceRemovedHandler();
+
+	static gulong DeviceManager_signal_connect_device_removed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "device-removed", DeviceManager_deviceRemovedHandler, data);
+	}
+
+*/
+/*
+
 	void Display_openedHandler();
 
 	static gulong Display_signal_connect_opened(gpointer instance, gpointer data) {
@@ -353,11 +380,149 @@ func CastToDeviceManager(object *gobject.Object) *DeviceManager {
 	return DeviceManagerNewFromC(object.ToC())
 }
 
-// Unsupported signal 'device-added' for DeviceManager : unsupported parameter device : type Device :
+var signalDeviceManagerDeviceAddedId int
+var signalDeviceManagerDeviceAddedMap = make(map[int]DeviceManagerSignalDeviceAddedCallback)
+var signalDeviceManagerDeviceAddedLock sync.Mutex
 
-// Unsupported signal 'device-changed' for DeviceManager : unsupported parameter device : type Device :
+// DeviceManagerSignalDeviceAddedCallback is a callback function for a 'device-added' signal emitted from a DeviceManager.
+type DeviceManagerSignalDeviceAddedCallback func(device *Device)
 
-// Unsupported signal 'device-removed' for DeviceManager : unsupported parameter device : type Device :
+/*
+ConnectDeviceAdded connects the callback to the 'device-added' signal for the DeviceManager.
+
+The returned value represents the connection, and may be passed to DisconnectDeviceAdded to remove it.
+*/
+func (recv *DeviceManager) ConnectDeviceAdded(callback DeviceManagerSignalDeviceAddedCallback) int {
+	signalDeviceManagerDeviceAddedLock.Lock()
+	defer signalDeviceManagerDeviceAddedLock.Unlock()
+
+	signalDeviceManagerDeviceAddedId++
+	signalDeviceManagerDeviceAddedMap[signalDeviceManagerDeviceAddedId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	retC := C.DeviceManager_signal_connect_device_added(instance, C.gpointer(uintptr(signalDeviceManagerDeviceAddedId)))
+	return int(retC)
+}
+
+/*
+DisconnectDeviceAdded disconnects a callback from the 'device-added' signal for the DeviceManager.
+
+The connectionID should be a value returned from a call to ConnectDeviceAdded.
+*/
+func (recv *DeviceManager) DisconnectDeviceAdded(connectionID int) {
+	signalDeviceManagerDeviceAddedLock.Lock()
+	defer signalDeviceManagerDeviceAddedLock.Unlock()
+
+	_, exists := signalDeviceManagerDeviceAddedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalDeviceManagerDeviceAddedMap, connectionID)
+}
+
+//export DeviceManager_deviceAddedHandler
+func DeviceManager_deviceAddedHandler(c_device *C.GdkDevice) {
+	fmt.Println("cb")
+}
+
+var signalDeviceManagerDeviceChangedId int
+var signalDeviceManagerDeviceChangedMap = make(map[int]DeviceManagerSignalDeviceChangedCallback)
+var signalDeviceManagerDeviceChangedLock sync.Mutex
+
+// DeviceManagerSignalDeviceChangedCallback is a callback function for a 'device-changed' signal emitted from a DeviceManager.
+type DeviceManagerSignalDeviceChangedCallback func(device *Device)
+
+/*
+ConnectDeviceChanged connects the callback to the 'device-changed' signal for the DeviceManager.
+
+The returned value represents the connection, and may be passed to DisconnectDeviceChanged to remove it.
+*/
+func (recv *DeviceManager) ConnectDeviceChanged(callback DeviceManagerSignalDeviceChangedCallback) int {
+	signalDeviceManagerDeviceChangedLock.Lock()
+	defer signalDeviceManagerDeviceChangedLock.Unlock()
+
+	signalDeviceManagerDeviceChangedId++
+	signalDeviceManagerDeviceChangedMap[signalDeviceManagerDeviceChangedId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	retC := C.DeviceManager_signal_connect_device_changed(instance, C.gpointer(uintptr(signalDeviceManagerDeviceChangedId)))
+	return int(retC)
+}
+
+/*
+DisconnectDeviceChanged disconnects a callback from the 'device-changed' signal for the DeviceManager.
+
+The connectionID should be a value returned from a call to ConnectDeviceChanged.
+*/
+func (recv *DeviceManager) DisconnectDeviceChanged(connectionID int) {
+	signalDeviceManagerDeviceChangedLock.Lock()
+	defer signalDeviceManagerDeviceChangedLock.Unlock()
+
+	_, exists := signalDeviceManagerDeviceChangedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalDeviceManagerDeviceChangedMap, connectionID)
+}
+
+//export DeviceManager_deviceChangedHandler
+func DeviceManager_deviceChangedHandler(c_device *C.GdkDevice) {
+	fmt.Println("cb")
+}
+
+var signalDeviceManagerDeviceRemovedId int
+var signalDeviceManagerDeviceRemovedMap = make(map[int]DeviceManagerSignalDeviceRemovedCallback)
+var signalDeviceManagerDeviceRemovedLock sync.Mutex
+
+// DeviceManagerSignalDeviceRemovedCallback is a callback function for a 'device-removed' signal emitted from a DeviceManager.
+type DeviceManagerSignalDeviceRemovedCallback func(device *Device)
+
+/*
+ConnectDeviceRemoved connects the callback to the 'device-removed' signal for the DeviceManager.
+
+The returned value represents the connection, and may be passed to DisconnectDeviceRemoved to remove it.
+*/
+func (recv *DeviceManager) ConnectDeviceRemoved(callback DeviceManagerSignalDeviceRemovedCallback) int {
+	signalDeviceManagerDeviceRemovedLock.Lock()
+	defer signalDeviceManagerDeviceRemovedLock.Unlock()
+
+	signalDeviceManagerDeviceRemovedId++
+	signalDeviceManagerDeviceRemovedMap[signalDeviceManagerDeviceRemovedId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	retC := C.DeviceManager_signal_connect_device_removed(instance, C.gpointer(uintptr(signalDeviceManagerDeviceRemovedId)))
+	return int(retC)
+}
+
+/*
+DisconnectDeviceRemoved disconnects a callback from the 'device-removed' signal for the DeviceManager.
+
+The connectionID should be a value returned from a call to ConnectDeviceRemoved.
+*/
+func (recv *DeviceManager) DisconnectDeviceRemoved(connectionID int) {
+	signalDeviceManagerDeviceRemovedLock.Lock()
+	defer signalDeviceManagerDeviceRemovedLock.Unlock()
+
+	_, exists := signalDeviceManagerDeviceRemovedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalDeviceManagerDeviceRemovedMap, connectionID)
+}
+
+//export DeviceManager_deviceRemovedHandler
+func DeviceManager_deviceRemovedHandler(c_device *C.GdkDevice) {
+	fmt.Println("cb")
+}
 
 // Display is a wrapper around the C record GdkDisplay.
 type Display struct {

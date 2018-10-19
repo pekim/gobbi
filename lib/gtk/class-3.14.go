@@ -28,6 +28,42 @@ import (
 */
 /*
 
+	void Gesture_beginHandler();
+
+	static gulong Gesture_signal_connect_begin(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "begin", Gesture_beginHandler, data);
+	}
+
+*/
+/*
+
+	void Gesture_cancelHandler();
+
+	static gulong Gesture_signal_connect_cancel(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "cancel", Gesture_cancelHandler, data);
+	}
+
+*/
+/*
+
+	void Gesture_endHandler();
+
+	static gulong Gesture_signal_connect_end(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "end", Gesture_endHandler, data);
+	}
+
+*/
+/*
+
+	void Gesture_updateHandler();
+
+	static gulong Gesture_signal_connect_update(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "update", Gesture_updateHandler, data);
+	}
+
+*/
+/*
+
 	void GestureLongPress_cancelledHandler();
 
 	static gulong GestureLongPress_signal_connect_cancelled(gpointer instance, gpointer data) {
@@ -223,15 +259,199 @@ func (recv *EventController) SetPropagationPhase(phase PropagationPhase) {
 
 // Unsupported : gtk_file_filter_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
 
-// Unsupported signal 'begin' for Gesture : unsupported parameter sequence : type Gdk.EventSequence :
+var signalGestureBeginId int
+var signalGestureBeginMap = make(map[int]GestureSignalBeginCallback)
+var signalGestureBeginLock sync.Mutex
 
-// Unsupported signal 'cancel' for Gesture : unsupported parameter sequence : type Gdk.EventSequence :
+// GestureSignalBeginCallback is a callback function for a 'begin' signal emitted from a Gesture.
+type GestureSignalBeginCallback func(sequence *gdk.EventSequence)
 
-// Unsupported signal 'end' for Gesture : unsupported parameter sequence : type Gdk.EventSequence :
+/*
+ConnectBegin connects the callback to the 'begin' signal for the Gesture.
 
-// Unsupported signal 'sequence-state-changed' for Gesture : unsupported parameter sequence : type Gdk.EventSequence :
+The returned value represents the connection, and may be passed to DisconnectBegin to remove it.
+*/
+func (recv *Gesture) ConnectBegin(callback GestureSignalBeginCallback) int {
+	signalGestureBeginLock.Lock()
+	defer signalGestureBeginLock.Unlock()
 
-// Unsupported signal 'update' for Gesture : unsupported parameter sequence : type Gdk.EventSequence :
+	signalGestureBeginId++
+	signalGestureBeginMap[signalGestureBeginId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	retC := C.Gesture_signal_connect_begin(instance, C.gpointer(uintptr(signalGestureBeginId)))
+	return int(retC)
+}
+
+/*
+DisconnectBegin disconnects a callback from the 'begin' signal for the Gesture.
+
+The connectionID should be a value returned from a call to ConnectBegin.
+*/
+func (recv *Gesture) DisconnectBegin(connectionID int) {
+	signalGestureBeginLock.Lock()
+	defer signalGestureBeginLock.Unlock()
+
+	_, exists := signalGestureBeginMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalGestureBeginMap, connectionID)
+}
+
+//export Gesture_beginHandler
+func Gesture_beginHandler(c_sequence *C.GdkEventSequence) {
+	fmt.Println("cb")
+}
+
+var signalGestureCancelId int
+var signalGestureCancelMap = make(map[int]GestureSignalCancelCallback)
+var signalGestureCancelLock sync.Mutex
+
+// GestureSignalCancelCallback is a callback function for a 'cancel' signal emitted from a Gesture.
+type GestureSignalCancelCallback func(sequence *gdk.EventSequence)
+
+/*
+ConnectCancel connects the callback to the 'cancel' signal for the Gesture.
+
+The returned value represents the connection, and may be passed to DisconnectCancel to remove it.
+*/
+func (recv *Gesture) ConnectCancel(callback GestureSignalCancelCallback) int {
+	signalGestureCancelLock.Lock()
+	defer signalGestureCancelLock.Unlock()
+
+	signalGestureCancelId++
+	signalGestureCancelMap[signalGestureCancelId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	retC := C.Gesture_signal_connect_cancel(instance, C.gpointer(uintptr(signalGestureCancelId)))
+	return int(retC)
+}
+
+/*
+DisconnectCancel disconnects a callback from the 'cancel' signal for the Gesture.
+
+The connectionID should be a value returned from a call to ConnectCancel.
+*/
+func (recv *Gesture) DisconnectCancel(connectionID int) {
+	signalGestureCancelLock.Lock()
+	defer signalGestureCancelLock.Unlock()
+
+	_, exists := signalGestureCancelMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalGestureCancelMap, connectionID)
+}
+
+//export Gesture_cancelHandler
+func Gesture_cancelHandler(c_sequence *C.GdkEventSequence) {
+	fmt.Println("cb")
+}
+
+var signalGestureEndId int
+var signalGestureEndMap = make(map[int]GestureSignalEndCallback)
+var signalGestureEndLock sync.Mutex
+
+// GestureSignalEndCallback is a callback function for a 'end' signal emitted from a Gesture.
+type GestureSignalEndCallback func(sequence *gdk.EventSequence)
+
+/*
+ConnectEnd connects the callback to the 'end' signal for the Gesture.
+
+The returned value represents the connection, and may be passed to DisconnectEnd to remove it.
+*/
+func (recv *Gesture) ConnectEnd(callback GestureSignalEndCallback) int {
+	signalGestureEndLock.Lock()
+	defer signalGestureEndLock.Unlock()
+
+	signalGestureEndId++
+	signalGestureEndMap[signalGestureEndId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	retC := C.Gesture_signal_connect_end(instance, C.gpointer(uintptr(signalGestureEndId)))
+	return int(retC)
+}
+
+/*
+DisconnectEnd disconnects a callback from the 'end' signal for the Gesture.
+
+The connectionID should be a value returned from a call to ConnectEnd.
+*/
+func (recv *Gesture) DisconnectEnd(connectionID int) {
+	signalGestureEndLock.Lock()
+	defer signalGestureEndLock.Unlock()
+
+	_, exists := signalGestureEndMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalGestureEndMap, connectionID)
+}
+
+//export Gesture_endHandler
+func Gesture_endHandler(c_sequence *C.GdkEventSequence) {
+	fmt.Println("cb")
+}
+
+// Unsupported signal 'sequence-state-changed' for Gesture : unsupported parameter state : type EventSequenceState :
+
+var signalGestureUpdateId int
+var signalGestureUpdateMap = make(map[int]GestureSignalUpdateCallback)
+var signalGestureUpdateLock sync.Mutex
+
+// GestureSignalUpdateCallback is a callback function for a 'update' signal emitted from a Gesture.
+type GestureSignalUpdateCallback func(sequence *gdk.EventSequence)
+
+/*
+ConnectUpdate connects the callback to the 'update' signal for the Gesture.
+
+The returned value represents the connection, and may be passed to DisconnectUpdate to remove it.
+*/
+func (recv *Gesture) ConnectUpdate(callback GestureSignalUpdateCallback) int {
+	signalGestureUpdateLock.Lock()
+	defer signalGestureUpdateLock.Unlock()
+
+	signalGestureUpdateId++
+	signalGestureUpdateMap[signalGestureUpdateId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	retC := C.Gesture_signal_connect_update(instance, C.gpointer(uintptr(signalGestureUpdateId)))
+	return int(retC)
+}
+
+/*
+DisconnectUpdate disconnects a callback from the 'update' signal for the Gesture.
+
+The connectionID should be a value returned from a call to ConnectUpdate.
+*/
+func (recv *Gesture) DisconnectUpdate(connectionID int) {
+	signalGestureUpdateLock.Lock()
+	defer signalGestureUpdateLock.Unlock()
+
+	_, exists := signalGestureUpdateMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalGestureUpdateMap, connectionID)
+}
+
+//export Gesture_updateHandler
+func Gesture_updateHandler(c_sequence *C.GdkEventSequence) {
+	fmt.Println("cb")
+}
 
 // Unsupported : gtk_gesture_get_bounding_box : unsupported parameter rect : Blacklisted record : GdkRectangle
 
@@ -1117,7 +1337,7 @@ func (recv *Switch) DisconnectStateSet(connectionID int) {
 }
 
 //export Switch_stateSetHandler
-func Switch_stateSetHandler(state C.gboolean) C.gboolean {
+func Switch_stateSetHandler(c_state C.gboolean) C.gboolean {
 	fmt.Println("cb")
 }
 

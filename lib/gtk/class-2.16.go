@@ -4,8 +4,10 @@
 package gtk
 
 import (
+	"fmt"
 	gdk "github.com/pekim/gobbi/lib/gdk"
 	gdkpixbuf "github.com/pekim/gobbi/lib/gdkpixbuf"
+	"sync"
 	"unsafe"
 )
 
@@ -14,6 +16,24 @@ import (
 // #include <gtk/gtk.h>
 // #include <gtk/gtkx.h>
 // #include <stdlib.h>
+/*
+
+	void StatusIcon_scrollEventHandler();
+
+	static gulong StatusIcon_signal_connect_scroll_event(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "scroll-event", StatusIcon_scrollEventHandler, data);
+	}
+
+*/
+/*
+
+	void TextBuffer_pasteDoneHandler();
+
+	static gulong TextBuffer_signal_connect_paste_done(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "paste-done", TextBuffer_pasteDoneHandler, data);
+	}
+
+*/
 import "C"
 
 // BlockActivate is a wrapper around the C function gtk_action_block_activate.
@@ -660,7 +680,53 @@ func (recv *Scale) ClearMarks() {
 
 // Unsupported signal 'query-tooltip' for StatusIcon : unsupported parameter x : type gint :
 
-// Unsupported signal 'scroll-event' for StatusIcon : unsupported parameter event : type Gdk.EventScroll :
+var signalStatusIconScrollEventId int
+var signalStatusIconScrollEventMap = make(map[int]StatusIconSignalScrollEventCallback)
+var signalStatusIconScrollEventLock sync.Mutex
+
+// StatusIconSignalScrollEventCallback is a callback function for a 'scroll-event' signal emitted from a StatusIcon.
+type StatusIconSignalScrollEventCallback func(event *gdk.EventScroll) bool
+
+/*
+ConnectScrollEvent connects the callback to the 'scroll-event' signal for the StatusIcon.
+
+The returned value represents the connection, and may be passed to DisconnectScrollEvent to remove it.
+*/
+func (recv *StatusIcon) ConnectScrollEvent(callback StatusIconSignalScrollEventCallback) int {
+	signalStatusIconScrollEventLock.Lock()
+	defer signalStatusIconScrollEventLock.Unlock()
+
+	signalStatusIconScrollEventId++
+	signalStatusIconScrollEventMap[signalStatusIconScrollEventId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	retC := C.StatusIcon_signal_connect_scroll_event(instance, C.gpointer(uintptr(signalStatusIconScrollEventId)))
+	return int(retC)
+}
+
+/*
+DisconnectScrollEvent disconnects a callback from the 'scroll-event' signal for the StatusIcon.
+
+The connectionID should be a value returned from a call to ConnectScrollEvent.
+*/
+func (recv *StatusIcon) DisconnectScrollEvent(connectionID int) {
+	signalStatusIconScrollEventLock.Lock()
+	defer signalStatusIconScrollEventLock.Unlock()
+
+	_, exists := signalStatusIconScrollEventMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalStatusIconScrollEventMap, connectionID)
+}
+
+//export StatusIcon_scrollEventHandler
+func StatusIcon_scrollEventHandler(c_event *C.GdkEventScroll) C.gboolean {
+	fmt.Println("cb")
+}
 
 // Unsupported : gtk_status_icon_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon, GIcon*
 
@@ -726,7 +792,53 @@ func (recv *StatusIcon) SetTooltipText(text string) {
 
 // Unsupported : gtk_style_get_valist : unsupported parameter widget_type : no type generator for GType, GType
 
-// Unsupported signal 'paste-done' for TextBuffer : unsupported parameter clipboard : type Clipboard :
+var signalTextBufferPasteDoneId int
+var signalTextBufferPasteDoneMap = make(map[int]TextBufferSignalPasteDoneCallback)
+var signalTextBufferPasteDoneLock sync.Mutex
+
+// TextBufferSignalPasteDoneCallback is a callback function for a 'paste-done' signal emitted from a TextBuffer.
+type TextBufferSignalPasteDoneCallback func(clipboard *Clipboard)
+
+/*
+ConnectPasteDone connects the callback to the 'paste-done' signal for the TextBuffer.
+
+The returned value represents the connection, and may be passed to DisconnectPasteDone to remove it.
+*/
+func (recv *TextBuffer) ConnectPasteDone(callback TextBufferSignalPasteDoneCallback) int {
+	signalTextBufferPasteDoneLock.Lock()
+	defer signalTextBufferPasteDoneLock.Unlock()
+
+	signalTextBufferPasteDoneId++
+	signalTextBufferPasteDoneMap[signalTextBufferPasteDoneId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	retC := C.TextBuffer_signal_connect_paste_done(instance, C.gpointer(uintptr(signalTextBufferPasteDoneId)))
+	return int(retC)
+}
+
+/*
+DisconnectPasteDone disconnects a callback from the 'paste-done' signal for the TextBuffer.
+
+The connectionID should be a value returned from a call to ConnectPasteDone.
+*/
+func (recv *TextBuffer) DisconnectPasteDone(connectionID int) {
+	signalTextBufferPasteDoneLock.Lock()
+	defer signalTextBufferPasteDoneLock.Unlock()
+
+	_, exists := signalTextBufferPasteDoneMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalTextBufferPasteDoneMap, connectionID)
+}
+
+//export TextBuffer_pasteDoneHandler
+func TextBuffer_pasteDoneHandler(c_clipboard *C.GtkClipboard) {
+	fmt.Println("cb")
+}
 
 // Unsupported : gtk_tree_store_new : unsupported parameter ... : varargs
 

@@ -32,6 +32,15 @@ import (
 */
 /*
 
+	void Widget_drawHandler();
+
+	static gulong Widget_signal_connect_draw(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "draw", Widget_drawHandler, data);
+	}
+
+*/
+/*
+
 	void Widget_styleUpdatedHandler();
 
 	static gulong Widget_signal_connect_style_updated(gpointer instance, gpointer data) {
@@ -327,13 +336,13 @@ func (recv *Calendar) GetDayIsMarked(day uint32) bool {
 	return retGo
 }
 
-// Unsupported signal 'add-editable' for CellArea : unsupported parameter renderer : type CellRenderer :
+// Unsupported signal 'add-editable' for CellArea : unsupported parameter editable : no type generator for CellEditable,
 
 // Unsupported signal 'apply-attributes' for CellArea : unsupported parameter model : no type generator for TreeModel,
 
-// Unsupported signal 'focus-changed' for CellArea : unsupported parameter renderer : type CellRenderer :
+// Unsupported signal 'focus-changed' for CellArea : unsupported parameter path : type utf8 :
 
-// Unsupported signal 'remove-editable' for CellArea : unsupported parameter renderer : type CellRenderer :
+// Unsupported signal 'remove-editable' for CellArea : unsupported parameter editable : no type generator for CellEditable,
 
 // Unsupported : gtk_cell_area_activate : unsupported parameter cell_area : Blacklisted record : GdkRectangle
 
@@ -2321,7 +2330,53 @@ func (recv *TreeViewColumn) GetButton() *Widget {
 	return retGo
 }
 
-// Unsupported signal 'draw' for Widget : unsupported parameter cr : type cairo.Context :
+var signalWidgetDrawId int
+var signalWidgetDrawMap = make(map[int]WidgetSignalDrawCallback)
+var signalWidgetDrawLock sync.Mutex
+
+// WidgetSignalDrawCallback is a callback function for a 'draw' signal emitted from a Widget.
+type WidgetSignalDrawCallback func(cr *cairo.Context) bool
+
+/*
+ConnectDraw connects the callback to the 'draw' signal for the Widget.
+
+The returned value represents the connection, and may be passed to DisconnectDraw to remove it.
+*/
+func (recv *Widget) ConnectDraw(callback WidgetSignalDrawCallback) int {
+	signalWidgetDrawLock.Lock()
+	defer signalWidgetDrawLock.Unlock()
+
+	signalWidgetDrawId++
+	signalWidgetDrawMap[signalWidgetDrawId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	retC := C.Widget_signal_connect_draw(instance, C.gpointer(uintptr(signalWidgetDrawId)))
+	return int(retC)
+}
+
+/*
+DisconnectDraw disconnects a callback from the 'draw' signal for the Widget.
+
+The connectionID should be a value returned from a call to ConnectDraw.
+*/
+func (recv *Widget) DisconnectDraw(connectionID int) {
+	signalWidgetDrawLock.Lock()
+	defer signalWidgetDrawLock.Unlock()
+
+	_, exists := signalWidgetDrawMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalWidgetDrawMap, connectionID)
+}
+
+//export Widget_drawHandler
+func Widget_drawHandler(c_cr *C.cairo_t) C.gboolean {
+	fmt.Println("cb")
+}
 
 // Unsupported signal 'state-flags-changed' for Widget : unsupported parameter flags : type StateFlags :
 

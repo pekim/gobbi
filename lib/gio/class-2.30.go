@@ -584,7 +584,7 @@ func (recv *Settings) SetUint(key string, value uint32) bool {
 	return retGo
 }
 
-// Unsupported signal 'change-state' for SimpleAction : unsupported parameter value : type GLib.Variant :
+// Unsupported signal 'change-state' for SimpleAction : unsupported parameter value : type GLib.Variant : Blacklisted record : GVariant
 
 // Unsupported : g_simple_action_new : unsupported parameter parameter_type : Blacklisted record : GVariantType
 

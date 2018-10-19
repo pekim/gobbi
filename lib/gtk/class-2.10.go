@@ -49,10 +49,55 @@ import (
 */
 /*
 
+	void Assistant_prepareHandler();
+
+	static gulong Assistant_signal_connect_prepare(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "prepare", Assistant_prepareHandler, data);
+	}
+
+*/
+/*
+
+	void PrintOperation_beginPrintHandler();
+
+	static gulong PrintOperation_signal_connect_begin_print(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "begin-print", PrintOperation_beginPrintHandler, data);
+	}
+
+*/
+/*
+
 	void PrintOperation_createCustomWidgetHandler();
 
 	static gulong PrintOperation_signal_connect_create_custom_widget(gpointer instance, gpointer data) {
 		return g_signal_connect(instance, "create-custom-widget", PrintOperation_createCustomWidgetHandler, data);
+	}
+
+*/
+/*
+
+	void PrintOperation_customWidgetApplyHandler();
+
+	static gulong PrintOperation_signal_connect_custom_widget_apply(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "custom-widget-apply", PrintOperation_customWidgetApplyHandler, data);
+	}
+
+*/
+/*
+
+	void PrintOperation_endPrintHandler();
+
+	static gulong PrintOperation_signal_connect_end_print(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "end-print", PrintOperation_endPrintHandler, data);
+	}
+
+*/
+/*
+
+	void PrintOperation_paginateHandler();
+
+	static gulong PrintOperation_signal_connect_paginate(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "paginate", PrintOperation_paginateHandler, data);
 	}
 
 */
@@ -231,7 +276,53 @@ func Assistant_closeHandler() {
 	fmt.Println("cb")
 }
 
-// Unsupported signal 'prepare' for Assistant : unsupported parameter page : type Widget :
+var signalAssistantPrepareId int
+var signalAssistantPrepareMap = make(map[int]AssistantSignalPrepareCallback)
+var signalAssistantPrepareLock sync.Mutex
+
+// AssistantSignalPrepareCallback is a callback function for a 'prepare' signal emitted from a Assistant.
+type AssistantSignalPrepareCallback func(page *Widget)
+
+/*
+ConnectPrepare connects the callback to the 'prepare' signal for the Assistant.
+
+The returned value represents the connection, and may be passed to DisconnectPrepare to remove it.
+*/
+func (recv *Assistant) ConnectPrepare(callback AssistantSignalPrepareCallback) int {
+	signalAssistantPrepareLock.Lock()
+	defer signalAssistantPrepareLock.Unlock()
+
+	signalAssistantPrepareId++
+	signalAssistantPrepareMap[signalAssistantPrepareId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	retC := C.Assistant_signal_connect_prepare(instance, C.gpointer(uintptr(signalAssistantPrepareId)))
+	return int(retC)
+}
+
+/*
+DisconnectPrepare disconnects a callback from the 'prepare' signal for the Assistant.
+
+The connectionID should be a value returned from a call to ConnectPrepare.
+*/
+func (recv *Assistant) DisconnectPrepare(connectionID int) {
+	signalAssistantPrepareLock.Lock()
+	defer signalAssistantPrepareLock.Unlock()
+
+	_, exists := signalAssistantPrepareMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalAssistantPrepareMap, connectionID)
+}
+
+//export Assistant_prepareHandler
+func Assistant_prepareHandler(c_page *C.GtkWidget) {
+	fmt.Println("cb")
+}
 
 // AssistantNew is a wrapper around the C function gtk_assistant_new.
 func AssistantNew() *Assistant {
@@ -649,11 +740,11 @@ func (recv *MessageDialog) SetImage(image *Widget) {
 	return
 }
 
-// Unsupported signal 'page-added' for Notebook : unsupported parameter child : type Widget :
+// Unsupported signal 'page-added' for Notebook : unsupported parameter page_num : type guint :
 
-// Unsupported signal 'page-removed' for Notebook : unsupported parameter child : type Widget :
+// Unsupported signal 'page-removed' for Notebook : unsupported parameter page_num : type guint :
 
-// Unsupported signal 'page-reordered' for Notebook : unsupported parameter child : type Widget :
+// Unsupported signal 'page-reordered' for Notebook : unsupported parameter page_num : type guint :
 
 // GetTabDetachable is a wrapper around the C function gtk_notebook_get_tab_detachable.
 func (recv *Notebook) GetTabDetachable(child *Widget) bool {
@@ -969,7 +1060,53 @@ func (recv *PrintContext) SetCairoContext(cr *cairo.Context, dpiX float64, dpiY 
 	return
 }
 
-// Unsupported signal 'begin-print' for PrintOperation : unsupported parameter context : type PrintContext :
+var signalPrintOperationBeginPrintId int
+var signalPrintOperationBeginPrintMap = make(map[int]PrintOperationSignalBeginPrintCallback)
+var signalPrintOperationBeginPrintLock sync.Mutex
+
+// PrintOperationSignalBeginPrintCallback is a callback function for a 'begin-print' signal emitted from a PrintOperation.
+type PrintOperationSignalBeginPrintCallback func(context *PrintContext)
+
+/*
+ConnectBeginPrint connects the callback to the 'begin-print' signal for the PrintOperation.
+
+The returned value represents the connection, and may be passed to DisconnectBeginPrint to remove it.
+*/
+func (recv *PrintOperation) ConnectBeginPrint(callback PrintOperationSignalBeginPrintCallback) int {
+	signalPrintOperationBeginPrintLock.Lock()
+	defer signalPrintOperationBeginPrintLock.Unlock()
+
+	signalPrintOperationBeginPrintId++
+	signalPrintOperationBeginPrintMap[signalPrintOperationBeginPrintId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	retC := C.PrintOperation_signal_connect_begin_print(instance, C.gpointer(uintptr(signalPrintOperationBeginPrintId)))
+	return int(retC)
+}
+
+/*
+DisconnectBeginPrint disconnects a callback from the 'begin-print' signal for the PrintOperation.
+
+The connectionID should be a value returned from a call to ConnectBeginPrint.
+*/
+func (recv *PrintOperation) DisconnectBeginPrint(connectionID int) {
+	signalPrintOperationBeginPrintLock.Lock()
+	defer signalPrintOperationBeginPrintLock.Unlock()
+
+	_, exists := signalPrintOperationBeginPrintMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalPrintOperationBeginPrintMap, connectionID)
+}
+
+//export PrintOperation_beginPrintHandler
+func PrintOperation_beginPrintHandler(c_context *C.GtkPrintContext) {
+	fmt.Println("cb")
+}
 
 var signalPrintOperationCreateCustomWidgetId int
 var signalPrintOperationCreateCustomWidgetMap = make(map[int]PrintOperationSignalCreateCustomWidgetCallback)
@@ -1019,19 +1156,157 @@ func PrintOperation_createCustomWidgetHandler() *C.GObject {
 	fmt.Println("cb")
 }
 
-// Unsupported signal 'custom-widget-apply' for PrintOperation : unsupported parameter widget : type Widget :
+var signalPrintOperationCustomWidgetApplyId int
+var signalPrintOperationCustomWidgetApplyMap = make(map[int]PrintOperationSignalCustomWidgetApplyCallback)
+var signalPrintOperationCustomWidgetApplyLock sync.Mutex
+
+// PrintOperationSignalCustomWidgetApplyCallback is a callback function for a 'custom-widget-apply' signal emitted from a PrintOperation.
+type PrintOperationSignalCustomWidgetApplyCallback func(widget *Widget)
+
+/*
+ConnectCustomWidgetApply connects the callback to the 'custom-widget-apply' signal for the PrintOperation.
+
+The returned value represents the connection, and may be passed to DisconnectCustomWidgetApply to remove it.
+*/
+func (recv *PrintOperation) ConnectCustomWidgetApply(callback PrintOperationSignalCustomWidgetApplyCallback) int {
+	signalPrintOperationCustomWidgetApplyLock.Lock()
+	defer signalPrintOperationCustomWidgetApplyLock.Unlock()
+
+	signalPrintOperationCustomWidgetApplyId++
+	signalPrintOperationCustomWidgetApplyMap[signalPrintOperationCustomWidgetApplyId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	retC := C.PrintOperation_signal_connect_custom_widget_apply(instance, C.gpointer(uintptr(signalPrintOperationCustomWidgetApplyId)))
+	return int(retC)
+}
+
+/*
+DisconnectCustomWidgetApply disconnects a callback from the 'custom-widget-apply' signal for the PrintOperation.
+
+The connectionID should be a value returned from a call to ConnectCustomWidgetApply.
+*/
+func (recv *PrintOperation) DisconnectCustomWidgetApply(connectionID int) {
+	signalPrintOperationCustomWidgetApplyLock.Lock()
+	defer signalPrintOperationCustomWidgetApplyLock.Unlock()
+
+	_, exists := signalPrintOperationCustomWidgetApplyMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalPrintOperationCustomWidgetApplyMap, connectionID)
+}
+
+//export PrintOperation_customWidgetApplyHandler
+func PrintOperation_customWidgetApplyHandler(c_widget *C.GtkWidget) {
+	fmt.Println("cb")
+}
 
 // Unsupported signal 'done' for PrintOperation : unsupported parameter result : type PrintOperationResult :
 
-// Unsupported signal 'draw-page' for PrintOperation : unsupported parameter context : type PrintContext :
+// Unsupported signal 'draw-page' for PrintOperation : unsupported parameter page_nr : type gint :
 
-// Unsupported signal 'end-print' for PrintOperation : unsupported parameter context : type PrintContext :
+var signalPrintOperationEndPrintId int
+var signalPrintOperationEndPrintMap = make(map[int]PrintOperationSignalEndPrintCallback)
+var signalPrintOperationEndPrintLock sync.Mutex
 
-// Unsupported signal 'paginate' for PrintOperation : unsupported parameter context : type PrintContext :
+// PrintOperationSignalEndPrintCallback is a callback function for a 'end-print' signal emitted from a PrintOperation.
+type PrintOperationSignalEndPrintCallback func(context *PrintContext)
+
+/*
+ConnectEndPrint connects the callback to the 'end-print' signal for the PrintOperation.
+
+The returned value represents the connection, and may be passed to DisconnectEndPrint to remove it.
+*/
+func (recv *PrintOperation) ConnectEndPrint(callback PrintOperationSignalEndPrintCallback) int {
+	signalPrintOperationEndPrintLock.Lock()
+	defer signalPrintOperationEndPrintLock.Unlock()
+
+	signalPrintOperationEndPrintId++
+	signalPrintOperationEndPrintMap[signalPrintOperationEndPrintId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	retC := C.PrintOperation_signal_connect_end_print(instance, C.gpointer(uintptr(signalPrintOperationEndPrintId)))
+	return int(retC)
+}
+
+/*
+DisconnectEndPrint disconnects a callback from the 'end-print' signal for the PrintOperation.
+
+The connectionID should be a value returned from a call to ConnectEndPrint.
+*/
+func (recv *PrintOperation) DisconnectEndPrint(connectionID int) {
+	signalPrintOperationEndPrintLock.Lock()
+	defer signalPrintOperationEndPrintLock.Unlock()
+
+	_, exists := signalPrintOperationEndPrintMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalPrintOperationEndPrintMap, connectionID)
+}
+
+//export PrintOperation_endPrintHandler
+func PrintOperation_endPrintHandler(c_context *C.GtkPrintContext) {
+	fmt.Println("cb")
+}
+
+var signalPrintOperationPaginateId int
+var signalPrintOperationPaginateMap = make(map[int]PrintOperationSignalPaginateCallback)
+var signalPrintOperationPaginateLock sync.Mutex
+
+// PrintOperationSignalPaginateCallback is a callback function for a 'paginate' signal emitted from a PrintOperation.
+type PrintOperationSignalPaginateCallback func(context *PrintContext) bool
+
+/*
+ConnectPaginate connects the callback to the 'paginate' signal for the PrintOperation.
+
+The returned value represents the connection, and may be passed to DisconnectPaginate to remove it.
+*/
+func (recv *PrintOperation) ConnectPaginate(callback PrintOperationSignalPaginateCallback) int {
+	signalPrintOperationPaginateLock.Lock()
+	defer signalPrintOperationPaginateLock.Unlock()
+
+	signalPrintOperationPaginateId++
+	signalPrintOperationPaginateMap[signalPrintOperationPaginateId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	retC := C.PrintOperation_signal_connect_paginate(instance, C.gpointer(uintptr(signalPrintOperationPaginateId)))
+	return int(retC)
+}
+
+/*
+DisconnectPaginate disconnects a callback from the 'paginate' signal for the PrintOperation.
+
+The connectionID should be a value returned from a call to ConnectPaginate.
+*/
+func (recv *PrintOperation) DisconnectPaginate(connectionID int) {
+	signalPrintOperationPaginateLock.Lock()
+	defer signalPrintOperationPaginateLock.Unlock()
+
+	_, exists := signalPrintOperationPaginateMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalPrintOperationPaginateMap, connectionID)
+}
+
+//export PrintOperation_paginateHandler
+func PrintOperation_paginateHandler(c_context *C.GtkPrintContext) C.gboolean {
+	fmt.Println("cb")
+}
 
 // Unsupported signal 'preview' for PrintOperation : unsupported parameter preview : no type generator for PrintOperationPreview,
 
-// Unsupported signal 'request-page-setup' for PrintOperation : unsupported parameter context : type PrintContext :
+// Unsupported signal 'request-page-setup' for PrintOperation : unsupported parameter page_nr : type gint :
 
 var signalPrintOperationStatusChangedId int
 var signalPrintOperationStatusChangedMap = make(map[int]PrintOperationSignalStatusChangedCallback)
