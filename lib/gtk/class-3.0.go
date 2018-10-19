@@ -1432,8 +1432,6 @@ func (recv *MenuShell) GetSelectedItem() *Widget {
 
 // Unsupported : gtk_message_dialog_new_with_markup : unsupported parameter ... : varargs
 
-// Unsupported signal 'create-window' for Notebook : return value Notebook :
-
 // Unsupported : gtk_numerable_icon_get_background_gicon : no return generator
 
 // GetBackgroundIconName is a wrapper around the C function gtk_numerable_icon_get_background_icon_name.
@@ -1531,8 +1529,6 @@ func PanedNew(orientation Orientation) *Paned {
 // Unsupported signal 'open-location' for PlacesSidebar : unsupported parameter location : no type generator for Gio.File,
 
 // Unsupported signal 'populate-popup' for PlacesSidebar : unsupported parameter selected_item : no type generator for Gio.File,
-
-// Unsupported signal 'create-custom-widget' for PrintOperation : return value GObject.Object :
 
 // Unsupported signal 'preview' for PrintOperation : unsupported parameter preview : no type generator for PrintOperationPreview,
 

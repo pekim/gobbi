@@ -16,10 +16,6 @@ func (recv *Keymap) GetScrollLockState() bool {
 	return retGo
 }
 
-// Unsupported signal 'create-surface' for Window : return value cairo.Surface :
-
-// Unsupported signal 'pick-embedded-child' for Window : return value Window :
-
 // GetPassThrough is a wrapper around the C function gdk_window_get_pass_through.
 func (recv *Window) GetPassThrough() bool {
 	retC := C.gdk_window_get_pass_through((*C.GdkWindow)(recv.native))

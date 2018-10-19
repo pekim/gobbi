@@ -1247,10 +1247,6 @@ func CastToWindow(object *gobject.Object) *Window {
 	return WindowNewFromC(object.ToC())
 }
 
-// Unsupported signal 'create-surface' for Window : return value cairo.Surface :
-
-// Unsupported signal 'pick-embedded-child' for Window : return value Window :
-
 // WindowNew is a wrapper around the C function gdk_window_new.
 func WindowNew(parent *Window, attributes *WindowAttr, attributesMask int32) *Window {
 	c_parent := (*C.GdkWindow)(parent.ToC())

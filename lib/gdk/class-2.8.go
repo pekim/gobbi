@@ -56,10 +56,6 @@ func (recv *Screen) GetRgbaVisual() *Visual {
 	return retGo
 }
 
-// Unsupported signal 'create-surface' for Window : return value cairo.Surface :
-
-// Unsupported signal 'pick-embedded-child' for Window : return value Window :
-
 // MoveRegion is a wrapper around the C function gdk_window_move_region.
 func (recv *Window) MoveRegion(region *cairo.Region, dx int32, dy int32) {
 	c_region := (*C.cairo_region_t)(region.ToC())

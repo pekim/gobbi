@@ -28,10 +28,6 @@ func (recv *Keymap) GetModifierState() uint32 {
 
 // Unsupported : gdk_screen_get_monitor_workarea : unsupported parameter dest : Blacklisted record : GdkRectangle
 
-// Unsupported signal 'create-surface' for Window : return value cairo.Surface :
-
-// Unsupported signal 'pick-embedded-child' for Window : return value Window :
-
 // BeginMoveDragForDevice is a wrapper around the C function gdk_window_begin_move_drag_for_device.
 func (recv *Window) BeginMoveDragForDevice(device *Device, button int32, rootX int32, rootY int32, timestamp uint32) {
 	c_device := (*C.GdkDevice)(device.ToC())

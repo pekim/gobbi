@@ -595,8 +595,6 @@ func (recv *Seat) GetDisplay() *Display {
 	return retGo
 }
 
-// Unsupported signal 'create-surface' for Window : return value cairo.Surface :
-
 var signalWindowMovedToRectId int
 var signalWindowMovedToRectMap = make(map[int]WindowSignalMovedToRectCallback)
 var signalWindowMovedToRectLock sync.Mutex
@@ -644,8 +642,6 @@ func (recv *Window) DisconnectMovedToRect(connectionID int) {
 func Window_movedToRectHandler() {
 	fmt.Println("cb")
 }
-
-// Unsupported signal 'pick-embedded-child' for Window : return value Window :
 
 // BeginDrawFrame is a wrapper around the C function gdk_window_begin_draw_frame.
 func (recv *Window) BeginDrawFrame(region *cairo.Region) *DrawingContext {

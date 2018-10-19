@@ -178,8 +178,6 @@ func Entry_preeditChangedHandler() {
 
 // Unsupported : gtk_message_dialog_new_with_markup : unsupported parameter ... : varargs
 
-// Unsupported signal 'create-window' for Notebook : return value Notebook :
-
 // GetActionWidget is a wrapper around the C function gtk_notebook_get_action_widget.
 func (recv *Notebook) GetActionWidget(packType PackType) *Widget {
 	c_pack_type := (C.GtkPackType)(packType)
@@ -270,8 +268,6 @@ func (recv *PrintContext) GetHardMargins() (bool, float64, float64, float64, flo
 
 	return retGo, top, bottom, left, right
 }
-
-// Unsupported signal 'create-custom-widget' for PrintOperation : return value GObject.Object :
 
 // Unsupported signal 'preview' for PrintOperation : unsupported parameter preview : no type generator for PrintOperationPreview,
 

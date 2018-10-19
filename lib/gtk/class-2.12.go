@@ -65,6 +65,15 @@ import (
 */
 /*
 
+	void Notebook_createWindowHandler();
+
+	static gulong Notebook_signal_connect_create_window(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "create-window", Notebook_createWindowHandler, data);
+	}
+
+*/
+/*
+
 	void ScaleButton_popdownHandler();
 
 	static gulong ScaleButton_signal_connect_popdown(gpointer instance, gpointer data) {
@@ -678,7 +687,53 @@ func (recv *MenuToolButton) SetArrowTooltipText(text string) {
 
 // Unsupported : gtk_message_dialog_new_with_markup : unsupported parameter ... : varargs
 
-// Unsupported signal 'create-window' for Notebook : return value Notebook :
+var signalNotebookCreateWindowId int
+var signalNotebookCreateWindowMap = make(map[int]NotebookSignalCreateWindowCallback)
+var signalNotebookCreateWindowLock sync.Mutex
+
+// NotebookSignalCreateWindowCallback is a callback function for a 'create-window' signal emitted from a Notebook.
+type NotebookSignalCreateWindowCallback func(page *Widget, x int32, y int32) Notebook
+
+/*
+ConnectCreateWindow connects the callback to the 'create-window' signal for the Notebook.
+
+The returned value represents the connection, and may be passed to DisconnectCreateWindow to remove it.
+*/
+func (recv *Notebook) ConnectCreateWindow(callback NotebookSignalCreateWindowCallback) int {
+	signalNotebookCreateWindowLock.Lock()
+	defer signalNotebookCreateWindowLock.Unlock()
+
+	signalNotebookCreateWindowId++
+	signalNotebookCreateWindowMap[signalNotebookCreateWindowId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	retC := C.Notebook_signal_connect_create_window(instance, C.gpointer(uintptr(signalNotebookCreateWindowId)))
+	return int(retC)
+}
+
+/*
+DisconnectCreateWindow disconnects a callback from the 'create-window' signal for the Notebook.
+
+The connectionID should be a value returned from a call to ConnectCreateWindow.
+*/
+func (recv *Notebook) DisconnectCreateWindow(connectionID int) {
+	signalNotebookCreateWindowLock.Lock()
+	defer signalNotebookCreateWindowLock.Unlock()
+
+	_, exists := signalNotebookCreateWindowMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalNotebookCreateWindowMap, connectionID)
+}
+
+//export Notebook_createWindowHandler
+func Notebook_createWindowHandler() *C.GtkNotebook {
+	fmt.Println("cb")
+}
 
 // Unsupported signal 'get-child-position' for Overlay : unsupported parameter allocation : Blacklisted record : GdkRectangle
 
@@ -761,8 +816,6 @@ func (recv *PageSetup) ToKeyFile(keyFile *glib.KeyFile, groupName string) {
 // Unsupported signal 'open-location' for PlacesSidebar : unsupported parameter location : no type generator for Gio.File,
 
 // Unsupported signal 'populate-popup' for PlacesSidebar : unsupported parameter selected_item : no type generator for Gio.File,
-
-// Unsupported signal 'create-custom-widget' for PrintOperation : return value GObject.Object :
 
 // Unsupported signal 'preview' for PrintOperation : unsupported parameter preview : no type generator for PrintOperationPreview,
 

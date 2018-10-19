@@ -66,8 +66,6 @@ import "C"
 
 // Unsupported : gtk_file_filter_to_gvariant : return type : Blacklisted record : GVariant
 
-// Unsupported signal 'create-context' for GLArea : return value Gdk.GLContext :
-
 // GetUseEs is a wrapper around the C function gtk_gl_area_get_use_es.
 func (recv *GLArea) GetUseEs() bool {
 	retC := C.gtk_gl_area_get_use_es((*C.GtkGLArea)(recv.native))
@@ -169,8 +167,6 @@ func (recv *Menu) PlaceOnMonitor(monitor *gdk.Monitor) {
 
 // Unsupported : gtk_message_dialog_new_with_markup : unsupported parameter ... : varargs
 
-// Unsupported signal 'create-window' for Notebook : return value Notebook :
-
 // Unsupported signal 'get-child-position' for Overlay : unsupported parameter allocation : Blacklisted record : GdkRectangle
 
 // Unsupported : gtk_pad_controller_new : unsupported parameter group : no type generator for Gio.ActionGroup, GActionGroup*
@@ -223,8 +219,6 @@ func (recv *Popover) Popup() {
 
 	return
 }
-
-// Unsupported signal 'create-custom-widget' for PrintOperation : return value GObject.Object :
 
 // Unsupported signal 'preview' for PrintOperation : unsupported parameter preview : no type generator for PrintOperationPreview,
 

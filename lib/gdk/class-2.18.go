@@ -23,6 +23,15 @@ import (
 */
 /*
 
+	void Window_pickEmbeddedChildHandler();
+
+	static gulong Window_signal_connect_pick_embedded_child(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "pick-embedded-child", Window_pickEmbeddedChildHandler, data);
+	}
+
+*/
+/*
+
 	void Window_toEmbedderHandler();
 
 	static gulong Window_signal_connect_to_embedder(gpointer instance, gpointer data) {
@@ -31,8 +40,6 @@ import (
 
 */
 import "C"
-
-// Unsupported signal 'create-surface' for Window : return value cairo.Surface :
 
 var signalWindowFromEmbedderId int
 var signalWindowFromEmbedderMap = make(map[int]WindowSignalFromEmbedderCallback)
@@ -82,7 +89,53 @@ func Window_fromEmbedderHandler() {
 	fmt.Println("cb")
 }
 
-// Unsupported signal 'pick-embedded-child' for Window : return value Window :
+var signalWindowPickEmbeddedChildId int
+var signalWindowPickEmbeddedChildMap = make(map[int]WindowSignalPickEmbeddedChildCallback)
+var signalWindowPickEmbeddedChildLock sync.Mutex
+
+// WindowSignalPickEmbeddedChildCallback is a callback function for a 'pick-embedded-child' signal emitted from a Window.
+type WindowSignalPickEmbeddedChildCallback func(x float64, y float64) Window
+
+/*
+ConnectPickEmbeddedChild connects the callback to the 'pick-embedded-child' signal for the Window.
+
+The returned value represents the connection, and may be passed to DisconnectPickEmbeddedChild to remove it.
+*/
+func (recv *Window) ConnectPickEmbeddedChild(callback WindowSignalPickEmbeddedChildCallback) int {
+	signalWindowPickEmbeddedChildLock.Lock()
+	defer signalWindowPickEmbeddedChildLock.Unlock()
+
+	signalWindowPickEmbeddedChildId++
+	signalWindowPickEmbeddedChildMap[signalWindowPickEmbeddedChildId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	retC := C.Window_signal_connect_pick_embedded_child(instance, C.gpointer(uintptr(signalWindowPickEmbeddedChildId)))
+	return int(retC)
+}
+
+/*
+DisconnectPickEmbeddedChild disconnects a callback from the 'pick-embedded-child' signal for the Window.
+
+The connectionID should be a value returned from a call to ConnectPickEmbeddedChild.
+*/
+func (recv *Window) DisconnectPickEmbeddedChild(connectionID int) {
+	signalWindowPickEmbeddedChildLock.Lock()
+	defer signalWindowPickEmbeddedChildLock.Unlock()
+
+	_, exists := signalWindowPickEmbeddedChildMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalWindowPickEmbeddedChildMap, connectionID)
+}
+
+//export Window_pickEmbeddedChildHandler
+func Window_pickEmbeddedChildHandler() *C.GdkWindow {
+	fmt.Println("cb")
+}
 
 var signalWindowToEmbedderId int
 var signalWindowToEmbedderMap = make(map[int]WindowSignalToEmbedderCallback)

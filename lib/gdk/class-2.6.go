@@ -28,10 +28,6 @@ func (recv *Display) SupportsSelectionNotification() bool {
 	return retGo
 }
 
-// Unsupported signal 'create-surface' for Window : return value cairo.Surface :
-
-// Unsupported signal 'pick-embedded-child' for Window : return value Window :
-
 // ConfigureFinished is a wrapper around the C function gdk_window_configure_finished.
 func (recv *Window) ConfigureFinished() {
 	C.gdk_window_configure_finished((*C.GdkWindow)(recv.native))

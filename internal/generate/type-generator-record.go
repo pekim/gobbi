@@ -55,7 +55,7 @@ func (t *TypeGeneratorRecord) isSupportedAsReturnValue() (supported bool, reason
 }
 
 func (t *TypeGeneratorRecord) isSupportedAsReturnCValue() (supported bool, reason string) {
-	return false, ""
+	return true, ""
 }
 
 func (t *TypeGeneratorRecord) generateDeclaration(g *jen.Group, goVarName string) {
@@ -104,6 +104,10 @@ func (t *TypeGeneratorRecord) generateReturnFunctionDeclaration(g *jen.Group) {
 }
 
 func (t *TypeGeneratorRecord) generateReturnFunctionDeclarationCtype(g *jen.Group) {
+	g.
+		Op(strings.Repeat("*", t.typ.indirectLevel+1)).
+		Qual("C", t.record.CType)
+
 }
 
 func (t *TypeGeneratorRecord) generateReturnCToGo(g *jen.Group, isParam bool,

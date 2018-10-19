@@ -77,7 +77,3 @@ func (recv *Keymap) GetCapsLockState() bool {
 
 	return retGo
 }
-
-// Unsupported signal 'create-surface' for Window : return value cairo.Surface :
-
-// Unsupported signal 'pick-embedded-child' for Window : return value Window :

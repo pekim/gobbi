@@ -17485,8 +17485,6 @@ func Notebook_changeCurrentPageHandler() C.boolean {
 	fmt.Println("cb")
 }
 
-// Unsupported signal 'create-window' for Notebook : return value Notebook :
-
 var signalNotebookFocusTabId int
 var signalNotebookFocusTabMap = make(map[int]NotebookSignalFocusTabCallback)
 var signalNotebookFocusTabLock sync.Mutex
@@ -18918,8 +18916,6 @@ func (recv *PrintOperation) Object() *gobject.Object {
 func CastToPrintOperation(object *gobject.Object) *PrintOperation {
 	return PrintOperationNewFromC(object.ToC())
 }
-
-// Unsupported signal 'create-custom-widget' for PrintOperation : return value GObject.Object :
 
 // Unsupported signal 'preview' for PrintOperation : unsupported parameter preview : no type generator for PrintOperationPreview,
 

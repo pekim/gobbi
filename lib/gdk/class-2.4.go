@@ -92,10 +92,6 @@ func (recv *Display) SupportsCursorColor() bool {
 	return retGo
 }
 
-// Unsupported signal 'create-surface' for Window : return value cairo.Surface :
-
-// Unsupported signal 'pick-embedded-child' for Window : return value Window :
-
 // GetGroup is a wrapper around the C function gdk_window_get_group.
 func (recv *Window) GetGroup() *Window {
 	retC := C.gdk_window_get_group((*C.GdkWindow)(recv.native))

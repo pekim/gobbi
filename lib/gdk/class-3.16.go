@@ -153,10 +153,6 @@ func (recv *GLContext) SetRequiredVersion(major int32, minor int32) {
 	return
 }
 
-// Unsupported signal 'create-surface' for Window : return value cairo.Surface :
-
-// Unsupported signal 'pick-embedded-child' for Window : return value Window :
-
 // CreateGlContext is a wrapper around the C function gdk_window_create_gl_context.
 func (recv *Window) CreateGlContext() (*GLContext, error) {
 	var cThrowableError *C.GError

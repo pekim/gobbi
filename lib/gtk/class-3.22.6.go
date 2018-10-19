@@ -60,8 +60,6 @@ func (recv *FlowBox) GetChildAtPos(x int32, y int32) *FlowBoxChild {
 	return retGo
 }
 
-// Unsupported signal 'create-context' for GLArea : return value Gdk.GLContext :
-
 // Unsupported : gtk_icon_view_new_with_model : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
 
 // Unsupported : gtk_image_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon, GIcon*
@@ -82,8 +80,6 @@ func (recv *FlowBox) GetChildAtPos(x int32, y int32) *FlowBoxChild {
 
 // Unsupported : gtk_message_dialog_new_with_markup : unsupported parameter ... : varargs
 
-// Unsupported signal 'create-window' for Notebook : return value Notebook :
-
 // Unsupported signal 'get-child-position' for Overlay : unsupported parameter allocation : Blacklisted record : GdkRectangle
 
 // Unsupported : gtk_pad_controller_new : unsupported parameter group : no type generator for Gio.ActionGroup, GActionGroup*
@@ -99,8 +95,6 @@ func (recv *FlowBox) GetChildAtPos(x int32, y int32) *FlowBoxChild {
 // Unsupported signal 'open-location' for PlacesSidebar : unsupported parameter location : no type generator for Gio.File,
 
 // Unsupported signal 'populate-popup' for PlacesSidebar : unsupported parameter selected_item : no type generator for Gio.File,
-
-// Unsupported signal 'create-custom-widget' for PrintOperation : return value GObject.Object :
 
 // Unsupported signal 'preview' for PrintOperation : unsupported parameter preview : no type generator for PrintOperationPreview,
 

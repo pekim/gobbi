@@ -157,7 +157,3 @@ func (recv *Screen) GetMonitorWidthMm(monitorNum int32) int32 {
 
 	return retGo
 }
-
-// Unsupported signal 'create-surface' for Window : return value cairo.Surface :
-
-// Unsupported signal 'pick-embedded-child' for Window : return value Window :

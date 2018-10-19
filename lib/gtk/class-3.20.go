@@ -219,8 +219,6 @@ func (recv *FileChooserNative) SetCancelLabel(cancelLabel string) {
 
 // Unsupported : gtk_file_filter_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
 
-// Unsupported signal 'create-context' for GLArea : return value Gdk.GLContext :
-
 // Unsupported : gtk_icon_view_new_with_model : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
 
 // Unsupported : gtk_image_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon, GIcon*
@@ -363,8 +361,6 @@ func (recv *NativeDialog) Show() {
 
 	return
 }
-
-// Unsupported signal 'create-window' for Notebook : return value Notebook :
 
 // Unsupported signal 'get-child-position' for Overlay : unsupported parameter allocation : Blacklisted record : GdkRectangle
 
@@ -579,8 +575,6 @@ func (recv *Popover) SetConstrainTo(constraint PopoverConstraint) {
 
 	return
 }
-
-// Unsupported signal 'create-custom-widget' for PrintOperation : return value GObject.Object :
 
 // Unsupported signal 'preview' for PrintOperation : unsupported parameter preview : no type generator for PrintOperationPreview,
 

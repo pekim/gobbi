@@ -171,8 +171,6 @@ func (recv *MenuShell) SelectFirst(searchSensitive bool) {
 
 // Unsupported : gtk_message_dialog_new_with_markup : unsupported parameter ... : varargs
 
-// Unsupported signal 'create-window' for Notebook : return value Notebook :
-
 // GetNPages is a wrapper around the C function gtk_notebook_get_n_pages.
 func (recv *Notebook) GetNPages() int32 {
 	retC := C.gtk_notebook_get_n_pages((*C.GtkNotebook)(recv.native))
@@ -194,8 +192,6 @@ func (recv *Notebook) GetNPages() int32 {
 // Unsupported signal 'open-location' for PlacesSidebar : unsupported parameter location : no type generator for Gio.File,
 
 // Unsupported signal 'populate-popup' for PlacesSidebar : unsupported parameter selected_item : no type generator for Gio.File,
-
-// Unsupported signal 'create-custom-widget' for PrintOperation : return value GObject.Object :
 
 // Unsupported signal 'preview' for PrintOperation : unsupported parameter preview : no type generator for PrintOperationPreview,
 

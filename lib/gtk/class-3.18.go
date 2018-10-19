@@ -90,8 +90,6 @@ func (recv *Assistant) SetPageHasPadding(page *Widget, hasPadding bool) {
 
 // Unsupported : gtk_flow_box_bind_model : unsupported parameter model : no type generator for Gio.ListModel, GListModel*
 
-// Unsupported signal 'create-context' for GLArea : return value Gdk.GLContext :
-
 // Unsupported : gtk_icon_view_new_with_model : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
 
 // Unsupported : gtk_image_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon, GIcon*
@@ -111,8 +109,6 @@ func (recv *Assistant) SetPageHasPadding(page *Widget, hasPadding bool) {
 // Unsupported : gtk_message_dialog_new : unsupported parameter ... : varargs
 
 // Unsupported : gtk_message_dialog_new_with_markup : unsupported parameter ... : varargs
-
-// Unsupported signal 'create-window' for Notebook : return value Notebook :
 
 // Unsupported signal 'get-child-position' for Overlay : unsupported parameter allocation : Blacklisted record : GdkRectangle
 
@@ -291,8 +287,6 @@ func (recv *Popover) SetDefaultWidget(widget *Widget) {
 
 	return
 }
-
-// Unsupported signal 'create-custom-widget' for PrintOperation : return value GObject.Object :
 
 // Unsupported signal 'preview' for PrintOperation : unsupported parameter preview : no type generator for PrintOperationPreview,
 

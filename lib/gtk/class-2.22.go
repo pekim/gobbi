@@ -174,8 +174,6 @@ func (recv *MessageDialog) GetMessageArea() *Widget {
 	return retGo
 }
 
-// Unsupported signal 'create-window' for Notebook : return value Notebook :
-
 // GetTabHborder is a wrapper around the C function gtk_notebook_get_tab_hborder.
 func (recv *Notebook) GetTabHborder() uint16 {
 	retC := C.gtk_notebook_get_tab_hborder((*C.GtkNotebook)(recv.native))
@@ -205,8 +203,6 @@ func (recv *Notebook) GetTabVborder() uint16 {
 // Unsupported signal 'open-location' for PlacesSidebar : unsupported parameter location : no type generator for Gio.File,
 
 // Unsupported signal 'populate-popup' for PlacesSidebar : unsupported parameter selected_item : no type generator for Gio.File,
-
-// Unsupported signal 'create-custom-widget' for PrintOperation : return value GObject.Object :
 
 // Unsupported signal 'preview' for PrintOperation : unsupported parameter preview : no type generator for PrintOperationPreview,
 

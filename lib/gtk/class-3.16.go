@@ -169,8 +169,6 @@ func CastToGLArea(object *gobject.Object) *GLArea {
 	return GLAreaNewFromC(object.ToC())
 }
 
-// Unsupported signal 'create-context' for GLArea : return value Gdk.GLContext :
-
 // GLAreaNew is a wrapper around the C function gtk_gl_area_new.
 func GLAreaNew() *GLArea {
 	retC := C.gtk_gl_area_new()
@@ -387,8 +385,6 @@ func ModelButtonNew() *ModelButton {
 	return retGo
 }
 
-// Unsupported signal 'create-window' for Notebook : return value Notebook :
-
 // DetachTab is a wrapper around the C function gtk_notebook_detach_tab.
 func (recv *Notebook) DetachTab(child *Widget) {
 	c_child := (*C.GtkWidget)(child.ToC())
@@ -465,8 +461,6 @@ func (recv *PopoverMenu) OpenSubmenu(name string) {
 
 	return
 }
-
-// Unsupported signal 'create-custom-widget' for PrintOperation : return value GObject.Object :
 
 // Unsupported signal 'preview' for PrintOperation : unsupported parameter preview : no type generator for PrintOperationPreview,
 

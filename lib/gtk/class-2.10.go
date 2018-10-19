@@ -112,6 +112,15 @@ import (
 */
 /*
 
+	void PrintOperation_createCustomWidgetHandler();
+
+	static gulong PrintOperation_signal_connect_create_custom_widget(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "create-custom-widget", PrintOperation_createCustomWidgetHandler, data);
+	}
+
+*/
+/*
+
 	void PrintOperation_customWidgetApplyHandler();
 
 	static gulong PrintOperation_signal_connect_custom_widget_apply(gpointer instance, gpointer data) {
@@ -933,8 +942,6 @@ func (recv *MessageDialog) SetImage(image *Widget) {
 	return
 }
 
-// Unsupported signal 'create-window' for Notebook : return value Notebook :
-
 var signalNotebookPageAddedId int
 var signalNotebookPageAddedMap = make(map[int]NotebookSignalPageAddedCallback)
 var signalNotebookPageAddedLock sync.Mutex
@@ -1453,7 +1460,53 @@ func PrintOperation_beginPrintHandler() {
 	fmt.Println("cb")
 }
 
-// Unsupported signal 'create-custom-widget' for PrintOperation : return value GObject.Object :
+var signalPrintOperationCreateCustomWidgetId int
+var signalPrintOperationCreateCustomWidgetMap = make(map[int]PrintOperationSignalCreateCustomWidgetCallback)
+var signalPrintOperationCreateCustomWidgetLock sync.Mutex
+
+// PrintOperationSignalCreateCustomWidgetCallback is a callback function for a 'create-custom-widget' signal emitted from a PrintOperation.
+type PrintOperationSignalCreateCustomWidgetCallback func() gobject.Object
+
+/*
+ConnectCreateCustomWidget connects the callback to the 'create-custom-widget' signal for the PrintOperation.
+
+The returned value represents the connection, and may be passed to DisconnectCreateCustomWidget to remove it.
+*/
+func (recv *PrintOperation) ConnectCreateCustomWidget(callback PrintOperationSignalCreateCustomWidgetCallback) int {
+	signalPrintOperationCreateCustomWidgetLock.Lock()
+	defer signalPrintOperationCreateCustomWidgetLock.Unlock()
+
+	signalPrintOperationCreateCustomWidgetId++
+	signalPrintOperationCreateCustomWidgetMap[signalPrintOperationCreateCustomWidgetId] = callback
+
+	instance := C.gpointer(recv.Object().ToC())
+	retC := C.PrintOperation_signal_connect_create_custom_widget(instance, C.gpointer(uintptr(signalPrintOperationCreateCustomWidgetId)))
+	return int(retC)
+}
+
+/*
+DisconnectCreateCustomWidget disconnects a callback from the 'create-custom-widget' signal for the PrintOperation.
+
+The connectionID should be a value returned from a call to ConnectCreateCustomWidget.
+*/
+func (recv *PrintOperation) DisconnectCreateCustomWidget(connectionID int) {
+	signalPrintOperationCreateCustomWidgetLock.Lock()
+	defer signalPrintOperationCreateCustomWidgetLock.Unlock()
+
+	_, exists := signalPrintOperationCreateCustomWidgetMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.Object().ToC())
+	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	delete(signalPrintOperationCreateCustomWidgetMap, connectionID)
+}
+
+//export PrintOperation_createCustomWidgetHandler
+func PrintOperation_createCustomWidgetHandler() *C.GObject {
+	fmt.Println("cb")
+}
 
 var signalPrintOperationCustomWidgetApplyId int
 var signalPrintOperationCustomWidgetApplyMap = make(map[int]PrintOperationSignalCustomWidgetApplyCallback)
