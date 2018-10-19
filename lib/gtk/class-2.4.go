@@ -409,6 +409,9 @@ func (recv *ActionGroup) DisconnectConnectProxy(connectionID int) {
 
 //export ActionGroup_connectProxyHandler
 func ActionGroup_connectProxyHandler(c_action *C.GtkAction, c_proxy *C.GtkWidget) {
+	action := ActionNewFromC(unsafe.Pointer(c_action))
+
+	proxy := WidgetNewFromC(unsafe.Pointer(c_proxy))
 
 }
 
@@ -457,6 +460,9 @@ func (recv *ActionGroup) DisconnectDisconnectProxy(connectionID int) {
 
 //export ActionGroup_disconnectProxyHandler
 func ActionGroup_disconnectProxyHandler(c_action *C.GtkAction, c_proxy *C.GtkWidget) {
+	action := ActionNewFromC(unsafe.Pointer(c_action))
+
+	proxy := WidgetNewFromC(unsafe.Pointer(c_proxy))
 
 }
 
@@ -505,6 +511,7 @@ func (recv *ActionGroup) DisconnectPostActivate(connectionID int) {
 
 //export ActionGroup_postActivateHandler
 func ActionGroup_postActivateHandler(c_action *C.GtkAction) {
+	action := ActionNewFromC(unsafe.Pointer(c_action))
 
 }
 
@@ -553,6 +560,7 @@ func (recv *ActionGroup) DisconnectPreActivate(connectionID int) {
 
 //export ActionGroup_preActivateHandler
 func ActionGroup_preActivateHandler(c_action *C.GtkAction) {
+	action := ActionNewFromC(unsafe.Pointer(c_action))
 
 }
 
@@ -2022,6 +2030,7 @@ func (recv *RadioAction) DisconnectChanged(connectionID int) {
 
 //export RadioAction_changedHandler
 func RadioAction_changedHandler(c_current *C.GtkRadioAction) {
+	current := RadioActionNewFromC(unsafe.Pointer(c_current))
 
 }
 
@@ -3079,6 +3088,7 @@ func (recv *UIManager) DisconnectAddWidget(connectionID int) {
 
 //export UIManager_addWidgetHandler
 func UIManager_addWidgetHandler(c_widget *C.GtkWidget) {
+	widget := WidgetNewFromC(unsafe.Pointer(c_widget))
 
 }
 
@@ -3127,6 +3137,9 @@ func (recv *UIManager) DisconnectConnectProxy(connectionID int) {
 
 //export UIManager_connectProxyHandler
 func UIManager_connectProxyHandler(c_action *C.GtkAction, c_proxy *C.GtkWidget) {
+	action := ActionNewFromC(unsafe.Pointer(c_action))
+
+	proxy := WidgetNewFromC(unsafe.Pointer(c_proxy))
 
 }
 
@@ -3175,6 +3188,9 @@ func (recv *UIManager) DisconnectDisconnectProxy(connectionID int) {
 
 //export UIManager_disconnectProxyHandler
 func UIManager_disconnectProxyHandler(c_action *C.GtkAction, c_proxy *C.GtkWidget) {
+	action := ActionNewFromC(unsafe.Pointer(c_action))
+
+	proxy := WidgetNewFromC(unsafe.Pointer(c_proxy))
 
 }
 
@@ -3223,6 +3239,7 @@ func (recv *UIManager) DisconnectPostActivate(connectionID int) {
 
 //export UIManager_postActivateHandler
 func UIManager_postActivateHandler(c_action *C.GtkAction) {
+	action := ActionNewFromC(unsafe.Pointer(c_action))
 
 }
 
@@ -3271,6 +3288,7 @@ func (recv *UIManager) DisconnectPreActivate(connectionID int) {
 
 //export UIManager_preActivateHandler
 func UIManager_preActivateHandler(c_action *C.GtkAction) {
+	action := ActionNewFromC(unsafe.Pointer(c_action))
 
 }
 

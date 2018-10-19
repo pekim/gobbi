@@ -96,6 +96,7 @@ func (recv *Device) DisconnectToolChanged(connectionID int) {
 
 //export Device_toolChangedHandler
 func Device_toolChangedHandler(c_tool *C.GdkDeviceTool) {
+	tool := DeviceToolNewFromC(unsafe.Pointer(c_tool))
 
 }
 
@@ -208,6 +209,7 @@ func (recv *Display) DisconnectMonitorAdded(connectionID int) {
 
 //export Display_monitorAddedHandler
 func Display_monitorAddedHandler(c_monitor *C.GdkMonitor) {
+	monitor := MonitorNewFromC(unsafe.Pointer(c_monitor))
 
 }
 
@@ -256,6 +258,7 @@ func (recv *Display) DisconnectMonitorRemoved(connectionID int) {
 
 //export Display_monitorRemovedHandler
 func Display_monitorRemovedHandler(c_monitor *C.GdkMonitor) {
+	monitor := MonitorNewFromC(unsafe.Pointer(c_monitor))
 
 }
 

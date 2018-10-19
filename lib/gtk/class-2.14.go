@@ -793,6 +793,7 @@ func (recv *StatusIcon) DisconnectButtonPressEvent(connectionID int) {
 
 //export StatusIcon_buttonPressEventHandler
 func StatusIcon_buttonPressEventHandler(c_event *C.GdkEventButton) C.gboolean {
+	event := gdk.EventButtonNewFromC(unsafe.Pointer(c_event))
 
 }
 
@@ -841,6 +842,7 @@ func (recv *StatusIcon) DisconnectButtonReleaseEvent(connectionID int) {
 
 //export StatusIcon_buttonReleaseEventHandler
 func StatusIcon_buttonReleaseEventHandler(c_event *C.GdkEventButton) C.gboolean {
+	event := gdk.EventButtonNewFromC(unsafe.Pointer(c_event))
 
 }
 
@@ -922,6 +924,7 @@ func (recv *Widget) DisconnectDamageEvent(connectionID int) {
 
 //export Widget_damageEventHandler
 func Widget_damageEventHandler(c_event *C.GdkEventExpose) C.gboolean {
+	event := gdk.EventExposeNewFromC(unsafe.Pointer(c_event))
 
 }
 

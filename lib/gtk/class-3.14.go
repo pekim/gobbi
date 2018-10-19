@@ -301,6 +301,7 @@ func (recv *Gesture) DisconnectBegin(connectionID int) {
 
 //export Gesture_beginHandler
 func Gesture_beginHandler(c_sequence *C.GdkEventSequence) {
+	sequence := gdk.EventSequenceNewFromC(unsafe.Pointer(c_sequence))
 
 }
 
@@ -349,6 +350,7 @@ func (recv *Gesture) DisconnectCancel(connectionID int) {
 
 //export Gesture_cancelHandler
 func Gesture_cancelHandler(c_sequence *C.GdkEventSequence) {
+	sequence := gdk.EventSequenceNewFromC(unsafe.Pointer(c_sequence))
 
 }
 
@@ -397,6 +399,7 @@ func (recv *Gesture) DisconnectEnd(connectionID int) {
 
 //export Gesture_endHandler
 func Gesture_endHandler(c_sequence *C.GdkEventSequence) {
+	sequence := gdk.EventSequenceNewFromC(unsafe.Pointer(c_sequence))
 
 }
 
@@ -447,6 +450,7 @@ func (recv *Gesture) DisconnectUpdate(connectionID int) {
 
 //export Gesture_updateHandler
 func Gesture_updateHandler(c_sequence *C.GdkEventSequence) {
+	sequence := gdk.EventSequenceNewFromC(unsafe.Pointer(c_sequence))
 
 }
 

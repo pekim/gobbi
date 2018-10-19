@@ -108,8 +108,22 @@ func (t *TypeGeneratorRecord) generateParamCVar(g *jen.Group, cVarName string, g
 			Call())
 }
 
-func (t *TypeGeneratorRecord) generateParamGoVar(g *jen.Group, goVarName string, cVarName string, transferOwnership string) {
-	fmt.Println("TODO - record")
+func (t *TypeGeneratorRecord) generateParamGoVar(
+	g *jen.Group, goVarName string, cVarName string, pkg string,
+) {
+	g.
+		Id(goVarName).
+		Op(":=").
+		Do(func(s *jen.Statement) {
+			if pkg != "" {
+				s.Qual(pkg, t.record.newFromCFuncName)
+			} else {
+				s.Id(t.record.newFromCFuncName)
+			}
+		}).
+		Call(jen.
+			Qual("unsafe", "Pointer").
+			Call(jen.Id(cVarName)))
 }
 
 func (t *TypeGeneratorRecord) generateParamOutCVar(g *jen.Group, cVarName string) {

@@ -87,7 +87,12 @@ func (p *Parameter) generateCVar(g *jen.Group) {
 }
 
 func (p *Parameter) generateGoVar(g *jen.Group) {
-	p.Type.generator.generateParamGoVar(g, p.goVarName, p.cVarName, p.TransferOwnership)
+	pkg := ""
+	if p.Type.qname.ns != p.Namespace {
+		pkg = p.Type.qname.ns.fullGoPackageName
+	}
+
+	p.Type.generator.generateParamGoVar(g, p.goVarName, p.cVarName, pkg)
 	g.Line()
 }
 

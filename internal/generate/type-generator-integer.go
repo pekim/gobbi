@@ -79,7 +79,7 @@ func (t *TypeGeneratorInteger) generateParamCVar(g *jen.Group, cVarName string, 
 		Parens(jen.Id(goVarName))
 }
 
-func (t *TypeGeneratorInteger) generateParamGoVar(g *jen.Group, goVarName string, cVarName string, transferOwnership string) {
+func (t *TypeGeneratorInteger) generateParamGoVar(g *jen.Group, goVarName string, cVarName string, pkg string) {
 }
 
 func (t *TypeGeneratorInteger) generateParamOutCVar(g *jen.Group, cVarName string) {

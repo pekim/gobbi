@@ -107,6 +107,7 @@ func (recv *Application) DisconnectWindowAdded(connectionID int) {
 
 //export Application_windowAddedHandler
 func Application_windowAddedHandler(c_window *C.GtkWindow) {
+	window := WindowNewFromC(unsafe.Pointer(c_window))
 
 }
 
@@ -155,6 +156,7 @@ func (recv *Application) DisconnectWindowRemoved(connectionID int) {
 
 //export Application_windowRemovedHandler
 func Application_windowRemovedHandler(c_window *C.GtkWindow) {
+	window := WindowNewFromC(unsafe.Pointer(c_window))
 
 }
 

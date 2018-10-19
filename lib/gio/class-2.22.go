@@ -1602,6 +1602,9 @@ func (recv *ThreadedSocketService) DisconnectRun(connectionID int) {
 
 //export ThreadedSocketService_runHandler
 func ThreadedSocketService_runHandler(c_connection *C.GSocketConnection, c_source_object *C.GObject) C.gboolean {
+	connection := SocketConnectionNewFromC(unsafe.Pointer(c_connection))
+
+	sourceObject := gobject.ObjectNewFromC(unsafe.Pointer(c_source_object))
 
 }
 

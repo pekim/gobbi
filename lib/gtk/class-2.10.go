@@ -314,6 +314,7 @@ func (recv *Assistant) DisconnectPrepare(connectionID int) {
 
 //export Assistant_prepareHandler
 func Assistant_prepareHandler(c_page *C.GtkWidget) {
+	page := WidgetNewFromC(unsafe.Pointer(c_page))
 
 }
 
@@ -1098,6 +1099,7 @@ func (recv *PrintOperation) DisconnectBeginPrint(connectionID int) {
 
 //export PrintOperation_beginPrintHandler
 func PrintOperation_beginPrintHandler(c_context *C.GtkPrintContext) {
+	context := PrintContextNewFromC(unsafe.Pointer(c_context))
 
 }
 
@@ -1192,6 +1194,7 @@ func (recv *PrintOperation) DisconnectCustomWidgetApply(connectionID int) {
 
 //export PrintOperation_customWidgetApplyHandler
 func PrintOperation_customWidgetApplyHandler(c_widget *C.GtkWidget) {
+	widget := WidgetNewFromC(unsafe.Pointer(c_widget))
 
 }
 
@@ -1244,6 +1247,7 @@ func (recv *PrintOperation) DisconnectEndPrint(connectionID int) {
 
 //export PrintOperation_endPrintHandler
 func PrintOperation_endPrintHandler(c_context *C.GtkPrintContext) {
+	context := PrintContextNewFromC(unsafe.Pointer(c_context))
 
 }
 
@@ -1292,6 +1296,7 @@ func (recv *PrintOperation) DisconnectPaginate(connectionID int) {
 
 //export PrintOperation_paginateHandler
 func PrintOperation_paginateHandler(c_context *C.GtkPrintContext) C.gboolean {
+	context := PrintContextNewFromC(unsafe.Pointer(c_context))
 
 }
 

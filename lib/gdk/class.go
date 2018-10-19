@@ -422,6 +422,7 @@ func (recv *DeviceManager) DisconnectDeviceAdded(connectionID int) {
 
 //export DeviceManager_deviceAddedHandler
 func DeviceManager_deviceAddedHandler(c_device *C.GdkDevice) {
+	device := DeviceNewFromC(unsafe.Pointer(c_device))
 
 }
 
@@ -470,6 +471,7 @@ func (recv *DeviceManager) DisconnectDeviceChanged(connectionID int) {
 
 //export DeviceManager_deviceChangedHandler
 func DeviceManager_deviceChangedHandler(c_device *C.GdkDevice) {
+	device := DeviceNewFromC(unsafe.Pointer(c_device))
 
 }
 
@@ -518,6 +520,7 @@ func (recv *DeviceManager) DisconnectDeviceRemoved(connectionID int) {
 
 //export DeviceManager_deviceRemovedHandler
 func DeviceManager_deviceRemovedHandler(c_device *C.GdkDevice) {
+	device := DeviceNewFromC(unsafe.Pointer(c_device))
 
 }
 

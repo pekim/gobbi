@@ -61,7 +61,7 @@ func (t *TypeGeneratorBoolean) generateParamCVar(g *jen.Group, cVarName string, 
 	t.generateCallBoolToGboolean(g, jen.Id(goVarName))
 }
 
-func (t *TypeGeneratorBoolean) generateParamGoVar(g *jen.Group, goVarName string, cVarName string, transferOwnership string) {
+func (t *TypeGeneratorBoolean) generateParamGoVar(g *jen.Group, goVarName string, cVarName string, pkg string) {
 	g.
 		Id(goVarName).Op(":=").
 		Id(cVarName).Op("==").Qual("C", "TRUE")

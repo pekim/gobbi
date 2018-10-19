@@ -524,6 +524,7 @@ func (recv *ListBox) DisconnectRowActivated(connectionID int) {
 
 //export ListBox_rowActivatedHandler
 func ListBox_rowActivatedHandler(c_row *C.GtkListBoxRow) {
+	row := ListBoxRowNewFromC(unsafe.Pointer(c_row))
 
 }
 
@@ -572,6 +573,7 @@ func (recv *ListBox) DisconnectRowSelected(connectionID int) {
 
 //export ListBox_rowSelectedHandler
 func ListBox_rowSelectedHandler(c_row *C.GtkListBoxRow) {
+	row := ListBoxRowNewFromC(unsafe.Pointer(c_row))
 
 }
 

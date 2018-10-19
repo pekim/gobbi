@@ -409,6 +409,7 @@ func (recv *PlacesSidebar) DisconnectMount(connectionID int) {
 
 //export PlacesSidebar_mountHandler
 func PlacesSidebar_mountHandler(c_mount_operation *C.GMountOperation) {
+	mountOperation := gio.MountOperationNewFromC(unsafe.Pointer(c_mount_operation))
 
 }
 
@@ -459,6 +460,7 @@ func (recv *PlacesSidebar) DisconnectUnmount(connectionID int) {
 
 //export PlacesSidebar_unmountHandler
 func PlacesSidebar_unmountHandler(c_mount_operation *C.GMountOperation) {
+	mountOperation := gio.MountOperationNewFromC(unsafe.Pointer(c_mount_operation))
 
 }
 

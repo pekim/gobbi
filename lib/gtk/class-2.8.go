@@ -417,6 +417,7 @@ func (recv *Widget) DisconnectGrabBrokenEvent(connectionID int) {
 
 //export Widget_grabBrokenEventHandler
 func Widget_grabBrokenEventHandler(c_event *C.GdkEventGrabBroken) C.gboolean {
+	event := gdk.EventGrabBrokenNewFromC(unsafe.Pointer(c_event))
 
 }
 

@@ -437,6 +437,7 @@ func (recv *Clipboard) DisconnectOwnerChange(connectionID int) {
 
 //export Clipboard_ownerChangeHandler
 func Clipboard_ownerChangeHandler(c_event *C.GdkEventOwnerChange) {
+	event := gdk.EventOwnerChangeNewFromC(unsafe.Pointer(c_event))
 
 }
 

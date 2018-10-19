@@ -94,6 +94,7 @@ func (recv *Display) DisconnectSeatAdded(connectionID int) {
 
 //export Display_seatAddedHandler
 func Display_seatAddedHandler(c_seat *C.GdkSeat) {
+	seat := SeatNewFromC(unsafe.Pointer(c_seat))
 
 }
 
@@ -142,6 +143,7 @@ func (recv *Display) DisconnectSeatRemoved(connectionID int) {
 
 //export Display_seatRemovedHandler
 func Display_seatRemovedHandler(c_seat *C.GdkSeat) {
+	seat := SeatNewFromC(unsafe.Pointer(c_seat))
 
 }
 

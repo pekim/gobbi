@@ -6287,6 +6287,7 @@ func (recv *Container) DisconnectAdd(connectionID int) {
 
 //export Container_addHandler
 func Container_addHandler(c_object *C.GtkWidget) {
+	object := WidgetNewFromC(unsafe.Pointer(c_object))
 
 }
 
@@ -6381,6 +6382,7 @@ func (recv *Container) DisconnectRemove(connectionID int) {
 
 //export Container_removeHandler
 func Container_removeHandler(c_object *C.GtkWidget) {
+	object := WidgetNewFromC(unsafe.Pointer(c_object))
 
 }
 
@@ -6429,6 +6431,7 @@ func (recv *Container) DisconnectSetFocusChild(connectionID int) {
 
 //export Container_setFocusChildHandler
 func Container_setFocusChildHandler(c_object *C.GtkWidget) {
+	object := WidgetNewFromC(unsafe.Pointer(c_object))
 
 }
 
@@ -6843,6 +6846,9 @@ func (recv *CssProvider) DisconnectParsingError(connectionID int) {
 
 //export CssProvider_parsingErrorHandler
 func CssProvider_parsingErrorHandler(c_section *C.GtkCssSection, c_error *C.GError) {
+	section := CssSectionNewFromC(unsafe.Pointer(c_section))
+
+	error := glib.ErrorNewFromC(unsafe.Pointer(c_error))
 
 }
 
@@ -7434,6 +7440,7 @@ func (recv *Entry) DisconnectPopulatePopup(connectionID int) {
 
 //export Entry_populatePopupHandler
 func Entry_populatePopupHandler(c_widget *C.GtkWidget) {
+	widget := WidgetNewFromC(unsafe.Pointer(c_widget))
 
 }
 
@@ -8913,6 +8920,7 @@ func (recv *FlowBox) DisconnectChildActivated(connectionID int) {
 
 //export FlowBox_childActivatedHandler
 func FlowBox_childActivatedHandler(c_child *C.GtkFlowBoxChild) {
+	child := FlowBoxChildNewFromC(unsafe.Pointer(c_child))
 
 }
 
@@ -11026,6 +11034,7 @@ func (recv *HandleBox) DisconnectChildAttached(connectionID int) {
 
 //export HandleBox_childAttachedHandler
 func HandleBox_childAttachedHandler(c_widget *C.GtkWidget) {
+	widget := WidgetNewFromC(unsafe.Pointer(c_widget))
 
 }
 
@@ -11074,6 +11083,7 @@ func (recv *HandleBox) DisconnectChildDetached(connectionID int) {
 
 //export HandleBox_childDetachedHandler
 func HandleBox_childDetachedHandler(c_widget *C.GtkWidget) {
+	widget := WidgetNewFromC(unsafe.Pointer(c_widget))
 
 }
 
@@ -11940,6 +11950,7 @@ func (recv *IconView) DisconnectItemActivated(connectionID int) {
 
 //export IconView_itemActivatedHandler
 func IconView_itemActivatedHandler(c_path *C.GtkTreePath) {
+	path := TreePathNewFromC(unsafe.Pointer(c_path))
 
 }
 
@@ -12854,6 +12865,7 @@ func (recv *Label) DisconnectPopulatePopup(connectionID int) {
 
 //export Label_populatePopupHandler
 func Label_populatePopupHandler(c_menu *C.GtkMenu) {
+	menu := MenuNewFromC(unsafe.Pointer(c_menu))
 
 }
 
@@ -20983,6 +20995,11 @@ func (recv *TextBuffer) DisconnectApplyTag(connectionID int) {
 
 //export TextBuffer_applyTagHandler
 func TextBuffer_applyTagHandler(c_tag *C.GtkTextTag, c_start *C.GtkTextIter, c_end *C.GtkTextIter) {
+	tag := TextTagNewFromC(unsafe.Pointer(c_tag))
+
+	start := TextIterNewFromC(unsafe.Pointer(c_start))
+
+	end := TextIterNewFromC(unsafe.Pointer(c_end))
 
 }
 
@@ -21123,6 +21140,9 @@ func (recv *TextBuffer) DisconnectDeleteRange(connectionID int) {
 
 //export TextBuffer_deleteRangeHandler
 func TextBuffer_deleteRangeHandler(c_start *C.GtkTextIter, c_end *C.GtkTextIter) {
+	start := TextIterNewFromC(unsafe.Pointer(c_start))
+
+	end := TextIterNewFromC(unsafe.Pointer(c_end))
 
 }
 
@@ -21217,6 +21237,9 @@ func (recv *TextBuffer) DisconnectInsertChildAnchor(connectionID int) {
 
 //export TextBuffer_insertChildAnchorHandler
 func TextBuffer_insertChildAnchorHandler(c_location *C.GtkTextIter, c_anchor *C.GtkTextChildAnchor) {
+	location := TextIterNewFromC(unsafe.Pointer(c_location))
+
+	anchor := TextChildAnchorNewFromC(unsafe.Pointer(c_anchor))
 
 }
 
@@ -21265,6 +21288,9 @@ func (recv *TextBuffer) DisconnectInsertPixbuf(connectionID int) {
 
 //export TextBuffer_insertPixbufHandler
 func TextBuffer_insertPixbufHandler(c_location *C.GtkTextIter, c_pixbuf *C.GdkPixbuf) {
+	location := TextIterNewFromC(unsafe.Pointer(c_location))
+
+	pixbuf := gdkpixbuf.PixbufNewFromC(unsafe.Pointer(c_pixbuf))
 
 }
 
@@ -21315,6 +21341,7 @@ func (recv *TextBuffer) DisconnectMarkDeleted(connectionID int) {
 
 //export TextBuffer_markDeletedHandler
 func TextBuffer_markDeletedHandler(c_mark *C.GtkTextMark) {
+	mark := TextMarkNewFromC(unsafe.Pointer(c_mark))
 
 }
 
@@ -21363,6 +21390,9 @@ func (recv *TextBuffer) DisconnectMarkSet(connectionID int) {
 
 //export TextBuffer_markSetHandler
 func TextBuffer_markSetHandler(c_location *C.GtkTextIter, c_mark *C.GtkTextMark) {
+	location := TextIterNewFromC(unsafe.Pointer(c_location))
+
+	mark := TextMarkNewFromC(unsafe.Pointer(c_mark))
 
 }
 
@@ -21457,6 +21487,11 @@ func (recv *TextBuffer) DisconnectRemoveTag(connectionID int) {
 
 //export TextBuffer_removeTagHandler
 func TextBuffer_removeTagHandler(c_tag *C.GtkTextTag, c_start *C.GtkTextIter, c_end *C.GtkTextIter) {
+	tag := TextTagNewFromC(unsafe.Pointer(c_tag))
+
+	start := TextIterNewFromC(unsafe.Pointer(c_start))
+
+	end := TextIterNewFromC(unsafe.Pointer(c_end))
 
 }
 
@@ -22421,6 +22456,7 @@ func (recv *TextTagTable) DisconnectTagAdded(connectionID int) {
 
 //export TextTagTable_tagAddedHandler
 func TextTagTable_tagAddedHandler(c_tag *C.GtkTextTag) {
+	tag := TextTagNewFromC(unsafe.Pointer(c_tag))
 
 }
 
@@ -22469,6 +22505,7 @@ func (recv *TextTagTable) DisconnectTagChanged(connectionID int) {
 
 //export TextTagTable_tagChangedHandler
 func TextTagTable_tagChangedHandler(c_tag *C.GtkTextTag, c_size_changed C.gboolean) {
+	tag := TextTagNewFromC(unsafe.Pointer(c_tag))
 
 	sizeChanged := c_size_changed == C.TRUE
 
@@ -22519,6 +22556,7 @@ func (recv *TextTagTable) DisconnectTagRemoved(connectionID int) {
 
 //export TextTagTable_tagRemovedHandler
 func TextTagTable_tagRemovedHandler(c_tag *C.GtkTextTag) {
+	tag := TextTagNewFromC(unsafe.Pointer(c_tag))
 
 }
 
@@ -22856,6 +22894,7 @@ func (recv *TextView) DisconnectPopulatePopup(connectionID int) {
 
 //export TextView_populatePopupHandler
 func TextView_populatePopupHandler(c_popup *C.GtkWidget) {
+	popup := WidgetNewFromC(unsafe.Pointer(c_popup))
 
 }
 
@@ -25437,6 +25476,9 @@ func (recv *TreeView) DisconnectRowActivated(connectionID int) {
 
 //export TreeView_rowActivatedHandler
 func TreeView_rowActivatedHandler(c_path *C.GtkTreePath, c_column *C.GtkTreeViewColumn) {
+	path := TreePathNewFromC(unsafe.Pointer(c_path))
+
+	column := TreeViewColumnNewFromC(unsafe.Pointer(c_column))
 
 }
 
@@ -25485,6 +25527,9 @@ func (recv *TreeView) DisconnectRowCollapsed(connectionID int) {
 
 //export TreeView_rowCollapsedHandler
 func TreeView_rowCollapsedHandler(c_iter *C.GtkTreeIter, c_path *C.GtkTreePath) {
+	iter := TreeIterNewFromC(unsafe.Pointer(c_iter))
+
+	path := TreePathNewFromC(unsafe.Pointer(c_path))
 
 }
 
@@ -25533,6 +25578,9 @@ func (recv *TreeView) DisconnectRowExpanded(connectionID int) {
 
 //export TreeView_rowExpandedHandler
 func TreeView_rowExpandedHandler(c_iter *C.GtkTreeIter, c_path *C.GtkTreePath) {
+	iter := TreeIterNewFromC(unsafe.Pointer(c_iter))
+
+	path := TreePathNewFromC(unsafe.Pointer(c_path))
 
 }
 
@@ -25768,6 +25816,9 @@ func (recv *TreeView) DisconnectTestCollapseRow(connectionID int) {
 
 //export TreeView_testCollapseRowHandler
 func TreeView_testCollapseRowHandler(c_iter *C.GtkTreeIter, c_path *C.GtkTreePath) C.gboolean {
+	iter := TreeIterNewFromC(unsafe.Pointer(c_iter))
+
+	path := TreePathNewFromC(unsafe.Pointer(c_path))
 
 }
 
@@ -25816,6 +25867,9 @@ func (recv *TreeView) DisconnectTestExpandRow(connectionID int) {
 
 //export TreeView_testExpandRowHandler
 func TreeView_testExpandRowHandler(c_iter *C.GtkTreeIter, c_path *C.GtkTreePath) C.gboolean {
+	iter := TreeIterNewFromC(unsafe.Pointer(c_iter))
+
+	path := TreePathNewFromC(unsafe.Pointer(c_path))
 
 }
 
@@ -27568,6 +27622,7 @@ func (recv *Widget) DisconnectButtonPressEvent(connectionID int) {
 
 //export Widget_buttonPressEventHandler
 func Widget_buttonPressEventHandler(c_event *C.GdkEventButton) C.gboolean {
+	event := gdk.EventButtonNewFromC(unsafe.Pointer(c_event))
 
 }
 
@@ -27616,6 +27671,7 @@ func (recv *Widget) DisconnectButtonReleaseEvent(connectionID int) {
 
 //export Widget_buttonReleaseEventHandler
 func Widget_buttonReleaseEventHandler(c_event *C.GdkEventButton) C.gboolean {
+	event := gdk.EventButtonNewFromC(unsafe.Pointer(c_event))
 
 }
 
@@ -27714,6 +27770,7 @@ func (recv *Widget) DisconnectConfigureEvent(connectionID int) {
 
 //export Widget_configureEventHandler
 func Widget_configureEventHandler(c_event *C.GdkEventConfigure) C.gboolean {
+	event := gdk.EventConfigureNewFromC(unsafe.Pointer(c_event))
 
 }
 
@@ -27814,6 +27871,7 @@ func (recv *Widget) DisconnectDragBegin(connectionID int) {
 
 //export Widget_dragBeginHandler
 func Widget_dragBeginHandler(c_context *C.GdkDragContext) {
+	context := gdk.DragContextNewFromC(unsafe.Pointer(c_context))
 
 }
 
@@ -27862,6 +27920,7 @@ func (recv *Widget) DisconnectDragDataDelete(connectionID int) {
 
 //export Widget_dragDataDeleteHandler
 func Widget_dragDataDeleteHandler(c_context *C.GdkDragContext) {
+	context := gdk.DragContextNewFromC(unsafe.Pointer(c_context))
 
 }
 
@@ -27916,6 +27975,7 @@ func (recv *Widget) DisconnectDragEnd(connectionID int) {
 
 //export Widget_dragEndHandler
 func Widget_dragEndHandler(c_context *C.GdkDragContext) {
+	context := gdk.DragContextNewFromC(unsafe.Pointer(c_context))
 
 }
 
@@ -27968,6 +28028,7 @@ func (recv *Widget) DisconnectEnterNotifyEvent(connectionID int) {
 
 //export Widget_enterNotifyEventHandler
 func Widget_enterNotifyEventHandler(c_event *C.GdkEventCrossing) C.gboolean {
+	event := gdk.EventCrossingNewFromC(unsafe.Pointer(c_event))
 
 }
 
@@ -28022,6 +28083,7 @@ func (recv *Widget) DisconnectFocusInEvent(connectionID int) {
 
 //export Widget_focusInEventHandler
 func Widget_focusInEventHandler(c_event *C.GdkEventFocus) C.gboolean {
+	event := gdk.EventFocusNewFromC(unsafe.Pointer(c_event))
 
 }
 
@@ -28070,6 +28132,7 @@ func (recv *Widget) DisconnectFocusOutEvent(connectionID int) {
 
 //export Widget_focusOutEventHandler
 func Widget_focusOutEventHandler(c_event *C.GdkEventFocus) C.gboolean {
+	event := gdk.EventFocusNewFromC(unsafe.Pointer(c_event))
 
 }
 
@@ -28259,6 +28322,7 @@ func (recv *Widget) DisconnectHierarchyChanged(connectionID int) {
 
 //export Widget_hierarchyChangedHandler
 func Widget_hierarchyChangedHandler(c_previous_toplevel *C.GtkWidget) {
+	previousToplevel := WidgetNewFromC(unsafe.Pointer(c_previous_toplevel))
 
 }
 
@@ -28307,6 +28371,7 @@ func (recv *Widget) DisconnectKeyPressEvent(connectionID int) {
 
 //export Widget_keyPressEventHandler
 func Widget_keyPressEventHandler(c_event *C.GdkEventKey) C.gboolean {
+	event := gdk.EventKeyNewFromC(unsafe.Pointer(c_event))
 
 }
 
@@ -28355,6 +28420,7 @@ func (recv *Widget) DisconnectKeyReleaseEvent(connectionID int) {
 
 //export Widget_keyReleaseEventHandler
 func Widget_keyReleaseEventHandler(c_event *C.GdkEventKey) C.gboolean {
+	event := gdk.EventKeyNewFromC(unsafe.Pointer(c_event))
 
 }
 
@@ -28403,6 +28469,7 @@ func (recv *Widget) DisconnectLeaveNotifyEvent(connectionID int) {
 
 //export Widget_leaveNotifyEventHandler
 func Widget_leaveNotifyEventHandler(c_event *C.GdkEventCrossing) C.gboolean {
+	event := gdk.EventCrossingNewFromC(unsafe.Pointer(c_event))
 
 }
 
@@ -28497,6 +28564,7 @@ func (recv *Widget) DisconnectMapEvent(connectionID int) {
 
 //export Widget_mapEventHandler
 func Widget_mapEventHandler(c_event *C.GdkEventAny) C.gboolean {
+	event := gdk.EventAnyNewFromC(unsafe.Pointer(c_event))
 
 }
 
@@ -28594,6 +28662,7 @@ func (recv *Widget) DisconnectMotionNotifyEvent(connectionID int) {
 
 //export Widget_motionNotifyEventHandler
 func Widget_motionNotifyEventHandler(c_event *C.GdkEventMotion) C.gboolean {
+	event := gdk.EventMotionNewFromC(unsafe.Pointer(c_event))
 
 }
 
@@ -28644,6 +28713,7 @@ func (recv *Widget) DisconnectParentSet(connectionID int) {
 
 //export Widget_parentSetHandler
 func Widget_parentSetHandler(c_old_parent *C.GtkWidget) {
+	oldParent := WidgetNewFromC(unsafe.Pointer(c_old_parent))
 
 }
 
@@ -28738,6 +28808,7 @@ func (recv *Widget) DisconnectPropertyNotifyEvent(connectionID int) {
 
 //export Widget_propertyNotifyEventHandler
 func Widget_propertyNotifyEventHandler(c_event *C.GdkEventProperty) C.gboolean {
+	event := gdk.EventPropertyNewFromC(unsafe.Pointer(c_event))
 
 }
 
@@ -28786,6 +28857,7 @@ func (recv *Widget) DisconnectProximityInEvent(connectionID int) {
 
 //export Widget_proximityInEventHandler
 func Widget_proximityInEventHandler(c_event *C.GdkEventProximity) C.gboolean {
+	event := gdk.EventProximityNewFromC(unsafe.Pointer(c_event))
 
 }
 
@@ -28834,6 +28906,7 @@ func (recv *Widget) DisconnectProximityOutEvent(connectionID int) {
 
 //export Widget_proximityOutEventHandler
 func Widget_proximityOutEventHandler(c_event *C.GdkEventProximity) C.gboolean {
+	event := gdk.EventProximityNewFromC(unsafe.Pointer(c_event))
 
 }
 
@@ -28928,6 +29001,7 @@ func (recv *Widget) DisconnectScreenChanged(connectionID int) {
 
 //export Widget_screenChangedHandler
 func Widget_screenChangedHandler(c_previous_screen *C.GdkScreen) {
+	previousScreen := gdk.ScreenNewFromC(unsafe.Pointer(c_previous_screen))
 
 }
 
@@ -28976,6 +29050,7 @@ func (recv *Widget) DisconnectScrollEvent(connectionID int) {
 
 //export Widget_scrollEventHandler
 func Widget_scrollEventHandler(c_event *C.GdkEventScroll) C.gboolean {
+	event := gdk.EventScrollNewFromC(unsafe.Pointer(c_event))
 
 }
 
@@ -29024,6 +29099,7 @@ func (recv *Widget) DisconnectSelectionClearEvent(connectionID int) {
 
 //export Widget_selectionClearEventHandler
 func Widget_selectionClearEventHandler(c_event *C.GdkEventSelection) C.gboolean {
+	event := gdk.EventSelectionNewFromC(unsafe.Pointer(c_event))
 
 }
 
@@ -29074,6 +29150,7 @@ func (recv *Widget) DisconnectSelectionNotifyEvent(connectionID int) {
 
 //export Widget_selectionNotifyEventHandler
 func Widget_selectionNotifyEventHandler(c_event *C.GdkEventSelection) C.gboolean {
+	event := gdk.EventSelectionNewFromC(unsafe.Pointer(c_event))
 
 }
 
@@ -29124,6 +29201,7 @@ func (recv *Widget) DisconnectSelectionRequestEvent(connectionID int) {
 
 //export Widget_selectionRequestEventHandler
 func Widget_selectionRequestEventHandler(c_event *C.GdkEventSelection) C.gboolean {
+	event := gdk.EventSelectionNewFromC(unsafe.Pointer(c_event))
 
 }
 
@@ -29224,6 +29302,7 @@ func (recv *Widget) DisconnectStyleSet(connectionID int) {
 
 //export Widget_styleSetHandler
 func Widget_styleSetHandler(c_previous_style *C.GtkStyle) {
+	previousStyle := StyleNewFromC(unsafe.Pointer(c_previous_style))
 
 }
 
@@ -29320,6 +29399,7 @@ func (recv *Widget) DisconnectUnmapEvent(connectionID int) {
 
 //export Widget_unmapEventHandler
 func Widget_unmapEventHandler(c_event *C.GdkEventAny) C.gboolean {
+	event := gdk.EventAnyNewFromC(unsafe.Pointer(c_event))
 
 }
 
@@ -29414,6 +29494,7 @@ func (recv *Widget) DisconnectVisibilityNotifyEvent(connectionID int) {
 
 //export Widget_visibilityNotifyEventHandler
 func Widget_visibilityNotifyEventHandler(c_event *C.GdkEventVisibility) C.gboolean {
+	event := gdk.EventVisibilityNewFromC(unsafe.Pointer(c_event))
 
 }
 
@@ -29462,6 +29543,7 @@ func (recv *Widget) DisconnectWindowStateEvent(connectionID int) {
 
 //export Widget_windowStateEventHandler
 func Widget_windowStateEventHandler(c_event *C.GdkEventWindowState) C.gboolean {
+	event := gdk.EventWindowStateNewFromC(unsafe.Pointer(c_event))
 
 }
 
@@ -30853,6 +30935,7 @@ func (recv *Window) DisconnectSetFocus(connectionID int) {
 
 //export Window_setFocusHandler
 func Window_setFocusHandler(c_object *C.GtkWidget) {
+	object := WidgetNewFromC(unsafe.Pointer(c_object))
 
 }
 

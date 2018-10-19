@@ -635,6 +635,11 @@ func (recv *PrintOperation) DisconnectUpdateCustomWidget(connectionID int) {
 
 //export PrintOperation_updateCustomWidgetHandler
 func PrintOperation_updateCustomWidgetHandler(c_widget *C.GtkWidget, c_setup *C.GtkPageSetup, c_settings *C.GtkPrintSettings) {
+	widget := WidgetNewFromC(unsafe.Pointer(c_widget))
+
+	setup := PageSetupNewFromC(unsafe.Pointer(c_setup))
+
+	settings := PrintSettingsNewFromC(unsafe.Pointer(c_settings))
 
 }
 

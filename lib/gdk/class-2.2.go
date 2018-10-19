@@ -287,6 +287,7 @@ func (recv *DisplayManager) DisconnectDisplayOpened(connectionID int) {
 
 //export DisplayManager_displayOpenedHandler
 func DisplayManager_displayOpenedHandler(c_display *C.GdkDisplay) {
+	display := DisplayNewFromC(unsafe.Pointer(c_display))
 
 }
 

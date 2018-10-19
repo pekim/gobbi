@@ -2372,6 +2372,7 @@ func (recv *Widget) DisconnectDraw(connectionID int) {
 
 //export Widget_drawHandler
 func Widget_drawHandler(c_cr *C.cairo_t) C.gboolean {
+	cr := cairo.ContextNewFromC(unsafe.Pointer(c_cr))
 
 }
 
