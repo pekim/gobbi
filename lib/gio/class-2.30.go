@@ -24,14 +24,6 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// Unsupported signal 'launched' for AppLaunchContext : unsupported parameter info : no type generator for AppInfo,
-
-// Unsupported signal 'command-line' for Application : return value gint :
-
-// Unsupported signal 'handle-local-options' for Application : return value gint :
-
-// Unsupported signal 'open' for Application : unsupported parameter files : no param type
-
 // Unsupported : g_converter_input_stream_new : unsupported parameter converter : no type generator for Converter, GConverter*
 
 // Unsupported : g_converter_output_stream_new : unsupported parameter converter : no type generator for Converter, GConverter*
@@ -211,10 +203,6 @@ func (recv *DBusObjectManagerClient) Object() *gobject.Object {
 func CastToDBusObjectManagerClient(object *gobject.Object) *DBusObjectManagerClient {
 	return DBusObjectManagerClientNewFromC(object.ToC())
 }
-
-// Unsupported signal 'interface-proxy-properties-changed' for DBusObjectManagerClient : unsupported parameter changed_properties : Blacklisted record : GVariant
-
-// Unsupported signal 'interface-proxy-signal' for DBusObjectManagerClient : unsupported parameter parameters : Blacklisted record : GVariant
 
 // Unsupported : g_dbus_object_manager_client_new_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
 
@@ -493,10 +481,6 @@ func (recv *DBusObjectSkeleton) SetObjectPath(objectPath string) {
 	return
 }
 
-// Unsupported signal 'g-properties-changed' for DBusProxy : unsupported parameter changed_properties : Blacklisted record : GVariant
-
-// Unsupported signal 'g-signal' for DBusProxy : unsupported parameter parameters : Blacklisted record : GVariant
-
 // Unsupported : g_dbus_proxy_new_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
 
 // Unsupported : g_dbus_proxy_new_for_bus_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
@@ -558,8 +542,6 @@ func (recv *DesktopAppInfo) GetShowIn(desktopEnv string) bool {
 
 // Unsupported : g_file_icon_new : unsupported parameter file : no type generator for File, GFile*
 
-// Unsupported signal 'changed' for FileMonitor : unsupported parameter file : no type generator for File,
-
 // Unsupported : g_inet_address_new_from_bytes : unsupported parameter bytes : no param type
 
 // Equal is a wrapper around the C function g_inet_address_equal.
@@ -577,12 +559,6 @@ func (recv *InetAddress) Equal(otherAddress *InetAddress) bool {
 // Unsupported : g_memory_input_stream_new_from_data : unsupported parameter data : no param type
 
 // Unsupported : g_memory_output_stream_new : unsupported parameter realloc_function : no type generator for ReallocFunc, GReallocFunc
-
-// Unsupported signal 'ask-question' for MountOperation : unsupported parameter choices : no param type
-
-// Unsupported signal 'show-processes' for MountOperation : unsupported parameter processes : no param type
-
-// Unsupported signal 'change-event' for Settings : unsupported parameter keys : no param type
 
 // GetUint is a wrapper around the C function g_settings_get_uint.
 func (recv *Settings) GetUint(key string) uint32 {
@@ -608,9 +584,7 @@ func (recv *Settings) SetUint(key string, value uint32) bool {
 	return retGo
 }
 
-// Unsupported signal 'activate' for SimpleAction : unsupported parameter parameter : Blacklisted record : GVariant
-
-// Unsupported signal 'change-state' for SimpleAction : unsupported parameter value : Blacklisted record : GVariant
+// Unsupported signal 'change-state' for SimpleAction : unsupported parameter value : type GLib.Variant :
 
 // Unsupported : g_simple_action_new : unsupported parameter parameter_type : Blacklisted record : GVariantType
 
@@ -627,8 +601,6 @@ func (recv *Settings) SetUint(key string, value uint32) bool {
 // Unsupported : g_simple_async_result_new_from_error : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
 
 // Unsupported : g_simple_async_result_new_take_error : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
-
-// Unsupported signal 'event' for SocketClient : unsupported parameter connectable : no type generator for SocketConnectable,
 
 // Unsupported : g_task_new : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
 
@@ -967,27 +939,3 @@ func (recv *TlsPassword) SetWarning(warning string) {
 // Unsupported : g_unix_socket_address_new_abstract : unsupported parameter path : no param type
 
 // Unsupported : g_unix_socket_address_new_with_type : unsupported parameter path : no param type
-
-// Unsupported signal 'drive-changed' for VolumeMonitor : unsupported parameter drive : no type generator for Drive,
-
-// Unsupported signal 'drive-connected' for VolumeMonitor : unsupported parameter drive : no type generator for Drive,
-
-// Unsupported signal 'drive-disconnected' for VolumeMonitor : unsupported parameter drive : no type generator for Drive,
-
-// Unsupported signal 'drive-eject-button' for VolumeMonitor : unsupported parameter drive : no type generator for Drive,
-
-// Unsupported signal 'drive-stop-button' for VolumeMonitor : unsupported parameter drive : no type generator for Drive,
-
-// Unsupported signal 'mount-added' for VolumeMonitor : unsupported parameter mount : no type generator for Mount,
-
-// Unsupported signal 'mount-changed' for VolumeMonitor : unsupported parameter mount : no type generator for Mount,
-
-// Unsupported signal 'mount-pre-unmount' for VolumeMonitor : unsupported parameter mount : no type generator for Mount,
-
-// Unsupported signal 'mount-removed' for VolumeMonitor : unsupported parameter mount : no type generator for Mount,
-
-// Unsupported signal 'volume-added' for VolumeMonitor : unsupported parameter volume : no type generator for Volume,
-
-// Unsupported signal 'volume-changed' for VolumeMonitor : unsupported parameter volume : no type generator for Volume,
-
-// Unsupported signal 'volume-removed' for VolumeMonitor : unsupported parameter volume : no type generator for Volume,

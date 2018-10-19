@@ -5,7 +5,6 @@ package gtk
 
 import (
 	"fmt"
-	gio "github.com/pekim/gobbi/lib/gio"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	"sync"
 	"unsafe"
@@ -16,42 +15,6 @@ import (
 // #include <gtk/gtk.h>
 // #include <gtk/gtkx.h>
 // #include <stdlib.h>
-/*
-
-	void PlacesSidebar_mountHandler();
-
-	static gulong PlacesSidebar_signal_connect_mount(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "mount", PlacesSidebar_mountHandler, data);
-	}
-
-*/
-/*
-
-	void PlacesSidebar_showOtherLocationsWithFlagsHandler();
-
-	static gulong PlacesSidebar_signal_connect_show_other_locations_with_flags(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "show-other-locations-with-flags", PlacesSidebar_showOtherLocationsWithFlagsHandler, data);
-	}
-
-*/
-/*
-
-	void PlacesSidebar_unmountHandler();
-
-	static gulong PlacesSidebar_signal_connect_unmount(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "unmount", PlacesSidebar_unmountHandler, data);
-	}
-
-*/
-/*
-
-	void ShortcutsSection_changeCurrentPageHandler();
-
-	static gulong ShortcutsSection_signal_connect_change_current_page(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "change-current-page", ShortcutsSection_changeCurrentPageHandler, data);
-	}
-
-*/
 /*
 
 	void ShortcutsWindow_closeHandler();
@@ -74,12 +37,6 @@ import "C"
 
 // Unsupported : gtk_app_chooser_dialog_new : unsupported parameter file : no type generator for Gio.File, GFile*
 
-// Unsupported signal 'application-activated' for AppChooserWidget : unsupported parameter application : no type generator for Gio.AppInfo,
-
-// Unsupported signal 'application-selected' for AppChooserWidget : unsupported parameter application : no type generator for Gio.AppInfo,
-
-// Unsupported signal 'populate-popup' for AppChooserWidget : unsupported parameter application : no type generator for Gio.AppInfo,
-
 // GetHelpOverlay is a wrapper around the C function gtk_application_window_get_help_overlay.
 func (recv *ApplicationWindow) GetHelpOverlay() *ShortcutsWindow {
 	retC := C.gtk_application_window_get_help_overlay((*C.GtkApplicationWindow)(recv.native))
@@ -99,25 +56,11 @@ func (recv *ApplicationWindow) SetHelpOverlay(helpOverlay *ShortcutsWindow) {
 
 // Unsupported : gtk_button_new_from_icon_name : unsupported parameter size : no type generator for gint, GtkIconSize
 
-// Unsupported signal 'add-editable' for CellArea : unsupported parameter editable : no type generator for CellEditable,
-
-// Unsupported signal 'apply-attributes' for CellArea : unsupported parameter model : no type generator for TreeModel,
-
-// Unsupported signal 'remove-editable' for CellArea : unsupported parameter editable : no type generator for CellEditable,
-
-// Unsupported signal 'editing-started' for CellRenderer : unsupported parameter editable : no type generator for CellEditable,
-
-// Unsupported signal 'format-entry-text' for ComboBox : return value utf8 :
-
 // Unsupported : gtk_combo_box_new_with_model : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
 
 // Unsupported : gtk_combo_box_new_with_model_and_entry : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
 
 // Unsupported : gtk_dialog_new_with_buttons : unsupported parameter ... : varargs
-
-// Unsupported signal 'cursor-on-match' for EntryCompletion : unsupported parameter model : no type generator for TreeModel,
-
-// Unsupported signal 'match-selected' for EntryCompletion : unsupported parameter model : no type generator for TreeModel,
 
 // Unsupported : EntryIconAccessible : no CType
 
@@ -362,8 +305,6 @@ func (recv *NativeDialog) Show() {
 	return
 }
 
-// Unsupported signal 'get-child-position' for Overlay : unsupported parameter allocation : Blacklisted record : GdkRectangle
-
 // PadController is a wrapper around the C record GtkPadController.
 type PadController struct {
 	native *C.GtkPadController
@@ -405,159 +346,11 @@ func CastToPadController(object *gobject.Object) *PadController {
 
 // Unsupported : gtk_page_setup_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
 
-// Unsupported signal 'drag-action-ask' for PlacesSidebar : return value gint :
+// Unsupported signal 'mount' for PlacesSidebar : unsupported parameter mount_operation : type Gio.MountOperation :
 
-// Unsupported signal 'drag-action-requested' for PlacesSidebar : unsupported parameter dest_file : no type generator for Gio.File,
+// Unsupported signal 'show-other-locations-with-flags' for PlacesSidebar : unsupported parameter open_flags : type PlacesOpenFlags :
 
-// Unsupported signal 'drag-perform-drop' for PlacesSidebar : unsupported parameter dest_file : no type generator for Gio.File,
-
-var signalPlacesSidebarMountId int
-var signalPlacesSidebarMountMap = make(map[int]PlacesSidebarSignalMountCallback)
-var signalPlacesSidebarMountLock sync.Mutex
-
-// PlacesSidebarSignalMountCallback is a callback function for a 'mount' signal emitted from a PlacesSidebar.
-type PlacesSidebarSignalMountCallback func(mountOperation *gio.MountOperation)
-
-/*
-ConnectMount connects the callback to the 'mount' signal for the PlacesSidebar.
-
-The returned value represents the connection, and may be passed to DisconnectMount to remove it.
-*/
-func (recv *PlacesSidebar) ConnectMount(callback PlacesSidebarSignalMountCallback) int {
-	signalPlacesSidebarMountLock.Lock()
-	defer signalPlacesSidebarMountLock.Unlock()
-
-	signalPlacesSidebarMountId++
-	signalPlacesSidebarMountMap[signalPlacesSidebarMountId] = callback
-
-	instance := C.gpointer(recv.Object().ToC())
-	retC := C.PlacesSidebar_signal_connect_mount(instance, C.gpointer(uintptr(signalPlacesSidebarMountId)))
-	return int(retC)
-}
-
-/*
-DisconnectMount disconnects a callback from the 'mount' signal for the PlacesSidebar.
-
-The connectionID should be a value returned from a call to ConnectMount.
-*/
-func (recv *PlacesSidebar) DisconnectMount(connectionID int) {
-	signalPlacesSidebarMountLock.Lock()
-	defer signalPlacesSidebarMountLock.Unlock()
-
-	_, exists := signalPlacesSidebarMountMap[connectionID]
-	if !exists {
-		return
-	}
-
-	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
-	delete(signalPlacesSidebarMountMap, connectionID)
-}
-
-//export PlacesSidebar_mountHandler
-func PlacesSidebar_mountHandler() {
-	fmt.Println("cb")
-}
-
-// Unsupported signal 'open-location' for PlacesSidebar : unsupported parameter location : no type generator for Gio.File,
-
-// Unsupported signal 'populate-popup' for PlacesSidebar : unsupported parameter selected_item : no type generator for Gio.File,
-
-var signalPlacesSidebarShowOtherLocationsWithFlagsId int
-var signalPlacesSidebarShowOtherLocationsWithFlagsMap = make(map[int]PlacesSidebarSignalShowOtherLocationsWithFlagsCallback)
-var signalPlacesSidebarShowOtherLocationsWithFlagsLock sync.Mutex
-
-// PlacesSidebarSignalShowOtherLocationsWithFlagsCallback is a callback function for a 'show-other-locations-with-flags' signal emitted from a PlacesSidebar.
-type PlacesSidebarSignalShowOtherLocationsWithFlagsCallback func(openFlags PlacesOpenFlags)
-
-/*
-ConnectShowOtherLocationsWithFlags connects the callback to the 'show-other-locations-with-flags' signal for the PlacesSidebar.
-
-The returned value represents the connection, and may be passed to DisconnectShowOtherLocationsWithFlags to remove it.
-*/
-func (recv *PlacesSidebar) ConnectShowOtherLocationsWithFlags(callback PlacesSidebarSignalShowOtherLocationsWithFlagsCallback) int {
-	signalPlacesSidebarShowOtherLocationsWithFlagsLock.Lock()
-	defer signalPlacesSidebarShowOtherLocationsWithFlagsLock.Unlock()
-
-	signalPlacesSidebarShowOtherLocationsWithFlagsId++
-	signalPlacesSidebarShowOtherLocationsWithFlagsMap[signalPlacesSidebarShowOtherLocationsWithFlagsId] = callback
-
-	instance := C.gpointer(recv.Object().ToC())
-	retC := C.PlacesSidebar_signal_connect_show_other_locations_with_flags(instance, C.gpointer(uintptr(signalPlacesSidebarShowOtherLocationsWithFlagsId)))
-	return int(retC)
-}
-
-/*
-DisconnectShowOtherLocationsWithFlags disconnects a callback from the 'show-other-locations-with-flags' signal for the PlacesSidebar.
-
-The connectionID should be a value returned from a call to ConnectShowOtherLocationsWithFlags.
-*/
-func (recv *PlacesSidebar) DisconnectShowOtherLocationsWithFlags(connectionID int) {
-	signalPlacesSidebarShowOtherLocationsWithFlagsLock.Lock()
-	defer signalPlacesSidebarShowOtherLocationsWithFlagsLock.Unlock()
-
-	_, exists := signalPlacesSidebarShowOtherLocationsWithFlagsMap[connectionID]
-	if !exists {
-		return
-	}
-
-	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
-	delete(signalPlacesSidebarShowOtherLocationsWithFlagsMap, connectionID)
-}
-
-//export PlacesSidebar_showOtherLocationsWithFlagsHandler
-func PlacesSidebar_showOtherLocationsWithFlagsHandler() {
-	fmt.Println("cb")
-}
-
-var signalPlacesSidebarUnmountId int
-var signalPlacesSidebarUnmountMap = make(map[int]PlacesSidebarSignalUnmountCallback)
-var signalPlacesSidebarUnmountLock sync.Mutex
-
-// PlacesSidebarSignalUnmountCallback is a callback function for a 'unmount' signal emitted from a PlacesSidebar.
-type PlacesSidebarSignalUnmountCallback func(mountOperation *gio.MountOperation)
-
-/*
-ConnectUnmount connects the callback to the 'unmount' signal for the PlacesSidebar.
-
-The returned value represents the connection, and may be passed to DisconnectUnmount to remove it.
-*/
-func (recv *PlacesSidebar) ConnectUnmount(callback PlacesSidebarSignalUnmountCallback) int {
-	signalPlacesSidebarUnmountLock.Lock()
-	defer signalPlacesSidebarUnmountLock.Unlock()
-
-	signalPlacesSidebarUnmountId++
-	signalPlacesSidebarUnmountMap[signalPlacesSidebarUnmountId] = callback
-
-	instance := C.gpointer(recv.Object().ToC())
-	retC := C.PlacesSidebar_signal_connect_unmount(instance, C.gpointer(uintptr(signalPlacesSidebarUnmountId)))
-	return int(retC)
-}
-
-/*
-DisconnectUnmount disconnects a callback from the 'unmount' signal for the PlacesSidebar.
-
-The connectionID should be a value returned from a call to ConnectUnmount.
-*/
-func (recv *PlacesSidebar) DisconnectUnmount(connectionID int) {
-	signalPlacesSidebarUnmountLock.Lock()
-	defer signalPlacesSidebarUnmountLock.Unlock()
-
-	_, exists := signalPlacesSidebarUnmountMap[connectionID]
-	if !exists {
-		return
-	}
-
-	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
-	delete(signalPlacesSidebarUnmountMap, connectionID)
-}
-
-//export PlacesSidebar_unmountHandler
-func PlacesSidebar_unmountHandler() {
-	fmt.Println("cb")
-}
+// Unsupported signal 'unmount' for PlacesSidebar : unsupported parameter mount_operation : type Gio.MountOperation :
 
 // GetConstrainTo is a wrapper around the C function gtk_popover_get_constrain_to.
 func (recv *Popover) GetConstrainTo() PopoverConstraint {
@@ -576,15 +369,11 @@ func (recv *Popover) SetConstrainTo(constraint PopoverConstraint) {
 	return
 }
 
-// Unsupported signal 'preview' for PrintOperation : unsupported parameter preview : no type generator for PrintOperationPreview,
-
 // Unsupported : gtk_print_settings_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
 
 // Unsupported : gtk_recent_chooser_dialog_new : unsupported parameter ... : varargs
 
 // Unsupported : gtk_recent_chooser_dialog_new_for_manager : unsupported parameter ... : varargs
-
-// Unsupported signal 'format-value' for Scale : return value utf8 :
 
 // Unsupported : gtk_scale_button_new : unsupported parameter size : no type generator for gint, GtkIconSize
 
@@ -754,53 +543,7 @@ func CastToShortcutsSection(object *gobject.Object) *ShortcutsSection {
 	return ShortcutsSectionNewFromC(object.ToC())
 }
 
-var signalShortcutsSectionChangeCurrentPageId int
-var signalShortcutsSectionChangeCurrentPageMap = make(map[int]ShortcutsSectionSignalChangeCurrentPageCallback)
-var signalShortcutsSectionChangeCurrentPageLock sync.Mutex
-
-// ShortcutsSectionSignalChangeCurrentPageCallback is a callback function for a 'change-current-page' signal emitted from a ShortcutsSection.
-type ShortcutsSectionSignalChangeCurrentPageCallback func(object int32) bool
-
-/*
-ConnectChangeCurrentPage connects the callback to the 'change-current-page' signal for the ShortcutsSection.
-
-The returned value represents the connection, and may be passed to DisconnectChangeCurrentPage to remove it.
-*/
-func (recv *ShortcutsSection) ConnectChangeCurrentPage(callback ShortcutsSectionSignalChangeCurrentPageCallback) int {
-	signalShortcutsSectionChangeCurrentPageLock.Lock()
-	defer signalShortcutsSectionChangeCurrentPageLock.Unlock()
-
-	signalShortcutsSectionChangeCurrentPageId++
-	signalShortcutsSectionChangeCurrentPageMap[signalShortcutsSectionChangeCurrentPageId] = callback
-
-	instance := C.gpointer(recv.Object().ToC())
-	retC := C.ShortcutsSection_signal_connect_change_current_page(instance, C.gpointer(uintptr(signalShortcutsSectionChangeCurrentPageId)))
-	return int(retC)
-}
-
-/*
-DisconnectChangeCurrentPage disconnects a callback from the 'change-current-page' signal for the ShortcutsSection.
-
-The connectionID should be a value returned from a call to ConnectChangeCurrentPage.
-*/
-func (recv *ShortcutsSection) DisconnectChangeCurrentPage(connectionID int) {
-	signalShortcutsSectionChangeCurrentPageLock.Lock()
-	defer signalShortcutsSectionChangeCurrentPageLock.Unlock()
-
-	_, exists := signalShortcutsSectionChangeCurrentPageMap[connectionID]
-	if !exists {
-		return
-	}
-
-	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
-	delete(signalShortcutsSectionChangeCurrentPageMap, connectionID)
-}
-
-//export ShortcutsSection_changeCurrentPageHandler
-func ShortcutsSection_changeCurrentPageHandler() C.boolean {
-	fmt.Println("cb")
-}
+// Unsupported signal 'change-current-page' for ShortcutsSection : unsupported parameter object : type gint :
 
 // ShortcutsShortcut is a wrapper around the C record GtkShortcutsShortcut.
 type ShortcutsShortcut struct {
@@ -1008,8 +751,6 @@ func ShortcutsWindow_searchHandler() {
 	fmt.Println("cb")
 }
 
-// Unsupported signal 'input' for SpinButton : return value gint :
-
 // Unsupported : gtk_status_icon_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon, GIcon*
 
 // ToString is a wrapper around the C function gtk_style_context_to_string.
@@ -1022,8 +763,6 @@ func (recv *StyleContext) ToString(flags StyleContextPrintFlags) string {
 
 	return retGo
 }
-
-// Unsupported signal 'event' for TextTag : unsupported parameter event : no type generator for Gdk.Event,
 
 // Changed is a wrapper around the C function gtk_text_tag_changed.
 func (recv *TextTag) Changed(sizeChanged bool) {
@@ -1049,20 +788,6 @@ func (recv *TextView) ResetCursorBlink() {
 // Unsupported : gtk_tree_view_new_with_model : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
 
 // Unsupported : gtk_tree_view_column_new_with_attributes : unsupported parameter ... : varargs
-
-// Unsupported signal 'child-notify' for Widget : unsupported parameter child_property : Blacklisted record : GParamSpec
-
-// Unsupported signal 'delete-event' for Widget : unsupported parameter event : no type generator for Gdk.Event,
-
-// Unsupported signal 'destroy-event' for Widget : unsupported parameter event : no type generator for Gdk.Event,
-
-// Unsupported signal 'event' for Widget : unsupported parameter event : no type generator for Gdk.Event,
-
-// Unsupported signal 'event-after' for Widget : unsupported parameter event : no type generator for Gdk.Event,
-
-// Unsupported signal 'size-allocate' for Widget : unsupported parameter allocation : Blacklisted record : GdkRectangle
-
-// Unsupported signal 'touch-event' for Widget : unsupported parameter object : no type generator for Gdk.Event,
 
 // Unsupported : gtk_widget_new : unsupported parameter type : no type generator for GType, GType
 

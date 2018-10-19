@@ -3,95 +3,20 @@
 
 package gtk
 
-import (
-	"fmt"
-	"sync"
-	"unsafe"
-)
+import "unsafe"
 
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <gtk/gtk-a11y.h>
 // #include <gtk/gtk.h>
 // #include <gtk/gtkx.h>
 // #include <stdlib.h>
-/*
-
-	void AboutDialog_activateLinkHandler();
-
-	static gulong AboutDialog_signal_connect_activate_link(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "activate-link", AboutDialog_activateLinkHandler, data);
-	}
-
-*/
 import "C"
 
-var signalAboutDialogActivateLinkId int
-var signalAboutDialogActivateLinkMap = make(map[int]AboutDialogSignalActivateLinkCallback)
-var signalAboutDialogActivateLinkLock sync.Mutex
-
-// AboutDialogSignalActivateLinkCallback is a callback function for a 'activate-link' signal emitted from a AboutDialog.
-type AboutDialogSignalActivateLinkCallback func(uri string) bool
-
-/*
-ConnectActivateLink connects the callback to the 'activate-link' signal for the AboutDialog.
-
-The returned value represents the connection, and may be passed to DisconnectActivateLink to remove it.
-*/
-func (recv *AboutDialog) ConnectActivateLink(callback AboutDialogSignalActivateLinkCallback) int {
-	signalAboutDialogActivateLinkLock.Lock()
-	defer signalAboutDialogActivateLinkLock.Unlock()
-
-	signalAboutDialogActivateLinkId++
-	signalAboutDialogActivateLinkMap[signalAboutDialogActivateLinkId] = callback
-
-	instance := C.gpointer(recv.Object().ToC())
-	retC := C.AboutDialog_signal_connect_activate_link(instance, C.gpointer(uintptr(signalAboutDialogActivateLinkId)))
-	return int(retC)
-}
-
-/*
-DisconnectActivateLink disconnects a callback from the 'activate-link' signal for the AboutDialog.
-
-The connectionID should be a value returned from a call to ConnectActivateLink.
-*/
-func (recv *AboutDialog) DisconnectActivateLink(connectionID int) {
-	signalAboutDialogActivateLinkLock.Lock()
-	defer signalAboutDialogActivateLinkLock.Unlock()
-
-	_, exists := signalAboutDialogActivateLinkMap[connectionID]
-	if !exists {
-		return
-	}
-
-	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
-	delete(signalAboutDialogActivateLinkMap, connectionID)
-}
-
-//export AboutDialog_activateLinkHandler
-func AboutDialog_activateLinkHandler() C.boolean {
-	fmt.Println("cb")
-}
+// Unsupported signal 'activate-link' for AboutDialog : unsupported parameter uri : type utf8 :
 
 // Unsupported : gtk_app_chooser_dialog_new : unsupported parameter file : no type generator for Gio.File, GFile*
 
-// Unsupported signal 'application-activated' for AppChooserWidget : unsupported parameter application : no type generator for Gio.AppInfo,
-
-// Unsupported signal 'application-selected' for AppChooserWidget : unsupported parameter application : no type generator for Gio.AppInfo,
-
-// Unsupported signal 'populate-popup' for AppChooserWidget : unsupported parameter application : no type generator for Gio.AppInfo,
-
 // Unsupported : gtk_button_new_from_icon_name : unsupported parameter size : no type generator for gint, GtkIconSize
-
-// Unsupported signal 'add-editable' for CellArea : unsupported parameter editable : no type generator for CellEditable,
-
-// Unsupported signal 'apply-attributes' for CellArea : unsupported parameter model : no type generator for TreeModel,
-
-// Unsupported signal 'remove-editable' for CellArea : unsupported parameter editable : no type generator for CellEditable,
-
-// Unsupported signal 'editing-started' for CellRenderer : unsupported parameter editable : no type generator for CellEditable,
-
-// Unsupported signal 'format-entry-text' for ComboBox : return value utf8 :
 
 // ComboBoxNewWithEntry is a wrapper around the C function gtk_combo_box_new_with_entry.
 func ComboBoxNewWithEntry() *ComboBox {
@@ -224,10 +149,6 @@ func (recv *ComboBoxText) Remove(position int32) {
 
 // Unsupported : gtk_dialog_new_with_buttons : unsupported parameter ... : varargs
 
-// Unsupported signal 'cursor-on-match' for EntryCompletion : unsupported parameter model : no type generator for TreeModel,
-
-// Unsupported signal 'match-selected' for EntryCompletion : unsupported parameter model : no type generator for TreeModel,
-
 // Unsupported : EntryIconAccessible : no CType
 
 // Unsupported : gtk_file_chooser_dialog_new : unsupported parameter ... : varargs
@@ -272,21 +193,7 @@ func (recv *Notebook) SetGroupName(groupName string) {
 	return
 }
 
-// Unsupported signal 'get-child-position' for Overlay : unsupported parameter allocation : Blacklisted record : GdkRectangle
-
 // Unsupported : gtk_page_setup_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
-
-// Unsupported signal 'drag-action-ask' for PlacesSidebar : return value gint :
-
-// Unsupported signal 'drag-action-requested' for PlacesSidebar : unsupported parameter dest_file : no type generator for Gio.File,
-
-// Unsupported signal 'drag-perform-drop' for PlacesSidebar : unsupported parameter dest_file : no type generator for Gio.File,
-
-// Unsupported signal 'open-location' for PlacesSidebar : unsupported parameter location : no type generator for Gio.File,
-
-// Unsupported signal 'populate-popup' for PlacesSidebar : unsupported parameter selected_item : no type generator for Gio.File,
-
-// Unsupported signal 'preview' for PrintOperation : unsupported parameter preview : no type generator for PrintOperationPreview,
 
 // Unsupported : gtk_print_settings_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
 
@@ -311,15 +218,9 @@ func (recv *Range) SetRoundDigits(roundDigits int32) {
 
 // Unsupported : gtk_recent_chooser_dialog_new_for_manager : unsupported parameter ... : varargs
 
-// Unsupported signal 'format-value' for Scale : return value utf8 :
-
 // Unsupported : gtk_scale_button_new : unsupported parameter size : no type generator for gint, GtkIconSize
 
-// Unsupported signal 'input' for SpinButton : return value gint :
-
 // Unsupported : gtk_status_icon_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon, GIcon*
-
-// Unsupported signal 'event' for TextTag : unsupported parameter event : no type generator for Gdk.Event,
 
 // Unsupported : gtk_tree_store_new : unsupported parameter ... : varargs
 
@@ -328,19 +229,5 @@ func (recv *Range) SetRoundDigits(roundDigits int32) {
 // Unsupported : gtk_tree_view_new_with_model : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
 
 // Unsupported : gtk_tree_view_column_new_with_attributes : unsupported parameter ... : varargs
-
-// Unsupported signal 'child-notify' for Widget : unsupported parameter child_property : Blacklisted record : GParamSpec
-
-// Unsupported signal 'delete-event' for Widget : unsupported parameter event : no type generator for Gdk.Event,
-
-// Unsupported signal 'destroy-event' for Widget : unsupported parameter event : no type generator for Gdk.Event,
-
-// Unsupported signal 'event' for Widget : unsupported parameter event : no type generator for Gdk.Event,
-
-// Unsupported signal 'event-after' for Widget : unsupported parameter event : no type generator for Gdk.Event,
-
-// Unsupported signal 'size-allocate' for Widget : unsupported parameter allocation : Blacklisted record : GdkRectangle
-
-// Unsupported signal 'touch-event' for Widget : unsupported parameter object : no type generator for Gdk.Event,
 
 // Unsupported : gtk_widget_new : unsupported parameter type : no type generator for GType, GType

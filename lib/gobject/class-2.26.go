@@ -82,8 +82,6 @@ func (recv *Binding) GetTargetProperty() string {
 	return retGo
 }
 
-// Unsupported signal 'notify' for Object : unsupported parameter pspec : Blacklisted record : GParamSpec
-
 // Unsupported : g_object_new : unsupported parameter object_type : no type generator for GType, GType
 
 // Unsupported : g_object_new_valist : unsupported parameter object_type : no type generator for GType, GType

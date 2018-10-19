@@ -25,15 +25,6 @@ import (
 */
 /*
 
-	void DisplayManager_displayOpenedHandler();
-
-	static gulong DisplayManager_signal_connect_display_opened(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "display-opened", DisplayManager_displayOpenedHandler, data);
-	}
-
-*/
-/*
-
 	void Keymap_keysChangedHandler();
 
 	static gulong Keymap_signal_connect_keys_changed(gpointer instance, gpointer data) {
@@ -116,7 +107,7 @@ func (recv *Display) DisconnectClosed(connectionID int) {
 }
 
 //export Display_closedHandler
-func Display_closedHandler() {
+func Display_closedHandler(isError C.gboolean) {
 	fmt.Println("cb")
 }
 
@@ -242,53 +233,7 @@ func (recv *Display) Sync() {
 	return
 }
 
-var signalDisplayManagerDisplayOpenedId int
-var signalDisplayManagerDisplayOpenedMap = make(map[int]DisplayManagerSignalDisplayOpenedCallback)
-var signalDisplayManagerDisplayOpenedLock sync.Mutex
-
-// DisplayManagerSignalDisplayOpenedCallback is a callback function for a 'display-opened' signal emitted from a DisplayManager.
-type DisplayManagerSignalDisplayOpenedCallback func(display *Display)
-
-/*
-ConnectDisplayOpened connects the callback to the 'display-opened' signal for the DisplayManager.
-
-The returned value represents the connection, and may be passed to DisconnectDisplayOpened to remove it.
-*/
-func (recv *DisplayManager) ConnectDisplayOpened(callback DisplayManagerSignalDisplayOpenedCallback) int {
-	signalDisplayManagerDisplayOpenedLock.Lock()
-	defer signalDisplayManagerDisplayOpenedLock.Unlock()
-
-	signalDisplayManagerDisplayOpenedId++
-	signalDisplayManagerDisplayOpenedMap[signalDisplayManagerDisplayOpenedId] = callback
-
-	instance := C.gpointer(recv.Object().ToC())
-	retC := C.DisplayManager_signal_connect_display_opened(instance, C.gpointer(uintptr(signalDisplayManagerDisplayOpenedId)))
-	return int(retC)
-}
-
-/*
-DisconnectDisplayOpened disconnects a callback from the 'display-opened' signal for the DisplayManager.
-
-The connectionID should be a value returned from a call to ConnectDisplayOpened.
-*/
-func (recv *DisplayManager) DisconnectDisplayOpened(connectionID int) {
-	signalDisplayManagerDisplayOpenedLock.Lock()
-	defer signalDisplayManagerDisplayOpenedLock.Unlock()
-
-	_, exists := signalDisplayManagerDisplayOpenedMap[connectionID]
-	if !exists {
-		return
-	}
-
-	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
-	delete(signalDisplayManagerDisplayOpenedMap, connectionID)
-}
-
-//export DisplayManager_displayOpenedHandler
-func DisplayManager_displayOpenedHandler() {
-	fmt.Println("cb")
-}
+// Unsupported signal 'display-opened' for DisplayManager : unsupported parameter display : type Display :
 
 // GetDefaultDisplay is a wrapper around the C function gdk_display_manager_get_default_display.
 func (recv *DisplayManager) GetDefaultDisplay() *Display {

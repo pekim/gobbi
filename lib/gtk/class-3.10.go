@@ -21,37 +21,10 @@ import (
 // #include <stdlib.h>
 /*
 
-	void ListBox_rowActivatedHandler();
-
-	static gulong ListBox_signal_connect_row_activated(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "row-activated", ListBox_rowActivatedHandler, data);
-	}
-
-*/
-/*
-
-	void ListBox_rowSelectedHandler();
-
-	static gulong ListBox_signal_connect_row_selected(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "row-selected", ListBox_rowSelectedHandler, data);
-	}
-
-*/
-/*
-
 	void ListBoxRow_activateHandler();
 
 	static gulong ListBoxRow_signal_connect_activate(gpointer instance, gpointer data) {
 		return g_signal_connect(instance, "activate", ListBoxRow_activateHandler, data);
-	}
-
-*/
-/*
-
-	void PlacesSidebar_showErrorMessageHandler();
-
-	static gulong PlacesSidebar_signal_connect_show_error_message(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "show-error-message", PlacesSidebar_showErrorMessageHandler, data);
 	}
 
 */
@@ -67,12 +40,6 @@ import (
 import "C"
 
 // Unsupported : gtk_app_chooser_dialog_new : unsupported parameter file : no type generator for Gio.File, GFile*
-
-// Unsupported signal 'application-activated' for AppChooserWidget : unsupported parameter application : no type generator for Gio.AppInfo,
-
-// Unsupported signal 'application-selected' for AppChooserWidget : unsupported parameter application : no type generator for Gio.AppInfo,
-
-// Unsupported signal 'populate-popup' for AppChooserWidget : unsupported parameter application : no type generator for Gio.AppInfo,
 
 // GetBaselinePosition is a wrapper around the C function gtk_box_get_baseline_position.
 func (recv *Box) GetBaselinePosition() BaselinePosition {
@@ -151,16 +118,6 @@ func (recv *Builder) SetApplication(application *Application) {
 
 // Unsupported : gtk_button_new_from_icon_name : unsupported parameter size : no type generator for gint, GtkIconSize
 
-// Unsupported signal 'add-editable' for CellArea : unsupported parameter editable : no type generator for CellEditable,
-
-// Unsupported signal 'apply-attributes' for CellArea : unsupported parameter model : no type generator for TreeModel,
-
-// Unsupported signal 'remove-editable' for CellArea : unsupported parameter editable : no type generator for CellEditable,
-
-// Unsupported signal 'editing-started' for CellRenderer : unsupported parameter editable : no type generator for CellEditable,
-
-// Unsupported signal 'format-entry-text' for ComboBox : return value utf8 :
-
 // Unsupported : gtk_combo_box_new_with_model : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
 
 // Unsupported : gtk_combo_box_new_with_model_and_entry : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
@@ -183,10 +140,6 @@ func (recv *Entry) SetTabs(tabs *pango.TabArray) {
 
 	return
 }
-
-// Unsupported signal 'cursor-on-match' for EntryCompletion : unsupported parameter model : no type generator for TreeModel,
-
-// Unsupported signal 'match-selected' for EntryCompletion : unsupported parameter model : no type generator for TreeModel,
 
 // Unsupported : EntryIconAccessible : no CType
 
@@ -509,101 +462,9 @@ func (recv *Label) SetLines(lines int32) {
 	return
 }
 
-var signalListBoxRowActivatedId int
-var signalListBoxRowActivatedMap = make(map[int]ListBoxSignalRowActivatedCallback)
-var signalListBoxRowActivatedLock sync.Mutex
+// Unsupported signal 'row-activated' for ListBox : unsupported parameter row : type ListBoxRow :
 
-// ListBoxSignalRowActivatedCallback is a callback function for a 'row-activated' signal emitted from a ListBox.
-type ListBoxSignalRowActivatedCallback func(row *ListBoxRow)
-
-/*
-ConnectRowActivated connects the callback to the 'row-activated' signal for the ListBox.
-
-The returned value represents the connection, and may be passed to DisconnectRowActivated to remove it.
-*/
-func (recv *ListBox) ConnectRowActivated(callback ListBoxSignalRowActivatedCallback) int {
-	signalListBoxRowActivatedLock.Lock()
-	defer signalListBoxRowActivatedLock.Unlock()
-
-	signalListBoxRowActivatedId++
-	signalListBoxRowActivatedMap[signalListBoxRowActivatedId] = callback
-
-	instance := C.gpointer(recv.Object().ToC())
-	retC := C.ListBox_signal_connect_row_activated(instance, C.gpointer(uintptr(signalListBoxRowActivatedId)))
-	return int(retC)
-}
-
-/*
-DisconnectRowActivated disconnects a callback from the 'row-activated' signal for the ListBox.
-
-The connectionID should be a value returned from a call to ConnectRowActivated.
-*/
-func (recv *ListBox) DisconnectRowActivated(connectionID int) {
-	signalListBoxRowActivatedLock.Lock()
-	defer signalListBoxRowActivatedLock.Unlock()
-
-	_, exists := signalListBoxRowActivatedMap[connectionID]
-	if !exists {
-		return
-	}
-
-	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
-	delete(signalListBoxRowActivatedMap, connectionID)
-}
-
-//export ListBox_rowActivatedHandler
-func ListBox_rowActivatedHandler() {
-	fmt.Println("cb")
-}
-
-var signalListBoxRowSelectedId int
-var signalListBoxRowSelectedMap = make(map[int]ListBoxSignalRowSelectedCallback)
-var signalListBoxRowSelectedLock sync.Mutex
-
-// ListBoxSignalRowSelectedCallback is a callback function for a 'row-selected' signal emitted from a ListBox.
-type ListBoxSignalRowSelectedCallback func(row *ListBoxRow)
-
-/*
-ConnectRowSelected connects the callback to the 'row-selected' signal for the ListBox.
-
-The returned value represents the connection, and may be passed to DisconnectRowSelected to remove it.
-*/
-func (recv *ListBox) ConnectRowSelected(callback ListBoxSignalRowSelectedCallback) int {
-	signalListBoxRowSelectedLock.Lock()
-	defer signalListBoxRowSelectedLock.Unlock()
-
-	signalListBoxRowSelectedId++
-	signalListBoxRowSelectedMap[signalListBoxRowSelectedId] = callback
-
-	instance := C.gpointer(recv.Object().ToC())
-	retC := C.ListBox_signal_connect_row_selected(instance, C.gpointer(uintptr(signalListBoxRowSelectedId)))
-	return int(retC)
-}
-
-/*
-DisconnectRowSelected disconnects a callback from the 'row-selected' signal for the ListBox.
-
-The connectionID should be a value returned from a call to ConnectRowSelected.
-*/
-func (recv *ListBox) DisconnectRowSelected(connectionID int) {
-	signalListBoxRowSelectedLock.Lock()
-	defer signalListBoxRowSelectedLock.Unlock()
-
-	_, exists := signalListBoxRowSelectedMap[connectionID]
-	if !exists {
-		return
-	}
-
-	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
-	delete(signalListBoxRowSelectedMap, connectionID)
-}
-
-//export ListBox_rowSelectedHandler
-func ListBox_rowSelectedHandler() {
-	fmt.Println("cb")
-}
+// Unsupported signal 'row-selected' for ListBox : unsupported parameter row : type ListBoxRow :
 
 // ListBoxNew is a wrapper around the C function gtk_list_box_new.
 func ListBoxNew() *ListBox {
@@ -870,67 +731,19 @@ func (recv *ListBoxRow) SetHeader(header *Widget) {
 
 // Unsupported : gtk_message_dialog_new_with_markup : unsupported parameter ... : varargs
 
-// Unsupported signal 'get-child-position' for Overlay : unsupported parameter allocation : Blacklisted record : GdkRectangle
-
 // Unsupported : gtk_page_setup_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
 
-// Unsupported signal 'drag-action-ask' for PlacesSidebar : return value gint :
+// Unsupported signal 'drag-action-ask' for PlacesSidebar : unsupported parameter actions : type gint :
 
-// Unsupported signal 'drag-action-requested' for PlacesSidebar : unsupported parameter dest_file : no type generator for Gio.File,
+// Unsupported signal 'drag-action-requested' for PlacesSidebar : unsupported parameter context : type Gdk.DragContext :
 
 // Unsupported signal 'drag-perform-drop' for PlacesSidebar : unsupported parameter dest_file : no type generator for Gio.File,
 
 // Unsupported signal 'open-location' for PlacesSidebar : unsupported parameter location : no type generator for Gio.File,
 
-// Unsupported signal 'populate-popup' for PlacesSidebar : unsupported parameter selected_item : no type generator for Gio.File,
+// Unsupported signal 'populate-popup' for PlacesSidebar : unsupported parameter container : type Widget :
 
-var signalPlacesSidebarShowErrorMessageId int
-var signalPlacesSidebarShowErrorMessageMap = make(map[int]PlacesSidebarSignalShowErrorMessageCallback)
-var signalPlacesSidebarShowErrorMessageLock sync.Mutex
-
-// PlacesSidebarSignalShowErrorMessageCallback is a callback function for a 'show-error-message' signal emitted from a PlacesSidebar.
-type PlacesSidebarSignalShowErrorMessageCallback func(primary string, secondary string)
-
-/*
-ConnectShowErrorMessage connects the callback to the 'show-error-message' signal for the PlacesSidebar.
-
-The returned value represents the connection, and may be passed to DisconnectShowErrorMessage to remove it.
-*/
-func (recv *PlacesSidebar) ConnectShowErrorMessage(callback PlacesSidebarSignalShowErrorMessageCallback) int {
-	signalPlacesSidebarShowErrorMessageLock.Lock()
-	defer signalPlacesSidebarShowErrorMessageLock.Unlock()
-
-	signalPlacesSidebarShowErrorMessageId++
-	signalPlacesSidebarShowErrorMessageMap[signalPlacesSidebarShowErrorMessageId] = callback
-
-	instance := C.gpointer(recv.Object().ToC())
-	retC := C.PlacesSidebar_signal_connect_show_error_message(instance, C.gpointer(uintptr(signalPlacesSidebarShowErrorMessageId)))
-	return int(retC)
-}
-
-/*
-DisconnectShowErrorMessage disconnects a callback from the 'show-error-message' signal for the PlacesSidebar.
-
-The connectionID should be a value returned from a call to ConnectShowErrorMessage.
-*/
-func (recv *PlacesSidebar) DisconnectShowErrorMessage(connectionID int) {
-	signalPlacesSidebarShowErrorMessageLock.Lock()
-	defer signalPlacesSidebarShowErrorMessageLock.Unlock()
-
-	_, exists := signalPlacesSidebarShowErrorMessageMap[connectionID]
-	if !exists {
-		return
-	}
-
-	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
-	delete(signalPlacesSidebarShowErrorMessageMap, connectionID)
-}
-
-//export PlacesSidebar_showErrorMessageHandler
-func PlacesSidebar_showErrorMessageHandler() {
-	fmt.Println("cb")
-}
+// Unsupported signal 'show-error-message' for PlacesSidebar : unsupported parameter primary : type utf8 :
 
 // PlacesSidebarNew is a wrapper around the C function gtk_places_sidebar_new.
 func PlacesSidebarNew() *PlacesSidebar {
@@ -1002,8 +815,6 @@ func (recv *PlacesSidebar) SetShowDesktop(showDesktop bool) {
 
 	return
 }
-
-// Unsupported signal 'preview' for PrintOperation : unsupported parameter preview : no type generator for PrintOperationPreview,
 
 // Unsupported : gtk_print_settings_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
 
@@ -1078,8 +889,6 @@ func (recv *Revealer) SetTransitionType(transition RevealerTransitionType) {
 
 	return
 }
-
-// Unsupported signal 'format-value' for Scale : return value utf8 :
 
 // Unsupported : gtk_scale_button_new : unsupported parameter size : no type generator for gint, GtkIconSize
 
@@ -1185,8 +994,6 @@ func (recv *SearchEntry) DisconnectSearchChanged(connectionID int) {
 func SearchEntry_searchChangedHandler() {
 	fmt.Println("cb")
 }
-
-// Unsupported signal 'input' for SpinButton : return value gint :
 
 // StackNew is a wrapper around the C function gtk_stack_new.
 func StackNew() *Stack {
@@ -1366,8 +1173,6 @@ func (recv *StyleContext) SetScale(scale int32) {
 	return
 }
 
-// Unsupported signal 'event' for TextTag : unsupported parameter event : no type generator for Gdk.Event,
-
 // Unsupported : gtk_tree_store_new : unsupported parameter ... : varargs
 
 // Unsupported : gtk_tree_store_newv : unsupported parameter types : no param type
@@ -1375,20 +1180,6 @@ func (recv *StyleContext) SetScale(scale int32) {
 // Unsupported : gtk_tree_view_new_with_model : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
 
 // Unsupported : gtk_tree_view_column_new_with_attributes : unsupported parameter ... : varargs
-
-// Unsupported signal 'child-notify' for Widget : unsupported parameter child_property : Blacklisted record : GParamSpec
-
-// Unsupported signal 'delete-event' for Widget : unsupported parameter event : no type generator for Gdk.Event,
-
-// Unsupported signal 'destroy-event' for Widget : unsupported parameter event : no type generator for Gdk.Event,
-
-// Unsupported signal 'event' for Widget : unsupported parameter event : no type generator for Gdk.Event,
-
-// Unsupported signal 'event-after' for Widget : unsupported parameter event : no type generator for Gdk.Event,
-
-// Unsupported signal 'size-allocate' for Widget : unsupported parameter allocation : Blacklisted record : GdkRectangle
-
-// Unsupported signal 'touch-event' for Widget : unsupported parameter object : no type generator for Gdk.Event,
 
 // Unsupported : gtk_widget_new : unsupported parameter type : no type generator for GType, GType
 

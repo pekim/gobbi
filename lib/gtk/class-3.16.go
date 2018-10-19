@@ -19,24 +19,6 @@ import (
 // #include <stdlib.h>
 /*
 
-	void ScrolledWindow_edgeOvershotHandler();
-
-	static gulong ScrolledWindow_signal_connect_edge_overshot(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "edge-overshot", ScrolledWindow_edgeOvershotHandler, data);
-	}
-
-*/
-/*
-
-	void ScrolledWindow_edgeReachedHandler();
-
-	static gulong ScrolledWindow_signal_connect_edge_reached(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "edge-reached", ScrolledWindow_edgeReachedHandler, data);
-	}
-
-*/
-/*
-
 	void SearchEntry_nextMatchHandler();
 
 	static gulong SearchEntry_signal_connect_next_match(gpointer instance, gpointer data) {
@@ -62,36 +44,11 @@ import (
 	}
 
 */
-/*
-
-	void TextView_extendSelectionHandler();
-
-	static gulong TextView_signal_connect_extend_selection(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "extend-selection", TextView_extendSelectionHandler, data);
-	}
-
-*/
 import "C"
 
 // Unsupported : gtk_app_chooser_dialog_new : unsupported parameter file : no type generator for Gio.File, GFile*
 
-// Unsupported signal 'application-activated' for AppChooserWidget : unsupported parameter application : no type generator for Gio.AppInfo,
-
-// Unsupported signal 'application-selected' for AppChooserWidget : unsupported parameter application : no type generator for Gio.AppInfo,
-
-// Unsupported signal 'populate-popup' for AppChooserWidget : unsupported parameter application : no type generator for Gio.AppInfo,
-
 // Unsupported : gtk_button_new_from_icon_name : unsupported parameter size : no type generator for gint, GtkIconSize
-
-// Unsupported signal 'add-editable' for CellArea : unsupported parameter editable : no type generator for CellEditable,
-
-// Unsupported signal 'apply-attributes' for CellArea : unsupported parameter model : no type generator for TreeModel,
-
-// Unsupported signal 'remove-editable' for CellArea : unsupported parameter editable : no type generator for CellEditable,
-
-// Unsupported signal 'editing-started' for CellRenderer : unsupported parameter editable : no type generator for CellEditable,
-
-// Unsupported signal 'format-entry-text' for ComboBox : return value utf8 :
 
 // Unsupported : gtk_combo_box_new_with_model : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
 
@@ -115,10 +72,6 @@ func (recv *Entry) GrabFocusWithoutSelecting() {
 
 	return
 }
-
-// Unsupported signal 'cursor-on-match' for EntryCompletion : unsupported parameter model : no type generator for TreeModel,
-
-// Unsupported signal 'match-selected' for EntryCompletion : unsupported parameter model : no type generator for TreeModel,
 
 // Unsupported : EntryIconAccessible : no CType
 
@@ -394,8 +347,6 @@ func (recv *Notebook) DetachTab(child *Widget) {
 	return
 }
 
-// Unsupported signal 'get-child-position' for Overlay : unsupported parameter allocation : Blacklisted record : GdkRectangle
-
 // Unsupported : gtk_page_setup_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
 
 // GetWideHandle is a wrapper around the C function gtk_paned_get_wide_handle.
@@ -415,16 +366,6 @@ func (recv *Paned) SetWideHandle(wide bool) {
 
 	return
 }
-
-// Unsupported signal 'drag-action-ask' for PlacesSidebar : return value gint :
-
-// Unsupported signal 'drag-action-requested' for PlacesSidebar : unsupported parameter dest_file : no type generator for Gio.File,
-
-// Unsupported signal 'drag-perform-drop' for PlacesSidebar : unsupported parameter dest_file : no type generator for Gio.File,
-
-// Unsupported signal 'open-location' for PlacesSidebar : unsupported parameter location : no type generator for Gio.File,
-
-// Unsupported signal 'populate-popup' for PlacesSidebar : unsupported parameter selected_item : no type generator for Gio.File,
 
 // GetTransitionsEnabled is a wrapper around the C function gtk_popover_get_transitions_enabled.
 func (recv *Popover) GetTransitionsEnabled() bool {
@@ -462,113 +403,17 @@ func (recv *PopoverMenu) OpenSubmenu(name string) {
 	return
 }
 
-// Unsupported signal 'preview' for PrintOperation : unsupported parameter preview : no type generator for PrintOperationPreview,
-
 // Unsupported : gtk_print_settings_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
 
 // Unsupported : gtk_recent_chooser_dialog_new : unsupported parameter ... : varargs
 
 // Unsupported : gtk_recent_chooser_dialog_new_for_manager : unsupported parameter ... : varargs
 
-// Unsupported signal 'format-value' for Scale : return value utf8 :
-
 // Unsupported : gtk_scale_button_new : unsupported parameter size : no type generator for gint, GtkIconSize
 
-var signalScrolledWindowEdgeOvershotId int
-var signalScrolledWindowEdgeOvershotMap = make(map[int]ScrolledWindowSignalEdgeOvershotCallback)
-var signalScrolledWindowEdgeOvershotLock sync.Mutex
+// Unsupported signal 'edge-overshot' for ScrolledWindow : unsupported parameter pos : type PositionType :
 
-// ScrolledWindowSignalEdgeOvershotCallback is a callback function for a 'edge-overshot' signal emitted from a ScrolledWindow.
-type ScrolledWindowSignalEdgeOvershotCallback func(pos PositionType)
-
-/*
-ConnectEdgeOvershot connects the callback to the 'edge-overshot' signal for the ScrolledWindow.
-
-The returned value represents the connection, and may be passed to DisconnectEdgeOvershot to remove it.
-*/
-func (recv *ScrolledWindow) ConnectEdgeOvershot(callback ScrolledWindowSignalEdgeOvershotCallback) int {
-	signalScrolledWindowEdgeOvershotLock.Lock()
-	defer signalScrolledWindowEdgeOvershotLock.Unlock()
-
-	signalScrolledWindowEdgeOvershotId++
-	signalScrolledWindowEdgeOvershotMap[signalScrolledWindowEdgeOvershotId] = callback
-
-	instance := C.gpointer(recv.Object().ToC())
-	retC := C.ScrolledWindow_signal_connect_edge_overshot(instance, C.gpointer(uintptr(signalScrolledWindowEdgeOvershotId)))
-	return int(retC)
-}
-
-/*
-DisconnectEdgeOvershot disconnects a callback from the 'edge-overshot' signal for the ScrolledWindow.
-
-The connectionID should be a value returned from a call to ConnectEdgeOvershot.
-*/
-func (recv *ScrolledWindow) DisconnectEdgeOvershot(connectionID int) {
-	signalScrolledWindowEdgeOvershotLock.Lock()
-	defer signalScrolledWindowEdgeOvershotLock.Unlock()
-
-	_, exists := signalScrolledWindowEdgeOvershotMap[connectionID]
-	if !exists {
-		return
-	}
-
-	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
-	delete(signalScrolledWindowEdgeOvershotMap, connectionID)
-}
-
-//export ScrolledWindow_edgeOvershotHandler
-func ScrolledWindow_edgeOvershotHandler() {
-	fmt.Println("cb")
-}
-
-var signalScrolledWindowEdgeReachedId int
-var signalScrolledWindowEdgeReachedMap = make(map[int]ScrolledWindowSignalEdgeReachedCallback)
-var signalScrolledWindowEdgeReachedLock sync.Mutex
-
-// ScrolledWindowSignalEdgeReachedCallback is a callback function for a 'edge-reached' signal emitted from a ScrolledWindow.
-type ScrolledWindowSignalEdgeReachedCallback func(pos PositionType)
-
-/*
-ConnectEdgeReached connects the callback to the 'edge-reached' signal for the ScrolledWindow.
-
-The returned value represents the connection, and may be passed to DisconnectEdgeReached to remove it.
-*/
-func (recv *ScrolledWindow) ConnectEdgeReached(callback ScrolledWindowSignalEdgeReachedCallback) int {
-	signalScrolledWindowEdgeReachedLock.Lock()
-	defer signalScrolledWindowEdgeReachedLock.Unlock()
-
-	signalScrolledWindowEdgeReachedId++
-	signalScrolledWindowEdgeReachedMap[signalScrolledWindowEdgeReachedId] = callback
-
-	instance := C.gpointer(recv.Object().ToC())
-	retC := C.ScrolledWindow_signal_connect_edge_reached(instance, C.gpointer(uintptr(signalScrolledWindowEdgeReachedId)))
-	return int(retC)
-}
-
-/*
-DisconnectEdgeReached disconnects a callback from the 'edge-reached' signal for the ScrolledWindow.
-
-The connectionID should be a value returned from a call to ConnectEdgeReached.
-*/
-func (recv *ScrolledWindow) DisconnectEdgeReached(connectionID int) {
-	signalScrolledWindowEdgeReachedLock.Lock()
-	defer signalScrolledWindowEdgeReachedLock.Unlock()
-
-	_, exists := signalScrolledWindowEdgeReachedMap[connectionID]
-	if !exists {
-		return
-	}
-
-	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
-	delete(signalScrolledWindowEdgeReachedMap, connectionID)
-}
-
-//export ScrolledWindow_edgeReachedHandler
-func ScrolledWindow_edgeReachedHandler() {
-	fmt.Println("cb")
-}
+// Unsupported signal 'edge-reached' for ScrolledWindow : unsupported parameter pos : type PositionType :
 
 // GetOverlayScrolling is a wrapper around the C function gtk_scrolled_window_get_overlay_scrolling.
 func (recv *ScrolledWindow) GetOverlayScrolling() bool {
@@ -734,8 +579,6 @@ func SearchEntry_stopSearchHandler() {
 
 // Unsupported : gtk_search_entry_handle_event : unsupported parameter event : no type generator for Gdk.Event, GdkEvent*
 
-// Unsupported signal 'input' for SpinButton : return value gint :
-
 // GetHhomogeneous is a wrapper around the C function gtk_stack_get_hhomogeneous.
 func (recv *Stack) GetHhomogeneous() bool {
 	retC := C.gtk_stack_get_hhomogeneous((*C.GtkStack)(recv.native))
@@ -813,55 +656,7 @@ func (recv *TextBuffer) InsertMarkup(iter *TextIter, markup string, len int32) {
 	return
 }
 
-// Unsupported signal 'event' for TextTag : unsupported parameter event : no type generator for Gdk.Event,
-
-var signalTextViewExtendSelectionId int
-var signalTextViewExtendSelectionMap = make(map[int]TextViewSignalExtendSelectionCallback)
-var signalTextViewExtendSelectionLock sync.Mutex
-
-// TextViewSignalExtendSelectionCallback is a callback function for a 'extend-selection' signal emitted from a TextView.
-type TextViewSignalExtendSelectionCallback func(granularity TextExtendSelection, location *TextIter, start *TextIter, end *TextIter) bool
-
-/*
-ConnectExtendSelection connects the callback to the 'extend-selection' signal for the TextView.
-
-The returned value represents the connection, and may be passed to DisconnectExtendSelection to remove it.
-*/
-func (recv *TextView) ConnectExtendSelection(callback TextViewSignalExtendSelectionCallback) int {
-	signalTextViewExtendSelectionLock.Lock()
-	defer signalTextViewExtendSelectionLock.Unlock()
-
-	signalTextViewExtendSelectionId++
-	signalTextViewExtendSelectionMap[signalTextViewExtendSelectionId] = callback
-
-	instance := C.gpointer(recv.Object().ToC())
-	retC := C.TextView_signal_connect_extend_selection(instance, C.gpointer(uintptr(signalTextViewExtendSelectionId)))
-	return int(retC)
-}
-
-/*
-DisconnectExtendSelection disconnects a callback from the 'extend-selection' signal for the TextView.
-
-The connectionID should be a value returned from a call to ConnectExtendSelection.
-*/
-func (recv *TextView) DisconnectExtendSelection(connectionID int) {
-	signalTextViewExtendSelectionLock.Lock()
-	defer signalTextViewExtendSelectionLock.Unlock()
-
-	_, exists := signalTextViewExtendSelectionMap[connectionID]
-	if !exists {
-		return
-	}
-
-	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
-	delete(signalTextViewExtendSelectionMap, connectionID)
-}
-
-//export TextView_extendSelectionHandler
-func TextView_extendSelectionHandler() C.boolean {
-	fmt.Println("cb")
-}
+// Unsupported signal 'extend-selection' for TextView : unsupported parameter granularity : type TextExtendSelection :
 
 // GetMonospace is a wrapper around the C function gtk_text_view_get_monospace.
 func (recv *TextView) GetMonospace() bool {
@@ -888,20 +683,6 @@ func (recv *TextView) SetMonospace(monospace bool) {
 // Unsupported : gtk_tree_view_new_with_model : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
 
 // Unsupported : gtk_tree_view_column_new_with_attributes : unsupported parameter ... : varargs
-
-// Unsupported signal 'child-notify' for Widget : unsupported parameter child_property : Blacklisted record : GParamSpec
-
-// Unsupported signal 'delete-event' for Widget : unsupported parameter event : no type generator for Gdk.Event,
-
-// Unsupported signal 'destroy-event' for Widget : unsupported parameter event : no type generator for Gdk.Event,
-
-// Unsupported signal 'event' for Widget : unsupported parameter event : no type generator for Gdk.Event,
-
-// Unsupported signal 'event-after' for Widget : unsupported parameter event : no type generator for Gdk.Event,
-
-// Unsupported signal 'size-allocate' for Widget : unsupported parameter allocation : Blacklisted record : GdkRectangle
-
-// Unsupported signal 'touch-event' for Widget : unsupported parameter object : no type generator for Gdk.Event,
 
 // Unsupported : gtk_widget_new : unsupported parameter type : no type generator for GType, GType
 

@@ -30,6 +30,10 @@ func (t *TypeGeneratorString) isSupportedAsParam(direction string) (supported bo
 	return true, ""
 }
 
+func (t *TypeGeneratorString) isSupportedAsParamC() (supported bool, reason string) {
+	return false, ""
+}
+
 func (t *TypeGeneratorString) isSupportedAsReturnValue() (supported bool, reason string) {
 	if t.typ.indirectLevel > 1 {
 		return false, fmt.Sprintf("string with indirection level of %d",
@@ -47,6 +51,9 @@ func (t *TypeGeneratorString) generateDeclaration(g *jen.Group, goVarName string
 	g.
 		Id(goVarName).
 		Do(t.typ.qname.generate)
+}
+
+func (t *TypeGeneratorString) generateDeclarationC(g *jen.Group, goVarName string) {
 }
 
 func (t *TypeGeneratorString) generateParamCallArgument(g *jen.Group, cVarName string) {

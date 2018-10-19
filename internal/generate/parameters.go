@@ -46,6 +46,12 @@ func (pp Parameters) generateFunctionDeclaration(g *jen.Group) {
 	}
 }
 
+func (pp Parameters) generateFunctionDeclarationCtypes(g *jen.Group) {
+	for _, p := range pp {
+		p.generateFunctionDeclarationCtype(g)
+	}
+}
+
 func (pp Parameters) generateCVars(g *jen.Group) {
 	for _, p := range pp {
 		p.generateCVar(g)
@@ -79,6 +85,16 @@ func (pp Parameters) generateCallArguments(g *jen.Group) {
 func (pp Parameters) allSupported() (bool, string) {
 	for _, p := range pp {
 		if supported, reason := p.isSupported(); !supported {
+			return supported, fmt.Sprintf("unsupported parameter %s : %s", p.Name, reason)
+		}
+	}
+
+	return true, ""
+}
+
+func (pp Parameters) allSupportedC() (bool, string) {
+	for _, p := range pp {
+		if supported, reason := p.isSupportedC(); !supported {
 			return supported, fmt.Sprintf("unsupported parameter %s : %s", p.Name, reason)
 		}
 	}

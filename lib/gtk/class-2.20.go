@@ -4,12 +4,10 @@
 package gtk
 
 import (
-	"fmt"
 	cairo "github.com/pekim/gobbi/lib/cairo"
 	gdk "github.com/pekim/gobbi/lib/gdk"
 	gdkpixbuf "github.com/pekim/gobbi/lib/gdkpixbuf"
 	pango "github.com/pekim/gobbi/lib/pango"
-	"sync"
 	"unsafe"
 )
 
@@ -18,24 +16,6 @@ import (
 // #include <gtk/gtk.h>
 // #include <gtk/gtkx.h>
 // #include <stdlib.h>
-/*
-
-	void Entry_preeditChangedHandler();
-
-	static gulong Entry_signal_connect_preedit_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "preedit-changed", Entry_preeditChangedHandler, data);
-	}
-
-*/
-/*
-
-	void TextView_preeditChangedHandler();
-
-	static gulong TextView_signal_connect_preedit_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "preedit-changed", TextView_preeditChangedHandler, data);
-	}
-
-*/
 import "C"
 
 // GetAlwaysShowImage is a wrapper around the C function gtk_action_get_always_show_image.
@@ -58,21 +38,7 @@ func (recv *Action) SetAlwaysShowImage(alwaysShow bool) {
 
 // Unsupported : gtk_app_chooser_dialog_new : unsupported parameter file : no type generator for Gio.File, GFile*
 
-// Unsupported signal 'application-activated' for AppChooserWidget : unsupported parameter application : no type generator for Gio.AppInfo,
-
-// Unsupported signal 'application-selected' for AppChooserWidget : unsupported parameter application : no type generator for Gio.AppInfo,
-
-// Unsupported signal 'populate-popup' for AppChooserWidget : unsupported parameter application : no type generator for Gio.AppInfo,
-
 // Unsupported : gtk_button_new_from_icon_name : unsupported parameter size : no type generator for gint, GtkIconSize
-
-// Unsupported signal 'add-editable' for CellArea : unsupported parameter editable : no type generator for CellEditable,
-
-// Unsupported signal 'apply-attributes' for CellArea : unsupported parameter model : no type generator for TreeModel,
-
-// Unsupported signal 'remove-editable' for CellArea : unsupported parameter editable : no type generator for CellEditable,
-
-// Unsupported signal 'editing-started' for CellRenderer : unsupported parameter editable : no type generator for CellEditable,
 
 // CellRendererSpinnerNew is a wrapper around the C function gtk_cell_renderer_spinner_new.
 func CellRendererSpinnerNew() *CellRendererSpinner {
@@ -81,8 +47,6 @@ func CellRendererSpinnerNew() *CellRendererSpinner {
 
 	return retGo
 }
-
-// Unsupported signal 'format-entry-text' for ComboBox : return value utf8 :
 
 // Unsupported : gtk_combo_box_new_with_model : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
 
@@ -100,57 +64,7 @@ func (recv *Dialog) GetWidgetForResponse(responseId int32) *Widget {
 	return retGo
 }
 
-var signalEntryPreeditChangedId int
-var signalEntryPreeditChangedMap = make(map[int]EntrySignalPreeditChangedCallback)
-var signalEntryPreeditChangedLock sync.Mutex
-
-// EntrySignalPreeditChangedCallback is a callback function for a 'preedit-changed' signal emitted from a Entry.
-type EntrySignalPreeditChangedCallback func(preedit string)
-
-/*
-ConnectPreeditChanged connects the callback to the 'preedit-changed' signal for the Entry.
-
-The returned value represents the connection, and may be passed to DisconnectPreeditChanged to remove it.
-*/
-func (recv *Entry) ConnectPreeditChanged(callback EntrySignalPreeditChangedCallback) int {
-	signalEntryPreeditChangedLock.Lock()
-	defer signalEntryPreeditChangedLock.Unlock()
-
-	signalEntryPreeditChangedId++
-	signalEntryPreeditChangedMap[signalEntryPreeditChangedId] = callback
-
-	instance := C.gpointer(recv.Object().ToC())
-	retC := C.Entry_signal_connect_preedit_changed(instance, C.gpointer(uintptr(signalEntryPreeditChangedId)))
-	return int(retC)
-}
-
-/*
-DisconnectPreeditChanged disconnects a callback from the 'preedit-changed' signal for the Entry.
-
-The connectionID should be a value returned from a call to ConnectPreeditChanged.
-*/
-func (recv *Entry) DisconnectPreeditChanged(connectionID int) {
-	signalEntryPreeditChangedLock.Lock()
-	defer signalEntryPreeditChangedLock.Unlock()
-
-	_, exists := signalEntryPreeditChangedMap[connectionID]
-	if !exists {
-		return
-	}
-
-	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
-	delete(signalEntryPreeditChangedMap, connectionID)
-}
-
-//export Entry_preeditChangedHandler
-func Entry_preeditChangedHandler() {
-	fmt.Println("cb")
-}
-
-// Unsupported signal 'cursor-on-match' for EntryCompletion : unsupported parameter model : no type generator for TreeModel,
-
-// Unsupported signal 'match-selected' for EntryCompletion : unsupported parameter model : no type generator for TreeModel,
+// Unsupported signal 'preedit-changed' for Entry : unsupported parameter preedit : type utf8 :
 
 // Unsupported : EntryIconAccessible : no CType
 
@@ -223,8 +137,6 @@ func (recv *OffscreenWindow) GetSurface() *cairo.Surface {
 	return retGo
 }
 
-// Unsupported signal 'get-child-position' for Overlay : unsupported parameter allocation : Blacklisted record : GdkRectangle
-
 // Unsupported : gtk_page_setup_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
 
 // GetHandleWindow is a wrapper around the C function gtk_paned_get_handle_window.
@@ -234,16 +146,6 @@ func (recv *Paned) GetHandleWindow() *gdk.Window {
 
 	return retGo
 }
-
-// Unsupported signal 'drag-action-ask' for PlacesSidebar : return value gint :
-
-// Unsupported signal 'drag-action-requested' for PlacesSidebar : unsupported parameter dest_file : no type generator for Gio.File,
-
-// Unsupported signal 'drag-perform-drop' for PlacesSidebar : unsupported parameter dest_file : no type generator for Gio.File,
-
-// Unsupported signal 'open-location' for PlacesSidebar : unsupported parameter location : no type generator for Gio.File,
-
-// Unsupported signal 'populate-popup' for PlacesSidebar : unsupported parameter selected_item : no type generator for Gio.File,
 
 // GetHardMargins is a wrapper around the C function gtk_print_context_get_hard_margins.
 func (recv *PrintContext) GetHardMargins() (bool, float64, float64, float64, float64) {
@@ -268,8 +170,6 @@ func (recv *PrintContext) GetHardMargins() (bool, float64, float64, float64, flo
 
 	return retGo, top, bottom, left, right
 }
-
-// Unsupported signal 'preview' for PrintOperation : unsupported parameter preview : no type generator for PrintOperationPreview,
 
 // Unsupported : gtk_print_settings_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
 
@@ -329,11 +229,7 @@ func (recv *Range) SetSliderSizeFixed(sizeFixed bool) {
 
 // Unsupported : gtk_recent_chooser_dialog_new_for_manager : unsupported parameter ... : varargs
 
-// Unsupported signal 'format-value' for Scale : return value utf8 :
-
 // Unsupported : gtk_scale_button_new : unsupported parameter size : no type generator for gint, GtkIconSize
-
-// Unsupported signal 'input' for SpinButton : return value gint :
 
 // SpinnerNew is a wrapper around the C function gtk_spinner_new.
 func SpinnerNew() *Spinner {
@@ -377,55 +273,7 @@ func (recv *Statusbar) GetMessageArea() *Box {
 	return retGo
 }
 
-// Unsupported signal 'event' for TextTag : unsupported parameter event : no type generator for Gdk.Event,
-
-var signalTextViewPreeditChangedId int
-var signalTextViewPreeditChangedMap = make(map[int]TextViewSignalPreeditChangedCallback)
-var signalTextViewPreeditChangedLock sync.Mutex
-
-// TextViewSignalPreeditChangedCallback is a callback function for a 'preedit-changed' signal emitted from a TextView.
-type TextViewSignalPreeditChangedCallback func(preedit string)
-
-/*
-ConnectPreeditChanged connects the callback to the 'preedit-changed' signal for the TextView.
-
-The returned value represents the connection, and may be passed to DisconnectPreeditChanged to remove it.
-*/
-func (recv *TextView) ConnectPreeditChanged(callback TextViewSignalPreeditChangedCallback) int {
-	signalTextViewPreeditChangedLock.Lock()
-	defer signalTextViewPreeditChangedLock.Unlock()
-
-	signalTextViewPreeditChangedId++
-	signalTextViewPreeditChangedMap[signalTextViewPreeditChangedId] = callback
-
-	instance := C.gpointer(recv.Object().ToC())
-	retC := C.TextView_signal_connect_preedit_changed(instance, C.gpointer(uintptr(signalTextViewPreeditChangedId)))
-	return int(retC)
-}
-
-/*
-DisconnectPreeditChanged disconnects a callback from the 'preedit-changed' signal for the TextView.
-
-The connectionID should be a value returned from a call to ConnectPreeditChanged.
-*/
-func (recv *TextView) DisconnectPreeditChanged(connectionID int) {
-	signalTextViewPreeditChangedLock.Lock()
-	defer signalTextViewPreeditChangedLock.Unlock()
-
-	_, exists := signalTextViewPreeditChangedMap[connectionID]
-	if !exists {
-		return
-	}
-
-	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
-	delete(signalTextViewPreeditChangedMap, connectionID)
-}
-
-//export TextView_preeditChangedHandler
-func TextView_preeditChangedHandler() {
-	fmt.Println("cb")
-}
+// Unsupported signal 'preedit-changed' for TextView : unsupported parameter preedit : type utf8 :
 
 // GetEllipsizeMode is a wrapper around the C function gtk_tool_item_get_ellipsize_mode.
 func (recv *ToolItem) GetEllipsizeMode() pango.EllipsizeMode {
@@ -818,20 +666,6 @@ func (recv *Viewport) GetBinWindow() *gdk.Window {
 
 	return retGo
 }
-
-// Unsupported signal 'child-notify' for Widget : unsupported parameter child_property : Blacklisted record : GParamSpec
-
-// Unsupported signal 'delete-event' for Widget : unsupported parameter event : no type generator for Gdk.Event,
-
-// Unsupported signal 'destroy-event' for Widget : unsupported parameter event : no type generator for Gdk.Event,
-
-// Unsupported signal 'event' for Widget : unsupported parameter event : no type generator for Gdk.Event,
-
-// Unsupported signal 'event-after' for Widget : unsupported parameter event : no type generator for Gdk.Event,
-
-// Unsupported signal 'size-allocate' for Widget : unsupported parameter allocation : Blacklisted record : GdkRectangle
-
-// Unsupported signal 'touch-event' for Widget : unsupported parameter object : no type generator for Gdk.Event,
 
 // Unsupported : gtk_widget_new : unsupported parameter type : no type generator for GType, GType
 

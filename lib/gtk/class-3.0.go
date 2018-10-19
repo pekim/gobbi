@@ -23,37 +23,10 @@ import (
 // #include <stdlib.h>
 /*
 
-	void CellArea_focusChangedHandler();
-
-	static gulong CellArea_signal_connect_focus_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "focus-changed", CellArea_focusChangedHandler, data);
-	}
-
-*/
-/*
-
 	void StyleContext_changedHandler();
 
 	static gulong StyleContext_signal_connect_changed(gpointer instance, gpointer data) {
 		return g_signal_connect(instance, "changed", StyleContext_changedHandler, data);
-	}
-
-*/
-/*
-
-	void Widget_drawHandler();
-
-	static gulong Widget_signal_connect_draw(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "draw", Widget_drawHandler, data);
-	}
-
-*/
-/*
-
-	void Widget_stateFlagsChangedHandler();
-
-	static gulong Widget_signal_connect_state_flags_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "state-flags-changed", Widget_stateFlagsChangedHandler, data);
 	}
 
 */
@@ -157,12 +130,6 @@ func (recv *AppChooserDialog) GetWidget() *Widget {
 
 	return retGo
 }
-
-// Unsupported signal 'application-activated' for AppChooserWidget : unsupported parameter application : no type generator for Gio.AppInfo,
-
-// Unsupported signal 'application-selected' for AppChooserWidget : unsupported parameter application : no type generator for Gio.AppInfo,
-
-// Unsupported signal 'populate-popup' for AppChooserWidget : unsupported parameter application : no type generator for Gio.AppInfo,
 
 // AppChooserWidgetNew is a wrapper around the C function gtk_app_chooser_widget_new.
 func AppChooserWidgetNew(contentType string) *AppChooserWidget {
@@ -360,59 +327,13 @@ func (recv *Calendar) GetDayIsMarked(day uint32) bool {
 	return retGo
 }
 
-// Unsupported signal 'add-editable' for CellArea : unsupported parameter editable : no type generator for CellEditable,
+// Unsupported signal 'add-editable' for CellArea : unsupported parameter renderer : type CellRenderer :
 
 // Unsupported signal 'apply-attributes' for CellArea : unsupported parameter model : no type generator for TreeModel,
 
-var signalCellAreaFocusChangedId int
-var signalCellAreaFocusChangedMap = make(map[int]CellAreaSignalFocusChangedCallback)
-var signalCellAreaFocusChangedLock sync.Mutex
+// Unsupported signal 'focus-changed' for CellArea : unsupported parameter renderer : type CellRenderer :
 
-// CellAreaSignalFocusChangedCallback is a callback function for a 'focus-changed' signal emitted from a CellArea.
-type CellAreaSignalFocusChangedCallback func(renderer *CellRenderer, path string)
-
-/*
-ConnectFocusChanged connects the callback to the 'focus-changed' signal for the CellArea.
-
-The returned value represents the connection, and may be passed to DisconnectFocusChanged to remove it.
-*/
-func (recv *CellArea) ConnectFocusChanged(callback CellAreaSignalFocusChangedCallback) int {
-	signalCellAreaFocusChangedLock.Lock()
-	defer signalCellAreaFocusChangedLock.Unlock()
-
-	signalCellAreaFocusChangedId++
-	signalCellAreaFocusChangedMap[signalCellAreaFocusChangedId] = callback
-
-	instance := C.gpointer(recv.Object().ToC())
-	retC := C.CellArea_signal_connect_focus_changed(instance, C.gpointer(uintptr(signalCellAreaFocusChangedId)))
-	return int(retC)
-}
-
-/*
-DisconnectFocusChanged disconnects a callback from the 'focus-changed' signal for the CellArea.
-
-The connectionID should be a value returned from a call to ConnectFocusChanged.
-*/
-func (recv *CellArea) DisconnectFocusChanged(connectionID int) {
-	signalCellAreaFocusChangedLock.Lock()
-	defer signalCellAreaFocusChangedLock.Unlock()
-
-	_, exists := signalCellAreaFocusChangedMap[connectionID]
-	if !exists {
-		return
-	}
-
-	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
-	delete(signalCellAreaFocusChangedMap, connectionID)
-}
-
-//export CellArea_focusChangedHandler
-func CellArea_focusChangedHandler() {
-	fmt.Println("cb")
-}
-
-// Unsupported signal 'remove-editable' for CellArea : unsupported parameter editable : no type generator for CellEditable,
+// Unsupported signal 'remove-editable' for CellArea : unsupported parameter renderer : type CellRenderer :
 
 // Unsupported : gtk_cell_area_activate : unsupported parameter cell_area : Blacklisted record : GdkRectangle
 
@@ -942,8 +863,6 @@ func (recv *CellAreaContext) PushPreferredWidth(minimumWidth int32, naturalWidth
 	return
 }
 
-// Unsupported signal 'editing-started' for CellRenderer : unsupported parameter editable : no type generator for CellEditable,
-
 // Unsupported : gtk_cell_renderer_get_aligned_area : unsupported parameter cell_area : Blacklisted record : GdkRectangle
 
 // GetPreferredHeight is a wrapper around the C function gtk_cell_renderer_get_preferred_height.
@@ -1178,8 +1097,6 @@ func (recv *ColorSelection) SetPreviousRgba(rgba *gdk.RGBA) {
 	return
 }
 
-// Unsupported signal 'format-entry-text' for ComboBox : return value utf8 :
-
 // Unsupported : gtk_combo_box_new_with_model : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
 
 // Unsupported : gtk_combo_box_new_with_model_and_entry : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
@@ -1274,10 +1191,6 @@ func (recv *ComboBoxText) RemoveAll() {
 // Unsupported : gtk_entry_get_icon_area : unsupported parameter icon_area : Blacklisted record : GdkRectangle
 
 // Unsupported : gtk_entry_get_text_area : unsupported parameter text_area : Blacklisted record : GdkRectangle
-
-// Unsupported signal 'cursor-on-match' for EntryCompletion : unsupported parameter model : no type generator for TreeModel,
-
-// Unsupported signal 'match-selected' for EntryCompletion : unsupported parameter model : no type generator for TreeModel,
 
 // EntryCompletionNewWithArea is a wrapper around the C function gtk_entry_completion_new_with_area.
 func EntryCompletionNewWithArea(area *CellArea) *EntryCompletion {
@@ -1506,8 +1419,6 @@ func (recv *NumerableIcon) SetStyleContext(style *StyleContext) {
 	return
 }
 
-// Unsupported signal 'get-child-position' for Overlay : unsupported parameter allocation : Blacklisted record : GdkRectangle
-
 // Unsupported : gtk_page_setup_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
 
 // PanedNew is a wrapper around the C function gtk_paned_new.
@@ -1519,18 +1430,6 @@ func PanedNew(orientation Orientation) *Paned {
 
 	return retGo
 }
-
-// Unsupported signal 'drag-action-ask' for PlacesSidebar : return value gint :
-
-// Unsupported signal 'drag-action-requested' for PlacesSidebar : unsupported parameter dest_file : no type generator for Gio.File,
-
-// Unsupported signal 'drag-perform-drop' for PlacesSidebar : unsupported parameter dest_file : no type generator for Gio.File,
-
-// Unsupported signal 'open-location' for PlacesSidebar : unsupported parameter location : no type generator for Gio.File,
-
-// Unsupported signal 'populate-popup' for PlacesSidebar : unsupported parameter selected_item : no type generator for Gio.File,
-
-// Unsupported signal 'preview' for PrintOperation : unsupported parameter preview : no type generator for PrintOperationPreview,
 
 // Unsupported : gtk_print_settings_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
 
@@ -1573,8 +1472,6 @@ func (recv *RadioButton) JoinGroup(groupSource *RadioButton) {
 // Unsupported : gtk_recent_chooser_dialog_new : unsupported parameter ... : varargs
 
 // Unsupported : gtk_recent_chooser_dialog_new_for_manager : unsupported parameter ... : varargs
-
-// Unsupported signal 'format-value' for Scale : return value utf8 :
 
 // ScaleNew is a wrapper around the C function gtk_scale_new.
 func ScaleNew(orientation Orientation, adjustment *Adjustment) *Scale {
@@ -1661,8 +1558,6 @@ func SeparatorNew(orientation Orientation) *Separator {
 
 	return retGo
 }
-
-// Unsupported signal 'input' for SpinButton : return value gint :
 
 // Unsupported : gtk_status_icon_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon, GIcon*
 
@@ -2196,8 +2091,6 @@ func (recv *Switch) SetActive(isActive bool) {
 	return
 }
 
-// Unsupported signal 'event' for TextTag : unsupported parameter event : no type generator for Gdk.Event,
-
 // Unsupported : gtk_text_view_get_cursor_locations : unsupported parameter strong : Blacklisted record : GdkRectangle
 
 // Unsupported : gtk_theming_engine_get : unsupported parameter ... : varargs
@@ -2428,113 +2321,9 @@ func (recv *TreeViewColumn) GetButton() *Widget {
 	return retGo
 }
 
-// Unsupported signal 'child-notify' for Widget : unsupported parameter child_property : Blacklisted record : GParamSpec
+// Unsupported signal 'draw' for Widget : unsupported parameter cr : type cairo.Context :
 
-// Unsupported signal 'delete-event' for Widget : unsupported parameter event : no type generator for Gdk.Event,
-
-// Unsupported signal 'destroy-event' for Widget : unsupported parameter event : no type generator for Gdk.Event,
-
-var signalWidgetDrawId int
-var signalWidgetDrawMap = make(map[int]WidgetSignalDrawCallback)
-var signalWidgetDrawLock sync.Mutex
-
-// WidgetSignalDrawCallback is a callback function for a 'draw' signal emitted from a Widget.
-type WidgetSignalDrawCallback func(cr *cairo.Context) bool
-
-/*
-ConnectDraw connects the callback to the 'draw' signal for the Widget.
-
-The returned value represents the connection, and may be passed to DisconnectDraw to remove it.
-*/
-func (recv *Widget) ConnectDraw(callback WidgetSignalDrawCallback) int {
-	signalWidgetDrawLock.Lock()
-	defer signalWidgetDrawLock.Unlock()
-
-	signalWidgetDrawId++
-	signalWidgetDrawMap[signalWidgetDrawId] = callback
-
-	instance := C.gpointer(recv.Object().ToC())
-	retC := C.Widget_signal_connect_draw(instance, C.gpointer(uintptr(signalWidgetDrawId)))
-	return int(retC)
-}
-
-/*
-DisconnectDraw disconnects a callback from the 'draw' signal for the Widget.
-
-The connectionID should be a value returned from a call to ConnectDraw.
-*/
-func (recv *Widget) DisconnectDraw(connectionID int) {
-	signalWidgetDrawLock.Lock()
-	defer signalWidgetDrawLock.Unlock()
-
-	_, exists := signalWidgetDrawMap[connectionID]
-	if !exists {
-		return
-	}
-
-	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
-	delete(signalWidgetDrawMap, connectionID)
-}
-
-//export Widget_drawHandler
-func Widget_drawHandler() C.boolean {
-	fmt.Println("cb")
-}
-
-// Unsupported signal 'event' for Widget : unsupported parameter event : no type generator for Gdk.Event,
-
-// Unsupported signal 'event-after' for Widget : unsupported parameter event : no type generator for Gdk.Event,
-
-// Unsupported signal 'size-allocate' for Widget : unsupported parameter allocation : Blacklisted record : GdkRectangle
-
-var signalWidgetStateFlagsChangedId int
-var signalWidgetStateFlagsChangedMap = make(map[int]WidgetSignalStateFlagsChangedCallback)
-var signalWidgetStateFlagsChangedLock sync.Mutex
-
-// WidgetSignalStateFlagsChangedCallback is a callback function for a 'state-flags-changed' signal emitted from a Widget.
-type WidgetSignalStateFlagsChangedCallback func(flags StateFlags)
-
-/*
-ConnectStateFlagsChanged connects the callback to the 'state-flags-changed' signal for the Widget.
-
-The returned value represents the connection, and may be passed to DisconnectStateFlagsChanged to remove it.
-*/
-func (recv *Widget) ConnectStateFlagsChanged(callback WidgetSignalStateFlagsChangedCallback) int {
-	signalWidgetStateFlagsChangedLock.Lock()
-	defer signalWidgetStateFlagsChangedLock.Unlock()
-
-	signalWidgetStateFlagsChangedId++
-	signalWidgetStateFlagsChangedMap[signalWidgetStateFlagsChangedId] = callback
-
-	instance := C.gpointer(recv.Object().ToC())
-	retC := C.Widget_signal_connect_state_flags_changed(instance, C.gpointer(uintptr(signalWidgetStateFlagsChangedId)))
-	return int(retC)
-}
-
-/*
-DisconnectStateFlagsChanged disconnects a callback from the 'state-flags-changed' signal for the Widget.
-
-The connectionID should be a value returned from a call to ConnectStateFlagsChanged.
-*/
-func (recv *Widget) DisconnectStateFlagsChanged(connectionID int) {
-	signalWidgetStateFlagsChangedLock.Lock()
-	defer signalWidgetStateFlagsChangedLock.Unlock()
-
-	_, exists := signalWidgetStateFlagsChangedMap[connectionID]
-	if !exists {
-		return
-	}
-
-	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
-	delete(signalWidgetStateFlagsChangedMap, connectionID)
-}
-
-//export Widget_stateFlagsChangedHandler
-func Widget_stateFlagsChangedHandler() {
-	fmt.Println("cb")
-}
+// Unsupported signal 'state-flags-changed' for Widget : unsupported parameter flags : type StateFlags :
 
 var signalWidgetStyleUpdatedId int
 var signalWidgetStyleUpdatedMap = make(map[int]WidgetSignalStyleUpdatedCallback)
@@ -2583,8 +2372,6 @@ func (recv *Widget) DisconnectStyleUpdated(connectionID int) {
 func Widget_styleUpdatedHandler() {
 	fmt.Println("cb")
 }
-
-// Unsupported signal 'touch-event' for Widget : unsupported parameter object : no type generator for Gdk.Event,
 
 // Unsupported : gtk_widget_new : unsupported parameter type : no type generator for GType, GType
 

@@ -49,127 +49,10 @@ import (
 */
 /*
 
-	void Assistant_prepareHandler();
-
-	static gulong Assistant_signal_connect_prepare(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "prepare", Assistant_prepareHandler, data);
-	}
-
-*/
-/*
-
-	void CellRendererAccel_accelClearedHandler();
-
-	static gulong CellRendererAccel_signal_connect_accel_cleared(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "accel-cleared", CellRendererAccel_accelClearedHandler, data);
-	}
-
-*/
-/*
-
-	void CellRendererAccel_accelEditedHandler();
-
-	static gulong CellRendererAccel_signal_connect_accel_edited(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "accel-edited", CellRendererAccel_accelEditedHandler, data);
-	}
-
-*/
-/*
-
-	void Notebook_pageAddedHandler();
-
-	static gulong Notebook_signal_connect_page_added(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "page-added", Notebook_pageAddedHandler, data);
-	}
-
-*/
-/*
-
-	void Notebook_pageRemovedHandler();
-
-	static gulong Notebook_signal_connect_page_removed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "page-removed", Notebook_pageRemovedHandler, data);
-	}
-
-*/
-/*
-
-	void Notebook_pageReorderedHandler();
-
-	static gulong Notebook_signal_connect_page_reordered(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "page-reordered", Notebook_pageReorderedHandler, data);
-	}
-
-*/
-/*
-
-	void PrintOperation_beginPrintHandler();
-
-	static gulong PrintOperation_signal_connect_begin_print(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "begin-print", PrintOperation_beginPrintHandler, data);
-	}
-
-*/
-/*
-
 	void PrintOperation_createCustomWidgetHandler();
 
 	static gulong PrintOperation_signal_connect_create_custom_widget(gpointer instance, gpointer data) {
 		return g_signal_connect(instance, "create-custom-widget", PrintOperation_createCustomWidgetHandler, data);
-	}
-
-*/
-/*
-
-	void PrintOperation_customWidgetApplyHandler();
-
-	static gulong PrintOperation_signal_connect_custom_widget_apply(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "custom-widget-apply", PrintOperation_customWidgetApplyHandler, data);
-	}
-
-*/
-/*
-
-	void PrintOperation_doneHandler();
-
-	static gulong PrintOperation_signal_connect_done(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "done", PrintOperation_doneHandler, data);
-	}
-
-*/
-/*
-
-	void PrintOperation_drawPageHandler();
-
-	static gulong PrintOperation_signal_connect_draw_page(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "draw-page", PrintOperation_drawPageHandler, data);
-	}
-
-*/
-/*
-
-	void PrintOperation_endPrintHandler();
-
-	static gulong PrintOperation_signal_connect_end_print(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "end-print", PrintOperation_endPrintHandler, data);
-	}
-
-*/
-/*
-
-	void PrintOperation_paginateHandler();
-
-	static gulong PrintOperation_signal_connect_paginate(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "paginate", PrintOperation_paginateHandler, data);
-	}
-
-*/
-/*
-
-	void PrintOperation_requestPageSetupHandler();
-
-	static gulong PrintOperation_signal_connect_request_page_setup(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "request-page-setup", PrintOperation_requestPageSetupHandler, data);
 	}
 
 */
@@ -200,33 +83,9 @@ import (
 	}
 
 */
-/*
-
-	void StatusIcon_popupMenuHandler();
-
-	static gulong StatusIcon_signal_connect_popup_menu(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "popup-menu", StatusIcon_popupMenuHandler, data);
-	}
-
-*/
-/*
-
-	void StatusIcon_sizeChangedHandler();
-
-	static gulong StatusIcon_signal_connect_size_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "size-changed", StatusIcon_sizeChangedHandler, data);
-	}
-
-*/
 import "C"
 
 // Unsupported : gtk_app_chooser_dialog_new : unsupported parameter file : no type generator for Gio.File, GFile*
-
-// Unsupported signal 'application-activated' for AppChooserWidget : unsupported parameter application : no type generator for Gio.AppInfo,
-
-// Unsupported signal 'application-selected' for AppChooserWidget : unsupported parameter application : no type generator for Gio.AppInfo,
-
-// Unsupported signal 'populate-popup' for AppChooserWidget : unsupported parameter application : no type generator for Gio.AppInfo,
 
 var signalAssistantApplyId int
 var signalAssistantApplyMap = make(map[int]AssistantSignalApplyCallback)
@@ -372,53 +231,7 @@ func Assistant_closeHandler() {
 	fmt.Println("cb")
 }
 
-var signalAssistantPrepareId int
-var signalAssistantPrepareMap = make(map[int]AssistantSignalPrepareCallback)
-var signalAssistantPrepareLock sync.Mutex
-
-// AssistantSignalPrepareCallback is a callback function for a 'prepare' signal emitted from a Assistant.
-type AssistantSignalPrepareCallback func(page *Widget)
-
-/*
-ConnectPrepare connects the callback to the 'prepare' signal for the Assistant.
-
-The returned value represents the connection, and may be passed to DisconnectPrepare to remove it.
-*/
-func (recv *Assistant) ConnectPrepare(callback AssistantSignalPrepareCallback) int {
-	signalAssistantPrepareLock.Lock()
-	defer signalAssistantPrepareLock.Unlock()
-
-	signalAssistantPrepareId++
-	signalAssistantPrepareMap[signalAssistantPrepareId] = callback
-
-	instance := C.gpointer(recv.Object().ToC())
-	retC := C.Assistant_signal_connect_prepare(instance, C.gpointer(uintptr(signalAssistantPrepareId)))
-	return int(retC)
-}
-
-/*
-DisconnectPrepare disconnects a callback from the 'prepare' signal for the Assistant.
-
-The connectionID should be a value returned from a call to ConnectPrepare.
-*/
-func (recv *Assistant) DisconnectPrepare(connectionID int) {
-	signalAssistantPrepareLock.Lock()
-	defer signalAssistantPrepareLock.Unlock()
-
-	_, exists := signalAssistantPrepareMap[connectionID]
-	if !exists {
-		return
-	}
-
-	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
-	delete(signalAssistantPrepareMap, connectionID)
-}
-
-//export Assistant_prepareHandler
-func Assistant_prepareHandler() {
-	fmt.Println("cb")
-}
+// Unsupported signal 'prepare' for Assistant : unsupported parameter page : type Widget :
 
 // AssistantNew is a wrapper around the C function gtk_assistant_new.
 func AssistantNew() *Assistant {
@@ -648,109 +461,9 @@ func (recv *Button) SetImagePosition(position PositionType) {
 	return
 }
 
-// Unsupported signal 'add-editable' for CellArea : unsupported parameter editable : no type generator for CellEditable,
+// Unsupported signal 'accel-cleared' for CellRendererAccel : unsupported parameter path_string : type utf8 :
 
-// Unsupported signal 'apply-attributes' for CellArea : unsupported parameter model : no type generator for TreeModel,
-
-// Unsupported signal 'remove-editable' for CellArea : unsupported parameter editable : no type generator for CellEditable,
-
-// Unsupported signal 'editing-started' for CellRenderer : unsupported parameter editable : no type generator for CellEditable,
-
-var signalCellRendererAccelAccelClearedId int
-var signalCellRendererAccelAccelClearedMap = make(map[int]CellRendererAccelSignalAccelClearedCallback)
-var signalCellRendererAccelAccelClearedLock sync.Mutex
-
-// CellRendererAccelSignalAccelClearedCallback is a callback function for a 'accel-cleared' signal emitted from a CellRendererAccel.
-type CellRendererAccelSignalAccelClearedCallback func(pathString string)
-
-/*
-ConnectAccelCleared connects the callback to the 'accel-cleared' signal for the CellRendererAccel.
-
-The returned value represents the connection, and may be passed to DisconnectAccelCleared to remove it.
-*/
-func (recv *CellRendererAccel) ConnectAccelCleared(callback CellRendererAccelSignalAccelClearedCallback) int {
-	signalCellRendererAccelAccelClearedLock.Lock()
-	defer signalCellRendererAccelAccelClearedLock.Unlock()
-
-	signalCellRendererAccelAccelClearedId++
-	signalCellRendererAccelAccelClearedMap[signalCellRendererAccelAccelClearedId] = callback
-
-	instance := C.gpointer(recv.Object().ToC())
-	retC := C.CellRendererAccel_signal_connect_accel_cleared(instance, C.gpointer(uintptr(signalCellRendererAccelAccelClearedId)))
-	return int(retC)
-}
-
-/*
-DisconnectAccelCleared disconnects a callback from the 'accel-cleared' signal for the CellRendererAccel.
-
-The connectionID should be a value returned from a call to ConnectAccelCleared.
-*/
-func (recv *CellRendererAccel) DisconnectAccelCleared(connectionID int) {
-	signalCellRendererAccelAccelClearedLock.Lock()
-	defer signalCellRendererAccelAccelClearedLock.Unlock()
-
-	_, exists := signalCellRendererAccelAccelClearedMap[connectionID]
-	if !exists {
-		return
-	}
-
-	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
-	delete(signalCellRendererAccelAccelClearedMap, connectionID)
-}
-
-//export CellRendererAccel_accelClearedHandler
-func CellRendererAccel_accelClearedHandler() {
-	fmt.Println("cb")
-}
-
-var signalCellRendererAccelAccelEditedId int
-var signalCellRendererAccelAccelEditedMap = make(map[int]CellRendererAccelSignalAccelEditedCallback)
-var signalCellRendererAccelAccelEditedLock sync.Mutex
-
-// CellRendererAccelSignalAccelEditedCallback is a callback function for a 'accel-edited' signal emitted from a CellRendererAccel.
-type CellRendererAccelSignalAccelEditedCallback func(pathString string, accelKey uint32, accelMods gdk.ModifierType, hardwareKeycode uint32)
-
-/*
-ConnectAccelEdited connects the callback to the 'accel-edited' signal for the CellRendererAccel.
-
-The returned value represents the connection, and may be passed to DisconnectAccelEdited to remove it.
-*/
-func (recv *CellRendererAccel) ConnectAccelEdited(callback CellRendererAccelSignalAccelEditedCallback) int {
-	signalCellRendererAccelAccelEditedLock.Lock()
-	defer signalCellRendererAccelAccelEditedLock.Unlock()
-
-	signalCellRendererAccelAccelEditedId++
-	signalCellRendererAccelAccelEditedMap[signalCellRendererAccelAccelEditedId] = callback
-
-	instance := C.gpointer(recv.Object().ToC())
-	retC := C.CellRendererAccel_signal_connect_accel_edited(instance, C.gpointer(uintptr(signalCellRendererAccelAccelEditedId)))
-	return int(retC)
-}
-
-/*
-DisconnectAccelEdited disconnects a callback from the 'accel-edited' signal for the CellRendererAccel.
-
-The connectionID should be a value returned from a call to ConnectAccelEdited.
-*/
-func (recv *CellRendererAccel) DisconnectAccelEdited(connectionID int) {
-	signalCellRendererAccelAccelEditedLock.Lock()
-	defer signalCellRendererAccelAccelEditedLock.Unlock()
-
-	_, exists := signalCellRendererAccelAccelEditedMap[connectionID]
-	if !exists {
-		return
-	}
-
-	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
-	delete(signalCellRendererAccelAccelEditedMap, connectionID)
-}
-
-//export CellRendererAccel_accelEditedHandler
-func CellRendererAccel_accelEditedHandler() {
-	fmt.Println("cb")
-}
+// Unsupported signal 'accel-edited' for CellRendererAccel : unsupported parameter path_string : type utf8 :
 
 // CellRendererAccelNew is a wrapper around the C function gtk_cell_renderer_accel_new.
 func CellRendererAccelNew() *CellRendererAccel {
@@ -781,8 +494,6 @@ func (recv *Clipboard) WaitIsRichTextAvailable(buffer *TextBuffer) bool {
 
 	return retGo
 }
-
-// Unsupported signal 'format-entry-text' for ComboBox : return value utf8 :
 
 // Unsupported : gtk_combo_box_new_with_model : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
 
@@ -824,10 +535,6 @@ func (recv *Entry) SetInnerBorder(border *Border) {
 
 	return
 }
-
-// Unsupported signal 'cursor-on-match' for EntryCompletion : unsupported parameter model : no type generator for TreeModel,
-
-// Unsupported signal 'match-selected' for EntryCompletion : unsupported parameter model : no type generator for TreeModel,
 
 // Unsupported : EntryIconAccessible : no CType
 
@@ -942,149 +649,11 @@ func (recv *MessageDialog) SetImage(image *Widget) {
 	return
 }
 
-var signalNotebookPageAddedId int
-var signalNotebookPageAddedMap = make(map[int]NotebookSignalPageAddedCallback)
-var signalNotebookPageAddedLock sync.Mutex
+// Unsupported signal 'page-added' for Notebook : unsupported parameter child : type Widget :
 
-// NotebookSignalPageAddedCallback is a callback function for a 'page-added' signal emitted from a Notebook.
-type NotebookSignalPageAddedCallback func(child *Widget, pageNum uint32)
+// Unsupported signal 'page-removed' for Notebook : unsupported parameter child : type Widget :
 
-/*
-ConnectPageAdded connects the callback to the 'page-added' signal for the Notebook.
-
-The returned value represents the connection, and may be passed to DisconnectPageAdded to remove it.
-*/
-func (recv *Notebook) ConnectPageAdded(callback NotebookSignalPageAddedCallback) int {
-	signalNotebookPageAddedLock.Lock()
-	defer signalNotebookPageAddedLock.Unlock()
-
-	signalNotebookPageAddedId++
-	signalNotebookPageAddedMap[signalNotebookPageAddedId] = callback
-
-	instance := C.gpointer(recv.Object().ToC())
-	retC := C.Notebook_signal_connect_page_added(instance, C.gpointer(uintptr(signalNotebookPageAddedId)))
-	return int(retC)
-}
-
-/*
-DisconnectPageAdded disconnects a callback from the 'page-added' signal for the Notebook.
-
-The connectionID should be a value returned from a call to ConnectPageAdded.
-*/
-func (recv *Notebook) DisconnectPageAdded(connectionID int) {
-	signalNotebookPageAddedLock.Lock()
-	defer signalNotebookPageAddedLock.Unlock()
-
-	_, exists := signalNotebookPageAddedMap[connectionID]
-	if !exists {
-		return
-	}
-
-	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
-	delete(signalNotebookPageAddedMap, connectionID)
-}
-
-//export Notebook_pageAddedHandler
-func Notebook_pageAddedHandler() {
-	fmt.Println("cb")
-}
-
-var signalNotebookPageRemovedId int
-var signalNotebookPageRemovedMap = make(map[int]NotebookSignalPageRemovedCallback)
-var signalNotebookPageRemovedLock sync.Mutex
-
-// NotebookSignalPageRemovedCallback is a callback function for a 'page-removed' signal emitted from a Notebook.
-type NotebookSignalPageRemovedCallback func(child *Widget, pageNum uint32)
-
-/*
-ConnectPageRemoved connects the callback to the 'page-removed' signal for the Notebook.
-
-The returned value represents the connection, and may be passed to DisconnectPageRemoved to remove it.
-*/
-func (recv *Notebook) ConnectPageRemoved(callback NotebookSignalPageRemovedCallback) int {
-	signalNotebookPageRemovedLock.Lock()
-	defer signalNotebookPageRemovedLock.Unlock()
-
-	signalNotebookPageRemovedId++
-	signalNotebookPageRemovedMap[signalNotebookPageRemovedId] = callback
-
-	instance := C.gpointer(recv.Object().ToC())
-	retC := C.Notebook_signal_connect_page_removed(instance, C.gpointer(uintptr(signalNotebookPageRemovedId)))
-	return int(retC)
-}
-
-/*
-DisconnectPageRemoved disconnects a callback from the 'page-removed' signal for the Notebook.
-
-The connectionID should be a value returned from a call to ConnectPageRemoved.
-*/
-func (recv *Notebook) DisconnectPageRemoved(connectionID int) {
-	signalNotebookPageRemovedLock.Lock()
-	defer signalNotebookPageRemovedLock.Unlock()
-
-	_, exists := signalNotebookPageRemovedMap[connectionID]
-	if !exists {
-		return
-	}
-
-	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
-	delete(signalNotebookPageRemovedMap, connectionID)
-}
-
-//export Notebook_pageRemovedHandler
-func Notebook_pageRemovedHandler() {
-	fmt.Println("cb")
-}
-
-var signalNotebookPageReorderedId int
-var signalNotebookPageReorderedMap = make(map[int]NotebookSignalPageReorderedCallback)
-var signalNotebookPageReorderedLock sync.Mutex
-
-// NotebookSignalPageReorderedCallback is a callback function for a 'page-reordered' signal emitted from a Notebook.
-type NotebookSignalPageReorderedCallback func(child *Widget, pageNum uint32)
-
-/*
-ConnectPageReordered connects the callback to the 'page-reordered' signal for the Notebook.
-
-The returned value represents the connection, and may be passed to DisconnectPageReordered to remove it.
-*/
-func (recv *Notebook) ConnectPageReordered(callback NotebookSignalPageReorderedCallback) int {
-	signalNotebookPageReorderedLock.Lock()
-	defer signalNotebookPageReorderedLock.Unlock()
-
-	signalNotebookPageReorderedId++
-	signalNotebookPageReorderedMap[signalNotebookPageReorderedId] = callback
-
-	instance := C.gpointer(recv.Object().ToC())
-	retC := C.Notebook_signal_connect_page_reordered(instance, C.gpointer(uintptr(signalNotebookPageReorderedId)))
-	return int(retC)
-}
-
-/*
-DisconnectPageReordered disconnects a callback from the 'page-reordered' signal for the Notebook.
-
-The connectionID should be a value returned from a call to ConnectPageReordered.
-*/
-func (recv *Notebook) DisconnectPageReordered(connectionID int) {
-	signalNotebookPageReorderedLock.Lock()
-	defer signalNotebookPageReorderedLock.Unlock()
-
-	_, exists := signalNotebookPageReorderedMap[connectionID]
-	if !exists {
-		return
-	}
-
-	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
-	delete(signalNotebookPageReorderedMap, connectionID)
-}
-
-//export Notebook_pageReorderedHandler
-func Notebook_pageReorderedHandler() {
-	fmt.Println("cb")
-}
+// Unsupported signal 'page-reordered' for Notebook : unsupported parameter child : type Widget :
 
 // GetTabDetachable is a wrapper around the C function gtk_notebook_get_tab_detachable.
 func (recv *Notebook) GetTabDetachable(child *Widget) bool {
@@ -1129,8 +698,6 @@ func (recv *Notebook) SetTabReorderable(child *Widget, reorderable bool) {
 
 	return
 }
-
-// Unsupported signal 'get-child-position' for Overlay : unsupported parameter allocation : Blacklisted record : GdkRectangle
 
 // PageSetupNew is a wrapper around the C function gtk_page_setup_new.
 func PageSetupNew() *PageSetup {
@@ -1317,16 +884,6 @@ func (recv *PageSetup) SetTopMargin(margin float64, unit Unit) {
 	return
 }
 
-// Unsupported signal 'drag-action-ask' for PlacesSidebar : return value gint :
-
-// Unsupported signal 'drag-action-requested' for PlacesSidebar : unsupported parameter dest_file : no type generator for Gio.File,
-
-// Unsupported signal 'drag-perform-drop' for PlacesSidebar : unsupported parameter dest_file : no type generator for Gio.File,
-
-// Unsupported signal 'open-location' for PlacesSidebar : unsupported parameter location : no type generator for Gio.File,
-
-// Unsupported signal 'populate-popup' for PlacesSidebar : unsupported parameter selected_item : no type generator for Gio.File,
-
 // CreatePangoContext is a wrapper around the C function gtk_print_context_create_pango_context.
 func (recv *PrintContext) CreatePangoContext() *pango.Context {
 	retC := C.gtk_print_context_create_pango_context((*C.GtkPrintContext)(recv.native))
@@ -1412,53 +969,7 @@ func (recv *PrintContext) SetCairoContext(cr *cairo.Context, dpiX float64, dpiY 
 	return
 }
 
-var signalPrintOperationBeginPrintId int
-var signalPrintOperationBeginPrintMap = make(map[int]PrintOperationSignalBeginPrintCallback)
-var signalPrintOperationBeginPrintLock sync.Mutex
-
-// PrintOperationSignalBeginPrintCallback is a callback function for a 'begin-print' signal emitted from a PrintOperation.
-type PrintOperationSignalBeginPrintCallback func(context *PrintContext)
-
-/*
-ConnectBeginPrint connects the callback to the 'begin-print' signal for the PrintOperation.
-
-The returned value represents the connection, and may be passed to DisconnectBeginPrint to remove it.
-*/
-func (recv *PrintOperation) ConnectBeginPrint(callback PrintOperationSignalBeginPrintCallback) int {
-	signalPrintOperationBeginPrintLock.Lock()
-	defer signalPrintOperationBeginPrintLock.Unlock()
-
-	signalPrintOperationBeginPrintId++
-	signalPrintOperationBeginPrintMap[signalPrintOperationBeginPrintId] = callback
-
-	instance := C.gpointer(recv.Object().ToC())
-	retC := C.PrintOperation_signal_connect_begin_print(instance, C.gpointer(uintptr(signalPrintOperationBeginPrintId)))
-	return int(retC)
-}
-
-/*
-DisconnectBeginPrint disconnects a callback from the 'begin-print' signal for the PrintOperation.
-
-The connectionID should be a value returned from a call to ConnectBeginPrint.
-*/
-func (recv *PrintOperation) DisconnectBeginPrint(connectionID int) {
-	signalPrintOperationBeginPrintLock.Lock()
-	defer signalPrintOperationBeginPrintLock.Unlock()
-
-	_, exists := signalPrintOperationBeginPrintMap[connectionID]
-	if !exists {
-		return
-	}
-
-	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
-	delete(signalPrintOperationBeginPrintMap, connectionID)
-}
-
-//export PrintOperation_beginPrintHandler
-func PrintOperation_beginPrintHandler() {
-	fmt.Println("cb")
-}
+// Unsupported signal 'begin-print' for PrintOperation : unsupported parameter context : type PrintContext :
 
 var signalPrintOperationCreateCustomWidgetId int
 var signalPrintOperationCreateCustomWidgetMap = make(map[int]PrintOperationSignalCreateCustomWidgetCallback)
@@ -1508,295 +1019,19 @@ func PrintOperation_createCustomWidgetHandler() *C.GObject {
 	fmt.Println("cb")
 }
 
-var signalPrintOperationCustomWidgetApplyId int
-var signalPrintOperationCustomWidgetApplyMap = make(map[int]PrintOperationSignalCustomWidgetApplyCallback)
-var signalPrintOperationCustomWidgetApplyLock sync.Mutex
+// Unsupported signal 'custom-widget-apply' for PrintOperation : unsupported parameter widget : type Widget :
 
-// PrintOperationSignalCustomWidgetApplyCallback is a callback function for a 'custom-widget-apply' signal emitted from a PrintOperation.
-type PrintOperationSignalCustomWidgetApplyCallback func(widget *Widget)
+// Unsupported signal 'done' for PrintOperation : unsupported parameter result : type PrintOperationResult :
 
-/*
-ConnectCustomWidgetApply connects the callback to the 'custom-widget-apply' signal for the PrintOperation.
+// Unsupported signal 'draw-page' for PrintOperation : unsupported parameter context : type PrintContext :
 
-The returned value represents the connection, and may be passed to DisconnectCustomWidgetApply to remove it.
-*/
-func (recv *PrintOperation) ConnectCustomWidgetApply(callback PrintOperationSignalCustomWidgetApplyCallback) int {
-	signalPrintOperationCustomWidgetApplyLock.Lock()
-	defer signalPrintOperationCustomWidgetApplyLock.Unlock()
+// Unsupported signal 'end-print' for PrintOperation : unsupported parameter context : type PrintContext :
 
-	signalPrintOperationCustomWidgetApplyId++
-	signalPrintOperationCustomWidgetApplyMap[signalPrintOperationCustomWidgetApplyId] = callback
-
-	instance := C.gpointer(recv.Object().ToC())
-	retC := C.PrintOperation_signal_connect_custom_widget_apply(instance, C.gpointer(uintptr(signalPrintOperationCustomWidgetApplyId)))
-	return int(retC)
-}
-
-/*
-DisconnectCustomWidgetApply disconnects a callback from the 'custom-widget-apply' signal for the PrintOperation.
-
-The connectionID should be a value returned from a call to ConnectCustomWidgetApply.
-*/
-func (recv *PrintOperation) DisconnectCustomWidgetApply(connectionID int) {
-	signalPrintOperationCustomWidgetApplyLock.Lock()
-	defer signalPrintOperationCustomWidgetApplyLock.Unlock()
-
-	_, exists := signalPrintOperationCustomWidgetApplyMap[connectionID]
-	if !exists {
-		return
-	}
-
-	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
-	delete(signalPrintOperationCustomWidgetApplyMap, connectionID)
-}
-
-//export PrintOperation_customWidgetApplyHandler
-func PrintOperation_customWidgetApplyHandler() {
-	fmt.Println("cb")
-}
-
-var signalPrintOperationDoneId int
-var signalPrintOperationDoneMap = make(map[int]PrintOperationSignalDoneCallback)
-var signalPrintOperationDoneLock sync.Mutex
-
-// PrintOperationSignalDoneCallback is a callback function for a 'done' signal emitted from a PrintOperation.
-type PrintOperationSignalDoneCallback func(result PrintOperationResult)
-
-/*
-ConnectDone connects the callback to the 'done' signal for the PrintOperation.
-
-The returned value represents the connection, and may be passed to DisconnectDone to remove it.
-*/
-func (recv *PrintOperation) ConnectDone(callback PrintOperationSignalDoneCallback) int {
-	signalPrintOperationDoneLock.Lock()
-	defer signalPrintOperationDoneLock.Unlock()
-
-	signalPrintOperationDoneId++
-	signalPrintOperationDoneMap[signalPrintOperationDoneId] = callback
-
-	instance := C.gpointer(recv.Object().ToC())
-	retC := C.PrintOperation_signal_connect_done(instance, C.gpointer(uintptr(signalPrintOperationDoneId)))
-	return int(retC)
-}
-
-/*
-DisconnectDone disconnects a callback from the 'done' signal for the PrintOperation.
-
-The connectionID should be a value returned from a call to ConnectDone.
-*/
-func (recv *PrintOperation) DisconnectDone(connectionID int) {
-	signalPrintOperationDoneLock.Lock()
-	defer signalPrintOperationDoneLock.Unlock()
-
-	_, exists := signalPrintOperationDoneMap[connectionID]
-	if !exists {
-		return
-	}
-
-	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
-	delete(signalPrintOperationDoneMap, connectionID)
-}
-
-//export PrintOperation_doneHandler
-func PrintOperation_doneHandler() {
-	fmt.Println("cb")
-}
-
-var signalPrintOperationDrawPageId int
-var signalPrintOperationDrawPageMap = make(map[int]PrintOperationSignalDrawPageCallback)
-var signalPrintOperationDrawPageLock sync.Mutex
-
-// PrintOperationSignalDrawPageCallback is a callback function for a 'draw-page' signal emitted from a PrintOperation.
-type PrintOperationSignalDrawPageCallback func(context *PrintContext, pageNr int32)
-
-/*
-ConnectDrawPage connects the callback to the 'draw-page' signal for the PrintOperation.
-
-The returned value represents the connection, and may be passed to DisconnectDrawPage to remove it.
-*/
-func (recv *PrintOperation) ConnectDrawPage(callback PrintOperationSignalDrawPageCallback) int {
-	signalPrintOperationDrawPageLock.Lock()
-	defer signalPrintOperationDrawPageLock.Unlock()
-
-	signalPrintOperationDrawPageId++
-	signalPrintOperationDrawPageMap[signalPrintOperationDrawPageId] = callback
-
-	instance := C.gpointer(recv.Object().ToC())
-	retC := C.PrintOperation_signal_connect_draw_page(instance, C.gpointer(uintptr(signalPrintOperationDrawPageId)))
-	return int(retC)
-}
-
-/*
-DisconnectDrawPage disconnects a callback from the 'draw-page' signal for the PrintOperation.
-
-The connectionID should be a value returned from a call to ConnectDrawPage.
-*/
-func (recv *PrintOperation) DisconnectDrawPage(connectionID int) {
-	signalPrintOperationDrawPageLock.Lock()
-	defer signalPrintOperationDrawPageLock.Unlock()
-
-	_, exists := signalPrintOperationDrawPageMap[connectionID]
-	if !exists {
-		return
-	}
-
-	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
-	delete(signalPrintOperationDrawPageMap, connectionID)
-}
-
-//export PrintOperation_drawPageHandler
-func PrintOperation_drawPageHandler() {
-	fmt.Println("cb")
-}
-
-var signalPrintOperationEndPrintId int
-var signalPrintOperationEndPrintMap = make(map[int]PrintOperationSignalEndPrintCallback)
-var signalPrintOperationEndPrintLock sync.Mutex
-
-// PrintOperationSignalEndPrintCallback is a callback function for a 'end-print' signal emitted from a PrintOperation.
-type PrintOperationSignalEndPrintCallback func(context *PrintContext)
-
-/*
-ConnectEndPrint connects the callback to the 'end-print' signal for the PrintOperation.
-
-The returned value represents the connection, and may be passed to DisconnectEndPrint to remove it.
-*/
-func (recv *PrintOperation) ConnectEndPrint(callback PrintOperationSignalEndPrintCallback) int {
-	signalPrintOperationEndPrintLock.Lock()
-	defer signalPrintOperationEndPrintLock.Unlock()
-
-	signalPrintOperationEndPrintId++
-	signalPrintOperationEndPrintMap[signalPrintOperationEndPrintId] = callback
-
-	instance := C.gpointer(recv.Object().ToC())
-	retC := C.PrintOperation_signal_connect_end_print(instance, C.gpointer(uintptr(signalPrintOperationEndPrintId)))
-	return int(retC)
-}
-
-/*
-DisconnectEndPrint disconnects a callback from the 'end-print' signal for the PrintOperation.
-
-The connectionID should be a value returned from a call to ConnectEndPrint.
-*/
-func (recv *PrintOperation) DisconnectEndPrint(connectionID int) {
-	signalPrintOperationEndPrintLock.Lock()
-	defer signalPrintOperationEndPrintLock.Unlock()
-
-	_, exists := signalPrintOperationEndPrintMap[connectionID]
-	if !exists {
-		return
-	}
-
-	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
-	delete(signalPrintOperationEndPrintMap, connectionID)
-}
-
-//export PrintOperation_endPrintHandler
-func PrintOperation_endPrintHandler() {
-	fmt.Println("cb")
-}
-
-var signalPrintOperationPaginateId int
-var signalPrintOperationPaginateMap = make(map[int]PrintOperationSignalPaginateCallback)
-var signalPrintOperationPaginateLock sync.Mutex
-
-// PrintOperationSignalPaginateCallback is a callback function for a 'paginate' signal emitted from a PrintOperation.
-type PrintOperationSignalPaginateCallback func(context *PrintContext) bool
-
-/*
-ConnectPaginate connects the callback to the 'paginate' signal for the PrintOperation.
-
-The returned value represents the connection, and may be passed to DisconnectPaginate to remove it.
-*/
-func (recv *PrintOperation) ConnectPaginate(callback PrintOperationSignalPaginateCallback) int {
-	signalPrintOperationPaginateLock.Lock()
-	defer signalPrintOperationPaginateLock.Unlock()
-
-	signalPrintOperationPaginateId++
-	signalPrintOperationPaginateMap[signalPrintOperationPaginateId] = callback
-
-	instance := C.gpointer(recv.Object().ToC())
-	retC := C.PrintOperation_signal_connect_paginate(instance, C.gpointer(uintptr(signalPrintOperationPaginateId)))
-	return int(retC)
-}
-
-/*
-DisconnectPaginate disconnects a callback from the 'paginate' signal for the PrintOperation.
-
-The connectionID should be a value returned from a call to ConnectPaginate.
-*/
-func (recv *PrintOperation) DisconnectPaginate(connectionID int) {
-	signalPrintOperationPaginateLock.Lock()
-	defer signalPrintOperationPaginateLock.Unlock()
-
-	_, exists := signalPrintOperationPaginateMap[connectionID]
-	if !exists {
-		return
-	}
-
-	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
-	delete(signalPrintOperationPaginateMap, connectionID)
-}
-
-//export PrintOperation_paginateHandler
-func PrintOperation_paginateHandler() C.boolean {
-	fmt.Println("cb")
-}
+// Unsupported signal 'paginate' for PrintOperation : unsupported parameter context : type PrintContext :
 
 // Unsupported signal 'preview' for PrintOperation : unsupported parameter preview : no type generator for PrintOperationPreview,
 
-var signalPrintOperationRequestPageSetupId int
-var signalPrintOperationRequestPageSetupMap = make(map[int]PrintOperationSignalRequestPageSetupCallback)
-var signalPrintOperationRequestPageSetupLock sync.Mutex
-
-// PrintOperationSignalRequestPageSetupCallback is a callback function for a 'request-page-setup' signal emitted from a PrintOperation.
-type PrintOperationSignalRequestPageSetupCallback func(context *PrintContext, pageNr int32, setup *PageSetup)
-
-/*
-ConnectRequestPageSetup connects the callback to the 'request-page-setup' signal for the PrintOperation.
-
-The returned value represents the connection, and may be passed to DisconnectRequestPageSetup to remove it.
-*/
-func (recv *PrintOperation) ConnectRequestPageSetup(callback PrintOperationSignalRequestPageSetupCallback) int {
-	signalPrintOperationRequestPageSetupLock.Lock()
-	defer signalPrintOperationRequestPageSetupLock.Unlock()
-
-	signalPrintOperationRequestPageSetupId++
-	signalPrintOperationRequestPageSetupMap[signalPrintOperationRequestPageSetupId] = callback
-
-	instance := C.gpointer(recv.Object().ToC())
-	retC := C.PrintOperation_signal_connect_request_page_setup(instance, C.gpointer(uintptr(signalPrintOperationRequestPageSetupId)))
-	return int(retC)
-}
-
-/*
-DisconnectRequestPageSetup disconnects a callback from the 'request-page-setup' signal for the PrintOperation.
-
-The connectionID should be a value returned from a call to ConnectRequestPageSetup.
-*/
-func (recv *PrintOperation) DisconnectRequestPageSetup(connectionID int) {
-	signalPrintOperationRequestPageSetupLock.Lock()
-	defer signalPrintOperationRequestPageSetupLock.Unlock()
-
-	_, exists := signalPrintOperationRequestPageSetupMap[connectionID]
-	if !exists {
-		return
-	}
-
-	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
-	delete(signalPrintOperationRequestPageSetupMap, connectionID)
-}
-
-//export PrintOperation_requestPageSetupHandler
-func PrintOperation_requestPageSetupHandler() {
-	fmt.Println("cb")
-}
+// Unsupported signal 'request-page-setup' for PrintOperation : unsupported parameter context : type PrintContext :
 
 var signalPrintOperationStatusChangedId int
 var signalPrintOperationStatusChangedMap = make(map[int]PrintOperationSignalStatusChangedCallback)
@@ -2975,8 +2210,6 @@ func (recv *RecentManager) RemoveItem(uri string) (bool, error) {
 	return retGo, goThrowableError
 }
 
-// Unsupported signal 'format-value' for Scale : return value utf8 :
-
 // Unsupported : gtk_scale_button_new : unsupported parameter size : no type generator for gint, GtkIconSize
 
 // UnsetPlacement is a wrapper around the C function gtk_scrolled_window_unset_placement.
@@ -2993,8 +2226,6 @@ func (recv *SizeGroup) GetWidgets() *glib.SList {
 
 	return retGo
 }
-
-// Unsupported signal 'input' for SpinButton : return value gint :
 
 var signalSpinButtonWrappedId int
 var signalSpinButtonWrappedMap = make(map[int]SpinButtonSignalWrappedCallback)
@@ -3092,101 +2323,9 @@ func StatusIcon_activateHandler() {
 	fmt.Println("cb")
 }
 
-var signalStatusIconPopupMenuId int
-var signalStatusIconPopupMenuMap = make(map[int]StatusIconSignalPopupMenuCallback)
-var signalStatusIconPopupMenuLock sync.Mutex
+// Unsupported signal 'popup-menu' for StatusIcon : unsupported parameter button : type guint :
 
-// StatusIconSignalPopupMenuCallback is a callback function for a 'popup-menu' signal emitted from a StatusIcon.
-type StatusIconSignalPopupMenuCallback func(button uint32, activateTime uint32)
-
-/*
-ConnectPopupMenu connects the callback to the 'popup-menu' signal for the StatusIcon.
-
-The returned value represents the connection, and may be passed to DisconnectPopupMenu to remove it.
-*/
-func (recv *StatusIcon) ConnectPopupMenu(callback StatusIconSignalPopupMenuCallback) int {
-	signalStatusIconPopupMenuLock.Lock()
-	defer signalStatusIconPopupMenuLock.Unlock()
-
-	signalStatusIconPopupMenuId++
-	signalStatusIconPopupMenuMap[signalStatusIconPopupMenuId] = callback
-
-	instance := C.gpointer(recv.Object().ToC())
-	retC := C.StatusIcon_signal_connect_popup_menu(instance, C.gpointer(uintptr(signalStatusIconPopupMenuId)))
-	return int(retC)
-}
-
-/*
-DisconnectPopupMenu disconnects a callback from the 'popup-menu' signal for the StatusIcon.
-
-The connectionID should be a value returned from a call to ConnectPopupMenu.
-*/
-func (recv *StatusIcon) DisconnectPopupMenu(connectionID int) {
-	signalStatusIconPopupMenuLock.Lock()
-	defer signalStatusIconPopupMenuLock.Unlock()
-
-	_, exists := signalStatusIconPopupMenuMap[connectionID]
-	if !exists {
-		return
-	}
-
-	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
-	delete(signalStatusIconPopupMenuMap, connectionID)
-}
-
-//export StatusIcon_popupMenuHandler
-func StatusIcon_popupMenuHandler() {
-	fmt.Println("cb")
-}
-
-var signalStatusIconSizeChangedId int
-var signalStatusIconSizeChangedMap = make(map[int]StatusIconSignalSizeChangedCallback)
-var signalStatusIconSizeChangedLock sync.Mutex
-
-// StatusIconSignalSizeChangedCallback is a callback function for a 'size-changed' signal emitted from a StatusIcon.
-type StatusIconSignalSizeChangedCallback func(size int32) bool
-
-/*
-ConnectSizeChanged connects the callback to the 'size-changed' signal for the StatusIcon.
-
-The returned value represents the connection, and may be passed to DisconnectSizeChanged to remove it.
-*/
-func (recv *StatusIcon) ConnectSizeChanged(callback StatusIconSignalSizeChangedCallback) int {
-	signalStatusIconSizeChangedLock.Lock()
-	defer signalStatusIconSizeChangedLock.Unlock()
-
-	signalStatusIconSizeChangedId++
-	signalStatusIconSizeChangedMap[signalStatusIconSizeChangedId] = callback
-
-	instance := C.gpointer(recv.Object().ToC())
-	retC := C.StatusIcon_signal_connect_size_changed(instance, C.gpointer(uintptr(signalStatusIconSizeChangedId)))
-	return int(retC)
-}
-
-/*
-DisconnectSizeChanged disconnects a callback from the 'size-changed' signal for the StatusIcon.
-
-The connectionID should be a value returned from a call to ConnectSizeChanged.
-*/
-func (recv *StatusIcon) DisconnectSizeChanged(connectionID int) {
-	signalStatusIconSizeChangedLock.Lock()
-	defer signalStatusIconSizeChangedLock.Unlock()
-
-	_, exists := signalStatusIconSizeChangedMap[connectionID]
-	if !exists {
-		return
-	}
-
-	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
-	delete(signalStatusIconSizeChangedMap, connectionID)
-}
-
-//export StatusIcon_sizeChangedHandler
-func StatusIcon_sizeChangedHandler() C.boolean {
-	fmt.Println("cb")
-}
+// Unsupported signal 'size-changed' for StatusIcon : unsupported parameter size : type gint :
 
 // StatusIconNew is a wrapper around the C function gtk_status_icon_new.
 func StatusIconNew() *StatusIcon {
@@ -3411,8 +2550,6 @@ func (recv *TextBuffer) GetPasteTargetList() *TargetList {
 
 // Unsupported : gtk_text_buffer_unregister_serialize_format : unsupported parameter format : Blacklisted record : GdkAtom
 
-// Unsupported signal 'event' for TextTag : unsupported parameter event : no type generator for Gdk.Event,
-
 // Unsupported : gtk_tree_store_new : unsupported parameter ... : varargs
 
 // Unsupported : gtk_tree_store_newv : unsupported parameter types : no param type
@@ -3506,20 +2643,6 @@ func (recv *TreeView) SetSearchEntry(entry *Entry) {
 // Unsupported : gtk_tree_view_set_search_position_func : unsupported parameter func : no type generator for TreeViewSearchPositionFunc, GtkTreeViewSearchPositionFunc
 
 // Unsupported : gtk_tree_view_column_new_with_attributes : unsupported parameter ... : varargs
-
-// Unsupported signal 'child-notify' for Widget : unsupported parameter child_property : Blacklisted record : GParamSpec
-
-// Unsupported signal 'delete-event' for Widget : unsupported parameter event : no type generator for Gdk.Event,
-
-// Unsupported signal 'destroy-event' for Widget : unsupported parameter event : no type generator for Gdk.Event,
-
-// Unsupported signal 'event' for Widget : unsupported parameter event : no type generator for Gdk.Event,
-
-// Unsupported signal 'event-after' for Widget : unsupported parameter event : no type generator for Gdk.Event,
-
-// Unsupported signal 'size-allocate' for Widget : unsupported parameter allocation : Blacklisted record : GdkRectangle
-
-// Unsupported signal 'touch-event' for Widget : unsupported parameter object : no type generator for Gdk.Event,
 
 // Unsupported : gtk_widget_new : unsupported parameter type : no type generator for GType, GType
 

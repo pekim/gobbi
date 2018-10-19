@@ -18,6 +18,10 @@ func (t *TypeGeneratorBoolean) isSupportedAsParam(direction string) (supported b
 	return true, ""
 }
 
+func (t *TypeGeneratorBoolean) isSupportedAsParamC() (supported bool, reason string) {
+	return true, ""
+}
+
 func (t *TypeGeneratorBoolean) isSupportedAsField() (supported bool, reason string) {
 	return true, ""
 }
@@ -34,6 +38,12 @@ func (t *TypeGeneratorBoolean) generateDeclaration(g *jen.Group, goVarName strin
 	g.
 		Id(goVarName).
 		Id("bool")
+}
+
+func (t *TypeGeneratorBoolean) generateDeclarationC(g *jen.Group, goVarName string) {
+	g.
+		Id(goVarName).
+		Qual("C", "gboolean")
 }
 
 func (t *TypeGeneratorBoolean) generateParamCallArgument(g *jen.Group, cVarName string) {
@@ -63,7 +73,7 @@ func (t *TypeGeneratorBoolean) generateReturnFunctionDeclaration(g *jen.Group) {
 }
 
 func (t *TypeGeneratorBoolean) generateReturnFunctionDeclarationCtype(g *jen.Group) {
-	g.Qual("C", "boolean")
+	g.Qual("C", "gboolean")
 }
 
 func (t *TypeGeneratorBoolean) generateReturnCToGo(g *jen.Group, isParam bool,

@@ -23,46 +23,10 @@ import (
 */
 /*
 
-	void Object_activeDescendantChangedHandler();
-
-	static gulong Object_signal_connect_active_descendant_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "active-descendant-changed", Object_activeDescendantChangedHandler, data);
-	}
-
-*/
-/*
-
-	void Object_childrenChangedHandler();
-
-	static gulong Object_signal_connect_children_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "children-changed", Object_childrenChangedHandler, data);
-	}
-
-*/
-/*
-
 	void Object_focusEventHandler();
 
 	static gulong Object_signal_connect_focus_event(gpointer instance, gpointer data) {
 		return g_signal_connect(instance, "focus-event", Object_focusEventHandler, data);
-	}
-
-*/
-/*
-
-	void Object_propertyChangeHandler();
-
-	static gulong Object_signal_connect_property_change(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "property-change", Object_propertyChangeHandler, data);
-	}
-
-*/
-/*
-
-	void Object_stateChangeHandler();
-
-	static gulong Object_signal_connect_state_change(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "state-change", Object_stateChangeHandler, data);
 	}
 
 */
@@ -435,101 +399,9 @@ func CastToObject(object *gobject.Object) *Object {
 	return ObjectNewFromC(object.ToC())
 }
 
-var signalObjectActiveDescendantChangedId int
-var signalObjectActiveDescendantChangedMap = make(map[int]ObjectSignalActiveDescendantChangedCallback)
-var signalObjectActiveDescendantChangedLock sync.Mutex
+// Unsupported signal 'active-descendant-changed' for Object : unsupported parameter arg1 : type gpointer :
 
-// ObjectSignalActiveDescendantChangedCallback is a callback function for a 'active-descendant-changed' signal emitted from a Object.
-type ObjectSignalActiveDescendantChangedCallback func(arg1 uintptr)
-
-/*
-ConnectActiveDescendantChanged connects the callback to the 'active-descendant-changed' signal for the Object.
-
-The returned value represents the connection, and may be passed to DisconnectActiveDescendantChanged to remove it.
-*/
-func (recv *Object) ConnectActiveDescendantChanged(callback ObjectSignalActiveDescendantChangedCallback) int {
-	signalObjectActiveDescendantChangedLock.Lock()
-	defer signalObjectActiveDescendantChangedLock.Unlock()
-
-	signalObjectActiveDescendantChangedId++
-	signalObjectActiveDescendantChangedMap[signalObjectActiveDescendantChangedId] = callback
-
-	instance := C.gpointer(recv.Object().ToC())
-	retC := C.Object_signal_connect_active_descendant_changed(instance, C.gpointer(uintptr(signalObjectActiveDescendantChangedId)))
-	return int(retC)
-}
-
-/*
-DisconnectActiveDescendantChanged disconnects a callback from the 'active-descendant-changed' signal for the Object.
-
-The connectionID should be a value returned from a call to ConnectActiveDescendantChanged.
-*/
-func (recv *Object) DisconnectActiveDescendantChanged(connectionID int) {
-	signalObjectActiveDescendantChangedLock.Lock()
-	defer signalObjectActiveDescendantChangedLock.Unlock()
-
-	_, exists := signalObjectActiveDescendantChangedMap[connectionID]
-	if !exists {
-		return
-	}
-
-	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
-	delete(signalObjectActiveDescendantChangedMap, connectionID)
-}
-
-//export Object_activeDescendantChangedHandler
-func Object_activeDescendantChangedHandler() {
-	fmt.Println("cb")
-}
-
-var signalObjectChildrenChangedId int
-var signalObjectChildrenChangedMap = make(map[int]ObjectSignalChildrenChangedCallback)
-var signalObjectChildrenChangedLock sync.Mutex
-
-// ObjectSignalChildrenChangedCallback is a callback function for a 'children-changed' signal emitted from a Object.
-type ObjectSignalChildrenChangedCallback func(arg1 uint32, arg2 uintptr)
-
-/*
-ConnectChildrenChanged connects the callback to the 'children-changed' signal for the Object.
-
-The returned value represents the connection, and may be passed to DisconnectChildrenChanged to remove it.
-*/
-func (recv *Object) ConnectChildrenChanged(callback ObjectSignalChildrenChangedCallback) int {
-	signalObjectChildrenChangedLock.Lock()
-	defer signalObjectChildrenChangedLock.Unlock()
-
-	signalObjectChildrenChangedId++
-	signalObjectChildrenChangedMap[signalObjectChildrenChangedId] = callback
-
-	instance := C.gpointer(recv.Object().ToC())
-	retC := C.Object_signal_connect_children_changed(instance, C.gpointer(uintptr(signalObjectChildrenChangedId)))
-	return int(retC)
-}
-
-/*
-DisconnectChildrenChanged disconnects a callback from the 'children-changed' signal for the Object.
-
-The connectionID should be a value returned from a call to ConnectChildrenChanged.
-*/
-func (recv *Object) DisconnectChildrenChanged(connectionID int) {
-	signalObjectChildrenChangedLock.Lock()
-	defer signalObjectChildrenChangedLock.Unlock()
-
-	_, exists := signalObjectChildrenChangedMap[connectionID]
-	if !exists {
-		return
-	}
-
-	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
-	delete(signalObjectChildrenChangedMap, connectionID)
-}
-
-//export Object_childrenChangedHandler
-func Object_childrenChangedHandler() {
-	fmt.Println("cb")
-}
+// Unsupported signal 'children-changed' for Object : unsupported parameter arg1 : type guint :
 
 var signalObjectFocusEventId int
 var signalObjectFocusEventMap = make(map[int]ObjectSignalFocusEventCallback)
@@ -575,105 +447,13 @@ func (recv *Object) DisconnectFocusEvent(connectionID int) {
 }
 
 //export Object_focusEventHandler
-func Object_focusEventHandler() {
+func Object_focusEventHandler(arg1 C.gboolean) {
 	fmt.Println("cb")
 }
 
-var signalObjectPropertyChangeId int
-var signalObjectPropertyChangeMap = make(map[int]ObjectSignalPropertyChangeCallback)
-var signalObjectPropertyChangeLock sync.Mutex
+// Unsupported signal 'property-change' for Object : unsupported parameter arg1 : type gpointer :
 
-// ObjectSignalPropertyChangeCallback is a callback function for a 'property-change' signal emitted from a Object.
-type ObjectSignalPropertyChangeCallback func(arg1 uintptr)
-
-/*
-ConnectPropertyChange connects the callback to the 'property-change' signal for the Object.
-
-The returned value represents the connection, and may be passed to DisconnectPropertyChange to remove it.
-*/
-func (recv *Object) ConnectPropertyChange(callback ObjectSignalPropertyChangeCallback) int {
-	signalObjectPropertyChangeLock.Lock()
-	defer signalObjectPropertyChangeLock.Unlock()
-
-	signalObjectPropertyChangeId++
-	signalObjectPropertyChangeMap[signalObjectPropertyChangeId] = callback
-
-	instance := C.gpointer(recv.Object().ToC())
-	retC := C.Object_signal_connect_property_change(instance, C.gpointer(uintptr(signalObjectPropertyChangeId)))
-	return int(retC)
-}
-
-/*
-DisconnectPropertyChange disconnects a callback from the 'property-change' signal for the Object.
-
-The connectionID should be a value returned from a call to ConnectPropertyChange.
-*/
-func (recv *Object) DisconnectPropertyChange(connectionID int) {
-	signalObjectPropertyChangeLock.Lock()
-	defer signalObjectPropertyChangeLock.Unlock()
-
-	_, exists := signalObjectPropertyChangeMap[connectionID]
-	if !exists {
-		return
-	}
-
-	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
-	delete(signalObjectPropertyChangeMap, connectionID)
-}
-
-//export Object_propertyChangeHandler
-func Object_propertyChangeHandler() {
-	fmt.Println("cb")
-}
-
-var signalObjectStateChangeId int
-var signalObjectStateChangeMap = make(map[int]ObjectSignalStateChangeCallback)
-var signalObjectStateChangeLock sync.Mutex
-
-// ObjectSignalStateChangeCallback is a callback function for a 'state-change' signal emitted from a Object.
-type ObjectSignalStateChangeCallback func(arg1 string, arg2 bool)
-
-/*
-ConnectStateChange connects the callback to the 'state-change' signal for the Object.
-
-The returned value represents the connection, and may be passed to DisconnectStateChange to remove it.
-*/
-func (recv *Object) ConnectStateChange(callback ObjectSignalStateChangeCallback) int {
-	signalObjectStateChangeLock.Lock()
-	defer signalObjectStateChangeLock.Unlock()
-
-	signalObjectStateChangeId++
-	signalObjectStateChangeMap[signalObjectStateChangeId] = callback
-
-	instance := C.gpointer(recv.Object().ToC())
-	retC := C.Object_signal_connect_state_change(instance, C.gpointer(uintptr(signalObjectStateChangeId)))
-	return int(retC)
-}
-
-/*
-DisconnectStateChange disconnects a callback from the 'state-change' signal for the Object.
-
-The connectionID should be a value returned from a call to ConnectStateChange.
-*/
-func (recv *Object) DisconnectStateChange(connectionID int) {
-	signalObjectStateChangeLock.Lock()
-	defer signalObjectStateChangeLock.Unlock()
-
-	_, exists := signalObjectStateChangeMap[connectionID]
-	if !exists {
-		return
-	}
-
-	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
-	delete(signalObjectStateChangeMap, connectionID)
-}
-
-//export Object_stateChangeHandler
-func Object_stateChangeHandler() {
-	fmt.Println("cb")
-}
+// Unsupported signal 'state-change' for Object : unsupported parameter arg1 : type utf8 :
 
 var signalObjectVisibleDataChangedId int
 var signalObjectVisibleDataChangedMap = make(map[int]ObjectSignalVisibleDataChangedCallback)

@@ -4,9 +4,7 @@
 package gio
 
 import (
-	"fmt"
 	glib "github.com/pekim/gobbi/lib/glib"
-	"sync"
 	"unsafe"
 )
 
@@ -23,72 +21,11 @@ import (
 // #include <gio/gunixoutputstream.h>
 // #include <gio/gunixsocketaddress.h>
 // #include <stdlib.h>
-/*
-
-	void AppLaunchContext_launchFailedHandler();
-
-	static gulong AppLaunchContext_signal_connect_launch_failed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "launch-failed", AppLaunchContext_launchFailedHandler, data);
-	}
-
-*/
 import "C"
 
-var signalAppLaunchContextLaunchFailedId int
-var signalAppLaunchContextLaunchFailedMap = make(map[int]AppLaunchContextSignalLaunchFailedCallback)
-var signalAppLaunchContextLaunchFailedLock sync.Mutex
-
-// AppLaunchContextSignalLaunchFailedCallback is a callback function for a 'launch-failed' signal emitted from a AppLaunchContext.
-type AppLaunchContextSignalLaunchFailedCallback func(startupNotifyId string)
-
-/*
-ConnectLaunchFailed connects the callback to the 'launch-failed' signal for the AppLaunchContext.
-
-The returned value represents the connection, and may be passed to DisconnectLaunchFailed to remove it.
-*/
-func (recv *AppLaunchContext) ConnectLaunchFailed(callback AppLaunchContextSignalLaunchFailedCallback) int {
-	signalAppLaunchContextLaunchFailedLock.Lock()
-	defer signalAppLaunchContextLaunchFailedLock.Unlock()
-
-	signalAppLaunchContextLaunchFailedId++
-	signalAppLaunchContextLaunchFailedMap[signalAppLaunchContextLaunchFailedId] = callback
-
-	instance := C.gpointer(recv.Object().ToC())
-	retC := C.AppLaunchContext_signal_connect_launch_failed(instance, C.gpointer(uintptr(signalAppLaunchContextLaunchFailedId)))
-	return int(retC)
-}
-
-/*
-DisconnectLaunchFailed disconnects a callback from the 'launch-failed' signal for the AppLaunchContext.
-
-The connectionID should be a value returned from a call to ConnectLaunchFailed.
-*/
-func (recv *AppLaunchContext) DisconnectLaunchFailed(connectionID int) {
-	signalAppLaunchContextLaunchFailedLock.Lock()
-	defer signalAppLaunchContextLaunchFailedLock.Unlock()
-
-	_, exists := signalAppLaunchContextLaunchFailedMap[connectionID]
-	if !exists {
-		return
-	}
-
-	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
-	delete(signalAppLaunchContextLaunchFailedMap, connectionID)
-}
-
-//export AppLaunchContext_launchFailedHandler
-func AppLaunchContext_launchFailedHandler() {
-	fmt.Println("cb")
-}
+// Unsupported signal 'launch-failed' for AppLaunchContext : unsupported parameter startup_notify_id : type utf8 :
 
 // Unsupported signal 'launched' for AppLaunchContext : unsupported parameter info : no type generator for AppInfo,
-
-// Unsupported signal 'command-line' for Application : return value gint :
-
-// Unsupported signal 'handle-local-options' for Application : return value gint :
-
-// Unsupported signal 'open' for Application : unsupported parameter files : no param type
 
 // Unsupported : g_application_command_line_create_file_for_arg : no return generator
 
@@ -104,10 +41,6 @@ func AppLaunchContext_launchFailedHandler() {
 
 // Unsupported : g_dbus_message_new_from_blob : unsupported parameter blob : no param type
 
-// Unsupported signal 'interface-proxy-properties-changed' for DBusObjectManagerClient : unsupported parameter changed_properties : Blacklisted record : GVariant
-
-// Unsupported signal 'interface-proxy-signal' for DBusObjectManagerClient : unsupported parameter parameters : Blacklisted record : GVariant
-
 // Unsupported : g_dbus_object_manager_client_new_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
 
 // Unsupported : g_dbus_object_manager_client_new_for_bus_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
@@ -115,10 +48,6 @@ func AppLaunchContext_launchFailedHandler() {
 // Unsupported : g_dbus_object_manager_client_new_for_bus_sync : unsupported parameter get_proxy_type_func : no type generator for DBusProxyTypeFunc, GDBusProxyTypeFunc
 
 // Unsupported : g_dbus_object_manager_client_new_sync : unsupported parameter get_proxy_type_func : no type generator for DBusProxyTypeFunc, GDBusProxyTypeFunc
-
-// Unsupported signal 'g-properties-changed' for DBusProxy : unsupported parameter changed_properties : Blacklisted record : GVariant
-
-// Unsupported signal 'g-signal' for DBusProxy : unsupported parameter parameters : Blacklisted record : GVariant
 
 // Unsupported : g_dbus_proxy_new_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
 
@@ -176,8 +105,6 @@ func (recv *FileInfo) GetDeletionDate() *glib.DateTime {
 	return retGo
 }
 
-// Unsupported signal 'changed' for FileMonitor : unsupported parameter file : no type generator for File,
-
 // Unsupported : g_inet_address_new_from_bytes : unsupported parameter bytes : no param type
 
 // Unsupported : g_list_store_new : unsupported parameter item_type : no type generator for GType, GType
@@ -193,16 +120,6 @@ func MemoryOutputStreamNewResizable() *MemoryOutputStream {
 
 	return retGo
 }
-
-// Unsupported signal 'ask-question' for MountOperation : unsupported parameter choices : no param type
-
-// Unsupported signal 'show-processes' for MountOperation : unsupported parameter processes : no param type
-
-// Unsupported signal 'change-event' for Settings : unsupported parameter keys : no param type
-
-// Unsupported signal 'activate' for SimpleAction : unsupported parameter parameter : Blacklisted record : GVariant
-
-// Unsupported signal 'change-state' for SimpleAction : unsupported parameter value : Blacklisted record : GVariant
 
 // Unsupported : g_simple_action_new : unsupported parameter parameter_type : Blacklisted record : GVariantType
 
@@ -284,8 +201,6 @@ func (recv *Socket) SetOption(level int32, optname int32, value int32) (bool, er
 
 	return retGo, goThrowableError
 }
-
-// Unsupported signal 'event' for SocketClient : unsupported parameter connectable : no type generator for SocketConnectable,
 
 // Unsupported : g_socket_client_get_proxy_resolver : no return generator
 
@@ -504,27 +419,3 @@ func (recv *Task) SetSourceTag(sourceTag uintptr) {
 // Unsupported : g_unix_socket_address_new_abstract : unsupported parameter path : no param type
 
 // Unsupported : g_unix_socket_address_new_with_type : unsupported parameter path : no param type
-
-// Unsupported signal 'drive-changed' for VolumeMonitor : unsupported parameter drive : no type generator for Drive,
-
-// Unsupported signal 'drive-connected' for VolumeMonitor : unsupported parameter drive : no type generator for Drive,
-
-// Unsupported signal 'drive-disconnected' for VolumeMonitor : unsupported parameter drive : no type generator for Drive,
-
-// Unsupported signal 'drive-eject-button' for VolumeMonitor : unsupported parameter drive : no type generator for Drive,
-
-// Unsupported signal 'drive-stop-button' for VolumeMonitor : unsupported parameter drive : no type generator for Drive,
-
-// Unsupported signal 'mount-added' for VolumeMonitor : unsupported parameter mount : no type generator for Mount,
-
-// Unsupported signal 'mount-changed' for VolumeMonitor : unsupported parameter mount : no type generator for Mount,
-
-// Unsupported signal 'mount-pre-unmount' for VolumeMonitor : unsupported parameter mount : no type generator for Mount,
-
-// Unsupported signal 'mount-removed' for VolumeMonitor : unsupported parameter mount : no type generator for Mount,
-
-// Unsupported signal 'volume-added' for VolumeMonitor : unsupported parameter volume : no type generator for Volume,
-
-// Unsupported signal 'volume-changed' for VolumeMonitor : unsupported parameter volume : no type generator for Volume,
-
-// Unsupported signal 'volume-removed' for VolumeMonitor : unsupported parameter volume : no type generator for Volume,

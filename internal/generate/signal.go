@@ -71,7 +71,7 @@ func (s *Signal) version() string {
 }
 
 func (s *Signal) supported() (bool, string) {
-	if supported, reason := s.Parameters.allSupported(); !supported {
+	if supported, reason := s.Parameters.allSupportedC(); !supported {
 		return supported, reason
 	}
 
@@ -85,14 +85,14 @@ func (s *Signal) supported() (bool, string) {
 }
 
 func (s *Signal) generate(g *jen.Group, version *Version, parentVersion string) {
-	if supported, reason := s.supported(); !supported {
-		g.Commentf("Unsupported signal '%s' for %s : %s", s.Name, s.record.Name, reason)
-		g.Line()
+	if !((parentVersion == "" && s.Version == version.value) ||
+		(parentVersion != "" && (s.Version == "" && parentVersion == version.value))) {
 		return
 	}
 
-	if !((parentVersion == "" && s.Version == version.value) ||
-		(parentVersion != "" && (s.Version == "" && parentVersion == version.value))) {
+	if supported, reason := s.supported(); !supported {
+		g.Commentf("Unsupported signal '%s' for %s : %s", s.Name, s.record.Name, reason)
+		g.Line()
 		return
 	}
 
@@ -153,7 +153,7 @@ func (s *Signal) generateHandlerFunction(g *jen.Group) {
 	g.
 		Func().
 		Id(s.goNameHandler).
-		Params(). //ParamFunc(s.Parameters.generateFunctionDeclarationCtypes).
+		ParamsFunc(s.Parameters.generateFunctionDeclarationCtypes).
 		ParamsFunc(s.ReturnValue.generateFunctionDeclarationCtype).
 		BlockFunc(func(g *jen.Group) {
 			g.Qual("fmt", "Println").Call(jen.Lit("cb"))

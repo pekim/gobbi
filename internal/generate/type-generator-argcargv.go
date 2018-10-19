@@ -18,6 +18,10 @@ func (t *TypeGeneratorArgcArgv) isSupportedAsParam(direction string) (supported 
 	return true, ""
 }
 
+func (t *TypeGeneratorArgcArgv) isSupportedAsParamC() (supported bool, reason string) {
+	return false, ""
+}
+
 func (t *TypeGeneratorArgcArgv) isSupportedAsField() (supported bool, reason string) {
 	return true, ""
 }
@@ -35,6 +39,9 @@ func (t *TypeGeneratorArgcArgv) generateDeclaration(g *jen.Group, goVarName stri
 		Id(goVarName).
 		Op("[]").
 		String()
+}
+
+func (t *TypeGeneratorArgcArgv) generateDeclarationC(g *jen.Group, goVarName string) {
 }
 
 func (t *TypeGeneratorArgcArgv) generateParamCallArgument(g *jen.Group, cVarName string) {

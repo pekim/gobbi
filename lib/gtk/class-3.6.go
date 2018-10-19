@@ -4,11 +4,9 @@
 package gtk
 
 import (
-	"fmt"
 	gdk "github.com/pekim/gobbi/lib/gdk"
 	gio "github.com/pekim/gobbi/lib/gio"
 	pango "github.com/pekim/gobbi/lib/pango"
-	"sync"
 	"unsafe"
 )
 
@@ -17,15 +15,6 @@ import (
 // #include <gtk/gtk.h>
 // #include <gtk/gtkx.h>
 // #include <stdlib.h>
-/*
-
-	void LevelBar_offsetChangedHandler();
-
-	static gulong LevelBar_signal_connect_offset_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "offset-changed", LevelBar_offsetChangedHandler, data);
-	}
-
-*/
 import "C"
 
 // SetAccel is a wrapper around the C function gtk_accel_label_set_accel.
@@ -57,12 +46,6 @@ func (recv *ActionGroup) SetAccelGroup(accelGroup *AccelGroup) {
 }
 
 // Unsupported : gtk_app_chooser_dialog_new : unsupported parameter file : no type generator for Gio.File, GFile*
-
-// Unsupported signal 'application-activated' for AppChooserWidget : unsupported parameter application : no type generator for Gio.AppInfo,
-
-// Unsupported signal 'application-selected' for AppChooserWidget : unsupported parameter application : no type generator for Gio.AppInfo,
-
-// Unsupported signal 'populate-popup' for AppChooserWidget : unsupported parameter application : no type generator for Gio.AppInfo,
 
 // GetActiveWindow is a wrapper around the C function gtk_application_get_active_window.
 func (recv *Application) GetActiveWindow() *Window {
@@ -109,16 +92,6 @@ func (recv *Button) SetAlwaysShowImage(alwaysShow bool) {
 
 	return
 }
-
-// Unsupported signal 'add-editable' for CellArea : unsupported parameter editable : no type generator for CellEditable,
-
-// Unsupported signal 'apply-attributes' for CellArea : unsupported parameter model : no type generator for TreeModel,
-
-// Unsupported signal 'remove-editable' for CellArea : unsupported parameter editable : no type generator for CellEditable,
-
-// Unsupported signal 'editing-started' for CellRenderer : unsupported parameter editable : no type generator for CellEditable,
-
-// Unsupported signal 'format-entry-text' for ComboBox : return value utf8 :
 
 // Unsupported : gtk_combo_box_new_with_model : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
 
@@ -177,10 +150,6 @@ func (recv *Entry) SetInputPurpose(purpose InputPurpose) {
 	return
 }
 
-// Unsupported signal 'cursor-on-match' for EntryCompletion : unsupported parameter model : no type generator for TreeModel,
-
-// Unsupported signal 'match-selected' for EntryCompletion : unsupported parameter model : no type generator for TreeModel,
-
 // Unsupported : EntryIconAccessible : no CType
 
 // Unsupported : gtk_file_chooser_dialog_new : unsupported parameter ... : varargs
@@ -201,53 +170,7 @@ func (recv *Entry) SetInputPurpose(purpose InputPurpose) {
 
 // Unsupported : gtk_info_bar_new_with_buttons : unsupported parameter ... : varargs
 
-var signalLevelBarOffsetChangedId int
-var signalLevelBarOffsetChangedMap = make(map[int]LevelBarSignalOffsetChangedCallback)
-var signalLevelBarOffsetChangedLock sync.Mutex
-
-// LevelBarSignalOffsetChangedCallback is a callback function for a 'offset-changed' signal emitted from a LevelBar.
-type LevelBarSignalOffsetChangedCallback func(name string)
-
-/*
-ConnectOffsetChanged connects the callback to the 'offset-changed' signal for the LevelBar.
-
-The returned value represents the connection, and may be passed to DisconnectOffsetChanged to remove it.
-*/
-func (recv *LevelBar) ConnectOffsetChanged(callback LevelBarSignalOffsetChangedCallback) int {
-	signalLevelBarOffsetChangedLock.Lock()
-	defer signalLevelBarOffsetChangedLock.Unlock()
-
-	signalLevelBarOffsetChangedId++
-	signalLevelBarOffsetChangedMap[signalLevelBarOffsetChangedId] = callback
-
-	instance := C.gpointer(recv.Object().ToC())
-	retC := C.LevelBar_signal_connect_offset_changed(instance, C.gpointer(uintptr(signalLevelBarOffsetChangedId)))
-	return int(retC)
-}
-
-/*
-DisconnectOffsetChanged disconnects a callback from the 'offset-changed' signal for the LevelBar.
-
-The connectionID should be a value returned from a call to ConnectOffsetChanged.
-*/
-func (recv *LevelBar) DisconnectOffsetChanged(connectionID int) {
-	signalLevelBarOffsetChangedLock.Lock()
-	defer signalLevelBarOffsetChangedLock.Unlock()
-
-	_, exists := signalLevelBarOffsetChangedMap[connectionID]
-	if !exists {
-		return
-	}
-
-	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
-	delete(signalLevelBarOffsetChangedMap, connectionID)
-}
-
-//export LevelBar_offsetChangedHandler
-func LevelBar_offsetChangedHandler() {
-	fmt.Println("cb")
-}
+// Unsupported signal 'offset-changed' for LevelBar : unsupported parameter name : type utf8 :
 
 // LevelBarNew is a wrapper around the C function gtk_level_bar_new.
 func LevelBarNew() *LevelBar {
@@ -473,29 +396,13 @@ func (recv *MenuShell) BindModel(model *gio.MenuModel, actionNamespace string, w
 
 // Unsupported : gtk_message_dialog_new_with_markup : unsupported parameter ... : varargs
 
-// Unsupported signal 'get-child-position' for Overlay : unsupported parameter allocation : Blacklisted record : GdkRectangle
-
 // Unsupported : gtk_page_setup_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
-
-// Unsupported signal 'drag-action-ask' for PlacesSidebar : return value gint :
-
-// Unsupported signal 'drag-action-requested' for PlacesSidebar : unsupported parameter dest_file : no type generator for Gio.File,
-
-// Unsupported signal 'drag-perform-drop' for PlacesSidebar : unsupported parameter dest_file : no type generator for Gio.File,
-
-// Unsupported signal 'open-location' for PlacesSidebar : unsupported parameter location : no type generator for Gio.File,
-
-// Unsupported signal 'populate-popup' for PlacesSidebar : unsupported parameter selected_item : no type generator for Gio.File,
-
-// Unsupported signal 'preview' for PrintOperation : unsupported parameter preview : no type generator for PrintOperationPreview,
 
 // Unsupported : gtk_print_settings_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
 
 // Unsupported : gtk_recent_chooser_dialog_new : unsupported parameter ... : varargs
 
 // Unsupported : gtk_recent_chooser_dialog_new_for_manager : unsupported parameter ... : varargs
-
-// Unsupported signal 'format-value' for Scale : return value utf8 :
 
 // Unsupported : gtk_scale_button_new : unsupported parameter size : no type generator for gint, GtkIconSize
 
@@ -507,11 +414,7 @@ func SearchEntryNew() *SearchEntry {
 	return retGo
 }
 
-// Unsupported signal 'input' for SpinButton : return value gint :
-
 // Unsupported : gtk_status_icon_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon, GIcon*
-
-// Unsupported signal 'event' for TextTag : unsupported parameter event : no type generator for Gdk.Event,
 
 // GetInputHints is a wrapper around the C function gtk_text_view_get_input_hints.
 func (recv *TextView) GetInputHints() InputHints {
@@ -554,20 +457,6 @@ func (recv *TextView) SetInputPurpose(purpose InputPurpose) {
 // Unsupported : gtk_tree_view_new_with_model : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
 
 // Unsupported : gtk_tree_view_column_new_with_attributes : unsupported parameter ... : varargs
-
-// Unsupported signal 'child-notify' for Widget : unsupported parameter child_property : Blacklisted record : GParamSpec
-
-// Unsupported signal 'delete-event' for Widget : unsupported parameter event : no type generator for Gdk.Event,
-
-// Unsupported signal 'destroy-event' for Widget : unsupported parameter event : no type generator for Gdk.Event,
-
-// Unsupported signal 'event' for Widget : unsupported parameter event : no type generator for Gdk.Event,
-
-// Unsupported signal 'event-after' for Widget : unsupported parameter event : no type generator for Gdk.Event,
-
-// Unsupported signal 'size-allocate' for Widget : unsupported parameter allocation : Blacklisted record : GdkRectangle
-
-// Unsupported signal 'touch-event' for Widget : unsupported parameter object : no type generator for Gdk.Event,
 
 // Unsupported : gtk_widget_new : unsupported parameter type : no type generator for GType, GType
 

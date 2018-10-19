@@ -49,12 +49,31 @@ func (p *Parameter) isSupported() (bool, string) {
 	return true, ""
 }
 
+func (p *Parameter) isSupportedC() (bool, string) {
+	if p.Type == nil {
+		return false, "no param type"
+	}
+	if p.Type.generator == nil {
+		return false, fmt.Sprintf("no type generator for %s, %s", p.Type.Name, p.Type.CType)
+	}
+
+	if supported, reason := p.Type.generator.isSupportedAsParamC(); !supported {
+		return false, fmt.Sprintf("type %s : %s", p.Type.Name, reason)
+	}
+
+	return true, ""
+}
+
 func (p *Parameter) generateFunctionDeclaration(g *jen.Group) {
 	if p.Direction == "out" {
 		return
 	}
 
 	p.Type.generator.generateDeclaration(g, p.goVarName)
+}
+
+func (p *Parameter) generateFunctionDeclarationCtype(g *jen.Group) {
+	p.Type.generator.generateDeclarationC(g, p.goVarName)
 }
 
 func (p *Parameter) generateCVar(g *jen.Group) {

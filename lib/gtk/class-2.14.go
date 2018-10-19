@@ -4,12 +4,10 @@
 package gtk
 
 import (
-	"fmt"
 	gdk "github.com/pekim/gobbi/lib/gdk"
 	gdkpixbuf "github.com/pekim/gobbi/lib/gdkpixbuf"
 	glib "github.com/pekim/gobbi/lib/glib"
 	pango "github.com/pekim/gobbi/lib/pango"
-	"sync"
 	"unsafe"
 )
 
@@ -18,42 +16,6 @@ import (
 // #include <gtk/gtk.h>
 // #include <gtk/gtkx.h>
 // #include <stdlib.h>
-/*
-
-	void CellRendererCombo_changedHandler();
-
-	static gulong CellRendererCombo_signal_connect_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "changed", CellRendererCombo_changedHandler, data);
-	}
-
-*/
-/*
-
-	void StatusIcon_buttonPressEventHandler();
-
-	static gulong StatusIcon_signal_connect_button_press_event(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "button-press-event", StatusIcon_buttonPressEventHandler, data);
-	}
-
-*/
-/*
-
-	void StatusIcon_buttonReleaseEventHandler();
-
-	static gulong StatusIcon_signal_connect_button_release_event(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "button-release-event", StatusIcon_buttonReleaseEventHandler, data);
-	}
-
-*/
-/*
-
-	void Widget_damageEventHandler();
-
-	static gulong Widget_signal_connect_damage_event(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "damage-event", Widget_damageEventHandler, data);
-	}
-
-*/
 import "C"
 
 // GetIsLocked is a wrapper around the C function gtk_accel_group_get_is_locked.
@@ -178,12 +140,6 @@ func (recv *Adjustment) SetUpper(upper float64) {
 
 // Unsupported : gtk_app_chooser_dialog_new : unsupported parameter file : no type generator for Gio.File, GFile*
 
-// Unsupported signal 'application-activated' for AppChooserWidget : unsupported parameter application : no type generator for Gio.AppInfo,
-
-// Unsupported signal 'application-selected' for AppChooserWidget : unsupported parameter application : no type generator for Gio.AppInfo,
-
-// Unsupported signal 'populate-popup' for AppChooserWidget : unsupported parameter application : no type generator for Gio.AppInfo,
-
 // Unsupported : gtk_builder_add_objects_from_file : unsupported parameter object_ids : no param type
 
 // Unsupported : gtk_builder_add_objects_from_string : unsupported parameter object_ids : no param type
@@ -226,61 +182,7 @@ func (recv *Calendar) SetDetailWidthChars(chars int32) {
 	return
 }
 
-// Unsupported signal 'add-editable' for CellArea : unsupported parameter editable : no type generator for CellEditable,
-
-// Unsupported signal 'apply-attributes' for CellArea : unsupported parameter model : no type generator for TreeModel,
-
-// Unsupported signal 'remove-editable' for CellArea : unsupported parameter editable : no type generator for CellEditable,
-
-// Unsupported signal 'editing-started' for CellRenderer : unsupported parameter editable : no type generator for CellEditable,
-
-var signalCellRendererComboChangedId int
-var signalCellRendererComboChangedMap = make(map[int]CellRendererComboSignalChangedCallback)
-var signalCellRendererComboChangedLock sync.Mutex
-
-// CellRendererComboSignalChangedCallback is a callback function for a 'changed' signal emitted from a CellRendererCombo.
-type CellRendererComboSignalChangedCallback func(pathString string, newIter *TreeIter)
-
-/*
-ConnectChanged connects the callback to the 'changed' signal for the CellRendererCombo.
-
-The returned value represents the connection, and may be passed to DisconnectChanged to remove it.
-*/
-func (recv *CellRendererCombo) ConnectChanged(callback CellRendererComboSignalChangedCallback) int {
-	signalCellRendererComboChangedLock.Lock()
-	defer signalCellRendererComboChangedLock.Unlock()
-
-	signalCellRendererComboChangedId++
-	signalCellRendererComboChangedMap[signalCellRendererComboChangedId] = callback
-
-	instance := C.gpointer(recv.Object().ToC())
-	retC := C.CellRendererCombo_signal_connect_changed(instance, C.gpointer(uintptr(signalCellRendererComboChangedId)))
-	return int(retC)
-}
-
-/*
-DisconnectChanged disconnects a callback from the 'changed' signal for the CellRendererCombo.
-
-The connectionID should be a value returned from a call to ConnectChanged.
-*/
-func (recv *CellRendererCombo) DisconnectChanged(connectionID int) {
-	signalCellRendererComboChangedLock.Lock()
-	defer signalCellRendererComboChangedLock.Unlock()
-
-	_, exists := signalCellRendererComboChangedMap[connectionID]
-	if !exists {
-		return
-	}
-
-	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
-	delete(signalCellRendererComboChangedMap, connectionID)
-}
-
-//export CellRendererCombo_changedHandler
-func CellRendererCombo_changedHandler() {
-	fmt.Println("cb")
-}
+// Unsupported signal 'changed' for CellRendererCombo : unsupported parameter path_string : type utf8 :
 
 // Unsupported : gtk_clipboard_request_uris : unsupported parameter callback : no type generator for ClipboardURIReceivedFunc, GtkClipboardURIReceivedFunc
 
@@ -301,8 +203,6 @@ func (recv *ColorSelectionDialog) GetColorSelection() *Widget {
 
 	return retGo
 }
-
-// Unsupported signal 'format-entry-text' for ComboBox : return value utf8 :
 
 // Unsupported : gtk_combo_box_new_with_model : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
 
@@ -376,10 +276,6 @@ func (recv *Entry) SetOverwriteMode(overwrite bool) {
 
 	return
 }
-
-// Unsupported signal 'cursor-on-match' for EntryCompletion : unsupported parameter model : no type generator for TreeModel,
-
-// Unsupported signal 'match-selected' for EntryCompletion : unsupported parameter model : no type generator for TreeModel,
 
 // Unsupported : EntryIconAccessible : no CType
 
@@ -697,8 +593,6 @@ func (recv *MountOperation) SetScreen(screen *gdk.Screen) {
 	return
 }
 
-// Unsupported signal 'get-child-position' for Overlay : unsupported parameter allocation : Blacklisted record : GdkRectangle
-
 // Unsupported : gtk_page_setup_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
 
 // LoadFile is a wrapper around the C function gtk_page_setup_load_file.
@@ -738,18 +632,6 @@ func (recv *PageSetup) LoadKeyFile(keyFile *glib.KeyFile, groupName string) (boo
 
 	return retGo, goThrowableError
 }
-
-// Unsupported signal 'drag-action-ask' for PlacesSidebar : return value gint :
-
-// Unsupported signal 'drag-action-requested' for PlacesSidebar : unsupported parameter dest_file : no type generator for Gio.File,
-
-// Unsupported signal 'drag-perform-drop' for PlacesSidebar : unsupported parameter dest_file : no type generator for Gio.File,
-
-// Unsupported signal 'open-location' for PlacesSidebar : unsupported parameter location : no type generator for Gio.File,
-
-// Unsupported signal 'populate-popup' for PlacesSidebar : unsupported parameter selected_item : no type generator for Gio.File,
-
-// Unsupported signal 'preview' for PrintOperation : unsupported parameter preview : no type generator for PrintOperationPreview,
 
 // Unsupported : gtk_print_settings_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
 
@@ -812,8 +694,6 @@ func (recv *PrintSettings) SetNumberUpLayout(numberUpLayout NumberUpLayout) {
 
 // Unsupported : gtk_recent_chooser_dialog_new_for_manager : unsupported parameter ... : varargs
 
-// Unsupported signal 'format-value' for Scale : return value utf8 :
-
 // Unsupported : gtk_scale_button_new : unsupported parameter size : no type generator for gint, GtkIconSize
 
 // GetMinusButton is a wrapper around the C function gtk_scale_button_get_minus_button.
@@ -840,103 +720,9 @@ func (recv *ScaleButton) GetPopup() *Widget {
 	return retGo
 }
 
-// Unsupported signal 'input' for SpinButton : return value gint :
+// Unsupported signal 'button-press-event' for StatusIcon : unsupported parameter event : type Gdk.EventButton :
 
-var signalStatusIconButtonPressEventId int
-var signalStatusIconButtonPressEventMap = make(map[int]StatusIconSignalButtonPressEventCallback)
-var signalStatusIconButtonPressEventLock sync.Mutex
-
-// StatusIconSignalButtonPressEventCallback is a callback function for a 'button-press-event' signal emitted from a StatusIcon.
-type StatusIconSignalButtonPressEventCallback func(event *gdk.EventButton) bool
-
-/*
-ConnectButtonPressEvent connects the callback to the 'button-press-event' signal for the StatusIcon.
-
-The returned value represents the connection, and may be passed to DisconnectButtonPressEvent to remove it.
-*/
-func (recv *StatusIcon) ConnectButtonPressEvent(callback StatusIconSignalButtonPressEventCallback) int {
-	signalStatusIconButtonPressEventLock.Lock()
-	defer signalStatusIconButtonPressEventLock.Unlock()
-
-	signalStatusIconButtonPressEventId++
-	signalStatusIconButtonPressEventMap[signalStatusIconButtonPressEventId] = callback
-
-	instance := C.gpointer(recv.Object().ToC())
-	retC := C.StatusIcon_signal_connect_button_press_event(instance, C.gpointer(uintptr(signalStatusIconButtonPressEventId)))
-	return int(retC)
-}
-
-/*
-DisconnectButtonPressEvent disconnects a callback from the 'button-press-event' signal for the StatusIcon.
-
-The connectionID should be a value returned from a call to ConnectButtonPressEvent.
-*/
-func (recv *StatusIcon) DisconnectButtonPressEvent(connectionID int) {
-	signalStatusIconButtonPressEventLock.Lock()
-	defer signalStatusIconButtonPressEventLock.Unlock()
-
-	_, exists := signalStatusIconButtonPressEventMap[connectionID]
-	if !exists {
-		return
-	}
-
-	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
-	delete(signalStatusIconButtonPressEventMap, connectionID)
-}
-
-//export StatusIcon_buttonPressEventHandler
-func StatusIcon_buttonPressEventHandler() C.boolean {
-	fmt.Println("cb")
-}
-
-var signalStatusIconButtonReleaseEventId int
-var signalStatusIconButtonReleaseEventMap = make(map[int]StatusIconSignalButtonReleaseEventCallback)
-var signalStatusIconButtonReleaseEventLock sync.Mutex
-
-// StatusIconSignalButtonReleaseEventCallback is a callback function for a 'button-release-event' signal emitted from a StatusIcon.
-type StatusIconSignalButtonReleaseEventCallback func(event *gdk.EventButton) bool
-
-/*
-ConnectButtonReleaseEvent connects the callback to the 'button-release-event' signal for the StatusIcon.
-
-The returned value represents the connection, and may be passed to DisconnectButtonReleaseEvent to remove it.
-*/
-func (recv *StatusIcon) ConnectButtonReleaseEvent(callback StatusIconSignalButtonReleaseEventCallback) int {
-	signalStatusIconButtonReleaseEventLock.Lock()
-	defer signalStatusIconButtonReleaseEventLock.Unlock()
-
-	signalStatusIconButtonReleaseEventId++
-	signalStatusIconButtonReleaseEventMap[signalStatusIconButtonReleaseEventId] = callback
-
-	instance := C.gpointer(recv.Object().ToC())
-	retC := C.StatusIcon_signal_connect_button_release_event(instance, C.gpointer(uintptr(signalStatusIconButtonReleaseEventId)))
-	return int(retC)
-}
-
-/*
-DisconnectButtonReleaseEvent disconnects a callback from the 'button-release-event' signal for the StatusIcon.
-
-The connectionID should be a value returned from a call to ConnectButtonReleaseEvent.
-*/
-func (recv *StatusIcon) DisconnectButtonReleaseEvent(connectionID int) {
-	signalStatusIconButtonReleaseEventLock.Lock()
-	defer signalStatusIconButtonReleaseEventLock.Unlock()
-
-	_, exists := signalStatusIconButtonReleaseEventMap[connectionID]
-	if !exists {
-		return
-	}
-
-	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
-	delete(signalStatusIconButtonReleaseEventMap, connectionID)
-}
-
-//export StatusIcon_buttonReleaseEventHandler
-func StatusIcon_buttonReleaseEventHandler() C.boolean {
-	fmt.Println("cb")
-}
+// Unsupported signal 'button-release-event' for StatusIcon : unsupported parameter event : type Gdk.EventButton :
 
 // Unsupported : gtk_status_icon_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon, GIcon*
 
@@ -951,8 +737,6 @@ func (recv *StatusIcon) GetX11WindowId() uint32 {
 }
 
 // Unsupported : gtk_status_icon_set_from_gicon : unsupported parameter icon : no type generator for Gio.Icon, GIcon*
-
-// Unsupported signal 'event' for TextTag : unsupported parameter event : no type generator for Gdk.Event,
 
 // ToolbarReconfigured is a wrapper around the C function gtk_tool_item_toolbar_reconfigured.
 func (recv *ToolItem) ToolbarReconfigured() {
@@ -973,67 +757,7 @@ func (recv *ToolItem) ToolbarReconfigured() {
 
 // Unsupported : gtk_tree_view_column_new_with_attributes : unsupported parameter ... : varargs
 
-// Unsupported signal 'child-notify' for Widget : unsupported parameter child_property : Blacklisted record : GParamSpec
-
-var signalWidgetDamageEventId int
-var signalWidgetDamageEventMap = make(map[int]WidgetSignalDamageEventCallback)
-var signalWidgetDamageEventLock sync.Mutex
-
-// WidgetSignalDamageEventCallback is a callback function for a 'damage-event' signal emitted from a Widget.
-type WidgetSignalDamageEventCallback func(event *gdk.EventExpose) bool
-
-/*
-ConnectDamageEvent connects the callback to the 'damage-event' signal for the Widget.
-
-The returned value represents the connection, and may be passed to DisconnectDamageEvent to remove it.
-*/
-func (recv *Widget) ConnectDamageEvent(callback WidgetSignalDamageEventCallback) int {
-	signalWidgetDamageEventLock.Lock()
-	defer signalWidgetDamageEventLock.Unlock()
-
-	signalWidgetDamageEventId++
-	signalWidgetDamageEventMap[signalWidgetDamageEventId] = callback
-
-	instance := C.gpointer(recv.Object().ToC())
-	retC := C.Widget_signal_connect_damage_event(instance, C.gpointer(uintptr(signalWidgetDamageEventId)))
-	return int(retC)
-}
-
-/*
-DisconnectDamageEvent disconnects a callback from the 'damage-event' signal for the Widget.
-
-The connectionID should be a value returned from a call to ConnectDamageEvent.
-*/
-func (recv *Widget) DisconnectDamageEvent(connectionID int) {
-	signalWidgetDamageEventLock.Lock()
-	defer signalWidgetDamageEventLock.Unlock()
-
-	_, exists := signalWidgetDamageEventMap[connectionID]
-	if !exists {
-		return
-	}
-
-	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
-	delete(signalWidgetDamageEventMap, connectionID)
-}
-
-//export Widget_damageEventHandler
-func Widget_damageEventHandler() C.boolean {
-	fmt.Println("cb")
-}
-
-// Unsupported signal 'delete-event' for Widget : unsupported parameter event : no type generator for Gdk.Event,
-
-// Unsupported signal 'destroy-event' for Widget : unsupported parameter event : no type generator for Gdk.Event,
-
-// Unsupported signal 'event' for Widget : unsupported parameter event : no type generator for Gdk.Event,
-
-// Unsupported signal 'event-after' for Widget : unsupported parameter event : no type generator for Gdk.Event,
-
-// Unsupported signal 'size-allocate' for Widget : unsupported parameter allocation : Blacklisted record : GdkRectangle
-
-// Unsupported signal 'touch-event' for Widget : unsupported parameter object : no type generator for Gdk.Event,
+// Unsupported signal 'damage-event' for Widget : unsupported parameter event : type Gdk.EventExpose :
 
 // Unsupported : gtk_widget_new : unsupported parameter type : no type generator for GType, GType
 

@@ -43,55 +43,10 @@ import (
 */
 /*
 
-	void MountOperation_askPasswordHandler();
-
-	static gulong MountOperation_signal_connect_ask_password(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "ask-password", MountOperation_askPasswordHandler, data);
-	}
-
-*/
-/*
-
-	void MountOperation_replyHandler();
-
-	static gulong MountOperation_signal_connect_reply(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "reply", MountOperation_replyHandler, data);
-	}
-
-*/
-/*
-
 	void Resolver_reloadHandler();
 
 	static gulong Resolver_signal_connect_reload(gpointer instance, gpointer data) {
 		return g_signal_connect(instance, "reload", Resolver_reloadHandler, data);
-	}
-
-*/
-/*
-
-	void Settings_changedHandler();
-
-	static gulong Settings_signal_connect_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "changed", Settings_changedHandler, data);
-	}
-
-*/
-/*
-
-	void Settings_writableChangeEventHandler();
-
-	static gulong Settings_signal_connect_writable_change_event(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "writable-change-event", Settings_writableChangeEventHandler, data);
-	}
-
-*/
-/*
-
-	void Settings_writableChangedHandler();
-
-	static gulong Settings_signal_connect_writable_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "writable-changed", Settings_writableChangedHandler, data);
 	}
 
 */
@@ -148,8 +103,6 @@ func (recv *AppLaunchContext) Object() *gobject.Object {
 func CastToAppLaunchContext(object *gobject.Object) *AppLaunchContext {
 	return AppLaunchContextNewFromC(object.ToC())
 }
-
-// Unsupported signal 'launched' for AppLaunchContext : unsupported parameter info : no type generator for AppInfo,
 
 // AppLaunchContextNew is a wrapper around the C function g_app_launch_context_new.
 func AppLaunchContextNew() *AppLaunchContext {
@@ -3059,105 +3012,11 @@ func CastToMountOperation(object *gobject.Object) *MountOperation {
 	return MountOperationNewFromC(object.ToC())
 }
 
-var signalMountOperationAskPasswordId int
-var signalMountOperationAskPasswordMap = make(map[int]MountOperationSignalAskPasswordCallback)
-var signalMountOperationAskPasswordLock sync.Mutex
+// Unsupported signal 'ask-password' for MountOperation : unsupported parameter message : type utf8 :
 
-// MountOperationSignalAskPasswordCallback is a callback function for a 'ask-password' signal emitted from a MountOperation.
-type MountOperationSignalAskPasswordCallback func(message string, defaultUser string, defaultDomain string, flags AskPasswordFlags)
+// Unsupported signal 'ask-question' for MountOperation : unsupported parameter message : type utf8 :
 
-/*
-ConnectAskPassword connects the callback to the 'ask-password' signal for the MountOperation.
-
-The returned value represents the connection, and may be passed to DisconnectAskPassword to remove it.
-*/
-func (recv *MountOperation) ConnectAskPassword(callback MountOperationSignalAskPasswordCallback) int {
-	signalMountOperationAskPasswordLock.Lock()
-	defer signalMountOperationAskPasswordLock.Unlock()
-
-	signalMountOperationAskPasswordId++
-	signalMountOperationAskPasswordMap[signalMountOperationAskPasswordId] = callback
-
-	instance := C.gpointer(recv.Object().ToC())
-	retC := C.MountOperation_signal_connect_ask_password(instance, C.gpointer(uintptr(signalMountOperationAskPasswordId)))
-	return int(retC)
-}
-
-/*
-DisconnectAskPassword disconnects a callback from the 'ask-password' signal for the MountOperation.
-
-The connectionID should be a value returned from a call to ConnectAskPassword.
-*/
-func (recv *MountOperation) DisconnectAskPassword(connectionID int) {
-	signalMountOperationAskPasswordLock.Lock()
-	defer signalMountOperationAskPasswordLock.Unlock()
-
-	_, exists := signalMountOperationAskPasswordMap[connectionID]
-	if !exists {
-		return
-	}
-
-	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
-	delete(signalMountOperationAskPasswordMap, connectionID)
-}
-
-//export MountOperation_askPasswordHandler
-func MountOperation_askPasswordHandler() {
-	fmt.Println("cb")
-}
-
-// Unsupported signal 'ask-question' for MountOperation : unsupported parameter choices : no param type
-
-var signalMountOperationReplyId int
-var signalMountOperationReplyMap = make(map[int]MountOperationSignalReplyCallback)
-var signalMountOperationReplyLock sync.Mutex
-
-// MountOperationSignalReplyCallback is a callback function for a 'reply' signal emitted from a MountOperation.
-type MountOperationSignalReplyCallback func(result MountOperationResult)
-
-/*
-ConnectReply connects the callback to the 'reply' signal for the MountOperation.
-
-The returned value represents the connection, and may be passed to DisconnectReply to remove it.
-*/
-func (recv *MountOperation) ConnectReply(callback MountOperationSignalReplyCallback) int {
-	signalMountOperationReplyLock.Lock()
-	defer signalMountOperationReplyLock.Unlock()
-
-	signalMountOperationReplyId++
-	signalMountOperationReplyMap[signalMountOperationReplyId] = callback
-
-	instance := C.gpointer(recv.Object().ToC())
-	retC := C.MountOperation_signal_connect_reply(instance, C.gpointer(uintptr(signalMountOperationReplyId)))
-	return int(retC)
-}
-
-/*
-DisconnectReply disconnects a callback from the 'reply' signal for the MountOperation.
-
-The connectionID should be a value returned from a call to ConnectReply.
-*/
-func (recv *MountOperation) DisconnectReply(connectionID int) {
-	signalMountOperationReplyLock.Lock()
-	defer signalMountOperationReplyLock.Unlock()
-
-	_, exists := signalMountOperationReplyMap[connectionID]
-	if !exists {
-		return
-	}
-
-	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
-	delete(signalMountOperationReplyMap, connectionID)
-}
-
-//export MountOperation_replyHandler
-func MountOperation_replyHandler() {
-	fmt.Println("cb")
-}
-
-// Unsupported signal 'show-processes' for MountOperation : unsupported parameter processes : no param type
+// Unsupported signal 'reply' for MountOperation : unsupported parameter result : type MountOperationResult :
 
 // MountOperationNew is a wrapper around the C function g_mount_operation_new.
 func MountOperationNew() *MountOperation {
@@ -3732,149 +3591,11 @@ func CastToSettings(object *gobject.Object) *Settings {
 
 // Unsupported signal 'change-event' for Settings : unsupported parameter keys : no param type
 
-var signalSettingsChangedId int
-var signalSettingsChangedMap = make(map[int]SettingsSignalChangedCallback)
-var signalSettingsChangedLock sync.Mutex
+// Unsupported signal 'changed' for Settings : unsupported parameter key : type utf8 :
 
-// SettingsSignalChangedCallback is a callback function for a 'changed' signal emitted from a Settings.
-type SettingsSignalChangedCallback func(key string)
+// Unsupported signal 'writable-change-event' for Settings : unsupported parameter key : type guint :
 
-/*
-ConnectChanged connects the callback to the 'changed' signal for the Settings.
-
-The returned value represents the connection, and may be passed to DisconnectChanged to remove it.
-*/
-func (recv *Settings) ConnectChanged(callback SettingsSignalChangedCallback) int {
-	signalSettingsChangedLock.Lock()
-	defer signalSettingsChangedLock.Unlock()
-
-	signalSettingsChangedId++
-	signalSettingsChangedMap[signalSettingsChangedId] = callback
-
-	instance := C.gpointer(recv.Object().ToC())
-	retC := C.Settings_signal_connect_changed(instance, C.gpointer(uintptr(signalSettingsChangedId)))
-	return int(retC)
-}
-
-/*
-DisconnectChanged disconnects a callback from the 'changed' signal for the Settings.
-
-The connectionID should be a value returned from a call to ConnectChanged.
-*/
-func (recv *Settings) DisconnectChanged(connectionID int) {
-	signalSettingsChangedLock.Lock()
-	defer signalSettingsChangedLock.Unlock()
-
-	_, exists := signalSettingsChangedMap[connectionID]
-	if !exists {
-		return
-	}
-
-	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
-	delete(signalSettingsChangedMap, connectionID)
-}
-
-//export Settings_changedHandler
-func Settings_changedHandler() {
-	fmt.Println("cb")
-}
-
-var signalSettingsWritableChangeEventId int
-var signalSettingsWritableChangeEventMap = make(map[int]SettingsSignalWritableChangeEventCallback)
-var signalSettingsWritableChangeEventLock sync.Mutex
-
-// SettingsSignalWritableChangeEventCallback is a callback function for a 'writable-change-event' signal emitted from a Settings.
-type SettingsSignalWritableChangeEventCallback func(key uint32) bool
-
-/*
-ConnectWritableChangeEvent connects the callback to the 'writable-change-event' signal for the Settings.
-
-The returned value represents the connection, and may be passed to DisconnectWritableChangeEvent to remove it.
-*/
-func (recv *Settings) ConnectWritableChangeEvent(callback SettingsSignalWritableChangeEventCallback) int {
-	signalSettingsWritableChangeEventLock.Lock()
-	defer signalSettingsWritableChangeEventLock.Unlock()
-
-	signalSettingsWritableChangeEventId++
-	signalSettingsWritableChangeEventMap[signalSettingsWritableChangeEventId] = callback
-
-	instance := C.gpointer(recv.Object().ToC())
-	retC := C.Settings_signal_connect_writable_change_event(instance, C.gpointer(uintptr(signalSettingsWritableChangeEventId)))
-	return int(retC)
-}
-
-/*
-DisconnectWritableChangeEvent disconnects a callback from the 'writable-change-event' signal for the Settings.
-
-The connectionID should be a value returned from a call to ConnectWritableChangeEvent.
-*/
-func (recv *Settings) DisconnectWritableChangeEvent(connectionID int) {
-	signalSettingsWritableChangeEventLock.Lock()
-	defer signalSettingsWritableChangeEventLock.Unlock()
-
-	_, exists := signalSettingsWritableChangeEventMap[connectionID]
-	if !exists {
-		return
-	}
-
-	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
-	delete(signalSettingsWritableChangeEventMap, connectionID)
-}
-
-//export Settings_writableChangeEventHandler
-func Settings_writableChangeEventHandler() C.boolean {
-	fmt.Println("cb")
-}
-
-var signalSettingsWritableChangedId int
-var signalSettingsWritableChangedMap = make(map[int]SettingsSignalWritableChangedCallback)
-var signalSettingsWritableChangedLock sync.Mutex
-
-// SettingsSignalWritableChangedCallback is a callback function for a 'writable-changed' signal emitted from a Settings.
-type SettingsSignalWritableChangedCallback func(key string)
-
-/*
-ConnectWritableChanged connects the callback to the 'writable-changed' signal for the Settings.
-
-The returned value represents the connection, and may be passed to DisconnectWritableChanged to remove it.
-*/
-func (recv *Settings) ConnectWritableChanged(callback SettingsSignalWritableChangedCallback) int {
-	signalSettingsWritableChangedLock.Lock()
-	defer signalSettingsWritableChangedLock.Unlock()
-
-	signalSettingsWritableChangedId++
-	signalSettingsWritableChangedMap[signalSettingsWritableChangedId] = callback
-
-	instance := C.gpointer(recv.Object().ToC())
-	retC := C.Settings_signal_connect_writable_changed(instance, C.gpointer(uintptr(signalSettingsWritableChangedId)))
-	return int(retC)
-}
-
-/*
-DisconnectWritableChanged disconnects a callback from the 'writable-changed' signal for the Settings.
-
-The connectionID should be a value returned from a call to ConnectWritableChanged.
-*/
-func (recv *Settings) DisconnectWritableChanged(connectionID int) {
-	signalSettingsWritableChangedLock.Lock()
-	defer signalSettingsWritableChangedLock.Unlock()
-
-	_, exists := signalSettingsWritableChangedMap[connectionID]
-	if !exists {
-		return
-	}
-
-	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
-	delete(signalSettingsWritableChangedMap, connectionID)
-}
-
-//export Settings_writableChangedHandler
-func Settings_writableChangedHandler() {
-	fmt.Println("cb")
-}
+// Unsupported signal 'writable-changed' for Settings : unsupported parameter key : type utf8 :
 
 // Apply is a wrapper around the C function g_settings_apply.
 func (recv *Settings) Apply() {
@@ -3997,10 +3718,6 @@ func (recv *SimpleAction) Object() *gobject.Object {
 func CastToSimpleAction(object *gobject.Object) *SimpleAction {
 	return SimpleActionNewFromC(object.ToC())
 }
-
-// Unsupported signal 'activate' for SimpleAction : unsupported parameter parameter : Blacklisted record : GVariant
-
-// Unsupported signal 'change-state' for SimpleAction : unsupported parameter value : Blacklisted record : GVariant
 
 // Unsupported : g_simple_action_new : unsupported parameter parameter_type : Blacklisted record : GVariantType
 
@@ -4994,10 +4711,6 @@ func CastToVolumeMonitor(object *gobject.Object) *VolumeMonitor {
 // Unsupported signal 'drive-connected' for VolumeMonitor : unsupported parameter drive : no type generator for Drive,
 
 // Unsupported signal 'drive-disconnected' for VolumeMonitor : unsupported parameter drive : no type generator for Drive,
-
-// Unsupported signal 'drive-eject-button' for VolumeMonitor : unsupported parameter drive : no type generator for Drive,
-
-// Unsupported signal 'drive-stop-button' for VolumeMonitor : unsupported parameter drive : no type generator for Drive,
 
 // Unsupported signal 'mount-added' for VolumeMonitor : unsupported parameter mount : no type generator for Mount,
 

@@ -16,33 +16,6 @@ import (
 // #include <stdlib.h>
 /*
 
-	void Device_toolChangedHandler();
-
-	static gulong Device_signal_connect_tool_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "tool-changed", Device_toolChangedHandler, data);
-	}
-
-*/
-/*
-
-	void Display_monitorAddedHandler();
-
-	static gulong Display_signal_connect_monitor_added(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "monitor-added", Display_monitorAddedHandler, data);
-	}
-
-*/
-/*
-
-	void Display_monitorRemovedHandler();
-
-	static gulong Display_signal_connect_monitor_removed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "monitor-removed", Display_monitorRemovedHandler, data);
-	}
-
-*/
-/*
-
 	void Monitor_invalidateHandler();
 
 	static gulong Monitor_signal_connect_invalidate(gpointer instance, gpointer data) {
@@ -50,64 +23,9 @@ import (
 	}
 
 */
-/*
-
-	void Window_movedToRectHandler();
-
-	static gulong Window_signal_connect_moved_to_rect(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "moved-to-rect", Window_movedToRectHandler, data);
-	}
-
-*/
 import "C"
 
-var signalDeviceToolChangedId int
-var signalDeviceToolChangedMap = make(map[int]DeviceSignalToolChangedCallback)
-var signalDeviceToolChangedLock sync.Mutex
-
-// DeviceSignalToolChangedCallback is a callback function for a 'tool-changed' signal emitted from a Device.
-type DeviceSignalToolChangedCallback func(tool *DeviceTool)
-
-/*
-ConnectToolChanged connects the callback to the 'tool-changed' signal for the Device.
-
-The returned value represents the connection, and may be passed to DisconnectToolChanged to remove it.
-*/
-func (recv *Device) ConnectToolChanged(callback DeviceSignalToolChangedCallback) int {
-	signalDeviceToolChangedLock.Lock()
-	defer signalDeviceToolChangedLock.Unlock()
-
-	signalDeviceToolChangedId++
-	signalDeviceToolChangedMap[signalDeviceToolChangedId] = callback
-
-	instance := C.gpointer(recv.Object().ToC())
-	retC := C.Device_signal_connect_tool_changed(instance, C.gpointer(uintptr(signalDeviceToolChangedId)))
-	return int(retC)
-}
-
-/*
-DisconnectToolChanged disconnects a callback from the 'tool-changed' signal for the Device.
-
-The connectionID should be a value returned from a call to ConnectToolChanged.
-*/
-func (recv *Device) DisconnectToolChanged(connectionID int) {
-	signalDeviceToolChangedLock.Lock()
-	defer signalDeviceToolChangedLock.Unlock()
-
-	_, exists := signalDeviceToolChangedMap[connectionID]
-	if !exists {
-		return
-	}
-
-	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
-	delete(signalDeviceToolChangedMap, connectionID)
-}
-
-//export Device_toolChangedHandler
-func Device_toolChangedHandler() {
-	fmt.Println("cb")
-}
+// Unsupported signal 'tool-changed' for Device : unsupported parameter tool : type DeviceTool :
 
 // GetAxes is a wrapper around the C function gdk_device_get_axes.
 func (recv *Device) GetAxes() AxisFlags {
@@ -173,101 +91,9 @@ func (recv *DeviceTool) GetToolType() DeviceToolType {
 	return retGo
 }
 
-var signalDisplayMonitorAddedId int
-var signalDisplayMonitorAddedMap = make(map[int]DisplaySignalMonitorAddedCallback)
-var signalDisplayMonitorAddedLock sync.Mutex
+// Unsupported signal 'monitor-added' for Display : unsupported parameter monitor : type Monitor :
 
-// DisplaySignalMonitorAddedCallback is a callback function for a 'monitor-added' signal emitted from a Display.
-type DisplaySignalMonitorAddedCallback func(monitor *Monitor)
-
-/*
-ConnectMonitorAdded connects the callback to the 'monitor-added' signal for the Display.
-
-The returned value represents the connection, and may be passed to DisconnectMonitorAdded to remove it.
-*/
-func (recv *Display) ConnectMonitorAdded(callback DisplaySignalMonitorAddedCallback) int {
-	signalDisplayMonitorAddedLock.Lock()
-	defer signalDisplayMonitorAddedLock.Unlock()
-
-	signalDisplayMonitorAddedId++
-	signalDisplayMonitorAddedMap[signalDisplayMonitorAddedId] = callback
-
-	instance := C.gpointer(recv.Object().ToC())
-	retC := C.Display_signal_connect_monitor_added(instance, C.gpointer(uintptr(signalDisplayMonitorAddedId)))
-	return int(retC)
-}
-
-/*
-DisconnectMonitorAdded disconnects a callback from the 'monitor-added' signal for the Display.
-
-The connectionID should be a value returned from a call to ConnectMonitorAdded.
-*/
-func (recv *Display) DisconnectMonitorAdded(connectionID int) {
-	signalDisplayMonitorAddedLock.Lock()
-	defer signalDisplayMonitorAddedLock.Unlock()
-
-	_, exists := signalDisplayMonitorAddedMap[connectionID]
-	if !exists {
-		return
-	}
-
-	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
-	delete(signalDisplayMonitorAddedMap, connectionID)
-}
-
-//export Display_monitorAddedHandler
-func Display_monitorAddedHandler() {
-	fmt.Println("cb")
-}
-
-var signalDisplayMonitorRemovedId int
-var signalDisplayMonitorRemovedMap = make(map[int]DisplaySignalMonitorRemovedCallback)
-var signalDisplayMonitorRemovedLock sync.Mutex
-
-// DisplaySignalMonitorRemovedCallback is a callback function for a 'monitor-removed' signal emitted from a Display.
-type DisplaySignalMonitorRemovedCallback func(monitor *Monitor)
-
-/*
-ConnectMonitorRemoved connects the callback to the 'monitor-removed' signal for the Display.
-
-The returned value represents the connection, and may be passed to DisconnectMonitorRemoved to remove it.
-*/
-func (recv *Display) ConnectMonitorRemoved(callback DisplaySignalMonitorRemovedCallback) int {
-	signalDisplayMonitorRemovedLock.Lock()
-	defer signalDisplayMonitorRemovedLock.Unlock()
-
-	signalDisplayMonitorRemovedId++
-	signalDisplayMonitorRemovedMap[signalDisplayMonitorRemovedId] = callback
-
-	instance := C.gpointer(recv.Object().ToC())
-	retC := C.Display_signal_connect_monitor_removed(instance, C.gpointer(uintptr(signalDisplayMonitorRemovedId)))
-	return int(retC)
-}
-
-/*
-DisconnectMonitorRemoved disconnects a callback from the 'monitor-removed' signal for the Display.
-
-The connectionID should be a value returned from a call to ConnectMonitorRemoved.
-*/
-func (recv *Display) DisconnectMonitorRemoved(connectionID int) {
-	signalDisplayMonitorRemovedLock.Lock()
-	defer signalDisplayMonitorRemovedLock.Unlock()
-
-	_, exists := signalDisplayMonitorRemovedMap[connectionID]
-	if !exists {
-		return
-	}
-
-	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
-	delete(signalDisplayMonitorRemovedMap, connectionID)
-}
-
-//export Display_monitorRemovedHandler
-func Display_monitorRemovedHandler() {
-	fmt.Println("cb")
-}
+// Unsupported signal 'monitor-removed' for Display : unsupported parameter monitor : type Monitor :
 
 // GetMonitor is a wrapper around the C function gdk_display_get_monitor.
 func (recv *Display) GetMonitor(monitorNum int32) *Monitor {
@@ -595,53 +421,7 @@ func (recv *Seat) GetDisplay() *Display {
 	return retGo
 }
 
-var signalWindowMovedToRectId int
-var signalWindowMovedToRectMap = make(map[int]WindowSignalMovedToRectCallback)
-var signalWindowMovedToRectLock sync.Mutex
-
-// WindowSignalMovedToRectCallback is a callback function for a 'moved-to-rect' signal emitted from a Window.
-type WindowSignalMovedToRectCallback func(flippedRect uintptr, finalRect uintptr, flippedX bool, flippedY bool)
-
-/*
-ConnectMovedToRect connects the callback to the 'moved-to-rect' signal for the Window.
-
-The returned value represents the connection, and may be passed to DisconnectMovedToRect to remove it.
-*/
-func (recv *Window) ConnectMovedToRect(callback WindowSignalMovedToRectCallback) int {
-	signalWindowMovedToRectLock.Lock()
-	defer signalWindowMovedToRectLock.Unlock()
-
-	signalWindowMovedToRectId++
-	signalWindowMovedToRectMap[signalWindowMovedToRectId] = callback
-
-	instance := C.gpointer(recv.Object().ToC())
-	retC := C.Window_signal_connect_moved_to_rect(instance, C.gpointer(uintptr(signalWindowMovedToRectId)))
-	return int(retC)
-}
-
-/*
-DisconnectMovedToRect disconnects a callback from the 'moved-to-rect' signal for the Window.
-
-The connectionID should be a value returned from a call to ConnectMovedToRect.
-*/
-func (recv *Window) DisconnectMovedToRect(connectionID int) {
-	signalWindowMovedToRectLock.Lock()
-	defer signalWindowMovedToRectLock.Unlock()
-
-	_, exists := signalWindowMovedToRectMap[connectionID]
-	if !exists {
-		return
-	}
-
-	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
-	delete(signalWindowMovedToRectMap, connectionID)
-}
-
-//export Window_movedToRectHandler
-func Window_movedToRectHandler() {
-	fmt.Println("cb")
-}
+// Unsupported signal 'moved-to-rect' for Window : unsupported parameter flipped_rect : type gpointer :
 
 // BeginDrawFrame is a wrapper around the C function gdk_window_begin_draw_frame.
 func (recv *Window) BeginDrawFrame(region *cairo.Region) *DrawingContext {

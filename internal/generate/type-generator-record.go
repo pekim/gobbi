@@ -41,6 +41,10 @@ func (t *TypeGeneratorRecord) isSupportedAsParam(direction string) (supported bo
 	return true, ""
 }
 
+func (t *TypeGeneratorRecord) isSupportedAsParamC() (supported bool, reason string) {
+	return false, ""
+}
+
 func (t *TypeGeneratorRecord) isSupportedAsReturnValue() (supported bool, reason string) {
 	if t.record.Blacklist {
 		return false, fmt.Sprintf("Blacklisted record : %s", t.record.CType)
@@ -63,6 +67,9 @@ func (t *TypeGeneratorRecord) generateDeclaration(g *jen.Group, goVarName string
 		Id(goVarName).
 		Op("*").
 		Do(t.typ.qname.generate)
+}
+
+func (t *TypeGeneratorRecord) generateDeclarationC(g *jen.Group, goVarName string) {
 }
 
 func (t *TypeGeneratorRecord) generateParamCallArgument(g *jen.Group, cVarName string) {

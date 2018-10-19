@@ -27,6 +27,10 @@ func (t *TypeGeneratorEnumeration) isSupportedAsParam(direction string) (support
 	return true, ""
 }
 
+func (t *TypeGeneratorEnumeration) isSupportedAsParamC() (supported bool, reason string) {
+	return false, ""
+}
+
 func (t *TypeGeneratorEnumeration) isSupportedAsField() (supported bool, reason string) {
 	return true, ""
 }
@@ -43,6 +47,9 @@ func (t *TypeGeneratorEnumeration) generateDeclaration(g *jen.Group, goVarName s
 	g.
 		Id(goVarName).
 		Do(t.typ.qname.generate)
+}
+
+func (t *TypeGeneratorEnumeration) generateDeclarationC(g *jen.Group, goVarName string) {
 }
 
 func (t *TypeGeneratorEnumeration) generateParamCallArgument(g *jen.Group, cVarName string) {

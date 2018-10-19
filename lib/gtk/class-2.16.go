@@ -4,10 +4,8 @@
 package gtk
 
 import (
-	"fmt"
 	gdk "github.com/pekim/gobbi/lib/gdk"
 	gdkpixbuf "github.com/pekim/gobbi/lib/gdkpixbuf"
-	"sync"
 	"unsafe"
 )
 
@@ -16,51 +14,6 @@ import (
 // #include <gtk/gtk.h>
 // #include <gtk/gtkx.h>
 // #include <stdlib.h>
-/*
-
-	void Entry_iconPressHandler();
-
-	static gulong Entry_signal_connect_icon_press(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "icon-press", Entry_iconPressHandler, data);
-	}
-
-*/
-/*
-
-	void Entry_iconReleaseHandler();
-
-	static gulong Entry_signal_connect_icon_release(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "icon-release", Entry_iconReleaseHandler, data);
-	}
-
-*/
-/*
-
-	void StatusIcon_queryTooltipHandler();
-
-	static gulong StatusIcon_signal_connect_query_tooltip(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "query-tooltip", StatusIcon_queryTooltipHandler, data);
-	}
-
-*/
-/*
-
-	void StatusIcon_scrollEventHandler();
-
-	static gulong StatusIcon_signal_connect_scroll_event(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "scroll-event", StatusIcon_scrollEventHandler, data);
-	}
-
-*/
-/*
-
-	void TextBuffer_pasteDoneHandler();
-
-	static gulong TextBuffer_signal_connect_paste_done(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "paste-done", TextBuffer_pasteDoneHandler, data);
-	}
-
-*/
 import "C"
 
 // BlockActivate is a wrapper around the C function gtk_action_block_activate.
@@ -227,25 +180,9 @@ func (recv *Action) UnblockActivate() {
 
 // Unsupported : gtk_app_chooser_dialog_new : unsupported parameter file : no type generator for Gio.File, GFile*
 
-// Unsupported signal 'application-activated' for AppChooserWidget : unsupported parameter application : no type generator for Gio.AppInfo,
-
-// Unsupported signal 'application-selected' for AppChooserWidget : unsupported parameter application : no type generator for Gio.AppInfo,
-
-// Unsupported signal 'populate-popup' for AppChooserWidget : unsupported parameter application : no type generator for Gio.AppInfo,
-
 // Unsupported : gtk_button_new_from_icon_name : unsupported parameter size : no type generator for gint, GtkIconSize
 
-// Unsupported signal 'add-editable' for CellArea : unsupported parameter editable : no type generator for CellEditable,
-
-// Unsupported signal 'apply-attributes' for CellArea : unsupported parameter model : no type generator for TreeModel,
-
-// Unsupported signal 'remove-editable' for CellArea : unsupported parameter editable : no type generator for CellEditable,
-
-// Unsupported signal 'editing-started' for CellRenderer : unsupported parameter editable : no type generator for CellEditable,
-
 // Unsupported : gtk_cell_view_get_model : no return generator
-
-// Unsupported signal 'format-entry-text' for ComboBox : return value utf8 :
 
 // Unsupported : gtk_combo_box_new_with_model : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
 
@@ -253,101 +190,9 @@ func (recv *Action) UnblockActivate() {
 
 // Unsupported : gtk_dialog_new_with_buttons : unsupported parameter ... : varargs
 
-var signalEntryIconPressId int
-var signalEntryIconPressMap = make(map[int]EntrySignalIconPressCallback)
-var signalEntryIconPressLock sync.Mutex
+// Unsupported signal 'icon-press' for Entry : unsupported parameter icon_pos : type EntryIconPosition :
 
-// EntrySignalIconPressCallback is a callback function for a 'icon-press' signal emitted from a Entry.
-type EntrySignalIconPressCallback func(iconPos EntryIconPosition, event *gdk.EventButton)
-
-/*
-ConnectIconPress connects the callback to the 'icon-press' signal for the Entry.
-
-The returned value represents the connection, and may be passed to DisconnectIconPress to remove it.
-*/
-func (recv *Entry) ConnectIconPress(callback EntrySignalIconPressCallback) int {
-	signalEntryIconPressLock.Lock()
-	defer signalEntryIconPressLock.Unlock()
-
-	signalEntryIconPressId++
-	signalEntryIconPressMap[signalEntryIconPressId] = callback
-
-	instance := C.gpointer(recv.Object().ToC())
-	retC := C.Entry_signal_connect_icon_press(instance, C.gpointer(uintptr(signalEntryIconPressId)))
-	return int(retC)
-}
-
-/*
-DisconnectIconPress disconnects a callback from the 'icon-press' signal for the Entry.
-
-The connectionID should be a value returned from a call to ConnectIconPress.
-*/
-func (recv *Entry) DisconnectIconPress(connectionID int) {
-	signalEntryIconPressLock.Lock()
-	defer signalEntryIconPressLock.Unlock()
-
-	_, exists := signalEntryIconPressMap[connectionID]
-	if !exists {
-		return
-	}
-
-	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
-	delete(signalEntryIconPressMap, connectionID)
-}
-
-//export Entry_iconPressHandler
-func Entry_iconPressHandler() {
-	fmt.Println("cb")
-}
-
-var signalEntryIconReleaseId int
-var signalEntryIconReleaseMap = make(map[int]EntrySignalIconReleaseCallback)
-var signalEntryIconReleaseLock sync.Mutex
-
-// EntrySignalIconReleaseCallback is a callback function for a 'icon-release' signal emitted from a Entry.
-type EntrySignalIconReleaseCallback func(iconPos EntryIconPosition, event *gdk.EventButton)
-
-/*
-ConnectIconRelease connects the callback to the 'icon-release' signal for the Entry.
-
-The returned value represents the connection, and may be passed to DisconnectIconRelease to remove it.
-*/
-func (recv *Entry) ConnectIconRelease(callback EntrySignalIconReleaseCallback) int {
-	signalEntryIconReleaseLock.Lock()
-	defer signalEntryIconReleaseLock.Unlock()
-
-	signalEntryIconReleaseId++
-	signalEntryIconReleaseMap[signalEntryIconReleaseId] = callback
-
-	instance := C.gpointer(recv.Object().ToC())
-	retC := C.Entry_signal_connect_icon_release(instance, C.gpointer(uintptr(signalEntryIconReleaseId)))
-	return int(retC)
-}
-
-/*
-DisconnectIconRelease disconnects a callback from the 'icon-release' signal for the Entry.
-
-The connectionID should be a value returned from a call to ConnectIconRelease.
-*/
-func (recv *Entry) DisconnectIconRelease(connectionID int) {
-	signalEntryIconReleaseLock.Lock()
-	defer signalEntryIconReleaseLock.Unlock()
-
-	_, exists := signalEntryIconReleaseMap[connectionID]
-	if !exists {
-		return
-	}
-
-	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
-	delete(signalEntryIconReleaseMap, connectionID)
-}
-
-//export Entry_iconReleaseHandler
-func Entry_iconReleaseHandler() {
-	fmt.Println("cb")
-}
+// Unsupported signal 'icon-release' for Entry : unsupported parameter icon_pos : type EntryIconPosition :
 
 // GetCurrentIconDragSource is a wrapper around the C function gtk_entry_get_current_icon_drag_source.
 func (recv *Entry) GetCurrentIconDragSource() int32 {
@@ -599,10 +444,6 @@ func (recv *Entry) UnsetInvisibleChar() {
 	return
 }
 
-// Unsupported signal 'cursor-on-match' for EntryCompletion : unsupported parameter model : no type generator for TreeModel,
-
-// Unsupported signal 'match-selected' for EntryCompletion : unsupported parameter model : no type generator for TreeModel,
-
 // Unsupported : EntryIconAccessible : no CType
 
 // Unsupported : gtk_file_chooser_dialog_new : unsupported parameter ... : varargs
@@ -728,21 +569,7 @@ func (recv *MenuItem) SetUseUnderline(setting bool) {
 
 // Unsupported : gtk_message_dialog_new_with_markup : unsupported parameter ... : varargs
 
-// Unsupported signal 'get-child-position' for Overlay : unsupported parameter allocation : Blacklisted record : GdkRectangle
-
 // Unsupported : gtk_page_setup_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
-
-// Unsupported signal 'drag-action-ask' for PlacesSidebar : return value gint :
-
-// Unsupported signal 'drag-action-requested' for PlacesSidebar : unsupported parameter dest_file : no type generator for Gio.File,
-
-// Unsupported signal 'drag-perform-drop' for PlacesSidebar : unsupported parameter dest_file : no type generator for Gio.File,
-
-// Unsupported signal 'open-location' for PlacesSidebar : unsupported parameter location : no type generator for Gio.File,
-
-// Unsupported signal 'populate-popup' for PlacesSidebar : unsupported parameter selected_item : no type generator for Gio.File,
-
-// Unsupported signal 'preview' for PrintOperation : unsupported parameter preview : no type generator for PrintOperationPreview,
 
 // DrawPageFinish is a wrapper around the C function gtk_print_operation_draw_page_finish.
 func (recv *PrintOperation) DrawPageFinish() {
@@ -808,8 +635,6 @@ func (recv *PrintSettings) SetResolutionXy(resolutionX int32, resolutionY int32)
 
 // Unsupported : gtk_recent_chooser_dialog_new_for_manager : unsupported parameter ... : varargs
 
-// Unsupported signal 'format-value' for Scale : return value utf8 :
-
 // AddMark is a wrapper around the C function gtk_scale_add_mark.
 func (recv *Scale) AddMark(value float64, position PositionType, markup string) {
 	c_value := (C.gdouble)(value)
@@ -833,103 +658,9 @@ func (recv *Scale) ClearMarks() {
 
 // Unsupported : gtk_scale_button_new : unsupported parameter size : no type generator for gint, GtkIconSize
 
-// Unsupported signal 'input' for SpinButton : return value gint :
+// Unsupported signal 'query-tooltip' for StatusIcon : unsupported parameter x : type gint :
 
-var signalStatusIconQueryTooltipId int
-var signalStatusIconQueryTooltipMap = make(map[int]StatusIconSignalQueryTooltipCallback)
-var signalStatusIconQueryTooltipLock sync.Mutex
-
-// StatusIconSignalQueryTooltipCallback is a callback function for a 'query-tooltip' signal emitted from a StatusIcon.
-type StatusIconSignalQueryTooltipCallback func(x int32, y int32, keyboardMode bool, tooltip *Tooltip) bool
-
-/*
-ConnectQueryTooltip connects the callback to the 'query-tooltip' signal for the StatusIcon.
-
-The returned value represents the connection, and may be passed to DisconnectQueryTooltip to remove it.
-*/
-func (recv *StatusIcon) ConnectQueryTooltip(callback StatusIconSignalQueryTooltipCallback) int {
-	signalStatusIconQueryTooltipLock.Lock()
-	defer signalStatusIconQueryTooltipLock.Unlock()
-
-	signalStatusIconQueryTooltipId++
-	signalStatusIconQueryTooltipMap[signalStatusIconQueryTooltipId] = callback
-
-	instance := C.gpointer(recv.Object().ToC())
-	retC := C.StatusIcon_signal_connect_query_tooltip(instance, C.gpointer(uintptr(signalStatusIconQueryTooltipId)))
-	return int(retC)
-}
-
-/*
-DisconnectQueryTooltip disconnects a callback from the 'query-tooltip' signal for the StatusIcon.
-
-The connectionID should be a value returned from a call to ConnectQueryTooltip.
-*/
-func (recv *StatusIcon) DisconnectQueryTooltip(connectionID int) {
-	signalStatusIconQueryTooltipLock.Lock()
-	defer signalStatusIconQueryTooltipLock.Unlock()
-
-	_, exists := signalStatusIconQueryTooltipMap[connectionID]
-	if !exists {
-		return
-	}
-
-	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
-	delete(signalStatusIconQueryTooltipMap, connectionID)
-}
-
-//export StatusIcon_queryTooltipHandler
-func StatusIcon_queryTooltipHandler() C.boolean {
-	fmt.Println("cb")
-}
-
-var signalStatusIconScrollEventId int
-var signalStatusIconScrollEventMap = make(map[int]StatusIconSignalScrollEventCallback)
-var signalStatusIconScrollEventLock sync.Mutex
-
-// StatusIconSignalScrollEventCallback is a callback function for a 'scroll-event' signal emitted from a StatusIcon.
-type StatusIconSignalScrollEventCallback func(event *gdk.EventScroll) bool
-
-/*
-ConnectScrollEvent connects the callback to the 'scroll-event' signal for the StatusIcon.
-
-The returned value represents the connection, and may be passed to DisconnectScrollEvent to remove it.
-*/
-func (recv *StatusIcon) ConnectScrollEvent(callback StatusIconSignalScrollEventCallback) int {
-	signalStatusIconScrollEventLock.Lock()
-	defer signalStatusIconScrollEventLock.Unlock()
-
-	signalStatusIconScrollEventId++
-	signalStatusIconScrollEventMap[signalStatusIconScrollEventId] = callback
-
-	instance := C.gpointer(recv.Object().ToC())
-	retC := C.StatusIcon_signal_connect_scroll_event(instance, C.gpointer(uintptr(signalStatusIconScrollEventId)))
-	return int(retC)
-}
-
-/*
-DisconnectScrollEvent disconnects a callback from the 'scroll-event' signal for the StatusIcon.
-
-The connectionID should be a value returned from a call to ConnectScrollEvent.
-*/
-func (recv *StatusIcon) DisconnectScrollEvent(connectionID int) {
-	signalStatusIconScrollEventLock.Lock()
-	defer signalStatusIconScrollEventLock.Unlock()
-
-	_, exists := signalStatusIconScrollEventMap[connectionID]
-	if !exists {
-		return
-	}
-
-	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
-	delete(signalStatusIconScrollEventMap, connectionID)
-}
-
-//export StatusIcon_scrollEventHandler
-func StatusIcon_scrollEventHandler() C.boolean {
-	fmt.Println("cb")
-}
+// Unsupported signal 'scroll-event' for StatusIcon : unsupported parameter event : type Gdk.EventScroll :
 
 // Unsupported : gtk_status_icon_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon, GIcon*
 
@@ -995,55 +726,7 @@ func (recv *StatusIcon) SetTooltipText(text string) {
 
 // Unsupported : gtk_style_get_valist : unsupported parameter widget_type : no type generator for GType, GType
 
-var signalTextBufferPasteDoneId int
-var signalTextBufferPasteDoneMap = make(map[int]TextBufferSignalPasteDoneCallback)
-var signalTextBufferPasteDoneLock sync.Mutex
-
-// TextBufferSignalPasteDoneCallback is a callback function for a 'paste-done' signal emitted from a TextBuffer.
-type TextBufferSignalPasteDoneCallback func(clipboard *Clipboard)
-
-/*
-ConnectPasteDone connects the callback to the 'paste-done' signal for the TextBuffer.
-
-The returned value represents the connection, and may be passed to DisconnectPasteDone to remove it.
-*/
-func (recv *TextBuffer) ConnectPasteDone(callback TextBufferSignalPasteDoneCallback) int {
-	signalTextBufferPasteDoneLock.Lock()
-	defer signalTextBufferPasteDoneLock.Unlock()
-
-	signalTextBufferPasteDoneId++
-	signalTextBufferPasteDoneMap[signalTextBufferPasteDoneId] = callback
-
-	instance := C.gpointer(recv.Object().ToC())
-	retC := C.TextBuffer_signal_connect_paste_done(instance, C.gpointer(uintptr(signalTextBufferPasteDoneId)))
-	return int(retC)
-}
-
-/*
-DisconnectPasteDone disconnects a callback from the 'paste-done' signal for the TextBuffer.
-
-The connectionID should be a value returned from a call to ConnectPasteDone.
-*/
-func (recv *TextBuffer) DisconnectPasteDone(connectionID int) {
-	signalTextBufferPasteDoneLock.Lock()
-	defer signalTextBufferPasteDoneLock.Unlock()
-
-	_, exists := signalTextBufferPasteDoneMap[connectionID]
-	if !exists {
-		return
-	}
-
-	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
-	delete(signalTextBufferPasteDoneMap, connectionID)
-}
-
-//export TextBuffer_pasteDoneHandler
-func TextBuffer_pasteDoneHandler() {
-	fmt.Println("cb")
-}
-
-// Unsupported signal 'event' for TextTag : unsupported parameter event : no type generator for Gdk.Event,
+// Unsupported signal 'paste-done' for TextBuffer : unsupported parameter clipboard : type Clipboard :
 
 // Unsupported : gtk_tree_store_new : unsupported parameter ... : varargs
 
@@ -1052,19 +735,5 @@ func TextBuffer_pasteDoneHandler() {
 // Unsupported : gtk_tree_view_new_with_model : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
 
 // Unsupported : gtk_tree_view_column_new_with_attributes : unsupported parameter ... : varargs
-
-// Unsupported signal 'child-notify' for Widget : unsupported parameter child_property : Blacklisted record : GParamSpec
-
-// Unsupported signal 'delete-event' for Widget : unsupported parameter event : no type generator for Gdk.Event,
-
-// Unsupported signal 'destroy-event' for Widget : unsupported parameter event : no type generator for Gdk.Event,
-
-// Unsupported signal 'event' for Widget : unsupported parameter event : no type generator for Gdk.Event,
-
-// Unsupported signal 'event-after' for Widget : unsupported parameter event : no type generator for Gdk.Event,
-
-// Unsupported signal 'size-allocate' for Widget : unsupported parameter allocation : Blacklisted record : GdkRectangle
-
-// Unsupported signal 'touch-event' for Widget : unsupported parameter object : no type generator for Gdk.Event,
 
 // Unsupported : gtk_widget_new : unsupported parameter type : no type generator for GType, GType

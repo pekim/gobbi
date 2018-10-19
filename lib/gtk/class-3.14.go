@@ -28,78 +28,6 @@ import (
 */
 /*
 
-	void Gesture_beginHandler();
-
-	static gulong Gesture_signal_connect_begin(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "begin", Gesture_beginHandler, data);
-	}
-
-*/
-/*
-
-	void Gesture_cancelHandler();
-
-	static gulong Gesture_signal_connect_cancel(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "cancel", Gesture_cancelHandler, data);
-	}
-
-*/
-/*
-
-	void Gesture_endHandler();
-
-	static gulong Gesture_signal_connect_end(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "end", Gesture_endHandler, data);
-	}
-
-*/
-/*
-
-	void Gesture_sequenceStateChangedHandler();
-
-	static gulong Gesture_signal_connect_sequence_state_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "sequence-state-changed", Gesture_sequenceStateChangedHandler, data);
-	}
-
-*/
-/*
-
-	void Gesture_updateHandler();
-
-	static gulong Gesture_signal_connect_update(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "update", Gesture_updateHandler, data);
-	}
-
-*/
-/*
-
-	void GestureDrag_dragBeginHandler();
-
-	static gulong GestureDrag_signal_connect_drag_begin(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "drag-begin", GestureDrag_dragBeginHandler, data);
-	}
-
-*/
-/*
-
-	void GestureDrag_dragEndHandler();
-
-	static gulong GestureDrag_signal_connect_drag_end(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "drag-end", GestureDrag_dragEndHandler, data);
-	}
-
-*/
-/*
-
-	void GestureDrag_dragUpdateHandler();
-
-	static gulong GestureDrag_signal_connect_drag_update(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "drag-update", GestureDrag_dragUpdateHandler, data);
-	}
-
-*/
-/*
-
 	void GestureLongPress_cancelledHandler();
 
 	static gulong GestureLongPress_signal_connect_cancelled(gpointer instance, gpointer data) {
@@ -109,73 +37,10 @@ import (
 */
 /*
 
-	void GestureLongPress_pressedHandler();
-
-	static gulong GestureLongPress_signal_connect_pressed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "pressed", GestureLongPress_pressedHandler, data);
-	}
-
-*/
-/*
-
-	void GestureMultiPress_pressedHandler();
-
-	static gulong GestureMultiPress_signal_connect_pressed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "pressed", GestureMultiPress_pressedHandler, data);
-	}
-
-*/
-/*
-
-	void GestureMultiPress_releasedHandler();
-
-	static gulong GestureMultiPress_signal_connect_released(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "released", GestureMultiPress_releasedHandler, data);
-	}
-
-*/
-/*
-
 	void GestureMultiPress_stoppedHandler();
 
 	static gulong GestureMultiPress_signal_connect_stopped(gpointer instance, gpointer data) {
 		return g_signal_connect(instance, "stopped", GestureMultiPress_stoppedHandler, data);
-	}
-
-*/
-/*
-
-	void GesturePan_panHandler();
-
-	static gulong GesturePan_signal_connect_pan(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "pan", GesturePan_panHandler, data);
-	}
-
-*/
-/*
-
-	void GestureRotate_angleChangedHandler();
-
-	static gulong GestureRotate_signal_connect_angle_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "angle-changed", GestureRotate_angleChangedHandler, data);
-	}
-
-*/
-/*
-
-	void GestureSwipe_swipeHandler();
-
-	static gulong GestureSwipe_signal_connect_swipe(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "swipe", GestureSwipe_swipeHandler, data);
-	}
-
-*/
-/*
-
-	void GestureZoom_scaleChangedHandler();
-
-	static gulong GestureZoom_signal_connect_scale_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "scale-changed", GestureZoom_scaleChangedHandler, data);
 	}
 
 */
@@ -228,12 +93,6 @@ import "C"
 
 // Unsupported : gtk_app_chooser_dialog_new : unsupported parameter file : no type generator for Gio.File, GFile*
 
-// Unsupported signal 'application-activated' for AppChooserWidget : unsupported parameter application : no type generator for Gio.AppInfo,
-
-// Unsupported signal 'application-selected' for AppChooserWidget : unsupported parameter application : no type generator for Gio.AppInfo,
-
-// Unsupported signal 'populate-popup' for AppChooserWidget : unsupported parameter application : no type generator for Gio.AppInfo,
-
 // Unsupported : gtk_application_get_actions_for_accel : no return type
 
 // GetMenuById is a wrapper around the C function gtk_application_get_menu_by_id.
@@ -257,12 +116,6 @@ func (recv *Application) PrefersAppMenu() bool {
 
 // Unsupported : gtk_button_new_from_icon_name : unsupported parameter size : no type generator for gint, GtkIconSize
 
-// Unsupported signal 'add-editable' for CellArea : unsupported parameter editable : no type generator for CellEditable,
-
-// Unsupported signal 'apply-attributes' for CellArea : unsupported parameter model : no type generator for TreeModel,
-
-// Unsupported signal 'remove-editable' for CellArea : unsupported parameter editable : no type generator for CellEditable,
-
 // AttributeGetColumn is a wrapper around the C function gtk_cell_area_attribute_get_column.
 func (recv *CellArea) AttributeGetColumn(renderer *CellRenderer, attribute string) int32 {
 	c_renderer := (*C.GtkCellRenderer)(renderer.ToC())
@@ -276,19 +129,11 @@ func (recv *CellArea) AttributeGetColumn(renderer *CellRenderer, attribute strin
 	return retGo
 }
 
-// Unsupported signal 'editing-started' for CellRenderer : unsupported parameter editable : no type generator for CellEditable,
-
-// Unsupported signal 'format-entry-text' for ComboBox : return value utf8 :
-
 // Unsupported : gtk_combo_box_new_with_model : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
 
 // Unsupported : gtk_combo_box_new_with_model_and_entry : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
 
 // Unsupported : gtk_dialog_new_with_buttons : unsupported parameter ... : varargs
-
-// Unsupported signal 'cursor-on-match' for EntryCompletion : unsupported parameter model : no type generator for TreeModel,
-
-// Unsupported signal 'match-selected' for EntryCompletion : unsupported parameter model : no type generator for TreeModel,
 
 var signalEntryCompletionNoMatchesId int
 var signalEntryCompletionNoMatchesMap = make(map[int]EntryCompletionSignalNoMatchesCallback)
@@ -378,245 +223,15 @@ func (recv *EventController) SetPropagationPhase(phase PropagationPhase) {
 
 // Unsupported : gtk_file_filter_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
 
-var signalGestureBeginId int
-var signalGestureBeginMap = make(map[int]GestureSignalBeginCallback)
-var signalGestureBeginLock sync.Mutex
+// Unsupported signal 'begin' for Gesture : unsupported parameter sequence : type Gdk.EventSequence :
 
-// GestureSignalBeginCallback is a callback function for a 'begin' signal emitted from a Gesture.
-type GestureSignalBeginCallback func(sequence *gdk.EventSequence)
+// Unsupported signal 'cancel' for Gesture : unsupported parameter sequence : type Gdk.EventSequence :
 
-/*
-ConnectBegin connects the callback to the 'begin' signal for the Gesture.
+// Unsupported signal 'end' for Gesture : unsupported parameter sequence : type Gdk.EventSequence :
 
-The returned value represents the connection, and may be passed to DisconnectBegin to remove it.
-*/
-func (recv *Gesture) ConnectBegin(callback GestureSignalBeginCallback) int {
-	signalGestureBeginLock.Lock()
-	defer signalGestureBeginLock.Unlock()
+// Unsupported signal 'sequence-state-changed' for Gesture : unsupported parameter sequence : type Gdk.EventSequence :
 
-	signalGestureBeginId++
-	signalGestureBeginMap[signalGestureBeginId] = callback
-
-	instance := C.gpointer(recv.Object().ToC())
-	retC := C.Gesture_signal_connect_begin(instance, C.gpointer(uintptr(signalGestureBeginId)))
-	return int(retC)
-}
-
-/*
-DisconnectBegin disconnects a callback from the 'begin' signal for the Gesture.
-
-The connectionID should be a value returned from a call to ConnectBegin.
-*/
-func (recv *Gesture) DisconnectBegin(connectionID int) {
-	signalGestureBeginLock.Lock()
-	defer signalGestureBeginLock.Unlock()
-
-	_, exists := signalGestureBeginMap[connectionID]
-	if !exists {
-		return
-	}
-
-	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
-	delete(signalGestureBeginMap, connectionID)
-}
-
-//export Gesture_beginHandler
-func Gesture_beginHandler() {
-	fmt.Println("cb")
-}
-
-var signalGestureCancelId int
-var signalGestureCancelMap = make(map[int]GestureSignalCancelCallback)
-var signalGestureCancelLock sync.Mutex
-
-// GestureSignalCancelCallback is a callback function for a 'cancel' signal emitted from a Gesture.
-type GestureSignalCancelCallback func(sequence *gdk.EventSequence)
-
-/*
-ConnectCancel connects the callback to the 'cancel' signal for the Gesture.
-
-The returned value represents the connection, and may be passed to DisconnectCancel to remove it.
-*/
-func (recv *Gesture) ConnectCancel(callback GestureSignalCancelCallback) int {
-	signalGestureCancelLock.Lock()
-	defer signalGestureCancelLock.Unlock()
-
-	signalGestureCancelId++
-	signalGestureCancelMap[signalGestureCancelId] = callback
-
-	instance := C.gpointer(recv.Object().ToC())
-	retC := C.Gesture_signal_connect_cancel(instance, C.gpointer(uintptr(signalGestureCancelId)))
-	return int(retC)
-}
-
-/*
-DisconnectCancel disconnects a callback from the 'cancel' signal for the Gesture.
-
-The connectionID should be a value returned from a call to ConnectCancel.
-*/
-func (recv *Gesture) DisconnectCancel(connectionID int) {
-	signalGestureCancelLock.Lock()
-	defer signalGestureCancelLock.Unlock()
-
-	_, exists := signalGestureCancelMap[connectionID]
-	if !exists {
-		return
-	}
-
-	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
-	delete(signalGestureCancelMap, connectionID)
-}
-
-//export Gesture_cancelHandler
-func Gesture_cancelHandler() {
-	fmt.Println("cb")
-}
-
-var signalGestureEndId int
-var signalGestureEndMap = make(map[int]GestureSignalEndCallback)
-var signalGestureEndLock sync.Mutex
-
-// GestureSignalEndCallback is a callback function for a 'end' signal emitted from a Gesture.
-type GestureSignalEndCallback func(sequence *gdk.EventSequence)
-
-/*
-ConnectEnd connects the callback to the 'end' signal for the Gesture.
-
-The returned value represents the connection, and may be passed to DisconnectEnd to remove it.
-*/
-func (recv *Gesture) ConnectEnd(callback GestureSignalEndCallback) int {
-	signalGestureEndLock.Lock()
-	defer signalGestureEndLock.Unlock()
-
-	signalGestureEndId++
-	signalGestureEndMap[signalGestureEndId] = callback
-
-	instance := C.gpointer(recv.Object().ToC())
-	retC := C.Gesture_signal_connect_end(instance, C.gpointer(uintptr(signalGestureEndId)))
-	return int(retC)
-}
-
-/*
-DisconnectEnd disconnects a callback from the 'end' signal for the Gesture.
-
-The connectionID should be a value returned from a call to ConnectEnd.
-*/
-func (recv *Gesture) DisconnectEnd(connectionID int) {
-	signalGestureEndLock.Lock()
-	defer signalGestureEndLock.Unlock()
-
-	_, exists := signalGestureEndMap[connectionID]
-	if !exists {
-		return
-	}
-
-	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
-	delete(signalGestureEndMap, connectionID)
-}
-
-//export Gesture_endHandler
-func Gesture_endHandler() {
-	fmt.Println("cb")
-}
-
-var signalGestureSequenceStateChangedId int
-var signalGestureSequenceStateChangedMap = make(map[int]GestureSignalSequenceStateChangedCallback)
-var signalGestureSequenceStateChangedLock sync.Mutex
-
-// GestureSignalSequenceStateChangedCallback is a callback function for a 'sequence-state-changed' signal emitted from a Gesture.
-type GestureSignalSequenceStateChangedCallback func(sequence *gdk.EventSequence, state EventSequenceState)
-
-/*
-ConnectSequenceStateChanged connects the callback to the 'sequence-state-changed' signal for the Gesture.
-
-The returned value represents the connection, and may be passed to DisconnectSequenceStateChanged to remove it.
-*/
-func (recv *Gesture) ConnectSequenceStateChanged(callback GestureSignalSequenceStateChangedCallback) int {
-	signalGestureSequenceStateChangedLock.Lock()
-	defer signalGestureSequenceStateChangedLock.Unlock()
-
-	signalGestureSequenceStateChangedId++
-	signalGestureSequenceStateChangedMap[signalGestureSequenceStateChangedId] = callback
-
-	instance := C.gpointer(recv.Object().ToC())
-	retC := C.Gesture_signal_connect_sequence_state_changed(instance, C.gpointer(uintptr(signalGestureSequenceStateChangedId)))
-	return int(retC)
-}
-
-/*
-DisconnectSequenceStateChanged disconnects a callback from the 'sequence-state-changed' signal for the Gesture.
-
-The connectionID should be a value returned from a call to ConnectSequenceStateChanged.
-*/
-func (recv *Gesture) DisconnectSequenceStateChanged(connectionID int) {
-	signalGestureSequenceStateChangedLock.Lock()
-	defer signalGestureSequenceStateChangedLock.Unlock()
-
-	_, exists := signalGestureSequenceStateChangedMap[connectionID]
-	if !exists {
-		return
-	}
-
-	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
-	delete(signalGestureSequenceStateChangedMap, connectionID)
-}
-
-//export Gesture_sequenceStateChangedHandler
-func Gesture_sequenceStateChangedHandler() {
-	fmt.Println("cb")
-}
-
-var signalGestureUpdateId int
-var signalGestureUpdateMap = make(map[int]GestureSignalUpdateCallback)
-var signalGestureUpdateLock sync.Mutex
-
-// GestureSignalUpdateCallback is a callback function for a 'update' signal emitted from a Gesture.
-type GestureSignalUpdateCallback func(sequence *gdk.EventSequence)
-
-/*
-ConnectUpdate connects the callback to the 'update' signal for the Gesture.
-
-The returned value represents the connection, and may be passed to DisconnectUpdate to remove it.
-*/
-func (recv *Gesture) ConnectUpdate(callback GestureSignalUpdateCallback) int {
-	signalGestureUpdateLock.Lock()
-	defer signalGestureUpdateLock.Unlock()
-
-	signalGestureUpdateId++
-	signalGestureUpdateMap[signalGestureUpdateId] = callback
-
-	instance := C.gpointer(recv.Object().ToC())
-	retC := C.Gesture_signal_connect_update(instance, C.gpointer(uintptr(signalGestureUpdateId)))
-	return int(retC)
-}
-
-/*
-DisconnectUpdate disconnects a callback from the 'update' signal for the Gesture.
-
-The connectionID should be a value returned from a call to ConnectUpdate.
-*/
-func (recv *Gesture) DisconnectUpdate(connectionID int) {
-	signalGestureUpdateLock.Lock()
-	defer signalGestureUpdateLock.Unlock()
-
-	_, exists := signalGestureUpdateMap[connectionID]
-	if !exists {
-		return
-	}
-
-	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
-	delete(signalGestureUpdateMap, connectionID)
-}
-
-//export Gesture_updateHandler
-func Gesture_updateHandler() {
-	fmt.Println("cb")
-}
+// Unsupported signal 'update' for Gesture : unsupported parameter sequence : type Gdk.EventSequence :
 
 // Unsupported : gtk_gesture_get_bounding_box : unsupported parameter rect : Blacklisted record : GdkRectangle
 
@@ -787,149 +402,11 @@ func (recv *Gesture) Ungroup() {
 	return
 }
 
-var signalGestureDragDragBeginId int
-var signalGestureDragDragBeginMap = make(map[int]GestureDragSignalDragBeginCallback)
-var signalGestureDragDragBeginLock sync.Mutex
+// Unsupported signal 'drag-begin' for GestureDrag : unsupported parameter start_x : type gdouble :
 
-// GestureDragSignalDragBeginCallback is a callback function for a 'drag-begin' signal emitted from a GestureDrag.
-type GestureDragSignalDragBeginCallback func(startX float64, startY float64)
+// Unsupported signal 'drag-end' for GestureDrag : unsupported parameter offset_x : type gdouble :
 
-/*
-ConnectDragBegin connects the callback to the 'drag-begin' signal for the GestureDrag.
-
-The returned value represents the connection, and may be passed to DisconnectDragBegin to remove it.
-*/
-func (recv *GestureDrag) ConnectDragBegin(callback GestureDragSignalDragBeginCallback) int {
-	signalGestureDragDragBeginLock.Lock()
-	defer signalGestureDragDragBeginLock.Unlock()
-
-	signalGestureDragDragBeginId++
-	signalGestureDragDragBeginMap[signalGestureDragDragBeginId] = callback
-
-	instance := C.gpointer(recv.Object().ToC())
-	retC := C.GestureDrag_signal_connect_drag_begin(instance, C.gpointer(uintptr(signalGestureDragDragBeginId)))
-	return int(retC)
-}
-
-/*
-DisconnectDragBegin disconnects a callback from the 'drag-begin' signal for the GestureDrag.
-
-The connectionID should be a value returned from a call to ConnectDragBegin.
-*/
-func (recv *GestureDrag) DisconnectDragBegin(connectionID int) {
-	signalGestureDragDragBeginLock.Lock()
-	defer signalGestureDragDragBeginLock.Unlock()
-
-	_, exists := signalGestureDragDragBeginMap[connectionID]
-	if !exists {
-		return
-	}
-
-	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
-	delete(signalGestureDragDragBeginMap, connectionID)
-}
-
-//export GestureDrag_dragBeginHandler
-func GestureDrag_dragBeginHandler() {
-	fmt.Println("cb")
-}
-
-var signalGestureDragDragEndId int
-var signalGestureDragDragEndMap = make(map[int]GestureDragSignalDragEndCallback)
-var signalGestureDragDragEndLock sync.Mutex
-
-// GestureDragSignalDragEndCallback is a callback function for a 'drag-end' signal emitted from a GestureDrag.
-type GestureDragSignalDragEndCallback func(offsetX float64, offsetY float64)
-
-/*
-ConnectDragEnd connects the callback to the 'drag-end' signal for the GestureDrag.
-
-The returned value represents the connection, and may be passed to DisconnectDragEnd to remove it.
-*/
-func (recv *GestureDrag) ConnectDragEnd(callback GestureDragSignalDragEndCallback) int {
-	signalGestureDragDragEndLock.Lock()
-	defer signalGestureDragDragEndLock.Unlock()
-
-	signalGestureDragDragEndId++
-	signalGestureDragDragEndMap[signalGestureDragDragEndId] = callback
-
-	instance := C.gpointer(recv.Object().ToC())
-	retC := C.GestureDrag_signal_connect_drag_end(instance, C.gpointer(uintptr(signalGestureDragDragEndId)))
-	return int(retC)
-}
-
-/*
-DisconnectDragEnd disconnects a callback from the 'drag-end' signal for the GestureDrag.
-
-The connectionID should be a value returned from a call to ConnectDragEnd.
-*/
-func (recv *GestureDrag) DisconnectDragEnd(connectionID int) {
-	signalGestureDragDragEndLock.Lock()
-	defer signalGestureDragDragEndLock.Unlock()
-
-	_, exists := signalGestureDragDragEndMap[connectionID]
-	if !exists {
-		return
-	}
-
-	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
-	delete(signalGestureDragDragEndMap, connectionID)
-}
-
-//export GestureDrag_dragEndHandler
-func GestureDrag_dragEndHandler() {
-	fmt.Println("cb")
-}
-
-var signalGestureDragDragUpdateId int
-var signalGestureDragDragUpdateMap = make(map[int]GestureDragSignalDragUpdateCallback)
-var signalGestureDragDragUpdateLock sync.Mutex
-
-// GestureDragSignalDragUpdateCallback is a callback function for a 'drag-update' signal emitted from a GestureDrag.
-type GestureDragSignalDragUpdateCallback func(offsetX float64, offsetY float64)
-
-/*
-ConnectDragUpdate connects the callback to the 'drag-update' signal for the GestureDrag.
-
-The returned value represents the connection, and may be passed to DisconnectDragUpdate to remove it.
-*/
-func (recv *GestureDrag) ConnectDragUpdate(callback GestureDragSignalDragUpdateCallback) int {
-	signalGestureDragDragUpdateLock.Lock()
-	defer signalGestureDragDragUpdateLock.Unlock()
-
-	signalGestureDragDragUpdateId++
-	signalGestureDragDragUpdateMap[signalGestureDragDragUpdateId] = callback
-
-	instance := C.gpointer(recv.Object().ToC())
-	retC := C.GestureDrag_signal_connect_drag_update(instance, C.gpointer(uintptr(signalGestureDragDragUpdateId)))
-	return int(retC)
-}
-
-/*
-DisconnectDragUpdate disconnects a callback from the 'drag-update' signal for the GestureDrag.
-
-The connectionID should be a value returned from a call to ConnectDragUpdate.
-*/
-func (recv *GestureDrag) DisconnectDragUpdate(connectionID int) {
-	signalGestureDragDragUpdateLock.Lock()
-	defer signalGestureDragDragUpdateLock.Unlock()
-
-	_, exists := signalGestureDragDragUpdateMap[connectionID]
-	if !exists {
-		return
-	}
-
-	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
-	delete(signalGestureDragDragUpdateMap, connectionID)
-}
-
-//export GestureDrag_dragUpdateHandler
-func GestureDrag_dragUpdateHandler() {
-	fmt.Println("cb")
-}
+// Unsupported signal 'drag-update' for GestureDrag : unsupported parameter offset_x : type gdouble :
 
 // GestureDragNew is a wrapper around the C function gtk_gesture_drag_new.
 func GestureDragNew(widget *Widget) *GestureDrag {
@@ -1021,53 +498,7 @@ func GestureLongPress_cancelledHandler() {
 	fmt.Println("cb")
 }
 
-var signalGestureLongPressPressedId int
-var signalGestureLongPressPressedMap = make(map[int]GestureLongPressSignalPressedCallback)
-var signalGestureLongPressPressedLock sync.Mutex
-
-// GestureLongPressSignalPressedCallback is a callback function for a 'pressed' signal emitted from a GestureLongPress.
-type GestureLongPressSignalPressedCallback func(x float64, y float64)
-
-/*
-ConnectPressed connects the callback to the 'pressed' signal for the GestureLongPress.
-
-The returned value represents the connection, and may be passed to DisconnectPressed to remove it.
-*/
-func (recv *GestureLongPress) ConnectPressed(callback GestureLongPressSignalPressedCallback) int {
-	signalGestureLongPressPressedLock.Lock()
-	defer signalGestureLongPressPressedLock.Unlock()
-
-	signalGestureLongPressPressedId++
-	signalGestureLongPressPressedMap[signalGestureLongPressPressedId] = callback
-
-	instance := C.gpointer(recv.Object().ToC())
-	retC := C.GestureLongPress_signal_connect_pressed(instance, C.gpointer(uintptr(signalGestureLongPressPressedId)))
-	return int(retC)
-}
-
-/*
-DisconnectPressed disconnects a callback from the 'pressed' signal for the GestureLongPress.
-
-The connectionID should be a value returned from a call to ConnectPressed.
-*/
-func (recv *GestureLongPress) DisconnectPressed(connectionID int) {
-	signalGestureLongPressPressedLock.Lock()
-	defer signalGestureLongPressPressedLock.Unlock()
-
-	_, exists := signalGestureLongPressPressedMap[connectionID]
-	if !exists {
-		return
-	}
-
-	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
-	delete(signalGestureLongPressPressedMap, connectionID)
-}
-
-//export GestureLongPress_pressedHandler
-func GestureLongPress_pressedHandler() {
-	fmt.Println("cb")
-}
+// Unsupported signal 'pressed' for GestureLongPress : unsupported parameter x : type gdouble :
 
 // GestureLongPressNew is a wrapper around the C function gtk_gesture_long_press_new.
 func GestureLongPressNew(widget *Widget) *GestureLongPress {
@@ -1079,101 +510,9 @@ func GestureLongPressNew(widget *Widget) *GestureLongPress {
 	return retGo
 }
 
-var signalGestureMultiPressPressedId int
-var signalGestureMultiPressPressedMap = make(map[int]GestureMultiPressSignalPressedCallback)
-var signalGestureMultiPressPressedLock sync.Mutex
+// Unsupported signal 'pressed' for GestureMultiPress : unsupported parameter n_press : type gint :
 
-// GestureMultiPressSignalPressedCallback is a callback function for a 'pressed' signal emitted from a GestureMultiPress.
-type GestureMultiPressSignalPressedCallback func(nPress int32, x float64, y float64)
-
-/*
-ConnectPressed connects the callback to the 'pressed' signal for the GestureMultiPress.
-
-The returned value represents the connection, and may be passed to DisconnectPressed to remove it.
-*/
-func (recv *GestureMultiPress) ConnectPressed(callback GestureMultiPressSignalPressedCallback) int {
-	signalGestureMultiPressPressedLock.Lock()
-	defer signalGestureMultiPressPressedLock.Unlock()
-
-	signalGestureMultiPressPressedId++
-	signalGestureMultiPressPressedMap[signalGestureMultiPressPressedId] = callback
-
-	instance := C.gpointer(recv.Object().ToC())
-	retC := C.GestureMultiPress_signal_connect_pressed(instance, C.gpointer(uintptr(signalGestureMultiPressPressedId)))
-	return int(retC)
-}
-
-/*
-DisconnectPressed disconnects a callback from the 'pressed' signal for the GestureMultiPress.
-
-The connectionID should be a value returned from a call to ConnectPressed.
-*/
-func (recv *GestureMultiPress) DisconnectPressed(connectionID int) {
-	signalGestureMultiPressPressedLock.Lock()
-	defer signalGestureMultiPressPressedLock.Unlock()
-
-	_, exists := signalGestureMultiPressPressedMap[connectionID]
-	if !exists {
-		return
-	}
-
-	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
-	delete(signalGestureMultiPressPressedMap, connectionID)
-}
-
-//export GestureMultiPress_pressedHandler
-func GestureMultiPress_pressedHandler() {
-	fmt.Println("cb")
-}
-
-var signalGestureMultiPressReleasedId int
-var signalGestureMultiPressReleasedMap = make(map[int]GestureMultiPressSignalReleasedCallback)
-var signalGestureMultiPressReleasedLock sync.Mutex
-
-// GestureMultiPressSignalReleasedCallback is a callback function for a 'released' signal emitted from a GestureMultiPress.
-type GestureMultiPressSignalReleasedCallback func(nPress int32, x float64, y float64)
-
-/*
-ConnectReleased connects the callback to the 'released' signal for the GestureMultiPress.
-
-The returned value represents the connection, and may be passed to DisconnectReleased to remove it.
-*/
-func (recv *GestureMultiPress) ConnectReleased(callback GestureMultiPressSignalReleasedCallback) int {
-	signalGestureMultiPressReleasedLock.Lock()
-	defer signalGestureMultiPressReleasedLock.Unlock()
-
-	signalGestureMultiPressReleasedId++
-	signalGestureMultiPressReleasedMap[signalGestureMultiPressReleasedId] = callback
-
-	instance := C.gpointer(recv.Object().ToC())
-	retC := C.GestureMultiPress_signal_connect_released(instance, C.gpointer(uintptr(signalGestureMultiPressReleasedId)))
-	return int(retC)
-}
-
-/*
-DisconnectReleased disconnects a callback from the 'released' signal for the GestureMultiPress.
-
-The connectionID should be a value returned from a call to ConnectReleased.
-*/
-func (recv *GestureMultiPress) DisconnectReleased(connectionID int) {
-	signalGestureMultiPressReleasedLock.Lock()
-	defer signalGestureMultiPressReleasedLock.Unlock()
-
-	_, exists := signalGestureMultiPressReleasedMap[connectionID]
-	if !exists {
-		return
-	}
-
-	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
-	delete(signalGestureMultiPressReleasedMap, connectionID)
-}
-
-//export GestureMultiPress_releasedHandler
-func GestureMultiPress_releasedHandler() {
-	fmt.Println("cb")
-}
+// Unsupported signal 'released' for GestureMultiPress : unsupported parameter n_press : type gint :
 
 var signalGestureMultiPressStoppedId int
 var signalGestureMultiPressStoppedMap = make(map[int]GestureMultiPressSignalStoppedCallback)
@@ -1237,53 +576,7 @@ func GestureMultiPressNew(widget *Widget) *GestureMultiPress {
 
 // Unsupported : gtk_gesture_multi_press_set_area : unsupported parameter rect : Blacklisted record : GdkRectangle
 
-var signalGesturePanPanId int
-var signalGesturePanPanMap = make(map[int]GesturePanSignalPanCallback)
-var signalGesturePanPanLock sync.Mutex
-
-// GesturePanSignalPanCallback is a callback function for a 'pan' signal emitted from a GesturePan.
-type GesturePanSignalPanCallback func(direction PanDirection, offset float64)
-
-/*
-ConnectPan connects the callback to the 'pan' signal for the GesturePan.
-
-The returned value represents the connection, and may be passed to DisconnectPan to remove it.
-*/
-func (recv *GesturePan) ConnectPan(callback GesturePanSignalPanCallback) int {
-	signalGesturePanPanLock.Lock()
-	defer signalGesturePanPanLock.Unlock()
-
-	signalGesturePanPanId++
-	signalGesturePanPanMap[signalGesturePanPanId] = callback
-
-	instance := C.gpointer(recv.Object().ToC())
-	retC := C.GesturePan_signal_connect_pan(instance, C.gpointer(uintptr(signalGesturePanPanId)))
-	return int(retC)
-}
-
-/*
-DisconnectPan disconnects a callback from the 'pan' signal for the GesturePan.
-
-The connectionID should be a value returned from a call to ConnectPan.
-*/
-func (recv *GesturePan) DisconnectPan(connectionID int) {
-	signalGesturePanPanLock.Lock()
-	defer signalGesturePanPanLock.Unlock()
-
-	_, exists := signalGesturePanPanMap[connectionID]
-	if !exists {
-		return
-	}
-
-	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
-	delete(signalGesturePanPanMap, connectionID)
-}
-
-//export GesturePan_panHandler
-func GesturePan_panHandler() {
-	fmt.Println("cb")
-}
+// Unsupported signal 'pan' for GesturePan : unsupported parameter direction : type PanDirection :
 
 // GesturePanNew is a wrapper around the C function gtk_gesture_pan_new.
 func GesturePanNew(widget *Widget, orientation Orientation) *GesturePan {
@@ -1314,53 +607,7 @@ func (recv *GesturePan) SetOrientation(orientation Orientation) {
 	return
 }
 
-var signalGestureRotateAngleChangedId int
-var signalGestureRotateAngleChangedMap = make(map[int]GestureRotateSignalAngleChangedCallback)
-var signalGestureRotateAngleChangedLock sync.Mutex
-
-// GestureRotateSignalAngleChangedCallback is a callback function for a 'angle-changed' signal emitted from a GestureRotate.
-type GestureRotateSignalAngleChangedCallback func(angle float64, angleDelta float64)
-
-/*
-ConnectAngleChanged connects the callback to the 'angle-changed' signal for the GestureRotate.
-
-The returned value represents the connection, and may be passed to DisconnectAngleChanged to remove it.
-*/
-func (recv *GestureRotate) ConnectAngleChanged(callback GestureRotateSignalAngleChangedCallback) int {
-	signalGestureRotateAngleChangedLock.Lock()
-	defer signalGestureRotateAngleChangedLock.Unlock()
-
-	signalGestureRotateAngleChangedId++
-	signalGestureRotateAngleChangedMap[signalGestureRotateAngleChangedId] = callback
-
-	instance := C.gpointer(recv.Object().ToC())
-	retC := C.GestureRotate_signal_connect_angle_changed(instance, C.gpointer(uintptr(signalGestureRotateAngleChangedId)))
-	return int(retC)
-}
-
-/*
-DisconnectAngleChanged disconnects a callback from the 'angle-changed' signal for the GestureRotate.
-
-The connectionID should be a value returned from a call to ConnectAngleChanged.
-*/
-func (recv *GestureRotate) DisconnectAngleChanged(connectionID int) {
-	signalGestureRotateAngleChangedLock.Lock()
-	defer signalGestureRotateAngleChangedLock.Unlock()
-
-	_, exists := signalGestureRotateAngleChangedMap[connectionID]
-	if !exists {
-		return
-	}
-
-	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
-	delete(signalGestureRotateAngleChangedMap, connectionID)
-}
-
-//export GestureRotate_angleChangedHandler
-func GestureRotate_angleChangedHandler() {
-	fmt.Println("cb")
-}
+// Unsupported signal 'angle-changed' for GestureRotate : unsupported parameter angle : type gdouble :
 
 // GestureRotateNew is a wrapper around the C function gtk_gesture_rotate_new.
 func GestureRotateNew(widget *Widget) *GestureRotate {
@@ -1449,53 +696,7 @@ func (recv *GestureSingle) SetTouchOnly(touchOnly bool) {
 	return
 }
 
-var signalGestureSwipeSwipeId int
-var signalGestureSwipeSwipeMap = make(map[int]GestureSwipeSignalSwipeCallback)
-var signalGestureSwipeSwipeLock sync.Mutex
-
-// GestureSwipeSignalSwipeCallback is a callback function for a 'swipe' signal emitted from a GestureSwipe.
-type GestureSwipeSignalSwipeCallback func(velocityX float64, velocityY float64)
-
-/*
-ConnectSwipe connects the callback to the 'swipe' signal for the GestureSwipe.
-
-The returned value represents the connection, and may be passed to DisconnectSwipe to remove it.
-*/
-func (recv *GestureSwipe) ConnectSwipe(callback GestureSwipeSignalSwipeCallback) int {
-	signalGestureSwipeSwipeLock.Lock()
-	defer signalGestureSwipeSwipeLock.Unlock()
-
-	signalGestureSwipeSwipeId++
-	signalGestureSwipeSwipeMap[signalGestureSwipeSwipeId] = callback
-
-	instance := C.gpointer(recv.Object().ToC())
-	retC := C.GestureSwipe_signal_connect_swipe(instance, C.gpointer(uintptr(signalGestureSwipeSwipeId)))
-	return int(retC)
-}
-
-/*
-DisconnectSwipe disconnects a callback from the 'swipe' signal for the GestureSwipe.
-
-The connectionID should be a value returned from a call to ConnectSwipe.
-*/
-func (recv *GestureSwipe) DisconnectSwipe(connectionID int) {
-	signalGestureSwipeSwipeLock.Lock()
-	defer signalGestureSwipeSwipeLock.Unlock()
-
-	_, exists := signalGestureSwipeSwipeMap[connectionID]
-	if !exists {
-		return
-	}
-
-	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
-	delete(signalGestureSwipeSwipeMap, connectionID)
-}
-
-//export GestureSwipe_swipeHandler
-func GestureSwipe_swipeHandler() {
-	fmt.Println("cb")
-}
+// Unsupported signal 'swipe' for GestureSwipe : unsupported parameter velocity_x : type gdouble :
 
 // GestureSwipeNew is a wrapper around the C function gtk_gesture_swipe_new.
 func GestureSwipeNew(widget *Widget) *GestureSwipe {
@@ -1523,53 +724,7 @@ func (recv *GestureSwipe) GetVelocity() (bool, float64, float64) {
 	return retGo, velocityX, velocityY
 }
 
-var signalGestureZoomScaleChangedId int
-var signalGestureZoomScaleChangedMap = make(map[int]GestureZoomSignalScaleChangedCallback)
-var signalGestureZoomScaleChangedLock sync.Mutex
-
-// GestureZoomSignalScaleChangedCallback is a callback function for a 'scale-changed' signal emitted from a GestureZoom.
-type GestureZoomSignalScaleChangedCallback func(scale float64)
-
-/*
-ConnectScaleChanged connects the callback to the 'scale-changed' signal for the GestureZoom.
-
-The returned value represents the connection, and may be passed to DisconnectScaleChanged to remove it.
-*/
-func (recv *GestureZoom) ConnectScaleChanged(callback GestureZoomSignalScaleChangedCallback) int {
-	signalGestureZoomScaleChangedLock.Lock()
-	defer signalGestureZoomScaleChangedLock.Unlock()
-
-	signalGestureZoomScaleChangedId++
-	signalGestureZoomScaleChangedMap[signalGestureZoomScaleChangedId] = callback
-
-	instance := C.gpointer(recv.Object().ToC())
-	retC := C.GestureZoom_signal_connect_scale_changed(instance, C.gpointer(uintptr(signalGestureZoomScaleChangedId)))
-	return int(retC)
-}
-
-/*
-DisconnectScaleChanged disconnects a callback from the 'scale-changed' signal for the GestureZoom.
-
-The connectionID should be a value returned from a call to ConnectScaleChanged.
-*/
-func (recv *GestureZoom) DisconnectScaleChanged(connectionID int) {
-	signalGestureZoomScaleChangedLock.Lock()
-	defer signalGestureZoomScaleChangedLock.Unlock()
-
-	_, exists := signalGestureZoomScaleChangedMap[connectionID]
-	if !exists {
-		return
-	}
-
-	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
-	delete(signalGestureZoomScaleChangedMap, connectionID)
-}
-
-//export GestureZoom_scaleChangedHandler
-func GestureZoom_scaleChangedHandler() {
-	fmt.Println("cb")
-}
+// Unsupported signal 'scale-changed' for GestureZoom : unsupported parameter scale : type gdouble :
 
 // GestureZoomNew is a wrapper around the C function gtk_gesture_zoom_new.
 func GestureZoomNew(widget *Widget) *GestureZoom {
@@ -1840,19 +995,7 @@ func (recv *ListBoxRow) SetSelectable(selectable bool) {
 
 // Unsupported : gtk_message_dialog_new_with_markup : unsupported parameter ... : varargs
 
-// Unsupported signal 'get-child-position' for Overlay : unsupported parameter allocation : Blacklisted record : GdkRectangle
-
 // Unsupported : gtk_page_setup_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
-
-// Unsupported signal 'drag-action-ask' for PlacesSidebar : return value gint :
-
-// Unsupported signal 'drag-action-requested' for PlacesSidebar : unsupported parameter dest_file : no type generator for Gio.File,
-
-// Unsupported signal 'drag-perform-drop' for PlacesSidebar : unsupported parameter dest_file : no type generator for Gio.File,
-
-// Unsupported signal 'open-location' for PlacesSidebar : unsupported parameter location : no type generator for Gio.File,
-
-// Unsupported signal 'populate-popup' for PlacesSidebar : unsupported parameter selected_item : no type generator for Gio.File,
 
 var signalPlacesSidebarShowEnterLocationId int
 var signalPlacesSidebarShowEnterLocationMap = make(map[int]PlacesSidebarSignalShowEnterLocationCallback)
@@ -1920,19 +1063,13 @@ func (recv *PlacesSidebar) SetShowEnterLocation(showEnterLocation bool) {
 	return
 }
 
-// Unsupported signal 'preview' for PrintOperation : unsupported parameter preview : no type generator for PrintOperationPreview,
-
 // Unsupported : gtk_print_settings_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
 
 // Unsupported : gtk_recent_chooser_dialog_new : unsupported parameter ... : varargs
 
 // Unsupported : gtk_recent_chooser_dialog_new_for_manager : unsupported parameter ... : varargs
 
-// Unsupported signal 'format-value' for Scale : return value utf8 :
-
 // Unsupported : gtk_scale_button_new : unsupported parameter size : no type generator for gint, GtkIconSize
-
-// Unsupported signal 'input' for SpinButton : return value gint :
 
 // Unsupported : gtk_status_icon_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon, GIcon*
 
@@ -1980,7 +1117,7 @@ func (recv *Switch) DisconnectStateSet(connectionID int) {
 }
 
 //export Switch_stateSetHandler
-func Switch_stateSetHandler() C.boolean {
+func Switch_stateSetHandler(state C.gboolean) C.gboolean {
 	fmt.Println("cb")
 }
 
@@ -2002,8 +1139,6 @@ func (recv *Switch) SetState(state bool) {
 	return
 }
 
-// Unsupported signal 'event' for TextTag : unsupported parameter event : no type generator for Gdk.Event,
-
 // Unsupported : gtk_tree_store_new : unsupported parameter ... : varargs
 
 // Unsupported : gtk_tree_store_newv : unsupported parameter types : no param type
@@ -2011,20 +1146,6 @@ func (recv *Switch) SetState(state bool) {
 // Unsupported : gtk_tree_view_new_with_model : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
 
 // Unsupported : gtk_tree_view_column_new_with_attributes : unsupported parameter ... : varargs
-
-// Unsupported signal 'child-notify' for Widget : unsupported parameter child_property : Blacklisted record : GParamSpec
-
-// Unsupported signal 'delete-event' for Widget : unsupported parameter event : no type generator for Gdk.Event,
-
-// Unsupported signal 'destroy-event' for Widget : unsupported parameter event : no type generator for Gdk.Event,
-
-// Unsupported signal 'event' for Widget : unsupported parameter event : no type generator for Gdk.Event,
-
-// Unsupported signal 'event-after' for Widget : unsupported parameter event : no type generator for Gdk.Event,
-
-// Unsupported signal 'size-allocate' for Widget : unsupported parameter allocation : Blacklisted record : GdkRectangle
-
-// Unsupported signal 'touch-event' for Widget : unsupported parameter object : no type generator for Gdk.Event,
 
 // Unsupported : gtk_widget_new : unsupported parameter type : no type generator for GType, GType
 

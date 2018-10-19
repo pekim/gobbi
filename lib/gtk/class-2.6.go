@@ -4,13 +4,11 @@
 package gtk
 
 import (
-	"fmt"
 	atk "github.com/pekim/gobbi/lib/atk"
 	gdk "github.com/pekim/gobbi/lib/gdk"
 	gdkpixbuf "github.com/pekim/gobbi/lib/gdkpixbuf"
 	glib "github.com/pekim/gobbi/lib/glib"
 	pango "github.com/pekim/gobbi/lib/pango"
-	"sync"
 	"unsafe"
 )
 
@@ -19,33 +17,6 @@ import (
 // #include <gtk/gtk.h>
 // #include <gtk/gtkx.h>
 // #include <stdlib.h>
-/*
-
-	void Clipboard_ownerChangeHandler();
-
-	static gulong Clipboard_signal_connect_owner_change(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "owner-change", Clipboard_ownerChangeHandler, data);
-	}
-
-*/
-/*
-
-	void EntryCompletion_insertPrefixHandler();
-
-	static gulong EntryCompletion_signal_connect_insert_prefix(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "insert-prefix", EntryCompletion_insertPrefixHandler, data);
-	}
-
-*/
-/*
-
-	void Range_changeValueHandler();
-
-	static gulong Range_signal_connect_change_value(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "change-value", Range_changeValueHandler, data);
-	}
-
-*/
 import "C"
 
 // AboutDialogNew is a wrapper around the C function gtk_about_dialog_new.
@@ -270,12 +241,6 @@ func (recv *ActionGroup) TranslateString(string string) string {
 
 // Unsupported : gtk_app_chooser_dialog_new : unsupported parameter file : no type generator for Gio.File, GFile*
 
-// Unsupported signal 'application-activated' for AppChooserWidget : unsupported parameter application : no type generator for Gio.AppInfo,
-
-// Unsupported signal 'application-selected' for AppChooserWidget : unsupported parameter application : no type generator for Gio.AppInfo,
-
-// Unsupported signal 'populate-popup' for AppChooserWidget : unsupported parameter application : no type generator for Gio.AppInfo,
-
 // Unsupported : gtk_button_new_from_icon_name : unsupported parameter size : no type generator for gint, GtkIconSize
 
 // GetImage is a wrapper around the C function gtk_button_get_image.
@@ -294,12 +259,6 @@ func (recv *Button) SetImage(image *Widget) {
 
 	return
 }
-
-// Unsupported signal 'add-editable' for CellArea : unsupported parameter editable : no type generator for CellEditable,
-
-// Unsupported signal 'apply-attributes' for CellArea : unsupported parameter model : no type generator for TreeModel,
-
-// Unsupported signal 'remove-editable' for CellArea : unsupported parameter editable : no type generator for CellEditable,
 
 // Unsupported signal 'editing-started' for CellRenderer : unsupported parameter editable : no type generator for CellEditable,
 
@@ -423,53 +382,7 @@ func (recv *CellView) SetDisplayedRow(path *TreePath) {
 
 // Unsupported : gtk_cell_view_set_model : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
 
-var signalClipboardOwnerChangeId int
-var signalClipboardOwnerChangeMap = make(map[int]ClipboardSignalOwnerChangeCallback)
-var signalClipboardOwnerChangeLock sync.Mutex
-
-// ClipboardSignalOwnerChangeCallback is a callback function for a 'owner-change' signal emitted from a Clipboard.
-type ClipboardSignalOwnerChangeCallback func(event *gdk.EventOwnerChange)
-
-/*
-ConnectOwnerChange connects the callback to the 'owner-change' signal for the Clipboard.
-
-The returned value represents the connection, and may be passed to DisconnectOwnerChange to remove it.
-*/
-func (recv *Clipboard) ConnectOwnerChange(callback ClipboardSignalOwnerChangeCallback) int {
-	signalClipboardOwnerChangeLock.Lock()
-	defer signalClipboardOwnerChangeLock.Unlock()
-
-	signalClipboardOwnerChangeId++
-	signalClipboardOwnerChangeMap[signalClipboardOwnerChangeId] = callback
-
-	instance := C.gpointer(recv.Object().ToC())
-	retC := C.Clipboard_signal_connect_owner_change(instance, C.gpointer(uintptr(signalClipboardOwnerChangeId)))
-	return int(retC)
-}
-
-/*
-DisconnectOwnerChange disconnects a callback from the 'owner-change' signal for the Clipboard.
-
-The connectionID should be a value returned from a call to ConnectOwnerChange.
-*/
-func (recv *Clipboard) DisconnectOwnerChange(connectionID int) {
-	signalClipboardOwnerChangeLock.Lock()
-	defer signalClipboardOwnerChangeLock.Unlock()
-
-	_, exists := signalClipboardOwnerChangeMap[connectionID]
-	if !exists {
-		return
-	}
-
-	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
-	delete(signalClipboardOwnerChangeMap, connectionID)
-}
-
-//export Clipboard_ownerChangeHandler
-func Clipboard_ownerChangeHandler() {
-	fmt.Println("cb")
-}
+// Unsupported signal 'owner-change' for Clipboard : unsupported parameter event : type Gdk.EventOwnerChange :
 
 // Unsupported : gtk_clipboard_request_image : unsupported parameter callback : no type generator for ClipboardImageReceivedFunc, GtkClipboardImageReceivedFunc
 
@@ -508,8 +421,6 @@ func (recv *Clipboard) WaitIsImageAvailable() bool {
 }
 
 // Unsupported : gtk_clipboard_wait_is_target_available : unsupported parameter target : Blacklisted record : GdkAtom
-
-// Unsupported signal 'format-entry-text' for ComboBox : return value utf8 :
 
 // Unsupported : gtk_combo_box_new_with_model : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
 
@@ -585,57 +496,7 @@ func (recv *ComboBox) SetFocusOnClick(focusOnClick bool) {
 
 // Unsupported : gtk_dialog_set_alternative_button_order_from_array : unsupported parameter new_order : no param type
 
-// Unsupported signal 'cursor-on-match' for EntryCompletion : unsupported parameter model : no type generator for TreeModel,
-
-var signalEntryCompletionInsertPrefixId int
-var signalEntryCompletionInsertPrefixMap = make(map[int]EntryCompletionSignalInsertPrefixCallback)
-var signalEntryCompletionInsertPrefixLock sync.Mutex
-
-// EntryCompletionSignalInsertPrefixCallback is a callback function for a 'insert-prefix' signal emitted from a EntryCompletion.
-type EntryCompletionSignalInsertPrefixCallback func(prefix string) bool
-
-/*
-ConnectInsertPrefix connects the callback to the 'insert-prefix' signal for the EntryCompletion.
-
-The returned value represents the connection, and may be passed to DisconnectInsertPrefix to remove it.
-*/
-func (recv *EntryCompletion) ConnectInsertPrefix(callback EntryCompletionSignalInsertPrefixCallback) int {
-	signalEntryCompletionInsertPrefixLock.Lock()
-	defer signalEntryCompletionInsertPrefixLock.Unlock()
-
-	signalEntryCompletionInsertPrefixId++
-	signalEntryCompletionInsertPrefixMap[signalEntryCompletionInsertPrefixId] = callback
-
-	instance := C.gpointer(recv.Object().ToC())
-	retC := C.EntryCompletion_signal_connect_insert_prefix(instance, C.gpointer(uintptr(signalEntryCompletionInsertPrefixId)))
-	return int(retC)
-}
-
-/*
-DisconnectInsertPrefix disconnects a callback from the 'insert-prefix' signal for the EntryCompletion.
-
-The connectionID should be a value returned from a call to ConnectInsertPrefix.
-*/
-func (recv *EntryCompletion) DisconnectInsertPrefix(connectionID int) {
-	signalEntryCompletionInsertPrefixLock.Lock()
-	defer signalEntryCompletionInsertPrefixLock.Unlock()
-
-	_, exists := signalEntryCompletionInsertPrefixMap[connectionID]
-	if !exists {
-		return
-	}
-
-	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
-	delete(signalEntryCompletionInsertPrefixMap, connectionID)
-}
-
-//export EntryCompletion_insertPrefixHandler
-func EntryCompletion_insertPrefixHandler() C.boolean {
-	fmt.Println("cb")
-}
-
-// Unsupported signal 'match-selected' for EntryCompletion : unsupported parameter model : no type generator for TreeModel,
+// Unsupported signal 'insert-prefix' for EntryCompletion : unsupported parameter prefix : type utf8 :
 
 // GetInlineCompletion is a wrapper around the C function gtk_entry_completion_get_inline_completion.
 func (recv *EntryCompletion) GetInlineCompletion() bool {
@@ -1209,21 +1070,7 @@ func (recv *MenuToolButton) SetMenu(menu *Widget) {
 
 // Unsupported : gtk_message_dialog_format_secondary_text : unsupported parameter ... : varargs
 
-// Unsupported signal 'get-child-position' for Overlay : unsupported parameter allocation : Blacklisted record : GdkRectangle
-
 // Unsupported : gtk_page_setup_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
-
-// Unsupported signal 'drag-action-ask' for PlacesSidebar : return value gint :
-
-// Unsupported signal 'drag-action-requested' for PlacesSidebar : unsupported parameter dest_file : no type generator for Gio.File,
-
-// Unsupported signal 'drag-perform-drop' for PlacesSidebar : unsupported parameter dest_file : no type generator for Gio.File,
-
-// Unsupported signal 'open-location' for PlacesSidebar : unsupported parameter location : no type generator for Gio.File,
-
-// Unsupported signal 'populate-popup' for PlacesSidebar : unsupported parameter selected_item : no type generator for Gio.File,
-
-// Unsupported signal 'preview' for PrintOperation : unsupported parameter preview : no type generator for PrintOperationPreview,
 
 // Unsupported : gtk_print_settings_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
 
@@ -1244,63 +1091,13 @@ func (recv *ProgressBar) SetEllipsize(mode pango.EllipsizeMode) {
 	return
 }
 
-var signalRangeChangeValueId int
-var signalRangeChangeValueMap = make(map[int]RangeSignalChangeValueCallback)
-var signalRangeChangeValueLock sync.Mutex
-
-// RangeSignalChangeValueCallback is a callback function for a 'change-value' signal emitted from a Range.
-type RangeSignalChangeValueCallback func(scroll ScrollType, value float64) bool
-
-/*
-ConnectChangeValue connects the callback to the 'change-value' signal for the Range.
-
-The returned value represents the connection, and may be passed to DisconnectChangeValue to remove it.
-*/
-func (recv *Range) ConnectChangeValue(callback RangeSignalChangeValueCallback) int {
-	signalRangeChangeValueLock.Lock()
-	defer signalRangeChangeValueLock.Unlock()
-
-	signalRangeChangeValueId++
-	signalRangeChangeValueMap[signalRangeChangeValueId] = callback
-
-	instance := C.gpointer(recv.Object().ToC())
-	retC := C.Range_signal_connect_change_value(instance, C.gpointer(uintptr(signalRangeChangeValueId)))
-	return int(retC)
-}
-
-/*
-DisconnectChangeValue disconnects a callback from the 'change-value' signal for the Range.
-
-The connectionID should be a value returned from a call to ConnectChangeValue.
-*/
-func (recv *Range) DisconnectChangeValue(connectionID int) {
-	signalRangeChangeValueLock.Lock()
-	defer signalRangeChangeValueLock.Unlock()
-
-	_, exists := signalRangeChangeValueMap[connectionID]
-	if !exists {
-		return
-	}
-
-	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
-	delete(signalRangeChangeValueMap, connectionID)
-}
-
-//export Range_changeValueHandler
-func Range_changeValueHandler() C.boolean {
-	fmt.Println("cb")
-}
+// Unsupported signal 'change-value' for Range : unsupported parameter scroll : type ScrollType :
 
 // Unsupported : gtk_recent_chooser_dialog_new : unsupported parameter ... : varargs
 
 // Unsupported : gtk_recent_chooser_dialog_new_for_manager : unsupported parameter ... : varargs
 
-// Unsupported signal 'format-value' for Scale : return value utf8 :
-
 // Unsupported : gtk_scale_button_new : unsupported parameter size : no type generator for gint, GtkIconSize
-
-// Unsupported signal 'input' for SpinButton : return value gint :
 
 // Unsupported : gtk_status_icon_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon, GIcon*
 
@@ -1319,8 +1116,6 @@ func (recv *TextBuffer) Backspace(iter *TextIter, interactive bool, defaultEdita
 
 	return retGo
 }
-
-// Unsupported signal 'event' for TextTag : unsupported parameter event : no type generator for Gdk.Event,
 
 // GetIterAtPosition is a wrapper around the C function gtk_text_view_get_iter_at_position.
 func (recv *TextView) GetIterAtPosition(x int32, y int32) (*TextIter, int32) {
@@ -1413,20 +1208,6 @@ func (recv *TreeView) SetHoverSelection(hover bool) {
 // Unsupported : gtk_tree_view_set_row_separator_func : unsupported parameter func : no type generator for TreeViewRowSeparatorFunc, GtkTreeViewRowSeparatorFunc
 
 // Unsupported : gtk_tree_view_column_new_with_attributes : unsupported parameter ... : varargs
-
-// Unsupported signal 'child-notify' for Widget : unsupported parameter child_property : Blacklisted record : GParamSpec
-
-// Unsupported signal 'delete-event' for Widget : unsupported parameter event : no type generator for Gdk.Event,
-
-// Unsupported signal 'destroy-event' for Widget : unsupported parameter event : no type generator for Gdk.Event,
-
-// Unsupported signal 'event' for Widget : unsupported parameter event : no type generator for Gdk.Event,
-
-// Unsupported signal 'event-after' for Widget : unsupported parameter event : no type generator for Gdk.Event,
-
-// Unsupported signal 'size-allocate' for Widget : unsupported parameter allocation : Blacklisted record : GdkRectangle
-
-// Unsupported signal 'touch-event' for Widget : unsupported parameter object : no type generator for Gdk.Event,
 
 // Unsupported : gtk_widget_new : unsupported parameter type : no type generator for GType, GType
 

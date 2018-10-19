@@ -17,37 +17,10 @@ import (
 // #include <stdlib.h>
 /*
 
-	void EntryBuffer_deletedTextHandler();
-
-	static gulong EntryBuffer_signal_connect_deleted_text(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "deleted-text", EntryBuffer_deletedTextHandler, data);
-	}
-
-*/
-/*
-
-	void EntryBuffer_insertedTextHandler();
-
-	static gulong EntryBuffer_signal_connect_inserted_text(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "inserted-text", EntryBuffer_insertedTextHandler, data);
-	}
-
-*/
-/*
-
 	void InfoBar_closeHandler();
 
 	static gulong InfoBar_signal_connect_close(gpointer instance, gpointer data) {
 		return g_signal_connect(instance, "close", InfoBar_closeHandler, data);
-	}
-
-*/
-/*
-
-	void InfoBar_responseHandler();
-
-	static gulong InfoBar_signal_connect_response(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "response", InfoBar_responseHandler, data);
 	}
 
 */
@@ -60,43 +33,11 @@ import (
 	}
 
 */
-/*
-
-	void Label_activateLinkHandler();
-
-	static gulong Label_signal_connect_activate_link(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "activate-link", Label_activateLinkHandler, data);
-	}
-
-*/
-/*
-
-	void PrintOperation_updateCustomWidgetHandler();
-
-	static gulong PrintOperation_signal_connect_update_custom_widget(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "update-custom-widget", PrintOperation_updateCustomWidgetHandler, data);
-	}
-
-*/
 import "C"
 
 // Unsupported : gtk_app_chooser_dialog_new : unsupported parameter file : no type generator for Gio.File, GFile*
 
-// Unsupported signal 'application-activated' for AppChooserWidget : unsupported parameter application : no type generator for Gio.AppInfo,
-
-// Unsupported signal 'application-selected' for AppChooserWidget : unsupported parameter application : no type generator for Gio.AppInfo,
-
-// Unsupported signal 'populate-popup' for AppChooserWidget : unsupported parameter application : no type generator for Gio.AppInfo,
-
 // Unsupported : gtk_button_new_from_icon_name : unsupported parameter size : no type generator for gint, GtkIconSize
-
-// Unsupported signal 'add-editable' for CellArea : unsupported parameter editable : no type generator for CellEditable,
-
-// Unsupported signal 'apply-attributes' for CellArea : unsupported parameter model : no type generator for TreeModel,
-
-// Unsupported signal 'remove-editable' for CellArea : unsupported parameter editable : no type generator for CellEditable,
-
-// Unsupported signal 'editing-started' for CellRenderer : unsupported parameter editable : no type generator for CellEditable,
 
 // GetAlignment is a wrapper around the C function gtk_cell_renderer_get_alignment.
 func (recv *CellRenderer) GetAlignment() (float32, float32) {
@@ -204,8 +145,6 @@ func (recv *CellRendererToggle) SetActivatable(setting bool) {
 	return
 }
 
-// Unsupported signal 'format-entry-text' for ComboBox : return value utf8 :
-
 // Unsupported : gtk_combo_box_new_with_model : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
 
 // Unsupported : gtk_combo_box_new_with_model_and_entry : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
@@ -239,101 +178,9 @@ func (recv *Entry) SetBuffer(buffer *EntryBuffer) {
 	return
 }
 
-var signalEntryBufferDeletedTextId int
-var signalEntryBufferDeletedTextMap = make(map[int]EntryBufferSignalDeletedTextCallback)
-var signalEntryBufferDeletedTextLock sync.Mutex
+// Unsupported signal 'deleted-text' for EntryBuffer : unsupported parameter position : type guint :
 
-// EntryBufferSignalDeletedTextCallback is a callback function for a 'deleted-text' signal emitted from a EntryBuffer.
-type EntryBufferSignalDeletedTextCallback func(position uint32, nChars uint32)
-
-/*
-ConnectDeletedText connects the callback to the 'deleted-text' signal for the EntryBuffer.
-
-The returned value represents the connection, and may be passed to DisconnectDeletedText to remove it.
-*/
-func (recv *EntryBuffer) ConnectDeletedText(callback EntryBufferSignalDeletedTextCallback) int {
-	signalEntryBufferDeletedTextLock.Lock()
-	defer signalEntryBufferDeletedTextLock.Unlock()
-
-	signalEntryBufferDeletedTextId++
-	signalEntryBufferDeletedTextMap[signalEntryBufferDeletedTextId] = callback
-
-	instance := C.gpointer(recv.Object().ToC())
-	retC := C.EntryBuffer_signal_connect_deleted_text(instance, C.gpointer(uintptr(signalEntryBufferDeletedTextId)))
-	return int(retC)
-}
-
-/*
-DisconnectDeletedText disconnects a callback from the 'deleted-text' signal for the EntryBuffer.
-
-The connectionID should be a value returned from a call to ConnectDeletedText.
-*/
-func (recv *EntryBuffer) DisconnectDeletedText(connectionID int) {
-	signalEntryBufferDeletedTextLock.Lock()
-	defer signalEntryBufferDeletedTextLock.Unlock()
-
-	_, exists := signalEntryBufferDeletedTextMap[connectionID]
-	if !exists {
-		return
-	}
-
-	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
-	delete(signalEntryBufferDeletedTextMap, connectionID)
-}
-
-//export EntryBuffer_deletedTextHandler
-func EntryBuffer_deletedTextHandler() {
-	fmt.Println("cb")
-}
-
-var signalEntryBufferInsertedTextId int
-var signalEntryBufferInsertedTextMap = make(map[int]EntryBufferSignalInsertedTextCallback)
-var signalEntryBufferInsertedTextLock sync.Mutex
-
-// EntryBufferSignalInsertedTextCallback is a callback function for a 'inserted-text' signal emitted from a EntryBuffer.
-type EntryBufferSignalInsertedTextCallback func(position uint32, chars string, nChars uint32)
-
-/*
-ConnectInsertedText connects the callback to the 'inserted-text' signal for the EntryBuffer.
-
-The returned value represents the connection, and may be passed to DisconnectInsertedText to remove it.
-*/
-func (recv *EntryBuffer) ConnectInsertedText(callback EntryBufferSignalInsertedTextCallback) int {
-	signalEntryBufferInsertedTextLock.Lock()
-	defer signalEntryBufferInsertedTextLock.Unlock()
-
-	signalEntryBufferInsertedTextId++
-	signalEntryBufferInsertedTextMap[signalEntryBufferInsertedTextId] = callback
-
-	instance := C.gpointer(recv.Object().ToC())
-	retC := C.EntryBuffer_signal_connect_inserted_text(instance, C.gpointer(uintptr(signalEntryBufferInsertedTextId)))
-	return int(retC)
-}
-
-/*
-DisconnectInsertedText disconnects a callback from the 'inserted-text' signal for the EntryBuffer.
-
-The connectionID should be a value returned from a call to ConnectInsertedText.
-*/
-func (recv *EntryBuffer) DisconnectInsertedText(connectionID int) {
-	signalEntryBufferInsertedTextLock.Lock()
-	defer signalEntryBufferInsertedTextLock.Unlock()
-
-	_, exists := signalEntryBufferInsertedTextMap[connectionID]
-	if !exists {
-		return
-	}
-
-	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
-	delete(signalEntryBufferInsertedTextMap, connectionID)
-}
-
-//export EntryBuffer_insertedTextHandler
-func EntryBuffer_insertedTextHandler() {
-	fmt.Println("cb")
-}
+// Unsupported signal 'inserted-text' for EntryBuffer : unsupported parameter position : type guint :
 
 // EntryBufferNew is a wrapper around the C function gtk_entry_buffer_new.
 func EntryBufferNew(initialChars string, nInitialChars int32) *EntryBuffer {
@@ -453,10 +300,6 @@ func (recv *EntryBuffer) SetText(chars string, nChars int32) {
 	return
 }
 
-// Unsupported signal 'cursor-on-match' for EntryCompletion : unsupported parameter model : no type generator for TreeModel,
-
-// Unsupported signal 'match-selected' for EntryCompletion : unsupported parameter model : no type generator for TreeModel,
-
 // Unsupported : EntryIconAccessible : no CType
 
 // Unsupported : gtk_file_chooser_dialog_new : unsupported parameter ... : varargs
@@ -538,53 +381,7 @@ func InfoBar_closeHandler() {
 	fmt.Println("cb")
 }
 
-var signalInfoBarResponseId int
-var signalInfoBarResponseMap = make(map[int]InfoBarSignalResponseCallback)
-var signalInfoBarResponseLock sync.Mutex
-
-// InfoBarSignalResponseCallback is a callback function for a 'response' signal emitted from a InfoBar.
-type InfoBarSignalResponseCallback func(responseId int32)
-
-/*
-ConnectResponse connects the callback to the 'response' signal for the InfoBar.
-
-The returned value represents the connection, and may be passed to DisconnectResponse to remove it.
-*/
-func (recv *InfoBar) ConnectResponse(callback InfoBarSignalResponseCallback) int {
-	signalInfoBarResponseLock.Lock()
-	defer signalInfoBarResponseLock.Unlock()
-
-	signalInfoBarResponseId++
-	signalInfoBarResponseMap[signalInfoBarResponseId] = callback
-
-	instance := C.gpointer(recv.Object().ToC())
-	retC := C.InfoBar_signal_connect_response(instance, C.gpointer(uintptr(signalInfoBarResponseId)))
-	return int(retC)
-}
-
-/*
-DisconnectResponse disconnects a callback from the 'response' signal for the InfoBar.
-
-The connectionID should be a value returned from a call to ConnectResponse.
-*/
-func (recv *InfoBar) DisconnectResponse(connectionID int) {
-	signalInfoBarResponseLock.Lock()
-	defer signalInfoBarResponseLock.Unlock()
-
-	_, exists := signalInfoBarResponseMap[connectionID]
-	if !exists {
-		return
-	}
-
-	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
-	delete(signalInfoBarResponseMap, connectionID)
-}
-
-//export InfoBar_responseHandler
-func InfoBar_responseHandler() {
-	fmt.Println("cb")
-}
+// Unsupported signal 'response' for InfoBar : unsupported parameter response_id : type gint :
 
 // InfoBarNew is a wrapper around the C function gtk_info_bar_new.
 func InfoBarNew() *InfoBar {
@@ -733,53 +530,7 @@ func Label_activateCurrentLinkHandler() {
 	fmt.Println("cb")
 }
 
-var signalLabelActivateLinkId int
-var signalLabelActivateLinkMap = make(map[int]LabelSignalActivateLinkCallback)
-var signalLabelActivateLinkLock sync.Mutex
-
-// LabelSignalActivateLinkCallback is a callback function for a 'activate-link' signal emitted from a Label.
-type LabelSignalActivateLinkCallback func(uri string) bool
-
-/*
-ConnectActivateLink connects the callback to the 'activate-link' signal for the Label.
-
-The returned value represents the connection, and may be passed to DisconnectActivateLink to remove it.
-*/
-func (recv *Label) ConnectActivateLink(callback LabelSignalActivateLinkCallback) int {
-	signalLabelActivateLinkLock.Lock()
-	defer signalLabelActivateLinkLock.Unlock()
-
-	signalLabelActivateLinkId++
-	signalLabelActivateLinkMap[signalLabelActivateLinkId] = callback
-
-	instance := C.gpointer(recv.Object().ToC())
-	retC := C.Label_signal_connect_activate_link(instance, C.gpointer(uintptr(signalLabelActivateLinkId)))
-	return int(retC)
-}
-
-/*
-DisconnectActivateLink disconnects a callback from the 'activate-link' signal for the Label.
-
-The connectionID should be a value returned from a call to ConnectActivateLink.
-*/
-func (recv *Label) DisconnectActivateLink(connectionID int) {
-	signalLabelActivateLinkLock.Lock()
-	defer signalLabelActivateLinkLock.Unlock()
-
-	_, exists := signalLabelActivateLinkMap[connectionID]
-	if !exists {
-		return
-	}
-
-	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
-	delete(signalLabelActivateLinkMap, connectionID)
-}
-
-//export Label_activateLinkHandler
-func Label_activateLinkHandler() C.boolean {
-	fmt.Println("cb")
-}
+// Unsupported signal 'activate-link' for Label : unsupported parameter uri : type utf8 :
 
 // GetCurrentUri is a wrapper around the C function gtk_label_get_current_uri.
 func (recv *Label) GetCurrentUri() string {
@@ -833,69 +584,9 @@ func (recv *Menu) SetReserveToggleSize(reserveToggleSize bool) {
 
 // Unsupported : gtk_message_dialog_new_with_markup : unsupported parameter ... : varargs
 
-// Unsupported signal 'get-child-position' for Overlay : unsupported parameter allocation : Blacklisted record : GdkRectangle
-
 // Unsupported : gtk_page_setup_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
 
-// Unsupported signal 'drag-action-ask' for PlacesSidebar : return value gint :
-
-// Unsupported signal 'drag-action-requested' for PlacesSidebar : unsupported parameter dest_file : no type generator for Gio.File,
-
-// Unsupported signal 'drag-perform-drop' for PlacesSidebar : unsupported parameter dest_file : no type generator for Gio.File,
-
-// Unsupported signal 'open-location' for PlacesSidebar : unsupported parameter location : no type generator for Gio.File,
-
-// Unsupported signal 'populate-popup' for PlacesSidebar : unsupported parameter selected_item : no type generator for Gio.File,
-
-// Unsupported signal 'preview' for PrintOperation : unsupported parameter preview : no type generator for PrintOperationPreview,
-
-var signalPrintOperationUpdateCustomWidgetId int
-var signalPrintOperationUpdateCustomWidgetMap = make(map[int]PrintOperationSignalUpdateCustomWidgetCallback)
-var signalPrintOperationUpdateCustomWidgetLock sync.Mutex
-
-// PrintOperationSignalUpdateCustomWidgetCallback is a callback function for a 'update-custom-widget' signal emitted from a PrintOperation.
-type PrintOperationSignalUpdateCustomWidgetCallback func(widget *Widget, setup *PageSetup, settings *PrintSettings)
-
-/*
-ConnectUpdateCustomWidget connects the callback to the 'update-custom-widget' signal for the PrintOperation.
-
-The returned value represents the connection, and may be passed to DisconnectUpdateCustomWidget to remove it.
-*/
-func (recv *PrintOperation) ConnectUpdateCustomWidget(callback PrintOperationSignalUpdateCustomWidgetCallback) int {
-	signalPrintOperationUpdateCustomWidgetLock.Lock()
-	defer signalPrintOperationUpdateCustomWidgetLock.Unlock()
-
-	signalPrintOperationUpdateCustomWidgetId++
-	signalPrintOperationUpdateCustomWidgetMap[signalPrintOperationUpdateCustomWidgetId] = callback
-
-	instance := C.gpointer(recv.Object().ToC())
-	retC := C.PrintOperation_signal_connect_update_custom_widget(instance, C.gpointer(uintptr(signalPrintOperationUpdateCustomWidgetId)))
-	return int(retC)
-}
-
-/*
-DisconnectUpdateCustomWidget disconnects a callback from the 'update-custom-widget' signal for the PrintOperation.
-
-The connectionID should be a value returned from a call to ConnectUpdateCustomWidget.
-*/
-func (recv *PrintOperation) DisconnectUpdateCustomWidget(connectionID int) {
-	signalPrintOperationUpdateCustomWidgetLock.Lock()
-	defer signalPrintOperationUpdateCustomWidgetLock.Unlock()
-
-	_, exists := signalPrintOperationUpdateCustomWidgetMap[connectionID]
-	if !exists {
-		return
-	}
-
-	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
-	delete(signalPrintOperationUpdateCustomWidgetMap, connectionID)
-}
-
-//export PrintOperation_updateCustomWidgetHandler
-func PrintOperation_updateCustomWidgetHandler() {
-	fmt.Println("cb")
-}
+// Unsupported signal 'update-custom-widget' for PrintOperation : unsupported parameter widget : type Widget :
 
 // GetEmbedPageSetup is a wrapper around the C function gtk_print_operation_get_embed_page_setup.
 func (recv *PrintOperation) GetEmbedPageSetup() bool {
@@ -983,11 +674,7 @@ func (recv *Range) SetFlippable(flippable bool) {
 
 // Unsupported : gtk_recent_chooser_dialog_new_for_manager : unsupported parameter ... : varargs
 
-// Unsupported signal 'format-value' for Scale : return value utf8 :
-
 // Unsupported : gtk_scale_button_new : unsupported parameter size : no type generator for gint, GtkIconSize
-
-// Unsupported signal 'input' for SpinButton : return value gint :
 
 // Unsupported : gtk_status_icon_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon, GIcon*
 
@@ -1009,8 +696,6 @@ func (recv *StatusIcon) SetTitle(title string) {
 	return
 }
 
-// Unsupported signal 'event' for TextTag : unsupported parameter event : no type generator for Gdk.Event,
-
 // Unsupported : gtk_tree_store_new : unsupported parameter ... : varargs
 
 // Unsupported : gtk_tree_store_newv : unsupported parameter types : no param type
@@ -1018,20 +703,6 @@ func (recv *StatusIcon) SetTitle(title string) {
 // Unsupported : gtk_tree_view_new_with_model : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
 
 // Unsupported : gtk_tree_view_column_new_with_attributes : unsupported parameter ... : varargs
-
-// Unsupported signal 'child-notify' for Widget : unsupported parameter child_property : Blacklisted record : GParamSpec
-
-// Unsupported signal 'delete-event' for Widget : unsupported parameter event : no type generator for Gdk.Event,
-
-// Unsupported signal 'destroy-event' for Widget : unsupported parameter event : no type generator for Gdk.Event,
-
-// Unsupported signal 'event' for Widget : unsupported parameter event : no type generator for Gdk.Event,
-
-// Unsupported signal 'event-after' for Widget : unsupported parameter event : no type generator for Gdk.Event,
-
-// Unsupported signal 'size-allocate' for Widget : unsupported parameter allocation : Blacklisted record : GdkRectangle
-
-// Unsupported signal 'touch-event' for Widget : unsupported parameter object : no type generator for Gdk.Event,
 
 // Unsupported : gtk_widget_new : unsupported parameter type : no type generator for GType, GType
 

@@ -4,10 +4,8 @@
 package gio
 
 import (
-	"fmt"
 	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
-	"sync"
 	"unsafe"
 )
 
@@ -24,18 +22,7 @@ import (
 // #include <gio/gunixoutputstream.h>
 // #include <gio/gunixsocketaddress.h>
 // #include <stdlib.h>
-/*
-
-	void ThreadedSocketService_runHandler();
-
-	static gulong ThreadedSocketService_signal_connect_run(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "run", ThreadedSocketService_runHandler, data);
-	}
-
-*/
 import "C"
-
-// Unsupported signal 'launched' for AppLaunchContext : unsupported parameter info : no type generator for AppInfo,
 
 // Unsupported : g_cancellable_connect : unsupported parameter callback : no type generator for GObject.Callback, GCallback
 
@@ -135,8 +122,6 @@ func (recv *FileInfo) SetAttributeStatus(attribute string, status FileAttributeS
 
 	return retGo
 }
-
-// Unsupported signal 'changed' for FileMonitor : unsupported parameter file : no type generator for File,
 
 // ClearPending is a wrapper around the C function g_io_stream_clear_pending.
 func (recv *IOStream) ClearPending() {
@@ -387,9 +372,7 @@ func (recv *InetSocketAddress) GetPort() uint16 {
 
 // Unsupported : g_memory_output_stream_new : unsupported parameter realloc_function : no type generator for ReallocFunc, GReallocFunc
 
-// Unsupported signal 'ask-question' for MountOperation : unsupported parameter choices : no param type
-
-// Unsupported signal 'show-processes' for MountOperation : unsupported parameter processes : no param type
+// Unsupported signal 'show-processes' for MountOperation : unsupported parameter message : type utf8 :
 
 // NetworkAddressNew is a wrapper around the C function g_network_address_new.
 func NetworkAddressNew(hostname string, port uint16) *NetworkAddress {
@@ -545,12 +528,6 @@ func (recv *Resolver) SetDefault() {
 
 	return
 }
-
-// Unsupported signal 'change-event' for Settings : unsupported parameter keys : no param type
-
-// Unsupported signal 'activate' for SimpleAction : unsupported parameter parameter : Blacklisted record : GVariant
-
-// Unsupported signal 'change-state' for SimpleAction : unsupported parameter value : Blacklisted record : GVariant
 
 // Unsupported : g_simple_action_new : unsupported parameter parameter_type : Blacklisted record : GVariantType
 
@@ -1025,8 +1002,6 @@ func (recv *SocketClient) Object() *gobject.Object {
 func CastToSocketClient(object *gobject.Object) *SocketClient {
 	return SocketClientNewFromC(object.ToC())
 }
-
-// Unsupported signal 'event' for SocketClient : unsupported parameter connectable : no type generator for SocketConnectable,
 
 // SocketClientNew is a wrapper around the C function g_socket_client_new.
 func SocketClientNew() *SocketClient {
@@ -1572,53 +1547,7 @@ func CastToThreadedSocketService(object *gobject.Object) *ThreadedSocketService 
 	return ThreadedSocketServiceNewFromC(object.ToC())
 }
 
-var signalThreadedSocketServiceRunId int
-var signalThreadedSocketServiceRunMap = make(map[int]ThreadedSocketServiceSignalRunCallback)
-var signalThreadedSocketServiceRunLock sync.Mutex
-
-// ThreadedSocketServiceSignalRunCallback is a callback function for a 'run' signal emitted from a ThreadedSocketService.
-type ThreadedSocketServiceSignalRunCallback func(connection *SocketConnection, sourceObject *gobject.Object) bool
-
-/*
-ConnectRun connects the callback to the 'run' signal for the ThreadedSocketService.
-
-The returned value represents the connection, and may be passed to DisconnectRun to remove it.
-*/
-func (recv *ThreadedSocketService) ConnectRun(callback ThreadedSocketServiceSignalRunCallback) int {
-	signalThreadedSocketServiceRunLock.Lock()
-	defer signalThreadedSocketServiceRunLock.Unlock()
-
-	signalThreadedSocketServiceRunId++
-	signalThreadedSocketServiceRunMap[signalThreadedSocketServiceRunId] = callback
-
-	instance := C.gpointer(recv.Object().ToC())
-	retC := C.ThreadedSocketService_signal_connect_run(instance, C.gpointer(uintptr(signalThreadedSocketServiceRunId)))
-	return int(retC)
-}
-
-/*
-DisconnectRun disconnects a callback from the 'run' signal for the ThreadedSocketService.
-
-The connectionID should be a value returned from a call to ConnectRun.
-*/
-func (recv *ThreadedSocketService) DisconnectRun(connectionID int) {
-	signalThreadedSocketServiceRunLock.Lock()
-	defer signalThreadedSocketServiceRunLock.Unlock()
-
-	_, exists := signalThreadedSocketServiceRunMap[connectionID]
-	if !exists {
-		return
-	}
-
-	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
-	delete(signalThreadedSocketServiceRunMap, connectionID)
-}
-
-//export ThreadedSocketService_runHandler
-func ThreadedSocketService_runHandler() C.boolean {
-	fmt.Println("cb")
-}
+// Unsupported signal 'run' for ThreadedSocketService : unsupported parameter connection : type SocketConnection :
 
 // ThreadedSocketServiceNew is a wrapper around the C function g_threaded_socket_service_new.
 func ThreadedSocketServiceNew(maxThreads int32) *ThreadedSocketService {
@@ -1734,26 +1663,4 @@ func (recv *UnixSocketAddress) GetPathLen() uint64 {
 	return retGo
 }
 
-// Unsupported signal 'drive-changed' for VolumeMonitor : unsupported parameter drive : no type generator for Drive,
-
-// Unsupported signal 'drive-connected' for VolumeMonitor : unsupported parameter drive : no type generator for Drive,
-
-// Unsupported signal 'drive-disconnected' for VolumeMonitor : unsupported parameter drive : no type generator for Drive,
-
-// Unsupported signal 'drive-eject-button' for VolumeMonitor : unsupported parameter drive : no type generator for Drive,
-
 // Unsupported signal 'drive-stop-button' for VolumeMonitor : unsupported parameter drive : no type generator for Drive,
-
-// Unsupported signal 'mount-added' for VolumeMonitor : unsupported parameter mount : no type generator for Mount,
-
-// Unsupported signal 'mount-changed' for VolumeMonitor : unsupported parameter mount : no type generator for Mount,
-
-// Unsupported signal 'mount-pre-unmount' for VolumeMonitor : unsupported parameter mount : no type generator for Mount,
-
-// Unsupported signal 'mount-removed' for VolumeMonitor : unsupported parameter mount : no type generator for Mount,
-
-// Unsupported signal 'volume-added' for VolumeMonitor : unsupported parameter volume : no type generator for Volume,
-
-// Unsupported signal 'volume-changed' for VolumeMonitor : unsupported parameter volume : no type generator for Volume,
-
-// Unsupported signal 'volume-removed' for VolumeMonitor : unsupported parameter volume : no type generator for Volume,
