@@ -1207,10 +1207,13 @@ func (recv *PrintOperation) DisconnectCreateCustomWidget(connectionID int) {
 }
 
 //export PrintOperation_createCustomWidgetHandler
-func PrintOperation_createCustomWidgetHandler(_ *C.GObject, data C.gpointer) {
+func PrintOperation_createCustomWidgetHandler(_ *C.GObject, data C.gpointer) *C.GObject {
 	index := int(uintptr(data))
 	callback := signalPrintOperationCreateCustomWidgetMap[index].callback
-	callback()
+	retGo := callback()
+	retC :=
+		(retGo).toC()
+	return retC
 }
 
 type signalPrintOperationCustomWidgetApplyDetail struct {
@@ -1386,12 +1389,15 @@ func (recv *PrintOperation) DisconnectPaginate(connectionID int) {
 }
 
 //export PrintOperation_paginateHandler
-func PrintOperation_paginateHandler(_ *C.GObject, c_context *C.GtkPrintContext, data C.gpointer) {
+func PrintOperation_paginateHandler(_ *C.GObject, c_context *C.GtkPrintContext, data C.gpointer) C.gboolean {
 	context := PrintContextNewFromC(unsafe.Pointer(c_context))
 
 	index := int(uintptr(data))
 	callback := signalPrintOperationPaginateMap[index].callback
-	callback(context)
+	retGo := callback(context)
+	retC :=
+		boolToGboolean(retGo)
+	return retC
 }
 
 // Unsupported signal 'preview' for PrintOperation : unsupported parameter preview : no type generator for PrintOperationPreview,

@@ -1450,12 +1450,15 @@ func (recv *Switch) DisconnectStateSet(connectionID int) {
 }
 
 //export Switch_stateSetHandler
-func Switch_stateSetHandler(_ *C.GObject, c_state C.gboolean, data C.gpointer) {
+func Switch_stateSetHandler(_ *C.GObject, c_state C.gboolean, data C.gpointer) C.gboolean {
 	state := c_state == C.TRUE
 
 	index := int(uintptr(data))
 	callback := signalSwitchStateSetMap[index].callback
-	callback(state)
+	retGo := callback(state)
+	retC :=
+		boolToGboolean(retGo)
+	return retC
 }
 
 // GetState is a wrapper around the C function gtk_switch_get_state.

@@ -247,10 +247,13 @@ func (recv *ComboBox) DisconnectPopdown(connectionID int) {
 }
 
 //export ComboBox_popdownHandler
-func ComboBox_popdownHandler(_ *C.GObject, data C.gpointer) {
+func ComboBox_popdownHandler(_ *C.GObject, data C.gpointer) C.gboolean {
 	index := int(uintptr(data))
 	callback := signalComboBoxPopdownMap[index].callback
-	callback()
+	retGo := callback()
+	retC :=
+		boolToGboolean(retGo)
+	return retC
 }
 
 type signalComboBoxPopupDetail struct {

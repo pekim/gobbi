@@ -2389,12 +2389,15 @@ func (recv *Widget) DisconnectDraw(connectionID int) {
 }
 
 //export Widget_drawHandler
-func Widget_drawHandler(_ *C.GObject, c_cr *C.cairo_t, data C.gpointer) {
+func Widget_drawHandler(_ *C.GObject, c_cr *C.cairo_t, data C.gpointer) C.gboolean {
 	cr := cairo.ContextNewFromC(unsafe.Pointer(c_cr))
 
 	index := int(uintptr(data))
 	callback := signalWidgetDrawMap[index].callback
-	callback(cr)
+	retGo := callback(cr)
+	retC :=
+		boolToGboolean(retGo)
+	return retC
 }
 
 // Unsupported signal 'state-flags-changed' for Widget : unsupported parameter flags : type StateFlags :

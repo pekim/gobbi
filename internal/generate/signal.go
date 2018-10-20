@@ -162,25 +162,14 @@ func (s *Signal) generateHandlerFunction(g *jen.Group) {
 		Func().
 		Id(s.goNameHandler).
 		ParamsFunc(s.generateHandlerParameters).
-		//ParamsFunc(s.ReturnValue.generateFunctionDeclarationCtype).
+		ParamsFunc(s.ReturnValue.generateFunctionDeclarationCtype).
 		BlockFunc(func(g *jen.Group) {
 			s.Parameters.generateGoVars(g)
 			s.generateHandlerCall(g)
-
-			//s.generateGoReturnVars(g)
-			//s.generateOutputParamsGoVars(g)
-			//s.generateReturn(g)
-
+			s.generateHandlerReturn(g)
 		})
 
 	g.Line()
-
-	//func keyPressEventHandler(target *C.GObject, event *C.GdkEventKey, data uintptr) {
-	//	goEvent := gdk.EventKeyNewFromC(unsafe.Pointer(event))
-	//
-	//	cb := signalKeyPressEventMap[int(data)]
-	//	cb(goEvent)
-	//}
 }
 
 func (s *Signal) generateHandlerParameters(g *jen.Group) {
@@ -196,15 +185,31 @@ func (s *Signal) generateHandlerCall(g *jen.Group) {
 	//	callback := signalKeyPressEventMap[signalKeyPressEventId].callback
 	g.Id("callback").Op(":=").Id(s.varNameMap).Index(jen.Id("index")).Dot("callback")
 
-	g.
-		//Id("retC").
-		//Op(":=").
-		Id("callback").
-		CallFunc(func(g *jen.Group) {
-			for _, p := range s.Parameters {
-				g.Id(p.goVarName)
-			}
-		})
+	if s.ReturnValue.Type.Name != "none" {
+		// retGo := callback(...)
+		g.Id("retGo").Op(":=").Id("callback").CallFunc(s.generateHandleCallParams)
+	} else {
+		// callback(...)
+		g.Id("callback").CallFunc(s.generateHandleCallParams)
+	}
+}
+
+func (s *Signal) generateHandleCallParams(g *jen.Group) {
+	for _, p := range s.Parameters {
+		g.Id(p.goVarName)
+	}
+}
+
+func (s *Signal) generateHandlerReturn(g *jen.Group) {
+	if s.ReturnValue.Type.Name == "none" {
+		return
+	}
+
+	g.Id("retC").Op(":=")
+	s.ReturnValue.Type.generator.generateGoToC(g, jen.Id("retGo"))
+
+	g.Return().Id("retC")
+
 }
 
 func (s *Signal) generateLockUnlock(g *jen.Group) {

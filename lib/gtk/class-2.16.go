@@ -730,12 +730,15 @@ func (recv *StatusIcon) DisconnectScrollEvent(connectionID int) {
 }
 
 //export StatusIcon_scrollEventHandler
-func StatusIcon_scrollEventHandler(_ *C.GObject, c_event *C.GdkEventScroll, data C.gpointer) {
+func StatusIcon_scrollEventHandler(_ *C.GObject, c_event *C.GdkEventScroll, data C.gpointer) C.gboolean {
 	event := gdk.EventScrollNewFromC(unsafe.Pointer(c_event))
 
 	index := int(uintptr(data))
 	callback := signalStatusIconScrollEventMap[index].callback
-	callback(event)
+	retGo := callback(event)
+	retC :=
+		boolToGboolean(retGo)
+	return retC
 }
 
 // Unsupported : gtk_status_icon_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon, GIcon*

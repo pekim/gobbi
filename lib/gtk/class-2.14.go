@@ -799,12 +799,15 @@ func (recv *StatusIcon) DisconnectButtonPressEvent(connectionID int) {
 }
 
 //export StatusIcon_buttonPressEventHandler
-func StatusIcon_buttonPressEventHandler(_ *C.GObject, c_event *C.GdkEventButton, data C.gpointer) {
+func StatusIcon_buttonPressEventHandler(_ *C.GObject, c_event *C.GdkEventButton, data C.gpointer) C.gboolean {
 	event := gdk.EventButtonNewFromC(unsafe.Pointer(c_event))
 
 	index := int(uintptr(data))
 	callback := signalStatusIconButtonPressEventMap[index].callback
-	callback(event)
+	retGo := callback(event)
+	retC :=
+		boolToGboolean(retGo)
+	return retC
 }
 
 type signalStatusIconButtonReleaseEventDetail struct {
@@ -858,12 +861,15 @@ func (recv *StatusIcon) DisconnectButtonReleaseEvent(connectionID int) {
 }
 
 //export StatusIcon_buttonReleaseEventHandler
-func StatusIcon_buttonReleaseEventHandler(_ *C.GObject, c_event *C.GdkEventButton, data C.gpointer) {
+func StatusIcon_buttonReleaseEventHandler(_ *C.GObject, c_event *C.GdkEventButton, data C.gpointer) C.gboolean {
 	event := gdk.EventButtonNewFromC(unsafe.Pointer(c_event))
 
 	index := int(uintptr(data))
 	callback := signalStatusIconButtonReleaseEventMap[index].callback
-	callback(event)
+	retGo := callback(event)
+	retC :=
+		boolToGboolean(retGo)
+	return retC
 }
 
 // Unsupported : gtk_status_icon_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon, GIcon*
@@ -950,12 +956,15 @@ func (recv *Widget) DisconnectDamageEvent(connectionID int) {
 }
 
 //export Widget_damageEventHandler
-func Widget_damageEventHandler(_ *C.GObject, c_event *C.GdkEventExpose, data C.gpointer) {
+func Widget_damageEventHandler(_ *C.GObject, c_event *C.GdkEventExpose, data C.gpointer) C.gboolean {
 	event := gdk.EventExposeNewFromC(unsafe.Pointer(c_event))
 
 	index := int(uintptr(data))
 	callback := signalWidgetDamageEventMap[index].callback
-	callback(event)
+	retGo := callback(event)
+	retC :=
+		boolToGboolean(retGo)
+	return retC
 }
 
 // Unsupported : gtk_widget_new : unsupported parameter type : no type generator for GType, GType

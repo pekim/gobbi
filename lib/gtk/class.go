@@ -12017,10 +12017,13 @@ func (recv *IMContext) DisconnectRetrieveSurrounding(connectionID int) {
 }
 
 //export IMContext_retrieveSurroundingHandler
-func IMContext_retrieveSurroundingHandler(_ *C.GObject, data C.gpointer) {
+func IMContext_retrieveSurroundingHandler(_ *C.GObject, data C.gpointer) C.gboolean {
 	index := int(uintptr(data))
 	callback := signalIMContextRetrieveSurroundingMap[index].callback
-	callback()
+	retGo := callback()
+	retC :=
+		boolToGboolean(retGo)
+	return retC
 }
 
 // DeleteSurrounding is a wrapper around the C function gtk_im_context_delete_surrounding.
@@ -12529,10 +12532,13 @@ func (recv *IconView) DisconnectActivateCursorItem(connectionID int) {
 }
 
 //export IconView_activateCursorItemHandler
-func IconView_activateCursorItemHandler(_ *C.GObject, data C.gpointer) {
+func IconView_activateCursorItemHandler(_ *C.GObject, data C.gpointer) C.gboolean {
 	index := int(uintptr(data))
 	callback := signalIconViewActivateCursorItemMap[index].callback
-	callback()
+	retGo := callback()
+	retC :=
+		boolToGboolean(retGo)
+	return retC
 }
 
 type signalIconViewItemActivatedDetail struct {
@@ -14253,10 +14259,13 @@ func (recv *LinkButton) DisconnectActivateLink(connectionID int) {
 }
 
 //export LinkButton_activateLinkHandler
-func LinkButton_activateLinkHandler(_ *C.GObject, data C.gpointer) {
+func LinkButton_activateLinkHandler(_ *C.GObject, data C.gpointer) C.gboolean {
 	index := int(uintptr(data))
 	callback := signalLinkButtonActivateLinkMap[index].callback
-	callback()
+	retGo := callback()
+	retC :=
+		boolToGboolean(retGo)
+	return retC
 }
 
 // LinkButtonAccessible is a wrapper around the C record GtkLinkButtonAccessible.
@@ -16636,12 +16645,15 @@ func (recv *Notebook) DisconnectSelectPage(connectionID int) {
 }
 
 //export Notebook_selectPageHandler
-func Notebook_selectPageHandler(_ *C.GObject, c_object C.gboolean, data C.gpointer) {
+func Notebook_selectPageHandler(_ *C.GObject, c_object C.gboolean, data C.gpointer) C.gboolean {
 	object := c_object == C.TRUE
 
 	index := int(uintptr(data))
 	callback := signalNotebookSelectPageMap[index].callback
-	callback(object)
+	retGo := callback(object)
+	retC :=
+		boolToGboolean(retGo)
+	return retC
 }
 
 // Unsupported signal 'switch-page' for Notebook : unsupported parameter page_num : type guint :
@@ -20347,10 +20359,13 @@ func (recv *SpinButton) DisconnectOutput(connectionID int) {
 }
 
 //export SpinButton_outputHandler
-func SpinButton_outputHandler(_ *C.GObject, data C.gpointer) {
+func SpinButton_outputHandler(_ *C.GObject, data C.gpointer) C.gboolean {
 	index := int(uintptr(data))
 	callback := signalSpinButtonOutputMap[index].callback
-	callback()
+	retGo := callback()
+	retC :=
+		boolToGboolean(retGo)
+	return retC
 }
 
 type signalSpinButtonValueChangedDetail struct {
@@ -25583,10 +25598,13 @@ func (recv *ToolItem) DisconnectCreateMenuProxy(connectionID int) {
 }
 
 //export ToolItem_createMenuProxyHandler
-func ToolItem_createMenuProxyHandler(_ *C.GObject, data C.gpointer) {
+func ToolItem_createMenuProxyHandler(_ *C.GObject, data C.gpointer) C.gboolean {
 	index := int(uintptr(data))
 	callback := signalToolItemCreateMenuProxyMap[index].callback
-	callback()
+	retGo := callback()
+	retC :=
+		boolToGboolean(retGo)
+	return retC
 }
 
 type signalToolItemToolbarReconfiguredDetail struct {
@@ -25844,12 +25862,15 @@ func (recv *Toolbar) DisconnectFocusHomeOrEnd(connectionID int) {
 }
 
 //export Toolbar_focusHomeOrEndHandler
-func Toolbar_focusHomeOrEndHandler(_ *C.GObject, c_focus_home C.gboolean, data C.gpointer) {
+func Toolbar_focusHomeOrEndHandler(_ *C.GObject, c_focus_home C.gboolean, data C.gpointer) C.gboolean {
 	focusHome := c_focus_home == C.TRUE
 
 	index := int(uintptr(data))
 	callback := signalToolbarFocusHomeOrEndMap[index].callback
-	callback(focusHome)
+	retGo := callback(focusHome)
+	retC :=
+		boolToGboolean(retGo)
+	return retC
 }
 
 // Unsupported signal 'orientation-changed' for Toolbar : unsupported parameter orientation : type Orientation :
@@ -26711,7 +26732,7 @@ func (recv *TreeView) DisconnectExpandCollapseCursorRow(connectionID int) {
 }
 
 //export TreeView_expandCollapseCursorRowHandler
-func TreeView_expandCollapseCursorRowHandler(_ *C.GObject, c_object C.gboolean, c_p0 C.gboolean, c_p1 C.gboolean, data C.gpointer) {
+func TreeView_expandCollapseCursorRowHandler(_ *C.GObject, c_object C.gboolean, c_p0 C.gboolean, c_p1 C.gboolean, data C.gpointer) C.gboolean {
 	object := c_object == C.TRUE
 
 	p0 := c_p0 == C.TRUE
@@ -26720,7 +26741,10 @@ func TreeView_expandCollapseCursorRowHandler(_ *C.GObject, c_object C.gboolean, 
 
 	index := int(uintptr(data))
 	callback := signalTreeViewExpandCollapseCursorRowMap[index].callback
-	callback(object, p0, p1)
+	retGo := callback(object, p0, p1)
+	retC :=
+		boolToGboolean(retGo)
+	return retC
 }
 
 // Unsupported signal 'move-cursor' for TreeView : unsupported parameter step : type MovementStep :
@@ -26959,10 +26983,13 @@ func (recv *TreeView) DisconnectSelectAll(connectionID int) {
 }
 
 //export TreeView_selectAllHandler
-func TreeView_selectAllHandler(_ *C.GObject, data C.gpointer) {
+func TreeView_selectAllHandler(_ *C.GObject, data C.gpointer) C.gboolean {
 	index := int(uintptr(data))
 	callback := signalTreeViewSelectAllMap[index].callback
-	callback()
+	retGo := callback()
+	retC :=
+		boolToGboolean(retGo)
+	return retC
 }
 
 type signalTreeViewSelectCursorParentDetail struct {
@@ -27016,10 +27043,13 @@ func (recv *TreeView) DisconnectSelectCursorParent(connectionID int) {
 }
 
 //export TreeView_selectCursorParentHandler
-func TreeView_selectCursorParentHandler(_ *C.GObject, data C.gpointer) {
+func TreeView_selectCursorParentHandler(_ *C.GObject, data C.gpointer) C.gboolean {
 	index := int(uintptr(data))
 	callback := signalTreeViewSelectCursorParentMap[index].callback
-	callback()
+	retGo := callback()
+	retC :=
+		boolToGboolean(retGo)
+	return retC
 }
 
 type signalTreeViewSelectCursorRowDetail struct {
@@ -27073,12 +27103,15 @@ func (recv *TreeView) DisconnectSelectCursorRow(connectionID int) {
 }
 
 //export TreeView_selectCursorRowHandler
-func TreeView_selectCursorRowHandler(_ *C.GObject, c_object C.gboolean, data C.gpointer) {
+func TreeView_selectCursorRowHandler(_ *C.GObject, c_object C.gboolean, data C.gpointer) C.gboolean {
 	object := c_object == C.TRUE
 
 	index := int(uintptr(data))
 	callback := signalTreeViewSelectCursorRowMap[index].callback
-	callback(object)
+	retGo := callback(object)
+	retC :=
+		boolToGboolean(retGo)
+	return retC
 }
 
 type signalTreeViewStartInteractiveSearchDetail struct {
@@ -27132,10 +27165,13 @@ func (recv *TreeView) DisconnectStartInteractiveSearch(connectionID int) {
 }
 
 //export TreeView_startInteractiveSearchHandler
-func TreeView_startInteractiveSearchHandler(_ *C.GObject, data C.gpointer) {
+func TreeView_startInteractiveSearchHandler(_ *C.GObject, data C.gpointer) C.gboolean {
 	index := int(uintptr(data))
 	callback := signalTreeViewStartInteractiveSearchMap[index].callback
-	callback()
+	retGo := callback()
+	retC :=
+		boolToGboolean(retGo)
+	return retC
 }
 
 type signalTreeViewTestCollapseRowDetail struct {
@@ -27189,14 +27225,17 @@ func (recv *TreeView) DisconnectTestCollapseRow(connectionID int) {
 }
 
 //export TreeView_testCollapseRowHandler
-func TreeView_testCollapseRowHandler(_ *C.GObject, c_iter *C.GtkTreeIter, c_path *C.GtkTreePath, data C.gpointer) {
+func TreeView_testCollapseRowHandler(_ *C.GObject, c_iter *C.GtkTreeIter, c_path *C.GtkTreePath, data C.gpointer) C.gboolean {
 	iter := TreeIterNewFromC(unsafe.Pointer(c_iter))
 
 	path := TreePathNewFromC(unsafe.Pointer(c_path))
 
 	index := int(uintptr(data))
 	callback := signalTreeViewTestCollapseRowMap[index].callback
-	callback(iter, path)
+	retGo := callback(iter, path)
+	retC :=
+		boolToGboolean(retGo)
+	return retC
 }
 
 type signalTreeViewTestExpandRowDetail struct {
@@ -27250,14 +27289,17 @@ func (recv *TreeView) DisconnectTestExpandRow(connectionID int) {
 }
 
 //export TreeView_testExpandRowHandler
-func TreeView_testExpandRowHandler(_ *C.GObject, c_iter *C.GtkTreeIter, c_path *C.GtkTreePath, data C.gpointer) {
+func TreeView_testExpandRowHandler(_ *C.GObject, c_iter *C.GtkTreeIter, c_path *C.GtkTreePath, data C.gpointer) C.gboolean {
 	iter := TreeIterNewFromC(unsafe.Pointer(c_iter))
 
 	path := TreePathNewFromC(unsafe.Pointer(c_path))
 
 	index := int(uintptr(data))
 	callback := signalTreeViewTestExpandRowMap[index].callback
-	callback(iter, path)
+	retGo := callback(iter, path)
+	retC :=
+		boolToGboolean(retGo)
+	return retC
 }
 
 type signalTreeViewToggleCursorRowDetail struct {
@@ -27311,10 +27353,13 @@ func (recv *TreeView) DisconnectToggleCursorRow(connectionID int) {
 }
 
 //export TreeView_toggleCursorRowHandler
-func TreeView_toggleCursorRowHandler(_ *C.GObject, data C.gpointer) {
+func TreeView_toggleCursorRowHandler(_ *C.GObject, data C.gpointer) C.gboolean {
 	index := int(uintptr(data))
 	callback := signalTreeViewToggleCursorRowMap[index].callback
-	callback()
+	retGo := callback()
+	retC :=
+		boolToGboolean(retGo)
+	return retC
 }
 
 type signalTreeViewUnselectAllDetail struct {
@@ -27368,10 +27413,13 @@ func (recv *TreeView) DisconnectUnselectAll(connectionID int) {
 }
 
 //export TreeView_unselectAllHandler
-func TreeView_unselectAllHandler(_ *C.GObject, data C.gpointer) {
+func TreeView_unselectAllHandler(_ *C.GObject, data C.gpointer) C.gboolean {
 	index := int(uintptr(data))
 	callback := signalTreeViewUnselectAllMap[index].callback
-	callback()
+	retGo := callback()
+	retC :=
+		boolToGboolean(retGo)
+	return retC
 }
 
 // TreeViewNew is a wrapper around the C function gtk_tree_view_new.
@@ -29059,12 +29107,15 @@ func (recv *Widget) DisconnectButtonPressEvent(connectionID int) {
 }
 
 //export Widget_buttonPressEventHandler
-func Widget_buttonPressEventHandler(_ *C.GObject, c_event *C.GdkEventButton, data C.gpointer) {
+func Widget_buttonPressEventHandler(_ *C.GObject, c_event *C.GdkEventButton, data C.gpointer) C.gboolean {
 	event := gdk.EventButtonNewFromC(unsafe.Pointer(c_event))
 
 	index := int(uintptr(data))
 	callback := signalWidgetButtonPressEventMap[index].callback
-	callback(event)
+	retGo := callback(event)
+	retC :=
+		boolToGboolean(retGo)
+	return retC
 }
 
 type signalWidgetButtonReleaseEventDetail struct {
@@ -29118,12 +29169,15 @@ func (recv *Widget) DisconnectButtonReleaseEvent(connectionID int) {
 }
 
 //export Widget_buttonReleaseEventHandler
-func Widget_buttonReleaseEventHandler(_ *C.GObject, c_event *C.GdkEventButton, data C.gpointer) {
+func Widget_buttonReleaseEventHandler(_ *C.GObject, c_event *C.GdkEventButton, data C.gpointer) C.gboolean {
 	event := gdk.EventButtonNewFromC(unsafe.Pointer(c_event))
 
 	index := int(uintptr(data))
 	callback := signalWidgetButtonReleaseEventMap[index].callback
-	callback(event)
+	retGo := callback(event)
+	retC :=
+		boolToGboolean(retGo)
+	return retC
 }
 
 // Unsupported signal 'can-activate-accel' for Widget : unsupported parameter signal_id : type guint :
@@ -29238,12 +29292,15 @@ func (recv *Widget) DisconnectConfigureEvent(connectionID int) {
 }
 
 //export Widget_configureEventHandler
-func Widget_configureEventHandler(_ *C.GObject, c_event *C.GdkEventConfigure, data C.gpointer) {
+func Widget_configureEventHandler(_ *C.GObject, c_event *C.GdkEventConfigure, data C.gpointer) C.gboolean {
 	event := gdk.EventConfigureNewFromC(unsafe.Pointer(c_event))
 
 	index := int(uintptr(data))
 	callback := signalWidgetConfigureEventMap[index].callback
-	callback(event)
+	retGo := callback(event)
+	retC :=
+		boolToGboolean(retGo)
+	return retC
 }
 
 // Unsupported signal 'delete-event' for Widget : unsupported parameter event : no type generator for Gdk.Event,
@@ -29547,12 +29604,15 @@ func (recv *Widget) DisconnectEnterNotifyEvent(connectionID int) {
 }
 
 //export Widget_enterNotifyEventHandler
-func Widget_enterNotifyEventHandler(_ *C.GObject, c_event *C.GdkEventCrossing, data C.gpointer) {
+func Widget_enterNotifyEventHandler(_ *C.GObject, c_event *C.GdkEventCrossing, data C.gpointer) C.gboolean {
 	event := gdk.EventCrossingNewFromC(unsafe.Pointer(c_event))
 
 	index := int(uintptr(data))
 	callback := signalWidgetEnterNotifyEventMap[index].callback
-	callback(event)
+	retGo := callback(event)
+	retC :=
+		boolToGboolean(retGo)
+	return retC
 }
 
 // Unsupported signal 'event' for Widget : unsupported parameter event : no type generator for Gdk.Event,
@@ -29612,12 +29672,15 @@ func (recv *Widget) DisconnectFocusInEvent(connectionID int) {
 }
 
 //export Widget_focusInEventHandler
-func Widget_focusInEventHandler(_ *C.GObject, c_event *C.GdkEventFocus, data C.gpointer) {
+func Widget_focusInEventHandler(_ *C.GObject, c_event *C.GdkEventFocus, data C.gpointer) C.gboolean {
 	event := gdk.EventFocusNewFromC(unsafe.Pointer(c_event))
 
 	index := int(uintptr(data))
 	callback := signalWidgetFocusInEventMap[index].callback
-	callback(event)
+	retGo := callback(event)
+	retC :=
+		boolToGboolean(retGo)
+	return retC
 }
 
 type signalWidgetFocusOutEventDetail struct {
@@ -29671,12 +29734,15 @@ func (recv *Widget) DisconnectFocusOutEvent(connectionID int) {
 }
 
 //export Widget_focusOutEventHandler
-func Widget_focusOutEventHandler(_ *C.GObject, c_event *C.GdkEventFocus, data C.gpointer) {
+func Widget_focusOutEventHandler(_ *C.GObject, c_event *C.GdkEventFocus, data C.gpointer) C.gboolean {
 	event := gdk.EventFocusNewFromC(unsafe.Pointer(c_event))
 
 	index := int(uintptr(data))
 	callback := signalWidgetFocusOutEventMap[index].callback
-	callback(event)
+	retGo := callback(event)
+	retC :=
+		boolToGboolean(retGo)
+	return retC
 }
 
 type signalWidgetGrabFocusDetail struct {
@@ -29962,12 +30028,15 @@ func (recv *Widget) DisconnectKeyPressEvent(connectionID int) {
 }
 
 //export Widget_keyPressEventHandler
-func Widget_keyPressEventHandler(_ *C.GObject, c_event *C.GdkEventKey, data C.gpointer) {
+func Widget_keyPressEventHandler(_ *C.GObject, c_event *C.GdkEventKey, data C.gpointer) C.gboolean {
 	event := gdk.EventKeyNewFromC(unsafe.Pointer(c_event))
 
 	index := int(uintptr(data))
 	callback := signalWidgetKeyPressEventMap[index].callback
-	callback(event)
+	retGo := callback(event)
+	retC :=
+		boolToGboolean(retGo)
+	return retC
 }
 
 type signalWidgetKeyReleaseEventDetail struct {
@@ -30021,12 +30090,15 @@ func (recv *Widget) DisconnectKeyReleaseEvent(connectionID int) {
 }
 
 //export Widget_keyReleaseEventHandler
-func Widget_keyReleaseEventHandler(_ *C.GObject, c_event *C.GdkEventKey, data C.gpointer) {
+func Widget_keyReleaseEventHandler(_ *C.GObject, c_event *C.GdkEventKey, data C.gpointer) C.gboolean {
 	event := gdk.EventKeyNewFromC(unsafe.Pointer(c_event))
 
 	index := int(uintptr(data))
 	callback := signalWidgetKeyReleaseEventMap[index].callback
-	callback(event)
+	retGo := callback(event)
+	retC :=
+		boolToGboolean(retGo)
+	return retC
 }
 
 type signalWidgetLeaveNotifyEventDetail struct {
@@ -30080,12 +30152,15 @@ func (recv *Widget) DisconnectLeaveNotifyEvent(connectionID int) {
 }
 
 //export Widget_leaveNotifyEventHandler
-func Widget_leaveNotifyEventHandler(_ *C.GObject, c_event *C.GdkEventCrossing, data C.gpointer) {
+func Widget_leaveNotifyEventHandler(_ *C.GObject, c_event *C.GdkEventCrossing, data C.gpointer) C.gboolean {
 	event := gdk.EventCrossingNewFromC(unsafe.Pointer(c_event))
 
 	index := int(uintptr(data))
 	callback := signalWidgetLeaveNotifyEventMap[index].callback
-	callback(event)
+	retGo := callback(event)
+	retC :=
+		boolToGboolean(retGo)
+	return retC
 }
 
 type signalWidgetMapDetail struct {
@@ -30196,12 +30271,15 @@ func (recv *Widget) DisconnectMapEvent(connectionID int) {
 }
 
 //export Widget_mapEventHandler
-func Widget_mapEventHandler(_ *C.GObject, c_event *C.GdkEventAny, data C.gpointer) {
+func Widget_mapEventHandler(_ *C.GObject, c_event *C.GdkEventAny, data C.gpointer) C.gboolean {
 	event := gdk.EventAnyNewFromC(unsafe.Pointer(c_event))
 
 	index := int(uintptr(data))
 	callback := signalWidgetMapEventMap[index].callback
-	callback(event)
+	retGo := callback(event)
+	retC :=
+		boolToGboolean(retGo)
+	return retC
 }
 
 type signalWidgetMnemonicActivateDetail struct {
@@ -30255,12 +30333,15 @@ func (recv *Widget) DisconnectMnemonicActivate(connectionID int) {
 }
 
 //export Widget_mnemonicActivateHandler
-func Widget_mnemonicActivateHandler(_ *C.GObject, c_group_cycling C.gboolean, data C.gpointer) {
+func Widget_mnemonicActivateHandler(_ *C.GObject, c_group_cycling C.gboolean, data C.gpointer) C.gboolean {
 	groupCycling := c_group_cycling == C.TRUE
 
 	index := int(uintptr(data))
 	callback := signalWidgetMnemonicActivateMap[index].callback
-	callback(groupCycling)
+	retGo := callback(groupCycling)
+	retC :=
+		boolToGboolean(retGo)
+	return retC
 }
 
 type signalWidgetMotionNotifyEventDetail struct {
@@ -30314,12 +30395,15 @@ func (recv *Widget) DisconnectMotionNotifyEvent(connectionID int) {
 }
 
 //export Widget_motionNotifyEventHandler
-func Widget_motionNotifyEventHandler(_ *C.GObject, c_event *C.GdkEventMotion, data C.gpointer) {
+func Widget_motionNotifyEventHandler(_ *C.GObject, c_event *C.GdkEventMotion, data C.gpointer) C.gboolean {
 	event := gdk.EventMotionNewFromC(unsafe.Pointer(c_event))
 
 	index := int(uintptr(data))
 	callback := signalWidgetMotionNotifyEventMap[index].callback
-	callback(event)
+	retGo := callback(event)
+	retC :=
+		boolToGboolean(retGo)
+	return retC
 }
 
 // Unsupported signal 'move-focus' for Widget : unsupported parameter direction : type DirectionType :
@@ -30434,10 +30518,13 @@ func (recv *Widget) DisconnectPopupMenu(connectionID int) {
 }
 
 //export Widget_popupMenuHandler
-func Widget_popupMenuHandler(_ *C.GObject, data C.gpointer) {
+func Widget_popupMenuHandler(_ *C.GObject, data C.gpointer) C.gboolean {
 	index := int(uintptr(data))
 	callback := signalWidgetPopupMenuMap[index].callback
-	callback()
+	retGo := callback()
+	retC :=
+		boolToGboolean(retGo)
+	return retC
 }
 
 type signalWidgetPropertyNotifyEventDetail struct {
@@ -30491,12 +30578,15 @@ func (recv *Widget) DisconnectPropertyNotifyEvent(connectionID int) {
 }
 
 //export Widget_propertyNotifyEventHandler
-func Widget_propertyNotifyEventHandler(_ *C.GObject, c_event *C.GdkEventProperty, data C.gpointer) {
+func Widget_propertyNotifyEventHandler(_ *C.GObject, c_event *C.GdkEventProperty, data C.gpointer) C.gboolean {
 	event := gdk.EventPropertyNewFromC(unsafe.Pointer(c_event))
 
 	index := int(uintptr(data))
 	callback := signalWidgetPropertyNotifyEventMap[index].callback
-	callback(event)
+	retGo := callback(event)
+	retC :=
+		boolToGboolean(retGo)
+	return retC
 }
 
 type signalWidgetProximityInEventDetail struct {
@@ -30550,12 +30640,15 @@ func (recv *Widget) DisconnectProximityInEvent(connectionID int) {
 }
 
 //export Widget_proximityInEventHandler
-func Widget_proximityInEventHandler(_ *C.GObject, c_event *C.GdkEventProximity, data C.gpointer) {
+func Widget_proximityInEventHandler(_ *C.GObject, c_event *C.GdkEventProximity, data C.gpointer) C.gboolean {
 	event := gdk.EventProximityNewFromC(unsafe.Pointer(c_event))
 
 	index := int(uintptr(data))
 	callback := signalWidgetProximityInEventMap[index].callback
-	callback(event)
+	retGo := callback(event)
+	retC :=
+		boolToGboolean(retGo)
+	return retC
 }
 
 type signalWidgetProximityOutEventDetail struct {
@@ -30609,12 +30702,15 @@ func (recv *Widget) DisconnectProximityOutEvent(connectionID int) {
 }
 
 //export Widget_proximityOutEventHandler
-func Widget_proximityOutEventHandler(_ *C.GObject, c_event *C.GdkEventProximity, data C.gpointer) {
+func Widget_proximityOutEventHandler(_ *C.GObject, c_event *C.GdkEventProximity, data C.gpointer) C.gboolean {
 	event := gdk.EventProximityNewFromC(unsafe.Pointer(c_event))
 
 	index := int(uintptr(data))
 	callback := signalWidgetProximityOutEventMap[index].callback
-	callback(event)
+	retGo := callback(event)
+	retC :=
+		boolToGboolean(retGo)
+	return retC
 }
 
 type signalWidgetRealizeDetail struct {
@@ -30784,12 +30880,15 @@ func (recv *Widget) DisconnectScrollEvent(connectionID int) {
 }
 
 //export Widget_scrollEventHandler
-func Widget_scrollEventHandler(_ *C.GObject, c_event *C.GdkEventScroll, data C.gpointer) {
+func Widget_scrollEventHandler(_ *C.GObject, c_event *C.GdkEventScroll, data C.gpointer) C.gboolean {
 	event := gdk.EventScrollNewFromC(unsafe.Pointer(c_event))
 
 	index := int(uintptr(data))
 	callback := signalWidgetScrollEventMap[index].callback
-	callback(event)
+	retGo := callback(event)
+	retC :=
+		boolToGboolean(retGo)
+	return retC
 }
 
 type signalWidgetSelectionClearEventDetail struct {
@@ -30843,12 +30942,15 @@ func (recv *Widget) DisconnectSelectionClearEvent(connectionID int) {
 }
 
 //export Widget_selectionClearEventHandler
-func Widget_selectionClearEventHandler(_ *C.GObject, c_event *C.GdkEventSelection, data C.gpointer) {
+func Widget_selectionClearEventHandler(_ *C.GObject, c_event *C.GdkEventSelection, data C.gpointer) C.gboolean {
 	event := gdk.EventSelectionNewFromC(unsafe.Pointer(c_event))
 
 	index := int(uintptr(data))
 	callback := signalWidgetSelectionClearEventMap[index].callback
-	callback(event)
+	retGo := callback(event)
+	retC :=
+		boolToGboolean(retGo)
+	return retC
 }
 
 // Unsupported signal 'selection-get' for Widget : unsupported parameter info : type guint :
@@ -30904,12 +31006,15 @@ func (recv *Widget) DisconnectSelectionNotifyEvent(connectionID int) {
 }
 
 //export Widget_selectionNotifyEventHandler
-func Widget_selectionNotifyEventHandler(_ *C.GObject, c_event *C.GdkEventSelection, data C.gpointer) {
+func Widget_selectionNotifyEventHandler(_ *C.GObject, c_event *C.GdkEventSelection, data C.gpointer) C.gboolean {
 	event := gdk.EventSelectionNewFromC(unsafe.Pointer(c_event))
 
 	index := int(uintptr(data))
 	callback := signalWidgetSelectionNotifyEventMap[index].callback
-	callback(event)
+	retGo := callback(event)
+	retC :=
+		boolToGboolean(retGo)
+	return retC
 }
 
 // Unsupported signal 'selection-received' for Widget : unsupported parameter time : type guint :
@@ -30965,12 +31070,15 @@ func (recv *Widget) DisconnectSelectionRequestEvent(connectionID int) {
 }
 
 //export Widget_selectionRequestEventHandler
-func Widget_selectionRequestEventHandler(_ *C.GObject, c_event *C.GdkEventSelection, data C.gpointer) {
+func Widget_selectionRequestEventHandler(_ *C.GObject, c_event *C.GdkEventSelection, data C.gpointer) C.gboolean {
 	event := gdk.EventSelectionNewFromC(unsafe.Pointer(c_event))
 
 	index := int(uintptr(data))
 	callback := signalWidgetSelectionRequestEventMap[index].callback
-	callback(event)
+	retGo := callback(event)
+	retC :=
+		boolToGboolean(retGo)
+	return retC
 }
 
 type signalWidgetShowDetail struct {
@@ -31205,12 +31313,15 @@ func (recv *Widget) DisconnectUnmapEvent(connectionID int) {
 }
 
 //export Widget_unmapEventHandler
-func Widget_unmapEventHandler(_ *C.GObject, c_event *C.GdkEventAny, data C.gpointer) {
+func Widget_unmapEventHandler(_ *C.GObject, c_event *C.GdkEventAny, data C.gpointer) C.gboolean {
 	event := gdk.EventAnyNewFromC(unsafe.Pointer(c_event))
 
 	index := int(uintptr(data))
 	callback := signalWidgetUnmapEventMap[index].callback
-	callback(event)
+	retGo := callback(event)
+	retC :=
+		boolToGboolean(retGo)
+	return retC
 }
 
 type signalWidgetUnrealizeDetail struct {
@@ -31321,12 +31432,15 @@ func (recv *Widget) DisconnectVisibilityNotifyEvent(connectionID int) {
 }
 
 //export Widget_visibilityNotifyEventHandler
-func Widget_visibilityNotifyEventHandler(_ *C.GObject, c_event *C.GdkEventVisibility, data C.gpointer) {
+func Widget_visibilityNotifyEventHandler(_ *C.GObject, c_event *C.GdkEventVisibility, data C.gpointer) C.gboolean {
 	event := gdk.EventVisibilityNewFromC(unsafe.Pointer(c_event))
 
 	index := int(uintptr(data))
 	callback := signalWidgetVisibilityNotifyEventMap[index].callback
-	callback(event)
+	retGo := callback(event)
+	retC :=
+		boolToGboolean(retGo)
+	return retC
 }
 
 type signalWidgetWindowStateEventDetail struct {
@@ -31380,12 +31494,15 @@ func (recv *Widget) DisconnectWindowStateEvent(connectionID int) {
 }
 
 //export Widget_windowStateEventHandler
-func Widget_windowStateEventHandler(_ *C.GObject, c_event *C.GdkEventWindowState, data C.gpointer) {
+func Widget_windowStateEventHandler(_ *C.GObject, c_event *C.GdkEventWindowState, data C.gpointer) C.gboolean {
 	event := gdk.EventWindowStateNewFromC(unsafe.Pointer(c_event))
 
 	index := int(uintptr(data))
 	callback := signalWidgetWindowStateEventMap[index].callback
-	callback(event)
+	retGo := callback(event)
+	retC :=
+		boolToGboolean(retGo)
+	return retC
 }
 
 // Unsupported : gtk_widget_new : unsupported parameter type : no type generator for GType, GType
@@ -32709,12 +32826,15 @@ func (recv *Window) DisconnectEnableDebugging(connectionID int) {
 }
 
 //export Window_enableDebuggingHandler
-func Window_enableDebuggingHandler(_ *C.GObject, c_toggle C.gboolean, data C.gpointer) {
+func Window_enableDebuggingHandler(_ *C.GObject, c_toggle C.gboolean, data C.gpointer) C.gboolean {
 	toggle := c_toggle == C.TRUE
 
 	index := int(uintptr(data))
 	callback := signalWindowEnableDebuggingMap[index].callback
-	callback(toggle)
+	retGo := callback(toggle)
+	retC :=
+		boolToGboolean(retGo)
+	return retC
 }
 
 type signalWindowKeysChangedDetail struct {
