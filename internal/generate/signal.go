@@ -153,13 +153,11 @@ func (s *Signal) generateHandlerFunction(g *jen.Group) {
 	g.
 		Func().
 		Id(s.goNameHandler).
-		ParamsFunc(s.Parameters.generateFunctionDeclarationCtypes).
-		ParamsFunc(s.ReturnValue.generateFunctionDeclarationCtype).
+		ParamsFunc(s.generateHandlerParameters).
+		//ParamsFunc(s.ReturnValue.generateFunctionDeclarationCtype).
 		BlockFunc(func(g *jen.Group) {
-			//g.Qual("fmt", "Println").Call(jen.Lit("cb"))
-
 			s.Parameters.generateGoVars(g)
-			//s.generateCall(g)
+			s.generateHandlerCall(g)
 
 			//s.generateGoReturnVars(g)
 			//s.generateOutputParamsGoVars(g)
@@ -175,6 +173,30 @@ func (s *Signal) generateHandlerFunction(g *jen.Group) {
 	//	cb := signalKeyPressEventMap[int(data)]
 	//	cb(goEvent)
 	//}
+}
+
+func (s *Signal) generateHandlerParameters(g *jen.Group) {
+	g.Id("_").Op("*").Qual("C", "GObject")
+	s.Parameters.generateFunctionDeclarationCtypes(g)
+	g.Id("data").Qual("C", "gpointer")
+}
+
+func (s *Signal) generateHandlerCall(g *jen.Group) {
+	// index := int(c_index)
+	g.Id("index").Op(":=").Int().Call(jen.Uintptr().Call(jen.Id("data")))
+
+	//	callback := signalKeyPressEventMap[signalKeyPressEventId]
+	g.Id("callback").Op(":=").Id(s.varNameMap).Index(jen.Id("index"))
+
+	g.
+		//Id("retC").
+		//Op(":=").
+		Id("callback").
+		CallFunc(func(g *jen.Group) {
+			for _, p := range s.Parameters {
+				g.Id(p.goVarName)
+			}
+		})
 }
 
 func (s *Signal) generateLockUnlock(g *jen.Group) {

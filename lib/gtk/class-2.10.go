@@ -175,7 +175,11 @@ func (recv *Assistant) DisconnectApply(connectionID int) {
 }
 
 //export Assistant_applyHandler
-func Assistant_applyHandler() {}
+func Assistant_applyHandler(_ *C.GObject, data C.gpointer) {
+	index := int(uintptr(data))
+	callback := signalAssistantApplyMap[index]
+	callback()
+}
 
 var signalAssistantCancelId int
 var signalAssistantCancelMap = make(map[int]AssistantSignalCancelCallback)
@@ -221,7 +225,11 @@ func (recv *Assistant) DisconnectCancel(connectionID int) {
 }
 
 //export Assistant_cancelHandler
-func Assistant_cancelHandler() {}
+func Assistant_cancelHandler(_ *C.GObject, data C.gpointer) {
+	index := int(uintptr(data))
+	callback := signalAssistantCancelMap[index]
+	callback()
+}
 
 var signalAssistantCloseId int
 var signalAssistantCloseMap = make(map[int]AssistantSignalCloseCallback)
@@ -267,7 +275,11 @@ func (recv *Assistant) DisconnectClose(connectionID int) {
 }
 
 //export Assistant_closeHandler
-func Assistant_closeHandler() {}
+func Assistant_closeHandler(_ *C.GObject, data C.gpointer) {
+	index := int(uintptr(data))
+	callback := signalAssistantCloseMap[index]
+	callback()
+}
 
 var signalAssistantPrepareId int
 var signalAssistantPrepareMap = make(map[int]AssistantSignalPrepareCallback)
@@ -313,9 +325,12 @@ func (recv *Assistant) DisconnectPrepare(connectionID int) {
 }
 
 //export Assistant_prepareHandler
-func Assistant_prepareHandler(c_page *C.GtkWidget) {
+func Assistant_prepareHandler(_ *C.GObject, c_page *C.GtkWidget, data C.gpointer) {
 	page := WidgetNewFromC(unsafe.Pointer(c_page))
 
+	index := int(uintptr(data))
+	callback := signalAssistantPrepareMap[index]
+	callback(page)
 }
 
 // AssistantNew is a wrapper around the C function gtk_assistant_new.
@@ -1098,9 +1113,12 @@ func (recv *PrintOperation) DisconnectBeginPrint(connectionID int) {
 }
 
 //export PrintOperation_beginPrintHandler
-func PrintOperation_beginPrintHandler(c_context *C.GtkPrintContext) {
+func PrintOperation_beginPrintHandler(_ *C.GObject, c_context *C.GtkPrintContext, data C.gpointer) {
 	context := PrintContextNewFromC(unsafe.Pointer(c_context))
 
+	index := int(uintptr(data))
+	callback := signalPrintOperationBeginPrintMap[index]
+	callback(context)
 }
 
 var signalPrintOperationCreateCustomWidgetId int
@@ -1147,7 +1165,11 @@ func (recv *PrintOperation) DisconnectCreateCustomWidget(connectionID int) {
 }
 
 //export PrintOperation_createCustomWidgetHandler
-func PrintOperation_createCustomWidgetHandler() *C.GObject {}
+func PrintOperation_createCustomWidgetHandler(_ *C.GObject, data C.gpointer) {
+	index := int(uintptr(data))
+	callback := signalPrintOperationCreateCustomWidgetMap[index]
+	callback()
+}
 
 var signalPrintOperationCustomWidgetApplyId int
 var signalPrintOperationCustomWidgetApplyMap = make(map[int]PrintOperationSignalCustomWidgetApplyCallback)
@@ -1193,9 +1215,12 @@ func (recv *PrintOperation) DisconnectCustomWidgetApply(connectionID int) {
 }
 
 //export PrintOperation_customWidgetApplyHandler
-func PrintOperation_customWidgetApplyHandler(c_widget *C.GtkWidget) {
+func PrintOperation_customWidgetApplyHandler(_ *C.GObject, c_widget *C.GtkWidget, data C.gpointer) {
 	widget := WidgetNewFromC(unsafe.Pointer(c_widget))
 
+	index := int(uintptr(data))
+	callback := signalPrintOperationCustomWidgetApplyMap[index]
+	callback(widget)
 }
 
 // Unsupported signal 'done' for PrintOperation : unsupported parameter result : type PrintOperationResult :
@@ -1246,9 +1271,12 @@ func (recv *PrintOperation) DisconnectEndPrint(connectionID int) {
 }
 
 //export PrintOperation_endPrintHandler
-func PrintOperation_endPrintHandler(c_context *C.GtkPrintContext) {
+func PrintOperation_endPrintHandler(_ *C.GObject, c_context *C.GtkPrintContext, data C.gpointer) {
 	context := PrintContextNewFromC(unsafe.Pointer(c_context))
 
+	index := int(uintptr(data))
+	callback := signalPrintOperationEndPrintMap[index]
+	callback(context)
 }
 
 var signalPrintOperationPaginateId int
@@ -1295,9 +1323,12 @@ func (recv *PrintOperation) DisconnectPaginate(connectionID int) {
 }
 
 //export PrintOperation_paginateHandler
-func PrintOperation_paginateHandler(c_context *C.GtkPrintContext) C.gboolean {
+func PrintOperation_paginateHandler(_ *C.GObject, c_context *C.GtkPrintContext, data C.gpointer) {
 	context := PrintContextNewFromC(unsafe.Pointer(c_context))
 
+	index := int(uintptr(data))
+	callback := signalPrintOperationPaginateMap[index]
+	callback(context)
 }
 
 // Unsupported signal 'preview' for PrintOperation : unsupported parameter preview : no type generator for PrintOperationPreview,
@@ -1348,7 +1379,11 @@ func (recv *PrintOperation) DisconnectStatusChanged(connectionID int) {
 }
 
 //export PrintOperation_statusChangedHandler
-func PrintOperation_statusChangedHandler() {}
+func PrintOperation_statusChangedHandler(_ *C.GObject, data C.gpointer) {
+	index := int(uintptr(data))
+	callback := signalPrintOperationStatusChangedMap[index]
+	callback()
+}
 
 // PrintOperationNew is a wrapper around the C function gtk_print_operation_new.
 func PrintOperationNew() *PrintOperation {
@@ -2540,7 +2575,11 @@ func (recv *SpinButton) DisconnectWrapped(connectionID int) {
 }
 
 //export SpinButton_wrappedHandler
-func SpinButton_wrappedHandler() {}
+func SpinButton_wrappedHandler(_ *C.GObject, data C.gpointer) {
+	index := int(uintptr(data))
+	callback := signalSpinButtonWrappedMap[index]
+	callback()
+}
 
 var signalStatusIconActivateId int
 var signalStatusIconActivateMap = make(map[int]StatusIconSignalActivateCallback)
@@ -2586,7 +2625,11 @@ func (recv *StatusIcon) DisconnectActivate(connectionID int) {
 }
 
 //export StatusIcon_activateHandler
-func StatusIcon_activateHandler() {}
+func StatusIcon_activateHandler(_ *C.GObject, data C.gpointer) {
+	index := int(uintptr(data))
+	callback := signalStatusIconActivateMap[index]
+	callback()
+}
 
 // Unsupported signal 'popup-menu' for StatusIcon : unsupported parameter button : type guint :
 

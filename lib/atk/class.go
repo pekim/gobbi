@@ -158,7 +158,11 @@ func (recv *Hyperlink) DisconnectLinkActivated(connectionID int) {
 }
 
 //export Hyperlink_linkActivatedHandler
-func Hyperlink_linkActivatedHandler() {}
+func Hyperlink_linkActivatedHandler(_ *C.GObject, data C.gpointer) {
+	index := int(uintptr(data))
+	callback := signalHyperlinkLinkActivatedMap[index]
+	callback()
+}
 
 // GetEndIndex is a wrapper around the C function atk_hyperlink_get_end_index.
 func (recv *Hyperlink) GetEndIndex() int32 {
@@ -444,9 +448,12 @@ func (recv *Object) DisconnectFocusEvent(connectionID int) {
 }
 
 //export Object_focusEventHandler
-func Object_focusEventHandler(c_arg1 C.gboolean) {
+func Object_focusEventHandler(_ *C.GObject, c_arg1 C.gboolean, data C.gpointer) {
 	arg1 := c_arg1 == C.TRUE
 
+	index := int(uintptr(data))
+	callback := signalObjectFocusEventMap[index]
+	callback(arg1)
 }
 
 // Unsupported signal 'property-change' for Object : unsupported parameter arg1 : type gpointer :
@@ -497,7 +504,11 @@ func (recv *Object) DisconnectVisibleDataChanged(connectionID int) {
 }
 
 //export Object_visibleDataChangedHandler
-func Object_visibleDataChangedHandler() {}
+func Object_visibleDataChangedHandler(_ *C.GObject, data C.gpointer) {
+	index := int(uintptr(data))
+	callback := signalObjectVisibleDataChangedMap[index]
+	callback()
+}
 
 // AddRelationship is a wrapper around the C function atk_object_add_relationship.
 func (recv *Object) AddRelationship(relationship RelationType, target *Object) bool {

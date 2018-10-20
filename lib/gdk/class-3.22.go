@@ -95,9 +95,12 @@ func (recv *Device) DisconnectToolChanged(connectionID int) {
 }
 
 //export Device_toolChangedHandler
-func Device_toolChangedHandler(c_tool *C.GdkDeviceTool) {
+func Device_toolChangedHandler(_ *C.GObject, c_tool *C.GdkDeviceTool, data C.gpointer) {
 	tool := DeviceToolNewFromC(unsafe.Pointer(c_tool))
 
+	index := int(uintptr(data))
+	callback := signalDeviceToolChangedMap[index]
+	callback(tool)
 }
 
 // GetAxes is a wrapper around the C function gdk_device_get_axes.
@@ -208,9 +211,12 @@ func (recv *Display) DisconnectMonitorAdded(connectionID int) {
 }
 
 //export Display_monitorAddedHandler
-func Display_monitorAddedHandler(c_monitor *C.GdkMonitor) {
+func Display_monitorAddedHandler(_ *C.GObject, c_monitor *C.GdkMonitor, data C.gpointer) {
 	monitor := MonitorNewFromC(unsafe.Pointer(c_monitor))
 
+	index := int(uintptr(data))
+	callback := signalDisplayMonitorAddedMap[index]
+	callback(monitor)
 }
 
 var signalDisplayMonitorRemovedId int
@@ -257,9 +263,12 @@ func (recv *Display) DisconnectMonitorRemoved(connectionID int) {
 }
 
 //export Display_monitorRemovedHandler
-func Display_monitorRemovedHandler(c_monitor *C.GdkMonitor) {
+func Display_monitorRemovedHandler(_ *C.GObject, c_monitor *C.GdkMonitor, data C.gpointer) {
 	monitor := MonitorNewFromC(unsafe.Pointer(c_monitor))
 
+	index := int(uintptr(data))
+	callback := signalDisplayMonitorRemovedMap[index]
+	callback(monitor)
 }
 
 // GetMonitor is a wrapper around the C function gdk_display_get_monitor.
@@ -467,7 +476,11 @@ func (recv *Monitor) DisconnectInvalidate(connectionID int) {
 }
 
 //export Monitor_invalidateHandler
-func Monitor_invalidateHandler() {}
+func Monitor_invalidateHandler(_ *C.GObject, data C.gpointer) {
+	index := int(uintptr(data))
+	callback := signalMonitorInvalidateMap[index]
+	callback()
+}
 
 // GetDisplay is a wrapper around the C function gdk_monitor_get_display.
 func (recv *Monitor) GetDisplay() *Display {

@@ -295,7 +295,11 @@ func (recv *Device) DisconnectChanged(connectionID int) {
 }
 
 //export Device_changedHandler
-func Device_changedHandler() {}
+func Device_changedHandler(_ *C.GObject, data C.gpointer) {
+	index := int(uintptr(data))
+	callback := signalDeviceChangedMap[index]
+	callback()
+}
 
 // Unsupported : gdk_device_get_axis : unsupported parameter axes : no param type
 
@@ -421,9 +425,12 @@ func (recv *DeviceManager) DisconnectDeviceAdded(connectionID int) {
 }
 
 //export DeviceManager_deviceAddedHandler
-func DeviceManager_deviceAddedHandler(c_device *C.GdkDevice) {
+func DeviceManager_deviceAddedHandler(_ *C.GObject, c_device *C.GdkDevice, data C.gpointer) {
 	device := DeviceNewFromC(unsafe.Pointer(c_device))
 
+	index := int(uintptr(data))
+	callback := signalDeviceManagerDeviceAddedMap[index]
+	callback(device)
 }
 
 var signalDeviceManagerDeviceChangedId int
@@ -470,9 +477,12 @@ func (recv *DeviceManager) DisconnectDeviceChanged(connectionID int) {
 }
 
 //export DeviceManager_deviceChangedHandler
-func DeviceManager_deviceChangedHandler(c_device *C.GdkDevice) {
+func DeviceManager_deviceChangedHandler(_ *C.GObject, c_device *C.GdkDevice, data C.gpointer) {
 	device := DeviceNewFromC(unsafe.Pointer(c_device))
 
+	index := int(uintptr(data))
+	callback := signalDeviceManagerDeviceChangedMap[index]
+	callback(device)
 }
 
 var signalDeviceManagerDeviceRemovedId int
@@ -519,9 +529,12 @@ func (recv *DeviceManager) DisconnectDeviceRemoved(connectionID int) {
 }
 
 //export DeviceManager_deviceRemovedHandler
-func DeviceManager_deviceRemovedHandler(c_device *C.GdkDevice) {
+func DeviceManager_deviceRemovedHandler(_ *C.GObject, c_device *C.GdkDevice, data C.gpointer) {
 	device := DeviceNewFromC(unsafe.Pointer(c_device))
 
+	index := int(uintptr(data))
+	callback := signalDeviceManagerDeviceRemovedMap[index]
+	callback(device)
 }
 
 // Display is a wrapper around the C record GdkDisplay.
@@ -600,7 +613,11 @@ func (recv *Display) DisconnectOpened(connectionID int) {
 }
 
 //export Display_openedHandler
-func Display_openedHandler() {}
+func Display_openedHandler(_ *C.GObject, data C.gpointer) {
+	index := int(uintptr(data))
+	callback := signalDisplayOpenedMap[index]
+	callback()
+}
 
 // DeviceIsGrabbed is a wrapper around the C function gdk_display_device_is_grabbed.
 func (recv *Display) DeviceIsGrabbed(device *Device) bool {
@@ -769,7 +786,11 @@ func (recv *FrameClock) DisconnectAfterPaint(connectionID int) {
 }
 
 //export FrameClock_afterPaintHandler
-func FrameClock_afterPaintHandler() {}
+func FrameClock_afterPaintHandler(_ *C.GObject, data C.gpointer) {
+	index := int(uintptr(data))
+	callback := signalFrameClockAfterPaintMap[index]
+	callback()
+}
 
 var signalFrameClockBeforePaintId int
 var signalFrameClockBeforePaintMap = make(map[int]FrameClockSignalBeforePaintCallback)
@@ -815,7 +836,11 @@ func (recv *FrameClock) DisconnectBeforePaint(connectionID int) {
 }
 
 //export FrameClock_beforePaintHandler
-func FrameClock_beforePaintHandler() {}
+func FrameClock_beforePaintHandler(_ *C.GObject, data C.gpointer) {
+	index := int(uintptr(data))
+	callback := signalFrameClockBeforePaintMap[index]
+	callback()
+}
 
 var signalFrameClockFlushEventsId int
 var signalFrameClockFlushEventsMap = make(map[int]FrameClockSignalFlushEventsCallback)
@@ -861,7 +886,11 @@ func (recv *FrameClock) DisconnectFlushEvents(connectionID int) {
 }
 
 //export FrameClock_flushEventsHandler
-func FrameClock_flushEventsHandler() {}
+func FrameClock_flushEventsHandler(_ *C.GObject, data C.gpointer) {
+	index := int(uintptr(data))
+	callback := signalFrameClockFlushEventsMap[index]
+	callback()
+}
 
 var signalFrameClockLayoutId int
 var signalFrameClockLayoutMap = make(map[int]FrameClockSignalLayoutCallback)
@@ -907,7 +936,11 @@ func (recv *FrameClock) DisconnectLayout(connectionID int) {
 }
 
 //export FrameClock_layoutHandler
-func FrameClock_layoutHandler() {}
+func FrameClock_layoutHandler(_ *C.GObject, data C.gpointer) {
+	index := int(uintptr(data))
+	callback := signalFrameClockLayoutMap[index]
+	callback()
+}
 
 var signalFrameClockPaintId int
 var signalFrameClockPaintMap = make(map[int]FrameClockSignalPaintCallback)
@@ -953,7 +986,11 @@ func (recv *FrameClock) DisconnectPaint(connectionID int) {
 }
 
 //export FrameClock_paintHandler
-func FrameClock_paintHandler() {}
+func FrameClock_paintHandler(_ *C.GObject, data C.gpointer) {
+	index := int(uintptr(data))
+	callback := signalFrameClockPaintMap[index]
+	callback()
+}
 
 var signalFrameClockResumeEventsId int
 var signalFrameClockResumeEventsMap = make(map[int]FrameClockSignalResumeEventsCallback)
@@ -999,7 +1036,11 @@ func (recv *FrameClock) DisconnectResumeEvents(connectionID int) {
 }
 
 //export FrameClock_resumeEventsHandler
-func FrameClock_resumeEventsHandler() {}
+func FrameClock_resumeEventsHandler(_ *C.GObject, data C.gpointer) {
+	index := int(uintptr(data))
+	callback := signalFrameClockResumeEventsMap[index]
+	callback()
+}
 
 var signalFrameClockUpdateId int
 var signalFrameClockUpdateMap = make(map[int]FrameClockSignalUpdateCallback)
@@ -1045,7 +1086,11 @@ func (recv *FrameClock) DisconnectUpdate(connectionID int) {
 }
 
 //export FrameClock_updateHandler
-func FrameClock_updateHandler() {}
+func FrameClock_updateHandler(_ *C.GObject, data C.gpointer) {
+	index := int(uintptr(data))
+	callback := signalFrameClockUpdateMap[index]
+	callback()
+}
 
 // GLContext is a wrapper around the C record GdkGLContext.
 type GLContext struct {

@@ -122,7 +122,11 @@ func (recv *Screen) DisconnectMonitorsChanged(connectionID int) {
 }
 
 //export Screen_monitorsChangedHandler
-func Screen_monitorsChangedHandler() {}
+func Screen_monitorsChangedHandler(_ *C.GObject, data C.gpointer) {
+	index := int(uintptr(data))
+	callback := signalScreenMonitorsChangedMap[index]
+	callback()
+}
 
 // GetMonitorHeightMm is a wrapper around the C function gdk_screen_get_monitor_height_mm.
 func (recv *Screen) GetMonitorHeightMm(monitorNum int32) int32 {

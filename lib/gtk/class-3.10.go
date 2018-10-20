@@ -523,9 +523,12 @@ func (recv *ListBox) DisconnectRowActivated(connectionID int) {
 }
 
 //export ListBox_rowActivatedHandler
-func ListBox_rowActivatedHandler(c_row *C.GtkListBoxRow) {
+func ListBox_rowActivatedHandler(_ *C.GObject, c_row *C.GtkListBoxRow, data C.gpointer) {
 	row := ListBoxRowNewFromC(unsafe.Pointer(c_row))
 
+	index := int(uintptr(data))
+	callback := signalListBoxRowActivatedMap[index]
+	callback(row)
 }
 
 var signalListBoxRowSelectedId int
@@ -572,9 +575,12 @@ func (recv *ListBox) DisconnectRowSelected(connectionID int) {
 }
 
 //export ListBox_rowSelectedHandler
-func ListBox_rowSelectedHandler(c_row *C.GtkListBoxRow) {
+func ListBox_rowSelectedHandler(_ *C.GObject, c_row *C.GtkListBoxRow, data C.gpointer) {
 	row := ListBoxRowNewFromC(unsafe.Pointer(c_row))
 
+	index := int(uintptr(data))
+	callback := signalListBoxRowSelectedMap[index]
+	callback(row)
 }
 
 // ListBoxNew is a wrapper around the C function gtk_list_box_new.
@@ -790,7 +796,11 @@ func (recv *ListBoxRow) DisconnectActivate(connectionID int) {
 }
 
 //export ListBoxRow_activateHandler
-func ListBoxRow_activateHandler() {}
+func ListBoxRow_activateHandler(_ *C.GObject, data C.gpointer) {
+	index := int(uintptr(data))
+	callback := signalListBoxRowActivateMap[index]
+	callback()
+}
 
 // ListBoxRowNew is a wrapper around the C function gtk_list_box_row_new.
 func ListBoxRowNew() *ListBoxRow {
@@ -1100,7 +1110,11 @@ func (recv *SearchEntry) DisconnectSearchChanged(connectionID int) {
 }
 
 //export SearchEntry_searchChangedHandler
-func SearchEntry_searchChangedHandler() {}
+func SearchEntry_searchChangedHandler(_ *C.GObject, data C.gpointer) {
+	index := int(uintptr(data))
+	callback := signalSearchEntrySearchChangedMap[index]
+	callback()
+}
 
 // StackNew is a wrapper around the C function gtk_stack_new.
 func StackNew() *Stack {

@@ -93,9 +93,12 @@ func (recv *Display) DisconnectSeatAdded(connectionID int) {
 }
 
 //export Display_seatAddedHandler
-func Display_seatAddedHandler(c_seat *C.GdkSeat) {
+func Display_seatAddedHandler(_ *C.GObject, c_seat *C.GdkSeat, data C.gpointer) {
 	seat := SeatNewFromC(unsafe.Pointer(c_seat))
 
+	index := int(uintptr(data))
+	callback := signalDisplaySeatAddedMap[index]
+	callback(seat)
 }
 
 var signalDisplaySeatRemovedId int
@@ -142,9 +145,12 @@ func (recv *Display) DisconnectSeatRemoved(connectionID int) {
 }
 
 //export Display_seatRemovedHandler
-func Display_seatRemovedHandler(c_seat *C.GdkSeat) {
+func Display_seatRemovedHandler(_ *C.GObject, c_seat *C.GdkSeat, data C.gpointer) {
 	seat := SeatNewFromC(unsafe.Pointer(c_seat))
 
+	index := int(uintptr(data))
+	callback := signalDisplaySeatRemovedMap[index]
+	callback(seat)
 }
 
 // GetDefaultSeat is a wrapper around the C function gdk_display_get_default_seat.
@@ -211,7 +217,11 @@ func (recv *DragContext) DisconnectDndFinished(connectionID int) {
 }
 
 //export DragContext_dndFinishedHandler
-func DragContext_dndFinishedHandler() {}
+func DragContext_dndFinishedHandler(_ *C.GObject, data C.gpointer) {
+	index := int(uintptr(data))
+	callback := signalDragContextDndFinishedMap[index]
+	callback()
+}
 
 // Unsupported signal 'drop-performed' for DragContext : unsupported parameter time : type gint :
 

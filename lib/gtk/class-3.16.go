@@ -476,7 +476,11 @@ func (recv *SearchEntry) DisconnectNextMatch(connectionID int) {
 }
 
 //export SearchEntry_nextMatchHandler
-func SearchEntry_nextMatchHandler() {}
+func SearchEntry_nextMatchHandler(_ *C.GObject, data C.gpointer) {
+	index := int(uintptr(data))
+	callback := signalSearchEntryNextMatchMap[index]
+	callback()
+}
 
 var signalSearchEntryPreviousMatchId int
 var signalSearchEntryPreviousMatchMap = make(map[int]SearchEntrySignalPreviousMatchCallback)
@@ -522,7 +526,11 @@ func (recv *SearchEntry) DisconnectPreviousMatch(connectionID int) {
 }
 
 //export SearchEntry_previousMatchHandler
-func SearchEntry_previousMatchHandler() {}
+func SearchEntry_previousMatchHandler(_ *C.GObject, data C.gpointer) {
+	index := int(uintptr(data))
+	callback := signalSearchEntryPreviousMatchMap[index]
+	callback()
+}
 
 var signalSearchEntryStopSearchId int
 var signalSearchEntryStopSearchMap = make(map[int]SearchEntrySignalStopSearchCallback)
@@ -568,7 +576,11 @@ func (recv *SearchEntry) DisconnectStopSearch(connectionID int) {
 }
 
 //export SearchEntry_stopSearchHandler
-func SearchEntry_stopSearchHandler() {}
+func SearchEntry_stopSearchHandler(_ *C.GObject, data C.gpointer) {
+	index := int(uintptr(data))
+	callback := signalSearchEntryStopSearchMap[index]
+	callback()
+}
 
 // Unsupported : gtk_search_entry_handle_event : unsupported parameter event : no type generator for Gdk.Event, GdkEvent*
 

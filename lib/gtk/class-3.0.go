@@ -1621,7 +1621,11 @@ func (recv *StyleContext) DisconnectChanged(connectionID int) {
 }
 
 //export StyleContext_changedHandler
-func StyleContext_changedHandler() {}
+func StyleContext_changedHandler(_ *C.GObject, data C.gpointer) {
+	index := int(uintptr(data))
+	callback := signalStyleContextChangedMap[index]
+	callback()
+}
 
 // AddClass is a wrapper around the C function gtk_style_context_add_class.
 func (recv *StyleContext) AddClass(className string) {
@@ -2371,9 +2375,12 @@ func (recv *Widget) DisconnectDraw(connectionID int) {
 }
 
 //export Widget_drawHandler
-func Widget_drawHandler(c_cr *C.cairo_t) C.gboolean {
+func Widget_drawHandler(_ *C.GObject, c_cr *C.cairo_t, data C.gpointer) {
 	cr := cairo.ContextNewFromC(unsafe.Pointer(c_cr))
 
+	index := int(uintptr(data))
+	callback := signalWidgetDrawMap[index]
+	callback(cr)
 }
 
 // Unsupported signal 'state-flags-changed' for Widget : unsupported parameter flags : type StateFlags :
@@ -2422,7 +2429,11 @@ func (recv *Widget) DisconnectStyleUpdated(connectionID int) {
 }
 
 //export Widget_styleUpdatedHandler
-func Widget_styleUpdatedHandler() {}
+func Widget_styleUpdatedHandler(_ *C.GObject, data C.gpointer) {
+	index := int(uintptr(data))
+	callback := signalWidgetStyleUpdatedMap[index]
+	callback()
+}
 
 // Unsupported : gtk_widget_new : unsupported parameter type : no type generator for GType, GType
 

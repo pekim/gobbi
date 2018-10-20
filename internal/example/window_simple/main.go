@@ -1,6 +1,8 @@
 package main
 
 import (
+	"fmt"
+	"github.com/pekim/gobbi/lib/gdk"
 	"github.com/pekim/gobbi/lib/gtk"
 	"runtime"
 )
@@ -21,9 +23,15 @@ func main() {
 	container.Add(gtk.LabelNew("Label 2 ++").Widget())
 	window.Container().Add(container.Widget())
 
-	window.Widget().ShowAll()
+	window.Widget().ConnectDestroy(func() {
+		gtk.MainQuit()
+	})
 
-	// Will not terminate when the window is closed.
-	// Can be fixed when signals are supported.
+	window.Widget().ConnectKeyPressEvent(func(event *gdk.EventKey) bool {
+		fmt.Println(event.Keyval, event.String)
+		return false
+	})
+
+	window.Widget().ShowAll()
 	gtk.Main()
 }

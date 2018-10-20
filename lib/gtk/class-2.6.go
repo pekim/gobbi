@@ -436,9 +436,12 @@ func (recv *Clipboard) DisconnectOwnerChange(connectionID int) {
 }
 
 //export Clipboard_ownerChangeHandler
-func Clipboard_ownerChangeHandler(c_event *C.GdkEventOwnerChange) {
+func Clipboard_ownerChangeHandler(_ *C.GObject, c_event *C.GdkEventOwnerChange, data C.gpointer) {
 	event := gdk.EventOwnerChangeNewFromC(unsafe.Pointer(c_event))
 
+	index := int(uintptr(data))
+	callback := signalClipboardOwnerChangeMap[index]
+	callback(event)
 }
 
 // Unsupported : gtk_clipboard_request_image : unsupported parameter callback : no type generator for ClipboardImageReceivedFunc, GtkClipboardImageReceivedFunc

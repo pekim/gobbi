@@ -1601,11 +1601,14 @@ func (recv *ThreadedSocketService) DisconnectRun(connectionID int) {
 }
 
 //export ThreadedSocketService_runHandler
-func ThreadedSocketService_runHandler(c_connection *C.GSocketConnection, c_source_object *C.GObject) C.gboolean {
+func ThreadedSocketService_runHandler(_ *C.GObject, c_connection *C.GSocketConnection, c_source_object *C.GObject, data C.gpointer) {
 	connection := SocketConnectionNewFromC(unsafe.Pointer(c_connection))
 
 	sourceObject := gobject.ObjectNewFromC(unsafe.Pointer(c_source_object))
 
+	index := int(uintptr(data))
+	callback := signalThreadedSocketServiceRunMap[index]
+	callback(connection, sourceObject)
 }
 
 // ThreadedSocketServiceNew is a wrapper around the C function g_threaded_socket_service_new.

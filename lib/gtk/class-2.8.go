@@ -416,9 +416,12 @@ func (recv *Widget) DisconnectGrabBrokenEvent(connectionID int) {
 }
 
 //export Widget_grabBrokenEventHandler
-func Widget_grabBrokenEventHandler(c_event *C.GdkEventGrabBroken) C.gboolean {
+func Widget_grabBrokenEventHandler(_ *C.GObject, c_event *C.GdkEventGrabBroken, data C.gpointer) {
 	event := gdk.EventGrabBrokenNewFromC(unsafe.Pointer(c_event))
 
+	index := int(uintptr(data))
+	callback := signalWidgetGrabBrokenEventMap[index]
+	callback(event)
 }
 
 // Unsupported : gtk_widget_new : unsupported parameter type : no type generator for GType, GType

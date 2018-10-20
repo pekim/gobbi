@@ -792,9 +792,12 @@ func (recv *StatusIcon) DisconnectButtonPressEvent(connectionID int) {
 }
 
 //export StatusIcon_buttonPressEventHandler
-func StatusIcon_buttonPressEventHandler(c_event *C.GdkEventButton) C.gboolean {
+func StatusIcon_buttonPressEventHandler(_ *C.GObject, c_event *C.GdkEventButton, data C.gpointer) {
 	event := gdk.EventButtonNewFromC(unsafe.Pointer(c_event))
 
+	index := int(uintptr(data))
+	callback := signalStatusIconButtonPressEventMap[index]
+	callback(event)
 }
 
 var signalStatusIconButtonReleaseEventId int
@@ -841,9 +844,12 @@ func (recv *StatusIcon) DisconnectButtonReleaseEvent(connectionID int) {
 }
 
 //export StatusIcon_buttonReleaseEventHandler
-func StatusIcon_buttonReleaseEventHandler(c_event *C.GdkEventButton) C.gboolean {
+func StatusIcon_buttonReleaseEventHandler(_ *C.GObject, c_event *C.GdkEventButton, data C.gpointer) {
 	event := gdk.EventButtonNewFromC(unsafe.Pointer(c_event))
 
+	index := int(uintptr(data))
+	callback := signalStatusIconButtonReleaseEventMap[index]
+	callback(event)
 }
 
 // Unsupported : gtk_status_icon_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon, GIcon*
@@ -923,9 +929,12 @@ func (recv *Widget) DisconnectDamageEvent(connectionID int) {
 }
 
 //export Widget_damageEventHandler
-func Widget_damageEventHandler(c_event *C.GdkEventExpose) C.gboolean {
+func Widget_damageEventHandler(_ *C.GObject, c_event *C.GdkEventExpose, data C.gpointer) {
 	event := gdk.EventExposeNewFromC(unsafe.Pointer(c_event))
 
+	index := int(uintptr(data))
+	callback := signalWidgetDamageEventMap[index]
+	callback(event)
 }
 
 // Unsupported : gtk_widget_new : unsupported parameter type : no type generator for GType, GType

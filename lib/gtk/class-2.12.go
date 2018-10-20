@@ -240,7 +240,11 @@ func (recv *ComboBox) DisconnectPopdown(connectionID int) {
 }
 
 //export ComboBox_popdownHandler
-func ComboBox_popdownHandler() C.gboolean {}
+func ComboBox_popdownHandler(_ *C.GObject, data C.gpointer) {
+	index := int(uintptr(data))
+	callback := signalComboBoxPopdownMap[index]
+	callback()
+}
 
 var signalComboBoxPopupId int
 var signalComboBoxPopupMap = make(map[int]ComboBoxSignalPopupCallback)
@@ -286,7 +290,11 @@ func (recv *ComboBox) DisconnectPopup(connectionID int) {
 }
 
 //export ComboBox_popupHandler
-func ComboBox_popupHandler() {}
+func ComboBox_popupHandler(_ *C.GObject, data C.gpointer) {
+	index := int(uintptr(data))
+	callback := signalComboBoxPopupMap[index]
+	callback()
+}
 
 // Unsupported : gtk_combo_box_new_with_model : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
 
@@ -385,7 +393,11 @@ func (recv *FileChooserButton) DisconnectFileSet(connectionID int) {
 }
 
 //export FileChooserButton_fileSetHandler
-func FileChooserButton_fileSetHandler() {}
+func FileChooserButton_fileSetHandler(_ *C.GObject, data C.gpointer) {
+	index := int(uintptr(data))
+	callback := signalFileChooserButtonFileSetMap[index]
+	callback()
+}
 
 // Unsupported : gtk_file_chooser_dialog_new : unsupported parameter ... : varargs
 
@@ -810,7 +822,11 @@ func (recv *ScaleButton) DisconnectPopdown(connectionID int) {
 }
 
 //export ScaleButton_popdownHandler
-func ScaleButton_popdownHandler() {}
+func ScaleButton_popdownHandler(_ *C.GObject, data C.gpointer) {
+	index := int(uintptr(data))
+	callback := signalScaleButtonPopdownMap[index]
+	callback()
+}
 
 var signalScaleButtonPopupId int
 var signalScaleButtonPopupMap = make(map[int]ScaleButtonSignalPopupCallback)
@@ -856,7 +872,11 @@ func (recv *ScaleButton) DisconnectPopup(connectionID int) {
 }
 
 //export ScaleButton_popupHandler
-func ScaleButton_popupHandler() {}
+func ScaleButton_popupHandler(_ *C.GObject, data C.gpointer) {
+	index := int(uintptr(data))
+	callback := signalScaleButtonPopupMap[index]
+	callback()
+}
 
 // Unsupported signal 'value-changed' for ScaleButton : unsupported parameter value : type gdouble :
 

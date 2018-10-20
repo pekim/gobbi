@@ -236,7 +236,11 @@ func (recv *Action) DisconnectActivate(connectionID int) {
 }
 
 //export Action_activateHandler
-func Action_activateHandler() {}
+func Action_activateHandler(_ *C.GObject, data C.gpointer) {
+	index := int(uintptr(data))
+	callback := signalActionActivateMap[index]
+	callback()
+}
 
 // ActionNew is a wrapper around the C function gtk_action_new.
 func ActionNew(name string, label string, tooltip string, stockId string) *Action {
@@ -408,11 +412,14 @@ func (recv *ActionGroup) DisconnectConnectProxy(connectionID int) {
 }
 
 //export ActionGroup_connectProxyHandler
-func ActionGroup_connectProxyHandler(c_action *C.GtkAction, c_proxy *C.GtkWidget) {
+func ActionGroup_connectProxyHandler(_ *C.GObject, c_action *C.GtkAction, c_proxy *C.GtkWidget, data C.gpointer) {
 	action := ActionNewFromC(unsafe.Pointer(c_action))
 
 	proxy := WidgetNewFromC(unsafe.Pointer(c_proxy))
 
+	index := int(uintptr(data))
+	callback := signalActionGroupConnectProxyMap[index]
+	callback(action, proxy)
 }
 
 var signalActionGroupDisconnectProxyId int
@@ -459,11 +466,14 @@ func (recv *ActionGroup) DisconnectDisconnectProxy(connectionID int) {
 }
 
 //export ActionGroup_disconnectProxyHandler
-func ActionGroup_disconnectProxyHandler(c_action *C.GtkAction, c_proxy *C.GtkWidget) {
+func ActionGroup_disconnectProxyHandler(_ *C.GObject, c_action *C.GtkAction, c_proxy *C.GtkWidget, data C.gpointer) {
 	action := ActionNewFromC(unsafe.Pointer(c_action))
 
 	proxy := WidgetNewFromC(unsafe.Pointer(c_proxy))
 
+	index := int(uintptr(data))
+	callback := signalActionGroupDisconnectProxyMap[index]
+	callback(action, proxy)
 }
 
 var signalActionGroupPostActivateId int
@@ -510,9 +520,12 @@ func (recv *ActionGroup) DisconnectPostActivate(connectionID int) {
 }
 
 //export ActionGroup_postActivateHandler
-func ActionGroup_postActivateHandler(c_action *C.GtkAction) {
+func ActionGroup_postActivateHandler(_ *C.GObject, c_action *C.GtkAction, data C.gpointer) {
 	action := ActionNewFromC(unsafe.Pointer(c_action))
 
+	index := int(uintptr(data))
+	callback := signalActionGroupPostActivateMap[index]
+	callback(action)
 }
 
 var signalActionGroupPreActivateId int
@@ -559,9 +572,12 @@ func (recv *ActionGroup) DisconnectPreActivate(connectionID int) {
 }
 
 //export ActionGroup_preActivateHandler
-func ActionGroup_preActivateHandler(c_action *C.GtkAction) {
+func ActionGroup_preActivateHandler(_ *C.GObject, c_action *C.GtkAction, data C.gpointer) {
 	action := ActionNewFromC(unsafe.Pointer(c_action))
 
+	index := int(uintptr(data))
+	callback := signalActionGroupPreActivateMap[index]
+	callback(action)
 }
 
 // ActionGroupNew is a wrapper around the C function gtk_action_group_new.
@@ -849,7 +865,11 @@ func (recv *CellRenderer) DisconnectEditingCanceled(connectionID int) {
 }
 
 //export CellRenderer_editingCanceledHandler
-func CellRenderer_editingCanceledHandler() {}
+func CellRenderer_editingCanceledHandler(_ *C.GObject, data C.gpointer) {
+	index := int(uintptr(data))
+	callback := signalCellRendererEditingCanceledMap[index]
+	callback()
+}
 
 // GetDrawAsRadio is a wrapper around the C function gtk_check_menu_item_get_draw_as_radio.
 func (recv *CheckMenuItem) GetDrawAsRadio() bool {
@@ -917,7 +937,11 @@ func (recv *ColorButton) DisconnectColorSet(connectionID int) {
 }
 
 //export ColorButton_colorSetHandler
-func ColorButton_colorSetHandler() {}
+func ColorButton_colorSetHandler(_ *C.GObject, data C.gpointer) {
+	index := int(uintptr(data))
+	callback := signalColorButtonColorSetMap[index]
+	callback()
+}
 
 // ColorButtonNew is a wrapper around the C function gtk_color_button_new.
 func ColorButtonNew() *ColorButton {
@@ -1054,7 +1078,11 @@ func (recv *ComboBox) DisconnectChanged(connectionID int) {
 }
 
 //export ComboBox_changedHandler
-func ComboBox_changedHandler() {}
+func ComboBox_changedHandler(_ *C.GObject, data C.gpointer) {
+	index := int(uintptr(data))
+	callback := signalComboBoxChangedMap[index]
+	callback()
+}
 
 // ComboBoxNew is a wrapper around the C function gtk_combo_box_new.
 func ComboBoxNew() *ComboBox {
@@ -1569,7 +1597,11 @@ func (recv *FontButton) DisconnectFontSet(connectionID int) {
 }
 
 //export FontButton_fontSetHandler
-func FontButton_fontSetHandler() {}
+func FontButton_fontSetHandler(_ *C.GObject, data C.gpointer) {
+	index := int(uintptr(data))
+	callback := signalFontButtonFontSetMap[index]
+	callback()
+}
 
 // FontButtonNew is a wrapper around the C function gtk_font_button_new.
 func FontButtonNew() *FontButton {
@@ -2029,9 +2061,12 @@ func (recv *RadioAction) DisconnectChanged(connectionID int) {
 }
 
 //export RadioAction_changedHandler
-func RadioAction_changedHandler(c_current *C.GtkRadioAction) {
+func RadioAction_changedHandler(_ *C.GObject, c_current *C.GtkRadioAction, data C.gpointer) {
 	current := RadioActionNewFromC(unsafe.Pointer(c_current))
 
+	index := int(uintptr(data))
+	callback := signalRadioActionChangedMap[index]
+	callback(current)
 }
 
 // RadioActionNew is a wrapper around the C function gtk_radio_action_new.
@@ -2125,7 +2160,11 @@ func (recv *RadioButton) DisconnectGroupChanged(connectionID int) {
 }
 
 //export RadioButton_groupChangedHandler
-func RadioButton_groupChangedHandler() {}
+func RadioButton_groupChangedHandler(_ *C.GObject, data C.gpointer) {
+	index := int(uintptr(data))
+	callback := signalRadioButtonGroupChangedMap[index]
+	callback()
+}
 
 // RadioMenuItemNewFromWidget is a wrapper around the C function gtk_radio_menu_item_new_from_widget.
 func RadioMenuItemNewFromWidget(group *RadioMenuItem) *RadioMenuItem {
@@ -2327,7 +2366,11 @@ func (recv *Style) DisconnectRealize(connectionID int) {
 }
 
 //export Style_realizeHandler
-func Style_realizeHandler() {}
+func Style_realizeHandler(_ *C.GObject, data C.gpointer) {
+	index := int(uintptr(data))
+	callback := signalStyleRealizeMap[index]
+	callback()
+}
 
 var signalStyleUnrealizeId int
 var signalStyleUnrealizeMap = make(map[int]StyleSignalUnrealizeCallback)
@@ -2373,7 +2416,11 @@ func (recv *Style) DisconnectUnrealize(connectionID int) {
 }
 
 //export Style_unrealizeHandler
-func Style_unrealizeHandler() {}
+func Style_unrealizeHandler(_ *C.GObject, data C.gpointer) {
+	index := int(uintptr(data))
+	callback := signalStyleUnrealizeMap[index]
+	callback()
+}
 
 // SelectRange is a wrapper around the C function gtk_text_buffer_select_range.
 func (recv *TextBuffer) SelectRange(ins *TextIter, bound *TextIter) {
@@ -3041,7 +3088,11 @@ func (recv *UIManager) DisconnectActionsChanged(connectionID int) {
 }
 
 //export UIManager_actionsChangedHandler
-func UIManager_actionsChangedHandler() {}
+func UIManager_actionsChangedHandler(_ *C.GObject, data C.gpointer) {
+	index := int(uintptr(data))
+	callback := signalUIManagerActionsChangedMap[index]
+	callback()
+}
 
 var signalUIManagerAddWidgetId int
 var signalUIManagerAddWidgetMap = make(map[int]UIManagerSignalAddWidgetCallback)
@@ -3087,9 +3138,12 @@ func (recv *UIManager) DisconnectAddWidget(connectionID int) {
 }
 
 //export UIManager_addWidgetHandler
-func UIManager_addWidgetHandler(c_widget *C.GtkWidget) {
+func UIManager_addWidgetHandler(_ *C.GObject, c_widget *C.GtkWidget, data C.gpointer) {
 	widget := WidgetNewFromC(unsafe.Pointer(c_widget))
 
+	index := int(uintptr(data))
+	callback := signalUIManagerAddWidgetMap[index]
+	callback(widget)
 }
 
 var signalUIManagerConnectProxyId int
@@ -3136,11 +3190,14 @@ func (recv *UIManager) DisconnectConnectProxy(connectionID int) {
 }
 
 //export UIManager_connectProxyHandler
-func UIManager_connectProxyHandler(c_action *C.GtkAction, c_proxy *C.GtkWidget) {
+func UIManager_connectProxyHandler(_ *C.GObject, c_action *C.GtkAction, c_proxy *C.GtkWidget, data C.gpointer) {
 	action := ActionNewFromC(unsafe.Pointer(c_action))
 
 	proxy := WidgetNewFromC(unsafe.Pointer(c_proxy))
 
+	index := int(uintptr(data))
+	callback := signalUIManagerConnectProxyMap[index]
+	callback(action, proxy)
 }
 
 var signalUIManagerDisconnectProxyId int
@@ -3187,11 +3244,14 @@ func (recv *UIManager) DisconnectDisconnectProxy(connectionID int) {
 }
 
 //export UIManager_disconnectProxyHandler
-func UIManager_disconnectProxyHandler(c_action *C.GtkAction, c_proxy *C.GtkWidget) {
+func UIManager_disconnectProxyHandler(_ *C.GObject, c_action *C.GtkAction, c_proxy *C.GtkWidget, data C.gpointer) {
 	action := ActionNewFromC(unsafe.Pointer(c_action))
 
 	proxy := WidgetNewFromC(unsafe.Pointer(c_proxy))
 
+	index := int(uintptr(data))
+	callback := signalUIManagerDisconnectProxyMap[index]
+	callback(action, proxy)
 }
 
 var signalUIManagerPostActivateId int
@@ -3238,9 +3298,12 @@ func (recv *UIManager) DisconnectPostActivate(connectionID int) {
 }
 
 //export UIManager_postActivateHandler
-func UIManager_postActivateHandler(c_action *C.GtkAction) {
+func UIManager_postActivateHandler(_ *C.GObject, c_action *C.GtkAction, data C.gpointer) {
 	action := ActionNewFromC(unsafe.Pointer(c_action))
 
+	index := int(uintptr(data))
+	callback := signalUIManagerPostActivateMap[index]
+	callback(action)
 }
 
 var signalUIManagerPreActivateId int
@@ -3287,9 +3350,12 @@ func (recv *UIManager) DisconnectPreActivate(connectionID int) {
 }
 
 //export UIManager_preActivateHandler
-func UIManager_preActivateHandler(c_action *C.GtkAction) {
+func UIManager_preActivateHandler(_ *C.GObject, c_action *C.GtkAction, data C.gpointer) {
 	action := ActionNewFromC(unsafe.Pointer(c_action))
 
+	index := int(uintptr(data))
+	callback := signalUIManagerPreActivateMap[index]
+	callback(action)
 }
 
 // UIManagerNew is a wrapper around the C function gtk_ui_manager_new.

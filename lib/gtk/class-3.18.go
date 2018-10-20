@@ -168,7 +168,11 @@ func (recv *PlacesSidebar) DisconnectShowOtherLocations(connectionID int) {
 }
 
 //export PlacesSidebar_showOtherLocationsHandler
-func PlacesSidebar_showOtherLocationsHandler() {}
+func PlacesSidebar_showOtherLocationsHandler(_ *C.GObject, data C.gpointer) {
+	index := int(uintptr(data))
+	callback := signalPlacesSidebarShowOtherLocationsMap[index]
+	callback()
+}
 
 // GetShowOtherLocations is a wrapper around the C function gtk_places_sidebar_get_show_other_locations.
 func (recv *PlacesSidebar) GetShowOtherLocations() bool {

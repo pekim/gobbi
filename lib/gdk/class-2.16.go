@@ -63,7 +63,11 @@ func (recv *Keymap) DisconnectStateChanged(connectionID int) {
 }
 
 //export Keymap_stateChangedHandler
-func Keymap_stateChangedHandler() {}
+func Keymap_stateChangedHandler(_ *C.GObject, data C.gpointer) {
+	index := int(uintptr(data))
+	callback := signalKeymapStateChangedMap[index]
+	callback()
+}
 
 // GetCapsLockState is a wrapper around the C function gdk_keymap_get_caps_lock_state.
 func (recv *Keymap) GetCapsLockState() bool {

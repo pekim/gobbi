@@ -101,7 +101,11 @@ func (recv *MountOperation) DisconnectAborted(connectionID int) {
 }
 
 //export MountOperation_abortedHandler
-func MountOperation_abortedHandler() {}
+func MountOperation_abortedHandler(_ *C.GObject, data C.gpointer) {
+	index := int(uintptr(data))
+	callback := signalMountOperationAbortedMap[index]
+	callback()
+}
 
 // Unsupported : g_simple_action_new : unsupported parameter parameter_type : Blacklisted record : GVariantType
 

@@ -115,9 +115,12 @@ func (recv *Display) DisconnectClosed(connectionID int) {
 }
 
 //export Display_closedHandler
-func Display_closedHandler(c_is_error C.gboolean) {
+func Display_closedHandler(_ *C.GObject, c_is_error C.gboolean, data C.gpointer) {
 	isError := c_is_error == C.TRUE
 
+	index := int(uintptr(data))
+	callback := signalDisplayClosedMap[index]
+	callback(isError)
 }
 
 // Beep is a wrapper around the C function gdk_display_beep.
@@ -286,9 +289,12 @@ func (recv *DisplayManager) DisconnectDisplayOpened(connectionID int) {
 }
 
 //export DisplayManager_displayOpenedHandler
-func DisplayManager_displayOpenedHandler(c_display *C.GdkDisplay) {
+func DisplayManager_displayOpenedHandler(_ *C.GObject, c_display *C.GdkDisplay, data C.gpointer) {
 	display := DisplayNewFromC(unsafe.Pointer(c_display))
 
+	index := int(uintptr(data))
+	callback := signalDisplayManagerDisplayOpenedMap[index]
+	callback(display)
 }
 
 // GetDefaultDisplay is a wrapper around the C function gdk_display_manager_get_default_display.
@@ -360,7 +366,11 @@ func (recv *Keymap) DisconnectKeysChanged(connectionID int) {
 }
 
 //export Keymap_keysChangedHandler
-func Keymap_keysChangedHandler() {}
+func Keymap_keysChangedHandler(_ *C.GObject, data C.gpointer) {
+	index := int(uintptr(data))
+	callback := signalKeymapKeysChangedMap[index]
+	callback()
+}
 
 var signalScreenSizeChangedId int
 var signalScreenSizeChangedMap = make(map[int]ScreenSignalSizeChangedCallback)
@@ -406,7 +416,11 @@ func (recv *Screen) DisconnectSizeChanged(connectionID int) {
 }
 
 //export Screen_sizeChangedHandler
-func Screen_sizeChangedHandler() {}
+func Screen_sizeChangedHandler(_ *C.GObject, data C.gpointer) {
+	index := int(uintptr(data))
+	callback := signalScreenSizeChangedMap[index]
+	callback()
+}
 
 // GetDisplay is a wrapper around the C function gdk_screen_get_display.
 func (recv *Screen) GetDisplay() *Display {

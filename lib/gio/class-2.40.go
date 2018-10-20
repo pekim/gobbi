@@ -110,7 +110,11 @@ func (recv *AppInfoMonitor) DisconnectChanged(connectionID int) {
 }
 
 //export AppInfoMonitor_changedHandler
-func AppInfoMonitor_changedHandler() {}
+func AppInfoMonitor_changedHandler(_ *C.GObject, data C.gpointer) {
+	index := int(uintptr(data))
+	callback := signalAppInfoMonitorChangedMap[index]
+	callback()
+}
 
 // Unsupported : g_application_add_main_option_entries : unsupported parameter entries : no param type
 

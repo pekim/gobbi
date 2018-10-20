@@ -214,7 +214,11 @@ func (recv *EntryCompletion) DisconnectNoMatches(connectionID int) {
 }
 
 //export EntryCompletion_noMatchesHandler
-func EntryCompletion_noMatchesHandler() {}
+func EntryCompletion_noMatchesHandler(_ *C.GObject, data C.gpointer) {
+	index := int(uintptr(data))
+	callback := signalEntryCompletionNoMatchesMap[index]
+	callback()
+}
 
 // Unsupported : EntryIconAccessible : no CType
 
@@ -300,9 +304,12 @@ func (recv *Gesture) DisconnectBegin(connectionID int) {
 }
 
 //export Gesture_beginHandler
-func Gesture_beginHandler(c_sequence *C.GdkEventSequence) {
+func Gesture_beginHandler(_ *C.GObject, c_sequence *C.GdkEventSequence, data C.gpointer) {
 	sequence := gdk.EventSequenceNewFromC(unsafe.Pointer(c_sequence))
 
+	index := int(uintptr(data))
+	callback := signalGestureBeginMap[index]
+	callback(sequence)
 }
 
 var signalGestureCancelId int
@@ -349,9 +356,12 @@ func (recv *Gesture) DisconnectCancel(connectionID int) {
 }
 
 //export Gesture_cancelHandler
-func Gesture_cancelHandler(c_sequence *C.GdkEventSequence) {
+func Gesture_cancelHandler(_ *C.GObject, c_sequence *C.GdkEventSequence, data C.gpointer) {
 	sequence := gdk.EventSequenceNewFromC(unsafe.Pointer(c_sequence))
 
+	index := int(uintptr(data))
+	callback := signalGestureCancelMap[index]
+	callback(sequence)
 }
 
 var signalGestureEndId int
@@ -398,9 +408,12 @@ func (recv *Gesture) DisconnectEnd(connectionID int) {
 }
 
 //export Gesture_endHandler
-func Gesture_endHandler(c_sequence *C.GdkEventSequence) {
+func Gesture_endHandler(_ *C.GObject, c_sequence *C.GdkEventSequence, data C.gpointer) {
 	sequence := gdk.EventSequenceNewFromC(unsafe.Pointer(c_sequence))
 
+	index := int(uintptr(data))
+	callback := signalGestureEndMap[index]
+	callback(sequence)
 }
 
 // Unsupported signal 'sequence-state-changed' for Gesture : unsupported parameter state : type EventSequenceState :
@@ -449,9 +462,12 @@ func (recv *Gesture) DisconnectUpdate(connectionID int) {
 }
 
 //export Gesture_updateHandler
-func Gesture_updateHandler(c_sequence *C.GdkEventSequence) {
+func Gesture_updateHandler(_ *C.GObject, c_sequence *C.GdkEventSequence, data C.gpointer) {
 	sequence := gdk.EventSequenceNewFromC(unsafe.Pointer(c_sequence))
 
+	index := int(uintptr(data))
+	callback := signalGestureUpdateMap[index]
+	callback(sequence)
 }
 
 // Unsupported : gtk_gesture_get_bounding_box : unsupported parameter rect : Blacklisted record : GdkRectangle
@@ -715,7 +731,11 @@ func (recv *GestureLongPress) DisconnectCancelled(connectionID int) {
 }
 
 //export GestureLongPress_cancelledHandler
-func GestureLongPress_cancelledHandler() {}
+func GestureLongPress_cancelledHandler(_ *C.GObject, data C.gpointer) {
+	index := int(uintptr(data))
+	callback := signalGestureLongPressCancelledMap[index]
+	callback()
+}
 
 // Unsupported signal 'pressed' for GestureLongPress : unsupported parameter x : type gdouble :
 
@@ -777,7 +797,11 @@ func (recv *GestureMultiPress) DisconnectStopped(connectionID int) {
 }
 
 //export GestureMultiPress_stoppedHandler
-func GestureMultiPress_stoppedHandler() {}
+func GestureMultiPress_stoppedHandler(_ *C.GObject, data C.gpointer) {
+	index := int(uintptr(data))
+	callback := signalGestureMultiPressStoppedMap[index]
+	callback()
+}
 
 // GestureMultiPressNew is a wrapper around the C function gtk_gesture_multi_press_new.
 func GestureMultiPressNew(widget *Widget) *GestureMultiPress {
@@ -1027,7 +1051,11 @@ func (recv *ListBox) DisconnectSelectAll(connectionID int) {
 }
 
 //export ListBox_selectAllHandler
-func ListBox_selectAllHandler() {}
+func ListBox_selectAllHandler(_ *C.GObject, data C.gpointer) {
+	index := int(uintptr(data))
+	callback := signalListBoxSelectAllMap[index]
+	callback()
+}
 
 var signalListBoxSelectedRowsChangedId int
 var signalListBoxSelectedRowsChangedMap = make(map[int]ListBoxSignalSelectedRowsChangedCallback)
@@ -1073,7 +1101,11 @@ func (recv *ListBox) DisconnectSelectedRowsChanged(connectionID int) {
 }
 
 //export ListBox_selectedRowsChangedHandler
-func ListBox_selectedRowsChangedHandler() {}
+func ListBox_selectedRowsChangedHandler(_ *C.GObject, data C.gpointer) {
+	index := int(uintptr(data))
+	callback := signalListBoxSelectedRowsChangedMap[index]
+	callback()
+}
 
 var signalListBoxUnselectAllId int
 var signalListBoxUnselectAllMap = make(map[int]ListBoxSignalUnselectAllCallback)
@@ -1119,7 +1151,11 @@ func (recv *ListBox) DisconnectUnselectAll(connectionID int) {
 }
 
 //export ListBox_unselectAllHandler
-func ListBox_unselectAllHandler() {}
+func ListBox_unselectAllHandler(_ *C.GObject, data C.gpointer) {
+	index := int(uintptr(data))
+	callback := signalListBoxUnselectAllMap[index]
+	callback()
+}
 
 // GetSelectedRows is a wrapper around the C function gtk_list_box_get_selected_rows.
 func (recv *ListBox) GetSelectedRows() *glib.List {
@@ -1252,7 +1288,11 @@ func (recv *PlacesSidebar) DisconnectShowEnterLocation(connectionID int) {
 }
 
 //export PlacesSidebar_showEnterLocationHandler
-func PlacesSidebar_showEnterLocationHandler() {}
+func PlacesSidebar_showEnterLocationHandler(_ *C.GObject, data C.gpointer) {
+	index := int(uintptr(data))
+	callback := signalPlacesSidebarShowEnterLocationMap[index]
+	callback()
+}
 
 // GetShowEnterLocation is a wrapper around the C function gtk_places_sidebar_get_show_enter_location.
 func (recv *PlacesSidebar) GetShowEnterLocation() bool {
@@ -1326,9 +1366,12 @@ func (recv *Switch) DisconnectStateSet(connectionID int) {
 }
 
 //export Switch_stateSetHandler
-func Switch_stateSetHandler(c_state C.gboolean) C.gboolean {
+func Switch_stateSetHandler(_ *C.GObject, c_state C.gboolean, data C.gpointer) {
 	state := c_state == C.TRUE
 
+	index := int(uintptr(data))
+	callback := signalSwitchStateSetMap[index]
+	callback(state)
 }
 
 // GetState is a wrapper around the C function gtk_switch_get_state.

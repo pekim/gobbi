@@ -84,7 +84,11 @@ func (recv *Screen) DisconnectCompositedChanged(connectionID int) {
 }
 
 //export Screen_compositedChangedHandler
-func Screen_compositedChangedHandler() {}
+func Screen_compositedChangedHandler(_ *C.GObject, data C.gpointer) {
+	index := int(uintptr(data))
+	callback := signalScreenCompositedChangedMap[index]
+	callback()
+}
 
 // GetActiveWindow is a wrapper around the C function gdk_screen_get_active_window.
 func (recv *Screen) GetActiveWindow() *Window {

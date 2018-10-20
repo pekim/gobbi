@@ -666,7 +666,11 @@ func (recv *PixbufLoader) DisconnectAreaPrepared(connectionID int) {
 }
 
 //export PixbufLoader_areaPreparedHandler
-func PixbufLoader_areaPreparedHandler() {}
+func PixbufLoader_areaPreparedHandler(_ *C.GObject, data C.gpointer) {
+	index := int(uintptr(data))
+	callback := signalPixbufLoaderAreaPreparedMap[index]
+	callback()
+}
 
 // Unsupported signal 'area-updated' for PixbufLoader : unsupported parameter x : type gint :
 
@@ -714,7 +718,11 @@ func (recv *PixbufLoader) DisconnectClosed(connectionID int) {
 }
 
 //export PixbufLoader_closedHandler
-func PixbufLoader_closedHandler() {}
+func PixbufLoader_closedHandler(_ *C.GObject, data C.gpointer) {
+	index := int(uintptr(data))
+	callback := signalPixbufLoaderClosedMap[index]
+	callback()
+}
 
 // Unsupported signal 'size-prepared' for PixbufLoader : unsupported parameter width : type gint :
 

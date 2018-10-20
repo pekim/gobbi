@@ -106,9 +106,12 @@ func (recv *Application) DisconnectWindowAdded(connectionID int) {
 }
 
 //export Application_windowAddedHandler
-func Application_windowAddedHandler(c_window *C.GtkWindow) {
+func Application_windowAddedHandler(_ *C.GObject, c_window *C.GtkWindow, data C.gpointer) {
 	window := WindowNewFromC(unsafe.Pointer(c_window))
 
+	index := int(uintptr(data))
+	callback := signalApplicationWindowAddedMap[index]
+	callback(window)
 }
 
 var signalApplicationWindowRemovedId int
@@ -155,9 +158,12 @@ func (recv *Application) DisconnectWindowRemoved(connectionID int) {
 }
 
 //export Application_windowRemovedHandler
-func Application_windowRemovedHandler(c_window *C.GtkWindow) {
+func Application_windowRemovedHandler(_ *C.GObject, c_window *C.GtkWindow, data C.gpointer) {
 	window := WindowNewFromC(unsafe.Pointer(c_window))
 
+	index := int(uintptr(data))
+	callback := signalApplicationWindowRemovedMap[index]
+	callback(window)
 }
 
 // RemovePage is a wrapper around the C function gtk_assistant_remove_page.

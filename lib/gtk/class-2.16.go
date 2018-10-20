@@ -723,9 +723,12 @@ func (recv *StatusIcon) DisconnectScrollEvent(connectionID int) {
 }
 
 //export StatusIcon_scrollEventHandler
-func StatusIcon_scrollEventHandler(c_event *C.GdkEventScroll) C.gboolean {
+func StatusIcon_scrollEventHandler(_ *C.GObject, c_event *C.GdkEventScroll, data C.gpointer) {
 	event := gdk.EventScrollNewFromC(unsafe.Pointer(c_event))
 
+	index := int(uintptr(data))
+	callback := signalStatusIconScrollEventMap[index]
+	callback(event)
 }
 
 // Unsupported : gtk_status_icon_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon, GIcon*
@@ -836,9 +839,12 @@ func (recv *TextBuffer) DisconnectPasteDone(connectionID int) {
 }
 
 //export TextBuffer_pasteDoneHandler
-func TextBuffer_pasteDoneHandler(c_clipboard *C.GtkClipboard) {
+func TextBuffer_pasteDoneHandler(_ *C.GObject, c_clipboard *C.GtkClipboard, data C.gpointer) {
 	clipboard := ClipboardNewFromC(unsafe.Pointer(c_clipboard))
 
+	index := int(uintptr(data))
+	callback := signalTextBufferPasteDoneMap[index]
+	callback(clipboard)
 }
 
 // Unsupported : gtk_tree_store_new : unsupported parameter ... : varargs
