@@ -49,8 +49,13 @@ func (recv *Device) GetSeat() *Seat {
 	return retGo
 }
 
+type signalDisplaySeatAddedDetail struct {
+	callback  DisplaySignalSeatAddedCallback
+	handlerID C.gulong
+}
+
 var signalDisplaySeatAddedId int
-var signalDisplaySeatAddedMap = make(map[int]DisplaySignalSeatAddedCallback)
+var signalDisplaySeatAddedMap = make(map[int]signalDisplaySeatAddedDetail)
 var signalDisplaySeatAddedLock sync.Mutex
 
 // DisplaySignalSeatAddedCallback is a callback function for a 'seat-added' signal emitted from a Display.
@@ -66,11 +71,13 @@ func (recv *Display) ConnectSeatAdded(callback DisplaySignalSeatAddedCallback) i
 	defer signalDisplaySeatAddedLock.Unlock()
 
 	signalDisplaySeatAddedId++
-	signalDisplaySeatAddedMap[signalDisplaySeatAddedId] = callback
-
 	instance := C.gpointer(recv.Object().ToC())
-	retC := C.Display_signal_connect_seat_added(instance, C.gpointer(uintptr(signalDisplaySeatAddedId)))
-	return int(retC)
+	handlerID := C.Display_signal_connect_seat_added(instance, C.gpointer(uintptr(signalDisplaySeatAddedId)))
+
+	detail := signalDisplaySeatAddedDetail{callback, handlerID}
+	signalDisplaySeatAddedMap[signalDisplaySeatAddedId] = detail
+
+	return signalDisplaySeatAddedId
 }
 
 /*
@@ -82,13 +89,13 @@ func (recv *Display) DisconnectSeatAdded(connectionID int) {
 	signalDisplaySeatAddedLock.Lock()
 	defer signalDisplaySeatAddedLock.Unlock()
 
-	_, exists := signalDisplaySeatAddedMap[connectionID]
+	detail, exists := signalDisplaySeatAddedMap[connectionID]
 	if !exists {
 		return
 	}
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalDisplaySeatAddedMap, connectionID)
 }
 
@@ -97,12 +104,17 @@ func Display_seatAddedHandler(_ *C.GObject, c_seat *C.GdkSeat, data C.gpointer) 
 	seat := SeatNewFromC(unsafe.Pointer(c_seat))
 
 	index := int(uintptr(data))
-	callback := signalDisplaySeatAddedMap[index]
+	callback := signalDisplaySeatAddedMap[index].callback
 	callback(seat)
 }
 
+type signalDisplaySeatRemovedDetail struct {
+	callback  DisplaySignalSeatRemovedCallback
+	handlerID C.gulong
+}
+
 var signalDisplaySeatRemovedId int
-var signalDisplaySeatRemovedMap = make(map[int]DisplaySignalSeatRemovedCallback)
+var signalDisplaySeatRemovedMap = make(map[int]signalDisplaySeatRemovedDetail)
 var signalDisplaySeatRemovedLock sync.Mutex
 
 // DisplaySignalSeatRemovedCallback is a callback function for a 'seat-removed' signal emitted from a Display.
@@ -118,11 +130,13 @@ func (recv *Display) ConnectSeatRemoved(callback DisplaySignalSeatRemovedCallbac
 	defer signalDisplaySeatRemovedLock.Unlock()
 
 	signalDisplaySeatRemovedId++
-	signalDisplaySeatRemovedMap[signalDisplaySeatRemovedId] = callback
-
 	instance := C.gpointer(recv.Object().ToC())
-	retC := C.Display_signal_connect_seat_removed(instance, C.gpointer(uintptr(signalDisplaySeatRemovedId)))
-	return int(retC)
+	handlerID := C.Display_signal_connect_seat_removed(instance, C.gpointer(uintptr(signalDisplaySeatRemovedId)))
+
+	detail := signalDisplaySeatRemovedDetail{callback, handlerID}
+	signalDisplaySeatRemovedMap[signalDisplaySeatRemovedId] = detail
+
+	return signalDisplaySeatRemovedId
 }
 
 /*
@@ -134,13 +148,13 @@ func (recv *Display) DisconnectSeatRemoved(connectionID int) {
 	signalDisplaySeatRemovedLock.Lock()
 	defer signalDisplaySeatRemovedLock.Unlock()
 
-	_, exists := signalDisplaySeatRemovedMap[connectionID]
+	detail, exists := signalDisplaySeatRemovedMap[connectionID]
 	if !exists {
 		return
 	}
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalDisplaySeatRemovedMap, connectionID)
 }
 
@@ -149,7 +163,7 @@ func Display_seatRemovedHandler(_ *C.GObject, c_seat *C.GdkSeat, data C.gpointer
 	seat := SeatNewFromC(unsafe.Pointer(c_seat))
 
 	index := int(uintptr(data))
-	callback := signalDisplaySeatRemovedMap[index]
+	callback := signalDisplaySeatRemovedMap[index].callback
 	callback(seat)
 }
 
@@ -173,8 +187,13 @@ func (recv *Display) ListSeats() *glib.List {
 
 // Unsupported signal 'cancel' for DragContext : unsupported parameter reason : type DragCancelReason :
 
+type signalDragContextDndFinishedDetail struct {
+	callback  DragContextSignalDndFinishedCallback
+	handlerID C.gulong
+}
+
 var signalDragContextDndFinishedId int
-var signalDragContextDndFinishedMap = make(map[int]DragContextSignalDndFinishedCallback)
+var signalDragContextDndFinishedMap = make(map[int]signalDragContextDndFinishedDetail)
 var signalDragContextDndFinishedLock sync.Mutex
 
 // DragContextSignalDndFinishedCallback is a callback function for a 'dnd-finished' signal emitted from a DragContext.
@@ -190,11 +209,13 @@ func (recv *DragContext) ConnectDndFinished(callback DragContextSignalDndFinishe
 	defer signalDragContextDndFinishedLock.Unlock()
 
 	signalDragContextDndFinishedId++
-	signalDragContextDndFinishedMap[signalDragContextDndFinishedId] = callback
-
 	instance := C.gpointer(recv.Object().ToC())
-	retC := C.DragContext_signal_connect_dnd_finished(instance, C.gpointer(uintptr(signalDragContextDndFinishedId)))
-	return int(retC)
+	handlerID := C.DragContext_signal_connect_dnd_finished(instance, C.gpointer(uintptr(signalDragContextDndFinishedId)))
+
+	detail := signalDragContextDndFinishedDetail{callback, handlerID}
+	signalDragContextDndFinishedMap[signalDragContextDndFinishedId] = detail
+
+	return signalDragContextDndFinishedId
 }
 
 /*
@@ -206,20 +227,20 @@ func (recv *DragContext) DisconnectDndFinished(connectionID int) {
 	signalDragContextDndFinishedLock.Lock()
 	defer signalDragContextDndFinishedLock.Unlock()
 
-	_, exists := signalDragContextDndFinishedMap[connectionID]
+	detail, exists := signalDragContextDndFinishedMap[connectionID]
 	if !exists {
 		return
 	}
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalDragContextDndFinishedMap, connectionID)
 }
 
 //export DragContext_dndFinishedHandler
 func DragContext_dndFinishedHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
-	callback := signalDragContextDndFinishedMap[index]
+	callback := signalDragContextDndFinishedMap[index].callback
 	callback()
 }
 

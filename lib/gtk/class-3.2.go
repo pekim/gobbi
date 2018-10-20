@@ -62,8 +62,13 @@ func (recv *AppChooserButton) SetShowDefaultItem(setting bool) {
 
 // Unsupported : gtk_app_chooser_dialog_new : unsupported parameter file : no type generator for Gio.File, GFile*
 
+type signalApplicationWindowAddedDetail struct {
+	callback  ApplicationSignalWindowAddedCallback
+	handlerID C.gulong
+}
+
 var signalApplicationWindowAddedId int
-var signalApplicationWindowAddedMap = make(map[int]ApplicationSignalWindowAddedCallback)
+var signalApplicationWindowAddedMap = make(map[int]signalApplicationWindowAddedDetail)
 var signalApplicationWindowAddedLock sync.Mutex
 
 // ApplicationSignalWindowAddedCallback is a callback function for a 'window-added' signal emitted from a Application.
@@ -79,11 +84,13 @@ func (recv *Application) ConnectWindowAdded(callback ApplicationSignalWindowAdde
 	defer signalApplicationWindowAddedLock.Unlock()
 
 	signalApplicationWindowAddedId++
-	signalApplicationWindowAddedMap[signalApplicationWindowAddedId] = callback
-
 	instance := C.gpointer(recv.Object().ToC())
-	retC := C.Application_signal_connect_window_added(instance, C.gpointer(uintptr(signalApplicationWindowAddedId)))
-	return int(retC)
+	handlerID := C.Application_signal_connect_window_added(instance, C.gpointer(uintptr(signalApplicationWindowAddedId)))
+
+	detail := signalApplicationWindowAddedDetail{callback, handlerID}
+	signalApplicationWindowAddedMap[signalApplicationWindowAddedId] = detail
+
+	return signalApplicationWindowAddedId
 }
 
 /*
@@ -95,13 +102,13 @@ func (recv *Application) DisconnectWindowAdded(connectionID int) {
 	signalApplicationWindowAddedLock.Lock()
 	defer signalApplicationWindowAddedLock.Unlock()
 
-	_, exists := signalApplicationWindowAddedMap[connectionID]
+	detail, exists := signalApplicationWindowAddedMap[connectionID]
 	if !exists {
 		return
 	}
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalApplicationWindowAddedMap, connectionID)
 }
 
@@ -110,12 +117,17 @@ func Application_windowAddedHandler(_ *C.GObject, c_window *C.GtkWindow, data C.
 	window := WindowNewFromC(unsafe.Pointer(c_window))
 
 	index := int(uintptr(data))
-	callback := signalApplicationWindowAddedMap[index]
+	callback := signalApplicationWindowAddedMap[index].callback
 	callback(window)
 }
 
+type signalApplicationWindowRemovedDetail struct {
+	callback  ApplicationSignalWindowRemovedCallback
+	handlerID C.gulong
+}
+
 var signalApplicationWindowRemovedId int
-var signalApplicationWindowRemovedMap = make(map[int]ApplicationSignalWindowRemovedCallback)
+var signalApplicationWindowRemovedMap = make(map[int]signalApplicationWindowRemovedDetail)
 var signalApplicationWindowRemovedLock sync.Mutex
 
 // ApplicationSignalWindowRemovedCallback is a callback function for a 'window-removed' signal emitted from a Application.
@@ -131,11 +143,13 @@ func (recv *Application) ConnectWindowRemoved(callback ApplicationSignalWindowRe
 	defer signalApplicationWindowRemovedLock.Unlock()
 
 	signalApplicationWindowRemovedId++
-	signalApplicationWindowRemovedMap[signalApplicationWindowRemovedId] = callback
-
 	instance := C.gpointer(recv.Object().ToC())
-	retC := C.Application_signal_connect_window_removed(instance, C.gpointer(uintptr(signalApplicationWindowRemovedId)))
-	return int(retC)
+	handlerID := C.Application_signal_connect_window_removed(instance, C.gpointer(uintptr(signalApplicationWindowRemovedId)))
+
+	detail := signalApplicationWindowRemovedDetail{callback, handlerID}
+	signalApplicationWindowRemovedMap[signalApplicationWindowRemovedId] = detail
+
+	return signalApplicationWindowRemovedId
 }
 
 /*
@@ -147,13 +161,13 @@ func (recv *Application) DisconnectWindowRemoved(connectionID int) {
 	signalApplicationWindowRemovedLock.Lock()
 	defer signalApplicationWindowRemovedLock.Unlock()
 
-	_, exists := signalApplicationWindowRemovedMap[connectionID]
+	detail, exists := signalApplicationWindowRemovedMap[connectionID]
 	if !exists {
 		return
 	}
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalApplicationWindowRemovedMap, connectionID)
 }
 
@@ -162,7 +176,7 @@ func Application_windowRemovedHandler(_ *C.GObject, c_window *C.GtkWindow, data 
 	window := WindowNewFromC(unsafe.Pointer(c_window))
 
 	index := int(uintptr(data))
-	callback := signalApplicationWindowRemovedMap[index]
+	callback := signalApplicationWindowRemovedMap[index].callback
 	callback(window)
 }
 

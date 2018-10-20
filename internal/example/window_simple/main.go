@@ -27,10 +27,18 @@ func main() {
 		gtk.MainQuit()
 	})
 
-	window.Widget().ConnectKeyPressEvent(func(event *gdk.EventKey) bool {
-		fmt.Println(event.Keyval, event.String)
+	connectId1 := window.Widget().ConnectKeyPressEvent(func(event *gdk.EventKey) bool {
+		fmt.Println(1, event.Keyval, event.String)
 		return false
 	})
+
+	connectId2 := window.Widget().ConnectKeyPressEvent(func(event *gdk.EventKey) bool {
+		fmt.Println(2, event.Keyval, event.String)
+		return false
+	})
+
+	fmt.Println(connectId1, connectId2)
+	window.Widget().DisconnectKeyPressEvent(connectId2)
 
 	window.Widget().ShowAll()
 	gtk.Main()

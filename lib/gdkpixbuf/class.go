@@ -622,8 +622,13 @@ func CastToPixbufLoader(object *gobject.Object) *PixbufLoader {
 	return PixbufLoaderNewFromC(object.ToC())
 }
 
+type signalPixbufLoaderAreaPreparedDetail struct {
+	callback  PixbufLoaderSignalAreaPreparedCallback
+	handlerID C.gulong
+}
+
 var signalPixbufLoaderAreaPreparedId int
-var signalPixbufLoaderAreaPreparedMap = make(map[int]PixbufLoaderSignalAreaPreparedCallback)
+var signalPixbufLoaderAreaPreparedMap = make(map[int]signalPixbufLoaderAreaPreparedDetail)
 var signalPixbufLoaderAreaPreparedLock sync.Mutex
 
 // PixbufLoaderSignalAreaPreparedCallback is a callback function for a 'area-prepared' signal emitted from a PixbufLoader.
@@ -639,11 +644,13 @@ func (recv *PixbufLoader) ConnectAreaPrepared(callback PixbufLoaderSignalAreaPre
 	defer signalPixbufLoaderAreaPreparedLock.Unlock()
 
 	signalPixbufLoaderAreaPreparedId++
-	signalPixbufLoaderAreaPreparedMap[signalPixbufLoaderAreaPreparedId] = callback
-
 	instance := C.gpointer(recv.Object().ToC())
-	retC := C.PixbufLoader_signal_connect_area_prepared(instance, C.gpointer(uintptr(signalPixbufLoaderAreaPreparedId)))
-	return int(retC)
+	handlerID := C.PixbufLoader_signal_connect_area_prepared(instance, C.gpointer(uintptr(signalPixbufLoaderAreaPreparedId)))
+
+	detail := signalPixbufLoaderAreaPreparedDetail{callback, handlerID}
+	signalPixbufLoaderAreaPreparedMap[signalPixbufLoaderAreaPreparedId] = detail
+
+	return signalPixbufLoaderAreaPreparedId
 }
 
 /*
@@ -655,27 +662,32 @@ func (recv *PixbufLoader) DisconnectAreaPrepared(connectionID int) {
 	signalPixbufLoaderAreaPreparedLock.Lock()
 	defer signalPixbufLoaderAreaPreparedLock.Unlock()
 
-	_, exists := signalPixbufLoaderAreaPreparedMap[connectionID]
+	detail, exists := signalPixbufLoaderAreaPreparedMap[connectionID]
 	if !exists {
 		return
 	}
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalPixbufLoaderAreaPreparedMap, connectionID)
 }
 
 //export PixbufLoader_areaPreparedHandler
 func PixbufLoader_areaPreparedHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
-	callback := signalPixbufLoaderAreaPreparedMap[index]
+	callback := signalPixbufLoaderAreaPreparedMap[index].callback
 	callback()
 }
 
 // Unsupported signal 'area-updated' for PixbufLoader : unsupported parameter x : type gint :
 
+type signalPixbufLoaderClosedDetail struct {
+	callback  PixbufLoaderSignalClosedCallback
+	handlerID C.gulong
+}
+
 var signalPixbufLoaderClosedId int
-var signalPixbufLoaderClosedMap = make(map[int]PixbufLoaderSignalClosedCallback)
+var signalPixbufLoaderClosedMap = make(map[int]signalPixbufLoaderClosedDetail)
 var signalPixbufLoaderClosedLock sync.Mutex
 
 // PixbufLoaderSignalClosedCallback is a callback function for a 'closed' signal emitted from a PixbufLoader.
@@ -691,11 +703,13 @@ func (recv *PixbufLoader) ConnectClosed(callback PixbufLoaderSignalClosedCallbac
 	defer signalPixbufLoaderClosedLock.Unlock()
 
 	signalPixbufLoaderClosedId++
-	signalPixbufLoaderClosedMap[signalPixbufLoaderClosedId] = callback
-
 	instance := C.gpointer(recv.Object().ToC())
-	retC := C.PixbufLoader_signal_connect_closed(instance, C.gpointer(uintptr(signalPixbufLoaderClosedId)))
-	return int(retC)
+	handlerID := C.PixbufLoader_signal_connect_closed(instance, C.gpointer(uintptr(signalPixbufLoaderClosedId)))
+
+	detail := signalPixbufLoaderClosedDetail{callback, handlerID}
+	signalPixbufLoaderClosedMap[signalPixbufLoaderClosedId] = detail
+
+	return signalPixbufLoaderClosedId
 }
 
 /*
@@ -707,20 +721,20 @@ func (recv *PixbufLoader) DisconnectClosed(connectionID int) {
 	signalPixbufLoaderClosedLock.Lock()
 	defer signalPixbufLoaderClosedLock.Unlock()
 
-	_, exists := signalPixbufLoaderClosedMap[connectionID]
+	detail, exists := signalPixbufLoaderClosedMap[connectionID]
 	if !exists {
 		return
 	}
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalPixbufLoaderClosedMap, connectionID)
 }
 
 //export PixbufLoader_closedHandler
 func PixbufLoader_closedHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
-	callback := signalPixbufLoaderClosedMap[index]
+	callback := signalPixbufLoaderClosedMap[index].callback
 	callback()
 }
 

@@ -479,8 +479,13 @@ func (recv *Label) SetLines(lines int32) {
 	return
 }
 
+type signalListBoxRowActivatedDetail struct {
+	callback  ListBoxSignalRowActivatedCallback
+	handlerID C.gulong
+}
+
 var signalListBoxRowActivatedId int
-var signalListBoxRowActivatedMap = make(map[int]ListBoxSignalRowActivatedCallback)
+var signalListBoxRowActivatedMap = make(map[int]signalListBoxRowActivatedDetail)
 var signalListBoxRowActivatedLock sync.Mutex
 
 // ListBoxSignalRowActivatedCallback is a callback function for a 'row-activated' signal emitted from a ListBox.
@@ -496,11 +501,13 @@ func (recv *ListBox) ConnectRowActivated(callback ListBoxSignalRowActivatedCallb
 	defer signalListBoxRowActivatedLock.Unlock()
 
 	signalListBoxRowActivatedId++
-	signalListBoxRowActivatedMap[signalListBoxRowActivatedId] = callback
-
 	instance := C.gpointer(recv.Object().ToC())
-	retC := C.ListBox_signal_connect_row_activated(instance, C.gpointer(uintptr(signalListBoxRowActivatedId)))
-	return int(retC)
+	handlerID := C.ListBox_signal_connect_row_activated(instance, C.gpointer(uintptr(signalListBoxRowActivatedId)))
+
+	detail := signalListBoxRowActivatedDetail{callback, handlerID}
+	signalListBoxRowActivatedMap[signalListBoxRowActivatedId] = detail
+
+	return signalListBoxRowActivatedId
 }
 
 /*
@@ -512,13 +519,13 @@ func (recv *ListBox) DisconnectRowActivated(connectionID int) {
 	signalListBoxRowActivatedLock.Lock()
 	defer signalListBoxRowActivatedLock.Unlock()
 
-	_, exists := signalListBoxRowActivatedMap[connectionID]
+	detail, exists := signalListBoxRowActivatedMap[connectionID]
 	if !exists {
 		return
 	}
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalListBoxRowActivatedMap, connectionID)
 }
 
@@ -527,12 +534,17 @@ func ListBox_rowActivatedHandler(_ *C.GObject, c_row *C.GtkListBoxRow, data C.gp
 	row := ListBoxRowNewFromC(unsafe.Pointer(c_row))
 
 	index := int(uintptr(data))
-	callback := signalListBoxRowActivatedMap[index]
+	callback := signalListBoxRowActivatedMap[index].callback
 	callback(row)
 }
 
+type signalListBoxRowSelectedDetail struct {
+	callback  ListBoxSignalRowSelectedCallback
+	handlerID C.gulong
+}
+
 var signalListBoxRowSelectedId int
-var signalListBoxRowSelectedMap = make(map[int]ListBoxSignalRowSelectedCallback)
+var signalListBoxRowSelectedMap = make(map[int]signalListBoxRowSelectedDetail)
 var signalListBoxRowSelectedLock sync.Mutex
 
 // ListBoxSignalRowSelectedCallback is a callback function for a 'row-selected' signal emitted from a ListBox.
@@ -548,11 +560,13 @@ func (recv *ListBox) ConnectRowSelected(callback ListBoxSignalRowSelectedCallbac
 	defer signalListBoxRowSelectedLock.Unlock()
 
 	signalListBoxRowSelectedId++
-	signalListBoxRowSelectedMap[signalListBoxRowSelectedId] = callback
-
 	instance := C.gpointer(recv.Object().ToC())
-	retC := C.ListBox_signal_connect_row_selected(instance, C.gpointer(uintptr(signalListBoxRowSelectedId)))
-	return int(retC)
+	handlerID := C.ListBox_signal_connect_row_selected(instance, C.gpointer(uintptr(signalListBoxRowSelectedId)))
+
+	detail := signalListBoxRowSelectedDetail{callback, handlerID}
+	signalListBoxRowSelectedMap[signalListBoxRowSelectedId] = detail
+
+	return signalListBoxRowSelectedId
 }
 
 /*
@@ -564,13 +578,13 @@ func (recv *ListBox) DisconnectRowSelected(connectionID int) {
 	signalListBoxRowSelectedLock.Lock()
 	defer signalListBoxRowSelectedLock.Unlock()
 
-	_, exists := signalListBoxRowSelectedMap[connectionID]
+	detail, exists := signalListBoxRowSelectedMap[connectionID]
 	if !exists {
 		return
 	}
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalListBoxRowSelectedMap, connectionID)
 }
 
@@ -579,7 +593,7 @@ func ListBox_rowSelectedHandler(_ *C.GObject, c_row *C.GtkListBoxRow, data C.gpo
 	row := ListBoxRowNewFromC(unsafe.Pointer(c_row))
 
 	index := int(uintptr(data))
-	callback := signalListBoxRowSelectedMap[index]
+	callback := signalListBoxRowSelectedMap[index].callback
 	callback(row)
 }
 
@@ -752,8 +766,13 @@ func (recv *ListBox) SetSelectionMode(mode SelectionMode) {
 
 // Unsupported : gtk_list_box_set_sort_func : unsupported parameter sort_func : no type generator for ListBoxSortFunc, GtkListBoxSortFunc
 
+type signalListBoxRowActivateDetail struct {
+	callback  ListBoxRowSignalActivateCallback
+	handlerID C.gulong
+}
+
 var signalListBoxRowActivateId int
-var signalListBoxRowActivateMap = make(map[int]ListBoxRowSignalActivateCallback)
+var signalListBoxRowActivateMap = make(map[int]signalListBoxRowActivateDetail)
 var signalListBoxRowActivateLock sync.Mutex
 
 // ListBoxRowSignalActivateCallback is a callback function for a 'activate' signal emitted from a ListBoxRow.
@@ -769,11 +788,13 @@ func (recv *ListBoxRow) ConnectActivate(callback ListBoxRowSignalActivateCallbac
 	defer signalListBoxRowActivateLock.Unlock()
 
 	signalListBoxRowActivateId++
-	signalListBoxRowActivateMap[signalListBoxRowActivateId] = callback
-
 	instance := C.gpointer(recv.Object().ToC())
-	retC := C.ListBoxRow_signal_connect_activate(instance, C.gpointer(uintptr(signalListBoxRowActivateId)))
-	return int(retC)
+	handlerID := C.ListBoxRow_signal_connect_activate(instance, C.gpointer(uintptr(signalListBoxRowActivateId)))
+
+	detail := signalListBoxRowActivateDetail{callback, handlerID}
+	signalListBoxRowActivateMap[signalListBoxRowActivateId] = detail
+
+	return signalListBoxRowActivateId
 }
 
 /*
@@ -785,20 +806,20 @@ func (recv *ListBoxRow) DisconnectActivate(connectionID int) {
 	signalListBoxRowActivateLock.Lock()
 	defer signalListBoxRowActivateLock.Unlock()
 
-	_, exists := signalListBoxRowActivateMap[connectionID]
+	detail, exists := signalListBoxRowActivateMap[connectionID]
 	if !exists {
 		return
 	}
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalListBoxRowActivateMap, connectionID)
 }
 
 //export ListBoxRow_activateHandler
 func ListBoxRow_activateHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
-	callback := signalListBoxRowActivateMap[index]
+	callback := signalListBoxRowActivateMap[index].callback
 	callback()
 }
 
@@ -1066,8 +1087,13 @@ func (recv *SearchBar) SetShowCloseButton(visible bool) {
 	return
 }
 
+type signalSearchEntrySearchChangedDetail struct {
+	callback  SearchEntrySignalSearchChangedCallback
+	handlerID C.gulong
+}
+
 var signalSearchEntrySearchChangedId int
-var signalSearchEntrySearchChangedMap = make(map[int]SearchEntrySignalSearchChangedCallback)
+var signalSearchEntrySearchChangedMap = make(map[int]signalSearchEntrySearchChangedDetail)
 var signalSearchEntrySearchChangedLock sync.Mutex
 
 // SearchEntrySignalSearchChangedCallback is a callback function for a 'search-changed' signal emitted from a SearchEntry.
@@ -1083,11 +1109,13 @@ func (recv *SearchEntry) ConnectSearchChanged(callback SearchEntrySignalSearchCh
 	defer signalSearchEntrySearchChangedLock.Unlock()
 
 	signalSearchEntrySearchChangedId++
-	signalSearchEntrySearchChangedMap[signalSearchEntrySearchChangedId] = callback
-
 	instance := C.gpointer(recv.Object().ToC())
-	retC := C.SearchEntry_signal_connect_search_changed(instance, C.gpointer(uintptr(signalSearchEntrySearchChangedId)))
-	return int(retC)
+	handlerID := C.SearchEntry_signal_connect_search_changed(instance, C.gpointer(uintptr(signalSearchEntrySearchChangedId)))
+
+	detail := signalSearchEntrySearchChangedDetail{callback, handlerID}
+	signalSearchEntrySearchChangedMap[signalSearchEntrySearchChangedId] = detail
+
+	return signalSearchEntrySearchChangedId
 }
 
 /*
@@ -1099,20 +1127,20 @@ func (recv *SearchEntry) DisconnectSearchChanged(connectionID int) {
 	signalSearchEntrySearchChangedLock.Lock()
 	defer signalSearchEntrySearchChangedLock.Unlock()
 
-	_, exists := signalSearchEntrySearchChangedMap[connectionID]
+	detail, exists := signalSearchEntrySearchChangedMap[connectionID]
 	if !exists {
 		return
 	}
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalSearchEntrySearchChangedMap, connectionID)
 }
 
 //export SearchEntry_searchChangedHandler
 func SearchEntry_searchChangedHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
-	callback := signalSearchEntrySearchChangedMap[index]
+	callback := signalSearchEntrySearchChangedMap[index].callback
 	callback()
 }
 

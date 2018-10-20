@@ -71,8 +71,13 @@ func (recv *Cursor) GetDisplay() *Display {
 	return retGo
 }
 
+type signalDisplayClosedDetail struct {
+	callback  DisplaySignalClosedCallback
+	handlerID C.gulong
+}
+
 var signalDisplayClosedId int
-var signalDisplayClosedMap = make(map[int]DisplaySignalClosedCallback)
+var signalDisplayClosedMap = make(map[int]signalDisplayClosedDetail)
 var signalDisplayClosedLock sync.Mutex
 
 // DisplaySignalClosedCallback is a callback function for a 'closed' signal emitted from a Display.
@@ -88,11 +93,13 @@ func (recv *Display) ConnectClosed(callback DisplaySignalClosedCallback) int {
 	defer signalDisplayClosedLock.Unlock()
 
 	signalDisplayClosedId++
-	signalDisplayClosedMap[signalDisplayClosedId] = callback
-
 	instance := C.gpointer(recv.Object().ToC())
-	retC := C.Display_signal_connect_closed(instance, C.gpointer(uintptr(signalDisplayClosedId)))
-	return int(retC)
+	handlerID := C.Display_signal_connect_closed(instance, C.gpointer(uintptr(signalDisplayClosedId)))
+
+	detail := signalDisplayClosedDetail{callback, handlerID}
+	signalDisplayClosedMap[signalDisplayClosedId] = detail
+
+	return signalDisplayClosedId
 }
 
 /*
@@ -104,13 +111,13 @@ func (recv *Display) DisconnectClosed(connectionID int) {
 	signalDisplayClosedLock.Lock()
 	defer signalDisplayClosedLock.Unlock()
 
-	_, exists := signalDisplayClosedMap[connectionID]
+	detail, exists := signalDisplayClosedMap[connectionID]
 	if !exists {
 		return
 	}
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalDisplayClosedMap, connectionID)
 }
 
@@ -119,7 +126,7 @@ func Display_closedHandler(_ *C.GObject, c_is_error C.gboolean, data C.gpointer)
 	isError := c_is_error == C.TRUE
 
 	index := int(uintptr(data))
-	callback := signalDisplayClosedMap[index]
+	callback := signalDisplayClosedMap[index].callback
 	callback(isError)
 }
 
@@ -245,8 +252,13 @@ func (recv *Display) Sync() {
 	return
 }
 
+type signalDisplayManagerDisplayOpenedDetail struct {
+	callback  DisplayManagerSignalDisplayOpenedCallback
+	handlerID C.gulong
+}
+
 var signalDisplayManagerDisplayOpenedId int
-var signalDisplayManagerDisplayOpenedMap = make(map[int]DisplayManagerSignalDisplayOpenedCallback)
+var signalDisplayManagerDisplayOpenedMap = make(map[int]signalDisplayManagerDisplayOpenedDetail)
 var signalDisplayManagerDisplayOpenedLock sync.Mutex
 
 // DisplayManagerSignalDisplayOpenedCallback is a callback function for a 'display-opened' signal emitted from a DisplayManager.
@@ -262,11 +274,13 @@ func (recv *DisplayManager) ConnectDisplayOpened(callback DisplayManagerSignalDi
 	defer signalDisplayManagerDisplayOpenedLock.Unlock()
 
 	signalDisplayManagerDisplayOpenedId++
-	signalDisplayManagerDisplayOpenedMap[signalDisplayManagerDisplayOpenedId] = callback
-
 	instance := C.gpointer(recv.Object().ToC())
-	retC := C.DisplayManager_signal_connect_display_opened(instance, C.gpointer(uintptr(signalDisplayManagerDisplayOpenedId)))
-	return int(retC)
+	handlerID := C.DisplayManager_signal_connect_display_opened(instance, C.gpointer(uintptr(signalDisplayManagerDisplayOpenedId)))
+
+	detail := signalDisplayManagerDisplayOpenedDetail{callback, handlerID}
+	signalDisplayManagerDisplayOpenedMap[signalDisplayManagerDisplayOpenedId] = detail
+
+	return signalDisplayManagerDisplayOpenedId
 }
 
 /*
@@ -278,13 +292,13 @@ func (recv *DisplayManager) DisconnectDisplayOpened(connectionID int) {
 	signalDisplayManagerDisplayOpenedLock.Lock()
 	defer signalDisplayManagerDisplayOpenedLock.Unlock()
 
-	_, exists := signalDisplayManagerDisplayOpenedMap[connectionID]
+	detail, exists := signalDisplayManagerDisplayOpenedMap[connectionID]
 	if !exists {
 		return
 	}
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalDisplayManagerDisplayOpenedMap, connectionID)
 }
 
@@ -293,7 +307,7 @@ func DisplayManager_displayOpenedHandler(_ *C.GObject, c_display *C.GdkDisplay, 
 	display := DisplayNewFromC(unsafe.Pointer(c_display))
 
 	index := int(uintptr(data))
-	callback := signalDisplayManagerDisplayOpenedMap[index]
+	callback := signalDisplayManagerDisplayOpenedMap[index].callback
 	callback(display)
 }
 
@@ -322,8 +336,13 @@ func (recv *DisplayManager) SetDefaultDisplay(display *Display) {
 	return
 }
 
+type signalKeymapKeysChangedDetail struct {
+	callback  KeymapSignalKeysChangedCallback
+	handlerID C.gulong
+}
+
 var signalKeymapKeysChangedId int
-var signalKeymapKeysChangedMap = make(map[int]KeymapSignalKeysChangedCallback)
+var signalKeymapKeysChangedMap = make(map[int]signalKeymapKeysChangedDetail)
 var signalKeymapKeysChangedLock sync.Mutex
 
 // KeymapSignalKeysChangedCallback is a callback function for a 'keys-changed' signal emitted from a Keymap.
@@ -339,11 +358,13 @@ func (recv *Keymap) ConnectKeysChanged(callback KeymapSignalKeysChangedCallback)
 	defer signalKeymapKeysChangedLock.Unlock()
 
 	signalKeymapKeysChangedId++
-	signalKeymapKeysChangedMap[signalKeymapKeysChangedId] = callback
-
 	instance := C.gpointer(recv.Object().ToC())
-	retC := C.Keymap_signal_connect_keys_changed(instance, C.gpointer(uintptr(signalKeymapKeysChangedId)))
-	return int(retC)
+	handlerID := C.Keymap_signal_connect_keys_changed(instance, C.gpointer(uintptr(signalKeymapKeysChangedId)))
+
+	detail := signalKeymapKeysChangedDetail{callback, handlerID}
+	signalKeymapKeysChangedMap[signalKeymapKeysChangedId] = detail
+
+	return signalKeymapKeysChangedId
 }
 
 /*
@@ -355,25 +376,30 @@ func (recv *Keymap) DisconnectKeysChanged(connectionID int) {
 	signalKeymapKeysChangedLock.Lock()
 	defer signalKeymapKeysChangedLock.Unlock()
 
-	_, exists := signalKeymapKeysChangedMap[connectionID]
+	detail, exists := signalKeymapKeysChangedMap[connectionID]
 	if !exists {
 		return
 	}
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalKeymapKeysChangedMap, connectionID)
 }
 
 //export Keymap_keysChangedHandler
 func Keymap_keysChangedHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
-	callback := signalKeymapKeysChangedMap[index]
+	callback := signalKeymapKeysChangedMap[index].callback
 	callback()
 }
 
+type signalScreenSizeChangedDetail struct {
+	callback  ScreenSignalSizeChangedCallback
+	handlerID C.gulong
+}
+
 var signalScreenSizeChangedId int
-var signalScreenSizeChangedMap = make(map[int]ScreenSignalSizeChangedCallback)
+var signalScreenSizeChangedMap = make(map[int]signalScreenSizeChangedDetail)
 var signalScreenSizeChangedLock sync.Mutex
 
 // ScreenSignalSizeChangedCallback is a callback function for a 'size-changed' signal emitted from a Screen.
@@ -389,11 +415,13 @@ func (recv *Screen) ConnectSizeChanged(callback ScreenSignalSizeChangedCallback)
 	defer signalScreenSizeChangedLock.Unlock()
 
 	signalScreenSizeChangedId++
-	signalScreenSizeChangedMap[signalScreenSizeChangedId] = callback
-
 	instance := C.gpointer(recv.Object().ToC())
-	retC := C.Screen_signal_connect_size_changed(instance, C.gpointer(uintptr(signalScreenSizeChangedId)))
-	return int(retC)
+	handlerID := C.Screen_signal_connect_size_changed(instance, C.gpointer(uintptr(signalScreenSizeChangedId)))
+
+	detail := signalScreenSizeChangedDetail{callback, handlerID}
+	signalScreenSizeChangedMap[signalScreenSizeChangedId] = detail
+
+	return signalScreenSizeChangedId
 }
 
 /*
@@ -405,20 +433,20 @@ func (recv *Screen) DisconnectSizeChanged(connectionID int) {
 	signalScreenSizeChangedLock.Lock()
 	defer signalScreenSizeChangedLock.Unlock()
 
-	_, exists := signalScreenSizeChangedMap[connectionID]
+	detail, exists := signalScreenSizeChangedMap[connectionID]
 	if !exists {
 		return
 	}
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalScreenSizeChangedMap, connectionID)
 }
 
 //export Screen_sizeChangedHandler
 func Screen_sizeChangedHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
-	callback := signalScreenSizeChangedMap[index]
+	callback := signalScreenSizeChangedMap[index].callback
 	callback()
 }
 

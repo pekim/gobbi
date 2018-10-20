@@ -20,6 +20,7 @@ type Signal struct {
 	ReturnValue *ReturnValue `xml:"return-value"`
 
 	record                   *Record
+	typeStructName           string
 	varNameId                string
 	varNameMap               string
 	varNameLock              string
@@ -46,6 +47,7 @@ func (s *Signal) init(ns *Namespace, record *Record) {
 func (s *Signal) initNames() {
 	signalGoName := makeExportedGoName(s.Name)
 
+	s.typeStructName = fmt.Sprintf("signal%s%sDetail", s.record.Name, signalGoName)
 	s.varNameId = fmt.Sprintf("signal%s%sId", s.record.Name, signalGoName)
 	s.varNameMap = fmt.Sprintf("signal%s%sMap", s.record.Name, signalGoName)
 	s.varNameLock = fmt.Sprintf("signal%s%sLock", s.record.Name, signalGoName)
@@ -121,9 +123,15 @@ func (s *Signal) generateCgoPreamble() {
 }
 
 func (s *Signal) generateVariables(g *jen.Group) {
+	g.Type().Id(s.typeStructName).StructFunc(func(g *jen.Group) {
+		g.Id("callback").Id(s.callbackTypeName)
+		g.Id("handlerID").Qual("C", "gulong")
+	})
+
 	g.Var().Id(s.varNameId).Int()
-	g.Var().Id(s.varNameMap).Op("=").Make(jen.Map(jen.Int()).Id(s.callbackTypeName))
+	g.Var().Id(s.varNameMap).Op("=").Make(jen.Map(jen.Int()).Id(s.typeStructName))
 	g.Var().Id(s.varNameLock).Qual("sync", "Mutex")
+
 	g.Line()
 }
 
@@ -185,8 +193,8 @@ func (s *Signal) generateHandlerCall(g *jen.Group) {
 	// index := int(c_index)
 	g.Id("index").Op(":=").Int().Call(jen.Uintptr().Call(jen.Id("data")))
 
-	//	callback := signalKeyPressEventMap[signalKeyPressEventId]
-	g.Id("callback").Op(":=").Id(s.varNameMap).Index(jen.Id("index"))
+	//	callback := signalKeyPressEventMap[signalKeyPressEventId].callback
+	g.Id("callback").Op(":=").Id(s.varNameMap).Index(jen.Id("index")).Dot("callback")
 
 	g.
 		//Id("retC").
@@ -230,15 +238,10 @@ The returned value represents the connection, and may be passed to %s to remove 
 			//	signalKeyPressEventId++
 			g.Id(s.varNameId).Op("++")
 
-			//	signalKeyPressEventMap[signalKeyPressEventId] = callback
-			g.Id(s.varNameMap).Index(jen.Id(s.varNameId)).Op("=").Id("callback")
-
-			g.Line()
-
+			//	instance := C.gpointer(recv.Object().ToC())
 			targetCValue := jen.Id("recv").
 				Op(".").Id("Object").Call().
 				Op(".").Id("ToC").Call()
-			//	instance := C.gpointer(recv.Object().ToC())
 			g.
 				Id("instance").Op(":=").
 				Qual("C", "gpointer").
@@ -246,7 +249,7 @@ The returned value represents the connection, and may be passed to %s to remove 
 
 			//	retC := C.signal_connect_key_press_event(instance, C.gpointer(uintptr(signalKeyPressEventId)))
 			g.
-				Id("retC").
+				Id("handlerID").
 				Op(":=").
 				Qual("C", s.cNameSignalConnect).
 				CallFunc(func(g *jen.Group) {
@@ -256,9 +259,18 @@ The returned value represents the connection, and may be passed to %s to remove 
 						Qual("C", "gpointer").
 						Call(jen.Id("uintptr").Call(jen.Id(s.varNameId)))
 				})
+			g.Line()
 
-			// return int(retC)
-			g.Return(jen.Int().Call(jen.Id("retC")))
+			// detail := signalWidgetKeyPressEventDetail{callback, handlerId}
+			g.Id("detail").Op(":=").Id(s.typeStructName).Values(
+				jen.Id("callback"),
+				jen.Id("handlerID"))
+			//	signalKeyPressEventMap[signalKeyPressEventId] = callback
+			g.Id(s.varNameMap).Index(jen.Id(s.varNameId)).Op("=").Id("detail")
+			g.Line()
+
+			// return signalKeyPressEventId
+			g.Return(jen.Id(s.varNameId))
 		})
 
 	g.Line()
@@ -284,9 +296,9 @@ The connectionID should be a value returned from a call to %s.`,
 			s.generateLockUnlock(g)
 			g.Line()
 
-			// _, exists := signalKeyPressEventMap[connectionID]
+			// detail, exists := signalKeyPressEventMap[connectionID]
 			g.
-				Id("_").Op(",").Id("exists").
+				Id("detail").Op(",").Id("exists").
 				Op(":=").
 				Id(s.varNameMap).Index(jen.Id("connectionID"))
 
@@ -306,12 +318,12 @@ The connectionID should be a value returned from a call to %s.`,
 				Qual("C", "gpointer").
 				Call(targetCValue)
 
-			// C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+			// C.g_signal_handler_disconnect(instance, detail.handlerID)
 			g.
 				Qual("C", "g_signal_handler_disconnect").
 				Call(
 					jen.Id("instance"),
-					jen.Qual("C", "gulong").Call(jen.Id("connectionID")),
+					jen.Id("detail").Dot("handlerID"),
 				)
 
 			//	delete(signalKeyPressEventMap, connectionId)

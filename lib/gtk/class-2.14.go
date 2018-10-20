@@ -748,8 +748,13 @@ func (recv *ScaleButton) GetPopup() *Widget {
 	return retGo
 }
 
+type signalStatusIconButtonPressEventDetail struct {
+	callback  StatusIconSignalButtonPressEventCallback
+	handlerID C.gulong
+}
+
 var signalStatusIconButtonPressEventId int
-var signalStatusIconButtonPressEventMap = make(map[int]StatusIconSignalButtonPressEventCallback)
+var signalStatusIconButtonPressEventMap = make(map[int]signalStatusIconButtonPressEventDetail)
 var signalStatusIconButtonPressEventLock sync.Mutex
 
 // StatusIconSignalButtonPressEventCallback is a callback function for a 'button-press-event' signal emitted from a StatusIcon.
@@ -765,11 +770,13 @@ func (recv *StatusIcon) ConnectButtonPressEvent(callback StatusIconSignalButtonP
 	defer signalStatusIconButtonPressEventLock.Unlock()
 
 	signalStatusIconButtonPressEventId++
-	signalStatusIconButtonPressEventMap[signalStatusIconButtonPressEventId] = callback
-
 	instance := C.gpointer(recv.Object().ToC())
-	retC := C.StatusIcon_signal_connect_button_press_event(instance, C.gpointer(uintptr(signalStatusIconButtonPressEventId)))
-	return int(retC)
+	handlerID := C.StatusIcon_signal_connect_button_press_event(instance, C.gpointer(uintptr(signalStatusIconButtonPressEventId)))
+
+	detail := signalStatusIconButtonPressEventDetail{callback, handlerID}
+	signalStatusIconButtonPressEventMap[signalStatusIconButtonPressEventId] = detail
+
+	return signalStatusIconButtonPressEventId
 }
 
 /*
@@ -781,13 +788,13 @@ func (recv *StatusIcon) DisconnectButtonPressEvent(connectionID int) {
 	signalStatusIconButtonPressEventLock.Lock()
 	defer signalStatusIconButtonPressEventLock.Unlock()
 
-	_, exists := signalStatusIconButtonPressEventMap[connectionID]
+	detail, exists := signalStatusIconButtonPressEventMap[connectionID]
 	if !exists {
 		return
 	}
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalStatusIconButtonPressEventMap, connectionID)
 }
 
@@ -796,12 +803,17 @@ func StatusIcon_buttonPressEventHandler(_ *C.GObject, c_event *C.GdkEventButton,
 	event := gdk.EventButtonNewFromC(unsafe.Pointer(c_event))
 
 	index := int(uintptr(data))
-	callback := signalStatusIconButtonPressEventMap[index]
+	callback := signalStatusIconButtonPressEventMap[index].callback
 	callback(event)
 }
 
+type signalStatusIconButtonReleaseEventDetail struct {
+	callback  StatusIconSignalButtonReleaseEventCallback
+	handlerID C.gulong
+}
+
 var signalStatusIconButtonReleaseEventId int
-var signalStatusIconButtonReleaseEventMap = make(map[int]StatusIconSignalButtonReleaseEventCallback)
+var signalStatusIconButtonReleaseEventMap = make(map[int]signalStatusIconButtonReleaseEventDetail)
 var signalStatusIconButtonReleaseEventLock sync.Mutex
 
 // StatusIconSignalButtonReleaseEventCallback is a callback function for a 'button-release-event' signal emitted from a StatusIcon.
@@ -817,11 +829,13 @@ func (recv *StatusIcon) ConnectButtonReleaseEvent(callback StatusIconSignalButto
 	defer signalStatusIconButtonReleaseEventLock.Unlock()
 
 	signalStatusIconButtonReleaseEventId++
-	signalStatusIconButtonReleaseEventMap[signalStatusIconButtonReleaseEventId] = callback
-
 	instance := C.gpointer(recv.Object().ToC())
-	retC := C.StatusIcon_signal_connect_button_release_event(instance, C.gpointer(uintptr(signalStatusIconButtonReleaseEventId)))
-	return int(retC)
+	handlerID := C.StatusIcon_signal_connect_button_release_event(instance, C.gpointer(uintptr(signalStatusIconButtonReleaseEventId)))
+
+	detail := signalStatusIconButtonReleaseEventDetail{callback, handlerID}
+	signalStatusIconButtonReleaseEventMap[signalStatusIconButtonReleaseEventId] = detail
+
+	return signalStatusIconButtonReleaseEventId
 }
 
 /*
@@ -833,13 +847,13 @@ func (recv *StatusIcon) DisconnectButtonReleaseEvent(connectionID int) {
 	signalStatusIconButtonReleaseEventLock.Lock()
 	defer signalStatusIconButtonReleaseEventLock.Unlock()
 
-	_, exists := signalStatusIconButtonReleaseEventMap[connectionID]
+	detail, exists := signalStatusIconButtonReleaseEventMap[connectionID]
 	if !exists {
 		return
 	}
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalStatusIconButtonReleaseEventMap, connectionID)
 }
 
@@ -848,7 +862,7 @@ func StatusIcon_buttonReleaseEventHandler(_ *C.GObject, c_event *C.GdkEventButto
 	event := gdk.EventButtonNewFromC(unsafe.Pointer(c_event))
 
 	index := int(uintptr(data))
-	callback := signalStatusIconButtonReleaseEventMap[index]
+	callback := signalStatusIconButtonReleaseEventMap[index].callback
 	callback(event)
 }
 
@@ -885,8 +899,13 @@ func (recv *ToolItem) ToolbarReconfigured() {
 
 // Unsupported : gtk_tree_view_column_new_with_attributes : unsupported parameter ... : varargs
 
+type signalWidgetDamageEventDetail struct {
+	callback  WidgetSignalDamageEventCallback
+	handlerID C.gulong
+}
+
 var signalWidgetDamageEventId int
-var signalWidgetDamageEventMap = make(map[int]WidgetSignalDamageEventCallback)
+var signalWidgetDamageEventMap = make(map[int]signalWidgetDamageEventDetail)
 var signalWidgetDamageEventLock sync.Mutex
 
 // WidgetSignalDamageEventCallback is a callback function for a 'damage-event' signal emitted from a Widget.
@@ -902,11 +921,13 @@ func (recv *Widget) ConnectDamageEvent(callback WidgetSignalDamageEventCallback)
 	defer signalWidgetDamageEventLock.Unlock()
 
 	signalWidgetDamageEventId++
-	signalWidgetDamageEventMap[signalWidgetDamageEventId] = callback
-
 	instance := C.gpointer(recv.Object().ToC())
-	retC := C.Widget_signal_connect_damage_event(instance, C.gpointer(uintptr(signalWidgetDamageEventId)))
-	return int(retC)
+	handlerID := C.Widget_signal_connect_damage_event(instance, C.gpointer(uintptr(signalWidgetDamageEventId)))
+
+	detail := signalWidgetDamageEventDetail{callback, handlerID}
+	signalWidgetDamageEventMap[signalWidgetDamageEventId] = detail
+
+	return signalWidgetDamageEventId
 }
 
 /*
@@ -918,13 +939,13 @@ func (recv *Widget) DisconnectDamageEvent(connectionID int) {
 	signalWidgetDamageEventLock.Lock()
 	defer signalWidgetDamageEventLock.Unlock()
 
-	_, exists := signalWidgetDamageEventMap[connectionID]
+	detail, exists := signalWidgetDamageEventMap[connectionID]
 	if !exists {
 		return
 	}
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalWidgetDamageEventMap, connectionID)
 }
 
@@ -933,7 +954,7 @@ func Widget_damageEventHandler(_ *C.GObject, c_event *C.GdkEventExpose, data C.g
 	event := gdk.EventExposeNewFromC(unsafe.Pointer(c_event))
 
 	index := int(uintptr(data))
-	callback := signalWidgetDamageEventMap[index]
+	callback := signalWidgetDamageEventMap[index].callback
 	callback(event)
 }
 

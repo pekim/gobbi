@@ -40,8 +40,13 @@ func (recv *Display) SupportsShapes() bool {
 	return retGo
 }
 
+type signalScreenCompositedChangedDetail struct {
+	callback  ScreenSignalCompositedChangedCallback
+	handlerID C.gulong
+}
+
 var signalScreenCompositedChangedId int
-var signalScreenCompositedChangedMap = make(map[int]ScreenSignalCompositedChangedCallback)
+var signalScreenCompositedChangedMap = make(map[int]signalScreenCompositedChangedDetail)
 var signalScreenCompositedChangedLock sync.Mutex
 
 // ScreenSignalCompositedChangedCallback is a callback function for a 'composited-changed' signal emitted from a Screen.
@@ -57,11 +62,13 @@ func (recv *Screen) ConnectCompositedChanged(callback ScreenSignalCompositedChan
 	defer signalScreenCompositedChangedLock.Unlock()
 
 	signalScreenCompositedChangedId++
-	signalScreenCompositedChangedMap[signalScreenCompositedChangedId] = callback
-
 	instance := C.gpointer(recv.Object().ToC())
-	retC := C.Screen_signal_connect_composited_changed(instance, C.gpointer(uintptr(signalScreenCompositedChangedId)))
-	return int(retC)
+	handlerID := C.Screen_signal_connect_composited_changed(instance, C.gpointer(uintptr(signalScreenCompositedChangedId)))
+
+	detail := signalScreenCompositedChangedDetail{callback, handlerID}
+	signalScreenCompositedChangedMap[signalScreenCompositedChangedId] = detail
+
+	return signalScreenCompositedChangedId
 }
 
 /*
@@ -73,20 +80,20 @@ func (recv *Screen) DisconnectCompositedChanged(connectionID int) {
 	signalScreenCompositedChangedLock.Lock()
 	defer signalScreenCompositedChangedLock.Unlock()
 
-	_, exists := signalScreenCompositedChangedMap[connectionID]
+	detail, exists := signalScreenCompositedChangedMap[connectionID]
 	if !exists {
 		return
 	}
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalScreenCompositedChangedMap, connectionID)
 }
 
 //export Screen_compositedChangedHandler
 func Screen_compositedChangedHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
-	callback := signalScreenCompositedChangedMap[index]
+	callback := signalScreenCompositedChangedMap[index].callback
 	callback()
 }
 

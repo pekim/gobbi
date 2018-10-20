@@ -86,8 +86,13 @@ func CastToApplication(object *gobject.Object) *Application {
 	return ApplicationNewFromC(object.ToC())
 }
 
+type signalApplicationActivateDetail struct {
+	callback  ApplicationSignalActivateCallback
+	handlerID C.gulong
+}
+
 var signalApplicationActivateId int
-var signalApplicationActivateMap = make(map[int]ApplicationSignalActivateCallback)
+var signalApplicationActivateMap = make(map[int]signalApplicationActivateDetail)
 var signalApplicationActivateLock sync.Mutex
 
 // ApplicationSignalActivateCallback is a callback function for a 'activate' signal emitted from a Application.
@@ -103,11 +108,13 @@ func (recv *Application) ConnectActivate(callback ApplicationSignalActivateCallb
 	defer signalApplicationActivateLock.Unlock()
 
 	signalApplicationActivateId++
-	signalApplicationActivateMap[signalApplicationActivateId] = callback
-
 	instance := C.gpointer(recv.Object().ToC())
-	retC := C.Application_signal_connect_activate(instance, C.gpointer(uintptr(signalApplicationActivateId)))
-	return int(retC)
+	handlerID := C.Application_signal_connect_activate(instance, C.gpointer(uintptr(signalApplicationActivateId)))
+
+	detail := signalApplicationActivateDetail{callback, handlerID}
+	signalApplicationActivateMap[signalApplicationActivateId] = detail
+
+	return signalApplicationActivateId
 }
 
 /*
@@ -119,20 +126,20 @@ func (recv *Application) DisconnectActivate(connectionID int) {
 	signalApplicationActivateLock.Lock()
 	defer signalApplicationActivateLock.Unlock()
 
-	_, exists := signalApplicationActivateMap[connectionID]
+	detail, exists := signalApplicationActivateMap[connectionID]
 	if !exists {
 		return
 	}
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalApplicationActivateMap, connectionID)
 }
 
 //export Application_activateHandler
 func Application_activateHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
-	callback := signalApplicationActivateMap[index]
+	callback := signalApplicationActivateMap[index].callback
 	callback()
 }
 
@@ -140,8 +147,13 @@ func Application_activateHandler(_ *C.GObject, data C.gpointer) {
 
 // Unsupported signal 'open' for Application : unsupported parameter files : no param type
 
+type signalApplicationShutdownDetail struct {
+	callback  ApplicationSignalShutdownCallback
+	handlerID C.gulong
+}
+
 var signalApplicationShutdownId int
-var signalApplicationShutdownMap = make(map[int]ApplicationSignalShutdownCallback)
+var signalApplicationShutdownMap = make(map[int]signalApplicationShutdownDetail)
 var signalApplicationShutdownLock sync.Mutex
 
 // ApplicationSignalShutdownCallback is a callback function for a 'shutdown' signal emitted from a Application.
@@ -157,11 +169,13 @@ func (recv *Application) ConnectShutdown(callback ApplicationSignalShutdownCallb
 	defer signalApplicationShutdownLock.Unlock()
 
 	signalApplicationShutdownId++
-	signalApplicationShutdownMap[signalApplicationShutdownId] = callback
-
 	instance := C.gpointer(recv.Object().ToC())
-	retC := C.Application_signal_connect_shutdown(instance, C.gpointer(uintptr(signalApplicationShutdownId)))
-	return int(retC)
+	handlerID := C.Application_signal_connect_shutdown(instance, C.gpointer(uintptr(signalApplicationShutdownId)))
+
+	detail := signalApplicationShutdownDetail{callback, handlerID}
+	signalApplicationShutdownMap[signalApplicationShutdownId] = detail
+
+	return signalApplicationShutdownId
 }
 
 /*
@@ -173,25 +187,30 @@ func (recv *Application) DisconnectShutdown(connectionID int) {
 	signalApplicationShutdownLock.Lock()
 	defer signalApplicationShutdownLock.Unlock()
 
-	_, exists := signalApplicationShutdownMap[connectionID]
+	detail, exists := signalApplicationShutdownMap[connectionID]
 	if !exists {
 		return
 	}
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalApplicationShutdownMap, connectionID)
 }
 
 //export Application_shutdownHandler
 func Application_shutdownHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
-	callback := signalApplicationShutdownMap[index]
+	callback := signalApplicationShutdownMap[index].callback
 	callback()
 }
 
+type signalApplicationStartupDetail struct {
+	callback  ApplicationSignalStartupCallback
+	handlerID C.gulong
+}
+
 var signalApplicationStartupId int
-var signalApplicationStartupMap = make(map[int]ApplicationSignalStartupCallback)
+var signalApplicationStartupMap = make(map[int]signalApplicationStartupDetail)
 var signalApplicationStartupLock sync.Mutex
 
 // ApplicationSignalStartupCallback is a callback function for a 'startup' signal emitted from a Application.
@@ -207,11 +226,13 @@ func (recv *Application) ConnectStartup(callback ApplicationSignalStartupCallbac
 	defer signalApplicationStartupLock.Unlock()
 
 	signalApplicationStartupId++
-	signalApplicationStartupMap[signalApplicationStartupId] = callback
-
 	instance := C.gpointer(recv.Object().ToC())
-	retC := C.Application_signal_connect_startup(instance, C.gpointer(uintptr(signalApplicationStartupId)))
-	return int(retC)
+	handlerID := C.Application_signal_connect_startup(instance, C.gpointer(uintptr(signalApplicationStartupId)))
+
+	detail := signalApplicationStartupDetail{callback, handlerID}
+	signalApplicationStartupMap[signalApplicationStartupId] = detail
+
+	return signalApplicationStartupId
 }
 
 /*
@@ -223,20 +244,20 @@ func (recv *Application) DisconnectStartup(connectionID int) {
 	signalApplicationStartupLock.Lock()
 	defer signalApplicationStartupLock.Unlock()
 
-	_, exists := signalApplicationStartupMap[connectionID]
+	detail, exists := signalApplicationStartupMap[connectionID]
 	if !exists {
 		return
 	}
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalApplicationStartupMap, connectionID)
 }
 
 //export Application_startupHandler
 func Application_startupHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
-	callback := signalApplicationStartupMap[index]
+	callback := signalApplicationStartupMap[index].callback
 	callback()
 }
 

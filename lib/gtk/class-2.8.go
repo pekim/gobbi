@@ -372,8 +372,13 @@ func (recv *TreeViewColumn) QueueResize() {
 	return
 }
 
+type signalWidgetGrabBrokenEventDetail struct {
+	callback  WidgetSignalGrabBrokenEventCallback
+	handlerID C.gulong
+}
+
 var signalWidgetGrabBrokenEventId int
-var signalWidgetGrabBrokenEventMap = make(map[int]WidgetSignalGrabBrokenEventCallback)
+var signalWidgetGrabBrokenEventMap = make(map[int]signalWidgetGrabBrokenEventDetail)
 var signalWidgetGrabBrokenEventLock sync.Mutex
 
 // WidgetSignalGrabBrokenEventCallback is a callback function for a 'grab-broken-event' signal emitted from a Widget.
@@ -389,11 +394,13 @@ func (recv *Widget) ConnectGrabBrokenEvent(callback WidgetSignalGrabBrokenEventC
 	defer signalWidgetGrabBrokenEventLock.Unlock()
 
 	signalWidgetGrabBrokenEventId++
-	signalWidgetGrabBrokenEventMap[signalWidgetGrabBrokenEventId] = callback
-
 	instance := C.gpointer(recv.Object().ToC())
-	retC := C.Widget_signal_connect_grab_broken_event(instance, C.gpointer(uintptr(signalWidgetGrabBrokenEventId)))
-	return int(retC)
+	handlerID := C.Widget_signal_connect_grab_broken_event(instance, C.gpointer(uintptr(signalWidgetGrabBrokenEventId)))
+
+	detail := signalWidgetGrabBrokenEventDetail{callback, handlerID}
+	signalWidgetGrabBrokenEventMap[signalWidgetGrabBrokenEventId] = detail
+
+	return signalWidgetGrabBrokenEventId
 }
 
 /*
@@ -405,13 +412,13 @@ func (recv *Widget) DisconnectGrabBrokenEvent(connectionID int) {
 	signalWidgetGrabBrokenEventLock.Lock()
 	defer signalWidgetGrabBrokenEventLock.Unlock()
 
-	_, exists := signalWidgetGrabBrokenEventMap[connectionID]
+	detail, exists := signalWidgetGrabBrokenEventMap[connectionID]
 	if !exists {
 		return
 	}
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalWidgetGrabBrokenEventMap, connectionID)
 }
 
@@ -420,7 +427,7 @@ func Widget_grabBrokenEventHandler(_ *C.GObject, c_event *C.GdkEventGrabBroken, 
 	event := gdk.EventGrabBrokenNewFromC(unsafe.Pointer(c_event))
 
 	index := int(uintptr(data))
-	callback := signalWidgetGrabBrokenEventMap[index]
+	callback := signalWidgetGrabBrokenEventMap[index].callback
 	callback(event)
 }
 

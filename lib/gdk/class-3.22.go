@@ -51,8 +51,13 @@ import (
 */
 import "C"
 
+type signalDeviceToolChangedDetail struct {
+	callback  DeviceSignalToolChangedCallback
+	handlerID C.gulong
+}
+
 var signalDeviceToolChangedId int
-var signalDeviceToolChangedMap = make(map[int]DeviceSignalToolChangedCallback)
+var signalDeviceToolChangedMap = make(map[int]signalDeviceToolChangedDetail)
 var signalDeviceToolChangedLock sync.Mutex
 
 // DeviceSignalToolChangedCallback is a callback function for a 'tool-changed' signal emitted from a Device.
@@ -68,11 +73,13 @@ func (recv *Device) ConnectToolChanged(callback DeviceSignalToolChangedCallback)
 	defer signalDeviceToolChangedLock.Unlock()
 
 	signalDeviceToolChangedId++
-	signalDeviceToolChangedMap[signalDeviceToolChangedId] = callback
-
 	instance := C.gpointer(recv.Object().ToC())
-	retC := C.Device_signal_connect_tool_changed(instance, C.gpointer(uintptr(signalDeviceToolChangedId)))
-	return int(retC)
+	handlerID := C.Device_signal_connect_tool_changed(instance, C.gpointer(uintptr(signalDeviceToolChangedId)))
+
+	detail := signalDeviceToolChangedDetail{callback, handlerID}
+	signalDeviceToolChangedMap[signalDeviceToolChangedId] = detail
+
+	return signalDeviceToolChangedId
 }
 
 /*
@@ -84,13 +91,13 @@ func (recv *Device) DisconnectToolChanged(connectionID int) {
 	signalDeviceToolChangedLock.Lock()
 	defer signalDeviceToolChangedLock.Unlock()
 
-	_, exists := signalDeviceToolChangedMap[connectionID]
+	detail, exists := signalDeviceToolChangedMap[connectionID]
 	if !exists {
 		return
 	}
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalDeviceToolChangedMap, connectionID)
 }
 
@@ -99,7 +106,7 @@ func Device_toolChangedHandler(_ *C.GObject, c_tool *C.GdkDeviceTool, data C.gpo
 	tool := DeviceToolNewFromC(unsafe.Pointer(c_tool))
 
 	index := int(uintptr(data))
-	callback := signalDeviceToolChangedMap[index]
+	callback := signalDeviceToolChangedMap[index].callback
 	callback(tool)
 }
 
@@ -167,8 +174,13 @@ func (recv *DeviceTool) GetToolType() DeviceToolType {
 	return retGo
 }
 
+type signalDisplayMonitorAddedDetail struct {
+	callback  DisplaySignalMonitorAddedCallback
+	handlerID C.gulong
+}
+
 var signalDisplayMonitorAddedId int
-var signalDisplayMonitorAddedMap = make(map[int]DisplaySignalMonitorAddedCallback)
+var signalDisplayMonitorAddedMap = make(map[int]signalDisplayMonitorAddedDetail)
 var signalDisplayMonitorAddedLock sync.Mutex
 
 // DisplaySignalMonitorAddedCallback is a callback function for a 'monitor-added' signal emitted from a Display.
@@ -184,11 +196,13 @@ func (recv *Display) ConnectMonitorAdded(callback DisplaySignalMonitorAddedCallb
 	defer signalDisplayMonitorAddedLock.Unlock()
 
 	signalDisplayMonitorAddedId++
-	signalDisplayMonitorAddedMap[signalDisplayMonitorAddedId] = callback
-
 	instance := C.gpointer(recv.Object().ToC())
-	retC := C.Display_signal_connect_monitor_added(instance, C.gpointer(uintptr(signalDisplayMonitorAddedId)))
-	return int(retC)
+	handlerID := C.Display_signal_connect_monitor_added(instance, C.gpointer(uintptr(signalDisplayMonitorAddedId)))
+
+	detail := signalDisplayMonitorAddedDetail{callback, handlerID}
+	signalDisplayMonitorAddedMap[signalDisplayMonitorAddedId] = detail
+
+	return signalDisplayMonitorAddedId
 }
 
 /*
@@ -200,13 +214,13 @@ func (recv *Display) DisconnectMonitorAdded(connectionID int) {
 	signalDisplayMonitorAddedLock.Lock()
 	defer signalDisplayMonitorAddedLock.Unlock()
 
-	_, exists := signalDisplayMonitorAddedMap[connectionID]
+	detail, exists := signalDisplayMonitorAddedMap[connectionID]
 	if !exists {
 		return
 	}
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalDisplayMonitorAddedMap, connectionID)
 }
 
@@ -215,12 +229,17 @@ func Display_monitorAddedHandler(_ *C.GObject, c_monitor *C.GdkMonitor, data C.g
 	monitor := MonitorNewFromC(unsafe.Pointer(c_monitor))
 
 	index := int(uintptr(data))
-	callback := signalDisplayMonitorAddedMap[index]
+	callback := signalDisplayMonitorAddedMap[index].callback
 	callback(monitor)
 }
 
+type signalDisplayMonitorRemovedDetail struct {
+	callback  DisplaySignalMonitorRemovedCallback
+	handlerID C.gulong
+}
+
 var signalDisplayMonitorRemovedId int
-var signalDisplayMonitorRemovedMap = make(map[int]DisplaySignalMonitorRemovedCallback)
+var signalDisplayMonitorRemovedMap = make(map[int]signalDisplayMonitorRemovedDetail)
 var signalDisplayMonitorRemovedLock sync.Mutex
 
 // DisplaySignalMonitorRemovedCallback is a callback function for a 'monitor-removed' signal emitted from a Display.
@@ -236,11 +255,13 @@ func (recv *Display) ConnectMonitorRemoved(callback DisplaySignalMonitorRemovedC
 	defer signalDisplayMonitorRemovedLock.Unlock()
 
 	signalDisplayMonitorRemovedId++
-	signalDisplayMonitorRemovedMap[signalDisplayMonitorRemovedId] = callback
-
 	instance := C.gpointer(recv.Object().ToC())
-	retC := C.Display_signal_connect_monitor_removed(instance, C.gpointer(uintptr(signalDisplayMonitorRemovedId)))
-	return int(retC)
+	handlerID := C.Display_signal_connect_monitor_removed(instance, C.gpointer(uintptr(signalDisplayMonitorRemovedId)))
+
+	detail := signalDisplayMonitorRemovedDetail{callback, handlerID}
+	signalDisplayMonitorRemovedMap[signalDisplayMonitorRemovedId] = detail
+
+	return signalDisplayMonitorRemovedId
 }
 
 /*
@@ -252,13 +273,13 @@ func (recv *Display) DisconnectMonitorRemoved(connectionID int) {
 	signalDisplayMonitorRemovedLock.Lock()
 	defer signalDisplayMonitorRemovedLock.Unlock()
 
-	_, exists := signalDisplayMonitorRemovedMap[connectionID]
+	detail, exists := signalDisplayMonitorRemovedMap[connectionID]
 	if !exists {
 		return
 	}
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalDisplayMonitorRemovedMap, connectionID)
 }
 
@@ -267,7 +288,7 @@ func Display_monitorRemovedHandler(_ *C.GObject, c_monitor *C.GdkMonitor, data C
 	monitor := MonitorNewFromC(unsafe.Pointer(c_monitor))
 
 	index := int(uintptr(data))
-	callback := signalDisplayMonitorRemovedMap[index]
+	callback := signalDisplayMonitorRemovedMap[index].callback
 	callback(monitor)
 }
 
@@ -432,8 +453,13 @@ func CastToMonitor(object *gobject.Object) *Monitor {
 	return MonitorNewFromC(object.ToC())
 }
 
+type signalMonitorInvalidateDetail struct {
+	callback  MonitorSignalInvalidateCallback
+	handlerID C.gulong
+}
+
 var signalMonitorInvalidateId int
-var signalMonitorInvalidateMap = make(map[int]MonitorSignalInvalidateCallback)
+var signalMonitorInvalidateMap = make(map[int]signalMonitorInvalidateDetail)
 var signalMonitorInvalidateLock sync.Mutex
 
 // MonitorSignalInvalidateCallback is a callback function for a 'invalidate' signal emitted from a Monitor.
@@ -449,11 +475,13 @@ func (recv *Monitor) ConnectInvalidate(callback MonitorSignalInvalidateCallback)
 	defer signalMonitorInvalidateLock.Unlock()
 
 	signalMonitorInvalidateId++
-	signalMonitorInvalidateMap[signalMonitorInvalidateId] = callback
-
 	instance := C.gpointer(recv.Object().ToC())
-	retC := C.Monitor_signal_connect_invalidate(instance, C.gpointer(uintptr(signalMonitorInvalidateId)))
-	return int(retC)
+	handlerID := C.Monitor_signal_connect_invalidate(instance, C.gpointer(uintptr(signalMonitorInvalidateId)))
+
+	detail := signalMonitorInvalidateDetail{callback, handlerID}
+	signalMonitorInvalidateMap[signalMonitorInvalidateId] = detail
+
+	return signalMonitorInvalidateId
 }
 
 /*
@@ -465,20 +493,20 @@ func (recv *Monitor) DisconnectInvalidate(connectionID int) {
 	signalMonitorInvalidateLock.Lock()
 	defer signalMonitorInvalidateLock.Unlock()
 
-	_, exists := signalMonitorInvalidateMap[connectionID]
+	detail, exists := signalMonitorInvalidateMap[connectionID]
 	if !exists {
 		return
 	}
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalMonitorInvalidateMap, connectionID)
 }
 
 //export Monitor_invalidateHandler
 func Monitor_invalidateHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
-	callback := signalMonitorInvalidateMap[index]
+	callback := signalMonitorInvalidateMap[index].callback
 	callback()
 }
 

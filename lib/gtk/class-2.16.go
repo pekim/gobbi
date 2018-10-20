@@ -679,8 +679,13 @@ func (recv *Scale) ClearMarks() {
 
 // Unsupported signal 'query-tooltip' for StatusIcon : unsupported parameter x : type gint :
 
+type signalStatusIconScrollEventDetail struct {
+	callback  StatusIconSignalScrollEventCallback
+	handlerID C.gulong
+}
+
 var signalStatusIconScrollEventId int
-var signalStatusIconScrollEventMap = make(map[int]StatusIconSignalScrollEventCallback)
+var signalStatusIconScrollEventMap = make(map[int]signalStatusIconScrollEventDetail)
 var signalStatusIconScrollEventLock sync.Mutex
 
 // StatusIconSignalScrollEventCallback is a callback function for a 'scroll-event' signal emitted from a StatusIcon.
@@ -696,11 +701,13 @@ func (recv *StatusIcon) ConnectScrollEvent(callback StatusIconSignalScrollEventC
 	defer signalStatusIconScrollEventLock.Unlock()
 
 	signalStatusIconScrollEventId++
-	signalStatusIconScrollEventMap[signalStatusIconScrollEventId] = callback
-
 	instance := C.gpointer(recv.Object().ToC())
-	retC := C.StatusIcon_signal_connect_scroll_event(instance, C.gpointer(uintptr(signalStatusIconScrollEventId)))
-	return int(retC)
+	handlerID := C.StatusIcon_signal_connect_scroll_event(instance, C.gpointer(uintptr(signalStatusIconScrollEventId)))
+
+	detail := signalStatusIconScrollEventDetail{callback, handlerID}
+	signalStatusIconScrollEventMap[signalStatusIconScrollEventId] = detail
+
+	return signalStatusIconScrollEventId
 }
 
 /*
@@ -712,13 +719,13 @@ func (recv *StatusIcon) DisconnectScrollEvent(connectionID int) {
 	signalStatusIconScrollEventLock.Lock()
 	defer signalStatusIconScrollEventLock.Unlock()
 
-	_, exists := signalStatusIconScrollEventMap[connectionID]
+	detail, exists := signalStatusIconScrollEventMap[connectionID]
 	if !exists {
 		return
 	}
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalStatusIconScrollEventMap, connectionID)
 }
 
@@ -727,7 +734,7 @@ func StatusIcon_scrollEventHandler(_ *C.GObject, c_event *C.GdkEventScroll, data
 	event := gdk.EventScrollNewFromC(unsafe.Pointer(c_event))
 
 	index := int(uintptr(data))
-	callback := signalStatusIconScrollEventMap[index]
+	callback := signalStatusIconScrollEventMap[index].callback
 	callback(event)
 }
 
@@ -795,8 +802,13 @@ func (recv *StatusIcon) SetTooltipText(text string) {
 
 // Unsupported : gtk_style_get_valist : unsupported parameter widget_type : no type generator for GType, GType
 
+type signalTextBufferPasteDoneDetail struct {
+	callback  TextBufferSignalPasteDoneCallback
+	handlerID C.gulong
+}
+
 var signalTextBufferPasteDoneId int
-var signalTextBufferPasteDoneMap = make(map[int]TextBufferSignalPasteDoneCallback)
+var signalTextBufferPasteDoneMap = make(map[int]signalTextBufferPasteDoneDetail)
 var signalTextBufferPasteDoneLock sync.Mutex
 
 // TextBufferSignalPasteDoneCallback is a callback function for a 'paste-done' signal emitted from a TextBuffer.
@@ -812,11 +824,13 @@ func (recv *TextBuffer) ConnectPasteDone(callback TextBufferSignalPasteDoneCallb
 	defer signalTextBufferPasteDoneLock.Unlock()
 
 	signalTextBufferPasteDoneId++
-	signalTextBufferPasteDoneMap[signalTextBufferPasteDoneId] = callback
-
 	instance := C.gpointer(recv.Object().ToC())
-	retC := C.TextBuffer_signal_connect_paste_done(instance, C.gpointer(uintptr(signalTextBufferPasteDoneId)))
-	return int(retC)
+	handlerID := C.TextBuffer_signal_connect_paste_done(instance, C.gpointer(uintptr(signalTextBufferPasteDoneId)))
+
+	detail := signalTextBufferPasteDoneDetail{callback, handlerID}
+	signalTextBufferPasteDoneMap[signalTextBufferPasteDoneId] = detail
+
+	return signalTextBufferPasteDoneId
 }
 
 /*
@@ -828,13 +842,13 @@ func (recv *TextBuffer) DisconnectPasteDone(connectionID int) {
 	signalTextBufferPasteDoneLock.Lock()
 	defer signalTextBufferPasteDoneLock.Unlock()
 
-	_, exists := signalTextBufferPasteDoneMap[connectionID]
+	detail, exists := signalTextBufferPasteDoneMap[connectionID]
 	if !exists {
 		return
 	}
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalTextBufferPasteDoneMap, connectionID)
 }
 
@@ -843,7 +857,7 @@ func TextBuffer_pasteDoneHandler(_ *C.GObject, c_clipboard *C.GtkClipboard, data
 	clipboard := ClipboardNewFromC(unsafe.Pointer(c_clipboard))
 
 	index := int(uintptr(data))
-	callback := signalTextBufferPasteDoneMap[index]
+	callback := signalTextBufferPasteDoneMap[index].callback
 	callback(clipboard)
 }
 

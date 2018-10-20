@@ -124,8 +124,13 @@ func (recv *Overlay) SetOverlayPassThrough(widget *Widget, passThrough bool) {
 
 // Unsupported : gtk_page_setup_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
 
+type signalPlacesSidebarShowOtherLocationsDetail struct {
+	callback  PlacesSidebarSignalShowOtherLocationsCallback
+	handlerID C.gulong
+}
+
 var signalPlacesSidebarShowOtherLocationsId int
-var signalPlacesSidebarShowOtherLocationsMap = make(map[int]PlacesSidebarSignalShowOtherLocationsCallback)
+var signalPlacesSidebarShowOtherLocationsMap = make(map[int]signalPlacesSidebarShowOtherLocationsDetail)
 var signalPlacesSidebarShowOtherLocationsLock sync.Mutex
 
 // PlacesSidebarSignalShowOtherLocationsCallback is a callback function for a 'show-other-locations' signal emitted from a PlacesSidebar.
@@ -141,11 +146,13 @@ func (recv *PlacesSidebar) ConnectShowOtherLocations(callback PlacesSidebarSigna
 	defer signalPlacesSidebarShowOtherLocationsLock.Unlock()
 
 	signalPlacesSidebarShowOtherLocationsId++
-	signalPlacesSidebarShowOtherLocationsMap[signalPlacesSidebarShowOtherLocationsId] = callback
-
 	instance := C.gpointer(recv.Object().ToC())
-	retC := C.PlacesSidebar_signal_connect_show_other_locations(instance, C.gpointer(uintptr(signalPlacesSidebarShowOtherLocationsId)))
-	return int(retC)
+	handlerID := C.PlacesSidebar_signal_connect_show_other_locations(instance, C.gpointer(uintptr(signalPlacesSidebarShowOtherLocationsId)))
+
+	detail := signalPlacesSidebarShowOtherLocationsDetail{callback, handlerID}
+	signalPlacesSidebarShowOtherLocationsMap[signalPlacesSidebarShowOtherLocationsId] = detail
+
+	return signalPlacesSidebarShowOtherLocationsId
 }
 
 /*
@@ -157,20 +164,20 @@ func (recv *PlacesSidebar) DisconnectShowOtherLocations(connectionID int) {
 	signalPlacesSidebarShowOtherLocationsLock.Lock()
 	defer signalPlacesSidebarShowOtherLocationsLock.Unlock()
 
-	_, exists := signalPlacesSidebarShowOtherLocationsMap[connectionID]
+	detail, exists := signalPlacesSidebarShowOtherLocationsMap[connectionID]
 	if !exists {
 		return
 	}
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalPlacesSidebarShowOtherLocationsMap, connectionID)
 }
 
 //export PlacesSidebar_showOtherLocationsHandler
 func PlacesSidebar_showOtherLocationsHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
-	callback := signalPlacesSidebarShowOtherLocationsMap[index]
+	callback := signalPlacesSidebarShowOtherLocationsMap[index].callback
 	callback()
 }
 

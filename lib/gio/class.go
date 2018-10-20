@@ -461,8 +461,13 @@ func CastToCancellable(object *gobject.Object) *Cancellable {
 	return CancellableNewFromC(object.ToC())
 }
 
+type signalCancellableCancelledDetail struct {
+	callback  CancellableSignalCancelledCallback
+	handlerID C.gulong
+}
+
 var signalCancellableCancelledId int
-var signalCancellableCancelledMap = make(map[int]CancellableSignalCancelledCallback)
+var signalCancellableCancelledMap = make(map[int]signalCancellableCancelledDetail)
 var signalCancellableCancelledLock sync.Mutex
 
 // CancellableSignalCancelledCallback is a callback function for a 'cancelled' signal emitted from a Cancellable.
@@ -478,11 +483,13 @@ func (recv *Cancellable) ConnectCancelled(callback CancellableSignalCancelledCal
 	defer signalCancellableCancelledLock.Unlock()
 
 	signalCancellableCancelledId++
-	signalCancellableCancelledMap[signalCancellableCancelledId] = callback
-
 	instance := C.gpointer(recv.Object().ToC())
-	retC := C.Cancellable_signal_connect_cancelled(instance, C.gpointer(uintptr(signalCancellableCancelledId)))
-	return int(retC)
+	handlerID := C.Cancellable_signal_connect_cancelled(instance, C.gpointer(uintptr(signalCancellableCancelledId)))
+
+	detail := signalCancellableCancelledDetail{callback, handlerID}
+	signalCancellableCancelledMap[signalCancellableCancelledId] = detail
+
+	return signalCancellableCancelledId
 }
 
 /*
@@ -494,20 +501,20 @@ func (recv *Cancellable) DisconnectCancelled(connectionID int) {
 	signalCancellableCancelledLock.Lock()
 	defer signalCancellableCancelledLock.Unlock()
 
-	_, exists := signalCancellableCancelledMap[connectionID]
+	detail, exists := signalCancellableCancelledMap[connectionID]
 	if !exists {
 		return
 	}
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalCancellableCancelledMap, connectionID)
 }
 
 //export Cancellable_cancelledHandler
 func Cancellable_cancelledHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
-	callback := signalCancellableCancelledMap[index]
+	callback := signalCancellableCancelledMap[index].callback
 	callback()
 }
 
@@ -2352,8 +2359,13 @@ func CastToFilenameCompleter(object *gobject.Object) *FilenameCompleter {
 	return FilenameCompleterNewFromC(object.ToC())
 }
 
+type signalFilenameCompleterGotCompletionDataDetail struct {
+	callback  FilenameCompleterSignalGotCompletionDataCallback
+	handlerID C.gulong
+}
+
 var signalFilenameCompleterGotCompletionDataId int
-var signalFilenameCompleterGotCompletionDataMap = make(map[int]FilenameCompleterSignalGotCompletionDataCallback)
+var signalFilenameCompleterGotCompletionDataMap = make(map[int]signalFilenameCompleterGotCompletionDataDetail)
 var signalFilenameCompleterGotCompletionDataLock sync.Mutex
 
 // FilenameCompleterSignalGotCompletionDataCallback is a callback function for a 'got-completion-data' signal emitted from a FilenameCompleter.
@@ -2369,11 +2381,13 @@ func (recv *FilenameCompleter) ConnectGotCompletionData(callback FilenameComplet
 	defer signalFilenameCompleterGotCompletionDataLock.Unlock()
 
 	signalFilenameCompleterGotCompletionDataId++
-	signalFilenameCompleterGotCompletionDataMap[signalFilenameCompleterGotCompletionDataId] = callback
-
 	instance := C.gpointer(recv.Object().ToC())
-	retC := C.FilenameCompleter_signal_connect_got_completion_data(instance, C.gpointer(uintptr(signalFilenameCompleterGotCompletionDataId)))
-	return int(retC)
+	handlerID := C.FilenameCompleter_signal_connect_got_completion_data(instance, C.gpointer(uintptr(signalFilenameCompleterGotCompletionDataId)))
+
+	detail := signalFilenameCompleterGotCompletionDataDetail{callback, handlerID}
+	signalFilenameCompleterGotCompletionDataMap[signalFilenameCompleterGotCompletionDataId] = detail
+
+	return signalFilenameCompleterGotCompletionDataId
 }
 
 /*
@@ -2385,20 +2399,20 @@ func (recv *FilenameCompleter) DisconnectGotCompletionData(connectionID int) {
 	signalFilenameCompleterGotCompletionDataLock.Lock()
 	defer signalFilenameCompleterGotCompletionDataLock.Unlock()
 
-	_, exists := signalFilenameCompleterGotCompletionDataMap[connectionID]
+	detail, exists := signalFilenameCompleterGotCompletionDataMap[connectionID]
 	if !exists {
 		return
 	}
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalFilenameCompleterGotCompletionDataMap, connectionID)
 }
 
 //export FilenameCompleter_gotCompletionDataHandler
 func FilenameCompleter_gotCompletionDataHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
-	callback := signalFilenameCompleterGotCompletionDataMap[index]
+	callback := signalFilenameCompleterGotCompletionDataMap[index].callback
 	callback()
 }
 
@@ -3510,8 +3524,13 @@ func CastToResolver(object *gobject.Object) *Resolver {
 	return ResolverNewFromC(object.ToC())
 }
 
+type signalResolverReloadDetail struct {
+	callback  ResolverSignalReloadCallback
+	handlerID C.gulong
+}
+
 var signalResolverReloadId int
-var signalResolverReloadMap = make(map[int]ResolverSignalReloadCallback)
+var signalResolverReloadMap = make(map[int]signalResolverReloadDetail)
 var signalResolverReloadLock sync.Mutex
 
 // ResolverSignalReloadCallback is a callback function for a 'reload' signal emitted from a Resolver.
@@ -3527,11 +3546,13 @@ func (recv *Resolver) ConnectReload(callback ResolverSignalReloadCallback) int {
 	defer signalResolverReloadLock.Unlock()
 
 	signalResolverReloadId++
-	signalResolverReloadMap[signalResolverReloadId] = callback
-
 	instance := C.gpointer(recv.Object().ToC())
-	retC := C.Resolver_signal_connect_reload(instance, C.gpointer(uintptr(signalResolverReloadId)))
-	return int(retC)
+	handlerID := C.Resolver_signal_connect_reload(instance, C.gpointer(uintptr(signalResolverReloadId)))
+
+	detail := signalResolverReloadDetail{callback, handlerID}
+	signalResolverReloadMap[signalResolverReloadId] = detail
+
+	return signalResolverReloadId
 }
 
 /*
@@ -3543,20 +3564,20 @@ func (recv *Resolver) DisconnectReload(connectionID int) {
 	signalResolverReloadLock.Lock()
 	defer signalResolverReloadLock.Unlock()
 
-	_, exists := signalResolverReloadMap[connectionID]
+	detail, exists := signalResolverReloadMap[connectionID]
 	if !exists {
 		return
 	}
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalResolverReloadMap, connectionID)
 }
 
 //export Resolver_reloadHandler
 func Resolver_reloadHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
-	callback := signalResolverReloadMap[index]
+	callback := signalResolverReloadMap[index].callback
 	callback()
 }
 
@@ -4429,8 +4450,13 @@ func CastToUnixMountMonitor(object *gobject.Object) *UnixMountMonitor {
 	return UnixMountMonitorNewFromC(object.ToC())
 }
 
+type signalUnixMountMonitorMountpointsChangedDetail struct {
+	callback  UnixMountMonitorSignalMountpointsChangedCallback
+	handlerID C.gulong
+}
+
 var signalUnixMountMonitorMountpointsChangedId int
-var signalUnixMountMonitorMountpointsChangedMap = make(map[int]UnixMountMonitorSignalMountpointsChangedCallback)
+var signalUnixMountMonitorMountpointsChangedMap = make(map[int]signalUnixMountMonitorMountpointsChangedDetail)
 var signalUnixMountMonitorMountpointsChangedLock sync.Mutex
 
 // UnixMountMonitorSignalMountpointsChangedCallback is a callback function for a 'mountpoints-changed' signal emitted from a UnixMountMonitor.
@@ -4446,11 +4472,13 @@ func (recv *UnixMountMonitor) ConnectMountpointsChanged(callback UnixMountMonito
 	defer signalUnixMountMonitorMountpointsChangedLock.Unlock()
 
 	signalUnixMountMonitorMountpointsChangedId++
-	signalUnixMountMonitorMountpointsChangedMap[signalUnixMountMonitorMountpointsChangedId] = callback
-
 	instance := C.gpointer(recv.Object().ToC())
-	retC := C.UnixMountMonitor_signal_connect_mountpoints_changed(instance, C.gpointer(uintptr(signalUnixMountMonitorMountpointsChangedId)))
-	return int(retC)
+	handlerID := C.UnixMountMonitor_signal_connect_mountpoints_changed(instance, C.gpointer(uintptr(signalUnixMountMonitorMountpointsChangedId)))
+
+	detail := signalUnixMountMonitorMountpointsChangedDetail{callback, handlerID}
+	signalUnixMountMonitorMountpointsChangedMap[signalUnixMountMonitorMountpointsChangedId] = detail
+
+	return signalUnixMountMonitorMountpointsChangedId
 }
 
 /*
@@ -4462,25 +4490,30 @@ func (recv *UnixMountMonitor) DisconnectMountpointsChanged(connectionID int) {
 	signalUnixMountMonitorMountpointsChangedLock.Lock()
 	defer signalUnixMountMonitorMountpointsChangedLock.Unlock()
 
-	_, exists := signalUnixMountMonitorMountpointsChangedMap[connectionID]
+	detail, exists := signalUnixMountMonitorMountpointsChangedMap[connectionID]
 	if !exists {
 		return
 	}
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalUnixMountMonitorMountpointsChangedMap, connectionID)
 }
 
 //export UnixMountMonitor_mountpointsChangedHandler
 func UnixMountMonitor_mountpointsChangedHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
-	callback := signalUnixMountMonitorMountpointsChangedMap[index]
+	callback := signalUnixMountMonitorMountpointsChangedMap[index].callback
 	callback()
 }
 
+type signalUnixMountMonitorMountsChangedDetail struct {
+	callback  UnixMountMonitorSignalMountsChangedCallback
+	handlerID C.gulong
+}
+
 var signalUnixMountMonitorMountsChangedId int
-var signalUnixMountMonitorMountsChangedMap = make(map[int]UnixMountMonitorSignalMountsChangedCallback)
+var signalUnixMountMonitorMountsChangedMap = make(map[int]signalUnixMountMonitorMountsChangedDetail)
 var signalUnixMountMonitorMountsChangedLock sync.Mutex
 
 // UnixMountMonitorSignalMountsChangedCallback is a callback function for a 'mounts-changed' signal emitted from a UnixMountMonitor.
@@ -4496,11 +4529,13 @@ func (recv *UnixMountMonitor) ConnectMountsChanged(callback UnixMountMonitorSign
 	defer signalUnixMountMonitorMountsChangedLock.Unlock()
 
 	signalUnixMountMonitorMountsChangedId++
-	signalUnixMountMonitorMountsChangedMap[signalUnixMountMonitorMountsChangedId] = callback
-
 	instance := C.gpointer(recv.Object().ToC())
-	retC := C.UnixMountMonitor_signal_connect_mounts_changed(instance, C.gpointer(uintptr(signalUnixMountMonitorMountsChangedId)))
-	return int(retC)
+	handlerID := C.UnixMountMonitor_signal_connect_mounts_changed(instance, C.gpointer(uintptr(signalUnixMountMonitorMountsChangedId)))
+
+	detail := signalUnixMountMonitorMountsChangedDetail{callback, handlerID}
+	signalUnixMountMonitorMountsChangedMap[signalUnixMountMonitorMountsChangedId] = detail
+
+	return signalUnixMountMonitorMountsChangedId
 }
 
 /*
@@ -4512,20 +4547,20 @@ func (recv *UnixMountMonitor) DisconnectMountsChanged(connectionID int) {
 	signalUnixMountMonitorMountsChangedLock.Lock()
 	defer signalUnixMountMonitorMountsChangedLock.Unlock()
 
-	_, exists := signalUnixMountMonitorMountsChangedMap[connectionID]
+	detail, exists := signalUnixMountMonitorMountsChangedMap[connectionID]
 	if !exists {
 		return
 	}
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalUnixMountMonitorMountsChangedMap, connectionID)
 }
 
 //export UnixMountMonitor_mountsChangedHandler
 func UnixMountMonitor_mountsChangedHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
-	callback := signalUnixMountMonitorMountsChangedMap[index]
+	callback := signalUnixMountMonitorMountsChangedMap[index].callback
 	callback()
 }
 

@@ -432,8 +432,13 @@ func (recv *ScrolledWindow) SetOverlayScrolling(overlayScrolling bool) {
 	return
 }
 
+type signalSearchEntryNextMatchDetail struct {
+	callback  SearchEntrySignalNextMatchCallback
+	handlerID C.gulong
+}
+
 var signalSearchEntryNextMatchId int
-var signalSearchEntryNextMatchMap = make(map[int]SearchEntrySignalNextMatchCallback)
+var signalSearchEntryNextMatchMap = make(map[int]signalSearchEntryNextMatchDetail)
 var signalSearchEntryNextMatchLock sync.Mutex
 
 // SearchEntrySignalNextMatchCallback is a callback function for a 'next-match' signal emitted from a SearchEntry.
@@ -449,11 +454,13 @@ func (recv *SearchEntry) ConnectNextMatch(callback SearchEntrySignalNextMatchCal
 	defer signalSearchEntryNextMatchLock.Unlock()
 
 	signalSearchEntryNextMatchId++
-	signalSearchEntryNextMatchMap[signalSearchEntryNextMatchId] = callback
-
 	instance := C.gpointer(recv.Object().ToC())
-	retC := C.SearchEntry_signal_connect_next_match(instance, C.gpointer(uintptr(signalSearchEntryNextMatchId)))
-	return int(retC)
+	handlerID := C.SearchEntry_signal_connect_next_match(instance, C.gpointer(uintptr(signalSearchEntryNextMatchId)))
+
+	detail := signalSearchEntryNextMatchDetail{callback, handlerID}
+	signalSearchEntryNextMatchMap[signalSearchEntryNextMatchId] = detail
+
+	return signalSearchEntryNextMatchId
 }
 
 /*
@@ -465,25 +472,30 @@ func (recv *SearchEntry) DisconnectNextMatch(connectionID int) {
 	signalSearchEntryNextMatchLock.Lock()
 	defer signalSearchEntryNextMatchLock.Unlock()
 
-	_, exists := signalSearchEntryNextMatchMap[connectionID]
+	detail, exists := signalSearchEntryNextMatchMap[connectionID]
 	if !exists {
 		return
 	}
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalSearchEntryNextMatchMap, connectionID)
 }
 
 //export SearchEntry_nextMatchHandler
 func SearchEntry_nextMatchHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
-	callback := signalSearchEntryNextMatchMap[index]
+	callback := signalSearchEntryNextMatchMap[index].callback
 	callback()
 }
 
+type signalSearchEntryPreviousMatchDetail struct {
+	callback  SearchEntrySignalPreviousMatchCallback
+	handlerID C.gulong
+}
+
 var signalSearchEntryPreviousMatchId int
-var signalSearchEntryPreviousMatchMap = make(map[int]SearchEntrySignalPreviousMatchCallback)
+var signalSearchEntryPreviousMatchMap = make(map[int]signalSearchEntryPreviousMatchDetail)
 var signalSearchEntryPreviousMatchLock sync.Mutex
 
 // SearchEntrySignalPreviousMatchCallback is a callback function for a 'previous-match' signal emitted from a SearchEntry.
@@ -499,11 +511,13 @@ func (recv *SearchEntry) ConnectPreviousMatch(callback SearchEntrySignalPrevious
 	defer signalSearchEntryPreviousMatchLock.Unlock()
 
 	signalSearchEntryPreviousMatchId++
-	signalSearchEntryPreviousMatchMap[signalSearchEntryPreviousMatchId] = callback
-
 	instance := C.gpointer(recv.Object().ToC())
-	retC := C.SearchEntry_signal_connect_previous_match(instance, C.gpointer(uintptr(signalSearchEntryPreviousMatchId)))
-	return int(retC)
+	handlerID := C.SearchEntry_signal_connect_previous_match(instance, C.gpointer(uintptr(signalSearchEntryPreviousMatchId)))
+
+	detail := signalSearchEntryPreviousMatchDetail{callback, handlerID}
+	signalSearchEntryPreviousMatchMap[signalSearchEntryPreviousMatchId] = detail
+
+	return signalSearchEntryPreviousMatchId
 }
 
 /*
@@ -515,25 +529,30 @@ func (recv *SearchEntry) DisconnectPreviousMatch(connectionID int) {
 	signalSearchEntryPreviousMatchLock.Lock()
 	defer signalSearchEntryPreviousMatchLock.Unlock()
 
-	_, exists := signalSearchEntryPreviousMatchMap[connectionID]
+	detail, exists := signalSearchEntryPreviousMatchMap[connectionID]
 	if !exists {
 		return
 	}
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalSearchEntryPreviousMatchMap, connectionID)
 }
 
 //export SearchEntry_previousMatchHandler
 func SearchEntry_previousMatchHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
-	callback := signalSearchEntryPreviousMatchMap[index]
+	callback := signalSearchEntryPreviousMatchMap[index].callback
 	callback()
 }
 
+type signalSearchEntryStopSearchDetail struct {
+	callback  SearchEntrySignalStopSearchCallback
+	handlerID C.gulong
+}
+
 var signalSearchEntryStopSearchId int
-var signalSearchEntryStopSearchMap = make(map[int]SearchEntrySignalStopSearchCallback)
+var signalSearchEntryStopSearchMap = make(map[int]signalSearchEntryStopSearchDetail)
 var signalSearchEntryStopSearchLock sync.Mutex
 
 // SearchEntrySignalStopSearchCallback is a callback function for a 'stop-search' signal emitted from a SearchEntry.
@@ -549,11 +568,13 @@ func (recv *SearchEntry) ConnectStopSearch(callback SearchEntrySignalStopSearchC
 	defer signalSearchEntryStopSearchLock.Unlock()
 
 	signalSearchEntryStopSearchId++
-	signalSearchEntryStopSearchMap[signalSearchEntryStopSearchId] = callback
-
 	instance := C.gpointer(recv.Object().ToC())
-	retC := C.SearchEntry_signal_connect_stop_search(instance, C.gpointer(uintptr(signalSearchEntryStopSearchId)))
-	return int(retC)
+	handlerID := C.SearchEntry_signal_connect_stop_search(instance, C.gpointer(uintptr(signalSearchEntryStopSearchId)))
+
+	detail := signalSearchEntryStopSearchDetail{callback, handlerID}
+	signalSearchEntryStopSearchMap[signalSearchEntryStopSearchId] = detail
+
+	return signalSearchEntryStopSearchId
 }
 
 /*
@@ -565,20 +586,20 @@ func (recv *SearchEntry) DisconnectStopSearch(connectionID int) {
 	signalSearchEntryStopSearchLock.Lock()
 	defer signalSearchEntryStopSearchLock.Unlock()
 
-	_, exists := signalSearchEntryStopSearchMap[connectionID]
+	detail, exists := signalSearchEntryStopSearchMap[connectionID]
 	if !exists {
 		return
 	}
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalSearchEntryStopSearchMap, connectionID)
 }
 
 //export SearchEntry_stopSearchHandler
 func SearchEntry_stopSearchHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
-	callback := signalSearchEntryStopSearchMap[index]
+	callback := signalSearchEntryStopSearchMap[index].callback
 	callback()
 }
 

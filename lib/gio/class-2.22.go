@@ -1557,8 +1557,13 @@ func CastToThreadedSocketService(object *gobject.Object) *ThreadedSocketService 
 	return ThreadedSocketServiceNewFromC(object.ToC())
 }
 
+type signalThreadedSocketServiceRunDetail struct {
+	callback  ThreadedSocketServiceSignalRunCallback
+	handlerID C.gulong
+}
+
 var signalThreadedSocketServiceRunId int
-var signalThreadedSocketServiceRunMap = make(map[int]ThreadedSocketServiceSignalRunCallback)
+var signalThreadedSocketServiceRunMap = make(map[int]signalThreadedSocketServiceRunDetail)
 var signalThreadedSocketServiceRunLock sync.Mutex
 
 // ThreadedSocketServiceSignalRunCallback is a callback function for a 'run' signal emitted from a ThreadedSocketService.
@@ -1574,11 +1579,13 @@ func (recv *ThreadedSocketService) ConnectRun(callback ThreadedSocketServiceSign
 	defer signalThreadedSocketServiceRunLock.Unlock()
 
 	signalThreadedSocketServiceRunId++
-	signalThreadedSocketServiceRunMap[signalThreadedSocketServiceRunId] = callback
-
 	instance := C.gpointer(recv.Object().ToC())
-	retC := C.ThreadedSocketService_signal_connect_run(instance, C.gpointer(uintptr(signalThreadedSocketServiceRunId)))
-	return int(retC)
+	handlerID := C.ThreadedSocketService_signal_connect_run(instance, C.gpointer(uintptr(signalThreadedSocketServiceRunId)))
+
+	detail := signalThreadedSocketServiceRunDetail{callback, handlerID}
+	signalThreadedSocketServiceRunMap[signalThreadedSocketServiceRunId] = detail
+
+	return signalThreadedSocketServiceRunId
 }
 
 /*
@@ -1590,13 +1597,13 @@ func (recv *ThreadedSocketService) DisconnectRun(connectionID int) {
 	signalThreadedSocketServiceRunLock.Lock()
 	defer signalThreadedSocketServiceRunLock.Unlock()
 
-	_, exists := signalThreadedSocketServiceRunMap[connectionID]
+	detail, exists := signalThreadedSocketServiceRunMap[connectionID]
 	if !exists {
 		return
 	}
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalThreadedSocketServiceRunMap, connectionID)
 }
 
@@ -1607,7 +1614,7 @@ func ThreadedSocketService_runHandler(_ *C.GObject, c_connection *C.GSocketConne
 	sourceObject := gobject.ObjectNewFromC(unsafe.Pointer(c_source_object))
 
 	index := int(uintptr(data))
-	callback := signalThreadedSocketServiceRunMap[index]
+	callback := signalThreadedSocketServiceRunMap[index].callback
 	callback(connection, sourceObject)
 }
 

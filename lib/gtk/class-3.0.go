@@ -1577,8 +1577,13 @@ func (recv *Style) HasContext() bool {
 	return retGo
 }
 
+type signalStyleContextChangedDetail struct {
+	callback  StyleContextSignalChangedCallback
+	handlerID C.gulong
+}
+
 var signalStyleContextChangedId int
-var signalStyleContextChangedMap = make(map[int]StyleContextSignalChangedCallback)
+var signalStyleContextChangedMap = make(map[int]signalStyleContextChangedDetail)
 var signalStyleContextChangedLock sync.Mutex
 
 // StyleContextSignalChangedCallback is a callback function for a 'changed' signal emitted from a StyleContext.
@@ -1594,11 +1599,13 @@ func (recv *StyleContext) ConnectChanged(callback StyleContextSignalChangedCallb
 	defer signalStyleContextChangedLock.Unlock()
 
 	signalStyleContextChangedId++
-	signalStyleContextChangedMap[signalStyleContextChangedId] = callback
-
 	instance := C.gpointer(recv.Object().ToC())
-	retC := C.StyleContext_signal_connect_changed(instance, C.gpointer(uintptr(signalStyleContextChangedId)))
-	return int(retC)
+	handlerID := C.StyleContext_signal_connect_changed(instance, C.gpointer(uintptr(signalStyleContextChangedId)))
+
+	detail := signalStyleContextChangedDetail{callback, handlerID}
+	signalStyleContextChangedMap[signalStyleContextChangedId] = detail
+
+	return signalStyleContextChangedId
 }
 
 /*
@@ -1610,20 +1617,20 @@ func (recv *StyleContext) DisconnectChanged(connectionID int) {
 	signalStyleContextChangedLock.Lock()
 	defer signalStyleContextChangedLock.Unlock()
 
-	_, exists := signalStyleContextChangedMap[connectionID]
+	detail, exists := signalStyleContextChangedMap[connectionID]
 	if !exists {
 		return
 	}
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalStyleContextChangedMap, connectionID)
 }
 
 //export StyleContext_changedHandler
 func StyleContext_changedHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
-	callback := signalStyleContextChangedMap[index]
+	callback := signalStyleContextChangedMap[index].callback
 	callback()
 }
 
@@ -2331,8 +2338,13 @@ func (recv *TreeViewColumn) GetButton() *Widget {
 	return retGo
 }
 
+type signalWidgetDrawDetail struct {
+	callback  WidgetSignalDrawCallback
+	handlerID C.gulong
+}
+
 var signalWidgetDrawId int
-var signalWidgetDrawMap = make(map[int]WidgetSignalDrawCallback)
+var signalWidgetDrawMap = make(map[int]signalWidgetDrawDetail)
 var signalWidgetDrawLock sync.Mutex
 
 // WidgetSignalDrawCallback is a callback function for a 'draw' signal emitted from a Widget.
@@ -2348,11 +2360,13 @@ func (recv *Widget) ConnectDraw(callback WidgetSignalDrawCallback) int {
 	defer signalWidgetDrawLock.Unlock()
 
 	signalWidgetDrawId++
-	signalWidgetDrawMap[signalWidgetDrawId] = callback
-
 	instance := C.gpointer(recv.Object().ToC())
-	retC := C.Widget_signal_connect_draw(instance, C.gpointer(uintptr(signalWidgetDrawId)))
-	return int(retC)
+	handlerID := C.Widget_signal_connect_draw(instance, C.gpointer(uintptr(signalWidgetDrawId)))
+
+	detail := signalWidgetDrawDetail{callback, handlerID}
+	signalWidgetDrawMap[signalWidgetDrawId] = detail
+
+	return signalWidgetDrawId
 }
 
 /*
@@ -2364,13 +2378,13 @@ func (recv *Widget) DisconnectDraw(connectionID int) {
 	signalWidgetDrawLock.Lock()
 	defer signalWidgetDrawLock.Unlock()
 
-	_, exists := signalWidgetDrawMap[connectionID]
+	detail, exists := signalWidgetDrawMap[connectionID]
 	if !exists {
 		return
 	}
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalWidgetDrawMap, connectionID)
 }
 
@@ -2379,14 +2393,19 @@ func Widget_drawHandler(_ *C.GObject, c_cr *C.cairo_t, data C.gpointer) {
 	cr := cairo.ContextNewFromC(unsafe.Pointer(c_cr))
 
 	index := int(uintptr(data))
-	callback := signalWidgetDrawMap[index]
+	callback := signalWidgetDrawMap[index].callback
 	callback(cr)
 }
 
 // Unsupported signal 'state-flags-changed' for Widget : unsupported parameter flags : type StateFlags :
 
+type signalWidgetStyleUpdatedDetail struct {
+	callback  WidgetSignalStyleUpdatedCallback
+	handlerID C.gulong
+}
+
 var signalWidgetStyleUpdatedId int
-var signalWidgetStyleUpdatedMap = make(map[int]WidgetSignalStyleUpdatedCallback)
+var signalWidgetStyleUpdatedMap = make(map[int]signalWidgetStyleUpdatedDetail)
 var signalWidgetStyleUpdatedLock sync.Mutex
 
 // WidgetSignalStyleUpdatedCallback is a callback function for a 'style-updated' signal emitted from a Widget.
@@ -2402,11 +2421,13 @@ func (recv *Widget) ConnectStyleUpdated(callback WidgetSignalStyleUpdatedCallbac
 	defer signalWidgetStyleUpdatedLock.Unlock()
 
 	signalWidgetStyleUpdatedId++
-	signalWidgetStyleUpdatedMap[signalWidgetStyleUpdatedId] = callback
-
 	instance := C.gpointer(recv.Object().ToC())
-	retC := C.Widget_signal_connect_style_updated(instance, C.gpointer(uintptr(signalWidgetStyleUpdatedId)))
-	return int(retC)
+	handlerID := C.Widget_signal_connect_style_updated(instance, C.gpointer(uintptr(signalWidgetStyleUpdatedId)))
+
+	detail := signalWidgetStyleUpdatedDetail{callback, handlerID}
+	signalWidgetStyleUpdatedMap[signalWidgetStyleUpdatedId] = detail
+
+	return signalWidgetStyleUpdatedId
 }
 
 /*
@@ -2418,20 +2439,20 @@ func (recv *Widget) DisconnectStyleUpdated(connectionID int) {
 	signalWidgetStyleUpdatedLock.Lock()
 	defer signalWidgetStyleUpdatedLock.Unlock()
 
-	_, exists := signalWidgetStyleUpdatedMap[connectionID]
+	detail, exists := signalWidgetStyleUpdatedMap[connectionID]
 	if !exists {
 		return
 	}
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalWidgetStyleUpdatedMap, connectionID)
 }
 
 //export Widget_styleUpdatedHandler
 func Widget_styleUpdatedHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
-	callback := signalWidgetStyleUpdatedMap[index]
+	callback := signalWidgetStyleUpdatedMap[index].callback
 	callback()
 }
 

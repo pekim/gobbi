@@ -364,8 +364,13 @@ func CastToPadController(object *gobject.Object) *PadController {
 
 // Unsupported : gtk_page_setup_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
 
+type signalPlacesSidebarMountDetail struct {
+	callback  PlacesSidebarSignalMountCallback
+	handlerID C.gulong
+}
+
 var signalPlacesSidebarMountId int
-var signalPlacesSidebarMountMap = make(map[int]PlacesSidebarSignalMountCallback)
+var signalPlacesSidebarMountMap = make(map[int]signalPlacesSidebarMountDetail)
 var signalPlacesSidebarMountLock sync.Mutex
 
 // PlacesSidebarSignalMountCallback is a callback function for a 'mount' signal emitted from a PlacesSidebar.
@@ -381,11 +386,13 @@ func (recv *PlacesSidebar) ConnectMount(callback PlacesSidebarSignalMountCallbac
 	defer signalPlacesSidebarMountLock.Unlock()
 
 	signalPlacesSidebarMountId++
-	signalPlacesSidebarMountMap[signalPlacesSidebarMountId] = callback
-
 	instance := C.gpointer(recv.Object().ToC())
-	retC := C.PlacesSidebar_signal_connect_mount(instance, C.gpointer(uintptr(signalPlacesSidebarMountId)))
-	return int(retC)
+	handlerID := C.PlacesSidebar_signal_connect_mount(instance, C.gpointer(uintptr(signalPlacesSidebarMountId)))
+
+	detail := signalPlacesSidebarMountDetail{callback, handlerID}
+	signalPlacesSidebarMountMap[signalPlacesSidebarMountId] = detail
+
+	return signalPlacesSidebarMountId
 }
 
 /*
@@ -397,13 +404,13 @@ func (recv *PlacesSidebar) DisconnectMount(connectionID int) {
 	signalPlacesSidebarMountLock.Lock()
 	defer signalPlacesSidebarMountLock.Unlock()
 
-	_, exists := signalPlacesSidebarMountMap[connectionID]
+	detail, exists := signalPlacesSidebarMountMap[connectionID]
 	if !exists {
 		return
 	}
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalPlacesSidebarMountMap, connectionID)
 }
 
@@ -412,14 +419,19 @@ func PlacesSidebar_mountHandler(_ *C.GObject, c_mount_operation *C.GMountOperati
 	mountOperation := gio.MountOperationNewFromC(unsafe.Pointer(c_mount_operation))
 
 	index := int(uintptr(data))
-	callback := signalPlacesSidebarMountMap[index]
+	callback := signalPlacesSidebarMountMap[index].callback
 	callback(mountOperation)
 }
 
 // Unsupported signal 'show-other-locations-with-flags' for PlacesSidebar : unsupported parameter open_flags : type PlacesOpenFlags :
 
+type signalPlacesSidebarUnmountDetail struct {
+	callback  PlacesSidebarSignalUnmountCallback
+	handlerID C.gulong
+}
+
 var signalPlacesSidebarUnmountId int
-var signalPlacesSidebarUnmountMap = make(map[int]PlacesSidebarSignalUnmountCallback)
+var signalPlacesSidebarUnmountMap = make(map[int]signalPlacesSidebarUnmountDetail)
 var signalPlacesSidebarUnmountLock sync.Mutex
 
 // PlacesSidebarSignalUnmountCallback is a callback function for a 'unmount' signal emitted from a PlacesSidebar.
@@ -435,11 +447,13 @@ func (recv *PlacesSidebar) ConnectUnmount(callback PlacesSidebarSignalUnmountCal
 	defer signalPlacesSidebarUnmountLock.Unlock()
 
 	signalPlacesSidebarUnmountId++
-	signalPlacesSidebarUnmountMap[signalPlacesSidebarUnmountId] = callback
-
 	instance := C.gpointer(recv.Object().ToC())
-	retC := C.PlacesSidebar_signal_connect_unmount(instance, C.gpointer(uintptr(signalPlacesSidebarUnmountId)))
-	return int(retC)
+	handlerID := C.PlacesSidebar_signal_connect_unmount(instance, C.gpointer(uintptr(signalPlacesSidebarUnmountId)))
+
+	detail := signalPlacesSidebarUnmountDetail{callback, handlerID}
+	signalPlacesSidebarUnmountMap[signalPlacesSidebarUnmountId] = detail
+
+	return signalPlacesSidebarUnmountId
 }
 
 /*
@@ -451,13 +465,13 @@ func (recv *PlacesSidebar) DisconnectUnmount(connectionID int) {
 	signalPlacesSidebarUnmountLock.Lock()
 	defer signalPlacesSidebarUnmountLock.Unlock()
 
-	_, exists := signalPlacesSidebarUnmountMap[connectionID]
+	detail, exists := signalPlacesSidebarUnmountMap[connectionID]
 	if !exists {
 		return
 	}
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalPlacesSidebarUnmountMap, connectionID)
 }
 
@@ -466,7 +480,7 @@ func PlacesSidebar_unmountHandler(_ *C.GObject, c_mount_operation *C.GMountOpera
 	mountOperation := gio.MountOperationNewFromC(unsafe.Pointer(c_mount_operation))
 
 	index := int(uintptr(data))
-	callback := signalPlacesSidebarUnmountMap[index]
+	callback := signalPlacesSidebarUnmountMap[index].callback
 	callback(mountOperation)
 }
 
@@ -773,8 +787,13 @@ func CastToShortcutsWindow(object *gobject.Object) *ShortcutsWindow {
 	return ShortcutsWindowNewFromC(object.ToC())
 }
 
+type signalShortcutsWindowCloseDetail struct {
+	callback  ShortcutsWindowSignalCloseCallback
+	handlerID C.gulong
+}
+
 var signalShortcutsWindowCloseId int
-var signalShortcutsWindowCloseMap = make(map[int]ShortcutsWindowSignalCloseCallback)
+var signalShortcutsWindowCloseMap = make(map[int]signalShortcutsWindowCloseDetail)
 var signalShortcutsWindowCloseLock sync.Mutex
 
 // ShortcutsWindowSignalCloseCallback is a callback function for a 'close' signal emitted from a ShortcutsWindow.
@@ -790,11 +809,13 @@ func (recv *ShortcutsWindow) ConnectClose(callback ShortcutsWindowSignalCloseCal
 	defer signalShortcutsWindowCloseLock.Unlock()
 
 	signalShortcutsWindowCloseId++
-	signalShortcutsWindowCloseMap[signalShortcutsWindowCloseId] = callback
-
 	instance := C.gpointer(recv.Object().ToC())
-	retC := C.ShortcutsWindow_signal_connect_close(instance, C.gpointer(uintptr(signalShortcutsWindowCloseId)))
-	return int(retC)
+	handlerID := C.ShortcutsWindow_signal_connect_close(instance, C.gpointer(uintptr(signalShortcutsWindowCloseId)))
+
+	detail := signalShortcutsWindowCloseDetail{callback, handlerID}
+	signalShortcutsWindowCloseMap[signalShortcutsWindowCloseId] = detail
+
+	return signalShortcutsWindowCloseId
 }
 
 /*
@@ -806,25 +827,30 @@ func (recv *ShortcutsWindow) DisconnectClose(connectionID int) {
 	signalShortcutsWindowCloseLock.Lock()
 	defer signalShortcutsWindowCloseLock.Unlock()
 
-	_, exists := signalShortcutsWindowCloseMap[connectionID]
+	detail, exists := signalShortcutsWindowCloseMap[connectionID]
 	if !exists {
 		return
 	}
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalShortcutsWindowCloseMap, connectionID)
 }
 
 //export ShortcutsWindow_closeHandler
 func ShortcutsWindow_closeHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
-	callback := signalShortcutsWindowCloseMap[index]
+	callback := signalShortcutsWindowCloseMap[index].callback
 	callback()
 }
 
+type signalShortcutsWindowSearchDetail struct {
+	callback  ShortcutsWindowSignalSearchCallback
+	handlerID C.gulong
+}
+
 var signalShortcutsWindowSearchId int
-var signalShortcutsWindowSearchMap = make(map[int]ShortcutsWindowSignalSearchCallback)
+var signalShortcutsWindowSearchMap = make(map[int]signalShortcutsWindowSearchDetail)
 var signalShortcutsWindowSearchLock sync.Mutex
 
 // ShortcutsWindowSignalSearchCallback is a callback function for a 'search' signal emitted from a ShortcutsWindow.
@@ -840,11 +866,13 @@ func (recv *ShortcutsWindow) ConnectSearch(callback ShortcutsWindowSignalSearchC
 	defer signalShortcutsWindowSearchLock.Unlock()
 
 	signalShortcutsWindowSearchId++
-	signalShortcutsWindowSearchMap[signalShortcutsWindowSearchId] = callback
-
 	instance := C.gpointer(recv.Object().ToC())
-	retC := C.ShortcutsWindow_signal_connect_search(instance, C.gpointer(uintptr(signalShortcutsWindowSearchId)))
-	return int(retC)
+	handlerID := C.ShortcutsWindow_signal_connect_search(instance, C.gpointer(uintptr(signalShortcutsWindowSearchId)))
+
+	detail := signalShortcutsWindowSearchDetail{callback, handlerID}
+	signalShortcutsWindowSearchMap[signalShortcutsWindowSearchId] = detail
+
+	return signalShortcutsWindowSearchId
 }
 
 /*
@@ -856,20 +884,20 @@ func (recv *ShortcutsWindow) DisconnectSearch(connectionID int) {
 	signalShortcutsWindowSearchLock.Lock()
 	defer signalShortcutsWindowSearchLock.Unlock()
 
-	_, exists := signalShortcutsWindowSearchMap[connectionID]
+	detail, exists := signalShortcutsWindowSearchMap[connectionID]
 	if !exists {
 		return
 	}
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalShortcutsWindowSearchMap, connectionID)
 }
 
 //export ShortcutsWindow_searchHandler
 func ShortcutsWindow_searchHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
-	callback := signalShortcutsWindowSearchMap[index]
+	callback := signalShortcutsWindowSearchMap[index].callback
 	callback()
 }
 

@@ -78,8 +78,13 @@ func (recv *AppLaunchContext) SetTimestamp(timestamp uint32) {
 	return
 }
 
+type signalScreenMonitorsChangedDetail struct {
+	callback  ScreenSignalMonitorsChangedCallback
+	handlerID C.gulong
+}
+
 var signalScreenMonitorsChangedId int
-var signalScreenMonitorsChangedMap = make(map[int]ScreenSignalMonitorsChangedCallback)
+var signalScreenMonitorsChangedMap = make(map[int]signalScreenMonitorsChangedDetail)
 var signalScreenMonitorsChangedLock sync.Mutex
 
 // ScreenSignalMonitorsChangedCallback is a callback function for a 'monitors-changed' signal emitted from a Screen.
@@ -95,11 +100,13 @@ func (recv *Screen) ConnectMonitorsChanged(callback ScreenSignalMonitorsChangedC
 	defer signalScreenMonitorsChangedLock.Unlock()
 
 	signalScreenMonitorsChangedId++
-	signalScreenMonitorsChangedMap[signalScreenMonitorsChangedId] = callback
-
 	instance := C.gpointer(recv.Object().ToC())
-	retC := C.Screen_signal_connect_monitors_changed(instance, C.gpointer(uintptr(signalScreenMonitorsChangedId)))
-	return int(retC)
+	handlerID := C.Screen_signal_connect_monitors_changed(instance, C.gpointer(uintptr(signalScreenMonitorsChangedId)))
+
+	detail := signalScreenMonitorsChangedDetail{callback, handlerID}
+	signalScreenMonitorsChangedMap[signalScreenMonitorsChangedId] = detail
+
+	return signalScreenMonitorsChangedId
 }
 
 /*
@@ -111,20 +118,20 @@ func (recv *Screen) DisconnectMonitorsChanged(connectionID int) {
 	signalScreenMonitorsChangedLock.Lock()
 	defer signalScreenMonitorsChangedLock.Unlock()
 
-	_, exists := signalScreenMonitorsChangedMap[connectionID]
+	detail, exists := signalScreenMonitorsChangedMap[connectionID]
 	if !exists {
 		return
 	}
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalScreenMonitorsChangedMap, connectionID)
 }
 
 //export Screen_monitorsChangedHandler
 func Screen_monitorsChangedHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
-	callback := signalScreenMonitorsChangedMap[index]
+	callback := signalScreenMonitorsChangedMap[index].callback
 	callback()
 }
 

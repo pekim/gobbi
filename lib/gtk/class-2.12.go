@@ -196,8 +196,13 @@ func (recv *Builder) SetTranslationDomain(domain string) {
 
 // Unsupported signal 'move-active' for ComboBox : unsupported parameter scroll_type : type ScrollType :
 
+type signalComboBoxPopdownDetail struct {
+	callback  ComboBoxSignalPopdownCallback
+	handlerID C.gulong
+}
+
 var signalComboBoxPopdownId int
-var signalComboBoxPopdownMap = make(map[int]ComboBoxSignalPopdownCallback)
+var signalComboBoxPopdownMap = make(map[int]signalComboBoxPopdownDetail)
 var signalComboBoxPopdownLock sync.Mutex
 
 // ComboBoxSignalPopdownCallback is a callback function for a 'popdown' signal emitted from a ComboBox.
@@ -213,11 +218,13 @@ func (recv *ComboBox) ConnectPopdown(callback ComboBoxSignalPopdownCallback) int
 	defer signalComboBoxPopdownLock.Unlock()
 
 	signalComboBoxPopdownId++
-	signalComboBoxPopdownMap[signalComboBoxPopdownId] = callback
-
 	instance := C.gpointer(recv.Object().ToC())
-	retC := C.ComboBox_signal_connect_popdown(instance, C.gpointer(uintptr(signalComboBoxPopdownId)))
-	return int(retC)
+	handlerID := C.ComboBox_signal_connect_popdown(instance, C.gpointer(uintptr(signalComboBoxPopdownId)))
+
+	detail := signalComboBoxPopdownDetail{callback, handlerID}
+	signalComboBoxPopdownMap[signalComboBoxPopdownId] = detail
+
+	return signalComboBoxPopdownId
 }
 
 /*
@@ -229,25 +236,30 @@ func (recv *ComboBox) DisconnectPopdown(connectionID int) {
 	signalComboBoxPopdownLock.Lock()
 	defer signalComboBoxPopdownLock.Unlock()
 
-	_, exists := signalComboBoxPopdownMap[connectionID]
+	detail, exists := signalComboBoxPopdownMap[connectionID]
 	if !exists {
 		return
 	}
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalComboBoxPopdownMap, connectionID)
 }
 
 //export ComboBox_popdownHandler
 func ComboBox_popdownHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
-	callback := signalComboBoxPopdownMap[index]
+	callback := signalComboBoxPopdownMap[index].callback
 	callback()
 }
 
+type signalComboBoxPopupDetail struct {
+	callback  ComboBoxSignalPopupCallback
+	handlerID C.gulong
+}
+
 var signalComboBoxPopupId int
-var signalComboBoxPopupMap = make(map[int]ComboBoxSignalPopupCallback)
+var signalComboBoxPopupMap = make(map[int]signalComboBoxPopupDetail)
 var signalComboBoxPopupLock sync.Mutex
 
 // ComboBoxSignalPopupCallback is a callback function for a 'popup' signal emitted from a ComboBox.
@@ -263,11 +275,13 @@ func (recv *ComboBox) ConnectPopup(callback ComboBoxSignalPopupCallback) int {
 	defer signalComboBoxPopupLock.Unlock()
 
 	signalComboBoxPopupId++
-	signalComboBoxPopupMap[signalComboBoxPopupId] = callback
-
 	instance := C.gpointer(recv.Object().ToC())
-	retC := C.ComboBox_signal_connect_popup(instance, C.gpointer(uintptr(signalComboBoxPopupId)))
-	return int(retC)
+	handlerID := C.ComboBox_signal_connect_popup(instance, C.gpointer(uintptr(signalComboBoxPopupId)))
+
+	detail := signalComboBoxPopupDetail{callback, handlerID}
+	signalComboBoxPopupMap[signalComboBoxPopupId] = detail
+
+	return signalComboBoxPopupId
 }
 
 /*
@@ -279,20 +293,20 @@ func (recv *ComboBox) DisconnectPopup(connectionID int) {
 	signalComboBoxPopupLock.Lock()
 	defer signalComboBoxPopupLock.Unlock()
 
-	_, exists := signalComboBoxPopupMap[connectionID]
+	detail, exists := signalComboBoxPopupMap[connectionID]
 	if !exists {
 		return
 	}
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalComboBoxPopupMap, connectionID)
 }
 
 //export ComboBox_popupHandler
 func ComboBox_popupHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
-	callback := signalComboBoxPopupMap[index]
+	callback := signalComboBoxPopupMap[index].callback
 	callback()
 }
 
@@ -349,8 +363,13 @@ func (recv *EntryCompletion) SetInlineSelection(inlineSelection bool) {
 
 // Unsupported : EntryIconAccessible : no CType
 
+type signalFileChooserButtonFileSetDetail struct {
+	callback  FileChooserButtonSignalFileSetCallback
+	handlerID C.gulong
+}
+
 var signalFileChooserButtonFileSetId int
-var signalFileChooserButtonFileSetMap = make(map[int]FileChooserButtonSignalFileSetCallback)
+var signalFileChooserButtonFileSetMap = make(map[int]signalFileChooserButtonFileSetDetail)
 var signalFileChooserButtonFileSetLock sync.Mutex
 
 // FileChooserButtonSignalFileSetCallback is a callback function for a 'file-set' signal emitted from a FileChooserButton.
@@ -366,11 +385,13 @@ func (recv *FileChooserButton) ConnectFileSet(callback FileChooserButtonSignalFi
 	defer signalFileChooserButtonFileSetLock.Unlock()
 
 	signalFileChooserButtonFileSetId++
-	signalFileChooserButtonFileSetMap[signalFileChooserButtonFileSetId] = callback
-
 	instance := C.gpointer(recv.Object().ToC())
-	retC := C.FileChooserButton_signal_connect_file_set(instance, C.gpointer(uintptr(signalFileChooserButtonFileSetId)))
-	return int(retC)
+	handlerID := C.FileChooserButton_signal_connect_file_set(instance, C.gpointer(uintptr(signalFileChooserButtonFileSetId)))
+
+	detail := signalFileChooserButtonFileSetDetail{callback, handlerID}
+	signalFileChooserButtonFileSetMap[signalFileChooserButtonFileSetId] = detail
+
+	return signalFileChooserButtonFileSetId
 }
 
 /*
@@ -382,20 +403,20 @@ func (recv *FileChooserButton) DisconnectFileSet(connectionID int) {
 	signalFileChooserButtonFileSetLock.Lock()
 	defer signalFileChooserButtonFileSetLock.Unlock()
 
-	_, exists := signalFileChooserButtonFileSetMap[connectionID]
+	detail, exists := signalFileChooserButtonFileSetMap[connectionID]
 	if !exists {
 		return
 	}
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalFileChooserButtonFileSetMap, connectionID)
 }
 
 //export FileChooserButton_fileSetHandler
 func FileChooserButton_fileSetHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
-	callback := signalFileChooserButtonFileSetMap[index]
+	callback := signalFileChooserButtonFileSetMap[index].callback
 	callback()
 }
 
@@ -778,8 +799,13 @@ func (recv *RecentAction) SetShowNumbers(showNumbers bool) {
 
 // Unsupported : gtk_recent_chooser_dialog_new_for_manager : unsupported parameter ... : varargs
 
+type signalScaleButtonPopdownDetail struct {
+	callback  ScaleButtonSignalPopdownCallback
+	handlerID C.gulong
+}
+
 var signalScaleButtonPopdownId int
-var signalScaleButtonPopdownMap = make(map[int]ScaleButtonSignalPopdownCallback)
+var signalScaleButtonPopdownMap = make(map[int]signalScaleButtonPopdownDetail)
 var signalScaleButtonPopdownLock sync.Mutex
 
 // ScaleButtonSignalPopdownCallback is a callback function for a 'popdown' signal emitted from a ScaleButton.
@@ -795,11 +821,13 @@ func (recv *ScaleButton) ConnectPopdown(callback ScaleButtonSignalPopdownCallbac
 	defer signalScaleButtonPopdownLock.Unlock()
 
 	signalScaleButtonPopdownId++
-	signalScaleButtonPopdownMap[signalScaleButtonPopdownId] = callback
-
 	instance := C.gpointer(recv.Object().ToC())
-	retC := C.ScaleButton_signal_connect_popdown(instance, C.gpointer(uintptr(signalScaleButtonPopdownId)))
-	return int(retC)
+	handlerID := C.ScaleButton_signal_connect_popdown(instance, C.gpointer(uintptr(signalScaleButtonPopdownId)))
+
+	detail := signalScaleButtonPopdownDetail{callback, handlerID}
+	signalScaleButtonPopdownMap[signalScaleButtonPopdownId] = detail
+
+	return signalScaleButtonPopdownId
 }
 
 /*
@@ -811,25 +839,30 @@ func (recv *ScaleButton) DisconnectPopdown(connectionID int) {
 	signalScaleButtonPopdownLock.Lock()
 	defer signalScaleButtonPopdownLock.Unlock()
 
-	_, exists := signalScaleButtonPopdownMap[connectionID]
+	detail, exists := signalScaleButtonPopdownMap[connectionID]
 	if !exists {
 		return
 	}
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalScaleButtonPopdownMap, connectionID)
 }
 
 //export ScaleButton_popdownHandler
 func ScaleButton_popdownHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
-	callback := signalScaleButtonPopdownMap[index]
+	callback := signalScaleButtonPopdownMap[index].callback
 	callback()
 }
 
+type signalScaleButtonPopupDetail struct {
+	callback  ScaleButtonSignalPopupCallback
+	handlerID C.gulong
+}
+
 var signalScaleButtonPopupId int
-var signalScaleButtonPopupMap = make(map[int]ScaleButtonSignalPopupCallback)
+var signalScaleButtonPopupMap = make(map[int]signalScaleButtonPopupDetail)
 var signalScaleButtonPopupLock sync.Mutex
 
 // ScaleButtonSignalPopupCallback is a callback function for a 'popup' signal emitted from a ScaleButton.
@@ -845,11 +878,13 @@ func (recv *ScaleButton) ConnectPopup(callback ScaleButtonSignalPopupCallback) i
 	defer signalScaleButtonPopupLock.Unlock()
 
 	signalScaleButtonPopupId++
-	signalScaleButtonPopupMap[signalScaleButtonPopupId] = callback
-
 	instance := C.gpointer(recv.Object().ToC())
-	retC := C.ScaleButton_signal_connect_popup(instance, C.gpointer(uintptr(signalScaleButtonPopupId)))
-	return int(retC)
+	handlerID := C.ScaleButton_signal_connect_popup(instance, C.gpointer(uintptr(signalScaleButtonPopupId)))
+
+	detail := signalScaleButtonPopupDetail{callback, handlerID}
+	signalScaleButtonPopupMap[signalScaleButtonPopupId] = detail
+
+	return signalScaleButtonPopupId
 }
 
 /*
@@ -861,20 +896,20 @@ func (recv *ScaleButton) DisconnectPopup(connectionID int) {
 	signalScaleButtonPopupLock.Lock()
 	defer signalScaleButtonPopupLock.Unlock()
 
-	_, exists := signalScaleButtonPopupMap[connectionID]
+	detail, exists := signalScaleButtonPopupMap[connectionID]
 	if !exists {
 		return
 	}
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalScaleButtonPopupMap, connectionID)
 }
 
 //export ScaleButton_popupHandler
 func ScaleButton_popupHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
-	callback := signalScaleButtonPopupMap[index]
+	callback := signalScaleButtonPopupMap[index].callback
 	callback()
 }
 

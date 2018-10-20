@@ -192,8 +192,13 @@ import "C"
 
 // Unsupported signal 'changed' for AccelMap : unsupported parameter accel_path : type utf8 :
 
+type signalActionActivateDetail struct {
+	callback  ActionSignalActivateCallback
+	handlerID C.gulong
+}
+
 var signalActionActivateId int
-var signalActionActivateMap = make(map[int]ActionSignalActivateCallback)
+var signalActionActivateMap = make(map[int]signalActionActivateDetail)
 var signalActionActivateLock sync.Mutex
 
 // ActionSignalActivateCallback is a callback function for a 'activate' signal emitted from a Action.
@@ -209,11 +214,13 @@ func (recv *Action) ConnectActivate(callback ActionSignalActivateCallback) int {
 	defer signalActionActivateLock.Unlock()
 
 	signalActionActivateId++
-	signalActionActivateMap[signalActionActivateId] = callback
-
 	instance := C.gpointer(recv.Object().ToC())
-	retC := C.Action_signal_connect_activate(instance, C.gpointer(uintptr(signalActionActivateId)))
-	return int(retC)
+	handlerID := C.Action_signal_connect_activate(instance, C.gpointer(uintptr(signalActionActivateId)))
+
+	detail := signalActionActivateDetail{callback, handlerID}
+	signalActionActivateMap[signalActionActivateId] = detail
+
+	return signalActionActivateId
 }
 
 /*
@@ -225,20 +232,20 @@ func (recv *Action) DisconnectActivate(connectionID int) {
 	signalActionActivateLock.Lock()
 	defer signalActionActivateLock.Unlock()
 
-	_, exists := signalActionActivateMap[connectionID]
+	detail, exists := signalActionActivateMap[connectionID]
 	if !exists {
 		return
 	}
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalActionActivateMap, connectionID)
 }
 
 //export Action_activateHandler
 func Action_activateHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
-	callback := signalActionActivateMap[index]
+	callback := signalActionActivateMap[index].callback
 	callback()
 }
 
@@ -368,8 +375,13 @@ func (recv *Action) SetAccelPath(accelPath string) {
 	return
 }
 
+type signalActionGroupConnectProxyDetail struct {
+	callback  ActionGroupSignalConnectProxyCallback
+	handlerID C.gulong
+}
+
 var signalActionGroupConnectProxyId int
-var signalActionGroupConnectProxyMap = make(map[int]ActionGroupSignalConnectProxyCallback)
+var signalActionGroupConnectProxyMap = make(map[int]signalActionGroupConnectProxyDetail)
 var signalActionGroupConnectProxyLock sync.Mutex
 
 // ActionGroupSignalConnectProxyCallback is a callback function for a 'connect-proxy' signal emitted from a ActionGroup.
@@ -385,11 +397,13 @@ func (recv *ActionGroup) ConnectConnectProxy(callback ActionGroupSignalConnectPr
 	defer signalActionGroupConnectProxyLock.Unlock()
 
 	signalActionGroupConnectProxyId++
-	signalActionGroupConnectProxyMap[signalActionGroupConnectProxyId] = callback
-
 	instance := C.gpointer(recv.Object().ToC())
-	retC := C.ActionGroup_signal_connect_connect_proxy(instance, C.gpointer(uintptr(signalActionGroupConnectProxyId)))
-	return int(retC)
+	handlerID := C.ActionGroup_signal_connect_connect_proxy(instance, C.gpointer(uintptr(signalActionGroupConnectProxyId)))
+
+	detail := signalActionGroupConnectProxyDetail{callback, handlerID}
+	signalActionGroupConnectProxyMap[signalActionGroupConnectProxyId] = detail
+
+	return signalActionGroupConnectProxyId
 }
 
 /*
@@ -401,13 +415,13 @@ func (recv *ActionGroup) DisconnectConnectProxy(connectionID int) {
 	signalActionGroupConnectProxyLock.Lock()
 	defer signalActionGroupConnectProxyLock.Unlock()
 
-	_, exists := signalActionGroupConnectProxyMap[connectionID]
+	detail, exists := signalActionGroupConnectProxyMap[connectionID]
 	if !exists {
 		return
 	}
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalActionGroupConnectProxyMap, connectionID)
 }
 
@@ -418,12 +432,17 @@ func ActionGroup_connectProxyHandler(_ *C.GObject, c_action *C.GtkAction, c_prox
 	proxy := WidgetNewFromC(unsafe.Pointer(c_proxy))
 
 	index := int(uintptr(data))
-	callback := signalActionGroupConnectProxyMap[index]
+	callback := signalActionGroupConnectProxyMap[index].callback
 	callback(action, proxy)
 }
 
+type signalActionGroupDisconnectProxyDetail struct {
+	callback  ActionGroupSignalDisconnectProxyCallback
+	handlerID C.gulong
+}
+
 var signalActionGroupDisconnectProxyId int
-var signalActionGroupDisconnectProxyMap = make(map[int]ActionGroupSignalDisconnectProxyCallback)
+var signalActionGroupDisconnectProxyMap = make(map[int]signalActionGroupDisconnectProxyDetail)
 var signalActionGroupDisconnectProxyLock sync.Mutex
 
 // ActionGroupSignalDisconnectProxyCallback is a callback function for a 'disconnect-proxy' signal emitted from a ActionGroup.
@@ -439,11 +458,13 @@ func (recv *ActionGroup) ConnectDisconnectProxy(callback ActionGroupSignalDiscon
 	defer signalActionGroupDisconnectProxyLock.Unlock()
 
 	signalActionGroupDisconnectProxyId++
-	signalActionGroupDisconnectProxyMap[signalActionGroupDisconnectProxyId] = callback
-
 	instance := C.gpointer(recv.Object().ToC())
-	retC := C.ActionGroup_signal_connect_disconnect_proxy(instance, C.gpointer(uintptr(signalActionGroupDisconnectProxyId)))
-	return int(retC)
+	handlerID := C.ActionGroup_signal_connect_disconnect_proxy(instance, C.gpointer(uintptr(signalActionGroupDisconnectProxyId)))
+
+	detail := signalActionGroupDisconnectProxyDetail{callback, handlerID}
+	signalActionGroupDisconnectProxyMap[signalActionGroupDisconnectProxyId] = detail
+
+	return signalActionGroupDisconnectProxyId
 }
 
 /*
@@ -455,13 +476,13 @@ func (recv *ActionGroup) DisconnectDisconnectProxy(connectionID int) {
 	signalActionGroupDisconnectProxyLock.Lock()
 	defer signalActionGroupDisconnectProxyLock.Unlock()
 
-	_, exists := signalActionGroupDisconnectProxyMap[connectionID]
+	detail, exists := signalActionGroupDisconnectProxyMap[connectionID]
 	if !exists {
 		return
 	}
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalActionGroupDisconnectProxyMap, connectionID)
 }
 
@@ -472,12 +493,17 @@ func ActionGroup_disconnectProxyHandler(_ *C.GObject, c_action *C.GtkAction, c_p
 	proxy := WidgetNewFromC(unsafe.Pointer(c_proxy))
 
 	index := int(uintptr(data))
-	callback := signalActionGroupDisconnectProxyMap[index]
+	callback := signalActionGroupDisconnectProxyMap[index].callback
 	callback(action, proxy)
 }
 
+type signalActionGroupPostActivateDetail struct {
+	callback  ActionGroupSignalPostActivateCallback
+	handlerID C.gulong
+}
+
 var signalActionGroupPostActivateId int
-var signalActionGroupPostActivateMap = make(map[int]ActionGroupSignalPostActivateCallback)
+var signalActionGroupPostActivateMap = make(map[int]signalActionGroupPostActivateDetail)
 var signalActionGroupPostActivateLock sync.Mutex
 
 // ActionGroupSignalPostActivateCallback is a callback function for a 'post-activate' signal emitted from a ActionGroup.
@@ -493,11 +519,13 @@ func (recv *ActionGroup) ConnectPostActivate(callback ActionGroupSignalPostActiv
 	defer signalActionGroupPostActivateLock.Unlock()
 
 	signalActionGroupPostActivateId++
-	signalActionGroupPostActivateMap[signalActionGroupPostActivateId] = callback
-
 	instance := C.gpointer(recv.Object().ToC())
-	retC := C.ActionGroup_signal_connect_post_activate(instance, C.gpointer(uintptr(signalActionGroupPostActivateId)))
-	return int(retC)
+	handlerID := C.ActionGroup_signal_connect_post_activate(instance, C.gpointer(uintptr(signalActionGroupPostActivateId)))
+
+	detail := signalActionGroupPostActivateDetail{callback, handlerID}
+	signalActionGroupPostActivateMap[signalActionGroupPostActivateId] = detail
+
+	return signalActionGroupPostActivateId
 }
 
 /*
@@ -509,13 +537,13 @@ func (recv *ActionGroup) DisconnectPostActivate(connectionID int) {
 	signalActionGroupPostActivateLock.Lock()
 	defer signalActionGroupPostActivateLock.Unlock()
 
-	_, exists := signalActionGroupPostActivateMap[connectionID]
+	detail, exists := signalActionGroupPostActivateMap[connectionID]
 	if !exists {
 		return
 	}
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalActionGroupPostActivateMap, connectionID)
 }
 
@@ -524,12 +552,17 @@ func ActionGroup_postActivateHandler(_ *C.GObject, c_action *C.GtkAction, data C
 	action := ActionNewFromC(unsafe.Pointer(c_action))
 
 	index := int(uintptr(data))
-	callback := signalActionGroupPostActivateMap[index]
+	callback := signalActionGroupPostActivateMap[index].callback
 	callback(action)
 }
 
+type signalActionGroupPreActivateDetail struct {
+	callback  ActionGroupSignalPreActivateCallback
+	handlerID C.gulong
+}
+
 var signalActionGroupPreActivateId int
-var signalActionGroupPreActivateMap = make(map[int]ActionGroupSignalPreActivateCallback)
+var signalActionGroupPreActivateMap = make(map[int]signalActionGroupPreActivateDetail)
 var signalActionGroupPreActivateLock sync.Mutex
 
 // ActionGroupSignalPreActivateCallback is a callback function for a 'pre-activate' signal emitted from a ActionGroup.
@@ -545,11 +578,13 @@ func (recv *ActionGroup) ConnectPreActivate(callback ActionGroupSignalPreActivat
 	defer signalActionGroupPreActivateLock.Unlock()
 
 	signalActionGroupPreActivateId++
-	signalActionGroupPreActivateMap[signalActionGroupPreActivateId] = callback
-
 	instance := C.gpointer(recv.Object().ToC())
-	retC := C.ActionGroup_signal_connect_pre_activate(instance, C.gpointer(uintptr(signalActionGroupPreActivateId)))
-	return int(retC)
+	handlerID := C.ActionGroup_signal_connect_pre_activate(instance, C.gpointer(uintptr(signalActionGroupPreActivateId)))
+
+	detail := signalActionGroupPreActivateDetail{callback, handlerID}
+	signalActionGroupPreActivateMap[signalActionGroupPreActivateId] = detail
+
+	return signalActionGroupPreActivateId
 }
 
 /*
@@ -561,13 +596,13 @@ func (recv *ActionGroup) DisconnectPreActivate(connectionID int) {
 	signalActionGroupPreActivateLock.Lock()
 	defer signalActionGroupPreActivateLock.Unlock()
 
-	_, exists := signalActionGroupPreActivateMap[connectionID]
+	detail, exists := signalActionGroupPreActivateMap[connectionID]
 	if !exists {
 		return
 	}
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalActionGroupPreActivateMap, connectionID)
 }
 
@@ -576,7 +611,7 @@ func ActionGroup_preActivateHandler(_ *C.GObject, c_action *C.GtkAction, data C.
 	action := ActionNewFromC(unsafe.Pointer(c_action))
 
 	index := int(uintptr(data))
-	callback := signalActionGroupPreActivateMap[index]
+	callback := signalActionGroupPreActivateMap[index].callback
 	callback(action)
 }
 
@@ -821,8 +856,13 @@ func (recv *Calendar) SetDisplayOptions(flags CalendarDisplayOptions) {
 	return
 }
 
+type signalCellRendererEditingCanceledDetail struct {
+	callback  CellRendererSignalEditingCanceledCallback
+	handlerID C.gulong
+}
+
 var signalCellRendererEditingCanceledId int
-var signalCellRendererEditingCanceledMap = make(map[int]CellRendererSignalEditingCanceledCallback)
+var signalCellRendererEditingCanceledMap = make(map[int]signalCellRendererEditingCanceledDetail)
 var signalCellRendererEditingCanceledLock sync.Mutex
 
 // CellRendererSignalEditingCanceledCallback is a callback function for a 'editing-canceled' signal emitted from a CellRenderer.
@@ -838,11 +878,13 @@ func (recv *CellRenderer) ConnectEditingCanceled(callback CellRendererSignalEdit
 	defer signalCellRendererEditingCanceledLock.Unlock()
 
 	signalCellRendererEditingCanceledId++
-	signalCellRendererEditingCanceledMap[signalCellRendererEditingCanceledId] = callback
-
 	instance := C.gpointer(recv.Object().ToC())
-	retC := C.CellRenderer_signal_connect_editing_canceled(instance, C.gpointer(uintptr(signalCellRendererEditingCanceledId)))
-	return int(retC)
+	handlerID := C.CellRenderer_signal_connect_editing_canceled(instance, C.gpointer(uintptr(signalCellRendererEditingCanceledId)))
+
+	detail := signalCellRendererEditingCanceledDetail{callback, handlerID}
+	signalCellRendererEditingCanceledMap[signalCellRendererEditingCanceledId] = detail
+
+	return signalCellRendererEditingCanceledId
 }
 
 /*
@@ -854,20 +896,20 @@ func (recv *CellRenderer) DisconnectEditingCanceled(connectionID int) {
 	signalCellRendererEditingCanceledLock.Lock()
 	defer signalCellRendererEditingCanceledLock.Unlock()
 
-	_, exists := signalCellRendererEditingCanceledMap[connectionID]
+	detail, exists := signalCellRendererEditingCanceledMap[connectionID]
 	if !exists {
 		return
 	}
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalCellRendererEditingCanceledMap, connectionID)
 }
 
 //export CellRenderer_editingCanceledHandler
 func CellRenderer_editingCanceledHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
-	callback := signalCellRendererEditingCanceledMap[index]
+	callback := signalCellRendererEditingCanceledMap[index].callback
 	callback()
 }
 
@@ -893,8 +935,13 @@ func (recv *CheckMenuItem) SetDrawAsRadio(drawAsRadio bool) {
 
 // Unsupported : gtk_clipboard_wait_for_targets : unsupported parameter targets : no param type
 
+type signalColorButtonColorSetDetail struct {
+	callback  ColorButtonSignalColorSetCallback
+	handlerID C.gulong
+}
+
 var signalColorButtonColorSetId int
-var signalColorButtonColorSetMap = make(map[int]ColorButtonSignalColorSetCallback)
+var signalColorButtonColorSetMap = make(map[int]signalColorButtonColorSetDetail)
 var signalColorButtonColorSetLock sync.Mutex
 
 // ColorButtonSignalColorSetCallback is a callback function for a 'color-set' signal emitted from a ColorButton.
@@ -910,11 +957,13 @@ func (recv *ColorButton) ConnectColorSet(callback ColorButtonSignalColorSetCallb
 	defer signalColorButtonColorSetLock.Unlock()
 
 	signalColorButtonColorSetId++
-	signalColorButtonColorSetMap[signalColorButtonColorSetId] = callback
-
 	instance := C.gpointer(recv.Object().ToC())
-	retC := C.ColorButton_signal_connect_color_set(instance, C.gpointer(uintptr(signalColorButtonColorSetId)))
-	return int(retC)
+	handlerID := C.ColorButton_signal_connect_color_set(instance, C.gpointer(uintptr(signalColorButtonColorSetId)))
+
+	detail := signalColorButtonColorSetDetail{callback, handlerID}
+	signalColorButtonColorSetMap[signalColorButtonColorSetId] = detail
+
+	return signalColorButtonColorSetId
 }
 
 /*
@@ -926,20 +975,20 @@ func (recv *ColorButton) DisconnectColorSet(connectionID int) {
 	signalColorButtonColorSetLock.Lock()
 	defer signalColorButtonColorSetLock.Unlock()
 
-	_, exists := signalColorButtonColorSetMap[connectionID]
+	detail, exists := signalColorButtonColorSetMap[connectionID]
 	if !exists {
 		return
 	}
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalColorButtonColorSetMap, connectionID)
 }
 
 //export ColorButton_colorSetHandler
 func ColorButton_colorSetHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
-	callback := signalColorButtonColorSetMap[index]
+	callback := signalColorButtonColorSetMap[index].callback
 	callback()
 }
 
@@ -1034,8 +1083,13 @@ func (recv *ColorButton) SetUseAlpha(useAlpha bool) {
 	return
 }
 
+type signalComboBoxChangedDetail struct {
+	callback  ComboBoxSignalChangedCallback
+	handlerID C.gulong
+}
+
 var signalComboBoxChangedId int
-var signalComboBoxChangedMap = make(map[int]ComboBoxSignalChangedCallback)
+var signalComboBoxChangedMap = make(map[int]signalComboBoxChangedDetail)
 var signalComboBoxChangedLock sync.Mutex
 
 // ComboBoxSignalChangedCallback is a callback function for a 'changed' signal emitted from a ComboBox.
@@ -1051,11 +1105,13 @@ func (recv *ComboBox) ConnectChanged(callback ComboBoxSignalChangedCallback) int
 	defer signalComboBoxChangedLock.Unlock()
 
 	signalComboBoxChangedId++
-	signalComboBoxChangedMap[signalComboBoxChangedId] = callback
-
 	instance := C.gpointer(recv.Object().ToC())
-	retC := C.ComboBox_signal_connect_changed(instance, C.gpointer(uintptr(signalComboBoxChangedId)))
-	return int(retC)
+	handlerID := C.ComboBox_signal_connect_changed(instance, C.gpointer(uintptr(signalComboBoxChangedId)))
+
+	detail := signalComboBoxChangedDetail{callback, handlerID}
+	signalComboBoxChangedMap[signalComboBoxChangedId] = detail
+
+	return signalComboBoxChangedId
 }
 
 /*
@@ -1067,20 +1123,20 @@ func (recv *ComboBox) DisconnectChanged(connectionID int) {
 	signalComboBoxChangedLock.Lock()
 	defer signalComboBoxChangedLock.Unlock()
 
-	_, exists := signalComboBoxChangedMap[connectionID]
+	detail, exists := signalComboBoxChangedMap[connectionID]
 	if !exists {
 		return
 	}
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalComboBoxChangedMap, connectionID)
 }
 
 //export ComboBox_changedHandler
 func ComboBox_changedHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
-	callback := signalComboBoxChangedMap[index]
+	callback := signalComboBoxChangedMap[index].callback
 	callback()
 }
 
@@ -1553,8 +1609,13 @@ func (recv *FileFilter) SetName(name string) {
 	return
 }
 
+type signalFontButtonFontSetDetail struct {
+	callback  FontButtonSignalFontSetCallback
+	handlerID C.gulong
+}
+
 var signalFontButtonFontSetId int
-var signalFontButtonFontSetMap = make(map[int]FontButtonSignalFontSetCallback)
+var signalFontButtonFontSetMap = make(map[int]signalFontButtonFontSetDetail)
 var signalFontButtonFontSetLock sync.Mutex
 
 // FontButtonSignalFontSetCallback is a callback function for a 'font-set' signal emitted from a FontButton.
@@ -1570,11 +1631,13 @@ func (recv *FontButton) ConnectFontSet(callback FontButtonSignalFontSetCallback)
 	defer signalFontButtonFontSetLock.Unlock()
 
 	signalFontButtonFontSetId++
-	signalFontButtonFontSetMap[signalFontButtonFontSetId] = callback
-
 	instance := C.gpointer(recv.Object().ToC())
-	retC := C.FontButton_signal_connect_font_set(instance, C.gpointer(uintptr(signalFontButtonFontSetId)))
-	return int(retC)
+	handlerID := C.FontButton_signal_connect_font_set(instance, C.gpointer(uintptr(signalFontButtonFontSetId)))
+
+	detail := signalFontButtonFontSetDetail{callback, handlerID}
+	signalFontButtonFontSetMap[signalFontButtonFontSetId] = detail
+
+	return signalFontButtonFontSetId
 }
 
 /*
@@ -1586,20 +1649,20 @@ func (recv *FontButton) DisconnectFontSet(connectionID int) {
 	signalFontButtonFontSetLock.Lock()
 	defer signalFontButtonFontSetLock.Unlock()
 
-	_, exists := signalFontButtonFontSetMap[connectionID]
+	detail, exists := signalFontButtonFontSetMap[connectionID]
 	if !exists {
 		return
 	}
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalFontButtonFontSetMap, connectionID)
 }
 
 //export FontButton_fontSetHandler
 func FontButton_fontSetHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
-	callback := signalFontButtonFontSetMap[index]
+	callback := signalFontButtonFontSetMap[index].callback
 	callback()
 }
 
@@ -2017,8 +2080,13 @@ func (recv *Paned) GetChild2() *Widget {
 
 // Unsupported : gtk_print_settings_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
 
+type signalRadioActionChangedDetail struct {
+	callback  RadioActionSignalChangedCallback
+	handlerID C.gulong
+}
+
 var signalRadioActionChangedId int
-var signalRadioActionChangedMap = make(map[int]RadioActionSignalChangedCallback)
+var signalRadioActionChangedMap = make(map[int]signalRadioActionChangedDetail)
 var signalRadioActionChangedLock sync.Mutex
 
 // RadioActionSignalChangedCallback is a callback function for a 'changed' signal emitted from a RadioAction.
@@ -2034,11 +2102,13 @@ func (recv *RadioAction) ConnectChanged(callback RadioActionSignalChangedCallbac
 	defer signalRadioActionChangedLock.Unlock()
 
 	signalRadioActionChangedId++
-	signalRadioActionChangedMap[signalRadioActionChangedId] = callback
-
 	instance := C.gpointer(recv.Object().ToC())
-	retC := C.RadioAction_signal_connect_changed(instance, C.gpointer(uintptr(signalRadioActionChangedId)))
-	return int(retC)
+	handlerID := C.RadioAction_signal_connect_changed(instance, C.gpointer(uintptr(signalRadioActionChangedId)))
+
+	detail := signalRadioActionChangedDetail{callback, handlerID}
+	signalRadioActionChangedMap[signalRadioActionChangedId] = detail
+
+	return signalRadioActionChangedId
 }
 
 /*
@@ -2050,13 +2120,13 @@ func (recv *RadioAction) DisconnectChanged(connectionID int) {
 	signalRadioActionChangedLock.Lock()
 	defer signalRadioActionChangedLock.Unlock()
 
-	_, exists := signalRadioActionChangedMap[connectionID]
+	detail, exists := signalRadioActionChangedMap[connectionID]
 	if !exists {
 		return
 	}
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalRadioActionChangedMap, connectionID)
 }
 
@@ -2065,7 +2135,7 @@ func RadioAction_changedHandler(_ *C.GObject, c_current *C.GtkRadioAction, data 
 	current := RadioActionNewFromC(unsafe.Pointer(c_current))
 
 	index := int(uintptr(data))
-	callback := signalRadioActionChangedMap[index]
+	callback := signalRadioActionChangedMap[index].callback
 	callback(current)
 }
 
@@ -2116,8 +2186,13 @@ func (recv *RadioAction) SetGroup(group *glib.SList) {
 	return
 }
 
+type signalRadioButtonGroupChangedDetail struct {
+	callback  RadioButtonSignalGroupChangedCallback
+	handlerID C.gulong
+}
+
 var signalRadioButtonGroupChangedId int
-var signalRadioButtonGroupChangedMap = make(map[int]RadioButtonSignalGroupChangedCallback)
+var signalRadioButtonGroupChangedMap = make(map[int]signalRadioButtonGroupChangedDetail)
 var signalRadioButtonGroupChangedLock sync.Mutex
 
 // RadioButtonSignalGroupChangedCallback is a callback function for a 'group-changed' signal emitted from a RadioButton.
@@ -2133,11 +2208,13 @@ func (recv *RadioButton) ConnectGroupChanged(callback RadioButtonSignalGroupChan
 	defer signalRadioButtonGroupChangedLock.Unlock()
 
 	signalRadioButtonGroupChangedId++
-	signalRadioButtonGroupChangedMap[signalRadioButtonGroupChangedId] = callback
-
 	instance := C.gpointer(recv.Object().ToC())
-	retC := C.RadioButton_signal_connect_group_changed(instance, C.gpointer(uintptr(signalRadioButtonGroupChangedId)))
-	return int(retC)
+	handlerID := C.RadioButton_signal_connect_group_changed(instance, C.gpointer(uintptr(signalRadioButtonGroupChangedId)))
+
+	detail := signalRadioButtonGroupChangedDetail{callback, handlerID}
+	signalRadioButtonGroupChangedMap[signalRadioButtonGroupChangedId] = detail
+
+	return signalRadioButtonGroupChangedId
 }
 
 /*
@@ -2149,20 +2226,20 @@ func (recv *RadioButton) DisconnectGroupChanged(connectionID int) {
 	signalRadioButtonGroupChangedLock.Lock()
 	defer signalRadioButtonGroupChangedLock.Unlock()
 
-	_, exists := signalRadioButtonGroupChangedMap[connectionID]
+	detail, exists := signalRadioButtonGroupChangedMap[connectionID]
 	if !exists {
 		return
 	}
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalRadioButtonGroupChangedMap, connectionID)
 }
 
 //export RadioButton_groupChangedHandler
 func RadioButton_groupChangedHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
-	callback := signalRadioButtonGroupChangedMap[index]
+	callback := signalRadioButtonGroupChangedMap[index].callback
 	callback()
 }
 
@@ -2322,8 +2399,13 @@ func (recv *SeparatorToolItem) SetDraw(draw bool) {
 
 // Unsupported : gtk_status_icon_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon, GIcon*
 
+type signalStyleRealizeDetail struct {
+	callback  StyleSignalRealizeCallback
+	handlerID C.gulong
+}
+
 var signalStyleRealizeId int
-var signalStyleRealizeMap = make(map[int]StyleSignalRealizeCallback)
+var signalStyleRealizeMap = make(map[int]signalStyleRealizeDetail)
 var signalStyleRealizeLock sync.Mutex
 
 // StyleSignalRealizeCallback is a callback function for a 'realize' signal emitted from a Style.
@@ -2339,11 +2421,13 @@ func (recv *Style) ConnectRealize(callback StyleSignalRealizeCallback) int {
 	defer signalStyleRealizeLock.Unlock()
 
 	signalStyleRealizeId++
-	signalStyleRealizeMap[signalStyleRealizeId] = callback
-
 	instance := C.gpointer(recv.Object().ToC())
-	retC := C.Style_signal_connect_realize(instance, C.gpointer(uintptr(signalStyleRealizeId)))
-	return int(retC)
+	handlerID := C.Style_signal_connect_realize(instance, C.gpointer(uintptr(signalStyleRealizeId)))
+
+	detail := signalStyleRealizeDetail{callback, handlerID}
+	signalStyleRealizeMap[signalStyleRealizeId] = detail
+
+	return signalStyleRealizeId
 }
 
 /*
@@ -2355,25 +2439,30 @@ func (recv *Style) DisconnectRealize(connectionID int) {
 	signalStyleRealizeLock.Lock()
 	defer signalStyleRealizeLock.Unlock()
 
-	_, exists := signalStyleRealizeMap[connectionID]
+	detail, exists := signalStyleRealizeMap[connectionID]
 	if !exists {
 		return
 	}
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalStyleRealizeMap, connectionID)
 }
 
 //export Style_realizeHandler
 func Style_realizeHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
-	callback := signalStyleRealizeMap[index]
+	callback := signalStyleRealizeMap[index].callback
 	callback()
 }
 
+type signalStyleUnrealizeDetail struct {
+	callback  StyleSignalUnrealizeCallback
+	handlerID C.gulong
+}
+
 var signalStyleUnrealizeId int
-var signalStyleUnrealizeMap = make(map[int]StyleSignalUnrealizeCallback)
+var signalStyleUnrealizeMap = make(map[int]signalStyleUnrealizeDetail)
 var signalStyleUnrealizeLock sync.Mutex
 
 // StyleSignalUnrealizeCallback is a callback function for a 'unrealize' signal emitted from a Style.
@@ -2389,11 +2478,13 @@ func (recv *Style) ConnectUnrealize(callback StyleSignalUnrealizeCallback) int {
 	defer signalStyleUnrealizeLock.Unlock()
 
 	signalStyleUnrealizeId++
-	signalStyleUnrealizeMap[signalStyleUnrealizeId] = callback
-
 	instance := C.gpointer(recv.Object().ToC())
-	retC := C.Style_signal_connect_unrealize(instance, C.gpointer(uintptr(signalStyleUnrealizeId)))
-	return int(retC)
+	handlerID := C.Style_signal_connect_unrealize(instance, C.gpointer(uintptr(signalStyleUnrealizeId)))
+
+	detail := signalStyleUnrealizeDetail{callback, handlerID}
+	signalStyleUnrealizeMap[signalStyleUnrealizeId] = detail
+
+	return signalStyleUnrealizeId
 }
 
 /*
@@ -2405,20 +2496,20 @@ func (recv *Style) DisconnectUnrealize(connectionID int) {
 	signalStyleUnrealizeLock.Lock()
 	defer signalStyleUnrealizeLock.Unlock()
 
-	_, exists := signalStyleUnrealizeMap[connectionID]
+	detail, exists := signalStyleUnrealizeMap[connectionID]
 	if !exists {
 		return
 	}
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalStyleUnrealizeMap, connectionID)
 }
 
 //export Style_unrealizeHandler
 func Style_unrealizeHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
-	callback := signalStyleUnrealizeMap[index]
+	callback := signalStyleUnrealizeMap[index].callback
 	callback()
 }
 
@@ -3044,8 +3135,13 @@ func (recv *TreeViewColumn) SetExpand(expand bool) {
 	return
 }
 
+type signalUIManagerActionsChangedDetail struct {
+	callback  UIManagerSignalActionsChangedCallback
+	handlerID C.gulong
+}
+
 var signalUIManagerActionsChangedId int
-var signalUIManagerActionsChangedMap = make(map[int]UIManagerSignalActionsChangedCallback)
+var signalUIManagerActionsChangedMap = make(map[int]signalUIManagerActionsChangedDetail)
 var signalUIManagerActionsChangedLock sync.Mutex
 
 // UIManagerSignalActionsChangedCallback is a callback function for a 'actions-changed' signal emitted from a UIManager.
@@ -3061,11 +3157,13 @@ func (recv *UIManager) ConnectActionsChanged(callback UIManagerSignalActionsChan
 	defer signalUIManagerActionsChangedLock.Unlock()
 
 	signalUIManagerActionsChangedId++
-	signalUIManagerActionsChangedMap[signalUIManagerActionsChangedId] = callback
-
 	instance := C.gpointer(recv.Object().ToC())
-	retC := C.UIManager_signal_connect_actions_changed(instance, C.gpointer(uintptr(signalUIManagerActionsChangedId)))
-	return int(retC)
+	handlerID := C.UIManager_signal_connect_actions_changed(instance, C.gpointer(uintptr(signalUIManagerActionsChangedId)))
+
+	detail := signalUIManagerActionsChangedDetail{callback, handlerID}
+	signalUIManagerActionsChangedMap[signalUIManagerActionsChangedId] = detail
+
+	return signalUIManagerActionsChangedId
 }
 
 /*
@@ -3077,25 +3175,30 @@ func (recv *UIManager) DisconnectActionsChanged(connectionID int) {
 	signalUIManagerActionsChangedLock.Lock()
 	defer signalUIManagerActionsChangedLock.Unlock()
 
-	_, exists := signalUIManagerActionsChangedMap[connectionID]
+	detail, exists := signalUIManagerActionsChangedMap[connectionID]
 	if !exists {
 		return
 	}
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalUIManagerActionsChangedMap, connectionID)
 }
 
 //export UIManager_actionsChangedHandler
 func UIManager_actionsChangedHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
-	callback := signalUIManagerActionsChangedMap[index]
+	callback := signalUIManagerActionsChangedMap[index].callback
 	callback()
 }
 
+type signalUIManagerAddWidgetDetail struct {
+	callback  UIManagerSignalAddWidgetCallback
+	handlerID C.gulong
+}
+
 var signalUIManagerAddWidgetId int
-var signalUIManagerAddWidgetMap = make(map[int]UIManagerSignalAddWidgetCallback)
+var signalUIManagerAddWidgetMap = make(map[int]signalUIManagerAddWidgetDetail)
 var signalUIManagerAddWidgetLock sync.Mutex
 
 // UIManagerSignalAddWidgetCallback is a callback function for a 'add-widget' signal emitted from a UIManager.
@@ -3111,11 +3214,13 @@ func (recv *UIManager) ConnectAddWidget(callback UIManagerSignalAddWidgetCallbac
 	defer signalUIManagerAddWidgetLock.Unlock()
 
 	signalUIManagerAddWidgetId++
-	signalUIManagerAddWidgetMap[signalUIManagerAddWidgetId] = callback
-
 	instance := C.gpointer(recv.Object().ToC())
-	retC := C.UIManager_signal_connect_add_widget(instance, C.gpointer(uintptr(signalUIManagerAddWidgetId)))
-	return int(retC)
+	handlerID := C.UIManager_signal_connect_add_widget(instance, C.gpointer(uintptr(signalUIManagerAddWidgetId)))
+
+	detail := signalUIManagerAddWidgetDetail{callback, handlerID}
+	signalUIManagerAddWidgetMap[signalUIManagerAddWidgetId] = detail
+
+	return signalUIManagerAddWidgetId
 }
 
 /*
@@ -3127,13 +3232,13 @@ func (recv *UIManager) DisconnectAddWidget(connectionID int) {
 	signalUIManagerAddWidgetLock.Lock()
 	defer signalUIManagerAddWidgetLock.Unlock()
 
-	_, exists := signalUIManagerAddWidgetMap[connectionID]
+	detail, exists := signalUIManagerAddWidgetMap[connectionID]
 	if !exists {
 		return
 	}
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalUIManagerAddWidgetMap, connectionID)
 }
 
@@ -3142,12 +3247,17 @@ func UIManager_addWidgetHandler(_ *C.GObject, c_widget *C.GtkWidget, data C.gpoi
 	widget := WidgetNewFromC(unsafe.Pointer(c_widget))
 
 	index := int(uintptr(data))
-	callback := signalUIManagerAddWidgetMap[index]
+	callback := signalUIManagerAddWidgetMap[index].callback
 	callback(widget)
 }
 
+type signalUIManagerConnectProxyDetail struct {
+	callback  UIManagerSignalConnectProxyCallback
+	handlerID C.gulong
+}
+
 var signalUIManagerConnectProxyId int
-var signalUIManagerConnectProxyMap = make(map[int]UIManagerSignalConnectProxyCallback)
+var signalUIManagerConnectProxyMap = make(map[int]signalUIManagerConnectProxyDetail)
 var signalUIManagerConnectProxyLock sync.Mutex
 
 // UIManagerSignalConnectProxyCallback is a callback function for a 'connect-proxy' signal emitted from a UIManager.
@@ -3163,11 +3273,13 @@ func (recv *UIManager) ConnectConnectProxy(callback UIManagerSignalConnectProxyC
 	defer signalUIManagerConnectProxyLock.Unlock()
 
 	signalUIManagerConnectProxyId++
-	signalUIManagerConnectProxyMap[signalUIManagerConnectProxyId] = callback
-
 	instance := C.gpointer(recv.Object().ToC())
-	retC := C.UIManager_signal_connect_connect_proxy(instance, C.gpointer(uintptr(signalUIManagerConnectProxyId)))
-	return int(retC)
+	handlerID := C.UIManager_signal_connect_connect_proxy(instance, C.gpointer(uintptr(signalUIManagerConnectProxyId)))
+
+	detail := signalUIManagerConnectProxyDetail{callback, handlerID}
+	signalUIManagerConnectProxyMap[signalUIManagerConnectProxyId] = detail
+
+	return signalUIManagerConnectProxyId
 }
 
 /*
@@ -3179,13 +3291,13 @@ func (recv *UIManager) DisconnectConnectProxy(connectionID int) {
 	signalUIManagerConnectProxyLock.Lock()
 	defer signalUIManagerConnectProxyLock.Unlock()
 
-	_, exists := signalUIManagerConnectProxyMap[connectionID]
+	detail, exists := signalUIManagerConnectProxyMap[connectionID]
 	if !exists {
 		return
 	}
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalUIManagerConnectProxyMap, connectionID)
 }
 
@@ -3196,12 +3308,17 @@ func UIManager_connectProxyHandler(_ *C.GObject, c_action *C.GtkAction, c_proxy 
 	proxy := WidgetNewFromC(unsafe.Pointer(c_proxy))
 
 	index := int(uintptr(data))
-	callback := signalUIManagerConnectProxyMap[index]
+	callback := signalUIManagerConnectProxyMap[index].callback
 	callback(action, proxy)
 }
 
+type signalUIManagerDisconnectProxyDetail struct {
+	callback  UIManagerSignalDisconnectProxyCallback
+	handlerID C.gulong
+}
+
 var signalUIManagerDisconnectProxyId int
-var signalUIManagerDisconnectProxyMap = make(map[int]UIManagerSignalDisconnectProxyCallback)
+var signalUIManagerDisconnectProxyMap = make(map[int]signalUIManagerDisconnectProxyDetail)
 var signalUIManagerDisconnectProxyLock sync.Mutex
 
 // UIManagerSignalDisconnectProxyCallback is a callback function for a 'disconnect-proxy' signal emitted from a UIManager.
@@ -3217,11 +3334,13 @@ func (recv *UIManager) ConnectDisconnectProxy(callback UIManagerSignalDisconnect
 	defer signalUIManagerDisconnectProxyLock.Unlock()
 
 	signalUIManagerDisconnectProxyId++
-	signalUIManagerDisconnectProxyMap[signalUIManagerDisconnectProxyId] = callback
-
 	instance := C.gpointer(recv.Object().ToC())
-	retC := C.UIManager_signal_connect_disconnect_proxy(instance, C.gpointer(uintptr(signalUIManagerDisconnectProxyId)))
-	return int(retC)
+	handlerID := C.UIManager_signal_connect_disconnect_proxy(instance, C.gpointer(uintptr(signalUIManagerDisconnectProxyId)))
+
+	detail := signalUIManagerDisconnectProxyDetail{callback, handlerID}
+	signalUIManagerDisconnectProxyMap[signalUIManagerDisconnectProxyId] = detail
+
+	return signalUIManagerDisconnectProxyId
 }
 
 /*
@@ -3233,13 +3352,13 @@ func (recv *UIManager) DisconnectDisconnectProxy(connectionID int) {
 	signalUIManagerDisconnectProxyLock.Lock()
 	defer signalUIManagerDisconnectProxyLock.Unlock()
 
-	_, exists := signalUIManagerDisconnectProxyMap[connectionID]
+	detail, exists := signalUIManagerDisconnectProxyMap[connectionID]
 	if !exists {
 		return
 	}
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalUIManagerDisconnectProxyMap, connectionID)
 }
 
@@ -3250,12 +3369,17 @@ func UIManager_disconnectProxyHandler(_ *C.GObject, c_action *C.GtkAction, c_pro
 	proxy := WidgetNewFromC(unsafe.Pointer(c_proxy))
 
 	index := int(uintptr(data))
-	callback := signalUIManagerDisconnectProxyMap[index]
+	callback := signalUIManagerDisconnectProxyMap[index].callback
 	callback(action, proxy)
 }
 
+type signalUIManagerPostActivateDetail struct {
+	callback  UIManagerSignalPostActivateCallback
+	handlerID C.gulong
+}
+
 var signalUIManagerPostActivateId int
-var signalUIManagerPostActivateMap = make(map[int]UIManagerSignalPostActivateCallback)
+var signalUIManagerPostActivateMap = make(map[int]signalUIManagerPostActivateDetail)
 var signalUIManagerPostActivateLock sync.Mutex
 
 // UIManagerSignalPostActivateCallback is a callback function for a 'post-activate' signal emitted from a UIManager.
@@ -3271,11 +3395,13 @@ func (recv *UIManager) ConnectPostActivate(callback UIManagerSignalPostActivateC
 	defer signalUIManagerPostActivateLock.Unlock()
 
 	signalUIManagerPostActivateId++
-	signalUIManagerPostActivateMap[signalUIManagerPostActivateId] = callback
-
 	instance := C.gpointer(recv.Object().ToC())
-	retC := C.UIManager_signal_connect_post_activate(instance, C.gpointer(uintptr(signalUIManagerPostActivateId)))
-	return int(retC)
+	handlerID := C.UIManager_signal_connect_post_activate(instance, C.gpointer(uintptr(signalUIManagerPostActivateId)))
+
+	detail := signalUIManagerPostActivateDetail{callback, handlerID}
+	signalUIManagerPostActivateMap[signalUIManagerPostActivateId] = detail
+
+	return signalUIManagerPostActivateId
 }
 
 /*
@@ -3287,13 +3413,13 @@ func (recv *UIManager) DisconnectPostActivate(connectionID int) {
 	signalUIManagerPostActivateLock.Lock()
 	defer signalUIManagerPostActivateLock.Unlock()
 
-	_, exists := signalUIManagerPostActivateMap[connectionID]
+	detail, exists := signalUIManagerPostActivateMap[connectionID]
 	if !exists {
 		return
 	}
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalUIManagerPostActivateMap, connectionID)
 }
 
@@ -3302,12 +3428,17 @@ func UIManager_postActivateHandler(_ *C.GObject, c_action *C.GtkAction, data C.g
 	action := ActionNewFromC(unsafe.Pointer(c_action))
 
 	index := int(uintptr(data))
-	callback := signalUIManagerPostActivateMap[index]
+	callback := signalUIManagerPostActivateMap[index].callback
 	callback(action)
 }
 
+type signalUIManagerPreActivateDetail struct {
+	callback  UIManagerSignalPreActivateCallback
+	handlerID C.gulong
+}
+
 var signalUIManagerPreActivateId int
-var signalUIManagerPreActivateMap = make(map[int]UIManagerSignalPreActivateCallback)
+var signalUIManagerPreActivateMap = make(map[int]signalUIManagerPreActivateDetail)
 var signalUIManagerPreActivateLock sync.Mutex
 
 // UIManagerSignalPreActivateCallback is a callback function for a 'pre-activate' signal emitted from a UIManager.
@@ -3323,11 +3454,13 @@ func (recv *UIManager) ConnectPreActivate(callback UIManagerSignalPreActivateCal
 	defer signalUIManagerPreActivateLock.Unlock()
 
 	signalUIManagerPreActivateId++
-	signalUIManagerPreActivateMap[signalUIManagerPreActivateId] = callback
-
 	instance := C.gpointer(recv.Object().ToC())
-	retC := C.UIManager_signal_connect_pre_activate(instance, C.gpointer(uintptr(signalUIManagerPreActivateId)))
-	return int(retC)
+	handlerID := C.UIManager_signal_connect_pre_activate(instance, C.gpointer(uintptr(signalUIManagerPreActivateId)))
+
+	detail := signalUIManagerPreActivateDetail{callback, handlerID}
+	signalUIManagerPreActivateMap[signalUIManagerPreActivateId] = detail
+
+	return signalUIManagerPreActivateId
 }
 
 /*
@@ -3339,13 +3472,13 @@ func (recv *UIManager) DisconnectPreActivate(connectionID int) {
 	signalUIManagerPreActivateLock.Lock()
 	defer signalUIManagerPreActivateLock.Unlock()
 
-	_, exists := signalUIManagerPreActivateMap[connectionID]
+	detail, exists := signalUIManagerPreActivateMap[connectionID]
 	if !exists {
 		return
 	}
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalUIManagerPreActivateMap, connectionID)
 }
 
@@ -3354,7 +3487,7 @@ func UIManager_preActivateHandler(_ *C.GObject, c_action *C.GtkAction, data C.gp
 	action := ActionNewFromC(unsafe.Pointer(c_action))
 
 	index := int(uintptr(data))
-	callback := signalUIManagerPreActivateMap[index]
+	callback := signalUIManagerPreActivateMap[index].callback
 	callback(action)
 }
 

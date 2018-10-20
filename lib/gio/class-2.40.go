@@ -66,8 +66,13 @@ func CastToAppInfoMonitor(object *gobject.Object) *AppInfoMonitor {
 	return AppInfoMonitorNewFromC(object.ToC())
 }
 
+type signalAppInfoMonitorChangedDetail struct {
+	callback  AppInfoMonitorSignalChangedCallback
+	handlerID C.gulong
+}
+
 var signalAppInfoMonitorChangedId int
-var signalAppInfoMonitorChangedMap = make(map[int]AppInfoMonitorSignalChangedCallback)
+var signalAppInfoMonitorChangedMap = make(map[int]signalAppInfoMonitorChangedDetail)
 var signalAppInfoMonitorChangedLock sync.Mutex
 
 // AppInfoMonitorSignalChangedCallback is a callback function for a 'changed' signal emitted from a AppInfoMonitor.
@@ -83,11 +88,13 @@ func (recv *AppInfoMonitor) ConnectChanged(callback AppInfoMonitorSignalChangedC
 	defer signalAppInfoMonitorChangedLock.Unlock()
 
 	signalAppInfoMonitorChangedId++
-	signalAppInfoMonitorChangedMap[signalAppInfoMonitorChangedId] = callback
-
 	instance := C.gpointer(recv.Object().ToC())
-	retC := C.AppInfoMonitor_signal_connect_changed(instance, C.gpointer(uintptr(signalAppInfoMonitorChangedId)))
-	return int(retC)
+	handlerID := C.AppInfoMonitor_signal_connect_changed(instance, C.gpointer(uintptr(signalAppInfoMonitorChangedId)))
+
+	detail := signalAppInfoMonitorChangedDetail{callback, handlerID}
+	signalAppInfoMonitorChangedMap[signalAppInfoMonitorChangedId] = detail
+
+	return signalAppInfoMonitorChangedId
 }
 
 /*
@@ -99,20 +106,20 @@ func (recv *AppInfoMonitor) DisconnectChanged(connectionID int) {
 	signalAppInfoMonitorChangedLock.Lock()
 	defer signalAppInfoMonitorChangedLock.Unlock()
 
-	_, exists := signalAppInfoMonitorChangedMap[connectionID]
+	detail, exists := signalAppInfoMonitorChangedMap[connectionID]
 	if !exists {
 		return
 	}
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalAppInfoMonitorChangedMap, connectionID)
 }
 
 //export AppInfoMonitor_changedHandler
 func AppInfoMonitor_changedHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
-	callback := signalAppInfoMonitorChangedMap[index]
+	callback := signalAppInfoMonitorChangedMap[index].callback
 	callback()
 }
 

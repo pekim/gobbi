@@ -114,8 +114,13 @@ func CastToHyperlink(object *gobject.Object) *Hyperlink {
 	return HyperlinkNewFromC(object.ToC())
 }
 
+type signalHyperlinkLinkActivatedDetail struct {
+	callback  HyperlinkSignalLinkActivatedCallback
+	handlerID C.gulong
+}
+
 var signalHyperlinkLinkActivatedId int
-var signalHyperlinkLinkActivatedMap = make(map[int]HyperlinkSignalLinkActivatedCallback)
+var signalHyperlinkLinkActivatedMap = make(map[int]signalHyperlinkLinkActivatedDetail)
 var signalHyperlinkLinkActivatedLock sync.Mutex
 
 // HyperlinkSignalLinkActivatedCallback is a callback function for a 'link-activated' signal emitted from a Hyperlink.
@@ -131,11 +136,13 @@ func (recv *Hyperlink) ConnectLinkActivated(callback HyperlinkSignalLinkActivate
 	defer signalHyperlinkLinkActivatedLock.Unlock()
 
 	signalHyperlinkLinkActivatedId++
-	signalHyperlinkLinkActivatedMap[signalHyperlinkLinkActivatedId] = callback
-
 	instance := C.gpointer(recv.Object().ToC())
-	retC := C.Hyperlink_signal_connect_link_activated(instance, C.gpointer(uintptr(signalHyperlinkLinkActivatedId)))
-	return int(retC)
+	handlerID := C.Hyperlink_signal_connect_link_activated(instance, C.gpointer(uintptr(signalHyperlinkLinkActivatedId)))
+
+	detail := signalHyperlinkLinkActivatedDetail{callback, handlerID}
+	signalHyperlinkLinkActivatedMap[signalHyperlinkLinkActivatedId] = detail
+
+	return signalHyperlinkLinkActivatedId
 }
 
 /*
@@ -147,20 +154,20 @@ func (recv *Hyperlink) DisconnectLinkActivated(connectionID int) {
 	signalHyperlinkLinkActivatedLock.Lock()
 	defer signalHyperlinkLinkActivatedLock.Unlock()
 
-	_, exists := signalHyperlinkLinkActivatedMap[connectionID]
+	detail, exists := signalHyperlinkLinkActivatedMap[connectionID]
 	if !exists {
 		return
 	}
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalHyperlinkLinkActivatedMap, connectionID)
 }
 
 //export Hyperlink_linkActivatedHandler
 func Hyperlink_linkActivatedHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
-	callback := signalHyperlinkLinkActivatedMap[index]
+	callback := signalHyperlinkLinkActivatedMap[index].callback
 	callback()
 }
 
@@ -404,8 +411,13 @@ func CastToObject(object *gobject.Object) *Object {
 
 // Unsupported signal 'children-changed' for Object : unsupported parameter arg1 : type guint :
 
+type signalObjectFocusEventDetail struct {
+	callback  ObjectSignalFocusEventCallback
+	handlerID C.gulong
+}
+
 var signalObjectFocusEventId int
-var signalObjectFocusEventMap = make(map[int]ObjectSignalFocusEventCallback)
+var signalObjectFocusEventMap = make(map[int]signalObjectFocusEventDetail)
 var signalObjectFocusEventLock sync.Mutex
 
 // ObjectSignalFocusEventCallback is a callback function for a 'focus-event' signal emitted from a Object.
@@ -421,11 +433,13 @@ func (recv *Object) ConnectFocusEvent(callback ObjectSignalFocusEventCallback) i
 	defer signalObjectFocusEventLock.Unlock()
 
 	signalObjectFocusEventId++
-	signalObjectFocusEventMap[signalObjectFocusEventId] = callback
-
 	instance := C.gpointer(recv.Object().ToC())
-	retC := C.Object_signal_connect_focus_event(instance, C.gpointer(uintptr(signalObjectFocusEventId)))
-	return int(retC)
+	handlerID := C.Object_signal_connect_focus_event(instance, C.gpointer(uintptr(signalObjectFocusEventId)))
+
+	detail := signalObjectFocusEventDetail{callback, handlerID}
+	signalObjectFocusEventMap[signalObjectFocusEventId] = detail
+
+	return signalObjectFocusEventId
 }
 
 /*
@@ -437,13 +451,13 @@ func (recv *Object) DisconnectFocusEvent(connectionID int) {
 	signalObjectFocusEventLock.Lock()
 	defer signalObjectFocusEventLock.Unlock()
 
-	_, exists := signalObjectFocusEventMap[connectionID]
+	detail, exists := signalObjectFocusEventMap[connectionID]
 	if !exists {
 		return
 	}
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalObjectFocusEventMap, connectionID)
 }
 
@@ -452,7 +466,7 @@ func Object_focusEventHandler(_ *C.GObject, c_arg1 C.gboolean, data C.gpointer) 
 	arg1 := c_arg1 == C.TRUE
 
 	index := int(uintptr(data))
-	callback := signalObjectFocusEventMap[index]
+	callback := signalObjectFocusEventMap[index].callback
 	callback(arg1)
 }
 
@@ -460,8 +474,13 @@ func Object_focusEventHandler(_ *C.GObject, c_arg1 C.gboolean, data C.gpointer) 
 
 // Unsupported signal 'state-change' for Object : unsupported parameter arg1 : type utf8 :
 
+type signalObjectVisibleDataChangedDetail struct {
+	callback  ObjectSignalVisibleDataChangedCallback
+	handlerID C.gulong
+}
+
 var signalObjectVisibleDataChangedId int
-var signalObjectVisibleDataChangedMap = make(map[int]ObjectSignalVisibleDataChangedCallback)
+var signalObjectVisibleDataChangedMap = make(map[int]signalObjectVisibleDataChangedDetail)
 var signalObjectVisibleDataChangedLock sync.Mutex
 
 // ObjectSignalVisibleDataChangedCallback is a callback function for a 'visible-data-changed' signal emitted from a Object.
@@ -477,11 +496,13 @@ func (recv *Object) ConnectVisibleDataChanged(callback ObjectSignalVisibleDataCh
 	defer signalObjectVisibleDataChangedLock.Unlock()
 
 	signalObjectVisibleDataChangedId++
-	signalObjectVisibleDataChangedMap[signalObjectVisibleDataChangedId] = callback
-
 	instance := C.gpointer(recv.Object().ToC())
-	retC := C.Object_signal_connect_visible_data_changed(instance, C.gpointer(uintptr(signalObjectVisibleDataChangedId)))
-	return int(retC)
+	handlerID := C.Object_signal_connect_visible_data_changed(instance, C.gpointer(uintptr(signalObjectVisibleDataChangedId)))
+
+	detail := signalObjectVisibleDataChangedDetail{callback, handlerID}
+	signalObjectVisibleDataChangedMap[signalObjectVisibleDataChangedId] = detail
+
+	return signalObjectVisibleDataChangedId
 }
 
 /*
@@ -493,20 +514,20 @@ func (recv *Object) DisconnectVisibleDataChanged(connectionID int) {
 	signalObjectVisibleDataChangedLock.Lock()
 	defer signalObjectVisibleDataChangedLock.Unlock()
 
-	_, exists := signalObjectVisibleDataChangedMap[connectionID]
+	detail, exists := signalObjectVisibleDataChangedMap[connectionID]
 	if !exists {
 		return
 	}
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalObjectVisibleDataChangedMap, connectionID)
 }
 
 //export Object_visibleDataChangedHandler
 func Object_visibleDataChangedHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
-	callback := signalObjectVisibleDataChangedMap[index]
+	callback := signalObjectVisibleDataChangedMap[index].callback
 	callback()
 }
 

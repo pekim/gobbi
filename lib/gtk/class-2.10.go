@@ -131,8 +131,13 @@ import "C"
 
 // Unsupported : gtk_app_chooser_dialog_new : unsupported parameter file : no type generator for Gio.File, GFile*
 
+type signalAssistantApplyDetail struct {
+	callback  AssistantSignalApplyCallback
+	handlerID C.gulong
+}
+
 var signalAssistantApplyId int
-var signalAssistantApplyMap = make(map[int]AssistantSignalApplyCallback)
+var signalAssistantApplyMap = make(map[int]signalAssistantApplyDetail)
 var signalAssistantApplyLock sync.Mutex
 
 // AssistantSignalApplyCallback is a callback function for a 'apply' signal emitted from a Assistant.
@@ -148,11 +153,13 @@ func (recv *Assistant) ConnectApply(callback AssistantSignalApplyCallback) int {
 	defer signalAssistantApplyLock.Unlock()
 
 	signalAssistantApplyId++
-	signalAssistantApplyMap[signalAssistantApplyId] = callback
-
 	instance := C.gpointer(recv.Object().ToC())
-	retC := C.Assistant_signal_connect_apply(instance, C.gpointer(uintptr(signalAssistantApplyId)))
-	return int(retC)
+	handlerID := C.Assistant_signal_connect_apply(instance, C.gpointer(uintptr(signalAssistantApplyId)))
+
+	detail := signalAssistantApplyDetail{callback, handlerID}
+	signalAssistantApplyMap[signalAssistantApplyId] = detail
+
+	return signalAssistantApplyId
 }
 
 /*
@@ -164,25 +171,30 @@ func (recv *Assistant) DisconnectApply(connectionID int) {
 	signalAssistantApplyLock.Lock()
 	defer signalAssistantApplyLock.Unlock()
 
-	_, exists := signalAssistantApplyMap[connectionID]
+	detail, exists := signalAssistantApplyMap[connectionID]
 	if !exists {
 		return
 	}
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalAssistantApplyMap, connectionID)
 }
 
 //export Assistant_applyHandler
 func Assistant_applyHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
-	callback := signalAssistantApplyMap[index]
+	callback := signalAssistantApplyMap[index].callback
 	callback()
 }
 
+type signalAssistantCancelDetail struct {
+	callback  AssistantSignalCancelCallback
+	handlerID C.gulong
+}
+
 var signalAssistantCancelId int
-var signalAssistantCancelMap = make(map[int]AssistantSignalCancelCallback)
+var signalAssistantCancelMap = make(map[int]signalAssistantCancelDetail)
 var signalAssistantCancelLock sync.Mutex
 
 // AssistantSignalCancelCallback is a callback function for a 'cancel' signal emitted from a Assistant.
@@ -198,11 +210,13 @@ func (recv *Assistant) ConnectCancel(callback AssistantSignalCancelCallback) int
 	defer signalAssistantCancelLock.Unlock()
 
 	signalAssistantCancelId++
-	signalAssistantCancelMap[signalAssistantCancelId] = callback
-
 	instance := C.gpointer(recv.Object().ToC())
-	retC := C.Assistant_signal_connect_cancel(instance, C.gpointer(uintptr(signalAssistantCancelId)))
-	return int(retC)
+	handlerID := C.Assistant_signal_connect_cancel(instance, C.gpointer(uintptr(signalAssistantCancelId)))
+
+	detail := signalAssistantCancelDetail{callback, handlerID}
+	signalAssistantCancelMap[signalAssistantCancelId] = detail
+
+	return signalAssistantCancelId
 }
 
 /*
@@ -214,25 +228,30 @@ func (recv *Assistant) DisconnectCancel(connectionID int) {
 	signalAssistantCancelLock.Lock()
 	defer signalAssistantCancelLock.Unlock()
 
-	_, exists := signalAssistantCancelMap[connectionID]
+	detail, exists := signalAssistantCancelMap[connectionID]
 	if !exists {
 		return
 	}
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalAssistantCancelMap, connectionID)
 }
 
 //export Assistant_cancelHandler
 func Assistant_cancelHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
-	callback := signalAssistantCancelMap[index]
+	callback := signalAssistantCancelMap[index].callback
 	callback()
 }
 
+type signalAssistantCloseDetail struct {
+	callback  AssistantSignalCloseCallback
+	handlerID C.gulong
+}
+
 var signalAssistantCloseId int
-var signalAssistantCloseMap = make(map[int]AssistantSignalCloseCallback)
+var signalAssistantCloseMap = make(map[int]signalAssistantCloseDetail)
 var signalAssistantCloseLock sync.Mutex
 
 // AssistantSignalCloseCallback is a callback function for a 'close' signal emitted from a Assistant.
@@ -248,11 +267,13 @@ func (recv *Assistant) ConnectClose(callback AssistantSignalCloseCallback) int {
 	defer signalAssistantCloseLock.Unlock()
 
 	signalAssistantCloseId++
-	signalAssistantCloseMap[signalAssistantCloseId] = callback
-
 	instance := C.gpointer(recv.Object().ToC())
-	retC := C.Assistant_signal_connect_close(instance, C.gpointer(uintptr(signalAssistantCloseId)))
-	return int(retC)
+	handlerID := C.Assistant_signal_connect_close(instance, C.gpointer(uintptr(signalAssistantCloseId)))
+
+	detail := signalAssistantCloseDetail{callback, handlerID}
+	signalAssistantCloseMap[signalAssistantCloseId] = detail
+
+	return signalAssistantCloseId
 }
 
 /*
@@ -264,25 +285,30 @@ func (recv *Assistant) DisconnectClose(connectionID int) {
 	signalAssistantCloseLock.Lock()
 	defer signalAssistantCloseLock.Unlock()
 
-	_, exists := signalAssistantCloseMap[connectionID]
+	detail, exists := signalAssistantCloseMap[connectionID]
 	if !exists {
 		return
 	}
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalAssistantCloseMap, connectionID)
 }
 
 //export Assistant_closeHandler
 func Assistant_closeHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
-	callback := signalAssistantCloseMap[index]
+	callback := signalAssistantCloseMap[index].callback
 	callback()
 }
 
+type signalAssistantPrepareDetail struct {
+	callback  AssistantSignalPrepareCallback
+	handlerID C.gulong
+}
+
 var signalAssistantPrepareId int
-var signalAssistantPrepareMap = make(map[int]AssistantSignalPrepareCallback)
+var signalAssistantPrepareMap = make(map[int]signalAssistantPrepareDetail)
 var signalAssistantPrepareLock sync.Mutex
 
 // AssistantSignalPrepareCallback is a callback function for a 'prepare' signal emitted from a Assistant.
@@ -298,11 +324,13 @@ func (recv *Assistant) ConnectPrepare(callback AssistantSignalPrepareCallback) i
 	defer signalAssistantPrepareLock.Unlock()
 
 	signalAssistantPrepareId++
-	signalAssistantPrepareMap[signalAssistantPrepareId] = callback
-
 	instance := C.gpointer(recv.Object().ToC())
-	retC := C.Assistant_signal_connect_prepare(instance, C.gpointer(uintptr(signalAssistantPrepareId)))
-	return int(retC)
+	handlerID := C.Assistant_signal_connect_prepare(instance, C.gpointer(uintptr(signalAssistantPrepareId)))
+
+	detail := signalAssistantPrepareDetail{callback, handlerID}
+	signalAssistantPrepareMap[signalAssistantPrepareId] = detail
+
+	return signalAssistantPrepareId
 }
 
 /*
@@ -314,13 +342,13 @@ func (recv *Assistant) DisconnectPrepare(connectionID int) {
 	signalAssistantPrepareLock.Lock()
 	defer signalAssistantPrepareLock.Unlock()
 
-	_, exists := signalAssistantPrepareMap[connectionID]
+	detail, exists := signalAssistantPrepareMap[connectionID]
 	if !exists {
 		return
 	}
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalAssistantPrepareMap, connectionID)
 }
 
@@ -329,7 +357,7 @@ func Assistant_prepareHandler(_ *C.GObject, c_page *C.GtkWidget, data C.gpointer
 	page := WidgetNewFromC(unsafe.Pointer(c_page))
 
 	index := int(uintptr(data))
-	callback := signalAssistantPrepareMap[index]
+	callback := signalAssistantPrepareMap[index].callback
 	callback(page)
 }
 
@@ -1069,8 +1097,13 @@ func (recv *PrintContext) SetCairoContext(cr *cairo.Context, dpiX float64, dpiY 
 	return
 }
 
+type signalPrintOperationBeginPrintDetail struct {
+	callback  PrintOperationSignalBeginPrintCallback
+	handlerID C.gulong
+}
+
 var signalPrintOperationBeginPrintId int
-var signalPrintOperationBeginPrintMap = make(map[int]PrintOperationSignalBeginPrintCallback)
+var signalPrintOperationBeginPrintMap = make(map[int]signalPrintOperationBeginPrintDetail)
 var signalPrintOperationBeginPrintLock sync.Mutex
 
 // PrintOperationSignalBeginPrintCallback is a callback function for a 'begin-print' signal emitted from a PrintOperation.
@@ -1086,11 +1119,13 @@ func (recv *PrintOperation) ConnectBeginPrint(callback PrintOperationSignalBegin
 	defer signalPrintOperationBeginPrintLock.Unlock()
 
 	signalPrintOperationBeginPrintId++
-	signalPrintOperationBeginPrintMap[signalPrintOperationBeginPrintId] = callback
-
 	instance := C.gpointer(recv.Object().ToC())
-	retC := C.PrintOperation_signal_connect_begin_print(instance, C.gpointer(uintptr(signalPrintOperationBeginPrintId)))
-	return int(retC)
+	handlerID := C.PrintOperation_signal_connect_begin_print(instance, C.gpointer(uintptr(signalPrintOperationBeginPrintId)))
+
+	detail := signalPrintOperationBeginPrintDetail{callback, handlerID}
+	signalPrintOperationBeginPrintMap[signalPrintOperationBeginPrintId] = detail
+
+	return signalPrintOperationBeginPrintId
 }
 
 /*
@@ -1102,13 +1137,13 @@ func (recv *PrintOperation) DisconnectBeginPrint(connectionID int) {
 	signalPrintOperationBeginPrintLock.Lock()
 	defer signalPrintOperationBeginPrintLock.Unlock()
 
-	_, exists := signalPrintOperationBeginPrintMap[connectionID]
+	detail, exists := signalPrintOperationBeginPrintMap[connectionID]
 	if !exists {
 		return
 	}
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalPrintOperationBeginPrintMap, connectionID)
 }
 
@@ -1117,12 +1152,17 @@ func PrintOperation_beginPrintHandler(_ *C.GObject, c_context *C.GtkPrintContext
 	context := PrintContextNewFromC(unsafe.Pointer(c_context))
 
 	index := int(uintptr(data))
-	callback := signalPrintOperationBeginPrintMap[index]
+	callback := signalPrintOperationBeginPrintMap[index].callback
 	callback(context)
 }
 
+type signalPrintOperationCreateCustomWidgetDetail struct {
+	callback  PrintOperationSignalCreateCustomWidgetCallback
+	handlerID C.gulong
+}
+
 var signalPrintOperationCreateCustomWidgetId int
-var signalPrintOperationCreateCustomWidgetMap = make(map[int]PrintOperationSignalCreateCustomWidgetCallback)
+var signalPrintOperationCreateCustomWidgetMap = make(map[int]signalPrintOperationCreateCustomWidgetDetail)
 var signalPrintOperationCreateCustomWidgetLock sync.Mutex
 
 // PrintOperationSignalCreateCustomWidgetCallback is a callback function for a 'create-custom-widget' signal emitted from a PrintOperation.
@@ -1138,11 +1178,13 @@ func (recv *PrintOperation) ConnectCreateCustomWidget(callback PrintOperationSig
 	defer signalPrintOperationCreateCustomWidgetLock.Unlock()
 
 	signalPrintOperationCreateCustomWidgetId++
-	signalPrintOperationCreateCustomWidgetMap[signalPrintOperationCreateCustomWidgetId] = callback
-
 	instance := C.gpointer(recv.Object().ToC())
-	retC := C.PrintOperation_signal_connect_create_custom_widget(instance, C.gpointer(uintptr(signalPrintOperationCreateCustomWidgetId)))
-	return int(retC)
+	handlerID := C.PrintOperation_signal_connect_create_custom_widget(instance, C.gpointer(uintptr(signalPrintOperationCreateCustomWidgetId)))
+
+	detail := signalPrintOperationCreateCustomWidgetDetail{callback, handlerID}
+	signalPrintOperationCreateCustomWidgetMap[signalPrintOperationCreateCustomWidgetId] = detail
+
+	return signalPrintOperationCreateCustomWidgetId
 }
 
 /*
@@ -1154,25 +1196,30 @@ func (recv *PrintOperation) DisconnectCreateCustomWidget(connectionID int) {
 	signalPrintOperationCreateCustomWidgetLock.Lock()
 	defer signalPrintOperationCreateCustomWidgetLock.Unlock()
 
-	_, exists := signalPrintOperationCreateCustomWidgetMap[connectionID]
+	detail, exists := signalPrintOperationCreateCustomWidgetMap[connectionID]
 	if !exists {
 		return
 	}
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalPrintOperationCreateCustomWidgetMap, connectionID)
 }
 
 //export PrintOperation_createCustomWidgetHandler
 func PrintOperation_createCustomWidgetHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
-	callback := signalPrintOperationCreateCustomWidgetMap[index]
+	callback := signalPrintOperationCreateCustomWidgetMap[index].callback
 	callback()
 }
 
+type signalPrintOperationCustomWidgetApplyDetail struct {
+	callback  PrintOperationSignalCustomWidgetApplyCallback
+	handlerID C.gulong
+}
+
 var signalPrintOperationCustomWidgetApplyId int
-var signalPrintOperationCustomWidgetApplyMap = make(map[int]PrintOperationSignalCustomWidgetApplyCallback)
+var signalPrintOperationCustomWidgetApplyMap = make(map[int]signalPrintOperationCustomWidgetApplyDetail)
 var signalPrintOperationCustomWidgetApplyLock sync.Mutex
 
 // PrintOperationSignalCustomWidgetApplyCallback is a callback function for a 'custom-widget-apply' signal emitted from a PrintOperation.
@@ -1188,11 +1235,13 @@ func (recv *PrintOperation) ConnectCustomWidgetApply(callback PrintOperationSign
 	defer signalPrintOperationCustomWidgetApplyLock.Unlock()
 
 	signalPrintOperationCustomWidgetApplyId++
-	signalPrintOperationCustomWidgetApplyMap[signalPrintOperationCustomWidgetApplyId] = callback
-
 	instance := C.gpointer(recv.Object().ToC())
-	retC := C.PrintOperation_signal_connect_custom_widget_apply(instance, C.gpointer(uintptr(signalPrintOperationCustomWidgetApplyId)))
-	return int(retC)
+	handlerID := C.PrintOperation_signal_connect_custom_widget_apply(instance, C.gpointer(uintptr(signalPrintOperationCustomWidgetApplyId)))
+
+	detail := signalPrintOperationCustomWidgetApplyDetail{callback, handlerID}
+	signalPrintOperationCustomWidgetApplyMap[signalPrintOperationCustomWidgetApplyId] = detail
+
+	return signalPrintOperationCustomWidgetApplyId
 }
 
 /*
@@ -1204,13 +1253,13 @@ func (recv *PrintOperation) DisconnectCustomWidgetApply(connectionID int) {
 	signalPrintOperationCustomWidgetApplyLock.Lock()
 	defer signalPrintOperationCustomWidgetApplyLock.Unlock()
 
-	_, exists := signalPrintOperationCustomWidgetApplyMap[connectionID]
+	detail, exists := signalPrintOperationCustomWidgetApplyMap[connectionID]
 	if !exists {
 		return
 	}
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalPrintOperationCustomWidgetApplyMap, connectionID)
 }
 
@@ -1219,7 +1268,7 @@ func PrintOperation_customWidgetApplyHandler(_ *C.GObject, c_widget *C.GtkWidget
 	widget := WidgetNewFromC(unsafe.Pointer(c_widget))
 
 	index := int(uintptr(data))
-	callback := signalPrintOperationCustomWidgetApplyMap[index]
+	callback := signalPrintOperationCustomWidgetApplyMap[index].callback
 	callback(widget)
 }
 
@@ -1227,8 +1276,13 @@ func PrintOperation_customWidgetApplyHandler(_ *C.GObject, c_widget *C.GtkWidget
 
 // Unsupported signal 'draw-page' for PrintOperation : unsupported parameter page_nr : type gint :
 
+type signalPrintOperationEndPrintDetail struct {
+	callback  PrintOperationSignalEndPrintCallback
+	handlerID C.gulong
+}
+
 var signalPrintOperationEndPrintId int
-var signalPrintOperationEndPrintMap = make(map[int]PrintOperationSignalEndPrintCallback)
+var signalPrintOperationEndPrintMap = make(map[int]signalPrintOperationEndPrintDetail)
 var signalPrintOperationEndPrintLock sync.Mutex
 
 // PrintOperationSignalEndPrintCallback is a callback function for a 'end-print' signal emitted from a PrintOperation.
@@ -1244,11 +1298,13 @@ func (recv *PrintOperation) ConnectEndPrint(callback PrintOperationSignalEndPrin
 	defer signalPrintOperationEndPrintLock.Unlock()
 
 	signalPrintOperationEndPrintId++
-	signalPrintOperationEndPrintMap[signalPrintOperationEndPrintId] = callback
-
 	instance := C.gpointer(recv.Object().ToC())
-	retC := C.PrintOperation_signal_connect_end_print(instance, C.gpointer(uintptr(signalPrintOperationEndPrintId)))
-	return int(retC)
+	handlerID := C.PrintOperation_signal_connect_end_print(instance, C.gpointer(uintptr(signalPrintOperationEndPrintId)))
+
+	detail := signalPrintOperationEndPrintDetail{callback, handlerID}
+	signalPrintOperationEndPrintMap[signalPrintOperationEndPrintId] = detail
+
+	return signalPrintOperationEndPrintId
 }
 
 /*
@@ -1260,13 +1316,13 @@ func (recv *PrintOperation) DisconnectEndPrint(connectionID int) {
 	signalPrintOperationEndPrintLock.Lock()
 	defer signalPrintOperationEndPrintLock.Unlock()
 
-	_, exists := signalPrintOperationEndPrintMap[connectionID]
+	detail, exists := signalPrintOperationEndPrintMap[connectionID]
 	if !exists {
 		return
 	}
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalPrintOperationEndPrintMap, connectionID)
 }
 
@@ -1275,12 +1331,17 @@ func PrintOperation_endPrintHandler(_ *C.GObject, c_context *C.GtkPrintContext, 
 	context := PrintContextNewFromC(unsafe.Pointer(c_context))
 
 	index := int(uintptr(data))
-	callback := signalPrintOperationEndPrintMap[index]
+	callback := signalPrintOperationEndPrintMap[index].callback
 	callback(context)
 }
 
+type signalPrintOperationPaginateDetail struct {
+	callback  PrintOperationSignalPaginateCallback
+	handlerID C.gulong
+}
+
 var signalPrintOperationPaginateId int
-var signalPrintOperationPaginateMap = make(map[int]PrintOperationSignalPaginateCallback)
+var signalPrintOperationPaginateMap = make(map[int]signalPrintOperationPaginateDetail)
 var signalPrintOperationPaginateLock sync.Mutex
 
 // PrintOperationSignalPaginateCallback is a callback function for a 'paginate' signal emitted from a PrintOperation.
@@ -1296,11 +1357,13 @@ func (recv *PrintOperation) ConnectPaginate(callback PrintOperationSignalPaginat
 	defer signalPrintOperationPaginateLock.Unlock()
 
 	signalPrintOperationPaginateId++
-	signalPrintOperationPaginateMap[signalPrintOperationPaginateId] = callback
-
 	instance := C.gpointer(recv.Object().ToC())
-	retC := C.PrintOperation_signal_connect_paginate(instance, C.gpointer(uintptr(signalPrintOperationPaginateId)))
-	return int(retC)
+	handlerID := C.PrintOperation_signal_connect_paginate(instance, C.gpointer(uintptr(signalPrintOperationPaginateId)))
+
+	detail := signalPrintOperationPaginateDetail{callback, handlerID}
+	signalPrintOperationPaginateMap[signalPrintOperationPaginateId] = detail
+
+	return signalPrintOperationPaginateId
 }
 
 /*
@@ -1312,13 +1375,13 @@ func (recv *PrintOperation) DisconnectPaginate(connectionID int) {
 	signalPrintOperationPaginateLock.Lock()
 	defer signalPrintOperationPaginateLock.Unlock()
 
-	_, exists := signalPrintOperationPaginateMap[connectionID]
+	detail, exists := signalPrintOperationPaginateMap[connectionID]
 	if !exists {
 		return
 	}
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalPrintOperationPaginateMap, connectionID)
 }
 
@@ -1327,7 +1390,7 @@ func PrintOperation_paginateHandler(_ *C.GObject, c_context *C.GtkPrintContext, 
 	context := PrintContextNewFromC(unsafe.Pointer(c_context))
 
 	index := int(uintptr(data))
-	callback := signalPrintOperationPaginateMap[index]
+	callback := signalPrintOperationPaginateMap[index].callback
 	callback(context)
 }
 
@@ -1335,8 +1398,13 @@ func PrintOperation_paginateHandler(_ *C.GObject, c_context *C.GtkPrintContext, 
 
 // Unsupported signal 'request-page-setup' for PrintOperation : unsupported parameter page_nr : type gint :
 
+type signalPrintOperationStatusChangedDetail struct {
+	callback  PrintOperationSignalStatusChangedCallback
+	handlerID C.gulong
+}
+
 var signalPrintOperationStatusChangedId int
-var signalPrintOperationStatusChangedMap = make(map[int]PrintOperationSignalStatusChangedCallback)
+var signalPrintOperationStatusChangedMap = make(map[int]signalPrintOperationStatusChangedDetail)
 var signalPrintOperationStatusChangedLock sync.Mutex
 
 // PrintOperationSignalStatusChangedCallback is a callback function for a 'status-changed' signal emitted from a PrintOperation.
@@ -1352,11 +1420,13 @@ func (recv *PrintOperation) ConnectStatusChanged(callback PrintOperationSignalSt
 	defer signalPrintOperationStatusChangedLock.Unlock()
 
 	signalPrintOperationStatusChangedId++
-	signalPrintOperationStatusChangedMap[signalPrintOperationStatusChangedId] = callback
-
 	instance := C.gpointer(recv.Object().ToC())
-	retC := C.PrintOperation_signal_connect_status_changed(instance, C.gpointer(uintptr(signalPrintOperationStatusChangedId)))
-	return int(retC)
+	handlerID := C.PrintOperation_signal_connect_status_changed(instance, C.gpointer(uintptr(signalPrintOperationStatusChangedId)))
+
+	detail := signalPrintOperationStatusChangedDetail{callback, handlerID}
+	signalPrintOperationStatusChangedMap[signalPrintOperationStatusChangedId] = detail
+
+	return signalPrintOperationStatusChangedId
 }
 
 /*
@@ -1368,20 +1438,20 @@ func (recv *PrintOperation) DisconnectStatusChanged(connectionID int) {
 	signalPrintOperationStatusChangedLock.Lock()
 	defer signalPrintOperationStatusChangedLock.Unlock()
 
-	_, exists := signalPrintOperationStatusChangedMap[connectionID]
+	detail, exists := signalPrintOperationStatusChangedMap[connectionID]
 	if !exists {
 		return
 	}
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalPrintOperationStatusChangedMap, connectionID)
 }
 
 //export PrintOperation_statusChangedHandler
 func PrintOperation_statusChangedHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
-	callback := signalPrintOperationStatusChangedMap[index]
+	callback := signalPrintOperationStatusChangedMap[index].callback
 	callback()
 }
 
@@ -2531,8 +2601,13 @@ func (recv *SizeGroup) GetWidgets() *glib.SList {
 	return retGo
 }
 
+type signalSpinButtonWrappedDetail struct {
+	callback  SpinButtonSignalWrappedCallback
+	handlerID C.gulong
+}
+
 var signalSpinButtonWrappedId int
-var signalSpinButtonWrappedMap = make(map[int]SpinButtonSignalWrappedCallback)
+var signalSpinButtonWrappedMap = make(map[int]signalSpinButtonWrappedDetail)
 var signalSpinButtonWrappedLock sync.Mutex
 
 // SpinButtonSignalWrappedCallback is a callback function for a 'wrapped' signal emitted from a SpinButton.
@@ -2548,11 +2623,13 @@ func (recv *SpinButton) ConnectWrapped(callback SpinButtonSignalWrappedCallback)
 	defer signalSpinButtonWrappedLock.Unlock()
 
 	signalSpinButtonWrappedId++
-	signalSpinButtonWrappedMap[signalSpinButtonWrappedId] = callback
-
 	instance := C.gpointer(recv.Object().ToC())
-	retC := C.SpinButton_signal_connect_wrapped(instance, C.gpointer(uintptr(signalSpinButtonWrappedId)))
-	return int(retC)
+	handlerID := C.SpinButton_signal_connect_wrapped(instance, C.gpointer(uintptr(signalSpinButtonWrappedId)))
+
+	detail := signalSpinButtonWrappedDetail{callback, handlerID}
+	signalSpinButtonWrappedMap[signalSpinButtonWrappedId] = detail
+
+	return signalSpinButtonWrappedId
 }
 
 /*
@@ -2564,25 +2641,30 @@ func (recv *SpinButton) DisconnectWrapped(connectionID int) {
 	signalSpinButtonWrappedLock.Lock()
 	defer signalSpinButtonWrappedLock.Unlock()
 
-	_, exists := signalSpinButtonWrappedMap[connectionID]
+	detail, exists := signalSpinButtonWrappedMap[connectionID]
 	if !exists {
 		return
 	}
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalSpinButtonWrappedMap, connectionID)
 }
 
 //export SpinButton_wrappedHandler
 func SpinButton_wrappedHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
-	callback := signalSpinButtonWrappedMap[index]
+	callback := signalSpinButtonWrappedMap[index].callback
 	callback()
 }
 
+type signalStatusIconActivateDetail struct {
+	callback  StatusIconSignalActivateCallback
+	handlerID C.gulong
+}
+
 var signalStatusIconActivateId int
-var signalStatusIconActivateMap = make(map[int]StatusIconSignalActivateCallback)
+var signalStatusIconActivateMap = make(map[int]signalStatusIconActivateDetail)
 var signalStatusIconActivateLock sync.Mutex
 
 // StatusIconSignalActivateCallback is a callback function for a 'activate' signal emitted from a StatusIcon.
@@ -2598,11 +2680,13 @@ func (recv *StatusIcon) ConnectActivate(callback StatusIconSignalActivateCallbac
 	defer signalStatusIconActivateLock.Unlock()
 
 	signalStatusIconActivateId++
-	signalStatusIconActivateMap[signalStatusIconActivateId] = callback
-
 	instance := C.gpointer(recv.Object().ToC())
-	retC := C.StatusIcon_signal_connect_activate(instance, C.gpointer(uintptr(signalStatusIconActivateId)))
-	return int(retC)
+	handlerID := C.StatusIcon_signal_connect_activate(instance, C.gpointer(uintptr(signalStatusIconActivateId)))
+
+	detail := signalStatusIconActivateDetail{callback, handlerID}
+	signalStatusIconActivateMap[signalStatusIconActivateId] = detail
+
+	return signalStatusIconActivateId
 }
 
 /*
@@ -2614,20 +2698,20 @@ func (recv *StatusIcon) DisconnectActivate(connectionID int) {
 	signalStatusIconActivateLock.Lock()
 	defer signalStatusIconActivateLock.Unlock()
 
-	_, exists := signalStatusIconActivateMap[connectionID]
+	detail, exists := signalStatusIconActivateMap[connectionID]
 	if !exists {
 		return
 	}
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalStatusIconActivateMap, connectionID)
 }
 
 //export StatusIcon_activateHandler
 func StatusIcon_activateHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
-	callback := signalStatusIconActivateMap[index]
+	callback := signalStatusIconActivateMap[index].callback
 	callback()
 }
 

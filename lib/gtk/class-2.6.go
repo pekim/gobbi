@@ -392,8 +392,13 @@ func (recv *CellView) SetDisplayedRow(path *TreePath) {
 
 // Unsupported : gtk_cell_view_set_model : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
 
+type signalClipboardOwnerChangeDetail struct {
+	callback  ClipboardSignalOwnerChangeCallback
+	handlerID C.gulong
+}
+
 var signalClipboardOwnerChangeId int
-var signalClipboardOwnerChangeMap = make(map[int]ClipboardSignalOwnerChangeCallback)
+var signalClipboardOwnerChangeMap = make(map[int]signalClipboardOwnerChangeDetail)
 var signalClipboardOwnerChangeLock sync.Mutex
 
 // ClipboardSignalOwnerChangeCallback is a callback function for a 'owner-change' signal emitted from a Clipboard.
@@ -409,11 +414,13 @@ func (recv *Clipboard) ConnectOwnerChange(callback ClipboardSignalOwnerChangeCal
 	defer signalClipboardOwnerChangeLock.Unlock()
 
 	signalClipboardOwnerChangeId++
-	signalClipboardOwnerChangeMap[signalClipboardOwnerChangeId] = callback
-
 	instance := C.gpointer(recv.Object().ToC())
-	retC := C.Clipboard_signal_connect_owner_change(instance, C.gpointer(uintptr(signalClipboardOwnerChangeId)))
-	return int(retC)
+	handlerID := C.Clipboard_signal_connect_owner_change(instance, C.gpointer(uintptr(signalClipboardOwnerChangeId)))
+
+	detail := signalClipboardOwnerChangeDetail{callback, handlerID}
+	signalClipboardOwnerChangeMap[signalClipboardOwnerChangeId] = detail
+
+	return signalClipboardOwnerChangeId
 }
 
 /*
@@ -425,13 +432,13 @@ func (recv *Clipboard) DisconnectOwnerChange(connectionID int) {
 	signalClipboardOwnerChangeLock.Lock()
 	defer signalClipboardOwnerChangeLock.Unlock()
 
-	_, exists := signalClipboardOwnerChangeMap[connectionID]
+	detail, exists := signalClipboardOwnerChangeMap[connectionID]
 	if !exists {
 		return
 	}
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalClipboardOwnerChangeMap, connectionID)
 }
 
@@ -440,7 +447,7 @@ func Clipboard_ownerChangeHandler(_ *C.GObject, c_event *C.GdkEventOwnerChange, 
 	event := gdk.EventOwnerChangeNewFromC(unsafe.Pointer(c_event))
 
 	index := int(uintptr(data))
-	callback := signalClipboardOwnerChangeMap[index]
+	callback := signalClipboardOwnerChangeMap[index].callback
 	callback(event)
 }
 

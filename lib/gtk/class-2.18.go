@@ -341,8 +341,13 @@ func (recv *IconView) SetItemPadding(itemPadding int32) {
 
 // Unsupported : gtk_image_new_from_stock : unsupported parameter size : no type generator for gint, GtkIconSize
 
+type signalInfoBarCloseDetail struct {
+	callback  InfoBarSignalCloseCallback
+	handlerID C.gulong
+}
+
 var signalInfoBarCloseId int
-var signalInfoBarCloseMap = make(map[int]InfoBarSignalCloseCallback)
+var signalInfoBarCloseMap = make(map[int]signalInfoBarCloseDetail)
 var signalInfoBarCloseLock sync.Mutex
 
 // InfoBarSignalCloseCallback is a callback function for a 'close' signal emitted from a InfoBar.
@@ -358,11 +363,13 @@ func (recv *InfoBar) ConnectClose(callback InfoBarSignalCloseCallback) int {
 	defer signalInfoBarCloseLock.Unlock()
 
 	signalInfoBarCloseId++
-	signalInfoBarCloseMap[signalInfoBarCloseId] = callback
-
 	instance := C.gpointer(recv.Object().ToC())
-	retC := C.InfoBar_signal_connect_close(instance, C.gpointer(uintptr(signalInfoBarCloseId)))
-	return int(retC)
+	handlerID := C.InfoBar_signal_connect_close(instance, C.gpointer(uintptr(signalInfoBarCloseId)))
+
+	detail := signalInfoBarCloseDetail{callback, handlerID}
+	signalInfoBarCloseMap[signalInfoBarCloseId] = detail
+
+	return signalInfoBarCloseId
 }
 
 /*
@@ -374,20 +381,20 @@ func (recv *InfoBar) DisconnectClose(connectionID int) {
 	signalInfoBarCloseLock.Lock()
 	defer signalInfoBarCloseLock.Unlock()
 
-	_, exists := signalInfoBarCloseMap[connectionID]
+	detail, exists := signalInfoBarCloseMap[connectionID]
 	if !exists {
 		return
 	}
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalInfoBarCloseMap, connectionID)
 }
 
 //export InfoBar_closeHandler
 func InfoBar_closeHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
-	callback := signalInfoBarCloseMap[index]
+	callback := signalInfoBarCloseMap[index].callback
 	callback()
 }
 
@@ -492,8 +499,13 @@ func (recv *InfoBar) SetResponseSensitive(responseId int32, setting bool) {
 	return
 }
 
+type signalLabelActivateCurrentLinkDetail struct {
+	callback  LabelSignalActivateCurrentLinkCallback
+	handlerID C.gulong
+}
+
 var signalLabelActivateCurrentLinkId int
-var signalLabelActivateCurrentLinkMap = make(map[int]LabelSignalActivateCurrentLinkCallback)
+var signalLabelActivateCurrentLinkMap = make(map[int]signalLabelActivateCurrentLinkDetail)
 var signalLabelActivateCurrentLinkLock sync.Mutex
 
 // LabelSignalActivateCurrentLinkCallback is a callback function for a 'activate-current-link' signal emitted from a Label.
@@ -509,11 +521,13 @@ func (recv *Label) ConnectActivateCurrentLink(callback LabelSignalActivateCurren
 	defer signalLabelActivateCurrentLinkLock.Unlock()
 
 	signalLabelActivateCurrentLinkId++
-	signalLabelActivateCurrentLinkMap[signalLabelActivateCurrentLinkId] = callback
-
 	instance := C.gpointer(recv.Object().ToC())
-	retC := C.Label_signal_connect_activate_current_link(instance, C.gpointer(uintptr(signalLabelActivateCurrentLinkId)))
-	return int(retC)
+	handlerID := C.Label_signal_connect_activate_current_link(instance, C.gpointer(uintptr(signalLabelActivateCurrentLinkId)))
+
+	detail := signalLabelActivateCurrentLinkDetail{callback, handlerID}
+	signalLabelActivateCurrentLinkMap[signalLabelActivateCurrentLinkId] = detail
+
+	return signalLabelActivateCurrentLinkId
 }
 
 /*
@@ -525,20 +539,20 @@ func (recv *Label) DisconnectActivateCurrentLink(connectionID int) {
 	signalLabelActivateCurrentLinkLock.Lock()
 	defer signalLabelActivateCurrentLinkLock.Unlock()
 
-	_, exists := signalLabelActivateCurrentLinkMap[connectionID]
+	detail, exists := signalLabelActivateCurrentLinkMap[connectionID]
 	if !exists {
 		return
 	}
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalLabelActivateCurrentLinkMap, connectionID)
 }
 
 //export Label_activateCurrentLinkHandler
 func Label_activateCurrentLinkHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
-	callback := signalLabelActivateCurrentLinkMap[index]
+	callback := signalLabelActivateCurrentLinkMap[index].callback
 	callback()
 }
 
@@ -598,8 +612,13 @@ func (recv *Menu) SetReserveToggleSize(reserveToggleSize bool) {
 
 // Unsupported : gtk_page_setup_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
 
+type signalPrintOperationUpdateCustomWidgetDetail struct {
+	callback  PrintOperationSignalUpdateCustomWidgetCallback
+	handlerID C.gulong
+}
+
 var signalPrintOperationUpdateCustomWidgetId int
-var signalPrintOperationUpdateCustomWidgetMap = make(map[int]PrintOperationSignalUpdateCustomWidgetCallback)
+var signalPrintOperationUpdateCustomWidgetMap = make(map[int]signalPrintOperationUpdateCustomWidgetDetail)
 var signalPrintOperationUpdateCustomWidgetLock sync.Mutex
 
 // PrintOperationSignalUpdateCustomWidgetCallback is a callback function for a 'update-custom-widget' signal emitted from a PrintOperation.
@@ -615,11 +634,13 @@ func (recv *PrintOperation) ConnectUpdateCustomWidget(callback PrintOperationSig
 	defer signalPrintOperationUpdateCustomWidgetLock.Unlock()
 
 	signalPrintOperationUpdateCustomWidgetId++
-	signalPrintOperationUpdateCustomWidgetMap[signalPrintOperationUpdateCustomWidgetId] = callback
-
 	instance := C.gpointer(recv.Object().ToC())
-	retC := C.PrintOperation_signal_connect_update_custom_widget(instance, C.gpointer(uintptr(signalPrintOperationUpdateCustomWidgetId)))
-	return int(retC)
+	handlerID := C.PrintOperation_signal_connect_update_custom_widget(instance, C.gpointer(uintptr(signalPrintOperationUpdateCustomWidgetId)))
+
+	detail := signalPrintOperationUpdateCustomWidgetDetail{callback, handlerID}
+	signalPrintOperationUpdateCustomWidgetMap[signalPrintOperationUpdateCustomWidgetId] = detail
+
+	return signalPrintOperationUpdateCustomWidgetId
 }
 
 /*
@@ -631,13 +652,13 @@ func (recv *PrintOperation) DisconnectUpdateCustomWidget(connectionID int) {
 	signalPrintOperationUpdateCustomWidgetLock.Lock()
 	defer signalPrintOperationUpdateCustomWidgetLock.Unlock()
 
-	_, exists := signalPrintOperationUpdateCustomWidgetMap[connectionID]
+	detail, exists := signalPrintOperationUpdateCustomWidgetMap[connectionID]
 	if !exists {
 		return
 	}
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalPrintOperationUpdateCustomWidgetMap, connectionID)
 }
 
@@ -650,7 +671,7 @@ func PrintOperation_updateCustomWidgetHandler(_ *C.GObject, c_widget *C.GtkWidge
 	settings := PrintSettingsNewFromC(unsafe.Pointer(c_settings))
 
 	index := int(uintptr(data))
-	callback := signalPrintOperationUpdateCustomWidgetMap[index]
+	callback := signalPrintOperationUpdateCustomWidgetMap[index].callback
 	callback(widget, setup, settings)
 }
 

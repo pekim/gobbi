@@ -57,8 +57,13 @@ import "C"
 
 // Unsupported : g_memory_output_stream_new : unsupported parameter realloc_function : no type generator for ReallocFunc, GReallocFunc
 
+type signalMountOperationAbortedDetail struct {
+	callback  MountOperationSignalAbortedCallback
+	handlerID C.gulong
+}
+
 var signalMountOperationAbortedId int
-var signalMountOperationAbortedMap = make(map[int]MountOperationSignalAbortedCallback)
+var signalMountOperationAbortedMap = make(map[int]signalMountOperationAbortedDetail)
 var signalMountOperationAbortedLock sync.Mutex
 
 // MountOperationSignalAbortedCallback is a callback function for a 'aborted' signal emitted from a MountOperation.
@@ -74,11 +79,13 @@ func (recv *MountOperation) ConnectAborted(callback MountOperationSignalAbortedC
 	defer signalMountOperationAbortedLock.Unlock()
 
 	signalMountOperationAbortedId++
-	signalMountOperationAbortedMap[signalMountOperationAbortedId] = callback
-
 	instance := C.gpointer(recv.Object().ToC())
-	retC := C.MountOperation_signal_connect_aborted(instance, C.gpointer(uintptr(signalMountOperationAbortedId)))
-	return int(retC)
+	handlerID := C.MountOperation_signal_connect_aborted(instance, C.gpointer(uintptr(signalMountOperationAbortedId)))
+
+	detail := signalMountOperationAbortedDetail{callback, handlerID}
+	signalMountOperationAbortedMap[signalMountOperationAbortedId] = detail
+
+	return signalMountOperationAbortedId
 }
 
 /*
@@ -90,20 +97,20 @@ func (recv *MountOperation) DisconnectAborted(connectionID int) {
 	signalMountOperationAbortedLock.Lock()
 	defer signalMountOperationAbortedLock.Unlock()
 
-	_, exists := signalMountOperationAbortedMap[connectionID]
+	detail, exists := signalMountOperationAbortedMap[connectionID]
 	if !exists {
 		return
 	}
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalMountOperationAbortedMap, connectionID)
 }
 
 //export MountOperation_abortedHandler
 func MountOperation_abortedHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
-	callback := signalMountOperationAbortedMap[index]
+	callback := signalMountOperationAbortedMap[index].callback
 	callback()
 }
 

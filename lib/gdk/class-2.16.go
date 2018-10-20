@@ -19,8 +19,13 @@ import "sync"
 */
 import "C"
 
+type signalKeymapStateChangedDetail struct {
+	callback  KeymapSignalStateChangedCallback
+	handlerID C.gulong
+}
+
 var signalKeymapStateChangedId int
-var signalKeymapStateChangedMap = make(map[int]KeymapSignalStateChangedCallback)
+var signalKeymapStateChangedMap = make(map[int]signalKeymapStateChangedDetail)
 var signalKeymapStateChangedLock sync.Mutex
 
 // KeymapSignalStateChangedCallback is a callback function for a 'state-changed' signal emitted from a Keymap.
@@ -36,11 +41,13 @@ func (recv *Keymap) ConnectStateChanged(callback KeymapSignalStateChangedCallbac
 	defer signalKeymapStateChangedLock.Unlock()
 
 	signalKeymapStateChangedId++
-	signalKeymapStateChangedMap[signalKeymapStateChangedId] = callback
-
 	instance := C.gpointer(recv.Object().ToC())
-	retC := C.Keymap_signal_connect_state_changed(instance, C.gpointer(uintptr(signalKeymapStateChangedId)))
-	return int(retC)
+	handlerID := C.Keymap_signal_connect_state_changed(instance, C.gpointer(uintptr(signalKeymapStateChangedId)))
+
+	detail := signalKeymapStateChangedDetail{callback, handlerID}
+	signalKeymapStateChangedMap[signalKeymapStateChangedId] = detail
+
+	return signalKeymapStateChangedId
 }
 
 /*
@@ -52,20 +59,20 @@ func (recv *Keymap) DisconnectStateChanged(connectionID int) {
 	signalKeymapStateChangedLock.Lock()
 	defer signalKeymapStateChangedLock.Unlock()
 
-	_, exists := signalKeymapStateChangedMap[connectionID]
+	detail, exists := signalKeymapStateChangedMap[connectionID]
 	if !exists {
 		return
 	}
 
 	instance := C.gpointer(recv.Object().ToC())
-	C.g_signal_handler_disconnect(instance, C.gulong(connectionID))
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalKeymapStateChangedMap, connectionID)
 }
 
 //export Keymap_stateChangedHandler
 func Keymap_stateChangedHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
-	callback := signalKeymapStateChangedMap[index]
+	callback := signalKeymapStateChangedMap[index].callback
 	callback()
 }
 
