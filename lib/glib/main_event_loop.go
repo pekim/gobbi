@@ -25,7 +25,7 @@ var idleAddLock sync.Mutex
 /*
 IdleAdd adds a function to be called whenever there are no higher priority events
 pending to the default main loop.
-If the function returns falseit is automatically removed from the list of event
+If the function returns false it is automatically removed from the list of event
 sources and will not be called again.
 */
 func IdleAdd(callback IdleAddCallback) {
