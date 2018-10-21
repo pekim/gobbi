@@ -11,7 +11,5 @@ import "C"
 const BUTTON_MIDDLE int = C.GDK_BUTTON_MIDDLE
 const BUTTON_PRIMARY int = C.GDK_BUTTON_PRIMARY
 const BUTTON_SECONDARY int = C.GDK_BUTTON_SECONDARY
-
-// Unsupported : type gboolean for EVENT_PROPAGATE
-
-// Unsupported : type gboolean for EVENT_STOP
+const EVENT_PROPAGATE bool = false // C.GDK_EVENT_PROPAGATE
+const EVENT_STOP bool = true       // C.GDK_EVENT_STOP

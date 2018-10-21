@@ -8,11 +8,6 @@ package gdk
 import "C"
 
 const CURRENT_TIME int = C.GDK_CURRENT_TIME
-
-// Unsupported : type gboolean for EVENT_PROPAGATE
-
-// Unsupported : type gboolean for EVENT_STOP
-
 const KEY_0 int = C.GDK_KEY_0
 const KEY_1 int = C.GDK_KEY_1
 const KEY_2 int = C.GDK_KEY_2

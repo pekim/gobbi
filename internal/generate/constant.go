@@ -36,7 +36,7 @@ func (c *Constant) blacklisted() (bool, string) {
 
 func (c *Constant) supported() (supported bool, reason string) {
 	switch c.Type.Name {
-	case "gint", "utf8":
+	case "gboolean", "gint", "utf8":
 		return true, ""
 	default:
 		return false, fmt.Sprintf("type %s for %s", c.Type.Name, c.Name)
@@ -45,6 +45,18 @@ func (c *Constant) supported() (supported bool, reason string) {
 
 func (c *Constant) generate(g *jen.Group, version *Version) {
 	if !supportedByVersion(c, version) {
+		return
+	}
+
+	if c.Type.Name == "gboolean" {
+		g.
+			Const().
+			Id(c.Name).
+			Bool().
+			Op("=").
+			Lit(c.Value == "true").
+			Commentf("C.%s", c.CType)
+
 		return
 	}
 

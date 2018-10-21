@@ -37,7 +37,7 @@ func main() {
 			// Use IdleAdd to do this.
 			glib.IdleAdd(func() bool {
 				label.SetText(fmt.Sprintf("count : %d", counter))
-				return false
+				return glib.SOURCE_REMOVE
 			})
 		}
 	}()

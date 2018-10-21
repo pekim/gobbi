@@ -53,10 +53,6 @@ const KEY_FILE_DESKTOP_KEY_DBUS_ACTIVATABLE string = C.G_KEY_FILE_DESKTOP_KEY_DB
 
 // Unsupported : type gdouble for PI_4
 
-// Unsupported : type gboolean for SOURCE_CONTINUE
-
-// Unsupported : type gboolean for SOURCE_REMOVE
-
 // Unsupported : type gdouble for SQRT2
 
 // Unsupported : type gint64 for TIME_SPAN_DAY

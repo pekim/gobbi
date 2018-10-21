@@ -109,10 +109,6 @@ const SIZEOF_SIZE_T int = C.GLIB_SIZEOF_SIZE_T
 const SIZEOF_SSIZE_T int = C.GLIB_SIZEOF_SSIZE_T
 const SIZEOF_VOID_P int = C.GLIB_SIZEOF_VOID_P
 
-// Unsupported : type gboolean for SOURCE_CONTINUE
-
-// Unsupported : type gboolean for SOURCE_REMOVE
-
 // Unsupported : type gdouble for SQRT2
 
 const STR_DELIMITERS string = C.G_STR_DELIMITERS

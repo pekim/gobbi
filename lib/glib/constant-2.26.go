@@ -50,10 +50,6 @@ import "C"
 
 // Unsupported : type gdouble for PI_4
 
-// Unsupported : type gboolean for SOURCE_CONTINUE
-
-// Unsupported : type gboolean for SOURCE_REMOVE
-
 // Unsupported : type gdouble for SQRT2
 
 // Unsupported : type gint64 for TIME_SPAN_DAY

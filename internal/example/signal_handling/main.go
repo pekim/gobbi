@@ -39,7 +39,7 @@ func main() {
 		label.SetText(message)
 		fmt.Println(message)
 
-		return false
+		return gdk.EVENT_PROPAGATE
 	})
 
 	connectId2 := window.Widget().ConnectKeyPressEvent(func(event *gdk.EventKey) bool {
