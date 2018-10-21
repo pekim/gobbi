@@ -19,7 +19,8 @@ usage () {
 
 example () {
     exampleName=$1
-    go run -tags "$tags" $exampleDir/$exampleName/*.go
+    shift
+    go run -tags "$tags" $exampleDir/$exampleName/*.go $@
 }
 
 build () {

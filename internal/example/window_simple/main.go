@@ -2,6 +2,7 @@ package main
 
 import (
 	"github.com/pekim/gobbi/lib/gtk"
+	"os"
 	"runtime"
 )
 
@@ -10,7 +11,7 @@ func init() {
 }
 
 func main() {
-	gtk.Init([]string{})
+	gtk.Init(os.Args)
 
 	window := gtk.WindowNew(gtk.GTK_WINDOW_TOPLEVEL)
 	window.SetTitle("A window title")
