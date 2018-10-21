@@ -19,8 +19,20 @@ func main() {
 	window.SetTitle("A window title")
 	window.SetDefaultSize(300, 300)
 
+	container := gtk.BoxNew(gtk.GTK_ORIENTATION_VERTICAL, 10).Container()
+	window.Container().Add(container.Widget())
+
+	clickCount := 0
+	button := gtk.ButtonNewWithLabel("Click me")
+	button.Widget().SetHalign(gtk.GTK_ALIGN_CENTER)
+	button.ConnectClicked(func() {
+		clickCount++
+		button.SetLabel(fmt.Sprintf("clicked %d times", clickCount))
+	})
+	container.Add(button.Widget())
+
 	window.Widget().ConnectKeyPressEvent(func(event *gdk.EventKey) bool {
-		fmt.Println(event.String, event.Keyval, event.State)
+		fmt.Println("key pressed :", event.String, event.Keyval, event.State)
 		return false
 	})
 
