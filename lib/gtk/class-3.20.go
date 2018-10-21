@@ -17,37 +17,37 @@ import (
 // #include <stdlib.h>
 /*
 
-	void PlacesSidebar_mountHandler();
+	void PlacesSidebar_mountHandler(GObject *, GMountOperation *, gpointer);
 
 	static gulong PlacesSidebar_signal_connect_mount(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "mount", PlacesSidebar_mountHandler, data);
+		return g_signal_connect(instance, "mount", G_CALLBACK(PlacesSidebar_mountHandler), data);
 	}
 
 */
 /*
 
-	void PlacesSidebar_unmountHandler();
+	void PlacesSidebar_unmountHandler(GObject *, GMountOperation *, gpointer);
 
 	static gulong PlacesSidebar_signal_connect_unmount(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "unmount", PlacesSidebar_unmountHandler, data);
+		return g_signal_connect(instance, "unmount", G_CALLBACK(PlacesSidebar_unmountHandler), data);
 	}
 
 */
 /*
 
-	void ShortcutsWindow_closeHandler();
+	void ShortcutsWindow_closeHandler(GObject *, gpointer);
 
 	static gulong ShortcutsWindow_signal_connect_close(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "close", ShortcutsWindow_closeHandler, data);
+		return g_signal_connect(instance, "close", G_CALLBACK(ShortcutsWindow_closeHandler), data);
 	}
 
 */
 /*
 
-	void ShortcutsWindow_searchHandler();
+	void ShortcutsWindow_searchHandler(GObject *, gpointer);
 
 	static gulong ShortcutsWindow_signal_connect_search(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "search", ShortcutsWindow_searchHandler, data);
+		return g_signal_connect(instance, "search", G_CALLBACK(ShortcutsWindow_searchHandler), data);
 	}
 
 */

@@ -15,37 +15,37 @@ import (
 // #include <stdlib.h>
 /*
 
-	void Device_toolChangedHandler();
+	void Device_toolChangedHandler(GObject *, GdkDeviceTool *, gpointer);
 
 	static gulong Device_signal_connect_tool_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "tool-changed", Device_toolChangedHandler, data);
+		return g_signal_connect(instance, "tool-changed", G_CALLBACK(Device_toolChangedHandler), data);
 	}
 
 */
 /*
 
-	void Display_monitorAddedHandler();
+	void Display_monitorAddedHandler(GObject *, GdkMonitor *, gpointer);
 
 	static gulong Display_signal_connect_monitor_added(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "monitor-added", Display_monitorAddedHandler, data);
+		return g_signal_connect(instance, "monitor-added", G_CALLBACK(Display_monitorAddedHandler), data);
 	}
 
 */
 /*
 
-	void Display_monitorRemovedHandler();
+	void Display_monitorRemovedHandler(GObject *, GdkMonitor *, gpointer);
 
 	static gulong Display_signal_connect_monitor_removed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "monitor-removed", Display_monitorRemovedHandler, data);
+		return g_signal_connect(instance, "monitor-removed", G_CALLBACK(Display_monitorRemovedHandler), data);
 	}
 
 */
 /*
 
-	void Monitor_invalidateHandler();
+	void Monitor_invalidateHandler(GObject *, gpointer);
 
 	static gulong Monitor_signal_connect_invalidate(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "invalidate", Monitor_invalidateHandler, data);
+		return g_signal_connect(instance, "invalidate", G_CALLBACK(Monitor_invalidateHandler), data);
 	}
 
 */

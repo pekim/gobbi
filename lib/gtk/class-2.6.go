@@ -20,10 +20,10 @@ import (
 // #include <stdlib.h>
 /*
 
-	void Clipboard_ownerChangeHandler();
+	void Clipboard_ownerChangeHandler(GObject *, GdkEventOwnerChange *, gpointer);
 
 	static gulong Clipboard_signal_connect_owner_change(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "owner-change", Clipboard_ownerChangeHandler, data);
+		return g_signal_connect(instance, "owner-change", G_CALLBACK(Clipboard_ownerChangeHandler), data);
 	}
 
 */

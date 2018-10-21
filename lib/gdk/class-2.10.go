@@ -15,10 +15,10 @@ import (
 // #include <stdlib.h>
 /*
 
-	void Screen_compositedChangedHandler();
+	void Screen_compositedChangedHandler(GObject *, gpointer);
 
 	static gulong Screen_signal_connect_composited_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "composited-changed", Screen_compositedChangedHandler, data);
+		return g_signal_connect(instance, "composited-changed", G_CALLBACK(Screen_compositedChangedHandler), data);
 	}
 
 */

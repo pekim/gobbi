@@ -107,16 +107,47 @@ func (s *Signal) generate(g *jen.Group, version *Version, parentVersion string) 
 }
 
 func (s *Signal) generateCgoPreamble() {
+	handlerReturn := s.ReturnValue.Type.CType
+	if handlerReturn == "" {
+		qname := QNameNew(s.Namespace, s.ReturnValue.Type.Name)
+		record, found := qname.ns.recordOrClassRecordForName(qname.name)
+		if !found {
+			panic(fmt.Sprintf("Not found class %s, for param %s, for signal %s, for class %s",
+				qname.name, s.ReturnValue.Type.Name, s.Name, s.record.Name))
+		}
+		handlerReturn = record.CType + " *"
+	}
+
+	params := []string{"GObject *"}
+	for _, param := range s.Parameters {
+		cType := param.Type.CType
+		if cType == "" {
+			qname := QNameNew(s.Namespace, param.Type.Name)
+			record, found := qname.ns.recordOrClassRecordForName(qname.name)
+			if !found {
+				panic(fmt.Sprintf("Not found class %s, for param %s, for signal %s, for class %s",
+					qname.name, param.Name, s.Name, s.record.Name))
+			}
+			cType = record.CType + " *"
+		}
+
+		params = append(params, cType)
+	}
+	params = append(params, "gpointer")
+	handlerParams := strings.Join(params, ", ")
+
 	s.Namespace.jenFile.CgoPreamble(
 		fmt.Sprintf(`
-	void %s();
+	%s %s(%s);
 
 	static gulong %s(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "%s", %s, data);
+		return g_signal_connect(instance, "%s", G_CALLBACK(%s), data);
 	}
 
 `,
+			handlerReturn,
 			s.goNameHandler,
+			handlerParams,
 			s.cNameSignalConnect,
 			s.Name,
 			s.goNameHandler))

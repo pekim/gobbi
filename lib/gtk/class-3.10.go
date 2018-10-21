@@ -20,37 +20,37 @@ import (
 // #include <stdlib.h>
 /*
 
-	void ListBox_rowActivatedHandler();
+	void ListBox_rowActivatedHandler(GObject *, GtkListBoxRow *, gpointer);
 
 	static gulong ListBox_signal_connect_row_activated(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "row-activated", ListBox_rowActivatedHandler, data);
+		return g_signal_connect(instance, "row-activated", G_CALLBACK(ListBox_rowActivatedHandler), data);
 	}
 
 */
 /*
 
-	void ListBox_rowSelectedHandler();
+	void ListBox_rowSelectedHandler(GObject *, GtkListBoxRow *, gpointer);
 
 	static gulong ListBox_signal_connect_row_selected(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "row-selected", ListBox_rowSelectedHandler, data);
+		return g_signal_connect(instance, "row-selected", G_CALLBACK(ListBox_rowSelectedHandler), data);
 	}
 
 */
 /*
 
-	void ListBoxRow_activateHandler();
+	void ListBoxRow_activateHandler(GObject *, gpointer);
 
 	static gulong ListBoxRow_signal_connect_activate(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "activate", ListBoxRow_activateHandler, data);
+		return g_signal_connect(instance, "activate", G_CALLBACK(ListBoxRow_activateHandler), data);
 	}
 
 */
 /*
 
-	void SearchEntry_searchChangedHandler();
+	void SearchEntry_searchChangedHandler(GObject *, gpointer);
 
 	static gulong SearchEntry_signal_connect_search_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "search-changed", SearchEntry_searchChangedHandler, data);
+		return g_signal_connect(instance, "search-changed", G_CALLBACK(SearchEntry_searchChangedHandler), data);
 	}
 
 */

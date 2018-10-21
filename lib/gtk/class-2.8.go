@@ -18,10 +18,10 @@ import (
 // #include <stdlib.h>
 /*
 
-	void Widget_grabBrokenEventHandler();
+	gboolean Widget_grabBrokenEventHandler(GObject *, GdkEventGrabBroken *, gpointer);
 
 	static gulong Widget_signal_connect_grab_broken_event(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "grab-broken-event", Widget_grabBrokenEventHandler, data);
+		return g_signal_connect(instance, "grab-broken-event", G_CALLBACK(Widget_grabBrokenEventHandler), data);
 	}
 
 */

@@ -25,10 +25,10 @@ import (
 // #include <stdlib.h>
 /*
 
-	void ThreadedSocketService_runHandler();
+	gboolean ThreadedSocketService_runHandler(GObject *, GSocketConnection *, GObject *, gpointer);
 
 	static gulong ThreadedSocketService_signal_connect_run(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "run", ThreadedSocketService_runHandler, data);
+		return g_signal_connect(instance, "run", G_CALLBACK(ThreadedSocketService_runHandler), data);
 	}
 
 */

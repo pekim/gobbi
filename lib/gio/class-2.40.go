@@ -25,10 +25,10 @@ import (
 // #include <stdlib.h>
 /*
 
-	void AppInfoMonitor_changedHandler();
+	void AppInfoMonitor_changedHandler(GObject *, gpointer);
 
 	static gulong AppInfoMonitor_signal_connect_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "changed", AppInfoMonitor_changedHandler, data);
+		return g_signal_connect(instance, "changed", G_CALLBACK(AppInfoMonitor_changedHandler), data);
 	}
 
 */

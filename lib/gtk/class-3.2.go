@@ -16,19 +16,19 @@ import (
 // #include <stdlib.h>
 /*
 
-	void Application_windowAddedHandler();
+	void Application_windowAddedHandler(GObject *, GtkWindow *, gpointer);
 
 	static gulong Application_signal_connect_window_added(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "window-added", Application_windowAddedHandler, data);
+		return g_signal_connect(instance, "window-added", G_CALLBACK(Application_windowAddedHandler), data);
 	}
 
 */
 /*
 
-	void Application_windowRemovedHandler();
+	void Application_windowRemovedHandler(GObject *, GtkWindow *, gpointer);
 
 	static gulong Application_signal_connect_window_removed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "window-removed", Application_windowRemovedHandler, data);
+		return g_signal_connect(instance, "window-removed", G_CALLBACK(Application_windowRemovedHandler), data);
 	}
 
 */

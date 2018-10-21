@@ -19,46 +19,46 @@ import (
 // #include <stdlib.h>
 /*
 
-	void ComboBox_popdownHandler();
+	gboolean ComboBox_popdownHandler(GObject *, gpointer);
 
 	static gulong ComboBox_signal_connect_popdown(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "popdown", ComboBox_popdownHandler, data);
+		return g_signal_connect(instance, "popdown", G_CALLBACK(ComboBox_popdownHandler), data);
 	}
 
 */
 /*
 
-	void ComboBox_popupHandler();
+	void ComboBox_popupHandler(GObject *, gpointer);
 
 	static gulong ComboBox_signal_connect_popup(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "popup", ComboBox_popupHandler, data);
+		return g_signal_connect(instance, "popup", G_CALLBACK(ComboBox_popupHandler), data);
 	}
 
 */
 /*
 
-	void FileChooserButton_fileSetHandler();
+	void FileChooserButton_fileSetHandler(GObject *, gpointer);
 
 	static gulong FileChooserButton_signal_connect_file_set(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "file-set", FileChooserButton_fileSetHandler, data);
+		return g_signal_connect(instance, "file-set", G_CALLBACK(FileChooserButton_fileSetHandler), data);
 	}
 
 */
 /*
 
-	void ScaleButton_popdownHandler();
+	void ScaleButton_popdownHandler(GObject *, gpointer);
 
 	static gulong ScaleButton_signal_connect_popdown(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "popdown", ScaleButton_popdownHandler, data);
+		return g_signal_connect(instance, "popdown", G_CALLBACK(ScaleButton_popdownHandler), data);
 	}
 
 */
 /*
 
-	void ScaleButton_popupHandler();
+	void ScaleButton_popupHandler(GObject *, gpointer);
 
 	static gulong ScaleButton_signal_connect_popup(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "popup", ScaleButton_popupHandler, data);
+		return g_signal_connect(instance, "popup", G_CALLBACK(ScaleButton_popupHandler), data);
 	}
 
 */

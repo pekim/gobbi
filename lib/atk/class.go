@@ -13,28 +13,28 @@ import (
 // #include <stdlib.h>
 /*
 
-	void Hyperlink_linkActivatedHandler();
+	void Hyperlink_linkActivatedHandler(GObject *, gpointer);
 
 	static gulong Hyperlink_signal_connect_link_activated(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "link-activated", Hyperlink_linkActivatedHandler, data);
+		return g_signal_connect(instance, "link-activated", G_CALLBACK(Hyperlink_linkActivatedHandler), data);
 	}
 
 */
 /*
 
-	void Object_focusEventHandler();
+	void Object_focusEventHandler(GObject *, gboolean, gpointer);
 
 	static gulong Object_signal_connect_focus_event(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "focus-event", Object_focusEventHandler, data);
+		return g_signal_connect(instance, "focus-event", G_CALLBACK(Object_focusEventHandler), data);
 	}
 
 */
 /*
 
-	void Object_visibleDataChangedHandler();
+	void Object_visibleDataChangedHandler(GObject *, gpointer);
 
 	static gulong Object_signal_connect_visible_data_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "visible-data-changed", Object_visibleDataChangedHandler, data);
+		return g_signal_connect(instance, "visible-data-changed", G_CALLBACK(Object_visibleDataChangedHandler), data);
 	}
 
 */

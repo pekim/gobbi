@@ -76,7 +76,6 @@ func (ns *Namespace) cgoPreambleHeaders(file *jen.File) {
 	ns.repo.CIncludes.generate(file)
 
 	file.CgoPreamble("#include <stdlib.h>")
-	// file.CgoPreamble("#include \"callback.h\"")
 }
 
 func (ns *Namespace) generateGeneratables(typeName string, generatables Generatables) {

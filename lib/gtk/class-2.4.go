@@ -19,172 +19,172 @@ import (
 // #include <stdlib.h>
 /*
 
-	void Action_activateHandler();
+	void Action_activateHandler(GObject *, gpointer);
 
 	static gulong Action_signal_connect_activate(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "activate", Action_activateHandler, data);
+		return g_signal_connect(instance, "activate", G_CALLBACK(Action_activateHandler), data);
 	}
 
 */
 /*
 
-	void ActionGroup_connectProxyHandler();
+	void ActionGroup_connectProxyHandler(GObject *, GtkAction *, GtkWidget *, gpointer);
 
 	static gulong ActionGroup_signal_connect_connect_proxy(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "connect-proxy", ActionGroup_connectProxyHandler, data);
+		return g_signal_connect(instance, "connect-proxy", G_CALLBACK(ActionGroup_connectProxyHandler), data);
 	}
 
 */
 /*
 
-	void ActionGroup_disconnectProxyHandler();
+	void ActionGroup_disconnectProxyHandler(GObject *, GtkAction *, GtkWidget *, gpointer);
 
 	static gulong ActionGroup_signal_connect_disconnect_proxy(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "disconnect-proxy", ActionGroup_disconnectProxyHandler, data);
+		return g_signal_connect(instance, "disconnect-proxy", G_CALLBACK(ActionGroup_disconnectProxyHandler), data);
 	}
 
 */
 /*
 
-	void ActionGroup_postActivateHandler();
+	void ActionGroup_postActivateHandler(GObject *, GtkAction *, gpointer);
 
 	static gulong ActionGroup_signal_connect_post_activate(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "post-activate", ActionGroup_postActivateHandler, data);
+		return g_signal_connect(instance, "post-activate", G_CALLBACK(ActionGroup_postActivateHandler), data);
 	}
 
 */
 /*
 
-	void ActionGroup_preActivateHandler();
+	void ActionGroup_preActivateHandler(GObject *, GtkAction *, gpointer);
 
 	static gulong ActionGroup_signal_connect_pre_activate(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "pre-activate", ActionGroup_preActivateHandler, data);
+		return g_signal_connect(instance, "pre-activate", G_CALLBACK(ActionGroup_preActivateHandler), data);
 	}
 
 */
 /*
 
-	void CellRenderer_editingCanceledHandler();
+	void CellRenderer_editingCanceledHandler(GObject *, gpointer);
 
 	static gulong CellRenderer_signal_connect_editing_canceled(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "editing-canceled", CellRenderer_editingCanceledHandler, data);
+		return g_signal_connect(instance, "editing-canceled", G_CALLBACK(CellRenderer_editingCanceledHandler), data);
 	}
 
 */
 /*
 
-	void ColorButton_colorSetHandler();
+	void ColorButton_colorSetHandler(GObject *, gpointer);
 
 	static gulong ColorButton_signal_connect_color_set(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "color-set", ColorButton_colorSetHandler, data);
+		return g_signal_connect(instance, "color-set", G_CALLBACK(ColorButton_colorSetHandler), data);
 	}
 
 */
 /*
 
-	void ComboBox_changedHandler();
+	void ComboBox_changedHandler(GObject *, gpointer);
 
 	static gulong ComboBox_signal_connect_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "changed", ComboBox_changedHandler, data);
+		return g_signal_connect(instance, "changed", G_CALLBACK(ComboBox_changedHandler), data);
 	}
 
 */
 /*
 
-	void FontButton_fontSetHandler();
+	void FontButton_fontSetHandler(GObject *, gpointer);
 
 	static gulong FontButton_signal_connect_font_set(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "font-set", FontButton_fontSetHandler, data);
+		return g_signal_connect(instance, "font-set", G_CALLBACK(FontButton_fontSetHandler), data);
 	}
 
 */
 /*
 
-	void RadioAction_changedHandler();
+	void RadioAction_changedHandler(GObject *, GtkRadioAction *, gpointer);
 
 	static gulong RadioAction_signal_connect_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "changed", RadioAction_changedHandler, data);
+		return g_signal_connect(instance, "changed", G_CALLBACK(RadioAction_changedHandler), data);
 	}
 
 */
 /*
 
-	void RadioButton_groupChangedHandler();
+	void RadioButton_groupChangedHandler(GObject *, gpointer);
 
 	static gulong RadioButton_signal_connect_group_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "group-changed", RadioButton_groupChangedHandler, data);
+		return g_signal_connect(instance, "group-changed", G_CALLBACK(RadioButton_groupChangedHandler), data);
 	}
 
 */
 /*
 
-	void Style_realizeHandler();
+	void Style_realizeHandler(GObject *, gpointer);
 
 	static gulong Style_signal_connect_realize(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "realize", Style_realizeHandler, data);
+		return g_signal_connect(instance, "realize", G_CALLBACK(Style_realizeHandler), data);
 	}
 
 */
 /*
 
-	void Style_unrealizeHandler();
+	void Style_unrealizeHandler(GObject *, gpointer);
 
 	static gulong Style_signal_connect_unrealize(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "unrealize", Style_unrealizeHandler, data);
+		return g_signal_connect(instance, "unrealize", G_CALLBACK(Style_unrealizeHandler), data);
 	}
 
 */
 /*
 
-	void UIManager_actionsChangedHandler();
+	void UIManager_actionsChangedHandler(GObject *, gpointer);
 
 	static gulong UIManager_signal_connect_actions_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "actions-changed", UIManager_actionsChangedHandler, data);
+		return g_signal_connect(instance, "actions-changed", G_CALLBACK(UIManager_actionsChangedHandler), data);
 	}
 
 */
 /*
 
-	void UIManager_addWidgetHandler();
+	void UIManager_addWidgetHandler(GObject *, GtkWidget *, gpointer);
 
 	static gulong UIManager_signal_connect_add_widget(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "add-widget", UIManager_addWidgetHandler, data);
+		return g_signal_connect(instance, "add-widget", G_CALLBACK(UIManager_addWidgetHandler), data);
 	}
 
 */
 /*
 
-	void UIManager_connectProxyHandler();
+	void UIManager_connectProxyHandler(GObject *, GtkAction *, GtkWidget *, gpointer);
 
 	static gulong UIManager_signal_connect_connect_proxy(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "connect-proxy", UIManager_connectProxyHandler, data);
+		return g_signal_connect(instance, "connect-proxy", G_CALLBACK(UIManager_connectProxyHandler), data);
 	}
 
 */
 /*
 
-	void UIManager_disconnectProxyHandler();
+	void UIManager_disconnectProxyHandler(GObject *, GtkAction *, GtkWidget *, gpointer);
 
 	static gulong UIManager_signal_connect_disconnect_proxy(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "disconnect-proxy", UIManager_disconnectProxyHandler, data);
+		return g_signal_connect(instance, "disconnect-proxy", G_CALLBACK(UIManager_disconnectProxyHandler), data);
 	}
 
 */
 /*
 
-	void UIManager_postActivateHandler();
+	void UIManager_postActivateHandler(GObject *, GtkAction *, gpointer);
 
 	static gulong UIManager_signal_connect_post_activate(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "post-activate", UIManager_postActivateHandler, data);
+		return g_signal_connect(instance, "post-activate", G_CALLBACK(UIManager_postActivateHandler), data);
 	}
 
 */
 /*
 
-	void UIManager_preActivateHandler();
+	void UIManager_preActivateHandler(GObject *, GtkAction *, gpointer);
 
 	static gulong UIManager_signal_connect_pre_activate(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "pre-activate", UIManager_preActivateHandler, data);
+		return g_signal_connect(instance, "pre-activate", G_CALLBACK(UIManager_preActivateHandler), data);
 	}
 
 */

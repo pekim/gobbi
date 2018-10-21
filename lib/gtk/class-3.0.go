@@ -22,28 +22,28 @@ import (
 // #include <stdlib.h>
 /*
 
-	void StyleContext_changedHandler();
+	void StyleContext_changedHandler(GObject *, gpointer);
 
 	static gulong StyleContext_signal_connect_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "changed", StyleContext_changedHandler, data);
+		return g_signal_connect(instance, "changed", G_CALLBACK(StyleContext_changedHandler), data);
 	}
 
 */
 /*
 
-	void Widget_drawHandler();
+	gboolean Widget_drawHandler(GObject *, cairo_t *, gpointer);
 
 	static gulong Widget_signal_connect_draw(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "draw", Widget_drawHandler, data);
+		return g_signal_connect(instance, "draw", G_CALLBACK(Widget_drawHandler), data);
 	}
 
 */
 /*
 
-	void Widget_styleUpdatedHandler();
+	void Widget_styleUpdatedHandler(GObject *, gpointer);
 
 	static gulong Widget_signal_connect_style_updated(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "style-updated", Widget_styleUpdatedHandler, data);
+		return g_signal_connect(instance, "style-updated", G_CALLBACK(Widget_styleUpdatedHandler), data);
 	}
 
 */

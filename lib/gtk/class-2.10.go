@@ -21,109 +21,109 @@ import (
 // #include <stdlib.h>
 /*
 
-	void Assistant_applyHandler();
+	void Assistant_applyHandler(GObject *, gpointer);
 
 	static gulong Assistant_signal_connect_apply(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "apply", Assistant_applyHandler, data);
+		return g_signal_connect(instance, "apply", G_CALLBACK(Assistant_applyHandler), data);
 	}
 
 */
 /*
 
-	void Assistant_cancelHandler();
+	void Assistant_cancelHandler(GObject *, gpointer);
 
 	static gulong Assistant_signal_connect_cancel(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "cancel", Assistant_cancelHandler, data);
+		return g_signal_connect(instance, "cancel", G_CALLBACK(Assistant_cancelHandler), data);
 	}
 
 */
 /*
 
-	void Assistant_closeHandler();
+	void Assistant_closeHandler(GObject *, gpointer);
 
 	static gulong Assistant_signal_connect_close(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "close", Assistant_closeHandler, data);
+		return g_signal_connect(instance, "close", G_CALLBACK(Assistant_closeHandler), data);
 	}
 
 */
 /*
 
-	void Assistant_prepareHandler();
+	void Assistant_prepareHandler(GObject *, GtkWidget *, gpointer);
 
 	static gulong Assistant_signal_connect_prepare(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "prepare", Assistant_prepareHandler, data);
+		return g_signal_connect(instance, "prepare", G_CALLBACK(Assistant_prepareHandler), data);
 	}
 
 */
 /*
 
-	void PrintOperation_beginPrintHandler();
+	void PrintOperation_beginPrintHandler(GObject *, GtkPrintContext *, gpointer);
 
 	static gulong PrintOperation_signal_connect_begin_print(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "begin-print", PrintOperation_beginPrintHandler, data);
+		return g_signal_connect(instance, "begin-print", G_CALLBACK(PrintOperation_beginPrintHandler), data);
 	}
 
 */
 /*
 
-	void PrintOperation_createCustomWidgetHandler();
+	GObject * PrintOperation_createCustomWidgetHandler(GObject *, gpointer);
 
 	static gulong PrintOperation_signal_connect_create_custom_widget(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "create-custom-widget", PrintOperation_createCustomWidgetHandler, data);
+		return g_signal_connect(instance, "create-custom-widget", G_CALLBACK(PrintOperation_createCustomWidgetHandler), data);
 	}
 
 */
 /*
 
-	void PrintOperation_customWidgetApplyHandler();
+	void PrintOperation_customWidgetApplyHandler(GObject *, GtkWidget *, gpointer);
 
 	static gulong PrintOperation_signal_connect_custom_widget_apply(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "custom-widget-apply", PrintOperation_customWidgetApplyHandler, data);
+		return g_signal_connect(instance, "custom-widget-apply", G_CALLBACK(PrintOperation_customWidgetApplyHandler), data);
 	}
 
 */
 /*
 
-	void PrintOperation_endPrintHandler();
+	void PrintOperation_endPrintHandler(GObject *, GtkPrintContext *, gpointer);
 
 	static gulong PrintOperation_signal_connect_end_print(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "end-print", PrintOperation_endPrintHandler, data);
+		return g_signal_connect(instance, "end-print", G_CALLBACK(PrintOperation_endPrintHandler), data);
 	}
 
 */
 /*
 
-	void PrintOperation_paginateHandler();
+	gboolean PrintOperation_paginateHandler(GObject *, GtkPrintContext *, gpointer);
 
 	static gulong PrintOperation_signal_connect_paginate(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "paginate", PrintOperation_paginateHandler, data);
+		return g_signal_connect(instance, "paginate", G_CALLBACK(PrintOperation_paginateHandler), data);
 	}
 
 */
 /*
 
-	void PrintOperation_statusChangedHandler();
+	void PrintOperation_statusChangedHandler(GObject *, gpointer);
 
 	static gulong PrintOperation_signal_connect_status_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "status-changed", PrintOperation_statusChangedHandler, data);
+		return g_signal_connect(instance, "status-changed", G_CALLBACK(PrintOperation_statusChangedHandler), data);
 	}
 
 */
 /*
 
-	void SpinButton_wrappedHandler();
+	void SpinButton_wrappedHandler(GObject *, gpointer);
 
 	static gulong SpinButton_signal_connect_wrapped(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "wrapped", SpinButton_wrappedHandler, data);
+		return g_signal_connect(instance, "wrapped", G_CALLBACK(SpinButton_wrappedHandler), data);
 	}
 
 */
 /*
 
-	void StatusIcon_activateHandler();
+	void StatusIcon_activateHandler(GObject *, gpointer);
 
 	static gulong StatusIcon_signal_connect_activate(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "activate", StatusIcon_activateHandler, data);
+		return g_signal_connect(instance, "activate", G_CALLBACK(StatusIcon_activateHandler), data);
 	}
 
 */
@@ -1212,7 +1212,7 @@ func PrintOperation_createCustomWidgetHandler(_ *C.GObject, data C.gpointer) *C.
 	callback := signalPrintOperationCreateCustomWidgetMap[index].callback
 	retGo := callback()
 	retC :=
-		(retGo).toC()
+		(*C.GObject)(retGo.ToC())
 	return retC
 }
 

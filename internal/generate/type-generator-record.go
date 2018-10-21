@@ -184,5 +184,7 @@ func (t *TypeGeneratorRecord) generateCToGo(pkg string, cVarReference *jen.State
 }
 
 func (t *TypeGeneratorRecord) generateGoToC(g *jen.Group, goVarReference *jen.Statement) {
-	g.Parens(goVarReference).Dot("toC").Call()
+	g.
+		Parens(jen.Op("*").Qual("C", t.record.CType)).
+		Parens(goVarReference.Dot("ToC").Call())
 }

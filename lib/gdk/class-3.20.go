@@ -14,28 +14,28 @@ import (
 // #include <stdlib.h>
 /*
 
-	void Display_seatAddedHandler();
+	void Display_seatAddedHandler(GObject *, GdkSeat *, gpointer);
 
 	static gulong Display_signal_connect_seat_added(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "seat-added", Display_seatAddedHandler, data);
+		return g_signal_connect(instance, "seat-added", G_CALLBACK(Display_seatAddedHandler), data);
 	}
 
 */
 /*
 
-	void Display_seatRemovedHandler();
+	void Display_seatRemovedHandler(GObject *, GdkSeat *, gpointer);
 
 	static gulong Display_signal_connect_seat_removed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "seat-removed", Display_seatRemovedHandler, data);
+		return g_signal_connect(instance, "seat-removed", G_CALLBACK(Display_seatRemovedHandler), data);
 	}
 
 */
 /*
 
-	void DragContext_dndFinishedHandler();
+	void DragContext_dndFinishedHandler(GObject *, gpointer);
 
 	static gulong DragContext_signal_connect_dnd_finished(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "dnd-finished", DragContext_dndFinishedHandler, data);
+		return g_signal_connect(instance, "dnd-finished", G_CALLBACK(DragContext_dndFinishedHandler), data);
 	}
 
 */

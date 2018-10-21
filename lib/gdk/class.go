@@ -17,109 +17,109 @@ import (
 // #include <stdlib.h>
 /*
 
-	void Device_changedHandler();
+	void Device_changedHandler(GObject *, gpointer);
 
 	static gulong Device_signal_connect_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "changed", Device_changedHandler, data);
+		return g_signal_connect(instance, "changed", G_CALLBACK(Device_changedHandler), data);
 	}
 
 */
 /*
 
-	void DeviceManager_deviceAddedHandler();
+	void DeviceManager_deviceAddedHandler(GObject *, GdkDevice *, gpointer);
 
 	static gulong DeviceManager_signal_connect_device_added(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "device-added", DeviceManager_deviceAddedHandler, data);
+		return g_signal_connect(instance, "device-added", G_CALLBACK(DeviceManager_deviceAddedHandler), data);
 	}
 
 */
 /*
 
-	void DeviceManager_deviceChangedHandler();
+	void DeviceManager_deviceChangedHandler(GObject *, GdkDevice *, gpointer);
 
 	static gulong DeviceManager_signal_connect_device_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "device-changed", DeviceManager_deviceChangedHandler, data);
+		return g_signal_connect(instance, "device-changed", G_CALLBACK(DeviceManager_deviceChangedHandler), data);
 	}
 
 */
 /*
 
-	void DeviceManager_deviceRemovedHandler();
+	void DeviceManager_deviceRemovedHandler(GObject *, GdkDevice *, gpointer);
 
 	static gulong DeviceManager_signal_connect_device_removed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "device-removed", DeviceManager_deviceRemovedHandler, data);
+		return g_signal_connect(instance, "device-removed", G_CALLBACK(DeviceManager_deviceRemovedHandler), data);
 	}
 
 */
 /*
 
-	void Display_openedHandler();
+	void Display_openedHandler(GObject *, gpointer);
 
 	static gulong Display_signal_connect_opened(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "opened", Display_openedHandler, data);
+		return g_signal_connect(instance, "opened", G_CALLBACK(Display_openedHandler), data);
 	}
 
 */
 /*
 
-	void FrameClock_afterPaintHandler();
+	void FrameClock_afterPaintHandler(GObject *, gpointer);
 
 	static gulong FrameClock_signal_connect_after_paint(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "after-paint", FrameClock_afterPaintHandler, data);
+		return g_signal_connect(instance, "after-paint", G_CALLBACK(FrameClock_afterPaintHandler), data);
 	}
 
 */
 /*
 
-	void FrameClock_beforePaintHandler();
+	void FrameClock_beforePaintHandler(GObject *, gpointer);
 
 	static gulong FrameClock_signal_connect_before_paint(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "before-paint", FrameClock_beforePaintHandler, data);
+		return g_signal_connect(instance, "before-paint", G_CALLBACK(FrameClock_beforePaintHandler), data);
 	}
 
 */
 /*
 
-	void FrameClock_flushEventsHandler();
+	void FrameClock_flushEventsHandler(GObject *, gpointer);
 
 	static gulong FrameClock_signal_connect_flush_events(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "flush-events", FrameClock_flushEventsHandler, data);
+		return g_signal_connect(instance, "flush-events", G_CALLBACK(FrameClock_flushEventsHandler), data);
 	}
 
 */
 /*
 
-	void FrameClock_layoutHandler();
+	void FrameClock_layoutHandler(GObject *, gpointer);
 
 	static gulong FrameClock_signal_connect_layout(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "layout", FrameClock_layoutHandler, data);
+		return g_signal_connect(instance, "layout", G_CALLBACK(FrameClock_layoutHandler), data);
 	}
 
 */
 /*
 
-	void FrameClock_paintHandler();
+	void FrameClock_paintHandler(GObject *, gpointer);
 
 	static gulong FrameClock_signal_connect_paint(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "paint", FrameClock_paintHandler, data);
+		return g_signal_connect(instance, "paint", G_CALLBACK(FrameClock_paintHandler), data);
 	}
 
 */
 /*
 
-	void FrameClock_resumeEventsHandler();
+	void FrameClock_resumeEventsHandler(GObject *, gpointer);
 
 	static gulong FrameClock_signal_connect_resume_events(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "resume-events", FrameClock_resumeEventsHandler, data);
+		return g_signal_connect(instance, "resume-events", G_CALLBACK(FrameClock_resumeEventsHandler), data);
 	}
 
 */
 /*
 
-	void FrameClock_updateHandler();
+	void FrameClock_updateHandler(GObject *, gpointer);
 
 	static gulong FrameClock_signal_connect_update(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "update", FrameClock_updateHandler, data);
+		return g_signal_connect(instance, "update", G_CALLBACK(FrameClock_updateHandler), data);
 	}
 
 */

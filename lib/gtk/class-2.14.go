@@ -19,28 +19,28 @@ import (
 // #include <stdlib.h>
 /*
 
-	void StatusIcon_buttonPressEventHandler();
+	gboolean StatusIcon_buttonPressEventHandler(GObject *, GdkEventButton *, gpointer);
 
 	static gulong StatusIcon_signal_connect_button_press_event(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "button-press-event", StatusIcon_buttonPressEventHandler, data);
+		return g_signal_connect(instance, "button-press-event", G_CALLBACK(StatusIcon_buttonPressEventHandler), data);
 	}
 
 */
 /*
 
-	void StatusIcon_buttonReleaseEventHandler();
+	gboolean StatusIcon_buttonReleaseEventHandler(GObject *, GdkEventButton *, gpointer);
 
 	static gulong StatusIcon_signal_connect_button_release_event(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "button-release-event", StatusIcon_buttonReleaseEventHandler, data);
+		return g_signal_connect(instance, "button-release-event", G_CALLBACK(StatusIcon_buttonReleaseEventHandler), data);
 	}
 
 */
 /*
 
-	void Widget_damageEventHandler();
+	gboolean Widget_damageEventHandler(GObject *, GdkEventExpose *, gpointer);
 
 	static gulong Widget_signal_connect_damage_event(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "damage-event", Widget_damageEventHandler, data);
+		return g_signal_connect(instance, "damage-event", G_CALLBACK(Widget_damageEventHandler), data);
 	}
 
 */

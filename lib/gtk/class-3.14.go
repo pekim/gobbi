@@ -18,109 +18,109 @@ import (
 // #include <stdlib.h>
 /*
 
-	void EntryCompletion_noMatchesHandler();
+	void EntryCompletion_noMatchesHandler(GObject *, gpointer);
 
 	static gulong EntryCompletion_signal_connect_no_matches(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "no-matches", EntryCompletion_noMatchesHandler, data);
+		return g_signal_connect(instance, "no-matches", G_CALLBACK(EntryCompletion_noMatchesHandler), data);
 	}
 
 */
 /*
 
-	void Gesture_beginHandler();
+	void Gesture_beginHandler(GObject *, GdkEventSequence *, gpointer);
 
 	static gulong Gesture_signal_connect_begin(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "begin", Gesture_beginHandler, data);
+		return g_signal_connect(instance, "begin", G_CALLBACK(Gesture_beginHandler), data);
 	}
 
 */
 /*
 
-	void Gesture_cancelHandler();
+	void Gesture_cancelHandler(GObject *, GdkEventSequence *, gpointer);
 
 	static gulong Gesture_signal_connect_cancel(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "cancel", Gesture_cancelHandler, data);
+		return g_signal_connect(instance, "cancel", G_CALLBACK(Gesture_cancelHandler), data);
 	}
 
 */
 /*
 
-	void Gesture_endHandler();
+	void Gesture_endHandler(GObject *, GdkEventSequence *, gpointer);
 
 	static gulong Gesture_signal_connect_end(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "end", Gesture_endHandler, data);
+		return g_signal_connect(instance, "end", G_CALLBACK(Gesture_endHandler), data);
 	}
 
 */
 /*
 
-	void Gesture_updateHandler();
+	void Gesture_updateHandler(GObject *, GdkEventSequence *, gpointer);
 
 	static gulong Gesture_signal_connect_update(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "update", Gesture_updateHandler, data);
+		return g_signal_connect(instance, "update", G_CALLBACK(Gesture_updateHandler), data);
 	}
 
 */
 /*
 
-	void GestureLongPress_cancelledHandler();
+	void GestureLongPress_cancelledHandler(GObject *, gpointer);
 
 	static gulong GestureLongPress_signal_connect_cancelled(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "cancelled", GestureLongPress_cancelledHandler, data);
+		return g_signal_connect(instance, "cancelled", G_CALLBACK(GestureLongPress_cancelledHandler), data);
 	}
 
 */
 /*
 
-	void GestureMultiPress_stoppedHandler();
+	void GestureMultiPress_stoppedHandler(GObject *, gpointer);
 
 	static gulong GestureMultiPress_signal_connect_stopped(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "stopped", GestureMultiPress_stoppedHandler, data);
+		return g_signal_connect(instance, "stopped", G_CALLBACK(GestureMultiPress_stoppedHandler), data);
 	}
 
 */
 /*
 
-	void ListBox_selectAllHandler();
+	void ListBox_selectAllHandler(GObject *, gpointer);
 
 	static gulong ListBox_signal_connect_select_all(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "select-all", ListBox_selectAllHandler, data);
+		return g_signal_connect(instance, "select-all", G_CALLBACK(ListBox_selectAllHandler), data);
 	}
 
 */
 /*
 
-	void ListBox_selectedRowsChangedHandler();
+	void ListBox_selectedRowsChangedHandler(GObject *, gpointer);
 
 	static gulong ListBox_signal_connect_selected_rows_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "selected-rows-changed", ListBox_selectedRowsChangedHandler, data);
+		return g_signal_connect(instance, "selected-rows-changed", G_CALLBACK(ListBox_selectedRowsChangedHandler), data);
 	}
 
 */
 /*
 
-	void ListBox_unselectAllHandler();
+	void ListBox_unselectAllHandler(GObject *, gpointer);
 
 	static gulong ListBox_signal_connect_unselect_all(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "unselect-all", ListBox_unselectAllHandler, data);
+		return g_signal_connect(instance, "unselect-all", G_CALLBACK(ListBox_unselectAllHandler), data);
 	}
 
 */
 /*
 
-	void PlacesSidebar_showEnterLocationHandler();
+	void PlacesSidebar_showEnterLocationHandler(GObject *, gpointer);
 
 	static gulong PlacesSidebar_signal_connect_show_enter_location(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "show-enter-location", PlacesSidebar_showEnterLocationHandler, data);
+		return g_signal_connect(instance, "show-enter-location", G_CALLBACK(PlacesSidebar_showEnterLocationHandler), data);
 	}
 
 */
 /*
 
-	void Switch_stateSetHandler();
+	gboolean Switch_stateSetHandler(GObject *, gboolean, gpointer);
 
 	static gulong Switch_signal_connect_state_set(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "state-set", Switch_stateSetHandler, data);
+		return g_signal_connect(instance, "state-set", G_CALLBACK(Switch_stateSetHandler), data);
 	}
 
 */

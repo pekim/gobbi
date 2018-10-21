@@ -25,28 +25,28 @@ import (
 // #include <stdlib.h>
 /*
 
-	void Application_activateHandler();
+	void Application_activateHandler(GObject *, gpointer);
 
 	static gulong Application_signal_connect_activate(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "activate", Application_activateHandler, data);
+		return g_signal_connect(instance, "activate", G_CALLBACK(Application_activateHandler), data);
 	}
 
 */
 /*
 
-	void Application_shutdownHandler();
+	void Application_shutdownHandler(GObject *, gpointer);
 
 	static gulong Application_signal_connect_shutdown(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "shutdown", Application_shutdownHandler, data);
+		return g_signal_connect(instance, "shutdown", G_CALLBACK(Application_shutdownHandler), data);
 	}
 
 */
 /*
 
-	void Application_startupHandler();
+	void Application_startupHandler(GObject *, gpointer);
 
 	static gulong Application_signal_connect_startup(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "startup", Application_startupHandler, data);
+		return g_signal_connect(instance, "startup", G_CALLBACK(Application_startupHandler), data);
 	}
 
 */

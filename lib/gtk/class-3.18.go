@@ -18,10 +18,10 @@ import (
 // #include <stdlib.h>
 /*
 
-	void PlacesSidebar_showOtherLocationsHandler();
+	void PlacesSidebar_showOtherLocationsHandler(GObject *, gpointer);
 
 	static gulong PlacesSidebar_signal_connect_show_other_locations(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "show-other-locations", PlacesSidebar_showOtherLocationsHandler, data);
+		return g_signal_connect(instance, "show-other-locations", G_CALLBACK(PlacesSidebar_showOtherLocationsHandler), data);
 	}
 
 */

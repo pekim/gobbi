@@ -24,46 +24,46 @@ import (
 // #include <stdlib.h>
 /*
 
-	void Cancellable_cancelledHandler();
+	void Cancellable_cancelledHandler(GObject *, gpointer);
 
 	static gulong Cancellable_signal_connect_cancelled(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "cancelled", Cancellable_cancelledHandler, data);
+		return g_signal_connect(instance, "cancelled", G_CALLBACK(Cancellable_cancelledHandler), data);
 	}
 
 */
 /*
 
-	void FilenameCompleter_gotCompletionDataHandler();
+	void FilenameCompleter_gotCompletionDataHandler(GObject *, gpointer);
 
 	static gulong FilenameCompleter_signal_connect_got_completion_data(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "got-completion-data", FilenameCompleter_gotCompletionDataHandler, data);
+		return g_signal_connect(instance, "got-completion-data", G_CALLBACK(FilenameCompleter_gotCompletionDataHandler), data);
 	}
 
 */
 /*
 
-	void Resolver_reloadHandler();
+	void Resolver_reloadHandler(GObject *, gpointer);
 
 	static gulong Resolver_signal_connect_reload(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "reload", Resolver_reloadHandler, data);
+		return g_signal_connect(instance, "reload", G_CALLBACK(Resolver_reloadHandler), data);
 	}
 
 */
 /*
 
-	void UnixMountMonitor_mountpointsChangedHandler();
+	void UnixMountMonitor_mountpointsChangedHandler(GObject *, gpointer);
 
 	static gulong UnixMountMonitor_signal_connect_mountpoints_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "mountpoints-changed", UnixMountMonitor_mountpointsChangedHandler, data);
+		return g_signal_connect(instance, "mountpoints-changed", G_CALLBACK(UnixMountMonitor_mountpointsChangedHandler), data);
 	}
 
 */
 /*
 
-	void UnixMountMonitor_mountsChangedHandler();
+	void UnixMountMonitor_mountsChangedHandler(GObject *, gpointer);
 
 	static gulong UnixMountMonitor_signal_connect_mounts_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "mounts-changed", UnixMountMonitor_mountsChangedHandler, data);
+		return g_signal_connect(instance, "mounts-changed", G_CALLBACK(UnixMountMonitor_mountsChangedHandler), data);
 	}
 
 */

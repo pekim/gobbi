@@ -14,19 +14,19 @@ import (
 // #include <stdlib.h>
 /*
 
-	void PixbufLoader_areaPreparedHandler();
+	void PixbufLoader_areaPreparedHandler(GObject *, gpointer);
 
 	static gulong PixbufLoader_signal_connect_area_prepared(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "area-prepared", PixbufLoader_areaPreparedHandler, data);
+		return g_signal_connect(instance, "area-prepared", G_CALLBACK(PixbufLoader_areaPreparedHandler), data);
 	}
 
 */
 /*
 
-	void PixbufLoader_closedHandler();
+	void PixbufLoader_closedHandler(GObject *, gpointer);
 
 	static gulong PixbufLoader_signal_connect_closed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "closed", PixbufLoader_closedHandler, data);
+		return g_signal_connect(instance, "closed", G_CALLBACK(PixbufLoader_closedHandler), data);
 	}
 
 */

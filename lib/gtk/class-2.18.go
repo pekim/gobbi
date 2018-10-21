@@ -16,28 +16,28 @@ import (
 // #include <stdlib.h>
 /*
 
-	void InfoBar_closeHandler();
+	void InfoBar_closeHandler(GObject *, gpointer);
 
 	static gulong InfoBar_signal_connect_close(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "close", InfoBar_closeHandler, data);
+		return g_signal_connect(instance, "close", G_CALLBACK(InfoBar_closeHandler), data);
 	}
 
 */
 /*
 
-	void Label_activateCurrentLinkHandler();
+	void Label_activateCurrentLinkHandler(GObject *, gpointer);
 
 	static gulong Label_signal_connect_activate_current_link(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "activate-current-link", Label_activateCurrentLinkHandler, data);
+		return g_signal_connect(instance, "activate-current-link", G_CALLBACK(Label_activateCurrentLinkHandler), data);
 	}
 
 */
 /*
 
-	void PrintOperation_updateCustomWidgetHandler();
+	void PrintOperation_updateCustomWidgetHandler(GObject *, GtkWidget *, GtkPageSetup *, GtkPrintSettings *, gpointer);
 
 	static gulong PrintOperation_signal_connect_update_custom_widget(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "update-custom-widget", PrintOperation_updateCustomWidgetHandler, data);
+		return g_signal_connect(instance, "update-custom-widget", G_CALLBACK(PrintOperation_updateCustomWidgetHandler), data);
 	}
 
 */

@@ -20,10 +20,10 @@ import "sync"
 // #include <stdlib.h>
 /*
 
-	void MountOperation_abortedHandler();
+	void MountOperation_abortedHandler(GObject *, gpointer);
 
 	static gulong MountOperation_signal_connect_aborted(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "aborted", MountOperation_abortedHandler, data);
+		return g_signal_connect(instance, "aborted", G_CALLBACK(MountOperation_abortedHandler), data);
 	}
 
 */

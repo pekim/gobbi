@@ -18,28 +18,28 @@ import (
 // #include <stdlib.h>
 /*
 
-	void SearchEntry_nextMatchHandler();
+	void SearchEntry_nextMatchHandler(GObject *, gpointer);
 
 	static gulong SearchEntry_signal_connect_next_match(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "next-match", SearchEntry_nextMatchHandler, data);
+		return g_signal_connect(instance, "next-match", G_CALLBACK(SearchEntry_nextMatchHandler), data);
 	}
 
 */
 /*
 
-	void SearchEntry_previousMatchHandler();
+	void SearchEntry_previousMatchHandler(GObject *, gpointer);
 
 	static gulong SearchEntry_signal_connect_previous_match(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "previous-match", SearchEntry_previousMatchHandler, data);
+		return g_signal_connect(instance, "previous-match", G_CALLBACK(SearchEntry_previousMatchHandler), data);
 	}
 
 */
 /*
 
-	void SearchEntry_stopSearchHandler();
+	void SearchEntry_stopSearchHandler(GObject *, gpointer);
 
 	static gulong SearchEntry_signal_connect_stop_search(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "stop-search", SearchEntry_stopSearchHandler, data);
+		return g_signal_connect(instance, "stop-search", G_CALLBACK(SearchEntry_stopSearchHandler), data);
 	}
 
 */

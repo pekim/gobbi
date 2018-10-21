@@ -15,37 +15,37 @@ import (
 // #include <stdlib.h>
 /*
 
-	void Display_closedHandler();
+	void Display_closedHandler(GObject *, gboolean, gpointer);
 
 	static gulong Display_signal_connect_closed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "closed", Display_closedHandler, data);
+		return g_signal_connect(instance, "closed", G_CALLBACK(Display_closedHandler), data);
 	}
 
 */
 /*
 
-	void DisplayManager_displayOpenedHandler();
+	void DisplayManager_displayOpenedHandler(GObject *, GdkDisplay *, gpointer);
 
 	static gulong DisplayManager_signal_connect_display_opened(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "display-opened", DisplayManager_displayOpenedHandler, data);
+		return g_signal_connect(instance, "display-opened", G_CALLBACK(DisplayManager_displayOpenedHandler), data);
 	}
 
 */
 /*
 
-	void Keymap_keysChangedHandler();
+	void Keymap_keysChangedHandler(GObject *, gpointer);
 
 	static gulong Keymap_signal_connect_keys_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "keys-changed", Keymap_keysChangedHandler, data);
+		return g_signal_connect(instance, "keys-changed", G_CALLBACK(Keymap_keysChangedHandler), data);
 	}
 
 */
 /*
 
-	void Screen_sizeChangedHandler();
+	void Screen_sizeChangedHandler(GObject *, gpointer);
 
 	static gulong Screen_signal_connect_size_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "size-changed", Screen_sizeChangedHandler, data);
+		return g_signal_connect(instance, "size-changed", G_CALLBACK(Screen_sizeChangedHandler), data);
 	}
 
 */

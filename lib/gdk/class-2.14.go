@@ -13,10 +13,10 @@ import (
 // #include <stdlib.h>
 /*
 
-	void Screen_monitorsChangedHandler();
+	void Screen_monitorsChangedHandler(GObject *, gpointer);
 
 	static gulong Screen_signal_connect_monitors_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "monitors-changed", Screen_monitorsChangedHandler, data);
+		return g_signal_connect(instance, "monitors-changed", G_CALLBACK(Screen_monitorsChangedHandler), data);
 	}
 
 */

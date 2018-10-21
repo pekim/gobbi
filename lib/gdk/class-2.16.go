@@ -10,10 +10,10 @@ import "sync"
 // #include <stdlib.h>
 /*
 
-	void Keymap_stateChangedHandler();
+	void Keymap_stateChangedHandler(GObject *, gpointer);
 
 	static gulong Keymap_signal_connect_state_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "state-changed", Keymap_stateChangedHandler, data);
+		return g_signal_connect(instance, "state-changed", G_CALLBACK(Keymap_stateChangedHandler), data);
 	}
 
 */

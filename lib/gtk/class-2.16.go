@@ -17,19 +17,19 @@ import (
 // #include <stdlib.h>
 /*
 
-	void StatusIcon_scrollEventHandler();
+	gboolean StatusIcon_scrollEventHandler(GObject *, GdkEventScroll *, gpointer);
 
 	static gulong StatusIcon_signal_connect_scroll_event(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "scroll-event", StatusIcon_scrollEventHandler, data);
+		return g_signal_connect(instance, "scroll-event", G_CALLBACK(StatusIcon_scrollEventHandler), data);
 	}
 
 */
 /*
 
-	void TextBuffer_pasteDoneHandler();
+	void TextBuffer_pasteDoneHandler(GObject *, GtkClipboard *, gpointer);
 
 	static gulong TextBuffer_signal_connect_paste_done(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "paste-done", TextBuffer_pasteDoneHandler, data);
+		return g_signal_connect(instance, "paste-done", G_CALLBACK(TextBuffer_pasteDoneHandler), data);
 	}
 
 */
