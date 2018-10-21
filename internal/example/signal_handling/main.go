@@ -17,9 +17,9 @@ func main() {
 
 	window := gtk.WindowNew(gtk.GTK_WINDOW_TOPLEVEL)
 	window.SetTitle("A window title")
-	window.SetDefaultSize(300, 300)
+	window.SetDefaultSize(400, 300)
 
-	container := gtk.BoxNew(gtk.GTK_ORIENTATION_VERTICAL, 10).Container()
+	container := gtk.BoxNew(gtk.GTK_ORIENTATION_VERTICAL, 20).Container()
 	window.Container().Add(container.Widget())
 
 	clickCount := 0
@@ -31,8 +31,14 @@ func main() {
 	})
 	container.Add(button.Widget())
 
+	label := gtk.LabelNew("or press keys (and check stdout in terminal)")
+	container.Add(label.Widget())
+
 	window.Widget().ConnectKeyPressEvent(func(event *gdk.EventKey) bool {
-		fmt.Println("key pressed :", event.String, event.Keyval, event.State)
+		message := fmt.Sprintf("key pressed : %s  %d  %d", event.String, event.Keyval, event.State)
+		label.SetText(message)
+		fmt.Println(message)
+
 		return false
 	})
 
