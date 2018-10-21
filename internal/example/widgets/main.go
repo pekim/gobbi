@@ -16,6 +16,11 @@ func main() {
 	window.SetTitle("A window title")
 	window.SetDefaultSize(300, 300)
 
+	container := gtk.BoxNew(gtk.GTK_ORIENTATION_VERTICAL, 10).Container()
+	container.Add(gtk.LabelNew("Label 1").Widget())
+	container.Add(gtk.LabelNew("Label 2 ++").Widget())
+	window.Container().Add(container.Widget())
+
 	window.Widget().ConnectDestroy(gtk.MainQuit)
 	window.Widget().ShowAll()
 
