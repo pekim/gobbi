@@ -1,6 +1,8 @@
 package glib
 
-import "sync"
+import (
+	"sync"
+)
 
 // #include <glib.h>
 /*
@@ -37,7 +39,15 @@ func IdleAdd(callback IdleAddCallback) {
 
 //export idleAddHandler
 func idleAddHandler(data C.gpointer) C.gboolean {
+	idleAddLock.Lock()
+	defer idleAddLock.Unlock()
+
 	index := int(uintptr(data))
 	callback := idleAddMap[index]
-	return boolToGboolean(callback())
+
+	if !callback() {
+		delete(idleAddMap, index)
+		return C.FALSE
+	}
+	return C.TRUE
 }

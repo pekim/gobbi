@@ -28,7 +28,7 @@ func main() {
 	window.Widget().ConnectDestroy(gtk.MainQuit)
 	window.Widget().ShowAll()
 
-	ticker := time.NewTicker(100 * time.Millisecond)
+	ticker := time.NewTicker(200 * time.Millisecond)
 	go func() {
 		for range ticker.C {
 			counter++
