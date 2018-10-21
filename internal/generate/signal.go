@@ -107,31 +107,11 @@ func (s *Signal) generate(g *jen.Group, version *Version, parentVersion string) 
 }
 
 func (s *Signal) generateCgoPreamble() {
-	handlerReturn := s.ReturnValue.Type.CType
-	if handlerReturn == "" {
-		qname := QNameNew(s.Namespace, s.ReturnValue.Type.Name)
-		record, found := qname.ns.recordOrClassRecordForName(qname.name)
-		if !found {
-			panic(fmt.Sprintf("Not found class %s, for param %s, for signal %s, for class %s",
-				qname.name, s.ReturnValue.Type.Name, s.Name, s.record.Name))
-		}
-		handlerReturn = record.CType + " *"
-	}
+	handlerReturn := s.cTypeDeclaration(s.ReturnValue.Type)
 
 	params := []string{"GObject *"}
 	for _, param := range s.Parameters {
-		cType := param.Type.CType
-		if cType == "" {
-			qname := QNameNew(s.Namespace, param.Type.Name)
-			record, found := qname.ns.recordOrClassRecordForName(qname.name)
-			if !found {
-				panic(fmt.Sprintf("Not found class %s, for param %s, for signal %s, for class %s",
-					qname.name, param.Name, s.Name, s.record.Name))
-			}
-			cType = record.CType + " *"
-		}
-
-		params = append(params, cType)
+		params = append(params, s.cTypeDeclaration(param.Type))
 	}
 	params = append(params, "gpointer")
 	handlerParams := strings.Join(params, ", ")
@@ -151,6 +131,21 @@ func (s *Signal) generateCgoPreamble() {
 			s.cNameSignalConnect,
 			s.Name,
 			s.goNameHandler))
+}
+
+func (s *Signal) cTypeDeclaration(typ *Type) string {
+	cDeclaration := typ.CType
+	if cDeclaration == "" {
+		qname := QNameNew(s.Namespace, typ.Name)
+		record, found := qname.ns.recordOrClassRecordForName(qname.name)
+		if !found {
+			panic(fmt.Sprintf("Not found class %s, for signal %s, for class %s",
+				qname.name, s.Name, s.record.Name))
+		}
+		cDeclaration = record.CType + " *"
+	}
+
+	return cDeclaration
 }
 
 func (s *Signal) generateVariables(g *jen.Group) {
