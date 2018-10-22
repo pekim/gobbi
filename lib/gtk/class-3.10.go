@@ -20,37 +20,37 @@ import (
 // #include <stdlib.h>
 /*
 
-	void ListBox_rowActivatedHandler(GObject *, GtkListBoxRow *, gpointer);
+	void listbox_rowActivatedHandler(GObject *, GtkListBoxRow *, gpointer);
 
 	static gulong ListBox_signal_connect_row_activated(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "row-activated", G_CALLBACK(ListBox_rowActivatedHandler), data);
+		return g_signal_connect(instance, "row-activated", G_CALLBACK(listbox_rowActivatedHandler), data);
 	}
 
 */
 /*
 
-	void ListBox_rowSelectedHandler(GObject *, GtkListBoxRow *, gpointer);
+	void listbox_rowSelectedHandler(GObject *, GtkListBoxRow *, gpointer);
 
 	static gulong ListBox_signal_connect_row_selected(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "row-selected", G_CALLBACK(ListBox_rowSelectedHandler), data);
+		return g_signal_connect(instance, "row-selected", G_CALLBACK(listbox_rowSelectedHandler), data);
 	}
 
 */
 /*
 
-	void ListBoxRow_activateHandler(GObject *, gpointer);
+	void listboxrow_activateHandler(GObject *, gpointer);
 
 	static gulong ListBoxRow_signal_connect_activate(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "activate", G_CALLBACK(ListBoxRow_activateHandler), data);
+		return g_signal_connect(instance, "activate", G_CALLBACK(listboxrow_activateHandler), data);
 	}
 
 */
 /*
 
-	void SearchEntry_searchChangedHandler(GObject *, gpointer);
+	void searchentry_searchChangedHandler(GObject *, gpointer);
 
 	static gulong SearchEntry_signal_connect_search_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "search-changed", G_CALLBACK(SearchEntry_searchChangedHandler), data);
+		return g_signal_connect(instance, "search-changed", G_CALLBACK(searchentry_searchChangedHandler), data);
 	}
 
 */
@@ -529,8 +529,8 @@ func (recv *ListBox) DisconnectRowActivated(connectionID int) {
 	delete(signalListBoxRowActivatedMap, connectionID)
 }
 
-//export ListBox_rowActivatedHandler
-func ListBox_rowActivatedHandler(_ *C.GObject, c_row *C.GtkListBoxRow, data C.gpointer) {
+//export listbox_rowActivatedHandler
+func listbox_rowActivatedHandler(_ *C.GObject, c_row *C.GtkListBoxRow, data C.gpointer) {
 	row := ListBoxRowNewFromC(unsafe.Pointer(c_row))
 
 	index := int(uintptr(data))
@@ -588,8 +588,8 @@ func (recv *ListBox) DisconnectRowSelected(connectionID int) {
 	delete(signalListBoxRowSelectedMap, connectionID)
 }
 
-//export ListBox_rowSelectedHandler
-func ListBox_rowSelectedHandler(_ *C.GObject, c_row *C.GtkListBoxRow, data C.gpointer) {
+//export listbox_rowSelectedHandler
+func listbox_rowSelectedHandler(_ *C.GObject, c_row *C.GtkListBoxRow, data C.gpointer) {
 	row := ListBoxRowNewFromC(unsafe.Pointer(c_row))
 
 	index := int(uintptr(data))
@@ -816,8 +816,8 @@ func (recv *ListBoxRow) DisconnectActivate(connectionID int) {
 	delete(signalListBoxRowActivateMap, connectionID)
 }
 
-//export ListBoxRow_activateHandler
-func ListBoxRow_activateHandler(_ *C.GObject, data C.gpointer) {
+//export listboxrow_activateHandler
+func listboxrow_activateHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalListBoxRowActivateMap[index].callback
 	callback()
@@ -1137,8 +1137,8 @@ func (recv *SearchEntry) DisconnectSearchChanged(connectionID int) {
 	delete(signalSearchEntrySearchChangedMap, connectionID)
 }
 
-//export SearchEntry_searchChangedHandler
-func SearchEntry_searchChangedHandler(_ *C.GObject, data C.gpointer) {
+//export searchentry_searchChangedHandler
+func searchentry_searchChangedHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalSearchEntrySearchChangedMap[index].callback
 	callback()

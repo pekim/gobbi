@@ -15,37 +15,37 @@ import (
 // #include <stdlib.h>
 /*
 
-	void Display_closedHandler(GObject *, gboolean, gpointer);
+	void display_closedHandler(GObject *, gboolean, gpointer);
 
 	static gulong Display_signal_connect_closed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "closed", G_CALLBACK(Display_closedHandler), data);
+		return g_signal_connect(instance, "closed", G_CALLBACK(display_closedHandler), data);
 	}
 
 */
 /*
 
-	void DisplayManager_displayOpenedHandler(GObject *, GdkDisplay *, gpointer);
+	void displaymanager_displayOpenedHandler(GObject *, GdkDisplay *, gpointer);
 
 	static gulong DisplayManager_signal_connect_display_opened(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "display-opened", G_CALLBACK(DisplayManager_displayOpenedHandler), data);
+		return g_signal_connect(instance, "display-opened", G_CALLBACK(displaymanager_displayOpenedHandler), data);
 	}
 
 */
 /*
 
-	void Keymap_keysChangedHandler(GObject *, gpointer);
+	void keymap_keysChangedHandler(GObject *, gpointer);
 
 	static gulong Keymap_signal_connect_keys_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "keys-changed", G_CALLBACK(Keymap_keysChangedHandler), data);
+		return g_signal_connect(instance, "keys-changed", G_CALLBACK(keymap_keysChangedHandler), data);
 	}
 
 */
 /*
 
-	void Screen_sizeChangedHandler(GObject *, gpointer);
+	void screen_sizeChangedHandler(GObject *, gpointer);
 
 	static gulong Screen_signal_connect_size_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "size-changed", G_CALLBACK(Screen_sizeChangedHandler), data);
+		return g_signal_connect(instance, "size-changed", G_CALLBACK(screen_sizeChangedHandler), data);
 	}
 
 */
@@ -121,8 +121,8 @@ func (recv *Display) DisconnectClosed(connectionID int) {
 	delete(signalDisplayClosedMap, connectionID)
 }
 
-//export Display_closedHandler
-func Display_closedHandler(_ *C.GObject, c_is_error C.gboolean, data C.gpointer) {
+//export display_closedHandler
+func display_closedHandler(_ *C.GObject, c_is_error C.gboolean, data C.gpointer) {
 	isError := c_is_error == C.TRUE
 
 	index := int(uintptr(data))
@@ -302,8 +302,8 @@ func (recv *DisplayManager) DisconnectDisplayOpened(connectionID int) {
 	delete(signalDisplayManagerDisplayOpenedMap, connectionID)
 }
 
-//export DisplayManager_displayOpenedHandler
-func DisplayManager_displayOpenedHandler(_ *C.GObject, c_display *C.GdkDisplay, data C.gpointer) {
+//export displaymanager_displayOpenedHandler
+func displaymanager_displayOpenedHandler(_ *C.GObject, c_display *C.GdkDisplay, data C.gpointer) {
 	display := DisplayNewFromC(unsafe.Pointer(c_display))
 
 	index := int(uintptr(data))
@@ -386,8 +386,8 @@ func (recv *Keymap) DisconnectKeysChanged(connectionID int) {
 	delete(signalKeymapKeysChangedMap, connectionID)
 }
 
-//export Keymap_keysChangedHandler
-func Keymap_keysChangedHandler(_ *C.GObject, data C.gpointer) {
+//export keymap_keysChangedHandler
+func keymap_keysChangedHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalKeymapKeysChangedMap[index].callback
 	callback()
@@ -443,8 +443,8 @@ func (recv *Screen) DisconnectSizeChanged(connectionID int) {
 	delete(signalScreenSizeChangedMap, connectionID)
 }
 
-//export Screen_sizeChangedHandler
-func Screen_sizeChangedHandler(_ *C.GObject, data C.gpointer) {
+//export screen_sizeChangedHandler
+func screen_sizeChangedHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalScreenSizeChangedMap[index].callback
 	callback()

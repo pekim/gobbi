@@ -14,28 +14,28 @@ import (
 // #include <stdlib.h>
 /*
 
-	void Display_seatAddedHandler(GObject *, GdkSeat *, gpointer);
+	void display_seatAddedHandler(GObject *, GdkSeat *, gpointer);
 
 	static gulong Display_signal_connect_seat_added(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "seat-added", G_CALLBACK(Display_seatAddedHandler), data);
+		return g_signal_connect(instance, "seat-added", G_CALLBACK(display_seatAddedHandler), data);
 	}
 
 */
 /*
 
-	void Display_seatRemovedHandler(GObject *, GdkSeat *, gpointer);
+	void display_seatRemovedHandler(GObject *, GdkSeat *, gpointer);
 
 	static gulong Display_signal_connect_seat_removed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "seat-removed", G_CALLBACK(Display_seatRemovedHandler), data);
+		return g_signal_connect(instance, "seat-removed", G_CALLBACK(display_seatRemovedHandler), data);
 	}
 
 */
 /*
 
-	void DragContext_dndFinishedHandler(GObject *, gpointer);
+	void dragcontext_dndFinishedHandler(GObject *, gpointer);
 
 	static gulong DragContext_signal_connect_dnd_finished(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "dnd-finished", G_CALLBACK(DragContext_dndFinishedHandler), data);
+		return g_signal_connect(instance, "dnd-finished", G_CALLBACK(dragcontext_dndFinishedHandler), data);
 	}
 
 */
@@ -99,8 +99,8 @@ func (recv *Display) DisconnectSeatAdded(connectionID int) {
 	delete(signalDisplaySeatAddedMap, connectionID)
 }
 
-//export Display_seatAddedHandler
-func Display_seatAddedHandler(_ *C.GObject, c_seat *C.GdkSeat, data C.gpointer) {
+//export display_seatAddedHandler
+func display_seatAddedHandler(_ *C.GObject, c_seat *C.GdkSeat, data C.gpointer) {
 	seat := SeatNewFromC(unsafe.Pointer(c_seat))
 
 	index := int(uintptr(data))
@@ -158,8 +158,8 @@ func (recv *Display) DisconnectSeatRemoved(connectionID int) {
 	delete(signalDisplaySeatRemovedMap, connectionID)
 }
 
-//export Display_seatRemovedHandler
-func Display_seatRemovedHandler(_ *C.GObject, c_seat *C.GdkSeat, data C.gpointer) {
+//export display_seatRemovedHandler
+func display_seatRemovedHandler(_ *C.GObject, c_seat *C.GdkSeat, data C.gpointer) {
 	seat := SeatNewFromC(unsafe.Pointer(c_seat))
 
 	index := int(uintptr(data))
@@ -237,8 +237,8 @@ func (recv *DragContext) DisconnectDndFinished(connectionID int) {
 	delete(signalDragContextDndFinishedMap, connectionID)
 }
 
-//export DragContext_dndFinishedHandler
-func DragContext_dndFinishedHandler(_ *C.GObject, data C.gpointer) {
+//export dragcontext_dndFinishedHandler
+func dragcontext_dndFinishedHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalDragContextDndFinishedMap[index].callback
 	callback()

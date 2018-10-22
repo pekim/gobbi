@@ -17,109 +17,109 @@ import (
 // #include <stdlib.h>
 /*
 
-	void Device_changedHandler(GObject *, gpointer);
+	void device_changedHandler(GObject *, gpointer);
 
 	static gulong Device_signal_connect_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "changed", G_CALLBACK(Device_changedHandler), data);
+		return g_signal_connect(instance, "changed", G_CALLBACK(device_changedHandler), data);
 	}
 
 */
 /*
 
-	void DeviceManager_deviceAddedHandler(GObject *, GdkDevice *, gpointer);
+	void devicemanager_deviceAddedHandler(GObject *, GdkDevice *, gpointer);
 
 	static gulong DeviceManager_signal_connect_device_added(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "device-added", G_CALLBACK(DeviceManager_deviceAddedHandler), data);
+		return g_signal_connect(instance, "device-added", G_CALLBACK(devicemanager_deviceAddedHandler), data);
 	}
 
 */
 /*
 
-	void DeviceManager_deviceChangedHandler(GObject *, GdkDevice *, gpointer);
+	void devicemanager_deviceChangedHandler(GObject *, GdkDevice *, gpointer);
 
 	static gulong DeviceManager_signal_connect_device_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "device-changed", G_CALLBACK(DeviceManager_deviceChangedHandler), data);
+		return g_signal_connect(instance, "device-changed", G_CALLBACK(devicemanager_deviceChangedHandler), data);
 	}
 
 */
 /*
 
-	void DeviceManager_deviceRemovedHandler(GObject *, GdkDevice *, gpointer);
+	void devicemanager_deviceRemovedHandler(GObject *, GdkDevice *, gpointer);
 
 	static gulong DeviceManager_signal_connect_device_removed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "device-removed", G_CALLBACK(DeviceManager_deviceRemovedHandler), data);
+		return g_signal_connect(instance, "device-removed", G_CALLBACK(devicemanager_deviceRemovedHandler), data);
 	}
 
 */
 /*
 
-	void Display_openedHandler(GObject *, gpointer);
+	void display_openedHandler(GObject *, gpointer);
 
 	static gulong Display_signal_connect_opened(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "opened", G_CALLBACK(Display_openedHandler), data);
+		return g_signal_connect(instance, "opened", G_CALLBACK(display_openedHandler), data);
 	}
 
 */
 /*
 
-	void FrameClock_afterPaintHandler(GObject *, gpointer);
+	void frameclock_afterPaintHandler(GObject *, gpointer);
 
 	static gulong FrameClock_signal_connect_after_paint(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "after-paint", G_CALLBACK(FrameClock_afterPaintHandler), data);
+		return g_signal_connect(instance, "after-paint", G_CALLBACK(frameclock_afterPaintHandler), data);
 	}
 
 */
 /*
 
-	void FrameClock_beforePaintHandler(GObject *, gpointer);
+	void frameclock_beforePaintHandler(GObject *, gpointer);
 
 	static gulong FrameClock_signal_connect_before_paint(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "before-paint", G_CALLBACK(FrameClock_beforePaintHandler), data);
+		return g_signal_connect(instance, "before-paint", G_CALLBACK(frameclock_beforePaintHandler), data);
 	}
 
 */
 /*
 
-	void FrameClock_flushEventsHandler(GObject *, gpointer);
+	void frameclock_flushEventsHandler(GObject *, gpointer);
 
 	static gulong FrameClock_signal_connect_flush_events(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "flush-events", G_CALLBACK(FrameClock_flushEventsHandler), data);
+		return g_signal_connect(instance, "flush-events", G_CALLBACK(frameclock_flushEventsHandler), data);
 	}
 
 */
 /*
 
-	void FrameClock_layoutHandler(GObject *, gpointer);
+	void frameclock_layoutHandler(GObject *, gpointer);
 
 	static gulong FrameClock_signal_connect_layout(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "layout", G_CALLBACK(FrameClock_layoutHandler), data);
+		return g_signal_connect(instance, "layout", G_CALLBACK(frameclock_layoutHandler), data);
 	}
 
 */
 /*
 
-	void FrameClock_paintHandler(GObject *, gpointer);
+	void frameclock_paintHandler(GObject *, gpointer);
 
 	static gulong FrameClock_signal_connect_paint(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "paint", G_CALLBACK(FrameClock_paintHandler), data);
+		return g_signal_connect(instance, "paint", G_CALLBACK(frameclock_paintHandler), data);
 	}
 
 */
 /*
 
-	void FrameClock_resumeEventsHandler(GObject *, gpointer);
+	void frameclock_resumeEventsHandler(GObject *, gpointer);
 
 	static gulong FrameClock_signal_connect_resume_events(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "resume-events", G_CALLBACK(FrameClock_resumeEventsHandler), data);
+		return g_signal_connect(instance, "resume-events", G_CALLBACK(frameclock_resumeEventsHandler), data);
 	}
 
 */
 /*
 
-	void FrameClock_updateHandler(GObject *, gpointer);
+	void frameclock_updateHandler(GObject *, gpointer);
 
 	static gulong FrameClock_signal_connect_update(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "update", G_CALLBACK(FrameClock_updateHandler), data);
+		return g_signal_connect(instance, "update", G_CALLBACK(frameclock_updateHandler), data);
 	}
 
 */
@@ -301,8 +301,8 @@ func (recv *Device) DisconnectChanged(connectionID int) {
 	delete(signalDeviceChangedMap, connectionID)
 }
 
-//export Device_changedHandler
-func Device_changedHandler(_ *C.GObject, data C.gpointer) {
+//export device_changedHandler
+func device_changedHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalDeviceChangedMap[index].callback
 	callback()
@@ -438,8 +438,8 @@ func (recv *DeviceManager) DisconnectDeviceAdded(connectionID int) {
 	delete(signalDeviceManagerDeviceAddedMap, connectionID)
 }
 
-//export DeviceManager_deviceAddedHandler
-func DeviceManager_deviceAddedHandler(_ *C.GObject, c_device *C.GdkDevice, data C.gpointer) {
+//export devicemanager_deviceAddedHandler
+func devicemanager_deviceAddedHandler(_ *C.GObject, c_device *C.GdkDevice, data C.gpointer) {
 	device := DeviceNewFromC(unsafe.Pointer(c_device))
 
 	index := int(uintptr(data))
@@ -497,8 +497,8 @@ func (recv *DeviceManager) DisconnectDeviceChanged(connectionID int) {
 	delete(signalDeviceManagerDeviceChangedMap, connectionID)
 }
 
-//export DeviceManager_deviceChangedHandler
-func DeviceManager_deviceChangedHandler(_ *C.GObject, c_device *C.GdkDevice, data C.gpointer) {
+//export devicemanager_deviceChangedHandler
+func devicemanager_deviceChangedHandler(_ *C.GObject, c_device *C.GdkDevice, data C.gpointer) {
 	device := DeviceNewFromC(unsafe.Pointer(c_device))
 
 	index := int(uintptr(data))
@@ -556,8 +556,8 @@ func (recv *DeviceManager) DisconnectDeviceRemoved(connectionID int) {
 	delete(signalDeviceManagerDeviceRemovedMap, connectionID)
 }
 
-//export DeviceManager_deviceRemovedHandler
-func DeviceManager_deviceRemovedHandler(_ *C.GObject, c_device *C.GdkDevice, data C.gpointer) {
+//export devicemanager_deviceRemovedHandler
+func devicemanager_deviceRemovedHandler(_ *C.GObject, c_device *C.GdkDevice, data C.gpointer) {
 	device := DeviceNewFromC(unsafe.Pointer(c_device))
 
 	index := int(uintptr(data))
@@ -647,8 +647,8 @@ func (recv *Display) DisconnectOpened(connectionID int) {
 	delete(signalDisplayOpenedMap, connectionID)
 }
 
-//export Display_openedHandler
-func Display_openedHandler(_ *C.GObject, data C.gpointer) {
+//export display_openedHandler
+func display_openedHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalDisplayOpenedMap[index].callback
 	callback()
@@ -827,8 +827,8 @@ func (recv *FrameClock) DisconnectAfterPaint(connectionID int) {
 	delete(signalFrameClockAfterPaintMap, connectionID)
 }
 
-//export FrameClock_afterPaintHandler
-func FrameClock_afterPaintHandler(_ *C.GObject, data C.gpointer) {
+//export frameclock_afterPaintHandler
+func frameclock_afterPaintHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalFrameClockAfterPaintMap[index].callback
 	callback()
@@ -884,8 +884,8 @@ func (recv *FrameClock) DisconnectBeforePaint(connectionID int) {
 	delete(signalFrameClockBeforePaintMap, connectionID)
 }
 
-//export FrameClock_beforePaintHandler
-func FrameClock_beforePaintHandler(_ *C.GObject, data C.gpointer) {
+//export frameclock_beforePaintHandler
+func frameclock_beforePaintHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalFrameClockBeforePaintMap[index].callback
 	callback()
@@ -941,8 +941,8 @@ func (recv *FrameClock) DisconnectFlushEvents(connectionID int) {
 	delete(signalFrameClockFlushEventsMap, connectionID)
 }
 
-//export FrameClock_flushEventsHandler
-func FrameClock_flushEventsHandler(_ *C.GObject, data C.gpointer) {
+//export frameclock_flushEventsHandler
+func frameclock_flushEventsHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalFrameClockFlushEventsMap[index].callback
 	callback()
@@ -998,8 +998,8 @@ func (recv *FrameClock) DisconnectLayout(connectionID int) {
 	delete(signalFrameClockLayoutMap, connectionID)
 }
 
-//export FrameClock_layoutHandler
-func FrameClock_layoutHandler(_ *C.GObject, data C.gpointer) {
+//export frameclock_layoutHandler
+func frameclock_layoutHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalFrameClockLayoutMap[index].callback
 	callback()
@@ -1055,8 +1055,8 @@ func (recv *FrameClock) DisconnectPaint(connectionID int) {
 	delete(signalFrameClockPaintMap, connectionID)
 }
 
-//export FrameClock_paintHandler
-func FrameClock_paintHandler(_ *C.GObject, data C.gpointer) {
+//export frameclock_paintHandler
+func frameclock_paintHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalFrameClockPaintMap[index].callback
 	callback()
@@ -1112,8 +1112,8 @@ func (recv *FrameClock) DisconnectResumeEvents(connectionID int) {
 	delete(signalFrameClockResumeEventsMap, connectionID)
 }
 
-//export FrameClock_resumeEventsHandler
-func FrameClock_resumeEventsHandler(_ *C.GObject, data C.gpointer) {
+//export frameclock_resumeEventsHandler
+func frameclock_resumeEventsHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalFrameClockResumeEventsMap[index].callback
 	callback()
@@ -1169,8 +1169,8 @@ func (recv *FrameClock) DisconnectUpdate(connectionID int) {
 	delete(signalFrameClockUpdateMap, connectionID)
 }
 
-//export FrameClock_updateHandler
-func FrameClock_updateHandler(_ *C.GObject, data C.gpointer) {
+//export frameclock_updateHandler
+func frameclock_updateHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalFrameClockUpdateMap[index].callback
 	callback()

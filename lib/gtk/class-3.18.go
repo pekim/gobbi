@@ -18,10 +18,10 @@ import (
 // #include <stdlib.h>
 /*
 
-	void PlacesSidebar_showOtherLocationsHandler(GObject *, gpointer);
+	void placessidebar_showOtherLocationsHandler(GObject *, gpointer);
 
 	static gulong PlacesSidebar_signal_connect_show_other_locations(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "show-other-locations", G_CALLBACK(PlacesSidebar_showOtherLocationsHandler), data);
+		return g_signal_connect(instance, "show-other-locations", G_CALLBACK(placessidebar_showOtherLocationsHandler), data);
 	}
 
 */
@@ -174,8 +174,8 @@ func (recv *PlacesSidebar) DisconnectShowOtherLocations(connectionID int) {
 	delete(signalPlacesSidebarShowOtherLocationsMap, connectionID)
 }
 
-//export PlacesSidebar_showOtherLocationsHandler
-func PlacesSidebar_showOtherLocationsHandler(_ *C.GObject, data C.gpointer) {
+//export placessidebar_showOtherLocationsHandler
+func placessidebar_showOtherLocationsHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalPlacesSidebarShowOtherLocationsMap[index].callback
 	callback()

@@ -24,46 +24,46 @@ import (
 // #include <stdlib.h>
 /*
 
-	void Cancellable_cancelledHandler(GObject *, gpointer);
+	void cancellable_cancelledHandler(GObject *, gpointer);
 
 	static gulong Cancellable_signal_connect_cancelled(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "cancelled", G_CALLBACK(Cancellable_cancelledHandler), data);
+		return g_signal_connect(instance, "cancelled", G_CALLBACK(cancellable_cancelledHandler), data);
 	}
 
 */
 /*
 
-	void FilenameCompleter_gotCompletionDataHandler(GObject *, gpointer);
+	void filenamecompleter_gotCompletionDataHandler(GObject *, gpointer);
 
 	static gulong FilenameCompleter_signal_connect_got_completion_data(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "got-completion-data", G_CALLBACK(FilenameCompleter_gotCompletionDataHandler), data);
+		return g_signal_connect(instance, "got-completion-data", G_CALLBACK(filenamecompleter_gotCompletionDataHandler), data);
 	}
 
 */
 /*
 
-	void Resolver_reloadHandler(GObject *, gpointer);
+	void resolver_reloadHandler(GObject *, gpointer);
 
 	static gulong Resolver_signal_connect_reload(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "reload", G_CALLBACK(Resolver_reloadHandler), data);
+		return g_signal_connect(instance, "reload", G_CALLBACK(resolver_reloadHandler), data);
 	}
 
 */
 /*
 
-	void UnixMountMonitor_mountpointsChangedHandler(GObject *, gpointer);
+	void unixmountmonitor_mountpointsChangedHandler(GObject *, gpointer);
 
 	static gulong UnixMountMonitor_signal_connect_mountpoints_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "mountpoints-changed", G_CALLBACK(UnixMountMonitor_mountpointsChangedHandler), data);
+		return g_signal_connect(instance, "mountpoints-changed", G_CALLBACK(unixmountmonitor_mountpointsChangedHandler), data);
 	}
 
 */
 /*
 
-	void UnixMountMonitor_mountsChangedHandler(GObject *, gpointer);
+	void unixmountmonitor_mountsChangedHandler(GObject *, gpointer);
 
 	static gulong UnixMountMonitor_signal_connect_mounts_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "mounts-changed", G_CALLBACK(UnixMountMonitor_mountsChangedHandler), data);
+		return g_signal_connect(instance, "mounts-changed", G_CALLBACK(unixmountmonitor_mountsChangedHandler), data);
 	}
 
 */
@@ -511,8 +511,8 @@ func (recv *Cancellable) DisconnectCancelled(connectionID int) {
 	delete(signalCancellableCancelledMap, connectionID)
 }
 
-//export Cancellable_cancelledHandler
-func Cancellable_cancelledHandler(_ *C.GObject, data C.gpointer) {
+//export cancellable_cancelledHandler
+func cancellable_cancelledHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalCancellableCancelledMap[index].callback
 	callback()
@@ -2409,8 +2409,8 @@ func (recv *FilenameCompleter) DisconnectGotCompletionData(connectionID int) {
 	delete(signalFilenameCompleterGotCompletionDataMap, connectionID)
 }
 
-//export FilenameCompleter_gotCompletionDataHandler
-func FilenameCompleter_gotCompletionDataHandler(_ *C.GObject, data C.gpointer) {
+//export filenamecompleter_gotCompletionDataHandler
+func filenamecompleter_gotCompletionDataHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalFilenameCompleterGotCompletionDataMap[index].callback
 	callback()
@@ -3574,8 +3574,8 @@ func (recv *Resolver) DisconnectReload(connectionID int) {
 	delete(signalResolverReloadMap, connectionID)
 }
 
-//export Resolver_reloadHandler
-func Resolver_reloadHandler(_ *C.GObject, data C.gpointer) {
+//export resolver_reloadHandler
+func resolver_reloadHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalResolverReloadMap[index].callback
 	callback()
@@ -4500,8 +4500,8 @@ func (recv *UnixMountMonitor) DisconnectMountpointsChanged(connectionID int) {
 	delete(signalUnixMountMonitorMountpointsChangedMap, connectionID)
 }
 
-//export UnixMountMonitor_mountpointsChangedHandler
-func UnixMountMonitor_mountpointsChangedHandler(_ *C.GObject, data C.gpointer) {
+//export unixmountmonitor_mountpointsChangedHandler
+func unixmountmonitor_mountpointsChangedHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalUnixMountMonitorMountpointsChangedMap[index].callback
 	callback()
@@ -4557,8 +4557,8 @@ func (recv *UnixMountMonitor) DisconnectMountsChanged(connectionID int) {
 	delete(signalUnixMountMonitorMountsChangedMap, connectionID)
 }
 
-//export UnixMountMonitor_mountsChangedHandler
-func UnixMountMonitor_mountsChangedHandler(_ *C.GObject, data C.gpointer) {
+//export unixmountmonitor_mountsChangedHandler
+func unixmountmonitor_mountsChangedHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalUnixMountMonitorMountsChangedMap[index].callback
 	callback()

@@ -19,28 +19,28 @@ import (
 // #include <stdlib.h>
 /*
 
-	gboolean StatusIcon_buttonPressEventHandler(GObject *, GdkEventButton *, gpointer);
+	gboolean statusicon_buttonPressEventHandler(GObject *, GdkEventButton *, gpointer);
 
 	static gulong StatusIcon_signal_connect_button_press_event(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "button-press-event", G_CALLBACK(StatusIcon_buttonPressEventHandler), data);
+		return g_signal_connect(instance, "button-press-event", G_CALLBACK(statusicon_buttonPressEventHandler), data);
 	}
 
 */
 /*
 
-	gboolean StatusIcon_buttonReleaseEventHandler(GObject *, GdkEventButton *, gpointer);
+	gboolean statusicon_buttonReleaseEventHandler(GObject *, GdkEventButton *, gpointer);
 
 	static gulong StatusIcon_signal_connect_button_release_event(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "button-release-event", G_CALLBACK(StatusIcon_buttonReleaseEventHandler), data);
+		return g_signal_connect(instance, "button-release-event", G_CALLBACK(statusicon_buttonReleaseEventHandler), data);
 	}
 
 */
 /*
 
-	gboolean Widget_damageEventHandler(GObject *, GdkEventExpose *, gpointer);
+	gboolean widget_damageEventHandler(GObject *, GdkEventExpose *, gpointer);
 
 	static gulong Widget_signal_connect_damage_event(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "damage-event", G_CALLBACK(Widget_damageEventHandler), data);
+		return g_signal_connect(instance, "damage-event", G_CALLBACK(widget_damageEventHandler), data);
 	}
 
 */
@@ -798,8 +798,8 @@ func (recv *StatusIcon) DisconnectButtonPressEvent(connectionID int) {
 	delete(signalStatusIconButtonPressEventMap, connectionID)
 }
 
-//export StatusIcon_buttonPressEventHandler
-func StatusIcon_buttonPressEventHandler(_ *C.GObject, c_event *C.GdkEventButton, data C.gpointer) C.gboolean {
+//export statusicon_buttonPressEventHandler
+func statusicon_buttonPressEventHandler(_ *C.GObject, c_event *C.GdkEventButton, data C.gpointer) C.gboolean {
 	event := gdk.EventButtonNewFromC(unsafe.Pointer(c_event))
 
 	index := int(uintptr(data))
@@ -860,8 +860,8 @@ func (recv *StatusIcon) DisconnectButtonReleaseEvent(connectionID int) {
 	delete(signalStatusIconButtonReleaseEventMap, connectionID)
 }
 
-//export StatusIcon_buttonReleaseEventHandler
-func StatusIcon_buttonReleaseEventHandler(_ *C.GObject, c_event *C.GdkEventButton, data C.gpointer) C.gboolean {
+//export statusicon_buttonReleaseEventHandler
+func statusicon_buttonReleaseEventHandler(_ *C.GObject, c_event *C.GdkEventButton, data C.gpointer) C.gboolean {
 	event := gdk.EventButtonNewFromC(unsafe.Pointer(c_event))
 
 	index := int(uintptr(data))
@@ -955,8 +955,8 @@ func (recv *Widget) DisconnectDamageEvent(connectionID int) {
 	delete(signalWidgetDamageEventMap, connectionID)
 }
 
-//export Widget_damageEventHandler
-func Widget_damageEventHandler(_ *C.GObject, c_event *C.GdkEventExpose, data C.gpointer) C.gboolean {
+//export widget_damageEventHandler
+func widget_damageEventHandler(_ *C.GObject, c_event *C.GdkEventExpose, data C.gpointer) C.gboolean {
 	event := gdk.EventExposeNewFromC(unsafe.Pointer(c_event))
 
 	index := int(uintptr(data))

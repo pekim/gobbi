@@ -13,10 +13,10 @@ import (
 // #include <stdlib.h>
 /*
 
-	void Screen_monitorsChangedHandler(GObject *, gpointer);
+	void screen_monitorsChangedHandler(GObject *, gpointer);
 
 	static gulong Screen_signal_connect_monitors_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "monitors-changed", G_CALLBACK(Screen_monitorsChangedHandler), data);
+		return g_signal_connect(instance, "monitors-changed", G_CALLBACK(screen_monitorsChangedHandler), data);
 	}
 
 */
@@ -128,8 +128,8 @@ func (recv *Screen) DisconnectMonitorsChanged(connectionID int) {
 	delete(signalScreenMonitorsChangedMap, connectionID)
 }
 
-//export Screen_monitorsChangedHandler
-func Screen_monitorsChangedHandler(_ *C.GObject, data C.gpointer) {
+//export screen_monitorsChangedHandler
+func screen_monitorsChangedHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalScreenMonitorsChangedMap[index].callback
 	callback()

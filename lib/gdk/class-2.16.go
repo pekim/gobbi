@@ -10,10 +10,10 @@ import "sync"
 // #include <stdlib.h>
 /*
 
-	void Keymap_stateChangedHandler(GObject *, gpointer);
+	void keymap_stateChangedHandler(GObject *, gpointer);
 
 	static gulong Keymap_signal_connect_state_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "state-changed", G_CALLBACK(Keymap_stateChangedHandler), data);
+		return g_signal_connect(instance, "state-changed", G_CALLBACK(keymap_stateChangedHandler), data);
 	}
 
 */
@@ -69,8 +69,8 @@ func (recv *Keymap) DisconnectStateChanged(connectionID int) {
 	delete(signalKeymapStateChangedMap, connectionID)
 }
 
-//export Keymap_stateChangedHandler
-func Keymap_stateChangedHandler(_ *C.GObject, data C.gpointer) {
+//export keymap_stateChangedHandler
+func keymap_stateChangedHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalKeymapStateChangedMap[index].callback
 	callback()

@@ -25,28 +25,28 @@ import (
 // #include <stdlib.h>
 /*
 
-	void Application_activateHandler(GObject *, gpointer);
+	void application_activateHandler(GObject *, gpointer);
 
 	static gulong Application_signal_connect_activate(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "activate", G_CALLBACK(Application_activateHandler), data);
+		return g_signal_connect(instance, "activate", G_CALLBACK(application_activateHandler), data);
 	}
 
 */
 /*
 
-	void Application_shutdownHandler(GObject *, gpointer);
+	void application_shutdownHandler(GObject *, gpointer);
 
 	static gulong Application_signal_connect_shutdown(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "shutdown", G_CALLBACK(Application_shutdownHandler), data);
+		return g_signal_connect(instance, "shutdown", G_CALLBACK(application_shutdownHandler), data);
 	}
 
 */
 /*
 
-	void Application_startupHandler(GObject *, gpointer);
+	void application_startupHandler(GObject *, gpointer);
 
 	static gulong Application_signal_connect_startup(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "startup", G_CALLBACK(Application_startupHandler), data);
+		return g_signal_connect(instance, "startup", G_CALLBACK(application_startupHandler), data);
 	}
 
 */
@@ -136,8 +136,8 @@ func (recv *Application) DisconnectActivate(connectionID int) {
 	delete(signalApplicationActivateMap, connectionID)
 }
 
-//export Application_activateHandler
-func Application_activateHandler(_ *C.GObject, data C.gpointer) {
+//export application_activateHandler
+func application_activateHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalApplicationActivateMap[index].callback
 	callback()
@@ -197,8 +197,8 @@ func (recv *Application) DisconnectShutdown(connectionID int) {
 	delete(signalApplicationShutdownMap, connectionID)
 }
 
-//export Application_shutdownHandler
-func Application_shutdownHandler(_ *C.GObject, data C.gpointer) {
+//export application_shutdownHandler
+func application_shutdownHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalApplicationShutdownMap[index].callback
 	callback()
@@ -254,8 +254,8 @@ func (recv *Application) DisconnectStartup(connectionID int) {
 	delete(signalApplicationStartupMap, connectionID)
 }
 
-//export Application_startupHandler
-func Application_startupHandler(_ *C.GObject, data C.gpointer) {
+//export application_startupHandler
+func application_startupHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalApplicationStartupMap[index].callback
 	callback()

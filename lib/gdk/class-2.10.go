@@ -15,10 +15,10 @@ import (
 // #include <stdlib.h>
 /*
 
-	void Screen_compositedChangedHandler(GObject *, gpointer);
+	void screen_compositedChangedHandler(GObject *, gpointer);
 
 	static gulong Screen_signal_connect_composited_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "composited-changed", G_CALLBACK(Screen_compositedChangedHandler), data);
+		return g_signal_connect(instance, "composited-changed", G_CALLBACK(screen_compositedChangedHandler), data);
 	}
 
 */
@@ -90,8 +90,8 @@ func (recv *Screen) DisconnectCompositedChanged(connectionID int) {
 	delete(signalScreenCompositedChangedMap, connectionID)
 }
 
-//export Screen_compositedChangedHandler
-func Screen_compositedChangedHandler(_ *C.GObject, data C.gpointer) {
+//export screen_compositedChangedHandler
+func screen_compositedChangedHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalScreenCompositedChangedMap[index].callback
 	callback()

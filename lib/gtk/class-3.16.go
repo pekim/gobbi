@@ -18,28 +18,28 @@ import (
 // #include <stdlib.h>
 /*
 
-	void SearchEntry_nextMatchHandler(GObject *, gpointer);
+	void searchentry_nextMatchHandler(GObject *, gpointer);
 
 	static gulong SearchEntry_signal_connect_next_match(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "next-match", G_CALLBACK(SearchEntry_nextMatchHandler), data);
+		return g_signal_connect(instance, "next-match", G_CALLBACK(searchentry_nextMatchHandler), data);
 	}
 
 */
 /*
 
-	void SearchEntry_previousMatchHandler(GObject *, gpointer);
+	void searchentry_previousMatchHandler(GObject *, gpointer);
 
 	static gulong SearchEntry_signal_connect_previous_match(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "previous-match", G_CALLBACK(SearchEntry_previousMatchHandler), data);
+		return g_signal_connect(instance, "previous-match", G_CALLBACK(searchentry_previousMatchHandler), data);
 	}
 
 */
 /*
 
-	void SearchEntry_stopSearchHandler(GObject *, gpointer);
+	void searchentry_stopSearchHandler(GObject *, gpointer);
 
 	static gulong SearchEntry_signal_connect_stop_search(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "stop-search", G_CALLBACK(SearchEntry_stopSearchHandler), data);
+		return g_signal_connect(instance, "stop-search", G_CALLBACK(searchentry_stopSearchHandler), data);
 	}
 
 */
@@ -482,8 +482,8 @@ func (recv *SearchEntry) DisconnectNextMatch(connectionID int) {
 	delete(signalSearchEntryNextMatchMap, connectionID)
 }
 
-//export SearchEntry_nextMatchHandler
-func SearchEntry_nextMatchHandler(_ *C.GObject, data C.gpointer) {
+//export searchentry_nextMatchHandler
+func searchentry_nextMatchHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalSearchEntryNextMatchMap[index].callback
 	callback()
@@ -539,8 +539,8 @@ func (recv *SearchEntry) DisconnectPreviousMatch(connectionID int) {
 	delete(signalSearchEntryPreviousMatchMap, connectionID)
 }
 
-//export SearchEntry_previousMatchHandler
-func SearchEntry_previousMatchHandler(_ *C.GObject, data C.gpointer) {
+//export searchentry_previousMatchHandler
+func searchentry_previousMatchHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalSearchEntryPreviousMatchMap[index].callback
 	callback()
@@ -596,8 +596,8 @@ func (recv *SearchEntry) DisconnectStopSearch(connectionID int) {
 	delete(signalSearchEntryStopSearchMap, connectionID)
 }
 
-//export SearchEntry_stopSearchHandler
-func SearchEntry_stopSearchHandler(_ *C.GObject, data C.gpointer) {
+//export searchentry_stopSearchHandler
+func searchentry_stopSearchHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalSearchEntryStopSearchMap[index].callback
 	callback()

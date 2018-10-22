@@ -25,10 +25,10 @@ import (
 // #include <stdlib.h>
 /*
 
-	void AppInfoMonitor_changedHandler(GObject *, gpointer);
+	void appinfomonitor_changedHandler(GObject *, gpointer);
 
 	static gulong AppInfoMonitor_signal_connect_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "changed", G_CALLBACK(AppInfoMonitor_changedHandler), data);
+		return g_signal_connect(instance, "changed", G_CALLBACK(appinfomonitor_changedHandler), data);
 	}
 
 */
@@ -116,8 +116,8 @@ func (recv *AppInfoMonitor) DisconnectChanged(connectionID int) {
 	delete(signalAppInfoMonitorChangedMap, connectionID)
 }
 
-//export AppInfoMonitor_changedHandler
-func AppInfoMonitor_changedHandler(_ *C.GObject, data C.gpointer) {
+//export appinfomonitor_changedHandler
+func appinfomonitor_changedHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalAppInfoMonitorChangedMap[index].callback
 	callback()

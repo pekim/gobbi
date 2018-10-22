@@ -19,172 +19,172 @@ import (
 // #include <stdlib.h>
 /*
 
-	void Action_activateHandler(GObject *, gpointer);
+	void action_activateHandler(GObject *, gpointer);
 
 	static gulong Action_signal_connect_activate(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "activate", G_CALLBACK(Action_activateHandler), data);
+		return g_signal_connect(instance, "activate", G_CALLBACK(action_activateHandler), data);
 	}
 
 */
 /*
 
-	void ActionGroup_connectProxyHandler(GObject *, GtkAction *, GtkWidget *, gpointer);
+	void actiongroup_connectProxyHandler(GObject *, GtkAction *, GtkWidget *, gpointer);
 
 	static gulong ActionGroup_signal_connect_connect_proxy(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "connect-proxy", G_CALLBACK(ActionGroup_connectProxyHandler), data);
+		return g_signal_connect(instance, "connect-proxy", G_CALLBACK(actiongroup_connectProxyHandler), data);
 	}
 
 */
 /*
 
-	void ActionGroup_disconnectProxyHandler(GObject *, GtkAction *, GtkWidget *, gpointer);
+	void actiongroup_disconnectProxyHandler(GObject *, GtkAction *, GtkWidget *, gpointer);
 
 	static gulong ActionGroup_signal_connect_disconnect_proxy(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "disconnect-proxy", G_CALLBACK(ActionGroup_disconnectProxyHandler), data);
+		return g_signal_connect(instance, "disconnect-proxy", G_CALLBACK(actiongroup_disconnectProxyHandler), data);
 	}
 
 */
 /*
 
-	void ActionGroup_postActivateHandler(GObject *, GtkAction *, gpointer);
+	void actiongroup_postActivateHandler(GObject *, GtkAction *, gpointer);
 
 	static gulong ActionGroup_signal_connect_post_activate(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "post-activate", G_CALLBACK(ActionGroup_postActivateHandler), data);
+		return g_signal_connect(instance, "post-activate", G_CALLBACK(actiongroup_postActivateHandler), data);
 	}
 
 */
 /*
 
-	void ActionGroup_preActivateHandler(GObject *, GtkAction *, gpointer);
+	void actiongroup_preActivateHandler(GObject *, GtkAction *, gpointer);
 
 	static gulong ActionGroup_signal_connect_pre_activate(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "pre-activate", G_CALLBACK(ActionGroup_preActivateHandler), data);
+		return g_signal_connect(instance, "pre-activate", G_CALLBACK(actiongroup_preActivateHandler), data);
 	}
 
 */
 /*
 
-	void CellRenderer_editingCanceledHandler(GObject *, gpointer);
+	void cellrenderer_editingCanceledHandler(GObject *, gpointer);
 
 	static gulong CellRenderer_signal_connect_editing_canceled(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "editing-canceled", G_CALLBACK(CellRenderer_editingCanceledHandler), data);
+		return g_signal_connect(instance, "editing-canceled", G_CALLBACK(cellrenderer_editingCanceledHandler), data);
 	}
 
 */
 /*
 
-	void ColorButton_colorSetHandler(GObject *, gpointer);
+	void colorbutton_colorSetHandler(GObject *, gpointer);
 
 	static gulong ColorButton_signal_connect_color_set(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "color-set", G_CALLBACK(ColorButton_colorSetHandler), data);
+		return g_signal_connect(instance, "color-set", G_CALLBACK(colorbutton_colorSetHandler), data);
 	}
 
 */
 /*
 
-	void ComboBox_changedHandler(GObject *, gpointer);
+	void combobox_changedHandler(GObject *, gpointer);
 
 	static gulong ComboBox_signal_connect_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "changed", G_CALLBACK(ComboBox_changedHandler), data);
+		return g_signal_connect(instance, "changed", G_CALLBACK(combobox_changedHandler), data);
 	}
 
 */
 /*
 
-	void FontButton_fontSetHandler(GObject *, gpointer);
+	void fontbutton_fontSetHandler(GObject *, gpointer);
 
 	static gulong FontButton_signal_connect_font_set(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "font-set", G_CALLBACK(FontButton_fontSetHandler), data);
+		return g_signal_connect(instance, "font-set", G_CALLBACK(fontbutton_fontSetHandler), data);
 	}
 
 */
 /*
 
-	void RadioAction_changedHandler(GObject *, GtkRadioAction *, gpointer);
+	void radioaction_changedHandler(GObject *, GtkRadioAction *, gpointer);
 
 	static gulong RadioAction_signal_connect_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "changed", G_CALLBACK(RadioAction_changedHandler), data);
+		return g_signal_connect(instance, "changed", G_CALLBACK(radioaction_changedHandler), data);
 	}
 
 */
 /*
 
-	void RadioButton_groupChangedHandler(GObject *, gpointer);
+	void radiobutton_groupChangedHandler(GObject *, gpointer);
 
 	static gulong RadioButton_signal_connect_group_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "group-changed", G_CALLBACK(RadioButton_groupChangedHandler), data);
+		return g_signal_connect(instance, "group-changed", G_CALLBACK(radiobutton_groupChangedHandler), data);
 	}
 
 */
 /*
 
-	void Style_realizeHandler(GObject *, gpointer);
+	void style_realizeHandler(GObject *, gpointer);
 
 	static gulong Style_signal_connect_realize(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "realize", G_CALLBACK(Style_realizeHandler), data);
+		return g_signal_connect(instance, "realize", G_CALLBACK(style_realizeHandler), data);
 	}
 
 */
 /*
 
-	void Style_unrealizeHandler(GObject *, gpointer);
+	void style_unrealizeHandler(GObject *, gpointer);
 
 	static gulong Style_signal_connect_unrealize(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "unrealize", G_CALLBACK(Style_unrealizeHandler), data);
+		return g_signal_connect(instance, "unrealize", G_CALLBACK(style_unrealizeHandler), data);
 	}
 
 */
 /*
 
-	void UIManager_actionsChangedHandler(GObject *, gpointer);
+	void uimanager_actionsChangedHandler(GObject *, gpointer);
 
 	static gulong UIManager_signal_connect_actions_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "actions-changed", G_CALLBACK(UIManager_actionsChangedHandler), data);
+		return g_signal_connect(instance, "actions-changed", G_CALLBACK(uimanager_actionsChangedHandler), data);
 	}
 
 */
 /*
 
-	void UIManager_addWidgetHandler(GObject *, GtkWidget *, gpointer);
+	void uimanager_addWidgetHandler(GObject *, GtkWidget *, gpointer);
 
 	static gulong UIManager_signal_connect_add_widget(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "add-widget", G_CALLBACK(UIManager_addWidgetHandler), data);
+		return g_signal_connect(instance, "add-widget", G_CALLBACK(uimanager_addWidgetHandler), data);
 	}
 
 */
 /*
 
-	void UIManager_connectProxyHandler(GObject *, GtkAction *, GtkWidget *, gpointer);
+	void uimanager_connectProxyHandler(GObject *, GtkAction *, GtkWidget *, gpointer);
 
 	static gulong UIManager_signal_connect_connect_proxy(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "connect-proxy", G_CALLBACK(UIManager_connectProxyHandler), data);
+		return g_signal_connect(instance, "connect-proxy", G_CALLBACK(uimanager_connectProxyHandler), data);
 	}
 
 */
 /*
 
-	void UIManager_disconnectProxyHandler(GObject *, GtkAction *, GtkWidget *, gpointer);
+	void uimanager_disconnectProxyHandler(GObject *, GtkAction *, GtkWidget *, gpointer);
 
 	static gulong UIManager_signal_connect_disconnect_proxy(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "disconnect-proxy", G_CALLBACK(UIManager_disconnectProxyHandler), data);
+		return g_signal_connect(instance, "disconnect-proxy", G_CALLBACK(uimanager_disconnectProxyHandler), data);
 	}
 
 */
 /*
 
-	void UIManager_postActivateHandler(GObject *, GtkAction *, gpointer);
+	void uimanager_postActivateHandler(GObject *, GtkAction *, gpointer);
 
 	static gulong UIManager_signal_connect_post_activate(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "post-activate", G_CALLBACK(UIManager_postActivateHandler), data);
+		return g_signal_connect(instance, "post-activate", G_CALLBACK(uimanager_postActivateHandler), data);
 	}
 
 */
 /*
 
-	void UIManager_preActivateHandler(GObject *, GtkAction *, gpointer);
+	void uimanager_preActivateHandler(GObject *, GtkAction *, gpointer);
 
 	static gulong UIManager_signal_connect_pre_activate(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "pre-activate", G_CALLBACK(UIManager_preActivateHandler), data);
+		return g_signal_connect(instance, "pre-activate", G_CALLBACK(uimanager_preActivateHandler), data);
 	}
 
 */
@@ -242,8 +242,8 @@ func (recv *Action) DisconnectActivate(connectionID int) {
 	delete(signalActionActivateMap, connectionID)
 }
 
-//export Action_activateHandler
-func Action_activateHandler(_ *C.GObject, data C.gpointer) {
+//export action_activateHandler
+func action_activateHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalActionActivateMap[index].callback
 	callback()
@@ -425,8 +425,8 @@ func (recv *ActionGroup) DisconnectConnectProxy(connectionID int) {
 	delete(signalActionGroupConnectProxyMap, connectionID)
 }
 
-//export ActionGroup_connectProxyHandler
-func ActionGroup_connectProxyHandler(_ *C.GObject, c_action *C.GtkAction, c_proxy *C.GtkWidget, data C.gpointer) {
+//export actiongroup_connectProxyHandler
+func actiongroup_connectProxyHandler(_ *C.GObject, c_action *C.GtkAction, c_proxy *C.GtkWidget, data C.gpointer) {
 	action := ActionNewFromC(unsafe.Pointer(c_action))
 
 	proxy := WidgetNewFromC(unsafe.Pointer(c_proxy))
@@ -486,8 +486,8 @@ func (recv *ActionGroup) DisconnectDisconnectProxy(connectionID int) {
 	delete(signalActionGroupDisconnectProxyMap, connectionID)
 }
 
-//export ActionGroup_disconnectProxyHandler
-func ActionGroup_disconnectProxyHandler(_ *C.GObject, c_action *C.GtkAction, c_proxy *C.GtkWidget, data C.gpointer) {
+//export actiongroup_disconnectProxyHandler
+func actiongroup_disconnectProxyHandler(_ *C.GObject, c_action *C.GtkAction, c_proxy *C.GtkWidget, data C.gpointer) {
 	action := ActionNewFromC(unsafe.Pointer(c_action))
 
 	proxy := WidgetNewFromC(unsafe.Pointer(c_proxy))
@@ -547,8 +547,8 @@ func (recv *ActionGroup) DisconnectPostActivate(connectionID int) {
 	delete(signalActionGroupPostActivateMap, connectionID)
 }
 
-//export ActionGroup_postActivateHandler
-func ActionGroup_postActivateHandler(_ *C.GObject, c_action *C.GtkAction, data C.gpointer) {
+//export actiongroup_postActivateHandler
+func actiongroup_postActivateHandler(_ *C.GObject, c_action *C.GtkAction, data C.gpointer) {
 	action := ActionNewFromC(unsafe.Pointer(c_action))
 
 	index := int(uintptr(data))
@@ -606,8 +606,8 @@ func (recv *ActionGroup) DisconnectPreActivate(connectionID int) {
 	delete(signalActionGroupPreActivateMap, connectionID)
 }
 
-//export ActionGroup_preActivateHandler
-func ActionGroup_preActivateHandler(_ *C.GObject, c_action *C.GtkAction, data C.gpointer) {
+//export actiongroup_preActivateHandler
+func actiongroup_preActivateHandler(_ *C.GObject, c_action *C.GtkAction, data C.gpointer) {
 	action := ActionNewFromC(unsafe.Pointer(c_action))
 
 	index := int(uintptr(data))
@@ -906,8 +906,8 @@ func (recv *CellRenderer) DisconnectEditingCanceled(connectionID int) {
 	delete(signalCellRendererEditingCanceledMap, connectionID)
 }
 
-//export CellRenderer_editingCanceledHandler
-func CellRenderer_editingCanceledHandler(_ *C.GObject, data C.gpointer) {
+//export cellrenderer_editingCanceledHandler
+func cellrenderer_editingCanceledHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalCellRendererEditingCanceledMap[index].callback
 	callback()
@@ -985,8 +985,8 @@ func (recv *ColorButton) DisconnectColorSet(connectionID int) {
 	delete(signalColorButtonColorSetMap, connectionID)
 }
 
-//export ColorButton_colorSetHandler
-func ColorButton_colorSetHandler(_ *C.GObject, data C.gpointer) {
+//export colorbutton_colorSetHandler
+func colorbutton_colorSetHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalColorButtonColorSetMap[index].callback
 	callback()
@@ -1133,8 +1133,8 @@ func (recv *ComboBox) DisconnectChanged(connectionID int) {
 	delete(signalComboBoxChangedMap, connectionID)
 }
 
-//export ComboBox_changedHandler
-func ComboBox_changedHandler(_ *C.GObject, data C.gpointer) {
+//export combobox_changedHandler
+func combobox_changedHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalComboBoxChangedMap[index].callback
 	callback()
@@ -1659,8 +1659,8 @@ func (recv *FontButton) DisconnectFontSet(connectionID int) {
 	delete(signalFontButtonFontSetMap, connectionID)
 }
 
-//export FontButton_fontSetHandler
-func FontButton_fontSetHandler(_ *C.GObject, data C.gpointer) {
+//export fontbutton_fontSetHandler
+func fontbutton_fontSetHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalFontButtonFontSetMap[index].callback
 	callback()
@@ -2130,8 +2130,8 @@ func (recv *RadioAction) DisconnectChanged(connectionID int) {
 	delete(signalRadioActionChangedMap, connectionID)
 }
 
-//export RadioAction_changedHandler
-func RadioAction_changedHandler(_ *C.GObject, c_current *C.GtkRadioAction, data C.gpointer) {
+//export radioaction_changedHandler
+func radioaction_changedHandler(_ *C.GObject, c_current *C.GtkRadioAction, data C.gpointer) {
 	current := RadioActionNewFromC(unsafe.Pointer(c_current))
 
 	index := int(uintptr(data))
@@ -2236,8 +2236,8 @@ func (recv *RadioButton) DisconnectGroupChanged(connectionID int) {
 	delete(signalRadioButtonGroupChangedMap, connectionID)
 }
 
-//export RadioButton_groupChangedHandler
-func RadioButton_groupChangedHandler(_ *C.GObject, data C.gpointer) {
+//export radiobutton_groupChangedHandler
+func radiobutton_groupChangedHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalRadioButtonGroupChangedMap[index].callback
 	callback()
@@ -2449,8 +2449,8 @@ func (recv *Style) DisconnectRealize(connectionID int) {
 	delete(signalStyleRealizeMap, connectionID)
 }
 
-//export Style_realizeHandler
-func Style_realizeHandler(_ *C.GObject, data C.gpointer) {
+//export style_realizeHandler
+func style_realizeHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalStyleRealizeMap[index].callback
 	callback()
@@ -2506,8 +2506,8 @@ func (recv *Style) DisconnectUnrealize(connectionID int) {
 	delete(signalStyleUnrealizeMap, connectionID)
 }
 
-//export Style_unrealizeHandler
-func Style_unrealizeHandler(_ *C.GObject, data C.gpointer) {
+//export style_unrealizeHandler
+func style_unrealizeHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalStyleUnrealizeMap[index].callback
 	callback()
@@ -3185,8 +3185,8 @@ func (recv *UIManager) DisconnectActionsChanged(connectionID int) {
 	delete(signalUIManagerActionsChangedMap, connectionID)
 }
 
-//export UIManager_actionsChangedHandler
-func UIManager_actionsChangedHandler(_ *C.GObject, data C.gpointer) {
+//export uimanager_actionsChangedHandler
+func uimanager_actionsChangedHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalUIManagerActionsChangedMap[index].callback
 	callback()
@@ -3242,8 +3242,8 @@ func (recv *UIManager) DisconnectAddWidget(connectionID int) {
 	delete(signalUIManagerAddWidgetMap, connectionID)
 }
 
-//export UIManager_addWidgetHandler
-func UIManager_addWidgetHandler(_ *C.GObject, c_widget *C.GtkWidget, data C.gpointer) {
+//export uimanager_addWidgetHandler
+func uimanager_addWidgetHandler(_ *C.GObject, c_widget *C.GtkWidget, data C.gpointer) {
 	widget := WidgetNewFromC(unsafe.Pointer(c_widget))
 
 	index := int(uintptr(data))
@@ -3301,8 +3301,8 @@ func (recv *UIManager) DisconnectConnectProxy(connectionID int) {
 	delete(signalUIManagerConnectProxyMap, connectionID)
 }
 
-//export UIManager_connectProxyHandler
-func UIManager_connectProxyHandler(_ *C.GObject, c_action *C.GtkAction, c_proxy *C.GtkWidget, data C.gpointer) {
+//export uimanager_connectProxyHandler
+func uimanager_connectProxyHandler(_ *C.GObject, c_action *C.GtkAction, c_proxy *C.GtkWidget, data C.gpointer) {
 	action := ActionNewFromC(unsafe.Pointer(c_action))
 
 	proxy := WidgetNewFromC(unsafe.Pointer(c_proxy))
@@ -3362,8 +3362,8 @@ func (recv *UIManager) DisconnectDisconnectProxy(connectionID int) {
 	delete(signalUIManagerDisconnectProxyMap, connectionID)
 }
 
-//export UIManager_disconnectProxyHandler
-func UIManager_disconnectProxyHandler(_ *C.GObject, c_action *C.GtkAction, c_proxy *C.GtkWidget, data C.gpointer) {
+//export uimanager_disconnectProxyHandler
+func uimanager_disconnectProxyHandler(_ *C.GObject, c_action *C.GtkAction, c_proxy *C.GtkWidget, data C.gpointer) {
 	action := ActionNewFromC(unsafe.Pointer(c_action))
 
 	proxy := WidgetNewFromC(unsafe.Pointer(c_proxy))
@@ -3423,8 +3423,8 @@ func (recv *UIManager) DisconnectPostActivate(connectionID int) {
 	delete(signalUIManagerPostActivateMap, connectionID)
 }
 
-//export UIManager_postActivateHandler
-func UIManager_postActivateHandler(_ *C.GObject, c_action *C.GtkAction, data C.gpointer) {
+//export uimanager_postActivateHandler
+func uimanager_postActivateHandler(_ *C.GObject, c_action *C.GtkAction, data C.gpointer) {
 	action := ActionNewFromC(unsafe.Pointer(c_action))
 
 	index := int(uintptr(data))
@@ -3482,8 +3482,8 @@ func (recv *UIManager) DisconnectPreActivate(connectionID int) {
 	delete(signalUIManagerPreActivateMap, connectionID)
 }
 
-//export UIManager_preActivateHandler
-func UIManager_preActivateHandler(_ *C.GObject, c_action *C.GtkAction, data C.gpointer) {
+//export uimanager_preActivateHandler
+func uimanager_preActivateHandler(_ *C.GObject, c_action *C.GtkAction, data C.gpointer) {
 	action := ActionNewFromC(unsafe.Pointer(c_action))
 
 	index := int(uintptr(data))

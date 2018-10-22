@@ -53,7 +53,7 @@ func (s *Signal) initNames() {
 	s.varNameLock = fmt.Sprintf("signal%s%sLock", s.record.Name, signalGoName)
 
 	s.goNameHandler = fmt.Sprintf("%s_%sHandler",
-		s.record.Name,
+		makeGoNameInternal(s.record.Name, false),
 		makeGoNameInternal(s.Name, false))
 
 	s.goNameConnectFunction = fmt.Sprintf("Connect%s", signalGoName)

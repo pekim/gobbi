@@ -22,28 +22,28 @@ import (
 // #include <stdlib.h>
 /*
 
-	void StyleContext_changedHandler(GObject *, gpointer);
+	void stylecontext_changedHandler(GObject *, gpointer);
 
 	static gulong StyleContext_signal_connect_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "changed", G_CALLBACK(StyleContext_changedHandler), data);
+		return g_signal_connect(instance, "changed", G_CALLBACK(stylecontext_changedHandler), data);
 	}
 
 */
 /*
 
-	gboolean Widget_drawHandler(GObject *, cairo_t *, gpointer);
+	gboolean widget_drawHandler(GObject *, cairo_t *, gpointer);
 
 	static gulong Widget_signal_connect_draw(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "draw", G_CALLBACK(Widget_drawHandler), data);
+		return g_signal_connect(instance, "draw", G_CALLBACK(widget_drawHandler), data);
 	}
 
 */
 /*
 
-	void Widget_styleUpdatedHandler(GObject *, gpointer);
+	void widget_styleUpdatedHandler(GObject *, gpointer);
 
 	static gulong Widget_signal_connect_style_updated(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "style-updated", G_CALLBACK(Widget_styleUpdatedHandler), data);
+		return g_signal_connect(instance, "style-updated", G_CALLBACK(widget_styleUpdatedHandler), data);
 	}
 
 */
@@ -1627,8 +1627,8 @@ func (recv *StyleContext) DisconnectChanged(connectionID int) {
 	delete(signalStyleContextChangedMap, connectionID)
 }
 
-//export StyleContext_changedHandler
-func StyleContext_changedHandler(_ *C.GObject, data C.gpointer) {
+//export stylecontext_changedHandler
+func stylecontext_changedHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalStyleContextChangedMap[index].callback
 	callback()
@@ -2388,8 +2388,8 @@ func (recv *Widget) DisconnectDraw(connectionID int) {
 	delete(signalWidgetDrawMap, connectionID)
 }
 
-//export Widget_drawHandler
-func Widget_drawHandler(_ *C.GObject, c_cr *C.cairo_t, data C.gpointer) C.gboolean {
+//export widget_drawHandler
+func widget_drawHandler(_ *C.GObject, c_cr *C.cairo_t, data C.gpointer) C.gboolean {
 	cr := cairo.ContextNewFromC(unsafe.Pointer(c_cr))
 
 	index := int(uintptr(data))
@@ -2452,8 +2452,8 @@ func (recv *Widget) DisconnectStyleUpdated(connectionID int) {
 	delete(signalWidgetStyleUpdatedMap, connectionID)
 }
 
-//export Widget_styleUpdatedHandler
-func Widget_styleUpdatedHandler(_ *C.GObject, data C.gpointer) {
+//export widget_styleUpdatedHandler
+func widget_styleUpdatedHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalWidgetStyleUpdatedMap[index].callback
 	callback()

@@ -16,19 +16,19 @@ import (
 // #include <stdlib.h>
 /*
 
-	void Application_windowAddedHandler(GObject *, GtkWindow *, gpointer);
+	void application_windowAddedHandler(GObject *, GtkWindow *, gpointer);
 
 	static gulong Application_signal_connect_window_added(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "window-added", G_CALLBACK(Application_windowAddedHandler), data);
+		return g_signal_connect(instance, "window-added", G_CALLBACK(application_windowAddedHandler), data);
 	}
 
 */
 /*
 
-	void Application_windowRemovedHandler(GObject *, GtkWindow *, gpointer);
+	void application_windowRemovedHandler(GObject *, GtkWindow *, gpointer);
 
 	static gulong Application_signal_connect_window_removed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "window-removed", G_CALLBACK(Application_windowRemovedHandler), data);
+		return g_signal_connect(instance, "window-removed", G_CALLBACK(application_windowRemovedHandler), data);
 	}
 
 */
@@ -112,8 +112,8 @@ func (recv *Application) DisconnectWindowAdded(connectionID int) {
 	delete(signalApplicationWindowAddedMap, connectionID)
 }
 
-//export Application_windowAddedHandler
-func Application_windowAddedHandler(_ *C.GObject, c_window *C.GtkWindow, data C.gpointer) {
+//export application_windowAddedHandler
+func application_windowAddedHandler(_ *C.GObject, c_window *C.GtkWindow, data C.gpointer) {
 	window := WindowNewFromC(unsafe.Pointer(c_window))
 
 	index := int(uintptr(data))
@@ -171,8 +171,8 @@ func (recv *Application) DisconnectWindowRemoved(connectionID int) {
 	delete(signalApplicationWindowRemovedMap, connectionID)
 }
 
-//export Application_windowRemovedHandler
-func Application_windowRemovedHandler(_ *C.GObject, c_window *C.GtkWindow, data C.gpointer) {
+//export application_windowRemovedHandler
+func application_windowRemovedHandler(_ *C.GObject, c_window *C.GtkWindow, data C.gpointer) {
 	window := WindowNewFromC(unsafe.Pointer(c_window))
 
 	index := int(uintptr(data))

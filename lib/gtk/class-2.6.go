@@ -20,10 +20,10 @@ import (
 // #include <stdlib.h>
 /*
 
-	void Clipboard_ownerChangeHandler(GObject *, GdkEventOwnerChange *, gpointer);
+	void clipboard_ownerChangeHandler(GObject *, GdkEventOwnerChange *, gpointer);
 
 	static gulong Clipboard_signal_connect_owner_change(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "owner-change", G_CALLBACK(Clipboard_ownerChangeHandler), data);
+		return g_signal_connect(instance, "owner-change", G_CALLBACK(clipboard_ownerChangeHandler), data);
 	}
 
 */
@@ -442,8 +442,8 @@ func (recv *Clipboard) DisconnectOwnerChange(connectionID int) {
 	delete(signalClipboardOwnerChangeMap, connectionID)
 }
 
-//export Clipboard_ownerChangeHandler
-func Clipboard_ownerChangeHandler(_ *C.GObject, c_event *C.GdkEventOwnerChange, data C.gpointer) {
+//export clipboard_ownerChangeHandler
+func clipboard_ownerChangeHandler(_ *C.GObject, c_event *C.GdkEventOwnerChange, data C.gpointer) {
 	event := gdk.EventOwnerChangeNewFromC(unsafe.Pointer(c_event))
 
 	index := int(uintptr(data))

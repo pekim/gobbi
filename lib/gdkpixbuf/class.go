@@ -14,19 +14,19 @@ import (
 // #include <stdlib.h>
 /*
 
-	void PixbufLoader_areaPreparedHandler(GObject *, gpointer);
+	void pixbufloader_areaPreparedHandler(GObject *, gpointer);
 
 	static gulong PixbufLoader_signal_connect_area_prepared(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "area-prepared", G_CALLBACK(PixbufLoader_areaPreparedHandler), data);
+		return g_signal_connect(instance, "area-prepared", G_CALLBACK(pixbufloader_areaPreparedHandler), data);
 	}
 
 */
 /*
 
-	void PixbufLoader_closedHandler(GObject *, gpointer);
+	void pixbufloader_closedHandler(GObject *, gpointer);
 
 	static gulong PixbufLoader_signal_connect_closed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "closed", G_CALLBACK(PixbufLoader_closedHandler), data);
+		return g_signal_connect(instance, "closed", G_CALLBACK(pixbufloader_closedHandler), data);
 	}
 
 */
@@ -672,8 +672,8 @@ func (recv *PixbufLoader) DisconnectAreaPrepared(connectionID int) {
 	delete(signalPixbufLoaderAreaPreparedMap, connectionID)
 }
 
-//export PixbufLoader_areaPreparedHandler
-func PixbufLoader_areaPreparedHandler(_ *C.GObject, data C.gpointer) {
+//export pixbufloader_areaPreparedHandler
+func pixbufloader_areaPreparedHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalPixbufLoaderAreaPreparedMap[index].callback
 	callback()
@@ -731,8 +731,8 @@ func (recv *PixbufLoader) DisconnectClosed(connectionID int) {
 	delete(signalPixbufLoaderClosedMap, connectionID)
 }
 
-//export PixbufLoader_closedHandler
-func PixbufLoader_closedHandler(_ *C.GObject, data C.gpointer) {
+//export pixbufloader_closedHandler
+func pixbufloader_closedHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalPixbufLoaderClosedMap[index].callback
 	callback()

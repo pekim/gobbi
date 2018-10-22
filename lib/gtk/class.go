@@ -22,1603 +22,1603 @@ import (
 // #include <stdlib.h>
 /*
 
-	void Adjustment_changedHandler(GObject *, gpointer);
+	void adjustment_changedHandler(GObject *, gpointer);
 
 	static gulong Adjustment_signal_connect_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "changed", G_CALLBACK(Adjustment_changedHandler), data);
+		return g_signal_connect(instance, "changed", G_CALLBACK(adjustment_changedHandler), data);
 	}
 
 */
 /*
 
-	void Adjustment_valueChangedHandler(GObject *, gpointer);
+	void adjustment_valueChangedHandler(GObject *, gpointer);
 
 	static gulong Adjustment_signal_connect_value_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "value-changed", G_CALLBACK(Adjustment_valueChangedHandler), data);
+		return g_signal_connect(instance, "value-changed", G_CALLBACK(adjustment_valueChangedHandler), data);
 	}
 
 */
 /*
 
-	void Assistant_escapeHandler(GObject *, gpointer);
+	void assistant_escapeHandler(GObject *, gpointer);
 
 	static gulong Assistant_signal_connect_escape(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "escape", G_CALLBACK(Assistant_escapeHandler), data);
+		return g_signal_connect(instance, "escape", G_CALLBACK(assistant_escapeHandler), data);
 	}
 
 */
 /*
 
-	void Button_activateHandler(GObject *, gpointer);
+	void button_activateHandler(GObject *, gpointer);
 
 	static gulong Button_signal_connect_activate(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "activate", G_CALLBACK(Button_activateHandler), data);
+		return g_signal_connect(instance, "activate", G_CALLBACK(button_activateHandler), data);
 	}
 
 */
 /*
 
-	void Button_clickedHandler(GObject *, gpointer);
+	void button_clickedHandler(GObject *, gpointer);
 
 	static gulong Button_signal_connect_clicked(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "clicked", G_CALLBACK(Button_clickedHandler), data);
+		return g_signal_connect(instance, "clicked", G_CALLBACK(button_clickedHandler), data);
 	}
 
 */
 /*
 
-	void Button_enterHandler(GObject *, gpointer);
+	void button_enterHandler(GObject *, gpointer);
 
 	static gulong Button_signal_connect_enter(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "enter", G_CALLBACK(Button_enterHandler), data);
+		return g_signal_connect(instance, "enter", G_CALLBACK(button_enterHandler), data);
 	}
 
 */
 /*
 
-	void Button_leaveHandler(GObject *, gpointer);
+	void button_leaveHandler(GObject *, gpointer);
 
 	static gulong Button_signal_connect_leave(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "leave", G_CALLBACK(Button_leaveHandler), data);
+		return g_signal_connect(instance, "leave", G_CALLBACK(button_leaveHandler), data);
 	}
 
 */
 /*
 
-	void Button_pressedHandler(GObject *, gpointer);
+	void button_pressedHandler(GObject *, gpointer);
 
 	static gulong Button_signal_connect_pressed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "pressed", G_CALLBACK(Button_pressedHandler), data);
+		return g_signal_connect(instance, "pressed", G_CALLBACK(button_pressedHandler), data);
 	}
 
 */
 /*
 
-	void Button_releasedHandler(GObject *, gpointer);
+	void button_releasedHandler(GObject *, gpointer);
 
 	static gulong Button_signal_connect_released(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "released", G_CALLBACK(Button_releasedHandler), data);
+		return g_signal_connect(instance, "released", G_CALLBACK(button_releasedHandler), data);
 	}
 
 */
 /*
 
-	void Calendar_daySelectedHandler(GObject *, gpointer);
+	void calendar_daySelectedHandler(GObject *, gpointer);
 
 	static gulong Calendar_signal_connect_day_selected(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "day-selected", G_CALLBACK(Calendar_daySelectedHandler), data);
+		return g_signal_connect(instance, "day-selected", G_CALLBACK(calendar_daySelectedHandler), data);
 	}
 
 */
 /*
 
-	void Calendar_daySelectedDoubleClickHandler(GObject *, gpointer);
+	void calendar_daySelectedDoubleClickHandler(GObject *, gpointer);
 
 	static gulong Calendar_signal_connect_day_selected_double_click(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "day-selected-double-click", G_CALLBACK(Calendar_daySelectedDoubleClickHandler), data);
+		return g_signal_connect(instance, "day-selected-double-click", G_CALLBACK(calendar_daySelectedDoubleClickHandler), data);
 	}
 
 */
 /*
 
-	void Calendar_monthChangedHandler(GObject *, gpointer);
+	void calendar_monthChangedHandler(GObject *, gpointer);
 
 	static gulong Calendar_signal_connect_month_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "month-changed", G_CALLBACK(Calendar_monthChangedHandler), data);
+		return g_signal_connect(instance, "month-changed", G_CALLBACK(calendar_monthChangedHandler), data);
 	}
 
 */
 /*
 
-	void Calendar_nextMonthHandler(GObject *, gpointer);
+	void calendar_nextMonthHandler(GObject *, gpointer);
 
 	static gulong Calendar_signal_connect_next_month(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "next-month", G_CALLBACK(Calendar_nextMonthHandler), data);
+		return g_signal_connect(instance, "next-month", G_CALLBACK(calendar_nextMonthHandler), data);
 	}
 
 */
 /*
 
-	void Calendar_nextYearHandler(GObject *, gpointer);
+	void calendar_nextYearHandler(GObject *, gpointer);
 
 	static gulong Calendar_signal_connect_next_year(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "next-year", G_CALLBACK(Calendar_nextYearHandler), data);
+		return g_signal_connect(instance, "next-year", G_CALLBACK(calendar_nextYearHandler), data);
 	}
 
 */
 /*
 
-	void Calendar_prevMonthHandler(GObject *, gpointer);
+	void calendar_prevMonthHandler(GObject *, gpointer);
 
 	static gulong Calendar_signal_connect_prev_month(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "prev-month", G_CALLBACK(Calendar_prevMonthHandler), data);
+		return g_signal_connect(instance, "prev-month", G_CALLBACK(calendar_prevMonthHandler), data);
 	}
 
 */
 /*
 
-	void Calendar_prevYearHandler(GObject *, gpointer);
+	void calendar_prevYearHandler(GObject *, gpointer);
 
 	static gulong Calendar_signal_connect_prev_year(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "prev-year", G_CALLBACK(Calendar_prevYearHandler), data);
+		return g_signal_connect(instance, "prev-year", G_CALLBACK(calendar_prevYearHandler), data);
 	}
 
 */
 /*
 
-	void CheckMenuItem_toggledHandler(GObject *, gpointer);
+	void checkmenuitem_toggledHandler(GObject *, gpointer);
 
 	static gulong CheckMenuItem_signal_connect_toggled(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "toggled", G_CALLBACK(CheckMenuItem_toggledHandler), data);
+		return g_signal_connect(instance, "toggled", G_CALLBACK(checkmenuitem_toggledHandler), data);
 	}
 
 */
 /*
 
-	void ColorSelection_colorChangedHandler(GObject *, gpointer);
+	void colorselection_colorChangedHandler(GObject *, gpointer);
 
 	static gulong ColorSelection_signal_connect_color_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "color-changed", G_CALLBACK(ColorSelection_colorChangedHandler), data);
+		return g_signal_connect(instance, "color-changed", G_CALLBACK(colorselection_colorChangedHandler), data);
 	}
 
 */
 /*
 
-	void Container_addHandler(GObject *, GtkWidget *, gpointer);
+	void container_addHandler(GObject *, GtkWidget *, gpointer);
 
 	static gulong Container_signal_connect_add(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "add", G_CALLBACK(Container_addHandler), data);
+		return g_signal_connect(instance, "add", G_CALLBACK(container_addHandler), data);
 	}
 
 */
 /*
 
-	void Container_checkResizeHandler(GObject *, gpointer);
+	void container_checkResizeHandler(GObject *, gpointer);
 
 	static gulong Container_signal_connect_check_resize(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "check-resize", G_CALLBACK(Container_checkResizeHandler), data);
+		return g_signal_connect(instance, "check-resize", G_CALLBACK(container_checkResizeHandler), data);
 	}
 
 */
 /*
 
-	void Container_removeHandler(GObject *, GtkWidget *, gpointer);
+	void container_removeHandler(GObject *, GtkWidget *, gpointer);
 
 	static gulong Container_signal_connect_remove(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "remove", G_CALLBACK(Container_removeHandler), data);
+		return g_signal_connect(instance, "remove", G_CALLBACK(container_removeHandler), data);
 	}
 
 */
 /*
 
-	void Container_setFocusChildHandler(GObject *, GtkWidget *, gpointer);
+	void container_setFocusChildHandler(GObject *, GtkWidget *, gpointer);
 
 	static gulong Container_signal_connect_set_focus_child(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "set-focus-child", G_CALLBACK(Container_setFocusChildHandler), data);
+		return g_signal_connect(instance, "set-focus-child", G_CALLBACK(container_setFocusChildHandler), data);
 	}
 
 */
 /*
 
-	void CssProvider_parsingErrorHandler(GObject *, GtkCssSection *, GError *, gpointer);
+	void cssprovider_parsingErrorHandler(GObject *, GtkCssSection *, GError *, gpointer);
 
 	static gulong CssProvider_signal_connect_parsing_error(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "parsing-error", G_CALLBACK(CssProvider_parsingErrorHandler), data);
+		return g_signal_connect(instance, "parsing-error", G_CALLBACK(cssprovider_parsingErrorHandler), data);
 	}
 
 */
 /*
 
-	void Dialog_closeHandler(GObject *, gpointer);
+	void dialog_closeHandler(GObject *, gpointer);
 
 	static gulong Dialog_signal_connect_close(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "close", G_CALLBACK(Dialog_closeHandler), data);
+		return g_signal_connect(instance, "close", G_CALLBACK(dialog_closeHandler), data);
 	}
 
 */
 /*
 
-	void Entry_activateHandler(GObject *, gpointer);
+	void entry_activateHandler(GObject *, gpointer);
 
 	static gulong Entry_signal_connect_activate(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "activate", G_CALLBACK(Entry_activateHandler), data);
+		return g_signal_connect(instance, "activate", G_CALLBACK(entry_activateHandler), data);
 	}
 
 */
 /*
 
-	void Entry_backspaceHandler(GObject *, gpointer);
+	void entry_backspaceHandler(GObject *, gpointer);
 
 	static gulong Entry_signal_connect_backspace(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "backspace", G_CALLBACK(Entry_backspaceHandler), data);
+		return g_signal_connect(instance, "backspace", G_CALLBACK(entry_backspaceHandler), data);
 	}
 
 */
 /*
 
-	void Entry_copyClipboardHandler(GObject *, gpointer);
+	void entry_copyClipboardHandler(GObject *, gpointer);
 
 	static gulong Entry_signal_connect_copy_clipboard(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "copy-clipboard", G_CALLBACK(Entry_copyClipboardHandler), data);
+		return g_signal_connect(instance, "copy-clipboard", G_CALLBACK(entry_copyClipboardHandler), data);
 	}
 
 */
 /*
 
-	void Entry_cutClipboardHandler(GObject *, gpointer);
+	void entry_cutClipboardHandler(GObject *, gpointer);
 
 	static gulong Entry_signal_connect_cut_clipboard(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "cut-clipboard", G_CALLBACK(Entry_cutClipboardHandler), data);
+		return g_signal_connect(instance, "cut-clipboard", G_CALLBACK(entry_cutClipboardHandler), data);
 	}
 
 */
 /*
 
-	void Entry_pasteClipboardHandler(GObject *, gpointer);
+	void entry_pasteClipboardHandler(GObject *, gpointer);
 
 	static gulong Entry_signal_connect_paste_clipboard(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "paste-clipboard", G_CALLBACK(Entry_pasteClipboardHandler), data);
+		return g_signal_connect(instance, "paste-clipboard", G_CALLBACK(entry_pasteClipboardHandler), data);
 	}
 
 */
 /*
 
-	void Entry_populatePopupHandler(GObject *, GtkWidget *, gpointer);
+	void entry_populatePopupHandler(GObject *, GtkWidget *, gpointer);
 
 	static gulong Entry_signal_connect_populate_popup(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "populate-popup", G_CALLBACK(Entry_populatePopupHandler), data);
+		return g_signal_connect(instance, "populate-popup", G_CALLBACK(entry_populatePopupHandler), data);
 	}
 
 */
 /*
 
-	void Entry_toggleOverwriteHandler(GObject *, gpointer);
+	void entry_toggleOverwriteHandler(GObject *, gpointer);
 
 	static gulong Entry_signal_connect_toggle_overwrite(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "toggle-overwrite", G_CALLBACK(Entry_toggleOverwriteHandler), data);
+		return g_signal_connect(instance, "toggle-overwrite", G_CALLBACK(entry_toggleOverwriteHandler), data);
 	}
 
 */
 /*
 
-	void Expander_activateHandler(GObject *, gpointer);
+	void expander_activateHandler(GObject *, gpointer);
 
 	static gulong Expander_signal_connect_activate(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "activate", G_CALLBACK(Expander_activateHandler), data);
+		return g_signal_connect(instance, "activate", G_CALLBACK(expander_activateHandler), data);
 	}
 
 */
 /*
 
-	void FileChooserWidget_desktopFolderHandler(GObject *, gpointer);
+	void filechooserwidget_desktopFolderHandler(GObject *, gpointer);
 
 	static gulong FileChooserWidget_signal_connect_desktop_folder(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "desktop-folder", G_CALLBACK(FileChooserWidget_desktopFolderHandler), data);
+		return g_signal_connect(instance, "desktop-folder", G_CALLBACK(filechooserwidget_desktopFolderHandler), data);
 	}
 
 */
 /*
 
-	void FileChooserWidget_downFolderHandler(GObject *, gpointer);
+	void filechooserwidget_downFolderHandler(GObject *, gpointer);
 
 	static gulong FileChooserWidget_signal_connect_down_folder(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "down-folder", G_CALLBACK(FileChooserWidget_downFolderHandler), data);
+		return g_signal_connect(instance, "down-folder", G_CALLBACK(filechooserwidget_downFolderHandler), data);
 	}
 
 */
 /*
 
-	void FileChooserWidget_homeFolderHandler(GObject *, gpointer);
+	void filechooserwidget_homeFolderHandler(GObject *, gpointer);
 
 	static gulong FileChooserWidget_signal_connect_home_folder(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "home-folder", G_CALLBACK(FileChooserWidget_homeFolderHandler), data);
+		return g_signal_connect(instance, "home-folder", G_CALLBACK(filechooserwidget_homeFolderHandler), data);
 	}
 
 */
 /*
 
-	void FileChooserWidget_locationPopupOnPasteHandler(GObject *, gpointer);
+	void filechooserwidget_locationPopupOnPasteHandler(GObject *, gpointer);
 
 	static gulong FileChooserWidget_signal_connect_location_popup_on_paste(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "location-popup-on-paste", G_CALLBACK(FileChooserWidget_locationPopupOnPasteHandler), data);
+		return g_signal_connect(instance, "location-popup-on-paste", G_CALLBACK(filechooserwidget_locationPopupOnPasteHandler), data);
 	}
 
 */
 /*
 
-	void FileChooserWidget_locationTogglePopupHandler(GObject *, gpointer);
+	void filechooserwidget_locationTogglePopupHandler(GObject *, gpointer);
 
 	static gulong FileChooserWidget_signal_connect_location_toggle_popup(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "location-toggle-popup", G_CALLBACK(FileChooserWidget_locationTogglePopupHandler), data);
+		return g_signal_connect(instance, "location-toggle-popup", G_CALLBACK(filechooserwidget_locationTogglePopupHandler), data);
 	}
 
 */
 /*
 
-	void FileChooserWidget_placesShortcutHandler(GObject *, gpointer);
+	void filechooserwidget_placesShortcutHandler(GObject *, gpointer);
 
 	static gulong FileChooserWidget_signal_connect_places_shortcut(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "places-shortcut", G_CALLBACK(FileChooserWidget_placesShortcutHandler), data);
+		return g_signal_connect(instance, "places-shortcut", G_CALLBACK(filechooserwidget_placesShortcutHandler), data);
 	}
 
 */
 /*
 
-	void FileChooserWidget_recentShortcutHandler(GObject *, gpointer);
+	void filechooserwidget_recentShortcutHandler(GObject *, gpointer);
 
 	static gulong FileChooserWidget_signal_connect_recent_shortcut(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "recent-shortcut", G_CALLBACK(FileChooserWidget_recentShortcutHandler), data);
+		return g_signal_connect(instance, "recent-shortcut", G_CALLBACK(filechooserwidget_recentShortcutHandler), data);
 	}
 
 */
 /*
 
-	void FileChooserWidget_searchShortcutHandler(GObject *, gpointer);
+	void filechooserwidget_searchShortcutHandler(GObject *, gpointer);
 
 	static gulong FileChooserWidget_signal_connect_search_shortcut(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "search-shortcut", G_CALLBACK(FileChooserWidget_searchShortcutHandler), data);
+		return g_signal_connect(instance, "search-shortcut", G_CALLBACK(filechooserwidget_searchShortcutHandler), data);
 	}
 
 */
 /*
 
-	void FileChooserWidget_showHiddenHandler(GObject *, gpointer);
+	void filechooserwidget_showHiddenHandler(GObject *, gpointer);
 
 	static gulong FileChooserWidget_signal_connect_show_hidden(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "show-hidden", G_CALLBACK(FileChooserWidget_showHiddenHandler), data);
+		return g_signal_connect(instance, "show-hidden", G_CALLBACK(filechooserwidget_showHiddenHandler), data);
 	}
 
 */
 /*
 
-	void FileChooserWidget_upFolderHandler(GObject *, gpointer);
+	void filechooserwidget_upFolderHandler(GObject *, gpointer);
 
 	static gulong FileChooserWidget_signal_connect_up_folder(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "up-folder", G_CALLBACK(FileChooserWidget_upFolderHandler), data);
+		return g_signal_connect(instance, "up-folder", G_CALLBACK(filechooserwidget_upFolderHandler), data);
 	}
 
 */
 /*
 
-	void FlowBox_activateCursorChildHandler(GObject *, gpointer);
+	void flowbox_activateCursorChildHandler(GObject *, gpointer);
 
 	static gulong FlowBox_signal_connect_activate_cursor_child(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "activate-cursor-child", G_CALLBACK(FlowBox_activateCursorChildHandler), data);
+		return g_signal_connect(instance, "activate-cursor-child", G_CALLBACK(flowbox_activateCursorChildHandler), data);
 	}
 
 */
 /*
 
-	void FlowBox_childActivatedHandler(GObject *, GtkFlowBoxChild *, gpointer);
+	void flowbox_childActivatedHandler(GObject *, GtkFlowBoxChild *, gpointer);
 
 	static gulong FlowBox_signal_connect_child_activated(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "child-activated", G_CALLBACK(FlowBox_childActivatedHandler), data);
+		return g_signal_connect(instance, "child-activated", G_CALLBACK(flowbox_childActivatedHandler), data);
 	}
 
 */
 /*
 
-	void FlowBox_selectAllHandler(GObject *, gpointer);
+	void flowbox_selectAllHandler(GObject *, gpointer);
 
 	static gulong FlowBox_signal_connect_select_all(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "select-all", G_CALLBACK(FlowBox_selectAllHandler), data);
+		return g_signal_connect(instance, "select-all", G_CALLBACK(flowbox_selectAllHandler), data);
 	}
 
 */
 /*
 
-	void FlowBox_selectedChildrenChangedHandler(GObject *, gpointer);
+	void flowbox_selectedChildrenChangedHandler(GObject *, gpointer);
 
 	static gulong FlowBox_signal_connect_selected_children_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "selected-children-changed", G_CALLBACK(FlowBox_selectedChildrenChangedHandler), data);
+		return g_signal_connect(instance, "selected-children-changed", G_CALLBACK(flowbox_selectedChildrenChangedHandler), data);
 	}
 
 */
 /*
 
-	void FlowBox_toggleCursorChildHandler(GObject *, gpointer);
+	void flowbox_toggleCursorChildHandler(GObject *, gpointer);
 
 	static gulong FlowBox_signal_connect_toggle_cursor_child(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "toggle-cursor-child", G_CALLBACK(FlowBox_toggleCursorChildHandler), data);
+		return g_signal_connect(instance, "toggle-cursor-child", G_CALLBACK(flowbox_toggleCursorChildHandler), data);
 	}
 
 */
 /*
 
-	void FlowBox_unselectAllHandler(GObject *, gpointer);
+	void flowbox_unselectAllHandler(GObject *, gpointer);
 
 	static gulong FlowBox_signal_connect_unselect_all(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "unselect-all", G_CALLBACK(FlowBox_unselectAllHandler), data);
+		return g_signal_connect(instance, "unselect-all", G_CALLBACK(flowbox_unselectAllHandler), data);
 	}
 
 */
 /*
 
-	void FlowBoxChild_activateHandler(GObject *, gpointer);
+	void flowboxchild_activateHandler(GObject *, gpointer);
 
 	static gulong FlowBoxChild_signal_connect_activate(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "activate", G_CALLBACK(FlowBoxChild_activateHandler), data);
+		return g_signal_connect(instance, "activate", G_CALLBACK(flowboxchild_activateHandler), data);
 	}
 
 */
 /*
 
-	void HSV_changedHandler(GObject *, gpointer);
+	void hsv_changedHandler(GObject *, gpointer);
 
 	static gulong HSV_signal_connect_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "changed", G_CALLBACK(HSV_changedHandler), data);
+		return g_signal_connect(instance, "changed", G_CALLBACK(hsv_changedHandler), data);
 	}
 
 */
 /*
 
-	void HandleBox_childAttachedHandler(GObject *, GtkWidget *, gpointer);
+	void handlebox_childAttachedHandler(GObject *, GtkWidget *, gpointer);
 
 	static gulong HandleBox_signal_connect_child_attached(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "child-attached", G_CALLBACK(HandleBox_childAttachedHandler), data);
+		return g_signal_connect(instance, "child-attached", G_CALLBACK(handlebox_childAttachedHandler), data);
 	}
 
 */
 /*
 
-	void HandleBox_childDetachedHandler(GObject *, GtkWidget *, gpointer);
+	void handlebox_childDetachedHandler(GObject *, GtkWidget *, gpointer);
 
 	static gulong HandleBox_signal_connect_child_detached(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "child-detached", G_CALLBACK(HandleBox_childDetachedHandler), data);
+		return g_signal_connect(instance, "child-detached", G_CALLBACK(handlebox_childDetachedHandler), data);
 	}
 
 */
 /*
 
-	void IMContext_preeditChangedHandler(GObject *, gpointer);
+	void imcontext_preeditChangedHandler(GObject *, gpointer);
 
 	static gulong IMContext_signal_connect_preedit_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "preedit-changed", G_CALLBACK(IMContext_preeditChangedHandler), data);
+		return g_signal_connect(instance, "preedit-changed", G_CALLBACK(imcontext_preeditChangedHandler), data);
 	}
 
 */
 /*
 
-	void IMContext_preeditEndHandler(GObject *, gpointer);
+	void imcontext_preeditEndHandler(GObject *, gpointer);
 
 	static gulong IMContext_signal_connect_preedit_end(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "preedit-end", G_CALLBACK(IMContext_preeditEndHandler), data);
+		return g_signal_connect(instance, "preedit-end", G_CALLBACK(imcontext_preeditEndHandler), data);
 	}
 
 */
 /*
 
-	void IMContext_preeditStartHandler(GObject *, gpointer);
+	void imcontext_preeditStartHandler(GObject *, gpointer);
 
 	static gulong IMContext_signal_connect_preedit_start(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "preedit-start", G_CALLBACK(IMContext_preeditStartHandler), data);
+		return g_signal_connect(instance, "preedit-start", G_CALLBACK(imcontext_preeditStartHandler), data);
 	}
 
 */
 /*
 
-	gboolean IMContext_retrieveSurroundingHandler(GObject *, gpointer);
+	gboolean imcontext_retrieveSurroundingHandler(GObject *, gpointer);
 
 	static gulong IMContext_signal_connect_retrieve_surrounding(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "retrieve-surrounding", G_CALLBACK(IMContext_retrieveSurroundingHandler), data);
+		return g_signal_connect(instance, "retrieve-surrounding", G_CALLBACK(imcontext_retrieveSurroundingHandler), data);
 	}
 
 */
 /*
 
-	void IconTheme_changedHandler(GObject *, gpointer);
+	void icontheme_changedHandler(GObject *, gpointer);
 
 	static gulong IconTheme_signal_connect_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "changed", G_CALLBACK(IconTheme_changedHandler), data);
+		return g_signal_connect(instance, "changed", G_CALLBACK(icontheme_changedHandler), data);
 	}
 
 */
 /*
 
-	gboolean IconView_activateCursorItemHandler(GObject *, gpointer);
+	gboolean iconview_activateCursorItemHandler(GObject *, gpointer);
 
 	static gulong IconView_signal_connect_activate_cursor_item(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "activate-cursor-item", G_CALLBACK(IconView_activateCursorItemHandler), data);
+		return g_signal_connect(instance, "activate-cursor-item", G_CALLBACK(iconview_activateCursorItemHandler), data);
 	}
 
 */
 /*
 
-	void IconView_itemActivatedHandler(GObject *, GtkTreePath *, gpointer);
+	void iconview_itemActivatedHandler(GObject *, GtkTreePath *, gpointer);
 
 	static gulong IconView_signal_connect_item_activated(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "item-activated", G_CALLBACK(IconView_itemActivatedHandler), data);
+		return g_signal_connect(instance, "item-activated", G_CALLBACK(iconview_itemActivatedHandler), data);
 	}
 
 */
 /*
 
-	void IconView_selectAllHandler(GObject *, gpointer);
+	void iconview_selectAllHandler(GObject *, gpointer);
 
 	static gulong IconView_signal_connect_select_all(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "select-all", G_CALLBACK(IconView_selectAllHandler), data);
+		return g_signal_connect(instance, "select-all", G_CALLBACK(iconview_selectAllHandler), data);
 	}
 
 */
 /*
 
-	void IconView_selectCursorItemHandler(GObject *, gpointer);
+	void iconview_selectCursorItemHandler(GObject *, gpointer);
 
 	static gulong IconView_signal_connect_select_cursor_item(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "select-cursor-item", G_CALLBACK(IconView_selectCursorItemHandler), data);
+		return g_signal_connect(instance, "select-cursor-item", G_CALLBACK(iconview_selectCursorItemHandler), data);
 	}
 
 */
 /*
 
-	void IconView_selectionChangedHandler(GObject *, gpointer);
+	void iconview_selectionChangedHandler(GObject *, gpointer);
 
 	static gulong IconView_signal_connect_selection_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "selection-changed", G_CALLBACK(IconView_selectionChangedHandler), data);
+		return g_signal_connect(instance, "selection-changed", G_CALLBACK(iconview_selectionChangedHandler), data);
 	}
 
 */
 /*
 
-	void IconView_toggleCursorItemHandler(GObject *, gpointer);
+	void iconview_toggleCursorItemHandler(GObject *, gpointer);
 
 	static gulong IconView_signal_connect_toggle_cursor_item(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "toggle-cursor-item", G_CALLBACK(IconView_toggleCursorItemHandler), data);
+		return g_signal_connect(instance, "toggle-cursor-item", G_CALLBACK(iconview_toggleCursorItemHandler), data);
 	}
 
 */
 /*
 
-	void IconView_unselectAllHandler(GObject *, gpointer);
+	void iconview_unselectAllHandler(GObject *, gpointer);
 
 	static gulong IconView_signal_connect_unselect_all(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "unselect-all", G_CALLBACK(IconView_unselectAllHandler), data);
+		return g_signal_connect(instance, "unselect-all", G_CALLBACK(iconview_unselectAllHandler), data);
 	}
 
 */
 /*
 
-	void Label_copyClipboardHandler(GObject *, gpointer);
+	void label_copyClipboardHandler(GObject *, gpointer);
 
 	static gulong Label_signal_connect_copy_clipboard(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "copy-clipboard", G_CALLBACK(Label_copyClipboardHandler), data);
+		return g_signal_connect(instance, "copy-clipboard", G_CALLBACK(label_copyClipboardHandler), data);
 	}
 
 */
 /*
 
-	void Label_populatePopupHandler(GObject *, GtkMenu *, gpointer);
+	void label_populatePopupHandler(GObject *, GtkMenu *, gpointer);
 
 	static gulong Label_signal_connect_populate_popup(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "populate-popup", G_CALLBACK(Label_populatePopupHandler), data);
+		return g_signal_connect(instance, "populate-popup", G_CALLBACK(label_populatePopupHandler), data);
 	}
 
 */
 /*
 
-	gboolean LinkButton_activateLinkHandler(GObject *, gpointer);
+	gboolean linkbutton_activateLinkHandler(GObject *, gpointer);
 
 	static gulong LinkButton_signal_connect_activate_link(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "activate-link", G_CALLBACK(LinkButton_activateLinkHandler), data);
+		return g_signal_connect(instance, "activate-link", G_CALLBACK(linkbutton_activateLinkHandler), data);
 	}
 
 */
 /*
 
-	void ListBox_activateCursorRowHandler(GObject *, gpointer);
+	void listbox_activateCursorRowHandler(GObject *, gpointer);
 
 	static gulong ListBox_signal_connect_activate_cursor_row(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "activate-cursor-row", G_CALLBACK(ListBox_activateCursorRowHandler), data);
+		return g_signal_connect(instance, "activate-cursor-row", G_CALLBACK(listbox_activateCursorRowHandler), data);
 	}
 
 */
 /*
 
-	void ListBox_toggleCursorRowHandler(GObject *, gpointer);
+	void listbox_toggleCursorRowHandler(GObject *, gpointer);
 
 	static gulong ListBox_signal_connect_toggle_cursor_row(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "toggle-cursor-row", G_CALLBACK(ListBox_toggleCursorRowHandler), data);
+		return g_signal_connect(instance, "toggle-cursor-row", G_CALLBACK(listbox_toggleCursorRowHandler), data);
 	}
 
 */
 /*
 
-	void MenuItem_activateHandler(GObject *, gpointer);
+	void menuitem_activateHandler(GObject *, gpointer);
 
 	static gulong MenuItem_signal_connect_activate(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "activate", G_CALLBACK(MenuItem_activateHandler), data);
+		return g_signal_connect(instance, "activate", G_CALLBACK(menuitem_activateHandler), data);
 	}
 
 */
 /*
 
-	void MenuItem_activateItemHandler(GObject *, gpointer);
+	void menuitem_activateItemHandler(GObject *, gpointer);
 
 	static gulong MenuItem_signal_connect_activate_item(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "activate-item", G_CALLBACK(MenuItem_activateItemHandler), data);
+		return g_signal_connect(instance, "activate-item", G_CALLBACK(menuitem_activateItemHandler), data);
 	}
 
 */
 /*
 
-	void MenuItem_deselectHandler(GObject *, gpointer);
+	void menuitem_deselectHandler(GObject *, gpointer);
 
 	static gulong MenuItem_signal_connect_deselect(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "deselect", G_CALLBACK(MenuItem_deselectHandler), data);
+		return g_signal_connect(instance, "deselect", G_CALLBACK(menuitem_deselectHandler), data);
 	}
 
 */
 /*
 
-	void MenuItem_selectHandler(GObject *, gpointer);
+	void menuitem_selectHandler(GObject *, gpointer);
 
 	static gulong MenuItem_signal_connect_select(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "select", G_CALLBACK(MenuItem_selectHandler), data);
+		return g_signal_connect(instance, "select", G_CALLBACK(menuitem_selectHandler), data);
 	}
 
 */
 /*
 
-	void MenuShell_activateCurrentHandler(GObject *, gboolean, gpointer);
+	void menushell_activateCurrentHandler(GObject *, gboolean, gpointer);
 
 	static gulong MenuShell_signal_connect_activate_current(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "activate-current", G_CALLBACK(MenuShell_activateCurrentHandler), data);
+		return g_signal_connect(instance, "activate-current", G_CALLBACK(menushell_activateCurrentHandler), data);
 	}
 
 */
 /*
 
-	void MenuShell_cancelHandler(GObject *, gpointer);
+	void menushell_cancelHandler(GObject *, gpointer);
 
 	static gulong MenuShell_signal_connect_cancel(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "cancel", G_CALLBACK(MenuShell_cancelHandler), data);
+		return g_signal_connect(instance, "cancel", G_CALLBACK(menushell_cancelHandler), data);
 	}
 
 */
 /*
 
-	void MenuShell_deactivateHandler(GObject *, gpointer);
+	void menushell_deactivateHandler(GObject *, gpointer);
 
 	static gulong MenuShell_signal_connect_deactivate(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "deactivate", G_CALLBACK(MenuShell_deactivateHandler), data);
+		return g_signal_connect(instance, "deactivate", G_CALLBACK(menushell_deactivateHandler), data);
 	}
 
 */
 /*
 
-	void MenuShell_selectionDoneHandler(GObject *, gpointer);
+	void menushell_selectionDoneHandler(GObject *, gpointer);
 
 	static gulong MenuShell_signal_connect_selection_done(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "selection-done", G_CALLBACK(MenuShell_selectionDoneHandler), data);
+		return g_signal_connect(instance, "selection-done", G_CALLBACK(menushell_selectionDoneHandler), data);
 	}
 
 */
 /*
 
-	void MenuToolButton_showMenuHandler(GObject *, gpointer);
+	void menutoolbutton_showMenuHandler(GObject *, gpointer);
 
 	static gulong MenuToolButton_signal_connect_show_menu(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "show-menu", G_CALLBACK(MenuToolButton_showMenuHandler), data);
+		return g_signal_connect(instance, "show-menu", G_CALLBACK(menutoolbutton_showMenuHandler), data);
 	}
 
 */
 /*
 
-	gboolean Notebook_selectPageHandler(GObject *, gboolean, gpointer);
+	gboolean notebook_selectPageHandler(GObject *, gboolean, gpointer);
 
 	static gulong Notebook_signal_connect_select_page(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "select-page", G_CALLBACK(Notebook_selectPageHandler), data);
+		return g_signal_connect(instance, "select-page", G_CALLBACK(notebook_selectPageHandler), data);
 	}
 
 */
 /*
 
-	void PlacesSidebar_showConnectToServerHandler(GObject *, gpointer);
+	void placessidebar_showConnectToServerHandler(GObject *, gpointer);
 
 	static gulong PlacesSidebar_signal_connect_show_connect_to_server(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "show-connect-to-server", G_CALLBACK(PlacesSidebar_showConnectToServerHandler), data);
+		return g_signal_connect(instance, "show-connect-to-server", G_CALLBACK(placessidebar_showConnectToServerHandler), data);
 	}
 
 */
 /*
 
-	void Popover_closedHandler(GObject *, gpointer);
+	void popover_closedHandler(GObject *, gpointer);
 
 	static gulong Popover_signal_connect_closed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "closed", G_CALLBACK(Popover_closedHandler), data);
+		return g_signal_connect(instance, "closed", G_CALLBACK(popover_closedHandler), data);
 	}
 
 */
 /*
 
-	void RadioMenuItem_groupChangedHandler(GObject *, gpointer);
+	void radiomenuitem_groupChangedHandler(GObject *, gpointer);
 
 	static gulong RadioMenuItem_signal_connect_group_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "group-changed", G_CALLBACK(RadioMenuItem_groupChangedHandler), data);
+		return g_signal_connect(instance, "group-changed", G_CALLBACK(radiomenuitem_groupChangedHandler), data);
 	}
 
 */
 /*
 
-	void Range_valueChangedHandler(GObject *, gpointer);
+	void range_valueChangedHandler(GObject *, gpointer);
 
 	static gulong Range_signal_connect_value_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "value-changed", G_CALLBACK(Range_valueChangedHandler), data);
+		return g_signal_connect(instance, "value-changed", G_CALLBACK(range_valueChangedHandler), data);
 	}
 
 */
 /*
 
-	gboolean SpinButton_outputHandler(GObject *, gpointer);
+	gboolean spinbutton_outputHandler(GObject *, gpointer);
 
 	static gulong SpinButton_signal_connect_output(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "output", G_CALLBACK(SpinButton_outputHandler), data);
+		return g_signal_connect(instance, "output", G_CALLBACK(spinbutton_outputHandler), data);
 	}
 
 */
 /*
 
-	void SpinButton_valueChangedHandler(GObject *, gpointer);
+	void spinbutton_valueChangedHandler(GObject *, gpointer);
 
 	static gulong SpinButton_signal_connect_value_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "value-changed", G_CALLBACK(SpinButton_valueChangedHandler), data);
+		return g_signal_connect(instance, "value-changed", G_CALLBACK(spinbutton_valueChangedHandler), data);
 	}
 
 */
 /*
 
-	void Switch_activateHandler(GObject *, gpointer);
+	void switch_activateHandler(GObject *, gpointer);
 
 	static gulong Switch_signal_connect_activate(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "activate", G_CALLBACK(Switch_activateHandler), data);
+		return g_signal_connect(instance, "activate", G_CALLBACK(switch_activateHandler), data);
 	}
 
 */
 /*
 
-	void TextBuffer_applyTagHandler(GObject *, GtkTextTag *, GtkTextIter *, GtkTextIter *, gpointer);
+	void textbuffer_applyTagHandler(GObject *, GtkTextTag *, GtkTextIter *, GtkTextIter *, gpointer);
 
 	static gulong TextBuffer_signal_connect_apply_tag(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "apply-tag", G_CALLBACK(TextBuffer_applyTagHandler), data);
+		return g_signal_connect(instance, "apply-tag", G_CALLBACK(textbuffer_applyTagHandler), data);
 	}
 
 */
 /*
 
-	void TextBuffer_beginUserActionHandler(GObject *, gpointer);
+	void textbuffer_beginUserActionHandler(GObject *, gpointer);
 
 	static gulong TextBuffer_signal_connect_begin_user_action(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "begin-user-action", G_CALLBACK(TextBuffer_beginUserActionHandler), data);
+		return g_signal_connect(instance, "begin-user-action", G_CALLBACK(textbuffer_beginUserActionHandler), data);
 	}
 
 */
 /*
 
-	void TextBuffer_changedHandler(GObject *, gpointer);
+	void textbuffer_changedHandler(GObject *, gpointer);
 
 	static gulong TextBuffer_signal_connect_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "changed", G_CALLBACK(TextBuffer_changedHandler), data);
+		return g_signal_connect(instance, "changed", G_CALLBACK(textbuffer_changedHandler), data);
 	}
 
 */
 /*
 
-	void TextBuffer_deleteRangeHandler(GObject *, GtkTextIter *, GtkTextIter *, gpointer);
+	void textbuffer_deleteRangeHandler(GObject *, GtkTextIter *, GtkTextIter *, gpointer);
 
 	static gulong TextBuffer_signal_connect_delete_range(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "delete-range", G_CALLBACK(TextBuffer_deleteRangeHandler), data);
+		return g_signal_connect(instance, "delete-range", G_CALLBACK(textbuffer_deleteRangeHandler), data);
 	}
 
 */
 /*
 
-	void TextBuffer_endUserActionHandler(GObject *, gpointer);
+	void textbuffer_endUserActionHandler(GObject *, gpointer);
 
 	static gulong TextBuffer_signal_connect_end_user_action(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "end-user-action", G_CALLBACK(TextBuffer_endUserActionHandler), data);
+		return g_signal_connect(instance, "end-user-action", G_CALLBACK(textbuffer_endUserActionHandler), data);
 	}
 
 */
 /*
 
-	void TextBuffer_insertChildAnchorHandler(GObject *, GtkTextIter *, GtkTextChildAnchor *, gpointer);
+	void textbuffer_insertChildAnchorHandler(GObject *, GtkTextIter *, GtkTextChildAnchor *, gpointer);
 
 	static gulong TextBuffer_signal_connect_insert_child_anchor(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "insert-child-anchor", G_CALLBACK(TextBuffer_insertChildAnchorHandler), data);
+		return g_signal_connect(instance, "insert-child-anchor", G_CALLBACK(textbuffer_insertChildAnchorHandler), data);
 	}
 
 */
 /*
 
-	void TextBuffer_insertPixbufHandler(GObject *, GtkTextIter *, GdkPixbuf *, gpointer);
+	void textbuffer_insertPixbufHandler(GObject *, GtkTextIter *, GdkPixbuf *, gpointer);
 
 	static gulong TextBuffer_signal_connect_insert_pixbuf(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "insert-pixbuf", G_CALLBACK(TextBuffer_insertPixbufHandler), data);
+		return g_signal_connect(instance, "insert-pixbuf", G_CALLBACK(textbuffer_insertPixbufHandler), data);
 	}
 
 */
 /*
 
-	void TextBuffer_markDeletedHandler(GObject *, GtkTextMark *, gpointer);
+	void textbuffer_markDeletedHandler(GObject *, GtkTextMark *, gpointer);
 
 	static gulong TextBuffer_signal_connect_mark_deleted(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "mark-deleted", G_CALLBACK(TextBuffer_markDeletedHandler), data);
+		return g_signal_connect(instance, "mark-deleted", G_CALLBACK(textbuffer_markDeletedHandler), data);
 	}
 
 */
 /*
 
-	void TextBuffer_markSetHandler(GObject *, GtkTextIter *, GtkTextMark *, gpointer);
+	void textbuffer_markSetHandler(GObject *, GtkTextIter *, GtkTextMark *, gpointer);
 
 	static gulong TextBuffer_signal_connect_mark_set(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "mark-set", G_CALLBACK(TextBuffer_markSetHandler), data);
+		return g_signal_connect(instance, "mark-set", G_CALLBACK(textbuffer_markSetHandler), data);
 	}
 
 */
 /*
 
-	void TextBuffer_modifiedChangedHandler(GObject *, gpointer);
+	void textbuffer_modifiedChangedHandler(GObject *, gpointer);
 
 	static gulong TextBuffer_signal_connect_modified_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "modified-changed", G_CALLBACK(TextBuffer_modifiedChangedHandler), data);
+		return g_signal_connect(instance, "modified-changed", G_CALLBACK(textbuffer_modifiedChangedHandler), data);
 	}
 
 */
 /*
 
-	void TextBuffer_removeTagHandler(GObject *, GtkTextTag *, GtkTextIter *, GtkTextIter *, gpointer);
+	void textbuffer_removeTagHandler(GObject *, GtkTextTag *, GtkTextIter *, GtkTextIter *, gpointer);
 
 	static gulong TextBuffer_signal_connect_remove_tag(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "remove-tag", G_CALLBACK(TextBuffer_removeTagHandler), data);
+		return g_signal_connect(instance, "remove-tag", G_CALLBACK(textbuffer_removeTagHandler), data);
 	}
 
 */
 /*
 
-	void TextTagTable_tagAddedHandler(GObject *, GtkTextTag *, gpointer);
+	void texttagtable_tagAddedHandler(GObject *, GtkTextTag *, gpointer);
 
 	static gulong TextTagTable_signal_connect_tag_added(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "tag-added", G_CALLBACK(TextTagTable_tagAddedHandler), data);
+		return g_signal_connect(instance, "tag-added", G_CALLBACK(texttagtable_tagAddedHandler), data);
 	}
 
 */
 /*
 
-	void TextTagTable_tagChangedHandler(GObject *, GtkTextTag *, gboolean, gpointer);
+	void texttagtable_tagChangedHandler(GObject *, GtkTextTag *, gboolean, gpointer);
 
 	static gulong TextTagTable_signal_connect_tag_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "tag-changed", G_CALLBACK(TextTagTable_tagChangedHandler), data);
+		return g_signal_connect(instance, "tag-changed", G_CALLBACK(texttagtable_tagChangedHandler), data);
 	}
 
 */
 /*
 
-	void TextTagTable_tagRemovedHandler(GObject *, GtkTextTag *, gpointer);
+	void texttagtable_tagRemovedHandler(GObject *, GtkTextTag *, gpointer);
 
 	static gulong TextTagTable_signal_connect_tag_removed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "tag-removed", G_CALLBACK(TextTagTable_tagRemovedHandler), data);
+		return g_signal_connect(instance, "tag-removed", G_CALLBACK(texttagtable_tagRemovedHandler), data);
 	}
 
 */
 /*
 
-	void TextView_backspaceHandler(GObject *, gpointer);
+	void textview_backspaceHandler(GObject *, gpointer);
 
 	static gulong TextView_signal_connect_backspace(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "backspace", G_CALLBACK(TextView_backspaceHandler), data);
+		return g_signal_connect(instance, "backspace", G_CALLBACK(textview_backspaceHandler), data);
 	}
 
 */
 /*
 
-	void TextView_copyClipboardHandler(GObject *, gpointer);
+	void textview_copyClipboardHandler(GObject *, gpointer);
 
 	static gulong TextView_signal_connect_copy_clipboard(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "copy-clipboard", G_CALLBACK(TextView_copyClipboardHandler), data);
+		return g_signal_connect(instance, "copy-clipboard", G_CALLBACK(textview_copyClipboardHandler), data);
 	}
 
 */
 /*
 
-	void TextView_cutClipboardHandler(GObject *, gpointer);
+	void textview_cutClipboardHandler(GObject *, gpointer);
 
 	static gulong TextView_signal_connect_cut_clipboard(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "cut-clipboard", G_CALLBACK(TextView_cutClipboardHandler), data);
+		return g_signal_connect(instance, "cut-clipboard", G_CALLBACK(textview_cutClipboardHandler), data);
 	}
 
 */
 /*
 
-	void TextView_pasteClipboardHandler(GObject *, gpointer);
+	void textview_pasteClipboardHandler(GObject *, gpointer);
 
 	static gulong TextView_signal_connect_paste_clipboard(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "paste-clipboard", G_CALLBACK(TextView_pasteClipboardHandler), data);
+		return g_signal_connect(instance, "paste-clipboard", G_CALLBACK(textview_pasteClipboardHandler), data);
 	}
 
 */
 /*
 
-	void TextView_populatePopupHandler(GObject *, GtkWidget *, gpointer);
+	void textview_populatePopupHandler(GObject *, GtkWidget *, gpointer);
 
 	static gulong TextView_signal_connect_populate_popup(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "populate-popup", G_CALLBACK(TextView_populatePopupHandler), data);
+		return g_signal_connect(instance, "populate-popup", G_CALLBACK(textview_populatePopupHandler), data);
 	}
 
 */
 /*
 
-	void TextView_selectAllHandler(GObject *, gboolean, gpointer);
+	void textview_selectAllHandler(GObject *, gboolean, gpointer);
 
 	static gulong TextView_signal_connect_select_all(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "select-all", G_CALLBACK(TextView_selectAllHandler), data);
+		return g_signal_connect(instance, "select-all", G_CALLBACK(textview_selectAllHandler), data);
 	}
 
 */
 /*
 
-	void TextView_setAnchorHandler(GObject *, gpointer);
+	void textview_setAnchorHandler(GObject *, gpointer);
 
 	static gulong TextView_signal_connect_set_anchor(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "set-anchor", G_CALLBACK(TextView_setAnchorHandler), data);
+		return g_signal_connect(instance, "set-anchor", G_CALLBACK(textview_setAnchorHandler), data);
 	}
 
 */
 /*
 
-	void TextView_toggleCursorVisibleHandler(GObject *, gpointer);
+	void textview_toggleCursorVisibleHandler(GObject *, gpointer);
 
 	static gulong TextView_signal_connect_toggle_cursor_visible(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "toggle-cursor-visible", G_CALLBACK(TextView_toggleCursorVisibleHandler), data);
+		return g_signal_connect(instance, "toggle-cursor-visible", G_CALLBACK(textview_toggleCursorVisibleHandler), data);
 	}
 
 */
 /*
 
-	void TextView_toggleOverwriteHandler(GObject *, gpointer);
+	void textview_toggleOverwriteHandler(GObject *, gpointer);
 
 	static gulong TextView_signal_connect_toggle_overwrite(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "toggle-overwrite", G_CALLBACK(TextView_toggleOverwriteHandler), data);
+		return g_signal_connect(instance, "toggle-overwrite", G_CALLBACK(textview_toggleOverwriteHandler), data);
 	}
 
 */
 /*
 
-	void ToggleAction_toggledHandler(GObject *, gpointer);
+	void toggleaction_toggledHandler(GObject *, gpointer);
 
 	static gulong ToggleAction_signal_connect_toggled(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "toggled", G_CALLBACK(ToggleAction_toggledHandler), data);
+		return g_signal_connect(instance, "toggled", G_CALLBACK(toggleaction_toggledHandler), data);
 	}
 
 */
 /*
 
-	void ToggleButton_toggledHandler(GObject *, gpointer);
+	void togglebutton_toggledHandler(GObject *, gpointer);
 
 	static gulong ToggleButton_signal_connect_toggled(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "toggled", G_CALLBACK(ToggleButton_toggledHandler), data);
+		return g_signal_connect(instance, "toggled", G_CALLBACK(togglebutton_toggledHandler), data);
 	}
 
 */
 /*
 
-	void ToggleToolButton_toggledHandler(GObject *, gpointer);
+	void toggletoolbutton_toggledHandler(GObject *, gpointer);
 
 	static gulong ToggleToolButton_signal_connect_toggled(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "toggled", G_CALLBACK(ToggleToolButton_toggledHandler), data);
+		return g_signal_connect(instance, "toggled", G_CALLBACK(toggletoolbutton_toggledHandler), data);
 	}
 
 */
 /*
 
-	void ToolButton_clickedHandler(GObject *, gpointer);
+	void toolbutton_clickedHandler(GObject *, gpointer);
 
 	static gulong ToolButton_signal_connect_clicked(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "clicked", G_CALLBACK(ToolButton_clickedHandler), data);
+		return g_signal_connect(instance, "clicked", G_CALLBACK(toolbutton_clickedHandler), data);
 	}
 
 */
 /*
 
-	gboolean ToolItem_createMenuProxyHandler(GObject *, gpointer);
+	gboolean toolitem_createMenuProxyHandler(GObject *, gpointer);
 
 	static gulong ToolItem_signal_connect_create_menu_proxy(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "create-menu-proxy", G_CALLBACK(ToolItem_createMenuProxyHandler), data);
+		return g_signal_connect(instance, "create-menu-proxy", G_CALLBACK(toolitem_createMenuProxyHandler), data);
 	}
 
 */
 /*
 
-	void ToolItem_toolbarReconfiguredHandler(GObject *, gpointer);
+	void toolitem_toolbarReconfiguredHandler(GObject *, gpointer);
 
 	static gulong ToolItem_signal_connect_toolbar_reconfigured(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "toolbar-reconfigured", G_CALLBACK(ToolItem_toolbarReconfiguredHandler), data);
+		return g_signal_connect(instance, "toolbar-reconfigured", G_CALLBACK(toolitem_toolbarReconfiguredHandler), data);
 	}
 
 */
 /*
 
-	gboolean Toolbar_focusHomeOrEndHandler(GObject *, gboolean, gpointer);
+	gboolean toolbar_focusHomeOrEndHandler(GObject *, gboolean, gpointer);
 
 	static gulong Toolbar_signal_connect_focus_home_or_end(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "focus-home-or-end", G_CALLBACK(Toolbar_focusHomeOrEndHandler), data);
+		return g_signal_connect(instance, "focus-home-or-end", G_CALLBACK(toolbar_focusHomeOrEndHandler), data);
 	}
 
 */
 /*
 
-	void TreeSelection_changedHandler(GObject *, gpointer);
+	void treeselection_changedHandler(GObject *, gpointer);
 
 	static gulong TreeSelection_signal_connect_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "changed", G_CALLBACK(TreeSelection_changedHandler), data);
+		return g_signal_connect(instance, "changed", G_CALLBACK(treeselection_changedHandler), data);
 	}
 
 */
 /*
 
-	void TreeView_columnsChangedHandler(GObject *, gpointer);
+	void treeview_columnsChangedHandler(GObject *, gpointer);
 
 	static gulong TreeView_signal_connect_columns_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "columns-changed", G_CALLBACK(TreeView_columnsChangedHandler), data);
+		return g_signal_connect(instance, "columns-changed", G_CALLBACK(treeview_columnsChangedHandler), data);
 	}
 
 */
 /*
 
-	void TreeView_cursorChangedHandler(GObject *, gpointer);
+	void treeview_cursorChangedHandler(GObject *, gpointer);
 
 	static gulong TreeView_signal_connect_cursor_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "cursor-changed", G_CALLBACK(TreeView_cursorChangedHandler), data);
+		return g_signal_connect(instance, "cursor-changed", G_CALLBACK(treeview_cursorChangedHandler), data);
 	}
 
 */
 /*
 
-	gboolean TreeView_expandCollapseCursorRowHandler(GObject *, gboolean, gboolean, gboolean, gpointer);
+	gboolean treeview_expandCollapseCursorRowHandler(GObject *, gboolean, gboolean, gboolean, gpointer);
 
 	static gulong TreeView_signal_connect_expand_collapse_cursor_row(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "expand-collapse-cursor-row", G_CALLBACK(TreeView_expandCollapseCursorRowHandler), data);
+		return g_signal_connect(instance, "expand-collapse-cursor-row", G_CALLBACK(treeview_expandCollapseCursorRowHandler), data);
 	}
 
 */
 /*
 
-	void TreeView_rowActivatedHandler(GObject *, GtkTreePath *, GtkTreeViewColumn *, gpointer);
+	void treeview_rowActivatedHandler(GObject *, GtkTreePath *, GtkTreeViewColumn *, gpointer);
 
 	static gulong TreeView_signal_connect_row_activated(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "row-activated", G_CALLBACK(TreeView_rowActivatedHandler), data);
+		return g_signal_connect(instance, "row-activated", G_CALLBACK(treeview_rowActivatedHandler), data);
 	}
 
 */
 /*
 
-	void TreeView_rowCollapsedHandler(GObject *, GtkTreeIter *, GtkTreePath *, gpointer);
+	void treeview_rowCollapsedHandler(GObject *, GtkTreeIter *, GtkTreePath *, gpointer);
 
 	static gulong TreeView_signal_connect_row_collapsed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "row-collapsed", G_CALLBACK(TreeView_rowCollapsedHandler), data);
+		return g_signal_connect(instance, "row-collapsed", G_CALLBACK(treeview_rowCollapsedHandler), data);
 	}
 
 */
 /*
 
-	void TreeView_rowExpandedHandler(GObject *, GtkTreeIter *, GtkTreePath *, gpointer);
+	void treeview_rowExpandedHandler(GObject *, GtkTreeIter *, GtkTreePath *, gpointer);
 
 	static gulong TreeView_signal_connect_row_expanded(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "row-expanded", G_CALLBACK(TreeView_rowExpandedHandler), data);
+		return g_signal_connect(instance, "row-expanded", G_CALLBACK(treeview_rowExpandedHandler), data);
 	}
 
 */
 /*
 
-	gboolean TreeView_selectAllHandler(GObject *, gpointer);
+	gboolean treeview_selectAllHandler(GObject *, gpointer);
 
 	static gulong TreeView_signal_connect_select_all(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "select-all", G_CALLBACK(TreeView_selectAllHandler), data);
+		return g_signal_connect(instance, "select-all", G_CALLBACK(treeview_selectAllHandler), data);
 	}
 
 */
 /*
 
-	gboolean TreeView_selectCursorParentHandler(GObject *, gpointer);
+	gboolean treeview_selectCursorParentHandler(GObject *, gpointer);
 
 	static gulong TreeView_signal_connect_select_cursor_parent(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "select-cursor-parent", G_CALLBACK(TreeView_selectCursorParentHandler), data);
+		return g_signal_connect(instance, "select-cursor-parent", G_CALLBACK(treeview_selectCursorParentHandler), data);
 	}
 
 */
 /*
 
-	gboolean TreeView_selectCursorRowHandler(GObject *, gboolean, gpointer);
+	gboolean treeview_selectCursorRowHandler(GObject *, gboolean, gpointer);
 
 	static gulong TreeView_signal_connect_select_cursor_row(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "select-cursor-row", G_CALLBACK(TreeView_selectCursorRowHandler), data);
+		return g_signal_connect(instance, "select-cursor-row", G_CALLBACK(treeview_selectCursorRowHandler), data);
 	}
 
 */
 /*
 
-	gboolean TreeView_startInteractiveSearchHandler(GObject *, gpointer);
+	gboolean treeview_startInteractiveSearchHandler(GObject *, gpointer);
 
 	static gulong TreeView_signal_connect_start_interactive_search(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "start-interactive-search", G_CALLBACK(TreeView_startInteractiveSearchHandler), data);
+		return g_signal_connect(instance, "start-interactive-search", G_CALLBACK(treeview_startInteractiveSearchHandler), data);
 	}
 
 */
 /*
 
-	gboolean TreeView_testCollapseRowHandler(GObject *, GtkTreeIter *, GtkTreePath *, gpointer);
+	gboolean treeview_testCollapseRowHandler(GObject *, GtkTreeIter *, GtkTreePath *, gpointer);
 
 	static gulong TreeView_signal_connect_test_collapse_row(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "test-collapse-row", G_CALLBACK(TreeView_testCollapseRowHandler), data);
+		return g_signal_connect(instance, "test-collapse-row", G_CALLBACK(treeview_testCollapseRowHandler), data);
 	}
 
 */
 /*
 
-	gboolean TreeView_testExpandRowHandler(GObject *, GtkTreeIter *, GtkTreePath *, gpointer);
+	gboolean treeview_testExpandRowHandler(GObject *, GtkTreeIter *, GtkTreePath *, gpointer);
 
 	static gulong TreeView_signal_connect_test_expand_row(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "test-expand-row", G_CALLBACK(TreeView_testExpandRowHandler), data);
+		return g_signal_connect(instance, "test-expand-row", G_CALLBACK(treeview_testExpandRowHandler), data);
 	}
 
 */
 /*
 
-	gboolean TreeView_toggleCursorRowHandler(GObject *, gpointer);
+	gboolean treeview_toggleCursorRowHandler(GObject *, gpointer);
 
 	static gulong TreeView_signal_connect_toggle_cursor_row(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "toggle-cursor-row", G_CALLBACK(TreeView_toggleCursorRowHandler), data);
+		return g_signal_connect(instance, "toggle-cursor-row", G_CALLBACK(treeview_toggleCursorRowHandler), data);
 	}
 
 */
 /*
 
-	gboolean TreeView_unselectAllHandler(GObject *, gpointer);
+	gboolean treeview_unselectAllHandler(GObject *, gpointer);
 
 	static gulong TreeView_signal_connect_unselect_all(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "unselect-all", G_CALLBACK(TreeView_unselectAllHandler), data);
+		return g_signal_connect(instance, "unselect-all", G_CALLBACK(treeview_unselectAllHandler), data);
 	}
 
 */
 /*
 
-	void TreeViewColumn_clickedHandler(GObject *, gpointer);
+	void treeviewcolumn_clickedHandler(GObject *, gpointer);
 
 	static gulong TreeViewColumn_signal_connect_clicked(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "clicked", G_CALLBACK(TreeViewColumn_clickedHandler), data);
+		return g_signal_connect(instance, "clicked", G_CALLBACK(treeviewcolumn_clickedHandler), data);
 	}
 
 */
 /*
 
-	void Widget_accelClosuresChangedHandler(GObject *, gpointer);
+	void widget_accelClosuresChangedHandler(GObject *, gpointer);
 
 	static gulong Widget_signal_connect_accel_closures_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "accel-closures-changed", G_CALLBACK(Widget_accelClosuresChangedHandler), data);
+		return g_signal_connect(instance, "accel-closures-changed", G_CALLBACK(widget_accelClosuresChangedHandler), data);
 	}
 
 */
 /*
 
-	gboolean Widget_buttonPressEventHandler(GObject *, GdkEventButton *, gpointer);
+	gboolean widget_buttonPressEventHandler(GObject *, GdkEventButton *, gpointer);
 
 	static gulong Widget_signal_connect_button_press_event(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "button-press-event", G_CALLBACK(Widget_buttonPressEventHandler), data);
+		return g_signal_connect(instance, "button-press-event", G_CALLBACK(widget_buttonPressEventHandler), data);
 	}
 
 */
 /*
 
-	gboolean Widget_buttonReleaseEventHandler(GObject *, GdkEventButton *, gpointer);
+	gboolean widget_buttonReleaseEventHandler(GObject *, GdkEventButton *, gpointer);
 
 	static gulong Widget_signal_connect_button_release_event(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "button-release-event", G_CALLBACK(Widget_buttonReleaseEventHandler), data);
+		return g_signal_connect(instance, "button-release-event", G_CALLBACK(widget_buttonReleaseEventHandler), data);
 	}
 
 */
 /*
 
-	void Widget_compositedChangedHandler(GObject *, gpointer);
+	void widget_compositedChangedHandler(GObject *, gpointer);
 
 	static gulong Widget_signal_connect_composited_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "composited-changed", G_CALLBACK(Widget_compositedChangedHandler), data);
+		return g_signal_connect(instance, "composited-changed", G_CALLBACK(widget_compositedChangedHandler), data);
 	}
 
 */
 /*
 
-	gboolean Widget_configureEventHandler(GObject *, GdkEventConfigure *, gpointer);
+	gboolean widget_configureEventHandler(GObject *, GdkEventConfigure *, gpointer);
 
 	static gulong Widget_signal_connect_configure_event(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "configure-event", G_CALLBACK(Widget_configureEventHandler), data);
+		return g_signal_connect(instance, "configure-event", G_CALLBACK(widget_configureEventHandler), data);
 	}
 
 */
 /*
 
-	void Widget_destroyHandler(GObject *, gpointer);
+	void widget_destroyHandler(GObject *, gpointer);
 
 	static gulong Widget_signal_connect_destroy(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "destroy", G_CALLBACK(Widget_destroyHandler), data);
+		return g_signal_connect(instance, "destroy", G_CALLBACK(widget_destroyHandler), data);
 	}
 
 */
 /*
 
-	void Widget_dragBeginHandler(GObject *, GdkDragContext *, gpointer);
+	void widget_dragBeginHandler(GObject *, GdkDragContext *, gpointer);
 
 	static gulong Widget_signal_connect_drag_begin(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "drag-begin", G_CALLBACK(Widget_dragBeginHandler), data);
+		return g_signal_connect(instance, "drag-begin", G_CALLBACK(widget_dragBeginHandler), data);
 	}
 
 */
 /*
 
-	void Widget_dragDataDeleteHandler(GObject *, GdkDragContext *, gpointer);
+	void widget_dragDataDeleteHandler(GObject *, GdkDragContext *, gpointer);
 
 	static gulong Widget_signal_connect_drag_data_delete(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "drag-data-delete", G_CALLBACK(Widget_dragDataDeleteHandler), data);
+		return g_signal_connect(instance, "drag-data-delete", G_CALLBACK(widget_dragDataDeleteHandler), data);
 	}
 
 */
 /*
 
-	void Widget_dragEndHandler(GObject *, GdkDragContext *, gpointer);
+	void widget_dragEndHandler(GObject *, GdkDragContext *, gpointer);
 
 	static gulong Widget_signal_connect_drag_end(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "drag-end", G_CALLBACK(Widget_dragEndHandler), data);
+		return g_signal_connect(instance, "drag-end", G_CALLBACK(widget_dragEndHandler), data);
 	}
 
 */
 /*
 
-	gboolean Widget_enterNotifyEventHandler(GObject *, GdkEventCrossing *, gpointer);
+	gboolean widget_enterNotifyEventHandler(GObject *, GdkEventCrossing *, gpointer);
 
 	static gulong Widget_signal_connect_enter_notify_event(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "enter-notify-event", G_CALLBACK(Widget_enterNotifyEventHandler), data);
+		return g_signal_connect(instance, "enter-notify-event", G_CALLBACK(widget_enterNotifyEventHandler), data);
 	}
 
 */
 /*
 
-	gboolean Widget_focusInEventHandler(GObject *, GdkEventFocus *, gpointer);
+	gboolean widget_focusInEventHandler(GObject *, GdkEventFocus *, gpointer);
 
 	static gulong Widget_signal_connect_focus_in_event(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "focus-in-event", G_CALLBACK(Widget_focusInEventHandler), data);
+		return g_signal_connect(instance, "focus-in-event", G_CALLBACK(widget_focusInEventHandler), data);
 	}
 
 */
 /*
 
-	gboolean Widget_focusOutEventHandler(GObject *, GdkEventFocus *, gpointer);
+	gboolean widget_focusOutEventHandler(GObject *, GdkEventFocus *, gpointer);
 
 	static gulong Widget_signal_connect_focus_out_event(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "focus-out-event", G_CALLBACK(Widget_focusOutEventHandler), data);
+		return g_signal_connect(instance, "focus-out-event", G_CALLBACK(widget_focusOutEventHandler), data);
 	}
 
 */
 /*
 
-	void Widget_grabFocusHandler(GObject *, gpointer);
+	void widget_grabFocusHandler(GObject *, gpointer);
 
 	static gulong Widget_signal_connect_grab_focus(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "grab-focus", G_CALLBACK(Widget_grabFocusHandler), data);
+		return g_signal_connect(instance, "grab-focus", G_CALLBACK(widget_grabFocusHandler), data);
 	}
 
 */
 /*
 
-	void Widget_grabNotifyHandler(GObject *, gboolean, gpointer);
+	void widget_grabNotifyHandler(GObject *, gboolean, gpointer);
 
 	static gulong Widget_signal_connect_grab_notify(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "grab-notify", G_CALLBACK(Widget_grabNotifyHandler), data);
+		return g_signal_connect(instance, "grab-notify", G_CALLBACK(widget_grabNotifyHandler), data);
 	}
 
 */
 /*
 
-	void Widget_hideHandler(GObject *, gpointer);
+	void widget_hideHandler(GObject *, gpointer);
 
 	static gulong Widget_signal_connect_hide(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "hide", G_CALLBACK(Widget_hideHandler), data);
+		return g_signal_connect(instance, "hide", G_CALLBACK(widget_hideHandler), data);
 	}
 
 */
 /*
 
-	void Widget_hierarchyChangedHandler(GObject *, GtkWidget *, gpointer);
+	void widget_hierarchyChangedHandler(GObject *, GtkWidget *, gpointer);
 
 	static gulong Widget_signal_connect_hierarchy_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "hierarchy-changed", G_CALLBACK(Widget_hierarchyChangedHandler), data);
+		return g_signal_connect(instance, "hierarchy-changed", G_CALLBACK(widget_hierarchyChangedHandler), data);
 	}
 
 */
 /*
 
-	gboolean Widget_keyPressEventHandler(GObject *, GdkEventKey *, gpointer);
+	gboolean widget_keyPressEventHandler(GObject *, GdkEventKey *, gpointer);
 
 	static gulong Widget_signal_connect_key_press_event(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "key-press-event", G_CALLBACK(Widget_keyPressEventHandler), data);
+		return g_signal_connect(instance, "key-press-event", G_CALLBACK(widget_keyPressEventHandler), data);
 	}
 
 */
 /*
 
-	gboolean Widget_keyReleaseEventHandler(GObject *, GdkEventKey *, gpointer);
+	gboolean widget_keyReleaseEventHandler(GObject *, GdkEventKey *, gpointer);
 
 	static gulong Widget_signal_connect_key_release_event(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "key-release-event", G_CALLBACK(Widget_keyReleaseEventHandler), data);
+		return g_signal_connect(instance, "key-release-event", G_CALLBACK(widget_keyReleaseEventHandler), data);
 	}
 
 */
 /*
 
-	gboolean Widget_leaveNotifyEventHandler(GObject *, GdkEventCrossing *, gpointer);
+	gboolean widget_leaveNotifyEventHandler(GObject *, GdkEventCrossing *, gpointer);
 
 	static gulong Widget_signal_connect_leave_notify_event(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "leave-notify-event", G_CALLBACK(Widget_leaveNotifyEventHandler), data);
+		return g_signal_connect(instance, "leave-notify-event", G_CALLBACK(widget_leaveNotifyEventHandler), data);
 	}
 
 */
 /*
 
-	void Widget_mapHandler(GObject *, gpointer);
+	void widget_mapHandler(GObject *, gpointer);
 
 	static gulong Widget_signal_connect_map(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "map", G_CALLBACK(Widget_mapHandler), data);
+		return g_signal_connect(instance, "map", G_CALLBACK(widget_mapHandler), data);
 	}
 
 */
 /*
 
-	gboolean Widget_mapEventHandler(GObject *, GdkEventAny *, gpointer);
+	gboolean widget_mapEventHandler(GObject *, GdkEventAny *, gpointer);
 
 	static gulong Widget_signal_connect_map_event(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "map-event", G_CALLBACK(Widget_mapEventHandler), data);
+		return g_signal_connect(instance, "map-event", G_CALLBACK(widget_mapEventHandler), data);
 	}
 
 */
 /*
 
-	gboolean Widget_mnemonicActivateHandler(GObject *, gboolean, gpointer);
+	gboolean widget_mnemonicActivateHandler(GObject *, gboolean, gpointer);
 
 	static gulong Widget_signal_connect_mnemonic_activate(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "mnemonic-activate", G_CALLBACK(Widget_mnemonicActivateHandler), data);
+		return g_signal_connect(instance, "mnemonic-activate", G_CALLBACK(widget_mnemonicActivateHandler), data);
 	}
 
 */
 /*
 
-	gboolean Widget_motionNotifyEventHandler(GObject *, GdkEventMotion *, gpointer);
+	gboolean widget_motionNotifyEventHandler(GObject *, GdkEventMotion *, gpointer);
 
 	static gulong Widget_signal_connect_motion_notify_event(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "motion-notify-event", G_CALLBACK(Widget_motionNotifyEventHandler), data);
+		return g_signal_connect(instance, "motion-notify-event", G_CALLBACK(widget_motionNotifyEventHandler), data);
 	}
 
 */
 /*
 
-	void Widget_parentSetHandler(GObject *, GtkWidget *, gpointer);
+	void widget_parentSetHandler(GObject *, GtkWidget *, gpointer);
 
 	static gulong Widget_signal_connect_parent_set(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "parent-set", G_CALLBACK(Widget_parentSetHandler), data);
+		return g_signal_connect(instance, "parent-set", G_CALLBACK(widget_parentSetHandler), data);
 	}
 
 */
 /*
 
-	gboolean Widget_popupMenuHandler(GObject *, gpointer);
+	gboolean widget_popupMenuHandler(GObject *, gpointer);
 
 	static gulong Widget_signal_connect_popup_menu(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "popup-menu", G_CALLBACK(Widget_popupMenuHandler), data);
+		return g_signal_connect(instance, "popup-menu", G_CALLBACK(widget_popupMenuHandler), data);
 	}
 
 */
 /*
 
-	gboolean Widget_propertyNotifyEventHandler(GObject *, GdkEventProperty *, gpointer);
+	gboolean widget_propertyNotifyEventHandler(GObject *, GdkEventProperty *, gpointer);
 
 	static gulong Widget_signal_connect_property_notify_event(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "property-notify-event", G_CALLBACK(Widget_propertyNotifyEventHandler), data);
+		return g_signal_connect(instance, "property-notify-event", G_CALLBACK(widget_propertyNotifyEventHandler), data);
 	}
 
 */
 /*
 
-	gboolean Widget_proximityInEventHandler(GObject *, GdkEventProximity *, gpointer);
+	gboolean widget_proximityInEventHandler(GObject *, GdkEventProximity *, gpointer);
 
 	static gulong Widget_signal_connect_proximity_in_event(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "proximity-in-event", G_CALLBACK(Widget_proximityInEventHandler), data);
+		return g_signal_connect(instance, "proximity-in-event", G_CALLBACK(widget_proximityInEventHandler), data);
 	}
 
 */
 /*
 
-	gboolean Widget_proximityOutEventHandler(GObject *, GdkEventProximity *, gpointer);
+	gboolean widget_proximityOutEventHandler(GObject *, GdkEventProximity *, gpointer);
 
 	static gulong Widget_signal_connect_proximity_out_event(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "proximity-out-event", G_CALLBACK(Widget_proximityOutEventHandler), data);
+		return g_signal_connect(instance, "proximity-out-event", G_CALLBACK(widget_proximityOutEventHandler), data);
 	}
 
 */
 /*
 
-	void Widget_realizeHandler(GObject *, gpointer);
+	void widget_realizeHandler(GObject *, gpointer);
 
 	static gulong Widget_signal_connect_realize(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "realize", G_CALLBACK(Widget_realizeHandler), data);
+		return g_signal_connect(instance, "realize", G_CALLBACK(widget_realizeHandler), data);
 	}
 
 */
 /*
 
-	void Widget_screenChangedHandler(GObject *, GdkScreen *, gpointer);
+	void widget_screenChangedHandler(GObject *, GdkScreen *, gpointer);
 
 	static gulong Widget_signal_connect_screen_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "screen-changed", G_CALLBACK(Widget_screenChangedHandler), data);
+		return g_signal_connect(instance, "screen-changed", G_CALLBACK(widget_screenChangedHandler), data);
 	}
 
 */
 /*
 
-	gboolean Widget_scrollEventHandler(GObject *, GdkEventScroll *, gpointer);
+	gboolean widget_scrollEventHandler(GObject *, GdkEventScroll *, gpointer);
 
 	static gulong Widget_signal_connect_scroll_event(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "scroll-event", G_CALLBACK(Widget_scrollEventHandler), data);
+		return g_signal_connect(instance, "scroll-event", G_CALLBACK(widget_scrollEventHandler), data);
 	}
 
 */
 /*
 
-	gboolean Widget_selectionClearEventHandler(GObject *, GdkEventSelection *, gpointer);
+	gboolean widget_selectionClearEventHandler(GObject *, GdkEventSelection *, gpointer);
 
 	static gulong Widget_signal_connect_selection_clear_event(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "selection-clear-event", G_CALLBACK(Widget_selectionClearEventHandler), data);
+		return g_signal_connect(instance, "selection-clear-event", G_CALLBACK(widget_selectionClearEventHandler), data);
 	}
 
 */
 /*
 
-	gboolean Widget_selectionNotifyEventHandler(GObject *, GdkEventSelection *, gpointer);
+	gboolean widget_selectionNotifyEventHandler(GObject *, GdkEventSelection *, gpointer);
 
 	static gulong Widget_signal_connect_selection_notify_event(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "selection-notify-event", G_CALLBACK(Widget_selectionNotifyEventHandler), data);
+		return g_signal_connect(instance, "selection-notify-event", G_CALLBACK(widget_selectionNotifyEventHandler), data);
 	}
 
 */
 /*
 
-	gboolean Widget_selectionRequestEventHandler(GObject *, GdkEventSelection *, gpointer);
+	gboolean widget_selectionRequestEventHandler(GObject *, GdkEventSelection *, gpointer);
 
 	static gulong Widget_signal_connect_selection_request_event(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "selection-request-event", G_CALLBACK(Widget_selectionRequestEventHandler), data);
+		return g_signal_connect(instance, "selection-request-event", G_CALLBACK(widget_selectionRequestEventHandler), data);
 	}
 
 */
 /*
 
-	void Widget_showHandler(GObject *, gpointer);
+	void widget_showHandler(GObject *, gpointer);
 
 	static gulong Widget_signal_connect_show(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "show", G_CALLBACK(Widget_showHandler), data);
+		return g_signal_connect(instance, "show", G_CALLBACK(widget_showHandler), data);
 	}
 
 */
 /*
 
-	void Widget_styleSetHandler(GObject *, GtkStyle *, gpointer);
+	void widget_styleSetHandler(GObject *, GtkStyle *, gpointer);
 
 	static gulong Widget_signal_connect_style_set(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "style-set", G_CALLBACK(Widget_styleSetHandler), data);
+		return g_signal_connect(instance, "style-set", G_CALLBACK(widget_styleSetHandler), data);
 	}
 
 */
 /*
 
-	void Widget_unmapHandler(GObject *, gpointer);
+	void widget_unmapHandler(GObject *, gpointer);
 
 	static gulong Widget_signal_connect_unmap(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "unmap", G_CALLBACK(Widget_unmapHandler), data);
+		return g_signal_connect(instance, "unmap", G_CALLBACK(widget_unmapHandler), data);
 	}
 
 */
 /*
 
-	gboolean Widget_unmapEventHandler(GObject *, GdkEventAny *, gpointer);
+	gboolean widget_unmapEventHandler(GObject *, GdkEventAny *, gpointer);
 
 	static gulong Widget_signal_connect_unmap_event(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "unmap-event", G_CALLBACK(Widget_unmapEventHandler), data);
+		return g_signal_connect(instance, "unmap-event", G_CALLBACK(widget_unmapEventHandler), data);
 	}
 
 */
 /*
 
-	void Widget_unrealizeHandler(GObject *, gpointer);
+	void widget_unrealizeHandler(GObject *, gpointer);
 
 	static gulong Widget_signal_connect_unrealize(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "unrealize", G_CALLBACK(Widget_unrealizeHandler), data);
+		return g_signal_connect(instance, "unrealize", G_CALLBACK(widget_unrealizeHandler), data);
 	}
 
 */
 /*
 
-	gboolean Widget_visibilityNotifyEventHandler(GObject *, GdkEventVisibility *, gpointer);
+	gboolean widget_visibilityNotifyEventHandler(GObject *, GdkEventVisibility *, gpointer);
 
 	static gulong Widget_signal_connect_visibility_notify_event(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "visibility-notify-event", G_CALLBACK(Widget_visibilityNotifyEventHandler), data);
+		return g_signal_connect(instance, "visibility-notify-event", G_CALLBACK(widget_visibilityNotifyEventHandler), data);
 	}
 
 */
 /*
 
-	gboolean Widget_windowStateEventHandler(GObject *, GdkEventWindowState *, gpointer);
+	gboolean widget_windowStateEventHandler(GObject *, GdkEventWindowState *, gpointer);
 
 	static gulong Widget_signal_connect_window_state_event(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "window-state-event", G_CALLBACK(Widget_windowStateEventHandler), data);
+		return g_signal_connect(instance, "window-state-event", G_CALLBACK(widget_windowStateEventHandler), data);
 	}
 
 */
 /*
 
-	void Window_activateDefaultHandler(GObject *, gpointer);
+	void window_activateDefaultHandler(GObject *, gpointer);
 
 	static gulong Window_signal_connect_activate_default(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "activate-default", G_CALLBACK(Window_activateDefaultHandler), data);
+		return g_signal_connect(instance, "activate-default", G_CALLBACK(window_activateDefaultHandler), data);
 	}
 
 */
 /*
 
-	void Window_activateFocusHandler(GObject *, gpointer);
+	void window_activateFocusHandler(GObject *, gpointer);
 
 	static gulong Window_signal_connect_activate_focus(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "activate-focus", G_CALLBACK(Window_activateFocusHandler), data);
+		return g_signal_connect(instance, "activate-focus", G_CALLBACK(window_activateFocusHandler), data);
 	}
 
 */
 /*
 
-	gboolean Window_enableDebuggingHandler(GObject *, gboolean, gpointer);
+	gboolean window_enableDebuggingHandler(GObject *, gboolean, gpointer);
 
 	static gulong Window_signal_connect_enable_debugging(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "enable-debugging", G_CALLBACK(Window_enableDebuggingHandler), data);
+		return g_signal_connect(instance, "enable-debugging", G_CALLBACK(window_enableDebuggingHandler), data);
 	}
 
 */
 /*
 
-	void Window_keysChangedHandler(GObject *, gpointer);
+	void window_keysChangedHandler(GObject *, gpointer);
 
 	static gulong Window_signal_connect_keys_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "keys-changed", G_CALLBACK(Window_keysChangedHandler), data);
+		return g_signal_connect(instance, "keys-changed", G_CALLBACK(window_keysChangedHandler), data);
 	}
 
 */
 /*
 
-	void Window_setFocusHandler(GObject *, GtkWidget *, gpointer);
+	void window_setFocusHandler(GObject *, GtkWidget *, gpointer);
 
 	static gulong Window_signal_connect_set_focus(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "set-focus", G_CALLBACK(Window_setFocusHandler), data);
+		return g_signal_connect(instance, "set-focus", G_CALLBACK(window_setFocusHandler), data);
 	}
 
 */
@@ -2207,8 +2207,8 @@ func (recv *Adjustment) DisconnectChanged(connectionID int) {
 	delete(signalAdjustmentChangedMap, connectionID)
 }
 
-//export Adjustment_changedHandler
-func Adjustment_changedHandler(_ *C.GObject, data C.gpointer) {
+//export adjustment_changedHandler
+func adjustment_changedHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalAdjustmentChangedMap[index].callback
 	callback()
@@ -2264,8 +2264,8 @@ func (recv *Adjustment) DisconnectValueChanged(connectionID int) {
 	delete(signalAdjustmentValueChangedMap, connectionID)
 }
 
-//export Adjustment_valueChangedHandler
-func Adjustment_valueChangedHandler(_ *C.GObject, data C.gpointer) {
+//export adjustment_valueChangedHandler
+func adjustment_valueChangedHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalAdjustmentValueChangedMap[index].callback
 	callback()
@@ -3069,8 +3069,8 @@ func (recv *Assistant) DisconnectEscape(connectionID int) {
 	delete(signalAssistantEscapeMap, connectionID)
 }
 
-//export Assistant_escapeHandler
-func Assistant_escapeHandler(_ *C.GObject, data C.gpointer) {
+//export assistant_escapeHandler
+func assistant_escapeHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalAssistantEscapeMap[index].callback
 	callback()
@@ -3472,8 +3472,8 @@ func (recv *Button) DisconnectActivate(connectionID int) {
 	delete(signalButtonActivateMap, connectionID)
 }
 
-//export Button_activateHandler
-func Button_activateHandler(_ *C.GObject, data C.gpointer) {
+//export button_activateHandler
+func button_activateHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalButtonActivateMap[index].callback
 	callback()
@@ -3529,8 +3529,8 @@ func (recv *Button) DisconnectClicked(connectionID int) {
 	delete(signalButtonClickedMap, connectionID)
 }
 
-//export Button_clickedHandler
-func Button_clickedHandler(_ *C.GObject, data C.gpointer) {
+//export button_clickedHandler
+func button_clickedHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalButtonClickedMap[index].callback
 	callback()
@@ -3586,8 +3586,8 @@ func (recv *Button) DisconnectEnter(connectionID int) {
 	delete(signalButtonEnterMap, connectionID)
 }
 
-//export Button_enterHandler
-func Button_enterHandler(_ *C.GObject, data C.gpointer) {
+//export button_enterHandler
+func button_enterHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalButtonEnterMap[index].callback
 	callback()
@@ -3643,8 +3643,8 @@ func (recv *Button) DisconnectLeave(connectionID int) {
 	delete(signalButtonLeaveMap, connectionID)
 }
 
-//export Button_leaveHandler
-func Button_leaveHandler(_ *C.GObject, data C.gpointer) {
+//export button_leaveHandler
+func button_leaveHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalButtonLeaveMap[index].callback
 	callback()
@@ -3700,8 +3700,8 @@ func (recv *Button) DisconnectPressed(connectionID int) {
 	delete(signalButtonPressedMap, connectionID)
 }
 
-//export Button_pressedHandler
-func Button_pressedHandler(_ *C.GObject, data C.gpointer) {
+//export button_pressedHandler
+func button_pressedHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalButtonPressedMap[index].callback
 	callback()
@@ -3757,8 +3757,8 @@ func (recv *Button) DisconnectReleased(connectionID int) {
 	delete(signalButtonReleasedMap, connectionID)
 }
 
-//export Button_releasedHandler
-func Button_releasedHandler(_ *C.GObject, data C.gpointer) {
+//export button_releasedHandler
+func button_releasedHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalButtonReleasedMap[index].callback
 	callback()
@@ -4139,8 +4139,8 @@ func (recv *Calendar) DisconnectDaySelected(connectionID int) {
 	delete(signalCalendarDaySelectedMap, connectionID)
 }
 
-//export Calendar_daySelectedHandler
-func Calendar_daySelectedHandler(_ *C.GObject, data C.gpointer) {
+//export calendar_daySelectedHandler
+func calendar_daySelectedHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalCalendarDaySelectedMap[index].callback
 	callback()
@@ -4196,8 +4196,8 @@ func (recv *Calendar) DisconnectDaySelectedDoubleClick(connectionID int) {
 	delete(signalCalendarDaySelectedDoubleClickMap, connectionID)
 }
 
-//export Calendar_daySelectedDoubleClickHandler
-func Calendar_daySelectedDoubleClickHandler(_ *C.GObject, data C.gpointer) {
+//export calendar_daySelectedDoubleClickHandler
+func calendar_daySelectedDoubleClickHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalCalendarDaySelectedDoubleClickMap[index].callback
 	callback()
@@ -4253,8 +4253,8 @@ func (recv *Calendar) DisconnectMonthChanged(connectionID int) {
 	delete(signalCalendarMonthChangedMap, connectionID)
 }
 
-//export Calendar_monthChangedHandler
-func Calendar_monthChangedHandler(_ *C.GObject, data C.gpointer) {
+//export calendar_monthChangedHandler
+func calendar_monthChangedHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalCalendarMonthChangedMap[index].callback
 	callback()
@@ -4310,8 +4310,8 @@ func (recv *Calendar) DisconnectNextMonth(connectionID int) {
 	delete(signalCalendarNextMonthMap, connectionID)
 }
 
-//export Calendar_nextMonthHandler
-func Calendar_nextMonthHandler(_ *C.GObject, data C.gpointer) {
+//export calendar_nextMonthHandler
+func calendar_nextMonthHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalCalendarNextMonthMap[index].callback
 	callback()
@@ -4367,8 +4367,8 @@ func (recv *Calendar) DisconnectNextYear(connectionID int) {
 	delete(signalCalendarNextYearMap, connectionID)
 }
 
-//export Calendar_nextYearHandler
-func Calendar_nextYearHandler(_ *C.GObject, data C.gpointer) {
+//export calendar_nextYearHandler
+func calendar_nextYearHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalCalendarNextYearMap[index].callback
 	callback()
@@ -4424,8 +4424,8 @@ func (recv *Calendar) DisconnectPrevMonth(connectionID int) {
 	delete(signalCalendarPrevMonthMap, connectionID)
 }
 
-//export Calendar_prevMonthHandler
-func Calendar_prevMonthHandler(_ *C.GObject, data C.gpointer) {
+//export calendar_prevMonthHandler
+func calendar_prevMonthHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalCalendarPrevMonthMap[index].callback
 	callback()
@@ -4481,8 +4481,8 @@ func (recv *Calendar) DisconnectPrevYear(connectionID int) {
 	delete(signalCalendarPrevYearMap, connectionID)
 }
 
-//export Calendar_prevYearHandler
-func Calendar_prevYearHandler(_ *C.GObject, data C.gpointer) {
+//export calendar_prevYearHandler
+func calendar_prevYearHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalCalendarPrevYearMap[index].callback
 	callback()
@@ -5493,8 +5493,8 @@ func (recv *CheckMenuItem) DisconnectToggled(connectionID int) {
 	delete(signalCheckMenuItemToggledMap, connectionID)
 }
 
-//export CheckMenuItem_toggledHandler
-func CheckMenuItem_toggledHandler(_ *C.GObject, data C.gpointer) {
+//export checkmenuitem_toggledHandler
+func checkmenuitem_toggledHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalCheckMenuItemToggledMap[index].callback
 	callback()
@@ -5994,8 +5994,8 @@ func (recv *ColorSelection) DisconnectColorChanged(connectionID int) {
 	delete(signalColorSelectionColorChangedMap, connectionID)
 }
 
-//export ColorSelection_colorChangedHandler
-func ColorSelection_colorChangedHandler(_ *C.GObject, data C.gpointer) {
+//export colorselection_colorChangedHandler
+func colorselection_colorChangedHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalColorSelectionColorChangedMap[index].callback
 	callback()
@@ -6490,8 +6490,8 @@ func (recv *Container) DisconnectAdd(connectionID int) {
 	delete(signalContainerAddMap, connectionID)
 }
 
-//export Container_addHandler
-func Container_addHandler(_ *C.GObject, c_object *C.GtkWidget, data C.gpointer) {
+//export container_addHandler
+func container_addHandler(_ *C.GObject, c_object *C.GtkWidget, data C.gpointer) {
 	object := WidgetNewFromC(unsafe.Pointer(c_object))
 
 	index := int(uintptr(data))
@@ -6549,8 +6549,8 @@ func (recv *Container) DisconnectCheckResize(connectionID int) {
 	delete(signalContainerCheckResizeMap, connectionID)
 }
 
-//export Container_checkResizeHandler
-func Container_checkResizeHandler(_ *C.GObject, data C.gpointer) {
+//export container_checkResizeHandler
+func container_checkResizeHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalContainerCheckResizeMap[index].callback
 	callback()
@@ -6606,8 +6606,8 @@ func (recv *Container) DisconnectRemove(connectionID int) {
 	delete(signalContainerRemoveMap, connectionID)
 }
 
-//export Container_removeHandler
-func Container_removeHandler(_ *C.GObject, c_object *C.GtkWidget, data C.gpointer) {
+//export container_removeHandler
+func container_removeHandler(_ *C.GObject, c_object *C.GtkWidget, data C.gpointer) {
 	object := WidgetNewFromC(unsafe.Pointer(c_object))
 
 	index := int(uintptr(data))
@@ -6665,8 +6665,8 @@ func (recv *Container) DisconnectSetFocusChild(connectionID int) {
 	delete(signalContainerSetFocusChildMap, connectionID)
 }
 
-//export Container_setFocusChildHandler
-func Container_setFocusChildHandler(_ *C.GObject, c_object *C.GtkWidget, data C.gpointer) {
+//export container_setFocusChildHandler
+func container_setFocusChildHandler(_ *C.GObject, c_object *C.GtkWidget, data C.gpointer) {
 	object := WidgetNewFromC(unsafe.Pointer(c_object))
 
 	index := int(uintptr(data))
@@ -7090,8 +7090,8 @@ func (recv *CssProvider) DisconnectParsingError(connectionID int) {
 	delete(signalCssProviderParsingErrorMap, connectionID)
 }
 
-//export CssProvider_parsingErrorHandler
-func CssProvider_parsingErrorHandler(_ *C.GObject, c_section *C.GtkCssSection, c_error *C.GError, data C.gpointer) {
+//export cssprovider_parsingErrorHandler
+func cssprovider_parsingErrorHandler(_ *C.GObject, c_section *C.GtkCssSection, c_error *C.GError, data C.gpointer) {
 	section := CssSectionNewFromC(unsafe.Pointer(c_section))
 
 	error := glib.ErrorNewFromC(unsafe.Pointer(c_error))
@@ -7240,8 +7240,8 @@ func (recv *Dialog) DisconnectClose(connectionID int) {
 	delete(signalDialogCloseMap, connectionID)
 }
 
-//export Dialog_closeHandler
-func Dialog_closeHandler(_ *C.GObject, data C.gpointer) {
+//export dialog_closeHandler
+func dialog_closeHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalDialogCloseMap[index].callback
 	callback()
@@ -7469,8 +7469,8 @@ func (recv *Entry) DisconnectActivate(connectionID int) {
 	delete(signalEntryActivateMap, connectionID)
 }
 
-//export Entry_activateHandler
-func Entry_activateHandler(_ *C.GObject, data C.gpointer) {
+//export entry_activateHandler
+func entry_activateHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalEntryActivateMap[index].callback
 	callback()
@@ -7526,8 +7526,8 @@ func (recv *Entry) DisconnectBackspace(connectionID int) {
 	delete(signalEntryBackspaceMap, connectionID)
 }
 
-//export Entry_backspaceHandler
-func Entry_backspaceHandler(_ *C.GObject, data C.gpointer) {
+//export entry_backspaceHandler
+func entry_backspaceHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalEntryBackspaceMap[index].callback
 	callback()
@@ -7583,8 +7583,8 @@ func (recv *Entry) DisconnectCopyClipboard(connectionID int) {
 	delete(signalEntryCopyClipboardMap, connectionID)
 }
 
-//export Entry_copyClipboardHandler
-func Entry_copyClipboardHandler(_ *C.GObject, data C.gpointer) {
+//export entry_copyClipboardHandler
+func entry_copyClipboardHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalEntryCopyClipboardMap[index].callback
 	callback()
@@ -7640,8 +7640,8 @@ func (recv *Entry) DisconnectCutClipboard(connectionID int) {
 	delete(signalEntryCutClipboardMap, connectionID)
 }
 
-//export Entry_cutClipboardHandler
-func Entry_cutClipboardHandler(_ *C.GObject, data C.gpointer) {
+//export entry_cutClipboardHandler
+func entry_cutClipboardHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalEntryCutClipboardMap[index].callback
 	callback()
@@ -7703,8 +7703,8 @@ func (recv *Entry) DisconnectPasteClipboard(connectionID int) {
 	delete(signalEntryPasteClipboardMap, connectionID)
 }
 
-//export Entry_pasteClipboardHandler
-func Entry_pasteClipboardHandler(_ *C.GObject, data C.gpointer) {
+//export entry_pasteClipboardHandler
+func entry_pasteClipboardHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalEntryPasteClipboardMap[index].callback
 	callback()
@@ -7760,8 +7760,8 @@ func (recv *Entry) DisconnectPopulatePopup(connectionID int) {
 	delete(signalEntryPopulatePopupMap, connectionID)
 }
 
-//export Entry_populatePopupHandler
-func Entry_populatePopupHandler(_ *C.GObject, c_widget *C.GtkWidget, data C.gpointer) {
+//export entry_populatePopupHandler
+func entry_populatePopupHandler(_ *C.GObject, c_widget *C.GtkWidget, data C.gpointer) {
 	widget := WidgetNewFromC(unsafe.Pointer(c_widget))
 
 	index := int(uintptr(data))
@@ -7819,8 +7819,8 @@ func (recv *Entry) DisconnectToggleOverwrite(connectionID int) {
 	delete(signalEntryToggleOverwriteMap, connectionID)
 }
 
-//export Entry_toggleOverwriteHandler
-func Entry_toggleOverwriteHandler(_ *C.GObject, data C.gpointer) {
+//export entry_toggleOverwriteHandler
+func entry_toggleOverwriteHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalEntryToggleOverwriteMap[index].callback
 	callback()
@@ -8312,8 +8312,8 @@ func (recv *Expander) DisconnectActivate(connectionID int) {
 	delete(signalExpanderActivateMap, connectionID)
 }
 
-//export Expander_activateHandler
-func Expander_activateHandler(_ *C.GObject, data C.gpointer) {
+//export expander_activateHandler
+func expander_activateHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalExpanderActivateMap[index].callback
 	callback()
@@ -8592,8 +8592,8 @@ func (recv *FileChooserWidget) DisconnectDesktopFolder(connectionID int) {
 	delete(signalFileChooserWidgetDesktopFolderMap, connectionID)
 }
 
-//export FileChooserWidget_desktopFolderHandler
-func FileChooserWidget_desktopFolderHandler(_ *C.GObject, data C.gpointer) {
+//export filechooserwidget_desktopFolderHandler
+func filechooserwidget_desktopFolderHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalFileChooserWidgetDesktopFolderMap[index].callback
 	callback()
@@ -8649,8 +8649,8 @@ func (recv *FileChooserWidget) DisconnectDownFolder(connectionID int) {
 	delete(signalFileChooserWidgetDownFolderMap, connectionID)
 }
 
-//export FileChooserWidget_downFolderHandler
-func FileChooserWidget_downFolderHandler(_ *C.GObject, data C.gpointer) {
+//export filechooserwidget_downFolderHandler
+func filechooserwidget_downFolderHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalFileChooserWidgetDownFolderMap[index].callback
 	callback()
@@ -8706,8 +8706,8 @@ func (recv *FileChooserWidget) DisconnectHomeFolder(connectionID int) {
 	delete(signalFileChooserWidgetHomeFolderMap, connectionID)
 }
 
-//export FileChooserWidget_homeFolderHandler
-func FileChooserWidget_homeFolderHandler(_ *C.GObject, data C.gpointer) {
+//export filechooserwidget_homeFolderHandler
+func filechooserwidget_homeFolderHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalFileChooserWidgetHomeFolderMap[index].callback
 	callback()
@@ -8765,8 +8765,8 @@ func (recv *FileChooserWidget) DisconnectLocationPopupOnPaste(connectionID int) 
 	delete(signalFileChooserWidgetLocationPopupOnPasteMap, connectionID)
 }
 
-//export FileChooserWidget_locationPopupOnPasteHandler
-func FileChooserWidget_locationPopupOnPasteHandler(_ *C.GObject, data C.gpointer) {
+//export filechooserwidget_locationPopupOnPasteHandler
+func filechooserwidget_locationPopupOnPasteHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalFileChooserWidgetLocationPopupOnPasteMap[index].callback
 	callback()
@@ -8822,8 +8822,8 @@ func (recv *FileChooserWidget) DisconnectLocationTogglePopup(connectionID int) {
 	delete(signalFileChooserWidgetLocationTogglePopupMap, connectionID)
 }
 
-//export FileChooserWidget_locationTogglePopupHandler
-func FileChooserWidget_locationTogglePopupHandler(_ *C.GObject, data C.gpointer) {
+//export filechooserwidget_locationTogglePopupHandler
+func filechooserwidget_locationTogglePopupHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalFileChooserWidgetLocationTogglePopupMap[index].callback
 	callback()
@@ -8879,8 +8879,8 @@ func (recv *FileChooserWidget) DisconnectPlacesShortcut(connectionID int) {
 	delete(signalFileChooserWidgetPlacesShortcutMap, connectionID)
 }
 
-//export FileChooserWidget_placesShortcutHandler
-func FileChooserWidget_placesShortcutHandler(_ *C.GObject, data C.gpointer) {
+//export filechooserwidget_placesShortcutHandler
+func filechooserwidget_placesShortcutHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalFileChooserWidgetPlacesShortcutMap[index].callback
 	callback()
@@ -8938,8 +8938,8 @@ func (recv *FileChooserWidget) DisconnectRecentShortcut(connectionID int) {
 	delete(signalFileChooserWidgetRecentShortcutMap, connectionID)
 }
 
-//export FileChooserWidget_recentShortcutHandler
-func FileChooserWidget_recentShortcutHandler(_ *C.GObject, data C.gpointer) {
+//export filechooserwidget_recentShortcutHandler
+func filechooserwidget_recentShortcutHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalFileChooserWidgetRecentShortcutMap[index].callback
 	callback()
@@ -8995,8 +8995,8 @@ func (recv *FileChooserWidget) DisconnectSearchShortcut(connectionID int) {
 	delete(signalFileChooserWidgetSearchShortcutMap, connectionID)
 }
 
-//export FileChooserWidget_searchShortcutHandler
-func FileChooserWidget_searchShortcutHandler(_ *C.GObject, data C.gpointer) {
+//export filechooserwidget_searchShortcutHandler
+func filechooserwidget_searchShortcutHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalFileChooserWidgetSearchShortcutMap[index].callback
 	callback()
@@ -9052,8 +9052,8 @@ func (recv *FileChooserWidget) DisconnectShowHidden(connectionID int) {
 	delete(signalFileChooserWidgetShowHiddenMap, connectionID)
 }
 
-//export FileChooserWidget_showHiddenHandler
-func FileChooserWidget_showHiddenHandler(_ *C.GObject, data C.gpointer) {
+//export filechooserwidget_showHiddenHandler
+func filechooserwidget_showHiddenHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalFileChooserWidgetShowHiddenMap[index].callback
 	callback()
@@ -9109,8 +9109,8 @@ func (recv *FileChooserWidget) DisconnectUpFolder(connectionID int) {
 	delete(signalFileChooserWidgetUpFolderMap, connectionID)
 }
 
-//export FileChooserWidget_upFolderHandler
-func FileChooserWidget_upFolderHandler(_ *C.GObject, data C.gpointer) {
+//export filechooserwidget_upFolderHandler
+func filechooserwidget_upFolderHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalFileChooserWidgetUpFolderMap[index].callback
 	callback()
@@ -9336,8 +9336,8 @@ func (recv *FlowBox) DisconnectActivateCursorChild(connectionID int) {
 	delete(signalFlowBoxActivateCursorChildMap, connectionID)
 }
 
-//export FlowBox_activateCursorChildHandler
-func FlowBox_activateCursorChildHandler(_ *C.GObject, data C.gpointer) {
+//export flowbox_activateCursorChildHandler
+func flowbox_activateCursorChildHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalFlowBoxActivateCursorChildMap[index].callback
 	callback()
@@ -9393,8 +9393,8 @@ func (recv *FlowBox) DisconnectChildActivated(connectionID int) {
 	delete(signalFlowBoxChildActivatedMap, connectionID)
 }
 
-//export FlowBox_childActivatedHandler
-func FlowBox_childActivatedHandler(_ *C.GObject, c_child *C.GtkFlowBoxChild, data C.gpointer) {
+//export flowbox_childActivatedHandler
+func flowbox_childActivatedHandler(_ *C.GObject, c_child *C.GtkFlowBoxChild, data C.gpointer) {
 	child := FlowBoxChildNewFromC(unsafe.Pointer(c_child))
 
 	index := int(uintptr(data))
@@ -9454,8 +9454,8 @@ func (recv *FlowBox) DisconnectSelectAll(connectionID int) {
 	delete(signalFlowBoxSelectAllMap, connectionID)
 }
 
-//export FlowBox_selectAllHandler
-func FlowBox_selectAllHandler(_ *C.GObject, data C.gpointer) {
+//export flowbox_selectAllHandler
+func flowbox_selectAllHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalFlowBoxSelectAllMap[index].callback
 	callback()
@@ -9511,8 +9511,8 @@ func (recv *FlowBox) DisconnectSelectedChildrenChanged(connectionID int) {
 	delete(signalFlowBoxSelectedChildrenChangedMap, connectionID)
 }
 
-//export FlowBox_selectedChildrenChangedHandler
-func FlowBox_selectedChildrenChangedHandler(_ *C.GObject, data C.gpointer) {
+//export flowbox_selectedChildrenChangedHandler
+func flowbox_selectedChildrenChangedHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalFlowBoxSelectedChildrenChangedMap[index].callback
 	callback()
@@ -9568,8 +9568,8 @@ func (recv *FlowBox) DisconnectToggleCursorChild(connectionID int) {
 	delete(signalFlowBoxToggleCursorChildMap, connectionID)
 }
 
-//export FlowBox_toggleCursorChildHandler
-func FlowBox_toggleCursorChildHandler(_ *C.GObject, data C.gpointer) {
+//export flowbox_toggleCursorChildHandler
+func flowbox_toggleCursorChildHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalFlowBoxToggleCursorChildMap[index].callback
 	callback()
@@ -9625,8 +9625,8 @@ func (recv *FlowBox) DisconnectUnselectAll(connectionID int) {
 	delete(signalFlowBoxUnselectAllMap, connectionID)
 }
 
-//export FlowBox_unselectAllHandler
-func FlowBox_unselectAllHandler(_ *C.GObject, data C.gpointer) {
+//export flowbox_unselectAllHandler
+func flowbox_unselectAllHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalFlowBoxUnselectAllMap[index].callback
 	callback()
@@ -9784,8 +9784,8 @@ func (recv *FlowBoxChild) DisconnectActivate(connectionID int) {
 	delete(signalFlowBoxChildActivateMap, connectionID)
 }
 
-//export FlowBoxChild_activateHandler
-func FlowBoxChild_activateHandler(_ *C.GObject, data C.gpointer) {
+//export flowboxchild_activateHandler
+func flowboxchild_activateHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalFlowBoxChildActivateMap[index].callback
 	callback()
@@ -11274,8 +11274,8 @@ func (recv *HSV) DisconnectChanged(connectionID int) {
 	delete(signalHSVChangedMap, connectionID)
 }
 
-//export HSV_changedHandler
-func HSV_changedHandler(_ *C.GObject, data C.gpointer) {
+//export hsv_changedHandler
+func hsv_changedHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalHSVChangedMap[index].callback
 	callback()
@@ -11583,8 +11583,8 @@ func (recv *HandleBox) DisconnectChildAttached(connectionID int) {
 	delete(signalHandleBoxChildAttachedMap, connectionID)
 }
 
-//export HandleBox_childAttachedHandler
-func HandleBox_childAttachedHandler(_ *C.GObject, c_widget *C.GtkWidget, data C.gpointer) {
+//export handlebox_childAttachedHandler
+func handlebox_childAttachedHandler(_ *C.GObject, c_widget *C.GtkWidget, data C.gpointer) {
 	widget := WidgetNewFromC(unsafe.Pointer(c_widget))
 
 	index := int(uintptr(data))
@@ -11642,8 +11642,8 @@ func (recv *HandleBox) DisconnectChildDetached(connectionID int) {
 	delete(signalHandleBoxChildDetachedMap, connectionID)
 }
 
-//export HandleBox_childDetachedHandler
-func HandleBox_childDetachedHandler(_ *C.GObject, c_widget *C.GtkWidget, data C.gpointer) {
+//export handlebox_childDetachedHandler
+func handlebox_childDetachedHandler(_ *C.GObject, c_widget *C.GtkWidget, data C.gpointer) {
 	widget := WidgetNewFromC(unsafe.Pointer(c_widget))
 
 	index := int(uintptr(data))
@@ -11845,8 +11845,8 @@ func (recv *IMContext) DisconnectPreeditChanged(connectionID int) {
 	delete(signalIMContextPreeditChangedMap, connectionID)
 }
 
-//export IMContext_preeditChangedHandler
-func IMContext_preeditChangedHandler(_ *C.GObject, data C.gpointer) {
+//export imcontext_preeditChangedHandler
+func imcontext_preeditChangedHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalIMContextPreeditChangedMap[index].callback
 	callback()
@@ -11902,8 +11902,8 @@ func (recv *IMContext) DisconnectPreeditEnd(connectionID int) {
 	delete(signalIMContextPreeditEndMap, connectionID)
 }
 
-//export IMContext_preeditEndHandler
-func IMContext_preeditEndHandler(_ *C.GObject, data C.gpointer) {
+//export imcontext_preeditEndHandler
+func imcontext_preeditEndHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalIMContextPreeditEndMap[index].callback
 	callback()
@@ -11959,8 +11959,8 @@ func (recv *IMContext) DisconnectPreeditStart(connectionID int) {
 	delete(signalIMContextPreeditStartMap, connectionID)
 }
 
-//export IMContext_preeditStartHandler
-func IMContext_preeditStartHandler(_ *C.GObject, data C.gpointer) {
+//export imcontext_preeditStartHandler
+func imcontext_preeditStartHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalIMContextPreeditStartMap[index].callback
 	callback()
@@ -12016,8 +12016,8 @@ func (recv *IMContext) DisconnectRetrieveSurrounding(connectionID int) {
 	delete(signalIMContextRetrieveSurroundingMap, connectionID)
 }
 
-//export IMContext_retrieveSurroundingHandler
-func IMContext_retrieveSurroundingHandler(_ *C.GObject, data C.gpointer) C.gboolean {
+//export imcontext_retrieveSurroundingHandler
+func imcontext_retrieveSurroundingHandler(_ *C.GObject, data C.gpointer) C.gboolean {
 	index := int(uintptr(data))
 	callback := signalIMContextRetrieveSurroundingMap[index].callback
 	retGo := callback()
@@ -12425,8 +12425,8 @@ func (recv *IconTheme) DisconnectChanged(connectionID int) {
 	delete(signalIconThemeChangedMap, connectionID)
 }
 
-//export IconTheme_changedHandler
-func IconTheme_changedHandler(_ *C.GObject, data C.gpointer) {
+//export icontheme_changedHandler
+func icontheme_changedHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalIconThemeChangedMap[index].callback
 	callback()
@@ -12531,8 +12531,8 @@ func (recv *IconView) DisconnectActivateCursorItem(connectionID int) {
 	delete(signalIconViewActivateCursorItemMap, connectionID)
 }
 
-//export IconView_activateCursorItemHandler
-func IconView_activateCursorItemHandler(_ *C.GObject, data C.gpointer) C.gboolean {
+//export iconview_activateCursorItemHandler
+func iconview_activateCursorItemHandler(_ *C.GObject, data C.gpointer) C.gboolean {
 	index := int(uintptr(data))
 	callback := signalIconViewActivateCursorItemMap[index].callback
 	retGo := callback()
@@ -12591,8 +12591,8 @@ func (recv *IconView) DisconnectItemActivated(connectionID int) {
 	delete(signalIconViewItemActivatedMap, connectionID)
 }
 
-//export IconView_itemActivatedHandler
-func IconView_itemActivatedHandler(_ *C.GObject, c_path *C.GtkTreePath, data C.gpointer) {
+//export iconview_itemActivatedHandler
+func iconview_itemActivatedHandler(_ *C.GObject, c_path *C.GtkTreePath, data C.gpointer) {
 	path := TreePathNewFromC(unsafe.Pointer(c_path))
 
 	index := int(uintptr(data))
@@ -12652,8 +12652,8 @@ func (recv *IconView) DisconnectSelectAll(connectionID int) {
 	delete(signalIconViewSelectAllMap, connectionID)
 }
 
-//export IconView_selectAllHandler
-func IconView_selectAllHandler(_ *C.GObject, data C.gpointer) {
+//export iconview_selectAllHandler
+func iconview_selectAllHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalIconViewSelectAllMap[index].callback
 	callback()
@@ -12709,8 +12709,8 @@ func (recv *IconView) DisconnectSelectCursorItem(connectionID int) {
 	delete(signalIconViewSelectCursorItemMap, connectionID)
 }
 
-//export IconView_selectCursorItemHandler
-func IconView_selectCursorItemHandler(_ *C.GObject, data C.gpointer) {
+//export iconview_selectCursorItemHandler
+func iconview_selectCursorItemHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalIconViewSelectCursorItemMap[index].callback
 	callback()
@@ -12766,8 +12766,8 @@ func (recv *IconView) DisconnectSelectionChanged(connectionID int) {
 	delete(signalIconViewSelectionChangedMap, connectionID)
 }
 
-//export IconView_selectionChangedHandler
-func IconView_selectionChangedHandler(_ *C.GObject, data C.gpointer) {
+//export iconview_selectionChangedHandler
+func iconview_selectionChangedHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalIconViewSelectionChangedMap[index].callback
 	callback()
@@ -12823,8 +12823,8 @@ func (recv *IconView) DisconnectToggleCursorItem(connectionID int) {
 	delete(signalIconViewToggleCursorItemMap, connectionID)
 }
 
-//export IconView_toggleCursorItemHandler
-func IconView_toggleCursorItemHandler(_ *C.GObject, data C.gpointer) {
+//export iconview_toggleCursorItemHandler
+func iconview_toggleCursorItemHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalIconViewToggleCursorItemMap[index].callback
 	callback()
@@ -12880,8 +12880,8 @@ func (recv *IconView) DisconnectUnselectAll(connectionID int) {
 	delete(signalIconViewUnselectAllMap, connectionID)
 }
 
-//export IconView_unselectAllHandler
-func IconView_unselectAllHandler(_ *C.GObject, data C.gpointer) {
+//export iconview_unselectAllHandler
+func iconview_unselectAllHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalIconViewUnselectAllMap[index].callback
 	callback()
@@ -13523,8 +13523,8 @@ func (recv *Label) DisconnectCopyClipboard(connectionID int) {
 	delete(signalLabelCopyClipboardMap, connectionID)
 }
 
-//export Label_copyClipboardHandler
-func Label_copyClipboardHandler(_ *C.GObject, data C.gpointer) {
+//export label_copyClipboardHandler
+func label_copyClipboardHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalLabelCopyClipboardMap[index].callback
 	callback()
@@ -13582,8 +13582,8 @@ func (recv *Label) DisconnectPopulatePopup(connectionID int) {
 	delete(signalLabelPopulatePopupMap, connectionID)
 }
 
-//export Label_populatePopupHandler
-func Label_populatePopupHandler(_ *C.GObject, c_menu *C.GtkMenu, data C.gpointer) {
+//export label_populatePopupHandler
+func label_populatePopupHandler(_ *C.GObject, c_menu *C.GtkMenu, data C.gpointer) {
 	menu := MenuNewFromC(unsafe.Pointer(c_menu))
 
 	index := int(uintptr(data))
@@ -14258,8 +14258,8 @@ func (recv *LinkButton) DisconnectActivateLink(connectionID int) {
 	delete(signalLinkButtonActivateLinkMap, connectionID)
 }
 
-//export LinkButton_activateLinkHandler
-func LinkButton_activateLinkHandler(_ *C.GObject, data C.gpointer) C.gboolean {
+//export linkbutton_activateLinkHandler
+func linkbutton_activateLinkHandler(_ *C.GObject, data C.gpointer) C.gboolean {
 	index := int(uintptr(data))
 	callback := signalLinkButtonActivateLinkMap[index].callback
 	retGo := callback()
@@ -14420,8 +14420,8 @@ func (recv *ListBox) DisconnectActivateCursorRow(connectionID int) {
 	delete(signalListBoxActivateCursorRowMap, connectionID)
 }
 
-//export ListBox_activateCursorRowHandler
-func ListBox_activateCursorRowHandler(_ *C.GObject, data C.gpointer) {
+//export listbox_activateCursorRowHandler
+func listbox_activateCursorRowHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalListBoxActivateCursorRowMap[index].callback
 	callback()
@@ -14479,8 +14479,8 @@ func (recv *ListBox) DisconnectToggleCursorRow(connectionID int) {
 	delete(signalListBoxToggleCursorRowMap, connectionID)
 }
 
-//export ListBox_toggleCursorRowHandler
-func ListBox_toggleCursorRowHandler(_ *C.GObject, data C.gpointer) {
+//export listbox_toggleCursorRowHandler
+func listbox_toggleCursorRowHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalListBoxToggleCursorRowMap[index].callback
 	callback()
@@ -15415,8 +15415,8 @@ func (recv *MenuItem) DisconnectActivate(connectionID int) {
 	delete(signalMenuItemActivateMap, connectionID)
 }
 
-//export MenuItem_activateHandler
-func MenuItem_activateHandler(_ *C.GObject, data C.gpointer) {
+//export menuitem_activateHandler
+func menuitem_activateHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalMenuItemActivateMap[index].callback
 	callback()
@@ -15472,8 +15472,8 @@ func (recv *MenuItem) DisconnectActivateItem(connectionID int) {
 	delete(signalMenuItemActivateItemMap, connectionID)
 }
 
-//export MenuItem_activateItemHandler
-func MenuItem_activateItemHandler(_ *C.GObject, data C.gpointer) {
+//export menuitem_activateItemHandler
+func menuitem_activateItemHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalMenuItemActivateItemMap[index].callback
 	callback()
@@ -15529,8 +15529,8 @@ func (recv *MenuItem) DisconnectDeselect(connectionID int) {
 	delete(signalMenuItemDeselectMap, connectionID)
 }
 
-//export MenuItem_deselectHandler
-func MenuItem_deselectHandler(_ *C.GObject, data C.gpointer) {
+//export menuitem_deselectHandler
+func menuitem_deselectHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalMenuItemDeselectMap[index].callback
 	callback()
@@ -15586,8 +15586,8 @@ func (recv *MenuItem) DisconnectSelect(connectionID int) {
 	delete(signalMenuItemSelectMap, connectionID)
 }
 
-//export MenuItem_selectHandler
-func MenuItem_selectHandler(_ *C.GObject, data C.gpointer) {
+//export menuitem_selectHandler
+func menuitem_selectHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalMenuItemSelectMap[index].callback
 	callback()
@@ -15859,8 +15859,8 @@ func (recv *MenuShell) DisconnectActivateCurrent(connectionID int) {
 	delete(signalMenuShellActivateCurrentMap, connectionID)
 }
 
-//export MenuShell_activateCurrentHandler
-func MenuShell_activateCurrentHandler(_ *C.GObject, c_force_hide C.gboolean, data C.gpointer) {
+//export menushell_activateCurrentHandler
+func menushell_activateCurrentHandler(_ *C.GObject, c_force_hide C.gboolean, data C.gpointer) {
 	forceHide := c_force_hide == C.TRUE
 
 	index := int(uintptr(data))
@@ -15918,8 +15918,8 @@ func (recv *MenuShell) DisconnectCancel(connectionID int) {
 	delete(signalMenuShellCancelMap, connectionID)
 }
 
-//export MenuShell_cancelHandler
-func MenuShell_cancelHandler(_ *C.GObject, data C.gpointer) {
+//export menushell_cancelHandler
+func menushell_cancelHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalMenuShellCancelMap[index].callback
 	callback()
@@ -15977,8 +15977,8 @@ func (recv *MenuShell) DisconnectDeactivate(connectionID int) {
 	delete(signalMenuShellDeactivateMap, connectionID)
 }
 
-//export MenuShell_deactivateHandler
-func MenuShell_deactivateHandler(_ *C.GObject, data C.gpointer) {
+//export menushell_deactivateHandler
+func menushell_deactivateHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalMenuShellDeactivateMap[index].callback
 	callback()
@@ -16036,8 +16036,8 @@ func (recv *MenuShell) DisconnectSelectionDone(connectionID int) {
 	delete(signalMenuShellSelectionDoneMap, connectionID)
 }
 
-//export MenuShell_selectionDoneHandler
-func MenuShell_selectionDoneHandler(_ *C.GObject, data C.gpointer) {
+//export menushell_selectionDoneHandler
+func menushell_selectionDoneHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalMenuShellSelectionDoneMap[index].callback
 	callback()
@@ -16270,8 +16270,8 @@ func (recv *MenuToolButton) DisconnectShowMenu(connectionID int) {
 	delete(signalMenuToolButtonShowMenuMap, connectionID)
 }
 
-//export MenuToolButton_showMenuHandler
-func MenuToolButton_showMenuHandler(_ *C.GObject, data C.gpointer) {
+//export menutoolbutton_showMenuHandler
+func menutoolbutton_showMenuHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalMenuToolButtonShowMenuMap[index].callback
 	callback()
@@ -16644,8 +16644,8 @@ func (recv *Notebook) DisconnectSelectPage(connectionID int) {
 	delete(signalNotebookSelectPageMap, connectionID)
 }
 
-//export Notebook_selectPageHandler
-func Notebook_selectPageHandler(_ *C.GObject, c_object C.gboolean, data C.gpointer) C.gboolean {
+//export notebook_selectPageHandler
+func notebook_selectPageHandler(_ *C.GObject, c_object C.gboolean, data C.gpointer) C.gboolean {
 	object := c_object == C.TRUE
 
 	index := int(uintptr(data))
@@ -17549,8 +17549,8 @@ func (recv *PlacesSidebar) DisconnectShowConnectToServer(connectionID int) {
 	delete(signalPlacesSidebarShowConnectToServerMap, connectionID)
 }
 
-//export PlacesSidebar_showConnectToServerHandler
-func PlacesSidebar_showConnectToServerHandler(_ *C.GObject, data C.gpointer) {
+//export placessidebar_showConnectToServerHandler
+func placessidebar_showConnectToServerHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalPlacesSidebarShowConnectToServerMap[index].callback
 	callback()
@@ -17670,8 +17670,8 @@ func (recv *Popover) DisconnectClosed(connectionID int) {
 	delete(signalPopoverClosedMap, connectionID)
 }
 
-//export Popover_closedHandler
-func Popover_closedHandler(_ *C.GObject, data C.gpointer) {
+//export popover_closedHandler
+func popover_closedHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalPopoverClosedMap[index].callback
 	callback()
@@ -18440,8 +18440,8 @@ func (recv *RadioMenuItem) DisconnectGroupChanged(connectionID int) {
 	delete(signalRadioMenuItemGroupChangedMap, connectionID)
 }
 
-//export RadioMenuItem_groupChangedHandler
-func RadioMenuItem_groupChangedHandler(_ *C.GObject, data C.gpointer) {
+//export radiomenuitem_groupChangedHandler
+func radiomenuitem_groupChangedHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalRadioMenuItemGroupChangedMap[index].callback
 	callback()
@@ -18725,8 +18725,8 @@ func (recv *Range) DisconnectValueChanged(connectionID int) {
 	delete(signalRangeValueChangedMap, connectionID)
 }
 
-//export Range_valueChangedHandler
-func Range_valueChangedHandler(_ *C.GObject, data C.gpointer) {
+//export range_valueChangedHandler
+func range_valueChangedHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalRangeValueChangedMap[index].callback
 	callback()
@@ -20358,8 +20358,8 @@ func (recv *SpinButton) DisconnectOutput(connectionID int) {
 	delete(signalSpinButtonOutputMap, connectionID)
 }
 
-//export SpinButton_outputHandler
-func SpinButton_outputHandler(_ *C.GObject, data C.gpointer) C.gboolean {
+//export spinbutton_outputHandler
+func spinbutton_outputHandler(_ *C.GObject, data C.gpointer) C.gboolean {
 	index := int(uintptr(data))
 	callback := signalSpinButtonOutputMap[index].callback
 	retGo := callback()
@@ -20418,8 +20418,8 @@ func (recv *SpinButton) DisconnectValueChanged(connectionID int) {
 	delete(signalSpinButtonValueChangedMap, connectionID)
 }
 
-//export SpinButton_valueChangedHandler
-func SpinButton_valueChangedHandler(_ *C.GObject, data C.gpointer) {
+//export spinbutton_valueChangedHandler
+func spinbutton_valueChangedHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalSpinButtonValueChangedMap[index].callback
 	callback()
@@ -21536,8 +21536,8 @@ func (recv *Switch) DisconnectActivate(connectionID int) {
 	delete(signalSwitchActivateMap, connectionID)
 }
 
-//export Switch_activateHandler
-func Switch_activateHandler(_ *C.GObject, data C.gpointer) {
+//export switch_activateHandler
+func switch_activateHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalSwitchActivateMap[index].callback
 	callback()
@@ -21949,8 +21949,8 @@ func (recv *TextBuffer) DisconnectApplyTag(connectionID int) {
 	delete(signalTextBufferApplyTagMap, connectionID)
 }
 
-//export TextBuffer_applyTagHandler
-func TextBuffer_applyTagHandler(_ *C.GObject, c_tag *C.GtkTextTag, c_start *C.GtkTextIter, c_end *C.GtkTextIter, data C.gpointer) {
+//export textbuffer_applyTagHandler
+func textbuffer_applyTagHandler(_ *C.GObject, c_tag *C.GtkTextTag, c_start *C.GtkTextIter, c_end *C.GtkTextIter, data C.gpointer) {
 	tag := TextTagNewFromC(unsafe.Pointer(c_tag))
 
 	start := TextIterNewFromC(unsafe.Pointer(c_start))
@@ -22012,8 +22012,8 @@ func (recv *TextBuffer) DisconnectBeginUserAction(connectionID int) {
 	delete(signalTextBufferBeginUserActionMap, connectionID)
 }
 
-//export TextBuffer_beginUserActionHandler
-func TextBuffer_beginUserActionHandler(_ *C.GObject, data C.gpointer) {
+//export textbuffer_beginUserActionHandler
+func textbuffer_beginUserActionHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalTextBufferBeginUserActionMap[index].callback
 	callback()
@@ -22069,8 +22069,8 @@ func (recv *TextBuffer) DisconnectChanged(connectionID int) {
 	delete(signalTextBufferChangedMap, connectionID)
 }
 
-//export TextBuffer_changedHandler
-func TextBuffer_changedHandler(_ *C.GObject, data C.gpointer) {
+//export textbuffer_changedHandler
+func textbuffer_changedHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalTextBufferChangedMap[index].callback
 	callback()
@@ -22126,8 +22126,8 @@ func (recv *TextBuffer) DisconnectDeleteRange(connectionID int) {
 	delete(signalTextBufferDeleteRangeMap, connectionID)
 }
 
-//export TextBuffer_deleteRangeHandler
-func TextBuffer_deleteRangeHandler(_ *C.GObject, c_start *C.GtkTextIter, c_end *C.GtkTextIter, data C.gpointer) {
+//export textbuffer_deleteRangeHandler
+func textbuffer_deleteRangeHandler(_ *C.GObject, c_start *C.GtkTextIter, c_end *C.GtkTextIter, data C.gpointer) {
 	start := TextIterNewFromC(unsafe.Pointer(c_start))
 
 	end := TextIterNewFromC(unsafe.Pointer(c_end))
@@ -22187,8 +22187,8 @@ func (recv *TextBuffer) DisconnectEndUserAction(connectionID int) {
 	delete(signalTextBufferEndUserActionMap, connectionID)
 }
 
-//export TextBuffer_endUserActionHandler
-func TextBuffer_endUserActionHandler(_ *C.GObject, data C.gpointer) {
+//export textbuffer_endUserActionHandler
+func textbuffer_endUserActionHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalTextBufferEndUserActionMap[index].callback
 	callback()
@@ -22244,8 +22244,8 @@ func (recv *TextBuffer) DisconnectInsertChildAnchor(connectionID int) {
 	delete(signalTextBufferInsertChildAnchorMap, connectionID)
 }
 
-//export TextBuffer_insertChildAnchorHandler
-func TextBuffer_insertChildAnchorHandler(_ *C.GObject, c_location *C.GtkTextIter, c_anchor *C.GtkTextChildAnchor, data C.gpointer) {
+//export textbuffer_insertChildAnchorHandler
+func textbuffer_insertChildAnchorHandler(_ *C.GObject, c_location *C.GtkTextIter, c_anchor *C.GtkTextChildAnchor, data C.gpointer) {
 	location := TextIterNewFromC(unsafe.Pointer(c_location))
 
 	anchor := TextChildAnchorNewFromC(unsafe.Pointer(c_anchor))
@@ -22305,8 +22305,8 @@ func (recv *TextBuffer) DisconnectInsertPixbuf(connectionID int) {
 	delete(signalTextBufferInsertPixbufMap, connectionID)
 }
 
-//export TextBuffer_insertPixbufHandler
-func TextBuffer_insertPixbufHandler(_ *C.GObject, c_location *C.GtkTextIter, c_pixbuf *C.GdkPixbuf, data C.gpointer) {
+//export textbuffer_insertPixbufHandler
+func textbuffer_insertPixbufHandler(_ *C.GObject, c_location *C.GtkTextIter, c_pixbuf *C.GdkPixbuf, data C.gpointer) {
 	location := TextIterNewFromC(unsafe.Pointer(c_location))
 
 	pixbuf := gdkpixbuf.PixbufNewFromC(unsafe.Pointer(c_pixbuf))
@@ -22368,8 +22368,8 @@ func (recv *TextBuffer) DisconnectMarkDeleted(connectionID int) {
 	delete(signalTextBufferMarkDeletedMap, connectionID)
 }
 
-//export TextBuffer_markDeletedHandler
-func TextBuffer_markDeletedHandler(_ *C.GObject, c_mark *C.GtkTextMark, data C.gpointer) {
+//export textbuffer_markDeletedHandler
+func textbuffer_markDeletedHandler(_ *C.GObject, c_mark *C.GtkTextMark, data C.gpointer) {
 	mark := TextMarkNewFromC(unsafe.Pointer(c_mark))
 
 	index := int(uintptr(data))
@@ -22427,8 +22427,8 @@ func (recv *TextBuffer) DisconnectMarkSet(connectionID int) {
 	delete(signalTextBufferMarkSetMap, connectionID)
 }
 
-//export TextBuffer_markSetHandler
-func TextBuffer_markSetHandler(_ *C.GObject, c_location *C.GtkTextIter, c_mark *C.GtkTextMark, data C.gpointer) {
+//export textbuffer_markSetHandler
+func textbuffer_markSetHandler(_ *C.GObject, c_location *C.GtkTextIter, c_mark *C.GtkTextMark, data C.gpointer) {
 	location := TextIterNewFromC(unsafe.Pointer(c_location))
 
 	mark := TextMarkNewFromC(unsafe.Pointer(c_mark))
@@ -22488,8 +22488,8 @@ func (recv *TextBuffer) DisconnectModifiedChanged(connectionID int) {
 	delete(signalTextBufferModifiedChangedMap, connectionID)
 }
 
-//export TextBuffer_modifiedChangedHandler
-func TextBuffer_modifiedChangedHandler(_ *C.GObject, data C.gpointer) {
+//export textbuffer_modifiedChangedHandler
+func textbuffer_modifiedChangedHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalTextBufferModifiedChangedMap[index].callback
 	callback()
@@ -22545,8 +22545,8 @@ func (recv *TextBuffer) DisconnectRemoveTag(connectionID int) {
 	delete(signalTextBufferRemoveTagMap, connectionID)
 }
 
-//export TextBuffer_removeTagHandler
-func TextBuffer_removeTagHandler(_ *C.GObject, c_tag *C.GtkTextTag, c_start *C.GtkTextIter, c_end *C.GtkTextIter, data C.gpointer) {
+//export textbuffer_removeTagHandler
+func textbuffer_removeTagHandler(_ *C.GObject, c_tag *C.GtkTextTag, c_start *C.GtkTextIter, c_end *C.GtkTextIter, data C.gpointer) {
 	tag := TextTagNewFromC(unsafe.Pointer(c_tag))
 
 	start := TextIterNewFromC(unsafe.Pointer(c_start))
@@ -23524,8 +23524,8 @@ func (recv *TextTagTable) DisconnectTagAdded(connectionID int) {
 	delete(signalTextTagTableTagAddedMap, connectionID)
 }
 
-//export TextTagTable_tagAddedHandler
-func TextTagTable_tagAddedHandler(_ *C.GObject, c_tag *C.GtkTextTag, data C.gpointer) {
+//export texttagtable_tagAddedHandler
+func texttagtable_tagAddedHandler(_ *C.GObject, c_tag *C.GtkTextTag, data C.gpointer) {
 	tag := TextTagNewFromC(unsafe.Pointer(c_tag))
 
 	index := int(uintptr(data))
@@ -23583,8 +23583,8 @@ func (recv *TextTagTable) DisconnectTagChanged(connectionID int) {
 	delete(signalTextTagTableTagChangedMap, connectionID)
 }
 
-//export TextTagTable_tagChangedHandler
-func TextTagTable_tagChangedHandler(_ *C.GObject, c_tag *C.GtkTextTag, c_size_changed C.gboolean, data C.gpointer) {
+//export texttagtable_tagChangedHandler
+func texttagtable_tagChangedHandler(_ *C.GObject, c_tag *C.GtkTextTag, c_size_changed C.gboolean, data C.gpointer) {
 	tag := TextTagNewFromC(unsafe.Pointer(c_tag))
 
 	sizeChanged := c_size_changed == C.TRUE
@@ -23644,8 +23644,8 @@ func (recv *TextTagTable) DisconnectTagRemoved(connectionID int) {
 	delete(signalTextTagTableTagRemovedMap, connectionID)
 }
 
-//export TextTagTable_tagRemovedHandler
-func TextTagTable_tagRemovedHandler(_ *C.GObject, c_tag *C.GtkTextTag, data C.gpointer) {
+//export texttagtable_tagRemovedHandler
+func texttagtable_tagRemovedHandler(_ *C.GObject, c_tag *C.GtkTextTag, data C.gpointer) {
 	tag := TextTagNewFromC(unsafe.Pointer(c_tag))
 
 	index := int(uintptr(data))
@@ -23800,8 +23800,8 @@ func (recv *TextView) DisconnectBackspace(connectionID int) {
 	delete(signalTextViewBackspaceMap, connectionID)
 }
 
-//export TextView_backspaceHandler
-func TextView_backspaceHandler(_ *C.GObject, data C.gpointer) {
+//export textview_backspaceHandler
+func textview_backspaceHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalTextViewBackspaceMap[index].callback
 	callback()
@@ -23857,8 +23857,8 @@ func (recv *TextView) DisconnectCopyClipboard(connectionID int) {
 	delete(signalTextViewCopyClipboardMap, connectionID)
 }
 
-//export TextView_copyClipboardHandler
-func TextView_copyClipboardHandler(_ *C.GObject, data C.gpointer) {
+//export textview_copyClipboardHandler
+func textview_copyClipboardHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalTextViewCopyClipboardMap[index].callback
 	callback()
@@ -23914,8 +23914,8 @@ func (recv *TextView) DisconnectCutClipboard(connectionID int) {
 	delete(signalTextViewCutClipboardMap, connectionID)
 }
 
-//export TextView_cutClipboardHandler
-func TextView_cutClipboardHandler(_ *C.GObject, data C.gpointer) {
+//export textview_cutClipboardHandler
+func textview_cutClipboardHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalTextViewCutClipboardMap[index].callback
 	callback()
@@ -23979,8 +23979,8 @@ func (recv *TextView) DisconnectPasteClipboard(connectionID int) {
 	delete(signalTextViewPasteClipboardMap, connectionID)
 }
 
-//export TextView_pasteClipboardHandler
-func TextView_pasteClipboardHandler(_ *C.GObject, data C.gpointer) {
+//export textview_pasteClipboardHandler
+func textview_pasteClipboardHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalTextViewPasteClipboardMap[index].callback
 	callback()
@@ -24036,8 +24036,8 @@ func (recv *TextView) DisconnectPopulatePopup(connectionID int) {
 	delete(signalTextViewPopulatePopupMap, connectionID)
 }
 
-//export TextView_populatePopupHandler
-func TextView_populatePopupHandler(_ *C.GObject, c_popup *C.GtkWidget, data C.gpointer) {
+//export textview_populatePopupHandler
+func textview_populatePopupHandler(_ *C.GObject, c_popup *C.GtkWidget, data C.gpointer) {
 	popup := WidgetNewFromC(unsafe.Pointer(c_popup))
 
 	index := int(uintptr(data))
@@ -24095,8 +24095,8 @@ func (recv *TextView) DisconnectSelectAll(connectionID int) {
 	delete(signalTextViewSelectAllMap, connectionID)
 }
 
-//export TextView_selectAllHandler
-func TextView_selectAllHandler(_ *C.GObject, c_select C.gboolean, data C.gpointer) {
+//export textview_selectAllHandler
+func textview_selectAllHandler(_ *C.GObject, c_select C.gboolean, data C.gpointer) {
 	select_ := c_select == C.TRUE
 
 	index := int(uintptr(data))
@@ -24154,8 +24154,8 @@ func (recv *TextView) DisconnectSetAnchor(connectionID int) {
 	delete(signalTextViewSetAnchorMap, connectionID)
 }
 
-//export TextView_setAnchorHandler
-func TextView_setAnchorHandler(_ *C.GObject, data C.gpointer) {
+//export textview_setAnchorHandler
+func textview_setAnchorHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalTextViewSetAnchorMap[index].callback
 	callback()
@@ -24211,8 +24211,8 @@ func (recv *TextView) DisconnectToggleCursorVisible(connectionID int) {
 	delete(signalTextViewToggleCursorVisibleMap, connectionID)
 }
 
-//export TextView_toggleCursorVisibleHandler
-func TextView_toggleCursorVisibleHandler(_ *C.GObject, data C.gpointer) {
+//export textview_toggleCursorVisibleHandler
+func textview_toggleCursorVisibleHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalTextViewToggleCursorVisibleMap[index].callback
 	callback()
@@ -24268,8 +24268,8 @@ func (recv *TextView) DisconnectToggleOverwrite(connectionID int) {
 	delete(signalTextViewToggleOverwriteMap, connectionID)
 }
 
-//export TextView_toggleOverwriteHandler
-func TextView_toggleOverwriteHandler(_ *C.GObject, data C.gpointer) {
+//export textview_toggleOverwriteHandler
+func textview_toggleOverwriteHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalTextViewToggleOverwriteMap[index].callback
 	callback()
@@ -24988,8 +24988,8 @@ func (recv *ToggleAction) DisconnectToggled(connectionID int) {
 	delete(signalToggleActionToggledMap, connectionID)
 }
 
-//export ToggleAction_toggledHandler
-func ToggleAction_toggledHandler(_ *C.GObject, data C.gpointer) {
+//export toggleaction_toggledHandler
+func toggleaction_toggledHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalToggleActionToggledMap[index].callback
 	callback()
@@ -25104,8 +25104,8 @@ func (recv *ToggleButton) DisconnectToggled(connectionID int) {
 	delete(signalToggleButtonToggledMap, connectionID)
 }
 
-//export ToggleButton_toggledHandler
-func ToggleButton_toggledHandler(_ *C.GObject, data C.gpointer) {
+//export togglebutton_toggledHandler
+func togglebutton_toggledHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalToggleButtonToggledMap[index].callback
 	callback()
@@ -25370,8 +25370,8 @@ func (recv *ToggleToolButton) DisconnectToggled(connectionID int) {
 	delete(signalToggleToolButtonToggledMap, connectionID)
 }
 
-//export ToggleToolButton_toggledHandler
-func ToggleToolButton_toggledHandler(_ *C.GObject, data C.gpointer) {
+//export toggletoolbutton_toggledHandler
+func toggletoolbutton_toggledHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalToggleToolButtonToggledMap[index].callback
 	callback()
@@ -25486,8 +25486,8 @@ func (recv *ToolButton) DisconnectClicked(connectionID int) {
 	delete(signalToolButtonClickedMap, connectionID)
 }
 
-//export ToolButton_clickedHandler
-func ToolButton_clickedHandler(_ *C.GObject, data C.gpointer) {
+//export toolbutton_clickedHandler
+func toolbutton_clickedHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalToolButtonClickedMap[index].callback
 	callback()
@@ -25597,8 +25597,8 @@ func (recv *ToolItem) DisconnectCreateMenuProxy(connectionID int) {
 	delete(signalToolItemCreateMenuProxyMap, connectionID)
 }
 
-//export ToolItem_createMenuProxyHandler
-func ToolItem_createMenuProxyHandler(_ *C.GObject, data C.gpointer) C.gboolean {
+//export toolitem_createMenuProxyHandler
+func toolitem_createMenuProxyHandler(_ *C.GObject, data C.gpointer) C.gboolean {
 	index := int(uintptr(data))
 	callback := signalToolItemCreateMenuProxyMap[index].callback
 	retGo := callback()
@@ -25657,8 +25657,8 @@ func (recv *ToolItem) DisconnectToolbarReconfigured(connectionID int) {
 	delete(signalToolItemToolbarReconfiguredMap, connectionID)
 }
 
-//export ToolItem_toolbarReconfiguredHandler
-func ToolItem_toolbarReconfiguredHandler(_ *C.GObject, data C.gpointer) {
+//export toolitem_toolbarReconfiguredHandler
+func toolitem_toolbarReconfiguredHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalToolItemToolbarReconfiguredMap[index].callback
 	callback()
@@ -25861,8 +25861,8 @@ func (recv *Toolbar) DisconnectFocusHomeOrEnd(connectionID int) {
 	delete(signalToolbarFocusHomeOrEndMap, connectionID)
 }
 
-//export Toolbar_focusHomeOrEndHandler
-func Toolbar_focusHomeOrEndHandler(_ *C.GObject, c_focus_home C.gboolean, data C.gpointer) C.gboolean {
+//export toolbar_focusHomeOrEndHandler
+func toolbar_focusHomeOrEndHandler(_ *C.GObject, c_focus_home C.gboolean, data C.gpointer) C.gboolean {
 	focusHome := c_focus_home == C.TRUE
 
 	index := int(uintptr(data))
@@ -26224,8 +26224,8 @@ func (recv *TreeSelection) DisconnectChanged(connectionID int) {
 	delete(signalTreeSelectionChangedMap, connectionID)
 }
 
-//export TreeSelection_changedHandler
-func TreeSelection_changedHandler(_ *C.GObject, data C.gpointer) {
+//export treeselection_changedHandler
+func treeselection_changedHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalTreeSelectionChangedMap[index].callback
 	callback()
@@ -26617,8 +26617,8 @@ func (recv *TreeView) DisconnectColumnsChanged(connectionID int) {
 	delete(signalTreeViewColumnsChangedMap, connectionID)
 }
 
-//export TreeView_columnsChangedHandler
-func TreeView_columnsChangedHandler(_ *C.GObject, data C.gpointer) {
+//export treeview_columnsChangedHandler
+func treeview_columnsChangedHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalTreeViewColumnsChangedMap[index].callback
 	callback()
@@ -26674,8 +26674,8 @@ func (recv *TreeView) DisconnectCursorChanged(connectionID int) {
 	delete(signalTreeViewCursorChangedMap, connectionID)
 }
 
-//export TreeView_cursorChangedHandler
-func TreeView_cursorChangedHandler(_ *C.GObject, data C.gpointer) {
+//export treeview_cursorChangedHandler
+func treeview_cursorChangedHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalTreeViewCursorChangedMap[index].callback
 	callback()
@@ -26731,8 +26731,8 @@ func (recv *TreeView) DisconnectExpandCollapseCursorRow(connectionID int) {
 	delete(signalTreeViewExpandCollapseCursorRowMap, connectionID)
 }
 
-//export TreeView_expandCollapseCursorRowHandler
-func TreeView_expandCollapseCursorRowHandler(_ *C.GObject, c_object C.gboolean, c_p0 C.gboolean, c_p1 C.gboolean, data C.gpointer) C.gboolean {
+//export treeview_expandCollapseCursorRowHandler
+func treeview_expandCollapseCursorRowHandler(_ *C.GObject, c_object C.gboolean, c_p0 C.gboolean, c_p1 C.gboolean, data C.gpointer) C.gboolean {
 	object := c_object == C.TRUE
 
 	p0 := c_p0 == C.TRUE
@@ -26799,8 +26799,8 @@ func (recv *TreeView) DisconnectRowActivated(connectionID int) {
 	delete(signalTreeViewRowActivatedMap, connectionID)
 }
 
-//export TreeView_rowActivatedHandler
-func TreeView_rowActivatedHandler(_ *C.GObject, c_path *C.GtkTreePath, c_column *C.GtkTreeViewColumn, data C.gpointer) {
+//export treeview_rowActivatedHandler
+func treeview_rowActivatedHandler(_ *C.GObject, c_path *C.GtkTreePath, c_column *C.GtkTreeViewColumn, data C.gpointer) {
 	path := TreePathNewFromC(unsafe.Pointer(c_path))
 
 	column := TreeViewColumnNewFromC(unsafe.Pointer(c_column))
@@ -26860,8 +26860,8 @@ func (recv *TreeView) DisconnectRowCollapsed(connectionID int) {
 	delete(signalTreeViewRowCollapsedMap, connectionID)
 }
 
-//export TreeView_rowCollapsedHandler
-func TreeView_rowCollapsedHandler(_ *C.GObject, c_iter *C.GtkTreeIter, c_path *C.GtkTreePath, data C.gpointer) {
+//export treeview_rowCollapsedHandler
+func treeview_rowCollapsedHandler(_ *C.GObject, c_iter *C.GtkTreeIter, c_path *C.GtkTreePath, data C.gpointer) {
 	iter := TreeIterNewFromC(unsafe.Pointer(c_iter))
 
 	path := TreePathNewFromC(unsafe.Pointer(c_path))
@@ -26921,8 +26921,8 @@ func (recv *TreeView) DisconnectRowExpanded(connectionID int) {
 	delete(signalTreeViewRowExpandedMap, connectionID)
 }
 
-//export TreeView_rowExpandedHandler
-func TreeView_rowExpandedHandler(_ *C.GObject, c_iter *C.GtkTreeIter, c_path *C.GtkTreePath, data C.gpointer) {
+//export treeview_rowExpandedHandler
+func treeview_rowExpandedHandler(_ *C.GObject, c_iter *C.GtkTreeIter, c_path *C.GtkTreePath, data C.gpointer) {
 	iter := TreeIterNewFromC(unsafe.Pointer(c_iter))
 
 	path := TreePathNewFromC(unsafe.Pointer(c_path))
@@ -26982,8 +26982,8 @@ func (recv *TreeView) DisconnectSelectAll(connectionID int) {
 	delete(signalTreeViewSelectAllMap, connectionID)
 }
 
-//export TreeView_selectAllHandler
-func TreeView_selectAllHandler(_ *C.GObject, data C.gpointer) C.gboolean {
+//export treeview_selectAllHandler
+func treeview_selectAllHandler(_ *C.GObject, data C.gpointer) C.gboolean {
 	index := int(uintptr(data))
 	callback := signalTreeViewSelectAllMap[index].callback
 	retGo := callback()
@@ -27042,8 +27042,8 @@ func (recv *TreeView) DisconnectSelectCursorParent(connectionID int) {
 	delete(signalTreeViewSelectCursorParentMap, connectionID)
 }
 
-//export TreeView_selectCursorParentHandler
-func TreeView_selectCursorParentHandler(_ *C.GObject, data C.gpointer) C.gboolean {
+//export treeview_selectCursorParentHandler
+func treeview_selectCursorParentHandler(_ *C.GObject, data C.gpointer) C.gboolean {
 	index := int(uintptr(data))
 	callback := signalTreeViewSelectCursorParentMap[index].callback
 	retGo := callback()
@@ -27102,8 +27102,8 @@ func (recv *TreeView) DisconnectSelectCursorRow(connectionID int) {
 	delete(signalTreeViewSelectCursorRowMap, connectionID)
 }
 
-//export TreeView_selectCursorRowHandler
-func TreeView_selectCursorRowHandler(_ *C.GObject, c_object C.gboolean, data C.gpointer) C.gboolean {
+//export treeview_selectCursorRowHandler
+func treeview_selectCursorRowHandler(_ *C.GObject, c_object C.gboolean, data C.gpointer) C.gboolean {
 	object := c_object == C.TRUE
 
 	index := int(uintptr(data))
@@ -27164,8 +27164,8 @@ func (recv *TreeView) DisconnectStartInteractiveSearch(connectionID int) {
 	delete(signalTreeViewStartInteractiveSearchMap, connectionID)
 }
 
-//export TreeView_startInteractiveSearchHandler
-func TreeView_startInteractiveSearchHandler(_ *C.GObject, data C.gpointer) C.gboolean {
+//export treeview_startInteractiveSearchHandler
+func treeview_startInteractiveSearchHandler(_ *C.GObject, data C.gpointer) C.gboolean {
 	index := int(uintptr(data))
 	callback := signalTreeViewStartInteractiveSearchMap[index].callback
 	retGo := callback()
@@ -27224,8 +27224,8 @@ func (recv *TreeView) DisconnectTestCollapseRow(connectionID int) {
 	delete(signalTreeViewTestCollapseRowMap, connectionID)
 }
 
-//export TreeView_testCollapseRowHandler
-func TreeView_testCollapseRowHandler(_ *C.GObject, c_iter *C.GtkTreeIter, c_path *C.GtkTreePath, data C.gpointer) C.gboolean {
+//export treeview_testCollapseRowHandler
+func treeview_testCollapseRowHandler(_ *C.GObject, c_iter *C.GtkTreeIter, c_path *C.GtkTreePath, data C.gpointer) C.gboolean {
 	iter := TreeIterNewFromC(unsafe.Pointer(c_iter))
 
 	path := TreePathNewFromC(unsafe.Pointer(c_path))
@@ -27288,8 +27288,8 @@ func (recv *TreeView) DisconnectTestExpandRow(connectionID int) {
 	delete(signalTreeViewTestExpandRowMap, connectionID)
 }
 
-//export TreeView_testExpandRowHandler
-func TreeView_testExpandRowHandler(_ *C.GObject, c_iter *C.GtkTreeIter, c_path *C.GtkTreePath, data C.gpointer) C.gboolean {
+//export treeview_testExpandRowHandler
+func treeview_testExpandRowHandler(_ *C.GObject, c_iter *C.GtkTreeIter, c_path *C.GtkTreePath, data C.gpointer) C.gboolean {
 	iter := TreeIterNewFromC(unsafe.Pointer(c_iter))
 
 	path := TreePathNewFromC(unsafe.Pointer(c_path))
@@ -27352,8 +27352,8 @@ func (recv *TreeView) DisconnectToggleCursorRow(connectionID int) {
 	delete(signalTreeViewToggleCursorRowMap, connectionID)
 }
 
-//export TreeView_toggleCursorRowHandler
-func TreeView_toggleCursorRowHandler(_ *C.GObject, data C.gpointer) C.gboolean {
+//export treeview_toggleCursorRowHandler
+func treeview_toggleCursorRowHandler(_ *C.GObject, data C.gpointer) C.gboolean {
 	index := int(uintptr(data))
 	callback := signalTreeViewToggleCursorRowMap[index].callback
 	retGo := callback()
@@ -27412,8 +27412,8 @@ func (recv *TreeView) DisconnectUnselectAll(connectionID int) {
 	delete(signalTreeViewUnselectAllMap, connectionID)
 }
 
-//export TreeView_unselectAllHandler
-func TreeView_unselectAllHandler(_ *C.GObject, data C.gpointer) C.gboolean {
+//export treeview_unselectAllHandler
+func treeview_unselectAllHandler(_ *C.GObject, data C.gpointer) C.gboolean {
 	index := int(uintptr(data))
 	callback := signalTreeViewUnselectAllMap[index].callback
 	retGo := callback()
@@ -27976,8 +27976,8 @@ func (recv *TreeViewColumn) DisconnectClicked(connectionID int) {
 	delete(signalTreeViewColumnClickedMap, connectionID)
 }
 
-//export TreeViewColumn_clickedHandler
-func TreeViewColumn_clickedHandler(_ *C.GObject, data C.gpointer) {
+//export treeviewcolumn_clickedHandler
+func treeviewcolumn_clickedHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalTreeViewColumnClickedMap[index].callback
 	callback()
@@ -29049,8 +29049,8 @@ func (recv *Widget) DisconnectAccelClosuresChanged(connectionID int) {
 	delete(signalWidgetAccelClosuresChangedMap, connectionID)
 }
 
-//export Widget_accelClosuresChangedHandler
-func Widget_accelClosuresChangedHandler(_ *C.GObject, data C.gpointer) {
+//export widget_accelClosuresChangedHandler
+func widget_accelClosuresChangedHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalWidgetAccelClosuresChangedMap[index].callback
 	callback()
@@ -29106,8 +29106,8 @@ func (recv *Widget) DisconnectButtonPressEvent(connectionID int) {
 	delete(signalWidgetButtonPressEventMap, connectionID)
 }
 
-//export Widget_buttonPressEventHandler
-func Widget_buttonPressEventHandler(_ *C.GObject, c_event *C.GdkEventButton, data C.gpointer) C.gboolean {
+//export widget_buttonPressEventHandler
+func widget_buttonPressEventHandler(_ *C.GObject, c_event *C.GdkEventButton, data C.gpointer) C.gboolean {
 	event := gdk.EventButtonNewFromC(unsafe.Pointer(c_event))
 
 	index := int(uintptr(data))
@@ -29168,8 +29168,8 @@ func (recv *Widget) DisconnectButtonReleaseEvent(connectionID int) {
 	delete(signalWidgetButtonReleaseEventMap, connectionID)
 }
 
-//export Widget_buttonReleaseEventHandler
-func Widget_buttonReleaseEventHandler(_ *C.GObject, c_event *C.GdkEventButton, data C.gpointer) C.gboolean {
+//export widget_buttonReleaseEventHandler
+func widget_buttonReleaseEventHandler(_ *C.GObject, c_event *C.GdkEventButton, data C.gpointer) C.gboolean {
 	event := gdk.EventButtonNewFromC(unsafe.Pointer(c_event))
 
 	index := int(uintptr(data))
@@ -29234,8 +29234,8 @@ func (recv *Widget) DisconnectCompositedChanged(connectionID int) {
 	delete(signalWidgetCompositedChangedMap, connectionID)
 }
 
-//export Widget_compositedChangedHandler
-func Widget_compositedChangedHandler(_ *C.GObject, data C.gpointer) {
+//export widget_compositedChangedHandler
+func widget_compositedChangedHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalWidgetCompositedChangedMap[index].callback
 	callback()
@@ -29291,8 +29291,8 @@ func (recv *Widget) DisconnectConfigureEvent(connectionID int) {
 	delete(signalWidgetConfigureEventMap, connectionID)
 }
 
-//export Widget_configureEventHandler
-func Widget_configureEventHandler(_ *C.GObject, c_event *C.GdkEventConfigure, data C.gpointer) C.gboolean {
+//export widget_configureEventHandler
+func widget_configureEventHandler(_ *C.GObject, c_event *C.GdkEventConfigure, data C.gpointer) C.gboolean {
 	event := gdk.EventConfigureNewFromC(unsafe.Pointer(c_event))
 
 	index := int(uintptr(data))
@@ -29355,8 +29355,8 @@ func (recv *Widget) DisconnectDestroy(connectionID int) {
 	delete(signalWidgetDestroyMap, connectionID)
 }
 
-//export Widget_destroyHandler
-func Widget_destroyHandler(_ *C.GObject, data C.gpointer) {
+//export widget_destroyHandler
+func widget_destroyHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalWidgetDestroyMap[index].callback
 	callback()
@@ -29416,8 +29416,8 @@ func (recv *Widget) DisconnectDragBegin(connectionID int) {
 	delete(signalWidgetDragBeginMap, connectionID)
 }
 
-//export Widget_dragBeginHandler
-func Widget_dragBeginHandler(_ *C.GObject, c_context *C.GdkDragContext, data C.gpointer) {
+//export widget_dragBeginHandler
+func widget_dragBeginHandler(_ *C.GObject, c_context *C.GdkDragContext, data C.gpointer) {
 	context := gdk.DragContextNewFromC(unsafe.Pointer(c_context))
 
 	index := int(uintptr(data))
@@ -29475,8 +29475,8 @@ func (recv *Widget) DisconnectDragDataDelete(connectionID int) {
 	delete(signalWidgetDragDataDeleteMap, connectionID)
 }
 
-//export Widget_dragDataDeleteHandler
-func Widget_dragDataDeleteHandler(_ *C.GObject, c_context *C.GdkDragContext, data C.gpointer) {
+//export widget_dragDataDeleteHandler
+func widget_dragDataDeleteHandler(_ *C.GObject, c_context *C.GdkDragContext, data C.gpointer) {
 	context := gdk.DragContextNewFromC(unsafe.Pointer(c_context))
 
 	index := int(uintptr(data))
@@ -29540,8 +29540,8 @@ func (recv *Widget) DisconnectDragEnd(connectionID int) {
 	delete(signalWidgetDragEndMap, connectionID)
 }
 
-//export Widget_dragEndHandler
-func Widget_dragEndHandler(_ *C.GObject, c_context *C.GdkDragContext, data C.gpointer) {
+//export widget_dragEndHandler
+func widget_dragEndHandler(_ *C.GObject, c_context *C.GdkDragContext, data C.gpointer) {
 	context := gdk.DragContextNewFromC(unsafe.Pointer(c_context))
 
 	index := int(uintptr(data))
@@ -29603,8 +29603,8 @@ func (recv *Widget) DisconnectEnterNotifyEvent(connectionID int) {
 	delete(signalWidgetEnterNotifyEventMap, connectionID)
 }
 
-//export Widget_enterNotifyEventHandler
-func Widget_enterNotifyEventHandler(_ *C.GObject, c_event *C.GdkEventCrossing, data C.gpointer) C.gboolean {
+//export widget_enterNotifyEventHandler
+func widget_enterNotifyEventHandler(_ *C.GObject, c_event *C.GdkEventCrossing, data C.gpointer) C.gboolean {
 	event := gdk.EventCrossingNewFromC(unsafe.Pointer(c_event))
 
 	index := int(uintptr(data))
@@ -29671,8 +29671,8 @@ func (recv *Widget) DisconnectFocusInEvent(connectionID int) {
 	delete(signalWidgetFocusInEventMap, connectionID)
 }
 
-//export Widget_focusInEventHandler
-func Widget_focusInEventHandler(_ *C.GObject, c_event *C.GdkEventFocus, data C.gpointer) C.gboolean {
+//export widget_focusInEventHandler
+func widget_focusInEventHandler(_ *C.GObject, c_event *C.GdkEventFocus, data C.gpointer) C.gboolean {
 	event := gdk.EventFocusNewFromC(unsafe.Pointer(c_event))
 
 	index := int(uintptr(data))
@@ -29733,8 +29733,8 @@ func (recv *Widget) DisconnectFocusOutEvent(connectionID int) {
 	delete(signalWidgetFocusOutEventMap, connectionID)
 }
 
-//export Widget_focusOutEventHandler
-func Widget_focusOutEventHandler(_ *C.GObject, c_event *C.GdkEventFocus, data C.gpointer) C.gboolean {
+//export widget_focusOutEventHandler
+func widget_focusOutEventHandler(_ *C.GObject, c_event *C.GdkEventFocus, data C.gpointer) C.gboolean {
 	event := gdk.EventFocusNewFromC(unsafe.Pointer(c_event))
 
 	index := int(uintptr(data))
@@ -29795,8 +29795,8 @@ func (recv *Widget) DisconnectGrabFocus(connectionID int) {
 	delete(signalWidgetGrabFocusMap, connectionID)
 }
 
-//export Widget_grabFocusHandler
-func Widget_grabFocusHandler(_ *C.GObject, data C.gpointer) {
+//export widget_grabFocusHandler
+func widget_grabFocusHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalWidgetGrabFocusMap[index].callback
 	callback()
@@ -29852,8 +29852,8 @@ func (recv *Widget) DisconnectGrabNotify(connectionID int) {
 	delete(signalWidgetGrabNotifyMap, connectionID)
 }
 
-//export Widget_grabNotifyHandler
-func Widget_grabNotifyHandler(_ *C.GObject, c_was_grabbed C.gboolean, data C.gpointer) {
+//export widget_grabNotifyHandler
+func widget_grabNotifyHandler(_ *C.GObject, c_was_grabbed C.gboolean, data C.gpointer) {
 	wasGrabbed := c_was_grabbed == C.TRUE
 
 	index := int(uintptr(data))
@@ -29911,8 +29911,8 @@ func (recv *Widget) DisconnectHide(connectionID int) {
 	delete(signalWidgetHideMap, connectionID)
 }
 
-//export Widget_hideHandler
-func Widget_hideHandler(_ *C.GObject, data C.gpointer) {
+//export widget_hideHandler
+func widget_hideHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalWidgetHideMap[index].callback
 	callback()
@@ -29968,8 +29968,8 @@ func (recv *Widget) DisconnectHierarchyChanged(connectionID int) {
 	delete(signalWidgetHierarchyChangedMap, connectionID)
 }
 
-//export Widget_hierarchyChangedHandler
-func Widget_hierarchyChangedHandler(_ *C.GObject, c_previous_toplevel *C.GtkWidget, data C.gpointer) {
+//export widget_hierarchyChangedHandler
+func widget_hierarchyChangedHandler(_ *C.GObject, c_previous_toplevel *C.GtkWidget, data C.gpointer) {
 	previousToplevel := WidgetNewFromC(unsafe.Pointer(c_previous_toplevel))
 
 	index := int(uintptr(data))
@@ -30027,8 +30027,8 @@ func (recv *Widget) DisconnectKeyPressEvent(connectionID int) {
 	delete(signalWidgetKeyPressEventMap, connectionID)
 }
 
-//export Widget_keyPressEventHandler
-func Widget_keyPressEventHandler(_ *C.GObject, c_event *C.GdkEventKey, data C.gpointer) C.gboolean {
+//export widget_keyPressEventHandler
+func widget_keyPressEventHandler(_ *C.GObject, c_event *C.GdkEventKey, data C.gpointer) C.gboolean {
 	event := gdk.EventKeyNewFromC(unsafe.Pointer(c_event))
 
 	index := int(uintptr(data))
@@ -30089,8 +30089,8 @@ func (recv *Widget) DisconnectKeyReleaseEvent(connectionID int) {
 	delete(signalWidgetKeyReleaseEventMap, connectionID)
 }
 
-//export Widget_keyReleaseEventHandler
-func Widget_keyReleaseEventHandler(_ *C.GObject, c_event *C.GdkEventKey, data C.gpointer) C.gboolean {
+//export widget_keyReleaseEventHandler
+func widget_keyReleaseEventHandler(_ *C.GObject, c_event *C.GdkEventKey, data C.gpointer) C.gboolean {
 	event := gdk.EventKeyNewFromC(unsafe.Pointer(c_event))
 
 	index := int(uintptr(data))
@@ -30151,8 +30151,8 @@ func (recv *Widget) DisconnectLeaveNotifyEvent(connectionID int) {
 	delete(signalWidgetLeaveNotifyEventMap, connectionID)
 }
 
-//export Widget_leaveNotifyEventHandler
-func Widget_leaveNotifyEventHandler(_ *C.GObject, c_event *C.GdkEventCrossing, data C.gpointer) C.gboolean {
+//export widget_leaveNotifyEventHandler
+func widget_leaveNotifyEventHandler(_ *C.GObject, c_event *C.GdkEventCrossing, data C.gpointer) C.gboolean {
 	event := gdk.EventCrossingNewFromC(unsafe.Pointer(c_event))
 
 	index := int(uintptr(data))
@@ -30213,8 +30213,8 @@ func (recv *Widget) DisconnectMap(connectionID int) {
 	delete(signalWidgetMapMap, connectionID)
 }
 
-//export Widget_mapHandler
-func Widget_mapHandler(_ *C.GObject, data C.gpointer) {
+//export widget_mapHandler
+func widget_mapHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalWidgetMapMap[index].callback
 	callback()
@@ -30270,8 +30270,8 @@ func (recv *Widget) DisconnectMapEvent(connectionID int) {
 	delete(signalWidgetMapEventMap, connectionID)
 }
 
-//export Widget_mapEventHandler
-func Widget_mapEventHandler(_ *C.GObject, c_event *C.GdkEventAny, data C.gpointer) C.gboolean {
+//export widget_mapEventHandler
+func widget_mapEventHandler(_ *C.GObject, c_event *C.GdkEventAny, data C.gpointer) C.gboolean {
 	event := gdk.EventAnyNewFromC(unsafe.Pointer(c_event))
 
 	index := int(uintptr(data))
@@ -30332,8 +30332,8 @@ func (recv *Widget) DisconnectMnemonicActivate(connectionID int) {
 	delete(signalWidgetMnemonicActivateMap, connectionID)
 }
 
-//export Widget_mnemonicActivateHandler
-func Widget_mnemonicActivateHandler(_ *C.GObject, c_group_cycling C.gboolean, data C.gpointer) C.gboolean {
+//export widget_mnemonicActivateHandler
+func widget_mnemonicActivateHandler(_ *C.GObject, c_group_cycling C.gboolean, data C.gpointer) C.gboolean {
 	groupCycling := c_group_cycling == C.TRUE
 
 	index := int(uintptr(data))
@@ -30394,8 +30394,8 @@ func (recv *Widget) DisconnectMotionNotifyEvent(connectionID int) {
 	delete(signalWidgetMotionNotifyEventMap, connectionID)
 }
 
-//export Widget_motionNotifyEventHandler
-func Widget_motionNotifyEventHandler(_ *C.GObject, c_event *C.GdkEventMotion, data C.gpointer) C.gboolean {
+//export widget_motionNotifyEventHandler
+func widget_motionNotifyEventHandler(_ *C.GObject, c_event *C.GdkEventMotion, data C.gpointer) C.gboolean {
 	event := gdk.EventMotionNewFromC(unsafe.Pointer(c_event))
 
 	index := int(uintptr(data))
@@ -30458,8 +30458,8 @@ func (recv *Widget) DisconnectParentSet(connectionID int) {
 	delete(signalWidgetParentSetMap, connectionID)
 }
 
-//export Widget_parentSetHandler
-func Widget_parentSetHandler(_ *C.GObject, c_old_parent *C.GtkWidget, data C.gpointer) {
+//export widget_parentSetHandler
+func widget_parentSetHandler(_ *C.GObject, c_old_parent *C.GtkWidget, data C.gpointer) {
 	oldParent := WidgetNewFromC(unsafe.Pointer(c_old_parent))
 
 	index := int(uintptr(data))
@@ -30517,8 +30517,8 @@ func (recv *Widget) DisconnectPopupMenu(connectionID int) {
 	delete(signalWidgetPopupMenuMap, connectionID)
 }
 
-//export Widget_popupMenuHandler
-func Widget_popupMenuHandler(_ *C.GObject, data C.gpointer) C.gboolean {
+//export widget_popupMenuHandler
+func widget_popupMenuHandler(_ *C.GObject, data C.gpointer) C.gboolean {
 	index := int(uintptr(data))
 	callback := signalWidgetPopupMenuMap[index].callback
 	retGo := callback()
@@ -30577,8 +30577,8 @@ func (recv *Widget) DisconnectPropertyNotifyEvent(connectionID int) {
 	delete(signalWidgetPropertyNotifyEventMap, connectionID)
 }
 
-//export Widget_propertyNotifyEventHandler
-func Widget_propertyNotifyEventHandler(_ *C.GObject, c_event *C.GdkEventProperty, data C.gpointer) C.gboolean {
+//export widget_propertyNotifyEventHandler
+func widget_propertyNotifyEventHandler(_ *C.GObject, c_event *C.GdkEventProperty, data C.gpointer) C.gboolean {
 	event := gdk.EventPropertyNewFromC(unsafe.Pointer(c_event))
 
 	index := int(uintptr(data))
@@ -30639,8 +30639,8 @@ func (recv *Widget) DisconnectProximityInEvent(connectionID int) {
 	delete(signalWidgetProximityInEventMap, connectionID)
 }
 
-//export Widget_proximityInEventHandler
-func Widget_proximityInEventHandler(_ *C.GObject, c_event *C.GdkEventProximity, data C.gpointer) C.gboolean {
+//export widget_proximityInEventHandler
+func widget_proximityInEventHandler(_ *C.GObject, c_event *C.GdkEventProximity, data C.gpointer) C.gboolean {
 	event := gdk.EventProximityNewFromC(unsafe.Pointer(c_event))
 
 	index := int(uintptr(data))
@@ -30701,8 +30701,8 @@ func (recv *Widget) DisconnectProximityOutEvent(connectionID int) {
 	delete(signalWidgetProximityOutEventMap, connectionID)
 }
 
-//export Widget_proximityOutEventHandler
-func Widget_proximityOutEventHandler(_ *C.GObject, c_event *C.GdkEventProximity, data C.gpointer) C.gboolean {
+//export widget_proximityOutEventHandler
+func widget_proximityOutEventHandler(_ *C.GObject, c_event *C.GdkEventProximity, data C.gpointer) C.gboolean {
 	event := gdk.EventProximityNewFromC(unsafe.Pointer(c_event))
 
 	index := int(uintptr(data))
@@ -30763,8 +30763,8 @@ func (recv *Widget) DisconnectRealize(connectionID int) {
 	delete(signalWidgetRealizeMap, connectionID)
 }
 
-//export Widget_realizeHandler
-func Widget_realizeHandler(_ *C.GObject, data C.gpointer) {
+//export widget_realizeHandler
+func widget_realizeHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalWidgetRealizeMap[index].callback
 	callback()
@@ -30820,8 +30820,8 @@ func (recv *Widget) DisconnectScreenChanged(connectionID int) {
 	delete(signalWidgetScreenChangedMap, connectionID)
 }
 
-//export Widget_screenChangedHandler
-func Widget_screenChangedHandler(_ *C.GObject, c_previous_screen *C.GdkScreen, data C.gpointer) {
+//export widget_screenChangedHandler
+func widget_screenChangedHandler(_ *C.GObject, c_previous_screen *C.GdkScreen, data C.gpointer) {
 	previousScreen := gdk.ScreenNewFromC(unsafe.Pointer(c_previous_screen))
 
 	index := int(uintptr(data))
@@ -30879,8 +30879,8 @@ func (recv *Widget) DisconnectScrollEvent(connectionID int) {
 	delete(signalWidgetScrollEventMap, connectionID)
 }
 
-//export Widget_scrollEventHandler
-func Widget_scrollEventHandler(_ *C.GObject, c_event *C.GdkEventScroll, data C.gpointer) C.gboolean {
+//export widget_scrollEventHandler
+func widget_scrollEventHandler(_ *C.GObject, c_event *C.GdkEventScroll, data C.gpointer) C.gboolean {
 	event := gdk.EventScrollNewFromC(unsafe.Pointer(c_event))
 
 	index := int(uintptr(data))
@@ -30941,8 +30941,8 @@ func (recv *Widget) DisconnectSelectionClearEvent(connectionID int) {
 	delete(signalWidgetSelectionClearEventMap, connectionID)
 }
 
-//export Widget_selectionClearEventHandler
-func Widget_selectionClearEventHandler(_ *C.GObject, c_event *C.GdkEventSelection, data C.gpointer) C.gboolean {
+//export widget_selectionClearEventHandler
+func widget_selectionClearEventHandler(_ *C.GObject, c_event *C.GdkEventSelection, data C.gpointer) C.gboolean {
 	event := gdk.EventSelectionNewFromC(unsafe.Pointer(c_event))
 
 	index := int(uintptr(data))
@@ -31005,8 +31005,8 @@ func (recv *Widget) DisconnectSelectionNotifyEvent(connectionID int) {
 	delete(signalWidgetSelectionNotifyEventMap, connectionID)
 }
 
-//export Widget_selectionNotifyEventHandler
-func Widget_selectionNotifyEventHandler(_ *C.GObject, c_event *C.GdkEventSelection, data C.gpointer) C.gboolean {
+//export widget_selectionNotifyEventHandler
+func widget_selectionNotifyEventHandler(_ *C.GObject, c_event *C.GdkEventSelection, data C.gpointer) C.gboolean {
 	event := gdk.EventSelectionNewFromC(unsafe.Pointer(c_event))
 
 	index := int(uintptr(data))
@@ -31069,8 +31069,8 @@ func (recv *Widget) DisconnectSelectionRequestEvent(connectionID int) {
 	delete(signalWidgetSelectionRequestEventMap, connectionID)
 }
 
-//export Widget_selectionRequestEventHandler
-func Widget_selectionRequestEventHandler(_ *C.GObject, c_event *C.GdkEventSelection, data C.gpointer) C.gboolean {
+//export widget_selectionRequestEventHandler
+func widget_selectionRequestEventHandler(_ *C.GObject, c_event *C.GdkEventSelection, data C.gpointer) C.gboolean {
 	event := gdk.EventSelectionNewFromC(unsafe.Pointer(c_event))
 
 	index := int(uintptr(data))
@@ -31131,8 +31131,8 @@ func (recv *Widget) DisconnectShow(connectionID int) {
 	delete(signalWidgetShowMap, connectionID)
 }
 
-//export Widget_showHandler
-func Widget_showHandler(_ *C.GObject, data C.gpointer) {
+//export widget_showHandler
+func widget_showHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalWidgetShowMap[index].callback
 	callback()
@@ -31194,8 +31194,8 @@ func (recv *Widget) DisconnectStyleSet(connectionID int) {
 	delete(signalWidgetStyleSetMap, connectionID)
 }
 
-//export Widget_styleSetHandler
-func Widget_styleSetHandler(_ *C.GObject, c_previous_style *C.GtkStyle, data C.gpointer) {
+//export widget_styleSetHandler
+func widget_styleSetHandler(_ *C.GObject, c_previous_style *C.GtkStyle, data C.gpointer) {
 	previousStyle := StyleNewFromC(unsafe.Pointer(c_previous_style))
 
 	index := int(uintptr(data))
@@ -31255,8 +31255,8 @@ func (recv *Widget) DisconnectUnmap(connectionID int) {
 	delete(signalWidgetUnmapMap, connectionID)
 }
 
-//export Widget_unmapHandler
-func Widget_unmapHandler(_ *C.GObject, data C.gpointer) {
+//export widget_unmapHandler
+func widget_unmapHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalWidgetUnmapMap[index].callback
 	callback()
@@ -31312,8 +31312,8 @@ func (recv *Widget) DisconnectUnmapEvent(connectionID int) {
 	delete(signalWidgetUnmapEventMap, connectionID)
 }
 
-//export Widget_unmapEventHandler
-func Widget_unmapEventHandler(_ *C.GObject, c_event *C.GdkEventAny, data C.gpointer) C.gboolean {
+//export widget_unmapEventHandler
+func widget_unmapEventHandler(_ *C.GObject, c_event *C.GdkEventAny, data C.gpointer) C.gboolean {
 	event := gdk.EventAnyNewFromC(unsafe.Pointer(c_event))
 
 	index := int(uintptr(data))
@@ -31374,8 +31374,8 @@ func (recv *Widget) DisconnectUnrealize(connectionID int) {
 	delete(signalWidgetUnrealizeMap, connectionID)
 }
 
-//export Widget_unrealizeHandler
-func Widget_unrealizeHandler(_ *C.GObject, data C.gpointer) {
+//export widget_unrealizeHandler
+func widget_unrealizeHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalWidgetUnrealizeMap[index].callback
 	callback()
@@ -31431,8 +31431,8 @@ func (recv *Widget) DisconnectVisibilityNotifyEvent(connectionID int) {
 	delete(signalWidgetVisibilityNotifyEventMap, connectionID)
 }
 
-//export Widget_visibilityNotifyEventHandler
-func Widget_visibilityNotifyEventHandler(_ *C.GObject, c_event *C.GdkEventVisibility, data C.gpointer) C.gboolean {
+//export widget_visibilityNotifyEventHandler
+func widget_visibilityNotifyEventHandler(_ *C.GObject, c_event *C.GdkEventVisibility, data C.gpointer) C.gboolean {
 	event := gdk.EventVisibilityNewFromC(unsafe.Pointer(c_event))
 
 	index := int(uintptr(data))
@@ -31493,8 +31493,8 @@ func (recv *Widget) DisconnectWindowStateEvent(connectionID int) {
 	delete(signalWidgetWindowStateEventMap, connectionID)
 }
 
-//export Widget_windowStateEventHandler
-func Widget_windowStateEventHandler(_ *C.GObject, c_event *C.GdkEventWindowState, data C.gpointer) C.gboolean {
+//export widget_windowStateEventHandler
+func widget_windowStateEventHandler(_ *C.GObject, c_event *C.GdkEventWindowState, data C.gpointer) C.gboolean {
 	event := gdk.EventWindowStateNewFromC(unsafe.Pointer(c_event))
 
 	index := int(uintptr(data))
@@ -32711,8 +32711,8 @@ func (recv *Window) DisconnectActivateDefault(connectionID int) {
 	delete(signalWindowActivateDefaultMap, connectionID)
 }
 
-//export Window_activateDefaultHandler
-func Window_activateDefaultHandler(_ *C.GObject, data C.gpointer) {
+//export window_activateDefaultHandler
+func window_activateDefaultHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalWindowActivateDefaultMap[index].callback
 	callback()
@@ -32768,8 +32768,8 @@ func (recv *Window) DisconnectActivateFocus(connectionID int) {
 	delete(signalWindowActivateFocusMap, connectionID)
 }
 
-//export Window_activateFocusHandler
-func Window_activateFocusHandler(_ *C.GObject, data C.gpointer) {
+//export window_activateFocusHandler
+func window_activateFocusHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalWindowActivateFocusMap[index].callback
 	callback()
@@ -32825,8 +32825,8 @@ func (recv *Window) DisconnectEnableDebugging(connectionID int) {
 	delete(signalWindowEnableDebuggingMap, connectionID)
 }
 
-//export Window_enableDebuggingHandler
-func Window_enableDebuggingHandler(_ *C.GObject, c_toggle C.gboolean, data C.gpointer) C.gboolean {
+//export window_enableDebuggingHandler
+func window_enableDebuggingHandler(_ *C.GObject, c_toggle C.gboolean, data C.gpointer) C.gboolean {
 	toggle := c_toggle == C.TRUE
 
 	index := int(uintptr(data))
@@ -32887,8 +32887,8 @@ func (recv *Window) DisconnectKeysChanged(connectionID int) {
 	delete(signalWindowKeysChangedMap, connectionID)
 }
 
-//export Window_keysChangedHandler
-func Window_keysChangedHandler(_ *C.GObject, data C.gpointer) {
+//export window_keysChangedHandler
+func window_keysChangedHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalWindowKeysChangedMap[index].callback
 	callback()
@@ -32944,8 +32944,8 @@ func (recv *Window) DisconnectSetFocus(connectionID int) {
 	delete(signalWindowSetFocusMap, connectionID)
 }
 
-//export Window_setFocusHandler
-func Window_setFocusHandler(_ *C.GObject, c_object *C.GtkWidget, data C.gpointer) {
+//export window_setFocusHandler
+func window_setFocusHandler(_ *C.GObject, c_object *C.GtkWidget, data C.gpointer) {
 	object := WidgetNewFromC(unsafe.Pointer(c_object))
 
 	index := int(uintptr(data))

@@ -20,10 +20,10 @@ import "sync"
 // #include <stdlib.h>
 /*
 
-	void MountOperation_abortedHandler(GObject *, gpointer);
+	void mountoperation_abortedHandler(GObject *, gpointer);
 
 	static gulong MountOperation_signal_connect_aborted(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "aborted", G_CALLBACK(MountOperation_abortedHandler), data);
+		return g_signal_connect(instance, "aborted", G_CALLBACK(mountoperation_abortedHandler), data);
 	}
 
 */
@@ -107,8 +107,8 @@ func (recv *MountOperation) DisconnectAborted(connectionID int) {
 	delete(signalMountOperationAbortedMap, connectionID)
 }
 
-//export MountOperation_abortedHandler
-func MountOperation_abortedHandler(_ *C.GObject, data C.gpointer) {
+//export mountoperation_abortedHandler
+func mountoperation_abortedHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalMountOperationAbortedMap[index].callback
 	callback()

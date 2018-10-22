@@ -18,10 +18,10 @@ import (
 // #include <stdlib.h>
 /*
 
-	gboolean Widget_grabBrokenEventHandler(GObject *, GdkEventGrabBroken *, gpointer);
+	gboolean widget_grabBrokenEventHandler(GObject *, GdkEventGrabBroken *, gpointer);
 
 	static gulong Widget_signal_connect_grab_broken_event(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "grab-broken-event", G_CALLBACK(Widget_grabBrokenEventHandler), data);
+		return g_signal_connect(instance, "grab-broken-event", G_CALLBACK(widget_grabBrokenEventHandler), data);
 	}
 
 */
@@ -422,8 +422,8 @@ func (recv *Widget) DisconnectGrabBrokenEvent(connectionID int) {
 	delete(signalWidgetGrabBrokenEventMap, connectionID)
 }
 
-//export Widget_grabBrokenEventHandler
-func Widget_grabBrokenEventHandler(_ *C.GObject, c_event *C.GdkEventGrabBroken, data C.gpointer) C.gboolean {
+//export widget_grabBrokenEventHandler
+func widget_grabBrokenEventHandler(_ *C.GObject, c_event *C.GdkEventGrabBroken, data C.gpointer) C.gboolean {
 	event := gdk.EventGrabBrokenNewFromC(unsafe.Pointer(c_event))
 
 	index := int(uintptr(data))

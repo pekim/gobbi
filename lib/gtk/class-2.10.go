@@ -21,109 +21,109 @@ import (
 // #include <stdlib.h>
 /*
 
-	void Assistant_applyHandler(GObject *, gpointer);
+	void assistant_applyHandler(GObject *, gpointer);
 
 	static gulong Assistant_signal_connect_apply(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "apply", G_CALLBACK(Assistant_applyHandler), data);
+		return g_signal_connect(instance, "apply", G_CALLBACK(assistant_applyHandler), data);
 	}
 
 */
 /*
 
-	void Assistant_cancelHandler(GObject *, gpointer);
+	void assistant_cancelHandler(GObject *, gpointer);
 
 	static gulong Assistant_signal_connect_cancel(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "cancel", G_CALLBACK(Assistant_cancelHandler), data);
+		return g_signal_connect(instance, "cancel", G_CALLBACK(assistant_cancelHandler), data);
 	}
 
 */
 /*
 
-	void Assistant_closeHandler(GObject *, gpointer);
+	void assistant_closeHandler(GObject *, gpointer);
 
 	static gulong Assistant_signal_connect_close(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "close", G_CALLBACK(Assistant_closeHandler), data);
+		return g_signal_connect(instance, "close", G_CALLBACK(assistant_closeHandler), data);
 	}
 
 */
 /*
 
-	void Assistant_prepareHandler(GObject *, GtkWidget *, gpointer);
+	void assistant_prepareHandler(GObject *, GtkWidget *, gpointer);
 
 	static gulong Assistant_signal_connect_prepare(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "prepare", G_CALLBACK(Assistant_prepareHandler), data);
+		return g_signal_connect(instance, "prepare", G_CALLBACK(assistant_prepareHandler), data);
 	}
 
 */
 /*
 
-	void PrintOperation_beginPrintHandler(GObject *, GtkPrintContext *, gpointer);
+	void printoperation_beginPrintHandler(GObject *, GtkPrintContext *, gpointer);
 
 	static gulong PrintOperation_signal_connect_begin_print(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "begin-print", G_CALLBACK(PrintOperation_beginPrintHandler), data);
+		return g_signal_connect(instance, "begin-print", G_CALLBACK(printoperation_beginPrintHandler), data);
 	}
 
 */
 /*
 
-	GObject * PrintOperation_createCustomWidgetHandler(GObject *, gpointer);
+	GObject * printoperation_createCustomWidgetHandler(GObject *, gpointer);
 
 	static gulong PrintOperation_signal_connect_create_custom_widget(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "create-custom-widget", G_CALLBACK(PrintOperation_createCustomWidgetHandler), data);
+		return g_signal_connect(instance, "create-custom-widget", G_CALLBACK(printoperation_createCustomWidgetHandler), data);
 	}
 
 */
 /*
 
-	void PrintOperation_customWidgetApplyHandler(GObject *, GtkWidget *, gpointer);
+	void printoperation_customWidgetApplyHandler(GObject *, GtkWidget *, gpointer);
 
 	static gulong PrintOperation_signal_connect_custom_widget_apply(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "custom-widget-apply", G_CALLBACK(PrintOperation_customWidgetApplyHandler), data);
+		return g_signal_connect(instance, "custom-widget-apply", G_CALLBACK(printoperation_customWidgetApplyHandler), data);
 	}
 
 */
 /*
 
-	void PrintOperation_endPrintHandler(GObject *, GtkPrintContext *, gpointer);
+	void printoperation_endPrintHandler(GObject *, GtkPrintContext *, gpointer);
 
 	static gulong PrintOperation_signal_connect_end_print(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "end-print", G_CALLBACK(PrintOperation_endPrintHandler), data);
+		return g_signal_connect(instance, "end-print", G_CALLBACK(printoperation_endPrintHandler), data);
 	}
 
 */
 /*
 
-	gboolean PrintOperation_paginateHandler(GObject *, GtkPrintContext *, gpointer);
+	gboolean printoperation_paginateHandler(GObject *, GtkPrintContext *, gpointer);
 
 	static gulong PrintOperation_signal_connect_paginate(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "paginate", G_CALLBACK(PrintOperation_paginateHandler), data);
+		return g_signal_connect(instance, "paginate", G_CALLBACK(printoperation_paginateHandler), data);
 	}
 
 */
 /*
 
-	void PrintOperation_statusChangedHandler(GObject *, gpointer);
+	void printoperation_statusChangedHandler(GObject *, gpointer);
 
 	static gulong PrintOperation_signal_connect_status_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "status-changed", G_CALLBACK(PrintOperation_statusChangedHandler), data);
+		return g_signal_connect(instance, "status-changed", G_CALLBACK(printoperation_statusChangedHandler), data);
 	}
 
 */
 /*
 
-	void SpinButton_wrappedHandler(GObject *, gpointer);
+	void spinbutton_wrappedHandler(GObject *, gpointer);
 
 	static gulong SpinButton_signal_connect_wrapped(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "wrapped", G_CALLBACK(SpinButton_wrappedHandler), data);
+		return g_signal_connect(instance, "wrapped", G_CALLBACK(spinbutton_wrappedHandler), data);
 	}
 
 */
 /*
 
-	void StatusIcon_activateHandler(GObject *, gpointer);
+	void statusicon_activateHandler(GObject *, gpointer);
 
 	static gulong StatusIcon_signal_connect_activate(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "activate", G_CALLBACK(StatusIcon_activateHandler), data);
+		return g_signal_connect(instance, "activate", G_CALLBACK(statusicon_activateHandler), data);
 	}
 
 */
@@ -181,8 +181,8 @@ func (recv *Assistant) DisconnectApply(connectionID int) {
 	delete(signalAssistantApplyMap, connectionID)
 }
 
-//export Assistant_applyHandler
-func Assistant_applyHandler(_ *C.GObject, data C.gpointer) {
+//export assistant_applyHandler
+func assistant_applyHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalAssistantApplyMap[index].callback
 	callback()
@@ -238,8 +238,8 @@ func (recv *Assistant) DisconnectCancel(connectionID int) {
 	delete(signalAssistantCancelMap, connectionID)
 }
 
-//export Assistant_cancelHandler
-func Assistant_cancelHandler(_ *C.GObject, data C.gpointer) {
+//export assistant_cancelHandler
+func assistant_cancelHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalAssistantCancelMap[index].callback
 	callback()
@@ -295,8 +295,8 @@ func (recv *Assistant) DisconnectClose(connectionID int) {
 	delete(signalAssistantCloseMap, connectionID)
 }
 
-//export Assistant_closeHandler
-func Assistant_closeHandler(_ *C.GObject, data C.gpointer) {
+//export assistant_closeHandler
+func assistant_closeHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalAssistantCloseMap[index].callback
 	callback()
@@ -352,8 +352,8 @@ func (recv *Assistant) DisconnectPrepare(connectionID int) {
 	delete(signalAssistantPrepareMap, connectionID)
 }
 
-//export Assistant_prepareHandler
-func Assistant_prepareHandler(_ *C.GObject, c_page *C.GtkWidget, data C.gpointer) {
+//export assistant_prepareHandler
+func assistant_prepareHandler(_ *C.GObject, c_page *C.GtkWidget, data C.gpointer) {
 	page := WidgetNewFromC(unsafe.Pointer(c_page))
 
 	index := int(uintptr(data))
@@ -1147,8 +1147,8 @@ func (recv *PrintOperation) DisconnectBeginPrint(connectionID int) {
 	delete(signalPrintOperationBeginPrintMap, connectionID)
 }
 
-//export PrintOperation_beginPrintHandler
-func PrintOperation_beginPrintHandler(_ *C.GObject, c_context *C.GtkPrintContext, data C.gpointer) {
+//export printoperation_beginPrintHandler
+func printoperation_beginPrintHandler(_ *C.GObject, c_context *C.GtkPrintContext, data C.gpointer) {
 	context := PrintContextNewFromC(unsafe.Pointer(c_context))
 
 	index := int(uintptr(data))
@@ -1206,8 +1206,8 @@ func (recv *PrintOperation) DisconnectCreateCustomWidget(connectionID int) {
 	delete(signalPrintOperationCreateCustomWidgetMap, connectionID)
 }
 
-//export PrintOperation_createCustomWidgetHandler
-func PrintOperation_createCustomWidgetHandler(_ *C.GObject, data C.gpointer) *C.GObject {
+//export printoperation_createCustomWidgetHandler
+func printoperation_createCustomWidgetHandler(_ *C.GObject, data C.gpointer) *C.GObject {
 	index := int(uintptr(data))
 	callback := signalPrintOperationCreateCustomWidgetMap[index].callback
 	retGo := callback()
@@ -1266,8 +1266,8 @@ func (recv *PrintOperation) DisconnectCustomWidgetApply(connectionID int) {
 	delete(signalPrintOperationCustomWidgetApplyMap, connectionID)
 }
 
-//export PrintOperation_customWidgetApplyHandler
-func PrintOperation_customWidgetApplyHandler(_ *C.GObject, c_widget *C.GtkWidget, data C.gpointer) {
+//export printoperation_customWidgetApplyHandler
+func printoperation_customWidgetApplyHandler(_ *C.GObject, c_widget *C.GtkWidget, data C.gpointer) {
 	widget := WidgetNewFromC(unsafe.Pointer(c_widget))
 
 	index := int(uintptr(data))
@@ -1329,8 +1329,8 @@ func (recv *PrintOperation) DisconnectEndPrint(connectionID int) {
 	delete(signalPrintOperationEndPrintMap, connectionID)
 }
 
-//export PrintOperation_endPrintHandler
-func PrintOperation_endPrintHandler(_ *C.GObject, c_context *C.GtkPrintContext, data C.gpointer) {
+//export printoperation_endPrintHandler
+func printoperation_endPrintHandler(_ *C.GObject, c_context *C.GtkPrintContext, data C.gpointer) {
 	context := PrintContextNewFromC(unsafe.Pointer(c_context))
 
 	index := int(uintptr(data))
@@ -1388,8 +1388,8 @@ func (recv *PrintOperation) DisconnectPaginate(connectionID int) {
 	delete(signalPrintOperationPaginateMap, connectionID)
 }
 
-//export PrintOperation_paginateHandler
-func PrintOperation_paginateHandler(_ *C.GObject, c_context *C.GtkPrintContext, data C.gpointer) C.gboolean {
+//export printoperation_paginateHandler
+func printoperation_paginateHandler(_ *C.GObject, c_context *C.GtkPrintContext, data C.gpointer) C.gboolean {
 	context := PrintContextNewFromC(unsafe.Pointer(c_context))
 
 	index := int(uintptr(data))
@@ -1454,8 +1454,8 @@ func (recv *PrintOperation) DisconnectStatusChanged(connectionID int) {
 	delete(signalPrintOperationStatusChangedMap, connectionID)
 }
 
-//export PrintOperation_statusChangedHandler
-func PrintOperation_statusChangedHandler(_ *C.GObject, data C.gpointer) {
+//export printoperation_statusChangedHandler
+func printoperation_statusChangedHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalPrintOperationStatusChangedMap[index].callback
 	callback()
@@ -2657,8 +2657,8 @@ func (recv *SpinButton) DisconnectWrapped(connectionID int) {
 	delete(signalSpinButtonWrappedMap, connectionID)
 }
 
-//export SpinButton_wrappedHandler
-func SpinButton_wrappedHandler(_ *C.GObject, data C.gpointer) {
+//export spinbutton_wrappedHandler
+func spinbutton_wrappedHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalSpinButtonWrappedMap[index].callback
 	callback()
@@ -2714,8 +2714,8 @@ func (recv *StatusIcon) DisconnectActivate(connectionID int) {
 	delete(signalStatusIconActivateMap, connectionID)
 }
 
-//export StatusIcon_activateHandler
-func StatusIcon_activateHandler(_ *C.GObject, data C.gpointer) {
+//export statusicon_activateHandler
+func statusicon_activateHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalStatusIconActivateMap[index].callback
 	callback()

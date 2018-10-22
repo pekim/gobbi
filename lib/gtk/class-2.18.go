@@ -16,28 +16,28 @@ import (
 // #include <stdlib.h>
 /*
 
-	void InfoBar_closeHandler(GObject *, gpointer);
+	void infobar_closeHandler(GObject *, gpointer);
 
 	static gulong InfoBar_signal_connect_close(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "close", G_CALLBACK(InfoBar_closeHandler), data);
+		return g_signal_connect(instance, "close", G_CALLBACK(infobar_closeHandler), data);
 	}
 
 */
 /*
 
-	void Label_activateCurrentLinkHandler(GObject *, gpointer);
+	void label_activateCurrentLinkHandler(GObject *, gpointer);
 
 	static gulong Label_signal_connect_activate_current_link(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "activate-current-link", G_CALLBACK(Label_activateCurrentLinkHandler), data);
+		return g_signal_connect(instance, "activate-current-link", G_CALLBACK(label_activateCurrentLinkHandler), data);
 	}
 
 */
 /*
 
-	void PrintOperation_updateCustomWidgetHandler(GObject *, GtkWidget *, GtkPageSetup *, GtkPrintSettings *, gpointer);
+	void printoperation_updateCustomWidgetHandler(GObject *, GtkWidget *, GtkPageSetup *, GtkPrintSettings *, gpointer);
 
 	static gulong PrintOperation_signal_connect_update_custom_widget(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "update-custom-widget", G_CALLBACK(PrintOperation_updateCustomWidgetHandler), data);
+		return g_signal_connect(instance, "update-custom-widget", G_CALLBACK(printoperation_updateCustomWidgetHandler), data);
 	}
 
 */
@@ -391,8 +391,8 @@ func (recv *InfoBar) DisconnectClose(connectionID int) {
 	delete(signalInfoBarCloseMap, connectionID)
 }
 
-//export InfoBar_closeHandler
-func InfoBar_closeHandler(_ *C.GObject, data C.gpointer) {
+//export infobar_closeHandler
+func infobar_closeHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalInfoBarCloseMap[index].callback
 	callback()
@@ -549,8 +549,8 @@ func (recv *Label) DisconnectActivateCurrentLink(connectionID int) {
 	delete(signalLabelActivateCurrentLinkMap, connectionID)
 }
 
-//export Label_activateCurrentLinkHandler
-func Label_activateCurrentLinkHandler(_ *C.GObject, data C.gpointer) {
+//export label_activateCurrentLinkHandler
+func label_activateCurrentLinkHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalLabelActivateCurrentLinkMap[index].callback
 	callback()
@@ -662,8 +662,8 @@ func (recv *PrintOperation) DisconnectUpdateCustomWidget(connectionID int) {
 	delete(signalPrintOperationUpdateCustomWidgetMap, connectionID)
 }
 
-//export PrintOperation_updateCustomWidgetHandler
-func PrintOperation_updateCustomWidgetHandler(_ *C.GObject, c_widget *C.GtkWidget, c_setup *C.GtkPageSetup, c_settings *C.GtkPrintSettings, data C.gpointer) {
+//export printoperation_updateCustomWidgetHandler
+func printoperation_updateCustomWidgetHandler(_ *C.GObject, c_widget *C.GtkWidget, c_setup *C.GtkPageSetup, c_settings *C.GtkPrintSettings, data C.gpointer) {
 	widget := WidgetNewFromC(unsafe.Pointer(c_widget))
 
 	setup := PageSetupNewFromC(unsafe.Pointer(c_setup))

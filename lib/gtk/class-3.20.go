@@ -17,37 +17,37 @@ import (
 // #include <stdlib.h>
 /*
 
-	void PlacesSidebar_mountHandler(GObject *, GMountOperation *, gpointer);
+	void placessidebar_mountHandler(GObject *, GMountOperation *, gpointer);
 
 	static gulong PlacesSidebar_signal_connect_mount(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "mount", G_CALLBACK(PlacesSidebar_mountHandler), data);
+		return g_signal_connect(instance, "mount", G_CALLBACK(placessidebar_mountHandler), data);
 	}
 
 */
 /*
 
-	void PlacesSidebar_unmountHandler(GObject *, GMountOperation *, gpointer);
+	void placessidebar_unmountHandler(GObject *, GMountOperation *, gpointer);
 
 	static gulong PlacesSidebar_signal_connect_unmount(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "unmount", G_CALLBACK(PlacesSidebar_unmountHandler), data);
+		return g_signal_connect(instance, "unmount", G_CALLBACK(placessidebar_unmountHandler), data);
 	}
 
 */
 /*
 
-	void ShortcutsWindow_closeHandler(GObject *, gpointer);
+	void shortcutswindow_closeHandler(GObject *, gpointer);
 
 	static gulong ShortcutsWindow_signal_connect_close(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "close", G_CALLBACK(ShortcutsWindow_closeHandler), data);
+		return g_signal_connect(instance, "close", G_CALLBACK(shortcutswindow_closeHandler), data);
 	}
 
 */
 /*
 
-	void ShortcutsWindow_searchHandler(GObject *, gpointer);
+	void shortcutswindow_searchHandler(GObject *, gpointer);
 
 	static gulong ShortcutsWindow_signal_connect_search(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "search", G_CALLBACK(ShortcutsWindow_searchHandler), data);
+		return g_signal_connect(instance, "search", G_CALLBACK(shortcutswindow_searchHandler), data);
 	}
 
 */
@@ -414,8 +414,8 @@ func (recv *PlacesSidebar) DisconnectMount(connectionID int) {
 	delete(signalPlacesSidebarMountMap, connectionID)
 }
 
-//export PlacesSidebar_mountHandler
-func PlacesSidebar_mountHandler(_ *C.GObject, c_mount_operation *C.GMountOperation, data C.gpointer) {
+//export placessidebar_mountHandler
+func placessidebar_mountHandler(_ *C.GObject, c_mount_operation *C.GMountOperation, data C.gpointer) {
 	mountOperation := gio.MountOperationNewFromC(unsafe.Pointer(c_mount_operation))
 
 	index := int(uintptr(data))
@@ -475,8 +475,8 @@ func (recv *PlacesSidebar) DisconnectUnmount(connectionID int) {
 	delete(signalPlacesSidebarUnmountMap, connectionID)
 }
 
-//export PlacesSidebar_unmountHandler
-func PlacesSidebar_unmountHandler(_ *C.GObject, c_mount_operation *C.GMountOperation, data C.gpointer) {
+//export placessidebar_unmountHandler
+func placessidebar_unmountHandler(_ *C.GObject, c_mount_operation *C.GMountOperation, data C.gpointer) {
 	mountOperation := gio.MountOperationNewFromC(unsafe.Pointer(c_mount_operation))
 
 	index := int(uintptr(data))
@@ -837,8 +837,8 @@ func (recv *ShortcutsWindow) DisconnectClose(connectionID int) {
 	delete(signalShortcutsWindowCloseMap, connectionID)
 }
 
-//export ShortcutsWindow_closeHandler
-func ShortcutsWindow_closeHandler(_ *C.GObject, data C.gpointer) {
+//export shortcutswindow_closeHandler
+func shortcutswindow_closeHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalShortcutsWindowCloseMap[index].callback
 	callback()
@@ -894,8 +894,8 @@ func (recv *ShortcutsWindow) DisconnectSearch(connectionID int) {
 	delete(signalShortcutsWindowSearchMap, connectionID)
 }
 
-//export ShortcutsWindow_searchHandler
-func ShortcutsWindow_searchHandler(_ *C.GObject, data C.gpointer) {
+//export shortcutswindow_searchHandler
+func shortcutswindow_searchHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalShortcutsWindowSearchMap[index].callback
 	callback()

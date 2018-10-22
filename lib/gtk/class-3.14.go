@@ -18,109 +18,109 @@ import (
 // #include <stdlib.h>
 /*
 
-	void EntryCompletion_noMatchesHandler(GObject *, gpointer);
+	void entrycompletion_noMatchesHandler(GObject *, gpointer);
 
 	static gulong EntryCompletion_signal_connect_no_matches(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "no-matches", G_CALLBACK(EntryCompletion_noMatchesHandler), data);
+		return g_signal_connect(instance, "no-matches", G_CALLBACK(entrycompletion_noMatchesHandler), data);
 	}
 
 */
 /*
 
-	void Gesture_beginHandler(GObject *, GdkEventSequence *, gpointer);
+	void gesture_beginHandler(GObject *, GdkEventSequence *, gpointer);
 
 	static gulong Gesture_signal_connect_begin(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "begin", G_CALLBACK(Gesture_beginHandler), data);
+		return g_signal_connect(instance, "begin", G_CALLBACK(gesture_beginHandler), data);
 	}
 
 */
 /*
 
-	void Gesture_cancelHandler(GObject *, GdkEventSequence *, gpointer);
+	void gesture_cancelHandler(GObject *, GdkEventSequence *, gpointer);
 
 	static gulong Gesture_signal_connect_cancel(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "cancel", G_CALLBACK(Gesture_cancelHandler), data);
+		return g_signal_connect(instance, "cancel", G_CALLBACK(gesture_cancelHandler), data);
 	}
 
 */
 /*
 
-	void Gesture_endHandler(GObject *, GdkEventSequence *, gpointer);
+	void gesture_endHandler(GObject *, GdkEventSequence *, gpointer);
 
 	static gulong Gesture_signal_connect_end(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "end", G_CALLBACK(Gesture_endHandler), data);
+		return g_signal_connect(instance, "end", G_CALLBACK(gesture_endHandler), data);
 	}
 
 */
 /*
 
-	void Gesture_updateHandler(GObject *, GdkEventSequence *, gpointer);
+	void gesture_updateHandler(GObject *, GdkEventSequence *, gpointer);
 
 	static gulong Gesture_signal_connect_update(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "update", G_CALLBACK(Gesture_updateHandler), data);
+		return g_signal_connect(instance, "update", G_CALLBACK(gesture_updateHandler), data);
 	}
 
 */
 /*
 
-	void GestureLongPress_cancelledHandler(GObject *, gpointer);
+	void gesturelongpress_cancelledHandler(GObject *, gpointer);
 
 	static gulong GestureLongPress_signal_connect_cancelled(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "cancelled", G_CALLBACK(GestureLongPress_cancelledHandler), data);
+		return g_signal_connect(instance, "cancelled", G_CALLBACK(gesturelongpress_cancelledHandler), data);
 	}
 
 */
 /*
 
-	void GestureMultiPress_stoppedHandler(GObject *, gpointer);
+	void gesturemultipress_stoppedHandler(GObject *, gpointer);
 
 	static gulong GestureMultiPress_signal_connect_stopped(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "stopped", G_CALLBACK(GestureMultiPress_stoppedHandler), data);
+		return g_signal_connect(instance, "stopped", G_CALLBACK(gesturemultipress_stoppedHandler), data);
 	}
 
 */
 /*
 
-	void ListBox_selectAllHandler(GObject *, gpointer);
+	void listbox_selectAllHandler(GObject *, gpointer);
 
 	static gulong ListBox_signal_connect_select_all(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "select-all", G_CALLBACK(ListBox_selectAllHandler), data);
+		return g_signal_connect(instance, "select-all", G_CALLBACK(listbox_selectAllHandler), data);
 	}
 
 */
 /*
 
-	void ListBox_selectedRowsChangedHandler(GObject *, gpointer);
+	void listbox_selectedRowsChangedHandler(GObject *, gpointer);
 
 	static gulong ListBox_signal_connect_selected_rows_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "selected-rows-changed", G_CALLBACK(ListBox_selectedRowsChangedHandler), data);
+		return g_signal_connect(instance, "selected-rows-changed", G_CALLBACK(listbox_selectedRowsChangedHandler), data);
 	}
 
 */
 /*
 
-	void ListBox_unselectAllHandler(GObject *, gpointer);
+	void listbox_unselectAllHandler(GObject *, gpointer);
 
 	static gulong ListBox_signal_connect_unselect_all(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "unselect-all", G_CALLBACK(ListBox_unselectAllHandler), data);
+		return g_signal_connect(instance, "unselect-all", G_CALLBACK(listbox_unselectAllHandler), data);
 	}
 
 */
 /*
 
-	void PlacesSidebar_showEnterLocationHandler(GObject *, gpointer);
+	void placessidebar_showEnterLocationHandler(GObject *, gpointer);
 
 	static gulong PlacesSidebar_signal_connect_show_enter_location(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "show-enter-location", G_CALLBACK(PlacesSidebar_showEnterLocationHandler), data);
+		return g_signal_connect(instance, "show-enter-location", G_CALLBACK(placessidebar_showEnterLocationHandler), data);
 	}
 
 */
 /*
 
-	gboolean Switch_stateSetHandler(GObject *, gboolean, gpointer);
+	gboolean switch_stateSetHandler(GObject *, gboolean, gpointer);
 
 	static gulong Switch_signal_connect_state_set(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "state-set", G_CALLBACK(Switch_stateSetHandler), data);
+		return g_signal_connect(instance, "state-set", G_CALLBACK(switch_stateSetHandler), data);
 	}
 
 */
@@ -220,8 +220,8 @@ func (recv *EntryCompletion) DisconnectNoMatches(connectionID int) {
 	delete(signalEntryCompletionNoMatchesMap, connectionID)
 }
 
-//export EntryCompletion_noMatchesHandler
-func EntryCompletion_noMatchesHandler(_ *C.GObject, data C.gpointer) {
+//export entrycompletion_noMatchesHandler
+func entrycompletion_noMatchesHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalEntryCompletionNoMatchesMap[index].callback
 	callback()
@@ -317,8 +317,8 @@ func (recv *Gesture) DisconnectBegin(connectionID int) {
 	delete(signalGestureBeginMap, connectionID)
 }
 
-//export Gesture_beginHandler
-func Gesture_beginHandler(_ *C.GObject, c_sequence *C.GdkEventSequence, data C.gpointer) {
+//export gesture_beginHandler
+func gesture_beginHandler(_ *C.GObject, c_sequence *C.GdkEventSequence, data C.gpointer) {
 	sequence := gdk.EventSequenceNewFromC(unsafe.Pointer(c_sequence))
 
 	index := int(uintptr(data))
@@ -376,8 +376,8 @@ func (recv *Gesture) DisconnectCancel(connectionID int) {
 	delete(signalGestureCancelMap, connectionID)
 }
 
-//export Gesture_cancelHandler
-func Gesture_cancelHandler(_ *C.GObject, c_sequence *C.GdkEventSequence, data C.gpointer) {
+//export gesture_cancelHandler
+func gesture_cancelHandler(_ *C.GObject, c_sequence *C.GdkEventSequence, data C.gpointer) {
 	sequence := gdk.EventSequenceNewFromC(unsafe.Pointer(c_sequence))
 
 	index := int(uintptr(data))
@@ -435,8 +435,8 @@ func (recv *Gesture) DisconnectEnd(connectionID int) {
 	delete(signalGestureEndMap, connectionID)
 }
 
-//export Gesture_endHandler
-func Gesture_endHandler(_ *C.GObject, c_sequence *C.GdkEventSequence, data C.gpointer) {
+//export gesture_endHandler
+func gesture_endHandler(_ *C.GObject, c_sequence *C.GdkEventSequence, data C.gpointer) {
 	sequence := gdk.EventSequenceNewFromC(unsafe.Pointer(c_sequence))
 
 	index := int(uintptr(data))
@@ -496,8 +496,8 @@ func (recv *Gesture) DisconnectUpdate(connectionID int) {
 	delete(signalGestureUpdateMap, connectionID)
 }
 
-//export Gesture_updateHandler
-func Gesture_updateHandler(_ *C.GObject, c_sequence *C.GdkEventSequence, data C.gpointer) {
+//export gesture_updateHandler
+func gesture_updateHandler(_ *C.GObject, c_sequence *C.GdkEventSequence, data C.gpointer) {
 	sequence := gdk.EventSequenceNewFromC(unsafe.Pointer(c_sequence))
 
 	index := int(uintptr(data))
@@ -772,8 +772,8 @@ func (recv *GestureLongPress) DisconnectCancelled(connectionID int) {
 	delete(signalGestureLongPressCancelledMap, connectionID)
 }
 
-//export GestureLongPress_cancelledHandler
-func GestureLongPress_cancelledHandler(_ *C.GObject, data C.gpointer) {
+//export gesturelongpress_cancelledHandler
+func gesturelongpress_cancelledHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalGestureLongPressCancelledMap[index].callback
 	callback()
@@ -845,8 +845,8 @@ func (recv *GestureMultiPress) DisconnectStopped(connectionID int) {
 	delete(signalGestureMultiPressStoppedMap, connectionID)
 }
 
-//export GestureMultiPress_stoppedHandler
-func GestureMultiPress_stoppedHandler(_ *C.GObject, data C.gpointer) {
+//export gesturemultipress_stoppedHandler
+func gesturemultipress_stoppedHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalGestureMultiPressStoppedMap[index].callback
 	callback()
@@ -1106,8 +1106,8 @@ func (recv *ListBox) DisconnectSelectAll(connectionID int) {
 	delete(signalListBoxSelectAllMap, connectionID)
 }
 
-//export ListBox_selectAllHandler
-func ListBox_selectAllHandler(_ *C.GObject, data C.gpointer) {
+//export listbox_selectAllHandler
+func listbox_selectAllHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalListBoxSelectAllMap[index].callback
 	callback()
@@ -1163,8 +1163,8 @@ func (recv *ListBox) DisconnectSelectedRowsChanged(connectionID int) {
 	delete(signalListBoxSelectedRowsChangedMap, connectionID)
 }
 
-//export ListBox_selectedRowsChangedHandler
-func ListBox_selectedRowsChangedHandler(_ *C.GObject, data C.gpointer) {
+//export listbox_selectedRowsChangedHandler
+func listbox_selectedRowsChangedHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalListBoxSelectedRowsChangedMap[index].callback
 	callback()
@@ -1220,8 +1220,8 @@ func (recv *ListBox) DisconnectUnselectAll(connectionID int) {
 	delete(signalListBoxUnselectAllMap, connectionID)
 }
 
-//export ListBox_unselectAllHandler
-func ListBox_unselectAllHandler(_ *C.GObject, data C.gpointer) {
+//export listbox_unselectAllHandler
+func listbox_unselectAllHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalListBoxUnselectAllMap[index].callback
 	callback()
@@ -1364,8 +1364,8 @@ func (recv *PlacesSidebar) DisconnectShowEnterLocation(connectionID int) {
 	delete(signalPlacesSidebarShowEnterLocationMap, connectionID)
 }
 
-//export PlacesSidebar_showEnterLocationHandler
-func PlacesSidebar_showEnterLocationHandler(_ *C.GObject, data C.gpointer) {
+//export placessidebar_showEnterLocationHandler
+func placessidebar_showEnterLocationHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalPlacesSidebarShowEnterLocationMap[index].callback
 	callback()
@@ -1449,8 +1449,8 @@ func (recv *Switch) DisconnectStateSet(connectionID int) {
 	delete(signalSwitchStateSetMap, connectionID)
 }
 
-//export Switch_stateSetHandler
-func Switch_stateSetHandler(_ *C.GObject, c_state C.gboolean, data C.gpointer) C.gboolean {
+//export switch_stateSetHandler
+func switch_stateSetHandler(_ *C.GObject, c_state C.gboolean, data C.gpointer) C.gboolean {
 	state := c_state == C.TRUE
 
 	index := int(uintptr(data))

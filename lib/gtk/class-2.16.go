@@ -17,19 +17,19 @@ import (
 // #include <stdlib.h>
 /*
 
-	gboolean StatusIcon_scrollEventHandler(GObject *, GdkEventScroll *, gpointer);
+	gboolean statusicon_scrollEventHandler(GObject *, GdkEventScroll *, gpointer);
 
 	static gulong StatusIcon_signal_connect_scroll_event(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "scroll-event", G_CALLBACK(StatusIcon_scrollEventHandler), data);
+		return g_signal_connect(instance, "scroll-event", G_CALLBACK(statusicon_scrollEventHandler), data);
 	}
 
 */
 /*
 
-	void TextBuffer_pasteDoneHandler(GObject *, GtkClipboard *, gpointer);
+	void textbuffer_pasteDoneHandler(GObject *, GtkClipboard *, gpointer);
 
 	static gulong TextBuffer_signal_connect_paste_done(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "paste-done", G_CALLBACK(TextBuffer_pasteDoneHandler), data);
+		return g_signal_connect(instance, "paste-done", G_CALLBACK(textbuffer_pasteDoneHandler), data);
 	}
 
 */
@@ -729,8 +729,8 @@ func (recv *StatusIcon) DisconnectScrollEvent(connectionID int) {
 	delete(signalStatusIconScrollEventMap, connectionID)
 }
 
-//export StatusIcon_scrollEventHandler
-func StatusIcon_scrollEventHandler(_ *C.GObject, c_event *C.GdkEventScroll, data C.gpointer) C.gboolean {
+//export statusicon_scrollEventHandler
+func statusicon_scrollEventHandler(_ *C.GObject, c_event *C.GdkEventScroll, data C.gpointer) C.gboolean {
 	event := gdk.EventScrollNewFromC(unsafe.Pointer(c_event))
 
 	index := int(uintptr(data))
@@ -855,8 +855,8 @@ func (recv *TextBuffer) DisconnectPasteDone(connectionID int) {
 	delete(signalTextBufferPasteDoneMap, connectionID)
 }
 
-//export TextBuffer_pasteDoneHandler
-func TextBuffer_pasteDoneHandler(_ *C.GObject, c_clipboard *C.GtkClipboard, data C.gpointer) {
+//export textbuffer_pasteDoneHandler
+func textbuffer_pasteDoneHandler(_ *C.GObject, c_clipboard *C.GtkClipboard, data C.gpointer) {
 	clipboard := ClipboardNewFromC(unsafe.Pointer(c_clipboard))
 
 	index := int(uintptr(data))

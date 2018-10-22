@@ -13,28 +13,28 @@ import (
 // #include <stdlib.h>
 /*
 
-	void Hyperlink_linkActivatedHandler(GObject *, gpointer);
+	void hyperlink_linkActivatedHandler(GObject *, gpointer);
 
 	static gulong Hyperlink_signal_connect_link_activated(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "link-activated", G_CALLBACK(Hyperlink_linkActivatedHandler), data);
+		return g_signal_connect(instance, "link-activated", G_CALLBACK(hyperlink_linkActivatedHandler), data);
 	}
 
 */
 /*
 
-	void Object_focusEventHandler(GObject *, gboolean, gpointer);
+	void object_focusEventHandler(GObject *, gboolean, gpointer);
 
 	static gulong Object_signal_connect_focus_event(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "focus-event", G_CALLBACK(Object_focusEventHandler), data);
+		return g_signal_connect(instance, "focus-event", G_CALLBACK(object_focusEventHandler), data);
 	}
 
 */
 /*
 
-	void Object_visibleDataChangedHandler(GObject *, gpointer);
+	void object_visibleDataChangedHandler(GObject *, gpointer);
 
 	static gulong Object_signal_connect_visible_data_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "visible-data-changed", G_CALLBACK(Object_visibleDataChangedHandler), data);
+		return g_signal_connect(instance, "visible-data-changed", G_CALLBACK(object_visibleDataChangedHandler), data);
 	}
 
 */
@@ -164,8 +164,8 @@ func (recv *Hyperlink) DisconnectLinkActivated(connectionID int) {
 	delete(signalHyperlinkLinkActivatedMap, connectionID)
 }
 
-//export Hyperlink_linkActivatedHandler
-func Hyperlink_linkActivatedHandler(_ *C.GObject, data C.gpointer) {
+//export hyperlink_linkActivatedHandler
+func hyperlink_linkActivatedHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalHyperlinkLinkActivatedMap[index].callback
 	callback()
@@ -461,8 +461,8 @@ func (recv *Object) DisconnectFocusEvent(connectionID int) {
 	delete(signalObjectFocusEventMap, connectionID)
 }
 
-//export Object_focusEventHandler
-func Object_focusEventHandler(_ *C.GObject, c_arg1 C.gboolean, data C.gpointer) {
+//export object_focusEventHandler
+func object_focusEventHandler(_ *C.GObject, c_arg1 C.gboolean, data C.gpointer) {
 	arg1 := c_arg1 == C.TRUE
 
 	index := int(uintptr(data))
@@ -524,8 +524,8 @@ func (recv *Object) DisconnectVisibleDataChanged(connectionID int) {
 	delete(signalObjectVisibleDataChangedMap, connectionID)
 }
 
-//export Object_visibleDataChangedHandler
-func Object_visibleDataChangedHandler(_ *C.GObject, data C.gpointer) {
+//export object_visibleDataChangedHandler
+func object_visibleDataChangedHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalObjectVisibleDataChangedMap[index].callback
 	callback()

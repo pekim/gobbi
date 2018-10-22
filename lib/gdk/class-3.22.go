@@ -15,37 +15,37 @@ import (
 // #include <stdlib.h>
 /*
 
-	void Device_toolChangedHandler(GObject *, GdkDeviceTool *, gpointer);
+	void device_toolChangedHandler(GObject *, GdkDeviceTool *, gpointer);
 
 	static gulong Device_signal_connect_tool_changed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "tool-changed", G_CALLBACK(Device_toolChangedHandler), data);
+		return g_signal_connect(instance, "tool-changed", G_CALLBACK(device_toolChangedHandler), data);
 	}
 
 */
 /*
 
-	void Display_monitorAddedHandler(GObject *, GdkMonitor *, gpointer);
+	void display_monitorAddedHandler(GObject *, GdkMonitor *, gpointer);
 
 	static gulong Display_signal_connect_monitor_added(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "monitor-added", G_CALLBACK(Display_monitorAddedHandler), data);
+		return g_signal_connect(instance, "monitor-added", G_CALLBACK(display_monitorAddedHandler), data);
 	}
 
 */
 /*
 
-	void Display_monitorRemovedHandler(GObject *, GdkMonitor *, gpointer);
+	void display_monitorRemovedHandler(GObject *, GdkMonitor *, gpointer);
 
 	static gulong Display_signal_connect_monitor_removed(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "monitor-removed", G_CALLBACK(Display_monitorRemovedHandler), data);
+		return g_signal_connect(instance, "monitor-removed", G_CALLBACK(display_monitorRemovedHandler), data);
 	}
 
 */
 /*
 
-	void Monitor_invalidateHandler(GObject *, gpointer);
+	void monitor_invalidateHandler(GObject *, gpointer);
 
 	static gulong Monitor_signal_connect_invalidate(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "invalidate", G_CALLBACK(Monitor_invalidateHandler), data);
+		return g_signal_connect(instance, "invalidate", G_CALLBACK(monitor_invalidateHandler), data);
 	}
 
 */
@@ -101,8 +101,8 @@ func (recv *Device) DisconnectToolChanged(connectionID int) {
 	delete(signalDeviceToolChangedMap, connectionID)
 }
 
-//export Device_toolChangedHandler
-func Device_toolChangedHandler(_ *C.GObject, c_tool *C.GdkDeviceTool, data C.gpointer) {
+//export device_toolChangedHandler
+func device_toolChangedHandler(_ *C.GObject, c_tool *C.GdkDeviceTool, data C.gpointer) {
 	tool := DeviceToolNewFromC(unsafe.Pointer(c_tool))
 
 	index := int(uintptr(data))
@@ -224,8 +224,8 @@ func (recv *Display) DisconnectMonitorAdded(connectionID int) {
 	delete(signalDisplayMonitorAddedMap, connectionID)
 }
 
-//export Display_monitorAddedHandler
-func Display_monitorAddedHandler(_ *C.GObject, c_monitor *C.GdkMonitor, data C.gpointer) {
+//export display_monitorAddedHandler
+func display_monitorAddedHandler(_ *C.GObject, c_monitor *C.GdkMonitor, data C.gpointer) {
 	monitor := MonitorNewFromC(unsafe.Pointer(c_monitor))
 
 	index := int(uintptr(data))
@@ -283,8 +283,8 @@ func (recv *Display) DisconnectMonitorRemoved(connectionID int) {
 	delete(signalDisplayMonitorRemovedMap, connectionID)
 }
 
-//export Display_monitorRemovedHandler
-func Display_monitorRemovedHandler(_ *C.GObject, c_monitor *C.GdkMonitor, data C.gpointer) {
+//export display_monitorRemovedHandler
+func display_monitorRemovedHandler(_ *C.GObject, c_monitor *C.GdkMonitor, data C.gpointer) {
 	monitor := MonitorNewFromC(unsafe.Pointer(c_monitor))
 
 	index := int(uintptr(data))
@@ -503,8 +503,8 @@ func (recv *Monitor) DisconnectInvalidate(connectionID int) {
 	delete(signalMonitorInvalidateMap, connectionID)
 }
 
-//export Monitor_invalidateHandler
-func Monitor_invalidateHandler(_ *C.GObject, data C.gpointer) {
+//export monitor_invalidateHandler
+func monitor_invalidateHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalMonitorInvalidateMap[index].callback
 	callback()

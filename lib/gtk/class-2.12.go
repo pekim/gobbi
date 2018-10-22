@@ -19,46 +19,46 @@ import (
 // #include <stdlib.h>
 /*
 
-	gboolean ComboBox_popdownHandler(GObject *, gpointer);
+	gboolean combobox_popdownHandler(GObject *, gpointer);
 
 	static gulong ComboBox_signal_connect_popdown(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "popdown", G_CALLBACK(ComboBox_popdownHandler), data);
+		return g_signal_connect(instance, "popdown", G_CALLBACK(combobox_popdownHandler), data);
 	}
 
 */
 /*
 
-	void ComboBox_popupHandler(GObject *, gpointer);
+	void combobox_popupHandler(GObject *, gpointer);
 
 	static gulong ComboBox_signal_connect_popup(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "popup", G_CALLBACK(ComboBox_popupHandler), data);
+		return g_signal_connect(instance, "popup", G_CALLBACK(combobox_popupHandler), data);
 	}
 
 */
 /*
 
-	void FileChooserButton_fileSetHandler(GObject *, gpointer);
+	void filechooserbutton_fileSetHandler(GObject *, gpointer);
 
 	static gulong FileChooserButton_signal_connect_file_set(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "file-set", G_CALLBACK(FileChooserButton_fileSetHandler), data);
+		return g_signal_connect(instance, "file-set", G_CALLBACK(filechooserbutton_fileSetHandler), data);
 	}
 
 */
 /*
 
-	void ScaleButton_popdownHandler(GObject *, gpointer);
+	void scalebutton_popdownHandler(GObject *, gpointer);
 
 	static gulong ScaleButton_signal_connect_popdown(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "popdown", G_CALLBACK(ScaleButton_popdownHandler), data);
+		return g_signal_connect(instance, "popdown", G_CALLBACK(scalebutton_popdownHandler), data);
 	}
 
 */
 /*
 
-	void ScaleButton_popupHandler(GObject *, gpointer);
+	void scalebutton_popupHandler(GObject *, gpointer);
 
 	static gulong ScaleButton_signal_connect_popup(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "popup", G_CALLBACK(ScaleButton_popupHandler), data);
+		return g_signal_connect(instance, "popup", G_CALLBACK(scalebutton_popupHandler), data);
 	}
 
 */
@@ -246,8 +246,8 @@ func (recv *ComboBox) DisconnectPopdown(connectionID int) {
 	delete(signalComboBoxPopdownMap, connectionID)
 }
 
-//export ComboBox_popdownHandler
-func ComboBox_popdownHandler(_ *C.GObject, data C.gpointer) C.gboolean {
+//export combobox_popdownHandler
+func combobox_popdownHandler(_ *C.GObject, data C.gpointer) C.gboolean {
 	index := int(uintptr(data))
 	callback := signalComboBoxPopdownMap[index].callback
 	retGo := callback()
@@ -306,8 +306,8 @@ func (recv *ComboBox) DisconnectPopup(connectionID int) {
 	delete(signalComboBoxPopupMap, connectionID)
 }
 
-//export ComboBox_popupHandler
-func ComboBox_popupHandler(_ *C.GObject, data C.gpointer) {
+//export combobox_popupHandler
+func combobox_popupHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalComboBoxPopupMap[index].callback
 	callback()
@@ -416,8 +416,8 @@ func (recv *FileChooserButton) DisconnectFileSet(connectionID int) {
 	delete(signalFileChooserButtonFileSetMap, connectionID)
 }
 
-//export FileChooserButton_fileSetHandler
-func FileChooserButton_fileSetHandler(_ *C.GObject, data C.gpointer) {
+//export filechooserbutton_fileSetHandler
+func filechooserbutton_fileSetHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalFileChooserButtonFileSetMap[index].callback
 	callback()
@@ -852,8 +852,8 @@ func (recv *ScaleButton) DisconnectPopdown(connectionID int) {
 	delete(signalScaleButtonPopdownMap, connectionID)
 }
 
-//export ScaleButton_popdownHandler
-func ScaleButton_popdownHandler(_ *C.GObject, data C.gpointer) {
+//export scalebutton_popdownHandler
+func scalebutton_popdownHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalScaleButtonPopdownMap[index].callback
 	callback()
@@ -909,8 +909,8 @@ func (recv *ScaleButton) DisconnectPopup(connectionID int) {
 	delete(signalScaleButtonPopupMap, connectionID)
 }
 
-//export ScaleButton_popupHandler
-func ScaleButton_popupHandler(_ *C.GObject, data C.gpointer) {
+//export scalebutton_popupHandler
+func scalebutton_popupHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalScaleButtonPopupMap[index].callback
 	callback()

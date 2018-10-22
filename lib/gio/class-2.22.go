@@ -25,10 +25,10 @@ import (
 // #include <stdlib.h>
 /*
 
-	gboolean ThreadedSocketService_runHandler(GObject *, GSocketConnection *, GObject *, gpointer);
+	gboolean threadedsocketservice_runHandler(GObject *, GSocketConnection *, GObject *, gpointer);
 
 	static gulong ThreadedSocketService_signal_connect_run(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "run", G_CALLBACK(ThreadedSocketService_runHandler), data);
+		return g_signal_connect(instance, "run", G_CALLBACK(threadedsocketservice_runHandler), data);
 	}
 
 */
@@ -1607,8 +1607,8 @@ func (recv *ThreadedSocketService) DisconnectRun(connectionID int) {
 	delete(signalThreadedSocketServiceRunMap, connectionID)
 }
 
-//export ThreadedSocketService_runHandler
-func ThreadedSocketService_runHandler(_ *C.GObject, c_connection *C.GSocketConnection, c_source_object *C.GObject, data C.gpointer) C.gboolean {
+//export threadedsocketservice_runHandler
+func threadedsocketservice_runHandler(_ *C.GObject, c_connection *C.GSocketConnection, c_source_object *C.GObject, data C.gpointer) C.gboolean {
 	connection := SocketConnectionNewFromC(unsafe.Pointer(c_connection))
 
 	sourceObject := gobject.ObjectNewFromC(unsafe.Pointer(c_source_object))
