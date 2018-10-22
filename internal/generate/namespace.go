@@ -21,6 +21,7 @@ type Namespace struct {
 	Enumerations        Enumerations `xml:"enumeration"`
 	Functions           Functions    `xml:"function"`
 	Records             Records      `xml:"record"`
+	Interfaces          Interfaces   `xml:"interface"`
 
 	repo              *Repository
 	jenFile           *jen.File
@@ -46,6 +47,7 @@ func (ns *Namespace) init(repo *Repository) {
 	ns.Enumerations.init(ns)
 	ns.Functions.init(ns)
 	ns.Records.init(ns)
+	ns.Interfaces.init(ns)
 
 	ns.setAllVersions()
 }
@@ -124,6 +126,11 @@ func (ns *Namespace) recordOrClassRecordForName(name string) (*Record, bool) {
 	}
 
 	return nil, false
+}
+
+func (ns *Namespace) interfaceForName(name string) (*Interface, bool) {
+	iface := ns.Interfaces.forName(name)
+	return iface, iface != nil
 }
 
 func (ns *Namespace) get(name string) *Namespace {
