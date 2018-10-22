@@ -6,7 +6,14 @@ import (
 	"runtime"
 )
 
+/*
+A very simple example, that creates a window, sets its title,
+and shows it.
+The application quits when the window is closed.
+*/
+
 func init() {
+	// Ensure that the ui's main thread is locked to the main thread.
 	runtime.LockOSThread()
 }
 
