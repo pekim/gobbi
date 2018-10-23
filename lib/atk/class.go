@@ -232,6 +232,10 @@ func (recv *Hyperlink) IsValid() bool {
 	return retGo
 }
 
+func (recv *Hyperlink) Action() *Action {
+	return ActionNewFromC(recv.ToC())
+}
+
 // Misc is a wrapper around the C record AtkMisc.
 type Misc struct {
 	native *C.AtkMisc
@@ -306,6 +310,54 @@ func NoOpObjectNew(obj *gobject.Object) *NoOpObject {
 	retGo := NoOpObjectNewFromC(unsafe.Pointer(retC))
 
 	return retGo
+}
+
+func (recv *NoOpObject) Action() *Action {
+	return ActionNewFromC(recv.ToC())
+}
+
+func (recv *NoOpObject) Component() *Component {
+	return ComponentNewFromC(recv.ToC())
+}
+
+func (recv *NoOpObject) Document() *Document {
+	return DocumentNewFromC(recv.ToC())
+}
+
+func (recv *NoOpObject) EditableText() *EditableText {
+	return EditableTextNewFromC(recv.ToC())
+}
+
+func (recv *NoOpObject) Hypertext() *Hypertext {
+	return HypertextNewFromC(recv.ToC())
+}
+
+func (recv *NoOpObject) Image() *Image {
+	return ImageNewFromC(recv.ToC())
+}
+
+func (recv *NoOpObject) Selection() *Selection {
+	return SelectionNewFromC(recv.ToC())
+}
+
+func (recv *NoOpObject) Table() *Table {
+	return TableNewFromC(recv.ToC())
+}
+
+func (recv *NoOpObject) TableCell() *TableCell {
+	return TableCellNewFromC(recv.ToC())
+}
+
+func (recv *NoOpObject) Text() *Text {
+	return TextNewFromC(recv.ToC())
+}
+
+func (recv *NoOpObject) Value() *Value {
+	return ValueNewFromC(recv.ToC())
+}
+
+func (recv *NoOpObject) Window() *Window {
+	return WindowNewFromC(recv.ToC())
 }
 
 // NoOpObjectFactory is a wrapper around the C record AtkNoOpObjectFactory.
@@ -816,6 +868,10 @@ func PlugNew() *Plug {
 	return retGo
 }
 
+func (recv *Plug) Component() *Component {
+	return ComponentNewFromC(recv.ToC())
+}
+
 // Registry is a wrapper around the C record AtkRegistry.
 type Registry struct {
 	native *C.AtkRegistry
@@ -1069,6 +1125,10 @@ func SocketNew() *Socket {
 	retGo := SocketNewFromC(unsafe.Pointer(retC))
 
 	return retGo
+}
+
+func (recv *Socket) Component() *Component {
+	return ComponentNewFromC(recv.ToC())
 }
 
 // StateSet is a wrapper around the C record AtkStateSet.

@@ -294,6 +294,10 @@ func (recv *BufferedInputStream) SetBufferSize(size uint64) {
 	return
 }
 
+func (recv *BufferedInputStream) Seekable() *Seekable {
+	return SeekableNewFromC(recv.ToC())
+}
+
 // BufferedOutputStream is a wrapper around the C record GBufferedOutputStream.
 type BufferedOutputStream struct {
 	native *C.GBufferedOutputStream
@@ -395,6 +399,10 @@ func (recv *BufferedOutputStream) SetBufferSize(size uint64) {
 	return
 }
 
+func (recv *BufferedOutputStream) Seekable() *Seekable {
+	return SeekableNewFromC(recv.ToC())
+}
+
 // BytesIcon is a wrapper around the C record GBytesIcon.
 type BytesIcon struct {
 	native *C.GBytesIcon
@@ -425,6 +433,14 @@ func (recv *BytesIcon) Object() *gobject.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a BytesIcon.
 func CastToBytesIcon(object *gobject.Object) *BytesIcon {
 	return BytesIconNewFromC(object.ToC())
+}
+
+func (recv *BytesIcon) Icon() *Icon {
+	return IconNewFromC(recv.ToC())
+}
+
+func (recv *BytesIcon) LoadableIcon() *LoadableIcon {
+	return LoadableIconNewFromC(recv.ToC())
 }
 
 // Cancellable is a wrapper around the C record GCancellable.
@@ -617,6 +633,14 @@ func CastToCharsetConverter(object *gobject.Object) *CharsetConverter {
 	return CharsetConverterNewFromC(object.ToC())
 }
 
+func (recv *CharsetConverter) Converter() *Converter {
+	return ConverterNewFromC(recv.ToC())
+}
+
+func (recv *CharsetConverter) Initable() *Initable {
+	return InitableNewFromC(recv.ToC())
+}
+
 // ConverterInputStream is a wrapper around the C record GConverterInputStream.
 type ConverterInputStream struct {
 	native *C.GConverterInputStream
@@ -662,6 +686,10 @@ func CastToConverterInputStream(object *gobject.Object) *ConverterInputStream {
 }
 
 // Unsupported : g_converter_input_stream_new : unsupported parameter converter : no type generator for Converter, GConverter*
+
+func (recv *ConverterInputStream) PollableInputStream() *PollableInputStream {
+	return PollableInputStreamNewFromC(recv.ToC())
+}
 
 // ConverterOutputStream is a wrapper around the C record GConverterOutputStream.
 type ConverterOutputStream struct {
@@ -709,6 +737,10 @@ func CastToConverterOutputStream(object *gobject.Object) *ConverterOutputStream 
 
 // Unsupported : g_converter_output_stream_new : unsupported parameter converter : no type generator for Converter, GConverter*
 
+func (recv *ConverterOutputStream) PollableOutputStream() *PollableOutputStream {
+	return PollableOutputStreamNewFromC(recv.ToC())
+}
+
 // DBusActionGroup is a wrapper around the C record GDBusActionGroup.
 type DBusActionGroup struct {
 	native *C.GDBusActionGroup
@@ -739,6 +771,14 @@ func (recv *DBusActionGroup) Object() *gobject.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a DBusActionGroup.
 func CastToDBusActionGroup(object *gobject.Object) *DBusActionGroup {
 	return DBusActionGroupNewFromC(object.ToC())
+}
+
+func (recv *DBusActionGroup) ActionGroup() *ActionGroup {
+	return ActionGroupNewFromC(recv.ToC())
+}
+
+func (recv *DBusActionGroup) RemoteActionGroup() *RemoteActionGroup {
+	return RemoteActionGroupNewFromC(recv.ToC())
 }
 
 // DBusMenuModel is a wrapper around the C record GDBusMenuModel.
@@ -1017,6 +1057,10 @@ func (recv *DataInputStream) SetNewlineType(type_ DataStreamNewlineType) {
 	return
 }
 
+func (recv *DataInputStream) Seekable() *Seekable {
+	return SeekableNewFromC(recv.ToC())
+}
+
 // DataOutputStream is a wrapper around the C record GDataOutputStream.
 type DataOutputStream struct {
 	native *C.GDataOutputStream
@@ -1241,6 +1285,10 @@ func (recv *DataOutputStream) SetByteOrder(order DataStreamByteOrder) {
 	return
 }
 
+func (recv *DataOutputStream) Seekable() *Seekable {
+	return SeekableNewFromC(recv.ToC())
+}
+
 // DesktopAppInfo is a wrapper around the C record GDesktopAppInfo.
 type DesktopAppInfo struct {
 	native *C.GDesktopAppInfo
@@ -1321,6 +1369,10 @@ func (recv *DesktopAppInfo) GetIsHidden() bool {
 
 // Unsupported : g_desktop_app_info_launch_uris_as_manager : unsupported parameter user_setup : no type generator for GLib.SpawnChildSetupFunc, GSpawnChildSetupFunc
 
+func (recv *DesktopAppInfo) AppInfo() *AppInfo {
+	return AppInfoNewFromC(recv.ToC())
+}
+
 // Emblem is a wrapper around the C record GEmblem.
 type Emblem struct {
 	native *C.GEmblem
@@ -1357,6 +1409,10 @@ func CastToEmblem(object *gobject.Object) *Emblem {
 
 // Unsupported : g_emblem_new_with_origin : unsupported parameter icon : no type generator for Icon, GIcon*
 
+func (recv *Emblem) Icon() *Icon {
+	return IconNewFromC(recv.ToC())
+}
+
 // EmblemedIcon is a wrapper around the C record GEmblemedIcon.
 type EmblemedIcon struct {
 	native *C.GEmblemedIcon
@@ -1392,6 +1448,10 @@ func CastToEmblemedIcon(object *gobject.Object) *EmblemedIcon {
 }
 
 // Unsupported : g_emblemed_icon_new : unsupported parameter icon : no type generator for Icon, GIcon*
+
+func (recv *EmblemedIcon) Icon() *Icon {
+	return IconNewFromC(recv.ToC())
+}
 
 // FileEnumerator is a wrapper around the C record GFileEnumerator.
 type FileEnumerator struct {
@@ -1534,6 +1594,10 @@ func CastToFileIOStream(object *gobject.Object) *FileIOStream {
 	return FileIOStreamNewFromC(object.ToC())
 }
 
+func (recv *FileIOStream) Seekable() *Seekable {
+	return SeekableNewFromC(recv.ToC())
+}
+
 // FileIcon is a wrapper around the C record GFileIcon.
 type FileIcon struct {
 	native *C.GFileIcon
@@ -1569,6 +1633,14 @@ func CastToFileIcon(object *gobject.Object) *FileIcon {
 // Unsupported : g_file_icon_new : unsupported parameter file : no type generator for File, GFile*
 
 // Unsupported : g_file_icon_get_file : no return generator
+
+func (recv *FileIcon) Icon() *Icon {
+	return IconNewFromC(recv.ToC())
+}
+
+func (recv *FileIcon) LoadableIcon() *LoadableIcon {
+	return LoadableIconNewFromC(recv.ToC())
+}
 
 // FileInfo is a wrapper around the C record GFileInfo.
 type FileInfo struct {
@@ -2192,6 +2264,10 @@ func (recv *FileInputStream) QueryInfo(attributes string, cancellable *Cancellab
 
 // Unsupported : g_file_input_stream_query_info_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
 
+func (recv *FileInputStream) Seekable() *Seekable {
+	return SeekableNewFromC(recv.ToC())
+}
+
 // FileMonitor is a wrapper around the C record GFileMonitor.
 type FileMonitor struct {
 	native *C.GFileMonitor
@@ -2326,6 +2402,10 @@ func (recv *FileOutputStream) QueryInfo(attributes string, cancellable *Cancella
 // Unsupported : g_file_output_stream_query_info_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
 
 // Unsupported : g_file_output_stream_query_info_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+
+func (recv *FileOutputStream) Seekable() *Seekable {
+	return SeekableNewFromC(recv.ToC())
+}
 
 // FilenameCompleter is a wrapper around the C record GFilenameCompleter.
 type FilenameCompleter struct {
@@ -2620,6 +2700,10 @@ func IOModuleNew(filename string) *IOModule {
 
 // Blacklisted : g_io_module_unload
 
+func (recv *IOModule) TypePlugin() *gobject.TypePlugin {
+	return gobject.TypePluginNewFromC(recv.ToC())
+}
+
 // IOStream is a wrapper around the C record GIOStream.
 type IOStream struct {
 	native *C.GIOStream
@@ -2727,6 +2811,10 @@ func (recv *InetSocketAddress) Object() *gobject.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a InetSocketAddress.
 func CastToInetSocketAddress(object *gobject.Object) *InetSocketAddress {
 	return InetSocketAddressNewFromC(object.ToC())
+}
+
+func (recv *InetSocketAddress) SocketConnectable() *SocketConnectable {
+	return SocketConnectableNewFromC(recv.ToC())
 }
 
 // InputStream is a wrapper around the C record GInputStream.
@@ -2887,6 +2975,10 @@ func CastToListStore(object *gobject.Object) *ListStore {
 
 // Unsupported : g_list_store_new : unsupported parameter item_type : no type generator for GType, GType
 
+func (recv *ListStore) ListModel() *ListModel {
+	return ListModelNewFromC(recv.ToC())
+}
+
 // MemoryInputStream is a wrapper around the C record GMemoryInputStream.
 type MemoryInputStream struct {
 	native *C.GMemoryInputStream
@@ -2937,6 +3029,14 @@ func MemoryInputStreamNew() *MemoryInputStream {
 // Unsupported : g_memory_input_stream_new_from_data : unsupported parameter data : no param type
 
 // Unsupported : g_memory_input_stream_add_data : unsupported parameter data : no param type
+
+func (recv *MemoryInputStream) PollableInputStream() *PollableInputStream {
+	return PollableInputStreamNewFromC(recv.ToC())
+}
+
+func (recv *MemoryInputStream) Seekable() *Seekable {
+	return SeekableNewFromC(recv.ToC())
+}
 
 // MemoryOutputStream is a wrapper around the C record GMemoryOutputStream.
 type MemoryOutputStream struct {
@@ -2993,6 +3093,14 @@ func (recv *MemoryOutputStream) GetSize() uint64 {
 	retGo := (uint64)(retC)
 
 	return retGo
+}
+
+func (recv *MemoryOutputStream) PollableOutputStream() *PollableOutputStream {
+	return PollableOutputStreamNewFromC(recv.ToC())
+}
+
+func (recv *MemoryOutputStream) Seekable() *Seekable {
+	return SeekableNewFromC(recv.ToC())
 }
 
 // MountOperation is a wrapper around the C record GMountOperation.
@@ -3230,6 +3338,10 @@ func CastToNetworkAddress(object *gobject.Object) *NetworkAddress {
 	return NetworkAddressNewFromC(object.ToC())
 }
 
+func (recv *NetworkAddress) SocketConnectable() *SocketConnectable {
+	return SocketConnectableNewFromC(recv.ToC())
+}
+
 // NetworkService is a wrapper around the C record GNetworkService.
 type NetworkService struct {
 	native *C.GNetworkService
@@ -3262,6 +3374,10 @@ func (recv *NetworkService) Object() *gobject.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a NetworkService.
 func CastToNetworkService(object *gobject.Object) *NetworkService {
 	return NetworkServiceNewFromC(object.ToC())
+}
+
+func (recv *NetworkService) SocketConnectable() *SocketConnectable {
+	return SocketConnectableNewFromC(recv.ToC())
 }
 
 // OutputStream is a wrapper around the C record GOutputStream.
@@ -3749,6 +3865,10 @@ func CastToSimpleAction(object *gobject.Object) *SimpleAction {
 
 // Unsupported : g_simple_action_new_stateful : unsupported parameter parameter_type : Blacklisted record : GVariantType
 
+func (recv *SimpleAction) Action() *Action {
+	return ActionNewFromC(recv.ToC())
+}
+
 // SimpleAsyncResult is a wrapper around the C record GSimpleAsyncResult.
 type SimpleAsyncResult struct {
 	native *C.GSimpleAsyncResult
@@ -3896,6 +4016,10 @@ func (recv *SimpleAsyncResult) SetOpResGssize(opRes int64) {
 	return
 }
 
+func (recv *SimpleAsyncResult) AsyncResult() *AsyncResult {
+	return AsyncResultNewFromC(recv.ToC())
+}
+
 // SimplePermission is a wrapper around the C record GSimplePermission.
 type SimplePermission struct {
 	native *C.GSimplePermission
@@ -3967,6 +4091,10 @@ func CastToSimpleProxyResolver(object *gobject.Object) *SimpleProxyResolver {
 	return SimpleProxyResolverNewFromC(object.ToC())
 }
 
+func (recv *SimpleProxyResolver) ProxyResolver() *ProxyResolver {
+	return ProxyResolverNewFromC(recv.ToC())
+}
+
 // SocketAddress is a wrapper around the C record GSocketAddress.
 type SocketAddress struct {
 	native *C.GSocketAddress
@@ -3998,6 +4126,10 @@ func (recv *SocketAddress) Object() *gobject.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a SocketAddress.
 func CastToSocketAddress(object *gobject.Object) *SocketAddress {
 	return SocketAddressNewFromC(object.ToC())
+}
+
+func (recv *SocketAddress) SocketConnectable() *SocketConnectable {
+	return SocketConnectableNewFromC(recv.ToC())
 }
 
 // SocketAddressEnumerator is a wrapper around the C record GSocketAddressEnumerator.
@@ -4121,6 +4253,10 @@ func CastToTask(object *gobject.Object) *Task {
 }
 
 // Unsupported : g_task_new : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+
+func (recv *Task) AsyncResult() *AsyncResult {
+	return AsyncResultNewFromC(recv.ToC())
+}
 
 // TcpWrapperConnection is a wrapper around the C record GTcpWrapperConnection.
 type TcpWrapperConnection struct {
@@ -4246,6 +4382,10 @@ func (recv *ThemedIcon) AppendName(iconname string) {
 }
 
 // Unsupported : g_themed_icon_get_names : no return type
+
+func (recv *ThemedIcon) Icon() *Icon {
+	return IconNewFromC(recv.ToC())
+}
 
 // UnixConnection is a wrapper around the C record GUnixConnection.
 type UnixConnection struct {
@@ -4416,6 +4556,14 @@ func UnixInputStreamNew(fd int32, closeFd bool) *UnixInputStream {
 	retGo := UnixInputStreamNewFromC(unsafe.Pointer(retC))
 
 	return retGo
+}
+
+func (recv *UnixInputStream) FileDescriptorBased() *FileDescriptorBased {
+	return FileDescriptorBasedNewFromC(recv.ToC())
+}
+
+func (recv *UnixInputStream) PollableInputStream() *PollableInputStream {
+	return PollableInputStreamNewFromC(recv.ToC())
 }
 
 // UnixMountMonitor is a wrapper around the C record GUnixMountMonitor.
@@ -4624,6 +4772,14 @@ func UnixOutputStreamNew(fd int32, closeFd bool) *UnixOutputStream {
 	return retGo
 }
 
+func (recv *UnixOutputStream) FileDescriptorBased() *FileDescriptorBased {
+	return FileDescriptorBasedNewFromC(recv.ToC())
+}
+
+func (recv *UnixOutputStream) PollableOutputStream() *PollableOutputStream {
+	return PollableOutputStreamNewFromC(recv.ToC())
+}
+
 // UnixSocketAddress is a wrapper around the C record GUnixSocketAddress.
 type UnixSocketAddress struct {
 	native *C.GUnixSocketAddress
@@ -4666,6 +4822,10 @@ func CastToUnixSocketAddress(object *gobject.Object) *UnixSocketAddress {
 // Unsupported : g_unix_socket_address_new_abstract : unsupported parameter path : no param type
 
 // Unsupported : g_unix_socket_address_new_with_type : unsupported parameter path : no param type
+
+func (recv *UnixSocketAddress) SocketConnectable() *SocketConnectable {
+	return SocketConnectableNewFromC(recv.ToC())
+}
 
 // Vfs is a wrapper around the C record GVfs.
 type Vfs struct {
@@ -4830,6 +4990,10 @@ func CastToZlibCompressor(object *gobject.Object) *ZlibCompressor {
 	return ZlibCompressorNewFromC(object.ToC())
 }
 
+func (recv *ZlibCompressor) Converter() *Converter {
+	return ConverterNewFromC(recv.ToC())
+}
+
 // ZlibDecompressor is a wrapper around the C record GZlibDecompressor.
 type ZlibDecompressor struct {
 	native *C.GZlibDecompressor
@@ -4860,4 +5024,8 @@ func (recv *ZlibDecompressor) Object() *gobject.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a ZlibDecompressor.
 func CastToZlibDecompressor(object *gobject.Object) *ZlibDecompressor {
 	return ZlibDecompressorNewFromC(object.ToC())
+}
+
+func (recv *ZlibDecompressor) Converter() *Converter {
+	return ConverterNewFromC(recv.ToC())
 }

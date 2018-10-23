@@ -41,6 +41,10 @@
       <method blacklist="true" c:identifier="g_tls_password_get_value"/>
     </class>
 
+    <class name="Socket">
+      <implements name="DatagramBased" version="2.48"/>
+    </class>
+
     <function blacklist="true" c:identifier="g_keyfile_settings_backend_new"/>
     <function blacklist="true" c:identifier="g_memory_settings_backend_new"/>
     <function blacklist="true" c:identifier="g_null_settings_backend_new"/>

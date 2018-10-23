@@ -31,5 +31,7 @@
       <record version="3.22" name="DevicePadInterface"/>
       <record version="3.22" name="DrawingContextClass"/>
       <record version="3.22" name="MonitorClass"/>
+
+      <interface name="DevicePad" version="3.22"/>
   </namespace>
 </repository>

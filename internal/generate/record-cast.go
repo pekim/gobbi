@@ -149,4 +149,5 @@ func (r *Record) generateDowncast(g *jen.Group) {
 				Id("ToC").
 				Call()))
 
+	g.Line()
 }

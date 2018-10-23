@@ -1688,6 +1688,14 @@ func CastToAboutDialog(object *gobject.Object) *AboutDialog {
 	return AboutDialogNewFromC(object.ToC())
 }
 
+func (recv *AboutDialog) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *AboutDialog) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
 // AccelGroup is a wrapper around the C record GtkAccelGroup.
 type AccelGroup struct {
 	native *C.GtkAccelGroup
@@ -1924,6 +1932,14 @@ func (recv *AccelLabel) SetAccelWidget(accelWidget *Widget) {
 	return
 }
 
+func (recv *AccelLabel) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *AccelLabel) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
 // AccelMap is a wrapper around the C record GtkAccelMap.
 type AccelMap struct {
 	native *C.GtkAccelMap
@@ -2031,6 +2047,10 @@ func CastToAction(object *gobject.Object) *Action {
 	return ActionNewFromC(object.ToC())
 }
 
+func (recv *Action) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
 // ActionBar is a wrapper around the C record GtkActionBar.
 type ActionBar struct {
 	native *C.GtkActionBar
@@ -2084,6 +2104,14 @@ func CastToActionBar(object *gobject.Object) *ActionBar {
 	return ActionBarNewFromC(object.ToC())
 }
 
+func (recv *ActionBar) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *ActionBar) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
 // ActionGroup is a wrapper around the C record GtkActionGroup.
 type ActionGroup struct {
 	native *C.GtkActionGroup
@@ -2116,6 +2144,10 @@ func (recv *ActionGroup) Object() *gobject.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a ActionGroup.
 func CastToActionGroup(object *gobject.Object) *ActionGroup {
 	return ActionGroupNewFromC(object.ToC())
+}
+
+func (recv *ActionGroup) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
 }
 
 // Adjustment is a wrapper around the C record GtkAdjustment.
@@ -2418,6 +2450,14 @@ func (recv *Alignment) Set(xalign float32, yalign float32, xscale float32, yscal
 	return
 }
 
+func (recv *Alignment) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *Alignment) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
 // AppChooserButton is a wrapper around the C record GtkAppChooserButton.
 type AppChooserButton struct {
 	native *C.GtkAppChooserButton
@@ -2495,6 +2535,26 @@ func (recv *AppChooserButton) SetHeading(heading string) {
 	C.gtk_app_chooser_button_set_heading((*C.GtkAppChooserButton)(recv.native), c_heading)
 
 	return
+}
+
+func (recv *AppChooserButton) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *AppChooserButton) AppChooser() *AppChooser {
+	return AppChooserNewFromC(recv.ToC())
+}
+
+func (recv *AppChooserButton) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
+func (recv *AppChooserButton) CellEditable() *CellEditable {
+	return CellEditableNewFromC(recv.ToC())
+}
+
+func (recv *AppChooserButton) CellLayout() *CellLayout {
+	return CellLayoutNewFromC(recv.ToC())
 }
 
 // AppChooserDialog is a wrapper around the C record GtkAppChooserDialog.
@@ -2581,6 +2641,18 @@ func (recv *AppChooserDialog) SetHeading(heading string) {
 	return
 }
 
+func (recv *AppChooserDialog) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *AppChooserDialog) AppChooser() *AppChooser {
+	return AppChooserNewFromC(recv.ToC())
+}
+
+func (recv *AppChooserDialog) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
 // AppChooserWidget is a wrapper around the C record GtkAppChooserWidget.
 type AppChooserWidget struct {
 	native *C.GtkAppChooserWidget
@@ -2651,6 +2723,22 @@ func (recv *AppChooserWidget) SetDefaultText(text string) {
 	return
 }
 
+func (recv *AppChooserWidget) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *AppChooserWidget) AppChooser() *AppChooser {
+	return AppChooserNewFromC(recv.ToC())
+}
+
+func (recv *AppChooserWidget) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
+func (recv *AppChooserWidget) Orientable() *Orientable {
+	return OrientableNewFromC(recv.ToC())
+}
+
 // Application is a wrapper around the C record GtkApplication.
 type Application struct {
 	native *C.GtkApplication
@@ -2688,6 +2776,14 @@ func (recv *Application) Object() *gobject.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a Application.
 func CastToApplication(object *gobject.Object) *Application {
 	return ApplicationNewFromC(object.ToC())
+}
+
+func (recv *Application) ActionGroup() *gio.ActionGroup {
+	return gio.ActionGroupNewFromC(recv.ToC())
+}
+
+func (recv *Application) ActionMap() *gio.ActionMap {
+	return gio.ActionMapNewFromC(recv.ToC())
 }
 
 // ApplicationWindow is a wrapper around the C record GtkApplicationWindow.
@@ -2747,6 +2843,22 @@ func (recv *ApplicationWindow) Object() *gobject.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a ApplicationWindow.
 func CastToApplicationWindow(object *gobject.Object) *ApplicationWindow {
 	return ApplicationWindowNewFromC(object.ToC())
+}
+
+func (recv *ApplicationWindow) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *ApplicationWindow) ActionGroup() *gio.ActionGroup {
+	return gio.ActionGroupNewFromC(recv.ToC())
+}
+
+func (recv *ApplicationWindow) ActionMap() *gio.ActionMap {
+	return gio.ActionMapNewFromC(recv.ToC())
+}
+
+func (recv *ApplicationWindow) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
 }
 
 // Arrow is a wrapper around the C record GtkArrow.
@@ -2821,6 +2933,14 @@ func (recv *Arrow) Set(arrowType ArrowType, shadowType ShadowType) {
 	return
 }
 
+func (recv *Arrow) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *Arrow) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
 // ArrowAccessible is a wrapper around the C record GtkArrowAccessible.
 type ArrowAccessible struct {
 	native *C.GtkArrowAccessible
@@ -2863,6 +2983,14 @@ func (recv *ArrowAccessible) Object() *atk.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a ArrowAccessible.
 func CastToArrowAccessible(object *gobject.Object) *ArrowAccessible {
 	return ArrowAccessibleNewFromC(object.ToC())
+}
+
+func (recv *ArrowAccessible) Component() *atk.Component {
+	return atk.ComponentNewFromC(recv.ToC())
+}
+
+func (recv *ArrowAccessible) Image() *atk.Image {
+	return atk.ImageNewFromC(recv.ToC())
 }
 
 // AspectFrame is a wrapper around the C record GtkAspectFrame.
@@ -2958,6 +3086,14 @@ func (recv *AspectFrame) Set(xalign float32, yalign float32, ratio float32, obey
 	C.gtk_aspect_frame_set((*C.GtkAspectFrame)(recv.native), c_xalign, c_yalign, c_ratio, c_obey_child)
 
 	return
+}
+
+func (recv *AspectFrame) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *AspectFrame) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
 }
 
 // Assistant is a wrapper around the C record GtkAssistant.
@@ -3076,6 +3212,14 @@ func assistant_escapeHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
+func (recv *Assistant) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *Assistant) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
 // Bin is a wrapper around the C record GtkBin.
 type Bin struct {
 	native *C.GtkBin
@@ -3133,6 +3277,14 @@ func (recv *Bin) GetChild() *Widget {
 	return retGo
 }
 
+func (recv *Bin) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *Bin) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
 // BooleanCellAccessible is a wrapper around the C record GtkBooleanCellAccessible.
 type BooleanCellAccessible struct {
 	native *C.GtkBooleanCellAccessible
@@ -3180,6 +3332,14 @@ func (recv *BooleanCellAccessible) Object() *atk.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a BooleanCellAccessible.
 func CastToBooleanCellAccessible(object *gobject.Object) *BooleanCellAccessible {
 	return BooleanCellAccessibleNewFromC(object.ToC())
+}
+
+func (recv *BooleanCellAccessible) Action() *atk.Action {
+	return atk.ActionNewFromC(recv.ToC())
+}
+
+func (recv *BooleanCellAccessible) Component() *atk.Component {
+	return atk.ComponentNewFromC(recv.ToC())
 }
 
 // Box is a wrapper around the C record GtkBox.
@@ -3330,6 +3490,18 @@ func (recv *Box) SetSpacing(spacing int32) {
 	C.gtk_box_set_spacing((*C.GtkBox)(recv.native), c_spacing)
 
 	return
+}
+
+func (recv *Box) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *Box) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
+func (recv *Box) Orientable() *Orientable {
+	return OrientableNewFromC(recv.ToC())
 }
 
 // Builder is a wrapper around the C record GtkBuilder.
@@ -3913,6 +4085,22 @@ func (recv *Button) SetUseUnderline(useUnderline bool) {
 	return
 }
 
+func (recv *Button) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *Button) Actionable() *Actionable {
+	return ActionableNewFromC(recv.ToC())
+}
+
+func (recv *Button) Activatable() *Activatable {
+	return ActivatableNewFromC(recv.ToC())
+}
+
+func (recv *Button) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
 // ButtonAccessible is a wrapper around the C record GtkButtonAccessible.
 type ButtonAccessible struct {
 	native *C.GtkButtonAccessible
@@ -3960,6 +4148,18 @@ func (recv *ButtonAccessible) Object() *atk.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a ButtonAccessible.
 func CastToButtonAccessible(object *gobject.Object) *ButtonAccessible {
 	return ButtonAccessibleNewFromC(object.ToC())
+}
+
+func (recv *ButtonAccessible) Action() *atk.Action {
+	return atk.ActionNewFromC(recv.ToC())
+}
+
+func (recv *ButtonAccessible) Component() *atk.Component {
+	return atk.ComponentNewFromC(recv.ToC())
+}
+
+func (recv *ButtonAccessible) Image() *atk.Image {
+	return atk.ImageNewFromC(recv.ToC())
 }
 
 // ButtonBox is a wrapper around the C record GtkButtonBox.
@@ -4043,6 +4243,18 @@ func (recv *ButtonBox) SetLayout(layoutStyle ButtonBoxStyle) {
 	C.gtk_button_box_set_layout((*C.GtkButtonBox)(recv.native), c_layout_style)
 
 	return
+}
+
+func (recv *ButtonBox) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *ButtonBox) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
+func (recv *ButtonBox) Orientable() *Orientable {
+	return OrientableNewFromC(recv.ToC())
 }
 
 // Calendar is a wrapper around the C record GtkCalendar.
@@ -4560,6 +4772,14 @@ func (recv *Calendar) UnmarkDay(day uint32) {
 	return
 }
 
+func (recv *Calendar) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *Calendar) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
 // CellAccessible is a wrapper around the C record GtkCellAccessible.
 type CellAccessible struct {
 	native *C.GtkCellAccessible
@@ -4599,6 +4819,14 @@ func CastToCellAccessible(object *gobject.Object) *CellAccessible {
 	return CellAccessibleNewFromC(object.ToC())
 }
 
+func (recv *CellAccessible) Action() *atk.Action {
+	return atk.ActionNewFromC(recv.ToC())
+}
+
+func (recv *CellAccessible) Component() *atk.Component {
+	return atk.ComponentNewFromC(recv.ToC())
+}
+
 // CellArea is a wrapper around the C record GtkCellArea.
 type CellArea struct {
 	native *C.GtkCellArea
@@ -4636,6 +4864,14 @@ func (recv *CellArea) Object() *gobject.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a CellArea.
 func CastToCellArea(object *gobject.Object) *CellArea {
 	return CellAreaNewFromC(object.ToC())
+}
+
+func (recv *CellArea) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
+func (recv *CellArea) CellLayout() *CellLayout {
+	return CellLayoutNewFromC(recv.ToC())
 }
 
 // CellAreaBox is a wrapper around the C record GtkCellAreaBox.
@@ -4680,6 +4916,18 @@ func (recv *CellAreaBox) Object() *gobject.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a CellAreaBox.
 func CastToCellAreaBox(object *gobject.Object) *CellAreaBox {
 	return CellAreaBoxNewFromC(object.ToC())
+}
+
+func (recv *CellAreaBox) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
+func (recv *CellAreaBox) CellLayout() *CellLayout {
+	return CellLayoutNewFromC(recv.ToC())
+}
+
+func (recv *CellAreaBox) Orientable() *Orientable {
+	return OrientableNewFromC(recv.ToC())
 }
 
 // CellAreaContext is a wrapper around the C record GtkCellAreaContext.
@@ -5001,6 +5249,10 @@ func CastToCellRendererProgress(object *gobject.Object) *CellRendererProgress {
 	return CellRendererProgressNewFromC(object.ToC())
 }
 
+func (recv *CellRendererProgress) Orientable() *Orientable {
+	return OrientableNewFromC(recv.ToC())
+}
+
 // CellRendererSpin is a wrapper around the C record GtkCellRendererSpin.
 type CellRendererSpin struct {
 	native *C.GtkCellRendererSpin
@@ -5291,6 +5543,22 @@ func CastToCellView(object *gobject.Object) *CellView {
 	return CellViewNewFromC(object.ToC())
 }
 
+func (recv *CellView) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *CellView) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
+func (recv *CellView) CellLayout() *CellLayout {
+	return CellLayoutNewFromC(recv.ToC())
+}
+
+func (recv *CellView) Orientable() *Orientable {
+	return OrientableNewFromC(recv.ToC())
+}
+
 // CheckButton is a wrapper around the C record GtkCheckButton.
 type CheckButton struct {
 	native *C.GtkCheckButton
@@ -5382,6 +5650,22 @@ func CheckButtonNewWithMnemonic(label string) *CheckButton {
 	retGo := CheckButtonNewFromC(unsafe.Pointer(retC))
 
 	return retGo
+}
+
+func (recv *CheckButton) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *CheckButton) Actionable() *Actionable {
+	return ActionableNewFromC(recv.ToC())
+}
+
+func (recv *CheckButton) Activatable() *Activatable {
+	return ActivatableNewFromC(recv.ToC())
+}
+
+func (recv *CheckButton) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
 }
 
 // CheckMenuItem is a wrapper around the C record GtkCheckMenuItem.
@@ -5573,6 +5857,22 @@ func (recv *CheckMenuItem) Toggled() {
 	return
 }
 
+func (recv *CheckMenuItem) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *CheckMenuItem) Actionable() *Actionable {
+	return ActionableNewFromC(recv.ToC())
+}
+
+func (recv *CheckMenuItem) Activatable() *Activatable {
+	return ActivatableNewFromC(recv.ToC())
+}
+
+func (recv *CheckMenuItem) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
 // CheckMenuItemAccessible is a wrapper around the C record GtkCheckMenuItemAccessible.
 type CheckMenuItemAccessible struct {
 	native *C.GtkCheckMenuItemAccessible
@@ -5625,6 +5925,18 @@ func (recv *CheckMenuItemAccessible) Object() *atk.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a CheckMenuItemAccessible.
 func CastToCheckMenuItemAccessible(object *gobject.Object) *CheckMenuItemAccessible {
 	return CheckMenuItemAccessibleNewFromC(object.ToC())
+}
+
+func (recv *CheckMenuItemAccessible) Action() *atk.Action {
+	return atk.ActionNewFromC(recv.ToC())
+}
+
+func (recv *CheckMenuItemAccessible) Component() *atk.Component {
+	return atk.ComponentNewFromC(recv.ToC())
+}
+
+func (recv *CheckMenuItemAccessible) Selection() *atk.Selection {
+	return atk.SelectionNewFromC(recv.ToC())
 }
 
 // Clipboard is a wrapper around the C record GtkClipboard.
@@ -5772,6 +6084,26 @@ func CastToColorButton(object *gobject.Object) *ColorButton {
 	return ColorButtonNewFromC(object.ToC())
 }
 
+func (recv *ColorButton) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *ColorButton) Actionable() *Actionable {
+	return ActionableNewFromC(recv.ToC())
+}
+
+func (recv *ColorButton) Activatable() *Activatable {
+	return ActivatableNewFromC(recv.ToC())
+}
+
+func (recv *ColorButton) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
+func (recv *ColorButton) ColorChooser() *ColorChooser {
+	return ColorChooserNewFromC(recv.ToC())
+}
+
 // ColorChooserDialog is a wrapper around the C record GtkColorChooserDialog.
 type ColorChooserDialog struct {
 	native *C.GtkColorChooserDialog
@@ -5836,6 +6168,18 @@ func CastToColorChooserDialog(object *gobject.Object) *ColorChooserDialog {
 	return ColorChooserDialogNewFromC(object.ToC())
 }
 
+func (recv *ColorChooserDialog) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *ColorChooserDialog) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
+func (recv *ColorChooserDialog) ColorChooser() *ColorChooser {
+	return ColorChooserNewFromC(recv.ToC())
+}
+
 // ColorChooserWidget is a wrapper around the C record GtkColorChooserWidget.
 type ColorChooserWidget struct {
 	native *C.GtkColorChooserWidget
@@ -5888,6 +6232,22 @@ func (recv *ColorChooserWidget) Object() *gobject.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a ColorChooserWidget.
 func CastToColorChooserWidget(object *gobject.Object) *ColorChooserWidget {
 	return ColorChooserWidgetNewFromC(object.ToC())
+}
+
+func (recv *ColorChooserWidget) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *ColorChooserWidget) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
+func (recv *ColorChooserWidget) ColorChooser() *ColorChooser {
+	return ColorChooserNewFromC(recv.ToC())
+}
+
+func (recv *ColorChooserWidget) Orientable() *Orientable {
+	return OrientableNewFromC(recv.ToC())
 }
 
 // ColorSelection is a wrapper around the C record GtkColorSelection.
@@ -6127,6 +6487,18 @@ func (recv *ColorSelection) SetPreviousColor(color *gdk.Color) {
 	return
 }
 
+func (recv *ColorSelection) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *ColorSelection) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
+func (recv *ColorSelection) Orientable() *Orientable {
+	return OrientableNewFromC(recv.ToC())
+}
+
 // ColorSelectionDialog is a wrapper around the C record GtkColorSelectionDialog.
 type ColorSelectionDialog struct {
 	native *C.GtkColorSelectionDialog
@@ -6200,6 +6572,14 @@ func ColorSelectionDialogNew(title string) *ColorSelectionDialog {
 	retGo := ColorSelectionDialogNewFromC(unsafe.Pointer(retC))
 
 	return retGo
+}
+
+func (recv *ColorSelectionDialog) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *ColorSelectionDialog) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
 }
 
 // ComboBox is a wrapper around the C record GtkComboBox.
@@ -6288,6 +6668,22 @@ func (recv *ComboBox) GetAddTearoffs() bool {
 	return retGo
 }
 
+func (recv *ComboBox) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *ComboBox) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
+func (recv *ComboBox) CellEditable() *CellEditable {
+	return CellEditableNewFromC(recv.ToC())
+}
+
+func (recv *ComboBox) CellLayout() *CellLayout {
+	return CellLayoutNewFromC(recv.ToC())
+}
+
 // ComboBoxAccessible is a wrapper around the C record GtkComboBoxAccessible.
 type ComboBoxAccessible struct {
 	native *C.GtkComboBoxAccessible
@@ -6335,6 +6731,18 @@ func (recv *ComboBoxAccessible) Object() *atk.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a ComboBoxAccessible.
 func CastToComboBoxAccessible(object *gobject.Object) *ComboBoxAccessible {
 	return ComboBoxAccessibleNewFromC(object.ToC())
+}
+
+func (recv *ComboBoxAccessible) Action() *atk.Action {
+	return atk.ActionNewFromC(recv.ToC())
+}
+
+func (recv *ComboBoxAccessible) Component() *atk.Component {
+	return atk.ComponentNewFromC(recv.ToC())
+}
+
+func (recv *ComboBoxAccessible) Selection() *atk.Selection {
+	return atk.SelectionNewFromC(recv.ToC())
 }
 
 // ComboBoxText is a wrapper around the C record GtkComboBoxText.
@@ -6394,6 +6802,22 @@ func (recv *ComboBoxText) Object() *gobject.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a ComboBoxText.
 func CastToComboBoxText(object *gobject.Object) *ComboBoxText {
 	return ComboBoxTextNewFromC(object.ToC())
+}
+
+func (recv *ComboBoxText) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *ComboBoxText) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
+func (recv *ComboBoxText) CellEditable() *CellEditable {
+	return CellEditableNewFromC(recv.ToC())
+}
+
+func (recv *ComboBoxText) CellLayout() *CellLayout {
+	return CellLayoutNewFromC(recv.ToC())
 }
 
 // Container is a wrapper around the C record GtkContainer.
@@ -6884,6 +7308,14 @@ func (recv *Container) UnsetFocusChain() {
 	return
 }
 
+func (recv *Container) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *Container) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
 // ContainerAccessible is a wrapper around the C record GtkContainerAccessible.
 type ContainerAccessible struct {
 	native *C.GtkContainerAccessible
@@ -6926,6 +7358,10 @@ func (recv *ContainerAccessible) Object() *atk.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a ContainerAccessible.
 func CastToContainerAccessible(object *gobject.Object) *ContainerAccessible {
 	return ContainerAccessibleNewFromC(object.ToC())
+}
+
+func (recv *ContainerAccessible) Component() *atk.Component {
+	return atk.ComponentNewFromC(recv.ToC())
 }
 
 // ContainerCellAccessible is a wrapper around the C record GtkContainerCellAccessible.
@@ -7004,6 +7440,14 @@ func (recv *ContainerCellAccessible) RemoveChild(child *CellAccessible) {
 	C.gtk_container_cell_accessible_remove_child((*C.GtkContainerCellAccessible)(recv.native), c_child)
 
 	return
+}
+
+func (recv *ContainerCellAccessible) Action() *atk.Action {
+	return atk.ActionNewFromC(recv.ToC())
+}
+
+func (recv *ContainerCellAccessible) Component() *atk.Component {
+	return atk.ComponentNewFromC(recv.ToC())
 }
 
 // CssProvider is a wrapper around the C record GtkCssProvider.
@@ -7129,6 +7573,10 @@ func (recv *CssProvider) LoadFromPath(path string) (bool, error) {
 	}
 
 	return retGo, goThrowableError
+}
+
+func (recv *CssProvider) StyleProvider() *StyleProvider {
+	return StyleProviderNewFromC(recv.ToC())
 }
 
 // Dialog is a wrapper around the C record GtkDialog.
@@ -7323,6 +7771,14 @@ func (recv *Dialog) SetResponseSensitive(responseId int32, setting bool) {
 	return
 }
 
+func (recv *Dialog) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *Dialog) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
 // DrawingArea is a wrapper around the C record GtkDrawingArea.
 type DrawingArea struct {
 	native *C.GtkDrawingArea
@@ -7373,6 +7829,14 @@ func DrawingAreaNew() *DrawingArea {
 	retGo := DrawingAreaNewFromC(unsafe.Pointer(retC))
 
 	return retGo
+}
+
+func (recv *DrawingArea) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *DrawingArea) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
 }
 
 // Entry is a wrapper around the C record GtkEntry.
@@ -8000,6 +8464,22 @@ func (recv *Entry) TextIndexToLayoutIndex(textIndex int32) int32 {
 	return retGo
 }
 
+func (recv *Entry) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *Entry) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
+func (recv *Entry) CellEditable() *CellEditable {
+	return CellEditableNewFromC(recv.ToC())
+}
+
+func (recv *Entry) Editable() *Editable {
+	return EditableNewFromC(recv.ToC())
+}
+
 // EntryAccessible is a wrapper around the C record GtkEntryAccessible.
 type EntryAccessible struct {
 	native *C.GtkEntryAccessible
@@ -8042,6 +8522,22 @@ func (recv *EntryAccessible) Object() *atk.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a EntryAccessible.
 func CastToEntryAccessible(object *gobject.Object) *EntryAccessible {
 	return EntryAccessibleNewFromC(object.ToC())
+}
+
+func (recv *EntryAccessible) Action() *atk.Action {
+	return atk.ActionNewFromC(recv.ToC())
+}
+
+func (recv *EntryAccessible) Component() *atk.Component {
+	return atk.ComponentNewFromC(recv.ToC())
+}
+
+func (recv *EntryAccessible) EditableText() *atk.EditableText {
+	return atk.EditableTextNewFromC(recv.ToC())
+}
+
+func (recv *EntryAccessible) Text() *atk.Text {
+	return atk.TextNewFromC(recv.ToC())
 }
 
 // EntryBuffer is a wrapper around the C record GtkEntryBuffer.
@@ -8112,6 +8608,14 @@ func CastToEntryCompletion(object *gobject.Object) *EntryCompletion {
 	return EntryCompletionNewFromC(object.ToC())
 }
 
+func (recv *EntryCompletion) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
+func (recv *EntryCompletion) CellLayout() *CellLayout {
+	return CellLayoutNewFromC(recv.ToC())
+}
+
 // Unsupported : EntryIconAccessible : no CType
 
 // EventBox is a wrapper around the C record GtkEventBox.
@@ -8174,6 +8678,14 @@ func EventBoxNew() *EventBox {
 	retGo := EventBoxNewFromC(unsafe.Pointer(retC))
 
 	return retGo
+}
+
+func (recv *EventBox) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *EventBox) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
 }
 
 // EventController is a wrapper around the C record GtkEventController.
@@ -8319,6 +8831,14 @@ func expander_activateHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
+func (recv *Expander) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *Expander) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
 // ExpanderAccessible is a wrapper around the C record GtkExpanderAccessible.
 type ExpanderAccessible struct {
 	native *C.GtkExpanderAccessible
@@ -8366,6 +8886,14 @@ func (recv *ExpanderAccessible) Object() *atk.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a ExpanderAccessible.
 func CastToExpanderAccessible(object *gobject.Object) *ExpanderAccessible {
 	return ExpanderAccessibleNewFromC(object.ToC())
+}
+
+func (recv *ExpanderAccessible) Action() *atk.Action {
+	return atk.ActionNewFromC(recv.ToC())
+}
+
+func (recv *ExpanderAccessible) Component() *atk.Component {
+	return atk.ComponentNewFromC(recv.ToC())
 }
 
 // FileChooserButton is a wrapper around the C record GtkFileChooserButton.
@@ -8420,6 +8948,22 @@ func (recv *FileChooserButton) Object() *gobject.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a FileChooserButton.
 func CastToFileChooserButton(object *gobject.Object) *FileChooserButton {
 	return FileChooserButtonNewFromC(object.ToC())
+}
+
+func (recv *FileChooserButton) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *FileChooserButton) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
+func (recv *FileChooserButton) FileChooser() *FileChooser {
+	return FileChooserNewFromC(recv.ToC())
+}
+
+func (recv *FileChooserButton) Orientable() *Orientable {
+	return OrientableNewFromC(recv.ToC())
 }
 
 // FileChooserDialog is a wrapper around the C record GtkFileChooserDialog.
@@ -8487,6 +9031,18 @@ func CastToFileChooserDialog(object *gobject.Object) *FileChooserDialog {
 }
 
 // Unsupported : gtk_file_chooser_dialog_new : unsupported parameter ... : varargs
+
+func (recv *FileChooserDialog) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *FileChooserDialog) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
+func (recv *FileChooserDialog) FileChooser() *FileChooser {
+	return FileChooserNewFromC(recv.ToC())
+}
 
 // FileChooserWidget is a wrapper around the C record GtkFileChooserWidget.
 type FileChooserWidget struct {
@@ -9116,6 +9672,22 @@ func filechooserwidget_upFolderHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
+func (recv *FileChooserWidget) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *FileChooserWidget) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
+func (recv *FileChooserWidget) FileChooser() *FileChooser {
+	return FileChooserNewFromC(recv.ToC())
+}
+
+func (recv *FileChooserWidget) Orientable() *Orientable {
+	return OrientableNewFromC(recv.ToC())
+}
+
 // FileFilter is a wrapper around the C record GtkFileFilter.
 type FileFilter struct {
 	native *C.GtkFileFilter
@@ -9154,6 +9726,10 @@ func CastToFileFilter(object *gobject.Object) *FileFilter {
 }
 
 // Unsupported : gtk_file_filter_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
+
+func (recv *FileFilter) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
 
 // Fixed is a wrapper around the C record GtkFixed.
 type Fixed struct {
@@ -9236,6 +9812,14 @@ func (recv *Fixed) Put(widget *Widget, x int32, y int32) {
 	C.gtk_fixed_put((*C.GtkFixed)(recv.native), c_widget, c_x, c_y)
 
 	return
+}
+
+func (recv *Fixed) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *Fixed) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
 }
 
 // FlowBox is a wrapper around the C record GtkFlowBox.
@@ -9632,6 +10216,18 @@ func flowbox_unselectAllHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
+func (recv *FlowBox) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *FlowBox) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
+func (recv *FlowBox) Orientable() *Orientable {
+	return OrientableNewFromC(recv.ToC())
+}
+
 // FlowBoxAccessible is a wrapper around the C record GtkFlowBoxAccessible.
 type FlowBoxAccessible struct {
 	native *C.GtkFlowBoxAccessible
@@ -9679,6 +10275,14 @@ func (recv *FlowBoxAccessible) Object() *atk.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a FlowBoxAccessible.
 func CastToFlowBoxAccessible(object *gobject.Object) *FlowBoxAccessible {
 	return FlowBoxAccessibleNewFromC(object.ToC())
+}
+
+func (recv *FlowBoxAccessible) Component() *atk.Component {
+	return atk.ComponentNewFromC(recv.ToC())
+}
+
+func (recv *FlowBoxAccessible) Selection() *atk.Selection {
+	return atk.SelectionNewFromC(recv.ToC())
 }
 
 // FlowBoxChild is a wrapper around the C record GtkFlowBoxChild.
@@ -9791,6 +10395,14 @@ func flowboxchild_activateHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
+func (recv *FlowBoxChild) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *FlowBoxChild) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
 // FlowBoxChildAccessible is a wrapper around the C record GtkFlowBoxChildAccessible.
 type FlowBoxChildAccessible struct {
 	native *C.GtkFlowBoxChildAccessible
@@ -9837,6 +10449,10 @@ func (recv *FlowBoxChildAccessible) Object() *atk.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a FlowBoxChildAccessible.
 func CastToFlowBoxChildAccessible(object *gobject.Object) *FlowBoxChildAccessible {
 	return FlowBoxChildAccessibleNewFromC(object.ToC())
+}
+
+func (recv *FlowBoxChildAccessible) Component() *atk.Component {
+	return atk.ComponentNewFromC(recv.ToC())
 }
 
 // FontButton is a wrapper around the C record GtkFontButton.
@@ -9896,6 +10512,26 @@ func (recv *FontButton) Object() *gobject.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a FontButton.
 func CastToFontButton(object *gobject.Object) *FontButton {
 	return FontButtonNewFromC(object.ToC())
+}
+
+func (recv *FontButton) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *FontButton) Actionable() *Actionable {
+	return ActionableNewFromC(recv.ToC())
+}
+
+func (recv *FontButton) Activatable() *Activatable {
+	return ActivatableNewFromC(recv.ToC())
+}
+
+func (recv *FontButton) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
+func (recv *FontButton) FontChooser() *FontChooser {
+	return FontChooserNewFromC(recv.ToC())
 }
 
 // FontChooserDialog is a wrapper around the C record GtkFontChooserDialog.
@@ -9962,6 +10598,18 @@ func CastToFontChooserDialog(object *gobject.Object) *FontChooserDialog {
 	return FontChooserDialogNewFromC(object.ToC())
 }
 
+func (recv *FontChooserDialog) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *FontChooserDialog) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
+func (recv *FontChooserDialog) FontChooser() *FontChooser {
+	return FontChooserNewFromC(recv.ToC())
+}
+
 // FontChooserWidget is a wrapper around the C record GtkFontChooserWidget.
 type FontChooserWidget struct {
 	native *C.GtkFontChooserWidget
@@ -10014,6 +10662,22 @@ func (recv *FontChooserWidget) Object() *gobject.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a FontChooserWidget.
 func CastToFontChooserWidget(object *gobject.Object) *FontChooserWidget {
 	return FontChooserWidgetNewFromC(object.ToC())
+}
+
+func (recv *FontChooserWidget) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *FontChooserWidget) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
+func (recv *FontChooserWidget) FontChooser() *FontChooser {
+	return FontChooserNewFromC(recv.ToC())
+}
+
+func (recv *FontChooserWidget) Orientable() *Orientable {
+	return OrientableNewFromC(recv.ToC())
 }
 
 // FontSelection is a wrapper around the C record GtkFontSelection.
@@ -10114,6 +10778,18 @@ func (recv *FontSelection) SetPreviewText(text string) {
 	C.gtk_font_selection_set_preview_text((*C.GtkFontSelection)(recv.native), c_text)
 
 	return
+}
+
+func (recv *FontSelection) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *FontSelection) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
+func (recv *FontSelection) Orientable() *Orientable {
+	return OrientableNewFromC(recv.ToC())
 }
 
 // FontSelectionDialog is a wrapper around the C record GtkFontSelectionDialog.
@@ -10227,6 +10903,14 @@ func (recv *FontSelectionDialog) SetPreviewText(text string) {
 	C.gtk_font_selection_dialog_set_preview_text((*C.GtkFontSelectionDialog)(recv.native), c_text)
 
 	return
+}
+
+func (recv *FontSelectionDialog) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *FontSelectionDialog) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
 }
 
 // Frame is a wrapper around the C record GtkFrame.
@@ -10372,6 +11056,14 @@ func (recv *Frame) SetShadowType(type_ ShadowType) {
 	return
 }
 
+func (recv *Frame) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *Frame) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
 // FrameAccessible is a wrapper around the C record GtkFrameAccessible.
 type FrameAccessible struct {
 	native *C.GtkFrameAccessible
@@ -10419,6 +11111,10 @@ func (recv *FrameAccessible) Object() *atk.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a FrameAccessible.
 func CastToFrameAccessible(object *gobject.Object) *FrameAccessible {
 	return FrameAccessibleNewFromC(object.ToC())
+}
+
+func (recv *FrameAccessible) Component() *atk.Component {
+	return atk.ComponentNewFromC(recv.ToC())
 }
 
 // Gesture is a wrapper around the C record GtkGesture.
@@ -10987,6 +11683,18 @@ func (recv *Grid) SetRowSpacing(spacing uint32) {
 	return
 }
 
+func (recv *Grid) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *Grid) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
+func (recv *Grid) Orientable() *Orientable {
+	return OrientableNewFromC(recv.ToC())
+}
+
 // HBox is a wrapper around the C record GtkHBox.
 type HBox struct {
 	native *C.GtkHBox
@@ -11051,6 +11759,18 @@ func HBoxNew(homogeneous bool, spacing int32) *HBox {
 	retGo := HBoxNewFromC(unsafe.Pointer(retC))
 
 	return retGo
+}
+
+func (recv *HBox) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *HBox) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
+func (recv *HBox) Orientable() *Orientable {
+	return OrientableNewFromC(recv.ToC())
 }
 
 // HButtonBox is a wrapper around the C record GtkHButtonBox.
@@ -11119,6 +11839,18 @@ func HButtonBoxNew() *HButtonBox {
 	return retGo
 }
 
+func (recv *HButtonBox) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *HButtonBox) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
+func (recv *HButtonBox) Orientable() *Orientable {
+	return OrientableNewFromC(recv.ToC())
+}
+
 // HPaned is a wrapper around the C record GtkHPaned.
 type HPaned struct {
 	native *C.GtkHPaned
@@ -11178,6 +11910,18 @@ func HPanedNew() *HPaned {
 	retGo := HPanedNewFromC(unsafe.Pointer(retC))
 
 	return retGo
+}
+
+func (recv *HPaned) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *HPaned) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
+func (recv *HPaned) Orientable() *Orientable {
+	return OrientableNewFromC(recv.ToC())
 }
 
 // HSV is a wrapper around the C record GtkHSV.
@@ -11283,6 +12027,14 @@ func hsv_changedHandler(_ *C.GObject, data C.gpointer) {
 
 // Unsupported signal 'move' for HSV : unsupported parameter object : type DirectionType :
 
+func (recv *HSV) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *HSV) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
 // HScale is a wrapper around the C record GtkHScale.
 type HScale struct {
 	native *C.GtkHScale
@@ -11360,6 +12112,18 @@ func HScaleNewWithRange(min float64, max float64, step float64) *HScale {
 	return retGo
 }
 
+func (recv *HScale) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *HScale) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
+func (recv *HScale) Orientable() *Orientable {
+	return OrientableNewFromC(recv.ToC())
+}
+
 // HScrollbar is a wrapper around the C record GtkHScrollbar.
 type HScrollbar struct {
 	native *C.GtkHScrollbar
@@ -11423,6 +12187,18 @@ func HScrollbarNew(adjustment *Adjustment) *HScrollbar {
 	return retGo
 }
 
+func (recv *HScrollbar) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *HScrollbar) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
+func (recv *HScrollbar) Orientable() *Orientable {
+	return OrientableNewFromC(recv.ToC())
+}
+
 // HSeparator is a wrapper around the C record GtkHSeparator.
 type HSeparator struct {
 	native *C.GtkHSeparator
@@ -11477,6 +12253,18 @@ func HSeparatorNew() *HSeparator {
 	retGo := HSeparatorNewFromC(unsafe.Pointer(retC))
 
 	return retGo
+}
+
+func (recv *HSeparator) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *HSeparator) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
+func (recv *HSeparator) Orientable() *Orientable {
+	return OrientableNewFromC(recv.ToC())
 }
 
 // HandleBox is a wrapper around the C record GtkHandleBox.
@@ -11710,6 +12498,14 @@ func (recv *HandleBox) SetSnapEdge(edge PositionType) {
 	return
 }
 
+func (recv *HandleBox) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *HandleBox) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
 // HeaderBar is a wrapper around the C record GtkHeaderBar.
 type HeaderBar struct {
 	native *C.GtkHeaderBar
@@ -11756,6 +12552,14 @@ func (recv *HeaderBar) Object() *gobject.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a HeaderBar.
 func CastToHeaderBar(object *gobject.Object) *HeaderBar {
 	return HeaderBarNewFromC(object.ToC())
+}
+
+func (recv *HeaderBar) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *HeaderBar) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
 }
 
 // IMContext is a wrapper around the C record GtkIMContext.
@@ -12307,6 +13111,10 @@ func (recv *IconFactory) RemoveDefault() {
 	C.gtk_icon_factory_remove_default((*C.GtkIconFactory)(recv.native))
 
 	return
+}
+
+func (recv *IconFactory) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
 }
 
 // IconInfo is a wrapper around the C record GtkIconInfo.
@@ -12889,6 +13697,22 @@ func iconview_unselectAllHandler(_ *C.GObject, data C.gpointer) {
 
 // Unsupported : gtk_icon_view_new_with_model : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
 
+func (recv *IconView) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *IconView) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
+func (recv *IconView) CellLayout() *CellLayout {
+	return CellLayoutNewFromC(recv.ToC())
+}
+
+func (recv *IconView) Scrollable() *Scrollable {
+	return ScrollableNewFromC(recv.ToC())
+}
+
 // IconViewAccessible is a wrapper around the C record GtkIconViewAccessible.
 type IconViewAccessible struct {
 	native *C.GtkIconViewAccessible
@@ -12936,6 +13760,14 @@ func (recv *IconViewAccessible) Object() *atk.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a IconViewAccessible.
 func CastToIconViewAccessible(object *gobject.Object) *IconViewAccessible {
 	return IconViewAccessibleNewFromC(object.ToC())
+}
+
+func (recv *IconViewAccessible) Component() *atk.Component {
+	return atk.ComponentNewFromC(recv.ToC())
+}
+
+func (recv *IconViewAccessible) Selection() *atk.Selection {
+	return atk.SelectionNewFromC(recv.ToC())
 }
 
 // Image is a wrapper around the C record GtkImage.
@@ -13104,6 +13936,14 @@ func (recv *Image) SetFromResource(resourcePath string) {
 
 // Unsupported : gtk_image_set_from_stock : unsupported parameter size : no type generator for gint, GtkIconSize
 
+func (recv *Image) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *Image) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
 // ImageAccessible is a wrapper around the C record GtkImageAccessible.
 type ImageAccessible struct {
 	native *C.GtkImageAccessible
@@ -13146,6 +13986,14 @@ func (recv *ImageAccessible) Object() *atk.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a ImageAccessible.
 func CastToImageAccessible(object *gobject.Object) *ImageAccessible {
 	return ImageAccessibleNewFromC(object.ToC())
+}
+
+func (recv *ImageAccessible) Component() *atk.Component {
+	return atk.ComponentNewFromC(recv.ToC())
+}
+
+func (recv *ImageAccessible) Image() *atk.Image {
+	return atk.ImageNewFromC(recv.ToC())
 }
 
 // ImageCellAccessible is a wrapper around the C record GtkImageCellAccessible.
@@ -13195,6 +14043,18 @@ func (recv *ImageCellAccessible) Object() *atk.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a ImageCellAccessible.
 func CastToImageCellAccessible(object *gobject.Object) *ImageCellAccessible {
 	return ImageCellAccessibleNewFromC(object.ToC())
+}
+
+func (recv *ImageCellAccessible) Action() *atk.Action {
+	return atk.ActionNewFromC(recv.ToC())
+}
+
+func (recv *ImageCellAccessible) Component() *atk.Component {
+	return atk.ComponentNewFromC(recv.ToC())
+}
+
+func (recv *ImageCellAccessible) Image() *atk.Image {
+	return atk.ImageNewFromC(recv.ToC())
 }
 
 // ImageMenuItem is a wrapper around the C record GtkImageMenuItem.
@@ -13316,6 +14176,22 @@ func (recv *ImageMenuItem) SetImage(image *Widget) {
 	return
 }
 
+func (recv *ImageMenuItem) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *ImageMenuItem) Actionable() *Actionable {
+	return ActionableNewFromC(recv.ToC())
+}
+
+func (recv *ImageMenuItem) Activatable() *Activatable {
+	return ActivatableNewFromC(recv.ToC())
+}
+
+func (recv *ImageMenuItem) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
 // InfoBar is a wrapper around the C record GtkInfoBar.
 type InfoBar struct {
 	native *C.GtkInfoBar
@@ -13372,6 +14248,18 @@ func CastToInfoBar(object *gobject.Object) *InfoBar {
 
 // Unsupported : gtk_info_bar_new_with_buttons : unsupported parameter ... : varargs
 
+func (recv *InfoBar) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *InfoBar) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
+func (recv *InfoBar) Orientable() *Orientable {
+	return OrientableNewFromC(recv.ToC())
+}
+
 // Invisible is a wrapper around the C record GtkInvisible.
 type Invisible struct {
 	native *C.GtkInvisible
@@ -13422,6 +14310,14 @@ func InvisibleNew() *Invisible {
 	retGo := InvisibleNewFromC(unsafe.Pointer(retC))
 
 	return retGo
+}
+
+func (recv *Invisible) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *Invisible) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
 }
 
 // Label is a wrapper around the C record GtkLabel.
@@ -13870,6 +14766,14 @@ func (recv *Label) SetUseUnderline(setting bool) {
 	return
 }
 
+func (recv *Label) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *Label) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
 // LabelAccessible is a wrapper around the C record GtkLabelAccessible.
 type LabelAccessible struct {
 	native *C.GtkLabelAccessible
@@ -13912,6 +14816,18 @@ func (recv *LabelAccessible) Object() *atk.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a LabelAccessible.
 func CastToLabelAccessible(object *gobject.Object) *LabelAccessible {
 	return LabelAccessibleNewFromC(object.ToC())
+}
+
+func (recv *LabelAccessible) Component() *atk.Component {
+	return atk.ComponentNewFromC(recv.ToC())
+}
+
+func (recv *LabelAccessible) Hypertext() *atk.Hypertext {
+	return atk.HypertextNewFromC(recv.ToC())
+}
+
+func (recv *LabelAccessible) Text() *atk.Text {
+	return atk.TextNewFromC(recv.ToC())
 }
 
 // Layout is a wrapper around the C record GtkLayout.
@@ -14061,6 +14977,18 @@ func (recv *Layout) SetVadjustment(adjustment *Adjustment) {
 	return
 }
 
+func (recv *Layout) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *Layout) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
+func (recv *Layout) Scrollable() *Scrollable {
+	return ScrollableNewFromC(recv.ToC())
+}
+
 // LevelBar is a wrapper around the C record GtkLevelBar.
 type LevelBar struct {
 	native *C.GtkLevelBar
@@ -14105,6 +15033,18 @@ func CastToLevelBar(object *gobject.Object) *LevelBar {
 	return LevelBarNewFromC(object.ToC())
 }
 
+func (recv *LevelBar) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *LevelBar) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
+func (recv *LevelBar) Orientable() *Orientable {
+	return OrientableNewFromC(recv.ToC())
+}
+
 // LevelBarAccessible is a wrapper around the C record GtkLevelBarAccessible.
 type LevelBarAccessible struct {
 	native *C.GtkLevelBarAccessible
@@ -14147,6 +15087,14 @@ func (recv *LevelBarAccessible) Object() *atk.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a LevelBarAccessible.
 func CastToLevelBarAccessible(object *gobject.Object) *LevelBarAccessible {
 	return LevelBarAccessibleNewFromC(object.ToC())
+}
+
+func (recv *LevelBarAccessible) Component() *atk.Component {
+	return atk.ComponentNewFromC(recv.ToC())
+}
+
+func (recv *LevelBarAccessible) Value() *atk.Value {
+	return atk.ValueNewFromC(recv.ToC())
 }
 
 // LinkButton is a wrapper around the C record GtkLinkButton.
@@ -14268,6 +15216,22 @@ func linkbutton_activateLinkHandler(_ *C.GObject, data C.gpointer) C.gboolean {
 	return retC
 }
 
+func (recv *LinkButton) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *LinkButton) Actionable() *Actionable {
+	return ActionableNewFromC(recv.ToC())
+}
+
+func (recv *LinkButton) Activatable() *Activatable {
+	return ActivatableNewFromC(recv.ToC())
+}
+
+func (recv *LinkButton) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
 // LinkButtonAccessible is a wrapper around the C record GtkLinkButtonAccessible.
 type LinkButtonAccessible struct {
 	native *C.GtkLinkButtonAccessible
@@ -14320,6 +15284,22 @@ func (recv *LinkButtonAccessible) Object() *atk.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a LinkButtonAccessible.
 func CastToLinkButtonAccessible(object *gobject.Object) *LinkButtonAccessible {
 	return LinkButtonAccessibleNewFromC(object.ToC())
+}
+
+func (recv *LinkButtonAccessible) Action() *atk.Action {
+	return atk.ActionNewFromC(recv.ToC())
+}
+
+func (recv *LinkButtonAccessible) Component() *atk.Component {
+	return atk.ComponentNewFromC(recv.ToC())
+}
+
+func (recv *LinkButtonAccessible) HyperlinkImpl() *atk.HyperlinkImpl {
+	return atk.HyperlinkImplNewFromC(recv.ToC())
+}
+
+func (recv *LinkButtonAccessible) Image() *atk.Image {
+	return atk.ImageNewFromC(recv.ToC())
 }
 
 // ListBox is a wrapper around the C record GtkListBox.
@@ -14486,6 +15466,14 @@ func listbox_toggleCursorRowHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
+func (recv *ListBox) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *ListBox) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
 // ListBoxAccessible is a wrapper around the C record GtkListBoxAccessible.
 type ListBoxAccessible struct {
 	native *C.GtkListBoxAccessible
@@ -14533,6 +15521,14 @@ func (recv *ListBoxAccessible) Object() *atk.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a ListBoxAccessible.
 func CastToListBoxAccessible(object *gobject.Object) *ListBoxAccessible {
 	return ListBoxAccessibleNewFromC(object.ToC())
+}
+
+func (recv *ListBoxAccessible) Component() *atk.Component {
+	return atk.ComponentNewFromC(recv.ToC())
+}
+
+func (recv *ListBoxAccessible) Selection() *atk.Selection {
+	return atk.SelectionNewFromC(recv.ToC())
 }
 
 // ListBoxRow is a wrapper around the C record GtkListBoxRow.
@@ -14588,6 +15584,18 @@ func CastToListBoxRow(object *gobject.Object) *ListBoxRow {
 	return ListBoxRowNewFromC(object.ToC())
 }
 
+func (recv *ListBoxRow) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *ListBoxRow) Actionable() *Actionable {
+	return ActionableNewFromC(recv.ToC())
+}
+
+func (recv *ListBoxRow) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
 // ListBoxRowAccessible is a wrapper around the C record GtkListBoxRowAccessible.
 type ListBoxRowAccessible struct {
 	native *C.GtkListBoxRowAccessible
@@ -14634,6 +15642,10 @@ func (recv *ListBoxRowAccessible) Object() *atk.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a ListBoxRowAccessible.
 func CastToListBoxRowAccessible(object *gobject.Object) *ListBoxRowAccessible {
 	return ListBoxRowAccessibleNewFromC(object.ToC())
+}
+
+func (recv *ListBoxRowAccessible) Component() *atk.Component {
+	return atk.ComponentNewFromC(recv.ToC())
 }
 
 // ListStore is a wrapper around the C record GtkListStore.
@@ -14771,6 +15783,26 @@ func (recv *ListStore) SetValue(iter *TreeIter, column int32, value *gobject.Val
 	return
 }
 
+func (recv *ListStore) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
+func (recv *ListStore) TreeDragDest() *TreeDragDest {
+	return TreeDragDestNewFromC(recv.ToC())
+}
+
+func (recv *ListStore) TreeDragSource() *TreeDragSource {
+	return TreeDragSourceNewFromC(recv.ToC())
+}
+
+func (recv *ListStore) TreeModel() *TreeModel {
+	return TreeModelNewFromC(recv.ToC())
+}
+
+func (recv *ListStore) TreeSortable() *TreeSortable {
+	return TreeSortableNewFromC(recv.ToC())
+}
+
 // LockButton is a wrapper around the C record GtkLockButton.
 type LockButton struct {
 	native *C.GtkLockButton
@@ -14830,6 +15862,22 @@ func CastToLockButton(object *gobject.Object) *LockButton {
 	return LockButtonNewFromC(object.ToC())
 }
 
+func (recv *LockButton) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *LockButton) Actionable() *Actionable {
+	return ActionableNewFromC(recv.ToC())
+}
+
+func (recv *LockButton) Activatable() *Activatable {
+	return ActivatableNewFromC(recv.ToC())
+}
+
+func (recv *LockButton) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
 // LockButtonAccessible is a wrapper around the C record GtkLockButtonAccessible.
 type LockButtonAccessible struct {
 	native *C.GtkLockButtonAccessible
@@ -14882,6 +15930,18 @@ func (recv *LockButtonAccessible) Object() *atk.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a LockButtonAccessible.
 func CastToLockButtonAccessible(object *gobject.Object) *LockButtonAccessible {
 	return LockButtonAccessibleNewFromC(object.ToC())
+}
+
+func (recv *LockButtonAccessible) Action() *atk.Action {
+	return atk.ActionNewFromC(recv.ToC())
+}
+
+func (recv *LockButtonAccessible) Component() *atk.Component {
+	return atk.ComponentNewFromC(recv.ToC())
+}
+
+func (recv *LockButtonAccessible) Image() *atk.Image {
+	return atk.ImageNewFromC(recv.ToC())
 }
 
 // Menu is a wrapper around the C record GtkMenu.
@@ -15072,6 +16132,14 @@ func (recv *Menu) SetTitle(title string) {
 	return
 }
 
+func (recv *Menu) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *Menu) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
 // MenuAccessible is a wrapper around the C record GtkMenuAccessible.
 type MenuAccessible struct {
 	native *C.GtkMenuAccessible
@@ -15124,6 +16192,14 @@ func (recv *MenuAccessible) Object() *atk.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a MenuAccessible.
 func CastToMenuAccessible(object *gobject.Object) *MenuAccessible {
 	return MenuAccessibleNewFromC(object.ToC())
+}
+
+func (recv *MenuAccessible) Component() *atk.Component {
+	return atk.ComponentNewFromC(recv.ToC())
+}
+
+func (recv *MenuAccessible) Selection() *atk.Selection {
+	return atk.SelectionNewFromC(recv.ToC())
 }
 
 // MenuBar is a wrapper around the C record GtkMenuBar.
@@ -15186,6 +16262,14 @@ func MenuBarNew() *MenuBar {
 	retGo := MenuBarNewFromC(unsafe.Pointer(retC))
 
 	return retGo
+}
+
+func (recv *MenuBar) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *MenuBar) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
 }
 
 // MenuButton is a wrapper around the C record GtkMenuButton.
@@ -15252,6 +16336,22 @@ func CastToMenuButton(object *gobject.Object) *MenuButton {
 	return MenuButtonNewFromC(object.ToC())
 }
 
+func (recv *MenuButton) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *MenuButton) Actionable() *Actionable {
+	return ActionableNewFromC(recv.ToC())
+}
+
+func (recv *MenuButton) Activatable() *Activatable {
+	return ActivatableNewFromC(recv.ToC())
+}
+
+func (recv *MenuButton) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
 // MenuButtonAccessible is a wrapper around the C record GtkMenuButtonAccessible.
 type MenuButtonAccessible struct {
 	native *C.GtkMenuButtonAccessible
@@ -15309,6 +16409,18 @@ func (recv *MenuButtonAccessible) Object() *atk.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a MenuButtonAccessible.
 func CastToMenuButtonAccessible(object *gobject.Object) *MenuButtonAccessible {
 	return MenuButtonAccessibleNewFromC(object.ToC())
+}
+
+func (recv *MenuButtonAccessible) Action() *atk.Action {
+	return atk.ActionNewFromC(recv.ToC())
+}
+
+func (recv *MenuButtonAccessible) Component() *atk.Component {
+	return atk.ComponentNewFromC(recv.ToC())
+}
+
+func (recv *MenuButtonAccessible) Image() *atk.Image {
+	return atk.ImageNewFromC(recv.ToC())
 }
 
 // MenuItem is a wrapper around the C record GtkMenuItem.
@@ -15711,6 +16823,22 @@ func (recv *MenuItem) ToggleSizeRequest(requisition int32) {
 	return
 }
 
+func (recv *MenuItem) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *MenuItem) Actionable() *Actionable {
+	return ActionableNewFromC(recv.ToC())
+}
+
+func (recv *MenuItem) Activatable() *Activatable {
+	return ActivatableNewFromC(recv.ToC())
+}
+
+func (recv *MenuItem) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
 // MenuItemAccessible is a wrapper around the C record GtkMenuItemAccessible.
 type MenuItemAccessible struct {
 	native *C.GtkMenuItemAccessible
@@ -15758,6 +16886,18 @@ func (recv *MenuItemAccessible) Object() *atk.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a MenuItemAccessible.
 func CastToMenuItemAccessible(object *gobject.Object) *MenuItemAccessible {
 	return MenuItemAccessibleNewFromC(object.ToC())
+}
+
+func (recv *MenuItemAccessible) Action() *atk.Action {
+	return atk.ActionNewFromC(recv.ToC())
+}
+
+func (recv *MenuItemAccessible) Component() *atk.Component {
+	return atk.ComponentNewFromC(recv.ToC())
+}
+
+func (recv *MenuItemAccessible) Selection() *atk.Selection {
+	return atk.SelectionNewFromC(recv.ToC())
 }
 
 // MenuShell is a wrapper around the C record GtkMenuShell.
@@ -16107,6 +17247,14 @@ func (recv *MenuShell) SelectItem(menuItem *Widget) {
 	return
 }
 
+func (recv *MenuShell) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *MenuShell) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
 // MenuShellAccessible is a wrapper around the C record GtkMenuShellAccessible.
 type MenuShellAccessible struct {
 	native *C.GtkMenuShellAccessible
@@ -16154,6 +17302,14 @@ func (recv *MenuShellAccessible) Object() *atk.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a MenuShellAccessible.
 func CastToMenuShellAccessible(object *gobject.Object) *MenuShellAccessible {
 	return MenuShellAccessibleNewFromC(object.ToC())
+}
+
+func (recv *MenuShellAccessible) Component() *atk.Component {
+	return atk.ComponentNewFromC(recv.ToC())
+}
+
+func (recv *MenuShellAccessible) Selection() *atk.Selection {
+	return atk.SelectionNewFromC(recv.ToC())
 }
 
 // MenuToolButton is a wrapper around the C record GtkMenuToolButton.
@@ -16277,6 +17433,22 @@ func menutoolbutton_showMenuHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
+func (recv *MenuToolButton) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *MenuToolButton) Actionable() *Actionable {
+	return ActionableNewFromC(recv.ToC())
+}
+
+func (recv *MenuToolButton) Activatable() *Activatable {
+	return ActivatableNewFromC(recv.ToC())
+}
+
+func (recv *MenuToolButton) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
 // MessageDialog is a wrapper around the C record GtkMessageDialog.
 type MessageDialog struct {
 	native *C.GtkMessageDialog
@@ -16344,6 +17516,14 @@ func CastToMessageDialog(object *gobject.Object) *MessageDialog {
 // Unsupported : gtk_message_dialog_new : unsupported parameter ... : varargs
 
 // Unsupported : gtk_message_dialog_new_with_markup : unsupported parameter ... : varargs
+
+func (recv *MessageDialog) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *MessageDialog) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
 
 // Misc is a wrapper around the C record GtkMisc.
 type Misc struct {
@@ -16441,6 +17621,14 @@ func (recv *Misc) SetPadding(xpad int32, ypad int32) {
 	return
 }
 
+func (recv *Misc) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *Misc) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
 // ModelButton is a wrapper around the C record GtkModelButton.
 type ModelButton struct {
 	native *C.GtkModelButton
@@ -16496,6 +17684,22 @@ func (recv *ModelButton) Object() *gobject.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a ModelButton.
 func CastToModelButton(object *gobject.Object) *ModelButton {
 	return ModelButtonNewFromC(object.ToC())
+}
+
+func (recv *ModelButton) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *ModelButton) Actionable() *Actionable {
+	return ActionableNewFromC(recv.ToC())
+}
+
+func (recv *ModelButton) Activatable() *Activatable {
+	return ActivatableNewFromC(recv.ToC())
+}
+
+func (recv *ModelButton) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
 }
 
 // MountOperation is a wrapper around the C record GtkMountOperation.
@@ -16990,6 +18194,14 @@ func (recv *Notebook) SetTabPos(pos PositionType) {
 	return
 }
 
+func (recv *Notebook) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *Notebook) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
 // NotebookAccessible is a wrapper around the C record GtkNotebookAccessible.
 type NotebookAccessible struct {
 	native *C.GtkNotebookAccessible
@@ -17037,6 +18249,14 @@ func (recv *NotebookAccessible) Object() *atk.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a NotebookAccessible.
 func CastToNotebookAccessible(object *gobject.Object) *NotebookAccessible {
 	return NotebookAccessibleNewFromC(object.ToC())
+}
+
+func (recv *NotebookAccessible) Component() *atk.Component {
+	return atk.ComponentNewFromC(recv.ToC())
+}
+
+func (recv *NotebookAccessible) Selection() *atk.Selection {
+	return atk.SelectionNewFromC(recv.ToC())
 }
 
 // NotebookPageAccessible is a wrapper around the C record GtkNotebookPageAccessible.
@@ -17092,6 +18312,10 @@ func (recv *NotebookPageAccessible) Invalidate() {
 	return
 }
 
+func (recv *NotebookPageAccessible) Component() *atk.Component {
+	return atk.ComponentNewFromC(recv.ToC())
+}
+
 // NumerableIcon is a wrapper around the C record GtkNumerableIcon.
 type NumerableIcon struct {
 	native *C.GtkNumerableIcon
@@ -17129,6 +18353,10 @@ func (recv *NumerableIcon) Object() *gobject.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a NumerableIcon.
 func CastToNumerableIcon(object *gobject.Object) *NumerableIcon {
 	return NumerableIconNewFromC(object.ToC())
+}
+
+func (recv *NumerableIcon) Icon() *gio.Icon {
+	return gio.IconNewFromC(recv.ToC())
 }
 
 // OffscreenWindow is a wrapper around the C record GtkOffscreenWindow.
@@ -17189,6 +18417,14 @@ func CastToOffscreenWindow(object *gobject.Object) *OffscreenWindow {
 	return OffscreenWindowNewFromC(object.ToC())
 }
 
+func (recv *OffscreenWindow) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *OffscreenWindow) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
 // Overlay is a wrapper around the C record GtkOverlay.
 type Overlay struct {
 	native *C.GtkOverlay
@@ -17244,6 +18480,14 @@ func CastToOverlay(object *gobject.Object) *Overlay {
 }
 
 // Unsupported signal 'get-child-position' for Overlay : unsupported parameter allocation : type Gdk.Rectangle : Blacklisted record : GdkRectangle
+
+func (recv *Overlay) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *Overlay) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
 
 // PageSetup is a wrapper around the C record GtkPageSetup.
 type PageSetup struct {
@@ -17393,6 +18637,18 @@ func (recv *Paned) SetPosition(position int32) {
 	return
 }
 
+func (recv *Paned) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *Paned) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
+func (recv *Paned) Orientable() *Orientable {
+	return OrientableNewFromC(recv.ToC())
+}
+
 // PanedAccessible is a wrapper around the C record GtkPanedAccessible.
 type PanedAccessible struct {
 	native *C.GtkPanedAccessible
@@ -17440,6 +18696,14 @@ func (recv *PanedAccessible) Object() *atk.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a PanedAccessible.
 func CastToPanedAccessible(object *gobject.Object) *PanedAccessible {
 	return PanedAccessibleNewFromC(object.ToC())
+}
+
+func (recv *PanedAccessible) Component() *atk.Component {
+	return atk.ComponentNewFromC(recv.ToC())
+}
+
+func (recv *PanedAccessible) Value() *atk.Value {
+	return atk.ValueNewFromC(recv.ToC())
 }
 
 // PlacesSidebar is a wrapper around the C record GtkPlacesSidebar.
@@ -17562,6 +18826,14 @@ func (recv *PlacesSidebar) GetShowConnectToServer() bool {
 	retGo := retC == C.TRUE
 
 	return retGo
+}
+
+func (recv *PlacesSidebar) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *PlacesSidebar) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
 }
 
 // Blacklisted : GtkPlug
@@ -17687,6 +18959,14 @@ func (recv *Popover) GetPosition() PositionType {
 	return retGo
 }
 
+func (recv *Popover) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *Popover) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
 // PopoverAccessible is a wrapper around the C record GtkPopoverAccessible.
 type PopoverAccessible struct {
 	native *C.GtkPopoverAccessible
@@ -17733,6 +19013,10 @@ func (recv *PopoverAccessible) Object() *atk.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a PopoverAccessible.
 func CastToPopoverAccessible(object *gobject.Object) *PopoverAccessible {
 	return PopoverAccessibleNewFromC(object.ToC())
+}
+
+func (recv *PopoverAccessible) Component() *atk.Component {
+	return atk.ComponentNewFromC(recv.ToC())
 }
 
 // PopoverMenu is a wrapper around the C record GtkPopoverMenu.
@@ -17790,6 +19074,14 @@ func (recv *PopoverMenu) Object() *gobject.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a PopoverMenu.
 func CastToPopoverMenu(object *gobject.Object) *PopoverMenu {
 	return PopoverMenuNewFromC(object.ToC())
+}
+
+func (recv *PopoverMenu) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *PopoverMenu) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
 }
 
 // PrintContext is a wrapper around the C record GtkPrintContext.
@@ -17856,6 +19148,10 @@ func (recv *PrintOperation) Object() *gobject.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a PrintOperation.
 func CastToPrintOperation(object *gobject.Object) *PrintOperation {
 	return PrintOperationNewFromC(object.ToC())
+}
+
+func (recv *PrintOperation) PrintOperationPreview() *PrintOperationPreview {
+	return PrintOperationPreviewNewFromC(recv.ToC())
 }
 
 // PrintSettings is a wrapper around the C record GtkPrintSettings.
@@ -18021,6 +19317,18 @@ func (recv *ProgressBar) SetText(text string) {
 	return
 }
 
+func (recv *ProgressBar) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *ProgressBar) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
+func (recv *ProgressBar) Orientable() *Orientable {
+	return OrientableNewFromC(recv.ToC())
+}
+
 // ProgressBarAccessible is a wrapper around the C record GtkProgressBarAccessible.
 type ProgressBarAccessible struct {
 	native *C.GtkProgressBarAccessible
@@ -18065,6 +19373,14 @@ func CastToProgressBarAccessible(object *gobject.Object) *ProgressBarAccessible 
 	return ProgressBarAccessibleNewFromC(object.ToC())
 }
 
+func (recv *ProgressBarAccessible) Component() *atk.Component {
+	return atk.ComponentNewFromC(recv.ToC())
+}
+
+func (recv *ProgressBarAccessible) Value() *atk.Value {
+	return atk.ValueNewFromC(recv.ToC())
+}
+
 // RadioAction is a wrapper around the C record GtkRadioAction.
 type RadioAction struct {
 	native *C.GtkRadioAction
@@ -18107,6 +19423,10 @@ func (recv *RadioAction) Object() *gobject.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a RadioAction.
 func CastToRadioAction(object *gobject.Object) *RadioAction {
 	return RadioActionNewFromC(object.ToC())
+}
+
+func (recv *RadioAction) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
 }
 
 // RadioButton is a wrapper around the C record GtkRadioButton.
@@ -18267,6 +19587,22 @@ func (recv *RadioButton) SetGroup(group *glib.SList) {
 	return
 }
 
+func (recv *RadioButton) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *RadioButton) Actionable() *Actionable {
+	return ActionableNewFromC(recv.ToC())
+}
+
+func (recv *RadioButton) Activatable() *Activatable {
+	return ActivatableNewFromC(recv.ToC())
+}
+
+func (recv *RadioButton) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
 // RadioButtonAccessible is a wrapper around the C record GtkRadioButtonAccessible.
 type RadioButtonAccessible struct {
 	native *C.GtkRadioButtonAccessible
@@ -18324,6 +19660,18 @@ func (recv *RadioButtonAccessible) Object() *atk.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a RadioButtonAccessible.
 func CastToRadioButtonAccessible(object *gobject.Object) *RadioButtonAccessible {
 	return RadioButtonAccessibleNewFromC(object.ToC())
+}
+
+func (recv *RadioButtonAccessible) Action() *atk.Action {
+	return atk.ActionNewFromC(recv.ToC())
+}
+
+func (recv *RadioButtonAccessible) Component() *atk.Component {
+	return atk.ComponentNewFromC(recv.ToC())
+}
+
+func (recv *RadioButtonAccessible) Image() *atk.Image {
+	return atk.ImageNewFromC(recv.ToC())
 }
 
 // RadioMenuItem is a wrapper around the C record GtkRadioMenuItem.
@@ -18500,6 +19848,22 @@ func (recv *RadioMenuItem) SetGroup(group *glib.SList) {
 	return
 }
 
+func (recv *RadioMenuItem) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *RadioMenuItem) Actionable() *Actionable {
+	return ActionableNewFromC(recv.ToC())
+}
+
+func (recv *RadioMenuItem) Activatable() *Activatable {
+	return ActivatableNewFromC(recv.ToC())
+}
+
+func (recv *RadioMenuItem) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
 // RadioMenuItemAccessible is a wrapper around the C record GtkRadioMenuItemAccessible.
 type RadioMenuItemAccessible struct {
 	native *C.GtkRadioMenuItemAccessible
@@ -18557,6 +19921,18 @@ func (recv *RadioMenuItemAccessible) Object() *atk.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a RadioMenuItemAccessible.
 func CastToRadioMenuItemAccessible(object *gobject.Object) *RadioMenuItemAccessible {
 	return RadioMenuItemAccessibleNewFromC(object.ToC())
+}
+
+func (recv *RadioMenuItemAccessible) Action() *atk.Action {
+	return atk.ActionNewFromC(recv.ToC())
+}
+
+func (recv *RadioMenuItemAccessible) Component() *atk.Component {
+	return atk.ComponentNewFromC(recv.ToC())
+}
+
+func (recv *RadioMenuItemAccessible) Selection() *atk.Selection {
+	return atk.SelectionNewFromC(recv.ToC())
 }
 
 // RadioToolButton is a wrapper around the C record GtkRadioToolButton.
@@ -18625,6 +20001,22 @@ func (recv *RadioToolButton) Object() *gobject.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a RadioToolButton.
 func CastToRadioToolButton(object *gobject.Object) *RadioToolButton {
 	return RadioToolButtonNewFromC(object.ToC())
+}
+
+func (recv *RadioToolButton) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *RadioToolButton) Actionable() *Actionable {
+	return ActionableNewFromC(recv.ToC())
+}
+
+func (recv *RadioToolButton) Activatable() *Activatable {
+	return ActivatableNewFromC(recv.ToC())
+}
+
+func (recv *RadioToolButton) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
 }
 
 // Range is a wrapper around the C record GtkRange.
@@ -18806,6 +20198,18 @@ func (recv *Range) SetValue(value float64) {
 	return
 }
 
+func (recv *Range) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *Range) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
+func (recv *Range) Orientable() *Orientable {
+	return OrientableNewFromC(recv.ToC())
+}
+
 // RangeAccessible is a wrapper around the C record GtkRangeAccessible.
 type RangeAccessible struct {
 	native *C.GtkRangeAccessible
@@ -18848,6 +20252,14 @@ func (recv *RangeAccessible) Object() *atk.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a RangeAccessible.
 func CastToRangeAccessible(object *gobject.Object) *RangeAccessible {
 	return RangeAccessibleNewFromC(object.ToC())
+}
+
+func (recv *RangeAccessible) Component() *atk.Component {
+	return atk.ComponentNewFromC(recv.ToC())
+}
+
+func (recv *RangeAccessible) Value() *atk.Value {
+	return atk.ValueNewFromC(recv.ToC())
 }
 
 // RcStyle is a wrapper around the C record GtkRcStyle.
@@ -18963,6 +20375,14 @@ func CastToRecentAction(object *gobject.Object) *RecentAction {
 	return RecentActionNewFromC(object.ToC())
 }
 
+func (recv *RecentAction) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
+func (recv *RecentAction) RecentChooser() *RecentChooser {
+	return RecentChooserNewFromC(recv.ToC())
+}
+
 // RecentChooserDialog is a wrapper around the C record GtkRecentChooserDialog.
 type RecentChooserDialog struct {
 	native *C.GtkRecentChooserDialog
@@ -19031,6 +20451,18 @@ func CastToRecentChooserDialog(object *gobject.Object) *RecentChooserDialog {
 
 // Unsupported : gtk_recent_chooser_dialog_new_for_manager : unsupported parameter ... : varargs
 
+func (recv *RecentChooserDialog) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *RecentChooserDialog) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
+func (recv *RecentChooserDialog) RecentChooser() *RecentChooser {
+	return RecentChooserNewFromC(recv.ToC())
+}
+
 // RecentChooserMenu is a wrapper around the C record GtkRecentChooserMenu.
 type RecentChooserMenu struct {
 	native *C.GtkRecentChooserMenu
@@ -19090,6 +20522,22 @@ func CastToRecentChooserMenu(object *gobject.Object) *RecentChooserMenu {
 	return RecentChooserMenuNewFromC(object.ToC())
 }
 
+func (recv *RecentChooserMenu) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *RecentChooserMenu) Activatable() *Activatable {
+	return ActivatableNewFromC(recv.ToC())
+}
+
+func (recv *RecentChooserMenu) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
+func (recv *RecentChooserMenu) RecentChooser() *RecentChooser {
+	return RecentChooserNewFromC(recv.ToC())
+}
+
 // RecentChooserWidget is a wrapper around the C record GtkRecentChooserWidget.
 type RecentChooserWidget struct {
 	native *C.GtkRecentChooserWidget
@@ -19144,6 +20592,22 @@ func CastToRecentChooserWidget(object *gobject.Object) *RecentChooserWidget {
 	return RecentChooserWidgetNewFromC(object.ToC())
 }
 
+func (recv *RecentChooserWidget) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *RecentChooserWidget) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
+func (recv *RecentChooserWidget) Orientable() *Orientable {
+	return OrientableNewFromC(recv.ToC())
+}
+
+func (recv *RecentChooserWidget) RecentChooser() *RecentChooser {
+	return RecentChooserNewFromC(recv.ToC())
+}
+
 // RecentFilter is a wrapper around the C record GtkRecentFilter.
 type RecentFilter struct {
 	native *C.GtkRecentFilter
@@ -19179,6 +20643,10 @@ func (recv *RecentFilter) Object() *gobject.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a RecentFilter.
 func CastToRecentFilter(object *gobject.Object) *RecentFilter {
 	return RecentFilterNewFromC(object.ToC())
+}
+
+func (recv *RecentFilter) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
 }
 
 // RendererCellAccessible is a wrapper around the C record GtkRendererCellAccessible.
@@ -19235,6 +20703,14 @@ func RendererCellAccessibleNew(renderer *CellRenderer) *RendererCellAccessible {
 	return retGo
 }
 
+func (recv *RendererCellAccessible) Action() *atk.Action {
+	return atk.ActionNewFromC(recv.ToC())
+}
+
+func (recv *RendererCellAccessible) Component() *atk.Component {
+	return atk.ComponentNewFromC(recv.ToC())
+}
+
 // Revealer is a wrapper around the C record GtkRevealer.
 type Revealer struct {
 	native *C.GtkRevealer
@@ -19286,6 +20762,14 @@ func (recv *Revealer) Object() *gobject.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a Revealer.
 func CastToRevealer(object *gobject.Object) *Revealer {
 	return RevealerNewFromC(object.ToC())
+}
+
+func (recv *Revealer) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *Revealer) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
 }
 
 // Scale is a wrapper around the C record GtkScale.
@@ -19391,6 +20875,18 @@ func (recv *Scale) SetValuePos(pos PositionType) {
 	return
 }
 
+func (recv *Scale) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *Scale) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
+func (recv *Scale) Orientable() *Orientable {
+	return OrientableNewFromC(recv.ToC())
+}
+
 // ScaleAccessible is a wrapper around the C record GtkScaleAccessible.
 type ScaleAccessible struct {
 	native *C.GtkScaleAccessible
@@ -19438,6 +20934,14 @@ func (recv *ScaleAccessible) Object() *atk.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a ScaleAccessible.
 func CastToScaleAccessible(object *gobject.Object) *ScaleAccessible {
 	return ScaleAccessibleNewFromC(object.ToC())
+}
+
+func (recv *ScaleAccessible) Component() *atk.Component {
+	return atk.ComponentNewFromC(recv.ToC())
+}
+
+func (recv *ScaleAccessible) Value() *atk.Value {
+	return atk.ValueNewFromC(recv.ToC())
 }
 
 // ScaleButton is a wrapper around the C record GtkScaleButton.
@@ -19501,6 +21005,26 @@ func CastToScaleButton(object *gobject.Object) *ScaleButton {
 
 // Unsupported : gtk_scale_button_new : unsupported parameter size : no type generator for gint, GtkIconSize
 
+func (recv *ScaleButton) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *ScaleButton) Actionable() *Actionable {
+	return ActionableNewFromC(recv.ToC())
+}
+
+func (recv *ScaleButton) Activatable() *Activatable {
+	return ActivatableNewFromC(recv.ToC())
+}
+
+func (recv *ScaleButton) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
+func (recv *ScaleButton) Orientable() *Orientable {
+	return OrientableNewFromC(recv.ToC())
+}
+
 // ScaleButtonAccessible is a wrapper around the C record GtkScaleButtonAccessible.
 type ScaleButtonAccessible struct {
 	native *C.GtkScaleButtonAccessible
@@ -19555,6 +21079,22 @@ func CastToScaleButtonAccessible(object *gobject.Object) *ScaleButtonAccessible 
 	return ScaleButtonAccessibleNewFromC(object.ToC())
 }
 
+func (recv *ScaleButtonAccessible) Action() *atk.Action {
+	return atk.ActionNewFromC(recv.ToC())
+}
+
+func (recv *ScaleButtonAccessible) Component() *atk.Component {
+	return atk.ComponentNewFromC(recv.ToC())
+}
+
+func (recv *ScaleButtonAccessible) Image() *atk.Image {
+	return atk.ImageNewFromC(recv.ToC())
+}
+
+func (recv *ScaleButtonAccessible) Value() *atk.Value {
+	return atk.ValueNewFromC(recv.ToC())
+}
+
 // Scrollbar is a wrapper around the C record GtkScrollbar.
 type Scrollbar struct {
 	native *C.GtkScrollbar
@@ -19601,6 +21141,18 @@ func (recv *Scrollbar) Object() *gobject.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a Scrollbar.
 func CastToScrollbar(object *gobject.Object) *Scrollbar {
 	return ScrollbarNewFromC(object.ToC())
+}
+
+func (recv *Scrollbar) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *Scrollbar) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
+func (recv *Scrollbar) Orientable() *Orientable {
+	return OrientableNewFromC(recv.ToC())
 }
 
 // ScrolledWindow is a wrapper around the C record GtkScrolledWindow.
@@ -19763,6 +21315,14 @@ func (recv *ScrolledWindow) SetVadjustment(vadjustment *Adjustment) {
 	return
 }
 
+func (recv *ScrolledWindow) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *ScrolledWindow) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
 // ScrolledWindowAccessible is a wrapper around the C record GtkScrolledWindowAccessible.
 type ScrolledWindowAccessible struct {
 	native *C.GtkScrolledWindowAccessible
@@ -19810,6 +21370,10 @@ func (recv *ScrolledWindowAccessible) Object() *atk.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a ScrolledWindowAccessible.
 func CastToScrolledWindowAccessible(object *gobject.Object) *ScrolledWindowAccessible {
 	return ScrolledWindowAccessibleNewFromC(object.ToC())
+}
+
+func (recv *ScrolledWindowAccessible) Component() *atk.Component {
+	return atk.ComponentNewFromC(recv.ToC())
 }
 
 // SearchBar is a wrapper around the C record GtkSearchBar.
@@ -19865,6 +21429,14 @@ func CastToSearchBar(object *gobject.Object) *SearchBar {
 	return SearchBarNewFromC(object.ToC())
 }
 
+func (recv *SearchBar) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *SearchBar) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
 // SearchEntry is a wrapper around the C record GtkSearchEntry.
 type SearchEntry struct {
 	native *C.GtkSearchEntry
@@ -19913,6 +21485,22 @@ func CastToSearchEntry(object *gobject.Object) *SearchEntry {
 	return SearchEntryNewFromC(object.ToC())
 }
 
+func (recv *SearchEntry) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *SearchEntry) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
+func (recv *SearchEntry) CellEditable() *CellEditable {
+	return CellEditableNewFromC(recv.ToC())
+}
+
+func (recv *SearchEntry) Editable() *Editable {
+	return EditableNewFromC(recv.ToC())
+}
+
 // Separator is a wrapper around the C record GtkSeparator.
 type Separator struct {
 	native *C.GtkSeparator
@@ -19955,6 +21543,18 @@ func (recv *Separator) Object() *gobject.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a Separator.
 func CastToSeparator(object *gobject.Object) *Separator {
 	return SeparatorNewFromC(object.ToC())
+}
+
+func (recv *Separator) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *Separator) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
+func (recv *Separator) Orientable() *Orientable {
+	return OrientableNewFromC(recv.ToC())
 }
 
 // SeparatorMenuItem is a wrapper around the C record GtkSeparatorMenuItem.
@@ -20023,6 +21623,22 @@ func SeparatorMenuItemNew() *SeparatorMenuItem {
 	return retGo
 }
 
+func (recv *SeparatorMenuItem) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *SeparatorMenuItem) Actionable() *Actionable {
+	return ActionableNewFromC(recv.ToC())
+}
+
+func (recv *SeparatorMenuItem) Activatable() *Activatable {
+	return ActivatableNewFromC(recv.ToC())
+}
+
+func (recv *SeparatorMenuItem) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
 // SeparatorToolItem is a wrapper around the C record GtkSeparatorToolItem.
 type SeparatorToolItem struct {
 	native *C.GtkSeparatorToolItem
@@ -20080,6 +21696,18 @@ func (recv *SeparatorToolItem) Object() *gobject.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a SeparatorToolItem.
 func CastToSeparatorToolItem(object *gobject.Object) *SeparatorToolItem {
 	return SeparatorToolItemNewFromC(object.ToC())
+}
+
+func (recv *SeparatorToolItem) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *SeparatorToolItem) Activatable() *Activatable {
+	return ActivatableNewFromC(recv.ToC())
+}
+
+func (recv *SeparatorToolItem) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
 }
 
 // Settings is a wrapper around the C record GtkSettings.
@@ -20174,6 +21802,10 @@ func (recv *Settings) SetStringProperty(name string, vString string, origin stri
 	return
 }
 
+func (recv *Settings) StyleProvider() *StyleProvider {
+	return StyleProviderNewFromC(recv.ToC())
+}
+
 // SizeGroup is a wrapper around the C record GtkSizeGroup.
 type SizeGroup struct {
 	native *C.GtkSizeGroup
@@ -20251,6 +21883,10 @@ func (recv *SizeGroup) SetMode(mode SizeGroupMode) {
 	C.gtk_size_group_set_mode((*C.GtkSizeGroup)(recv.native), c_mode)
 
 	return
+}
+
+func (recv *SizeGroup) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
 }
 
 // Blacklisted : GtkSocket
@@ -20666,6 +22302,26 @@ func (recv *SpinButton) Update() {
 	return
 }
 
+func (recv *SpinButton) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *SpinButton) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
+func (recv *SpinButton) CellEditable() *CellEditable {
+	return CellEditableNewFromC(recv.ToC())
+}
+
+func (recv *SpinButton) Editable() *Editable {
+	return EditableNewFromC(recv.ToC())
+}
+
+func (recv *SpinButton) Orientable() *Orientable {
+	return OrientableNewFromC(recv.ToC())
+}
+
 // SpinButtonAccessible is a wrapper around the C record GtkSpinButtonAccessible.
 type SpinButtonAccessible struct {
 	native *C.GtkSpinButtonAccessible
@@ -20715,6 +22371,26 @@ func CastToSpinButtonAccessible(object *gobject.Object) *SpinButtonAccessible {
 	return SpinButtonAccessibleNewFromC(object.ToC())
 }
 
+func (recv *SpinButtonAccessible) Action() *atk.Action {
+	return atk.ActionNewFromC(recv.ToC())
+}
+
+func (recv *SpinButtonAccessible) Component() *atk.Component {
+	return atk.ComponentNewFromC(recv.ToC())
+}
+
+func (recv *SpinButtonAccessible) EditableText() *atk.EditableText {
+	return atk.EditableTextNewFromC(recv.ToC())
+}
+
+func (recv *SpinButtonAccessible) Text() *atk.Text {
+	return atk.TextNewFromC(recv.ToC())
+}
+
+func (recv *SpinButtonAccessible) Value() *atk.Value {
+	return atk.ValueNewFromC(recv.ToC())
+}
+
 // Spinner is a wrapper around the C record GtkSpinner.
 type Spinner struct {
 	native *C.GtkSpinner
@@ -20759,6 +22435,14 @@ func CastToSpinner(object *gobject.Object) *Spinner {
 	return SpinnerNewFromC(object.ToC())
 }
 
+func (recv *Spinner) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *Spinner) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
 // SpinnerAccessible is a wrapper around the C record GtkSpinnerAccessible.
 type SpinnerAccessible struct {
 	native *C.GtkSpinnerAccessible
@@ -20801,6 +22485,14 @@ func (recv *SpinnerAccessible) Object() *atk.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a SpinnerAccessible.
 func CastToSpinnerAccessible(object *gobject.Object) *SpinnerAccessible {
 	return SpinnerAccessibleNewFromC(object.ToC())
+}
+
+func (recv *SpinnerAccessible) Component() *atk.Component {
+	return atk.ComponentNewFromC(recv.ToC())
+}
+
+func (recv *SpinnerAccessible) Image() *atk.Image {
+	return atk.ImageNewFromC(recv.ToC())
 }
 
 // Stack is a wrapper around the C record GtkStack.
@@ -20849,6 +22541,14 @@ func (recv *Stack) Object() *gobject.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a Stack.
 func CastToStack(object *gobject.Object) *Stack {
 	return StackNewFromC(object.ToC())
+}
+
+func (recv *Stack) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *Stack) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
 }
 
 // Blacklisted : GtkStackAccessible
@@ -20906,6 +22606,14 @@ func CastToStackSidebar(object *gobject.Object) *StackSidebar {
 	return StackSidebarNewFromC(object.ToC())
 }
 
+func (recv *StackSidebar) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *StackSidebar) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
 // StackSwitcher is a wrapper around the C record GtkStackSwitcher.
 type StackSwitcher struct {
 	native *C.GtkStackSwitcher
@@ -20957,6 +22665,18 @@ func (recv *StackSwitcher) Object() *gobject.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a StackSwitcher.
 func CastToStackSwitcher(object *gobject.Object) *StackSwitcher {
 	return StackSwitcherNewFromC(object.ToC())
+}
+
+func (recv *StackSwitcher) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *StackSwitcher) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
+func (recv *StackSwitcher) Orientable() *Orientable {
+	return OrientableNewFromC(recv.ToC())
 }
 
 // StatusIcon is a wrapper around the C record GtkStatusIcon.
@@ -21105,6 +22825,18 @@ func (recv *Statusbar) Remove(contextId uint32, messageId uint32) {
 	return
 }
 
+func (recv *Statusbar) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *Statusbar) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
+func (recv *Statusbar) Orientable() *Orientable {
+	return OrientableNewFromC(recv.ToC())
+}
+
 // StatusbarAccessible is a wrapper around the C record GtkStatusbarAccessible.
 type StatusbarAccessible struct {
 	native *C.GtkStatusbarAccessible
@@ -21152,6 +22884,10 @@ func (recv *StatusbarAccessible) Object() *atk.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a StatusbarAccessible.
 func CastToStatusbarAccessible(object *gobject.Object) *StatusbarAccessible {
 	return StatusbarAccessibleNewFromC(object.ToC())
+}
+
+func (recv *StatusbarAccessible) Component() *atk.Component {
+	return atk.ComponentNewFromC(recv.ToC())
 }
 
 // Style is a wrapper around the C record GtkStyle.
@@ -21442,6 +23178,10 @@ func (recv *StyleProperties) Clear() {
 	return
 }
 
+func (recv *StyleProperties) StyleProvider() *StyleProvider {
+	return StyleProviderNewFromC(recv.ToC())
+}
+
 // Switch is a wrapper around the C record GtkSwitch.
 type Switch struct {
 	native *C.GtkSwitch
@@ -21543,6 +23283,22 @@ func switch_activateHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
+func (recv *Switch) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *Switch) Actionable() *Actionable {
+	return ActionableNewFromC(recv.ToC())
+}
+
+func (recv *Switch) Activatable() *Activatable {
+	return ActivatableNewFromC(recv.ToC())
+}
+
+func (recv *Switch) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
 // SwitchAccessible is a wrapper around the C record GtkSwitchAccessible.
 type SwitchAccessible struct {
 	native *C.GtkSwitchAccessible
@@ -21585,6 +23341,14 @@ func (recv *SwitchAccessible) Object() *atk.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a SwitchAccessible.
 func CastToSwitchAccessible(object *gobject.Object) *SwitchAccessible {
 	return SwitchAccessibleNewFromC(object.ToC())
+}
+
+func (recv *SwitchAccessible) Action() *atk.Action {
+	return atk.ActionNewFromC(recv.ToC())
+}
+
+func (recv *SwitchAccessible) Component() *atk.Component {
+	return atk.ComponentNewFromC(recv.ToC())
 }
 
 // Table is a wrapper around the C record GtkTable.
@@ -21798,6 +23562,14 @@ func (recv *Table) SetRowSpacings(spacing uint32) {
 	return
 }
 
+func (recv *Table) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *Table) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
 // TearoffMenuItem is a wrapper around the C record GtkTearoffMenuItem.
 type TearoffMenuItem struct {
 	native *C.GtkTearoffMenuItem
@@ -21863,6 +23635,22 @@ func TearoffMenuItemNew() *TearoffMenuItem {
 	retGo := TearoffMenuItemNewFromC(unsafe.Pointer(retC))
 
 	return retGo
+}
+
+func (recv *TearoffMenuItem) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *TearoffMenuItem) Actionable() *Actionable {
+	return ActionableNewFromC(recv.ToC())
+}
+
+func (recv *TearoffMenuItem) Activatable() *Activatable {
+	return ActivatableNewFromC(recv.ToC())
+}
+
+func (recv *TearoffMenuItem) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
 }
 
 // TextBuffer is a wrapper around the C record GtkTextBuffer.
@@ -23232,6 +25020,18 @@ func CastToTextCellAccessible(object *gobject.Object) *TextCellAccessible {
 	return TextCellAccessibleNewFromC(object.ToC())
 }
 
+func (recv *TextCellAccessible) Action() *atk.Action {
+	return atk.ActionNewFromC(recv.ToC())
+}
+
+func (recv *TextCellAccessible) Component() *atk.Component {
+	return atk.ComponentNewFromC(recv.ToC())
+}
+
+func (recv *TextCellAccessible) Text() *atk.Text {
+	return atk.TextNewFromC(recv.ToC())
+}
+
 // TextChildAnchor is a wrapper around the C record GtkTextChildAnchor.
 type TextChildAnchor struct {
 	native *C.GtkTextChildAnchor
@@ -23699,6 +25499,10 @@ func (recv *TextTagTable) Remove(tag *TextTag) {
 	C.gtk_text_tag_table_remove((*C.GtkTextTagTable)(recv.native), c_tag)
 
 	return
+}
+
+func (recv *TextTagTable) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
 }
 
 // TextView is a wrapper around the C record GtkTextView.
@@ -24808,6 +26612,18 @@ func (recv *TextView) WindowToBufferCoords(win TextWindowType, windowX int32, wi
 	return bufferX, bufferY
 }
 
+func (recv *TextView) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *TextView) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
+func (recv *TextView) Scrollable() *Scrollable {
+	return ScrollableNewFromC(recv.ToC())
+}
+
 // TextViewAccessible is a wrapper around the C record GtkTextViewAccessible.
 type TextViewAccessible struct {
 	native *C.GtkTextViewAccessible
@@ -24855,6 +26671,22 @@ func (recv *TextViewAccessible) Object() *atk.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a TextViewAccessible.
 func CastToTextViewAccessible(object *gobject.Object) *TextViewAccessible {
 	return TextViewAccessibleNewFromC(object.ToC())
+}
+
+func (recv *TextViewAccessible) Component() *atk.Component {
+	return atk.ComponentNewFromC(recv.ToC())
+}
+
+func (recv *TextViewAccessible) EditableText() *atk.EditableText {
+	return atk.EditableTextNewFromC(recv.ToC())
+}
+
+func (recv *TextViewAccessible) StreamableContent() *atk.StreamableContent {
+	return atk.StreamableContentNewFromC(recv.ToC())
+}
+
+func (recv *TextViewAccessible) Text() *atk.Text {
+	return atk.TextNewFromC(recv.ToC())
 }
 
 // ThemingEngine is a wrapper around the C record GtkThemingEngine.
@@ -24993,6 +26825,10 @@ func toggleaction_toggledHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalToggleActionToggledMap[index].callback
 	callback()
+}
+
+func (recv *ToggleAction) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
 }
 
 // ToggleButton is a wrapper around the C record GtkToggleButton.
@@ -25202,6 +27038,22 @@ func (recv *ToggleButton) Toggled() {
 	return
 }
 
+func (recv *ToggleButton) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *ToggleButton) Actionable() *Actionable {
+	return ActionableNewFromC(recv.ToC())
+}
+
+func (recv *ToggleButton) Activatable() *Activatable {
+	return ActivatableNewFromC(recv.ToC())
+}
+
+func (recv *ToggleButton) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
 // ToggleButtonAccessible is a wrapper around the C record GtkToggleButtonAccessible.
 type ToggleButtonAccessible struct {
 	native *C.GtkToggleButtonAccessible
@@ -25254,6 +27106,18 @@ func (recv *ToggleButtonAccessible) Object() *atk.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a ToggleButtonAccessible.
 func CastToToggleButtonAccessible(object *gobject.Object) *ToggleButtonAccessible {
 	return ToggleButtonAccessibleNewFromC(object.ToC())
+}
+
+func (recv *ToggleButtonAccessible) Action() *atk.Action {
+	return atk.ActionNewFromC(recv.ToC())
+}
+
+func (recv *ToggleButtonAccessible) Component() *atk.Component {
+	return atk.ComponentNewFromC(recv.ToC())
+}
+
+func (recv *ToggleButtonAccessible) Image() *atk.Image {
+	return atk.ImageNewFromC(recv.ToC())
 }
 
 // ToggleToolButton is a wrapper around the C record GtkToggleToolButton.
@@ -25377,6 +27241,22 @@ func toggletoolbutton_toggledHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
+func (recv *ToggleToolButton) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *ToggleToolButton) Actionable() *Actionable {
+	return ActionableNewFromC(recv.ToC())
+}
+
+func (recv *ToggleToolButton) Activatable() *Activatable {
+	return ActivatableNewFromC(recv.ToC())
+}
+
+func (recv *ToggleToolButton) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
 // ToolButton is a wrapper around the C record GtkToolButton.
 type ToolButton struct {
 	native *C.GtkToolButton
@@ -25491,6 +27371,22 @@ func toolbutton_clickedHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalToolButtonClickedMap[index].callback
 	callback()
+}
+
+func (recv *ToolButton) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *ToolButton) Actionable() *Actionable {
+	return ActionableNewFromC(recv.ToC())
+}
+
+func (recv *ToolButton) Activatable() *Activatable {
+	return ActivatableNewFromC(recv.ToC())
+}
+
+func (recv *ToolButton) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
 }
 
 // ToolItem is a wrapper around the C record GtkToolItem.
@@ -25664,6 +27560,18 @@ func toolitem_toolbarReconfiguredHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
+func (recv *ToolItem) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *ToolItem) Activatable() *Activatable {
+	return ActivatableNewFromC(recv.ToC())
+}
+
+func (recv *ToolItem) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
 // ToolItemGroup is a wrapper around the C record GtkToolItemGroup.
 type ToolItemGroup struct {
 	native *C.GtkToolItemGroup
@@ -25713,6 +27621,18 @@ func CastToToolItemGroup(object *gobject.Object) *ToolItemGroup {
 	return ToolItemGroupNewFromC(object.ToC())
 }
 
+func (recv *ToolItemGroup) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *ToolItemGroup) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
+func (recv *ToolItemGroup) ToolShell() *ToolShell {
+	return ToolShellNewFromC(recv.ToC())
+}
+
 // ToolPalette is a wrapper around the C record GtkToolPalette.
 type ToolPalette struct {
 	native *C.GtkToolPalette
@@ -25760,6 +27680,22 @@ func (recv *ToolPalette) Object() *gobject.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a ToolPalette.
 func CastToToolPalette(object *gobject.Object) *ToolPalette {
 	return ToolPaletteNewFromC(object.ToC())
+}
+
+func (recv *ToolPalette) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *ToolPalette) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
+func (recv *ToolPalette) Orientable() *Orientable {
+	return OrientableNewFromC(recv.ToC())
+}
+
+func (recv *ToolPalette) Scrollable() *Scrollable {
+	return ScrollableNewFromC(recv.ToC())
 }
 
 // Toolbar is a wrapper around the C record GtkToolbar.
@@ -25935,6 +27871,22 @@ func (recv *Toolbar) UnsetStyle() {
 	return
 }
 
+func (recv *Toolbar) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *Toolbar) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
+func (recv *Toolbar) Orientable() *Orientable {
+	return OrientableNewFromC(recv.ToC())
+}
+
+func (recv *Toolbar) ToolShell() *ToolShell {
+	return ToolShellNewFromC(recv.ToC())
+}
+
 // Tooltip is a wrapper around the C record GtkTooltip.
 type Tooltip struct {
 	native *C.GtkTooltip
@@ -26043,6 +27995,14 @@ func CastToTreeModelFilter(object *gobject.Object) *TreeModelFilter {
 	return TreeModelFilterNewFromC(object.ToC())
 }
 
+func (recv *TreeModelFilter) TreeDragSource() *TreeDragSource {
+	return TreeDragSourceNewFromC(recv.ToC())
+}
+
+func (recv *TreeModelFilter) TreeModel() *TreeModel {
+	return TreeModelNewFromC(recv.ToC())
+}
+
 // TreeModelSort is a wrapper around the C record GtkTreeModelSort.
 type TreeModelSort struct {
 	native *C.GtkTreeModelSort
@@ -26138,6 +28098,18 @@ func (recv *TreeModelSort) ResetDefaultSortFunc() {
 	C.gtk_tree_model_sort_reset_default_sort_func((*C.GtkTreeModelSort)(recv.native))
 
 	return
+}
+
+func (recv *TreeModelSort) TreeDragSource() *TreeDragSource {
+	return TreeDragSourceNewFromC(recv.ToC())
+}
+
+func (recv *TreeModelSort) TreeModel() *TreeModel {
+	return TreeModelNewFromC(recv.ToC())
+}
+
+func (recv *TreeModelSort) TreeSortable() *TreeSortable {
+	return TreeSortableNewFromC(recv.ToC())
 }
 
 // TreeSelection is a wrapper around the C record GtkTreeSelection.
@@ -26516,6 +28488,26 @@ func (recv *TreeStore) SetValue(iter *TreeIter, column int32, value *gobject.Val
 	C.gtk_tree_store_set_value((*C.GtkTreeStore)(recv.native), c_iter, c_column, c_value)
 
 	return
+}
+
+func (recv *TreeStore) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
+func (recv *TreeStore) TreeDragDest() *TreeDragDest {
+	return TreeDragDestNewFromC(recv.ToC())
+}
+
+func (recv *TreeStore) TreeDragSource() *TreeDragSource {
+	return TreeDragSourceNewFromC(recv.ToC())
+}
+
+func (recv *TreeStore) TreeModel() *TreeModel {
+	return TreeModelNewFromC(recv.ToC())
+}
+
+func (recv *TreeStore) TreeSortable() *TreeSortable {
+	return TreeSortableNewFromC(recv.ToC())
 }
 
 // TreeView is a wrapper around the C record GtkTreeView.
@@ -27838,6 +29830,18 @@ func (recv *TreeView) UnsetRowsDragSource() {
 	return
 }
 
+func (recv *TreeView) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *TreeView) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
+func (recv *TreeView) Scrollable() *Scrollable {
+	return ScrollableNewFromC(recv.ToC())
+}
+
 // TreeViewAccessible is a wrapper around the C record GtkTreeViewAccessible.
 type TreeViewAccessible struct {
 	native *C.GtkTreeViewAccessible
@@ -27885,6 +29889,22 @@ func (recv *TreeViewAccessible) Object() *atk.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a TreeViewAccessible.
 func CastToTreeViewAccessible(object *gobject.Object) *TreeViewAccessible {
 	return TreeViewAccessibleNewFromC(object.ToC())
+}
+
+func (recv *TreeViewAccessible) Component() *atk.Component {
+	return atk.ComponentNewFromC(recv.ToC())
+}
+
+func (recv *TreeViewAccessible) Selection() *atk.Selection {
+	return atk.SelectionNewFromC(recv.ToC())
+}
+
+func (recv *TreeViewAccessible) Table() *atk.Table {
+	return atk.TableNewFromC(recv.ToC())
+}
+
+func (recv *TreeViewAccessible) CellAccessibleParent() *CellAccessibleParent {
+	return CellAccessibleParentNewFromC(recv.ToC())
 }
 
 // TreeViewColumn is a wrapper around the C record GtkTreeViewColumn.
@@ -28357,6 +30377,14 @@ func (recv *TreeViewColumn) SetWidget(widget *Widget) {
 	return
 }
 
+func (recv *TreeViewColumn) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
+func (recv *TreeViewColumn) CellLayout() *CellLayout {
+	return CellLayoutNewFromC(recv.ToC())
+}
+
 // UIManager is a wrapper around the C record GtkUIManager.
 type UIManager struct {
 	native *C.GtkUIManager
@@ -28389,6 +30417,10 @@ func (recv *UIManager) Object() *gobject.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a UIManager.
 func CastToUIManager(object *gobject.Object) *UIManager {
 	return UIManagerNewFromC(object.ToC())
+}
+
+func (recv *UIManager) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
 }
 
 // VBox is a wrapper around the C record GtkVBox.
@@ -28457,6 +30489,18 @@ func VBoxNew(homogeneous bool, spacing int32) *VBox {
 	return retGo
 }
 
+func (recv *VBox) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *VBox) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
+func (recv *VBox) Orientable() *Orientable {
+	return OrientableNewFromC(recv.ToC())
+}
+
 // VButtonBox is a wrapper around the C record GtkVButtonBox.
 type VButtonBox struct {
 	native *C.GtkVButtonBox
@@ -28523,6 +30567,18 @@ func VButtonBoxNew() *VButtonBox {
 	return retGo
 }
 
+func (recv *VButtonBox) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *VButtonBox) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
+func (recv *VButtonBox) Orientable() *Orientable {
+	return OrientableNewFromC(recv.ToC())
+}
+
 // VPaned is a wrapper around the C record GtkVPaned.
 type VPaned struct {
 	native *C.GtkVPaned
@@ -28582,6 +30638,18 @@ func VPanedNew() *VPaned {
 	retGo := VPanedNewFromC(unsafe.Pointer(retC))
 
 	return retGo
+}
+
+func (recv *VPaned) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *VPaned) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
+func (recv *VPaned) Orientable() *Orientable {
+	return OrientableNewFromC(recv.ToC())
 }
 
 // VScale is a wrapper around the C record GtkVScale.
@@ -28661,6 +30729,18 @@ func VScaleNewWithRange(min float64, max float64, step float64) *VScale {
 	return retGo
 }
 
+func (recv *VScale) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *VScale) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
+func (recv *VScale) Orientable() *Orientable {
+	return OrientableNewFromC(recv.ToC())
+}
+
 // VScrollbar is a wrapper around the C record GtkVScrollbar.
 type VScrollbar struct {
 	native *C.GtkVScrollbar
@@ -28724,6 +30804,18 @@ func VScrollbarNew(adjustment *Adjustment) *VScrollbar {
 	return retGo
 }
 
+func (recv *VScrollbar) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *VScrollbar) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
+func (recv *VScrollbar) Orientable() *Orientable {
+	return OrientableNewFromC(recv.ToC())
+}
+
 // VSeparator is a wrapper around the C record GtkVSeparator.
 type VSeparator struct {
 	native *C.GtkVSeparator
@@ -28778,6 +30870,18 @@ func VSeparatorNew() *VSeparator {
 	retGo := VSeparatorNewFromC(unsafe.Pointer(retC))
 
 	return retGo
+}
+
+func (recv *VSeparator) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *VSeparator) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
+func (recv *VSeparator) Orientable() *Orientable {
+	return OrientableNewFromC(recv.ToC())
 }
 
 // Viewport is a wrapper around the C record GtkViewport.
@@ -28897,6 +31001,18 @@ func (recv *Viewport) SetVadjustment(adjustment *Adjustment) {
 	return
 }
 
+func (recv *Viewport) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *Viewport) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
+func (recv *Viewport) Scrollable() *Scrollable {
+	return ScrollableNewFromC(recv.ToC())
+}
+
 // VolumeButton is a wrapper around the C record GtkVolumeButton.
 type VolumeButton struct {
 	native *C.GtkVolumeButton
@@ -28958,6 +31074,26 @@ func (recv *VolumeButton) Object() *gobject.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a VolumeButton.
 func CastToVolumeButton(object *gobject.Object) *VolumeButton {
 	return VolumeButtonNewFromC(object.ToC())
+}
+
+func (recv *VolumeButton) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *VolumeButton) Actionable() *Actionable {
+	return ActionableNewFromC(recv.ToC())
+}
+
+func (recv *VolumeButton) Activatable() *Activatable {
+	return ActivatableNewFromC(recv.ToC())
+}
+
+func (recv *VolumeButton) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
+func (recv *VolumeButton) Orientable() *Orientable {
+	return OrientableNewFromC(recv.ToC())
 }
 
 // Widget is a wrapper around the C record GtkWidget.
@@ -32568,6 +34704,14 @@ func (recv *Widget) Unrealize() {
 	return
 }
 
+func (recv *Widget) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *Widget) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
 // WidgetAccessible is a wrapper around the C record GtkWidgetAccessible.
 type WidgetAccessible struct {
 	native *C.GtkWidgetAccessible
@@ -32605,6 +34749,10 @@ func (recv *WidgetAccessible) Object() *atk.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a WidgetAccessible.
 func CastToWidgetAccessible(object *gobject.Object) *WidgetAccessible {
 	return WidgetAccessibleNewFromC(object.ToC())
+}
+
+func (recv *WidgetAccessible) Component() *atk.Component {
+	return atk.ComponentNewFromC(recv.ToC())
 }
 
 // Window is a wrapper around the C record GtkWindow.
@@ -33487,6 +35635,14 @@ func (recv *Window) Unstick() {
 	return
 }
 
+func (recv *Window) ImplementorIface() *atk.ImplementorIface {
+	return atk.ImplementorIfaceNewFromC(recv.ToC())
+}
+
+func (recv *Window) Buildable() *Buildable {
+	return BuildableNewFromC(recv.ToC())
+}
+
 // WindowAccessible is a wrapper around the C record GtkWindowAccessible.
 type WindowAccessible struct {
 	native *C.GtkWindowAccessible
@@ -33534,6 +35690,14 @@ func (recv *WindowAccessible) Object() *atk.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a WindowAccessible.
 func CastToWindowAccessible(object *gobject.Object) *WindowAccessible {
 	return WindowAccessibleNewFromC(object.ToC())
+}
+
+func (recv *WindowAccessible) Component() *atk.Component {
+	return atk.ComponentNewFromC(recv.ToC())
+}
+
+func (recv *WindowAccessible) Window() *atk.Window {
+	return atk.WindowNewFromC(recv.ToC())
 }
 
 // WindowGroup is a wrapper around the C record GtkWindowGroup.

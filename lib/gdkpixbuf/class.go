@@ -3,6 +3,7 @@
 package gdkpixbuf
 
 import (
+	gio "github.com/pekim/gobbi/lib/gio"
 	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	"sync"
@@ -411,6 +412,14 @@ func (recv *Pixbuf) Unref() {
 	C.gdk_pixbuf_unref((*C.GdkPixbuf)(recv.native))
 
 	return
+}
+
+func (recv *Pixbuf) Icon() *gio.Icon {
+	return gio.IconNewFromC(recv.ToC())
+}
+
+func (recv *Pixbuf) LoadableIcon() *gio.LoadableIcon {
+	return gio.LoadableIconNewFromC(recv.ToC())
 }
 
 // PixbufAnimation is a wrapper around the C record GdkPixbufAnimation.

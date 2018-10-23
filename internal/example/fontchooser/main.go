@@ -22,7 +22,7 @@ func main() {
 	fontChooserButton.Widget().SetHalign(gtk.GTK_ALIGN_CENTER)
 
 	// Use the FontChooser interface implemented by the button.
-	fontChooser := gtk.FontChooserNewFromC(fontChooserButton.ToC())
+	fontChooser := fontChooserButton.FontChooser()
 
 	printFont := func() {
 		fmt.Println(fontChooserButton.GetFontName())
