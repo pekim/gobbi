@@ -146,7 +146,7 @@ func (recv *PlacesSidebar) ConnectShowOtherLocations(callback PlacesSidebarSigna
 	defer signalPlacesSidebarShowOtherLocationsLock.Unlock()
 
 	signalPlacesSidebarShowOtherLocationsId++
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	handlerID := C.PlacesSidebar_signal_connect_show_other_locations(instance, C.gpointer(uintptr(signalPlacesSidebarShowOtherLocationsId)))
 
 	detail := signalPlacesSidebarShowOtherLocationsDetail{callback, handlerID}
@@ -169,7 +169,7 @@ func (recv *PlacesSidebar) DisconnectShowOtherLocations(connectionID int) {
 		return
 	}
 
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalPlacesSidebarShowOtherLocationsMap, connectionID)
 }

@@ -218,7 +218,7 @@ func (recv *ComboBox) ConnectPopdown(callback ComboBoxSignalPopdownCallback) int
 	defer signalComboBoxPopdownLock.Unlock()
 
 	signalComboBoxPopdownId++
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	handlerID := C.ComboBox_signal_connect_popdown(instance, C.gpointer(uintptr(signalComboBoxPopdownId)))
 
 	detail := signalComboBoxPopdownDetail{callback, handlerID}
@@ -241,7 +241,7 @@ func (recv *ComboBox) DisconnectPopdown(connectionID int) {
 		return
 	}
 
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalComboBoxPopdownMap, connectionID)
 }
@@ -278,7 +278,7 @@ func (recv *ComboBox) ConnectPopup(callback ComboBoxSignalPopupCallback) int {
 	defer signalComboBoxPopupLock.Unlock()
 
 	signalComboBoxPopupId++
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	handlerID := C.ComboBox_signal_connect_popup(instance, C.gpointer(uintptr(signalComboBoxPopupId)))
 
 	detail := signalComboBoxPopupDetail{callback, handlerID}
@@ -301,7 +301,7 @@ func (recv *ComboBox) DisconnectPopup(connectionID int) {
 		return
 	}
 
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalComboBoxPopupMap, connectionID)
 }
@@ -388,7 +388,7 @@ func (recv *FileChooserButton) ConnectFileSet(callback FileChooserButtonSignalFi
 	defer signalFileChooserButtonFileSetLock.Unlock()
 
 	signalFileChooserButtonFileSetId++
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	handlerID := C.FileChooserButton_signal_connect_file_set(instance, C.gpointer(uintptr(signalFileChooserButtonFileSetId)))
 
 	detail := signalFileChooserButtonFileSetDetail{callback, handlerID}
@@ -411,7 +411,7 @@ func (recv *FileChooserButton) DisconnectFileSet(connectionID int) {
 		return
 	}
 
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalFileChooserButtonFileSetMap, connectionID)
 }
@@ -824,7 +824,7 @@ func (recv *ScaleButton) ConnectPopdown(callback ScaleButtonSignalPopdownCallbac
 	defer signalScaleButtonPopdownLock.Unlock()
 
 	signalScaleButtonPopdownId++
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	handlerID := C.ScaleButton_signal_connect_popdown(instance, C.gpointer(uintptr(signalScaleButtonPopdownId)))
 
 	detail := signalScaleButtonPopdownDetail{callback, handlerID}
@@ -847,7 +847,7 @@ func (recv *ScaleButton) DisconnectPopdown(connectionID int) {
 		return
 	}
 
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalScaleButtonPopdownMap, connectionID)
 }
@@ -881,7 +881,7 @@ func (recv *ScaleButton) ConnectPopup(callback ScaleButtonSignalPopupCallback) i
 	defer signalScaleButtonPopupLock.Unlock()
 
 	signalScaleButtonPopupId++
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	handlerID := C.ScaleButton_signal_connect_popup(instance, C.gpointer(uintptr(signalScaleButtonPopupId)))
 
 	detail := signalScaleButtonPopupDetail{callback, handlerID}
@@ -904,7 +904,7 @@ func (recv *ScaleButton) DisconnectPopup(connectionID int) {
 		return
 	}
 
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalScaleButtonPopupMap, connectionID)
 }

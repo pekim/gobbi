@@ -79,7 +79,7 @@ func (recv *MountOperation) ConnectAborted(callback MountOperationSignalAbortedC
 	defer signalMountOperationAbortedLock.Unlock()
 
 	signalMountOperationAbortedId++
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	handlerID := C.MountOperation_signal_connect_aborted(instance, C.gpointer(uintptr(signalMountOperationAbortedId)))
 
 	detail := signalMountOperationAbortedDetail{callback, handlerID}
@@ -102,7 +102,7 @@ func (recv *MountOperation) DisconnectAborted(connectionID int) {
 		return
 	}
 
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalMountOperationAbortedMap, connectionID)
 }

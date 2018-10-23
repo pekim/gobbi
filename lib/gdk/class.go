@@ -273,7 +273,7 @@ func (recv *Device) ConnectChanged(callback DeviceSignalChangedCallback) int {
 	defer signalDeviceChangedLock.Unlock()
 
 	signalDeviceChangedId++
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	handlerID := C.Device_signal_connect_changed(instance, C.gpointer(uintptr(signalDeviceChangedId)))
 
 	detail := signalDeviceChangedDetail{callback, handlerID}
@@ -296,7 +296,7 @@ func (recv *Device) DisconnectChanged(connectionID int) {
 		return
 	}
 
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalDeviceChangedMap, connectionID)
 }
@@ -410,7 +410,7 @@ func (recv *DeviceManager) ConnectDeviceAdded(callback DeviceManagerSignalDevice
 	defer signalDeviceManagerDeviceAddedLock.Unlock()
 
 	signalDeviceManagerDeviceAddedId++
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	handlerID := C.DeviceManager_signal_connect_device_added(instance, C.gpointer(uintptr(signalDeviceManagerDeviceAddedId)))
 
 	detail := signalDeviceManagerDeviceAddedDetail{callback, handlerID}
@@ -433,7 +433,7 @@ func (recv *DeviceManager) DisconnectDeviceAdded(connectionID int) {
 		return
 	}
 
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalDeviceManagerDeviceAddedMap, connectionID)
 }
@@ -469,7 +469,7 @@ func (recv *DeviceManager) ConnectDeviceChanged(callback DeviceManagerSignalDevi
 	defer signalDeviceManagerDeviceChangedLock.Unlock()
 
 	signalDeviceManagerDeviceChangedId++
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	handlerID := C.DeviceManager_signal_connect_device_changed(instance, C.gpointer(uintptr(signalDeviceManagerDeviceChangedId)))
 
 	detail := signalDeviceManagerDeviceChangedDetail{callback, handlerID}
@@ -492,7 +492,7 @@ func (recv *DeviceManager) DisconnectDeviceChanged(connectionID int) {
 		return
 	}
 
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalDeviceManagerDeviceChangedMap, connectionID)
 }
@@ -528,7 +528,7 @@ func (recv *DeviceManager) ConnectDeviceRemoved(callback DeviceManagerSignalDevi
 	defer signalDeviceManagerDeviceRemovedLock.Unlock()
 
 	signalDeviceManagerDeviceRemovedId++
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	handlerID := C.DeviceManager_signal_connect_device_removed(instance, C.gpointer(uintptr(signalDeviceManagerDeviceRemovedId)))
 
 	detail := signalDeviceManagerDeviceRemovedDetail{callback, handlerID}
@@ -551,7 +551,7 @@ func (recv *DeviceManager) DisconnectDeviceRemoved(connectionID int) {
 		return
 	}
 
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalDeviceManagerDeviceRemovedMap, connectionID)
 }
@@ -619,7 +619,7 @@ func (recv *Display) ConnectOpened(callback DisplaySignalOpenedCallback) int {
 	defer signalDisplayOpenedLock.Unlock()
 
 	signalDisplayOpenedId++
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	handlerID := C.Display_signal_connect_opened(instance, C.gpointer(uintptr(signalDisplayOpenedId)))
 
 	detail := signalDisplayOpenedDetail{callback, handlerID}
@@ -642,7 +642,7 @@ func (recv *Display) DisconnectOpened(connectionID int) {
 		return
 	}
 
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalDisplayOpenedMap, connectionID)
 }
@@ -799,7 +799,7 @@ func (recv *FrameClock) ConnectAfterPaint(callback FrameClockSignalAfterPaintCal
 	defer signalFrameClockAfterPaintLock.Unlock()
 
 	signalFrameClockAfterPaintId++
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	handlerID := C.FrameClock_signal_connect_after_paint(instance, C.gpointer(uintptr(signalFrameClockAfterPaintId)))
 
 	detail := signalFrameClockAfterPaintDetail{callback, handlerID}
@@ -822,7 +822,7 @@ func (recv *FrameClock) DisconnectAfterPaint(connectionID int) {
 		return
 	}
 
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalFrameClockAfterPaintMap, connectionID)
 }
@@ -856,7 +856,7 @@ func (recv *FrameClock) ConnectBeforePaint(callback FrameClockSignalBeforePaintC
 	defer signalFrameClockBeforePaintLock.Unlock()
 
 	signalFrameClockBeforePaintId++
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	handlerID := C.FrameClock_signal_connect_before_paint(instance, C.gpointer(uintptr(signalFrameClockBeforePaintId)))
 
 	detail := signalFrameClockBeforePaintDetail{callback, handlerID}
@@ -879,7 +879,7 @@ func (recv *FrameClock) DisconnectBeforePaint(connectionID int) {
 		return
 	}
 
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalFrameClockBeforePaintMap, connectionID)
 }
@@ -913,7 +913,7 @@ func (recv *FrameClock) ConnectFlushEvents(callback FrameClockSignalFlushEventsC
 	defer signalFrameClockFlushEventsLock.Unlock()
 
 	signalFrameClockFlushEventsId++
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	handlerID := C.FrameClock_signal_connect_flush_events(instance, C.gpointer(uintptr(signalFrameClockFlushEventsId)))
 
 	detail := signalFrameClockFlushEventsDetail{callback, handlerID}
@@ -936,7 +936,7 @@ func (recv *FrameClock) DisconnectFlushEvents(connectionID int) {
 		return
 	}
 
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalFrameClockFlushEventsMap, connectionID)
 }
@@ -970,7 +970,7 @@ func (recv *FrameClock) ConnectLayout(callback FrameClockSignalLayoutCallback) i
 	defer signalFrameClockLayoutLock.Unlock()
 
 	signalFrameClockLayoutId++
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	handlerID := C.FrameClock_signal_connect_layout(instance, C.gpointer(uintptr(signalFrameClockLayoutId)))
 
 	detail := signalFrameClockLayoutDetail{callback, handlerID}
@@ -993,7 +993,7 @@ func (recv *FrameClock) DisconnectLayout(connectionID int) {
 		return
 	}
 
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalFrameClockLayoutMap, connectionID)
 }
@@ -1027,7 +1027,7 @@ func (recv *FrameClock) ConnectPaint(callback FrameClockSignalPaintCallback) int
 	defer signalFrameClockPaintLock.Unlock()
 
 	signalFrameClockPaintId++
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	handlerID := C.FrameClock_signal_connect_paint(instance, C.gpointer(uintptr(signalFrameClockPaintId)))
 
 	detail := signalFrameClockPaintDetail{callback, handlerID}
@@ -1050,7 +1050,7 @@ func (recv *FrameClock) DisconnectPaint(connectionID int) {
 		return
 	}
 
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalFrameClockPaintMap, connectionID)
 }
@@ -1084,7 +1084,7 @@ func (recv *FrameClock) ConnectResumeEvents(callback FrameClockSignalResumeEvent
 	defer signalFrameClockResumeEventsLock.Unlock()
 
 	signalFrameClockResumeEventsId++
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	handlerID := C.FrameClock_signal_connect_resume_events(instance, C.gpointer(uintptr(signalFrameClockResumeEventsId)))
 
 	detail := signalFrameClockResumeEventsDetail{callback, handlerID}
@@ -1107,7 +1107,7 @@ func (recv *FrameClock) DisconnectResumeEvents(connectionID int) {
 		return
 	}
 
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalFrameClockResumeEventsMap, connectionID)
 }
@@ -1141,7 +1141,7 @@ func (recv *FrameClock) ConnectUpdate(callback FrameClockSignalUpdateCallback) i
 	defer signalFrameClockUpdateLock.Unlock()
 
 	signalFrameClockUpdateId++
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	handlerID := C.FrameClock_signal_connect_update(instance, C.gpointer(uintptr(signalFrameClockUpdateId)))
 
 	detail := signalFrameClockUpdateDetail{callback, handlerID}
@@ -1164,7 +1164,7 @@ func (recv *FrameClock) DisconnectUpdate(connectionID int) {
 		return
 	}
 
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalFrameClockUpdateMap, connectionID)
 }

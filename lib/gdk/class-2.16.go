@@ -41,7 +41,7 @@ func (recv *Keymap) ConnectStateChanged(callback KeymapSignalStateChangedCallbac
 	defer signalKeymapStateChangedLock.Unlock()
 
 	signalKeymapStateChangedId++
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	handlerID := C.Keymap_signal_connect_state_changed(instance, C.gpointer(uintptr(signalKeymapStateChangedId)))
 
 	detail := signalKeymapStateChangedDetail{callback, handlerID}
@@ -64,7 +64,7 @@ func (recv *Keymap) DisconnectStateChanged(connectionID int) {
 		return
 	}
 
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalKeymapStateChangedMap, connectionID)
 }

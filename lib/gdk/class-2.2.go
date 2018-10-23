@@ -93,7 +93,7 @@ func (recv *Display) ConnectClosed(callback DisplaySignalClosedCallback) int {
 	defer signalDisplayClosedLock.Unlock()
 
 	signalDisplayClosedId++
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	handlerID := C.Display_signal_connect_closed(instance, C.gpointer(uintptr(signalDisplayClosedId)))
 
 	detail := signalDisplayClosedDetail{callback, handlerID}
@@ -116,7 +116,7 @@ func (recv *Display) DisconnectClosed(connectionID int) {
 		return
 	}
 
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalDisplayClosedMap, connectionID)
 }
@@ -274,7 +274,7 @@ func (recv *DisplayManager) ConnectDisplayOpened(callback DisplayManagerSignalDi
 	defer signalDisplayManagerDisplayOpenedLock.Unlock()
 
 	signalDisplayManagerDisplayOpenedId++
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	handlerID := C.DisplayManager_signal_connect_display_opened(instance, C.gpointer(uintptr(signalDisplayManagerDisplayOpenedId)))
 
 	detail := signalDisplayManagerDisplayOpenedDetail{callback, handlerID}
@@ -297,7 +297,7 @@ func (recv *DisplayManager) DisconnectDisplayOpened(connectionID int) {
 		return
 	}
 
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalDisplayManagerDisplayOpenedMap, connectionID)
 }
@@ -358,7 +358,7 @@ func (recv *Keymap) ConnectKeysChanged(callback KeymapSignalKeysChangedCallback)
 	defer signalKeymapKeysChangedLock.Unlock()
 
 	signalKeymapKeysChangedId++
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	handlerID := C.Keymap_signal_connect_keys_changed(instance, C.gpointer(uintptr(signalKeymapKeysChangedId)))
 
 	detail := signalKeymapKeysChangedDetail{callback, handlerID}
@@ -381,7 +381,7 @@ func (recv *Keymap) DisconnectKeysChanged(connectionID int) {
 		return
 	}
 
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalKeymapKeysChangedMap, connectionID)
 }
@@ -415,7 +415,7 @@ func (recv *Screen) ConnectSizeChanged(callback ScreenSignalSizeChangedCallback)
 	defer signalScreenSizeChangedLock.Unlock()
 
 	signalScreenSizeChangedId++
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	handlerID := C.Screen_signal_connect_size_changed(instance, C.gpointer(uintptr(signalScreenSizeChangedId)))
 
 	detail := signalScreenSizeChangedDetail{callback, handlerID}
@@ -438,7 +438,7 @@ func (recv *Screen) DisconnectSizeChanged(connectionID int) {
 		return
 	}
 
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalScreenSizeChangedMap, connectionID)
 }

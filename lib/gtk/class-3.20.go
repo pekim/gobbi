@@ -386,7 +386,7 @@ func (recv *PlacesSidebar) ConnectMount(callback PlacesSidebarSignalMountCallbac
 	defer signalPlacesSidebarMountLock.Unlock()
 
 	signalPlacesSidebarMountId++
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	handlerID := C.PlacesSidebar_signal_connect_mount(instance, C.gpointer(uintptr(signalPlacesSidebarMountId)))
 
 	detail := signalPlacesSidebarMountDetail{callback, handlerID}
@@ -409,7 +409,7 @@ func (recv *PlacesSidebar) DisconnectMount(connectionID int) {
 		return
 	}
 
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalPlacesSidebarMountMap, connectionID)
 }
@@ -447,7 +447,7 @@ func (recv *PlacesSidebar) ConnectUnmount(callback PlacesSidebarSignalUnmountCal
 	defer signalPlacesSidebarUnmountLock.Unlock()
 
 	signalPlacesSidebarUnmountId++
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	handlerID := C.PlacesSidebar_signal_connect_unmount(instance, C.gpointer(uintptr(signalPlacesSidebarUnmountId)))
 
 	detail := signalPlacesSidebarUnmountDetail{callback, handlerID}
@@ -470,7 +470,7 @@ func (recv *PlacesSidebar) DisconnectUnmount(connectionID int) {
 		return
 	}
 
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalPlacesSidebarUnmountMap, connectionID)
 }
@@ -809,7 +809,7 @@ func (recv *ShortcutsWindow) ConnectClose(callback ShortcutsWindowSignalCloseCal
 	defer signalShortcutsWindowCloseLock.Unlock()
 
 	signalShortcutsWindowCloseId++
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	handlerID := C.ShortcutsWindow_signal_connect_close(instance, C.gpointer(uintptr(signalShortcutsWindowCloseId)))
 
 	detail := signalShortcutsWindowCloseDetail{callback, handlerID}
@@ -832,7 +832,7 @@ func (recv *ShortcutsWindow) DisconnectClose(connectionID int) {
 		return
 	}
 
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalShortcutsWindowCloseMap, connectionID)
 }
@@ -866,7 +866,7 @@ func (recv *ShortcutsWindow) ConnectSearch(callback ShortcutsWindowSignalSearchC
 	defer signalShortcutsWindowSearchLock.Unlock()
 
 	signalShortcutsWindowSearchId++
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	handlerID := C.ShortcutsWindow_signal_connect_search(instance, C.gpointer(uintptr(signalShortcutsWindowSearchId)))
 
 	detail := signalShortcutsWindowSearchDetail{callback, handlerID}
@@ -889,7 +889,7 @@ func (recv *ShortcutsWindow) DisconnectSearch(connectionID int) {
 		return
 	}
 
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalShortcutsWindowSearchMap, connectionID)
 }

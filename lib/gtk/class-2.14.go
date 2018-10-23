@@ -770,7 +770,7 @@ func (recv *StatusIcon) ConnectButtonPressEvent(callback StatusIconSignalButtonP
 	defer signalStatusIconButtonPressEventLock.Unlock()
 
 	signalStatusIconButtonPressEventId++
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	handlerID := C.StatusIcon_signal_connect_button_press_event(instance, C.gpointer(uintptr(signalStatusIconButtonPressEventId)))
 
 	detail := signalStatusIconButtonPressEventDetail{callback, handlerID}
@@ -793,7 +793,7 @@ func (recv *StatusIcon) DisconnectButtonPressEvent(connectionID int) {
 		return
 	}
 
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalStatusIconButtonPressEventMap, connectionID)
 }
@@ -832,7 +832,7 @@ func (recv *StatusIcon) ConnectButtonReleaseEvent(callback StatusIconSignalButto
 	defer signalStatusIconButtonReleaseEventLock.Unlock()
 
 	signalStatusIconButtonReleaseEventId++
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	handlerID := C.StatusIcon_signal_connect_button_release_event(instance, C.gpointer(uintptr(signalStatusIconButtonReleaseEventId)))
 
 	detail := signalStatusIconButtonReleaseEventDetail{callback, handlerID}
@@ -855,7 +855,7 @@ func (recv *StatusIcon) DisconnectButtonReleaseEvent(connectionID int) {
 		return
 	}
 
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalStatusIconButtonReleaseEventMap, connectionID)
 }
@@ -927,7 +927,7 @@ func (recv *Widget) ConnectDamageEvent(callback WidgetSignalDamageEventCallback)
 	defer signalWidgetDamageEventLock.Unlock()
 
 	signalWidgetDamageEventId++
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	handlerID := C.Widget_signal_connect_damage_event(instance, C.gpointer(uintptr(signalWidgetDamageEventId)))
 
 	detail := signalWidgetDamageEventDetail{callback, handlerID}
@@ -950,7 +950,7 @@ func (recv *Widget) DisconnectDamageEvent(connectionID int) {
 		return
 	}
 
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalWidgetDamageEventMap, connectionID)
 }

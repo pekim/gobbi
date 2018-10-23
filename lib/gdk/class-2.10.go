@@ -62,7 +62,7 @@ func (recv *Screen) ConnectCompositedChanged(callback ScreenSignalCompositedChan
 	defer signalScreenCompositedChangedLock.Unlock()
 
 	signalScreenCompositedChangedId++
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	handlerID := C.Screen_signal_connect_composited_changed(instance, C.gpointer(uintptr(signalScreenCompositedChangedId)))
 
 	detail := signalScreenCompositedChangedDetail{callback, handlerID}
@@ -85,7 +85,7 @@ func (recv *Screen) DisconnectCompositedChanged(connectionID int) {
 		return
 	}
 
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalScreenCompositedChangedMap, connectionID)
 }

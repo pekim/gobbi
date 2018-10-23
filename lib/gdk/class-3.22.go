@@ -73,7 +73,7 @@ func (recv *Device) ConnectToolChanged(callback DeviceSignalToolChangedCallback)
 	defer signalDeviceToolChangedLock.Unlock()
 
 	signalDeviceToolChangedId++
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	handlerID := C.Device_signal_connect_tool_changed(instance, C.gpointer(uintptr(signalDeviceToolChangedId)))
 
 	detail := signalDeviceToolChangedDetail{callback, handlerID}
@@ -96,7 +96,7 @@ func (recv *Device) DisconnectToolChanged(connectionID int) {
 		return
 	}
 
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalDeviceToolChangedMap, connectionID)
 }
@@ -196,7 +196,7 @@ func (recv *Display) ConnectMonitorAdded(callback DisplaySignalMonitorAddedCallb
 	defer signalDisplayMonitorAddedLock.Unlock()
 
 	signalDisplayMonitorAddedId++
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	handlerID := C.Display_signal_connect_monitor_added(instance, C.gpointer(uintptr(signalDisplayMonitorAddedId)))
 
 	detail := signalDisplayMonitorAddedDetail{callback, handlerID}
@@ -219,7 +219,7 @@ func (recv *Display) DisconnectMonitorAdded(connectionID int) {
 		return
 	}
 
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalDisplayMonitorAddedMap, connectionID)
 }
@@ -255,7 +255,7 @@ func (recv *Display) ConnectMonitorRemoved(callback DisplaySignalMonitorRemovedC
 	defer signalDisplayMonitorRemovedLock.Unlock()
 
 	signalDisplayMonitorRemovedId++
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	handlerID := C.Display_signal_connect_monitor_removed(instance, C.gpointer(uintptr(signalDisplayMonitorRemovedId)))
 
 	detail := signalDisplayMonitorRemovedDetail{callback, handlerID}
@@ -278,7 +278,7 @@ func (recv *Display) DisconnectMonitorRemoved(connectionID int) {
 		return
 	}
 
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalDisplayMonitorRemovedMap, connectionID)
 }
@@ -475,7 +475,7 @@ func (recv *Monitor) ConnectInvalidate(callback MonitorSignalInvalidateCallback)
 	defer signalMonitorInvalidateLock.Unlock()
 
 	signalMonitorInvalidateId++
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	handlerID := C.Monitor_signal_connect_invalidate(instance, C.gpointer(uintptr(signalMonitorInvalidateId)))
 
 	detail := signalMonitorInvalidateDetail{callback, handlerID}
@@ -498,7 +498,7 @@ func (recv *Monitor) DisconnectInvalidate(connectionID int) {
 		return
 	}
 
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalMonitorInvalidateMap, connectionID)
 }

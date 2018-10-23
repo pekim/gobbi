@@ -644,7 +644,7 @@ func (recv *PixbufLoader) ConnectAreaPrepared(callback PixbufLoaderSignalAreaPre
 	defer signalPixbufLoaderAreaPreparedLock.Unlock()
 
 	signalPixbufLoaderAreaPreparedId++
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	handlerID := C.PixbufLoader_signal_connect_area_prepared(instance, C.gpointer(uintptr(signalPixbufLoaderAreaPreparedId)))
 
 	detail := signalPixbufLoaderAreaPreparedDetail{callback, handlerID}
@@ -667,7 +667,7 @@ func (recv *PixbufLoader) DisconnectAreaPrepared(connectionID int) {
 		return
 	}
 
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalPixbufLoaderAreaPreparedMap, connectionID)
 }
@@ -703,7 +703,7 @@ func (recv *PixbufLoader) ConnectClosed(callback PixbufLoaderSignalClosedCallbac
 	defer signalPixbufLoaderClosedLock.Unlock()
 
 	signalPixbufLoaderClosedId++
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	handlerID := C.PixbufLoader_signal_connect_closed(instance, C.gpointer(uintptr(signalPixbufLoaderClosedId)))
 
 	detail := signalPixbufLoaderClosedDetail{callback, handlerID}
@@ -726,7 +726,7 @@ func (recv *PixbufLoader) DisconnectClosed(connectionID int) {
 		return
 	}
 
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalPixbufLoaderClosedMap, connectionID)
 }

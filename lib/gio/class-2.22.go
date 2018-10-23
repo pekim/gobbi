@@ -1579,7 +1579,7 @@ func (recv *ThreadedSocketService) ConnectRun(callback ThreadedSocketServiceSign
 	defer signalThreadedSocketServiceRunLock.Unlock()
 
 	signalThreadedSocketServiceRunId++
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	handlerID := C.ThreadedSocketService_signal_connect_run(instance, C.gpointer(uintptr(signalThreadedSocketServiceRunId)))
 
 	detail := signalThreadedSocketServiceRunDetail{callback, handlerID}
@@ -1602,7 +1602,7 @@ func (recv *ThreadedSocketService) DisconnectRun(connectionID int) {
 		return
 	}
 
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalThreadedSocketServiceRunMap, connectionID)
 }

@@ -454,7 +454,7 @@ func (recv *SearchEntry) ConnectNextMatch(callback SearchEntrySignalNextMatchCal
 	defer signalSearchEntryNextMatchLock.Unlock()
 
 	signalSearchEntryNextMatchId++
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	handlerID := C.SearchEntry_signal_connect_next_match(instance, C.gpointer(uintptr(signalSearchEntryNextMatchId)))
 
 	detail := signalSearchEntryNextMatchDetail{callback, handlerID}
@@ -477,7 +477,7 @@ func (recv *SearchEntry) DisconnectNextMatch(connectionID int) {
 		return
 	}
 
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalSearchEntryNextMatchMap, connectionID)
 }
@@ -511,7 +511,7 @@ func (recv *SearchEntry) ConnectPreviousMatch(callback SearchEntrySignalPrevious
 	defer signalSearchEntryPreviousMatchLock.Unlock()
 
 	signalSearchEntryPreviousMatchId++
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	handlerID := C.SearchEntry_signal_connect_previous_match(instance, C.gpointer(uintptr(signalSearchEntryPreviousMatchId)))
 
 	detail := signalSearchEntryPreviousMatchDetail{callback, handlerID}
@@ -534,7 +534,7 @@ func (recv *SearchEntry) DisconnectPreviousMatch(connectionID int) {
 		return
 	}
 
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalSearchEntryPreviousMatchMap, connectionID)
 }
@@ -568,7 +568,7 @@ func (recv *SearchEntry) ConnectStopSearch(callback SearchEntrySignalStopSearchC
 	defer signalSearchEntryStopSearchLock.Unlock()
 
 	signalSearchEntryStopSearchId++
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	handlerID := C.SearchEntry_signal_connect_stop_search(instance, C.gpointer(uintptr(signalSearchEntryStopSearchId)))
 
 	detail := signalSearchEntryStopSearchDetail{callback, handlerID}
@@ -591,7 +591,7 @@ func (recv *SearchEntry) DisconnectStopSearch(connectionID int) {
 		return
 	}
 
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalSearchEntryStopSearchMap, connectionID)
 }

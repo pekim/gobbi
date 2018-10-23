@@ -100,7 +100,7 @@ func (recv *Screen) ConnectMonitorsChanged(callback ScreenSignalMonitorsChangedC
 	defer signalScreenMonitorsChangedLock.Unlock()
 
 	signalScreenMonitorsChangedId++
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	handlerID := C.Screen_signal_connect_monitors_changed(instance, C.gpointer(uintptr(signalScreenMonitorsChangedId)))
 
 	detail := signalScreenMonitorsChangedDetail{callback, handlerID}
@@ -123,7 +123,7 @@ func (recv *Screen) DisconnectMonitorsChanged(connectionID int) {
 		return
 	}
 
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalScreenMonitorsChangedMap, connectionID)
 }

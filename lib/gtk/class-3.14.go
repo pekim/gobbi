@@ -192,7 +192,7 @@ func (recv *EntryCompletion) ConnectNoMatches(callback EntryCompletionSignalNoMa
 	defer signalEntryCompletionNoMatchesLock.Unlock()
 
 	signalEntryCompletionNoMatchesId++
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	handlerID := C.EntryCompletion_signal_connect_no_matches(instance, C.gpointer(uintptr(signalEntryCompletionNoMatchesId)))
 
 	detail := signalEntryCompletionNoMatchesDetail{callback, handlerID}
@@ -215,7 +215,7 @@ func (recv *EntryCompletion) DisconnectNoMatches(connectionID int) {
 		return
 	}
 
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalEntryCompletionNoMatchesMap, connectionID)
 }
@@ -289,7 +289,7 @@ func (recv *Gesture) ConnectBegin(callback GestureSignalBeginCallback) int {
 	defer signalGestureBeginLock.Unlock()
 
 	signalGestureBeginId++
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	handlerID := C.Gesture_signal_connect_begin(instance, C.gpointer(uintptr(signalGestureBeginId)))
 
 	detail := signalGestureBeginDetail{callback, handlerID}
@@ -312,7 +312,7 @@ func (recv *Gesture) DisconnectBegin(connectionID int) {
 		return
 	}
 
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalGestureBeginMap, connectionID)
 }
@@ -348,7 +348,7 @@ func (recv *Gesture) ConnectCancel(callback GestureSignalCancelCallback) int {
 	defer signalGestureCancelLock.Unlock()
 
 	signalGestureCancelId++
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	handlerID := C.Gesture_signal_connect_cancel(instance, C.gpointer(uintptr(signalGestureCancelId)))
 
 	detail := signalGestureCancelDetail{callback, handlerID}
@@ -371,7 +371,7 @@ func (recv *Gesture) DisconnectCancel(connectionID int) {
 		return
 	}
 
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalGestureCancelMap, connectionID)
 }
@@ -407,7 +407,7 @@ func (recv *Gesture) ConnectEnd(callback GestureSignalEndCallback) int {
 	defer signalGestureEndLock.Unlock()
 
 	signalGestureEndId++
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	handlerID := C.Gesture_signal_connect_end(instance, C.gpointer(uintptr(signalGestureEndId)))
 
 	detail := signalGestureEndDetail{callback, handlerID}
@@ -430,7 +430,7 @@ func (recv *Gesture) DisconnectEnd(connectionID int) {
 		return
 	}
 
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalGestureEndMap, connectionID)
 }
@@ -468,7 +468,7 @@ func (recv *Gesture) ConnectUpdate(callback GestureSignalUpdateCallback) int {
 	defer signalGestureUpdateLock.Unlock()
 
 	signalGestureUpdateId++
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	handlerID := C.Gesture_signal_connect_update(instance, C.gpointer(uintptr(signalGestureUpdateId)))
 
 	detail := signalGestureUpdateDetail{callback, handlerID}
@@ -491,7 +491,7 @@ func (recv *Gesture) DisconnectUpdate(connectionID int) {
 		return
 	}
 
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalGestureUpdateMap, connectionID)
 }
@@ -744,7 +744,7 @@ func (recv *GestureLongPress) ConnectCancelled(callback GestureLongPressSignalCa
 	defer signalGestureLongPressCancelledLock.Unlock()
 
 	signalGestureLongPressCancelledId++
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	handlerID := C.GestureLongPress_signal_connect_cancelled(instance, C.gpointer(uintptr(signalGestureLongPressCancelledId)))
 
 	detail := signalGestureLongPressCancelledDetail{callback, handlerID}
@@ -767,7 +767,7 @@ func (recv *GestureLongPress) DisconnectCancelled(connectionID int) {
 		return
 	}
 
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalGestureLongPressCancelledMap, connectionID)
 }
@@ -817,7 +817,7 @@ func (recv *GestureMultiPress) ConnectStopped(callback GestureMultiPressSignalSt
 	defer signalGestureMultiPressStoppedLock.Unlock()
 
 	signalGestureMultiPressStoppedId++
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	handlerID := C.GestureMultiPress_signal_connect_stopped(instance, C.gpointer(uintptr(signalGestureMultiPressStoppedId)))
 
 	detail := signalGestureMultiPressStoppedDetail{callback, handlerID}
@@ -840,7 +840,7 @@ func (recv *GestureMultiPress) DisconnectStopped(connectionID int) {
 		return
 	}
 
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalGestureMultiPressStoppedMap, connectionID)
 }
@@ -1078,7 +1078,7 @@ func (recv *ListBox) ConnectSelectAll(callback ListBoxSignalSelectAllCallback) i
 	defer signalListBoxSelectAllLock.Unlock()
 
 	signalListBoxSelectAllId++
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	handlerID := C.ListBox_signal_connect_select_all(instance, C.gpointer(uintptr(signalListBoxSelectAllId)))
 
 	detail := signalListBoxSelectAllDetail{callback, handlerID}
@@ -1101,7 +1101,7 @@ func (recv *ListBox) DisconnectSelectAll(connectionID int) {
 		return
 	}
 
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalListBoxSelectAllMap, connectionID)
 }
@@ -1135,7 +1135,7 @@ func (recv *ListBox) ConnectSelectedRowsChanged(callback ListBoxSignalSelectedRo
 	defer signalListBoxSelectedRowsChangedLock.Unlock()
 
 	signalListBoxSelectedRowsChangedId++
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	handlerID := C.ListBox_signal_connect_selected_rows_changed(instance, C.gpointer(uintptr(signalListBoxSelectedRowsChangedId)))
 
 	detail := signalListBoxSelectedRowsChangedDetail{callback, handlerID}
@@ -1158,7 +1158,7 @@ func (recv *ListBox) DisconnectSelectedRowsChanged(connectionID int) {
 		return
 	}
 
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalListBoxSelectedRowsChangedMap, connectionID)
 }
@@ -1192,7 +1192,7 @@ func (recv *ListBox) ConnectUnselectAll(callback ListBoxSignalUnselectAllCallbac
 	defer signalListBoxUnselectAllLock.Unlock()
 
 	signalListBoxUnselectAllId++
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	handlerID := C.ListBox_signal_connect_unselect_all(instance, C.gpointer(uintptr(signalListBoxUnselectAllId)))
 
 	detail := signalListBoxUnselectAllDetail{callback, handlerID}
@@ -1215,7 +1215,7 @@ func (recv *ListBox) DisconnectUnselectAll(connectionID int) {
 		return
 	}
 
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalListBoxUnselectAllMap, connectionID)
 }
@@ -1336,7 +1336,7 @@ func (recv *PlacesSidebar) ConnectShowEnterLocation(callback PlacesSidebarSignal
 	defer signalPlacesSidebarShowEnterLocationLock.Unlock()
 
 	signalPlacesSidebarShowEnterLocationId++
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	handlerID := C.PlacesSidebar_signal_connect_show_enter_location(instance, C.gpointer(uintptr(signalPlacesSidebarShowEnterLocationId)))
 
 	detail := signalPlacesSidebarShowEnterLocationDetail{callback, handlerID}
@@ -1359,7 +1359,7 @@ func (recv *PlacesSidebar) DisconnectShowEnterLocation(connectionID int) {
 		return
 	}
 
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalPlacesSidebarShowEnterLocationMap, connectionID)
 }
@@ -1421,7 +1421,7 @@ func (recv *Switch) ConnectStateSet(callback SwitchSignalStateSetCallback) int {
 	defer signalSwitchStateSetLock.Unlock()
 
 	signalSwitchStateSetId++
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	handlerID := C.Switch_signal_connect_state_set(instance, C.gpointer(uintptr(signalSwitchStateSetId)))
 
 	detail := signalSwitchStateSetDetail{callback, handlerID}
@@ -1444,7 +1444,7 @@ func (recv *Switch) DisconnectStateSet(connectionID int) {
 		return
 	}
 
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalSwitchStateSetMap, connectionID)
 }

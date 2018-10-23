@@ -88,7 +88,7 @@ func (recv *AppInfoMonitor) ConnectChanged(callback AppInfoMonitorSignalChangedC
 	defer signalAppInfoMonitorChangedLock.Unlock()
 
 	signalAppInfoMonitorChangedId++
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	handlerID := C.AppInfoMonitor_signal_connect_changed(instance, C.gpointer(uintptr(signalAppInfoMonitorChangedId)))
 
 	detail := signalAppInfoMonitorChangedDetail{callback, handlerID}
@@ -111,7 +111,7 @@ func (recv *AppInfoMonitor) DisconnectChanged(connectionID int) {
 		return
 	}
 
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalAppInfoMonitorChangedMap, connectionID)
 }

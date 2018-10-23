@@ -701,7 +701,7 @@ func (recv *StatusIcon) ConnectScrollEvent(callback StatusIconSignalScrollEventC
 	defer signalStatusIconScrollEventLock.Unlock()
 
 	signalStatusIconScrollEventId++
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	handlerID := C.StatusIcon_signal_connect_scroll_event(instance, C.gpointer(uintptr(signalStatusIconScrollEventId)))
 
 	detail := signalStatusIconScrollEventDetail{callback, handlerID}
@@ -724,7 +724,7 @@ func (recv *StatusIcon) DisconnectScrollEvent(connectionID int) {
 		return
 	}
 
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalStatusIconScrollEventMap, connectionID)
 }
@@ -827,7 +827,7 @@ func (recv *TextBuffer) ConnectPasteDone(callback TextBufferSignalPasteDoneCallb
 	defer signalTextBufferPasteDoneLock.Unlock()
 
 	signalTextBufferPasteDoneId++
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	handlerID := C.TextBuffer_signal_connect_paste_done(instance, C.gpointer(uintptr(signalTextBufferPasteDoneId)))
 
 	detail := signalTextBufferPasteDoneDetail{callback, handlerID}
@@ -850,7 +850,7 @@ func (recv *TextBuffer) DisconnectPasteDone(connectionID int) {
 		return
 	}
 
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalTextBufferPasteDoneMap, connectionID)
 }

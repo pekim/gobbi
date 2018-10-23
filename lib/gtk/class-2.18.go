@@ -363,7 +363,7 @@ func (recv *InfoBar) ConnectClose(callback InfoBarSignalCloseCallback) int {
 	defer signalInfoBarCloseLock.Unlock()
 
 	signalInfoBarCloseId++
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	handlerID := C.InfoBar_signal_connect_close(instance, C.gpointer(uintptr(signalInfoBarCloseId)))
 
 	detail := signalInfoBarCloseDetail{callback, handlerID}
@@ -386,7 +386,7 @@ func (recv *InfoBar) DisconnectClose(connectionID int) {
 		return
 	}
 
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalInfoBarCloseMap, connectionID)
 }
@@ -521,7 +521,7 @@ func (recv *Label) ConnectActivateCurrentLink(callback LabelSignalActivateCurren
 	defer signalLabelActivateCurrentLinkLock.Unlock()
 
 	signalLabelActivateCurrentLinkId++
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	handlerID := C.Label_signal_connect_activate_current_link(instance, C.gpointer(uintptr(signalLabelActivateCurrentLinkId)))
 
 	detail := signalLabelActivateCurrentLinkDetail{callback, handlerID}
@@ -544,7 +544,7 @@ func (recv *Label) DisconnectActivateCurrentLink(connectionID int) {
 		return
 	}
 
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalLabelActivateCurrentLinkMap, connectionID)
 }
@@ -634,7 +634,7 @@ func (recv *PrintOperation) ConnectUpdateCustomWidget(callback PrintOperationSig
 	defer signalPrintOperationUpdateCustomWidgetLock.Unlock()
 
 	signalPrintOperationUpdateCustomWidgetId++
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	handlerID := C.PrintOperation_signal_connect_update_custom_widget(instance, C.gpointer(uintptr(signalPrintOperationUpdateCustomWidgetId)))
 
 	detail := signalPrintOperationUpdateCustomWidgetDetail{callback, handlerID}
@@ -657,7 +657,7 @@ func (recv *PrintOperation) DisconnectUpdateCustomWidget(connectionID int) {
 		return
 	}
 
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalPrintOperationUpdateCustomWidgetMap, connectionID)
 }

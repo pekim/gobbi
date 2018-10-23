@@ -483,7 +483,7 @@ func (recv *Cancellable) ConnectCancelled(callback CancellableSignalCancelledCal
 	defer signalCancellableCancelledLock.Unlock()
 
 	signalCancellableCancelledId++
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	handlerID := C.Cancellable_signal_connect_cancelled(instance, C.gpointer(uintptr(signalCancellableCancelledId)))
 
 	detail := signalCancellableCancelledDetail{callback, handlerID}
@@ -506,7 +506,7 @@ func (recv *Cancellable) DisconnectCancelled(connectionID int) {
 		return
 	}
 
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalCancellableCancelledMap, connectionID)
 }
@@ -2381,7 +2381,7 @@ func (recv *FilenameCompleter) ConnectGotCompletionData(callback FilenameComplet
 	defer signalFilenameCompleterGotCompletionDataLock.Unlock()
 
 	signalFilenameCompleterGotCompletionDataId++
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	handlerID := C.FilenameCompleter_signal_connect_got_completion_data(instance, C.gpointer(uintptr(signalFilenameCompleterGotCompletionDataId)))
 
 	detail := signalFilenameCompleterGotCompletionDataDetail{callback, handlerID}
@@ -2404,7 +2404,7 @@ func (recv *FilenameCompleter) DisconnectGotCompletionData(connectionID int) {
 		return
 	}
 
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalFilenameCompleterGotCompletionDataMap, connectionID)
 }
@@ -3546,7 +3546,7 @@ func (recv *Resolver) ConnectReload(callback ResolverSignalReloadCallback) int {
 	defer signalResolverReloadLock.Unlock()
 
 	signalResolverReloadId++
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	handlerID := C.Resolver_signal_connect_reload(instance, C.gpointer(uintptr(signalResolverReloadId)))
 
 	detail := signalResolverReloadDetail{callback, handlerID}
@@ -3569,7 +3569,7 @@ func (recv *Resolver) DisconnectReload(connectionID int) {
 		return
 	}
 
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalResolverReloadMap, connectionID)
 }
@@ -4472,7 +4472,7 @@ func (recv *UnixMountMonitor) ConnectMountpointsChanged(callback UnixMountMonito
 	defer signalUnixMountMonitorMountpointsChangedLock.Unlock()
 
 	signalUnixMountMonitorMountpointsChangedId++
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	handlerID := C.UnixMountMonitor_signal_connect_mountpoints_changed(instance, C.gpointer(uintptr(signalUnixMountMonitorMountpointsChangedId)))
 
 	detail := signalUnixMountMonitorMountpointsChangedDetail{callback, handlerID}
@@ -4495,7 +4495,7 @@ func (recv *UnixMountMonitor) DisconnectMountpointsChanged(connectionID int) {
 		return
 	}
 
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalUnixMountMonitorMountpointsChangedMap, connectionID)
 }
@@ -4529,7 +4529,7 @@ func (recv *UnixMountMonitor) ConnectMountsChanged(callback UnixMountMonitorSign
 	defer signalUnixMountMonitorMountsChangedLock.Unlock()
 
 	signalUnixMountMonitorMountsChangedId++
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	handlerID := C.UnixMountMonitor_signal_connect_mounts_changed(instance, C.gpointer(uintptr(signalUnixMountMonitorMountsChangedId)))
 
 	detail := signalUnixMountMonitorMountsChangedDetail{callback, handlerID}
@@ -4552,7 +4552,7 @@ func (recv *UnixMountMonitor) DisconnectMountsChanged(connectionID int) {
 		return
 	}
 
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalUnixMountMonitorMountsChangedMap, connectionID)
 }

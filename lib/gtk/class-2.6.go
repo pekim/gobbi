@@ -414,7 +414,7 @@ func (recv *Clipboard) ConnectOwnerChange(callback ClipboardSignalOwnerChangeCal
 	defer signalClipboardOwnerChangeLock.Unlock()
 
 	signalClipboardOwnerChangeId++
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	handlerID := C.Clipboard_signal_connect_owner_change(instance, C.gpointer(uintptr(signalClipboardOwnerChangeId)))
 
 	detail := signalClipboardOwnerChangeDetail{callback, handlerID}
@@ -437,7 +437,7 @@ func (recv *Clipboard) DisconnectOwnerChange(connectionID int) {
 		return
 	}
 
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalClipboardOwnerChangeMap, connectionID)
 }

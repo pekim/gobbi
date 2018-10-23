@@ -1599,7 +1599,7 @@ func (recv *StyleContext) ConnectChanged(callback StyleContextSignalChangedCallb
 	defer signalStyleContextChangedLock.Unlock()
 
 	signalStyleContextChangedId++
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	handlerID := C.StyleContext_signal_connect_changed(instance, C.gpointer(uintptr(signalStyleContextChangedId)))
 
 	detail := signalStyleContextChangedDetail{callback, handlerID}
@@ -1622,7 +1622,7 @@ func (recv *StyleContext) DisconnectChanged(connectionID int) {
 		return
 	}
 
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalStyleContextChangedMap, connectionID)
 }
@@ -2360,7 +2360,7 @@ func (recv *Widget) ConnectDraw(callback WidgetSignalDrawCallback) int {
 	defer signalWidgetDrawLock.Unlock()
 
 	signalWidgetDrawId++
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	handlerID := C.Widget_signal_connect_draw(instance, C.gpointer(uintptr(signalWidgetDrawId)))
 
 	detail := signalWidgetDrawDetail{callback, handlerID}
@@ -2383,7 +2383,7 @@ func (recv *Widget) DisconnectDraw(connectionID int) {
 		return
 	}
 
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalWidgetDrawMap, connectionID)
 }
@@ -2424,7 +2424,7 @@ func (recv *Widget) ConnectStyleUpdated(callback WidgetSignalStyleUpdatedCallbac
 	defer signalWidgetStyleUpdatedLock.Unlock()
 
 	signalWidgetStyleUpdatedId++
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	handlerID := C.Widget_signal_connect_style_updated(instance, C.gpointer(uintptr(signalWidgetStyleUpdatedId)))
 
 	detail := signalWidgetStyleUpdatedDetail{callback, handlerID}
@@ -2447,7 +2447,7 @@ func (recv *Widget) DisconnectStyleUpdated(connectionID int) {
 		return
 	}
 
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalWidgetStyleUpdatedMap, connectionID)
 }

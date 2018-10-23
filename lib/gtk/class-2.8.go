@@ -394,7 +394,7 @@ func (recv *Widget) ConnectGrabBrokenEvent(callback WidgetSignalGrabBrokenEventC
 	defer signalWidgetGrabBrokenEventLock.Unlock()
 
 	signalWidgetGrabBrokenEventId++
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	handlerID := C.Widget_signal_connect_grab_broken_event(instance, C.gpointer(uintptr(signalWidgetGrabBrokenEventId)))
 
 	detail := signalWidgetGrabBrokenEventDetail{callback, handlerID}
@@ -417,7 +417,7 @@ func (recv *Widget) DisconnectGrabBrokenEvent(connectionID int) {
 		return
 	}
 
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalWidgetGrabBrokenEventMap, connectionID)
 }

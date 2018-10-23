@@ -108,7 +108,7 @@ func (recv *Application) ConnectActivate(callback ApplicationSignalActivateCallb
 	defer signalApplicationActivateLock.Unlock()
 
 	signalApplicationActivateId++
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	handlerID := C.Application_signal_connect_activate(instance, C.gpointer(uintptr(signalApplicationActivateId)))
 
 	detail := signalApplicationActivateDetail{callback, handlerID}
@@ -131,7 +131,7 @@ func (recv *Application) DisconnectActivate(connectionID int) {
 		return
 	}
 
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalApplicationActivateMap, connectionID)
 }
@@ -169,7 +169,7 @@ func (recv *Application) ConnectShutdown(callback ApplicationSignalShutdownCallb
 	defer signalApplicationShutdownLock.Unlock()
 
 	signalApplicationShutdownId++
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	handlerID := C.Application_signal_connect_shutdown(instance, C.gpointer(uintptr(signalApplicationShutdownId)))
 
 	detail := signalApplicationShutdownDetail{callback, handlerID}
@@ -192,7 +192,7 @@ func (recv *Application) DisconnectShutdown(connectionID int) {
 		return
 	}
 
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalApplicationShutdownMap, connectionID)
 }
@@ -226,7 +226,7 @@ func (recv *Application) ConnectStartup(callback ApplicationSignalStartupCallbac
 	defer signalApplicationStartupLock.Unlock()
 
 	signalApplicationStartupId++
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	handlerID := C.Application_signal_connect_startup(instance, C.gpointer(uintptr(signalApplicationStartupId)))
 
 	detail := signalApplicationStartupDetail{callback, handlerID}
@@ -249,7 +249,7 @@ func (recv *Application) DisconnectStartup(connectionID int) {
 		return
 	}
 
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalApplicationStartupMap, connectionID)
 }

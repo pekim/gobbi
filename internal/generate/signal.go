@@ -269,14 +269,10 @@ The returned value represents the connection, and may be passed to %s to remove 
 			//	signalKeyPressEventId++
 			g.Id(s.varNameId).Op("++")
 
-			//	instance := C.gpointer(recv.Object().ToC())
-			targetCValue := jen.Id("recv").
-				Op(".").Id("Object").Call().
-				Op(".").Id("ToC").Call()
+			// instance := C.gpointer(recv.native)
 			g.
 				Id("instance").Op(":=").
-				Qual("C", "gpointer").
-				Call(targetCValue)
+				Qual("C", "gpointer").Call(jen.Id("recv").Dot("native"))
 
 			//	retC := C.signal_connect_key_press_event(instance, C.gpointer(uintptr(signalKeyPressEventId)))
 			g.
@@ -340,14 +336,10 @@ The connectionID should be a value returned from a call to %s.`,
 
 			g.Line()
 
-			targetCValue := jen.Id("recv").
-				Op(".").Id("Object").Call().
-				Op(".").Id("ToC").Call()
-			//	instance := C.gpointer(recv.Object().ToC())
+			// instance := C.gpointer(recv.native)
 			g.
 				Id("instance").Op(":=").
-				Qual("C", "gpointer").
-				Call(targetCValue)
+				Qual("C", "gpointer").Call(jen.Id("recv").Dot("native"))
 
 			// C.g_signal_handler_disconnect(instance, detail.handlerID)
 			g.

@@ -84,7 +84,7 @@ func (recv *Application) ConnectWindowAdded(callback ApplicationSignalWindowAdde
 	defer signalApplicationWindowAddedLock.Unlock()
 
 	signalApplicationWindowAddedId++
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	handlerID := C.Application_signal_connect_window_added(instance, C.gpointer(uintptr(signalApplicationWindowAddedId)))
 
 	detail := signalApplicationWindowAddedDetail{callback, handlerID}
@@ -107,7 +107,7 @@ func (recv *Application) DisconnectWindowAdded(connectionID int) {
 		return
 	}
 
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalApplicationWindowAddedMap, connectionID)
 }
@@ -143,7 +143,7 @@ func (recv *Application) ConnectWindowRemoved(callback ApplicationSignalWindowRe
 	defer signalApplicationWindowRemovedLock.Unlock()
 
 	signalApplicationWindowRemovedId++
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	handlerID := C.Application_signal_connect_window_removed(instance, C.gpointer(uintptr(signalApplicationWindowRemovedId)))
 
 	detail := signalApplicationWindowRemovedDetail{callback, handlerID}
@@ -166,7 +166,7 @@ func (recv *Application) DisconnectWindowRemoved(connectionID int) {
 		return
 	}
 
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalApplicationWindowRemovedMap, connectionID)
 }

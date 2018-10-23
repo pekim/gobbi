@@ -71,7 +71,7 @@ func (recv *Display) ConnectSeatAdded(callback DisplaySignalSeatAddedCallback) i
 	defer signalDisplaySeatAddedLock.Unlock()
 
 	signalDisplaySeatAddedId++
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	handlerID := C.Display_signal_connect_seat_added(instance, C.gpointer(uintptr(signalDisplaySeatAddedId)))
 
 	detail := signalDisplaySeatAddedDetail{callback, handlerID}
@@ -94,7 +94,7 @@ func (recv *Display) DisconnectSeatAdded(connectionID int) {
 		return
 	}
 
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalDisplaySeatAddedMap, connectionID)
 }
@@ -130,7 +130,7 @@ func (recv *Display) ConnectSeatRemoved(callback DisplaySignalSeatRemovedCallbac
 	defer signalDisplaySeatRemovedLock.Unlock()
 
 	signalDisplaySeatRemovedId++
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	handlerID := C.Display_signal_connect_seat_removed(instance, C.gpointer(uintptr(signalDisplaySeatRemovedId)))
 
 	detail := signalDisplaySeatRemovedDetail{callback, handlerID}
@@ -153,7 +153,7 @@ func (recv *Display) DisconnectSeatRemoved(connectionID int) {
 		return
 	}
 
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalDisplaySeatRemovedMap, connectionID)
 }
@@ -209,7 +209,7 @@ func (recv *DragContext) ConnectDndFinished(callback DragContextSignalDndFinishe
 	defer signalDragContextDndFinishedLock.Unlock()
 
 	signalDragContextDndFinishedId++
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	handlerID := C.DragContext_signal_connect_dnd_finished(instance, C.gpointer(uintptr(signalDragContextDndFinishedId)))
 
 	detail := signalDragContextDndFinishedDetail{callback, handlerID}
@@ -232,7 +232,7 @@ func (recv *DragContext) DisconnectDndFinished(connectionID int) {
 		return
 	}
 
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalDragContextDndFinishedMap, connectionID)
 }

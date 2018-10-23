@@ -136,7 +136,7 @@ func (recv *Hyperlink) ConnectLinkActivated(callback HyperlinkSignalLinkActivate
 	defer signalHyperlinkLinkActivatedLock.Unlock()
 
 	signalHyperlinkLinkActivatedId++
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	handlerID := C.Hyperlink_signal_connect_link_activated(instance, C.gpointer(uintptr(signalHyperlinkLinkActivatedId)))
 
 	detail := signalHyperlinkLinkActivatedDetail{callback, handlerID}
@@ -159,7 +159,7 @@ func (recv *Hyperlink) DisconnectLinkActivated(connectionID int) {
 		return
 	}
 
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalHyperlinkLinkActivatedMap, connectionID)
 }
@@ -433,7 +433,7 @@ func (recv *Object) ConnectFocusEvent(callback ObjectSignalFocusEventCallback) i
 	defer signalObjectFocusEventLock.Unlock()
 
 	signalObjectFocusEventId++
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	handlerID := C.Object_signal_connect_focus_event(instance, C.gpointer(uintptr(signalObjectFocusEventId)))
 
 	detail := signalObjectFocusEventDetail{callback, handlerID}
@@ -456,7 +456,7 @@ func (recv *Object) DisconnectFocusEvent(connectionID int) {
 		return
 	}
 
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalObjectFocusEventMap, connectionID)
 }
@@ -496,7 +496,7 @@ func (recv *Object) ConnectVisibleDataChanged(callback ObjectSignalVisibleDataCh
 	defer signalObjectVisibleDataChangedLock.Unlock()
 
 	signalObjectVisibleDataChangedId++
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	handlerID := C.Object_signal_connect_visible_data_changed(instance, C.gpointer(uintptr(signalObjectVisibleDataChangedId)))
 
 	detail := signalObjectVisibleDataChangedDetail{callback, handlerID}
@@ -519,7 +519,7 @@ func (recv *Object) DisconnectVisibleDataChanged(connectionID int) {
 		return
 	}
 
-	instance := C.gpointer(recv.Object().ToC())
+	instance := C.gpointer(recv.native)
 	C.g_signal_handler_disconnect(instance, detail.handlerID)
 	delete(signalObjectVisibleDataChangedMap, connectionID)
 }
