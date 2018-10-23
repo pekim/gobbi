@@ -294,6 +294,7 @@ func (recv *BufferedInputStream) SetBufferSize(size uint64) {
 	return
 }
 
+// Seekable returns the Seekable interface implemented by BufferedInputStream
 func (recv *BufferedInputStream) Seekable() *Seekable {
 	return SeekableNewFromC(recv.ToC())
 }
@@ -399,6 +400,7 @@ func (recv *BufferedOutputStream) SetBufferSize(size uint64) {
 	return
 }
 
+// Seekable returns the Seekable interface implemented by BufferedOutputStream
 func (recv *BufferedOutputStream) Seekable() *Seekable {
 	return SeekableNewFromC(recv.ToC())
 }
@@ -435,10 +437,12 @@ func CastToBytesIcon(object *gobject.Object) *BytesIcon {
 	return BytesIconNewFromC(object.ToC())
 }
 
+// Icon returns the Icon interface implemented by BytesIcon
 func (recv *BytesIcon) Icon() *Icon {
 	return IconNewFromC(recv.ToC())
 }
 
+// LoadableIcon returns the LoadableIcon interface implemented by BytesIcon
 func (recv *BytesIcon) LoadableIcon() *LoadableIcon {
 	return LoadableIconNewFromC(recv.ToC())
 }
@@ -633,10 +637,12 @@ func CastToCharsetConverter(object *gobject.Object) *CharsetConverter {
 	return CharsetConverterNewFromC(object.ToC())
 }
 
+// Converter returns the Converter interface implemented by CharsetConverter
 func (recv *CharsetConverter) Converter() *Converter {
 	return ConverterNewFromC(recv.ToC())
 }
 
+// Initable returns the Initable interface implemented by CharsetConverter
 func (recv *CharsetConverter) Initable() *Initable {
 	return InitableNewFromC(recv.ToC())
 }
@@ -687,6 +693,7 @@ func CastToConverterInputStream(object *gobject.Object) *ConverterInputStream {
 
 // Unsupported : g_converter_input_stream_new : unsupported parameter converter : no type generator for Converter, GConverter*
 
+// PollableInputStream returns the PollableInputStream interface implemented by ConverterInputStream
 func (recv *ConverterInputStream) PollableInputStream() *PollableInputStream {
 	return PollableInputStreamNewFromC(recv.ToC())
 }
@@ -737,6 +744,7 @@ func CastToConverterOutputStream(object *gobject.Object) *ConverterOutputStream 
 
 // Unsupported : g_converter_output_stream_new : unsupported parameter converter : no type generator for Converter, GConverter*
 
+// PollableOutputStream returns the PollableOutputStream interface implemented by ConverterOutputStream
 func (recv *ConverterOutputStream) PollableOutputStream() *PollableOutputStream {
 	return PollableOutputStreamNewFromC(recv.ToC())
 }
@@ -773,10 +781,12 @@ func CastToDBusActionGroup(object *gobject.Object) *DBusActionGroup {
 	return DBusActionGroupNewFromC(object.ToC())
 }
 
+// ActionGroup returns the ActionGroup interface implemented by DBusActionGroup
 func (recv *DBusActionGroup) ActionGroup() *ActionGroup {
 	return ActionGroupNewFromC(recv.ToC())
 }
 
+// RemoteActionGroup returns the RemoteActionGroup interface implemented by DBusActionGroup
 func (recv *DBusActionGroup) RemoteActionGroup() *RemoteActionGroup {
 	return RemoteActionGroupNewFromC(recv.ToC())
 }
@@ -1057,6 +1067,7 @@ func (recv *DataInputStream) SetNewlineType(type_ DataStreamNewlineType) {
 	return
 }
 
+// Seekable returns the Seekable interface implemented by DataInputStream
 func (recv *DataInputStream) Seekable() *Seekable {
 	return SeekableNewFromC(recv.ToC())
 }
@@ -1285,6 +1296,7 @@ func (recv *DataOutputStream) SetByteOrder(order DataStreamByteOrder) {
 	return
 }
 
+// Seekable returns the Seekable interface implemented by DataOutputStream
 func (recv *DataOutputStream) Seekable() *Seekable {
 	return SeekableNewFromC(recv.ToC())
 }
@@ -1369,6 +1381,7 @@ func (recv *DesktopAppInfo) GetIsHidden() bool {
 
 // Unsupported : g_desktop_app_info_launch_uris_as_manager : unsupported parameter user_setup : no type generator for GLib.SpawnChildSetupFunc, GSpawnChildSetupFunc
 
+// AppInfo returns the AppInfo interface implemented by DesktopAppInfo
 func (recv *DesktopAppInfo) AppInfo() *AppInfo {
 	return AppInfoNewFromC(recv.ToC())
 }
@@ -1409,6 +1422,7 @@ func CastToEmblem(object *gobject.Object) *Emblem {
 
 // Unsupported : g_emblem_new_with_origin : unsupported parameter icon : no type generator for Icon, GIcon*
 
+// Icon returns the Icon interface implemented by Emblem
 func (recv *Emblem) Icon() *Icon {
 	return IconNewFromC(recv.ToC())
 }
@@ -1449,6 +1463,7 @@ func CastToEmblemedIcon(object *gobject.Object) *EmblemedIcon {
 
 // Unsupported : g_emblemed_icon_new : unsupported parameter icon : no type generator for Icon, GIcon*
 
+// Icon returns the Icon interface implemented by EmblemedIcon
 func (recv *EmblemedIcon) Icon() *Icon {
 	return IconNewFromC(recv.ToC())
 }
@@ -1594,6 +1609,7 @@ func CastToFileIOStream(object *gobject.Object) *FileIOStream {
 	return FileIOStreamNewFromC(object.ToC())
 }
 
+// Seekable returns the Seekable interface implemented by FileIOStream
 func (recv *FileIOStream) Seekable() *Seekable {
 	return SeekableNewFromC(recv.ToC())
 }
@@ -1634,10 +1650,12 @@ func CastToFileIcon(object *gobject.Object) *FileIcon {
 
 // Unsupported : g_file_icon_get_file : no return generator
 
+// Icon returns the Icon interface implemented by FileIcon
 func (recv *FileIcon) Icon() *Icon {
 	return IconNewFromC(recv.ToC())
 }
 
+// LoadableIcon returns the LoadableIcon interface implemented by FileIcon
 func (recv *FileIcon) LoadableIcon() *LoadableIcon {
 	return LoadableIconNewFromC(recv.ToC())
 }
@@ -2264,6 +2282,7 @@ func (recv *FileInputStream) QueryInfo(attributes string, cancellable *Cancellab
 
 // Unsupported : g_file_input_stream_query_info_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
 
+// Seekable returns the Seekable interface implemented by FileInputStream
 func (recv *FileInputStream) Seekable() *Seekable {
 	return SeekableNewFromC(recv.ToC())
 }
@@ -2403,6 +2422,7 @@ func (recv *FileOutputStream) QueryInfo(attributes string, cancellable *Cancella
 
 // Unsupported : g_file_output_stream_query_info_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
 
+// Seekable returns the Seekable interface implemented by FileOutputStream
 func (recv *FileOutputStream) Seekable() *Seekable {
 	return SeekableNewFromC(recv.ToC())
 }
@@ -2700,6 +2720,7 @@ func IOModuleNew(filename string) *IOModule {
 
 // Blacklisted : g_io_module_unload
 
+// TypePlugin returns the TypePlugin interface implemented by IOModule
 func (recv *IOModule) TypePlugin() *gobject.TypePlugin {
 	return gobject.TypePluginNewFromC(recv.ToC())
 }
@@ -2813,6 +2834,7 @@ func CastToInetSocketAddress(object *gobject.Object) *InetSocketAddress {
 	return InetSocketAddressNewFromC(object.ToC())
 }
 
+// SocketConnectable returns the SocketConnectable interface implemented by InetSocketAddress
 func (recv *InetSocketAddress) SocketConnectable() *SocketConnectable {
 	return SocketConnectableNewFromC(recv.ToC())
 }
@@ -2975,6 +2997,7 @@ func CastToListStore(object *gobject.Object) *ListStore {
 
 // Unsupported : g_list_store_new : unsupported parameter item_type : no type generator for GType, GType
 
+// ListModel returns the ListModel interface implemented by ListStore
 func (recv *ListStore) ListModel() *ListModel {
 	return ListModelNewFromC(recv.ToC())
 }
@@ -3030,10 +3053,12 @@ func MemoryInputStreamNew() *MemoryInputStream {
 
 // Unsupported : g_memory_input_stream_add_data : unsupported parameter data : no param type
 
+// PollableInputStream returns the PollableInputStream interface implemented by MemoryInputStream
 func (recv *MemoryInputStream) PollableInputStream() *PollableInputStream {
 	return PollableInputStreamNewFromC(recv.ToC())
 }
 
+// Seekable returns the Seekable interface implemented by MemoryInputStream
 func (recv *MemoryInputStream) Seekable() *Seekable {
 	return SeekableNewFromC(recv.ToC())
 }
@@ -3095,10 +3120,12 @@ func (recv *MemoryOutputStream) GetSize() uint64 {
 	return retGo
 }
 
+// PollableOutputStream returns the PollableOutputStream interface implemented by MemoryOutputStream
 func (recv *MemoryOutputStream) PollableOutputStream() *PollableOutputStream {
 	return PollableOutputStreamNewFromC(recv.ToC())
 }
 
+// Seekable returns the Seekable interface implemented by MemoryOutputStream
 func (recv *MemoryOutputStream) Seekable() *Seekable {
 	return SeekableNewFromC(recv.ToC())
 }
@@ -3338,6 +3365,7 @@ func CastToNetworkAddress(object *gobject.Object) *NetworkAddress {
 	return NetworkAddressNewFromC(object.ToC())
 }
 
+// SocketConnectable returns the SocketConnectable interface implemented by NetworkAddress
 func (recv *NetworkAddress) SocketConnectable() *SocketConnectable {
 	return SocketConnectableNewFromC(recv.ToC())
 }
@@ -3376,6 +3404,7 @@ func CastToNetworkService(object *gobject.Object) *NetworkService {
 	return NetworkServiceNewFromC(object.ToC())
 }
 
+// SocketConnectable returns the SocketConnectable interface implemented by NetworkService
 func (recv *NetworkService) SocketConnectable() *SocketConnectable {
 	return SocketConnectableNewFromC(recv.ToC())
 }
@@ -3865,6 +3894,7 @@ func CastToSimpleAction(object *gobject.Object) *SimpleAction {
 
 // Unsupported : g_simple_action_new_stateful : unsupported parameter parameter_type : Blacklisted record : GVariantType
 
+// Action returns the Action interface implemented by SimpleAction
 func (recv *SimpleAction) Action() *Action {
 	return ActionNewFromC(recv.ToC())
 }
@@ -4016,6 +4046,7 @@ func (recv *SimpleAsyncResult) SetOpResGssize(opRes int64) {
 	return
 }
 
+// AsyncResult returns the AsyncResult interface implemented by SimpleAsyncResult
 func (recv *SimpleAsyncResult) AsyncResult() *AsyncResult {
 	return AsyncResultNewFromC(recv.ToC())
 }
@@ -4091,6 +4122,7 @@ func CastToSimpleProxyResolver(object *gobject.Object) *SimpleProxyResolver {
 	return SimpleProxyResolverNewFromC(object.ToC())
 }
 
+// ProxyResolver returns the ProxyResolver interface implemented by SimpleProxyResolver
 func (recv *SimpleProxyResolver) ProxyResolver() *ProxyResolver {
 	return ProxyResolverNewFromC(recv.ToC())
 }
@@ -4128,6 +4160,7 @@ func CastToSocketAddress(object *gobject.Object) *SocketAddress {
 	return SocketAddressNewFromC(object.ToC())
 }
 
+// SocketConnectable returns the SocketConnectable interface implemented by SocketAddress
 func (recv *SocketAddress) SocketConnectable() *SocketConnectable {
 	return SocketConnectableNewFromC(recv.ToC())
 }
@@ -4254,6 +4287,7 @@ func CastToTask(object *gobject.Object) *Task {
 
 // Unsupported : g_task_new : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
 
+// AsyncResult returns the AsyncResult interface implemented by Task
 func (recv *Task) AsyncResult() *AsyncResult {
 	return AsyncResultNewFromC(recv.ToC())
 }
@@ -4383,6 +4417,7 @@ func (recv *ThemedIcon) AppendName(iconname string) {
 
 // Unsupported : g_themed_icon_get_names : no return type
 
+// Icon returns the Icon interface implemented by ThemedIcon
 func (recv *ThemedIcon) Icon() *Icon {
 	return IconNewFromC(recv.ToC())
 }
@@ -4558,10 +4593,12 @@ func UnixInputStreamNew(fd int32, closeFd bool) *UnixInputStream {
 	return retGo
 }
 
+// FileDescriptorBased returns the FileDescriptorBased interface implemented by UnixInputStream
 func (recv *UnixInputStream) FileDescriptorBased() *FileDescriptorBased {
 	return FileDescriptorBasedNewFromC(recv.ToC())
 }
 
+// PollableInputStream returns the PollableInputStream interface implemented by UnixInputStream
 func (recv *UnixInputStream) PollableInputStream() *PollableInputStream {
 	return PollableInputStreamNewFromC(recv.ToC())
 }
@@ -4772,10 +4809,12 @@ func UnixOutputStreamNew(fd int32, closeFd bool) *UnixOutputStream {
 	return retGo
 }
 
+// FileDescriptorBased returns the FileDescriptorBased interface implemented by UnixOutputStream
 func (recv *UnixOutputStream) FileDescriptorBased() *FileDescriptorBased {
 	return FileDescriptorBasedNewFromC(recv.ToC())
 }
 
+// PollableOutputStream returns the PollableOutputStream interface implemented by UnixOutputStream
 func (recv *UnixOutputStream) PollableOutputStream() *PollableOutputStream {
 	return PollableOutputStreamNewFromC(recv.ToC())
 }
@@ -4823,6 +4862,7 @@ func CastToUnixSocketAddress(object *gobject.Object) *UnixSocketAddress {
 
 // Unsupported : g_unix_socket_address_new_with_type : unsupported parameter path : no param type
 
+// SocketConnectable returns the SocketConnectable interface implemented by UnixSocketAddress
 func (recv *UnixSocketAddress) SocketConnectable() *SocketConnectable {
 	return SocketConnectableNewFromC(recv.ToC())
 }
@@ -4990,6 +5030,7 @@ func CastToZlibCompressor(object *gobject.Object) *ZlibCompressor {
 	return ZlibCompressorNewFromC(object.ToC())
 }
 
+// Converter returns the Converter interface implemented by ZlibCompressor
 func (recv *ZlibCompressor) Converter() *Converter {
 	return ConverterNewFromC(recv.ToC())
 }
@@ -5026,6 +5067,7 @@ func CastToZlibDecompressor(object *gobject.Object) *ZlibDecompressor {
 	return ZlibDecompressorNewFromC(object.ToC())
 }
 
+// Converter returns the Converter interface implemented by ZlibDecompressor
 func (recv *ZlibDecompressor) Converter() *Converter {
 	return ConverterNewFromC(recv.ToC())
 }

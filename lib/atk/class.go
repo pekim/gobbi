@@ -232,6 +232,7 @@ func (recv *Hyperlink) IsValid() bool {
 	return retGo
 }
 
+// Action returns the Action interface implemented by Hyperlink
 func (recv *Hyperlink) Action() *Action {
 	return ActionNewFromC(recv.ToC())
 }
@@ -312,50 +313,62 @@ func NoOpObjectNew(obj *gobject.Object) *NoOpObject {
 	return retGo
 }
 
+// Action returns the Action interface implemented by NoOpObject
 func (recv *NoOpObject) Action() *Action {
 	return ActionNewFromC(recv.ToC())
 }
 
+// Component returns the Component interface implemented by NoOpObject
 func (recv *NoOpObject) Component() *Component {
 	return ComponentNewFromC(recv.ToC())
 }
 
+// Document returns the Document interface implemented by NoOpObject
 func (recv *NoOpObject) Document() *Document {
 	return DocumentNewFromC(recv.ToC())
 }
 
+// EditableText returns the EditableText interface implemented by NoOpObject
 func (recv *NoOpObject) EditableText() *EditableText {
 	return EditableTextNewFromC(recv.ToC())
 }
 
+// Hypertext returns the Hypertext interface implemented by NoOpObject
 func (recv *NoOpObject) Hypertext() *Hypertext {
 	return HypertextNewFromC(recv.ToC())
 }
 
+// Image returns the Image interface implemented by NoOpObject
 func (recv *NoOpObject) Image() *Image {
 	return ImageNewFromC(recv.ToC())
 }
 
+// Selection returns the Selection interface implemented by NoOpObject
 func (recv *NoOpObject) Selection() *Selection {
 	return SelectionNewFromC(recv.ToC())
 }
 
+// Table returns the Table interface implemented by NoOpObject
 func (recv *NoOpObject) Table() *Table {
 	return TableNewFromC(recv.ToC())
 }
 
+// TableCell returns the TableCell interface implemented by NoOpObject
 func (recv *NoOpObject) TableCell() *TableCell {
 	return TableCellNewFromC(recv.ToC())
 }
 
+// Text returns the Text interface implemented by NoOpObject
 func (recv *NoOpObject) Text() *Text {
 	return TextNewFromC(recv.ToC())
 }
 
+// Value returns the Value interface implemented by NoOpObject
 func (recv *NoOpObject) Value() *Value {
 	return ValueNewFromC(recv.ToC())
 }
 
+// Window returns the Window interface implemented by NoOpObject
 func (recv *NoOpObject) Window() *Window {
 	return WindowNewFromC(recv.ToC())
 }
@@ -868,6 +881,7 @@ func PlugNew() *Plug {
 	return retGo
 }
 
+// Component returns the Component interface implemented by Plug
 func (recv *Plug) Component() *Component {
 	return ComponentNewFromC(recv.ToC())
 }
@@ -1127,6 +1141,7 @@ func SocketNew() *Socket {
 	return retGo
 }
 
+// Component returns the Component interface implemented by Socket
 func (recv *Socket) Component() *Component {
 	return ComponentNewFromC(recv.ToC())
 }

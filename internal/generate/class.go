@@ -38,6 +38,9 @@ func (c *Class) generateImplements(g *jen.Group, implements *Implements) {
 		panic(fmt.Sprintf("Failed to interface %s for %s", implements.Name, c.Name))
 	}
 
+	g.Commentf("%s returns the %s interface implemented by %s",
+		qname.name, qname.name, c.GoName)
+
 	/*
 		func (recv *MyClass) MyInterface() *MyInterface {
 			return MyInterfaceNewFromC(recv.ToC())

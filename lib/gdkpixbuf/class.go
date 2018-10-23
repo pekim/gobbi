@@ -414,10 +414,12 @@ func (recv *Pixbuf) Unref() {
 	return
 }
 
+// Icon returns the Icon interface implemented by Pixbuf
 func (recv *Pixbuf) Icon() *gio.Icon {
 	return gio.IconNewFromC(recv.ToC())
 }
 
+// LoadableIcon returns the LoadableIcon interface implemented by Pixbuf
 func (recv *Pixbuf) LoadableIcon() *gio.LoadableIcon {
 	return gio.LoadableIconNewFromC(recv.ToC())
 }
