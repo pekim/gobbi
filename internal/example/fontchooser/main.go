@@ -27,6 +27,8 @@ func main() {
 	printFont := func() {
 		fmt.Println(fontChooserButton.GetFontName())
 		fmt.Println("  ", fontChooser.GetFontDesc().GetFamily())
+
+		fontChooserButton.Widget().ModifyFont(fontChooser.GetFontDesc())
 	}
 
 	printFont()
