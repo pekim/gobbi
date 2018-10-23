@@ -62,6 +62,7 @@ func (ns *Namespace) mergeAddenda(addenda *Namespace) {
 		ns.Constants.mergeAddenda(addenda.Constants)
 		ns.Enumerations.mergeAddenda(addenda.Enumerations)
 		ns.Functions.mergeAddenda(addenda.Functions)
+		ns.Interfaces.mergeAddenda(addenda.Interfaces)
 		ns.Records.mergeAddenda(addenda.Records)
 	}
 }
@@ -87,6 +88,7 @@ func (ns *Namespace) generate() {
 	ns.generateGeneratables("constant", ns.Constants)
 	ns.generateGeneratables("enum", ns.Enumerations)
 	ns.generateGeneratables("function", ns.Functions)
+	ns.generateGeneratables("interface", ns.Interfaces)
 	ns.generateGeneratables("record", ns.Records)
 }
 
