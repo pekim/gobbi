@@ -8,5 +8,4 @@ A lot of objects have NewFromC and ToC functions.
 They are primarily intended for internal (sometimes cross-package) use by gobbi.
 
 */
-
 package lib
