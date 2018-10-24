@@ -37,7 +37,12 @@ func (recv *Pixbuf) SetOption(key string, value string) bool {
 // GetFormat is a wrapper around the C function gdk_pixbuf_loader_get_format.
 func (recv *PixbufLoader) GetFormat() *PixbufFormat {
 	retC := C.gdk_pixbuf_loader_get_format((*C.GdkPixbufLoader)(recv.native))
-	retGo := PixbufFormatNewFromC(unsafe.Pointer(retC))
+	var retGo (*PixbufFormat)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = PixbufFormatNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }

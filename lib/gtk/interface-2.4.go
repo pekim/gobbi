@@ -158,7 +158,12 @@ func (recv *FileChooser) GetCurrentFolderUri() string {
 // GetExtraWidget is a wrapper around the C function gtk_file_chooser_get_extra_widget.
 func (recv *FileChooser) GetExtraWidget() *Widget {
 	retC := C.gtk_file_chooser_get_extra_widget((*C.GtkFileChooser)(recv.native))
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	var retGo (*Widget)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = WidgetNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -183,7 +188,12 @@ func (recv *FileChooser) GetFilenames() *glib.SList {
 // GetFilter is a wrapper around the C function gtk_file_chooser_get_filter.
 func (recv *FileChooser) GetFilter() *FileFilter {
 	retC := C.gtk_file_chooser_get_filter((*C.GtkFileChooser)(recv.native))
-	retGo := FileFilterNewFromC(unsafe.Pointer(retC))
+	var retGo (*FileFilter)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = FileFilterNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -217,7 +227,12 @@ func (recv *FileChooser) GetPreviewUri() string {
 // GetPreviewWidget is a wrapper around the C function gtk_file_chooser_get_preview_widget.
 func (recv *FileChooser) GetPreviewWidget() *Widget {
 	retC := C.gtk_file_chooser_get_preview_widget((*C.GtkFileChooser)(recv.native))
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	var retGo (*Widget)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = WidgetNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -266,7 +281,12 @@ func (recv *FileChooser) ListFilters() *glib.SList {
 // ListShortcutFolderUris is a wrapper around the C function gtk_file_chooser_list_shortcut_folder_uris.
 func (recv *FileChooser) ListShortcutFolderUris() *glib.SList {
 	retC := C.gtk_file_chooser_list_shortcut_folder_uris((*C.GtkFileChooser)(recv.native))
-	retGo := glib.SListNewFromC(unsafe.Pointer(retC))
+	var retGo (*glib.SList)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = glib.SListNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -274,7 +294,12 @@ func (recv *FileChooser) ListShortcutFolderUris() *glib.SList {
 // ListShortcutFolders is a wrapper around the C function gtk_file_chooser_list_shortcut_folders.
 func (recv *FileChooser) ListShortcutFolders() *glib.SList {
 	retC := C.gtk_file_chooser_list_shortcut_folders((*C.GtkFileChooser)(recv.native))
-	retGo := glib.SListNewFromC(unsafe.Pointer(retC))
+	var retGo (*glib.SList)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = glib.SListNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }

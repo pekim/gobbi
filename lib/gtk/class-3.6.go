@@ -50,7 +50,12 @@ func (recv *ActionGroup) SetAccelGroup(accelGroup *AccelGroup) {
 // GetActiveWindow is a wrapper around the C function gtk_application_get_active_window.
 func (recv *Application) GetActiveWindow() *Window {
 	retC := C.gtk_application_get_active_window((*C.GtkApplication)(recv.native))
-	retGo := WindowNewFromC(unsafe.Pointer(retC))
+	var retGo (*Window)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = WindowNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -60,7 +65,12 @@ func (recv *Application) GetWindowById(id uint32) *Window {
 	c_id := (C.guint)(id)
 
 	retC := C.gtk_application_get_window_by_id((*C.GtkApplication)(recv.native), c_id)
-	retGo := WindowNewFromC(unsafe.Pointer(retC))
+	var retGo (*Window)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = WindowNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -102,7 +112,12 @@ func (recv *Button) SetAlwaysShowImage(alwaysShow bool) {
 // GetAttributes is a wrapper around the C function gtk_entry_get_attributes.
 func (recv *Entry) GetAttributes() *pango.AttrList {
 	retC := C.gtk_entry_get_attributes((*C.GtkEntry)(recv.native))
-	retGo := pango.AttrListNewFromC(unsafe.Pointer(retC))
+	var retGo (*pango.AttrList)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = pango.AttrListNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -312,7 +327,12 @@ func MenuButtonNew() *MenuButton {
 // GetAlignWidget is a wrapper around the C function gtk_menu_button_get_align_widget.
 func (recv *MenuButton) GetAlignWidget() *Widget {
 	retC := C.gtk_menu_button_get_align_widget((*C.GtkMenuButton)(recv.native))
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	var retGo (*Widget)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = WidgetNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -328,7 +348,12 @@ func (recv *MenuButton) GetDirection() ArrowType {
 // GetMenuModel is a wrapper around the C function gtk_menu_button_get_menu_model.
 func (recv *MenuButton) GetMenuModel() *gio.MenuModel {
 	retC := C.gtk_menu_button_get_menu_model((*C.GtkMenuButton)(recv.native))
-	retGo := gio.MenuModelNewFromC(unsafe.Pointer(retC))
+	var retGo (*gio.MenuModel)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = gio.MenuModelNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -336,7 +361,12 @@ func (recv *MenuButton) GetMenuModel() *gio.MenuModel {
 // GetPopup is a wrapper around the C function gtk_menu_button_get_popup.
 func (recv *MenuButton) GetPopup() *Menu {
 	retC := C.gtk_menu_button_get_popup((*C.GtkMenuButton)(recv.native))
-	retGo := MenuNewFromC(unsafe.Pointer(retC))
+	var retGo (*Menu)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = MenuNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }

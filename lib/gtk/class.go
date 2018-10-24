@@ -1895,7 +1895,12 @@ func AccelLabelNew(string string) *AccelLabel {
 // GetAccelWidget is a wrapper around the C function gtk_accel_label_get_accel_widget.
 func (recv *AccelLabel) GetAccelWidget() *Widget {
 	retC := C.gtk_accel_label_get_accel_widget((*C.GtkAccelLabel)(recv.native))
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	var retGo (*Widget)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = WidgetNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -3308,7 +3313,12 @@ func CastToBin(object *gobject.Object) *Bin {
 // GetChild is a wrapper around the C function gtk_bin_get_child.
 func (recv *Bin) GetChild() *Widget {
 	retC := C.gtk_bin_get_child((*C.GtkBin)(recv.native))
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	var retGo (*Widget)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = WidgetNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -6059,7 +6069,12 @@ func (recv *Clipboard) Clear() {
 // GetOwner is a wrapper around the C function gtk_clipboard_get_owner.
 func (recv *Clipboard) GetOwner() *gobject.Object {
 	retC := C.gtk_clipboard_get_owner((*C.GtkClipboard)(recv.native))
-	retGo := gobject.ObjectNewFromC(unsafe.Pointer(retC))
+	var retGo (*gobject.Object)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = gobject.ObjectNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -7285,7 +7300,12 @@ func (recv *Container) GetChildren() *glib.List {
 // GetFocusHadjustment is a wrapper around the C function gtk_container_get_focus_hadjustment.
 func (recv *Container) GetFocusHadjustment() *Adjustment {
 	retC := C.gtk_container_get_focus_hadjustment((*C.GtkContainer)(recv.native))
-	retGo := AdjustmentNewFromC(unsafe.Pointer(retC))
+	var retGo (*Adjustment)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = AdjustmentNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -7293,7 +7313,12 @@ func (recv *Container) GetFocusHadjustment() *Adjustment {
 // GetFocusVadjustment is a wrapper around the C function gtk_container_get_focus_vadjustment.
 func (recv *Container) GetFocusVadjustment() *Adjustment {
 	retC := C.gtk_container_get_focus_vadjustment((*C.GtkContainer)(recv.native))
-	retGo := AdjustmentNewFromC(unsafe.Pointer(retC))
+	var retGo (*Adjustment)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = AdjustmentNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -11175,7 +11200,12 @@ func (recv *Frame) GetLabelAlign() (float32, float32) {
 // GetLabelWidget is a wrapper around the C function gtk_frame_get_label_widget.
 func (recv *Frame) GetLabelWidget() *Widget {
 	retC := C.gtk_frame_get_label_widget((*C.GtkFrame)(recv.native))
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	var retGo (*Widget)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = WidgetNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -14077,7 +14107,12 @@ func ImageNewFromPixbuf(pixbuf *gdkpixbuf.Pixbuf) *Image {
 // GetAnimation is a wrapper around the C function gtk_image_get_animation.
 func (recv *Image) GetAnimation() *gdkpixbuf.PixbufAnimation {
 	retC := C.gtk_image_get_animation((*C.GtkImage)(recv.native))
-	retGo := gdkpixbuf.PixbufAnimationNewFromC(unsafe.Pointer(retC))
+	var retGo (*gdkpixbuf.PixbufAnimation)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = gdkpixbuf.PixbufAnimationNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -14087,7 +14122,12 @@ func (recv *Image) GetAnimation() *gdkpixbuf.PixbufAnimation {
 // GetPixbuf is a wrapper around the C function gtk_image_get_pixbuf.
 func (recv *Image) GetPixbuf() *gdkpixbuf.Pixbuf {
 	retC := C.gtk_image_get_pixbuf((*C.GtkImage)(recv.native))
-	retGo := gdkpixbuf.PixbufNewFromC(unsafe.Pointer(retC))
+	var retGo (*gdkpixbuf.Pixbuf)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = gdkpixbuf.PixbufNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -14736,7 +14776,12 @@ func LabelNewWithMnemonic(str string) *Label {
 // GetAttributes is a wrapper around the C function gtk_label_get_attributes.
 func (recv *Label) GetAttributes() *pango.AttrList {
 	retC := C.gtk_label_get_attributes((*C.GtkLabel)(recv.native))
-	retGo := pango.AttrListNewFromC(unsafe.Pointer(retC))
+	var retGo (*pango.AttrList)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = pango.AttrListNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -14799,7 +14844,12 @@ func (recv *Label) GetMnemonicKeyval() uint32 {
 // GetMnemonicWidget is a wrapper around the C function gtk_label_get_mnemonic_widget.
 func (recv *Label) GetMnemonicWidget() *Widget {
 	retC := C.gtk_label_get_mnemonic_widget((*C.GtkLabel)(recv.native))
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	var retGo (*Widget)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = WidgetNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -17042,7 +17092,12 @@ func (recv *MenuItem) GetRightJustified() bool {
 // GetSubmenu is a wrapper around the C function gtk_menu_item_get_submenu.
 func (recv *MenuItem) GetSubmenu() *Widget {
 	retC := C.gtk_menu_item_get_submenu((*C.GtkMenuItem)(recv.native))
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	var retGo (*Widget)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = WidgetNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -18210,7 +18265,12 @@ func (recv *Notebook) GetMenuLabel(child *Widget) *Widget {
 	c_child := (*C.GtkWidget)(child.ToC())
 
 	retC := C.gtk_notebook_get_menu_label((*C.GtkNotebook)(recv.native), c_child)
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	var retGo (*Widget)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = WidgetNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -18230,7 +18290,12 @@ func (recv *Notebook) GetNthPage(pageNum int32) *Widget {
 	c_page_num := (C.gint)(pageNum)
 
 	retC := C.gtk_notebook_get_nth_page((*C.GtkNotebook)(recv.native), c_page_num)
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	var retGo (*Widget)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = WidgetNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -18264,7 +18329,12 @@ func (recv *Notebook) GetTabLabel(child *Widget) *Widget {
 	c_child := (*C.GtkWidget)(child.ToC())
 
 	retC := C.gtk_notebook_get_tab_label((*C.GtkNotebook)(recv.native), c_child)
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	var retGo (*Widget)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = WidgetNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -23520,7 +23590,12 @@ func (recv *StyleContext) GetSection(property string) *CssSection {
 	defer C.free(unsafe.Pointer(c_property))
 
 	retC := C.gtk_style_context_get_section((*C.GtkStyleContext)(recv.native), c_property)
-	retGo := CssSectionNewFromC(unsafe.Pointer(retC))
+	var retGo (*CssSection)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = CssSectionNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -23558,7 +23633,12 @@ func (recv *StyleContext) LookupIconSet(stockId string) *IconSet {
 	defer C.free(unsafe.Pointer(c_stock_id))
 
 	retC := C.gtk_style_context_lookup_icon_set((*C.GtkStyleContext)(recv.native), c_stock_id)
-	retGo := IconSetNewFromC(unsafe.Pointer(retC))
+	var retGo (*IconSet)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = IconSetNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -25099,7 +25179,12 @@ func (recv *TextBuffer) GetMark(name string) *TextMark {
 	defer C.free(unsafe.Pointer(c_name))
 
 	retC := C.gtk_text_buffer_get_mark((*C.GtkTextBuffer)(recv.native), c_name)
-	retGo := TextMarkNewFromC(unsafe.Pointer(retC))
+	var retGo (*TextMark)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = TextMarkNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -25937,7 +26022,12 @@ func (recv *TextTagTable) Lookup(name string) *TextTag {
 	defer C.free(unsafe.Pointer(c_name))
 
 	retC := C.gtk_text_tag_table_lookup((*C.GtkTextTagTable)(recv.native), c_name)
-	retGo := TextTagNewFromC(unsafe.Pointer(retC))
+	var retGo (*TextTag)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = TextTagNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -26787,7 +26877,12 @@ func (recv *TextView) GetRightMargin() int32 {
 // GetTabs is a wrapper around the C function gtk_text_view_get_tabs.
 func (recv *TextView) GetTabs() *pango.TabArray {
 	retC := C.gtk_text_view_get_tabs((*C.GtkTextView)(recv.native))
-	retGo := pango.TabArrayNewFromC(unsafe.Pointer(retC))
+	var retGo (*pango.TabArray)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = pango.TabArrayNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -26799,7 +26894,12 @@ func (recv *TextView) GetWindow(win TextWindowType) *gdk.Window {
 	c_win := (C.GtkTextWindowType)(win)
 
 	retC := C.gtk_text_view_get_window((*C.GtkTextView)(recv.native), c_win)
-	retGo := gdk.WindowNewFromC(unsafe.Pointer(retC))
+	var retGo (*gdk.Window)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = gdk.WindowNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -27184,7 +27284,12 @@ func CastToThemingEngine(object *gobject.Object) *ThemingEngine {
 // GetScreen is a wrapper around the C function gtk_theming_engine_get_screen.
 func (recv *ThemingEngine) GetScreen() *gdk.Screen {
 	retC := C.gtk_theming_engine_get_screen((*C.GtkThemingEngine)(recv.native))
-	retGo := gdk.ScreenNewFromC(unsafe.Pointer(retC))
+	var retGo (*gdk.Screen)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = gdk.ScreenNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -28553,7 +28658,12 @@ func (recv *TreeModelSort) ConvertChildPathToPath(childPath *TreePath) *TreePath
 	c_child_path := (*C.GtkTreePath)(childPath.ToC())
 
 	retC := C.gtk_tree_model_sort_convert_child_path_to_path((*C.GtkTreeModelSort)(recv.native), c_child_path)
-	retGo := TreePathNewFromC(unsafe.Pointer(retC))
+	var retGo (*TreePath)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = TreePathNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -28576,7 +28686,12 @@ func (recv *TreeModelSort) ConvertPathToChildPath(sortedPath *TreePath) *TreePat
 	c_sorted_path := (*C.GtkTreePath)(sortedPath.ToC())
 
 	retC := C.gtk_tree_model_sort_convert_path_to_child_path((*C.GtkTreeModelSort)(recv.native), c_sorted_path)
-	retGo := TreePathNewFromC(unsafe.Pointer(retC))
+	var retGo (*TreePath)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = TreePathNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -29995,7 +30110,12 @@ func (recv *TreeView) ExpandRow(path *TreePath, openAll bool) bool {
 // GetBinWindow is a wrapper around the C function gtk_tree_view_get_bin_window.
 func (recv *TreeView) GetBinWindow() *gdk.Window {
 	retC := C.gtk_tree_view_get_bin_window((*C.GtkTreeView)(recv.native))
-	retGo := gdk.WindowNewFromC(unsafe.Pointer(retC))
+	var retGo (*gdk.Window)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = gdk.WindowNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -30007,7 +30127,12 @@ func (recv *TreeView) GetColumn(n int32) *TreeViewColumn {
 	c_n := (C.gint)(n)
 
 	retC := C.gtk_tree_view_get_column((*C.GtkTreeView)(recv.native), c_n)
-	retGo := TreeViewColumnNewFromC(unsafe.Pointer(retC))
+	var retGo (*TreeViewColumn)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = TreeViewColumnNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -30700,7 +30825,12 @@ func (recv *TreeViewColumn) GetVisible() bool {
 // GetWidget is a wrapper around the C function gtk_tree_view_column_get_widget.
 func (recv *TreeViewColumn) GetWidget() *Widget {
 	retC := C.gtk_tree_view_column_get_widget((*C.GtkTreeViewColumn)(recv.native))
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	var retGo (*Widget)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = WidgetNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -34314,7 +34444,12 @@ func (recv *Widget) DragCheckThreshold(startX int32, startY int32, currentX int3
 // DragDestGetTargetList is a wrapper around the C function gtk_drag_dest_get_target_list.
 func (recv *Widget) DragDestGetTargetList() *TargetList {
 	retC := C.gtk_drag_dest_get_target_list((*C.GtkWidget)(recv.native))
-	retGo := TargetListNewFromC(unsafe.Pointer(retC))
+	var retGo (*TargetList)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = TargetListNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -34532,7 +34667,12 @@ func (recv *Widget) GetPangoContext() *pango.Context {
 // GetParent is a wrapper around the C function gtk_widget_get_parent.
 func (recv *Widget) GetParent() *Widget {
 	retC := C.gtk_widget_get_parent((*C.GtkWidget)(recv.native))
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	var retGo (*Widget)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = WidgetNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -34540,7 +34680,12 @@ func (recv *Widget) GetParent() *Widget {
 // GetParentWindow is a wrapper around the C function gtk_widget_get_parent_window.
 func (recv *Widget) GetParentWindow() *gdk.Window {
 	retC := C.gtk_widget_get_parent_window((*C.GtkWidget)(recv.native))
-	retGo := gdk.WindowNewFromC(unsafe.Pointer(retC))
+	var retGo (*gdk.Window)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = gdk.WindowNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -35757,7 +35902,12 @@ func (recv *Window) GetDestroyWithParent() bool {
 // GetFocus is a wrapper around the C function gtk_window_get_focus.
 func (recv *Window) GetFocus() *Widget {
 	retC := C.gtk_window_get_focus((*C.GtkWindow)(recv.native))
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	var retGo (*Widget)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = WidgetNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -35773,7 +35923,12 @@ func (recv *Window) GetGravity() gdk.Gravity {
 // GetIcon is a wrapper around the C function gtk_window_get_icon.
 func (recv *Window) GetIcon() *gdkpixbuf.Pixbuf {
 	retC := C.gtk_window_get_icon((*C.GtkWindow)(recv.native))
-	retGo := gdkpixbuf.PixbufNewFromC(unsafe.Pointer(retC))
+	var retGo (*gdkpixbuf.Pixbuf)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = gdkpixbuf.PixbufNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -35859,7 +36014,12 @@ func (recv *Window) GetTitle() string {
 // GetTransientFor is a wrapper around the C function gtk_window_get_transient_for.
 func (recv *Window) GetTransientFor() *Window {
 	retC := C.gtk_window_get_transient_for((*C.GtkWindow)(recv.native))
-	retGo := WindowNewFromC(unsafe.Pointer(retC))
+	var retGo (*Window)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = WindowNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }

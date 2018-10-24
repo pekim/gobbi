@@ -256,7 +256,12 @@ func (recv *ComboBox) SetButtonSensitivity(sensitivity SensitivityType) {
 // GetFocusChild is a wrapper around the C function gtk_container_get_focus_child.
 func (recv *Container) GetFocusChild() *Widget {
 	retC := C.gtk_container_get_focus_child((*C.GtkContainer)(recv.native))
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	var retGo (*Widget)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = WidgetNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -972,7 +977,12 @@ func widget_damageEventHandler(_ *C.GObject, c_event *C.GdkEventExpose, data C.g
 // GetWindow is a wrapper around the C function gtk_widget_get_window.
 func (recv *Widget) GetWindow() *gdk.Window {
 	retC := C.gtk_widget_get_window((*C.GtkWidget)(recv.native))
-	retGo := gdk.WindowNewFromC(unsafe.Pointer(retC))
+	var retGo (*gdk.Window)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = gdk.WindowNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -980,7 +990,12 @@ func (recv *Widget) GetWindow() *gdk.Window {
 // GetDefaultWidget is a wrapper around the C function gtk_window_get_default_widget.
 func (recv *Window) GetDefaultWidget() *Widget {
 	retC := C.gtk_window_get_default_widget((*C.GtkWindow)(recv.native))
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	var retGo (*Widget)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = WidgetNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }

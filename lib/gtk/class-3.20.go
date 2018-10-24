@@ -58,7 +58,12 @@ import "C"
 // GetHelpOverlay is a wrapper around the C function gtk_application_window_get_help_overlay.
 func (recv *ApplicationWindow) GetHelpOverlay() *ShortcutsWindow {
 	retC := C.gtk_application_window_get_help_overlay((*C.GtkApplicationWindow)(recv.native))
-	retGo := ShortcutsWindowNewFromC(unsafe.Pointer(retC))
+	var retGo (*ShortcutsWindow)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = ShortcutsWindowNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -259,7 +264,12 @@ func (recv *NativeDialog) GetTitle() string {
 // GetTransientFor is a wrapper around the C function gtk_native_dialog_get_transient_for.
 func (recv *NativeDialog) GetTransientFor() *Window {
 	retC := C.gtk_native_dialog_get_transient_for((*C.GtkNativeDialog)(recv.native))
-	retGo := WindowNewFromC(unsafe.Pointer(retC))
+	var retGo (*Window)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = WindowNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }

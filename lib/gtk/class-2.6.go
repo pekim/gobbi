@@ -256,7 +256,12 @@ func (recv *ActionGroup) TranslateString(string string) string {
 // GetImage is a wrapper around the C function gtk_button_get_image.
 func (recv *Button) GetImage() *Widget {
 	retC := C.gtk_button_get_image((*C.GtkButton)(recv.native))
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	var retGo (*Widget)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = WidgetNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -353,7 +358,12 @@ func CellViewNewWithText(text string) *CellView {
 // GetDisplayedRow is a wrapper around the C function gtk_cell_view_get_displayed_row.
 func (recv *CellView) GetDisplayedRow() *TreePath {
 	retC := C.gtk_cell_view_get_displayed_row((*C.GtkCellView)(recv.native))
-	retGo := TreePathNewFromC(unsafe.Pointer(retC))
+	var retGo (*TreePath)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = TreePathNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -474,7 +484,12 @@ func (recv *Clipboard) Store() {
 // WaitForImage is a wrapper around the C function gtk_clipboard_wait_for_image.
 func (recv *Clipboard) WaitForImage() *gdkpixbuf.Pixbuf {
 	retC := C.gtk_clipboard_wait_for_image((*C.GtkClipboard)(recv.native))
-	retGo := gdkpixbuf.PixbufNewFromC(unsafe.Pointer(retC))
+	var retGo (*gdkpixbuf.Pixbuf)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = gdkpixbuf.PixbufNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -756,7 +771,12 @@ func (recv *IconView) GetPathAtPos(x int32, y int32) *TreePath {
 	c_y := (C.gint)(y)
 
 	retC := C.gtk_icon_view_get_path_at_pos((*C.GtkIconView)(recv.native), c_x, c_y)
-	retGo := TreePathNewFromC(unsafe.Pointer(retC))
+	var retGo (*TreePath)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = TreePathNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }

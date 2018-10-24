@@ -127,7 +127,12 @@ func (recv *LevelBar) SetInverted(inverted bool) {
 // GetFrameClock is a wrapper around the C function gtk_style_context_get_frame_clock.
 func (recv *StyleContext) GetFrameClock() *gdk.FrameClock {
 	retC := C.gtk_style_context_get_frame_clock((*C.GtkStyleContext)(recv.native))
-	retGo := gdk.FrameClockNewFromC(unsafe.Pointer(retC))
+	var retGo (*gdk.FrameClock)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = gdk.FrameClockNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -174,7 +179,12 @@ func (recv *TreeView) SetActivateOnSingleClick(single bool) {
 // GetFrameClock is a wrapper around the C function gtk_widget_get_frame_clock.
 func (recv *Widget) GetFrameClock() *gdk.FrameClock {
 	retC := C.gtk_widget_get_frame_clock((*C.GtkWidget)(recv.native))
-	retGo := gdk.FrameClockNewFromC(unsafe.Pointer(retC))
+	var retGo (*gdk.FrameClock)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = gdk.FrameClockNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }

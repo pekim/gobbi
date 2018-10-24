@@ -57,7 +57,12 @@ func (recv *CssSection) GetEndPosition() uint32 {
 // GetParent is a wrapper around the C function gtk_css_section_get_parent.
 func (recv *CssSection) GetParent() *CssSection {
 	retC := C.gtk_css_section_get_parent((*C.GtkCssSection)(recv.native))
-	retGo := CssSectionNewFromC(unsafe.Pointer(retC))
+	var retGo (*CssSection)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = CssSectionNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }

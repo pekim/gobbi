@@ -117,7 +117,12 @@ func BuilderNewFromString(string string, length int64) *Builder {
 // GetApplication is a wrapper around the C function gtk_builder_get_application.
 func (recv *Builder) GetApplication() *Application {
 	retC := C.gtk_builder_get_application((*C.GtkBuilder)(recv.native))
-	retGo := ApplicationNewFromC(unsafe.Pointer(retC))
+	var retGo (*Application)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = ApplicationNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -144,7 +149,12 @@ func (recv *Builder) SetApplication(application *Application) {
 // GetTabs is a wrapper around the C function gtk_entry_get_tabs.
 func (recv *Entry) GetTabs() *pango.TabArray {
 	retC := C.gtk_entry_get_tabs((*C.GtkEntry)(recv.native))
-	retGo := pango.TabArrayNewFromC(unsafe.Pointer(retC))
+	var retGo (*pango.TabArray)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = pango.TabArrayNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -231,7 +241,12 @@ func HeaderBarNew() *HeaderBar {
 // GetCustomTitle is a wrapper around the C function gtk_header_bar_get_custom_title.
 func (recv *HeaderBar) GetCustomTitle() *Widget {
 	retC := C.gtk_header_bar_get_custom_title((*C.GtkHeaderBar)(recv.native))
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	var retGo (*Widget)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = WidgetNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -358,7 +373,12 @@ func (recv *IconTheme) LoadIconForScale(iconName string, size int32, scale int32
 	var cThrowableError *C.GError
 
 	retC := C.gtk_icon_theme_load_icon_for_scale((*C.GtkIconTheme)(recv.native), c_icon_name, c_size, c_scale, c_flags, &cThrowableError)
-	retGo := gdkpixbuf.PixbufNewFromC(unsafe.Pointer(retC))
+	var retGo (*gdkpixbuf.Pixbuf)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = gdkpixbuf.PixbufNewFromC(unsafe.Pointer(retC))
+	}
 
 	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
 	if cThrowableError != nil {
@@ -384,7 +404,12 @@ func (recv *IconTheme) LoadSurface(iconName string, size int32, scale int32, for
 	var cThrowableError *C.GError
 
 	retC := C.gtk_icon_theme_load_surface((*C.GtkIconTheme)(recv.native), c_icon_name, c_size, c_scale, c_for_window, c_flags, &cThrowableError)
-	retGo := cairo.SurfaceNewFromC(unsafe.Pointer(retC))
+	var retGo (*cairo.Surface)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = cairo.SurfaceNewFromC(unsafe.Pointer(retC))
+	}
 
 	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
 	if cThrowableError != nil {
@@ -408,7 +433,12 @@ func (recv *IconTheme) LookupIconForScale(iconName string, size int32, scale int
 	c_flags := (C.GtkIconLookupFlags)(flags)
 
 	retC := C.gtk_icon_theme_lookup_icon_for_scale((*C.GtkIconTheme)(recv.native), c_icon_name, c_size, c_scale, c_flags)
-	retGo := IconInfoNewFromC(unsafe.Pointer(retC))
+	var retGo (*IconInfo)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = IconInfoNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -642,7 +672,12 @@ func (recv *ListBox) GetRowAtIndex(index int32) *ListBoxRow {
 	c_index_ := (C.gint)(index)
 
 	retC := C.gtk_list_box_get_row_at_index((*C.GtkListBox)(recv.native), c_index_)
-	retGo := ListBoxRowNewFromC(unsafe.Pointer(retC))
+	var retGo (*ListBoxRow)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = ListBoxRowNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -652,7 +687,12 @@ func (recv *ListBox) GetRowAtY(y int32) *ListBoxRow {
 	c_y := (C.gint)(y)
 
 	retC := C.gtk_list_box_get_row_at_y((*C.GtkListBox)(recv.native), c_y)
-	retGo := ListBoxRowNewFromC(unsafe.Pointer(retC))
+	var retGo (*ListBoxRow)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = ListBoxRowNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -841,7 +881,12 @@ func (recv *ListBoxRow) Changed() {
 // GetHeader is a wrapper around the C function gtk_list_box_row_get_header.
 func (recv *ListBoxRow) GetHeader() *Widget {
 	retC := C.gtk_list_box_row_get_header((*C.GtkListBoxRow)(recv.native))
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	var retGo (*Widget)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = WidgetNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -1206,7 +1251,12 @@ func (recv *Stack) GetTransitionType() StackTransitionType {
 // GetVisibleChild is a wrapper around the C function gtk_stack_get_visible_child.
 func (recv *Stack) GetVisibleChild() *Widget {
 	retC := C.gtk_stack_get_visible_child((*C.GtkStack)(recv.native))
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	var retGo (*Widget)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = WidgetNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -1289,7 +1339,12 @@ func StackSwitcherNew() *StackSwitcher {
 // GetStack is a wrapper around the C function gtk_stack_switcher_get_stack.
 func (recv *StackSwitcher) GetStack() *Stack {
 	retC := C.gtk_stack_switcher_get_stack((*C.GtkStackSwitcher)(recv.native))
-	retGo := StackNewFromC(unsafe.Pointer(retC))
+	var retGo (*Stack)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = StackNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }

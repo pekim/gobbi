@@ -349,7 +349,12 @@ func (recv *SettingsSchemaSource) Lookup(schemaId string, recursive bool) *Setti
 		boolToGboolean(recursive)
 
 	retC := C.g_settings_schema_source_lookup((*C.GSettingsSchemaSource)(recv.native), c_schema_id, c_recursive)
-	retGo := SettingsSchemaNewFromC(unsafe.Pointer(retC))
+	var retGo (*SettingsSchema)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = SettingsSchemaNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }

@@ -112,7 +112,7 @@ func (p *Parameter) generateOutputParamGoVar(g *jen.Group) {
 
 	if p.Direction == "out" || (p.Direction == "inout" && p.Type.Name == "argcargv") {
 		p.Type.generator.generateReturnCToGo(g, true,
-			p.cVarName, p.goVarName, pkg, p.TransferOwnership)
+			p.cVarName, p.goVarName, pkg, p.TransferOwnership, false)
 		g.Line()
 	}
 }

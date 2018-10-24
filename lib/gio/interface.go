@@ -393,7 +393,12 @@ func (recv *AsyncResult) ToC() unsafe.Pointer {
 // GetSourceObject is a wrapper around the C function g_async_result_get_source_object.
 func (recv *AsyncResult) GetSourceObject() *gobject.Object {
 	retC := C.g_async_result_get_source_object((*C.GAsyncResult)(recv.native))
-	retGo := gobject.ObjectNewFromC(unsafe.Pointer(retC))
+	var retGo (*gobject.Object)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = gobject.ObjectNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }

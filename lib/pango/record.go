@@ -226,7 +226,12 @@ func (recv *AttrIterator) Get(type_ AttrType) *Attribute {
 	c_type := (C.PangoAttrType)(type_)
 
 	retC := C.pango_attr_iterator_get((*C.PangoAttrIterator)(recv.native), c_type)
-	retGo := AttributeNewFromC(unsafe.Pointer(retC))
+	var retGo (*Attribute)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = AttributeNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -320,7 +325,12 @@ func (recv *AttrList) Change(attr *Attribute) {
 // Copy is a wrapper around the C function pango_attr_list_copy.
 func (recv *AttrList) Copy() *AttrList {
 	retC := C.pango_attr_list_copy((*C.PangoAttrList)(recv.native))
-	retGo := AttrListNewFromC(unsafe.Pointer(retC))
+	var retGo (*AttrList)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = AttrListNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -555,7 +565,12 @@ func (recv *Color) ToC() unsafe.Pointer {
 // Copy is a wrapper around the C function pango_color_copy.
 func (recv *Color) Copy() *Color {
 	retC := C.pango_color_copy((*C.PangoColor)(recv.native))
-	retGo := ColorNewFromC(unsafe.Pointer(retC))
+	var retGo (*Color)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = ColorNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -731,7 +746,12 @@ func (recv *FontDescription) BetterMatch(oldMatch *FontDescription, newMatch *Fo
 // Copy is a wrapper around the C function pango_font_description_copy.
 func (recv *FontDescription) Copy() *FontDescription {
 	retC := C.pango_font_description_copy((*C.PangoFontDescription)(recv.native))
-	retGo := FontDescriptionNewFromC(unsafe.Pointer(retC))
+	var retGo (*FontDescription)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = FontDescriptionNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -739,7 +759,12 @@ func (recv *FontDescription) Copy() *FontDescription {
 // CopyStatic is a wrapper around the C function pango_font_description_copy_static.
 func (recv *FontDescription) CopyStatic() *FontDescription {
 	retC := C.pango_font_description_copy_static((*C.PangoFontDescription)(recv.native))
-	retGo := FontDescriptionNewFromC(unsafe.Pointer(retC))
+	var retGo (*FontDescription)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = FontDescriptionNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -1113,7 +1138,12 @@ func ItemNew() *Item {
 // Copy is a wrapper around the C function pango_item_copy.
 func (recv *Item) Copy() *Item {
 	retC := C.pango_item_copy((*C.PangoItem)(recv.native))
-	retGo := ItemNewFromC(unsafe.Pointer(retC))
+	var retGo (*Item)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = ItemNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }

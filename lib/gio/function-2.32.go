@@ -226,7 +226,12 @@ func ResourcesUnregister(resource *Resource) {
 // SettingsSchemaSourceGetDefault is a wrapper around the C function g_settings_schema_source_get_default.
 func SettingsSchemaSourceGetDefault() *SettingsSchemaSource {
 	retC := C.g_settings_schema_source_get_default()
-	retGo := SettingsSchemaSourceNewFromC(unsafe.Pointer(retC))
+	var retGo (*SettingsSchemaSource)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = SettingsSchemaSourceNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }

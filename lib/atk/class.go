@@ -1241,7 +1241,12 @@ func (recv *StateSet) OrSets(compareSet *StateSet) *StateSet {
 	c_compare_set := (*C.AtkStateSet)(compareSet.ToC())
 
 	retC := C.atk_state_set_or_sets((*C.AtkStateSet)(recv.native), c_compare_set)
-	retGo := StateSetNewFromC(unsafe.Pointer(retC))
+	var retGo (*StateSet)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = StateSetNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }

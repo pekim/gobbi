@@ -20,7 +20,12 @@ import "C"
 // GetPixbuf is a wrapper around the C function gtk_selection_data_get_pixbuf.
 func (recv *SelectionData) GetPixbuf() *gdkpixbuf.Pixbuf {
 	retC := C.gtk_selection_data_get_pixbuf((*C.GtkSelectionData)(recv.native))
-	retGo := gdkpixbuf.PixbufNewFromC(unsafe.Pointer(retC))
+	var retGo (*gdkpixbuf.Pixbuf)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = gdkpixbuf.PixbufNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }

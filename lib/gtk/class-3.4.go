@@ -26,7 +26,12 @@ import "C"
 // GetAppMenu is a wrapper around the C function gtk_application_get_app_menu.
 func (recv *Application) GetAppMenu() *gio.MenuModel {
 	retC := C.gtk_application_get_app_menu((*C.GtkApplication)(recv.native))
-	retGo := gio.MenuModelNewFromC(unsafe.Pointer(retC))
+	var retGo (*gio.MenuModel)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = gio.MenuModelNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -310,7 +315,12 @@ func (recv *ScrolledWindow) SetKineticScrolling(kineticScrolling bool) {
 // GetParent is a wrapper around the C function gtk_style_context_get_parent.
 func (recv *StyleContext) GetParent() *StyleContext {
 	retC := C.gtk_style_context_get_parent((*C.GtkStyleContext)(recv.native))
-	retGo := StyleContextNewFromC(unsafe.Pointer(retC))
+	var retGo (*StyleContext)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = StyleContextNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -373,7 +383,12 @@ func (recv *Widget) GetModifierMask(intent gdk.ModifierIntent) gdk.ModifierType 
 // GetAttachedTo is a wrapper around the C function gtk_window_get_attached_to.
 func (recv *Window) GetAttachedTo() *Widget {
 	retC := C.gtk_window_get_attached_to((*C.GtkWindow)(recv.native))
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	var retGo (*Widget)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = WidgetNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }

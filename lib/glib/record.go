@@ -2582,7 +2582,12 @@ func (recv *Source) GetCanRecurse() bool {
 // GetContext is a wrapper around the C function g_source_get_context.
 func (recv *Source) GetContext() *MainContext {
 	retC := C.g_source_get_context((*C.GSource)(recv.native))
-	retGo := MainContextNewFromC(unsafe.Pointer(retC))
+	var retGo (*MainContext)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = MainContextNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }

@@ -189,7 +189,12 @@ func (recv *Display) GetWindowAtPointer() (*Window, int32, int32) {
 	var c_win_y C.gint
 
 	retC := C.gdk_display_get_window_at_pointer((*C.GdkDisplay)(recv.native), &c_win_x, &c_win_y)
-	retGo := WindowNewFromC(unsafe.Pointer(retC))
+	var retGo (*Window)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = WindowNewFromC(unsafe.Pointer(retC))
+	}
 
 	winX := (int32)(c_win_x)
 
@@ -314,7 +319,12 @@ func displaymanager_displayOpenedHandler(_ *C.GObject, c_display *C.GdkDisplay, 
 // GetDefaultDisplay is a wrapper around the C function gdk_display_manager_get_default_display.
 func (recv *DisplayManager) GetDefaultDisplay() *Display {
 	retC := C.gdk_display_manager_get_default_display((*C.GdkDisplayManager)(recv.native))
-	retGo := DisplayNewFromC(unsafe.Pointer(retC))
+	var retGo (*Display)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = DisplayNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }

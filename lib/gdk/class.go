@@ -317,7 +317,12 @@ func device_changedHandler(_ *C.GObject, data C.gpointer) {
 // ListSlaveDevices is a wrapper around the C function gdk_device_list_slave_devices.
 func (recv *Device) ListSlaveDevices() *glib.List {
 	retC := C.gdk_device_list_slave_devices((*C.GdkDevice)(recv.native))
-	retGo := glib.ListNewFromC(unsafe.Pointer(retC))
+	var retGo (*glib.List)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = glib.ListNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }

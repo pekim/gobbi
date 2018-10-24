@@ -27,7 +27,12 @@ func (recv *FontChooser) GetFont() string {
 // GetFontDesc is a wrapper around the C function gtk_font_chooser_get_font_desc.
 func (recv *FontChooser) GetFontDesc() *pango.FontDescription {
 	retC := C.gtk_font_chooser_get_font_desc((*C.GtkFontChooser)(recv.native))
-	retGo := pango.FontDescriptionNewFromC(unsafe.Pointer(retC))
+	var retGo (*pango.FontDescription)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = pango.FontDescriptionNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -35,7 +40,12 @@ func (recv *FontChooser) GetFontDesc() *pango.FontDescription {
 // GetFontFace is a wrapper around the C function gtk_font_chooser_get_font_face.
 func (recv *FontChooser) GetFontFace() *pango.FontFace {
 	retC := C.gtk_font_chooser_get_font_face((*C.GtkFontChooser)(recv.native))
-	retGo := pango.FontFaceNewFromC(unsafe.Pointer(retC))
+	var retGo (*pango.FontFace)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = pango.FontFaceNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -43,7 +53,12 @@ func (recv *FontChooser) GetFontFace() *pango.FontFace {
 // GetFontFamily is a wrapper around the C function gtk_font_chooser_get_font_family.
 func (recv *FontChooser) GetFontFamily() *pango.FontFamily {
 	retC := C.gtk_font_chooser_get_font_family((*C.GtkFontChooser)(recv.native))
-	retGo := pango.FontFamilyNewFromC(unsafe.Pointer(retC))
+	var retGo (*pango.FontFamily)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = pango.FontFamilyNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }

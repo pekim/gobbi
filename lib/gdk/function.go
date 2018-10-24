@@ -400,7 +400,12 @@ func OffscreenWindowGetSurface(window *Window) *cairo.Surface {
 	c_window := (*C.GdkWindow)(window.ToC())
 
 	retC := C.gdk_offscreen_window_get_surface(c_window)
-	retGo := cairo.SurfaceNewFromC(unsafe.Pointer(retC))
+	var retGo (*cairo.Surface)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = cairo.SurfaceNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -446,7 +451,12 @@ func PixbufGetFromSurface(surface *cairo.Surface, srcX int32, srcY int32, width 
 	c_height := (C.gint)(height)
 
 	retC := C.gdk_pixbuf_get_from_surface(c_surface, c_src_x, c_src_y, c_width, c_height)
-	retGo := gdkpixbuf.PixbufNewFromC(unsafe.Pointer(retC))
+	var retGo (*gdkpixbuf.Pixbuf)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = gdkpixbuf.PixbufNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -464,7 +474,12 @@ func PixbufGetFromWindow(window *Window, srcX int32, srcY int32, width int32, he
 	c_height := (C.gint)(height)
 
 	retC := C.gdk_pixbuf_get_from_window(c_window, c_src_x, c_src_y, c_width, c_height)
-	retGo := gdkpixbuf.PixbufNewFromC(unsafe.Pointer(retC))
+	var retGo (*gdkpixbuf.Pixbuf)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = gdkpixbuf.PixbufNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }

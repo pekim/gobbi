@@ -37,7 +37,12 @@ func (recv *Cursor) GetSurface() (*cairo.Surface, float64, float64) {
 	var c_y_hot C.gdouble
 
 	retC := C.gdk_cursor_get_surface((*C.GdkCursor)(recv.native), &c_x_hot, &c_y_hot)
-	retGo := cairo.SurfaceNewFromC(unsafe.Pointer(retC))
+	var retGo (*cairo.Surface)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = cairo.SurfaceNewFromC(unsafe.Pointer(retC))
+	}
 
 	xHot := (float64)(c_x_hot)
 

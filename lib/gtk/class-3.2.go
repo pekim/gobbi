@@ -310,7 +310,12 @@ func (recv *Grid) GetChildAt(left int32, top int32) *Widget {
 	c_top := (C.gint)(top)
 
 	retC := C.gtk_grid_get_child_at((*C.GtkGrid)(recv.native), c_left, c_top)
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	var retGo (*Widget)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = WidgetNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }

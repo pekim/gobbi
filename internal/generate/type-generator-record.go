@@ -149,26 +149,53 @@ func (t *TypeGeneratorRecord) generateReturnFunctionDeclarationCtype(g *jen.Grou
 
 func (t *TypeGeneratorRecord) generateReturnCToGo(g *jen.Group, isParam bool,
 	cVarName string, goVarName string, pkg string,
-	transferOwnership string) {
+	transferOwnership string, nullable bool) {
 
 	cVarRef := jen.Id(cVarName)
 	if isParam && t.typ.indirectLevel == 1 {
 		cVarRef = jen.Op("&").Id(cVarName)
 	}
 
-	g.
-		Id(goVarName).
-		Op(":=").
-		Do(func(s *jen.Statement) {
-			if pkg != "" {
-				s.Qual(pkg, t.record.newFromCFuncName)
-			} else {
-				s.Id(t.record.newFromCFuncName)
-			}
-		}).
-		Call(jen.
-			Qual("unsafe", "Pointer").
-			Call(cVarRef))
+	if t.typ.indirectLevel == 1 && nullable {
+		g.
+			Var().
+			Id(goVarName).
+			ParamsFunc(t.generateReturnFunctionDeclaration)
+
+		g.
+			If(jen.Id(cVarName).Op("==").Nil()).
+			Block(jen.Id(goVarName).Op("=").Nil()).
+			Else().
+			BlockFunc(func(g *jen.Group) {
+				g.
+					Id(goVarName).
+					Op("=").
+					Do(func(s *jen.Statement) {
+						if pkg != "" {
+							s.Qual(pkg, t.record.newFromCFuncName)
+						} else {
+							s.Id(t.record.newFromCFuncName)
+						}
+					}).
+					Call(jen.
+						Qual("unsafe", "Pointer").
+						Call(cVarRef))
+			})
+	} else {
+		g.
+			Id(goVarName).
+			Op(":=").
+			Do(func(s *jen.Statement) {
+				if pkg != "" {
+					s.Qual(pkg, t.record.newFromCFuncName)
+				} else {
+					s.Id(t.record.newFromCFuncName)
+				}
+			}).
+			Call(jen.
+				Qual("unsafe", "Pointer").
+				Call(cVarRef))
+	}
 }
 
 func (t *TypeGeneratorRecord) generateCToGo(pkg string, cVarReference *jen.Statement) *jen.Statement {

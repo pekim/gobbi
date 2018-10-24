@@ -16,7 +16,12 @@ import "C"
 // GetAssociatedDevice is a wrapper around the C function gdk_device_get_associated_device.
 func (recv *Device) GetAssociatedDevice() *Device {
 	retC := C.gdk_device_get_associated_device((*C.GdkDevice)(recv.native))
-	retGo := DeviceNewFromC(unsafe.Pointer(retC))
+	var retGo (*Device)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = DeviceNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -56,7 +61,12 @@ func (recv *Device) GetWindowAtPosition() (*Window, int32, int32) {
 	var c_win_y C.gint
 
 	retC := C.gdk_device_get_window_at_position((*C.GdkDevice)(recv.native), &c_win_x, &c_win_y)
-	retGo := WindowNewFromC(unsafe.Pointer(retC))
+	var retGo (*Window)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = WindowNewFromC(unsafe.Pointer(retC))
+	}
 
 	winX := (int32)(c_win_x)
 
@@ -72,7 +82,12 @@ func (recv *Device) GetWindowAtPositionDouble() (*Window, float64, float64) {
 	var c_win_y C.gdouble
 
 	retC := C.gdk_device_get_window_at_position_double((*C.GdkDevice)(recv.native), &c_win_x, &c_win_y)
-	retGo := WindowNewFromC(unsafe.Pointer(retC))
+	var retGo (*Window)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = WindowNewFromC(unsafe.Pointer(retC))
+	}
 
 	winX := (float64)(c_win_x)
 
@@ -143,7 +158,12 @@ func (recv *DeviceManager) GetClientPointer() *Device {
 // GetDisplay is a wrapper around the C function gdk_device_manager_get_display.
 func (recv *DeviceManager) GetDisplay() *Display {
 	retC := C.gdk_device_manager_get_display((*C.GdkDeviceManager)(recv.native))
-	retGo := DisplayNewFromC(unsafe.Pointer(retC))
+	var retGo (*Display)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = DisplayNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -169,7 +189,12 @@ func (recv *Display) GetAppLaunchContext() *AppLaunchContext {
 // GetDeviceManager is a wrapper around the C function gdk_display_get_device_manager.
 func (recv *Display) GetDeviceManager() *DeviceManager {
 	retC := C.gdk_display_get_device_manager((*C.GdkDisplay)(recv.native))
-	retGo := DeviceManagerNewFromC(unsafe.Pointer(retC))
+	var retGo (*DeviceManager)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = DeviceManagerNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -198,7 +223,12 @@ func (recv *DisplayManager) OpenDisplay(name string) *Display {
 	defer C.free(unsafe.Pointer(c_name))
 
 	retC := C.gdk_display_manager_open_display((*C.GdkDisplayManager)(recv.native), c_name)
-	retGo := DisplayNewFromC(unsafe.Pointer(retC))
+	var retGo (*Display)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = DisplayNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -234,7 +264,12 @@ func (recv *Window) GetDeviceCursor(device *Device) *Cursor {
 	c_device := (*C.GdkDevice)(device.ToC())
 
 	retC := C.gdk_window_get_device_cursor((*C.GdkWindow)(recv.native), c_device)
-	retGo := CursorNewFromC(unsafe.Pointer(retC))
+	var retGo (*Cursor)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = CursorNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }

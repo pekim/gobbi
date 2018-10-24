@@ -409,7 +409,12 @@ func (recv *Assistant) GetNthPage(pageNum int32) *Widget {
 	c_page_num := (C.gint)(pageNum)
 
 	retC := C.gtk_assistant_get_nth_page((*C.GtkAssistant)(recv.native), c_page_num)
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	var retGo (*Widget)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = WidgetNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -650,7 +655,12 @@ func (recv *ComboBox) SetTitle(title string) {
 // GetInnerBorder is a wrapper around the C function gtk_entry_get_inner_border.
 func (recv *Entry) GetInnerBorder() *Border {
 	retC := C.gtk_entry_get_inner_border((*C.GtkEntry)(recv.native))
-	retGo := BorderNewFromC(unsafe.Pointer(retC))
+	var retGo (*Border)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = BorderNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -2526,7 +2536,12 @@ func (recv *RecentManager) LookupItem(uri string) (*RecentInfo, error) {
 	var cThrowableError *C.GError
 
 	retC := C.gtk_recent_manager_lookup_item((*C.GtkRecentManager)(recv.native), c_uri, &cThrowableError)
-	retGo := RecentInfoNewFromC(unsafe.Pointer(retC))
+	var retGo (*RecentInfo)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = RecentInfoNewFromC(unsafe.Pointer(retC))
+	}
 
 	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
 	if cThrowableError != nil {
@@ -2791,7 +2806,12 @@ func (recv *StatusIcon) GetIconName() string {
 // GetPixbuf is a wrapper around the C function gtk_status_icon_get_pixbuf.
 func (recv *StatusIcon) GetPixbuf() *gdkpixbuf.Pixbuf {
 	retC := C.gtk_status_icon_get_pixbuf((*C.GtkStatusIcon)(recv.native))
-	retGo := gdkpixbuf.PixbufNewFromC(unsafe.Pointer(retC))
+	var retGo (*gdkpixbuf.Pixbuf)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = gdkpixbuf.PixbufNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }

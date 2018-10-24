@@ -52,7 +52,12 @@ func (recv *Pixbuf) Flip(horizontal bool) *Pixbuf {
 		boolToGboolean(horizontal)
 
 	retC := C.gdk_pixbuf_flip((*C.GdkPixbuf)(recv.native), c_horizontal)
-	retGo := PixbufNewFromC(unsafe.Pointer(retC))
+	var retGo (*Pixbuf)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = PixbufNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -62,7 +67,12 @@ func (recv *Pixbuf) RotateSimple(angle PixbufRotation) *Pixbuf {
 	c_angle := (C.GdkPixbufRotation)(angle)
 
 	retC := C.gdk_pixbuf_rotate_simple((*C.GdkPixbuf)(recv.native), c_angle)
-	retGo := PixbufNewFromC(unsafe.Pointer(retC))
+	var retGo (*Pixbuf)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = PixbufNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }

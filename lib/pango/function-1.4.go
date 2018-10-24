@@ -109,7 +109,12 @@ func ScriptGetSampleLanguage(script Script) *Language {
 	c_script := (C.PangoScript)(script)
 
 	retC := C.pango_script_get_sample_language(c_script)
-	retGo := LanguageNewFromC(unsafe.Pointer(retC))
+	var retGo (*Language)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = LanguageNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }

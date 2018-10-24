@@ -336,7 +336,12 @@ func (recv *DBusConnection) GetGuid() string {
 // GetPeerCredentials is a wrapper around the C function g_dbus_connection_get_peer_credentials.
 func (recv *DBusConnection) GetPeerCredentials() *Credentials {
 	retC := C.g_dbus_connection_get_peer_credentials((*C.GDBusConnection)(recv.native))
-	retGo := CredentialsNewFromC(unsafe.Pointer(retC))
+	var retGo (*Credentials)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = CredentialsNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -1185,7 +1190,12 @@ func (recv *DBusProxy) GetFlags() DBusProxyFlags {
 // GetInterfaceInfo is a wrapper around the C function g_dbus_proxy_get_interface_info.
 func (recv *DBusProxy) GetInterfaceInfo() *DBusInterfaceInfo {
 	retC := C.g_dbus_proxy_get_interface_info((*C.GDBusProxy)(recv.native))
-	retGo := DBusInterfaceInfoNewFromC(unsafe.Pointer(retC))
+	var retGo (*DBusInterfaceInfo)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = DBusInterfaceInfoNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }

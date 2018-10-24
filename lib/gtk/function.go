@@ -136,7 +136,12 @@ func BindingSetFind(setName string) *BindingSet {
 	defer C.free(unsafe.Pointer(c_set_name))
 
 	retC := C.gtk_binding_set_find(c_set_name)
-	retGo := BindingSetNewFromC(unsafe.Pointer(retC))
+	var retGo (*BindingSet)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = BindingSetNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -239,7 +244,12 @@ func DragGetSourceWidget(context *gdk.DragContext) *Widget {
 	c_context := (*C.GdkDragContext)(context.ToC())
 
 	retC := C.gtk_drag_get_source_widget(c_context)
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	var retGo (*Widget)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = WidgetNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -335,7 +345,12 @@ func False() bool {
 // GetCurrentEventDevice is a wrapper around the C function gtk_get_current_event_device.
 func GetCurrentEventDevice() *gdk.Device {
 	retC := C.gtk_get_current_event_device()
-	retGo := gdk.DeviceNewFromC(unsafe.Pointer(retC))
+	var retGo (*gdk.Device)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = gdk.DeviceNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -371,7 +386,12 @@ func GetDefaultLanguage() *pango.Language {
 // GrabGetCurrent is a wrapper around the C function gtk_grab_get_current.
 func GrabGetCurrent() *Widget {
 	retC := C.gtk_grab_get_current()
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	var retGo (*Widget)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = WidgetNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }

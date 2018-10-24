@@ -699,7 +699,12 @@ func (recv *TlsDatabase) LookupCertificateForHandle(handle string, interaction *
 	var cThrowableError *C.GError
 
 	retC := C.g_tls_database_lookup_certificate_for_handle((*C.GTlsDatabase)(recv.native), c_handle, c_interaction, c_flags, c_cancellable, &cThrowableError)
-	retGo := TlsCertificateNewFromC(unsafe.Pointer(retC))
+	var retGo (*TlsCertificate)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = TlsCertificateNewFromC(unsafe.Pointer(retC))
+	}
 
 	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
 	if cThrowableError != nil {

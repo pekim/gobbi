@@ -59,7 +59,12 @@ func (recv *Dialog) GetWidgetForResponse(responseId int32) *Widget {
 	c_response_id := (C.gint)(responseId)
 
 	retC := C.gtk_dialog_get_widget_for_response((*C.GtkDialog)(recv.native), c_response_id)
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	var retGo (*Widget)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = WidgetNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -97,7 +102,12 @@ func (recv *Notebook) GetActionWidget(packType PackType) *Widget {
 	c_pack_type := (C.GtkPackType)(packType)
 
 	retC := C.gtk_notebook_get_action_widget((*C.GtkNotebook)(recv.native), c_pack_type)
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	var retGo (*Widget)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = WidgetNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -124,7 +134,12 @@ func OffscreenWindowNew() *OffscreenWindow {
 // GetPixbuf is a wrapper around the C function gtk_offscreen_window_get_pixbuf.
 func (recv *OffscreenWindow) GetPixbuf() *gdkpixbuf.Pixbuf {
 	retC := C.gtk_offscreen_window_get_pixbuf((*C.GtkOffscreenWindow)(recv.native))
-	retGo := gdkpixbuf.PixbufNewFromC(unsafe.Pointer(retC))
+	var retGo (*gdkpixbuf.Pixbuf)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = gdkpixbuf.PixbufNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -132,7 +147,12 @@ func (recv *OffscreenWindow) GetPixbuf() *gdkpixbuf.Pixbuf {
 // GetSurface is a wrapper around the C function gtk_offscreen_window_get_surface.
 func (recv *OffscreenWindow) GetSurface() *cairo.Surface {
 	retC := C.gtk_offscreen_window_get_surface((*C.GtkOffscreenWindow)(recv.native))
-	retGo := cairo.SurfaceNewFromC(unsafe.Pointer(retC))
+	var retGo (*cairo.Surface)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = cairo.SurfaceNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -507,7 +527,12 @@ func (recv *ToolPalette) GetDropGroup(x int32, y int32) *ToolItemGroup {
 	c_y := (C.gint)(y)
 
 	retC := C.gtk_tool_palette_get_drop_group((*C.GtkToolPalette)(recv.native), c_x, c_y)
-	retGo := ToolItemGroupNewFromC(unsafe.Pointer(retC))
+	var retGo (*ToolItemGroup)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = ToolItemGroupNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -519,7 +544,12 @@ func (recv *ToolPalette) GetDropItem(x int32, y int32) *ToolItem {
 	c_y := (C.gint)(y)
 
 	retC := C.gtk_tool_palette_get_drop_item((*C.GtkToolPalette)(recv.native), c_x, c_y)
-	retGo := ToolItemNewFromC(unsafe.Pointer(retC))
+	var retGo (*ToolItem)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = ToolItemNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }

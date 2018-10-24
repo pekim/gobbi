@@ -33,7 +33,12 @@ func (recv *AppChooser) Refresh() {
 // GetArea is a wrapper around the C function gtk_cell_layout_get_area.
 func (recv *CellLayout) GetArea() *CellArea {
 	retC := C.gtk_cell_layout_get_area((*C.GtkCellLayout)(recv.native))
-	retGo := CellAreaNewFromC(unsafe.Pointer(retC))
+	var retGo (*CellArea)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = CellAreaNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -111,7 +116,12 @@ func (recv *StyleProvider) GetIconFactory(path *WidgetPath) *IconFactory {
 	c_path := (*C.GtkWidgetPath)(path.ToC())
 
 	retC := C.gtk_style_provider_get_icon_factory((*C.GtkStyleProvider)(recv.native), c_path)
-	retGo := IconFactoryNewFromC(unsafe.Pointer(retC))
+	var retGo (*IconFactory)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = IconFactoryNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -121,7 +131,12 @@ func (recv *StyleProvider) GetStyle(path *WidgetPath) *StyleProperties {
 	c_path := (*C.GtkWidgetPath)(path.ToC())
 
 	retC := C.gtk_style_provider_get_style((*C.GtkStyleProvider)(recv.native), c_path)
-	retGo := StylePropertiesNewFromC(unsafe.Pointer(retC))
+	var retGo (*StyleProperties)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = StylePropertiesNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }

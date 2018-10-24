@@ -237,7 +237,7 @@ func (f *Function) generateThrowableReturnGoVar(g *jen.Group) {
 
 	f.throwableErrorType.generator.generateReturnCToGo(g, false,
 		f.throwableErrorCVarName, f.throwableErrorGoVarName,
-		pkg, "")
+		pkg, "", false)
 
 	// If there is an error, free it.
 	g.If(jen.Id(f.throwableErrorCVarName).Op("!=").Id("nil")).

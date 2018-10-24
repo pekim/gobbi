@@ -297,7 +297,12 @@ func (recv *Display) GetMonitor(monitorNum int32) *Monitor {
 	c_monitor_num := (C.int)(monitorNum)
 
 	retC := C.gdk_display_get_monitor((*C.GdkDisplay)(recv.native), c_monitor_num)
-	retGo := MonitorNewFromC(unsafe.Pointer(retC))
+	var retGo (*Monitor)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = MonitorNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -335,7 +340,12 @@ func (recv *Display) GetNMonitors() int32 {
 // GetPrimaryMonitor is a wrapper around the C function gdk_display_get_primary_monitor.
 func (recv *Display) GetPrimaryMonitor() *Monitor {
 	retC := C.gdk_display_get_primary_monitor((*C.GdkDisplay)(recv.native))
-	retGo := MonitorNewFromC(unsafe.Pointer(retC))
+	var retGo (*Monitor)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = MonitorNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -383,7 +393,12 @@ func (recv *DrawingContext) GetCairoContext() *cairo.Context {
 // GetClip is a wrapper around the C function gdk_drawing_context_get_clip.
 func (recv *DrawingContext) GetClip() *cairo.Region {
 	retC := C.gdk_drawing_context_get_clip((*C.GdkDrawingContext)(recv.native))
-	retGo := cairo.RegionNewFromC(unsafe.Pointer(retC))
+	var retGo (*cairo.Region)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = cairo.RegionNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }

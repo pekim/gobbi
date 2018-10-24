@@ -97,7 +97,7 @@ func (t *TypeGeneratorInteger) generateReturnFunctionDeclarationCtype(g *jen.Gro
 }
 
 func (t *TypeGeneratorInteger) generateReturnCToGo(g *jen.Group, isParam bool,
-	cVarName string, goVarName string, pkg string, transferOwnership string) {
+	cVarName string, goVarName string, pkg string, transferOwnership string, nullable bool) {
 	g.
 		Id(goVarName).
 		Op(":=").

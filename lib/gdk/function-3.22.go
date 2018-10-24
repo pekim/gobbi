@@ -25,7 +25,12 @@ func CairoGetDrawingContext(cr *cairo.Context) *DrawingContext {
 	c_cr := (*C.cairo_t)(cr.ToC())
 
 	retC := C.gdk_cairo_get_drawing_context(c_cr)
-	retGo := DrawingContextNewFromC(unsafe.Pointer(retC))
+	var retGo (*DrawingContext)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = DrawingContextNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }

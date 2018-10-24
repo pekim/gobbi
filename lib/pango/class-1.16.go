@@ -60,7 +60,12 @@ func (recv *Layout) GetLineReadonly(line int32) *LayoutLine {
 	c_line := (C.int)(line)
 
 	retC := C.pango_layout_get_line_readonly((*C.PangoLayout)(recv.native), c_line)
-	retGo := LayoutLineNewFromC(unsafe.Pointer(retC))
+	var retGo (*LayoutLine)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = LayoutLineNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }

@@ -41,7 +41,12 @@ func (recv *GLContext) GetDebugEnabled() bool {
 // GetDisplay is a wrapper around the C function gdk_gl_context_get_display.
 func (recv *GLContext) GetDisplay() *Display {
 	retC := C.gdk_gl_context_get_display((*C.GdkGLContext)(recv.native))
-	retGo := DisplayNewFromC(unsafe.Pointer(retC))
+	var retGo (*Display)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = DisplayNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -72,7 +77,12 @@ func (recv *GLContext) GetRequiredVersion() (int32, int32) {
 // GetSharedContext is a wrapper around the C function gdk_gl_context_get_shared_context.
 func (recv *GLContext) GetSharedContext() *GLContext {
 	retC := C.gdk_gl_context_get_shared_context((*C.GdkGLContext)(recv.native))
-	retGo := GLContextNewFromC(unsafe.Pointer(retC))
+	var retGo (*GLContext)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = GLContextNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -95,7 +105,12 @@ func (recv *GLContext) GetVersion() (int32, int32) {
 // GetWindow is a wrapper around the C function gdk_gl_context_get_window.
 func (recv *GLContext) GetWindow() *Window {
 	retC := C.gdk_gl_context_get_window((*C.GdkGLContext)(recv.native))
-	retGo := WindowNewFromC(unsafe.Pointer(retC))
+	var retGo (*Window)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = WindowNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }

@@ -30,7 +30,12 @@ func (recv *Layout) SetHeight(height int32) {
 // GetLayout is a wrapper around the C function pango_renderer_get_layout.
 func (recv *Renderer) GetLayout() *Layout {
 	retC := C.pango_renderer_get_layout((*C.PangoRenderer)(recv.native))
-	retGo := LayoutNewFromC(unsafe.Pointer(retC))
+	var retGo (*Layout)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = LayoutNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -38,7 +43,12 @@ func (recv *Renderer) GetLayout() *Layout {
 // GetLayoutLine is a wrapper around the C function pango_renderer_get_layout_line.
 func (recv *Renderer) GetLayoutLine() *LayoutLine {
 	retC := C.pango_renderer_get_layout_line((*C.PangoRenderer)(recv.native))
-	retGo := LayoutLineNewFromC(unsafe.Pointer(retC))
+	var retGo (*LayoutLine)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = LayoutLineNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }

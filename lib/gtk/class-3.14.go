@@ -526,7 +526,12 @@ func (recv *Gesture) GetBoundingBoxCenter() (bool, float64, float64) {
 // GetDevice is a wrapper around the C function gtk_gesture_get_device.
 func (recv *Gesture) GetDevice() *gdk.Device {
 	retC := C.gtk_gesture_get_device((*C.GtkGesture)(recv.native))
-	retGo := gdk.DeviceNewFromC(unsafe.Pointer(retC))
+	var retGo (*gdk.Device)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = gdk.DeviceNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -542,7 +547,12 @@ func (recv *Gesture) GetGroup() *glib.List {
 // GetLastUpdatedSequence is a wrapper around the C function gtk_gesture_get_last_updated_sequence.
 func (recv *Gesture) GetLastUpdatedSequence() *gdk.EventSequence {
 	retC := C.gtk_gesture_get_last_updated_sequence((*C.GtkGesture)(recv.native))
-	retGo := gdk.EventSequenceNewFromC(unsafe.Pointer(retC))
+	var retGo (*gdk.EventSequence)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = gdk.EventSequenceNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -586,7 +596,12 @@ func (recv *Gesture) GetSequences() *glib.List {
 // GetWindow is a wrapper around the C function gtk_gesture_get_window.
 func (recv *Gesture) GetWindow() *gdk.Window {
 	retC := C.gtk_gesture_get_window((*C.GtkGesture)(recv.native))
-	retGo := gdk.WindowNewFromC(unsafe.Pointer(retC))
+	var retGo (*gdk.Window)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = gdk.WindowNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -936,7 +951,12 @@ func (recv *GestureSingle) GetCurrentButton() uint32 {
 // GetCurrentSequence is a wrapper around the C function gtk_gesture_single_get_current_sequence.
 func (recv *GestureSingle) GetCurrentSequence() *gdk.EventSequence {
 	retC := C.gtk_gesture_single_get_current_sequence((*C.GtkGestureSingle)(recv.native))
-	retGo := gdk.EventSequenceNewFromC(unsafe.Pointer(retC))
+	var retGo (*gdk.EventSequence)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = gdk.EventSequenceNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }

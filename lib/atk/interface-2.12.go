@@ -112,7 +112,12 @@ func (recv *Value) GetIncrement() float64 {
 // GetRange is a wrapper around the C function atk_value_get_range.
 func (recv *Value) GetRange() *Range {
 	retC := C.atk_value_get_range((*C.AtkValue)(recv.native))
-	retGo := RangeNewFromC(unsafe.Pointer(retC))
+	var retGo (*Range)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = RangeNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }

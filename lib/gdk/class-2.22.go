@@ -230,7 +230,12 @@ func (recv *Window) GetAcceptFocus() bool {
 // GetBackgroundPattern is a wrapper around the C function gdk_window_get_background_pattern.
 func (recv *Window) GetBackgroundPattern() *cairo.Pattern {
 	retC := C.gdk_window_get_background_pattern((*C.GdkWindow)(recv.native))
-	retGo := cairo.PatternNewFromC(unsafe.Pointer(retC))
+	var retGo (*cairo.Pattern)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = cairo.PatternNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }

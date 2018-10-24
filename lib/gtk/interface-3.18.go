@@ -18,7 +18,12 @@ import "C"
 // GetFontMap is a wrapper around the C function gtk_font_chooser_get_font_map.
 func (recv *FontChooser) GetFontMap() *pango.FontMap {
 	retC := C.gtk_font_chooser_get_font_map((*C.GtkFontChooser)(recv.native))
-	retGo := pango.FontMapNewFromC(unsafe.Pointer(retC))
+	var retGo (*pango.FontMap)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = pango.FontMapNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }

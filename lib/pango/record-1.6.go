@@ -78,7 +78,12 @@ func (recv *Matrix) Concat(newMatrix *Matrix) {
 // Copy is a wrapper around the C function pango_matrix_copy.
 func (recv *Matrix) Copy() *Matrix {
 	retC := C.pango_matrix_copy((*C.PangoMatrix)(recv.native))
-	retGo := MatrixNewFromC(unsafe.Pointer(retC))
+	var retGo (*Matrix)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = MatrixNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }

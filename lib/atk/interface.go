@@ -381,7 +381,12 @@ func (recv *Component) RefAccessibleAtPoint(x int32, y int32, coordType CoordTyp
 	c_coord_type := (C.AtkCoordType)(coordType)
 
 	retC := C.atk_component_ref_accessible_at_point((*C.AtkComponent)(recv.native), c_x, c_y, c_coord_type)
-	retGo := ObjectNewFromC(unsafe.Pointer(retC))
+	var retGo (*Object)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = ObjectNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -1028,7 +1033,12 @@ func (recv *Selection) RefSelection(i int32) *Object {
 	c_i := (C.gint)(i)
 
 	retC := C.atk_selection_ref_selection((*C.AtkSelection)(recv.native), c_i)
-	retGo := ObjectNewFromC(unsafe.Pointer(retC))
+	var retGo (*Object)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = ObjectNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -1315,7 +1325,12 @@ func (recv *Table) AddRowSelection(row int32) bool {
 // GetCaption is a wrapper around the C function atk_table_get_caption.
 func (recv *Table) GetCaption() *Object {
 	retC := C.atk_table_get_caption((*C.AtkTable)(recv.native))
-	retGo := ObjectNewFromC(unsafe.Pointer(retC))
+	var retGo (*Object)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = ObjectNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -1357,7 +1372,12 @@ func (recv *Table) GetColumnHeader(column int32) *Object {
 	c_column := (C.gint)(column)
 
 	retC := C.atk_table_get_column_header((*C.AtkTable)(recv.native), c_column)
-	retGo := ObjectNewFromC(unsafe.Pointer(retC))
+	var retGo (*Object)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = ObjectNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -1427,7 +1447,12 @@ func (recv *Table) GetRowHeader(row int32) *Object {
 	c_row := (C.gint)(row)
 
 	retC := C.atk_table_get_row_header((*C.AtkTable)(recv.native), c_row)
-	retGo := ObjectNewFromC(unsafe.Pointer(retC))
+	var retGo (*Object)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = ObjectNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }

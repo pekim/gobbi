@@ -41,7 +41,12 @@ func (recv *Window) GeometryChanged() {
 // GetCursor is a wrapper around the C function gdk_window_get_cursor.
 func (recv *Window) GetCursor() *Cursor {
 	retC := C.gdk_window_get_cursor((*C.GdkWindow)(recv.native))
-	retGo := CursorNewFromC(unsafe.Pointer(retC))
+	var retGo (*Cursor)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = CursorNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }

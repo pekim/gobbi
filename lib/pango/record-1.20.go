@@ -22,7 +22,12 @@ func (recv *Attribute) Init(klass *AttrClass) {
 // Copy is a wrapper around the C function pango_glyph_item_copy.
 func (recv *GlyphItem) Copy() *GlyphItem {
 	retC := C.pango_glyph_item_copy((*C.PangoGlyphItem)(recv.native))
-	retGo := GlyphItemNewFromC(unsafe.Pointer(retC))
+	var retGo (*GlyphItem)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = GlyphItemNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }

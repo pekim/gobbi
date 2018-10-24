@@ -249,7 +249,12 @@ func dragcontext_dndFinishedHandler(_ *C.GObject, data C.gpointer) {
 // GetDragWindow is a wrapper around the C function gdk_drag_context_get_drag_window.
 func (recv *DragContext) GetDragWindow() *Window {
 	retC := C.gdk_drag_context_get_drag_window((*C.GdkDragContext)(recv.native))
-	retGo := WindowNewFromC(unsafe.Pointer(retC))
+	var retGo (*Window)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = WindowNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }

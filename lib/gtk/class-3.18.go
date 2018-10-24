@@ -250,7 +250,12 @@ func (recv *PlacesSidebar) SetShowTrash(showTrash bool) {
 // GetDefaultWidget is a wrapper around the C function gtk_popover_get_default_widget.
 func (recv *Popover) GetDefaultWidget() *Widget {
 	retC := C.gtk_popover_get_default_widget((*C.GtkPopover)(recv.native))
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	var retGo (*Widget)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = WidgetNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -348,7 +353,12 @@ func (recv *TextView) SetTopMargin(topMargin int32) {
 // GetFontMap is a wrapper around the C function gtk_widget_get_font_map.
 func (recv *Widget) GetFontMap() *pango.FontMap {
 	retC := C.gtk_widget_get_font_map((*C.GtkWidget)(recv.native))
-	retGo := pango.FontMapNewFromC(unsafe.Pointer(retC))
+	var retGo (*pango.FontMap)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = pango.FontMapNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -356,7 +366,12 @@ func (recv *Widget) GetFontMap() *pango.FontMap {
 // GetFontOptions is a wrapper around the C function gtk_widget_get_font_options.
 func (recv *Widget) GetFontOptions() *cairo.FontOptions {
 	retC := C.gtk_widget_get_font_options((*C.GtkWidget)(recv.native))
-	retGo := cairo.FontOptionsNewFromC(unsafe.Pointer(retC))
+	var retGo (*cairo.FontOptions)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = cairo.FontOptionsNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }

@@ -155,7 +155,12 @@ func (recv *Builder) GetObject(name string) *gobject.Object {
 	defer C.free(unsafe.Pointer(c_name))
 
 	retC := C.gtk_builder_get_object((*C.GtkBuilder)(recv.native), c_name)
-	retGo := gobject.ObjectNewFromC(unsafe.Pointer(retC))
+	var retGo (*gobject.Object)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = gobject.ObjectNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -322,7 +327,12 @@ func combobox_popupHandler(_ *C.GObject, data C.gpointer) {
 // GetCursorHadjustment is a wrapper around the C function gtk_entry_get_cursor_hadjustment.
 func (recv *Entry) GetCursorHadjustment() *Adjustment {
 	retC := C.gtk_entry_get_cursor_hadjustment((*C.GtkEntry)(recv.native))
-	retGo := AdjustmentNewFromC(unsafe.Pointer(retC))
+	var retGo (*Adjustment)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = AdjustmentNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -1277,7 +1287,12 @@ func (recv *TreeView) SetTooltipRow(tooltip *Tooltip, path *TreePath) {
 // GetTreeView is a wrapper around the C function gtk_tree_view_column_get_tree_view.
 func (recv *TreeViewColumn) GetTreeView() *Widget {
 	retC := C.gtk_tree_view_column_get_tree_view((*C.GtkTreeViewColumn)(recv.native))
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	var retGo (*Widget)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = WidgetNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }

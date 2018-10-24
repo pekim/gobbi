@@ -226,7 +226,12 @@ func RegexNew(pattern string, compileOptions RegexCompileFlags, matchOptions Reg
 	var cThrowableError *C.GError
 
 	retC := C.g_regex_new(c_pattern, c_compile_options, c_match_options, &cThrowableError)
-	retGo := RegexNewFromC(unsafe.Pointer(retC))
+	var retGo (*Regex)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = RegexNewFromC(unsafe.Pointer(retC))
+	}
 
 	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
 	if cThrowableError != nil {

@@ -1546,7 +1546,12 @@ func (recv *FileEnumerator) NextFile(cancellable *Cancellable) (*FileInfo, error
 	var cThrowableError *C.GError
 
 	retC := C.g_file_enumerator_next_file((*C.GFileEnumerator)(recv.native), c_cancellable, &cThrowableError)
-	retGo := FileInfoNewFromC(unsafe.Pointer(retC))
+	var retGo (*FileInfo)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = FileInfoNewFromC(unsafe.Pointer(retC))
+	}
 
 	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
 	if cThrowableError != nil {

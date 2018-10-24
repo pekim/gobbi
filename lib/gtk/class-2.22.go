@@ -18,7 +18,12 @@ import "C"
 // GetWidget is a wrapper around the C function gtk_accessible_get_widget.
 func (recv *Accessible) GetWidget() *Widget {
 	retC := C.gtk_accessible_get_widget((*C.GtkAccessible)(recv.native))
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	var retGo (*Widget)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = WidgetNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }

@@ -100,7 +100,12 @@ func screen_compositedChangedHandler(_ *C.GObject, data C.gpointer) {
 // GetActiveWindow is a wrapper around the C function gdk_screen_get_active_window.
 func (recv *Screen) GetActiveWindow() *Window {
 	retC := C.gdk_screen_get_active_window((*C.GdkScreen)(recv.native))
-	retGo := WindowNewFromC(unsafe.Pointer(retC))
+	var retGo (*Window)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = WindowNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -108,7 +113,12 @@ func (recv *Screen) GetActiveWindow() *Window {
 // GetFontOptions is a wrapper around the C function gdk_screen_get_font_options.
 func (recv *Screen) GetFontOptions() *cairo.FontOptions {
 	retC := C.gdk_screen_get_font_options((*C.GdkScreen)(recv.native))
-	retGo := cairo.FontOptionsNewFromC(unsafe.Pointer(retC))
+	var retGo (*cairo.FontOptions)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = cairo.FontOptionsNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -124,7 +134,12 @@ func (recv *Screen) GetResolution() float64 {
 // GetWindowStack is a wrapper around the C function gdk_screen_get_window_stack.
 func (recv *Screen) GetWindowStack() *glib.List {
 	retC := C.gdk_screen_get_window_stack((*C.GdkScreen)(recv.native))
-	retGo := glib.ListNewFromC(unsafe.Pointer(retC))
+	var retGo (*glib.List)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = glib.ListNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }

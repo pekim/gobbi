@@ -502,7 +502,12 @@ func (recv *CellArea) GetFocusFromSibling(renderer *CellRenderer) *CellRenderer 
 	c_renderer := (*C.GtkCellRenderer)(renderer.ToC())
 
 	retC := C.gtk_cell_area_get_focus_from_sibling((*C.GtkCellArea)(recv.native), c_renderer)
-	retGo := CellRendererNewFromC(unsafe.Pointer(retC))
+	var retGo (*CellRenderer)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = CellRendererNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -1382,7 +1387,12 @@ func (recv *NumerableIcon) GetLabel() string {
 // GetStyleContext is a wrapper around the C function gtk_numerable_icon_get_style_context.
 func (recv *NumerableIcon) GetStyleContext() *StyleContext {
 	retC := C.gtk_numerable_icon_get_style_context((*C.GtkNumerableIcon)(recv.native))
-	retGo := StyleContextNewFromC(unsafe.Pointer(retC))
+	var retGo (*StyleContext)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = StyleContextNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -2821,7 +2831,12 @@ func (recv *Widget) UnsetStateFlags(flags StateFlags) {
 // GetApplication is a wrapper around the C function gtk_window_get_application.
 func (recv *Window) GetApplication() *Application {
 	retC := C.gtk_window_get_application((*C.GtkWindow)(recv.native))
-	retGo := ApplicationNewFromC(unsafe.Pointer(retC))
+	var retGo (*Application)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = ApplicationNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -2900,7 +2915,12 @@ func (recv *WindowGroup) GetCurrentDeviceGrab(device *gdk.Device) *Widget {
 	c_device := (*C.GdkDevice)(device.ToC())
 
 	retC := C.gtk_window_group_get_current_device_grab((*C.GtkWindowGroup)(recv.native), c_device)
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	var retGo (*Widget)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = WidgetNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }

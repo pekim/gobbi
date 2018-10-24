@@ -35,7 +35,12 @@ func (recv *FlowBox) GetChildAtPos(x int32, y int32) *FlowBoxChild {
 	c_y := (C.gint)(y)
 
 	retC := C.gtk_flow_box_get_child_at_pos((*C.GtkFlowBox)(recv.native), c_x, c_y)
-	retGo := FlowBoxChildNewFromC(unsafe.Pointer(retC))
+	var retGo (*FlowBoxChild)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = FlowBoxChildNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }

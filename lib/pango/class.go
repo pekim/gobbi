@@ -86,7 +86,12 @@ func (recv *Context) LoadFont(desc *FontDescription) *Font {
 	c_desc := (*C.PangoFontDescription)(desc.ToC())
 
 	retC := C.pango_context_load_font((*C.PangoContext)(recv.native), c_desc)
-	retGo := FontNewFromC(unsafe.Pointer(retC))
+	var retGo (*Font)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = FontNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -98,7 +103,12 @@ func (recv *Context) LoadFontset(desc *FontDescription, language *Language) *Fon
 	c_language := (*C.PangoLanguage)(language.ToC())
 
 	retC := C.pango_context_load_fontset((*C.PangoContext)(recv.native), c_desc, c_language)
-	retGo := FontsetNewFromC(unsafe.Pointer(retC))
+	var retGo (*Fontset)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = FontsetNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -413,7 +423,12 @@ func (recv *FontMap) LoadFont(context *Context, desc *FontDescription) *Font {
 	c_desc := (*C.PangoFontDescription)(desc.ToC())
 
 	retC := C.pango_font_map_load_font((*C.PangoFontMap)(recv.native), c_context, c_desc)
-	retGo := FontNewFromC(unsafe.Pointer(retC))
+	var retGo (*Font)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = FontNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -427,7 +442,12 @@ func (recv *FontMap) LoadFontset(context *Context, desc *FontDescription, langua
 	c_language := (*C.PangoLanguage)(language.ToC())
 
 	retC := C.pango_font_map_load_fontset((*C.PangoFontMap)(recv.native), c_context, c_desc, c_language)
-	retGo := FontsetNewFromC(unsafe.Pointer(retC))
+	var retGo (*Fontset)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = FontsetNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -615,7 +635,12 @@ func (recv *Layout) GetLine(line int32) *LayoutLine {
 	c_line := (C.int)(line)
 
 	retC := C.pango_layout_get_line((*C.PangoLayout)(recv.native), c_line)
-	retGo := LayoutLineNewFromC(unsafe.Pointer(retC))
+	var retGo (*LayoutLine)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = LayoutLineNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -702,7 +727,12 @@ func (recv *Layout) GetSpacing() int32 {
 // GetTabs is a wrapper around the C function pango_layout_get_tabs.
 func (recv *Layout) GetTabs() *TabArray {
 	retC := C.pango_layout_get_tabs((*C.PangoLayout)(recv.native))
-	retGo := TabArrayNewFromC(unsafe.Pointer(retC))
+	var retGo (*TabArray)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = TabArrayNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }

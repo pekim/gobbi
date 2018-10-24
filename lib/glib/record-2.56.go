@@ -36,7 +36,12 @@ func DateTimeNewFromIso8601(text string, defaultTz *TimeZone) *DateTime {
 	c_default_tz := (*C.GTimeZone)(defaultTz.ToC())
 
 	retC := C.g_date_time_new_from_iso8601(c_text, c_default_tz)
-	retGo := DateTimeNewFromC(unsafe.Pointer(retC))
+	var retGo (*DateTime)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = DateTimeNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }

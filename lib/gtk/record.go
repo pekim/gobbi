@@ -13162,7 +13162,12 @@ func (recv *TreeRowReference) Free() {
 // GetPath is a wrapper around the C function gtk_tree_row_reference_get_path.
 func (recv *TreeRowReference) GetPath() *TreePath {
 	retC := C.gtk_tree_row_reference_get_path((*C.GtkTreeRowReference)(recv.native))
-	retGo := TreePathNewFromC(unsafe.Pointer(retC))
+	var retGo (*TreePath)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = TreePathNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }

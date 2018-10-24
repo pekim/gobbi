@@ -229,7 +229,12 @@ func LanguageFromString(language string) *Language {
 	defer C.free(unsafe.Pointer(c_language))
 
 	retC := C.pango_language_from_string(c_language)
-	retGo := LanguageNewFromC(unsafe.Pointer(retC))
+	var retGo (*Language)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = LanguageNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }

@@ -21,7 +21,12 @@ func (recv *Context) GetFontMap() *FontMap {
 // GetMatrix is a wrapper around the C function pango_context_get_matrix.
 func (recv *Context) GetMatrix() *Matrix {
 	retC := C.pango_context_get_matrix((*C.PangoContext)(recv.native))
-	retGo := MatrixNewFromC(unsafe.Pointer(retC))
+	var retGo (*Matrix)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = MatrixNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }

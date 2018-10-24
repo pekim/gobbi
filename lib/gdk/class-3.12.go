@@ -13,7 +13,12 @@ import "C"
 // GetLastEventWindow is a wrapper around the C function gdk_device_get_last_event_window.
 func (recv *Device) GetLastEventWindow() *Window {
 	retC := C.gdk_device_get_last_event_window((*C.GdkDevice)(recv.native))
-	retGo := WindowNewFromC(unsafe.Pointer(retC))
+	var retGo (*Window)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = WindowNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }

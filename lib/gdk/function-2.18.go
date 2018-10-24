@@ -39,7 +39,12 @@ func OffscreenWindowGetEmbedder(window *Window) *Window {
 	c_window := (*C.GdkWindow)(window.ToC())
 
 	retC := C.gdk_offscreen_window_get_embedder(c_window)
-	retGo := WindowNewFromC(unsafe.Pointer(retC))
+	var retGo (*Window)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = WindowNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }

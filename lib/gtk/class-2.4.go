@@ -1442,7 +1442,12 @@ func (recv *Expander) GetLabel() string {
 // GetLabelWidget is a wrapper around the C function gtk_expander_get_label_widget.
 func (recv *Expander) GetLabelWidget() *Widget {
 	retC := C.gtk_expander_get_label_widget((*C.GtkExpander)(recv.native))
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	var retGo (*Widget)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = WidgetNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -1822,7 +1827,12 @@ func (recv *IconInfo) GetBaseSize() int32 {
 // GetBuiltinPixbuf is a wrapper around the C function gtk_icon_info_get_builtin_pixbuf.
 func (recv *IconInfo) GetBuiltinPixbuf() *gdkpixbuf.Pixbuf {
 	retC := C.gtk_icon_info_get_builtin_pixbuf((*C.GtkIconInfo)(recv.native))
-	retGo := gdkpixbuf.PixbufNewFromC(unsafe.Pointer(retC))
+	var retGo (*gdkpixbuf.Pixbuf)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = gdkpixbuf.PixbufNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -1933,7 +1943,12 @@ func (recv *IconTheme) LoadIcon(iconName string, size int32, flags IconLookupFla
 	var cThrowableError *C.GError
 
 	retC := C.gtk_icon_theme_load_icon((*C.GtkIconTheme)(recv.native), c_icon_name, c_size, c_flags, &cThrowableError)
-	retGo := gdkpixbuf.PixbufNewFromC(unsafe.Pointer(retC))
+	var retGo (*gdkpixbuf.Pixbuf)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = gdkpixbuf.PixbufNewFromC(unsafe.Pointer(retC))
+	}
 
 	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
 	if cThrowableError != nil {
@@ -1953,7 +1968,12 @@ func (recv *IconTheme) LookupIcon(iconName string, size int32, flags IconLookupF
 	c_flags := (C.GtkIconLookupFlags)(flags)
 
 	retC := C.gtk_icon_theme_lookup_icon((*C.GtkIconTheme)(recv.native), c_icon_name, c_size, c_flags)
-	retGo := IconInfoNewFromC(unsafe.Pointer(retC))
+	var retGo (*IconInfo)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = IconInfoNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -2065,7 +2085,12 @@ func (recv *MessageDialog) SetMarkup(str string) {
 // GetChild1 is a wrapper around the C function gtk_paned_get_child1.
 func (recv *Paned) GetChild1() *Widget {
 	retC := C.gtk_paned_get_child1((*C.GtkPaned)(recv.native))
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	var retGo (*Widget)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = WidgetNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -2073,7 +2098,12 @@ func (recv *Paned) GetChild1() *Widget {
 // GetChild2 is a wrapper around the C function gtk_paned_get_child2.
 func (recv *Paned) GetChild2() *Widget {
 	retC := C.gtk_paned_get_child2((*C.GtkPaned)(recv.native))
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	var retGo (*Widget)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = WidgetNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -2349,7 +2379,12 @@ func (recv *RadioToolButton) SetGroup(group *glib.SList) {
 // GetLayout is a wrapper around the C function gtk_scale_get_layout.
 func (recv *Scale) GetLayout() *pango.Layout {
 	retC := C.gtk_scale_get_layout((*C.GtkScale)(recv.native))
-	retGo := pango.LayoutNewFromC(unsafe.Pointer(retC))
+	var retGo (*pango.Layout)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = pango.LayoutNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -2687,7 +2722,12 @@ func ToolButtonNewFromStock(stockId string) *ToolButton {
 // GetIconWidget is a wrapper around the C function gtk_tool_button_get_icon_widget.
 func (recv *ToolButton) GetIconWidget() *Widget {
 	retC := C.gtk_tool_button_get_icon_widget((*C.GtkToolButton)(recv.native))
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	var retGo (*Widget)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = WidgetNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -2703,7 +2743,12 @@ func (recv *ToolButton) GetLabel() string {
 // GetLabelWidget is a wrapper around the C function gtk_tool_button_get_label_widget.
 func (recv *ToolButton) GetLabelWidget() *Widget {
 	retC := C.gtk_tool_button_get_label_widget((*C.GtkToolButton)(recv.native))
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	var retGo (*Widget)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = WidgetNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -2820,7 +2865,12 @@ func (recv *ToolItem) GetProxyMenuItem(menuItemId string) *Widget {
 	defer C.free(unsafe.Pointer(c_menu_item_id))
 
 	retC := C.gtk_tool_item_get_proxy_menu_item((*C.GtkToolItem)(recv.native), c_menu_item_id)
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	var retGo (*Widget)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = WidgetNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -2980,7 +3030,12 @@ func (recv *Toolbar) GetNthItem(n int32) *ToolItem {
 	c_n := (C.gint)(n)
 
 	retC := C.gtk_toolbar_get_nth_item((*C.GtkToolbar)(recv.native), c_n)
-	retGo := ToolItemNewFromC(unsafe.Pointer(retC))
+	var retGo (*ToolItem)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = ToolItemNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -3059,7 +3114,12 @@ func (recv *TreeModelFilter) ConvertChildPathToPath(childPath *TreePath) *TreePa
 	c_child_path := (*C.GtkTreePath)(childPath.ToC())
 
 	retC := C.gtk_tree_model_filter_convert_child_path_to_path((*C.GtkTreeModelFilter)(recv.native), c_child_path)
-	retGo := TreePathNewFromC(unsafe.Pointer(retC))
+	var retGo (*TreePath)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = TreePathNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -3082,7 +3142,12 @@ func (recv *TreeModelFilter) ConvertPathToChildPath(filterPath *TreePath) *TreeP
 	c_filter_path := (*C.GtkTreePath)(filterPath.ToC())
 
 	retC := C.gtk_tree_model_filter_convert_path_to_child_path((*C.GtkTreeModelFilter)(recv.native), c_filter_path)
-	retGo := TreePathNewFromC(unsafe.Pointer(retC))
+	var retGo (*TreePath)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = TreePathNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -3703,7 +3768,12 @@ func (recv *Widget) CanActivateAccel(signalId uint32) bool {
 // DragSourceGetTargetList is a wrapper around the C function gtk_drag_source_get_target_list.
 func (recv *Widget) DragSourceGetTargetList() *TargetList {
 	retC := C.gtk_drag_source_get_target_list((*C.GtkWidget)(recv.native))
-	retGo := TargetListNewFromC(unsafe.Pointer(retC))
+	var retGo (*TargetList)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = TargetListNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }

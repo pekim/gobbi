@@ -256,7 +256,12 @@ func (recv *RecentInfo) GetIcon(size int32) *gdkpixbuf.Pixbuf {
 	c_size := (C.gint)(size)
 
 	retC := C.gtk_recent_info_get_icon((*C.GtkRecentInfo)(recv.native), c_size)
-	retGo := gdkpixbuf.PixbufNewFromC(unsafe.Pointer(retC))
+	var retGo (*gdkpixbuf.Pixbuf)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = gdkpixbuf.PixbufNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }

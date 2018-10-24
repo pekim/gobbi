@@ -65,7 +65,12 @@ func (recv *GlyphItemIter) ToC() unsafe.Pointer {
 // Copy is a wrapper around the C function pango_glyph_item_iter_copy.
 func (recv *GlyphItemIter) Copy() *GlyphItemIter {
 	retC := C.pango_glyph_item_iter_copy((*C.PangoGlyphItemIter)(recv.native))
-	retGo := GlyphItemIterNewFromC(unsafe.Pointer(retC))
+	var retGo (*GlyphItemIter)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = GlyphItemIterNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }

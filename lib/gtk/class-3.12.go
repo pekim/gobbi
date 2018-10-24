@@ -29,7 +29,12 @@ func ActionBarNew() *ActionBar {
 // GetCenterWidget is a wrapper around the C function gtk_action_bar_get_center_widget.
 func (recv *ActionBar) GetCenterWidget() *Widget {
 	retC := C.gtk_action_bar_get_center_widget((*C.GtkActionBar)(recv.native))
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	var retGo (*Widget)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = WidgetNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -72,7 +77,12 @@ func (recv *ActionBar) SetCenterWidget(centerWidget *Widget) {
 // GetCenterWidget is a wrapper around the C function gtk_box_get_center_widget.
 func (recv *Box) GetCenterWidget() *Widget {
 	retC := C.gtk_box_get_center_widget((*C.GtkBox)(recv.native))
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	var retGo (*Widget)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = WidgetNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -146,7 +156,12 @@ func (recv *FlowBox) GetChildAtIndex(idx int32) *FlowBoxChild {
 	c_idx := (C.gint)(idx)
 
 	retC := C.gtk_flow_box_get_child_at_index((*C.GtkFlowBox)(recv.native), c_idx)
-	retGo := FlowBoxChildNewFromC(unsafe.Pointer(retC))
+	var retGo (*FlowBoxChild)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = FlowBoxChildNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -447,7 +462,12 @@ func (recv *IconInfo) IsSymbolic() bool {
 // GetPopover is a wrapper around the C function gtk_menu_button_get_popover.
 func (recv *MenuButton) GetPopover() *Popover {
 	retC := C.gtk_menu_button_get_popover((*C.GtkMenuButton)(recv.native))
-	retGo := PopoverNewFromC(unsafe.Pointer(retC))
+	var retGo (*Popover)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = PopoverNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -597,7 +617,12 @@ func (recv *Stack) GetChildByName(name string) *Widget {
 	defer C.free(unsafe.Pointer(c_name))
 
 	retC := C.gtk_stack_get_child_by_name((*C.GtkStack)(recv.native), c_name)
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	var retGo (*Widget)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = WidgetNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }

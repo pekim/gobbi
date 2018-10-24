@@ -50,7 +50,12 @@ func (recv *ListModel) GetObject(position uint32) *gobject.Object {
 	c_position := (C.guint)(position)
 
 	retC := C.g_list_model_get_object((*C.GListModel)(recv.native), c_position)
-	retGo := gobject.ObjectNewFromC(unsafe.Pointer(retC))
+	var retGo (*gobject.Object)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = gobject.ObjectNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }

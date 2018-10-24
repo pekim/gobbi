@@ -22,7 +22,12 @@ func CursorNewFromName(display *Display, name string) *Cursor {
 	defer C.free(unsafe.Pointer(c_name))
 
 	retC := C.gdk_cursor_new_from_name(c_display, c_name)
-	retGo := CursorNewFromC(unsafe.Pointer(retC))
+	var retGo (*Cursor)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = CursorNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -30,7 +35,12 @@ func CursorNewFromName(display *Display, name string) *Cursor {
 // GetImage is a wrapper around the C function gdk_cursor_get_image.
 func (recv *Cursor) GetImage() *gdkpixbuf.Pixbuf {
 	retC := C.gdk_cursor_get_image((*C.GdkCursor)(recv.native))
-	retGo := gdkpixbuf.PixbufNewFromC(unsafe.Pointer(retC))
+	var retGo (*gdkpixbuf.Pixbuf)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = gdkpixbuf.PixbufNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -51,7 +61,12 @@ func (recv *Display) WarpPointer(screen *Screen, x int32, y int32) {
 // GetRgbaVisual is a wrapper around the C function gdk_screen_get_rgba_visual.
 func (recv *Screen) GetRgbaVisual() *Visual {
 	retC := C.gdk_screen_get_rgba_visual((*C.GdkScreen)(recv.native))
-	retGo := VisualNewFromC(unsafe.Pointer(retC))
+	var retGo (*Visual)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = VisualNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }

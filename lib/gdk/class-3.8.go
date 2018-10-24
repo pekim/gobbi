@@ -27,7 +27,12 @@ func (recv *FrameClock) EndUpdating() {
 // GetCurrentTimings is a wrapper around the C function gdk_frame_clock_get_current_timings.
 func (recv *FrameClock) GetCurrentTimings() *FrameTimings {
 	retC := C.gdk_frame_clock_get_current_timings((*C.GdkFrameClock)(recv.native))
-	retGo := FrameTimingsNewFromC(unsafe.Pointer(retC))
+	var retGo (*FrameTimings)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = FrameTimingsNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -78,7 +83,12 @@ func (recv *FrameClock) GetTimings(frameCounter int64) *FrameTimings {
 	c_frame_counter := (C.gint64)(frameCounter)
 
 	retC := C.gdk_frame_clock_get_timings((*C.GdkFrameClock)(recv.native), c_frame_counter)
-	retGo := FrameTimingsNewFromC(unsafe.Pointer(retC))
+	var retGo (*FrameTimings)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = FrameTimingsNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }

@@ -16,7 +16,12 @@ import "C"
 // GetFontDescription is a wrapper around the C function pango_layout_get_font_description.
 func (recv *Layout) GetFontDescription() *FontDescription {
 	retC := C.pango_layout_get_font_description((*C.PangoLayout)(recv.native))
-	retGo := FontDescriptionNewFromC(unsafe.Pointer(retC))
+	var retGo (*FontDescription)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = FontDescriptionNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -174,7 +179,12 @@ func (recv *Renderer) GetColor(part RenderPart) *Color {
 	c_part := (C.PangoRenderPart)(part)
 
 	retC := C.pango_renderer_get_color((*C.PangoRenderer)(recv.native), c_part)
-	retGo := ColorNewFromC(unsafe.Pointer(retC))
+	var retGo (*Color)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = ColorNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -182,7 +192,12 @@ func (recv *Renderer) GetColor(part RenderPart) *Color {
 // GetMatrix is a wrapper around the C function pango_renderer_get_matrix.
 func (recv *Renderer) GetMatrix() *Matrix {
 	retC := C.pango_renderer_get_matrix((*C.PangoRenderer)(recv.native))
-	retGo := MatrixNewFromC(unsafe.Pointer(retC))
+	var retGo (*Matrix)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = MatrixNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }

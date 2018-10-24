@@ -155,7 +155,12 @@ func (recv *GLArea) GetContext() *gdk.GLContext {
 // GetError is a wrapper around the C function gtk_gl_area_get_error.
 func (recv *GLArea) GetError() *glib.Error {
 	retC := C.gtk_gl_area_get_error((*C.GtkGLArea)(recv.native))
-	retGo := glib.ErrorNewFromC(unsafe.Pointer(retC))
+	var retGo (*glib.Error)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = glib.ErrorNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -652,7 +657,12 @@ func StackSidebarNew() *StackSidebar {
 // GetStack is a wrapper around the C function gtk_stack_sidebar_get_stack.
 func (recv *StackSidebar) GetStack() *Stack {
 	retC := C.gtk_stack_sidebar_get_stack((*C.GtkStackSidebar)(recv.native))
-	retGo := StackNewFromC(unsafe.Pointer(retC))
+	var retGo (*Stack)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = StackNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
@@ -719,7 +729,12 @@ func (recv *TextView) SetMonospace(monospace bool) {
 // GetTitlebar is a wrapper around the C function gtk_window_get_titlebar.
 func (recv *Window) GetTitlebar() *Widget {
 	retC := C.gtk_window_get_titlebar((*C.GtkWindow)(recv.native))
-	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+	var retGo (*Widget)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = WidgetNewFromC(unsafe.Pointer(retC))
+	}
 
 	return retGo
 }
