@@ -2,7 +2,7 @@
 set -e
 set -u
 
-exampleDir=internal/example
+exampleDir=example
 tags="glib_2.48 gdk_3.4 gio_2.32 gtk_3.18"
 
 usage () {
