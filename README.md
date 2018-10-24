@@ -37,7 +37,7 @@ and needs tidying up.
 ## getting started
 * `git clone https://github.com/pekim/gobbi.git`
 * `cd gobbi`
-* `./do example simple_window`
+* `./gobbi example simple_window`
     * Be patient.
         The first `go build` or `go run` will take quite a while,
         perhaps a few minutes.
