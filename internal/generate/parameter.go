@@ -86,18 +86,8 @@ func (p *Parameter) generateCVar(g *jen.Group) {
 	g.Line()
 }
 
-// fullGoPackageName returns a package name if the param's type is
-// from another package. Or empty string if in the same package as
-// the parameter.
-func (p *Parameter) fullGoPackageName() string {
-	if p.Type.qname.namespace != p.Namespace {
-		return p.Type.qname.namespace.fullGoPackageName
-	}
-	return ""
-}
-
 func (p *Parameter) generateGoVar(g *jen.Group) {
-	p.Type.generator.generateParamGoVar(g, p.goVarName, p.cVarName, p.fullGoPackageName())
+	p.Type.generator.generateParamGoVar(g, p.goVarName, p.cVarName, p.Type.fullGoPackageName())
 	g.Line()
 }
 
@@ -112,7 +102,7 @@ func (p *Parameter) generateCallArgument(g *jen.Group) {
 func (p *Parameter) generateOutputParamGoVar(g *jen.Group) {
 	if p.Direction == "out" || (p.Direction == "inout" && p.Type.Name == "argcargv") {
 		p.Type.generator.generateReturnCToGo(g, true,
-			p.cVarName, p.goVarName, p.fullGoPackageName(),
+			p.cVarName, p.goVarName, p.Type.fullGoPackageName(),
 			p.TransferOwnership, false)
 		g.Line()
 	}

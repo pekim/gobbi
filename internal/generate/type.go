@@ -28,6 +28,16 @@ func (t *Type) init(ns *Namespace) {
 	t.qname, t.generator = t.qnameAndGenerator(t)
 }
 
+// fullGoPackageName returns a package name if the type's qname is
+// for another package. Or empty string if in the same package as
+// the type.
+func (t *Type) fullGoPackageName() string {
+	if t.qname.namespace != t.Namespace {
+		return t.qname.namespace.fullGoPackageName
+	}
+	return ""
+}
+
 // goTypeAndGenerator determines the
 //		package qualified Go name
 //		generator
