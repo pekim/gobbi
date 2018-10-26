@@ -88,8 +88,8 @@ func (p *Parameter) generateCVar(g *jen.Group) {
 
 func (p *Parameter) generateGoVar(g *jen.Group) {
 	pkg := ""
-	if p.Type.qname.ns != p.Namespace {
-		pkg = p.Type.qname.ns.fullGoPackageName
+	if p.Type.qname.namespace != p.Namespace {
+		pkg = p.Type.qname.namespace.fullGoPackageName
 	}
 
 	p.Type.generator.generateParamGoVar(g, p.goVarName, p.cVarName, pkg)
@@ -106,8 +106,8 @@ func (p *Parameter) generateCallArgument(g *jen.Group) {
 
 func (p *Parameter) generateOutputParamGoVar(g *jen.Group) {
 	pkg := ""
-	if p.Namespace != p.Type.qname.ns {
-		pkg = p.Type.qname.ns.fullGoPackageName
+	if p.Namespace != p.Type.qname.namespace {
+		pkg = p.Type.qname.namespace.fullGoPackageName
 	}
 
 	if p.Direction == "out" || (p.Direction == "inout" && p.Type.Name == "argcargv") {

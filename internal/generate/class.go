@@ -33,7 +33,7 @@ func (c *Class) generateImplementss(g *jen.Group, version *Version) {
 func (c *Class) generateImplements(g *jen.Group, implements *Implements) {
 	qname := QNameNew(c.Namespace, implements.Name)
 
-	iface, found := qname.ns.interfaceForName(qname.name)
+	iface, found := qname.namespace.interfaceForName(qname.name)
 	if !found {
 		panic(fmt.Sprintf("Failed to interface %s for %s", implements.Name, c.Name))
 	}
@@ -51,12 +51,11 @@ func (c *Class) generateImplements(g *jen.Group, implements *Implements) {
 		Params(jen.Id("recv").Op("*").Id(c.GoName)).
 		Id(qname.name).
 		Params().
-		ParamsFunc(func(g *jen.Group) {
-			if qname.sameNamespace {
-				g.Op("*").Id(qname.name)
-			} else {
-				g.Op("*").Qual(qname.ns.fullGoPackageName, qname.name)
-			}
+		ParamsFunc(func(g *jen.Group) { // return value
+			g.Do(func(s *jen.Statement) {
+				s.Op("*")
+				qname.generate(s)
+			})
 		}).
 		BlockFunc(func(g *jen.Group) {
 			g.
@@ -65,7 +64,7 @@ func (c *Class) generateImplements(g *jen.Group, implements *Implements) {
 					if qname.sameNamespace {
 						s.Id(iface.newFromCFuncName)
 					} else {
-						s.Qual(qname.ns.fullGoPackageName, iface.newFromCFuncName)
+						s.Qual(qname.namespace.fullGoPackageName, iface.newFromCFuncName)
 					}
 
 				}).

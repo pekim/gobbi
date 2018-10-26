@@ -137,7 +137,7 @@ func (s *Signal) cTypeDeclaration(typ *Type) string {
 	cDeclaration := typ.CType
 	if cDeclaration == "" {
 		qname := QNameNew(s.Namespace, typ.Name)
-		record, found := qname.ns.recordOrClassRecordForName(qname.name)
+		record, found := qname.namespace.recordOrClassRecordForName(qname.name)
 		if !found {
 			panic(fmt.Sprintf("Not found class %s, for signal %s, for class %s",
 				qname.name, s.Name, s.record.Name))

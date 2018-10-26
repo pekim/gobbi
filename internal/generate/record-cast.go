@@ -15,7 +15,7 @@ func (r *Record) generateUpcasts(g *jen.Group) {
 	qname := QNameNew(r.Namespace, r.ParentName)
 	methodNames[qname.name] = true
 
-	parent, found := qname.ns.recordOrClassRecordForName(qname.name)
+	parent, found := qname.namespace.recordOrClassRecordForName(qname.name)
 	if !found {
 		panic(fmt.Sprintf("Failed to find parent %s for %s", r.ParentName, r.Name))
 	}
@@ -31,7 +31,7 @@ func (r *Record) generateUpcasts(g *jen.Group) {
 	ancestorName := previousAncestor.ParentName
 
 	for ancestorName != "" {
-		qname = QNameNew(qname.ns, ancestorName)
+		qname = QNameNew(qname.namespace, ancestorName)
 
 		if _, nameUsedPreviously := methodNames[qname.name]; nameUsedPreviously {
 			// A method for this ancestor would have the same name as an earlier one.
@@ -41,7 +41,7 @@ func (r *Record) generateUpcasts(g *jen.Group) {
 		}
 		methodNames[qname.name] = true
 
-		ancestor, found := qname.ns.recordOrClassRecordForName(qname.name)
+		ancestor, found := qname.namespace.recordOrClassRecordForName(qname.name)
 		if !found {
 			panic(fmt.Sprintf("Failed to find parent %s for %s", ancestorName, previousAncestor.Name))
 		}
@@ -66,11 +66,10 @@ func (r *Record) generateParentUpcast(g *jen.Group, parent *Record, qname *QName
 		Id(qname.name).                              // func name
 		Params().                                    // params
 		ParamsFunc(func(g *jen.Group) {              // return value
-			if qname.sameNamespace {
-				g.Op("*").Id(qname.name)
-			} else {
-				g.Op("*").Qual(qname.ns.fullGoPackageName, qname.name)
-			}
+			g.Do(func(s *jen.Statement) {
+				s.Op("*")
+				qname.generate(s)
+			})
 		}).
 		BlockFunc(func(g *jen.Group) { // body
 			nativeAsUnsafePointer := jen.
@@ -85,7 +84,7 @@ func (r *Record) generateParentUpcast(g *jen.Group, parent *Record, qname *QName
 			} else {
 				g.
 					Return().
-					Qual(qname.ns.fullGoPackageName, parent.newFromCFuncName).
+					Qual(qname.namespace.fullGoPackageName, parent.newFromCFuncName).
 					Call(nativeAsUnsafePointer)
 			}
 		}).
@@ -101,10 +100,10 @@ func (r *Record) generateAncestorUpcast(g *jen.Group, parentQName *QName, qname 
 		Id(qname.name).                              // func name
 		Params().                                    // params
 		ParamsFunc(func(g *jen.Group) {              // return value
-			if qname.ns.Name == r.Namespace.Name {
+			if qname.namespace.Name == r.Namespace.Name {
 				g.Op("*").Id(qname.name)
 			} else {
-				g.Op("*").Qual(qname.ns.fullGoPackageName, qname.name)
+				g.Op("*").Qual(qname.namespace.fullGoPackageName, qname.name)
 			}
 		}).
 		BlockFunc(func(g *jen.Group) { // body

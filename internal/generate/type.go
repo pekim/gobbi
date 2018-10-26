@@ -56,7 +56,7 @@ func (t *Type) qnameAndGenerator(targetType *Type) (*QName, TypeGenerator) {
 
 	qname := QNameNew(t.Namespace, t.Name)
 
-	alias, found := qname.ns.aliasForName(qname.name)
+	alias, found := qname.namespace.aliasForName(qname.name)
 	if found {
 		// Use a generator for the alias' Type rather than
 		// this Type.
@@ -65,7 +65,7 @@ func (t *Type) qnameAndGenerator(targetType *Type) (*QName, TypeGenerator) {
 		return qname, typeGenerator
 	}
 
-	enum, found := qname.ns.bitfieldForName(qname.name)
+	enum, found := qname.namespace.bitfieldForName(qname.name)
 	if found {
 		if enum.goTypeName != "" {
 			qname.name = enum.goTypeName
@@ -73,7 +73,7 @@ func (t *Type) qnameAndGenerator(targetType *Type) (*QName, TypeGenerator) {
 		return qname, TypeGeneratorEnumerationNew(targetType, enum)
 	}
 
-	enum, found = qname.ns.enumForName(qname.name)
+	enum, found = qname.namespace.enumForName(qname.name)
 	if found {
 		if enum.goTypeName != "" {
 			qname.name = enum.goTypeName
@@ -81,7 +81,7 @@ func (t *Type) qnameAndGenerator(targetType *Type) (*QName, TypeGenerator) {
 		return qname, TypeGeneratorEnumerationNew(targetType, enum)
 	}
 
-	record, found := qname.ns.recordOrClassRecordForName(qname.name)
+	record, found := qname.namespace.recordOrClassRecordForName(qname.name)
 	if found {
 		return qname, TypeGeneratorRecordNew(targetType, record)
 	}

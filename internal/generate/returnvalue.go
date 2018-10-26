@@ -80,8 +80,8 @@ func (r *ReturnValue) generateCToGo(g *jen.Group, cVarName string, goVarName str
 	}
 
 	pkg := ""
-	if r.Type.qname.ns != r.Namespace {
-		pkg = r.Type.qname.ns.fullGoPackageName
+	if r.Type.qname.namespace != r.Namespace {
+		pkg = r.Type.qname.namespace.fullGoPackageName
 	}
 
 	r.Type.generator.generateReturnCToGo(g, false, cVarName, goVarName, pkg,

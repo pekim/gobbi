@@ -110,7 +110,7 @@ func (r *Record) root() *Record {
 	}
 
 	qname := QNameNew(r.Namespace, r.ParentName)
-	parent, found := qname.ns.recordOrClassRecordForName(qname.name)
+	parent, found := qname.namespace.recordOrClassRecordForName(qname.name)
 	if !found {
 		panic(fmt.Sprintf("Failed to find parent %s for %s", r.ParentName, r.Name))
 	}
