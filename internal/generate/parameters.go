@@ -11,6 +11,12 @@ type Parameters []*Parameter
 func (pp Parameters) init(ns *Namespace) {
 	for _, param := range pp {
 		param.init(ns)
+
+		if param.Array != nil && param.Array.Length != nil {
+			// Provide an array length param with a reference to its array param.
+			paramIndex := *param.Array.Length
+			pp[paramIndex].arrayLengthFor = param
+		}
 	}
 }
 

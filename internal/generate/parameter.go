@@ -16,8 +16,9 @@ type Parameter struct {
 	Array             *Array    `xml:"array"`
 	Varargs           *struct{} `xml:"varargs"`
 
-	goVarName string
-	cVarName  string
+	goVarName      string
+	cVarName       string
+	arrayLengthFor *Parameter
 }
 
 func (p *Parameter) init(ns *Namespace) {
