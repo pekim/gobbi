@@ -115,9 +115,9 @@ func (recv *AboutDialog) GetWebsiteLabel() string {
 	return retGo
 }
 
-// Unsupported : gtk_about_dialog_set_artists : unsupported parameter artists : no type generator for utf8 (gchar*) for array param artists
+// Unsupported : gtk_about_dialog_set_artists : unsupported parameter artists :
 
-// Unsupported : gtk_about_dialog_set_authors : unsupported parameter authors : no type generator for utf8 (gchar*) for array param authors
+// Unsupported : gtk_about_dialog_set_authors : unsupported parameter authors :
 
 // SetComments is a wrapper around the C function gtk_about_dialog_set_comments.
 func (recv *AboutDialog) SetComments(comments string) {
@@ -139,7 +139,7 @@ func (recv *AboutDialog) SetCopyright(copyright string) {
 	return
 }
 
-// Unsupported : gtk_about_dialog_set_documenters : unsupported parameter documenters : no type generator for utf8 (gchar*) for array param documenters
+// Unsupported : gtk_about_dialog_set_documenters : unsupported parameter documenters :
 
 // SetLicense is a wrapper around the C function gtk_about_dialog_set_license.
 func (recv *AboutDialog) SetLicense(license string) {
@@ -463,7 +463,7 @@ func clipboard_ownerChangeHandler(_ *C.GObject, c_event *C.GdkEventOwnerChange, 
 
 // Unsupported : gtk_clipboard_request_image : unsupported parameter callback : no type generator for ClipboardImageReceivedFunc (GtkClipboardImageReceivedFunc) for param callback
 
-// Unsupported : gtk_clipboard_set_can_store : unsupported parameter targets : no type generator for TargetEntry (GtkTargetEntry) for array param targets
+// Unsupported : gtk_clipboard_set_can_store : unsupported parameter targets :
 
 // SetImage is a wrapper around the C function gtk_clipboard_set_image.
 func (recv *Clipboard) SetImage(pixbuf *gdkpixbuf.Pixbuf) {
@@ -576,7 +576,16 @@ func (recv *ComboBox) SetFocusOnClick(focusOnClick bool) {
 
 // Unsupported : gtk_dialog_set_alternative_button_order : unsupported parameter ... : varargs
 
-// Unsupported : gtk_dialog_set_alternative_button_order_from_array : unsupported parameter new_order : no type generator for gint (gint) for array param new_order
+// SetAlternativeButtonOrderFromArray is a wrapper around the C function gtk_dialog_set_alternative_button_order_from_array.
+func (recv *Dialog) SetAlternativeButtonOrderFromArray(newOrder []int32) {
+	c_n_params := (C.gint)(len(newOrder))
+
+	c_new_order := &newOrder[0]
+
+	C.gtk_dialog_set_alternative_button_order_from_array((*C.GtkDialog)(recv.native), c_n_params, (*C.gint)(unsafe.Pointer(c_new_order)))
+
+	return
+}
 
 // Unsupported signal 'insert-prefix' for EntryCompletion : unsupported parameter prefix : type utf8 :
 
@@ -1102,11 +1111,9 @@ func (recv *Label) SetWidthChars(nChars int32) {
 
 // Unsupported : gtk_list_store_new : unsupported parameter ... : varargs
 
-// Unsupported : gtk_list_store_newv : unsupported parameter types : no type generator for GType (GType) for array param types
-
 // Unsupported : gtk_list_store_insert_with_values : unsupported parameter ... : varargs
 
-// Unsupported : gtk_list_store_insert_with_valuesv : unsupported parameter columns : no type generator for gint (gint) for array param columns
+// Unsupported : gtk_list_store_insert_with_valuesv : unsupported parameter values :
 
 // MenuToolButtonNew is a wrapper around the C function gtk_menu_tool_button_new.
 func MenuToolButtonNew(iconWidget *Widget, label string) *MenuToolButton {
@@ -1231,8 +1238,6 @@ func (recv *ToolItem) RebuildMenu() {
 }
 
 // Unsupported : gtk_tree_store_new : unsupported parameter ... : varargs
-
-// Unsupported : gtk_tree_store_newv : unsupported parameter types : no type generator for GType (GType) for array param types
 
 // Unsupported : gtk_tree_view_new_with_model : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
 

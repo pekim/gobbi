@@ -123,7 +123,7 @@ func appinfomonitor_changedHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
-// Unsupported : g_application_add_main_option_entries : unsupported parameter entries : no type generator for GLib.OptionEntry () for array param entries
+// Unsupported : g_application_add_main_option_entries : unsupported parameter entries :
 
 // AddOptionGroup is a wrapper around the C function g_application_add_option_group.
 func (recv *Application) AddOptionGroup(group *glib.OptionGroup) {
@@ -382,7 +382,7 @@ func CastToSubprocess(object *gobject.Object) *Subprocess {
 
 // Unsupported : g_subprocess_new : unsupported parameter error : record with indirection level of 2
 
-// Unsupported : g_subprocess_newv : unsupported parameter argv : no type generator for filename () for array param argv
+// Unsupported : g_subprocess_newv : unsupported parameter argv :
 
 // Unsupported : g_subprocess_communicate : unsupported parameter stdout_buf : record with indirection level of 2
 
@@ -627,7 +627,7 @@ func (recv *SubprocessLauncher) SetCwd(cwd string) {
 	return
 }
 
-// Unsupported : g_subprocess_launcher_set_environ : unsupported parameter env : no type generator for filename () for array param env
+// Unsupported : g_subprocess_launcher_set_environ : unsupported parameter env :
 
 // SetFlags is a wrapper around the C function g_subprocess_launcher_set_flags.
 func (recv *SubprocessLauncher) SetFlags(flags SubprocessFlags) {
@@ -686,7 +686,7 @@ func (recv *SubprocessLauncher) Setenv(variable string, value string, overwrite 
 
 // Unsupported : g_subprocess_launcher_spawn : unsupported parameter error : record with indirection level of 2
 
-// Unsupported : g_subprocess_launcher_spawnv : unsupported parameter argv : no type generator for filename () for array param argv
+// Unsupported : g_subprocess_launcher_spawnv : unsupported parameter argv :
 
 // TakeFd is a wrapper around the C function g_subprocess_launcher_take_fd.
 func (recv *SubprocessLauncher) TakeFd(sourceFd int32, targetFd int32) {
@@ -738,7 +738,7 @@ func (recv *SubprocessLauncher) Unsetenv(variable string) {
 
 // Unsupported : g_task_new : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_themed_icon_new_from_names : unsupported parameter iconnames : no type generator for utf8 (char*) for array param iconnames
+// Unsupported : g_themed_icon_new_from_names : unsupported parameter iconnames :
 
 // InvokeRequestCertificate is a wrapper around the C function g_tls_interaction_invoke_request_certificate.
 func (recv *TlsInteraction) InvokeRequestCertificate(connection *TlsConnection, flags TlsCertificateRequestFlags, cancellable *Cancellable) (TlsInteractionResult, error) {
@@ -785,8 +785,6 @@ func (recv *TlsInteraction) RequestCertificate(connection *TlsConnection, flags 
 // Unsupported : g_tls_interaction_request_certificate_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
 // Unsupported : g_tls_interaction_request_certificate_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
-
-// Unsupported : g_unix_fd_list_new_from_array : unsupported parameter fds : no type generator for gint (gint) for array param fds
 
 // Unsupported : g_unix_socket_address_new_abstract : unsupported parameter path : no type generator for gchar () for array param path
 

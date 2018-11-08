@@ -118,7 +118,7 @@ func colorchooser_colorActivatedHandler(_ *C.GObject, c_color *C.GdkRGBA, data C
 	callback(color)
 }
 
-// Unsupported : gtk_color_chooser_add_palette : unsupported parameter colors : no type generator for Gdk.RGBA (GdkRGBA) for array param colors
+// Unsupported : gtk_color_chooser_add_palette : unsupported parameter colors :
 
 // GetRgba is a wrapper around the C function gtk_color_chooser_get_rgba.
 func (recv *ColorChooser) GetRgba() *gdk.RGBA {

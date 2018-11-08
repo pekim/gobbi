@@ -30,10 +30,8 @@ func (p *Parameter) init(ns *Namespace) {
 		p.Type.init(ns)
 	}
 
-	if p.Array != nil {
-		if p.Type != nil {
-			p.Type.init(ns)
-		}
+	if p.Array != nil && p.Array.Type != nil {
+		p.Array.init(ns)
 	}
 }
 
@@ -56,12 +54,16 @@ func (p *Parameter) isSupported() (bool, string) {
 	}
 
 	if p.Array != nil {
+		if p.Direction == "out" {
+			return false, fmt.Sprintf("output array param %s", p.Name)
+		}
+
 		if p.Array.Type.generator == nil {
 			return false, fmt.Sprintf("no type generator for %s (%s) for array param %s",
 				p.Array.Type.Name, p.Array.Type.CType, p.Name)
 		}
 
-		if supported, reason := p.Array.Type.generator.isSupportedAsParam(p.Direction); !supported {
+		if supported, reason := p.Array.Type.generator.isSupportedAsArrayParam(p.Direction); !supported {
 			return false, reason
 		}
 
@@ -91,7 +93,15 @@ func (p *Parameter) generateFunctionDeclaration(g *jen.Group) {
 		return
 	}
 
-	p.Type.generator.generateDeclaration(g, p.goVarName)
+	if p.Array != nil {
+		p.Array.generateDeclaration(g, p.goVarName)
+	} else {
+		if p.arrayLengthFor != nil {
+			return
+		}
+
+		p.Type.generator.generateDeclaration(g, p.goVarName)
+	}
 }
 
 func (p *Parameter) generateFunctionDeclarationCtype(g *jen.Group) {
@@ -102,7 +112,15 @@ func (p *Parameter) generateCVar(g *jen.Group) {
 	if p.Direction == "out" {
 		p.Type.generator.generateParamOutCVar(g, p.cVarName)
 	} else {
-		p.Type.generator.generateParamCVar(g, p.cVarName, p.goVarName, p.TransferOwnership)
+		if p.Array != nil {
+			p.Array.generateParamCVar(g, p.cVarName, p.goVarName, p.TransferOwnership)
+		} else {
+			if p.arrayLengthFor != nil {
+				p.Array.generateArrayLenParamCVar(g, p.cVarName, p.arrayLengthFor.goVarName, p.Type.CType)
+			} else {
+				p.Type.generator.generateParamCVar(g, p.cVarName, p.goVarName, p.TransferOwnership)
+			}
+		}
 	}
 
 	g.Line()
@@ -117,7 +135,11 @@ func (p *Parameter) generateCallArgument(g *jen.Group) {
 	if p.Direction == "out" {
 		p.Type.generator.generateParamOutCallArgument(g, p.cVarName)
 	} else {
-		p.Type.generator.generateParamCallArgument(g, p.cVarName)
+		if p.Array != nil {
+			p.Array.generateParamCallArgument(g, p.cVarName)
+		} else {
+			p.Type.generator.generateParamCallArgument(g, p.cVarName)
+		}
 	}
 }
 

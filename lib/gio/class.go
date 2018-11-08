@@ -2083,7 +2083,7 @@ func (recv *FileInfo) SetAttributeString(attribute string, attrValue string) {
 	return
 }
 
-// Unsupported : g_file_info_set_attribute_stringv : unsupported parameter attr_value : no type generator for utf8 () for array param attr_value
+// Unsupported : g_file_info_set_attribute_stringv : unsupported parameter attr_value :
 
 // SetAttributeUint32 is a wrapper around the C function g_file_info_set_attribute_uint32.
 func (recv *FileInfo) SetAttributeUint32(attribute string, attrValue uint32) {
@@ -4395,7 +4395,7 @@ func ThemedIconNew(iconname string) *ThemedIcon {
 	return retGo
 }
 
-// Unsupported : g_themed_icon_new_from_names : unsupported parameter iconnames : no type generator for utf8 (char*) for array param iconnames
+// Unsupported : g_themed_icon_new_from_names : unsupported parameter iconnames :
 
 // ThemedIconNewWithDefaultFallbacks is a wrapper around the C function g_themed_icon_new_with_default_fallbacks.
 func ThemedIconNewWithDefaultFallbacks(iconname string) *ThemedIcon {
@@ -4502,8 +4502,6 @@ func (recv *UnixFDList) Object() *gobject.Object {
 func CastToUnixFDList(object *gobject.Object) *UnixFDList {
 	return UnixFDListNewFromC(object.ToC())
 }
-
-// Unsupported : g_unix_fd_list_new_from_array : unsupported parameter fds : no type generator for gint (gint) for array param fds
 
 // UnixFDMessage is a wrapper around the C record GUnixFDMessage.
 type UnixFDMessage struct {

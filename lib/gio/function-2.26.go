@@ -171,8 +171,6 @@ func BusWatchNameWithClosures(busType BusType, name string, flags BusNameWatcher
 
 // Unsupported : g_content_type_get_symbolic_icon : no return generator
 
-// Unsupported : g_content_type_guess : unsupported parameter data : no type generator for guint8 (guchar) for array param data
-
 // Unsupported : g_content_type_guess_for_tree : unsupported parameter root : no type generator for File (GFile*) for param root
 
 // DbusAddressGetForBusSync is a wrapper around the C function g_dbus_address_get_for_bus_sync.
@@ -224,7 +222,7 @@ func DbusAddressGetStreamSync(address string, cancellable *Cancellable) (*IOStre
 	return retGo, outGuid, goThrowableError
 }
 
-// Unsupported : g_dbus_annotation_info_lookup : unsupported parameter annotations : no type generator for DBusAnnotationInfo (GDBusAnnotationInfo*) for array param annotations
+// Unsupported : g_dbus_annotation_info_lookup : unsupported parameter annotations :
 
 // DbusErrorEncodeGerror is a wrapper around the C function g_dbus_error_encode_gerror.
 func DbusErrorEncodeGerror(error *glib.Error) string {
@@ -287,7 +285,7 @@ func DbusErrorRegisterError(errorDomain glib.Quark, errorCode int32, dbusErrorNa
 	return retGo
 }
 
-// Unsupported : g_dbus_error_register_error_domain : unsupported parameter entries : no type generator for DBusErrorEntry (GDBusErrorEntry) for array param entries
+// Unsupported : g_dbus_error_register_error_domain : unsupported parameter entries :
 
 // DbusErrorStripRemoteError is a wrapper around the C function g_dbus_error_strip_remote_error.
 func DbusErrorStripRemoteError(error *glib.Error) bool {
@@ -431,7 +429,7 @@ func DbusIsUniqueName(string string) bool {
 
 // Unsupported : g_icon_new_for_string : no return generator
 
-// Unsupported : g_initable_newv : unsupported parameter parameters : no type generator for GObject.Parameter (GParameter) for array param parameters
+// Unsupported : g_initable_newv : unsupported parameter parameters :
 
 // Unsupported : g_io_scheduler_push_job : unsupported parameter job_func : no type generator for IOSchedulerJobFunc (GIOSchedulerJobFunc) for param job_func
 

@@ -357,7 +357,7 @@ func (recv *IconInfo) LoadSurface(forWindow *gdk.Window) (*cairo.Surface, error)
 	return retGo, goThrowableError
 }
 
-// Unsupported : gtk_icon_theme_choose_icon_for_scale : unsupported parameter icon_names : no type generator for utf8 (gchar) for array param icon_names
+// Unsupported : gtk_icon_theme_choose_icon_for_scale : unsupported parameter icon_names :
 
 // LoadIconForScale is a wrapper around the C function gtk_icon_theme_load_icon_for_scale.
 func (recv *IconTheme) LoadIconForScale(iconName string, size int32, scale int32, flags IconLookupFlags) (*gdkpixbuf.Pixbuf, error) {
@@ -910,8 +910,6 @@ func (recv *ListBoxRow) SetHeader(header *Widget) {
 
 // Unsupported : gtk_list_store_new : unsupported parameter ... : varargs
 
-// Unsupported : gtk_list_store_newv : unsupported parameter types : no type generator for GType (GType) for array param types
-
 // Unsupported : gtk_message_dialog_new : unsupported parameter ... : varargs
 
 // Unsupported : gtk_message_dialog_new_with_markup : unsupported parameter ... : varargs
@@ -1378,8 +1376,6 @@ func (recv *StyleContext) SetScale(scale int32) {
 }
 
 // Unsupported : gtk_tree_store_new : unsupported parameter ... : varargs
-
-// Unsupported : gtk_tree_store_newv : unsupported parameter types : no type generator for GType (GType) for array param types
 
 // Unsupported : gtk_tree_view_new_with_model : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
 

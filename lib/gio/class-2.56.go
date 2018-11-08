@@ -159,13 +159,11 @@ func (recv *Socket) LeaveMulticastGroupSsm(group *InetAddress, sourceSpecific *I
 
 // Unsupported : g_subprocess_new : unsupported parameter error : record with indirection level of 2
 
-// Unsupported : g_subprocess_newv : unsupported parameter argv : no type generator for filename () for array param argv
+// Unsupported : g_subprocess_newv : unsupported parameter argv :
 
 // Unsupported : g_task_new : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_themed_icon_new_from_names : unsupported parameter iconnames : no type generator for utf8 (char*) for array param iconnames
-
-// Unsupported : g_unix_fd_list_new_from_array : unsupported parameter fds : no type generator for gint (gint) for array param fds
+// Unsupported : g_themed_icon_new_from_names : unsupported parameter iconnames :
 
 // Unsupported : g_unix_socket_address_new_abstract : unsupported parameter path : no type generator for gchar () for array param path
 

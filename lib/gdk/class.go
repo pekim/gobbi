@@ -308,11 +308,25 @@ func device_changedHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
-// Unsupported : gdk_device_get_axis : unsupported parameter axes : no type generator for gdouble (gdouble) for array param axes
+// GetAxis is a wrapper around the C function gdk_device_get_axis.
+func (recv *Device) GetAxis(axes []float64, use AxisUse) (bool, float64) {
+	c_axes := &axes[0]
 
-// Unsupported : gdk_device_get_history : unsupported parameter events : no type generator for TimeCoord (GdkTimeCoord**) for array param events
+	c_use := (C.GdkAxisUse)(use)
 
-// Unsupported : gdk_device_get_state : unsupported parameter axes : no type generator for gdouble (gdouble) for array param axes
+	var c_value C.gdouble
+
+	retC := C.gdk_device_get_axis((*C.GdkDevice)(recv.native), (*C.gdouble)(unsafe.Pointer(c_axes)), c_use, &c_value)
+	retGo := retC == C.TRUE
+
+	value := (float64)(c_value)
+
+	return retGo, value
+}
+
+// Unsupported : gdk_device_get_history : unsupported parameter events : output array param events
+
+// Unsupported : gdk_device_get_state : unsupported parameter mask : GdkModifierType* with indirection level of 1
 
 // ListSlaveDevices is a wrapper around the C function gdk_device_list_slave_devices.
 func (recv *Device) ListSlaveDevices() *glib.List {
@@ -1253,9 +1267,9 @@ func (recv *Keymap) GetDirection() pango.Direction {
 	return retGo
 }
 
-// Unsupported : gdk_keymap_get_entries_for_keycode : unsupported parameter keys : no type generator for KeymapKey (GdkKeymapKey*) for array param keys
+// Unsupported : gdk_keymap_get_entries_for_keycode : unsupported parameter keys : output array param keys
 
-// Unsupported : gdk_keymap_get_entries_for_keyval : unsupported parameter keys : no type generator for KeymapKey (GdkKeymapKey*) for array param keys
+// Unsupported : gdk_keymap_get_entries_for_keyval : unsupported parameter keys : output array param keys
 
 // LookupKey is a wrapper around the C function gdk_keymap_lookup_key.
 func (recv *Keymap) LookupKey(key *KeymapKey) uint32 {

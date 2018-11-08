@@ -349,7 +349,7 @@ func (recv *TestDBus) Up() {
 	return
 }
 
-// Unsupported : g_themed_icon_new_from_names : unsupported parameter iconnames : no type generator for utf8 (char*) for array param iconnames
+// Unsupported : g_themed_icon_new_from_names : unsupported parameter iconnames :
 
 // IsSame is a wrapper around the C function g_tls_certificate_is_same.
 func (recv *TlsCertificate) IsSame(certTwo *TlsCertificate) bool {
@@ -360,8 +360,6 @@ func (recv *TlsCertificate) IsSame(certTwo *TlsCertificate) bool {
 
 	return retGo
 }
-
-// Unsupported : g_unix_fd_list_new_from_array : unsupported parameter fds : no type generator for gint (gint) for array param fds
 
 // Unsupported : g_unix_socket_address_new_abstract : unsupported parameter path : no type generator for gchar () for array param path
 

@@ -1088,7 +1088,7 @@ func (recv *MainContext) AddPoll(fd *PollFD, priority int32) {
 	return
 }
 
-// Unsupported : g_main_context_check : unsupported parameter fds : no type generator for PollFD (GPollFD) for array param fds
+// Unsupported : g_main_context_check : unsupported parameter fds :
 
 // Dispatch is a wrapper around the C function g_main_context_dispatch.
 func (recv *MainContext) Dispatch() {
@@ -1160,7 +1160,7 @@ func (recv *MainContext) Prepare(priority int32) bool {
 	return retGo
 }
 
-// Unsupported : g_main_context_query : unsupported parameter fds : no type generator for PollFD (GPollFD) for array param fds
+// Unsupported : g_main_context_query : unsupported parameter fds : output array param fds
 
 // Ref is a wrapper around the C function g_main_context_ref.
 func (recv *MainContext) Ref() *MainContext {

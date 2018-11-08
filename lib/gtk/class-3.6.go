@@ -314,8 +314,6 @@ func (recv *LevelBar) SetValue(value float64) {
 
 // Unsupported : gtk_list_store_new : unsupported parameter ... : varargs
 
-// Unsupported : gtk_list_store_newv : unsupported parameter types : no type generator for GType (GType) for array param types
-
 // MenuButtonNew is a wrapper around the C function gtk_menu_button_new.
 func MenuButtonNew() *MenuButton {
 	retC := C.gtk_menu_button_new()
@@ -481,8 +479,6 @@ func (recv *TextView) SetInputPurpose(purpose InputPurpose) {
 }
 
 // Unsupported : gtk_tree_store_new : unsupported parameter ... : varargs
-
-// Unsupported : gtk_tree_store_newv : unsupported parameter types : no type generator for GType (GType) for array param types
 
 // Unsupported : gtk_tree_view_new_with_model : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
 

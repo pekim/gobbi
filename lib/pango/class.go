@@ -79,7 +79,7 @@ func (recv *Context) GetLanguage() *Language {
 
 // Unsupported : pango_context_get_metrics : return type : Blacklisted record : PangoFontMetrics
 
-// Unsupported : pango_context_list_families : unsupported parameter families : no type generator for FontFamily (PangoFontFamily**) for array param families
+// Unsupported : pango_context_list_families : unsupported parameter families : output array param families
 
 // LoadFont is a wrapper around the C function pango_context_load_font.
 func (recv *Context) LoadFont(desc *FontDescription) *Font {
@@ -379,7 +379,7 @@ func (recv *FontFamily) GetName() string {
 	return retGo
 }
 
-// Unsupported : pango_font_family_list_faces : unsupported parameter faces : no type generator for FontFace (PangoFontFace**) for array param faces
+// Unsupported : pango_font_family_list_faces : unsupported parameter faces : output array param faces
 
 // FontMap is a wrapper around the C record PangoFontMap.
 type FontMap struct {
@@ -414,7 +414,7 @@ func CastToFontMap(object *gobject.Object) *FontMap {
 	return FontMapNewFromC(object.ToC())
 }
 
-// Unsupported : pango_font_map_list_families : unsupported parameter families : no type generator for FontFamily (PangoFontFamily**) for array param families
+// Unsupported : pango_font_map_list_families : unsupported parameter families : output array param families
 
 // LoadFont is a wrapper around the C function pango_font_map_load_font.
 func (recv *FontMap) LoadFont(context *Context, desc *FontDescription) *Font {
@@ -661,7 +661,7 @@ func (recv *Layout) GetLines() *glib.SList {
 	return retGo
 }
 
-// Unsupported : pango_layout_get_log_attrs : unsupported parameter attrs : no type generator for LogAttr (PangoLogAttr*) for array param attrs
+// Unsupported : pango_layout_get_log_attrs : unsupported parameter attrs : output array param attrs
 
 // GetPixelExtents is a wrapper around the C function pango_layout_get_pixel_extents.
 func (recv *Layout) GetPixelExtents() (*Rectangle, *Rectangle) {

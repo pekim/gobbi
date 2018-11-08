@@ -328,8 +328,6 @@ func (recv *Label) SetYalign(yalign float32) {
 
 // Unsupported : gtk_list_store_new : unsupported parameter ... : varargs
 
-// Unsupported : gtk_list_store_newv : unsupported parameter types : no type generator for GType (GType) for array param types
-
 // Unsupported : gtk_message_dialog_new : unsupported parameter ... : varargs
 
 // Unsupported : gtk_message_dialog_new_with_markup : unsupported parameter ... : varargs
@@ -713,8 +711,6 @@ func (recv *TextView) SetMonospace(monospace bool) {
 }
 
 // Unsupported : gtk_tree_store_new : unsupported parameter ... : varargs
-
-// Unsupported : gtk_tree_store_newv : unsupported parameter types : no type generator for GType (GType) for array param types
 
 // Unsupported : gtk_tree_view_new_with_model : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
 

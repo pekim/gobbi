@@ -88,9 +88,9 @@ func (recv *DatagramBased) CreateSource(condition glib.IOCondition, cancellable 
 	return retGo
 }
 
-// Unsupported : g_datagram_based_receive_messages : unsupported parameter messages : no type generator for InputMessage (GInputMessage) for array param messages
+// Unsupported : g_datagram_based_receive_messages : unsupported parameter messages :
 
-// Unsupported : g_datagram_based_send_messages : unsupported parameter messages : no type generator for OutputMessage (GOutputMessage) for array param messages
+// Unsupported : g_datagram_based_send_messages : unsupported parameter messages :
 
 // DtlsClientConnection is a wrapper around the C record GDtlsClientConnection.
 type DtlsClientConnection struct {

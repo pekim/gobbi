@@ -44,7 +44,7 @@ func (recv *KeyFile) SaveToFile(filename string) (bool, error) {
 
 // Unsupported : g_markup_parse_context_new : unsupported parameter user_data_dnotify : no type generator for DestroyNotify (GDestroyNotify) for param user_data_dnotify
 
-// Unsupported : g_option_context_parse_strv : unsupported parameter arguments : no type generator for utf8 (gchar**) for array param arguments
+// Unsupported : g_option_context_parse_strv : unsupported parameter arguments :
 
 // Unsupported : g_option_group_new : unsupported parameter destroy : no type generator for DestroyNotify (GDestroyNotify) for param destroy
 

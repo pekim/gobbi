@@ -367,7 +367,7 @@ func (recv *BookmarkFile) SetDescription(uri string, description string) {
 	return
 }
 
-// Unsupported : g_bookmark_file_set_groups : unsupported parameter groups : no type generator for utf8 () for array param groups
+// Unsupported : g_bookmark_file_set_groups : unsupported parameter groups :
 
 // SetIcon is a wrapper around the C function g_bookmark_file_set_icon.
 func (recv *BookmarkFile) SetIcon(uri string, href string, mimeType string) {
@@ -490,7 +490,22 @@ func (recv *KeyFile) SetDouble(groupName string, key string, value float64) {
 	return
 }
 
-// Unsupported : g_key_file_set_double_list : unsupported parameter list : no type generator for gdouble (gdouble) for array param list
+// SetDoubleList is a wrapper around the C function g_key_file_set_double_list.
+func (recv *KeyFile) SetDoubleList(groupName string, key string, list []float64) {
+	c_group_name := C.CString(groupName)
+	defer C.free(unsafe.Pointer(c_group_name))
+
+	c_key := C.CString(key)
+	defer C.free(unsafe.Pointer(c_key))
+
+	c_list := &list[0]
+
+	c_length := (C.gsize)(len(list))
+
+	C.g_key_file_set_double_list((*C.GKeyFile)(recv.native), c_group_name, c_key, (*C.gdouble)(unsafe.Pointer(c_list)), c_length)
+
+	return
+}
 
 // Unsupported : g_markup_parse_context_new : unsupported parameter user_data_dnotify : no type generator for DestroyNotify (GDestroyNotify) for param user_data_dnotify
 

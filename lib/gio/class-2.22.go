@@ -868,7 +868,7 @@ func (recv *Socket) Listen() (bool, error) {
 
 // Unsupported : g_socket_send : unsupported parameter buffer : no type generator for guint8 () for array param buffer
 
-// Unsupported : g_socket_send_message : unsupported parameter vectors : no type generator for OutputVector (GOutputVector) for array param vectors
+// Unsupported : g_socket_send_message : unsupported parameter vectors :
 
 // Unsupported : g_socket_send_to : unsupported parameter buffer : no type generator for guint8 () for array param buffer
 
@@ -1509,7 +1509,7 @@ func (recv *TcpConnection) SetGracefulDisconnect(gracefulDisconnect bool) {
 	return
 }
 
-// Unsupported : g_themed_icon_new_from_names : unsupported parameter iconnames : no type generator for utf8 (char*) for array param iconnames
+// Unsupported : g_themed_icon_new_from_names : unsupported parameter iconnames :
 
 // ThreadedSocketService is a wrapper around the C record GThreadedSocketService.
 type ThreadedSocketService struct {
@@ -1664,8 +1664,6 @@ func (recv *UnixConnection) SendFd(fd int32, cancellable *Cancellable) (bool, er
 
 	return retGo, goThrowableError
 }
-
-// Unsupported : g_unix_fd_list_new_from_array : unsupported parameter fds : no type generator for gint (gint) for array param fds
 
 // UnixFDMessageNew is a wrapper around the C function g_unix_fd_message_new.
 func UnixFDMessageNew() *UnixFDMessage {

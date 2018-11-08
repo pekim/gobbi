@@ -127,9 +127,9 @@ func (recv *IconView) CreateDragIcon(path *TreePath) *cairo.Surface {
 	return retGo
 }
 
-// Unsupported : gtk_icon_view_enable_model_drag_dest : unsupported parameter targets : no type generator for TargetEntry (GtkTargetEntry) for array param targets
+// Unsupported : gtk_icon_view_enable_model_drag_dest : unsupported parameter targets :
 
-// Unsupported : gtk_icon_view_enable_model_drag_source : unsupported parameter targets : no type generator for TargetEntry (GtkTargetEntry) for array param targets
+// Unsupported : gtk_icon_view_enable_model_drag_source : unsupported parameter targets :
 
 // Unsupported : gtk_icon_view_get_cursor : unsupported parameter path : record with indirection level of 2
 
@@ -232,8 +232,6 @@ func (recv *Image) Clear() {
 // Unsupported : gtk_info_bar_new_with_buttons : unsupported parameter ... : varargs
 
 // Unsupported : gtk_list_store_new : unsupported parameter ... : varargs
-
-// Unsupported : gtk_list_store_newv : unsupported parameter types : no type generator for GType (GType) for array param types
 
 // GetChildPackDirection is a wrapper around the C function gtk_menu_bar_get_child_pack_direction.
 func (recv *MenuBar) GetChildPackDirection() PackDirection {
@@ -356,8 +354,6 @@ func (recv *ToolButton) SetIconName(iconName string) {
 }
 
 // Unsupported : gtk_tree_store_new : unsupported parameter ... : varargs
-
-// Unsupported : gtk_tree_store_newv : unsupported parameter types : no type generator for GType (GType) for array param types
 
 // Unsupported : gtk_tree_view_new_with_model : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
 

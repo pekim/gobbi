@@ -17,7 +17,7 @@ func (recv *GlyphItem) Free() {
 	return
 }
 
-// Unsupported : pango_glyph_item_letter_space : unsupported parameter log_attrs : no type generator for LogAttr (PangoLogAttr) for array param log_attrs
+// Unsupported : pango_glyph_item_letter_space : unsupported parameter log_attrs :
 
 // Matrix is a wrapper around the C record PangoMatrix.
 type Matrix struct {

@@ -16,7 +16,7 @@ import "C"
 
 // Unsupported : g_error_new_valist : unsupported parameter args : no type generator for va_list (va_list) for param args
 
-// Unsupported : g_key_file_load_from_dirs : unsupported parameter search_dirs : no type generator for filename () for array param search_dirs
+// Unsupported : g_key_file_load_from_dirs : unsupported parameter search_dirs :
 
 // Unsupported : g_markup_parse_context_new : unsupported parameter user_data_dnotify : no type generator for DestroyNotify (GDestroyNotify) for param user_data_dnotify
 
@@ -280,9 +280,9 @@ func (recv *Regex) GetStringNumber(name string) int32 {
 
 // Unsupported : g_regex_match_all : unsupported parameter match_info : record with indirection level of 2
 
-// Unsupported : g_regex_match_all_full : unsupported parameter string : no type generator for utf8 (gchar) for array param string
+// Unsupported : g_regex_match_all_full : unsupported parameter string :
 
-// Unsupported : g_regex_match_full : unsupported parameter string : no type generator for utf8 (gchar) for array param string
+// Unsupported : g_regex_match_full : unsupported parameter string :
 
 // Ref is a wrapper around the C function g_regex_ref.
 func (recv *Regex) Ref() *Regex {
@@ -292,15 +292,15 @@ func (recv *Regex) Ref() *Regex {
 	return retGo
 }
 
-// Unsupported : g_regex_replace : unsupported parameter string : no type generator for utf8 (gchar) for array param string
+// Unsupported : g_regex_replace : unsupported parameter string :
 
-// Unsupported : g_regex_replace_eval : unsupported parameter string : no type generator for utf8 (gchar) for array param string
+// Unsupported : g_regex_replace_eval : unsupported parameter string :
 
-// Unsupported : g_regex_replace_literal : unsupported parameter string : no type generator for utf8 (gchar) for array param string
+// Unsupported : g_regex_replace_literal : unsupported parameter string :
 
 // Unsupported : g_regex_split : no return type
 
-// Unsupported : g_regex_split_full : unsupported parameter string : no type generator for utf8 (gchar) for array param string
+// Unsupported : g_regex_split_full : unsupported parameter string :
 
 // Unref is a wrapper around the C function g_regex_unref.
 func (recv *Regex) Unref() {

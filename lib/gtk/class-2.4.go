@@ -647,17 +647,17 @@ func (recv *ActionGroup) AddActionWithAccel(action *Action, accelerator string) 
 	return
 }
 
-// Unsupported : gtk_action_group_add_actions : unsupported parameter entries : no type generator for ActionEntry (GtkActionEntry) for array param entries
+// Unsupported : gtk_action_group_add_actions : unsupported parameter entries :
 
-// Unsupported : gtk_action_group_add_actions_full : unsupported parameter entries : no type generator for ActionEntry (GtkActionEntry) for array param entries
+// Unsupported : gtk_action_group_add_actions_full : unsupported parameter entries :
 
-// Unsupported : gtk_action_group_add_radio_actions : unsupported parameter entries : no type generator for RadioActionEntry (GtkRadioActionEntry) for array param entries
+// Unsupported : gtk_action_group_add_radio_actions : unsupported parameter entries :
 
-// Unsupported : gtk_action_group_add_radio_actions_full : unsupported parameter entries : no type generator for RadioActionEntry (GtkRadioActionEntry) for array param entries
+// Unsupported : gtk_action_group_add_radio_actions_full : unsupported parameter entries :
 
-// Unsupported : gtk_action_group_add_toggle_actions : unsupported parameter entries : no type generator for ToggleActionEntry (GtkToggleActionEntry) for array param entries
+// Unsupported : gtk_action_group_add_toggle_actions : unsupported parameter entries :
 
-// Unsupported : gtk_action_group_add_toggle_actions_full : unsupported parameter entries : no type generator for ToggleActionEntry (GtkToggleActionEntry) for array param entries
+// Unsupported : gtk_action_group_add_toggle_actions_full : unsupported parameter entries :
 
 // GetAction is a wrapper around the C function gtk_action_group_get_action.
 func (recv *ActionGroup) GetAction(actionName string) *Action {
@@ -933,7 +933,7 @@ func (recv *CheckMenuItem) SetDrawAsRadio(drawAsRadio bool) {
 
 // Unsupported : gtk_clipboard_request_targets : unsupported parameter callback : no type generator for ClipboardTargetsReceivedFunc (GtkClipboardTargetsReceivedFunc) for param callback
 
-// Unsupported : gtk_clipboard_wait_for_targets : unsupported parameter targets : no type generator for Gdk.Atom (GdkAtom*) for array param targets
+// Unsupported : gtk_clipboard_wait_for_targets : unsupported parameter targets : output array param targets
 
 type signalColorButtonColorSetDetail struct {
 	callback  ColorButtonSignalColorSetCallback
@@ -1814,7 +1814,7 @@ func (recv *IconInfo) Free() {
 	return
 }
 
-// Unsupported : gtk_icon_info_get_attach_points : unsupported parameter points : no type generator for Gdk.Point (GdkPoint*) for array param points
+// Unsupported : gtk_icon_info_get_attach_points : unsupported parameter points : output array param points
 
 // GetBaseSize is a wrapper around the C function gtk_icon_info_get_base_size.
 func (recv *IconInfo) GetBaseSize() int32 {
@@ -1907,7 +1907,7 @@ func (recv *IconTheme) GetExampleIconName() string {
 	return retGo
 }
 
-// Unsupported : gtk_icon_theme_get_search_path : unsupported parameter path : no type generator for filename () for array param path
+// Unsupported : gtk_icon_theme_get_search_path : unsupported parameter path : output array param path
 
 // HasIcon is a wrapper around the C function gtk_icon_theme_has_icon.
 func (recv *IconTheme) HasIcon(iconName string) bool {
@@ -2015,7 +2015,7 @@ func (recv *IconTheme) SetScreen(screen *gdk.Screen) {
 	return
 }
 
-// Unsupported : gtk_icon_theme_set_search_path : unsupported parameter path : no type generator for filename () for array param path
+// Unsupported : gtk_icon_theme_set_search_path : unsupported parameter path :
 
 // Unsupported : gtk_icon_view_new_with_model : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
 
@@ -2030,8 +2030,6 @@ func (recv *IconTheme) SetScreen(screen *gdk.Screen) {
 // Unsupported : gtk_info_bar_new_with_buttons : unsupported parameter ... : varargs
 
 // Unsupported : gtk_list_store_new : unsupported parameter ... : varargs
-
-// Unsupported : gtk_list_store_newv : unsupported parameter types : no type generator for GType (GType) for array param types
 
 // Attach is a wrapper around the C function gtk_menu_attach.
 func (recv *Menu) Attach(child *Widget, leftAttach uint32, rightAttach uint32, topAttach uint32, bottomAttach uint32) {
@@ -3161,7 +3159,7 @@ func (recv *TreeModelFilter) Refilter() {
 	return
 }
 
-// Unsupported : gtk_tree_model_filter_set_modify_func : unsupported parameter types : no type generator for GType (GType) for array param types
+// Unsupported : gtk_tree_model_filter_set_modify_func : unsupported parameter func : no type generator for TreeModelFilterModifyFunc (GtkTreeModelFilterModifyFunc) for param func
 
 // SetVisibleColumn is a wrapper around the C function gtk_tree_model_filter_set_visible_column.
 func (recv *TreeModelFilter) SetVisibleColumn(column int32) {
@@ -3175,8 +3173,6 @@ func (recv *TreeModelFilter) SetVisibleColumn(column int32) {
 // Unsupported : gtk_tree_model_filter_set_visible_func : unsupported parameter func : no type generator for TreeModelFilterVisibleFunc (GtkTreeModelFilterVisibleFunc) for param func
 
 // Unsupported : gtk_tree_store_new : unsupported parameter ... : varargs
-
-// Unsupported : gtk_tree_store_newv : unsupported parameter types : no type generator for GType (GType) for array param types
 
 // Unsupported : gtk_tree_view_new_with_model : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
 

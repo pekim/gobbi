@@ -971,7 +971,7 @@ func (recv *File) IsNative() bool {
 	return retGo
 }
 
-// Unsupported : g_file_load_contents : unsupported parameter contents : no type generator for guint8 () for array param contents
+// Unsupported : g_file_load_contents : unsupported parameter contents : output array param contents
 
 // Unsupported : g_file_load_contents_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 

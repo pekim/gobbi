@@ -67,8 +67,6 @@ func (recv *GLArea) SetUseEs(useEs bool) {
 
 // Unsupported : gtk_list_store_new : unsupported parameter ... : varargs
 
-// Unsupported : gtk_list_store_newv : unsupported parameter types : no type generator for GType (GType) for array param types
-
 // Unsupported signal 'popped-up' for Menu : unsupported parameter flipped_rect : type gpointer :
 
 // PlaceOnMonitor is a wrapper around the C function gtk_menu_place_on_monitor.
@@ -111,7 +109,7 @@ func (recv *PadController) SetAction(type_ PadActionType, index int32, mode int3
 	return
 }
 
-// Unsupported : gtk_pad_controller_set_action_entries : unsupported parameter entries : no type generator for PadActionEntry (GtkPadActionEntry) for array param entries
+// Unsupported : gtk_pad_controller_set_action_entries : unsupported parameter entries :
 
 // Unsupported : gtk_page_setup_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
 
@@ -261,8 +259,6 @@ func (recv *ShortcutLabel) SetDisabledText(disabledText string) {
 // Unsupported : gtk_status_icon_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon (GIcon*) for param icon
 
 // Unsupported : gtk_tree_store_new : unsupported parameter ... : varargs
-
-// Unsupported : gtk_tree_store_newv : unsupported parameter types : no type generator for GType (GType) for array param types
 
 // Unsupported : gtk_tree_view_new_with_model : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
 

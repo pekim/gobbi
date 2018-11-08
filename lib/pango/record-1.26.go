@@ -3,11 +3,23 @@
 
 package pango
 
+import "unsafe"
+
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <pango/pango.h>
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : pango_glyph_item_get_logical_widths : unsupported parameter logical_widths : no type generator for gint (int) for array param logical_widths
+// GetLogicalWidths is a wrapper around the C function pango_glyph_item_get_logical_widths.
+func (recv *GlyphItem) GetLogicalWidths(text string, logicalWidths []int32) {
+	c_text := C.CString(text)
+	defer C.free(unsafe.Pointer(c_text))
+
+	c_logical_widths := &logicalWidths[0]
+
+	C.pango_glyph_item_get_logical_widths((*C.PangoGlyphItem)(recv.native), c_text, (*C.int)(unsafe.Pointer(c_logical_widths)))
+
+	return
+}
 
 // Unsupported : pango_tab_array_new_with_positions : unsupported parameter ... : varargs

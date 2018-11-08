@@ -237,7 +237,7 @@ func TextAttributeRegister(name string) TextAttribute {
 	return retGo
 }
 
-// Unsupported : atk_text_free_ranges : unsupported parameter ranges : no type generator for TextRange (AtkTextRange*) for array param ranges
+// Unsupported : atk_text_free_ranges : unsupported parameter ranges :
 
 // ValueTypeGetLocalizedName is a wrapper around the C function atk_value_type_get_localized_name.
 func ValueTypeGetLocalizedName(valueType ValueType) string {

@@ -64,17 +64,15 @@ func ContentTypeFromMimeType(mimeType string) string {
 
 // Unsupported : g_content_type_get_symbolic_icon : no return generator
 
-// Unsupported : g_content_type_guess : unsupported parameter data : no type generator for guint8 (guchar) for array param data
-
 // Unsupported : g_content_type_guess_for_tree : unsupported parameter root : no type generator for File (GFile*) for param root
 
 // Unsupported : g_dbus_address_get_stream : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
 // Unsupported : g_dbus_address_get_stream_finish : unsupported parameter res : no type generator for AsyncResult (GAsyncResult*) for param res
 
-// Unsupported : g_dbus_annotation_info_lookup : unsupported parameter annotations : no type generator for DBusAnnotationInfo (GDBusAnnotationInfo*) for array param annotations
+// Unsupported : g_dbus_annotation_info_lookup : unsupported parameter annotations :
 
-// Unsupported : g_dbus_error_register_error_domain : unsupported parameter entries : no type generator for DBusErrorEntry (GDBusErrorEntry) for array param entries
+// Unsupported : g_dbus_error_register_error_domain : unsupported parameter entries :
 
 // Unsupported : g_dbus_gvalue_to_gvariant : unsupported parameter type : Blacklisted record : GVariantType
 
@@ -100,7 +98,7 @@ func ContentTypeFromMimeType(mimeType string) string {
 
 // Unsupported : g_icon_new_for_string : no return generator
 
-// Unsupported : g_initable_newv : unsupported parameter parameters : no type generator for GObject.Parameter (GParameter) for array param parameters
+// Unsupported : g_initable_newv : unsupported parameter parameters :
 
 // Unsupported : g_io_scheduler_push_job : unsupported parameter job_func : no type generator for IOSchedulerJobFunc (GIOSchedulerJobFunc) for param job_func
 

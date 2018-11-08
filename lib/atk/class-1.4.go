@@ -16,4 +16,4 @@ func (recv *Hyperlink) IsSelectedLink() bool {
 	return retGo
 }
 
-// Unsupported : atk_relation_new : unsupported parameter targets : no type generator for Object (AtkObject*) for array param targets
+// Unsupported : atk_relation_new : unsupported parameter targets :

@@ -354,7 +354,7 @@ func (recv *Application) Release() {
 	return
 }
 
-// Unsupported : g_application_run : unsupported parameter argv : no type generator for filename () for array param argv
+// Unsupported : g_application_run : unsupported parameter argv :
 
 // Unsupported : g_application_set_action_group : unsupported parameter action_group : no type generator for ActionGroup (GActionGroup*) for param action_group
 
@@ -627,7 +627,7 @@ func TcpWrapperConnectionNew(baseIoStream *IOStream, socket *Socket) *TcpWrapper
 	return retGo
 }
 
-// Unsupported : g_themed_icon_new_from_names : unsupported parameter iconnames : no type generator for utf8 (char*) for array param iconnames
+// Unsupported : g_themed_icon_new_from_names : unsupported parameter iconnames :
 
 // TlsCertificate is a wrapper around the C record GTlsCertificate.
 type TlsCertificate struct {
@@ -889,8 +889,6 @@ func (recv *TlsConnection) SetUseSystemCertdb(useSystemCertdb bool) {
 
 	return
 }
-
-// Unsupported : g_unix_fd_list_new_from_array : unsupported parameter fds : no type generator for gint (gint) for array param fds
 
 // Unsupported : g_unix_socket_address_new_abstract : unsupported parameter path : no type generator for gchar () for array param path
 

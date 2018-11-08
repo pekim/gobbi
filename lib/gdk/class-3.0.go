@@ -26,7 +26,7 @@ func (recv *Device) GetAssociatedDevice() *Device {
 	return retGo
 }
 
-// Unsupported : gdk_device_get_axis_value : unsupported parameter axes : no type generator for gdouble (gdouble) for array param axes
+// Unsupported : gdk_device_get_axis_value : unsupported parameter axis_label : Blacklisted record : GdkAtom
 
 // GetDeviceType is a wrapper around the C function gdk_device_get_device_type.
 func (recv *Device) GetDeviceType() DeviceType {

@@ -552,8 +552,6 @@ func (recv *ImageMenuItem) SetUseStock(useStock bool) {
 
 // Unsupported : gtk_list_store_new : unsupported parameter ... : varargs
 
-// Unsupported : gtk_list_store_newv : unsupported parameter types : no type generator for GType (GType) for array param types
-
 // GetLabel is a wrapper around the C function gtk_menu_item_get_label.
 func (recv *MenuItem) GetLabel() string {
 	retC := C.gtk_menu_item_get_label((*C.GtkMenuItem)(recv.native))
@@ -885,8 +883,6 @@ func textbuffer_pasteDoneHandler(_ *C.GObject, c_clipboard *C.GtkClipboard, data
 }
 
 // Unsupported : gtk_tree_store_new : unsupported parameter ... : varargs
-
-// Unsupported : gtk_tree_store_newv : unsupported parameter types : no type generator for GType (GType) for array param types
 
 // Unsupported : gtk_tree_view_new_with_model : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
 

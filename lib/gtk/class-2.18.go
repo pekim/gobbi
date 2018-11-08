@@ -586,8 +586,6 @@ func (recv *Label) SetTrackVisitedLinks(trackLinks bool) {
 
 // Unsupported : gtk_list_store_new : unsupported parameter ... : varargs
 
-// Unsupported : gtk_list_store_newv : unsupported parameter types : no type generator for GType (GType) for array param types
-
 // GetReserveToggleSize is a wrapper around the C function gtk_menu_get_reserve_toggle_size.
 func (recv *Menu) GetReserveToggleSize() bool {
 	retC := C.gtk_menu_get_reserve_toggle_size((*C.GtkMenu)(recv.native))
@@ -784,8 +782,6 @@ func (recv *StatusIcon) SetTitle(title string) {
 }
 
 // Unsupported : gtk_tree_store_new : unsupported parameter ... : varargs
-
-// Unsupported : gtk_tree_store_newv : unsupported parameter types : no type generator for GType (GType) for array param types
 
 // Unsupported : gtk_tree_view_new_with_model : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
 

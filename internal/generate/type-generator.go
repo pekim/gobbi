@@ -10,11 +10,13 @@ type TypeGenerator interface {
 	isSupportedAsField() (supported bool, reason string)
 	isSupportedAsParam(direction string) (supported bool, reason string)
 	isSupportedAsParamC() (supported bool, reason string)
+	isSupportedAsArrayParam(direction string) (supported bool, reason string)
 	isSupportedAsReturnValue() (supported bool, reason string)
 	isSupportedAsReturnCValue() (supported bool, reason string)
 
 	generateDeclaration(g *jen.Group, goVarName string)
 	generateDeclarationC(g *jen.Group, goVarName string)
+	generateArrayDeclaration(g *jen.Group, goVarName string)
 	generateCToGo(pkg string, cVarReference *jen.Statement) *jen.Statement
 	generateGoToC(g *jen.Group, goVarReference *jen.Statement)
 

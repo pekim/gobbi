@@ -88,7 +88,16 @@ func (recv *Hmac) Unref() {
 	return
 }
 
-// Unsupported : g_hmac_update : unsupported parameter data : no type generator for guint8 (guchar) for array param data
+// Update is a wrapper around the C function g_hmac_update.
+func (recv *Hmac) Update(data []uint8) {
+	c_data := &data[0]
+
+	c_length := (C.gssize)(len(data))
+
+	C.g_hmac_update((*C.GHmac)(recv.native), (*C.guchar)(unsafe.Pointer(c_data)), c_length)
+
+	return
+}
 
 // Unsupported : g_markup_parse_context_new : unsupported parameter user_data_dnotify : no type generator for DestroyNotify (GDestroyNotify) for param user_data_dnotify
 

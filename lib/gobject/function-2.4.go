@@ -94,7 +94,7 @@ func SignalAccumulatorTrueHandled(ihint *SignalInvocationHint, returnAccu *Value
 
 // Unsupported : g_signal_add_emission_hook : unsupported parameter hook_func : no type generator for SignalEmissionHook (GSignalEmissionHook) for param hook_func
 
-// Unsupported : g_signal_chain_from_overridden : unsupported parameter instance_and_params : no type generator for Value (GValue) for array param instance_and_params
+// Unsupported : g_signal_chain_from_overridden : unsupported parameter instance_and_params :
 
 // Unsupported : g_signal_chain_from_overridden_handler : unsupported parameter ... : varargs
 
@@ -108,7 +108,7 @@ func SignalAccumulatorTrueHandled(ihint *SignalInvocationHint, returnAccu *Value
 
 // Unsupported : g_signal_emit_valist : unsupported parameter var_args : no type generator for va_list (va_list) for param var_args
 
-// Unsupported : g_signal_emitv : unsupported parameter instance_and_params : no type generator for Value (GValue) for array param instance_and_params
+// Unsupported : g_signal_emitv : unsupported parameter instance_and_params :
 
 // Unsupported : g_signal_list_ids : no return type
 

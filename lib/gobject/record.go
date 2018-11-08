@@ -111,7 +111,7 @@ func (recv *Closure) Invalidate() {
 	return
 }
 
-// Unsupported : g_closure_invoke : unsupported parameter param_values : no type generator for Value (GValue) for array param param_values
+// Unsupported : g_closure_invoke : unsupported parameter param_values :
 
 // Ref is a wrapper around the C function g_closure_ref.
 func (recv *Closure) Ref() *Closure {

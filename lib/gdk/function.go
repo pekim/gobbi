@@ -252,9 +252,9 @@ func GlErrorQuark() glib.Quark {
 	return retGo
 }
 
-// Unsupported : gdk_init : unsupported parameter argv : no type generator for utf8 (gchar**) for array param argv
+// Unsupported : gdk_init : unsupported parameter argv :
 
-// Unsupported : gdk_init_check : unsupported parameter argv : no type generator for utf8 (gchar**) for array param argv
+// Unsupported : gdk_init_check : unsupported parameter argv :
 
 // KeyboardGrab is a wrapper around the C function gdk_keyboard_grab.
 func KeyboardGrab(window *Window, ownerEvents bool, time uint32) GrabStatus {
@@ -417,9 +417,25 @@ func PangoLayoutGetClipRegion(layout *pango.Layout, xOrigin int32, yOrigin int32
 	return retGo
 }
 
-// Unsupported : gdk_pango_layout_line_get_clip_region : unsupported parameter index_ranges : no type generator for gint (gint) for array param index_ranges
+// PangoLayoutLineGetClipRegion is a wrapper around the C function gdk_pango_layout_line_get_clip_region.
+func PangoLayoutLineGetClipRegion(line *pango.LayoutLine, xOrigin int32, yOrigin int32, indexRanges []int32, nRanges int32) *cairo.Region {
+	c_line := (*C.PangoLayoutLine)(line.ToC())
 
-// Unsupported : gdk_parse_args : unsupported parameter argv : no type generator for utf8 (gchar**) for array param argv
+	c_x_origin := (C.gint)(xOrigin)
+
+	c_y_origin := (C.gint)(yOrigin)
+
+	c_index_ranges := &indexRanges[0]
+
+	c_n_ranges := (C.gint)(nRanges)
+
+	retC := C.gdk_pango_layout_line_get_clip_region(c_line, c_x_origin, c_y_origin, (*C.gint)(unsafe.Pointer(c_index_ranges)), c_n_ranges)
+	retGo := cairo.RegionNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// Unsupported : gdk_parse_args : unsupported parameter argv :
 
 // PixbufGetFromSurface is a wrapper around the C function gdk_pixbuf_get_from_surface.
 func PixbufGetFromSurface(surface *cairo.Surface, srcX int32, srcY int32, width int32, height int32) *gdkpixbuf.Pixbuf {
@@ -518,9 +534,9 @@ func PreParseLibgtkOnly() {
 
 // Unsupported : gdk_property_get : unsupported parameter property : Blacklisted record : GdkAtom
 
-// Unsupported : gdk_query_depths : unsupported parameter depths : no type generator for gint (gint*) for array param depths
+// Unsupported : gdk_query_depths : unsupported parameter depths : output array param depths
 
-// Unsupported : gdk_query_visual_types : unsupported parameter visual_types : no type generator for VisualType (GdkVisualType*) for array param visual_types
+// Unsupported : gdk_query_visual_types : unsupported parameter visual_types : output array param visual_types
 
 // Unsupported : gdk_selection_convert : unsupported parameter selection : Blacklisted record : GdkAtom
 

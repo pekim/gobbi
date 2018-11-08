@@ -25,6 +25,10 @@ func (t *TypeGeneratorInteger) isSupportedAsParam(direction string) (supported b
 	return true, ""
 }
 
+func (t *TypeGeneratorInteger) isSupportedAsArrayParam(direction string) (supported bool, reason string) {
+	return true, ""
+}
+
 func (t *TypeGeneratorInteger) isSupportedAsParamC() (supported bool, reason string) {
 	return false, ""
 }
@@ -49,6 +53,13 @@ func (t *TypeGeneratorInteger) isSupportedAsReturnCValue() (supported bool, reas
 func (t *TypeGeneratorInteger) generateDeclaration(g *jen.Group, goVarName string) {
 	g.
 		Id(goVarName).
+		Do(t.typ.qname.generate)
+}
+
+func (t *TypeGeneratorInteger) generateArrayDeclaration(g *jen.Group, goVarName string) {
+	g.
+		Id(goVarName).
+		Index().
 		Do(t.typ.qname.generate)
 }
 

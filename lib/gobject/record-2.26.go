@@ -8,7 +8,7 @@ package gobject
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : g_object_class_install_properties : unsupported parameter pspecs : no type generator for ParamSpec (GParamSpec*) for array param pspecs
+// Unsupported : g_object_class_install_properties : unsupported parameter pspecs :
 
 // Unsupported : g_value_dup_variant : return type : Blacklisted record : GVariant
 

@@ -772,8 +772,6 @@ func (recv *LinkButton) SetUri(uri string) {
 
 // Unsupported : gtk_list_store_new : unsupported parameter ... : varargs
 
-// Unsupported : gtk_list_store_newv : unsupported parameter types : no type generator for GType (GType) for array param types
-
 // Unsupported : gtk_message_dialog_new : unsupported parameter ... : varargs
 
 // Unsupported : gtk_message_dialog_new_with_markup : unsupported parameter ... : varargs
@@ -2122,7 +2120,7 @@ func (recv *PrintSettings) SetOutputBin(outputBin string) {
 	return
 }
 
-// Unsupported : gtk_print_settings_set_page_ranges : unsupported parameter page_ranges : no type generator for PageRange (GtkPageRange) for array param page_ranges
+// Unsupported : gtk_print_settings_set_page_ranges : unsupported parameter page_ranges :
 
 // SetPageSet is a wrapper around the C function gtk_print_settings_set_page_set.
 func (recv *PrintSettings) SetPageSet(pageSet PageSet) {
@@ -2970,11 +2968,9 @@ func (recv *TextBuffer) GetPasteTargetList() *TargetList {
 
 // Unsupported : gtk_tree_store_new : unsupported parameter ... : varargs
 
-// Unsupported : gtk_tree_store_newv : unsupported parameter types : no type generator for GType (GType) for array param types
-
 // Unsupported : gtk_tree_store_insert_with_values : unsupported parameter ... : varargs
 
-// Unsupported : gtk_tree_store_insert_with_valuesv : unsupported parameter columns : no type generator for gint (gint) for array param columns
+// Unsupported : gtk_tree_store_insert_with_valuesv : unsupported parameter values :
 
 // Unsupported : gtk_tree_view_new_with_model : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
 

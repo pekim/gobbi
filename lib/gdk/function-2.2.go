@@ -45,9 +45,9 @@ func GetDisplayArgName() string {
 	return retGo
 }
 
-// Unsupported : gdk_init : unsupported parameter argv : no type generator for utf8 (gchar**) for array param argv
+// Unsupported : gdk_init : unsupported parameter argv :
 
-// Unsupported : gdk_init_check : unsupported parameter argv : no type generator for utf8 (gchar**) for array param argv
+// Unsupported : gdk_init_check : unsupported parameter argv :
 
 // NotifyStartupComplete is a wrapper around the C function gdk_notify_startup_complete.
 func NotifyStartupComplete() {
@@ -66,9 +66,7 @@ func PangoContextGetForScreen(screen *Screen) *pango.Context {
 	return retGo
 }
 
-// Unsupported : gdk_pango_layout_line_get_clip_region : unsupported parameter index_ranges : no type generator for gint (gint) for array param index_ranges
-
-// Unsupported : gdk_parse_args : unsupported parameter argv : no type generator for utf8 (gchar**) for array param argv
+// Unsupported : gdk_parse_args : unsupported parameter argv :
 
 // Unsupported : gdk_property_change : unsupported parameter property : Blacklisted record : GdkAtom
 
@@ -76,9 +74,9 @@ func PangoContextGetForScreen(screen *Screen) *pango.Context {
 
 // Unsupported : gdk_property_get : unsupported parameter property : Blacklisted record : GdkAtom
 
-// Unsupported : gdk_query_depths : unsupported parameter depths : no type generator for gint (gint*) for array param depths
+// Unsupported : gdk_query_depths : unsupported parameter depths : output array param depths
 
-// Unsupported : gdk_query_visual_types : unsupported parameter visual_types : no type generator for VisualType (GdkVisualType*) for array param visual_types
+// Unsupported : gdk_query_visual_types : unsupported parameter visual_types : output array param visual_types
 
 // Unsupported : gdk_selection_convert : unsupported parameter selection : Blacklisted record : GdkAtom
 

@@ -26,4 +26,4 @@ func GetFocusObject() *Object {
 	return retGo
 }
 
-// Unsupported : atk_text_free_ranges : unsupported parameter ranges : no type generator for TextRange (AtkTextRange*) for array param ranges
+// Unsupported : atk_text_free_ranges : unsupported parameter ranges :

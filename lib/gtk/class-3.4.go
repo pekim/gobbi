@@ -17,7 +17,7 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : gtk_about_dialog_add_credit_section : unsupported parameter people : no type generator for utf8 (gchar*) for array param people
+// Unsupported : gtk_about_dialog_add_credit_section : unsupported parameter people :
 
 // Unsupported : gtk_app_chooser_dialog_new : unsupported parameter file : no type generator for Gio.File (GFile*) for param file
 
@@ -144,7 +144,7 @@ func (recv *Builder) AddFromResource(resourcePath string) (uint32, error) {
 	return retGo, goThrowableError
 }
 
-// Unsupported : gtk_builder_add_objects_from_resource : unsupported parameter object_ids : no type generator for utf8 () for array param object_ids
+// Unsupported : gtk_builder_add_objects_from_resource : unsupported parameter object_ids :
 
 // Unsupported : gtk_button_new_from_icon_name : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
 
@@ -219,8 +219,6 @@ func ImageNewFromResource(resourcePath string) *Image {
 // Unsupported : gtk_info_bar_new_with_buttons : unsupported parameter ... : varargs
 
 // Unsupported : gtk_list_store_new : unsupported parameter ... : varargs
-
-// Unsupported : gtk_list_store_newv : unsupported parameter types : no type generator for GType (GType) for array param types
 
 // MenuNewFromModel is a wrapper around the C function gtk_menu_new_from_model.
 func MenuNewFromModel(model *gio.MenuModel) *Menu {
@@ -335,8 +333,6 @@ func (recv *StyleContext) SetParent(parent *StyleContext) {
 }
 
 // Unsupported : gtk_tree_store_new : unsupported parameter ... : varargs
-
-// Unsupported : gtk_tree_store_newv : unsupported parameter types : no type generator for GType (GType) for array param types
 
 // Unsupported : gtk_tree_view_new_with_model : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
 

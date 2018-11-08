@@ -998,7 +998,7 @@ func CastToRelation(object *gobject.Object) *Relation {
 	return RelationNewFromC(object.ToC())
 }
 
-// Unsupported : atk_relation_new : unsupported parameter targets : no type generator for Object (AtkObject*) for array param targets
+// Unsupported : atk_relation_new : unsupported parameter targets :
 
 // GetRelationType is a wrapper around the C function atk_relation_get_relation_type.
 func (recv *Relation) GetRelationType() RelationType {
@@ -1228,7 +1228,7 @@ func (recv *StateSet) AddState(type_ StateType) bool {
 	return retGo
 }
 
-// Unsupported : atk_state_set_add_states : unsupported parameter types : no type generator for StateType (AtkStateType) for array param types
+// Unsupported : atk_state_set_add_states : unsupported parameter types :
 
 // AndSets is a wrapper around the C function atk_state_set_and_sets.
 func (recv *StateSet) AndSets(compareSet *StateSet) *StateSet {
@@ -1257,7 +1257,7 @@ func (recv *StateSet) ContainsState(type_ StateType) bool {
 	return retGo
 }
 
-// Unsupported : atk_state_set_contains_states : unsupported parameter types : no type generator for StateType (AtkStateType) for array param types
+// Unsupported : atk_state_set_contains_states : unsupported parameter types :
 
 // IsEmpty is a wrapper around the C function atk_state_set_is_empty.
 func (recv *StateSet) IsEmpty() bool {

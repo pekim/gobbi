@@ -30,15 +30,15 @@ func AttrForegroundAlphaNew(alpha uint16) *Attribute {
 	return retGo
 }
 
-// Unsupported : pango_break : unsupported parameter attrs : no type generator for LogAttr (PangoLogAttr) for array param attrs
+// Unsupported : pango_break : unsupported parameter attrs :
 
 // Unsupported : pango_find_map : return type : Blacklisted record : PangoMap
 
-// Unsupported : pango_get_log_attrs : unsupported parameter log_attrs : no type generator for LogAttr (PangoLogAttr) for array param log_attrs
+// Unsupported : pango_get_log_attrs : unsupported parameter log_attrs :
 
 // Unsupported : pango_log2vis_get_embedding_levels : unsupported parameter pbase_dir : PangoDirection* with indirection level of 1
 
-// Unsupported : pango_lookup_aliases : unsupported parameter families : no type generator for utf8 (char**) for array param families
+// Unsupported : pango_lookup_aliases : unsupported parameter families : output array param families
 
 // Unsupported : pango_markup_parser_finish : unsupported parameter attr_list : record with indirection level of 2
 

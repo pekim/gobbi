@@ -10,13 +10,11 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : gdk_pixbuf_new_from_data : unsupported parameter data : no type generator for guint8 (guchar) for array param data
-
-// Unsupported : gdk_pixbuf_new_from_inline : unsupported parameter data : no type generator for guint8 (guint8) for array param data
+// Unsupported : gdk_pixbuf_new_from_data : unsupported parameter destroy_fn : no type generator for PixbufDestroyNotify (GdkPixbufDestroyNotify) for param destroy_fn
 
 // Unsupported : gdk_pixbuf_new_from_stream_finish : unsupported parameter async_result : no type generator for Gio.AsyncResult (GAsyncResult*) for param async_result
 
-// Unsupported : gdk_pixbuf_new_from_xpm_data : unsupported parameter data : no type generator for utf8 (char*) for array param data
+// Unsupported : gdk_pixbuf_new_from_xpm_data : unsupported parameter data :
 
 // SetOption is a wrapper around the C function gdk_pixbuf_set_option.
 func (recv *Pixbuf) SetOption(key string, value string) bool {

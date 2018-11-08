@@ -368,7 +368,7 @@ func (recv *KeyFile) SetBoolean(groupName string, key string, value bool) {
 	return
 }
 
-// Unsupported : g_key_file_set_boolean_list : unsupported parameter list : no type generator for gboolean (gboolean) for array param list
+// Unsupported : g_key_file_set_boolean_list : unsupported parameter list :
 
 // SetComment is a wrapper around the C function g_key_file_set_comment.
 func (recv *KeyFile) SetComment(groupName string, key string, comment string) (bool, error) {
@@ -409,7 +409,22 @@ func (recv *KeyFile) SetInteger(groupName string, key string, value int32) {
 	return
 }
 
-// Unsupported : g_key_file_set_integer_list : unsupported parameter list : no type generator for gint (gint) for array param list
+// SetIntegerList is a wrapper around the C function g_key_file_set_integer_list.
+func (recv *KeyFile) SetIntegerList(groupName string, key string, list []int32) {
+	c_group_name := C.CString(groupName)
+	defer C.free(unsafe.Pointer(c_group_name))
+
+	c_key := C.CString(key)
+	defer C.free(unsafe.Pointer(c_key))
+
+	c_list := &list[0]
+
+	c_length := (C.gsize)(len(list))
+
+	C.g_key_file_set_integer_list((*C.GKeyFile)(recv.native), c_group_name, c_key, (*C.gint)(unsafe.Pointer(c_list)), c_length)
+
+	return
+}
 
 // SetListSeparator is a wrapper around the C function g_key_file_set_list_separator.
 func (recv *KeyFile) SetListSeparator(separator rune) {
@@ -439,7 +454,7 @@ func (recv *KeyFile) SetLocaleString(groupName string, key string, locale string
 	return
 }
 
-// Unsupported : g_key_file_set_locale_string_list : unsupported parameter list : no type generator for utf8 (gchar) for array param list
+// Unsupported : g_key_file_set_locale_string_list : unsupported parameter list :
 
 // SetString is a wrapper around the C function g_key_file_set_string.
 func (recv *KeyFile) SetString(groupName string, key string, string string) {
@@ -457,7 +472,7 @@ func (recv *KeyFile) SetString(groupName string, key string, string string) {
 	return
 }
 
-// Unsupported : g_key_file_set_string_list : unsupported parameter list : no type generator for utf8 () for array param list
+// Unsupported : g_key_file_set_string_list : unsupported parameter list :
 
 // SetValue is a wrapper around the C function g_key_file_set_value.
 func (recv *KeyFile) SetValue(groupName string, key string, value string) {
@@ -549,7 +564,7 @@ func (recv *OptionContext) GetMainGroup() *OptionGroup {
 	return retGo
 }
 
-// Unsupported : g_option_context_parse : unsupported parameter argv : no type generator for utf8 (gchar**) for array param argv
+// Unsupported : g_option_context_parse : unsupported parameter argv :
 
 // SetHelpEnabled is a wrapper around the C function g_option_context_set_help_enabled.
 func (recv *OptionContext) SetHelpEnabled(helpEnabled bool) {

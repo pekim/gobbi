@@ -468,7 +468,7 @@ func filechooserbutton_fileSetHandler(_ *C.GObject, data C.gpointer) {
 
 // Unsupported : gtk_file_filter_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
 
-// Unsupported : gtk_icon_theme_choose_icon : unsupported parameter icon_names : no type generator for utf8 (gchar) for array param icon_names
+// Unsupported : gtk_icon_theme_choose_icon : unsupported parameter icon_names :
 
 // ListContexts is a wrapper around the C function gtk_icon_theme_list_contexts.
 func (recv *IconTheme) ListContexts() *glib.List {
@@ -554,9 +554,7 @@ func (recv *IconView) SetTooltipItem(tooltip *Tooltip, path *TreePath) {
 
 // Unsupported : gtk_list_store_new : unsupported parameter ... : varargs
 
-// Unsupported : gtk_list_store_newv : unsupported parameter types : no type generator for GType (GType) for array param types
-
-// Unsupported : gtk_list_store_set_valuesv : unsupported parameter columns : no type generator for gint (gint) for array param columns
+// Unsupported : gtk_list_store_set_valuesv : unsupported parameter values :
 
 // Unsupported signal 'move-selected' for MenuShell : unsupported parameter distance : type gint :
 
@@ -986,7 +984,7 @@ func (recv *ScaleButton) SetAdjustment(adjustment *Adjustment) {
 	return
 }
 
-// Unsupported : gtk_scale_button_set_icons : unsupported parameter icons : no type generator for utf8 (gchar*) for array param icons
+// Unsupported : gtk_scale_button_set_icons : unsupported parameter icons :
 
 // SetValue is a wrapper around the C function gtk_scale_button_set_value.
 func (recv *ScaleButton) SetValue(value float64) {
@@ -1105,9 +1103,7 @@ func (recv *Tooltip) SetText(text string) {
 
 // Unsupported : gtk_tree_store_new : unsupported parameter ... : varargs
 
-// Unsupported : gtk_tree_store_newv : unsupported parameter types : no type generator for GType (GType) for array param types
-
-// Unsupported : gtk_tree_store_set_valuesv : unsupported parameter columns : no type generator for gint (gint) for array param columns
+// Unsupported : gtk_tree_store_set_valuesv : unsupported parameter values :
 
 // Unsupported : gtk_tree_view_new_with_model : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
 

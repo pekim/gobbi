@@ -168,9 +168,9 @@ func (recv *Adjustment) SetUpper(upper float64) {
 
 // Unsupported : gtk_app_chooser_dialog_new : unsupported parameter file : no type generator for Gio.File (GFile*) for param file
 
-// Unsupported : gtk_builder_add_objects_from_file : unsupported parameter object_ids : no type generator for utf8 () for array param object_ids
+// Unsupported : gtk_builder_add_objects_from_file : unsupported parameter object_ids :
 
-// Unsupported : gtk_builder_add_objects_from_string : unsupported parameter object_ids : no type generator for utf8 () for array param object_ids
+// Unsupported : gtk_builder_add_objects_from_string : unsupported parameter object_ids :
 
 // Unsupported : gtk_button_new_from_icon_name : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
 
@@ -535,8 +535,6 @@ func (recv *LinkButton) SetVisited(visited bool) {
 }
 
 // Unsupported : gtk_list_store_new : unsupported parameter ... : varargs
-
-// Unsupported : gtk_list_store_newv : unsupported parameter types : no type generator for GType (GType) for array param types
 
 // GetAccelPath is a wrapper around the C function gtk_menu_get_accel_path.
 func (recv *Menu) GetAccelPath() string {
@@ -903,8 +901,6 @@ func (recv *ToolItem) ToolbarReconfigured() {
 // Unsupported : gtk_tree_selection_get_select_function : no return generator
 
 // Unsupported : gtk_tree_store_new : unsupported parameter ... : varargs
-
-// Unsupported : gtk_tree_store_newv : unsupported parameter types : no type generator for GType (GType) for array param types
 
 // Unsupported : gtk_tree_view_new_with_model : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
 

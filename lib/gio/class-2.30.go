@@ -590,7 +590,7 @@ func (recv *Settings) SetUint(key string, value uint32) bool {
 
 // Unsupported : g_simple_action_set_state : unsupported parameter value : Blacklisted record : GVariant
 
-// Unsupported : g_simple_action_group_add_entries : unsupported parameter entries : no type generator for ActionEntry (GActionEntry) for array param entries
+// Unsupported : g_simple_action_group_add_entries : unsupported parameter entries :
 
 // Unsupported : g_simple_async_result_new : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
@@ -602,7 +602,7 @@ func (recv *Settings) SetUint(key string, value uint32) bool {
 
 // Unsupported : g_task_new : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_themed_icon_new_from_names : unsupported parameter iconnames : no type generator for utf8 (char*) for array param iconnames
+// Unsupported : g_themed_icon_new_from_names : unsupported parameter iconnames :
 
 // GetDatabase is a wrapper around the C function g_tls_connection_get_database.
 func (recv *TlsConnection) GetDatabase() *TlsDatabase {
@@ -743,9 +743,30 @@ func (recv *TlsDatabase) LookupCertificateIssuer(certificate *TlsCertificate, in
 
 // Unsupported : g_tls_database_lookup_certificate_issuer_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
 
-// Unsupported : g_tls_database_lookup_certificates_issued_by : unsupported parameter issuer_raw_dn : no type generator for guint8 (guint8) for array param issuer_raw_dn
+// LookupCertificatesIssuedBy is a wrapper around the C function g_tls_database_lookup_certificates_issued_by.
+func (recv *TlsDatabase) LookupCertificatesIssuedBy(issuerRawDn []uint8, interaction *TlsInteraction, flags TlsDatabaseLookupFlags, cancellable *Cancellable) (*glib.List, error) {
+	c_issuer_raw_dn := &issuerRawDn[0]
 
-// Unsupported : g_tls_database_lookup_certificates_issued_by_async : unsupported parameter issuer_raw_dn : no type generator for guint8 (guint8) for array param issuer_raw_dn
+	c_interaction := (*C.GTlsInteraction)(interaction.ToC())
+
+	c_flags := (C.GTlsDatabaseLookupFlags)(flags)
+
+	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_tls_database_lookup_certificates_issued_by((*C.GTlsDatabase)(recv.native), (*C.GByteArray)(unsafe.Pointer(c_issuer_raw_dn)), c_interaction, c_flags, c_cancellable, &cThrowableError)
+	retGo := glib.ListNewFromC(unsafe.Pointer(retC))
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
+
+// Unsupported : g_tls_database_lookup_certificates_issued_by_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
 // Unsupported : g_tls_database_lookup_certificates_issued_by_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
 
@@ -923,9 +944,18 @@ func (recv *TlsPassword) SetFlags(flags TlsPasswordFlags) {
 	return
 }
 
-// Unsupported : g_tls_password_set_value : unsupported parameter value : no type generator for guint8 (guchar) for array param value
+// SetValue is a wrapper around the C function g_tls_password_set_value.
+func (recv *TlsPassword) SetValue(value []uint8) {
+	c_value := &value[0]
 
-// Unsupported : g_tls_password_set_value_full : unsupported parameter value : no type generator for guint8 (guchar) for array param value
+	c_length := (C.gssize)(len(value))
+
+	C.g_tls_password_set_value((*C.GTlsPassword)(recv.native), (*C.guchar)(unsafe.Pointer(c_value)), c_length)
+
+	return
+}
+
+// Unsupported : g_tls_password_set_value_full : unsupported parameter destroy : no type generator for GLib.DestroyNotify (GDestroyNotify) for param destroy
 
 // SetWarning is a wrapper around the C function g_tls_password_set_warning.
 func (recv *TlsPassword) SetWarning(warning string) {
@@ -936,8 +966,6 @@ func (recv *TlsPassword) SetWarning(warning string) {
 
 	return
 }
-
-// Unsupported : g_unix_fd_list_new_from_array : unsupported parameter fds : no type generator for gint (gint) for array param fds
 
 // Unsupported : g_unix_socket_address_new_abstract : unsupported parameter path : no type generator for gchar () for array param path
 

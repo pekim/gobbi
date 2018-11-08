@@ -24,7 +24,7 @@ import "C"
 
 // Unsupported : g_action_map_add_action : unsupported parameter action : no type generator for Action (GAction*) for param action
 
-// Unsupported : g_action_map_add_action_entries : unsupported parameter entries : no type generator for ActionEntry () for array param entries
+// Unsupported : g_action_map_add_action_entries : unsupported parameter entries :
 
 // Unsupported : g_action_map_lookup_action : no return generator
 

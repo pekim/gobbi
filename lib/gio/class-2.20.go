@@ -126,9 +126,7 @@ func mountoperation_abortedHandler(_ *C.GObject, data C.gpointer) {
 
 // Unsupported : g_task_new : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_themed_icon_new_from_names : unsupported parameter iconnames : no type generator for utf8 (char*) for array param iconnames
-
-// Unsupported : g_unix_fd_list_new_from_array : unsupported parameter fds : no type generator for gint (gint) for array param fds
+// Unsupported : g_themed_icon_new_from_names : unsupported parameter iconnames :
 
 // GetCloseFd is a wrapper around the C function g_unix_input_stream_get_close_fd.
 func (recv *UnixInputStream) GetCloseFd() bool {

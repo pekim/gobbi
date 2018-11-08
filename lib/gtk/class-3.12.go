@@ -72,7 +72,7 @@ func (recv *ActionBar) SetCenterWidget(centerWidget *Widget) {
 
 // Unsupported : gtk_application_list_action_descriptions : no return type
 
-// Unsupported : gtk_application_set_accels_for_action : unsupported parameter accels : no type generator for utf8 (gchar*) for array param accels
+// Unsupported : gtk_application_set_accels_for_action : unsupported parameter accels :
 
 // GetCenterWidget is a wrapper around the C function gtk_box_get_center_widget.
 func (recv *Box) GetCenterWidget() *Widget {
@@ -457,8 +457,6 @@ func (recv *IconInfo) IsSymbolic() bool {
 
 // Unsupported : gtk_list_store_new : unsupported parameter ... : varargs
 
-// Unsupported : gtk_list_store_newv : unsupported parameter types : no type generator for GType (GType) for array param types
-
 // GetPopover is a wrapper around the C function gtk_menu_button_get_popover.
 func (recv *MenuButton) GetPopover() *Popover {
 	retC := C.gtk_menu_button_get_popover((*C.GtkMenuButton)(recv.native))
@@ -638,8 +636,6 @@ func (recv *Stack) GetTransitionRunning() bool {
 // Unsupported : gtk_status_icon_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon (GIcon*) for param icon
 
 // Unsupported : gtk_tree_store_new : unsupported parameter ... : varargs
-
-// Unsupported : gtk_tree_store_newv : unsupported parameter types : no type generator for GType (GType) for array param types
 
 // Unsupported : gtk_tree_view_new_with_model : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
 

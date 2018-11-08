@@ -142,7 +142,7 @@ func (recv *SocketListener) AddAnyInetPort(sourceObject *gobject.Object) (uint16
 
 // Unsupported : g_task_new : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_themed_icon_new_from_names : unsupported parameter iconnames : no type generator for utf8 (char*) for array param iconnames
+// Unsupported : g_themed_icon_new_from_names : unsupported parameter iconnames :
 
 // UnixFDListNew is a wrapper around the C function g_unix_fd_list_new.
 func UnixFDListNew() *UnixFDList {
@@ -152,7 +152,17 @@ func UnixFDListNew() *UnixFDList {
 	return retGo
 }
 
-// Unsupported : g_unix_fd_list_new_from_array : unsupported parameter fds : no type generator for gint (gint) for array param fds
+// UnixFDListNewFromArray is a wrapper around the C function g_unix_fd_list_new_from_array.
+func UnixFDListNewFromArray(fds []int32) *UnixFDList {
+	c_fds := &fds[0]
+
+	c_n_fds := (C.gint)(len(fds))
+
+	retC := C.g_unix_fd_list_new_from_array((*C.gint)(unsafe.Pointer(c_fds)), c_n_fds)
+	retGo := UnixFDListNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // Append is a wrapper around the C function g_unix_fd_list_append.
 func (recv *UnixFDList) Append(fd int32) (int32, error) {

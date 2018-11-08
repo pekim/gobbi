@@ -143,7 +143,25 @@ func ContentTypeGetMimeType(type_ string) string {
 
 // Unsupported : g_content_type_get_symbolic_icon : no return generator
 
-// Unsupported : g_content_type_guess : unsupported parameter data : no type generator for guint8 (guchar) for array param data
+// ContentTypeGuess is a wrapper around the C function g_content_type_guess.
+func ContentTypeGuess(filename string, data []uint8) (string, bool) {
+	c_filename := C.CString(filename)
+	defer C.free(unsafe.Pointer(c_filename))
+
+	c_data := &data[0]
+
+	c_data_size := (C.gsize)(len(data))
+
+	var c_result_uncertain C.gboolean
+
+	retC := C.g_content_type_guess(c_filename, (*C.guchar)(unsafe.Pointer(c_data)), c_data_size, &c_result_uncertain)
+	retGo := C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
+
+	resultUncertain := c_result_uncertain == C.TRUE
+
+	return retGo, resultUncertain
+}
 
 // Unsupported : g_content_type_guess_for_tree : unsupported parameter root : no type generator for File (GFile*) for param root
 
@@ -184,7 +202,7 @@ func ContentTypesGetRegistered() *glib.List {
 
 // Unsupported : g_dbus_address_get_stream_finish : unsupported parameter res : no type generator for AsyncResult (GAsyncResult*) for param res
 
-// Unsupported : g_dbus_annotation_info_lookup : unsupported parameter annotations : no type generator for DBusAnnotationInfo (GDBusAnnotationInfo*) for array param annotations
+// Unsupported : g_dbus_annotation_info_lookup : unsupported parameter annotations :
 
 // DbusErrorQuark is a wrapper around the C function g_dbus_error_quark.
 func DbusErrorQuark() glib.Quark {
@@ -194,7 +212,7 @@ func DbusErrorQuark() glib.Quark {
 	return retGo
 }
 
-// Unsupported : g_dbus_error_register_error_domain : unsupported parameter entries : no type generator for DBusErrorEntry (GDBusErrorEntry) for array param entries
+// Unsupported : g_dbus_error_register_error_domain : unsupported parameter entries :
 
 // Unsupported : g_dbus_gvalue_to_gvariant : unsupported parameter type : Blacklisted record : GVariantType
 
@@ -230,7 +248,7 @@ func IconHash(icon uintptr) uint32 {
 
 // Unsupported : g_icon_new_for_string : no return generator
 
-// Unsupported : g_initable_newv : unsupported parameter parameters : no type generator for GObject.Parameter (GParameter) for array param parameters
+// Unsupported : g_initable_newv : unsupported parameter parameters :
 
 // IoErrorFromErrno is a wrapper around the C function g_io_error_from_errno.
 func IoErrorFromErrno(errNo int32) IOErrorEnum {

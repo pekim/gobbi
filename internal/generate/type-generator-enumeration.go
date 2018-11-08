@@ -27,6 +27,10 @@ func (t *TypeGeneratorEnumeration) isSupportedAsParam(direction string) (support
 	return true, ""
 }
 
+func (t *TypeGeneratorEnumeration) isSupportedAsArrayParam(direction string) (supported bool, reason string) {
+	return false, ""
+}
+
 func (t *TypeGeneratorEnumeration) isSupportedAsParamC() (supported bool, reason string) {
 	return false, ""
 }
@@ -46,6 +50,13 @@ func (t *TypeGeneratorEnumeration) isSupportedAsReturnCValue() (supported bool, 
 func (t *TypeGeneratorEnumeration) generateDeclaration(g *jen.Group, goVarName string) {
 	g.
 		Id(goVarName).
+		Do(t.typ.qname.generate)
+}
+
+func (t *TypeGeneratorEnumeration) generateArrayDeclaration(g *jen.Group, goVarName string) {
+	g.
+		Id(goVarName).
+		Index().
 		Do(t.typ.qname.generate)
 }
 

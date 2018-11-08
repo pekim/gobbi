@@ -81,8 +81,6 @@ func (recv *Invisible) SetScreen(screen *gdk.Screen) {
 
 // Unsupported : gtk_list_store_new : unsupported parameter ... : varargs
 
-// Unsupported : gtk_list_store_newv : unsupported parameter types : no type generator for GType (GType) for array param types
-
 // IterIsValid is a wrapper around the C function gtk_list_store_iter_is_valid.
 func (recv *ListStore) IterIsValid(iter *TreeIter) bool {
 	c_iter := (*C.GtkTreeIter)(iter.ToC())
@@ -115,7 +113,14 @@ func (recv *ListStore) MoveBefore(iter *TreeIter, position *TreeIter) {
 	return
 }
 
-// Unsupported : gtk_list_store_reorder : unsupported parameter new_order : no type generator for gint (gint) for array param new_order
+// Reorder is a wrapper around the C function gtk_list_store_reorder.
+func (recv *ListStore) Reorder(newOrder []int32) {
+	c_new_order := &newOrder[0]
+
+	C.gtk_list_store_reorder((*C.GtkListStore)(recv.native), (*C.gint)(unsafe.Pointer(c_new_order)))
+
+	return
+}
 
 // Swap is a wrapper around the C function gtk_list_store_swap.
 func (recv *ListStore) Swap(a *TreeIter, b *TreeIter) {
@@ -204,8 +209,6 @@ func (recv *TreeSelection) UnselectRange(startPath *TreePath, endPath *TreePath)
 
 // Unsupported : gtk_tree_store_new : unsupported parameter ... : varargs
 
-// Unsupported : gtk_tree_store_newv : unsupported parameter types : no type generator for GType (GType) for array param types
-
 // IterIsValid is a wrapper around the C function gtk_tree_store_iter_is_valid.
 func (recv *TreeStore) IterIsValid(iter *TreeIter) bool {
 	c_iter := (*C.GtkTreeIter)(iter.ToC())
@@ -238,7 +241,16 @@ func (recv *TreeStore) MoveBefore(iter *TreeIter, position *TreeIter) {
 	return
 }
 
-// Unsupported : gtk_tree_store_reorder : unsupported parameter new_order : no type generator for gint (gint) for array param new_order
+// Reorder is a wrapper around the C function gtk_tree_store_reorder.
+func (recv *TreeStore) Reorder(parent *TreeIter, newOrder []int32) {
+	c_parent := (*C.GtkTreeIter)(parent.ToC())
+
+	c_new_order := &newOrder[0]
+
+	C.gtk_tree_store_reorder((*C.GtkTreeStore)(recv.native), c_parent, (*C.gint)(unsafe.Pointer(c_new_order)))
+
+	return
+}
 
 // Swap is a wrapper around the C function gtk_tree_store_swap.
 func (recv *TreeStore) Swap(a *TreeIter, b *TreeIter) {

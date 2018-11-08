@@ -10,7 +10,7 @@ import "C"
 
 // Unsupported : gdk_display_request_selection_notification : unsupported parameter selection : Blacklisted record : GdkAtom
 
-// Unsupported : gdk_display_store_clipboard : unsupported parameter targets : no type generator for Atom (GdkAtom) for array param targets
+// Unsupported : gdk_display_store_clipboard : unsupported parameter targets :
 
 // SupportsClipboardPersistence is a wrapper around the C function gdk_display_supports_clipboard_persistence.
 func (recv *Display) SupportsClipboardPersistence() bool {

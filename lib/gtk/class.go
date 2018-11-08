@@ -6095,9 +6095,9 @@ func (recv *Clipboard) SetText(text string, len int32) {
 	return
 }
 
-// Unsupported : gtk_clipboard_set_with_data : unsupported parameter targets : no type generator for TargetEntry (GtkTargetEntry) for array param targets
+// Unsupported : gtk_clipboard_set_with_data : unsupported parameter targets :
 
-// Unsupported : gtk_clipboard_set_with_owner : unsupported parameter targets : no type generator for TargetEntry (GtkTargetEntry) for array param targets
+// Unsupported : gtk_clipboard_set_with_owner : unsupported parameter targets :
 
 // Unsupported : gtk_clipboard_wait_for_contents : unsupported parameter target : Blacklisted record : GdkAtom
 
@@ -13213,7 +13213,18 @@ func IMContextSimpleNew() *IMContextSimple {
 
 // Blacklisted : gtk_im_context_simple_add_compose_file
 
-// Unsupported : gtk_im_context_simple_add_table : unsupported parameter data : no type generator for guint16 (guint16) for array param data
+// AddTable is a wrapper around the C function gtk_im_context_simple_add_table.
+func (recv *IMContextSimple) AddTable(data []uint16, maxSeqLen int32, nSeqs int32) {
+	c_data := &data[0]
+
+	c_max_seq_len := (C.gint)(maxSeqLen)
+
+	c_n_seqs := (C.gint)(nSeqs)
+
+	C.gtk_im_context_simple_add_table((*C.GtkIMContextSimple)(recv.native), (*C.guint16)(unsafe.Pointer(c_data)), c_max_seq_len, c_n_seqs)
+
+	return
+}
 
 // IMMulticontext is a wrapper around the C record GtkIMMulticontext.
 type IMMulticontext struct {
@@ -15993,7 +16004,17 @@ func CastToListStore(object *gobject.Object) *ListStore {
 
 // Unsupported : gtk_list_store_new : unsupported parameter ... : varargs
 
-// Unsupported : gtk_list_store_newv : unsupported parameter types : no type generator for GType (GType) for array param types
+// ListStoreNewv is a wrapper around the C function gtk_list_store_newv.
+func ListStoreNewv(types []gobject.Type) *ListStore {
+	c_n_columns := (C.gint)(len(types))
+
+	c_types := &types[0]
+
+	retC := C.gtk_list_store_newv(c_n_columns, (*C.GType)(unsafe.Pointer(c_types)))
+	retGo := ListStoreNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // Append is a wrapper around the C function gtk_list_store_append.
 func (recv *ListStore) Append() *TreeIter {
@@ -16075,7 +16096,16 @@ func (recv *ListStore) Remove(iter *TreeIter) bool {
 
 // Unsupported : gtk_list_store_set : unsupported parameter ... : varargs
 
-// Unsupported : gtk_list_store_set_column_types : unsupported parameter types : no type generator for GType (GType) for array param types
+// SetColumnTypes is a wrapper around the C function gtk_list_store_set_column_types.
+func (recv *ListStore) SetColumnTypes(types []gobject.Type) {
+	c_n_columns := (C.gint)(len(types))
+
+	c_types := &types[0]
+
+	C.gtk_list_store_set_column_types((*C.GtkListStore)(recv.native), c_n_columns, (*C.GType)(unsafe.Pointer(c_types)))
+
+	return
+}
 
 // Unsupported : gtk_list_store_set_valist : unsupported parameter var_args : no type generator for va_list (va_list) for param var_args
 
@@ -28973,7 +29003,17 @@ func CastToTreeStore(object *gobject.Object) *TreeStore {
 
 // Unsupported : gtk_tree_store_new : unsupported parameter ... : varargs
 
-// Unsupported : gtk_tree_store_newv : unsupported parameter types : no type generator for GType (GType) for array param types
+// TreeStoreNewv is a wrapper around the C function gtk_tree_store_newv.
+func TreeStoreNewv(types []gobject.Type) *TreeStore {
+	c_n_columns := (C.gint)(len(types))
+
+	c_types := &types[0]
+
+	retC := C.gtk_tree_store_newv(c_n_columns, (*C.GType)(unsafe.Pointer(c_types)))
+	retGo := TreeStoreNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // Append is a wrapper around the C function gtk_tree_store_append.
 func (recv *TreeStore) Append(parent *TreeIter) *TreeIter {
@@ -29087,7 +29127,16 @@ func (recv *TreeStore) Remove(iter *TreeIter) bool {
 
 // Unsupported : gtk_tree_store_set : unsupported parameter ... : varargs
 
-// Unsupported : gtk_tree_store_set_column_types : unsupported parameter types : no type generator for GType (GType) for array param types
+// SetColumnTypes is a wrapper around the C function gtk_tree_store_set_column_types.
+func (recv *TreeStore) SetColumnTypes(types []gobject.Type) {
+	c_n_columns := (C.gint)(len(types))
+
+	c_types := &types[0]
+
+	C.gtk_tree_store_set_column_types((*C.GtkTreeStore)(recv.native), c_n_columns, (*C.GType)(unsafe.Pointer(c_types)))
+
+	return
+}
 
 // Unsupported : gtk_tree_store_set_valist : unsupported parameter var_args : no type generator for va_list (va_list) for param var_args
 
@@ -30087,9 +30136,9 @@ func (recv *TreeView) CreateRowDragIcon(path *TreePath) *cairo.Surface {
 	return retGo
 }
 
-// Unsupported : gtk_tree_view_enable_model_drag_dest : unsupported parameter targets : no type generator for TargetEntry (GtkTargetEntry) for array param targets
+// Unsupported : gtk_tree_view_enable_model_drag_dest : unsupported parameter targets :
 
-// Unsupported : gtk_tree_view_enable_model_drag_source : unsupported parameter targets : no type generator for TargetEntry (GtkTargetEntry) for array param targets
+// Unsupported : gtk_tree_view_enable_model_drag_source : unsupported parameter targets :
 
 // ExpandAll is a wrapper around the C function gtk_tree_view_expand_all.
 func (recv *TreeView) ExpandAll() {
@@ -34460,7 +34509,7 @@ func (recv *Widget) DragDestGetTargetList() *TargetList {
 	return retGo
 }
 
-// Unsupported : gtk_drag_dest_set : unsupported parameter targets : no type generator for TargetEntry (GtkTargetEntry) for array param targets
+// Unsupported : gtk_drag_dest_set : unsupported parameter targets :
 
 // DragDestSetProxy is a wrapper around the C function gtk_drag_dest_set_proxy.
 func (recv *Widget) DragDestSetProxy(proxyWindow *gdk.Window, protocol gdk.DragProtocol, useCoordinates bool) {
@@ -34501,7 +34550,7 @@ func (recv *Widget) DragHighlight() {
 	return
 }
 
-// Unsupported : gtk_drag_source_set : unsupported parameter targets : no type generator for TargetEntry (GtkTargetEntry) for array param targets
+// Unsupported : gtk_drag_source_set : unsupported parameter targets :
 
 // DragSourceSetIconPixbuf is a wrapper around the C function gtk_drag_source_set_icon_pixbuf.
 func (recv *Widget) DragSourceSetIconPixbuf(pixbuf *gdkpixbuf.Pixbuf) {

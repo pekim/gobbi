@@ -109,7 +109,7 @@ func (recv *CssSection) Unref() {
 
 // Unsupported : gtk_paper_size_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
 
-// Unsupported : gtk_target_list_new : unsupported parameter targets : no type generator for TargetEntry (GtkTargetEntry) for array param targets
+// Unsupported : gtk_target_list_new : unsupported parameter targets :
 
 // Assign is a wrapper around the C function gtk_text_iter_assign.
 func (recv *TextIter) Assign(other *TextIter) {
@@ -121,8 +121,6 @@ func (recv *TextIter) Assign(other *TextIter) {
 }
 
 // Unsupported : gtk_tree_path_new_from_indices : unsupported parameter ... : varargs
-
-// Unsupported : gtk_tree_path_new_from_indicesv : unsupported parameter indices : no type generator for gint (gint) for array param indices
 
 // Unsupported : gtk_tree_row_reference_new : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
 

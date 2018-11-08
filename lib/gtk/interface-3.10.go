@@ -21,4 +21,17 @@ func (recv *FileChooser) GetCurrentName() string {
 	return retGo
 }
 
-// Unsupported : gtk_tree_model_rows_reordered_with_length : unsupported parameter new_order : no type generator for gint (gint) for array param new_order
+// RowsReorderedWithLength is a wrapper around the C function gtk_tree_model_rows_reordered_with_length.
+func (recv *TreeModel) RowsReorderedWithLength(path *TreePath, iter *TreeIter, newOrder []int32) {
+	c_path := (*C.GtkTreePath)(path.ToC())
+
+	c_iter := (*C.GtkTreeIter)(iter.ToC())
+
+	c_new_order := &newOrder[0]
+
+	c_length := (C.gint)(len(newOrder))
+
+	C.gtk_tree_model_rows_reordered_with_length((*C.GtkTreeModel)(recv.native), c_path, c_iter, (*C.gint)(unsafe.Pointer(c_new_order)), c_length)
+
+	return
+}

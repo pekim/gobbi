@@ -5324,7 +5324,7 @@ func (recv *IconSet) Copy() *IconSet {
 	return retGo
 }
 
-// Unsupported : gtk_icon_set_get_sizes : unsupported parameter sizes : no type generator for gint (GtkIconSize*) for array param sizes
+// Unsupported : gtk_icon_set_get_sizes : unsupported parameter sizes : output array param sizes
 
 // Ref is a wrapper around the C function gtk_icon_set_ref.
 func (recv *IconSet) Ref() *IconSet {
@@ -9380,7 +9380,7 @@ func (recv *SelectionData) Free() {
 	return
 }
 
-// Unsupported : gtk_selection_data_get_targets : unsupported parameter targets : no type generator for Gdk.Atom (GdkAtom*) for array param targets
+// Unsupported : gtk_selection_data_get_targets : unsupported parameter targets : output array param targets
 
 // Blacklisted : gtk_selection_data_get_text
 
@@ -10720,11 +10720,11 @@ func (recv *TargetList) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : gtk_target_list_new : unsupported parameter targets : no type generator for TargetEntry (GtkTargetEntry) for array param targets
+// Unsupported : gtk_target_list_new : unsupported parameter targets :
 
 // Unsupported : gtk_target_list_add : unsupported parameter target : Blacklisted record : GdkAtom
 
-// Unsupported : gtk_target_list_add_table : unsupported parameter targets : no type generator for TargetEntry (GtkTargetEntry) for array param targets
+// Unsupported : gtk_target_list_add_table : unsupported parameter targets :
 
 // Unsupported : gtk_target_list_find : unsupported parameter target : Blacklisted record : GdkAtom
 
@@ -13018,8 +13018,6 @@ func TreePathNewFirst() *TreePath {
 }
 
 // Unsupported : gtk_tree_path_new_from_indices : unsupported parameter ... : varargs
-
-// Unsupported : gtk_tree_path_new_from_indicesv : unsupported parameter indices : no type generator for gint (gint) for array param indices
 
 // TreePathNewFromString is a wrapper around the C function gtk_tree_path_new_from_string.
 func TreePathNewFromString(path string) *TreePath {

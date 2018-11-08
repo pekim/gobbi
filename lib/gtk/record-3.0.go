@@ -189,11 +189,9 @@ func (recv *SymbolicColor) Unref() {
 	return
 }
 
-// Unsupported : gtk_target_list_new : unsupported parameter targets : no type generator for TargetEntry (GtkTargetEntry) for array param targets
+// Unsupported : gtk_target_list_new : unsupported parameter targets :
 
 // Unsupported : gtk_tree_path_new_from_indices : unsupported parameter ... : varargs
-
-// Unsupported : gtk_tree_path_new_from_indicesv : unsupported parameter indices : no type generator for gint (gint) for array param indices
 
 // Unsupported : gtk_tree_path_get_indices_with_depth : no return type
 

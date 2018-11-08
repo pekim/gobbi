@@ -74,7 +74,7 @@ func AtomicIntXor(atomic uint32, val uint32) uint32 {
 
 // Unsupported : g_base64_encode : unsupported parameter data : no type generator for guint8 () for array param data
 
-// Unsupported : g_base64_encode_close : unsupported parameter out : no type generator for guint8 () for array param out
+// Unsupported : g_base64_encode_close : unsupported parameter out : output array param out
 
 // Unsupported : g_base64_encode_step : unsupported parameter in : no type generator for guint8 () for array param in
 
@@ -82,21 +82,15 @@ func AtomicIntXor(atomic uint32, val uint32) uint32 {
 
 // Unsupported : g_build_filename_valist : unsupported parameter args : no type generator for va_list (va_list*) for param args
 
-// Unsupported : g_build_filenamev : unsupported parameter args : no type generator for filename () for array param args
+// Unsupported : g_build_filenamev : unsupported parameter args :
 
 // Unsupported : g_build_path : unsupported parameter ... : varargs
 
-// Unsupported : g_build_pathv : unsupported parameter args : no type generator for filename () for array param args
-
-// Unsupported : g_byte_array_free : unsupported parameter array : no type generator for guint8 (guint8) for array param array
-
-// Unsupported : g_byte_array_free_to_bytes : unsupported parameter array : no type generator for guint8 (guint8) for array param array
+// Unsupported : g_build_pathv : unsupported parameter args :
 
 // Unsupported : g_byte_array_new : no return type
 
-// Unsupported : g_byte_array_new_take : unsupported parameter data : no type generator for guint8 (guint8) for array param data
-
-// Unsupported : g_byte_array_unref : unsupported parameter array : no type generator for guint8 (guint8) for array param array
+// Unsupported : g_byte_array_new_take : no return type
 
 // Unsupported : g_child_watch_add : unsupported parameter function : no type generator for ChildWatchFunc (GChildWatchFunc) for param function
 
@@ -108,9 +102,44 @@ func AtomicIntXor(atomic uint32, val uint32) uint32 {
 
 // Unsupported : g_compute_checksum_for_data : unsupported parameter data : no type generator for guint8 () for array param data
 
-// Unsupported : g_compute_hmac_for_data : unsupported parameter key : no type generator for guint8 (guchar) for array param key
+// ComputeHmacForData is a wrapper around the C function g_compute_hmac_for_data.
+func ComputeHmacForData(digestType ChecksumType, key []uint8, data []uint8) string {
+	c_digest_type := (C.GChecksumType)(digestType)
 
-// Unsupported : g_compute_hmac_for_string : unsupported parameter key : no type generator for guint8 (guchar) for array param key
+	c_key := &key[0]
+
+	c_key_len := (C.gsize)(len(key))
+
+	c_data := &data[0]
+
+	c_length := (C.gsize)(len(data))
+
+	retC := C.g_compute_hmac_for_data(c_digest_type, (*C.guchar)(unsafe.Pointer(c_key)), c_key_len, (*C.guchar)(unsafe.Pointer(c_data)), c_length)
+	retGo := C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// ComputeHmacForString is a wrapper around the C function g_compute_hmac_for_string.
+func ComputeHmacForString(digestType ChecksumType, key []uint8, str string, length int64) string {
+	c_digest_type := (C.GChecksumType)(digestType)
+
+	c_key := &key[0]
+
+	c_key_len := (C.gsize)(len(key))
+
+	c_str := C.CString(str)
+	defer C.free(unsafe.Pointer(c_str))
+
+	c_length := (C.gssize)(length)
+
+	retC := C.g_compute_hmac_for_string(c_digest_type, (*C.guchar)(unsafe.Pointer(c_key)), c_key_len, c_str, c_length)
+	retGo := C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // Unsupported : g_convert : unsupported parameter str : no type generator for guint8 () for array param str
 
@@ -165,13 +194,13 @@ func DirMakeTmp(tmpl string) (string, error) {
 	return retGo, goThrowableError
 }
 
-// Unsupported : g_environ_getenv : unsupported parameter envp : no type generator for filename () for array param envp
+// Unsupported : g_environ_getenv : unsupported parameter envp :
 
-// Unsupported : g_environ_setenv : unsupported parameter envp : no type generator for filename () for array param envp
+// Unsupported : g_environ_setenv : unsupported parameter envp :
 
-// Unsupported : g_environ_unsetenv : unsupported parameter envp : no type generator for filename () for array param envp
+// Unsupported : g_environ_unsetenv : unsupported parameter envp :
 
-// Unsupported : g_file_get_contents : unsupported parameter contents : no type generator for guint8 () for array param contents
+// Unsupported : g_file_get_contents : unsupported parameter contents : output array param contents
 
 // Unsupported : g_file_set_contents : unsupported parameter contents : no type generator for guint8 () for array param contents
 
@@ -245,19 +274,19 @@ func FormatSizeFull(size uint64, flags FormatSizeFlags) string {
 
 // Unsupported : g_log_structured : unsupported parameter ... : varargs
 
-// Unsupported : g_log_structured_array : unsupported parameter fields : no type generator for LogField (GLogField) for array param fields
+// Unsupported : g_log_structured_array : unsupported parameter fields :
 
 // Unsupported : g_log_structured_standard : unsupported parameter ... : varargs
 
 // Unsupported : g_log_variant : unsupported parameter fields : Blacklisted record : GVariant
 
-// Unsupported : g_log_writer_default : unsupported parameter fields : no type generator for LogField (GLogField) for array param fields
+// Unsupported : g_log_writer_default : unsupported parameter fields :
 
-// Unsupported : g_log_writer_format_fields : unsupported parameter fields : no type generator for LogField (GLogField) for array param fields
+// Unsupported : g_log_writer_format_fields : unsupported parameter fields :
 
-// Unsupported : g_log_writer_journald : unsupported parameter fields : no type generator for LogField (GLogField) for array param fields
+// Unsupported : g_log_writer_journald : unsupported parameter fields :
 
-// Unsupported : g_log_writer_standard_streams : unsupported parameter fields : no type generator for LogField (GLogField) for array param fields
+// Unsupported : g_log_writer_standard_streams : unsupported parameter fields :
 
 // Unsupported : g_logv : unsupported parameter args : no type generator for va_list (va_list) for param args
 
@@ -297,7 +326,7 @@ func MkdtempFull(tmpl string, mode int32) string {
 
 // Unsupported : g_once_init_leave : unsupported parameter location : no type generator for gpointer (void*) for param location
 
-// Unsupported : g_parse_debug_string : unsupported parameter keys : no type generator for DebugKey (GDebugKey) for array param keys
+// Unsupported : g_parse_debug_string : unsupported parameter keys :
 
 // Unsupported : g_pointer_bit_lock : unsupported parameter address : no type generator for gpointer (void*) for param address
 
@@ -319,9 +348,7 @@ func MkdtempFull(tmpl string, mode int32) string {
 
 // Unsupported : g_propagate_prefixed_error : unsupported parameter dest : record with indirection level of 2
 
-// Unsupported : g_ptr_array_find : unsupported parameter haystack : no type generator for gpointer (gpointer) for array param haystack
-
-// Unsupported : g_ptr_array_find_with_equal_func : unsupported parameter haystack : no type generator for gpointer (gpointer) for array param haystack
+// Unsupported : g_ptr_array_find_with_equal_func : unsupported parameter equal_func : no type generator for EqualFunc (GEqualFunc) for param equal_func
 
 // Unsupported : g_qsort_with_data : unsupported parameter compare_func : no type generator for CompareDataFunc (GCompareDataFunc) for param compare_func
 
@@ -339,7 +366,7 @@ func RegexEscapeNul(string string, length int32) string {
 	return retGo
 }
 
-// Unsupported : g_regex_escape_string : unsupported parameter string : no type generator for utf8 (gchar) for array param string
+// Unsupported : g_regex_escape_string : unsupported parameter string :
 
 // Unsupported : g_regex_split_simple : no return type
 
@@ -351,21 +378,21 @@ func RegexEscapeNul(string string, length int32) string {
 
 // Unsupported : g_set_printerr_handler : unsupported parameter func : no type generator for PrintFunc (GPrintFunc) for param func
 
-// Unsupported : g_shell_parse_argv : unsupported parameter argvp : no type generator for filename () for array param argvp
+// Unsupported : g_shell_parse_argv : unsupported parameter argvp : output array param argvp
 
 // Unsupported : g_snprintf : unsupported parameter ... : varargs
 
-// Unsupported : g_spawn_async : unsupported parameter argv : no type generator for filename () for array param argv
+// Unsupported : g_spawn_async : unsupported parameter argv :
 
-// Unsupported : g_spawn_async_with_pipes : unsupported parameter argv : no type generator for filename () for array param argv
+// Unsupported : g_spawn_async_with_pipes : unsupported parameter argv :
 
-// Unsupported : g_spawn_command_line_sync : unsupported parameter standard_output : no type generator for guint8 () for array param standard_output
+// Unsupported : g_spawn_command_line_sync : unsupported parameter standard_output : output array param standard_output
 
-// Unsupported : g_spawn_sync : unsupported parameter argv : no type generator for filename () for array param argv
+// Unsupported : g_spawn_sync : unsupported parameter argv :
 
 // Unsupported : g_sprintf : unsupported parameter ... : varargs
 
-// Unsupported : g_str_tokenize_and_fold : unsupported parameter ascii_alternates : no type generator for utf8 (gchar**) for array param ascii_alternates
+// Unsupported : g_str_tokenize_and_fold : unsupported parameter ascii_alternates : output array param ascii_alternates
 
 // Unsupported : g_strconcat : unsupported parameter ... : varargs
 

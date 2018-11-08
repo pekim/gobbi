@@ -43,9 +43,9 @@ func EventRequestMotions(event *EventMotion) {
 
 // Unsupported : gdk_events_get_distance : unsupported parameter event1 : no type generator for Event (GdkEvent*) for param event1
 
-// Unsupported : gdk_init : unsupported parameter argv : no type generator for utf8 (gchar**) for array param argv
+// Unsupported : gdk_init : unsupported parameter argv :
 
-// Unsupported : gdk_init_check : unsupported parameter argv : no type generator for utf8 (gchar**) for array param argv
+// Unsupported : gdk_init_check : unsupported parameter argv :
 
 // NotifyStartupCompleteWithId is a wrapper around the C function gdk_notify_startup_complete_with_id.
 func NotifyStartupCompleteWithId(startupId string) {
@@ -57,9 +57,7 @@ func NotifyStartupCompleteWithId(startupId string) {
 	return
 }
 
-// Unsupported : gdk_pango_layout_line_get_clip_region : unsupported parameter index_ranges : no type generator for gint (gint) for array param index_ranges
-
-// Unsupported : gdk_parse_args : unsupported parameter argv : no type generator for utf8 (gchar**) for array param argv
+// Unsupported : gdk_parse_args : unsupported parameter argv :
 
 // Unsupported : gdk_property_change : unsupported parameter property : Blacklisted record : GdkAtom
 
@@ -67,9 +65,9 @@ func NotifyStartupCompleteWithId(startupId string) {
 
 // Unsupported : gdk_property_get : unsupported parameter property : Blacklisted record : GdkAtom
 
-// Unsupported : gdk_query_depths : unsupported parameter depths : no type generator for gint (gint*) for array param depths
+// Unsupported : gdk_query_depths : unsupported parameter depths : output array param depths
 
-// Unsupported : gdk_query_visual_types : unsupported parameter visual_types : no type generator for VisualType (GdkVisualType*) for array param visual_types
+// Unsupported : gdk_query_visual_types : unsupported parameter visual_types : output array param visual_types
 
 // Unsupported : gdk_selection_convert : unsupported parameter selection : Blacklisted record : GdkAtom
 

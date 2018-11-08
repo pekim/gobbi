@@ -19,7 +19,7 @@ func (recv *Plug) GetId() string {
 	return retGo
 }
 
-// Unsupported : atk_relation_new : unsupported parameter targets : no type generator for Object (AtkObject*) for array param targets
+// Unsupported : atk_relation_new : unsupported parameter targets :
 
 // Embed is a wrapper around the C function atk_socket_embed.
 func (recv *Socket) Embed(plugId string) {

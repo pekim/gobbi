@@ -84,7 +84,7 @@ func PixbufNew(colorspace Colorspace, hasAlpha bool, bitsPerSample int32, width 
 	return retGo
 }
 
-// Unsupported : gdk_pixbuf_new_from_data : unsupported parameter data : no type generator for guint8 (guchar) for array param data
+// Unsupported : gdk_pixbuf_new_from_data : unsupported parameter destroy_fn : no type generator for PixbufDestroyNotify (GdkPixbufDestroyNotify) for param destroy_fn
 
 // PixbufNewFromFile is a wrapper around the C function gdk_pixbuf_new_from_file.
 func PixbufNewFromFile(filename string) (*Pixbuf, error) {
@@ -104,11 +104,31 @@ func PixbufNewFromFile(filename string) (*Pixbuf, error) {
 	return retGo, goThrowableError
 }
 
-// Unsupported : gdk_pixbuf_new_from_inline : unsupported parameter data : no type generator for guint8 (guint8) for array param data
+// PixbufNewFromInline is a wrapper around the C function gdk_pixbuf_new_from_inline.
+func PixbufNewFromInline(data []uint8, copyPixels bool) (*Pixbuf, error) {
+	c_data_length := (C.gint)(len(data))
+
+	c_data := &data[0]
+
+	c_copy_pixels :=
+		boolToGboolean(copyPixels)
+
+	var cThrowableError *C.GError
+
+	retC := C.gdk_pixbuf_new_from_inline(c_data_length, (*C.guint8)(unsafe.Pointer(c_data)), c_copy_pixels, &cThrowableError)
+	retGo := PixbufNewFromC(unsafe.Pointer(retC))
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // Unsupported : gdk_pixbuf_new_from_stream_finish : unsupported parameter async_result : no type generator for Gio.AsyncResult (GAsyncResult*) for param async_result
 
-// Unsupported : gdk_pixbuf_new_from_xpm_data : unsupported parameter data : no type generator for utf8 (char*) for array param data
+// Unsupported : gdk_pixbuf_new_from_xpm_data : unsupported parameter data :
 
 // AddAlpha is a wrapper around the C function gdk_pixbuf_add_alpha.
 func (recv *Pixbuf) AddAlpha(substituteColor bool, r uint8, g uint8, b uint8) *Pixbuf {
@@ -364,7 +384,7 @@ func (recv *Pixbuf) SaturateAndPixelate(dest *Pixbuf, saturation float32, pixela
 
 // Unsupported : gdk_pixbuf_save : unsupported parameter error : record with indirection level of 2
 
-// Unsupported : gdk_pixbuf_savev : unsupported parameter option_keys : no type generator for utf8 (char*) for array param option_keys
+// Unsupported : gdk_pixbuf_savev : unsupported parameter option_keys :
 
 // Scale is a wrapper around the C function gdk_pixbuf_scale.
 func (recv *Pixbuf) Scale(dest *Pixbuf, destX int32, destY int32, destWidth int32, destHeight int32, offsetX float64, offsetY float64, scaleX float64, scaleY float64, interpType InterpType) {
@@ -808,7 +828,24 @@ func (recv *PixbufLoader) GetPixbuf() *Pixbuf {
 	return retGo
 }
 
-// Unsupported : gdk_pixbuf_loader_write : unsupported parameter buf : no type generator for guint8 (guchar) for array param buf
+// Write is a wrapper around the C function gdk_pixbuf_loader_write.
+func (recv *PixbufLoader) Write(buf []uint8) (bool, error) {
+	c_buf := &buf[0]
+
+	c_count := (C.gsize)(len(buf))
+
+	var cThrowableError *C.GError
+
+	retC := C.gdk_pixbuf_loader_write((*C.GdkPixbufLoader)(recv.native), (*C.guchar)(unsafe.Pointer(c_buf)), c_count, &cThrowableError)
+	retGo := retC == C.TRUE
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // PixbufSimpleAnim is a wrapper around the C record GdkPixbufSimpleAnim.
 type PixbufSimpleAnim struct {

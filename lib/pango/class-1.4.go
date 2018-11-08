@@ -8,7 +8,7 @@ package pango
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : pango_font_face_list_sizes : unsupported parameter sizes : no type generator for gint (int*) for array param sizes
+// Unsupported : pango_font_face_list_sizes : unsupported parameter sizes : output array param sizes
 
 // IsMonospace is a wrapper around the C function pango_font_family_is_monospace.
 func (recv *FontFamily) IsMonospace() bool {

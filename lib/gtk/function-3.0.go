@@ -20,7 +20,7 @@ import "C"
 
 // Unsupported : gtk_accelerator_parse : unsupported parameter accelerator_mods : GdkModifierType* with indirection level of 1
 
-// Unsupported : gtk_accelerator_parse_with_keycode : unsupported parameter accelerator_codes : no type generator for guint (guint*) for array param accelerator_codes
+// Unsupported : gtk_accelerator_parse_with_keycode : unsupported parameter accelerator_codes : output array param accelerator_codes
 
 // BindingEntryAddSignalFromString is a wrapper around the C function gtk_binding_entry_add_signal_from_string.
 func BindingEntryAddSignalFromString(bindingSet *BindingSet, signalDesc string) glib.TokenType {
@@ -147,17 +147,17 @@ func GetMinorVersion() uint32 {
 
 // Unsupported : gtk_icon_size_register_alias : unsupported parameter target : no type generator for gint (GtkIconSize) for param target
 
-// Unsupported : gtk_init : unsupported parameter argv : no type generator for utf8 (char**) for array param argv
+// Unsupported : gtk_init : unsupported parameter argv :
 
-// Unsupported : gtk_init_check : unsupported parameter argv : no type generator for utf8 (char**) for array param argv
+// Unsupported : gtk_init_check : unsupported parameter argv :
 
-// Unsupported : gtk_init_with_args : unsupported parameter argv : no type generator for utf8 (gchar**) for array param argv
+// Unsupported : gtk_init_with_args : unsupported parameter argv :
 
 // Unsupported : gtk_key_snooper_install : unsupported parameter snooper : no type generator for KeySnoopFunc (GtkKeySnoopFunc) for param snooper
 
 // Unsupported : gtk_main_do_event : unsupported parameter event : no type generator for Gdk.Event (GdkEvent*) for param event
 
-// Unsupported : gtk_parse_args : unsupported parameter argv : no type generator for utf8 (char**) for array param argv
+// Unsupported : gtk_parse_args : unsupported parameter argv :
 
 // Unsupported : gtk_print_run_page_setup_dialog_async : unsupported parameter done_cb : no type generator for PageSetupDoneFunc (GtkPageSetupDoneFunc) for param done_cb
 
@@ -179,7 +179,7 @@ func GetMinorVersion() uint32 {
 
 // Unsupported : gtk_rc_property_parse_requisition : unsupported parameter pspec : Blacklisted record : GParamSpec
 
-// Unsupported : gtk_rc_set_default_files : unsupported parameter filenames : no type generator for filename () for array param filenames
+// Unsupported : gtk_rc_set_default_files : unsupported parameter filenames :
 
 // RenderActivity is a wrapper around the C function gtk_render_activity.
 func RenderActivity(context *StyleContext, cr *cairo.Context, x float64, y float64, width float64, height float64) {
@@ -454,34 +454,32 @@ func RenderSlider(context *StyleContext, cr *cairo.Context, x float64, y float64
 
 // Unsupported : gtk_show_about_dialog : unsupported parameter ... : varargs
 
-// Unsupported : gtk_stock_add : unsupported parameter items : no type generator for StockItem (GtkStockItem) for array param items
+// Unsupported : gtk_stock_add : unsupported parameter items :
 
-// Unsupported : gtk_stock_add_static : unsupported parameter items : no type generator for StockItem (GtkStockItem) for array param items
+// Unsupported : gtk_stock_add_static : unsupported parameter items :
 
 // Unsupported : gtk_stock_set_translate_func : unsupported parameter func : no type generator for TranslateFunc (GtkTranslateFunc) for param func
 
-// Unsupported : gtk_target_table_free : unsupported parameter targets : no type generator for TargetEntry (GtkTargetEntry) for array param targets
+// Unsupported : gtk_target_table_free : unsupported parameter targets :
 
 // Unsupported : gtk_target_table_new_from_list : no return type
 
-// Unsupported : gtk_targets_include_image : unsupported parameter targets : no type generator for Gdk.Atom (GdkAtom) for array param targets
+// Unsupported : gtk_targets_include_image : unsupported parameter targets :
 
-// Unsupported : gtk_targets_include_rich_text : unsupported parameter targets : no type generator for Gdk.Atom (GdkAtom) for array param targets
+// Unsupported : gtk_targets_include_rich_text : unsupported parameter targets :
 
-// Unsupported : gtk_targets_include_text : unsupported parameter targets : no type generator for Gdk.Atom (GdkAtom) for array param targets
+// Unsupported : gtk_targets_include_text : unsupported parameter targets :
 
-// Unsupported : gtk_targets_include_uri : unsupported parameter targets : no type generator for Gdk.Atom (GdkAtom) for array param targets
+// Unsupported : gtk_targets_include_uri : unsupported parameter targets :
 
 // Unsupported : gtk_test_create_widget : unsupported parameter ... : varargs
 
 // Unsupported : gtk_test_display_button_window : unsupported parameter ... : varargs
 
-// Unsupported : gtk_test_init : unsupported parameter argvp : no type generator for utf8 (char**) for array param argvp
+// Unsupported : gtk_test_init : unsupported parameter argvp :
 
 // Unsupported : gtk_test_list_all_types : no return type
 
 // Unsupported : gtk_tree_get_row_drag_data : unsupported parameter tree_model : no type generator for TreeModel (GtkTreeModel**) for param tree_model
-
-// Unsupported : gtk_tree_row_reference_reordered : unsupported parameter new_order : no type generator for gint (gint) for array param new_order
 
 // Unsupported : gtk_tree_set_row_drag_data : unsupported parameter tree_model : no type generator for TreeModel (GtkTreeModel*) for param tree_model
