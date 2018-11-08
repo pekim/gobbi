@@ -549,24 +549,7 @@ func (recv *OptionContext) GetMainGroup() *OptionGroup {
 	return retGo
 }
 
-// Parse is a wrapper around the C function g_option_context_parse.
-func (recv *OptionContext) Parse(args []string) (bool, []string, error) {
-	cArgc, cArgv := argsIn(args)
-
-	var cThrowableError *C.GError
-
-	retC := C.g_option_context_parse((*C.GOptionContext)(recv.native), &cArgc, &cArgv, &cThrowableError)
-	retGo := retC == C.TRUE
-
-	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
-	if cThrowableError != nil {
-		C.g_error_free(cThrowableError)
-	}
-
-	args = argsOut(cArgc, cArgv)
-
-	return retGo, args, goThrowableError
-}
+// Unsupported : g_option_context_parse : unsupported parameter argv : no param type
 
 // SetHelpEnabled is a wrapper around the C function g_option_context_set_help_enabled.
 func (recv *OptionContext) SetHelpEnabled(helpEnabled bool) {

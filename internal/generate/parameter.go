@@ -116,8 +116,6 @@ func (p *Parameter) generateOutputParamReturnDeclaration(g *jen.Group) {
 
 func (p *Parameter) generateOutputParamReturn(g *jen.Group) {
 	if p.Direction == "out" || (p.Direction == "inout" && p.Type.Name == "argcargv") {
-		if p.Type.Name != "ignore" {
-			g.Id(p.goVarName)
-		}
+		g.Id(p.goVarName)
 	}
 }

@@ -416,30 +416,11 @@ func IconThemeErrorQuark() glib.Quark {
 	return retGo
 }
 
-// Init is a wrapper around the C function gtk_init.
-func Init(args []string) []string {
-	cArgc, cArgv := argsIn(args)
+// Unsupported : gtk_init : unsupported parameter argv : no param type
 
-	C.gtk_init(&cArgc, &cArgv)
+// Unsupported : gtk_init_check : unsupported parameter argv : no param type
 
-	args = argsOut(cArgc, cArgv)
-
-	return args
-}
-
-// InitCheck is a wrapper around the C function gtk_init_check.
-func InitCheck(args []string) (bool, []string) {
-	cArgc, cArgv := argsIn(args)
-
-	retC := C.gtk_init_check(&cArgc, &cArgv)
-	retGo := retC == C.TRUE
-
-	args = argsOut(cArgc, cArgv)
-
-	return retGo, args
-}
-
-// Unsupported : gtk_init_with_args : unsupported parameter entries : no param type
+// Unsupported : gtk_init_with_args : unsupported parameter argv : no param type
 
 // Unsupported : gtk_key_snooper_install : unsupported parameter snooper : no type generator for KeySnoopFunc, GtkKeySnoopFunc
 
@@ -1063,17 +1044,7 @@ func PaintVline(style *Style, cr *cairo.Context, stateType StateType, widget *Wi
 	return
 }
 
-// ParseArgs is a wrapper around the C function gtk_parse_args.
-func ParseArgs(args []string) (bool, []string) {
-	cArgc, cArgv := argsIn(args)
-
-	retC := C.gtk_parse_args(&cArgc, &cArgv)
-	retGo := retC == C.TRUE
-
-	args = argsOut(cArgc, cArgv)
-
-	return retGo, args
-}
+// Unsupported : gtk_parse_args : unsupported parameter argv : no param type
 
 // Unsupported : gtk_print_run_page_setup_dialog_async : unsupported parameter done_cb : no type generator for PageSetupDoneFunc, GtkPageSetupDoneFunc
 
