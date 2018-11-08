@@ -29,6 +29,12 @@ func (p *Parameter) init(ns *Namespace) {
 	if p.Type != nil {
 		p.Type.init(ns)
 	}
+
+	if p.Array != nil {
+		if p.Type != nil {
+			p.Type.init(ns)
+		}
+	}
 }
 
 func (p *Parameter) isSupported() (bool, string) {
@@ -36,18 +42,33 @@ func (p *Parameter) isSupported() (bool, string) {
 		return false, "varargs"
 	}
 
-	if p.Type == nil {
-		return false, "no param type"
-	}
-	if p.Type.generator == nil {
-		return false, fmt.Sprintf("no type generator for %s, %s", p.Type.Name, p.Type.CType)
+	if p.Type != nil {
+		if p.Type.generator == nil {
+			return false, fmt.Sprintf("no type generator for %s (%s) for param %s",
+				p.Type.Name, p.Type.CType, p.Name)
+		}
+
+		if supported, reason := p.Type.generator.isSupportedAsParam(p.Direction); !supported {
+			return false, reason
+		}
+
+		return true, ""
 	}
 
-	if supported, reason := p.Type.generator.isSupportedAsParam(p.Direction); !supported {
-		return false, reason
+	if p.Array != nil {
+		if p.Array.Type.generator == nil {
+			return false, fmt.Sprintf("no type generator for %s (%s) for array param %s",
+				p.Array.Type.Name, p.Array.Type.CType, p.Name)
+		}
+
+		if supported, reason := p.Array.Type.generator.isSupportedAsParam(p.Direction); !supported {
+			return false, reason
+		}
+
+		return true, ""
 	}
 
-	return true, ""
+	return false, "no param type or array"
 }
 
 func (p *Parameter) isSupportedC() (bool, string) {
