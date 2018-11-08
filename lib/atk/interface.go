@@ -275,7 +275,7 @@ func component_boundsChangedHandler(_ *C.GObject, c_arg1 *C.AtkRectangle, data C
 	callback(arg1)
 }
 
-// Unsupported : atk_component_add_focus_handler : unsupported parameter handler : no type generator for FocusHandler, AtkFocusHandler
+// Unsupported : atk_component_add_focus_handler : unsupported parameter handler : no type generator for FocusHandler (AtkFocusHandler) for param handler
 
 // Contains is a wrapper around the C function atk_component_contains.
 func (recv *Component) Contains(x int32, y int32, coordType CoordType) bool {

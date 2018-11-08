@@ -328,7 +328,7 @@ func (recv *Application) Hold() {
 	return
 }
 
-// Unsupported : g_application_open : unsupported parameter files : no param type
+// Unsupported : g_application_open : unsupported parameter files : no type generator for File (GFile*) for array param files
 
 // Register is a wrapper around the C function g_application_register.
 func (recv *Application) Register(cancellable *Cancellable) (bool, error) {
@@ -354,9 +354,9 @@ func (recv *Application) Release() {
 	return
 }
 
-// Unsupported : g_application_run : unsupported parameter argv : no param type
+// Unsupported : g_application_run : unsupported parameter argv : no type generator for filename () for array param argv
 
-// Unsupported : g_application_set_action_group : unsupported parameter action_group : no type generator for ActionGroup, GActionGroup*
+// Unsupported : g_application_set_action_group : unsupported parameter action_group : no type generator for ActionGroup (GActionGroup*) for param action_group
 
 // SetApplicationId is a wrapper around the C function g_application_set_application_id.
 func (recv *Application) SetApplicationId(applicationId string) {
@@ -448,25 +448,25 @@ func (recv *Cancellable) SourceNew() *glib.Source {
 	return retGo
 }
 
-// Unsupported : g_converter_input_stream_new : unsupported parameter converter : no type generator for Converter, GConverter*
+// Unsupported : g_converter_input_stream_new : unsupported parameter converter : no type generator for Converter (GConverter*) for param converter
 
-// Unsupported : g_converter_output_stream_new : unsupported parameter converter : no type generator for Converter, GConverter*
+// Unsupported : g_converter_output_stream_new : unsupported parameter converter : no type generator for Converter (GConverter*) for param converter
 
-// Unsupported : g_dbus_connection_new_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
+// Unsupported : g_dbus_connection_new_finish : unsupported parameter res : no type generator for AsyncResult (GAsyncResult*) for param res
 
-// Unsupported : g_dbus_connection_new_for_address_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
+// Unsupported : g_dbus_connection_new_for_address_finish : unsupported parameter res : no type generator for AsyncResult (GAsyncResult*) for param res
 
-// Unsupported : g_dbus_message_new_from_blob : unsupported parameter blob : no param type
+// Unsupported : g_dbus_message_new_from_blob : unsupported parameter blob : no type generator for guint8 () for array param blob
 
-// Unsupported : g_dbus_proxy_new_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
+// Unsupported : g_dbus_proxy_new_finish : unsupported parameter res : no type generator for AsyncResult (GAsyncResult*) for param res
 
-// Unsupported : g_dbus_proxy_new_for_bus_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
+// Unsupported : g_dbus_proxy_new_for_bus_finish : unsupported parameter res : no type generator for AsyncResult (GAsyncResult*) for param res
 
-// Unsupported : g_emblem_new : unsupported parameter icon : no type generator for Icon, GIcon*
+// Unsupported : g_emblem_new : unsupported parameter icon : no type generator for Icon (GIcon*) for param icon
 
-// Unsupported : g_emblem_new_with_origin : unsupported parameter icon : no type generator for Icon, GIcon*
+// Unsupported : g_emblem_new_with_origin : unsupported parameter icon : no type generator for Icon (GIcon*) for param icon
 
-// Unsupported : g_emblemed_icon_new : unsupported parameter icon : no type generator for Icon, GIcon*
+// Unsupported : g_emblemed_icon_new : unsupported parameter icon : no type generator for Icon (GIcon*) for param icon
 
 // ClearEmblems is a wrapper around the C function g_emblemed_icon_clear_emblems.
 func (recv *EmblemedIcon) ClearEmblems() {
@@ -475,17 +475,15 @@ func (recv *EmblemedIcon) ClearEmblems() {
 	return
 }
 
-// Unsupported : g_file_icon_new : unsupported parameter file : no type generator for File, GFile*
+// Unsupported : g_file_icon_new : unsupported parameter file : no type generator for File (GFile*) for param file
 
-// Unsupported : g_io_stream_splice_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+// Unsupported : g_io_stream_splice_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_inet_address_new_from_bytes : unsupported parameter bytes : no param type
+// Unsupported : g_inet_address_new_from_bytes : unsupported parameter bytes : no type generator for guint8 () for array param bytes
 
-// Unsupported : g_list_store_new : unsupported parameter item_type : no type generator for GType, GType
+// Unsupported : g_memory_input_stream_new_from_data : unsupported parameter data : no type generator for guint8 () for array param data
 
-// Unsupported : g_memory_input_stream_new_from_data : unsupported parameter data : no param type
-
-// Unsupported : g_memory_output_stream_new : unsupported parameter realloc_function : no type generator for ReallocFunc, GReallocFunc
+// Unsupported : g_memory_output_stream_new : unsupported parameter realloc_function : no type generator for ReallocFunc (GReallocFunc) for param realloc_function
 
 // Unsupported : g_settings_get_range : return type : Blacklisted record : GVariant
 
@@ -549,7 +547,7 @@ func SimpleActionGroupNew() *SimpleActionGroup {
 	return retGo
 }
 
-// Unsupported : g_simple_action_group_insert : unsupported parameter action : no type generator for Action, GAction*
+// Unsupported : g_simple_action_group_insert : unsupported parameter action : no type generator for Action (GAction*) for param action
 
 // Unsupported : g_simple_action_group_lookup : no return generator
 
@@ -563,13 +561,13 @@ func (recv *SimpleActionGroup) Remove(actionName string) {
 	return
 }
 
-// Unsupported : g_simple_async_result_new : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+// Unsupported : g_simple_async_result_new : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_simple_async_result_new_error : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+// Unsupported : g_simple_async_result_new_error : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_simple_async_result_new_from_error : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+// Unsupported : g_simple_async_result_new_from_error : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_simple_async_result_new_take_error : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+// Unsupported : g_simple_async_result_new_take_error : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
 // TakeError is a wrapper around the C function g_simple_async_result_take_error.
 func (recv *SimpleAsyncResult) TakeError(error *glib.Error) {
@@ -615,7 +613,7 @@ func (recv *SocketClient) SetTlsValidationFlags(flags TlsCertificateFlags) {
 	return
 }
 
-// Unsupported : g_task_new : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+// Unsupported : g_task_new : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
 // TcpWrapperConnectionNew is a wrapper around the C function g_tcp_wrapper_connection_new.
 func TcpWrapperConnectionNew(baseIoStream *IOStream, socket *Socket) *TcpWrapperConnection {
@@ -629,7 +627,7 @@ func TcpWrapperConnectionNew(baseIoStream *IOStream, socket *Socket) *TcpWrapper
 	return retGo
 }
 
-// Unsupported : g_themed_icon_new_from_names : unsupported parameter iconnames : no param type
+// Unsupported : g_themed_icon_new_from_names : unsupported parameter iconnames : no type generator for utf8 (char*) for array param iconnames
 
 // TlsCertificate is a wrapper around the C record GTlsCertificate.
 type TlsCertificate struct {
@@ -732,7 +730,7 @@ func (recv *TlsCertificate) GetIssuer() *TlsCertificate {
 	return retGo
 }
 
-// Unsupported : g_tls_certificate_verify : unsupported parameter identity : no type generator for SocketConnectable, GSocketConnectable*
+// Unsupported : g_tls_certificate_verify : unsupported parameter identity : no type generator for SocketConnectable (GSocketConnectable*) for param identity
 
 // TlsConnection is a wrapper around the C record GTlsConnection.
 type TlsConnection struct {
@@ -850,9 +848,9 @@ func (recv *TlsConnection) Handshake(cancellable *Cancellable) (bool, error) {
 	return retGo, goThrowableError
 }
 
-// Unsupported : g_tls_connection_handshake_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+// Unsupported : g_tls_connection_handshake_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_tls_connection_handshake_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+// Unsupported : g_tls_connection_handshake_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
 
 // SetCertificate is a wrapper around the C function g_tls_connection_set_certificate.
 func (recv *TlsConnection) SetCertificate(certificate *TlsCertificate) {
@@ -892,8 +890,8 @@ func (recv *TlsConnection) SetUseSystemCertdb(useSystemCertdb bool) {
 	return
 }
 
-// Unsupported : g_unix_fd_list_new_from_array : unsupported parameter fds : no param type
+// Unsupported : g_unix_fd_list_new_from_array : unsupported parameter fds : no type generator for gint (gint) for array param fds
 
-// Unsupported : g_unix_socket_address_new_abstract : unsupported parameter path : no param type
+// Unsupported : g_unix_socket_address_new_abstract : unsupported parameter path : no type generator for gchar () for array param path
 
-// Unsupported : g_unix_socket_address_new_with_type : unsupported parameter path : no param type
+// Unsupported : g_unix_socket_address_new_with_type : unsupported parameter path : no type generator for gchar () for array param path

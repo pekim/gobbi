@@ -14,7 +14,7 @@ import "C"
 
 // Unsupported : gtk_accelerator_parse : unsupported parameter accelerator_mods : GdkModifierType* with indirection level of 1
 
-// Unsupported : gtk_accelerator_parse_with_keycode : unsupported parameter accelerator_codes : no param type
+// Unsupported : gtk_accelerator_parse_with_keycode : unsupported parameter accelerator_codes : no type generator for guint (guint*) for array param accelerator_codes
 
 // DragCancel is a wrapper around the C function gtk_drag_cancel.
 func DragCancel(context *gdk.DragContext) {
@@ -25,7 +25,7 @@ func DragCancel(context *gdk.DragContext) {
 	return
 }
 
-// Unsupported : gtk_drag_set_icon_gicon : unsupported parameter icon : no type generator for Gio.Icon, GIcon*
+// Unsupported : gtk_drag_set_icon_gicon : unsupported parameter icon : no type generator for Gio.Icon (GIcon*) for param icon
 
 // Unsupported : gtk_draw_insertion_cursor : unsupported parameter location : Blacklisted record : GdkRectangle
 
@@ -33,39 +33,37 @@ func DragCancel(context *gdk.DragContext) {
 
 // Unsupported : gtk_get_current_event_state : unsupported parameter state : GdkModifierType* with indirection level of 1
 
-// Unsupported : gtk_get_event_widget : unsupported parameter event : no type generator for Gdk.Event, GdkEvent*
+// Unsupported : gtk_get_event_widget : unsupported parameter event : no type generator for Gdk.Event (GdkEvent*) for param event
 
 // Unsupported : gtk_icon_size_from_name : no return generator
 
-// Unsupported : gtk_icon_size_get_name : unsupported parameter size : no type generator for gint, GtkIconSize
+// Unsupported : gtk_icon_size_get_name : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
 
-// Unsupported : gtk_icon_size_lookup : unsupported parameter size : no type generator for gint, GtkIconSize
+// Unsupported : gtk_icon_size_lookup : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
 
-// Unsupported : gtk_icon_size_lookup_for_settings : unsupported parameter size : no type generator for gint, GtkIconSize
+// Unsupported : gtk_icon_size_lookup_for_settings : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
 
 // Unsupported : gtk_icon_size_register : no return generator
 
-// Unsupported : gtk_icon_size_register_alias : unsupported parameter target : no type generator for gint, GtkIconSize
+// Unsupported : gtk_icon_size_register_alias : unsupported parameter target : no type generator for gint (GtkIconSize) for param target
 
-// Unsupported : gtk_init : unsupported parameter argv : no param type
+// Unsupported : gtk_init : unsupported parameter argv : no type generator for utf8 (char**) for array param argv
 
-// Unsupported : gtk_init_check : unsupported parameter argv : no param type
+// Unsupported : gtk_init_check : unsupported parameter argv : no type generator for utf8 (char**) for array param argv
 
-// Unsupported : gtk_init_with_args : unsupported parameter argv : no param type
+// Unsupported : gtk_init_with_args : unsupported parameter argv : no type generator for utf8 (gchar**) for array param argv
 
-// Unsupported : gtk_key_snooper_install : unsupported parameter snooper : no type generator for KeySnoopFunc, GtkKeySnoopFunc
+// Unsupported : gtk_key_snooper_install : unsupported parameter snooper : no type generator for KeySnoopFunc (GtkKeySnoopFunc) for param snooper
 
-// Unsupported : gtk_main_do_event : unsupported parameter event : no type generator for Gdk.Event, GdkEvent*
+// Unsupported : gtk_main_do_event : unsupported parameter event : no type generator for Gdk.Event (GdkEvent*) for param event
 
-// Unsupported : gtk_parse_args : unsupported parameter argv : no param type
+// Unsupported : gtk_parse_args : unsupported parameter argv : no type generator for utf8 (char**) for array param argv
 
-// Unsupported : gtk_print_run_page_setup_dialog_async : unsupported parameter done_cb : no type generator for PageSetupDoneFunc, GtkPageSetupDoneFunc
+// Unsupported : gtk_print_run_page_setup_dialog_async : unsupported parameter done_cb : no type generator for PageSetupDoneFunc (GtkPageSetupDoneFunc) for param done_cb
 
-// Unsupported : gtk_propagate_event : unsupported parameter event : no type generator for Gdk.Event, GdkEvent*
+// Unsupported : gtk_propagate_event : unsupported parameter event : no type generator for Gdk.Event (GdkEvent*) for param event
 
 // Unsupported : gtk_rc_get_default_files : no return type
-
-// Unsupported : gtk_rc_get_style_by_paths : unsupported parameter type : no type generator for GType, GType
 
 // Unsupported : gtk_rc_parse_priority : unsupported parameter priority : GtkPathPriorityType* with indirection level of 1
 
@@ -81,11 +79,11 @@ func DragCancel(context *gdk.DragContext) {
 
 // Unsupported : gtk_rc_property_parse_requisition : unsupported parameter pspec : Blacklisted record : GParamSpec
 
-// Unsupported : gtk_rc_set_default_files : unsupported parameter filenames : no param type
+// Unsupported : gtk_rc_set_default_files : unsupported parameter filenames : no type generator for filename () for array param filenames
 
 // Unsupported : gtk_render_background_get_clip : unsupported parameter out_clip : Blacklisted record : GdkRectangle
 
-// Unsupported : gtk_render_icon_pixbuf : unsupported parameter size : no type generator for gint, GtkIconSize
+// Unsupported : gtk_render_icon_pixbuf : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
 
 // Unsupported : gtk_selection_add_target : unsupported parameter selection : Blacklisted record : GdkAtom
 
@@ -101,38 +99,34 @@ func DragCancel(context *gdk.DragContext) {
 
 // Unsupported : gtk_show_about_dialog : unsupported parameter ... : varargs
 
-// Unsupported : gtk_stock_add : unsupported parameter items : no param type
+// Unsupported : gtk_stock_add : unsupported parameter items : no type generator for StockItem (GtkStockItem) for array param items
 
-// Unsupported : gtk_stock_add_static : unsupported parameter items : no param type
+// Unsupported : gtk_stock_add_static : unsupported parameter items : no type generator for StockItem (GtkStockItem) for array param items
 
-// Unsupported : gtk_stock_set_translate_func : unsupported parameter func : no type generator for TranslateFunc, GtkTranslateFunc
+// Unsupported : gtk_stock_set_translate_func : unsupported parameter func : no type generator for TranslateFunc (GtkTranslateFunc) for param func
 
-// Unsupported : gtk_target_table_free : unsupported parameter targets : no param type
+// Unsupported : gtk_target_table_free : unsupported parameter targets : no type generator for TargetEntry (GtkTargetEntry) for array param targets
 
 // Unsupported : gtk_target_table_new_from_list : no return type
 
-// Unsupported : gtk_targets_include_image : unsupported parameter targets : no param type
+// Unsupported : gtk_targets_include_image : unsupported parameter targets : no type generator for Gdk.Atom (GdkAtom) for array param targets
 
-// Unsupported : gtk_targets_include_rich_text : unsupported parameter targets : no param type
+// Unsupported : gtk_targets_include_rich_text : unsupported parameter targets : no type generator for Gdk.Atom (GdkAtom) for array param targets
 
-// Unsupported : gtk_targets_include_text : unsupported parameter targets : no param type
+// Unsupported : gtk_targets_include_text : unsupported parameter targets : no type generator for Gdk.Atom (GdkAtom) for array param targets
 
-// Unsupported : gtk_targets_include_uri : unsupported parameter targets : no param type
+// Unsupported : gtk_targets_include_uri : unsupported parameter targets : no type generator for Gdk.Atom (GdkAtom) for array param targets
 
-// Unsupported : gtk_test_create_widget : unsupported parameter widget_type : no type generator for GType, GType
+// Unsupported : gtk_test_create_widget : unsupported parameter ... : varargs
 
 // Unsupported : gtk_test_display_button_window : unsupported parameter ... : varargs
 
-// Unsupported : gtk_test_find_sibling : unsupported parameter widget_type : no type generator for GType, GType
-
-// Unsupported : gtk_test_find_widget : unsupported parameter widget_type : no type generator for GType, GType
-
-// Unsupported : gtk_test_init : unsupported parameter argvp : no param type
+// Unsupported : gtk_test_init : unsupported parameter argvp : no type generator for utf8 (char**) for array param argvp
 
 // Unsupported : gtk_test_list_all_types : no return type
 
-// Unsupported : gtk_tree_get_row_drag_data : unsupported parameter tree_model : no type generator for TreeModel, GtkTreeModel**
+// Unsupported : gtk_tree_get_row_drag_data : unsupported parameter tree_model : no type generator for TreeModel (GtkTreeModel**) for param tree_model
 
-// Unsupported : gtk_tree_row_reference_reordered : unsupported parameter new_order : no param type
+// Unsupported : gtk_tree_row_reference_reordered : unsupported parameter new_order : no type generator for gint (gint) for array param new_order
 
-// Unsupported : gtk_tree_set_row_drag_data : unsupported parameter tree_model : no type generator for TreeModel, GtkTreeModel*
+// Unsupported : gtk_tree_set_row_drag_data : unsupported parameter tree_model : no type generator for TreeModel (GtkTreeModel*) for param tree_model

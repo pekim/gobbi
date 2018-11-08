@@ -12,13 +12,13 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : g_bytes_new : unsupported parameter data : no param type
+// Unsupported : g_bytes_new : unsupported parameter data : no type generator for guint8 () for array param data
 
-// Unsupported : g_bytes_new_static : unsupported parameter data : no param type
+// Unsupported : g_bytes_new_static : unsupported parameter data : no type generator for guint8 () for array param data
 
-// Unsupported : g_bytes_new_take : unsupported parameter data : no param type
+// Unsupported : g_bytes_new_take : unsupported parameter data : no type generator for guint8 () for array param data
 
-// Unsupported : g_bytes_new_with_free_func : unsupported parameter data : no param type
+// Unsupported : g_bytes_new_with_free_func : unsupported parameter data : no type generator for guint8 () for array param data
 
 // Copy is a wrapper around the C function g_date_copy.
 func (recv *Date) Copy() *Date {
@@ -48,7 +48,7 @@ func DateTimeNewFromIso8601(text string, defaultTz *TimeZone) *DateTime {
 
 // Unsupported : g_error_new : unsupported parameter ... : varargs
 
-// Unsupported : g_error_new_valist : unsupported parameter args : no type generator for va_list, va_list
+// Unsupported : g_error_new_valist : unsupported parameter args : no type generator for va_list (va_list) for param args
 
 // GetLocaleForKey is a wrapper around the C function g_key_file_get_locale_for_key.
 func (recv *KeyFile) GetLocaleForKey(groupName string, key string, locale string) string {
@@ -68,13 +68,13 @@ func (recv *KeyFile) GetLocaleForKey(groupName string, key string, locale string
 	return retGo
 }
 
-// Unsupported : g_markup_parse_context_new : unsupported parameter user_data_dnotify : no type generator for DestroyNotify, GDestroyNotify
+// Unsupported : g_markup_parse_context_new : unsupported parameter user_data_dnotify : no type generator for DestroyNotify (GDestroyNotify) for param user_data_dnotify
 
-// Unsupported : g_option_group_new : unsupported parameter destroy : no type generator for DestroyNotify, GDestroyNotify
+// Unsupported : g_option_group_new : unsupported parameter destroy : no type generator for DestroyNotify (GDestroyNotify) for param destroy
 
-// Unsupported : g_thread_new : unsupported parameter func : no type generator for ThreadFunc, GThreadFunc
+// Unsupported : g_thread_new : unsupported parameter func : no type generator for ThreadFunc (GThreadFunc) for param func
 
-// Unsupported : g_thread_try_new : unsupported parameter func : no type generator for ThreadFunc, GThreadFunc
+// Unsupported : g_thread_try_new : unsupported parameter func : no type generator for ThreadFunc (GThreadFunc) for param func
 
 // Unsupported : g_variant_builder_new : unsupported parameter type : Blacklisted record : GVariantType
 

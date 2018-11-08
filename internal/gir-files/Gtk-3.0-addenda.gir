@@ -128,6 +128,15 @@
       <method blacklist="true" c:identifier="gtk_im_context_simple_add_compose_file"/>
     </class>
 
+    <class name="Builder">
+      <!--
+        Docs say
+          "This is exported purely to let gtk-builder-tool validate templates,
+          applications have no need to call this function."
+      -->
+      <method blacklist="true" c:identifier="gtk_builder_extend_with_template"/>
+    </class>
+
     <class name="TextView">
       <method c:identifier="gtk_text_view_get_iter_at_location">
         <return-value>

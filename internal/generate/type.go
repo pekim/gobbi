@@ -51,6 +51,10 @@ func (t *Type) qnameAndGenerator(targetType *Type) (*QName, TypeGenerator) {
 		return QNameNew(t.Namespace, "string"), TypeGeneratorStringNew(targetType)
 	}
 
+	if t.Name == "GType" {
+		return QNameNew(t.Namespace, "GObject.Type"), TypeGeneratorIntegerNew(targetType)
+	}
+
 	goType, isInteger := integerCTypeMap[t.cTypeName]
 	if isInteger {
 		return QNameNew(t.Namespace, goType), TypeGeneratorIntegerNew(targetType)

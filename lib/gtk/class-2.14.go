@@ -166,13 +166,13 @@ func (recv *Adjustment) SetUpper(upper float64) {
 	return
 }
 
-// Unsupported : gtk_app_chooser_dialog_new : unsupported parameter file : no type generator for Gio.File, GFile*
+// Unsupported : gtk_app_chooser_dialog_new : unsupported parameter file : no type generator for Gio.File (GFile*) for param file
 
-// Unsupported : gtk_builder_add_objects_from_file : unsupported parameter object_ids : no param type
+// Unsupported : gtk_builder_add_objects_from_file : unsupported parameter object_ids : no type generator for utf8 () for array param object_ids
 
-// Unsupported : gtk_builder_add_objects_from_string : unsupported parameter object_ids : no param type
+// Unsupported : gtk_builder_add_objects_from_string : unsupported parameter object_ids : no type generator for utf8 () for array param object_ids
 
-// Unsupported : gtk_button_new_from_icon_name : unsupported parameter size : no type generator for gint, GtkIconSize
+// Unsupported : gtk_button_new_from_icon_name : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
 
 // GetDetailHeightRows is a wrapper around the C function gtk_calendar_get_detail_height_rows.
 func (recv *Calendar) GetDetailHeightRows() int32 {
@@ -190,7 +190,7 @@ func (recv *Calendar) GetDetailWidthChars() int32 {
 	return retGo
 }
 
-// Unsupported : gtk_calendar_set_detail_func : unsupported parameter func : no type generator for CalendarDetailFunc, GtkCalendarDetailFunc
+// Unsupported : gtk_calendar_set_detail_func : unsupported parameter func : no type generator for CalendarDetailFunc (GtkCalendarDetailFunc) for param func
 
 // SetDetailHeightRows is a wrapper around the C function gtk_calendar_set_detail_height_rows.
 func (recv *Calendar) SetDetailHeightRows(rows int32) {
@@ -212,7 +212,7 @@ func (recv *Calendar) SetDetailWidthChars(chars int32) {
 
 // Unsupported signal 'changed' for CellRendererCombo : unsupported parameter path_string : type utf8 :
 
-// Unsupported : gtk_clipboard_request_uris : unsupported parameter callback : no type generator for ClipboardURIReceivedFunc, GtkClipboardURIReceivedFunc
+// Unsupported : gtk_clipboard_request_uris : unsupported parameter callback : no type generator for ClipboardURIReceivedFunc (GtkClipboardURIReceivedFunc) for param callback
 
 // Unsupported : gtk_clipboard_wait_for_uris : no return type
 
@@ -232,9 +232,9 @@ func (recv *ColorSelectionDialog) GetColorSelection() *Widget {
 	return retGo
 }
 
-// Unsupported : gtk_combo_box_new_with_model : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
+// Unsupported : gtk_combo_box_new_with_model : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
 
-// Unsupported : gtk_combo_box_new_with_model_and_entry : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
+// Unsupported : gtk_combo_box_new_with_model_and_entry : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
 
 // GetButtonSensitivity is a wrapper around the C function gtk_combo_box_get_button_sensitivity.
 func (recv *ComboBox) GetButtonSensitivity() SensitivityType {
@@ -490,21 +490,21 @@ func IconInfoNewForPixbuf(iconTheme *IconTheme, pixbuf *gdkpixbuf.Pixbuf) *IconI
 	return retGo
 }
 
-// Unsupported : gtk_icon_theme_lookup_by_gicon : unsupported parameter icon : no type generator for Gio.Icon, GIcon*
+// Unsupported : gtk_icon_theme_lookup_by_gicon : unsupported parameter icon : no type generator for Gio.Icon (GIcon*) for param icon
 
-// Unsupported : gtk_icon_view_new_with_model : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
+// Unsupported : gtk_icon_view_new_with_model : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
 
-// Unsupported : gtk_image_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon, GIcon*
+// Unsupported : gtk_image_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon (GIcon*) for param icon
 
-// Unsupported : gtk_image_new_from_icon_name : unsupported parameter size : no type generator for gint, GtkIconSize
+// Unsupported : gtk_image_new_from_icon_name : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
 
-// Unsupported : gtk_image_new_from_icon_set : unsupported parameter size : no type generator for gint, GtkIconSize
+// Unsupported : gtk_image_new_from_icon_set : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
 
-// Unsupported : gtk_image_new_from_stock : unsupported parameter size : no type generator for gint, GtkIconSize
+// Unsupported : gtk_image_new_from_stock : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
 
-// Unsupported : gtk_image_get_gicon : unsupported parameter gicon : no type generator for Gio.Icon, GIcon**
+// Unsupported : gtk_image_get_gicon : unsupported parameter gicon : no type generator for Gio.Icon (GIcon**) for param gicon
 
-// Unsupported : gtk_image_set_from_gicon : unsupported parameter icon : no type generator for Gio.Icon, GIcon*
+// Unsupported : gtk_image_set_from_gicon : unsupported parameter icon : no type generator for Gio.Icon (GIcon*) for param icon
 
 // Unsupported : gtk_info_bar_new_with_buttons : unsupported parameter ... : varargs
 
@@ -536,7 +536,7 @@ func (recv *LinkButton) SetVisited(visited bool) {
 
 // Unsupported : gtk_list_store_new : unsupported parameter ... : varargs
 
-// Unsupported : gtk_list_store_newv : unsupported parameter types : no param type
+// Unsupported : gtk_list_store_newv : unsupported parameter types : no type generator for GType (GType) for array param types
 
 // GetAccelPath is a wrapper around the C function gtk_menu_get_accel_path.
 func (recv *Menu) GetAccelPath() string {
@@ -727,7 +727,7 @@ func (recv *PrintSettings) SetNumberUpLayout(numberUpLayout NumberUpLayout) {
 
 // Unsupported : gtk_recent_chooser_dialog_new_for_manager : unsupported parameter ... : varargs
 
-// Unsupported : gtk_scale_button_new : unsupported parameter size : no type generator for gint, GtkIconSize
+// Unsupported : gtk_scale_button_new : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
 
 // GetMinusButton is a wrapper around the C function gtk_scale_button_get_minus_button.
 func (recv *ScaleButton) GetMinusButton() *Button {
@@ -877,7 +877,7 @@ func statusicon_buttonReleaseEventHandler(_ *C.GObject, c_event *C.GdkEventButto
 	return retC
 }
 
-// Unsupported : gtk_status_icon_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon, GIcon*
+// Unsupported : gtk_status_icon_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon (GIcon*) for param icon
 
 // Unsupported : gtk_status_icon_get_gicon : no return generator
 
@@ -889,7 +889,7 @@ func (recv *StatusIcon) GetX11WindowId() uint32 {
 	return retGo
 }
 
-// Unsupported : gtk_status_icon_set_from_gicon : unsupported parameter icon : no type generator for Gio.Icon, GIcon*
+// Unsupported : gtk_status_icon_set_from_gicon : unsupported parameter icon : no type generator for Gio.Icon (GIcon*) for param icon
 
 // ToolbarReconfigured is a wrapper around the C function gtk_tool_item_toolbar_reconfigured.
 func (recv *ToolItem) ToolbarReconfigured() {
@@ -898,15 +898,15 @@ func (recv *ToolItem) ToolbarReconfigured() {
 	return
 }
 
-// Unsupported : gtk_tooltip_set_icon_from_icon_name : unsupported parameter size : no type generator for gint, GtkIconSize
+// Unsupported : gtk_tooltip_set_icon_from_icon_name : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
 
 // Unsupported : gtk_tree_selection_get_select_function : no return generator
 
 // Unsupported : gtk_tree_store_new : unsupported parameter ... : varargs
 
-// Unsupported : gtk_tree_store_newv : unsupported parameter types : no param type
+// Unsupported : gtk_tree_store_newv : unsupported parameter types : no type generator for GType (GType) for array param types
 
-// Unsupported : gtk_tree_view_new_with_model : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
+// Unsupported : gtk_tree_view_new_with_model : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
 
 // Unsupported : gtk_tree_view_column_new_with_attributes : unsupported parameter ... : varargs
 
@@ -972,7 +972,7 @@ func widget_damageEventHandler(_ *C.GObject, c_event *C.GdkEventExpose, data C.g
 	return retC
 }
 
-// Unsupported : gtk_widget_new : unsupported parameter type : no type generator for GType, GType
+// Unsupported : gtk_widget_new : unsupported parameter ... : varargs
 
 // GetWindow is a wrapper around the C function gtk_widget_get_window.
 func (recv *Widget) GetWindow() *gdk.Window {

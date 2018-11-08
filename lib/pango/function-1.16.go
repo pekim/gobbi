@@ -3,7 +3,10 @@
 
 package pango
 
-import "unsafe"
+import (
+	gobject "github.com/pekim/gobbi/lib/gobject"
+	"unsafe"
+)
 
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <pango/pango.h>
@@ -30,7 +33,7 @@ func AttrGravityNew(gravity Gravity) *Attribute {
 	return retGo
 }
 
-// Unsupported : pango_break : unsupported parameter attrs : no param type
+// Unsupported : pango_break : unsupported parameter attrs : no type generator for LogAttr (PangoLogAttr) for array param attrs
 
 // ExtentsToPixels is a wrapper around the C function pango_extents_to_pixels.
 func ExtentsToPixels(inclusive *Rectangle, nearest *Rectangle) {
@@ -45,7 +48,7 @@ func ExtentsToPixels(inclusive *Rectangle, nearest *Rectangle) {
 
 // Unsupported : pango_find_map : return type : Blacklisted record : PangoMap
 
-// Unsupported : pango_get_log_attrs : unsupported parameter log_attrs : no param type
+// Unsupported : pango_get_log_attrs : unsupported parameter log_attrs : no type generator for LogAttr (PangoLogAttr) for array param log_attrs
 
 // GravityGetForMatrix is a wrapper around the C function pango_gravity_get_for_matrix.
 func GravityGetForMatrix(matrix *Matrix) Gravity {
@@ -91,13 +94,36 @@ func LanguageGetDefault() *Language {
 
 // Unsupported : pango_log2vis_get_embedding_levels : unsupported parameter pbase_dir : PangoDirection* with indirection level of 1
 
-// Unsupported : pango_lookup_aliases : unsupported parameter families : no param type
+// Unsupported : pango_lookup_aliases : unsupported parameter families : no type generator for utf8 (char**) for array param families
 
 // Unsupported : pango_markup_parser_finish : unsupported parameter attr_list : record with indirection level of 2
 
 // Unsupported : pango_module_register : unsupported parameter module : Blacklisted record : PangoIncludedModule
 
-// Unsupported : pango_parse_enum : unsupported parameter type : no type generator for GType, GType
+// ParseEnum is a wrapper around the C function pango_parse_enum.
+func ParseEnum(type_ gobject.Type, str string, warn bool) (bool, int32, string) {
+	c_type := (C.GType)(type_)
+
+	c_str := C.CString(str)
+	defer C.free(unsafe.Pointer(c_str))
+
+	var c_value C.int
+
+	c_warn :=
+		boolToGboolean(warn)
+
+	var c_possible_values *C.char
+
+	retC := C.pango_parse_enum(c_type, c_str, &c_value, c_warn, &c_possible_values)
+	retGo := retC == C.TRUE
+
+	value := (int32)(c_value)
+
+	possibleValues := C.GoString(c_possible_values)
+	defer C.free(unsafe.Pointer(c_possible_values))
+
+	return retGo, value, possibleValues
+}
 
 // Unsupported : pango_parse_markup : unsupported parameter attr_list : record with indirection level of 2
 
@@ -109,7 +135,7 @@ func LanguageGetDefault() *Language {
 
 // Unsupported : pango_parse_weight : unsupported parameter weight : PangoWeight* with indirection level of 1
 
-// Unsupported : pango_read_line : unsupported parameter stream : no type generator for gpointer, FILE*
+// Unsupported : pango_read_line : unsupported parameter stream : no type generator for gpointer (FILE*) for param stream
 
 // Unsupported : pango_scan_int : unsupported parameter pos : in string with indirection level of 2
 

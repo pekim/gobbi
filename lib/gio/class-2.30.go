@@ -24,13 +24,13 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : g_converter_input_stream_new : unsupported parameter converter : no type generator for Converter, GConverter*
+// Unsupported : g_converter_input_stream_new : unsupported parameter converter : no type generator for Converter (GConverter*) for param converter
 
-// Unsupported : g_converter_output_stream_new : unsupported parameter converter : no type generator for Converter, GConverter*
+// Unsupported : g_converter_output_stream_new : unsupported parameter converter : no type generator for Converter (GConverter*) for param converter
 
-// Unsupported : g_dbus_connection_new_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
+// Unsupported : g_dbus_connection_new_finish : unsupported parameter res : no type generator for AsyncResult (GAsyncResult*) for param res
 
-// Unsupported : g_dbus_connection_new_for_address_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
+// Unsupported : g_dbus_connection_new_for_address_finish : unsupported parameter res : no type generator for AsyncResult (GAsyncResult*) for param res
 
 // Unsupported : g_dbus_connection_call_with_unix_fd_list : unsupported parameter parameters : Blacklisted record : GVariant
 
@@ -157,7 +157,7 @@ func (recv *DBusInterfaceSkeleton) Unexport() {
 	return
 }
 
-// Unsupported : g_dbus_message_new_from_blob : unsupported parameter blob : no param type
+// Unsupported : g_dbus_message_new_from_blob : unsupported parameter blob : no type generator for guint8 () for array param blob
 
 // Unsupported : g_dbus_method_invocation_return_value_with_unix_fd_list : unsupported parameter parameters : Blacklisted record : GVariant
 
@@ -204,13 +204,13 @@ func CastToDBusObjectManagerClient(object *gobject.Object) *DBusObjectManagerCli
 	return DBusObjectManagerClientNewFromC(object.ToC())
 }
 
-// Unsupported : g_dbus_object_manager_client_new_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
+// Unsupported : g_dbus_object_manager_client_new_finish : unsupported parameter res : no type generator for AsyncResult (GAsyncResult*) for param res
 
-// Unsupported : g_dbus_object_manager_client_new_for_bus_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
+// Unsupported : g_dbus_object_manager_client_new_for_bus_finish : unsupported parameter res : no type generator for AsyncResult (GAsyncResult*) for param res
 
-// Unsupported : g_dbus_object_manager_client_new_for_bus_sync : unsupported parameter get_proxy_type_func : no type generator for DBusProxyTypeFunc, GDBusProxyTypeFunc
+// Unsupported : g_dbus_object_manager_client_new_for_bus_sync : unsupported parameter get_proxy_type_func : no type generator for DBusProxyTypeFunc (GDBusProxyTypeFunc) for param get_proxy_type_func
 
-// Unsupported : g_dbus_object_manager_client_new_sync : unsupported parameter get_proxy_type_func : no type generator for DBusProxyTypeFunc, GDBusProxyTypeFunc
+// Unsupported : g_dbus_object_manager_client_new_sync : unsupported parameter get_proxy_type_func : no type generator for DBusProxyTypeFunc (GDBusProxyTypeFunc) for param get_proxy_type_func
 
 // GetConnection is a wrapper around the C function g_dbus_object_manager_client_get_connection.
 func (recv *DBusObjectManagerClient) GetConnection() *DBusConnection {
@@ -481,9 +481,9 @@ func (recv *DBusObjectSkeleton) SetObjectPath(objectPath string) {
 	return
 }
 
-// Unsupported : g_dbus_proxy_new_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
+// Unsupported : g_dbus_proxy_new_finish : unsupported parameter res : no type generator for AsyncResult (GAsyncResult*) for param res
 
-// Unsupported : g_dbus_proxy_new_for_bus_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
+// Unsupported : g_dbus_proxy_new_for_bus_finish : unsupported parameter res : no type generator for AsyncResult (GAsyncResult*) for param res
 
 // Unsupported : g_dbus_proxy_call_with_unix_fd_list : unsupported parameter parameters : Blacklisted record : GVariant
 
@@ -491,7 +491,7 @@ func (recv *DBusObjectSkeleton) SetObjectPath(objectPath string) {
 
 // Unsupported : g_dbus_proxy_call_with_unix_fd_list_sync : unsupported parameter parameters : Blacklisted record : GVariant
 
-// Unsupported : g_data_input_stream_read_line_finish_utf8 : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+// Unsupported : g_data_input_stream_read_line_finish_utf8 : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
 
 // ReadLineUtf8 is a wrapper around the C function g_data_input_stream_read_line_utf8.
 func (recv *DataInputStream) ReadLineUtf8(cancellable *Cancellable) (string, uint64, error) {
@@ -534,15 +534,15 @@ func (recv *DesktopAppInfo) GetShowIn(desktopEnv string) bool {
 	return retGo
 }
 
-// Unsupported : g_emblem_new : unsupported parameter icon : no type generator for Icon, GIcon*
+// Unsupported : g_emblem_new : unsupported parameter icon : no type generator for Icon (GIcon*) for param icon
 
-// Unsupported : g_emblem_new_with_origin : unsupported parameter icon : no type generator for Icon, GIcon*
+// Unsupported : g_emblem_new_with_origin : unsupported parameter icon : no type generator for Icon (GIcon*) for param icon
 
-// Unsupported : g_emblemed_icon_new : unsupported parameter icon : no type generator for Icon, GIcon*
+// Unsupported : g_emblemed_icon_new : unsupported parameter icon : no type generator for Icon (GIcon*) for param icon
 
-// Unsupported : g_file_icon_new : unsupported parameter file : no type generator for File, GFile*
+// Unsupported : g_file_icon_new : unsupported parameter file : no type generator for File (GFile*) for param file
 
-// Unsupported : g_inet_address_new_from_bytes : unsupported parameter bytes : no param type
+// Unsupported : g_inet_address_new_from_bytes : unsupported parameter bytes : no type generator for guint8 () for array param bytes
 
 // Equal is a wrapper around the C function g_inet_address_equal.
 func (recv *InetAddress) Equal(otherAddress *InetAddress) bool {
@@ -554,11 +554,9 @@ func (recv *InetAddress) Equal(otherAddress *InetAddress) bool {
 	return retGo
 }
 
-// Unsupported : g_list_store_new : unsupported parameter item_type : no type generator for GType, GType
+// Unsupported : g_memory_input_stream_new_from_data : unsupported parameter data : no type generator for guint8 () for array param data
 
-// Unsupported : g_memory_input_stream_new_from_data : unsupported parameter data : no param type
-
-// Unsupported : g_memory_output_stream_new : unsupported parameter realloc_function : no type generator for ReallocFunc, GReallocFunc
+// Unsupported : g_memory_output_stream_new : unsupported parameter realloc_function : no type generator for ReallocFunc (GReallocFunc) for param realloc_function
 
 // GetUint is a wrapper around the C function g_settings_get_uint.
 func (recv *Settings) GetUint(key string) uint32 {
@@ -592,19 +590,19 @@ func (recv *Settings) SetUint(key string, value uint32) bool {
 
 // Unsupported : g_simple_action_set_state : unsupported parameter value : Blacklisted record : GVariant
 
-// Unsupported : g_simple_action_group_add_entries : unsupported parameter entries : no param type
+// Unsupported : g_simple_action_group_add_entries : unsupported parameter entries : no type generator for ActionEntry (GActionEntry) for array param entries
 
-// Unsupported : g_simple_async_result_new : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+// Unsupported : g_simple_async_result_new : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_simple_async_result_new_error : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+// Unsupported : g_simple_async_result_new_error : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_simple_async_result_new_from_error : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+// Unsupported : g_simple_async_result_new_from_error : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_simple_async_result_new_take_error : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+// Unsupported : g_simple_async_result_new_take_error : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_task_new : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+// Unsupported : g_task_new : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_themed_icon_new_from_names : unsupported parameter iconnames : no param type
+// Unsupported : g_themed_icon_new_from_names : unsupported parameter iconnames : no type generator for utf8 (char*) for array param iconnames
 
 // GetDatabase is a wrapper around the C function g_tls_connection_get_database.
 func (recv *TlsConnection) GetDatabase() *TlsDatabase {
@@ -714,9 +712,9 @@ func (recv *TlsDatabase) LookupCertificateForHandle(handle string, interaction *
 	return retGo, goThrowableError
 }
 
-// Unsupported : g_tls_database_lookup_certificate_for_handle_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+// Unsupported : g_tls_database_lookup_certificate_for_handle_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_tls_database_lookup_certificate_for_handle_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+// Unsupported : g_tls_database_lookup_certificate_for_handle_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
 
 // LookupCertificateIssuer is a wrapper around the C function g_tls_database_lookup_certificate_issuer.
 func (recv *TlsDatabase) LookupCertificateIssuer(certificate *TlsCertificate, interaction *TlsInteraction, flags TlsDatabaseLookupFlags, cancellable *Cancellable) (*TlsCertificate, error) {
@@ -741,21 +739,21 @@ func (recv *TlsDatabase) LookupCertificateIssuer(certificate *TlsCertificate, in
 	return retGo, goThrowableError
 }
 
-// Unsupported : g_tls_database_lookup_certificate_issuer_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+// Unsupported : g_tls_database_lookup_certificate_issuer_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_tls_database_lookup_certificate_issuer_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+// Unsupported : g_tls_database_lookup_certificate_issuer_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
 
-// Unsupported : g_tls_database_lookup_certificates_issued_by : unsupported parameter issuer_raw_dn : no param type
+// Unsupported : g_tls_database_lookup_certificates_issued_by : unsupported parameter issuer_raw_dn : no type generator for guint8 (guint8) for array param issuer_raw_dn
 
-// Unsupported : g_tls_database_lookup_certificates_issued_by_async : unsupported parameter issuer_raw_dn : no param type
+// Unsupported : g_tls_database_lookup_certificates_issued_by_async : unsupported parameter issuer_raw_dn : no type generator for guint8 (guint8) for array param issuer_raw_dn
 
-// Unsupported : g_tls_database_lookup_certificates_issued_by_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+// Unsupported : g_tls_database_lookup_certificates_issued_by_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
 
-// Unsupported : g_tls_database_verify_chain : unsupported parameter identity : no type generator for SocketConnectable, GSocketConnectable*
+// Unsupported : g_tls_database_verify_chain : unsupported parameter identity : no type generator for SocketConnectable (GSocketConnectable*) for param identity
 
-// Unsupported : g_tls_database_verify_chain_async : unsupported parameter identity : no type generator for SocketConnectable, GSocketConnectable*
+// Unsupported : g_tls_database_verify_chain_async : unsupported parameter identity : no type generator for SocketConnectable (GSocketConnectable*) for param identity
 
-// Unsupported : g_tls_database_verify_chain_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+// Unsupported : g_tls_database_verify_chain_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
 
 // TlsInteraction is a wrapper around the C record GTlsInteraction.
 type TlsInteraction struct {
@@ -810,9 +808,9 @@ func (recv *TlsInteraction) AskPassword(password *TlsPassword, cancellable *Canc
 	return retGo, goThrowableError
 }
 
-// Unsupported : g_tls_interaction_ask_password_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+// Unsupported : g_tls_interaction_ask_password_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_tls_interaction_ask_password_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+// Unsupported : g_tls_interaction_ask_password_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
 
 // InvokeAskPassword is a wrapper around the C function g_tls_interaction_invoke_ask_password.
 func (recv *TlsInteraction) InvokeAskPassword(password *TlsPassword, cancellable *Cancellable) (TlsInteractionResult, error) {
@@ -925,9 +923,9 @@ func (recv *TlsPassword) SetFlags(flags TlsPasswordFlags) {
 	return
 }
 
-// Unsupported : g_tls_password_set_value : unsupported parameter value : no param type
+// Unsupported : g_tls_password_set_value : unsupported parameter value : no type generator for guint8 (guchar) for array param value
 
-// Unsupported : g_tls_password_set_value_full : unsupported parameter value : no param type
+// Unsupported : g_tls_password_set_value_full : unsupported parameter value : no type generator for guint8 (guchar) for array param value
 
 // SetWarning is a wrapper around the C function g_tls_password_set_warning.
 func (recv *TlsPassword) SetWarning(warning string) {
@@ -939,8 +937,8 @@ func (recv *TlsPassword) SetWarning(warning string) {
 	return
 }
 
-// Unsupported : g_unix_fd_list_new_from_array : unsupported parameter fds : no param type
+// Unsupported : g_unix_fd_list_new_from_array : unsupported parameter fds : no type generator for gint (gint) for array param fds
 
-// Unsupported : g_unix_socket_address_new_abstract : unsupported parameter path : no param type
+// Unsupported : g_unix_socket_address_new_abstract : unsupported parameter path : no type generator for gchar () for array param path
 
-// Unsupported : g_unix_socket_address_new_with_type : unsupported parameter path : no param type
+// Unsupported : g_unix_socket_address_new_with_type : unsupported parameter path : no type generator for gchar () for array param path

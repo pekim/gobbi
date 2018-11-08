@@ -21,7 +21,7 @@ func (recv *AttrIterator) GetAttrs() *glib.SList {
 	return retGo
 }
 
-// Unsupported : pango_attr_list_filter : unsupported parameter func : no type generator for AttrFilterFunc, PangoAttrFilterFunc
+// Unsupported : pango_attr_list_filter : unsupported parameter func : no type generator for AttrFilterFunc (PangoAttrFilterFunc) for param func
 
 // ApplyAttrs is a wrapper around the C function pango_glyph_item_apply_attrs.
 func (recv *GlyphItem) ApplyAttrs(text string, list *AttrList) *glib.SList {

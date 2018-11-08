@@ -485,7 +485,7 @@ func (recv *CellEditable) RemoveWidget() {
 	return
 }
 
-// Unsupported : gtk_cell_editable_start_editing : unsupported parameter event : no type generator for Gdk.Event, GdkEvent*
+// Unsupported : gtk_cell_editable_start_editing : unsupported parameter event : no type generator for Gdk.Event (GdkEvent*) for param event
 
 // CellLayout is a wrapper around the C record GtkCellLayout.
 type CellLayout struct {
@@ -1628,11 +1628,19 @@ func treemodel_rowInsertedHandler(_ *C.GObject, c_path *C.GtkTreePath, c_iter *C
 
 // Unsupported signal 'rows-reordered' for TreeModel : unsupported parameter new_order : type gpointer :
 
-// Unsupported : gtk_tree_model_foreach : unsupported parameter func : no type generator for TreeModelForeachFunc, GtkTreeModelForeachFunc
+// Unsupported : gtk_tree_model_foreach : unsupported parameter func : no type generator for TreeModelForeachFunc (GtkTreeModelForeachFunc) for param func
 
 // Unsupported : gtk_tree_model_get : unsupported parameter ... : varargs
 
-// Unsupported : gtk_tree_model_get_column_type : no return generator
+// GetColumnType is a wrapper around the C function gtk_tree_model_get_column_type.
+func (recv *TreeModel) GetColumnType(index int32) gobject.Type {
+	c_index_ := (C.gint)(index)
+
+	retC := C.gtk_tree_model_get_column_type((*C.GtkTreeModel)(recv.native), c_index_)
+	retGo := (gobject.Type)(retC)
+
+	return retGo
+}
 
 // GetFlags is a wrapper around the C function gtk_tree_model_get_flags.
 func (recv *TreeModel) GetFlags() TreeModelFlags {
@@ -1701,7 +1709,7 @@ func (recv *TreeModel) GetPath(iter *TreeIter) *TreePath {
 	return retGo
 }
 
-// Unsupported : gtk_tree_model_get_valist : unsupported parameter var_args : no type generator for va_list, va_list
+// Unsupported : gtk_tree_model_get_valist : unsupported parameter var_args : no type generator for va_list (va_list) for param var_args
 
 // GetValue is a wrapper around the C function gtk_tree_model_get_value.
 func (recv *TreeModel) GetValue(iter *TreeIter, column int32) *gobject.Value {
@@ -1955,7 +1963,7 @@ func (recv *TreeSortable) HasDefaultSortFunc() bool {
 	return retGo
 }
 
-// Unsupported : gtk_tree_sortable_set_default_sort_func : unsupported parameter sort_func : no type generator for TreeIterCompareFunc, GtkTreeIterCompareFunc
+// Unsupported : gtk_tree_sortable_set_default_sort_func : unsupported parameter sort_func : no type generator for TreeIterCompareFunc (GtkTreeIterCompareFunc) for param sort_func
 
 // SetSortColumnId is a wrapper around the C function gtk_tree_sortable_set_sort_column_id.
 func (recv *TreeSortable) SetSortColumnId(sortColumnId int32, order SortType) {
@@ -1968,7 +1976,7 @@ func (recv *TreeSortable) SetSortColumnId(sortColumnId int32, order SortType) {
 	return
 }
 
-// Unsupported : gtk_tree_sortable_set_sort_func : unsupported parameter sort_func : no type generator for TreeIterCompareFunc, GtkTreeIterCompareFunc
+// Unsupported : gtk_tree_sortable_set_sort_func : unsupported parameter sort_func : no type generator for TreeIterCompareFunc (GtkTreeIterCompareFunc) for param sort_func
 
 // SortColumnChanged is a wrapper around the C function gtk_tree_sortable_sort_column_changed.
 func (recv *TreeSortable) SortColumnChanged() {

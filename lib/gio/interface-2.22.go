@@ -63,11 +63,11 @@ func (recv *AsyncInitable) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : g_async_initable_init_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+// Unsupported : g_async_initable_init_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_async_initable_init_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
+// Unsupported : g_async_initable_init_finish : unsupported parameter res : no type generator for AsyncResult (GAsyncResult*) for param res
 
-// Unsupported : g_async_initable_new_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
+// Unsupported : g_async_initable_new_finish : unsupported parameter res : no type generator for AsyncResult (GAsyncResult*) for param res
 
 type signalDriveStopButtonDetail struct {
 	callback  DriveSignalStopButtonCallback
@@ -150,9 +150,9 @@ func (recv *Drive) CanStop() bool {
 	return retGo
 }
 
-// Unsupported : g_drive_eject_with_operation : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+// Unsupported : g_drive_eject_with_operation : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_drive_eject_with_operation_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+// Unsupported : g_drive_eject_with_operation_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
 
 // GetStartStopType is a wrapper around the C function g_drive_get_start_stop_type.
 func (recv *Drive) GetStartStopType() DriveStartStopType {
@@ -162,13 +162,13 @@ func (recv *Drive) GetStartStopType() DriveStartStopType {
 	return retGo
 }
 
-// Unsupported : g_drive_start : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+// Unsupported : g_drive_start : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_drive_start_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+// Unsupported : g_drive_start_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
 
-// Unsupported : g_drive_stop : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+// Unsupported : g_drive_stop : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_drive_stop_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+// Unsupported : g_drive_stop_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
 
 // CreateReadwrite is a wrapper around the C function g_file_create_readwrite.
 func (recv *File) CreateReadwrite(flags FileCreateFlags, cancellable *Cancellable) (*FileIOStream, error) {
@@ -189,13 +189,13 @@ func (recv *File) CreateReadwrite(flags FileCreateFlags, cancellable *Cancellabl
 	return retGo, goThrowableError
 }
 
-// Unsupported : g_file_create_readwrite_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+// Unsupported : g_file_create_readwrite_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_file_create_readwrite_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
+// Unsupported : g_file_create_readwrite_finish : unsupported parameter res : no type generator for AsyncResult (GAsyncResult*) for param res
 
-// Unsupported : g_file_eject_mountable_with_operation : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+// Unsupported : g_file_eject_mountable_with_operation : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_file_eject_mountable_with_operation_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+// Unsupported : g_file_eject_mountable_with_operation_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
 
 // OpenReadwrite is a wrapper around the C function g_file_open_readwrite.
 func (recv *File) OpenReadwrite(cancellable *Cancellable) (*FileIOStream, error) {
@@ -214,13 +214,13 @@ func (recv *File) OpenReadwrite(cancellable *Cancellable) (*FileIOStream, error)
 	return retGo, goThrowableError
 }
 
-// Unsupported : g_file_open_readwrite_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+// Unsupported : g_file_open_readwrite_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_file_open_readwrite_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
+// Unsupported : g_file_open_readwrite_finish : unsupported parameter res : no type generator for AsyncResult (GAsyncResult*) for param res
 
-// Unsupported : g_file_poll_mountable : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+// Unsupported : g_file_poll_mountable : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_file_poll_mountable_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+// Unsupported : g_file_poll_mountable_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
 
 // ReplaceReadwrite is a wrapper around the C function g_file_replace_readwrite.
 func (recv *File) ReplaceReadwrite(etag string, makeBackup bool, flags FileCreateFlags, cancellable *Cancellable) (*FileIOStream, error) {
@@ -247,17 +247,17 @@ func (recv *File) ReplaceReadwrite(etag string, makeBackup bool, flags FileCreat
 	return retGo, goThrowableError
 }
 
-// Unsupported : g_file_replace_readwrite_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+// Unsupported : g_file_replace_readwrite_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_file_replace_readwrite_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
+// Unsupported : g_file_replace_readwrite_finish : unsupported parameter res : no type generator for AsyncResult (GAsyncResult*) for param res
 
-// Unsupported : g_file_start_mountable : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+// Unsupported : g_file_start_mountable : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_file_start_mountable_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+// Unsupported : g_file_start_mountable_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
 
-// Unsupported : g_file_stop_mountable : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+// Unsupported : g_file_stop_mountable : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_file_stop_mountable_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+// Unsupported : g_file_stop_mountable_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
 
 // SupportsThreadContexts is a wrapper around the C function g_file_supports_thread_contexts.
 func (recv *File) SupportsThreadContexts() bool {
@@ -267,9 +267,9 @@ func (recv *File) SupportsThreadContexts() bool {
 	return retGo
 }
 
-// Unsupported : g_file_unmount_mountable_with_operation : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+// Unsupported : g_file_unmount_mountable_with_operation : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_file_unmount_mountable_with_operation_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+// Unsupported : g_file_unmount_mountable_with_operation_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
 
 // Initable is a wrapper around the C record GInitable.
 type Initable struct {
@@ -366,13 +366,13 @@ func mount_preUnmountHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
-// Unsupported : g_mount_eject_with_operation : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+// Unsupported : g_mount_eject_with_operation : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_mount_eject_with_operation_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+// Unsupported : g_mount_eject_with_operation_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
 
-// Unsupported : g_mount_unmount_with_operation : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+// Unsupported : g_mount_unmount_with_operation : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_mount_unmount_with_operation_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+// Unsupported : g_mount_unmount_with_operation_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
 
 // Enumerate is a wrapper around the C function g_socket_connectable_enumerate.
 func (recv *SocketConnectable) Enumerate() *SocketAddressEnumerator {
@@ -382,6 +382,6 @@ func (recv *SocketConnectable) Enumerate() *SocketAddressEnumerator {
 	return retGo
 }
 
-// Unsupported : g_volume_eject_with_operation : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+// Unsupported : g_volume_eject_with_operation : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_volume_eject_with_operation_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+// Unsupported : g_volume_eject_with_operation_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result

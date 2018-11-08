@@ -272,7 +272,7 @@ func (recv *Cond) Signal() {
 	return
 }
 
-// Unsupported : g_cond_wait : unsupported parameter mutex : no type generator for Mutex, GMutex*
+// Unsupported : g_cond_wait : unsupported parameter mutex : no type generator for Mutex (GMutex*) for param mutex
 
 // Data is a wrapper around the C record GData.
 type Data struct {
@@ -612,7 +612,7 @@ func (recv *Date) SubtractYears(nYears uint32) {
 	return
 }
 
-// Unsupported : g_date_to_struct_tm : unsupported parameter tm : no type generator for gpointer, tm*
+// Unsupported : g_date_to_struct_tm : unsupported parameter tm : no type generator for gpointer (tm*) for param tm
 
 // Valid is a wrapper around the C function g_date_valid.
 func (recv *Date) Valid() bool {
@@ -748,7 +748,7 @@ func ErrorNewLiteral(domain Quark, code int32, message string) *Error {
 	return retGo
 }
 
-// Unsupported : g_error_new_valist : unsupported parameter args : no type generator for va_list, va_list
+// Unsupported : g_error_new_valist : unsupported parameter args : no type generator for va_list (va_list) for param args
 
 // Copy is a wrapper around the C function g_error_copy.
 func (recv *Error) Copy() *Error {
@@ -953,9 +953,9 @@ func (recv *HookList) InvokeCheck(mayRecurse bool) {
 	return
 }
 
-// Unsupported : g_hook_list_marshal : unsupported parameter marshaller : no type generator for HookMarshaller, GHookMarshaller
+// Unsupported : g_hook_list_marshal : unsupported parameter marshaller : no type generator for HookMarshaller (GHookMarshaller) for param marshaller
 
-// Unsupported : g_hook_list_marshal_check : unsupported parameter marshaller : no type generator for HookCheckMarshaller, GHookCheckMarshaller
+// Unsupported : g_hook_list_marshal_check : unsupported parameter marshaller : no type generator for HookCheckMarshaller (GHookCheckMarshaller) for param marshaller
 
 // Blacklisted : GIConv
 
@@ -1088,7 +1088,7 @@ func (recv *MainContext) AddPoll(fd *PollFD, priority int32) {
 	return
 }
 
-// Unsupported : g_main_context_check : unsupported parameter fds : no param type
+// Unsupported : g_main_context_check : unsupported parameter fds : no type generator for PollFD (GPollFD) for array param fds
 
 // Dispatch is a wrapper around the C function g_main_context_dispatch.
 func (recv *MainContext) Dispatch() {
@@ -1160,7 +1160,7 @@ func (recv *MainContext) Prepare(priority int32) bool {
 	return retGo
 }
 
-// Unsupported : g_main_context_query : unsupported parameter fds : no param type
+// Unsupported : g_main_context_query : unsupported parameter fds : no type generator for PollFD (GPollFD) for array param fds
 
 // Ref is a wrapper around the C function g_main_context_ref.
 func (recv *MainContext) Ref() *MainContext {
@@ -1186,7 +1186,7 @@ func (recv *MainContext) RemovePoll(fd *PollFD) {
 	return
 }
 
-// Unsupported : g_main_context_set_poll_func : unsupported parameter func : no type generator for PollFunc, GPollFunc
+// Unsupported : g_main_context_set_poll_func : unsupported parameter func : no type generator for PollFunc (GPollFunc) for param func
 
 // Unref is a wrapper around the C function g_main_context_unref.
 func (recv *MainContext) Unref() {
@@ -1195,7 +1195,7 @@ func (recv *MainContext) Unref() {
 	return
 }
 
-// Unsupported : g_main_context_wait : unsupported parameter mutex : no type generator for Mutex, GMutex*
+// Unsupported : g_main_context_wait : unsupported parameter mutex : no type generator for Mutex (GMutex*) for param mutex
 
 // Wakeup is a wrapper around the C function g_main_context_wakeup.
 func (recv *MainContext) Wakeup() {
@@ -1332,7 +1332,7 @@ func (recv *MarkupParseContext) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : g_markup_parse_context_new : unsupported parameter user_data_dnotify : no type generator for DestroyNotify, GDestroyNotify
+// Unsupported : g_markup_parse_context_new : unsupported parameter user_data_dnotify : no type generator for DestroyNotify (GDestroyNotify) for param user_data_dnotify
 
 // EndParse is a wrapper around the C function g_markup_parse_context_end_parse.
 func (recv *MarkupParseContext) EndParse() (bool, error) {
@@ -1512,7 +1512,7 @@ func (recv *Node) ChildPosition(child *Node) int32 {
 	return retGo
 }
 
-// Unsupported : g_node_children_foreach : unsupported parameter func : no type generator for NodeForeachFunc, GNodeForeachFunc
+// Unsupported : g_node_children_foreach : unsupported parameter func : no type generator for NodeForeachFunc (GNodeForeachFunc) for param func
 
 // Copy is a wrapper around the C function g_node_copy.
 func (recv *Node) Copy() *Node {
@@ -1694,7 +1694,7 @@ func (recv *Node) ReverseChildren() {
 	return
 }
 
-// Unsupported : g_node_traverse : unsupported parameter func : no type generator for NodeTraverseFunc, GNodeTraverseFunc
+// Unsupported : g_node_traverse : unsupported parameter func : no type generator for NodeTraverseFunc (GNodeTraverseFunc) for param func
 
 // Unlink is a wrapper around the C function g_node_unlink.
 func (recv *Node) Unlink() {
@@ -1796,7 +1796,7 @@ func (recv *OptionGroup) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : g_option_group_new : unsupported parameter destroy : no type generator for DestroyNotify, GDestroyNotify
+// Unsupported : g_option_group_new : unsupported parameter destroy : no type generator for DestroyNotify (GDestroyNotify) for param destroy
 
 // PatternSpec is a wrapper around the C record GPatternSpec.
 type PatternSpec struct {
@@ -2326,7 +2326,7 @@ func (recv *Scanner) ScopeAddSymbol(scopeId uint32, symbol string, value uintptr
 	return
 }
 
-// Unsupported : g_scanner_scope_foreach_symbol : unsupported parameter func : no type generator for HFunc, GHFunc
+// Unsupported : g_scanner_scope_foreach_symbol : unsupported parameter func : no type generator for HFunc (GHFunc) for param func
 
 // ScopeLookupSymbol is a wrapper around the C function g_scanner_scope_lookup_symbol.
 func (recv *Scanner) ScopeLookupSymbol(scopeId uint32, symbol string) uintptr {
@@ -2642,7 +2642,7 @@ func (recv *Source) RemovePoll(fd *PollFD) {
 	return
 }
 
-// Unsupported : g_source_set_callback : unsupported parameter func : no type generator for SourceFunc, GSourceFunc
+// Unsupported : g_source_set_callback : unsupported parameter func : no type generator for SourceFunc (GSourceFunc) for param func
 
 // SetCallbackIndirect is a wrapper around the C function g_source_set_callback_indirect.
 func (recv *Source) SetCallbackIndirect(callbackData uintptr, callbackFuncs *SourceCallbackFuncs) {
@@ -3224,9 +3224,9 @@ func (recv *Thread) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : g_thread_new : unsupported parameter func : no type generator for ThreadFunc, GThreadFunc
+// Unsupported : g_thread_new : unsupported parameter func : no type generator for ThreadFunc (GThreadFunc) for param func
 
-// Unsupported : g_thread_try_new : unsupported parameter func : no type generator for ThreadFunc, GThreadFunc
+// Unsupported : g_thread_try_new : unsupported parameter func : no type generator for ThreadFunc (GThreadFunc) for param func
 
 // Join is a wrapper around the C function g_thread_join.
 func (recv *Thread) Join() uintptr {
@@ -3488,7 +3488,7 @@ func (recv *Tree) Destroy() {
 	return
 }
 
-// Unsupported : g_tree_foreach : unsupported parameter func : no type generator for TraverseFunc, GTraverseFunc
+// Unsupported : g_tree_foreach : unsupported parameter func : no type generator for TraverseFunc (GTraverseFunc) for param func
 
 // Height is a wrapper around the C function g_tree_height.
 func (recv *Tree) Height() int32 {
@@ -3562,7 +3562,7 @@ func (recv *Tree) Replace(key uintptr, value uintptr) {
 	return
 }
 
-// Unsupported : g_tree_search : unsupported parameter search_func : no type generator for CompareFunc, GCompareFunc
+// Unsupported : g_tree_search : unsupported parameter search_func : no type generator for CompareFunc (GCompareFunc) for param search_func
 
 // Steal is a wrapper around the C function g_tree_steal.
 func (recv *Tree) Steal(key uintptr) bool {
@@ -3574,7 +3574,7 @@ func (recv *Tree) Steal(key uintptr) bool {
 	return retGo
 }
 
-// Unsupported : g_tree_traverse : unsupported parameter traverse_func : no type generator for TraverseFunc, GTraverseFunc
+// Unsupported : g_tree_traverse : unsupported parameter traverse_func : no type generator for TraverseFunc (GTraverseFunc) for param traverse_func
 
 // VariantBuilder is a wrapper around the C record GVariantBuilder.
 type VariantBuilder struct {

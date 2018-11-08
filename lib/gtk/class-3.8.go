@@ -16,7 +16,7 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : gtk_app_chooser_dialog_new : unsupported parameter file : no type generator for Gio.File, GFile*
+// Unsupported : gtk_app_chooser_dialog_new : unsupported parameter file : no type generator for Gio.File (GFile*) for param file
 
 // ExposeObject is a wrapper around the C function gtk_builder_expose_object.
 func (recv *Builder) ExposeObject(name string, object *gobject.Object) {
@@ -30,11 +30,11 @@ func (recv *Builder) ExposeObject(name string, object *gobject.Object) {
 	return
 }
 
-// Unsupported : gtk_button_new_from_icon_name : unsupported parameter size : no type generator for gint, GtkIconSize
+// Unsupported : gtk_button_new_from_icon_name : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
 
-// Unsupported : gtk_combo_box_new_with_model : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
+// Unsupported : gtk_combo_box_new_with_model : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
 
-// Unsupported : gtk_combo_box_new_with_model_and_entry : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
+// Unsupported : gtk_combo_box_new_with_model_and_entry : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
 
 // Unsupported : gtk_dialog_new_with_buttons : unsupported parameter ... : varargs
 
@@ -44,19 +44,19 @@ func (recv *Builder) ExposeObject(name string, object *gobject.Object) {
 
 // Unsupported : gtk_file_filter_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
 
-// Unsupported : gtk_icon_info_load_icon_async : unsupported parameter callback : no type generator for Gio.AsyncReadyCallback, GAsyncReadyCallback
+// Unsupported : gtk_icon_info_load_icon_async : unsupported parameter callback : no type generator for Gio.AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : gtk_icon_info_load_icon_finish : unsupported parameter res : no type generator for Gio.AsyncResult, GAsyncResult*
+// Unsupported : gtk_icon_info_load_icon_finish : unsupported parameter res : no type generator for Gio.AsyncResult (GAsyncResult*) for param res
 
-// Unsupported : gtk_icon_info_load_symbolic_async : unsupported parameter callback : no type generator for Gio.AsyncReadyCallback, GAsyncReadyCallback
+// Unsupported : gtk_icon_info_load_symbolic_async : unsupported parameter callback : no type generator for Gio.AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : gtk_icon_info_load_symbolic_finish : unsupported parameter res : no type generator for Gio.AsyncResult, GAsyncResult*
+// Unsupported : gtk_icon_info_load_symbolic_finish : unsupported parameter res : no type generator for Gio.AsyncResult (GAsyncResult*) for param res
 
-// Unsupported : gtk_icon_info_load_symbolic_for_context_async : unsupported parameter callback : no type generator for Gio.AsyncReadyCallback, GAsyncReadyCallback
+// Unsupported : gtk_icon_info_load_symbolic_for_context_async : unsupported parameter callback : no type generator for Gio.AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : gtk_icon_info_load_symbolic_for_context_finish : unsupported parameter res : no type generator for Gio.AsyncResult, GAsyncResult*
+// Unsupported : gtk_icon_info_load_symbolic_for_context_finish : unsupported parameter res : no type generator for Gio.AsyncResult (GAsyncResult*) for param res
 
-// Unsupported : gtk_icon_view_new_with_model : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
+// Unsupported : gtk_icon_view_new_with_model : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
 
 // GetActivateOnSingleClick is a wrapper around the C function gtk_icon_view_get_activate_on_single_click.
 func (recv *IconView) GetActivateOnSingleClick() bool {
@@ -76,13 +76,13 @@ func (recv *IconView) SetActivateOnSingleClick(single bool) {
 	return
 }
 
-// Unsupported : gtk_image_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon, GIcon*
+// Unsupported : gtk_image_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon (GIcon*) for param icon
 
-// Unsupported : gtk_image_new_from_icon_name : unsupported parameter size : no type generator for gint, GtkIconSize
+// Unsupported : gtk_image_new_from_icon_name : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
 
-// Unsupported : gtk_image_new_from_icon_set : unsupported parameter size : no type generator for gint, GtkIconSize
+// Unsupported : gtk_image_new_from_icon_set : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
 
-// Unsupported : gtk_image_new_from_stock : unsupported parameter size : no type generator for gint, GtkIconSize
+// Unsupported : gtk_image_new_from_stock : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
 
 // Unsupported : gtk_info_bar_new_with_buttons : unsupported parameter ... : varargs
 
@@ -106,7 +106,7 @@ func (recv *LevelBar) SetInverted(inverted bool) {
 
 // Unsupported : gtk_list_store_new : unsupported parameter ... : varargs
 
-// Unsupported : gtk_list_store_newv : unsupported parameter types : no param type
+// Unsupported : gtk_list_store_newv : unsupported parameter types : no type generator for GType (GType) for array param types
 
 // Unsupported : gtk_message_dialog_new : unsupported parameter ... : varargs
 
@@ -120,9 +120,9 @@ func (recv *LevelBar) SetInverted(inverted bool) {
 
 // Unsupported : gtk_recent_chooser_dialog_new_for_manager : unsupported parameter ... : varargs
 
-// Unsupported : gtk_scale_button_new : unsupported parameter size : no type generator for gint, GtkIconSize
+// Unsupported : gtk_scale_button_new : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
 
-// Unsupported : gtk_status_icon_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon, GIcon*
+// Unsupported : gtk_status_icon_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon (GIcon*) for param icon
 
 // GetFrameClock is a wrapper around the C function gtk_style_context_get_frame_clock.
 func (recv *StyleContext) GetFrameClock() *gdk.FrameClock {
@@ -148,9 +148,9 @@ func (recv *StyleContext) SetFrameClock(frameClock *gdk.FrameClock) {
 
 // Unsupported : gtk_tree_store_new : unsupported parameter ... : varargs
 
-// Unsupported : gtk_tree_store_newv : unsupported parameter types : no param type
+// Unsupported : gtk_tree_store_newv : unsupported parameter types : no type generator for GType (GType) for array param types
 
-// Unsupported : gtk_tree_view_new_with_model : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
+// Unsupported : gtk_tree_view_new_with_model : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
 
 // GetActivateOnSingleClick is a wrapper around the C function gtk_tree_view_get_activate_on_single_click.
 func (recv *TreeView) GetActivateOnSingleClick() bool {
@@ -172,9 +172,9 @@ func (recv *TreeView) SetActivateOnSingleClick(single bool) {
 
 // Unsupported : gtk_tree_view_column_new_with_attributes : unsupported parameter ... : varargs
 
-// Unsupported : gtk_widget_new : unsupported parameter type : no type generator for GType, GType
+// Unsupported : gtk_widget_new : unsupported parameter ... : varargs
 
-// Unsupported : gtk_widget_add_tick_callback : unsupported parameter callback : no type generator for TickCallback, GtkTickCallback
+// Unsupported : gtk_widget_add_tick_callback : unsupported parameter callback : no type generator for TickCallback (GtkTickCallback) for param callback
 
 // GetFrameClock is a wrapper around the C function gtk_widget_get_frame_clock.
 func (recv *Widget) GetFrameClock() *gdk.FrameClock {

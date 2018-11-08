@@ -48,7 +48,7 @@ func (recv *AppLaunchContext) SetDisplay(display *Display) {
 	return
 }
 
-// Unsupported : gdk_app_launch_context_set_icon : unsupported parameter icon : no type generator for Gio.Icon, GIcon*
+// Unsupported : gdk_app_launch_context_set_icon : unsupported parameter icon : no type generator for Gio.Icon (GIcon*) for param icon
 
 // SetIconName is a wrapper around the C function gdk_app_launch_context_set_icon_name.
 func (recv *AppLaunchContext) SetIconName(iconName string) {

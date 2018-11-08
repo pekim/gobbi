@@ -88,7 +88,7 @@ func (recv *FontChooser) GetShowPreviewEntry() bool {
 	return retGo
 }
 
-// Unsupported : gtk_font_chooser_set_filter_func : unsupported parameter filter : no type generator for FontFilterFunc, GtkFontFilterFunc
+// Unsupported : gtk_font_chooser_set_filter_func : unsupported parameter filter : no type generator for FontFilterFunc (GtkFontFilterFunc) for param filter
 
 // SetFont is a wrapper around the C function gtk_font_chooser_set_font.
 func (recv *FontChooser) SetFont(fontname string) {

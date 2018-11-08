@@ -7,11 +7,11 @@ package pango
 // #include <stdlib.h>
 import "C"
 
-// Glyph is a representation of the C alias of the same name.
+// Glyph is a representation of the C alias PangoGlyph.
 type Glyph uint32
 
-// GlyphUnit is a representation of the C alias of the same name.
+// GlyphUnit is a representation of the C alias PangoGlyphUnit.
 type GlyphUnit int32
 
-// LayoutRun is a representation of the C alias of the same name.
+// LayoutRun is a representation of the C alias PangoLayoutRun.
 type LayoutRun *GlyphItem

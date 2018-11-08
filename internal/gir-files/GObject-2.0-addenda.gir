@@ -36,6 +36,8 @@
     <function c:identifier="g_param_spec_unichar" goname="ParamSpecUnichar_"/>
     <function c:identifier="g_param_spec_value_array" goname="ParamSpecValueArray_"/>
 
+    <function c:identifier="g_type_query" goname="TypeQuery_"/>
+
     <class name="Object">
       <method blacklist="true" c:identifier="g_object_weak_ref"/>
       <method blacklist="true" c:identifier="g_object_weak_unref"/>

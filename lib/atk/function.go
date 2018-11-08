@@ -9,15 +9,15 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : atk_add_focus_tracker : unsupported parameter focus_tracker : no type generator for EventListener, AtkEventListener
+// Unsupported : atk_add_focus_tracker : unsupported parameter focus_tracker : no type generator for EventListener (AtkEventListener) for param focus_tracker
 
-// Unsupported : atk_add_global_event_listener : unsupported parameter listener : no type generator for GObject.SignalEmissionHook, GSignalEmissionHook
+// Unsupported : atk_add_global_event_listener : unsupported parameter listener : no type generator for GObject.SignalEmissionHook (GSignalEmissionHook) for param listener
 
-// Unsupported : atk_add_key_event_listener : unsupported parameter listener : no type generator for KeySnoopFunc, AtkKeySnoopFunc
+// Unsupported : atk_add_key_event_listener : unsupported parameter listener : no type generator for KeySnoopFunc (AtkKeySnoopFunc) for param listener
 
 // Blacklisted : atk_attribute_set_free
 
-// Unsupported : atk_focus_tracker_init : unsupported parameter init : no type generator for EventListenerInit, AtkEventListenerInit
+// Unsupported : atk_focus_tracker_init : unsupported parameter init : no type generator for EventListenerInit (AtkEventListenerInit) for param init
 
 // FocusTrackerNotify is a wrapper around the C function atk_focus_tracker_notify.
 func FocusTrackerNotify(object *Object) {
@@ -237,7 +237,7 @@ func TextAttributeRegister(name string) TextAttribute {
 	return retGo
 }
 
-// Unsupported : atk_text_free_ranges : unsupported parameter ranges : no param type
+// Unsupported : atk_text_free_ranges : unsupported parameter ranges : no type generator for TextRange (AtkTextRange*) for array param ranges
 
 // ValueTypeGetLocalizedName is a wrapper around the C function atk_value_type_get_localized_name.
 func ValueTypeGetLocalizedName(valueType ValueType) string {

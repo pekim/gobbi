@@ -5,6 +5,7 @@ package gio
 
 import (
 	glib "github.com/pekim/gobbi/lib/glib"
+	gobject "github.com/pekim/gobbi/lib/gobject"
 	"unsafe"
 )
 
@@ -87,9 +88,9 @@ func (recv *DatagramBased) CreateSource(condition glib.IOCondition, cancellable 
 	return retGo
 }
 
-// Unsupported : g_datagram_based_receive_messages : unsupported parameter messages : no param type
+// Unsupported : g_datagram_based_receive_messages : unsupported parameter messages : no type generator for InputMessage (GInputMessage) for array param messages
 
-// Unsupported : g_datagram_based_send_messages : unsupported parameter messages : no param type
+// Unsupported : g_datagram_based_send_messages : unsupported parameter messages : no type generator for OutputMessage (GOutputMessage) for array param messages
 
 // DtlsClientConnection is a wrapper around the C record GDtlsClientConnection.
 type DtlsClientConnection struct {
@@ -130,7 +131,7 @@ func (recv *DtlsClientConnection) GetValidationFlags() TlsCertificateFlags {
 	return retGo
 }
 
-// Unsupported : g_dtls_client_connection_set_server_identity : unsupported parameter identity : no type generator for SocketConnectable, GSocketConnectable*
+// Unsupported : g_dtls_client_connection_set_server_identity : unsupported parameter identity : no type generator for SocketConnectable (GSocketConnectable*) for param identity
 
 // SetValidationFlags is a wrapper around the C function g_dtls_client_connection_set_validation_flags.
 func (recv *DtlsClientConnection) SetValidationFlags(flags TlsCertificateFlags) {
@@ -179,9 +180,9 @@ func (recv *DtlsConnection) Close(cancellable *Cancellable) (bool, error) {
 	return retGo, goThrowableError
 }
 
-// Unsupported : g_dtls_connection_close_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+// Unsupported : g_dtls_connection_close_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_dtls_connection_close_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+// Unsupported : g_dtls_connection_close_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
 
 // EmitAcceptCertificate is a wrapper around the C function g_dtls_connection_emit_accept_certificate.
 func (recv *DtlsConnection) EmitAcceptCertificate(peerCert *TlsCertificate, errors TlsCertificateFlags) bool {
@@ -268,9 +269,9 @@ func (recv *DtlsConnection) Handshake(cancellable *Cancellable) (bool, error) {
 	return retGo, goThrowableError
 }
 
-// Unsupported : g_dtls_connection_handshake_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+// Unsupported : g_dtls_connection_handshake_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_dtls_connection_handshake_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+// Unsupported : g_dtls_connection_handshake_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
 
 // SetCertificate is a wrapper around the C function g_dtls_connection_set_certificate.
 func (recv *DtlsConnection) SetCertificate(certificate *TlsCertificate) {
@@ -341,9 +342,9 @@ func (recv *DtlsConnection) Shutdown(shutdownRead bool, shutdownWrite bool, canc
 	return retGo, goThrowableError
 }
 
-// Unsupported : g_dtls_connection_shutdown_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+// Unsupported : g_dtls_connection_shutdown_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_dtls_connection_shutdown_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+// Unsupported : g_dtls_connection_shutdown_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
 
 // DtlsServerConnection is a wrapper around the C record GDtlsServerConnection.
 type DtlsServerConnection struct {
@@ -375,9 +376,21 @@ func (recv *SocketConnectable) ToString() string {
 	return retGo
 }
 
-// Unsupported : g_tls_backend_get_dtls_client_connection_type : no return generator
+// GetDtlsClientConnectionType is a wrapper around the C function g_tls_backend_get_dtls_client_connection_type.
+func (recv *TlsBackend) GetDtlsClientConnectionType() gobject.Type {
+	retC := C.g_tls_backend_get_dtls_client_connection_type((*C.GTlsBackend)(recv.native))
+	retGo := (gobject.Type)(retC)
 
-// Unsupported : g_tls_backend_get_dtls_server_connection_type : no return generator
+	return retGo
+}
+
+// GetDtlsServerConnectionType is a wrapper around the C function g_tls_backend_get_dtls_server_connection_type.
+func (recv *TlsBackend) GetDtlsServerConnectionType() gobject.Type {
+	retC := C.g_tls_backend_get_dtls_server_connection_type((*C.GTlsBackend)(recv.native))
+	retGo := (gobject.Type)(retC)
+
+	return retGo
+}
 
 // SupportsDtls is a wrapper around the C function g_tls_backend_supports_dtls.
 func (recv *TlsBackend) SupportsDtls() bool {

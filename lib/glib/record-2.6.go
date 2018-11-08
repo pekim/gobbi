@@ -22,7 +22,7 @@ func (recv *Date) GetIso8601WeekOfYear() uint32 {
 
 // Unsupported : g_error_new : unsupported parameter ... : varargs
 
-// Unsupported : g_error_new_valist : unsupported parameter args : no type generator for va_list, va_list
+// Unsupported : g_error_new_valist : unsupported parameter args : no type generator for va_list (va_list) for param args
 
 // KeyFileNew is a wrapper around the C function g_key_file_new.
 func KeyFileNew() *KeyFile {
@@ -368,7 +368,7 @@ func (recv *KeyFile) SetBoolean(groupName string, key string, value bool) {
 	return
 }
 
-// Unsupported : g_key_file_set_boolean_list : unsupported parameter list : no param type
+// Unsupported : g_key_file_set_boolean_list : unsupported parameter list : no type generator for gboolean (gboolean) for array param list
 
 // SetComment is a wrapper around the C function g_key_file_set_comment.
 func (recv *KeyFile) SetComment(groupName string, key string, comment string) (bool, error) {
@@ -409,7 +409,7 @@ func (recv *KeyFile) SetInteger(groupName string, key string, value int32) {
 	return
 }
 
-// Unsupported : g_key_file_set_integer_list : unsupported parameter list : no param type
+// Unsupported : g_key_file_set_integer_list : unsupported parameter list : no type generator for gint (gint) for array param list
 
 // SetListSeparator is a wrapper around the C function g_key_file_set_list_separator.
 func (recv *KeyFile) SetListSeparator(separator rune) {
@@ -439,7 +439,7 @@ func (recv *KeyFile) SetLocaleString(groupName string, key string, locale string
 	return
 }
 
-// Unsupported : g_key_file_set_locale_string_list : unsupported parameter list : no param type
+// Unsupported : g_key_file_set_locale_string_list : unsupported parameter list : no type generator for utf8 (gchar) for array param list
 
 // SetString is a wrapper around the C function g_key_file_set_string.
 func (recv *KeyFile) SetString(groupName string, key string, string string) {
@@ -457,7 +457,7 @@ func (recv *KeyFile) SetString(groupName string, key string, string string) {
 	return
 }
 
-// Unsupported : g_key_file_set_string_list : unsupported parameter list : no param type
+// Unsupported : g_key_file_set_string_list : unsupported parameter list : no type generator for utf8 () for array param list
 
 // SetValue is a wrapper around the C function g_key_file_set_value.
 func (recv *KeyFile) SetValue(groupName string, key string, value string) {
@@ -495,7 +495,7 @@ func (recv *KeyFile) ToData() (string, uint64, error) {
 	return retGo, length, goThrowableError
 }
 
-// Unsupported : g_markup_parse_context_new : unsupported parameter user_data_dnotify : no type generator for DestroyNotify, GDestroyNotify
+// Unsupported : g_markup_parse_context_new : unsupported parameter user_data_dnotify : no type generator for DestroyNotify (GDestroyNotify) for param user_data_dnotify
 
 // AddGroup is a wrapper around the C function g_option_context_add_group.
 func (recv *OptionContext) AddGroup(group *OptionGroup) {
@@ -549,7 +549,7 @@ func (recv *OptionContext) GetMainGroup() *OptionGroup {
 	return retGo
 }
 
-// Unsupported : g_option_context_parse : unsupported parameter argv : no param type
+// Unsupported : g_option_context_parse : unsupported parameter argv : no type generator for utf8 (gchar**) for array param argv
 
 // SetHelpEnabled is a wrapper around the C function g_option_context_set_help_enabled.
 func (recv *OptionContext) SetHelpEnabled(helpEnabled bool) {
@@ -580,7 +580,7 @@ func (recv *OptionContext) SetMainGroup(group *OptionGroup) {
 	return
 }
 
-// Unsupported : g_option_group_new : unsupported parameter destroy : no type generator for DestroyNotify, GDestroyNotify
+// Unsupported : g_option_group_new : unsupported parameter destroy : no type generator for DestroyNotify (GDestroyNotify) for param destroy
 
 // AddEntries is a wrapper around the C function g_option_group_add_entries.
 func (recv *OptionGroup) AddEntries(entries *OptionEntry) {
@@ -598,11 +598,11 @@ func (recv *OptionGroup) Free() {
 	return
 }
 
-// Unsupported : g_option_group_set_error_hook : unsupported parameter error_func : no type generator for OptionErrorFunc, GOptionErrorFunc
+// Unsupported : g_option_group_set_error_hook : unsupported parameter error_func : no type generator for OptionErrorFunc (GOptionErrorFunc) for param error_func
 
-// Unsupported : g_option_group_set_parse_hooks : unsupported parameter pre_parse_func : no type generator for OptionParseFunc, GOptionParseFunc
+// Unsupported : g_option_group_set_parse_hooks : unsupported parameter pre_parse_func : no type generator for OptionParseFunc (GOptionParseFunc) for param pre_parse_func
 
-// Unsupported : g_option_group_set_translate_func : unsupported parameter func : no type generator for TranslateFunc, GTranslateFunc
+// Unsupported : g_option_group_set_translate_func : unsupported parameter func : no type generator for TranslateFunc (GTranslateFunc) for param func
 
 // SetTranslationDomain is a wrapper around the C function g_option_group_set_translation_domain.
 func (recv *OptionGroup) SetTranslationDomain(domain string) {
@@ -614,8 +614,8 @@ func (recv *OptionGroup) SetTranslationDomain(domain string) {
 	return
 }
 
-// Unsupported : g_thread_new : unsupported parameter func : no type generator for ThreadFunc, GThreadFunc
+// Unsupported : g_thread_new : unsupported parameter func : no type generator for ThreadFunc (GThreadFunc) for param func
 
-// Unsupported : g_thread_try_new : unsupported parameter func : no type generator for ThreadFunc, GThreadFunc
+// Unsupported : g_thread_try_new : unsupported parameter func : no type generator for ThreadFunc (GThreadFunc) for param func
 
 // Unsupported : g_variant_builder_new : unsupported parameter type : Blacklisted record : GVariantType

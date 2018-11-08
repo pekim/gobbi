@@ -5,6 +5,7 @@ package gtk
 
 import (
 	atk "github.com/pekim/gobbi/lib/atk"
+	gobject "github.com/pekim/gobbi/lib/gobject"
 	"unsafe"
 )
 
@@ -108,7 +109,7 @@ func (recv *CssSection) Unref() {
 
 // Unsupported : gtk_paper_size_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
 
-// Unsupported : gtk_target_list_new : unsupported parameter targets : no param type
+// Unsupported : gtk_target_list_new : unsupported parameter targets : no type generator for TargetEntry (GtkTargetEntry) for array param targets
 
 // Assign is a wrapper around the C function gtk_text_iter_assign.
 func (recv *TextIter) Assign(other *TextIter) {
@@ -121,11 +122,11 @@ func (recv *TextIter) Assign(other *TextIter) {
 
 // Unsupported : gtk_tree_path_new_from_indices : unsupported parameter ... : varargs
 
-// Unsupported : gtk_tree_path_new_from_indicesv : unsupported parameter indices : no param type
+// Unsupported : gtk_tree_path_new_from_indicesv : unsupported parameter indices : no type generator for gint (gint) for array param indices
 
-// Unsupported : gtk_tree_row_reference_new : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
+// Unsupported : gtk_tree_row_reference_new : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
 
-// Unsupported : gtk_tree_row_reference_new_proxy : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
+// Unsupported : gtk_tree_row_reference_new_proxy : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
 
 // SetAccessibleRole is a wrapper around the C function gtk_widget_class_set_accessible_role.
 func (recv *WidgetClass) SetAccessibleRole(role atk.Role) {
@@ -136,7 +137,14 @@ func (recv *WidgetClass) SetAccessibleRole(role atk.Role) {
 	return
 }
 
-// Unsupported : gtk_widget_class_set_accessible_type : unsupported parameter type : no type generator for GType, GType
+// SetAccessibleType is a wrapper around the C function gtk_widget_class_set_accessible_type.
+func (recv *WidgetClass) SetAccessibleType(type_ gobject.Type) {
+	c_type := (C.GType)(type_)
+
+	C.gtk_widget_class_set_accessible_type((*C.GtkWidgetClass)(recv.native), c_type)
+
+	return
+}
 
 // AppendForWidget is a wrapper around the C function gtk_widget_path_append_for_widget.
 func (recv *WidgetPath) AppendForWidget(widget *Widget) int32 {

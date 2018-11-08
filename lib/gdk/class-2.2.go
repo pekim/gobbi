@@ -239,7 +239,7 @@ func (recv *Display) PointerUngrab(time uint32) {
 	return
 }
 
-// Unsupported : gdk_display_put_event : unsupported parameter event : no type generator for Event, const GdkEvent*
+// Unsupported : gdk_display_put_event : unsupported parameter event : no type generator for Event (const GdkEvent*) for param event
 
 // SetDoubleClickTime is a wrapper around the C function gdk_display_set_double_click_time.
 func (recv *Display) SetDoubleClickTime(msec uint32) {

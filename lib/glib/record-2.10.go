@@ -10,15 +10,15 @@ package glib
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : g_async_queue_push_sorted : unsupported parameter func : no type generator for CompareDataFunc, GCompareDataFunc
+// Unsupported : g_async_queue_push_sorted : unsupported parameter func : no type generator for CompareDataFunc (GCompareDataFunc) for param func
 
-// Unsupported : g_async_queue_push_sorted_unlocked : unsupported parameter func : no type generator for CompareDataFunc, GCompareDataFunc
+// Unsupported : g_async_queue_push_sorted_unlocked : unsupported parameter func : no type generator for CompareDataFunc (GCompareDataFunc) for param func
 
-// Unsupported : g_async_queue_sort : unsupported parameter func : no type generator for CompareDataFunc, GCompareDataFunc
+// Unsupported : g_async_queue_sort : unsupported parameter func : no type generator for CompareDataFunc (GCompareDataFunc) for param func
 
-// Unsupported : g_async_queue_sort_unlocked : unsupported parameter func : no type generator for CompareDataFunc, GCompareDataFunc
+// Unsupported : g_async_queue_sort_unlocked : unsupported parameter func : no type generator for CompareDataFunc (GCompareDataFunc) for param func
 
-// Unsupported : g_date_set_time_t : unsupported parameter timet : no type generator for glong, time_t
+// Unsupported : g_date_set_time_t : unsupported parameter timet : no type generator for glong (time_t) for param timet
 
 // SetTimeVal is a wrapper around the C function g_date_set_time_val.
 func (recv *Date) SetTimeVal(timeval *TimeVal) {
@@ -31,7 +31,7 @@ func (recv *Date) SetTimeVal(timeval *TimeVal) {
 
 // Unsupported : g_error_new : unsupported parameter ... : varargs
 
-// Unsupported : g_error_new_valist : unsupported parameter args : no type generator for va_list, va_list
+// Unsupported : g_error_new_valist : unsupported parameter args : no type generator for va_list (va_list) for param args
 
 // IsOwner is a wrapper around the C function g_main_context_is_owner.
 func (recv *MainContext) IsOwner() bool {
@@ -41,14 +41,14 @@ func (recv *MainContext) IsOwner() bool {
 	return retGo
 }
 
-// Unsupported : g_markup_parse_context_new : unsupported parameter user_data_dnotify : no type generator for DestroyNotify, GDestroyNotify
+// Unsupported : g_markup_parse_context_new : unsupported parameter user_data_dnotify : no type generator for DestroyNotify (GDestroyNotify) for param user_data_dnotify
 
-// Unsupported : g_option_group_new : unsupported parameter destroy : no type generator for DestroyNotify, GDestroyNotify
+// Unsupported : g_option_group_new : unsupported parameter destroy : no type generator for DestroyNotify (GDestroyNotify) for param destroy
 
-// Unsupported : g_thread_new : unsupported parameter func : no type generator for ThreadFunc, GThreadFunc
+// Unsupported : g_thread_new : unsupported parameter func : no type generator for ThreadFunc (GThreadFunc) for param func
 
-// Unsupported : g_thread_try_new : unsupported parameter func : no type generator for ThreadFunc, GThreadFunc
+// Unsupported : g_thread_try_new : unsupported parameter func : no type generator for ThreadFunc (GThreadFunc) for param func
 
-// Unsupported : g_thread_pool_set_sort_function : unsupported parameter func : no type generator for CompareDataFunc, GCompareDataFunc
+// Unsupported : g_thread_pool_set_sort_function : unsupported parameter func : no type generator for CompareDataFunc (GCompareDataFunc) for param func
 
 // Unsupported : g_variant_builder_new : unsupported parameter type : Blacklisted record : GVariantType

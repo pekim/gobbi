@@ -237,7 +237,7 @@ func (recv *ShortcutsWindowClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : gtk_target_list_new : unsupported parameter targets : no param type
+// Unsupported : gtk_target_list_new : unsupported parameter targets : no type generator for TargetEntry (GtkTargetEntry) for array param targets
 
 // StartsTag is a wrapper around the C function gtk_text_iter_starts_tag.
 func (recv *TextIter) StartsTag(tag *TextTag) bool {
@@ -251,11 +251,11 @@ func (recv *TextIter) StartsTag(tag *TextTag) bool {
 
 // Unsupported : gtk_tree_path_new_from_indices : unsupported parameter ... : varargs
 
-// Unsupported : gtk_tree_path_new_from_indicesv : unsupported parameter indices : no param type
+// Unsupported : gtk_tree_path_new_from_indicesv : unsupported parameter indices : no type generator for gint (gint) for array param indices
 
-// Unsupported : gtk_tree_row_reference_new : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
+// Unsupported : gtk_tree_row_reference_new : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
 
-// Unsupported : gtk_tree_row_reference_new_proxy : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
+// Unsupported : gtk_tree_row_reference_new_proxy : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
 
 // GetCssName is a wrapper around the C function gtk_widget_class_get_css_name.
 func (recv *WidgetClass) GetCssName() string {

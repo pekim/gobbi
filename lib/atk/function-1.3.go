@@ -8,12 +8,12 @@ package atk
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : atk_add_focus_tracker : unsupported parameter focus_tracker : no type generator for EventListener, AtkEventListener
+// Unsupported : atk_add_focus_tracker : unsupported parameter focus_tracker : no type generator for EventListener (AtkEventListener) for param focus_tracker
 
-// Unsupported : atk_add_global_event_listener : unsupported parameter listener : no type generator for GObject.SignalEmissionHook, GSignalEmissionHook
+// Unsupported : atk_add_global_event_listener : unsupported parameter listener : no type generator for GObject.SignalEmissionHook (GSignalEmissionHook) for param listener
 
-// Unsupported : atk_add_key_event_listener : unsupported parameter listener : no type generator for KeySnoopFunc, AtkKeySnoopFunc
+// Unsupported : atk_add_key_event_listener : unsupported parameter listener : no type generator for KeySnoopFunc (AtkKeySnoopFunc) for param listener
 
-// Unsupported : atk_focus_tracker_init : unsupported parameter init : no type generator for EventListenerInit, AtkEventListenerInit
+// Unsupported : atk_focus_tracker_init : unsupported parameter init : no type generator for EventListenerInit (AtkEventListenerInit) for param init
 
-// Unsupported : atk_text_free_ranges : unsupported parameter ranges : no param type
+// Unsupported : atk_text_free_ranges : unsupported parameter ranges : no type generator for TextRange (AtkTextRange*) for array param ranges

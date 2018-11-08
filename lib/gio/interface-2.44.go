@@ -35,7 +35,13 @@ func (recv *ListModel) GetItem(position uint32) uintptr {
 	return retGo
 }
 
-// Unsupported : g_list_model_get_item_type : no return generator
+// GetItemType is a wrapper around the C function g_list_model_get_item_type.
+func (recv *ListModel) GetItemType() gobject.Type {
+	retC := C.g_list_model_get_item_type((*C.GListModel)(recv.native))
+	retGo := (gobject.Type)(retC)
+
+	return retGo
+}
 
 // GetNItems is a wrapper around the C function g_list_model_get_n_items.
 func (recv *ListModel) GetNItems() uint32 {

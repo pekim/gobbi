@@ -681,7 +681,7 @@ func (recv *Coverage) Set(index int32, level CoverageLevel) {
 	return
 }
 
-// Unsupported : pango_coverage_to_bytes : unsupported parameter bytes : no param type
+// Unsupported : pango_coverage_to_bytes : unsupported parameter bytes : no type generator for guint8 () for array param bytes
 
 // Unref is a wrapper around the C function pango_coverage_unref.
 func (recv *Coverage) Unref() {
@@ -1303,7 +1303,7 @@ func (recv *LayoutLine) GetPixelExtents() (*Rectangle, *Rectangle) {
 	return inkRect, logicalRect
 }
 
-// Unsupported : pango_layout_line_get_x_ranges : unsupported parameter ranges : no param type
+// Unsupported : pango_layout_line_get_x_ranges : unsupported parameter ranges : no type generator for gint (int*) for array param ranges
 
 // IndexToX is a wrapper around the C function pango_layout_line_index_to_x.
 func (recv *LayoutLine) IndexToX(index int32, trailing bool) int32 {

@@ -84,7 +84,7 @@ func PixbufNew(colorspace Colorspace, hasAlpha bool, bitsPerSample int32, width 
 	return retGo
 }
 
-// Unsupported : gdk_pixbuf_new_from_data : unsupported parameter data : no param type
+// Unsupported : gdk_pixbuf_new_from_data : unsupported parameter data : no type generator for guint8 (guchar) for array param data
 
 // PixbufNewFromFile is a wrapper around the C function gdk_pixbuf_new_from_file.
 func PixbufNewFromFile(filename string) (*Pixbuf, error) {
@@ -104,11 +104,11 @@ func PixbufNewFromFile(filename string) (*Pixbuf, error) {
 	return retGo, goThrowableError
 }
 
-// Unsupported : gdk_pixbuf_new_from_inline : unsupported parameter data : no param type
+// Unsupported : gdk_pixbuf_new_from_inline : unsupported parameter data : no type generator for guint8 (guint8) for array param data
 
-// Unsupported : gdk_pixbuf_new_from_stream_finish : unsupported parameter async_result : no type generator for Gio.AsyncResult, GAsyncResult*
+// Unsupported : gdk_pixbuf_new_from_stream_finish : unsupported parameter async_result : no type generator for Gio.AsyncResult (GAsyncResult*) for param async_result
 
-// Unsupported : gdk_pixbuf_new_from_xpm_data : unsupported parameter data : no param type
+// Unsupported : gdk_pixbuf_new_from_xpm_data : unsupported parameter data : no type generator for utf8 (char*) for array param data
 
 // AddAlpha is a wrapper around the C function gdk_pixbuf_add_alpha.
 func (recv *Pixbuf) AddAlpha(substituteColor bool, r uint8, g uint8, b uint8) *Pixbuf {
@@ -364,7 +364,7 @@ func (recv *Pixbuf) SaturateAndPixelate(dest *Pixbuf, saturation float32, pixela
 
 // Unsupported : gdk_pixbuf_save : unsupported parameter error : record with indirection level of 2
 
-// Unsupported : gdk_pixbuf_savev : unsupported parameter option_keys : no param type
+// Unsupported : gdk_pixbuf_savev : unsupported parameter option_keys : no type generator for utf8 (char*) for array param option_keys
 
 // Scale is a wrapper around the C function gdk_pixbuf_scale.
 func (recv *Pixbuf) Scale(dest *Pixbuf, destX int32, destY int32, destWidth int32, destHeight int32, offsetX float64, offsetY float64, scaleX float64, scaleY float64, interpType InterpType) {
@@ -474,7 +474,7 @@ func PixbufAnimationNewFromFile(filename string) (*PixbufAnimation, error) {
 	return retGo, goThrowableError
 }
 
-// Unsupported : gdk_pixbuf_animation_new_from_stream_finish : unsupported parameter async_result : no type generator for Gio.AsyncResult, GAsyncResult*
+// Unsupported : gdk_pixbuf_animation_new_from_stream_finish : unsupported parameter async_result : no type generator for Gio.AsyncResult (GAsyncResult*) for param async_result
 
 // GetHeight is a wrapper around the C function gdk_pixbuf_animation_get_height.
 func (recv *PixbufAnimation) GetHeight() int32 {
@@ -808,7 +808,7 @@ func (recv *PixbufLoader) GetPixbuf() *Pixbuf {
 	return retGo
 }
 
-// Unsupported : gdk_pixbuf_loader_write : unsupported parameter buf : no param type
+// Unsupported : gdk_pixbuf_loader_write : unsupported parameter buf : no type generator for guint8 (guchar) for array param buf
 
 // PixbufSimpleAnim is a wrapper around the C record GdkPixbufSimpleAnim.
 type PixbufSimpleAnim struct {

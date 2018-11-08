@@ -26,4 +26,4 @@ func (recv *NetworkMonitor) GetNetworkMetered() bool {
 	return retGo
 }
 
-// Unsupported : g_tls_client_connection_copy_session_state : unsupported parameter source : no type generator for TlsClientConnection, GTlsClientConnection*
+// Unsupported : g_tls_client_connection_copy_session_state : unsupported parameter source : no type generator for TlsClientConnection (GTlsClientConnection*) for param source

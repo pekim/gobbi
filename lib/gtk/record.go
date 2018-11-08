@@ -1098,8 +1098,8 @@ func (recv *BinPrivate) ToC() unsafe.Pointer {
 
 // BindingArg is a wrapper around the C record GtkBindingArg.
 type BindingArg struct {
-	native *C.GtkBindingArg
-	// arg_type : no type generator for GType, GType
+	native  *C.GtkBindingArg
+	ArgType gobject.Type
 }
 
 func BindingArgNewFromC(u unsafe.Pointer) *BindingArg {
@@ -1108,12 +1108,17 @@ func BindingArgNewFromC(u unsafe.Pointer) *BindingArg {
 		return nil
 	}
 
-	g := &BindingArg{native: c}
+	g := &BindingArg{
+		ArgType: (gobject.Type)(c.arg_type),
+		native:  c,
+	}
 
 	return g
 }
 
 func (recv *BindingArg) ToC() unsafe.Pointer {
+	recv.native.arg_type =
+		(C.GType)(recv.ArgType)
 
 	return (unsafe.Pointer)(recv.native)
 }
@@ -2068,7 +2073,14 @@ func (recv *CellRendererClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : gtk_cell_renderer_class_set_accessible_type : unsupported parameter type : no type generator for GType, GType
+// SetAccessibleType is a wrapper around the C function gtk_cell_renderer_class_set_accessible_type.
+func (recv *CellRendererClass) SetAccessibleType(type_ gobject.Type) {
+	c_type := (C.GType)(type_)
+
+	C.gtk_cell_renderer_class_set_accessible_type((*C.GtkCellRendererClass)(recv.native), c_type)
+
+	return
+}
 
 // CellRendererClassPrivate is a wrapper around the C record GtkCellRendererClassPrivate.
 type CellRendererClassPrivate struct {
@@ -5312,7 +5324,7 @@ func (recv *IconSet) Copy() *IconSet {
 	return retGo
 }
 
-// Unsupported : gtk_icon_set_get_sizes : unsupported parameter sizes : no param type
+// Unsupported : gtk_icon_set_get_sizes : unsupported parameter sizes : no type generator for gint (GtkIconSize*) for array param sizes
 
 // Ref is a wrapper around the C function gtk_icon_set_ref.
 func (recv *IconSet) Ref() *IconSet {
@@ -5322,7 +5334,7 @@ func (recv *IconSet) Ref() *IconSet {
 	return retGo
 }
 
-// Unsupported : gtk_icon_set_render_icon : unsupported parameter size : no type generator for gint, GtkIconSize
+// Unsupported : gtk_icon_set_render_icon : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
 
 // Unref is a wrapper around the C function gtk_icon_set_unref.
 func (recv *IconSet) Unref() {
@@ -5489,7 +5501,7 @@ func (recv *IconSource) SetPixbuf(pixbuf *gdkpixbuf.Pixbuf) {
 	return
 }
 
-// Unsupported : gtk_icon_source_set_size : unsupported parameter size : no type generator for gint, GtkIconSize
+// Unsupported : gtk_icon_source_set_size : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
 
 // SetSizeWildcarded is a wrapper around the C function gtk_icon_source_set_size_wildcarded.
 func (recv *IconSource) SetSizeWildcarded(setting bool) {
@@ -9368,7 +9380,7 @@ func (recv *SelectionData) Free() {
 	return
 }
 
-// Unsupported : gtk_selection_data_get_targets : unsupported parameter targets : no param type
+// Unsupported : gtk_selection_data_get_targets : unsupported parameter targets : no type generator for Gdk.Atom (GdkAtom*) for array param targets
 
 // Blacklisted : gtk_selection_data_get_text
 
@@ -10708,11 +10720,11 @@ func (recv *TargetList) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : gtk_target_list_new : unsupported parameter targets : no param type
+// Unsupported : gtk_target_list_new : unsupported parameter targets : no type generator for TargetEntry (GtkTargetEntry) for array param targets
 
 // Unsupported : gtk_target_list_add : unsupported parameter target : Blacklisted record : GdkAtom
 
-// Unsupported : gtk_target_list_add_table : unsupported parameter targets : no param type
+// Unsupported : gtk_target_list_add_table : unsupported parameter targets : no type generator for TargetEntry (GtkTargetEntry) for array param targets
 
 // Unsupported : gtk_target_list_find : unsupported parameter target : Blacklisted record : GdkAtom
 
@@ -11185,7 +11197,7 @@ func (recv *TextIter) BackwardCursorPositions(count int32) bool {
 	return retGo
 }
 
-// Unsupported : gtk_text_iter_backward_find_char : unsupported parameter pred : no type generator for TextCharPredicate, GtkTextCharPredicate
+// Unsupported : gtk_text_iter_backward_find_char : unsupported parameter pred : no type generator for TextCharPredicate (GtkTextCharPredicate) for param pred
 
 // BackwardLine is a wrapper around the C function gtk_text_iter_backward_line.
 func (recv *TextIter) BackwardLine() bool {
@@ -11404,7 +11416,7 @@ func (recv *TextIter) ForwardCursorPositions(count int32) bool {
 	return retGo
 }
 
-// Unsupported : gtk_text_iter_forward_find_char : unsupported parameter pred : no type generator for TextCharPredicate, GtkTextCharPredicate
+// Unsupported : gtk_text_iter_forward_find_char : unsupported parameter pred : no type generator for TextCharPredicate (GtkTextCharPredicate) for param pred
 
 // ForwardLine is a wrapper around the C function gtk_text_iter_forward_line.
 func (recv *TextIter) ForwardLine() bool {
@@ -12410,7 +12422,7 @@ func (recv *ToggleToolButtonPrivate) ToC() unsafe.Pointer {
 type ToolButtonClass struct {
 	native *C.GtkToolButtonClass
 	// parent_class : record
-	// button_type : no type generator for GType, GType
+	ButtonType gobject.Type
 	// no type for clicked
 	// no type for _gtk_reserved1
 	// no type for _gtk_reserved2
@@ -12424,12 +12436,17 @@ func ToolButtonClassNewFromC(u unsafe.Pointer) *ToolButtonClass {
 		return nil
 	}
 
-	g := &ToolButtonClass{native: c}
+	g := &ToolButtonClass{
+		ButtonType: (gobject.Type)(c.button_type),
+		native:     c,
+	}
 
 	return g
 }
 
 func (recv *ToolButtonClass) ToC() unsafe.Pointer {
+	recv.native.button_type =
+		(C.GType)(recv.ButtonType)
 
 	return (unsafe.Pointer)(recv.native)
 }
@@ -13002,7 +13019,7 @@ func TreePathNewFirst() *TreePath {
 
 // Unsupported : gtk_tree_path_new_from_indices : unsupported parameter ... : varargs
 
-// Unsupported : gtk_tree_path_new_from_indicesv : unsupported parameter indices : no param type
+// Unsupported : gtk_tree_path_new_from_indicesv : unsupported parameter indices : no type generator for gint (gint) for array param indices
 
 // TreePathNewFromString is a wrapper around the C function gtk_tree_path_new_from_string.
 func TreePathNewFromString(path string) *TreePath {
@@ -13148,9 +13165,9 @@ func (recv *TreeRowReference) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : gtk_tree_row_reference_new : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
+// Unsupported : gtk_tree_row_reference_new : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
 
-// Unsupported : gtk_tree_row_reference_new_proxy : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
+// Unsupported : gtk_tree_row_reference_new_proxy : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
 
 // Free is a wrapper around the C function gtk_tree_row_reference_free.
 func (recv *TreeRowReference) Free() {

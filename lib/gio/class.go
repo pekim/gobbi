@@ -111,9 +111,9 @@ func AppLaunchContextNew() *AppLaunchContext {
 	return retGo
 }
 
-// Unsupported : g_app_launch_context_get_display : unsupported parameter info : no type generator for AppInfo, GAppInfo*
+// Unsupported : g_app_launch_context_get_display : unsupported parameter info : no type generator for AppInfo (GAppInfo*) for param info
 
-// Unsupported : g_app_launch_context_get_startup_notify_id : unsupported parameter info : no type generator for AppInfo, GAppInfo*
+// Unsupported : g_app_launch_context_get_startup_notify_id : unsupported parameter info : no type generator for AppInfo (GAppInfo*) for param info
 
 // LaunchFailed is a wrapper around the C function g_app_launch_context_launch_failed.
 func (recv *AppLaunchContext) LaunchFailed(startupNotifyId string) {
@@ -244,9 +244,9 @@ func (recv *BufferedInputStream) Fill(count int64, cancellable *Cancellable) (in
 	return retGo, goThrowableError
 }
 
-// Unsupported : g_buffered_input_stream_fill_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+// Unsupported : g_buffered_input_stream_fill_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_buffered_input_stream_fill_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+// Unsupported : g_buffered_input_stream_fill_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
 
 // GetAvailable is a wrapper around the C function g_buffered_input_stream_get_available.
 func (recv *BufferedInputStream) GetAvailable() uint64 {
@@ -264,7 +264,7 @@ func (recv *BufferedInputStream) GetBufferSize() uint64 {
 	return retGo
 }
 
-// Unsupported : g_buffered_input_stream_peek : unsupported parameter buffer : no param type
+// Unsupported : g_buffered_input_stream_peek : unsupported parameter buffer : no type generator for guint8 () for array param buffer
 
 // Unsupported : g_buffered_input_stream_peek_buffer : no return type
 
@@ -691,7 +691,7 @@ func CastToConverterInputStream(object *gobject.Object) *ConverterInputStream {
 	return ConverterInputStreamNewFromC(object.ToC())
 }
 
-// Unsupported : g_converter_input_stream_new : unsupported parameter converter : no type generator for Converter, GConverter*
+// Unsupported : g_converter_input_stream_new : unsupported parameter converter : no type generator for Converter (GConverter*) for param converter
 
 // PollableInputStream returns the PollableInputStream interface implemented by ConverterInputStream
 func (recv *ConverterInputStream) PollableInputStream() *PollableInputStream {
@@ -742,7 +742,7 @@ func CastToConverterOutputStream(object *gobject.Object) *ConverterOutputStream 
 	return ConverterOutputStreamNewFromC(object.ToC())
 }
 
-// Unsupported : g_converter_output_stream_new : unsupported parameter converter : no type generator for Converter, GConverter*
+// Unsupported : g_converter_output_stream_new : unsupported parameter converter : no type generator for Converter (GConverter*) for param converter
 
 // PollableOutputStream returns the PollableOutputStream interface implemented by ConverterOutputStream
 func (recv *ConverterOutputStream) PollableOutputStream() *PollableOutputStream {
@@ -1379,7 +1379,7 @@ func (recv *DesktopAppInfo) GetIsHidden() bool {
 	return retGo
 }
 
-// Unsupported : g_desktop_app_info_launch_uris_as_manager : unsupported parameter user_setup : no type generator for GLib.SpawnChildSetupFunc, GSpawnChildSetupFunc
+// Unsupported : g_desktop_app_info_launch_uris_as_manager : unsupported parameter user_setup : no type generator for GLib.SpawnChildSetupFunc (GSpawnChildSetupFunc) for param user_setup
 
 // AppInfo returns the AppInfo interface implemented by DesktopAppInfo
 func (recv *DesktopAppInfo) AppInfo() *AppInfo {
@@ -1418,9 +1418,9 @@ func CastToEmblem(object *gobject.Object) *Emblem {
 	return EmblemNewFromC(object.ToC())
 }
 
-// Unsupported : g_emblem_new : unsupported parameter icon : no type generator for Icon, GIcon*
+// Unsupported : g_emblem_new : unsupported parameter icon : no type generator for Icon (GIcon*) for param icon
 
-// Unsupported : g_emblem_new_with_origin : unsupported parameter icon : no type generator for Icon, GIcon*
+// Unsupported : g_emblem_new_with_origin : unsupported parameter icon : no type generator for Icon (GIcon*) for param icon
 
 // Icon returns the Icon interface implemented by Emblem
 func (recv *Emblem) Icon() *Icon {
@@ -1461,7 +1461,7 @@ func CastToEmblemedIcon(object *gobject.Object) *EmblemedIcon {
 	return EmblemedIconNewFromC(object.ToC())
 }
 
-// Unsupported : g_emblemed_icon_new : unsupported parameter icon : no type generator for Icon, GIcon*
+// Unsupported : g_emblemed_icon_new : unsupported parameter icon : no type generator for Icon (GIcon*) for param icon
 
 // Icon returns the Icon interface implemented by EmblemedIcon
 func (recv *EmblemedIcon) Icon() *Icon {
@@ -1519,9 +1519,9 @@ func (recv *FileEnumerator) Close(cancellable *Cancellable) (bool, error) {
 	return retGo, goThrowableError
 }
 
-// Unsupported : g_file_enumerator_close_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+// Unsupported : g_file_enumerator_close_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_file_enumerator_close_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+// Unsupported : g_file_enumerator_close_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
 
 // HasPending is a wrapper around the C function g_file_enumerator_has_pending.
 func (recv *FileEnumerator) HasPending() bool {
@@ -1561,9 +1561,9 @@ func (recv *FileEnumerator) NextFile(cancellable *Cancellable) (*FileInfo, error
 	return retGo, goThrowableError
 }
 
-// Unsupported : g_file_enumerator_next_files_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+// Unsupported : g_file_enumerator_next_files_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_file_enumerator_next_files_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+// Unsupported : g_file_enumerator_next_files_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
 
 // SetPending is a wrapper around the C function g_file_enumerator_set_pending.
 func (recv *FileEnumerator) SetPending(pending bool) {
@@ -1651,7 +1651,7 @@ func CastToFileIcon(object *gobject.Object) *FileIcon {
 	return FileIconNewFromC(object.ToC())
 }
 
-// Unsupported : g_file_icon_new : unsupported parameter file : no type generator for File, GFile*
+// Unsupported : g_file_icon_new : unsupported parameter file : no type generator for File (GFile*) for param file
 
 // Unsupported : g_file_icon_get_file : no return generator
 
@@ -2083,7 +2083,7 @@ func (recv *FileInfo) SetAttributeString(attribute string, attrValue string) {
 	return
 }
 
-// Unsupported : g_file_info_set_attribute_stringv : unsupported parameter attr_value : no param type
+// Unsupported : g_file_info_set_attribute_stringv : unsupported parameter attr_value : no type generator for utf8 () for array param attr_value
 
 // SetAttributeUint32 is a wrapper around the C function g_file_info_set_attribute_uint32.
 func (recv *FileInfo) SetAttributeUint32(attribute string, attrValue uint32) {
@@ -2148,7 +2148,7 @@ func (recv *FileInfo) SetFileType(type_ FileType) {
 	return
 }
 
-// Unsupported : g_file_info_set_icon : unsupported parameter icon : no type generator for Icon, GIcon*
+// Unsupported : g_file_info_set_icon : unsupported parameter icon : no type generator for Icon (GIcon*) for param icon
 
 // SetIsHidden is a wrapper around the C function g_file_info_set_is_hidden.
 func (recv *FileInfo) SetIsHidden(isHidden bool) {
@@ -2283,9 +2283,9 @@ func (recv *FileInputStream) QueryInfo(attributes string, cancellable *Cancellab
 	return retGo, goThrowableError
 }
 
-// Unsupported : g_file_input_stream_query_info_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+// Unsupported : g_file_input_stream_query_info_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_file_input_stream_query_info_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+// Unsupported : g_file_input_stream_query_info_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
 
 // Seekable returns the Seekable interface implemented by FileInputStream
 func (recv *FileInputStream) Seekable() *Seekable {
@@ -2336,7 +2336,7 @@ func (recv *FileMonitor) Cancel() bool {
 	return retGo
 }
 
-// Unsupported : g_file_monitor_emit_event : unsupported parameter child : no type generator for File, GFile*
+// Unsupported : g_file_monitor_emit_event : unsupported parameter child : no type generator for File (GFile*) for param child
 
 // IsCancelled is a wrapper around the C function g_file_monitor_is_cancelled.
 func (recv *FileMonitor) IsCancelled() bool {
@@ -2423,9 +2423,9 @@ func (recv *FileOutputStream) QueryInfo(attributes string, cancellable *Cancella
 	return retGo, goThrowableError
 }
 
-// Unsupported : g_file_output_stream_query_info_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+// Unsupported : g_file_output_stream_query_info_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_file_output_stream_query_info_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+// Unsupported : g_file_output_stream_query_info_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
 
 // Seekable returns the Seekable interface implemented by FileOutputStream
 func (recv *FileOutputStream) Seekable() *Seekable {
@@ -2798,7 +2798,7 @@ func CastToInetAddress(object *gobject.Object) *InetAddress {
 	return InetAddressNewFromC(object.ToC())
 }
 
-// Unsupported : g_inet_address_new_from_bytes : unsupported parameter bytes : no param type
+// Unsupported : g_inet_address_new_from_bytes : unsupported parameter bytes : no type generator for guint8 () for array param bytes
 
 // InetSocketAddress is a wrapper around the C record GInetSocketAddress.
 type InetSocketAddress struct {
@@ -2902,9 +2902,9 @@ func (recv *InputStream) Close(cancellable *Cancellable) (bool, error) {
 	return retGo, goThrowableError
 }
 
-// Unsupported : g_input_stream_close_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+// Unsupported : g_input_stream_close_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_input_stream_close_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+// Unsupported : g_input_stream_close_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
 
 // HasPending is a wrapper around the C function g_input_stream_has_pending.
 func (recv *InputStream) HasPending() bool {
@@ -2922,13 +2922,13 @@ func (recv *InputStream) IsClosed() bool {
 	return retGo
 }
 
-// Unsupported : g_input_stream_read : unsupported parameter buffer : no param type
+// Unsupported : g_input_stream_read : unsupported parameter buffer : no type generator for guint8 () for array param buffer
 
-// Unsupported : g_input_stream_read_all : unsupported parameter buffer : no param type
+// Unsupported : g_input_stream_read_all : unsupported parameter buffer : no type generator for guint8 () for array param buffer
 
-// Unsupported : g_input_stream_read_async : unsupported parameter buffer : no param type
+// Unsupported : g_input_stream_read_async : unsupported parameter buffer : no type generator for guint8 () for array param buffer
 
-// Unsupported : g_input_stream_read_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+// Unsupported : g_input_stream_read_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
 
 // SetPending is a wrapper around the C function g_input_stream_set_pending.
 func (recv *InputStream) SetPending() (bool, error) {
@@ -2964,9 +2964,9 @@ func (recv *InputStream) Skip(count uint64, cancellable *Cancellable) (int64, er
 	return retGo, goThrowableError
 }
 
-// Unsupported : g_input_stream_skip_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+// Unsupported : g_input_stream_skip_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_input_stream_skip_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+// Unsupported : g_input_stream_skip_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
 
 // ListStore is a wrapper around the C record GListStore.
 type ListStore struct {
@@ -2999,8 +2999,6 @@ func (recv *ListStore) Object() *gobject.Object {
 func CastToListStore(object *gobject.Object) *ListStore {
 	return ListStoreNewFromC(object.ToC())
 }
-
-// Unsupported : g_list_store_new : unsupported parameter item_type : no type generator for GType, GType
 
 // ListModel returns the ListModel interface implemented by ListStore
 func (recv *ListStore) ListModel() *ListModel {
@@ -3054,9 +3052,9 @@ func MemoryInputStreamNew() *MemoryInputStream {
 	return retGo
 }
 
-// Unsupported : g_memory_input_stream_new_from_data : unsupported parameter data : no param type
+// Unsupported : g_memory_input_stream_new_from_data : unsupported parameter data : no type generator for guint8 () for array param data
 
-// Unsupported : g_memory_input_stream_add_data : unsupported parameter data : no param type
+// Unsupported : g_memory_input_stream_add_data : unsupported parameter data : no type generator for guint8 () for array param data
 
 // PollableInputStream returns the PollableInputStream interface implemented by MemoryInputStream
 func (recv *MemoryInputStream) PollableInputStream() *PollableInputStream {
@@ -3107,7 +3105,7 @@ func CastToMemoryOutputStream(object *gobject.Object) *MemoryOutputStream {
 	return MemoryOutputStreamNewFromC(object.ToC())
 }
 
-// Unsupported : g_memory_output_stream_new : unsupported parameter realloc_function : no type generator for ReallocFunc, GReallocFunc
+// Unsupported : g_memory_output_stream_new : unsupported parameter realloc_function : no type generator for ReallocFunc (GReallocFunc) for param realloc_function
 
 // GetData is a wrapper around the C function g_memory_output_stream_get_data.
 func (recv *MemoryOutputStream) GetData() uintptr {
@@ -3472,9 +3470,9 @@ func (recv *OutputStream) Close(cancellable *Cancellable) (bool, error) {
 	return retGo, goThrowableError
 }
 
-// Unsupported : g_output_stream_close_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+// Unsupported : g_output_stream_close_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_output_stream_close_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+// Unsupported : g_output_stream_close_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
 
 // Flush is a wrapper around the C function g_output_stream_flush.
 func (recv *OutputStream) Flush(cancellable *Cancellable) (bool, error) {
@@ -3493,9 +3491,9 @@ func (recv *OutputStream) Flush(cancellable *Cancellable) (bool, error) {
 	return retGo, goThrowableError
 }
 
-// Unsupported : g_output_stream_flush_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+// Unsupported : g_output_stream_flush_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_output_stream_flush_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+// Unsupported : g_output_stream_flush_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
 
 // HasPending is a wrapper around the C function g_output_stream_has_pending.
 func (recv *OutputStream) HasPending() bool {
@@ -3549,23 +3547,23 @@ func (recv *OutputStream) Splice(source *InputStream, flags OutputStreamSpliceFl
 	return retGo, goThrowableError
 }
 
-// Unsupported : g_output_stream_splice_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+// Unsupported : g_output_stream_splice_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_output_stream_splice_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+// Unsupported : g_output_stream_splice_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
 
-// Unsupported : g_output_stream_write : unsupported parameter buffer : no param type
+// Unsupported : g_output_stream_write : unsupported parameter buffer : no type generator for guint8 () for array param buffer
 
-// Unsupported : g_output_stream_write_all : unsupported parameter buffer : no param type
+// Unsupported : g_output_stream_write_all : unsupported parameter buffer : no type generator for guint8 () for array param buffer
 
-// Unsupported : g_output_stream_write_async : unsupported parameter buffer : no param type
+// Unsupported : g_output_stream_write_async : unsupported parameter buffer : no type generator for guint8 () for array param buffer
 
 // Blacklisted : g_output_stream_write_bytes
 
-// Unsupported : g_output_stream_write_bytes_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+// Unsupported : g_output_stream_write_bytes_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_output_stream_write_bytes_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+// Unsupported : g_output_stream_write_bytes_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
 
-// Unsupported : g_output_stream_write_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+// Unsupported : g_output_stream_write_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
 
 // Permission is a wrapper around the C record GPermission.
 type Permission struct {
@@ -3780,7 +3778,7 @@ func (recv *Settings) Apply() {
 	return
 }
 
-// Unsupported : g_settings_get_mapped : unsupported parameter mapping : no type generator for SettingsGetMapping, GSettingsGetMapping
+// Unsupported : g_settings_get_mapped : unsupported parameter mapping : no type generator for SettingsGetMapping (GSettingsGetMapping) for param mapping
 
 // Unsupported : g_settings_list_children : no return type
 
@@ -3936,13 +3934,13 @@ func CastToSimpleAsyncResult(object *gobject.Object) *SimpleAsyncResult {
 	return SimpleAsyncResultNewFromC(object.ToC())
 }
 
-// Unsupported : g_simple_async_result_new : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+// Unsupported : g_simple_async_result_new : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_simple_async_result_new_error : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+// Unsupported : g_simple_async_result_new_error : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_simple_async_result_new_from_error : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+// Unsupported : g_simple_async_result_new_from_error : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_simple_async_result_new_take_error : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+// Unsupported : g_simple_async_result_new_take_error : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
 // Complete is a wrapper around the C function g_simple_async_result_complete.
 func (recv *SimpleAsyncResult) Complete() {
@@ -4005,11 +4003,11 @@ func (recv *SimpleAsyncResult) PropagateError() (bool, error) {
 	return retGo, goThrowableError
 }
 
-// Unsupported : g_simple_async_result_run_in_thread : unsupported parameter func : no type generator for SimpleAsyncThreadFunc, GSimpleAsyncThreadFunc
+// Unsupported : g_simple_async_result_run_in_thread : unsupported parameter func : no type generator for SimpleAsyncThreadFunc (GSimpleAsyncThreadFunc) for param func
 
 // Unsupported : g_simple_async_result_set_error : unsupported parameter ... : varargs
 
-// Unsupported : g_simple_async_result_set_error_va : unsupported parameter args : no type generator for va_list, va_list
+// Unsupported : g_simple_async_result_set_error_va : unsupported parameter args : no type generator for va_list (va_list) for param args
 
 // SetFromError is a wrapper around the C function g_simple_async_result_set_from_error.
 func (recv *SimpleAsyncResult) SetFromError(error *glib.Error) {
@@ -4040,7 +4038,7 @@ func (recv *SimpleAsyncResult) SetOpResGboolean(opRes bool) {
 	return
 }
 
-// Unsupported : g_simple_async_result_set_op_res_gpointer : unsupported parameter destroy_op_res : no type generator for GLib.DestroyNotify, GDestroyNotify
+// Unsupported : g_simple_async_result_set_op_res_gpointer : unsupported parameter destroy_op_res : no type generator for GLib.DestroyNotify (GDestroyNotify) for param destroy_op_res
 
 // SetOpResGssize is a wrapper around the C function g_simple_async_result_set_op_res_gssize.
 func (recv *SimpleAsyncResult) SetOpResGssize(opRes int64) {
@@ -4220,9 +4218,9 @@ func (recv *SocketAddressEnumerator) Next(cancellable *Cancellable) (*SocketAddr
 	return retGo, goThrowableError
 }
 
-// Unsupported : g_socket_address_enumerator_next_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+// Unsupported : g_socket_address_enumerator_next_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_socket_address_enumerator_next_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+// Unsupported : g_socket_address_enumerator_next_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
 
 // SocketControlMessage is a wrapper around the C record GSocketControlMessage.
 type SocketControlMessage struct {
@@ -4290,7 +4288,7 @@ func CastToTask(object *gobject.Object) *Task {
 	return TaskNewFromC(object.ToC())
 }
 
-// Unsupported : g_task_new : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+// Unsupported : g_task_new : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
 // AsyncResult returns the AsyncResult interface implemented by Task
 func (recv *Task) AsyncResult() *AsyncResult {
@@ -4397,7 +4395,7 @@ func ThemedIconNew(iconname string) *ThemedIcon {
 	return retGo
 }
 
-// Unsupported : g_themed_icon_new_from_names : unsupported parameter iconnames : no param type
+// Unsupported : g_themed_icon_new_from_names : unsupported parameter iconnames : no type generator for utf8 (char*) for array param iconnames
 
 // ThemedIconNewWithDefaultFallbacks is a wrapper around the C function g_themed_icon_new_with_default_fallbacks.
 func ThemedIconNewWithDefaultFallbacks(iconname string) *ThemedIcon {
@@ -4505,7 +4503,7 @@ func CastToUnixFDList(object *gobject.Object) *UnixFDList {
 	return UnixFDListNewFromC(object.ToC())
 }
 
-// Unsupported : g_unix_fd_list_new_from_array : unsupported parameter fds : no param type
+// Unsupported : g_unix_fd_list_new_from_array : unsupported parameter fds : no type generator for gint (gint) for array param fds
 
 // UnixFDMessage is a wrapper around the C record GUnixFDMessage.
 type UnixFDMessage struct {
@@ -4863,9 +4861,9 @@ func CastToUnixSocketAddress(object *gobject.Object) *UnixSocketAddress {
 	return UnixSocketAddressNewFromC(object.ToC())
 }
 
-// Unsupported : g_unix_socket_address_new_abstract : unsupported parameter path : no param type
+// Unsupported : g_unix_socket_address_new_abstract : unsupported parameter path : no type generator for gchar () for array param path
 
-// Unsupported : g_unix_socket_address_new_with_type : unsupported parameter path : no param type
+// Unsupported : g_unix_socket_address_new_with_type : unsupported parameter path : no type generator for gchar () for array param path
 
 // SocketConnectable returns the SocketConnectable interface implemented by UnixSocketAddress
 func (recv *UnixSocketAddress) SocketConnectable() *SocketConnectable {

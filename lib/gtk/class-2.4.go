@@ -283,7 +283,7 @@ func (recv *Action) ConnectAccelerator() {
 	return
 }
 
-// Unsupported : gtk_action_create_icon : unsupported parameter icon_size : no type generator for gint, GtkIconSize
+// Unsupported : gtk_action_create_icon : unsupported parameter icon_size : no type generator for gint (GtkIconSize) for param icon_size
 
 // CreateMenuItem is a wrapper around the C function gtk_action_create_menu_item.
 func (recv *Action) CreateMenuItem() *Widget {
@@ -647,17 +647,17 @@ func (recv *ActionGroup) AddActionWithAccel(action *Action, accelerator string) 
 	return
 }
 
-// Unsupported : gtk_action_group_add_actions : unsupported parameter entries : no param type
+// Unsupported : gtk_action_group_add_actions : unsupported parameter entries : no type generator for ActionEntry (GtkActionEntry) for array param entries
 
-// Unsupported : gtk_action_group_add_actions_full : unsupported parameter entries : no param type
+// Unsupported : gtk_action_group_add_actions_full : unsupported parameter entries : no type generator for ActionEntry (GtkActionEntry) for array param entries
 
-// Unsupported : gtk_action_group_add_radio_actions : unsupported parameter entries : no param type
+// Unsupported : gtk_action_group_add_radio_actions : unsupported parameter entries : no type generator for RadioActionEntry (GtkRadioActionEntry) for array param entries
 
-// Unsupported : gtk_action_group_add_radio_actions_full : unsupported parameter entries : no param type
+// Unsupported : gtk_action_group_add_radio_actions_full : unsupported parameter entries : no type generator for RadioActionEntry (GtkRadioActionEntry) for array param entries
 
-// Unsupported : gtk_action_group_add_toggle_actions : unsupported parameter entries : no param type
+// Unsupported : gtk_action_group_add_toggle_actions : unsupported parameter entries : no type generator for ToggleActionEntry (GtkToggleActionEntry) for array param entries
 
-// Unsupported : gtk_action_group_add_toggle_actions_full : unsupported parameter entries : no param type
+// Unsupported : gtk_action_group_add_toggle_actions_full : unsupported parameter entries : no type generator for ToggleActionEntry (GtkToggleActionEntry) for array param entries
 
 // GetAction is a wrapper around the C function gtk_action_group_get_action.
 func (recv *ActionGroup) GetAction(actionName string) *Action {
@@ -721,7 +721,7 @@ func (recv *ActionGroup) SetSensitive(sensitive bool) {
 	return
 }
 
-// Unsupported : gtk_action_group_set_translate_func : unsupported parameter func : no type generator for TranslateFunc, GtkTranslateFunc
+// Unsupported : gtk_action_group_set_translate_func : unsupported parameter func : no type generator for TranslateFunc (GtkTranslateFunc) for param func
 
 // SetTranslationDomain is a wrapper around the C function gtk_action_group_set_translation_domain.
 func (recv *ActionGroup) SetTranslationDomain(domain string) {
@@ -781,9 +781,9 @@ func (recv *Alignment) SetPadding(paddingTop uint32, paddingBottom uint32, paddi
 	return
 }
 
-// Unsupported : gtk_app_chooser_dialog_new : unsupported parameter file : no type generator for Gio.File, GFile*
+// Unsupported : gtk_app_chooser_dialog_new : unsupported parameter file : no type generator for Gio.File (GFile*) for param file
 
-// Unsupported : gtk_button_new_from_icon_name : unsupported parameter size : no type generator for gint, GtkIconSize
+// Unsupported : gtk_button_new_from_icon_name : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
 
 // GetAlignment is a wrapper around the C function gtk_button_get_alignment.
 func (recv *Button) GetAlignment() (float32, float32) {
@@ -931,9 +931,9 @@ func (recv *CheckMenuItem) SetDrawAsRadio(drawAsRadio bool) {
 	return
 }
 
-// Unsupported : gtk_clipboard_request_targets : unsupported parameter callback : no type generator for ClipboardTargetsReceivedFunc, GtkClipboardTargetsReceivedFunc
+// Unsupported : gtk_clipboard_request_targets : unsupported parameter callback : no type generator for ClipboardTargetsReceivedFunc (GtkClipboardTargetsReceivedFunc) for param callback
 
-// Unsupported : gtk_clipboard_wait_for_targets : unsupported parameter targets : no param type
+// Unsupported : gtk_clipboard_wait_for_targets : unsupported parameter targets : no type generator for Gdk.Atom (GdkAtom*) for array param targets
 
 type signalColorButtonColorSetDetail struct {
 	callback  ColorButtonSignalColorSetCallback
@@ -1148,9 +1148,9 @@ func ComboBoxNew() *ComboBox {
 	return retGo
 }
 
-// Unsupported : gtk_combo_box_new_with_model : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
+// Unsupported : gtk_combo_box_new_with_model : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
 
-// Unsupported : gtk_combo_box_new_with_model_and_entry : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
+// Unsupported : gtk_combo_box_new_with_model_and_entry : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
 
 // GetActive is a wrapper around the C function gtk_combo_box_get_active.
 func (recv *ComboBox) GetActive() int32 {
@@ -1215,7 +1215,7 @@ func (recv *ComboBox) SetColumnSpanColumn(columnSpan int32) {
 	return
 }
 
-// Unsupported : gtk_combo_box_set_model : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
+// Unsupported : gtk_combo_box_set_model : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
 
 // SetRowSpanColumn is a wrapper around the C function gtk_combo_box_set_row_span_column.
 func (recv *ComboBox) SetRowSpanColumn(rowSpan int32) {
@@ -1341,7 +1341,7 @@ func (recv *EntryCompletion) InsertActionText(index int32, text string) {
 	return
 }
 
-// Unsupported : gtk_entry_completion_set_match_func : unsupported parameter func : no type generator for EntryCompletionMatchFunc, GtkEntryCompletionMatchFunc
+// Unsupported : gtk_entry_completion_set_match_func : unsupported parameter func : no type generator for EntryCompletionMatchFunc (GtkEntryCompletionMatchFunc) for param func
 
 // SetMinimumKeyLength is a wrapper around the C function gtk_entry_completion_set_minimum_key_length.
 func (recv *EntryCompletion) SetMinimumKeyLength(length int32) {
@@ -1352,7 +1352,7 @@ func (recv *EntryCompletion) SetMinimumKeyLength(length int32) {
 	return
 }
 
-// Unsupported : gtk_entry_completion_set_model : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
+// Unsupported : gtk_entry_completion_set_model : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
 
 // SetTextColumn is a wrapper around the C function gtk_entry_completion_set_text_column.
 func (recv *EntryCompletion) SetTextColumn(column int32) {
@@ -1556,7 +1556,7 @@ func FileFilterNew() *FileFilter {
 
 // Unsupported : gtk_file_filter_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
 
-// Unsupported : gtk_file_filter_add_custom : unsupported parameter func : no type generator for FileFilterFunc, GtkFileFilterFunc
+// Unsupported : gtk_file_filter_add_custom : unsupported parameter func : no type generator for FileFilterFunc (GtkFileFilterFunc) for param func
 
 // AddMimeType is a wrapper around the C function gtk_file_filter_add_mime_type.
 func (recv *FileFilter) AddMimeType(mimeType string) {
@@ -1814,7 +1814,7 @@ func (recv *IconInfo) Free() {
 	return
 }
 
-// Unsupported : gtk_icon_info_get_attach_points : unsupported parameter points : no param type
+// Unsupported : gtk_icon_info_get_attach_points : unsupported parameter points : no type generator for Gdk.Point (GdkPoint*) for array param points
 
 // GetBaseSize is a wrapper around the C function gtk_icon_info_get_base_size.
 func (recv *IconInfo) GetBaseSize() int32 {
@@ -1907,7 +1907,7 @@ func (recv *IconTheme) GetExampleIconName() string {
 	return retGo
 }
 
-// Unsupported : gtk_icon_theme_get_search_path : unsupported parameter path : no param type
+// Unsupported : gtk_icon_theme_get_search_path : unsupported parameter path : no type generator for filename () for array param path
 
 // HasIcon is a wrapper around the C function gtk_icon_theme_has_icon.
 func (recv *IconTheme) HasIcon(iconName string) bool {
@@ -2015,23 +2015,23 @@ func (recv *IconTheme) SetScreen(screen *gdk.Screen) {
 	return
 }
 
-// Unsupported : gtk_icon_theme_set_search_path : unsupported parameter path : no param type
+// Unsupported : gtk_icon_theme_set_search_path : unsupported parameter path : no type generator for filename () for array param path
 
-// Unsupported : gtk_icon_view_new_with_model : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
+// Unsupported : gtk_icon_view_new_with_model : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
 
-// Unsupported : gtk_image_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon, GIcon*
+// Unsupported : gtk_image_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon (GIcon*) for param icon
 
-// Unsupported : gtk_image_new_from_icon_name : unsupported parameter size : no type generator for gint, GtkIconSize
+// Unsupported : gtk_image_new_from_icon_name : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
 
-// Unsupported : gtk_image_new_from_icon_set : unsupported parameter size : no type generator for gint, GtkIconSize
+// Unsupported : gtk_image_new_from_icon_set : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
 
-// Unsupported : gtk_image_new_from_stock : unsupported parameter size : no type generator for gint, GtkIconSize
+// Unsupported : gtk_image_new_from_stock : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
 
 // Unsupported : gtk_info_bar_new_with_buttons : unsupported parameter ... : varargs
 
 // Unsupported : gtk_list_store_new : unsupported parameter ... : varargs
 
-// Unsupported : gtk_list_store_newv : unsupported parameter types : no param type
+// Unsupported : gtk_list_store_newv : unsupported parameter types : no type generator for GType (GType) for array param types
 
 // Attach is a wrapper around the C function gtk_menu_attach.
 func (recv *Menu) Attach(child *Widget, leftAttach uint32, rightAttach uint32, topAttach uint32, bottomAttach uint32) {
@@ -2404,7 +2404,7 @@ func (recv *Scale) GetLayoutOffsets() (int32, int32) {
 	return x, y
 }
 
-// Unsupported : gtk_scale_button_new : unsupported parameter size : no type generator for gint, GtkIconSize
+// Unsupported : gtk_scale_button_new : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
 
 // SeparatorToolItemNew is a wrapper around the C function gtk_separator_tool_item_new.
 func SeparatorToolItemNew() *SeparatorToolItem {
@@ -2432,7 +2432,7 @@ func (recv *SeparatorToolItem) SetDraw(draw bool) {
 	return
 }
 
-// Unsupported : gtk_status_icon_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon, GIcon*
+// Unsupported : gtk_status_icon_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon (GIcon*) for param icon
 
 type signalStyleRealizeDetail struct {
 	callback  StyleSignalRealizeCallback
@@ -3161,7 +3161,7 @@ func (recv *TreeModelFilter) Refilter() {
 	return
 }
 
-// Unsupported : gtk_tree_model_filter_set_modify_func : unsupported parameter types : no param type
+// Unsupported : gtk_tree_model_filter_set_modify_func : unsupported parameter types : no type generator for GType (GType) for array param types
 
 // SetVisibleColumn is a wrapper around the C function gtk_tree_model_filter_set_visible_column.
 func (recv *TreeModelFilter) SetVisibleColumn(column int32) {
@@ -3172,13 +3172,13 @@ func (recv *TreeModelFilter) SetVisibleColumn(column int32) {
 	return
 }
 
-// Unsupported : gtk_tree_model_filter_set_visible_func : unsupported parameter func : no type generator for TreeModelFilterVisibleFunc, GtkTreeModelFilterVisibleFunc
+// Unsupported : gtk_tree_model_filter_set_visible_func : unsupported parameter func : no type generator for TreeModelFilterVisibleFunc (GtkTreeModelFilterVisibleFunc) for param func
 
 // Unsupported : gtk_tree_store_new : unsupported parameter ... : varargs
 
-// Unsupported : gtk_tree_store_newv : unsupported parameter types : no param type
+// Unsupported : gtk_tree_store_newv : unsupported parameter types : no type generator for GType (GType) for array param types
 
-// Unsupported : gtk_tree_view_new_with_model : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
+// Unsupported : gtk_tree_view_new_with_model : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
 
 // Unsupported : gtk_tree_view_column_new_with_attributes : unsupported parameter ... : varargs
 
@@ -3744,7 +3744,7 @@ func (recv *UIManager) SetAddTearoffs(addTearoffs bool) {
 	return
 }
 
-// Unsupported : gtk_widget_new : unsupported parameter type : no type generator for GType, GType
+// Unsupported : gtk_widget_new : unsupported parameter ... : varargs
 
 // AddMnemonicLabel is a wrapper around the C function gtk_widget_add_mnemonic_label.
 func (recv *Widget) AddMnemonicLabel(label *Widget) {

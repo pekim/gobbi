@@ -34,7 +34,7 @@ import (
 */
 import "C"
 
-// Unsupported : g_cancellable_connect : unsupported parameter callback : no type generator for GObject.Callback, GCallback
+// Unsupported : g_cancellable_connect : unsupported parameter callback : no type generator for GObject.Callback (GCallback) for param callback
 
 // Disconnect is a wrapper around the C function g_cancellable_disconnect.
 func (recv *Cancellable) Disconnect(handlerId uint64) {
@@ -62,15 +62,15 @@ func (recv *Cancellable) ReleaseFd() {
 	return
 }
 
-// Unsupported : g_converter_input_stream_new : unsupported parameter converter : no type generator for Converter, GConverter*
+// Unsupported : g_converter_input_stream_new : unsupported parameter converter : no type generator for Converter (GConverter*) for param converter
 
-// Unsupported : g_converter_output_stream_new : unsupported parameter converter : no type generator for Converter, GConverter*
+// Unsupported : g_converter_output_stream_new : unsupported parameter converter : no type generator for Converter (GConverter*) for param converter
 
-// Unsupported : g_emblem_new : unsupported parameter icon : no type generator for Icon, GIcon*
+// Unsupported : g_emblem_new : unsupported parameter icon : no type generator for Icon (GIcon*) for param icon
 
-// Unsupported : g_emblem_new_with_origin : unsupported parameter icon : no type generator for Icon, GIcon*
+// Unsupported : g_emblem_new_with_origin : unsupported parameter icon : no type generator for Icon (GIcon*) for param icon
 
-// Unsupported : g_emblemed_icon_new : unsupported parameter icon : no type generator for Icon, GIcon*
+// Unsupported : g_emblemed_icon_new : unsupported parameter icon : no type generator for Icon (GIcon*) for param icon
 
 // GetEtag is a wrapper around the C function g_file_io_stream_get_etag.
 func (recv *FileIOStream) GetEtag() string {
@@ -101,11 +101,11 @@ func (recv *FileIOStream) QueryInfo(attributes string, cancellable *Cancellable)
 	return retGo, goThrowableError
 }
 
-// Unsupported : g_file_io_stream_query_info_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+// Unsupported : g_file_io_stream_query_info_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_file_io_stream_query_info_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+// Unsupported : g_file_io_stream_query_info_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
 
-// Unsupported : g_file_icon_new : unsupported parameter file : no type generator for File, GFile*
+// Unsupported : g_file_icon_new : unsupported parameter file : no type generator for File (GFile*) for param file
 
 // Unsupported : g_file_info_get_attribute_stringv : no return type
 
@@ -157,9 +157,9 @@ func (recv *IOStream) Close(cancellable *Cancellable) (bool, error) {
 	return retGo, goThrowableError
 }
 
-// Unsupported : g_io_stream_close_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+// Unsupported : g_io_stream_close_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_io_stream_close_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+// Unsupported : g_io_stream_close_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
 
 // GetInputStream is a wrapper around the C function g_io_stream_get_input_stream.
 func (recv *IOStream) GetInputStream() *InputStream {
@@ -218,7 +218,7 @@ func InetAddressNewAny(family SocketFamily) *InetAddress {
 	return retGo
 }
 
-// Unsupported : g_inet_address_new_from_bytes : unsupported parameter bytes : no param type
+// Unsupported : g_inet_address_new_from_bytes : unsupported parameter bytes : no type generator for guint8 () for array param bytes
 
 // InetAddressNewFromString is a wrapper around the C function g_inet_address_new_from_string.
 func InetAddressNewFromString(string string) *InetAddress {
@@ -376,11 +376,9 @@ func (recv *InetSocketAddress) GetPort() uint16 {
 	return retGo
 }
 
-// Unsupported : g_list_store_new : unsupported parameter item_type : no type generator for GType, GType
+// Unsupported : g_memory_input_stream_new_from_data : unsupported parameter data : no type generator for guint8 () for array param data
 
-// Unsupported : g_memory_input_stream_new_from_data : unsupported parameter data : no param type
-
-// Unsupported : g_memory_output_stream_new : unsupported parameter realloc_function : no type generator for ReallocFunc, GReallocFunc
+// Unsupported : g_memory_output_stream_new : unsupported parameter realloc_function : no type generator for ReallocFunc (GReallocFunc) for param realloc_function
 
 // Unsupported signal 'show-processes' for MountOperation : unsupported parameter message : type utf8 :
 
@@ -474,9 +472,9 @@ func (recv *Resolver) LookupByAddress(address *InetAddress, cancellable *Cancell
 	return retGo, goThrowableError
 }
 
-// Unsupported : g_resolver_lookup_by_address_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+// Unsupported : g_resolver_lookup_by_address_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_resolver_lookup_by_address_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+// Unsupported : g_resolver_lookup_by_address_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
 
 // LookupByName is a wrapper around the C function g_resolver_lookup_by_name.
 func (recv *Resolver) LookupByName(hostname string, cancellable *Cancellable) (*glib.List, error) {
@@ -498,9 +496,9 @@ func (recv *Resolver) LookupByName(hostname string, cancellable *Cancellable) (*
 	return retGo, goThrowableError
 }
 
-// Unsupported : g_resolver_lookup_by_name_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+// Unsupported : g_resolver_lookup_by_name_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_resolver_lookup_by_name_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+// Unsupported : g_resolver_lookup_by_name_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
 
 // LookupService is a wrapper around the C function g_resolver_lookup_service.
 func (recv *Resolver) LookupService(service string, protocol string, domain string, cancellable *Cancellable) (*glib.List, error) {
@@ -528,9 +526,9 @@ func (recv *Resolver) LookupService(service string, protocol string, domain stri
 	return retGo, goThrowableError
 }
 
-// Unsupported : g_resolver_lookup_service_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+// Unsupported : g_resolver_lookup_service_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_resolver_lookup_service_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+// Unsupported : g_resolver_lookup_service_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
 
 // SetDefault is a wrapper around the C function g_resolver_set_default.
 func (recv *Resolver) SetDefault() {
@@ -543,13 +541,13 @@ func (recv *Resolver) SetDefault() {
 
 // Unsupported : g_simple_action_new_stateful : unsupported parameter parameter_type : Blacklisted record : GVariantType
 
-// Unsupported : g_simple_async_result_new : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+// Unsupported : g_simple_async_result_new : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_simple_async_result_new_error : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+// Unsupported : g_simple_async_result_new_error : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_simple_async_result_new_from_error : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+// Unsupported : g_simple_async_result_new_from_error : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_simple_async_result_new_take_error : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+// Unsupported : g_simple_async_result_new_take_error : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
 // Socket is a wrapper around the C record GSocket.
 type Socket struct {
@@ -862,17 +860,17 @@ func (recv *Socket) Listen() (bool, error) {
 	return retGo, goThrowableError
 }
 
-// Unsupported : g_socket_receive : unsupported parameter buffer : no param type
+// Unsupported : g_socket_receive : unsupported parameter buffer : no type generator for guint8 () for array param buffer
 
 // Unsupported : g_socket_receive_from : unsupported parameter address : record with indirection level of 2
 
 // Unsupported : g_socket_receive_message : unsupported parameter address : record with indirection level of 2
 
-// Unsupported : g_socket_send : unsupported parameter buffer : no param type
+// Unsupported : g_socket_send : unsupported parameter buffer : no type generator for guint8 () for array param buffer
 
-// Unsupported : g_socket_send_message : unsupported parameter vectors : no param type
+// Unsupported : g_socket_send_message : unsupported parameter vectors : no type generator for OutputVector (GOutputVector) for array param vectors
 
-// Unsupported : g_socket_send_to : unsupported parameter buffer : no param type
+// Unsupported : g_socket_send_to : unsupported parameter buffer : no type generator for guint8 () for array param buffer
 
 // SetBlocking is a wrapper around the C function g_socket_set_blocking.
 func (recv *Socket) SetBlocking(blocking bool) {
@@ -1031,11 +1029,11 @@ func (recv *SocketClient) AddApplicationProxy(protocol string) {
 	return
 }
 
-// Unsupported : g_socket_client_connect : unsupported parameter connectable : no type generator for SocketConnectable, GSocketConnectable*
+// Unsupported : g_socket_client_connect : unsupported parameter connectable : no type generator for SocketConnectable (GSocketConnectable*) for param connectable
 
-// Unsupported : g_socket_client_connect_async : unsupported parameter connectable : no type generator for SocketConnectable, GSocketConnectable*
+// Unsupported : g_socket_client_connect_async : unsupported parameter connectable : no type generator for SocketConnectable (GSocketConnectable*) for param connectable
 
-// Unsupported : g_socket_client_connect_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+// Unsupported : g_socket_client_connect_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
 
 // ConnectToHost is a wrapper around the C function g_socket_client_connect_to_host.
 func (recv *SocketClient) ConnectToHost(hostAndPort string, defaultPort uint16, cancellable *Cancellable) (*SocketConnection, error) {
@@ -1059,9 +1057,9 @@ func (recv *SocketClient) ConnectToHost(hostAndPort string, defaultPort uint16, 
 	return retGo, goThrowableError
 }
 
-// Unsupported : g_socket_client_connect_to_host_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+// Unsupported : g_socket_client_connect_to_host_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_socket_client_connect_to_host_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+// Unsupported : g_socket_client_connect_to_host_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
 
 // ConnectToService is a wrapper around the C function g_socket_client_connect_to_service.
 func (recv *SocketClient) ConnectToService(domain string, service string, cancellable *Cancellable) (*SocketConnection, error) {
@@ -1086,9 +1084,9 @@ func (recv *SocketClient) ConnectToService(domain string, service string, cancel
 	return retGo, goThrowableError
 }
 
-// Unsupported : g_socket_client_connect_to_service_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+// Unsupported : g_socket_client_connect_to_service_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_socket_client_connect_to_service_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+// Unsupported : g_socket_client_connect_to_service_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
 
 // GetFamily is a wrapper around the C function g_socket_client_get_family.
 func (recv *SocketClient) GetFamily() SocketFamily {
@@ -1312,15 +1310,15 @@ func SocketListenerNew() *SocketListener {
 
 // Unsupported : g_socket_listener_accept : unsupported parameter source_object : record with indirection level of 2
 
-// Unsupported : g_socket_listener_accept_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+// Unsupported : g_socket_listener_accept_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_socket_listener_accept_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+// Unsupported : g_socket_listener_accept_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
 
 // Unsupported : g_socket_listener_accept_socket : unsupported parameter source_object : record with indirection level of 2
 
-// Unsupported : g_socket_listener_accept_socket_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+// Unsupported : g_socket_listener_accept_socket_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_socket_listener_accept_socket_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+// Unsupported : g_socket_listener_accept_socket_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
 
 // Unsupported : g_socket_listener_add_address : unsupported parameter effective_address : record with indirection level of 2
 
@@ -1447,7 +1445,7 @@ func (recv *SocketService) Stop() {
 	return
 }
 
-// Unsupported : g_task_new : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+// Unsupported : g_task_new : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
 // TcpConnection is a wrapper around the C record GTcpConnection.
 type TcpConnection struct {
@@ -1511,7 +1509,7 @@ func (recv *TcpConnection) SetGracefulDisconnect(gracefulDisconnect bool) {
 	return
 }
 
-// Unsupported : g_themed_icon_new_from_names : unsupported parameter iconnames : no param type
+// Unsupported : g_themed_icon_new_from_names : unsupported parameter iconnames : no type generator for utf8 (char*) for array param iconnames
 
 // ThreadedSocketService is a wrapper around the C record GThreadedSocketService.
 type ThreadedSocketService struct {
@@ -1667,7 +1665,7 @@ func (recv *UnixConnection) SendFd(fd int32, cancellable *Cancellable) (bool, er
 	return retGo, goThrowableError
 }
 
-// Unsupported : g_unix_fd_list_new_from_array : unsupported parameter fds : no param type
+// Unsupported : g_unix_fd_list_new_from_array : unsupported parameter fds : no type generator for gint (gint) for array param fds
 
 // UnixFDMessageNew is a wrapper around the C function g_unix_fd_message_new.
 func UnixFDMessageNew() *UnixFDMessage {
@@ -1707,9 +1705,9 @@ func UnixSocketAddressNew(path string) *UnixSocketAddress {
 	return retGo
 }
 
-// Unsupported : g_unix_socket_address_new_abstract : unsupported parameter path : no param type
+// Unsupported : g_unix_socket_address_new_abstract : unsupported parameter path : no type generator for gchar () for array param path
 
-// Unsupported : g_unix_socket_address_new_with_type : unsupported parameter path : no param type
+// Unsupported : g_unix_socket_address_new_with_type : unsupported parameter path : no type generator for gchar () for array param path
 
 // GetIsAbstract is a wrapper around the C function g_unix_socket_address_get_is_abstract.
 func (recv *UnixSocketAddress) GetIsAbstract() bool {

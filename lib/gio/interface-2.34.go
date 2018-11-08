@@ -52,9 +52,9 @@ func (recv *AsyncResult) LegacyPropagateError() (bool, error) {
 
 // Unsupported : g_drive_get_symbolic_icon : no return generator
 
-// Unsupported : g_file_delete_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+// Unsupported : g_file_delete_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_file_delete_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+// Unsupported : g_file_delete_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
 
 // Unsupported : g_mount_get_symbolic_icon : no return generator
 

@@ -308,11 +308,11 @@ func device_changedHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
-// Unsupported : gdk_device_get_axis : unsupported parameter axes : no param type
+// Unsupported : gdk_device_get_axis : unsupported parameter axes : no type generator for gdouble (gdouble) for array param axes
 
-// Unsupported : gdk_device_get_history : unsupported parameter events : no param type
+// Unsupported : gdk_device_get_history : unsupported parameter events : no type generator for TimeCoord (GdkTimeCoord**) for array param events
 
-// Unsupported : gdk_device_get_state : unsupported parameter axes : no param type
+// Unsupported : gdk_device_get_state : unsupported parameter axes : no type generator for gdouble (gdouble) for array param axes
 
 // ListSlaveDevices is a wrapper around the C function gdk_device_list_slave_devices.
 func (recv *Device) ListSlaveDevices() *glib.List {
@@ -1253,9 +1253,9 @@ func (recv *Keymap) GetDirection() pango.Direction {
 	return retGo
 }
 
-// Unsupported : gdk_keymap_get_entries_for_keycode : unsupported parameter keys : no param type
+// Unsupported : gdk_keymap_get_entries_for_keycode : unsupported parameter keys : no type generator for KeymapKey (GdkKeymapKey*) for array param keys
 
-// Unsupported : gdk_keymap_get_entries_for_keyval : unsupported parameter keys : no param type
+// Unsupported : gdk_keymap_get_entries_for_keyval : unsupported parameter keys : no type generator for KeymapKey (GdkKeymapKey*) for array param keys
 
 // LookupKey is a wrapper around the C function gdk_keymap_lookup_key.
 func (recv *Keymap) LookupKey(key *KeymapKey) uint32 {
@@ -1379,7 +1379,7 @@ func WindowNew(parent *Window, attributes *WindowAttr, attributesMask int32) *Wi
 	return retGo
 }
 
-// Unsupported : gdk_window_add_filter : unsupported parameter function : no type generator for FilterFunc, GdkFilterFunc
+// Unsupported : gdk_window_add_filter : unsupported parameter function : no type generator for FilterFunc (GdkFilterFunc) for param function
 
 // BeginMoveDrag is a wrapper around the C function gdk_window_begin_move_drag.
 func (recv *Window) BeginMoveDrag(button int32, rootX int32, rootY int32, timestamp uint32) {
@@ -1661,7 +1661,7 @@ func (recv *Window) Iconify() {
 	return
 }
 
-// Unsupported : gdk_window_invalidate_maybe_recurse : unsupported parameter child_func : no type generator for WindowChildFunc, GdkWindowChildFunc
+// Unsupported : gdk_window_invalidate_maybe_recurse : unsupported parameter child_func : no type generator for WindowChildFunc (GdkWindowChildFunc) for param child_func
 
 // Unsupported : gdk_window_invalidate_rect : unsupported parameter rect : Blacklisted record : GdkRectangle
 
@@ -1772,7 +1772,7 @@ func (recv *Window) RegisterDnd() {
 	return
 }
 
-// Unsupported : gdk_window_remove_filter : unsupported parameter function : no type generator for FilterFunc, GdkFilterFunc
+// Unsupported : gdk_window_remove_filter : unsupported parameter function : no type generator for FilterFunc (GdkFilterFunc) for param function
 
 // Reparent is a wrapper around the C function gdk_window_reparent.
 func (recv *Window) Reparent(newParent *Window, x int32, y int32) {

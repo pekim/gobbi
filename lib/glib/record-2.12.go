@@ -50,7 +50,7 @@ func (recv *BookmarkFile) Free() {
 
 // Unsupported : g_bookmark_file_get_added : no return generator
 
-// Unsupported : g_bookmark_file_get_app_info : unsupported parameter stamp : no type generator for glong, time_t*
+// Unsupported : g_bookmark_file_get_app_info : unsupported parameter stamp : no type generator for glong (time_t*) for param stamp
 
 // Unsupported : g_bookmark_file_get_applications : no return type
 
@@ -226,7 +226,7 @@ func (recv *BookmarkFile) HasItem(uri string) bool {
 	return retGo
 }
 
-// Unsupported : g_bookmark_file_load_from_data : unsupported parameter data : no param type
+// Unsupported : g_bookmark_file_load_from_data : unsupported parameter data : no type generator for guint8 () for array param data
 
 // LoadFromDataDirs is a wrapper around the C function g_bookmark_file_load_from_data_dirs.
 func (recv *BookmarkFile) LoadFromDataDirs(file string) (bool, string, error) {
@@ -350,9 +350,9 @@ func (recv *BookmarkFile) RemoveItem(uri string) (bool, error) {
 	return retGo, goThrowableError
 }
 
-// Unsupported : g_bookmark_file_set_added : unsupported parameter added : no type generator for glong, time_t
+// Unsupported : g_bookmark_file_set_added : unsupported parameter added : no type generator for glong (time_t) for param added
 
-// Unsupported : g_bookmark_file_set_app_info : unsupported parameter stamp : no type generator for glong, time_t
+// Unsupported : g_bookmark_file_set_app_info : unsupported parameter stamp : no type generator for glong (time_t) for param stamp
 
 // SetDescription is a wrapper around the C function g_bookmark_file_set_description.
 func (recv *BookmarkFile) SetDescription(uri string, description string) {
@@ -367,7 +367,7 @@ func (recv *BookmarkFile) SetDescription(uri string, description string) {
 	return
 }
 
-// Unsupported : g_bookmark_file_set_groups : unsupported parameter groups : no param type
+// Unsupported : g_bookmark_file_set_groups : unsupported parameter groups : no type generator for utf8 () for array param groups
 
 // SetIcon is a wrapper around the C function g_bookmark_file_set_icon.
 func (recv *BookmarkFile) SetIcon(uri string, href string, mimeType string) {
@@ -411,7 +411,7 @@ func (recv *BookmarkFile) SetMimeType(uri string, mimeType string) {
 	return
 }
 
-// Unsupported : g_bookmark_file_set_modified : unsupported parameter modified : no type generator for glong, time_t
+// Unsupported : g_bookmark_file_set_modified : unsupported parameter modified : no type generator for glong (time_t) for param modified
 
 // SetTitle is a wrapper around the C function g_bookmark_file_set_title.
 func (recv *BookmarkFile) SetTitle(uri string, title string) {
@@ -426,7 +426,7 @@ func (recv *BookmarkFile) SetTitle(uri string, title string) {
 	return
 }
 
-// Unsupported : g_bookmark_file_set_visited : unsupported parameter visited : no type generator for glong, time_t
+// Unsupported : g_bookmark_file_set_visited : unsupported parameter visited : no type generator for glong (time_t) for param visited
 
 // Unsupported : g_bookmark_file_to_data : no return type
 
@@ -450,7 +450,7 @@ func (recv *BookmarkFile) ToFile(filename string) (bool, error) {
 
 // Unsupported : g_error_new : unsupported parameter ... : varargs
 
-// Unsupported : g_error_new_valist : unsupported parameter args : no type generator for va_list, va_list
+// Unsupported : g_error_new_valist : unsupported parameter args : no type generator for va_list (va_list) for param args
 
 // GetDouble is a wrapper around the C function g_key_file_get_double.
 func (recv *KeyFile) GetDouble(groupName string, key string) (float64, error) {
@@ -490,9 +490,9 @@ func (recv *KeyFile) SetDouble(groupName string, key string, value float64) {
 	return
 }
 
-// Unsupported : g_key_file_set_double_list : unsupported parameter list : no param type
+// Unsupported : g_key_file_set_double_list : unsupported parameter list : no type generator for gdouble (gdouble) for array param list
 
-// Unsupported : g_markup_parse_context_new : unsupported parameter user_data_dnotify : no type generator for DestroyNotify, GDestroyNotify
+// Unsupported : g_markup_parse_context_new : unsupported parameter user_data_dnotify : no type generator for DestroyNotify (GDestroyNotify) for param user_data_dnotify
 
 // GetDescription is a wrapper around the C function g_option_context_get_description.
 func (recv *OptionContext) GetDescription() string {
@@ -530,7 +530,7 @@ func (recv *OptionContext) SetSummary(summary string) {
 	return
 }
 
-// Unsupported : g_option_context_set_translate_func : unsupported parameter func : no type generator for TranslateFunc, GTranslateFunc
+// Unsupported : g_option_context_set_translate_func : unsupported parameter func : no type generator for TranslateFunc (GTranslateFunc) for param func
 
 // SetTranslationDomain is a wrapper around the C function g_option_context_set_translation_domain.
 func (recv *OptionContext) SetTranslationDomain(domain string) {
@@ -542,7 +542,7 @@ func (recv *OptionContext) SetTranslationDomain(domain string) {
 	return
 }
 
-// Unsupported : g_option_group_new : unsupported parameter destroy : no type generator for DestroyNotify, GDestroyNotify
+// Unsupported : g_option_group_new : unsupported parameter destroy : no type generator for DestroyNotify (GDestroyNotify) for param destroy
 
 // IsDestroyed is a wrapper around the C function g_source_is_destroyed.
 func (recv *Source) IsDestroyed() bool {
@@ -561,9 +561,9 @@ func (recv *Source) SetFuncs(funcs *SourceFuncs) {
 	return
 }
 
-// Unsupported : g_thread_new : unsupported parameter func : no type generator for ThreadFunc, GThreadFunc
+// Unsupported : g_thread_new : unsupported parameter func : no type generator for ThreadFunc (GThreadFunc) for param func
 
-// Unsupported : g_thread_try_new : unsupported parameter func : no type generator for ThreadFunc, GThreadFunc
+// Unsupported : g_thread_try_new : unsupported parameter func : no type generator for ThreadFunc (GThreadFunc) for param func
 
 // ToIso8601 is a wrapper around the C function g_time_val_to_iso8601.
 func (recv *TimeVal) ToIso8601() string {

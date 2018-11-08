@@ -6,6 +6,7 @@ package gtk
 import (
 	gdk "github.com/pekim/gobbi/lib/gdk"
 	gdkpixbuf "github.com/pekim/gobbi/lib/gdkpixbuf"
+	gobject "github.com/pekim/gobbi/lib/gobject"
 	"sync"
 	"unsafe"
 )
@@ -108,7 +109,7 @@ func (recv *Action) GetVisibleVertical() bool {
 	return retGo
 }
 
-// Unsupported : gtk_action_set_gicon : unsupported parameter icon : no type generator for Gio.Icon, GIcon*
+// Unsupported : gtk_action_set_gicon : unsupported parameter icon : no type generator for Gio.Icon (GIcon*) for param icon
 
 // SetIconName is a wrapper around the C function gtk_action_set_icon_name.
 func (recv *Action) SetIconName(iconName string) {
@@ -197,15 +198,15 @@ func (recv *Action) UnblockActivate() {
 	return
 }
 
-// Unsupported : gtk_app_chooser_dialog_new : unsupported parameter file : no type generator for Gio.File, GFile*
+// Unsupported : gtk_app_chooser_dialog_new : unsupported parameter file : no type generator for Gio.File (GFile*) for param file
 
-// Unsupported : gtk_button_new_from_icon_name : unsupported parameter size : no type generator for gint, GtkIconSize
+// Unsupported : gtk_button_new_from_icon_name : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
 
 // Unsupported : gtk_cell_view_get_model : no return generator
 
-// Unsupported : gtk_combo_box_new_with_model : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
+// Unsupported : gtk_combo_box_new_with_model : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
 
-// Unsupported : gtk_combo_box_new_with_model_and_entry : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
+// Unsupported : gtk_combo_box_new_with_model_and_entry : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
 
 // Unsupported : gtk_dialog_new_with_buttons : unsupported parameter ... : varargs
 
@@ -370,7 +371,7 @@ func (recv *Entry) SetIconDragSource(iconPos EntryIconPosition, targetList *Targ
 	return
 }
 
-// Unsupported : gtk_entry_set_icon_from_gicon : unsupported parameter icon : no type generator for Gio.Icon, GIcon*
+// Unsupported : gtk_entry_set_icon_from_gicon : unsupported parameter icon : no type generator for Gio.Icon (GIcon*) for param icon
 
 // SetIconFromIconName is a wrapper around the C function gtk_entry_set_icon_from_icon_name.
 func (recv *Entry) SetIconFromIconName(iconPos EntryIconPosition, iconName string) {
@@ -492,15 +493,15 @@ func (recv *IMMulticontext) SetContextId(contextId string) {
 	return
 }
 
-// Unsupported : gtk_icon_view_new_with_model : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
+// Unsupported : gtk_icon_view_new_with_model : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
 
-// Unsupported : gtk_image_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon, GIcon*
+// Unsupported : gtk_image_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon (GIcon*) for param icon
 
-// Unsupported : gtk_image_new_from_icon_name : unsupported parameter size : no type generator for gint, GtkIconSize
+// Unsupported : gtk_image_new_from_icon_name : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
 
-// Unsupported : gtk_image_new_from_icon_set : unsupported parameter size : no type generator for gint, GtkIconSize
+// Unsupported : gtk_image_new_from_icon_set : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
 
-// Unsupported : gtk_image_new_from_stock : unsupported parameter size : no type generator for gint, GtkIconSize
+// Unsupported : gtk_image_new_from_stock : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
 
 // GetAlwaysShowImage is a wrapper around the C function gtk_image_menu_item_get_always_show_image.
 func (recv *ImageMenuItem) GetAlwaysShowImage() bool {
@@ -551,7 +552,7 @@ func (recv *ImageMenuItem) SetUseStock(useStock bool) {
 
 // Unsupported : gtk_list_store_new : unsupported parameter ... : varargs
 
-// Unsupported : gtk_list_store_newv : unsupported parameter types : no param type
+// Unsupported : gtk_list_store_newv : unsupported parameter types : no type generator for GType (GType) for array param types
 
 // GetLabel is a wrapper around the C function gtk_menu_item_get_label.
 func (recv *MenuItem) GetLabel() string {
@@ -680,7 +681,7 @@ func (recv *Scale) ClearMarks() {
 	return
 }
 
-// Unsupported : gtk_scale_button_new : unsupported parameter size : no type generator for gint, GtkIconSize
+// Unsupported : gtk_scale_button_new : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
 
 // Unsupported signal 'query-tooltip' for StatusIcon : unsupported parameter x : type gint :
 
@@ -746,7 +747,7 @@ func statusicon_scrollEventHandler(_ *C.GObject, c_event *C.GdkEventScroll, data
 	return retC
 }
 
-// Unsupported : gtk_status_icon_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon, GIcon*
+// Unsupported : gtk_status_icon_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon (GIcon*) for param icon
 
 // GetHasTooltip is a wrapper around the C function gtk_status_icon_get_has_tooltip.
 func (recv *StatusIcon) GetHasTooltip() bool {
@@ -804,11 +805,25 @@ func (recv *StatusIcon) SetTooltipText(text string) {
 	return
 }
 
-// Unsupported : gtk_style_get : unsupported parameter widget_type : no type generator for GType, GType
+// Unsupported : gtk_style_get : unsupported parameter ... : varargs
 
-// Unsupported : gtk_style_get_style_property : unsupported parameter widget_type : no type generator for GType, GType
+// GetStyleProperty is a wrapper around the C function gtk_style_get_style_property.
+func (recv *Style) GetStyleProperty(widgetType gobject.Type, propertyName string) *gobject.Value {
+	c_widget_type := (C.GType)(widgetType)
 
-// Unsupported : gtk_style_get_valist : unsupported parameter widget_type : no type generator for GType, GType
+	c_property_name := C.CString(propertyName)
+	defer C.free(unsafe.Pointer(c_property_name))
+
+	var c_value C.GValue
+
+	C.gtk_style_get_style_property((*C.GtkStyle)(recv.native), c_widget_type, c_property_name, &c_value)
+
+	value := gobject.ValueNewFromC(unsafe.Pointer(&c_value))
+
+	return value
+}
+
+// Unsupported : gtk_style_get_valist : unsupported parameter var_args : no type generator for va_list (va_list) for param var_args
 
 type signalTextBufferPasteDoneDetail struct {
 	callback  TextBufferSignalPasteDoneCallback
@@ -871,10 +886,10 @@ func textbuffer_pasteDoneHandler(_ *C.GObject, c_clipboard *C.GtkClipboard, data
 
 // Unsupported : gtk_tree_store_new : unsupported parameter ... : varargs
 
-// Unsupported : gtk_tree_store_newv : unsupported parameter types : no param type
+// Unsupported : gtk_tree_store_newv : unsupported parameter types : no type generator for GType (GType) for array param types
 
-// Unsupported : gtk_tree_view_new_with_model : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
+// Unsupported : gtk_tree_view_new_with_model : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
 
 // Unsupported : gtk_tree_view_column_new_with_attributes : unsupported parameter ... : varargs
 
-// Unsupported : gtk_widget_new : unsupported parameter type : no type generator for GType, GType
+// Unsupported : gtk_widget_new : unsupported parameter ... : varargs

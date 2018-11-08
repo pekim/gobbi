@@ -30,9 +30,31 @@ func (recv *TypePlugin) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : g_type_plugin_complete_interface_info : unsupported parameter instance_type : no type generator for GType, GType
+// CompleteInterfaceInfo is a wrapper around the C function g_type_plugin_complete_interface_info.
+func (recv *TypePlugin) CompleteInterfaceInfo(instanceType Type, interfaceType Type, info *InterfaceInfo) {
+	c_instance_type := (C.GType)(instanceType)
 
-// Unsupported : g_type_plugin_complete_type_info : unsupported parameter g_type : no type generator for GType, GType
+	c_interface_type := (C.GType)(interfaceType)
+
+	c_info := (*C.GInterfaceInfo)(info.ToC())
+
+	C.g_type_plugin_complete_interface_info((*C.GTypePlugin)(recv.native), c_instance_type, c_interface_type, c_info)
+
+	return
+}
+
+// CompleteTypeInfo is a wrapper around the C function g_type_plugin_complete_type_info.
+func (recv *TypePlugin) CompleteTypeInfo(gType Type, info *TypeInfo, valueTable *TypeValueTable) {
+	c_g_type := (C.GType)(gType)
+
+	c_info := (*C.GTypeInfo)(info.ToC())
+
+	c_value_table := (*C.GTypeValueTable)(valueTable.ToC())
+
+	C.g_type_plugin_complete_type_info((*C.GTypePlugin)(recv.native), c_g_type, c_info, c_value_table)
+
+	return
+}
 
 // Unuse is a wrapper around the C function g_type_plugin_unuse.
 func (recv *TypePlugin) Unuse() {

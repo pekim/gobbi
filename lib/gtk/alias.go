@@ -11,5 +11,5 @@ import "C"
 
 // Blacklisted : GtkAllocation
 
-// Stock is a representation of the C alias of the same name.
+// Stock is a representation of the C alias GtkStock.
 type Stock string

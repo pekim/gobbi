@@ -71,15 +71,15 @@ func (recv *CharsetConverter) SetUseFallback(useFallback bool) {
 	return
 }
 
-// Unsupported : g_converter_input_stream_new : unsupported parameter converter : no type generator for Converter, GConverter*
+// Unsupported : g_converter_input_stream_new : unsupported parameter converter : no type generator for Converter (GConverter*) for param converter
 
 // Unsupported : g_converter_input_stream_get_converter : no return generator
 
-// Unsupported : g_converter_output_stream_new : unsupported parameter converter : no type generator for Converter, GConverter*
+// Unsupported : g_converter_output_stream_new : unsupported parameter converter : no type generator for Converter (GConverter*) for param converter
 
 // Unsupported : g_converter_output_stream_get_converter : no return generator
 
-// Unsupported : g_data_input_stream_read_upto_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+// Unsupported : g_data_input_stream_read_upto_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
 
 // GetFilename is a wrapper around the C function g_desktop_app_info_get_filename.
 func (recv *DesktopAppInfo) GetFilename() string {
@@ -89,21 +89,19 @@ func (recv *DesktopAppInfo) GetFilename() string {
 	return retGo
 }
 
-// Unsupported : g_emblem_new : unsupported parameter icon : no type generator for Icon, GIcon*
+// Unsupported : g_emblem_new : unsupported parameter icon : no type generator for Icon (GIcon*) for param icon
 
-// Unsupported : g_emblem_new_with_origin : unsupported parameter icon : no type generator for Icon, GIcon*
+// Unsupported : g_emblem_new_with_origin : unsupported parameter icon : no type generator for Icon (GIcon*) for param icon
 
-// Unsupported : g_emblemed_icon_new : unsupported parameter icon : no type generator for Icon, GIcon*
+// Unsupported : g_emblemed_icon_new : unsupported parameter icon : no type generator for Icon (GIcon*) for param icon
 
-// Unsupported : g_file_icon_new : unsupported parameter file : no type generator for File, GFile*
+// Unsupported : g_file_icon_new : unsupported parameter file : no type generator for File (GFile*) for param file
 
-// Unsupported : g_inet_address_new_from_bytes : unsupported parameter bytes : no param type
+// Unsupported : g_inet_address_new_from_bytes : unsupported parameter bytes : no type generator for guint8 () for array param bytes
 
-// Unsupported : g_list_store_new : unsupported parameter item_type : no type generator for GType, GType
+// Unsupported : g_memory_input_stream_new_from_data : unsupported parameter data : no type generator for guint8 () for array param data
 
-// Unsupported : g_memory_input_stream_new_from_data : unsupported parameter data : no param type
-
-// Unsupported : g_memory_output_stream_new : unsupported parameter realloc_function : no type generator for ReallocFunc, GReallocFunc
+// Unsupported : g_memory_output_stream_new : unsupported parameter realloc_function : no type generator for ReallocFunc (GReallocFunc) for param realloc_function
 
 // IsClosing is a wrapper around the C function g_output_stream_is_closing.
 func (recv *OutputStream) IsClosing() bool {
@@ -117,13 +115,13 @@ func (recv *OutputStream) IsClosing() bool {
 
 // Unsupported : g_simple_action_new_stateful : unsupported parameter parameter_type : Blacklisted record : GVariantType
 
-// Unsupported : g_simple_async_result_new : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+// Unsupported : g_simple_async_result_new : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_simple_async_result_new_error : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+// Unsupported : g_simple_async_result_new_error : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_simple_async_result_new_from_error : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+// Unsupported : g_simple_async_result_new_from_error : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_simple_async_result_new_take_error : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+// Unsupported : g_simple_async_result_new_take_error : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
 // AddAnyInetPort is a wrapper around the C function g_socket_listener_add_any_inet_port.
 func (recv *SocketListener) AddAnyInetPort(sourceObject *gobject.Object) (uint16, error) {
@@ -142,9 +140,9 @@ func (recv *SocketListener) AddAnyInetPort(sourceObject *gobject.Object) (uint16
 	return retGo, goThrowableError
 }
 
-// Unsupported : g_task_new : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+// Unsupported : g_task_new : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_themed_icon_new_from_names : unsupported parameter iconnames : no param type
+// Unsupported : g_themed_icon_new_from_names : unsupported parameter iconnames : no type generator for utf8 (char*) for array param iconnames
 
 // UnixFDListNew is a wrapper around the C function g_unix_fd_list_new.
 func UnixFDListNew() *UnixFDList {
@@ -154,7 +152,7 @@ func UnixFDListNew() *UnixFDList {
 	return retGo
 }
 
-// Unsupported : g_unix_fd_list_new_from_array : unsupported parameter fds : no param type
+// Unsupported : g_unix_fd_list_new_from_array : unsupported parameter fds : no type generator for gint (gint) for array param fds
 
 // Append is a wrapper around the C function g_unix_fd_list_append.
 func (recv *UnixFDList) Append(fd int32) (int32, error) {
@@ -220,9 +218,9 @@ func (recv *UnixFDMessage) GetFdList() *UnixFDList {
 	return retGo
 }
 
-// Unsupported : g_unix_socket_address_new_abstract : unsupported parameter path : no param type
+// Unsupported : g_unix_socket_address_new_abstract : unsupported parameter path : no type generator for gchar () for array param path
 
-// Unsupported : g_unix_socket_address_new_with_type : unsupported parameter path : no param type
+// Unsupported : g_unix_socket_address_new_with_type : unsupported parameter path : no type generator for gchar () for array param path
 
 // ZlibCompressorNew is a wrapper around the C function g_zlib_compressor_new.
 func ZlibCompressorNew(format ZlibCompressorFormat, level int32) *ZlibCompressor {

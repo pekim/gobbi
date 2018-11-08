@@ -14,11 +14,11 @@ import "C"
 
 // Unsupported : g_error_new : unsupported parameter ... : varargs
 
-// Unsupported : g_error_new_valist : unsupported parameter args : no type generator for va_list, va_list
+// Unsupported : g_error_new_valist : unsupported parameter args : no type generator for va_list (va_list) for param args
 
-// Unsupported : g_markup_parse_context_new : unsupported parameter user_data_dnotify : no type generator for DestroyNotify, GDestroyNotify
+// Unsupported : g_markup_parse_context_new : unsupported parameter user_data_dnotify : no type generator for DestroyNotify (GDestroyNotify) for param user_data_dnotify
 
-// Unsupported : g_node_copy_deep : unsupported parameter copy_func : no type generator for CopyFunc, GCopyFunc
+// Unsupported : g_node_copy_deep : unsupported parameter copy_func : no type generator for CopyFunc (GCopyFunc) for param copy_func
 
 // Once is a wrapper around the C record GOnce.
 type Once struct {
@@ -51,9 +51,9 @@ func (recv *Once) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : g_once_impl : unsupported parameter func : no type generator for ThreadFunc, GThreadFunc
+// Unsupported : g_once_impl : unsupported parameter func : no type generator for ThreadFunc (GThreadFunc) for param func
 
-// Unsupported : g_option_group_new : unsupported parameter destroy : no type generator for DestroyNotify, GDestroyNotify
+// Unsupported : g_option_group_new : unsupported parameter destroy : no type generator for DestroyNotify (GDestroyNotify) for param destroy
 
 // Copy is a wrapper around the C function g_queue_copy.
 func (recv *Queue) Copy() *Queue {
@@ -82,9 +82,9 @@ func (recv *Queue) Find(data uintptr) *List {
 	return retGo
 }
 
-// Unsupported : g_queue_find_custom : unsupported parameter func : no type generator for CompareFunc, GCompareFunc
+// Unsupported : g_queue_find_custom : unsupported parameter func : no type generator for CompareFunc (GCompareFunc) for param func
 
-// Unsupported : g_queue_foreach : unsupported parameter func : no type generator for Func, GFunc
+// Unsupported : g_queue_foreach : unsupported parameter func : no type generator for Func (GFunc) for param func
 
 // GetLength is a wrapper around the C function g_queue_get_length.
 func (recv *Queue) GetLength() uint32 {
@@ -126,7 +126,7 @@ func (recv *Queue) InsertBefore(sibling *List, data uintptr) {
 	return
 }
 
-// Unsupported : g_queue_insert_sorted : unsupported parameter func : no type generator for CompareDataFunc, GCompareDataFunc
+// Unsupported : g_queue_insert_sorted : unsupported parameter func : no type generator for CompareDataFunc (GCompareDataFunc) for param func
 
 // LinkIndex is a wrapper around the C function g_queue_link_index.
 func (recv *Queue) LinkIndex(link *List) int32 {
@@ -243,7 +243,7 @@ func (recv *Queue) Reverse() {
 	return
 }
 
-// Unsupported : g_queue_sort : unsupported parameter compare_func : no type generator for CompareDataFunc, GCompareDataFunc
+// Unsupported : g_queue_sort : unsupported parameter compare_func : no type generator for CompareDataFunc (GCompareDataFunc) for param compare_func
 
 // Unlink is a wrapper around the C function g_queue_unlink.
 func (recv *Queue) Unlink(link *List) {
@@ -287,9 +287,9 @@ func (recv *StringChunk) InsertLen(string string, len int64) string {
 	return retGo
 }
 
-// Unsupported : g_thread_new : unsupported parameter func : no type generator for ThreadFunc, GThreadFunc
+// Unsupported : g_thread_new : unsupported parameter func : no type generator for ThreadFunc (GThreadFunc) for param func
 
-// Unsupported : g_thread_try_new : unsupported parameter func : no type generator for ThreadFunc, GThreadFunc
+// Unsupported : g_thread_try_new : unsupported parameter func : no type generator for ThreadFunc (GThreadFunc) for param func
 
 // Continue is a wrapper around the C function g_timer_continue.
 func (recv *Timer) Continue() {

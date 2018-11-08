@@ -12,11 +12,30 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : g_boxed_copy : unsupported parameter boxed_type : no type generator for GType, GType
+// BoxedCopy is a wrapper around the C function g_boxed_copy.
+func BoxedCopy(boxedType Type, srcBoxed uintptr) uintptr {
+	c_boxed_type := (C.GType)(boxedType)
 
-// Unsupported : g_boxed_free : unsupported parameter boxed_type : no type generator for GType, GType
+	c_src_boxed := (C.gconstpointer)(srcBoxed)
 
-// Unsupported : g_boxed_type_register_static : unsupported parameter boxed_copy : no type generator for BoxedCopyFunc, GBoxedCopyFunc
+	retC := C.g_boxed_copy(c_boxed_type, c_src_boxed)
+	retGo := (uintptr)(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// BoxedFree is a wrapper around the C function g_boxed_free.
+func BoxedFree(boxedType Type, boxed uintptr) {
+	c_boxed_type := (C.GType)(boxedType)
+
+	c_boxed := (C.gpointer)(boxed)
+
+	C.g_boxed_free(c_boxed_type, c_boxed)
+
+	return
+}
+
+// Unsupported : g_boxed_type_register_static : unsupported parameter boxed_copy : no type generator for BoxedCopyFunc (GBoxedCopyFunc) for param boxed_copy
 
 // CclosureMarshalBooleanBoxedBoxed is a wrapper around the C function g_cclosure_marshal_BOOLEAN__BOXED_BOXED.
 func CclosureMarshalBooleanBoxedBoxed(closure *Closure, returnValue *Value, nParamValues uint32, paramValues *Value, invocationHint uintptr, marshalData uintptr) {
@@ -436,17 +455,30 @@ func CclosureMarshalVoidVoid(closure *Closure, returnValue *Value, nParamValues 
 	return
 }
 
-// Unsupported : g_cclosure_new : unsupported parameter callback_func : no type generator for Callback, GCallback
+// Unsupported : g_cclosure_new : unsupported parameter callback_func : no type generator for Callback (GCallback) for param callback_func
 
-// Unsupported : g_cclosure_new_object : unsupported parameter callback_func : no type generator for Callback, GCallback
+// Unsupported : g_cclosure_new_object : unsupported parameter callback_func : no type generator for Callback (GCallback) for param callback_func
 
-// Unsupported : g_cclosure_new_object_swap : unsupported parameter callback_func : no type generator for Callback, GCallback
+// Unsupported : g_cclosure_new_object_swap : unsupported parameter callback_func : no type generator for Callback (GCallback) for param callback_func
 
-// Unsupported : g_cclosure_new_swap : unsupported parameter callback_func : no type generator for Callback, GCallback
+// Unsupported : g_cclosure_new_swap : unsupported parameter callback_func : no type generator for Callback (GCallback) for param callback_func
 
 // Unsupported : g_clear_object : unsupported parameter object_ptr : record with indirection level of 2
 
-// Unsupported : g_enum_complete_type_info : unsupported parameter g_enum_type : no type generator for GType, GType
+// EnumCompleteTypeInfo is a wrapper around the C function g_enum_complete_type_info.
+func EnumCompleteTypeInfo(gEnumType Type, constValues *EnumValue) *TypeInfo {
+	c_g_enum_type := (C.GType)(gEnumType)
+
+	var c_info C.GTypeInfo
+
+	c_const_values := (*C.GEnumValue)(constValues.ToC())
+
+	C.g_enum_complete_type_info(c_g_enum_type, &c_info, c_const_values)
+
+	info := TypeInfoNewFromC(unsafe.Pointer(&c_info))
+
+	return info
+}
 
 // EnumGetValue is a wrapper around the C function g_enum_get_value.
 func EnumGetValue(enumClass *EnumClass, value int32) *EnumValue {
@@ -486,11 +518,33 @@ func EnumGetValueByNick(enumClass *EnumClass, nick string) *EnumValue {
 	return retGo
 }
 
-// Unsupported : g_enum_register_static : no return generator
+// EnumRegisterStatic is a wrapper around the C function g_enum_register_static.
+func EnumRegisterStatic(name string, constStaticValues *EnumValue) Type {
+	c_name := C.CString(name)
+	defer C.free(unsafe.Pointer(c_name))
 
-// Unsupported : g_enum_to_string : unsupported parameter g_enum_type : no type generator for GType, GType
+	c_const_static_values := (*C.GEnumValue)(constStaticValues.ToC())
 
-// Unsupported : g_flags_complete_type_info : unsupported parameter g_flags_type : no type generator for GType, GType
+	retC := C.g_enum_register_static(c_name, c_const_static_values)
+	retGo := (Type)(retC)
+
+	return retGo
+}
+
+// FlagsCompleteTypeInfo is a wrapper around the C function g_flags_complete_type_info.
+func FlagsCompleteTypeInfo(gFlagsType Type, constValues *FlagsValue) *TypeInfo {
+	c_g_flags_type := (C.GType)(gFlagsType)
+
+	var c_info C.GTypeInfo
+
+	c_const_values := (*C.GFlagsValue)(constValues.ToC())
+
+	C.g_flags_complete_type_info(c_g_flags_type, &c_info, c_const_values)
+
+	info := TypeInfoNewFromC(unsafe.Pointer(&c_info))
+
+	return info
+}
 
 // FlagsGetFirstValue is a wrapper around the C function g_flags_get_first_value.
 func FlagsGetFirstValue(flagsClass *FlagsClass, value uint32) *FlagsValue {
@@ -530,27 +584,42 @@ func FlagsGetValueByNick(flagsClass *FlagsClass, nick string) *FlagsValue {
 	return retGo
 }
 
-// Unsupported : g_flags_register_static : no return generator
+// FlagsRegisterStatic is a wrapper around the C function g_flags_register_static.
+func FlagsRegisterStatic(name string, constStaticValues *FlagsValue) Type {
+	c_name := C.CString(name)
+	defer C.free(unsafe.Pointer(c_name))
 
-// Unsupported : g_flags_to_string : unsupported parameter flags_type : no type generator for GType, GType
+	c_const_static_values := (*C.GFlagsValue)(constStaticValues.ToC())
 
-// Unsupported : g_gtype_get_type : no return generator
+	retC := C.g_flags_register_static(c_name, c_const_static_values)
+	retGo := (Type)(retC)
+
+	return retGo
+}
+
+// GtypeGetType is a wrapper around the C function g_gtype_get_type.
+func GtypeGetType() Type {
+	retC := C.g_gtype_get_type()
+	retGo := (Type)(retC)
+
+	return retGo
+}
 
 // Unsupported : g_param_spec_boolean : return type : Blacklisted record : GParamSpec
 
-// Unsupported : g_param_spec_boxed : unsupported parameter boxed_type : no type generator for GType, GType
+// Unsupported : g_param_spec_boxed : return type : Blacklisted record : GParamSpec
 
 // Unsupported : g_param_spec_char : return type : Blacklisted record : GParamSpec
 
 // Unsupported : g_param_spec_double : return type : Blacklisted record : GParamSpec
 
-// Unsupported : g_param_spec_enum : unsupported parameter enum_type : no type generator for GType, GType
+// Unsupported : g_param_spec_enum : return type : Blacklisted record : GParamSpec
 
-// Unsupported : g_param_spec_flags : unsupported parameter flags_type : no type generator for GType, GType
+// Unsupported : g_param_spec_flags : return type : Blacklisted record : GParamSpec
 
 // Unsupported : g_param_spec_float : return type : Blacklisted record : GParamSpec
 
-// Unsupported : g_param_spec_gtype : unsupported parameter is_a_type : no type generator for GType, GType
+// Unsupported : g_param_spec_gtype : return type : Blacklisted record : GParamSpec
 
 // Unsupported : g_param_spec_int : return type : Blacklisted record : GParamSpec
 
@@ -558,11 +627,11 @@ func FlagsGetValueByNick(flagsClass *FlagsClass, nick string) *FlagsValue {
 
 // Unsupported : g_param_spec_long : return type : Blacklisted record : GParamSpec
 
-// Unsupported : g_param_spec_object : unsupported parameter object_type : no type generator for GType, GType
+// Unsupported : g_param_spec_object : return type : Blacklisted record : GParamSpec
 
 // Unsupported : g_param_spec_override : unsupported parameter overridden : Blacklisted record : GParamSpec
 
-// Unsupported : g_param_spec_param : unsupported parameter param_type : no type generator for GType, GType
+// Unsupported : g_param_spec_param : return type : Blacklisted record : GParamSpec
 
 // Unsupported : g_param_spec_pointer : return type : Blacklisted record : GParamSpec
 
@@ -593,7 +662,18 @@ func ParamSpecPoolNew(typePrefixing bool) *ParamSpecPool {
 
 // Unsupported : g_param_spec_variant : unsupported parameter type : Blacklisted record : GVariantType
 
-// Unsupported : g_param_type_register_static : no return generator
+// ParamTypeRegisterStatic is a wrapper around the C function g_param_type_register_static.
+func ParamTypeRegisterStatic(name string, pspecInfo *ParamSpecTypeInfo) Type {
+	c_name := C.CString(name)
+	defer C.free(unsafe.Pointer(c_name))
+
+	c_pspec_info := (*C.GParamSpecTypeInfo)(pspecInfo.ToC())
+
+	retC := C.g_param_type_register_static(c_name, c_pspec_info)
+	retGo := (Type)(retC)
+
+	return retGo
+}
 
 // Unsupported : g_param_value_convert : unsupported parameter pspec : Blacklisted record : GParamSpec
 
@@ -605,11 +685,20 @@ func ParamSpecPoolNew(typePrefixing bool) *ParamSpecPool {
 
 // Unsupported : g_param_values_cmp : unsupported parameter pspec : Blacklisted record : GParamSpec
 
-// Unsupported : g_pointer_type_register_static : no return generator
+// PointerTypeRegisterStatic is a wrapper around the C function g_pointer_type_register_static.
+func PointerTypeRegisterStatic(name string) Type {
+	c_name := C.CString(name)
+	defer C.free(unsafe.Pointer(c_name))
 
-// Unsupported : g_signal_add_emission_hook : unsupported parameter hook_func : no type generator for SignalEmissionHook, GSignalEmissionHook
+	retC := C.g_pointer_type_register_static(c_name)
+	retGo := (Type)(retC)
 
-// Unsupported : g_signal_chain_from_overridden : unsupported parameter instance_and_params : no param type
+	return retGo
+}
+
+// Unsupported : g_signal_add_emission_hook : unsupported parameter hook_func : no type generator for SignalEmissionHook (GSignalEmissionHook) for param hook_func
+
+// Unsupported : g_signal_chain_from_overridden : unsupported parameter instance_and_params : no type generator for Value (GValue) for array param instance_and_params
 
 // Unsupported : g_signal_chain_from_overridden_handler : unsupported parameter ... : varargs
 
@@ -650,17 +739,17 @@ func SignalConnectClosureById(instance uintptr, signalId uint32, detail glib.Qua
 	return retGo
 }
 
-// Unsupported : g_signal_connect_data : unsupported parameter c_handler : no type generator for Callback, GCallback
+// Unsupported : g_signal_connect_data : unsupported parameter c_handler : no type generator for Callback (GCallback) for param c_handler
 
-// Unsupported : g_signal_connect_object : unsupported parameter c_handler : no type generator for Callback, GCallback
+// Unsupported : g_signal_connect_object : unsupported parameter c_handler : no type generator for Callback (GCallback) for param c_handler
 
 // Unsupported : g_signal_emit : unsupported parameter ... : varargs
 
 // Unsupported : g_signal_emit_by_name : unsupported parameter ... : varargs
 
-// Unsupported : g_signal_emit_valist : unsupported parameter var_args : no type generator for va_list, va_list
+// Unsupported : g_signal_emit_valist : unsupported parameter var_args : no type generator for va_list (va_list) for param var_args
 
-// Unsupported : g_signal_emitv : unsupported parameter instance_and_params : no param type
+// Unsupported : g_signal_emitv : unsupported parameter instance_and_params : no type generator for Value (GValue) for array param instance_and_params
 
 // SignalGetInvocationHint is a wrapper around the C function g_signal_get_invocation_hint.
 func SignalGetInvocationHint(instance uintptr) *SignalInvocationHint {
@@ -831,9 +920,20 @@ func SignalHasHandlerPending(instance uintptr, signalId uint32, detail glib.Quar
 	return retGo
 }
 
-// Unsupported : g_signal_list_ids : unsupported parameter itype : no type generator for GType, GType
+// Unsupported : g_signal_list_ids : no return type
 
-// Unsupported : g_signal_lookup : unsupported parameter itype : no type generator for GType, GType
+// SignalLookup is a wrapper around the C function g_signal_lookup.
+func SignalLookup(name string, itype Type) uint32 {
+	c_name := C.CString(name)
+	defer C.free(unsafe.Pointer(c_name))
+
+	c_itype := (C.GType)(itype)
+
+	retC := C.g_signal_lookup(c_name, c_itype)
+	retGo := (uint32)(retC)
+
+	return retGo
+}
 
 // SignalName is a wrapper around the C function g_signal_name.
 func SignalName(signalId uint32) string {
@@ -845,19 +945,52 @@ func SignalName(signalId uint32) string {
 	return retGo
 }
 
-// Unsupported : g_signal_new : unsupported parameter itype : no type generator for GType, GType
+// Unsupported : g_signal_new : unsupported parameter accumulator : no type generator for SignalAccumulator (GSignalAccumulator) for param accumulator
 
-// Unsupported : g_signal_new_class_handler : unsupported parameter itype : no type generator for GType, GType
+// Unsupported : g_signal_new_class_handler : unsupported parameter class_handler : no type generator for Callback (GCallback) for param class_handler
 
-// Unsupported : g_signal_new_valist : unsupported parameter itype : no type generator for GType, GType
+// Unsupported : g_signal_new_valist : unsupported parameter accumulator : no type generator for SignalAccumulator (GSignalAccumulator) for param accumulator
 
-// Unsupported : g_signal_newv : unsupported parameter itype : no type generator for GType, GType
+// Unsupported : g_signal_newv : unsupported parameter accumulator : no type generator for SignalAccumulator (GSignalAccumulator) for param accumulator
 
-// Unsupported : g_signal_override_class_closure : unsupported parameter instance_type : no type generator for GType, GType
+// SignalOverrideClassClosure is a wrapper around the C function g_signal_override_class_closure.
+func SignalOverrideClassClosure(signalId uint32, instanceType Type, classClosure *Closure) {
+	c_signal_id := (C.guint)(signalId)
 
-// Unsupported : g_signal_override_class_handler : unsupported parameter instance_type : no type generator for GType, GType
+	c_instance_type := (C.GType)(instanceType)
 
-// Unsupported : g_signal_parse_name : unsupported parameter itype : no type generator for GType, GType
+	c_class_closure := (*C.GClosure)(classClosure.ToC())
+
+	C.g_signal_override_class_closure(c_signal_id, c_instance_type, c_class_closure)
+
+	return
+}
+
+// Unsupported : g_signal_override_class_handler : unsupported parameter class_handler : no type generator for Callback (GCallback) for param class_handler
+
+// SignalParseName is a wrapper around the C function g_signal_parse_name.
+func SignalParseName(detailedSignal string, itype Type, forceDetailQuark bool) (bool, uint32, glib.Quark) {
+	c_detailed_signal := C.CString(detailedSignal)
+	defer C.free(unsafe.Pointer(c_detailed_signal))
+
+	c_itype := (C.GType)(itype)
+
+	var c_signal_id_p C.guint
+
+	var c_detail_p C.GQuark
+
+	c_force_detail_quark :=
+		boolToGboolean(forceDetailQuark)
+
+	retC := C.g_signal_parse_name(c_detailed_signal, c_itype, &c_signal_id_p, &c_detail_p, c_force_detail_quark)
+	retGo := retC == C.TRUE
+
+	signalIdP := (uint32)(c_signal_id_p)
+
+	detailP := (glib.Quark)(c_detail_p)
+
+	return retGo, signalIdP, detailP
+}
 
 // SignalQuery_ is a wrapper around the C function g_signal_query.
 func SignalQuery_(signalId uint32) *SignalQuery {
@@ -883,7 +1016,7 @@ func SignalRemoveEmissionHook(signalId uint32, hookId uint64) {
 	return
 }
 
-// Unsupported : g_signal_set_va_marshaller : unsupported parameter instance_type : no type generator for GType, GType
+// Unsupported : g_signal_set_va_marshaller : unsupported parameter va_marshaller : no type generator for SignalCVaMarshaller (GSignalCVaMarshaller) for param va_marshaller
 
 // SignalStopEmission is a wrapper around the C function g_signal_stop_emission.
 func SignalStopEmission(instance uintptr, signalId uint32, detail glib.Quark) {
@@ -910,7 +1043,17 @@ func SignalStopEmissionByName(instance uintptr, detailedSignal string) {
 	return
 }
 
-// Unsupported : g_signal_type_cclosure_new : unsupported parameter itype : no type generator for GType, GType
+// SignalTypeCclosureNew is a wrapper around the C function g_signal_type_cclosure_new.
+func SignalTypeCclosureNew(itype Type, structOffset uint32) *Closure {
+	c_itype := (C.GType)(itype)
+
+	c_struct_offset := (C.guint)(structOffset)
+
+	retC := C.g_signal_type_cclosure_new(c_itype, c_struct_offset)
+	retGo := ClosureNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // SourceSetClosure is a wrapper around the C function g_source_set_closure.
 func SourceSetClosure(source *glib.Source, closure *Closure) {
@@ -943,21 +1086,60 @@ func StrdupValueContents(value *Value) string {
 	return retGo
 }
 
-// Unsupported : g_type_add_class_cache_func : unsupported parameter cache_func : no type generator for TypeClassCacheFunc, GTypeClassCacheFunc
+// Unsupported : g_type_add_class_cache_func : unsupported parameter cache_func : no type generator for TypeClassCacheFunc (GTypeClassCacheFunc) for param cache_func
 
-// Unsupported : g_type_add_class_private : unsupported parameter class_type : no type generator for GType, GType
+// TypeAddInstancePrivate is a wrapper around the C function g_type_add_instance_private.
+func TypeAddInstancePrivate(classType Type, privateSize uint64) int32 {
+	c_class_type := (C.GType)(classType)
 
-// Unsupported : g_type_add_instance_private : unsupported parameter class_type : no type generator for GType, GType
+	c_private_size := (C.gsize)(privateSize)
 
-// Unsupported : g_type_add_interface_check : unsupported parameter check_func : no type generator for TypeInterfaceCheckFunc, GTypeInterfaceCheckFunc
+	retC := C.g_type_add_instance_private(c_class_type, c_private_size)
+	retGo := (int32)(retC)
 
-// Unsupported : g_type_add_interface_dynamic : unsupported parameter instance_type : no type generator for GType, GType
+	return retGo
+}
 
-// Unsupported : g_type_add_interface_static : unsupported parameter instance_type : no type generator for GType, GType
+// Unsupported : g_type_add_interface_check : unsupported parameter check_func : no type generator for TypeInterfaceCheckFunc (GTypeInterfaceCheckFunc) for param check_func
 
-// Unsupported : g_type_check_class_cast : unsupported parameter is_a_type : no type generator for GType, GType
+// Unsupported : g_type_add_interface_dynamic : unsupported parameter plugin : no type generator for TypePlugin (GTypePlugin*) for param plugin
 
-// Unsupported : g_type_check_class_is_a : unsupported parameter is_a_type : no type generator for GType, GType
+// TypeAddInterfaceStatic is a wrapper around the C function g_type_add_interface_static.
+func TypeAddInterfaceStatic(instanceType Type, interfaceType Type, info *InterfaceInfo) {
+	c_instance_type := (C.GType)(instanceType)
+
+	c_interface_type := (C.GType)(interfaceType)
+
+	c_info := (*C.GInterfaceInfo)(info.ToC())
+
+	C.g_type_add_interface_static(c_instance_type, c_interface_type, c_info)
+
+	return
+}
+
+// TypeCheckClassCast is a wrapper around the C function g_type_check_class_cast.
+func TypeCheckClassCast(gClass *TypeClass, isAType Type) *TypeClass {
+	c_g_class := (*C.GTypeClass)(gClass.ToC())
+
+	c_is_a_type := (C.GType)(isAType)
+
+	retC := C.g_type_check_class_cast(c_g_class, c_is_a_type)
+	retGo := TypeClassNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// TypeCheckClassIsA is a wrapper around the C function g_type_check_class_is_a.
+func TypeCheckClassIsA(gClass *TypeClass, isAType Type) bool {
+	c_g_class := (*C.GTypeClass)(gClass.ToC())
+
+	c_is_a_type := (C.GType)(isAType)
+
+	retC := C.g_type_check_class_is_a(c_g_class, c_is_a_type)
+	retGo := retC == C.TRUE
+
+	return retGo
+}
 
 // TypeCheckInstance is a wrapper around the C function g_type_check_instance.
 func TypeCheckInstance(instance *TypeInstance) bool {
@@ -969,13 +1151,51 @@ func TypeCheckInstance(instance *TypeInstance) bool {
 	return retGo
 }
 
-// Unsupported : g_type_check_instance_cast : unsupported parameter iface_type : no type generator for GType, GType
+// TypeCheckInstanceCast is a wrapper around the C function g_type_check_instance_cast.
+func TypeCheckInstanceCast(instance *TypeInstance, ifaceType Type) *TypeInstance {
+	c_instance := (*C.GTypeInstance)(instance.ToC())
 
-// Unsupported : g_type_check_instance_is_a : unsupported parameter iface_type : no type generator for GType, GType
+	c_iface_type := (C.GType)(ifaceType)
 
-// Unsupported : g_type_check_instance_is_fundamentally_a : unsupported parameter fundamental_type : no type generator for GType, GType
+	retC := C.g_type_check_instance_cast(c_instance, c_iface_type)
+	retGo := TypeInstanceNewFromC(unsafe.Pointer(retC))
 
-// Unsupported : g_type_check_is_value_type : unsupported parameter type : no type generator for GType, GType
+	return retGo
+}
+
+// TypeCheckInstanceIsA is a wrapper around the C function g_type_check_instance_is_a.
+func TypeCheckInstanceIsA(instance *TypeInstance, ifaceType Type) bool {
+	c_instance := (*C.GTypeInstance)(instance.ToC())
+
+	c_iface_type := (C.GType)(ifaceType)
+
+	retC := C.g_type_check_instance_is_a(c_instance, c_iface_type)
+	retGo := retC == C.TRUE
+
+	return retGo
+}
+
+// TypeCheckInstanceIsFundamentallyA is a wrapper around the C function g_type_check_instance_is_fundamentally_a.
+func TypeCheckInstanceIsFundamentallyA(instance *TypeInstance, fundamentalType Type) bool {
+	c_instance := (*C.GTypeInstance)(instance.ToC())
+
+	c_fundamental_type := (C.GType)(fundamentalType)
+
+	retC := C.g_type_check_instance_is_fundamentally_a(c_instance, c_fundamental_type)
+	retGo := retC == C.TRUE
+
+	return retGo
+}
+
+// TypeCheckIsValueType is a wrapper around the C function g_type_check_is_value_type.
+func TypeCheckIsValueType(type_ Type) bool {
+	c_type := (C.GType)(type_)
+
+	retC := C.g_type_check_is_value_type(c_type)
+	retGo := retC == C.TRUE
+
+	return retGo
+}
 
 // TypeCheckValue is a wrapper around the C function g_type_check_value.
 func TypeCheckValue(value *Value) bool {
@@ -987,9 +1207,19 @@ func TypeCheckValue(value *Value) bool {
 	return retGo
 }
 
-// Unsupported : g_type_check_value_holds : unsupported parameter type : no type generator for GType, GType
+// TypeCheckValueHolds is a wrapper around the C function g_type_check_value_holds.
+func TypeCheckValueHolds(value *Value, type_ Type) bool {
+	c_value := (*C.GValue)(value.ToC())
 
-// Unsupported : g_type_children : unsupported parameter type : no type generator for GType, GType
+	c_type := (C.GType)(type_)
+
+	retC := C.g_type_check_value_holds(c_value, c_type)
+	retGo := retC == C.TRUE
+
+	return retGo
+}
+
+// Unsupported : g_type_children : no return type
 
 // TypeClassAdjustPrivateOffset is a wrapper around the C function g_type_class_adjust_private_offset.
 func TypeClassAdjustPrivateOffset(gClass uintptr, privateSizeOrOffset int32) {
@@ -1002,21 +1232,45 @@ func TypeClassAdjustPrivateOffset(gClass uintptr, privateSizeOrOffset int32) {
 	return
 }
 
-// Unsupported : g_type_class_peek : unsupported parameter type : no type generator for GType, GType
+// TypeClassPeek is a wrapper around the C function g_type_class_peek.
+func TypeClassPeek(type_ Type) uintptr {
+	c_type := (C.GType)(type_)
 
-// Unsupported : g_type_class_peek_static : unsupported parameter type : no type generator for GType, GType
+	retC := C.g_type_class_peek(c_type)
+	retGo := (uintptr)(retC)
 
-// Unsupported : g_type_class_ref : unsupported parameter type : no type generator for GType, GType
+	return retGo
+}
 
-// Unsupported : g_type_create_instance : unsupported parameter type : no type generator for GType, GType
+// TypeClassRef is a wrapper around the C function g_type_class_ref.
+func TypeClassRef(type_ Type) uintptr {
+	c_type := (C.GType)(type_)
 
-// Unsupported : g_type_default_interface_peek : unsupported parameter g_type : no type generator for GType, GType
+	retC := C.g_type_class_ref(c_type)
+	retGo := (uintptr)(retC)
 
-// Unsupported : g_type_default_interface_ref : unsupported parameter g_type : no type generator for GType, GType
+	return retGo
+}
 
-// Unsupported : g_type_depth : unsupported parameter type : no type generator for GType, GType
+// TypeCreateInstance is a wrapper around the C function g_type_create_instance.
+func TypeCreateInstance(type_ Type) *TypeInstance {
+	c_type := (C.GType)(type_)
 
-// Unsupported : g_type_ensure : unsupported parameter type : no type generator for GType, GType
+	retC := C.g_type_create_instance(c_type)
+	retGo := TypeInstanceNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// TypeDepth is a wrapper around the C function g_type_depth.
+func TypeDepth(type_ Type) uint32 {
+	c_type := (C.GType)(type_)
+
+	retC := C.g_type_depth(c_type)
+	retGo := (uint32)(retC)
+
+	return retGo
+}
 
 // TypeFreeInstance is a wrapper around the C function g_type_free_instance.
 func TypeFreeInstance(instance *TypeInstance) {
@@ -1027,17 +1281,48 @@ func TypeFreeInstance(instance *TypeInstance) {
 	return
 }
 
-// Unsupported : g_type_from_name : no return generator
+// TypeFromName is a wrapper around the C function g_type_from_name.
+func TypeFromName(name string) Type {
+	c_name := C.CString(name)
+	defer C.free(unsafe.Pointer(c_name))
 
-// Unsupported : g_type_fundamental : unsupported parameter type_id : no type generator for GType, GType
+	retC := C.g_type_from_name(c_name)
+	retGo := (Type)(retC)
 
-// Unsupported : g_type_fundamental_next : no return generator
+	return retGo
+}
 
-// Unsupported : g_type_get_instance_count : unsupported parameter type : no type generator for GType, GType
+// TypeFundamental is a wrapper around the C function g_type_fundamental.
+func TypeFundamental(typeId Type) Type {
+	c_type_id := (C.GType)(typeId)
 
-// Unsupported : g_type_get_plugin : unsupported parameter type : no type generator for GType, GType
+	retC := C.g_type_fundamental(c_type_id)
+	retGo := (Type)(retC)
 
-// Unsupported : g_type_get_qdata : unsupported parameter type : no type generator for GType, GType
+	return retGo
+}
+
+// TypeFundamentalNext is a wrapper around the C function g_type_fundamental_next.
+func TypeFundamentalNext() Type {
+	retC := C.g_type_fundamental_next()
+	retGo := (Type)(retC)
+
+	return retGo
+}
+
+// Unsupported : g_type_get_plugin : no return generator
+
+// TypeGetQdata is a wrapper around the C function g_type_get_qdata.
+func TypeGetQdata(type_ Type, quark glib.Quark) uintptr {
+	c_type := (C.GType)(type_)
+
+	c_quark := (C.GQuark)(quark)
+
+	retC := C.g_type_get_qdata(c_type, c_quark)
+	retGo := (uintptr)(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // TypeInit is a wrapper around the C function g_type_init.
 func TypeInit() {
@@ -1055,19 +1340,56 @@ func TypeInitWithDebugFlags(debugFlags TypeDebugFlags) {
 	return
 }
 
-// Unsupported : g_type_interface_add_prerequisite : unsupported parameter interface_type : no type generator for GType, GType
+// TypeInterfaceAddPrerequisite is a wrapper around the C function g_type_interface_add_prerequisite.
+func TypeInterfaceAddPrerequisite(interfaceType Type, prerequisiteType Type) {
+	c_interface_type := (C.GType)(interfaceType)
 
-// Unsupported : g_type_interface_get_plugin : unsupported parameter instance_type : no type generator for GType, GType
+	c_prerequisite_type := (C.GType)(prerequisiteType)
 
-// Unsupported : g_type_interface_peek : unsupported parameter iface_type : no type generator for GType, GType
+	C.g_type_interface_add_prerequisite(c_interface_type, c_prerequisite_type)
 
-// Unsupported : g_type_interface_prerequisites : unsupported parameter interface_type : no type generator for GType, GType
+	return
+}
 
-// Unsupported : g_type_interfaces : unsupported parameter type : no type generator for GType, GType
+// Unsupported : g_type_interface_get_plugin : no return generator
 
-// Unsupported : g_type_is_a : unsupported parameter type : no type generator for GType, GType
+// TypeInterfacePeek is a wrapper around the C function g_type_interface_peek.
+func TypeInterfacePeek(instanceClass uintptr, ifaceType Type) uintptr {
+	c_instance_class := (C.gpointer)(instanceClass)
 
-// Unsupported : g_type_name : unsupported parameter type : no type generator for GType, GType
+	c_iface_type := (C.GType)(ifaceType)
+
+	retC := C.g_type_interface_peek(c_instance_class, c_iface_type)
+	retGo := (uintptr)(retC)
+
+	return retGo
+}
+
+// Unsupported : g_type_interface_prerequisites : no return type
+
+// Unsupported : g_type_interfaces : no return type
+
+// TypeIsA is a wrapper around the C function g_type_is_a.
+func TypeIsA(type_ Type, isAType Type) bool {
+	c_type := (C.GType)(type_)
+
+	c_is_a_type := (C.GType)(isAType)
+
+	retC := C.g_type_is_a(c_type, c_is_a_type)
+	retGo := retC == C.TRUE
+
+	return retGo
+}
+
+// TypeName is a wrapper around the C function g_type_name.
+func TypeName(type_ Type) string {
+	c_type := (C.GType)(type_)
+
+	retC := C.g_type_name(c_type)
+	retGo := C.GoString(retC)
+
+	return retGo
+}
 
 // TypeNameFromClass is a wrapper around the C function g_type_name_from_class.
 func TypeNameFromClass(gClass *TypeClass) string {
@@ -1089,34 +1411,152 @@ func TypeNameFromInstance(instance *TypeInstance) string {
 	return retGo
 }
 
-// Unsupported : g_type_next_base : unsupported parameter leaf_type : no type generator for GType, GType
+// TypeNextBase is a wrapper around the C function g_type_next_base.
+func TypeNextBase(leafType Type, rootType Type) Type {
+	c_leaf_type := (C.GType)(leafType)
 
-// Unsupported : g_type_parent : unsupported parameter type : no type generator for GType, GType
+	c_root_type := (C.GType)(rootType)
 
-// Unsupported : g_type_qname : unsupported parameter type : no type generator for GType, GType
+	retC := C.g_type_next_base(c_leaf_type, c_root_type)
+	retGo := (Type)(retC)
 
-// Unsupported : g_type_query : unsupported parameter type : no type generator for GType, GType
+	return retGo
+}
 
-// Unsupported : g_type_register_dynamic : unsupported parameter parent_type : no type generator for GType, GType
+// TypeParent is a wrapper around the C function g_type_parent.
+func TypeParent(type_ Type) Type {
+	c_type := (C.GType)(type_)
 
-// Unsupported : g_type_register_fundamental : unsupported parameter type_id : no type generator for GType, GType
+	retC := C.g_type_parent(c_type)
+	retGo := (Type)(retC)
 
-// Unsupported : g_type_register_static : unsupported parameter parent_type : no type generator for GType, GType
+	return retGo
+}
 
-// Unsupported : g_type_register_static_simple : unsupported parameter parent_type : no type generator for GType, GType
+// TypeQname is a wrapper around the C function g_type_qname.
+func TypeQname(type_ Type) glib.Quark {
+	c_type := (C.GType)(type_)
 
-// Unsupported : g_type_remove_class_cache_func : unsupported parameter cache_func : no type generator for TypeClassCacheFunc, GTypeClassCacheFunc
+	retC := C.g_type_qname(c_type)
+	retGo := (glib.Quark)(retC)
 
-// Unsupported : g_type_remove_interface_check : unsupported parameter check_func : no type generator for TypeInterfaceCheckFunc, GTypeInterfaceCheckFunc
+	return retGo
+}
 
-// Unsupported : g_type_set_qdata : unsupported parameter type : no type generator for GType, GType
+// TypeQuery_ is a wrapper around the C function g_type_query.
+func TypeQuery_(type_ Type) *TypeQuery {
+	c_type := (C.GType)(type_)
 
-// Unsupported : g_type_test_flags : unsupported parameter type : no type generator for GType, GType
+	var c_query C.GTypeQuery
 
-// Unsupported : g_type_value_table_peek : unsupported parameter type : no type generator for GType, GType
+	C.g_type_query(c_type, &c_query)
 
-// Unsupported : g_value_register_transform_func : unsupported parameter src_type : no type generator for GType, GType
+	query := TypeQueryNewFromC(unsafe.Pointer(&c_query))
 
-// Unsupported : g_value_type_compatible : unsupported parameter src_type : no type generator for GType, GType
+	return query
+}
 
-// Unsupported : g_value_type_transformable : unsupported parameter src_type : no type generator for GType, GType
+// Unsupported : g_type_register_dynamic : unsupported parameter plugin : no type generator for TypePlugin (GTypePlugin*) for param plugin
+
+// TypeRegisterFundamental is a wrapper around the C function g_type_register_fundamental.
+func TypeRegisterFundamental(typeId Type, typeName string, info *TypeInfo, finfo *TypeFundamentalInfo, flags TypeFlags) Type {
+	c_type_id := (C.GType)(typeId)
+
+	c_type_name := C.CString(typeName)
+	defer C.free(unsafe.Pointer(c_type_name))
+
+	c_info := (*C.GTypeInfo)(info.ToC())
+
+	c_finfo := (*C.GTypeFundamentalInfo)(finfo.ToC())
+
+	c_flags := (C.GTypeFlags)(flags)
+
+	retC := C.g_type_register_fundamental(c_type_id, c_type_name, c_info, c_finfo, c_flags)
+	retGo := (Type)(retC)
+
+	return retGo
+}
+
+// TypeRegisterStatic is a wrapper around the C function g_type_register_static.
+func TypeRegisterStatic(parentType Type, typeName string, info *TypeInfo, flags TypeFlags) Type {
+	c_parent_type := (C.GType)(parentType)
+
+	c_type_name := C.CString(typeName)
+	defer C.free(unsafe.Pointer(c_type_name))
+
+	c_info := (*C.GTypeInfo)(info.ToC())
+
+	c_flags := (C.GTypeFlags)(flags)
+
+	retC := C.g_type_register_static(c_parent_type, c_type_name, c_info, c_flags)
+	retGo := (Type)(retC)
+
+	return retGo
+}
+
+// Unsupported : g_type_register_static_simple : unsupported parameter class_init : no type generator for ClassInitFunc (GClassInitFunc) for param class_init
+
+// Unsupported : g_type_remove_class_cache_func : unsupported parameter cache_func : no type generator for TypeClassCacheFunc (GTypeClassCacheFunc) for param cache_func
+
+// Unsupported : g_type_remove_interface_check : unsupported parameter check_func : no type generator for TypeInterfaceCheckFunc (GTypeInterfaceCheckFunc) for param check_func
+
+// TypeSetQdata is a wrapper around the C function g_type_set_qdata.
+func TypeSetQdata(type_ Type, quark glib.Quark, data uintptr) {
+	c_type := (C.GType)(type_)
+
+	c_quark := (C.GQuark)(quark)
+
+	c_data := (C.gpointer)(data)
+
+	C.g_type_set_qdata(c_type, c_quark, c_data)
+
+	return
+}
+
+// TypeTestFlags is a wrapper around the C function g_type_test_flags.
+func TypeTestFlags(type_ Type, flags uint32) bool {
+	c_type := (C.GType)(type_)
+
+	c_flags := (C.guint)(flags)
+
+	retC := C.g_type_test_flags(c_type, c_flags)
+	retGo := retC == C.TRUE
+
+	return retGo
+}
+
+// TypeValueTablePeek is a wrapper around the C function g_type_value_table_peek.
+func TypeValueTablePeek(type_ Type) *TypeValueTable {
+	c_type := (C.GType)(type_)
+
+	retC := C.g_type_value_table_peek(c_type)
+	retGo := TypeValueTableNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// Unsupported : g_value_register_transform_func : unsupported parameter transform_func : no type generator for ValueTransform (GValueTransform) for param transform_func
+
+// ValueTypeCompatible is a wrapper around the C function g_value_type_compatible.
+func ValueTypeCompatible(srcType Type, destType Type) bool {
+	c_src_type := (C.GType)(srcType)
+
+	c_dest_type := (C.GType)(destType)
+
+	retC := C.g_value_type_compatible(c_src_type, c_dest_type)
+	retGo := retC == C.TRUE
+
+	return retGo
+}
+
+// ValueTypeTransformable is a wrapper around the C function g_value_type_transformable.
+func ValueTypeTransformable(srcType Type, destType Type) bool {
+	c_src_type := (C.GType)(srcType)
+
+	c_dest_type := (C.GType)(destType)
+
+	retC := C.g_value_type_transformable(c_src_type, c_dest_type)
+	retGo := retC == C.TRUE
+
+	return retGo
+}

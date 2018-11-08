@@ -8,11 +8,11 @@ package pango
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : pango_break : unsupported parameter attrs : no param type
+// Unsupported : pango_break : unsupported parameter attrs : no type generator for LogAttr (PangoLogAttr) for array param attrs
 
 // Unsupported : pango_find_map : return type : Blacklisted record : PangoMap
 
-// Unsupported : pango_get_log_attrs : unsupported parameter log_attrs : no param type
+// Unsupported : pango_get_log_attrs : unsupported parameter log_attrs : no type generator for LogAttr (PangoLogAttr) for array param log_attrs
 
 // IsZeroWidth is a wrapper around the C function pango_is_zero_width.
 func IsZeroWidth(ch rune) bool {
@@ -26,13 +26,11 @@ func IsZeroWidth(ch rune) bool {
 
 // Unsupported : pango_log2vis_get_embedding_levels : unsupported parameter pbase_dir : PangoDirection* with indirection level of 1
 
-// Unsupported : pango_lookup_aliases : unsupported parameter families : no param type
+// Unsupported : pango_lookup_aliases : unsupported parameter families : no type generator for utf8 (char**) for array param families
 
 // Unsupported : pango_markup_parser_finish : unsupported parameter attr_list : record with indirection level of 2
 
 // Unsupported : pango_module_register : unsupported parameter module : Blacklisted record : PangoIncludedModule
-
-// Unsupported : pango_parse_enum : unsupported parameter type : no type generator for GType, GType
 
 // Unsupported : pango_parse_markup : unsupported parameter attr_list : record with indirection level of 2
 
@@ -44,7 +42,7 @@ func IsZeroWidth(ch rune) bool {
 
 // Unsupported : pango_parse_weight : unsupported parameter weight : PangoWeight* with indirection level of 1
 
-// Unsupported : pango_read_line : unsupported parameter stream : no type generator for gpointer, FILE*
+// Unsupported : pango_read_line : unsupported parameter stream : no type generator for gpointer (FILE*) for param stream
 
 // Unsupported : pango_scan_int : unsupported parameter pos : in string with indirection level of 2
 

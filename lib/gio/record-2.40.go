@@ -65,4 +65,4 @@ func (recv *SettingsSchemaKey) Unref() {
 	return
 }
 
-// Unsupported : g_settings_schema_source_list_schemas : unsupported parameter non_relocatable : no param type
+// Unsupported : g_settings_schema_source_list_schemas : unsupported parameter non_relocatable : no type generator for utf8 (gchar**) for array param non_relocatable

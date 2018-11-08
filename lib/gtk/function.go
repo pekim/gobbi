@@ -66,7 +66,7 @@ func AcceleratorName(acceleratorKey uint32, acceleratorMods gdk.ModifierType) st
 
 // Unsupported : gtk_accelerator_parse : unsupported parameter accelerator_mods : GdkModifierType* with indirection level of 1
 
-// Unsupported : gtk_accelerator_parse_with_keycode : unsupported parameter accelerator_codes : no param type
+// Unsupported : gtk_accelerator_parse_with_keycode : unsupported parameter accelerator_codes : no type generator for guint (guint*) for array param accelerator_codes
 
 // AcceleratorSetDefaultModMask is a wrapper around the C function gtk_accelerator_set_default_mod_mask.
 func AcceleratorSetDefaultModMask(defaultModMask gdk.ModifierType) {
@@ -263,7 +263,7 @@ func DragSetIconDefault(context *gdk.DragContext) {
 	return
 }
 
-// Unsupported : gtk_drag_set_icon_gicon : unsupported parameter icon : no type generator for Gio.Icon, GIcon*
+// Unsupported : gtk_drag_set_icon_gicon : unsupported parameter icon : no type generator for Gio.Icon (GIcon*) for param icon
 
 // DragSetIconPixbuf is a wrapper around the C function gtk_drag_set_icon_pixbuf.
 func DragSetIconPixbuf(context *gdk.DragContext, pixbuf *gdkpixbuf.Pixbuf, hotX int32, hotY int32) {
@@ -381,7 +381,7 @@ func GetDefaultLanguage() *pango.Language {
 	return retGo
 }
 
-// Unsupported : gtk_get_event_widget : unsupported parameter event : no type generator for Gdk.Event, GdkEvent*
+// Unsupported : gtk_get_event_widget : unsupported parameter event : no type generator for Gdk.Event (GdkEvent*) for param event
 
 // GrabGetCurrent is a wrapper around the C function gtk_grab_get_current.
 func GrabGetCurrent() *Widget {
@@ -398,15 +398,15 @@ func GrabGetCurrent() *Widget {
 
 // Unsupported : gtk_icon_size_from_name : no return generator
 
-// Unsupported : gtk_icon_size_get_name : unsupported parameter size : no type generator for gint, GtkIconSize
+// Unsupported : gtk_icon_size_get_name : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
 
-// Unsupported : gtk_icon_size_lookup : unsupported parameter size : no type generator for gint, GtkIconSize
+// Unsupported : gtk_icon_size_lookup : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
 
-// Unsupported : gtk_icon_size_lookup_for_settings : unsupported parameter size : no type generator for gint, GtkIconSize
+// Unsupported : gtk_icon_size_lookup_for_settings : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
 
 // Unsupported : gtk_icon_size_register : no return generator
 
-// Unsupported : gtk_icon_size_register_alias : unsupported parameter target : no type generator for gint, GtkIconSize
+// Unsupported : gtk_icon_size_register_alias : unsupported parameter target : no type generator for gint (GtkIconSize) for param target
 
 // IconThemeErrorQuark is a wrapper around the C function gtk_icon_theme_error_quark.
 func IconThemeErrorQuark() glib.Quark {
@@ -416,13 +416,13 @@ func IconThemeErrorQuark() glib.Quark {
 	return retGo
 }
 
-// Unsupported : gtk_init : unsupported parameter argv : no param type
+// Unsupported : gtk_init : unsupported parameter argv : no type generator for utf8 (char**) for array param argv
 
-// Unsupported : gtk_init_check : unsupported parameter argv : no param type
+// Unsupported : gtk_init_check : unsupported parameter argv : no type generator for utf8 (char**) for array param argv
 
-// Unsupported : gtk_init_with_args : unsupported parameter argv : no param type
+// Unsupported : gtk_init_with_args : unsupported parameter argv : no type generator for utf8 (gchar**) for array param argv
 
-// Unsupported : gtk_key_snooper_install : unsupported parameter snooper : no type generator for KeySnoopFunc, GtkKeySnoopFunc
+// Unsupported : gtk_key_snooper_install : unsupported parameter snooper : no type generator for KeySnoopFunc (GtkKeySnoopFunc) for param snooper
 
 // KeySnooperRemove is a wrapper around the C function gtk_key_snooper_remove.
 func KeySnooperRemove(snooperHandlerId uint32) {
@@ -440,7 +440,7 @@ func Main() {
 	return
 }
 
-// Unsupported : gtk_main_do_event : unsupported parameter event : no type generator for Gdk.Event, GdkEvent*
+// Unsupported : gtk_main_do_event : unsupported parameter event : no type generator for Gdk.Event (GdkEvent*) for param event
 
 // MainIteration is a wrapper around the C function gtk_main_iteration.
 func MainIteration() bool {
@@ -1044,11 +1044,11 @@ func PaintVline(style *Style, cr *cairo.Context, stateType StateType, widget *Wi
 	return
 }
 
-// Unsupported : gtk_parse_args : unsupported parameter argv : no param type
+// Unsupported : gtk_parse_args : unsupported parameter argv : no type generator for utf8 (char**) for array param argv
 
-// Unsupported : gtk_print_run_page_setup_dialog_async : unsupported parameter done_cb : no type generator for PageSetupDoneFunc, GtkPageSetupDoneFunc
+// Unsupported : gtk_print_run_page_setup_dialog_async : unsupported parameter done_cb : no type generator for PageSetupDoneFunc (GtkPageSetupDoneFunc) for param done_cb
 
-// Unsupported : gtk_propagate_event : unsupported parameter event : no type generator for Gdk.Event, GdkEvent*
+// Unsupported : gtk_propagate_event : unsupported parameter event : no type generator for Gdk.Event (GdkEvent*) for param event
 
 // RcAddDefaultFile is a wrapper around the C function gtk_rc_add_default_file.
 func RcAddDefaultFile(filename string) {
@@ -1127,7 +1127,28 @@ func RcGetStyle(widget *Widget) *Style {
 	return retGo
 }
 
-// Unsupported : gtk_rc_get_style_by_paths : unsupported parameter type : no type generator for GType, GType
+// RcGetStyleByPaths is a wrapper around the C function gtk_rc_get_style_by_paths.
+func RcGetStyleByPaths(settings *Settings, widgetPath string, classPath string, type_ gobject.Type) *Style {
+	c_settings := (*C.GtkSettings)(settings.ToC())
+
+	c_widget_path := C.CString(widgetPath)
+	defer C.free(unsafe.Pointer(c_widget_path))
+
+	c_class_path := C.CString(classPath)
+	defer C.free(unsafe.Pointer(c_class_path))
+
+	c_type := (C.GType)(type_)
+
+	retC := C.gtk_rc_get_style_by_paths(c_settings, c_widget_path, c_class_path, c_type)
+	var retGo (*Style)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = StyleNewFromC(unsafe.Pointer(retC))
+	}
+
+	return retGo
+}
 
 // RcGetThemeDir is a wrapper around the C function gtk_rc_get_theme_dir.
 func RcGetThemeDir() string {
@@ -1215,7 +1236,7 @@ func RcScannerNew() *glib.Scanner {
 	return retGo
 }
 
-// Unsupported : gtk_rc_set_default_files : unsupported parameter filenames : no param type
+// Unsupported : gtk_rc_set_default_files : unsupported parameter filenames : no type generator for filename () for array param filenames
 
 // RecentChooserErrorQuark is a wrapper around the C function gtk_recent_chooser_error_quark.
 func RecentChooserErrorQuark() glib.Quark {
@@ -1235,7 +1256,7 @@ func RecentManagerErrorQuark() glib.Quark {
 
 // Unsupported : gtk_render_background_get_clip : unsupported parameter out_clip : Blacklisted record : GdkRectangle
 
-// Unsupported : gtk_render_icon_pixbuf : unsupported parameter size : no type generator for gint, GtkIconSize
+// Unsupported : gtk_render_icon_pixbuf : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
 
 // Unsupported : gtk_selection_add_target : unsupported parameter selection : Blacklisted record : GdkAtom
 
@@ -1269,9 +1290,9 @@ func SetDebugFlags(flags uint32) {
 
 // Unsupported : gtk_show_about_dialog : unsupported parameter ... : varargs
 
-// Unsupported : gtk_stock_add : unsupported parameter items : no param type
+// Unsupported : gtk_stock_add : unsupported parameter items : no type generator for StockItem (GtkStockItem) for array param items
 
-// Unsupported : gtk_stock_add_static : unsupported parameter items : no param type
+// Unsupported : gtk_stock_add_static : unsupported parameter items : no type generator for StockItem (GtkStockItem) for array param items
 
 // StockListIds is a wrapper around the C function gtk_stock_list_ids.
 func StockListIds() *glib.SList {
@@ -1296,33 +1317,29 @@ func StockLookup(stockId string) (bool, *StockItem) {
 	return retGo, item
 }
 
-// Unsupported : gtk_stock_set_translate_func : unsupported parameter func : no type generator for TranslateFunc, GtkTranslateFunc
+// Unsupported : gtk_stock_set_translate_func : unsupported parameter func : no type generator for TranslateFunc (GtkTranslateFunc) for param func
 
-// Unsupported : gtk_target_table_free : unsupported parameter targets : no param type
+// Unsupported : gtk_target_table_free : unsupported parameter targets : no type generator for TargetEntry (GtkTargetEntry) for array param targets
 
 // Unsupported : gtk_target_table_new_from_list : no return type
 
-// Unsupported : gtk_targets_include_image : unsupported parameter targets : no param type
+// Unsupported : gtk_targets_include_image : unsupported parameter targets : no type generator for Gdk.Atom (GdkAtom) for array param targets
 
-// Unsupported : gtk_targets_include_rich_text : unsupported parameter targets : no param type
+// Unsupported : gtk_targets_include_rich_text : unsupported parameter targets : no type generator for Gdk.Atom (GdkAtom) for array param targets
 
-// Unsupported : gtk_targets_include_text : unsupported parameter targets : no param type
+// Unsupported : gtk_targets_include_text : unsupported parameter targets : no type generator for Gdk.Atom (GdkAtom) for array param targets
 
-// Unsupported : gtk_targets_include_uri : unsupported parameter targets : no param type
+// Unsupported : gtk_targets_include_uri : unsupported parameter targets : no type generator for Gdk.Atom (GdkAtom) for array param targets
 
-// Unsupported : gtk_test_create_widget : unsupported parameter widget_type : no type generator for GType, GType
+// Unsupported : gtk_test_create_widget : unsupported parameter ... : varargs
 
 // Unsupported : gtk_test_display_button_window : unsupported parameter ... : varargs
 
-// Unsupported : gtk_test_find_sibling : unsupported parameter widget_type : no type generator for GType, GType
-
-// Unsupported : gtk_test_find_widget : unsupported parameter widget_type : no type generator for GType, GType
-
-// Unsupported : gtk_test_init : unsupported parameter argvp : no param type
+// Unsupported : gtk_test_init : unsupported parameter argvp : no type generator for utf8 (char**) for array param argvp
 
 // Unsupported : gtk_test_list_all_types : no return type
 
-// Unsupported : gtk_tree_get_row_drag_data : unsupported parameter tree_model : no type generator for TreeModel, GtkTreeModel**
+// Unsupported : gtk_tree_get_row_drag_data : unsupported parameter tree_model : no type generator for TreeModel (GtkTreeModel**) for param tree_model
 
 // TreeRowReferenceDeleted is a wrapper around the C function gtk_tree_row_reference_deleted.
 func TreeRowReferenceDeleted(proxy *gobject.Object, path *TreePath) {
@@ -1346,9 +1363,9 @@ func TreeRowReferenceInserted(proxy *gobject.Object, path *TreePath) {
 	return
 }
 
-// Unsupported : gtk_tree_row_reference_reordered : unsupported parameter new_order : no param type
+// Unsupported : gtk_tree_row_reference_reordered : unsupported parameter new_order : no type generator for gint (gint) for array param new_order
 
-// Unsupported : gtk_tree_set_row_drag_data : unsupported parameter tree_model : no type generator for TreeModel, GtkTreeModel*
+// Unsupported : gtk_tree_set_row_drag_data : unsupported parameter tree_model : no type generator for TreeModel (GtkTreeModel*) for param tree_model
 
 // True is a wrapper around the C function gtk_true.
 func True() bool {

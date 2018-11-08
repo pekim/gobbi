@@ -186,15 +186,15 @@ func ErrorTrapPush() {
 
 // Unsupported : gdk_event_get : no return generator
 
-// Unsupported : gdk_event_handler_set : unsupported parameter func : no type generator for EventFunc, GdkEventFunc
+// Unsupported : gdk_event_handler_set : unsupported parameter func : no type generator for EventFunc (GdkEventFunc) for param func
 
 // Unsupported : gdk_event_peek : no return generator
 
-// Unsupported : gdk_events_get_angle : unsupported parameter event1 : no type generator for Event, GdkEvent*
+// Unsupported : gdk_events_get_angle : unsupported parameter event1 : no type generator for Event (GdkEvent*) for param event1
 
-// Unsupported : gdk_events_get_center : unsupported parameter event1 : no type generator for Event, GdkEvent*
+// Unsupported : gdk_events_get_center : unsupported parameter event1 : no type generator for Event (GdkEvent*) for param event1
 
-// Unsupported : gdk_events_get_distance : unsupported parameter event1 : no type generator for Event, GdkEvent*
+// Unsupported : gdk_events_get_distance : unsupported parameter event1 : no type generator for Event (GdkEvent*) for param event1
 
 // EventsPending is a wrapper around the C function gdk_events_pending.
 func EventsPending() bool {
@@ -252,9 +252,9 @@ func GlErrorQuark() glib.Quark {
 	return retGo
 }
 
-// Unsupported : gdk_init : unsupported parameter argv : no param type
+// Unsupported : gdk_init : unsupported parameter argv : no type generator for utf8 (gchar**) for array param argv
 
-// Unsupported : gdk_init_check : unsupported parameter argv : no param type
+// Unsupported : gdk_init_check : unsupported parameter argv : no type generator for utf8 (gchar**) for array param argv
 
 // KeyboardGrab is a wrapper around the C function gdk_keyboard_grab.
 func KeyboardGrab(window *Window, ownerEvents bool, time uint32) GrabStatus {
@@ -417,9 +417,9 @@ func PangoLayoutGetClipRegion(layout *pango.Layout, xOrigin int32, yOrigin int32
 	return retGo
 }
 
-// Unsupported : gdk_pango_layout_line_get_clip_region : unsupported parameter index_ranges : no param type
+// Unsupported : gdk_pango_layout_line_get_clip_region : unsupported parameter index_ranges : no type generator for gint (gint) for array param index_ranges
 
-// Unsupported : gdk_parse_args : unsupported parameter argv : no param type
+// Unsupported : gdk_parse_args : unsupported parameter argv : no type generator for utf8 (gchar**) for array param argv
 
 // PixbufGetFromSurface is a wrapper around the C function gdk_pixbuf_get_from_surface.
 func PixbufGetFromSurface(surface *cairo.Surface, srcX int32, srcY int32, width int32, height int32) *gdkpixbuf.Pixbuf {
@@ -518,9 +518,9 @@ func PreParseLibgtkOnly() {
 
 // Unsupported : gdk_property_get : unsupported parameter property : Blacklisted record : GdkAtom
 
-// Unsupported : gdk_query_depths : unsupported parameter depths : no param type
+// Unsupported : gdk_query_depths : unsupported parameter depths : no type generator for gint (gint*) for array param depths
 
-// Unsupported : gdk_query_visual_types : unsupported parameter visual_types : no param type
+// Unsupported : gdk_query_visual_types : unsupported parameter visual_types : no type generator for VisualType (GdkVisualType*) for array param visual_types
 
 // Unsupported : gdk_selection_convert : unsupported parameter selection : Blacklisted record : GdkAtom
 
@@ -584,17 +584,17 @@ func SettingGet(name string, value *gobject.Value) bool {
 
 // Unsupported : gdk_text_property_to_utf8_list_for_display : unsupported parameter encoding : Blacklisted record : GdkAtom
 
-// Unsupported : gdk_threads_add_idle : unsupported parameter function : no type generator for GLib.SourceFunc, GSourceFunc
+// Unsupported : gdk_threads_add_idle : unsupported parameter function : no type generator for GLib.SourceFunc (GSourceFunc) for param function
 
-// Unsupported : gdk_threads_add_idle_full : unsupported parameter function : no type generator for GLib.SourceFunc, GSourceFunc
+// Unsupported : gdk_threads_add_idle_full : unsupported parameter function : no type generator for GLib.SourceFunc (GSourceFunc) for param function
 
-// Unsupported : gdk_threads_add_timeout : unsupported parameter function : no type generator for GLib.SourceFunc, GSourceFunc
+// Unsupported : gdk_threads_add_timeout : unsupported parameter function : no type generator for GLib.SourceFunc (GSourceFunc) for param function
 
-// Unsupported : gdk_threads_add_timeout_full : unsupported parameter function : no type generator for GLib.SourceFunc, GSourceFunc
+// Unsupported : gdk_threads_add_timeout_full : unsupported parameter function : no type generator for GLib.SourceFunc (GSourceFunc) for param function
 
-// Unsupported : gdk_threads_add_timeout_seconds : unsupported parameter function : no type generator for GLib.SourceFunc, GSourceFunc
+// Unsupported : gdk_threads_add_timeout_seconds : unsupported parameter function : no type generator for GLib.SourceFunc (GSourceFunc) for param function
 
-// Unsupported : gdk_threads_add_timeout_seconds_full : unsupported parameter function : no type generator for GLib.SourceFunc, GSourceFunc
+// Unsupported : gdk_threads_add_timeout_seconds_full : unsupported parameter function : no type generator for GLib.SourceFunc (GSourceFunc) for param function
 
 // ThreadsEnter is a wrapper around the C function gdk_threads_enter.
 func ThreadsEnter() {
@@ -617,7 +617,7 @@ func ThreadsLeave() {
 	return
 }
 
-// Unsupported : gdk_threads_set_lock_functions : unsupported parameter enter_fn : no type generator for GObject.Callback, GCallback
+// Unsupported : gdk_threads_set_lock_functions : unsupported parameter enter_fn : no type generator for GObject.Callback (GCallback) for param enter_fn
 
 // UnicodeToKeyval is a wrapper around the C function gdk_unicode_to_keyval.
 func UnicodeToKeyval(wc uint32) uint32 {

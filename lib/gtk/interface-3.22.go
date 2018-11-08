@@ -12,7 +12,7 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : gtk_file_chooser_add_choice : unsupported parameter options : no param type
+// Unsupported : gtk_file_chooser_add_choice : unsupported parameter options : no type generator for utf8 (char*) for array param options
 
 // GetChoice is a wrapper around the C function gtk_file_chooser_get_choice.
 func (recv *FileChooser) GetChoice(id string) string {

@@ -420,7 +420,7 @@ func (recv *RecentChooser) SetShowTips(showTips bool) {
 	return
 }
 
-// Unsupported : gtk_recent_chooser_set_sort_func : unsupported parameter sort_func : no type generator for RecentSortFunc, GtkRecentSortFunc
+// Unsupported : gtk_recent_chooser_set_sort_func : unsupported parameter sort_func : no type generator for RecentSortFunc (GtkRecentSortFunc) for param sort_func
 
 // SetSortType is a wrapper around the C function gtk_recent_chooser_set_sort_type.
 func (recv *RecentChooser) SetSortType(sortType RecentSortType) {

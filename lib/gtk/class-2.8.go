@@ -53,13 +53,13 @@ func (recv *Action) GetAccelClosure() *gobject.Closure {
 	return retGo
 }
 
-// Unsupported : gtk_app_chooser_dialog_new : unsupported parameter file : no type generator for Gio.File, GFile*
+// Unsupported : gtk_app_chooser_dialog_new : unsupported parameter file : no type generator for Gio.File (GFile*) for param file
 
-// Unsupported : gtk_button_new_from_icon_name : unsupported parameter size : no type generator for gint, GtkIconSize
+// Unsupported : gtk_button_new_from_icon_name : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
 
-// Unsupported : gtk_combo_box_new_with_model : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
+// Unsupported : gtk_combo_box_new_with_model : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
 
-// Unsupported : gtk_combo_box_new_with_model_and_entry : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
+// Unsupported : gtk_combo_box_new_with_model_and_entry : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
 
 // Unsupported : gtk_dialog_new_with_buttons : unsupported parameter ... : varargs
 
@@ -115,7 +115,7 @@ func (recv *EntryCompletion) SetPopupSingleMatch(popupSingleMatch bool) {
 
 // Unsupported : gtk_file_filter_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
 
-// Unsupported : gtk_icon_view_new_with_model : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
+// Unsupported : gtk_icon_view_new_with_model : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
 
 // CreateDragIcon is a wrapper around the C function gtk_icon_view_create_drag_icon.
 func (recv *IconView) CreateDragIcon(path *TreePath) *cairo.Surface {
@@ -127,9 +127,9 @@ func (recv *IconView) CreateDragIcon(path *TreePath) *cairo.Surface {
 	return retGo
 }
 
-// Unsupported : gtk_icon_view_enable_model_drag_dest : unsupported parameter targets : no param type
+// Unsupported : gtk_icon_view_enable_model_drag_dest : unsupported parameter targets : no type generator for TargetEntry (GtkTargetEntry) for array param targets
 
-// Unsupported : gtk_icon_view_enable_model_drag_source : unsupported parameter targets : no param type
+// Unsupported : gtk_icon_view_enable_model_drag_source : unsupported parameter targets : no type generator for TargetEntry (GtkTargetEntry) for array param targets
 
 // Unsupported : gtk_icon_view_get_cursor : unsupported parameter path : record with indirection level of 2
 
@@ -214,13 +214,13 @@ func (recv *IconView) UnsetModelDragSource() {
 	return
 }
 
-// Unsupported : gtk_image_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon, GIcon*
+// Unsupported : gtk_image_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon (GIcon*) for param icon
 
-// Unsupported : gtk_image_new_from_icon_name : unsupported parameter size : no type generator for gint, GtkIconSize
+// Unsupported : gtk_image_new_from_icon_name : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
 
-// Unsupported : gtk_image_new_from_icon_set : unsupported parameter size : no type generator for gint, GtkIconSize
+// Unsupported : gtk_image_new_from_icon_set : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
 
-// Unsupported : gtk_image_new_from_stock : unsupported parameter size : no type generator for gint, GtkIconSize
+// Unsupported : gtk_image_new_from_stock : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
 
 // Clear is a wrapper around the C function gtk_image_clear.
 func (recv *Image) Clear() {
@@ -233,7 +233,7 @@ func (recv *Image) Clear() {
 
 // Unsupported : gtk_list_store_new : unsupported parameter ... : varargs
 
-// Unsupported : gtk_list_store_newv : unsupported parameter types : no param type
+// Unsupported : gtk_list_store_newv : unsupported parameter types : no type generator for GType (GType) for array param types
 
 // GetChildPackDirection is a wrapper around the C function gtk_menu_bar_get_child_pack_direction.
 func (recv *MenuBar) GetChildPackDirection() PackDirection {
@@ -299,7 +299,7 @@ func (recv *MenuShell) SetTakeFocus(takeFocus bool) {
 
 // Unsupported : gtk_recent_chooser_dialog_new_for_manager : unsupported parameter ... : varargs
 
-// Unsupported : gtk_scale_button_new : unsupported parameter size : no type generator for gint, GtkIconSize
+// Unsupported : gtk_scale_button_new : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
 
 // GetHscrollbar is a wrapper around the C function gtk_scrolled_window_get_hscrollbar.
 func (recv *ScrolledWindow) GetHscrollbar() *Widget {
@@ -335,7 +335,7 @@ func (recv *SizeGroup) SetIgnoreHidden(ignoreHidden bool) {
 	return
 }
 
-// Unsupported : gtk_status_icon_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon, GIcon*
+// Unsupported : gtk_status_icon_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon (GIcon*) for param icon
 
 // GetIconName is a wrapper around the C function gtk_tool_button_get_icon_name.
 func (recv *ToolButton) GetIconName() string {
@@ -357,9 +357,9 @@ func (recv *ToolButton) SetIconName(iconName string) {
 
 // Unsupported : gtk_tree_store_new : unsupported parameter ... : varargs
 
-// Unsupported : gtk_tree_store_newv : unsupported parameter types : no param type
+// Unsupported : gtk_tree_store_newv : unsupported parameter types : no type generator for GType (GType) for array param types
 
-// Unsupported : gtk_tree_view_new_with_model : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
+// Unsupported : gtk_tree_view_new_with_model : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
 
 // Unsupported : gtk_tree_view_get_visible_range : unsupported parameter start_path : record with indirection level of 2
 
@@ -434,7 +434,7 @@ func widget_grabBrokenEventHandler(_ *C.GObject, c_event *C.GdkEventGrabBroken, 
 	return retC
 }
 
-// Unsupported : gtk_widget_new : unsupported parameter type : no type generator for GType, GType
+// Unsupported : gtk_widget_new : unsupported parameter ... : varargs
 
 // DragSourceSetIconName is a wrapper around the C function gtk_drag_source_set_icon_name.
 func (recv *Widget) DragSourceSetIconName(iconName string) {

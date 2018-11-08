@@ -8,51 +8,33 @@ package gobject
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : g_boxed_copy : unsupported parameter boxed_type : no type generator for GType, GType
+// Unsupported : g_boxed_type_register_static : unsupported parameter boxed_copy : no type generator for BoxedCopyFunc (GBoxedCopyFunc) for param boxed_copy
 
-// Unsupported : g_boxed_free : unsupported parameter boxed_type : no type generator for GType, GType
+// Unsupported : g_cclosure_new : unsupported parameter callback_func : no type generator for Callback (GCallback) for param callback_func
 
-// Unsupported : g_boxed_type_register_static : unsupported parameter boxed_copy : no type generator for BoxedCopyFunc, GBoxedCopyFunc
+// Unsupported : g_cclosure_new_object : unsupported parameter callback_func : no type generator for Callback (GCallback) for param callback_func
 
-// Unsupported : g_cclosure_new : unsupported parameter callback_func : no type generator for Callback, GCallback
+// Unsupported : g_cclosure_new_object_swap : unsupported parameter callback_func : no type generator for Callback (GCallback) for param callback_func
 
-// Unsupported : g_cclosure_new_object : unsupported parameter callback_func : no type generator for Callback, GCallback
-
-// Unsupported : g_cclosure_new_object_swap : unsupported parameter callback_func : no type generator for Callback, GCallback
-
-// Unsupported : g_cclosure_new_swap : unsupported parameter callback_func : no type generator for Callback, GCallback
+// Unsupported : g_cclosure_new_swap : unsupported parameter callback_func : no type generator for Callback (GCallback) for param callback_func
 
 // Unsupported : g_clear_object : unsupported parameter object_ptr : record with indirection level of 2
 
-// Unsupported : g_enum_complete_type_info : unsupported parameter g_enum_type : no type generator for GType, GType
-
-// Unsupported : g_enum_register_static : no return generator
-
-// Unsupported : g_enum_to_string : unsupported parameter g_enum_type : no type generator for GType, GType
-
-// Unsupported : g_flags_complete_type_info : unsupported parameter g_flags_type : no type generator for GType, GType
-
-// Unsupported : g_flags_register_static : no return generator
-
-// Unsupported : g_flags_to_string : unsupported parameter flags_type : no type generator for GType, GType
-
-// Unsupported : g_gtype_get_type : no return generator
-
 // Unsupported : g_param_spec_boolean : return type : Blacklisted record : GParamSpec
 
-// Unsupported : g_param_spec_boxed : unsupported parameter boxed_type : no type generator for GType, GType
+// Unsupported : g_param_spec_boxed : return type : Blacklisted record : GParamSpec
 
 // Unsupported : g_param_spec_char : return type : Blacklisted record : GParamSpec
 
 // Unsupported : g_param_spec_double : return type : Blacklisted record : GParamSpec
 
-// Unsupported : g_param_spec_enum : unsupported parameter enum_type : no type generator for GType, GType
+// Unsupported : g_param_spec_enum : return type : Blacklisted record : GParamSpec
 
-// Unsupported : g_param_spec_flags : unsupported parameter flags_type : no type generator for GType, GType
+// Unsupported : g_param_spec_flags : return type : Blacklisted record : GParamSpec
 
 // Unsupported : g_param_spec_float : return type : Blacklisted record : GParamSpec
 
-// Unsupported : g_param_spec_gtype : unsupported parameter is_a_type : no type generator for GType, GType
+// Unsupported : g_param_spec_gtype : return type : Blacklisted record : GParamSpec
 
 // Unsupported : g_param_spec_int : return type : Blacklisted record : GParamSpec
 
@@ -60,11 +42,11 @@ import "C"
 
 // Unsupported : g_param_spec_long : return type : Blacklisted record : GParamSpec
 
-// Unsupported : g_param_spec_object : unsupported parameter object_type : no type generator for GType, GType
+// Unsupported : g_param_spec_object : return type : Blacklisted record : GParamSpec
 
 // Unsupported : g_param_spec_override : unsupported parameter overridden : Blacklisted record : GParamSpec
 
-// Unsupported : g_param_spec_param : unsupported parameter param_type : no type generator for GType, GType
+// Unsupported : g_param_spec_param : return type : Blacklisted record : GParamSpec
 
 // Unsupported : g_param_spec_pointer : return type : Blacklisted record : GParamSpec
 
@@ -84,8 +66,6 @@ import "C"
 
 // Unsupported : g_param_spec_variant : unsupported parameter type : Blacklisted record : GVariantType
 
-// Unsupported : g_param_type_register_static : no return generator
-
 // Unsupported : g_param_value_convert : unsupported parameter pspec : Blacklisted record : GParamSpec
 
 // Unsupported : g_param_value_defaults : unsupported parameter pspec : Blacklisted record : GParamSpec
@@ -95,8 +75,6 @@ import "C"
 // Unsupported : g_param_value_validate : unsupported parameter pspec : Blacklisted record : GParamSpec
 
 // Unsupported : g_param_values_cmp : unsupported parameter pspec : Blacklisted record : GParamSpec
-
-// Unsupported : g_pointer_type_register_static : no return generator
 
 // SignalAccumulatorTrueHandled is a wrapper around the C function g_signal_accumulator_true_handled.
 func SignalAccumulatorTrueHandled(ihint *SignalInvocationHint, returnAccu *Value, handlerReturn *Value, dummy uintptr) bool {
@@ -114,85 +92,75 @@ func SignalAccumulatorTrueHandled(ihint *SignalInvocationHint, returnAccu *Value
 	return retGo
 }
 
-// Unsupported : g_signal_add_emission_hook : unsupported parameter hook_func : no type generator for SignalEmissionHook, GSignalEmissionHook
+// Unsupported : g_signal_add_emission_hook : unsupported parameter hook_func : no type generator for SignalEmissionHook (GSignalEmissionHook) for param hook_func
 
-// Unsupported : g_signal_chain_from_overridden : unsupported parameter instance_and_params : no param type
+// Unsupported : g_signal_chain_from_overridden : unsupported parameter instance_and_params : no type generator for Value (GValue) for array param instance_and_params
 
 // Unsupported : g_signal_chain_from_overridden_handler : unsupported parameter ... : varargs
 
-// Unsupported : g_signal_connect_data : unsupported parameter c_handler : no type generator for Callback, GCallback
+// Unsupported : g_signal_connect_data : unsupported parameter c_handler : no type generator for Callback (GCallback) for param c_handler
 
-// Unsupported : g_signal_connect_object : unsupported parameter c_handler : no type generator for Callback, GCallback
+// Unsupported : g_signal_connect_object : unsupported parameter c_handler : no type generator for Callback (GCallback) for param c_handler
 
 // Unsupported : g_signal_emit : unsupported parameter ... : varargs
 
 // Unsupported : g_signal_emit_by_name : unsupported parameter ... : varargs
 
-// Unsupported : g_signal_emit_valist : unsupported parameter var_args : no type generator for va_list, va_list
+// Unsupported : g_signal_emit_valist : unsupported parameter var_args : no type generator for va_list (va_list) for param var_args
 
-// Unsupported : g_signal_emitv : unsupported parameter instance_and_params : no param type
+// Unsupported : g_signal_emitv : unsupported parameter instance_and_params : no type generator for Value (GValue) for array param instance_and_params
 
-// Unsupported : g_signal_list_ids : unsupported parameter itype : no type generator for GType, GType
+// Unsupported : g_signal_list_ids : no return type
 
-// Unsupported : g_signal_lookup : unsupported parameter itype : no type generator for GType, GType
+// Unsupported : g_signal_new : unsupported parameter accumulator : no type generator for SignalAccumulator (GSignalAccumulator) for param accumulator
 
-// Unsupported : g_signal_new : unsupported parameter itype : no type generator for GType, GType
+// Unsupported : g_signal_new_class_handler : unsupported parameter class_handler : no type generator for Callback (GCallback) for param class_handler
 
-// Unsupported : g_signal_new_class_handler : unsupported parameter itype : no type generator for GType, GType
+// Unsupported : g_signal_new_valist : unsupported parameter accumulator : no type generator for SignalAccumulator (GSignalAccumulator) for param accumulator
 
-// Unsupported : g_signal_new_valist : unsupported parameter itype : no type generator for GType, GType
+// Unsupported : g_signal_newv : unsupported parameter accumulator : no type generator for SignalAccumulator (GSignalAccumulator) for param accumulator
 
-// Unsupported : g_signal_newv : unsupported parameter itype : no type generator for GType, GType
+// Unsupported : g_signal_override_class_handler : unsupported parameter class_handler : no type generator for Callback (GCallback) for param class_handler
 
-// Unsupported : g_signal_override_class_closure : unsupported parameter instance_type : no type generator for GType, GType
+// Unsupported : g_signal_set_va_marshaller : unsupported parameter va_marshaller : no type generator for SignalCVaMarshaller (GSignalCVaMarshaller) for param va_marshaller
 
-// Unsupported : g_signal_override_class_handler : unsupported parameter instance_type : no type generator for GType, GType
+// Unsupported : g_type_add_class_cache_func : unsupported parameter cache_func : no type generator for TypeClassCacheFunc (GTypeClassCacheFunc) for param cache_func
 
-// Unsupported : g_signal_parse_name : unsupported parameter itype : no type generator for GType, GType
+// Unsupported : g_type_add_interface_check : unsupported parameter check_func : no type generator for TypeInterfaceCheckFunc (GTypeInterfaceCheckFunc) for param check_func
 
-// Unsupported : g_signal_set_va_marshaller : unsupported parameter instance_type : no type generator for GType, GType
+// Unsupported : g_type_add_interface_dynamic : unsupported parameter plugin : no type generator for TypePlugin (GTypePlugin*) for param plugin
 
-// Unsupported : g_signal_type_cclosure_new : unsupported parameter itype : no type generator for GType, GType
+// Unsupported : g_type_children : no return type
 
-// Unsupported : g_type_add_class_cache_func : unsupported parameter cache_func : no type generator for TypeClassCacheFunc, GTypeClassCacheFunc
+// TypeClassPeekStatic is a wrapper around the C function g_type_class_peek_static.
+func TypeClassPeekStatic(type_ Type) uintptr {
+	c_type := (C.GType)(type_)
 
-// Unsupported : g_type_add_class_private : unsupported parameter class_type : no type generator for GType, GType
+	retC := C.g_type_class_peek_static(c_type)
+	retGo := (uintptr)(retC)
 
-// Unsupported : g_type_add_instance_private : unsupported parameter class_type : no type generator for GType, GType
+	return retGo
+}
 
-// Unsupported : g_type_add_interface_check : unsupported parameter check_func : no type generator for TypeInterfaceCheckFunc, GTypeInterfaceCheckFunc
+// TypeDefaultInterfacePeek is a wrapper around the C function g_type_default_interface_peek.
+func TypeDefaultInterfacePeek(gType Type) uintptr {
+	c_g_type := (C.GType)(gType)
 
-// Unsupported : g_type_add_interface_dynamic : unsupported parameter instance_type : no type generator for GType, GType
+	retC := C.g_type_default_interface_peek(c_g_type)
+	retGo := (uintptr)(retC)
 
-// Unsupported : g_type_add_interface_static : unsupported parameter instance_type : no type generator for GType, GType
+	return retGo
+}
 
-// Unsupported : g_type_check_class_cast : unsupported parameter is_a_type : no type generator for GType, GType
+// TypeDefaultInterfaceRef is a wrapper around the C function g_type_default_interface_ref.
+func TypeDefaultInterfaceRef(gType Type) uintptr {
+	c_g_type := (C.GType)(gType)
 
-// Unsupported : g_type_check_class_is_a : unsupported parameter is_a_type : no type generator for GType, GType
+	retC := C.g_type_default_interface_ref(c_g_type)
+	retGo := (uintptr)(retC)
 
-// Unsupported : g_type_check_instance_cast : unsupported parameter iface_type : no type generator for GType, GType
-
-// Unsupported : g_type_check_instance_is_a : unsupported parameter iface_type : no type generator for GType, GType
-
-// Unsupported : g_type_check_instance_is_fundamentally_a : unsupported parameter fundamental_type : no type generator for GType, GType
-
-// Unsupported : g_type_check_is_value_type : unsupported parameter type : no type generator for GType, GType
-
-// Unsupported : g_type_check_value_holds : unsupported parameter type : no type generator for GType, GType
-
-// Unsupported : g_type_children : unsupported parameter type : no type generator for GType, GType
-
-// Unsupported : g_type_class_peek : unsupported parameter type : no type generator for GType, GType
-
-// Unsupported : g_type_class_peek_static : unsupported parameter type : no type generator for GType, GType
-
-// Unsupported : g_type_class_ref : unsupported parameter type : no type generator for GType, GType
-
-// Unsupported : g_type_create_instance : unsupported parameter type : no type generator for GType, GType
-
-// Unsupported : g_type_default_interface_peek : unsupported parameter g_type : no type generator for GType, GType
-
-// Unsupported : g_type_default_interface_ref : unsupported parameter g_type : no type generator for GType, GType
+	return retGo
+}
 
 // TypeDefaultInterfaceUnref is a wrapper around the C function g_type_default_interface_unref.
 func TypeDefaultInterfaceUnref(gIface uintptr) {
@@ -203,64 +171,20 @@ func TypeDefaultInterfaceUnref(gIface uintptr) {
 	return
 }
 
-// Unsupported : g_type_depth : unsupported parameter type : no type generator for GType, GType
+// Unsupported : g_type_get_plugin : no return generator
 
-// Unsupported : g_type_ensure : unsupported parameter type : no type generator for GType, GType
+// Unsupported : g_type_interface_get_plugin : no return generator
 
-// Unsupported : g_type_from_name : no return generator
+// Unsupported : g_type_interface_prerequisites : no return type
 
-// Unsupported : g_type_fundamental : unsupported parameter type_id : no type generator for GType, GType
+// Unsupported : g_type_interfaces : no return type
 
-// Unsupported : g_type_fundamental_next : no return generator
+// Unsupported : g_type_register_dynamic : unsupported parameter plugin : no type generator for TypePlugin (GTypePlugin*) for param plugin
 
-// Unsupported : g_type_get_instance_count : unsupported parameter type : no type generator for GType, GType
+// Unsupported : g_type_register_static_simple : unsupported parameter class_init : no type generator for ClassInitFunc (GClassInitFunc) for param class_init
 
-// Unsupported : g_type_get_plugin : unsupported parameter type : no type generator for GType, GType
+// Unsupported : g_type_remove_class_cache_func : unsupported parameter cache_func : no type generator for TypeClassCacheFunc (GTypeClassCacheFunc) for param cache_func
 
-// Unsupported : g_type_get_qdata : unsupported parameter type : no type generator for GType, GType
+// Unsupported : g_type_remove_interface_check : unsupported parameter check_func : no type generator for TypeInterfaceCheckFunc (GTypeInterfaceCheckFunc) for param check_func
 
-// Unsupported : g_type_interface_add_prerequisite : unsupported parameter interface_type : no type generator for GType, GType
-
-// Unsupported : g_type_interface_get_plugin : unsupported parameter instance_type : no type generator for GType, GType
-
-// Unsupported : g_type_interface_peek : unsupported parameter iface_type : no type generator for GType, GType
-
-// Unsupported : g_type_interface_prerequisites : unsupported parameter interface_type : no type generator for GType, GType
-
-// Unsupported : g_type_interfaces : unsupported parameter type : no type generator for GType, GType
-
-// Unsupported : g_type_is_a : unsupported parameter type : no type generator for GType, GType
-
-// Unsupported : g_type_name : unsupported parameter type : no type generator for GType, GType
-
-// Unsupported : g_type_next_base : unsupported parameter leaf_type : no type generator for GType, GType
-
-// Unsupported : g_type_parent : unsupported parameter type : no type generator for GType, GType
-
-// Unsupported : g_type_qname : unsupported parameter type : no type generator for GType, GType
-
-// Unsupported : g_type_query : unsupported parameter type : no type generator for GType, GType
-
-// Unsupported : g_type_register_dynamic : unsupported parameter parent_type : no type generator for GType, GType
-
-// Unsupported : g_type_register_fundamental : unsupported parameter type_id : no type generator for GType, GType
-
-// Unsupported : g_type_register_static : unsupported parameter parent_type : no type generator for GType, GType
-
-// Unsupported : g_type_register_static_simple : unsupported parameter parent_type : no type generator for GType, GType
-
-// Unsupported : g_type_remove_class_cache_func : unsupported parameter cache_func : no type generator for TypeClassCacheFunc, GTypeClassCacheFunc
-
-// Unsupported : g_type_remove_interface_check : unsupported parameter check_func : no type generator for TypeInterfaceCheckFunc, GTypeInterfaceCheckFunc
-
-// Unsupported : g_type_set_qdata : unsupported parameter type : no type generator for GType, GType
-
-// Unsupported : g_type_test_flags : unsupported parameter type : no type generator for GType, GType
-
-// Unsupported : g_type_value_table_peek : unsupported parameter type : no type generator for GType, GType
-
-// Unsupported : g_value_register_transform_func : unsupported parameter src_type : no type generator for GType, GType
-
-// Unsupported : g_value_type_compatible : unsupported parameter src_type : no type generator for GType, GType
-
-// Unsupported : g_value_type_transformable : unsupported parameter src_type : no type generator for GType, GType
+// Unsupported : g_value_register_transform_func : unsupported parameter transform_func : no type generator for ValueTransform (GValueTransform) for param transform_func

@@ -8,6 +8,6 @@ package pango
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : pango_glyph_item_get_logical_widths : unsupported parameter logical_widths : no param type
+// Unsupported : pango_glyph_item_get_logical_widths : unsupported parameter logical_widths : no type generator for gint (int) for array param logical_widths
 
 // Unsupported : pango_tab_array_new_with_positions : unsupported parameter ... : varargs

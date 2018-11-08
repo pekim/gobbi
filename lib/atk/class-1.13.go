@@ -22,4 +22,4 @@ func (recv *Misc) ThreadsLeave() {
 	return
 }
 
-// Unsupported : atk_relation_new : unsupported parameter targets : no param type
+// Unsupported : atk_relation_new : unsupported parameter targets : no type generator for Object (AtkObject*) for array param targets

@@ -75,13 +75,13 @@ func CastToObject(object *Object) *Object {
 
 // Unsupported signal 'notify' for Object : unsupported parameter pspec : type ParamSpec : Blacklisted record : GParamSpec
 
-// Unsupported : g_object_new : unsupported parameter object_type : no type generator for GType, GType
+// Unsupported : g_object_new : unsupported parameter ... : varargs
 
-// Unsupported : g_object_new_valist : unsupported parameter object_type : no type generator for GType, GType
+// Unsupported : g_object_new_valist : unsupported parameter var_args : no type generator for va_list (va_list) for param var_args
 
-// Unsupported : g_object_new_with_properties : unsupported parameter object_type : no type generator for GType, GType
+// Unsupported : g_object_new_with_properties : unsupported parameter names : no type generator for utf8 (char) for array param names
 
-// Unsupported : g_object_newv : unsupported parameter object_type : no type generator for GType, GType
+// Unsupported : g_object_newv : unsupported parameter parameters : no type generator for Parameter (GParameter) for array param parameters
 
 // AddWeakPointer is a wrapper around the C function g_object_add_weak_pointer.
 func (recv *Object) AddWeakPointer(weakPointerLocation uintptr) {
@@ -138,7 +138,7 @@ func (recv *Object) GetQdata(quark glib.Quark) uintptr {
 	return retGo
 }
 
-// Unsupported : g_object_get_valist : unsupported parameter var_args : no type generator for va_list, va_list
+// Unsupported : g_object_get_valist : unsupported parameter var_args : no type generator for va_list (va_list) for param var_args
 
 // Notify is a wrapper around the C function g_object_notify.
 func (recv *Object) Notify(propertyName string) {
@@ -188,7 +188,7 @@ func (recv *Object) SetData(key string, data uintptr) {
 	return
 }
 
-// Unsupported : g_object_set_data_full : unsupported parameter destroy : no type generator for GLib.DestroyNotify, GDestroyNotify
+// Unsupported : g_object_set_data_full : unsupported parameter destroy : no type generator for GLib.DestroyNotify (GDestroyNotify) for param destroy
 
 // SetProperty is a wrapper around the C function g_object_set_property.
 func (recv *Object) SetProperty(propertyName string, value *Value) {
@@ -213,9 +213,9 @@ func (recv *Object) SetQdata(quark glib.Quark, data uintptr) {
 	return
 }
 
-// Unsupported : g_object_set_qdata_full : unsupported parameter destroy : no type generator for GLib.DestroyNotify, GDestroyNotify
+// Unsupported : g_object_set_qdata_full : unsupported parameter destroy : no type generator for GLib.DestroyNotify (GDestroyNotify) for param destroy
 
-// Unsupported : g_object_set_valist : unsupported parameter var_args : no type generator for va_list, va_list
+// Unsupported : g_object_set_valist : unsupported parameter var_args : no type generator for va_list (va_list) for param var_args
 
 // StealData is a wrapper around the C function g_object_steal_data.
 func (recv *Object) StealData(key string) uintptr {
@@ -261,9 +261,9 @@ func (recv *Object) WatchClosure(closure *Closure) {
 	return
 }
 
-// Unsupported : g_object_weak_ref : unsupported parameter notify : no type generator for WeakNotify, GWeakNotify
+// Unsupported : g_object_weak_ref : unsupported parameter notify : no type generator for WeakNotify (GWeakNotify) for param notify
 
-// Unsupported : g_object_weak_unref : unsupported parameter notify : no type generator for WeakNotify, GWeakNotify
+// Unsupported : g_object_weak_unref : unsupported parameter notify : no type generator for WeakNotify (GWeakNotify) for param notify
 
 // Blacklisted : GParamSpec
 

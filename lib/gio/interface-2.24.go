@@ -49,7 +49,7 @@ func (recv *Converter) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : g_converter_convert : unsupported parameter inbuf : no param type
+// Unsupported : g_converter_convert : unsupported parameter inbuf : no type generator for guint8 () for array param inbuf
 
 // Reset is a wrapper around the C function g_converter_reset.
 func (recv *Converter) Reset() {
@@ -58,7 +58,7 @@ func (recv *Converter) Reset() {
 	return
 }
 
-// Unsupported : g_file_has_parent : unsupported parameter parent : no type generator for File, GFile*
+// Unsupported : g_file_has_parent : unsupported parameter parent : no type generator for File (GFile*) for param parent
 
 // GetFd is a wrapper around the C function g_file_descriptor_based_get_fd.
 func (recv *FileDescriptorBased) GetFd() int32 {

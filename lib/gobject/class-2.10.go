@@ -10,13 +10,13 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : g_object_new : unsupported parameter object_type : no type generator for GType, GType
+// Unsupported : g_object_new : unsupported parameter ... : varargs
 
-// Unsupported : g_object_new_valist : unsupported parameter object_type : no type generator for GType, GType
+// Unsupported : g_object_new_valist : unsupported parameter var_args : no type generator for va_list (va_list) for param var_args
 
-// Unsupported : g_object_new_with_properties : unsupported parameter object_type : no type generator for GType, GType
+// Unsupported : g_object_new_with_properties : unsupported parameter names : no type generator for utf8 (char) for array param names
 
-// Unsupported : g_object_newv : unsupported parameter object_type : no type generator for GType, GType
+// Unsupported : g_object_newv : unsupported parameter parameters : no type generator for Parameter (GParameter) for array param parameters
 
 // ForceFloating is a wrapper around the C function g_object_force_floating.
 func (recv *Object) ForceFloating() {
@@ -45,7 +45,7 @@ func (recv *Object) RefSink() uintptr {
 type ParamSpecGType struct {
 	native *C.GParamSpecGType
 	// parent_instance : record
-	// is_a_type : no type generator for GType, GType
+	IsAType Type
 }
 
 func ParamSpecGTypeNewFromC(u unsafe.Pointer) *ParamSpecGType {
@@ -54,12 +54,17 @@ func ParamSpecGTypeNewFromC(u unsafe.Pointer) *ParamSpecGType {
 		return nil
 	}
 
-	g := &ParamSpecGType{native: c}
+	g := &ParamSpecGType{
+		IsAType: (Type)(c.is_a_type),
+		native:  c,
+	}
 
 	return g
 }
 
 func (recv *ParamSpecGType) ToC() unsafe.Pointer {
+	recv.native.is_a_type =
+		(C.GType)(recv.IsAType)
 
 	return (unsafe.Pointer)(recv.native)
 }

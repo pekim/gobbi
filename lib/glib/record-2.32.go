@@ -33,13 +33,13 @@ func (recv *Bytes) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : g_bytes_new : unsupported parameter data : no param type
+// Unsupported : g_bytes_new : unsupported parameter data : no type generator for guint8 () for array param data
 
-// Unsupported : g_bytes_new_static : unsupported parameter data : no param type
+// Unsupported : g_bytes_new_static : unsupported parameter data : no type generator for guint8 () for array param data
 
-// Unsupported : g_bytes_new_take : unsupported parameter data : no param type
+// Unsupported : g_bytes_new_take : unsupported parameter data : no type generator for guint8 () for array param data
 
-// Unsupported : g_bytes_new_with_free_func : unsupported parameter data : no param type
+// Unsupported : g_bytes_new_with_free_func : unsupported parameter data : no type generator for guint8 () for array param data
 
 // Compare is a wrapper around the C function g_bytes_compare.
 func (recv *Bytes) Compare(bytes2 uintptr) int32 {
@@ -124,11 +124,11 @@ func (recv *Cond) Init() {
 	return
 }
 
-// Unsupported : g_cond_wait_until : unsupported parameter mutex : no type generator for Mutex, GMutex*
+// Unsupported : g_cond_wait_until : unsupported parameter mutex : no type generator for Mutex (GMutex*) for param mutex
 
 // Unsupported : g_error_new : unsupported parameter ... : varargs
 
-// Unsupported : g_error_new_valist : unsupported parameter args : no type generator for va_list, va_list
+// Unsupported : g_error_new_valist : unsupported parameter args : no type generator for va_list (va_list) for param args
 
 // Ref is a wrapper around the C function g_key_file_ref.
 func (recv *KeyFile) Ref() *KeyFile {
@@ -165,9 +165,9 @@ func MappedFileNewFromFd(fd int32, writable bool) (*MappedFile, error) {
 	return retGo, goThrowableError
 }
 
-// Unsupported : g_markup_parse_context_new : unsupported parameter user_data_dnotify : no type generator for DestroyNotify, GDestroyNotify
+// Unsupported : g_markup_parse_context_new : unsupported parameter user_data_dnotify : no type generator for DestroyNotify (GDestroyNotify) for param user_data_dnotify
 
-// Unsupported : g_option_group_new : unsupported parameter destroy : no type generator for DestroyNotify, GDestroyNotify
+// Unsupported : g_option_group_new : unsupported parameter destroy : no type generator for DestroyNotify (GDestroyNotify) for param destroy
 
 // Replace is a wrapper around the C function g_private_replace.
 func (recv *Private) Replace(value uintptr) {
@@ -178,7 +178,7 @@ func (recv *Private) Replace(value uintptr) {
 	return
 }
 
-// Unsupported : g_queue_free_full : unsupported parameter free_func : no type generator for DestroyNotify, GDestroyNotify
+// Unsupported : g_queue_free_full : unsupported parameter free_func : no type generator for DestroyNotify (GDestroyNotify) for param free_func
 
 // RWLock is a wrapper around the C record GRWLock.
 type RWLock struct {
@@ -320,9 +320,9 @@ func (recv *RecMutex) Unlock() {
 	return
 }
 
-// Unsupported : g_thread_new : unsupported parameter func : no type generator for ThreadFunc, GThreadFunc
+// Unsupported : g_thread_new : unsupported parameter func : no type generator for ThreadFunc (GThreadFunc) for param func
 
-// Unsupported : g_thread_try_new : unsupported parameter func : no type generator for ThreadFunc, GThreadFunc
+// Unsupported : g_thread_try_new : unsupported parameter func : no type generator for ThreadFunc (GThreadFunc) for param func
 
 // Ref is a wrapper around the C function g_thread_ref.
 func (recv *Thread) Ref() *Thread {

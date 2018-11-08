@@ -82,7 +82,7 @@ func (recv *CellLayout) Reorder(cell *CellRenderer, position int32) {
 
 // Unsupported : gtk_cell_layout_set_attributes : unsupported parameter ... : varargs
 
-// Unsupported : gtk_cell_layout_set_cell_data_func : unsupported parameter func : no type generator for CellLayoutDataFunc, GtkCellLayoutDataFunc
+// Unsupported : gtk_cell_layout_set_cell_data_func : unsupported parameter func : no type generator for CellLayoutDataFunc (GtkCellLayoutDataFunc) for param func
 
 // AddFilter is a wrapper around the C function gtk_file_chooser_add_filter.
 func (recv *FileChooser) AddFilter(filter *FileFilter) {

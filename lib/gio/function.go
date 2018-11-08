@@ -4,6 +4,7 @@ package gio
 
 import (
 	glib "github.com/pekim/gobbi/lib/glib"
+	gobject "github.com/pekim/gobbi/lib/gobject"
 	"unsafe"
 )
 
@@ -71,23 +72,23 @@ func AppInfoLaunchDefaultForUri(uri string, context *AppLaunchContext) (bool, er
 	return retGo, goThrowableError
 }
 
-// Unsupported : g_app_info_launch_default_for_uri_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+// Unsupported : g_app_info_launch_default_for_uri_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_app_info_launch_default_for_uri_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+// Unsupported : g_app_info_launch_default_for_uri_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
 
-// Unsupported : g_async_initable_newv_async : unsupported parameter object_type : no type generator for GType, GType
+// Unsupported : g_async_initable_newv_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_bus_get : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+// Unsupported : g_bus_get : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_bus_get_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
+// Unsupported : g_bus_get_finish : unsupported parameter res : no type generator for AsyncResult (GAsyncResult*) for param res
 
-// Unsupported : g_bus_own_name : unsupported parameter bus_acquired_handler : no type generator for BusAcquiredCallback, GBusAcquiredCallback
+// Unsupported : g_bus_own_name : unsupported parameter bus_acquired_handler : no type generator for BusAcquiredCallback (GBusAcquiredCallback) for param bus_acquired_handler
 
-// Unsupported : g_bus_own_name_on_connection : unsupported parameter name_acquired_handler : no type generator for BusNameAcquiredCallback, GBusNameAcquiredCallback
+// Unsupported : g_bus_own_name_on_connection : unsupported parameter name_acquired_handler : no type generator for BusNameAcquiredCallback (GBusNameAcquiredCallback) for param name_acquired_handler
 
-// Unsupported : g_bus_watch_name : unsupported parameter name_appeared_handler : no type generator for BusNameAppearedCallback, GBusNameAppearedCallback
+// Unsupported : g_bus_watch_name : unsupported parameter name_appeared_handler : no type generator for BusNameAppearedCallback (GBusNameAppearedCallback) for param name_appeared_handler
 
-// Unsupported : g_bus_watch_name_on_connection : unsupported parameter name_appeared_handler : no type generator for BusNameAppearedCallback, GBusNameAppearedCallback
+// Unsupported : g_bus_watch_name_on_connection : unsupported parameter name_appeared_handler : no type generator for BusNameAppearedCallback (GBusNameAppearedCallback) for param name_appeared_handler
 
 // ContentTypeCanBeExecutable is a wrapper around the C function g_content_type_can_be_executable.
 func ContentTypeCanBeExecutable(type_ string) bool {
@@ -142,9 +143,9 @@ func ContentTypeGetMimeType(type_ string) string {
 
 // Unsupported : g_content_type_get_symbolic_icon : no return generator
 
-// Unsupported : g_content_type_guess : unsupported parameter data : no param type
+// Unsupported : g_content_type_guess : unsupported parameter data : no type generator for guint8 (guchar) for array param data
 
-// Unsupported : g_content_type_guess_for_tree : unsupported parameter root : no type generator for File, GFile*
+// Unsupported : g_content_type_guess_for_tree : unsupported parameter root : no type generator for File (GFile*) for param root
 
 // ContentTypeIsA is a wrapper around the C function g_content_type_is_a.
 func ContentTypeIsA(type_ string, supertype string) bool {
@@ -179,11 +180,11 @@ func ContentTypesGetRegistered() *glib.List {
 	return retGo
 }
 
-// Unsupported : g_dbus_address_get_stream : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+// Unsupported : g_dbus_address_get_stream : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_dbus_address_get_stream_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
+// Unsupported : g_dbus_address_get_stream_finish : unsupported parameter res : no type generator for AsyncResult (GAsyncResult*) for param res
 
-// Unsupported : g_dbus_annotation_info_lookup : unsupported parameter annotations : no param type
+// Unsupported : g_dbus_annotation_info_lookup : unsupported parameter annotations : no type generator for DBusAnnotationInfo (GDBusAnnotationInfo*) for array param annotations
 
 // DbusErrorQuark is a wrapper around the C function g_dbus_error_quark.
 func DbusErrorQuark() glib.Quark {
@@ -193,15 +194,15 @@ func DbusErrorQuark() glib.Quark {
 	return retGo
 }
 
-// Unsupported : g_dbus_error_register_error_domain : unsupported parameter entries : no param type
+// Unsupported : g_dbus_error_register_error_domain : unsupported parameter entries : no type generator for DBusErrorEntry (GDBusErrorEntry) for array param entries
 
 // Unsupported : g_dbus_gvalue_to_gvariant : unsupported parameter type : Blacklisted record : GVariantType
 
 // Unsupported : g_dbus_gvariant_to_gvalue : unsupported parameter value : Blacklisted record : GVariant
 
-// Unsupported : g_dtls_client_connection_new : unsupported parameter base_socket : no type generator for DatagramBased, GDatagramBased*
+// Unsupported : g_dtls_client_connection_new : unsupported parameter base_socket : no type generator for DatagramBased (GDatagramBased*) for param base_socket
 
-// Unsupported : g_dtls_server_connection_new : unsupported parameter base_socket : no type generator for DatagramBased, GDatagramBased*
+// Unsupported : g_dtls_server_connection_new : unsupported parameter base_socket : no type generator for DatagramBased (GDatagramBased*) for param base_socket
 
 // Unsupported : g_file_new_for_commandline_arg : no return generator
 
@@ -229,7 +230,7 @@ func IconHash(icon uintptr) uint32 {
 
 // Unsupported : g_icon_new_for_string : no return generator
 
-// Unsupported : g_initable_newv : unsupported parameter object_type : no type generator for GType, GType
+// Unsupported : g_initable_newv : unsupported parameter parameters : no type generator for GObject.Parameter (GParameter) for array param parameters
 
 // IoErrorFromErrno is a wrapper around the C function g_io_error_from_errno.
 func IoErrorFromErrno(errNo int32) IOErrorEnum {
@@ -249,7 +250,23 @@ func IoErrorQuark() glib.Quark {
 	return retGo
 }
 
-// Unsupported : g_io_extension_point_implement : unsupported parameter type : no type generator for GType, GType
+// IoExtensionPointImplement is a wrapper around the C function g_io_extension_point_implement.
+func IoExtensionPointImplement(extensionPointName string, type_ gobject.Type, extensionName string, priority int32) *IOExtension {
+	c_extension_point_name := C.CString(extensionPointName)
+	defer C.free(unsafe.Pointer(c_extension_point_name))
+
+	c_type := (C.GType)(type_)
+
+	c_extension_name := C.CString(extensionName)
+	defer C.free(unsafe.Pointer(c_extension_name))
+
+	c_priority := (C.gint)(priority)
+
+	retC := C.g_io_extension_point_implement(c_extension_point_name, c_type, c_extension_name, c_priority)
+	retGo := IOExtensionNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // IoExtensionPointLookup is a wrapper around the C function g_io_extension_point_lookup.
 func IoExtensionPointLookup(name string) *IOExtensionPoint {
@@ -291,17 +308,17 @@ func IoSchedulerCancelAllJobs() {
 	return
 }
 
-// Unsupported : g_io_scheduler_push_job : unsupported parameter job_func : no type generator for IOSchedulerJobFunc, GIOSchedulerJobFunc
+// Unsupported : g_io_scheduler_push_job : unsupported parameter job_func : no type generator for IOSchedulerJobFunc (GIOSchedulerJobFunc) for param job_func
 
 // Blacklisted : g_keyfile_settings_backend_new
 
 // Unsupported : g_network_monitor_get_default : no return generator
 
-// Unsupported : g_pollable_stream_read : unsupported parameter buffer : no param type
+// Unsupported : g_pollable_stream_read : unsupported parameter buffer : no type generator for guint8 () for array param buffer
 
-// Unsupported : g_pollable_stream_write : unsupported parameter buffer : no param type
+// Unsupported : g_pollable_stream_write : unsupported parameter buffer : no type generator for guint8 () for array param buffer
 
-// Unsupported : g_pollable_stream_write_all : unsupported parameter buffer : no param type
+// Unsupported : g_pollable_stream_write_all : unsupported parameter buffer : no type generator for guint8 () for array param buffer
 
 // Unsupported : g_proxy_get_default_for_protocol : no return generator
 
@@ -309,15 +326,15 @@ func IoSchedulerCancelAllJobs() {
 
 // Unsupported : g_resources_enumerate_children : no return type
 
-// Unsupported : g_simple_async_report_error_in_idle : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+// Unsupported : g_simple_async_report_error_in_idle : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_simple_async_report_gerror_in_idle : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+// Unsupported : g_simple_async_report_gerror_in_idle : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_simple_async_report_take_gerror_in_idle : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+// Unsupported : g_simple_async_report_take_gerror_in_idle : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
 // Unsupported : g_tls_backend_get_default : no return generator
 
-// Unsupported : g_tls_client_connection_new : unsupported parameter server_identity : no type generator for SocketConnectable, GSocketConnectable*
+// Unsupported : g_tls_client_connection_new : unsupported parameter server_identity : no type generator for SocketConnectable (GSocketConnectable*) for param server_identity
 
 // Unsupported : g_tls_file_database_new : no return generator
 

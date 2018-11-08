@@ -14,11 +14,11 @@ import "C"
 
 // Unsupported : g_error_new : unsupported parameter ... : varargs
 
-// Unsupported : g_error_new_valist : unsupported parameter args : no type generator for va_list, va_list
+// Unsupported : g_error_new_valist : unsupported parameter args : no type generator for va_list (va_list) for param args
 
-// Unsupported : g_key_file_load_from_dirs : unsupported parameter search_dirs : no param type
+// Unsupported : g_key_file_load_from_dirs : unsupported parameter search_dirs : no type generator for filename () for array param search_dirs
 
-// Unsupported : g_markup_parse_context_new : unsupported parameter user_data_dnotify : no type generator for DestroyNotify, GDestroyNotify
+// Unsupported : g_markup_parse_context_new : unsupported parameter user_data_dnotify : no type generator for DestroyNotify (GDestroyNotify) for param user_data_dnotify
 
 // ExpandReferences is a wrapper around the C function g_match_info_expand_references.
 func (recv *MatchInfo) ExpandReferences(stringToExpand string) (string, error) {
@@ -177,7 +177,7 @@ func (recv *OptionContext) GetHelp(mainHelp bool, group *OptionGroup) string {
 	return retGo
 }
 
-// Unsupported : g_option_group_new : unsupported parameter destroy : no type generator for DestroyNotify, GDestroyNotify
+// Unsupported : g_option_group_new : unsupported parameter destroy : no type generator for DestroyNotify (GDestroyNotify) for param destroy
 
 // Clear is a wrapper around the C function g_queue_clear.
 func (recv *Queue) Clear() {
@@ -280,9 +280,9 @@ func (recv *Regex) GetStringNumber(name string) int32 {
 
 // Unsupported : g_regex_match_all : unsupported parameter match_info : record with indirection level of 2
 
-// Unsupported : g_regex_match_all_full : unsupported parameter string : no param type
+// Unsupported : g_regex_match_all_full : unsupported parameter string : no type generator for utf8 (gchar) for array param string
 
-// Unsupported : g_regex_match_full : unsupported parameter string : no param type
+// Unsupported : g_regex_match_full : unsupported parameter string : no type generator for utf8 (gchar) for array param string
 
 // Ref is a wrapper around the C function g_regex_ref.
 func (recv *Regex) Ref() *Regex {
@@ -292,15 +292,15 @@ func (recv *Regex) Ref() *Regex {
 	return retGo
 }
 
-// Unsupported : g_regex_replace : unsupported parameter string : no param type
+// Unsupported : g_regex_replace : unsupported parameter string : no type generator for utf8 (gchar) for array param string
 
-// Unsupported : g_regex_replace_eval : unsupported parameter string : no param type
+// Unsupported : g_regex_replace_eval : unsupported parameter string : no type generator for utf8 (gchar) for array param string
 
-// Unsupported : g_regex_replace_literal : unsupported parameter string : no param type
+// Unsupported : g_regex_replace_literal : unsupported parameter string : no type generator for utf8 (gchar) for array param string
 
 // Unsupported : g_regex_split : no return type
 
-// Unsupported : g_regex_split_full : unsupported parameter string : no param type
+// Unsupported : g_regex_split_full : unsupported parameter string : no type generator for utf8 (gchar) for array param string
 
 // Unref is a wrapper around the C function g_regex_unref.
 func (recv *Regex) Unref() {
@@ -319,7 +319,7 @@ func (recv *Sequence) Append(data uintptr) *SequenceIter {
 	return retGo
 }
 
-// Unsupported : g_sequence_foreach : unsupported parameter func : no type generator for Func, GFunc
+// Unsupported : g_sequence_foreach : unsupported parameter func : no type generator for Func (GFunc) for param func
 
 // Free is a wrapper around the C function g_sequence_free.
 func (recv *Sequence) Free() {
@@ -362,9 +362,9 @@ func (recv *Sequence) GetLength() int32 {
 	return retGo
 }
 
-// Unsupported : g_sequence_insert_sorted : unsupported parameter cmp_func : no type generator for CompareDataFunc, GCompareDataFunc
+// Unsupported : g_sequence_insert_sorted : unsupported parameter cmp_func : no type generator for CompareDataFunc (GCompareDataFunc) for param cmp_func
 
-// Unsupported : g_sequence_insert_sorted_iter : unsupported parameter iter_cmp : no type generator for SequenceIterCompareFunc, GSequenceIterCompareFunc
+// Unsupported : g_sequence_insert_sorted_iter : unsupported parameter iter_cmp : no type generator for SequenceIterCompareFunc (GSequenceIterCompareFunc) for param iter_cmp
 
 // Prepend is a wrapper around the C function g_sequence_prepend.
 func (recv *Sequence) Prepend(data uintptr) *SequenceIter {
@@ -376,13 +376,13 @@ func (recv *Sequence) Prepend(data uintptr) *SequenceIter {
 	return retGo
 }
 
-// Unsupported : g_sequence_search : unsupported parameter cmp_func : no type generator for CompareDataFunc, GCompareDataFunc
+// Unsupported : g_sequence_search : unsupported parameter cmp_func : no type generator for CompareDataFunc (GCompareDataFunc) for param cmp_func
 
-// Unsupported : g_sequence_search_iter : unsupported parameter iter_cmp : no type generator for SequenceIterCompareFunc, GSequenceIterCompareFunc
+// Unsupported : g_sequence_search_iter : unsupported parameter iter_cmp : no type generator for SequenceIterCompareFunc (GSequenceIterCompareFunc) for param iter_cmp
 
-// Unsupported : g_sequence_sort : unsupported parameter cmp_func : no type generator for CompareDataFunc, GCompareDataFunc
+// Unsupported : g_sequence_sort : unsupported parameter cmp_func : no type generator for CompareDataFunc (GCompareDataFunc) for param cmp_func
 
-// Unsupported : g_sequence_sort_iter : unsupported parameter cmp_func : no type generator for SequenceIterCompareFunc, GSequenceIterCompareFunc
+// Unsupported : g_sequence_sort_iter : unsupported parameter cmp_func : no type generator for SequenceIterCompareFunc (GSequenceIterCompareFunc) for param cmp_func
 
 // Compare is a wrapper around the C function g_sequence_iter_compare.
 func (recv *SequenceIter) Compare(b *SequenceIter) int32 {
@@ -452,7 +452,7 @@ func (recv *SequenceIter) Prev() *SequenceIter {
 	return retGo
 }
 
-// Unsupported : g_string_append_vprintf : unsupported parameter args : no type generator for va_list, va_list
+// Unsupported : g_string_append_vprintf : unsupported parameter args : no type generator for va_list (va_list) for param args
 
 // Overwrite is a wrapper around the C function g_string_overwrite.
 func (recv *String) Overwrite(pos uint64, val string) *String {
@@ -482,7 +482,7 @@ func (recv *String) OverwriteLen(pos uint64, val string, len int64) *String {
 	return retGo
 }
 
-// Unsupported : g_string_vprintf : unsupported parameter args : no type generator for va_list, va_list
+// Unsupported : g_string_vprintf : unsupported parameter args : no type generator for va_list (va_list) for param args
 
 // Clear is a wrapper around the C function g_string_chunk_clear.
 func (recv *StringChunk) Clear() {
@@ -491,8 +491,8 @@ func (recv *StringChunk) Clear() {
 	return
 }
 
-// Unsupported : g_thread_new : unsupported parameter func : no type generator for ThreadFunc, GThreadFunc
+// Unsupported : g_thread_new : unsupported parameter func : no type generator for ThreadFunc (GThreadFunc) for param func
 
-// Unsupported : g_thread_try_new : unsupported parameter func : no type generator for ThreadFunc, GThreadFunc
+// Unsupported : g_thread_try_new : unsupported parameter func : no type generator for ThreadFunc (GThreadFunc) for param func
 
 // Unsupported : g_variant_builder_new : unsupported parameter type : Blacklisted record : GVariantType

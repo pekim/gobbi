@@ -10,13 +10,13 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : g_object_new : unsupported parameter object_type : no type generator for GType, GType
+// Unsupported : g_object_new : unsupported parameter ... : varargs
 
-// Unsupported : g_object_new_valist : unsupported parameter object_type : no type generator for GType, GType
+// Unsupported : g_object_new_valist : unsupported parameter var_args : no type generator for va_list (va_list) for param var_args
 
-// Unsupported : g_object_new_with_properties : unsupported parameter object_type : no type generator for GType, GType
+// Unsupported : g_object_new_with_properties : unsupported parameter names : no type generator for utf8 (char) for array param names
 
-// Unsupported : g_object_newv : unsupported parameter object_type : no type generator for GType, GType
+// Unsupported : g_object_newv : unsupported parameter parameters : no type generator for Parameter (GParameter) for array param parameters
 
 // ParamSpecOverride is a wrapper around the C record GParamSpecOverride.
 type ParamSpecOverride struct {

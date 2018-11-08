@@ -5,6 +5,7 @@ package gio
 
 import (
 	glib "github.com/pekim/gobbi/lib/glib"
+	gobject "github.com/pekim/gobbi/lib/gobject"
 	"unsafe"
 )
 
@@ -56,7 +57,7 @@ func (recv *DBusInterface) GetInfo() *DBusInterfaceInfo {
 
 // Unsupported : g_dbus_interface_get_object : no return generator
 
-// Unsupported : g_dbus_interface_set_object : unsupported parameter object : no type generator for DBusObject, GDBusObject*
+// Unsupported : g_dbus_interface_set_object : unsupported parameter object : no type generator for DBusObject (GDBusObject*) for param object
 
 // Unsupported signal 'interface-added' for DBusObject : unsupported parameter interface : no type generator for DBusInterface,
 
@@ -116,7 +117,13 @@ func (recv *TlsBackend) GetDefaultDatabase() *TlsDatabase {
 	return retGo
 }
 
-// Unsupported : g_tls_backend_get_file_database_type : no return generator
+// GetFileDatabaseType is a wrapper around the C function g_tls_backend_get_file_database_type.
+func (recv *TlsBackend) GetFileDatabaseType() gobject.Type {
+	retC := C.g_tls_backend_get_file_database_type((*C.GTlsBackend)(recv.native))
+	retGo := (gobject.Type)(retC)
+
+	return retGo
+}
 
 // TlsFileDatabase is a wrapper around the C record GTlsFileDatabase.
 type TlsFileDatabase struct {

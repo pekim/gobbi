@@ -9,8 +9,8 @@ import glib "github.com/pekim/gobbi/lib/glib"
 // #include <stdlib.h>
 import "C"
 
-// AttributeSet is a representation of the C alias of the same name.
+// AttributeSet is a representation of the C alias AtkAttributeSet.
 type AttributeSet *glib.SList
 
-// State is a representation of the C alias of the same name.
+// State is a representation of the C alias AtkState.
 type State uint64

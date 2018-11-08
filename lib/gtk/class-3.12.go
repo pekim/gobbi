@@ -66,13 +66,13 @@ func (recv *ActionBar) SetCenterWidget(centerWidget *Widget) {
 	return
 }
 
-// Unsupported : gtk_app_chooser_dialog_new : unsupported parameter file : no type generator for Gio.File, GFile*
+// Unsupported : gtk_app_chooser_dialog_new : unsupported parameter file : no type generator for Gio.File (GFile*) for param file
 
 // Unsupported : gtk_application_get_accels_for_action : no return type
 
 // Unsupported : gtk_application_list_action_descriptions : no return type
 
-// Unsupported : gtk_application_set_accels_for_action : unsupported parameter accels : no param type
+// Unsupported : gtk_application_set_accels_for_action : unsupported parameter accels : no type generator for utf8 (gchar*) for array param accels
 
 // GetCenterWidget is a wrapper around the C function gtk_box_get_center_widget.
 func (recv *Box) GetCenterWidget() *Widget {
@@ -96,11 +96,11 @@ func (recv *Box) SetCenterWidget(widget *Widget) {
 	return
 }
 
-// Unsupported : gtk_button_new_from_icon_name : unsupported parameter size : no type generator for gint, GtkIconSize
+// Unsupported : gtk_button_new_from_icon_name : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
 
-// Unsupported : gtk_combo_box_new_with_model : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
+// Unsupported : gtk_combo_box_new_with_model : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
 
-// Unsupported : gtk_combo_box_new_with_model_and_entry : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
+// Unsupported : gtk_combo_box_new_with_model_and_entry : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
 
 // Unsupported : gtk_dialog_new_with_buttons : unsupported parameter ... : varargs
 
@@ -263,7 +263,7 @@ func (recv *FlowBox) SelectChild(child *FlowBoxChild) {
 	return
 }
 
-// Unsupported : gtk_flow_box_selected_foreach : unsupported parameter func : no type generator for FlowBoxForeachFunc, GtkFlowBoxForeachFunc
+// Unsupported : gtk_flow_box_selected_foreach : unsupported parameter func : no type generator for FlowBoxForeachFunc (GtkFlowBoxForeachFunc) for param func
 
 // SetActivateOnSingleClick is a wrapper around the C function gtk_flow_box_set_activate_on_single_click.
 func (recv *FlowBox) SetActivateOnSingleClick(single bool) {
@@ -284,7 +284,7 @@ func (recv *FlowBox) SetColumnSpacing(spacing uint32) {
 	return
 }
 
-// Unsupported : gtk_flow_box_set_filter_func : unsupported parameter filter_func : no type generator for FlowBoxFilterFunc, GtkFlowBoxFilterFunc
+// Unsupported : gtk_flow_box_set_filter_func : unsupported parameter filter_func : no type generator for FlowBoxFilterFunc (GtkFlowBoxFilterFunc) for param filter_func
 
 // SetHadjustment is a wrapper around the C function gtk_flow_box_set_hadjustment.
 func (recv *FlowBox) SetHadjustment(adjustment *Adjustment) {
@@ -341,7 +341,7 @@ func (recv *FlowBox) SetSelectionMode(mode SelectionMode) {
 	return
 }
 
-// Unsupported : gtk_flow_box_set_sort_func : unsupported parameter sort_func : no type generator for FlowBoxSortFunc, GtkFlowBoxSortFunc
+// Unsupported : gtk_flow_box_set_sort_func : unsupported parameter sort_func : no type generator for FlowBoxSortFunc (GtkFlowBoxSortFunc) for param sort_func
 
 // SetVadjustment is a wrapper around the C function gtk_flow_box_set_vadjustment.
 func (recv *FlowBox) SetVadjustment(adjustment *Adjustment) {
@@ -443,21 +443,21 @@ func (recv *IconInfo) IsSymbolic() bool {
 	return retGo
 }
 
-// Unsupported : gtk_icon_view_new_with_model : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
+// Unsupported : gtk_icon_view_new_with_model : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
 
-// Unsupported : gtk_image_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon, GIcon*
+// Unsupported : gtk_image_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon (GIcon*) for param icon
 
-// Unsupported : gtk_image_new_from_icon_name : unsupported parameter size : no type generator for gint, GtkIconSize
+// Unsupported : gtk_image_new_from_icon_name : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
 
-// Unsupported : gtk_image_new_from_icon_set : unsupported parameter size : no type generator for gint, GtkIconSize
+// Unsupported : gtk_image_new_from_icon_set : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
 
-// Unsupported : gtk_image_new_from_stock : unsupported parameter size : no type generator for gint, GtkIconSize
+// Unsupported : gtk_image_new_from_stock : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
 
 // Unsupported : gtk_info_bar_new_with_buttons : unsupported parameter ... : varargs
 
 // Unsupported : gtk_list_store_new : unsupported parameter ... : varargs
 
-// Unsupported : gtk_list_store_newv : unsupported parameter types : no param type
+// Unsupported : gtk_list_store_newv : unsupported parameter types : no type generator for GType (GType) for array param types
 
 // GetPopover is a wrapper around the C function gtk_menu_button_get_popover.
 func (recv *MenuButton) GetPopover() *Popover {
@@ -609,7 +609,7 @@ func (recv *Popover) SetRelativeTo(relativeTo *Widget) {
 
 // Unsupported : gtk_recent_chooser_dialog_new_for_manager : unsupported parameter ... : varargs
 
-// Unsupported : gtk_scale_button_new : unsupported parameter size : no type generator for gint, GtkIconSize
+// Unsupported : gtk_scale_button_new : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
 
 // GetChildByName is a wrapper around the C function gtk_stack_get_child_by_name.
 func (recv *Stack) GetChildByName(name string) *Widget {
@@ -635,17 +635,17 @@ func (recv *Stack) GetTransitionRunning() bool {
 	return retGo
 }
 
-// Unsupported : gtk_status_icon_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon, GIcon*
+// Unsupported : gtk_status_icon_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon (GIcon*) for param icon
 
 // Unsupported : gtk_tree_store_new : unsupported parameter ... : varargs
 
-// Unsupported : gtk_tree_store_newv : unsupported parameter types : no param type
+// Unsupported : gtk_tree_store_newv : unsupported parameter types : no type generator for GType (GType) for array param types
 
-// Unsupported : gtk_tree_view_new_with_model : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
+// Unsupported : gtk_tree_view_new_with_model : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
 
 // Unsupported : gtk_tree_view_column_new_with_attributes : unsupported parameter ... : varargs
 
-// Unsupported : gtk_widget_new : unsupported parameter type : no type generator for GType, GType
+// Unsupported : gtk_widget_new : unsupported parameter ... : varargs
 
 // GetMarginEnd is a wrapper around the C function gtk_widget_get_margin_end.
 func (recv *Widget) GetMarginEnd() int32 {

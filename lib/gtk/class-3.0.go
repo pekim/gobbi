@@ -77,7 +77,7 @@ func AppChooserButtonNew(contentType string) *AppChooserButton {
 	return retGo
 }
 
-// Unsupported : gtk_app_chooser_button_append_custom_item : unsupported parameter icon : no type generator for Gio.Icon, GIcon*
+// Unsupported : gtk_app_chooser_button_append_custom_item : unsupported parameter icon : no type generator for Gio.Icon (GIcon*) for param icon
 
 // AppendSeparator is a wrapper around the C function gtk_app_chooser_button_append_separator.
 func (recv *AppChooserButton) AppendSeparator() {
@@ -114,7 +114,7 @@ func (recv *AppChooserButton) SetShowDialogItem(setting bool) {
 	return
 }
 
-// Unsupported : gtk_app_chooser_dialog_new : unsupported parameter file : no type generator for Gio.File, GFile*
+// Unsupported : gtk_app_chooser_dialog_new : unsupported parameter file : no type generator for Gio.File (GFile*) for param file
 
 // AppChooserDialogNewForContentType is a wrapper around the C function gtk_app_chooser_dialog_new_for_content_type.
 func AppChooserDialogNewForContentType(parent *Window, flags DialogFlags, contentType string) *AppChooserDialog {
@@ -313,7 +313,7 @@ func BoxNew(orientation Orientation, spacing int32) *Box {
 	return retGo
 }
 
-// Unsupported : gtk_button_new_from_icon_name : unsupported parameter size : no type generator for gint, GtkIconSize
+// Unsupported : gtk_button_new_from_icon_name : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
 
 // ButtonBoxNew is a wrapper around the C function gtk_button_box_new.
 func ButtonBoxNew(orientation Orientation) *ButtonBox {
@@ -345,7 +345,7 @@ func (recv *Calendar) GetDayIsMarked(day uint32) bool {
 
 // Unsupported : gtk_cell_area_activate : unsupported parameter cell_area : Blacklisted record : GdkRectangle
 
-// Unsupported : gtk_cell_area_activate_cell : unsupported parameter event : no type generator for Gdk.Event, GdkEvent*
+// Unsupported : gtk_cell_area_activate_cell : unsupported parameter event : no type generator for Gdk.Event (GdkEvent*) for param event
 
 // Add is a wrapper around the C function gtk_cell_area_add.
 func (recv *CellArea) Add(renderer *CellRenderer) {
@@ -369,7 +369,7 @@ func (recv *CellArea) AddFocusSibling(renderer *CellRenderer, sibling *CellRende
 
 // Unsupported : gtk_cell_area_add_with_properties : unsupported parameter ... : varargs
 
-// Unsupported : gtk_cell_area_apply_attributes : unsupported parameter tree_model : no type generator for TreeModel, GtkTreeModel*
+// Unsupported : gtk_cell_area_apply_attributes : unsupported parameter tree_model : no type generator for TreeModel (GtkTreeModel*) for param tree_model
 
 // AttributeConnect is a wrapper around the C function gtk_cell_area_attribute_connect.
 func (recv *CellArea) AttributeConnect(renderer *CellRenderer, attribute string, column int32) {
@@ -413,7 +413,7 @@ func (recv *CellArea) CellGetProperty(renderer *CellRenderer, propertyName strin
 	return
 }
 
-// Unsupported : gtk_cell_area_cell_get_valist : unsupported parameter var_args : no type generator for va_list, va_list
+// Unsupported : gtk_cell_area_cell_get_valist : unsupported parameter var_args : no type generator for va_list (va_list) for param var_args
 
 // Unsupported : gtk_cell_area_cell_set : unsupported parameter ... : varargs
 
@@ -431,7 +431,7 @@ func (recv *CellArea) CellSetProperty(renderer *CellRenderer, propertyName strin
 	return
 }
 
-// Unsupported : gtk_cell_area_cell_set_valist : unsupported parameter var_args : no type generator for va_list, va_list
+// Unsupported : gtk_cell_area_cell_set_valist : unsupported parameter var_args : no type generator for va_list (va_list) for param var_args
 
 // CopyContext is a wrapper around the C function gtk_cell_area_copy_context.
 func (recv *CellArea) CopyContext(context *CellAreaContext) *CellAreaContext {
@@ -451,7 +451,7 @@ func (recv *CellArea) CreateContext() *CellAreaContext {
 	return retGo
 }
 
-// Unsupported : gtk_cell_area_event : unsupported parameter event : no type generator for Gdk.Event, GdkEvent*
+// Unsupported : gtk_cell_area_event : unsupported parameter event : no type generator for Gdk.Event (GdkEvent*) for param event
 
 // Focus is a wrapper around the C function gtk_cell_area_focus.
 func (recv *CellArea) Focus(direction DirectionType) bool {
@@ -463,7 +463,7 @@ func (recv *CellArea) Focus(direction DirectionType) bool {
 	return retGo
 }
 
-// Unsupported : gtk_cell_area_foreach : unsupported parameter callback : no type generator for CellCallback, GtkCellCallback
+// Unsupported : gtk_cell_area_foreach : unsupported parameter callback : no type generator for CellCallback (GtkCellCallback) for param callback
 
 // Unsupported : gtk_cell_area_foreach_alloc : unsupported parameter cell_area : Blacklisted record : GdkRectangle
 
@@ -1110,9 +1110,9 @@ func (recv *ColorSelection) SetPreviousRgba(rgba *gdk.RGBA) {
 	return
 }
 
-// Unsupported : gtk_combo_box_new_with_model : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
+// Unsupported : gtk_combo_box_new_with_model : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
 
-// Unsupported : gtk_combo_box_new_with_model_and_entry : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
+// Unsupported : gtk_combo_box_new_with_model_and_entry : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
 
 // GetActiveId is a wrapper around the C function gtk_combo_box_get_active_id.
 func (recv *ComboBox) GetActiveId() string {
@@ -1302,23 +1302,23 @@ func IconViewNewWithArea(area *CellArea) *IconView {
 	return retGo
 }
 
-// Unsupported : gtk_icon_view_new_with_model : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
+// Unsupported : gtk_icon_view_new_with_model : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
 
-// Unsupported : gtk_image_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon, GIcon*
+// Unsupported : gtk_image_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon (GIcon*) for param icon
 
-// Unsupported : gtk_image_new_from_icon_name : unsupported parameter size : no type generator for gint, GtkIconSize
+// Unsupported : gtk_image_new_from_icon_name : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
 
-// Unsupported : gtk_image_new_from_icon_set : unsupported parameter size : no type generator for gint, GtkIconSize
+// Unsupported : gtk_image_new_from_icon_set : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
 
-// Unsupported : gtk_image_new_from_stock : unsupported parameter size : no type generator for gint, GtkIconSize
+// Unsupported : gtk_image_new_from_stock : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
 
 // Unsupported : gtk_info_bar_new_with_buttons : unsupported parameter ... : varargs
 
 // Unsupported : gtk_list_store_new : unsupported parameter ... : varargs
 
-// Unsupported : gtk_list_store_newv : unsupported parameter types : no param type
+// Unsupported : gtk_list_store_newv : unsupported parameter types : no type generator for GType (GType) for array param types
 
-// Unsupported : gtk_menu_popup_for_device : unsupported parameter func : no type generator for MenuPositionFunc, GtkMenuPositionFunc
+// Unsupported : gtk_menu_popup_for_device : unsupported parameter func : no type generator for MenuPositionFunc (GtkMenuPositionFunc) for param func
 
 // GetReserveIndicator is a wrapper around the C function gtk_menu_item_get_reserve_indicator.
 func (recv *MenuItem) GetReserveIndicator() bool {
@@ -1397,7 +1397,7 @@ func (recv *NumerableIcon) GetStyleContext() *StyleContext {
 	return retGo
 }
 
-// Unsupported : gtk_numerable_icon_set_background_gicon : unsupported parameter icon : no type generator for Gio.Icon, GIcon*
+// Unsupported : gtk_numerable_icon_set_background_gicon : unsupported parameter icon : no type generator for Gio.Icon (GIcon*) for param icon
 
 // SetBackgroundIconName is a wrapper around the C function gtk_numerable_icon_set_background_icon_name.
 func (recv *NumerableIcon) SetBackgroundIconName(iconName string) {
@@ -1519,7 +1519,7 @@ func ScaleNewWithRange(orientation Orientation, min float64, max float64, step f
 	return retGo
 }
 
-// Unsupported : gtk_scale_button_new : unsupported parameter size : no type generator for gint, GtkIconSize
+// Unsupported : gtk_scale_button_new : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
 
 // ScrollbarNew is a wrapper around the C function gtk_scrollbar_new.
 func ScrollbarNew(orientation Orientation, adjustment *Adjustment) *Scrollbar {
@@ -1577,7 +1577,7 @@ func SeparatorNew(orientation Orientation) *Separator {
 	return retGo
 }
 
-// Unsupported : gtk_status_icon_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon, GIcon*
+// Unsupported : gtk_status_icon_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon (GIcon*) for param icon
 
 // HasContext is a wrapper around the C function gtk_style_has_context.
 func (recv *Style) HasContext() bool {
@@ -1654,7 +1654,7 @@ func (recv *StyleContext) AddClass(className string) {
 	return
 }
 
-// Unsupported : gtk_style_context_add_provider : unsupported parameter provider : no type generator for StyleProvider, GtkStyleProvider*
+// Unsupported : gtk_style_context_add_provider : unsupported parameter provider : no type generator for StyleProvider (GtkStyleProvider*) for param provider
 
 // AddRegion is a wrapper around the C function gtk_style_context_add_region.
 func (recv *StyleContext) AddRegion(regionName string, flags RegionFlags) {
@@ -1817,9 +1817,9 @@ func (recv *StyleContext) GetState() StateFlags {
 
 // Unsupported : gtk_style_context_get_style : unsupported parameter ... : varargs
 
-// Unsupported : gtk_style_context_get_style_valist : unsupported parameter args : no type generator for va_list, va_list
+// Unsupported : gtk_style_context_get_style_valist : unsupported parameter args : no type generator for va_list (va_list) for param args
 
-// Unsupported : gtk_style_context_get_valist : unsupported parameter args : no type generator for va_list, va_list
+// Unsupported : gtk_style_context_get_valist : unsupported parameter args : no type generator for va_list (va_list) for param args
 
 // HasClass is a wrapper around the C function gtk_style_context_has_class.
 func (recv *StyleContext) HasClass(className string) bool {
@@ -1899,7 +1899,7 @@ func (recv *StyleContext) RemoveClass(className string) {
 	return
 }
 
-// Unsupported : gtk_style_context_remove_provider : unsupported parameter provider : no type generator for StyleProvider, GtkStyleProvider*
+// Unsupported : gtk_style_context_remove_provider : unsupported parameter provider : no type generator for StyleProvider (GtkStyleProvider*) for param provider
 
 // RemoveRegion is a wrapper around the C function gtk_style_context_remove_region.
 func (recv *StyleContext) RemoveRegion(regionName string) {
@@ -2025,7 +2025,7 @@ func (recv *StyleProperties) GetProperty(property string, state StateFlags) (boo
 	return retGo, value
 }
 
-// Unsupported : gtk_style_properties_get_valist : unsupported parameter args : no type generator for va_list, va_list
+// Unsupported : gtk_style_properties_get_valist : unsupported parameter args : no type generator for va_list (va_list) for param args
 
 // LookupColor is a wrapper around the C function gtk_style_properties_lookup_color.
 func (recv *StyleProperties) LookupColor(name string) *SymbolicColor {
@@ -2078,7 +2078,7 @@ func (recv *StyleProperties) SetProperty(property string, state StateFlags, valu
 	return
 }
 
-// Unsupported : gtk_style_properties_set_valist : unsupported parameter args : no type generator for va_list, va_list
+// Unsupported : gtk_style_properties_set_valist : unsupported parameter args : no type generator for va_list (va_list) for param args
 
 // UnsetProperty is a wrapper around the C function gtk_style_properties_unset_property.
 func (recv *StyleProperties) UnsetProperty(property string, state StateFlags) {
@@ -2274,9 +2274,9 @@ func (recv *ThemingEngine) GetStyleProperty(propertyName string) *gobject.Value 
 	return value
 }
 
-// Unsupported : gtk_theming_engine_get_style_valist : unsupported parameter args : no type generator for va_list, va_list
+// Unsupported : gtk_theming_engine_get_style_valist : unsupported parameter args : no type generator for va_list (va_list) for param args
 
-// Unsupported : gtk_theming_engine_get_valist : unsupported parameter args : no type generator for va_list, va_list
+// Unsupported : gtk_theming_engine_get_valist : unsupported parameter args : no type generator for va_list (va_list) for param args
 
 // HasClass is a wrapper around the C function gtk_theming_engine_has_class.
 func (recv *ThemingEngine) HasClass(styleClass string) bool {
@@ -2322,9 +2322,9 @@ func (recv *ThemingEngine) StateIsRunning(state StateType) (bool, float64) {
 
 // Unsupported : gtk_tree_store_new : unsupported parameter ... : varargs
 
-// Unsupported : gtk_tree_store_newv : unsupported parameter types : no param type
+// Unsupported : gtk_tree_store_newv : unsupported parameter types : no type generator for GType (GType) for array param types
 
-// Unsupported : gtk_tree_view_new_with_model : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
+// Unsupported : gtk_tree_view_new_with_model : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
 
 // Unsupported : gtk_tree_view_is_blank_at_pos : unsupported parameter path : record with indirection level of 2
 
@@ -2469,7 +2469,7 @@ func widget_styleUpdatedHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
-// Unsupported : gtk_widget_new : unsupported parameter type : no type generator for GType, GType
+// Unsupported : gtk_widget_new : unsupported parameter ... : varargs
 
 // AddDeviceEvents is a wrapper around the C function gtk_widget_add_device_events.
 func (recv *Widget) AddDeviceEvents(device *gdk.Device, events gdk.EventMask) {
@@ -2720,7 +2720,7 @@ func (recv *Widget) QueueDrawRegion(region *cairo.Region) {
 	return
 }
 
-// Unsupported : gtk_widget_render_icon_pixbuf : unsupported parameter size : no type generator for gint, GtkIconSize
+// Unsupported : gtk_widget_render_icon_pixbuf : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
 
 // ResetStyle is a wrapper around the C function gtk_widget_reset_style.
 func (recv *Widget) ResetStyle() {

@@ -98,11 +98,11 @@ func ClosureNewSimple(sizeofClosure uint32, data uintptr) *Closure {
 	return retGo
 }
 
-// Unsupported : g_closure_add_finalize_notifier : unsupported parameter notify_func : no type generator for ClosureNotify, GClosureNotify
+// Unsupported : g_closure_add_finalize_notifier : unsupported parameter notify_func : no type generator for ClosureNotify (GClosureNotify) for param notify_func
 
-// Unsupported : g_closure_add_invalidate_notifier : unsupported parameter notify_func : no type generator for ClosureNotify, GClosureNotify
+// Unsupported : g_closure_add_invalidate_notifier : unsupported parameter notify_func : no type generator for ClosureNotify (GClosureNotify) for param notify_func
 
-// Unsupported : g_closure_add_marshal_guards : unsupported parameter pre_marshal_notify : no type generator for ClosureNotify, GClosureNotify
+// Unsupported : g_closure_add_marshal_guards : unsupported parameter pre_marshal_notify : no type generator for ClosureNotify (GClosureNotify) for param pre_marshal_notify
 
 // Invalidate is a wrapper around the C function g_closure_invalidate.
 func (recv *Closure) Invalidate() {
@@ -111,7 +111,7 @@ func (recv *Closure) Invalidate() {
 	return
 }
 
-// Unsupported : g_closure_invoke : unsupported parameter param_values : no param type
+// Unsupported : g_closure_invoke : unsupported parameter param_values : no type generator for Value (GValue) for array param param_values
 
 // Ref is a wrapper around the C function g_closure_ref.
 func (recv *Closure) Ref() *Closure {
@@ -121,13 +121,13 @@ func (recv *Closure) Ref() *Closure {
 	return retGo
 }
 
-// Unsupported : g_closure_remove_finalize_notifier : unsupported parameter notify_func : no type generator for ClosureNotify, GClosureNotify
+// Unsupported : g_closure_remove_finalize_notifier : unsupported parameter notify_func : no type generator for ClosureNotify (GClosureNotify) for param notify_func
 
-// Unsupported : g_closure_remove_invalidate_notifier : unsupported parameter notify_func : no type generator for ClosureNotify, GClosureNotify
+// Unsupported : g_closure_remove_invalidate_notifier : unsupported parameter notify_func : no type generator for ClosureNotify (GClosureNotify) for param notify_func
 
-// Unsupported : g_closure_set_marshal : unsupported parameter marshal : no type generator for ClosureMarshal, GClosureMarshal
+// Unsupported : g_closure_set_marshal : unsupported parameter marshal : no type generator for ClosureMarshal (GClosureMarshal) for param marshal
 
-// Unsupported : g_closure_set_meta_marshal : unsupported parameter meta_marshal : no type generator for ClosureMarshal, GClosureMarshal
+// Unsupported : g_closure_set_meta_marshal : unsupported parameter meta_marshal : no type generator for ClosureMarshal (GClosureMarshal) for param meta_marshal
 
 // Sink is a wrapper around the C function g_closure_sink.
 func (recv *Closure) Sink() {
@@ -439,7 +439,7 @@ func (recv *ObjectConstructParam) ToC() unsafe.Pointer {
 type ParamSpecClass struct {
 	native *C.GParamSpecClass
 	// g_type_class : record
-	// value_type : no type generator for GType, GType
+	ValueType Type
 	// no type for finalize
 	// no type for value_set_default
 	// no type for value_validate
@@ -453,12 +453,17 @@ func ParamSpecClassNewFromC(u unsafe.Pointer) *ParamSpecClass {
 		return nil
 	}
 
-	g := &ParamSpecClass{native: c}
+	g := &ParamSpecClass{
+		ValueType: (Type)(c.value_type),
+		native:    c,
+	}
 
 	return g
 }
 
 func (recv *ParamSpecClass) ToC() unsafe.Pointer {
+	recv.native.value_type =
+		(C.GType)(recv.ValueType)
 
 	return (unsafe.Pointer)(recv.native)
 }
@@ -486,11 +491,19 @@ func (recv *ParamSpecPool) ToC() unsafe.Pointer {
 
 // Unsupported : g_param_spec_pool_insert : unsupported parameter pspec : Blacklisted record : GParamSpec
 
-// Unsupported : g_param_spec_pool_list : unsupported parameter owner_type : no type generator for GType, GType
+// Unsupported : g_param_spec_pool_list : no return type
 
-// Unsupported : g_param_spec_pool_list_owned : unsupported parameter owner_type : no type generator for GType, GType
+// ListOwned is a wrapper around the C function g_param_spec_pool_list_owned.
+func (recv *ParamSpecPool) ListOwned(ownerType Type) *glib.List {
+	c_owner_type := (C.GType)(ownerType)
 
-// Unsupported : g_param_spec_pool_lookup : unsupported parameter owner_type : no type generator for GType, GType
+	retC := C.g_param_spec_pool_list_owned((*C.GParamSpecPool)(recv.native), c_owner_type)
+	retGo := glib.ListNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// Unsupported : g_param_spec_pool_lookup : return type : Blacklisted record : GParamSpec
 
 // Unsupported : g_param_spec_pool_remove : unsupported parameter pspec : Blacklisted record : GParamSpec
 
@@ -500,7 +513,7 @@ type ParamSpecTypeInfo struct {
 	InstanceSize uint16
 	NPreallocs   uint16
 	// no type for instance_init
-	// value_type : no type generator for GType, GType
+	ValueType Type
 	// no type for finalize
 	// no type for value_set_default
 	// no type for value_validate
@@ -516,6 +529,7 @@ func ParamSpecTypeInfoNewFromC(u unsafe.Pointer) *ParamSpecTypeInfo {
 	g := &ParamSpecTypeInfo{
 		InstanceSize: (uint16)(c.instance_size),
 		NPreallocs:   (uint16)(c.n_preallocs),
+		ValueType:    (Type)(c.value_type),
 		native:       c,
 	}
 
@@ -527,6 +541,8 @@ func (recv *ParamSpecTypeInfo) ToC() unsafe.Pointer {
 		(C.guint16)(recv.InstanceSize)
 	recv.native.n_preallocs =
 		(C.guint16)(recv.NPreallocs)
+	recv.native.value_type =
+		(C.GType)(recv.ValueType)
 
 	return (unsafe.Pointer)(recv.native)
 }
@@ -596,13 +612,13 @@ func (recv *SignalInvocationHint) ToC() unsafe.Pointer {
 
 // SignalQuery is a wrapper around the C record GSignalQuery.
 type SignalQuery struct {
-	native     *C.GSignalQuery
-	SignalId   uint32
-	SignalName string
-	// itype : no type generator for GType, GType
+	native      *C.GSignalQuery
+	SignalId    uint32
+	SignalName  string
+	Itype       Type
 	SignalFlags SignalFlags
-	// return_type : no type generator for GType, GType
-	NParams uint32
+	ReturnType  Type
+	NParams     uint32
 	// no type for param_types
 }
 
@@ -613,7 +629,9 @@ func SignalQueryNewFromC(u unsafe.Pointer) *SignalQuery {
 	}
 
 	g := &SignalQuery{
+		Itype:       (Type)(c.itype),
 		NParams:     (uint32)(c.n_params),
+		ReturnType:  (Type)(c.return_type),
 		SignalFlags: (SignalFlags)(c.signal_flags),
 		SignalId:    (uint32)(c.signal_id),
 		SignalName:  C.GoString(c.signal_name),
@@ -628,8 +646,12 @@ func (recv *SignalQuery) ToC() unsafe.Pointer {
 		(C.guint)(recv.SignalId)
 	recv.native.signal_name =
 		C.CString(recv.SignalName)
+	recv.native.itype =
+		(C.GType)(recv.Itype)
 	recv.native.signal_flags =
 		(C.GSignalFlags)(recv.SignalFlags)
+	recv.native.return_type =
+		(C.GType)(recv.ReturnType)
 	recv.native.n_params =
 		(C.guint)(recv.NParams)
 
@@ -658,7 +680,15 @@ func (recv *TypeClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : g_type_class_get_private : unsupported parameter private_type : no type generator for GType, GType
+// GetPrivate is a wrapper around the C function g_type_class_get_private.
+func (recv *TypeClass) GetPrivate(privateType Type) uintptr {
+	c_private_type := (C.GType)(privateType)
+
+	retC := C.g_type_class_get_private((*C.GTypeClass)(recv.native), c_private_type)
+	retGo := (uintptr)(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // PeekParent is a wrapper around the C function g_type_class_peek_parent.
 func (recv *TypeClass) PeekParent() uintptr {
@@ -776,7 +806,15 @@ func (recv *TypeInstance) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : g_type_instance_get_private : unsupported parameter private_type : no type generator for GType, GType
+// GetPrivate is a wrapper around the C function g_type_instance_get_private.
+func (recv *TypeInstance) GetPrivate(privateType Type) uintptr {
+	c_private_type := (C.GType)(privateType)
+
+	retC := C.g_type_instance_get_private((*C.GTypeInstance)(recv.native), c_private_type)
+	retGo := (uintptr)(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // TypeInterface is a wrapper around the C record GTypeInterface.
 type TypeInterface struct {
@@ -865,8 +903,8 @@ func (recv *TypePluginClass) ToC() unsafe.Pointer {
 
 // TypeQuery is a wrapper around the C record GTypeQuery.
 type TypeQuery struct {
-	native *C.GTypeQuery
-	// _type : no type generator for GType, GType
+	native       *C.GTypeQuery
+	Type         Type
 	TypeName     string
 	ClassSize    uint32
 	InstanceSize uint32
@@ -881,6 +919,7 @@ func TypeQueryNewFromC(u unsafe.Pointer) *TypeQuery {
 	g := &TypeQuery{
 		ClassSize:    (uint32)(c.class_size),
 		InstanceSize: (uint32)(c.instance_size),
+		Type:         (Type)(c._type),
 		TypeName:     C.GoString(c.type_name),
 		native:       c,
 	}
@@ -889,6 +928,8 @@ func TypeQueryNewFromC(u unsafe.Pointer) *TypeQuery {
 }
 
 func (recv *TypeQuery) ToC() unsafe.Pointer {
+	recv.native._type =
+		(C.GType)(recv.Type)
 	recv.native.type_name =
 		C.CString(recv.TypeName)
 	recv.native.class_size =
@@ -1141,7 +1182,15 @@ func (recv *Value) GetUlong() uint64 {
 	return retGo
 }
 
-// Unsupported : g_value_init : unsupported parameter g_type : no type generator for GType, GType
+// Init is a wrapper around the C function g_value_init.
+func (recv *Value) Init(gType Type) *Value {
+	c_g_type := (C.GType)(gType)
+
+	retC := C.g_value_init((*C.GValue)(recv.native), c_g_type)
+	retGo := ValueNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // PeekPointer is a wrapper around the C function g_value_peek_pointer.
 func (recv *Value) PeekPointer() uintptr {
@@ -1497,9 +1546,9 @@ func (recv *ValueArray) Remove(index uint32) *ValueArray {
 	return retGo
 }
 
-// Unsupported : g_value_array_sort : unsupported parameter compare_func : no type generator for GLib.CompareFunc, GCompareFunc
+// Unsupported : g_value_array_sort : unsupported parameter compare_func : no type generator for GLib.CompareFunc (GCompareFunc) for param compare_func
 
-// Unsupported : g_value_array_sort_with_data : unsupported parameter compare_func : no type generator for GLib.CompareDataFunc, GCompareDataFunc
+// Unsupported : g_value_array_sort_with_data : unsupported parameter compare_func : no type generator for GLib.CompareDataFunc (GCompareDataFunc) for param compare_func
 
 // WeakRef is a wrapper around the C record GWeakRef.
 type WeakRef struct {

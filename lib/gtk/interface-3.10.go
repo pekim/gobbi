@@ -21,4 +21,4 @@ func (recv *FileChooser) GetCurrentName() string {
 	return retGo
 }
 
-// Unsupported : gtk_tree_model_rows_reordered_with_length : unsupported parameter new_order : no param type
+// Unsupported : gtk_tree_model_rows_reordered_with_length : unsupported parameter new_order : no type generator for gint (gint) for array param new_order

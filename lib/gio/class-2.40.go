@@ -123,7 +123,7 @@ func appinfomonitor_changedHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
-// Unsupported : g_application_add_main_option_entries : unsupported parameter entries : no param type
+// Unsupported : g_application_add_main_option_entries : unsupported parameter entries : no type generator for GLib.OptionEntry () for array param entries
 
 // AddOptionGroup is a wrapper around the C function g_application_add_option_group.
 func (recv *Application) AddOptionGroup(group *glib.OptionGroup) {
@@ -164,37 +164,37 @@ func (recv *ApplicationCommandLine) GetOptionsDict() *glib.VariantDict {
 	return retGo
 }
 
-// Unsupported : g_converter_input_stream_new : unsupported parameter converter : no type generator for Converter, GConverter*
+// Unsupported : g_converter_input_stream_new : unsupported parameter converter : no type generator for Converter (GConverter*) for param converter
 
-// Unsupported : g_converter_output_stream_new : unsupported parameter converter : no type generator for Converter, GConverter*
+// Unsupported : g_converter_output_stream_new : unsupported parameter converter : no type generator for Converter (GConverter*) for param converter
 
-// Unsupported : g_dbus_connection_new_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
+// Unsupported : g_dbus_connection_new_finish : unsupported parameter res : no type generator for AsyncResult (GAsyncResult*) for param res
 
-// Unsupported : g_dbus_connection_new_for_address_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
+// Unsupported : g_dbus_connection_new_for_address_finish : unsupported parameter res : no type generator for AsyncResult (GAsyncResult*) for param res
 
-// Unsupported : g_dbus_message_new_from_blob : unsupported parameter blob : no param type
+// Unsupported : g_dbus_message_new_from_blob : unsupported parameter blob : no type generator for guint8 () for array param blob
 
-// Unsupported : g_dbus_object_manager_client_new_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
+// Unsupported : g_dbus_object_manager_client_new_finish : unsupported parameter res : no type generator for AsyncResult (GAsyncResult*) for param res
 
-// Unsupported : g_dbus_object_manager_client_new_for_bus_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
+// Unsupported : g_dbus_object_manager_client_new_for_bus_finish : unsupported parameter res : no type generator for AsyncResult (GAsyncResult*) for param res
 
-// Unsupported : g_dbus_object_manager_client_new_for_bus_sync : unsupported parameter get_proxy_type_func : no type generator for DBusProxyTypeFunc, GDBusProxyTypeFunc
+// Unsupported : g_dbus_object_manager_client_new_for_bus_sync : unsupported parameter get_proxy_type_func : no type generator for DBusProxyTypeFunc (GDBusProxyTypeFunc) for param get_proxy_type_func
 
-// Unsupported : g_dbus_object_manager_client_new_sync : unsupported parameter get_proxy_type_func : no type generator for DBusProxyTypeFunc, GDBusProxyTypeFunc
+// Unsupported : g_dbus_object_manager_client_new_sync : unsupported parameter get_proxy_type_func : no type generator for DBusProxyTypeFunc (GDBusProxyTypeFunc) for param get_proxy_type_func
 
-// Unsupported : g_dbus_proxy_new_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
+// Unsupported : g_dbus_proxy_new_finish : unsupported parameter res : no type generator for AsyncResult (GAsyncResult*) for param res
 
-// Unsupported : g_dbus_proxy_new_for_bus_finish : unsupported parameter res : no type generator for AsyncResult, GAsyncResult*
+// Unsupported : g_dbus_proxy_new_for_bus_finish : unsupported parameter res : no type generator for AsyncResult (GAsyncResult*) for param res
 
-// Unsupported : g_emblem_new : unsupported parameter icon : no type generator for Icon, GIcon*
+// Unsupported : g_emblem_new : unsupported parameter icon : no type generator for Icon (GIcon*) for param icon
 
-// Unsupported : g_emblem_new_with_origin : unsupported parameter icon : no type generator for Icon, GIcon*
+// Unsupported : g_emblem_new_with_origin : unsupported parameter icon : no type generator for Icon (GIcon*) for param icon
 
-// Unsupported : g_emblemed_icon_new : unsupported parameter icon : no type generator for Icon, GIcon*
+// Unsupported : g_emblemed_icon_new : unsupported parameter icon : no type generator for Icon (GIcon*) for param icon
 
-// Unsupported : g_file_icon_new : unsupported parameter file : no type generator for File, GFile*
+// Unsupported : g_file_icon_new : unsupported parameter file : no type generator for File (GFile*) for param file
 
-// Unsupported : g_inet_address_new_from_bytes : unsupported parameter bytes : no param type
+// Unsupported : g_inet_address_new_from_bytes : unsupported parameter bytes : no type generator for guint8 () for array param bytes
 
 // InetSocketAddressNewFromString is a wrapper around the C function g_inet_socket_address_new_from_string.
 func InetSocketAddressNewFromString(address string, port uint32) *InetSocketAddress {
@@ -209,11 +209,9 @@ func InetSocketAddressNewFromString(address string, port uint32) *InetSocketAddr
 	return retGo
 }
 
-// Unsupported : g_list_store_new : unsupported parameter item_type : no type generator for GType, GType
+// Unsupported : g_memory_input_stream_new_from_data : unsupported parameter data : no type generator for guint8 () for array param data
 
-// Unsupported : g_memory_input_stream_new_from_data : unsupported parameter data : no param type
-
-// Unsupported : g_memory_output_stream_new : unsupported parameter realloc_function : no type generator for ReallocFunc, GReallocFunc
+// Unsupported : g_memory_output_stream_new : unsupported parameter realloc_function : no type generator for ReallocFunc (GReallocFunc) for param realloc_function
 
 // Notification is a wrapper around the C record GNotification.
 type Notification struct {
@@ -299,7 +297,7 @@ func (recv *Notification) SetDefaultAction(detailedAction string) {
 
 // Unsupported : g_notification_set_default_action_and_target_value : unsupported parameter target : Blacklisted record : GVariant
 
-// Unsupported : g_notification_set_icon : unsupported parameter icon : no type generator for Icon, GIcon*
+// Unsupported : g_notification_set_icon : unsupported parameter icon : no type generator for Icon (GIcon*) for param icon
 
 // SetPriority is a wrapper around the C function g_notification_set_priority.
 func (recv *Notification) SetPriority(priority NotificationPriority) {
@@ -342,13 +340,13 @@ func (recv *Notification) SetUrgent(urgent bool) {
 
 // Unsupported : g_simple_action_new_stateful : unsupported parameter parameter_type : Blacklisted record : GVariantType
 
-// Unsupported : g_simple_async_result_new : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+// Unsupported : g_simple_async_result_new : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_simple_async_result_new_error : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+// Unsupported : g_simple_async_result_new_error : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_simple_async_result_new_from_error : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+// Unsupported : g_simple_async_result_new_from_error : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_simple_async_result_new_take_error : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+// Unsupported : g_simple_async_result_new_take_error : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
 // Subprocess is a wrapper around the C record GSubprocess.
 type Subprocess struct {
@@ -384,13 +382,13 @@ func CastToSubprocess(object *gobject.Object) *Subprocess {
 
 // Unsupported : g_subprocess_new : unsupported parameter error : record with indirection level of 2
 
-// Unsupported : g_subprocess_newv : unsupported parameter argv : no param type
+// Unsupported : g_subprocess_newv : unsupported parameter argv : no type generator for filename () for array param argv
 
 // Unsupported : g_subprocess_communicate : unsupported parameter stdout_buf : record with indirection level of 2
 
-// Unsupported : g_subprocess_communicate_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+// Unsupported : g_subprocess_communicate_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_subprocess_communicate_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+// Unsupported : g_subprocess_communicate_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
 
 // CommunicateUtf8 is a wrapper around the C function g_subprocess_communicate_utf8.
 func (recv *Subprocess) CommunicateUtf8(stdinBuf string, cancellable *Cancellable) (bool, string, string, error) {
@@ -422,9 +420,9 @@ func (recv *Subprocess) CommunicateUtf8(stdinBuf string, cancellable *Cancellabl
 	return retGo, stdoutBuf, stderrBuf, goThrowableError
 }
 
-// Unsupported : g_subprocess_communicate_utf8_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+// Unsupported : g_subprocess_communicate_utf8_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_subprocess_communicate_utf8_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+// Unsupported : g_subprocess_communicate_utf8_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
 
 // ForceExit is a wrapper around the C function g_subprocess_force_exit.
 func (recv *Subprocess) ForceExit() {
@@ -539,7 +537,7 @@ func (recv *Subprocess) Wait(cancellable *Cancellable) (bool, error) {
 	return retGo, goThrowableError
 }
 
-// Unsupported : g_subprocess_wait_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+// Unsupported : g_subprocess_wait_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
 // WaitCheck is a wrapper around the C function g_subprocess_wait_check.
 func (recv *Subprocess) WaitCheck(cancellable *Cancellable) (bool, error) {
@@ -558,11 +556,11 @@ func (recv *Subprocess) WaitCheck(cancellable *Cancellable) (bool, error) {
 	return retGo, goThrowableError
 }
 
-// Unsupported : g_subprocess_wait_check_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+// Unsupported : g_subprocess_wait_check_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_subprocess_wait_check_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+// Unsupported : g_subprocess_wait_check_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
 
-// Unsupported : g_subprocess_wait_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+// Unsupported : g_subprocess_wait_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
 
 // SubprocessLauncher is a wrapper around the C record GSubprocessLauncher.
 type SubprocessLauncher struct {
@@ -617,7 +615,7 @@ func (recv *SubprocessLauncher) Getenv(variable string) string {
 	return retGo
 }
 
-// Unsupported : g_subprocess_launcher_set_child_setup : unsupported parameter child_setup : no type generator for GLib.SpawnChildSetupFunc, GSpawnChildSetupFunc
+// Unsupported : g_subprocess_launcher_set_child_setup : unsupported parameter child_setup : no type generator for GLib.SpawnChildSetupFunc (GSpawnChildSetupFunc) for param child_setup
 
 // SetCwd is a wrapper around the C function g_subprocess_launcher_set_cwd.
 func (recv *SubprocessLauncher) SetCwd(cwd string) {
@@ -629,7 +627,7 @@ func (recv *SubprocessLauncher) SetCwd(cwd string) {
 	return
 }
 
-// Unsupported : g_subprocess_launcher_set_environ : unsupported parameter env : no param type
+// Unsupported : g_subprocess_launcher_set_environ : unsupported parameter env : no type generator for filename () for array param env
 
 // SetFlags is a wrapper around the C function g_subprocess_launcher_set_flags.
 func (recv *SubprocessLauncher) SetFlags(flags SubprocessFlags) {
@@ -688,7 +686,7 @@ func (recv *SubprocessLauncher) Setenv(variable string, value string, overwrite 
 
 // Unsupported : g_subprocess_launcher_spawn : unsupported parameter error : record with indirection level of 2
 
-// Unsupported : g_subprocess_launcher_spawnv : unsupported parameter argv : no param type
+// Unsupported : g_subprocess_launcher_spawnv : unsupported parameter argv : no type generator for filename () for array param argv
 
 // TakeFd is a wrapper around the C function g_subprocess_launcher_take_fd.
 func (recv *SubprocessLauncher) TakeFd(sourceFd int32, targetFd int32) {
@@ -738,9 +736,9 @@ func (recv *SubprocessLauncher) Unsetenv(variable string) {
 	return
 }
 
-// Unsupported : g_task_new : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+// Unsupported : g_task_new : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_themed_icon_new_from_names : unsupported parameter iconnames : no param type
+// Unsupported : g_themed_icon_new_from_names : unsupported parameter iconnames : no type generator for utf8 (char*) for array param iconnames
 
 // InvokeRequestCertificate is a wrapper around the C function g_tls_interaction_invoke_request_certificate.
 func (recv *TlsInteraction) InvokeRequestCertificate(connection *TlsConnection, flags TlsCertificateRequestFlags, cancellable *Cancellable) (TlsInteractionResult, error) {
@@ -784,12 +782,12 @@ func (recv *TlsInteraction) RequestCertificate(connection *TlsConnection, flags 
 	return retGo, goThrowableError
 }
 
-// Unsupported : g_tls_interaction_request_certificate_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+// Unsupported : g_tls_interaction_request_certificate_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_tls_interaction_request_certificate_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+// Unsupported : g_tls_interaction_request_certificate_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
 
-// Unsupported : g_unix_fd_list_new_from_array : unsupported parameter fds : no param type
+// Unsupported : g_unix_fd_list_new_from_array : unsupported parameter fds : no type generator for gint (gint) for array param fds
 
-// Unsupported : g_unix_socket_address_new_abstract : unsupported parameter path : no param type
+// Unsupported : g_unix_socket_address_new_abstract : unsupported parameter path : no type generator for gchar () for array param path
 
-// Unsupported : g_unix_socket_address_new_with_type : unsupported parameter path : no param type
+// Unsupported : g_unix_socket_address_new_with_type : unsupported parameter path : no type generator for gchar () for array param path

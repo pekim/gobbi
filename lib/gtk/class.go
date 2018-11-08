@@ -1809,7 +1809,7 @@ func (recv *AccelGroup) DisconnectKey(accelKey uint32, accelMods gdk.ModifierTyp
 	return retGo
 }
 
-// Unsupported : gtk_accel_group_find : unsupported parameter find_func : no type generator for AccelGroupFindFunc, GtkAccelGroupFindFunc
+// Unsupported : gtk_accel_group_find : unsupported parameter find_func : no type generator for AccelGroupFindFunc (GtkAccelGroupFindFunc) for param find_func
 
 // Lock is a wrapper around the C function gtk_accel_group_lock.
 func (recv *AccelGroup) Lock() {
@@ -2641,7 +2641,7 @@ func CastToAppChooserDialog(object *gobject.Object) *AppChooserDialog {
 	return AppChooserDialogNewFromC(object.ToC())
 }
 
-// Unsupported : gtk_app_chooser_dialog_new : unsupported parameter file : no type generator for Gio.File, GFile*
+// Unsupported : gtk_app_chooser_dialog_new : unsupported parameter file : no type generator for Gio.File (GFile*) for param file
 
 // GetHeading is a wrapper around the C function gtk_app_chooser_dialog_get_heading.
 func (recv *AppChooserDialog) GetHeading() string {
@@ -3591,7 +3591,7 @@ func CastToBuilder(object *gobject.Object) *Builder {
 	return BuilderNewFromC(object.ToC())
 }
 
-// Unsupported : gtk_builder_extend_with_template : unsupported parameter template_type : no type generator for GType, GType
+// Blacklisted : gtk_builder_extend_with_template
 
 // Button is a wrapper around the C record GtkButton.
 type Button struct {
@@ -3997,7 +3997,7 @@ func ButtonNew() *Button {
 	return retGo
 }
 
-// Unsupported : gtk_button_new_from_icon_name : unsupported parameter size : no type generator for gint, GtkIconSize
+// Unsupported : gtk_button_new_from_icon_name : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
 
 // ButtonNewFromStock is a wrapper around the C function gtk_button_new_from_stock.
 func ButtonNewFromStock(stockId string) *Button {
@@ -5093,7 +5093,7 @@ func CastToCellRenderer(object *gobject.Object) *CellRenderer {
 	return CellRendererNewFromC(object.ToC())
 }
 
-// Unsupported : gtk_cell_renderer_activate : unsupported parameter event : no type generator for Gdk.Event, GdkEvent*
+// Unsupported : gtk_cell_renderer_activate : unsupported parameter event : no type generator for Gdk.Event (GdkEvent*) for param event
 
 // GetFixedSize is a wrapper around the C function gtk_cell_renderer_get_fixed_size.
 func (recv *CellRenderer) GetFixedSize() (int32, int32) {
@@ -5125,7 +5125,7 @@ func (recv *CellRenderer) SetFixedSize(width int32, height int32) {
 	return
 }
 
-// Unsupported : gtk_cell_renderer_start_editing : unsupported parameter event : no type generator for Gdk.Event, GdkEvent*
+// Unsupported : gtk_cell_renderer_start_editing : unsupported parameter event : no type generator for Gdk.Event (GdkEvent*) for param event
 
 // CellRendererAccel is a wrapper around the C record GtkCellRendererAccel.
 type CellRendererAccel struct {
@@ -6081,7 +6081,7 @@ func (recv *Clipboard) GetOwner() *gobject.Object {
 
 // Unsupported : gtk_clipboard_request_contents : unsupported parameter target : Blacklisted record : GdkAtom
 
-// Unsupported : gtk_clipboard_request_text : unsupported parameter callback : no type generator for ClipboardTextReceivedFunc, GtkClipboardTextReceivedFunc
+// Unsupported : gtk_clipboard_request_text : unsupported parameter callback : no type generator for ClipboardTextReceivedFunc (GtkClipboardTextReceivedFunc) for param callback
 
 // SetText is a wrapper around the C function gtk_clipboard_set_text.
 func (recv *Clipboard) SetText(text string, len int32) {
@@ -6095,9 +6095,9 @@ func (recv *Clipboard) SetText(text string, len int32) {
 	return
 }
 
-// Unsupported : gtk_clipboard_set_with_data : unsupported parameter targets : no param type
+// Unsupported : gtk_clipboard_set_with_data : unsupported parameter targets : no type generator for TargetEntry (GtkTargetEntry) for array param targets
 
-// Unsupported : gtk_clipboard_set_with_owner : unsupported parameter targets : no param type
+// Unsupported : gtk_clipboard_set_with_owner : unsupported parameter targets : no type generator for TargetEntry (GtkTargetEntry) for array param targets
 
 // Unsupported : gtk_clipboard_wait_for_contents : unsupported parameter target : Blacklisted record : GdkAtom
 
@@ -6766,9 +6766,9 @@ func ComboBoxNewWithAreaAndEntry(area *CellArea) *ComboBox {
 	return retGo
 }
 
-// Unsupported : gtk_combo_box_new_with_model : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
+// Unsupported : gtk_combo_box_new_with_model : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
 
-// Unsupported : gtk_combo_box_new_with_model_and_entry : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
+// Unsupported : gtk_combo_box_new_with_model_and_entry : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
 
 // GetAddTearoffs is a wrapper around the C function gtk_combo_box_get_add_tearoffs.
 func (recv *ComboBox) GetAddTearoffs() bool {
@@ -7253,7 +7253,7 @@ func (recv *Container) ChildGetProperty(child *Widget, propertyName string, valu
 	return
 }
 
-// Unsupported : gtk_container_child_get_valist : unsupported parameter var_args : no type generator for va_list, va_list
+// Unsupported : gtk_container_child_get_valist : unsupported parameter var_args : no type generator for va_list (va_list) for param var_args
 
 // Unsupported : gtk_container_child_set : unsupported parameter ... : varargs
 
@@ -7271,13 +7271,19 @@ func (recv *Container) ChildSetProperty(child *Widget, propertyName string, valu
 	return
 }
 
-// Unsupported : gtk_container_child_set_valist : unsupported parameter var_args : no type generator for va_list, va_list
+// Unsupported : gtk_container_child_set_valist : unsupported parameter var_args : no type generator for va_list (va_list) for param var_args
 
-// Unsupported : gtk_container_child_type : no return generator
+// ChildType is a wrapper around the C function gtk_container_child_type.
+func (recv *Container) ChildType() gobject.Type {
+	retC := C.gtk_container_child_type((*C.GtkContainer)(recv.native))
+	retGo := (gobject.Type)(retC)
 
-// Unsupported : gtk_container_forall : unsupported parameter callback : no type generator for Callback, GtkCallback
+	return retGo
+}
 
-// Unsupported : gtk_container_foreach : unsupported parameter callback : no type generator for Callback, GtkCallback
+// Unsupported : gtk_container_forall : unsupported parameter callback : no type generator for Callback (GtkCallback) for param callback
+
+// Unsupported : gtk_container_foreach : unsupported parameter callback : no type generator for Callback (GtkCallback) for param callback
 
 // GetBorderWidth is a wrapper around the C function gtk_container_get_border_width.
 func (recv *Container) GetBorderWidth() uint32 {
@@ -7689,9 +7695,9 @@ func CssProviderNew() *CssProvider {
 	return retGo
 }
 
-// Unsupported : gtk_css_provider_load_from_data : unsupported parameter data : no param type
+// Unsupported : gtk_css_provider_load_from_data : unsupported parameter data : no type generator for guint8 () for array param data
 
-// Unsupported : gtk_css_provider_load_from_file : unsupported parameter file : no type generator for Gio.File, GFile*
+// Unsupported : gtk_css_provider_load_from_file : unsupported parameter file : no type generator for Gio.File (GFile*) for param file
 
 // LoadFromPath is a wrapper around the C function gtk_css_provider_load_from_path.
 func (recv *CssProvider) LoadFromPath(path string) (bool, error) {
@@ -13207,7 +13213,7 @@ func IMContextSimpleNew() *IMContextSimple {
 
 // Blacklisted : gtk_im_context_simple_add_compose_file
 
-// Unsupported : gtk_im_context_simple_add_table : unsupported parameter data : no param type
+// Unsupported : gtk_im_context_simple_add_table : unsupported parameter data : no type generator for guint16 (guint16) for array param data
 
 // IMMulticontext is a wrapper around the C record GtkIMMulticontext.
 type IMMulticontext struct {
@@ -13927,7 +13933,7 @@ func iconview_unselectAllHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
-// Unsupported : gtk_icon_view_new_with_model : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
+// Unsupported : gtk_icon_view_new_with_model : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
 
 // ImplementorIface returns the ImplementorIface interface implemented by IconView
 func (recv *IconView) ImplementorIface() *atk.ImplementorIface {
@@ -14086,11 +14092,11 @@ func ImageNewFromFile(filename string) *Image {
 	return retGo
 }
 
-// Unsupported : gtk_image_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon, GIcon*
+// Unsupported : gtk_image_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon (GIcon*) for param icon
 
-// Unsupported : gtk_image_new_from_icon_name : unsupported parameter size : no type generator for gint, GtkIconSize
+// Unsupported : gtk_image_new_from_icon_name : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
 
-// Unsupported : gtk_image_new_from_icon_set : unsupported parameter size : no type generator for gint, GtkIconSize
+// Unsupported : gtk_image_new_from_icon_set : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
 
 // ImageNewFromPixbuf is a wrapper around the C function gtk_image_new_from_pixbuf.
 func ImageNewFromPixbuf(pixbuf *gdkpixbuf.Pixbuf) *Image {
@@ -14102,7 +14108,7 @@ func ImageNewFromPixbuf(pixbuf *gdkpixbuf.Pixbuf) *Image {
 	return retGo
 }
 
-// Unsupported : gtk_image_new_from_stock : unsupported parameter size : no type generator for gint, GtkIconSize
+// Unsupported : gtk_image_new_from_stock : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
 
 // GetAnimation is a wrapper around the C function gtk_image_get_animation.
 func (recv *Image) GetAnimation() *gdkpixbuf.PixbufAnimation {
@@ -14132,7 +14138,7 @@ func (recv *Image) GetPixbuf() *gdkpixbuf.Pixbuf {
 	return retGo
 }
 
-// Unsupported : gtk_image_get_stock : unsupported parameter size : no type generator for gint, GtkIconSize*
+// Unsupported : gtk_image_get_stock : unsupported parameter size : no type generator for gint (GtkIconSize*) for param size
 
 // GetStorageType is a wrapper around the C function gtk_image_get_storage_type.
 func (recv *Image) GetStorageType() ImageType {
@@ -14161,7 +14167,7 @@ func (recv *Image) SetFromFile(filename string) {
 	return
 }
 
-// Unsupported : gtk_image_set_from_icon_set : unsupported parameter size : no type generator for gint, GtkIconSize
+// Unsupported : gtk_image_set_from_icon_set : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
 
 // SetFromPixbuf is a wrapper around the C function gtk_image_set_from_pixbuf.
 func (recv *Image) SetFromPixbuf(pixbuf *gdkpixbuf.Pixbuf) {
@@ -14182,7 +14188,7 @@ func (recv *Image) SetFromResource(resourcePath string) {
 	return
 }
 
-// Unsupported : gtk_image_set_from_stock : unsupported parameter size : no type generator for gint, GtkIconSize
+// Unsupported : gtk_image_set_from_stock : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
 
 // ImplementorIface returns the ImplementorIface interface implemented by Image
 func (recv *Image) ImplementorIface() *atk.ImplementorIface {
@@ -15987,7 +15993,7 @@ func CastToListStore(object *gobject.Object) *ListStore {
 
 // Unsupported : gtk_list_store_new : unsupported parameter ... : varargs
 
-// Unsupported : gtk_list_store_newv : unsupported parameter types : no param type
+// Unsupported : gtk_list_store_newv : unsupported parameter types : no type generator for GType (GType) for array param types
 
 // Append is a wrapper around the C function gtk_list_store_append.
 func (recv *ListStore) Append() *TreeIter {
@@ -16069,9 +16075,9 @@ func (recv *ListStore) Remove(iter *TreeIter) bool {
 
 // Unsupported : gtk_list_store_set : unsupported parameter ... : varargs
 
-// Unsupported : gtk_list_store_set_column_types : unsupported parameter types : no param type
+// Unsupported : gtk_list_store_set_column_types : unsupported parameter types : no type generator for GType (GType) for array param types
 
-// Unsupported : gtk_list_store_set_valist : unsupported parameter var_args : no type generator for va_list, va_list
+// Unsupported : gtk_list_store_set_valist : unsupported parameter var_args : no type generator for va_list (va_list) for param var_args
 
 // SetValue is a wrapper around the C function gtk_list_store_set_value.
 func (recv *ListStore) SetValue(iter *TreeIter, column int32, value *gobject.Value) {
@@ -16323,7 +16329,7 @@ func MenuNew() *Menu {
 	return retGo
 }
 
-// Unsupported : gtk_menu_attach_to_widget : unsupported parameter detacher : no type generator for MenuDetachFunc, GtkMenuDetachFunc
+// Unsupported : gtk_menu_attach_to_widget : unsupported parameter detacher : no type generator for MenuDetachFunc (GtkMenuDetachFunc) for param detacher
 
 // Detach is a wrapper around the C function gtk_menu_detach.
 func (recv *Menu) Detach() {
@@ -16379,7 +16385,7 @@ func (recv *Menu) Popdown() {
 	return
 }
 
-// Unsupported : gtk_menu_popup : unsupported parameter func : no type generator for MenuPositionFunc, GtkMenuPositionFunc
+// Unsupported : gtk_menu_popup : unsupported parameter func : no type generator for MenuPositionFunc (GtkMenuPositionFunc) for param func
 
 // ReorderChild is a wrapper around the C function gtk_menu_reorder_child.
 func (recv *Menu) ReorderChild(child *Widget, position int32) {
@@ -21449,7 +21455,7 @@ func CastToScaleButton(object *gobject.Object) *ScaleButton {
 	return ScaleButtonNewFromC(object.ToC())
 }
 
-// Unsupported : gtk_scale_button_new : unsupported parameter size : no type generator for gint, GtkIconSize
+// Unsupported : gtk_scale_button_new : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
 
 // ImplementorIface returns the ImplementorIface interface implemented by ScaleButton
 func (recv *ScaleButton) ImplementorIface() *atk.ImplementorIface {
@@ -23213,7 +23219,7 @@ func CastToStatusIcon(object *gobject.Object) *StatusIcon {
 	return StatusIconNewFromC(object.ToC())
 }
 
-// Unsupported : gtk_status_icon_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon, GIcon*
+// Unsupported : gtk_status_icon_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon (GIcon*) for param icon
 
 // Statusbar is a wrapper around the C record GtkStatusbar.
 type Statusbar struct {
@@ -23521,7 +23527,7 @@ func (recv *Style) LookupIconSet(stockId string) *IconSet {
 	return retGo
 }
 
-// Unsupported : gtk_style_render_icon : unsupported parameter size : no type generator for gint, GtkIconSize
+// Unsupported : gtk_style_render_icon : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
 
 // SetBackground is a wrapper around the C function gtk_style_set_background.
 func (recv *Style) SetBackground(window *gdk.Window, stateType StateType) {
@@ -25756,7 +25762,7 @@ func TextTagNew(name string) *TextTag {
 	return retGo
 }
 
-// Unsupported : gtk_text_tag_event : unsupported parameter event : no type generator for Gdk.Event, GdkEvent*
+// Unsupported : gtk_text_tag_event : unsupported parameter event : no type generator for Gdk.Event (GdkEvent*) for param event
 
 // GetPriority is a wrapper around the C function gtk_text_tag_get_priority.
 func (recv *TextTag) GetPriority() int32 {
@@ -26006,7 +26012,7 @@ func (recv *TextTagTable) Add(tag *TextTag) bool {
 	return retGo
 }
 
-// Unsupported : gtk_text_tag_table_foreach : unsupported parameter func : no type generator for TextTagTableForeach, GtkTextTagTableForeach
+// Unsupported : gtk_text_tag_table_foreach : unsupported parameter func : no type generator for TextTagTableForeach (GtkTextTagTableForeach) for param func
 
 // GetSize is a wrapper around the C function gtk_text_tag_table_get_size.
 func (recv *TextTagTable) GetSize() int32 {
@@ -28819,7 +28825,7 @@ func (recv *TreeSelection) GetMode() SelectionMode {
 	return retGo
 }
 
-// Unsupported : gtk_tree_selection_get_selected : unsupported parameter model : no type generator for TreeModel, GtkTreeModel**
+// Unsupported : gtk_tree_selection_get_selected : unsupported parameter model : no type generator for TreeModel (GtkTreeModel**) for param model
 
 // GetTreeView is a wrapper around the C function gtk_tree_selection_get_tree_view.
 func (recv *TreeSelection) GetTreeView() *TreeView {
@@ -28893,7 +28899,7 @@ func (recv *TreeSelection) SelectRange(startPath *TreePath, endPath *TreePath) {
 	return
 }
 
-// Unsupported : gtk_tree_selection_selected_foreach : unsupported parameter func : no type generator for TreeSelectionForeachFunc, GtkTreeSelectionForeachFunc
+// Unsupported : gtk_tree_selection_selected_foreach : unsupported parameter func : no type generator for TreeSelectionForeachFunc (GtkTreeSelectionForeachFunc) for param func
 
 // SetMode is a wrapper around the C function gtk_tree_selection_set_mode.
 func (recv *TreeSelection) SetMode(type_ SelectionMode) {
@@ -28904,7 +28910,7 @@ func (recv *TreeSelection) SetMode(type_ SelectionMode) {
 	return
 }
 
-// Unsupported : gtk_tree_selection_set_select_function : unsupported parameter func : no type generator for TreeSelectionFunc, GtkTreeSelectionFunc
+// Unsupported : gtk_tree_selection_set_select_function : unsupported parameter func : no type generator for TreeSelectionFunc (GtkTreeSelectionFunc) for param func
 
 // UnselectAll is a wrapper around the C function gtk_tree_selection_unselect_all.
 func (recv *TreeSelection) UnselectAll() {
@@ -28967,7 +28973,7 @@ func CastToTreeStore(object *gobject.Object) *TreeStore {
 
 // Unsupported : gtk_tree_store_new : unsupported parameter ... : varargs
 
-// Unsupported : gtk_tree_store_newv : unsupported parameter types : no param type
+// Unsupported : gtk_tree_store_newv : unsupported parameter types : no type generator for GType (GType) for array param types
 
 // Append is a wrapper around the C function gtk_tree_store_append.
 func (recv *TreeStore) Append(parent *TreeIter) *TreeIter {
@@ -29081,9 +29087,9 @@ func (recv *TreeStore) Remove(iter *TreeIter) bool {
 
 // Unsupported : gtk_tree_store_set : unsupported parameter ... : varargs
 
-// Unsupported : gtk_tree_store_set_column_types : unsupported parameter types : no param type
+// Unsupported : gtk_tree_store_set_column_types : unsupported parameter types : no type generator for GType (GType) for array param types
 
-// Unsupported : gtk_tree_store_set_valist : unsupported parameter var_args : no type generator for va_list, va_list
+// Unsupported : gtk_tree_store_set_valist : unsupported parameter var_args : no type generator for va_list (va_list) for param var_args
 
 // SetValue is a wrapper around the C function gtk_tree_store_set_value.
 func (recv *TreeStore) SetValue(iter *TreeIter, column int32, value *gobject.Value) {
@@ -30035,7 +30041,7 @@ func TreeViewNew() *TreeView {
 	return retGo
 }
 
-// Unsupported : gtk_tree_view_new_with_model : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
+// Unsupported : gtk_tree_view_new_with_model : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
 
 // AppendColumn is a wrapper around the C function gtk_tree_view_append_column.
 func (recv *TreeView) AppendColumn(column *TreeViewColumn) int32 {
@@ -30081,9 +30087,9 @@ func (recv *TreeView) CreateRowDragIcon(path *TreePath) *cairo.Surface {
 	return retGo
 }
 
-// Unsupported : gtk_tree_view_enable_model_drag_dest : unsupported parameter targets : no param type
+// Unsupported : gtk_tree_view_enable_model_drag_dest : unsupported parameter targets : no type generator for TargetEntry (GtkTargetEntry) for array param targets
 
-// Unsupported : gtk_tree_view_enable_model_drag_source : unsupported parameter targets : no param type
+// Unsupported : gtk_tree_view_enable_model_drag_source : unsupported parameter targets : no type generator for TargetEntry (GtkTargetEntry) for array param targets
 
 // ExpandAll is a wrapper around the C function gtk_tree_view_expand_all.
 func (recv *TreeView) ExpandAll() {
@@ -30245,9 +30251,9 @@ func (recv *TreeView) InsertColumn(column *TreeViewColumn, position int32) int32
 
 // Unsupported : gtk_tree_view_insert_column_with_attributes : unsupported parameter ... : varargs
 
-// Unsupported : gtk_tree_view_insert_column_with_data_func : unsupported parameter func : no type generator for TreeCellDataFunc, GtkTreeCellDataFunc
+// Unsupported : gtk_tree_view_insert_column_with_data_func : unsupported parameter func : no type generator for TreeCellDataFunc (GtkTreeCellDataFunc) for param func
 
-// Unsupported : gtk_tree_view_map_expanded_rows : unsupported parameter func : no type generator for TreeViewMappingFunc, GtkTreeViewMappingFunc
+// Unsupported : gtk_tree_view_map_expanded_rows : unsupported parameter func : no type generator for TreeViewMappingFunc (GtkTreeViewMappingFunc) for param func
 
 // MoveColumnAfter is a wrapper around the C function gtk_tree_view_move_column_after.
 func (recv *TreeView) MoveColumnAfter(column *TreeViewColumn, baseColumn *TreeViewColumn) {
@@ -30320,7 +30326,7 @@ func (recv *TreeView) ScrollToPoint(treeX int32, treeY int32) {
 	return
 }
 
-// Unsupported : gtk_tree_view_set_column_drag_function : unsupported parameter func : no type generator for TreeViewColumnDropFunc, GtkTreeViewColumnDropFunc
+// Unsupported : gtk_tree_view_set_column_drag_function : unsupported parameter func : no type generator for TreeViewColumnDropFunc (GtkTreeViewColumnDropFunc) for param func
 
 // SetCursor is a wrapper around the C function gtk_tree_view_set_cursor.
 func (recv *TreeView) SetCursor(path *TreePath, focusColumn *TreeViewColumn, startEditing bool) {
@@ -30336,7 +30342,7 @@ func (recv *TreeView) SetCursor(path *TreePath, focusColumn *TreeViewColumn, sta
 	return
 }
 
-// Unsupported : gtk_tree_view_set_destroy_count_func : unsupported parameter func : no type generator for TreeDestroyCountFunc, GtkTreeDestroyCountFunc
+// Unsupported : gtk_tree_view_set_destroy_count_func : unsupported parameter func : no type generator for TreeDestroyCountFunc (GtkTreeDestroyCountFunc) for param func
 
 // SetDragDestRow is a wrapper around the C function gtk_tree_view_set_drag_dest_row.
 func (recv *TreeView) SetDragDestRow(path *TreePath, pos TreeViewDropPosition) {
@@ -30397,7 +30403,7 @@ func (recv *TreeView) SetHeadersVisible(headersVisible bool) {
 	return
 }
 
-// Unsupported : gtk_tree_view_set_model : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
+// Unsupported : gtk_tree_view_set_model : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
 
 // SetReorderable is a wrapper around the C function gtk_tree_view_set_reorderable.
 func (recv *TreeView) SetReorderable(reorderable bool) {
@@ -30428,7 +30434,7 @@ func (recv *TreeView) SetSearchColumn(column int32) {
 	return
 }
 
-// Unsupported : gtk_tree_view_set_search_equal_func : unsupported parameter search_equal_func : no type generator for TreeViewSearchEqualFunc, GtkTreeViewSearchEqualFunc
+// Unsupported : gtk_tree_view_set_search_equal_func : unsupported parameter search_equal_func : no type generator for TreeViewSearchEqualFunc (GtkTreeViewSearchEqualFunc) for param search_equal_func
 
 // SetVadjustment is a wrapper around the C function gtk_tree_view_set_vadjustment.
 func (recv *TreeView) SetVadjustment(adjustment *Adjustment) {
@@ -30685,7 +30691,7 @@ func (recv *TreeViewColumn) CellIsVisible() bool {
 	return retGo
 }
 
-// Unsupported : gtk_tree_view_column_cell_set_cell_data : unsupported parameter tree_model : no type generator for TreeModel, GtkTreeModel*
+// Unsupported : gtk_tree_view_column_cell_set_cell_data : unsupported parameter tree_model : no type generator for TreeModel (GtkTreeModel*) for param tree_model
 
 // Clear is a wrapper around the C function gtk_tree_view_column_clear.
 func (recv *TreeViewColumn) Clear() {
@@ -30878,7 +30884,7 @@ func (recv *TreeViewColumn) SetAlignment(xalign float32) {
 
 // Unsupported : gtk_tree_view_column_set_attributes : unsupported parameter ... : varargs
 
-// Unsupported : gtk_tree_view_column_set_cell_data_func : unsupported parameter func : no type generator for TreeCellDataFunc, GtkTreeCellDataFunc
+// Unsupported : gtk_tree_view_column_set_cell_data_func : unsupported parameter func : no type generator for TreeCellDataFunc (GtkTreeCellDataFunc) for param func
 
 // SetClickable is a wrapper around the C function gtk_tree_view_column_set_clickable.
 func (recv *TreeViewColumn) SetClickable(clickable bool) {
@@ -34305,7 +34311,7 @@ func widget_windowStateEventHandler(_ *C.GObject, c_event *C.GdkEventWindowState
 	return retC
 }
 
-// Unsupported : gtk_widget_new : unsupported parameter type : no type generator for GType, GType
+// Unsupported : gtk_widget_new : unsupported parameter ... : varargs
 
 // Activate is a wrapper around the C function gtk_widget_activate.
 func (recv *Widget) Activate() bool {
@@ -34421,7 +34427,7 @@ func (recv *Widget) Destroy() {
 
 // Unsupported : gtk_widget_destroyed : unsupported parameter widget_pointer : record with indirection level of 2
 
-// Unsupported : gtk_drag_begin : unsupported parameter event : no type generator for Gdk.Event, GdkEvent*
+// Unsupported : gtk_drag_begin : unsupported parameter event : no type generator for Gdk.Event (GdkEvent*) for param event
 
 // DragCheckThreshold is a wrapper around the C function gtk_drag_check_threshold.
 func (recv *Widget) DragCheckThreshold(startX int32, startY int32, currentX int32, currentY int32) bool {
@@ -34454,7 +34460,7 @@ func (recv *Widget) DragDestGetTargetList() *TargetList {
 	return retGo
 }
 
-// Unsupported : gtk_drag_dest_set : unsupported parameter targets : no param type
+// Unsupported : gtk_drag_dest_set : unsupported parameter targets : no type generator for TargetEntry (GtkTargetEntry) for array param targets
 
 // DragDestSetProxy is a wrapper around the C function gtk_drag_dest_set_proxy.
 func (recv *Widget) DragDestSetProxy(proxyWindow *gdk.Window, protocol gdk.DragProtocol, useCoordinates bool) {
@@ -34495,7 +34501,7 @@ func (recv *Widget) DragHighlight() {
 	return
 }
 
-// Unsupported : gtk_drag_source_set : unsupported parameter targets : no param type
+// Unsupported : gtk_drag_source_set : unsupported parameter targets : no type generator for TargetEntry (GtkTargetEntry) for array param targets
 
 // DragSourceSetIconPixbuf is a wrapper around the C function gtk_drag_source_set_icon_pixbuf.
 func (recv *Widget) DragSourceSetIconPixbuf(pixbuf *gdkpixbuf.Pixbuf) {
@@ -34537,7 +34543,7 @@ func (recv *Widget) EnsureStyle() {
 	return
 }
 
-// Unsupported : gtk_widget_event : unsupported parameter event : no type generator for Gdk.Event, GdkEvent*
+// Unsupported : gtk_widget_event : unsupported parameter event : no type generator for Gdk.Event (GdkEvent*) for param event
 
 // FreezeChildNotify is a wrapper around the C function gtk_widget_freeze_child_notify.
 func (recv *Widget) FreezeChildNotify() {
@@ -34570,7 +34576,20 @@ func (recv *Widget) GetAllocatedWidth() int32 {
 	return retGo
 }
 
-// Unsupported : gtk_widget_get_ancestor : unsupported parameter widget_type : no type generator for GType, GType
+// GetAncestor is a wrapper around the C function gtk_widget_get_ancestor.
+func (recv *Widget) GetAncestor(widgetType gobject.Type) *Widget {
+	c_widget_type := (C.GType)(widgetType)
+
+	retC := C.gtk_widget_get_ancestor((*C.GtkWidget)(recv.native), c_widget_type)
+	var retGo (*Widget)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = WidgetNewFromC(unsafe.Pointer(retC))
+	}
+
+	return retGo
+}
 
 // GetChildRequisition is a wrapper around the C function gtk_widget_get_child_requisition.
 func (recv *Widget) GetChildRequisition() *Requisition {
@@ -34760,7 +34779,18 @@ func (recv *Widget) GetSupportMultidevice() bool {
 	return retGo
 }
 
-// Unsupported : gtk_widget_get_template_child : unsupported parameter widget_type : no type generator for GType, GType
+// GetTemplateChild is a wrapper around the C function gtk_widget_get_template_child.
+func (recv *Widget) GetTemplateChild(widgetType gobject.Type, name string) *gobject.Object {
+	c_widget_type := (C.GType)(widgetType)
+
+	c_name := C.CString(name)
+	defer C.free(unsafe.Pointer(c_name))
+
+	retC := C.gtk_widget_get_template_child((*C.GtkWidget)(recv.native), c_widget_type, c_name)
+	retGo := gobject.ObjectNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // GetToplevel is a wrapper around the C function gtk_widget_get_toplevel.
 func (recv *Widget) GetToplevel() *Widget {
@@ -35049,7 +35079,7 @@ func (recv *Widget) RemoveAccelerator(accelGroup *AccelGroup, accelKey uint32, a
 	return retGo
 }
 
-// Unsupported : gtk_widget_render_icon : unsupported parameter size : no type generator for gint, GtkIconSize
+// Unsupported : gtk_widget_render_icon : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
 
 // Reparent is a wrapper around the C function gtk_widget_reparent.
 func (recv *Widget) Reparent(newParent *Widget) {
@@ -35067,7 +35097,7 @@ func (recv *Widget) ResetRcStyles() {
 	return
 }
 
-// Unsupported : gtk_widget_send_expose : unsupported parameter event : no type generator for Gdk.Event, GdkEvent*
+// Unsupported : gtk_widget_send_expose : unsupported parameter event : no type generator for Gdk.Event (GdkEvent*) for param event
 
 // SetAccelPath is a wrapper around the C function gtk_widget_set_accel_path.
 func (recv *Widget) SetAccelPath(accelPath string, accelGroup *AccelGroup) {
@@ -35331,7 +35361,7 @@ func (recv *Widget) StyleGetProperty(propertyName string, value *gobject.Value) 
 	return
 }
 
-// Unsupported : gtk_widget_style_get_valist : unsupported parameter var_args : no type generator for va_list, va_list
+// Unsupported : gtk_widget_style_get_valist : unsupported parameter var_args : no type generator for va_list (va_list) for param var_args
 
 // ThawChildNotify is a wrapper around the C function gtk_widget_thaw_child_notify.
 func (recv *Widget) ThawChildNotify() {

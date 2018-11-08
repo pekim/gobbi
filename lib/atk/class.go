@@ -608,7 +608,7 @@ func (recv *Object) AddRelationship(relationship RelationType, target *Object) b
 	return retGo
 }
 
-// Unsupported : atk_object_connect_property_change_handler : unsupported parameter handler : no type generator for PropertyChangeHandler, AtkPropertyChangeHandler*
+// Unsupported : atk_object_connect_property_change_handler : unsupported parameter handler : no type generator for PropertyChangeHandler (AtkPropertyChangeHandler*) for param handler
 
 // GetDescription is a wrapper around the C function atk_object_get_description.
 func (recv *Object) GetDescription() string {
@@ -831,7 +831,13 @@ func (recv *ObjectFactory) CreateAccessible(obj *gobject.Object) *Object {
 	return retGo
 }
 
-// Unsupported : atk_object_factory_get_accessible_type : no return generator
+// GetAccessibleType is a wrapper around the C function atk_object_factory_get_accessible_type.
+func (recv *ObjectFactory) GetAccessibleType() gobject.Type {
+	retC := C.atk_object_factory_get_accessible_type((*C.AtkObjectFactory)(recv.native))
+	retGo := (gobject.Type)(retC)
+
+	return retGo
+}
 
 // Invalidate is a wrapper around the C function atk_object_factory_invalidate.
 func (recv *ObjectFactory) Invalidate() {
@@ -921,11 +927,36 @@ func CastToRegistry(object *gobject.Object) *Registry {
 	return RegistryNewFromC(object.ToC())
 }
 
-// Unsupported : atk_registry_get_factory : unsupported parameter type : no type generator for GType, GType
+// GetFactory is a wrapper around the C function atk_registry_get_factory.
+func (recv *Registry) GetFactory(type_ gobject.Type) *ObjectFactory {
+	c_type := (C.GType)(type_)
 
-// Unsupported : atk_registry_get_factory_type : unsupported parameter type : no type generator for GType, GType
+	retC := C.atk_registry_get_factory((*C.AtkRegistry)(recv.native), c_type)
+	retGo := ObjectFactoryNewFromC(unsafe.Pointer(retC))
 
-// Unsupported : atk_registry_set_factory_type : unsupported parameter type : no type generator for GType, GType
+	return retGo
+}
+
+// GetFactoryType is a wrapper around the C function atk_registry_get_factory_type.
+func (recv *Registry) GetFactoryType(type_ gobject.Type) gobject.Type {
+	c_type := (C.GType)(type_)
+
+	retC := C.atk_registry_get_factory_type((*C.AtkRegistry)(recv.native), c_type)
+	retGo := (gobject.Type)(retC)
+
+	return retGo
+}
+
+// SetFactoryType is a wrapper around the C function atk_registry_set_factory_type.
+func (recv *Registry) SetFactoryType(type_ gobject.Type, factoryType gobject.Type) {
+	c_type := (C.GType)(type_)
+
+	c_factory_type := (C.GType)(factoryType)
+
+	C.atk_registry_set_factory_type((*C.AtkRegistry)(recv.native), c_type, c_factory_type)
+
+	return
+}
 
 // Relation is a wrapper around the C record AtkRelation.
 type Relation struct {
@@ -967,7 +998,7 @@ func CastToRelation(object *gobject.Object) *Relation {
 	return RelationNewFromC(object.ToC())
 }
 
-// Unsupported : atk_relation_new : unsupported parameter targets : no param type
+// Unsupported : atk_relation_new : unsupported parameter targets : no type generator for Object (AtkObject*) for array param targets
 
 // GetRelationType is a wrapper around the C function atk_relation_get_relation_type.
 func (recv *Relation) GetRelationType() RelationType {
@@ -1197,7 +1228,7 @@ func (recv *StateSet) AddState(type_ StateType) bool {
 	return retGo
 }
 
-// Unsupported : atk_state_set_add_states : unsupported parameter types : no param type
+// Unsupported : atk_state_set_add_states : unsupported parameter types : no type generator for StateType (AtkStateType) for array param types
 
 // AndSets is a wrapper around the C function atk_state_set_and_sets.
 func (recv *StateSet) AndSets(compareSet *StateSet) *StateSet {
@@ -1226,7 +1257,7 @@ func (recv *StateSet) ContainsState(type_ StateType) bool {
 	return retGo
 }
 
-// Unsupported : atk_state_set_contains_states : unsupported parameter types : no param type
+// Unsupported : atk_state_set_contains_states : unsupported parameter types : no type generator for StateType (AtkStateType) for array param types
 
 // IsEmpty is a wrapper around the C function atk_state_set_is_empty.
 func (recv *StateSet) IsEmpty() bool {

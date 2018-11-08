@@ -1671,7 +1671,13 @@ func (recv *IOExtension) GetPriority() int32 {
 	return retGo
 }
 
-// Unsupported : g_io_extension_get_type : no return generator
+// GetType is a wrapper around the C function g_io_extension_get_type.
+func (recv *IOExtension) GetType() gobject.Type {
+	retC := C.g_io_extension_get_type((*C.GIOExtension)(recv.native))
+	retGo := (gobject.Type)(retC)
+
+	return retGo
+}
 
 // RefClass is a wrapper around the C function g_io_extension_ref_class.
 func (recv *IOExtension) RefClass() *gobject.TypeClass {
@@ -1721,9 +1727,22 @@ func (recv *IOExtensionPoint) GetExtensions() *glib.List {
 	return retGo
 }
 
-// Unsupported : g_io_extension_point_get_required_type : no return generator
+// GetRequiredType is a wrapper around the C function g_io_extension_point_get_required_type.
+func (recv *IOExtensionPoint) GetRequiredType() gobject.Type {
+	retC := C.g_io_extension_point_get_required_type((*C.GIOExtensionPoint)(recv.native))
+	retGo := (gobject.Type)(retC)
 
-// Unsupported : g_io_extension_point_set_required_type : unsupported parameter type : no type generator for GType, GType
+	return retGo
+}
+
+// SetRequiredType is a wrapper around the C function g_io_extension_point_set_required_type.
+func (recv *IOExtensionPoint) SetRequiredType(type_ gobject.Type) {
+	c_type := (C.GType)(type_)
+
+	C.g_io_extension_point_set_required_type((*C.GIOExtensionPoint)(recv.native), c_type)
+
+	return
+}
 
 // IOModuleClass is a wrapper around the C record GIOModuleClass.
 type IOModuleClass struct {
@@ -1767,9 +1786,9 @@ func (recv *IOSchedulerJob) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : g_io_scheduler_job_send_to_mainloop : unsupported parameter func : no type generator for GLib.SourceFunc, GSourceFunc
+// Unsupported : g_io_scheduler_job_send_to_mainloop : unsupported parameter func : no type generator for GLib.SourceFunc (GSourceFunc) for param func
 
-// Unsupported : g_io_scheduler_job_send_to_mainloop_async : unsupported parameter func : no type generator for GLib.SourceFunc, GSourceFunc
+// Unsupported : g_io_scheduler_job_send_to_mainloop_async : unsupported parameter func : no type generator for GLib.SourceFunc (GSourceFunc) for param func
 
 // IOStreamAdapter is a wrapper around the C record GIOStreamAdapter.
 type IOStreamAdapter struct {

@@ -55,7 +55,7 @@ func (a Alias) generate(g *jen.Group, version *Version) {
 		return
 	}
 
-	g.Commentf("%s is a representation of the C alias of the same name.", a.Name)
+	g.Commentf("%s is a representation of the C alias %s.", a.Name, a.CType)
 
 	g.Type()
 	a.Type.generator.generateDeclaration(g, a.goName)

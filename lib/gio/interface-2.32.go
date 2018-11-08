@@ -22,9 +22,9 @@ import "C"
 
 // Unsupported : g_action_group_query_action : unsupported parameter parameter_type : Blacklisted record : GVariantType
 
-// Unsupported : g_action_map_add_action : unsupported parameter action : no type generator for Action, GAction*
+// Unsupported : g_action_map_add_action : unsupported parameter action : no type generator for Action (GAction*) for param action
 
-// Unsupported : g_action_map_add_action_entries : unsupported parameter entries : no param type
+// Unsupported : g_action_map_add_action_entries : unsupported parameter entries : no type generator for ActionEntry () for array param entries
 
 // Unsupported : g_action_map_lookup_action : no return generator
 
@@ -77,11 +77,11 @@ func (recv *NetworkMonitor) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : g_network_monitor_can_reach : unsupported parameter connectable : no type generator for SocketConnectable, GSocketConnectable*
+// Unsupported : g_network_monitor_can_reach : unsupported parameter connectable : no type generator for SocketConnectable (GSocketConnectable*) for param connectable
 
-// Unsupported : g_network_monitor_can_reach_async : unsupported parameter connectable : no type generator for SocketConnectable, GSocketConnectable*
+// Unsupported : g_network_monitor_can_reach_async : unsupported parameter connectable : no type generator for SocketConnectable (GSocketConnectable*) for param connectable
 
-// Unsupported : g_network_monitor_can_reach_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+// Unsupported : g_network_monitor_can_reach_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
 
 // GetNetworkAvailable is a wrapper around the C function g_network_monitor_get_network_available.
 func (recv *NetworkMonitor) GetNetworkAvailable() bool {

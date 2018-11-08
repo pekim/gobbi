@@ -11,5 +11,5 @@ import "C"
 
 // Unsupported : alias has no type generator for VaClosureMarshal, GVaClosureMarshal
 
-// Type is a representation of the C alias of the same name.
+// Type is a representation of the C alias GType.
 type Type uint64

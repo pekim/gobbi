@@ -8,7 +8,7 @@ package pango
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : pango_font_face_list_sizes : unsupported parameter sizes : no param type
+// Unsupported : pango_font_face_list_sizes : unsupported parameter sizes : no type generator for gint (int*) for array param sizes
 
 // IsMonospace is a wrapper around the C function pango_font_family_is_monospace.
 func (recv *FontFamily) IsMonospace() bool {
@@ -26,7 +26,7 @@ func (recv *FontMap) GetShapeEngineType() string {
 	return retGo
 }
 
-// Unsupported : pango_fontset_foreach : unsupported parameter func : no type generator for FontsetForeachFunc, PangoFontsetForeachFunc
+// Unsupported : pango_fontset_foreach : unsupported parameter func : no type generator for FontsetForeachFunc (PangoFontsetForeachFunc) for param func
 
 // GetAutoDir is a wrapper around the C function pango_layout_get_auto_dir.
 func (recv *Layout) GetAutoDir() bool {

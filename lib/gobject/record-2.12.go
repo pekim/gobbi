@@ -8,6 +8,19 @@ package gobject
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : g_value_get_gtype : no return generator
+// GetGtype is a wrapper around the C function g_value_get_gtype.
+func (recv *Value) GetGtype() Type {
+	retC := C.g_value_get_gtype((*C.GValue)(recv.native))
+	retGo := (Type)(retC)
 
-// Unsupported : g_value_set_gtype : unsupported parameter v_gtype : no type generator for GType, GType
+	return retGo
+}
+
+// SetGtype is a wrapper around the C function g_value_set_gtype.
+func (recv *Value) SetGtype(vGtype Type) {
+	c_v_gtype := (C.GType)(vGtype)
+
+	C.g_value_set_gtype((*C.GValue)(recv.native), c_v_gtype)
+
+	return
+}

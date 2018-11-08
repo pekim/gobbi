@@ -6,6 +6,7 @@ package gtk
 import (
 	gdk "github.com/pekim/gobbi/lib/gdk"
 	glib "github.com/pekim/gobbi/lib/glib"
+	gobject "github.com/pekim/gobbi/lib/gobject"
 	"unsafe"
 )
 
@@ -86,7 +87,7 @@ func (recv *Gradient) Unref() {
 	return
 }
 
-// Unsupported : gtk_icon_set_render_icon_pixbuf : unsupported parameter size : no type generator for gint, GtkIconSize
+// Unsupported : gtk_icon_set_render_icon_pixbuf : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
 
 // Unsupported : gtk_paper_size_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
 
@@ -188,17 +189,17 @@ func (recv *SymbolicColor) Unref() {
 	return
 }
 
-// Unsupported : gtk_target_list_new : unsupported parameter targets : no param type
+// Unsupported : gtk_target_list_new : unsupported parameter targets : no type generator for TargetEntry (GtkTargetEntry) for array param targets
 
 // Unsupported : gtk_tree_path_new_from_indices : unsupported parameter ... : varargs
 
-// Unsupported : gtk_tree_path_new_from_indicesv : unsupported parameter indices : no param type
+// Unsupported : gtk_tree_path_new_from_indicesv : unsupported parameter indices : no type generator for gint (gint) for array param indices
 
 // Unsupported : gtk_tree_path_get_indices_with_depth : no return type
 
-// Unsupported : gtk_tree_row_reference_new : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
+// Unsupported : gtk_tree_row_reference_new : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
 
-// Unsupported : gtk_tree_row_reference_new_proxy : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
+// Unsupported : gtk_tree_row_reference_new_proxy : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
 
 // WidgetPathNew is a wrapper around the C function gtk_widget_path_new.
 func WidgetPathNew() *WidgetPath {
@@ -208,7 +209,15 @@ func WidgetPathNew() *WidgetPath {
 	return retGo
 }
 
-// Unsupported : gtk_widget_path_append_type : unsupported parameter type : no type generator for GType, GType
+// AppendType is a wrapper around the C function gtk_widget_path_append_type.
+func (recv *WidgetPath) AppendType(type_ gobject.Type) int32 {
+	c_type := (C.GType)(type_)
+
+	retC := C.gtk_widget_path_append_type((*C.GtkWidgetPath)(recv.native), c_type)
+	retGo := (int32)(retC)
+
+	return retGo
+}
 
 // Copy is a wrapper around the C function gtk_widget_path_copy.
 func (recv *WidgetPath) Copy() *WidgetPath {
@@ -225,11 +234,33 @@ func (recv *WidgetPath) Free() {
 	return
 }
 
-// Unsupported : gtk_widget_path_get_object_type : no return generator
+// GetObjectType is a wrapper around the C function gtk_widget_path_get_object_type.
+func (recv *WidgetPath) GetObjectType() gobject.Type {
+	retC := C.gtk_widget_path_get_object_type((*C.GtkWidgetPath)(recv.native))
+	retGo := (gobject.Type)(retC)
 
-// Unsupported : gtk_widget_path_has_parent : unsupported parameter type : no type generator for GType, GType
+	return retGo
+}
 
-// Unsupported : gtk_widget_path_is_type : unsupported parameter type : no type generator for GType, GType
+// HasParent is a wrapper around the C function gtk_widget_path_has_parent.
+func (recv *WidgetPath) HasParent(type_ gobject.Type) bool {
+	c_type := (C.GType)(type_)
+
+	retC := C.gtk_widget_path_has_parent((*C.GtkWidgetPath)(recv.native), c_type)
+	retGo := retC == C.TRUE
+
+	return retGo
+}
+
+// IsType is a wrapper around the C function gtk_widget_path_is_type.
+func (recv *WidgetPath) IsType(type_ gobject.Type) bool {
+	c_type := (C.GType)(type_)
+
+	retC := C.gtk_widget_path_is_type((*C.GtkWidgetPath)(recv.native), c_type)
+	retGo := retC == C.TRUE
+
+	return retGo
+}
 
 // IterAddClass is a wrapper around the C function gtk_widget_path_iter_add_class.
 func (recv *WidgetPath) IterAddClass(pos int32, name string) {
@@ -275,7 +306,15 @@ func (recv *WidgetPath) IterClearRegions(pos int32) {
 	return
 }
 
-// Unsupported : gtk_widget_path_iter_get_object_type : no return generator
+// IterGetObjectType is a wrapper around the C function gtk_widget_path_iter_get_object_type.
+func (recv *WidgetPath) IterGetObjectType(pos int32) gobject.Type {
+	c_pos := (C.gint)(pos)
+
+	retC := C.gtk_widget_path_iter_get_object_type((*C.GtkWidgetPath)(recv.native), c_pos)
+	retGo := (gobject.Type)(retC)
+
+	return retGo
+}
 
 // IterHasClass is a wrapper around the C function gtk_widget_path_iter_has_class.
 func (recv *WidgetPath) IterHasClass(pos int32, name string) bool {
@@ -387,7 +426,16 @@ func (recv *WidgetPath) IterSetName(pos int32, name string) {
 	return
 }
 
-// Unsupported : gtk_widget_path_iter_set_object_type : unsupported parameter type : no type generator for GType, GType
+// IterSetObjectType is a wrapper around the C function gtk_widget_path_iter_set_object_type.
+func (recv *WidgetPath) IterSetObjectType(pos int32, type_ gobject.Type) {
+	c_pos := (C.gint)(pos)
+
+	c_type := (C.GType)(type_)
+
+	C.gtk_widget_path_iter_set_object_type((*C.GtkWidgetPath)(recv.native), c_pos, c_type)
+
+	return
+}
 
 // Length is a wrapper around the C function gtk_widget_path_length.
 func (recv *WidgetPath) Length() int32 {
@@ -397,4 +445,11 @@ func (recv *WidgetPath) Length() int32 {
 	return retGo
 }
 
-// Unsupported : gtk_widget_path_prepend_type : unsupported parameter type : no type generator for GType, GType
+// PrependType is a wrapper around the C function gtk_widget_path_prepend_type.
+func (recv *WidgetPath) PrependType(type_ gobject.Type) {
+	c_type := (C.GType)(type_)
+
+	C.gtk_widget_path_prepend_type((*C.GtkWidgetPath)(recv.native), c_type)
+
+	return
+}

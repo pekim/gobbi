@@ -8,4 +8,4 @@ package gdk
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : gdk_window_show_window_menu : unsupported parameter event : no type generator for Event, GdkEvent*
+// Unsupported : gdk_window_show_window_menu : unsupported parameter event : no type generator for Event (GdkEvent*) for param event

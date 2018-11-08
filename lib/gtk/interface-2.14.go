@@ -29,13 +29,13 @@ func (recv *FileChooser) GetFiles() *glib.SList {
 
 // Unsupported : gtk_file_chooser_get_preview_file : no return generator
 
-// Unsupported : gtk_file_chooser_select_file : unsupported parameter file : no type generator for Gio.File, GFile*
+// Unsupported : gtk_file_chooser_select_file : unsupported parameter file : no type generator for Gio.File (GFile*) for param file
 
-// Unsupported : gtk_file_chooser_set_current_folder_file : unsupported parameter file : no type generator for Gio.File, GFile*
+// Unsupported : gtk_file_chooser_set_current_folder_file : unsupported parameter file : no type generator for Gio.File (GFile*) for param file
 
-// Unsupported : gtk_file_chooser_set_file : unsupported parameter file : no type generator for Gio.File, GFile*
+// Unsupported : gtk_file_chooser_set_file : unsupported parameter file : no type generator for Gio.File (GFile*) for param file
 
-// Unsupported : gtk_file_chooser_unselect_file : unsupported parameter file : no type generator for Gio.File, GFile*
+// Unsupported : gtk_file_chooser_unselect_file : unsupported parameter file : no type generator for Gio.File (GFile*) for param file
 
 // Unsupported : gtk_tool_shell_get_icon_size : no return generator
 

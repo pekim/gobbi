@@ -16,9 +16,9 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : gtk_app_chooser_dialog_new : unsupported parameter file : no type generator for Gio.File, GFile*
+// Unsupported : gtk_app_chooser_dialog_new : unsupported parameter file : no type generator for Gio.File (GFile*) for param file
 
-// Unsupported : gtk_button_new_from_icon_name : unsupported parameter size : no type generator for gint, GtkIconSize
+// Unsupported : gtk_button_new_from_icon_name : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
 
 // GetDisplay is a wrapper around the C function gtk_clipboard_get_display.
 func (recv *Clipboard) GetDisplay() *gdk.Display {
@@ -28,9 +28,9 @@ func (recv *Clipboard) GetDisplay() *gdk.Display {
 	return retGo
 }
 
-// Unsupported : gtk_combo_box_new_with_model : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
+// Unsupported : gtk_combo_box_new_with_model : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
 
-// Unsupported : gtk_combo_box_new_with_model_and_entry : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
+// Unsupported : gtk_combo_box_new_with_model_and_entry : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
 
 // Unsupported : gtk_dialog_new_with_buttons : unsupported parameter ... : varargs
 
@@ -40,15 +40,15 @@ func (recv *Clipboard) GetDisplay() *gdk.Display {
 
 // Unsupported : gtk_file_filter_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
 
-// Unsupported : gtk_icon_view_new_with_model : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
+// Unsupported : gtk_icon_view_new_with_model : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
 
-// Unsupported : gtk_image_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon, GIcon*
+// Unsupported : gtk_image_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon (GIcon*) for param icon
 
-// Unsupported : gtk_image_new_from_icon_name : unsupported parameter size : no type generator for gint, GtkIconSize
+// Unsupported : gtk_image_new_from_icon_name : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
 
-// Unsupported : gtk_image_new_from_icon_set : unsupported parameter size : no type generator for gint, GtkIconSize
+// Unsupported : gtk_image_new_from_icon_set : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
 
-// Unsupported : gtk_image_new_from_stock : unsupported parameter size : no type generator for gint, GtkIconSize
+// Unsupported : gtk_image_new_from_stock : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
 
 // Unsupported : gtk_info_bar_new_with_buttons : unsupported parameter ... : varargs
 
@@ -81,7 +81,7 @@ func (recv *Invisible) SetScreen(screen *gdk.Screen) {
 
 // Unsupported : gtk_list_store_new : unsupported parameter ... : varargs
 
-// Unsupported : gtk_list_store_newv : unsupported parameter types : no param type
+// Unsupported : gtk_list_store_newv : unsupported parameter types : no type generator for GType (GType) for array param types
 
 // IterIsValid is a wrapper around the C function gtk_list_store_iter_is_valid.
 func (recv *ListStore) IterIsValid(iter *TreeIter) bool {
@@ -115,7 +115,7 @@ func (recv *ListStore) MoveBefore(iter *TreeIter, position *TreeIter) {
 	return
 }
 
-// Unsupported : gtk_list_store_reorder : unsupported parameter new_order : no param type
+// Unsupported : gtk_list_store_reorder : unsupported parameter new_order : no type generator for gint (gint) for array param new_order
 
 // Swap is a wrapper around the C function gtk_list_store_swap.
 func (recv *ListStore) Swap(a *TreeIter, b *TreeIter) {
@@ -167,9 +167,9 @@ func (recv *Notebook) GetNPages() int32 {
 
 // Unsupported : gtk_recent_chooser_dialog_new_for_manager : unsupported parameter ... : varargs
 
-// Unsupported : gtk_scale_button_new : unsupported parameter size : no type generator for gint, GtkIconSize
+// Unsupported : gtk_scale_button_new : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
 
-// Unsupported : gtk_status_icon_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon, GIcon*
+// Unsupported : gtk_status_icon_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon (GIcon*) for param icon
 
 // IterIsValid is a wrapper around the C function gtk_tree_model_sort_iter_is_valid.
 func (recv *TreeModelSort) IterIsValid(iter *TreeIter) bool {
@@ -189,7 +189,7 @@ func (recv *TreeSelection) CountSelectedRows() int32 {
 	return retGo
 }
 
-// Unsupported : gtk_tree_selection_get_selected_rows : unsupported parameter model : no type generator for TreeModel, GtkTreeModel**
+// Unsupported : gtk_tree_selection_get_selected_rows : unsupported parameter model : no type generator for TreeModel (GtkTreeModel**) for param model
 
 // UnselectRange is a wrapper around the C function gtk_tree_selection_unselect_range.
 func (recv *TreeSelection) UnselectRange(startPath *TreePath, endPath *TreePath) {
@@ -204,7 +204,7 @@ func (recv *TreeSelection) UnselectRange(startPath *TreePath, endPath *TreePath)
 
 // Unsupported : gtk_tree_store_new : unsupported parameter ... : varargs
 
-// Unsupported : gtk_tree_store_newv : unsupported parameter types : no param type
+// Unsupported : gtk_tree_store_newv : unsupported parameter types : no type generator for GType (GType) for array param types
 
 // IterIsValid is a wrapper around the C function gtk_tree_store_iter_is_valid.
 func (recv *TreeStore) IterIsValid(iter *TreeIter) bool {
@@ -238,7 +238,7 @@ func (recv *TreeStore) MoveBefore(iter *TreeIter, position *TreeIter) {
 	return
 }
 
-// Unsupported : gtk_tree_store_reorder : unsupported parameter new_order : no param type
+// Unsupported : gtk_tree_store_reorder : unsupported parameter new_order : no type generator for gint (gint) for array param new_order
 
 // Swap is a wrapper around the C function gtk_tree_store_swap.
 func (recv *TreeStore) Swap(a *TreeIter, b *TreeIter) {
@@ -251,7 +251,7 @@ func (recv *TreeStore) Swap(a *TreeIter, b *TreeIter) {
 	return
 }
 
-// Unsupported : gtk_tree_view_new_with_model : unsupported parameter model : no type generator for TreeModel, GtkTreeModel*
+// Unsupported : gtk_tree_view_new_with_model : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
 
 // ExpandToPath is a wrapper around the C function gtk_tree_view_expand_to_path.
 func (recv *TreeView) ExpandToPath(path *TreePath) {
@@ -289,7 +289,7 @@ func (recv *TreeViewColumn) FocusCell(cell *CellRenderer) {
 	return
 }
 
-// Unsupported : gtk_widget_new : unsupported parameter type : no type generator for GType, GType
+// Unsupported : gtk_widget_new : unsupported parameter ... : varargs
 
 // Unsupported : gtk_widget_get_clipboard : unsupported parameter selection : Blacklisted record : GdkAtom
 

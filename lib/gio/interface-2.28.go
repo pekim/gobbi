@@ -5,6 +5,7 @@ package gio
 
 import (
 	glib "github.com/pekim/gobbi/lib/glib"
+	gobject "github.com/pekim/gobbi/lib/gobject"
 	"unsafe"
 )
 
@@ -175,7 +176,7 @@ func (recv *PollableInputStream) IsReadable() bool {
 	return retGo
 }
 
-// Unsupported : g_pollable_input_stream_read_nonblocking : unsupported parameter buffer : no param type
+// Unsupported : g_pollable_input_stream_read_nonblocking : unsupported parameter buffer : no type generator for guint8 () for array param buffer
 
 // PollableOutputStream is a wrapper around the C record GPollableOutputStream.
 type PollableOutputStream struct {
@@ -224,7 +225,7 @@ func (recv *PollableOutputStream) IsWritable() bool {
 	return retGo
 }
 
-// Unsupported : g_pollable_output_stream_write_nonblocking : unsupported parameter buffer : no param type
+// Unsupported : g_pollable_output_stream_write_nonblocking : unsupported parameter buffer : no type generator for guint8 () for array param buffer
 
 // TlsBackend is a wrapper around the C record GTlsBackend.
 type TlsBackend struct {
@@ -247,11 +248,29 @@ func (recv *TlsBackend) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : g_tls_backend_get_certificate_type : no return generator
+// GetCertificateType is a wrapper around the C function g_tls_backend_get_certificate_type.
+func (recv *TlsBackend) GetCertificateType() gobject.Type {
+	retC := C.g_tls_backend_get_certificate_type((*C.GTlsBackend)(recv.native))
+	retGo := (gobject.Type)(retC)
 
-// Unsupported : g_tls_backend_get_client_connection_type : no return generator
+	return retGo
+}
 
-// Unsupported : g_tls_backend_get_server_connection_type : no return generator
+// GetClientConnectionType is a wrapper around the C function g_tls_backend_get_client_connection_type.
+func (recv *TlsBackend) GetClientConnectionType() gobject.Type {
+	retC := C.g_tls_backend_get_client_connection_type((*C.GTlsBackend)(recv.native))
+	retGo := (gobject.Type)(retC)
+
+	return retGo
+}
+
+// GetServerConnectionType is a wrapper around the C function g_tls_backend_get_server_connection_type.
+func (recv *TlsBackend) GetServerConnectionType() gobject.Type {
+	retC := C.g_tls_backend_get_server_connection_type((*C.GTlsBackend)(recv.native))
+	retGo := (gobject.Type)(retC)
+
+	return retGo
+}
 
 // SupportsTls is a wrapper around the C function g_tls_backend_supports_tls.
 func (recv *TlsBackend) SupportsTls() bool {
@@ -308,7 +327,7 @@ func (recv *TlsClientConnection) GetValidationFlags() TlsCertificateFlags {
 	return retGo
 }
 
-// Unsupported : g_tls_client_connection_set_server_identity : unsupported parameter identity : no type generator for SocketConnectable, GSocketConnectable*
+// Unsupported : g_tls_client_connection_set_server_identity : unsupported parameter identity : no type generator for SocketConnectable (GSocketConnectable*) for param identity
 
 // SetUseSsl3 is a wrapper around the C function g_tls_client_connection_set_use_ssl3.
 func (recv *TlsClientConnection) SetUseSsl3(useSsl3 bool) {

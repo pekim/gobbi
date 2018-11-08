@@ -8,7 +8,7 @@ package atk
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : atk_relation_new : unsupported parameter targets : no param type
+// Unsupported : atk_relation_new : unsupported parameter targets : no type generator for Object (AtkObject*) for array param targets
 
 // AddTarget is a wrapper around the C function atk_relation_add_target.
 func (recv *Relation) AddTarget(target *Object) {

@@ -71,9 +71,9 @@ func (recv *File) QueryFileType(flags FileQueryInfoFlags, cancellable *Cancellab
 	return retGo
 }
 
-// Unsupported : g_mount_guess_content_type : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+// Unsupported : g_mount_guess_content_type : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_mount_guess_content_type_finish : unsupported parameter result : no type generator for AsyncResult, GAsyncResult*
+// Unsupported : g_mount_guess_content_type_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
 
 // Unsupported : g_mount_guess_content_type_sync : no return type
 

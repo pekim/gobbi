@@ -18,4 +18,4 @@ package gio
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : g_file_replace_contents_bytes_async : unsupported parameter callback : no type generator for AsyncReadyCallback, GAsyncReadyCallback
+// Unsupported : g_file_replace_contents_bytes_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback

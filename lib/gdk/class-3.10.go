@@ -63,7 +63,7 @@ func (recv *Screen) GetMonitorScaleFactor(monitorNum int32) int32 {
 	return retGo
 }
 
-// Unsupported : gdk_window_create_similar_image_surface : unsupported parameter format : no type generator for gint, cairo_format_t
+// Unsupported : gdk_window_create_similar_image_surface : unsupported parameter format : no type generator for gint (cairo_format_t) for param format
 
 // GetChildrenWithUserData is a wrapper around the C function gdk_window_get_children_with_user_data.
 func (recv *Window) GetChildrenWithUserData(userData uintptr) *glib.List {
@@ -85,7 +85,7 @@ func (recv *Window) GetScaleFactor() int32 {
 	return retGo
 }
 
-// Unsupported : gdk_window_set_invalidate_handler : unsupported parameter handler : no type generator for WindowInvalidateHandlerFunc, GdkWindowInvalidateHandlerFunc
+// Unsupported : gdk_window_set_invalidate_handler : unsupported parameter handler : no type generator for WindowInvalidateHandlerFunc (GdkWindowInvalidateHandlerFunc) for param handler
 
 // SetOpaqueRegion is a wrapper around the C function gdk_window_set_opaque_region.
 func (recv *Window) SetOpaqueRegion(region *cairo.Region) {
