@@ -28,7 +28,7 @@ func (t *TypeGeneratorEnumeration) isSupportedAsParam(direction string) (support
 }
 
 func (t *TypeGeneratorEnumeration) isSupportedAsArrayParam(direction string) (supported bool, reason string) {
-	return false, ""
+	return true, ""
 }
 
 func (t *TypeGeneratorEnumeration) isSupportedAsParamC() (supported bool, reason string) {

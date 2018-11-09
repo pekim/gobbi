@@ -1228,7 +1228,16 @@ func (recv *StateSet) AddState(type_ StateType) bool {
 	return retGo
 }
 
-// Unsupported : atk_state_set_add_states : unsupported parameter types :
+// AddStates is a wrapper around the C function atk_state_set_add_states.
+func (recv *StateSet) AddStates(types []StateType) {
+	c_types := &types[0]
+
+	c_n_types := (C.gint)(len(types))
+
+	C.atk_state_set_add_states((*C.AtkStateSet)(recv.native), (*C.AtkStateType)(unsafe.Pointer(c_types)), c_n_types)
+
+	return
+}
 
 // AndSets is a wrapper around the C function atk_state_set_and_sets.
 func (recv *StateSet) AndSets(compareSet *StateSet) *StateSet {
@@ -1257,7 +1266,17 @@ func (recv *StateSet) ContainsState(type_ StateType) bool {
 	return retGo
 }
 
-// Unsupported : atk_state_set_contains_states : unsupported parameter types :
+// ContainsStates is a wrapper around the C function atk_state_set_contains_states.
+func (recv *StateSet) ContainsStates(types []StateType) bool {
+	c_types := &types[0]
+
+	c_n_types := (C.gint)(len(types))
+
+	retC := C.atk_state_set_contains_states((*C.AtkStateSet)(recv.native), (*C.AtkStateType)(unsafe.Pointer(c_types)), c_n_types)
+	retGo := retC == C.TRUE
+
+	return retGo
+}
 
 // IsEmpty is a wrapper around the C function atk_state_set_is_empty.
 func (recv *StateSet) IsEmpty() bool {

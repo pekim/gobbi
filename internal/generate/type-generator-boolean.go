@@ -19,7 +19,7 @@ func (t *TypeGeneratorBoolean) isSupportedAsParam(direction string) (supported b
 }
 
 func (t *TypeGeneratorBoolean) isSupportedAsArrayParam(direction string) (supported bool, reason string) {
-	return false, ""
+	return true, ""
 }
 
 func (t *TypeGeneratorBoolean) isSupportedAsParamC() (supported bool, reason string) {

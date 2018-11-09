@@ -368,7 +368,22 @@ func (recv *KeyFile) SetBoolean(groupName string, key string, value bool) {
 	return
 }
 
-// Unsupported : g_key_file_set_boolean_list : unsupported parameter list :
+// SetBooleanList is a wrapper around the C function g_key_file_set_boolean_list.
+func (recv *KeyFile) SetBooleanList(groupName string, key string, list []bool) {
+	c_group_name := C.CString(groupName)
+	defer C.free(unsafe.Pointer(c_group_name))
+
+	c_key := C.CString(key)
+	defer C.free(unsafe.Pointer(c_key))
+
+	c_list := &list[0]
+
+	c_length := (C.gsize)(len(list))
+
+	C.g_key_file_set_boolean_list((*C.GKeyFile)(recv.native), c_group_name, c_key, (*C.gboolean)(unsafe.Pointer(c_list)), c_length)
+
+	return
+}
 
 // SetComment is a wrapper around the C function g_key_file_set_comment.
 func (recv *KeyFile) SetComment(groupName string, key string, comment string) (bool, error) {
