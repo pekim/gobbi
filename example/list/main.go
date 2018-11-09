@@ -59,22 +59,22 @@ func createTree() *gtk.TreeView {
 }
 
 func addRow(store *gtk.ListStore, number int32, text string) {
-	iter := store.Append()
-
 	valueNumber := gobject.ValueNew(gobject.TYPE_INT)
 	valueNumber.SetInt(number)
-	store.SetValue(iter, COL_NUMBER, valueNumber)
 
 	valueText := gobject.ValueNew(gobject.TYPE_STRING)
 	valueText.SetString(text)
-	store.SetValue(iter, COL_TEXT, valueText)
 
 	valueLength := gobject.ValueNew(gobject.TYPE_INT)
 	valueLength.SetInt(int32(len(text)))
-	store.SetValue(iter, COL_LENGTH, valueLength)
 
 	valueColour := gobject.ValueNew(gobject.TYPE_STRING)
 	valueColour.SetString("red")
+
+	iter := store.Append()
+	store.SetValue(iter, COL_NUMBER, valueNumber)
+	store.SetValue(iter, COL_TEXT, valueText)
+	store.SetValue(iter, COL_LENGTH, valueLength)
 	store.SetValue(iter, COL_COLOUR, valueColour)
 }
 
