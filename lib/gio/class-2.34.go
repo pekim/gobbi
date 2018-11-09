@@ -75,8 +75,6 @@ func (recv *DBusConnection) GetLastSerial() uint32 {
 	return retGo
 }
 
-// Unsupported : g_dbus_message_new_from_blob : unsupported parameter blob : no type generator for guint8 () for array param blob
-
 // Unsupported : g_dbus_object_manager_client_new_finish : unsupported parameter res : no type generator for AsyncResult (GAsyncResult*) for param res
 
 // Unsupported : g_dbus_object_manager_client_new_for_bus_finish : unsupported parameter res : no type generator for AsyncResult (GAsyncResult*) for param res
@@ -119,8 +117,6 @@ func (recv *DesktopAppInfo) GetStartupWmClass() string {
 
 // Unsupported : g_file_info_set_symbolic_icon : unsupported parameter icon : no type generator for Icon (GIcon*) for param icon
 
-// Unsupported : g_inet_address_new_from_bytes : unsupported parameter bytes : no type generator for guint8 () for array param bytes
-
 // ReadBytes is a wrapper around the C function g_input_stream_read_bytes.
 func (recv *InputStream) ReadBytes(count uint64, cancellable *Cancellable) (*glib.Bytes, error) {
 	c_count := (C.gsize)(count)
@@ -154,7 +150,7 @@ func MemoryInputStreamNewFromBytes(bytes *glib.Bytes) *MemoryInputStream {
 	return retGo
 }
 
-// Unsupported : g_memory_input_stream_new_from_data : unsupported parameter data : no type generator for guint8 () for array param data
+// Unsupported : g_memory_input_stream_new_from_data : unsupported parameter destroy : no type generator for GLib.DestroyNotify (GDestroyNotify) for param destroy
 
 // AddBytes is a wrapper around the C function g_memory_input_stream_add_bytes.
 func (recv *MemoryInputStream) AddBytes(bytes *glib.Bytes) {
@@ -360,7 +356,3 @@ func (recv *TlsCertificate) IsSame(certTwo *TlsCertificate) bool {
 
 	return retGo
 }
-
-// Unsupported : g_unix_socket_address_new_abstract : unsupported parameter path : no type generator for gchar () for array param path
-
-// Unsupported : g_unix_socket_address_new_with_type : unsupported parameter path : no type generator for gchar () for array param path

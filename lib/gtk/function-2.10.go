@@ -139,7 +139,7 @@ func PrintRunPageSetupDialog(parent *Window, pageSetup *PageSetup, settings *Pri
 
 // Unsupported : gtk_test_display_button_window : unsupported parameter ... : varargs
 
-// Unsupported : gtk_test_init : unsupported parameter argvp :
+// Unsupported : gtk_test_init : unsupported parameter argcp : array length param argcp is pointer (int*)
 
 // Unsupported : gtk_test_list_all_types : no return type
 

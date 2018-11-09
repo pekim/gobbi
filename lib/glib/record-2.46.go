@@ -48,13 +48,7 @@ func (recv *AsyncQueue) RemoveUnlocked(item uintptr) bool {
 	return retGo
 }
 
-// Unsupported : g_bytes_new : unsupported parameter data : no type generator for guint8 () for array param data
-
-// Unsupported : g_bytes_new_static : unsupported parameter data : no type generator for guint8 () for array param data
-
-// Unsupported : g_bytes_new_take : unsupported parameter data : no type generator for guint8 () for array param data
-
-// Unsupported : g_bytes_new_with_free_func : unsupported parameter data : no type generator for guint8 () for array param data
+// Unsupported : g_bytes_new_with_free_func : unsupported parameter free_func : no type generator for DestroyNotify (GDestroyNotify) for param free_func
 
 // Unsupported : g_error_new : unsupported parameter ... : varargs
 

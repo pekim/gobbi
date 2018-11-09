@@ -7695,7 +7695,24 @@ func CssProviderNew() *CssProvider {
 	return retGo
 }
 
-// Unsupported : gtk_css_provider_load_from_data : unsupported parameter data : no type generator for guint8 () for array param data
+// LoadFromData is a wrapper around the C function gtk_css_provider_load_from_data.
+func (recv *CssProvider) LoadFromData(data []uint8) (bool, error) {
+	c_data := &data[0]
+
+	c_length := (C.gssize)(len(data))
+
+	var cThrowableError *C.GError
+
+	retC := C.gtk_css_provider_load_from_data((*C.GtkCssProvider)(recv.native), (*C.gchar)(unsafe.Pointer(c_data)), c_length, &cThrowableError)
+	retGo := retC == C.TRUE
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // Unsupported : gtk_css_provider_load_from_file : unsupported parameter file : no type generator for Gio.File (GFile*) for param file
 

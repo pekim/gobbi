@@ -17,6 +17,15 @@ type Array struct {
 
 func (a *Array) init(ns *Namespace) {
 	a.Namespace = ns
+
+	// Some array's Type has a Name but no CType.
+	// In all observed cases this is an integer type, usually 'guint8'.
+	// For these cases use the Type's Name as the CType.
+	_, isInteger := integerCTypeMap[a.Type.Name]
+	if isInteger && a.Type.CType == "" {
+		a.Type.CType = a.Type.Name
+	}
+
 	a.Type.init(ns)
 }
 
@@ -44,12 +53,21 @@ func (a *Array) generateArrayLenParamCVar(g *jen.Group, cVarName string, arrayGo
 func (a *Array) generateParamCallArgument(g *jen.Group, cVarName string) {
 	cType := strings.TrimRight(a.CType, "*")
 	indirectLevel := len(a.CType) - len(cType)
-	if indirectLevel == 0 {
+	if indirectLevel == 0 && !strings.HasSuffix(a.CType, "pointer") {
 		indirectLevel = 1
 	}
 	indirect := strings.Repeat("*", indirectLevel)
 
-	g.
-		Parens(jen.Op(indirect).Qual("C", cType)).
-		Parens(jen.Qual("unsafe", "Pointer").Call(jen.Id(cVarName)))
+	if a.CType == "void*" {
+		g.
+			Parens(jen.
+				Qual("unsafe", "Pointer").
+				Call(jen.Id(cVarName)))
+	} else {
+		g.
+			Parens(jen.Op(indirect).Qual("C", cType)).
+			Parens(jen.
+				Qual("unsafe", "Pointer").
+				Call(jen.Id(cVarName)))
+	}
 }

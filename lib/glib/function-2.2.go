@@ -49,15 +49,13 @@ func AsciiStrtoull(nptr string, base uint32) (uint64, string) {
 
 // Unsupported : g_base64_decode : no return type
 
-// Unsupported : g_base64_decode_inplace : unsupported parameter text : no type generator for guint8 () for array param text
+// Unsupported : g_base64_decode_inplace : unsupported parameter out_len : array length param out_len is pointer (gsize*)
 
-// Unsupported : g_base64_decode_step : unsupported parameter in : no type generator for guint8 () for array param in
-
-// Unsupported : g_base64_encode : unsupported parameter data : no type generator for guint8 () for array param data
+// Unsupported : g_base64_decode_step : unsupported parameter out : output array param out
 
 // Unsupported : g_base64_encode_close : unsupported parameter out : output array param out
 
-// Unsupported : g_base64_encode_step : unsupported parameter in : no type generator for guint8 () for array param in
+// Unsupported : g_base64_encode_step : unsupported parameter out : output array param out
 
 // Unsupported : g_build_filename : unsupported parameter ... : varargs
 
@@ -81,13 +79,11 @@ func AsciiStrtoull(nptr string, base uint32) (uint64, string) {
 
 // Unsupported : g_clear_pointer : unsupported parameter destroy : no type generator for DestroyNotify (GDestroyNotify) for param destroy
 
-// Unsupported : g_compute_checksum_for_data : unsupported parameter data : no type generator for guint8 () for array param data
+// Unsupported : g_convert : no return type
 
-// Unsupported : g_convert : unsupported parameter str : no type generator for guint8 () for array param str
+// Unsupported : g_convert_with_fallback : no return type
 
-// Unsupported : g_convert_with_fallback : unsupported parameter str : no type generator for guint8 () for array param str
-
-// Unsupported : g_convert_with_iconv : unsupported parameter str : no type generator for guint8 () for array param str
+// Unsupported : g_convert_with_iconv : unsupported parameter converter : Blacklisted record : GIConv
 
 // Unsupported : g_datalist_clear : unsupported parameter datalist : record with indirection level of 2
 
@@ -124,8 +120,6 @@ func AsciiStrtoull(nptr string, base uint32) (uint64, string) {
 // Unsupported : g_environ_unsetenv : unsupported parameter envp :
 
 // Unsupported : g_file_get_contents : unsupported parameter contents : output array param contents
-
-// Unsupported : g_file_set_contents : unsupported parameter contents : no type generator for guint8 () for array param contents
 
 // Unsupported : g_fprintf : unsupported parameter file : no type generator for gpointer (FILE*) for param file
 
@@ -166,8 +160,6 @@ func GetApplicationName() string {
 // Unsupported : g_listenv : no return type
 
 // Unsupported : g_locale_from_utf8 : no return type
-
-// Unsupported : g_locale_to_utf8 : unsupported parameter opsysstring : no type generator for guint8 () for array param opsysstring
 
 // Unsupported : g_log : unsupported parameter ... : varargs
 
@@ -255,7 +247,7 @@ func SetApplicationName(applicationName string) {
 
 // Unsupported : g_set_printerr_handler : unsupported parameter func : no type generator for PrintFunc (GPrintFunc) for param func
 
-// Unsupported : g_shell_parse_argv : unsupported parameter argvp : output array param argvp
+// Unsupported : g_shell_parse_argv : unsupported parameter argcp : array length param argcp is pointer (gint*)
 
 // Unsupported : g_snprintf : unsupported parameter ... : varargs
 
@@ -392,8 +384,6 @@ func Utf8Strreverse(str string, len int64) string {
 }
 
 // Unsupported : g_utf8_to_utf16 : no return generator
-
-// Unsupported : g_utf8_validate : unsupported parameter str : no type generator for guint8 () for array param str
 
 // Unsupported : g_variant_parse : unsupported parameter type : Blacklisted record : GVariantType
 

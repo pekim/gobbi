@@ -90,12 +90,6 @@ import "C"
 
 // Unsupported : g_network_monitor_get_default : no return generator
 
-// Unsupported : g_pollable_stream_read : unsupported parameter buffer : no type generator for guint8 () for array param buffer
-
-// Unsupported : g_pollable_stream_write : unsupported parameter buffer : no type generator for guint8 () for array param buffer
-
-// Unsupported : g_pollable_stream_write_all : unsupported parameter buffer : no type generator for guint8 () for array param buffer
-
 // Unsupported : g_proxy_get_default_for_protocol : no return generator
 
 // Unsupported : g_proxy_resolver_get_default : no return generator

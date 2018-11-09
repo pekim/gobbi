@@ -1210,9 +1210,41 @@ func (recv *File) Replace(etag string, makeBackup bool, flags FileCreateFlags, c
 
 // Unsupported : g_file_replace_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_file_replace_contents : unsupported parameter contents : no type generator for guint8 () for array param contents
+// ReplaceContents is a wrapper around the C function g_file_replace_contents.
+func (recv *File) ReplaceContents(contents []uint8, etag string, makeBackup bool, flags FileCreateFlags, cancellable *Cancellable) (bool, string, error) {
+	c_contents := &contents[0]
 
-// Unsupported : g_file_replace_contents_async : unsupported parameter contents : no type generator for guint8 () for array param contents
+	c_length := (C.gsize)(len(contents))
+
+	c_etag := C.CString(etag)
+	defer C.free(unsafe.Pointer(c_etag))
+
+	c_make_backup :=
+		boolToGboolean(makeBackup)
+
+	c_flags := (C.GFileCreateFlags)(flags)
+
+	var c_new_etag *C.char
+
+	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_file_replace_contents((*C.GFile)(recv.native), (*C.char)(unsafe.Pointer(c_contents)), c_length, c_etag, c_make_backup, c_flags, &c_new_etag, c_cancellable, &cThrowableError)
+	retGo := retC == C.TRUE
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	newEtag := C.GoString(c_new_etag)
+	defer C.free(unsafe.Pointer(c_new_etag))
+
+	return retGo, newEtag, goThrowableError
+}
+
+// Unsupported : g_file_replace_contents_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
 // Unsupported : g_file_replace_contents_finish : unsupported parameter res : no type generator for AsyncResult (GAsyncResult*) for param res
 

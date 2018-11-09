@@ -218,7 +218,17 @@ func InetAddressNewAny(family SocketFamily) *InetAddress {
 	return retGo
 }
 
-// Unsupported : g_inet_address_new_from_bytes : unsupported parameter bytes : no type generator for guint8 () for array param bytes
+// InetAddressNewFromBytes is a wrapper around the C function g_inet_address_new_from_bytes.
+func InetAddressNewFromBytes(bytes []uint8, family SocketFamily) *InetAddress {
+	c_bytes := &bytes[0]
+
+	c_family := (C.GSocketFamily)(family)
+
+	retC := C.g_inet_address_new_from_bytes((*C.guint8)(unsafe.Pointer(c_bytes)), c_family)
+	retGo := InetAddressNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // InetAddressNewFromString is a wrapper around the C function g_inet_address_new_from_string.
 func InetAddressNewFromString(string string) *InetAddress {
@@ -376,7 +386,7 @@ func (recv *InetSocketAddress) GetPort() uint16 {
 	return retGo
 }
 
-// Unsupported : g_memory_input_stream_new_from_data : unsupported parameter data : no type generator for guint8 () for array param data
+// Unsupported : g_memory_input_stream_new_from_data : unsupported parameter destroy : no type generator for GLib.DestroyNotify (GDestroyNotify) for param destroy
 
 // Unsupported : g_memory_output_stream_new : unsupported parameter realloc_function : no type generator for ReallocFunc (GReallocFunc) for param realloc_function
 
@@ -860,17 +870,76 @@ func (recv *Socket) Listen() (bool, error) {
 	return retGo, goThrowableError
 }
 
-// Unsupported : g_socket_receive : unsupported parameter buffer : no type generator for guint8 () for array param buffer
+// Receive is a wrapper around the C function g_socket_receive.
+func (recv *Socket) Receive(buffer []uint8, cancellable *Cancellable) (int64, error) {
+	c_buffer := &buffer[0]
+
+	c_size := (C.gsize)(len(buffer))
+
+	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_socket_receive((*C.GSocket)(recv.native), (*C.gchar)(unsafe.Pointer(c_buffer)), c_size, c_cancellable, &cThrowableError)
+	retGo := (int64)(retC)
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // Unsupported : g_socket_receive_from : unsupported parameter address : record with indirection level of 2
 
 // Unsupported : g_socket_receive_message : unsupported parameter address : record with indirection level of 2
 
-// Unsupported : g_socket_send : unsupported parameter buffer : no type generator for guint8 () for array param buffer
+// Send is a wrapper around the C function g_socket_send.
+func (recv *Socket) Send(buffer []uint8, cancellable *Cancellable) (int64, error) {
+	c_buffer := &buffer[0]
+
+	c_size := (C.gsize)(len(buffer))
+
+	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_socket_send((*C.GSocket)(recv.native), (*C.gchar)(unsafe.Pointer(c_buffer)), c_size, c_cancellable, &cThrowableError)
+	retGo := (int64)(retC)
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // Unsupported : g_socket_send_message : unsupported parameter vectors :
 
-// Unsupported : g_socket_send_to : unsupported parameter buffer : no type generator for guint8 () for array param buffer
+// SendTo is a wrapper around the C function g_socket_send_to.
+func (recv *Socket) SendTo(address *SocketAddress, buffer []uint8, cancellable *Cancellable) (int64, error) {
+	c_address := (*C.GSocketAddress)(address.ToC())
+
+	c_buffer := &buffer[0]
+
+	c_size := (C.gsize)(len(buffer))
+
+	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_socket_send_to((*C.GSocket)(recv.native), c_address, (*C.gchar)(unsafe.Pointer(c_buffer)), c_size, c_cancellable, &cThrowableError)
+	retGo := (int64)(retC)
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // SetBlocking is a wrapper around the C function g_socket_set_blocking.
 func (recv *Socket) SetBlocking(blocking bool) {
@@ -1702,10 +1771,6 @@ func UnixSocketAddressNew(path string) *UnixSocketAddress {
 
 	return retGo
 }
-
-// Unsupported : g_unix_socket_address_new_abstract : unsupported parameter path : no type generator for gchar () for array param path
-
-// Unsupported : g_unix_socket_address_new_with_type : unsupported parameter path : no type generator for gchar () for array param path
 
 // GetIsAbstract is a wrapper around the C function g_unix_socket_address_get_is_abstract.
 func (recv *UnixSocketAddress) GetIsAbstract() bool {

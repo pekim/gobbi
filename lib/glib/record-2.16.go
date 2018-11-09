@@ -77,7 +77,16 @@ func (recv *Checksum) GetString() string {
 	return retGo
 }
 
-// Unsupported : g_checksum_update : unsupported parameter data : no type generator for guint8 () for array param data
+// Update is a wrapper around the C function g_checksum_update.
+func (recv *Checksum) Update(data []uint8) {
+	c_data := &data[0]
+
+	c_length := (C.gssize)(len(data))
+
+	C.g_checksum_update((*C.GChecksum)(recv.native), (*C.guchar)(unsafe.Pointer(c_data)), c_length)
+
+	return
+}
 
 // Unsupported : g_error_new : unsupported parameter ... : varargs
 

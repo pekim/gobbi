@@ -226,7 +226,24 @@ func (recv *BookmarkFile) HasItem(uri string) bool {
 	return retGo
 }
 
-// Unsupported : g_bookmark_file_load_from_data : unsupported parameter data : no type generator for guint8 () for array param data
+// LoadFromData is a wrapper around the C function g_bookmark_file_load_from_data.
+func (recv *BookmarkFile) LoadFromData(data []uint8) (bool, error) {
+	c_data := &data[0]
+
+	c_length := (C.gsize)(len(data))
+
+	var cThrowableError *C.GError
+
+	retC := C.g_bookmark_file_load_from_data((*C.GBookmarkFile)(recv.native), (*C.gchar)(unsafe.Pointer(c_data)), c_length, &cThrowableError)
+	retGo := retC == C.TRUE
+
+	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // LoadFromDataDirs is a wrapper around the C function g_bookmark_file_load_from_data_dirs.
 func (recv *BookmarkFile) LoadFromDataDirs(file string) (bool, string, error) {

@@ -33,13 +33,43 @@ func (recv *Bytes) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : g_bytes_new : unsupported parameter data : no type generator for guint8 () for array param data
+// BytesNew is a wrapper around the C function g_bytes_new.
+func BytesNew(data []uint8) *Bytes {
+	c_data := &data[0]
 
-// Unsupported : g_bytes_new_static : unsupported parameter data : no type generator for guint8 () for array param data
+	c_size := (C.gsize)(len(data))
 
-// Unsupported : g_bytes_new_take : unsupported parameter data : no type generator for guint8 () for array param data
+	retC := C.g_bytes_new((C.gconstpointer)(unsafe.Pointer(c_data)), c_size)
+	retGo := BytesNewFromC(unsafe.Pointer(retC))
 
-// Unsupported : g_bytes_new_with_free_func : unsupported parameter data : no type generator for guint8 () for array param data
+	return retGo
+}
+
+// BytesNewStatic is a wrapper around the C function g_bytes_new_static.
+func BytesNewStatic(data []uint8) *Bytes {
+	c_data := &data[0]
+
+	c_size := (C.gsize)(len(data))
+
+	retC := C.g_bytes_new_static((C.gconstpointer)(unsafe.Pointer(c_data)), c_size)
+	retGo := BytesNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// BytesNewTake is a wrapper around the C function g_bytes_new_take.
+func BytesNewTake(data []uint8) *Bytes {
+	c_data := &data[0]
+
+	c_size := (C.gsize)(len(data))
+
+	retC := C.g_bytes_new_take((C.gpointer)(unsafe.Pointer(c_data)), c_size)
+	retGo := BytesNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// Unsupported : g_bytes_new_with_free_func : unsupported parameter free_func : no type generator for DestroyNotify (GDestroyNotify) for param free_func
 
 // Compare is a wrapper around the C function g_bytes_compare.
 func (recv *Bytes) Compare(bytes2 uintptr) int32 {

@@ -121,11 +121,87 @@ func PollableSourceNewFull(pollableStream uintptr, childSource *glib.Source, can
 	return retGo
 }
 
-// Unsupported : g_pollable_stream_read : unsupported parameter buffer : no type generator for guint8 () for array param buffer
+// PollableStreamRead is a wrapper around the C function g_pollable_stream_read.
+func PollableStreamRead(stream *InputStream, buffer []uint8, blocking bool, cancellable *Cancellable) (int64, error) {
+	c_stream := (*C.GInputStream)(stream.ToC())
 
-// Unsupported : g_pollable_stream_write : unsupported parameter buffer : no type generator for guint8 () for array param buffer
+	c_buffer := &buffer[0]
 
-// Unsupported : g_pollable_stream_write_all : unsupported parameter buffer : no type generator for guint8 () for array param buffer
+	c_count := (C.gsize)(len(buffer))
+
+	c_blocking :=
+		boolToGboolean(blocking)
+
+	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_pollable_stream_read(c_stream, (unsafe.Pointer(c_buffer)), c_count, c_blocking, c_cancellable, &cThrowableError)
+	retGo := (int64)(retC)
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
+
+// PollableStreamWrite is a wrapper around the C function g_pollable_stream_write.
+func PollableStreamWrite(stream *OutputStream, buffer []uint8, blocking bool, cancellable *Cancellable) (int64, error) {
+	c_stream := (*C.GOutputStream)(stream.ToC())
+
+	c_buffer := &buffer[0]
+
+	c_count := (C.gsize)(len(buffer))
+
+	c_blocking :=
+		boolToGboolean(blocking)
+
+	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_pollable_stream_write(c_stream, (unsafe.Pointer(c_buffer)), c_count, c_blocking, c_cancellable, &cThrowableError)
+	retGo := (int64)(retC)
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
+
+// PollableStreamWriteAll is a wrapper around the C function g_pollable_stream_write_all.
+func PollableStreamWriteAll(stream *OutputStream, buffer []uint8, blocking bool, cancellable *Cancellable) (bool, uint64, error) {
+	c_stream := (*C.GOutputStream)(stream.ToC())
+
+	c_buffer := &buffer[0]
+
+	c_count := (C.gsize)(len(buffer))
+
+	c_blocking :=
+		boolToGboolean(blocking)
+
+	var c_bytes_written C.gsize
+
+	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_pollable_stream_write_all(c_stream, (unsafe.Pointer(c_buffer)), c_count, c_blocking, &c_bytes_written, c_cancellable, &cThrowableError)
+	retGo := retC == C.TRUE
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	bytesWritten := (uint64)(c_bytes_written)
+
+	return retGo, bytesWritten, goThrowableError
+}
 
 // Unsupported : g_proxy_get_default_for_protocol : no return generator
 

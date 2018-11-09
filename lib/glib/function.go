@@ -299,15 +299,13 @@ func AssertionMessageExpr(domain string, file string, line int32, func_ string, 
 
 // Unsupported : g_base64_decode : no return type
 
-// Unsupported : g_base64_decode_inplace : unsupported parameter text : no type generator for guint8 () for array param text
+// Unsupported : g_base64_decode_inplace : unsupported parameter out_len : array length param out_len is pointer (gsize*)
 
-// Unsupported : g_base64_decode_step : unsupported parameter in : no type generator for guint8 () for array param in
-
-// Unsupported : g_base64_encode : unsupported parameter data : no type generator for guint8 () for array param data
+// Unsupported : g_base64_decode_step : unsupported parameter out : output array param out
 
 // Unsupported : g_base64_encode_close : unsupported parameter out : output array param out
 
-// Unsupported : g_base64_encode_step : unsupported parameter in : no type generator for guint8 () for array param in
+// Unsupported : g_base64_encode_step : unsupported parameter out : output array param out
 
 // Basename is a wrapper around the C function g_basename.
 func Basename(fileName string) string {
@@ -400,9 +398,7 @@ func ClearError() error {
 
 // Unsupported : g_clear_pointer : unsupported parameter destroy : no type generator for DestroyNotify (GDestroyNotify) for param destroy
 
-// Unsupported : g_compute_checksum_for_data : unsupported parameter data : no type generator for guint8 () for array param data
-
-// Unsupported : g_convert : unsupported parameter str : no type generator for guint8 () for array param str
+// Unsupported : g_convert : no return type
 
 // ConvertErrorQuark is a wrapper around the C function g_convert_error_quark.
 func ConvertErrorQuark() Quark {
@@ -412,9 +408,9 @@ func ConvertErrorQuark() Quark {
 	return retGo
 }
 
-// Unsupported : g_convert_with_fallback : unsupported parameter str : no type generator for guint8 () for array param str
+// Unsupported : g_convert_with_fallback : no return type
 
-// Unsupported : g_convert_with_iconv : unsupported parameter str : no type generator for guint8 () for array param str
+// Unsupported : g_convert_with_iconv : unsupported parameter converter : Blacklisted record : GIConv
 
 // Unsupported : g_datalist_clear : unsupported parameter datalist : record with indirection level of 2
 
@@ -671,8 +667,6 @@ func FileOpenTmp(tmpl string) (int32, string, error) {
 
 	return retGo, nameUsed, goThrowableError
 }
-
-// Unsupported : g_file_set_contents : unsupported parameter contents : no type generator for guint8 () for array param contents
 
 // FileTest is a wrapper around the C function g_file_test.
 func FileTest(filename string, test GFileTest) bool {
@@ -1172,7 +1166,33 @@ func KeyFileErrorQuark() Quark {
 
 // Unsupported : g_locale_from_utf8 : no return type
 
-// Unsupported : g_locale_to_utf8 : unsupported parameter opsysstring : no type generator for guint8 () for array param opsysstring
+// LocaleToUtf8 is a wrapper around the C function g_locale_to_utf8.
+func LocaleToUtf8(opsysstring []uint8) (string, uint64, uint64, error) {
+	c_opsysstring := &opsysstring[0]
+
+	c_len := (C.gssize)(len(opsysstring))
+
+	var c_bytes_read C.gsize
+
+	var c_bytes_written C.gsize
+
+	var cThrowableError *C.GError
+
+	retC := C.g_locale_to_utf8((*C.gchar)(unsafe.Pointer(c_opsysstring)), c_len, &c_bytes_read, &c_bytes_written, &cThrowableError)
+	retGo := C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
+
+	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	bytesRead := (uint64)(c_bytes_read)
+
+	bytesWritten := (uint64)(c_bytes_written)
+
+	return retGo, bytesRead, bytesWritten, goThrowableError
+}
 
 // Unsupported : g_log : unsupported parameter ... : varargs
 
@@ -1683,7 +1703,7 @@ func ShellErrorQuark() Quark {
 	return retGo
 }
 
-// Unsupported : g_shell_parse_argv : unsupported parameter argvp : output array param argvp
+// Unsupported : g_shell_parse_argv : unsupported parameter argcp : array length param argcp is pointer (gint*)
 
 // ShellQuote is a wrapper around the C function g_shell_quote.
 func ShellQuote(unquotedString string) string {
@@ -2963,7 +2983,21 @@ func Utf8Strup(str string, len int64) string {
 
 // Unsupported : g_utf8_to_utf16 : no return generator
 
-// Unsupported : g_utf8_validate : unsupported parameter str : no type generator for guint8 () for array param str
+// Utf8Validate is a wrapper around the C function g_utf8_validate.
+func Utf8Validate(str []uint8) (bool, string) {
+	c_str := &str[0]
+
+	c_max_len := (C.gssize)(len(str))
+
+	var c_end *C.gchar
+
+	retC := C.g_utf8_validate((*C.gchar)(unsafe.Pointer(c_str)), c_max_len, &c_end)
+	retGo := retC == C.TRUE
+
+	end := C.GoString(c_end)
+
+	return retGo, end
+}
 
 // Blacklisted : g_variant_get_gtype
 

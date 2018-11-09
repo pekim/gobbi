@@ -3,7 +3,10 @@
 
 package gio
 
-import "unsafe"
+import (
+	glib "github.com/pekim/gobbi/lib/glib"
+	"unsafe"
+)
 
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <gio/gdesktopappinfo.h>
@@ -49,7 +52,38 @@ func (recv *Converter) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : g_converter_convert : unsupported parameter inbuf : no type generator for guint8 () for array param inbuf
+// Convert is a wrapper around the C function g_converter_convert.
+func (recv *Converter) Convert(inbuf []uint8, outbuf []uint8, flags ConverterFlags) (ConverterResult, uint64, uint64, error) {
+	c_inbuf := &inbuf[0]
+
+	c_inbuf_size := (C.gsize)(len(inbuf))
+
+	c_outbuf := &outbuf[0]
+
+	c_outbuf_size := (C.gsize)(len(outbuf))
+
+	c_flags := (C.GConverterFlags)(flags)
+
+	var c_bytes_read C.gsize
+
+	var c_bytes_written C.gsize
+
+	var cThrowableError *C.GError
+
+	retC := C.g_converter_convert((*C.GConverter)(recv.native), (unsafe.Pointer(c_inbuf)), c_inbuf_size, (unsafe.Pointer(c_outbuf)), c_outbuf_size, c_flags, &c_bytes_read, &c_bytes_written, &cThrowableError)
+	retGo := (ConverterResult)(retC)
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	bytesRead := (uint64)(c_bytes_read)
+
+	bytesWritten := (uint64)(c_bytes_written)
+
+	return retGo, bytesRead, bytesWritten, goThrowableError
+}
 
 // Reset is a wrapper around the C function g_converter_reset.
 func (recv *Converter) Reset() {

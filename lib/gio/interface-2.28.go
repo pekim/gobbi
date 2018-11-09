@@ -176,7 +176,26 @@ func (recv *PollableInputStream) IsReadable() bool {
 	return retGo
 }
 
-// Unsupported : g_pollable_input_stream_read_nonblocking : unsupported parameter buffer : no type generator for guint8 () for array param buffer
+// ReadNonblocking is a wrapper around the C function g_pollable_input_stream_read_nonblocking.
+func (recv *PollableInputStream) ReadNonblocking(buffer []uint8, cancellable *Cancellable) (int64, error) {
+	c_buffer := &buffer[0]
+
+	c_count := (C.gsize)(len(buffer))
+
+	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_pollable_input_stream_read_nonblocking((*C.GPollableInputStream)(recv.native), (unsafe.Pointer(c_buffer)), c_count, c_cancellable, &cThrowableError)
+	retGo := (int64)(retC)
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // PollableOutputStream is a wrapper around the C record GPollableOutputStream.
 type PollableOutputStream struct {
@@ -225,7 +244,26 @@ func (recv *PollableOutputStream) IsWritable() bool {
 	return retGo
 }
 
-// Unsupported : g_pollable_output_stream_write_nonblocking : unsupported parameter buffer : no type generator for guint8 () for array param buffer
+// WriteNonblocking is a wrapper around the C function g_pollable_output_stream_write_nonblocking.
+func (recv *PollableOutputStream) WriteNonblocking(buffer []uint8, cancellable *Cancellable) (int64, error) {
+	c_buffer := &buffer[0]
+
+	c_count := (C.gsize)(len(buffer))
+
+	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_pollable_output_stream_write_nonblocking((*C.GPollableOutputStream)(recv.native), (unsafe.Pointer(c_buffer)), c_count, c_cancellable, &cThrowableError)
+	retGo := (int64)(retC)
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // TlsBackend is a wrapper around the C record GTlsBackend.
 type TlsBackend struct {

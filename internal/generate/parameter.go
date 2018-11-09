@@ -3,6 +3,7 @@ package generate
 import (
 	"fmt"
 	"github.com/dave/jennifer/jen"
+	"strings"
 )
 
 type Parameter struct {
@@ -48,6 +49,11 @@ func (p *Parameter) isSupported() (bool, string) {
 
 		if supported, reason := p.Type.generator.isSupportedAsParam(p.Direction); !supported {
 			return false, reason
+		}
+
+		if p.arrayLengthFor != nil && strings.HasSuffix(p.Type.CType, "*") {
+			return false, fmt.Sprintf("array length param %s is pointer (%s)",
+				p.Name, p.Type.CType)
 		}
 
 		return true, ""
@@ -144,7 +150,7 @@ func (p *Parameter) generateCallArgument(g *jen.Group) {
 }
 
 func (p *Parameter) generateOutputParamGoVar(g *jen.Group) {
-	if p.Direction == "out" || (p.Direction == "inout" && p.Type.Name == "argcargv") {
+	if p.Direction == "out" || (p.Direction == "inout" && p.Type != nil && p.Type.Name == "argcargv") {
 		p.Type.generator.generateReturnCToGo(g, true,
 			p.cVarName, p.goVarName, p.Type.fullGoPackageName(),
 			p.TransferOwnership, false)
@@ -153,13 +159,13 @@ func (p *Parameter) generateOutputParamGoVar(g *jen.Group) {
 }
 
 func (p *Parameter) generateOutputParamReturnDeclaration(g *jen.Group) {
-	if p.Direction == "out" || (p.Direction == "inout" && p.Type.Name == "argcargv") {
+	if p.Direction == "out" || (p.Direction == "inout" && p.Type != nil && p.Type.Name == "argcargv") {
 		p.Type.generator.generateReturnFunctionDeclaration(g)
 	}
 }
 
 func (p *Parameter) generateOutputParamReturn(g *jen.Group) {
-	if p.Direction == "out" || (p.Direction == "inout" && p.Type.Name == "argcargv") {
+	if p.Direction == "out" || (p.Direction == "inout" && p.Type != nil && p.Type.Name == "argcargv") {
 		if p.Type.Name != "ignore" {
 			g.Id(p.goVarName)
 		}

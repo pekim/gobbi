@@ -525,7 +525,26 @@ func DBusMessageNew() *DBusMessage {
 	return retGo
 }
 
-// Unsupported : g_dbus_message_new_from_blob : unsupported parameter blob : no type generator for guint8 () for array param blob
+// DBusMessageNewFromBlob is a wrapper around the C function g_dbus_message_new_from_blob.
+func DBusMessageNewFromBlob(blob []uint8, capabilities DBusCapabilityFlags) (*DBusMessage, error) {
+	c_blob := &blob[0]
+
+	c_blob_len := (C.gsize)(len(blob))
+
+	c_capabilities := (C.GDBusCapabilityFlags)(capabilities)
+
+	var cThrowableError *C.GError
+
+	retC := C.g_dbus_message_new_from_blob((*C.guchar)(unsafe.Pointer(c_blob)), c_blob_len, c_capabilities, &cThrowableError)
+	retGo := DBusMessageNewFromC(unsafe.Pointer(retC))
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // DBusMessageNewMethodCall is a wrapper around the C function g_dbus_message_new_method_call.
 func DBusMessageNewMethodCall(name string, path string, interface_ string, method string) *DBusMessage {
@@ -1395,9 +1414,7 @@ func (recv *DataInputStream) ReadUpto(stopChars string, stopCharsLen int64, canc
 
 // Unsupported : g_file_icon_new : unsupported parameter file : no type generator for File (GFile*) for param file
 
-// Unsupported : g_inet_address_new_from_bytes : unsupported parameter bytes : no type generator for guint8 () for array param bytes
-
-// Unsupported : g_memory_input_stream_new_from_data : unsupported parameter data : no type generator for guint8 () for array param data
+// Unsupported : g_memory_input_stream_new_from_data : unsupported parameter destroy : no type generator for GLib.DestroyNotify (GDestroyNotify) for param destroy
 
 // Unsupported : g_memory_output_stream_new : unsupported parameter realloc_function : no type generator for ReallocFunc (GReallocFunc) for param realloc_function
 
@@ -1946,9 +1963,53 @@ func (recv *Socket) GetTimeout() uint32 {
 	return retGo
 }
 
-// Unsupported : g_socket_receive_with_blocking : unsupported parameter buffer : no type generator for guint8 () for array param buffer
+// ReceiveWithBlocking is a wrapper around the C function g_socket_receive_with_blocking.
+func (recv *Socket) ReceiveWithBlocking(buffer []uint8, blocking bool, cancellable *Cancellable) (int64, error) {
+	c_buffer := &buffer[0]
 
-// Unsupported : g_socket_send_with_blocking : unsupported parameter buffer : no type generator for guint8 () for array param buffer
+	c_size := (C.gsize)(len(buffer))
+
+	c_blocking :=
+		boolToGboolean(blocking)
+
+	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_socket_receive_with_blocking((*C.GSocket)(recv.native), (*C.gchar)(unsafe.Pointer(c_buffer)), c_size, c_blocking, c_cancellable, &cThrowableError)
+	retGo := (int64)(retC)
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
+
+// SendWithBlocking is a wrapper around the C function g_socket_send_with_blocking.
+func (recv *Socket) SendWithBlocking(buffer []uint8, blocking bool, cancellable *Cancellable) (int64, error) {
+	c_buffer := &buffer[0]
+
+	c_size := (C.gsize)(len(buffer))
+
+	c_blocking :=
+		boolToGboolean(blocking)
+
+	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_socket_send_with_blocking((*C.GSocket)(recv.native), (*C.gchar)(unsafe.Pointer(c_buffer)), c_size, c_blocking, c_cancellable, &cThrowableError)
+	retGo := (int64)(retC)
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // SetTimeout is a wrapper around the C function g_socket_set_timeout.
 func (recv *Socket) SetTimeout(timeout uint32) {
@@ -2123,9 +2184,19 @@ func (recv *UnixCredentialsMessage) GetCredentials() *Credentials {
 	return retGo
 }
 
-// Unsupported : g_unix_socket_address_new_abstract : unsupported parameter path : no type generator for gchar () for array param path
+// UnixSocketAddressNewWithType is a wrapper around the C function g_unix_socket_address_new_with_type.
+func UnixSocketAddressNewWithType(path []rune, type_ UnixSocketAddressType) *UnixSocketAddress {
+	c_path := &path[0]
 
-// Unsupported : g_unix_socket_address_new_with_type : unsupported parameter path : no type generator for gchar () for array param path
+	c_path_len := (C.gint)(len(path))
+
+	c_type := (C.GUnixSocketAddressType)(type_)
+
+	retC := C.g_unix_socket_address_new_with_type((*C.gchar)(unsafe.Pointer(c_path)), c_path_len, c_type)
+	retGo := UnixSocketAddressNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // GetAddressType is a wrapper around the C function g_unix_socket_address_get_address_type.
 func (recv *UnixSocketAddress) GetAddressType() UnixSocketAddressType {

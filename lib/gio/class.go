@@ -264,7 +264,19 @@ func (recv *BufferedInputStream) GetBufferSize() uint64 {
 	return retGo
 }
 
-// Unsupported : g_buffered_input_stream_peek : unsupported parameter buffer : no type generator for guint8 () for array param buffer
+// Peek is a wrapper around the C function g_buffered_input_stream_peek.
+func (recv *BufferedInputStream) Peek(buffer []uint8, offset uint64) uint64 {
+	c_buffer := &buffer[0]
+
+	c_offset := (C.gsize)(offset)
+
+	c_count := (C.gsize)(len(buffer))
+
+	retC := C.g_buffered_input_stream_peek((*C.GBufferedInputStream)(recv.native), (unsafe.Pointer(c_buffer)), c_offset, c_count)
+	retGo := (uint64)(retC)
+
+	return retGo
+}
 
 // Unsupported : g_buffered_input_stream_peek_buffer : no return type
 
@@ -2798,8 +2810,6 @@ func CastToInetAddress(object *gobject.Object) *InetAddress {
 	return InetAddressNewFromC(object.ToC())
 }
 
-// Unsupported : g_inet_address_new_from_bytes : unsupported parameter bytes : no type generator for guint8 () for array param bytes
-
 // InetSocketAddress is a wrapper around the C record GInetSocketAddress.
 type InetSocketAddress struct {
 	native *C.GInetSocketAddress
@@ -2922,11 +2932,53 @@ func (recv *InputStream) IsClosed() bool {
 	return retGo
 }
 
-// Unsupported : g_input_stream_read : unsupported parameter buffer : no type generator for guint8 () for array param buffer
+// Read is a wrapper around the C function g_input_stream_read.
+func (recv *InputStream) Read(buffer []uint8, cancellable *Cancellable) (int64, error) {
+	c_buffer := &buffer[0]
 
-// Unsupported : g_input_stream_read_all : unsupported parameter buffer : no type generator for guint8 () for array param buffer
+	c_count := (C.gsize)(len(buffer))
 
-// Unsupported : g_input_stream_read_async : unsupported parameter buffer : no type generator for guint8 () for array param buffer
+	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_input_stream_read((*C.GInputStream)(recv.native), (unsafe.Pointer(c_buffer)), c_count, c_cancellable, &cThrowableError)
+	retGo := (int64)(retC)
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
+
+// ReadAll is a wrapper around the C function g_input_stream_read_all.
+func (recv *InputStream) ReadAll(buffer []uint8, cancellable *Cancellable) (bool, uint64, error) {
+	c_buffer := &buffer[0]
+
+	c_count := (C.gsize)(len(buffer))
+
+	var c_bytes_read C.gsize
+
+	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_input_stream_read_all((*C.GInputStream)(recv.native), (unsafe.Pointer(c_buffer)), c_count, &c_bytes_read, c_cancellable, &cThrowableError)
+	retGo := retC == C.TRUE
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	bytesRead := (uint64)(c_bytes_read)
+
+	return retGo, bytesRead, goThrowableError
+}
+
+// Unsupported : g_input_stream_read_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
 // Unsupported : g_input_stream_read_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
 
@@ -3052,9 +3104,9 @@ func MemoryInputStreamNew() *MemoryInputStream {
 	return retGo
 }
 
-// Unsupported : g_memory_input_stream_new_from_data : unsupported parameter data : no type generator for guint8 () for array param data
+// Unsupported : g_memory_input_stream_new_from_data : unsupported parameter destroy : no type generator for GLib.DestroyNotify (GDestroyNotify) for param destroy
 
-// Unsupported : g_memory_input_stream_add_data : unsupported parameter data : no type generator for guint8 () for array param data
+// Unsupported : g_memory_input_stream_add_data : unsupported parameter destroy : no type generator for GLib.DestroyNotify (GDestroyNotify) for param destroy
 
 // PollableInputStream returns the PollableInputStream interface implemented by MemoryInputStream
 func (recv *MemoryInputStream) PollableInputStream() *PollableInputStream {
@@ -3551,11 +3603,53 @@ func (recv *OutputStream) Splice(source *InputStream, flags OutputStreamSpliceFl
 
 // Unsupported : g_output_stream_splice_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
 
-// Unsupported : g_output_stream_write : unsupported parameter buffer : no type generator for guint8 () for array param buffer
+// Write is a wrapper around the C function g_output_stream_write.
+func (recv *OutputStream) Write(buffer []uint8, cancellable *Cancellable) (int64, error) {
+	c_buffer := &buffer[0]
 
-// Unsupported : g_output_stream_write_all : unsupported parameter buffer : no type generator for guint8 () for array param buffer
+	c_count := (C.gsize)(len(buffer))
 
-// Unsupported : g_output_stream_write_async : unsupported parameter buffer : no type generator for guint8 () for array param buffer
+	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_output_stream_write((*C.GOutputStream)(recv.native), (unsafe.Pointer(c_buffer)), c_count, c_cancellable, &cThrowableError)
+	retGo := (int64)(retC)
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
+
+// WriteAll is a wrapper around the C function g_output_stream_write_all.
+func (recv *OutputStream) WriteAll(buffer []uint8, cancellable *Cancellable) (bool, uint64, error) {
+	c_buffer := &buffer[0]
+
+	c_count := (C.gsize)(len(buffer))
+
+	var c_bytes_written C.gsize
+
+	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_output_stream_write_all((*C.GOutputStream)(recv.native), (unsafe.Pointer(c_buffer)), c_count, &c_bytes_written, c_cancellable, &cThrowableError)
+	retGo := retC == C.TRUE
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	bytesWritten := (uint64)(c_bytes_written)
+
+	return retGo, bytesWritten, goThrowableError
+}
+
+// Unsupported : g_output_stream_write_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
 // Blacklisted : g_output_stream_write_bytes
 
@@ -4859,9 +4953,17 @@ func CastToUnixSocketAddress(object *gobject.Object) *UnixSocketAddress {
 	return UnixSocketAddressNewFromC(object.ToC())
 }
 
-// Unsupported : g_unix_socket_address_new_abstract : unsupported parameter path : no type generator for gchar () for array param path
+// UnixSocketAddressNewAbstract is a wrapper around the C function g_unix_socket_address_new_abstract.
+func UnixSocketAddressNewAbstract(path []rune) *UnixSocketAddress {
+	c_path := &path[0]
 
-// Unsupported : g_unix_socket_address_new_with_type : unsupported parameter path : no type generator for gchar () for array param path
+	c_path_len := (C.gint)(len(path))
+
+	retC := C.g_unix_socket_address_new_abstract((*C.gchar)(unsafe.Pointer(c_path)), c_path_len)
+	retGo := UnixSocketAddressNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // SocketConnectable returns the SocketConnectable interface implemented by UnixSocketAddress
 func (recv *UnixSocketAddress) SocketConnectable() *SocketConnectable {
