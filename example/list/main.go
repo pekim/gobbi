@@ -58,10 +58,7 @@ func createTree() *gtk.TreeView {
 
 	selection := tree.GetSelection()
 	selection.SetMode(gtk.GTK_SELECTION_SINGLE)
-	selection.ConnectChanged(func() {
-		//selection.gets
-		fmt.Println("selection change")
-	})
+	selection.ConnectChanged(selectionChange(selection))
 
 	return tree
 }
@@ -96,6 +93,7 @@ func addColumn(view *gtk.TreeView, title string, modelColumn int32, foregroundCo
 	column := gtk.TreeViewColumnNew()
 	column.SetResizable(true)
 	column.SetTitle(title)
+	column.SetMinWidth(30)
 	column.PackStart(renderer.CellRenderer(), true)
 	column.AddAttribute(renderer.CellRenderer(), "text", modelColumn)
 
@@ -104,4 +102,18 @@ func addColumn(view *gtk.TreeView, title string, modelColumn int32, foregroundCo
 	}
 
 	view.AppendColumn(column)
+}
+
+func selectionChange(selection *gtk.TreeSelection) func() {
+	return func() {
+		isSelected, model, iter := selection.GetSelected()
+
+		if isSelected {
+			number := model.GetValue(iter, COL_NUMBER).GetInt()
+			text := model.GetValue(iter, COL_TEXT).GetString()
+			fmt.Printf("selected : %d, %s\n", number, text)
+		} else {
+			fmt.Println("no selection")
+		}
+	}
 }
