@@ -28,10 +28,16 @@ func main() {
 	window.SetDefaultSize(300, 300)
 
 	container := gtk.BoxNew(gtk.GTK_ORIENTATION_VERTICAL, 20).Container()
-	container.Widget().SetMarginStart(20)
-	container.Widget().SetMarginEnd(20)
+	container.Widget().SetMarginLeft(20)
+	container.Widget().SetMarginRight(20)
+	container.Widget().SetMarginBottom(20)
 	container.Add(gtk.LabelNew("A tree view").Widget())
-	container.Add(createTree().Widget())
+
+	tree := createTree()
+	scrolledWindow := gtk.ScrolledWindowNew(nil, nil)
+	scrolledWindow.Widget().SetVexpand(true)
+	scrolledWindow.Container().Add(tree.Widget())
+	container.Add(scrolledWindow.Widget())
 
 	window.Container().Add(container.Widget())
 
@@ -49,6 +55,9 @@ func createTree() *gtk.TreeView {
 	addRow(listStore, 43, "yet more text, don't you know")
 	addRow(listStore, 107, "qaz")
 	addRow(listStore, 109, "qaz qwerty")
+	for i := int32(200); i < 500; i++ {
+		addRow(listStore, i, fmt.Sprintf("just a bunch more rows %d", i))
+	}
 
 	tree := gtk.TreeViewNewWithModel(listStore.TreeModel())
 
