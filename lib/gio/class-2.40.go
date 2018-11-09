@@ -299,9 +299,9 @@ func (recv *Notification) SetUrgent(urgent bool) {
 	return
 }
 
-// Unsupported : g_output_stream_printf : unsupported parameter error : record with indirection level of 2
+// Unsupported : g_output_stream_printf : unsupported parameter ... : varargs
 
-// Unsupported : g_output_stream_vprintf : unsupported parameter error : record with indirection level of 2
+// Unsupported : g_output_stream_vprintf : unsupported parameter args : no type generator for va_list (va_list) for param args
 
 // Unsupported : g_settings_get_default_value : return type : Blacklisted record : GVariant
 
@@ -339,15 +339,63 @@ func CastToSubprocess(object *gobject.Object) *Subprocess {
 	return SubprocessNewFromC(object.ToC())
 }
 
-// Unsupported : g_subprocess_new : unsupported parameter error : record with indirection level of 2
+// Unsupported : g_subprocess_new : unsupported parameter ... : varargs
 
 // Unsupported : g_subprocess_newv : unsupported parameter argv :
 
-// Unsupported : g_subprocess_communicate : unsupported parameter stdout_buf : record with indirection level of 2
+// Communicate is a wrapper around the C function g_subprocess_communicate.
+func (recv *Subprocess) Communicate(stdinBuf *glib.Bytes, cancellable *Cancellable) (bool, *glib.Bytes, *glib.Bytes, error) {
+	c_stdin_buf := (*C.GBytes)(stdinBuf.ToC())
+
+	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+
+	var c_stdout_buf *C.GBytes
+
+	var c_stderr_buf *C.GBytes
+
+	var cThrowableError *C.GError
+
+	retC := C.g_subprocess_communicate((*C.GSubprocess)(recv.native), c_stdin_buf, c_cancellable, &c_stdout_buf, &c_stderr_buf, &cThrowableError)
+	retGo := retC == C.TRUE
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	stdoutBuf := glib.BytesNewFromC(unsafe.Pointer(c_stdout_buf))
+
+	stderrBuf := glib.BytesNewFromC(unsafe.Pointer(c_stderr_buf))
+
+	return retGo, stdoutBuf, stderrBuf, goThrowableError
+}
 
 // Unsupported : g_subprocess_communicate_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_subprocess_communicate_finish : unsupported parameter stdout_buf : record with indirection level of 2
+// CommunicateFinish is a wrapper around the C function g_subprocess_communicate_finish.
+func (recv *Subprocess) CommunicateFinish(result *AsyncResult) (bool, *glib.Bytes, *glib.Bytes, error) {
+	c_result := (*C.GAsyncResult)(result.ToC())
+
+	var c_stdout_buf *C.GBytes
+
+	var c_stderr_buf *C.GBytes
+
+	var cThrowableError *C.GError
+
+	retC := C.g_subprocess_communicate_finish((*C.GSubprocess)(recv.native), c_result, &c_stdout_buf, &c_stderr_buf, &cThrowableError)
+	retGo := retC == C.TRUE
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	stdoutBuf := glib.BytesNewFromC(unsafe.Pointer(c_stdout_buf))
+
+	stderrBuf := glib.BytesNewFromC(unsafe.Pointer(c_stderr_buf))
+
+	return retGo, stdoutBuf, stderrBuf, goThrowableError
+}
 
 // CommunicateUtf8 is a wrapper around the C function g_subprocess_communicate_utf8.
 func (recv *Subprocess) CommunicateUtf8(stdinBuf string, cancellable *Cancellable) (bool, string, string, error) {
@@ -698,7 +746,7 @@ func (recv *SubprocessLauncher) Setenv(variable string, value string, overwrite 
 	return
 }
 
-// Unsupported : g_subprocess_launcher_spawn : unsupported parameter error : record with indirection level of 2
+// Unsupported : g_subprocess_launcher_spawn : unsupported parameter ... : varargs
 
 // Unsupported : g_subprocess_launcher_spawnv : unsupported parameter argv :
 

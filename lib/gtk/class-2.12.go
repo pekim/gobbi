@@ -560,7 +560,32 @@ func (recv *IconView) GetTooltipColumn() int32 {
 	return retGo
 }
 
-// Unsupported : gtk_icon_view_get_tooltip_context : unsupported parameter model : record with indirection level of 2
+// GetTooltipContext is a wrapper around the C function gtk_icon_view_get_tooltip_context.
+func (recv *IconView) GetTooltipContext(x int32, y int32, keyboardTip bool) (bool, *TreeModel, *TreePath, *TreeIter) {
+	c_x := (C.gint)(x)
+
+	c_y := (C.gint)(y)
+
+	c_keyboard_tip :=
+		boolToGboolean(keyboardTip)
+
+	var c_model *C.GtkTreeModel
+
+	var c_path *C.GtkTreePath
+
+	var c_iter C.GtkTreeIter
+
+	retC := C.gtk_icon_view_get_tooltip_context((*C.GtkIconView)(recv.native), &c_x, &c_y, c_keyboard_tip, &c_model, &c_path, &c_iter)
+	retGo := retC == C.TRUE
+
+	model := TreeModelNewFromC(unsafe.Pointer(c_model))
+
+	path := TreePathNewFromC(unsafe.Pointer(c_path))
+
+	iter := TreeIterNewFromC(unsafe.Pointer(&c_iter))
+
+	return retGo, model, path, iter
+}
 
 // SetTooltipCell is a wrapper around the C function gtk_icon_view_set_tooltip_cell.
 func (recv *IconView) SetTooltipCell(tooltip *Tooltip, path *TreePath, cell *CellRenderer) {
@@ -1268,7 +1293,32 @@ func (recv *TreeView) GetTooltipColumn() int32 {
 	return retGo
 }
 
-// Unsupported : gtk_tree_view_get_tooltip_context : unsupported parameter model : record with indirection level of 2
+// GetTooltipContext is a wrapper around the C function gtk_tree_view_get_tooltip_context.
+func (recv *TreeView) GetTooltipContext(x int32, y int32, keyboardTip bool) (bool, *TreeModel, *TreePath, *TreeIter) {
+	c_x := (C.gint)(x)
+
+	c_y := (C.gint)(y)
+
+	c_keyboard_tip :=
+		boolToGboolean(keyboardTip)
+
+	var c_model *C.GtkTreeModel
+
+	var c_path *C.GtkTreePath
+
+	var c_iter C.GtkTreeIter
+
+	retC := C.gtk_tree_view_get_tooltip_context((*C.GtkTreeView)(recv.native), &c_x, &c_y, c_keyboard_tip, &c_model, &c_path, &c_iter)
+	retGo := retC == C.TRUE
+
+	model := TreeModelNewFromC(unsafe.Pointer(c_model))
+
+	path := TreePathNewFromC(unsafe.Pointer(c_path))
+
+	iter := TreeIterNewFromC(unsafe.Pointer(&c_iter))
+
+	return retGo, model, path, iter
+}
 
 // IsRubberBandingActive is a wrapper around the C function gtk_tree_view_is_rubber_banding_active.
 func (recv *TreeView) IsRubberBandingActive() bool {

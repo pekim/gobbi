@@ -170,7 +170,7 @@ func (recv *Display) GetName() string {
 	return retGo
 }
 
-// Unsupported : gdk_display_get_pointer : unsupported parameter screen : record with indirection level of 2
+// Unsupported : gdk_display_get_pointer : unsupported parameter mask : GdkModifierType* with indirection level of 1
 
 // GetScreen is a wrapper around the C function gdk_display_get_screen.
 func (recv *Display) GetScreen(screenNum int32) *Screen {

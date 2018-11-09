@@ -380,7 +380,7 @@ func (recv *Pixbuf) SaturateAndPixelate(dest *Pixbuf, saturation float32, pixela
 	return
 }
 
-// Unsupported : gdk_pixbuf_save : unsupported parameter error : record with indirection level of 2
+// Unsupported : gdk_pixbuf_save : unsupported parameter ... : varargs
 
 // Unsupported : gdk_pixbuf_savev : unsupported parameter option_keys :
 

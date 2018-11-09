@@ -2494,7 +2494,33 @@ func (recv *ThemingEngine) StateIsRunning(state StateType) (bool, float64) {
 	return retGo, progress
 }
 
-// Unsupported : gtk_tree_view_is_blank_at_pos : unsupported parameter path : record with indirection level of 2
+// IsBlankAtPos is a wrapper around the C function gtk_tree_view_is_blank_at_pos.
+func (recv *TreeView) IsBlankAtPos(x int32, y int32) (bool, *TreePath, *TreeViewColumn, int32, int32) {
+	c_x := (C.gint)(x)
+
+	c_y := (C.gint)(y)
+
+	var c_path *C.GtkTreePath
+
+	var c_column *C.GtkTreeViewColumn
+
+	var c_cell_x C.gint
+
+	var c_cell_y C.gint
+
+	retC := C.gtk_tree_view_is_blank_at_pos((*C.GtkTreeView)(recv.native), c_x, c_y, &c_path, &c_column, &c_cell_x, &c_cell_y)
+	retGo := retC == C.TRUE
+
+	path := TreePathNewFromC(unsafe.Pointer(c_path))
+
+	column := TreeViewColumnNewFromC(unsafe.Pointer(c_column))
+
+	cellX := (int32)(c_cell_x)
+
+	cellY := (int32)(c_cell_y)
+
+	return retGo, path, column, cellX, cellY
+}
 
 // TreeViewColumnNewWithArea is a wrapper around the C function gtk_tree_view_column_new_with_area.
 func TreeViewColumnNewWithArea(area *CellArea) *TreeViewColumn {

@@ -52,7 +52,24 @@ func (recv *Device) GetNAxes() int32 {
 	return retGo
 }
 
-// Unsupported : gdk_device_get_position : unsupported parameter screen : record with indirection level of 2
+// GetPosition is a wrapper around the C function gdk_device_get_position.
+func (recv *Device) GetPosition() (*Screen, int32, int32) {
+	var c_screen *C.GdkScreen
+
+	var c_x C.gint
+
+	var c_y C.gint
+
+	C.gdk_device_get_position((*C.GdkDevice)(recv.native), &c_screen, &c_x, &c_y)
+
+	screen := ScreenNewFromC(unsafe.Pointer(c_screen))
+
+	x := (int32)(c_x)
+
+	y := (int32)(c_y)
+
+	return screen, x, y
+}
 
 // GetWindowAtPosition is a wrapper around the C function gdk_device_get_window_at_position.
 func (recv *Device) GetWindowAtPosition() (*Window, int32, int32) {
@@ -286,7 +303,17 @@ func (recv *Window) GetDeviceEvents(device *Device) EventMask {
 
 // Unsupported : gdk_window_get_device_position : unsupported parameter mask : GdkModifierType* with indirection level of 1
 
-// Unsupported : gdk_window_get_drag_protocol : unsupported parameter target : record with indirection level of 2
+// GetDragProtocol is a wrapper around the C function gdk_window_get_drag_protocol.
+func (recv *Window) GetDragProtocol() (DragProtocol, *Window) {
+	var c_target *C.GdkWindow
+
+	retC := C.gdk_window_get_drag_protocol((*C.GdkWindow)(recv.native), &c_target)
+	retGo := (DragProtocol)(retC)
+
+	target := WindowNewFromC(unsafe.Pointer(c_target))
+
+	return retGo, target
+}
 
 // GetSupportMultidevice is a wrapper around the C function gdk_window_get_support_multidevice.
 func (recv *Window) GetSupportMultidevice() bool {

@@ -1816,7 +1816,26 @@ func (recv *File) SetAttributeUint64(attribute string, value uint64, flags FileQ
 
 // Unsupported : g_file_set_attributes_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_file_set_attributes_finish : unsupported parameter info : record with indirection level of 2
+// SetAttributesFinish is a wrapper around the C function g_file_set_attributes_finish.
+func (recv *File) SetAttributesFinish(result *AsyncResult) (bool, *FileInfo, error) {
+	c_result := (*C.GAsyncResult)(result.ToC())
+
+	var c_info *C.GFileInfo
+
+	var cThrowableError *C.GError
+
+	retC := C.g_file_set_attributes_finish((*C.GFile)(recv.native), c_result, &c_info, &cThrowableError)
+	retGo := retC == C.TRUE
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	info := FileInfoNewFromC(unsafe.Pointer(c_info))
+
+	return retGo, info, goThrowableError
+}
 
 // SetAttributesFromInfo is a wrapper around the C function g_file_set_attributes_from_info.
 func (recv *File) SetAttributesFromInfo(info *FileInfo, flags FileQueryInfoFlags, cancellable *Cancellable) (bool, error) {

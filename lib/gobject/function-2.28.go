@@ -8,7 +8,14 @@ package gobject
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : g_clear_object : unsupported parameter object_ptr : record with indirection level of 2
+// ClearObject is a wrapper around the C function g_clear_object.
+func ClearObject(objectPtr *Object) {
+	c_object_ptr := (**C.GObject)(objectPtr.ToC())
+
+	C.g_clear_object(c_object_ptr)
+
+	return
+}
 
 // SignalAccumulatorFirstWins is a wrapper around the C function g_signal_accumulator_first_wins.
 func SignalAccumulatorFirstWins(ihint *SignalInvocationHint, returnAccu *Value, handlerReturn *Value, dummy uintptr) bool {

@@ -23,7 +23,27 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : g_file_new_tmp : unsupported parameter iostream : record with indirection level of 2
+// FileNewTmp is a wrapper around the C function g_file_new_tmp.
+func FileNewTmp(tmpl string) (*File, *FileIOStream, error) {
+	c_tmpl := C.CString(tmpl)
+	defer C.free(unsafe.Pointer(c_tmpl))
+
+	var c_iostream *C.GFileIOStream
+
+	var cThrowableError *C.GError
+
+	retC := C.g_file_new_tmp(c_tmpl, &c_iostream, &cThrowableError)
+	retGo := FileNewFromC(unsafe.Pointer(retC))
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	iostream := FileIOStreamNewFromC(unsafe.Pointer(c_iostream))
+
+	return retGo, iostream, goThrowableError
+}
 
 // NetworkMonitorGetDefault is a wrapper around the C function g_network_monitor_get_default.
 func NetworkMonitorGetDefault() *NetworkMonitor {

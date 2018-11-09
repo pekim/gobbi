@@ -26,7 +26,7 @@ import "C"
 
 // Unsupported : g_dbus_connection_call_with_unix_fd_list : unsupported parameter parameters : Blacklisted record : GVariant
 
-// Unsupported : g_dbus_connection_call_with_unix_fd_list_finish : unsupported parameter out_fd_list : record with indirection level of 2
+// Unsupported : g_dbus_connection_call_with_unix_fd_list_finish : return type : Blacklisted record : GVariant
 
 // Unsupported : g_dbus_connection_call_with_unix_fd_list_sync : unsupported parameter parameters : Blacklisted record : GVariant
 
@@ -503,7 +503,7 @@ func (recv *DBusObjectSkeleton) SetObjectPath(objectPath string) {
 
 // Unsupported : g_dbus_proxy_call_with_unix_fd_list : unsupported parameter parameters : Blacklisted record : GVariant
 
-// Unsupported : g_dbus_proxy_call_with_unix_fd_list_finish : unsupported parameter out_fd_list : record with indirection level of 2
+// Unsupported : g_dbus_proxy_call_with_unix_fd_list_finish : return type : Blacklisted record : GVariant
 
 // Unsupported : g_dbus_proxy_call_with_unix_fd_list_sync : unsupported parameter parameters : Blacklisted record : GVariant
 

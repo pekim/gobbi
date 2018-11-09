@@ -268,9 +268,39 @@ func (recv *Regex) GetStringNumber(name string) int32 {
 	return retGo
 }
 
-// Unsupported : g_regex_match : unsupported parameter match_info : record with indirection level of 2
+// Match is a wrapper around the C function g_regex_match.
+func (recv *Regex) Match(string string, matchOptions RegexMatchFlags) (bool, *MatchInfo) {
+	c_string := C.CString(string)
+	defer C.free(unsafe.Pointer(c_string))
 
-// Unsupported : g_regex_match_all : unsupported parameter match_info : record with indirection level of 2
+	c_match_options := (C.GRegexMatchFlags)(matchOptions)
+
+	var c_match_info *C.GMatchInfo
+
+	retC := C.g_regex_match((*C.GRegex)(recv.native), c_string, c_match_options, &c_match_info)
+	retGo := retC == C.TRUE
+
+	matchInfo := MatchInfoNewFromC(unsafe.Pointer(c_match_info))
+
+	return retGo, matchInfo
+}
+
+// MatchAll is a wrapper around the C function g_regex_match_all.
+func (recv *Regex) MatchAll(string string, matchOptions RegexMatchFlags) (bool, *MatchInfo) {
+	c_string := C.CString(string)
+	defer C.free(unsafe.Pointer(c_string))
+
+	c_match_options := (C.GRegexMatchFlags)(matchOptions)
+
+	var c_match_info *C.GMatchInfo
+
+	retC := C.g_regex_match_all((*C.GRegex)(recv.native), c_string, c_match_options, &c_match_info)
+	retGo := retC == C.TRUE
+
+	matchInfo := MatchInfoNewFromC(unsafe.Pointer(c_match_info))
+
+	return retGo, matchInfo
+}
 
 // Unsupported : g_regex_match_all_full : unsupported parameter string :
 

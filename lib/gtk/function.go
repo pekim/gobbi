@@ -1326,7 +1326,23 @@ func StockLookup(stockId string) (bool, *StockItem) {
 	return retGo, item
 }
 
-// Unsupported : gtk_tree_get_row_drag_data : unsupported parameter tree_model : record with indirection level of 2
+// TreeGetRowDragData is a wrapper around the C function gtk_tree_get_row_drag_data.
+func TreeGetRowDragData(selectionData *SelectionData) (bool, *TreeModel, *TreePath) {
+	c_selection_data := (*C.GtkSelectionData)(selectionData.ToC())
+
+	var c_tree_model *C.GtkTreeModel
+
+	var c_path *C.GtkTreePath
+
+	retC := C.gtk_tree_get_row_drag_data(c_selection_data, &c_tree_model, &c_path)
+	retGo := retC == C.TRUE
+
+	treeModel := TreeModelNewFromC(unsafe.Pointer(c_tree_model))
+
+	path := TreePathNewFromC(unsafe.Pointer(c_path))
+
+	return retGo, treeModel, path
+}
 
 // TreeRowReferenceDeleted is a wrapper around the C function gtk_tree_row_reference_deleted.
 func TreeRowReferenceDeleted(proxy *gobject.Object, path *TreePath) {

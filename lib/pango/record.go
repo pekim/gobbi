@@ -2,7 +2,10 @@
 
 package pango
 
-import "unsafe"
+import (
+	glib "github.com/pekim/gobbi/lib/glib"
+	"unsafe"
+)
 
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <pango/pango.h>
@@ -236,7 +239,18 @@ func (recv *AttrIterator) Get(type_ AttrType) *Attribute {
 	return retGo
 }
 
-// Unsupported : pango_attr_iterator_get_font : unsupported parameter language : record with indirection level of 2
+// GetFont is a wrapper around the C function pango_attr_iterator_get_font.
+func (recv *AttrIterator) GetFont(desc *FontDescription, language *Language, extraAttrs *glib.SList) {
+	c_desc := (*C.PangoFontDescription)(desc.ToC())
+
+	c_language := (**C.PangoLanguage)(language.ToC())
+
+	c_extra_attrs := (**C.GSList)(extraAttrs.ToC())
+
+	C.pango_attr_iterator_get_font((*C.PangoAttrIterator)(recv.native), c_desc, c_language, c_extra_attrs)
+
+	return
+}
 
 // Next is a wrapper around the C function pango_attr_iterator_next.
 func (recv *AttrIterator) Next() bool {

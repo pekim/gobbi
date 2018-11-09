@@ -496,7 +496,7 @@ func (recv *IconTheme) LookupByGicon(icon *gio.Icon, size int32, flags IconLooku
 
 // Unsupported : gtk_image_new_from_gicon : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
 
-// Unsupported : gtk_image_get_gicon : unsupported parameter gicon : record with indirection level of 2
+// Unsupported : gtk_image_get_gicon : unsupported parameter size : no type generator for gint (GtkIconSize*) for param size
 
 // Unsupported : gtk_image_set_from_gicon : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
 

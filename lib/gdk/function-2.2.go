@@ -13,7 +13,7 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : gdk_drag_find_window_for_screen : unsupported parameter dest_window : record with indirection level of 2
+// Unsupported : gdk_drag_find_window_for_screen : unsupported parameter protocol : GdkDragProtocol* with indirection level of 1
 
 // GetDisplayArgName is a wrapper around the C function gdk_get_display_arg_name.
 func GetDisplayArgName() string {

@@ -13,7 +13,35 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : pango_markup_parser_finish : unsupported parameter attr_list : record with indirection level of 2
+// MarkupParserFinish is a wrapper around the C function pango_markup_parser_finish.
+func MarkupParserFinish(context *glib.MarkupParseContext) (bool, *AttrList, string, rune, error) {
+	c_context := (*C.GMarkupParseContext)(context.ToC())
+
+	var c_attr_list *C.PangoAttrList
+
+	var c_text *C.char
+
+	var c_accel_char C.gunichar
+
+	var cThrowableError *C.GError
+
+	retC := C.pango_markup_parser_finish(c_context, &c_attr_list, &c_text, &c_accel_char, &cThrowableError)
+	retGo := retC == C.TRUE
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	attrList := AttrListNewFromC(unsafe.Pointer(c_attr_list))
+
+	text := C.GoString(c_text)
+	defer C.free(unsafe.Pointer(c_text))
+
+	accelChar := (rune)(c_accel_char)
+
+	return retGo, attrList, text, accelChar, goThrowableError
+}
 
 // MarkupParserNew is a wrapper around the C function pango_markup_parser_new.
 func MarkupParserNew(accelMarker rune) *glib.MarkupParseContext {

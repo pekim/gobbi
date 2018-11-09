@@ -148,7 +148,17 @@ func (recv *TreeSelection) CountSelectedRows() int32 {
 	return retGo
 }
 
-// Unsupported : gtk_tree_selection_get_selected_rows : unsupported parameter model : record with indirection level of 2
+// GetSelectedRows is a wrapper around the C function gtk_tree_selection_get_selected_rows.
+func (recv *TreeSelection) GetSelectedRows() (*glib.List, *TreeModel) {
+	var c_model *C.GtkTreeModel
+
+	retC := C.gtk_tree_selection_get_selected_rows((*C.GtkTreeSelection)(recv.native), &c_model)
+	retGo := glib.ListNewFromC(unsafe.Pointer(retC))
+
+	model := TreeModelNewFromC(unsafe.Pointer(c_model))
+
+	return retGo, model
+}
 
 // UnselectRange is a wrapper around the C function gtk_tree_selection_unselect_range.
 func (recv *TreeSelection) UnselectRange(startPath *TreePath, endPath *TreePath) {

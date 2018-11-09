@@ -948,9 +948,32 @@ func (recv *Socket) Receive(buffer []uint8, cancellable *Cancellable) (int64, er
 	return retGo, goThrowableError
 }
 
-// Unsupported : g_socket_receive_from : unsupported parameter address : record with indirection level of 2
+// ReceiveFrom is a wrapper around the C function g_socket_receive_from.
+func (recv *Socket) ReceiveFrom(buffer []uint8, cancellable *Cancellable) (int64, *SocketAddress, error) {
+	var c_address *C.GSocketAddress
 
-// Unsupported : g_socket_receive_message : unsupported parameter address : record with indirection level of 2
+	c_buffer := &buffer[0]
+
+	c_size := (C.gsize)(len(buffer))
+
+	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_socket_receive_from((*C.GSocket)(recv.native), &c_address, (*C.gchar)(unsafe.Pointer(c_buffer)), c_size, c_cancellable, &cThrowableError)
+	retGo := (int64)(retC)
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	address := SocketAddressNewFromC(unsafe.Pointer(c_address))
+
+	return retGo, address, goThrowableError
+}
+
+// Unsupported : g_socket_receive_message : unsupported parameter vectors :
 
 // Send is a wrapper around the C function g_socket_send.
 func (recv *Socket) Send(buffer []uint8, cancellable *Cancellable) (int64, error) {
@@ -1496,19 +1519,120 @@ func SocketListenerNew() *SocketListener {
 	return retGo
 }
 
-// Unsupported : g_socket_listener_accept : unsupported parameter source_object : record with indirection level of 2
+// Accept is a wrapper around the C function g_socket_listener_accept.
+func (recv *SocketListener) Accept(cancellable *Cancellable) (*SocketConnection, *gobject.Object, error) {
+	var c_source_object *C.GObject
+
+	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_socket_listener_accept((*C.GSocketListener)(recv.native), &c_source_object, c_cancellable, &cThrowableError)
+	retGo := SocketConnectionNewFromC(unsafe.Pointer(retC))
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	sourceObject := gobject.ObjectNewFromC(unsafe.Pointer(c_source_object))
+
+	return retGo, sourceObject, goThrowableError
+}
 
 // Unsupported : g_socket_listener_accept_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_socket_listener_accept_finish : unsupported parameter source_object : record with indirection level of 2
+// AcceptFinish is a wrapper around the C function g_socket_listener_accept_finish.
+func (recv *SocketListener) AcceptFinish(result *AsyncResult) (*SocketConnection, *gobject.Object, error) {
+	c_result := (*C.GAsyncResult)(result.ToC())
 
-// Unsupported : g_socket_listener_accept_socket : unsupported parameter source_object : record with indirection level of 2
+	var c_source_object *C.GObject
+
+	var cThrowableError *C.GError
+
+	retC := C.g_socket_listener_accept_finish((*C.GSocketListener)(recv.native), c_result, &c_source_object, &cThrowableError)
+	retGo := SocketConnectionNewFromC(unsafe.Pointer(retC))
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	sourceObject := gobject.ObjectNewFromC(unsafe.Pointer(c_source_object))
+
+	return retGo, sourceObject, goThrowableError
+}
+
+// AcceptSocket is a wrapper around the C function g_socket_listener_accept_socket.
+func (recv *SocketListener) AcceptSocket(cancellable *Cancellable) (*Socket, *gobject.Object, error) {
+	var c_source_object *C.GObject
+
+	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_socket_listener_accept_socket((*C.GSocketListener)(recv.native), &c_source_object, c_cancellable, &cThrowableError)
+	retGo := SocketNewFromC(unsafe.Pointer(retC))
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	sourceObject := gobject.ObjectNewFromC(unsafe.Pointer(c_source_object))
+
+	return retGo, sourceObject, goThrowableError
+}
 
 // Unsupported : g_socket_listener_accept_socket_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_socket_listener_accept_socket_finish : unsupported parameter source_object : record with indirection level of 2
+// AcceptSocketFinish is a wrapper around the C function g_socket_listener_accept_socket_finish.
+func (recv *SocketListener) AcceptSocketFinish(result *AsyncResult) (*Socket, *gobject.Object, error) {
+	c_result := (*C.GAsyncResult)(result.ToC())
 
-// Unsupported : g_socket_listener_add_address : unsupported parameter effective_address : record with indirection level of 2
+	var c_source_object *C.GObject
+
+	var cThrowableError *C.GError
+
+	retC := C.g_socket_listener_accept_socket_finish((*C.GSocketListener)(recv.native), c_result, &c_source_object, &cThrowableError)
+	retGo := SocketNewFromC(unsafe.Pointer(retC))
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	sourceObject := gobject.ObjectNewFromC(unsafe.Pointer(c_source_object))
+
+	return retGo, sourceObject, goThrowableError
+}
+
+// AddAddress is a wrapper around the C function g_socket_listener_add_address.
+func (recv *SocketListener) AddAddress(address *SocketAddress, type_ SocketType, protocol SocketProtocol, sourceObject *gobject.Object) (bool, *SocketAddress, error) {
+	c_address := (*C.GSocketAddress)(address.ToC())
+
+	c_type := (C.GSocketType)(type_)
+
+	c_protocol := (C.GSocketProtocol)(protocol)
+
+	c_source_object := (*C.GObject)(sourceObject.ToC())
+
+	var c_effective_address *C.GSocketAddress
+
+	var cThrowableError *C.GError
+
+	retC := C.g_socket_listener_add_address((*C.GSocketListener)(recv.native), c_address, c_type, c_protocol, c_source_object, &c_effective_address, &cThrowableError)
+	retGo := retC == C.TRUE
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	effectiveAddress := SocketAddressNewFromC(unsafe.Pointer(c_effective_address))
+
+	return retGo, effectiveAddress, goThrowableError
+}
 
 // AddInetPort is a wrapper around the C function g_socket_listener_add_inet_port.
 func (recv *SocketListener) AddInetPort(port uint16, sourceObject *gobject.Object) (bool, error) {

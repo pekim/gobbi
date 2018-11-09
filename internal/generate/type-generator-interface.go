@@ -19,10 +19,10 @@ func TypeGeneratorInterfaceNew(typ *Type, iface *Interface) *TypeGeneratorInterf
 }
 
 func (t *TypeGeneratorInterface) isSupportedAsField() (supported bool, reason string) {
-	return false, "record"
+	return false, "interface"
 
 	//if t.typ.indirectLevel != 1 {
-	//	return false, fmt.Sprintf("record with indirection of %d", t.typ.indirectLevel)
+	//	return false, fmt.Sprintf("interface with indirection of %d", t.typ.indirectLevel)
 	//}
 	//
 	//return true, ""
@@ -30,11 +30,11 @@ func (t *TypeGeneratorInterface) isSupportedAsField() (supported bool, reason st
 
 func (t *TypeGeneratorInterface) isSupportedAsParam(direction string) (supported bool, reason string) {
 	if t.iface.Blacklist {
-		return false, fmt.Sprintf("Blacklisted record : %s", t.iface.CType)
+		return false, fmt.Sprintf("Blacklisted interface : %s", t.iface.CType)
 	}
 
-	if t.typ.indirectLevel > 1 {
-		return false, fmt.Sprintf("record with indirection level of %d",
+	if t.typ.indirectLevel > 2 {
+		return false, fmt.Sprintf("interface with indirection level of %d",
 			t.typ.indirectLevel)
 	}
 
@@ -47,7 +47,7 @@ func (t *TypeGeneratorInterface) isSupportedAsArrayParam(direction string) (supp
 
 func (t *TypeGeneratorInterface) isSupportedAsParamC() (supported bool, reason string) {
 	if t.iface.Blacklist {
-		return false, fmt.Sprintf("Blacklisted record : %s", t.iface.CType)
+		return false, fmt.Sprintf("Blacklisted interface : %s", t.iface.CType)
 	}
 
 	return true, ""
@@ -55,11 +55,11 @@ func (t *TypeGeneratorInterface) isSupportedAsParamC() (supported bool, reason s
 
 func (t *TypeGeneratorInterface) isSupportedAsReturnValue() (supported bool, reason string) {
 	if t.iface.Blacklist {
-		return false, fmt.Sprintf("Blacklisted record : %s", t.iface.CType)
+		return false, fmt.Sprintf("Blacklisted interface : %s", t.iface.CType)
 	}
 
 	if t.typ.indirectLevel > 1 {
-		return false, fmt.Sprintf("record with indirection level of %d",
+		return false, fmt.Sprintf("interface with indirection level of %d",
 			t.typ.indirectLevel)
 	}
 
@@ -68,7 +68,7 @@ func (t *TypeGeneratorInterface) isSupportedAsReturnValue() (supported bool, rea
 
 func (t *TypeGeneratorInterface) isSupportedAsReturnCValue() (supported bool, reason string) {
 	if t.iface.Blacklist {
-		return false, fmt.Sprintf("Blacklisted record : %s", t.iface.CType)
+		return false, fmt.Sprintf("Blacklisted interface : %s", t.iface.CType)
 	}
 
 	return true, ""
@@ -147,8 +147,13 @@ func (t *TypeGeneratorInterface) generateParamOutCVar(g *jen.Group, cVarName str
 }
 
 func (t *TypeGeneratorInterface) generateReturnFunctionDeclaration(g *jen.Group) {
+	indirectLevel := t.typ.indirectLevel
+	if indirectLevel == 2 {
+		indirectLevel = 1
+	}
+
 	g.
-		Op(strings.Repeat("*", t.typ.indirectLevel)).
+		Op(strings.Repeat("*", indirectLevel)).
 		Do(t.typ.qname.generate)
 }
 

@@ -7493,7 +7493,17 @@ func (recv *Container) GetChildren() *glib.List {
 	return retGo
 }
 
-// Unsupported : gtk_container_get_focus_chain : unsupported parameter focusable_widgets : record with indirection level of 2
+// GetFocusChain is a wrapper around the C function gtk_container_get_focus_chain.
+func (recv *Container) GetFocusChain() (bool, *glib.List) {
+	var c_focusable_widgets *C.GList
+
+	retC := C.gtk_container_get_focus_chain((*C.GtkContainer)(recv.native), &c_focusable_widgets)
+	retGo := retC == C.TRUE
+
+	focusableWidgets := glib.ListNewFromC(unsafe.Pointer(c_focusable_widgets))
+
+	return retGo, focusableWidgets
+}
 
 // GetFocusHadjustment is a wrapper around the C function gtk_container_get_focus_hadjustment.
 func (recv *Container) GetFocusHadjustment() *Adjustment {
@@ -13323,7 +13333,25 @@ func (recv *IMContext) FocusOut() {
 	return
 }
 
-// Unsupported : gtk_im_context_get_preedit_string : unsupported parameter attrs : record with indirection level of 2
+// GetPreeditString is a wrapper around the C function gtk_im_context_get_preedit_string.
+func (recv *IMContext) GetPreeditString() (string, *pango.AttrList, int32) {
+	var c_str *C.gchar
+
+	var c_attrs *C.PangoAttrList
+
+	var c_cursor_pos C.gint
+
+	C.gtk_im_context_get_preedit_string((*C.GtkIMContext)(recv.native), &c_str, &c_attrs, &c_cursor_pos)
+
+	str := C.GoString(c_str)
+	defer C.free(unsafe.Pointer(c_str))
+
+	attrs := pango.AttrListNewFromC(unsafe.Pointer(c_attrs))
+
+	cursorPos := (int32)(c_cursor_pos)
+
+	return str, attrs, cursorPos
+}
 
 // GetSurrounding is a wrapper around the C function gtk_im_context_get_surrounding.
 func (recv *IMContext) GetSurrounding() (bool, string, int32) {
@@ -14348,7 +14376,7 @@ func (recv *Image) GetAnimation() *gdkpixbuf.PixbufAnimation {
 	return retGo
 }
 
-// Unsupported : gtk_image_get_icon_set : unsupported parameter icon_set : record with indirection level of 2
+// Unsupported : gtk_image_get_icon_set : unsupported parameter size : no type generator for gint (GtkIconSize*) for param size
 
 // GetPixbuf is a wrapper around the C function gtk_image_get_pixbuf.
 func (recv *Image) GetPixbuf() *gdkpixbuf.Pixbuf {
@@ -29061,7 +29089,21 @@ func (recv *TreeSelection) GetMode() SelectionMode {
 	return retGo
 }
 
-// Unsupported : gtk_tree_selection_get_selected : unsupported parameter model : record with indirection level of 2
+// GetSelected is a wrapper around the C function gtk_tree_selection_get_selected.
+func (recv *TreeSelection) GetSelected() (bool, *TreeModel, *TreeIter) {
+	var c_model *C.GtkTreeModel
+
+	var c_iter C.GtkTreeIter
+
+	retC := C.gtk_tree_selection_get_selected((*C.GtkTreeSelection)(recv.native), &c_model, &c_iter)
+	retGo := retC == C.TRUE
+
+	model := TreeModelNewFromC(unsafe.Pointer(c_model))
+
+	iter := TreeIterNewFromC(unsafe.Pointer(&c_iter))
+
+	return retGo, model, iter
+}
 
 // GetTreeView is a wrapper around the C function gtk_tree_selection_get_tree_view.
 func (recv *TreeSelection) GetTreeView() *TreeView {
@@ -30414,11 +30456,24 @@ func (recv *TreeView) GetColumns() *glib.List {
 	return retGo
 }
 
-// Unsupported : gtk_tree_view_get_cursor : unsupported parameter path : record with indirection level of 2
+// GetCursor is a wrapper around the C function gtk_tree_view_get_cursor.
+func (recv *TreeView) GetCursor() (*TreePath, *TreeViewColumn) {
+	var c_path *C.GtkTreePath
 
-// Unsupported : gtk_tree_view_get_dest_row_at_pos : unsupported parameter path : record with indirection level of 2
+	var c_focus_column *C.GtkTreeViewColumn
 
-// Unsupported : gtk_tree_view_get_drag_dest_row : unsupported parameter path : record with indirection level of 2
+	C.gtk_tree_view_get_cursor((*C.GtkTreeView)(recv.native), &c_path, &c_focus_column)
+
+	path := TreePathNewFromC(unsafe.Pointer(c_path))
+
+	focusColumn := TreeViewColumnNewFromC(unsafe.Pointer(c_focus_column))
+
+	return path, focusColumn
+}
+
+// Unsupported : gtk_tree_view_get_dest_row_at_pos : unsupported parameter pos : GtkTreeViewDropPosition* with indirection level of 1
+
+// Unsupported : gtk_tree_view_get_drag_dest_row : unsupported parameter pos : GtkTreeViewDropPosition* with indirection level of 1
 
 // GetEnableSearch is a wrapper around the C function gtk_tree_view_get_enable_search.
 func (recv *TreeView) GetEnableSearch() bool {
@@ -30465,7 +30520,33 @@ func (recv *TreeView) GetModel() *TreeModel {
 	return retGo
 }
 
-// Unsupported : gtk_tree_view_get_path_at_pos : unsupported parameter path : record with indirection level of 2
+// GetPathAtPos is a wrapper around the C function gtk_tree_view_get_path_at_pos.
+func (recv *TreeView) GetPathAtPos(x int32, y int32) (bool, *TreePath, *TreeViewColumn, int32, int32) {
+	c_x := (C.gint)(x)
+
+	c_y := (C.gint)(y)
+
+	var c_path *C.GtkTreePath
+
+	var c_column *C.GtkTreeViewColumn
+
+	var c_cell_x C.gint
+
+	var c_cell_y C.gint
+
+	retC := C.gtk_tree_view_get_path_at_pos((*C.GtkTreeView)(recv.native), c_x, c_y, &c_path, &c_column, &c_cell_x, &c_cell_y)
+	retGo := retC == C.TRUE
+
+	path := TreePathNewFromC(unsafe.Pointer(c_path))
+
+	column := TreeViewColumnNewFromC(unsafe.Pointer(c_column))
+
+	cellX := (int32)(c_cell_x)
+
+	cellY := (int32)(c_cell_y)
+
+	return retGo, path, column, cellX, cellY
+}
 
 // GetReorderable is a wrapper around the C function gtk_tree_view_get_reorderable.
 func (recv *TreeView) GetReorderable() bool {
@@ -34721,7 +34802,14 @@ func (recv *Widget) Destroy() {
 	return
 }
 
-// Unsupported : gtk_widget_destroyed : unsupported parameter widget_pointer : record with indirection level of 2
+// Destroyed is a wrapper around the C function gtk_widget_destroyed.
+func (recv *Widget) Destroyed(widgetPointer *Widget) {
+	c_widget_pointer := (**C.GtkWidget)(widgetPointer.ToC())
+
+	C.gtk_widget_destroyed((*C.GtkWidget)(recv.native), c_widget_pointer)
+
+	return
+}
 
 // Unsupported : gtk_drag_begin : unsupported parameter event : no type generator for Gdk.Event (GdkEvent*) for param event
 

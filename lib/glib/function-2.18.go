@@ -62,4 +62,20 @@ func Dpgettext2(domain string, context string, msgid string) string {
 	return retGo
 }
 
-// Unsupported : g_set_error_literal : unsupported parameter err : record with indirection level of 2
+// SetErrorLiteral is a wrapper around the C function g_set_error_literal.
+func SetErrorLiteral(domain Quark, code int32, message string) *Error {
+	var c_err *C.GError
+
+	c_domain := (C.GQuark)(domain)
+
+	c_code := (C.gint)(code)
+
+	c_message := C.CString(message)
+	defer C.free(unsafe.Pointer(c_message))
+
+	C.g_set_error_literal(&c_err, c_domain, c_code, c_message)
+
+	err := ErrorNewFromC(unsafe.Pointer(c_err))
+
+	return err
+}

@@ -372,19 +372,64 @@ func ConvertErrorQuark() Quark {
 
 // Unsupported : g_convert_with_iconv : unsupported parameter converter : Blacklisted record : GIConv
 
-// Unsupported : g_datalist_clear : unsupported parameter datalist : record with indirection level of 2
+// DatalistClear is a wrapper around the C function g_datalist_clear.
+func DatalistClear(datalist *Data) {
+	c_datalist := (**C.GData)(datalist.ToC())
 
-// Unsupported : g_datalist_foreach : unsupported parameter datalist : record with indirection level of 2
+	C.g_datalist_clear(c_datalist)
 
-// Unsupported : g_datalist_get_data : unsupported parameter datalist : record with indirection level of 2
+	return
+}
 
-// Unsupported : g_datalist_id_get_data : unsupported parameter datalist : record with indirection level of 2
+// Unsupported : g_datalist_foreach : unsupported parameter func : no type generator for DataForeachFunc (GDataForeachFunc) for param func
 
-// Unsupported : g_datalist_id_remove_no_notify : unsupported parameter datalist : record with indirection level of 2
+// DatalistGetData is a wrapper around the C function g_datalist_get_data.
+func DatalistGetData(datalist *Data, key string) uintptr {
+	c_datalist := (**C.GData)(datalist.ToC())
 
-// Unsupported : g_datalist_id_set_data_full : unsupported parameter datalist : record with indirection level of 2
+	c_key := C.CString(key)
+	defer C.free(unsafe.Pointer(c_key))
 
-// Unsupported : g_datalist_init : unsupported parameter datalist : record with indirection level of 2
+	retC := C.g_datalist_get_data(c_datalist, c_key)
+	retGo := (uintptr)(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// DatalistIdGetData is a wrapper around the C function g_datalist_id_get_data.
+func DatalistIdGetData(datalist *Data, keyId Quark) uintptr {
+	c_datalist := (**C.GData)(datalist.ToC())
+
+	c_key_id := (C.GQuark)(keyId)
+
+	retC := C.g_datalist_id_get_data(c_datalist, c_key_id)
+	retGo := (uintptr)(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// DatalistIdRemoveNoNotify is a wrapper around the C function g_datalist_id_remove_no_notify.
+func DatalistIdRemoveNoNotify(datalist *Data, keyId Quark) uintptr {
+	c_datalist := (**C.GData)(datalist.ToC())
+
+	c_key_id := (C.GQuark)(keyId)
+
+	retC := C.g_datalist_id_remove_no_notify(c_datalist, c_key_id)
+	retGo := (uintptr)(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// Unsupported : g_datalist_id_set_data_full : unsupported parameter destroy_func : no type generator for DestroyNotify (GDestroyNotify) for param destroy_func
+
+// DatalistInit is a wrapper around the C function g_datalist_init.
+func DatalistInit(datalist *Data) {
+	c_datalist := (**C.GData)(datalist.ToC())
+
+	C.g_datalist_init(c_datalist)
+
+	return
+}
 
 // DatasetDestroy is a wrapper around the C function g_dataset_destroy.
 func DatasetDestroy(datasetLocation uintptr) {
@@ -1425,7 +1470,18 @@ func PatternMatchString(pspec *PatternSpec, string string) bool {
 
 // Unsupported : g_printf_string_upper_bound : unsupported parameter args : no type generator for va_list (va_list) for param args
 
-// Unsupported : g_propagate_error : unsupported parameter dest : record with indirection level of 2
+// PropagateError is a wrapper around the C function g_propagate_error.
+func PropagateError(src *Error) *Error {
+	var c_dest *C.GError
+
+	c_src := (*C.GError)(src.ToC())
+
+	C.g_propagate_error(&c_dest, c_src)
+
+	dest := ErrorNewFromC(unsafe.Pointer(c_dest))
+
+	return dest
+}
 
 // Unsupported : g_qsort_with_data : unsupported parameter compare_func : no type generator for CompareDataFunc (GCompareDataFunc) for param compare_func
 
@@ -1557,7 +1613,7 @@ func ReturnIfFailWarning(logDomain string, prettyFunction string, expression str
 	return
 }
 
-// Unsupported : g_set_error : unsupported parameter err : record with indirection level of 2
+// Unsupported : g_set_error : unsupported parameter ... : varargs
 
 // SetPrgname is a wrapper around the C function g_set_prgname.
 func SetPrgname(prgname string) {
@@ -2257,13 +2313,46 @@ func TimeoutSourceNew(interval uint32) *Source {
 	return retGo
 }
 
-// Unsupported : g_trash_stack_height : unsupported parameter stack_p : record with indirection level of 2
+// TrashStackHeight is a wrapper around the C function g_trash_stack_height.
+func TrashStackHeight(stackP *TrashStack) uint32 {
+	c_stack_p := (**C.GTrashStack)(stackP.ToC())
 
-// Unsupported : g_trash_stack_peek : unsupported parameter stack_p : record with indirection level of 2
+	retC := C.g_trash_stack_height(c_stack_p)
+	retGo := (uint32)(retC)
 
-// Unsupported : g_trash_stack_pop : unsupported parameter stack_p : record with indirection level of 2
+	return retGo
+}
 
-// Unsupported : g_trash_stack_push : unsupported parameter stack_p : record with indirection level of 2
+// TrashStackPeek is a wrapper around the C function g_trash_stack_peek.
+func TrashStackPeek(stackP *TrashStack) uintptr {
+	c_stack_p := (**C.GTrashStack)(stackP.ToC())
+
+	retC := C.g_trash_stack_peek(c_stack_p)
+	retGo := (uintptr)(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// TrashStackPop is a wrapper around the C function g_trash_stack_pop.
+func TrashStackPop(stackP *TrashStack) uintptr {
+	c_stack_p := (**C.GTrashStack)(stackP.ToC())
+
+	retC := C.g_trash_stack_pop(c_stack_p)
+	retGo := (uintptr)(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// TrashStackPush is a wrapper around the C function g_trash_stack_push.
+func TrashStackPush(stackP *TrashStack, dataP uintptr) {
+	c_stack_p := (**C.GTrashStack)(stackP.ToC())
+
+	c_data_p := (C.gpointer)(dataP)
+
+	C.g_trash_stack_push(c_stack_p, c_data_p)
+
+	return
+}
 
 // TryMalloc is a wrapper around the C function g_try_malloc.
 func TryMalloc(nBytes uint64) uintptr {

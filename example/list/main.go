@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"github.com/pekim/gobbi/lib/gobject"
 	"github.com/pekim/gobbi/lib/gtk"
 	"github.com/pekim/gobbi/lib/pango"
@@ -54,6 +55,13 @@ func createTree() *gtk.TreeView {
 	addColumn(tree, "number", COL_NUMBER, -1)
 	addColumn(tree, "text", COL_TEXT, COL_COLOUR)
 	addColumn(tree, "length of text", COL_LENGTH, -1)
+
+	selection := tree.GetSelection()
+	selection.SetMode(gtk.GTK_SELECTION_SINGLE)
+	selection.ConnectChanged(func() {
+		//selection.gets
+		fmt.Println("selection change")
+	})
 
 	return tree
 }

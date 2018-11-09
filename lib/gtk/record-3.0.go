@@ -4,6 +4,7 @@
 package gtk
 
 import (
+	cairo "github.com/pekim/gobbi/lib/cairo"
 	gdk "github.com/pekim/gobbi/lib/gdk"
 	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
@@ -78,7 +79,19 @@ func (recv *Gradient) Ref() *Gradient {
 	return retGo
 }
 
-// Unsupported : gtk_gradient_resolve : unsupported parameter resolved_gradient : record with indirection level of 2
+// Resolve is a wrapper around the C function gtk_gradient_resolve.
+func (recv *Gradient) Resolve(props *StyleProperties) (bool, *cairo.Pattern) {
+	c_props := (*C.GtkStyleProperties)(props.ToC())
+
+	var c_resolved_gradient *C.cairo_pattern_t
+
+	retC := C.gtk_gradient_resolve((*C.GtkGradient)(recv.native), c_props, &c_resolved_gradient)
+	retGo := retC == C.TRUE
+
+	resolvedGradient := cairo.PatternNewFromC(unsafe.Pointer(c_resolved_gradient))
+
+	return retGo, resolvedGradient
+}
 
 // Unref is a wrapper around the C function gtk_gradient_unref.
 func (recv *Gradient) Unref() {

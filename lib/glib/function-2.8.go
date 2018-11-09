@@ -40,11 +40,37 @@ func Chdir(path string) int32 {
 	return retGo
 }
 
-// Unsupported : g_datalist_get_flags : unsupported parameter datalist : record with indirection level of 2
+// DatalistGetFlags is a wrapper around the C function g_datalist_get_flags.
+func DatalistGetFlags(datalist *Data) uint32 {
+	c_datalist := (**C.GData)(datalist.ToC())
 
-// Unsupported : g_datalist_set_flags : unsupported parameter datalist : record with indirection level of 2
+	retC := C.g_datalist_get_flags(c_datalist)
+	retGo := (uint32)(retC)
 
-// Unsupported : g_datalist_unset_flags : unsupported parameter datalist : record with indirection level of 2
+	return retGo
+}
+
+// DatalistSetFlags is a wrapper around the C function g_datalist_set_flags.
+func DatalistSetFlags(datalist *Data, flags uint32) {
+	c_datalist := (**C.GData)(datalist.ToC())
+
+	c_flags := (C.guint)(flags)
+
+	C.g_datalist_set_flags(c_datalist, c_flags)
+
+	return
+}
+
+// DatalistUnsetFlags is a wrapper around the C function g_datalist_unset_flags.
+func DatalistUnsetFlags(datalist *Data, flags uint32) {
+	c_datalist := (**C.GData)(datalist.ToC())
+
+	c_flags := (C.guint)(flags)
+
+	C.g_datalist_unset_flags(c_datalist, c_flags)
+
+	return
+}
 
 // FileSetContents is a wrapper around the C function g_file_set_contents.
 func FileSetContents(filename string, contents []uint8) (bool, error) {

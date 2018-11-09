@@ -113,13 +113,45 @@ func (recv *IconView) CreateDragIcon(path *TreePath) *cairo.Surface {
 
 // Unsupported : gtk_icon_view_enable_model_drag_source : unsupported parameter targets :
 
-// Unsupported : gtk_icon_view_get_cursor : unsupported parameter path : record with indirection level of 2
+// GetCursor is a wrapper around the C function gtk_icon_view_get_cursor.
+func (recv *IconView) GetCursor() (bool, *TreePath, *CellRenderer) {
+	var c_path *C.GtkTreePath
 
-// Unsupported : gtk_icon_view_get_dest_item_at_pos : unsupported parameter path : record with indirection level of 2
+	var c_cell *C.GtkCellRenderer
 
-// Unsupported : gtk_icon_view_get_drag_dest_item : unsupported parameter path : record with indirection level of 2
+	retC := C.gtk_icon_view_get_cursor((*C.GtkIconView)(recv.native), &c_path, &c_cell)
+	retGo := retC == C.TRUE
 
-// Unsupported : gtk_icon_view_get_item_at_pos : unsupported parameter path : record with indirection level of 2
+	path := TreePathNewFromC(unsafe.Pointer(c_path))
+
+	cell := CellRendererNewFromC(unsafe.Pointer(c_cell))
+
+	return retGo, path, cell
+}
+
+// Unsupported : gtk_icon_view_get_dest_item_at_pos : unsupported parameter pos : GtkIconViewDropPosition* with indirection level of 1
+
+// Unsupported : gtk_icon_view_get_drag_dest_item : unsupported parameter pos : GtkIconViewDropPosition* with indirection level of 1
+
+// GetItemAtPos is a wrapper around the C function gtk_icon_view_get_item_at_pos.
+func (recv *IconView) GetItemAtPos(x int32, y int32) (bool, *TreePath, *CellRenderer) {
+	c_x := (C.gint)(x)
+
+	c_y := (C.gint)(y)
+
+	var c_path *C.GtkTreePath
+
+	var c_cell *C.GtkCellRenderer
+
+	retC := C.gtk_icon_view_get_item_at_pos((*C.GtkIconView)(recv.native), c_x, c_y, &c_path, &c_cell)
+	retGo := retC == C.TRUE
+
+	path := TreePathNewFromC(unsafe.Pointer(c_path))
+
+	cell := CellRendererNewFromC(unsafe.Pointer(c_cell))
+
+	return retGo, path, cell
+}
 
 // GetReorderable is a wrapper around the C function gtk_icon_view_get_reorderable.
 func (recv *IconView) GetReorderable() bool {
@@ -129,7 +161,21 @@ func (recv *IconView) GetReorderable() bool {
 	return retGo
 }
 
-// Unsupported : gtk_icon_view_get_visible_range : unsupported parameter start_path : record with indirection level of 2
+// GetVisibleRange is a wrapper around the C function gtk_icon_view_get_visible_range.
+func (recv *IconView) GetVisibleRange() (bool, *TreePath, *TreePath) {
+	var c_start_path *C.GtkTreePath
+
+	var c_end_path *C.GtkTreePath
+
+	retC := C.gtk_icon_view_get_visible_range((*C.GtkIconView)(recv.native), &c_start_path, &c_end_path)
+	retGo := retC == C.TRUE
+
+	startPath := TreePathNewFromC(unsafe.Pointer(c_start_path))
+
+	endPath := TreePathNewFromC(unsafe.Pointer(c_end_path))
+
+	return retGo, startPath, endPath
+}
 
 // ScrollToPath is a wrapper around the C function gtk_icon_view_scroll_to_path.
 func (recv *IconView) ScrollToPath(path *TreePath, useAlign bool, rowAlign float32, colAlign float32) {
@@ -307,7 +353,21 @@ func (recv *ToolButton) SetIconName(iconName string) {
 	return
 }
 
-// Unsupported : gtk_tree_view_get_visible_range : unsupported parameter start_path : record with indirection level of 2
+// GetVisibleRange is a wrapper around the C function gtk_tree_view_get_visible_range.
+func (recv *TreeView) GetVisibleRange() (bool, *TreePath, *TreePath) {
+	var c_start_path *C.GtkTreePath
+
+	var c_end_path *C.GtkTreePath
+
+	retC := C.gtk_tree_view_get_visible_range((*C.GtkTreeView)(recv.native), &c_start_path, &c_end_path)
+	retGo := retC == C.TRUE
+
+	startPath := TreePathNewFromC(unsafe.Pointer(c_start_path))
+
+	endPath := TreePathNewFromC(unsafe.Pointer(c_end_path))
+
+	return retGo, startPath, endPath
+}
 
 // QueueResize is a wrapper around the C function gtk_tree_view_column_queue_resize.
 func (recv *TreeViewColumn) QueueResize() {

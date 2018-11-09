@@ -2822,7 +2822,7 @@ func StatusIconNewFromStock(stockId string) *StatusIcon {
 	return retGo
 }
 
-// Unsupported : gtk_status_icon_get_geometry : unsupported parameter screen : record with indirection level of 2
+// Unsupported : gtk_status_icon_get_geometry : unsupported parameter area : Blacklisted record : GdkRectangle
 
 // GetIconName is a wrapper around the C function gtk_status_icon_get_icon_name.
 func (recv *StatusIcon) GetIconName() string {

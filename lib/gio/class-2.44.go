@@ -56,7 +56,30 @@ func (recv *Application) UnbindBusyProperty(object uintptr, property string) {
 	return
 }
 
-// Unsupported : g_file_enumerator_iterate : unsupported parameter out_info : record with indirection level of 2
+// Iterate is a wrapper around the C function g_file_enumerator_iterate.
+func (recv *FileEnumerator) Iterate(cancellable *Cancellable) (bool, *FileInfo, *File, error) {
+	var c_out_info *C.GFileInfo
+
+	var c_out_child *C.GFile
+
+	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_file_enumerator_iterate((*C.GFileEnumerator)(recv.native), &c_out_info, &c_out_child, c_cancellable, &cThrowableError)
+	retGo := retC == C.TRUE
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	outInfo := FileInfoNewFromC(unsafe.Pointer(c_out_info))
+
+	outChild := FileNewFromC(unsafe.Pointer(c_out_child))
+
+	return retGo, outInfo, outChild, goThrowableError
+}
 
 // Unsupported : g_input_stream_read_all_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 

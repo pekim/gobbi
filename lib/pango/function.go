@@ -243,7 +243,40 @@ func LanguageFromString(language string) *Language {
 
 // Unsupported : pango_module_register : unsupported parameter module : Blacklisted record : PangoIncludedModule
 
-// Unsupported : pango_parse_markup : unsupported parameter attr_list : record with indirection level of 2
+// ParseMarkup is a wrapper around the C function pango_parse_markup.
+func ParseMarkup(markupText string, length int32, accelMarker rune) (bool, *AttrList, string, rune, error) {
+	c_markup_text := C.CString(markupText)
+	defer C.free(unsafe.Pointer(c_markup_text))
+
+	c_length := (C.int)(length)
+
+	c_accel_marker := (C.gunichar)(accelMarker)
+
+	var c_attr_list *C.PangoAttrList
+
+	var c_text *C.char
+
+	var c_accel_char C.gunichar
+
+	var cThrowableError *C.GError
+
+	retC := C.pango_parse_markup(c_markup_text, c_length, c_accel_marker, &c_attr_list, &c_text, &c_accel_char, &cThrowableError)
+	retGo := retC == C.TRUE
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	attrList := AttrListNewFromC(unsafe.Pointer(c_attr_list))
+
+	text := C.GoString(c_text)
+	defer C.free(unsafe.Pointer(c_text))
+
+	accelChar := (rune)(c_accel_char)
+
+	return retGo, attrList, text, accelChar, goThrowableError
+}
 
 // Unsupported : pango_parse_stretch : unsupported parameter stretch : PangoStretch* with indirection level of 1
 

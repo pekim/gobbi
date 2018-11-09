@@ -59,4 +59,4 @@ func PixbufNewFromStreamAtScale(stream *gio.InputStream, width int32, height int
 	return retGo, goThrowableError
 }
 
-// Unsupported : gdk_pixbuf_save_to_stream : unsupported parameter error : record with indirection level of 2
+// Unsupported : gdk_pixbuf_save_to_stream : unsupported parameter ... : varargs

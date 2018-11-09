@@ -51,7 +51,24 @@ func (recv *Cursor) GetSurface() (*cairo.Surface, float64, float64) {
 	return retGo, xHot, yHot
 }
 
-// Unsupported : gdk_device_get_position_double : unsupported parameter screen : record with indirection level of 2
+// GetPositionDouble is a wrapper around the C function gdk_device_get_position_double.
+func (recv *Device) GetPositionDouble() (*Screen, float64, float64) {
+	var c_screen *C.GdkScreen
+
+	var c_x C.gdouble
+
+	var c_y C.gdouble
+
+	C.gdk_device_get_position_double((*C.GdkDevice)(recv.native), &c_screen, &c_x, &c_y)
+
+	screen := ScreenNewFromC(unsafe.Pointer(c_screen))
+
+	x := (float64)(c_x)
+
+	y := (float64)(c_y)
+
+	return screen, x, y
+}
 
 // GetMonitorScaleFactor is a wrapper around the C function gdk_screen_get_monitor_scale_factor.
 func (recv *Screen) GetMonitorScaleFactor(monitorNum int32) int32 {

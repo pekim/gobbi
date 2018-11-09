@@ -33,7 +33,7 @@ func (t *TypeGeneratorRecord) isSupportedAsParam(direction string) (supported bo
 		return false, fmt.Sprintf("Blacklisted record : %s", t.record.CType)
 	}
 
-	if t.typ.indirectLevel > 1 {
+	if t.typ.indirectLevel > 2 {
 		return false, fmt.Sprintf("record with indirection level of %d",
 			t.typ.indirectLevel)
 	}
@@ -147,8 +147,13 @@ func (t *TypeGeneratorRecord) generateParamOutCVar(g *jen.Group, cVarName string
 }
 
 func (t *TypeGeneratorRecord) generateReturnFunctionDeclaration(g *jen.Group) {
+	indirectLevel := t.typ.indirectLevel
+	if indirectLevel == 2 {
+		indirectLevel = 1
+	}
+
 	g.
-		Op(strings.Repeat("*", t.typ.indirectLevel)).
+		Op(strings.Repeat("*", indirectLevel)).
 		Do(t.typ.qname.generate)
 }
 
