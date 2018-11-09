@@ -463,8 +463,6 @@ func CclosureMarshalVoidVoid(closure *Closure, returnValue *Value, nParamValues 
 
 // Unsupported : g_cclosure_new_swap : unsupported parameter callback_func : no type generator for Callback (GCallback) for param callback_func
 
-// Unsupported : g_clear_object : unsupported parameter object_ptr : record with indirection level of 2
-
 // EnumCompleteTypeInfo is a wrapper around the C function g_enum_complete_type_info.
 func EnumCompleteTypeInfo(gEnumType Type, constValues *EnumValue) *TypeInfo {
 	c_g_enum_type := (C.GType)(gEnumType)
@@ -619,8 +617,6 @@ func GtypeGetType() Type {
 
 // Unsupported : g_param_spec_float : return type : Blacklisted record : GParamSpec
 
-// Unsupported : g_param_spec_gtype : return type : Blacklisted record : GParamSpec
-
 // Unsupported : g_param_spec_int : return type : Blacklisted record : GParamSpec
 
 // Unsupported : g_param_spec_int64 : return type : Blacklisted record : GParamSpec
@@ -628,8 +624,6 @@ func GtypeGetType() Type {
 // Unsupported : g_param_spec_long : return type : Blacklisted record : GParamSpec
 
 // Unsupported : g_param_spec_object : return type : Blacklisted record : GParamSpec
-
-// Unsupported : g_param_spec_override : unsupported parameter overridden : Blacklisted record : GParamSpec
 
 // Unsupported : g_param_spec_param : return type : Blacklisted record : GParamSpec
 
@@ -659,8 +653,6 @@ func ParamSpecPoolNew(typePrefixing bool) *ParamSpecPool {
 // Unsupported : g_param_spec_unichar : return type : Blacklisted record : GParamSpec
 
 // Unsupported : g_param_spec_value_array : unsupported parameter element_spec : Blacklisted record : GParamSpec
-
-// Unsupported : g_param_spec_variant : unsupported parameter type : Blacklisted record : GVariantType
 
 // ParamTypeRegisterStatic is a wrapper around the C function g_param_type_register_static.
 func ParamTypeRegisterStatic(name string, pspecInfo *ParamSpecTypeInfo) Type {
@@ -699,8 +691,6 @@ func PointerTypeRegisterStatic(name string) Type {
 // Unsupported : g_signal_add_emission_hook : unsupported parameter hook_func : no type generator for SignalEmissionHook (GSignalEmissionHook) for param hook_func
 
 // Unsupported : g_signal_chain_from_overridden : unsupported parameter instance_and_params :
-
-// Unsupported : g_signal_chain_from_overridden_handler : unsupported parameter ... : varargs
 
 // SignalConnectClosure is a wrapper around the C function g_signal_connect_closure.
 func SignalConnectClosure(instance uintptr, detailedSignal string, closure *Closure, after bool) uint64 {
@@ -947,8 +937,6 @@ func SignalName(signalId uint32) string {
 
 // Unsupported : g_signal_new : unsupported parameter accumulator : no type generator for SignalAccumulator (GSignalAccumulator) for param accumulator
 
-// Unsupported : g_signal_new_class_handler : unsupported parameter class_handler : no type generator for Callback (GCallback) for param class_handler
-
 // Unsupported : g_signal_new_valist : unsupported parameter accumulator : no type generator for SignalAccumulator (GSignalAccumulator) for param accumulator
 
 // Unsupported : g_signal_newv : unsupported parameter accumulator : no type generator for SignalAccumulator (GSignalAccumulator) for param accumulator
@@ -965,8 +953,6 @@ func SignalOverrideClassClosure(signalId uint32, instanceType Type, classClosure
 
 	return
 }
-
-// Unsupported : g_signal_override_class_handler : unsupported parameter class_handler : no type generator for Callback (GCallback) for param class_handler
 
 // SignalParseName is a wrapper around the C function g_signal_parse_name.
 func SignalParseName(detailedSignal string, itype Type, forceDetailQuark bool) (bool, uint32, glib.Quark) {
@@ -1015,8 +1001,6 @@ func SignalRemoveEmissionHook(signalId uint32, hookId uint64) {
 
 	return
 }
-
-// Unsupported : g_signal_set_va_marshaller : unsupported parameter va_marshaller : no type generator for SignalCVaMarshaller (GSignalCVaMarshaller) for param va_marshaller
 
 // SignalStopEmission is a wrapper around the C function g_signal_stop_emission.
 func SignalStopEmission(instance uintptr, signalId uint32, detail glib.Quark) {
@@ -1099,8 +1083,6 @@ func TypeAddInstancePrivate(classType Type, privateSize uint64) int32 {
 
 	return retGo
 }
-
-// Unsupported : g_type_add_interface_check : unsupported parameter check_func : no type generator for TypeInterfaceCheckFunc (GTypeInterfaceCheckFunc) for param check_func
 
 // Unsupported : g_type_add_interface_dynamic : unsupported parameter plugin : no type generator for TypePlugin (GTypePlugin*) for param plugin
 
@@ -1365,8 +1347,6 @@ func TypeInterfacePeek(instanceClass uintptr, ifaceType Type) uintptr {
 	return retGo
 }
 
-// Unsupported : g_type_interface_prerequisites : no return type
-
 // Unsupported : g_type_interfaces : no return type
 
 // TypeIsA is a wrapper around the C function g_type_is_a.
@@ -1494,11 +1474,7 @@ func TypeRegisterStatic(parentType Type, typeName string, info *TypeInfo, flags 
 	return retGo
 }
 
-// Unsupported : g_type_register_static_simple : unsupported parameter class_init : no type generator for ClassInitFunc (GClassInitFunc) for param class_init
-
 // Unsupported : g_type_remove_class_cache_func : unsupported parameter cache_func : no type generator for TypeClassCacheFunc (GTypeClassCacheFunc) for param cache_func
-
-// Unsupported : g_type_remove_interface_check : unsupported parameter check_func : no type generator for TypeInterfaceCheckFunc (GTypeInterfaceCheckFunc) for param check_func
 
 // TypeSetQdata is a wrapper around the C function g_type_set_qdata.
 func TypeSetQdata(type_ Type, quark glib.Quark, data uintptr) {

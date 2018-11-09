@@ -9,9 +9,3 @@ package pango
 import "C"
 
 const ATTR_INDEX_FROM_TEXT_BEGINNING int = C.PANGO_ATTR_INDEX_FROM_TEXT_BEGINNING
-
-// Unsupported : type Glyph for GLYPH_EMPTY
-
-// Unsupported : type Glyph for GLYPH_INVALID_INPUT
-
-// Unsupported : type Glyph for GLYPH_UNKNOWN_FLAG

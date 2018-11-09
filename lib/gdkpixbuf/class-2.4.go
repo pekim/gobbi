@@ -68,5 +68,3 @@ func PixbufLoaderNewWithMimeType(mimeType string) (*PixbufLoader, error) {
 
 	return retGo, goThrowableError
 }
-
-// Unsupported : PixbufSimpleAnimIter : no CType

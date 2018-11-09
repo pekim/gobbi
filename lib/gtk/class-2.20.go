@@ -71,8 +71,6 @@ func (recv *Dialog) GetWidgetForResponse(responseId int32) *Widget {
 
 // Unsupported signal 'preedit-changed' for Entry : unsupported parameter preedit : type utf8 :
 
-// Unsupported : EntryIconAccessible : no CType
-
 // Unsupported : gtk_file_chooser_dialog_new : unsupported parameter ... : varargs
 
 // Unsupported : gtk_file_filter_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant

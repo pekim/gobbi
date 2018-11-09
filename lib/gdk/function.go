@@ -27,8 +27,6 @@ func AddOptionEntriesLibgtkOnly(group *glib.OptionGroup) {
 
 // Unsupported : gdk_atom_intern : return type : Blacklisted record : GdkAtom
 
-// Unsupported : gdk_atom_intern_static_string : return type : Blacklisted record : GdkAtom
-
 // Beep is a wrapper around the C function gdk_beep.
 func Beep() {
 	C.gdk_beep()
@@ -37,8 +35,6 @@ func Beep() {
 }
 
 // Unsupported : gdk_cairo_get_clip_rectangle : unsupported parameter rect : Blacklisted record : GdkRectangle
-
-// Unsupported : gdk_cairo_rectangle : unsupported parameter rectangle : Blacklisted record : GdkRectangle
 
 // CairoRegionCreateFromSurface is a wrapper around the C function gdk_cairo_region_create_from_surface.
 func CairoRegionCreateFromSurface(surface *cairo.Surface) *cairo.Region {
@@ -99,8 +95,6 @@ func DragDrop(context *DragContext, time uint32) {
 
 	return
 }
-
-// Unsupported : gdk_drag_find_window_for_screen : unsupported parameter dest_window : record with indirection level of 2
 
 // Unsupported : gdk_drag_get_selection : return type : Blacklisted record : GdkAtom
 
@@ -189,12 +183,6 @@ func ErrorTrapPush() {
 // Unsupported : gdk_event_handler_set : unsupported parameter func : no type generator for EventFunc (GdkEventFunc) for param func
 
 // Unsupported : gdk_event_peek : no return generator
-
-// Unsupported : gdk_events_get_angle : unsupported parameter event1 : no type generator for Event (GdkEvent*) for param event1
-
-// Unsupported : gdk_events_get_center : unsupported parameter event1 : no type generator for Event (GdkEvent*) for param event1
-
-// Unsupported : gdk_events_get_distance : unsupported parameter event1 : no type generator for Event (GdkEvent*) for param event1
 
 // EventsPending is a wrapper around the C function gdk_events_pending.
 func EventsPending() bool {
@@ -559,17 +547,11 @@ func PreParseLibgtkOnly() {
 
 // Unsupported : gdk_selection_owner_get : unsupported parameter selection : Blacklisted record : GdkAtom
 
-// Unsupported : gdk_selection_owner_get_for_display : unsupported parameter selection : Blacklisted record : GdkAtom
-
 // Unsupported : gdk_selection_owner_set : unsupported parameter selection : Blacklisted record : GdkAtom
-
-// Unsupported : gdk_selection_owner_set_for_display : unsupported parameter selection : Blacklisted record : GdkAtom
 
 // Unsupported : gdk_selection_property_get : unsupported parameter data : guchar** with indirection level of 2
 
 // Unsupported : gdk_selection_send_notify : unsupported parameter selection : Blacklisted record : GdkAtom
-
-// Unsupported : gdk_selection_send_notify_for_display : unsupported parameter selection : Blacklisted record : GdkAtom
 
 // SetDoubleClickTime is a wrapper around the C function gdk_set_double_click_time.
 func SetDoubleClickTime(msec uint32) {
@@ -615,20 +597,6 @@ func SettingGet(name string, value *gobject.Value) bool {
 
 // Blacklisted : gdk_synthesize_window_state
 
-// Unsupported : gdk_text_property_to_utf8_list_for_display : unsupported parameter encoding : Blacklisted record : GdkAtom
-
-// Unsupported : gdk_threads_add_idle : unsupported parameter function : no type generator for GLib.SourceFunc (GSourceFunc) for param function
-
-// Unsupported : gdk_threads_add_idle_full : unsupported parameter function : no type generator for GLib.SourceFunc (GSourceFunc) for param function
-
-// Unsupported : gdk_threads_add_timeout : unsupported parameter function : no type generator for GLib.SourceFunc (GSourceFunc) for param function
-
-// Unsupported : gdk_threads_add_timeout_full : unsupported parameter function : no type generator for GLib.SourceFunc (GSourceFunc) for param function
-
-// Unsupported : gdk_threads_add_timeout_seconds : unsupported parameter function : no type generator for GLib.SourceFunc (GSourceFunc) for param function
-
-// Unsupported : gdk_threads_add_timeout_seconds_full : unsupported parameter function : no type generator for GLib.SourceFunc (GSourceFunc) for param function
-
 // ThreadsEnter is a wrapper around the C function gdk_threads_enter.
 func ThreadsEnter() {
 	C.gdk_threads_enter()
@@ -649,8 +617,6 @@ func ThreadsLeave() {
 
 	return
 }
-
-// Unsupported : gdk_threads_set_lock_functions : unsupported parameter enter_fn : no type generator for GObject.Callback (GCallback) for param enter_fn
 
 // UnicodeToKeyval is a wrapper around the C function gdk_unicode_to_keyval.
 func UnicodeToKeyval(wc uint32) uint32 {

@@ -674,8 +674,6 @@ func (recv *Entry) SetInnerBorder(border *Border) {
 	return
 }
 
-// Unsupported : EntryIconAccessible : no CType
-
 // GetFocusOnClick is a wrapper around the C function gtk_file_chooser_button_get_focus_on_click.
 func (recv *FileChooserButton) GetFocusOnClick() bool {
 	retC := C.gtk_file_chooser_button_get_focus_on_click((*C.GtkFileChooserButton)(recv.native))

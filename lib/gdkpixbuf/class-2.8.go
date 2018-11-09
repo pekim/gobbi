@@ -40,5 +40,3 @@ func (recv *PixbufSimpleAnim) AddFrame(pixbuf *Pixbuf) {
 
 	return
 }
-
-// Unsupported : PixbufSimpleAnimIter : no CType

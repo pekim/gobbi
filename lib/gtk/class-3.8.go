@@ -38,8 +38,6 @@ func (recv *Builder) ExposeObject(name string, object *gobject.Object) {
 
 // Unsupported : gtk_dialog_new_with_buttons : unsupported parameter ... : varargs
 
-// Unsupported : EntryIconAccessible : no CType
-
 // Unsupported : gtk_file_chooser_dialog_new : unsupported parameter ... : varargs
 
 // Unsupported : gtk_file_filter_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant

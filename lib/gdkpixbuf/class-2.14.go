@@ -68,5 +68,3 @@ func PixbufNewFromStreamAtScale(stream *gio.InputStream, width int32, height int
 // Unsupported : gdk_pixbuf_save_to_stream : unsupported parameter error : record with indirection level of 2
 
 // Unsupported : gdk_pixbuf_animation_new_from_stream_finish : unsupported parameter async_result : no type generator for Gio.AsyncResult (GAsyncResult*) for param async_result
-
-// Unsupported : PixbufSimpleAnimIter : no CType

@@ -55,5 +55,3 @@ func (recv *PixbufLoader) SetSize(width int32, height int32) {
 
 	return
 }
-
-// Unsupported : PixbufSimpleAnimIter : no CType

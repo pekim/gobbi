@@ -227,8 +227,6 @@ func entrycompletion_noMatchesHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
-// Unsupported : EntryIconAccessible : no CType
-
 // GetPropagationPhase is a wrapper around the C function gtk_event_controller_get_propagation_phase.
 func (recv *EventController) GetPropagationPhase() PropagationPhase {
 	retC := C.gtk_event_controller_get_propagation_phase((*C.GtkEventController)(recv.native))

@@ -37,5 +37,3 @@ func (recv *PixbufLoader) WriteBytes(buffer *glib.Bytes) (bool, error) {
 
 	return retGo, goThrowableError
 }
-
-// Unsupported : PixbufSimpleAnimIter : no CType

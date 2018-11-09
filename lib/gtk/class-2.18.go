@@ -308,8 +308,6 @@ func (recv *EntryBuffer) SetText(chars string, nChars int32) {
 	return
 }
 
-// Unsupported : EntryIconAccessible : no CType
-
 // Unsupported : gtk_file_chooser_dialog_new : unsupported parameter ... : varargs
 
 // Unsupported : gtk_file_filter_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant

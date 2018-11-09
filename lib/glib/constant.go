@@ -60,31 +60,13 @@ const LOG_FATAL_MASK int = C.G_LOG_FATAL_MASK
 const LOG_LEVEL_USER_SHIFT int = C.G_LOG_LEVEL_USER_SHIFT
 const MAJOR_VERSION int = C.GLIB_MAJOR_VERSION
 
-// Unsupported : type gint16 for MAXINT16
-
-// Unsupported : type gint32 for MAXINT32
-
 // Unsupported : type gint64 for MAXINT64
-
-// Unsupported : type gint8 for MAXINT8
-
-// Unsupported : type guint16 for MAXUINT16
-
-// Unsupported : type guint32 for MAXUINT32
 
 // Unsupported : type guint64 for MAXUINT64
 
-// Unsupported : type guint8 for MAXUINT8
-
 const MICRO_VERSION int = C.GLIB_MICRO_VERSION
 
-// Unsupported : type gint16 for MININT16
-
-// Unsupported : type gint32 for MININT32
-
 // Unsupported : type gint64 for MININT64
-
-// Unsupported : type gint8 for MININT8
 
 const MINOR_VERSION int = C.GLIB_MINOR_VERSION
 const MODULE_SUFFIX string = C.G_MODULE_SUFFIX
@@ -118,17 +100,6 @@ const SYSDEF_AF_UNIX int = C.GLIB_SYSDEF_AF_UNIX
 const SYSDEF_MSG_DONTROUTE int = C.GLIB_SYSDEF_MSG_DONTROUTE
 const SYSDEF_MSG_OOB int = C.GLIB_SYSDEF_MSG_OOB
 const SYSDEF_MSG_PEEK int = C.GLIB_SYSDEF_MSG_PEEK
-
-// Unsupported : type gint64 for TIME_SPAN_DAY
-
-// Unsupported : type gint64 for TIME_SPAN_HOUR
-
-// Unsupported : type gint64 for TIME_SPAN_MILLISECOND
-
-// Unsupported : type gint64 for TIME_SPAN_MINUTE
-
-// Unsupported : type gint64 for TIME_SPAN_SECOND
-
 const URI_RESERVED_CHARS_GENERIC_DELIMITERS string = C.G_URI_RESERVED_CHARS_GENERIC_DELIMITERS
 const URI_RESERVED_CHARS_SUBCOMPONENT_DELIMITERS string = C.G_URI_RESERVED_CHARS_SUBCOMPONENT_DELIMITERS
 const USEC_PER_SEC int = C.G_USEC_PER_SEC

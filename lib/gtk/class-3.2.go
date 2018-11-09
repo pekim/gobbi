@@ -258,8 +258,6 @@ func (recv *Entry) SetPlaceholderText(text string) {
 	return
 }
 
-// Unsupported : EntryIconAccessible : no CType
-
 // GetResizeToplevel is a wrapper around the C function gtk_expander_get_resize_toplevel.
 func (recv *Expander) GetResizeToplevel() bool {
 	retC := C.gtk_expander_get_resize_toplevel((*C.GtkExpander)(recv.native))

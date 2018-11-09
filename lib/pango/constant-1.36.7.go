@@ -9,9 +9,3 @@ package pango
 import "C"
 
 const ANALYSIS_FLAG_IS_ELLIPSIS int = C.PANGO_ANALYSIS_FLAG_IS_ELLIPSIS
-
-// Unsupported : type Glyph for GLYPH_EMPTY
-
-// Unsupported : type Glyph for GLYPH_INVALID_INPUT
-
-// Unsupported : type Glyph for GLYPH_UNKNOWN_FLAG

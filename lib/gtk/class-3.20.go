@@ -85,8 +85,6 @@ func (recv *ApplicationWindow) SetHelpOverlay(helpOverlay *ShortcutsWindow) {
 
 // Unsupported : gtk_dialog_new_with_buttons : unsupported parameter ... : varargs
 
-// Unsupported : EntryIconAccessible : no CType
-
 // Unsupported : gtk_file_chooser_dialog_new : unsupported parameter ... : varargs
 
 // FileChooserNative is a wrapper around the C record GtkFileChooserNative.

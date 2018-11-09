@@ -73,5 +73,3 @@ func (recv *Pixbuf) GetByteLength() uint64 {
 // Unsupported : gdk_pixbuf_get_pixels_with_length : no return type
 
 // Unsupported : gdk_pixbuf_animation_new_from_stream_finish : unsupported parameter async_result : no type generator for Gio.AsyncResult (GAsyncResult*) for param async_result
-
-// Unsupported : PixbufSimpleAnimIter : no CType

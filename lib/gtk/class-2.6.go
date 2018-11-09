@@ -640,8 +640,6 @@ func (recv *EntryCompletion) SetPopupCompletion(popupCompletion bool) {
 	return
 }
 
-// Unsupported : EntryIconAccessible : no CType
-
 // FileChooserButtonNew is a wrapper around the C function gtk_file_chooser_button_new.
 func FileChooserButtonNew(title string, action FileChooserAction) *FileChooserButton {
 	c_title := C.CString(title)

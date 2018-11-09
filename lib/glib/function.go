@@ -283,30 +283,6 @@ func AssertionMessageExpr(domain string, file string, line int32, func_ string, 
 
 // Unsupported : g_atexit : unsupported parameter func : no type generator for VoidFunc (GVoidFunc) for param func
 
-// Unsupported : g_atomic_pointer_add : unsupported parameter atomic : no type generator for gpointer (void*) for param atomic
-
-// Unsupported : g_atomic_pointer_and : unsupported parameter atomic : no type generator for gpointer (void*) for param atomic
-
-// Unsupported : g_atomic_pointer_compare_and_exchange : unsupported parameter atomic : no type generator for gpointer (void*) for param atomic
-
-// Unsupported : g_atomic_pointer_get : unsupported parameter atomic : no type generator for gpointer (void*) for param atomic
-
-// Unsupported : g_atomic_pointer_or : unsupported parameter atomic : no type generator for gpointer (void*) for param atomic
-
-// Unsupported : g_atomic_pointer_set : unsupported parameter atomic : no type generator for gpointer (void*) for param atomic
-
-// Unsupported : g_atomic_pointer_xor : unsupported parameter atomic : no type generator for gpointer (void*) for param atomic
-
-// Unsupported : g_base64_decode : no return type
-
-// Unsupported : g_base64_decode_inplace : unsupported parameter out_len : array length param out_len is pointer (gsize*)
-
-// Unsupported : g_base64_decode_step : unsupported parameter out : output array param out
-
-// Unsupported : g_base64_encode_close : unsupported parameter out : output array param out
-
-// Unsupported : g_base64_encode_step : unsupported parameter out : output array param out
-
 // Basename is a wrapper around the C function g_basename.
 func Basename(fileName string) string {
 	c_file_name := C.CString(fileName)
@@ -362,23 +338,11 @@ func BookmarkFileErrorQuark() Quark {
 
 // Unsupported : g_build_filename : unsupported parameter ... : varargs
 
-// Unsupported : g_build_filename_valist : unsupported parameter args : no type generator for va_list (va_list*) for param args
-
-// Unsupported : g_build_filenamev : unsupported parameter args :
-
 // Unsupported : g_build_path : unsupported parameter ... : varargs
-
-// Unsupported : g_build_pathv : unsupported parameter args :
 
 // Blacklisted : g_byte_array_free
 
 // Unsupported : g_byte_array_new : no return type
-
-// Unsupported : g_byte_array_new_take : no return type
-
-// Unsupported : g_child_watch_add : unsupported parameter function : no type generator for ChildWatchFunc (GChildWatchFunc) for param function
-
-// Unsupported : g_child_watch_add_full : unsupported parameter function : no type generator for ChildWatchFunc (GChildWatchFunc) for param function
 
 // ClearError is a wrapper around the C function g_clear_error.
 func ClearError() error {
@@ -393,10 +357,6 @@ func ClearError() error {
 
 	return goThrowableError
 }
-
-// Unsupported : g_clear_handle_id : unsupported parameter clear_func : no type generator for ClearHandleFunc (GClearHandleFunc) for param clear_func
-
-// Unsupported : g_clear_pointer : unsupported parameter destroy : no type generator for DestroyNotify (GDestroyNotify) for param destroy
 
 // Unsupported : g_convert : no return type
 
@@ -418,23 +378,13 @@ func ConvertErrorQuark() Quark {
 
 // Unsupported : g_datalist_get_data : unsupported parameter datalist : record with indirection level of 2
 
-// Unsupported : g_datalist_get_flags : unsupported parameter datalist : record with indirection level of 2
-
-// Unsupported : g_datalist_id_dup_data : unsupported parameter datalist : record with indirection level of 2
-
 // Unsupported : g_datalist_id_get_data : unsupported parameter datalist : record with indirection level of 2
 
 // Unsupported : g_datalist_id_remove_no_notify : unsupported parameter datalist : record with indirection level of 2
 
-// Unsupported : g_datalist_id_replace_data : unsupported parameter datalist : record with indirection level of 2
-
 // Unsupported : g_datalist_id_set_data_full : unsupported parameter datalist : record with indirection level of 2
 
 // Unsupported : g_datalist_init : unsupported parameter datalist : record with indirection level of 2
-
-// Unsupported : g_datalist_set_flags : unsupported parameter datalist : record with indirection level of 2
-
-// Unsupported : g_datalist_unset_flags : unsupported parameter datalist : record with indirection level of 2
 
 // DatasetDestroy is a wrapper around the C function g_dataset_destroy.
 func DatasetDestroy(datasetLocation uintptr) {
@@ -619,12 +569,6 @@ func DirectHash(v uintptr) uint32 {
 	return retGo
 }
 
-// Unsupported : g_environ_getenv : unsupported parameter envp :
-
-// Unsupported : g_environ_setenv : unsupported parameter envp :
-
-// Unsupported : g_environ_unsetenv : unsupported parameter envp :
-
 // FileErrorFromErrno is a wrapper around the C function g_file_error_from_errno.
 func FileErrorFromErrno(errNo int32) FileError {
 	c_err_no := (C.gint)(errNo)
@@ -797,8 +741,6 @@ func FindProgramInPath(program string) string {
 	return retGo
 }
 
-// Unsupported : g_fprintf : unsupported parameter file : no type generator for gpointer (FILE*) for param file
-
 // Free is a wrapper around the C function g_free.
 func Free(mem uintptr) {
 	c_mem := (C.gpointer)(mem)
@@ -847,10 +789,6 @@ func GetCurrentTime(result *TimeVal) {
 	return
 }
 
-// Unsupported : g_get_environ : no return type
-
-// Unsupported : g_get_filename_charsets : unsupported parameter charsets : in string with indirection level of 3
-
 // GetHomeDir is a wrapper around the C function g_get_home_dir.
 func GetHomeDir() string {
 	retC := C.g_get_home_dir()
@@ -858,10 +796,6 @@ func GetHomeDir() string {
 
 	return retGo
 }
-
-// Unsupported : g_get_language_names : no return type
-
-// Unsupported : g_get_locale_variants : no return type
 
 // GetPrgname is a wrapper around the C function g_get_prgname.
 func GetPrgname() string {
@@ -878,10 +812,6 @@ func GetRealName() string {
 
 	return retGo
 }
-
-// Unsupported : g_get_system_config_dirs : no return type
-
-// Unsupported : g_get_system_data_dirs : no return type
 
 // GetTmpDir is a wrapper around the C function g_get_tmp_dir.
 func GetTmpDir() string {
@@ -1162,8 +1092,6 @@ func KeyFileErrorQuark() Quark {
 	return retGo
 }
 
-// Unsupported : g_listenv : no return type
-
 // Unsupported : g_locale_from_utf8 : no return type
 
 // LocaleToUtf8 is a wrapper around the C function g_locale_to_utf8.
@@ -1235,8 +1163,6 @@ func LogSetAlwaysFatal(fatalMask LogLevelFlags) LogLevelFlags {
 	return retGo
 }
 
-// Unsupported : g_log_set_default_handler : unsupported parameter log_func : no type generator for LogFunc (GLogFunc) for param log_func
-
 // LogSetFatalMask is a wrapper around the C function g_log_set_fatal_mask.
 func LogSetFatalMask(logDomain string, fatalMask LogLevelFlags) LogLevelFlags {
 	c_log_domain := C.CString(logDomain)
@@ -1252,25 +1178,7 @@ func LogSetFatalMask(logDomain string, fatalMask LogLevelFlags) LogLevelFlags {
 
 // Unsupported : g_log_set_handler : unsupported parameter log_func : no type generator for LogFunc (GLogFunc) for param log_func
 
-// Unsupported : g_log_set_handler_full : unsupported parameter log_func : no type generator for LogFunc (GLogFunc) for param log_func
-
-// Unsupported : g_log_set_writer_func : unsupported parameter func : no type generator for LogWriterFunc (GLogWriterFunc) for param func
-
-// Unsupported : g_log_structured : unsupported parameter ... : varargs
-
-// Unsupported : g_log_structured_array : unsupported parameter fields :
-
 // Unsupported : g_log_structured_standard : unsupported parameter ... : varargs
-
-// Unsupported : g_log_variant : unsupported parameter fields : Blacklisted record : GVariant
-
-// Unsupported : g_log_writer_default : unsupported parameter fields :
-
-// Unsupported : g_log_writer_format_fields : unsupported parameter fields :
-
-// Unsupported : g_log_writer_journald : unsupported parameter fields :
-
-// Unsupported : g_log_writer_standard_streams : unsupported parameter fields :
 
 // Unsupported : g_logv : unsupported parameter args : no type generator for va_list (va_list) for param args
 
@@ -1310,8 +1218,6 @@ func Malloc0(nBytes uint64) uintptr {
 	return retGo
 }
 
-// Unsupported : g_markup_collect_attributes : unsupported parameter attribute_names : in string with indirection level of 2
-
 // MarkupErrorQuark is a wrapper around the C function g_markup_error_quark.
 func MarkupErrorQuark() Quark {
 	retC := C.g_markup_error_quark()
@@ -1333,10 +1239,6 @@ func MarkupEscapeText(text string, length int64) string {
 
 	return retGo
 }
-
-// Unsupported : g_markup_printf_escaped : unsupported parameter ... : varargs
-
-// Unsupported : g_markup_vprintf_escaped : unsupported parameter args : no type generator for va_list (va_list) for param args
 
 // MemIsSystemMalloc is a wrapper around the C function g_mem_is_system_malloc.
 func MemIsSystemMalloc() bool {
@@ -1415,10 +1317,6 @@ func OnErrorStackTrace(prgName string) {
 
 	return
 }
-
-// Unsupported : g_once_init_enter : unsupported parameter location : no type generator for gpointer (void*) for param location
-
-// Unsupported : g_once_init_leave : unsupported parameter location : no type generator for gpointer (void*) for param location
 
 // OptionErrorQuark is a wrapper around the C function g_option_error_quark.
 func OptionErrorQuark() Quark {
@@ -1521,27 +1419,13 @@ func PatternMatchString(pspec *PatternSpec, string string) bool {
 	return retGo
 }
 
-// Unsupported : g_pointer_bit_lock : unsupported parameter address : no type generator for gpointer (void*) for param address
-
-// Unsupported : g_pointer_bit_trylock : unsupported parameter address : no type generator for gpointer (void*) for param address
-
-// Unsupported : g_pointer_bit_unlock : unsupported parameter address : no type generator for gpointer (void*) for param address
-
-// Unsupported : g_prefix_error : unsupported parameter err : record with indirection level of 2
-
 // Unsupported : g_print : unsupported parameter ... : varargs
 
 // Unsupported : g_printerr : unsupported parameter ... : varargs
 
-// Unsupported : g_printf : unsupported parameter ... : varargs
-
 // Unsupported : g_printf_string_upper_bound : unsupported parameter args : no type generator for va_list (va_list) for param args
 
 // Unsupported : g_propagate_error : unsupported parameter dest : record with indirection level of 2
-
-// Unsupported : g_propagate_prefixed_error : unsupported parameter dest : record with indirection level of 2
-
-// Unsupported : g_ptr_array_find_with_equal_func : unsupported parameter equal_func : no type generator for EqualFunc (GEqualFunc) for param equal_func
 
 // Unsupported : g_qsort_with_data : unsupported parameter compare_func : no type generator for CompareDataFunc (GCompareDataFunc) for param compare_func
 
@@ -1657,10 +1541,6 @@ func RegexErrorQuark() Quark {
 	return retGo
 }
 
-// Unsupported : g_regex_escape_string : unsupported parameter string :
-
-// Unsupported : g_regex_split_simple : no return type
-
 // ReturnIfFailWarning is a wrapper around the C function g_return_if_fail_warning.
 func ReturnIfFailWarning(logDomain string, prettyFunction string, expression string) {
 	c_log_domain := C.CString(logDomain)
@@ -1678,8 +1558,6 @@ func ReturnIfFailWarning(logDomain string, prettyFunction string, expression str
 }
 
 // Unsupported : g_set_error : unsupported parameter err : record with indirection level of 2
-
-// Unsupported : g_set_error_literal : unsupported parameter err : record with indirection level of 2
 
 // SetPrgname is a wrapper around the C function g_set_prgname.
 func SetPrgname(prgname string) {
@@ -1854,8 +1732,6 @@ func SpawnExitErrorQuark() Quark {
 
 // Unsupported : g_spawn_sync : unsupported parameter argv :
 
-// Unsupported : g_sprintf : unsupported parameter ... : varargs
-
 // Stpcpy is a wrapper around the C function g_stpcpy.
 func Stpcpy(dest string, src string) string {
 	c_dest := C.CString(dest)
@@ -1892,8 +1768,6 @@ func StrHash(v uintptr) uint32 {
 
 	return retGo
 }
-
-// Unsupported : g_str_tokenize_and_fold : unsupported parameter ascii_alternates : output array param ascii_alternates
 
 // Strcanon is a wrapper around the C function g_strcanon.
 func Strcanon(string string, validChars string, substitutor rune) string {
@@ -2206,8 +2080,6 @@ func Strsignal(signum int32) string {
 
 // Unsupported : g_strsplit : no return type
 
-// Unsupported : g_strsplit_set : no return type
-
 // StrstrLen is a wrapper around the C function g_strstr_len.
 func StrstrLen(haystack string, haystackLen int64, needle string) string {
 	c_haystack := C.CString(haystack)
@@ -2254,14 +2126,6 @@ func Strup(string string) string {
 
 // Blacklisted : g_strv_get_type
 
-// Unsupported : g_strv_length : unsupported parameter str_array : in string with indirection level of 2
-
-// Unsupported : g_test_add_data_func : unsupported parameter test_func : no type generator for TestDataFunc (GTestDataFunc) for param test_func
-
-// Unsupported : g_test_add_data_func_full : unsupported parameter test_func : no type generator for TestDataFunc (GTestDataFunc) for param test_func
-
-// Unsupported : g_test_add_func : unsupported parameter test_func : no type generator for TestFunc (GTestFunc) for param test_func
-
 // Unsupported : g_test_add_vtable : unsupported parameter data_setup : no type generator for TestFixtureFunc (GTestFixtureFunc) for param data_setup
 
 // TestAssertExpectedMessagesInternal is a wrapper around the C function g_test_assert_expected_messages_internal.
@@ -2282,16 +2146,6 @@ func TestAssertExpectedMessagesInternal(domain string, file string, line int32, 
 	return
 }
 
-// Unsupported : g_test_build_filename : unsupported parameter ... : varargs
-
-// Unsupported : g_test_create_case : unsupported parameter data_setup : no type generator for TestFixtureFunc (GTestFixtureFunc) for param data_setup
-
-// Unsupported : g_test_get_filename : unsupported parameter ... : varargs
-
-// Unsupported : g_test_init : unsupported parameter ... : varargs
-
-// Unsupported : g_test_log_set_fatal_handler : unsupported parameter log_func : no type generator for TestLogFatalFunc (GTestLogFatalFunc) for param log_func
-
 // TestLogTypeName is a wrapper around the C function g_test_log_type_name.
 func TestLogTypeName(logType TestLogType) string {
 	c_log_type := (C.GTestLogType)(logType)
@@ -2301,14 +2155,6 @@ func TestLogTypeName(logType TestLogType) string {
 
 	return retGo
 }
-
-// Unsupported : g_test_maximized_result : unsupported parameter ... : varargs
-
-// Unsupported : g_test_message : unsupported parameter ... : varargs
-
-// Unsupported : g_test_minimized_result : unsupported parameter ... : varargs
-
-// Unsupported : g_test_queue_destroy : unsupported parameter destroy_func : no type generator for DestroyNotify (GDestroyNotify) for param destroy_func
 
 // TestTrapAssertions is a wrapper around the C function g_test_trap_assertions.
 func TestTrapAssertions(domain string, file string, line int32, func_ string, assertionFlags uint64, pattern string) {
@@ -2400,10 +2246,6 @@ func ThreadYield() {
 // Unsupported : g_timeout_add : unsupported parameter function : no type generator for SourceFunc (GSourceFunc) for param function
 
 // Unsupported : g_timeout_add_full : unsupported parameter function : no type generator for SourceFunc (GSourceFunc) for param function
-
-// Unsupported : g_timeout_add_seconds : unsupported parameter function : no type generator for SourceFunc (GSourceFunc) for param function
-
-// Unsupported : g_timeout_add_seconds_full : unsupported parameter function : no type generator for SourceFunc (GSourceFunc) for param function
 
 // TimeoutSourceNew is a wrapper around the C function g_timeout_source_new.
 func TimeoutSourceNew(interval uint32) *Source {
@@ -2711,16 +2553,6 @@ func UnicodeCanonicalOrdering(string rune, len uint64) {
 }
 
 // Blacklisted : g_unix_error_quark
-
-// Unsupported : g_unix_fd_add : unsupported parameter function : no type generator for UnixFDSourceFunc (GUnixFDSourceFunc) for param function
-
-// Unsupported : g_unix_fd_add_full : unsupported parameter function : no type generator for UnixFDSourceFunc (GUnixFDSourceFunc) for param function
-
-// Unsupported : g_unix_signal_add : unsupported parameter handler : no type generator for SourceFunc (GSourceFunc) for param handler
-
-// Unsupported : g_unix_signal_add_full : unsupported parameter handler : no type generator for SourceFunc (GSourceFunc) for param handler
-
-// Unsupported : g_uri_list_extract_uris : no return type
 
 // Usleep is a wrapper around the C function g_usleep.
 func Usleep(microseconds uint64) {
@@ -3032,15 +2864,7 @@ func VariantTypeStringIsValid(typeString string) bool {
 	return retGo
 }
 
-// Unsupported : g_vasprintf : unsupported parameter string : in string with indirection level of 2
-
-// Unsupported : g_vfprintf : unsupported parameter file : no type generator for gpointer (FILE*) for param file
-
-// Unsupported : g_vprintf : unsupported parameter args : no type generator for va_list (va_list) for param args
-
 // Unsupported : g_vsnprintf : unsupported parameter args : no type generator for va_list (va_list) for param args
-
-// Unsupported : g_vsprintf : unsupported parameter args : no type generator for va_list (va_list) for param args
 
 // WarnMessage is a wrapper around the C function g_warn_message.
 func WarnMessage(domain string, file string, line int32, func_ string, warnexpr string) {

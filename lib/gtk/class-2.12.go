@@ -405,8 +405,6 @@ func (recv *EntryCompletion) SetInlineSelection(inlineSelection bool) {
 	return
 }
 
-// Unsupported : EntryIconAccessible : no CType
-
 type signalFileChooserButtonFileSetDetail struct {
 	callback  FileChooserButtonSignalFileSetCallback
 	handlerID C.gulong

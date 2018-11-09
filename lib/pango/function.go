@@ -239,11 +239,7 @@ func LanguageFromString(language string) *Language {
 	return retGo
 }
 
-// Unsupported : pango_log2vis_get_embedding_levels : unsupported parameter pbase_dir : PangoDirection* with indirection level of 1
-
 // Unsupported : pango_lookup_aliases : unsupported parameter families : output array param families
-
-// Unsupported : pango_markup_parser_finish : unsupported parameter attr_list : record with indirection level of 2
 
 // Unsupported : pango_module_register : unsupported parameter module : Blacklisted record : PangoIncludedModule
 
@@ -276,8 +272,6 @@ func ReorderItems(logicalItems *glib.List) *glib.List {
 // Unsupported : pango_scan_word : unsupported parameter pos : in string with indirection level of 2
 
 // Unsupported : pango_shape : unsupported parameter glyphs : Blacklisted record : PangoGlyphString
-
-// Unsupported : pango_shape_full : unsupported parameter glyphs : Blacklisted record : PangoGlyphString
 
 // Unsupported : pango_skip_space : unsupported parameter pos : in string with indirection level of 2
 

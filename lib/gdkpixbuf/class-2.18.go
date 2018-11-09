@@ -33,5 +33,3 @@ func (recv *PixbufSimpleAnim) SetLoop(loop bool) {
 
 	return
 }
-
-// Unsupported : PixbufSimpleAnimIter : no CType

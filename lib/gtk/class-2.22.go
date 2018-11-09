@@ -79,8 +79,6 @@ func (recv *Entry) ResetImContext() {
 	return
 }
 
-// Unsupported : EntryIconAccessible : no CType
-
 // GetLabelFill is a wrapper around the C function gtk_expander_get_label_fill.
 func (recv *Expander) GetLabelFill() bool {
 	retC := C.gtk_expander_get_label_fill((*C.GtkExpander)(recv.native))

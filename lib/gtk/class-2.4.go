@@ -1363,8 +1363,6 @@ func (recv *EntryCompletion) SetTextColumn(column int32) {
 	return
 }
 
-// Unsupported : EntryIconAccessible : no CType
-
 // GetAboveChild is a wrapper around the C function gtk_event_box_get_above_child.
 func (recv *EventBox) GetAboveChild() bool {
 	retC := C.gtk_event_box_get_above_child((*C.GtkEventBox)(recv.native))
