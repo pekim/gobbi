@@ -4,6 +4,7 @@
 package gtk
 
 import (
+	gio "github.com/pekim/gobbi/lib/gio"
 	glib "github.com/pekim/gobbi/lib/glib"
 	"unsafe"
 )
@@ -15,9 +16,21 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : gtk_file_chooser_get_current_folder_file : no return generator
+// GetCurrentFolderFile is a wrapper around the C function gtk_file_chooser_get_current_folder_file.
+func (recv *FileChooser) GetCurrentFolderFile() *gio.File {
+	retC := C.gtk_file_chooser_get_current_folder_file((*C.GtkFileChooser)(recv.native))
+	retGo := gio.FileNewFromC(unsafe.Pointer(retC))
 
-// Unsupported : gtk_file_chooser_get_file : no return generator
+	return retGo
+}
+
+// GetFile is a wrapper around the C function gtk_file_chooser_get_file.
+func (recv *FileChooser) GetFile() *gio.File {
+	retC := C.gtk_file_chooser_get_file((*C.GtkFileChooser)(recv.native))
+	retGo := gio.FileNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // GetFiles is a wrapper around the C function gtk_file_chooser_get_files.
 func (recv *FileChooser) GetFiles() *glib.SList {
@@ -27,15 +40,78 @@ func (recv *FileChooser) GetFiles() *glib.SList {
 	return retGo
 }
 
-// Unsupported : gtk_file_chooser_get_preview_file : no return generator
+// GetPreviewFile is a wrapper around the C function gtk_file_chooser_get_preview_file.
+func (recv *FileChooser) GetPreviewFile() *gio.File {
+	retC := C.gtk_file_chooser_get_preview_file((*C.GtkFileChooser)(recv.native))
+	var retGo (*gio.File)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = gio.FileNewFromC(unsafe.Pointer(retC))
+	}
 
-// Unsupported : gtk_file_chooser_select_file : unsupported parameter file : no type generator for Gio.File (GFile*) for param file
+	return retGo
+}
 
-// Unsupported : gtk_file_chooser_set_current_folder_file : unsupported parameter file : no type generator for Gio.File (GFile*) for param file
+// SelectFile is a wrapper around the C function gtk_file_chooser_select_file.
+func (recv *FileChooser) SelectFile(file *gio.File) (bool, error) {
+	c_file := (*C.GFile)(file.ToC())
 
-// Unsupported : gtk_file_chooser_set_file : unsupported parameter file : no type generator for Gio.File (GFile*) for param file
+	var cThrowableError *C.GError
 
-// Unsupported : gtk_file_chooser_unselect_file : unsupported parameter file : no type generator for Gio.File (GFile*) for param file
+	retC := C.gtk_file_chooser_select_file((*C.GtkFileChooser)(recv.native), c_file, &cThrowableError)
+	retGo := retC == C.TRUE
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
+
+// SetCurrentFolderFile is a wrapper around the C function gtk_file_chooser_set_current_folder_file.
+func (recv *FileChooser) SetCurrentFolderFile(file *gio.File) (bool, error) {
+	c_file := (*C.GFile)(file.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.gtk_file_chooser_set_current_folder_file((*C.GtkFileChooser)(recv.native), c_file, &cThrowableError)
+	retGo := retC == C.TRUE
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
+
+// SetFile is a wrapper around the C function gtk_file_chooser_set_file.
+func (recv *FileChooser) SetFile(file *gio.File) (bool, error) {
+	c_file := (*C.GFile)(file.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.gtk_file_chooser_set_file((*C.GtkFileChooser)(recv.native), c_file, &cThrowableError)
+	retGo := retC == C.TRUE
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
+
+// UnselectFile is a wrapper around the C function gtk_file_chooser_unselect_file.
+func (recv *FileChooser) UnselectFile(file *gio.File) {
+	c_file := (*C.GFile)(file.ToC())
+
+	C.gtk_file_chooser_unselect_file((*C.GtkFileChooser)(recv.native), c_file)
+
+	return
+}
 
 // Unsupported : gtk_tool_shell_get_icon_size : no return generator
 

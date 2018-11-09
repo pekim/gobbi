@@ -261,7 +261,14 @@ func (recv *Notification) SetDefaultAction(detailedAction string) {
 
 // Unsupported : g_notification_set_default_action_and_target_value : unsupported parameter target : Blacklisted record : GVariant
 
-// Unsupported : g_notification_set_icon : unsupported parameter icon : no type generator for Icon (GIcon*) for param icon
+// SetIcon is a wrapper around the C function g_notification_set_icon.
+func (recv *Notification) SetIcon(icon *Icon) {
+	c_icon := (*C.GIcon)(icon.ToC())
+
+	C.g_notification_set_icon((*C.GNotification)(recv.native), c_icon)
+
+	return
+}
 
 // SetPriority is a wrapper around the C function g_notification_set_priority.
 func (recv *Notification) SetPriority(priority NotificationPriority) {
@@ -340,7 +347,7 @@ func CastToSubprocess(object *gobject.Object) *Subprocess {
 
 // Unsupported : g_subprocess_communicate_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_subprocess_communicate_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
+// Unsupported : g_subprocess_communicate_finish : unsupported parameter stdout_buf : record with indirection level of 2
 
 // CommunicateUtf8 is a wrapper around the C function g_subprocess_communicate_utf8.
 func (recv *Subprocess) CommunicateUtf8(stdinBuf string, cancellable *Cancellable) (bool, string, string, error) {
@@ -374,7 +381,32 @@ func (recv *Subprocess) CommunicateUtf8(stdinBuf string, cancellable *Cancellabl
 
 // Unsupported : g_subprocess_communicate_utf8_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_subprocess_communicate_utf8_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
+// CommunicateUtf8Finish is a wrapper around the C function g_subprocess_communicate_utf8_finish.
+func (recv *Subprocess) CommunicateUtf8Finish(result *AsyncResult) (bool, string, string, error) {
+	c_result := (*C.GAsyncResult)(result.ToC())
+
+	var c_stdout_buf *C.char
+
+	var c_stderr_buf *C.char
+
+	var cThrowableError *C.GError
+
+	retC := C.g_subprocess_communicate_utf8_finish((*C.GSubprocess)(recv.native), c_result, &c_stdout_buf, &c_stderr_buf, &cThrowableError)
+	retGo := retC == C.TRUE
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	stdoutBuf := C.GoString(c_stdout_buf)
+	defer C.free(unsafe.Pointer(c_stdout_buf))
+
+	stderrBuf := C.GoString(c_stderr_buf)
+	defer C.free(unsafe.Pointer(c_stderr_buf))
+
+	return retGo, stdoutBuf, stderrBuf, goThrowableError
+}
 
 // ForceExit is a wrapper around the C function g_subprocess_force_exit.
 func (recv *Subprocess) ForceExit() {
@@ -510,9 +542,39 @@ func (recv *Subprocess) WaitCheck(cancellable *Cancellable) (bool, error) {
 
 // Unsupported : g_subprocess_wait_check_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_subprocess_wait_check_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
+// WaitCheckFinish is a wrapper around the C function g_subprocess_wait_check_finish.
+func (recv *Subprocess) WaitCheckFinish(result *AsyncResult) (bool, error) {
+	c_result := (*C.GAsyncResult)(result.ToC())
 
-// Unsupported : g_subprocess_wait_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
+	var cThrowableError *C.GError
+
+	retC := C.g_subprocess_wait_check_finish((*C.GSubprocess)(recv.native), c_result, &cThrowableError)
+	retGo := retC == C.TRUE
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
+
+// WaitFinish is a wrapper around the C function g_subprocess_wait_finish.
+func (recv *Subprocess) WaitFinish(result *AsyncResult) (bool, error) {
+	c_result := (*C.GAsyncResult)(result.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_subprocess_wait_finish((*C.GSubprocess)(recv.native), c_result, &cThrowableError)
+	retGo := retC == C.TRUE
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // SubprocessLauncher is a wrapper around the C record GSubprocessLauncher.
 type SubprocessLauncher struct {
@@ -732,4 +794,19 @@ func (recv *TlsInteraction) RequestCertificate(connection *TlsConnection, flags 
 
 // Unsupported : g_tls_interaction_request_certificate_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_tls_interaction_request_certificate_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
+// RequestCertificateFinish is a wrapper around the C function g_tls_interaction_request_certificate_finish.
+func (recv *TlsInteraction) RequestCertificateFinish(result *AsyncResult) (TlsInteractionResult, error) {
+	c_result := (*C.GAsyncResult)(result.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_tls_interaction_request_certificate_finish((*C.GTlsInteraction)(recv.native), c_result, &cThrowableError)
+	retGo := (TlsInteractionResult)(retC)
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}

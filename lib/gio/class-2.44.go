@@ -4,6 +4,7 @@
 package gio
 
 import (
+	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	"unsafe"
 )
@@ -59,7 +60,26 @@ func (recv *Application) UnbindBusyProperty(object uintptr, property string) {
 
 // Unsupported : g_input_stream_read_all_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_input_stream_read_all_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
+// ReadAllFinish is a wrapper around the C function g_input_stream_read_all_finish.
+func (recv *InputStream) ReadAllFinish(result *AsyncResult) (bool, uint64, error) {
+	c_result := (*C.GAsyncResult)(result.ToC())
+
+	var c_bytes_read C.gsize
+
+	var cThrowableError *C.GError
+
+	retC := C.g_input_stream_read_all_finish((*C.GInputStream)(recv.native), c_result, &c_bytes_read, &cThrowableError)
+	retGo := retC == C.TRUE
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	bytesRead := (uint64)(c_bytes_read)
+
+	return retGo, bytesRead, goThrowableError
+}
 
 // ListStoreNew is a wrapper around the C function g_list_store_new.
 func ListStoreNew(itemType gobject.Type) *ListStore {
@@ -123,7 +143,26 @@ func NetworkAddressNewLoopback(port uint16) *NetworkAddress {
 
 // Unsupported : g_output_stream_write_all_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_output_stream_write_all_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
+// WriteAllFinish is a wrapper around the C function g_output_stream_write_all_finish.
+func (recv *OutputStream) WriteAllFinish(result *AsyncResult) (bool, uint64, error) {
+	c_result := (*C.GAsyncResult)(result.ToC())
+
+	var c_bytes_written C.gsize
+
+	var cThrowableError *C.GError
+
+	retC := C.g_output_stream_write_all_finish((*C.GOutputStream)(recv.native), c_result, &c_bytes_written, &cThrowableError)
+	retGo := retC == C.TRUE
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	bytesWritten := (uint64)(c_bytes_written)
+
+	return retGo, bytesWritten, goThrowableError
+}
 
 // Unsupported : g_simple_action_set_state_hint : unsupported parameter state_hint : Blacklisted record : GVariant
 

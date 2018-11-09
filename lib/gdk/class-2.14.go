@@ -4,6 +4,7 @@
 package gdk
 
 import (
+	gio "github.com/pekim/gobbi/lib/gio"
 	"sync"
 	"unsafe"
 )
@@ -48,7 +49,14 @@ func (recv *AppLaunchContext) SetDisplay(display *Display) {
 	return
 }
 
-// Unsupported : gdk_app_launch_context_set_icon : unsupported parameter icon : no type generator for Gio.Icon (GIcon*) for param icon
+// SetIcon is a wrapper around the C function gdk_app_launch_context_set_icon.
+func (recv *AppLaunchContext) SetIcon(icon *gio.Icon) {
+	c_icon := (*C.GIcon)(icon.ToC())
+
+	C.gdk_app_launch_context_set_icon((*C.GdkAppLaunchContext)(recv.native), c_icon)
+
+	return
+}
 
 // SetIconName is a wrapper around the C function gdk_app_launch_context_set_icon_name.
 func (recv *AppLaunchContext) SetIconName(iconName string) {

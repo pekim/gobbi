@@ -328,7 +328,7 @@ func (recv *Application) Hold() {
 	return
 }
 
-// Unsupported : g_application_open : unsupported parameter files : no type generator for File (GFile*) for array param files
+// Unsupported : g_application_open : unsupported parameter files :
 
 // Register is a wrapper around the C function g_application_register.
 func (recv *Application) Register(cancellable *Cancellable) (bool, error) {
@@ -364,7 +364,14 @@ func (recv *Application) Run(args []string) int32 {
 	return retGo
 }
 
-// Unsupported : g_application_set_action_group : unsupported parameter action_group : no type generator for ActionGroup (GActionGroup*) for param action_group
+// SetActionGroup is a wrapper around the C function g_application_set_action_group.
+func (recv *Application) SetActionGroup(actionGroup *ActionGroup) {
+	c_action_group := (*C.GActionGroup)(actionGroup.ToC())
+
+	C.g_application_set_action_group((*C.GApplication)(recv.native), c_action_group)
+
+	return
+}
 
 // SetApplicationId is a wrapper around the C function g_application_set_application_id.
 func (recv *Application) SetApplicationId(applicationId string) {
@@ -527,9 +534,25 @@ func SimpleActionGroupNew() *SimpleActionGroup {
 	return retGo
 }
 
-// Unsupported : g_simple_action_group_insert : unsupported parameter action : no type generator for Action (GAction*) for param action
+// Insert is a wrapper around the C function g_simple_action_group_insert.
+func (recv *SimpleActionGroup) Insert(action *Action) {
+	c_action := (*C.GAction)(action.ToC())
 
-// Unsupported : g_simple_action_group_lookup : no return generator
+	C.g_simple_action_group_insert((*C.GSimpleActionGroup)(recv.native), c_action)
+
+	return
+}
+
+// Lookup is a wrapper around the C function g_simple_action_group_lookup.
+func (recv *SimpleActionGroup) Lookup(actionName string) *Action {
+	c_action_name := C.CString(actionName)
+	defer C.free(unsafe.Pointer(c_action_name))
+
+	retC := C.g_simple_action_group_lookup((*C.GSimpleActionGroup)(recv.native), c_action_name)
+	retGo := ActionNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // Remove is a wrapper around the C function g_simple_action_group_remove.
 func (recv *SimpleActionGroup) Remove(actionName string) {
@@ -700,7 +723,17 @@ func (recv *TlsCertificate) GetIssuer() *TlsCertificate {
 	return retGo
 }
 
-// Unsupported : g_tls_certificate_verify : unsupported parameter identity : no type generator for SocketConnectable (GSocketConnectable*) for param identity
+// Verify is a wrapper around the C function g_tls_certificate_verify.
+func (recv *TlsCertificate) Verify(identity *SocketConnectable, trustedCa *TlsCertificate) TlsCertificateFlags {
+	c_identity := (*C.GSocketConnectable)(identity.ToC())
+
+	c_trusted_ca := (*C.GTlsCertificate)(trustedCa.ToC())
+
+	retC := C.g_tls_certificate_verify((*C.GTlsCertificate)(recv.native), c_identity, c_trusted_ca)
+	retGo := (TlsCertificateFlags)(retC)
+
+	return retGo
+}
 
 // TlsConnection is a wrapper around the C record GTlsConnection.
 type TlsConnection struct {
@@ -820,7 +853,22 @@ func (recv *TlsConnection) Handshake(cancellable *Cancellable) (bool, error) {
 
 // Unsupported : g_tls_connection_handshake_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_tls_connection_handshake_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
+// HandshakeFinish is a wrapper around the C function g_tls_connection_handshake_finish.
+func (recv *TlsConnection) HandshakeFinish(result *AsyncResult) (bool, error) {
+	c_result := (*C.GAsyncResult)(result.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_tls_connection_handshake_finish((*C.GTlsConnection)(recv.native), c_result, &cThrowableError)
+	retGo := retC == C.TRUE
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // SetCertificate is a wrapper around the C function g_tls_connection_set_certificate.
 func (recv *TlsConnection) SetCertificate(certificate *TlsCertificate) {

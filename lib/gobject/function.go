@@ -1084,7 +1084,18 @@ func TypeAddInstancePrivate(classType Type, privateSize uint64) int32 {
 	return retGo
 }
 
-// Unsupported : g_type_add_interface_dynamic : unsupported parameter plugin : no type generator for TypePlugin (GTypePlugin*) for param plugin
+// TypeAddInterfaceDynamic is a wrapper around the C function g_type_add_interface_dynamic.
+func TypeAddInterfaceDynamic(instanceType Type, interfaceType Type, plugin *TypePlugin) {
+	c_instance_type := (C.GType)(instanceType)
+
+	c_interface_type := (C.GType)(interfaceType)
+
+	c_plugin := (*C.GTypePlugin)(plugin.ToC())
+
+	C.g_type_add_interface_dynamic(c_instance_type, c_interface_type, c_plugin)
+
+	return
+}
 
 // TypeAddInterfaceStatic is a wrapper around the C function g_type_add_interface_static.
 func TypeAddInterfaceStatic(instanceType Type, interfaceType Type, info *InterfaceInfo) {
@@ -1292,7 +1303,15 @@ func TypeFundamentalNext() Type {
 	return retGo
 }
 
-// Unsupported : g_type_get_plugin : no return generator
+// TypeGetPlugin is a wrapper around the C function g_type_get_plugin.
+func TypeGetPlugin(type_ Type) *TypePlugin {
+	c_type := (C.GType)(type_)
+
+	retC := C.g_type_get_plugin(c_type)
+	retGo := TypePluginNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // TypeGetQdata is a wrapper around the C function g_type_get_qdata.
 func TypeGetQdata(type_ Type, quark glib.Quark) uintptr {
@@ -1333,7 +1352,17 @@ func TypeInterfaceAddPrerequisite(interfaceType Type, prerequisiteType Type) {
 	return
 }
 
-// Unsupported : g_type_interface_get_plugin : no return generator
+// TypeInterfaceGetPlugin is a wrapper around the C function g_type_interface_get_plugin.
+func TypeInterfaceGetPlugin(instanceType Type, interfaceType Type) *TypePlugin {
+	c_instance_type := (C.GType)(instanceType)
+
+	c_interface_type := (C.GType)(interfaceType)
+
+	retC := C.g_type_interface_get_plugin(c_instance_type, c_interface_type)
+	retGo := TypePluginNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // TypeInterfacePeek is a wrapper around the C function g_type_interface_peek.
 func TypeInterfacePeek(instanceClass uintptr, ifaceType Type) uintptr {
@@ -1436,7 +1465,22 @@ func TypeQuery_(type_ Type) *TypeQuery {
 	return query
 }
 
-// Unsupported : g_type_register_dynamic : unsupported parameter plugin : no type generator for TypePlugin (GTypePlugin*) for param plugin
+// TypeRegisterDynamic is a wrapper around the C function g_type_register_dynamic.
+func TypeRegisterDynamic(parentType Type, typeName string, plugin *TypePlugin, flags TypeFlags) Type {
+	c_parent_type := (C.GType)(parentType)
+
+	c_type_name := C.CString(typeName)
+	defer C.free(unsafe.Pointer(c_type_name))
+
+	c_plugin := (*C.GTypePlugin)(plugin.ToC())
+
+	c_flags := (C.GTypeFlags)(flags)
+
+	retC := C.g_type_register_dynamic(c_parent_type, c_type_name, c_plugin, c_flags)
+	retGo := (Type)(retC)
+
+	return retGo
+}
 
 // TypeRegisterFundamental is a wrapper around the C function g_type_register_fundamental.
 func TypeRegisterFundamental(typeId Type, typeName string, info *TypeInfo, finfo *TypeFundamentalInfo, flags TypeFlags) Type {

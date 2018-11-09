@@ -97,7 +97,14 @@ func (recv *Menu) RemoveAll() {
 	return
 }
 
-// Unsupported : g_menu_item_set_icon : unsupported parameter icon : no type generator for Icon (GIcon*) for param icon
+// SetIcon is a wrapper around the C function g_menu_item_set_icon.
+func (recv *MenuItem) SetIcon(icon *Icon) {
+	c_icon := (*C.GIcon)(icon.ToC())
+
+	C.g_menu_item_set_icon((*C.GMenuItem)(recv.native), c_icon)
+
+	return
+}
 
 // PropertyAction is a wrapper around the C record GPropertyAction.
 type PropertyAction struct {

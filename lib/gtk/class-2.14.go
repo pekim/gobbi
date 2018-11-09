@@ -6,6 +6,7 @@ package gtk
 import (
 	gdk "github.com/pekim/gobbi/lib/gdk"
 	gdkpixbuf "github.com/pekim/gobbi/lib/gdkpixbuf"
+	gio "github.com/pekim/gobbi/lib/gio"
 	glib "github.com/pekim/gobbi/lib/glib"
 	pango "github.com/pekim/gobbi/lib/pango"
 	"sync"
@@ -474,13 +475,30 @@ func IconInfoNewForPixbuf(iconTheme *IconTheme, pixbuf *gdkpixbuf.Pixbuf) *IconI
 	return retGo
 }
 
-// Unsupported : gtk_icon_theme_lookup_by_gicon : unsupported parameter icon : no type generator for Gio.Icon (GIcon*) for param icon
+// LookupByGicon is a wrapper around the C function gtk_icon_theme_lookup_by_gicon.
+func (recv *IconTheme) LookupByGicon(icon *gio.Icon, size int32, flags IconLookupFlags) *IconInfo {
+	c_icon := (*C.GIcon)(icon.ToC())
 
-// Unsupported : gtk_image_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon (GIcon*) for param icon
+	c_size := (C.gint)(size)
 
-// Unsupported : gtk_image_get_gicon : unsupported parameter gicon : no type generator for Gio.Icon (GIcon**) for param gicon
+	c_flags := (C.GtkIconLookupFlags)(flags)
 
-// Unsupported : gtk_image_set_from_gicon : unsupported parameter icon : no type generator for Gio.Icon (GIcon*) for param icon
+	retC := C.gtk_icon_theme_lookup_by_gicon((*C.GtkIconTheme)(recv.native), c_icon, c_size, c_flags)
+	var retGo (*IconInfo)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = IconInfoNewFromC(unsafe.Pointer(retC))
+	}
+
+	return retGo
+}
+
+// Unsupported : gtk_image_new_from_gicon : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
+
+// Unsupported : gtk_image_get_gicon : unsupported parameter gicon : record with indirection level of 2
+
+// Unsupported : gtk_image_set_from_gicon : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
 
 // GetBinWindow is a wrapper around the C function gtk_layout_get_bin_window.
 func (recv *Layout) GetBinWindow() *gdk.Window {
@@ -833,9 +851,28 @@ func statusicon_buttonReleaseEventHandler(_ *C.GObject, c_event *C.GdkEventButto
 	return retC
 }
 
-// Unsupported : gtk_status_icon_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon (GIcon*) for param icon
+// StatusIconNewFromGicon is a wrapper around the C function gtk_status_icon_new_from_gicon.
+func StatusIconNewFromGicon(icon *gio.Icon) *StatusIcon {
+	c_icon := (*C.GIcon)(icon.ToC())
 
-// Unsupported : gtk_status_icon_get_gicon : no return generator
+	retC := C.gtk_status_icon_new_from_gicon(c_icon)
+	retGo := StatusIconNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// GetGicon is a wrapper around the C function gtk_status_icon_get_gicon.
+func (recv *StatusIcon) GetGicon() *gio.Icon {
+	retC := C.gtk_status_icon_get_gicon((*C.GtkStatusIcon)(recv.native))
+	var retGo (*gio.Icon)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = gio.IconNewFromC(unsafe.Pointer(retC))
+	}
+
+	return retGo
+}
 
 // GetX11WindowId is a wrapper around the C function gtk_status_icon_get_x11_window_id.
 func (recv *StatusIcon) GetX11WindowId() uint32 {
@@ -845,7 +882,14 @@ func (recv *StatusIcon) GetX11WindowId() uint32 {
 	return retGo
 }
 
-// Unsupported : gtk_status_icon_set_from_gicon : unsupported parameter icon : no type generator for Gio.Icon (GIcon*) for param icon
+// SetFromGicon is a wrapper around the C function gtk_status_icon_set_from_gicon.
+func (recv *StatusIcon) SetFromGicon(icon *gio.Icon) {
+	c_icon := (*C.GIcon)(icon.ToC())
+
+	C.gtk_status_icon_set_from_gicon((*C.GtkStatusIcon)(recv.native), c_icon)
+
+	return
+}
 
 // ToolbarReconfigured is a wrapper around the C function gtk_tool_item_toolbar_reconfigured.
 func (recv *ToolItem) ToolbarReconfigured() {

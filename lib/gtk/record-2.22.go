@@ -3,6 +3,11 @@
 
 package gtk
 
+import (
+	gio "github.com/pekim/gobbi/lib/gio"
+	"unsafe"
+)
+
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <gtk/gtk-a11y.h>
 // #include <gtk/gtk.h>
@@ -10,4 +15,15 @@ package gtk
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : gtk_recent_info_get_gicon : no return generator
+// GetGicon is a wrapper around the C function gtk_recent_info_get_gicon.
+func (recv *RecentInfo) GetGicon() *gio.Icon {
+	retC := C.gtk_recent_info_get_gicon((*C.GtkRecentInfo)(recv.native))
+	var retGo (*gio.Icon)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = gio.IconNewFromC(unsafe.Pointer(retC))
+	}
+
+	return retGo
+}

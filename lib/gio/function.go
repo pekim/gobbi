@@ -23,7 +23,28 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : g_app_info_create_from_commandline : no return generator
+// AppInfoCreateFromCommandline is a wrapper around the C function g_app_info_create_from_commandline.
+func AppInfoCreateFromCommandline(commandline string, applicationName string, flags AppInfoCreateFlags) (*AppInfo, error) {
+	c_commandline := C.CString(commandline)
+	defer C.free(unsafe.Pointer(c_commandline))
+
+	c_application_name := C.CString(applicationName)
+	defer C.free(unsafe.Pointer(c_application_name))
+
+	c_flags := (C.GAppInfoCreateFlags)(flags)
+
+	var cThrowableError *C.GError
+
+	retC := C.g_app_info_create_from_commandline(c_commandline, c_application_name, c_flags, &cThrowableError)
+	retGo := AppInfoNewFromC(unsafe.Pointer(retC))
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // AppInfoGetAll is a wrapper around the C function g_app_info_get_all.
 func AppInfoGetAll() *glib.List {
@@ -44,9 +65,30 @@ func AppInfoGetAllForType(contentType string) *glib.List {
 	return retGo
 }
 
-// Unsupported : g_app_info_get_default_for_type : no return generator
+// AppInfoGetDefaultForType is a wrapper around the C function g_app_info_get_default_for_type.
+func AppInfoGetDefaultForType(contentType string, mustSupportUris bool) *AppInfo {
+	c_content_type := C.CString(contentType)
+	defer C.free(unsafe.Pointer(c_content_type))
 
-// Unsupported : g_app_info_get_default_for_uri_scheme : no return generator
+	c_must_support_uris :=
+		boolToGboolean(mustSupportUris)
+
+	retC := C.g_app_info_get_default_for_type(c_content_type, c_must_support_uris)
+	retGo := AppInfoNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// AppInfoGetDefaultForUriScheme is a wrapper around the C function g_app_info_get_default_for_uri_scheme.
+func AppInfoGetDefaultForUriScheme(uriScheme string) *AppInfo {
+	c_uri_scheme := C.CString(uriScheme)
+	defer C.free(unsafe.Pointer(c_uri_scheme))
+
+	retC := C.g_app_info_get_default_for_uri_scheme(c_uri_scheme)
+	retGo := AppInfoNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // AppInfoLaunchDefaultForUri is a wrapper around the C function g_app_info_launch_default_for_uri.
 func AppInfoLaunchDefaultForUri(uri string, context *AppLaunchContext) (bool, error) {
@@ -105,7 +147,16 @@ func ContentTypeGetDescription(type_ string) string {
 	return retGo
 }
 
-// Unsupported : g_content_type_get_icon : no return generator
+// ContentTypeGetIcon is a wrapper around the C function g_content_type_get_icon.
+func ContentTypeGetIcon(type_ string) *Icon {
+	c_type := C.CString(type_)
+	defer C.free(unsafe.Pointer(c_type))
+
+	retC := C.g_content_type_get_icon(c_type)
+	retGo := IconNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // ContentTypeGetMimeType is a wrapper around the C function g_content_type_get_mime_type.
 func ContentTypeGetMimeType(type_ string) string {
@@ -180,13 +231,49 @@ func DbusErrorQuark() glib.Quark {
 	return retGo
 }
 
-// Unsupported : g_file_new_for_commandline_arg : no return generator
+// FileNewForCommandlineArg is a wrapper around the C function g_file_new_for_commandline_arg.
+func FileNewForCommandlineArg(arg string) *File {
+	c_arg := C.CString(arg)
+	defer C.free(unsafe.Pointer(c_arg))
 
-// Unsupported : g_file_new_for_path : no return generator
+	retC := C.g_file_new_for_commandline_arg(c_arg)
+	retGo := FileNewFromC(unsafe.Pointer(retC))
 
-// Unsupported : g_file_new_for_uri : no return generator
+	return retGo
+}
 
-// Unsupported : g_file_parse_name : no return generator
+// FileNewForPath is a wrapper around the C function g_file_new_for_path.
+func FileNewForPath(path string) *File {
+	c_path := C.CString(path)
+	defer C.free(unsafe.Pointer(c_path))
+
+	retC := C.g_file_new_for_path(c_path)
+	retGo := FileNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// FileNewForUri is a wrapper around the C function g_file_new_for_uri.
+func FileNewForUri(uri string) *File {
+	c_uri := C.CString(uri)
+	defer C.free(unsafe.Pointer(c_uri))
+
+	retC := C.g_file_new_for_uri(c_uri)
+	retGo := FileNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// FileParseName is a wrapper around the C function g_file_parse_name.
+func FileParseName(parseName string) *File {
+	c_parse_name := C.CString(parseName)
+	defer C.free(unsafe.Pointer(c_parse_name))
+
+	retC := C.g_file_parse_name(c_parse_name)
+	retGo := FileNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // IconHash is a wrapper around the C function g_icon_hash.
 func IconHash(icon uintptr) uint32 {
@@ -369,7 +456,15 @@ func UnixMountGuessCanEject(mountEntry *UnixMountEntry) bool {
 	return retGo
 }
 
-// Unsupported : g_unix_mount_guess_icon : no return generator
+// UnixMountGuessIcon is a wrapper around the C function g_unix_mount_guess_icon.
+func UnixMountGuessIcon(mountEntry *UnixMountEntry) *Icon {
+	c_mount_entry := (*C.GUnixMountEntry)(mountEntry.ToC())
+
+	retC := C.g_unix_mount_guess_icon(c_mount_entry)
+	retGo := IconNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // UnixMountGuessName is a wrapper around the C function g_unix_mount_guess_name.
 func UnixMountGuessName(mountEntry *UnixMountEntry) string {

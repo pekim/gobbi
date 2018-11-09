@@ -199,9 +199,39 @@ func CastToDBusConnection(object *gobject.Object) *DBusConnection {
 	return DBusConnectionNewFromC(object.ToC())
 }
 
-// Unsupported : g_dbus_connection_new_finish : unsupported parameter res : no type generator for AsyncResult (GAsyncResult*) for param res
+// DBusConnectionNewFinish is a wrapper around the C function g_dbus_connection_new_finish.
+func DBusConnectionNewFinish(res *AsyncResult) (*DBusConnection, error) {
+	c_res := (*C.GAsyncResult)(res.ToC())
 
-// Unsupported : g_dbus_connection_new_for_address_finish : unsupported parameter res : no type generator for AsyncResult (GAsyncResult*) for param res
+	var cThrowableError *C.GError
+
+	retC := C.g_dbus_connection_new_finish(c_res, &cThrowableError)
+	retGo := DBusConnectionNewFromC(unsafe.Pointer(retC))
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
+
+// DBusConnectionNewForAddressFinish is a wrapper around the C function g_dbus_connection_new_for_address_finish.
+func DBusConnectionNewForAddressFinish(res *AsyncResult) (*DBusConnection, error) {
+	c_res := (*C.GAsyncResult)(res.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_dbus_connection_new_for_address_finish(c_res, &cThrowableError)
+	retGo := DBusConnectionNewFromC(unsafe.Pointer(retC))
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // DBusConnectionNewForAddressSync is a wrapper around the C function g_dbus_connection_new_for_address_sync.
 func DBusConnectionNewForAddressSync(address string, flags DBusConnectionFlags, observer *DBusAuthObserver, cancellable *Cancellable) (*DBusConnection, error) {
@@ -257,13 +287,28 @@ func DBusConnectionNewSync(stream *IOStream, guid string, flags DBusConnectionFl
 
 // Unsupported : g_dbus_connection_call : unsupported parameter parameters : Blacklisted record : GVariant
 
-// Unsupported : g_dbus_connection_call_finish : unsupported parameter res : no type generator for AsyncResult (GAsyncResult*) for param res
+// Unsupported : g_dbus_connection_call_finish : return type : Blacklisted record : GVariant
 
 // Unsupported : g_dbus_connection_call_sync : unsupported parameter parameters : Blacklisted record : GVariant
 
 // Unsupported : g_dbus_connection_close : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_dbus_connection_close_finish : unsupported parameter res : no type generator for AsyncResult (GAsyncResult*) for param res
+// CloseFinish is a wrapper around the C function g_dbus_connection_close_finish.
+func (recv *DBusConnection) CloseFinish(res *AsyncResult) (bool, error) {
+	c_res := (*C.GAsyncResult)(res.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_dbus_connection_close_finish((*C.GDBusConnection)(recv.native), c_res, &cThrowableError)
+	retGo := retC == C.TRUE
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // CloseSync is a wrapper around the C function g_dbus_connection_close_sync.
 func (recv *DBusConnection) CloseSync(cancellable *Cancellable) (bool, error) {
@@ -286,7 +331,22 @@ func (recv *DBusConnection) CloseSync(cancellable *Cancellable) (bool, error) {
 
 // Unsupported : g_dbus_connection_flush : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_dbus_connection_flush_finish : unsupported parameter res : no type generator for AsyncResult (GAsyncResult*) for param res
+// FlushFinish is a wrapper around the C function g_dbus_connection_flush_finish.
+func (recv *DBusConnection) FlushFinish(res *AsyncResult) (bool, error) {
+	c_res := (*C.GAsyncResult)(res.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_dbus_connection_flush_finish((*C.GDBusConnection)(recv.native), c_res, &cThrowableError)
+	retGo := retC == C.TRUE
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // FlushSync is a wrapper around the C function g_dbus_connection_flush_sync.
 func (recv *DBusConnection) FlushSync(cancellable *Cancellable) (bool, error) {
@@ -404,7 +464,22 @@ func (recv *DBusConnection) SendMessage(message *DBusMessage, flags DBusSendMess
 
 // Unsupported : g_dbus_connection_send_message_with_reply : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_dbus_connection_send_message_with_reply_finish : unsupported parameter res : no type generator for AsyncResult (GAsyncResult*) for param res
+// SendMessageWithReplyFinish is a wrapper around the C function g_dbus_connection_send_message_with_reply_finish.
+func (recv *DBusConnection) SendMessageWithReplyFinish(res *AsyncResult) (*DBusMessage, error) {
+	c_res := (*C.GAsyncResult)(res.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_dbus_connection_send_message_with_reply_finish((*C.GDBusConnection)(recv.native), c_res, &cThrowableError)
+	retGo := DBusMessageNewFromC(unsafe.Pointer(retC))
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // SendMessageWithReplySync is a wrapper around the C function g_dbus_connection_send_message_with_reply_sync.
 func (recv *DBusConnection) SendMessageWithReplySync(message *DBusMessage, flags DBusSendMessageFlags, timeoutMsec int32, cancellable *Cancellable) (*DBusMessage, uint32, error) {
@@ -1100,9 +1175,39 @@ func CastToDBusProxy(object *gobject.Object) *DBusProxy {
 	return DBusProxyNewFromC(object.ToC())
 }
 
-// Unsupported : g_dbus_proxy_new_finish : unsupported parameter res : no type generator for AsyncResult (GAsyncResult*) for param res
+// DBusProxyNewFinish is a wrapper around the C function g_dbus_proxy_new_finish.
+func DBusProxyNewFinish(res *AsyncResult) (*DBusProxy, error) {
+	c_res := (*C.GAsyncResult)(res.ToC())
 
-// Unsupported : g_dbus_proxy_new_for_bus_finish : unsupported parameter res : no type generator for AsyncResult (GAsyncResult*) for param res
+	var cThrowableError *C.GError
+
+	retC := C.g_dbus_proxy_new_finish(c_res, &cThrowableError)
+	retGo := DBusProxyNewFromC(unsafe.Pointer(retC))
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
+
+// DBusProxyNewForBusFinish is a wrapper around the C function g_dbus_proxy_new_for_bus_finish.
+func DBusProxyNewForBusFinish(res *AsyncResult) (*DBusProxy, error) {
+	c_res := (*C.GAsyncResult)(res.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_dbus_proxy_new_for_bus_finish(c_res, &cThrowableError)
+	retGo := DBusProxyNewFromC(unsafe.Pointer(retC))
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // DBusProxyNewForBusSync is a wrapper around the C function g_dbus_proxy_new_for_bus_sync.
 func DBusProxyNewForBusSync(busType BusType, flags DBusProxyFlags, info *DBusInterfaceInfo, name string, objectPath string, interfaceName string, cancellable *Cancellable) (*DBusProxy, error) {
@@ -1170,7 +1275,7 @@ func DBusProxyNewSync(connection *DBusConnection, flags DBusProxyFlags, info *DB
 
 // Unsupported : g_dbus_proxy_call : unsupported parameter parameters : Blacklisted record : GVariant
 
-// Unsupported : g_dbus_proxy_call_finish : unsupported parameter res : no type generator for AsyncResult (GAsyncResult*) for param res
+// Unsupported : g_dbus_proxy_call_finish : return type : Blacklisted record : GVariant
 
 // Unsupported : g_dbus_proxy_call_sync : unsupported parameter parameters : Blacklisted record : GVariant
 
@@ -1455,7 +1560,22 @@ func (recv *Permission) Acquire(cancellable *Cancellable) (bool, error) {
 
 // Unsupported : g_permission_acquire_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_permission_acquire_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
+// AcquireFinish is a wrapper around the C function g_permission_acquire_finish.
+func (recv *Permission) AcquireFinish(result *AsyncResult) (bool, error) {
+	c_result := (*C.GAsyncResult)(result.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_permission_acquire_finish((*C.GPermission)(recv.native), c_result, &cThrowableError)
+	retGo := retC == C.TRUE
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // GetAllowed is a wrapper around the C function g_permission_get_allowed.
 func (recv *Permission) GetAllowed() bool {
@@ -1516,7 +1636,22 @@ func (recv *Permission) Release(cancellable *Cancellable) (bool, error) {
 
 // Unsupported : g_permission_release_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_permission_release_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
+// ReleaseFinish is a wrapper around the C function g_permission_release_finish.
+func (recv *Permission) ReleaseFinish(result *AsyncResult) (bool, error) {
+	c_result := (*C.GAsyncResult)(result.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_permission_release_finish((*C.GPermission)(recv.native), c_result, &cThrowableError)
+	retGo := retC == C.TRUE
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // ProxyAddress is a wrapper around the C record GProxyAddress.
 type ProxyAddress struct {
@@ -2016,7 +2151,22 @@ func (recv *SocketClient) ConnectToUri(uri string, defaultPort uint16, cancellab
 
 // Unsupported : g_socket_client_connect_to_uri_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_socket_client_connect_to_uri_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
+// ConnectToUriFinish is a wrapper around the C function g_socket_client_connect_to_uri_finish.
+func (recv *SocketClient) ConnectToUriFinish(result *AsyncResult) (*SocketConnection, error) {
+	c_result := (*C.GAsyncResult)(result.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_socket_client_connect_to_uri_finish((*C.GSocketClient)(recv.native), c_result, &cThrowableError)
+	retGo := SocketConnectionNewFromC(unsafe.Pointer(retC))
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // GetEnableProxy is a wrapper around the C function g_socket_client_get_enable_proxy.
 func (recv *SocketClient) GetEnableProxy() bool {

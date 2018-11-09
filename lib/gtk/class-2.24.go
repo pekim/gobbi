@@ -22,7 +22,15 @@ func ComboBoxNewWithEntry() *ComboBox {
 	return retGo
 }
 
-// Unsupported : gtk_combo_box_new_with_model_and_entry : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
+// ComboBoxNewWithModelAndEntry is a wrapper around the C function gtk_combo_box_new_with_model_and_entry.
+func ComboBoxNewWithModelAndEntry(model *TreeModel) *ComboBox {
+	c_model := (*C.GtkTreeModel)(model.ToC())
+
+	retC := C.gtk_combo_box_new_with_model_and_entry(c_model)
+	retGo := ComboBoxNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // GetEntryTextColumn is a wrapper around the C function gtk_combo_box_get_entry_text_column.
 func (recv *ComboBox) GetEntryTextColumn() int32 {

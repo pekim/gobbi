@@ -148,7 +148,7 @@ func (recv *TreeSelection) CountSelectedRows() int32 {
 	return retGo
 }
 
-// Unsupported : gtk_tree_selection_get_selected_rows : unsupported parameter model : no type generator for TreeModel (GtkTreeModel**) for param model
+// Unsupported : gtk_tree_selection_get_selected_rows : unsupported parameter model : record with indirection level of 2
 
 // UnselectRange is a wrapper around the C function gtk_tree_selection_unselect_range.
 func (recv *TreeSelection) UnselectRange(startPath *TreePath, endPath *TreePath) {

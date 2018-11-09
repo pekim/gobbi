@@ -3,7 +3,10 @@
 
 package gtk
 
-import "unsafe"
+import (
+	gio "github.com/pekim/gobbi/lib/gio"
+	"unsafe"
+)
 
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <gtk/gtk-a11y.h>
@@ -12,7 +15,18 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : gtk_app_chooser_get_app_info : no return generator
+// GetAppInfo is a wrapper around the C function gtk_app_chooser_get_app_info.
+func (recv *AppChooser) GetAppInfo() *gio.AppInfo {
+	retC := C.gtk_app_chooser_get_app_info((*C.GtkAppChooser)(recv.native))
+	var retGo (*gio.AppInfo)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = gio.AppInfoNewFromC(unsafe.Pointer(retC))
+	}
+
+	return retGo
+}
 
 // GetContentType is a wrapper around the C function gtk_app_chooser_get_content_type.
 func (recv *AppChooser) GetContentType() string {

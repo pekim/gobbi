@@ -4209,7 +4209,13 @@ func (recv *UnixMountPoint) GuessCanEject() bool {
 	return retGo
 }
 
-// Unsupported : g_unix_mount_point_guess_icon : no return generator
+// GuessIcon is a wrapper around the C function g_unix_mount_point_guess_icon.
+func (recv *UnixMountPoint) GuessIcon() *Icon {
+	retC := C.g_unix_mount_point_guess_icon((*C.GUnixMountPoint)(recv.native))
+	retGo := IconNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // GuessName is a wrapper around the C function g_unix_mount_point_guess_name.
 func (recv *UnixMountPoint) GuessName() string {

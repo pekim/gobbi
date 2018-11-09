@@ -194,9 +194,39 @@ func CastToDBusObjectManagerClient(object *gobject.Object) *DBusObjectManagerCli
 	return DBusObjectManagerClientNewFromC(object.ToC())
 }
 
-// Unsupported : g_dbus_object_manager_client_new_finish : unsupported parameter res : no type generator for AsyncResult (GAsyncResult*) for param res
+// DBusObjectManagerClientNewFinish is a wrapper around the C function g_dbus_object_manager_client_new_finish.
+func DBusObjectManagerClientNewFinish(res *AsyncResult) (*DBusObjectManagerClient, error) {
+	c_res := (*C.GAsyncResult)(res.ToC())
 
-// Unsupported : g_dbus_object_manager_client_new_for_bus_finish : unsupported parameter res : no type generator for AsyncResult (GAsyncResult*) for param res
+	var cThrowableError *C.GError
+
+	retC := C.g_dbus_object_manager_client_new_finish(c_res, &cThrowableError)
+	retGo := DBusObjectManagerClientNewFromC(unsafe.Pointer(retC))
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
+
+// DBusObjectManagerClientNewForBusFinish is a wrapper around the C function g_dbus_object_manager_client_new_for_bus_finish.
+func DBusObjectManagerClientNewForBusFinish(res *AsyncResult) (*DBusObjectManagerClient, error) {
+	c_res := (*C.GAsyncResult)(res.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_dbus_object_manager_client_new_for_bus_finish(c_res, &cThrowableError)
+	retGo := DBusObjectManagerClientNewFromC(unsafe.Pointer(retC))
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // Unsupported : g_dbus_object_manager_client_new_for_bus_sync : unsupported parameter get_proxy_type_func : no type generator for DBusProxyTypeFunc (GDBusProxyTypeFunc) for param get_proxy_type_func
 
@@ -477,7 +507,27 @@ func (recv *DBusObjectSkeleton) SetObjectPath(objectPath string) {
 
 // Unsupported : g_dbus_proxy_call_with_unix_fd_list_sync : unsupported parameter parameters : Blacklisted record : GVariant
 
-// Unsupported : g_data_input_stream_read_line_finish_utf8 : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
+// ReadLineFinishUtf8 is a wrapper around the C function g_data_input_stream_read_line_finish_utf8.
+func (recv *DataInputStream) ReadLineFinishUtf8(result *AsyncResult) (string, uint64, error) {
+	c_result := (*C.GAsyncResult)(result.ToC())
+
+	var c_length C.gsize
+
+	var cThrowableError *C.GError
+
+	retC := C.g_data_input_stream_read_line_finish_utf8((*C.GDataInputStream)(recv.native), c_result, &c_length, &cThrowableError)
+	retGo := C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	length := (uint64)(c_length)
+
+	return retGo, length, goThrowableError
+}
 
 // ReadLineUtf8 is a wrapper around the C function g_data_input_stream_read_line_utf8.
 func (recv *DataInputStream) ReadLineUtf8(cancellable *Cancellable) (string, uint64, error) {
@@ -670,7 +720,22 @@ func (recv *TlsDatabase) LookupCertificateForHandle(handle string, interaction *
 
 // Unsupported : g_tls_database_lookup_certificate_for_handle_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_tls_database_lookup_certificate_for_handle_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
+// LookupCertificateForHandleFinish is a wrapper around the C function g_tls_database_lookup_certificate_for_handle_finish.
+func (recv *TlsDatabase) LookupCertificateForHandleFinish(result *AsyncResult) (*TlsCertificate, error) {
+	c_result := (*C.GAsyncResult)(result.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_tls_database_lookup_certificate_for_handle_finish((*C.GTlsDatabase)(recv.native), c_result, &cThrowableError)
+	retGo := TlsCertificateNewFromC(unsafe.Pointer(retC))
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // LookupCertificateIssuer is a wrapper around the C function g_tls_database_lookup_certificate_issuer.
 func (recv *TlsDatabase) LookupCertificateIssuer(certificate *TlsCertificate, interaction *TlsInteraction, flags TlsDatabaseLookupFlags, cancellable *Cancellable) (*TlsCertificate, error) {
@@ -697,7 +762,22 @@ func (recv *TlsDatabase) LookupCertificateIssuer(certificate *TlsCertificate, in
 
 // Unsupported : g_tls_database_lookup_certificate_issuer_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_tls_database_lookup_certificate_issuer_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
+// LookupCertificateIssuerFinish is a wrapper around the C function g_tls_database_lookup_certificate_issuer_finish.
+func (recv *TlsDatabase) LookupCertificateIssuerFinish(result *AsyncResult) (*TlsCertificate, error) {
+	c_result := (*C.GAsyncResult)(result.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_tls_database_lookup_certificate_issuer_finish((*C.GTlsDatabase)(recv.native), c_result, &cThrowableError)
+	retGo := TlsCertificateNewFromC(unsafe.Pointer(retC))
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // LookupCertificatesIssuedBy is a wrapper around the C function g_tls_database_lookup_certificates_issued_by.
 func (recv *TlsDatabase) LookupCertificatesIssuedBy(issuerRawDn []uint8, interaction *TlsInteraction, flags TlsDatabaseLookupFlags, cancellable *Cancellable) (*glib.List, error) {
@@ -724,13 +804,69 @@ func (recv *TlsDatabase) LookupCertificatesIssuedBy(issuerRawDn []uint8, interac
 
 // Unsupported : g_tls_database_lookup_certificates_issued_by_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_tls_database_lookup_certificates_issued_by_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
+// LookupCertificatesIssuedByFinish is a wrapper around the C function g_tls_database_lookup_certificates_issued_by_finish.
+func (recv *TlsDatabase) LookupCertificatesIssuedByFinish(result *AsyncResult) (*glib.List, error) {
+	c_result := (*C.GAsyncResult)(result.ToC())
 
-// Unsupported : g_tls_database_verify_chain : unsupported parameter identity : no type generator for SocketConnectable (GSocketConnectable*) for param identity
+	var cThrowableError *C.GError
 
-// Unsupported : g_tls_database_verify_chain_async : unsupported parameter identity : no type generator for SocketConnectable (GSocketConnectable*) for param identity
+	retC := C.g_tls_database_lookup_certificates_issued_by_finish((*C.GTlsDatabase)(recv.native), c_result, &cThrowableError)
+	retGo := glib.ListNewFromC(unsafe.Pointer(retC))
 
-// Unsupported : g_tls_database_verify_chain_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
+
+// VerifyChain is a wrapper around the C function g_tls_database_verify_chain.
+func (recv *TlsDatabase) VerifyChain(chain *TlsCertificate, purpose string, identity *SocketConnectable, interaction *TlsInteraction, flags TlsDatabaseVerifyFlags, cancellable *Cancellable) (TlsCertificateFlags, error) {
+	c_chain := (*C.GTlsCertificate)(chain.ToC())
+
+	c_purpose := C.CString(purpose)
+	defer C.free(unsafe.Pointer(c_purpose))
+
+	c_identity := (*C.GSocketConnectable)(identity.ToC())
+
+	c_interaction := (*C.GTlsInteraction)(interaction.ToC())
+
+	c_flags := (C.GTlsDatabaseVerifyFlags)(flags)
+
+	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_tls_database_verify_chain((*C.GTlsDatabase)(recv.native), c_chain, c_purpose, c_identity, c_interaction, c_flags, c_cancellable, &cThrowableError)
+	retGo := (TlsCertificateFlags)(retC)
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
+
+// Unsupported : g_tls_database_verify_chain_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
+
+// VerifyChainFinish is a wrapper around the C function g_tls_database_verify_chain_finish.
+func (recv *TlsDatabase) VerifyChainFinish(result *AsyncResult) (TlsCertificateFlags, error) {
+	c_result := (*C.GAsyncResult)(result.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_tls_database_verify_chain_finish((*C.GTlsDatabase)(recv.native), c_result, &cThrowableError)
+	retGo := (TlsCertificateFlags)(retC)
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // TlsInteraction is a wrapper around the C record GTlsInteraction.
 type TlsInteraction struct {
@@ -787,7 +923,22 @@ func (recv *TlsInteraction) AskPassword(password *TlsPassword, cancellable *Canc
 
 // Unsupported : g_tls_interaction_ask_password_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_tls_interaction_ask_password_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
+// AskPasswordFinish is a wrapper around the C function g_tls_interaction_ask_password_finish.
+func (recv *TlsInteraction) AskPasswordFinish(result *AsyncResult) (TlsInteractionResult, error) {
+	c_result := (*C.GAsyncResult)(result.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_tls_interaction_ask_password_finish((*C.GTlsInteraction)(recv.native), c_result, &cThrowableError)
+	retGo := (TlsInteractionResult)(retC)
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // InvokeAskPassword is a wrapper around the C function g_tls_interaction_invoke_ask_password.
 func (recv *TlsInteraction) InvokeAskPassword(password *TlsPassword, cancellable *Cancellable) (TlsInteractionResult, error) {

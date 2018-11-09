@@ -5,6 +5,7 @@ package gio
 
 import (
 	glib "github.com/pekim/gobbi/lib/glib"
+	"sync"
 	"unsafe"
 )
 
@@ -21,6 +22,15 @@ import (
 // #include <gio/gunixoutputstream.h>
 // #include <gio/gunixsocketaddress.h>
 // #include <stdlib.h>
+/*
+
+	void volumemonitor_driveEjectButtonHandler(GObject *, GDrive *, gpointer);
+
+	static gulong VolumeMonitor_signal_connect_drive_eject_button(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "drive-eject-button", G_CALLBACK(volumemonitor_driveEjectButtonHandler), data);
+	}
+
+*/
 import "C"
 
 // DesktopAppInfoNewFromKeyfile is a wrapper around the C function g_desktop_app_info_new_from_keyfile.
@@ -33,11 +43,35 @@ func DesktopAppInfoNewFromKeyfile(keyFile *glib.KeyFile) *DesktopAppInfo {
 	return retGo
 }
 
-// Unsupported : g_emblem_new : unsupported parameter icon : no type generator for Icon (GIcon*) for param icon
+// EmblemNew is a wrapper around the C function g_emblem_new.
+func EmblemNew(icon *Icon) *Emblem {
+	c_icon := (*C.GIcon)(icon.ToC())
 
-// Unsupported : g_emblem_new_with_origin : unsupported parameter icon : no type generator for Icon (GIcon*) for param icon
+	retC := C.g_emblem_new(c_icon)
+	retGo := EmblemNewFromC(unsafe.Pointer(retC))
 
-// Unsupported : g_emblem_get_icon : no return generator
+	return retGo
+}
+
+// EmblemNewWithOrigin is a wrapper around the C function g_emblem_new_with_origin.
+func EmblemNewWithOrigin(icon *Icon, origin EmblemOrigin) *Emblem {
+	c_icon := (*C.GIcon)(icon.ToC())
+
+	c_origin := (C.GEmblemOrigin)(origin)
+
+	retC := C.g_emblem_new_with_origin(c_icon, c_origin)
+	retGo := EmblemNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// GetIcon is a wrapper around the C function g_emblem_get_icon.
+func (recv *Emblem) GetIcon() *Icon {
+	retC := C.g_emblem_get_icon((*C.GEmblem)(recv.native))
+	retGo := IconNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // GetOrigin is a wrapper around the C function g_emblem_get_origin.
 func (recv *Emblem) GetOrigin() EmblemOrigin {
@@ -47,7 +81,17 @@ func (recv *Emblem) GetOrigin() EmblemOrigin {
 	return retGo
 }
 
-// Unsupported : g_emblemed_icon_new : unsupported parameter icon : no type generator for Icon (GIcon*) for param icon
+// EmblemedIconNew is a wrapper around the C function g_emblemed_icon_new.
+func EmblemedIconNew(icon *Icon, emblem *Emblem) *EmblemedIcon {
+	c_icon := (*C.GIcon)(icon.ToC())
+
+	c_emblem := (*C.GEmblem)(emblem.ToC())
+
+	retC := C.g_emblemed_icon_new(c_icon, c_emblem)
+	retGo := EmblemedIconNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // AddEmblem is a wrapper around the C function g_emblemed_icon_add_emblem.
 func (recv *EmblemedIcon) AddEmblem(emblem *Emblem) {
@@ -66,9 +110,21 @@ func (recv *EmblemedIcon) GetEmblems() *glib.List {
 	return retGo
 }
 
-// Unsupported : g_emblemed_icon_get_icon : no return generator
+// GetIcon is a wrapper around the C function g_emblemed_icon_get_icon.
+func (recv *EmblemedIcon) GetIcon() *Icon {
+	retC := C.g_emblemed_icon_get_icon((*C.GEmblemedIcon)(recv.native))
+	retGo := IconNewFromC(unsafe.Pointer(retC))
 
-// Unsupported : g_file_enumerator_get_container : no return generator
+	return retGo
+}
+
+// GetContainer is a wrapper around the C function g_file_enumerator_get_container.
+func (recv *FileEnumerator) GetContainer() *File {
+	retC := C.g_file_enumerator_get_container((*C.GFileEnumerator)(recv.native))
+	retGo := FileNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // GetDataSize is a wrapper around the C function g_memory_output_stream_get_data_size.
 func (recv *MemoryOutputStream) GetDataSize() uint64 {
@@ -97,4 +153,61 @@ func (recv *UnixMountMonitor) SetRateLimit(limitMsec int32) {
 	return
 }
 
-// Unsupported signal 'drive-eject-button' for VolumeMonitor : unsupported parameter drive : no type generator for Drive,
+type signalVolumeMonitorDriveEjectButtonDetail struct {
+	callback  VolumeMonitorSignalDriveEjectButtonCallback
+	handlerID C.gulong
+}
+
+var signalVolumeMonitorDriveEjectButtonId int
+var signalVolumeMonitorDriveEjectButtonMap = make(map[int]signalVolumeMonitorDriveEjectButtonDetail)
+var signalVolumeMonitorDriveEjectButtonLock sync.Mutex
+
+// VolumeMonitorSignalDriveEjectButtonCallback is a callback function for a 'drive-eject-button' signal emitted from a VolumeMonitor.
+type VolumeMonitorSignalDriveEjectButtonCallback func(drive *Drive)
+
+/*
+ConnectDriveEjectButton connects the callback to the 'drive-eject-button' signal for the VolumeMonitor.
+
+The returned value represents the connection, and may be passed to DisconnectDriveEjectButton to remove it.
+*/
+func (recv *VolumeMonitor) ConnectDriveEjectButton(callback VolumeMonitorSignalDriveEjectButtonCallback) int {
+	signalVolumeMonitorDriveEjectButtonLock.Lock()
+	defer signalVolumeMonitorDriveEjectButtonLock.Unlock()
+
+	signalVolumeMonitorDriveEjectButtonId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.VolumeMonitor_signal_connect_drive_eject_button(instance, C.gpointer(uintptr(signalVolumeMonitorDriveEjectButtonId)))
+
+	detail := signalVolumeMonitorDriveEjectButtonDetail{callback, handlerID}
+	signalVolumeMonitorDriveEjectButtonMap[signalVolumeMonitorDriveEjectButtonId] = detail
+
+	return signalVolumeMonitorDriveEjectButtonId
+}
+
+/*
+DisconnectDriveEjectButton disconnects a callback from the 'drive-eject-button' signal for the VolumeMonitor.
+
+The connectionID should be a value returned from a call to ConnectDriveEjectButton.
+*/
+func (recv *VolumeMonitor) DisconnectDriveEjectButton(connectionID int) {
+	signalVolumeMonitorDriveEjectButtonLock.Lock()
+	defer signalVolumeMonitorDriveEjectButtonLock.Unlock()
+
+	detail, exists := signalVolumeMonitorDriveEjectButtonMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalVolumeMonitorDriveEjectButtonMap, connectionID)
+}
+
+//export volumemonitor_driveEjectButtonHandler
+func volumemonitor_driveEjectButtonHandler(_ *C.GObject, c_drive *C.GDrive, data C.gpointer) {
+	drive := DriveNewFromC(unsafe.Pointer(c_drive))
+
+	index := int(uintptr(data))
+	callback := signalVolumeMonitorDriveEjectButtonMap[index].callback
+	callback(drive)
+}

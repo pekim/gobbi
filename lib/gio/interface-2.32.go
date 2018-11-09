@@ -3,7 +3,10 @@
 
 package gio
 
-import "unsafe"
+import (
+	glib "github.com/pekim/gobbi/lib/glib"
+	"unsafe"
+)
 
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <gio/gdesktopappinfo.h>
@@ -22,11 +25,27 @@ import "C"
 
 // Unsupported : g_action_group_query_action : unsupported parameter parameter_type : Blacklisted record : GVariantType
 
-// Unsupported : g_action_map_add_action : unsupported parameter action : no type generator for Action (GAction*) for param action
+// AddAction is a wrapper around the C function g_action_map_add_action.
+func (recv *ActionMap) AddAction(action *Action) {
+	c_action := (*C.GAction)(action.ToC())
+
+	C.g_action_map_add_action((*C.GActionMap)(recv.native), c_action)
+
+	return
+}
 
 // Unsupported : g_action_map_add_action_entries : unsupported parameter entries :
 
-// Unsupported : g_action_map_lookup_action : no return generator
+// LookupAction is a wrapper around the C function g_action_map_lookup_action.
+func (recv *ActionMap) LookupAction(actionName string) *Action {
+	c_action_name := C.CString(actionName)
+	defer C.free(unsafe.Pointer(c_action_name))
+
+	retC := C.g_action_map_lookup_action((*C.GActionMap)(recv.native), c_action_name)
+	retGo := ActionNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // RemoveAction is a wrapper around the C function g_action_map_remove_action.
 func (recv *ActionMap) RemoveAction(actionName string) {
@@ -38,7 +57,13 @@ func (recv *ActionMap) RemoveAction(actionName string) {
 	return
 }
 
-// Unsupported : g_dbus_interface_dup_object : no return generator
+// DupObject is a wrapper around the C function g_dbus_interface_dup_object.
+func (recv *DBusInterface) DupObject() *DBusObject {
+	retC := C.g_dbus_interface_dup_object((*C.GDBusInterface)(recv.native))
+	retGo := DBusObjectNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // GetSortKey is a wrapper around the C function g_drive_get_sort_key.
 func (recv *Drive) GetSortKey() string {
@@ -77,11 +102,43 @@ func (recv *NetworkMonitor) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : g_network_monitor_can_reach : unsupported parameter connectable : no type generator for SocketConnectable (GSocketConnectable*) for param connectable
+// CanReach is a wrapper around the C function g_network_monitor_can_reach.
+func (recv *NetworkMonitor) CanReach(connectable *SocketConnectable, cancellable *Cancellable) (bool, error) {
+	c_connectable := (*C.GSocketConnectable)(connectable.ToC())
 
-// Unsupported : g_network_monitor_can_reach_async : unsupported parameter connectable : no type generator for SocketConnectable (GSocketConnectable*) for param connectable
+	c_cancellable := (*C.GCancellable)(cancellable.ToC())
 
-// Unsupported : g_network_monitor_can_reach_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
+	var cThrowableError *C.GError
+
+	retC := C.g_network_monitor_can_reach((*C.GNetworkMonitor)(recv.native), c_connectable, c_cancellable, &cThrowableError)
+	retGo := retC == C.TRUE
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
+
+// Unsupported : g_network_monitor_can_reach_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
+
+// CanReachFinish is a wrapper around the C function g_network_monitor_can_reach_finish.
+func (recv *NetworkMonitor) CanReachFinish(result *AsyncResult) (bool, error) {
+	c_result := (*C.GAsyncResult)(result.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_network_monitor_can_reach_finish((*C.GNetworkMonitor)(recv.native), c_result, &cThrowableError)
+	retGo := retC == C.TRUE
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // GetNetworkAvailable is a wrapper around the C function g_network_monitor_get_network_available.
 func (recv *NetworkMonitor) GetNetworkAvailable() bool {

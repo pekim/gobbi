@@ -5,6 +5,9 @@ package gtk
 
 import (
 	gdk "github.com/pekim/gobbi/lib/gdk"
+	gdkpixbuf "github.com/pekim/gobbi/lib/gdkpixbuf"
+	gio "github.com/pekim/gobbi/lib/gio"
+	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	"unsafe"
 )
@@ -30,15 +33,68 @@ func (recv *Builder) ExposeObject(name string, object *gobject.Object) {
 
 // Unsupported : gtk_icon_info_load_icon_async : unsupported parameter callback : no type generator for Gio.AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : gtk_icon_info_load_icon_finish : unsupported parameter res : no type generator for Gio.AsyncResult (GAsyncResult*) for param res
+// LoadIconFinish is a wrapper around the C function gtk_icon_info_load_icon_finish.
+func (recv *IconInfo) LoadIconFinish(res *gio.AsyncResult) (*gdkpixbuf.Pixbuf, error) {
+	c_res := (*C.GAsyncResult)(res.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.gtk_icon_info_load_icon_finish((*C.GtkIconInfo)(recv.native), c_res, &cThrowableError)
+	retGo := gdkpixbuf.PixbufNewFromC(unsafe.Pointer(retC))
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // Unsupported : gtk_icon_info_load_symbolic_async : unsupported parameter callback : no type generator for Gio.AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : gtk_icon_info_load_symbolic_finish : unsupported parameter res : no type generator for Gio.AsyncResult (GAsyncResult*) for param res
+// LoadSymbolicFinish is a wrapper around the C function gtk_icon_info_load_symbolic_finish.
+func (recv *IconInfo) LoadSymbolicFinish(res *gio.AsyncResult) (*gdkpixbuf.Pixbuf, bool, error) {
+	c_res := (*C.GAsyncResult)(res.ToC())
+
+	var c_was_symbolic C.gboolean
+
+	var cThrowableError *C.GError
+
+	retC := C.gtk_icon_info_load_symbolic_finish((*C.GtkIconInfo)(recv.native), c_res, &c_was_symbolic, &cThrowableError)
+	retGo := gdkpixbuf.PixbufNewFromC(unsafe.Pointer(retC))
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	wasSymbolic := c_was_symbolic == C.TRUE
+
+	return retGo, wasSymbolic, goThrowableError
+}
 
 // Unsupported : gtk_icon_info_load_symbolic_for_context_async : unsupported parameter callback : no type generator for Gio.AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : gtk_icon_info_load_symbolic_for_context_finish : unsupported parameter res : no type generator for Gio.AsyncResult (GAsyncResult*) for param res
+// LoadSymbolicForContextFinish is a wrapper around the C function gtk_icon_info_load_symbolic_for_context_finish.
+func (recv *IconInfo) LoadSymbolicForContextFinish(res *gio.AsyncResult) (*gdkpixbuf.Pixbuf, bool, error) {
+	c_res := (*C.GAsyncResult)(res.ToC())
+
+	var c_was_symbolic C.gboolean
+
+	var cThrowableError *C.GError
+
+	retC := C.gtk_icon_info_load_symbolic_for_context_finish((*C.GtkIconInfo)(recv.native), c_res, &c_was_symbolic, &cThrowableError)
+	retGo := gdkpixbuf.PixbufNewFromC(unsafe.Pointer(retC))
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	wasSymbolic := c_was_symbolic == C.TRUE
+
+	return retGo, wasSymbolic, goThrowableError
+}
 
 // GetActivateOnSingleClick is a wrapper around the C function gtk_icon_view_get_activate_on_single_click.
 func (recv *IconView) GetActivateOnSingleClick() bool {

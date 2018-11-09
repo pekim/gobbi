@@ -40,6 +40,33 @@ import (
 */
 /*
 
+	void appchooserwidget_applicationActivatedHandler(GObject *, GAppInfo *, gpointer);
+
+	static gulong AppChooserWidget_signal_connect_application_activated(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "application-activated", G_CALLBACK(appchooserwidget_applicationActivatedHandler), data);
+	}
+
+*/
+/*
+
+	void appchooserwidget_applicationSelectedHandler(GObject *, GAppInfo *, gpointer);
+
+	static gulong AppChooserWidget_signal_connect_application_selected(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "application-selected", G_CALLBACK(appchooserwidget_applicationSelectedHandler), data);
+	}
+
+*/
+/*
+
+	void appchooserwidget_populatePopupHandler(GObject *, GtkMenu *, GAppInfo *, gpointer);
+
+	static gulong AppChooserWidget_signal_connect_populate_popup(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "populate-popup", G_CALLBACK(appchooserwidget_populatePopupHandler), data);
+	}
+
+*/
+/*
+
 	void assistant_escapeHandler(GObject *, gpointer);
 
 	static gulong Assistant_signal_connect_escape(gpointer instance, gpointer data) {
@@ -2728,11 +2755,184 @@ func CastToAppChooserWidget(object *gobject.Object) *AppChooserWidget {
 	return AppChooserWidgetNewFromC(object.ToC())
 }
 
-// Unsupported signal 'application-activated' for AppChooserWidget : unsupported parameter application : no type generator for Gio.AppInfo,
+type signalAppChooserWidgetApplicationActivatedDetail struct {
+	callback  AppChooserWidgetSignalApplicationActivatedCallback
+	handlerID C.gulong
+}
 
-// Unsupported signal 'application-selected' for AppChooserWidget : unsupported parameter application : no type generator for Gio.AppInfo,
+var signalAppChooserWidgetApplicationActivatedId int
+var signalAppChooserWidgetApplicationActivatedMap = make(map[int]signalAppChooserWidgetApplicationActivatedDetail)
+var signalAppChooserWidgetApplicationActivatedLock sync.Mutex
 
-// Unsupported signal 'populate-popup' for AppChooserWidget : unsupported parameter application : no type generator for Gio.AppInfo,
+// AppChooserWidgetSignalApplicationActivatedCallback is a callback function for a 'application-activated' signal emitted from a AppChooserWidget.
+type AppChooserWidgetSignalApplicationActivatedCallback func(application *gio.AppInfo)
+
+/*
+ConnectApplicationActivated connects the callback to the 'application-activated' signal for the AppChooserWidget.
+
+The returned value represents the connection, and may be passed to DisconnectApplicationActivated to remove it.
+*/
+func (recv *AppChooserWidget) ConnectApplicationActivated(callback AppChooserWidgetSignalApplicationActivatedCallback) int {
+	signalAppChooserWidgetApplicationActivatedLock.Lock()
+	defer signalAppChooserWidgetApplicationActivatedLock.Unlock()
+
+	signalAppChooserWidgetApplicationActivatedId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.AppChooserWidget_signal_connect_application_activated(instance, C.gpointer(uintptr(signalAppChooserWidgetApplicationActivatedId)))
+
+	detail := signalAppChooserWidgetApplicationActivatedDetail{callback, handlerID}
+	signalAppChooserWidgetApplicationActivatedMap[signalAppChooserWidgetApplicationActivatedId] = detail
+
+	return signalAppChooserWidgetApplicationActivatedId
+}
+
+/*
+DisconnectApplicationActivated disconnects a callback from the 'application-activated' signal for the AppChooserWidget.
+
+The connectionID should be a value returned from a call to ConnectApplicationActivated.
+*/
+func (recv *AppChooserWidget) DisconnectApplicationActivated(connectionID int) {
+	signalAppChooserWidgetApplicationActivatedLock.Lock()
+	defer signalAppChooserWidgetApplicationActivatedLock.Unlock()
+
+	detail, exists := signalAppChooserWidgetApplicationActivatedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalAppChooserWidgetApplicationActivatedMap, connectionID)
+}
+
+//export appchooserwidget_applicationActivatedHandler
+func appchooserwidget_applicationActivatedHandler(_ *C.GObject, c_application *C.GAppInfo, data C.gpointer) {
+	application := gio.AppInfoNewFromC(unsafe.Pointer(c_application))
+
+	index := int(uintptr(data))
+	callback := signalAppChooserWidgetApplicationActivatedMap[index].callback
+	callback(application)
+}
+
+type signalAppChooserWidgetApplicationSelectedDetail struct {
+	callback  AppChooserWidgetSignalApplicationSelectedCallback
+	handlerID C.gulong
+}
+
+var signalAppChooserWidgetApplicationSelectedId int
+var signalAppChooserWidgetApplicationSelectedMap = make(map[int]signalAppChooserWidgetApplicationSelectedDetail)
+var signalAppChooserWidgetApplicationSelectedLock sync.Mutex
+
+// AppChooserWidgetSignalApplicationSelectedCallback is a callback function for a 'application-selected' signal emitted from a AppChooserWidget.
+type AppChooserWidgetSignalApplicationSelectedCallback func(application *gio.AppInfo)
+
+/*
+ConnectApplicationSelected connects the callback to the 'application-selected' signal for the AppChooserWidget.
+
+The returned value represents the connection, and may be passed to DisconnectApplicationSelected to remove it.
+*/
+func (recv *AppChooserWidget) ConnectApplicationSelected(callback AppChooserWidgetSignalApplicationSelectedCallback) int {
+	signalAppChooserWidgetApplicationSelectedLock.Lock()
+	defer signalAppChooserWidgetApplicationSelectedLock.Unlock()
+
+	signalAppChooserWidgetApplicationSelectedId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.AppChooserWidget_signal_connect_application_selected(instance, C.gpointer(uintptr(signalAppChooserWidgetApplicationSelectedId)))
+
+	detail := signalAppChooserWidgetApplicationSelectedDetail{callback, handlerID}
+	signalAppChooserWidgetApplicationSelectedMap[signalAppChooserWidgetApplicationSelectedId] = detail
+
+	return signalAppChooserWidgetApplicationSelectedId
+}
+
+/*
+DisconnectApplicationSelected disconnects a callback from the 'application-selected' signal for the AppChooserWidget.
+
+The connectionID should be a value returned from a call to ConnectApplicationSelected.
+*/
+func (recv *AppChooserWidget) DisconnectApplicationSelected(connectionID int) {
+	signalAppChooserWidgetApplicationSelectedLock.Lock()
+	defer signalAppChooserWidgetApplicationSelectedLock.Unlock()
+
+	detail, exists := signalAppChooserWidgetApplicationSelectedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalAppChooserWidgetApplicationSelectedMap, connectionID)
+}
+
+//export appchooserwidget_applicationSelectedHandler
+func appchooserwidget_applicationSelectedHandler(_ *C.GObject, c_application *C.GAppInfo, data C.gpointer) {
+	application := gio.AppInfoNewFromC(unsafe.Pointer(c_application))
+
+	index := int(uintptr(data))
+	callback := signalAppChooserWidgetApplicationSelectedMap[index].callback
+	callback(application)
+}
+
+type signalAppChooserWidgetPopulatePopupDetail struct {
+	callback  AppChooserWidgetSignalPopulatePopupCallback
+	handlerID C.gulong
+}
+
+var signalAppChooserWidgetPopulatePopupId int
+var signalAppChooserWidgetPopulatePopupMap = make(map[int]signalAppChooserWidgetPopulatePopupDetail)
+var signalAppChooserWidgetPopulatePopupLock sync.Mutex
+
+// AppChooserWidgetSignalPopulatePopupCallback is a callback function for a 'populate-popup' signal emitted from a AppChooserWidget.
+type AppChooserWidgetSignalPopulatePopupCallback func(menu *Menu, application *gio.AppInfo)
+
+/*
+ConnectPopulatePopup connects the callback to the 'populate-popup' signal for the AppChooserWidget.
+
+The returned value represents the connection, and may be passed to DisconnectPopulatePopup to remove it.
+*/
+func (recv *AppChooserWidget) ConnectPopulatePopup(callback AppChooserWidgetSignalPopulatePopupCallback) int {
+	signalAppChooserWidgetPopulatePopupLock.Lock()
+	defer signalAppChooserWidgetPopulatePopupLock.Unlock()
+
+	signalAppChooserWidgetPopulatePopupId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.AppChooserWidget_signal_connect_populate_popup(instance, C.gpointer(uintptr(signalAppChooserWidgetPopulatePopupId)))
+
+	detail := signalAppChooserWidgetPopulatePopupDetail{callback, handlerID}
+	signalAppChooserWidgetPopulatePopupMap[signalAppChooserWidgetPopulatePopupId] = detail
+
+	return signalAppChooserWidgetPopulatePopupId
+}
+
+/*
+DisconnectPopulatePopup disconnects a callback from the 'populate-popup' signal for the AppChooserWidget.
+
+The connectionID should be a value returned from a call to ConnectPopulatePopup.
+*/
+func (recv *AppChooserWidget) DisconnectPopulatePopup(connectionID int) {
+	signalAppChooserWidgetPopulatePopupLock.Lock()
+	defer signalAppChooserWidgetPopulatePopupLock.Unlock()
+
+	detail, exists := signalAppChooserWidgetPopulatePopupMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalAppChooserWidgetPopulatePopupMap, connectionID)
+}
+
+//export appchooserwidget_populatePopupHandler
+func appchooserwidget_populatePopupHandler(_ *C.GObject, c_menu *C.GtkMenu, c_application *C.GAppInfo, data C.gpointer) {
+	menu := MenuNewFromC(unsafe.Pointer(c_menu))
+
+	application := gio.AppInfoNewFromC(unsafe.Pointer(c_application))
+
+	index := int(uintptr(data))
+	callback := signalAppChooserWidgetPopulatePopupMap[index].callback
+	callback(menu, application)
+}
 
 // SetDefaultText is a wrapper around the C function gtk_app_chooser_widget_set_default_text.
 func (recv *AppChooserWidget) SetDefaultText(text string) {
@@ -7706,7 +7906,22 @@ func (recv *CssProvider) LoadFromData(data []uint8) (bool, error) {
 	return retGo, goThrowableError
 }
 
-// Unsupported : gtk_css_provider_load_from_file : unsupported parameter file : no type generator for Gio.File (GFile*) for param file
+// LoadFromFile is a wrapper around the C function gtk_css_provider_load_from_file.
+func (recv *CssProvider) LoadFromFile(file *gio.File) (bool, error) {
+	c_file := (*C.GFile)(file.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.gtk_css_provider_load_from_file((*C.GtkCssProvider)(recv.native), c_file, &cThrowableError)
+	retGo := retC == C.TRUE
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // LoadFromPath is a wrapper around the C function gtk_css_provider_load_from_path.
 func (recv *CssProvider) LoadFromPath(path string) (bool, error) {
@@ -28717,7 +28932,13 @@ func (recv *TreeModelSort) ConvertPathToChildPath(sortedPath *TreePath) *TreePat
 	return retGo
 }
 
-// Unsupported : gtk_tree_model_sort_get_model : no return generator
+// GetModel is a wrapper around the C function gtk_tree_model_sort_get_model.
+func (recv *TreeModelSort) GetModel() *TreeModel {
+	retC := C.gtk_tree_model_sort_get_model((*C.GtkTreeModelSort)(recv.native))
+	retGo := TreeModelNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // ResetDefaultSortFunc is a wrapper around the C function gtk_tree_model_sort_reset_default_sort_func.
 func (recv *TreeModelSort) ResetDefaultSortFunc() {
@@ -28840,7 +29061,7 @@ func (recv *TreeSelection) GetMode() SelectionMode {
 	return retGo
 }
 
-// Unsupported : gtk_tree_selection_get_selected : unsupported parameter model : no type generator for TreeModel (GtkTreeModel**) for param model
+// Unsupported : gtk_tree_selection_get_selected : unsupported parameter model : record with indirection level of 2
 
 // GetTreeView is a wrapper around the C function gtk_tree_selection_get_tree_view.
 func (recv *TreeSelection) GetTreeView() *TreeView {
@@ -30075,7 +30296,15 @@ func TreeViewNew() *TreeView {
 	return retGo
 }
 
-// Unsupported : gtk_tree_view_new_with_model : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
+// TreeViewNewWithModel is a wrapper around the C function gtk_tree_view_new_with_model.
+func TreeViewNewWithModel(model *TreeModel) *TreeView {
+	c_model := (*C.GtkTreeModel)(model.ToC())
+
+	retC := C.gtk_tree_view_new_with_model(c_model)
+	retGo := TreeViewNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // AppendColumn is a wrapper around the C function gtk_tree_view_append_column.
 func (recv *TreeView) AppendColumn(column *TreeViewColumn) int32 {
@@ -30223,7 +30452,18 @@ func (recv *TreeView) GetHeadersVisible() bool {
 	return retGo
 }
 
-// Unsupported : gtk_tree_view_get_model : no return generator
+// GetModel is a wrapper around the C function gtk_tree_view_get_model.
+func (recv *TreeView) GetModel() *TreeModel {
+	retC := C.gtk_tree_view_get_model((*C.GtkTreeView)(recv.native))
+	var retGo (*TreeModel)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = TreeModelNewFromC(unsafe.Pointer(retC))
+	}
+
+	return retGo
+}
 
 // Unsupported : gtk_tree_view_get_path_at_pos : unsupported parameter path : record with indirection level of 2
 
@@ -30437,7 +30677,14 @@ func (recv *TreeView) SetHeadersVisible(headersVisible bool) {
 	return
 }
 
-// Unsupported : gtk_tree_view_set_model : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
+// SetModel is a wrapper around the C function gtk_tree_view_set_model.
+func (recv *TreeView) SetModel(model *TreeModel) {
+	c_model := (*C.GtkTreeModel)(model.ToC())
+
+	C.gtk_tree_view_set_model((*C.GtkTreeView)(recv.native), c_model)
+
+	return
+}
 
 // SetReorderable is a wrapper around the C function gtk_tree_view_set_reorderable.
 func (recv *TreeView) SetReorderable(reorderable bool) {
@@ -30725,7 +30972,22 @@ func (recv *TreeViewColumn) CellIsVisible() bool {
 	return retGo
 }
 
-// Unsupported : gtk_tree_view_column_cell_set_cell_data : unsupported parameter tree_model : no type generator for TreeModel (GtkTreeModel*) for param tree_model
+// CellSetCellData is a wrapper around the C function gtk_tree_view_column_cell_set_cell_data.
+func (recv *TreeViewColumn) CellSetCellData(treeModel *TreeModel, iter *TreeIter, isExpander bool, isExpanded bool) {
+	c_tree_model := (*C.GtkTreeModel)(treeModel.ToC())
+
+	c_iter := (*C.GtkTreeIter)(iter.ToC())
+
+	c_is_expander :=
+		boolToGboolean(isExpander)
+
+	c_is_expanded :=
+		boolToGboolean(isExpanded)
+
+	C.gtk_tree_view_column_cell_set_cell_data((*C.GtkTreeViewColumn)(recv.native), c_tree_model, c_iter, c_is_expander, c_is_expanded)
+
+	return
+}
 
 // Clear is a wrapper around the C function gtk_tree_view_column_clear.
 func (recv *TreeViewColumn) Clear() {

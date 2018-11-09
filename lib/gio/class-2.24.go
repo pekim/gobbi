@@ -71,11 +71,43 @@ func (recv *CharsetConverter) SetUseFallback(useFallback bool) {
 	return
 }
 
-// Unsupported : g_converter_input_stream_get_converter : no return generator
+// GetConverter is a wrapper around the C function g_converter_input_stream_get_converter.
+func (recv *ConverterInputStream) GetConverter() *Converter {
+	retC := C.g_converter_input_stream_get_converter((*C.GConverterInputStream)(recv.native))
+	retGo := ConverterNewFromC(unsafe.Pointer(retC))
 
-// Unsupported : g_converter_output_stream_get_converter : no return generator
+	return retGo
+}
 
-// Unsupported : g_data_input_stream_read_upto_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
+// GetConverter is a wrapper around the C function g_converter_output_stream_get_converter.
+func (recv *ConverterOutputStream) GetConverter() *Converter {
+	retC := C.g_converter_output_stream_get_converter((*C.GConverterOutputStream)(recv.native))
+	retGo := ConverterNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// ReadUptoFinish is a wrapper around the C function g_data_input_stream_read_upto_finish.
+func (recv *DataInputStream) ReadUptoFinish(result *AsyncResult) (string, uint64, error) {
+	c_result := (*C.GAsyncResult)(result.ToC())
+
+	var c_length C.gsize
+
+	var cThrowableError *C.GError
+
+	retC := C.g_data_input_stream_read_upto_finish((*C.GDataInputStream)(recv.native), c_result, &c_length, &cThrowableError)
+	retGo := C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	length := (uint64)(c_length)
+
+	return retGo, length, goThrowableError
+}
 
 // GetFilename is a wrapper around the C function g_desktop_app_info_get_filename.
 func (recv *DesktopAppInfo) GetFilename() string {

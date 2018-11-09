@@ -26,4 +26,11 @@ func (recv *NetworkMonitor) GetNetworkMetered() bool {
 	return retGo
 }
 
-// Unsupported : g_tls_client_connection_copy_session_state : unsupported parameter source : no type generator for TlsClientConnection (GTlsClientConnection*) for param source
+// CopySessionState is a wrapper around the C function g_tls_client_connection_copy_session_state.
+func (recv *TlsClientConnection) CopySessionState(source *TlsClientConnection) {
+	c_source := (*C.GTlsClientConnection)(source.ToC())
+
+	C.g_tls_client_connection_copy_session_state((*C.GTlsClientConnection)(recv.native), c_source)
+
+	return
+}

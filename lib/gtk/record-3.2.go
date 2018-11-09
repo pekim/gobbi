@@ -5,6 +5,7 @@ package gtk
 
 import (
 	atk "github.com/pekim/gobbi/lib/atk"
+	gio "github.com/pekim/gobbi/lib/gio"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	"unsafe"
 )
@@ -53,7 +54,13 @@ func (recv *CssSection) GetEndPosition() uint32 {
 	return retGo
 }
 
-// Unsupported : gtk_css_section_get_file : no return generator
+// GetFile is a wrapper around the C function gtk_css_section_get_file.
+func (recv *CssSection) GetFile() *gio.File {
+	retC := C.gtk_css_section_get_file((*C.GtkCssSection)(recv.native))
+	retGo := gio.FileNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // GetParent is a wrapper around the C function gtk_css_section_get_parent.
 func (recv *CssSection) GetParent() *CssSection {

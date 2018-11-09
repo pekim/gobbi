@@ -26,7 +26,22 @@ import "C"
 
 // Unsupported : g_bus_get : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_bus_get_finish : unsupported parameter res : no type generator for AsyncResult (GAsyncResult*) for param res
+// BusGetFinish is a wrapper around the C function g_bus_get_finish.
+func BusGetFinish(res *AsyncResult) (*DBusConnection, error) {
+	c_res := (*C.GAsyncResult)(res.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_bus_get_finish(c_res, &cThrowableError)
+	retGo := DBusConnectionNewFromC(unsafe.Pointer(retC))
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // BusGetSync is a wrapper around the C function g_bus_get_sync.
 func BusGetSync(busType BusType, cancellable *Cancellable) (*DBusConnection, error) {
@@ -173,7 +188,27 @@ func DbusAddressGetForBusSync(busType BusType, cancellable *Cancellable) (string
 
 // Unsupported : g_dbus_address_get_stream : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_dbus_address_get_stream_finish : unsupported parameter res : no type generator for AsyncResult (GAsyncResult*) for param res
+// DbusAddressGetStreamFinish is a wrapper around the C function g_dbus_address_get_stream_finish.
+func DbusAddressGetStreamFinish(res *AsyncResult) (*IOStream, string, error) {
+	c_res := (*C.GAsyncResult)(res.ToC())
+
+	var c_out_guid *C.gchar
+
+	var cThrowableError *C.GError
+
+	retC := C.g_dbus_address_get_stream_finish(c_res, &c_out_guid, &cThrowableError)
+	retGo := IOStreamNewFromC(unsafe.Pointer(retC))
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	outGuid := C.GoString(c_out_guid)
+	defer C.free(unsafe.Pointer(c_out_guid))
+
+	return retGo, outGuid, goThrowableError
+}
 
 // DbusAddressGetStreamSync is a wrapper around the C function g_dbus_address_get_stream_sync.
 func DbusAddressGetStreamSync(address string, cancellable *Cancellable) (*IOStream, string, error) {
@@ -383,6 +418,21 @@ func DbusIsUniqueName(string string) bool {
 	return retGo
 }
 
-// Unsupported : g_proxy_get_default_for_protocol : no return generator
+// ProxyGetDefaultForProtocol is a wrapper around the C function g_proxy_get_default_for_protocol.
+func ProxyGetDefaultForProtocol(protocol string) *Proxy {
+	c_protocol := C.CString(protocol)
+	defer C.free(unsafe.Pointer(c_protocol))
 
-// Unsupported : g_proxy_resolver_get_default : no return generator
+	retC := C.g_proxy_get_default_for_protocol(c_protocol)
+	retGo := ProxyNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// ProxyResolverGetDefault is a wrapper around the C function g_proxy_resolver_get_default.
+func ProxyResolverGetDefault() *ProxyResolver {
+	retC := C.g_proxy_resolver_get_default()
+	retGo := ProxyResolverNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}

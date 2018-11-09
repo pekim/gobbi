@@ -3,6 +3,8 @@
 
 package gio
 
+import "unsafe"
+
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <gio/gdesktopappinfo.h>
 // #include <gio/gfiledescriptorbased.h>
@@ -34,4 +36,10 @@ func (recv *SettingsSchemaKey) GetSummary() string {
 	return retGo
 }
 
-// Unsupported : g_unix_mount_point_guess_symbolic_icon : no return generator
+// GuessSymbolicIcon is a wrapper around the C function g_unix_mount_point_guess_symbolic_icon.
+func (recv *UnixMountPoint) GuessSymbolicIcon() *Icon {
+	retC := C.g_unix_mount_point_guess_symbolic_icon((*C.GUnixMountPoint)(recv.native))
+	retGo := IconNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}

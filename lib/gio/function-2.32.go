@@ -25,7 +25,13 @@ import "C"
 
 // Unsupported : g_file_new_tmp : unsupported parameter iostream : record with indirection level of 2
 
-// Unsupported : g_network_monitor_get_default : no return generator
+// NetworkMonitorGetDefault is a wrapper around the C function g_network_monitor_get_default.
+func NetworkMonitorGetDefault() *NetworkMonitor {
+	retC := C.g_network_monitor_get_default()
+	retGo := NetworkMonitorNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // ResourceErrorQuark is a wrapper around the C function g_resource_error_quark.
 func ResourceErrorQuark() glib.Quark {

@@ -100,5 +100,10 @@ func (t *Type) qnameAndGenerator(targetType *Type) (*QName, TypeGenerator) {
 		return qname, TypeGeneratorRecordNew(targetType, record)
 	}
 
+	iface, found := qname.namespace.interfaceForName(qname.name)
+	if found {
+		return qname, TypeGeneratorInterfaceNew(targetType, iface)
+	}
+
 	return nil, nil
 }

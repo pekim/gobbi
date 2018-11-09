@@ -92,7 +92,15 @@ func (recv *Converter) Reset() {
 	return
 }
 
-// Unsupported : g_file_has_parent : unsupported parameter parent : no type generator for File (GFile*) for param parent
+// HasParent is a wrapper around the C function g_file_has_parent.
+func (recv *File) HasParent(parent *File) bool {
+	c_parent := (*C.GFile)(parent.ToC())
+
+	retC := C.g_file_has_parent((*C.GFile)(recv.native), c_parent)
+	retGo := retC == C.TRUE
+
+	return retGo
+}
 
 // GetFd is a wrapper around the C function g_file_descriptor_based_get_fd.
 func (recv *FileDescriptorBased) GetFd() int32 {

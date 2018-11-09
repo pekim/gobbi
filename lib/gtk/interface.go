@@ -1864,7 +1864,13 @@ func (recv *TreeModel) RowsReordered(path *TreePath, iter *TreeIter, newOrder in
 	return
 }
 
-// Unsupported : gtk_tree_model_sort_new_with_model : no return generator
+// SortNewWithModel is a wrapper around the C function gtk_tree_model_sort_new_with_model.
+func (recv *TreeModel) SortNewWithModel() *TreeModel {
+	retC := C.gtk_tree_model_sort_new_with_model((*C.GtkTreeModel)(recv.native))
+	retGo := TreeModelNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // UnrefNode is a wrapper around the C function gtk_tree_model_unref_node.
 func (recv *TreeModel) UnrefNode(iter *TreeIter) {

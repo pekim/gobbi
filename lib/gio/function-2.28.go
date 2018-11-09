@@ -62,9 +62,32 @@ func PollableSourceNew(pollableStream *gobject.Object) *glib.Source {
 
 // Unsupported : g_simple_async_report_take_gerror_in_idle : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_tls_backend_get_default : no return generator
+// TlsBackendGetDefault is a wrapper around the C function g_tls_backend_get_default.
+func TlsBackendGetDefault() *TlsBackend {
+	retC := C.g_tls_backend_get_default()
+	retGo := TlsBackendNewFromC(unsafe.Pointer(retC))
 
-// Unsupported : g_tls_client_connection_new : unsupported parameter server_identity : no type generator for SocketConnectable (GSocketConnectable*) for param server_identity
+	return retGo
+}
+
+// TlsClientConnectionNew is a wrapper around the C function g_tls_client_connection_new.
+func TlsClientConnectionNew(baseIoStream *IOStream, serverIdentity *SocketConnectable) (*TlsClientConnection, error) {
+	c_base_io_stream := (*C.GIOStream)(baseIoStream.ToC())
+
+	c_server_identity := (*C.GSocketConnectable)(serverIdentity.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_tls_client_connection_new(c_base_io_stream, c_server_identity, &cThrowableError)
+	retGo := TlsClientConnectionNewFromC(unsafe.Pointer(retC))
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // TlsErrorQuark is a wrapper around the C function g_tls_error_quark.
 func TlsErrorQuark() glib.Quark {
@@ -74,4 +97,21 @@ func TlsErrorQuark() glib.Quark {
 	return retGo
 }
 
-// Unsupported : g_tls_server_connection_new : no return generator
+// TlsServerConnectionNew is a wrapper around the C function g_tls_server_connection_new.
+func TlsServerConnectionNew(baseIoStream *IOStream, certificate *TlsCertificate) (*TlsServerConnection, error) {
+	c_base_io_stream := (*C.GIOStream)(baseIoStream.ToC())
+
+	c_certificate := (*C.GTlsCertificate)(certificate.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_tls_server_connection_new(c_base_io_stream, c_certificate, &cThrowableError)
+	retGo := TlsServerConnectionNewFromC(unsafe.Pointer(retC))
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}

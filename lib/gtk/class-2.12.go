@@ -37,6 +37,15 @@ import (
 */
 /*
 
+	gboolean entrycompletion_cursorOnMatchHandler(GObject *, GtkTreeModel *, GtkTreeIter *, gpointer);
+
+	static gulong EntryCompletion_signal_connect_cursor_on_match(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "cursor-on-match", G_CALLBACK(entrycompletion_cursorOnMatchHandler), data);
+	}
+
+*/
+/*
+
 	void filechooserbutton_fileSetHandler(GObject *, gpointer);
 
 	static gulong FileChooserButton_signal_connect_file_set(gpointer instance, gpointer data) {
@@ -367,7 +376,69 @@ func (recv *Entry) SetCursorHadjustment(adjustment *Adjustment) {
 	return
 }
 
-// Unsupported signal 'cursor-on-match' for EntryCompletion : unsupported parameter model : no type generator for TreeModel,
+type signalEntryCompletionCursorOnMatchDetail struct {
+	callback  EntryCompletionSignalCursorOnMatchCallback
+	handlerID C.gulong
+}
+
+var signalEntryCompletionCursorOnMatchId int
+var signalEntryCompletionCursorOnMatchMap = make(map[int]signalEntryCompletionCursorOnMatchDetail)
+var signalEntryCompletionCursorOnMatchLock sync.Mutex
+
+// EntryCompletionSignalCursorOnMatchCallback is a callback function for a 'cursor-on-match' signal emitted from a EntryCompletion.
+type EntryCompletionSignalCursorOnMatchCallback func(model *TreeModel, iter *TreeIter) bool
+
+/*
+ConnectCursorOnMatch connects the callback to the 'cursor-on-match' signal for the EntryCompletion.
+
+The returned value represents the connection, and may be passed to DisconnectCursorOnMatch to remove it.
+*/
+func (recv *EntryCompletion) ConnectCursorOnMatch(callback EntryCompletionSignalCursorOnMatchCallback) int {
+	signalEntryCompletionCursorOnMatchLock.Lock()
+	defer signalEntryCompletionCursorOnMatchLock.Unlock()
+
+	signalEntryCompletionCursorOnMatchId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.EntryCompletion_signal_connect_cursor_on_match(instance, C.gpointer(uintptr(signalEntryCompletionCursorOnMatchId)))
+
+	detail := signalEntryCompletionCursorOnMatchDetail{callback, handlerID}
+	signalEntryCompletionCursorOnMatchMap[signalEntryCompletionCursorOnMatchId] = detail
+
+	return signalEntryCompletionCursorOnMatchId
+}
+
+/*
+DisconnectCursorOnMatch disconnects a callback from the 'cursor-on-match' signal for the EntryCompletion.
+
+The connectionID should be a value returned from a call to ConnectCursorOnMatch.
+*/
+func (recv *EntryCompletion) DisconnectCursorOnMatch(connectionID int) {
+	signalEntryCompletionCursorOnMatchLock.Lock()
+	defer signalEntryCompletionCursorOnMatchLock.Unlock()
+
+	detail, exists := signalEntryCompletionCursorOnMatchMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalEntryCompletionCursorOnMatchMap, connectionID)
+}
+
+//export entrycompletion_cursorOnMatchHandler
+func entrycompletion_cursorOnMatchHandler(_ *C.GObject, c_model *C.GtkTreeModel, c_iter *C.GtkTreeIter, data C.gpointer) C.gboolean {
+	model := TreeModelNewFromC(unsafe.Pointer(c_model))
+
+	iter := TreeIterNewFromC(unsafe.Pointer(c_iter))
+
+	index := int(uintptr(data))
+	callback := signalEntryCompletionCursorOnMatchMap[index].callback
+	retGo := callback(model, iter)
+	retC :=
+		boolToGboolean(retGo)
+	return retC
+}
 
 // GetCompletionPrefix is a wrapper around the C function gtk_entry_completion_get_completion_prefix.
 func (recv *EntryCompletion) GetCompletionPrefix() string {
@@ -489,7 +560,7 @@ func (recv *IconView) GetTooltipColumn() int32 {
 	return retGo
 }
 
-// Unsupported : gtk_icon_view_get_tooltip_context : unsupported parameter model : no type generator for TreeModel (GtkTreeModel**) for param model
+// Unsupported : gtk_icon_view_get_tooltip_context : unsupported parameter model : record with indirection level of 2
 
 // SetTooltipCell is a wrapper around the C function gtk_icon_view_set_tooltip_cell.
 func (recv *IconView) SetTooltipCell(tooltip *Tooltip, path *TreePath, cell *CellRenderer) {
@@ -1197,7 +1268,7 @@ func (recv *TreeView) GetTooltipColumn() int32 {
 	return retGo
 }
 
-// Unsupported : gtk_tree_view_get_tooltip_context : unsupported parameter model : no type generator for TreeModel (GtkTreeModel**) for param model
+// Unsupported : gtk_tree_view_get_tooltip_context : unsupported parameter model : record with indirection level of 2
 
 // IsRubberBandingActive is a wrapper around the C function gtk_tree_view_is_rubber_banding_active.
 func (recv *TreeView) IsRubberBandingActive() bool {

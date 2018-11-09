@@ -35,7 +35,16 @@ func ContentTypeGetGenericIconName(type_ string) string {
 	return retGo
 }
 
-// Unsupported : g_content_type_get_symbolic_icon : no return generator
+// ContentTypeGetSymbolicIcon is a wrapper around the C function g_content_type_get_symbolic_icon.
+func ContentTypeGetSymbolicIcon(type_ string) *Icon {
+	c_type := C.CString(type_)
+	defer C.free(unsafe.Pointer(c_type))
+
+	retC := C.g_content_type_get_symbolic_icon(c_type)
+	retGo := IconNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // PollableSourceNewFull is a wrapper around the C function g_pollable_source_new_full.
 func PollableSourceNewFull(pollableStream uintptr, childSource *glib.Source, cancellable *Cancellable) *glib.Source {
@@ -133,4 +142,12 @@ func PollableStreamWriteAll(stream *OutputStream, buffer []uint8, blocking bool,
 	return retGo, bytesWritten, goThrowableError
 }
 
-// Unsupported : g_unix_mount_guess_symbolic_icon : no return generator
+// UnixMountGuessSymbolicIcon is a wrapper around the C function g_unix_mount_guess_symbolic_icon.
+func UnixMountGuessSymbolicIcon(mountEntry *UnixMountEntry) *Icon {
+	c_mount_entry := (*C.GUnixMountEntry)(mountEntry.ToC())
+
+	retC := C.g_unix_mount_guess_symbolic_icon(c_mount_entry)
+	retGo := IconNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}

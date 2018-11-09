@@ -73,8 +73,19 @@ func (recv *File) QueryFileType(flags FileQueryInfoFlags, cancellable *Cancellab
 
 // Unsupported : g_mount_guess_content_type : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_mount_guess_content_type_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
+// Unsupported : g_mount_guess_content_type_finish : no return type
 
 // Unsupported : g_mount_guess_content_type_sync : no return type
 
-// Unsupported : g_volume_get_activation_root : no return generator
+// GetActivationRoot is a wrapper around the C function g_volume_get_activation_root.
+func (recv *Volume) GetActivationRoot() *File {
+	retC := C.g_volume_get_activation_root((*C.GVolume)(recv.native))
+	var retGo (*File)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = FileNewFromC(unsafe.Pointer(retC))
+	}
+
+	return retGo
+}

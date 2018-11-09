@@ -67,6 +67,96 @@ import (
 	}
 
 */
+/*
+
+	void volumemonitor_driveChangedHandler(GObject *, GDrive *, gpointer);
+
+	static gulong VolumeMonitor_signal_connect_drive_changed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "drive-changed", G_CALLBACK(volumemonitor_driveChangedHandler), data);
+	}
+
+*/
+/*
+
+	void volumemonitor_driveConnectedHandler(GObject *, GDrive *, gpointer);
+
+	static gulong VolumeMonitor_signal_connect_drive_connected(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "drive-connected", G_CALLBACK(volumemonitor_driveConnectedHandler), data);
+	}
+
+*/
+/*
+
+	void volumemonitor_driveDisconnectedHandler(GObject *, GDrive *, gpointer);
+
+	static gulong VolumeMonitor_signal_connect_drive_disconnected(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "drive-disconnected", G_CALLBACK(volumemonitor_driveDisconnectedHandler), data);
+	}
+
+*/
+/*
+
+	void volumemonitor_mountAddedHandler(GObject *, GMount *, gpointer);
+
+	static gulong VolumeMonitor_signal_connect_mount_added(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "mount-added", G_CALLBACK(volumemonitor_mountAddedHandler), data);
+	}
+
+*/
+/*
+
+	void volumemonitor_mountChangedHandler(GObject *, GMount *, gpointer);
+
+	static gulong VolumeMonitor_signal_connect_mount_changed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "mount-changed", G_CALLBACK(volumemonitor_mountChangedHandler), data);
+	}
+
+*/
+/*
+
+	void volumemonitor_mountPreUnmountHandler(GObject *, GMount *, gpointer);
+
+	static gulong VolumeMonitor_signal_connect_mount_pre_unmount(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "mount-pre-unmount", G_CALLBACK(volumemonitor_mountPreUnmountHandler), data);
+	}
+
+*/
+/*
+
+	void volumemonitor_mountRemovedHandler(GObject *, GMount *, gpointer);
+
+	static gulong VolumeMonitor_signal_connect_mount_removed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "mount-removed", G_CALLBACK(volumemonitor_mountRemovedHandler), data);
+	}
+
+*/
+/*
+
+	void volumemonitor_volumeAddedHandler(GObject *, GVolume *, gpointer);
+
+	static gulong VolumeMonitor_signal_connect_volume_added(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "volume-added", G_CALLBACK(volumemonitor_volumeAddedHandler), data);
+	}
+
+*/
+/*
+
+	void volumemonitor_volumeChangedHandler(GObject *, GVolume *, gpointer);
+
+	static gulong VolumeMonitor_signal_connect_volume_changed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "volume-changed", G_CALLBACK(volumemonitor_volumeChangedHandler), data);
+	}
+
+*/
+/*
+
+	void volumemonitor_volumeRemovedHandler(GObject *, GVolume *, gpointer);
+
+	static gulong VolumeMonitor_signal_connect_volume_removed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "volume-removed", G_CALLBACK(volumemonitor_volumeRemovedHandler), data);
+	}
+
+*/
 import "C"
 
 // AppLaunchContext is a wrapper around the C record GAppLaunchContext.
@@ -111,9 +201,31 @@ func AppLaunchContextNew() *AppLaunchContext {
 	return retGo
 }
 
-// Unsupported : g_app_launch_context_get_display : unsupported parameter info : no type generator for AppInfo (GAppInfo*) for param info
+// GetDisplay is a wrapper around the C function g_app_launch_context_get_display.
+func (recv *AppLaunchContext) GetDisplay(info *AppInfo, files *glib.List) string {
+	c_info := (*C.GAppInfo)(info.ToC())
 
-// Unsupported : g_app_launch_context_get_startup_notify_id : unsupported parameter info : no type generator for AppInfo (GAppInfo*) for param info
+	c_files := (*C.GList)(files.ToC())
+
+	retC := C.g_app_launch_context_get_display((*C.GAppLaunchContext)(recv.native), c_info, c_files)
+	retGo := C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// GetStartupNotifyId is a wrapper around the C function g_app_launch_context_get_startup_notify_id.
+func (recv *AppLaunchContext) GetStartupNotifyId(info *AppInfo, files *glib.List) string {
+	c_info := (*C.GAppInfo)(info.ToC())
+
+	c_files := (*C.GList)(files.ToC())
+
+	retC := C.g_app_launch_context_get_startup_notify_id((*C.GAppLaunchContext)(recv.native), c_info, c_files)
+	retGo := C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // LaunchFailed is a wrapper around the C function g_app_launch_context_launch_failed.
 func (recv *AppLaunchContext) LaunchFailed(startupNotifyId string) {
@@ -246,7 +358,22 @@ func (recv *BufferedInputStream) Fill(count int64, cancellable *Cancellable) (in
 
 // Unsupported : g_buffered_input_stream_fill_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_buffered_input_stream_fill_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
+// FillFinish is a wrapper around the C function g_buffered_input_stream_fill_finish.
+func (recv *BufferedInputStream) FillFinish(result *AsyncResult) (int64, error) {
+	c_result := (*C.GAsyncResult)(result.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_buffered_input_stream_fill_finish((*C.GBufferedInputStream)(recv.native), c_result, &cThrowableError)
+	retGo := (int64)(retC)
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // GetAvailable is a wrapper around the C function g_buffered_input_stream_get_available.
 func (recv *BufferedInputStream) GetAvailable() uint64 {
@@ -703,7 +830,17 @@ func CastToConverterInputStream(object *gobject.Object) *ConverterInputStream {
 	return ConverterInputStreamNewFromC(object.ToC())
 }
 
-// Unsupported : g_converter_input_stream_new : unsupported parameter converter : no type generator for Converter (GConverter*) for param converter
+// ConverterInputStreamNew is a wrapper around the C function g_converter_input_stream_new.
+func ConverterInputStreamNew(baseStream *InputStream, converter *Converter) *ConverterInputStream {
+	c_base_stream := (*C.GInputStream)(baseStream.ToC())
+
+	c_converter := (*C.GConverter)(converter.ToC())
+
+	retC := C.g_converter_input_stream_new(c_base_stream, c_converter)
+	retGo := ConverterInputStreamNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // PollableInputStream returns the PollableInputStream interface implemented by ConverterInputStream
 func (recv *ConverterInputStream) PollableInputStream() *PollableInputStream {
@@ -754,7 +891,17 @@ func CastToConverterOutputStream(object *gobject.Object) *ConverterOutputStream 
 	return ConverterOutputStreamNewFromC(object.ToC())
 }
 
-// Unsupported : g_converter_output_stream_new : unsupported parameter converter : no type generator for Converter (GConverter*) for param converter
+// ConverterOutputStreamNew is a wrapper around the C function g_converter_output_stream_new.
+func ConverterOutputStreamNew(baseStream *OutputStream, converter *Converter) *ConverterOutputStream {
+	c_base_stream := (*C.GOutputStream)(baseStream.ToC())
+
+	c_converter := (*C.GConverter)(converter.ToC())
+
+	retC := C.g_converter_output_stream_new(c_base_stream, c_converter)
+	retGo := ConverterOutputStreamNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // PollableOutputStream returns the PollableOutputStream interface implemented by ConverterOutputStream
 func (recv *ConverterOutputStream) PollableOutputStream() *PollableOutputStream {
@@ -1527,7 +1674,22 @@ func (recv *FileEnumerator) Close(cancellable *Cancellable) (bool, error) {
 
 // Unsupported : g_file_enumerator_close_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_file_enumerator_close_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
+// CloseFinish is a wrapper around the C function g_file_enumerator_close_finish.
+func (recv *FileEnumerator) CloseFinish(result *AsyncResult) (bool, error) {
+	c_result := (*C.GAsyncResult)(result.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_file_enumerator_close_finish((*C.GFileEnumerator)(recv.native), c_result, &cThrowableError)
+	retGo := retC == C.TRUE
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // HasPending is a wrapper around the C function g_file_enumerator_has_pending.
 func (recv *FileEnumerator) HasPending() bool {
@@ -1569,7 +1731,22 @@ func (recv *FileEnumerator) NextFile(cancellable *Cancellable) (*FileInfo, error
 
 // Unsupported : g_file_enumerator_next_files_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_file_enumerator_next_files_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
+// NextFilesFinish is a wrapper around the C function g_file_enumerator_next_files_finish.
+func (recv *FileEnumerator) NextFilesFinish(result *AsyncResult) (*glib.List, error) {
+	c_result := (*C.GAsyncResult)(result.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_file_enumerator_next_files_finish((*C.GFileEnumerator)(recv.native), c_result, &cThrowableError)
+	retGo := glib.ListNewFromC(unsafe.Pointer(retC))
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // SetPending is a wrapper around the C function g_file_enumerator_set_pending.
 func (recv *FileEnumerator) SetPending(pending bool) {
@@ -1657,9 +1834,23 @@ func CastToFileIcon(object *gobject.Object) *FileIcon {
 	return FileIconNewFromC(object.ToC())
 }
 
-// Unsupported : g_file_icon_new : unsupported parameter file : no type generator for File (GFile*) for param file
+// FileIconNew is a wrapper around the C function g_file_icon_new.
+func FileIconNew(file *File) *FileIcon {
+	c_file := (*C.GFile)(file.ToC())
 
-// Unsupported : g_file_icon_get_file : no return generator
+	retC := C.g_file_icon_new(c_file)
+	retGo := FileIconNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// GetFile is a wrapper around the C function g_file_icon_get_file.
+func (recv *FileIcon) GetFile() *File {
+	retC := C.g_file_icon_get_file((*C.GFileIcon)(recv.native))
+	retGo := FileNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // Icon returns the Icon interface implemented by FileIcon
 func (recv *FileIcon) Icon() *Icon {
@@ -1899,7 +2090,13 @@ func (recv *FileInfo) GetFileType() FileType {
 	return retGo
 }
 
-// Unsupported : g_file_info_get_icon : no return generator
+// GetIcon is a wrapper around the C function g_file_info_get_icon.
+func (recv *FileInfo) GetIcon() *Icon {
+	retC := C.g_file_info_get_icon((*C.GFileInfo)(recv.native))
+	retGo := IconNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // GetIsBackup is a wrapper around the C function g_file_info_get_is_backup.
 func (recv *FileInfo) GetIsBackup() bool {
@@ -2154,7 +2351,14 @@ func (recv *FileInfo) SetFileType(type_ FileType) {
 	return
 }
 
-// Unsupported : g_file_info_set_icon : unsupported parameter icon : no type generator for Icon (GIcon*) for param icon
+// SetIcon is a wrapper around the C function g_file_info_set_icon.
+func (recv *FileInfo) SetIcon(icon *Icon) {
+	c_icon := (*C.GIcon)(icon.ToC())
+
+	C.g_file_info_set_icon((*C.GFileInfo)(recv.native), c_icon)
+
+	return
+}
 
 // SetIsHidden is a wrapper around the C function g_file_info_set_is_hidden.
 func (recv *FileInfo) SetIsHidden(isHidden bool) {
@@ -2291,7 +2495,22 @@ func (recv *FileInputStream) QueryInfo(attributes string, cancellable *Cancellab
 
 // Unsupported : g_file_input_stream_query_info_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_file_input_stream_query_info_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
+// QueryInfoFinish is a wrapper around the C function g_file_input_stream_query_info_finish.
+func (recv *FileInputStream) QueryInfoFinish(result *AsyncResult) (*FileInfo, error) {
+	c_result := (*C.GAsyncResult)(result.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_file_input_stream_query_info_finish((*C.GFileInputStream)(recv.native), c_result, &cThrowableError)
+	retGo := FileInfoNewFromC(unsafe.Pointer(retC))
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // Seekable returns the Seekable interface implemented by FileInputStream
 func (recv *FileInputStream) Seekable() *Seekable {
@@ -2332,7 +2551,7 @@ func CastToFileMonitor(object *gobject.Object) *FileMonitor {
 	return FileMonitorNewFromC(object.ToC())
 }
 
-// Unsupported signal 'changed' for FileMonitor : unsupported parameter file : no type generator for File,
+// Unsupported signal 'changed' for FileMonitor : unsupported parameter event_type : type FileMonitorEvent :
 
 // Cancel is a wrapper around the C function g_file_monitor_cancel.
 func (recv *FileMonitor) Cancel() bool {
@@ -2342,7 +2561,18 @@ func (recv *FileMonitor) Cancel() bool {
 	return retGo
 }
 
-// Unsupported : g_file_monitor_emit_event : unsupported parameter child : no type generator for File (GFile*) for param child
+// EmitEvent is a wrapper around the C function g_file_monitor_emit_event.
+func (recv *FileMonitor) EmitEvent(child *File, otherFile *File, eventType FileMonitorEvent) {
+	c_child := (*C.GFile)(child.ToC())
+
+	c_other_file := (*C.GFile)(otherFile.ToC())
+
+	c_event_type := (C.GFileMonitorEvent)(eventType)
+
+	C.g_file_monitor_emit_event((*C.GFileMonitor)(recv.native), c_child, c_other_file, c_event_type)
+
+	return
+}
 
 // IsCancelled is a wrapper around the C function g_file_monitor_is_cancelled.
 func (recv *FileMonitor) IsCancelled() bool {
@@ -2431,7 +2661,22 @@ func (recv *FileOutputStream) QueryInfo(attributes string, cancellable *Cancella
 
 // Unsupported : g_file_output_stream_query_info_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_file_output_stream_query_info_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
+// QueryInfoFinish is a wrapper around the C function g_file_output_stream_query_info_finish.
+func (recv *FileOutputStream) QueryInfoFinish(result *AsyncResult) (*FileInfo, error) {
+	c_result := (*C.GAsyncResult)(result.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_file_output_stream_query_info_finish((*C.GFileOutputStream)(recv.native), c_result, &cThrowableError)
+	retGo := FileInfoNewFromC(unsafe.Pointer(retC))
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // Seekable returns the Seekable interface implemented by FileOutputStream
 func (recv *FileOutputStream) Seekable() *Seekable {
@@ -2908,7 +3153,22 @@ func (recv *InputStream) Close(cancellable *Cancellable) (bool, error) {
 
 // Unsupported : g_input_stream_close_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_input_stream_close_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
+// CloseFinish is a wrapper around the C function g_input_stream_close_finish.
+func (recv *InputStream) CloseFinish(result *AsyncResult) (bool, error) {
+	c_result := (*C.GAsyncResult)(result.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_input_stream_close_finish((*C.GInputStream)(recv.native), c_result, &cThrowableError)
+	retGo := retC == C.TRUE
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // HasPending is a wrapper around the C function g_input_stream_has_pending.
 func (recv *InputStream) HasPending() bool {
@@ -2974,7 +3234,22 @@ func (recv *InputStream) ReadAll(buffer []uint8, cancellable *Cancellable) (bool
 
 // Unsupported : g_input_stream_read_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_input_stream_read_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
+// ReadFinish is a wrapper around the C function g_input_stream_read_finish.
+func (recv *InputStream) ReadFinish(result *AsyncResult) (int64, error) {
+	c_result := (*C.GAsyncResult)(result.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_input_stream_read_finish((*C.GInputStream)(recv.native), c_result, &cThrowableError)
+	retGo := (int64)(retC)
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // SetPending is a wrapper around the C function g_input_stream_set_pending.
 func (recv *InputStream) SetPending() (bool, error) {
@@ -3012,7 +3287,22 @@ func (recv *InputStream) Skip(count uint64, cancellable *Cancellable) (int64, er
 
 // Unsupported : g_input_stream_skip_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_input_stream_skip_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
+// SkipFinish is a wrapper around the C function g_input_stream_skip_finish.
+func (recv *InputStream) SkipFinish(result *AsyncResult) (int64, error) {
+	c_result := (*C.GAsyncResult)(result.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_input_stream_skip_finish((*C.GInputStream)(recv.native), c_result, &cThrowableError)
+	retGo := (int64)(retC)
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // ListStore is a wrapper around the C record GListStore.
 type ListStore struct {
@@ -3518,7 +3808,22 @@ func (recv *OutputStream) Close(cancellable *Cancellable) (bool, error) {
 
 // Unsupported : g_output_stream_close_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_output_stream_close_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
+// CloseFinish is a wrapper around the C function g_output_stream_close_finish.
+func (recv *OutputStream) CloseFinish(result *AsyncResult) (bool, error) {
+	c_result := (*C.GAsyncResult)(result.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_output_stream_close_finish((*C.GOutputStream)(recv.native), c_result, &cThrowableError)
+	retGo := retC == C.TRUE
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // Flush is a wrapper around the C function g_output_stream_flush.
 func (recv *OutputStream) Flush(cancellable *Cancellable) (bool, error) {
@@ -3539,7 +3844,22 @@ func (recv *OutputStream) Flush(cancellable *Cancellable) (bool, error) {
 
 // Unsupported : g_output_stream_flush_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_output_stream_flush_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
+// FlushFinish is a wrapper around the C function g_output_stream_flush_finish.
+func (recv *OutputStream) FlushFinish(result *AsyncResult) (bool, error) {
+	c_result := (*C.GAsyncResult)(result.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_output_stream_flush_finish((*C.GOutputStream)(recv.native), c_result, &cThrowableError)
+	retGo := retC == C.TRUE
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // HasPending is a wrapper around the C function g_output_stream_has_pending.
 func (recv *OutputStream) HasPending() bool {
@@ -3595,7 +3915,22 @@ func (recv *OutputStream) Splice(source *InputStream, flags OutputStreamSpliceFl
 
 // Unsupported : g_output_stream_splice_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_output_stream_splice_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
+// SpliceFinish is a wrapper around the C function g_output_stream_splice_finish.
+func (recv *OutputStream) SpliceFinish(result *AsyncResult) (int64, error) {
+	c_result := (*C.GAsyncResult)(result.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_output_stream_splice_finish((*C.GOutputStream)(recv.native), c_result, &cThrowableError)
+	retGo := (int64)(retC)
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // Write is a wrapper around the C function g_output_stream_write.
 func (recv *OutputStream) Write(buffer []uint8, cancellable *Cancellable) (int64, error) {
@@ -3649,9 +3984,39 @@ func (recv *OutputStream) WriteAll(buffer []uint8, cancellable *Cancellable) (bo
 
 // Unsupported : g_output_stream_write_bytes_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_output_stream_write_bytes_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
+// WriteBytesFinish is a wrapper around the C function g_output_stream_write_bytes_finish.
+func (recv *OutputStream) WriteBytesFinish(result *AsyncResult) (int64, error) {
+	c_result := (*C.GAsyncResult)(result.ToC())
 
-// Unsupported : g_output_stream_write_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
+	var cThrowableError *C.GError
+
+	retC := C.g_output_stream_write_bytes_finish((*C.GOutputStream)(recv.native), c_result, &cThrowableError)
+	retGo := (int64)(retC)
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
+
+// WriteFinish is a wrapper around the C function g_output_stream_write_finish.
+func (recv *OutputStream) WriteFinish(result *AsyncResult) (int64, error) {
+	c_result := (*C.GAsyncResult)(result.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_output_stream_write_finish((*C.GOutputStream)(recv.native), c_result, &cThrowableError)
+	retGo := (int64)(retC)
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // Permission is a wrapper around the C record GPermission.
 type Permission struct {
@@ -4302,7 +4667,22 @@ func (recv *SocketAddressEnumerator) Next(cancellable *Cancellable) (*SocketAddr
 
 // Unsupported : g_socket_address_enumerator_next_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_socket_address_enumerator_next_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
+// NextFinish is a wrapper around the C function g_socket_address_enumerator_next_finish.
+func (recv *SocketAddressEnumerator) NextFinish(result *AsyncResult) (*SocketAddress, error) {
+	c_result := (*C.GAsyncResult)(result.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_socket_address_enumerator_next_finish((*C.GSocketAddressEnumerator)(recv.native), c_result, &cThrowableError)
+	retGo := SocketAddressNewFromC(unsafe.Pointer(retC))
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // SocketControlMessage is a wrapper around the C record GSocketControlMessage.
 type SocketControlMessage struct {
@@ -4989,9 +5369,27 @@ func CastToVfs(object *gobject.Object) *Vfs {
 	return VfsNewFromC(object.ToC())
 }
 
-// Unsupported : g_vfs_get_file_for_path : no return generator
+// GetFileForPath is a wrapper around the C function g_vfs_get_file_for_path.
+func (recv *Vfs) GetFileForPath(path string) *File {
+	c_path := C.CString(path)
+	defer C.free(unsafe.Pointer(c_path))
 
-// Unsupported : g_vfs_get_file_for_uri : no return generator
+	retC := C.g_vfs_get_file_for_path((*C.GVfs)(recv.native), c_path)
+	retGo := FileNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// GetFileForUri is a wrapper around the C function g_vfs_get_file_for_uri.
+func (recv *Vfs) GetFileForUri(uri string) *File {
+	c_uri := C.CString(uri)
+	defer C.free(unsafe.Pointer(c_uri))
+
+	retC := C.g_vfs_get_file_for_uri((*C.GVfs)(recv.native), c_uri)
+	retGo := FileNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // Unsupported : g_vfs_get_supported_uri_schemes : no return type
 
@@ -5003,7 +5401,16 @@ func (recv *Vfs) IsActive() bool {
 	return retGo
 }
 
-// Unsupported : g_vfs_parse_name : no return generator
+// ParseName is a wrapper around the C function g_vfs_parse_name.
+func (recv *Vfs) ParseName(parseName string) *File {
+	c_parse_name := C.CString(parseName)
+	defer C.free(unsafe.Pointer(c_parse_name))
+
+	retC := C.g_vfs_parse_name((*C.GVfs)(recv.native), c_parse_name)
+	retGo := FileNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // VolumeMonitor is a wrapper around the C record GVolumeMonitor.
 type VolumeMonitor struct {
@@ -5039,25 +5446,595 @@ func CastToVolumeMonitor(object *gobject.Object) *VolumeMonitor {
 	return VolumeMonitorNewFromC(object.ToC())
 }
 
-// Unsupported signal 'drive-changed' for VolumeMonitor : unsupported parameter drive : no type generator for Drive,
+type signalVolumeMonitorDriveChangedDetail struct {
+	callback  VolumeMonitorSignalDriveChangedCallback
+	handlerID C.gulong
+}
 
-// Unsupported signal 'drive-connected' for VolumeMonitor : unsupported parameter drive : no type generator for Drive,
+var signalVolumeMonitorDriveChangedId int
+var signalVolumeMonitorDriveChangedMap = make(map[int]signalVolumeMonitorDriveChangedDetail)
+var signalVolumeMonitorDriveChangedLock sync.Mutex
 
-// Unsupported signal 'drive-disconnected' for VolumeMonitor : unsupported parameter drive : no type generator for Drive,
+// VolumeMonitorSignalDriveChangedCallback is a callback function for a 'drive-changed' signal emitted from a VolumeMonitor.
+type VolumeMonitorSignalDriveChangedCallback func(drive *Drive)
 
-// Unsupported signal 'mount-added' for VolumeMonitor : unsupported parameter mount : no type generator for Mount,
+/*
+ConnectDriveChanged connects the callback to the 'drive-changed' signal for the VolumeMonitor.
 
-// Unsupported signal 'mount-changed' for VolumeMonitor : unsupported parameter mount : no type generator for Mount,
+The returned value represents the connection, and may be passed to DisconnectDriveChanged to remove it.
+*/
+func (recv *VolumeMonitor) ConnectDriveChanged(callback VolumeMonitorSignalDriveChangedCallback) int {
+	signalVolumeMonitorDriveChangedLock.Lock()
+	defer signalVolumeMonitorDriveChangedLock.Unlock()
 
-// Unsupported signal 'mount-pre-unmount' for VolumeMonitor : unsupported parameter mount : no type generator for Mount,
+	signalVolumeMonitorDriveChangedId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.VolumeMonitor_signal_connect_drive_changed(instance, C.gpointer(uintptr(signalVolumeMonitorDriveChangedId)))
 
-// Unsupported signal 'mount-removed' for VolumeMonitor : unsupported parameter mount : no type generator for Mount,
+	detail := signalVolumeMonitorDriveChangedDetail{callback, handlerID}
+	signalVolumeMonitorDriveChangedMap[signalVolumeMonitorDriveChangedId] = detail
 
-// Unsupported signal 'volume-added' for VolumeMonitor : unsupported parameter volume : no type generator for Volume,
+	return signalVolumeMonitorDriveChangedId
+}
 
-// Unsupported signal 'volume-changed' for VolumeMonitor : unsupported parameter volume : no type generator for Volume,
+/*
+DisconnectDriveChanged disconnects a callback from the 'drive-changed' signal for the VolumeMonitor.
 
-// Unsupported signal 'volume-removed' for VolumeMonitor : unsupported parameter volume : no type generator for Volume,
+The connectionID should be a value returned from a call to ConnectDriveChanged.
+*/
+func (recv *VolumeMonitor) DisconnectDriveChanged(connectionID int) {
+	signalVolumeMonitorDriveChangedLock.Lock()
+	defer signalVolumeMonitorDriveChangedLock.Unlock()
+
+	detail, exists := signalVolumeMonitorDriveChangedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalVolumeMonitorDriveChangedMap, connectionID)
+}
+
+//export volumemonitor_driveChangedHandler
+func volumemonitor_driveChangedHandler(_ *C.GObject, c_drive *C.GDrive, data C.gpointer) {
+	drive := DriveNewFromC(unsafe.Pointer(c_drive))
+
+	index := int(uintptr(data))
+	callback := signalVolumeMonitorDriveChangedMap[index].callback
+	callback(drive)
+}
+
+type signalVolumeMonitorDriveConnectedDetail struct {
+	callback  VolumeMonitorSignalDriveConnectedCallback
+	handlerID C.gulong
+}
+
+var signalVolumeMonitorDriveConnectedId int
+var signalVolumeMonitorDriveConnectedMap = make(map[int]signalVolumeMonitorDriveConnectedDetail)
+var signalVolumeMonitorDriveConnectedLock sync.Mutex
+
+// VolumeMonitorSignalDriveConnectedCallback is a callback function for a 'drive-connected' signal emitted from a VolumeMonitor.
+type VolumeMonitorSignalDriveConnectedCallback func(drive *Drive)
+
+/*
+ConnectDriveConnected connects the callback to the 'drive-connected' signal for the VolumeMonitor.
+
+The returned value represents the connection, and may be passed to DisconnectDriveConnected to remove it.
+*/
+func (recv *VolumeMonitor) ConnectDriveConnected(callback VolumeMonitorSignalDriveConnectedCallback) int {
+	signalVolumeMonitorDriveConnectedLock.Lock()
+	defer signalVolumeMonitorDriveConnectedLock.Unlock()
+
+	signalVolumeMonitorDriveConnectedId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.VolumeMonitor_signal_connect_drive_connected(instance, C.gpointer(uintptr(signalVolumeMonitorDriveConnectedId)))
+
+	detail := signalVolumeMonitorDriveConnectedDetail{callback, handlerID}
+	signalVolumeMonitorDriveConnectedMap[signalVolumeMonitorDriveConnectedId] = detail
+
+	return signalVolumeMonitorDriveConnectedId
+}
+
+/*
+DisconnectDriveConnected disconnects a callback from the 'drive-connected' signal for the VolumeMonitor.
+
+The connectionID should be a value returned from a call to ConnectDriveConnected.
+*/
+func (recv *VolumeMonitor) DisconnectDriveConnected(connectionID int) {
+	signalVolumeMonitorDriveConnectedLock.Lock()
+	defer signalVolumeMonitorDriveConnectedLock.Unlock()
+
+	detail, exists := signalVolumeMonitorDriveConnectedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalVolumeMonitorDriveConnectedMap, connectionID)
+}
+
+//export volumemonitor_driveConnectedHandler
+func volumemonitor_driveConnectedHandler(_ *C.GObject, c_drive *C.GDrive, data C.gpointer) {
+	drive := DriveNewFromC(unsafe.Pointer(c_drive))
+
+	index := int(uintptr(data))
+	callback := signalVolumeMonitorDriveConnectedMap[index].callback
+	callback(drive)
+}
+
+type signalVolumeMonitorDriveDisconnectedDetail struct {
+	callback  VolumeMonitorSignalDriveDisconnectedCallback
+	handlerID C.gulong
+}
+
+var signalVolumeMonitorDriveDisconnectedId int
+var signalVolumeMonitorDriveDisconnectedMap = make(map[int]signalVolumeMonitorDriveDisconnectedDetail)
+var signalVolumeMonitorDriveDisconnectedLock sync.Mutex
+
+// VolumeMonitorSignalDriveDisconnectedCallback is a callback function for a 'drive-disconnected' signal emitted from a VolumeMonitor.
+type VolumeMonitorSignalDriveDisconnectedCallback func(drive *Drive)
+
+/*
+ConnectDriveDisconnected connects the callback to the 'drive-disconnected' signal for the VolumeMonitor.
+
+The returned value represents the connection, and may be passed to DisconnectDriveDisconnected to remove it.
+*/
+func (recv *VolumeMonitor) ConnectDriveDisconnected(callback VolumeMonitorSignalDriveDisconnectedCallback) int {
+	signalVolumeMonitorDriveDisconnectedLock.Lock()
+	defer signalVolumeMonitorDriveDisconnectedLock.Unlock()
+
+	signalVolumeMonitorDriveDisconnectedId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.VolumeMonitor_signal_connect_drive_disconnected(instance, C.gpointer(uintptr(signalVolumeMonitorDriveDisconnectedId)))
+
+	detail := signalVolumeMonitorDriveDisconnectedDetail{callback, handlerID}
+	signalVolumeMonitorDriveDisconnectedMap[signalVolumeMonitorDriveDisconnectedId] = detail
+
+	return signalVolumeMonitorDriveDisconnectedId
+}
+
+/*
+DisconnectDriveDisconnected disconnects a callback from the 'drive-disconnected' signal for the VolumeMonitor.
+
+The connectionID should be a value returned from a call to ConnectDriveDisconnected.
+*/
+func (recv *VolumeMonitor) DisconnectDriveDisconnected(connectionID int) {
+	signalVolumeMonitorDriveDisconnectedLock.Lock()
+	defer signalVolumeMonitorDriveDisconnectedLock.Unlock()
+
+	detail, exists := signalVolumeMonitorDriveDisconnectedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalVolumeMonitorDriveDisconnectedMap, connectionID)
+}
+
+//export volumemonitor_driveDisconnectedHandler
+func volumemonitor_driveDisconnectedHandler(_ *C.GObject, c_drive *C.GDrive, data C.gpointer) {
+	drive := DriveNewFromC(unsafe.Pointer(c_drive))
+
+	index := int(uintptr(data))
+	callback := signalVolumeMonitorDriveDisconnectedMap[index].callback
+	callback(drive)
+}
+
+type signalVolumeMonitorMountAddedDetail struct {
+	callback  VolumeMonitorSignalMountAddedCallback
+	handlerID C.gulong
+}
+
+var signalVolumeMonitorMountAddedId int
+var signalVolumeMonitorMountAddedMap = make(map[int]signalVolumeMonitorMountAddedDetail)
+var signalVolumeMonitorMountAddedLock sync.Mutex
+
+// VolumeMonitorSignalMountAddedCallback is a callback function for a 'mount-added' signal emitted from a VolumeMonitor.
+type VolumeMonitorSignalMountAddedCallback func(mount *Mount)
+
+/*
+ConnectMountAdded connects the callback to the 'mount-added' signal for the VolumeMonitor.
+
+The returned value represents the connection, and may be passed to DisconnectMountAdded to remove it.
+*/
+func (recv *VolumeMonitor) ConnectMountAdded(callback VolumeMonitorSignalMountAddedCallback) int {
+	signalVolumeMonitorMountAddedLock.Lock()
+	defer signalVolumeMonitorMountAddedLock.Unlock()
+
+	signalVolumeMonitorMountAddedId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.VolumeMonitor_signal_connect_mount_added(instance, C.gpointer(uintptr(signalVolumeMonitorMountAddedId)))
+
+	detail := signalVolumeMonitorMountAddedDetail{callback, handlerID}
+	signalVolumeMonitorMountAddedMap[signalVolumeMonitorMountAddedId] = detail
+
+	return signalVolumeMonitorMountAddedId
+}
+
+/*
+DisconnectMountAdded disconnects a callback from the 'mount-added' signal for the VolumeMonitor.
+
+The connectionID should be a value returned from a call to ConnectMountAdded.
+*/
+func (recv *VolumeMonitor) DisconnectMountAdded(connectionID int) {
+	signalVolumeMonitorMountAddedLock.Lock()
+	defer signalVolumeMonitorMountAddedLock.Unlock()
+
+	detail, exists := signalVolumeMonitorMountAddedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalVolumeMonitorMountAddedMap, connectionID)
+}
+
+//export volumemonitor_mountAddedHandler
+func volumemonitor_mountAddedHandler(_ *C.GObject, c_mount *C.GMount, data C.gpointer) {
+	mount := MountNewFromC(unsafe.Pointer(c_mount))
+
+	index := int(uintptr(data))
+	callback := signalVolumeMonitorMountAddedMap[index].callback
+	callback(mount)
+}
+
+type signalVolumeMonitorMountChangedDetail struct {
+	callback  VolumeMonitorSignalMountChangedCallback
+	handlerID C.gulong
+}
+
+var signalVolumeMonitorMountChangedId int
+var signalVolumeMonitorMountChangedMap = make(map[int]signalVolumeMonitorMountChangedDetail)
+var signalVolumeMonitorMountChangedLock sync.Mutex
+
+// VolumeMonitorSignalMountChangedCallback is a callback function for a 'mount-changed' signal emitted from a VolumeMonitor.
+type VolumeMonitorSignalMountChangedCallback func(mount *Mount)
+
+/*
+ConnectMountChanged connects the callback to the 'mount-changed' signal for the VolumeMonitor.
+
+The returned value represents the connection, and may be passed to DisconnectMountChanged to remove it.
+*/
+func (recv *VolumeMonitor) ConnectMountChanged(callback VolumeMonitorSignalMountChangedCallback) int {
+	signalVolumeMonitorMountChangedLock.Lock()
+	defer signalVolumeMonitorMountChangedLock.Unlock()
+
+	signalVolumeMonitorMountChangedId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.VolumeMonitor_signal_connect_mount_changed(instance, C.gpointer(uintptr(signalVolumeMonitorMountChangedId)))
+
+	detail := signalVolumeMonitorMountChangedDetail{callback, handlerID}
+	signalVolumeMonitorMountChangedMap[signalVolumeMonitorMountChangedId] = detail
+
+	return signalVolumeMonitorMountChangedId
+}
+
+/*
+DisconnectMountChanged disconnects a callback from the 'mount-changed' signal for the VolumeMonitor.
+
+The connectionID should be a value returned from a call to ConnectMountChanged.
+*/
+func (recv *VolumeMonitor) DisconnectMountChanged(connectionID int) {
+	signalVolumeMonitorMountChangedLock.Lock()
+	defer signalVolumeMonitorMountChangedLock.Unlock()
+
+	detail, exists := signalVolumeMonitorMountChangedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalVolumeMonitorMountChangedMap, connectionID)
+}
+
+//export volumemonitor_mountChangedHandler
+func volumemonitor_mountChangedHandler(_ *C.GObject, c_mount *C.GMount, data C.gpointer) {
+	mount := MountNewFromC(unsafe.Pointer(c_mount))
+
+	index := int(uintptr(data))
+	callback := signalVolumeMonitorMountChangedMap[index].callback
+	callback(mount)
+}
+
+type signalVolumeMonitorMountPreUnmountDetail struct {
+	callback  VolumeMonitorSignalMountPreUnmountCallback
+	handlerID C.gulong
+}
+
+var signalVolumeMonitorMountPreUnmountId int
+var signalVolumeMonitorMountPreUnmountMap = make(map[int]signalVolumeMonitorMountPreUnmountDetail)
+var signalVolumeMonitorMountPreUnmountLock sync.Mutex
+
+// VolumeMonitorSignalMountPreUnmountCallback is a callback function for a 'mount-pre-unmount' signal emitted from a VolumeMonitor.
+type VolumeMonitorSignalMountPreUnmountCallback func(mount *Mount)
+
+/*
+ConnectMountPreUnmount connects the callback to the 'mount-pre-unmount' signal for the VolumeMonitor.
+
+The returned value represents the connection, and may be passed to DisconnectMountPreUnmount to remove it.
+*/
+func (recv *VolumeMonitor) ConnectMountPreUnmount(callback VolumeMonitorSignalMountPreUnmountCallback) int {
+	signalVolumeMonitorMountPreUnmountLock.Lock()
+	defer signalVolumeMonitorMountPreUnmountLock.Unlock()
+
+	signalVolumeMonitorMountPreUnmountId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.VolumeMonitor_signal_connect_mount_pre_unmount(instance, C.gpointer(uintptr(signalVolumeMonitorMountPreUnmountId)))
+
+	detail := signalVolumeMonitorMountPreUnmountDetail{callback, handlerID}
+	signalVolumeMonitorMountPreUnmountMap[signalVolumeMonitorMountPreUnmountId] = detail
+
+	return signalVolumeMonitorMountPreUnmountId
+}
+
+/*
+DisconnectMountPreUnmount disconnects a callback from the 'mount-pre-unmount' signal for the VolumeMonitor.
+
+The connectionID should be a value returned from a call to ConnectMountPreUnmount.
+*/
+func (recv *VolumeMonitor) DisconnectMountPreUnmount(connectionID int) {
+	signalVolumeMonitorMountPreUnmountLock.Lock()
+	defer signalVolumeMonitorMountPreUnmountLock.Unlock()
+
+	detail, exists := signalVolumeMonitorMountPreUnmountMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalVolumeMonitorMountPreUnmountMap, connectionID)
+}
+
+//export volumemonitor_mountPreUnmountHandler
+func volumemonitor_mountPreUnmountHandler(_ *C.GObject, c_mount *C.GMount, data C.gpointer) {
+	mount := MountNewFromC(unsafe.Pointer(c_mount))
+
+	index := int(uintptr(data))
+	callback := signalVolumeMonitorMountPreUnmountMap[index].callback
+	callback(mount)
+}
+
+type signalVolumeMonitorMountRemovedDetail struct {
+	callback  VolumeMonitorSignalMountRemovedCallback
+	handlerID C.gulong
+}
+
+var signalVolumeMonitorMountRemovedId int
+var signalVolumeMonitorMountRemovedMap = make(map[int]signalVolumeMonitorMountRemovedDetail)
+var signalVolumeMonitorMountRemovedLock sync.Mutex
+
+// VolumeMonitorSignalMountRemovedCallback is a callback function for a 'mount-removed' signal emitted from a VolumeMonitor.
+type VolumeMonitorSignalMountRemovedCallback func(mount *Mount)
+
+/*
+ConnectMountRemoved connects the callback to the 'mount-removed' signal for the VolumeMonitor.
+
+The returned value represents the connection, and may be passed to DisconnectMountRemoved to remove it.
+*/
+func (recv *VolumeMonitor) ConnectMountRemoved(callback VolumeMonitorSignalMountRemovedCallback) int {
+	signalVolumeMonitorMountRemovedLock.Lock()
+	defer signalVolumeMonitorMountRemovedLock.Unlock()
+
+	signalVolumeMonitorMountRemovedId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.VolumeMonitor_signal_connect_mount_removed(instance, C.gpointer(uintptr(signalVolumeMonitorMountRemovedId)))
+
+	detail := signalVolumeMonitorMountRemovedDetail{callback, handlerID}
+	signalVolumeMonitorMountRemovedMap[signalVolumeMonitorMountRemovedId] = detail
+
+	return signalVolumeMonitorMountRemovedId
+}
+
+/*
+DisconnectMountRemoved disconnects a callback from the 'mount-removed' signal for the VolumeMonitor.
+
+The connectionID should be a value returned from a call to ConnectMountRemoved.
+*/
+func (recv *VolumeMonitor) DisconnectMountRemoved(connectionID int) {
+	signalVolumeMonitorMountRemovedLock.Lock()
+	defer signalVolumeMonitorMountRemovedLock.Unlock()
+
+	detail, exists := signalVolumeMonitorMountRemovedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalVolumeMonitorMountRemovedMap, connectionID)
+}
+
+//export volumemonitor_mountRemovedHandler
+func volumemonitor_mountRemovedHandler(_ *C.GObject, c_mount *C.GMount, data C.gpointer) {
+	mount := MountNewFromC(unsafe.Pointer(c_mount))
+
+	index := int(uintptr(data))
+	callback := signalVolumeMonitorMountRemovedMap[index].callback
+	callback(mount)
+}
+
+type signalVolumeMonitorVolumeAddedDetail struct {
+	callback  VolumeMonitorSignalVolumeAddedCallback
+	handlerID C.gulong
+}
+
+var signalVolumeMonitorVolumeAddedId int
+var signalVolumeMonitorVolumeAddedMap = make(map[int]signalVolumeMonitorVolumeAddedDetail)
+var signalVolumeMonitorVolumeAddedLock sync.Mutex
+
+// VolumeMonitorSignalVolumeAddedCallback is a callback function for a 'volume-added' signal emitted from a VolumeMonitor.
+type VolumeMonitorSignalVolumeAddedCallback func(volume *Volume)
+
+/*
+ConnectVolumeAdded connects the callback to the 'volume-added' signal for the VolumeMonitor.
+
+The returned value represents the connection, and may be passed to DisconnectVolumeAdded to remove it.
+*/
+func (recv *VolumeMonitor) ConnectVolumeAdded(callback VolumeMonitorSignalVolumeAddedCallback) int {
+	signalVolumeMonitorVolumeAddedLock.Lock()
+	defer signalVolumeMonitorVolumeAddedLock.Unlock()
+
+	signalVolumeMonitorVolumeAddedId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.VolumeMonitor_signal_connect_volume_added(instance, C.gpointer(uintptr(signalVolumeMonitorVolumeAddedId)))
+
+	detail := signalVolumeMonitorVolumeAddedDetail{callback, handlerID}
+	signalVolumeMonitorVolumeAddedMap[signalVolumeMonitorVolumeAddedId] = detail
+
+	return signalVolumeMonitorVolumeAddedId
+}
+
+/*
+DisconnectVolumeAdded disconnects a callback from the 'volume-added' signal for the VolumeMonitor.
+
+The connectionID should be a value returned from a call to ConnectVolumeAdded.
+*/
+func (recv *VolumeMonitor) DisconnectVolumeAdded(connectionID int) {
+	signalVolumeMonitorVolumeAddedLock.Lock()
+	defer signalVolumeMonitorVolumeAddedLock.Unlock()
+
+	detail, exists := signalVolumeMonitorVolumeAddedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalVolumeMonitorVolumeAddedMap, connectionID)
+}
+
+//export volumemonitor_volumeAddedHandler
+func volumemonitor_volumeAddedHandler(_ *C.GObject, c_volume *C.GVolume, data C.gpointer) {
+	volume := VolumeNewFromC(unsafe.Pointer(c_volume))
+
+	index := int(uintptr(data))
+	callback := signalVolumeMonitorVolumeAddedMap[index].callback
+	callback(volume)
+}
+
+type signalVolumeMonitorVolumeChangedDetail struct {
+	callback  VolumeMonitorSignalVolumeChangedCallback
+	handlerID C.gulong
+}
+
+var signalVolumeMonitorVolumeChangedId int
+var signalVolumeMonitorVolumeChangedMap = make(map[int]signalVolumeMonitorVolumeChangedDetail)
+var signalVolumeMonitorVolumeChangedLock sync.Mutex
+
+// VolumeMonitorSignalVolumeChangedCallback is a callback function for a 'volume-changed' signal emitted from a VolumeMonitor.
+type VolumeMonitorSignalVolumeChangedCallback func(volume *Volume)
+
+/*
+ConnectVolumeChanged connects the callback to the 'volume-changed' signal for the VolumeMonitor.
+
+The returned value represents the connection, and may be passed to DisconnectVolumeChanged to remove it.
+*/
+func (recv *VolumeMonitor) ConnectVolumeChanged(callback VolumeMonitorSignalVolumeChangedCallback) int {
+	signalVolumeMonitorVolumeChangedLock.Lock()
+	defer signalVolumeMonitorVolumeChangedLock.Unlock()
+
+	signalVolumeMonitorVolumeChangedId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.VolumeMonitor_signal_connect_volume_changed(instance, C.gpointer(uintptr(signalVolumeMonitorVolumeChangedId)))
+
+	detail := signalVolumeMonitorVolumeChangedDetail{callback, handlerID}
+	signalVolumeMonitorVolumeChangedMap[signalVolumeMonitorVolumeChangedId] = detail
+
+	return signalVolumeMonitorVolumeChangedId
+}
+
+/*
+DisconnectVolumeChanged disconnects a callback from the 'volume-changed' signal for the VolumeMonitor.
+
+The connectionID should be a value returned from a call to ConnectVolumeChanged.
+*/
+func (recv *VolumeMonitor) DisconnectVolumeChanged(connectionID int) {
+	signalVolumeMonitorVolumeChangedLock.Lock()
+	defer signalVolumeMonitorVolumeChangedLock.Unlock()
+
+	detail, exists := signalVolumeMonitorVolumeChangedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalVolumeMonitorVolumeChangedMap, connectionID)
+}
+
+//export volumemonitor_volumeChangedHandler
+func volumemonitor_volumeChangedHandler(_ *C.GObject, c_volume *C.GVolume, data C.gpointer) {
+	volume := VolumeNewFromC(unsafe.Pointer(c_volume))
+
+	index := int(uintptr(data))
+	callback := signalVolumeMonitorVolumeChangedMap[index].callback
+	callback(volume)
+}
+
+type signalVolumeMonitorVolumeRemovedDetail struct {
+	callback  VolumeMonitorSignalVolumeRemovedCallback
+	handlerID C.gulong
+}
+
+var signalVolumeMonitorVolumeRemovedId int
+var signalVolumeMonitorVolumeRemovedMap = make(map[int]signalVolumeMonitorVolumeRemovedDetail)
+var signalVolumeMonitorVolumeRemovedLock sync.Mutex
+
+// VolumeMonitorSignalVolumeRemovedCallback is a callback function for a 'volume-removed' signal emitted from a VolumeMonitor.
+type VolumeMonitorSignalVolumeRemovedCallback func(volume *Volume)
+
+/*
+ConnectVolumeRemoved connects the callback to the 'volume-removed' signal for the VolumeMonitor.
+
+The returned value represents the connection, and may be passed to DisconnectVolumeRemoved to remove it.
+*/
+func (recv *VolumeMonitor) ConnectVolumeRemoved(callback VolumeMonitorSignalVolumeRemovedCallback) int {
+	signalVolumeMonitorVolumeRemovedLock.Lock()
+	defer signalVolumeMonitorVolumeRemovedLock.Unlock()
+
+	signalVolumeMonitorVolumeRemovedId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.VolumeMonitor_signal_connect_volume_removed(instance, C.gpointer(uintptr(signalVolumeMonitorVolumeRemovedId)))
+
+	detail := signalVolumeMonitorVolumeRemovedDetail{callback, handlerID}
+	signalVolumeMonitorVolumeRemovedMap[signalVolumeMonitorVolumeRemovedId] = detail
+
+	return signalVolumeMonitorVolumeRemovedId
+}
+
+/*
+DisconnectVolumeRemoved disconnects a callback from the 'volume-removed' signal for the VolumeMonitor.
+
+The connectionID should be a value returned from a call to ConnectVolumeRemoved.
+*/
+func (recv *VolumeMonitor) DisconnectVolumeRemoved(connectionID int) {
+	signalVolumeMonitorVolumeRemovedLock.Lock()
+	defer signalVolumeMonitorVolumeRemovedLock.Unlock()
+
+	detail, exists := signalVolumeMonitorVolumeRemovedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalVolumeMonitorVolumeRemovedMap, connectionID)
+}
+
+//export volumemonitor_volumeRemovedHandler
+func volumemonitor_volumeRemovedHandler(_ *C.GObject, c_volume *C.GVolume, data C.gpointer) {
+	volume := VolumeNewFromC(unsafe.Pointer(c_volume))
+
+	index := int(uintptr(data))
+	callback := signalVolumeMonitorVolumeRemovedMap[index].callback
+	callback(volume)
+}
 
 // GetConnectedDrives is a wrapper around the C function g_volume_monitor_get_connected_drives.
 func (recv *VolumeMonitor) GetConnectedDrives() *glib.List {
@@ -5067,7 +6044,16 @@ func (recv *VolumeMonitor) GetConnectedDrives() *glib.List {
 	return retGo
 }
 
-// Unsupported : g_volume_monitor_get_mount_for_uuid : no return generator
+// GetMountForUuid is a wrapper around the C function g_volume_monitor_get_mount_for_uuid.
+func (recv *VolumeMonitor) GetMountForUuid(uuid string) *Mount {
+	c_uuid := C.CString(uuid)
+	defer C.free(unsafe.Pointer(c_uuid))
+
+	retC := C.g_volume_monitor_get_mount_for_uuid((*C.GVolumeMonitor)(recv.native), c_uuid)
+	retGo := MountNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // GetMounts is a wrapper around the C function g_volume_monitor_get_mounts.
 func (recv *VolumeMonitor) GetMounts() *glib.List {
@@ -5077,7 +6063,16 @@ func (recv *VolumeMonitor) GetMounts() *glib.List {
 	return retGo
 }
 
-// Unsupported : g_volume_monitor_get_volume_for_uuid : no return generator
+// GetVolumeForUuid is a wrapper around the C function g_volume_monitor_get_volume_for_uuid.
+func (recv *VolumeMonitor) GetVolumeForUuid(uuid string) *Volume {
+	c_uuid := C.CString(uuid)
+	defer C.free(unsafe.Pointer(c_uuid))
+
+	retC := C.g_volume_monitor_get_volume_for_uuid((*C.GVolumeMonitor)(recv.native), c_uuid)
+	retGo := VolumeNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // GetVolumes is a wrapper around the C function g_volume_monitor_get_volumes.
 func (recv *VolumeMonitor) GetVolumes() *glib.List {

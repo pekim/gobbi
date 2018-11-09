@@ -197,9 +197,23 @@ func (recv *AppInfo) CanRemoveSupportsType() bool {
 	return retGo
 }
 
-// Unsupported : g_app_info_dup : no return generator
+// Dup is a wrapper around the C function g_app_info_dup.
+func (recv *AppInfo) Dup() *AppInfo {
+	retC := C.g_app_info_dup((*C.GAppInfo)(recv.native))
+	retGo := AppInfoNewFromC(unsafe.Pointer(retC))
 
-// Unsupported : g_app_info_equal : unsupported parameter appinfo2 : no type generator for AppInfo (GAppInfo*) for param appinfo2
+	return retGo
+}
+
+// Equal is a wrapper around the C function g_app_info_equal.
+func (recv *AppInfo) Equal(appinfo2 *AppInfo) bool {
+	c_appinfo2 := (*C.GAppInfo)(appinfo2.ToC())
+
+	retC := C.g_app_info_equal((*C.GAppInfo)(recv.native), c_appinfo2)
+	retGo := retC == C.TRUE
+
+	return retGo
+}
 
 // GetDescription is a wrapper around the C function g_app_info_get_description.
 func (recv *AppInfo) GetDescription() string {
@@ -217,7 +231,13 @@ func (recv *AppInfo) GetExecutable() string {
 	return retGo
 }
 
-// Unsupported : g_app_info_get_icon : no return generator
+// GetIcon is a wrapper around the C function g_app_info_get_icon.
+func (recv *AppInfo) GetIcon() *Icon {
+	retC := C.g_app_info_get_icon((*C.GAppInfo)(recv.native))
+	retGo := IconNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // GetId is a wrapper around the C function g_app_info_get_id.
 func (recv *AppInfo) GetId() string {
@@ -474,7 +494,16 @@ func (recv *DesktopAppInfoLookup) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : g_desktop_app_info_lookup_get_default_for_uri_scheme : no return generator
+// GetDefaultForUriScheme is a wrapper around the C function g_desktop_app_info_lookup_get_default_for_uri_scheme.
+func (recv *DesktopAppInfoLookup) GetDefaultForUriScheme(uriScheme string) *AppInfo {
+	c_uri_scheme := C.CString(uriScheme)
+	defer C.free(unsafe.Pointer(c_uri_scheme))
+
+	retC := C.g_desktop_app_info_lookup_get_default_for_uri_scheme((*C.GDesktopAppInfoLookup)(recv.native), c_uri_scheme)
+	retGo := AppInfoNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // Drive is a wrapper around the C record GDrive.
 type Drive struct {
@@ -686,11 +715,32 @@ func (recv *Drive) CanPollForMedia() bool {
 
 // Unsupported : g_drive_eject : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_drive_eject_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
+// EjectFinish is a wrapper around the C function g_drive_eject_finish.
+func (recv *Drive) EjectFinish(result *AsyncResult) (bool, error) {
+	c_result := (*C.GAsyncResult)(result.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_drive_eject_finish((*C.GDrive)(recv.native), c_result, &cThrowableError)
+	retGo := retC == C.TRUE
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // Unsupported : g_drive_enumerate_identifiers : no return type
 
-// Unsupported : g_drive_get_icon : no return generator
+// GetIcon is a wrapper around the C function g_drive_get_icon.
+func (recv *Drive) GetIcon() *Icon {
+	retC := C.g_drive_get_icon((*C.GDrive)(recv.native))
+	retGo := IconNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // GetIdentifier is a wrapper around the C function g_drive_get_identifier.
 func (recv *Drive) GetIdentifier(kind string) string {
@@ -755,7 +805,22 @@ func (recv *Drive) IsMediaRemovable() bool {
 
 // Unsupported : g_drive_poll_for_media : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_drive_poll_for_media_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
+// PollForMediaFinish is a wrapper around the C function g_drive_poll_for_media_finish.
+func (recv *Drive) PollForMediaFinish(result *AsyncResult) (bool, error) {
+	c_result := (*C.GAsyncResult)(result.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_drive_poll_for_media_finish((*C.GDrive)(recv.native), c_result, &cThrowableError)
+	retGo := retC == C.TRUE
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // File is a wrapper around the C record GFile.
 type File struct {
@@ -799,15 +864,64 @@ func (recv *File) AppendTo(flags FileCreateFlags, cancellable *Cancellable) (*Fi
 
 // Unsupported : g_file_append_to_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_file_append_to_finish : unsupported parameter res : no type generator for AsyncResult (GAsyncResult*) for param res
+// AppendToFinish is a wrapper around the C function g_file_append_to_finish.
+func (recv *File) AppendToFinish(res *AsyncResult) (*FileOutputStream, error) {
+	c_res := (*C.GAsyncResult)(res.ToC())
 
-// Unsupported : g_file_copy : unsupported parameter destination : no type generator for File (GFile*) for param destination
+	var cThrowableError *C.GError
 
-// Unsupported : g_file_copy_async : unsupported parameter destination : no type generator for File (GFile*) for param destination
+	retC := C.g_file_append_to_finish((*C.GFile)(recv.native), c_res, &cThrowableError)
+	retGo := FileOutputStreamNewFromC(unsafe.Pointer(retC))
 
-// Unsupported : g_file_copy_attributes : unsupported parameter destination : no type generator for File (GFile*) for param destination
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
 
-// Unsupported : g_file_copy_finish : unsupported parameter res : no type generator for AsyncResult (GAsyncResult*) for param res
+	return retGo, goThrowableError
+}
+
+// Unsupported : g_file_copy : unsupported parameter progress_callback : no type generator for FileProgressCallback (GFileProgressCallback) for param progress_callback
+
+// Unsupported : g_file_copy_async : unsupported parameter progress_callback : no type generator for FileProgressCallback (GFileProgressCallback) for param progress_callback
+
+// CopyAttributes is a wrapper around the C function g_file_copy_attributes.
+func (recv *File) CopyAttributes(destination *File, flags FileCopyFlags, cancellable *Cancellable) (bool, error) {
+	c_destination := (*C.GFile)(destination.ToC())
+
+	c_flags := (C.GFileCopyFlags)(flags)
+
+	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_file_copy_attributes((*C.GFile)(recv.native), c_destination, c_flags, c_cancellable, &cThrowableError)
+	retGo := retC == C.TRUE
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
+
+// CopyFinish is a wrapper around the C function g_file_copy_finish.
+func (recv *File) CopyFinish(res *AsyncResult) (bool, error) {
+	c_res := (*C.GAsyncResult)(res.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_file_copy_finish((*C.GFile)(recv.native), c_res, &cThrowableError)
+	retGo := retC == C.TRUE
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // Create is a wrapper around the C function g_file_create.
 func (recv *File) Create(flags FileCreateFlags, cancellable *Cancellable) (*FileOutputStream, error) {
@@ -830,7 +944,22 @@ func (recv *File) Create(flags FileCreateFlags, cancellable *Cancellable) (*File
 
 // Unsupported : g_file_create_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_file_create_finish : unsupported parameter res : no type generator for AsyncResult (GAsyncResult*) for param res
+// CreateFinish is a wrapper around the C function g_file_create_finish.
+func (recv *File) CreateFinish(res *AsyncResult) (*FileOutputStream, error) {
+	c_res := (*C.GAsyncResult)(res.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_file_create_finish((*C.GFile)(recv.native), c_res, &cThrowableError)
+	retGo := FileOutputStreamNewFromC(unsafe.Pointer(retC))
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // Delete is a wrapper around the C function g_file_delete.
 func (recv *File) Delete(cancellable *Cancellable) (bool, error) {
@@ -849,11 +978,32 @@ func (recv *File) Delete(cancellable *Cancellable) (bool, error) {
 	return retGo, goThrowableError
 }
 
-// Unsupported : g_file_dup : no return generator
+// Dup is a wrapper around the C function g_file_dup.
+func (recv *File) Dup() *File {
+	retC := C.g_file_dup((*C.GFile)(recv.native))
+	retGo := FileNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // Unsupported : g_file_eject_mountable : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_file_eject_mountable_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
+// EjectMountableFinish is a wrapper around the C function g_file_eject_mountable_finish.
+func (recv *File) EjectMountableFinish(result *AsyncResult) (bool, error) {
+	c_result := (*C.GAsyncResult)(result.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_file_eject_mountable_finish((*C.GFile)(recv.native), c_result, &cThrowableError)
+	retGo := retC == C.TRUE
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // EnumerateChildren is a wrapper around the C function g_file_enumerate_children.
 func (recv *File) EnumerateChildren(attributes string, flags FileQueryInfoFlags, cancellable *Cancellable) (*FileEnumerator, error) {
@@ -879,15 +1029,68 @@ func (recv *File) EnumerateChildren(attributes string, flags FileQueryInfoFlags,
 
 // Unsupported : g_file_enumerate_children_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_file_enumerate_children_finish : unsupported parameter res : no type generator for AsyncResult (GAsyncResult*) for param res
+// EnumerateChildrenFinish is a wrapper around the C function g_file_enumerate_children_finish.
+func (recv *File) EnumerateChildrenFinish(res *AsyncResult) (*FileEnumerator, error) {
+	c_res := (*C.GAsyncResult)(res.ToC())
 
-// Unsupported : g_file_equal : unsupported parameter file2 : no type generator for File (GFile*) for param file2
+	var cThrowableError *C.GError
 
-// Unsupported : g_file_find_enclosing_mount : no return generator
+	retC := C.g_file_enumerate_children_finish((*C.GFile)(recv.native), c_res, &cThrowableError)
+	retGo := FileEnumeratorNewFromC(unsafe.Pointer(retC))
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
+
+// Equal is a wrapper around the C function g_file_equal.
+func (recv *File) Equal(file2 *File) bool {
+	c_file2 := (*C.GFile)(file2.ToC())
+
+	retC := C.g_file_equal((*C.GFile)(recv.native), c_file2)
+	retGo := retC == C.TRUE
+
+	return retGo
+}
+
+// FindEnclosingMount is a wrapper around the C function g_file_find_enclosing_mount.
+func (recv *File) FindEnclosingMount(cancellable *Cancellable) (*Mount, error) {
+	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_file_find_enclosing_mount((*C.GFile)(recv.native), c_cancellable, &cThrowableError)
+	retGo := MountNewFromC(unsafe.Pointer(retC))
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // Unsupported : g_file_find_enclosing_mount_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_file_find_enclosing_mount_finish : unsupported parameter res : no type generator for AsyncResult (GAsyncResult*) for param res
+// FindEnclosingMountFinish is a wrapper around the C function g_file_find_enclosing_mount_finish.
+func (recv *File) FindEnclosingMountFinish(res *AsyncResult) (*Mount, error) {
+	c_res := (*C.GAsyncResult)(res.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_file_find_enclosing_mount_finish((*C.GFile)(recv.native), c_res, &cThrowableError)
+	retGo := MountNewFromC(unsafe.Pointer(retC))
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // GetBasename is a wrapper around the C function g_file_get_basename.
 func (recv *File) GetBasename() string {
@@ -898,11 +1101,47 @@ func (recv *File) GetBasename() string {
 	return retGo
 }
 
-// Unsupported : g_file_get_child : no return generator
+// GetChild is a wrapper around the C function g_file_get_child.
+func (recv *File) GetChild(name string) *File {
+	c_name := C.CString(name)
+	defer C.free(unsafe.Pointer(c_name))
 
-// Unsupported : g_file_get_child_for_display_name : no return generator
+	retC := C.g_file_get_child((*C.GFile)(recv.native), c_name)
+	retGo := FileNewFromC(unsafe.Pointer(retC))
 
-// Unsupported : g_file_get_parent : no return generator
+	return retGo
+}
+
+// GetChildForDisplayName is a wrapper around the C function g_file_get_child_for_display_name.
+func (recv *File) GetChildForDisplayName(displayName string) (*File, error) {
+	c_display_name := C.CString(displayName)
+	defer C.free(unsafe.Pointer(c_display_name))
+
+	var cThrowableError *C.GError
+
+	retC := C.g_file_get_child_for_display_name((*C.GFile)(recv.native), c_display_name, &cThrowableError)
+	retGo := FileNewFromC(unsafe.Pointer(retC))
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
+
+// GetParent is a wrapper around the C function g_file_get_parent.
+func (recv *File) GetParent() *File {
+	retC := C.g_file_get_parent((*C.GFile)(recv.native))
+	var retGo (*File)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = FileNewFromC(unsafe.Pointer(retC))
+	}
+
+	return retGo
+}
 
 // GetParseName is a wrapper around the C function g_file_get_parse_name.
 func (recv *File) GetParseName() string {
@@ -922,7 +1161,16 @@ func (recv *File) GetPath() string {
 	return retGo
 }
 
-// Unsupported : g_file_get_relative_path : unsupported parameter descendant : no type generator for File (GFile*) for param descendant
+// GetRelativePath is a wrapper around the C function g_file_get_relative_path.
+func (recv *File) GetRelativePath(descendant *File) string {
+	c_descendant := (*C.GFile)(descendant.ToC())
+
+	retC := C.g_file_get_relative_path((*C.GFile)(recv.native), c_descendant)
+	retGo := C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // GetUri is a wrapper around the C function g_file_get_uri.
 func (recv *File) GetUri() string {
@@ -942,7 +1190,15 @@ func (recv *File) GetUriScheme() string {
 	return retGo
 }
 
-// Unsupported : g_file_has_prefix : unsupported parameter prefix : no type generator for File (GFile*) for param prefix
+// HasPrefix is a wrapper around the C function g_file_has_prefix.
+func (recv *File) HasPrefix(prefix *File) bool {
+	c_prefix := (*C.GFile)(prefix.ToC())
+
+	retC := C.g_file_has_prefix((*C.GFile)(recv.native), c_prefix)
+	retGo := retC == C.TRUE
+
+	return retGo
+}
 
 // HasUriScheme is a wrapper around the C function g_file_has_uri_scheme.
 func (recv *File) HasUriScheme(uriScheme string) bool {
@@ -975,11 +1231,11 @@ func (recv *File) IsNative() bool {
 
 // Unsupported : g_file_load_contents_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_file_load_contents_finish : unsupported parameter res : no type generator for AsyncResult (GAsyncResult*) for param res
+// Unsupported : g_file_load_contents_finish : unsupported parameter contents : output array param contents
 
 // Unsupported : g_file_load_partial_contents_async : unsupported parameter read_more_callback : no type generator for FileReadMoreCallback (GFileReadMoreCallback) for param read_more_callback
 
-// Unsupported : g_file_load_partial_contents_finish : unsupported parameter res : no type generator for AsyncResult (GAsyncResult*) for param res
+// Unsupported : g_file_load_partial_contents_finish : unsupported parameter contents : output array param contents
 
 // MakeDirectory is a wrapper around the C function g_file_make_directory.
 func (recv *File) MakeDirectory(cancellable *Cancellable) (bool, error) {
@@ -1058,15 +1314,60 @@ func (recv *File) MonitorFile(flags FileMonitorFlags, cancellable *Cancellable) 
 
 // Unsupported : g_file_mount_enclosing_volume : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_file_mount_enclosing_volume_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
+// MountEnclosingVolumeFinish is a wrapper around the C function g_file_mount_enclosing_volume_finish.
+func (recv *File) MountEnclosingVolumeFinish(result *AsyncResult) (bool, error) {
+	c_result := (*C.GAsyncResult)(result.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_file_mount_enclosing_volume_finish((*C.GFile)(recv.native), c_result, &cThrowableError)
+	retGo := retC == C.TRUE
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // Unsupported : g_file_mount_mountable : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_file_mount_mountable_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
+// MountMountableFinish is a wrapper around the C function g_file_mount_mountable_finish.
+func (recv *File) MountMountableFinish(result *AsyncResult) (*File, error) {
+	c_result := (*C.GAsyncResult)(result.ToC())
 
-// Unsupported : g_file_move : unsupported parameter destination : no type generator for File (GFile*) for param destination
+	var cThrowableError *C.GError
 
-// Unsupported : g_file_query_default_handler : no return generator
+	retC := C.g_file_mount_mountable_finish((*C.GFile)(recv.native), c_result, &cThrowableError)
+	retGo := FileNewFromC(unsafe.Pointer(retC))
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
+
+// Unsupported : g_file_move : unsupported parameter progress_callback : no type generator for FileProgressCallback (GFileProgressCallback) for param progress_callback
+
+// QueryDefaultHandler is a wrapper around the C function g_file_query_default_handler.
+func (recv *File) QueryDefaultHandler(cancellable *Cancellable) (*AppInfo, error) {
+	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_file_query_default_handler((*C.GFile)(recv.native), c_cancellable, &cThrowableError)
+	retGo := AppInfoNewFromC(unsafe.Pointer(retC))
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // QueryExists is a wrapper around the C function g_file_query_exists.
 func (recv *File) QueryExists(cancellable *Cancellable) bool {
@@ -1100,7 +1401,22 @@ func (recv *File) QueryFilesystemInfo(attributes string, cancellable *Cancellabl
 
 // Unsupported : g_file_query_filesystem_info_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_file_query_filesystem_info_finish : unsupported parameter res : no type generator for AsyncResult (GAsyncResult*) for param res
+// QueryFilesystemInfoFinish is a wrapper around the C function g_file_query_filesystem_info_finish.
+func (recv *File) QueryFilesystemInfoFinish(res *AsyncResult) (*FileInfo, error) {
+	c_res := (*C.GAsyncResult)(res.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_file_query_filesystem_info_finish((*C.GFile)(recv.native), c_res, &cThrowableError)
+	retGo := FileInfoNewFromC(unsafe.Pointer(retC))
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // QueryInfo is a wrapper around the C function g_file_query_info.
 func (recv *File) QueryInfo(attributes string, flags FileQueryInfoFlags, cancellable *Cancellable) (*FileInfo, error) {
@@ -1126,7 +1442,22 @@ func (recv *File) QueryInfo(attributes string, flags FileQueryInfoFlags, cancell
 
 // Unsupported : g_file_query_info_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_file_query_info_finish : unsupported parameter res : no type generator for AsyncResult (GAsyncResult*) for param res
+// QueryInfoFinish is a wrapper around the C function g_file_query_info_finish.
+func (recv *File) QueryInfoFinish(res *AsyncResult) (*FileInfo, error) {
+	c_res := (*C.GAsyncResult)(res.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_file_query_info_finish((*C.GFile)(recv.native), c_res, &cThrowableError)
+	retGo := FileInfoNewFromC(unsafe.Pointer(retC))
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // QuerySettableAttributes is a wrapper around the C function g_file_query_settable_attributes.
 func (recv *File) QuerySettableAttributes(cancellable *Cancellable) (*FileAttributeInfoList, error) {
@@ -1181,7 +1512,22 @@ func (recv *File) Read(cancellable *Cancellable) (*FileInputStream, error) {
 
 // Unsupported : g_file_read_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_file_read_finish : unsupported parameter res : no type generator for AsyncResult (GAsyncResult*) for param res
+// ReadFinish is a wrapper around the C function g_file_read_finish.
+func (recv *File) ReadFinish(res *AsyncResult) (*FileInputStream, error) {
+	c_res := (*C.GAsyncResult)(res.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_file_read_finish((*C.GFile)(recv.native), c_res, &cThrowableError)
+	retGo := FileInputStreamNewFromC(unsafe.Pointer(retC))
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // Replace is a wrapper around the C function g_file_replace.
 func (recv *File) Replace(etag string, makeBackup bool, flags FileCreateFlags, cancellable *Cancellable) (*FileOutputStream, error) {
@@ -1246,11 +1592,55 @@ func (recv *File) ReplaceContents(contents []uint8, etag string, makeBackup bool
 
 // Unsupported : g_file_replace_contents_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_file_replace_contents_finish : unsupported parameter res : no type generator for AsyncResult (GAsyncResult*) for param res
+// ReplaceContentsFinish is a wrapper around the C function g_file_replace_contents_finish.
+func (recv *File) ReplaceContentsFinish(res *AsyncResult) (bool, string, error) {
+	c_res := (*C.GAsyncResult)(res.ToC())
 
-// Unsupported : g_file_replace_finish : unsupported parameter res : no type generator for AsyncResult (GAsyncResult*) for param res
+	var c_new_etag *C.char
 
-// Unsupported : g_file_resolve_relative_path : no return generator
+	var cThrowableError *C.GError
+
+	retC := C.g_file_replace_contents_finish((*C.GFile)(recv.native), c_res, &c_new_etag, &cThrowableError)
+	retGo := retC == C.TRUE
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	newEtag := C.GoString(c_new_etag)
+	defer C.free(unsafe.Pointer(c_new_etag))
+
+	return retGo, newEtag, goThrowableError
+}
+
+// ReplaceFinish is a wrapper around the C function g_file_replace_finish.
+func (recv *File) ReplaceFinish(res *AsyncResult) (*FileOutputStream, error) {
+	c_res := (*C.GAsyncResult)(res.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_file_replace_finish((*C.GFile)(recv.native), c_res, &cThrowableError)
+	retGo := FileOutputStreamNewFromC(unsafe.Pointer(retC))
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
+
+// ResolveRelativePath is a wrapper around the C function g_file_resolve_relative_path.
+func (recv *File) ResolveRelativePath(relativePath string) *File {
+	c_relative_path := C.CString(relativePath)
+	defer C.free(unsafe.Pointer(c_relative_path))
+
+	retC := C.g_file_resolve_relative_path((*C.GFile)(recv.native), c_relative_path)
+	retGo := FileNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // SetAttribute is a wrapper around the C function g_file_set_attribute.
 func (recv *File) SetAttribute(attribute string, type_ FileAttributeType, valueP uintptr, flags FileQueryInfoFlags, cancellable *Cancellable) (bool, error) {
@@ -1426,7 +1816,7 @@ func (recv *File) SetAttributeUint64(attribute string, value uint64, flags FileQ
 
 // Unsupported : g_file_set_attributes_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_file_set_attributes_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
+// Unsupported : g_file_set_attributes_finish : unsupported parameter info : record with indirection level of 2
 
 // SetAttributesFromInfo is a wrapper around the C function g_file_set_attributes_from_info.
 func (recv *File) SetAttributesFromInfo(info *FileInfo, flags FileQueryInfoFlags, cancellable *Cancellable) (bool, error) {
@@ -1449,11 +1839,44 @@ func (recv *File) SetAttributesFromInfo(info *FileInfo, flags FileQueryInfoFlags
 	return retGo, goThrowableError
 }
 
-// Unsupported : g_file_set_display_name : no return generator
+// SetDisplayName is a wrapper around the C function g_file_set_display_name.
+func (recv *File) SetDisplayName(displayName string, cancellable *Cancellable) (*File, error) {
+	c_display_name := C.CString(displayName)
+	defer C.free(unsafe.Pointer(c_display_name))
+
+	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_file_set_display_name((*C.GFile)(recv.native), c_display_name, c_cancellable, &cThrowableError)
+	retGo := FileNewFromC(unsafe.Pointer(retC))
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // Unsupported : g_file_set_display_name_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_file_set_display_name_finish : unsupported parameter res : no type generator for AsyncResult (GAsyncResult*) for param res
+// SetDisplayNameFinish is a wrapper around the C function g_file_set_display_name_finish.
+func (recv *File) SetDisplayNameFinish(res *AsyncResult) (*File, error) {
+	c_res := (*C.GAsyncResult)(res.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_file_set_display_name_finish((*C.GFile)(recv.native), c_res, &cThrowableError)
+	retGo := FileNewFromC(unsafe.Pointer(retC))
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // Trash is a wrapper around the C function g_file_trash.
 func (recv *File) Trash(cancellable *Cancellable) (bool, error) {
@@ -1474,7 +1897,22 @@ func (recv *File) Trash(cancellable *Cancellable) (bool, error) {
 
 // Unsupported : g_file_unmount_mountable : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_file_unmount_mountable_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
+// UnmountMountableFinish is a wrapper around the C function g_file_unmount_mountable_finish.
+func (recv *File) UnmountMountableFinish(result *AsyncResult) (bool, error) {
+	c_result := (*C.GAsyncResult)(result.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_file_unmount_mountable_finish((*C.GFile)(recv.native), c_result, &cThrowableError)
+	retGo := retC == C.TRUE
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // FileDescriptorBased is a wrapper around the C record GFileDescriptorBased.
 type FileDescriptorBased struct {
@@ -1518,7 +1956,15 @@ func (recv *Icon) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : g_icon_equal : unsupported parameter icon2 : no type generator for Icon (GIcon*) for param icon2
+// Equal is a wrapper around the C function g_icon_equal.
+func (recv *Icon) Equal(icon2 *Icon) bool {
+	c_icon2 := (*C.GIcon)(icon2.ToC())
+
+	retC := C.g_icon_equal((*C.GIcon)(recv.native), c_icon2)
+	retGo := retC == C.TRUE
+
+	return retGo
+}
 
 // ListModel is a wrapper around the C record GListModel.
 type ListModel struct {
@@ -1588,7 +2034,27 @@ func (recv *LoadableIcon) Load(size int32, cancellable *Cancellable) (*InputStre
 
 // Unsupported : g_loadable_icon_load_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_loadable_icon_load_finish : unsupported parameter res : no type generator for AsyncResult (GAsyncResult*) for param res
+// LoadFinish is a wrapper around the C function g_loadable_icon_load_finish.
+func (recv *LoadableIcon) LoadFinish(res *AsyncResult) (*InputStream, string, error) {
+	c_res := (*C.GAsyncResult)(res.ToC())
+
+	var c_type *C.char
+
+	var cThrowableError *C.GError
+
+	retC := C.g_loadable_icon_load_finish((*C.GLoadableIcon)(recv.native), c_res, &c_type, &cThrowableError)
+	retGo := InputStreamNewFromC(unsafe.Pointer(retC))
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	type_ := C.GoString(c_type)
+	defer C.free(unsafe.Pointer(c_type))
+
+	return retGo, type_, goThrowableError
+}
 
 // Mount is a wrapper around the C record GMount.
 type Mount struct {
@@ -1743,13 +2209,46 @@ func (recv *Mount) CanUnmount() bool {
 
 // Unsupported : g_mount_eject : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_mount_eject_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
+// EjectFinish is a wrapper around the C function g_mount_eject_finish.
+func (recv *Mount) EjectFinish(result *AsyncResult) (bool, error) {
+	c_result := (*C.GAsyncResult)(result.ToC())
 
-// Unsupported : g_mount_get_default_location : no return generator
+	var cThrowableError *C.GError
 
-// Unsupported : g_mount_get_drive : no return generator
+	retC := C.g_mount_eject_finish((*C.GMount)(recv.native), c_result, &cThrowableError)
+	retGo := retC == C.TRUE
 
-// Unsupported : g_mount_get_icon : no return generator
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
+
+// GetDefaultLocation is a wrapper around the C function g_mount_get_default_location.
+func (recv *Mount) GetDefaultLocation() *File {
+	retC := C.g_mount_get_default_location((*C.GMount)(recv.native))
+	retGo := FileNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// GetDrive is a wrapper around the C function g_mount_get_drive.
+func (recv *Mount) GetDrive() *Drive {
+	retC := C.g_mount_get_drive((*C.GMount)(recv.native))
+	retGo := DriveNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// GetIcon is a wrapper around the C function g_mount_get_icon.
+func (recv *Mount) GetIcon() *Icon {
+	retC := C.g_mount_get_icon((*C.GMount)(recv.native))
+	retGo := IconNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // GetName is a wrapper around the C function g_mount_get_name.
 func (recv *Mount) GetName() string {
@@ -1760,7 +2259,13 @@ func (recv *Mount) GetName() string {
 	return retGo
 }
 
-// Unsupported : g_mount_get_root : no return generator
+// GetRoot is a wrapper around the C function g_mount_get_root.
+func (recv *Mount) GetRoot() *File {
+	retC := C.g_mount_get_root((*C.GMount)(recv.native))
+	retGo := FileNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // GetUuid is a wrapper around the C function g_mount_get_uuid.
 func (recv *Mount) GetUuid() string {
@@ -1771,15 +2276,51 @@ func (recv *Mount) GetUuid() string {
 	return retGo
 }
 
-// Unsupported : g_mount_get_volume : no return generator
+// GetVolume is a wrapper around the C function g_mount_get_volume.
+func (recv *Mount) GetVolume() *Volume {
+	retC := C.g_mount_get_volume((*C.GMount)(recv.native))
+	retGo := VolumeNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // Unsupported : g_mount_remount : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_mount_remount_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
+// RemountFinish is a wrapper around the C function g_mount_remount_finish.
+func (recv *Mount) RemountFinish(result *AsyncResult) (bool, error) {
+	c_result := (*C.GAsyncResult)(result.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_mount_remount_finish((*C.GMount)(recv.native), c_result, &cThrowableError)
+	retGo := retC == C.TRUE
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // Unsupported : g_mount_unmount : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_mount_unmount_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
+// UnmountFinish is a wrapper around the C function g_mount_unmount_finish.
+func (recv *Mount) UnmountFinish(result *AsyncResult) (bool, error) {
+	c_result := (*C.GAsyncResult)(result.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_mount_unmount_finish((*C.GMount)(recv.native), c_result, &cThrowableError)
+	retGo := retC == C.TRUE
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // RemoteActionGroup is a wrapper around the C record GRemoteActionGroup.
 type RemoteActionGroup struct {
@@ -2061,13 +2602,40 @@ func (recv *Volume) CanMount() bool {
 
 // Unsupported : g_volume_eject : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_volume_eject_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
+// EjectFinish is a wrapper around the C function g_volume_eject_finish.
+func (recv *Volume) EjectFinish(result *AsyncResult) (bool, error) {
+	c_result := (*C.GAsyncResult)(result.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_volume_eject_finish((*C.GVolume)(recv.native), c_result, &cThrowableError)
+	retGo := retC == C.TRUE
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // Unsupported : g_volume_enumerate_identifiers : no return type
 
-// Unsupported : g_volume_get_drive : no return generator
+// GetDrive is a wrapper around the C function g_volume_get_drive.
+func (recv *Volume) GetDrive() *Drive {
+	retC := C.g_volume_get_drive((*C.GVolume)(recv.native))
+	retGo := DriveNewFromC(unsafe.Pointer(retC))
 
-// Unsupported : g_volume_get_icon : no return generator
+	return retGo
+}
+
+// GetIcon is a wrapper around the C function g_volume_get_icon.
+func (recv *Volume) GetIcon() *Icon {
+	retC := C.g_volume_get_icon((*C.GVolume)(recv.native))
+	retGo := IconNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // GetIdentifier is a wrapper around the C function g_volume_get_identifier.
 func (recv *Volume) GetIdentifier(kind string) string {
@@ -2081,7 +2649,13 @@ func (recv *Volume) GetIdentifier(kind string) string {
 	return retGo
 }
 
-// Unsupported : g_volume_get_mount : no return generator
+// GetMount is a wrapper around the C function g_volume_get_mount.
+func (recv *Volume) GetMount() *Mount {
+	retC := C.g_volume_get_mount((*C.GVolume)(recv.native))
+	retGo := MountNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // GetName is a wrapper around the C function g_volume_get_name.
 func (recv *Volume) GetName() string {
@@ -2103,7 +2677,22 @@ func (recv *Volume) GetUuid() string {
 
 // Unsupported : g_volume_mount : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_volume_mount_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
+// MountFinish is a wrapper around the C function g_volume_mount_finish.
+func (recv *Volume) MountFinish(result *AsyncResult) (bool, error) {
+	c_result := (*C.GAsyncResult)(result.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_volume_mount_finish((*C.GVolume)(recv.native), c_result, &cThrowableError)
+	retGo := retC == C.TRUE
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // ShouldAutomount is a wrapper around the C function g_volume_should_automount.
 func (recv *Volume) ShouldAutomount() bool {

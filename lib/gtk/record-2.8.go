@@ -3,6 +3,8 @@
 
 package gtk
 
+import "unsafe"
+
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <gtk/gtk-a11y.h>
 // #include <gtk/gtk.h>
@@ -46,4 +48,10 @@ func (recv *TextIter) ForwardVisibleLines(count int32) bool {
 	return retGo
 }
 
-// Unsupported : gtk_tree_row_reference_get_model : no return generator
+// GetModel is a wrapper around the C function gtk_tree_row_reference_get_model.
+func (recv *TreeRowReference) GetModel() *TreeModel {
+	retC := C.gtk_tree_row_reference_get_model((*C.GtkTreeRowReference)(recv.native))
+	retGo := TreeModelNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}

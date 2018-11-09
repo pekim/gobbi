@@ -139,10 +139,15 @@ func (s *Signal) cTypeDeclaration(typ *Type) string {
 		qname := QNameNew(s.Namespace, typ.Name)
 		record, found := qname.namespace.recordOrClassRecordForName(qname.name)
 		if !found {
-			panic(fmt.Sprintf("Not found class %s, for signal %s, for class %s",
-				qname.name, s.Name, s.record.Name))
+			iface, found := qname.namespace.interfaceForName(qname.name)
+			if !found {
+				panic(fmt.Sprintf("Not found class, record, or interface %s, for signal %s, for class %s",
+					qname.name, s.Name, s.record.Name))
+			}
+			cDeclaration = iface.CType + " *"
+		} else {
+			cDeclaration = record.CType + " *"
 		}
-		cDeclaration = record.CType + " *"
 	}
 
 	return cDeclaration

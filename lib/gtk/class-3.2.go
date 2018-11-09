@@ -387,7 +387,14 @@ func (recv *TreeViewColumn) GetXOffset() int32 {
 	return retGo
 }
 
-// Unsupported : gtk_drag_source_set_icon_gicon : unsupported parameter icon : no type generator for Gio.Icon (GIcon*) for param icon
+// DragSourceSetIconGicon is a wrapper around the C function gtk_drag_source_set_icon_gicon.
+func (recv *Widget) DragSourceSetIconGicon(icon *gio.Icon) {
+	c_icon := (*C.GIcon)(icon.ToC())
+
+	C.gtk_drag_source_set_icon_gicon((*C.GtkWidget)(recv.native), c_icon)
+
+	return
+}
 
 // HasVisibleFocus is a wrapper around the C function gtk_widget_has_visible_focus.
 func (recv *Widget) HasVisibleFocus() bool {

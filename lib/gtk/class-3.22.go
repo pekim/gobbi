@@ -5,6 +5,7 @@ package gtk
 
 import (
 	gdk "github.com/pekim/gobbi/lib/gdk"
+	gio "github.com/pekim/gobbi/lib/gio"
 	"unsafe"
 )
 
@@ -56,7 +57,19 @@ func (recv *Menu) PlaceOnMonitor(monitor *gdk.Monitor) {
 
 // Unsupported : gtk_menu_popup_at_widget : unsupported parameter trigger_event : no type generator for Gdk.Event (const GdkEvent*) for param trigger_event
 
-// Unsupported : gtk_pad_controller_new : unsupported parameter group : no type generator for Gio.ActionGroup (GActionGroup*) for param group
+// PadControllerNew is a wrapper around the C function gtk_pad_controller_new.
+func PadControllerNew(window *Window, group *gio.ActionGroup, pad *gdk.Device) *PadController {
+	c_window := (*C.GtkWindow)(window.ToC())
+
+	c_group := (*C.GActionGroup)(group.ToC())
+
+	c_pad := (*C.GdkDevice)(pad.ToC())
+
+	retC := C.gtk_pad_controller_new(c_window, c_group, c_pad)
+	retGo := PadControllerNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // SetAction is a wrapper around the C function gtk_pad_controller_set_action.
 func (recv *PadController) SetAction(type_ PadActionType, index int32, mode int32, label string, actionName string) {

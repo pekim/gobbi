@@ -6,6 +6,7 @@ package gtk
 import (
 	gdk "github.com/pekim/gobbi/lib/gdk"
 	gdkpixbuf "github.com/pekim/gobbi/lib/gdkpixbuf"
+	gio "github.com/pekim/gobbi/lib/gio"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	"sync"
 	"unsafe"
@@ -43,7 +44,13 @@ func (recv *Action) BlockActivate() {
 	return
 }
 
-// Unsupported : gtk_action_get_gicon : no return generator
+// GetGicon is a wrapper around the C function gtk_action_get_gicon.
+func (recv *Action) GetGicon() *gio.Icon {
+	retC := C.gtk_action_get_gicon((*C.GtkAction)(recv.native))
+	retGo := gio.IconNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // GetIconName is a wrapper around the C function gtk_action_get_icon_name.
 func (recv *Action) GetIconName() string {
@@ -109,7 +116,14 @@ func (recv *Action) GetVisibleVertical() bool {
 	return retGo
 }
 
-// Unsupported : gtk_action_set_gicon : unsupported parameter icon : no type generator for Gio.Icon (GIcon*) for param icon
+// SetGicon is a wrapper around the C function gtk_action_set_gicon.
+func (recv *Action) SetGicon(icon *gio.Icon) {
+	c_icon := (*C.GIcon)(icon.ToC())
+
+	C.gtk_action_set_gicon((*C.GtkAction)(recv.native), c_icon)
+
+	return
+}
 
 // SetIconName is a wrapper around the C function gtk_action_set_icon_name.
 func (recv *Action) SetIconName(iconName string) {
@@ -198,7 +212,18 @@ func (recv *Action) UnblockActivate() {
 	return
 }
 
-// Unsupported : gtk_cell_view_get_model : no return generator
+// GetModel is a wrapper around the C function gtk_cell_view_get_model.
+func (recv *CellView) GetModel() *TreeModel {
+	retC := C.gtk_cell_view_get_model((*C.GtkCellView)(recv.native))
+	var retGo (*TreeModel)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = TreeModelNewFromC(unsafe.Pointer(retC))
+	}
+
+	return retGo
+}
 
 // Unsupported signal 'icon-press' for Entry : unsupported parameter icon_pos : type EntryIconPosition :
 
@@ -234,7 +259,20 @@ func (recv *Entry) GetIconAtPos(x int32, y int32) int32 {
 	return retGo
 }
 
-// Unsupported : gtk_entry_get_icon_gicon : no return generator
+// GetIconGicon is a wrapper around the C function gtk_entry_get_icon_gicon.
+func (recv *Entry) GetIconGicon(iconPos EntryIconPosition) *gio.Icon {
+	c_icon_pos := (C.GtkEntryIconPosition)(iconPos)
+
+	retC := C.gtk_entry_get_icon_gicon((*C.GtkEntry)(recv.native), c_icon_pos)
+	var retGo (*gio.Icon)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = gio.IconNewFromC(unsafe.Pointer(retC))
+	}
+
+	return retGo
+}
 
 // GetIconName is a wrapper around the C function gtk_entry_get_icon_name.
 func (recv *Entry) GetIconName(iconPos EntryIconPosition) string {
@@ -361,7 +399,16 @@ func (recv *Entry) SetIconDragSource(iconPos EntryIconPosition, targetList *Targ
 	return
 }
 
-// Unsupported : gtk_entry_set_icon_from_gicon : unsupported parameter icon : no type generator for Gio.Icon (GIcon*) for param icon
+// SetIconFromGicon is a wrapper around the C function gtk_entry_set_icon_from_gicon.
+func (recv *Entry) SetIconFromGicon(iconPos EntryIconPosition, icon *gio.Icon) {
+	c_icon_pos := (C.GtkEntryIconPosition)(iconPos)
+
+	c_icon := (*C.GIcon)(icon.ToC())
+
+	C.gtk_entry_set_icon_from_gicon((*C.GtkEntry)(recv.native), c_icon_pos, c_icon)
+
+	return
+}
 
 // SetIconFromIconName is a wrapper around the C function gtk_entry_set_icon_from_icon_name.
 func (recv *Entry) SetIconFromIconName(iconPos EntryIconPosition, iconName string) {

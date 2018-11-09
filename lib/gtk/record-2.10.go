@@ -5,6 +5,8 @@ package gtk
 
 import (
 	gdkpixbuf "github.com/pekim/gobbi/lib/gdkpixbuf"
+	gio "github.com/pekim/gobbi/lib/gio"
+	glib "github.com/pekim/gobbi/lib/glib"
 	"unsafe"
 )
 
@@ -207,7 +209,28 @@ func (recv *RecentInfo) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : gtk_recent_info_create_app_info : no return generator
+// CreateAppInfo is a wrapper around the C function gtk_recent_info_create_app_info.
+func (recv *RecentInfo) CreateAppInfo(appName string) (*gio.AppInfo, error) {
+	c_app_name := C.CString(appName)
+	defer C.free(unsafe.Pointer(c_app_name))
+
+	var cThrowableError *C.GError
+
+	retC := C.gtk_recent_info_create_app_info((*C.GtkRecentInfo)(recv.native), c_app_name, &cThrowableError)
+	var retGo (*gio.AppInfo)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = gio.AppInfoNewFromC(unsafe.Pointer(retC))
+	}
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // Exists is a wrapper around the C function gtk_recent_info_exists.
 func (recv *RecentInfo) Exists() bool {

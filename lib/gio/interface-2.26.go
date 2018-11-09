@@ -67,7 +67,22 @@ func (recv *Proxy) Connect(connection *IOStream, proxyAddress *ProxyAddress, can
 
 // Unsupported : g_proxy_connect_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_proxy_connect_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
+// ConnectFinish is a wrapper around the C function g_proxy_connect_finish.
+func (recv *Proxy) ConnectFinish(result *AsyncResult) (*IOStream, error) {
+	c_result := (*C.GAsyncResult)(result.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_proxy_connect_finish((*C.GProxy)(recv.native), c_result, &cThrowableError)
+	retGo := IOStreamNewFromC(unsafe.Pointer(retC))
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // SupportsHostname is a wrapper around the C function g_proxy_supports_hostname.
 func (recv *Proxy) SupportsHostname() bool {
@@ -110,7 +125,7 @@ func (recv *ProxyResolver) IsSupported() bool {
 
 // Unsupported : g_proxy_resolver_lookup_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_proxy_resolver_lookup_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
+// Unsupported : g_proxy_resolver_lookup_finish : no return type
 
 // ProxyEnumerate is a wrapper around the C function g_socket_connectable_proxy_enumerate.
 func (recv *SocketConnectable) ProxyEnumerate() *SocketAddressEnumerator {

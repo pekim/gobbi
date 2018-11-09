@@ -347,7 +347,13 @@ func (recv *TlsClientConnection) GetAcceptedCas() *glib.List {
 	return retGo
 }
 
-// Unsupported : g_tls_client_connection_get_server_identity : no return generator
+// GetServerIdentity is a wrapper around the C function g_tls_client_connection_get_server_identity.
+func (recv *TlsClientConnection) GetServerIdentity() *SocketConnectable {
+	retC := C.g_tls_client_connection_get_server_identity((*C.GTlsClientConnection)(recv.native))
+	retGo := SocketConnectableNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // GetUseSsl3 is a wrapper around the C function g_tls_client_connection_get_use_ssl3.
 func (recv *TlsClientConnection) GetUseSsl3() bool {
@@ -365,7 +371,14 @@ func (recv *TlsClientConnection) GetValidationFlags() TlsCertificateFlags {
 	return retGo
 }
 
-// Unsupported : g_tls_client_connection_set_server_identity : unsupported parameter identity : no type generator for SocketConnectable (GSocketConnectable*) for param identity
+// SetServerIdentity is a wrapper around the C function g_tls_client_connection_set_server_identity.
+func (recv *TlsClientConnection) SetServerIdentity(identity *SocketConnectable) {
+	c_identity := (*C.GSocketConnectable)(identity.ToC())
+
+	C.g_tls_client_connection_set_server_identity((*C.GTlsClientConnection)(recv.native), c_identity)
+
+	return
+}
 
 // SetUseSsl3 is a wrapper around the C function g_tls_client_connection_set_use_ssl3.
 func (recv *TlsClientConnection) SetUseSsl3(useSsl3 bool) {

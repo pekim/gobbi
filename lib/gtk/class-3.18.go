@@ -51,7 +51,7 @@ func (recv *Assistant) SetPageHasPadding(page *Widget, hasPadding bool) {
 
 // Unsupported : gtk_container_child_notify_by_pspec : unsupported parameter pspec : Blacklisted record : GParamSpec
 
-// Unsupported : gtk_flow_box_bind_model : unsupported parameter model : no type generator for Gio.ListModel (GListModel*) for param model
+// Unsupported : gtk_flow_box_bind_model : unsupported parameter create_widget_func : no type generator for FlowBoxCreateWidgetFunc (GtkFlowBoxCreateWidgetFunc) for param create_widget_func
 
 // GetOverlayPassThrough is a wrapper around the C function gtk_overlay_get_overlay_pass_through.
 func (recv *Overlay) GetOverlayPassThrough(widget *Widget) bool {

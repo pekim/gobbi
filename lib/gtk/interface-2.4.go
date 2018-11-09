@@ -535,4 +535,12 @@ func (recv *FileChooser) UnselectUri(uri string) {
 	return
 }
 
-// Unsupported : gtk_tree_model_filter_new : no return generator
+// FilterNew is a wrapper around the C function gtk_tree_model_filter_new.
+func (recv *TreeModel) FilterNew(root *TreePath) *TreeModel {
+	c_root := (*C.GtkTreePath)(root.ToC())
+
+	retC := C.gtk_tree_model_filter_new((*C.GtkTreeModel)(recv.native), c_root)
+	retGo := TreeModelNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}

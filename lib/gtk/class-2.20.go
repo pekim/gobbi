@@ -631,7 +631,7 @@ func (recv *ToolPalette) UnsetStyle() {
 	return
 }
 
-// Unsupported : gtk_tooltip_set_icon_from_gicon : unsupported parameter gicon : no type generator for Gio.Icon (GIcon*) for param gicon
+// Unsupported : gtk_tooltip_set_icon_from_gicon : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
 
 // GetBinWindow is a wrapper around the C function gtk_viewport_get_bin_window.
 func (recv *Viewport) GetBinWindow() *gdk.Window {

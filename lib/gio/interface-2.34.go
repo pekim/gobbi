@@ -50,12 +50,45 @@ func (recv *AsyncResult) LegacyPropagateError() (bool, error) {
 	return retGo, goThrowableError
 }
 
-// Unsupported : g_drive_get_symbolic_icon : no return generator
+// GetSymbolicIcon is a wrapper around the C function g_drive_get_symbolic_icon.
+func (recv *Drive) GetSymbolicIcon() *Icon {
+	retC := C.g_drive_get_symbolic_icon((*C.GDrive)(recv.native))
+	retGo := IconNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // Unsupported : g_file_delete_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_file_delete_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
+// DeleteFinish is a wrapper around the C function g_file_delete_finish.
+func (recv *File) DeleteFinish(result *AsyncResult) (bool, error) {
+	c_result := (*C.GAsyncResult)(result.ToC())
 
-// Unsupported : g_mount_get_symbolic_icon : no return generator
+	var cThrowableError *C.GError
 
-// Unsupported : g_volume_get_symbolic_icon : no return generator
+	retC := C.g_file_delete_finish((*C.GFile)(recv.native), c_result, &cThrowableError)
+	retGo := retC == C.TRUE
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
+
+// GetSymbolicIcon is a wrapper around the C function g_mount_get_symbolic_icon.
+func (recv *Mount) GetSymbolicIcon() *Icon {
+	retC := C.g_mount_get_symbolic_icon((*C.GMount)(recv.native))
+	retGo := IconNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// GetSymbolicIcon is a wrapper around the C function g_volume_get_symbolic_icon.
+func (recv *Volume) GetSymbolicIcon() *Icon {
+	retC := C.g_volume_get_symbolic_icon((*C.GVolume)(recv.native))
+	retGo := IconNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}

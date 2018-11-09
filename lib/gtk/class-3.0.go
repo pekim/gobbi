@@ -22,6 +22,24 @@ import (
 // #include <stdlib.h>
 /*
 
+	void cellarea_applyAttributesHandler(GObject *, GtkTreeModel *, GtkTreeIter *, gboolean, gboolean, gpointer);
+
+	static gulong CellArea_signal_connect_apply_attributes(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "apply-attributes", G_CALLBACK(cellarea_applyAttributesHandler), data);
+	}
+
+*/
+/*
+
+	void cellarea_removeEditableHandler(GObject *, GtkCellRenderer *, GtkCellEditable *, gpointer);
+
+	static gulong CellArea_signal_connect_remove_editable(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "remove-editable", G_CALLBACK(cellarea_removeEditableHandler), data);
+	}
+
+*/
+/*
+
 	void stylecontext_changedHandler(GObject *, gpointer);
 
 	static gulong StyleContext_signal_connect_changed(gpointer instance, gpointer data) {
@@ -77,7 +95,20 @@ func AppChooserButtonNew(contentType string) *AppChooserButton {
 	return retGo
 }
 
-// Unsupported : gtk_app_chooser_button_append_custom_item : unsupported parameter icon : no type generator for Gio.Icon (GIcon*) for param icon
+// AppendCustomItem is a wrapper around the C function gtk_app_chooser_button_append_custom_item.
+func (recv *AppChooserButton) AppendCustomItem(name string, label string, icon *gio.Icon) {
+	c_name := C.CString(name)
+	defer C.free(unsafe.Pointer(c_name))
+
+	c_label := C.CString(label)
+	defer C.free(unsafe.Pointer(c_label))
+
+	c_icon := (*C.GIcon)(icon.ToC())
+
+	C.gtk_app_chooser_button_append_custom_item((*C.GtkAppChooserButton)(recv.native), c_name, c_label, c_icon)
+
+	return
+}
 
 // AppendSeparator is a wrapper around the C function gtk_app_chooser_button_append_separator.
 func (recv *AppChooserButton) AppendSeparator() {
@@ -114,7 +145,19 @@ func (recv *AppChooserButton) SetShowDialogItem(setting bool) {
 	return
 }
 
-// Unsupported : gtk_app_chooser_dialog_new : unsupported parameter file : no type generator for Gio.File (GFile*) for param file
+// AppChooserDialogNew is a wrapper around the C function gtk_app_chooser_dialog_new.
+func AppChooserDialogNew(parent *Window, flags DialogFlags, file *gio.File) *AppChooserDialog {
+	c_parent := (*C.GtkWindow)(parent.ToC())
+
+	c_flags := (C.GtkDialogFlags)(flags)
+
+	c_file := (*C.GFile)(file.ToC())
+
+	retC := C.gtk_app_chooser_dialog_new(c_parent, c_flags, c_file)
+	retGo := AppChooserDialogNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // AppChooserDialogNewForContentType is a wrapper around the C function gtk_app_chooser_dialog_new_for_content_type.
 func AppChooserDialogNewForContentType(parent *Window, flags DialogFlags, contentType string) *AppChooserDialog {
@@ -333,13 +376,135 @@ func (recv *Calendar) GetDayIsMarked(day uint32) bool {
 	return retGo
 }
 
-// Unsupported signal 'add-editable' for CellArea : unsupported parameter editable : no type generator for CellEditable,
+// Unsupported signal 'add-editable' for CellArea : unsupported parameter cell_area : type Gdk.Rectangle : Blacklisted record : GdkRectangle
 
-// Unsupported signal 'apply-attributes' for CellArea : unsupported parameter model : no type generator for TreeModel,
+type signalCellAreaApplyAttributesDetail struct {
+	callback  CellAreaSignalApplyAttributesCallback
+	handlerID C.gulong
+}
+
+var signalCellAreaApplyAttributesId int
+var signalCellAreaApplyAttributesMap = make(map[int]signalCellAreaApplyAttributesDetail)
+var signalCellAreaApplyAttributesLock sync.Mutex
+
+// CellAreaSignalApplyAttributesCallback is a callback function for a 'apply-attributes' signal emitted from a CellArea.
+type CellAreaSignalApplyAttributesCallback func(model *TreeModel, iter *TreeIter, isExpander bool, isExpanded bool)
+
+/*
+ConnectApplyAttributes connects the callback to the 'apply-attributes' signal for the CellArea.
+
+The returned value represents the connection, and may be passed to DisconnectApplyAttributes to remove it.
+*/
+func (recv *CellArea) ConnectApplyAttributes(callback CellAreaSignalApplyAttributesCallback) int {
+	signalCellAreaApplyAttributesLock.Lock()
+	defer signalCellAreaApplyAttributesLock.Unlock()
+
+	signalCellAreaApplyAttributesId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.CellArea_signal_connect_apply_attributes(instance, C.gpointer(uintptr(signalCellAreaApplyAttributesId)))
+
+	detail := signalCellAreaApplyAttributesDetail{callback, handlerID}
+	signalCellAreaApplyAttributesMap[signalCellAreaApplyAttributesId] = detail
+
+	return signalCellAreaApplyAttributesId
+}
+
+/*
+DisconnectApplyAttributes disconnects a callback from the 'apply-attributes' signal for the CellArea.
+
+The connectionID should be a value returned from a call to ConnectApplyAttributes.
+*/
+func (recv *CellArea) DisconnectApplyAttributes(connectionID int) {
+	signalCellAreaApplyAttributesLock.Lock()
+	defer signalCellAreaApplyAttributesLock.Unlock()
+
+	detail, exists := signalCellAreaApplyAttributesMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalCellAreaApplyAttributesMap, connectionID)
+}
+
+//export cellarea_applyAttributesHandler
+func cellarea_applyAttributesHandler(_ *C.GObject, c_model *C.GtkTreeModel, c_iter *C.GtkTreeIter, c_is_expander C.gboolean, c_is_expanded C.gboolean, data C.gpointer) {
+	model := TreeModelNewFromC(unsafe.Pointer(c_model))
+
+	iter := TreeIterNewFromC(unsafe.Pointer(c_iter))
+
+	isExpander := c_is_expander == C.TRUE
+
+	isExpanded := c_is_expanded == C.TRUE
+
+	index := int(uintptr(data))
+	callback := signalCellAreaApplyAttributesMap[index].callback
+	callback(model, iter, isExpander, isExpanded)
+}
 
 // Unsupported signal 'focus-changed' for CellArea : unsupported parameter path : type utf8 :
 
-// Unsupported signal 'remove-editable' for CellArea : unsupported parameter editable : no type generator for CellEditable,
+type signalCellAreaRemoveEditableDetail struct {
+	callback  CellAreaSignalRemoveEditableCallback
+	handlerID C.gulong
+}
+
+var signalCellAreaRemoveEditableId int
+var signalCellAreaRemoveEditableMap = make(map[int]signalCellAreaRemoveEditableDetail)
+var signalCellAreaRemoveEditableLock sync.Mutex
+
+// CellAreaSignalRemoveEditableCallback is a callback function for a 'remove-editable' signal emitted from a CellArea.
+type CellAreaSignalRemoveEditableCallback func(renderer *CellRenderer, editable *CellEditable)
+
+/*
+ConnectRemoveEditable connects the callback to the 'remove-editable' signal for the CellArea.
+
+The returned value represents the connection, and may be passed to DisconnectRemoveEditable to remove it.
+*/
+func (recv *CellArea) ConnectRemoveEditable(callback CellAreaSignalRemoveEditableCallback) int {
+	signalCellAreaRemoveEditableLock.Lock()
+	defer signalCellAreaRemoveEditableLock.Unlock()
+
+	signalCellAreaRemoveEditableId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.CellArea_signal_connect_remove_editable(instance, C.gpointer(uintptr(signalCellAreaRemoveEditableId)))
+
+	detail := signalCellAreaRemoveEditableDetail{callback, handlerID}
+	signalCellAreaRemoveEditableMap[signalCellAreaRemoveEditableId] = detail
+
+	return signalCellAreaRemoveEditableId
+}
+
+/*
+DisconnectRemoveEditable disconnects a callback from the 'remove-editable' signal for the CellArea.
+
+The connectionID should be a value returned from a call to ConnectRemoveEditable.
+*/
+func (recv *CellArea) DisconnectRemoveEditable(connectionID int) {
+	signalCellAreaRemoveEditableLock.Lock()
+	defer signalCellAreaRemoveEditableLock.Unlock()
+
+	detail, exists := signalCellAreaRemoveEditableMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalCellAreaRemoveEditableMap, connectionID)
+}
+
+//export cellarea_removeEditableHandler
+func cellarea_removeEditableHandler(_ *C.GObject, c_renderer *C.GtkCellRenderer, c_editable *C.GtkCellEditable, data C.gpointer) {
+	renderer := CellRendererNewFromC(unsafe.Pointer(c_renderer))
+
+	editable := CellEditableNewFromC(unsafe.Pointer(c_editable))
+
+	index := int(uintptr(data))
+	callback := signalCellAreaRemoveEditableMap[index].callback
+	callback(renderer, editable)
+}
 
 // Unsupported : gtk_cell_area_activate : unsupported parameter cell_area : Blacklisted record : GdkRectangle
 
@@ -367,7 +532,22 @@ func (recv *CellArea) AddFocusSibling(renderer *CellRenderer, sibling *CellRende
 
 // Unsupported : gtk_cell_area_add_with_properties : unsupported parameter ... : varargs
 
-// Unsupported : gtk_cell_area_apply_attributes : unsupported parameter tree_model : no type generator for TreeModel (GtkTreeModel*) for param tree_model
+// ApplyAttributes is a wrapper around the C function gtk_cell_area_apply_attributes.
+func (recv *CellArea) ApplyAttributes(treeModel *TreeModel, iter *TreeIter, isExpander bool, isExpanded bool) {
+	c_tree_model := (*C.GtkTreeModel)(treeModel.ToC())
+
+	c_iter := (*C.GtkTreeIter)(iter.ToC())
+
+	c_is_expander :=
+		boolToGboolean(isExpander)
+
+	c_is_expanded :=
+		boolToGboolean(isExpanded)
+
+	C.gtk_cell_area_apply_attributes((*C.GtkCellArea)(recv.native), c_tree_model, c_iter, c_is_expander, c_is_expanded)
+
+	return
+}
 
 // AttributeConnect is a wrapper around the C function gtk_cell_area_attribute_connect.
 func (recv *CellArea) AttributeConnect(renderer *CellRenderer, attribute string, column int32) {
@@ -477,7 +657,13 @@ func (recv *CellArea) GetCurrentPathString() string {
 	return retGo
 }
 
-// Unsupported : gtk_cell_area_get_edit_widget : no return generator
+// GetEditWidget is a wrapper around the C function gtk_cell_area_get_edit_widget.
+func (recv *CellArea) GetEditWidget() *CellEditable {
+	retC := C.gtk_cell_area_get_edit_widget((*C.GtkCellArea)(recv.native))
+	retGo := CellEditableNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // GetEditedCell is a wrapper around the C function gtk_cell_area_get_edited_cell.
 func (recv *CellArea) GetEditedCell() *CellRenderer {
@@ -1324,7 +1510,18 @@ func (recv *MenuShell) GetSelectedItem() *Widget {
 	return retGo
 }
 
-// Unsupported : gtk_numerable_icon_get_background_gicon : no return generator
+// GetBackgroundGicon is a wrapper around the C function gtk_numerable_icon_get_background_gicon.
+func (recv *NumerableIcon) GetBackgroundGicon() *gio.Icon {
+	retC := C.gtk_numerable_icon_get_background_gicon((*C.GtkNumerableIcon)(recv.native))
+	var retGo (*gio.Icon)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = gio.IconNewFromC(unsafe.Pointer(retC))
+	}
+
+	return retGo
+}
 
 // GetBackgroundIconName is a wrapper around the C function gtk_numerable_icon_get_background_icon_name.
 func (recv *NumerableIcon) GetBackgroundIconName() string {
@@ -1363,7 +1560,14 @@ func (recv *NumerableIcon) GetStyleContext() *StyleContext {
 	return retGo
 }
 
-// Unsupported : gtk_numerable_icon_set_background_gicon : unsupported parameter icon : no type generator for Gio.Icon (GIcon*) for param icon
+// SetBackgroundGicon is a wrapper around the C function gtk_numerable_icon_set_background_gicon.
+func (recv *NumerableIcon) SetBackgroundGicon(icon *gio.Icon) {
+	c_icon := (*C.GIcon)(icon.ToC())
+
+	C.gtk_numerable_icon_set_background_gicon((*C.GtkNumerableIcon)(recv.native), c_icon)
+
+	return
+}
 
 // SetBackgroundIconName is a wrapper around the C function gtk_numerable_icon_set_background_icon_name.
 func (recv *NumerableIcon) SetBackgroundIconName(iconName string) {
@@ -1608,7 +1812,16 @@ func (recv *StyleContext) AddClass(className string) {
 	return
 }
 
-// Unsupported : gtk_style_context_add_provider : unsupported parameter provider : no type generator for StyleProvider (GtkStyleProvider*) for param provider
+// AddProvider is a wrapper around the C function gtk_style_context_add_provider.
+func (recv *StyleContext) AddProvider(provider *StyleProvider, priority uint32) {
+	c_provider := (*C.GtkStyleProvider)(provider.ToC())
+
+	c_priority := (C.guint)(priority)
+
+	C.gtk_style_context_add_provider((*C.GtkStyleContext)(recv.native), c_provider, c_priority)
+
+	return
+}
 
 // AddRegion is a wrapper around the C function gtk_style_context_add_region.
 func (recv *StyleContext) AddRegion(regionName string, flags RegionFlags) {
@@ -1853,7 +2066,14 @@ func (recv *StyleContext) RemoveClass(className string) {
 	return
 }
 
-// Unsupported : gtk_style_context_remove_provider : unsupported parameter provider : no type generator for StyleProvider (GtkStyleProvider*) for param provider
+// RemoveProvider is a wrapper around the C function gtk_style_context_remove_provider.
+func (recv *StyleContext) RemoveProvider(provider *StyleProvider) {
+	c_provider := (*C.GtkStyleProvider)(provider.ToC())
+
+	C.gtk_style_context_remove_provider((*C.GtkStyleContext)(recv.native), c_provider)
+
+	return
+}
 
 // RemoveRegion is a wrapper around the C function gtk_style_context_remove_region.
 func (recv *StyleContext) RemoveRegion(regionName string) {

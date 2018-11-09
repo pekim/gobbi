@@ -271,7 +271,7 @@ func (recv *Button) SetImage(image *Widget) {
 	return
 }
 
-// Unsupported signal 'editing-started' for CellRenderer : unsupported parameter editable : no type generator for CellEditable,
+// Unsupported signal 'editing-started' for CellRenderer : unsupported parameter path : type utf8 :
 
 // StopEditing is a wrapper around the C function gtk_cell_renderer_stop_editing.
 func (recv *CellRenderer) StopEditing(canceled bool) {
@@ -396,7 +396,14 @@ func (recv *CellView) SetDisplayedRow(path *TreePath) {
 	return
 }
 
-// Unsupported : gtk_cell_view_set_model : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
+// SetModel is a wrapper around the C function gtk_cell_view_set_model.
+func (recv *CellView) SetModel(model *TreeModel) {
+	c_model := (*C.GtkTreeModel)(model.ToC())
+
+	C.gtk_cell_view_set_model((*C.GtkCellView)(recv.native), c_model)
+
+	return
+}
 
 type signalClipboardOwnerChangeDetail struct {
 	callback  ClipboardSignalOwnerChangeCallback
@@ -705,7 +712,15 @@ func IconViewNew() *IconView {
 	return retGo
 }
 
-// Unsupported : gtk_icon_view_new_with_model : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
+// IconViewNewWithModel is a wrapper around the C function gtk_icon_view_new_with_model.
+func IconViewNewWithModel(model *TreeModel) *IconView {
+	c_model := (*C.GtkTreeModel)(model.ToC())
+
+	retC := C.gtk_icon_view_new_with_model(c_model)
+	retGo := IconViewNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // GetColumnSpacing is a wrapper around the C function gtk_icon_view_get_column_spacing.
 func (recv *IconView) GetColumnSpacing() int32 {
@@ -755,7 +770,18 @@ func (recv *IconView) GetMarkupColumn() int32 {
 	return retGo
 }
 
-// Unsupported : gtk_icon_view_get_model : no return generator
+// GetModel is a wrapper around the C function gtk_icon_view_get_model.
+func (recv *IconView) GetModel() *TreeModel {
+	retC := C.gtk_icon_view_get_model((*C.GtkIconView)(recv.native))
+	var retGo (*TreeModel)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = TreeModelNewFromC(unsafe.Pointer(retC))
+	}
+
+	return retGo
+}
 
 // GetPathAtPos is a wrapper around the C function gtk_icon_view_get_path_at_pos.
 func (recv *IconView) GetPathAtPos(x int32, y int32) *TreePath {
@@ -913,7 +939,14 @@ func (recv *IconView) SetMarkupColumn(column int32) {
 	return
 }
 
-// Unsupported : gtk_icon_view_set_model : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
+// SetModel is a wrapper around the C function gtk_icon_view_set_model.
+func (recv *IconView) SetModel(model *TreeModel) {
+	c_model := (*C.GtkTreeModel)(model.ToC())
+
+	C.gtk_icon_view_set_model((*C.GtkIconView)(recv.native), c_model)
+
+	return
+}
 
 // SetPixbufColumn is a wrapper around the C function gtk_icon_view_set_pixbuf_column.
 func (recv *IconView) SetPixbufColumn(column int32) {

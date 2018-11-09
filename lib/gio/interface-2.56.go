@@ -47,7 +47,27 @@ func (recv *File) LoadBytes(cancellable *Cancellable) (*glib.Bytes, string, erro
 
 // Unsupported : g_file_load_bytes_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_file_load_bytes_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
+// LoadBytesFinish is a wrapper around the C function g_file_load_bytes_finish.
+func (recv *File) LoadBytesFinish(result *AsyncResult) (*glib.Bytes, string, error) {
+	c_result := (*C.GAsyncResult)(result.ToC())
+
+	var c_etag_out *C.gchar
+
+	var cThrowableError *C.GError
+
+	retC := C.g_file_load_bytes_finish((*C.GFile)(recv.native), c_result, &c_etag_out, &cThrowableError)
+	retGo := glib.BytesNewFromC(unsafe.Pointer(retC))
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	etagOut := C.GoString(c_etag_out)
+	defer C.free(unsafe.Pointer(c_etag_out))
+
+	return retGo, etagOut, goThrowableError
+}
 
 // PeekPath is a wrapper around the C function g_file_peek_path.
 func (recv *File) PeekPath() string {

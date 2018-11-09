@@ -102,6 +102,15 @@ import (
 */
 /*
 
+	gboolean printoperation_previewHandler(GObject *, GtkPrintOperationPreview *, GtkPrintContext *, GtkWindow *, gpointer);
+
+	static gulong PrintOperation_signal_connect_preview(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "preview", G_CALLBACK(printoperation_previewHandler), data);
+	}
+
+*/
+/*
+
 	void printoperation_statusChangedHandler(GObject *, gpointer);
 
 	static gulong PrintOperation_signal_connect_status_changed(gpointer instance, gpointer data) {
@@ -1372,7 +1381,71 @@ func printoperation_paginateHandler(_ *C.GObject, c_context *C.GtkPrintContext, 
 	return retC
 }
 
-// Unsupported signal 'preview' for PrintOperation : unsupported parameter preview : no type generator for PrintOperationPreview,
+type signalPrintOperationPreviewDetail struct {
+	callback  PrintOperationSignalPreviewCallback
+	handlerID C.gulong
+}
+
+var signalPrintOperationPreviewId int
+var signalPrintOperationPreviewMap = make(map[int]signalPrintOperationPreviewDetail)
+var signalPrintOperationPreviewLock sync.Mutex
+
+// PrintOperationSignalPreviewCallback is a callback function for a 'preview' signal emitted from a PrintOperation.
+type PrintOperationSignalPreviewCallback func(preview *PrintOperationPreview, context *PrintContext, parent *Window) bool
+
+/*
+ConnectPreview connects the callback to the 'preview' signal for the PrintOperation.
+
+The returned value represents the connection, and may be passed to DisconnectPreview to remove it.
+*/
+func (recv *PrintOperation) ConnectPreview(callback PrintOperationSignalPreviewCallback) int {
+	signalPrintOperationPreviewLock.Lock()
+	defer signalPrintOperationPreviewLock.Unlock()
+
+	signalPrintOperationPreviewId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.PrintOperation_signal_connect_preview(instance, C.gpointer(uintptr(signalPrintOperationPreviewId)))
+
+	detail := signalPrintOperationPreviewDetail{callback, handlerID}
+	signalPrintOperationPreviewMap[signalPrintOperationPreviewId] = detail
+
+	return signalPrintOperationPreviewId
+}
+
+/*
+DisconnectPreview disconnects a callback from the 'preview' signal for the PrintOperation.
+
+The connectionID should be a value returned from a call to ConnectPreview.
+*/
+func (recv *PrintOperation) DisconnectPreview(connectionID int) {
+	signalPrintOperationPreviewLock.Lock()
+	defer signalPrintOperationPreviewLock.Unlock()
+
+	detail, exists := signalPrintOperationPreviewMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalPrintOperationPreviewMap, connectionID)
+}
+
+//export printoperation_previewHandler
+func printoperation_previewHandler(_ *C.GObject, c_preview *C.GtkPrintOperationPreview, c_context *C.GtkPrintContext, c_parent *C.GtkWindow, data C.gpointer) C.gboolean {
+	preview := PrintOperationPreviewNewFromC(unsafe.Pointer(c_preview))
+
+	context := PrintContextNewFromC(unsafe.Pointer(c_context))
+
+	parent := WindowNewFromC(unsafe.Pointer(c_parent))
+
+	index := int(uintptr(data))
+	callback := signalPrintOperationPreviewMap[index].callback
+	retGo := callback(preview, context, parent)
+	retC :=
+		boolToGboolean(retGo)
+	return retC
+}
 
 // Unsupported signal 'request-page-setup' for PrintOperation : unsupported parameter page_nr : type gint :
 

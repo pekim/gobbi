@@ -432,4 +432,14 @@ func (recv *TextView) SetInputPurpose(purpose InputPurpose) {
 	return
 }
 
-// Unsupported : gtk_widget_insert_action_group : unsupported parameter group : no type generator for Gio.ActionGroup (GActionGroup*) for param group
+// InsertActionGroup is a wrapper around the C function gtk_widget_insert_action_group.
+func (recv *Widget) InsertActionGroup(name string, group *gio.ActionGroup) {
+	c_name := C.CString(name)
+	defer C.free(unsafe.Pointer(c_name))
+
+	c_group := (*C.GActionGroup)(group.ToC())
+
+	C.gtk_widget_insert_action_group((*C.GtkWidget)(recv.native), c_name, c_group)
+
+	return
+}

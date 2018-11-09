@@ -85,9 +85,22 @@ func (recv *DesktopAppInfo) GetStartupWmClass() string {
 	return retGo
 }
 
-// Unsupported : g_file_info_get_symbolic_icon : no return generator
+// GetSymbolicIcon is a wrapper around the C function g_file_info_get_symbolic_icon.
+func (recv *FileInfo) GetSymbolicIcon() *Icon {
+	retC := C.g_file_info_get_symbolic_icon((*C.GFileInfo)(recv.native))
+	retGo := IconNewFromC(unsafe.Pointer(retC))
 
-// Unsupported : g_file_info_set_symbolic_icon : unsupported parameter icon : no type generator for Icon (GIcon*) for param icon
+	return retGo
+}
+
+// SetSymbolicIcon is a wrapper around the C function g_file_info_set_symbolic_icon.
+func (recv *FileInfo) SetSymbolicIcon(icon *Icon) {
+	c_icon := (*C.GIcon)(icon.ToC())
+
+	C.g_file_info_set_symbolic_icon((*C.GFileInfo)(recv.native), c_icon)
+
+	return
+}
 
 // ReadBytes is a wrapper around the C function g_input_stream_read_bytes.
 func (recv *InputStream) ReadBytes(count uint64, cancellable *Cancellable) (*glib.Bytes, error) {
@@ -110,7 +123,22 @@ func (recv *InputStream) ReadBytes(count uint64, cancellable *Cancellable) (*gli
 
 // Unsupported : g_input_stream_read_bytes_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_input_stream_read_bytes_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
+// ReadBytesFinish is a wrapper around the C function g_input_stream_read_bytes_finish.
+func (recv *InputStream) ReadBytesFinish(result *AsyncResult) (*glib.Bytes, error) {
+	c_result := (*C.GAsyncResult)(result.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_input_stream_read_bytes_finish((*C.GInputStream)(recv.native), c_result, &cThrowableError)
+	retGo := glib.BytesNewFromC(unsafe.Pointer(retC))
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // MemoryInputStreamNewFromBytes is a wrapper around the C function g_memory_input_stream_new_from_bytes.
 func MemoryInputStreamNewFromBytes(bytes *glib.Bytes) *MemoryInputStream {
@@ -208,7 +236,22 @@ func (recv *Resolver) LookupRecords(rrname string, recordType ResolverRecordType
 
 // Unsupported : g_resolver_lookup_records_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_resolver_lookup_records_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
+// LookupRecordsFinish is a wrapper around the C function g_resolver_lookup_records_finish.
+func (recv *Resolver) LookupRecordsFinish(result *AsyncResult) (*glib.List, error) {
+	c_result := (*C.GAsyncResult)(result.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_resolver_lookup_records_finish((*C.GResolver)(recv.native), c_result, &cThrowableError)
+	retGo := glib.ListNewFromC(unsafe.Pointer(retC))
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // TestDBus is a wrapper around the C record GTestDBus.
 type TestDBus struct {

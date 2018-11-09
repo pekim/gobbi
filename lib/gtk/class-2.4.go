@@ -91,6 +91,15 @@ import (
 */
 /*
 
+	gboolean entrycompletion_matchSelectedHandler(GObject *, GtkTreeModel *, GtkTreeIter *, gpointer);
+
+	static gulong EntryCompletion_signal_connect_match_selected(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "match-selected", G_CALLBACK(entrycompletion_matchSelectedHandler), data);
+	}
+
+*/
+/*
+
 	void fontbutton_fontSetHandler(GObject *, gpointer);
 
 	static gulong FontButton_signal_connect_font_set(gpointer instance, gpointer data) {
@@ -1144,7 +1153,15 @@ func ComboBoxNew() *ComboBox {
 	return retGo
 }
 
-// Unsupported : gtk_combo_box_new_with_model : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
+// ComboBoxNewWithModel is a wrapper around the C function gtk_combo_box_new_with_model.
+func ComboBoxNewWithModel(model *TreeModel) *ComboBox {
+	c_model := (*C.GtkTreeModel)(model.ToC())
+
+	retC := C.gtk_combo_box_new_with_model(c_model)
+	retGo := ComboBoxNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // GetActive is a wrapper around the C function gtk_combo_box_get_active.
 func (recv *ComboBox) GetActive() int32 {
@@ -1166,7 +1183,13 @@ func (recv *ComboBox) GetActiveIter() (bool, *TreeIter) {
 	return retGo, iter
 }
 
-// Unsupported : gtk_combo_box_get_model : no return generator
+// GetModel is a wrapper around the C function gtk_combo_box_get_model.
+func (recv *ComboBox) GetModel() *TreeModel {
+	retC := C.gtk_combo_box_get_model((*C.GtkComboBox)(recv.native))
+	retGo := TreeModelNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // Popdown is a wrapper around the C function gtk_combo_box_popdown.
 func (recv *ComboBox) Popdown() {
@@ -1209,7 +1232,14 @@ func (recv *ComboBox) SetColumnSpanColumn(columnSpan int32) {
 	return
 }
 
-// Unsupported : gtk_combo_box_set_model : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
+// SetModel is a wrapper around the C function gtk_combo_box_set_model.
+func (recv *ComboBox) SetModel(model *TreeModel) {
+	c_model := (*C.GtkTreeModel)(model.ToC())
+
+	C.gtk_combo_box_set_model((*C.GtkComboBox)(recv.native), c_model)
+
+	return
+}
 
 // SetRowSpanColumn is a wrapper around the C function gtk_combo_box_set_row_span_column.
 func (recv *ComboBox) SetRowSpanColumn(rowSpan int32) {
@@ -1265,7 +1295,69 @@ func (recv *Entry) SetCompletion(completion *EntryCompletion) {
 
 // Unsupported signal 'action-activated' for EntryCompletion : unsupported parameter index : type gint :
 
-// Unsupported signal 'match-selected' for EntryCompletion : unsupported parameter model : no type generator for TreeModel,
+type signalEntryCompletionMatchSelectedDetail struct {
+	callback  EntryCompletionSignalMatchSelectedCallback
+	handlerID C.gulong
+}
+
+var signalEntryCompletionMatchSelectedId int
+var signalEntryCompletionMatchSelectedMap = make(map[int]signalEntryCompletionMatchSelectedDetail)
+var signalEntryCompletionMatchSelectedLock sync.Mutex
+
+// EntryCompletionSignalMatchSelectedCallback is a callback function for a 'match-selected' signal emitted from a EntryCompletion.
+type EntryCompletionSignalMatchSelectedCallback func(model *TreeModel, iter *TreeIter) bool
+
+/*
+ConnectMatchSelected connects the callback to the 'match-selected' signal for the EntryCompletion.
+
+The returned value represents the connection, and may be passed to DisconnectMatchSelected to remove it.
+*/
+func (recv *EntryCompletion) ConnectMatchSelected(callback EntryCompletionSignalMatchSelectedCallback) int {
+	signalEntryCompletionMatchSelectedLock.Lock()
+	defer signalEntryCompletionMatchSelectedLock.Unlock()
+
+	signalEntryCompletionMatchSelectedId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.EntryCompletion_signal_connect_match_selected(instance, C.gpointer(uintptr(signalEntryCompletionMatchSelectedId)))
+
+	detail := signalEntryCompletionMatchSelectedDetail{callback, handlerID}
+	signalEntryCompletionMatchSelectedMap[signalEntryCompletionMatchSelectedId] = detail
+
+	return signalEntryCompletionMatchSelectedId
+}
+
+/*
+DisconnectMatchSelected disconnects a callback from the 'match-selected' signal for the EntryCompletion.
+
+The connectionID should be a value returned from a call to ConnectMatchSelected.
+*/
+func (recv *EntryCompletion) DisconnectMatchSelected(connectionID int) {
+	signalEntryCompletionMatchSelectedLock.Lock()
+	defer signalEntryCompletionMatchSelectedLock.Unlock()
+
+	detail, exists := signalEntryCompletionMatchSelectedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalEntryCompletionMatchSelectedMap, connectionID)
+}
+
+//export entrycompletion_matchSelectedHandler
+func entrycompletion_matchSelectedHandler(_ *C.GObject, c_model *C.GtkTreeModel, c_iter *C.GtkTreeIter, data C.gpointer) C.gboolean {
+	model := TreeModelNewFromC(unsafe.Pointer(c_model))
+
+	iter := TreeIterNewFromC(unsafe.Pointer(c_iter))
+
+	index := int(uintptr(data))
+	callback := signalEntryCompletionMatchSelectedMap[index].callback
+	retGo := callback(model, iter)
+	retC :=
+		boolToGboolean(retGo)
+	return retC
+}
 
 // EntryCompletionNew is a wrapper around the C function gtk_entry_completion_new.
 func EntryCompletionNew() *EntryCompletion {
@@ -1307,7 +1399,18 @@ func (recv *EntryCompletion) GetMinimumKeyLength() int32 {
 	return retGo
 }
 
-// Unsupported : gtk_entry_completion_get_model : no return generator
+// GetModel is a wrapper around the C function gtk_entry_completion_get_model.
+func (recv *EntryCompletion) GetModel() *TreeModel {
+	retC := C.gtk_entry_completion_get_model((*C.GtkEntryCompletion)(recv.native))
+	var retGo (*TreeModel)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = TreeModelNewFromC(unsafe.Pointer(retC))
+	}
+
+	return retGo
+}
 
 // InsertActionMarkup is a wrapper around the C function gtk_entry_completion_insert_action_markup.
 func (recv *EntryCompletion) InsertActionMarkup(index int32, markup string) {
@@ -1344,7 +1447,14 @@ func (recv *EntryCompletion) SetMinimumKeyLength(length int32) {
 	return
 }
 
-// Unsupported : gtk_entry_completion_set_model : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
+// SetModel is a wrapper around the C function gtk_entry_completion_set_model.
+func (recv *EntryCompletion) SetModel(model *TreeModel) {
+	c_model := (*C.GtkTreeModel)(model.ToC())
+
+	C.gtk_entry_completion_set_model((*C.GtkEntryCompletion)(recv.native), c_model)
+
+	return
+}
 
 // SetTextColumn is a wrapper around the C function gtk_entry_completion_set_text_column.
 func (recv *EntryCompletion) SetTextColumn(column int32) {
@@ -3110,7 +3220,13 @@ func (recv *TreeModelFilter) ConvertPathToChildPath(filterPath *TreePath) *TreeP
 	return retGo
 }
 
-// Unsupported : gtk_tree_model_filter_get_model : no return generator
+// GetModel is a wrapper around the C function gtk_tree_model_filter_get_model.
+func (recv *TreeModelFilter) GetModel() *TreeModel {
+	retC := C.gtk_tree_model_filter_get_model((*C.GtkTreeModelFilter)(recv.native))
+	retGo := TreeModelNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // Refilter is a wrapper around the C function gtk_tree_model_filter_refilter.
 func (recv *TreeModelFilter) Refilter() {

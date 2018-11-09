@@ -32,6 +32,15 @@ import (
 	}
 
 */
+/*
+
+	void volumemonitor_driveStopButtonHandler(GObject *, GDrive *, gpointer);
+
+	static gulong VolumeMonitor_signal_connect_drive_stop_button(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "drive-stop-button", G_CALLBACK(volumemonitor_driveStopButtonHandler), data);
+	}
+
+*/
 import "C"
 
 // Unsupported : g_cancellable_connect : unsupported parameter callback : no type generator for GObject.Callback (GCallback) for param callback
@@ -93,7 +102,22 @@ func (recv *FileIOStream) QueryInfo(attributes string, cancellable *Cancellable)
 
 // Unsupported : g_file_io_stream_query_info_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_file_io_stream_query_info_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
+// QueryInfoFinish is a wrapper around the C function g_file_io_stream_query_info_finish.
+func (recv *FileIOStream) QueryInfoFinish(result *AsyncResult) (*FileInfo, error) {
+	c_result := (*C.GAsyncResult)(result.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_file_io_stream_query_info_finish((*C.GFileIOStream)(recv.native), c_result, &cThrowableError)
+	retGo := FileInfoNewFromC(unsafe.Pointer(retC))
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // Unsupported : g_file_info_get_attribute_stringv : no return type
 
@@ -147,7 +171,22 @@ func (recv *IOStream) Close(cancellable *Cancellable) (bool, error) {
 
 // Unsupported : g_io_stream_close_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_io_stream_close_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
+// CloseFinish is a wrapper around the C function g_io_stream_close_finish.
+func (recv *IOStream) CloseFinish(result *AsyncResult) (bool, error) {
+	c_result := (*C.GAsyncResult)(result.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_io_stream_close_finish((*C.GIOStream)(recv.native), c_result, &cThrowableError)
+	retGo := retC == C.TRUE
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // GetInputStream is a wrapper around the C function g_io_stream_get_input_stream.
 func (recv *IOStream) GetInputStream() *InputStream {
@@ -468,7 +507,23 @@ func (recv *Resolver) LookupByAddress(address *InetAddress, cancellable *Cancell
 
 // Unsupported : g_resolver_lookup_by_address_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_resolver_lookup_by_address_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
+// LookupByAddressFinish is a wrapper around the C function g_resolver_lookup_by_address_finish.
+func (recv *Resolver) LookupByAddressFinish(result *AsyncResult) (string, error) {
+	c_result := (*C.GAsyncResult)(result.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_resolver_lookup_by_address_finish((*C.GResolver)(recv.native), c_result, &cThrowableError)
+	retGo := C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // LookupByName is a wrapper around the C function g_resolver_lookup_by_name.
 func (recv *Resolver) LookupByName(hostname string, cancellable *Cancellable) (*glib.List, error) {
@@ -492,7 +547,22 @@ func (recv *Resolver) LookupByName(hostname string, cancellable *Cancellable) (*
 
 // Unsupported : g_resolver_lookup_by_name_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_resolver_lookup_by_name_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
+// LookupByNameFinish is a wrapper around the C function g_resolver_lookup_by_name_finish.
+func (recv *Resolver) LookupByNameFinish(result *AsyncResult) (*glib.List, error) {
+	c_result := (*C.GAsyncResult)(result.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_resolver_lookup_by_name_finish((*C.GResolver)(recv.native), c_result, &cThrowableError)
+	retGo := glib.ListNewFromC(unsafe.Pointer(retC))
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // LookupService is a wrapper around the C function g_resolver_lookup_service.
 func (recv *Resolver) LookupService(service string, protocol string, domain string, cancellable *Cancellable) (*glib.List, error) {
@@ -522,7 +592,22 @@ func (recv *Resolver) LookupService(service string, protocol string, domain stri
 
 // Unsupported : g_resolver_lookup_service_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_resolver_lookup_service_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
+// LookupServiceFinish is a wrapper around the C function g_resolver_lookup_service_finish.
+func (recv *Resolver) LookupServiceFinish(result *AsyncResult) (*glib.List, error) {
+	c_result := (*C.GAsyncResult)(result.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_resolver_lookup_service_finish((*C.GResolver)(recv.native), c_result, &cThrowableError)
+	retGo := glib.ListNewFromC(unsafe.Pointer(retC))
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // SetDefault is a wrapper around the C function g_resolver_set_default.
 func (recv *Resolver) SetDefault() {
@@ -1070,11 +1155,43 @@ func (recv *SocketClient) AddApplicationProxy(protocol string) {
 	return
 }
 
-// Unsupported : g_socket_client_connect : unsupported parameter connectable : no type generator for SocketConnectable (GSocketConnectable*) for param connectable
+// Connect is a wrapper around the C function g_socket_client_connect.
+func (recv *SocketClient) Connect(connectable *SocketConnectable, cancellable *Cancellable) (*SocketConnection, error) {
+	c_connectable := (*C.GSocketConnectable)(connectable.ToC())
 
-// Unsupported : g_socket_client_connect_async : unsupported parameter connectable : no type generator for SocketConnectable (GSocketConnectable*) for param connectable
+	c_cancellable := (*C.GCancellable)(cancellable.ToC())
 
-// Unsupported : g_socket_client_connect_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
+	var cThrowableError *C.GError
+
+	retC := C.g_socket_client_connect((*C.GSocketClient)(recv.native), c_connectable, c_cancellable, &cThrowableError)
+	retGo := SocketConnectionNewFromC(unsafe.Pointer(retC))
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
+
+// Unsupported : g_socket_client_connect_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
+
+// ConnectFinish is a wrapper around the C function g_socket_client_connect_finish.
+func (recv *SocketClient) ConnectFinish(result *AsyncResult) (*SocketConnection, error) {
+	c_result := (*C.GAsyncResult)(result.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_socket_client_connect_finish((*C.GSocketClient)(recv.native), c_result, &cThrowableError)
+	retGo := SocketConnectionNewFromC(unsafe.Pointer(retC))
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // ConnectToHost is a wrapper around the C function g_socket_client_connect_to_host.
 func (recv *SocketClient) ConnectToHost(hostAndPort string, defaultPort uint16, cancellable *Cancellable) (*SocketConnection, error) {
@@ -1100,7 +1217,22 @@ func (recv *SocketClient) ConnectToHost(hostAndPort string, defaultPort uint16, 
 
 // Unsupported : g_socket_client_connect_to_host_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_socket_client_connect_to_host_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
+// ConnectToHostFinish is a wrapper around the C function g_socket_client_connect_to_host_finish.
+func (recv *SocketClient) ConnectToHostFinish(result *AsyncResult) (*SocketConnection, error) {
+	c_result := (*C.GAsyncResult)(result.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_socket_client_connect_to_host_finish((*C.GSocketClient)(recv.native), c_result, &cThrowableError)
+	retGo := SocketConnectionNewFromC(unsafe.Pointer(retC))
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // ConnectToService is a wrapper around the C function g_socket_client_connect_to_service.
 func (recv *SocketClient) ConnectToService(domain string, service string, cancellable *Cancellable) (*SocketConnection, error) {
@@ -1127,7 +1259,22 @@ func (recv *SocketClient) ConnectToService(domain string, service string, cancel
 
 // Unsupported : g_socket_client_connect_to_service_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_socket_client_connect_to_service_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
+// ConnectToServiceFinish is a wrapper around the C function g_socket_client_connect_to_service_finish.
+func (recv *SocketClient) ConnectToServiceFinish(result *AsyncResult) (*SocketConnection, error) {
+	c_result := (*C.GAsyncResult)(result.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_socket_client_connect_to_service_finish((*C.GSocketClient)(recv.native), c_result, &cThrowableError)
+	retGo := SocketConnectionNewFromC(unsafe.Pointer(retC))
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // GetFamily is a wrapper around the C function g_socket_client_get_family.
 func (recv *SocketClient) GetFamily() SocketFamily {
@@ -1353,13 +1500,13 @@ func SocketListenerNew() *SocketListener {
 
 // Unsupported : g_socket_listener_accept_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_socket_listener_accept_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
+// Unsupported : g_socket_listener_accept_finish : unsupported parameter source_object : record with indirection level of 2
 
 // Unsupported : g_socket_listener_accept_socket : unsupported parameter source_object : record with indirection level of 2
 
 // Unsupported : g_socket_listener_accept_socket_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_socket_listener_accept_socket_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
+// Unsupported : g_socket_listener_accept_socket_finish : unsupported parameter source_object : record with indirection level of 2
 
 // Unsupported : g_socket_listener_add_address : unsupported parameter effective_address : record with indirection level of 2
 
@@ -1764,4 +1911,61 @@ func (recv *UnixSocketAddress) GetPathLen() uint64 {
 	return retGo
 }
 
-// Unsupported signal 'drive-stop-button' for VolumeMonitor : unsupported parameter drive : no type generator for Drive,
+type signalVolumeMonitorDriveStopButtonDetail struct {
+	callback  VolumeMonitorSignalDriveStopButtonCallback
+	handlerID C.gulong
+}
+
+var signalVolumeMonitorDriveStopButtonId int
+var signalVolumeMonitorDriveStopButtonMap = make(map[int]signalVolumeMonitorDriveStopButtonDetail)
+var signalVolumeMonitorDriveStopButtonLock sync.Mutex
+
+// VolumeMonitorSignalDriveStopButtonCallback is a callback function for a 'drive-stop-button' signal emitted from a VolumeMonitor.
+type VolumeMonitorSignalDriveStopButtonCallback func(drive *Drive)
+
+/*
+ConnectDriveStopButton connects the callback to the 'drive-stop-button' signal for the VolumeMonitor.
+
+The returned value represents the connection, and may be passed to DisconnectDriveStopButton to remove it.
+*/
+func (recv *VolumeMonitor) ConnectDriveStopButton(callback VolumeMonitorSignalDriveStopButtonCallback) int {
+	signalVolumeMonitorDriveStopButtonLock.Lock()
+	defer signalVolumeMonitorDriveStopButtonLock.Unlock()
+
+	signalVolumeMonitorDriveStopButtonId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.VolumeMonitor_signal_connect_drive_stop_button(instance, C.gpointer(uintptr(signalVolumeMonitorDriveStopButtonId)))
+
+	detail := signalVolumeMonitorDriveStopButtonDetail{callback, handlerID}
+	signalVolumeMonitorDriveStopButtonMap[signalVolumeMonitorDriveStopButtonId] = detail
+
+	return signalVolumeMonitorDriveStopButtonId
+}
+
+/*
+DisconnectDriveStopButton disconnects a callback from the 'drive-stop-button' signal for the VolumeMonitor.
+
+The connectionID should be a value returned from a call to ConnectDriveStopButton.
+*/
+func (recv *VolumeMonitor) DisconnectDriveStopButton(connectionID int) {
+	signalVolumeMonitorDriveStopButtonLock.Lock()
+	defer signalVolumeMonitorDriveStopButtonLock.Unlock()
+
+	detail, exists := signalVolumeMonitorDriveStopButtonMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalVolumeMonitorDriveStopButtonMap, connectionID)
+}
+
+//export volumemonitor_driveStopButtonHandler
+func volumemonitor_driveStopButtonHandler(_ *C.GObject, c_drive *C.GDrive, data C.gpointer) {
+	drive := DriveNewFromC(unsafe.Pointer(c_drive))
+
+	index := int(uintptr(data))
+	callback := signalVolumeMonitorDriveStopButtonMap[index].callback
+	callback(drive)
+}

@@ -5,6 +5,7 @@ package gtk
 
 import (
 	gdk "github.com/pekim/gobbi/lib/gdk"
+	gio "github.com/pekim/gobbi/lib/gio"
 	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	"sync"
@@ -296,7 +297,7 @@ func (recv *Label) SetYalign(yalign float32) {
 	return
 }
 
-// Unsupported : gtk_list_box_bind_model : unsupported parameter model : no type generator for Gio.ListModel (GListModel*) for param model
+// Unsupported : gtk_list_box_bind_model : unsupported parameter create_widget_func : no type generator for ListBoxCreateWidgetFunc (GtkListBoxCreateWidgetFunc) for param create_widget_func
 
 // ModelButtonNew is a wrapper around the C function gtk_model_button_new.
 func ModelButtonNew() *ModelButton {
@@ -664,7 +665,21 @@ func (recv *TextView) SetMonospace(monospace bool) {
 	return
 }
 
-// Unsupported : gtk_widget_get_action_group : no return generator
+// GetActionGroup is a wrapper around the C function gtk_widget_get_action_group.
+func (recv *Widget) GetActionGroup(prefix string) *gio.ActionGroup {
+	c_prefix := C.CString(prefix)
+	defer C.free(unsafe.Pointer(c_prefix))
+
+	retC := C.gtk_widget_get_action_group((*C.GtkWidget)(recv.native), c_prefix)
+	var retGo (*gio.ActionGroup)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = gio.ActionGroupNewFromC(unsafe.Pointer(retC))
+	}
+
+	return retGo
+}
 
 // Unsupported : gtk_widget_list_action_prefixes : no return type
 

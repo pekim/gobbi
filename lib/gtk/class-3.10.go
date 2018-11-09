@@ -7,6 +7,7 @@ import (
 	cairo "github.com/pekim/gobbi/lib/cairo"
 	gdk "github.com/pekim/gobbi/lib/gdk"
 	gdkpixbuf "github.com/pekim/gobbi/lib/gdkpixbuf"
+	gio "github.com/pekim/gobbi/lib/gio"
 	glib "github.com/pekim/gobbi/lib/glib"
 	pango "github.com/pekim/gobbi/lib/pango"
 	"sync"
@@ -42,6 +43,15 @@ import (
 
 	static gulong ListBoxRow_signal_connect_activate(gpointer instance, gpointer data) {
 		return g_signal_connect(instance, "activate", G_CALLBACK(listboxrow_activateHandler), data);
+	}
+
+*/
+/*
+
+	void placessidebar_populatePopupHandler(GObject *, GtkWidget *, GFile *, GVolume *, gpointer);
+
+	static gulong PlacesSidebar_signal_connect_populate_popup(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "populate-popup", G_CALLBACK(placessidebar_populatePopupHandler), data);
 	}
 
 */
@@ -405,7 +415,26 @@ func (recv *IconTheme) LoadSurface(iconName string, size int32, scale int32, for
 	return retGo, goThrowableError
 }
 
-// Unsupported : gtk_icon_theme_lookup_by_gicon_for_scale : unsupported parameter icon : no type generator for Gio.Icon (GIcon*) for param icon
+// LookupByGiconForScale is a wrapper around the C function gtk_icon_theme_lookup_by_gicon_for_scale.
+func (recv *IconTheme) LookupByGiconForScale(icon *gio.Icon, size int32, scale int32, flags IconLookupFlags) *IconInfo {
+	c_icon := (*C.GIcon)(icon.ToC())
+
+	c_size := (C.gint)(size)
+
+	c_scale := (C.gint)(scale)
+
+	c_flags := (C.GtkIconLookupFlags)(flags)
+
+	retC := C.gtk_icon_theme_lookup_by_gicon_for_scale((*C.GtkIconTheme)(recv.native), c_icon, c_size, c_scale, c_flags)
+	var retGo (*IconInfo)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = IconInfoNewFromC(unsafe.Pointer(retC))
+	}
+
+	return retGo
+}
 
 // LookupIconForScale is a wrapper around the C function gtk_icon_theme_lookup_icon_for_scale.
 func (recv *IconTheme) LookupIconForScale(iconName string, size int32, scale int32, flags IconLookupFlags) *IconInfo {
@@ -884,13 +913,74 @@ func (recv *ListBoxRow) SetHeader(header *Widget) {
 
 // Unsupported signal 'drag-action-ask' for PlacesSidebar : unsupported parameter actions : type gint :
 
-// Unsupported signal 'drag-action-requested' for PlacesSidebar : unsupported parameter dest_file : no type generator for Gio.File,
+// Unsupported signal 'drag-action-requested' for PlacesSidebar : unsupported parameter source_file_list : type GLib.List :
 
-// Unsupported signal 'drag-perform-drop' for PlacesSidebar : unsupported parameter dest_file : no type generator for Gio.File,
+// Unsupported signal 'drag-perform-drop' for PlacesSidebar : unsupported parameter source_file_list : type GLib.List :
 
-// Unsupported signal 'open-location' for PlacesSidebar : unsupported parameter location : no type generator for Gio.File,
+// Unsupported signal 'open-location' for PlacesSidebar : unsupported parameter open_flags : type PlacesOpenFlags :
 
-// Unsupported signal 'populate-popup' for PlacesSidebar : unsupported parameter selected_item : no type generator for Gio.File,
+type signalPlacesSidebarPopulatePopupDetail struct {
+	callback  PlacesSidebarSignalPopulatePopupCallback
+	handlerID C.gulong
+}
+
+var signalPlacesSidebarPopulatePopupId int
+var signalPlacesSidebarPopulatePopupMap = make(map[int]signalPlacesSidebarPopulatePopupDetail)
+var signalPlacesSidebarPopulatePopupLock sync.Mutex
+
+// PlacesSidebarSignalPopulatePopupCallback is a callback function for a 'populate-popup' signal emitted from a PlacesSidebar.
+type PlacesSidebarSignalPopulatePopupCallback func(container *Widget, selectedItem *gio.File, selectedVolume *gio.Volume)
+
+/*
+ConnectPopulatePopup connects the callback to the 'populate-popup' signal for the PlacesSidebar.
+
+The returned value represents the connection, and may be passed to DisconnectPopulatePopup to remove it.
+*/
+func (recv *PlacesSidebar) ConnectPopulatePopup(callback PlacesSidebarSignalPopulatePopupCallback) int {
+	signalPlacesSidebarPopulatePopupLock.Lock()
+	defer signalPlacesSidebarPopulatePopupLock.Unlock()
+
+	signalPlacesSidebarPopulatePopupId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.PlacesSidebar_signal_connect_populate_popup(instance, C.gpointer(uintptr(signalPlacesSidebarPopulatePopupId)))
+
+	detail := signalPlacesSidebarPopulatePopupDetail{callback, handlerID}
+	signalPlacesSidebarPopulatePopupMap[signalPlacesSidebarPopulatePopupId] = detail
+
+	return signalPlacesSidebarPopulatePopupId
+}
+
+/*
+DisconnectPopulatePopup disconnects a callback from the 'populate-popup' signal for the PlacesSidebar.
+
+The connectionID should be a value returned from a call to ConnectPopulatePopup.
+*/
+func (recv *PlacesSidebar) DisconnectPopulatePopup(connectionID int) {
+	signalPlacesSidebarPopulatePopupLock.Lock()
+	defer signalPlacesSidebarPopulatePopupLock.Unlock()
+
+	detail, exists := signalPlacesSidebarPopulatePopupMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalPlacesSidebarPopulatePopupMap, connectionID)
+}
+
+//export placessidebar_populatePopupHandler
+func placessidebar_populatePopupHandler(_ *C.GObject, c_container *C.GtkWidget, c_selected_item *C.GFile, c_selected_volume *C.GVolume, data C.gpointer) {
+	container := WidgetNewFromC(unsafe.Pointer(c_container))
+
+	selectedItem := gio.FileNewFromC(unsafe.Pointer(c_selected_item))
+
+	selectedVolume := gio.VolumeNewFromC(unsafe.Pointer(c_selected_volume))
+
+	index := int(uintptr(data))
+	callback := signalPlacesSidebarPopulatePopupMap[index].callback
+	callback(container, selectedItem, selectedVolume)
+}
 
 // Unsupported signal 'show-error-message' for PlacesSidebar : unsupported parameter primary : type utf8 :
 
@@ -902,11 +992,42 @@ func PlacesSidebarNew() *PlacesSidebar {
 	return retGo
 }
 
-// Unsupported : gtk_places_sidebar_add_shortcut : unsupported parameter location : no type generator for Gio.File (GFile*) for param location
+// AddShortcut is a wrapper around the C function gtk_places_sidebar_add_shortcut.
+func (recv *PlacesSidebar) AddShortcut(location *gio.File) {
+	c_location := (*C.GFile)(location.ToC())
 
-// Unsupported : gtk_places_sidebar_get_location : no return generator
+	C.gtk_places_sidebar_add_shortcut((*C.GtkPlacesSidebar)(recv.native), c_location)
 
-// Unsupported : gtk_places_sidebar_get_nth_bookmark : no return generator
+	return
+}
+
+// GetLocation is a wrapper around the C function gtk_places_sidebar_get_location.
+func (recv *PlacesSidebar) GetLocation() *gio.File {
+	retC := C.gtk_places_sidebar_get_location((*C.GtkPlacesSidebar)(recv.native))
+	var retGo (*gio.File)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = gio.FileNewFromC(unsafe.Pointer(retC))
+	}
+
+	return retGo
+}
+
+// GetNthBookmark is a wrapper around the C function gtk_places_sidebar_get_nth_bookmark.
+func (recv *PlacesSidebar) GetNthBookmark(n int32) *gio.File {
+	c_n := (C.gint)(n)
+
+	retC := C.gtk_places_sidebar_get_nth_bookmark((*C.GtkPlacesSidebar)(recv.native), c_n)
+	var retGo (*gio.File)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = gio.FileNewFromC(unsafe.Pointer(retC))
+	}
+
+	return retGo
+}
 
 // GetOpenFlags is a wrapper around the C function gtk_places_sidebar_get_open_flags.
 func (recv *PlacesSidebar) GetOpenFlags() PlacesOpenFlags {
@@ -932,9 +1053,23 @@ func (recv *PlacesSidebar) ListShortcuts() *glib.SList {
 	return retGo
 }
 
-// Unsupported : gtk_places_sidebar_remove_shortcut : unsupported parameter location : no type generator for Gio.File (GFile*) for param location
+// RemoveShortcut is a wrapper around the C function gtk_places_sidebar_remove_shortcut.
+func (recv *PlacesSidebar) RemoveShortcut(location *gio.File) {
+	c_location := (*C.GFile)(location.ToC())
 
-// Unsupported : gtk_places_sidebar_set_location : unsupported parameter location : no type generator for Gio.File (GFile*) for param location
+	C.gtk_places_sidebar_remove_shortcut((*C.GtkPlacesSidebar)(recv.native), c_location)
+
+	return
+}
+
+// SetLocation is a wrapper around the C function gtk_places_sidebar_set_location.
+func (recv *PlacesSidebar) SetLocation(location *gio.File) {
+	c_location := (*C.GFile)(location.ToC())
+
+	C.gtk_places_sidebar_set_location((*C.GtkPlacesSidebar)(recv.native), c_location)
+
+	return
+}
 
 // SetOpenFlags is a wrapper around the C function gtk_places_sidebar_set_open_flags.
 func (recv *PlacesSidebar) SetOpenFlags(flags PlacesOpenFlags) {

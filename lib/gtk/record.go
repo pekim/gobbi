@@ -13159,9 +13159,31 @@ func (recv *TreeRowReference) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : gtk_tree_row_reference_new : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
+// TreeRowReferenceNew is a wrapper around the C function gtk_tree_row_reference_new.
+func TreeRowReferenceNew(model *TreeModel, path *TreePath) *TreeRowReference {
+	c_model := (*C.GtkTreeModel)(model.ToC())
 
-// Unsupported : gtk_tree_row_reference_new_proxy : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
+	c_path := (*C.GtkTreePath)(path.ToC())
+
+	retC := C.gtk_tree_row_reference_new(c_model, c_path)
+	retGo := TreeRowReferenceNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// TreeRowReferenceNewProxy is a wrapper around the C function gtk_tree_row_reference_new_proxy.
+func TreeRowReferenceNewProxy(proxy *gobject.Object, model *TreeModel, path *TreePath) *TreeRowReference {
+	c_proxy := (*C.GObject)(proxy.ToC())
+
+	c_model := (*C.GtkTreeModel)(model.ToC())
+
+	c_path := (*C.GtkTreePath)(path.ToC())
+
+	retC := C.gtk_tree_row_reference_new_proxy(c_proxy, c_model, c_path)
+	retGo := TreeRowReferenceNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // Free is a wrapper around the C function gtk_tree_row_reference_free.
 func (recv *TreeRowReference) Free() {

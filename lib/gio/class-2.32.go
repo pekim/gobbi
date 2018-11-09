@@ -63,7 +63,25 @@ func (recv *Application) SetDefault() {
 	return
 }
 
-// Unsupported : g_dbus_connection_export_action_group : unsupported parameter action_group : no type generator for ActionGroup (GActionGroup*) for param action_group
+// ExportActionGroup is a wrapper around the C function g_dbus_connection_export_action_group.
+func (recv *DBusConnection) ExportActionGroup(objectPath string, actionGroup *ActionGroup) (uint32, error) {
+	c_object_path := C.CString(objectPath)
+	defer C.free(unsafe.Pointer(c_object_path))
+
+	c_action_group := (*C.GActionGroup)(actionGroup.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_dbus_connection_export_action_group((*C.GDBusConnection)(recv.native), c_object_path, c_action_group, &cThrowableError)
+	retGo := (uint32)(retC)
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // ExportMenuModel is a wrapper around the C function g_dbus_connection_export_menu_model.
 func (recv *DBusConnection) ExportMenuModel(objectPath string, menu *MenuModel) (uint32, error) {
@@ -840,7 +858,16 @@ func SettingsNewFull(schema *SettingsSchema, backend *SettingsBackend, path stri
 	return retGo
 }
 
-// Unsupported : g_settings_create_action : no return generator
+// CreateAction is a wrapper around the C function g_settings_create_action.
+func (recv *Settings) CreateAction(key string) *Action {
+	c_key := C.CString(key)
+	defer C.free(unsafe.Pointer(c_key))
+
+	retC := C.g_settings_create_action((*C.GSettings)(recv.native), c_key)
+	retGo := ActionNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // SetCheckCancellable is a wrapper around the C function g_simple_async_result_set_check_cancellable.
 func (recv *SimpleAsyncResult) SetCheckCancellable(checkCancellable *Cancellable) {
@@ -1017,7 +1044,22 @@ func (recv *SocketConnection) Connect(address *SocketAddress, cancellable *Cance
 
 // Unsupported : g_socket_connection_connect_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_socket_connection_connect_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
+// ConnectFinish is a wrapper around the C function g_socket_connection_connect_finish.
+func (recv *SocketConnection) ConnectFinish(result *AsyncResult) (bool, error) {
+	c_result := (*C.GAsyncResult)(result.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_socket_connection_connect_finish((*C.GSocketConnection)(recv.native), c_result, &cThrowableError)
+	retGo := retC == C.TRUE
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // IsConnected is a wrapper around the C function g_socket_connection_is_connected.
 func (recv *SocketConnection) IsConnected() bool {
@@ -1029,8 +1071,38 @@ func (recv *SocketConnection) IsConnected() bool {
 
 // Unsupported : g_unix_connection_receive_credentials_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_unix_connection_receive_credentials_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
+// ReceiveCredentialsFinish is a wrapper around the C function g_unix_connection_receive_credentials_finish.
+func (recv *UnixConnection) ReceiveCredentialsFinish(result *AsyncResult) (*Credentials, error) {
+	c_result := (*C.GAsyncResult)(result.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_unix_connection_receive_credentials_finish((*C.GUnixConnection)(recv.native), c_result, &cThrowableError)
+	retGo := CredentialsNewFromC(unsafe.Pointer(retC))
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // Unsupported : g_unix_connection_send_credentials_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_unix_connection_send_credentials_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
+// SendCredentialsFinish is a wrapper around the C function g_unix_connection_send_credentials_finish.
+func (recv *UnixConnection) SendCredentialsFinish(result *AsyncResult) (bool, error) {
+	c_result := (*C.GAsyncResult)(result.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_unix_connection_send_credentials_finish((*C.GUnixConnection)(recv.native), c_result, &cThrowableError)
+	retGo := retC == C.TRUE
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}

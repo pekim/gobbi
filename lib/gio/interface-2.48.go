@@ -121,7 +121,13 @@ func (recv *DtlsClientConnection) GetAcceptedCas() *glib.List {
 	return retGo
 }
 
-// Unsupported : g_dtls_client_connection_get_server_identity : no return generator
+// GetServerIdentity is a wrapper around the C function g_dtls_client_connection_get_server_identity.
+func (recv *DtlsClientConnection) GetServerIdentity() *SocketConnectable {
+	retC := C.g_dtls_client_connection_get_server_identity((*C.GDtlsClientConnection)(recv.native))
+	retGo := SocketConnectableNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // GetValidationFlags is a wrapper around the C function g_dtls_client_connection_get_validation_flags.
 func (recv *DtlsClientConnection) GetValidationFlags() TlsCertificateFlags {
@@ -131,7 +137,14 @@ func (recv *DtlsClientConnection) GetValidationFlags() TlsCertificateFlags {
 	return retGo
 }
 
-// Unsupported : g_dtls_client_connection_set_server_identity : unsupported parameter identity : no type generator for SocketConnectable (GSocketConnectable*) for param identity
+// SetServerIdentity is a wrapper around the C function g_dtls_client_connection_set_server_identity.
+func (recv *DtlsClientConnection) SetServerIdentity(identity *SocketConnectable) {
+	c_identity := (*C.GSocketConnectable)(identity.ToC())
+
+	C.g_dtls_client_connection_set_server_identity((*C.GDtlsClientConnection)(recv.native), c_identity)
+
+	return
+}
 
 // SetValidationFlags is a wrapper around the C function g_dtls_client_connection_set_validation_flags.
 func (recv *DtlsClientConnection) SetValidationFlags(flags TlsCertificateFlags) {
@@ -182,7 +195,22 @@ func (recv *DtlsConnection) Close(cancellable *Cancellable) (bool, error) {
 
 // Unsupported : g_dtls_connection_close_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_dtls_connection_close_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
+// CloseFinish is a wrapper around the C function g_dtls_connection_close_finish.
+func (recv *DtlsConnection) CloseFinish(result *AsyncResult) (bool, error) {
+	c_result := (*C.GAsyncResult)(result.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_dtls_connection_close_finish((*C.GDtlsConnection)(recv.native), c_result, &cThrowableError)
+	retGo := retC == C.TRUE
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // EmitAcceptCertificate is a wrapper around the C function g_dtls_connection_emit_accept_certificate.
 func (recv *DtlsConnection) EmitAcceptCertificate(peerCert *TlsCertificate, errors TlsCertificateFlags) bool {
@@ -271,7 +299,22 @@ func (recv *DtlsConnection) Handshake(cancellable *Cancellable) (bool, error) {
 
 // Unsupported : g_dtls_connection_handshake_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_dtls_connection_handshake_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
+// HandshakeFinish is a wrapper around the C function g_dtls_connection_handshake_finish.
+func (recv *DtlsConnection) HandshakeFinish(result *AsyncResult) (bool, error) {
+	c_result := (*C.GAsyncResult)(result.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_dtls_connection_handshake_finish((*C.GDtlsConnection)(recv.native), c_result, &cThrowableError)
+	retGo := retC == C.TRUE
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // SetCertificate is a wrapper around the C function g_dtls_connection_set_certificate.
 func (recv *DtlsConnection) SetCertificate(certificate *TlsCertificate) {
@@ -344,7 +387,22 @@ func (recv *DtlsConnection) Shutdown(shutdownRead bool, shutdownWrite bool, canc
 
 // Unsupported : g_dtls_connection_shutdown_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_dtls_connection_shutdown_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
+// ShutdownFinish is a wrapper around the C function g_dtls_connection_shutdown_finish.
+func (recv *DtlsConnection) ShutdownFinish(result *AsyncResult) (bool, error) {
+	c_result := (*C.GAsyncResult)(result.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_dtls_connection_shutdown_finish((*C.GDtlsConnection)(recv.native), c_result, &cThrowableError)
+	retGo := retC == C.TRUE
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
 
 // DtlsServerConnection is a wrapper around the C record GDtlsServerConnection.
 type DtlsServerConnection struct {

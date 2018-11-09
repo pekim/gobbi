@@ -5,7 +5,9 @@ package gtk
 
 import (
 	cairo "github.com/pekim/gobbi/lib/cairo"
+	gdk "github.com/pekim/gobbi/lib/gdk"
 	gdkpixbuf "github.com/pekim/gobbi/lib/gdkpixbuf"
+	gio "github.com/pekim/gobbi/lib/gio"
 )
 
 // #cgo CFLAGS: -Wno-deprecated-declarations
@@ -15,7 +17,20 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : gtk_drag_set_icon_gicon : unsupported parameter icon : no type generator for Gio.Icon (GIcon*) for param icon
+// DragSetIconGicon is a wrapper around the C function gtk_drag_set_icon_gicon.
+func DragSetIconGicon(context *gdk.DragContext, icon *gio.Icon, hotX int32, hotY int32) {
+	c_context := (*C.GdkDragContext)(context.ToC())
+
+	c_icon := (*C.GIcon)(icon.ToC())
+
+	c_hot_x := (C.gint)(hotX)
+
+	c_hot_y := (C.gint)(hotY)
+
+	C.gtk_drag_set_icon_gicon(c_context, c_icon, c_hot_x, c_hot_y)
+
+	return
+}
 
 // RenderIcon is a wrapper around the C function gtk_render_icon.
 func RenderIcon(context *StyleContext, cr *cairo.Context, pixbuf *gdkpixbuf.Pixbuf, x float64, y float64) {

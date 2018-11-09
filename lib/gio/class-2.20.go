@@ -3,7 +3,11 @@
 
 package gio
 
-import "sync"
+import (
+	glib "github.com/pekim/gobbi/lib/glib"
+	"sync"
+	"unsafe"
+)
 
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <gio/gdesktopappinfo.h>
@@ -31,11 +35,31 @@ import "C"
 
 // Unsupported : g_data_input_stream_read_line_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_data_input_stream_read_line_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
+// Unsupported : g_data_input_stream_read_line_finish : no return type
 
 // Unsupported : g_data_input_stream_read_until_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_data_input_stream_read_until_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
+// ReadUntilFinish is a wrapper around the C function g_data_input_stream_read_until_finish.
+func (recv *DataInputStream) ReadUntilFinish(result *AsyncResult) (string, uint64, error) {
+	c_result := (*C.GAsyncResult)(result.ToC())
+
+	var c_length C.gsize
+
+	var cThrowableError *C.GError
+
+	retC := C.g_data_input_stream_read_until_finish((*C.GDataInputStream)(recv.native), c_result, &c_length, &cThrowableError)
+	retGo := C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	length := (uint64)(c_length)
+
+	return retGo, length, goThrowableError
+}
 
 type signalMountOperationAbortedDetail struct {
 	callback  MountOperationSignalAbortedCallback

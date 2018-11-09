@@ -1326,7 +1326,7 @@ func StockLookup(stockId string) (bool, *StockItem) {
 	return retGo, item
 }
 
-// Unsupported : gtk_tree_get_row_drag_data : unsupported parameter tree_model : no type generator for TreeModel (GtkTreeModel**) for param tree_model
+// Unsupported : gtk_tree_get_row_drag_data : unsupported parameter tree_model : record with indirection level of 2
 
 // TreeRowReferenceDeleted is a wrapper around the C function gtk_tree_row_reference_deleted.
 func TreeRowReferenceDeleted(proxy *gobject.Object, path *TreePath) {
@@ -1365,7 +1365,19 @@ func TreeRowReferenceReordered(proxy *gobject.Object, path *TreePath, iter *Tree
 	return
 }
 
-// Unsupported : gtk_tree_set_row_drag_data : unsupported parameter tree_model : no type generator for TreeModel (GtkTreeModel*) for param tree_model
+// TreeSetRowDragData is a wrapper around the C function gtk_tree_set_row_drag_data.
+func TreeSetRowDragData(selectionData *SelectionData, treeModel *TreeModel, path *TreePath) bool {
+	c_selection_data := (*C.GtkSelectionData)(selectionData.ToC())
+
+	c_tree_model := (*C.GtkTreeModel)(treeModel.ToC())
+
+	c_path := (*C.GtkTreePath)(path.ToC())
+
+	retC := C.gtk_tree_set_row_drag_data(c_selection_data, c_tree_model, c_path)
+	retGo := retC == C.TRUE
+
+	return retGo
+}
 
 // True is a wrapper around the C function gtk_true.
 func True() bool {

@@ -51,4 +51,19 @@ func PixbufAnimationNewFromStream(stream *gio.InputStream, cancellable *gio.Canc
 	return retGo, goThrowableError
 }
 
-// Unsupported : gdk_pixbuf_animation_new_from_stream_finish : unsupported parameter async_result : no type generator for Gio.AsyncResult (GAsyncResult*) for param async_result
+// PixbufAnimationNewFromStreamFinish is a wrapper around the C function gdk_pixbuf_animation_new_from_stream_finish.
+func PixbufAnimationNewFromStreamFinish(asyncResult *gio.AsyncResult) (*PixbufAnimation, error) {
+	c_async_result := (*C.GAsyncResult)(asyncResult.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.gdk_pixbuf_animation_new_from_stream_finish(c_async_result, &cThrowableError)
+	retGo := PixbufAnimationNewFromC(unsafe.Pointer(retC))
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}

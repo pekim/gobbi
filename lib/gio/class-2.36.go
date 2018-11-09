@@ -25,9 +25,18 @@ import "C"
 
 // Unsupported signal 'launch-failed' for AppLaunchContext : unsupported parameter startup_notify_id : type utf8 :
 
-// Unsupported signal 'launched' for AppLaunchContext : unsupported parameter info : no type generator for AppInfo,
+// Unsupported signal 'launched' for AppLaunchContext : unsupported parameter platform_data : type GLib.Variant : Blacklisted record : GVariant
 
-// Unsupported : g_application_command_line_create_file_for_arg : no return generator
+// CreateFileForArg is a wrapper around the C function g_application_command_line_create_file_for_arg.
+func (recv *ApplicationCommandLine) CreateFileForArg(arg string) *File {
+	c_arg := C.CString(arg)
+	defer C.free(unsafe.Pointer(c_arg))
+
+	retC := C.g_application_command_line_create_file_for_arg((*C.GApplicationCommandLine)(recv.native), c_arg)
+	retGo := FileNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // Unsupported : g_credentials_get_unix_pid : no return generator
 
@@ -65,7 +74,15 @@ func (recv *DesktopAppInfo) HasKey(key string) bool {
 	return retGo
 }
 
-// Unsupported : g_file_enumerator_get_child : no return generator
+// GetChild is a wrapper around the C function g_file_enumerator_get_child.
+func (recv *FileEnumerator) GetChild(info *FileInfo) *File {
+	c_info := (*C.GFileInfo)(info.ToC())
+
+	retC := C.g_file_enumerator_get_child((*C.GFileEnumerator)(recv.native), c_info)
+	retGo := FileNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // GetDeletionDate is a wrapper around the C function g_file_info_get_deletion_date.
 func (recv *FileInfo) GetDeletionDate() *glib.DateTime {
@@ -152,9 +169,22 @@ func (recv *Socket) SetOption(level int32, optname int32, value int32) (bool, er
 	return retGo, goThrowableError
 }
 
-// Unsupported : g_socket_client_get_proxy_resolver : no return generator
+// GetProxyResolver is a wrapper around the C function g_socket_client_get_proxy_resolver.
+func (recv *SocketClient) GetProxyResolver() *ProxyResolver {
+	retC := C.g_socket_client_get_proxy_resolver((*C.GSocketClient)(recv.native))
+	retGo := ProxyResolverNewFromC(unsafe.Pointer(retC))
 
-// Unsupported : g_socket_client_set_proxy_resolver : unsupported parameter proxy_resolver : no type generator for ProxyResolver (GProxyResolver*) for param proxy_resolver
+	return retGo
+}
+
+// SetProxyResolver is a wrapper around the C function g_socket_client_set_proxy_resolver.
+func (recv *SocketClient) SetProxyResolver(proxyResolver *ProxyResolver) {
+	c_proxy_resolver := (*C.GProxyResolver)(proxyResolver.ToC())
+
+	C.g_socket_client_set_proxy_resolver((*C.GSocketClient)(recv.native), c_proxy_resolver)
+
+	return
+}
 
 // Unsupported : g_task_new : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 

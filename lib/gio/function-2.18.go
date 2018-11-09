@@ -32,4 +32,4 @@ func ContentTypeFromMimeType(mimeType string) string {
 	return retGo
 }
 
-// Unsupported : g_content_type_guess_for_tree : unsupported parameter root : no type generator for File (GFile*) for param root
+// Unsupported : g_content_type_guess_for_tree : no return type
