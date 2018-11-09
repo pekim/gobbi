@@ -2,6 +2,7 @@ package gtk
 
 import (
 	"github.com/pekim/gobbi/lib/gio"
+	"github.com/pekim/gobbi/lib/gobject"
 	"github.com/pekim/gobbi/lib/gtk"
 	"github.com/stretchr/testify/assert"
 	"testing"
@@ -65,4 +66,11 @@ func TestDowncasting(t *testing.T) {
 	assert.Equal(t, "qaz", window2.GetTitle())
 
 	window.Widget().Destroy()
+}
+
+func TestArrayParam(t *testing.T) {
+	gtk.Init([]string{})
+
+	store := gtk.ListStoreNewv([]gobject.Type{gobject.TYPE_BOOLEAN, gobject.TYPE_INT})
+	assert.NotNil(t, store)
 }
