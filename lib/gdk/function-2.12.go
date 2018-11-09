@@ -43,10 +43,6 @@ func EventRequestMotions(event *EventMotion) {
 
 // Unsupported : gdk_events_get_distance : unsupported parameter event1 : no type generator for Event (GdkEvent*) for param event1
 
-// Unsupported : gdk_init : unsupported parameter argv :
-
-// Unsupported : gdk_init_check : unsupported parameter argv :
-
 // NotifyStartupCompleteWithId is a wrapper around the C function gdk_notify_startup_complete_with_id.
 func NotifyStartupCompleteWithId(startupId string) {
 	c_startup_id := C.CString(startupId)
@@ -56,8 +52,6 @@ func NotifyStartupCompleteWithId(startupId string) {
 
 	return
 }
-
-// Unsupported : gdk_parse_args : unsupported parameter argv :
 
 // Unsupported : gdk_property_change : unsupported parameter property : Blacklisted record : GdkAtom
 

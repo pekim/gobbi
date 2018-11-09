@@ -9,6 +9,8 @@ import (
 type Parameters []*Parameter
 
 func (pp Parameters) init(ns *Namespace) {
+	pp.fixupArgcArgv()
+
 	for _, param := range pp {
 		param.init(ns)
 
@@ -17,6 +19,31 @@ func (pp Parameters) init(ns *Namespace) {
 			paramIndex := *param.Array.Length
 			pp[paramIndex].arrayLengthFor = param
 		}
+	}
+}
+
+func (pp Parameters) fixupArgcArgv() {
+	var previous *Parameter
+
+	for i, p := range pp {
+		if previous != nil && previous.Name == "argc" && p.Name == "argv" {
+			pp.replaceArgcArgv(i - 1)
+			break
+		}
+
+		previous = p
+	}
+}
+
+func (pp Parameters) replaceArgcArgv(index int) {
+	p1 := pp[index]
+	p1.Name = "args"
+	p1.Type.Name = "argcargv"
+
+	p2 := pp[index+1]
+	p2.Array = nil
+	p2.Type = &Type{
+		Name: "ignore",
 	}
 }
 

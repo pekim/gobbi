@@ -34,10 +34,6 @@ import "C"
 
 // Unsupported : gdk_events_get_distance : unsupported parameter event1 : no type generator for Event (GdkEvent*) for param event1
 
-// Unsupported : gdk_init : unsupported parameter argv :
-
-// Unsupported : gdk_init_check : unsupported parameter argv :
-
 // OffscreenWindowGetEmbedder is a wrapper around the C function gdk_offscreen_window_get_embedder.
 func OffscreenWindowGetEmbedder(window *Window) *Window {
 	c_window := (*C.GdkWindow)(window.ToC())
@@ -63,8 +59,6 @@ func OffscreenWindowSetEmbedder(window *Window, embedder *Window) {
 
 	return
 }
-
-// Unsupported : gdk_parse_args : unsupported parameter argv :
 
 // Unsupported : gdk_property_change : unsupported parameter property : Blacklisted record : GdkAtom
 

@@ -43,6 +43,14 @@ func (t *Type) fullGoPackageName() string {
 //		generator
 // that are specific to the type of the Type.
 func (t *Type) qnameAndGenerator(targetType *Type) (*QName, TypeGenerator) {
+	if t.Name == "argcargv" {
+		return QNameNew(t.Namespace, ""), TypeGeneratorArgcArgvNew(t)
+	}
+
+	if t.Name == "ignore" {
+		return QNameNew(t.Namespace, ""), TypeGeneratorIgnoreNew(t)
+	}
+
 	if t.Name == "gboolean" {
 		return QNameNew(t.Namespace, "bool"), TypeGeneratorBooleanNew(targetType)
 	}

@@ -34,7 +34,6 @@ func (a *Array) generateParamCVar(g *jen.Group, cVarName string, goVarName strin
 }
 
 func (a *Array) generateArrayLenParamCVar(g *jen.Group, cVarName string, arrayGoVarName string, ctype string) {
-	//fmt.Println(a)
 	g.
 		Id(cVarName).
 		Op(":=").

@@ -45,10 +45,6 @@ func GetDisplayArgName() string {
 	return retGo
 }
 
-// Unsupported : gdk_init : unsupported parameter argv :
-
-// Unsupported : gdk_init_check : unsupported parameter argv :
-
 // NotifyStartupComplete is a wrapper around the C function gdk_notify_startup_complete.
 func NotifyStartupComplete() {
 	C.gdk_notify_startup_complete()
@@ -66,7 +62,16 @@ func PangoContextGetForScreen(screen *Screen) *pango.Context {
 	return retGo
 }
 
-// Unsupported : gdk_parse_args : unsupported parameter argv :
+// ParseArgs is a wrapper around the C function gdk_parse_args.
+func ParseArgs(args []string) []string {
+	cArgc, cArgv := argsIn(args)
+
+	C.gdk_parse_args(&cArgc, &cArgv)
+
+	args = argsOut(cArgc, cArgv)
+
+	return args
+}
 
 // Unsupported : gdk_property_change : unsupported parameter property : Blacklisted record : GdkAtom
 

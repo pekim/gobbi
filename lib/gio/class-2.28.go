@@ -354,7 +354,15 @@ func (recv *Application) Release() {
 	return
 }
 
-// Unsupported : g_application_run : unsupported parameter argv :
+// Run is a wrapper around the C function g_application_run.
+func (recv *Application) Run(args []string) int32 {
+	cArgc, cArgv := argsIn(args)
+
+	retC := C.g_application_run((*C.GApplication)(recv.native), cArgc, cArgv)
+	retGo := (int32)(retC)
+
+	return retGo
+}
 
 // Unsupported : g_application_set_action_group : unsupported parameter action_group : no type generator for ActionGroup (GActionGroup*) for param action_group
 

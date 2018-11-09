@@ -80,6 +80,7 @@ func (ns *Namespace) generate() {
 
 	ns.generateLibDir()
 	ns.generatePackageFile()
+	ns.generateTemplatedFiles()
 	ns.generateBooleanFile()
 	ns.generateGeneratables("alias", ns.Aliases)
 	ns.generateGeneratables("bitfield", ns.Bitfields)
