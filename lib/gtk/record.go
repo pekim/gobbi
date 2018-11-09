@@ -7618,8 +7618,6 @@ func (recv *PaperSize) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : gtk_paper_size_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
-
 // IsCustom is a wrapper around the C function gtk_paper_size_is_custom.
 func (recv *PaperSize) IsCustom() bool {
 	retC := C.gtk_paper_size_is_custom((*C.GtkPaperSize)(recv.native))
@@ -13016,8 +13014,6 @@ func TreePathNewFirst() *TreePath {
 
 	return retGo
 }
-
-// Unsupported : gtk_tree_path_new_from_indices : unsupported parameter ... : varargs
 
 // TreePathNewFromString is a wrapper around the C function gtk_tree_path_new_from_string.
 func TreePathNewFromString(path string) *TreePath {

@@ -24,10 +24,6 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : g_converter_input_stream_new : unsupported parameter converter : no type generator for Converter (GConverter*) for param converter
-
-// Unsupported : g_converter_output_stream_new : unsupported parameter converter : no type generator for Converter (GConverter*) for param converter
-
 // Credentials is a wrapper around the C record GCredentials.
 type Credentials struct {
 	native *C.GCredentials
@@ -1406,18 +1402,6 @@ func (recv *DataInputStream) ReadUpto(stopChars string, stopCharsLen int64, canc
 
 // Unsupported : g_data_input_stream_read_upto_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_emblem_new : unsupported parameter icon : no type generator for Icon (GIcon*) for param icon
-
-// Unsupported : g_emblem_new_with_origin : unsupported parameter icon : no type generator for Icon (GIcon*) for param icon
-
-// Unsupported : g_emblemed_icon_new : unsupported parameter icon : no type generator for Icon (GIcon*) for param icon
-
-// Unsupported : g_file_icon_new : unsupported parameter file : no type generator for File (GFile*) for param file
-
-// Unsupported : g_memory_input_stream_new_from_data : unsupported parameter destroy : no type generator for GLib.DestroyNotify (GDestroyNotify) for param destroy
-
-// Unsupported : g_memory_output_stream_new : unsupported parameter realloc_function : no type generator for ReallocFunc (GReallocFunc) for param realloc_function
-
 // StealData is a wrapper around the C function g_memory_output_stream_steal_data.
 func (recv *MemoryOutputStream) StealData() uintptr {
 	retC := C.g_memory_output_stream_steal_data((*C.GMemoryOutputStream)(recv.native))
@@ -1917,18 +1901,6 @@ func (recv *Settings) SetString(key string, value string) bool {
 
 // Blacklisted : g_settings_backend_writable_changed
 
-// Unsupported : g_simple_action_new : unsupported parameter parameter_type : Blacklisted record : GVariantType
-
-// Unsupported : g_simple_action_new_stateful : unsupported parameter parameter_type : Blacklisted record : GVariantType
-
-// Unsupported : g_simple_async_result_new : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
-
-// Unsupported : g_simple_async_result_new_error : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
-
-// Unsupported : g_simple_async_result_new_from_error : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
-
-// Unsupported : g_simple_async_result_new_take_error : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
-
 // SimplePermissionNew is a wrapper around the C function g_simple_permission_new.
 func SimplePermissionNew(allowed bool) *SimplePermission {
 	c_allowed :=
@@ -2080,10 +2052,6 @@ func (recv *SocketClient) SetTimeout(timeout uint32) {
 
 	return
 }
-
-// Unsupported : g_task_new : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
-
-// Unsupported : g_themed_icon_new_from_names : unsupported parameter iconnames :
 
 // ReceiveCredentials is a wrapper around the C function g_unix_connection_receive_credentials.
 func (recv *UnixConnection) ReceiveCredentials(cancellable *Cancellable) (*Credentials, error) {

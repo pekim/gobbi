@@ -36,12 +36,6 @@ func PixbufNewFromBytes(data *glib.Bytes, colorspace Colorspace, hasAlpha bool, 
 	return retGo
 }
 
-// Unsupported : gdk_pixbuf_new_from_data : unsupported parameter destroy_fn : no type generator for PixbufDestroyNotify (GdkPixbufDestroyNotify) for param destroy_fn
-
-// Unsupported : gdk_pixbuf_new_from_stream_finish : unsupported parameter async_result : no type generator for Gio.AsyncResult (GAsyncResult*) for param async_result
-
-// Unsupported : gdk_pixbuf_new_from_xpm_data : unsupported parameter data :
-
 // GetOptions is a wrapper around the C function gdk_pixbuf_get_options.
 func (recv *Pixbuf) GetOptions() *glib.HashTable {
 	retC := C.gdk_pixbuf_get_options((*C.GdkPixbuf)(recv.native))
@@ -65,5 +59,3 @@ func (recv *Pixbuf) ReadPixels() uint8 {
 
 	return retGo
 }
-
-// Unsupported : gdk_pixbuf_animation_new_from_stream_finish : unsupported parameter async_result : no type generator for Gio.AsyncResult (GAsyncResult*) for param async_result

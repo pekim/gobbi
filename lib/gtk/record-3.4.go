@@ -12,8 +12,6 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : gtk_paper_size_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
-
 // SymbolicColorNewWin32 is a wrapper around the C function gtk_symbolic_color_new_win32.
 func SymbolicColorNewWin32(themeClass string, id int32) *SymbolicColor {
 	c_theme_class := C.CString(themeClass)
@@ -26,11 +24,3 @@ func SymbolicColorNewWin32(themeClass string, id int32) *SymbolicColor {
 
 	return retGo
 }
-
-// Unsupported : gtk_target_list_new : unsupported parameter targets :
-
-// Unsupported : gtk_tree_path_new_from_indices : unsupported parameter ... : varargs
-
-// Unsupported : gtk_tree_row_reference_new : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
-
-// Unsupported : gtk_tree_row_reference_new_proxy : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model

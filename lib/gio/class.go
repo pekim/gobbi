@@ -1430,10 +1430,6 @@ func CastToEmblem(object *gobject.Object) *Emblem {
 	return EmblemNewFromC(object.ToC())
 }
 
-// Unsupported : g_emblem_new : unsupported parameter icon : no type generator for Icon (GIcon*) for param icon
-
-// Unsupported : g_emblem_new_with_origin : unsupported parameter icon : no type generator for Icon (GIcon*) for param icon
-
 // Icon returns the Icon interface implemented by Emblem
 func (recv *Emblem) Icon() *Icon {
 	return IconNewFromC(recv.ToC())
@@ -1472,8 +1468,6 @@ func (recv *EmblemedIcon) Object() *gobject.Object {
 func CastToEmblemedIcon(object *gobject.Object) *EmblemedIcon {
 	return EmblemedIconNewFromC(object.ToC())
 }
-
-// Unsupported : g_emblemed_icon_new : unsupported parameter icon : no type generator for Icon (GIcon*) for param icon
 
 // Icon returns the Icon interface implemented by EmblemedIcon
 func (recv *EmblemedIcon) Icon() *Icon {
@@ -3987,10 +3981,6 @@ func CastToSimpleAction(object *gobject.Object) *SimpleAction {
 	return SimpleActionNewFromC(object.ToC())
 }
 
-// Unsupported : g_simple_action_new : unsupported parameter parameter_type : Blacklisted record : GVariantType
-
-// Unsupported : g_simple_action_new_stateful : unsupported parameter parameter_type : Blacklisted record : GVariantType
-
 // Action returns the Action interface implemented by SimpleAction
 func (recv *SimpleAction) Action() *Action {
 	return ActionNewFromC(recv.ToC())
@@ -4033,8 +4023,6 @@ func CastToSimpleAsyncResult(object *gobject.Object) *SimpleAsyncResult {
 // Unsupported : g_simple_async_result_new_error : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
 // Unsupported : g_simple_async_result_new_from_error : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
-
-// Unsupported : g_simple_async_result_new_take_error : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
 // Complete is a wrapper around the C function g_simple_async_result_complete.
 func (recv *SimpleAsyncResult) Complete() {
@@ -4381,8 +4369,6 @@ func (recv *Task) Object() *gobject.Object {
 func CastToTask(object *gobject.Object) *Task {
 	return TaskNewFromC(object.ToC())
 }
-
-// Unsupported : g_task_new : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
 // AsyncResult returns the AsyncResult interface implemented by Task
 func (recv *Task) AsyncResult() *AsyncResult {

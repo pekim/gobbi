@@ -23,8 +23,6 @@ func BorderNew() *Border {
 	return retGo
 }
 
-// Unsupported : gtk_paper_size_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
-
 // Unsupported : gtk_selection_data_get_data : no return type
 
 // Unsupported : gtk_selection_data_get_data_type : return type : Blacklisted record : GdkAtom
@@ -54,11 +52,3 @@ func (recv *SelectionData) GetLength() int32 {
 }
 
 // Unsupported : gtk_selection_data_get_target : return type : Blacklisted record : GdkAtom
-
-// Unsupported : gtk_target_list_new : unsupported parameter targets :
-
-// Unsupported : gtk_tree_path_new_from_indices : unsupported parameter ... : varargs
-
-// Unsupported : gtk_tree_row_reference_new : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
-
-// Unsupported : gtk_tree_row_reference_new_proxy : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model

@@ -20,10 +20,6 @@ func (recv *Date) GetIso8601WeekOfYear() uint32 {
 	return retGo
 }
 
-// Unsupported : g_error_new : unsupported parameter ... : varargs
-
-// Unsupported : g_error_new_valist : unsupported parameter args : no type generator for va_list (va_list) for param args
-
 // KeyFileNew is a wrapper around the C function g_key_file_new.
 func KeyFileNew() *KeyFile {
 	retC := C.g_key_file_new()
@@ -525,8 +521,6 @@ func (recv *KeyFile) ToData() (string, uint64, error) {
 	return retGo, length, goThrowableError
 }
 
-// Unsupported : g_markup_parse_context_new : unsupported parameter user_data_dnotify : no type generator for DestroyNotify (GDestroyNotify) for param user_data_dnotify
-
 // AddGroup is a wrapper around the C function g_option_context_add_group.
 func (recv *OptionContext) AddGroup(group *OptionGroup) {
 	c_group := (*C.GOptionGroup)(group.ToC())
@@ -660,9 +654,3 @@ func (recv *OptionGroup) SetTranslationDomain(domain string) {
 
 	return
 }
-
-// Unsupported : g_thread_new : unsupported parameter func : no type generator for ThreadFunc (GThreadFunc) for param func
-
-// Unsupported : g_thread_try_new : unsupported parameter func : no type generator for ThreadFunc (GThreadFunc) for param func
-
-// Unsupported : g_variant_builder_new : unsupported parameter type : Blacklisted record : GVariantType

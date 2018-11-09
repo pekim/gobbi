@@ -15,5 +15,3 @@ func (recv *Hyperlink) IsSelectedLink() bool {
 
 	return retGo
 }
-
-// Unsupported : atk_relation_new : unsupported parameter targets :

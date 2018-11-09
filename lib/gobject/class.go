@@ -79,8 +79,6 @@ func CastToObject(object *Object) *Object {
 
 // Unsupported : g_object_new_valist : unsupported parameter var_args : no type generator for va_list (va_list) for param var_args
 
-// Unsupported : g_object_new_with_properties : unsupported parameter names :
-
 // Unsupported : g_object_newv : unsupported parameter parameters :
 
 // AddWeakPointer is a wrapper around the C function g_object_add_weak_pointer.

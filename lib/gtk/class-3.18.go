@@ -27,8 +27,6 @@ import (
 */
 import "C"
 
-// Unsupported : gtk_app_chooser_dialog_new : unsupported parameter file : no type generator for Gio.File (GFile*) for param file
-
 // GetPageHasPadding is a wrapper around the C function gtk_assistant_get_page_has_padding.
 func (recv *Assistant) GetPageHasPadding(page *Widget) bool {
 	c_page := (*C.GtkWidget)(page.ToC())
@@ -51,39 +49,9 @@ func (recv *Assistant) SetPageHasPadding(page *Widget, hasPadding bool) {
 	return
 }
 
-// Unsupported : gtk_button_new_from_icon_name : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
-
-// Unsupported : gtk_combo_box_new_with_model : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
-
-// Unsupported : gtk_combo_box_new_with_model_and_entry : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
-
 // Unsupported : gtk_container_child_notify_by_pspec : unsupported parameter pspec : Blacklisted record : GParamSpec
 
-// Unsupported : gtk_dialog_new_with_buttons : unsupported parameter ... : varargs
-
-// Unsupported : gtk_file_chooser_dialog_new : unsupported parameter ... : varargs
-
-// Unsupported : gtk_file_filter_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
-
 // Unsupported : gtk_flow_box_bind_model : unsupported parameter model : no type generator for Gio.ListModel (GListModel*) for param model
-
-// Unsupported : gtk_icon_view_new_with_model : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
-
-// Unsupported : gtk_image_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon (GIcon*) for param icon
-
-// Unsupported : gtk_image_new_from_icon_name : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
-
-// Unsupported : gtk_image_new_from_icon_set : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
-
-// Unsupported : gtk_image_new_from_stock : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
-
-// Unsupported : gtk_info_bar_new_with_buttons : unsupported parameter ... : varargs
-
-// Unsupported : gtk_list_store_new : unsupported parameter ... : varargs
-
-// Unsupported : gtk_message_dialog_new : unsupported parameter ... : varargs
-
-// Unsupported : gtk_message_dialog_new_with_markup : unsupported parameter ... : varargs
 
 // GetOverlayPassThrough is a wrapper around the C function gtk_overlay_get_overlay_pass_through.
 func (recv *Overlay) GetOverlayPassThrough(widget *Widget) bool {
@@ -117,8 +85,6 @@ func (recv *Overlay) SetOverlayPassThrough(widget *Widget, passThrough bool) {
 
 	return
 }
-
-// Unsupported : gtk_page_setup_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
 
 type signalPlacesSidebarShowOtherLocationsDetail struct {
 	callback  PlacesSidebarSignalShowOtherLocationsCallback
@@ -265,8 +231,6 @@ func (recv *Popover) SetDefaultWidget(widget *Widget) {
 	return
 }
 
-// Unsupported : gtk_print_settings_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
-
 // JoinGroup is a wrapper around the C function gtk_radio_menu_item_join_group.
 func (recv *RadioMenuItem) JoinGroup(groupSource *RadioMenuItem) {
 	c_group_source := (*C.GtkRadioMenuItem)(groupSource.ToC())
@@ -275,12 +239,6 @@ func (recv *RadioMenuItem) JoinGroup(groupSource *RadioMenuItem) {
 
 	return
 }
-
-// Unsupported : gtk_recent_chooser_dialog_new : unsupported parameter ... : varargs
-
-// Unsupported : gtk_recent_chooser_dialog_new_for_manager : unsupported parameter ... : varargs
-
-// Unsupported : gtk_scale_button_new : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
 
 // GetInterpolateSize is a wrapper around the C function gtk_stack_get_interpolate_size.
 func (recv *Stack) GetInterpolateSize() bool {
@@ -299,8 +257,6 @@ func (recv *Stack) SetInterpolateSize(interpolateSize bool) {
 
 	return
 }
-
-// Unsupported : gtk_status_icon_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon (GIcon*) for param icon
 
 // GetBottomMargin is a wrapper around the C function gtk_text_view_get_bottom_margin.
 func (recv *TextView) GetBottomMargin() int32 {
@@ -335,14 +291,6 @@ func (recv *TextView) SetTopMargin(topMargin int32) {
 
 	return
 }
-
-// Unsupported : gtk_tree_store_new : unsupported parameter ... : varargs
-
-// Unsupported : gtk_tree_view_new_with_model : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
-
-// Unsupported : gtk_tree_view_column_new_with_attributes : unsupported parameter ... : varargs
-
-// Unsupported : gtk_widget_new : unsupported parameter ... : varargs
 
 // GetFontMap is a wrapper around the C function gtk_widget_get_font_map.
 func (recv *Widget) GetFontMap() *pango.FontMap {

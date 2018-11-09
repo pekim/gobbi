@@ -465,10 +465,6 @@ func (recv *BookmarkFile) ToFile(filename string) (bool, error) {
 	return retGo, goThrowableError
 }
 
-// Unsupported : g_error_new : unsupported parameter ... : varargs
-
-// Unsupported : g_error_new_valist : unsupported parameter args : no type generator for va_list (va_list) for param args
-
 // GetDouble is a wrapper around the C function g_key_file_get_double.
 func (recv *KeyFile) GetDouble(groupName string, key string) (float64, error) {
 	c_group_name := C.CString(groupName)
@@ -524,8 +520,6 @@ func (recv *KeyFile) SetDoubleList(groupName string, key string, list []float64)
 	return
 }
 
-// Unsupported : g_markup_parse_context_new : unsupported parameter user_data_dnotify : no type generator for DestroyNotify (GDestroyNotify) for param user_data_dnotify
-
 // GetDescription is a wrapper around the C function g_option_context_get_description.
 func (recv *OptionContext) GetDescription() string {
 	retC := C.g_option_context_get_description((*C.GOptionContext)(recv.native))
@@ -574,8 +568,6 @@ func (recv *OptionContext) SetTranslationDomain(domain string) {
 	return
 }
 
-// Unsupported : g_option_group_new : unsupported parameter destroy : no type generator for DestroyNotify (GDestroyNotify) for param destroy
-
 // IsDestroyed is a wrapper around the C function g_source_is_destroyed.
 func (recv *Source) IsDestroyed() bool {
 	retC := C.g_source_is_destroyed((*C.GSource)(recv.native))
@@ -593,10 +585,6 @@ func (recv *Source) SetFuncs(funcs *SourceFuncs) {
 	return
 }
 
-// Unsupported : g_thread_new : unsupported parameter func : no type generator for ThreadFunc (GThreadFunc) for param func
-
-// Unsupported : g_thread_try_new : unsupported parameter func : no type generator for ThreadFunc (GThreadFunc) for param func
-
 // ToIso8601 is a wrapper around the C function g_time_val_to_iso8601.
 func (recv *TimeVal) ToIso8601() string {
 	retC := C.g_time_val_to_iso8601((*C.GTimeVal)(recv.native))
@@ -605,5 +593,3 @@ func (recv *TimeVal) ToIso8601() string {
 
 	return retGo
 }
-
-// Unsupported : g_variant_builder_new : unsupported parameter type : Blacklisted record : GVariantType

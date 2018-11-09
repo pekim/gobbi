@@ -10,12 +10,6 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : gdk_pixbuf_new_from_data : unsupported parameter destroy_fn : no type generator for PixbufDestroyNotify (GdkPixbufDestroyNotify) for param destroy_fn
-
-// Unsupported : gdk_pixbuf_new_from_stream_finish : unsupported parameter async_result : no type generator for Gio.AsyncResult (GAsyncResult*) for param async_result
-
-// Unsupported : gdk_pixbuf_new_from_xpm_data : unsupported parameter data :
-
 // CopyOptions is a wrapper around the C function gdk_pixbuf_copy_options.
 func (recv *Pixbuf) CopyOptions(destPixbuf *Pixbuf) bool {
 	c_dest_pixbuf := (*C.GdkPixbuf)(destPixbuf.ToC())
@@ -40,5 +34,3 @@ func (recv *Pixbuf) RemoveOption(key string) bool {
 // Unsupported : gdk_pixbuf_save_to_streamv : unsupported parameter option_keys :
 
 // Unsupported : gdk_pixbuf_save_to_streamv_async : unsupported parameter option_keys :
-
-// Unsupported : gdk_pixbuf_animation_new_from_stream_finish : unsupported parameter async_result : no type generator for Gio.AsyncResult (GAsyncResult*) for param async_result

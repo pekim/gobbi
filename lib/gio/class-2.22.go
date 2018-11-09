@@ -62,16 +62,6 @@ func (recv *Cancellable) ReleaseFd() {
 	return
 }
 
-// Unsupported : g_converter_input_stream_new : unsupported parameter converter : no type generator for Converter (GConverter*) for param converter
-
-// Unsupported : g_converter_output_stream_new : unsupported parameter converter : no type generator for Converter (GConverter*) for param converter
-
-// Unsupported : g_emblem_new : unsupported parameter icon : no type generator for Icon (GIcon*) for param icon
-
-// Unsupported : g_emblem_new_with_origin : unsupported parameter icon : no type generator for Icon (GIcon*) for param icon
-
-// Unsupported : g_emblemed_icon_new : unsupported parameter icon : no type generator for Icon (GIcon*) for param icon
-
 // GetEtag is a wrapper around the C function g_file_io_stream_get_etag.
 func (recv *FileIOStream) GetEtag() string {
 	retC := C.g_file_io_stream_get_etag((*C.GFileIOStream)(recv.native))
@@ -104,8 +94,6 @@ func (recv *FileIOStream) QueryInfo(attributes string, cancellable *Cancellable)
 // Unsupported : g_file_io_stream_query_info_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
 // Unsupported : g_file_io_stream_query_info_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
-
-// Unsupported : g_file_icon_new : unsupported parameter file : no type generator for File (GFile*) for param file
 
 // Unsupported : g_file_info_get_attribute_stringv : no return type
 
@@ -386,10 +374,6 @@ func (recv *InetSocketAddress) GetPort() uint16 {
 	return retGo
 }
 
-// Unsupported : g_memory_input_stream_new_from_data : unsupported parameter destroy : no type generator for GLib.DestroyNotify (GDestroyNotify) for param destroy
-
-// Unsupported : g_memory_output_stream_new : unsupported parameter realloc_function : no type generator for ReallocFunc (GReallocFunc) for param realloc_function
-
 // Unsupported signal 'show-processes' for MountOperation : unsupported parameter message : type utf8 :
 
 // NetworkAddressNew is a wrapper around the C function g_network_address_new.
@@ -546,18 +530,6 @@ func (recv *Resolver) SetDefault() {
 
 	return
 }
-
-// Unsupported : g_simple_action_new : unsupported parameter parameter_type : Blacklisted record : GVariantType
-
-// Unsupported : g_simple_action_new_stateful : unsupported parameter parameter_type : Blacklisted record : GVariantType
-
-// Unsupported : g_simple_async_result_new : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
-
-// Unsupported : g_simple_async_result_new_error : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
-
-// Unsupported : g_simple_async_result_new_from_error : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
-
-// Unsupported : g_simple_async_result_new_take_error : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
 // Socket is a wrapper around the C record GSocket.
 type Socket struct {
@@ -1514,8 +1486,6 @@ func (recv *SocketService) Stop() {
 	return
 }
 
-// Unsupported : g_task_new : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
-
 // TcpConnection is a wrapper around the C record GTcpConnection.
 type TcpConnection struct {
 	native *C.GTcpConnection
@@ -1577,8 +1547,6 @@ func (recv *TcpConnection) SetGracefulDisconnect(gracefulDisconnect bool) {
 
 	return
 }
-
-// Unsupported : g_themed_icon_new_from_names : unsupported parameter iconnames :
 
 // ThreadedSocketService is a wrapper around the C record GThreadedSocketService.
 type ThreadedSocketService struct {

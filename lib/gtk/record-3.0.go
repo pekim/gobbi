@@ -89,8 +89,6 @@ func (recv *Gradient) Unref() {
 
 // Unsupported : gtk_icon_set_render_icon_pixbuf : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
 
-// Unsupported : gtk_paper_size_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
-
 // RequisitionNew is a wrapper around the C function gtk_requisition_new.
 func RequisitionNew() *Requisition {
 	retC := C.gtk_requisition_new()
@@ -189,15 +187,7 @@ func (recv *SymbolicColor) Unref() {
 	return
 }
 
-// Unsupported : gtk_target_list_new : unsupported parameter targets :
-
-// Unsupported : gtk_tree_path_new_from_indices : unsupported parameter ... : varargs
-
 // Unsupported : gtk_tree_path_get_indices_with_depth : no return type
-
-// Unsupported : gtk_tree_row_reference_new : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
-
-// Unsupported : gtk_tree_row_reference_new_proxy : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
 
 // WidgetPathNew is a wrapper around the C function gtk_widget_path_new.
 func WidgetPathNew() *WidgetPath {

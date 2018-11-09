@@ -10,12 +10,6 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : gdk_pixbuf_new_from_data : unsupported parameter destroy_fn : no type generator for PixbufDestroyNotify (GdkPixbufDestroyNotify) for param destroy_fn
-
-// Unsupported : gdk_pixbuf_new_from_stream_finish : unsupported parameter async_result : no type generator for Gio.AsyncResult (GAsyncResult*) for param async_result
-
-// Unsupported : gdk_pixbuf_new_from_xpm_data : unsupported parameter data :
-
 // SetOption is a wrapper around the C function gdk_pixbuf_set_option.
 func (recv *Pixbuf) SetOption(key string, value string) bool {
 	c_key := C.CString(key)
@@ -29,8 +23,6 @@ func (recv *Pixbuf) SetOption(key string, value string) bool {
 
 	return retGo
 }
-
-// Unsupported : gdk_pixbuf_animation_new_from_stream_finish : unsupported parameter async_result : no type generator for Gio.AsyncResult (GAsyncResult*) for param async_result
 
 // GetFormat is a wrapper around the C function gdk_pixbuf_loader_get_format.
 func (recv *PixbufLoader) GetFormat() *PixbufFormat {

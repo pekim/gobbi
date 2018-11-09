@@ -52,5 +52,3 @@ func (recv *Matrix) GetFontScaleFactors() (float64, float64) {
 
 	return xscale, yscale
 }
-
-// Unsupported : pango_tab_array_new_with_positions : unsupported parameter ... : varargs

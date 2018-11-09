@@ -313,8 +313,6 @@ func BoxNew(orientation Orientation, spacing int32) *Box {
 	return retGo
 }
 
-// Unsupported : gtk_button_new_from_icon_name : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
-
 // ButtonBoxNew is a wrapper around the C function gtk_button_box_new.
 func ButtonBoxNew(orientation Orientation) *ButtonBox {
 	c_orientation := (C.GtkOrientation)(orientation)
@@ -1110,10 +1108,6 @@ func (recv *ColorSelection) SetPreviousRgba(rgba *gdk.RGBA) {
 	return
 }
 
-// Unsupported : gtk_combo_box_new_with_model : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
-
-// Unsupported : gtk_combo_box_new_with_model_and_entry : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
-
 // GetActiveId is a wrapper around the C function gtk_combo_box_get_active_id.
 func (recv *ComboBox) GetActiveId() string {
 	retC := C.gtk_combo_box_get_active_id((*C.GtkComboBox)(recv.native))
@@ -1199,8 +1193,6 @@ func (recv *ComboBoxText) RemoveAll() {
 	return
 }
 
-// Unsupported : gtk_dialog_new_with_buttons : unsupported parameter ... : varargs
-
 // Unsupported : gtk_entry_get_icon_area : unsupported parameter icon_area : Blacklisted record : GdkRectangle
 
 // Unsupported : gtk_entry_get_text_area : unsupported parameter text_area : Blacklisted record : GdkRectangle
@@ -1214,10 +1206,6 @@ func EntryCompletionNewWithArea(area *CellArea) *EntryCompletion {
 
 	return retGo
 }
-
-// Unsupported : gtk_file_chooser_dialog_new : unsupported parameter ... : varargs
-
-// Unsupported : gtk_file_filter_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
 
 // LoadSymbolic is a wrapper around the C function gtk_icon_info_load_symbolic.
 func (recv *IconInfo) LoadSymbolic(fg *gdk.RGBA, successColor *gdk.RGBA, warningColor *gdk.RGBA, errorColor *gdk.RGBA) (*gdkpixbuf.Pixbuf, bool, error) {
@@ -1300,20 +1288,6 @@ func IconViewNewWithArea(area *CellArea) *IconView {
 	return retGo
 }
 
-// Unsupported : gtk_icon_view_new_with_model : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
-
-// Unsupported : gtk_image_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon (GIcon*) for param icon
-
-// Unsupported : gtk_image_new_from_icon_name : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
-
-// Unsupported : gtk_image_new_from_icon_set : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
-
-// Unsupported : gtk_image_new_from_stock : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
-
-// Unsupported : gtk_info_bar_new_with_buttons : unsupported parameter ... : varargs
-
-// Unsupported : gtk_list_store_new : unsupported parameter ... : varargs
-
 // Unsupported : gtk_menu_popup_for_device : unsupported parameter func : no type generator for MenuPositionFunc (GtkMenuPositionFunc) for param func
 
 // GetReserveIndicator is a wrapper around the C function gtk_menu_item_get_reserve_indicator.
@@ -1349,10 +1323,6 @@ func (recv *MenuShell) GetSelectedItem() *Widget {
 
 	return retGo
 }
-
-// Unsupported : gtk_message_dialog_new : unsupported parameter ... : varargs
-
-// Unsupported : gtk_message_dialog_new_with_markup : unsupported parameter ... : varargs
 
 // Unsupported : gtk_numerable_icon_get_background_gicon : no return generator
 
@@ -1433,8 +1403,6 @@ func (recv *NumerableIcon) SetStyleContext(style *StyleContext) {
 	return
 }
 
-// Unsupported : gtk_page_setup_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
-
 // PanedNew is a wrapper around the C function gtk_paned_new.
 func PanedNew(orientation Orientation) *Paned {
 	c_orientation := (C.GtkOrientation)(orientation)
@@ -1444,8 +1412,6 @@ func PanedNew(orientation Orientation) *Paned {
 
 	return retGo
 }
-
-// Unsupported : gtk_print_settings_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
 
 // GetShowText is a wrapper around the C function gtk_progress_bar_get_show_text.
 func (recv *ProgressBar) GetShowText() bool {
@@ -1483,10 +1449,6 @@ func (recv *RadioButton) JoinGroup(groupSource *RadioButton) {
 	return
 }
 
-// Unsupported : gtk_recent_chooser_dialog_new : unsupported parameter ... : varargs
-
-// Unsupported : gtk_recent_chooser_dialog_new_for_manager : unsupported parameter ... : varargs
-
 // ScaleNew is a wrapper around the C function gtk_scale_new.
 func ScaleNew(orientation Orientation, adjustment *Adjustment) *Scale {
 	c_orientation := (C.GtkOrientation)(orientation)
@@ -1514,8 +1476,6 @@ func ScaleNewWithRange(orientation Orientation, min float64, max float64, step f
 
 	return retGo
 }
-
-// Unsupported : gtk_scale_button_new : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
 
 // ScrollbarNew is a wrapper around the C function gtk_scrollbar_new.
 func ScrollbarNew(orientation Orientation, adjustment *Adjustment) *Scrollbar {
@@ -1572,8 +1532,6 @@ func SeparatorNew(orientation Orientation) *Separator {
 
 	return retGo
 }
-
-// Unsupported : gtk_status_icon_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon (GIcon*) for param icon
 
 // HasContext is a wrapper around the C function gtk_style_has_context.
 func (recv *Style) HasContext() bool {
@@ -2316,10 +2274,6 @@ func (recv *ThemingEngine) StateIsRunning(state StateType) (bool, float64) {
 	return retGo, progress
 }
 
-// Unsupported : gtk_tree_store_new : unsupported parameter ... : varargs
-
-// Unsupported : gtk_tree_view_new_with_model : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
-
 // Unsupported : gtk_tree_view_is_blank_at_pos : unsupported parameter path : record with indirection level of 2
 
 // TreeViewColumnNewWithArea is a wrapper around the C function gtk_tree_view_column_new_with_area.
@@ -2331,8 +2285,6 @@ func TreeViewColumnNewWithArea(area *CellArea) *TreeViewColumn {
 
 	return retGo
 }
-
-// Unsupported : gtk_tree_view_column_new_with_attributes : unsupported parameter ... : varargs
 
 // GetButton is a wrapper around the C function gtk_tree_view_column_get_button.
 func (recv *TreeViewColumn) GetButton() *Widget {
@@ -2462,8 +2414,6 @@ func widget_styleUpdatedHandler(_ *C.GObject, data C.gpointer) {
 	callback := signalWidgetStyleUpdatedMap[index].callback
 	callback()
 }
-
-// Unsupported : gtk_widget_new : unsupported parameter ... : varargs
 
 // AddDeviceEvents is a wrapper around the C function gtk_widget_add_device_events.
 func (recv *Widget) AddDeviceEvents(device *gdk.Device, events gdk.EventMask) {

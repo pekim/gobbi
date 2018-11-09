@@ -8,8 +8,6 @@ package atk
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : atk_relation_new : unsupported parameter targets :
-
 // AddTarget is a wrapper around the C function atk_relation_add_target.
 func (recv *Relation) AddTarget(target *Object) {
 	c_target := (*C.AtkObject)(target.ToC())

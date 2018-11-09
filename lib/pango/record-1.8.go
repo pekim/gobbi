@@ -62,5 +62,3 @@ func (recv *RendererClass) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
-
-// Unsupported : pango_tab_array_new_with_positions : unsupported parameter ... : varargs

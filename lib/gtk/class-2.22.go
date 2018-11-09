@@ -37,16 +37,12 @@ func (recv *Accessible) SetWidget(widget *Widget) {
 	return
 }
 
-// Unsupported : gtk_app_chooser_dialog_new : unsupported parameter file : no type generator for Gio.File (GFile*) for param file
-
 // Commit is a wrapper around the C function gtk_assistant_commit.
 func (recv *Assistant) Commit() {
 	C.gtk_assistant_commit((*C.GtkAssistant)(recv.native))
 
 	return
 }
-
-// Unsupported : gtk_button_new_from_icon_name : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
 
 // GetEventWindow is a wrapper around the C function gtk_button_get_event_window.
 func (recv *Button) GetEventWindow() *gdk.Window {
@@ -55,12 +51,6 @@ func (recv *Button) GetEventWindow() *gdk.Window {
 
 	return retGo
 }
-
-// Unsupported : gtk_combo_box_new_with_model : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
-
-// Unsupported : gtk_combo_box_new_with_model_and_entry : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
-
-// Unsupported : gtk_dialog_new_with_buttons : unsupported parameter ... : varargs
 
 // ImContextFilterKeypress is a wrapper around the C function gtk_entry_im_context_filter_keypress.
 func (recv *Entry) ImContextFilterKeypress(event *gdk.EventKey) bool {
@@ -97,10 +87,6 @@ func (recv *Expander) SetLabelFill(labelFill bool) {
 	return
 }
 
-// Unsupported : gtk_file_chooser_dialog_new : unsupported parameter ... : varargs
-
-// Unsupported : gtk_file_filter_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
-
 // GetFontSelection is a wrapper around the C function gtk_font_selection_dialog_get_font_selection.
 func (recv *FontSelectionDialog) GetFontSelection() *Widget {
 	retC := C.gtk_font_selection_dialog_get_font_selection((*C.GtkFontSelectionDialog)(recv.native))
@@ -108,8 +94,6 @@ func (recv *FontSelectionDialog) GetFontSelection() *Widget {
 
 	return retGo
 }
-
-// Unsupported : gtk_icon_view_new_with_model : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
 
 // GetItemColumn is a wrapper around the C function gtk_icon_view_get_item_column.
 func (recv *IconView) GetItemColumn(path *TreePath) int32 {
@@ -130,22 +114,6 @@ func (recv *IconView) GetItemRow(path *TreePath) int32 {
 
 	return retGo
 }
-
-// Unsupported : gtk_image_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon (GIcon*) for param icon
-
-// Unsupported : gtk_image_new_from_icon_name : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
-
-// Unsupported : gtk_image_new_from_icon_set : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
-
-// Unsupported : gtk_image_new_from_stock : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
-
-// Unsupported : gtk_info_bar_new_with_buttons : unsupported parameter ... : varargs
-
-// Unsupported : gtk_list_store_new : unsupported parameter ... : varargs
-
-// Unsupported : gtk_message_dialog_new : unsupported parameter ... : varargs
-
-// Unsupported : gtk_message_dialog_new_with_markup : unsupported parameter ... : varargs
 
 // GetMessageArea is a wrapper around the C function gtk_message_dialog_get_message_area.
 func (recv *MessageDialog) GetMessageArea() *Widget {
@@ -170,18 +138,6 @@ func (recv *Notebook) GetTabVborder() uint16 {
 
 	return retGo
 }
-
-// Unsupported : gtk_page_setup_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
-
-// Unsupported : gtk_print_settings_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
-
-// Unsupported : gtk_recent_chooser_dialog_new : unsupported parameter ... : varargs
-
-// Unsupported : gtk_recent_chooser_dialog_new_for_manager : unsupported parameter ... : varargs
-
-// Unsupported : gtk_scale_button_new : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
-
-// Unsupported : gtk_status_icon_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon (GIcon*) for param icon
 
 // RemoveAll is a wrapper around the C function gtk_statusbar_remove_all.
 func (recv *Statusbar) RemoveAll(contextId uint32) {
@@ -240,12 +196,6 @@ func (recv *TextView) ResetImContext() {
 	return
 }
 
-// Unsupported : gtk_tree_store_new : unsupported parameter ... : varargs
-
-// Unsupported : gtk_tree_view_new_with_model : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
-
-// Unsupported : gtk_tree_view_column_new_with_attributes : unsupported parameter ... : varargs
-
 // GetViewWindow is a wrapper around the C function gtk_viewport_get_view_window.
 func (recv *Viewport) GetViewWindow() *gdk.Window {
 	retC := C.gtk_viewport_get_view_window((*C.GtkViewport)(recv.native))
@@ -253,8 +203,6 @@ func (recv *Viewport) GetViewWindow() *gdk.Window {
 
 	return retGo
 }
-
-// Unsupported : gtk_widget_new : unsupported parameter ... : varargs
 
 // GetCurrentGrab is a wrapper around the C function gtk_window_group_get_current_grab.
 func (recv *WindowGroup) GetCurrentGrab() *Widget {

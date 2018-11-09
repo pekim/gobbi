@@ -21,5 +21,3 @@ func (recv *GlyphItem) GetLogicalWidths(text string, logicalWidths []int32) {
 
 	return
 }
-
-// Unsupported : pango_tab_array_new_with_positions : unsupported parameter ... : varargs

@@ -14,10 +14,6 @@ import "C"
 
 // Unsupported signal 'activate-link' for AboutDialog : unsupported parameter uri : type utf8 :
 
-// Unsupported : gtk_app_chooser_dialog_new : unsupported parameter file : no type generator for Gio.File (GFile*) for param file
-
-// Unsupported : gtk_button_new_from_icon_name : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
-
 // ComboBoxNewWithEntry is a wrapper around the C function gtk_combo_box_new_with_entry.
 func ComboBoxNewWithEntry() *ComboBox {
 	retC := C.gtk_combo_box_new_with_entry()
@@ -25,8 +21,6 @@ func ComboBoxNewWithEntry() *ComboBox {
 
 	return retGo
 }
-
-// Unsupported : gtk_combo_box_new_with_model : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
 
 // Unsupported : gtk_combo_box_new_with_model_and_entry : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
 
@@ -147,30 +141,6 @@ func (recv *ComboBoxText) Remove(position int32) {
 	return
 }
 
-// Unsupported : gtk_dialog_new_with_buttons : unsupported parameter ... : varargs
-
-// Unsupported : gtk_file_chooser_dialog_new : unsupported parameter ... : varargs
-
-// Unsupported : gtk_file_filter_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
-
-// Unsupported : gtk_icon_view_new_with_model : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
-
-// Unsupported : gtk_image_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon (GIcon*) for param icon
-
-// Unsupported : gtk_image_new_from_icon_name : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
-
-// Unsupported : gtk_image_new_from_icon_set : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
-
-// Unsupported : gtk_image_new_from_stock : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
-
-// Unsupported : gtk_info_bar_new_with_buttons : unsupported parameter ... : varargs
-
-// Unsupported : gtk_list_store_new : unsupported parameter ... : varargs
-
-// Unsupported : gtk_message_dialog_new : unsupported parameter ... : varargs
-
-// Unsupported : gtk_message_dialog_new_with_markup : unsupported parameter ... : varargs
-
 // GetGroupName is a wrapper around the C function gtk_notebook_get_group_name.
 func (recv *Notebook) GetGroupName() string {
 	retC := C.gtk_notebook_get_group_name((*C.GtkNotebook)(recv.native))
@@ -189,10 +159,6 @@ func (recv *Notebook) SetGroupName(groupName string) {
 	return
 }
 
-// Unsupported : gtk_page_setup_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
-
-// Unsupported : gtk_print_settings_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
-
 // GetRoundDigits is a wrapper around the C function gtk_range_get_round_digits.
 func (recv *Range) GetRoundDigits() int32 {
 	retC := C.gtk_range_get_round_digits((*C.GtkRange)(recv.native))
@@ -209,19 +175,3 @@ func (recv *Range) SetRoundDigits(roundDigits int32) {
 
 	return
 }
-
-// Unsupported : gtk_recent_chooser_dialog_new : unsupported parameter ... : varargs
-
-// Unsupported : gtk_recent_chooser_dialog_new_for_manager : unsupported parameter ... : varargs
-
-// Unsupported : gtk_scale_button_new : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
-
-// Unsupported : gtk_status_icon_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon (GIcon*) for param icon
-
-// Unsupported : gtk_tree_store_new : unsupported parameter ... : varargs
-
-// Unsupported : gtk_tree_view_new_with_model : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
-
-// Unsupported : gtk_tree_view_column_new_with_attributes : unsupported parameter ... : varargs
-
-// Unsupported : gtk_widget_new : unsupported parameter ... : varargs

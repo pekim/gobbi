@@ -198,17 +198,7 @@ func (recv *Action) UnblockActivate() {
 	return
 }
 
-// Unsupported : gtk_app_chooser_dialog_new : unsupported parameter file : no type generator for Gio.File (GFile*) for param file
-
-// Unsupported : gtk_button_new_from_icon_name : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
-
 // Unsupported : gtk_cell_view_get_model : no return generator
-
-// Unsupported : gtk_combo_box_new_with_model : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
-
-// Unsupported : gtk_combo_box_new_with_model_and_entry : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
-
-// Unsupported : gtk_dialog_new_with_buttons : unsupported parameter ... : varargs
 
 // Unsupported signal 'icon-press' for Entry : unsupported parameter icon_pos : type EntryIconPosition :
 
@@ -469,10 +459,6 @@ func (recv *Entry) UnsetInvisibleChar() {
 	return
 }
 
-// Unsupported : gtk_file_chooser_dialog_new : unsupported parameter ... : varargs
-
-// Unsupported : gtk_file_filter_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
-
 // GetContextId is a wrapper around the C function gtk_im_multicontext_get_context_id.
 func (recv *IMMulticontext) GetContextId() string {
 	retC := C.gtk_im_multicontext_get_context_id((*C.GtkIMMulticontext)(recv.native))
@@ -490,16 +476,6 @@ func (recv *IMMulticontext) SetContextId(contextId string) {
 
 	return
 }
-
-// Unsupported : gtk_icon_view_new_with_model : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
-
-// Unsupported : gtk_image_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon (GIcon*) for param icon
-
-// Unsupported : gtk_image_new_from_icon_name : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
-
-// Unsupported : gtk_image_new_from_icon_set : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
-
-// Unsupported : gtk_image_new_from_stock : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
 
 // GetAlwaysShowImage is a wrapper around the C function gtk_image_menu_item_get_always_show_image.
 func (recv *ImageMenuItem) GetAlwaysShowImage() bool {
@@ -546,10 +522,6 @@ func (recv *ImageMenuItem) SetUseStock(useStock bool) {
 	return
 }
 
-// Unsupported : gtk_info_bar_new_with_buttons : unsupported parameter ... : varargs
-
-// Unsupported : gtk_list_store_new : unsupported parameter ... : varargs
-
 // GetLabel is a wrapper around the C function gtk_menu_item_get_label.
 func (recv *MenuItem) GetLabel() string {
 	retC := C.gtk_menu_item_get_label((*C.GtkMenuItem)(recv.native))
@@ -586,12 +558,6 @@ func (recv *MenuItem) SetUseUnderline(setting bool) {
 	return
 }
 
-// Unsupported : gtk_message_dialog_new : unsupported parameter ... : varargs
-
-// Unsupported : gtk_message_dialog_new_with_markup : unsupported parameter ... : varargs
-
-// Unsupported : gtk_page_setup_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
-
 // DrawPageFinish is a wrapper around the C function gtk_print_operation_draw_page_finish.
 func (recv *PrintOperation) DrawPageFinish() {
 	C.gtk_print_operation_draw_page_finish((*C.GtkPrintOperation)(recv.native))
@@ -605,8 +571,6 @@ func (recv *PrintOperation) SetDeferDrawing() {
 
 	return
 }
-
-// Unsupported : gtk_print_settings_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
 
 // GetPrinterLpi is a wrapper around the C function gtk_print_settings_get_printer_lpi.
 func (recv *PrintSettings) GetPrinterLpi() float64 {
@@ -652,10 +616,6 @@ func (recv *PrintSettings) SetResolutionXy(resolutionX int32, resolutionY int32)
 	return
 }
 
-// Unsupported : gtk_recent_chooser_dialog_new : unsupported parameter ... : varargs
-
-// Unsupported : gtk_recent_chooser_dialog_new_for_manager : unsupported parameter ... : varargs
-
 // AddMark is a wrapper around the C function gtk_scale_add_mark.
 func (recv *Scale) AddMark(value float64, position PositionType, markup string) {
 	c_value := (C.gdouble)(value)
@@ -676,8 +636,6 @@ func (recv *Scale) ClearMarks() {
 
 	return
 }
-
-// Unsupported : gtk_scale_button_new : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
 
 // Unsupported signal 'query-tooltip' for StatusIcon : unsupported parameter x : type gint :
 
@@ -742,8 +700,6 @@ func statusicon_scrollEventHandler(_ *C.GObject, c_event *C.GdkEventScroll, data
 		boolToGboolean(retGo)
 	return retC
 }
-
-// Unsupported : gtk_status_icon_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon (GIcon*) for param icon
 
 // GetHasTooltip is a wrapper around the C function gtk_status_icon_get_has_tooltip.
 func (recv *StatusIcon) GetHasTooltip() bool {
@@ -879,11 +835,3 @@ func textbuffer_pasteDoneHandler(_ *C.GObject, c_clipboard *C.GtkClipboard, data
 	callback := signalTextBufferPasteDoneMap[index].callback
 	callback(clipboard)
 }
-
-// Unsupported : gtk_tree_store_new : unsupported parameter ... : varargs
-
-// Unsupported : gtk_tree_view_new_with_model : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
-
-// Unsupported : gtk_tree_view_column_new_with_attributes : unsupported parameter ... : varargs
-
-// Unsupported : gtk_widget_new : unsupported parameter ... : varargs

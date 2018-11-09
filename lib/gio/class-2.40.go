@@ -164,34 +164,6 @@ func (recv *ApplicationCommandLine) GetOptionsDict() *glib.VariantDict {
 	return retGo
 }
 
-// Unsupported : g_converter_input_stream_new : unsupported parameter converter : no type generator for Converter (GConverter*) for param converter
-
-// Unsupported : g_converter_output_stream_new : unsupported parameter converter : no type generator for Converter (GConverter*) for param converter
-
-// Unsupported : g_dbus_connection_new_finish : unsupported parameter res : no type generator for AsyncResult (GAsyncResult*) for param res
-
-// Unsupported : g_dbus_connection_new_for_address_finish : unsupported parameter res : no type generator for AsyncResult (GAsyncResult*) for param res
-
-// Unsupported : g_dbus_object_manager_client_new_finish : unsupported parameter res : no type generator for AsyncResult (GAsyncResult*) for param res
-
-// Unsupported : g_dbus_object_manager_client_new_for_bus_finish : unsupported parameter res : no type generator for AsyncResult (GAsyncResult*) for param res
-
-// Unsupported : g_dbus_object_manager_client_new_for_bus_sync : unsupported parameter get_proxy_type_func : no type generator for DBusProxyTypeFunc (GDBusProxyTypeFunc) for param get_proxy_type_func
-
-// Unsupported : g_dbus_object_manager_client_new_sync : unsupported parameter get_proxy_type_func : no type generator for DBusProxyTypeFunc (GDBusProxyTypeFunc) for param get_proxy_type_func
-
-// Unsupported : g_dbus_proxy_new_finish : unsupported parameter res : no type generator for AsyncResult (GAsyncResult*) for param res
-
-// Unsupported : g_dbus_proxy_new_for_bus_finish : unsupported parameter res : no type generator for AsyncResult (GAsyncResult*) for param res
-
-// Unsupported : g_emblem_new : unsupported parameter icon : no type generator for Icon (GIcon*) for param icon
-
-// Unsupported : g_emblem_new_with_origin : unsupported parameter icon : no type generator for Icon (GIcon*) for param icon
-
-// Unsupported : g_emblemed_icon_new : unsupported parameter icon : no type generator for Icon (GIcon*) for param icon
-
-// Unsupported : g_file_icon_new : unsupported parameter file : no type generator for File (GFile*) for param file
-
 // InetSocketAddressNewFromString is a wrapper around the C function g_inet_socket_address_new_from_string.
 func InetSocketAddressNewFromString(address string, port uint32) *InetSocketAddress {
 	c_address := C.CString(address)
@@ -204,10 +176,6 @@ func InetSocketAddressNewFromString(address string, port uint32) *InetSocketAddr
 
 	return retGo
 }
-
-// Unsupported : g_memory_input_stream_new_from_data : unsupported parameter destroy : no type generator for GLib.DestroyNotify (GDestroyNotify) for param destroy
-
-// Unsupported : g_memory_output_stream_new : unsupported parameter realloc_function : no type generator for ReallocFunc (GReallocFunc) for param realloc_function
 
 // Notification is a wrapper around the C record GNotification.
 type Notification struct {
@@ -331,18 +299,6 @@ func (recv *Notification) SetUrgent(urgent bool) {
 // Unsupported : g_settings_get_default_value : return type : Blacklisted record : GVariant
 
 // Unsupported : g_settings_get_user_value : return type : Blacklisted record : GVariant
-
-// Unsupported : g_simple_action_new : unsupported parameter parameter_type : Blacklisted record : GVariantType
-
-// Unsupported : g_simple_action_new_stateful : unsupported parameter parameter_type : Blacklisted record : GVariantType
-
-// Unsupported : g_simple_async_result_new : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
-
-// Unsupported : g_simple_async_result_new_error : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
-
-// Unsupported : g_simple_async_result_new_from_error : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
-
-// Unsupported : g_simple_async_result_new_take_error : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
 // Subprocess is a wrapper around the C record GSubprocess.
 type Subprocess struct {
@@ -731,10 +687,6 @@ func (recv *SubprocessLauncher) Unsetenv(variable string) {
 
 	return
 }
-
-// Unsupported : g_task_new : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
-
-// Unsupported : g_themed_icon_new_from_names : unsupported parameter iconnames :
 
 // InvokeRequestCertificate is a wrapper around the C function g_tls_interaction_invoke_request_certificate.
 func (recv *TlsInteraction) InvokeRequestCertificate(connection *TlsConnection, flags TlsCertificateRequestFlags, cancellable *Cancellable) (TlsInteractionResult, error) {

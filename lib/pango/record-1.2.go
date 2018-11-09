@@ -48,5 +48,3 @@ func (recv *GlyphItem) Split(text string, splitIndex int32) *GlyphItem {
 
 	return retGo
 }
-
-// Unsupported : pango_tab_array_new_with_positions : unsupported parameter ... : varargs

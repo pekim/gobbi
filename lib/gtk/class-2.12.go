@@ -90,8 +90,6 @@ func (recv *Action) CreateMenu() *Widget {
 	return retGo
 }
 
-// Unsupported : gtk_app_chooser_dialog_new : unsupported parameter file : no type generator for Gio.File (GFile*) for param file
-
 // BuilderNew is a wrapper around the C function gtk_builder_new.
 func BuilderNew() *Builder {
 	retC := C.gtk_builder_new()
@@ -228,8 +226,6 @@ func (recv *Builder) ValueFromStringType(type_ gobject.Type, string string) (boo
 	return retGo, value, goThrowableError
 }
 
-// Unsupported : gtk_button_new_from_icon_name : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
-
 // Unsupported signal 'move-active' for ComboBox : unsupported parameter scroll_type : type ScrollType :
 
 type signalComboBoxPopdownDetail struct {
@@ -349,12 +345,6 @@ func combobox_popupHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
-// Unsupported : gtk_combo_box_new_with_model : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
-
-// Unsupported : gtk_combo_box_new_with_model_and_entry : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
-
-// Unsupported : gtk_dialog_new_with_buttons : unsupported parameter ... : varargs
-
 // GetCursorHadjustment is a wrapper around the C function gtk_entry_get_cursor_hadjustment.
 func (recv *Entry) GetCursorHadjustment() *Adjustment {
 	retC := C.gtk_entry_get_cursor_hadjustment((*C.GtkEntry)(recv.native))
@@ -462,10 +452,6 @@ func filechooserbutton_fileSetHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
-// Unsupported : gtk_file_chooser_dialog_new : unsupported parameter ... : varargs
-
-// Unsupported : gtk_file_filter_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
-
 // Unsupported : gtk_icon_theme_choose_icon : unsupported parameter icon_names :
 
 // ListContexts is a wrapper around the C function gtk_icon_theme_list_contexts.
@@ -475,8 +461,6 @@ func (recv *IconTheme) ListContexts() *glib.List {
 
 	return retGo
 }
-
-// Unsupported : gtk_icon_view_new_with_model : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
 
 // ConvertWidgetToBinWindowCoords is a wrapper around the C function gtk_icon_view_convert_widget_to_bin_window_coords.
 func (recv *IconView) ConvertWidgetToBinWindowCoords(wx int32, wy int32) (int32, int32) {
@@ -540,18 +524,6 @@ func (recv *IconView) SetTooltipItem(tooltip *Tooltip, path *TreePath) {
 	return
 }
 
-// Unsupported : gtk_image_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon (GIcon*) for param icon
-
-// Unsupported : gtk_image_new_from_icon_name : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
-
-// Unsupported : gtk_image_new_from_icon_set : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
-
-// Unsupported : gtk_image_new_from_stock : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
-
-// Unsupported : gtk_info_bar_new_with_buttons : unsupported parameter ... : varargs
-
-// Unsupported : gtk_list_store_new : unsupported parameter ... : varargs
-
 // Unsupported : gtk_list_store_set_valuesv : unsupported parameter values :
 
 // Unsupported signal 'move-selected' for MenuShell : unsupported parameter distance : type gint :
@@ -576,10 +548,6 @@ func (recv *MenuToolButton) SetArrowTooltipText(text string) {
 	return
 }
 
-// Unsupported : gtk_message_dialog_new : unsupported parameter ... : varargs
-
-// Unsupported : gtk_message_dialog_new_with_markup : unsupported parameter ... : varargs
-
 // Unsupported signal 'create-window' for Notebook : unsupported parameter x : type gint :
 
 // PageSetupNewFromFile is a wrapper around the C function gtk_page_setup_new_from_file.
@@ -599,8 +567,6 @@ func PageSetupNewFromFile(fileName string) (*PageSetup, error) {
 
 	return retGo, goThrowableError
 }
-
-// Unsupported : gtk_page_setup_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
 
 // PageSetupNewFromKeyFile is a wrapper around the C function gtk_page_setup_new_from_key_file.
 func PageSetupNewFromKeyFile(keyFile *glib.KeyFile, groupName string) (*PageSetup, error) {
@@ -669,8 +635,6 @@ func PrintSettingsNewFromFile(fileName string) (*PrintSettings, error) {
 
 	return retGo, goThrowableError
 }
-
-// Unsupported : gtk_print_settings_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
 
 // PrintSettingsNewFromKeyFile is a wrapper around the C function gtk_print_settings_new_from_key_file.
 func PrintSettingsNewFromKeyFile(keyFile *glib.KeyFile, groupName string) (*PrintSettings, error) {
@@ -835,10 +799,6 @@ func (recv *RecentAction) SetShowNumbers(showNumbers bool) {
 	return
 }
 
-// Unsupported : gtk_recent_chooser_dialog_new : unsupported parameter ... : varargs
-
-// Unsupported : gtk_recent_chooser_dialog_new_for_manager : unsupported parameter ... : varargs
-
 type signalScaleButtonPopdownDetail struct {
 	callback  ScaleButtonSignalPopdownCallback
 	handlerID C.gulong
@@ -993,8 +953,6 @@ func (recv *ScaleButton) SetValue(value float64) {
 	return
 }
 
-// Unsupported : gtk_status_icon_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon (GIcon*) for param icon
-
 // GetScreen is a wrapper around the C function gtk_status_icon_get_screen.
 func (recv *StatusIcon) GetScreen() *gdk.Screen {
 	retC := C.gtk_status_icon_get_screen((*C.GtkStatusIcon)(recv.native))
@@ -1099,11 +1057,7 @@ func (recv *Tooltip) SetText(text string) {
 
 // Unsupported : gtk_tooltip_set_tip_area : unsupported parameter rect : Blacklisted record : GdkRectangle
 
-// Unsupported : gtk_tree_store_new : unsupported parameter ... : varargs
-
 // Unsupported : gtk_tree_store_set_valuesv : unsupported parameter values :
-
-// Unsupported : gtk_tree_view_new_with_model : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
 
 // ConvertBinWindowToTreeCoords is a wrapper around the C function gtk_tree_view_convert_bin_window_to_tree_coords.
 func (recv *TreeView) ConvertBinWindowToTreeCoords(bx int32, by int32) (int32, int32) {
@@ -1307,8 +1261,6 @@ func (recv *TreeView) SetTooltipRow(tooltip *Tooltip, path *TreePath) {
 	return
 }
 
-// Unsupported : gtk_tree_view_column_new_with_attributes : unsupported parameter ... : varargs
-
 // GetTreeView is a wrapper around the C function gtk_tree_view_column_get_tree_view.
 func (recv *TreeViewColumn) GetTreeView() *Widget {
 	retC := C.gtk_tree_view_column_get_tree_view((*C.GtkTreeViewColumn)(recv.native))
@@ -1335,8 +1287,6 @@ func VolumeButtonNew() *VolumeButton {
 // Unsupported signal 'keynav-failed' for Widget : unsupported parameter direction : type DirectionType :
 
 // Unsupported signal 'query-tooltip' for Widget : unsupported parameter x : type gint :
-
-// Unsupported : gtk_widget_new : unsupported parameter ... : varargs
 
 // ErrorBell is a wrapper around the C function gtk_widget_error_bell.
 func (recv *Widget) ErrorBell() {

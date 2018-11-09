@@ -48,10 +48,6 @@ func (recv *ApplicationCommandLine) GetStdin() *InputStream {
 	return retGo
 }
 
-// Unsupported : g_converter_input_stream_new : unsupported parameter converter : no type generator for Converter (GConverter*) for param converter
-
-// Unsupported : g_converter_output_stream_new : unsupported parameter converter : no type generator for Converter (GConverter*) for param converter
-
 // AllowMechanism is a wrapper around the C function g_dbus_auth_observer_allow_mechanism.
 func (recv *DBusAuthObserver) AllowMechanism(mechanism string) bool {
 	c_mechanism := C.CString(mechanism)
@@ -63,10 +59,6 @@ func (recv *DBusAuthObserver) AllowMechanism(mechanism string) bool {
 	return retGo
 }
 
-// Unsupported : g_dbus_connection_new_finish : unsupported parameter res : no type generator for AsyncResult (GAsyncResult*) for param res
-
-// Unsupported : g_dbus_connection_new_for_address_finish : unsupported parameter res : no type generator for AsyncResult (GAsyncResult*) for param res
-
 // GetLastSerial is a wrapper around the C function g_dbus_connection_get_last_serial.
 func (recv *DBusConnection) GetLastSerial() uint32 {
 	retC := C.g_dbus_connection_get_last_serial((*C.GDBusConnection)(recv.native))
@@ -74,14 +66,6 @@ func (recv *DBusConnection) GetLastSerial() uint32 {
 
 	return retGo
 }
-
-// Unsupported : g_dbus_object_manager_client_new_finish : unsupported parameter res : no type generator for AsyncResult (GAsyncResult*) for param res
-
-// Unsupported : g_dbus_object_manager_client_new_for_bus_finish : unsupported parameter res : no type generator for AsyncResult (GAsyncResult*) for param res
-
-// Unsupported : g_dbus_object_manager_client_new_for_bus_sync : unsupported parameter get_proxy_type_func : no type generator for DBusProxyTypeFunc (GDBusProxyTypeFunc) for param get_proxy_type_func
-
-// Unsupported : g_dbus_object_manager_client_new_sync : unsupported parameter get_proxy_type_func : no type generator for DBusProxyTypeFunc (GDBusProxyTypeFunc) for param get_proxy_type_func
 
 // IsExported is a wrapper around the C function g_dbus_object_manager_server_is_exported.
 func (recv *DBusObjectManagerServer) IsExported(object *DBusObjectSkeleton) bool {
@@ -93,10 +77,6 @@ func (recv *DBusObjectManagerServer) IsExported(object *DBusObjectSkeleton) bool
 	return retGo
 }
 
-// Unsupported : g_dbus_proxy_new_finish : unsupported parameter res : no type generator for AsyncResult (GAsyncResult*) for param res
-
-// Unsupported : g_dbus_proxy_new_for_bus_finish : unsupported parameter res : no type generator for AsyncResult (GAsyncResult*) for param res
-
 // GetStartupWmClass is a wrapper around the C function g_desktop_app_info_get_startup_wm_class.
 func (recv *DesktopAppInfo) GetStartupWmClass() string {
 	retC := C.g_desktop_app_info_get_startup_wm_class((*C.GDesktopAppInfo)(recv.native))
@@ -104,14 +84,6 @@ func (recv *DesktopAppInfo) GetStartupWmClass() string {
 
 	return retGo
 }
-
-// Unsupported : g_emblem_new : unsupported parameter icon : no type generator for Icon (GIcon*) for param icon
-
-// Unsupported : g_emblem_new_with_origin : unsupported parameter icon : no type generator for Icon (GIcon*) for param icon
-
-// Unsupported : g_emblemed_icon_new : unsupported parameter icon : no type generator for Icon (GIcon*) for param icon
-
-// Unsupported : g_file_icon_new : unsupported parameter file : no type generator for File (GFile*) for param file
 
 // Unsupported : g_file_info_get_symbolic_icon : no return generator
 
@@ -150,8 +122,6 @@ func MemoryInputStreamNewFromBytes(bytes *glib.Bytes) *MemoryInputStream {
 	return retGo
 }
 
-// Unsupported : g_memory_input_stream_new_from_data : unsupported parameter destroy : no type generator for GLib.DestroyNotify (GDestroyNotify) for param destroy
-
 // AddBytes is a wrapper around the C function g_memory_input_stream_add_bytes.
 func (recv *MemoryInputStream) AddBytes(bytes *glib.Bytes) {
 	c_bytes := (*C.GBytes)(bytes.ToC())
@@ -160,8 +130,6 @@ func (recv *MemoryInputStream) AddBytes(bytes *glib.Bytes) {
 
 	return
 }
-
-// Unsupported : g_memory_output_stream_new : unsupported parameter realloc_function : no type generator for ReallocFunc (GReallocFunc) for param realloc_function
 
 // StealAsBytes is a wrapper around the C function g_memory_output_stream_steal_as_bytes.
 func (recv *MemoryOutputStream) StealAsBytes() *glib.Bytes {
@@ -241,20 +209,6 @@ func (recv *Resolver) LookupRecords(rrname string, recordType ResolverRecordType
 // Unsupported : g_resolver_lookup_records_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
 // Unsupported : g_resolver_lookup_records_finish : unsupported parameter result : no type generator for AsyncResult (GAsyncResult*) for param result
-
-// Unsupported : g_simple_action_new : unsupported parameter parameter_type : Blacklisted record : GVariantType
-
-// Unsupported : g_simple_action_new_stateful : unsupported parameter parameter_type : Blacklisted record : GVariantType
-
-// Unsupported : g_simple_async_result_new : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
-
-// Unsupported : g_simple_async_result_new_error : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
-
-// Unsupported : g_simple_async_result_new_from_error : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
-
-// Unsupported : g_simple_async_result_new_take_error : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
-
-// Unsupported : g_task_new : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
 // TestDBus is a wrapper around the C record GTestDBus.
 type TestDBus struct {
@@ -344,8 +298,6 @@ func (recv *TestDBus) Up() {
 
 	return
 }
-
-// Unsupported : g_themed_icon_new_from_names : unsupported parameter iconnames :
 
 // IsSame is a wrapper around the C function g_tls_certificate_is_same.
 func (recv *TlsCertificate) IsSame(certTwo *TlsCertificate) bool {

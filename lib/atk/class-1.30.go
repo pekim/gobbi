@@ -19,8 +19,6 @@ func (recv *Plug) GetId() string {
 	return retGo
 }
 
-// Unsupported : atk_relation_new : unsupported parameter targets :
-
 // Embed is a wrapper around the C function atk_socket_embed.
 func (recv *Socket) Embed(plugId string) {
 	c_plug_id := C.CString(plugId)

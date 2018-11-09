@@ -23,10 +23,6 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : g_converter_input_stream_new : unsupported parameter converter : no type generator for Converter (GConverter*) for param converter
-
-// Unsupported : g_converter_output_stream_new : unsupported parameter converter : no type generator for Converter (GConverter*) for param converter
-
 // DesktopAppInfoNewFromKeyfile is a wrapper around the C function g_desktop_app_info_new_from_keyfile.
 func DesktopAppInfoNewFromKeyfile(keyFile *glib.KeyFile) *DesktopAppInfo {
 	c_key_file := (*C.GKeyFile)(keyFile.ToC())
@@ -74,12 +70,6 @@ func (recv *EmblemedIcon) GetEmblems() *glib.List {
 
 // Unsupported : g_file_enumerator_get_container : no return generator
 
-// Unsupported : g_file_icon_new : unsupported parameter file : no type generator for File (GFile*) for param file
-
-// Unsupported : g_memory_input_stream_new_from_data : unsupported parameter destroy : no type generator for GLib.DestroyNotify (GDestroyNotify) for param destroy
-
-// Unsupported : g_memory_output_stream_new : unsupported parameter realloc_function : no type generator for ReallocFunc (GReallocFunc) for param realloc_function
-
 // GetDataSize is a wrapper around the C function g_memory_output_stream_get_data_size.
 func (recv *MemoryOutputStream) GetDataSize() uint64 {
 	retC := C.g_memory_output_stream_get_data_size((*C.GMemoryOutputStream)(recv.native))
@@ -87,22 +77,6 @@ func (recv *MemoryOutputStream) GetDataSize() uint64 {
 
 	return retGo
 }
-
-// Unsupported : g_simple_action_new : unsupported parameter parameter_type : Blacklisted record : GVariantType
-
-// Unsupported : g_simple_action_new_stateful : unsupported parameter parameter_type : Blacklisted record : GVariantType
-
-// Unsupported : g_simple_async_result_new : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
-
-// Unsupported : g_simple_async_result_new_error : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
-
-// Unsupported : g_simple_async_result_new_from_error : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
-
-// Unsupported : g_simple_async_result_new_take_error : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
-
-// Unsupported : g_task_new : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
-
-// Unsupported : g_themed_icon_new_from_names : unsupported parameter iconnames :
 
 // PrependName is a wrapper around the C function g_themed_icon_prepend_name.
 func (recv *ThemedIcon) PrependName(iconname string) {

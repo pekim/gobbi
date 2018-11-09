@@ -53,16 +53,6 @@ func (recv *Action) GetAccelClosure() *gobject.Closure {
 	return retGo
 }
 
-// Unsupported : gtk_app_chooser_dialog_new : unsupported parameter file : no type generator for Gio.File (GFile*) for param file
-
-// Unsupported : gtk_button_new_from_icon_name : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
-
-// Unsupported : gtk_combo_box_new_with_model : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
-
-// Unsupported : gtk_combo_box_new_with_model_and_entry : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
-
-// Unsupported : gtk_dialog_new_with_buttons : unsupported parameter ... : varargs
-
 // GetResponseForWidget is a wrapper around the C function gtk_dialog_get_response_for_widget.
 func (recv *Dialog) GetResponseForWidget(widget *Widget) int32 {
 	c_widget := (*C.GtkWidget)(widget.ToC())
@@ -108,12 +98,6 @@ func (recv *EntryCompletion) SetPopupSingleMatch(popupSingleMatch bool) {
 
 	return
 }
-
-// Unsupported : gtk_file_chooser_dialog_new : unsupported parameter ... : varargs
-
-// Unsupported : gtk_file_filter_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
-
-// Unsupported : gtk_icon_view_new_with_model : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
 
 // CreateDragIcon is a wrapper around the C function gtk_icon_view_create_drag_icon.
 func (recv *IconView) CreateDragIcon(path *TreePath) *cairo.Surface {
@@ -212,24 +196,12 @@ func (recv *IconView) UnsetModelDragSource() {
 	return
 }
 
-// Unsupported : gtk_image_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon (GIcon*) for param icon
-
-// Unsupported : gtk_image_new_from_icon_name : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
-
-// Unsupported : gtk_image_new_from_icon_set : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
-
-// Unsupported : gtk_image_new_from_stock : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
-
 // Clear is a wrapper around the C function gtk_image_clear.
 func (recv *Image) Clear() {
 	C.gtk_image_clear((*C.GtkImage)(recv.native))
 
 	return
 }
-
-// Unsupported : gtk_info_bar_new_with_buttons : unsupported parameter ... : varargs
-
-// Unsupported : gtk_list_store_new : unsupported parameter ... : varargs
 
 // GetChildPackDirection is a wrapper around the C function gtk_menu_bar_get_child_pack_direction.
 func (recv *MenuBar) GetChildPackDirection() PackDirection {
@@ -283,20 +255,6 @@ func (recv *MenuShell) SetTakeFocus(takeFocus bool) {
 	return
 }
 
-// Unsupported : gtk_message_dialog_new : unsupported parameter ... : varargs
-
-// Unsupported : gtk_message_dialog_new_with_markup : unsupported parameter ... : varargs
-
-// Unsupported : gtk_page_setup_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
-
-// Unsupported : gtk_print_settings_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
-
-// Unsupported : gtk_recent_chooser_dialog_new : unsupported parameter ... : varargs
-
-// Unsupported : gtk_recent_chooser_dialog_new_for_manager : unsupported parameter ... : varargs
-
-// Unsupported : gtk_scale_button_new : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
-
 // GetHscrollbar is a wrapper around the C function gtk_scrolled_window_get_hscrollbar.
 func (recv *ScrolledWindow) GetHscrollbar() *Widget {
 	retC := C.gtk_scrolled_window_get_hscrollbar((*C.GtkScrolledWindow)(recv.native))
@@ -331,8 +289,6 @@ func (recv *SizeGroup) SetIgnoreHidden(ignoreHidden bool) {
 	return
 }
 
-// Unsupported : gtk_status_icon_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon (GIcon*) for param icon
-
 // GetIconName is a wrapper around the C function gtk_tool_button_get_icon_name.
 func (recv *ToolButton) GetIconName() string {
 	retC := C.gtk_tool_button_get_icon_name((*C.GtkToolButton)(recv.native))
@@ -351,13 +307,7 @@ func (recv *ToolButton) SetIconName(iconName string) {
 	return
 }
 
-// Unsupported : gtk_tree_store_new : unsupported parameter ... : varargs
-
-// Unsupported : gtk_tree_view_new_with_model : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
-
 // Unsupported : gtk_tree_view_get_visible_range : unsupported parameter start_path : record with indirection level of 2
-
-// Unsupported : gtk_tree_view_column_new_with_attributes : unsupported parameter ... : varargs
 
 // QueueResize is a wrapper around the C function gtk_tree_view_column_queue_resize.
 func (recv *TreeViewColumn) QueueResize() {
@@ -427,8 +377,6 @@ func widget_grabBrokenEventHandler(_ *C.GObject, c_event *C.GdkEventGrabBroken, 
 		boolToGboolean(retGo)
 	return retC
 }
-
-// Unsupported : gtk_widget_new : unsupported parameter ... : varargs
 
 // DragSourceSetIconName is a wrapper around the C function gtk_drag_source_set_icon_name.
 func (recv *Widget) DragSourceSetIconName(iconName string) {

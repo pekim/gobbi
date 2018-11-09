@@ -14,12 +14,6 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : gdk_pixbuf_new_from_data : unsupported parameter destroy_fn : no type generator for PixbufDestroyNotify (GdkPixbufDestroyNotify) for param destroy_fn
-
-// Unsupported : gdk_pixbuf_new_from_stream_finish : unsupported parameter async_result : no type generator for Gio.AsyncResult (GAsyncResult*) for param async_result
-
-// Unsupported : gdk_pixbuf_new_from_xpm_data : unsupported parameter data :
-
 // PixbufAnimationNewFromResource is a wrapper around the C function gdk_pixbuf_animation_new_from_resource.
 func PixbufAnimationNewFromResource(resourcePath string) (*PixbufAnimation, error) {
 	c_resource_path := C.CString(resourcePath)

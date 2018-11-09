@@ -781,10 +781,6 @@ func (recv *Alignment) SetPadding(paddingTop uint32, paddingBottom uint32, paddi
 	return
 }
 
-// Unsupported : gtk_app_chooser_dialog_new : unsupported parameter file : no type generator for Gio.File (GFile*) for param file
-
-// Unsupported : gtk_button_new_from_icon_name : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
-
 // GetAlignment is a wrapper around the C function gtk_button_get_alignment.
 func (recv *Button) GetAlignment() (float32, float32) {
 	var c_xalign C.gfloat
@@ -1150,8 +1146,6 @@ func ComboBoxNew() *ComboBox {
 
 // Unsupported : gtk_combo_box_new_with_model : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
 
-// Unsupported : gtk_combo_box_new_with_model_and_entry : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
-
 // GetActive is a wrapper around the C function gtk_combo_box_get_active.
 func (recv *ComboBox) GetActive() int32 {
 	retC := C.gtk_combo_box_get_active((*C.GtkComboBox)(recv.native))
@@ -1234,8 +1228,6 @@ func (recv *ComboBox) SetWrapWidth(width int32) {
 
 	return
 }
-
-// Unsupported : gtk_dialog_new_with_buttons : unsupported parameter ... : varargs
 
 // GetAlignment is a wrapper around the C function gtk_entry_get_alignment.
 func (recv *Entry) GetAlignment() float32 {
@@ -1551,8 +1543,6 @@ func FileFilterNew() *FileFilter {
 
 	return retGo
 }
-
-// Unsupported : gtk_file_filter_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
 
 // Unsupported : gtk_file_filter_add_custom : unsupported parameter func : no type generator for FileFilterFunc (GtkFileFilterFunc) for param func
 
@@ -2015,20 +2005,6 @@ func (recv *IconTheme) SetScreen(screen *gdk.Screen) {
 
 // Unsupported : gtk_icon_theme_set_search_path : unsupported parameter path :
 
-// Unsupported : gtk_icon_view_new_with_model : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
-
-// Unsupported : gtk_image_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon (GIcon*) for param icon
-
-// Unsupported : gtk_image_new_from_icon_name : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
-
-// Unsupported : gtk_image_new_from_icon_set : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
-
-// Unsupported : gtk_image_new_from_stock : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
-
-// Unsupported : gtk_info_bar_new_with_buttons : unsupported parameter ... : varargs
-
-// Unsupported : gtk_list_store_new : unsupported parameter ... : varargs
-
 // Attach is a wrapper around the C function gtk_menu_attach.
 func (recv *Menu) Attach(child *Widget, leftAttach uint32, rightAttach uint32, topAttach uint32, bottomAttach uint32) {
 	c_child := (*C.GtkWidget)(child.ToC())
@@ -2062,8 +2038,6 @@ func (recv *MenuShell) Cancel() {
 	return
 }
 
-// Unsupported : gtk_message_dialog_new : unsupported parameter ... : varargs
-
 // Unsupported : gtk_message_dialog_new_with_markup : unsupported parameter ... : varargs
 
 // SetMarkup is a wrapper around the C function gtk_message_dialog_set_markup.
@@ -2075,8 +2049,6 @@ func (recv *MessageDialog) SetMarkup(str string) {
 
 	return
 }
-
-// Unsupported : gtk_page_setup_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
 
 // GetChild1 is a wrapper around the C function gtk_paned_get_child1.
 func (recv *Paned) GetChild1() *Widget {
@@ -2103,8 +2075,6 @@ func (recv *Paned) GetChild2() *Widget {
 
 	return retGo
 }
-
-// Unsupported : gtk_print_settings_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
 
 type signalRadioActionChangedDetail struct {
 	callback  RadioActionSignalChangedCallback
@@ -2368,10 +2338,6 @@ func (recv *RadioToolButton) SetGroup(group *glib.SList) {
 	return
 }
 
-// Unsupported : gtk_recent_chooser_dialog_new : unsupported parameter ... : varargs
-
-// Unsupported : gtk_recent_chooser_dialog_new_for_manager : unsupported parameter ... : varargs
-
 // GetLayout is a wrapper around the C function gtk_scale_get_layout.
 func (recv *Scale) GetLayout() *pango.Layout {
 	retC := C.gtk_scale_get_layout((*C.GtkScale)(recv.native))
@@ -2400,8 +2366,6 @@ func (recv *Scale) GetLayoutOffsets() (int32, int32) {
 	return x, y
 }
 
-// Unsupported : gtk_scale_button_new : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
-
 // SeparatorToolItemNew is a wrapper around the C function gtk_separator_tool_item_new.
 func SeparatorToolItemNew() *SeparatorToolItem {
 	retC := C.gtk_separator_tool_item_new()
@@ -2427,8 +2391,6 @@ func (recv *SeparatorToolItem) SetDraw(draw bool) {
 
 	return
 }
-
-// Unsupported : gtk_status_icon_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon (GIcon*) for param icon
 
 type signalStyleRealizeDetail struct {
 	callback  StyleSignalRealizeCallback
@@ -3170,12 +3132,6 @@ func (recv *TreeModelFilter) SetVisibleColumn(column int32) {
 
 // Unsupported : gtk_tree_model_filter_set_visible_func : unsupported parameter func : no type generator for TreeModelFilterVisibleFunc (GtkTreeModelFilterVisibleFunc) for param func
 
-// Unsupported : gtk_tree_store_new : unsupported parameter ... : varargs
-
-// Unsupported : gtk_tree_view_new_with_model : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
-
-// Unsupported : gtk_tree_view_column_new_with_attributes : unsupported parameter ... : varargs
-
 // GetExpand is a wrapper around the C function gtk_tree_view_column_get_expand.
 func (recv *TreeViewColumn) GetExpand() bool {
 	retC := C.gtk_tree_view_column_get_expand((*C.GtkTreeViewColumn)(recv.native))
@@ -3737,8 +3693,6 @@ func (recv *UIManager) SetAddTearoffs(addTearoffs bool) {
 
 	return
 }
-
-// Unsupported : gtk_widget_new : unsupported parameter ... : varargs
 
 // AddMnemonicLabel is a wrapper around the C function gtk_widget_add_mnemonic_label.
 func (recv *Widget) AddMnemonicLabel(label *Widget) {

@@ -456,24 +456,6 @@ func (recv *Cancellable) SourceNew() *glib.Source {
 	return retGo
 }
 
-// Unsupported : g_converter_input_stream_new : unsupported parameter converter : no type generator for Converter (GConverter*) for param converter
-
-// Unsupported : g_converter_output_stream_new : unsupported parameter converter : no type generator for Converter (GConverter*) for param converter
-
-// Unsupported : g_dbus_connection_new_finish : unsupported parameter res : no type generator for AsyncResult (GAsyncResult*) for param res
-
-// Unsupported : g_dbus_connection_new_for_address_finish : unsupported parameter res : no type generator for AsyncResult (GAsyncResult*) for param res
-
-// Unsupported : g_dbus_proxy_new_finish : unsupported parameter res : no type generator for AsyncResult (GAsyncResult*) for param res
-
-// Unsupported : g_dbus_proxy_new_for_bus_finish : unsupported parameter res : no type generator for AsyncResult (GAsyncResult*) for param res
-
-// Unsupported : g_emblem_new : unsupported parameter icon : no type generator for Icon (GIcon*) for param icon
-
-// Unsupported : g_emblem_new_with_origin : unsupported parameter icon : no type generator for Icon (GIcon*) for param icon
-
-// Unsupported : g_emblemed_icon_new : unsupported parameter icon : no type generator for Icon (GIcon*) for param icon
-
 // ClearEmblems is a wrapper around the C function g_emblemed_icon_clear_emblems.
 func (recv *EmblemedIcon) ClearEmblems() {
 	C.g_emblemed_icon_clear_emblems((*C.GEmblemedIcon)(recv.native))
@@ -481,13 +463,7 @@ func (recv *EmblemedIcon) ClearEmblems() {
 	return
 }
 
-// Unsupported : g_file_icon_new : unsupported parameter file : no type generator for File (GFile*) for param file
-
 // Unsupported : g_io_stream_splice_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
-
-// Unsupported : g_memory_input_stream_new_from_data : unsupported parameter destroy : no type generator for GLib.DestroyNotify (GDestroyNotify) for param destroy
-
-// Unsupported : g_memory_output_stream_new : unsupported parameter realloc_function : no type generator for ReallocFunc (GReallocFunc) for param realloc_function
 
 // Unsupported : g_settings_get_range : return type : Blacklisted record : GVariant
 
@@ -565,12 +541,6 @@ func (recv *SimpleActionGroup) Remove(actionName string) {
 	return
 }
 
-// Unsupported : g_simple_async_result_new : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
-
-// Unsupported : g_simple_async_result_new_error : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
-
-// Unsupported : g_simple_async_result_new_from_error : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
-
 // Unsupported : g_simple_async_result_new_take_error : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
 // TakeError is a wrapper around the C function g_simple_async_result_take_error.
@@ -617,8 +587,6 @@ func (recv *SocketClient) SetTlsValidationFlags(flags TlsCertificateFlags) {
 	return
 }
 
-// Unsupported : g_task_new : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
-
 // TcpWrapperConnectionNew is a wrapper around the C function g_tcp_wrapper_connection_new.
 func TcpWrapperConnectionNew(baseIoStream *IOStream, socket *Socket) *TcpWrapperConnection {
 	c_base_io_stream := (*C.GIOStream)(baseIoStream.ToC())
@@ -630,8 +598,6 @@ func TcpWrapperConnectionNew(baseIoStream *IOStream, socket *Socket) *TcpWrapper
 
 	return retGo
 }
-
-// Unsupported : g_themed_icon_new_from_names : unsupported parameter iconnames :
 
 // TlsCertificate is a wrapper around the C record GTlsCertificate.
 type TlsCertificate struct {

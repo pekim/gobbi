@@ -15,5 +15,3 @@ func (recv *Object) GetObjectLocale() string {
 
 	return retGo
 }
-
-// Unsupported : atk_relation_new : unsupported parameter targets :

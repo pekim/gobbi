@@ -249,10 +249,6 @@ func (recv *ActionGroup) TranslateString(string string) string {
 	return retGo
 }
 
-// Unsupported : gtk_app_chooser_dialog_new : unsupported parameter file : no type generator for Gio.File (GFile*) for param file
-
-// Unsupported : gtk_button_new_from_icon_name : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
-
 // GetImage is a wrapper around the C function gtk_button_get_image.
 func (recv *Button) GetImage() *Widget {
 	retC := C.gtk_button_get_image((*C.GtkButton)(recv.native))
@@ -504,10 +500,6 @@ func (recv *Clipboard) WaitIsImageAvailable() bool {
 
 // Unsupported : gtk_clipboard_wait_is_target_available : unsupported parameter target : Blacklisted record : GdkAtom
 
-// Unsupported : gtk_combo_box_new_with_model : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
-
-// Unsupported : gtk_combo_box_new_with_model_and_entry : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
-
 // GetColumnSpanColumn is a wrapper around the C function gtk_combo_box_get_column_span_column.
 func (recv *ComboBox) GetColumnSpanColumn() int32 {
 	retC := C.gtk_combo_box_get_column_span_column((*C.GtkComboBox)(recv.native))
@@ -571,8 +563,6 @@ func (recv *ComboBox) SetFocusOnClick(focusOnClick bool) {
 }
 
 // Unsupported : gtk_combo_box_set_row_separator_func : unsupported parameter func : no type generator for TreeViewRowSeparatorFunc (GtkTreeViewRowSeparatorFunc) for param func
-
-// Unsupported : gtk_dialog_new_with_buttons : unsupported parameter ... : varargs
 
 // Unsupported : gtk_dialog_set_alternative_button_order : unsupported parameter ... : varargs
 
@@ -697,10 +687,6 @@ func (recv *FileChooserButton) SetWidthChars(nChars int32) {
 
 	return
 }
-
-// Unsupported : gtk_file_chooser_dialog_new : unsupported parameter ... : varargs
-
-// Unsupported : gtk_file_filter_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
 
 // AddPixbufFormats is a wrapper around the C function gtk_file_filter_add_pixbuf_formats.
 func (recv *FileFilter) AddPixbufFormats() {
@@ -990,13 +976,7 @@ func (recv *IconView) UnselectPath(path *TreePath) {
 	return
 }
 
-// Unsupported : gtk_image_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon (GIcon*) for param icon
-
 // Unsupported : gtk_image_new_from_icon_name : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
-
-// Unsupported : gtk_image_new_from_icon_set : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
-
-// Unsupported : gtk_image_new_from_stock : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
 
 // Unsupported : gtk_image_get_icon_name : unsupported parameter size : no type generator for gint (GtkIconSize*) for param size
 
@@ -1018,8 +998,6 @@ func (recv *Image) SetPixelSize(pixelSize int32) {
 
 	return
 }
-
-// Unsupported : gtk_info_bar_new_with_buttons : unsupported parameter ... : varargs
 
 // GetAngle is a wrapper around the C function gtk_label_get_angle.
 func (recv *Label) GetAngle() float64 {
@@ -1107,8 +1085,6 @@ func (recv *Label) SetWidthChars(nChars int32) {
 	return
 }
 
-// Unsupported : gtk_list_store_new : unsupported parameter ... : varargs
-
 // Unsupported : gtk_list_store_insert_with_values : unsupported parameter ... : varargs
 
 // Unsupported : gtk_list_store_insert_with_valuesv : unsupported parameter values :
@@ -1154,17 +1130,9 @@ func (recv *MenuToolButton) SetMenu(menu *Widget) {
 	return
 }
 
-// Unsupported : gtk_message_dialog_new : unsupported parameter ... : varargs
-
-// Unsupported : gtk_message_dialog_new_with_markup : unsupported parameter ... : varargs
-
 // Unsupported : gtk_message_dialog_format_secondary_markup : unsupported parameter ... : varargs
 
 // Unsupported : gtk_message_dialog_format_secondary_text : unsupported parameter ... : varargs
-
-// Unsupported : gtk_page_setup_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
-
-// Unsupported : gtk_print_settings_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
 
 // GetEllipsize is a wrapper around the C function gtk_progress_bar_get_ellipsize.
 func (recv *ProgressBar) GetEllipsize() pango.EllipsizeMode {
@@ -1184,14 +1152,6 @@ func (recv *ProgressBar) SetEllipsize(mode pango.EllipsizeMode) {
 }
 
 // Unsupported signal 'change-value' for Range : unsupported parameter scroll : type ScrollType :
-
-// Unsupported : gtk_recent_chooser_dialog_new : unsupported parameter ... : varargs
-
-// Unsupported : gtk_recent_chooser_dialog_new_for_manager : unsupported parameter ... : varargs
-
-// Unsupported : gtk_scale_button_new : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
-
-// Unsupported : gtk_status_icon_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon (GIcon*) for param icon
 
 // Backspace is a wrapper around the C function gtk_text_buffer_backspace.
 func (recv *TextBuffer) Backspace(iter *TextIter, interactive bool, defaultEditable bool) bool {
@@ -1234,10 +1194,6 @@ func (recv *ToolItem) RebuildMenu() {
 
 	return
 }
-
-// Unsupported : gtk_tree_store_new : unsupported parameter ... : varargs
-
-// Unsupported : gtk_tree_view_new_with_model : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
 
 // GetFixedHeightMode is a wrapper around the C function gtk_tree_view_get_fixed_height_mode.
 func (recv *TreeView) GetFixedHeightMode() bool {
@@ -1296,10 +1252,6 @@ func (recv *TreeView) SetHoverSelection(hover bool) {
 }
 
 // Unsupported : gtk_tree_view_set_row_separator_func : unsupported parameter func : no type generator for TreeViewRowSeparatorFunc (GtkTreeViewRowSeparatorFunc) for param func
-
-// Unsupported : gtk_tree_view_column_new_with_attributes : unsupported parameter ... : varargs
-
-// Unsupported : gtk_widget_new : unsupported parameter ... : varargs
 
 // DragDestAddImageTargets is a wrapper around the C function gtk_drag_dest_add_image_targets.
 func (recv *Widget) DragDestAddImageTargets() {

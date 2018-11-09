@@ -15,19 +15,7 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : gtk_app_chooser_dialog_new : unsupported parameter file : no type generator for Gio.File (GFile*) for param file
-
-// Unsupported : gtk_button_new_from_icon_name : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
-
 // Unsupported : gtk_clipboard_get_selection : return type : Blacklisted record : GdkAtom
-
-// Unsupported : gtk_combo_box_new_with_model : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
-
-// Unsupported : gtk_combo_box_new_with_model_and_entry : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
-
-// Unsupported : gtk_dialog_new_with_buttons : unsupported parameter ... : varargs
-
-// Unsupported : gtk_file_chooser_dialog_new : unsupported parameter ... : varargs
 
 // Unsupported : gtk_file_filter_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
 
@@ -51,20 +39,6 @@ func (recv *GLArea) SetUseEs(useEs bool) {
 	return
 }
 
-// Unsupported : gtk_icon_view_new_with_model : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
-
-// Unsupported : gtk_image_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon (GIcon*) for param icon
-
-// Unsupported : gtk_image_new_from_icon_name : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
-
-// Unsupported : gtk_image_new_from_icon_set : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
-
-// Unsupported : gtk_image_new_from_stock : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
-
-// Unsupported : gtk_info_bar_new_with_buttons : unsupported parameter ... : varargs
-
-// Unsupported : gtk_list_store_new : unsupported parameter ... : varargs
-
 // Unsupported signal 'popped-up' for Menu : unsupported parameter flipped_rect : type gpointer :
 
 // PlaceOnMonitor is a wrapper around the C function gtk_menu_place_on_monitor.
@@ -81,10 +55,6 @@ func (recv *Menu) PlaceOnMonitor(monitor *gdk.Monitor) {
 // Unsupported : gtk_menu_popup_at_rect : unsupported parameter rect : Blacklisted record : GdkRectangle
 
 // Unsupported : gtk_menu_popup_at_widget : unsupported parameter trigger_event : no type generator for Gdk.Event (const GdkEvent*) for param trigger_event
-
-// Unsupported : gtk_message_dialog_new : unsupported parameter ... : varargs
-
-// Unsupported : gtk_message_dialog_new_with_markup : unsupported parameter ... : varargs
 
 // Unsupported : gtk_pad_controller_new : unsupported parameter group : no type generator for Gio.ActionGroup (GActionGroup*) for param group
 
@@ -130,12 +100,6 @@ func (recv *Popover) Popup() {
 // Unsupported : gtk_print_settings_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
 
 // Unsupported : gtk_print_settings_to_gvariant : return type : Blacklisted record : GVariant
-
-// Unsupported : gtk_recent_chooser_dialog_new : unsupported parameter ... : varargs
-
-// Unsupported : gtk_recent_chooser_dialog_new_for_manager : unsupported parameter ... : varargs
-
-// Unsupported : gtk_scale_button_new : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
 
 // GetMaxContentHeight is a wrapper around the C function gtk_scrolled_window_get_max_content_height.
 func (recv *ScrolledWindow) GetMaxContentHeight() int32 {
@@ -253,13 +217,3 @@ func (recv *ShortcutLabel) SetDisabledText(disabledText string) {
 
 	return
 }
-
-// Unsupported : gtk_status_icon_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon (GIcon*) for param icon
-
-// Unsupported : gtk_tree_store_new : unsupported parameter ... : varargs
-
-// Unsupported : gtk_tree_view_new_with_model : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
-
-// Unsupported : gtk_tree_view_column_new_with_attributes : unsupported parameter ... : varargs
-
-// Unsupported : gtk_widget_new : unsupported parameter ... : varargs

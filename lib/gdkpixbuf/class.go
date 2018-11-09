@@ -126,8 +126,6 @@ func PixbufNewFromInline(data []uint8, copyPixels bool) (*Pixbuf, error) {
 	return retGo, goThrowableError
 }
 
-// Unsupported : gdk_pixbuf_new_from_stream_finish : unsupported parameter async_result : no type generator for Gio.AsyncResult (GAsyncResult*) for param async_result
-
 // Unsupported : gdk_pixbuf_new_from_xpm_data : unsupported parameter data :
 
 // AddAlpha is a wrapper around the C function gdk_pixbuf_add_alpha.
@@ -493,8 +491,6 @@ func PixbufAnimationNewFromFile(filename string) (*PixbufAnimation, error) {
 
 	return retGo, goThrowableError
 }
-
-// Unsupported : gdk_pixbuf_animation_new_from_stream_finish : unsupported parameter async_result : no type generator for Gio.AsyncResult (GAsyncResult*) for param async_result
 
 // GetHeight is a wrapper around the C function gdk_pixbuf_animation_get_height.
 func (recv *PixbufAnimation) GetHeight() int32 {

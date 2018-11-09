@@ -88,10 +88,6 @@ func (recv *Checksum) Update(data []uint8) {
 	return
 }
 
-// Unsupported : g_error_new : unsupported parameter ... : varargs
-
-// Unsupported : g_error_new_valist : unsupported parameter args : no type generator for va_list (va_list) for param args
-
 // GetHashTable is a wrapper around the C function g_hash_table_iter_get_hash_table.
 func (recv *HashTableIter) GetHashTable() *HashTable {
 	retC := C.g_hash_table_iter_get_hash_table((*C.GHashTableIter)(recv.native))
@@ -139,8 +135,6 @@ func (recv *HashTableIter) Steal() {
 	return
 }
 
-// Unsupported : g_markup_parse_context_new : unsupported parameter user_data_dnotify : no type generator for DestroyNotify (GDestroyNotify) for param user_data_dnotify
-
 // GetElementStack is a wrapper around the C function g_markup_parse_context_get_element_stack.
 func (recv *MarkupParseContext) GetElementStack() *SList {
 	retC := C.g_markup_parse_context_get_element_stack((*C.GMarkupParseContext)(recv.native))
@@ -148,8 +142,6 @@ func (recv *MarkupParseContext) GetElementStack() *SList {
 
 	return retGo
 }
-
-// Unsupported : g_option_group_new : unsupported parameter destroy : no type generator for DestroyNotify (GDestroyNotify) for param destroy
 
 // AppendUriEscaped is a wrapper around the C function g_string_append_uri_escaped.
 func (recv *String) AppendUriEscaped(unescaped string, reservedCharsAllowed string, allowUtf8 bool) *String {
@@ -185,9 +177,3 @@ func (recv *TestSuite) AddSuite(nestedsuite *TestSuite) {
 
 	return
 }
-
-// Unsupported : g_thread_new : unsupported parameter func : no type generator for ThreadFunc (GThreadFunc) for param func
-
-// Unsupported : g_thread_try_new : unsupported parameter func : no type generator for ThreadFunc (GThreadFunc) for param func
-
-// Unsupported : g_variant_builder_new : unsupported parameter type : Blacklisted record : GVariantType

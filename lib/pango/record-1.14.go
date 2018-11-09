@@ -7,5 +7,3 @@ package pango
 // #include <pango/pango.h>
 // #include <stdlib.h>
 import "C"
-
-// Unsupported : pango_tab_array_new_with_positions : unsupported parameter ... : varargs

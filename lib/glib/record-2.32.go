@@ -156,10 +156,6 @@ func (recv *Cond) Init() {
 
 // Unsupported : g_cond_wait_until : unsupported parameter mutex : no type generator for Mutex (GMutex*) for param mutex
 
-// Unsupported : g_error_new : unsupported parameter ... : varargs
-
-// Unsupported : g_error_new_valist : unsupported parameter args : no type generator for va_list (va_list) for param args
-
 // Ref is a wrapper around the C function g_key_file_ref.
 func (recv *KeyFile) Ref() *KeyFile {
 	retC := C.g_key_file_ref((*C.GKeyFile)(recv.native))
@@ -194,10 +190,6 @@ func MappedFileNewFromFd(fd int32, writable bool) (*MappedFile, error) {
 
 	return retGo, goThrowableError
 }
-
-// Unsupported : g_markup_parse_context_new : unsupported parameter user_data_dnotify : no type generator for DestroyNotify (GDestroyNotify) for param user_data_dnotify
-
-// Unsupported : g_option_group_new : unsupported parameter destroy : no type generator for DestroyNotify (GDestroyNotify) for param destroy
 
 // Replace is a wrapper around the C function g_private_replace.
 func (recv *Private) Replace(value uintptr) {
@@ -368,5 +360,3 @@ func (recv *Thread) Unref() {
 
 	return
 }
-
-// Unsupported : g_variant_builder_new : unsupported parameter type : Blacklisted record : GVariantType

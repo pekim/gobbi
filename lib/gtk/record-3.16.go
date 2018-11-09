@@ -38,8 +38,6 @@ func (recv *GLAreaClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : gtk_paper_size_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
-
 // PaperSizeNewFromIpp is a wrapper around the C function gtk_paper_size_new_from_ipp.
 func PaperSizeNewFromIpp(ippName string, width float64, height float64) *PaperSize {
 	c_ipp_name := C.CString(ippName)
@@ -54,11 +52,3 @@ func PaperSizeNewFromIpp(ippName string, width float64, height float64) *PaperSi
 
 	return retGo
 }
-
-// Unsupported : gtk_target_list_new : unsupported parameter targets :
-
-// Unsupported : gtk_tree_path_new_from_indices : unsupported parameter ... : varargs
-
-// Unsupported : gtk_tree_row_reference_new : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
-
-// Unsupported : gtk_tree_row_reference_new_proxy : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model

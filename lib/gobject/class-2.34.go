@@ -8,14 +8,6 @@ package gobject
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : g_object_new : unsupported parameter ... : varargs
-
-// Unsupported : g_object_new_valist : unsupported parameter var_args : no type generator for va_list (va_list) for param var_args
-
-// Unsupported : g_object_new_with_properties : unsupported parameter names :
-
-// Unsupported : g_object_newv : unsupported parameter parameters :
-
 // Unsupported : g_object_dup_data : unsupported parameter dup_func : no type generator for GLib.DuplicateFunc (GDuplicateFunc) for param dup_func
 
 // Unsupported : g_object_dup_qdata : unsupported parameter dup_func : no type generator for GLib.DuplicateFunc (GDuplicateFunc) for param dup_func

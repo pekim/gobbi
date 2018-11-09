@@ -56,8 +56,6 @@ import (
 */
 import "C"
 
-// Unsupported : gtk_app_chooser_dialog_new : unsupported parameter file : no type generator for Gio.File (GFile*) for param file
-
 // GetBaselinePosition is a wrapper around the C function gtk_box_get_baseline_position.
 func (recv *Box) GetBaselinePosition() BaselinePosition {
 	retC := C.gtk_box_get_baseline_position((*C.GtkBox)(recv.native))
@@ -140,12 +138,6 @@ func (recv *Builder) SetApplication(application *Application) {
 
 // Unsupported : gtk_button_new_from_icon_name : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
 
-// Unsupported : gtk_combo_box_new_with_model : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
-
-// Unsupported : gtk_combo_box_new_with_model_and_entry : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
-
-// Unsupported : gtk_dialog_new_with_buttons : unsupported parameter ... : varargs
-
 // GetTabs is a wrapper around the C function gtk_entry_get_tabs.
 func (recv *Entry) GetTabs() *pango.TabArray {
 	retC := C.gtk_entry_get_tabs((*C.GtkEntry)(recv.native))
@@ -167,10 +159,6 @@ func (recv *Entry) SetTabs(tabs *pango.TabArray) {
 
 	return
 }
-
-// Unsupported : gtk_file_chooser_dialog_new : unsupported parameter ... : varargs
-
-// Unsupported : gtk_file_filter_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
 
 // GetBaselineRow is a wrapper around the C function gtk_grid_get_baseline_row.
 func (recv *Grid) GetBaselineRow() int32 {
@@ -441,16 +429,6 @@ func (recv *IconTheme) LookupIconForScale(iconName string, size int32, scale int
 	return retGo
 }
 
-// Unsupported : gtk_icon_view_new_with_model : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
-
-// Unsupported : gtk_image_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon (GIcon*) for param icon
-
-// Unsupported : gtk_image_new_from_icon_name : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
-
-// Unsupported : gtk_image_new_from_icon_set : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
-
-// Unsupported : gtk_image_new_from_stock : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
-
 // ImageNewFromSurface is a wrapper around the C function gtk_image_new_from_surface.
 func ImageNewFromSurface(surface *cairo.Surface) *Image {
 	c_surface := (*C.cairo_surface_t)(surface.ToC())
@@ -469,8 +447,6 @@ func (recv *Image) SetFromSurface(surface *cairo.Surface) {
 
 	return
 }
-
-// Unsupported : gtk_info_bar_new_with_buttons : unsupported parameter ... : varargs
 
 // GetShowCloseButton is a wrapper around the C function gtk_info_bar_get_show_close_button.
 func (recv *InfoBar) GetShowCloseButton() bool {
@@ -906,14 +882,6 @@ func (recv *ListBoxRow) SetHeader(header *Widget) {
 	return
 }
 
-// Unsupported : gtk_list_store_new : unsupported parameter ... : varargs
-
-// Unsupported : gtk_message_dialog_new : unsupported parameter ... : varargs
-
-// Unsupported : gtk_message_dialog_new_with_markup : unsupported parameter ... : varargs
-
-// Unsupported : gtk_page_setup_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
-
 // Unsupported signal 'drag-action-ask' for PlacesSidebar : unsupported parameter actions : type gint :
 
 // Unsupported signal 'drag-action-requested' for PlacesSidebar : unsupported parameter dest_file : no type generator for Gio.File,
@@ -997,12 +965,6 @@ func (recv *PlacesSidebar) SetShowDesktop(showDesktop bool) {
 	return
 }
 
-// Unsupported : gtk_print_settings_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
-
-// Unsupported : gtk_recent_chooser_dialog_new : unsupported parameter ... : varargs
-
-// Unsupported : gtk_recent_chooser_dialog_new_for_manager : unsupported parameter ... : varargs
-
 // RevealerNew is a wrapper around the C function gtk_revealer_new.
 func RevealerNew() *Revealer {
 	retC := C.gtk_revealer_new()
@@ -1070,8 +1032,6 @@ func (recv *Revealer) SetTransitionType(transition RevealerTransitionType) {
 
 	return
 }
-
-// Unsupported : gtk_scale_button_new : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
 
 // SearchBarNew is a wrapper around the C function gtk_search_bar_new.
 func SearchBarNew() *SearchBar {
@@ -1354,8 +1314,6 @@ func (recv *StackSwitcher) SetStack(stack *Stack) {
 	return
 }
 
-// Unsupported : gtk_status_icon_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon (GIcon*) for param icon
-
 // GetScale is a wrapper around the C function gtk_style_context_get_scale.
 func (recv *StyleContext) GetScale() int32 {
 	retC := C.gtk_style_context_get_scale((*C.GtkStyleContext)(recv.native))
@@ -1372,14 +1330,6 @@ func (recv *StyleContext) SetScale(scale int32) {
 
 	return
 }
-
-// Unsupported : gtk_tree_store_new : unsupported parameter ... : varargs
-
-// Unsupported : gtk_tree_view_new_with_model : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
-
-// Unsupported : gtk_tree_view_column_new_with_attributes : unsupported parameter ... : varargs
-
-// Unsupported : gtk_widget_new : unsupported parameter ... : varargs
 
 // Unsupported : gtk_drag_begin_with_coordinates : unsupported parameter event : no type generator for Gdk.Event (GdkEvent*) for param event
 

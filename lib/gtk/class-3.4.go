@@ -19,8 +19,6 @@ import "C"
 
 // Unsupported : gtk_about_dialog_add_credit_section : unsupported parameter people :
 
-// Unsupported : gtk_app_chooser_dialog_new : unsupported parameter file : no type generator for Gio.File (GFile*) for param file
-
 // Unsupported : gtk_application_add_accelerator : unsupported parameter parameter : Blacklisted record : GVariant
 
 // GetAppMenu is a wrapper around the C function gtk_application_get_app_menu.
@@ -146,8 +144,6 @@ func (recv *Builder) AddFromResource(resourcePath string) (uint32, error) {
 
 // Unsupported : gtk_builder_add_objects_from_resource : unsupported parameter object_ids :
 
-// Unsupported : gtk_button_new_from_icon_name : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
-
 // ColorChooserDialogNew is a wrapper around the C function gtk_color_chooser_dialog_new.
 func ColorChooserDialogNew(title string, parent *Window) *ColorChooserDialog {
 	c_title := C.CString(title)
@@ -171,12 +167,6 @@ func ColorChooserWidgetNew() *ColorChooserWidget {
 
 // Unsupported signal 'format-entry-text' for ComboBox : unsupported parameter path : type utf8 :
 
-// Unsupported : gtk_combo_box_new_with_model : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
-
-// Unsupported : gtk_combo_box_new_with_model_and_entry : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
-
-// Unsupported : gtk_dialog_new_with_buttons : unsupported parameter ... : varargs
-
 // ComputePrefix is a wrapper around the C function gtk_entry_completion_compute_prefix.
 func (recv *EntryCompletion) ComputePrefix(key string) string {
 	c_key := C.CString(key)
@@ -189,18 +179,6 @@ func (recv *EntryCompletion) ComputePrefix(key string) string {
 	return retGo
 }
 
-// Unsupported : gtk_file_chooser_dialog_new : unsupported parameter ... : varargs
-
-// Unsupported : gtk_file_filter_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
-
-// Unsupported : gtk_icon_view_new_with_model : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
-
-// Unsupported : gtk_image_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon (GIcon*) for param icon
-
-// Unsupported : gtk_image_new_from_icon_name : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
-
-// Unsupported : gtk_image_new_from_icon_set : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
-
 // ImageNewFromResource is a wrapper around the C function gtk_image_new_from_resource.
 func ImageNewFromResource(resourcePath string) *Image {
 	c_resource_path := C.CString(resourcePath)
@@ -211,12 +189,6 @@ func ImageNewFromResource(resourcePath string) *Image {
 
 	return retGo
 }
-
-// Unsupported : gtk_image_new_from_stock : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
-
-// Unsupported : gtk_info_bar_new_with_buttons : unsupported parameter ... : varargs
-
-// Unsupported : gtk_list_store_new : unsupported parameter ... : varargs
 
 // MenuNewFromModel is a wrapper around the C function gtk_menu_new_from_model.
 func MenuNewFromModel(model *gio.MenuModel) *Menu {
@@ -238,18 +210,6 @@ func MenuBarNewFromModel(model *gio.MenuModel) *MenuBar {
 	return retGo
 }
 
-// Unsupported : gtk_message_dialog_new : unsupported parameter ... : varargs
-
-// Unsupported : gtk_message_dialog_new_with_markup : unsupported parameter ... : varargs
-
-// Unsupported : gtk_page_setup_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
-
-// Unsupported : gtk_print_settings_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
-
-// Unsupported : gtk_recent_chooser_dialog_new : unsupported parameter ... : varargs
-
-// Unsupported : gtk_recent_chooser_dialog_new_for_manager : unsupported parameter ... : varargs
-
 // GetHasOrigin is a wrapper around the C function gtk_scale_get_has_origin.
 func (recv *Scale) GetHasOrigin() bool {
 	retC := C.gtk_scale_get_has_origin((*C.GtkScale)(recv.native))
@@ -267,8 +227,6 @@ func (recv *Scale) SetHasOrigin(hasOrigin bool) {
 
 	return
 }
-
-// Unsupported : gtk_scale_button_new : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
 
 // GetCaptureButtonPress is a wrapper around the C function gtk_scrolled_window_get_capture_button_press.
 func (recv *ScrolledWindow) GetCaptureButtonPress() bool {
@@ -306,8 +264,6 @@ func (recv *ScrolledWindow) SetKineticScrolling(kineticScrolling bool) {
 	return
 }
 
-// Unsupported : gtk_status_icon_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon (GIcon*) for param icon
-
 // GetParent is a wrapper around the C function gtk_style_context_get_parent.
 func (recv *StyleContext) GetParent() *StyleContext {
 	retC := C.gtk_style_context_get_parent((*C.GtkStyleContext)(recv.native))
@@ -330,10 +286,6 @@ func (recv *StyleContext) SetParent(parent *StyleContext) {
 	return
 }
 
-// Unsupported : gtk_tree_store_new : unsupported parameter ... : varargs
-
-// Unsupported : gtk_tree_view_new_with_model : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
-
 // GetNColumns is a wrapper around the C function gtk_tree_view_get_n_columns.
 func (recv *TreeView) GetNColumns() uint32 {
 	retC := C.gtk_tree_view_get_n_columns((*C.GtkTreeView)(recv.native))
@@ -341,8 +293,6 @@ func (recv *TreeView) GetNColumns() uint32 {
 
 	return retGo
 }
-
-// Unsupported : gtk_tree_view_column_new_with_attributes : unsupported parameter ... : varargs
 
 // AddUiFromResource is a wrapper around the C function gtk_ui_manager_add_ui_from_resource.
 func (recv *UIManager) AddUiFromResource(resourcePath string) (uint32, error) {
@@ -361,8 +311,6 @@ func (recv *UIManager) AddUiFromResource(resourcePath string) (uint32, error) {
 
 	return retGo, goThrowableError
 }
-
-// Unsupported : gtk_widget_new : unsupported parameter ... : varargs
 
 // GetModifierMask is a wrapper around the C function gtk_widget_get_modifier_mask.
 func (recv *Widget) GetModifierMask(intent gdk.ModifierIntent) gdk.ModifierType {

@@ -748,8 +748,6 @@ func ErrorNewLiteral(domain Quark, code int32, message string) *Error {
 	return retGo
 }
 
-// Unsupported : g_error_new_valist : unsupported parameter args : no type generator for va_list (va_list) for param args
-
 // Copy is a wrapper around the C function g_error_copy.
 func (recv *Error) Copy() *Error {
 	retC := C.g_error_copy((*C.GError)(recv.native))
@@ -1795,8 +1793,6 @@ func (recv *OptionGroup) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
-
-// Unsupported : g_option_group_new : unsupported parameter destroy : no type generator for DestroyNotify (GDestroyNotify) for param destroy
 
 // PatternSpec is a wrapper around the C record GPatternSpec.
 type PatternSpec struct {
@@ -3224,10 +3220,6 @@ func (recv *Thread) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : g_thread_new : unsupported parameter func : no type generator for ThreadFunc (GThreadFunc) for param func
-
-// Unsupported : g_thread_try_new : unsupported parameter func : no type generator for ThreadFunc (GThreadFunc) for param func
-
 // Join is a wrapper around the C function g_thread_join.
 func (recv *Thread) Join() uintptr {
 	retC := C.g_thread_join((*C.GThread)(recv.native))
@@ -3596,8 +3588,6 @@ func (recv *VariantBuilder) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
-
-// Unsupported : g_variant_builder_new : unsupported parameter type : Blacklisted record : GVariantType
 
 // VariantIter is a wrapper around the C record GVariantIter.
 type VariantIter struct {

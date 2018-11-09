@@ -29,27 +29,7 @@ import "C"
 
 // Unsupported : g_application_command_line_create_file_for_arg : no return generator
 
-// Unsupported : g_converter_input_stream_new : unsupported parameter converter : no type generator for Converter (GConverter*) for param converter
-
-// Unsupported : g_converter_output_stream_new : unsupported parameter converter : no type generator for Converter (GConverter*) for param converter
-
 // Unsupported : g_credentials_get_unix_pid : no return generator
-
-// Unsupported : g_dbus_connection_new_finish : unsupported parameter res : no type generator for AsyncResult (GAsyncResult*) for param res
-
-// Unsupported : g_dbus_connection_new_for_address_finish : unsupported parameter res : no type generator for AsyncResult (GAsyncResult*) for param res
-
-// Unsupported : g_dbus_object_manager_client_new_finish : unsupported parameter res : no type generator for AsyncResult (GAsyncResult*) for param res
-
-// Unsupported : g_dbus_object_manager_client_new_for_bus_finish : unsupported parameter res : no type generator for AsyncResult (GAsyncResult*) for param res
-
-// Unsupported : g_dbus_object_manager_client_new_for_bus_sync : unsupported parameter get_proxy_type_func : no type generator for DBusProxyTypeFunc (GDBusProxyTypeFunc) for param get_proxy_type_func
-
-// Unsupported : g_dbus_object_manager_client_new_sync : unsupported parameter get_proxy_type_func : no type generator for DBusProxyTypeFunc (GDBusProxyTypeFunc) for param get_proxy_type_func
-
-// Unsupported : g_dbus_proxy_new_finish : unsupported parameter res : no type generator for AsyncResult (GAsyncResult*) for param res
-
-// Unsupported : g_dbus_proxy_new_for_bus_finish : unsupported parameter res : no type generator for AsyncResult (GAsyncResult*) for param res
 
 // GetBoolean is a wrapper around the C function g_desktop_app_info_get_boolean.
 func (recv *DesktopAppInfo) GetBoolean(key string) bool {
@@ -85,15 +65,7 @@ func (recv *DesktopAppInfo) HasKey(key string) bool {
 	return retGo
 }
 
-// Unsupported : g_emblem_new : unsupported parameter icon : no type generator for Icon (GIcon*) for param icon
-
-// Unsupported : g_emblem_new_with_origin : unsupported parameter icon : no type generator for Icon (GIcon*) for param icon
-
-// Unsupported : g_emblemed_icon_new : unsupported parameter icon : no type generator for Icon (GIcon*) for param icon
-
 // Unsupported : g_file_enumerator_get_child : no return generator
-
-// Unsupported : g_file_icon_new : unsupported parameter file : no type generator for File (GFile*) for param file
 
 // GetDeletionDate is a wrapper around the C function g_file_info_get_deletion_date.
 func (recv *FileInfo) GetDeletionDate() *glib.DateTime {
@@ -103,10 +75,6 @@ func (recv *FileInfo) GetDeletionDate() *glib.DateTime {
 	return retGo
 }
 
-// Unsupported : g_memory_input_stream_new_from_data : unsupported parameter destroy : no type generator for GLib.DestroyNotify (GDestroyNotify) for param destroy
-
-// Unsupported : g_memory_output_stream_new : unsupported parameter realloc_function : no type generator for ReallocFunc (GReallocFunc) for param realloc_function
-
 // MemoryOutputStreamNewResizable is a wrapper around the C function g_memory_output_stream_new_resizable.
 func MemoryOutputStreamNewResizable() *MemoryOutputStream {
 	retC := C.g_memory_output_stream_new_resizable()
@@ -114,18 +82,6 @@ func MemoryOutputStreamNewResizable() *MemoryOutputStream {
 
 	return retGo
 }
-
-// Unsupported : g_simple_action_new : unsupported parameter parameter_type : Blacklisted record : GVariantType
-
-// Unsupported : g_simple_action_new_stateful : unsupported parameter parameter_type : Blacklisted record : GVariantType
-
-// Unsupported : g_simple_async_result_new : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
-
-// Unsupported : g_simple_async_result_new_error : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
-
-// Unsupported : g_simple_async_result_new_from_error : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
-
-// Unsupported : g_simple_async_result_new_take_error : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
 // SetDefaultProxy is a wrapper around the C function g_simple_proxy_resolver_set_default_proxy.
 func (recv *SimpleProxyResolver) SetDefaultProxy(defaultProxy string) {
@@ -405,5 +361,3 @@ func (recv *Task) SetSourceTag(sourceTag uintptr) {
 }
 
 // Unsupported : g_task_set_task_data : unsupported parameter task_data_destroy : no type generator for GLib.DestroyNotify (GDestroyNotify) for param task_data_destroy
-
-// Unsupported : g_themed_icon_new_from_names : unsupported parameter iconnames :

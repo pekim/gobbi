@@ -10,14 +10,6 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : g_object_new : unsupported parameter ... : varargs
-
-// Unsupported : g_object_new_valist : unsupported parameter var_args : no type generator for va_list (va_list) for param var_args
-
-// Unsupported : g_object_new_with_properties : unsupported parameter names :
-
-// Unsupported : g_object_newv : unsupported parameter parameters :
-
 // ForceFloating is a wrapper around the C function g_object_force_floating.
 func (recv *Object) ForceFloating() {
 	C.g_object_force_floating((*C.GObject)(recv.native))

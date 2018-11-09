@@ -12,12 +12,6 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : g_error_new : unsupported parameter ... : varargs
-
-// Unsupported : g_error_new_valist : unsupported parameter args : no type generator for va_list (va_list) for param args
-
-// Unsupported : g_markup_parse_context_new : unsupported parameter user_data_dnotify : no type generator for DestroyNotify (GDestroyNotify) for param user_data_dnotify
-
 // Unsupported : g_node_copy_deep : unsupported parameter copy_func : no type generator for CopyFunc (GCopyFunc) for param copy_func
 
 // Once is a wrapper around the C record GOnce.
@@ -52,8 +46,6 @@ func (recv *Once) ToC() unsafe.Pointer {
 }
 
 // Unsupported : g_once_impl : unsupported parameter func : no type generator for ThreadFunc (GThreadFunc) for param func
-
-// Unsupported : g_option_group_new : unsupported parameter destroy : no type generator for DestroyNotify (GDestroyNotify) for param destroy
 
 // Copy is a wrapper around the C function g_queue_copy.
 func (recv *Queue) Copy() *Queue {
@@ -287,15 +279,9 @@ func (recv *StringChunk) InsertLen(string string, len int64) string {
 	return retGo
 }
 
-// Unsupported : g_thread_new : unsupported parameter func : no type generator for ThreadFunc (GThreadFunc) for param func
-
-// Unsupported : g_thread_try_new : unsupported parameter func : no type generator for ThreadFunc (GThreadFunc) for param func
-
 // Continue is a wrapper around the C function g_timer_continue.
 func (recv *Timer) Continue() {
 	C.g_timer_continue((*C.GTimer)(recv.native))
 
 	return
 }
-
-// Unsupported : g_variant_builder_new : unsupported parameter type : Blacklisted record : GVariantType

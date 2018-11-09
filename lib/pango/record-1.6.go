@@ -125,5 +125,3 @@ func (recv *Matrix) Translate(tx float64, ty float64) {
 
 	return
 }
-
-// Unsupported : pango_tab_array_new_with_positions : unsupported parameter ... : varargs

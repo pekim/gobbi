@@ -125,5 +125,3 @@ func (recv *GlyphItemIter) PrevCluster() bool {
 }
 
 // Unsupported : pango_language_get_scripts : no return type
-
-// Unsupported : pango_tab_array_new_with_positions : unsupported parameter ... : varargs

@@ -166,13 +166,9 @@ func (recv *Adjustment) SetUpper(upper float64) {
 	return
 }
 
-// Unsupported : gtk_app_chooser_dialog_new : unsupported parameter file : no type generator for Gio.File (GFile*) for param file
-
 // Unsupported : gtk_builder_add_objects_from_file : unsupported parameter object_ids :
 
 // Unsupported : gtk_builder_add_objects_from_string : unsupported parameter object_ids :
-
-// Unsupported : gtk_button_new_from_icon_name : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
 
 // GetDetailHeightRows is a wrapper around the C function gtk_calendar_get_detail_height_rows.
 func (recv *Calendar) GetDetailHeightRows() int32 {
@@ -232,10 +228,6 @@ func (recv *ColorSelectionDialog) GetColorSelection() *Widget {
 	return retGo
 }
 
-// Unsupported : gtk_combo_box_new_with_model : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
-
-// Unsupported : gtk_combo_box_new_with_model_and_entry : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
-
 // GetButtonSensitivity is a wrapper around the C function gtk_combo_box_get_button_sensitivity.
 func (recv *ComboBox) GetButtonSensitivity() SensitivityType {
 	retC := C.gtk_combo_box_get_button_sensitivity((*C.GtkComboBox)(recv.native))
@@ -265,8 +257,6 @@ func (recv *Container) GetFocusChild() *Widget {
 
 	return retGo
 }
-
-// Unsupported : gtk_dialog_new_with_buttons : unsupported parameter ... : varargs
 
 // GetActionArea is a wrapper around the C function gtk_dialog_get_action_area.
 func (recv *Dialog) GetActionArea() *Widget {
@@ -309,10 +299,6 @@ func (recv *Entry) SetOverwriteMode(overwrite bool) {
 
 	return
 }
-
-// Unsupported : gtk_file_chooser_dialog_new : unsupported parameter ... : varargs
-
-// Unsupported : gtk_file_filter_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
 
 // GetFace is a wrapper around the C function gtk_font_selection_get_face.
 func (recv *FontSelection) GetFace() *pango.FontFace {
@@ -490,21 +476,11 @@ func IconInfoNewForPixbuf(iconTheme *IconTheme, pixbuf *gdkpixbuf.Pixbuf) *IconI
 
 // Unsupported : gtk_icon_theme_lookup_by_gicon : unsupported parameter icon : no type generator for Gio.Icon (GIcon*) for param icon
 
-// Unsupported : gtk_icon_view_new_with_model : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
-
 // Unsupported : gtk_image_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon (GIcon*) for param icon
-
-// Unsupported : gtk_image_new_from_icon_name : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
-
-// Unsupported : gtk_image_new_from_icon_set : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
-
-// Unsupported : gtk_image_new_from_stock : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
 
 // Unsupported : gtk_image_get_gicon : unsupported parameter gicon : no type generator for Gio.Icon (GIcon**) for param gicon
 
 // Unsupported : gtk_image_set_from_gicon : unsupported parameter icon : no type generator for Gio.Icon (GIcon*) for param icon
-
-// Unsupported : gtk_info_bar_new_with_buttons : unsupported parameter ... : varargs
 
 // GetBinWindow is a wrapper around the C function gtk_layout_get_bin_window.
 func (recv *Layout) GetBinWindow() *gdk.Window {
@@ -532,8 +508,6 @@ func (recv *LinkButton) SetVisited(visited bool) {
 	return
 }
 
-// Unsupported : gtk_list_store_new : unsupported parameter ... : varargs
-
 // GetAccelPath is a wrapper around the C function gtk_menu_get_accel_path.
 func (recv *Menu) GetAccelPath() string {
 	retC := C.gtk_menu_get_accel_path((*C.GtkMenu)(recv.native))
@@ -557,10 +531,6 @@ func (recv *MenuItem) GetAccelPath() string {
 
 	return retGo
 }
-
-// Unsupported : gtk_message_dialog_new : unsupported parameter ... : varargs
-
-// Unsupported : gtk_message_dialog_new_with_markup : unsupported parameter ... : varargs
 
 // GetImage is a wrapper around the C function gtk_message_dialog_get_image.
 func (recv *MessageDialog) GetImage() *Widget {
@@ -622,8 +592,6 @@ func (recv *MountOperation) SetScreen(screen *gdk.Screen) {
 	return
 }
 
-// Unsupported : gtk_page_setup_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
-
 // LoadFile is a wrapper around the C function gtk_page_setup_load_file.
 func (recv *PageSetup) LoadFile(fileName string) (bool, error) {
 	c_file_name := C.CString(fileName)
@@ -661,8 +629,6 @@ func (recv *PageSetup) LoadKeyFile(keyFile *glib.KeyFile, groupName string) (boo
 
 	return retGo, goThrowableError
 }
-
-// Unsupported : gtk_print_settings_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
 
 // GetNumberUpLayout is a wrapper around the C function gtk_print_settings_get_number_up_layout.
 func (recv *PrintSettings) GetNumberUpLayout() NumberUpLayout {
@@ -718,12 +684,6 @@ func (recv *PrintSettings) SetNumberUpLayout(numberUpLayout NumberUpLayout) {
 
 	return
 }
-
-// Unsupported : gtk_recent_chooser_dialog_new : unsupported parameter ... : varargs
-
-// Unsupported : gtk_recent_chooser_dialog_new_for_manager : unsupported parameter ... : varargs
-
-// Unsupported : gtk_scale_button_new : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
 
 // GetMinusButton is a wrapper around the C function gtk_scale_button_get_minus_button.
 func (recv *ScaleButton) GetMinusButton() *Button {
@@ -898,12 +858,6 @@ func (recv *ToolItem) ToolbarReconfigured() {
 
 // Unsupported : gtk_tree_selection_get_select_function : no return generator
 
-// Unsupported : gtk_tree_store_new : unsupported parameter ... : varargs
-
-// Unsupported : gtk_tree_view_new_with_model : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
-
-// Unsupported : gtk_tree_view_column_new_with_attributes : unsupported parameter ... : varargs
-
 type signalWidgetDamageEventDetail struct {
 	callback  WidgetSignalDamageEventCallback
 	handlerID C.gulong
@@ -965,8 +919,6 @@ func widget_damageEventHandler(_ *C.GObject, c_event *C.GdkEventExpose, data C.g
 		boolToGboolean(retGo)
 	return retC
 }
-
-// Unsupported : gtk_widget_new : unsupported parameter ... : varargs
 
 // GetWindow is a wrapper around the C function gtk_widget_get_window.
 func (recv *Widget) GetWindow() *gdk.Window {

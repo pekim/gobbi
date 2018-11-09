@@ -2641,8 +2641,6 @@ func CastToAppChooserDialog(object *gobject.Object) *AppChooserDialog {
 	return AppChooserDialogNewFromC(object.ToC())
 }
 
-// Unsupported : gtk_app_chooser_dialog_new : unsupported parameter file : no type generator for Gio.File (GFile*) for param file
-
 // GetHeading is a wrapper around the C function gtk_app_chooser_dialog_get_heading.
 func (recv *AppChooserDialog) GetHeading() string {
 	retC := C.gtk_app_chooser_dialog_get_heading((*C.GtkAppChooserDialog)(recv.native))
@@ -3996,8 +3994,6 @@ func ButtonNew() *Button {
 
 	return retGo
 }
-
-// Unsupported : gtk_button_new_from_icon_name : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
 
 // ButtonNewFromStock is a wrapper around the C function gtk_button_new_from_stock.
 func ButtonNewFromStock(stockId string) *Button {
@@ -6766,10 +6762,6 @@ func ComboBoxNewWithAreaAndEntry(area *CellArea) *ComboBox {
 	return retGo
 }
 
-// Unsupported : gtk_combo_box_new_with_model : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
-
-// Unsupported : gtk_combo_box_new_with_model_and_entry : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
-
 // GetAddTearoffs is a wrapper around the C function gtk_combo_box_get_add_tearoffs.
 func (recv *ComboBox) GetAddTearoffs() bool {
 	retC := C.gtk_combo_box_get_add_tearoffs((*C.GtkComboBox)(recv.native))
@@ -9214,8 +9206,6 @@ func CastToFileChooserDialog(object *gobject.Object) *FileChooserDialog {
 	return FileChooserDialogNewFromC(object.ToC())
 }
 
-// Unsupported : gtk_file_chooser_dialog_new : unsupported parameter ... : varargs
-
 // ImplementorIface returns the ImplementorIface interface implemented by FileChooserDialog
 func (recv *FileChooserDialog) ImplementorIface() *atk.ImplementorIface {
 	return atk.ImplementorIfaceNewFromC(recv.ToC())
@@ -9915,8 +9905,6 @@ func (recv *FileFilter) Object() *gobject.Object {
 func CastToFileFilter(object *gobject.Object) *FileFilter {
 	return FileFilterNewFromC(object.ToC())
 }
-
-// Unsupported : gtk_file_filter_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
 
 // Buildable returns the Buildable interface implemented by FileFilter
 func (recv *FileFilter) Buildable() *Buildable {
@@ -13961,8 +13949,6 @@ func iconview_unselectAllHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
-// Unsupported : gtk_icon_view_new_with_model : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
-
 // ImplementorIface returns the ImplementorIface interface implemented by IconView
 func (recv *IconView) ImplementorIface() *atk.ImplementorIface {
 	return atk.ImplementorIfaceNewFromC(recv.ToC())
@@ -14119,10 +14105,6 @@ func ImageNewFromFile(filename string) *Image {
 
 	return retGo
 }
-
-// Unsupported : gtk_image_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon (GIcon*) for param icon
-
-// Unsupported : gtk_image_new_from_icon_name : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
 
 // Unsupported : gtk_image_new_from_icon_set : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
 
@@ -17916,8 +17898,6 @@ func CastToMessageDialog(object *gobject.Object) *MessageDialog {
 
 // Unsupported : gtk_message_dialog_new : unsupported parameter ... : varargs
 
-// Unsupported : gtk_message_dialog_new_with_markup : unsupported parameter ... : varargs
-
 // ImplementorIface returns the ImplementorIface interface implemented by MessageDialog
 func (recv *MessageDialog) ImplementorIface() *atk.ImplementorIface {
 	return atk.ImplementorIfaceNewFromC(recv.ToC())
@@ -18955,8 +18935,6 @@ func CastToPageSetup(object *gobject.Object) *PageSetup {
 	return PageSetupNewFromC(object.ToC())
 }
 
-// Unsupported : gtk_page_setup_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
-
 // Paned is a wrapper around the C record GtkPaned.
 type Paned struct {
 	native *C.GtkPaned
@@ -19632,8 +19610,6 @@ func (recv *PrintSettings) Object() *gobject.Object {
 func CastToPrintSettings(object *gobject.Object) *PrintSettings {
 	return PrintSettingsNewFromC(object.ToC())
 }
-
-// Unsupported : gtk_print_settings_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
 
 // ProgressBar is a wrapper around the C record GtkProgressBar.
 type ProgressBar struct {
@@ -20925,10 +20901,6 @@ func CastToRecentChooserDialog(object *gobject.Object) *RecentChooserDialog {
 	return RecentChooserDialogNewFromC(object.ToC())
 }
 
-// Unsupported : gtk_recent_chooser_dialog_new : unsupported parameter ... : varargs
-
-// Unsupported : gtk_recent_chooser_dialog_new_for_manager : unsupported parameter ... : varargs
-
 // ImplementorIface returns the ImplementorIface interface implemented by RecentChooserDialog
 func (recv *RecentChooserDialog) ImplementorIface() *atk.ImplementorIface {
 	return atk.ImplementorIfaceNewFromC(recv.ToC())
@@ -21501,8 +21473,6 @@ func (recv *ScaleButton) Object() *gobject.Object {
 func CastToScaleButton(object *gobject.Object) *ScaleButton {
 	return ScaleButtonNewFromC(object.ToC())
 }
-
-// Unsupported : gtk_scale_button_new : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
 
 // ImplementorIface returns the ImplementorIface interface implemented by ScaleButton
 func (recv *ScaleButton) ImplementorIface() *atk.ImplementorIface {
@@ -23265,8 +23235,6 @@ func (recv *StatusIcon) Object() *gobject.Object {
 func CastToStatusIcon(object *gobject.Object) *StatusIcon {
 	return StatusIconNewFromC(object.ToC())
 }
-
-// Unsupported : gtk_status_icon_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon (GIcon*) for param icon
 
 // Statusbar is a wrapper around the C record GtkStatusbar.
 type Statusbar struct {

@@ -45,8 +45,6 @@ func (recv *ActionGroup) SetAccelGroup(accelGroup *AccelGroup) {
 	return
 }
 
-// Unsupported : gtk_app_chooser_dialog_new : unsupported parameter file : no type generator for Gio.File (GFile*) for param file
-
 // GetActiveWindow is a wrapper around the C function gtk_application_get_active_window.
 func (recv *Application) GetActiveWindow() *Window {
 	retC := C.gtk_application_get_active_window((*C.GtkApplication)(recv.native))
@@ -83,8 +81,6 @@ func (recv *ApplicationWindow) GetId() uint32 {
 	return retGo
 }
 
-// Unsupported : gtk_button_new_from_icon_name : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
-
 // GetAlwaysShowImage is a wrapper around the C function gtk_button_get_always_show_image.
 func (recv *Button) GetAlwaysShowImage() bool {
 	retC := C.gtk_button_get_always_show_image((*C.GtkButton)(recv.native))
@@ -102,12 +98,6 @@ func (recv *Button) SetAlwaysShowImage(alwaysShow bool) {
 
 	return
 }
-
-// Unsupported : gtk_combo_box_new_with_model : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
-
-// Unsupported : gtk_combo_box_new_with_model_and_entry : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
-
-// Unsupported : gtk_dialog_new_with_buttons : unsupported parameter ... : varargs
 
 // GetAttributes is a wrapper around the C function gtk_entry_get_attributes.
 func (recv *Entry) GetAttributes() *pango.AttrList {
@@ -165,23 +155,7 @@ func (recv *Entry) SetInputPurpose(purpose InputPurpose) {
 	return
 }
 
-// Unsupported : gtk_file_chooser_dialog_new : unsupported parameter ... : varargs
-
-// Unsupported : gtk_file_filter_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
-
-// Unsupported : gtk_icon_view_new_with_model : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
-
 // Unsupported : gtk_icon_view_get_cell_rect : unsupported parameter rect : Blacklisted record : GdkRectangle
-
-// Unsupported : gtk_image_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon (GIcon*) for param icon
-
-// Unsupported : gtk_image_new_from_icon_name : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
-
-// Unsupported : gtk_image_new_from_icon_set : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
-
-// Unsupported : gtk_image_new_from_stock : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
-
-// Unsupported : gtk_info_bar_new_with_buttons : unsupported parameter ... : varargs
 
 // Unsupported signal 'offset-changed' for LevelBar : unsupported parameter name : type utf8 :
 
@@ -310,8 +284,6 @@ func (recv *LevelBar) SetValue(value float64) {
 	return
 }
 
-// Unsupported : gtk_list_store_new : unsupported parameter ... : varargs
-
 // MenuButtonNew is a wrapper around the C function gtk_menu_button_new.
 func MenuButtonNew() *MenuButton {
 	retC := C.gtk_menu_button_new()
@@ -418,20 +390,6 @@ func (recv *MenuShell) BindModel(model *gio.MenuModel, actionNamespace string, w
 	return
 }
 
-// Unsupported : gtk_message_dialog_new : unsupported parameter ... : varargs
-
-// Unsupported : gtk_message_dialog_new_with_markup : unsupported parameter ... : varargs
-
-// Unsupported : gtk_page_setup_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
-
-// Unsupported : gtk_print_settings_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
-
-// Unsupported : gtk_recent_chooser_dialog_new : unsupported parameter ... : varargs
-
-// Unsupported : gtk_recent_chooser_dialog_new_for_manager : unsupported parameter ... : varargs
-
-// Unsupported : gtk_scale_button_new : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
-
 // SearchEntryNew is a wrapper around the C function gtk_search_entry_new.
 func SearchEntryNew() *SearchEntry {
 	retC := C.gtk_search_entry_new()
@@ -439,8 +397,6 @@ func SearchEntryNew() *SearchEntry {
 
 	return retGo
 }
-
-// Unsupported : gtk_status_icon_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon (GIcon*) for param icon
 
 // GetInputHints is a wrapper around the C function gtk_text_view_get_input_hints.
 func (recv *TextView) GetInputHints() InputHints {
@@ -475,13 +431,5 @@ func (recv *TextView) SetInputPurpose(purpose InputPurpose) {
 
 	return
 }
-
-// Unsupported : gtk_tree_store_new : unsupported parameter ... : varargs
-
-// Unsupported : gtk_tree_view_new_with_model : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
-
-// Unsupported : gtk_tree_view_column_new_with_attributes : unsupported parameter ... : varargs
-
-// Unsupported : gtk_widget_new : unsupported parameter ... : varargs
 
 // Unsupported : gtk_widget_insert_action_group : unsupported parameter group : no type generator for Gio.ActionGroup (GActionGroup*) for param group

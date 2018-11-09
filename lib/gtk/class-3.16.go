@@ -45,14 +45,6 @@ import (
 */
 import "C"
 
-// Unsupported : gtk_app_chooser_dialog_new : unsupported parameter file : no type generator for Gio.File (GFile*) for param file
-
-// Unsupported : gtk_button_new_from_icon_name : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
-
-// Unsupported : gtk_combo_box_new_with_model : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
-
-// Unsupported : gtk_combo_box_new_with_model_and_entry : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
-
 // LoadFromResource is a wrapper around the C function gtk_css_provider_load_from_resource.
 func (recv *CssProvider) LoadFromResource(resourcePath string) {
 	c_resource_path := C.CString(resourcePath)
@@ -63,18 +55,12 @@ func (recv *CssProvider) LoadFromResource(resourcePath string) {
 	return
 }
 
-// Unsupported : gtk_dialog_new_with_buttons : unsupported parameter ... : varargs
-
 // GrabFocusWithoutSelecting is a wrapper around the C function gtk_entry_grab_focus_without_selecting.
 func (recv *Entry) GrabFocusWithoutSelecting() {
 	C.gtk_entry_grab_focus_without_selecting((*C.GtkEntry)(recv.native))
 
 	return
 }
-
-// Unsupported : gtk_file_chooser_dialog_new : unsupported parameter ... : varargs
-
-// Unsupported : gtk_file_filter_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
 
 // GLArea is a wrapper around the C record GtkGLArea.
 type GLArea struct {
@@ -276,18 +262,6 @@ func (recv *GLArea) SetRequiredVersion(major int32, minor int32) {
 	return
 }
 
-// Unsupported : gtk_icon_view_new_with_model : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
-
-// Unsupported : gtk_image_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon (GIcon*) for param icon
-
-// Unsupported : gtk_image_new_from_icon_name : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
-
-// Unsupported : gtk_image_new_from_icon_set : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
-
-// Unsupported : gtk_image_new_from_stock : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
-
-// Unsupported : gtk_info_bar_new_with_buttons : unsupported parameter ... : varargs
-
 // GetXalign is a wrapper around the C function gtk_label_get_xalign.
 func (recv *Label) GetXalign() float32 {
 	retC := C.gtk_label_get_xalign((*C.GtkLabel)(recv.native))
@@ -324,12 +298,6 @@ func (recv *Label) SetYalign(yalign float32) {
 
 // Unsupported : gtk_list_box_bind_model : unsupported parameter model : no type generator for Gio.ListModel (GListModel*) for param model
 
-// Unsupported : gtk_list_store_new : unsupported parameter ... : varargs
-
-// Unsupported : gtk_message_dialog_new : unsupported parameter ... : varargs
-
-// Unsupported : gtk_message_dialog_new_with_markup : unsupported parameter ... : varargs
-
 // ModelButtonNew is a wrapper around the C function gtk_model_button_new.
 func ModelButtonNew() *ModelButton {
 	retC := C.gtk_model_button_new()
@@ -346,8 +314,6 @@ func (recv *Notebook) DetachTab(child *Widget) {
 
 	return
 }
-
-// Unsupported : gtk_page_setup_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
 
 // GetWideHandle is a wrapper around the C function gtk_paned_get_wide_handle.
 func (recv *Paned) GetWideHandle() bool {
@@ -402,14 +368,6 @@ func (recv *PopoverMenu) OpenSubmenu(name string) {
 
 	return
 }
-
-// Unsupported : gtk_print_settings_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
-
-// Unsupported : gtk_recent_chooser_dialog_new : unsupported parameter ... : varargs
-
-// Unsupported : gtk_recent_chooser_dialog_new_for_manager : unsupported parameter ... : varargs
-
-// Unsupported : gtk_scale_button_new : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
 
 // Unsupported signal 'edge-overshot' for ScrolledWindow : unsupported parameter pos : type PositionType :
 
@@ -672,8 +630,6 @@ func (recv *StackSidebar) SetStack(stack *Stack) {
 	return
 }
 
-// Unsupported : gtk_status_icon_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon (GIcon*) for param icon
-
 // InsertMarkup is a wrapper around the C function gtk_text_buffer_insert_markup.
 func (recv *TextBuffer) InsertMarkup(iter *TextIter, markup string, len int32) {
 	c_iter := (*C.GtkTextIter)(iter.ToC())
@@ -707,14 +663,6 @@ func (recv *TextView) SetMonospace(monospace bool) {
 
 	return
 }
-
-// Unsupported : gtk_tree_store_new : unsupported parameter ... : varargs
-
-// Unsupported : gtk_tree_view_new_with_model : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
-
-// Unsupported : gtk_tree_view_column_new_with_attributes : unsupported parameter ... : varargs
-
-// Unsupported : gtk_widget_new : unsupported parameter ... : varargs
 
 // Unsupported : gtk_widget_get_action_group : no return generator
 

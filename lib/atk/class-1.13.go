@@ -21,5 +21,3 @@ func (recv *Misc) ThreadsLeave() {
 
 	return
 }
-
-// Unsupported : atk_relation_new : unsupported parameter targets :

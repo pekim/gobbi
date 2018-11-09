@@ -127,8 +127,6 @@ func (recv *PadControllerClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : gtk_paper_size_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
-
 // ShortcutLabelClass is a wrapper around the C record GtkShortcutLabelClass.
 type ShortcutLabelClass struct {
 	native *C.GtkShortcutLabelClass
@@ -237,8 +235,6 @@ func (recv *ShortcutsWindowClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported : gtk_target_list_new : unsupported parameter targets :
-
 // StartsTag is a wrapper around the C function gtk_text_iter_starts_tag.
 func (recv *TextIter) StartsTag(tag *TextTag) bool {
 	c_tag := (*C.GtkTextTag)(tag.ToC())
@@ -248,12 +244,6 @@ func (recv *TextIter) StartsTag(tag *TextTag) bool {
 
 	return retGo
 }
-
-// Unsupported : gtk_tree_path_new_from_indices : unsupported parameter ... : varargs
-
-// Unsupported : gtk_tree_row_reference_new : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
-
-// Unsupported : gtk_tree_row_reference_new_proxy : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
 
 // GetCssName is a wrapper around the C function gtk_widget_class_get_css_name.
 func (recv *WidgetClass) GetCssName() string {

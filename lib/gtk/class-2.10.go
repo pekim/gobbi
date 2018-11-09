@@ -129,8 +129,6 @@ import (
 */
 import "C"
 
-// Unsupported : gtk_app_chooser_dialog_new : unsupported parameter file : no type generator for Gio.File (GFile*) for param file
-
 type signalAssistantApplyDetail struct {
 	callback  AssistantSignalApplyCallback
 	handlerID C.gulong
@@ -575,8 +573,6 @@ func (recv *Assistant) UpdateButtonsState() {
 	return
 }
 
-// Unsupported : gtk_button_new_from_icon_name : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
-
 // GetImagePosition is a wrapper around the C function gtk_button_get_image_position.
 func (recv *Button) GetImagePosition() PositionType {
 	retC := C.gtk_button_get_image_position((*C.GtkButton)(recv.native))
@@ -628,10 +624,6 @@ func (recv *Clipboard) WaitIsRichTextAvailable(buffer *TextBuffer) bool {
 	return retGo
 }
 
-// Unsupported : gtk_combo_box_new_with_model : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
-
-// Unsupported : gtk_combo_box_new_with_model_and_entry : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
-
 // GetTitle is a wrapper around the C function gtk_combo_box_get_title.
 func (recv *ComboBox) GetTitle() string {
 	retC := C.gtk_combo_box_get_title((*C.GtkComboBox)(recv.native))
@@ -649,8 +641,6 @@ func (recv *ComboBox) SetTitle(title string) {
 
 	return
 }
-
-// Unsupported : gtk_dialog_new_with_buttons : unsupported parameter ... : varargs
 
 // GetInnerBorder is a wrapper around the C function gtk_entry_get_inner_border.
 func (recv *Entry) GetInnerBorder() *Border {
@@ -691,22 +681,6 @@ func (recv *FileChooserButton) SetFocusOnClick(focusOnClick bool) {
 
 	return
 }
-
-// Unsupported : gtk_file_chooser_dialog_new : unsupported parameter ... : varargs
-
-// Unsupported : gtk_file_filter_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
-
-// Unsupported : gtk_icon_view_new_with_model : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
-
-// Unsupported : gtk_image_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon (GIcon*) for param icon
-
-// Unsupported : gtk_image_new_from_icon_name : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
-
-// Unsupported : gtk_image_new_from_icon_set : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
-
-// Unsupported : gtk_image_new_from_stock : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
-
-// Unsupported : gtk_info_bar_new_with_buttons : unsupported parameter ... : varargs
 
 // GetLineWrapMode is a wrapper around the C function gtk_label_get_line_wrap_mode.
 func (recv *Label) GetLineWrapMode() pango.WrapMode {
@@ -767,12 +741,6 @@ func (recv *LinkButton) SetUri(uri string) {
 
 	return
 }
-
-// Unsupported : gtk_list_store_new : unsupported parameter ... : varargs
-
-// Unsupported : gtk_message_dialog_new : unsupported parameter ... : varargs
-
-// Unsupported : gtk_message_dialog_new_with_markup : unsupported parameter ... : varargs
 
 // SetImage is a wrapper around the C function gtk_message_dialog_set_image.
 func (recv *MessageDialog) SetImage(image *Widget) {
@@ -840,8 +808,6 @@ func PageSetupNew() *PageSetup {
 
 	return retGo
 }
-
-// Unsupported : gtk_page_setup_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
 
 // Copy is a wrapper around the C function gtk_page_setup_copy.
 func (recv *PageSetup) Copy() *PageSetup {
@@ -1677,8 +1643,6 @@ func PrintSettingsNew() *PrintSettings {
 
 	return retGo
 }
-
-// Unsupported : gtk_print_settings_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
 
 // Copy is a wrapper around the C function gtk_print_settings_copy.
 func (recv *PrintSettings) Copy() *PrintSettings {
@@ -2601,8 +2565,6 @@ func (recv *RecentManager) RemoveItem(uri string) (bool, error) {
 	return retGo, goThrowableError
 }
 
-// Unsupported : gtk_scale_button_new : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
-
 // UnsetPlacement is a wrapper around the C function gtk_scrolled_window_unset_placement.
 func (recv *ScrolledWindow) UnsetPlacement() {
 	C.gtk_scrolled_window_unset_placement((*C.GtkScrolledWindow)(recv.native))
@@ -2754,8 +2716,6 @@ func StatusIconNewFromFile(filename string) *StatusIcon {
 
 	return retGo
 }
-
-// Unsupported : gtk_status_icon_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon (GIcon*) for param icon
 
 // StatusIconNewFromIconName is a wrapper around the C function gtk_status_icon_new_from_icon_name.
 func StatusIconNewFromIconName(iconName string) *StatusIcon {
@@ -2964,13 +2924,9 @@ func (recv *TextBuffer) GetPasteTargetList() *TargetList {
 
 // Unsupported : gtk_text_buffer_unregister_serialize_format : unsupported parameter format : Blacklisted record : GdkAtom
 
-// Unsupported : gtk_tree_store_new : unsupported parameter ... : varargs
-
 // Unsupported : gtk_tree_store_insert_with_values : unsupported parameter ... : varargs
 
 // Unsupported : gtk_tree_store_insert_with_valuesv : unsupported parameter values :
-
-// Unsupported : gtk_tree_view_new_with_model : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
 
 // GetEnableTreeLines is a wrapper around the C function gtk_tree_view_get_enable_tree_lines.
 func (recv *TreeView) GetEnableTreeLines() bool {
@@ -3053,10 +3009,6 @@ func (recv *TreeView) SetSearchEntry(entry *Entry) {
 }
 
 // Unsupported : gtk_tree_view_set_search_position_func : unsupported parameter func : no type generator for TreeViewSearchPositionFunc (GtkTreeViewSearchPositionFunc) for param func
-
-// Unsupported : gtk_tree_view_column_new_with_attributes : unsupported parameter ... : varargs
-
-// Unsupported : gtk_widget_new : unsupported parameter ... : varargs
 
 // DragDestGetTrackMotion is a wrapper around the C function gtk_drag_dest_get_track_motion.
 func (recv *Widget) DragDestGetTrackMotion() bool {

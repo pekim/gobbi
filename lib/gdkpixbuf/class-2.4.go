@@ -13,8 +13,6 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : gdk_pixbuf_new_from_data : unsupported parameter destroy_fn : no type generator for PixbufDestroyNotify (GdkPixbufDestroyNotify) for param destroy_fn
-
 // PixbufNewFromFileAtSize is a wrapper around the C function gdk_pixbuf_new_from_file_at_size.
 func PixbufNewFromFileAtSize(filename string, width int32, height int32) (*Pixbuf, error) {
 	c_filename := C.CString(filename)
@@ -37,10 +35,6 @@ func PixbufNewFromFileAtSize(filename string, width int32, height int32) (*Pixbu
 	return retGo, goThrowableError
 }
 
-// Unsupported : gdk_pixbuf_new_from_stream_finish : unsupported parameter async_result : no type generator for Gio.AsyncResult (GAsyncResult*) for param async_result
-
-// Unsupported : gdk_pixbuf_new_from_xpm_data : unsupported parameter data :
-
 // Unsupported : gdk_pixbuf_save_to_buffer : unsupported parameter buffer : output array param buffer
 
 // Unsupported : gdk_pixbuf_save_to_bufferv : unsupported parameter buffer : output array param buffer
@@ -48,8 +42,6 @@ func PixbufNewFromFileAtSize(filename string, width int32, height int32) (*Pixbu
 // Unsupported : gdk_pixbuf_save_to_callback : unsupported parameter save_func : no type generator for PixbufSaveFunc (GdkPixbufSaveFunc) for param save_func
 
 // Unsupported : gdk_pixbuf_save_to_callbackv : unsupported parameter save_func : no type generator for PixbufSaveFunc (GdkPixbufSaveFunc) for param save_func
-
-// Unsupported : gdk_pixbuf_animation_new_from_stream_finish : unsupported parameter async_result : no type generator for Gio.AsyncResult (GAsyncResult*) for param async_result
 
 // PixbufLoaderNewWithMimeType is a wrapper around the C function gdk_pixbuf_loader_new_with_mime_type.
 func PixbufLoaderNewWithMimeType(mimeType string) (*PixbufLoader, error) {

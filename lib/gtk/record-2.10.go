@@ -46,8 +46,6 @@ func PaperSizeNewCustom(name string, displayName string, width float64, height f
 	return retGo
 }
 
-// Unsupported : gtk_paper_size_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
-
 // PaperSizeNewFromPpd is a wrapper around the C function gtk_paper_size_new_from_ppd.
 func PaperSizeNewFromPpd(ppdName string, ppdDisplayName string, width float64, height float64) *PaperSize {
 	c_ppd_name := C.CString(ppdName)
@@ -421,8 +419,6 @@ func (recv *SelectionData) TargetsIncludeUri() bool {
 	return retGo
 }
 
-// Unsupported : gtk_target_list_new : unsupported parameter targets :
-
 // AddRichTextTargets is a wrapper around the C function gtk_target_list_add_rich_text_targets.
 func (recv *TargetList) AddRichTextTargets(info uint32, deserializable bool, buffer *TextBuffer) {
 	c_info := (C.guint)(info)
@@ -436,9 +432,3 @@ func (recv *TargetList) AddRichTextTargets(info uint32, deserializable bool, buf
 
 	return
 }
-
-// Unsupported : gtk_tree_path_new_from_indices : unsupported parameter ... : varargs
-
-// Unsupported : gtk_tree_row_reference_new : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
-
-// Unsupported : gtk_tree_row_reference_new_proxy : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model

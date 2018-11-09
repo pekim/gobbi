@@ -29,10 +29,6 @@ func (recv *Date) SetTimeVal(timeval *TimeVal) {
 	return
 }
 
-// Unsupported : g_error_new : unsupported parameter ... : varargs
-
-// Unsupported : g_error_new_valist : unsupported parameter args : no type generator for va_list (va_list) for param args
-
 // IsOwner is a wrapper around the C function g_main_context_is_owner.
 func (recv *MainContext) IsOwner() bool {
 	retC := C.g_main_context_is_owner((*C.GMainContext)(recv.native))
@@ -41,14 +37,4 @@ func (recv *MainContext) IsOwner() bool {
 	return retGo
 }
 
-// Unsupported : g_markup_parse_context_new : unsupported parameter user_data_dnotify : no type generator for DestroyNotify (GDestroyNotify) for param user_data_dnotify
-
-// Unsupported : g_option_group_new : unsupported parameter destroy : no type generator for DestroyNotify (GDestroyNotify) for param destroy
-
-// Unsupported : g_thread_new : unsupported parameter func : no type generator for ThreadFunc (GThreadFunc) for param func
-
-// Unsupported : g_thread_try_new : unsupported parameter func : no type generator for ThreadFunc (GThreadFunc) for param func
-
 // Unsupported : g_thread_pool_set_sort_function : unsupported parameter func : no type generator for CompareDataFunc (GCompareDataFunc) for param func
-
-// Unsupported : g_variant_builder_new : unsupported parameter type : Blacklisted record : GVariantType

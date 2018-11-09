@@ -36,10 +36,6 @@ func (recv *Action) SetAlwaysShowImage(alwaysShow bool) {
 	return
 }
 
-// Unsupported : gtk_app_chooser_dialog_new : unsupported parameter file : no type generator for Gio.File (GFile*) for param file
-
-// Unsupported : gtk_button_new_from_icon_name : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
-
 // CellRendererSpinnerNew is a wrapper around the C function gtk_cell_renderer_spinner_new.
 func CellRendererSpinnerNew() *CellRendererSpinner {
 	retC := C.gtk_cell_renderer_spinner_new()
@@ -47,12 +43,6 @@ func CellRendererSpinnerNew() *CellRendererSpinner {
 
 	return retGo
 }
-
-// Unsupported : gtk_combo_box_new_with_model : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
-
-// Unsupported : gtk_combo_box_new_with_model_and_entry : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
-
-// Unsupported : gtk_dialog_new_with_buttons : unsupported parameter ... : varargs
 
 // GetWidgetForResponse is a wrapper around the C function gtk_dialog_get_widget_for_response.
 func (recv *Dialog) GetWidgetForResponse(responseId int32) *Widget {
@@ -70,28 +60,6 @@ func (recv *Dialog) GetWidgetForResponse(responseId int32) *Widget {
 }
 
 // Unsupported signal 'preedit-changed' for Entry : unsupported parameter preedit : type utf8 :
-
-// Unsupported : gtk_file_chooser_dialog_new : unsupported parameter ... : varargs
-
-// Unsupported : gtk_file_filter_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
-
-// Unsupported : gtk_icon_view_new_with_model : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
-
-// Unsupported : gtk_image_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon (GIcon*) for param icon
-
-// Unsupported : gtk_image_new_from_icon_name : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
-
-// Unsupported : gtk_image_new_from_icon_set : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
-
-// Unsupported : gtk_image_new_from_stock : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
-
-// Unsupported : gtk_info_bar_new_with_buttons : unsupported parameter ... : varargs
-
-// Unsupported : gtk_list_store_new : unsupported parameter ... : varargs
-
-// Unsupported : gtk_message_dialog_new : unsupported parameter ... : varargs
-
-// Unsupported : gtk_message_dialog_new_with_markup : unsupported parameter ... : varargs
 
 // GetActionWidget is a wrapper around the C function gtk_notebook_get_action_widget.
 func (recv *Notebook) GetActionWidget(packType PackType) *Widget {
@@ -153,8 +121,6 @@ func (recv *OffscreenWindow) GetSurface() *cairo.Surface {
 	return retGo
 }
 
-// Unsupported : gtk_page_setup_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
-
 // GetHandleWindow is a wrapper around the C function gtk_paned_get_handle_window.
 func (recv *Paned) GetHandleWindow() *gdk.Window {
 	retC := C.gtk_paned_get_handle_window((*C.GtkPaned)(recv.native))
@@ -186,8 +152,6 @@ func (recv *PrintContext) GetHardMargins() (bool, float64, float64, float64, flo
 
 	return retGo, top, bottom, left, right
 }
-
-// Unsupported : gtk_print_settings_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
 
 // GetMinSliderSize is a wrapper around the C function gtk_range_get_min_slider_size.
 func (recv *Range) GetMinSliderSize() int32 {
@@ -241,12 +205,6 @@ func (recv *Range) SetSliderSizeFixed(sizeFixed bool) {
 	return
 }
 
-// Unsupported : gtk_recent_chooser_dialog_new : unsupported parameter ... : varargs
-
-// Unsupported : gtk_recent_chooser_dialog_new_for_manager : unsupported parameter ... : varargs
-
-// Unsupported : gtk_scale_button_new : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
-
 // SpinnerNew is a wrapper around the C function gtk_spinner_new.
 func SpinnerNew() *Spinner {
 	retC := C.gtk_spinner_new()
@@ -268,8 +226,6 @@ func (recv *Spinner) Stop() {
 
 	return
 }
-
-// Unsupported : gtk_status_icon_new_from_gicon : unsupported parameter icon : no type generator for Gio.Icon (GIcon*) for param icon
 
 // SetName is a wrapper around the C function gtk_status_icon_set_name.
 func (recv *StatusIcon) SetName(name string) {
@@ -677,12 +633,6 @@ func (recv *ToolPalette) UnsetStyle() {
 
 // Unsupported : gtk_tooltip_set_icon_from_gicon : unsupported parameter gicon : no type generator for Gio.Icon (GIcon*) for param gicon
 
-// Unsupported : gtk_tree_store_new : unsupported parameter ... : varargs
-
-// Unsupported : gtk_tree_view_new_with_model : unsupported parameter model : no type generator for TreeModel (GtkTreeModel*) for param model
-
-// Unsupported : gtk_tree_view_column_new_with_attributes : unsupported parameter ... : varargs
-
 // GetBinWindow is a wrapper around the C function gtk_viewport_get_bin_window.
 func (recv *Viewport) GetBinWindow() *gdk.Window {
 	retC := C.gtk_viewport_get_bin_window((*C.GtkViewport)(recv.native))
@@ -690,8 +640,6 @@ func (recv *Viewport) GetBinWindow() *gdk.Window {
 
 	return retGo
 }
-
-// Unsupported : gtk_widget_new : unsupported parameter ... : varargs
 
 // GetMapped is a wrapper around the C function gtk_widget_get_mapped.
 func (recv *Widget) GetMapped() bool {
