@@ -14,7 +14,10 @@ import "C"
 
 // HashTableUnref is a wrapper around the C function g_hash_table_unref.
 func HashTableUnref(hashTable *HashTable) {
-	c_hash_table := (*C.GHashTable)(hashTable.ToC())
+	c_hash_table := (*C.GHashTable)(C.NULL)
+	if hashTable != nil {
+		c_hash_table = (*C.GHashTable)(hashTable.ToC())
+	}
 
 	C.g_hash_table_unref(c_hash_table)
 

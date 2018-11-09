@@ -44,7 +44,10 @@ func RgbToHsv(r float64, g float64, b float64) (float64, float64, float64) {
 
 // ShowUri is a wrapper around the C function gtk_show_uri.
 func ShowUri(screen *gdk.Screen, uri string, timestamp uint32) (bool, error) {
-	c_screen := (*C.GdkScreen)(screen.ToC())
+	c_screen := (*C.GdkScreen)(C.NULL)
+	if screen != nil {
+		c_screen = (*C.GdkScreen)(screen.ToC())
+	}
 
 	c_uri := C.CString(uri)
 	defer C.free(unsafe.Pointer(c_uri))
@@ -84,7 +87,10 @@ func TestCreateSimpleWindow(windowTitle string, dialogText string) *Widget {
 
 // TestFindLabel is a wrapper around the C function gtk_test_find_label.
 func TestFindLabel(widget *Widget, labelPattern string) *Widget {
-	c_widget := (*C.GtkWidget)(widget.ToC())
+	c_widget := (*C.GtkWidget)(C.NULL)
+	if widget != nil {
+		c_widget = (*C.GtkWidget)(widget.ToC())
+	}
 
 	c_label_pattern := C.CString(labelPattern)
 	defer C.free(unsafe.Pointer(c_label_pattern))
@@ -97,7 +103,10 @@ func TestFindLabel(widget *Widget, labelPattern string) *Widget {
 
 // TestFindSibling is a wrapper around the C function gtk_test_find_sibling.
 func TestFindSibling(baseWidget *Widget, widgetType gobject.Type) *Widget {
-	c_base_widget := (*C.GtkWidget)(baseWidget.ToC())
+	c_base_widget := (*C.GtkWidget)(C.NULL)
+	if baseWidget != nil {
+		c_base_widget = (*C.GtkWidget)(baseWidget.ToC())
+	}
 
 	c_widget_type := (C.GType)(widgetType)
 
@@ -109,7 +118,10 @@ func TestFindSibling(baseWidget *Widget, widgetType gobject.Type) *Widget {
 
 // TestFindWidget is a wrapper around the C function gtk_test_find_widget.
 func TestFindWidget(widget *Widget, labelPattern string, widgetType gobject.Type) *Widget {
-	c_widget := (*C.GtkWidget)(widget.ToC())
+	c_widget := (*C.GtkWidget)(C.NULL)
+	if widget != nil {
+		c_widget = (*C.GtkWidget)(widget.ToC())
+	}
 
 	c_label_pattern := C.CString(labelPattern)
 	defer C.free(unsafe.Pointer(c_label_pattern))
@@ -140,7 +152,10 @@ func TestRegisterAllTypes() {
 
 // TestSliderGetValue is a wrapper around the C function gtk_test_slider_get_value.
 func TestSliderGetValue(widget *Widget) float64 {
-	c_widget := (*C.GtkWidget)(widget.ToC())
+	c_widget := (*C.GtkWidget)(C.NULL)
+	if widget != nil {
+		c_widget = (*C.GtkWidget)(widget.ToC())
+	}
 
 	retC := C.gtk_test_slider_get_value(c_widget)
 	retGo := (float64)(retC)
@@ -150,7 +165,10 @@ func TestSliderGetValue(widget *Widget) float64 {
 
 // TestSliderSetPerc is a wrapper around the C function gtk_test_slider_set_perc.
 func TestSliderSetPerc(widget *Widget, percentage float64) {
-	c_widget := (*C.GtkWidget)(widget.ToC())
+	c_widget := (*C.GtkWidget)(C.NULL)
+	if widget != nil {
+		c_widget = (*C.GtkWidget)(widget.ToC())
+	}
 
 	c_percentage := (C.double)(percentage)
 
@@ -161,7 +179,10 @@ func TestSliderSetPerc(widget *Widget, percentage float64) {
 
 // TestSpinButtonClick is a wrapper around the C function gtk_test_spin_button_click.
 func TestSpinButtonClick(spinner *SpinButton, button uint32, upwards bool) bool {
-	c_spinner := (*C.GtkSpinButton)(spinner.ToC())
+	c_spinner := (*C.GtkSpinButton)(C.NULL)
+	if spinner != nil {
+		c_spinner = (*C.GtkSpinButton)(spinner.ToC())
+	}
 
 	c_button := (C.guint)(button)
 
@@ -176,7 +197,10 @@ func TestSpinButtonClick(spinner *SpinButton, button uint32, upwards bool) bool 
 
 // TestTextGet is a wrapper around the C function gtk_test_text_get.
 func TestTextGet(widget *Widget) string {
-	c_widget := (*C.GtkWidget)(widget.ToC())
+	c_widget := (*C.GtkWidget)(C.NULL)
+	if widget != nil {
+		c_widget = (*C.GtkWidget)(widget.ToC())
+	}
 
 	retC := C.gtk_test_text_get(c_widget)
 	retGo := C.GoString(retC)
@@ -187,7 +211,10 @@ func TestTextGet(widget *Widget) string {
 
 // TestTextSet is a wrapper around the C function gtk_test_text_set.
 func TestTextSet(widget *Widget, string string) {
-	c_widget := (*C.GtkWidget)(widget.ToC())
+	c_widget := (*C.GtkWidget)(C.NULL)
+	if widget != nil {
+		c_widget = (*C.GtkWidget)(widget.ToC())
+	}
 
 	c_string := C.CString(string)
 	defer C.free(unsafe.Pointer(c_string))
@@ -199,7 +226,10 @@ func TestTextSet(widget *Widget, string string) {
 
 // TestWidgetClick is a wrapper around the C function gtk_test_widget_click.
 func TestWidgetClick(widget *Widget, button uint32, modifiers gdk.ModifierType) bool {
-	c_widget := (*C.GtkWidget)(widget.ToC())
+	c_widget := (*C.GtkWidget)(C.NULL)
+	if widget != nil {
+		c_widget = (*C.GtkWidget)(widget.ToC())
+	}
 
 	c_button := (C.guint)(button)
 
@@ -213,7 +243,10 @@ func TestWidgetClick(widget *Widget, button uint32, modifiers gdk.ModifierType) 
 
 // TestWidgetSendKey is a wrapper around the C function gtk_test_widget_send_key.
 func TestWidgetSendKey(widget *Widget, keyval uint32, modifiers gdk.ModifierType) bool {
-	c_widget := (*C.GtkWidget)(widget.ToC())
+	c_widget := (*C.GtkWidget)(C.NULL)
+	if widget != nil {
+		c_widget = (*C.GtkWidget)(widget.ToC())
+	}
 
 	c_keyval := (C.guint)(keyval)
 

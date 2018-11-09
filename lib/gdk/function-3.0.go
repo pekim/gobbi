@@ -12,9 +12,15 @@ import "C"
 
 // CairoSetSourceRgba is a wrapper around the C function gdk_cairo_set_source_rgba.
 func CairoSetSourceRgba(cr *cairo.Context, rgba *RGBA) {
-	c_cr := (*C.cairo_t)(cr.ToC())
+	c_cr := (*C.cairo_t)(C.NULL)
+	if cr != nil {
+		c_cr = (*C.cairo_t)(cr.ToC())
+	}
 
-	c_rgba := (*C.GdkRGBA)(rgba.ToC())
+	c_rgba := (*C.GdkRGBA)(C.NULL)
+	if rgba != nil {
+		c_rgba = (*C.GdkRGBA)(rgba.ToC())
+	}
 
 	C.gdk_cairo_set_source_rgba(c_cr, c_rgba)
 

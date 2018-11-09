@@ -119,7 +119,10 @@ func (recv *Object) GetProperty(propertyName string, value *Value) {
 	c_property_name := C.CString(propertyName)
 	defer C.free(unsafe.Pointer(c_property_name))
 
-	c_value := (*C.GValue)(value.ToC())
+	c_value := (*C.GValue)(C.NULL)
+	if value != nil {
+		c_value = (*C.GValue)(value.ToC())
+	}
 
 	C.g_object_get_property((*C.GObject)(recv.native), c_property_name, c_value)
 
@@ -193,7 +196,10 @@ func (recv *Object) SetProperty(propertyName string, value *Value) {
 	c_property_name := C.CString(propertyName)
 	defer C.free(unsafe.Pointer(c_property_name))
 
-	c_value := (*C.GValue)(value.ToC())
+	c_value := (*C.GValue)(C.NULL)
+	if value != nil {
+		c_value = (*C.GValue)(value.ToC())
+	}
 
 	C.g_object_set_property((*C.GObject)(recv.native), c_property_name, c_value)
 
@@ -252,7 +258,10 @@ func (recv *Object) Unref() {
 
 // WatchClosure is a wrapper around the C function g_object_watch_closure.
 func (recv *Object) WatchClosure(closure *Closure) {
-	c_closure := (*C.GClosure)(closure.ToC())
+	c_closure := (*C.GClosure)(C.NULL)
+	if closure != nil {
+		c_closure = (*C.GClosure)(closure.ToC())
+	}
 
 	C.g_object_watch_closure((*C.GObject)(recv.native), c_closure)
 

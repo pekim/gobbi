@@ -12,11 +12,20 @@ import "C"
 
 // SignalAccumulatorTrueHandled is a wrapper around the C function g_signal_accumulator_true_handled.
 func SignalAccumulatorTrueHandled(ihint *SignalInvocationHint, returnAccu *Value, handlerReturn *Value, dummy uintptr) bool {
-	c_ihint := (*C.GSignalInvocationHint)(ihint.ToC())
+	c_ihint := (*C.GSignalInvocationHint)(C.NULL)
+	if ihint != nil {
+		c_ihint = (*C.GSignalInvocationHint)(ihint.ToC())
+	}
 
-	c_return_accu := (*C.GValue)(returnAccu.ToC())
+	c_return_accu := (*C.GValue)(C.NULL)
+	if returnAccu != nil {
+		c_return_accu = (*C.GValue)(returnAccu.ToC())
+	}
 
-	c_handler_return := (*C.GValue)(handlerReturn.ToC())
+	c_handler_return := (*C.GValue)(C.NULL)
+	if handlerReturn != nil {
+		c_handler_return = (*C.GValue)(handlerReturn.ToC())
+	}
 
 	c_dummy := (C.gpointer)(dummy)
 

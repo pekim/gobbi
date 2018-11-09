@@ -147,7 +147,10 @@ func (recv *AppChooserButton) SetShowDialogItem(setting bool) {
 
 // AppChooserDialogNew is a wrapper around the C function gtk_app_chooser_dialog_new.
 func AppChooserDialogNew(parent *Window, flags DialogFlags, file *gio.File) *AppChooserDialog {
-	c_parent := (*C.GtkWindow)(parent.ToC())
+	c_parent := (*C.GtkWindow)(C.NULL)
+	if parent != nil {
+		c_parent = (*C.GtkWindow)(parent.ToC())
+	}
 
 	c_flags := (C.GtkDialogFlags)(flags)
 
@@ -161,7 +164,10 @@ func AppChooserDialogNew(parent *Window, flags DialogFlags, file *gio.File) *App
 
 // AppChooserDialogNewForContentType is a wrapper around the C function gtk_app_chooser_dialog_new_for_content_type.
 func AppChooserDialogNewForContentType(parent *Window, flags DialogFlags, contentType string) *AppChooserDialog {
-	c_parent := (*C.GtkWindow)(parent.ToC())
+	c_parent := (*C.GtkWindow)(C.NULL)
+	if parent != nil {
+		c_parent = (*C.GtkWindow)(parent.ToC())
+	}
 
 	c_flags := (C.GtkDialogFlags)(flags)
 
@@ -306,7 +312,10 @@ func ApplicationNew(applicationId string, flags gio.ApplicationFlags) *Applicati
 
 // AddWindow is a wrapper around the C function gtk_application_add_window.
 func (recv *Application) AddWindow(window *Window) {
-	c_window := (*C.GtkWindow)(window.ToC())
+	c_window := (*C.GtkWindow)(C.NULL)
+	if window != nil {
+		c_window = (*C.GtkWindow)(window.ToC())
+	}
 
 	C.gtk_application_add_window((*C.GtkApplication)(recv.native), c_window)
 
@@ -323,7 +332,10 @@ func (recv *Application) GetWindows() *glib.List {
 
 // RemoveWindow is a wrapper around the C function gtk_application_remove_window.
 func (recv *Application) RemoveWindow(window *Window) {
-	c_window := (*C.GtkWindow)(window.ToC())
+	c_window := (*C.GtkWindow)(C.NULL)
+	if window != nil {
+		c_window = (*C.GtkWindow)(window.ToC())
+	}
 
 	C.gtk_application_remove_window((*C.GtkApplication)(recv.native), c_window)
 
@@ -512,7 +524,10 @@ func cellarea_removeEditableHandler(_ *C.GObject, c_renderer *C.GtkCellRenderer,
 
 // Add is a wrapper around the C function gtk_cell_area_add.
 func (recv *CellArea) Add(renderer *CellRenderer) {
-	c_renderer := (*C.GtkCellRenderer)(renderer.ToC())
+	c_renderer := (*C.GtkCellRenderer)(C.NULL)
+	if renderer != nil {
+		c_renderer = (*C.GtkCellRenderer)(renderer.ToC())
+	}
 
 	C.gtk_cell_area_add((*C.GtkCellArea)(recv.native), c_renderer)
 
@@ -521,9 +536,15 @@ func (recv *CellArea) Add(renderer *CellRenderer) {
 
 // AddFocusSibling is a wrapper around the C function gtk_cell_area_add_focus_sibling.
 func (recv *CellArea) AddFocusSibling(renderer *CellRenderer, sibling *CellRenderer) {
-	c_renderer := (*C.GtkCellRenderer)(renderer.ToC())
+	c_renderer := (*C.GtkCellRenderer)(C.NULL)
+	if renderer != nil {
+		c_renderer = (*C.GtkCellRenderer)(renderer.ToC())
+	}
 
-	c_sibling := (*C.GtkCellRenderer)(sibling.ToC())
+	c_sibling := (*C.GtkCellRenderer)(C.NULL)
+	if sibling != nil {
+		c_sibling = (*C.GtkCellRenderer)(sibling.ToC())
+	}
 
 	C.gtk_cell_area_add_focus_sibling((*C.GtkCellArea)(recv.native), c_renderer, c_sibling)
 
@@ -536,7 +557,10 @@ func (recv *CellArea) AddFocusSibling(renderer *CellRenderer, sibling *CellRende
 func (recv *CellArea) ApplyAttributes(treeModel *TreeModel, iter *TreeIter, isExpander bool, isExpanded bool) {
 	c_tree_model := (*C.GtkTreeModel)(treeModel.ToC())
 
-	c_iter := (*C.GtkTreeIter)(iter.ToC())
+	c_iter := (*C.GtkTreeIter)(C.NULL)
+	if iter != nil {
+		c_iter = (*C.GtkTreeIter)(iter.ToC())
+	}
 
 	c_is_expander :=
 		boolToGboolean(isExpander)
@@ -551,7 +575,10 @@ func (recv *CellArea) ApplyAttributes(treeModel *TreeModel, iter *TreeIter, isEx
 
 // AttributeConnect is a wrapper around the C function gtk_cell_area_attribute_connect.
 func (recv *CellArea) AttributeConnect(renderer *CellRenderer, attribute string, column int32) {
-	c_renderer := (*C.GtkCellRenderer)(renderer.ToC())
+	c_renderer := (*C.GtkCellRenderer)(C.NULL)
+	if renderer != nil {
+		c_renderer = (*C.GtkCellRenderer)(renderer.ToC())
+	}
 
 	c_attribute := C.CString(attribute)
 	defer C.free(unsafe.Pointer(c_attribute))
@@ -565,7 +592,10 @@ func (recv *CellArea) AttributeConnect(renderer *CellRenderer, attribute string,
 
 // AttributeDisconnect is a wrapper around the C function gtk_cell_area_attribute_disconnect.
 func (recv *CellArea) AttributeDisconnect(renderer *CellRenderer, attribute string) {
-	c_renderer := (*C.GtkCellRenderer)(renderer.ToC())
+	c_renderer := (*C.GtkCellRenderer)(C.NULL)
+	if renderer != nil {
+		c_renderer = (*C.GtkCellRenderer)(renderer.ToC())
+	}
 
 	c_attribute := C.CString(attribute)
 	defer C.free(unsafe.Pointer(c_attribute))
@@ -579,12 +609,18 @@ func (recv *CellArea) AttributeDisconnect(renderer *CellRenderer, attribute stri
 
 // CellGetProperty is a wrapper around the C function gtk_cell_area_cell_get_property.
 func (recv *CellArea) CellGetProperty(renderer *CellRenderer, propertyName string, value *gobject.Value) {
-	c_renderer := (*C.GtkCellRenderer)(renderer.ToC())
+	c_renderer := (*C.GtkCellRenderer)(C.NULL)
+	if renderer != nil {
+		c_renderer = (*C.GtkCellRenderer)(renderer.ToC())
+	}
 
 	c_property_name := C.CString(propertyName)
 	defer C.free(unsafe.Pointer(c_property_name))
 
-	c_value := (*C.GValue)(value.ToC())
+	c_value := (*C.GValue)(C.NULL)
+	if value != nil {
+		c_value = (*C.GValue)(value.ToC())
+	}
 
 	C.gtk_cell_area_cell_get_property((*C.GtkCellArea)(recv.native), c_renderer, c_property_name, c_value)
 
@@ -597,12 +633,18 @@ func (recv *CellArea) CellGetProperty(renderer *CellRenderer, propertyName strin
 
 // CellSetProperty is a wrapper around the C function gtk_cell_area_cell_set_property.
 func (recv *CellArea) CellSetProperty(renderer *CellRenderer, propertyName string, value *gobject.Value) {
-	c_renderer := (*C.GtkCellRenderer)(renderer.ToC())
+	c_renderer := (*C.GtkCellRenderer)(C.NULL)
+	if renderer != nil {
+		c_renderer = (*C.GtkCellRenderer)(renderer.ToC())
+	}
 
 	c_property_name := C.CString(propertyName)
 	defer C.free(unsafe.Pointer(c_property_name))
 
-	c_value := (*C.GValue)(value.ToC())
+	c_value := (*C.GValue)(C.NULL)
+	if value != nil {
+		c_value = (*C.GValue)(value.ToC())
+	}
 
 	C.gtk_cell_area_cell_set_property((*C.GtkCellArea)(recv.native), c_renderer, c_property_name, c_value)
 
@@ -613,7 +655,10 @@ func (recv *CellArea) CellSetProperty(renderer *CellRenderer, propertyName strin
 
 // CopyContext is a wrapper around the C function gtk_cell_area_copy_context.
 func (recv *CellArea) CopyContext(context *CellAreaContext) *CellAreaContext {
-	c_context := (*C.GtkCellAreaContext)(context.ToC())
+	c_context := (*C.GtkCellAreaContext)(C.NULL)
+	if context != nil {
+		c_context = (*C.GtkCellAreaContext)(context.ToC())
+	}
 
 	retC := C.gtk_cell_area_copy_context((*C.GtkCellArea)(recv.native), c_context)
 	retGo := CellAreaContextNewFromC(unsafe.Pointer(retC))
@@ -683,7 +728,10 @@ func (recv *CellArea) GetFocusCell() *CellRenderer {
 
 // GetFocusFromSibling is a wrapper around the C function gtk_cell_area_get_focus_from_sibling.
 func (recv *CellArea) GetFocusFromSibling(renderer *CellRenderer) *CellRenderer {
-	c_renderer := (*C.GtkCellRenderer)(renderer.ToC())
+	c_renderer := (*C.GtkCellRenderer)(C.NULL)
+	if renderer != nil {
+		c_renderer = (*C.GtkCellRenderer)(renderer.ToC())
+	}
 
 	retC := C.gtk_cell_area_get_focus_from_sibling((*C.GtkCellArea)(recv.native), c_renderer)
 	var retGo (*CellRenderer)
@@ -698,7 +746,10 @@ func (recv *CellArea) GetFocusFromSibling(renderer *CellRenderer) *CellRenderer 
 
 // GetFocusSiblings is a wrapper around the C function gtk_cell_area_get_focus_siblings.
 func (recv *CellArea) GetFocusSiblings(renderer *CellRenderer) *glib.List {
-	c_renderer := (*C.GtkCellRenderer)(renderer.ToC())
+	c_renderer := (*C.GtkCellRenderer)(C.NULL)
+	if renderer != nil {
+		c_renderer = (*C.GtkCellRenderer)(renderer.ToC())
+	}
 
 	retC := C.gtk_cell_area_get_focus_siblings((*C.GtkCellArea)(recv.native), c_renderer)
 	retGo := glib.ListNewFromC(unsafe.Pointer(retC))
@@ -708,9 +759,15 @@ func (recv *CellArea) GetFocusSiblings(renderer *CellRenderer) *glib.List {
 
 // GetPreferredHeight is a wrapper around the C function gtk_cell_area_get_preferred_height.
 func (recv *CellArea) GetPreferredHeight(context *CellAreaContext, widget *Widget) (int32, int32) {
-	c_context := (*C.GtkCellAreaContext)(context.ToC())
+	c_context := (*C.GtkCellAreaContext)(C.NULL)
+	if context != nil {
+		c_context = (*C.GtkCellAreaContext)(context.ToC())
+	}
 
-	c_widget := (*C.GtkWidget)(widget.ToC())
+	c_widget := (*C.GtkWidget)(C.NULL)
+	if widget != nil {
+		c_widget = (*C.GtkWidget)(widget.ToC())
+	}
 
 	var c_minimum_height C.gint
 
@@ -727,9 +784,15 @@ func (recv *CellArea) GetPreferredHeight(context *CellAreaContext, widget *Widge
 
 // GetPreferredHeightForWidth is a wrapper around the C function gtk_cell_area_get_preferred_height_for_width.
 func (recv *CellArea) GetPreferredHeightForWidth(context *CellAreaContext, widget *Widget, width int32) (int32, int32) {
-	c_context := (*C.GtkCellAreaContext)(context.ToC())
+	c_context := (*C.GtkCellAreaContext)(C.NULL)
+	if context != nil {
+		c_context = (*C.GtkCellAreaContext)(context.ToC())
+	}
 
-	c_widget := (*C.GtkWidget)(widget.ToC())
+	c_widget := (*C.GtkWidget)(C.NULL)
+	if widget != nil {
+		c_widget = (*C.GtkWidget)(widget.ToC())
+	}
 
 	c_width := (C.gint)(width)
 
@@ -748,9 +811,15 @@ func (recv *CellArea) GetPreferredHeightForWidth(context *CellAreaContext, widge
 
 // GetPreferredWidth is a wrapper around the C function gtk_cell_area_get_preferred_width.
 func (recv *CellArea) GetPreferredWidth(context *CellAreaContext, widget *Widget) (int32, int32) {
-	c_context := (*C.GtkCellAreaContext)(context.ToC())
+	c_context := (*C.GtkCellAreaContext)(C.NULL)
+	if context != nil {
+		c_context = (*C.GtkCellAreaContext)(context.ToC())
+	}
 
-	c_widget := (*C.GtkWidget)(widget.ToC())
+	c_widget := (*C.GtkWidget)(C.NULL)
+	if widget != nil {
+		c_widget = (*C.GtkWidget)(widget.ToC())
+	}
 
 	var c_minimum_width C.gint
 
@@ -767,9 +836,15 @@ func (recv *CellArea) GetPreferredWidth(context *CellAreaContext, widget *Widget
 
 // GetPreferredWidthForHeight is a wrapper around the C function gtk_cell_area_get_preferred_width_for_height.
 func (recv *CellArea) GetPreferredWidthForHeight(context *CellAreaContext, widget *Widget, height int32) (int32, int32) {
-	c_context := (*C.GtkCellAreaContext)(context.ToC())
+	c_context := (*C.GtkCellAreaContext)(C.NULL)
+	if context != nil {
+		c_context = (*C.GtkCellAreaContext)(context.ToC())
+	}
 
-	c_widget := (*C.GtkWidget)(widget.ToC())
+	c_widget := (*C.GtkWidget)(C.NULL)
+	if widget != nil {
+		c_widget = (*C.GtkWidget)(widget.ToC())
+	}
 
 	c_height := (C.gint)(height)
 
@@ -796,7 +871,10 @@ func (recv *CellArea) GetRequestMode() SizeRequestMode {
 
 // HasRenderer is a wrapper around the C function gtk_cell_area_has_renderer.
 func (recv *CellArea) HasRenderer(renderer *CellRenderer) bool {
-	c_renderer := (*C.GtkCellRenderer)(renderer.ToC())
+	c_renderer := (*C.GtkCellRenderer)(C.NULL)
+	if renderer != nil {
+		c_renderer = (*C.GtkCellRenderer)(renderer.ToC())
+	}
 
 	retC := C.gtk_cell_area_has_renderer((*C.GtkCellArea)(recv.native), c_renderer)
 	retGo := retC == C.TRUE
@@ -816,9 +894,15 @@ func (recv *CellArea) IsActivatable() bool {
 
 // IsFocusSibling is a wrapper around the C function gtk_cell_area_is_focus_sibling.
 func (recv *CellArea) IsFocusSibling(renderer *CellRenderer, sibling *CellRenderer) bool {
-	c_renderer := (*C.GtkCellRenderer)(renderer.ToC())
+	c_renderer := (*C.GtkCellRenderer)(C.NULL)
+	if renderer != nil {
+		c_renderer = (*C.GtkCellRenderer)(renderer.ToC())
+	}
 
-	c_sibling := (*C.GtkCellRenderer)(sibling.ToC())
+	c_sibling := (*C.GtkCellRenderer)(C.NULL)
+	if sibling != nil {
+		c_sibling = (*C.GtkCellRenderer)(sibling.ToC())
+	}
 
 	retC := C.gtk_cell_area_is_focus_sibling((*C.GtkCellArea)(recv.native), c_renderer, c_sibling)
 	retGo := retC == C.TRUE
@@ -828,7 +912,10 @@ func (recv *CellArea) IsFocusSibling(renderer *CellRenderer, sibling *CellRender
 
 // Remove is a wrapper around the C function gtk_cell_area_remove.
 func (recv *CellArea) Remove(renderer *CellRenderer) {
-	c_renderer := (*C.GtkCellRenderer)(renderer.ToC())
+	c_renderer := (*C.GtkCellRenderer)(C.NULL)
+	if renderer != nil {
+		c_renderer = (*C.GtkCellRenderer)(renderer.ToC())
+	}
 
 	C.gtk_cell_area_remove((*C.GtkCellArea)(recv.native), c_renderer)
 
@@ -837,9 +924,15 @@ func (recv *CellArea) Remove(renderer *CellRenderer) {
 
 // RemoveFocusSibling is a wrapper around the C function gtk_cell_area_remove_focus_sibling.
 func (recv *CellArea) RemoveFocusSibling(renderer *CellRenderer, sibling *CellRenderer) {
-	c_renderer := (*C.GtkCellRenderer)(renderer.ToC())
+	c_renderer := (*C.GtkCellRenderer)(C.NULL)
+	if renderer != nil {
+		c_renderer = (*C.GtkCellRenderer)(renderer.ToC())
+	}
 
-	c_sibling := (*C.GtkCellRenderer)(sibling.ToC())
+	c_sibling := (*C.GtkCellRenderer)(C.NULL)
+	if sibling != nil {
+		c_sibling = (*C.GtkCellRenderer)(sibling.ToC())
+	}
 
 	C.gtk_cell_area_remove_focus_sibling((*C.GtkCellArea)(recv.native), c_renderer, c_sibling)
 
@@ -850,11 +943,17 @@ func (recv *CellArea) RemoveFocusSibling(renderer *CellRenderer, sibling *CellRe
 
 // RequestRenderer is a wrapper around the C function gtk_cell_area_request_renderer.
 func (recv *CellArea) RequestRenderer(renderer *CellRenderer, orientation Orientation, widget *Widget, forSize int32) (int32, int32) {
-	c_renderer := (*C.GtkCellRenderer)(renderer.ToC())
+	c_renderer := (*C.GtkCellRenderer)(C.NULL)
+	if renderer != nil {
+		c_renderer = (*C.GtkCellRenderer)(renderer.ToC())
+	}
 
 	c_orientation := (C.GtkOrientation)(orientation)
 
-	c_widget := (*C.GtkWidget)(widget.ToC())
+	c_widget := (*C.GtkWidget)(C.NULL)
+	if widget != nil {
+		c_widget = (*C.GtkWidget)(widget.ToC())
+	}
 
 	c_for_size := (C.gint)(forSize)
 
@@ -873,7 +972,10 @@ func (recv *CellArea) RequestRenderer(renderer *CellRenderer, orientation Orient
 
 // SetFocusCell is a wrapper around the C function gtk_cell_area_set_focus_cell.
 func (recv *CellArea) SetFocusCell(renderer *CellRenderer) {
-	c_renderer := (*C.GtkCellRenderer)(renderer.ToC())
+	c_renderer := (*C.GtkCellRenderer)(C.NULL)
+	if renderer != nil {
+		c_renderer = (*C.GtkCellRenderer)(renderer.ToC())
+	}
 
 	C.gtk_cell_area_set_focus_cell((*C.GtkCellArea)(recv.native), c_renderer)
 
@@ -908,7 +1010,10 @@ func (recv *CellAreaBox) GetSpacing() int32 {
 
 // PackEnd is a wrapper around the C function gtk_cell_area_box_pack_end.
 func (recv *CellAreaBox) PackEnd(renderer *CellRenderer, expand bool, align bool, fixed bool) {
-	c_renderer := (*C.GtkCellRenderer)(renderer.ToC())
+	c_renderer := (*C.GtkCellRenderer)(C.NULL)
+	if renderer != nil {
+		c_renderer = (*C.GtkCellRenderer)(renderer.ToC())
+	}
 
 	c_expand :=
 		boolToGboolean(expand)
@@ -926,7 +1031,10 @@ func (recv *CellAreaBox) PackEnd(renderer *CellRenderer, expand bool, align bool
 
 // PackStart is a wrapper around the C function gtk_cell_area_box_pack_start.
 func (recv *CellAreaBox) PackStart(renderer *CellRenderer, expand bool, align bool, fixed bool) {
-	c_renderer := (*C.GtkCellRenderer)(renderer.ToC())
+	c_renderer := (*C.GtkCellRenderer)(C.NULL)
+	if renderer != nil {
+		c_renderer = (*C.GtkCellRenderer)(renderer.ToC())
+	}
 
 	c_expand :=
 		boolToGboolean(expand)
@@ -1064,7 +1172,10 @@ func (recv *CellAreaContext) PushPreferredWidth(minimumWidth int32, naturalWidth
 
 // GetPreferredHeight is a wrapper around the C function gtk_cell_renderer_get_preferred_height.
 func (recv *CellRenderer) GetPreferredHeight(widget *Widget) (int32, int32) {
-	c_widget := (*C.GtkWidget)(widget.ToC())
+	c_widget := (*C.GtkWidget)(C.NULL)
+	if widget != nil {
+		c_widget = (*C.GtkWidget)(widget.ToC())
+	}
 
 	var c_minimum_size C.gint
 
@@ -1081,7 +1192,10 @@ func (recv *CellRenderer) GetPreferredHeight(widget *Widget) (int32, int32) {
 
 // GetPreferredHeightForWidth is a wrapper around the C function gtk_cell_renderer_get_preferred_height_for_width.
 func (recv *CellRenderer) GetPreferredHeightForWidth(widget *Widget, width int32) (int32, int32) {
-	c_widget := (*C.GtkWidget)(widget.ToC())
+	c_widget := (*C.GtkWidget)(C.NULL)
+	if widget != nil {
+		c_widget = (*C.GtkWidget)(widget.ToC())
+	}
 
 	c_width := (C.gint)(width)
 
@@ -1100,7 +1214,10 @@ func (recv *CellRenderer) GetPreferredHeightForWidth(widget *Widget, width int32
 
 // GetPreferredSize is a wrapper around the C function gtk_cell_renderer_get_preferred_size.
 func (recv *CellRenderer) GetPreferredSize(widget *Widget) (*Requisition, *Requisition) {
-	c_widget := (*C.GtkWidget)(widget.ToC())
+	c_widget := (*C.GtkWidget)(C.NULL)
+	if widget != nil {
+		c_widget = (*C.GtkWidget)(widget.ToC())
+	}
 
 	var c_minimum_size C.GtkRequisition
 
@@ -1117,7 +1234,10 @@ func (recv *CellRenderer) GetPreferredSize(widget *Widget) (*Requisition, *Requi
 
 // GetPreferredWidth is a wrapper around the C function gtk_cell_renderer_get_preferred_width.
 func (recv *CellRenderer) GetPreferredWidth(widget *Widget) (int32, int32) {
-	c_widget := (*C.GtkWidget)(widget.ToC())
+	c_widget := (*C.GtkWidget)(C.NULL)
+	if widget != nil {
+		c_widget = (*C.GtkWidget)(widget.ToC())
+	}
 
 	var c_minimum_size C.gint
 
@@ -1134,7 +1254,10 @@ func (recv *CellRenderer) GetPreferredWidth(widget *Widget) (int32, int32) {
 
 // GetPreferredWidthForHeight is a wrapper around the C function gtk_cell_renderer_get_preferred_width_for_height.
 func (recv *CellRenderer) GetPreferredWidthForHeight(widget *Widget, height int32) (int32, int32) {
-	c_widget := (*C.GtkWidget)(widget.ToC())
+	c_widget := (*C.GtkWidget)(C.NULL)
+	if widget != nil {
+		c_widget = (*C.GtkWidget)(widget.ToC())
+	}
 
 	c_height := (C.gint)(height)
 
@@ -1161,7 +1284,10 @@ func (recv *CellRenderer) GetRequestMode() SizeRequestMode {
 
 // GetState is a wrapper around the C function gtk_cell_renderer_get_state.
 func (recv *CellRenderer) GetState(widget *Widget, cellState CellRendererState) StateFlags {
-	c_widget := (*C.GtkWidget)(widget.ToC())
+	c_widget := (*C.GtkWidget)(C.NULL)
+	if widget != nil {
+		c_widget = (*C.GtkWidget)(widget.ToC())
+	}
 
 	c_cell_state := (C.GtkCellRendererState)(cellState)
 
@@ -1197,7 +1323,10 @@ func (recv *CellView) GetFitModel() bool {
 
 // SetBackgroundRgba is a wrapper around the C function gtk_cell_view_set_background_rgba.
 func (recv *CellView) SetBackgroundRgba(rgba *gdk.RGBA) {
-	c_rgba := (*C.GdkRGBA)(rgba.ToC())
+	c_rgba := (*C.GdkRGBA)(C.NULL)
+	if rgba != nil {
+		c_rgba = (*C.GdkRGBA)(rgba.ToC())
+	}
 
 	C.gtk_cell_view_set_background_rgba((*C.GtkCellView)(recv.native), c_rgba)
 
@@ -1226,7 +1355,10 @@ func (recv *CellView) SetFitModel(fitModel bool) {
 
 // ColorButtonNewWithRgba is a wrapper around the C function gtk_color_button_new_with_rgba.
 func ColorButtonNewWithRgba(rgba *gdk.RGBA) *ColorButton {
-	c_rgba := (*C.GdkRGBA)(rgba.ToC())
+	c_rgba := (*C.GdkRGBA)(C.NULL)
+	if rgba != nil {
+		c_rgba = (*C.GdkRGBA)(rgba.ToC())
+	}
 
 	retC := C.gtk_color_button_new_with_rgba(c_rgba)
 	retGo := ColorButtonNewFromC(unsafe.Pointer(retC))
@@ -1247,7 +1379,10 @@ func (recv *ColorButton) GetRgba() *gdk.RGBA {
 
 // SetRgba is a wrapper around the C function gtk_color_button_set_rgba.
 func (recv *ColorButton) SetRgba(rgba *gdk.RGBA) {
-	c_rgba := (*C.GdkRGBA)(rgba.ToC())
+	c_rgba := (*C.GdkRGBA)(C.NULL)
+	if rgba != nil {
+		c_rgba = (*C.GdkRGBA)(rgba.ToC())
+	}
 
 	C.gtk_color_button_set_rgba((*C.GtkColorButton)(recv.native), c_rgba)
 
@@ -1278,7 +1413,10 @@ func (recv *ColorSelection) GetPreviousRgba() *gdk.RGBA {
 
 // SetCurrentRgba is a wrapper around the C function gtk_color_selection_set_current_rgba.
 func (recv *ColorSelection) SetCurrentRgba(rgba *gdk.RGBA) {
-	c_rgba := (*C.GdkRGBA)(rgba.ToC())
+	c_rgba := (*C.GdkRGBA)(C.NULL)
+	if rgba != nil {
+		c_rgba = (*C.GdkRGBA)(rgba.ToC())
+	}
 
 	C.gtk_color_selection_set_current_rgba((*C.GtkColorSelection)(recv.native), c_rgba)
 
@@ -1287,7 +1425,10 @@ func (recv *ColorSelection) SetCurrentRgba(rgba *gdk.RGBA) {
 
 // SetPreviousRgba is a wrapper around the C function gtk_color_selection_set_previous_rgba.
 func (recv *ColorSelection) SetPreviousRgba(rgba *gdk.RGBA) {
-	c_rgba := (*C.GdkRGBA)(rgba.ToC())
+	c_rgba := (*C.GdkRGBA)(C.NULL)
+	if rgba != nil {
+		c_rgba = (*C.GdkRGBA)(rgba.ToC())
+	}
 
 	C.gtk_color_selection_set_previous_rgba((*C.GtkColorSelection)(recv.native), c_rgba)
 
@@ -1320,7 +1461,10 @@ func (recv *ComboBox) GetPopupFixedWidth() bool {
 
 // PopupForDevice is a wrapper around the C function gtk_combo_box_popup_for_device.
 func (recv *ComboBox) PopupForDevice(device *gdk.Device) {
-	c_device := (*C.GdkDevice)(device.ToC())
+	c_device := (*C.GdkDevice)(C.NULL)
+	if device != nil {
+		c_device = (*C.GdkDevice)(device.ToC())
+	}
 
 	C.gtk_combo_box_popup_for_device((*C.GtkComboBox)(recv.native), c_device)
 
@@ -1385,7 +1529,10 @@ func (recv *ComboBoxText) RemoveAll() {
 
 // EntryCompletionNewWithArea is a wrapper around the C function gtk_entry_completion_new_with_area.
 func EntryCompletionNewWithArea(area *CellArea) *EntryCompletion {
-	c_area := (*C.GtkCellArea)(area.ToC())
+	c_area := (*C.GtkCellArea)(C.NULL)
+	if area != nil {
+		c_area = (*C.GtkCellArea)(area.ToC())
+	}
 
 	retC := C.gtk_entry_completion_new_with_area(c_area)
 	retGo := EntryCompletionNewFromC(unsafe.Pointer(retC))
@@ -1395,13 +1542,25 @@ func EntryCompletionNewWithArea(area *CellArea) *EntryCompletion {
 
 // LoadSymbolic is a wrapper around the C function gtk_icon_info_load_symbolic.
 func (recv *IconInfo) LoadSymbolic(fg *gdk.RGBA, successColor *gdk.RGBA, warningColor *gdk.RGBA, errorColor *gdk.RGBA) (*gdkpixbuf.Pixbuf, bool, error) {
-	c_fg := (*C.GdkRGBA)(fg.ToC())
+	c_fg := (*C.GdkRGBA)(C.NULL)
+	if fg != nil {
+		c_fg = (*C.GdkRGBA)(fg.ToC())
+	}
 
-	c_success_color := (*C.GdkRGBA)(successColor.ToC())
+	c_success_color := (*C.GdkRGBA)(C.NULL)
+	if successColor != nil {
+		c_success_color = (*C.GdkRGBA)(successColor.ToC())
+	}
 
-	c_warning_color := (*C.GdkRGBA)(warningColor.ToC())
+	c_warning_color := (*C.GdkRGBA)(C.NULL)
+	if warningColor != nil {
+		c_warning_color = (*C.GdkRGBA)(warningColor.ToC())
+	}
 
-	c_error_color := (*C.GdkRGBA)(errorColor.ToC())
+	c_error_color := (*C.GdkRGBA)(C.NULL)
+	if errorColor != nil {
+		c_error_color = (*C.GdkRGBA)(errorColor.ToC())
+	}
 
 	var c_was_symbolic C.gboolean
 
@@ -1422,7 +1581,10 @@ func (recv *IconInfo) LoadSymbolic(fg *gdk.RGBA, successColor *gdk.RGBA, warning
 
 // LoadSymbolicForContext is a wrapper around the C function gtk_icon_info_load_symbolic_for_context.
 func (recv *IconInfo) LoadSymbolicForContext(context *StyleContext) (*gdkpixbuf.Pixbuf, bool, error) {
-	c_context := (*C.GtkStyleContext)(context.ToC())
+	c_context := (*C.GtkStyleContext)(C.NULL)
+	if context != nil {
+		c_context = (*C.GtkStyleContext)(context.ToC())
+	}
 
 	var c_was_symbolic C.gboolean
 
@@ -1443,7 +1605,10 @@ func (recv *IconInfo) LoadSymbolicForContext(context *StyleContext) (*gdkpixbuf.
 
 // LoadSymbolicForStyle is a wrapper around the C function gtk_icon_info_load_symbolic_for_style.
 func (recv *IconInfo) LoadSymbolicForStyle(style *Style, state StateType) (*gdkpixbuf.Pixbuf, bool, error) {
-	c_style := (*C.GtkStyle)(style.ToC())
+	c_style := (*C.GtkStyle)(C.NULL)
+	if style != nil {
+		c_style = (*C.GtkStyle)(style.ToC())
+	}
 
 	c_state := (C.GtkStateType)(state)
 
@@ -1466,7 +1631,10 @@ func (recv *IconInfo) LoadSymbolicForStyle(style *Style, state StateType) (*gdkp
 
 // IconViewNewWithArea is a wrapper around the C function gtk_icon_view_new_with_area.
 func IconViewNewWithArea(area *CellArea) *IconView {
-	c_area := (*C.GtkCellArea)(area.ToC())
+	c_area := (*C.GtkCellArea)(C.NULL)
+	if area != nil {
+		c_area = (*C.GtkCellArea)(area.ToC())
+	}
 
 	retC := C.gtk_icon_view_new_with_area(c_area)
 	retGo := IconViewNewFromC(unsafe.Pointer(retC))
@@ -1600,7 +1768,10 @@ func (recv *NumerableIcon) SetLabel(label string) {
 
 // SetStyleContext is a wrapper around the C function gtk_numerable_icon_set_style_context.
 func (recv *NumerableIcon) SetStyleContext(style *StyleContext) {
-	c_style := (*C.GtkStyleContext)(style.ToC())
+	c_style := (*C.GtkStyleContext)(C.NULL)
+	if style != nil {
+		c_style = (*C.GtkStyleContext)(style.ToC())
+	}
 
 	C.gtk_numerable_icon_set_style_context((*C.GtkNumerableIcon)(recv.native), c_style)
 
@@ -1637,7 +1808,10 @@ func (recv *ProgressBar) SetShowText(showText bool) {
 
 // JoinGroup is a wrapper around the C function gtk_radio_action_join_group.
 func (recv *RadioAction) JoinGroup(groupSource *RadioAction) {
-	c_group_source := (*C.GtkRadioAction)(groupSource.ToC())
+	c_group_source := (*C.GtkRadioAction)(C.NULL)
+	if groupSource != nil {
+		c_group_source = (*C.GtkRadioAction)(groupSource.ToC())
+	}
 
 	C.gtk_radio_action_join_group((*C.GtkRadioAction)(recv.native), c_group_source)
 
@@ -1646,7 +1820,10 @@ func (recv *RadioAction) JoinGroup(groupSource *RadioAction) {
 
 // JoinGroup is a wrapper around the C function gtk_radio_button_join_group.
 func (recv *RadioButton) JoinGroup(groupSource *RadioButton) {
-	c_group_source := (*C.GtkRadioButton)(groupSource.ToC())
+	c_group_source := (*C.GtkRadioButton)(C.NULL)
+	if groupSource != nil {
+		c_group_source = (*C.GtkRadioButton)(groupSource.ToC())
+	}
 
 	C.gtk_radio_button_join_group((*C.GtkRadioButton)(recv.native), c_group_source)
 
@@ -1657,7 +1834,10 @@ func (recv *RadioButton) JoinGroup(groupSource *RadioButton) {
 func ScaleNew(orientation Orientation, adjustment *Adjustment) *Scale {
 	c_orientation := (C.GtkOrientation)(orientation)
 
-	c_adjustment := (*C.GtkAdjustment)(adjustment.ToC())
+	c_adjustment := (*C.GtkAdjustment)(C.NULL)
+	if adjustment != nil {
+		c_adjustment = (*C.GtkAdjustment)(adjustment.ToC())
+	}
 
 	retC := C.gtk_scale_new(c_orientation, c_adjustment)
 	retGo := ScaleNewFromC(unsafe.Pointer(retC))
@@ -1685,7 +1865,10 @@ func ScaleNewWithRange(orientation Orientation, min float64, max float64, step f
 func ScrollbarNew(orientation Orientation, adjustment *Adjustment) *Scrollbar {
 	c_orientation := (C.GtkOrientation)(orientation)
 
-	c_adjustment := (*C.GtkAdjustment)(adjustment.ToC())
+	c_adjustment := (*C.GtkAdjustment)(C.NULL)
+	if adjustment != nil {
+		c_adjustment = (*C.GtkAdjustment)(adjustment.ToC())
+	}
 
 	retC := C.gtk_scrollbar_new(c_orientation, c_adjustment)
 	retGo := ScrollbarNewFromC(unsafe.Pointer(retC))
@@ -2026,7 +2209,10 @@ func (recv *StyleContext) ListRegions() *glib.List {
 
 // NotifyStateChange is a wrapper around the C function gtk_style_context_notify_state_change.
 func (recv *StyleContext) NotifyStateChange(window *gdk.Window, regionId uintptr, state StateType, stateValue bool) {
-	c_window := (*C.GdkWindow)(window.ToC())
+	c_window := (*C.GdkWindow)(C.NULL)
+	if window != nil {
+		c_window = (*C.GdkWindow)(window.ToC())
+	}
 
 	c_region_id := (C.gpointer)(regionId)
 
@@ -2101,7 +2287,10 @@ func (recv *StyleContext) Save() {
 
 // ScrollAnimations is a wrapper around the C function gtk_style_context_scroll_animations.
 func (recv *StyleContext) ScrollAnimations(window *gdk.Window, dx int32, dy int32) {
-	c_window := (*C.GdkWindow)(window.ToC())
+	c_window := (*C.GdkWindow)(C.NULL)
+	if window != nil {
+		c_window = (*C.GdkWindow)(window.ToC())
+	}
 
 	c_dx := (C.gint)(dx)
 
@@ -2114,7 +2303,10 @@ func (recv *StyleContext) ScrollAnimations(window *gdk.Window, dx int32, dy int3
 
 // SetBackground is a wrapper around the C function gtk_style_context_set_background.
 func (recv *StyleContext) SetBackground(window *gdk.Window) {
-	c_window := (*C.GdkWindow)(window.ToC())
+	c_window := (*C.GdkWindow)(C.NULL)
+	if window != nil {
+		c_window = (*C.GdkWindow)(window.ToC())
+	}
 
 	C.gtk_style_context_set_background((*C.GtkStyleContext)(recv.native), c_window)
 
@@ -2141,7 +2333,10 @@ func (recv *StyleContext) SetJunctionSides(sides JunctionSides) {
 
 // SetPath is a wrapper around the C function gtk_style_context_set_path.
 func (recv *StyleContext) SetPath(path *WidgetPath) {
-	c_path := (*C.GtkWidgetPath)(path.ToC())
+	c_path := (*C.GtkWidgetPath)(C.NULL)
+	if path != nil {
+		c_path = (*C.GtkWidgetPath)(path.ToC())
+	}
 
 	C.gtk_style_context_set_path((*C.GtkStyleContext)(recv.native), c_path)
 
@@ -2150,7 +2345,10 @@ func (recv *StyleContext) SetPath(path *WidgetPath) {
 
 // SetScreen is a wrapper around the C function gtk_style_context_set_screen.
 func (recv *StyleContext) SetScreen(screen *gdk.Screen) {
-	c_screen := (*C.GdkScreen)(screen.ToC())
+	c_screen := (*C.GdkScreen)(C.NULL)
+	if screen != nil {
+		c_screen = (*C.GdkScreen)(screen.ToC())
+	}
 
 	C.gtk_style_context_set_screen((*C.GtkStyleContext)(recv.native), c_screen)
 
@@ -2217,7 +2415,10 @@ func (recv *StyleProperties) MapColor(name string, color *SymbolicColor) {
 	c_name := C.CString(name)
 	defer C.free(unsafe.Pointer(c_name))
 
-	c_color := (*C.GtkSymbolicColor)(color.ToC())
+	c_color := (*C.GtkSymbolicColor)(C.NULL)
+	if color != nil {
+		c_color = (*C.GtkSymbolicColor)(color.ToC())
+	}
 
 	C.gtk_style_properties_map_color((*C.GtkStyleProperties)(recv.native), c_name, c_color)
 
@@ -2226,7 +2427,10 @@ func (recv *StyleProperties) MapColor(name string, color *SymbolicColor) {
 
 // Merge is a wrapper around the C function gtk_style_properties_merge.
 func (recv *StyleProperties) Merge(propsToMerge *StyleProperties, replace bool) {
-	c_props_to_merge := (*C.GtkStyleProperties)(propsToMerge.ToC())
+	c_props_to_merge := (*C.GtkStyleProperties)(C.NULL)
+	if propsToMerge != nil {
+		c_props_to_merge = (*C.GtkStyleProperties)(propsToMerge.ToC())
+	}
 
 	c_replace :=
 		boolToGboolean(replace)
@@ -2245,7 +2449,10 @@ func (recv *StyleProperties) SetProperty(property string, state StateFlags, valu
 
 	c_state := (C.GtkStateFlags)(state)
 
-	c_value := (*C.GValue)(value.ToC())
+	c_value := (*C.GValue)(C.NULL)
+	if value != nil {
+		c_value = (*C.GValue)(value.ToC())
+	}
 
 	C.gtk_style_properties_set_property((*C.GtkStyleProperties)(recv.native), c_property, c_state, c_value)
 
@@ -2524,7 +2731,10 @@ func (recv *TreeView) IsBlankAtPos(x int32, y int32) (bool, *TreePath, *TreeView
 
 // TreeViewColumnNewWithArea is a wrapper around the C function gtk_tree_view_column_new_with_area.
 func TreeViewColumnNewWithArea(area *CellArea) *TreeViewColumn {
-	c_area := (*C.GtkCellArea)(area.ToC())
+	c_area := (*C.GtkCellArea)(C.NULL)
+	if area != nil {
+		c_area = (*C.GtkCellArea)(area.ToC())
+	}
 
 	retC := C.gtk_tree_view_column_new_with_area(c_area)
 	retGo := TreeViewColumnNewFromC(unsafe.Pointer(retC))
@@ -2663,7 +2873,10 @@ func widget_styleUpdatedHandler(_ *C.GObject, data C.gpointer) {
 
 // AddDeviceEvents is a wrapper around the C function gtk_widget_add_device_events.
 func (recv *Widget) AddDeviceEvents(device *gdk.Device, events gdk.EventMask) {
-	c_device := (*C.GdkDevice)(device.ToC())
+	c_device := (*C.GdkDevice)(C.NULL)
+	if device != nil {
+		c_device = (*C.GdkDevice)(device.ToC())
+	}
 
 	c_events := (C.GdkEventMask)(events)
 
@@ -2674,7 +2887,10 @@ func (recv *Widget) AddDeviceEvents(device *gdk.Device, events gdk.EventMask) {
 
 // DeviceIsShadowed is a wrapper around the C function gtk_widget_device_is_shadowed.
 func (recv *Widget) DeviceIsShadowed(device *gdk.Device) bool {
-	c_device := (*C.GdkDevice)(device.ToC())
+	c_device := (*C.GdkDevice)(C.NULL)
+	if device != nil {
+		c_device = (*C.GdkDevice)(device.ToC())
+	}
 
 	retC := C.gtk_widget_device_is_shadowed((*C.GtkWidget)(recv.native), c_device)
 	retGo := retC == C.TRUE
@@ -2684,7 +2900,10 @@ func (recv *Widget) DeviceIsShadowed(device *gdk.Device) bool {
 
 // Draw is a wrapper around the C function gtk_widget_draw.
 func (recv *Widget) Draw(cr *cairo.Context) {
-	c_cr := (*C.cairo_t)(cr.ToC())
+	c_cr := (*C.cairo_t)(C.NULL)
+	if cr != nil {
+		c_cr = (*C.cairo_t)(cr.ToC())
+	}
 
 	C.gtk_widget_draw((*C.GtkWidget)(recv.native), c_cr)
 
@@ -2693,7 +2912,10 @@ func (recv *Widget) Draw(cr *cairo.Context) {
 
 // GetDeviceEnabled is a wrapper around the C function gtk_widget_get_device_enabled.
 func (recv *Widget) GetDeviceEnabled(device *gdk.Device) bool {
-	c_device := (*C.GdkDevice)(device.ToC())
+	c_device := (*C.GdkDevice)(C.NULL)
+	if device != nil {
+		c_device = (*C.GdkDevice)(device.ToC())
+	}
 
 	retC := C.gtk_widget_get_device_enabled((*C.GtkWidget)(recv.native), c_device)
 	retGo := retC == C.TRUE
@@ -2703,7 +2925,10 @@ func (recv *Widget) GetDeviceEnabled(device *gdk.Device) bool {
 
 // GetDeviceEvents is a wrapper around the C function gtk_widget_get_device_events.
 func (recv *Widget) GetDeviceEvents(device *gdk.Device) gdk.EventMask {
-	c_device := (*C.GdkDevice)(device.ToC())
+	c_device := (*C.GdkDevice)(C.NULL)
+	if device != nil {
+		c_device = (*C.GdkDevice)(device.ToC())
+	}
 
 	retC := C.gtk_widget_get_device_events((*C.GtkWidget)(recv.native), c_device)
 	retGo := (gdk.EventMask)(retC)
@@ -2840,7 +3065,10 @@ func (recv *Widget) GetStateFlags() StateFlags {
 
 // InputShapeCombineRegion is a wrapper around the C function gtk_widget_input_shape_combine_region.
 func (recv *Widget) InputShapeCombineRegion(region *cairo.Region) {
-	c_region := (*C.cairo_region_t)(region.ToC())
+	c_region := (*C.cairo_region_t)(C.NULL)
+	if region != nil {
+		c_region = (*C.cairo_region_t)(region.ToC())
+	}
 
 	C.gtk_widget_input_shape_combine_region((*C.GtkWidget)(recv.native), c_region)
 
@@ -2851,7 +3079,10 @@ func (recv *Widget) InputShapeCombineRegion(region *cairo.Region) {
 func (recv *Widget) OverrideBackgroundColor(state StateFlags, color *gdk.RGBA) {
 	c_state := (C.GtkStateFlags)(state)
 
-	c_color := (*C.GdkRGBA)(color.ToC())
+	c_color := (*C.GdkRGBA)(C.NULL)
+	if color != nil {
+		c_color = (*C.GdkRGBA)(color.ToC())
+	}
 
 	C.gtk_widget_override_background_color((*C.GtkWidget)(recv.native), c_state, c_color)
 
@@ -2862,7 +3093,10 @@ func (recv *Widget) OverrideBackgroundColor(state StateFlags, color *gdk.RGBA) {
 func (recv *Widget) OverrideColor(state StateFlags, color *gdk.RGBA) {
 	c_state := (C.GtkStateFlags)(state)
 
-	c_color := (*C.GdkRGBA)(color.ToC())
+	c_color := (*C.GdkRGBA)(C.NULL)
+	if color != nil {
+		c_color = (*C.GdkRGBA)(color.ToC())
+	}
 
 	C.gtk_widget_override_color((*C.GtkWidget)(recv.native), c_state, c_color)
 
@@ -2871,9 +3105,15 @@ func (recv *Widget) OverrideColor(state StateFlags, color *gdk.RGBA) {
 
 // OverrideCursor is a wrapper around the C function gtk_widget_override_cursor.
 func (recv *Widget) OverrideCursor(cursor *gdk.RGBA, secondaryCursor *gdk.RGBA) {
-	c_cursor := (*C.GdkRGBA)(cursor.ToC())
+	c_cursor := (*C.GdkRGBA)(C.NULL)
+	if cursor != nil {
+		c_cursor = (*C.GdkRGBA)(cursor.ToC())
+	}
 
-	c_secondary_cursor := (*C.GdkRGBA)(secondaryCursor.ToC())
+	c_secondary_cursor := (*C.GdkRGBA)(C.NULL)
+	if secondaryCursor != nil {
+		c_secondary_cursor = (*C.GdkRGBA)(secondaryCursor.ToC())
+	}
 
 	C.gtk_widget_override_cursor((*C.GtkWidget)(recv.native), c_cursor, c_secondary_cursor)
 
@@ -2882,7 +3122,10 @@ func (recv *Widget) OverrideCursor(cursor *gdk.RGBA, secondaryCursor *gdk.RGBA) 
 
 // OverrideFont is a wrapper around the C function gtk_widget_override_font.
 func (recv *Widget) OverrideFont(fontDesc *pango.FontDescription) {
-	c_font_desc := (*C.PangoFontDescription)(fontDesc.ToC())
+	c_font_desc := (*C.PangoFontDescription)(C.NULL)
+	if fontDesc != nil {
+		c_font_desc = (*C.PangoFontDescription)(fontDesc.ToC())
+	}
 
 	C.gtk_widget_override_font((*C.GtkWidget)(recv.native), c_font_desc)
 
@@ -2894,7 +3137,10 @@ func (recv *Widget) OverrideSymbolicColor(name string, color *gdk.RGBA) {
 	c_name := C.CString(name)
 	defer C.free(unsafe.Pointer(c_name))
 
-	c_color := (*C.GdkRGBA)(color.ToC())
+	c_color := (*C.GdkRGBA)(C.NULL)
+	if color != nil {
+		c_color = (*C.GdkRGBA)(color.ToC())
+	}
 
 	C.gtk_widget_override_symbolic_color((*C.GtkWidget)(recv.native), c_name, c_color)
 
@@ -2903,7 +3149,10 @@ func (recv *Widget) OverrideSymbolicColor(name string, color *gdk.RGBA) {
 
 // QueueDrawRegion is a wrapper around the C function gtk_widget_queue_draw_region.
 func (recv *Widget) QueueDrawRegion(region *cairo.Region) {
-	c_region := (*C.cairo_region_t)(region.ToC())
+	c_region := (*C.cairo_region_t)(C.NULL)
+	if region != nil {
+		c_region = (*C.cairo_region_t)(region.ToC())
+	}
 
 	C.gtk_widget_queue_draw_region((*C.GtkWidget)(recv.native), c_region)
 
@@ -2921,7 +3170,10 @@ func (recv *Widget) ResetStyle() {
 
 // SetDeviceEnabled is a wrapper around the C function gtk_widget_set_device_enabled.
 func (recv *Widget) SetDeviceEnabled(device *gdk.Device, enabled bool) {
-	c_device := (*C.GdkDevice)(device.ToC())
+	c_device := (*C.GdkDevice)(C.NULL)
+	if device != nil {
+		c_device = (*C.GdkDevice)(device.ToC())
+	}
 
 	c_enabled :=
 		boolToGboolean(enabled)
@@ -2933,7 +3185,10 @@ func (recv *Widget) SetDeviceEnabled(device *gdk.Device, enabled bool) {
 
 // SetDeviceEvents is a wrapper around the C function gtk_widget_set_device_events.
 func (recv *Widget) SetDeviceEvents(device *gdk.Device, events gdk.EventMask) {
-	c_device := (*C.GdkDevice)(device.ToC())
+	c_device := (*C.GdkDevice)(C.NULL)
+	if device != nil {
+		c_device = (*C.GdkDevice)(device.ToC())
+	}
 
 	c_events := (C.GdkEventMask)(events)
 
@@ -3002,7 +3257,10 @@ func (recv *Widget) SetSupportMultidevice(supportMultidevice bool) {
 
 // ShapeCombineRegion is a wrapper around the C function gtk_widget_shape_combine_region.
 func (recv *Widget) ShapeCombineRegion(region *cairo.Region) {
-	c_region := (*C.cairo_region_t)(region.ToC())
+	c_region := (*C.cairo_region_t)(C.NULL)
+	if region != nil {
+		c_region = (*C.cairo_region_t)(region.ToC())
+	}
 
 	C.gtk_widget_shape_combine_region((*C.GtkWidget)(recv.native), c_region)
 
@@ -3062,7 +3320,10 @@ func (recv *Window) ResizeToGeometry(width int32, height int32) {
 
 // SetApplication is a wrapper around the C function gtk_window_set_application.
 func (recv *Window) SetApplication(application *Application) {
-	c_application := (*C.GtkApplication)(application.ToC())
+	c_application := (*C.GtkApplication)(C.NULL)
+	if application != nil {
+		c_application = (*C.GtkApplication)(application.ToC())
+	}
 
 	C.gtk_window_set_application((*C.GtkWindow)(recv.native), c_application)
 
@@ -3102,7 +3363,10 @@ func (recv *Window) SetHasUserRefCount(setting bool) {
 
 // GetCurrentDeviceGrab is a wrapper around the C function gtk_window_group_get_current_device_grab.
 func (recv *WindowGroup) GetCurrentDeviceGrab(device *gdk.Device) *Widget {
-	c_device := (*C.GdkDevice)(device.ToC())
+	c_device := (*C.GdkDevice)(C.NULL)
+	if device != nil {
+		c_device = (*C.GdkDevice)(device.ToC())
+	}
 
 	retC := C.gtk_window_group_get_current_device_grab((*C.GtkWindowGroup)(recv.native), c_device)
 	var retGo (*Widget)

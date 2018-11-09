@@ -35,9 +35,15 @@ func AttrGravityNew(gravity Gravity) *Attribute {
 
 // ExtentsToPixels is a wrapper around the C function pango_extents_to_pixels.
 func ExtentsToPixels(inclusive *Rectangle, nearest *Rectangle) {
-	c_inclusive := (*C.PangoRectangle)(inclusive.ToC())
+	c_inclusive := (*C.PangoRectangle)(C.NULL)
+	if inclusive != nil {
+		c_inclusive = (*C.PangoRectangle)(inclusive.ToC())
+	}
 
-	c_nearest := (*C.PangoRectangle)(nearest.ToC())
+	c_nearest := (*C.PangoRectangle)(C.NULL)
+	if nearest != nil {
+		c_nearest = (*C.PangoRectangle)(nearest.ToC())
+	}
 
 	C.pango_extents_to_pixels(c_inclusive, c_nearest)
 
@@ -46,7 +52,10 @@ func ExtentsToPixels(inclusive *Rectangle, nearest *Rectangle) {
 
 // GravityGetForMatrix is a wrapper around the C function pango_gravity_get_for_matrix.
 func GravityGetForMatrix(matrix *Matrix) Gravity {
-	c_matrix := (*C.PangoMatrix)(matrix.ToC())
+	c_matrix := (*C.PangoMatrix)(C.NULL)
+	if matrix != nil {
+		c_matrix = (*C.PangoMatrix)(matrix.ToC())
+	}
 
 	retC := C.pango_gravity_get_for_matrix(c_matrix)
 	retGo := (Gravity)(retC)

@@ -127,7 +127,10 @@ func appinfomonitor_changedHandler(_ *C.GObject, data C.gpointer) {
 
 // AddOptionGroup is a wrapper around the C function g_application_add_option_group.
 func (recv *Application) AddOptionGroup(group *glib.OptionGroup) {
-	c_group := (*C.GOptionGroup)(group.ToC())
+	c_group := (*C.GOptionGroup)(C.NULL)
+	if group != nil {
+		c_group = (*C.GOptionGroup)(group.ToC())
+	}
 
 	C.g_application_add_option_group((*C.GApplication)(recv.native), c_group)
 
@@ -139,7 +142,10 @@ func (recv *Application) SendNotification(id string, notification *Notification)
 	c_id := C.CString(id)
 	defer C.free(unsafe.Pointer(c_id))
 
-	c_notification := (*C.GNotification)(notification.ToC())
+	c_notification := (*C.GNotification)(C.NULL)
+	if notification != nil {
+		c_notification = (*C.GNotification)(notification.ToC())
+	}
 
 	C.g_application_send_notification((*C.GApplication)(recv.native), c_id, c_notification)
 
@@ -345,9 +351,15 @@ func CastToSubprocess(object *gobject.Object) *Subprocess {
 
 // Communicate is a wrapper around the C function g_subprocess_communicate.
 func (recv *Subprocess) Communicate(stdinBuf *glib.Bytes, cancellable *Cancellable) (bool, *glib.Bytes, *glib.Bytes, error) {
-	c_stdin_buf := (*C.GBytes)(stdinBuf.ToC())
+	c_stdin_buf := (*C.GBytes)(C.NULL)
+	if stdinBuf != nil {
+		c_stdin_buf = (*C.GBytes)(stdinBuf.ToC())
+	}
 
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var c_stdout_buf *C.GBytes
 
@@ -402,7 +414,10 @@ func (recv *Subprocess) CommunicateUtf8(stdinBuf string, cancellable *Cancellabl
 	c_stdin_buf := C.CString(stdinBuf)
 	defer C.free(unsafe.Pointer(c_stdin_buf))
 
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var c_stdout_buf *C.char
 
@@ -554,7 +569,10 @@ func (recv *Subprocess) SendSignal(signalNum int32) {
 
 // Wait is a wrapper around the C function g_subprocess_wait.
 func (recv *Subprocess) Wait(cancellable *Cancellable) (bool, error) {
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -573,7 +591,10 @@ func (recv *Subprocess) Wait(cancellable *Cancellable) (bool, error) {
 
 // WaitCheck is a wrapper around the C function g_subprocess_wait_check.
 func (recv *Subprocess) WaitCheck(cancellable *Cancellable) (bool, error) {
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -800,11 +821,17 @@ func (recv *SubprocessLauncher) Unsetenv(variable string) {
 
 // InvokeRequestCertificate is a wrapper around the C function g_tls_interaction_invoke_request_certificate.
 func (recv *TlsInteraction) InvokeRequestCertificate(connection *TlsConnection, flags TlsCertificateRequestFlags, cancellable *Cancellable) (TlsInteractionResult, error) {
-	c_connection := (*C.GTlsConnection)(connection.ToC())
+	c_connection := (*C.GTlsConnection)(C.NULL)
+	if connection != nil {
+		c_connection = (*C.GTlsConnection)(connection.ToC())
+	}
 
 	c_flags := (C.GTlsCertificateRequestFlags)(flags)
 
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -821,11 +848,17 @@ func (recv *TlsInteraction) InvokeRequestCertificate(connection *TlsConnection, 
 
 // RequestCertificate is a wrapper around the C function g_tls_interaction_request_certificate.
 func (recv *TlsInteraction) RequestCertificate(connection *TlsConnection, flags TlsCertificateRequestFlags, cancellable *Cancellable) (TlsInteractionResult, error) {
-	c_connection := (*C.GTlsConnection)(connection.ToC())
+	c_connection := (*C.GTlsConnection)(C.NULL)
+	if connection != nil {
+		c_connection = (*C.GTlsConnection)(connection.ToC())
+	}
 
 	c_flags := (C.GTlsCertificateRequestFlags)(flags)
 
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 

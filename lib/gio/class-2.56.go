@@ -67,9 +67,15 @@ func (recv *DesktopAppInfo) GetLocaleString(key string) string {
 
 // JoinMulticastGroupSsm is a wrapper around the C function g_socket_join_multicast_group_ssm.
 func (recv *Socket) JoinMulticastGroupSsm(group *InetAddress, sourceSpecific *InetAddress, iface string) (bool, error) {
-	c_group := (*C.GInetAddress)(group.ToC())
+	c_group := (*C.GInetAddress)(C.NULL)
+	if group != nil {
+		c_group = (*C.GInetAddress)(group.ToC())
+	}
 
-	c_source_specific := (*C.GInetAddress)(sourceSpecific.ToC())
+	c_source_specific := (*C.GInetAddress)(C.NULL)
+	if sourceSpecific != nil {
+		c_source_specific = (*C.GInetAddress)(sourceSpecific.ToC())
+	}
 
 	c_iface := C.CString(iface)
 	defer C.free(unsafe.Pointer(c_iface))
@@ -89,9 +95,15 @@ func (recv *Socket) JoinMulticastGroupSsm(group *InetAddress, sourceSpecific *In
 
 // LeaveMulticastGroupSsm is a wrapper around the C function g_socket_leave_multicast_group_ssm.
 func (recv *Socket) LeaveMulticastGroupSsm(group *InetAddress, sourceSpecific *InetAddress, iface string) (bool, error) {
-	c_group := (*C.GInetAddress)(group.ToC())
+	c_group := (*C.GInetAddress)(C.NULL)
+	if group != nil {
+		c_group = (*C.GInetAddress)(group.ToC())
+	}
 
-	c_source_specific := (*C.GInetAddress)(sourceSpecific.ToC())
+	c_source_specific := (*C.GInetAddress)(C.NULL)
+	if sourceSpecific != nil {
+		c_source_specific = (*C.GInetAddress)(sourceSpecific.ToC())
+	}
 
 	c_iface := C.CString(iface)
 	defer C.free(unsafe.Pointer(c_iface))

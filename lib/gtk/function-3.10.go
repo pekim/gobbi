@@ -14,11 +14,20 @@ import "C"
 
 // RenderIconSurface is a wrapper around the C function gtk_render_icon_surface.
 func RenderIconSurface(context *StyleContext, cr *cairo.Context, surface *cairo.Surface, x float64, y float64) {
-	c_context := (*C.GtkStyleContext)(context.ToC())
+	c_context := (*C.GtkStyleContext)(C.NULL)
+	if context != nil {
+		c_context = (*C.GtkStyleContext)(context.ToC())
+	}
 
-	c_cr := (*C.cairo_t)(cr.ToC())
+	c_cr := (*C.cairo_t)(C.NULL)
+	if cr != nil {
+		c_cr = (*C.cairo_t)(cr.ToC())
+	}
 
-	c_surface := (*C.cairo_surface_t)(surface.ToC())
+	c_surface := (*C.cairo_surface_t)(C.NULL)
+	if surface != nil {
+		c_surface = (*C.cairo_surface_t)(surface.ToC())
+	}
 
 	c_x := (C.gdouble)(x)
 
@@ -31,7 +40,10 @@ func RenderIconSurface(context *StyleContext, cr *cairo.Context, surface *cairo.
 
 // TestWidgetWaitForDraw is a wrapper around the C function gtk_test_widget_wait_for_draw.
 func TestWidgetWaitForDraw(widget *Widget) {
-	c_widget := (*C.GtkWidget)(widget.ToC())
+	c_widget := (*C.GtkWidget)(C.NULL)
+	if widget != nil {
+		c_widget = (*C.GtkWidget)(widget.ToC())
+	}
 
 	C.gtk_test_widget_wait_for_draw(c_widget)
 

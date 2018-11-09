@@ -321,7 +321,10 @@ func (recv *Display) GetMonitorAtPoint(x int32, y int32) *Monitor {
 
 // GetMonitorAtWindow is a wrapper around the C function gdk_display_get_monitor_at_window.
 func (recv *Display) GetMonitorAtWindow(window *Window) *Monitor {
-	c_window := (*C.GdkWindow)(window.ToC())
+	c_window := (*C.GdkWindow)(C.NULL)
+	if window != nil {
+		c_window = (*C.GdkWindow)(window.ToC())
+	}
 
 	retC := C.gdk_display_get_monitor_at_window((*C.GdkDisplay)(recv.native), c_window)
 	retGo := MonitorNewFromC(unsafe.Pointer(retC))
@@ -646,7 +649,10 @@ func (recv *Seat) GetDisplay() *Display {
 
 // BeginDrawFrame is a wrapper around the C function gdk_window_begin_draw_frame.
 func (recv *Window) BeginDrawFrame(region *cairo.Region) *DrawingContext {
-	c_region := (*C.cairo_region_t)(region.ToC())
+	c_region := (*C.cairo_region_t)(C.NULL)
+	if region != nil {
+		c_region = (*C.cairo_region_t)(region.ToC())
+	}
 
 	retC := C.gdk_window_begin_draw_frame((*C.GdkWindow)(recv.native), c_region)
 	retGo := DrawingContextNewFromC(unsafe.Pointer(retC))
@@ -656,7 +662,10 @@ func (recv *Window) BeginDrawFrame(region *cairo.Region) *DrawingContext {
 
 // EndDrawFrame is a wrapper around the C function gdk_window_end_draw_frame.
 func (recv *Window) EndDrawFrame(context *DrawingContext) {
-	c_context := (*C.GdkDrawingContext)(context.ToC())
+	c_context := (*C.GdkDrawingContext)(C.NULL)
+	if context != nil {
+		c_context = (*C.GdkDrawingContext)(context.ToC())
+	}
 
 	C.gdk_window_end_draw_frame((*C.GdkWindow)(recv.native), c_context)
 

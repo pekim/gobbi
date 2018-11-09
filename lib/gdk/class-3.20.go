@@ -261,7 +261,10 @@ func (recv *DragContext) GetDragWindow() *Window {
 
 // ManageDnd is a wrapper around the C function gdk_drag_context_manage_dnd.
 func (recv *DragContext) ManageDnd(ipcWindow *Window, actions DragAction) bool {
-	c_ipc_window := (*C.GdkWindow)(ipcWindow.ToC())
+	c_ipc_window := (*C.GdkWindow)(C.NULL)
+	if ipcWindow != nil {
+		c_ipc_window = (*C.GdkWindow)(ipcWindow.ToC())
+	}
 
 	c_actions := (C.GdkDragAction)(actions)
 

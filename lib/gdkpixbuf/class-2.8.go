@@ -26,7 +26,10 @@ func PixbufSimpleAnimNew(width int32, height int32, rate float32) *PixbufSimpleA
 
 // AddFrame is a wrapper around the C function gdk_pixbuf_simple_anim_add_frame.
 func (recv *PixbufSimpleAnim) AddFrame(pixbuf *Pixbuf) {
-	c_pixbuf := (*C.GdkPixbuf)(pixbuf.ToC())
+	c_pixbuf := (*C.GdkPixbuf)(C.NULL)
+	if pixbuf != nil {
+		c_pixbuf = (*C.GdkPixbuf)(pixbuf.ToC())
+	}
 
 	C.gdk_pixbuf_simple_anim_add_frame((*C.GdkPixbufSimpleAnim)(recv.native), c_pixbuf)
 

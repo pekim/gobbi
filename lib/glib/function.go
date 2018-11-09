@@ -249,7 +249,10 @@ func AssertionMessageError(domain string, file string, line int32, func_ string,
 	c_expr := C.CString(expr)
 	defer C.free(unsafe.Pointer(c_expr))
 
-	c_error := (*C.GError)(error.ToC())
+	c_error := (*C.GError)(C.NULL)
+	if error != nil {
+		c_error = (*C.GError)(error.ToC())
+	}
 
 	c_error_domain := (C.GQuark)(errorDomain)
 
@@ -374,7 +377,10 @@ func ConvertErrorQuark() Quark {
 
 // DatalistClear is a wrapper around the C function g_datalist_clear.
 func DatalistClear(datalist *Data) {
-	c_datalist := (**C.GData)(datalist.ToC())
+	c_datalist := (**C.GData)(C.NULL)
+	if datalist != nil {
+		c_datalist = (**C.GData)(datalist.ToC())
+	}
 
 	C.g_datalist_clear(c_datalist)
 
@@ -385,7 +391,10 @@ func DatalistClear(datalist *Data) {
 
 // DatalistGetData is a wrapper around the C function g_datalist_get_data.
 func DatalistGetData(datalist *Data, key string) uintptr {
-	c_datalist := (**C.GData)(datalist.ToC())
+	c_datalist := (**C.GData)(C.NULL)
+	if datalist != nil {
+		c_datalist = (**C.GData)(datalist.ToC())
+	}
 
 	c_key := C.CString(key)
 	defer C.free(unsafe.Pointer(c_key))
@@ -398,7 +407,10 @@ func DatalistGetData(datalist *Data, key string) uintptr {
 
 // DatalistIdGetData is a wrapper around the C function g_datalist_id_get_data.
 func DatalistIdGetData(datalist *Data, keyId Quark) uintptr {
-	c_datalist := (**C.GData)(datalist.ToC())
+	c_datalist := (**C.GData)(C.NULL)
+	if datalist != nil {
+		c_datalist = (**C.GData)(datalist.ToC())
+	}
 
 	c_key_id := (C.GQuark)(keyId)
 
@@ -410,7 +422,10 @@ func DatalistIdGetData(datalist *Data, keyId Quark) uintptr {
 
 // DatalistIdRemoveNoNotify is a wrapper around the C function g_datalist_id_remove_no_notify.
 func DatalistIdRemoveNoNotify(datalist *Data, keyId Quark) uintptr {
-	c_datalist := (**C.GData)(datalist.ToC())
+	c_datalist := (**C.GData)(C.NULL)
+	if datalist != nil {
+		c_datalist = (**C.GData)(datalist.ToC())
+	}
 
 	c_key_id := (C.GQuark)(keyId)
 
@@ -424,7 +439,10 @@ func DatalistIdRemoveNoNotify(datalist *Data, keyId Quark) uintptr {
 
 // DatalistInit is a wrapper around the C function g_datalist_init.
 func DatalistInit(datalist *Data) {
-	c_datalist := (**C.GData)(datalist.ToC())
+	c_datalist := (**C.GData)(C.NULL)
+	if datalist != nil {
+		c_datalist = (**C.GData)(datalist.ToC())
+	}
 
 	C.g_datalist_init(c_datalist)
 
@@ -520,7 +538,10 @@ func DateStrftime(s string, slen uint64, format string, date *Date) uint64 {
 	c_format := C.CString(format)
 	defer C.free(unsafe.Pointer(c_format))
 
-	c_date := (*C.GDate)(date.ToC())
+	c_date := (*C.GDate)(C.NULL)
+	if date != nil {
+		c_date = (*C.GDate)(date.ToC())
+	}
 
 	retC := C.g_date_strftime(c_s, c_slen, c_format, c_date)
 	retGo := (uint64)(retC)
@@ -827,7 +848,10 @@ func GetCurrentDir() string {
 
 // GetCurrentTime is a wrapper around the C function g_get_current_time.
 func GetCurrentTime(result *TimeVal) {
-	c_result := (*C.GTimeVal)(result.ToC())
+	c_result := (*C.GTimeVal)(C.NULL)
+	if result != nil {
+		c_result = (*C.GTimeVal)(result.ToC())
+	}
 
 	C.g_get_current_time(c_result)
 
@@ -887,7 +911,10 @@ func Getenv(variable string) string {
 
 // HashTableDestroy is a wrapper around the C function g_hash_table_destroy.
 func HashTableDestroy(hashTable *HashTable) {
-	c_hash_table := (*C.GHashTable)(hashTable.ToC())
+	c_hash_table := (*C.GHashTable)(C.NULL)
+	if hashTable != nil {
+		c_hash_table = (*C.GHashTable)(hashTable.ToC())
+	}
 
 	C.g_hash_table_destroy(c_hash_table)
 
@@ -896,7 +923,10 @@ func HashTableDestroy(hashTable *HashTable) {
 
 // HashTableInsert is a wrapper around the C function g_hash_table_insert.
 func HashTableInsert(hashTable *HashTable, key uintptr, value uintptr) bool {
-	c_hash_table := (*C.GHashTable)(hashTable.ToC())
+	c_hash_table := (*C.GHashTable)(C.NULL)
+	if hashTable != nil {
+		c_hash_table = (*C.GHashTable)(hashTable.ToC())
+	}
 
 	c_key := (C.gpointer)(key)
 
@@ -910,7 +940,10 @@ func HashTableInsert(hashTable *HashTable, key uintptr, value uintptr) bool {
 
 // HashTableLookup is a wrapper around the C function g_hash_table_lookup.
 func HashTableLookup(hashTable *HashTable, key uintptr) uintptr {
-	c_hash_table := (*C.GHashTable)(hashTable.ToC())
+	c_hash_table := (*C.GHashTable)(C.NULL)
+	if hashTable != nil {
+		c_hash_table = (*C.GHashTable)(hashTable.ToC())
+	}
 
 	c_key := (C.gconstpointer)(key)
 
@@ -922,7 +955,10 @@ func HashTableLookup(hashTable *HashTable, key uintptr) uintptr {
 
 // HashTableLookupExtended is a wrapper around the C function g_hash_table_lookup_extended.
 func HashTableLookupExtended(hashTable *HashTable, lookupKey uintptr) (bool, uintptr, uintptr) {
-	c_hash_table := (*C.GHashTable)(hashTable.ToC())
+	c_hash_table := (*C.GHashTable)(C.NULL)
+	if hashTable != nil {
+		c_hash_table = (*C.GHashTable)(hashTable.ToC())
+	}
 
 	c_lookup_key := (C.gconstpointer)(lookupKey)
 
@@ -942,7 +978,10 @@ func HashTableLookupExtended(hashTable *HashTable, lookupKey uintptr) (bool, uin
 
 // HashTableRemove is a wrapper around the C function g_hash_table_remove.
 func HashTableRemove(hashTable *HashTable, key uintptr) bool {
-	c_hash_table := (*C.GHashTable)(hashTable.ToC())
+	c_hash_table := (*C.GHashTable)(C.NULL)
+	if hashTable != nil {
+		c_hash_table = (*C.GHashTable)(hashTable.ToC())
+	}
 
 	c_key := (C.gconstpointer)(key)
 
@@ -954,7 +993,10 @@ func HashTableRemove(hashTable *HashTable, key uintptr) bool {
 
 // HashTableReplace is a wrapper around the C function g_hash_table_replace.
 func HashTableReplace(hashTable *HashTable, key uintptr, value uintptr) bool {
-	c_hash_table := (*C.GHashTable)(hashTable.ToC())
+	c_hash_table := (*C.GHashTable)(C.NULL)
+	if hashTable != nil {
+		c_hash_table = (*C.GHashTable)(hashTable.ToC())
+	}
 
 	c_key := (C.gpointer)(key)
 
@@ -968,7 +1010,10 @@ func HashTableReplace(hashTable *HashTable, key uintptr, value uintptr) bool {
 
 // HashTableSize is a wrapper around the C function g_hash_table_size.
 func HashTableSize(hashTable *HashTable) uint32 {
-	c_hash_table := (*C.GHashTable)(hashTable.ToC())
+	c_hash_table := (*C.GHashTable)(C.NULL)
+	if hashTable != nil {
+		c_hash_table = (*C.GHashTable)(hashTable.ToC())
+	}
 
 	retC := C.g_hash_table_size(c_hash_table)
 	retGo := (uint32)(retC)
@@ -978,7 +1023,10 @@ func HashTableSize(hashTable *HashTable) uint32 {
 
 // HashTableSteal is a wrapper around the C function g_hash_table_steal.
 func HashTableSteal(hashTable *HashTable, key uintptr) bool {
-	c_hash_table := (*C.GHashTable)(hashTable.ToC())
+	c_hash_table := (*C.GHashTable)(C.NULL)
+	if hashTable != nil {
+		c_hash_table = (*C.GHashTable)(hashTable.ToC())
+	}
 
 	c_key := (C.gconstpointer)(key)
 
@@ -990,7 +1038,10 @@ func HashTableSteal(hashTable *HashTable, key uintptr) bool {
 
 // HookDestroy is a wrapper around the C function g_hook_destroy.
 func HookDestroy(hookList *HookList, hookId uint64) bool {
-	c_hook_list := (*C.GHookList)(hookList.ToC())
+	c_hook_list := (*C.GHookList)(C.NULL)
+	if hookList != nil {
+		c_hook_list = (*C.GHookList)(hookList.ToC())
+	}
 
 	c_hook_id := (C.gulong)(hookId)
 
@@ -1002,9 +1053,15 @@ func HookDestroy(hookList *HookList, hookId uint64) bool {
 
 // HookDestroyLink is a wrapper around the C function g_hook_destroy_link.
 func HookDestroyLink(hookList *HookList, hook *Hook) {
-	c_hook_list := (*C.GHookList)(hookList.ToC())
+	c_hook_list := (*C.GHookList)(C.NULL)
+	if hookList != nil {
+		c_hook_list = (*C.GHookList)(hookList.ToC())
+	}
 
-	c_hook := (*C.GHook)(hook.ToC())
+	c_hook := (*C.GHook)(C.NULL)
+	if hook != nil {
+		c_hook = (*C.GHook)(hook.ToC())
+	}
 
 	C.g_hook_destroy_link(c_hook_list, c_hook)
 
@@ -1013,9 +1070,15 @@ func HookDestroyLink(hookList *HookList, hook *Hook) {
 
 // HookFree is a wrapper around the C function g_hook_free.
 func HookFree(hookList *HookList, hook *Hook) {
-	c_hook_list := (*C.GHookList)(hookList.ToC())
+	c_hook_list := (*C.GHookList)(C.NULL)
+	if hookList != nil {
+		c_hook_list = (*C.GHookList)(hookList.ToC())
+	}
 
-	c_hook := (*C.GHook)(hook.ToC())
+	c_hook := (*C.GHook)(C.NULL)
+	if hook != nil {
+		c_hook = (*C.GHook)(hook.ToC())
+	}
 
 	C.g_hook_free(c_hook_list, c_hook)
 
@@ -1024,11 +1087,20 @@ func HookFree(hookList *HookList, hook *Hook) {
 
 // HookInsertBefore is a wrapper around the C function g_hook_insert_before.
 func HookInsertBefore(hookList *HookList, sibling *Hook, hook *Hook) {
-	c_hook_list := (*C.GHookList)(hookList.ToC())
+	c_hook_list := (*C.GHookList)(C.NULL)
+	if hookList != nil {
+		c_hook_list = (*C.GHookList)(hookList.ToC())
+	}
 
-	c_sibling := (*C.GHook)(sibling.ToC())
+	c_sibling := (*C.GHook)(C.NULL)
+	if sibling != nil {
+		c_sibling = (*C.GHook)(sibling.ToC())
+	}
 
-	c_hook := (*C.GHook)(hook.ToC())
+	c_hook := (*C.GHook)(C.NULL)
+	if hook != nil {
+		c_hook = (*C.GHook)(hook.ToC())
+	}
 
 	C.g_hook_insert_before(c_hook_list, c_sibling, c_hook)
 
@@ -1037,9 +1109,15 @@ func HookInsertBefore(hookList *HookList, sibling *Hook, hook *Hook) {
 
 // HookPrepend is a wrapper around the C function g_hook_prepend.
 func HookPrepend(hookList *HookList, hook *Hook) {
-	c_hook_list := (*C.GHookList)(hookList.ToC())
+	c_hook_list := (*C.GHookList)(C.NULL)
+	if hookList != nil {
+		c_hook_list = (*C.GHookList)(hookList.ToC())
+	}
 
-	c_hook := (*C.GHook)(hook.ToC())
+	c_hook := (*C.GHook)(C.NULL)
+	if hook != nil {
+		c_hook = (*C.GHook)(hook.ToC())
+	}
 
 	C.g_hook_prepend(c_hook_list, c_hook)
 
@@ -1048,9 +1126,15 @@ func HookPrepend(hookList *HookList, hook *Hook) {
 
 // HookUnref is a wrapper around the C function g_hook_unref.
 func HookUnref(hookList *HookList, hook *Hook) {
-	c_hook_list := (*C.GHookList)(hookList.ToC())
+	c_hook_list := (*C.GHookList)(C.NULL)
+	if hookList != nil {
+		c_hook_list = (*C.GHookList)(hookList.ToC())
+	}
 
-	c_hook := (*C.GHook)(hook.ToC())
+	c_hook := (*C.GHook)(C.NULL)
+	if hook != nil {
+		c_hook = (*C.GHook)(hook.ToC())
+	}
 
 	C.g_hook_unref(c_hook_list, c_hook)
 
@@ -1302,7 +1386,10 @@ func MemProfile() {
 
 // MemSetVtable is a wrapper around the C function g_mem_set_vtable.
 func MemSetVtable(vtable *MemVTable) {
-	c_vtable := (*C.GMemVTable)(vtable.ToC())
+	c_vtable := (*C.GMemVTable)(C.NULL)
+	if vtable != nil {
+		c_vtable = (*C.GMemVTable)(vtable.ToC())
+	}
 
 	C.g_mem_set_vtable(c_vtable)
 
@@ -1421,7 +1508,10 @@ func PathSkipRoot(fileName string) string {
 
 // PatternMatch is a wrapper around the C function g_pattern_match.
 func PatternMatch(pspec *PatternSpec, stringLength uint32, string string, stringReversed string) bool {
-	c_pspec := (*C.GPatternSpec)(pspec.ToC())
+	c_pspec := (*C.GPatternSpec)(C.NULL)
+	if pspec != nil {
+		c_pspec = (*C.GPatternSpec)(pspec.ToC())
+	}
 
 	c_string_length := (C.guint)(stringLength)
 
@@ -1453,7 +1543,10 @@ func PatternMatchSimple(pattern string, string string) bool {
 
 // PatternMatchString is a wrapper around the C function g_pattern_match_string.
 func PatternMatchString(pspec *PatternSpec, string string) bool {
-	c_pspec := (*C.GPatternSpec)(pspec.ToC())
+	c_pspec := (*C.GPatternSpec)(C.NULL)
+	if pspec != nil {
+		c_pspec = (*C.GPatternSpec)(pspec.ToC())
+	}
 
 	c_string := C.CString(string)
 	defer C.free(unsafe.Pointer(c_string))
@@ -1474,7 +1567,10 @@ func PatternMatchString(pspec *PatternSpec, string string) bool {
 func PropagateError(src *Error) *Error {
 	var c_dest *C.GError
 
-	c_src := (*C.GError)(src.ToC())
+	c_src := (*C.GError)(C.NULL)
+	if src != nil {
+		c_src = (*C.GError)(src.ToC())
+	}
 
 	C.g_propagate_error(&c_dest, c_src)
 
@@ -1707,7 +1803,10 @@ func SourceRemove(tag uint32) bool {
 
 // SourceRemoveByFuncsUserData is a wrapper around the C function g_source_remove_by_funcs_user_data.
 func SourceRemoveByFuncsUserData(funcs *SourceFuncs, userData uintptr) bool {
-	c_funcs := (*C.GSourceFuncs)(funcs.ToC())
+	c_funcs := (*C.GSourceFuncs)(C.NULL)
+	if funcs != nil {
+		c_funcs = (*C.GSourceFuncs)(funcs.ToC())
+	}
 
 	c_user_data := (C.gpointer)(userData)
 
@@ -2315,7 +2414,10 @@ func TimeoutSourceNew(interval uint32) *Source {
 
 // TrashStackHeight is a wrapper around the C function g_trash_stack_height.
 func TrashStackHeight(stackP *TrashStack) uint32 {
-	c_stack_p := (**C.GTrashStack)(stackP.ToC())
+	c_stack_p := (**C.GTrashStack)(C.NULL)
+	if stackP != nil {
+		c_stack_p = (**C.GTrashStack)(stackP.ToC())
+	}
 
 	retC := C.g_trash_stack_height(c_stack_p)
 	retGo := (uint32)(retC)
@@ -2325,7 +2427,10 @@ func TrashStackHeight(stackP *TrashStack) uint32 {
 
 // TrashStackPeek is a wrapper around the C function g_trash_stack_peek.
 func TrashStackPeek(stackP *TrashStack) uintptr {
-	c_stack_p := (**C.GTrashStack)(stackP.ToC())
+	c_stack_p := (**C.GTrashStack)(C.NULL)
+	if stackP != nil {
+		c_stack_p = (**C.GTrashStack)(stackP.ToC())
+	}
 
 	retC := C.g_trash_stack_peek(c_stack_p)
 	retGo := (uintptr)(unsafe.Pointer(retC))
@@ -2335,7 +2440,10 @@ func TrashStackPeek(stackP *TrashStack) uintptr {
 
 // TrashStackPop is a wrapper around the C function g_trash_stack_pop.
 func TrashStackPop(stackP *TrashStack) uintptr {
-	c_stack_p := (**C.GTrashStack)(stackP.ToC())
+	c_stack_p := (**C.GTrashStack)(C.NULL)
+	if stackP != nil {
+		c_stack_p = (**C.GTrashStack)(stackP.ToC())
+	}
 
 	retC := C.g_trash_stack_pop(c_stack_p)
 	retGo := (uintptr)(unsafe.Pointer(retC))
@@ -2345,7 +2453,10 @@ func TrashStackPop(stackP *TrashStack) uintptr {
 
 // TrashStackPush is a wrapper around the C function g_trash_stack_push.
 func TrashStackPush(stackP *TrashStack, dataP uintptr) {
-	c_stack_p := (**C.GTrashStack)(stackP.ToC())
+	c_stack_p := (**C.GTrashStack)(C.NULL)
+	if stackP != nil {
+		c_stack_p = (**C.GTrashStack)(stackP.ToC())
+	}
 
 	c_data_p := (C.gpointer)(dataP)
 

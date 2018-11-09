@@ -29,13 +29,25 @@ func (recv *DBusConnection) RegisterObjectWithClosures(objectPath string, interf
 	c_object_path := C.CString(objectPath)
 	defer C.free(unsafe.Pointer(c_object_path))
 
-	c_interface_info := (*C.GDBusInterfaceInfo)(interfaceInfo.ToC())
+	c_interface_info := (*C.GDBusInterfaceInfo)(C.NULL)
+	if interfaceInfo != nil {
+		c_interface_info = (*C.GDBusInterfaceInfo)(interfaceInfo.ToC())
+	}
 
-	c_method_call_closure := (*C.GClosure)(methodCallClosure.ToC())
+	c_method_call_closure := (*C.GClosure)(C.NULL)
+	if methodCallClosure != nil {
+		c_method_call_closure = (*C.GClosure)(methodCallClosure.ToC())
+	}
 
-	c_get_property_closure := (*C.GClosure)(getPropertyClosure.ToC())
+	c_get_property_closure := (*C.GClosure)(C.NULL)
+	if getPropertyClosure != nil {
+		c_get_property_closure = (*C.GClosure)(getPropertyClosure.ToC())
+	}
 
-	c_set_property_closure := (*C.GClosure)(setPropertyClosure.ToC())
+	c_set_property_closure := (*C.GClosure)(C.NULL)
+	if setPropertyClosure != nil {
+		c_set_property_closure = (*C.GClosure)(setPropertyClosure.ToC())
+	}
 
 	var cThrowableError *C.GError
 

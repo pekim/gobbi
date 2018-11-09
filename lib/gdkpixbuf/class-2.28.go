@@ -34,9 +34,15 @@ func PixbufAnimationNewFromResource(resourcePath string) (*PixbufAnimation, erro
 
 // PixbufAnimationNewFromStream is a wrapper around the C function gdk_pixbuf_animation_new_from_stream.
 func PixbufAnimationNewFromStream(stream *gio.InputStream, cancellable *gio.Cancellable) (*PixbufAnimation, error) {
-	c_stream := (*C.GInputStream)(stream.ToC())
+	c_stream := (*C.GInputStream)(C.NULL)
+	if stream != nil {
+		c_stream = (*C.GInputStream)(stream.ToC())
+	}
 
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 

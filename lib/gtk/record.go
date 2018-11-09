@@ -1204,7 +1204,10 @@ func (recv *BindingSet) Activate(keyval uint32, modifiers gdk.ModifierType, obje
 
 	c_modifiers := (C.GdkModifierType)(modifiers)
 
-	c_object := (*C.GObject)(object.ToC())
+	c_object := (*C.GObject)(C.NULL)
+	if object != nil {
+		c_object = (*C.GObject)(object.ToC())
+	}
 
 	retC := C.gtk_binding_set_activate((*C.GtkBindingSet)(recv.native), c_keyval, c_modifiers, c_object)
 	retGo := retC == C.TRUE
@@ -4678,7 +4681,10 @@ func (recv *Gradient) ToC() unsafe.Pointer {
 
 // ResolveForContext is a wrapper around the C function gtk_gradient_resolve_for_context.
 func (recv *Gradient) ResolveForContext(context *StyleContext) *cairo.Pattern {
-	c_context := (*C.GtkStyleContext)(context.ToC())
+	c_context := (*C.GtkStyleContext)(C.NULL)
+	if context != nil {
+		c_context = (*C.GtkStyleContext)(context.ToC())
+	}
 
 	retC := C.gtk_gradient_resolve_for_context((*C.GtkGradient)(recv.native), c_context)
 	retGo := cairo.PatternNewFromC(unsafe.Pointer(retC))
@@ -5299,7 +5305,10 @@ func IconSetNew() *IconSet {
 
 // IconSetNewFromPixbuf is a wrapper around the C function gtk_icon_set_new_from_pixbuf.
 func IconSetNewFromPixbuf(pixbuf *gdkpixbuf.Pixbuf) *IconSet {
-	c_pixbuf := (*C.GdkPixbuf)(pixbuf.ToC())
+	c_pixbuf := (*C.GdkPixbuf)(C.NULL)
+	if pixbuf != nil {
+		c_pixbuf = (*C.GdkPixbuf)(pixbuf.ToC())
+	}
 
 	retC := C.gtk_icon_set_new_from_pixbuf(c_pixbuf)
 	retGo := IconSetNewFromC(unsafe.Pointer(retC))
@@ -5309,7 +5318,10 @@ func IconSetNewFromPixbuf(pixbuf *gdkpixbuf.Pixbuf) *IconSet {
 
 // AddSource is a wrapper around the C function gtk_icon_set_add_source.
 func (recv *IconSet) AddSource(source *IconSource) {
-	c_source := (*C.GtkIconSource)(source.ToC())
+	c_source := (*C.GtkIconSource)(C.NULL)
+	if source != nil {
+		c_source = (*C.GtkIconSource)(source.ToC())
+	}
 
 	C.gtk_icon_set_add_source((*C.GtkIconSet)(recv.native), c_source)
 
@@ -5494,7 +5506,10 @@ func (recv *IconSource) SetIconName(iconName string) {
 
 // SetPixbuf is a wrapper around the C function gtk_icon_source_set_pixbuf.
 func (recv *IconSource) SetPixbuf(pixbuf *gdkpixbuf.Pixbuf) {
-	c_pixbuf := (*C.GdkPixbuf)(pixbuf.ToC())
+	c_pixbuf := (*C.GdkPixbuf)(C.NULL)
+	if pixbuf != nil {
+		c_pixbuf = (*C.GdkPixbuf)(pixbuf.ToC())
+	}
 
 	C.gtk_icon_source_set_pixbuf((*C.GtkIconSource)(recv.native), c_pixbuf)
 
@@ -10952,7 +10967,10 @@ func (recv *TextAttributes) Copy() *TextAttributes {
 
 // CopyValues is a wrapper around the C function gtk_text_attributes_copy_values.
 func (recv *TextAttributes) CopyValues(dest *TextAttributes) {
-	c_dest := (*C.GtkTextAttributes)(dest.ToC())
+	c_dest := (*C.GtkTextAttributes)(C.NULL)
+	if dest != nil {
+		c_dest = (*C.GtkTextAttributes)(dest.ToC())
+	}
 
 	C.gtk_text_attributes_copy_values((*C.GtkTextAttributes)(recv.native), c_dest)
 
@@ -11226,7 +11244,10 @@ func (recv *TextIter) BackwardSearch(str string, flags TextSearchFlags, limit *T
 
 	var c_match_end C.GtkTextIter
 
-	c_limit := (*C.GtkTextIter)(limit.ToC())
+	c_limit := (*C.GtkTextIter)(C.NULL)
+	if limit != nil {
+		c_limit = (*C.GtkTextIter)(limit.ToC())
+	}
 
 	retC := C.gtk_text_iter_backward_search((*C.GtkTextIter)(recv.native), c_str, c_flags, &c_match_start, &c_match_end, c_limit)
 	retGo := retC == C.TRUE
@@ -11258,7 +11279,10 @@ func (recv *TextIter) BackwardSentenceStarts(count int32) bool {
 
 // BackwardToTagToggle is a wrapper around the C function gtk_text_iter_backward_to_tag_toggle.
 func (recv *TextIter) BackwardToTagToggle(tag *TextTag) bool {
-	c_tag := (*C.GtkTextTag)(tag.ToC())
+	c_tag := (*C.GtkTextTag)(C.NULL)
+	if tag != nil {
+		c_tag = (*C.GtkTextTag)(tag.ToC())
+	}
 
 	retC := C.gtk_text_iter_backward_to_tag_toggle((*C.GtkTextIter)(recv.native), c_tag)
 	retGo := retC == C.TRUE
@@ -11286,7 +11310,10 @@ func (recv *TextIter) BackwardWordStarts(count int32) bool {
 
 // BeginsTag is a wrapper around the C function gtk_text_iter_begins_tag.
 func (recv *TextIter) BeginsTag(tag *TextTag) bool {
-	c_tag := (*C.GtkTextTag)(tag.ToC())
+	c_tag := (*C.GtkTextTag)(C.NULL)
+	if tag != nil {
+		c_tag = (*C.GtkTextTag)(tag.ToC())
+	}
 
 	retC := C.gtk_text_iter_begins_tag((*C.GtkTextIter)(recv.native), c_tag)
 	retGo := retC == C.TRUE
@@ -11307,7 +11334,10 @@ func (recv *TextIter) CanInsert(defaultEditability bool) bool {
 
 // Compare is a wrapper around the C function gtk_text_iter_compare.
 func (recv *TextIter) Compare(rhs *TextIter) int32 {
-	c_rhs := (*C.GtkTextIter)(rhs.ToC())
+	c_rhs := (*C.GtkTextIter)(C.NULL)
+	if rhs != nil {
+		c_rhs = (*C.GtkTextIter)(rhs.ToC())
+	}
 
 	retC := C.gtk_text_iter_compare((*C.GtkTextIter)(recv.native), c_rhs)
 	retGo := (int32)(retC)
@@ -11352,7 +11382,10 @@ func (recv *TextIter) EndsSentence() bool {
 
 // EndsTag is a wrapper around the C function gtk_text_iter_ends_tag.
 func (recv *TextIter) EndsTag(tag *TextTag) bool {
-	c_tag := (*C.GtkTextTag)(tag.ToC())
+	c_tag := (*C.GtkTextTag)(C.NULL)
+	if tag != nil {
+		c_tag = (*C.GtkTextTag)(tag.ToC())
+	}
 
 	retC := C.gtk_text_iter_ends_tag((*C.GtkTextIter)(recv.native), c_tag)
 	retGo := retC == C.TRUE
@@ -11370,7 +11403,10 @@ func (recv *TextIter) EndsWord() bool {
 
 // Equal is a wrapper around the C function gtk_text_iter_equal.
 func (recv *TextIter) Equal(rhs *TextIter) bool {
-	c_rhs := (*C.GtkTextIter)(rhs.ToC())
+	c_rhs := (*C.GtkTextIter)(C.NULL)
+	if rhs != nil {
+		c_rhs = (*C.GtkTextIter)(rhs.ToC())
+	}
 
 	retC := C.gtk_text_iter_equal((*C.GtkTextIter)(recv.native), c_rhs)
 	retGo := retC == C.TRUE
@@ -11445,7 +11481,10 @@ func (recv *TextIter) ForwardSearch(str string, flags TextSearchFlags, limit *Te
 
 	var c_match_end C.GtkTextIter
 
-	c_limit := (*C.GtkTextIter)(limit.ToC())
+	c_limit := (*C.GtkTextIter)(C.NULL)
+	if limit != nil {
+		c_limit = (*C.GtkTextIter)(limit.ToC())
+	}
 
 	retC := C.gtk_text_iter_forward_search((*C.GtkTextIter)(recv.native), c_str, c_flags, &c_match_start, &c_match_end, c_limit)
 	retGo := retC == C.TRUE
@@ -11492,7 +11531,10 @@ func (recv *TextIter) ForwardToLineEnd() bool {
 
 // ForwardToTagToggle is a wrapper around the C function gtk_text_iter_forward_to_tag_toggle.
 func (recv *TextIter) ForwardToTagToggle(tag *TextTag) bool {
-	c_tag := (*C.GtkTextTag)(tag.ToC())
+	c_tag := (*C.GtkTextTag)(C.NULL)
+	if tag != nil {
+		c_tag = (*C.GtkTextTag)(tag.ToC())
+	}
 
 	retC := C.gtk_text_iter_forward_to_tag_toggle((*C.GtkTextIter)(recv.native), c_tag)
 	retGo := retC == C.TRUE
@@ -11635,7 +11677,10 @@ func (recv *TextIter) GetPixbuf() *gdkpixbuf.Pixbuf {
 
 // GetSlice is a wrapper around the C function gtk_text_iter_get_slice.
 func (recv *TextIter) GetSlice(end *TextIter) string {
-	c_end := (*C.GtkTextIter)(end.ToC())
+	c_end := (*C.GtkTextIter)(C.NULL)
+	if end != nil {
+		c_end = (*C.GtkTextIter)(end.ToC())
+	}
 
 	retC := C.gtk_text_iter_get_slice((*C.GtkTextIter)(recv.native), c_end)
 	retGo := C.GoString(retC)
@@ -11654,7 +11699,10 @@ func (recv *TextIter) GetTags() *glib.SList {
 
 // GetText is a wrapper around the C function gtk_text_iter_get_text.
 func (recv *TextIter) GetText(end *TextIter) string {
-	c_end := (*C.GtkTextIter)(end.ToC())
+	c_end := (*C.GtkTextIter)(C.NULL)
+	if end != nil {
+		c_end = (*C.GtkTextIter)(end.ToC())
+	}
 
 	retC := C.gtk_text_iter_get_text((*C.GtkTextIter)(recv.native), c_end)
 	retGo := C.GoString(retC)
@@ -11692,7 +11740,10 @@ func (recv *TextIter) GetVisibleLineOffset() int32 {
 
 // GetVisibleSlice is a wrapper around the C function gtk_text_iter_get_visible_slice.
 func (recv *TextIter) GetVisibleSlice(end *TextIter) string {
-	c_end := (*C.GtkTextIter)(end.ToC())
+	c_end := (*C.GtkTextIter)(C.NULL)
+	if end != nil {
+		c_end = (*C.GtkTextIter)(end.ToC())
+	}
 
 	retC := C.gtk_text_iter_get_visible_slice((*C.GtkTextIter)(recv.native), c_end)
 	retGo := C.GoString(retC)
@@ -11703,7 +11754,10 @@ func (recv *TextIter) GetVisibleSlice(end *TextIter) string {
 
 // GetVisibleText is a wrapper around the C function gtk_text_iter_get_visible_text.
 func (recv *TextIter) GetVisibleText(end *TextIter) string {
-	c_end := (*C.GtkTextIter)(end.ToC())
+	c_end := (*C.GtkTextIter)(C.NULL)
+	if end != nil {
+		c_end = (*C.GtkTextIter)(end.ToC())
+	}
 
 	retC := C.gtk_text_iter_get_visible_text((*C.GtkTextIter)(recv.native), c_end)
 	retGo := C.GoString(retC)
@@ -11714,7 +11768,10 @@ func (recv *TextIter) GetVisibleText(end *TextIter) string {
 
 // HasTag is a wrapper around the C function gtk_text_iter_has_tag.
 func (recv *TextIter) HasTag(tag *TextTag) bool {
-	c_tag := (*C.GtkTextTag)(tag.ToC())
+	c_tag := (*C.GtkTextTag)(C.NULL)
+	if tag != nil {
+		c_tag = (*C.GtkTextTag)(tag.ToC())
+	}
 
 	retC := C.gtk_text_iter_has_tag((*C.GtkTextIter)(recv.native), c_tag)
 	retGo := retC == C.TRUE
@@ -11724,9 +11781,15 @@ func (recv *TextIter) HasTag(tag *TextTag) bool {
 
 // InRange is a wrapper around the C function gtk_text_iter_in_range.
 func (recv *TextIter) InRange(start *TextIter, end *TextIter) bool {
-	c_start := (*C.GtkTextIter)(start.ToC())
+	c_start := (*C.GtkTextIter)(C.NULL)
+	if start != nil {
+		c_start = (*C.GtkTextIter)(start.ToC())
+	}
 
-	c_end := (*C.GtkTextIter)(end.ToC())
+	c_end := (*C.GtkTextIter)(C.NULL)
+	if end != nil {
+		c_end = (*C.GtkTextIter)(end.ToC())
+	}
 
 	retC := C.gtk_text_iter_in_range((*C.GtkTextIter)(recv.native), c_start, c_end)
 	retGo := retC == C.TRUE
@@ -11776,7 +11839,10 @@ func (recv *TextIter) IsStart() bool {
 
 // Order is a wrapper around the C function gtk_text_iter_order.
 func (recv *TextIter) Order(second *TextIter) {
-	c_second := (*C.GtkTextIter)(second.ToC())
+	c_second := (*C.GtkTextIter)(C.NULL)
+	if second != nil {
+		c_second = (*C.GtkTextIter)(second.ToC())
+	}
 
 	C.gtk_text_iter_order((*C.GtkTextIter)(recv.native), c_second)
 
@@ -11863,7 +11929,10 @@ func (recv *TextIter) StartsWord() bool {
 
 // TogglesTag is a wrapper around the C function gtk_text_iter_toggles_tag.
 func (recv *TextIter) TogglesTag(tag *TextTag) bool {
-	c_tag := (*C.GtkTextTag)(tag.ToC())
+	c_tag := (*C.GtkTextTag)(C.NULL)
+	if tag != nil {
+		c_tag = (*C.GtkTextTag)(tag.ToC())
+	}
 
 	retC := C.gtk_text_iter_toggles_tag((*C.GtkTextIter)(recv.native), c_tag)
 	retGo := retC == C.TRUE
@@ -13037,7 +13106,10 @@ func (recv *TreePath) AppendIndex(index int32) {
 
 // Compare is a wrapper around the C function gtk_tree_path_compare.
 func (recv *TreePath) Compare(b *TreePath) int32 {
-	c_b := (*C.GtkTreePath)(b.ToC())
+	c_b := (*C.GtkTreePath)(C.NULL)
+	if b != nil {
+		c_b = (*C.GtkTreePath)(b.ToC())
+	}
 
 	retC := C.gtk_tree_path_compare((*C.GtkTreePath)(recv.native), c_b)
 	retGo := (int32)(retC)
@@ -13079,7 +13151,10 @@ func (recv *TreePath) GetDepth() int32 {
 
 // IsAncestor is a wrapper around the C function gtk_tree_path_is_ancestor.
 func (recv *TreePath) IsAncestor(descendant *TreePath) bool {
-	c_descendant := (*C.GtkTreePath)(descendant.ToC())
+	c_descendant := (*C.GtkTreePath)(C.NULL)
+	if descendant != nil {
+		c_descendant = (*C.GtkTreePath)(descendant.ToC())
+	}
 
 	retC := C.gtk_tree_path_is_ancestor((*C.GtkTreePath)(recv.native), c_descendant)
 	retGo := retC == C.TRUE
@@ -13089,7 +13164,10 @@ func (recv *TreePath) IsAncestor(descendant *TreePath) bool {
 
 // IsDescendant is a wrapper around the C function gtk_tree_path_is_descendant.
 func (recv *TreePath) IsDescendant(ancestor *TreePath) bool {
-	c_ancestor := (*C.GtkTreePath)(ancestor.ToC())
+	c_ancestor := (*C.GtkTreePath)(C.NULL)
+	if ancestor != nil {
+		c_ancestor = (*C.GtkTreePath)(ancestor.ToC())
+	}
 
 	retC := C.gtk_tree_path_is_descendant((*C.GtkTreePath)(recv.native), c_ancestor)
 	retGo := retC == C.TRUE
@@ -13163,7 +13241,10 @@ func (recv *TreeRowReference) ToC() unsafe.Pointer {
 func TreeRowReferenceNew(model *TreeModel, path *TreePath) *TreeRowReference {
 	c_model := (*C.GtkTreeModel)(model.ToC())
 
-	c_path := (*C.GtkTreePath)(path.ToC())
+	c_path := (*C.GtkTreePath)(C.NULL)
+	if path != nil {
+		c_path = (*C.GtkTreePath)(path.ToC())
+	}
 
 	retC := C.gtk_tree_row_reference_new(c_model, c_path)
 	retGo := TreeRowReferenceNewFromC(unsafe.Pointer(retC))
@@ -13173,11 +13254,17 @@ func TreeRowReferenceNew(model *TreeModel, path *TreePath) *TreeRowReference {
 
 // TreeRowReferenceNewProxy is a wrapper around the C function gtk_tree_row_reference_new_proxy.
 func TreeRowReferenceNewProxy(proxy *gobject.Object, model *TreeModel, path *TreePath) *TreeRowReference {
-	c_proxy := (*C.GObject)(proxy.ToC())
+	c_proxy := (*C.GObject)(C.NULL)
+	if proxy != nil {
+		c_proxy = (*C.GObject)(proxy.ToC())
+	}
 
 	c_model := (*C.GtkTreeModel)(model.ToC())
 
-	c_path := (*C.GtkTreePath)(path.ToC())
+	c_path := (*C.GtkTreePath)(C.NULL)
+	if path != nil {
+		c_path = (*C.GtkTreePath)(path.ToC())
+	}
 
 	retC := C.gtk_tree_row_reference_new_proxy(c_proxy, c_model, c_path)
 	retGo := TreeRowReferenceNewFromC(unsafe.Pointer(retC))

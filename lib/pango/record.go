@@ -241,11 +241,20 @@ func (recv *AttrIterator) Get(type_ AttrType) *Attribute {
 
 // GetFont is a wrapper around the C function pango_attr_iterator_get_font.
 func (recv *AttrIterator) GetFont(desc *FontDescription, language *Language, extraAttrs *glib.SList) {
-	c_desc := (*C.PangoFontDescription)(desc.ToC())
+	c_desc := (*C.PangoFontDescription)(C.NULL)
+	if desc != nil {
+		c_desc = (*C.PangoFontDescription)(desc.ToC())
+	}
 
-	c_language := (**C.PangoLanguage)(language.ToC())
+	c_language := (**C.PangoLanguage)(C.NULL)
+	if language != nil {
+		c_language = (**C.PangoLanguage)(language.ToC())
+	}
 
-	c_extra_attrs := (**C.GSList)(extraAttrs.ToC())
+	c_extra_attrs := (**C.GSList)(C.NULL)
+	if extraAttrs != nil {
+		c_extra_attrs = (**C.GSList)(extraAttrs.ToC())
+	}
 
 	C.pango_attr_iterator_get_font((*C.PangoAttrIterator)(recv.native), c_desc, c_language, c_extra_attrs)
 
@@ -329,7 +338,10 @@ func AttrListNew() *AttrList {
 
 // Change is a wrapper around the C function pango_attr_list_change.
 func (recv *AttrList) Change(attr *Attribute) {
-	c_attr := (*C.PangoAttribute)(attr.ToC())
+	c_attr := (*C.PangoAttribute)(C.NULL)
+	if attr != nil {
+		c_attr = (*C.PangoAttribute)(attr.ToC())
+	}
 
 	C.pango_attr_list_change((*C.PangoAttrList)(recv.native), c_attr)
 
@@ -359,7 +371,10 @@ func (recv *AttrList) GetIterator() *AttrIterator {
 
 // Insert is a wrapper around the C function pango_attr_list_insert.
 func (recv *AttrList) Insert(attr *Attribute) {
-	c_attr := (*C.PangoAttribute)(attr.ToC())
+	c_attr := (*C.PangoAttribute)(C.NULL)
+	if attr != nil {
+		c_attr = (*C.PangoAttribute)(attr.ToC())
+	}
 
 	C.pango_attr_list_insert((*C.PangoAttrList)(recv.native), c_attr)
 
@@ -368,7 +383,10 @@ func (recv *AttrList) Insert(attr *Attribute) {
 
 // InsertBefore is a wrapper around the C function pango_attr_list_insert_before.
 func (recv *AttrList) InsertBefore(attr *Attribute) {
-	c_attr := (*C.PangoAttribute)(attr.ToC())
+	c_attr := (*C.PangoAttribute)(C.NULL)
+	if attr != nil {
+		c_attr = (*C.PangoAttribute)(attr.ToC())
+	}
 
 	C.pango_attr_list_insert_before((*C.PangoAttrList)(recv.native), c_attr)
 
@@ -377,7 +395,10 @@ func (recv *AttrList) InsertBefore(attr *Attribute) {
 
 // Splice is a wrapper around the C function pango_attr_list_splice.
 func (recv *AttrList) Splice(other *AttrList, pos int32, len int32) {
-	c_other := (*C.PangoAttrList)(other.ToC())
+	c_other := (*C.PangoAttrList)(C.NULL)
+	if other != nil {
+		c_other = (*C.PangoAttrList)(other.ToC())
+	}
 
 	c_pos := (C.gint)(pos)
 
@@ -533,7 +554,10 @@ func (recv *Attribute) Destroy() {
 
 // Equal is a wrapper around the C function pango_attribute_equal.
 func (recv *Attribute) Equal(attr2 *Attribute) bool {
-	c_attr2 := (*C.PangoAttribute)(attr2.ToC())
+	c_attr2 := (*C.PangoAttribute)(C.NULL)
+	if attr2 != nil {
+		c_attr2 = (*C.PangoAttribute)(attr2.ToC())
+	}
 
 	retC := C.pango_attribute_equal((*C.PangoAttribute)(recv.native), c_attr2)
 	retGo := retC == C.TRUE
@@ -669,7 +693,10 @@ func (recv *Coverage) Get(index int32) CoverageLevel {
 
 // Max is a wrapper around the C function pango_coverage_max.
 func (recv *Coverage) Max(other *Coverage) {
-	c_other := (*C.PangoCoverage)(other.ToC())
+	c_other := (*C.PangoCoverage)(C.NULL)
+	if other != nil {
+		c_other = (*C.PangoCoverage)(other.ToC())
+	}
 
 	C.pango_coverage_max((*C.PangoCoverage)(recv.native), c_other)
 
@@ -747,9 +774,15 @@ func FontDescriptionNew() *FontDescription {
 
 // BetterMatch is a wrapper around the C function pango_font_description_better_match.
 func (recv *FontDescription) BetterMatch(oldMatch *FontDescription, newMatch *FontDescription) bool {
-	c_old_match := (*C.PangoFontDescription)(oldMatch.ToC())
+	c_old_match := (*C.PangoFontDescription)(C.NULL)
+	if oldMatch != nil {
+		c_old_match = (*C.PangoFontDescription)(oldMatch.ToC())
+	}
 
-	c_new_match := (*C.PangoFontDescription)(newMatch.ToC())
+	c_new_match := (*C.PangoFontDescription)(C.NULL)
+	if newMatch != nil {
+		c_new_match = (*C.PangoFontDescription)(newMatch.ToC())
+	}
 
 	retC := C.pango_font_description_better_match((*C.PangoFontDescription)(recv.native), c_old_match, c_new_match)
 	retGo := retC == C.TRUE
@@ -785,7 +818,10 @@ func (recv *FontDescription) CopyStatic() *FontDescription {
 
 // Equal is a wrapper around the C function pango_font_description_equal.
 func (recv *FontDescription) Equal(desc2 *FontDescription) bool {
-	c_desc2 := (*C.PangoFontDescription)(desc2.ToC())
+	c_desc2 := (*C.PangoFontDescription)(C.NULL)
+	if desc2 != nil {
+		c_desc2 = (*C.PangoFontDescription)(desc2.ToC())
+	}
 
 	retC := C.pango_font_description_equal((*C.PangoFontDescription)(recv.native), c_desc2)
 	retGo := retC == C.TRUE
@@ -866,7 +902,10 @@ func (recv *FontDescription) Hash() uint32 {
 
 // Merge is a wrapper around the C function pango_font_description_merge.
 func (recv *FontDescription) Merge(descToMerge *FontDescription, replaceExisting bool) {
-	c_desc_to_merge := (*C.PangoFontDescription)(descToMerge.ToC())
+	c_desc_to_merge := (*C.PangoFontDescription)(C.NULL)
+	if descToMerge != nil {
+		c_desc_to_merge = (*C.PangoFontDescription)(descToMerge.ToC())
+	}
 
 	c_replace_existing :=
 		boolToGboolean(replaceExisting)
@@ -878,7 +917,10 @@ func (recv *FontDescription) Merge(descToMerge *FontDescription, replaceExisting
 
 // MergeStatic is a wrapper around the C function pango_font_description_merge_static.
 func (recv *FontDescription) MergeStatic(descToMerge *FontDescription, replaceExisting bool) {
-	c_desc_to_merge := (*C.PangoFontDescription)(descToMerge.ToC())
+	c_desc_to_merge := (*C.PangoFontDescription)(C.NULL)
+	if descToMerge != nil {
+		c_desc_to_merge = (*C.PangoFontDescription)(descToMerge.ToC())
+	}
 
 	c_replace_existing :=
 		boolToGboolean(replaceExisting)

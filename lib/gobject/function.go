@@ -39,13 +39,22 @@ func BoxedFree(boxedType Type, boxed uintptr) {
 
 // CclosureMarshalBooleanBoxedBoxed is a wrapper around the C function g_cclosure_marshal_BOOLEAN__BOXED_BOXED.
 func CclosureMarshalBooleanBoxedBoxed(closure *Closure, returnValue *Value, nParamValues uint32, paramValues *Value, invocationHint uintptr, marshalData uintptr) {
-	c_closure := (*C.GClosure)(closure.ToC())
+	c_closure := (*C.GClosure)(C.NULL)
+	if closure != nil {
+		c_closure = (*C.GClosure)(closure.ToC())
+	}
 
-	c_return_value := (*C.GValue)(returnValue.ToC())
+	c_return_value := (*C.GValue)(C.NULL)
+	if returnValue != nil {
+		c_return_value = (*C.GValue)(returnValue.ToC())
+	}
 
 	c_n_param_values := (C.guint)(nParamValues)
 
-	c_param_values := (*C.GValue)(paramValues.ToC())
+	c_param_values := (*C.GValue)(C.NULL)
+	if paramValues != nil {
+		c_param_values = (*C.GValue)(paramValues.ToC())
+	}
 
 	c_invocation_hint := (C.gpointer)(invocationHint)
 
@@ -58,13 +67,22 @@ func CclosureMarshalBooleanBoxedBoxed(closure *Closure, returnValue *Value, nPar
 
 // CclosureMarshalBooleanFlags is a wrapper around the C function g_cclosure_marshal_BOOLEAN__FLAGS.
 func CclosureMarshalBooleanFlags(closure *Closure, returnValue *Value, nParamValues uint32, paramValues *Value, invocationHint uintptr, marshalData uintptr) {
-	c_closure := (*C.GClosure)(closure.ToC())
+	c_closure := (*C.GClosure)(C.NULL)
+	if closure != nil {
+		c_closure = (*C.GClosure)(closure.ToC())
+	}
 
-	c_return_value := (*C.GValue)(returnValue.ToC())
+	c_return_value := (*C.GValue)(C.NULL)
+	if returnValue != nil {
+		c_return_value = (*C.GValue)(returnValue.ToC())
+	}
 
 	c_n_param_values := (C.guint)(nParamValues)
 
-	c_param_values := (*C.GValue)(paramValues.ToC())
+	c_param_values := (*C.GValue)(C.NULL)
+	if paramValues != nil {
+		c_param_values = (*C.GValue)(paramValues.ToC())
+	}
 
 	c_invocation_hint := (C.gpointer)(invocationHint)
 
@@ -77,13 +95,22 @@ func CclosureMarshalBooleanFlags(closure *Closure, returnValue *Value, nParamVal
 
 // CclosureMarshalStringObjectPointer is a wrapper around the C function g_cclosure_marshal_STRING__OBJECT_POINTER.
 func CclosureMarshalStringObjectPointer(closure *Closure, returnValue *Value, nParamValues uint32, paramValues *Value, invocationHint uintptr, marshalData uintptr) {
-	c_closure := (*C.GClosure)(closure.ToC())
+	c_closure := (*C.GClosure)(C.NULL)
+	if closure != nil {
+		c_closure = (*C.GClosure)(closure.ToC())
+	}
 
-	c_return_value := (*C.GValue)(returnValue.ToC())
+	c_return_value := (*C.GValue)(C.NULL)
+	if returnValue != nil {
+		c_return_value = (*C.GValue)(returnValue.ToC())
+	}
 
 	c_n_param_values := (C.guint)(nParamValues)
 
-	c_param_values := (*C.GValue)(paramValues.ToC())
+	c_param_values := (*C.GValue)(C.NULL)
+	if paramValues != nil {
+		c_param_values = (*C.GValue)(paramValues.ToC())
+	}
 
 	c_invocation_hint := (C.gpointer)(invocationHint)
 
@@ -96,13 +123,22 @@ func CclosureMarshalStringObjectPointer(closure *Closure, returnValue *Value, nP
 
 // CclosureMarshalVoidBoolean is a wrapper around the C function g_cclosure_marshal_VOID__BOOLEAN.
 func CclosureMarshalVoidBoolean(closure *Closure, returnValue *Value, nParamValues uint32, paramValues *Value, invocationHint uintptr, marshalData uintptr) {
-	c_closure := (*C.GClosure)(closure.ToC())
+	c_closure := (*C.GClosure)(C.NULL)
+	if closure != nil {
+		c_closure = (*C.GClosure)(closure.ToC())
+	}
 
-	c_return_value := (*C.GValue)(returnValue.ToC())
+	c_return_value := (*C.GValue)(C.NULL)
+	if returnValue != nil {
+		c_return_value = (*C.GValue)(returnValue.ToC())
+	}
 
 	c_n_param_values := (C.guint)(nParamValues)
 
-	c_param_values := (*C.GValue)(paramValues.ToC())
+	c_param_values := (*C.GValue)(C.NULL)
+	if paramValues != nil {
+		c_param_values = (*C.GValue)(paramValues.ToC())
+	}
 
 	c_invocation_hint := (C.gpointer)(invocationHint)
 
@@ -115,13 +151,22 @@ func CclosureMarshalVoidBoolean(closure *Closure, returnValue *Value, nParamValu
 
 // CclosureMarshalVoidBoxed is a wrapper around the C function g_cclosure_marshal_VOID__BOXED.
 func CclosureMarshalVoidBoxed(closure *Closure, returnValue *Value, nParamValues uint32, paramValues *Value, invocationHint uintptr, marshalData uintptr) {
-	c_closure := (*C.GClosure)(closure.ToC())
+	c_closure := (*C.GClosure)(C.NULL)
+	if closure != nil {
+		c_closure = (*C.GClosure)(closure.ToC())
+	}
 
-	c_return_value := (*C.GValue)(returnValue.ToC())
+	c_return_value := (*C.GValue)(C.NULL)
+	if returnValue != nil {
+		c_return_value = (*C.GValue)(returnValue.ToC())
+	}
 
 	c_n_param_values := (C.guint)(nParamValues)
 
-	c_param_values := (*C.GValue)(paramValues.ToC())
+	c_param_values := (*C.GValue)(C.NULL)
+	if paramValues != nil {
+		c_param_values = (*C.GValue)(paramValues.ToC())
+	}
 
 	c_invocation_hint := (C.gpointer)(invocationHint)
 
@@ -134,13 +179,22 @@ func CclosureMarshalVoidBoxed(closure *Closure, returnValue *Value, nParamValues
 
 // CclosureMarshalVoidChar is a wrapper around the C function g_cclosure_marshal_VOID__CHAR.
 func CclosureMarshalVoidChar(closure *Closure, returnValue *Value, nParamValues uint32, paramValues *Value, invocationHint uintptr, marshalData uintptr) {
-	c_closure := (*C.GClosure)(closure.ToC())
+	c_closure := (*C.GClosure)(C.NULL)
+	if closure != nil {
+		c_closure = (*C.GClosure)(closure.ToC())
+	}
 
-	c_return_value := (*C.GValue)(returnValue.ToC())
+	c_return_value := (*C.GValue)(C.NULL)
+	if returnValue != nil {
+		c_return_value = (*C.GValue)(returnValue.ToC())
+	}
 
 	c_n_param_values := (C.guint)(nParamValues)
 
-	c_param_values := (*C.GValue)(paramValues.ToC())
+	c_param_values := (*C.GValue)(C.NULL)
+	if paramValues != nil {
+		c_param_values = (*C.GValue)(paramValues.ToC())
+	}
 
 	c_invocation_hint := (C.gpointer)(invocationHint)
 
@@ -153,13 +207,22 @@ func CclosureMarshalVoidChar(closure *Closure, returnValue *Value, nParamValues 
 
 // CclosureMarshalVoidDouble is a wrapper around the C function g_cclosure_marshal_VOID__DOUBLE.
 func CclosureMarshalVoidDouble(closure *Closure, returnValue *Value, nParamValues uint32, paramValues *Value, invocationHint uintptr, marshalData uintptr) {
-	c_closure := (*C.GClosure)(closure.ToC())
+	c_closure := (*C.GClosure)(C.NULL)
+	if closure != nil {
+		c_closure = (*C.GClosure)(closure.ToC())
+	}
 
-	c_return_value := (*C.GValue)(returnValue.ToC())
+	c_return_value := (*C.GValue)(C.NULL)
+	if returnValue != nil {
+		c_return_value = (*C.GValue)(returnValue.ToC())
+	}
 
 	c_n_param_values := (C.guint)(nParamValues)
 
-	c_param_values := (*C.GValue)(paramValues.ToC())
+	c_param_values := (*C.GValue)(C.NULL)
+	if paramValues != nil {
+		c_param_values = (*C.GValue)(paramValues.ToC())
+	}
 
 	c_invocation_hint := (C.gpointer)(invocationHint)
 
@@ -172,13 +235,22 @@ func CclosureMarshalVoidDouble(closure *Closure, returnValue *Value, nParamValue
 
 // CclosureMarshalVoidEnum is a wrapper around the C function g_cclosure_marshal_VOID__ENUM.
 func CclosureMarshalVoidEnum(closure *Closure, returnValue *Value, nParamValues uint32, paramValues *Value, invocationHint uintptr, marshalData uintptr) {
-	c_closure := (*C.GClosure)(closure.ToC())
+	c_closure := (*C.GClosure)(C.NULL)
+	if closure != nil {
+		c_closure = (*C.GClosure)(closure.ToC())
+	}
 
-	c_return_value := (*C.GValue)(returnValue.ToC())
+	c_return_value := (*C.GValue)(C.NULL)
+	if returnValue != nil {
+		c_return_value = (*C.GValue)(returnValue.ToC())
+	}
 
 	c_n_param_values := (C.guint)(nParamValues)
 
-	c_param_values := (*C.GValue)(paramValues.ToC())
+	c_param_values := (*C.GValue)(C.NULL)
+	if paramValues != nil {
+		c_param_values = (*C.GValue)(paramValues.ToC())
+	}
 
 	c_invocation_hint := (C.gpointer)(invocationHint)
 
@@ -191,13 +263,22 @@ func CclosureMarshalVoidEnum(closure *Closure, returnValue *Value, nParamValues 
 
 // CclosureMarshalVoidFlags is a wrapper around the C function g_cclosure_marshal_VOID__FLAGS.
 func CclosureMarshalVoidFlags(closure *Closure, returnValue *Value, nParamValues uint32, paramValues *Value, invocationHint uintptr, marshalData uintptr) {
-	c_closure := (*C.GClosure)(closure.ToC())
+	c_closure := (*C.GClosure)(C.NULL)
+	if closure != nil {
+		c_closure = (*C.GClosure)(closure.ToC())
+	}
 
-	c_return_value := (*C.GValue)(returnValue.ToC())
+	c_return_value := (*C.GValue)(C.NULL)
+	if returnValue != nil {
+		c_return_value = (*C.GValue)(returnValue.ToC())
+	}
 
 	c_n_param_values := (C.guint)(nParamValues)
 
-	c_param_values := (*C.GValue)(paramValues.ToC())
+	c_param_values := (*C.GValue)(C.NULL)
+	if paramValues != nil {
+		c_param_values = (*C.GValue)(paramValues.ToC())
+	}
 
 	c_invocation_hint := (C.gpointer)(invocationHint)
 
@@ -210,13 +291,22 @@ func CclosureMarshalVoidFlags(closure *Closure, returnValue *Value, nParamValues
 
 // CclosureMarshalVoidFloat is a wrapper around the C function g_cclosure_marshal_VOID__FLOAT.
 func CclosureMarshalVoidFloat(closure *Closure, returnValue *Value, nParamValues uint32, paramValues *Value, invocationHint uintptr, marshalData uintptr) {
-	c_closure := (*C.GClosure)(closure.ToC())
+	c_closure := (*C.GClosure)(C.NULL)
+	if closure != nil {
+		c_closure = (*C.GClosure)(closure.ToC())
+	}
 
-	c_return_value := (*C.GValue)(returnValue.ToC())
+	c_return_value := (*C.GValue)(C.NULL)
+	if returnValue != nil {
+		c_return_value = (*C.GValue)(returnValue.ToC())
+	}
 
 	c_n_param_values := (C.guint)(nParamValues)
 
-	c_param_values := (*C.GValue)(paramValues.ToC())
+	c_param_values := (*C.GValue)(C.NULL)
+	if paramValues != nil {
+		c_param_values = (*C.GValue)(paramValues.ToC())
+	}
 
 	c_invocation_hint := (C.gpointer)(invocationHint)
 
@@ -229,13 +319,22 @@ func CclosureMarshalVoidFloat(closure *Closure, returnValue *Value, nParamValues
 
 // CclosureMarshalVoidInt is a wrapper around the C function g_cclosure_marshal_VOID__INT.
 func CclosureMarshalVoidInt(closure *Closure, returnValue *Value, nParamValues uint32, paramValues *Value, invocationHint uintptr, marshalData uintptr) {
-	c_closure := (*C.GClosure)(closure.ToC())
+	c_closure := (*C.GClosure)(C.NULL)
+	if closure != nil {
+		c_closure = (*C.GClosure)(closure.ToC())
+	}
 
-	c_return_value := (*C.GValue)(returnValue.ToC())
+	c_return_value := (*C.GValue)(C.NULL)
+	if returnValue != nil {
+		c_return_value = (*C.GValue)(returnValue.ToC())
+	}
 
 	c_n_param_values := (C.guint)(nParamValues)
 
-	c_param_values := (*C.GValue)(paramValues.ToC())
+	c_param_values := (*C.GValue)(C.NULL)
+	if paramValues != nil {
+		c_param_values = (*C.GValue)(paramValues.ToC())
+	}
 
 	c_invocation_hint := (C.gpointer)(invocationHint)
 
@@ -248,13 +347,22 @@ func CclosureMarshalVoidInt(closure *Closure, returnValue *Value, nParamValues u
 
 // CclosureMarshalVoidLong is a wrapper around the C function g_cclosure_marshal_VOID__LONG.
 func CclosureMarshalVoidLong(closure *Closure, returnValue *Value, nParamValues uint32, paramValues *Value, invocationHint uintptr, marshalData uintptr) {
-	c_closure := (*C.GClosure)(closure.ToC())
+	c_closure := (*C.GClosure)(C.NULL)
+	if closure != nil {
+		c_closure = (*C.GClosure)(closure.ToC())
+	}
 
-	c_return_value := (*C.GValue)(returnValue.ToC())
+	c_return_value := (*C.GValue)(C.NULL)
+	if returnValue != nil {
+		c_return_value = (*C.GValue)(returnValue.ToC())
+	}
 
 	c_n_param_values := (C.guint)(nParamValues)
 
-	c_param_values := (*C.GValue)(paramValues.ToC())
+	c_param_values := (*C.GValue)(C.NULL)
+	if paramValues != nil {
+		c_param_values = (*C.GValue)(paramValues.ToC())
+	}
 
 	c_invocation_hint := (C.gpointer)(invocationHint)
 
@@ -267,13 +375,22 @@ func CclosureMarshalVoidLong(closure *Closure, returnValue *Value, nParamValues 
 
 // CclosureMarshalVoidObject is a wrapper around the C function g_cclosure_marshal_VOID__OBJECT.
 func CclosureMarshalVoidObject(closure *Closure, returnValue *Value, nParamValues uint32, paramValues *Value, invocationHint uintptr, marshalData uintptr) {
-	c_closure := (*C.GClosure)(closure.ToC())
+	c_closure := (*C.GClosure)(C.NULL)
+	if closure != nil {
+		c_closure = (*C.GClosure)(closure.ToC())
+	}
 
-	c_return_value := (*C.GValue)(returnValue.ToC())
+	c_return_value := (*C.GValue)(C.NULL)
+	if returnValue != nil {
+		c_return_value = (*C.GValue)(returnValue.ToC())
+	}
 
 	c_n_param_values := (C.guint)(nParamValues)
 
-	c_param_values := (*C.GValue)(paramValues.ToC())
+	c_param_values := (*C.GValue)(C.NULL)
+	if paramValues != nil {
+		c_param_values = (*C.GValue)(paramValues.ToC())
+	}
 
 	c_invocation_hint := (C.gpointer)(invocationHint)
 
@@ -286,13 +403,22 @@ func CclosureMarshalVoidObject(closure *Closure, returnValue *Value, nParamValue
 
 // CclosureMarshalVoidParam is a wrapper around the C function g_cclosure_marshal_VOID__PARAM.
 func CclosureMarshalVoidParam(closure *Closure, returnValue *Value, nParamValues uint32, paramValues *Value, invocationHint uintptr, marshalData uintptr) {
-	c_closure := (*C.GClosure)(closure.ToC())
+	c_closure := (*C.GClosure)(C.NULL)
+	if closure != nil {
+		c_closure = (*C.GClosure)(closure.ToC())
+	}
 
-	c_return_value := (*C.GValue)(returnValue.ToC())
+	c_return_value := (*C.GValue)(C.NULL)
+	if returnValue != nil {
+		c_return_value = (*C.GValue)(returnValue.ToC())
+	}
 
 	c_n_param_values := (C.guint)(nParamValues)
 
-	c_param_values := (*C.GValue)(paramValues.ToC())
+	c_param_values := (*C.GValue)(C.NULL)
+	if paramValues != nil {
+		c_param_values = (*C.GValue)(paramValues.ToC())
+	}
 
 	c_invocation_hint := (C.gpointer)(invocationHint)
 
@@ -305,13 +431,22 @@ func CclosureMarshalVoidParam(closure *Closure, returnValue *Value, nParamValues
 
 // CclosureMarshalVoidPointer is a wrapper around the C function g_cclosure_marshal_VOID__POINTER.
 func CclosureMarshalVoidPointer(closure *Closure, returnValue *Value, nParamValues uint32, paramValues *Value, invocationHint uintptr, marshalData uintptr) {
-	c_closure := (*C.GClosure)(closure.ToC())
+	c_closure := (*C.GClosure)(C.NULL)
+	if closure != nil {
+		c_closure = (*C.GClosure)(closure.ToC())
+	}
 
-	c_return_value := (*C.GValue)(returnValue.ToC())
+	c_return_value := (*C.GValue)(C.NULL)
+	if returnValue != nil {
+		c_return_value = (*C.GValue)(returnValue.ToC())
+	}
 
 	c_n_param_values := (C.guint)(nParamValues)
 
-	c_param_values := (*C.GValue)(paramValues.ToC())
+	c_param_values := (*C.GValue)(C.NULL)
+	if paramValues != nil {
+		c_param_values = (*C.GValue)(paramValues.ToC())
+	}
 
 	c_invocation_hint := (C.gpointer)(invocationHint)
 
@@ -324,13 +459,22 @@ func CclosureMarshalVoidPointer(closure *Closure, returnValue *Value, nParamValu
 
 // CclosureMarshalVoidString is a wrapper around the C function g_cclosure_marshal_VOID__STRING.
 func CclosureMarshalVoidString(closure *Closure, returnValue *Value, nParamValues uint32, paramValues *Value, invocationHint uintptr, marshalData uintptr) {
-	c_closure := (*C.GClosure)(closure.ToC())
+	c_closure := (*C.GClosure)(C.NULL)
+	if closure != nil {
+		c_closure = (*C.GClosure)(closure.ToC())
+	}
 
-	c_return_value := (*C.GValue)(returnValue.ToC())
+	c_return_value := (*C.GValue)(C.NULL)
+	if returnValue != nil {
+		c_return_value = (*C.GValue)(returnValue.ToC())
+	}
 
 	c_n_param_values := (C.guint)(nParamValues)
 
-	c_param_values := (*C.GValue)(paramValues.ToC())
+	c_param_values := (*C.GValue)(C.NULL)
+	if paramValues != nil {
+		c_param_values = (*C.GValue)(paramValues.ToC())
+	}
 
 	c_invocation_hint := (C.gpointer)(invocationHint)
 
@@ -343,13 +487,22 @@ func CclosureMarshalVoidString(closure *Closure, returnValue *Value, nParamValue
 
 // CclosureMarshalVoidUchar is a wrapper around the C function g_cclosure_marshal_VOID__UCHAR.
 func CclosureMarshalVoidUchar(closure *Closure, returnValue *Value, nParamValues uint32, paramValues *Value, invocationHint uintptr, marshalData uintptr) {
-	c_closure := (*C.GClosure)(closure.ToC())
+	c_closure := (*C.GClosure)(C.NULL)
+	if closure != nil {
+		c_closure = (*C.GClosure)(closure.ToC())
+	}
 
-	c_return_value := (*C.GValue)(returnValue.ToC())
+	c_return_value := (*C.GValue)(C.NULL)
+	if returnValue != nil {
+		c_return_value = (*C.GValue)(returnValue.ToC())
+	}
 
 	c_n_param_values := (C.guint)(nParamValues)
 
-	c_param_values := (*C.GValue)(paramValues.ToC())
+	c_param_values := (*C.GValue)(C.NULL)
+	if paramValues != nil {
+		c_param_values = (*C.GValue)(paramValues.ToC())
+	}
 
 	c_invocation_hint := (C.gpointer)(invocationHint)
 
@@ -362,13 +515,22 @@ func CclosureMarshalVoidUchar(closure *Closure, returnValue *Value, nParamValues
 
 // CclosureMarshalVoidUint is a wrapper around the C function g_cclosure_marshal_VOID__UINT.
 func CclosureMarshalVoidUint(closure *Closure, returnValue *Value, nParamValues uint32, paramValues *Value, invocationHint uintptr, marshalData uintptr) {
-	c_closure := (*C.GClosure)(closure.ToC())
+	c_closure := (*C.GClosure)(C.NULL)
+	if closure != nil {
+		c_closure = (*C.GClosure)(closure.ToC())
+	}
 
-	c_return_value := (*C.GValue)(returnValue.ToC())
+	c_return_value := (*C.GValue)(C.NULL)
+	if returnValue != nil {
+		c_return_value = (*C.GValue)(returnValue.ToC())
+	}
 
 	c_n_param_values := (C.guint)(nParamValues)
 
-	c_param_values := (*C.GValue)(paramValues.ToC())
+	c_param_values := (*C.GValue)(C.NULL)
+	if paramValues != nil {
+		c_param_values = (*C.GValue)(paramValues.ToC())
+	}
 
 	c_invocation_hint := (C.gpointer)(invocationHint)
 
@@ -381,13 +543,22 @@ func CclosureMarshalVoidUint(closure *Closure, returnValue *Value, nParamValues 
 
 // CclosureMarshalVoidUintPointer is a wrapper around the C function g_cclosure_marshal_VOID__UINT_POINTER.
 func CclosureMarshalVoidUintPointer(closure *Closure, returnValue *Value, nParamValues uint32, paramValues *Value, invocationHint uintptr, marshalData uintptr) {
-	c_closure := (*C.GClosure)(closure.ToC())
+	c_closure := (*C.GClosure)(C.NULL)
+	if closure != nil {
+		c_closure = (*C.GClosure)(closure.ToC())
+	}
 
-	c_return_value := (*C.GValue)(returnValue.ToC())
+	c_return_value := (*C.GValue)(C.NULL)
+	if returnValue != nil {
+		c_return_value = (*C.GValue)(returnValue.ToC())
+	}
 
 	c_n_param_values := (C.guint)(nParamValues)
 
-	c_param_values := (*C.GValue)(paramValues.ToC())
+	c_param_values := (*C.GValue)(C.NULL)
+	if paramValues != nil {
+		c_param_values = (*C.GValue)(paramValues.ToC())
+	}
 
 	c_invocation_hint := (C.gpointer)(invocationHint)
 
@@ -400,13 +571,22 @@ func CclosureMarshalVoidUintPointer(closure *Closure, returnValue *Value, nParam
 
 // CclosureMarshalVoidUlong is a wrapper around the C function g_cclosure_marshal_VOID__ULONG.
 func CclosureMarshalVoidUlong(closure *Closure, returnValue *Value, nParamValues uint32, paramValues *Value, invocationHint uintptr, marshalData uintptr) {
-	c_closure := (*C.GClosure)(closure.ToC())
+	c_closure := (*C.GClosure)(C.NULL)
+	if closure != nil {
+		c_closure = (*C.GClosure)(closure.ToC())
+	}
 
-	c_return_value := (*C.GValue)(returnValue.ToC())
+	c_return_value := (*C.GValue)(C.NULL)
+	if returnValue != nil {
+		c_return_value = (*C.GValue)(returnValue.ToC())
+	}
 
 	c_n_param_values := (C.guint)(nParamValues)
 
-	c_param_values := (*C.GValue)(paramValues.ToC())
+	c_param_values := (*C.GValue)(C.NULL)
+	if paramValues != nil {
+		c_param_values = (*C.GValue)(paramValues.ToC())
+	}
 
 	c_invocation_hint := (C.gpointer)(invocationHint)
 
@@ -419,13 +599,22 @@ func CclosureMarshalVoidUlong(closure *Closure, returnValue *Value, nParamValues
 
 // CclosureMarshalVoidVariant is a wrapper around the C function g_cclosure_marshal_VOID__VARIANT.
 func CclosureMarshalVoidVariant(closure *Closure, returnValue *Value, nParamValues uint32, paramValues *Value, invocationHint uintptr, marshalData uintptr) {
-	c_closure := (*C.GClosure)(closure.ToC())
+	c_closure := (*C.GClosure)(C.NULL)
+	if closure != nil {
+		c_closure = (*C.GClosure)(closure.ToC())
+	}
 
-	c_return_value := (*C.GValue)(returnValue.ToC())
+	c_return_value := (*C.GValue)(C.NULL)
+	if returnValue != nil {
+		c_return_value = (*C.GValue)(returnValue.ToC())
+	}
 
 	c_n_param_values := (C.guint)(nParamValues)
 
-	c_param_values := (*C.GValue)(paramValues.ToC())
+	c_param_values := (*C.GValue)(C.NULL)
+	if paramValues != nil {
+		c_param_values = (*C.GValue)(paramValues.ToC())
+	}
 
 	c_invocation_hint := (C.gpointer)(invocationHint)
 
@@ -438,13 +627,22 @@ func CclosureMarshalVoidVariant(closure *Closure, returnValue *Value, nParamValu
 
 // CclosureMarshalVoidVoid is a wrapper around the C function g_cclosure_marshal_VOID__VOID.
 func CclosureMarshalVoidVoid(closure *Closure, returnValue *Value, nParamValues uint32, paramValues *Value, invocationHint uintptr, marshalData uintptr) {
-	c_closure := (*C.GClosure)(closure.ToC())
+	c_closure := (*C.GClosure)(C.NULL)
+	if closure != nil {
+		c_closure = (*C.GClosure)(closure.ToC())
+	}
 
-	c_return_value := (*C.GValue)(returnValue.ToC())
+	c_return_value := (*C.GValue)(C.NULL)
+	if returnValue != nil {
+		c_return_value = (*C.GValue)(returnValue.ToC())
+	}
 
 	c_n_param_values := (C.guint)(nParamValues)
 
-	c_param_values := (*C.GValue)(paramValues.ToC())
+	c_param_values := (*C.GValue)(C.NULL)
+	if paramValues != nil {
+		c_param_values = (*C.GValue)(paramValues.ToC())
+	}
 
 	c_invocation_hint := (C.gpointer)(invocationHint)
 
@@ -469,7 +667,10 @@ func EnumCompleteTypeInfo(gEnumType Type, constValues *EnumValue) *TypeInfo {
 
 	var c_info C.GTypeInfo
 
-	c_const_values := (*C.GEnumValue)(constValues.ToC())
+	c_const_values := (*C.GEnumValue)(C.NULL)
+	if constValues != nil {
+		c_const_values = (*C.GEnumValue)(constValues.ToC())
+	}
 
 	C.g_enum_complete_type_info(c_g_enum_type, &c_info, c_const_values)
 
@@ -480,7 +681,10 @@ func EnumCompleteTypeInfo(gEnumType Type, constValues *EnumValue) *TypeInfo {
 
 // EnumGetValue is a wrapper around the C function g_enum_get_value.
 func EnumGetValue(enumClass *EnumClass, value int32) *EnumValue {
-	c_enum_class := (*C.GEnumClass)(enumClass.ToC())
+	c_enum_class := (*C.GEnumClass)(C.NULL)
+	if enumClass != nil {
+		c_enum_class = (*C.GEnumClass)(enumClass.ToC())
+	}
 
 	c_value := (C.gint)(value)
 
@@ -492,7 +696,10 @@ func EnumGetValue(enumClass *EnumClass, value int32) *EnumValue {
 
 // EnumGetValueByName is a wrapper around the C function g_enum_get_value_by_name.
 func EnumGetValueByName(enumClass *EnumClass, name string) *EnumValue {
-	c_enum_class := (*C.GEnumClass)(enumClass.ToC())
+	c_enum_class := (*C.GEnumClass)(C.NULL)
+	if enumClass != nil {
+		c_enum_class = (*C.GEnumClass)(enumClass.ToC())
+	}
 
 	c_name := C.CString(name)
 	defer C.free(unsafe.Pointer(c_name))
@@ -505,7 +712,10 @@ func EnumGetValueByName(enumClass *EnumClass, name string) *EnumValue {
 
 // EnumGetValueByNick is a wrapper around the C function g_enum_get_value_by_nick.
 func EnumGetValueByNick(enumClass *EnumClass, nick string) *EnumValue {
-	c_enum_class := (*C.GEnumClass)(enumClass.ToC())
+	c_enum_class := (*C.GEnumClass)(C.NULL)
+	if enumClass != nil {
+		c_enum_class = (*C.GEnumClass)(enumClass.ToC())
+	}
 
 	c_nick := C.CString(nick)
 	defer C.free(unsafe.Pointer(c_nick))
@@ -521,7 +731,10 @@ func EnumRegisterStatic(name string, constStaticValues *EnumValue) Type {
 	c_name := C.CString(name)
 	defer C.free(unsafe.Pointer(c_name))
 
-	c_const_static_values := (*C.GEnumValue)(constStaticValues.ToC())
+	c_const_static_values := (*C.GEnumValue)(C.NULL)
+	if constStaticValues != nil {
+		c_const_static_values = (*C.GEnumValue)(constStaticValues.ToC())
+	}
 
 	retC := C.g_enum_register_static(c_name, c_const_static_values)
 	retGo := (Type)(retC)
@@ -535,7 +748,10 @@ func FlagsCompleteTypeInfo(gFlagsType Type, constValues *FlagsValue) *TypeInfo {
 
 	var c_info C.GTypeInfo
 
-	c_const_values := (*C.GFlagsValue)(constValues.ToC())
+	c_const_values := (*C.GFlagsValue)(C.NULL)
+	if constValues != nil {
+		c_const_values = (*C.GFlagsValue)(constValues.ToC())
+	}
 
 	C.g_flags_complete_type_info(c_g_flags_type, &c_info, c_const_values)
 
@@ -546,7 +762,10 @@ func FlagsCompleteTypeInfo(gFlagsType Type, constValues *FlagsValue) *TypeInfo {
 
 // FlagsGetFirstValue is a wrapper around the C function g_flags_get_first_value.
 func FlagsGetFirstValue(flagsClass *FlagsClass, value uint32) *FlagsValue {
-	c_flags_class := (*C.GFlagsClass)(flagsClass.ToC())
+	c_flags_class := (*C.GFlagsClass)(C.NULL)
+	if flagsClass != nil {
+		c_flags_class = (*C.GFlagsClass)(flagsClass.ToC())
+	}
 
 	c_value := (C.guint)(value)
 
@@ -558,7 +777,10 @@ func FlagsGetFirstValue(flagsClass *FlagsClass, value uint32) *FlagsValue {
 
 // FlagsGetValueByName is a wrapper around the C function g_flags_get_value_by_name.
 func FlagsGetValueByName(flagsClass *FlagsClass, name string) *FlagsValue {
-	c_flags_class := (*C.GFlagsClass)(flagsClass.ToC())
+	c_flags_class := (*C.GFlagsClass)(C.NULL)
+	if flagsClass != nil {
+		c_flags_class = (*C.GFlagsClass)(flagsClass.ToC())
+	}
 
 	c_name := C.CString(name)
 	defer C.free(unsafe.Pointer(c_name))
@@ -571,7 +793,10 @@ func FlagsGetValueByName(flagsClass *FlagsClass, name string) *FlagsValue {
 
 // FlagsGetValueByNick is a wrapper around the C function g_flags_get_value_by_nick.
 func FlagsGetValueByNick(flagsClass *FlagsClass, nick string) *FlagsValue {
-	c_flags_class := (*C.GFlagsClass)(flagsClass.ToC())
+	c_flags_class := (*C.GFlagsClass)(C.NULL)
+	if flagsClass != nil {
+		c_flags_class = (*C.GFlagsClass)(flagsClass.ToC())
+	}
 
 	c_nick := C.CString(nick)
 	defer C.free(unsafe.Pointer(c_nick))
@@ -587,7 +812,10 @@ func FlagsRegisterStatic(name string, constStaticValues *FlagsValue) Type {
 	c_name := C.CString(name)
 	defer C.free(unsafe.Pointer(c_name))
 
-	c_const_static_values := (*C.GFlagsValue)(constStaticValues.ToC())
+	c_const_static_values := (*C.GFlagsValue)(C.NULL)
+	if constStaticValues != nil {
+		c_const_static_values = (*C.GFlagsValue)(constStaticValues.ToC())
+	}
 
 	retC := C.g_flags_register_static(c_name, c_const_static_values)
 	retGo := (Type)(retC)
@@ -659,7 +887,10 @@ func ParamTypeRegisterStatic(name string, pspecInfo *ParamSpecTypeInfo) Type {
 	c_name := C.CString(name)
 	defer C.free(unsafe.Pointer(c_name))
 
-	c_pspec_info := (*C.GParamSpecTypeInfo)(pspecInfo.ToC())
+	c_pspec_info := (*C.GParamSpecTypeInfo)(C.NULL)
+	if pspecInfo != nil {
+		c_pspec_info = (*C.GParamSpecTypeInfo)(pspecInfo.ToC())
+	}
 
 	retC := C.g_param_type_register_static(c_name, c_pspec_info)
 	retGo := (Type)(retC)
@@ -699,7 +930,10 @@ func SignalConnectClosure(instance uintptr, detailedSignal string, closure *Clos
 	c_detailed_signal := C.CString(detailedSignal)
 	defer C.free(unsafe.Pointer(c_detailed_signal))
 
-	c_closure := (*C.GClosure)(closure.ToC())
+	c_closure := (*C.GClosure)(C.NULL)
+	if closure != nil {
+		c_closure = (*C.GClosure)(closure.ToC())
+	}
 
 	c_after :=
 		boolToGboolean(after)
@@ -718,7 +952,10 @@ func SignalConnectClosureById(instance uintptr, signalId uint32, detail glib.Qua
 
 	c_detail := (C.GQuark)(detail)
 
-	c_closure := (*C.GClosure)(closure.ToC())
+	c_closure := (*C.GClosure)(C.NULL)
+	if closure != nil {
+		c_closure = (*C.GClosure)(closure.ToC())
+	}
 
 	c_after :=
 		boolToGboolean(after)
@@ -783,7 +1020,10 @@ func SignalHandlerFind(instance uintptr, mask SignalMatchType, signalId uint32, 
 
 	c_detail := (C.GQuark)(detail)
 
-	c_closure := (*C.GClosure)(closure.ToC())
+	c_closure := (*C.GClosure)(C.NULL)
+	if closure != nil {
+		c_closure = (*C.GClosure)(closure.ToC())
+	}
 
 	c_func := (C.gpointer)(func_)
 
@@ -828,7 +1068,10 @@ func SignalHandlersBlockMatched(instance uintptr, mask SignalMatchType, signalId
 
 	c_detail := (C.GQuark)(detail)
 
-	c_closure := (*C.GClosure)(closure.ToC())
+	c_closure := (*C.GClosure)(C.NULL)
+	if closure != nil {
+		c_closure = (*C.GClosure)(closure.ToC())
+	}
 
 	c_func := (C.gpointer)(func_)
 
@@ -859,7 +1102,10 @@ func SignalHandlersDisconnectMatched(instance uintptr, mask SignalMatchType, sig
 
 	c_detail := (C.GQuark)(detail)
 
-	c_closure := (*C.GClosure)(closure.ToC())
+	c_closure := (*C.GClosure)(C.NULL)
+	if closure != nil {
+		c_closure = (*C.GClosure)(closure.ToC())
+	}
 
 	c_func := (C.gpointer)(func_)
 
@@ -881,7 +1127,10 @@ func SignalHandlersUnblockMatched(instance uintptr, mask SignalMatchType, signal
 
 	c_detail := (C.GQuark)(detail)
 
-	c_closure := (*C.GClosure)(closure.ToC())
+	c_closure := (*C.GClosure)(C.NULL)
+	if closure != nil {
+		c_closure = (*C.GClosure)(closure.ToC())
+	}
 
 	c_func := (C.gpointer)(func_)
 
@@ -947,7 +1196,10 @@ func SignalOverrideClassClosure(signalId uint32, instanceType Type, classClosure
 
 	c_instance_type := (C.GType)(instanceType)
 
-	c_class_closure := (*C.GClosure)(classClosure.ToC())
+	c_class_closure := (*C.GClosure)(C.NULL)
+	if classClosure != nil {
+		c_class_closure = (*C.GClosure)(classClosure.ToC())
+	}
 
 	C.g_signal_override_class_closure(c_signal_id, c_instance_type, c_class_closure)
 
@@ -1041,9 +1293,15 @@ func SignalTypeCclosureNew(itype Type, structOffset uint32) *Closure {
 
 // SourceSetClosure is a wrapper around the C function g_source_set_closure.
 func SourceSetClosure(source *glib.Source, closure *Closure) {
-	c_source := (*C.GSource)(source.ToC())
+	c_source := (*C.GSource)(C.NULL)
+	if source != nil {
+		c_source = (*C.GSource)(source.ToC())
+	}
 
-	c_closure := (*C.GClosure)(closure.ToC())
+	c_closure := (*C.GClosure)(C.NULL)
+	if closure != nil {
+		c_closure = (*C.GClosure)(closure.ToC())
+	}
 
 	C.g_source_set_closure(c_source, c_closure)
 
@@ -1052,7 +1310,10 @@ func SourceSetClosure(source *glib.Source, closure *Closure) {
 
 // SourceSetDummyCallback is a wrapper around the C function g_source_set_dummy_callback.
 func SourceSetDummyCallback(source *glib.Source) {
-	c_source := (*C.GSource)(source.ToC())
+	c_source := (*C.GSource)(C.NULL)
+	if source != nil {
+		c_source = (*C.GSource)(source.ToC())
+	}
 
 	C.g_source_set_dummy_callback(c_source)
 
@@ -1061,7 +1322,10 @@ func SourceSetDummyCallback(source *glib.Source) {
 
 // StrdupValueContents is a wrapper around the C function g_strdup_value_contents.
 func StrdupValueContents(value *Value) string {
-	c_value := (*C.GValue)(value.ToC())
+	c_value := (*C.GValue)(C.NULL)
+	if value != nil {
+		c_value = (*C.GValue)(value.ToC())
+	}
 
 	retC := C.g_strdup_value_contents(c_value)
 	retGo := C.GoString(retC)
@@ -1103,7 +1367,10 @@ func TypeAddInterfaceStatic(instanceType Type, interfaceType Type, info *Interfa
 
 	c_interface_type := (C.GType)(interfaceType)
 
-	c_info := (*C.GInterfaceInfo)(info.ToC())
+	c_info := (*C.GInterfaceInfo)(C.NULL)
+	if info != nil {
+		c_info = (*C.GInterfaceInfo)(info.ToC())
+	}
 
 	C.g_type_add_interface_static(c_instance_type, c_interface_type, c_info)
 
@@ -1112,7 +1379,10 @@ func TypeAddInterfaceStatic(instanceType Type, interfaceType Type, info *Interfa
 
 // TypeCheckClassCast is a wrapper around the C function g_type_check_class_cast.
 func TypeCheckClassCast(gClass *TypeClass, isAType Type) *TypeClass {
-	c_g_class := (*C.GTypeClass)(gClass.ToC())
+	c_g_class := (*C.GTypeClass)(C.NULL)
+	if gClass != nil {
+		c_g_class = (*C.GTypeClass)(gClass.ToC())
+	}
 
 	c_is_a_type := (C.GType)(isAType)
 
@@ -1124,7 +1394,10 @@ func TypeCheckClassCast(gClass *TypeClass, isAType Type) *TypeClass {
 
 // TypeCheckClassIsA is a wrapper around the C function g_type_check_class_is_a.
 func TypeCheckClassIsA(gClass *TypeClass, isAType Type) bool {
-	c_g_class := (*C.GTypeClass)(gClass.ToC())
+	c_g_class := (*C.GTypeClass)(C.NULL)
+	if gClass != nil {
+		c_g_class = (*C.GTypeClass)(gClass.ToC())
+	}
 
 	c_is_a_type := (C.GType)(isAType)
 
@@ -1136,7 +1409,10 @@ func TypeCheckClassIsA(gClass *TypeClass, isAType Type) bool {
 
 // TypeCheckInstance is a wrapper around the C function g_type_check_instance.
 func TypeCheckInstance(instance *TypeInstance) bool {
-	c_instance := (*C.GTypeInstance)(instance.ToC())
+	c_instance := (*C.GTypeInstance)(C.NULL)
+	if instance != nil {
+		c_instance = (*C.GTypeInstance)(instance.ToC())
+	}
 
 	retC := C.g_type_check_instance(c_instance)
 	retGo := retC == C.TRUE
@@ -1146,7 +1422,10 @@ func TypeCheckInstance(instance *TypeInstance) bool {
 
 // TypeCheckInstanceCast is a wrapper around the C function g_type_check_instance_cast.
 func TypeCheckInstanceCast(instance *TypeInstance, ifaceType Type) *TypeInstance {
-	c_instance := (*C.GTypeInstance)(instance.ToC())
+	c_instance := (*C.GTypeInstance)(C.NULL)
+	if instance != nil {
+		c_instance = (*C.GTypeInstance)(instance.ToC())
+	}
 
 	c_iface_type := (C.GType)(ifaceType)
 
@@ -1158,7 +1437,10 @@ func TypeCheckInstanceCast(instance *TypeInstance, ifaceType Type) *TypeInstance
 
 // TypeCheckInstanceIsA is a wrapper around the C function g_type_check_instance_is_a.
 func TypeCheckInstanceIsA(instance *TypeInstance, ifaceType Type) bool {
-	c_instance := (*C.GTypeInstance)(instance.ToC())
+	c_instance := (*C.GTypeInstance)(C.NULL)
+	if instance != nil {
+		c_instance = (*C.GTypeInstance)(instance.ToC())
+	}
 
 	c_iface_type := (C.GType)(ifaceType)
 
@@ -1170,7 +1452,10 @@ func TypeCheckInstanceIsA(instance *TypeInstance, ifaceType Type) bool {
 
 // TypeCheckInstanceIsFundamentallyA is a wrapper around the C function g_type_check_instance_is_fundamentally_a.
 func TypeCheckInstanceIsFundamentallyA(instance *TypeInstance, fundamentalType Type) bool {
-	c_instance := (*C.GTypeInstance)(instance.ToC())
+	c_instance := (*C.GTypeInstance)(C.NULL)
+	if instance != nil {
+		c_instance = (*C.GTypeInstance)(instance.ToC())
+	}
 
 	c_fundamental_type := (C.GType)(fundamentalType)
 
@@ -1192,7 +1477,10 @@ func TypeCheckIsValueType(type_ Type) bool {
 
 // TypeCheckValue is a wrapper around the C function g_type_check_value.
 func TypeCheckValue(value *Value) bool {
-	c_value := (*C.GValue)(value.ToC())
+	c_value := (*C.GValue)(C.NULL)
+	if value != nil {
+		c_value = (*C.GValue)(value.ToC())
+	}
 
 	retC := C.g_type_check_value(c_value)
 	retGo := retC == C.TRUE
@@ -1202,7 +1490,10 @@ func TypeCheckValue(value *Value) bool {
 
 // TypeCheckValueHolds is a wrapper around the C function g_type_check_value_holds.
 func TypeCheckValueHolds(value *Value, type_ Type) bool {
-	c_value := (*C.GValue)(value.ToC())
+	c_value := (*C.GValue)(C.NULL)
+	if value != nil {
+		c_value = (*C.GValue)(value.ToC())
+	}
 
 	c_type := (C.GType)(type_)
 
@@ -1267,7 +1558,10 @@ func TypeDepth(type_ Type) uint32 {
 
 // TypeFreeInstance is a wrapper around the C function g_type_free_instance.
 func TypeFreeInstance(instance *TypeInstance) {
-	c_instance := (*C.GTypeInstance)(instance.ToC())
+	c_instance := (*C.GTypeInstance)(C.NULL)
+	if instance != nil {
+		c_instance = (*C.GTypeInstance)(instance.ToC())
+	}
 
 	C.g_type_free_instance(c_instance)
 
@@ -1402,7 +1696,10 @@ func TypeName(type_ Type) string {
 
 // TypeNameFromClass is a wrapper around the C function g_type_name_from_class.
 func TypeNameFromClass(gClass *TypeClass) string {
-	c_g_class := (*C.GTypeClass)(gClass.ToC())
+	c_g_class := (*C.GTypeClass)(C.NULL)
+	if gClass != nil {
+		c_g_class = (*C.GTypeClass)(gClass.ToC())
+	}
 
 	retC := C.g_type_name_from_class(c_g_class)
 	retGo := C.GoString(retC)
@@ -1412,7 +1709,10 @@ func TypeNameFromClass(gClass *TypeClass) string {
 
 // TypeNameFromInstance is a wrapper around the C function g_type_name_from_instance.
 func TypeNameFromInstance(instance *TypeInstance) string {
-	c_instance := (*C.GTypeInstance)(instance.ToC())
+	c_instance := (*C.GTypeInstance)(C.NULL)
+	if instance != nil {
+		c_instance = (*C.GTypeInstance)(instance.ToC())
+	}
 
 	retC := C.g_type_name_from_instance(c_instance)
 	retGo := C.GoString(retC)
@@ -1489,9 +1789,15 @@ func TypeRegisterFundamental(typeId Type, typeName string, info *TypeInfo, finfo
 	c_type_name := C.CString(typeName)
 	defer C.free(unsafe.Pointer(c_type_name))
 
-	c_info := (*C.GTypeInfo)(info.ToC())
+	c_info := (*C.GTypeInfo)(C.NULL)
+	if info != nil {
+		c_info = (*C.GTypeInfo)(info.ToC())
+	}
 
-	c_finfo := (*C.GTypeFundamentalInfo)(finfo.ToC())
+	c_finfo := (*C.GTypeFundamentalInfo)(C.NULL)
+	if finfo != nil {
+		c_finfo = (*C.GTypeFundamentalInfo)(finfo.ToC())
+	}
 
 	c_flags := (C.GTypeFlags)(flags)
 
@@ -1508,7 +1814,10 @@ func TypeRegisterStatic(parentType Type, typeName string, info *TypeInfo, flags 
 	c_type_name := C.CString(typeName)
 	defer C.free(unsafe.Pointer(c_type_name))
 
-	c_info := (*C.GTypeInfo)(info.ToC())
+	c_info := (*C.GTypeInfo)(C.NULL)
+	if info != nil {
+		c_info = (*C.GTypeInfo)(info.ToC())
+	}
 
 	c_flags := (C.GTypeFlags)(flags)
 

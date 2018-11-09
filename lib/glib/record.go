@@ -137,7 +137,10 @@ func (recv *AsyncQueue) RefUnlocked() {
 
 // TimedPop is a wrapper around the C function g_async_queue_timed_pop.
 func (recv *AsyncQueue) TimedPop(endTime *TimeVal) uintptr {
-	c_end_time := (*C.GTimeVal)(endTime.ToC())
+	c_end_time := (*C.GTimeVal)(C.NULL)
+	if endTime != nil {
+		c_end_time = (*C.GTimeVal)(endTime.ToC())
+	}
 
 	retC := C.g_async_queue_timed_pop((*C.GAsyncQueue)(recv.native), c_end_time)
 	retGo := (uintptr)(unsafe.Pointer(retC))
@@ -147,7 +150,10 @@ func (recv *AsyncQueue) TimedPop(endTime *TimeVal) uintptr {
 
 // TimedPopUnlocked is a wrapper around the C function g_async_queue_timed_pop_unlocked.
 func (recv *AsyncQueue) TimedPopUnlocked(endTime *TimeVal) uintptr {
-	c_end_time := (*C.GTimeVal)(endTime.ToC())
+	c_end_time := (*C.GTimeVal)(C.NULL)
+	if endTime != nil {
+		c_end_time = (*C.GTimeVal)(endTime.ToC())
+	}
 
 	retC := C.g_async_queue_timed_pop_unlocked((*C.GAsyncQueue)(recv.native), c_end_time)
 	retGo := (uintptr)(unsafe.Pointer(retC))
@@ -383,9 +389,15 @@ func (recv *Date) AddYears(nYears uint32) {
 
 // Clamp is a wrapper around the C function g_date_clamp.
 func (recv *Date) Clamp(minDate *Date, maxDate *Date) {
-	c_min_date := (*C.GDate)(minDate.ToC())
+	c_min_date := (*C.GDate)(C.NULL)
+	if minDate != nil {
+		c_min_date = (*C.GDate)(minDate.ToC())
+	}
 
-	c_max_date := (*C.GDate)(maxDate.ToC())
+	c_max_date := (*C.GDate)(C.NULL)
+	if maxDate != nil {
+		c_max_date = (*C.GDate)(maxDate.ToC())
+	}
 
 	C.g_date_clamp((*C.GDate)(recv.native), c_min_date, c_max_date)
 
@@ -403,7 +415,10 @@ func (recv *Date) Clear(nDates uint32) {
 
 // Compare is a wrapper around the C function g_date_compare.
 func (recv *Date) Compare(rhs *Date) int32 {
-	c_rhs := (*C.GDate)(rhs.ToC())
+	c_rhs := (*C.GDate)(C.NULL)
+	if rhs != nil {
+		c_rhs = (*C.GDate)(rhs.ToC())
+	}
 
 	retC := C.g_date_compare((*C.GDate)(recv.native), c_rhs)
 	retGo := (int32)(retC)
@@ -413,7 +428,10 @@ func (recv *Date) Compare(rhs *Date) int32 {
 
 // DaysBetween is a wrapper around the C function g_date_days_between.
 func (recv *Date) DaysBetween(date2 *Date) int32 {
-	c_date2 := (*C.GDate)(date2.ToC())
+	c_date2 := (*C.GDate)(C.NULL)
+	if date2 != nil {
+		c_date2 = (*C.GDate)(date2.ToC())
+	}
 
 	retC := C.g_date_days_between((*C.GDate)(recv.native), c_date2)
 	retGo := (int32)(retC)
@@ -510,7 +528,10 @@ func (recv *Date) IsLastOfMonth() bool {
 
 // Order is a wrapper around the C function g_date_order.
 func (recv *Date) Order(date2 *Date) {
-	c_date2 := (*C.GDate)(date2.ToC())
+	c_date2 := (*C.GDate)(C.NULL)
+	if date2 != nil {
+		c_date2 = (*C.GDate)(date2.ToC())
+	}
 
 	C.g_date_order((*C.GDate)(recv.native), c_date2)
 
@@ -871,7 +892,10 @@ func (recv *Hook) ToC() unsafe.Pointer {
 
 // CompareIds is a wrapper around the C function g_hook_compare_ids.
 func (recv *Hook) CompareIds(sibling *Hook) int32 {
-	c_sibling := (*C.GHook)(sibling.ToC())
+	c_sibling := (*C.GHook)(C.NULL)
+	if sibling != nil {
+		c_sibling = (*C.GHook)(sibling.ToC())
+	}
 
 	retC := C.g_hook_compare_ids((*C.GHook)(recv.native), c_sibling)
 	retGo := (int32)(retC)
@@ -1077,7 +1101,10 @@ func (recv *MainContext) Acquire() bool {
 
 // AddPoll is a wrapper around the C function g_main_context_add_poll.
 func (recv *MainContext) AddPoll(fd *PollFD, priority int32) {
-	c_fd := (*C.GPollFD)(fd.ToC())
+	c_fd := (*C.GPollFD)(C.NULL)
+	if fd != nil {
+		c_fd = (*C.GPollFD)(fd.ToC())
+	}
 
 	c_priority := (C.gint)(priority)
 
@@ -1097,7 +1124,10 @@ func (recv *MainContext) Dispatch() {
 
 // FindSourceByFuncsUserData is a wrapper around the C function g_main_context_find_source_by_funcs_user_data.
 func (recv *MainContext) FindSourceByFuncsUserData(funcs *SourceFuncs, userData uintptr) *Source {
-	c_funcs := (*C.GSourceFuncs)(funcs.ToC())
+	c_funcs := (*C.GSourceFuncs)(C.NULL)
+	if funcs != nil {
+		c_funcs = (*C.GSourceFuncs)(funcs.ToC())
+	}
 
 	c_user_data := (C.gpointer)(userData)
 
@@ -1177,7 +1207,10 @@ func (recv *MainContext) Release() {
 
 // RemovePoll is a wrapper around the C function g_main_context_remove_poll.
 func (recv *MainContext) RemovePoll(fd *PollFD) {
-	c_fd := (*C.GPollFD)(fd.ToC())
+	c_fd := (*C.GPollFD)(C.NULL)
+	if fd != nil {
+		c_fd = (*C.GPollFD)(fd.ToC())
+	}
 
 	C.g_main_context_remove_poll((*C.GMainContext)(recv.native), c_fd)
 
@@ -1225,7 +1258,10 @@ func (recv *MainLoop) ToC() unsafe.Pointer {
 
 // MainLoopNew is a wrapper around the C function g_main_loop_new.
 func MainLoopNew(context *MainContext, isRunning bool) *MainLoop {
-	c_context := (*C.GMainContext)(context.ToC())
+	c_context := (*C.GMainContext)(C.NULL)
+	if context != nil {
+		c_context = (*C.GMainContext)(context.ToC())
+	}
 
 	c_is_running :=
 		boolToGboolean(isRunning)
@@ -1502,7 +1538,10 @@ func (recv *Node) ChildIndex(data uintptr) int32 {
 
 // ChildPosition is a wrapper around the C function g_node_child_position.
 func (recv *Node) ChildPosition(child *Node) int32 {
-	c_child := (*C.GNode)(child.ToC())
+	c_child := (*C.GNode)(C.NULL)
+	if child != nil {
+		c_child = (*C.GNode)(child.ToC())
+	}
 
 	retC := C.g_node_child_position((*C.GNode)(recv.native), c_child)
 	retGo := (int32)(retC)
@@ -1581,7 +1620,10 @@ func (recv *Node) GetRoot() *Node {
 func (recv *Node) Insert(position int32, node *Node) *Node {
 	c_position := (C.gint)(position)
 
-	c_node := (*C.GNode)(node.ToC())
+	c_node := (*C.GNode)(C.NULL)
+	if node != nil {
+		c_node = (*C.GNode)(node.ToC())
+	}
 
 	retC := C.g_node_insert((*C.GNode)(recv.native), c_position, c_node)
 	retGo := NodeNewFromC(unsafe.Pointer(retC))
@@ -1591,9 +1633,15 @@ func (recv *Node) Insert(position int32, node *Node) *Node {
 
 // InsertAfter is a wrapper around the C function g_node_insert_after.
 func (recv *Node) InsertAfter(sibling *Node, node *Node) *Node {
-	c_sibling := (*C.GNode)(sibling.ToC())
+	c_sibling := (*C.GNode)(C.NULL)
+	if sibling != nil {
+		c_sibling = (*C.GNode)(sibling.ToC())
+	}
 
-	c_node := (*C.GNode)(node.ToC())
+	c_node := (*C.GNode)(C.NULL)
+	if node != nil {
+		c_node = (*C.GNode)(node.ToC())
+	}
 
 	retC := C.g_node_insert_after((*C.GNode)(recv.native), c_sibling, c_node)
 	retGo := NodeNewFromC(unsafe.Pointer(retC))
@@ -1603,9 +1651,15 @@ func (recv *Node) InsertAfter(sibling *Node, node *Node) *Node {
 
 // InsertBefore is a wrapper around the C function g_node_insert_before.
 func (recv *Node) InsertBefore(sibling *Node, node *Node) *Node {
-	c_sibling := (*C.GNode)(sibling.ToC())
+	c_sibling := (*C.GNode)(C.NULL)
+	if sibling != nil {
+		c_sibling = (*C.GNode)(sibling.ToC())
+	}
 
-	c_node := (*C.GNode)(node.ToC())
+	c_node := (*C.GNode)(C.NULL)
+	if node != nil {
+		c_node = (*C.GNode)(node.ToC())
+	}
 
 	retC := C.g_node_insert_before((*C.GNode)(recv.native), c_sibling, c_node)
 	retGo := NodeNewFromC(unsafe.Pointer(retC))
@@ -1615,7 +1669,10 @@ func (recv *Node) InsertBefore(sibling *Node, node *Node) *Node {
 
 // IsAncestor is a wrapper around the C function g_node_is_ancestor.
 func (recv *Node) IsAncestor(descendant *Node) bool {
-	c_descendant := (*C.GNode)(descendant.ToC())
+	c_descendant := (*C.GNode)(C.NULL)
+	if descendant != nil {
+		c_descendant = (*C.GNode)(descendant.ToC())
+	}
 
 	retC := C.g_node_is_ancestor((*C.GNode)(recv.native), c_descendant)
 	retGo := retC == C.TRUE
@@ -1677,7 +1734,10 @@ func (recv *Node) NthChild(n uint32) *Node {
 
 // Prepend is a wrapper around the C function g_node_prepend.
 func (recv *Node) Prepend(node *Node) *Node {
-	c_node := (*C.GNode)(node.ToC())
+	c_node := (*C.GNode)(C.NULL)
+	if node != nil {
+		c_node = (*C.GNode)(node.ToC())
+	}
 
 	retC := C.g_node_prepend((*C.GNode)(recv.native), c_node)
 	retGo := NodeNewFromC(unsafe.Pointer(retC))
@@ -1817,7 +1877,10 @@ func (recv *PatternSpec) ToC() unsafe.Pointer {
 
 // Equal is a wrapper around the C function g_pattern_spec_equal.
 func (recv *PatternSpec) Equal(pspec2 *PatternSpec) bool {
-	c_pspec2 := (*C.GPatternSpec)(pspec2.ToC())
+	c_pspec2 := (*C.GPatternSpec)(C.NULL)
+	if pspec2 != nil {
+		c_pspec2 = (*C.GPatternSpec)(pspec2.ToC())
+	}
 
 	retC := C.g_pattern_spec_equal((*C.GPatternSpec)(recv.native), c_pspec2)
 	retGo := retC == C.TRUE
@@ -2013,7 +2076,10 @@ func (recv *Queue) PushHead(data uintptr) {
 
 // PushHeadLink is a wrapper around the C function g_queue_push_head_link.
 func (recv *Queue) PushHeadLink(link *List) {
-	c_link_ := (*C.GList)(link.ToC())
+	c_link_ := (*C.GList)(C.NULL)
+	if link != nil {
+		c_link_ = (*C.GList)(link.ToC())
+	}
 
 	C.g_queue_push_head_link((*C.GQueue)(recv.native), c_link_)
 
@@ -2031,7 +2097,10 @@ func (recv *Queue) PushTail(data uintptr) {
 
 // PushTailLink is a wrapper around the C function g_queue_push_tail_link.
 func (recv *Queue) PushTailLink(link *List) {
-	c_link_ := (*C.GList)(link.ToC())
+	c_link_ := (*C.GList)(C.NULL)
+	if link != nil {
+		c_link_ = (*C.GList)(link.ToC())
+	}
 
 	C.g_queue_push_tail_link((*C.GQueue)(recv.native), c_link_)
 
@@ -2531,7 +2600,10 @@ func (recv *Source) ToC() unsafe.Pointer {
 
 // SourceNew is a wrapper around the C function g_source_new.
 func SourceNew(sourceFuncs *SourceFuncs, structSize uint32) *Source {
-	c_source_funcs := (*C.GSourceFuncs)(sourceFuncs.ToC())
+	c_source_funcs := (*C.GSourceFuncs)(C.NULL)
+	if sourceFuncs != nil {
+		c_source_funcs = (*C.GSourceFuncs)(sourceFuncs.ToC())
+	}
 
 	c_struct_size := (C.guint)(structSize)
 
@@ -2543,7 +2615,10 @@ func SourceNew(sourceFuncs *SourceFuncs, structSize uint32) *Source {
 
 // AddPoll is a wrapper around the C function g_source_add_poll.
 func (recv *Source) AddPoll(fd *PollFD) {
-	c_fd := (*C.GPollFD)(fd.ToC())
+	c_fd := (*C.GPollFD)(C.NULL)
+	if fd != nil {
+		c_fd = (*C.GPollFD)(fd.ToC())
+	}
 
 	C.g_source_add_poll((*C.GSource)(recv.native), c_fd)
 
@@ -2552,7 +2627,10 @@ func (recv *Source) AddPoll(fd *PollFD) {
 
 // Attach is a wrapper around the C function g_source_attach.
 func (recv *Source) Attach(context *MainContext) uint32 {
-	c_context := (*C.GMainContext)(context.ToC())
+	c_context := (*C.GMainContext)(C.NULL)
+	if context != nil {
+		c_context = (*C.GMainContext)(context.ToC())
+	}
 
 	retC := C.g_source_attach((*C.GSource)(recv.native), c_context)
 	retGo := (uint32)(retC)
@@ -2590,7 +2668,10 @@ func (recv *Source) GetContext() *MainContext {
 
 // GetCurrentTime is a wrapper around the C function g_source_get_current_time.
 func (recv *Source) GetCurrentTime(timeval *TimeVal) {
-	c_timeval := (*C.GTimeVal)(timeval.ToC())
+	c_timeval := (*C.GTimeVal)(C.NULL)
+	if timeval != nil {
+		c_timeval = (*C.GTimeVal)(timeval.ToC())
+	}
 
 	C.g_source_get_current_time((*C.GSource)(recv.native), c_timeval)
 
@@ -2631,7 +2712,10 @@ func (recv *Source) Ref() *Source {
 
 // RemovePoll is a wrapper around the C function g_source_remove_poll.
 func (recv *Source) RemovePoll(fd *PollFD) {
-	c_fd := (*C.GPollFD)(fd.ToC())
+	c_fd := (*C.GPollFD)(C.NULL)
+	if fd != nil {
+		c_fd = (*C.GPollFD)(fd.ToC())
+	}
 
 	C.g_source_remove_poll((*C.GSource)(recv.native), c_fd)
 
@@ -2644,7 +2728,10 @@ func (recv *Source) RemovePoll(fd *PollFD) {
 func (recv *Source) SetCallbackIndirect(callbackData uintptr, callbackFuncs *SourceCallbackFuncs) {
 	c_callback_data := (C.gpointer)(callbackData)
 
-	c_callback_funcs := (*C.GSourceCallbackFuncs)(callbackFuncs.ToC())
+	c_callback_funcs := (*C.GSourceCallbackFuncs)(C.NULL)
+	if callbackFuncs != nil {
+		c_callback_funcs = (*C.GSourceCallbackFuncs)(callbackFuncs.ToC())
+	}
 
 	C.g_source_set_callback_indirect((*C.GSource)(recv.native), c_callback_data, c_callback_funcs)
 
@@ -2888,7 +2975,10 @@ func (recv *String) Down() *String {
 
 // Equal is a wrapper around the C function g_string_equal.
 func (recv *String) Equal(v2 *String) bool {
-	c_v2 := (*C.GString)(v2.ToC())
+	c_v2 := (*C.GString)(C.NULL)
+	if v2 != nil {
+		c_v2 = (*C.GString)(v2.ToC())
+	}
 
 	retC := C.g_string_equal((*C.GString)(recv.native), c_v2)
 	retGo := retC == C.TRUE

@@ -23,9 +23,15 @@ func (recv *FileChooser) GetCurrentName() string {
 
 // RowsReorderedWithLength is a wrapper around the C function gtk_tree_model_rows_reordered_with_length.
 func (recv *TreeModel) RowsReorderedWithLength(path *TreePath, iter *TreeIter, newOrder []int32) {
-	c_path := (*C.GtkTreePath)(path.ToC())
+	c_path := (*C.GtkTreePath)(C.NULL)
+	if path != nil {
+		c_path = (*C.GtkTreePath)(path.ToC())
+	}
 
-	c_iter := (*C.GtkTreeIter)(iter.ToC())
+	c_iter := (*C.GtkTreeIter)(C.NULL)
+	if iter != nil {
+		c_iter = (*C.GtkTreeIter)(iter.ToC())
+	}
 
 	c_new_order := &newOrder[0]
 

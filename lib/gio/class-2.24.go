@@ -127,7 +127,10 @@ func (recv *OutputStream) IsClosing() bool {
 
 // AddAnyInetPort is a wrapper around the C function g_socket_listener_add_any_inet_port.
 func (recv *SocketListener) AddAnyInetPort(sourceObject *gobject.Object) (uint16, error) {
-	c_source_object := (*C.GObject)(sourceObject.ToC())
+	c_source_object := (*C.GObject)(C.NULL)
+	if sourceObject != nil {
+		c_source_object = (*C.GObject)(sourceObject.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -210,7 +213,10 @@ func (recv *UnixFDList) GetLength() int32 {
 
 // UnixFDMessageNewWithFdList is a wrapper around the C function g_unix_fd_message_new_with_fd_list.
 func UnixFDMessageNewWithFdList(fdList *UnixFDList) *UnixFDMessage {
-	c_fd_list := (*C.GUnixFDList)(fdList.ToC())
+	c_fd_list := (*C.GUnixFDList)(C.NULL)
+	if fdList != nil {
+		c_fd_list = (*C.GUnixFDList)(fdList.ToC())
+	}
 
 	retC := C.g_unix_fd_message_new_with_fd_list(c_fd_list)
 	retGo := UnixFDMessageNewFromC(unsafe.Pointer(retC))

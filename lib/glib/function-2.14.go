@@ -72,7 +72,10 @@ func RegexMatchSimple(pattern string, string string, compileOptions RegexCompile
 
 // SequenceGet is a wrapper around the C function g_sequence_get.
 func SequenceGet(iter *SequenceIter) uintptr {
-	c_iter := (*C.GSequenceIter)(iter.ToC())
+	c_iter := (*C.GSequenceIter)(C.NULL)
+	if iter != nil {
+		c_iter = (*C.GSequenceIter)(iter.ToC())
+	}
 
 	retC := C.g_sequence_get(c_iter)
 	retGo := (uintptr)(unsafe.Pointer(retC))
@@ -82,7 +85,10 @@ func SequenceGet(iter *SequenceIter) uintptr {
 
 // SequenceInsertBefore is a wrapper around the C function g_sequence_insert_before.
 func SequenceInsertBefore(iter *SequenceIter, data uintptr) *SequenceIter {
-	c_iter := (*C.GSequenceIter)(iter.ToC())
+	c_iter := (*C.GSequenceIter)(C.NULL)
+	if iter != nil {
+		c_iter = (*C.GSequenceIter)(iter.ToC())
+	}
 
 	c_data := (C.gpointer)(data)
 
@@ -94,9 +100,15 @@ func SequenceInsertBefore(iter *SequenceIter, data uintptr) *SequenceIter {
 
 // SequenceMove is a wrapper around the C function g_sequence_move.
 func SequenceMove(src *SequenceIter, dest *SequenceIter) {
-	c_src := (*C.GSequenceIter)(src.ToC())
+	c_src := (*C.GSequenceIter)(C.NULL)
+	if src != nil {
+		c_src = (*C.GSequenceIter)(src.ToC())
+	}
 
-	c_dest := (*C.GSequenceIter)(dest.ToC())
+	c_dest := (*C.GSequenceIter)(C.NULL)
+	if dest != nil {
+		c_dest = (*C.GSequenceIter)(dest.ToC())
+	}
 
 	C.g_sequence_move(c_src, c_dest)
 
@@ -105,11 +117,20 @@ func SequenceMove(src *SequenceIter, dest *SequenceIter) {
 
 // SequenceMoveRange is a wrapper around the C function g_sequence_move_range.
 func SequenceMoveRange(dest *SequenceIter, begin *SequenceIter, end *SequenceIter) {
-	c_dest := (*C.GSequenceIter)(dest.ToC())
+	c_dest := (*C.GSequenceIter)(C.NULL)
+	if dest != nil {
+		c_dest = (*C.GSequenceIter)(dest.ToC())
+	}
 
-	c_begin := (*C.GSequenceIter)(begin.ToC())
+	c_begin := (*C.GSequenceIter)(C.NULL)
+	if begin != nil {
+		c_begin = (*C.GSequenceIter)(begin.ToC())
+	}
 
-	c_end := (*C.GSequenceIter)(end.ToC())
+	c_end := (*C.GSequenceIter)(C.NULL)
+	if end != nil {
+		c_end = (*C.GSequenceIter)(end.ToC())
+	}
 
 	C.g_sequence_move_range(c_dest, c_begin, c_end)
 
@@ -118,9 +139,15 @@ func SequenceMoveRange(dest *SequenceIter, begin *SequenceIter, end *SequenceIte
 
 // SequenceRangeGetMidpoint is a wrapper around the C function g_sequence_range_get_midpoint.
 func SequenceRangeGetMidpoint(begin *SequenceIter, end *SequenceIter) *SequenceIter {
-	c_begin := (*C.GSequenceIter)(begin.ToC())
+	c_begin := (*C.GSequenceIter)(C.NULL)
+	if begin != nil {
+		c_begin = (*C.GSequenceIter)(begin.ToC())
+	}
 
-	c_end := (*C.GSequenceIter)(end.ToC())
+	c_end := (*C.GSequenceIter)(C.NULL)
+	if end != nil {
+		c_end = (*C.GSequenceIter)(end.ToC())
+	}
 
 	retC := C.g_sequence_range_get_midpoint(c_begin, c_end)
 	retGo := SequenceIterNewFromC(unsafe.Pointer(retC))
@@ -130,7 +157,10 @@ func SequenceRangeGetMidpoint(begin *SequenceIter, end *SequenceIter) *SequenceI
 
 // SequenceRemove is a wrapper around the C function g_sequence_remove.
 func SequenceRemove(iter *SequenceIter) {
-	c_iter := (*C.GSequenceIter)(iter.ToC())
+	c_iter := (*C.GSequenceIter)(C.NULL)
+	if iter != nil {
+		c_iter = (*C.GSequenceIter)(iter.ToC())
+	}
 
 	C.g_sequence_remove(c_iter)
 
@@ -139,9 +169,15 @@ func SequenceRemove(iter *SequenceIter) {
 
 // SequenceRemoveRange is a wrapper around the C function g_sequence_remove_range.
 func SequenceRemoveRange(begin *SequenceIter, end *SequenceIter) {
-	c_begin := (*C.GSequenceIter)(begin.ToC())
+	c_begin := (*C.GSequenceIter)(C.NULL)
+	if begin != nil {
+		c_begin = (*C.GSequenceIter)(begin.ToC())
+	}
 
-	c_end := (*C.GSequenceIter)(end.ToC())
+	c_end := (*C.GSequenceIter)(C.NULL)
+	if end != nil {
+		c_end = (*C.GSequenceIter)(end.ToC())
+	}
 
 	C.g_sequence_remove_range(c_begin, c_end)
 
@@ -150,7 +186,10 @@ func SequenceRemoveRange(begin *SequenceIter, end *SequenceIter) {
 
 // SequenceSet is a wrapper around the C function g_sequence_set.
 func SequenceSet(iter *SequenceIter, data uintptr) {
-	c_iter := (*C.GSequenceIter)(iter.ToC())
+	c_iter := (*C.GSequenceIter)(C.NULL)
+	if iter != nil {
+		c_iter = (*C.GSequenceIter)(iter.ToC())
+	}
 
 	c_data := (C.gpointer)(data)
 
@@ -161,9 +200,15 @@ func SequenceSet(iter *SequenceIter, data uintptr) {
 
 // SequenceSwap is a wrapper around the C function g_sequence_swap.
 func SequenceSwap(a *SequenceIter, b *SequenceIter) {
-	c_a := (*C.GSequenceIter)(a.ToC())
+	c_a := (*C.GSequenceIter)(C.NULL)
+	if a != nil {
+		c_a = (*C.GSequenceIter)(a.ToC())
+	}
 
-	c_b := (*C.GSequenceIter)(b.ToC())
+	c_b := (*C.GSequenceIter)(C.NULL)
+	if b != nil {
+		c_b = (*C.GSequenceIter)(b.ToC())
+	}
 
 	C.g_sequence_swap(c_a, c_b)
 

@@ -20,7 +20,10 @@ import "C"
 
 // AddChildSource is a wrapper around the C function g_source_add_child_source.
 func (recv *Source) AddChildSource(childSource *Source) {
-	c_child_source := (*C.GSource)(childSource.ToC())
+	c_child_source := (*C.GSource)(C.NULL)
+	if childSource != nil {
+		c_child_source = (*C.GSource)(childSource.ToC())
+	}
 
 	C.g_source_add_child_source((*C.GSource)(recv.native), c_child_source)
 
@@ -37,7 +40,10 @@ func (recv *Source) GetTime() int64 {
 
 // RemoveChildSource is a wrapper around the C function g_source_remove_child_source.
 func (recv *Source) RemoveChildSource(childSource *Source) {
-	c_child_source := (*C.GSource)(childSource.ToC())
+	c_child_source := (*C.GSource)(C.NULL)
+	if childSource != nil {
+		c_child_source = (*C.GSource)(childSource.ToC())
+	}
 
 	C.g_source_remove_child_source((*C.GSource)(recv.native), c_child_source)
 

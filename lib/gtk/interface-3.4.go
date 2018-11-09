@@ -141,7 +141,10 @@ func (recv *ColorChooser) GetUseAlpha() bool {
 
 // SetRgba is a wrapper around the C function gtk_color_chooser_set_rgba.
 func (recv *ColorChooser) SetRgba(color *gdk.RGBA) {
-	c_color := (*C.GdkRGBA)(color.ToC())
+	c_color := (*C.GdkRGBA)(C.NULL)
+	if color != nil {
+		c_color = (*C.GdkRGBA)(color.ToC())
+	}
 
 	C.gtk_color_chooser_set_rgba((*C.GtkColorChooser)(recv.native), c_color)
 

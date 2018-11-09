@@ -465,9 +465,15 @@ func (recv *HandleBox) GetChildDetached() bool {
 
 // IconInfoNewForPixbuf is a wrapper around the C function gtk_icon_info_new_for_pixbuf.
 func IconInfoNewForPixbuf(iconTheme *IconTheme, pixbuf *gdkpixbuf.Pixbuf) *IconInfo {
-	c_icon_theme := (*C.GtkIconTheme)(iconTheme.ToC())
+	c_icon_theme := (*C.GtkIconTheme)(C.NULL)
+	if iconTheme != nil {
+		c_icon_theme = (*C.GtkIconTheme)(iconTheme.ToC())
+	}
 
-	c_pixbuf := (*C.GdkPixbuf)(pixbuf.ToC())
+	c_pixbuf := (*C.GdkPixbuf)(C.NULL)
+	if pixbuf != nil {
+		c_pixbuf = (*C.GdkPixbuf)(pixbuf.ToC())
+	}
 
 	retC := C.gtk_icon_info_new_for_pixbuf(c_icon_theme, c_pixbuf)
 	retGo := IconInfoNewFromC(unsafe.Pointer(retC))
@@ -560,7 +566,10 @@ func (recv *MessageDialog) GetImage() *Widget {
 
 // MountOperationNew is a wrapper around the C function gtk_mount_operation_new.
 func MountOperationNew(parent *Window) *MountOperation {
-	c_parent := (*C.GtkWindow)(parent.ToC())
+	c_parent := (*C.GtkWindow)(C.NULL)
+	if parent != nil {
+		c_parent = (*C.GtkWindow)(parent.ToC())
+	}
 
 	retC := C.gtk_mount_operation_new(c_parent)
 	retGo := MountOperationNewFromC(unsafe.Pointer(retC))
@@ -594,7 +603,10 @@ func (recv *MountOperation) IsShowing() bool {
 
 // SetParent is a wrapper around the C function gtk_mount_operation_set_parent.
 func (recv *MountOperation) SetParent(parent *Window) {
-	c_parent := (*C.GtkWindow)(parent.ToC())
+	c_parent := (*C.GtkWindow)(C.NULL)
+	if parent != nil {
+		c_parent = (*C.GtkWindow)(parent.ToC())
+	}
 
 	C.gtk_mount_operation_set_parent((*C.GtkMountOperation)(recv.native), c_parent)
 
@@ -603,7 +615,10 @@ func (recv *MountOperation) SetParent(parent *Window) {
 
 // SetScreen is a wrapper around the C function gtk_mount_operation_set_screen.
 func (recv *MountOperation) SetScreen(screen *gdk.Screen) {
-	c_screen := (*C.GdkScreen)(screen.ToC())
+	c_screen := (*C.GdkScreen)(C.NULL)
+	if screen != nil {
+		c_screen = (*C.GdkScreen)(screen.ToC())
+	}
 
 	C.gtk_mount_operation_set_screen((*C.GtkMountOperation)(recv.native), c_screen)
 
@@ -630,7 +645,10 @@ func (recv *PageSetup) LoadFile(fileName string) (bool, error) {
 
 // LoadKeyFile is a wrapper around the C function gtk_page_setup_load_key_file.
 func (recv *PageSetup) LoadKeyFile(keyFile *glib.KeyFile, groupName string) (bool, error) {
-	c_key_file := (*C.GKeyFile)(keyFile.ToC())
+	c_key_file := (*C.GKeyFile)(C.NULL)
+	if keyFile != nil {
+		c_key_file = (*C.GKeyFile)(keyFile.ToC())
+	}
 
 	c_group_name := C.CString(groupName)
 	defer C.free(unsafe.Pointer(c_group_name))
@@ -676,7 +694,10 @@ func (recv *PrintSettings) LoadFile(fileName string) (bool, error) {
 
 // LoadKeyFile is a wrapper around the C function gtk_print_settings_load_key_file.
 func (recv *PrintSettings) LoadKeyFile(keyFile *glib.KeyFile, groupName string) (bool, error) {
-	c_key_file := (*C.GKeyFile)(keyFile.ToC())
+	c_key_file := (*C.GKeyFile)(C.NULL)
+	if keyFile != nil {
+		c_key_file = (*C.GKeyFile)(keyFile.ToC())
+	}
 
 	c_group_name := C.CString(groupName)
 	defer C.free(unsafe.Pointer(c_group_name))

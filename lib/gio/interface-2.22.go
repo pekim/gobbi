@@ -250,7 +250,10 @@ func (recv *Drive) StopFinish(result *AsyncResult) (bool, error) {
 func (recv *File) CreateReadwrite(flags FileCreateFlags, cancellable *Cancellable) (*FileIOStream, error) {
 	c_flags := (C.GFileCreateFlags)(flags)
 
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -305,7 +308,10 @@ func (recv *File) EjectMountableWithOperationFinish(result *AsyncResult) (bool, 
 
 // OpenReadwrite is a wrapper around the C function g_file_open_readwrite.
 func (recv *File) OpenReadwrite(cancellable *Cancellable) (*FileIOStream, error) {
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -368,7 +374,10 @@ func (recv *File) ReplaceReadwrite(etag string, makeBackup bool, flags FileCreat
 
 	c_flags := (C.GFileCreateFlags)(flags)
 
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -490,7 +499,10 @@ func (recv *Initable) ToC() unsafe.Pointer {
 
 // Init is a wrapper around the C function g_initable_init.
 func (recv *Initable) Init(cancellable *Cancellable) (bool, error) {
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 

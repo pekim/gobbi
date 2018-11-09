@@ -154,7 +154,10 @@ func (recv *Screen) IsComposited() bool {
 
 // SetFontOptions is a wrapper around the C function gdk_screen_set_font_options.
 func (recv *Screen) SetFontOptions(options *cairo.FontOptions) {
-	c_options := (*C.cairo_font_options_t)(options.ToC())
+	c_options := (*C.cairo_font_options_t)(C.NULL)
+	if options != nil {
+		c_options = (*C.cairo_font_options_t)(options.ToC())
+	}
 
 	C.gdk_screen_set_font_options((*C.GdkScreen)(recv.native), c_options)
 
@@ -180,7 +183,10 @@ func (recv *Window) GetTypeHint() WindowTypeHint {
 
 // InputShapeCombineRegion is a wrapper around the C function gdk_window_input_shape_combine_region.
 func (recv *Window) InputShapeCombineRegion(shapeRegion *cairo.Region, offsetX int32, offsetY int32) {
-	c_shape_region := (*C.cairo_region_t)(shapeRegion.ToC())
+	c_shape_region := (*C.cairo_region_t)(C.NULL)
+	if shapeRegion != nil {
+		c_shape_region = (*C.cairo_region_t)(shapeRegion.ToC())
+	}
 
 	c_offset_x := (C.gint)(offsetX)
 

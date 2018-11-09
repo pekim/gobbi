@@ -114,10 +114,23 @@ func (t *TypeGeneratorRecord) generateParamCVar(g *jen.Group, cVarName string, g
 			Op(strings.Repeat("*", t.typ.indirectLevel)).
 			Qual("C", t.typ.cTypeName)).
 		Parens(jen.
-			Id(goVarName).
-			Op(".").
-			Id("ToC").
-			Call())
+			Qual("C", "NULL"))
+
+	g.
+		If(jen.Id(goVarName).Op("!=").Nil()).
+		BlockFunc(func(g *jen.Group) {
+			g.
+				Id(cVarName).
+				Op("=").
+				Parens(jen.
+					Op(strings.Repeat("*", t.typ.indirectLevel)).
+					Qual("C", t.typ.cTypeName)).
+				Parens(jen.
+					Id(goVarName).
+					Op(".").
+					Id("ToC").
+					Call())
+		})
 }
 
 func (t *TypeGeneratorRecord) generateParamGoVar(

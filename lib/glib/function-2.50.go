@@ -16,9 +16,15 @@ import "C"
 func ComputeHmacForBytes(digestType ChecksumType, key *Bytes, data *Bytes) string {
 	c_digest_type := (C.GChecksumType)(digestType)
 
-	c_key := (*C.GBytes)(key.ToC())
+	c_key := (*C.GBytes)(C.NULL)
+	if key != nil {
+		c_key = (*C.GBytes)(key.ToC())
+	}
 
-	c_data := (*C.GBytes)(data.ToC())
+	c_data := (*C.GBytes)(C.NULL)
+	if data != nil {
+		c_data = (*C.GBytes)(data.ToC())
+	}
 
 	retC := C.g_compute_hmac_for_bytes(c_digest_type, c_key, c_data)
 	retGo := C.GoString(retC)

@@ -12,7 +12,10 @@ import "C"
 
 // EventRequestMotions is a wrapper around the C function gdk_event_request_motions.
 func EventRequestMotions(event *EventMotion) {
-	c_event := (*C.GdkEventMotion)(event.ToC())
+	c_event := (*C.GdkEventMotion)(C.NULL)
+	if event != nil {
+		c_event = (*C.GdkEventMotion)(event.ToC())
+	}
 
 	C.gdk_event_request_motions(c_event)
 

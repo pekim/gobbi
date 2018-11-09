@@ -41,7 +41,10 @@ func (recv *ActionBar) GetCenterWidget() *Widget {
 
 // PackEnd is a wrapper around the C function gtk_action_bar_pack_end.
 func (recv *ActionBar) PackEnd(child *Widget) {
-	c_child := (*C.GtkWidget)(child.ToC())
+	c_child := (*C.GtkWidget)(C.NULL)
+	if child != nil {
+		c_child = (*C.GtkWidget)(child.ToC())
+	}
 
 	C.gtk_action_bar_pack_end((*C.GtkActionBar)(recv.native), c_child)
 
@@ -50,7 +53,10 @@ func (recv *ActionBar) PackEnd(child *Widget) {
 
 // PackStart is a wrapper around the C function gtk_action_bar_pack_start.
 func (recv *ActionBar) PackStart(child *Widget) {
-	c_child := (*C.GtkWidget)(child.ToC())
+	c_child := (*C.GtkWidget)(C.NULL)
+	if child != nil {
+		c_child = (*C.GtkWidget)(child.ToC())
+	}
 
 	C.gtk_action_bar_pack_start((*C.GtkActionBar)(recv.native), c_child)
 
@@ -59,7 +65,10 @@ func (recv *ActionBar) PackStart(child *Widget) {
 
 // SetCenterWidget is a wrapper around the C function gtk_action_bar_set_center_widget.
 func (recv *ActionBar) SetCenterWidget(centerWidget *Widget) {
-	c_center_widget := (*C.GtkWidget)(centerWidget.ToC())
+	c_center_widget := (*C.GtkWidget)(C.NULL)
+	if centerWidget != nil {
+		c_center_widget = (*C.GtkWidget)(centerWidget.ToC())
+	}
 
 	C.gtk_action_bar_set_center_widget((*C.GtkActionBar)(recv.native), c_center_widget)
 
@@ -87,7 +96,10 @@ func (recv *Box) GetCenterWidget() *Widget {
 
 // SetCenterWidget is a wrapper around the C function gtk_box_set_center_widget.
 func (recv *Box) SetCenterWidget(widget *Widget) {
-	c_widget := (*C.GtkWidget)(widget.ToC())
+	c_widget := (*C.GtkWidget)(C.NULL)
+	if widget != nil {
+		c_widget = (*C.GtkWidget)(widget.ToC())
+	}
 
 	C.gtk_box_set_center_widget((*C.GtkBox)(recv.native), c_widget)
 
@@ -208,7 +220,10 @@ func (recv *FlowBox) GetSelectionMode() SelectionMode {
 
 // Insert is a wrapper around the C function gtk_flow_box_insert.
 func (recv *FlowBox) Insert(widget *Widget, position int32) {
-	c_widget := (*C.GtkWidget)(widget.ToC())
+	c_widget := (*C.GtkWidget)(C.NULL)
+	if widget != nil {
+		c_widget = (*C.GtkWidget)(widget.ToC())
+	}
 
 	c_position := (C.gint)(position)
 
@@ -240,7 +255,10 @@ func (recv *FlowBox) SelectAll() {
 
 // SelectChild is a wrapper around the C function gtk_flow_box_select_child.
 func (recv *FlowBox) SelectChild(child *FlowBoxChild) {
-	c_child := (*C.GtkFlowBoxChild)(child.ToC())
+	c_child := (*C.GtkFlowBoxChild)(C.NULL)
+	if child != nil {
+		c_child = (*C.GtkFlowBoxChild)(child.ToC())
+	}
 
 	C.gtk_flow_box_select_child((*C.GtkFlowBox)(recv.native), c_child)
 
@@ -272,7 +290,10 @@ func (recv *FlowBox) SetColumnSpacing(spacing uint32) {
 
 // SetHadjustment is a wrapper around the C function gtk_flow_box_set_hadjustment.
 func (recv *FlowBox) SetHadjustment(adjustment *Adjustment) {
-	c_adjustment := (*C.GtkAdjustment)(adjustment.ToC())
+	c_adjustment := (*C.GtkAdjustment)(C.NULL)
+	if adjustment != nil {
+		c_adjustment = (*C.GtkAdjustment)(adjustment.ToC())
+	}
 
 	C.gtk_flow_box_set_hadjustment((*C.GtkFlowBox)(recv.native), c_adjustment)
 
@@ -329,7 +350,10 @@ func (recv *FlowBox) SetSelectionMode(mode SelectionMode) {
 
 // SetVadjustment is a wrapper around the C function gtk_flow_box_set_vadjustment.
 func (recv *FlowBox) SetVadjustment(adjustment *Adjustment) {
-	c_adjustment := (*C.GtkAdjustment)(adjustment.ToC())
+	c_adjustment := (*C.GtkAdjustment)(C.NULL)
+	if adjustment != nil {
+		c_adjustment = (*C.GtkAdjustment)(adjustment.ToC())
+	}
 
 	C.gtk_flow_box_set_vadjustment((*C.GtkFlowBox)(recv.native), c_adjustment)
 
@@ -345,7 +369,10 @@ func (recv *FlowBox) UnselectAll() {
 
 // UnselectChild is a wrapper around the C function gtk_flow_box_unselect_child.
 func (recv *FlowBox) UnselectChild(child *FlowBoxChild) {
-	c_child := (*C.GtkFlowBoxChild)(child.ToC())
+	c_child := (*C.GtkFlowBoxChild)(C.NULL)
+	if child != nil {
+		c_child = (*C.GtkFlowBoxChild)(child.ToC())
+	}
 
 	C.gtk_flow_box_unselect_child((*C.GtkFlowBox)(recv.native), c_child)
 
@@ -450,7 +477,10 @@ func (recv *MenuButton) GetUsePopover() bool {
 
 // SetPopover is a wrapper around the C function gtk_menu_button_set_popover.
 func (recv *MenuButton) SetPopover(popover *Widget) {
-	c_popover := (*C.GtkWidget)(popover.ToC())
+	c_popover := (*C.GtkWidget)(C.NULL)
+	if popover != nil {
+		c_popover = (*C.GtkWidget)(popover.ToC())
+	}
 
 	C.gtk_menu_button_set_popover((*C.GtkMenuButton)(recv.native), c_popover)
 
@@ -487,7 +517,10 @@ func (recv *PlacesSidebar) SetLocalOnly(localOnly bool) {
 
 // PopoverNew is a wrapper around the C function gtk_popover_new.
 func PopoverNew(relativeTo *Widget) *Popover {
-	c_relative_to := (*C.GtkWidget)(relativeTo.ToC())
+	c_relative_to := (*C.GtkWidget)(C.NULL)
+	if relativeTo != nil {
+		c_relative_to = (*C.GtkWidget)(relativeTo.ToC())
+	}
 
 	retC := C.gtk_popover_new(c_relative_to)
 	retGo := PopoverNewFromC(unsafe.Pointer(retC))
@@ -497,9 +530,15 @@ func PopoverNew(relativeTo *Widget) *Popover {
 
 // PopoverNewFromModel is a wrapper around the C function gtk_popover_new_from_model.
 func PopoverNewFromModel(relativeTo *Widget, model *gio.MenuModel) *Popover {
-	c_relative_to := (*C.GtkWidget)(relativeTo.ToC())
+	c_relative_to := (*C.GtkWidget)(C.NULL)
+	if relativeTo != nil {
+		c_relative_to = (*C.GtkWidget)(relativeTo.ToC())
+	}
 
-	c_model := (*C.GMenuModel)(model.ToC())
+	c_model := (*C.GMenuModel)(C.NULL)
+	if model != nil {
+		c_model = (*C.GMenuModel)(model.ToC())
+	}
 
 	retC := C.gtk_popover_new_from_model(c_relative_to, c_model)
 	retGo := PopoverNewFromC(unsafe.Pointer(retC))
@@ -509,7 +548,10 @@ func PopoverNewFromModel(relativeTo *Widget, model *gio.MenuModel) *Popover {
 
 // BindModel is a wrapper around the C function gtk_popover_bind_model.
 func (recv *Popover) BindModel(model *gio.MenuModel, actionNamespace string) {
-	c_model := (*C.GMenuModel)(model.ToC())
+	c_model := (*C.GMenuModel)(C.NULL)
+	if model != nil {
+		c_model = (*C.GMenuModel)(model.ToC())
+	}
 
 	c_action_namespace := C.CString(actionNamespace)
 	defer C.free(unsafe.Pointer(c_action_namespace))
@@ -558,7 +600,10 @@ func (recv *Popover) SetPosition(position PositionType) {
 
 // SetRelativeTo is a wrapper around the C function gtk_popover_set_relative_to.
 func (recv *Popover) SetRelativeTo(relativeTo *Widget) {
-	c_relative_to := (*C.GtkWidget)(relativeTo.ToC())
+	c_relative_to := (*C.GtkWidget)(C.NULL)
+	if relativeTo != nil {
+		c_relative_to = (*C.GtkWidget)(relativeTo.ToC())
+	}
 
 	C.gtk_popover_set_relative_to((*C.GtkPopover)(recv.native), c_relative_to)
 

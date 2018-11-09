@@ -28,7 +28,10 @@ func (recv *GlyphItem) ApplyAttrs(text string, list *AttrList) *glib.SList {
 	c_text := C.CString(text)
 	defer C.free(unsafe.Pointer(c_text))
 
-	c_list := (*C.PangoAttrList)(list.ToC())
+	c_list := (*C.PangoAttrList)(C.NULL)
+	if list != nil {
+		c_list = (*C.PangoAttrList)(list.ToC())
+	}
 
 	retC := C.pango_glyph_item_apply_attrs((*C.PangoGlyphItem)(recv.native), c_text, c_list)
 	retGo := glib.SListNewFromC(unsafe.Pointer(retC))

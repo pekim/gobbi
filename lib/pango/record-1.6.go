@@ -68,7 +68,10 @@ func (recv *Matrix) ToC() unsafe.Pointer {
 
 // Concat is a wrapper around the C function pango_matrix_concat.
 func (recv *Matrix) Concat(newMatrix *Matrix) {
-	c_new_matrix := (*C.PangoMatrix)(newMatrix.ToC())
+	c_new_matrix := (*C.PangoMatrix)(C.NULL)
+	if newMatrix != nil {
+		c_new_matrix = (*C.PangoMatrix)(newMatrix.ToC())
+	}
 
 	C.pango_matrix_concat((*C.PangoMatrix)(recv.native), c_new_matrix)
 

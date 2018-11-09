@@ -14,7 +14,10 @@ import "C"
 
 // GetStringFromIter is a wrapper around the C function gtk_tree_model_get_string_from_iter.
 func (recv *TreeModel) GetStringFromIter(iter *TreeIter) string {
-	c_iter := (*C.GtkTreeIter)(iter.ToC())
+	c_iter := (*C.GtkTreeIter)(C.NULL)
+	if iter != nil {
+		c_iter = (*C.GtkTreeIter)(iter.ToC())
+	}
 
 	retC := C.gtk_tree_model_get_string_from_iter((*C.GtkTreeModel)(recv.native), c_iter)
 	retGo := C.GoString(retC)

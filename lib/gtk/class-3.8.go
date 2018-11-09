@@ -24,7 +24,10 @@ func (recv *Builder) ExposeObject(name string, object *gobject.Object) {
 	c_name := C.CString(name)
 	defer C.free(unsafe.Pointer(c_name))
 
-	c_object := (*C.GObject)(object.ToC())
+	c_object := (*C.GObject)(C.NULL)
+	if object != nil {
+		c_object = (*C.GObject)(object.ToC())
+	}
 
 	C.gtk_builder_expose_object((*C.GtkBuilder)(recv.native), c_name, c_object)
 
@@ -147,7 +150,10 @@ func (recv *StyleContext) GetFrameClock() *gdk.FrameClock {
 
 // SetFrameClock is a wrapper around the C function gtk_style_context_set_frame_clock.
 func (recv *StyleContext) SetFrameClock(frameClock *gdk.FrameClock) {
-	c_frame_clock := (*C.GdkFrameClock)(frameClock.ToC())
+	c_frame_clock := (*C.GdkFrameClock)(C.NULL)
+	if frameClock != nil {
+		c_frame_clock = (*C.GdkFrameClock)(frameClock.ToC())
+	}
 
 	C.gtk_style_context_set_frame_clock((*C.GtkStyleContext)(recv.native), c_frame_clock)
 
@@ -205,7 +211,10 @@ func (recv *Widget) IsVisible() bool {
 
 // RegisterWindow is a wrapper around the C function gtk_widget_register_window.
 func (recv *Widget) RegisterWindow(window *gdk.Window) {
-	c_window := (*C.GdkWindow)(window.ToC())
+	c_window := (*C.GdkWindow)(C.NULL)
+	if window != nil {
+		c_window = (*C.GdkWindow)(window.ToC())
+	}
 
 	C.gtk_widget_register_window((*C.GtkWidget)(recv.native), c_window)
 
@@ -232,7 +241,10 @@ func (recv *Widget) SetOpacity(opacity float64) {
 
 // UnregisterWindow is a wrapper around the C function gtk_widget_unregister_window.
 func (recv *Widget) UnregisterWindow(window *gdk.Window) {
-	c_window := (*C.GdkWindow)(window.ToC())
+	c_window := (*C.GdkWindow)(C.NULL)
+	if window != nil {
+		c_window = (*C.GdkWindow)(window.ToC())
+	}
 
 	C.gtk_widget_unregister_window((*C.GtkWidget)(recv.native), c_window)
 

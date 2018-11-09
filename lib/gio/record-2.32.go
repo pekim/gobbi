@@ -130,7 +130,10 @@ func (recv *Resource) ToC() unsafe.Pointer {
 
 // ResourceNewFromData is a wrapper around the C function g_resource_new_from_data.
 func ResourceNewFromData(data *glib.Bytes) (*Resource, error) {
-	c_data := (*C.GBytes)(data.ToC())
+	c_data := (*C.GBytes)(C.NULL)
+	if data != nil {
+		c_data = (*C.GBytes)(data.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -322,7 +325,10 @@ func SettingsSchemaSourceNewFromDirectory(directory string, parent *SettingsSche
 	c_directory := C.CString(directory)
 	defer C.free(unsafe.Pointer(c_directory))
 
-	c_parent := (*C.GSettingsSchemaSource)(parent.ToC())
+	c_parent := (*C.GSettingsSchemaSource)(C.NULL)
+	if parent != nil {
+		c_parent = (*C.GSettingsSchemaSource)(parent.ToC())
+	}
 
 	c_trusted :=
 		boolToGboolean(trusted)

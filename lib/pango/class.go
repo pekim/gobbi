@@ -83,7 +83,10 @@ func (recv *Context) GetLanguage() *Language {
 
 // LoadFont is a wrapper around the C function pango_context_load_font.
 func (recv *Context) LoadFont(desc *FontDescription) *Font {
-	c_desc := (*C.PangoFontDescription)(desc.ToC())
+	c_desc := (*C.PangoFontDescription)(C.NULL)
+	if desc != nil {
+		c_desc = (*C.PangoFontDescription)(desc.ToC())
+	}
 
 	retC := C.pango_context_load_font((*C.PangoContext)(recv.native), c_desc)
 	var retGo (*Font)
@@ -98,9 +101,15 @@ func (recv *Context) LoadFont(desc *FontDescription) *Font {
 
 // LoadFontset is a wrapper around the C function pango_context_load_fontset.
 func (recv *Context) LoadFontset(desc *FontDescription, language *Language) *Fontset {
-	c_desc := (*C.PangoFontDescription)(desc.ToC())
+	c_desc := (*C.PangoFontDescription)(C.NULL)
+	if desc != nil {
+		c_desc = (*C.PangoFontDescription)(desc.ToC())
+	}
 
-	c_language := (*C.PangoLanguage)(language.ToC())
+	c_language := (*C.PangoLanguage)(C.NULL)
+	if language != nil {
+		c_language = (*C.PangoLanguage)(language.ToC())
+	}
 
 	retC := C.pango_context_load_fontset((*C.PangoContext)(recv.native), c_desc, c_language)
 	var retGo (*Fontset)
@@ -124,7 +133,10 @@ func (recv *Context) SetBaseDir(direction Direction) {
 
 // SetFontDescription is a wrapper around the C function pango_context_set_font_description.
 func (recv *Context) SetFontDescription(desc *FontDescription) {
-	c_desc := (*C.PangoFontDescription)(desc.ToC())
+	c_desc := (*C.PangoFontDescription)(C.NULL)
+	if desc != nil {
+		c_desc = (*C.PangoFontDescription)(desc.ToC())
+	}
 
 	C.pango_context_set_font_description((*C.PangoContext)(recv.native), c_desc)
 
@@ -133,7 +145,10 @@ func (recv *Context) SetFontDescription(desc *FontDescription) {
 
 // SetFontMap is a wrapper around the C function pango_context_set_font_map.
 func (recv *Context) SetFontMap(fontMap *FontMap) {
-	c_font_map := (*C.PangoFontMap)(fontMap.ToC())
+	c_font_map := (*C.PangoFontMap)(C.NULL)
+	if fontMap != nil {
+		c_font_map = (*C.PangoFontMap)(fontMap.ToC())
+	}
 
 	C.pango_context_set_font_map((*C.PangoContext)(recv.native), c_font_map)
 
@@ -142,7 +157,10 @@ func (recv *Context) SetFontMap(fontMap *FontMap) {
 
 // SetLanguage is a wrapper around the C function pango_context_set_language.
 func (recv *Context) SetLanguage(language *Language) {
-	c_language := (*C.PangoLanguage)(language.ToC())
+	c_language := (*C.PangoLanguage)(C.NULL)
+	if language != nil {
+		c_language = (*C.PangoLanguage)(language.ToC())
+	}
 
 	C.pango_context_set_language((*C.PangoContext)(recv.native), c_language)
 
@@ -250,7 +268,10 @@ func (recv *Font) Describe() *FontDescription {
 
 // FindShaper is a wrapper around the C function pango_font_find_shaper.
 func (recv *Font) FindShaper(language *Language, ch uint32) *EngineShape {
-	c_language := (*C.PangoLanguage)(language.ToC())
+	c_language := (*C.PangoLanguage)(C.NULL)
+	if language != nil {
+		c_language = (*C.PangoLanguage)(language.ToC())
+	}
 
 	c_ch := (C.guint32)(ch)
 
@@ -262,7 +283,10 @@ func (recv *Font) FindShaper(language *Language, ch uint32) *EngineShape {
 
 // GetCoverage is a wrapper around the C function pango_font_get_coverage.
 func (recv *Font) GetCoverage(language *Language) *Coverage {
-	c_language := (*C.PangoLanguage)(language.ToC())
+	c_language := (*C.PangoLanguage)(C.NULL)
+	if language != nil {
+		c_language = (*C.PangoLanguage)(language.ToC())
+	}
 
 	retC := C.pango_font_get_coverage((*C.PangoFont)(recv.native), c_language)
 	retGo := CoverageNewFromC(unsafe.Pointer(retC))
@@ -418,9 +442,15 @@ func CastToFontMap(object *gobject.Object) *FontMap {
 
 // LoadFont is a wrapper around the C function pango_font_map_load_font.
 func (recv *FontMap) LoadFont(context *Context, desc *FontDescription) *Font {
-	c_context := (*C.PangoContext)(context.ToC())
+	c_context := (*C.PangoContext)(C.NULL)
+	if context != nil {
+		c_context = (*C.PangoContext)(context.ToC())
+	}
 
-	c_desc := (*C.PangoFontDescription)(desc.ToC())
+	c_desc := (*C.PangoFontDescription)(C.NULL)
+	if desc != nil {
+		c_desc = (*C.PangoFontDescription)(desc.ToC())
+	}
 
 	retC := C.pango_font_map_load_font((*C.PangoFontMap)(recv.native), c_context, c_desc)
 	var retGo (*Font)
@@ -435,11 +465,20 @@ func (recv *FontMap) LoadFont(context *Context, desc *FontDescription) *Font {
 
 // LoadFontset is a wrapper around the C function pango_font_map_load_fontset.
 func (recv *FontMap) LoadFontset(context *Context, desc *FontDescription, language *Language) *Fontset {
-	c_context := (*C.PangoContext)(context.ToC())
+	c_context := (*C.PangoContext)(C.NULL)
+	if context != nil {
+		c_context = (*C.PangoContext)(context.ToC())
+	}
 
-	c_desc := (*C.PangoFontDescription)(desc.ToC())
+	c_desc := (*C.PangoFontDescription)(C.NULL)
+	if desc != nil {
+		c_desc = (*C.PangoFontDescription)(desc.ToC())
+	}
 
-	c_language := (*C.PangoLanguage)(language.ToC())
+	c_language := (*C.PangoLanguage)(C.NULL)
+	if language != nil {
+		c_language = (*C.PangoLanguage)(language.ToC())
+	}
 
 	retC := C.pango_font_map_load_fontset((*C.PangoFontMap)(recv.native), c_context, c_desc, c_language)
 	var retGo (*Fontset)
@@ -533,7 +572,10 @@ func CastToLayout(object *gobject.Object) *Layout {
 
 // LayoutNew is a wrapper around the C function pango_layout_new.
 func LayoutNew(context *Context) *Layout {
-	c_context := (*C.PangoContext)(context.ToC())
+	c_context := (*C.PangoContext)(C.NULL)
+	if context != nil {
+		c_context = (*C.PangoContext)(context.ToC())
+	}
 
 	retC := C.pango_layout_new(c_context)
 	retGo := LayoutNewFromC(unsafe.Pointer(retC))
@@ -829,7 +871,10 @@ func (recv *Layout) SetAlignment(alignment Alignment) {
 
 // SetAttributes is a wrapper around the C function pango_layout_set_attributes.
 func (recv *Layout) SetAttributes(attrs *AttrList) {
-	c_attrs := (*C.PangoAttrList)(attrs.ToC())
+	c_attrs := (*C.PangoAttrList)(C.NULL)
+	if attrs != nil {
+		c_attrs = (*C.PangoAttrList)(attrs.ToC())
+	}
 
 	C.pango_layout_set_attributes((*C.PangoLayout)(recv.native), c_attrs)
 
@@ -838,7 +883,10 @@ func (recv *Layout) SetAttributes(attrs *AttrList) {
 
 // SetFontDescription is a wrapper around the C function pango_layout_set_font_description.
 func (recv *Layout) SetFontDescription(desc *FontDescription) {
-	c_desc := (*C.PangoFontDescription)(desc.ToC())
+	c_desc := (*C.PangoFontDescription)(C.NULL)
+	if desc != nil {
+		c_desc = (*C.PangoFontDescription)(desc.ToC())
+	}
 
 	C.pango_layout_set_font_description((*C.PangoLayout)(recv.native), c_desc)
 
@@ -899,7 +947,10 @@ func (recv *Layout) SetSpacing(spacing int32) {
 
 // SetTabs is a wrapper around the C function pango_layout_set_tabs.
 func (recv *Layout) SetTabs(tabs *TabArray) {
-	c_tabs := (*C.PangoTabArray)(tabs.ToC())
+	c_tabs := (*C.PangoTabArray)(C.NULL)
+	if tabs != nil {
+		c_tabs = (*C.PangoTabArray)(tabs.ToC())
+	}
 
 	C.pango_layout_set_tabs((*C.PangoLayout)(recv.native), c_tabs)
 

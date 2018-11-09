@@ -15,7 +15,10 @@ import "C"
 
 // MarkupParserFinish is a wrapper around the C function pango_markup_parser_finish.
 func MarkupParserFinish(context *glib.MarkupParseContext) (bool, *AttrList, string, rune, error) {
-	c_context := (*C.GMarkupParseContext)(context.ToC())
+	c_context := (*C.GMarkupParseContext)(C.NULL)
+	if context != nil {
+		c_context = (*C.GMarkupParseContext)(context.ToC())
+	}
 
 	var c_attr_list *C.PangoAttrList
 

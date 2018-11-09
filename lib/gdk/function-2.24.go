@@ -12,9 +12,15 @@ import "C"
 
 // CairoSetSourceWindow is a wrapper around the C function gdk_cairo_set_source_window.
 func CairoSetSourceWindow(cr *cairo.Context, window *Window, x float64, y float64) {
-	c_cr := (*C.cairo_t)(cr.ToC())
+	c_cr := (*C.cairo_t)(C.NULL)
+	if cr != nil {
+		c_cr = (*C.cairo_t)(cr.ToC())
+	}
 
-	c_window := (*C.GdkWindow)(window.ToC())
+	c_window := (*C.GdkWindow)(C.NULL)
+	if window != nil {
+		c_window = (*C.GdkWindow)(window.ToC())
+	}
 
 	c_x := (C.gdouble)(x)
 

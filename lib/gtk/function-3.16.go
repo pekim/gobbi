@@ -14,7 +14,10 @@ import "C"
 
 // DragCancel is a wrapper around the C function gtk_drag_cancel.
 func DragCancel(context *gdk.DragContext) {
-	c_context := (*C.GdkDragContext)(context.ToC())
+	c_context := (*C.GdkDragContext)(C.NULL)
+	if context != nil {
+		c_context = (*C.GdkDragContext)(context.ToC())
+	}
 
 	C.gtk_drag_cancel(c_context)
 

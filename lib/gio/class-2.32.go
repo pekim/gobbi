@@ -88,7 +88,10 @@ func (recv *DBusConnection) ExportMenuModel(objectPath string, menu *MenuModel) 
 	c_object_path := C.CString(objectPath)
 	defer C.free(unsafe.Pointer(c_object_path))
 
-	c_menu := (*C.GMenuModel)(menu.ToC())
+	c_menu := (*C.GMenuModel)(C.NULL)
+	if menu != nil {
+		c_menu = (*C.GMenuModel)(menu.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -131,7 +134,10 @@ func (recv *DBusInterfaceSkeleton) GetConnections() *glib.List {
 
 // HasConnection is a wrapper around the C function g_dbus_interface_skeleton_has_connection.
 func (recv *DBusInterfaceSkeleton) HasConnection(connection *DBusConnection) bool {
-	c_connection := (*C.GDBusConnection)(connection.ToC())
+	c_connection := (*C.GDBusConnection)(C.NULL)
+	if connection != nil {
+		c_connection = (*C.GDBusConnection)(connection.ToC())
+	}
 
 	retC := C.g_dbus_interface_skeleton_has_connection((*C.GDBusInterfaceSkeleton)(recv.native), c_connection)
 	retGo := retC == C.TRUE
@@ -141,7 +147,10 @@ func (recv *DBusInterfaceSkeleton) HasConnection(connection *DBusConnection) boo
 
 // UnexportFromConnection is a wrapper around the C function g_dbus_interface_skeleton_unexport_from_connection.
 func (recv *DBusInterfaceSkeleton) UnexportFromConnection(connection *DBusConnection) {
-	c_connection := (*C.GDBusConnection)(connection.ToC())
+	c_connection := (*C.GDBusConnection)(C.NULL)
+	if connection != nil {
+		c_connection = (*C.GDBusConnection)(connection.ToC())
+	}
 
 	C.g_dbus_interface_skeleton_unexport_from_connection((*C.GDBusInterfaceSkeleton)(recv.native), c_connection)
 
@@ -186,7 +195,10 @@ func CastToInetAddressMask(object *gobject.Object) *InetAddressMask {
 
 // InetAddressMaskNew is a wrapper around the C function g_inet_address_mask_new.
 func InetAddressMaskNew(addr *InetAddress, length uint32) (*InetAddressMask, error) {
-	c_addr := (*C.GInetAddress)(addr.ToC())
+	c_addr := (*C.GInetAddress)(C.NULL)
+	if addr != nil {
+		c_addr = (*C.GInetAddress)(addr.ToC())
+	}
 
 	c_length := (C.guint)(length)
 
@@ -223,7 +235,10 @@ func InetAddressMaskNewFromString(maskString string) (*InetAddressMask, error) {
 
 // Equal is a wrapper around the C function g_inet_address_mask_equal.
 func (recv *InetAddressMask) Equal(mask2 *InetAddressMask) bool {
-	c_mask2 := (*C.GInetAddressMask)(mask2.ToC())
+	c_mask2 := (*C.GInetAddressMask)(C.NULL)
+	if mask2 != nil {
+		c_mask2 = (*C.GInetAddressMask)(mask2.ToC())
+	}
 
 	retC := C.g_inet_address_mask_equal((*C.GInetAddressMask)(recv.native), c_mask2)
 	retGo := retC == C.TRUE
@@ -257,7 +272,10 @@ func (recv *InetAddressMask) GetLength() uint32 {
 
 // Matches is a wrapper around the C function g_inet_address_mask_matches.
 func (recv *InetAddressMask) Matches(address *InetAddress) bool {
-	c_address := (*C.GInetAddress)(address.ToC())
+	c_address := (*C.GInetAddress)(C.NULL)
+	if address != nil {
+		c_address = (*C.GInetAddress)(address.ToC())
+	}
 
 	retC := C.g_inet_address_mask_matches((*C.GInetAddressMask)(recv.native), c_address)
 	retGo := retC == C.TRUE
@@ -350,7 +368,10 @@ func (recv *Menu) Append(label string, detailedAction string) {
 
 // AppendItem is a wrapper around the C function g_menu_append_item.
 func (recv *Menu) AppendItem(item *MenuItem) {
-	c_item := (*C.GMenuItem)(item.ToC())
+	c_item := (*C.GMenuItem)(C.NULL)
+	if item != nil {
+		c_item = (*C.GMenuItem)(item.ToC())
+	}
 
 	C.g_menu_append_item((*C.GMenu)(recv.native), c_item)
 
@@ -362,7 +383,10 @@ func (recv *Menu) AppendSection(label string, section *MenuModel) {
 	c_label := C.CString(label)
 	defer C.free(unsafe.Pointer(c_label))
 
-	c_section := (*C.GMenuModel)(section.ToC())
+	c_section := (*C.GMenuModel)(C.NULL)
+	if section != nil {
+		c_section = (*C.GMenuModel)(section.ToC())
+	}
 
 	C.g_menu_append_section((*C.GMenu)(recv.native), c_label, c_section)
 
@@ -374,7 +398,10 @@ func (recv *Menu) AppendSubmenu(label string, submenu *MenuModel) {
 	c_label := C.CString(label)
 	defer C.free(unsafe.Pointer(c_label))
 
-	c_submenu := (*C.GMenuModel)(submenu.ToC())
+	c_submenu := (*C.GMenuModel)(C.NULL)
+	if submenu != nil {
+		c_submenu = (*C.GMenuModel)(submenu.ToC())
+	}
 
 	C.g_menu_append_submenu((*C.GMenu)(recv.native), c_label, c_submenu)
 
@@ -407,7 +434,10 @@ func (recv *Menu) Insert(position int32, label string, detailedAction string) {
 func (recv *Menu) InsertItem(position int32, item *MenuItem) {
 	c_position := (C.gint)(position)
 
-	c_item := (*C.GMenuItem)(item.ToC())
+	c_item := (*C.GMenuItem)(C.NULL)
+	if item != nil {
+		c_item = (*C.GMenuItem)(item.ToC())
+	}
 
 	C.g_menu_insert_item((*C.GMenu)(recv.native), c_position, c_item)
 
@@ -421,7 +451,10 @@ func (recv *Menu) InsertSection(position int32, label string, section *MenuModel
 	c_label := C.CString(label)
 	defer C.free(unsafe.Pointer(c_label))
 
-	c_section := (*C.GMenuModel)(section.ToC())
+	c_section := (*C.GMenuModel)(C.NULL)
+	if section != nil {
+		c_section = (*C.GMenuModel)(section.ToC())
+	}
 
 	C.g_menu_insert_section((*C.GMenu)(recv.native), c_position, c_label, c_section)
 
@@ -435,7 +468,10 @@ func (recv *Menu) InsertSubmenu(position int32, label string, submenu *MenuModel
 	c_label := C.CString(label)
 	defer C.free(unsafe.Pointer(c_label))
 
-	c_submenu := (*C.GMenuModel)(submenu.ToC())
+	c_submenu := (*C.GMenuModel)(C.NULL)
+	if submenu != nil {
+		c_submenu = (*C.GMenuModel)(submenu.ToC())
+	}
 
 	C.g_menu_insert_submenu((*C.GMenu)(recv.native), c_position, c_label, c_submenu)
 
@@ -457,7 +493,10 @@ func (recv *Menu) Prepend(label string, detailedAction string) {
 
 // PrependItem is a wrapper around the C function g_menu_prepend_item.
 func (recv *Menu) PrependItem(item *MenuItem) {
-	c_item := (*C.GMenuItem)(item.ToC())
+	c_item := (*C.GMenuItem)(C.NULL)
+	if item != nil {
+		c_item = (*C.GMenuItem)(item.ToC())
+	}
 
 	C.g_menu_prepend_item((*C.GMenu)(recv.native), c_item)
 
@@ -469,7 +508,10 @@ func (recv *Menu) PrependSection(label string, section *MenuModel) {
 	c_label := C.CString(label)
 	defer C.free(unsafe.Pointer(c_label))
 
-	c_section := (*C.GMenuModel)(section.ToC())
+	c_section := (*C.GMenuModel)(C.NULL)
+	if section != nil {
+		c_section = (*C.GMenuModel)(section.ToC())
+	}
 
 	C.g_menu_prepend_section((*C.GMenu)(recv.native), c_label, c_section)
 
@@ -481,7 +523,10 @@ func (recv *Menu) PrependSubmenu(label string, submenu *MenuModel) {
 	c_label := C.CString(label)
 	defer C.free(unsafe.Pointer(c_label))
 
-	c_submenu := (*C.GMenuModel)(submenu.ToC())
+	c_submenu := (*C.GMenuModel)(C.NULL)
+	if submenu != nil {
+		c_submenu = (*C.GMenuModel)(submenu.ToC())
+	}
 
 	C.g_menu_prepend_submenu((*C.GMenu)(recv.native), c_label, c_submenu)
 
@@ -602,7 +647,10 @@ func MenuItemNewSection(label string, section *MenuModel) *MenuItem {
 	c_label := C.CString(label)
 	defer C.free(unsafe.Pointer(c_label))
 
-	c_section := (*C.GMenuModel)(section.ToC())
+	c_section := (*C.GMenuModel)(C.NULL)
+	if section != nil {
+		c_section = (*C.GMenuModel)(section.ToC())
+	}
 
 	retC := C.g_menu_item_new_section(c_label, c_section)
 	retGo := MenuItemNewFromC(unsafe.Pointer(retC))
@@ -615,7 +663,10 @@ func MenuItemNewSubmenu(label string, submenu *MenuModel) *MenuItem {
 	c_label := C.CString(label)
 	defer C.free(unsafe.Pointer(c_label))
 
-	c_submenu := (*C.GMenuModel)(submenu.ToC())
+	c_submenu := (*C.GMenuModel)(C.NULL)
+	if submenu != nil {
+		c_submenu = (*C.GMenuModel)(submenu.ToC())
+	}
 
 	retC := C.g_menu_item_new_submenu(c_label, c_submenu)
 	retGo := MenuItemNewFromC(unsafe.Pointer(retC))
@@ -656,7 +707,10 @@ func (recv *MenuItem) SetLink(link string, model *MenuModel) {
 	c_link := C.CString(link)
 	defer C.free(unsafe.Pointer(c_link))
 
-	c_model := (*C.GMenuModel)(model.ToC())
+	c_model := (*C.GMenuModel)(C.NULL)
+	if model != nil {
+		c_model = (*C.GMenuModel)(model.ToC())
+	}
 
 	C.g_menu_item_set_link((*C.GMenuItem)(recv.native), c_link, c_model)
 
@@ -665,7 +719,10 @@ func (recv *MenuItem) SetLink(link string, model *MenuModel) {
 
 // SetSection is a wrapper around the C function g_menu_item_set_section.
 func (recv *MenuItem) SetSection(section *MenuModel) {
-	c_section := (*C.GMenuModel)(section.ToC())
+	c_section := (*C.GMenuModel)(C.NULL)
+	if section != nil {
+		c_section = (*C.GMenuModel)(section.ToC())
+	}
 
 	C.g_menu_item_set_section((*C.GMenuItem)(recv.native), c_section)
 
@@ -674,7 +731,10 @@ func (recv *MenuItem) SetSection(section *MenuModel) {
 
 // SetSubmenu is a wrapper around the C function g_menu_item_set_submenu.
 func (recv *MenuItem) SetSubmenu(submenu *MenuModel) {
-	c_submenu := (*C.GMenuModel)(submenu.ToC())
+	c_submenu := (*C.GMenuModel)(C.NULL)
+	if submenu != nil {
+		c_submenu = (*C.GMenuModel)(submenu.ToC())
+	}
 
 	C.g_menu_item_set_submenu((*C.GMenuItem)(recv.native), c_submenu)
 
@@ -859,9 +919,15 @@ func (recv *MenuModel) IterateItemLinks(itemIndex int32) *MenuLinkIter {
 
 // SettingsNewFull is a wrapper around the C function g_settings_new_full.
 func SettingsNewFull(schema *SettingsSchema, backend *SettingsBackend, path string) *Settings {
-	c_schema := (*C.GSettingsSchema)(schema.ToC())
+	c_schema := (*C.GSettingsSchema)(C.NULL)
+	if schema != nil {
+		c_schema = (*C.GSettingsSchema)(schema.ToC())
+	}
 
-	c_backend := (*C.GSettingsBackend)(backend.ToC())
+	c_backend := (*C.GSettingsBackend)(C.NULL)
+	if backend != nil {
+		c_backend = (*C.GSettingsBackend)(backend.ToC())
+	}
 
 	c_path := C.CString(path)
 	defer C.free(unsafe.Pointer(c_path))
@@ -885,7 +951,10 @@ func (recv *Settings) CreateAction(key string) *Action {
 
 // SetCheckCancellable is a wrapper around the C function g_simple_async_result_set_check_cancellable.
 func (recv *SimpleAsyncResult) SetCheckCancellable(checkCancellable *Cancellable) {
-	c_check_cancellable := (*C.GCancellable)(checkCancellable.ToC())
+	c_check_cancellable := (*C.GCancellable)(C.NULL)
+	if checkCancellable != nil {
+		c_check_cancellable = (*C.GCancellable)(checkCancellable.ToC())
+	}
 
 	C.g_simple_async_result_set_check_cancellable((*C.GSimpleAsyncResult)(recv.native), c_check_cancellable)
 
@@ -898,7 +967,10 @@ func (recv *Socket) ConditionTimedWait(condition glib.IOCondition, timeout int64
 
 	c_timeout := (C.gint64)(timeout)
 
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -955,7 +1027,10 @@ func (recv *Socket) GetTtl() uint32 {
 
 // JoinMulticastGroup is a wrapper around the C function g_socket_join_multicast_group.
 func (recv *Socket) JoinMulticastGroup(group *InetAddress, sourceSpecific bool, iface string) (bool, error) {
-	c_group := (*C.GInetAddress)(group.ToC())
+	c_group := (*C.GInetAddress)(C.NULL)
+	if group != nil {
+		c_group = (*C.GInetAddress)(group.ToC())
+	}
 
 	c_source_specific :=
 		boolToGboolean(sourceSpecific)
@@ -978,7 +1053,10 @@ func (recv *Socket) JoinMulticastGroup(group *InetAddress, sourceSpecific bool, 
 
 // LeaveMulticastGroup is a wrapper around the C function g_socket_leave_multicast_group.
 func (recv *Socket) LeaveMulticastGroup(group *InetAddress, sourceSpecific bool, iface string) (bool, error) {
-	c_group := (*C.GInetAddress)(group.ToC())
+	c_group := (*C.GInetAddress)(C.NULL)
+	if group != nil {
+		c_group = (*C.GInetAddress)(group.ToC())
+	}
 
 	c_source_specific :=
 		boolToGboolean(sourceSpecific)
@@ -1039,9 +1117,15 @@ func (recv *Socket) SetTtl(ttl uint32) {
 
 // Connect is a wrapper around the C function g_socket_connection_connect.
 func (recv *SocketConnection) Connect(address *SocketAddress, cancellable *Cancellable) (bool, error) {
-	c_address := (*C.GSocketAddress)(address.ToC())
+	c_address := (*C.GSocketAddress)(C.NULL)
+	if address != nil {
+		c_address = (*C.GSocketAddress)(address.ToC())
+	}
 
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 

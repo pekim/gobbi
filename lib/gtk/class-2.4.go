@@ -367,7 +367,10 @@ func (recv *Action) IsVisible() bool {
 
 // SetAccelGroup is a wrapper around the C function gtk_action_set_accel_group.
 func (recv *Action) SetAccelGroup(accelGroup *AccelGroup) {
-	c_accel_group := (*C.GtkAccelGroup)(accelGroup.ToC())
+	c_accel_group := (*C.GtkAccelGroup)(C.NULL)
+	if accelGroup != nil {
+		c_accel_group = (*C.GtkAccelGroup)(accelGroup.ToC())
+	}
 
 	C.gtk_action_set_accel_group((*C.GtkAction)(recv.native), c_accel_group)
 
@@ -637,7 +640,10 @@ func ActionGroupNew(name string) *ActionGroup {
 
 // AddAction is a wrapper around the C function gtk_action_group_add_action.
 func (recv *ActionGroup) AddAction(action *Action) {
-	c_action := (*C.GtkAction)(action.ToC())
+	c_action := (*C.GtkAction)(C.NULL)
+	if action != nil {
+		c_action = (*C.GtkAction)(action.ToC())
+	}
 
 	C.gtk_action_group_add_action((*C.GtkActionGroup)(recv.native), c_action)
 
@@ -646,7 +652,10 @@ func (recv *ActionGroup) AddAction(action *Action) {
 
 // AddActionWithAccel is a wrapper around the C function gtk_action_group_add_action_with_accel.
 func (recv *ActionGroup) AddActionWithAccel(action *Action, accelerator string) {
-	c_action := (*C.GtkAction)(action.ToC())
+	c_action := (*C.GtkAction)(C.NULL)
+	if action != nil {
+		c_action = (*C.GtkAction)(action.ToC())
+	}
 
 	c_accelerator := C.CString(accelerator)
 	defer C.free(unsafe.Pointer(c_accelerator))
@@ -713,7 +722,10 @@ func (recv *ActionGroup) ListActions() *glib.List {
 
 // RemoveAction is a wrapper around the C function gtk_action_group_remove_action.
 func (recv *ActionGroup) RemoveAction(action *Action) {
-	c_action := (*C.GtkAction)(action.ToC())
+	c_action := (*C.GtkAction)(C.NULL)
+	if action != nil {
+		c_action = (*C.GtkAction)(action.ToC())
+	}
 
 	C.gtk_action_group_remove_action((*C.GtkActionGroup)(recv.native), c_action)
 
@@ -836,7 +848,10 @@ func (recv *Button) SetFocusOnClick(focusOnClick bool) {
 
 // GetChildSecondary is a wrapper around the C function gtk_button_box_get_child_secondary.
 func (recv *ButtonBox) GetChildSecondary(child *Widget) bool {
-	c_child := (*C.GtkWidget)(child.ToC())
+	c_child := (*C.GtkWidget)(C.NULL)
+	if child != nil {
+		c_child = (*C.GtkWidget)(child.ToC())
+	}
 
 	retC := C.gtk_button_box_get_child_secondary((*C.GtkButtonBox)(recv.native), c_child)
 	retGo := retC == C.TRUE
@@ -1007,7 +1022,10 @@ func ColorButtonNew() *ColorButton {
 
 // ColorButtonNewWithColor is a wrapper around the C function gtk_color_button_new_with_color.
 func ColorButtonNewWithColor(color *gdk.Color) *ColorButton {
-	c_color := (*C.GdkColor)(color.ToC())
+	c_color := (*C.GdkColor)(C.NULL)
+	if color != nil {
+		c_color = (*C.GdkColor)(color.ToC())
+	}
 
 	retC := C.gtk_color_button_new_with_color(c_color)
 	retGo := ColorButtonNewFromC(unsafe.Pointer(retC))
@@ -1061,7 +1079,10 @@ func (recv *ColorButton) SetAlpha(alpha uint16) {
 
 // SetColor is a wrapper around the C function gtk_color_button_set_color.
 func (recv *ColorButton) SetColor(color *gdk.Color) {
-	c_color := (*C.GdkColor)(color.ToC())
+	c_color := (*C.GdkColor)(C.NULL)
+	if color != nil {
+		c_color = (*C.GdkColor)(color.ToC())
+	}
 
 	C.gtk_color_button_set_color((*C.GtkColorButton)(recv.native), c_color)
 
@@ -1216,7 +1237,10 @@ func (recv *ComboBox) SetActive(index int32) {
 
 // SetActiveIter is a wrapper around the C function gtk_combo_box_set_active_iter.
 func (recv *ComboBox) SetActiveIter(iter *TreeIter) {
-	c_iter := (*C.GtkTreeIter)(iter.ToC())
+	c_iter := (*C.GtkTreeIter)(C.NULL)
+	if iter != nil {
+		c_iter = (*C.GtkTreeIter)(iter.ToC())
+	}
 
 	C.gtk_combo_box_set_active_iter((*C.GtkComboBox)(recv.native), c_iter)
 
@@ -1286,7 +1310,10 @@ func (recv *Entry) SetAlignment(xalign float32) {
 
 // SetCompletion is a wrapper around the C function gtk_entry_set_completion.
 func (recv *Entry) SetCompletion(completion *EntryCompletion) {
-	c_completion := (*C.GtkEntryCompletion)(completion.ToC())
+	c_completion := (*C.GtkEntryCompletion)(C.NULL)
+	if completion != nil {
+		c_completion = (*C.GtkEntryCompletion)(completion.ToC())
+	}
 
 	C.gtk_entry_set_completion((*C.GtkEntry)(recv.native), c_completion)
 
@@ -1598,7 +1625,10 @@ func (recv *Expander) SetLabel(label string) {
 
 // SetLabelWidget is a wrapper around the C function gtk_expander_set_label_widget.
 func (recv *Expander) SetLabelWidget(labelWidget *Widget) {
-	c_label_widget := (*C.GtkWidget)(labelWidget.ToC())
+	c_label_widget := (*C.GtkWidget)(C.NULL)
+	if labelWidget != nil {
+		c_label_widget = (*C.GtkWidget)(labelWidget.ToC())
+	}
 
 	C.gtk_expander_set_label_widget((*C.GtkExpander)(recv.native), c_label_widget)
 
@@ -1678,7 +1708,10 @@ func (recv *FileFilter) AddPattern(pattern string) {
 
 // Filter is a wrapper around the C function gtk_file_filter_filter.
 func (recv *FileFilter) Filter(filterInfo *FileFilterInfo) bool {
-	c_filter_info := (*C.GtkFileFilterInfo)(filterInfo.ToC())
+	c_filter_info := (*C.GtkFileFilterInfo)(C.NULL)
+	if filterInfo != nil {
+		c_filter_info = (*C.GtkFileFilterInfo)(filterInfo.ToC())
+	}
 
 	retC := C.gtk_file_filter_filter((*C.GtkFileFilter)(recv.native), c_filter_info)
 	retGo := retC == C.TRUE
@@ -2106,7 +2139,10 @@ func (recv *IconTheme) SetCustomTheme(themeName string) {
 
 // SetScreen is a wrapper around the C function gtk_icon_theme_set_screen.
 func (recv *IconTheme) SetScreen(screen *gdk.Screen) {
-	c_screen := (*C.GdkScreen)(screen.ToC())
+	c_screen := (*C.GdkScreen)(C.NULL)
+	if screen != nil {
+		c_screen = (*C.GdkScreen)(screen.ToC())
+	}
 
 	C.gtk_icon_theme_set_screen((*C.GtkIconTheme)(recv.native), c_screen)
 
@@ -2117,7 +2153,10 @@ func (recv *IconTheme) SetScreen(screen *gdk.Screen) {
 
 // Attach is a wrapper around the C function gtk_menu_attach.
 func (recv *Menu) Attach(child *Widget, leftAttach uint32, rightAttach uint32, topAttach uint32, bottomAttach uint32) {
-	c_child := (*C.GtkWidget)(child.ToC())
+	c_child := (*C.GtkWidget)(C.NULL)
+	if child != nil {
+		c_child = (*C.GtkWidget)(child.ToC())
+	}
 
 	c_left_attach := (C.guint)(leftAttach)
 
@@ -2285,7 +2324,10 @@ func (recv *RadioAction) GetGroup() *glib.SList {
 
 // SetGroup is a wrapper around the C function gtk_radio_action_set_group.
 func (recv *RadioAction) SetGroup(group *glib.SList) {
-	c_group := (*C.GSList)(group.ToC())
+	c_group := (*C.GSList)(C.NULL)
+	if group != nil {
+		c_group = (*C.GSList)(group.ToC())
+	}
 
 	C.gtk_radio_action_set_group((*C.GtkRadioAction)(recv.native), c_group)
 
@@ -2351,7 +2393,10 @@ func radiobutton_groupChangedHandler(_ *C.GObject, data C.gpointer) {
 
 // RadioMenuItemNewFromWidget is a wrapper around the C function gtk_radio_menu_item_new_from_widget.
 func RadioMenuItemNewFromWidget(group *RadioMenuItem) *RadioMenuItem {
-	c_group := (*C.GtkRadioMenuItem)(group.ToC())
+	c_group := (*C.GtkRadioMenuItem)(C.NULL)
+	if group != nil {
+		c_group = (*C.GtkRadioMenuItem)(group.ToC())
+	}
 
 	retC := C.gtk_radio_menu_item_new_from_widget(c_group)
 	retGo := RadioMenuItemNewFromC(unsafe.Pointer(retC))
@@ -2361,7 +2406,10 @@ func RadioMenuItemNewFromWidget(group *RadioMenuItem) *RadioMenuItem {
 
 // RadioMenuItemNewWithLabelFromWidget is a wrapper around the C function gtk_radio_menu_item_new_with_label_from_widget.
 func RadioMenuItemNewWithLabelFromWidget(group *RadioMenuItem, label string) *RadioMenuItem {
-	c_group := (*C.GtkRadioMenuItem)(group.ToC())
+	c_group := (*C.GtkRadioMenuItem)(C.NULL)
+	if group != nil {
+		c_group = (*C.GtkRadioMenuItem)(group.ToC())
+	}
 
 	c_label := C.CString(label)
 	defer C.free(unsafe.Pointer(c_label))
@@ -2374,7 +2422,10 @@ func RadioMenuItemNewWithLabelFromWidget(group *RadioMenuItem, label string) *Ra
 
 // RadioMenuItemNewWithMnemonicFromWidget is a wrapper around the C function gtk_radio_menu_item_new_with_mnemonic_from_widget.
 func RadioMenuItemNewWithMnemonicFromWidget(group *RadioMenuItem, label string) *RadioMenuItem {
-	c_group := (*C.GtkRadioMenuItem)(group.ToC())
+	c_group := (*C.GtkRadioMenuItem)(C.NULL)
+	if group != nil {
+		c_group = (*C.GtkRadioMenuItem)(group.ToC())
+	}
 
 	c_label := C.CString(label)
 	defer C.free(unsafe.Pointer(c_label))
@@ -2387,7 +2438,10 @@ func RadioMenuItemNewWithMnemonicFromWidget(group *RadioMenuItem, label string) 
 
 // RadioToolButtonNew is a wrapper around the C function gtk_radio_tool_button_new.
 func RadioToolButtonNew(group *glib.SList) *RadioToolButton {
-	c_group := (*C.GSList)(group.ToC())
+	c_group := (*C.GSList)(C.NULL)
+	if group != nil {
+		c_group = (*C.GSList)(group.ToC())
+	}
 
 	retC := C.gtk_radio_tool_button_new(c_group)
 	retGo := RadioToolButtonNewFromC(unsafe.Pointer(retC))
@@ -2397,7 +2451,10 @@ func RadioToolButtonNew(group *glib.SList) *RadioToolButton {
 
 // RadioToolButtonNewFromStock is a wrapper around the C function gtk_radio_tool_button_new_from_stock.
 func RadioToolButtonNewFromStock(group *glib.SList, stockId string) *RadioToolButton {
-	c_group := (*C.GSList)(group.ToC())
+	c_group := (*C.GSList)(C.NULL)
+	if group != nil {
+		c_group = (*C.GSList)(group.ToC())
+	}
 
 	c_stock_id := C.CString(stockId)
 	defer C.free(unsafe.Pointer(c_stock_id))
@@ -2410,7 +2467,10 @@ func RadioToolButtonNewFromStock(group *glib.SList, stockId string) *RadioToolBu
 
 // RadioToolButtonNewFromWidget is a wrapper around the C function gtk_radio_tool_button_new_from_widget.
 func RadioToolButtonNewFromWidget(group *RadioToolButton) *RadioToolButton {
-	c_group := (*C.GtkRadioToolButton)(group.ToC())
+	c_group := (*C.GtkRadioToolButton)(C.NULL)
+	if group != nil {
+		c_group = (*C.GtkRadioToolButton)(group.ToC())
+	}
 
 	retC := C.gtk_radio_tool_button_new_from_widget(c_group)
 	retGo := RadioToolButtonNewFromC(unsafe.Pointer(retC))
@@ -2420,7 +2480,10 @@ func RadioToolButtonNewFromWidget(group *RadioToolButton) *RadioToolButton {
 
 // RadioToolButtonNewWithStockFromWidget is a wrapper around the C function gtk_radio_tool_button_new_with_stock_from_widget.
 func RadioToolButtonNewWithStockFromWidget(group *RadioToolButton, stockId string) *RadioToolButton {
-	c_group := (*C.GtkRadioToolButton)(group.ToC())
+	c_group := (*C.GtkRadioToolButton)(C.NULL)
+	if group != nil {
+		c_group = (*C.GtkRadioToolButton)(group.ToC())
+	}
 
 	c_stock_id := C.CString(stockId)
 	defer C.free(unsafe.Pointer(c_stock_id))
@@ -2441,7 +2504,10 @@ func (recv *RadioToolButton) GetGroup() *glib.SList {
 
 // SetGroup is a wrapper around the C function gtk_radio_tool_button_set_group.
 func (recv *RadioToolButton) SetGroup(group *glib.SList) {
-	c_group := (*C.GSList)(group.ToC())
+	c_group := (*C.GSList)(C.NULL)
+	if group != nil {
+		c_group = (*C.GSList)(group.ToC())
+	}
 
 	C.gtk_radio_tool_button_set_group((*C.GtkRadioToolButton)(recv.native), c_group)
 
@@ -2618,9 +2684,15 @@ func style_unrealizeHandler(_ *C.GObject, data C.gpointer) {
 
 // SelectRange is a wrapper around the C function gtk_text_buffer_select_range.
 func (recv *TextBuffer) SelectRange(ins *TextIter, bound *TextIter) {
-	c_ins := (*C.GtkTextIter)(ins.ToC())
+	c_ins := (*C.GtkTextIter)(C.NULL)
+	if ins != nil {
+		c_ins = (*C.GtkTextIter)(ins.ToC())
+	}
 
-	c_bound := (*C.GtkTextIter)(bound.ToC())
+	c_bound := (*C.GtkTextIter)(C.NULL)
+	if bound != nil {
+		c_bound = (*C.GtkTextIter)(bound.ToC())
+	}
 
 	C.gtk_text_buffer_select_range((*C.GtkTextBuffer)(recv.native), c_ins, c_bound)
 
@@ -2765,7 +2837,10 @@ func (recv *ToggleToolButton) SetActive(isActive bool) {
 
 // ToolButtonNew is a wrapper around the C function gtk_tool_button_new.
 func ToolButtonNew(iconWidget *Widget, label string) *ToolButton {
-	c_icon_widget := (*C.GtkWidget)(iconWidget.ToC())
+	c_icon_widget := (*C.GtkWidget)(C.NULL)
+	if iconWidget != nil {
+		c_icon_widget = (*C.GtkWidget)(iconWidget.ToC())
+	}
 
 	c_label := C.CString(label)
 	defer C.free(unsafe.Pointer(c_label))
@@ -2839,7 +2914,10 @@ func (recv *ToolButton) GetUseUnderline() bool {
 
 // SetIconWidget is a wrapper around the C function gtk_tool_button_set_icon_widget.
 func (recv *ToolButton) SetIconWidget(iconWidget *Widget) {
-	c_icon_widget := (*C.GtkWidget)(iconWidget.ToC())
+	c_icon_widget := (*C.GtkWidget)(C.NULL)
+	if iconWidget != nil {
+		c_icon_widget = (*C.GtkWidget)(iconWidget.ToC())
+	}
 
 	C.gtk_tool_button_set_icon_widget((*C.GtkToolButton)(recv.native), c_icon_widget)
 
@@ -2858,7 +2936,10 @@ func (recv *ToolButton) SetLabel(label string) {
 
 // SetLabelWidget is a wrapper around the C function gtk_tool_button_set_label_widget.
 func (recv *ToolButton) SetLabelWidget(labelWidget *Widget) {
-	c_label_widget := (*C.GtkWidget)(labelWidget.ToC())
+	c_label_widget := (*C.GtkWidget)(C.NULL)
+	if labelWidget != nil {
+		c_label_widget = (*C.GtkWidget)(labelWidget.ToC())
+	}
 
 	C.gtk_tool_button_set_label_widget((*C.GtkToolButton)(recv.native), c_label_widget)
 
@@ -3026,7 +3107,10 @@ func (recv *ToolItem) SetProxyMenuItem(menuItemId string, menuItem *Widget) {
 	c_menu_item_id := C.CString(menuItemId)
 	defer C.free(unsafe.Pointer(c_menu_item_id))
 
-	c_menu_item := (*C.GtkWidget)(menuItem.ToC())
+	c_menu_item := (*C.GtkWidget)(C.NULL)
+	if menuItem != nil {
+		c_menu_item = (*C.GtkWidget)(menuItem.ToC())
+	}
 
 	C.gtk_tool_item_set_proxy_menu_item((*C.GtkToolItem)(recv.native), c_menu_item_id, c_menu_item)
 
@@ -3077,7 +3161,10 @@ func (recv *Toolbar) GetDropIndex(x int32, y int32) int32 {
 
 // GetItemIndex is a wrapper around the C function gtk_toolbar_get_item_index.
 func (recv *Toolbar) GetItemIndex(item *ToolItem) int32 {
-	c_item := (*C.GtkToolItem)(item.ToC())
+	c_item := (*C.GtkToolItem)(C.NULL)
+	if item != nil {
+		c_item = (*C.GtkToolItem)(item.ToC())
+	}
 
 	retC := C.gtk_toolbar_get_item_index((*C.GtkToolbar)(recv.native), c_item)
 	retGo := (int32)(retC)
@@ -3126,7 +3213,10 @@ func (recv *Toolbar) GetShowArrow() bool {
 
 // Insert is a wrapper around the C function gtk_toolbar_insert.
 func (recv *Toolbar) Insert(item *ToolItem, pos int32) {
-	c_item := (*C.GtkToolItem)(item.ToC())
+	c_item := (*C.GtkToolItem)(C.NULL)
+	if item != nil {
+		c_item = (*C.GtkToolItem)(item.ToC())
+	}
 
 	c_pos := (C.gint)(pos)
 
@@ -3137,7 +3227,10 @@ func (recv *Toolbar) Insert(item *ToolItem, pos int32) {
 
 // SetDropHighlightItem is a wrapper around the C function gtk_toolbar_set_drop_highlight_item.
 func (recv *Toolbar) SetDropHighlightItem(toolItem *ToolItem, index int32) {
-	c_tool_item := (*C.GtkToolItem)(toolItem.ToC())
+	c_tool_item := (*C.GtkToolItem)(C.NULL)
+	if toolItem != nil {
+		c_tool_item = (*C.GtkToolItem)(toolItem.ToC())
+	}
 
 	c_index_ := (C.gint)(index)
 
@@ -3167,7 +3260,10 @@ func (recv *TreeModelFilter) ClearCache() {
 func (recv *TreeModelFilter) ConvertChildIterToIter(childIter *TreeIter) (bool, *TreeIter) {
 	var c_filter_iter C.GtkTreeIter
 
-	c_child_iter := (*C.GtkTreeIter)(childIter.ToC())
+	c_child_iter := (*C.GtkTreeIter)(C.NULL)
+	if childIter != nil {
+		c_child_iter = (*C.GtkTreeIter)(childIter.ToC())
+	}
 
 	retC := C.gtk_tree_model_filter_convert_child_iter_to_iter((*C.GtkTreeModelFilter)(recv.native), &c_filter_iter, c_child_iter)
 	retGo := retC == C.TRUE
@@ -3179,7 +3275,10 @@ func (recv *TreeModelFilter) ConvertChildIterToIter(childIter *TreeIter) (bool, 
 
 // ConvertChildPathToPath is a wrapper around the C function gtk_tree_model_filter_convert_child_path_to_path.
 func (recv *TreeModelFilter) ConvertChildPathToPath(childPath *TreePath) *TreePath {
-	c_child_path := (*C.GtkTreePath)(childPath.ToC())
+	c_child_path := (*C.GtkTreePath)(C.NULL)
+	if childPath != nil {
+		c_child_path = (*C.GtkTreePath)(childPath.ToC())
+	}
 
 	retC := C.gtk_tree_model_filter_convert_child_path_to_path((*C.GtkTreeModelFilter)(recv.native), c_child_path)
 	var retGo (*TreePath)
@@ -3196,7 +3295,10 @@ func (recv *TreeModelFilter) ConvertChildPathToPath(childPath *TreePath) *TreePa
 func (recv *TreeModelFilter) ConvertIterToChildIter(filterIter *TreeIter) *TreeIter {
 	var c_child_iter C.GtkTreeIter
 
-	c_filter_iter := (*C.GtkTreeIter)(filterIter.ToC())
+	c_filter_iter := (*C.GtkTreeIter)(C.NULL)
+	if filterIter != nil {
+		c_filter_iter = (*C.GtkTreeIter)(filterIter.ToC())
+	}
 
 	C.gtk_tree_model_filter_convert_iter_to_child_iter((*C.GtkTreeModelFilter)(recv.native), &c_child_iter, c_filter_iter)
 
@@ -3207,7 +3309,10 @@ func (recv *TreeModelFilter) ConvertIterToChildIter(filterIter *TreeIter) *TreeI
 
 // ConvertPathToChildPath is a wrapper around the C function gtk_tree_model_filter_convert_path_to_child_path.
 func (recv *TreeModelFilter) ConvertPathToChildPath(filterPath *TreePath) *TreePath {
-	c_filter_path := (*C.GtkTreePath)(filterPath.ToC())
+	c_filter_path := (*C.GtkTreePath)(C.NULL)
+	if filterPath != nil {
+		c_filter_path = (*C.GtkTreePath)(filterPath.ToC())
+	}
 
 	retC := C.gtk_tree_model_filter_convert_path_to_child_path((*C.GtkTreeModelFilter)(recv.native), c_filter_path)
 	var retGo (*TreePath)
@@ -3765,7 +3870,10 @@ func (recv *UIManager) GetWidget(path string) *Widget {
 
 // InsertActionGroup is a wrapper around the C function gtk_ui_manager_insert_action_group.
 func (recv *UIManager) InsertActionGroup(actionGroup *ActionGroup, pos int32) {
-	c_action_group := (*C.GtkActionGroup)(actionGroup.ToC())
+	c_action_group := (*C.GtkActionGroup)(C.NULL)
+	if actionGroup != nil {
+		c_action_group = (*C.GtkActionGroup)(actionGroup.ToC())
+	}
 
 	c_pos := (C.gint)(pos)
 
@@ -3784,7 +3892,10 @@ func (recv *UIManager) NewMergeId() uint32 {
 
 // RemoveActionGroup is a wrapper around the C function gtk_ui_manager_remove_action_group.
 func (recv *UIManager) RemoveActionGroup(actionGroup *ActionGroup) {
-	c_action_group := (*C.GtkActionGroup)(actionGroup.ToC())
+	c_action_group := (*C.GtkActionGroup)(C.NULL)
+	if actionGroup != nil {
+		c_action_group = (*C.GtkActionGroup)(actionGroup.ToC())
+	}
 
 	C.gtk_ui_manager_remove_action_group((*C.GtkUIManager)(recv.native), c_action_group)
 
@@ -3812,7 +3923,10 @@ func (recv *UIManager) SetAddTearoffs(addTearoffs bool) {
 
 // AddMnemonicLabel is a wrapper around the C function gtk_widget_add_mnemonic_label.
 func (recv *Widget) AddMnemonicLabel(label *Widget) {
-	c_label := (*C.GtkWidget)(label.ToC())
+	c_label := (*C.GtkWidget)(C.NULL)
+	if label != nil {
+		c_label = (*C.GtkWidget)(label.ToC())
+	}
 
 	C.gtk_widget_add_mnemonic_label((*C.GtkWidget)(recv.native), c_label)
 
@@ -3844,7 +3958,10 @@ func (recv *Widget) DragSourceGetTargetList() *TargetList {
 
 // DragSourceSetTargetList is a wrapper around the C function gtk_drag_source_set_target_list.
 func (recv *Widget) DragSourceSetTargetList(targetList *TargetList) {
-	c_target_list := (*C.GtkTargetList)(targetList.ToC())
+	c_target_list := (*C.GtkTargetList)(C.NULL)
+	if targetList != nil {
+		c_target_list = (*C.GtkTargetList)(targetList.ToC())
+	}
 
 	C.gtk_drag_source_set_target_list((*C.GtkWidget)(recv.native), c_target_list)
 
@@ -3876,7 +3993,10 @@ func (recv *Widget) QueueResizeNoRedraw() {
 
 // RemoveMnemonicLabel is a wrapper around the C function gtk_widget_remove_mnemonic_label.
 func (recv *Widget) RemoveMnemonicLabel(label *Widget) {
-	c_label := (*C.GtkWidget)(label.ToC())
+	c_label := (*C.GtkWidget)(C.NULL)
+	if label != nil {
+		c_label = (*C.GtkWidget)(label.ToC())
+	}
 
 	C.gtk_widget_remove_mnemonic_label((*C.GtkWidget)(recv.native), c_label)
 
@@ -3895,7 +4015,10 @@ func (recv *Widget) SetNoShowAll(noShowAll bool) {
 
 // ActivateKey is a wrapper around the C function gtk_window_activate_key.
 func (recv *Window) ActivateKey(event *gdk.EventKey) bool {
-	c_event := (*C.GdkEventKey)(event.ToC())
+	c_event := (*C.GdkEventKey)(C.NULL)
+	if event != nil {
+		c_event = (*C.GdkEventKey)(event.ToC())
+	}
 
 	retC := C.gtk_window_activate_key((*C.GtkWindow)(recv.native), c_event)
 	retGo := retC == C.TRUE
@@ -3929,7 +4052,10 @@ func (recv *Window) IsActive() bool {
 
 // PropagateKeyEvent is a wrapper around the C function gtk_window_propagate_key_event.
 func (recv *Window) PropagateKeyEvent(event *gdk.EventKey) bool {
-	c_event := (*C.GdkEventKey)(event.ToC())
+	c_event := (*C.GdkEventKey)(C.NULL)
+	if event != nil {
+		c_event = (*C.GdkEventKey)(event.ToC())
+	}
 
 	retC := C.gtk_window_propagate_key_event((*C.GtkWindow)(recv.native), c_event)
 	retGo := retC == C.TRUE

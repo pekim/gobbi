@@ -167,7 +167,10 @@ func (recv *PaperSize) GetWidth(unit Unit) float64 {
 
 // IsEqual is a wrapper around the C function gtk_paper_size_is_equal.
 func (recv *PaperSize) IsEqual(size2 *PaperSize) bool {
-	c_size2 := (*C.GtkPaperSize)(size2.ToC())
+	c_size2 := (*C.GtkPaperSize)(C.NULL)
+	if size2 != nil {
+		c_size2 = (*C.GtkPaperSize)(size2.ToC())
+	}
 
 	retC := C.gtk_paper_size_is_equal((*C.GtkPaperSize)(recv.native), c_size2)
 	retGo := retC == C.TRUE
@@ -374,7 +377,10 @@ func (recv *RecentInfo) LastApplication() string {
 
 // Match is a wrapper around the C function gtk_recent_info_match.
 func (recv *RecentInfo) Match(infoB *RecentInfo) bool {
-	c_info_b := (*C.GtkRecentInfo)(infoB.ToC())
+	c_info_b := (*C.GtkRecentInfo)(C.NULL)
+	if infoB != nil {
+		c_info_b = (*C.GtkRecentInfo)(infoB.ToC())
+	}
 
 	retC := C.gtk_recent_info_match((*C.GtkRecentInfo)(recv.native), c_info_b)
 	retGo := retC == C.TRUE
@@ -426,7 +432,10 @@ func (recv *RecentManagerClass) ToC() unsafe.Pointer {
 
 // TargetsIncludeRichText is a wrapper around the C function gtk_selection_data_targets_include_rich_text.
 func (recv *SelectionData) TargetsIncludeRichText(buffer *TextBuffer) bool {
-	c_buffer := (*C.GtkTextBuffer)(buffer.ToC())
+	c_buffer := (*C.GtkTextBuffer)(C.NULL)
+	if buffer != nil {
+		c_buffer = (*C.GtkTextBuffer)(buffer.ToC())
+	}
 
 	retC := C.gtk_selection_data_targets_include_rich_text((*C.GtkSelectionData)(recv.native), c_buffer)
 	retGo := retC == C.TRUE
@@ -449,7 +458,10 @@ func (recv *TargetList) AddRichTextTargets(info uint32, deserializable bool, buf
 	c_deserializable :=
 		boolToGboolean(deserializable)
 
-	c_buffer := (*C.GtkTextBuffer)(buffer.ToC())
+	c_buffer := (*C.GtkTextBuffer)(C.NULL)
+	if buffer != nil {
+		c_buffer = (*C.GtkTextBuffer)(buffer.ToC())
+	}
 
 	C.gtk_target_list_add_rich_text_targets((*C.GtkTargetList)(recv.native), c_info, c_deserializable, c_buffer)
 

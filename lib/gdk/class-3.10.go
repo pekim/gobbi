@@ -16,9 +16,15 @@ import "C"
 
 // CursorNewFromSurface is a wrapper around the C function gdk_cursor_new_from_surface.
 func CursorNewFromSurface(display *Display, surface *cairo.Surface, x float64, y float64) *Cursor {
-	c_display := (*C.GdkDisplay)(display.ToC())
+	c_display := (*C.GdkDisplay)(C.NULL)
+	if display != nil {
+		c_display = (*C.GdkDisplay)(display.ToC())
+	}
 
-	c_surface := (*C.cairo_surface_t)(surface.ToC())
+	c_surface := (*C.cairo_surface_t)(C.NULL)
+	if surface != nil {
+		c_surface = (*C.cairo_surface_t)(surface.ToC())
+	}
 
 	c_x := (C.gdouble)(x)
 
@@ -106,7 +112,10 @@ func (recv *Window) GetScaleFactor() int32 {
 
 // SetOpaqueRegion is a wrapper around the C function gdk_window_set_opaque_region.
 func (recv *Window) SetOpaqueRegion(region *cairo.Region) {
-	c_region := (*C.cairo_region_t)(region.ToC())
+	c_region := (*C.cairo_region_t)(C.NULL)
+	if region != nil {
+		c_region = (*C.cairo_region_t)(region.ToC())
+	}
 
 	C.gdk_window_set_opaque_region((*C.GdkWindow)(recv.native), c_region)
 

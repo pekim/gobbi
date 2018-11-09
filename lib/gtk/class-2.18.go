@@ -151,7 +151,10 @@ func (recv *CellRendererToggle) SetActivatable(setting bool) {
 
 // EntryNewWithBuffer is a wrapper around the C function gtk_entry_new_with_buffer.
 func EntryNewWithBuffer(buffer *EntryBuffer) *Entry {
-	c_buffer := (*C.GtkEntryBuffer)(buffer.ToC())
+	c_buffer := (*C.GtkEntryBuffer)(C.NULL)
+	if buffer != nil {
+		c_buffer = (*C.GtkEntryBuffer)(buffer.ToC())
+	}
 
 	retC := C.gtk_entry_new_with_buffer(c_buffer)
 	retGo := EntryNewFromC(unsafe.Pointer(retC))
@@ -169,7 +172,10 @@ func (recv *Entry) GetBuffer() *EntryBuffer {
 
 // SetBuffer is a wrapper around the C function gtk_entry_set_buffer.
 func (recv *Entry) SetBuffer(buffer *EntryBuffer) {
-	c_buffer := (*C.GtkEntryBuffer)(buffer.ToC())
+	c_buffer := (*C.GtkEntryBuffer)(C.NULL)
+	if buffer != nil {
+		c_buffer = (*C.GtkEntryBuffer)(buffer.ToC())
+	}
 
 	C.gtk_entry_set_buffer((*C.GtkEntry)(recv.native), c_buffer)
 
@@ -384,7 +390,10 @@ func InfoBarNew() *InfoBar {
 
 // AddActionWidget is a wrapper around the C function gtk_info_bar_add_action_widget.
 func (recv *InfoBar) AddActionWidget(child *Widget, responseId int32) {
-	c_child := (*C.GtkWidget)(child.ToC())
+	c_child := (*C.GtkWidget)(C.NULL)
+	if child != nil {
+		c_child = (*C.GtkWidget)(child.ToC())
+	}
 
 	c_response_id := (C.gint)(responseId)
 
@@ -911,7 +920,10 @@ func (recv *Widget) SetVisible(visible bool) {
 
 // SetWindow is a wrapper around the C function gtk_widget_set_window.
 func (recv *Widget) SetWindow(window *gdk.Window) {
-	c_window := (*C.GdkWindow)(window.ToC())
+	c_window := (*C.GdkWindow)(C.NULL)
+	if window != nil {
+		c_window = (*C.GdkWindow)(window.ToC())
+	}
 
 	C.gtk_widget_set_window((*C.GtkWidget)(recv.native), c_window)
 

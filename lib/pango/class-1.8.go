@@ -95,7 +95,10 @@ func (recv *Renderer) DrawErrorUnderline(x int32, y int32, width int32, height i
 
 // DrawGlyph is a wrapper around the C function pango_renderer_draw_glyph.
 func (recv *Renderer) DrawGlyph(font *Font, glyph Glyph, x float64, y float64) {
-	c_font := (*C.PangoFont)(font.ToC())
+	c_font := (*C.PangoFont)(C.NULL)
+	if font != nil {
+		c_font = (*C.PangoFont)(font.ToC())
+	}
 
 	c_glyph := (C.PangoGlyph)(glyph)
 
@@ -112,7 +115,10 @@ func (recv *Renderer) DrawGlyph(font *Font, glyph Glyph, x float64, y float64) {
 
 // DrawLayout is a wrapper around the C function pango_renderer_draw_layout.
 func (recv *Renderer) DrawLayout(layout *Layout, x int32, y int32) {
-	c_layout := (*C.PangoLayout)(layout.ToC())
+	c_layout := (*C.PangoLayout)(C.NULL)
+	if layout != nil {
+		c_layout = (*C.PangoLayout)(layout.ToC())
+	}
 
 	c_x := (C.int)(x)
 
@@ -125,7 +131,10 @@ func (recv *Renderer) DrawLayout(layout *Layout, x int32, y int32) {
 
 // DrawLayoutLine is a wrapper around the C function pango_renderer_draw_layout_line.
 func (recv *Renderer) DrawLayoutLine(line *LayoutLine, x int32, y int32) {
-	c_line := (*C.PangoLayoutLine)(line.ToC())
+	c_line := (*C.PangoLayoutLine)(C.NULL)
+	if line != nil {
+		c_line = (*C.PangoLayoutLine)(line.ToC())
+	}
 
 	c_x := (C.int)(x)
 
@@ -215,7 +224,10 @@ func (recv *Renderer) PartChanged(part RenderPart) {
 func (recv *Renderer) SetColor(part RenderPart, color *Color) {
 	c_part := (C.PangoRenderPart)(part)
 
-	c_color := (*C.PangoColor)(color.ToC())
+	c_color := (*C.PangoColor)(C.NULL)
+	if color != nil {
+		c_color = (*C.PangoColor)(color.ToC())
+	}
 
 	C.pango_renderer_set_color((*C.PangoRenderer)(recv.native), c_part, c_color)
 
@@ -224,7 +236,10 @@ func (recv *Renderer) SetColor(part RenderPart, color *Color) {
 
 // SetMatrix is a wrapper around the C function pango_renderer_set_matrix.
 func (recv *Renderer) SetMatrix(matrix *Matrix) {
-	c_matrix := (*C.PangoMatrix)(matrix.ToC())
+	c_matrix := (*C.PangoMatrix)(C.NULL)
+	if matrix != nil {
+		c_matrix = (*C.PangoMatrix)(matrix.ToC())
+	}
 
 	C.pango_renderer_set_matrix((*C.PangoRenderer)(recv.native), c_matrix)
 

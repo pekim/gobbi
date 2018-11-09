@@ -18,7 +18,10 @@ import "C"
 
 // AddOptionEntriesLibgtkOnly is a wrapper around the C function gdk_add_option_entries_libgtk_only.
 func AddOptionEntriesLibgtkOnly(group *glib.OptionGroup) {
-	c_group := (*C.GOptionGroup)(group.ToC())
+	c_group := (*C.GOptionGroup)(C.NULL)
+	if group != nil {
+		c_group = (*C.GOptionGroup)(group.ToC())
+	}
 
 	C.gdk_add_option_entries_libgtk_only(c_group)
 
@@ -38,7 +41,10 @@ func Beep() {
 
 // CairoRegionCreateFromSurface is a wrapper around the C function gdk_cairo_region_create_from_surface.
 func CairoRegionCreateFromSurface(surface *cairo.Surface) *cairo.Region {
-	c_surface := (*C.cairo_surface_t)(surface.ToC())
+	c_surface := (*C.cairo_surface_t)(C.NULL)
+	if surface != nil {
+		c_surface = (*C.cairo_surface_t)(surface.ToC())
+	}
 
 	retC := C.gdk_cairo_region_create_from_surface(c_surface)
 	retGo := cairo.RegionNewFromC(unsafe.Pointer(retC))
@@ -50,7 +56,10 @@ func CairoRegionCreateFromSurface(surface *cairo.Surface) *cairo.Region {
 
 // DragAbort is a wrapper around the C function gdk_drag_abort.
 func DragAbort(context *DragContext, time uint32) {
-	c_context := (*C.GdkDragContext)(context.ToC())
+	c_context := (*C.GdkDragContext)(C.NULL)
+	if context != nil {
+		c_context = (*C.GdkDragContext)(context.ToC())
+	}
 
 	c_time_ := (C.guint32)(time)
 
@@ -61,9 +70,15 @@ func DragAbort(context *DragContext, time uint32) {
 
 // DragBegin is a wrapper around the C function gdk_drag_begin.
 func DragBegin(window *Window, targets *glib.List) *DragContext {
-	c_window := (*C.GdkWindow)(window.ToC())
+	c_window := (*C.GdkWindow)(C.NULL)
+	if window != nil {
+		c_window = (*C.GdkWindow)(window.ToC())
+	}
 
-	c_targets := (*C.GList)(targets.ToC())
+	c_targets := (*C.GList)(C.NULL)
+	if targets != nil {
+		c_targets = (*C.GList)(targets.ToC())
+	}
 
 	retC := C.gdk_drag_begin(c_window, c_targets)
 	retGo := DragContextNewFromC(unsafe.Pointer(retC))
@@ -73,11 +88,20 @@ func DragBegin(window *Window, targets *glib.List) *DragContext {
 
 // DragBeginForDevice is a wrapper around the C function gdk_drag_begin_for_device.
 func DragBeginForDevice(window *Window, device *Device, targets *glib.List) *DragContext {
-	c_window := (*C.GdkWindow)(window.ToC())
+	c_window := (*C.GdkWindow)(C.NULL)
+	if window != nil {
+		c_window = (*C.GdkWindow)(window.ToC())
+	}
 
-	c_device := (*C.GdkDevice)(device.ToC())
+	c_device := (*C.GdkDevice)(C.NULL)
+	if device != nil {
+		c_device = (*C.GdkDevice)(device.ToC())
+	}
 
-	c_targets := (*C.GList)(targets.ToC())
+	c_targets := (*C.GList)(C.NULL)
+	if targets != nil {
+		c_targets = (*C.GList)(targets.ToC())
+	}
 
 	retC := C.gdk_drag_begin_for_device(c_window, c_device, c_targets)
 	retGo := DragContextNewFromC(unsafe.Pointer(retC))
@@ -87,7 +111,10 @@ func DragBeginForDevice(window *Window, device *Device, targets *glib.List) *Dra
 
 // DragDrop is a wrapper around the C function gdk_drag_drop.
 func DragDrop(context *DragContext, time uint32) {
-	c_context := (*C.GdkDragContext)(context.ToC())
+	c_context := (*C.GdkDragContext)(C.NULL)
+	if context != nil {
+		c_context = (*C.GdkDragContext)(context.ToC())
+	}
 
 	c_time_ := (C.guint32)(time)
 
@@ -100,9 +127,15 @@ func DragDrop(context *DragContext, time uint32) {
 
 // DragMotion is a wrapper around the C function gdk_drag_motion.
 func DragMotion(context *DragContext, destWindow *Window, protocol DragProtocol, xRoot int32, yRoot int32, suggestedAction DragAction, possibleActions DragAction, time uint32) bool {
-	c_context := (*C.GdkDragContext)(context.ToC())
+	c_context := (*C.GdkDragContext)(C.NULL)
+	if context != nil {
+		c_context = (*C.GdkDragContext)(context.ToC())
+	}
 
-	c_dest_window := (*C.GdkWindow)(destWindow.ToC())
+	c_dest_window := (*C.GdkWindow)(C.NULL)
+	if destWindow != nil {
+		c_dest_window = (*C.GdkWindow)(destWindow.ToC())
+	}
 
 	c_protocol := (C.GdkDragProtocol)(protocol)
 
@@ -124,7 +157,10 @@ func DragMotion(context *DragContext, destWindow *Window, protocol DragProtocol,
 
 // DragStatus is a wrapper around the C function gdk_drag_status.
 func DragStatus(context *DragContext, action DragAction, time uint32) {
-	c_context := (*C.GdkDragContext)(context.ToC())
+	c_context := (*C.GdkDragContext)(C.NULL)
+	if context != nil {
+		c_context = (*C.GdkDragContext)(context.ToC())
+	}
 
 	c_action := (C.GdkDragAction)(action)
 
@@ -137,7 +173,10 @@ func DragStatus(context *DragContext, action DragAction, time uint32) {
 
 // DropFinish is a wrapper around the C function gdk_drop_finish.
 func DropFinish(context *DragContext, success bool, time uint32) {
-	c_context := (*C.GdkDragContext)(context.ToC())
+	c_context := (*C.GdkDragContext)(C.NULL)
+	if context != nil {
+		c_context = (*C.GdkDragContext)(context.ToC())
+	}
 
 	c_success :=
 		boolToGboolean(success)
@@ -151,7 +190,10 @@ func DropFinish(context *DragContext, success bool, time uint32) {
 
 // DropReply is a wrapper around the C function gdk_drop_reply.
 func DropReply(context *DragContext, accepted bool, time uint32) {
-	c_context := (*C.GdkDragContext)(context.ToC())
+	c_context := (*C.GdkDragContext)(C.NULL)
+	if context != nil {
+		c_context = (*C.GdkDragContext)(context.ToC())
+	}
 
 	c_accepted :=
 		boolToGboolean(accepted)
@@ -265,7 +307,10 @@ func InitCheck(args []string) (bool, []string) {
 
 // KeyboardGrab is a wrapper around the C function gdk_keyboard_grab.
 func KeyboardGrab(window *Window, ownerEvents bool, time uint32) GrabStatus {
-	c_window := (*C.GdkWindow)(window.ToC())
+	c_window := (*C.GdkWindow)(C.NULL)
+	if window != nil {
+		c_window = (*C.GdkWindow)(window.ToC())
+	}
 
 	c_owner_events :=
 		boolToGboolean(ownerEvents)
@@ -385,7 +430,10 @@ func ListVisuals() *glib.List {
 
 // OffscreenWindowGetSurface is a wrapper around the C function gdk_offscreen_window_get_surface.
 func OffscreenWindowGetSurface(window *Window) *cairo.Surface {
-	c_window := (*C.GdkWindow)(window.ToC())
+	c_window := (*C.GdkWindow)(C.NULL)
+	if window != nil {
+		c_window = (*C.GdkWindow)(window.ToC())
+	}
 
 	retC := C.gdk_offscreen_window_get_surface(c_window)
 	var retGo (*cairo.Surface)
@@ -408,7 +456,10 @@ func PangoContextGet() *pango.Context {
 
 // PangoLayoutGetClipRegion is a wrapper around the C function gdk_pango_layout_get_clip_region.
 func PangoLayoutGetClipRegion(layout *pango.Layout, xOrigin int32, yOrigin int32, indexRanges int32, nRanges int32) *cairo.Region {
-	c_layout := (*C.PangoLayout)(layout.ToC())
+	c_layout := (*C.PangoLayout)(C.NULL)
+	if layout != nil {
+		c_layout = (*C.PangoLayout)(layout.ToC())
+	}
 
 	c_x_origin := (C.gint)(xOrigin)
 
@@ -426,7 +477,10 @@ func PangoLayoutGetClipRegion(layout *pango.Layout, xOrigin int32, yOrigin int32
 
 // PangoLayoutLineGetClipRegion is a wrapper around the C function gdk_pango_layout_line_get_clip_region.
 func PangoLayoutLineGetClipRegion(line *pango.LayoutLine, xOrigin int32, yOrigin int32, indexRanges []int32, nRanges int32) *cairo.Region {
-	c_line := (*C.PangoLayoutLine)(line.ToC())
+	c_line := (*C.PangoLayoutLine)(C.NULL)
+	if line != nil {
+		c_line = (*C.PangoLayoutLine)(line.ToC())
+	}
 
 	c_x_origin := (C.gint)(xOrigin)
 
@@ -444,7 +498,10 @@ func PangoLayoutLineGetClipRegion(line *pango.LayoutLine, xOrigin int32, yOrigin
 
 // PixbufGetFromSurface is a wrapper around the C function gdk_pixbuf_get_from_surface.
 func PixbufGetFromSurface(surface *cairo.Surface, srcX int32, srcY int32, width int32, height int32) *gdkpixbuf.Pixbuf {
-	c_surface := (*C.cairo_surface_t)(surface.ToC())
+	c_surface := (*C.cairo_surface_t)(C.NULL)
+	if surface != nil {
+		c_surface = (*C.cairo_surface_t)(surface.ToC())
+	}
 
 	c_src_x := (C.gint)(srcX)
 
@@ -467,7 +524,10 @@ func PixbufGetFromSurface(surface *cairo.Surface, srcX int32, srcY int32, width 
 
 // PixbufGetFromWindow is a wrapper around the C function gdk_pixbuf_get_from_window.
 func PixbufGetFromWindow(window *Window, srcX int32, srcY int32, width int32, height int32) *gdkpixbuf.Pixbuf {
-	c_window := (*C.GdkWindow)(window.ToC())
+	c_window := (*C.GdkWindow)(C.NULL)
+	if window != nil {
+		c_window = (*C.GdkWindow)(window.ToC())
+	}
 
 	c_src_x := (C.gint)(srcX)
 
@@ -490,16 +550,25 @@ func PixbufGetFromWindow(window *Window, srcX int32, srcY int32, width int32, he
 
 // PointerGrab is a wrapper around the C function gdk_pointer_grab.
 func PointerGrab(window *Window, ownerEvents bool, eventMask EventMask, confineTo *Window, cursor *Cursor, time uint32) GrabStatus {
-	c_window := (*C.GdkWindow)(window.ToC())
+	c_window := (*C.GdkWindow)(C.NULL)
+	if window != nil {
+		c_window = (*C.GdkWindow)(window.ToC())
+	}
 
 	c_owner_events :=
 		boolToGboolean(ownerEvents)
 
 	c_event_mask := (C.GdkEventMask)(eventMask)
 
-	c_confine_to := (*C.GdkWindow)(confineTo.ToC())
+	c_confine_to := (*C.GdkWindow)(C.NULL)
+	if confineTo != nil {
+		c_confine_to = (*C.GdkWindow)(confineTo.ToC())
+	}
 
-	c_cursor := (*C.GdkCursor)(cursor.ToC())
+	c_cursor := (*C.GdkCursor)(C.NULL)
+	if cursor != nil {
+		c_cursor = (*C.GdkCursor)(cursor.ToC())
+	}
 
 	c_time_ := (C.guint32)(time)
 
@@ -587,7 +656,10 @@ func SettingGet(name string, value *gobject.Value) bool {
 	c_name := C.CString(name)
 	defer C.free(unsafe.Pointer(c_name))
 
-	c_value := (*C.GValue)(value.ToC())
+	c_value := (*C.GValue)(C.NULL)
+	if value != nil {
+		c_value = (*C.GValue)(value.ToC())
+	}
 
 	retC := C.gdk_setting_get(c_name, c_value)
 	retGo := retC == C.TRUE

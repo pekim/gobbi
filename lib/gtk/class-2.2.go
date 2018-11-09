@@ -26,7 +26,10 @@ func (recv *Clipboard) GetDisplay() *gdk.Display {
 
 // InvisibleNewForScreen is a wrapper around the C function gtk_invisible_new_for_screen.
 func InvisibleNewForScreen(screen *gdk.Screen) *Invisible {
-	c_screen := (*C.GdkScreen)(screen.ToC())
+	c_screen := (*C.GdkScreen)(C.NULL)
+	if screen != nil {
+		c_screen = (*C.GdkScreen)(screen.ToC())
+	}
 
 	retC := C.gtk_invisible_new_for_screen(c_screen)
 	retGo := InvisibleNewFromC(unsafe.Pointer(retC))
@@ -44,7 +47,10 @@ func (recv *Invisible) GetScreen() *gdk.Screen {
 
 // SetScreen is a wrapper around the C function gtk_invisible_set_screen.
 func (recv *Invisible) SetScreen(screen *gdk.Screen) {
-	c_screen := (*C.GdkScreen)(screen.ToC())
+	c_screen := (*C.GdkScreen)(C.NULL)
+	if screen != nil {
+		c_screen = (*C.GdkScreen)(screen.ToC())
+	}
 
 	C.gtk_invisible_set_screen((*C.GtkInvisible)(recv.native), c_screen)
 
@@ -53,7 +59,10 @@ func (recv *Invisible) SetScreen(screen *gdk.Screen) {
 
 // IterIsValid is a wrapper around the C function gtk_list_store_iter_is_valid.
 func (recv *ListStore) IterIsValid(iter *TreeIter) bool {
-	c_iter := (*C.GtkTreeIter)(iter.ToC())
+	c_iter := (*C.GtkTreeIter)(C.NULL)
+	if iter != nil {
+		c_iter = (*C.GtkTreeIter)(iter.ToC())
+	}
 
 	retC := C.gtk_list_store_iter_is_valid((*C.GtkListStore)(recv.native), c_iter)
 	retGo := retC == C.TRUE
@@ -63,9 +72,15 @@ func (recv *ListStore) IterIsValid(iter *TreeIter) bool {
 
 // MoveAfter is a wrapper around the C function gtk_list_store_move_after.
 func (recv *ListStore) MoveAfter(iter *TreeIter, position *TreeIter) {
-	c_iter := (*C.GtkTreeIter)(iter.ToC())
+	c_iter := (*C.GtkTreeIter)(C.NULL)
+	if iter != nil {
+		c_iter = (*C.GtkTreeIter)(iter.ToC())
+	}
 
-	c_position := (*C.GtkTreeIter)(position.ToC())
+	c_position := (*C.GtkTreeIter)(C.NULL)
+	if position != nil {
+		c_position = (*C.GtkTreeIter)(position.ToC())
+	}
 
 	C.gtk_list_store_move_after((*C.GtkListStore)(recv.native), c_iter, c_position)
 
@@ -74,9 +89,15 @@ func (recv *ListStore) MoveAfter(iter *TreeIter, position *TreeIter) {
 
 // MoveBefore is a wrapper around the C function gtk_list_store_move_before.
 func (recv *ListStore) MoveBefore(iter *TreeIter, position *TreeIter) {
-	c_iter := (*C.GtkTreeIter)(iter.ToC())
+	c_iter := (*C.GtkTreeIter)(C.NULL)
+	if iter != nil {
+		c_iter = (*C.GtkTreeIter)(iter.ToC())
+	}
 
-	c_position := (*C.GtkTreeIter)(position.ToC())
+	c_position := (*C.GtkTreeIter)(C.NULL)
+	if position != nil {
+		c_position = (*C.GtkTreeIter)(position.ToC())
+	}
 
 	C.gtk_list_store_move_before((*C.GtkListStore)(recv.native), c_iter, c_position)
 
@@ -94,9 +115,15 @@ func (recv *ListStore) Reorder(newOrder []int32) {
 
 // Swap is a wrapper around the C function gtk_list_store_swap.
 func (recv *ListStore) Swap(a *TreeIter, b *TreeIter) {
-	c_a := (*C.GtkTreeIter)(a.ToC())
+	c_a := (*C.GtkTreeIter)(C.NULL)
+	if a != nil {
+		c_a = (*C.GtkTreeIter)(a.ToC())
+	}
 
-	c_b := (*C.GtkTreeIter)(b.ToC())
+	c_b := (*C.GtkTreeIter)(C.NULL)
+	if b != nil {
+		c_b = (*C.GtkTreeIter)(b.ToC())
+	}
 
 	C.gtk_list_store_swap((*C.GtkListStore)(recv.native), c_a, c_b)
 
@@ -105,7 +132,10 @@ func (recv *ListStore) Swap(a *TreeIter, b *TreeIter) {
 
 // SetScreen is a wrapper around the C function gtk_menu_set_screen.
 func (recv *Menu) SetScreen(screen *gdk.Screen) {
-	c_screen := (*C.GdkScreen)(screen.ToC())
+	c_screen := (*C.GdkScreen)(C.NULL)
+	if screen != nil {
+		c_screen = (*C.GdkScreen)(screen.ToC())
+	}
 
 	C.gtk_menu_set_screen((*C.GtkMenu)(recv.native), c_screen)
 
@@ -132,7 +162,10 @@ func (recv *Notebook) GetNPages() int32 {
 
 // IterIsValid is a wrapper around the C function gtk_tree_model_sort_iter_is_valid.
 func (recv *TreeModelSort) IterIsValid(iter *TreeIter) bool {
-	c_iter := (*C.GtkTreeIter)(iter.ToC())
+	c_iter := (*C.GtkTreeIter)(C.NULL)
+	if iter != nil {
+		c_iter = (*C.GtkTreeIter)(iter.ToC())
+	}
 
 	retC := C.gtk_tree_model_sort_iter_is_valid((*C.GtkTreeModelSort)(recv.native), c_iter)
 	retGo := retC == C.TRUE
@@ -162,9 +195,15 @@ func (recv *TreeSelection) GetSelectedRows() (*glib.List, *TreeModel) {
 
 // UnselectRange is a wrapper around the C function gtk_tree_selection_unselect_range.
 func (recv *TreeSelection) UnselectRange(startPath *TreePath, endPath *TreePath) {
-	c_start_path := (*C.GtkTreePath)(startPath.ToC())
+	c_start_path := (*C.GtkTreePath)(C.NULL)
+	if startPath != nil {
+		c_start_path = (*C.GtkTreePath)(startPath.ToC())
+	}
 
-	c_end_path := (*C.GtkTreePath)(endPath.ToC())
+	c_end_path := (*C.GtkTreePath)(C.NULL)
+	if endPath != nil {
+		c_end_path = (*C.GtkTreePath)(endPath.ToC())
+	}
 
 	C.gtk_tree_selection_unselect_range((*C.GtkTreeSelection)(recv.native), c_start_path, c_end_path)
 
@@ -173,7 +212,10 @@ func (recv *TreeSelection) UnselectRange(startPath *TreePath, endPath *TreePath)
 
 // IterIsValid is a wrapper around the C function gtk_tree_store_iter_is_valid.
 func (recv *TreeStore) IterIsValid(iter *TreeIter) bool {
-	c_iter := (*C.GtkTreeIter)(iter.ToC())
+	c_iter := (*C.GtkTreeIter)(C.NULL)
+	if iter != nil {
+		c_iter = (*C.GtkTreeIter)(iter.ToC())
+	}
 
 	retC := C.gtk_tree_store_iter_is_valid((*C.GtkTreeStore)(recv.native), c_iter)
 	retGo := retC == C.TRUE
@@ -183,9 +225,15 @@ func (recv *TreeStore) IterIsValid(iter *TreeIter) bool {
 
 // MoveAfter is a wrapper around the C function gtk_tree_store_move_after.
 func (recv *TreeStore) MoveAfter(iter *TreeIter, position *TreeIter) {
-	c_iter := (*C.GtkTreeIter)(iter.ToC())
+	c_iter := (*C.GtkTreeIter)(C.NULL)
+	if iter != nil {
+		c_iter = (*C.GtkTreeIter)(iter.ToC())
+	}
 
-	c_position := (*C.GtkTreeIter)(position.ToC())
+	c_position := (*C.GtkTreeIter)(C.NULL)
+	if position != nil {
+		c_position = (*C.GtkTreeIter)(position.ToC())
+	}
 
 	C.gtk_tree_store_move_after((*C.GtkTreeStore)(recv.native), c_iter, c_position)
 
@@ -194,9 +242,15 @@ func (recv *TreeStore) MoveAfter(iter *TreeIter, position *TreeIter) {
 
 // MoveBefore is a wrapper around the C function gtk_tree_store_move_before.
 func (recv *TreeStore) MoveBefore(iter *TreeIter, position *TreeIter) {
-	c_iter := (*C.GtkTreeIter)(iter.ToC())
+	c_iter := (*C.GtkTreeIter)(C.NULL)
+	if iter != nil {
+		c_iter = (*C.GtkTreeIter)(iter.ToC())
+	}
 
-	c_position := (*C.GtkTreeIter)(position.ToC())
+	c_position := (*C.GtkTreeIter)(C.NULL)
+	if position != nil {
+		c_position = (*C.GtkTreeIter)(position.ToC())
+	}
 
 	C.gtk_tree_store_move_before((*C.GtkTreeStore)(recv.native), c_iter, c_position)
 
@@ -205,7 +259,10 @@ func (recv *TreeStore) MoveBefore(iter *TreeIter, position *TreeIter) {
 
 // Reorder is a wrapper around the C function gtk_tree_store_reorder.
 func (recv *TreeStore) Reorder(parent *TreeIter, newOrder []int32) {
-	c_parent := (*C.GtkTreeIter)(parent.ToC())
+	c_parent := (*C.GtkTreeIter)(C.NULL)
+	if parent != nil {
+		c_parent = (*C.GtkTreeIter)(parent.ToC())
+	}
 
 	c_new_order := &newOrder[0]
 
@@ -216,9 +273,15 @@ func (recv *TreeStore) Reorder(parent *TreeIter, newOrder []int32) {
 
 // Swap is a wrapper around the C function gtk_tree_store_swap.
 func (recv *TreeStore) Swap(a *TreeIter, b *TreeIter) {
-	c_a := (*C.GtkTreeIter)(a.ToC())
+	c_a := (*C.GtkTreeIter)(C.NULL)
+	if a != nil {
+		c_a = (*C.GtkTreeIter)(a.ToC())
+	}
 
-	c_b := (*C.GtkTreeIter)(b.ToC())
+	c_b := (*C.GtkTreeIter)(C.NULL)
+	if b != nil {
+		c_b = (*C.GtkTreeIter)(b.ToC())
+	}
 
 	C.gtk_tree_store_swap((*C.GtkTreeStore)(recv.native), c_a, c_b)
 
@@ -227,7 +290,10 @@ func (recv *TreeStore) Swap(a *TreeIter, b *TreeIter) {
 
 // ExpandToPath is a wrapper around the C function gtk_tree_view_expand_to_path.
 func (recv *TreeView) ExpandToPath(path *TreePath) {
-	c_path := (*C.GtkTreePath)(path.ToC())
+	c_path := (*C.GtkTreePath)(C.NULL)
+	if path != nil {
+		c_path = (*C.GtkTreePath)(path.ToC())
+	}
 
 	C.gtk_tree_view_expand_to_path((*C.GtkTreeView)(recv.native), c_path)
 
@@ -236,11 +302,20 @@ func (recv *TreeView) ExpandToPath(path *TreePath) {
 
 // SetCursorOnCell is a wrapper around the C function gtk_tree_view_set_cursor_on_cell.
 func (recv *TreeView) SetCursorOnCell(path *TreePath, focusColumn *TreeViewColumn, focusCell *CellRenderer, startEditing bool) {
-	c_path := (*C.GtkTreePath)(path.ToC())
+	c_path := (*C.GtkTreePath)(C.NULL)
+	if path != nil {
+		c_path = (*C.GtkTreePath)(path.ToC())
+	}
 
-	c_focus_column := (*C.GtkTreeViewColumn)(focusColumn.ToC())
+	c_focus_column := (*C.GtkTreeViewColumn)(C.NULL)
+	if focusColumn != nil {
+		c_focus_column = (*C.GtkTreeViewColumn)(focusColumn.ToC())
+	}
 
-	c_focus_cell := (*C.GtkCellRenderer)(focusCell.ToC())
+	c_focus_cell := (*C.GtkCellRenderer)(C.NULL)
+	if focusCell != nil {
+		c_focus_cell = (*C.GtkCellRenderer)(focusCell.ToC())
+	}
 
 	c_start_editing :=
 		boolToGboolean(startEditing)
@@ -252,7 +327,10 @@ func (recv *TreeView) SetCursorOnCell(path *TreePath, focusColumn *TreeViewColum
 
 // FocusCell is a wrapper around the C function gtk_tree_view_column_focus_cell.
 func (recv *TreeViewColumn) FocusCell(cell *CellRenderer) {
-	c_cell := (*C.GtkCellRenderer)(cell.ToC())
+	c_cell := (*C.GtkCellRenderer)(C.NULL)
+	if cell != nil {
+		c_cell = (*C.GtkCellRenderer)(cell.ToC())
+	}
 
 	C.gtk_tree_view_column_focus_cell((*C.GtkTreeViewColumn)(recv.native), c_cell)
 
@@ -344,7 +422,10 @@ func (recv *Window) SetIconFromFile(filename string) (bool, error) {
 
 // SetScreen is a wrapper around the C function gtk_window_set_screen.
 func (recv *Window) SetScreen(screen *gdk.Screen) {
-	c_screen := (*C.GdkScreen)(screen.ToC())
+	c_screen := (*C.GdkScreen)(C.NULL)
+	if screen != nil {
+		c_screen = (*C.GdkScreen)(screen.ToC())
+	}
 
 	C.gtk_window_set_screen((*C.GtkWindow)(recv.native), c_screen)
 

@@ -32,7 +32,10 @@ func IoModulesLoadAllInDirectoryWithScope(dirname string, scope *IOModuleScope) 
 	c_dirname := C.CString(dirname)
 	defer C.free(unsafe.Pointer(c_dirname))
 
-	c_scope := (*C.GIOModuleScope)(scope.ToC())
+	c_scope := (*C.GIOModuleScope)(C.NULL)
+	if scope != nil {
+		c_scope = (*C.GIOModuleScope)(scope.ToC())
+	}
 
 	retC := C.g_io_modules_load_all_in_directory_with_scope(c_dirname, c_scope)
 	retGo := glib.ListNewFromC(unsafe.Pointer(retC))
@@ -45,7 +48,10 @@ func IoModulesScanAllInDirectoryWithScope(dirname string, scope *IOModuleScope) 
 	c_dirname := C.CString(dirname)
 	defer C.free(unsafe.Pointer(c_dirname))
 
-	c_scope := (*C.GIOModuleScope)(scope.ToC())
+	c_scope := (*C.GIOModuleScope)(C.NULL)
+	if scope != nil {
+		c_scope = (*C.GIOModuleScope)(scope.ToC())
+	}
 
 	C.g_io_modules_scan_all_in_directory_with_scope(c_dirname, c_scope)
 

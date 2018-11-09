@@ -55,7 +55,10 @@ func (recv *Action) GetAccelClosure() *gobject.Closure {
 
 // GetResponseForWidget is a wrapper around the C function gtk_dialog_get_response_for_widget.
 func (recv *Dialog) GetResponseForWidget(widget *Widget) int32 {
-	c_widget := (*C.GtkWidget)(widget.ToC())
+	c_widget := (*C.GtkWidget)(C.NULL)
+	if widget != nil {
+		c_widget = (*C.GtkWidget)(widget.ToC())
+	}
 
 	retC := C.gtk_dialog_get_response_for_widget((*C.GtkDialog)(recv.native), c_widget)
 	retGo := (int32)(retC)
@@ -101,7 +104,10 @@ func (recv *EntryCompletion) SetPopupSingleMatch(popupSingleMatch bool) {
 
 // CreateDragIcon is a wrapper around the C function gtk_icon_view_create_drag_icon.
 func (recv *IconView) CreateDragIcon(path *TreePath) *cairo.Surface {
-	c_path := (*C.GtkTreePath)(path.ToC())
+	c_path := (*C.GtkTreePath)(C.NULL)
+	if path != nil {
+		c_path = (*C.GtkTreePath)(path.ToC())
+	}
 
 	retC := C.gtk_icon_view_create_drag_icon((*C.GtkIconView)(recv.native), c_path)
 	retGo := cairo.SurfaceNewFromC(unsafe.Pointer(retC))
@@ -179,7 +185,10 @@ func (recv *IconView) GetVisibleRange() (bool, *TreePath, *TreePath) {
 
 // ScrollToPath is a wrapper around the C function gtk_icon_view_scroll_to_path.
 func (recv *IconView) ScrollToPath(path *TreePath, useAlign bool, rowAlign float32, colAlign float32) {
-	c_path := (*C.GtkTreePath)(path.ToC())
+	c_path := (*C.GtkTreePath)(C.NULL)
+	if path != nil {
+		c_path = (*C.GtkTreePath)(path.ToC())
+	}
 
 	c_use_align :=
 		boolToGboolean(useAlign)
@@ -195,9 +204,15 @@ func (recv *IconView) ScrollToPath(path *TreePath, useAlign bool, rowAlign float
 
 // SetCursor is a wrapper around the C function gtk_icon_view_set_cursor.
 func (recv *IconView) SetCursor(path *TreePath, cell *CellRenderer, startEditing bool) {
-	c_path := (*C.GtkTreePath)(path.ToC())
+	c_path := (*C.GtkTreePath)(C.NULL)
+	if path != nil {
+		c_path = (*C.GtkTreePath)(path.ToC())
+	}
 
-	c_cell := (*C.GtkCellRenderer)(cell.ToC())
+	c_cell := (*C.GtkCellRenderer)(C.NULL)
+	if cell != nil {
+		c_cell = (*C.GtkCellRenderer)(cell.ToC())
+	}
 
 	c_start_editing :=
 		boolToGboolean(startEditing)
@@ -209,7 +224,10 @@ func (recv *IconView) SetCursor(path *TreePath, cell *CellRenderer, startEditing
 
 // SetDragDestItem is a wrapper around the C function gtk_icon_view_set_drag_dest_item.
 func (recv *IconView) SetDragDestItem(path *TreePath, pos IconViewDropPosition) {
-	c_path := (*C.GtkTreePath)(path.ToC())
+	c_path := (*C.GtkTreePath)(C.NULL)
+	if path != nil {
+		c_path = (*C.GtkTreePath)(path.ToC())
+	}
 
 	c_pos := (C.GtkIconViewDropPosition)(pos)
 

@@ -42,7 +42,10 @@ func (recv *AppLaunchContext) SetDesktop(desktop int32) {
 
 // SetDisplay is a wrapper around the C function gdk_app_launch_context_set_display.
 func (recv *AppLaunchContext) SetDisplay(display *Display) {
-	c_display := (*C.GdkDisplay)(display.ToC())
+	c_display := (*C.GdkDisplay)(C.NULL)
+	if display != nil {
+		c_display = (*C.GdkDisplay)(display.ToC())
+	}
 
 	C.gdk_app_launch_context_set_display((*C.GdkAppLaunchContext)(recv.native), c_display)
 
@@ -70,7 +73,10 @@ func (recv *AppLaunchContext) SetIconName(iconName string) {
 
 // SetScreen is a wrapper around the C function gdk_app_launch_context_set_screen.
 func (recv *AppLaunchContext) SetScreen(screen *Screen) {
-	c_screen := (*C.GdkScreen)(screen.ToC())
+	c_screen := (*C.GdkScreen)(C.NULL)
+	if screen != nil {
+		c_screen = (*C.GdkScreen)(screen.ToC())
+	}
 
 	C.gdk_app_launch_context_set_screen((*C.GdkAppLaunchContext)(recv.native), c_screen)
 

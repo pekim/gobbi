@@ -33,11 +33,20 @@ func PrintErrorQuark() glib.Quark {
 
 // PrintRunPageSetupDialog is a wrapper around the C function gtk_print_run_page_setup_dialog.
 func PrintRunPageSetupDialog(parent *Window, pageSetup *PageSetup, settings *PrintSettings) *PageSetup {
-	c_parent := (*C.GtkWindow)(parent.ToC())
+	c_parent := (*C.GtkWindow)(C.NULL)
+	if parent != nil {
+		c_parent = (*C.GtkWindow)(parent.ToC())
+	}
 
-	c_page_setup := (*C.GtkPageSetup)(pageSetup.ToC())
+	c_page_setup := (*C.GtkPageSetup)(C.NULL)
+	if pageSetup != nil {
+		c_page_setup = (*C.GtkPageSetup)(pageSetup.ToC())
+	}
 
-	c_settings := (*C.GtkPrintSettings)(settings.ToC())
+	c_settings := (*C.GtkPrintSettings)(C.NULL)
+	if settings != nil {
+		c_settings = (*C.GtkPrintSettings)(settings.ToC())
+	}
 
 	retC := C.gtk_print_run_page_setup_dialog(c_parent, c_page_setup, c_settings)
 	retGo := PageSetupNewFromC(unsafe.Pointer(retC))

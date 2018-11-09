@@ -36,7 +36,10 @@ func (recv *TypePlugin) CompleteInterfaceInfo(instanceType Type, interfaceType T
 
 	c_interface_type := (C.GType)(interfaceType)
 
-	c_info := (*C.GInterfaceInfo)(info.ToC())
+	c_info := (*C.GInterfaceInfo)(C.NULL)
+	if info != nil {
+		c_info = (*C.GInterfaceInfo)(info.ToC())
+	}
 
 	C.g_type_plugin_complete_interface_info((*C.GTypePlugin)(recv.native), c_instance_type, c_interface_type, c_info)
 
@@ -47,9 +50,15 @@ func (recv *TypePlugin) CompleteInterfaceInfo(instanceType Type, interfaceType T
 func (recv *TypePlugin) CompleteTypeInfo(gType Type, info *TypeInfo, valueTable *TypeValueTable) {
 	c_g_type := (C.GType)(gType)
 
-	c_info := (*C.GTypeInfo)(info.ToC())
+	c_info := (*C.GTypeInfo)(C.NULL)
+	if info != nil {
+		c_info = (*C.GTypeInfo)(info.ToC())
+	}
 
-	c_value_table := (*C.GTypeValueTable)(valueTable.ToC())
+	c_value_table := (*C.GTypeValueTable)(C.NULL)
+	if valueTable != nil {
+		c_value_table = (*C.GTypeValueTable)(valueTable.ToC())
+	}
 
 	C.g_type_plugin_complete_type_info((*C.GTypePlugin)(recv.native), c_g_type, c_info, c_value_table)
 

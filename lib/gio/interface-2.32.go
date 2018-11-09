@@ -106,7 +106,10 @@ func (recv *NetworkMonitor) ToC() unsafe.Pointer {
 func (recv *NetworkMonitor) CanReach(connectable *SocketConnectable, cancellable *Cancellable) (bool, error) {
 	c_connectable := (*C.GSocketConnectable)(connectable.ToC())
 
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 

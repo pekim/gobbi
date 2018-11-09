@@ -12,7 +12,10 @@ import "C"
 
 // Init is a wrapper around the C function pango_attribute_init.
 func (recv *Attribute) Init(klass *AttrClass) {
-	c_klass := (*C.PangoAttrClass)(klass.ToC())
+	c_klass := (*C.PangoAttrClass)(C.NULL)
+	if klass != nil {
+		c_klass = (*C.PangoAttrClass)(klass.ToC())
+	}
 
 	C.pango_attribute_init((*C.PangoAttribute)(recv.native), c_klass)
 

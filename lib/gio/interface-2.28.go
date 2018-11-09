@@ -160,7 +160,10 @@ func (recv *PollableInputStream) CanPoll() bool {
 
 // CreateSource is a wrapper around the C function g_pollable_input_stream_create_source.
 func (recv *PollableInputStream) CreateSource(cancellable *Cancellable) *glib.Source {
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	retC := C.g_pollable_input_stream_create_source((*C.GPollableInputStream)(recv.native), c_cancellable)
 	retGo := glib.SourceNewFromC(unsafe.Pointer(retC))
@@ -182,7 +185,10 @@ func (recv *PollableInputStream) ReadNonblocking(buffer []uint8, cancellable *Ca
 
 	c_count := (C.gsize)(len(buffer))
 
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -228,7 +234,10 @@ func (recv *PollableOutputStream) CanPoll() bool {
 
 // CreateSource is a wrapper around the C function g_pollable_output_stream_create_source.
 func (recv *PollableOutputStream) CreateSource(cancellable *Cancellable) *glib.Source {
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	retC := C.g_pollable_output_stream_create_source((*C.GPollableOutputStream)(recv.native), c_cancellable)
 	retGo := glib.SourceNewFromC(unsafe.Pointer(retC))
@@ -250,7 +259,10 @@ func (recv *PollableOutputStream) WriteNonblocking(buffer []uint8, cancellable *
 
 	c_count := (C.gsize)(len(buffer))
 
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 

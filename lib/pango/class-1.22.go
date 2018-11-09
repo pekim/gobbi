@@ -31,7 +31,10 @@ func (recv *Renderer) DrawGlyphItem(text string, glyphItem *GlyphItem, x int32, 
 	c_text := C.CString(text)
 	defer C.free(unsafe.Pointer(c_text))
 
-	c_glyph_item := (*C.PangoGlyphItem)(glyphItem.ToC())
+	c_glyph_item := (*C.PangoGlyphItem)(C.NULL)
+	if glyphItem != nil {
+		c_glyph_item = (*C.PangoGlyphItem)(glyphItem.ToC())
+	}
 
 	c_x := (C.int)(x)
 

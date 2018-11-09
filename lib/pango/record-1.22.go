@@ -84,7 +84,10 @@ func (recv *GlyphItemIter) Free() {
 
 // InitEnd is a wrapper around the C function pango_glyph_item_iter_init_end.
 func (recv *GlyphItemIter) InitEnd(glyphItem *GlyphItem, text string) bool {
-	c_glyph_item := (*C.PangoGlyphItem)(glyphItem.ToC())
+	c_glyph_item := (*C.PangoGlyphItem)(C.NULL)
+	if glyphItem != nil {
+		c_glyph_item = (*C.PangoGlyphItem)(glyphItem.ToC())
+	}
 
 	c_text := C.CString(text)
 	defer C.free(unsafe.Pointer(c_text))
@@ -97,7 +100,10 @@ func (recv *GlyphItemIter) InitEnd(glyphItem *GlyphItem, text string) bool {
 
 // InitStart is a wrapper around the C function pango_glyph_item_iter_init_start.
 func (recv *GlyphItemIter) InitStart(glyphItem *GlyphItem, text string) bool {
-	c_glyph_item := (*C.PangoGlyphItem)(glyphItem.ToC())
+	c_glyph_item := (*C.PangoGlyphItem)(C.NULL)
+	if glyphItem != nil {
+		c_glyph_item = (*C.PangoGlyphItem)(glyphItem.ToC())
+	}
 
 	c_text := C.CString(text)
 	defer C.free(unsafe.Pointer(c_text))

@@ -39,7 +39,10 @@ func FindBaseDir(text string, length int32) Direction {
 
 // ItemizeWithBaseDir is a wrapper around the C function pango_itemize_with_base_dir.
 func ItemizeWithBaseDir(context *Context, baseDir Direction, text string, startIndex int32, length int32, attrs *AttrList, cachedIter *AttrIterator) *glib.List {
-	c_context := (*C.PangoContext)(context.ToC())
+	c_context := (*C.PangoContext)(C.NULL)
+	if context != nil {
+		c_context = (*C.PangoContext)(context.ToC())
+	}
 
 	c_base_dir := (C.PangoDirection)(baseDir)
 
@@ -50,9 +53,15 @@ func ItemizeWithBaseDir(context *Context, baseDir Direction, text string, startI
 
 	c_length := (C.int)(length)
 
-	c_attrs := (*C.PangoAttrList)(attrs.ToC())
+	c_attrs := (*C.PangoAttrList)(C.NULL)
+	if attrs != nil {
+		c_attrs = (*C.PangoAttrList)(attrs.ToC())
+	}
 
-	c_cached_iter := (*C.PangoAttrIterator)(cachedIter.ToC())
+	c_cached_iter := (*C.PangoAttrIterator)(C.NULL)
+	if cachedIter != nil {
+		c_cached_iter = (*C.PangoAttrIterator)(cachedIter.ToC())
+	}
 
 	retC := C.pango_itemize_with_base_dir(c_context, c_base_dir, c_text, c_start_index, c_length, c_attrs, c_cached_iter)
 	retGo := glib.ListNewFromC(unsafe.Pointer(retC))

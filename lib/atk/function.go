@@ -21,7 +21,10 @@ import "C"
 
 // FocusTrackerNotify is a wrapper around the C function atk_focus_tracker_notify.
 func FocusTrackerNotify(object *Object) {
-	c_object := (*C.AtkObject)(object.ToC())
+	c_object := (*C.AtkObject)(C.NULL)
+	if object != nil {
+		c_object = (*C.AtkObject)(object.ToC())
+	}
 
 	C.atk_focus_tracker_notify(c_object)
 

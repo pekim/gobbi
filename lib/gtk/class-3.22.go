@@ -44,7 +44,10 @@ func (recv *GLArea) SetUseEs(useEs bool) {
 
 // PlaceOnMonitor is a wrapper around the C function gtk_menu_place_on_monitor.
 func (recv *Menu) PlaceOnMonitor(monitor *gdk.Monitor) {
-	c_monitor := (*C.GdkMonitor)(monitor.ToC())
+	c_monitor := (*C.GdkMonitor)(C.NULL)
+	if monitor != nil {
+		c_monitor = (*C.GdkMonitor)(monitor.ToC())
+	}
 
 	C.gtk_menu_place_on_monitor((*C.GtkMenu)(recv.native), c_monitor)
 
@@ -59,11 +62,17 @@ func (recv *Menu) PlaceOnMonitor(monitor *gdk.Monitor) {
 
 // PadControllerNew is a wrapper around the C function gtk_pad_controller_new.
 func PadControllerNew(window *Window, group *gio.ActionGroup, pad *gdk.Device) *PadController {
-	c_window := (*C.GtkWindow)(window.ToC())
+	c_window := (*C.GtkWindow)(C.NULL)
+	if window != nil {
+		c_window = (*C.GtkWindow)(window.ToC())
+	}
 
 	c_group := (*C.GActionGroup)(group.ToC())
 
-	c_pad := (*C.GdkDevice)(pad.ToC())
+	c_pad := (*C.GdkDevice)(C.NULL)
+	if pad != nil {
+		c_pad = (*C.GdkDevice)(pad.ToC())
+	}
 
 	retC := C.gtk_pad_controller_new(c_window, c_group, c_pad)
 	retGo := PadControllerNewFromC(unsafe.Pointer(retC))

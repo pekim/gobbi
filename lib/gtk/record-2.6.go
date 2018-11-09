@@ -32,7 +32,10 @@ func (recv *SelectionData) GetPixbuf() *gdkpixbuf.Pixbuf {
 
 // SetPixbuf is a wrapper around the C function gtk_selection_data_set_pixbuf.
 func (recv *SelectionData) SetPixbuf(pixbuf *gdkpixbuf.Pixbuf) bool {
-	c_pixbuf := (*C.GdkPixbuf)(pixbuf.ToC())
+	c_pixbuf := (*C.GdkPixbuf)(C.NULL)
+	if pixbuf != nil {
+		c_pixbuf = (*C.GdkPixbuf)(pixbuf.ToC())
+	}
 
 	retC := C.gtk_selection_data_set_pixbuf((*C.GtkSelectionData)(recv.native), c_pixbuf)
 	retGo := retC == C.TRUE

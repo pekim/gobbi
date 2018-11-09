@@ -257,9 +257,15 @@ func (recv *AppInfo) GetName() string {
 
 // Launch is a wrapper around the C function g_app_info_launch.
 func (recv *AppInfo) Launch(files *glib.List, context *AppLaunchContext) (bool, error) {
-	c_files := (*C.GList)(files.ToC())
+	c_files := (*C.GList)(C.NULL)
+	if files != nil {
+		c_files = (*C.GList)(files.ToC())
+	}
 
-	c_context := (*C.GAppLaunchContext)(context.ToC())
+	c_context := (*C.GAppLaunchContext)(C.NULL)
+	if context != nil {
+		c_context = (*C.GAppLaunchContext)(context.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -276,9 +282,15 @@ func (recv *AppInfo) Launch(files *glib.List, context *AppLaunchContext) (bool, 
 
 // LaunchUris is a wrapper around the C function g_app_info_launch_uris.
 func (recv *AppInfo) LaunchUris(uris *glib.List, context *AppLaunchContext) (bool, error) {
-	c_uris := (*C.GList)(uris.ToC())
+	c_uris := (*C.GList)(C.NULL)
+	if uris != nil {
+		c_uris = (*C.GList)(uris.ToC())
+	}
 
-	c_context := (*C.GAppLaunchContext)(context.ToC())
+	c_context := (*C.GAppLaunchContext)(C.NULL)
+	if context != nil {
+		c_context = (*C.GAppLaunchContext)(context.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -847,7 +859,10 @@ func (recv *File) ToC() unsafe.Pointer {
 func (recv *File) AppendTo(flags FileCreateFlags, cancellable *Cancellable) (*FileOutputStream, error) {
 	c_flags := (C.GFileCreateFlags)(flags)
 
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -891,7 +906,10 @@ func (recv *File) CopyAttributes(destination *File, flags FileCopyFlags, cancell
 
 	c_flags := (C.GFileCopyFlags)(flags)
 
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -927,7 +945,10 @@ func (recv *File) CopyFinish(res *AsyncResult) (bool, error) {
 func (recv *File) Create(flags FileCreateFlags, cancellable *Cancellable) (*FileOutputStream, error) {
 	c_flags := (C.GFileCreateFlags)(flags)
 
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -963,7 +984,10 @@ func (recv *File) CreateFinish(res *AsyncResult) (*FileOutputStream, error) {
 
 // Delete is a wrapper around the C function g_file_delete.
 func (recv *File) Delete(cancellable *Cancellable) (bool, error) {
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -1012,7 +1036,10 @@ func (recv *File) EnumerateChildren(attributes string, flags FileQueryInfoFlags,
 
 	c_flags := (C.GFileQueryInfoFlags)(flags)
 
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -1058,7 +1085,10 @@ func (recv *File) Equal(file2 *File) bool {
 
 // FindEnclosingMount is a wrapper around the C function g_file_find_enclosing_mount.
 func (recv *File) FindEnclosingMount(cancellable *Cancellable) (*Mount, error) {
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -1239,7 +1269,10 @@ func (recv *File) IsNative() bool {
 
 // MakeDirectory is a wrapper around the C function g_file_make_directory.
 func (recv *File) MakeDirectory(cancellable *Cancellable) (bool, error) {
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -1259,7 +1292,10 @@ func (recv *File) MakeSymbolicLink(symlinkValue string, cancellable *Cancellable
 	c_symlink_value := C.CString(symlinkValue)
 	defer C.free(unsafe.Pointer(c_symlink_value))
 
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -1278,7 +1314,10 @@ func (recv *File) MakeSymbolicLink(symlinkValue string, cancellable *Cancellable
 func (recv *File) MonitorDirectory(flags FileMonitorFlags, cancellable *Cancellable) (*FileMonitor, error) {
 	c_flags := (C.GFileMonitorFlags)(flags)
 
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -1297,7 +1336,10 @@ func (recv *File) MonitorDirectory(flags FileMonitorFlags, cancellable *Cancella
 func (recv *File) MonitorFile(flags FileMonitorFlags, cancellable *Cancellable) (*FileMonitor, error) {
 	c_flags := (C.GFileMonitorFlags)(flags)
 
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -1354,7 +1396,10 @@ func (recv *File) MountMountableFinish(result *AsyncResult) (*File, error) {
 
 // QueryDefaultHandler is a wrapper around the C function g_file_query_default_handler.
 func (recv *File) QueryDefaultHandler(cancellable *Cancellable) (*AppInfo, error) {
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -1371,7 +1416,10 @@ func (recv *File) QueryDefaultHandler(cancellable *Cancellable) (*AppInfo, error
 
 // QueryExists is a wrapper around the C function g_file_query_exists.
 func (recv *File) QueryExists(cancellable *Cancellable) bool {
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	retC := C.g_file_query_exists((*C.GFile)(recv.native), c_cancellable)
 	retGo := retC == C.TRUE
@@ -1384,7 +1432,10 @@ func (recv *File) QueryFilesystemInfo(attributes string, cancellable *Cancellabl
 	c_attributes := C.CString(attributes)
 	defer C.free(unsafe.Pointer(c_attributes))
 
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -1425,7 +1476,10 @@ func (recv *File) QueryInfo(attributes string, flags FileQueryInfoFlags, cancell
 
 	c_flags := (C.GFileQueryInfoFlags)(flags)
 
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -1461,7 +1515,10 @@ func (recv *File) QueryInfoFinish(res *AsyncResult) (*FileInfo, error) {
 
 // QuerySettableAttributes is a wrapper around the C function g_file_query_settable_attributes.
 func (recv *File) QuerySettableAttributes(cancellable *Cancellable) (*FileAttributeInfoList, error) {
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -1478,7 +1535,10 @@ func (recv *File) QuerySettableAttributes(cancellable *Cancellable) (*FileAttrib
 
 // QueryWritableNamespaces is a wrapper around the C function g_file_query_writable_namespaces.
 func (recv *File) QueryWritableNamespaces(cancellable *Cancellable) (*FileAttributeInfoList, error) {
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -1495,7 +1555,10 @@ func (recv *File) QueryWritableNamespaces(cancellable *Cancellable) (*FileAttrib
 
 // Read is a wrapper around the C function g_file_read.
 func (recv *File) Read(cancellable *Cancellable) (*FileInputStream, error) {
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -1539,7 +1602,10 @@ func (recv *File) Replace(etag string, makeBackup bool, flags FileCreateFlags, c
 
 	c_flags := (C.GFileCreateFlags)(flags)
 
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -1572,7 +1638,10 @@ func (recv *File) ReplaceContents(contents []uint8, etag string, makeBackup bool
 
 	var c_new_etag *C.char
 
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -1653,7 +1722,10 @@ func (recv *File) SetAttribute(attribute string, type_ FileAttributeType, valueP
 
 	c_flags := (C.GFileQueryInfoFlags)(flags)
 
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -1678,7 +1750,10 @@ func (recv *File) SetAttributeByteString(attribute string, value string, flags F
 
 	c_flags := (C.GFileQueryInfoFlags)(flags)
 
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -1702,7 +1777,10 @@ func (recv *File) SetAttributeInt32(attribute string, value int32, flags FileQue
 
 	c_flags := (C.GFileQueryInfoFlags)(flags)
 
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -1726,7 +1804,10 @@ func (recv *File) SetAttributeInt64(attribute string, value int64, flags FileQue
 
 	c_flags := (C.GFileQueryInfoFlags)(flags)
 
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -1751,7 +1832,10 @@ func (recv *File) SetAttributeString(attribute string, value string, flags FileQ
 
 	c_flags := (C.GFileQueryInfoFlags)(flags)
 
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -1775,7 +1859,10 @@ func (recv *File) SetAttributeUint32(attribute string, value uint32, flags FileQ
 
 	c_flags := (C.GFileQueryInfoFlags)(flags)
 
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -1799,7 +1886,10 @@ func (recv *File) SetAttributeUint64(attribute string, value uint64, flags FileQ
 
 	c_flags := (C.GFileQueryInfoFlags)(flags)
 
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -1839,11 +1929,17 @@ func (recv *File) SetAttributesFinish(result *AsyncResult) (bool, *FileInfo, err
 
 // SetAttributesFromInfo is a wrapper around the C function g_file_set_attributes_from_info.
 func (recv *File) SetAttributesFromInfo(info *FileInfo, flags FileQueryInfoFlags, cancellable *Cancellable) (bool, error) {
-	c_info := (*C.GFileInfo)(info.ToC())
+	c_info := (*C.GFileInfo)(C.NULL)
+	if info != nil {
+		c_info = (*C.GFileInfo)(info.ToC())
+	}
 
 	c_flags := (C.GFileQueryInfoFlags)(flags)
 
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -1863,7 +1959,10 @@ func (recv *File) SetDisplayName(displayName string, cancellable *Cancellable) (
 	c_display_name := C.CString(displayName)
 	defer C.free(unsafe.Pointer(c_display_name))
 
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -1899,7 +1998,10 @@ func (recv *File) SetDisplayNameFinish(res *AsyncResult) (*File, error) {
 
 // Trash is a wrapper around the C function g_file_trash.
 func (recv *File) Trash(cancellable *Cancellable) (bool, error) {
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -2033,7 +2135,10 @@ func (recv *LoadableIcon) Load(size int32, cancellable *Cancellable) (*InputStre
 
 	var c_type *C.char
 
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -2405,7 +2510,10 @@ func (recv *Seekable) Seek(offset uint64, type_ glib.SeekType, cancellable *Canc
 
 	c_type := (C.GSeekType)(type_)
 
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -2432,7 +2540,10 @@ func (recv *Seekable) Tell() uint64 {
 func (recv *Seekable) Truncate(offset uint64, cancellable *Cancellable) (bool, error) {
 	c_offset := (C.goffset)(offset)
 
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 

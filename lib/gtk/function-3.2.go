@@ -19,7 +19,10 @@ import "C"
 
 // DragSetIconGicon is a wrapper around the C function gtk_drag_set_icon_gicon.
 func DragSetIconGicon(context *gdk.DragContext, icon *gio.Icon, hotX int32, hotY int32) {
-	c_context := (*C.GdkDragContext)(context.ToC())
+	c_context := (*C.GdkDragContext)(C.NULL)
+	if context != nil {
+		c_context = (*C.GdkDragContext)(context.ToC())
+	}
 
 	c_icon := (*C.GIcon)(icon.ToC())
 
@@ -34,11 +37,20 @@ func DragSetIconGicon(context *gdk.DragContext, icon *gio.Icon, hotX int32, hotY
 
 // RenderIcon is a wrapper around the C function gtk_render_icon.
 func RenderIcon(context *StyleContext, cr *cairo.Context, pixbuf *gdkpixbuf.Pixbuf, x float64, y float64) {
-	c_context := (*C.GtkStyleContext)(context.ToC())
+	c_context := (*C.GtkStyleContext)(C.NULL)
+	if context != nil {
+		c_context = (*C.GtkStyleContext)(context.ToC())
+	}
 
-	c_cr := (*C.cairo_t)(cr.ToC())
+	c_cr := (*C.cairo_t)(C.NULL)
+	if cr != nil {
+		c_cr = (*C.cairo_t)(cr.ToC())
+	}
 
-	c_pixbuf := (*C.GdkPixbuf)(pixbuf.ToC())
+	c_pixbuf := (*C.GdkPixbuf)(C.NULL)
+	if pixbuf != nil {
+		c_pixbuf = (*C.GdkPixbuf)(pixbuf.ToC())
+	}
 
 	c_x := (C.gdouble)(x)
 

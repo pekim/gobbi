@@ -14,7 +14,10 @@ import "C"
 
 // LoadFromBytes is a wrapper around the C function g_key_file_load_from_bytes.
 func (recv *KeyFile) LoadFromBytes(bytes *Bytes, flags KeyFileFlags) (bool, error) {
-	c_bytes := (*C.GBytes)(bytes.ToC())
+	c_bytes := (*C.GBytes)(C.NULL)
+	if bytes != nil {
+		c_bytes = (*C.GBytes)(bytes.ToC())
+	}
 
 	c_flags := (C.GKeyFileFlags)(flags)
 

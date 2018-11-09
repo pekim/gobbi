@@ -18,7 +18,10 @@ import "C"
 
 // BindingEntrySkip is a wrapper around the C function gtk_binding_entry_skip.
 func BindingEntrySkip(bindingSet *BindingSet, keyval uint32, modifiers gdk.ModifierType) {
-	c_binding_set := (*C.GtkBindingSet)(bindingSet.ToC())
+	c_binding_set := (*C.GtkBindingSet)(C.NULL)
+	if bindingSet != nil {
+		c_binding_set = (*C.GtkBindingSet)(bindingSet.ToC())
+	}
 
 	c_keyval := (C.guint)(keyval)
 
@@ -42,9 +45,15 @@ func PaperSizeGetPaperSizes(includeCustom bool) *glib.List {
 
 // RcParseColorFull is a wrapper around the C function gtk_rc_parse_color_full.
 func RcParseColorFull(scanner *glib.Scanner, style *RcStyle) (uint32, *gdk.Color) {
-	c_scanner := (*C.GScanner)(scanner.ToC())
+	c_scanner := (*C.GScanner)(C.NULL)
+	if scanner != nil {
+		c_scanner = (*C.GScanner)(scanner.ToC())
+	}
 
-	c_style := (*C.GtkRcStyle)(style.ToC())
+	c_style := (*C.GtkRcStyle)(C.NULL)
+	if style != nil {
+		c_style = (*C.GtkRcStyle)(style.ToC())
+	}
 
 	var c_color C.GdkColor
 

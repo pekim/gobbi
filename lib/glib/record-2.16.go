@@ -98,7 +98,10 @@ func (recv *HashTableIter) GetHashTable() *HashTable {
 
 // Init is a wrapper around the C function g_hash_table_iter_init.
 func (recv *HashTableIter) Init(hashTable *HashTable) {
-	c_hash_table := (*C.GHashTable)(hashTable.ToC())
+	c_hash_table := (*C.GHashTable)(C.NULL)
+	if hashTable != nil {
+		c_hash_table = (*C.GHashTable)(hashTable.ToC())
+	}
 
 	C.g_hash_table_iter_init((*C.GHashTableIter)(recv.native), c_hash_table)
 
@@ -162,7 +165,10 @@ func (recv *String) AppendUriEscaped(unescaped string, reservedCharsAllowed stri
 
 // Add is a wrapper around the C function g_test_suite_add.
 func (recv *TestSuite) Add(testCase *TestCase) {
-	c_test_case := (*C.GTestCase)(testCase.ToC())
+	c_test_case := (*C.GTestCase)(C.NULL)
+	if testCase != nil {
+		c_test_case = (*C.GTestCase)(testCase.ToC())
+	}
 
 	C.g_test_suite_add((*C.GTestSuite)(recv.native), c_test_case)
 
@@ -171,7 +177,10 @@ func (recv *TestSuite) Add(testCase *TestCase) {
 
 // AddSuite is a wrapper around the C function g_test_suite_add_suite.
 func (recv *TestSuite) AddSuite(nestedsuite *TestSuite) {
-	c_nestedsuite := (*C.GTestSuite)(nestedsuite.ToC())
+	c_nestedsuite := (*C.GTestSuite)(C.NULL)
+	if nestedsuite != nil {
+		c_nestedsuite = (*C.GTestSuite)(nestedsuite.ToC())
+	}
 
 	C.g_test_suite_add_suite((*C.GTestSuite)(recv.native), c_nestedsuite)
 

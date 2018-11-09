@@ -116,7 +116,10 @@ func (recv *CssSection) Unref() {
 
 // Assign is a wrapper around the C function gtk_text_iter_assign.
 func (recv *TextIter) Assign(other *TextIter) {
-	c_other := (*C.GtkTextIter)(other.ToC())
+	c_other := (*C.GtkTextIter)(C.NULL)
+	if other != nil {
+		c_other = (*C.GtkTextIter)(other.ToC())
+	}
 
 	C.gtk_text_iter_assign((*C.GtkTextIter)(recv.native), c_other)
 
@@ -143,7 +146,10 @@ func (recv *WidgetClass) SetAccessibleType(type_ gobject.Type) {
 
 // AppendForWidget is a wrapper around the C function gtk_widget_path_append_for_widget.
 func (recv *WidgetPath) AppendForWidget(widget *Widget) int32 {
-	c_widget := (*C.GtkWidget)(widget.ToC())
+	c_widget := (*C.GtkWidget)(C.NULL)
+	if widget != nil {
+		c_widget = (*C.GtkWidget)(widget.ToC())
+	}
 
 	retC := C.gtk_widget_path_append_for_widget((*C.GtkWidgetPath)(recv.native), c_widget)
 	retGo := (int32)(retC)
@@ -153,7 +159,10 @@ func (recv *WidgetPath) AppendForWidget(widget *Widget) int32 {
 
 // AppendWithSiblings is a wrapper around the C function gtk_widget_path_append_with_siblings.
 func (recv *WidgetPath) AppendWithSiblings(siblings *WidgetPath, siblingIndex uint32) int32 {
-	c_siblings := (*C.GtkWidgetPath)(siblings.ToC())
+	c_siblings := (*C.GtkWidgetPath)(C.NULL)
+	if siblings != nil {
+		c_siblings = (*C.GtkWidgetPath)(siblings.ToC())
+	}
 
 	c_sibling_index := (C.guint)(siblingIndex)
 

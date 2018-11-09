@@ -18,9 +18,15 @@ import "C"
 
 // AddChild is a wrapper around the C function gtk_buildable_add_child.
 func (recv *Buildable) AddChild(builder *Builder, child *gobject.Object, type_ string) {
-	c_builder := (*C.GtkBuilder)(builder.ToC())
+	c_builder := (*C.GtkBuilder)(C.NULL)
+	if builder != nil {
+		c_builder = (*C.GtkBuilder)(builder.ToC())
+	}
 
-	c_child := (*C.GObject)(child.ToC())
+	c_child := (*C.GObject)(C.NULL)
+	if child != nil {
+		c_child = (*C.GObject)(child.ToC())
+	}
 
 	c_type := C.CString(type_)
 	defer C.free(unsafe.Pointer(c_type))
@@ -32,7 +38,10 @@ func (recv *Buildable) AddChild(builder *Builder, child *gobject.Object, type_ s
 
 // ConstructChild is a wrapper around the C function gtk_buildable_construct_child.
 func (recv *Buildable) ConstructChild(builder *Builder, name string) *gobject.Object {
-	c_builder := (*C.GtkBuilder)(builder.ToC())
+	c_builder := (*C.GtkBuilder)(C.NULL)
+	if builder != nil {
+		c_builder = (*C.GtkBuilder)(builder.ToC())
+	}
 
 	c_name := C.CString(name)
 	defer C.free(unsafe.Pointer(c_name))
@@ -45,9 +54,15 @@ func (recv *Buildable) ConstructChild(builder *Builder, name string) *gobject.Ob
 
 // CustomFinished is a wrapper around the C function gtk_buildable_custom_finished.
 func (recv *Buildable) CustomFinished(builder *Builder, child *gobject.Object, tagname string, data uintptr) {
-	c_builder := (*C.GtkBuilder)(builder.ToC())
+	c_builder := (*C.GtkBuilder)(C.NULL)
+	if builder != nil {
+		c_builder = (*C.GtkBuilder)(builder.ToC())
+	}
 
-	c_child := (*C.GObject)(child.ToC())
+	c_child := (*C.GObject)(C.NULL)
+	if child != nil {
+		c_child = (*C.GObject)(child.ToC())
+	}
 
 	c_tagname := C.CString(tagname)
 	defer C.free(unsafe.Pointer(c_tagname))
@@ -61,9 +76,15 @@ func (recv *Buildable) CustomFinished(builder *Builder, child *gobject.Object, t
 
 // CustomTagEnd is a wrapper around the C function gtk_buildable_custom_tag_end.
 func (recv *Buildable) CustomTagEnd(builder *Builder, child *gobject.Object, tagname string, data uintptr) {
-	c_builder := (*C.GtkBuilder)(builder.ToC())
+	c_builder := (*C.GtkBuilder)(C.NULL)
+	if builder != nil {
+		c_builder = (*C.GtkBuilder)(builder.ToC())
+	}
 
-	c_child := (*C.GObject)(child.ToC())
+	c_child := (*C.GObject)(C.NULL)
+	if child != nil {
+		c_child = (*C.GObject)(child.ToC())
+	}
 
 	c_tagname := C.CString(tagname)
 	defer C.free(unsafe.Pointer(c_tagname))
@@ -77,9 +98,15 @@ func (recv *Buildable) CustomTagEnd(builder *Builder, child *gobject.Object, tag
 
 // CustomTagStart is a wrapper around the C function gtk_buildable_custom_tag_start.
 func (recv *Buildable) CustomTagStart(builder *Builder, child *gobject.Object, tagname string) (bool, *glib.MarkupParser, uintptr) {
-	c_builder := (*C.GtkBuilder)(builder.ToC())
+	c_builder := (*C.GtkBuilder)(C.NULL)
+	if builder != nil {
+		c_builder = (*C.GtkBuilder)(builder.ToC())
+	}
 
-	c_child := (*C.GObject)(child.ToC())
+	c_child := (*C.GObject)(C.NULL)
+	if child != nil {
+		c_child = (*C.GObject)(child.ToC())
+	}
 
 	c_tagname := C.CString(tagname)
 	defer C.free(unsafe.Pointer(c_tagname))
@@ -100,7 +127,10 @@ func (recv *Buildable) CustomTagStart(builder *Builder, child *gobject.Object, t
 
 // GetInternalChild is a wrapper around the C function gtk_buildable_get_internal_child.
 func (recv *Buildable) GetInternalChild(builder *Builder, childname string) *gobject.Object {
-	c_builder := (*C.GtkBuilder)(builder.ToC())
+	c_builder := (*C.GtkBuilder)(C.NULL)
+	if builder != nil {
+		c_builder = (*C.GtkBuilder)(builder.ToC())
+	}
 
 	c_childname := C.CString(childname)
 	defer C.free(unsafe.Pointer(c_childname))
@@ -121,7 +151,10 @@ func (recv *Buildable) GetName() string {
 
 // ParserFinished is a wrapper around the C function gtk_buildable_parser_finished.
 func (recv *Buildable) ParserFinished(builder *Builder) {
-	c_builder := (*C.GtkBuilder)(builder.ToC())
+	c_builder := (*C.GtkBuilder)(C.NULL)
+	if builder != nil {
+		c_builder = (*C.GtkBuilder)(builder.ToC())
+	}
 
 	C.gtk_buildable_parser_finished((*C.GtkBuildable)(recv.native), c_builder)
 
@@ -130,12 +163,18 @@ func (recv *Buildable) ParserFinished(builder *Builder) {
 
 // SetBuildableProperty is a wrapper around the C function gtk_buildable_set_buildable_property.
 func (recv *Buildable) SetBuildableProperty(builder *Builder, name string, value *gobject.Value) {
-	c_builder := (*C.GtkBuilder)(builder.ToC())
+	c_builder := (*C.GtkBuilder)(C.NULL)
+	if builder != nil {
+		c_builder = (*C.GtkBuilder)(builder.ToC())
+	}
 
 	c_name := C.CString(name)
 	defer C.free(unsafe.Pointer(c_name))
 
-	c_value := (*C.GValue)(value.ToC())
+	c_value := (*C.GValue)(C.NULL)
+	if value != nil {
+		c_value = (*C.GValue)(value.ToC())
+	}
 
 	C.gtk_buildable_set_buildable_property((*C.GtkBuildable)(recv.native), c_builder, c_name, c_value)
 

@@ -95,7 +95,10 @@ func AppInfoLaunchDefaultForUri(uri string, context *AppLaunchContext) (bool, er
 	c_uri := C.CString(uri)
 	defer C.free(unsafe.Pointer(c_uri))
 
-	c_context := (*C.GAppLaunchContext)(context.ToC())
+	c_context := (*C.GAppLaunchContext)(C.NULL)
+	if context != nil {
+		c_context = (*C.GAppLaunchContext)(context.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -397,9 +400,15 @@ func UnixMountAt(mountPath string) (*UnixMountEntry, uint64) {
 
 // UnixMountCompare is a wrapper around the C function g_unix_mount_compare.
 func UnixMountCompare(mount1 *UnixMountEntry, mount2 *UnixMountEntry) int32 {
-	c_mount1 := (*C.GUnixMountEntry)(mount1.ToC())
+	c_mount1 := (*C.GUnixMountEntry)(C.NULL)
+	if mount1 != nil {
+		c_mount1 = (*C.GUnixMountEntry)(mount1.ToC())
+	}
 
-	c_mount2 := (*C.GUnixMountEntry)(mount2.ToC())
+	c_mount2 := (*C.GUnixMountEntry)(C.NULL)
+	if mount2 != nil {
+		c_mount2 = (*C.GUnixMountEntry)(mount2.ToC())
+	}
 
 	retC := C.g_unix_mount_compare(c_mount1, c_mount2)
 	retGo := (int32)(retC)
@@ -409,7 +418,10 @@ func UnixMountCompare(mount1 *UnixMountEntry, mount2 *UnixMountEntry) int32 {
 
 // UnixMountFree is a wrapper around the C function g_unix_mount_free.
 func UnixMountFree(mountEntry *UnixMountEntry) {
-	c_mount_entry := (*C.GUnixMountEntry)(mountEntry.ToC())
+	c_mount_entry := (*C.GUnixMountEntry)(C.NULL)
+	if mountEntry != nil {
+		c_mount_entry = (*C.GUnixMountEntry)(mountEntry.ToC())
+	}
 
 	C.g_unix_mount_free(c_mount_entry)
 
@@ -418,7 +430,10 @@ func UnixMountFree(mountEntry *UnixMountEntry) {
 
 // UnixMountGetDevicePath is a wrapper around the C function g_unix_mount_get_device_path.
 func UnixMountGetDevicePath(mountEntry *UnixMountEntry) string {
-	c_mount_entry := (*C.GUnixMountEntry)(mountEntry.ToC())
+	c_mount_entry := (*C.GUnixMountEntry)(C.NULL)
+	if mountEntry != nil {
+		c_mount_entry = (*C.GUnixMountEntry)(mountEntry.ToC())
+	}
 
 	retC := C.g_unix_mount_get_device_path(c_mount_entry)
 	retGo := C.GoString(retC)
@@ -428,7 +443,10 @@ func UnixMountGetDevicePath(mountEntry *UnixMountEntry) string {
 
 // UnixMountGetFsType is a wrapper around the C function g_unix_mount_get_fs_type.
 func UnixMountGetFsType(mountEntry *UnixMountEntry) string {
-	c_mount_entry := (*C.GUnixMountEntry)(mountEntry.ToC())
+	c_mount_entry := (*C.GUnixMountEntry)(C.NULL)
+	if mountEntry != nil {
+		c_mount_entry = (*C.GUnixMountEntry)(mountEntry.ToC())
+	}
 
 	retC := C.g_unix_mount_get_fs_type(c_mount_entry)
 	retGo := C.GoString(retC)
@@ -438,7 +456,10 @@ func UnixMountGetFsType(mountEntry *UnixMountEntry) string {
 
 // UnixMountGetMountPath is a wrapper around the C function g_unix_mount_get_mount_path.
 func UnixMountGetMountPath(mountEntry *UnixMountEntry) string {
-	c_mount_entry := (*C.GUnixMountEntry)(mountEntry.ToC())
+	c_mount_entry := (*C.GUnixMountEntry)(C.NULL)
+	if mountEntry != nil {
+		c_mount_entry = (*C.GUnixMountEntry)(mountEntry.ToC())
+	}
 
 	retC := C.g_unix_mount_get_mount_path(c_mount_entry)
 	retGo := C.GoString(retC)
@@ -448,7 +469,10 @@ func UnixMountGetMountPath(mountEntry *UnixMountEntry) string {
 
 // UnixMountGuessCanEject is a wrapper around the C function g_unix_mount_guess_can_eject.
 func UnixMountGuessCanEject(mountEntry *UnixMountEntry) bool {
-	c_mount_entry := (*C.GUnixMountEntry)(mountEntry.ToC())
+	c_mount_entry := (*C.GUnixMountEntry)(C.NULL)
+	if mountEntry != nil {
+		c_mount_entry = (*C.GUnixMountEntry)(mountEntry.ToC())
+	}
 
 	retC := C.g_unix_mount_guess_can_eject(c_mount_entry)
 	retGo := retC == C.TRUE
@@ -458,7 +482,10 @@ func UnixMountGuessCanEject(mountEntry *UnixMountEntry) bool {
 
 // UnixMountGuessIcon is a wrapper around the C function g_unix_mount_guess_icon.
 func UnixMountGuessIcon(mountEntry *UnixMountEntry) *Icon {
-	c_mount_entry := (*C.GUnixMountEntry)(mountEntry.ToC())
+	c_mount_entry := (*C.GUnixMountEntry)(C.NULL)
+	if mountEntry != nil {
+		c_mount_entry = (*C.GUnixMountEntry)(mountEntry.ToC())
+	}
 
 	retC := C.g_unix_mount_guess_icon(c_mount_entry)
 	retGo := IconNewFromC(unsafe.Pointer(retC))
@@ -468,7 +495,10 @@ func UnixMountGuessIcon(mountEntry *UnixMountEntry) *Icon {
 
 // UnixMountGuessName is a wrapper around the C function g_unix_mount_guess_name.
 func UnixMountGuessName(mountEntry *UnixMountEntry) string {
-	c_mount_entry := (*C.GUnixMountEntry)(mountEntry.ToC())
+	c_mount_entry := (*C.GUnixMountEntry)(C.NULL)
+	if mountEntry != nil {
+		c_mount_entry = (*C.GUnixMountEntry)(mountEntry.ToC())
+	}
 
 	retC := C.g_unix_mount_guess_name(c_mount_entry)
 	retGo := C.GoString(retC)
@@ -479,7 +509,10 @@ func UnixMountGuessName(mountEntry *UnixMountEntry) string {
 
 // UnixMountGuessShouldDisplay is a wrapper around the C function g_unix_mount_guess_should_display.
 func UnixMountGuessShouldDisplay(mountEntry *UnixMountEntry) bool {
-	c_mount_entry := (*C.GUnixMountEntry)(mountEntry.ToC())
+	c_mount_entry := (*C.GUnixMountEntry)(C.NULL)
+	if mountEntry != nil {
+		c_mount_entry = (*C.GUnixMountEntry)(mountEntry.ToC())
+	}
 
 	retC := C.g_unix_mount_guess_should_display(c_mount_entry)
 	retGo := retC == C.TRUE
@@ -489,7 +522,10 @@ func UnixMountGuessShouldDisplay(mountEntry *UnixMountEntry) bool {
 
 // UnixMountIsReadonly is a wrapper around the C function g_unix_mount_is_readonly.
 func UnixMountIsReadonly(mountEntry *UnixMountEntry) bool {
-	c_mount_entry := (*C.GUnixMountEntry)(mountEntry.ToC())
+	c_mount_entry := (*C.GUnixMountEntry)(C.NULL)
+	if mountEntry != nil {
+		c_mount_entry = (*C.GUnixMountEntry)(mountEntry.ToC())
+	}
 
 	retC := C.g_unix_mount_is_readonly(c_mount_entry)
 	retGo := retC == C.TRUE
@@ -499,7 +535,10 @@ func UnixMountIsReadonly(mountEntry *UnixMountEntry) bool {
 
 // UnixMountIsSystemInternal is a wrapper around the C function g_unix_mount_is_system_internal.
 func UnixMountIsSystemInternal(mountEntry *UnixMountEntry) bool {
-	c_mount_entry := (*C.GUnixMountEntry)(mountEntry.ToC())
+	c_mount_entry := (*C.GUnixMountEntry)(C.NULL)
+	if mountEntry != nil {
+		c_mount_entry = (*C.GUnixMountEntry)(mountEntry.ToC())
+	}
 
 	retC := C.g_unix_mount_is_system_internal(c_mount_entry)
 	retGo := retC == C.TRUE

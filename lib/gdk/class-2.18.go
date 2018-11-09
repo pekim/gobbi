@@ -80,7 +80,10 @@ func (recv *Window) IsDestroyed() bool {
 
 // Restack is a wrapper around the C function gdk_window_restack.
 func (recv *Window) Restack(sibling *Window, above bool) {
-	c_sibling := (*C.GdkWindow)(sibling.ToC())
+	c_sibling := (*C.GdkWindow)(C.NULL)
+	if sibling != nil {
+		c_sibling = (*C.GdkWindow)(sibling.ToC())
+	}
 
 	c_above :=
 		boolToGboolean(above)

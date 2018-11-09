@@ -249,7 +249,10 @@ func (recv *CellAccessibleParent) ToC() unsafe.Pointer {
 
 // Activate is a wrapper around the C function gtk_cell_accessible_parent_activate.
 func (recv *CellAccessibleParent) Activate(cell *CellAccessible) {
-	c_cell := (*C.GtkCellAccessible)(cell.ToC())
+	c_cell := (*C.GtkCellAccessible)(C.NULL)
+	if cell != nil {
+		c_cell = (*C.GtkCellAccessible)(cell.ToC())
+	}
 
 	C.gtk_cell_accessible_parent_activate((*C.GtkCellAccessibleParent)(recv.native), c_cell)
 
@@ -258,7 +261,10 @@ func (recv *CellAccessibleParent) Activate(cell *CellAccessible) {
 
 // Edit is a wrapper around the C function gtk_cell_accessible_parent_edit.
 func (recv *CellAccessibleParent) Edit(cell *CellAccessible) {
-	c_cell := (*C.GtkCellAccessible)(cell.ToC())
+	c_cell := (*C.GtkCellAccessible)(C.NULL)
+	if cell != nil {
+		c_cell = (*C.GtkCellAccessible)(cell.ToC())
+	}
 
 	C.gtk_cell_accessible_parent_edit((*C.GtkCellAccessibleParent)(recv.native), c_cell)
 
@@ -267,7 +273,10 @@ func (recv *CellAccessibleParent) Edit(cell *CellAccessible) {
 
 // ExpandCollapse is a wrapper around the C function gtk_cell_accessible_parent_expand_collapse.
 func (recv *CellAccessibleParent) ExpandCollapse(cell *CellAccessible) {
-	c_cell := (*C.GtkCellAccessible)(cell.ToC())
+	c_cell := (*C.GtkCellAccessible)(C.NULL)
+	if cell != nil {
+		c_cell = (*C.GtkCellAccessible)(cell.ToC())
+	}
 
 	C.gtk_cell_accessible_parent_expand_collapse((*C.GtkCellAccessibleParent)(recv.native), c_cell)
 
@@ -278,7 +287,10 @@ func (recv *CellAccessibleParent) ExpandCollapse(cell *CellAccessible) {
 
 // GetCellExtents is a wrapper around the C function gtk_cell_accessible_parent_get_cell_extents.
 func (recv *CellAccessibleParent) GetCellExtents(cell *CellAccessible, x int32, y int32, width int32, height int32, coordType atk.CoordType) {
-	c_cell := (*C.GtkCellAccessible)(cell.ToC())
+	c_cell := (*C.GtkCellAccessible)(C.NULL)
+	if cell != nil {
+		c_cell = (*C.GtkCellAccessible)(cell.ToC())
+	}
 
 	c_x := (C.gint)(x)
 
@@ -297,7 +309,10 @@ func (recv *CellAccessibleParent) GetCellExtents(cell *CellAccessible, x int32, 
 
 // GetChildIndex is a wrapper around the C function gtk_cell_accessible_parent_get_child_index.
 func (recv *CellAccessibleParent) GetChildIndex(cell *CellAccessible) int32 {
-	c_cell := (*C.GtkCellAccessible)(cell.ToC())
+	c_cell := (*C.GtkCellAccessible)(C.NULL)
+	if cell != nil {
+		c_cell = (*C.GtkCellAccessible)(cell.ToC())
+	}
 
 	retC := C.gtk_cell_accessible_parent_get_child_index((*C.GtkCellAccessibleParent)(recv.native), c_cell)
 	retGo := (int32)(retC)
@@ -307,7 +322,10 @@ func (recv *CellAccessibleParent) GetChildIndex(cell *CellAccessible) int32 {
 
 // GetRendererState is a wrapper around the C function gtk_cell_accessible_parent_get_renderer_state.
 func (recv *CellAccessibleParent) GetRendererState(cell *CellAccessible) CellRendererState {
-	c_cell := (*C.GtkCellAccessible)(cell.ToC())
+	c_cell := (*C.GtkCellAccessible)(C.NULL)
+	if cell != nil {
+		c_cell = (*C.GtkCellAccessible)(cell.ToC())
+	}
 
 	retC := C.gtk_cell_accessible_parent_get_renderer_state((*C.GtkCellAccessibleParent)(recv.native), c_cell)
 	retGo := (CellRendererState)(retC)
@@ -317,7 +335,10 @@ func (recv *CellAccessibleParent) GetRendererState(cell *CellAccessible) CellRen
 
 // GrabFocus is a wrapper around the C function gtk_cell_accessible_parent_grab_focus.
 func (recv *CellAccessibleParent) GrabFocus(cell *CellAccessible) bool {
-	c_cell := (*C.GtkCellAccessible)(cell.ToC())
+	c_cell := (*C.GtkCellAccessible)(C.NULL)
+	if cell != nil {
+		c_cell = (*C.GtkCellAccessible)(cell.ToC())
+	}
 
 	retC := C.gtk_cell_accessible_parent_grab_focus((*C.GtkCellAccessibleParent)(recv.native), c_cell)
 	retGo := retC == C.TRUE
@@ -327,9 +348,15 @@ func (recv *CellAccessibleParent) GrabFocus(cell *CellAccessible) bool {
 
 // UpdateRelationset is a wrapper around the C function gtk_cell_accessible_parent_update_relationset.
 func (recv *CellAccessibleParent) UpdateRelationset(cell *CellAccessible, relationset *atk.RelationSet) {
-	c_cell := (*C.GtkCellAccessible)(cell.ToC())
+	c_cell := (*C.GtkCellAccessible)(C.NULL)
+	if cell != nil {
+		c_cell = (*C.GtkCellAccessible)(cell.ToC())
+	}
 
-	c_relationset := (*C.AtkRelationSet)(relationset.ToC())
+	c_relationset := (*C.AtkRelationSet)(C.NULL)
+	if relationset != nil {
+		c_relationset = (*C.AtkRelationSet)(relationset.ToC())
+	}
 
 	C.gtk_cell_accessible_parent_update_relationset((*C.GtkCellAccessibleParent)(recv.native), c_cell, c_relationset)
 
@@ -1288,9 +1315,15 @@ func (recv *TreeDragDest) ToC() unsafe.Pointer {
 
 // DragDataReceived is a wrapper around the C function gtk_tree_drag_dest_drag_data_received.
 func (recv *TreeDragDest) DragDataReceived(dest *TreePath, selectionData *SelectionData) bool {
-	c_dest := (*C.GtkTreePath)(dest.ToC())
+	c_dest := (*C.GtkTreePath)(C.NULL)
+	if dest != nil {
+		c_dest = (*C.GtkTreePath)(dest.ToC())
+	}
 
-	c_selection_data := (*C.GtkSelectionData)(selectionData.ToC())
+	c_selection_data := (*C.GtkSelectionData)(C.NULL)
+	if selectionData != nil {
+		c_selection_data = (*C.GtkSelectionData)(selectionData.ToC())
+	}
 
 	retC := C.gtk_tree_drag_dest_drag_data_received((*C.GtkTreeDragDest)(recv.native), c_dest, c_selection_data)
 	retGo := retC == C.TRUE
@@ -1300,9 +1333,15 @@ func (recv *TreeDragDest) DragDataReceived(dest *TreePath, selectionData *Select
 
 // RowDropPossible is a wrapper around the C function gtk_tree_drag_dest_row_drop_possible.
 func (recv *TreeDragDest) RowDropPossible(destPath *TreePath, selectionData *SelectionData) bool {
-	c_dest_path := (*C.GtkTreePath)(destPath.ToC())
+	c_dest_path := (*C.GtkTreePath)(C.NULL)
+	if destPath != nil {
+		c_dest_path = (*C.GtkTreePath)(destPath.ToC())
+	}
 
-	c_selection_data := (*C.GtkSelectionData)(selectionData.ToC())
+	c_selection_data := (*C.GtkSelectionData)(C.NULL)
+	if selectionData != nil {
+		c_selection_data = (*C.GtkSelectionData)(selectionData.ToC())
+	}
 
 	retC := C.gtk_tree_drag_dest_row_drop_possible((*C.GtkTreeDragDest)(recv.native), c_dest_path, c_selection_data)
 	retGo := retC == C.TRUE
@@ -1333,7 +1372,10 @@ func (recv *TreeDragSource) ToC() unsafe.Pointer {
 
 // DragDataDelete is a wrapper around the C function gtk_tree_drag_source_drag_data_delete.
 func (recv *TreeDragSource) DragDataDelete(path *TreePath) bool {
-	c_path := (*C.GtkTreePath)(path.ToC())
+	c_path := (*C.GtkTreePath)(C.NULL)
+	if path != nil {
+		c_path = (*C.GtkTreePath)(path.ToC())
+	}
 
 	retC := C.gtk_tree_drag_source_drag_data_delete((*C.GtkTreeDragSource)(recv.native), c_path)
 	retGo := retC == C.TRUE
@@ -1343,9 +1385,15 @@ func (recv *TreeDragSource) DragDataDelete(path *TreePath) bool {
 
 // DragDataGet is a wrapper around the C function gtk_tree_drag_source_drag_data_get.
 func (recv *TreeDragSource) DragDataGet(path *TreePath, selectionData *SelectionData) bool {
-	c_path := (*C.GtkTreePath)(path.ToC())
+	c_path := (*C.GtkTreePath)(C.NULL)
+	if path != nil {
+		c_path = (*C.GtkTreePath)(path.ToC())
+	}
 
-	c_selection_data := (*C.GtkSelectionData)(selectionData.ToC())
+	c_selection_data := (*C.GtkSelectionData)(C.NULL)
+	if selectionData != nil {
+		c_selection_data = (*C.GtkSelectionData)(selectionData.ToC())
+	}
 
 	retC := C.gtk_tree_drag_source_drag_data_get((*C.GtkTreeDragSource)(recv.native), c_path, c_selection_data)
 	retGo := retC == C.TRUE
@@ -1355,7 +1403,10 @@ func (recv *TreeDragSource) DragDataGet(path *TreePath, selectionData *Selection
 
 // RowDraggable is a wrapper around the C function gtk_tree_drag_source_row_draggable.
 func (recv *TreeDragSource) RowDraggable(path *TreePath) bool {
-	c_path := (*C.GtkTreePath)(path.ToC())
+	c_path := (*C.GtkTreePath)(C.NULL)
+	if path != nil {
+		c_path = (*C.GtkTreePath)(path.ToC())
+	}
 
 	retC := C.gtk_tree_drag_source_row_draggable((*C.GtkTreeDragSource)(recv.native), c_path)
 	retGo := retC == C.TRUE
@@ -1654,7 +1705,10 @@ func (recv *TreeModel) GetFlags() TreeModelFlags {
 func (recv *TreeModel) GetIter(path *TreePath) (bool, *TreeIter) {
 	var c_iter C.GtkTreeIter
 
-	c_path := (*C.GtkTreePath)(path.ToC())
+	c_path := (*C.GtkTreePath)(C.NULL)
+	if path != nil {
+		c_path = (*C.GtkTreePath)(path.ToC())
+	}
 
 	retC := C.gtk_tree_model_get_iter((*C.GtkTreeModel)(recv.native), &c_iter, c_path)
 	retGo := retC == C.TRUE
@@ -1701,7 +1755,10 @@ func (recv *TreeModel) GetNColumns() int32 {
 
 // GetPath is a wrapper around the C function gtk_tree_model_get_path.
 func (recv *TreeModel) GetPath(iter *TreeIter) *TreePath {
-	c_iter := (*C.GtkTreeIter)(iter.ToC())
+	c_iter := (*C.GtkTreeIter)(C.NULL)
+	if iter != nil {
+		c_iter = (*C.GtkTreeIter)(iter.ToC())
+	}
 
 	retC := C.gtk_tree_model_get_path((*C.GtkTreeModel)(recv.native), c_iter)
 	retGo := TreePathNewFromC(unsafe.Pointer(retC))
@@ -1713,7 +1770,10 @@ func (recv *TreeModel) GetPath(iter *TreeIter) *TreePath {
 
 // GetValue is a wrapper around the C function gtk_tree_model_get_value.
 func (recv *TreeModel) GetValue(iter *TreeIter, column int32) *gobject.Value {
-	c_iter := (*C.GtkTreeIter)(iter.ToC())
+	c_iter := (*C.GtkTreeIter)(C.NULL)
+	if iter != nil {
+		c_iter = (*C.GtkTreeIter)(iter.ToC())
+	}
 
 	c_column := (C.gint)(column)
 
@@ -1730,7 +1790,10 @@ func (recv *TreeModel) GetValue(iter *TreeIter, column int32) *gobject.Value {
 func (recv *TreeModel) IterChildren(parent *TreeIter) (bool, *TreeIter) {
 	var c_iter C.GtkTreeIter
 
-	c_parent := (*C.GtkTreeIter)(parent.ToC())
+	c_parent := (*C.GtkTreeIter)(C.NULL)
+	if parent != nil {
+		c_parent = (*C.GtkTreeIter)(parent.ToC())
+	}
 
 	retC := C.gtk_tree_model_iter_children((*C.GtkTreeModel)(recv.native), &c_iter, c_parent)
 	retGo := retC == C.TRUE
@@ -1742,7 +1805,10 @@ func (recv *TreeModel) IterChildren(parent *TreeIter) (bool, *TreeIter) {
 
 // IterHasChild is a wrapper around the C function gtk_tree_model_iter_has_child.
 func (recv *TreeModel) IterHasChild(iter *TreeIter) bool {
-	c_iter := (*C.GtkTreeIter)(iter.ToC())
+	c_iter := (*C.GtkTreeIter)(C.NULL)
+	if iter != nil {
+		c_iter = (*C.GtkTreeIter)(iter.ToC())
+	}
 
 	retC := C.gtk_tree_model_iter_has_child((*C.GtkTreeModel)(recv.native), c_iter)
 	retGo := retC == C.TRUE
@@ -1752,7 +1818,10 @@ func (recv *TreeModel) IterHasChild(iter *TreeIter) bool {
 
 // IterNChildren is a wrapper around the C function gtk_tree_model_iter_n_children.
 func (recv *TreeModel) IterNChildren(iter *TreeIter) int32 {
-	c_iter := (*C.GtkTreeIter)(iter.ToC())
+	c_iter := (*C.GtkTreeIter)(C.NULL)
+	if iter != nil {
+		c_iter = (*C.GtkTreeIter)(iter.ToC())
+	}
 
 	retC := C.gtk_tree_model_iter_n_children((*C.GtkTreeModel)(recv.native), c_iter)
 	retGo := (int32)(retC)
@@ -1762,7 +1831,10 @@ func (recv *TreeModel) IterNChildren(iter *TreeIter) int32 {
 
 // IterNext is a wrapper around the C function gtk_tree_model_iter_next.
 func (recv *TreeModel) IterNext(iter *TreeIter) bool {
-	c_iter := (*C.GtkTreeIter)(iter.ToC())
+	c_iter := (*C.GtkTreeIter)(C.NULL)
+	if iter != nil {
+		c_iter = (*C.GtkTreeIter)(iter.ToC())
+	}
 
 	retC := C.gtk_tree_model_iter_next((*C.GtkTreeModel)(recv.native), c_iter)
 	retGo := retC == C.TRUE
@@ -1774,7 +1846,10 @@ func (recv *TreeModel) IterNext(iter *TreeIter) bool {
 func (recv *TreeModel) IterNthChild(parent *TreeIter, n int32) (bool, *TreeIter) {
 	var c_iter C.GtkTreeIter
 
-	c_parent := (*C.GtkTreeIter)(parent.ToC())
+	c_parent := (*C.GtkTreeIter)(C.NULL)
+	if parent != nil {
+		c_parent = (*C.GtkTreeIter)(parent.ToC())
+	}
 
 	c_n := (C.gint)(n)
 
@@ -1790,7 +1865,10 @@ func (recv *TreeModel) IterNthChild(parent *TreeIter, n int32) (bool, *TreeIter)
 func (recv *TreeModel) IterParent(child *TreeIter) (bool, *TreeIter) {
 	var c_iter C.GtkTreeIter
 
-	c_child := (*C.GtkTreeIter)(child.ToC())
+	c_child := (*C.GtkTreeIter)(C.NULL)
+	if child != nil {
+		c_child = (*C.GtkTreeIter)(child.ToC())
+	}
 
 	retC := C.gtk_tree_model_iter_parent((*C.GtkTreeModel)(recv.native), &c_iter, c_child)
 	retGo := retC == C.TRUE
@@ -1802,7 +1880,10 @@ func (recv *TreeModel) IterParent(child *TreeIter) (bool, *TreeIter) {
 
 // RefNode is a wrapper around the C function gtk_tree_model_ref_node.
 func (recv *TreeModel) RefNode(iter *TreeIter) {
-	c_iter := (*C.GtkTreeIter)(iter.ToC())
+	c_iter := (*C.GtkTreeIter)(C.NULL)
+	if iter != nil {
+		c_iter = (*C.GtkTreeIter)(iter.ToC())
+	}
 
 	C.gtk_tree_model_ref_node((*C.GtkTreeModel)(recv.native), c_iter)
 
@@ -1811,9 +1892,15 @@ func (recv *TreeModel) RefNode(iter *TreeIter) {
 
 // RowChanged is a wrapper around the C function gtk_tree_model_row_changed.
 func (recv *TreeModel) RowChanged(path *TreePath, iter *TreeIter) {
-	c_path := (*C.GtkTreePath)(path.ToC())
+	c_path := (*C.GtkTreePath)(C.NULL)
+	if path != nil {
+		c_path = (*C.GtkTreePath)(path.ToC())
+	}
 
-	c_iter := (*C.GtkTreeIter)(iter.ToC())
+	c_iter := (*C.GtkTreeIter)(C.NULL)
+	if iter != nil {
+		c_iter = (*C.GtkTreeIter)(iter.ToC())
+	}
 
 	C.gtk_tree_model_row_changed((*C.GtkTreeModel)(recv.native), c_path, c_iter)
 
@@ -1822,7 +1909,10 @@ func (recv *TreeModel) RowChanged(path *TreePath, iter *TreeIter) {
 
 // RowDeleted is a wrapper around the C function gtk_tree_model_row_deleted.
 func (recv *TreeModel) RowDeleted(path *TreePath) {
-	c_path := (*C.GtkTreePath)(path.ToC())
+	c_path := (*C.GtkTreePath)(C.NULL)
+	if path != nil {
+		c_path = (*C.GtkTreePath)(path.ToC())
+	}
 
 	C.gtk_tree_model_row_deleted((*C.GtkTreeModel)(recv.native), c_path)
 
@@ -1831,9 +1921,15 @@ func (recv *TreeModel) RowDeleted(path *TreePath) {
 
 // RowHasChildToggled is a wrapper around the C function gtk_tree_model_row_has_child_toggled.
 func (recv *TreeModel) RowHasChildToggled(path *TreePath, iter *TreeIter) {
-	c_path := (*C.GtkTreePath)(path.ToC())
+	c_path := (*C.GtkTreePath)(C.NULL)
+	if path != nil {
+		c_path = (*C.GtkTreePath)(path.ToC())
+	}
 
-	c_iter := (*C.GtkTreeIter)(iter.ToC())
+	c_iter := (*C.GtkTreeIter)(C.NULL)
+	if iter != nil {
+		c_iter = (*C.GtkTreeIter)(iter.ToC())
+	}
 
 	C.gtk_tree_model_row_has_child_toggled((*C.GtkTreeModel)(recv.native), c_path, c_iter)
 
@@ -1842,9 +1938,15 @@ func (recv *TreeModel) RowHasChildToggled(path *TreePath, iter *TreeIter) {
 
 // RowInserted is a wrapper around the C function gtk_tree_model_row_inserted.
 func (recv *TreeModel) RowInserted(path *TreePath, iter *TreeIter) {
-	c_path := (*C.GtkTreePath)(path.ToC())
+	c_path := (*C.GtkTreePath)(C.NULL)
+	if path != nil {
+		c_path = (*C.GtkTreePath)(path.ToC())
+	}
 
-	c_iter := (*C.GtkTreeIter)(iter.ToC())
+	c_iter := (*C.GtkTreeIter)(C.NULL)
+	if iter != nil {
+		c_iter = (*C.GtkTreeIter)(iter.ToC())
+	}
 
 	C.gtk_tree_model_row_inserted((*C.GtkTreeModel)(recv.native), c_path, c_iter)
 
@@ -1853,9 +1955,15 @@ func (recv *TreeModel) RowInserted(path *TreePath, iter *TreeIter) {
 
 // RowsReordered is a wrapper around the C function gtk_tree_model_rows_reordered.
 func (recv *TreeModel) RowsReordered(path *TreePath, iter *TreeIter, newOrder int32) {
-	c_path := (*C.GtkTreePath)(path.ToC())
+	c_path := (*C.GtkTreePath)(C.NULL)
+	if path != nil {
+		c_path = (*C.GtkTreePath)(path.ToC())
+	}
 
-	c_iter := (*C.GtkTreeIter)(iter.ToC())
+	c_iter := (*C.GtkTreeIter)(C.NULL)
+	if iter != nil {
+		c_iter = (*C.GtkTreeIter)(iter.ToC())
+	}
 
 	c_new_order := (C.gint)(newOrder)
 
@@ -1874,7 +1982,10 @@ func (recv *TreeModel) SortNewWithModel() *TreeModel {
 
 // UnrefNode is a wrapper around the C function gtk_tree_model_unref_node.
 func (recv *TreeModel) UnrefNode(iter *TreeIter) {
-	c_iter := (*C.GtkTreeIter)(iter.ToC())
+	c_iter := (*C.GtkTreeIter)(C.NULL)
+	if iter != nil {
+		c_iter = (*C.GtkTreeIter)(iter.ToC())
+	}
 
 	C.gtk_tree_model_unref_node((*C.GtkTreeModel)(recv.native), c_iter)
 

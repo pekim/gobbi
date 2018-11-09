@@ -305,7 +305,10 @@ func CastToNoOpObject(object *gobject.Object) *NoOpObject {
 
 // NoOpObjectNew is a wrapper around the C function atk_no_op_object_new.
 func NoOpObjectNew(obj *gobject.Object) *NoOpObject {
-	c_obj := (*C.GObject)(obj.ToC())
+	c_obj := (*C.GObject)(C.NULL)
+	if obj != nil {
+		c_obj = (*C.GObject)(obj.ToC())
+	}
 
 	retC := C.atk_no_op_object_new(c_obj)
 	retGo := NoOpObjectNewFromC(unsafe.Pointer(retC))
@@ -600,7 +603,10 @@ func object_visibleDataChangedHandler(_ *C.GObject, data C.gpointer) {
 func (recv *Object) AddRelationship(relationship RelationType, target *Object) bool {
 	c_relationship := (C.AtkRelationType)(relationship)
 
-	c_target := (*C.AtkObject)(target.ToC())
+	c_target := (*C.AtkObject)(C.NULL)
+	if target != nil {
+		c_target = (*C.AtkObject)(target.ToC())
+	}
 
 	retC := C.atk_object_add_relationship((*C.AtkObject)(recv.native), c_relationship, c_target)
 	retGo := retC == C.TRUE
@@ -742,7 +748,10 @@ func (recv *Object) RemovePropertyChangeHandler(handlerId uint32) {
 func (recv *Object) RemoveRelationship(relationship RelationType, target *Object) bool {
 	c_relationship := (C.AtkRelationType)(relationship)
 
-	c_target := (*C.AtkObject)(target.ToC())
+	c_target := (*C.AtkObject)(C.NULL)
+	if target != nil {
+		c_target = (*C.AtkObject)(target.ToC())
+	}
 
 	retC := C.atk_object_remove_relationship((*C.AtkObject)(recv.native), c_relationship, c_target)
 	retGo := retC == C.TRUE
@@ -772,7 +781,10 @@ func (recv *Object) SetName(name string) {
 
 // SetParent is a wrapper around the C function atk_object_set_parent.
 func (recv *Object) SetParent(parent *Object) {
-	c_parent := (*C.AtkObject)(parent.ToC())
+	c_parent := (*C.AtkObject)(C.NULL)
+	if parent != nil {
+		c_parent = (*C.AtkObject)(parent.ToC())
+	}
 
 	C.atk_object_set_parent((*C.AtkObject)(recv.native), c_parent)
 
@@ -823,7 +835,10 @@ func CastToObjectFactory(object *gobject.Object) *ObjectFactory {
 
 // CreateAccessible is a wrapper around the C function atk_object_factory_create_accessible.
 func (recv *ObjectFactory) CreateAccessible(obj *gobject.Object) *Object {
-	c_obj := (*C.GObject)(obj.ToC())
+	c_obj := (*C.GObject)(C.NULL)
+	if obj != nil {
+		c_obj = (*C.GObject)(obj.ToC())
+	}
 
 	retC := C.atk_object_factory_create_accessible((*C.AtkObjectFactory)(recv.native), c_obj)
 	retGo := ObjectNewFromC(unsafe.Pointer(retC))
@@ -1012,7 +1027,10 @@ func (recv *Relation) GetRelationType() RelationType {
 
 // RemoveTarget is a wrapper around the C function atk_relation_remove_target.
 func (recv *Relation) RemoveTarget(target *Object) bool {
-	c_target := (*C.AtkObject)(target.ToC())
+	c_target := (*C.AtkObject)(C.NULL)
+	if target != nil {
+		c_target = (*C.AtkObject)(target.ToC())
+	}
 
 	retC := C.atk_relation_remove_target((*C.AtkRelation)(recv.native), c_target)
 	retGo := retC == C.TRUE
@@ -1064,7 +1082,10 @@ func RelationSetNew() *RelationSet {
 
 // Add is a wrapper around the C function atk_relation_set_add.
 func (recv *RelationSet) Add(relation *Relation) {
-	c_relation := (*C.AtkRelation)(relation.ToC())
+	c_relation := (*C.AtkRelation)(C.NULL)
+	if relation != nil {
+		c_relation = (*C.AtkRelation)(relation.ToC())
+	}
 
 	C.atk_relation_set_add((*C.AtkRelationSet)(recv.native), c_relation)
 
@@ -1085,7 +1106,10 @@ func (recv *RelationSet) Contains(relationship RelationType) bool {
 func (recv *RelationSet) ContainsTarget(relationship RelationType, target *Object) bool {
 	c_relationship := (C.AtkRelationType)(relationship)
 
-	c_target := (*C.AtkObject)(target.ToC())
+	c_target := (*C.AtkObject)(C.NULL)
+	if target != nil {
+		c_target = (*C.AtkObject)(target.ToC())
+	}
 
 	retC := C.atk_relation_set_contains_target((*C.AtkRelationSet)(recv.native), c_relationship, c_target)
 	retGo := retC == C.TRUE
@@ -1123,7 +1147,10 @@ func (recv *RelationSet) GetRelationByType(relationship RelationType) *Relation 
 
 // Remove is a wrapper around the C function atk_relation_set_remove.
 func (recv *RelationSet) Remove(relation *Relation) {
-	c_relation := (*C.AtkRelation)(relation.ToC())
+	c_relation := (*C.AtkRelation)(C.NULL)
+	if relation != nil {
+		c_relation = (*C.AtkRelation)(relation.ToC())
+	}
 
 	C.atk_relation_set_remove((*C.AtkRelationSet)(recv.native), c_relation)
 
@@ -1241,7 +1268,10 @@ func (recv *StateSet) AddStates(types []StateType) {
 
 // AndSets is a wrapper around the C function atk_state_set_and_sets.
 func (recv *StateSet) AndSets(compareSet *StateSet) *StateSet {
-	c_compare_set := (*C.AtkStateSet)(compareSet.ToC())
+	c_compare_set := (*C.AtkStateSet)(C.NULL)
+	if compareSet != nil {
+		c_compare_set = (*C.AtkStateSet)(compareSet.ToC())
+	}
 
 	retC := C.atk_state_set_and_sets((*C.AtkStateSet)(recv.native), c_compare_set)
 	retGo := StateSetNewFromC(unsafe.Pointer(retC))
@@ -1288,7 +1318,10 @@ func (recv *StateSet) IsEmpty() bool {
 
 // OrSets is a wrapper around the C function atk_state_set_or_sets.
 func (recv *StateSet) OrSets(compareSet *StateSet) *StateSet {
-	c_compare_set := (*C.AtkStateSet)(compareSet.ToC())
+	c_compare_set := (*C.AtkStateSet)(C.NULL)
+	if compareSet != nil {
+		c_compare_set = (*C.AtkStateSet)(compareSet.ToC())
+	}
 
 	retC := C.atk_state_set_or_sets((*C.AtkStateSet)(recv.native), c_compare_set)
 	var retGo (*StateSet)
@@ -1313,7 +1346,10 @@ func (recv *StateSet) RemoveState(type_ StateType) bool {
 
 // XorSets is a wrapper around the C function atk_state_set_xor_sets.
 func (recv *StateSet) XorSets(compareSet *StateSet) *StateSet {
-	c_compare_set := (*C.AtkStateSet)(compareSet.ToC())
+	c_compare_set := (*C.AtkStateSet)(C.NULL)
+	if compareSet != nil {
+		c_compare_set = (*C.AtkStateSet)(compareSet.ToC())
+	}
 
 	retC := C.atk_state_set_xor_sets((*C.AtkStateSet)(recv.native), c_compare_set)
 	retGo := StateSetNewFromC(unsafe.Pointer(retC))

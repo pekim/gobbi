@@ -61,7 +61,10 @@ func (recv *DatagramBased) ConditionWait(condition glib.IOCondition, timeout int
 
 	c_timeout := (C.gint64)(timeout)
 
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -80,7 +83,10 @@ func (recv *DatagramBased) ConditionWait(condition glib.IOCondition, timeout int
 func (recv *DatagramBased) CreateSource(condition glib.IOCondition, cancellable *Cancellable) *glib.Source {
 	c_condition := (C.GIOCondition)(condition)
 
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	retC := C.g_datagram_based_create_source((*C.GDatagramBased)(recv.native), c_condition, c_cancellable)
 	retGo := glib.SourceNewFromC(unsafe.Pointer(retC))
@@ -178,7 +184,10 @@ func (recv *DtlsConnection) ToC() unsafe.Pointer {
 
 // Close is a wrapper around the C function g_dtls_connection_close.
 func (recv *DtlsConnection) Close(cancellable *Cancellable) (bool, error) {
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -214,7 +223,10 @@ func (recv *DtlsConnection) CloseFinish(result *AsyncResult) (bool, error) {
 
 // EmitAcceptCertificate is a wrapper around the C function g_dtls_connection_emit_accept_certificate.
 func (recv *DtlsConnection) EmitAcceptCertificate(peerCert *TlsCertificate, errors TlsCertificateFlags) bool {
-	c_peer_cert := (*C.GTlsCertificate)(peerCert.ToC())
+	c_peer_cert := (*C.GTlsCertificate)(C.NULL)
+	if peerCert != nil {
+		c_peer_cert = (*C.GTlsCertificate)(peerCert.ToC())
+	}
 
 	c_errors := (C.GTlsCertificateFlags)(errors)
 
@@ -282,7 +294,10 @@ func (recv *DtlsConnection) GetRequireCloseNotify() bool {
 
 // Handshake is a wrapper around the C function g_dtls_connection_handshake.
 func (recv *DtlsConnection) Handshake(cancellable *Cancellable) (bool, error) {
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -318,7 +333,10 @@ func (recv *DtlsConnection) HandshakeFinish(result *AsyncResult) (bool, error) {
 
 // SetCertificate is a wrapper around the C function g_dtls_connection_set_certificate.
 func (recv *DtlsConnection) SetCertificate(certificate *TlsCertificate) {
-	c_certificate := (*C.GTlsCertificate)(certificate.ToC())
+	c_certificate := (*C.GTlsCertificate)(C.NULL)
+	if certificate != nil {
+		c_certificate = (*C.GTlsCertificate)(certificate.ToC())
+	}
 
 	C.g_dtls_connection_set_certificate((*C.GDtlsConnection)(recv.native), c_certificate)
 
@@ -327,7 +345,10 @@ func (recv *DtlsConnection) SetCertificate(certificate *TlsCertificate) {
 
 // SetDatabase is a wrapper around the C function g_dtls_connection_set_database.
 func (recv *DtlsConnection) SetDatabase(database *TlsDatabase) {
-	c_database := (*C.GTlsDatabase)(database.ToC())
+	c_database := (*C.GTlsDatabase)(C.NULL)
+	if database != nil {
+		c_database = (*C.GTlsDatabase)(database.ToC())
+	}
 
 	C.g_dtls_connection_set_database((*C.GDtlsConnection)(recv.native), c_database)
 
@@ -336,7 +357,10 @@ func (recv *DtlsConnection) SetDatabase(database *TlsDatabase) {
 
 // SetInteraction is a wrapper around the C function g_dtls_connection_set_interaction.
 func (recv *DtlsConnection) SetInteraction(interaction *TlsInteraction) {
-	c_interaction := (*C.GTlsInteraction)(interaction.ToC())
+	c_interaction := (*C.GTlsInteraction)(C.NULL)
+	if interaction != nil {
+		c_interaction = (*C.GTlsInteraction)(interaction.ToC())
+	}
 
 	C.g_dtls_connection_set_interaction((*C.GDtlsConnection)(recv.native), c_interaction)
 
@@ -370,7 +394,10 @@ func (recv *DtlsConnection) Shutdown(shutdownRead bool, shutdownWrite bool, canc
 	c_shutdown_write :=
 		boolToGboolean(shutdownWrite)
 
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 

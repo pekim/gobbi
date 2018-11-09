@@ -12,9 +12,15 @@ import "C"
 
 // CairoDrawFromGl is a wrapper around the C function gdk_cairo_draw_from_gl.
 func CairoDrawFromGl(cr *cairo.Context, window *Window, source int32, sourceType int32, bufferScale int32, x int32, y int32, width int32, height int32) {
-	c_cr := (*C.cairo_t)(cr.ToC())
+	c_cr := (*C.cairo_t)(C.NULL)
+	if cr != nil {
+		c_cr = (*C.cairo_t)(cr.ToC())
+	}
 
-	c_window := (*C.GdkWindow)(window.ToC())
+	c_window := (*C.GdkWindow)(C.NULL)
+	if window != nil {
+		c_window = (*C.GdkWindow)(window.ToC())
+	}
 
 	c_source := (C.int)(source)
 

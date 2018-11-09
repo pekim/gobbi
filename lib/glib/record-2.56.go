@@ -25,7 +25,10 @@ func DateTimeNewFromIso8601(text string, defaultTz *TimeZone) *DateTime {
 	c_text := C.CString(text)
 	defer C.free(unsafe.Pointer(c_text))
 
-	c_default_tz := (*C.GTimeZone)(defaultTz.ToC())
+	c_default_tz := (*C.GTimeZone)(C.NULL)
+	if defaultTz != nil {
+		c_default_tz = (*C.GTimeZone)(defaultTz.ToC())
+	}
 
 	retC := C.g_date_time_new_from_iso8601(c_text, c_default_tz)
 	var retGo (*DateTime)

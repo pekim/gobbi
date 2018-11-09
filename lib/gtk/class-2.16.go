@@ -390,7 +390,10 @@ func (recv *Entry) SetIconActivatable(iconPos EntryIconPosition, activatable boo
 func (recv *Entry) SetIconDragSource(iconPos EntryIconPosition, targetList *TargetList, actions gdk.DragAction) {
 	c_icon_pos := (C.GtkEntryIconPosition)(iconPos)
 
-	c_target_list := (*C.GtkTargetList)(targetList.ToC())
+	c_target_list := (*C.GtkTargetList)(C.NULL)
+	if targetList != nil {
+		c_target_list = (*C.GtkTargetList)(targetList.ToC())
+	}
 
 	c_actions := (C.GdkDragAction)(actions)
 
@@ -426,7 +429,10 @@ func (recv *Entry) SetIconFromIconName(iconPos EntryIconPosition, iconName strin
 func (recv *Entry) SetIconFromPixbuf(iconPos EntryIconPosition, pixbuf *gdkpixbuf.Pixbuf) {
 	c_icon_pos := (C.GtkEntryIconPosition)(iconPos)
 
-	c_pixbuf := (*C.GdkPixbuf)(pixbuf.ToC())
+	c_pixbuf := (*C.GdkPixbuf)(C.NULL)
+	if pixbuf != nil {
+		c_pixbuf = (*C.GdkPixbuf)(pixbuf.ToC())
+	}
 
 	C.gtk_entry_set_icon_from_pixbuf((*C.GtkEntry)(recv.native), c_icon_pos, c_pixbuf)
 
@@ -542,7 +548,10 @@ func (recv *ImageMenuItem) GetUseStock() bool {
 
 // SetAccelGroup is a wrapper around the C function gtk_image_menu_item_set_accel_group.
 func (recv *ImageMenuItem) SetAccelGroup(accelGroup *AccelGroup) {
-	c_accel_group := (*C.GtkAccelGroup)(accelGroup.ToC())
+	c_accel_group := (*C.GtkAccelGroup)(C.NULL)
+	if accelGroup != nil {
+		c_accel_group = (*C.GtkAccelGroup)(accelGroup.ToC())
+	}
 
 	C.gtk_image_menu_item_set_accel_group((*C.GtkImageMenuItem)(recv.native), c_accel_group)
 

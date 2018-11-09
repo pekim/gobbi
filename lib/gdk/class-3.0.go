@@ -115,7 +115,10 @@ func (recv *Device) GetWindowAtPositionDouble() (*Window, float64, float64) {
 
 // Grab is a wrapper around the C function gdk_device_grab.
 func (recv *Device) Grab(window *Window, grabOwnership GrabOwnership, ownerEvents bool, eventMask EventMask, cursor *Cursor, time uint32) GrabStatus {
-	c_window := (*C.GdkWindow)(window.ToC())
+	c_window := (*C.GdkWindow)(C.NULL)
+	if window != nil {
+		c_window = (*C.GdkWindow)(window.ToC())
+	}
 
 	c_grab_ownership := (C.GdkGrabOwnership)(grabOwnership)
 
@@ -124,7 +127,10 @@ func (recv *Device) Grab(window *Window, grabOwnership GrabOwnership, ownerEvent
 
 	c_event_mask := (C.GdkEventMask)(eventMask)
 
-	c_cursor := (*C.GdkCursor)(cursor.ToC())
+	c_cursor := (*C.GdkCursor)(C.NULL)
+	if cursor != nil {
+		c_cursor = (*C.GdkCursor)(cursor.ToC())
+	}
 
 	c_time_ := (C.guint32)(time)
 
@@ -153,7 +159,10 @@ func (recv *Device) Ungrab(time uint32) {
 
 // Warp is a wrapper around the C function gdk_device_warp.
 func (recv *Device) Warp(screen *Screen, x int32, y int32) {
-	c_screen := (*C.GdkScreen)(screen.ToC())
+	c_screen := (*C.GdkScreen)(C.NULL)
+	if screen != nil {
+		c_screen = (*C.GdkScreen)(screen.ToC())
+	}
 
 	c_x := (C.gint)(x)
 
@@ -278,7 +287,10 @@ func (recv *Keymap) GetNumLockState() bool {
 
 // GetDeviceCursor is a wrapper around the C function gdk_window_get_device_cursor.
 func (recv *Window) GetDeviceCursor(device *Device) *Cursor {
-	c_device := (*C.GdkDevice)(device.ToC())
+	c_device := (*C.GdkDevice)(C.NULL)
+	if device != nil {
+		c_device = (*C.GdkDevice)(device.ToC())
+	}
 
 	retC := C.gdk_window_get_device_cursor((*C.GdkWindow)(recv.native), c_device)
 	var retGo (*Cursor)
@@ -293,7 +305,10 @@ func (recv *Window) GetDeviceCursor(device *Device) *Cursor {
 
 // GetDeviceEvents is a wrapper around the C function gdk_window_get_device_events.
 func (recv *Window) GetDeviceEvents(device *Device) EventMask {
-	c_device := (*C.GdkDevice)(device.ToC())
+	c_device := (*C.GdkDevice)(C.NULL)
+	if device != nil {
+		c_device = (*C.GdkDevice)(device.ToC())
+	}
 
 	retC := C.gdk_window_get_device_events((*C.GdkWindow)(recv.native), c_device)
 	retGo := (EventMask)(retC)
@@ -325,9 +340,15 @@ func (recv *Window) GetSupportMultidevice() bool {
 
 // SetDeviceCursor is a wrapper around the C function gdk_window_set_device_cursor.
 func (recv *Window) SetDeviceCursor(device *Device, cursor *Cursor) {
-	c_device := (*C.GdkDevice)(device.ToC())
+	c_device := (*C.GdkDevice)(C.NULL)
+	if device != nil {
+		c_device = (*C.GdkDevice)(device.ToC())
+	}
 
-	c_cursor := (*C.GdkCursor)(cursor.ToC())
+	c_cursor := (*C.GdkCursor)(C.NULL)
+	if cursor != nil {
+		c_cursor = (*C.GdkCursor)(cursor.ToC())
+	}
 
 	C.gdk_window_set_device_cursor((*C.GdkWindow)(recv.native), c_device, c_cursor)
 
@@ -336,7 +357,10 @@ func (recv *Window) SetDeviceCursor(device *Device, cursor *Cursor) {
 
 // SetDeviceEvents is a wrapper around the C function gdk_window_set_device_events.
 func (recv *Window) SetDeviceEvents(device *Device, eventMask EventMask) {
-	c_device := (*C.GdkDevice)(device.ToC())
+	c_device := (*C.GdkDevice)(C.NULL)
+	if device != nil {
+		c_device = (*C.GdkDevice)(device.ToC())
+	}
 
 	c_event_mask := (C.GdkEventMask)(eventMask)
 

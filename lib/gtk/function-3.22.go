@@ -17,7 +17,10 @@ import "C"
 
 // ShowUriOnWindow is a wrapper around the C function gtk_show_uri_on_window.
 func ShowUriOnWindow(parent *Window, uri string, timestamp uint32) (bool, error) {
-	c_parent := (*C.GtkWindow)(parent.ToC())
+	c_parent := (*C.GtkWindow)(C.NULL)
+	if parent != nil {
+		c_parent = (*C.GtkWindow)(parent.ToC())
+	}
 
 	c_uri := C.CString(uri)
 	defer C.free(unsafe.Pointer(c_uri))

@@ -19,7 +19,10 @@ import "C"
 
 // AcceleratorGetLabelWithKeycode is a wrapper around the C function gtk_accelerator_get_label_with_keycode.
 func AcceleratorGetLabelWithKeycode(display *gdk.Display, acceleratorKey uint32, keycode uint32, acceleratorMods gdk.ModifierType) string {
-	c_display := (*C.GdkDisplay)(display.ToC())
+	c_display := (*C.GdkDisplay)(C.NULL)
+	if display != nil {
+		c_display = (*C.GdkDisplay)(display.ToC())
+	}
 
 	c_accelerator_key := (C.guint)(acceleratorKey)
 
@@ -36,7 +39,10 @@ func AcceleratorGetLabelWithKeycode(display *gdk.Display, acceleratorKey uint32,
 
 // AcceleratorNameWithKeycode is a wrapper around the C function gtk_accelerator_name_with_keycode.
 func AcceleratorNameWithKeycode(display *gdk.Display, acceleratorKey uint32, keycode uint32, acceleratorMods gdk.ModifierType) string {
-	c_display := (*C.GdkDisplay)(display.ToC())
+	c_display := (*C.GdkDisplay)(C.NULL)
+	if display != nil {
+		c_display = (*C.GdkDisplay)(display.ToC())
+	}
 
 	c_accelerator_key := (C.guint)(acceleratorKey)
 
@@ -55,15 +61,24 @@ func AcceleratorNameWithKeycode(display *gdk.Display, acceleratorKey uint32, key
 
 // RenderInsertionCursor is a wrapper around the C function gtk_render_insertion_cursor.
 func RenderInsertionCursor(context *StyleContext, cr *cairo.Context, x float64, y float64, layout *pango.Layout, index int32, direction pango.Direction) {
-	c_context := (*C.GtkStyleContext)(context.ToC())
+	c_context := (*C.GtkStyleContext)(C.NULL)
+	if context != nil {
+		c_context = (*C.GtkStyleContext)(context.ToC())
+	}
 
-	c_cr := (*C.cairo_t)(cr.ToC())
+	c_cr := (*C.cairo_t)(C.NULL)
+	if cr != nil {
+		c_cr = (*C.cairo_t)(cr.ToC())
+	}
 
 	c_x := (C.gdouble)(x)
 
 	c_y := (C.gdouble)(y)
 
-	c_layout := (*C.PangoLayout)(layout.ToC())
+	c_layout := (*C.PangoLayout)(C.NULL)
+	if layout != nil {
+		c_layout = (*C.PangoLayout)(layout.ToC())
+	}
 
 	c_index := (C.int)(index)
 

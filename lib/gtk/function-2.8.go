@@ -17,7 +17,10 @@ import "C"
 
 // DragSetIconName is a wrapper around the C function gtk_drag_set_icon_name.
 func DragSetIconName(context *gdk.DragContext, iconName string, hotX int32, hotY int32) {
-	c_context := (*C.GdkDragContext)(context.ToC())
+	c_context := (*C.GdkDragContext)(C.NULL)
+	if context != nil {
+		c_context = (*C.GdkDragContext)(context.ToC())
+	}
 
 	c_icon_name := C.CString(iconName)
 	defer C.free(unsafe.Pointer(c_icon_name))

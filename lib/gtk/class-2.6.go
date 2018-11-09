@@ -153,7 +153,10 @@ func (recv *AboutDialog) SetLicense(license string) {
 
 // SetLogo is a wrapper around the C function gtk_about_dialog_set_logo.
 func (recv *AboutDialog) SetLogo(logo *gdkpixbuf.Pixbuf) {
-	c_logo := (*C.GdkPixbuf)(logo.ToC())
+	c_logo := (*C.GdkPixbuf)(C.NULL)
+	if logo != nil {
+		c_logo = (*C.GdkPixbuf)(logo.ToC())
+	}
 
 	C.gtk_about_dialog_set_logo((*C.GtkAboutDialog)(recv.native), c_logo)
 
@@ -264,7 +267,10 @@ func (recv *Button) GetImage() *Widget {
 
 // SetImage is a wrapper around the C function gtk_button_set_image.
 func (recv *Button) SetImage(image *Widget) {
-	c_image := (*C.GtkWidget)(image.ToC())
+	c_image := (*C.GtkWidget)(C.NULL)
+	if image != nil {
+		c_image = (*C.GtkWidget)(image.ToC())
+	}
 
 	C.gtk_button_set_image((*C.GtkButton)(recv.native), c_image)
 
@@ -309,9 +315,15 @@ func CellViewNew() *CellView {
 
 // CellViewNewWithContext is a wrapper around the C function gtk_cell_view_new_with_context.
 func CellViewNewWithContext(area *CellArea, context *CellAreaContext) *CellView {
-	c_area := (*C.GtkCellArea)(area.ToC())
+	c_area := (*C.GtkCellArea)(C.NULL)
+	if area != nil {
+		c_area = (*C.GtkCellArea)(area.ToC())
+	}
 
-	c_context := (*C.GtkCellAreaContext)(context.ToC())
+	c_context := (*C.GtkCellAreaContext)(C.NULL)
+	if context != nil {
+		c_context = (*C.GtkCellAreaContext)(context.ToC())
+	}
 
 	retC := C.gtk_cell_view_new_with_context(c_area, c_context)
 	retGo := CellViewNewFromC(unsafe.Pointer(retC))
@@ -332,7 +344,10 @@ func CellViewNewWithMarkup(markup string) *CellView {
 
 // CellViewNewWithPixbuf is a wrapper around the C function gtk_cell_view_new_with_pixbuf.
 func CellViewNewWithPixbuf(pixbuf *gdkpixbuf.Pixbuf) *CellView {
-	c_pixbuf := (*C.GdkPixbuf)(pixbuf.ToC())
+	c_pixbuf := (*C.GdkPixbuf)(C.NULL)
+	if pixbuf != nil {
+		c_pixbuf = (*C.GdkPixbuf)(pixbuf.ToC())
+	}
 
 	retC := C.gtk_cell_view_new_with_pixbuf(c_pixbuf)
 	retGo := CellViewNewFromC(unsafe.Pointer(retC))
@@ -366,7 +381,10 @@ func (recv *CellView) GetDisplayedRow() *TreePath {
 
 // GetSizeOfRow is a wrapper around the C function gtk_cell_view_get_size_of_row.
 func (recv *CellView) GetSizeOfRow(path *TreePath) (bool, *Requisition) {
-	c_path := (*C.GtkTreePath)(path.ToC())
+	c_path := (*C.GtkTreePath)(C.NULL)
+	if path != nil {
+		c_path = (*C.GtkTreePath)(path.ToC())
+	}
 
 	var c_requisition C.GtkRequisition
 
@@ -380,7 +398,10 @@ func (recv *CellView) GetSizeOfRow(path *TreePath) (bool, *Requisition) {
 
 // SetBackgroundColor is a wrapper around the C function gtk_cell_view_set_background_color.
 func (recv *CellView) SetBackgroundColor(color *gdk.Color) {
-	c_color := (*C.GdkColor)(color.ToC())
+	c_color := (*C.GdkColor)(C.NULL)
+	if color != nil {
+		c_color = (*C.GdkColor)(color.ToC())
+	}
 
 	C.gtk_cell_view_set_background_color((*C.GtkCellView)(recv.native), c_color)
 
@@ -389,7 +410,10 @@ func (recv *CellView) SetBackgroundColor(color *gdk.Color) {
 
 // SetDisplayedRow is a wrapper around the C function gtk_cell_view_set_displayed_row.
 func (recv *CellView) SetDisplayedRow(path *TreePath) {
-	c_path := (*C.GtkTreePath)(path.ToC())
+	c_path := (*C.GtkTreePath)(C.NULL)
+	if path != nil {
+		c_path = (*C.GtkTreePath)(path.ToC())
+	}
 
 	C.gtk_cell_view_set_displayed_row((*C.GtkCellView)(recv.native), c_path)
 
@@ -470,7 +494,10 @@ func clipboard_ownerChangeHandler(_ *C.GObject, c_event *C.GdkEventOwnerChange, 
 
 // SetImage is a wrapper around the C function gtk_clipboard_set_image.
 func (recv *Clipboard) SetImage(pixbuf *gdkpixbuf.Pixbuf) {
-	c_pixbuf := (*C.GdkPixbuf)(pixbuf.ToC())
+	c_pixbuf := (*C.GdkPixbuf)(C.NULL)
+	if pixbuf != nil {
+		c_pixbuf = (*C.GdkPixbuf)(pixbuf.ToC())
+	}
 
 	C.gtk_clipboard_set_image((*C.GtkClipboard)(recv.native), c_pixbuf)
 
@@ -652,7 +679,10 @@ func FileChooserButtonNew(title string, action FileChooserAction) *FileChooserBu
 
 // FileChooserButtonNewWithDialog is a wrapper around the C function gtk_file_chooser_button_new_with_dialog.
 func FileChooserButtonNewWithDialog(dialog *Dialog) *FileChooserButton {
-	c_dialog := (*C.GtkWidget)(dialog.ToC())
+	c_dialog := (*C.GtkWidget)(C.NULL)
+	if dialog != nil {
+		c_dialog = (*C.GtkWidget)(dialog.ToC())
+	}
 
 	retC := C.gtk_file_chooser_button_new_with_dialog(c_dialog)
 	retGo := FileChooserButtonNewFromC(unsafe.Pointer(retC))
@@ -850,7 +880,10 @@ func (recv *IconView) GetTextColumn() int32 {
 
 // ItemActivated is a wrapper around the C function gtk_icon_view_item_activated.
 func (recv *IconView) ItemActivated(path *TreePath) {
-	c_path := (*C.GtkTreePath)(path.ToC())
+	c_path := (*C.GtkTreePath)(C.NULL)
+	if path != nil {
+		c_path = (*C.GtkTreePath)(path.ToC())
+	}
 
 	C.gtk_icon_view_item_activated((*C.GtkIconView)(recv.native), c_path)
 
@@ -859,7 +892,10 @@ func (recv *IconView) ItemActivated(path *TreePath) {
 
 // PathIsSelected is a wrapper around the C function gtk_icon_view_path_is_selected.
 func (recv *IconView) PathIsSelected(path *TreePath) bool {
-	c_path := (*C.GtkTreePath)(path.ToC())
+	c_path := (*C.GtkTreePath)(C.NULL)
+	if path != nil {
+		c_path = (*C.GtkTreePath)(path.ToC())
+	}
 
 	retC := C.gtk_icon_view_path_is_selected((*C.GtkIconView)(recv.native), c_path)
 	retGo := retC == C.TRUE
@@ -876,7 +912,10 @@ func (recv *IconView) SelectAll() {
 
 // SelectPath is a wrapper around the C function gtk_icon_view_select_path.
 func (recv *IconView) SelectPath(path *TreePath) {
-	c_path := (*C.GtkTreePath)(path.ToC())
+	c_path := (*C.GtkTreePath)(C.NULL)
+	if path != nil {
+		c_path = (*C.GtkTreePath)(path.ToC())
+	}
 
 	C.gtk_icon_view_select_path((*C.GtkIconView)(recv.native), c_path)
 
@@ -1002,7 +1041,10 @@ func (recv *IconView) UnselectAll() {
 
 // UnselectPath is a wrapper around the C function gtk_icon_view_unselect_path.
 func (recv *IconView) UnselectPath(path *TreePath) {
-	c_path := (*C.GtkTreePath)(path.ToC())
+	c_path := (*C.GtkTreePath)(C.NULL)
+	if path != nil {
+		c_path = (*C.GtkTreePath)(path.ToC())
+	}
 
 	C.gtk_icon_view_unselect_path((*C.GtkIconView)(recv.native), c_path)
 
@@ -1124,7 +1166,10 @@ func (recv *Label) SetWidthChars(nChars int32) {
 
 // MenuToolButtonNew is a wrapper around the C function gtk_menu_tool_button_new.
 func MenuToolButtonNew(iconWidget *Widget, label string) *MenuToolButton {
-	c_icon_widget := (*C.GtkWidget)(iconWidget.ToC())
+	c_icon_widget := (*C.GtkWidget)(C.NULL)
+	if iconWidget != nil {
+		c_icon_widget = (*C.GtkWidget)(iconWidget.ToC())
+	}
 
 	c_label := C.CString(label)
 	defer C.free(unsafe.Pointer(c_label))
@@ -1156,7 +1201,10 @@ func (recv *MenuToolButton) GetMenu() *Widget {
 
 // SetMenu is a wrapper around the C function gtk_menu_tool_button_set_menu.
 func (recv *MenuToolButton) SetMenu(menu *Widget) {
-	c_menu := (*C.GtkWidget)(menu.ToC())
+	c_menu := (*C.GtkWidget)(C.NULL)
+	if menu != nil {
+		c_menu = (*C.GtkWidget)(menu.ToC())
+	}
 
 	C.gtk_menu_tool_button_set_menu((*C.GtkMenuToolButton)(recv.native), c_menu)
 
@@ -1188,7 +1236,10 @@ func (recv *ProgressBar) SetEllipsize(mode pango.EllipsizeMode) {
 
 // Backspace is a wrapper around the C function gtk_text_buffer_backspace.
 func (recv *TextBuffer) Backspace(iter *TextIter, interactive bool, defaultEditable bool) bool {
-	c_iter := (*C.GtkTextIter)(iter.ToC())
+	c_iter := (*C.GtkTextIter)(C.NULL)
+	if iter != nil {
+		c_iter = (*C.GtkTextIter)(iter.ToC())
+	}
 
 	c_interactive :=
 		boolToGboolean(interactive)

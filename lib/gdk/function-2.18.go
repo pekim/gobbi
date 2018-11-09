@@ -12,7 +12,10 @@ import "C"
 
 // OffscreenWindowGetEmbedder is a wrapper around the C function gdk_offscreen_window_get_embedder.
 func OffscreenWindowGetEmbedder(window *Window) *Window {
-	c_window := (*C.GdkWindow)(window.ToC())
+	c_window := (*C.GdkWindow)(C.NULL)
+	if window != nil {
+		c_window = (*C.GdkWindow)(window.ToC())
+	}
 
 	retC := C.gdk_offscreen_window_get_embedder(c_window)
 	var retGo (*Window)
@@ -27,9 +30,15 @@ func OffscreenWindowGetEmbedder(window *Window) *Window {
 
 // OffscreenWindowSetEmbedder is a wrapper around the C function gdk_offscreen_window_set_embedder.
 func OffscreenWindowSetEmbedder(window *Window, embedder *Window) {
-	c_window := (*C.GdkWindow)(window.ToC())
+	c_window := (*C.GdkWindow)(C.NULL)
+	if window != nil {
+		c_window = (*C.GdkWindow)(window.ToC())
+	}
 
-	c_embedder := (*C.GdkWindow)(embedder.ToC())
+	c_embedder := (*C.GdkWindow)(C.NULL)
+	if embedder != nil {
+		c_embedder = (*C.GdkWindow)(embedder.ToC())
+	}
 
 	C.gdk_offscreen_window_set_embedder(c_window, c_embedder)
 

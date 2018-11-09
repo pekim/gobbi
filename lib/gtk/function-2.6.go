@@ -31,7 +31,10 @@ func AcceleratorGetLabel(acceleratorKey uint32, acceleratorMods gdk.ModifierType
 
 // AlternativeDialogButtonOrder is a wrapper around the C function gtk_alternative_dialog_button_order.
 func AlternativeDialogButtonOrder(screen *gdk.Screen) bool {
-	c_screen := (*C.GdkScreen)(screen.ToC())
+	c_screen := (*C.GdkScreen)(C.NULL)
+	if screen != nil {
+		c_screen = (*C.GdkScreen)(screen.ToC())
+	}
 
 	retC := C.gtk_alternative_dialog_button_order(c_screen)
 	retGo := retC == C.TRUE

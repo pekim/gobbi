@@ -30,7 +30,10 @@ func (recv *Accessible) GetWidget() *Widget {
 
 // SetWidget is a wrapper around the C function gtk_accessible_set_widget.
 func (recv *Accessible) SetWidget(widget *Widget) {
-	c_widget := (*C.GtkWidget)(widget.ToC())
+	c_widget := (*C.GtkWidget)(C.NULL)
+	if widget != nil {
+		c_widget = (*C.GtkWidget)(widget.ToC())
+	}
 
 	C.gtk_accessible_set_widget((*C.GtkAccessible)(recv.native), c_widget)
 
@@ -54,7 +57,10 @@ func (recv *Button) GetEventWindow() *gdk.Window {
 
 // ImContextFilterKeypress is a wrapper around the C function gtk_entry_im_context_filter_keypress.
 func (recv *Entry) ImContextFilterKeypress(event *gdk.EventKey) bool {
-	c_event := (*C.GdkEventKey)(event.ToC())
+	c_event := (*C.GdkEventKey)(C.NULL)
+	if event != nil {
+		c_event = (*C.GdkEventKey)(event.ToC())
+	}
 
 	retC := C.gtk_entry_im_context_filter_keypress((*C.GtkEntry)(recv.native), c_event)
 	retGo := retC == C.TRUE
@@ -97,7 +103,10 @@ func (recv *FontSelectionDialog) GetFontSelection() *Widget {
 
 // GetItemColumn is a wrapper around the C function gtk_icon_view_get_item_column.
 func (recv *IconView) GetItemColumn(path *TreePath) int32 {
-	c_path := (*C.GtkTreePath)(path.ToC())
+	c_path := (*C.GtkTreePath)(C.NULL)
+	if path != nil {
+		c_path = (*C.GtkTreePath)(path.ToC())
+	}
 
 	retC := C.gtk_icon_view_get_item_column((*C.GtkIconView)(recv.native), c_path)
 	retGo := (int32)(retC)
@@ -107,7 +116,10 @@ func (recv *IconView) GetItemColumn(path *TreePath) int32 {
 
 // GetItemRow is a wrapper around the C function gtk_icon_view_get_item_row.
 func (recv *IconView) GetItemRow(path *TreePath) int32 {
-	c_path := (*C.GtkTreePath)(path.ToC())
+	c_path := (*C.GtkTreePath)(C.NULL)
+	if path != nil {
+		c_path = (*C.GtkTreePath)(path.ToC())
+	}
 
 	retC := C.gtk_icon_view_get_item_row((*C.GtkIconView)(recv.native), c_path)
 	retGo := (int32)(retC)
@@ -181,7 +193,10 @@ func (recv *TextView) GetVadjustment() *Adjustment {
 
 // ImContextFilterKeypress is a wrapper around the C function gtk_text_view_im_context_filter_keypress.
 func (recv *TextView) ImContextFilterKeypress(event *gdk.EventKey) bool {
-	c_event := (*C.GdkEventKey)(event.ToC())
+	c_event := (*C.GdkEventKey)(C.NULL)
+	if event != nil {
+		c_event = (*C.GdkEventKey)(event.ToC())
+	}
 
 	retC := C.gtk_text_view_im_context_filter_keypress((*C.GtkTextView)(recv.native), c_event)
 	retGo := retC == C.TRUE

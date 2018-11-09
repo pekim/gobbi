@@ -1074,7 +1074,10 @@ func (recv *FileAttributeMatcher) Ref() *FileAttributeMatcher {
 
 // Subtract is a wrapper around the C function g_file_attribute_matcher_subtract.
 func (recv *FileAttributeMatcher) Subtract(subtract *FileAttributeMatcher) *FileAttributeMatcher {
-	c_subtract := (*C.GFileAttributeMatcher)(subtract.ToC())
+	c_subtract := (*C.GFileAttributeMatcher)(C.NULL)
+	if subtract != nil {
+		c_subtract = (*C.GFileAttributeMatcher)(subtract.ToC())
+	}
 
 	retC := C.g_file_attribute_matcher_subtract((*C.GFileAttributeMatcher)(recv.native), c_subtract)
 	retGo := FileAttributeMatcherNewFromC(unsafe.Pointer(retC))
@@ -4162,7 +4165,10 @@ func (recv *UnixMountPoint) ToC() unsafe.Pointer {
 
 // Compare is a wrapper around the C function g_unix_mount_point_compare.
 func (recv *UnixMountPoint) Compare(mount2 *UnixMountPoint) int32 {
-	c_mount2 := (*C.GUnixMountPoint)(mount2.ToC())
+	c_mount2 := (*C.GUnixMountPoint)(C.NULL)
+	if mount2 != nil {
+		c_mount2 = (*C.GUnixMountPoint)(mount2.ToC())
+	}
 
 	retC := C.g_unix_mount_point_compare((*C.GUnixMountPoint)(recv.native), c_mount2)
 	retGo := (int32)(retC)

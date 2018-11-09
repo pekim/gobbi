@@ -46,11 +46,20 @@ func (recv *Proxy) ToC() unsafe.Pointer {
 
 // Connect is a wrapper around the C function g_proxy_connect.
 func (recv *Proxy) Connect(connection *IOStream, proxyAddress *ProxyAddress, cancellable *Cancellable) (*IOStream, error) {
-	c_connection := (*C.GIOStream)(connection.ToC())
+	c_connection := (*C.GIOStream)(C.NULL)
+	if connection != nil {
+		c_connection = (*C.GIOStream)(connection.ToC())
+	}
 
-	c_proxy_address := (*C.GProxyAddress)(proxyAddress.ToC())
+	c_proxy_address := (*C.GProxyAddress)(C.NULL)
+	if proxyAddress != nil {
+		c_proxy_address = (*C.GProxyAddress)(proxyAddress.ToC())
+	}
 
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 

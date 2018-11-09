@@ -49,7 +49,10 @@ func (recv *Matrix) TransformDistance(dx float64, dy float64) {
 
 // TransformPixelRectangle is a wrapper around the C function pango_matrix_transform_pixel_rectangle.
 func (recv *Matrix) TransformPixelRectangle(rect *Rectangle) {
-	c_rect := (*C.PangoRectangle)(rect.ToC())
+	c_rect := (*C.PangoRectangle)(C.NULL)
+	if rect != nil {
+		c_rect = (*C.PangoRectangle)(rect.ToC())
+	}
 
 	C.pango_matrix_transform_pixel_rectangle((*C.PangoMatrix)(recv.native), c_rect)
 
@@ -69,7 +72,10 @@ func (recv *Matrix) TransformPoint(x float64, y float64) {
 
 // TransformRectangle is a wrapper around the C function pango_matrix_transform_rectangle.
 func (recv *Matrix) TransformRectangle(rect *Rectangle) {
-	c_rect := (*C.PangoRectangle)(rect.ToC())
+	c_rect := (*C.PangoRectangle)(C.NULL)
+	if rect != nil {
+		c_rect = (*C.PangoRectangle)(rect.ToC())
+	}
 
 	C.pango_matrix_transform_rectangle((*C.PangoMatrix)(recv.native), c_rect)
 

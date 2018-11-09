@@ -675,7 +675,10 @@ func display_openedHandler(_ *C.GObject, data C.gpointer) {
 
 // DeviceIsGrabbed is a wrapper around the C function gdk_display_device_is_grabbed.
 func (recv *Display) DeviceIsGrabbed(device *Device) bool {
-	c_device := (*C.GdkDevice)(device.ToC())
+	c_device := (*C.GdkDevice)(C.NULL)
+	if device != nil {
+		c_device = (*C.GdkDevice)(device.ToC())
+	}
 
 	retC := C.gdk_display_device_is_grabbed((*C.GdkDisplay)(recv.native), c_device)
 	retGo := retC == C.TRUE
@@ -757,7 +760,10 @@ func (recv *DragContext) GetDevice() *Device {
 
 // SetDevice is a wrapper around the C function gdk_drag_context_set_device.
 func (recv *DragContext) SetDevice(device *Device) {
-	c_device := (*C.GdkDevice)(device.ToC())
+	c_device := (*C.GdkDevice)(C.NULL)
+	if device != nil {
+		c_device = (*C.GdkDevice)(device.ToC())
+	}
 
 	C.gdk_drag_context_set_device((*C.GdkDragContext)(recv.native), c_device)
 
@@ -1273,7 +1279,10 @@ func (recv *Keymap) GetDirection() pango.Direction {
 
 // LookupKey is a wrapper around the C function gdk_keymap_lookup_key.
 func (recv *Keymap) LookupKey(key *KeymapKey) uint32 {
-	c_key := (*C.GdkKeymapKey)(key.ToC())
+	c_key := (*C.GdkKeymapKey)(C.NULL)
+	if key != nil {
+		c_key = (*C.GdkKeymapKey)(key.ToC())
+	}
 
 	retC := C.gdk_keymap_lookup_key((*C.GdkKeymap)(recv.native), c_key)
 	retGo := (uint32)(retC)
@@ -1381,9 +1390,15 @@ func CastToWindow(object *gobject.Object) *Window {
 
 // WindowNew is a wrapper around the C function gdk_window_new.
 func WindowNew(parent *Window, attributes *WindowAttr, attributesMask int32) *Window {
-	c_parent := (*C.GdkWindow)(parent.ToC())
+	c_parent := (*C.GdkWindow)(C.NULL)
+	if parent != nil {
+		c_parent = (*C.GdkWindow)(parent.ToC())
+	}
 
-	c_attributes := (*C.GdkWindowAttr)(attributes.ToC())
+	c_attributes := (*C.GdkWindowAttr)(C.NULL)
+	if attributes != nil {
+		c_attributes = (*C.GdkWindowAttr)(attributes.ToC())
+	}
 
 	c_attributes_mask := (C.gint)(attributesMask)
 
@@ -1414,7 +1429,10 @@ func (recv *Window) BeginMoveDrag(button int32, rootX int32, rootY int32, timest
 
 // BeginPaintRegion is a wrapper around the C function gdk_window_begin_paint_region.
 func (recv *Window) BeginPaintRegion(region *cairo.Region) {
-	c_region := (*C.cairo_region_t)(region.ToC())
+	c_region := (*C.cairo_region_t)(C.NULL)
+	if region != nil {
+		c_region = (*C.cairo_region_t)(region.ToC())
+	}
 
 	C.gdk_window_begin_paint_region((*C.GdkWindow)(recv.native), c_region)
 
@@ -1681,7 +1699,10 @@ func (recv *Window) Iconify() {
 
 // InvalidateRegion is a wrapper around the C function gdk_window_invalidate_region.
 func (recv *Window) InvalidateRegion(region *cairo.Region, invalidateChildren bool) {
-	c_region := (*C.cairo_region_t)(region.ToC())
+	c_region := (*C.cairo_region_t)(C.NULL)
+	if region != nil {
+		c_region = (*C.cairo_region_t)(region.ToC())
+	}
 
 	c_invalidate_children :=
 		boolToGboolean(invalidateChildren)
@@ -1790,7 +1811,10 @@ func (recv *Window) RegisterDnd() {
 
 // Reparent is a wrapper around the C function gdk_window_reparent.
 func (recv *Window) Reparent(newParent *Window, x int32, y int32) {
-	c_new_parent := (*C.GdkWindow)(newParent.ToC())
+	c_new_parent := (*C.GdkWindow)(C.NULL)
+	if newParent != nil {
+		c_new_parent = (*C.GdkWindow)(newParent.ToC())
+	}
 
 	c_x := (C.gint)(x)
 
@@ -1825,7 +1849,10 @@ func (recv *Window) Scroll(dx int32, dy int32) {
 
 // SetBackground is a wrapper around the C function gdk_window_set_background.
 func (recv *Window) SetBackground(color *Color) {
-	c_color := (*C.GdkColor)(color.ToC())
+	c_color := (*C.GdkColor)(C.NULL)
+	if color != nil {
+		c_color = (*C.GdkColor)(color.ToC())
+	}
 
 	C.gdk_window_set_background((*C.GdkWindow)(recv.native), c_color)
 
@@ -1834,7 +1861,10 @@ func (recv *Window) SetBackground(color *Color) {
 
 // SetBackgroundPattern is a wrapper around the C function gdk_window_set_background_pattern.
 func (recv *Window) SetBackgroundPattern(pattern *cairo.Pattern) {
-	c_pattern := (*C.cairo_pattern_t)(pattern.ToC())
+	c_pattern := (*C.cairo_pattern_t)(C.NULL)
+	if pattern != nil {
+		c_pattern = (*C.cairo_pattern_t)(pattern.ToC())
+	}
 
 	C.gdk_window_set_background_pattern((*C.GdkWindow)(recv.native), c_pattern)
 
@@ -1843,7 +1873,10 @@ func (recv *Window) SetBackgroundPattern(pattern *cairo.Pattern) {
 
 // SetBackgroundRgba is a wrapper around the C function gdk_window_set_background_rgba.
 func (recv *Window) SetBackgroundRgba(rgba *RGBA) {
-	c_rgba := (*C.GdkRGBA)(rgba.ToC())
+	c_rgba := (*C.GdkRGBA)(C.NULL)
+	if rgba != nil {
+		c_rgba = (*C.GdkRGBA)(rgba.ToC())
+	}
 
 	C.gdk_window_set_background_rgba((*C.GdkWindow)(recv.native), c_rgba)
 
@@ -1859,7 +1892,10 @@ func (recv *Window) SetChildShapes() {
 
 // SetCursor is a wrapper around the C function gdk_window_set_cursor.
 func (recv *Window) SetCursor(cursor *Cursor) {
-	c_cursor := (*C.GdkCursor)(cursor.ToC())
+	c_cursor := (*C.GdkCursor)(C.NULL)
+	if cursor != nil {
+		c_cursor = (*C.GdkCursor)(cursor.ToC())
+	}
 
 	C.gdk_window_set_cursor((*C.GdkWindow)(recv.native), c_cursor)
 
@@ -1895,7 +1931,10 @@ func (recv *Window) SetFunctions(functions WMFunction) {
 
 // SetGeometryHints is a wrapper around the C function gdk_window_set_geometry_hints.
 func (recv *Window) SetGeometryHints(geometry *Geometry, geomMask WindowHints) {
-	c_geometry := (*C.GdkGeometry)(geometry.ToC())
+	c_geometry := (*C.GdkGeometry)(C.NULL)
+	if geometry != nil {
+		c_geometry = (*C.GdkGeometry)(geometry.ToC())
+	}
 
 	c_geom_mask := (C.GdkWindowHints)(geomMask)
 
@@ -1906,7 +1945,10 @@ func (recv *Window) SetGeometryHints(geometry *Geometry, geomMask WindowHints) {
 
 // SetGroup is a wrapper around the C function gdk_window_set_group.
 func (recv *Window) SetGroup(leader *Window) {
-	c_leader := (*C.GdkWindow)(leader.ToC())
+	c_leader := (*C.GdkWindow)(C.NULL)
+	if leader != nil {
+		c_leader = (*C.GdkWindow)(leader.ToC())
+	}
 
 	C.gdk_window_set_group((*C.GdkWindow)(recv.native), c_leader)
 
@@ -1915,7 +1957,10 @@ func (recv *Window) SetGroup(leader *Window) {
 
 // SetIconList is a wrapper around the C function gdk_window_set_icon_list.
 func (recv *Window) SetIconList(pixbufs *glib.List) {
-	c_pixbufs := (*C.GList)(pixbufs.ToC())
+	c_pixbufs := (*C.GList)(C.NULL)
+	if pixbufs != nil {
+		c_pixbufs = (*C.GList)(pixbufs.ToC())
+	}
 
 	C.gdk_window_set_icon_list((*C.GdkWindow)(recv.native), c_pixbufs)
 
@@ -1985,7 +2030,10 @@ func (recv *Window) SetTitle(title string) {
 
 // SetTransientFor is a wrapper around the C function gdk_window_set_transient_for.
 func (recv *Window) SetTransientFor(parent *Window) {
-	c_parent := (*C.GdkWindow)(parent.ToC())
+	c_parent := (*C.GdkWindow)(C.NULL)
+	if parent != nil {
+		c_parent = (*C.GdkWindow)(parent.ToC())
+	}
 
 	C.gdk_window_set_transient_for((*C.GdkWindow)(recv.native), c_parent)
 
@@ -2012,7 +2060,10 @@ func (recv *Window) SetUserData(userData uintptr) {
 
 // ShapeCombineRegion is a wrapper around the C function gdk_window_shape_combine_region.
 func (recv *Window) ShapeCombineRegion(shapeRegion *cairo.Region, offsetX int32, offsetY int32) {
-	c_shape_region := (*C.cairo_region_t)(shapeRegion.ToC())
+	c_shape_region := (*C.cairo_region_t)(C.NULL)
+	if shapeRegion != nil {
+		c_shape_region = (*C.cairo_region_t)(shapeRegion.ToC())
+	}
 
 	c_offset_x := (C.gint)(offsetX)
 

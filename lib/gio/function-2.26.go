@@ -47,7 +47,10 @@ func BusGetFinish(res *AsyncResult) (*DBusConnection, error) {
 func BusGetSync(busType BusType, cancellable *Cancellable) (*DBusConnection, error) {
 	c_bus_type := (C.GBusType)(busType)
 
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -68,16 +71,25 @@ func BusGetSync(busType BusType, cancellable *Cancellable) (*DBusConnection, err
 
 // BusOwnNameOnConnectionWithClosures is a wrapper around the C function g_bus_own_name_on_connection_with_closures.
 func BusOwnNameOnConnectionWithClosures(connection *DBusConnection, name string, flags BusNameOwnerFlags, nameAcquiredClosure *gobject.Closure, nameLostClosure *gobject.Closure) uint32 {
-	c_connection := (*C.GDBusConnection)(connection.ToC())
+	c_connection := (*C.GDBusConnection)(C.NULL)
+	if connection != nil {
+		c_connection = (*C.GDBusConnection)(connection.ToC())
+	}
 
 	c_name := C.CString(name)
 	defer C.free(unsafe.Pointer(c_name))
 
 	c_flags := (C.GBusNameOwnerFlags)(flags)
 
-	c_name_acquired_closure := (*C.GClosure)(nameAcquiredClosure.ToC())
+	c_name_acquired_closure := (*C.GClosure)(C.NULL)
+	if nameAcquiredClosure != nil {
+		c_name_acquired_closure = (*C.GClosure)(nameAcquiredClosure.ToC())
+	}
 
-	c_name_lost_closure := (*C.GClosure)(nameLostClosure.ToC())
+	c_name_lost_closure := (*C.GClosure)(C.NULL)
+	if nameLostClosure != nil {
+		c_name_lost_closure = (*C.GClosure)(nameLostClosure.ToC())
+	}
 
 	retC := C.g_bus_own_name_on_connection_with_closures(c_connection, c_name, c_flags, c_name_acquired_closure, c_name_lost_closure)
 	retGo := (uint32)(retC)
@@ -94,11 +106,20 @@ func BusOwnNameWithClosures(busType BusType, name string, flags BusNameOwnerFlag
 
 	c_flags := (C.GBusNameOwnerFlags)(flags)
 
-	c_bus_acquired_closure := (*C.GClosure)(busAcquiredClosure.ToC())
+	c_bus_acquired_closure := (*C.GClosure)(C.NULL)
+	if busAcquiredClosure != nil {
+		c_bus_acquired_closure = (*C.GClosure)(busAcquiredClosure.ToC())
+	}
 
-	c_name_acquired_closure := (*C.GClosure)(nameAcquiredClosure.ToC())
+	c_name_acquired_closure := (*C.GClosure)(C.NULL)
+	if nameAcquiredClosure != nil {
+		c_name_acquired_closure = (*C.GClosure)(nameAcquiredClosure.ToC())
+	}
 
-	c_name_lost_closure := (*C.GClosure)(nameLostClosure.ToC())
+	c_name_lost_closure := (*C.GClosure)(C.NULL)
+	if nameLostClosure != nil {
+		c_name_lost_closure = (*C.GClosure)(nameLostClosure.ToC())
+	}
 
 	retC := C.g_bus_own_name_with_closures(c_bus_type, c_name, c_flags, c_bus_acquired_closure, c_name_acquired_closure, c_name_lost_closure)
 	retGo := (uint32)(retC)
@@ -130,16 +151,25 @@ func BusUnwatchName(watcherId uint32) {
 
 // BusWatchNameOnConnectionWithClosures is a wrapper around the C function g_bus_watch_name_on_connection_with_closures.
 func BusWatchNameOnConnectionWithClosures(connection *DBusConnection, name string, flags BusNameWatcherFlags, nameAppearedClosure *gobject.Closure, nameVanishedClosure *gobject.Closure) uint32 {
-	c_connection := (*C.GDBusConnection)(connection.ToC())
+	c_connection := (*C.GDBusConnection)(C.NULL)
+	if connection != nil {
+		c_connection = (*C.GDBusConnection)(connection.ToC())
+	}
 
 	c_name := C.CString(name)
 	defer C.free(unsafe.Pointer(c_name))
 
 	c_flags := (C.GBusNameWatcherFlags)(flags)
 
-	c_name_appeared_closure := (*C.GClosure)(nameAppearedClosure.ToC())
+	c_name_appeared_closure := (*C.GClosure)(C.NULL)
+	if nameAppearedClosure != nil {
+		c_name_appeared_closure = (*C.GClosure)(nameAppearedClosure.ToC())
+	}
 
-	c_name_vanished_closure := (*C.GClosure)(nameVanishedClosure.ToC())
+	c_name_vanished_closure := (*C.GClosure)(C.NULL)
+	if nameVanishedClosure != nil {
+		c_name_vanished_closure = (*C.GClosure)(nameVanishedClosure.ToC())
+	}
 
 	retC := C.g_bus_watch_name_on_connection_with_closures(c_connection, c_name, c_flags, c_name_appeared_closure, c_name_vanished_closure)
 	retGo := (uint32)(retC)
@@ -156,9 +186,15 @@ func BusWatchNameWithClosures(busType BusType, name string, flags BusNameWatcher
 
 	c_flags := (C.GBusNameWatcherFlags)(flags)
 
-	c_name_appeared_closure := (*C.GClosure)(nameAppearedClosure.ToC())
+	c_name_appeared_closure := (*C.GClosure)(C.NULL)
+	if nameAppearedClosure != nil {
+		c_name_appeared_closure = (*C.GClosure)(nameAppearedClosure.ToC())
+	}
 
-	c_name_vanished_closure := (*C.GClosure)(nameVanishedClosure.ToC())
+	c_name_vanished_closure := (*C.GClosure)(C.NULL)
+	if nameVanishedClosure != nil {
+		c_name_vanished_closure = (*C.GClosure)(nameVanishedClosure.ToC())
+	}
 
 	retC := C.g_bus_watch_name_with_closures(c_bus_type, c_name, c_flags, c_name_appeared_closure, c_name_vanished_closure)
 	retGo := (uint32)(retC)
@@ -170,7 +206,10 @@ func BusWatchNameWithClosures(busType BusType, name string, flags BusNameWatcher
 func DbusAddressGetForBusSync(busType BusType, cancellable *Cancellable) (string, error) {
 	c_bus_type := (C.GBusType)(busType)
 
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -217,7 +256,10 @@ func DbusAddressGetStreamSync(address string, cancellable *Cancellable) (*IOStre
 
 	var c_out_guid *C.gchar
 
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -239,7 +281,10 @@ func DbusAddressGetStreamSync(address string, cancellable *Cancellable) (*IOStre
 
 // DbusErrorEncodeGerror is a wrapper around the C function g_dbus_error_encode_gerror.
 func DbusErrorEncodeGerror(error *glib.Error) string {
-	c_error := (*C.GError)(error.ToC())
+	c_error := (*C.GError)(C.NULL)
+	if error != nil {
+		c_error = (*C.GError)(error.ToC())
+	}
 
 	retC := C.g_dbus_error_encode_gerror(c_error)
 	retGo := C.GoString(retC)
@@ -250,7 +295,10 @@ func DbusErrorEncodeGerror(error *glib.Error) string {
 
 // DbusErrorGetRemoteError is a wrapper around the C function g_dbus_error_get_remote_error.
 func DbusErrorGetRemoteError(error *glib.Error) string {
-	c_error := (*C.GError)(error.ToC())
+	c_error := (*C.GError)(C.NULL)
+	if error != nil {
+		c_error = (*C.GError)(error.ToC())
+	}
 
 	retC := C.g_dbus_error_get_remote_error(c_error)
 	retGo := C.GoString(retC)
@@ -261,7 +309,10 @@ func DbusErrorGetRemoteError(error *glib.Error) string {
 
 // DbusErrorIsRemoteError is a wrapper around the C function g_dbus_error_is_remote_error.
 func DbusErrorIsRemoteError(error *glib.Error) bool {
-	c_error := (*C.GError)(error.ToC())
+	c_error := (*C.GError)(C.NULL)
+	if error != nil {
+		c_error = (*C.GError)(error.ToC())
+	}
 
 	retC := C.g_dbus_error_is_remote_error(c_error)
 	retGo := retC == C.TRUE
@@ -302,7 +353,10 @@ func DbusErrorRegisterError(errorDomain glib.Quark, errorCode int32, dbusErrorNa
 
 // DbusErrorStripRemoteError is a wrapper around the C function g_dbus_error_strip_remote_error.
 func DbusErrorStripRemoteError(error *glib.Error) bool {
-	c_error := (*C.GError)(error.ToC())
+	c_error := (*C.GError)(C.NULL)
+	if error != nil {
+		c_error = (*C.GError)(error.ToC())
+	}
 
 	retC := C.g_dbus_error_strip_remote_error(c_error)
 	retGo := retC == C.TRUE

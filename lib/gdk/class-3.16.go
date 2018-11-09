@@ -185,7 +185,10 @@ func (recv *Window) CreateGlContext() (*GLContext, error) {
 
 // MarkPaintFromClip is a wrapper around the C function gdk_window_mark_paint_from_clip.
 func (recv *Window) MarkPaintFromClip(cr *cairo.Context) {
-	c_cr := (*C.cairo_t)(cr.ToC())
+	c_cr := (*C.cairo_t)(C.NULL)
+	if cr != nil {
+		c_cr = (*C.cairo_t)(cr.ToC())
+	}
 
 	C.gdk_window_mark_paint_from_clip((*C.GdkWindow)(recv.native), c_cr)
 

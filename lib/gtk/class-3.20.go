@@ -68,7 +68,10 @@ func (recv *ApplicationWindow) GetHelpOverlay() *ShortcutsWindow {
 
 // SetHelpOverlay is a wrapper around the C function gtk_application_window_set_help_overlay.
 func (recv *ApplicationWindow) SetHelpOverlay(helpOverlay *ShortcutsWindow) {
-	c_help_overlay := (*C.GtkShortcutsWindow)(helpOverlay.ToC())
+	c_help_overlay := (*C.GtkShortcutsWindow)(C.NULL)
+	if helpOverlay != nil {
+		c_help_overlay = (*C.GtkShortcutsWindow)(helpOverlay.ToC())
+	}
 
 	C.gtk_application_window_set_help_overlay((*C.GtkApplicationWindow)(recv.native), c_help_overlay)
 
@@ -117,7 +120,10 @@ func FileChooserNativeNew(title string, parent *Window, action FileChooserAction
 	c_title := C.CString(title)
 	defer C.free(unsafe.Pointer(c_title))
 
-	c_parent := (*C.GtkWindow)(parent.ToC())
+	c_parent := (*C.GtkWindow)(C.NULL)
+	if parent != nil {
+		c_parent = (*C.GtkWindow)(parent.ToC())
+	}
 
 	c_action := (C.GtkFileChooserAction)(action)
 
@@ -283,7 +289,10 @@ func (recv *NativeDialog) SetTitle(title string) {
 
 // SetTransientFor is a wrapper around the C function gtk_native_dialog_set_transient_for.
 func (recv *NativeDialog) SetTransientFor(parent *Window) {
-	c_parent := (*C.GtkWindow)(parent.ToC())
+	c_parent := (*C.GtkWindow)(C.NULL)
+	if parent != nil {
+		c_parent = (*C.GtkWindow)(parent.ToC())
+	}
 
 	C.gtk_native_dialog_set_transient_for((*C.GtkNativeDialog)(recv.native), c_parent)
 

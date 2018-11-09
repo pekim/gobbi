@@ -78,7 +78,10 @@ func (recv *Credentials) GetNative(nativeType CredentialsType) uintptr {
 
 // IsSameUser is a wrapper around the C function g_credentials_is_same_user.
 func (recv *Credentials) IsSameUser(otherCredentials *Credentials) (bool, error) {
-	c_other_credentials := (*C.GCredentials)(otherCredentials.ToC())
+	c_other_credentials := (*C.GCredentials)(C.NULL)
+	if otherCredentials != nil {
+		c_other_credentials = (*C.GCredentials)(otherCredentials.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -157,9 +160,15 @@ func DBusAuthObserverNew() *DBusAuthObserver {
 
 // AuthorizeAuthenticatedPeer is a wrapper around the C function g_dbus_auth_observer_authorize_authenticated_peer.
 func (recv *DBusAuthObserver) AuthorizeAuthenticatedPeer(stream *IOStream, credentials *Credentials) bool {
-	c_stream := (*C.GIOStream)(stream.ToC())
+	c_stream := (*C.GIOStream)(C.NULL)
+	if stream != nil {
+		c_stream = (*C.GIOStream)(stream.ToC())
+	}
 
-	c_credentials := (*C.GCredentials)(credentials.ToC())
+	c_credentials := (*C.GCredentials)(C.NULL)
+	if credentials != nil {
+		c_credentials = (*C.GCredentials)(credentials.ToC())
+	}
 
 	retC := C.g_dbus_auth_observer_authorize_authenticated_peer((*C.GDBusAuthObserver)(recv.native), c_stream, c_credentials)
 	retGo := retC == C.TRUE
@@ -240,9 +249,15 @@ func DBusConnectionNewForAddressSync(address string, flags DBusConnectionFlags, 
 
 	c_flags := (C.GDBusConnectionFlags)(flags)
 
-	c_observer := (*C.GDBusAuthObserver)(observer.ToC())
+	c_observer := (*C.GDBusAuthObserver)(C.NULL)
+	if observer != nil {
+		c_observer = (*C.GDBusAuthObserver)(observer.ToC())
+	}
 
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -259,16 +274,25 @@ func DBusConnectionNewForAddressSync(address string, flags DBusConnectionFlags, 
 
 // DBusConnectionNewSync is a wrapper around the C function g_dbus_connection_new_sync.
 func DBusConnectionNewSync(stream *IOStream, guid string, flags DBusConnectionFlags, observer *DBusAuthObserver, cancellable *Cancellable) (*DBusConnection, error) {
-	c_stream := (*C.GIOStream)(stream.ToC())
+	c_stream := (*C.GIOStream)(C.NULL)
+	if stream != nil {
+		c_stream = (*C.GIOStream)(stream.ToC())
+	}
 
 	c_guid := C.CString(guid)
 	defer C.free(unsafe.Pointer(c_guid))
 
 	c_flags := (C.GDBusConnectionFlags)(flags)
 
-	c_observer := (*C.GDBusAuthObserver)(observer.ToC())
+	c_observer := (*C.GDBusAuthObserver)(C.NULL)
+	if observer != nil {
+		c_observer = (*C.GDBusAuthObserver)(observer.ToC())
+	}
 
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -312,7 +336,10 @@ func (recv *DBusConnection) CloseFinish(res *AsyncResult) (bool, error) {
 
 // CloseSync is a wrapper around the C function g_dbus_connection_close_sync.
 func (recv *DBusConnection) CloseSync(cancellable *Cancellable) (bool, error) {
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -350,7 +377,10 @@ func (recv *DBusConnection) FlushFinish(res *AsyncResult) (bool, error) {
 
 // FlushSync is a wrapper around the C function g_dbus_connection_flush_sync.
 func (recv *DBusConnection) FlushSync(cancellable *Cancellable) (bool, error) {
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -441,7 +471,10 @@ func (recv *DBusConnection) RemoveFilter(filterId uint32) {
 
 // SendMessage is a wrapper around the C function g_dbus_connection_send_message.
 func (recv *DBusConnection) SendMessage(message *DBusMessage, flags DBusSendMessageFlags) (bool, uint32, error) {
-	c_message := (*C.GDBusMessage)(message.ToC())
+	c_message := (*C.GDBusMessage)(C.NULL)
+	if message != nil {
+		c_message = (*C.GDBusMessage)(message.ToC())
+	}
 
 	c_flags := (C.GDBusSendMessageFlags)(flags)
 
@@ -483,7 +516,10 @@ func (recv *DBusConnection) SendMessageWithReplyFinish(res *AsyncResult) (*DBusM
 
 // SendMessageWithReplySync is a wrapper around the C function g_dbus_connection_send_message_with_reply_sync.
 func (recv *DBusConnection) SendMessageWithReplySync(message *DBusMessage, flags DBusSendMessageFlags, timeoutMsec int32, cancellable *Cancellable) (*DBusMessage, uint32, error) {
-	c_message := (*C.GDBusMessage)(message.ToC())
+	c_message := (*C.GDBusMessage)(C.NULL)
+	if message != nil {
+		c_message = (*C.GDBusMessage)(message.ToC())
+	}
 
 	c_flags := (C.GDBusSendMessageFlags)(flags)
 
@@ -491,7 +527,10 @@ func (recv *DBusConnection) SendMessageWithReplySync(message *DBusMessage, flags
 
 	var c_out_serial C.guint32
 
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -977,7 +1016,10 @@ func (recv *DBusMessage) SetSignature(value string) {
 
 // SetUnixFdList is a wrapper around the C function g_dbus_message_set_unix_fd_list.
 func (recv *DBusMessage) SetUnixFdList(fdList *UnixFDList) {
-	c_fd_list := (*C.GUnixFDList)(fdList.ToC())
+	c_fd_list := (*C.GUnixFDList)(C.NULL)
+	if fdList != nil {
+		c_fd_list = (*C.GUnixFDList)(fdList.ToC())
+	}
 
 	C.g_dbus_message_set_unix_fd_list((*C.GDBusMessage)(recv.native), c_fd_list)
 
@@ -1132,7 +1174,10 @@ func (recv *DBusMethodInvocation) ReturnErrorLiteral(domain glib.Quark, code int
 
 // ReturnGerror is a wrapper around the C function g_dbus_method_invocation_return_gerror.
 func (recv *DBusMethodInvocation) ReturnGerror(error *glib.Error) {
-	c_error := (*C.GError)(error.ToC())
+	c_error := (*C.GError)(C.NULL)
+	if error != nil {
+		c_error = (*C.GError)(error.ToC())
+	}
 
 	C.g_dbus_method_invocation_return_gerror((*C.GDBusMethodInvocation)(recv.native), c_error)
 
@@ -1215,7 +1260,10 @@ func DBusProxyNewForBusSync(busType BusType, flags DBusProxyFlags, info *DBusInt
 
 	c_flags := (C.GDBusProxyFlags)(flags)
 
-	c_info := (*C.GDBusInterfaceInfo)(info.ToC())
+	c_info := (*C.GDBusInterfaceInfo)(C.NULL)
+	if info != nil {
+		c_info = (*C.GDBusInterfaceInfo)(info.ToC())
+	}
 
 	c_name := C.CString(name)
 	defer C.free(unsafe.Pointer(c_name))
@@ -1226,7 +1274,10 @@ func DBusProxyNewForBusSync(busType BusType, flags DBusProxyFlags, info *DBusInt
 	c_interface_name := C.CString(interfaceName)
 	defer C.free(unsafe.Pointer(c_interface_name))
 
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -1243,11 +1294,17 @@ func DBusProxyNewForBusSync(busType BusType, flags DBusProxyFlags, info *DBusInt
 
 // DBusProxyNewSync is a wrapper around the C function g_dbus_proxy_new_sync.
 func DBusProxyNewSync(connection *DBusConnection, flags DBusProxyFlags, info *DBusInterfaceInfo, name string, objectPath string, interfaceName string, cancellable *Cancellable) (*DBusProxy, error) {
-	c_connection := (*C.GDBusConnection)(connection.ToC())
+	c_connection := (*C.GDBusConnection)(C.NULL)
+	if connection != nil {
+		c_connection = (*C.GDBusConnection)(connection.ToC())
+	}
 
 	c_flags := (C.GDBusProxyFlags)(flags)
 
-	c_info := (*C.GDBusInterfaceInfo)(info.ToC())
+	c_info := (*C.GDBusInterfaceInfo)(C.NULL)
+	if info != nil {
+		c_info = (*C.GDBusInterfaceInfo)(info.ToC())
+	}
 
 	c_name := C.CString(name)
 	defer C.free(unsafe.Pointer(c_name))
@@ -1258,7 +1315,10 @@ func DBusProxyNewSync(connection *DBusConnection, flags DBusProxyFlags, info *DB
 	c_interface_name := C.CString(interfaceName)
 	defer C.free(unsafe.Pointer(c_interface_name))
 
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -1366,7 +1426,10 @@ func (recv *DBusProxy) SetDefaultTimeout(timeoutMsec int32) {
 
 // SetInterfaceInfo is a wrapper around the C function g_dbus_proxy_set_interface_info.
 func (recv *DBusProxy) SetInterfaceInfo(info *DBusInterfaceInfo) {
-	c_info := (*C.GDBusInterfaceInfo)(info.ToC())
+	c_info := (*C.GDBusInterfaceInfo)(C.NULL)
+	if info != nil {
+		c_info = (*C.GDBusInterfaceInfo)(info.ToC())
+	}
 
 	C.g_dbus_proxy_set_interface_info((*C.GDBusProxy)(recv.native), c_info)
 
@@ -1415,9 +1478,15 @@ func DBusServerNewSync(address string, flags DBusServerFlags, guid string, obser
 	c_guid := C.CString(guid)
 	defer C.free(unsafe.Pointer(c_guid))
 
-	c_observer := (*C.GDBusAuthObserver)(observer.ToC())
+	c_observer := (*C.GDBusAuthObserver)(C.NULL)
+	if observer != nil {
+		c_observer = (*C.GDBusAuthObserver)(observer.ToC())
+	}
 
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -1487,7 +1556,10 @@ func (recv *DataInputStream) ReadUpto(stopChars string, stopCharsLen int64, canc
 
 	var c_length C.gsize
 
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -1543,7 +1615,10 @@ func (recv *NetworkService) SetScheme(scheme string) {
 
 // Acquire is a wrapper around the C function g_permission_acquire.
 func (recv *Permission) Acquire(cancellable *Cancellable) (bool, error) {
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -1619,7 +1694,10 @@ func (recv *Permission) ImplUpdate(allowed bool, canAcquire bool, canRelease boo
 
 // Release is a wrapper around the C function g_permission_release.
 func (recv *Permission) Release(cancellable *Cancellable) (bool, error) {
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -1699,7 +1777,10 @@ func CastToProxyAddress(object *gobject.Object) *ProxyAddress {
 
 // ProxyAddressNew is a wrapper around the C function g_proxy_address_new.
 func ProxyAddressNew(inetaddr *InetAddress, port uint16, protocol string, destHostname string, destPort uint16, username string, password string) *ProxyAddress {
-	c_inetaddr := (*C.GInetAddress)(inetaddr.ToC())
+	c_inetaddr := (*C.GInetAddress)(C.NULL)
+	if inetaddr != nil {
+		c_inetaddr = (*C.GInetAddress)(inetaddr.ToC())
+	}
 
 	c_port := (C.guint16)(port)
 
@@ -1779,7 +1860,10 @@ func SettingsNewWithBackend(schemaId string, backend *SettingsBackend) *Settings
 	c_schema_id := C.CString(schemaId)
 	defer C.free(unsafe.Pointer(c_schema_id))
 
-	c_backend := (*C.GSettingsBackend)(backend.ToC())
+	c_backend := (*C.GSettingsBackend)(C.NULL)
+	if backend != nil {
+		c_backend = (*C.GSettingsBackend)(backend.ToC())
+	}
 
 	retC := C.g_settings_new_with_backend(c_schema_id, c_backend)
 	retGo := SettingsNewFromC(unsafe.Pointer(retC))
@@ -1792,7 +1876,10 @@ func SettingsNewWithBackendAndPath(schemaId string, backend *SettingsBackend, pa
 	c_schema_id := C.CString(schemaId)
 	defer C.free(unsafe.Pointer(c_schema_id))
 
-	c_backend := (*C.GSettingsBackend)(backend.ToC())
+	c_backend := (*C.GSettingsBackend)(C.NULL)
+	if backend != nil {
+		c_backend = (*C.GSettingsBackend)(backend.ToC())
+	}
 
 	c_path := C.CString(path)
 	defer C.free(unsafe.Pointer(c_path))
@@ -2079,7 +2166,10 @@ func (recv *Socket) ReceiveWithBlocking(buffer []uint8, blocking bool, cancellab
 	c_blocking :=
 		boolToGboolean(blocking)
 
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -2103,7 +2193,10 @@ func (recv *Socket) SendWithBlocking(buffer []uint8, blocking bool, cancellable 
 	c_blocking :=
 		boolToGboolean(blocking)
 
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -2134,7 +2227,10 @@ func (recv *SocketClient) ConnectToUri(uri string, defaultPort uint16, cancellab
 
 	c_default_port := (C.guint16)(defaultPort)
 
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -2205,7 +2301,10 @@ func (recv *SocketClient) SetTimeout(timeout uint32) {
 
 // ReceiveCredentials is a wrapper around the C function g_unix_connection_receive_credentials.
 func (recv *UnixConnection) ReceiveCredentials(cancellable *Cancellable) (*Credentials, error) {
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -2222,7 +2321,10 @@ func (recv *UnixConnection) ReceiveCredentials(cancellable *Cancellable) (*Crede
 
 // SendCredentials is a wrapper around the C function g_unix_connection_send_credentials.
 func (recv *UnixConnection) SendCredentials(cancellable *Cancellable) (bool, error) {
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -2286,7 +2388,10 @@ func UnixCredentialsMessageNew() *UnixCredentialsMessage {
 
 // UnixCredentialsMessageNewWithCredentials is a wrapper around the C function g_unix_credentials_message_new_with_credentials.
 func UnixCredentialsMessageNewWithCredentials(credentials *Credentials) *UnixCredentialsMessage {
-	c_credentials := (*C.GCredentials)(credentials.ToC())
+	c_credentials := (*C.GCredentials)(C.NULL)
+	if credentials != nil {
+		c_credentials = (*C.GCredentials)(credentials.ToC())
+	}
 
 	retC := C.g_unix_credentials_message_new_with_credentials(c_credentials)
 	retGo := UnixCredentialsMessageNewFromC(unsafe.Pointer(retC))
@@ -2334,7 +2439,10 @@ func (recv *ZlibCompressor) GetFileInfo() *FileInfo {
 
 // SetFileInfo is a wrapper around the C function g_zlib_compressor_set_file_info.
 func (recv *ZlibCompressor) SetFileInfo(fileInfo *FileInfo) {
-	c_file_info := (*C.GFileInfo)(fileInfo.ToC())
+	c_file_info := (*C.GFileInfo)(C.NULL)
+	if fileInfo != nil {
+		c_file_info = (*C.GFileInfo)(fileInfo.ToC())
+	}
 
 	C.g_zlib_compressor_set_file_info((*C.GZlibCompressor)(recv.native), c_file_info)
 

@@ -102,7 +102,10 @@ func (recv *FontChooser) SetFont(fontname string) {
 
 // SetFontDesc is a wrapper around the C function gtk_font_chooser_set_font_desc.
 func (recv *FontChooser) SetFontDesc(fontDesc *pango.FontDescription) {
-	c_font_desc := (*C.PangoFontDescription)(fontDesc.ToC())
+	c_font_desc := (*C.PangoFontDescription)(C.NULL)
+	if fontDesc != nil {
+		c_font_desc = (*C.PangoFontDescription)(fontDesc.ToC())
+	}
 
 	C.gtk_font_chooser_set_font_desc((*C.GtkFontChooser)(recv.native), c_font_desc)
 

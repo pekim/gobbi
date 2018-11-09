@@ -40,7 +40,10 @@ func (recv *Application) UnmarkBusy() {
 
 // BytesIconNew is a wrapper around the C function g_bytes_icon_new.
 func BytesIconNew(bytes *glib.Bytes) *BytesIcon {
-	c_bytes := (*C.GBytes)(bytes.ToC())
+	c_bytes := (*C.GBytes)(C.NULL)
+	if bytes != nil {
+		c_bytes = (*C.GBytes)(bytes.ToC())
+	}
 
 	retC := C.g_bytes_icon_new(c_bytes)
 	retGo := BytesIconNewFromC(unsafe.Pointer(retC))
@@ -81,7 +84,10 @@ func (recv *DesktopAppInfo) LaunchAction(actionName string, launchContext *AppLa
 	c_action_name := C.CString(actionName)
 	defer C.free(unsafe.Pointer(c_action_name))
 
-	c_launch_context := (*C.GAppLaunchContext)(launchContext.ToC())
+	c_launch_context := (*C.GAppLaunchContext)(C.NULL)
+	if launchContext != nil {
+		c_launch_context = (*C.GAppLaunchContext)(launchContext.ToC())
+	}
 
 	C.g_desktop_app_info_launch_action((*C.GDesktopAppInfo)(recv.native), c_action_name, c_launch_context)
 

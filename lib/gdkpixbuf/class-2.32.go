@@ -15,7 +15,10 @@ import "C"
 
 // PixbufNewFromBytes is a wrapper around the C function gdk_pixbuf_new_from_bytes.
 func PixbufNewFromBytes(data *glib.Bytes, colorspace Colorspace, hasAlpha bool, bitsPerSample int32, width int32, height int32, rowstride int32) *Pixbuf {
-	c_data := (*C.GBytes)(data.ToC())
+	c_data := (*C.GBytes)(C.NULL)
+	if data != nil {
+		c_data = (*C.GBytes)(data.ToC())
+	}
 
 	c_colorspace := (C.GdkColorspace)(colorspace)
 

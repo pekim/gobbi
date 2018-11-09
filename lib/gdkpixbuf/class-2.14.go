@@ -16,9 +16,15 @@ import "C"
 
 // PixbufNewFromStream is a wrapper around the C function gdk_pixbuf_new_from_stream.
 func PixbufNewFromStream(stream *gio.InputStream, cancellable *gio.Cancellable) (*Pixbuf, error) {
-	c_stream := (*C.GInputStream)(stream.ToC())
+	c_stream := (*C.GInputStream)(C.NULL)
+	if stream != nil {
+		c_stream = (*C.GInputStream)(stream.ToC())
+	}
 
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -35,7 +41,10 @@ func PixbufNewFromStream(stream *gio.InputStream, cancellable *gio.Cancellable) 
 
 // PixbufNewFromStreamAtScale is a wrapper around the C function gdk_pixbuf_new_from_stream_at_scale.
 func PixbufNewFromStreamAtScale(stream *gio.InputStream, width int32, height int32, preserveAspectRatio bool, cancellable *gio.Cancellable) (*Pixbuf, error) {
-	c_stream := (*C.GInputStream)(stream.ToC())
+	c_stream := (*C.GInputStream)(C.NULL)
+	if stream != nil {
+		c_stream = (*C.GInputStream)(stream.ToC())
+	}
 
 	c_width := (C.gint)(width)
 
@@ -44,7 +53,10 @@ func PixbufNewFromStreamAtScale(stream *gio.InputStream, width int32, height int
 	c_preserve_aspect_ratio :=
 		boolToGboolean(preserveAspectRatio)
 
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 

@@ -42,7 +42,10 @@ func Chdir(path string) int32 {
 
 // DatalistGetFlags is a wrapper around the C function g_datalist_get_flags.
 func DatalistGetFlags(datalist *Data) uint32 {
-	c_datalist := (**C.GData)(datalist.ToC())
+	c_datalist := (**C.GData)(C.NULL)
+	if datalist != nil {
+		c_datalist = (**C.GData)(datalist.ToC())
+	}
 
 	retC := C.g_datalist_get_flags(c_datalist)
 	retGo := (uint32)(retC)
@@ -52,7 +55,10 @@ func DatalistGetFlags(datalist *Data) uint32 {
 
 // DatalistSetFlags is a wrapper around the C function g_datalist_set_flags.
 func DatalistSetFlags(datalist *Data, flags uint32) {
-	c_datalist := (**C.GData)(datalist.ToC())
+	c_datalist := (**C.GData)(C.NULL)
+	if datalist != nil {
+		c_datalist = (**C.GData)(datalist.ToC())
+	}
 
 	c_flags := (C.guint)(flags)
 
@@ -63,7 +69,10 @@ func DatalistSetFlags(datalist *Data, flags uint32) {
 
 // DatalistUnsetFlags is a wrapper around the C function g_datalist_unset_flags.
 func DatalistUnsetFlags(datalist *Data, flags uint32) {
-	c_datalist := (**C.GData)(datalist.ToC())
+	c_datalist := (**C.GData)(C.NULL)
+	if datalist != nil {
+		c_datalist = (**C.GData)(datalist.ToC())
+	}
 
 	c_flags := (C.guint)(flags)
 

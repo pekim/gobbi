@@ -18,7 +18,10 @@ import "C"
 func ComputeChecksumForBytes(checksumType ChecksumType, data *Bytes) string {
 	c_checksum_type := (C.GChecksumType)(checksumType)
 
-	c_data := (*C.GBytes)(data.ToC())
+	c_data := (*C.GBytes)(C.NULL)
+	if data != nil {
+		c_data = (*C.GBytes)(data.ToC())
+	}
 
 	retC := C.g_compute_checksum_for_bytes(c_checksum_type, c_data)
 	retGo := C.GoString(retC)

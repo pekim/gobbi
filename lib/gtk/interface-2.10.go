@@ -176,7 +176,10 @@ func recentchooser_selectionChangedHandler(_ *C.GObject, data C.gpointer) {
 
 // AddFilter is a wrapper around the C function gtk_recent_chooser_add_filter.
 func (recv *RecentChooser) AddFilter(filter *RecentFilter) {
-	c_filter := (*C.GtkRecentFilter)(filter.ToC())
+	c_filter := (*C.GtkRecentFilter)(C.NULL)
+	if filter != nil {
+		c_filter = (*C.GtkRecentFilter)(filter.ToC())
+	}
 
 	C.gtk_recent_chooser_add_filter((*C.GtkRecentChooser)(recv.native), c_filter)
 
@@ -292,7 +295,10 @@ func (recv *RecentChooser) ListFilters() *glib.SList {
 
 // RemoveFilter is a wrapper around the C function gtk_recent_chooser_remove_filter.
 func (recv *RecentChooser) RemoveFilter(filter *RecentFilter) {
-	c_filter := (*C.GtkRecentFilter)(filter.ToC())
+	c_filter := (*C.GtkRecentFilter)(C.NULL)
+	if filter != nil {
+		c_filter = (*C.GtkRecentFilter)(filter.ToC())
+	}
 
 	C.gtk_recent_chooser_remove_filter((*C.GtkRecentChooser)(recv.native), c_filter)
 
@@ -344,7 +350,10 @@ func (recv *RecentChooser) SetCurrentUri(uri string) (bool, error) {
 
 // SetFilter is a wrapper around the C function gtk_recent_chooser_set_filter.
 func (recv *RecentChooser) SetFilter(filter *RecentFilter) {
-	c_filter := (*C.GtkRecentFilter)(filter.ToC())
+	c_filter := (*C.GtkRecentFilter)(C.NULL)
+	if filter != nil {
+		c_filter = (*C.GtkRecentFilter)(filter.ToC())
+	}
 
 	C.gtk_recent_chooser_set_filter((*C.GtkRecentChooser)(recv.native), c_filter)
 

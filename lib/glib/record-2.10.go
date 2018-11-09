@@ -22,7 +22,10 @@ import "C"
 
 // SetTimeVal is a wrapper around the C function g_date_set_time_val.
 func (recv *Date) SetTimeVal(timeval *TimeVal) {
-	c_timeval := (*C.GTimeVal)(timeval.ToC())
+	c_timeval := (*C.GTimeVal)(C.NULL)
+	if timeval != nil {
+		c_timeval = (*C.GTimeVal)(timeval.ToC())
+	}
 
 	C.g_date_set_time_val((*C.GDate)(recv.native), c_timeval)
 

@@ -162,7 +162,10 @@ func (recv *OptionContext) GetHelp(mainHelp bool, group *OptionGroup) string {
 	c_main_help :=
 		boolToGboolean(mainHelp)
 
-	c_group := (*C.GOptionGroup)(group.ToC())
+	c_group := (*C.GOptionGroup)(C.NULL)
+	if group != nil {
+		c_group = (*C.GOptionGroup)(group.ToC())
+	}
 
 	retC := C.g_option_context_get_help((*C.GOptionContext)(recv.native), c_main_help, c_group)
 	retGo := C.GoString(retC)
@@ -408,7 +411,10 @@ func (recv *Sequence) Prepend(data uintptr) *SequenceIter {
 
 // Compare is a wrapper around the C function g_sequence_iter_compare.
 func (recv *SequenceIter) Compare(b *SequenceIter) int32 {
-	c_b := (*C.GSequenceIter)(b.ToC())
+	c_b := (*C.GSequenceIter)(C.NULL)
+	if b != nil {
+		c_b = (*C.GSequenceIter)(b.ToC())
+	}
 
 	retC := C.g_sequence_iter_compare((*C.GSequenceIter)(recv.native), c_b)
 	retGo := (int32)(retC)

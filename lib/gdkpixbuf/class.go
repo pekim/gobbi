@@ -147,7 +147,10 @@ func (recv *Pixbuf) AddAlpha(substituteColor bool, r uint8, g uint8, b uint8) *P
 
 // Composite is a wrapper around the C function gdk_pixbuf_composite.
 func (recv *Pixbuf) Composite(dest *Pixbuf, destX int32, destY int32, destWidth int32, destHeight int32, offsetX float64, offsetY float64, scaleX float64, scaleY float64, interpType InterpType, overallAlpha int32) {
-	c_dest := (*C.GdkPixbuf)(dest.ToC())
+	c_dest := (*C.GdkPixbuf)(C.NULL)
+	if dest != nil {
+		c_dest = (*C.GdkPixbuf)(dest.ToC())
+	}
 
 	c_dest_x := (C.int)(destX)
 
@@ -176,7 +179,10 @@ func (recv *Pixbuf) Composite(dest *Pixbuf, destX int32, destY int32, destWidth 
 
 // CompositeColor is a wrapper around the C function gdk_pixbuf_composite_color.
 func (recv *Pixbuf) CompositeColor(dest *Pixbuf, destX int32, destY int32, destWidth int32, destHeight int32, offsetX float64, offsetY float64, scaleX float64, scaleY float64, interpType InterpType, overallAlpha int32, checkX int32, checkY int32, checkSize int32, color1 uint32, color2 uint32) {
-	c_dest := (*C.GdkPixbuf)(dest.ToC())
+	c_dest := (*C.GdkPixbuf)(C.NULL)
+	if dest != nil {
+		c_dest = (*C.GdkPixbuf)(dest.ToC())
+	}
 
 	c_dest_x := (C.int)(destX)
 
@@ -253,7 +259,10 @@ func (recv *Pixbuf) CopyArea(srcX int32, srcY int32, width int32, height int32, 
 
 	c_height := (C.int)(height)
 
-	c_dest_pixbuf := (*C.GdkPixbuf)(destPixbuf.ToC())
+	c_dest_pixbuf := (*C.GdkPixbuf)(C.NULL)
+	if destPixbuf != nil {
+		c_dest_pixbuf = (*C.GdkPixbuf)(destPixbuf.ToC())
+	}
 
 	c_dest_x := (C.int)(destX)
 
@@ -368,7 +377,10 @@ func (recv *Pixbuf) Ref() *Pixbuf {
 
 // SaturateAndPixelate is a wrapper around the C function gdk_pixbuf_saturate_and_pixelate.
 func (recv *Pixbuf) SaturateAndPixelate(dest *Pixbuf, saturation float32, pixelate bool) {
-	c_dest := (*C.GdkPixbuf)(dest.ToC())
+	c_dest := (*C.GdkPixbuf)(C.NULL)
+	if dest != nil {
+		c_dest = (*C.GdkPixbuf)(dest.ToC())
+	}
 
 	c_saturation := (C.gfloat)(saturation)
 
@@ -386,7 +398,10 @@ func (recv *Pixbuf) SaturateAndPixelate(dest *Pixbuf, saturation float32, pixela
 
 // Scale is a wrapper around the C function gdk_pixbuf_scale.
 func (recv *Pixbuf) Scale(dest *Pixbuf, destX int32, destY int32, destWidth int32, destHeight int32, offsetX float64, offsetY float64, scaleX float64, scaleY float64, interpType InterpType) {
-	c_dest := (*C.GdkPixbuf)(dest.ToC())
+	c_dest := (*C.GdkPixbuf)(C.NULL)
+	if dest != nil {
+		c_dest = (*C.GdkPixbuf)(dest.ToC())
+	}
 
 	c_dest_x := (C.int)(destX)
 
@@ -502,7 +517,10 @@ func (recv *PixbufAnimation) GetHeight() int32 {
 
 // GetIter is a wrapper around the C function gdk_pixbuf_animation_get_iter.
 func (recv *PixbufAnimation) GetIter(startTime *glib.TimeVal) *PixbufAnimationIter {
-	c_start_time := (*C.GTimeVal)(startTime.ToC())
+	c_start_time := (*C.GTimeVal)(C.NULL)
+	if startTime != nil {
+		c_start_time = (*C.GTimeVal)(startTime.ToC())
+	}
 
 	retC := C.gdk_pixbuf_animation_get_iter((*C.GdkPixbufAnimation)(recv.native), c_start_time)
 	retGo := PixbufAnimationIterNewFromC(unsafe.Pointer(retC))
@@ -583,7 +601,10 @@ func CastToPixbufAnimationIter(object *gobject.Object) *PixbufAnimationIter {
 
 // Advance is a wrapper around the C function gdk_pixbuf_animation_iter_advance.
 func (recv *PixbufAnimationIter) Advance(currentTime *glib.TimeVal) bool {
-	c_current_time := (*C.GTimeVal)(currentTime.ToC())
+	c_current_time := (*C.GTimeVal)(C.NULL)
+	if currentTime != nil {
+		c_current_time = (*C.GTimeVal)(currentTime.ToC())
+	}
 
 	retC := C.gdk_pixbuf_animation_iter_advance((*C.GdkPixbufAnimationIter)(recv.native), c_current_time)
 	retGo := retC == C.TRUE

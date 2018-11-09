@@ -17,7 +17,10 @@ import "C"
 
 // PaperSizeNewFromKeyFile is a wrapper around the C function gtk_paper_size_new_from_key_file.
 func PaperSizeNewFromKeyFile(keyFile *glib.KeyFile, groupName string) (*PaperSize, error) {
-	c_key_file := (*C.GKeyFile)(keyFile.ToC())
+	c_key_file := (*C.GKeyFile)(C.NULL)
+	if keyFile != nil {
+		c_key_file = (*C.GKeyFile)(keyFile.ToC())
+	}
 
 	c_group_name := C.CString(groupName)
 	defer C.free(unsafe.Pointer(c_group_name))
@@ -37,7 +40,10 @@ func PaperSizeNewFromKeyFile(keyFile *glib.KeyFile, groupName string) (*PaperSiz
 
 // ToKeyFile is a wrapper around the C function gtk_paper_size_to_key_file.
 func (recv *PaperSize) ToKeyFile(keyFile *glib.KeyFile, groupName string) {
-	c_key_file := (*C.GKeyFile)(keyFile.ToC())
+	c_key_file := (*C.GKeyFile)(C.NULL)
+	if keyFile != nil {
+		c_key_file = (*C.GKeyFile)(keyFile.ToC())
+	}
 
 	c_group_name := C.CString(groupName)
 	defer C.free(unsafe.Pointer(c_group_name))

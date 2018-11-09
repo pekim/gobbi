@@ -32,7 +32,10 @@ func NotifyStartupComplete() {
 
 // PangoContextGetForScreen is a wrapper around the C function gdk_pango_context_get_for_screen.
 func PangoContextGetForScreen(screen *Screen) *pango.Context {
-	c_screen := (*C.GdkScreen)(screen.ToC())
+	c_screen := (*C.GdkScreen)(C.NULL)
+	if screen != nil {
+		c_screen = (*C.GdkScreen)(screen.ToC())
+	}
 
 	retC := C.gdk_pango_context_get_for_screen(c_screen)
 	retGo := pango.ContextNewFromC(unsafe.Pointer(retC))

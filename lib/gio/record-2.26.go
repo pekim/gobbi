@@ -216,7 +216,10 @@ func (recv *DBusInterfaceInfo) ToC() unsafe.Pointer {
 func (recv *DBusInterfaceInfo) GenerateXml(indent uint32, stringBuilder *glib.String) {
 	c_indent := (C.guint)(indent)
 
-	c_string_builder := (*C.GString)(stringBuilder.ToC())
+	c_string_builder := (*C.GString)(C.NULL)
+	if stringBuilder != nil {
+		c_string_builder = (*C.GString)(stringBuilder.ToC())
+	}
 
 	C.g_dbus_interface_info_generate_xml((*C.GDBusInterfaceInfo)(recv.native), c_indent, c_string_builder)
 
@@ -401,7 +404,10 @@ func DBusNodeInfoNewForXml(xmlData string) (*DBusNodeInfo, error) {
 func (recv *DBusNodeInfo) GenerateXml(indent uint32, stringBuilder *glib.String) {
 	c_indent := (C.guint)(indent)
 
-	c_string_builder := (*C.GString)(stringBuilder.ToC())
+	c_string_builder := (*C.GString)(C.NULL)
+	if stringBuilder != nil {
+		c_string_builder = (*C.GString)(stringBuilder.ToC())
+	}
 
 	C.g_dbus_node_info_generate_xml((*C.GDBusNodeInfo)(recv.native), c_indent, c_string_builder)
 

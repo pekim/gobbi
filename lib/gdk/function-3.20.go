@@ -15,11 +15,20 @@ import "C"
 
 // DragBeginFromPoint is a wrapper around the C function gdk_drag_begin_from_point.
 func DragBeginFromPoint(window *Window, device *Device, targets *glib.List, xRoot int32, yRoot int32) *DragContext {
-	c_window := (*C.GdkWindow)(window.ToC())
+	c_window := (*C.GdkWindow)(C.NULL)
+	if window != nil {
+		c_window = (*C.GdkWindow)(window.ToC())
+	}
 
-	c_device := (*C.GdkDevice)(device.ToC())
+	c_device := (*C.GdkDevice)(C.NULL)
+	if device != nil {
+		c_device = (*C.GdkDevice)(device.ToC())
+	}
 
-	c_targets := (*C.GList)(targets.ToC())
+	c_targets := (*C.GList)(C.NULL)
+	if targets != nil {
+		c_targets = (*C.GList)(targets.ToC())
+	}
 
 	c_x_root := (C.gint)(xRoot)
 
@@ -33,7 +42,10 @@ func DragBeginFromPoint(window *Window, device *Device, targets *glib.List, xRoo
 
 // DragDropDone is a wrapper around the C function gdk_drag_drop_done.
 func DragDropDone(context *DragContext, success bool) {
-	c_context := (*C.GdkDragContext)(context.ToC())
+	c_context := (*C.GdkDragContext)(C.NULL)
+	if context != nil {
+		c_context = (*C.GdkDragContext)(context.ToC())
+	}
 
 	c_success :=
 		boolToGboolean(success)

@@ -78,7 +78,10 @@ func (recv *Closure) ToC() unsafe.Pointer {
 func ClosureNewObject(sizeofClosure uint32, object *Object) *Closure {
 	c_sizeof_closure := (C.guint)(sizeofClosure)
 
-	c_object := (*C.GObject)(object.ToC())
+	c_object := (*C.GObject)(C.NULL)
+	if object != nil {
+		c_object = (*C.GObject)(object.ToC())
+	}
 
 	retC := C.g_closure_new_object(c_sizeof_closure, c_object)
 	retGo := ClosureNewFromC(unsafe.Pointer(retC))
@@ -1002,7 +1005,10 @@ func (recv *Value) ToC() unsafe.Pointer {
 
 // Copy is a wrapper around the C function g_value_copy.
 func (recv *Value) Copy(destValue *Value) {
-	c_dest_value := (*C.GValue)(destValue.ToC())
+	c_dest_value := (*C.GValue)(C.NULL)
+	if destValue != nil {
+		c_dest_value = (*C.GValue)(destValue.ToC())
+	}
 
 	C.g_value_copy((*C.GValue)(recv.native), c_dest_value)
 
@@ -1425,7 +1431,10 @@ func (recv *Value) SetUlong(vUlong uint64) {
 
 // Transform is a wrapper around the C function g_value_transform.
 func (recv *Value) Transform(destValue *Value) bool {
-	c_dest_value := (*C.GValue)(destValue.ToC())
+	c_dest_value := (*C.GValue)(C.NULL)
+	if destValue != nil {
+		c_dest_value = (*C.GValue)(destValue.ToC())
+	}
 
 	retC := C.g_value_transform((*C.GValue)(recv.native), c_dest_value)
 	retGo := retC == C.TRUE
@@ -1481,7 +1490,10 @@ func ValueArrayNew(nPrealloced uint32) *ValueArray {
 
 // Append is a wrapper around the C function g_value_array_append.
 func (recv *ValueArray) Append(value *Value) *ValueArray {
-	c_value := (*C.GValue)(value.ToC())
+	c_value := (*C.GValue)(C.NULL)
+	if value != nil {
+		c_value = (*C.GValue)(value.ToC())
+	}
 
 	retC := C.g_value_array_append((*C.GValueArray)(recv.native), c_value)
 	retGo := ValueArrayNewFromC(unsafe.Pointer(retC))
@@ -1518,7 +1530,10 @@ func (recv *ValueArray) GetNth(index uint32) *Value {
 func (recv *ValueArray) Insert(index uint32, value *Value) *ValueArray {
 	c_index_ := (C.guint)(index)
 
-	c_value := (*C.GValue)(value.ToC())
+	c_value := (*C.GValue)(C.NULL)
+	if value != nil {
+		c_value = (*C.GValue)(value.ToC())
+	}
 
 	retC := C.g_value_array_insert((*C.GValueArray)(recv.native), c_index_, c_value)
 	retGo := ValueArrayNewFromC(unsafe.Pointer(retC))
@@ -1528,7 +1543,10 @@ func (recv *ValueArray) Insert(index uint32, value *Value) *ValueArray {
 
 // Prepend is a wrapper around the C function g_value_array_prepend.
 func (recv *ValueArray) Prepend(value *Value) *ValueArray {
-	c_value := (*C.GValue)(value.ToC())
+	c_value := (*C.GValue)(C.NULL)
+	if value != nil {
+		c_value = (*C.GValue)(value.ToC())
+	}
 
 	retC := C.g_value_array_prepend((*C.GValueArray)(recv.native), c_value)
 	retGo := ValueArrayNewFromC(unsafe.Pointer(retC))

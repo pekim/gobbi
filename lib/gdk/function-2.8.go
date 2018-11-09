@@ -16,7 +16,10 @@ import "C"
 
 // CairoCreate is a wrapper around the C function gdk_cairo_create.
 func CairoCreate(window *Window) *cairo.Context {
-	c_window := (*C.GdkWindow)(window.ToC())
+	c_window := (*C.GdkWindow)(C.NULL)
+	if window != nil {
+		c_window = (*C.GdkWindow)(window.ToC())
+	}
 
 	retC := C.gdk_cairo_create(c_window)
 	retGo := cairo.ContextNewFromC(unsafe.Pointer(retC))
@@ -28,9 +31,15 @@ func CairoCreate(window *Window) *cairo.Context {
 
 // CairoRegion is a wrapper around the C function gdk_cairo_region.
 func CairoRegion(cr *cairo.Context, region *cairo.Region) {
-	c_cr := (*C.cairo_t)(cr.ToC())
+	c_cr := (*C.cairo_t)(C.NULL)
+	if cr != nil {
+		c_cr = (*C.cairo_t)(cr.ToC())
+	}
 
-	c_region := (*C.cairo_region_t)(region.ToC())
+	c_region := (*C.cairo_region_t)(C.NULL)
+	if region != nil {
+		c_region = (*C.cairo_region_t)(region.ToC())
+	}
 
 	C.gdk_cairo_region(c_cr, c_region)
 
@@ -39,9 +48,15 @@ func CairoRegion(cr *cairo.Context, region *cairo.Region) {
 
 // CairoSetSourceColor is a wrapper around the C function gdk_cairo_set_source_color.
 func CairoSetSourceColor(cr *cairo.Context, color *Color) {
-	c_cr := (*C.cairo_t)(cr.ToC())
+	c_cr := (*C.cairo_t)(C.NULL)
+	if cr != nil {
+		c_cr = (*C.cairo_t)(cr.ToC())
+	}
 
-	c_color := (*C.GdkColor)(color.ToC())
+	c_color := (*C.GdkColor)(C.NULL)
+	if color != nil {
+		c_color = (*C.GdkColor)(color.ToC())
+	}
 
 	C.gdk_cairo_set_source_color(c_cr, c_color)
 
@@ -50,9 +65,15 @@ func CairoSetSourceColor(cr *cairo.Context, color *Color) {
 
 // CairoSetSourcePixbuf is a wrapper around the C function gdk_cairo_set_source_pixbuf.
 func CairoSetSourcePixbuf(cr *cairo.Context, pixbuf *gdkpixbuf.Pixbuf, pixbufX float64, pixbufY float64) {
-	c_cr := (*C.cairo_t)(cr.ToC())
+	c_cr := (*C.cairo_t)(C.NULL)
+	if cr != nil {
+		c_cr = (*C.cairo_t)(cr.ToC())
+	}
 
-	c_pixbuf := (*C.GdkPixbuf)(pixbuf.ToC())
+	c_pixbuf := (*C.GdkPixbuf)(C.NULL)
+	if pixbuf != nil {
+		c_pixbuf = (*C.GdkPixbuf)(pixbuf.ToC())
+	}
 
 	c_pixbuf_x := (C.gdouble)(pixbufX)
 

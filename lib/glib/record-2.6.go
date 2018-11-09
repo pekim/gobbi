@@ -523,7 +523,10 @@ func (recv *KeyFile) ToData() (string, uint64, error) {
 
 // AddGroup is a wrapper around the C function g_option_context_add_group.
 func (recv *OptionContext) AddGroup(group *OptionGroup) {
-	c_group := (*C.GOptionGroup)(group.ToC())
+	c_group := (*C.GOptionGroup)(C.NULL)
+	if group != nil {
+		c_group = (*C.GOptionGroup)(group.ToC())
+	}
 
 	C.g_option_context_add_group((*C.GOptionContext)(recv.native), c_group)
 
@@ -532,7 +535,10 @@ func (recv *OptionContext) AddGroup(group *OptionGroup) {
 
 // AddMainEntries is a wrapper around the C function g_option_context_add_main_entries.
 func (recv *OptionContext) AddMainEntries(entries *OptionEntry, translationDomain string) {
-	c_entries := (*C.GOptionEntry)(entries.ToC())
+	c_entries := (*C.GOptionEntry)(C.NULL)
+	if entries != nil {
+		c_entries = (*C.GOptionEntry)(entries.ToC())
+	}
 
 	c_translation_domain := C.CString(translationDomain)
 	defer C.free(unsafe.Pointer(c_translation_domain))
@@ -614,7 +620,10 @@ func (recv *OptionContext) SetIgnoreUnknownOptions(ignoreUnknown bool) {
 
 // SetMainGroup is a wrapper around the C function g_option_context_set_main_group.
 func (recv *OptionContext) SetMainGroup(group *OptionGroup) {
-	c_group := (*C.GOptionGroup)(group.ToC())
+	c_group := (*C.GOptionGroup)(C.NULL)
+	if group != nil {
+		c_group = (*C.GOptionGroup)(group.ToC())
+	}
 
 	C.g_option_context_set_main_group((*C.GOptionContext)(recv.native), c_group)
 
@@ -625,7 +634,10 @@ func (recv *OptionContext) SetMainGroup(group *OptionGroup) {
 
 // AddEntries is a wrapper around the C function g_option_group_add_entries.
 func (recv *OptionGroup) AddEntries(entries *OptionEntry) {
-	c_entries := (*C.GOptionEntry)(entries.ToC())
+	c_entries := (*C.GOptionEntry)(C.NULL)
+	if entries != nil {
+		c_entries = (*C.GOptionEntry)(entries.ToC())
+	}
 
 	C.g_option_group_add_entries((*C.GOptionGroup)(recv.native), c_entries)
 

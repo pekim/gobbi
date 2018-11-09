@@ -60,7 +60,10 @@ func (recv *Color) Copy() *Color {
 
 // Equal is a wrapper around the C function gdk_color_equal.
 func (recv *Color) Equal(colorb *Color) bool {
-	c_colorb := (*C.GdkColor)(colorb.ToC())
+	c_colorb := (*C.GdkColor)(C.NULL)
+	if colorb != nil {
+		c_colorb = (*C.GdkColor)(colorb.ToC())
+	}
 
 	retC := C.gdk_color_equal((*C.GdkColor)(recv.native), c_colorb)
 	retGo := retC == C.TRUE

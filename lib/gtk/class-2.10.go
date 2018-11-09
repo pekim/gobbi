@@ -378,7 +378,10 @@ func AssistantNew() *Assistant {
 
 // AddActionWidget is a wrapper around the C function gtk_assistant_add_action_widget.
 func (recv *Assistant) AddActionWidget(child *Widget) {
-	c_child := (*C.GtkWidget)(child.ToC())
+	c_child := (*C.GtkWidget)(C.NULL)
+	if child != nil {
+		c_child = (*C.GtkWidget)(child.ToC())
+	}
 
 	C.gtk_assistant_add_action_widget((*C.GtkAssistant)(recv.native), c_child)
 
@@ -387,7 +390,10 @@ func (recv *Assistant) AddActionWidget(child *Widget) {
 
 // AppendPage is a wrapper around the C function gtk_assistant_append_page.
 func (recv *Assistant) AppendPage(page *Widget) int32 {
-	c_page := (*C.GtkWidget)(page.ToC())
+	c_page := (*C.GtkWidget)(C.NULL)
+	if page != nil {
+		c_page = (*C.GtkWidget)(page.ToC())
+	}
 
 	retC := C.gtk_assistant_append_page((*C.GtkAssistant)(recv.native), c_page)
 	retGo := (int32)(retC)
@@ -428,7 +434,10 @@ func (recv *Assistant) GetNthPage(pageNum int32) *Widget {
 
 // GetPageComplete is a wrapper around the C function gtk_assistant_get_page_complete.
 func (recv *Assistant) GetPageComplete(page *Widget) bool {
-	c_page := (*C.GtkWidget)(page.ToC())
+	c_page := (*C.GtkWidget)(C.NULL)
+	if page != nil {
+		c_page = (*C.GtkWidget)(page.ToC())
+	}
 
 	retC := C.gtk_assistant_get_page_complete((*C.GtkAssistant)(recv.native), c_page)
 	retGo := retC == C.TRUE
@@ -438,7 +447,10 @@ func (recv *Assistant) GetPageComplete(page *Widget) bool {
 
 // GetPageHeaderImage is a wrapper around the C function gtk_assistant_get_page_header_image.
 func (recv *Assistant) GetPageHeaderImage(page *Widget) *gdkpixbuf.Pixbuf {
-	c_page := (*C.GtkWidget)(page.ToC())
+	c_page := (*C.GtkWidget)(C.NULL)
+	if page != nil {
+		c_page = (*C.GtkWidget)(page.ToC())
+	}
 
 	retC := C.gtk_assistant_get_page_header_image((*C.GtkAssistant)(recv.native), c_page)
 	retGo := gdkpixbuf.PixbufNewFromC(unsafe.Pointer(retC))
@@ -448,7 +460,10 @@ func (recv *Assistant) GetPageHeaderImage(page *Widget) *gdkpixbuf.Pixbuf {
 
 // GetPageSideImage is a wrapper around the C function gtk_assistant_get_page_side_image.
 func (recv *Assistant) GetPageSideImage(page *Widget) *gdkpixbuf.Pixbuf {
-	c_page := (*C.GtkWidget)(page.ToC())
+	c_page := (*C.GtkWidget)(C.NULL)
+	if page != nil {
+		c_page = (*C.GtkWidget)(page.ToC())
+	}
 
 	retC := C.gtk_assistant_get_page_side_image((*C.GtkAssistant)(recv.native), c_page)
 	retGo := gdkpixbuf.PixbufNewFromC(unsafe.Pointer(retC))
@@ -458,7 +473,10 @@ func (recv *Assistant) GetPageSideImage(page *Widget) *gdkpixbuf.Pixbuf {
 
 // GetPageTitle is a wrapper around the C function gtk_assistant_get_page_title.
 func (recv *Assistant) GetPageTitle(page *Widget) string {
-	c_page := (*C.GtkWidget)(page.ToC())
+	c_page := (*C.GtkWidget)(C.NULL)
+	if page != nil {
+		c_page = (*C.GtkWidget)(page.ToC())
+	}
 
 	retC := C.gtk_assistant_get_page_title((*C.GtkAssistant)(recv.native), c_page)
 	retGo := C.GoString(retC)
@@ -468,7 +486,10 @@ func (recv *Assistant) GetPageTitle(page *Widget) string {
 
 // GetPageType is a wrapper around the C function gtk_assistant_get_page_type.
 func (recv *Assistant) GetPageType(page *Widget) AssistantPageType {
-	c_page := (*C.GtkWidget)(page.ToC())
+	c_page := (*C.GtkWidget)(C.NULL)
+	if page != nil {
+		c_page = (*C.GtkWidget)(page.ToC())
+	}
 
 	retC := C.gtk_assistant_get_page_type((*C.GtkAssistant)(recv.native), c_page)
 	retGo := (AssistantPageType)(retC)
@@ -478,7 +499,10 @@ func (recv *Assistant) GetPageType(page *Widget) AssistantPageType {
 
 // InsertPage is a wrapper around the C function gtk_assistant_insert_page.
 func (recv *Assistant) InsertPage(page *Widget, position int32) int32 {
-	c_page := (*C.GtkWidget)(page.ToC())
+	c_page := (*C.GtkWidget)(C.NULL)
+	if page != nil {
+		c_page = (*C.GtkWidget)(page.ToC())
+	}
 
 	c_position := (C.gint)(position)
 
@@ -490,7 +514,10 @@ func (recv *Assistant) InsertPage(page *Widget, position int32) int32 {
 
 // PrependPage is a wrapper around the C function gtk_assistant_prepend_page.
 func (recv *Assistant) PrependPage(page *Widget) int32 {
-	c_page := (*C.GtkWidget)(page.ToC())
+	c_page := (*C.GtkWidget)(C.NULL)
+	if page != nil {
+		c_page = (*C.GtkWidget)(page.ToC())
+	}
 
 	retC := C.gtk_assistant_prepend_page((*C.GtkAssistant)(recv.native), c_page)
 	retGo := (int32)(retC)
@@ -500,7 +527,10 @@ func (recv *Assistant) PrependPage(page *Widget) int32 {
 
 // RemoveActionWidget is a wrapper around the C function gtk_assistant_remove_action_widget.
 func (recv *Assistant) RemoveActionWidget(child *Widget) {
-	c_child := (*C.GtkWidget)(child.ToC())
+	c_child := (*C.GtkWidget)(C.NULL)
+	if child != nil {
+		c_child = (*C.GtkWidget)(child.ToC())
+	}
 
 	C.gtk_assistant_remove_action_widget((*C.GtkAssistant)(recv.native), c_child)
 
@@ -520,7 +550,10 @@ func (recv *Assistant) SetCurrentPage(pageNum int32) {
 
 // SetPageComplete is a wrapper around the C function gtk_assistant_set_page_complete.
 func (recv *Assistant) SetPageComplete(page *Widget, complete bool) {
-	c_page := (*C.GtkWidget)(page.ToC())
+	c_page := (*C.GtkWidget)(C.NULL)
+	if page != nil {
+		c_page = (*C.GtkWidget)(page.ToC())
+	}
 
 	c_complete :=
 		boolToGboolean(complete)
@@ -532,9 +565,15 @@ func (recv *Assistant) SetPageComplete(page *Widget, complete bool) {
 
 // SetPageHeaderImage is a wrapper around the C function gtk_assistant_set_page_header_image.
 func (recv *Assistant) SetPageHeaderImage(page *Widget, pixbuf *gdkpixbuf.Pixbuf) {
-	c_page := (*C.GtkWidget)(page.ToC())
+	c_page := (*C.GtkWidget)(C.NULL)
+	if page != nil {
+		c_page = (*C.GtkWidget)(page.ToC())
+	}
 
-	c_pixbuf := (*C.GdkPixbuf)(pixbuf.ToC())
+	c_pixbuf := (*C.GdkPixbuf)(C.NULL)
+	if pixbuf != nil {
+		c_pixbuf = (*C.GdkPixbuf)(pixbuf.ToC())
+	}
 
 	C.gtk_assistant_set_page_header_image((*C.GtkAssistant)(recv.native), c_page, c_pixbuf)
 
@@ -543,9 +582,15 @@ func (recv *Assistant) SetPageHeaderImage(page *Widget, pixbuf *gdkpixbuf.Pixbuf
 
 // SetPageSideImage is a wrapper around the C function gtk_assistant_set_page_side_image.
 func (recv *Assistant) SetPageSideImage(page *Widget, pixbuf *gdkpixbuf.Pixbuf) {
-	c_page := (*C.GtkWidget)(page.ToC())
+	c_page := (*C.GtkWidget)(C.NULL)
+	if page != nil {
+		c_page = (*C.GtkWidget)(page.ToC())
+	}
 
-	c_pixbuf := (*C.GdkPixbuf)(pixbuf.ToC())
+	c_pixbuf := (*C.GdkPixbuf)(C.NULL)
+	if pixbuf != nil {
+		c_pixbuf = (*C.GdkPixbuf)(pixbuf.ToC())
+	}
 
 	C.gtk_assistant_set_page_side_image((*C.GtkAssistant)(recv.native), c_page, c_pixbuf)
 
@@ -554,7 +599,10 @@ func (recv *Assistant) SetPageSideImage(page *Widget, pixbuf *gdkpixbuf.Pixbuf) 
 
 // SetPageTitle is a wrapper around the C function gtk_assistant_set_page_title.
 func (recv *Assistant) SetPageTitle(page *Widget, title string) {
-	c_page := (*C.GtkWidget)(page.ToC())
+	c_page := (*C.GtkWidget)(C.NULL)
+	if page != nil {
+		c_page = (*C.GtkWidget)(page.ToC())
+	}
 
 	c_title := C.CString(title)
 	defer C.free(unsafe.Pointer(c_title))
@@ -566,7 +614,10 @@ func (recv *Assistant) SetPageTitle(page *Widget, title string) {
 
 // SetPageType is a wrapper around the C function gtk_assistant_set_page_type.
 func (recv *Assistant) SetPageType(page *Widget, type_ AssistantPageType) {
-	c_page := (*C.GtkWidget)(page.ToC())
+	c_page := (*C.GtkWidget)(C.NULL)
+	if page != nil {
+		c_page = (*C.GtkWidget)(page.ToC())
+	}
 
 	c_type := (C.GtkAssistantPageType)(type_)
 
@@ -625,7 +676,10 @@ func CellRendererSpinNew() *CellRendererSpin {
 
 // WaitIsRichTextAvailable is a wrapper around the C function gtk_clipboard_wait_is_rich_text_available.
 func (recv *Clipboard) WaitIsRichTextAvailable(buffer *TextBuffer) bool {
-	c_buffer := (*C.GtkTextBuffer)(buffer.ToC())
+	c_buffer := (*C.GtkTextBuffer)(C.NULL)
+	if buffer != nil {
+		c_buffer = (*C.GtkTextBuffer)(buffer.ToC())
+	}
 
 	retC := C.gtk_clipboard_wait_is_rich_text_available((*C.GtkClipboard)(recv.native), c_buffer)
 	retGo := retC == C.TRUE
@@ -666,7 +720,10 @@ func (recv *Entry) GetInnerBorder() *Border {
 
 // SetInnerBorder is a wrapper around the C function gtk_entry_set_inner_border.
 func (recv *Entry) SetInnerBorder(border *Border) {
-	c_border := (*C.GtkBorder)(border.ToC())
+	c_border := (*C.GtkBorder)(C.NULL)
+	if border != nil {
+		c_border = (*C.GtkBorder)(border.ToC())
+	}
 
 	C.gtk_entry_set_inner_border((*C.GtkEntry)(recv.native), c_border)
 
@@ -753,7 +810,10 @@ func (recv *LinkButton) SetUri(uri string) {
 
 // SetImage is a wrapper around the C function gtk_message_dialog_set_image.
 func (recv *MessageDialog) SetImage(image *Widget) {
-	c_image := (*C.GtkWidget)(image.ToC())
+	c_image := (*C.GtkWidget)(C.NULL)
+	if image != nil {
+		c_image = (*C.GtkWidget)(image.ToC())
+	}
 
 	C.gtk_message_dialog_set_image((*C.GtkMessageDialog)(recv.native), c_image)
 
@@ -768,7 +828,10 @@ func (recv *MessageDialog) SetImage(image *Widget) {
 
 // GetTabDetachable is a wrapper around the C function gtk_notebook_get_tab_detachable.
 func (recv *Notebook) GetTabDetachable(child *Widget) bool {
-	c_child := (*C.GtkWidget)(child.ToC())
+	c_child := (*C.GtkWidget)(C.NULL)
+	if child != nil {
+		c_child = (*C.GtkWidget)(child.ToC())
+	}
 
 	retC := C.gtk_notebook_get_tab_detachable((*C.GtkNotebook)(recv.native), c_child)
 	retGo := retC == C.TRUE
@@ -778,7 +841,10 @@ func (recv *Notebook) GetTabDetachable(child *Widget) bool {
 
 // GetTabReorderable is a wrapper around the C function gtk_notebook_get_tab_reorderable.
 func (recv *Notebook) GetTabReorderable(child *Widget) bool {
-	c_child := (*C.GtkWidget)(child.ToC())
+	c_child := (*C.GtkWidget)(C.NULL)
+	if child != nil {
+		c_child = (*C.GtkWidget)(child.ToC())
+	}
 
 	retC := C.gtk_notebook_get_tab_reorderable((*C.GtkNotebook)(recv.native), c_child)
 	retGo := retC == C.TRUE
@@ -788,7 +854,10 @@ func (recv *Notebook) GetTabReorderable(child *Widget) bool {
 
 // SetTabDetachable is a wrapper around the C function gtk_notebook_set_tab_detachable.
 func (recv *Notebook) SetTabDetachable(child *Widget, detachable bool) {
-	c_child := (*C.GtkWidget)(child.ToC())
+	c_child := (*C.GtkWidget)(C.NULL)
+	if child != nil {
+		c_child = (*C.GtkWidget)(child.ToC())
+	}
 
 	c_detachable :=
 		boolToGboolean(detachable)
@@ -800,7 +869,10 @@ func (recv *Notebook) SetTabDetachable(child *Widget, detachable bool) {
 
 // SetTabReorderable is a wrapper around the C function gtk_notebook_set_tab_reorderable.
 func (recv *Notebook) SetTabReorderable(child *Widget, reorderable bool) {
-	c_child := (*C.GtkWidget)(child.ToC())
+	c_child := (*C.GtkWidget)(C.NULL)
+	if child != nil {
+		c_child = (*C.GtkWidget)(child.ToC())
+	}
 
 	c_reorderable :=
 		boolToGboolean(reorderable)
@@ -955,7 +1027,10 @@ func (recv *PageSetup) SetOrientation(orientation PageOrientation) {
 
 // SetPaperSize is a wrapper around the C function gtk_page_setup_set_paper_size.
 func (recv *PageSetup) SetPaperSize(size *PaperSize) {
-	c_size := (*C.GtkPaperSize)(size.ToC())
+	c_size := (*C.GtkPaperSize)(C.NULL)
+	if size != nil {
+		c_size = (*C.GtkPaperSize)(size.ToC())
+	}
 
 	C.gtk_page_setup_set_paper_size((*C.GtkPageSetup)(recv.native), c_size)
 
@@ -964,7 +1039,10 @@ func (recv *PageSetup) SetPaperSize(size *PaperSize) {
 
 // SetPaperSizeAndDefaultMargins is a wrapper around the C function gtk_page_setup_set_paper_size_and_default_margins.
 func (recv *PageSetup) SetPaperSizeAndDefaultMargins(size *PaperSize) {
-	c_size := (*C.GtkPaperSize)(size.ToC())
+	c_size := (*C.GtkPaperSize)(C.NULL)
+	if size != nil {
+		c_size = (*C.GtkPaperSize)(size.ToC())
+	}
 
 	C.gtk_page_setup_set_paper_size_and_default_margins((*C.GtkPageSetup)(recv.native), c_size)
 
@@ -1067,7 +1145,10 @@ func (recv *PrintContext) GetWidth() float64 {
 
 // SetCairoContext is a wrapper around the C function gtk_print_context_set_cairo_context.
 func (recv *PrintContext) SetCairoContext(cr *cairo.Context, dpiX float64, dpiY float64) {
-	c_cr := (*C.cairo_t)(cr.ToC())
+	c_cr := (*C.cairo_t)(C.NULL)
+	if cr != nil {
+		c_cr = (*C.cairo_t)(cr.ToC())
+	}
 
 	c_dpi_x := (C.double)(dpiX)
 
@@ -1579,7 +1660,10 @@ func (recv *PrintOperation) IsFinished() bool {
 func (recv *PrintOperation) Run(action PrintOperationAction, parent *Window) (PrintOperationResult, error) {
 	c_action := (C.GtkPrintOperationAction)(action)
 
-	c_parent := (*C.GtkWindow)(parent.ToC())
+	c_parent := (*C.GtkWindow)(C.NULL)
+	if parent != nil {
+		c_parent = (*C.GtkWindow)(parent.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -1625,7 +1709,10 @@ func (recv *PrintOperation) SetCustomTabLabel(label string) {
 
 // SetDefaultPageSetup is a wrapper around the C function gtk_print_operation_set_default_page_setup.
 func (recv *PrintOperation) SetDefaultPageSetup(defaultPageSetup *PageSetup) {
-	c_default_page_setup := (*C.GtkPageSetup)(defaultPageSetup.ToC())
+	c_default_page_setup := (*C.GtkPageSetup)(C.NULL)
+	if defaultPageSetup != nil {
+		c_default_page_setup = (*C.GtkPageSetup)(defaultPageSetup.ToC())
+	}
 
 	C.gtk_print_operation_set_default_page_setup((*C.GtkPrintOperation)(recv.native), c_default_page_setup)
 
@@ -1663,7 +1750,10 @@ func (recv *PrintOperation) SetNPages(nPages int32) {
 
 // SetPrintSettings is a wrapper around the C function gtk_print_operation_set_print_settings.
 func (recv *PrintOperation) SetPrintSettings(printSettings *PrintSettings) {
-	c_print_settings := (*C.GtkPrintSettings)(printSettings.ToC())
+	c_print_settings := (*C.GtkPrintSettings)(C.NULL)
+	if printSettings != nil {
+		c_print_settings = (*C.GtkPrintSettings)(printSettings.ToC())
+	}
 
 	C.gtk_print_operation_set_print_settings((*C.GtkPrintOperation)(recv.native), c_print_settings)
 
@@ -2179,7 +2269,10 @@ func (recv *PrintSettings) SetPaperHeight(height float64, unit Unit) {
 
 // SetPaperSize is a wrapper around the C function gtk_print_settings_set_paper_size.
 func (recv *PrintSettings) SetPaperSize(paperSize *PaperSize) {
-	c_paper_size := (*C.GtkPaperSize)(paperSize.ToC())
+	c_paper_size := (*C.GtkPaperSize)(C.NULL)
+	if paperSize != nil {
+		c_paper_size = (*C.GtkPaperSize)(paperSize.ToC())
+	}
 
 	C.gtk_print_settings_set_paper_size((*C.GtkPrintSettings)(recv.native), c_paper_size)
 
@@ -2330,7 +2423,10 @@ func RecentChooserMenuNew() *RecentChooserMenu {
 
 // RecentChooserMenuNewForManager is a wrapper around the C function gtk_recent_chooser_menu_new_for_manager.
 func RecentChooserMenuNewForManager(manager *RecentManager) *RecentChooserMenu {
-	c_manager := (*C.GtkRecentManager)(manager.ToC())
+	c_manager := (*C.GtkRecentManager)(C.NULL)
+	if manager != nil {
+		c_manager = (*C.GtkRecentManager)(manager.ToC())
+	}
 
 	retC := C.gtk_recent_chooser_menu_new_for_manager(c_manager)
 	retGo := RecentChooserMenuNewFromC(unsafe.Pointer(retC))
@@ -2366,7 +2462,10 @@ func RecentChooserWidgetNew() *RecentChooserWidget {
 
 // RecentChooserWidgetNewForManager is a wrapper around the C function gtk_recent_chooser_widget_new_for_manager.
 func RecentChooserWidgetNewForManager(manager *RecentManager) *RecentChooserWidget {
-	c_manager := (*C.GtkRecentManager)(manager.ToC())
+	c_manager := (*C.GtkRecentManager)(C.NULL)
+	if manager != nil {
+		c_manager = (*C.GtkRecentManager)(manager.ToC())
+	}
 
 	retC := C.gtk_recent_chooser_widget_new_for_manager(c_manager)
 	retGo := RecentChooserWidgetNewFromC(unsafe.Pointer(retC))
@@ -2442,7 +2541,10 @@ func (recv *RecentFilter) AddPixbufFormats() {
 
 // Filter is a wrapper around the C function gtk_recent_filter_filter.
 func (recv *RecentFilter) Filter(filterInfo *RecentFilterInfo) bool {
-	c_filter_info := (*C.GtkRecentFilterInfo)(filterInfo.ToC())
+	c_filter_info := (*C.GtkRecentFilterInfo)(C.NULL)
+	if filterInfo != nil {
+		c_filter_info = (*C.GtkRecentFilterInfo)(filterInfo.ToC())
+	}
 
 	retC := C.gtk_recent_filter_filter((*C.GtkRecentFilter)(recv.native), c_filter_info)
 	retGo := retC == C.TRUE
@@ -2523,7 +2625,10 @@ func (recv *RecentManager) AddFull(uri string, recentData *RecentData) bool {
 	c_uri := C.CString(uri)
 	defer C.free(unsafe.Pointer(c_uri))
 
-	c_recent_data := (*C.GtkRecentData)(recentData.ToC())
+	c_recent_data := (*C.GtkRecentData)(C.NULL)
+	if recentData != nil {
+		c_recent_data = (*C.GtkRecentData)(recentData.ToC())
+	}
 
 	retC := C.gtk_recent_manager_add_full((*C.GtkRecentManager)(recv.native), c_uri, c_recent_data)
 	retGo := retC == C.TRUE
@@ -2803,7 +2908,10 @@ func StatusIconNewFromIconName(iconName string) *StatusIcon {
 
 // StatusIconNewFromPixbuf is a wrapper around the C function gtk_status_icon_new_from_pixbuf.
 func StatusIconNewFromPixbuf(pixbuf *gdkpixbuf.Pixbuf) *StatusIcon {
-	c_pixbuf := (*C.GdkPixbuf)(pixbuf.ToC())
+	c_pixbuf := (*C.GdkPixbuf)(C.NULL)
+	if pixbuf != nil {
+		c_pixbuf = (*C.GdkPixbuf)(pixbuf.ToC())
+	}
 
 	retC := C.gtk_status_icon_new_from_pixbuf(c_pixbuf)
 	retGo := StatusIconNewFromC(unsafe.Pointer(retC))
@@ -2907,7 +3015,10 @@ func (recv *StatusIcon) SetFromIconName(iconName string) {
 
 // SetFromPixbuf is a wrapper around the C function gtk_status_icon_set_from_pixbuf.
 func (recv *StatusIcon) SetFromPixbuf(pixbuf *gdkpixbuf.Pixbuf) {
-	c_pixbuf := (*C.GdkPixbuf)(pixbuf.ToC())
+	c_pixbuf := (*C.GdkPixbuf)(C.NULL)
+	if pixbuf != nil {
+		c_pixbuf = (*C.GdkPixbuf)(pixbuf.ToC())
+	}
 
 	C.gtk_status_icon_set_from_pixbuf((*C.GtkStatusIcon)(recv.native), c_pixbuf)
 
@@ -3074,7 +3185,10 @@ func (recv *TreeView) SetRubberBanding(enable bool) {
 
 // SetSearchEntry is a wrapper around the C function gtk_tree_view_set_search_entry.
 func (recv *TreeView) SetSearchEntry(entry *Entry) {
-	c_entry := (*C.GtkEntry)(entry.ToC())
+	c_entry := (*C.GtkEntry)(C.NULL)
+	if entry != nil {
+		c_entry = (*C.GtkEntry)(entry.ToC())
+	}
 
 	C.gtk_tree_view_set_search_entry((*C.GtkTreeView)(recv.native), c_entry)
 

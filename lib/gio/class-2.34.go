@@ -69,7 +69,10 @@ func (recv *DBusConnection) GetLastSerial() uint32 {
 
 // IsExported is a wrapper around the C function g_dbus_object_manager_server_is_exported.
 func (recv *DBusObjectManagerServer) IsExported(object *DBusObjectSkeleton) bool {
-	c_object := (*C.GDBusObjectSkeleton)(object.ToC())
+	c_object := (*C.GDBusObjectSkeleton)(C.NULL)
+	if object != nil {
+		c_object = (*C.GDBusObjectSkeleton)(object.ToC())
+	}
 
 	retC := C.g_dbus_object_manager_server_is_exported((*C.GDBusObjectManagerServer)(recv.native), c_object)
 	retGo := retC == C.TRUE
@@ -106,7 +109,10 @@ func (recv *FileInfo) SetSymbolicIcon(icon *Icon) {
 func (recv *InputStream) ReadBytes(count uint64, cancellable *Cancellable) (*glib.Bytes, error) {
 	c_count := (C.gsize)(count)
 
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -142,7 +148,10 @@ func (recv *InputStream) ReadBytesFinish(result *AsyncResult) (*glib.Bytes, erro
 
 // MemoryInputStreamNewFromBytes is a wrapper around the C function g_memory_input_stream_new_from_bytes.
 func MemoryInputStreamNewFromBytes(bytes *glib.Bytes) *MemoryInputStream {
-	c_bytes := (*C.GBytes)(bytes.ToC())
+	c_bytes := (*C.GBytes)(C.NULL)
+	if bytes != nil {
+		c_bytes = (*C.GBytes)(bytes.ToC())
+	}
 
 	retC := C.g_memory_input_stream_new_from_bytes(c_bytes)
 	retGo := MemoryInputStreamNewFromC(unsafe.Pointer(retC))
@@ -152,7 +161,10 @@ func MemoryInputStreamNewFromBytes(bytes *glib.Bytes) *MemoryInputStream {
 
 // AddBytes is a wrapper around the C function g_memory_input_stream_add_bytes.
 func (recv *MemoryInputStream) AddBytes(bytes *glib.Bytes) {
-	c_bytes := (*C.GBytes)(bytes.ToC())
+	c_bytes := (*C.GBytes)(C.NULL)
+	if bytes != nil {
+		c_bytes = (*C.GBytes)(bytes.ToC())
+	}
 
 	C.g_memory_input_stream_add_bytes((*C.GMemoryInputStream)(recv.native), c_bytes)
 
@@ -169,7 +181,10 @@ func (recv *MemoryOutputStream) StealAsBytes() *glib.Bytes {
 
 // MenuItemNewFromModel is a wrapper around the C function g_menu_item_new_from_model.
 func MenuItemNewFromModel(model *MenuModel, itemIndex int32) *MenuItem {
-	c_model := (*C.GMenuModel)(model.ToC())
+	c_model := (*C.GMenuModel)(C.NULL)
+	if model != nil {
+		c_model = (*C.GMenuModel)(model.ToC())
+	}
 
 	c_item_index := (C.gint)(itemIndex)
 
@@ -219,7 +234,10 @@ func (recv *Resolver) LookupRecords(rrname string, recordType ResolverRecordType
 
 	c_record_type := (C.GResolverRecordType)(recordType)
 
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -344,7 +362,10 @@ func (recv *TestDBus) Up() {
 
 // IsSame is a wrapper around the C function g_tls_certificate_is_same.
 func (recv *TlsCertificate) IsSame(certTwo *TlsCertificate) bool {
-	c_cert_two := (*C.GTlsCertificate)(certTwo.ToC())
+	c_cert_two := (*C.GTlsCertificate)(C.NULL)
+	if certTwo != nil {
+		c_cert_two = (*C.GTlsCertificate)(certTwo.ToC())
+	}
 
 	retC := C.g_tls_certificate_is_same((*C.GTlsCertificate)(recv.native), c_cert_two)
 	retGo := retC == C.TRUE

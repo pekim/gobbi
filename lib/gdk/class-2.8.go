@@ -16,7 +16,10 @@ import "C"
 
 // CursorNewFromName is a wrapper around the C function gdk_cursor_new_from_name.
 func CursorNewFromName(display *Display, name string) *Cursor {
-	c_display := (*C.GdkDisplay)(display.ToC())
+	c_display := (*C.GdkDisplay)(C.NULL)
+	if display != nil {
+		c_display = (*C.GdkDisplay)(display.ToC())
+	}
 
 	c_name := C.CString(name)
 	defer C.free(unsafe.Pointer(c_name))
@@ -47,7 +50,10 @@ func (recv *Cursor) GetImage() *gdkpixbuf.Pixbuf {
 
 // WarpPointer is a wrapper around the C function gdk_display_warp_pointer.
 func (recv *Display) WarpPointer(screen *Screen, x int32, y int32) {
-	c_screen := (*C.GdkScreen)(screen.ToC())
+	c_screen := (*C.GdkScreen)(C.NULL)
+	if screen != nil {
+		c_screen = (*C.GdkScreen)(screen.ToC())
+	}
 
 	c_x := (C.gint)(x)
 
@@ -73,7 +79,10 @@ func (recv *Screen) GetRgbaVisual() *Visual {
 
 // MoveRegion is a wrapper around the C function gdk_window_move_region.
 func (recv *Window) MoveRegion(region *cairo.Region, dx int32, dy int32) {
-	c_region := (*C.cairo_region_t)(region.ToC())
+	c_region := (*C.cairo_region_t)(C.NULL)
+	if region != nil {
+		c_region = (*C.cairo_region_t)(region.ToC())
+	}
 
 	c_dx := (C.gint)(dx)
 

@@ -204,7 +204,10 @@ func GetMirrorChar(ch rune, mirroredCh rune) bool {
 
 // Itemize is a wrapper around the C function pango_itemize.
 func Itemize(context *Context, text string, startIndex int32, length int32, attrs *AttrList, cachedIter *AttrIterator) *glib.List {
-	c_context := (*C.PangoContext)(context.ToC())
+	c_context := (*C.PangoContext)(C.NULL)
+	if context != nil {
+		c_context = (*C.PangoContext)(context.ToC())
+	}
 
 	c_text := C.CString(text)
 	defer C.free(unsafe.Pointer(c_text))
@@ -213,9 +216,15 @@ func Itemize(context *Context, text string, startIndex int32, length int32, attr
 
 	c_length := (C.int)(length)
 
-	c_attrs := (*C.PangoAttrList)(attrs.ToC())
+	c_attrs := (*C.PangoAttrList)(C.NULL)
+	if attrs != nil {
+		c_attrs = (*C.PangoAttrList)(attrs.ToC())
+	}
 
-	c_cached_iter := (*C.PangoAttrIterator)(cachedIter.ToC())
+	c_cached_iter := (*C.PangoAttrIterator)(C.NULL)
+	if cachedIter != nil {
+		c_cached_iter = (*C.PangoAttrIterator)(cachedIter.ToC())
+	}
 
 	retC := C.pango_itemize(c_context, c_text, c_start_index, c_length, c_attrs, c_cached_iter)
 	retGo := glib.ListNewFromC(unsafe.Pointer(retC))
@@ -290,7 +299,10 @@ func ParseMarkup(markupText string, length int32, accelMarker rune) (bool, *Attr
 
 // ReorderItems is a wrapper around the C function pango_reorder_items.
 func ReorderItems(logicalItems *glib.List) *glib.List {
-	c_logical_items := (*C.GList)(logicalItems.ToC())
+	c_logical_items := (*C.GList)(C.NULL)
+	if logicalItems != nil {
+		c_logical_items = (*C.GList)(logicalItems.ToC())
+	}
 
 	retC := C.pango_reorder_items(c_logical_items)
 	retGo := glib.ListNewFromC(unsafe.Pointer(retC))

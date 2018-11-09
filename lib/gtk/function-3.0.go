@@ -20,7 +20,10 @@ import "C"
 
 // BindingEntryAddSignalFromString is a wrapper around the C function gtk_binding_entry_add_signal_from_string.
 func BindingEntryAddSignalFromString(bindingSet *BindingSet, signalDesc string) glib.TokenType {
-	c_binding_set := (*C.GtkBindingSet)(bindingSet.ToC())
+	c_binding_set := (*C.GtkBindingSet)(C.NULL)
+	if bindingSet != nil {
+		c_binding_set = (*C.GtkBindingSet)(bindingSet.ToC())
+	}
 
 	c_signal_desc := C.CString(signalDesc)
 	defer C.free(unsafe.Pointer(c_signal_desc))
@@ -33,9 +36,15 @@ func BindingEntryAddSignalFromString(bindingSet *BindingSet, signalDesc string) 
 
 // CairoShouldDrawWindow is a wrapper around the C function gtk_cairo_should_draw_window.
 func CairoShouldDrawWindow(cr *cairo.Context, window *gdk.Window) bool {
-	c_cr := (*C.cairo_t)(cr.ToC())
+	c_cr := (*C.cairo_t)(C.NULL)
+	if cr != nil {
+		c_cr = (*C.cairo_t)(cr.ToC())
+	}
 
-	c_window := (*C.GdkWindow)(window.ToC())
+	c_window := (*C.GdkWindow)(C.NULL)
+	if window != nil {
+		c_window = (*C.GdkWindow)(window.ToC())
+	}
 
 	retC := C.gtk_cairo_should_draw_window(c_cr, c_window)
 	retGo := retC == C.TRUE
@@ -45,11 +54,20 @@ func CairoShouldDrawWindow(cr *cairo.Context, window *gdk.Window) bool {
 
 // CairoTransformToWindow is a wrapper around the C function gtk_cairo_transform_to_window.
 func CairoTransformToWindow(cr *cairo.Context, widget *Widget, window *gdk.Window) {
-	c_cr := (*C.cairo_t)(cr.ToC())
+	c_cr := (*C.cairo_t)(C.NULL)
+	if cr != nil {
+		c_cr = (*C.cairo_t)(cr.ToC())
+	}
 
-	c_widget := (*C.GtkWidget)(widget.ToC())
+	c_widget := (*C.GtkWidget)(C.NULL)
+	if widget != nil {
+		c_widget = (*C.GtkWidget)(widget.ToC())
+	}
 
-	c_window := (*C.GdkWindow)(window.ToC())
+	c_window := (*C.GdkWindow)(C.NULL)
+	if window != nil {
+		c_window = (*C.GdkWindow)(window.ToC())
+	}
 
 	C.gtk_cairo_transform_to_window(c_cr, c_widget, c_window)
 
@@ -58,9 +76,15 @@ func CairoTransformToWindow(cr *cairo.Context, widget *Widget, window *gdk.Windo
 
 // DeviceGrabAdd is a wrapper around the C function gtk_device_grab_add.
 func DeviceGrabAdd(widget *Widget, device *gdk.Device, blockOthers bool) {
-	c_widget := (*C.GtkWidget)(widget.ToC())
+	c_widget := (*C.GtkWidget)(C.NULL)
+	if widget != nil {
+		c_widget = (*C.GtkWidget)(widget.ToC())
+	}
 
-	c_device := (*C.GdkDevice)(device.ToC())
+	c_device := (*C.GdkDevice)(C.NULL)
+	if device != nil {
+		c_device = (*C.GdkDevice)(device.ToC())
+	}
 
 	c_block_others :=
 		boolToGboolean(blockOthers)
@@ -72,9 +96,15 @@ func DeviceGrabAdd(widget *Widget, device *gdk.Device, blockOthers bool) {
 
 // DeviceGrabRemove is a wrapper around the C function gtk_device_grab_remove.
 func DeviceGrabRemove(widget *Widget, device *gdk.Device) {
-	c_widget := (*C.GtkWidget)(widget.ToC())
+	c_widget := (*C.GtkWidget)(C.NULL)
+	if widget != nil {
+		c_widget = (*C.GtkWidget)(widget.ToC())
+	}
 
-	c_device := (*C.GdkDevice)(device.ToC())
+	c_device := (*C.GdkDevice)(C.NULL)
+	if device != nil {
+		c_device = (*C.GdkDevice)(device.ToC())
+	}
 
 	C.gtk_device_grab_remove(c_widget, c_device)
 
@@ -125,9 +155,15 @@ func GetMinorVersion() uint32 {
 
 // RenderActivity is a wrapper around the C function gtk_render_activity.
 func RenderActivity(context *StyleContext, cr *cairo.Context, x float64, y float64, width float64, height float64) {
-	c_context := (*C.GtkStyleContext)(context.ToC())
+	c_context := (*C.GtkStyleContext)(C.NULL)
+	if context != nil {
+		c_context = (*C.GtkStyleContext)(context.ToC())
+	}
 
-	c_cr := (*C.cairo_t)(cr.ToC())
+	c_cr := (*C.cairo_t)(C.NULL)
+	if cr != nil {
+		c_cr = (*C.cairo_t)(cr.ToC())
+	}
 
 	c_x := (C.gdouble)(x)
 
@@ -144,9 +180,15 @@ func RenderActivity(context *StyleContext, cr *cairo.Context, x float64, y float
 
 // RenderArrow is a wrapper around the C function gtk_render_arrow.
 func RenderArrow(context *StyleContext, cr *cairo.Context, angle float64, x float64, y float64, size float64) {
-	c_context := (*C.GtkStyleContext)(context.ToC())
+	c_context := (*C.GtkStyleContext)(C.NULL)
+	if context != nil {
+		c_context = (*C.GtkStyleContext)(context.ToC())
+	}
 
-	c_cr := (*C.cairo_t)(cr.ToC())
+	c_cr := (*C.cairo_t)(C.NULL)
+	if cr != nil {
+		c_cr = (*C.cairo_t)(cr.ToC())
+	}
 
 	c_angle := (C.gdouble)(angle)
 
@@ -163,9 +205,15 @@ func RenderArrow(context *StyleContext, cr *cairo.Context, angle float64, x floa
 
 // RenderCheck is a wrapper around the C function gtk_render_check.
 func RenderCheck(context *StyleContext, cr *cairo.Context, x float64, y float64, width float64, height float64) {
-	c_context := (*C.GtkStyleContext)(context.ToC())
+	c_context := (*C.GtkStyleContext)(C.NULL)
+	if context != nil {
+		c_context = (*C.GtkStyleContext)(context.ToC())
+	}
 
-	c_cr := (*C.cairo_t)(cr.ToC())
+	c_cr := (*C.cairo_t)(C.NULL)
+	if cr != nil {
+		c_cr = (*C.cairo_t)(cr.ToC())
+	}
 
 	c_x := (C.gdouble)(x)
 
@@ -182,9 +230,15 @@ func RenderCheck(context *StyleContext, cr *cairo.Context, x float64, y float64,
 
 // RenderExpander is a wrapper around the C function gtk_render_expander.
 func RenderExpander(context *StyleContext, cr *cairo.Context, x float64, y float64, width float64, height float64) {
-	c_context := (*C.GtkStyleContext)(context.ToC())
+	c_context := (*C.GtkStyleContext)(C.NULL)
+	if context != nil {
+		c_context = (*C.GtkStyleContext)(context.ToC())
+	}
 
-	c_cr := (*C.cairo_t)(cr.ToC())
+	c_cr := (*C.cairo_t)(C.NULL)
+	if cr != nil {
+		c_cr = (*C.cairo_t)(cr.ToC())
+	}
 
 	c_x := (C.gdouble)(x)
 
@@ -201,9 +255,15 @@ func RenderExpander(context *StyleContext, cr *cairo.Context, x float64, y float
 
 // RenderExtension is a wrapper around the C function gtk_render_extension.
 func RenderExtension(context *StyleContext, cr *cairo.Context, x float64, y float64, width float64, height float64, gapSide PositionType) {
-	c_context := (*C.GtkStyleContext)(context.ToC())
+	c_context := (*C.GtkStyleContext)(C.NULL)
+	if context != nil {
+		c_context = (*C.GtkStyleContext)(context.ToC())
+	}
 
-	c_cr := (*C.cairo_t)(cr.ToC())
+	c_cr := (*C.cairo_t)(C.NULL)
+	if cr != nil {
+		c_cr = (*C.cairo_t)(cr.ToC())
+	}
 
 	c_x := (C.gdouble)(x)
 
@@ -222,9 +282,15 @@ func RenderExtension(context *StyleContext, cr *cairo.Context, x float64, y floa
 
 // RenderFocus is a wrapper around the C function gtk_render_focus.
 func RenderFocus(context *StyleContext, cr *cairo.Context, x float64, y float64, width float64, height float64) {
-	c_context := (*C.GtkStyleContext)(context.ToC())
+	c_context := (*C.GtkStyleContext)(C.NULL)
+	if context != nil {
+		c_context = (*C.GtkStyleContext)(context.ToC())
+	}
 
-	c_cr := (*C.cairo_t)(cr.ToC())
+	c_cr := (*C.cairo_t)(C.NULL)
+	if cr != nil {
+		c_cr = (*C.cairo_t)(cr.ToC())
+	}
 
 	c_x := (C.gdouble)(x)
 
@@ -241,9 +307,15 @@ func RenderFocus(context *StyleContext, cr *cairo.Context, x float64, y float64,
 
 // RenderFrame is a wrapper around the C function gtk_render_frame.
 func RenderFrame(context *StyleContext, cr *cairo.Context, x float64, y float64, width float64, height float64) {
-	c_context := (*C.GtkStyleContext)(context.ToC())
+	c_context := (*C.GtkStyleContext)(C.NULL)
+	if context != nil {
+		c_context = (*C.GtkStyleContext)(context.ToC())
+	}
 
-	c_cr := (*C.cairo_t)(cr.ToC())
+	c_cr := (*C.cairo_t)(C.NULL)
+	if cr != nil {
+		c_cr = (*C.cairo_t)(cr.ToC())
+	}
 
 	c_x := (C.gdouble)(x)
 
@@ -260,9 +332,15 @@ func RenderFrame(context *StyleContext, cr *cairo.Context, x float64, y float64,
 
 // RenderFrameGap is a wrapper around the C function gtk_render_frame_gap.
 func RenderFrameGap(context *StyleContext, cr *cairo.Context, x float64, y float64, width float64, height float64, gapSide PositionType, xy0Gap float64, xy1Gap float64) {
-	c_context := (*C.GtkStyleContext)(context.ToC())
+	c_context := (*C.GtkStyleContext)(C.NULL)
+	if context != nil {
+		c_context = (*C.GtkStyleContext)(context.ToC())
+	}
 
-	c_cr := (*C.cairo_t)(cr.ToC())
+	c_cr := (*C.cairo_t)(C.NULL)
+	if cr != nil {
+		c_cr = (*C.cairo_t)(cr.ToC())
+	}
 
 	c_x := (C.gdouble)(x)
 
@@ -285,9 +363,15 @@ func RenderFrameGap(context *StyleContext, cr *cairo.Context, x float64, y float
 
 // RenderHandle is a wrapper around the C function gtk_render_handle.
 func RenderHandle(context *StyleContext, cr *cairo.Context, x float64, y float64, width float64, height float64) {
-	c_context := (*C.GtkStyleContext)(context.ToC())
+	c_context := (*C.GtkStyleContext)(C.NULL)
+	if context != nil {
+		c_context = (*C.GtkStyleContext)(context.ToC())
+	}
 
-	c_cr := (*C.cairo_t)(cr.ToC())
+	c_cr := (*C.cairo_t)(C.NULL)
+	if cr != nil {
+		c_cr = (*C.cairo_t)(cr.ToC())
+	}
 
 	c_x := (C.gdouble)(x)
 
@@ -306,15 +390,24 @@ func RenderHandle(context *StyleContext, cr *cairo.Context, x float64, y float64
 
 // RenderLayout is a wrapper around the C function gtk_render_layout.
 func RenderLayout(context *StyleContext, cr *cairo.Context, x float64, y float64, layout *pango.Layout) {
-	c_context := (*C.GtkStyleContext)(context.ToC())
+	c_context := (*C.GtkStyleContext)(C.NULL)
+	if context != nil {
+		c_context = (*C.GtkStyleContext)(context.ToC())
+	}
 
-	c_cr := (*C.cairo_t)(cr.ToC())
+	c_cr := (*C.cairo_t)(C.NULL)
+	if cr != nil {
+		c_cr = (*C.cairo_t)(cr.ToC())
+	}
 
 	c_x := (C.gdouble)(x)
 
 	c_y := (C.gdouble)(y)
 
-	c_layout := (*C.PangoLayout)(layout.ToC())
+	c_layout := (*C.PangoLayout)(C.NULL)
+	if layout != nil {
+		c_layout = (*C.PangoLayout)(layout.ToC())
+	}
 
 	C.gtk_render_layout(c_context, c_cr, c_x, c_y, c_layout)
 
@@ -323,9 +416,15 @@ func RenderLayout(context *StyleContext, cr *cairo.Context, x float64, y float64
 
 // RenderLine is a wrapper around the C function gtk_render_line.
 func RenderLine(context *StyleContext, cr *cairo.Context, x0 float64, y0 float64, x1 float64, y1 float64) {
-	c_context := (*C.GtkStyleContext)(context.ToC())
+	c_context := (*C.GtkStyleContext)(C.NULL)
+	if context != nil {
+		c_context = (*C.GtkStyleContext)(context.ToC())
+	}
 
-	c_cr := (*C.cairo_t)(cr.ToC())
+	c_cr := (*C.cairo_t)(C.NULL)
+	if cr != nil {
+		c_cr = (*C.cairo_t)(cr.ToC())
+	}
 
 	c_x0 := (C.gdouble)(x0)
 
@@ -342,9 +441,15 @@ func RenderLine(context *StyleContext, cr *cairo.Context, x0 float64, y0 float64
 
 // RenderOption is a wrapper around the C function gtk_render_option.
 func RenderOption(context *StyleContext, cr *cairo.Context, x float64, y float64, width float64, height float64) {
-	c_context := (*C.GtkStyleContext)(context.ToC())
+	c_context := (*C.GtkStyleContext)(C.NULL)
+	if context != nil {
+		c_context = (*C.GtkStyleContext)(context.ToC())
+	}
 
-	c_cr := (*C.cairo_t)(cr.ToC())
+	c_cr := (*C.cairo_t)(C.NULL)
+	if cr != nil {
+		c_cr = (*C.cairo_t)(cr.ToC())
+	}
 
 	c_x := (C.gdouble)(x)
 
@@ -361,9 +466,15 @@ func RenderOption(context *StyleContext, cr *cairo.Context, x float64, y float64
 
 // RenderSlider is a wrapper around the C function gtk_render_slider.
 func RenderSlider(context *StyleContext, cr *cairo.Context, x float64, y float64, width float64, height float64, orientation Orientation) {
-	c_context := (*C.GtkStyleContext)(context.ToC())
+	c_context := (*C.GtkStyleContext)(C.NULL)
+	if context != nil {
+		c_context = (*C.GtkStyleContext)(context.ToC())
+	}
 
-	c_cr := (*C.cairo_t)(cr.ToC())
+	c_cr := (*C.cairo_t)(C.NULL)
+	if cr != nil {
+		c_cr = (*C.cairo_t)(cr.ToC())
+	}
 
 	c_x := (C.gdouble)(x)
 

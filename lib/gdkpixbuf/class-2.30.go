@@ -15,7 +15,10 @@ import "C"
 
 // WriteBytes is a wrapper around the C function gdk_pixbuf_loader_write_bytes.
 func (recv *PixbufLoader) WriteBytes(buffer *glib.Bytes) (bool, error) {
-	c_buffer := (*C.GBytes)(buffer.ToC())
+	c_buffer := (*C.GBytes)(C.NULL)
+	if buffer != nil {
+		c_buffer = (*C.GBytes)(buffer.ToC())
+	}
 
 	var cThrowableError *C.GError
 

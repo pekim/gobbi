@@ -57,7 +57,10 @@ func (recv *Queue) Copy() *Queue {
 
 // DeleteLink is a wrapper around the C function g_queue_delete_link.
 func (recv *Queue) DeleteLink(link *List) {
-	c_link_ := (*C.GList)(link.ToC())
+	c_link_ := (*C.GList)(C.NULL)
+	if link != nil {
+		c_link_ = (*C.GList)(link.ToC())
+	}
 
 	C.g_queue_delete_link((*C.GQueue)(recv.native), c_link_)
 
@@ -98,7 +101,10 @@ func (recv *Queue) Index(data uintptr) int32 {
 
 // InsertAfter is a wrapper around the C function g_queue_insert_after.
 func (recv *Queue) InsertAfter(sibling *List, data uintptr) {
-	c_sibling := (*C.GList)(sibling.ToC())
+	c_sibling := (*C.GList)(C.NULL)
+	if sibling != nil {
+		c_sibling = (*C.GList)(sibling.ToC())
+	}
 
 	c_data := (C.gpointer)(data)
 
@@ -109,7 +115,10 @@ func (recv *Queue) InsertAfter(sibling *List, data uintptr) {
 
 // InsertBefore is a wrapper around the C function g_queue_insert_before.
 func (recv *Queue) InsertBefore(sibling *List, data uintptr) {
-	c_sibling := (*C.GList)(sibling.ToC())
+	c_sibling := (*C.GList)(C.NULL)
+	if sibling != nil {
+		c_sibling = (*C.GList)(sibling.ToC())
+	}
 
 	c_data := (C.gpointer)(data)
 
@@ -122,7 +131,10 @@ func (recv *Queue) InsertBefore(sibling *List, data uintptr) {
 
 // LinkIndex is a wrapper around the C function g_queue_link_index.
 func (recv *Queue) LinkIndex(link *List) int32 {
-	c_link_ := (*C.GList)(link.ToC())
+	c_link_ := (*C.GList)(C.NULL)
+	if link != nil {
+		c_link_ = (*C.GList)(link.ToC())
+	}
 
 	retC := C.g_queue_link_index((*C.GQueue)(recv.native), c_link_)
 	retGo := (int32)(retC)
@@ -201,7 +213,10 @@ func (recv *Queue) PushNth(data uintptr, n int32) {
 func (recv *Queue) PushNthLink(n int32, link *List) {
 	c_n := (C.gint)(n)
 
-	c_link_ := (*C.GList)(link.ToC())
+	c_link_ := (*C.GList)(C.NULL)
+	if link != nil {
+		c_link_ = (*C.GList)(link.ToC())
+	}
 
 	C.g_queue_push_nth_link((*C.GQueue)(recv.native), c_n, c_link_)
 
@@ -239,7 +254,10 @@ func (recv *Queue) Reverse() {
 
 // Unlink is a wrapper around the C function g_queue_unlink.
 func (recv *Queue) Unlink(link *List) {
-	c_link_ := (*C.GList)(link.ToC())
+	c_link_ := (*C.GList)(C.NULL)
+	if link != nil {
+		c_link_ = (*C.GList)(link.ToC())
+	}
 
 	C.g_queue_unlink((*C.GQueue)(recv.native), c_link_)
 

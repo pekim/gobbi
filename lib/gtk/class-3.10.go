@@ -139,7 +139,10 @@ func (recv *Builder) GetApplication() *Application {
 
 // SetApplication is a wrapper around the C function gtk_builder_set_application.
 func (recv *Builder) SetApplication(application *Application) {
-	c_application := (*C.GtkApplication)(application.ToC())
+	c_application := (*C.GtkApplication)(C.NULL)
+	if application != nil {
+		c_application = (*C.GtkApplication)(application.ToC())
+	}
 
 	C.gtk_builder_set_application((*C.GtkBuilder)(recv.native), c_application)
 
@@ -163,7 +166,10 @@ func (recv *Entry) GetTabs() *pango.TabArray {
 
 // SetTabs is a wrapper around the C function gtk_entry_set_tabs.
 func (recv *Entry) SetTabs(tabs *pango.TabArray) {
-	c_tabs := (*C.PangoTabArray)(tabs.ToC())
+	c_tabs := (*C.PangoTabArray)(C.NULL)
+	if tabs != nil {
+		c_tabs = (*C.PangoTabArray)(tabs.ToC())
+	}
 
 	C.gtk_entry_set_tabs((*C.GtkEntry)(recv.native), c_tabs)
 
@@ -273,7 +279,10 @@ func (recv *HeaderBar) GetTitle() string {
 
 // PackEnd is a wrapper around the C function gtk_header_bar_pack_end.
 func (recv *HeaderBar) PackEnd(child *Widget) {
-	c_child := (*C.GtkWidget)(child.ToC())
+	c_child := (*C.GtkWidget)(C.NULL)
+	if child != nil {
+		c_child = (*C.GtkWidget)(child.ToC())
+	}
 
 	C.gtk_header_bar_pack_end((*C.GtkHeaderBar)(recv.native), c_child)
 
@@ -282,7 +291,10 @@ func (recv *HeaderBar) PackEnd(child *Widget) {
 
 // PackStart is a wrapper around the C function gtk_header_bar_pack_start.
 func (recv *HeaderBar) PackStart(child *Widget) {
-	c_child := (*C.GtkWidget)(child.ToC())
+	c_child := (*C.GtkWidget)(C.NULL)
+	if child != nil {
+		c_child = (*C.GtkWidget)(child.ToC())
+	}
 
 	C.gtk_header_bar_pack_start((*C.GtkHeaderBar)(recv.native), c_child)
 
@@ -291,7 +303,10 @@ func (recv *HeaderBar) PackStart(child *Widget) {
 
 // SetCustomTitle is a wrapper around the C function gtk_header_bar_set_custom_title.
 func (recv *HeaderBar) SetCustomTitle(titleWidget *Widget) {
-	c_title_widget := (*C.GtkWidget)(titleWidget.ToC())
+	c_title_widget := (*C.GtkWidget)(C.NULL)
+	if titleWidget != nil {
+		c_title_widget = (*C.GtkWidget)(titleWidget.ToC())
+	}
 
 	C.gtk_header_bar_set_custom_title((*C.GtkHeaderBar)(recv.native), c_title_widget)
 
@@ -338,7 +353,10 @@ func (recv *IconInfo) GetBaseScale() int32 {
 
 // LoadSurface is a wrapper around the C function gtk_icon_info_load_surface.
 func (recv *IconInfo) LoadSurface(forWindow *gdk.Window) (*cairo.Surface, error) {
-	c_for_window := (*C.GdkWindow)(forWindow.ToC())
+	c_for_window := (*C.GdkWindow)(C.NULL)
+	if forWindow != nil {
+		c_for_window = (*C.GdkWindow)(forWindow.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -393,7 +411,10 @@ func (recv *IconTheme) LoadSurface(iconName string, size int32, scale int32, for
 
 	c_scale := (C.gint)(scale)
 
-	c_for_window := (*C.GdkWindow)(forWindow.ToC())
+	c_for_window := (*C.GdkWindow)(C.NULL)
+	if forWindow != nil {
+		c_for_window = (*C.GdkWindow)(forWindow.ToC())
+	}
 
 	c_flags := (C.GtkIconLookupFlags)(flags)
 
@@ -460,7 +481,10 @@ func (recv *IconTheme) LookupIconForScale(iconName string, size int32, scale int
 
 // ImageNewFromSurface is a wrapper around the C function gtk_image_new_from_surface.
 func ImageNewFromSurface(surface *cairo.Surface) *Image {
-	c_surface := (*C.cairo_surface_t)(surface.ToC())
+	c_surface := (*C.cairo_surface_t)(C.NULL)
+	if surface != nil {
+		c_surface = (*C.cairo_surface_t)(surface.ToC())
+	}
 
 	retC := C.gtk_image_new_from_surface(c_surface)
 	retGo := ImageNewFromC(unsafe.Pointer(retC))
@@ -470,7 +494,10 @@ func ImageNewFromSurface(surface *cairo.Surface) *Image {
 
 // SetFromSurface is a wrapper around the C function gtk_image_set_from_surface.
 func (recv *Image) SetFromSurface(surface *cairo.Surface) {
-	c_surface := (*C.cairo_surface_t)(surface.ToC())
+	c_surface := (*C.cairo_surface_t)(C.NULL)
+	if surface != nil {
+		c_surface = (*C.cairo_surface_t)(surface.ToC())
+	}
 
 	C.gtk_image_set_from_surface((*C.GtkImage)(recv.native), c_surface)
 
@@ -640,7 +667,10 @@ func ListBoxNew() *ListBox {
 
 // DragHighlightRow is a wrapper around the C function gtk_list_box_drag_highlight_row.
 func (recv *ListBox) DragHighlightRow(row *ListBoxRow) {
-	c_row := (*C.GtkListBoxRow)(row.ToC())
+	c_row := (*C.GtkListBoxRow)(C.NULL)
+	if row != nil {
+		c_row = (*C.GtkListBoxRow)(row.ToC())
+	}
 
 	C.gtk_list_box_drag_highlight_row((*C.GtkListBox)(recv.native), c_row)
 
@@ -718,7 +748,10 @@ func (recv *ListBox) GetSelectionMode() SelectionMode {
 
 // Insert is a wrapper around the C function gtk_list_box_insert.
 func (recv *ListBox) Insert(child *Widget, position int32) {
-	c_child := (*C.GtkWidget)(child.ToC())
+	c_child := (*C.GtkWidget)(C.NULL)
+	if child != nil {
+		c_child = (*C.GtkWidget)(child.ToC())
+	}
 
 	c_position := (C.gint)(position)
 
@@ -750,7 +783,10 @@ func (recv *ListBox) InvalidateSort() {
 
 // Prepend is a wrapper around the C function gtk_list_box_prepend.
 func (recv *ListBox) Prepend(child *Widget) {
-	c_child := (*C.GtkWidget)(child.ToC())
+	c_child := (*C.GtkWidget)(C.NULL)
+	if child != nil {
+		c_child = (*C.GtkWidget)(child.ToC())
+	}
 
 	C.gtk_list_box_prepend((*C.GtkListBox)(recv.native), c_child)
 
@@ -759,7 +795,10 @@ func (recv *ListBox) Prepend(child *Widget) {
 
 // SelectRow is a wrapper around the C function gtk_list_box_select_row.
 func (recv *ListBox) SelectRow(row *ListBoxRow) {
-	c_row := (*C.GtkListBoxRow)(row.ToC())
+	c_row := (*C.GtkListBoxRow)(C.NULL)
+	if row != nil {
+		c_row = (*C.GtkListBoxRow)(row.ToC())
+	}
 
 	C.gtk_list_box_select_row((*C.GtkListBox)(recv.native), c_row)
 
@@ -778,7 +817,10 @@ func (recv *ListBox) SetActivateOnSingleClick(single bool) {
 
 // SetAdjustment is a wrapper around the C function gtk_list_box_set_adjustment.
 func (recv *ListBox) SetAdjustment(adjustment *Adjustment) {
-	c_adjustment := (*C.GtkAdjustment)(adjustment.ToC())
+	c_adjustment := (*C.GtkAdjustment)(C.NULL)
+	if adjustment != nil {
+		c_adjustment = (*C.GtkAdjustment)(adjustment.ToC())
+	}
 
 	C.gtk_list_box_set_adjustment((*C.GtkListBox)(recv.native), c_adjustment)
 
@@ -791,7 +833,10 @@ func (recv *ListBox) SetAdjustment(adjustment *Adjustment) {
 
 // SetPlaceholder is a wrapper around the C function gtk_list_box_set_placeholder.
 func (recv *ListBox) SetPlaceholder(placeholder *Widget) {
-	c_placeholder := (*C.GtkWidget)(placeholder.ToC())
+	c_placeholder := (*C.GtkWidget)(C.NULL)
+	if placeholder != nil {
+		c_placeholder = (*C.GtkWidget)(placeholder.ToC())
+	}
 
 	C.gtk_list_box_set_placeholder((*C.GtkListBox)(recv.native), c_placeholder)
 
@@ -904,7 +949,10 @@ func (recv *ListBoxRow) GetIndex() int32 {
 
 // SetHeader is a wrapper around the C function gtk_list_box_row_set_header.
 func (recv *ListBoxRow) SetHeader(header *Widget) {
-	c_header := (*C.GtkWidget)(header.ToC())
+	c_header := (*C.GtkWidget)(C.NULL)
+	if header != nil {
+		c_header = (*C.GtkWidget)(header.ToC())
+	}
 
 	C.gtk_list_box_row_set_header((*C.GtkListBoxRow)(recv.native), c_header)
 
@@ -1178,7 +1226,10 @@ func SearchBarNew() *SearchBar {
 
 // ConnectEntry is a wrapper around the C function gtk_search_bar_connect_entry.
 func (recv *SearchBar) ConnectEntry(entry *Entry) {
-	c_entry := (*C.GtkEntry)(entry.ToC())
+	c_entry := (*C.GtkEntry)(C.NULL)
+	if entry != nil {
+		c_entry = (*C.GtkEntry)(entry.ToC())
+	}
 
 	C.gtk_search_bar_connect_entry((*C.GtkSearchBar)(recv.native), c_entry)
 
@@ -1290,7 +1341,10 @@ func StackNew() *Stack {
 
 // AddNamed is a wrapper around the C function gtk_stack_add_named.
 func (recv *Stack) AddNamed(child *Widget, name string) {
-	c_child := (*C.GtkWidget)(child.ToC())
+	c_child := (*C.GtkWidget)(C.NULL)
+	if child != nil {
+		c_child = (*C.GtkWidget)(child.ToC())
+	}
 
 	c_name := C.CString(name)
 	defer C.free(unsafe.Pointer(c_name))
@@ -1302,7 +1356,10 @@ func (recv *Stack) AddNamed(child *Widget, name string) {
 
 // AddTitled is a wrapper around the C function gtk_stack_add_titled.
 func (recv *Stack) AddTitled(child *Widget, name string, title string) {
-	c_child := (*C.GtkWidget)(child.ToC())
+	c_child := (*C.GtkWidget)(C.NULL)
+	if child != nil {
+		c_child = (*C.GtkWidget)(child.ToC())
+	}
 
 	c_name := C.CString(name)
 	defer C.free(unsafe.Pointer(c_name))
@@ -1390,7 +1447,10 @@ func (recv *Stack) SetTransitionType(transition StackTransitionType) {
 
 // SetVisibleChild is a wrapper around the C function gtk_stack_set_visible_child.
 func (recv *Stack) SetVisibleChild(child *Widget) {
-	c_child := (*C.GtkWidget)(child.ToC())
+	c_child := (*C.GtkWidget)(C.NULL)
+	if child != nil {
+		c_child = (*C.GtkWidget)(child.ToC())
+	}
 
 	C.gtk_stack_set_visible_child((*C.GtkStack)(recv.native), c_child)
 
@@ -1442,7 +1502,10 @@ func (recv *StackSwitcher) GetStack() *Stack {
 
 // SetStack is a wrapper around the C function gtk_stack_switcher_set_stack.
 func (recv *StackSwitcher) SetStack(stack *Stack) {
-	c_stack := (*C.GtkStack)(stack.ToC())
+	c_stack := (*C.GtkStack)(C.NULL)
+	if stack != nil {
+		c_stack = (*C.GtkStack)(stack.ToC())
+	}
 
 	C.gtk_stack_switcher_set_stack((*C.GtkStackSwitcher)(recv.native), c_stack)
 
@@ -1535,7 +1598,10 @@ func (recv *Window) Close() {
 
 // SetTitlebar is a wrapper around the C function gtk_window_set_titlebar.
 func (recv *Window) SetTitlebar(titlebar *Widget) {
-	c_titlebar := (*C.GtkWidget)(titlebar.ToC())
+	c_titlebar := (*C.GtkWidget)(C.NULL)
+	if titlebar != nil {
+		c_titlebar = (*C.GtkWidget)(titlebar.ToC())
+	}
 
 	C.gtk_window_set_titlebar((*C.GtkWindow)(recv.native), c_titlebar)
 

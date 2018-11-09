@@ -332,7 +332,10 @@ func (recv *Application) Hold() {
 
 // Register is a wrapper around the C function g_application_register.
 func (recv *Application) Register(cancellable *Cancellable) (bool, error) {
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -568,7 +571,10 @@ func (recv *SimpleActionGroup) Remove(actionName string) {
 
 // TakeError is a wrapper around the C function g_simple_async_result_take_error.
 func (recv *SimpleAsyncResult) TakeError(error *glib.Error) {
-	c_error := (*C.GError)(error.ToC())
+	c_error := (*C.GError)(C.NULL)
+	if error != nil {
+		c_error = (*C.GError)(error.ToC())
+	}
 
 	C.g_simple_async_result_take_error((*C.GSimpleAsyncResult)(recv.native), c_error)
 
@@ -612,9 +618,15 @@ func (recv *SocketClient) SetTlsValidationFlags(flags TlsCertificateFlags) {
 
 // TcpWrapperConnectionNew is a wrapper around the C function g_tcp_wrapper_connection_new.
 func TcpWrapperConnectionNew(baseIoStream *IOStream, socket *Socket) *TcpWrapperConnection {
-	c_base_io_stream := (*C.GIOStream)(baseIoStream.ToC())
+	c_base_io_stream := (*C.GIOStream)(C.NULL)
+	if baseIoStream != nil {
+		c_base_io_stream = (*C.GIOStream)(baseIoStream.ToC())
+	}
 
-	c_socket := (*C.GSocket)(socket.ToC())
+	c_socket := (*C.GSocket)(C.NULL)
+	if socket != nil {
+		c_socket = (*C.GSocket)(socket.ToC())
+	}
 
 	retC := C.g_tcp_wrapper_connection_new(c_base_io_stream, c_socket)
 	retGo := TcpWrapperConnectionNewFromC(unsafe.Pointer(retC))
@@ -727,7 +739,10 @@ func (recv *TlsCertificate) GetIssuer() *TlsCertificate {
 func (recv *TlsCertificate) Verify(identity *SocketConnectable, trustedCa *TlsCertificate) TlsCertificateFlags {
 	c_identity := (*C.GSocketConnectable)(identity.ToC())
 
-	c_trusted_ca := (*C.GTlsCertificate)(trustedCa.ToC())
+	c_trusted_ca := (*C.GTlsCertificate)(C.NULL)
+	if trustedCa != nil {
+		c_trusted_ca = (*C.GTlsCertificate)(trustedCa.ToC())
+	}
 
 	retC := C.g_tls_certificate_verify((*C.GTlsCertificate)(recv.native), c_identity, c_trusted_ca)
 	retGo := (TlsCertificateFlags)(retC)
@@ -776,7 +791,10 @@ func CastToTlsConnection(object *gobject.Object) *TlsConnection {
 
 // EmitAcceptCertificate is a wrapper around the C function g_tls_connection_emit_accept_certificate.
 func (recv *TlsConnection) EmitAcceptCertificate(peerCert *TlsCertificate, errors TlsCertificateFlags) bool {
-	c_peer_cert := (*C.GTlsCertificate)(peerCert.ToC())
+	c_peer_cert := (*C.GTlsCertificate)(C.NULL)
+	if peerCert != nil {
+		c_peer_cert = (*C.GTlsCertificate)(peerCert.ToC())
+	}
 
 	c_errors := (C.GTlsCertificateFlags)(errors)
 
@@ -836,7 +854,10 @@ func (recv *TlsConnection) GetUseSystemCertdb() bool {
 
 // Handshake is a wrapper around the C function g_tls_connection_handshake.
 func (recv *TlsConnection) Handshake(cancellable *Cancellable) (bool, error) {
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -872,7 +893,10 @@ func (recv *TlsConnection) HandshakeFinish(result *AsyncResult) (bool, error) {
 
 // SetCertificate is a wrapper around the C function g_tls_connection_set_certificate.
 func (recv *TlsConnection) SetCertificate(certificate *TlsCertificate) {
-	c_certificate := (*C.GTlsCertificate)(certificate.ToC())
+	c_certificate := (*C.GTlsCertificate)(C.NULL)
+	if certificate != nil {
+		c_certificate = (*C.GTlsCertificate)(certificate.ToC())
+	}
 
 	C.g_tls_connection_set_certificate((*C.GTlsConnection)(recv.native), c_certificate)
 

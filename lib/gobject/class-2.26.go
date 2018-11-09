@@ -114,9 +114,15 @@ func (recv *Object) BindPropertyWithClosures(sourceProperty string, target uintp
 
 	c_flags := (C.GBindingFlags)(flags)
 
-	c_transform_to := (*C.GClosure)(transformTo.ToC())
+	c_transform_to := (*C.GClosure)(C.NULL)
+	if transformTo != nil {
+		c_transform_to = (*C.GClosure)(transformTo.ToC())
+	}
 
-	c_transform_from := (*C.GClosure)(transformFrom.ToC())
+	c_transform_from := (*C.GClosure)(C.NULL)
+	if transformFrom != nil {
+		c_transform_from = (*C.GClosure)(transformFrom.ToC())
+	}
 
 	retC := C.g_object_bind_property_with_closures((C.gpointer)(recv.native), c_source_property, c_target, c_target_property, c_flags, c_transform_to, c_transform_from)
 	retGo := BindingNewFromC(unsafe.Pointer(retC))

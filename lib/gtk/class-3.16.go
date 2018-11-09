@@ -215,7 +215,10 @@ func (recv *GLArea) SetAutoRender(autoRender bool) {
 
 // SetError is a wrapper around the C function gtk_gl_area_set_error.
 func (recv *GLArea) SetError(error *glib.Error) {
-	c_error := (*C.GError)(error.ToC())
+	c_error := (*C.GError)(C.NULL)
+	if error != nil {
+		c_error = (*C.GError)(error.ToC())
+	}
 
 	C.gtk_gl_area_set_error((*C.GtkGLArea)(recv.native), c_error)
 
@@ -309,7 +312,10 @@ func ModelButtonNew() *ModelButton {
 
 // DetachTab is a wrapper around the C function gtk_notebook_detach_tab.
 func (recv *Notebook) DetachTab(child *Widget) {
-	c_child := (*C.GtkWidget)(child.ToC())
+	c_child := (*C.GtkWidget)(C.NULL)
+	if child != nil {
+		c_child = (*C.GtkWidget)(child.ToC())
+	}
 
 	C.gtk_notebook_detach_tab((*C.GtkNotebook)(recv.native), c_child)
 
@@ -624,7 +630,10 @@ func (recv *StackSidebar) GetStack() *Stack {
 
 // SetStack is a wrapper around the C function gtk_stack_sidebar_set_stack.
 func (recv *StackSidebar) SetStack(stack *Stack) {
-	c_stack := (*C.GtkStack)(stack.ToC())
+	c_stack := (*C.GtkStack)(C.NULL)
+	if stack != nil {
+		c_stack = (*C.GtkStack)(stack.ToC())
+	}
 
 	C.gtk_stack_sidebar_set_stack((*C.GtkStackSidebar)(recv.native), c_stack)
 
@@ -633,7 +642,10 @@ func (recv *StackSidebar) SetStack(stack *Stack) {
 
 // InsertMarkup is a wrapper around the C function gtk_text_buffer_insert_markup.
 func (recv *TextBuffer) InsertMarkup(iter *TextIter, markup string, len int32) {
-	c_iter := (*C.GtkTextIter)(iter.ToC())
+	c_iter := (*C.GtkTextIter)(C.NULL)
+	if iter != nil {
+		c_iter = (*C.GtkTextIter)(iter.ToC())
+	}
 
 	c_markup := C.CString(markup)
 	defer C.free(unsafe.Pointer(c_markup))

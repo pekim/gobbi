@@ -91,7 +91,10 @@ func (recv *Scrollable) GetVscrollPolicy() ScrollablePolicy {
 
 // SetHadjustment is a wrapper around the C function gtk_scrollable_set_hadjustment.
 func (recv *Scrollable) SetHadjustment(hadjustment *Adjustment) {
-	c_hadjustment := (*C.GtkAdjustment)(hadjustment.ToC())
+	c_hadjustment := (*C.GtkAdjustment)(C.NULL)
+	if hadjustment != nil {
+		c_hadjustment = (*C.GtkAdjustment)(hadjustment.ToC())
+	}
 
 	C.gtk_scrollable_set_hadjustment((*C.GtkScrollable)(recv.native), c_hadjustment)
 
@@ -109,7 +112,10 @@ func (recv *Scrollable) SetHscrollPolicy(policy ScrollablePolicy) {
 
 // SetVadjustment is a wrapper around the C function gtk_scrollable_set_vadjustment.
 func (recv *Scrollable) SetVadjustment(vadjustment *Adjustment) {
-	c_vadjustment := (*C.GtkAdjustment)(vadjustment.ToC())
+	c_vadjustment := (*C.GtkAdjustment)(C.NULL)
+	if vadjustment != nil {
+		c_vadjustment = (*C.GtkAdjustment)(vadjustment.ToC())
+	}
 
 	C.gtk_scrollable_set_vadjustment((*C.GtkScrollable)(recv.native), c_vadjustment)
 
@@ -127,7 +133,10 @@ func (recv *Scrollable) SetVscrollPolicy(policy ScrollablePolicy) {
 
 // GetIconFactory is a wrapper around the C function gtk_style_provider_get_icon_factory.
 func (recv *StyleProvider) GetIconFactory(path *WidgetPath) *IconFactory {
-	c_path := (*C.GtkWidgetPath)(path.ToC())
+	c_path := (*C.GtkWidgetPath)(C.NULL)
+	if path != nil {
+		c_path = (*C.GtkWidgetPath)(path.ToC())
+	}
 
 	retC := C.gtk_style_provider_get_icon_factory((*C.GtkStyleProvider)(recv.native), c_path)
 	var retGo (*IconFactory)
@@ -142,7 +151,10 @@ func (recv *StyleProvider) GetIconFactory(path *WidgetPath) *IconFactory {
 
 // GetStyle is a wrapper around the C function gtk_style_provider_get_style.
 func (recv *StyleProvider) GetStyle(path *WidgetPath) *StyleProperties {
-	c_path := (*C.GtkWidgetPath)(path.ToC())
+	c_path := (*C.GtkWidgetPath)(C.NULL)
+	if path != nil {
+		c_path = (*C.GtkWidgetPath)(path.ToC())
+	}
 
 	retC := C.gtk_style_provider_get_style((*C.GtkStyleProvider)(recv.native), c_path)
 	var retGo (*StyleProperties)
@@ -159,7 +171,10 @@ func (recv *StyleProvider) GetStyle(path *WidgetPath) *StyleProperties {
 
 // IterPrevious is a wrapper around the C function gtk_tree_model_iter_previous.
 func (recv *TreeModel) IterPrevious(iter *TreeIter) bool {
-	c_iter := (*C.GtkTreeIter)(iter.ToC())
+	c_iter := (*C.GtkTreeIter)(C.NULL)
+	if iter != nil {
+		c_iter = (*C.GtkTreeIter)(iter.ToC())
+	}
 
 	retC := C.gtk_tree_model_iter_previous((*C.GtkTreeModel)(recv.native), c_iter)
 	retGo := retC == C.TRUE

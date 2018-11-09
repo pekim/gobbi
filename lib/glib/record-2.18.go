@@ -37,7 +37,10 @@ func (recv *MarkupParseContext) Pop() uintptr {
 
 // Push is a wrapper around the C function g_markup_parse_context_push.
 func (recv *MarkupParseContext) Push(parser *MarkupParser, userData uintptr) {
-	c_parser := (*C.GMarkupParser)(parser.ToC())
+	c_parser := (*C.GMarkupParser)(C.NULL)
+	if parser != nil {
+		c_parser = (*C.GMarkupParser)(parser.ToC())
+	}
 
 	c_user_data := (C.gpointer)(userData)
 

@@ -64,7 +64,10 @@ func GradientNewRadial(x0 float64, y0 float64, radius0 float64, x1 float64, y1 f
 func (recv *Gradient) AddColorStop(offset float64, color *SymbolicColor) {
 	c_offset := (C.gdouble)(offset)
 
-	c_color := (*C.GtkSymbolicColor)(color.ToC())
+	c_color := (*C.GtkSymbolicColor)(C.NULL)
+	if color != nil {
+		c_color = (*C.GtkSymbolicColor)(color.ToC())
+	}
 
 	C.gtk_gradient_add_color_stop((*C.GtkGradient)(recv.native), c_offset, c_color)
 
@@ -81,7 +84,10 @@ func (recv *Gradient) Ref() *Gradient {
 
 // Resolve is a wrapper around the C function gtk_gradient_resolve.
 func (recv *Gradient) Resolve(props *StyleProperties) (bool, *cairo.Pattern) {
-	c_props := (*C.GtkStyleProperties)(props.ToC())
+	c_props := (*C.GtkStyleProperties)(C.NULL)
+	if props != nil {
+		c_props = (*C.GtkStyleProperties)(props.ToC())
+	}
 
 	var c_resolved_gradient *C.cairo_pattern_t
 
@@ -114,7 +120,10 @@ func RequisitionNew() *Requisition {
 
 // SymbolicColorNewAlpha is a wrapper around the C function gtk_symbolic_color_new_alpha.
 func SymbolicColorNewAlpha(color *SymbolicColor, factor float64) *SymbolicColor {
-	c_color := (*C.GtkSymbolicColor)(color.ToC())
+	c_color := (*C.GtkSymbolicColor)(C.NULL)
+	if color != nil {
+		c_color = (*C.GtkSymbolicColor)(color.ToC())
+	}
 
 	c_factor := (C.gdouble)(factor)
 
@@ -126,7 +135,10 @@ func SymbolicColorNewAlpha(color *SymbolicColor, factor float64) *SymbolicColor 
 
 // SymbolicColorNewLiteral is a wrapper around the C function gtk_symbolic_color_new_literal.
 func SymbolicColorNewLiteral(color *gdk.RGBA) *SymbolicColor {
-	c_color := (*C.GdkRGBA)(color.ToC())
+	c_color := (*C.GdkRGBA)(C.NULL)
+	if color != nil {
+		c_color = (*C.GdkRGBA)(color.ToC())
+	}
 
 	retC := C.gtk_symbolic_color_new_literal(c_color)
 	retGo := SymbolicColorNewFromC(unsafe.Pointer(retC))
@@ -136,9 +148,15 @@ func SymbolicColorNewLiteral(color *gdk.RGBA) *SymbolicColor {
 
 // SymbolicColorNewMix is a wrapper around the C function gtk_symbolic_color_new_mix.
 func SymbolicColorNewMix(color1 *SymbolicColor, color2 *SymbolicColor, factor float64) *SymbolicColor {
-	c_color1 := (*C.GtkSymbolicColor)(color1.ToC())
+	c_color1 := (*C.GtkSymbolicColor)(C.NULL)
+	if color1 != nil {
+		c_color1 = (*C.GtkSymbolicColor)(color1.ToC())
+	}
 
-	c_color2 := (*C.GtkSymbolicColor)(color2.ToC())
+	c_color2 := (*C.GtkSymbolicColor)(C.NULL)
+	if color2 != nil {
+		c_color2 = (*C.GtkSymbolicColor)(color2.ToC())
+	}
 
 	c_factor := (C.gdouble)(factor)
 
@@ -161,7 +179,10 @@ func SymbolicColorNewName(name string) *SymbolicColor {
 
 // SymbolicColorNewShade is a wrapper around the C function gtk_symbolic_color_new_shade.
 func SymbolicColorNewShade(color *SymbolicColor, factor float64) *SymbolicColor {
-	c_color := (*C.GtkSymbolicColor)(color.ToC())
+	c_color := (*C.GtkSymbolicColor)(C.NULL)
+	if color != nil {
+		c_color = (*C.GtkSymbolicColor)(color.ToC())
+	}
 
 	c_factor := (C.gdouble)(factor)
 
@@ -181,7 +202,10 @@ func (recv *SymbolicColor) Ref() *SymbolicColor {
 
 // Resolve is a wrapper around the C function gtk_symbolic_color_resolve.
 func (recv *SymbolicColor) Resolve(props *StyleProperties) (bool, *gdk.RGBA) {
-	c_props := (*C.GtkStyleProperties)(props.ToC())
+	c_props := (*C.GtkStyleProperties)(C.NULL)
+	if props != nil {
+		c_props = (*C.GtkStyleProperties)(props.ToC())
+	}
 
 	var c_resolved_color C.GdkRGBA
 

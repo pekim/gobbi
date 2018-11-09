@@ -44,7 +44,10 @@ func (recv *Application) GetMenubar() *gio.MenuModel {
 
 // Inhibit is a wrapper around the C function gtk_application_inhibit.
 func (recv *Application) Inhibit(window *Window, flags ApplicationInhibitFlags, reason string) uint32 {
-	c_window := (*C.GtkWindow)(window.ToC())
+	c_window := (*C.GtkWindow)(C.NULL)
+	if window != nil {
+		c_window = (*C.GtkWindow)(window.ToC())
+	}
 
 	c_flags := (C.GtkApplicationInhibitFlags)(flags)
 
@@ -71,7 +74,10 @@ func (recv *Application) IsInhibited(flags ApplicationInhibitFlags) bool {
 
 // SetAppMenu is a wrapper around the C function gtk_application_set_app_menu.
 func (recv *Application) SetAppMenu(appMenu *gio.MenuModel) {
-	c_app_menu := (*C.GMenuModel)(appMenu.ToC())
+	c_app_menu := (*C.GMenuModel)(C.NULL)
+	if appMenu != nil {
+		c_app_menu = (*C.GMenuModel)(appMenu.ToC())
+	}
 
 	C.gtk_application_set_app_menu((*C.GtkApplication)(recv.native), c_app_menu)
 
@@ -80,7 +86,10 @@ func (recv *Application) SetAppMenu(appMenu *gio.MenuModel) {
 
 // SetMenubar is a wrapper around the C function gtk_application_set_menubar.
 func (recv *Application) SetMenubar(menubar *gio.MenuModel) {
-	c_menubar := (*C.GMenuModel)(menubar.ToC())
+	c_menubar := (*C.GMenuModel)(C.NULL)
+	if menubar != nil {
+		c_menubar = (*C.GMenuModel)(menubar.ToC())
+	}
 
 	C.gtk_application_set_menubar((*C.GtkApplication)(recv.native), c_menubar)
 
@@ -98,7 +107,10 @@ func (recv *Application) Uninhibit(cookie uint32) {
 
 // ApplicationWindowNew is a wrapper around the C function gtk_application_window_new.
 func ApplicationWindowNew(application *Application) *ApplicationWindow {
-	c_application := (*C.GtkApplication)(application.ToC())
+	c_application := (*C.GtkApplication)(C.NULL)
+	if application != nil {
+		c_application = (*C.GtkApplication)(application.ToC())
+	}
 
 	retC := C.gtk_application_window_new(c_application)
 	retGo := ApplicationWindowNewFromC(unsafe.Pointer(retC))
@@ -149,7 +161,10 @@ func ColorChooserDialogNew(title string, parent *Window) *ColorChooserDialog {
 	c_title := C.CString(title)
 	defer C.free(unsafe.Pointer(c_title))
 
-	c_parent := (*C.GtkWindow)(parent.ToC())
+	c_parent := (*C.GtkWindow)(C.NULL)
+	if parent != nil {
+		c_parent = (*C.GtkWindow)(parent.ToC())
+	}
 
 	retC := C.gtk_color_chooser_dialog_new(c_title, c_parent)
 	retGo := ColorChooserDialogNewFromC(unsafe.Pointer(retC))
@@ -192,7 +207,10 @@ func ImageNewFromResource(resourcePath string) *Image {
 
 // MenuNewFromModel is a wrapper around the C function gtk_menu_new_from_model.
 func MenuNewFromModel(model *gio.MenuModel) *Menu {
-	c_model := (*C.GMenuModel)(model.ToC())
+	c_model := (*C.GMenuModel)(C.NULL)
+	if model != nil {
+		c_model = (*C.GMenuModel)(model.ToC())
+	}
 
 	retC := C.gtk_menu_new_from_model(c_model)
 	retGo := MenuNewFromC(unsafe.Pointer(retC))
@@ -202,7 +220,10 @@ func MenuNewFromModel(model *gio.MenuModel) *Menu {
 
 // MenuBarNewFromModel is a wrapper around the C function gtk_menu_bar_new_from_model.
 func MenuBarNewFromModel(model *gio.MenuModel) *MenuBar {
-	c_model := (*C.GMenuModel)(model.ToC())
+	c_model := (*C.GMenuModel)(C.NULL)
+	if model != nil {
+		c_model = (*C.GMenuModel)(model.ToC())
+	}
 
 	retC := C.gtk_menu_bar_new_from_model(c_model)
 	retGo := MenuBarNewFromC(unsafe.Pointer(retC))
@@ -279,7 +300,10 @@ func (recv *StyleContext) GetParent() *StyleContext {
 
 // SetParent is a wrapper around the C function gtk_style_context_set_parent.
 func (recv *StyleContext) SetParent(parent *StyleContext) {
-	c_parent := (*C.GtkStyleContext)(parent.ToC())
+	c_parent := (*C.GtkStyleContext)(C.NULL)
+	if parent != nil {
+		c_parent = (*C.GtkStyleContext)(parent.ToC())
+	}
 
 	C.gtk_style_context_set_parent((*C.GtkStyleContext)(recv.native), c_parent)
 
@@ -345,7 +369,10 @@ func (recv *Window) GetHideTitlebarWhenMaximized() bool {
 
 // SetAttachedTo is a wrapper around the C function gtk_window_set_attached_to.
 func (recv *Window) SetAttachedTo(attachWidget *Widget) {
-	c_attach_widget := (*C.GtkWidget)(attachWidget.ToC())
+	c_attach_widget := (*C.GtkWidget)(C.NULL)
+	if attachWidget != nil {
+		c_attach_widget = (*C.GtkWidget)(attachWidget.ToC())
+	}
 
 	C.gtk_window_set_attached_to((*C.GtkWindow)(recv.native), c_attach_widget)
 

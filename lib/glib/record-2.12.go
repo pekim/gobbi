@@ -578,7 +578,10 @@ func (recv *Source) IsDestroyed() bool {
 
 // SetFuncs is a wrapper around the C function g_source_set_funcs.
 func (recv *Source) SetFuncs(funcs *SourceFuncs) {
-	c_funcs := (*C.GSourceFuncs)(funcs.ToC())
+	c_funcs := (*C.GSourceFuncs)(C.NULL)
+	if funcs != nil {
+		c_funcs = (*C.GSourceFuncs)(funcs.ToC())
+	}
 
 	C.g_source_set_funcs((*C.GSource)(recv.native), c_funcs)
 

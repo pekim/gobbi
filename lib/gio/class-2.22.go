@@ -56,7 +56,10 @@ func (recv *Cancellable) Disconnect(handlerId uint64) {
 
 // MakePollfd is a wrapper around the C function g_cancellable_make_pollfd.
 func (recv *Cancellable) MakePollfd(pollfd *glib.PollFD) bool {
-	c_pollfd := (*C.GPollFD)(pollfd.ToC())
+	c_pollfd := (*C.GPollFD)(C.NULL)
+	if pollfd != nil {
+		c_pollfd = (*C.GPollFD)(pollfd.ToC())
+	}
 
 	retC := C.g_cancellable_make_pollfd((*C.GCancellable)(recv.native), c_pollfd)
 	retGo := retC == C.TRUE
@@ -85,7 +88,10 @@ func (recv *FileIOStream) QueryInfo(attributes string, cancellable *Cancellable)
 	c_attributes := C.CString(attributes)
 	defer C.free(unsafe.Pointer(c_attributes))
 
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -154,7 +160,10 @@ func (recv *IOStream) ClearPending() {
 
 // Close is a wrapper around the C function g_io_stream_close.
 func (recv *IOStream) Close(cancellable *Cancellable) (bool, error) {
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -387,7 +396,10 @@ func (recv *InetAddress) ToString() string {
 
 // InetSocketAddressNew is a wrapper around the C function g_inet_socket_address_new.
 func InetSocketAddressNew(address *InetAddress, port uint16) *InetSocketAddress {
-	c_address := (*C.GInetAddress)(address.ToC())
+	c_address := (*C.GInetAddress)(C.NULL)
+	if address != nil {
+		c_address = (*C.GInetAddress)(address.ToC())
+	}
 
 	c_port := (C.guint16)(port)
 
@@ -487,9 +499,15 @@ func (recv *NetworkService) GetService() string {
 
 // LookupByAddress is a wrapper around the C function g_resolver_lookup_by_address.
 func (recv *Resolver) LookupByAddress(address *InetAddress, cancellable *Cancellable) (string, error) {
-	c_address := (*C.GInetAddress)(address.ToC())
+	c_address := (*C.GInetAddress)(C.NULL)
+	if address != nil {
+		c_address = (*C.GInetAddress)(address.ToC())
+	}
 
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -530,7 +548,10 @@ func (recv *Resolver) LookupByName(hostname string, cancellable *Cancellable) (*
 	c_hostname := C.CString(hostname)
 	defer C.free(unsafe.Pointer(c_hostname))
 
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -575,7 +596,10 @@ func (recv *Resolver) LookupService(service string, protocol string, domain stri
 	c_domain := C.CString(domain)
 	defer C.free(unsafe.Pointer(c_domain))
 
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -690,7 +714,10 @@ func SocketNewFromFd(fd int32) (*Socket, error) {
 
 // Accept is a wrapper around the C function g_socket_accept.
 func (recv *Socket) Accept(cancellable *Cancellable) (*Socket, error) {
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -707,7 +734,10 @@ func (recv *Socket) Accept(cancellable *Cancellable) (*Socket, error) {
 
 // Bind is a wrapper around the C function g_socket_bind.
 func (recv *Socket) Bind(address *SocketAddress, allowReuse bool) (bool, error) {
-	c_address := (*C.GSocketAddress)(address.ToC())
+	c_address := (*C.GSocketAddress)(C.NULL)
+	if address != nil {
+		c_address = (*C.GSocketAddress)(address.ToC())
+	}
 
 	c_allow_reuse :=
 		boolToGboolean(allowReuse)
@@ -769,7 +799,10 @@ func (recv *Socket) ConditionCheck(condition glib.IOCondition) glib.IOCondition 
 func (recv *Socket) ConditionWait(condition glib.IOCondition, cancellable *Cancellable) (bool, error) {
 	c_condition := (C.GIOCondition)(condition)
 
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -786,9 +819,15 @@ func (recv *Socket) ConditionWait(condition glib.IOCondition, cancellable *Cance
 
 // Connect is a wrapper around the C function g_socket_connect.
 func (recv *Socket) Connect(address *SocketAddress, cancellable *Cancellable) (bool, error) {
-	c_address := (*C.GSocketAddress)(address.ToC())
+	c_address := (*C.GSocketAddress)(C.NULL)
+	if address != nil {
+		c_address = (*C.GSocketAddress)(address.ToC())
+	}
 
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -815,7 +854,10 @@ func (recv *Socket) ConnectionFactoryCreateConnection() *SocketConnection {
 func (recv *Socket) CreateSource(condition glib.IOCondition, cancellable *Cancellable) *glib.Source {
 	c_condition := (C.GIOCondition)(condition)
 
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	retC := C.g_socket_create_source((*C.GSocket)(recv.native), c_condition, c_cancellable)
 	retGo := glib.SourceNewFromC(unsafe.Pointer(retC))
@@ -933,7 +975,10 @@ func (recv *Socket) Receive(buffer []uint8, cancellable *Cancellable) (int64, er
 
 	c_size := (C.gsize)(len(buffer))
 
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -956,7 +1001,10 @@ func (recv *Socket) ReceiveFrom(buffer []uint8, cancellable *Cancellable) (int64
 
 	c_size := (C.gsize)(len(buffer))
 
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -981,7 +1029,10 @@ func (recv *Socket) Send(buffer []uint8, cancellable *Cancellable) (int64, error
 
 	c_size := (C.gsize)(len(buffer))
 
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -1000,13 +1051,19 @@ func (recv *Socket) Send(buffer []uint8, cancellable *Cancellable) (int64, error
 
 // SendTo is a wrapper around the C function g_socket_send_to.
 func (recv *Socket) SendTo(address *SocketAddress, buffer []uint8, cancellable *Cancellable) (int64, error) {
-	c_address := (*C.GSocketAddress)(address.ToC())
+	c_address := (*C.GSocketAddress)(C.NULL)
+	if address != nil {
+		c_address = (*C.GSocketAddress)(address.ToC())
+	}
 
 	c_buffer := &buffer[0]
 
 	c_size := (C.gsize)(len(buffer))
 
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -1182,7 +1239,10 @@ func (recv *SocketClient) AddApplicationProxy(protocol string) {
 func (recv *SocketClient) Connect(connectable *SocketConnectable, cancellable *Cancellable) (*SocketConnection, error) {
 	c_connectable := (*C.GSocketConnectable)(connectable.ToC())
 
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -1223,7 +1283,10 @@ func (recv *SocketClient) ConnectToHost(hostAndPort string, defaultPort uint16, 
 
 	c_default_port := (C.guint16)(defaultPort)
 
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -1265,7 +1328,10 @@ func (recv *SocketClient) ConnectToService(domain string, service string, cancel
 	c_service := C.CString(service)
 	defer C.free(unsafe.Pointer(c_service))
 
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -1342,7 +1408,10 @@ func (recv *SocketClient) SetFamily(family SocketFamily) {
 
 // SetLocalAddress is a wrapper around the C function g_socket_client_set_local_address.
 func (recv *SocketClient) SetLocalAddress(address *SocketAddress) {
-	c_address := (*C.GSocketAddress)(address.ToC())
+	c_address := (*C.GSocketAddress)(C.NULL)
+	if address != nil {
+		c_address = (*C.GSocketAddress)(address.ToC())
+	}
 
 	C.g_socket_client_set_local_address((*C.GSocketClient)(recv.native), c_address)
 
@@ -1523,7 +1592,10 @@ func SocketListenerNew() *SocketListener {
 func (recv *SocketListener) Accept(cancellable *Cancellable) (*SocketConnection, *gobject.Object, error) {
 	var c_source_object *C.GObject
 
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -1567,7 +1639,10 @@ func (recv *SocketListener) AcceptFinish(result *AsyncResult) (*SocketConnection
 func (recv *SocketListener) AcceptSocket(cancellable *Cancellable) (*Socket, *gobject.Object, error) {
 	var c_source_object *C.GObject
 
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -1609,13 +1684,19 @@ func (recv *SocketListener) AcceptSocketFinish(result *AsyncResult) (*Socket, *g
 
 // AddAddress is a wrapper around the C function g_socket_listener_add_address.
 func (recv *SocketListener) AddAddress(address *SocketAddress, type_ SocketType, protocol SocketProtocol, sourceObject *gobject.Object) (bool, *SocketAddress, error) {
-	c_address := (*C.GSocketAddress)(address.ToC())
+	c_address := (*C.GSocketAddress)(C.NULL)
+	if address != nil {
+		c_address = (*C.GSocketAddress)(address.ToC())
+	}
 
 	c_type := (C.GSocketType)(type_)
 
 	c_protocol := (C.GSocketProtocol)(protocol)
 
-	c_source_object := (*C.GObject)(sourceObject.ToC())
+	c_source_object := (*C.GObject)(C.NULL)
+	if sourceObject != nil {
+		c_source_object = (*C.GObject)(sourceObject.ToC())
+	}
 
 	var c_effective_address *C.GSocketAddress
 
@@ -1638,7 +1719,10 @@ func (recv *SocketListener) AddAddress(address *SocketAddress, type_ SocketType,
 func (recv *SocketListener) AddInetPort(port uint16, sourceObject *gobject.Object) (bool, error) {
 	c_port := (C.guint16)(port)
 
-	c_source_object := (*C.GObject)(sourceObject.ToC())
+	c_source_object := (*C.GObject)(C.NULL)
+	if sourceObject != nil {
+		c_source_object = (*C.GObject)(sourceObject.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -1655,9 +1739,15 @@ func (recv *SocketListener) AddInetPort(port uint16, sourceObject *gobject.Objec
 
 // AddSocket is a wrapper around the C function g_socket_listener_add_socket.
 func (recv *SocketListener) AddSocket(socket *Socket, sourceObject *gobject.Object) (bool, error) {
-	c_socket := (*C.GSocket)(socket.ToC())
+	c_socket := (*C.GSocket)(C.NULL)
+	if socket != nil {
+		c_socket = (*C.GSocket)(socket.ToC())
+	}
 
-	c_source_object := (*C.GObject)(sourceObject.ToC())
+	c_source_object := (*C.GObject)(C.NULL)
+	if sourceObject != nil {
+		c_source_object = (*C.GObject)(sourceObject.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -1939,7 +2029,10 @@ func ThreadedSocketServiceNew(maxThreads int32) *ThreadedSocketService {
 
 // ReceiveFd is a wrapper around the C function g_unix_connection_receive_fd.
 func (recv *UnixConnection) ReceiveFd(cancellable *Cancellable) (int32, error) {
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -1958,7 +2051,10 @@ func (recv *UnixConnection) ReceiveFd(cancellable *Cancellable) (int32, error) {
 func (recv *UnixConnection) SendFd(fd int32, cancellable *Cancellable) (bool, error) {
 	c_fd := (C.gint)(fd)
 
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 

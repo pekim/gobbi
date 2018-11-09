@@ -12,6 +12,8 @@ type Parameter struct {
 	Name              string    `xml:"name,attr"`
 	Direction         string    `xml:"direction,attr"`
 	TransferOwnership string    `xml:"transfer-ownership,attr"`
+	Nullable          bool      `xml:"nullable,attr"`
+	AllowNone         bool      `xml:"allow-none,attr"`
 	Doc               *Doc      `xml:"doc"`
 	Type              *Type     `xml:"type"`
 	Array             *Array    `xml:"array"`

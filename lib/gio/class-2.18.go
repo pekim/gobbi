@@ -35,7 +35,10 @@ import "C"
 
 // DesktopAppInfoNewFromKeyfile is a wrapper around the C function g_desktop_app_info_new_from_keyfile.
 func DesktopAppInfoNewFromKeyfile(keyFile *glib.KeyFile) *DesktopAppInfo {
-	c_key_file := (*C.GKeyFile)(keyFile.ToC())
+	c_key_file := (*C.GKeyFile)(C.NULL)
+	if keyFile != nil {
+		c_key_file = (*C.GKeyFile)(keyFile.ToC())
+	}
 
 	retC := C.g_desktop_app_info_new_from_keyfile(c_key_file)
 	retGo := DesktopAppInfoNewFromC(unsafe.Pointer(retC))
@@ -85,7 +88,10 @@ func (recv *Emblem) GetOrigin() EmblemOrigin {
 func EmblemedIconNew(icon *Icon, emblem *Emblem) *EmblemedIcon {
 	c_icon := (*C.GIcon)(icon.ToC())
 
-	c_emblem := (*C.GEmblem)(emblem.ToC())
+	c_emblem := (*C.GEmblem)(C.NULL)
+	if emblem != nil {
+		c_emblem = (*C.GEmblem)(emblem.ToC())
+	}
 
 	retC := C.g_emblemed_icon_new(c_icon, c_emblem)
 	retGo := EmblemedIconNewFromC(unsafe.Pointer(retC))
@@ -95,7 +101,10 @@ func EmblemedIconNew(icon *Icon, emblem *Emblem) *EmblemedIcon {
 
 // AddEmblem is a wrapper around the C function g_emblemed_icon_add_emblem.
 func (recv *EmblemedIcon) AddEmblem(emblem *Emblem) {
-	c_emblem := (*C.GEmblem)(emblem.ToC())
+	c_emblem := (*C.GEmblem)(C.NULL)
+	if emblem != nil {
+		c_emblem = (*C.GEmblem)(emblem.ToC())
+	}
 
 	C.g_emblemed_icon_add_emblem((*C.GEmblemedIcon)(recv.native), c_emblem)
 

@@ -205,7 +205,10 @@ func AppLaunchContextNew() *AppLaunchContext {
 func (recv *AppLaunchContext) GetDisplay(info *AppInfo, files *glib.List) string {
 	c_info := (*C.GAppInfo)(info.ToC())
 
-	c_files := (*C.GList)(files.ToC())
+	c_files := (*C.GList)(C.NULL)
+	if files != nil {
+		c_files = (*C.GList)(files.ToC())
+	}
 
 	retC := C.g_app_launch_context_get_display((*C.GAppLaunchContext)(recv.native), c_info, c_files)
 	retGo := C.GoString(retC)
@@ -218,7 +221,10 @@ func (recv *AppLaunchContext) GetDisplay(info *AppInfo, files *glib.List) string
 func (recv *AppLaunchContext) GetStartupNotifyId(info *AppInfo, files *glib.List) string {
 	c_info := (*C.GAppInfo)(info.ToC())
 
-	c_files := (*C.GList)(files.ToC())
+	c_files := (*C.GList)(C.NULL)
+	if files != nil {
+		c_files = (*C.GList)(files.ToC())
+	}
 
 	retC := C.g_app_launch_context_get_startup_notify_id((*C.GAppLaunchContext)(recv.native), c_info, c_files)
 	retGo := C.GoString(retC)
@@ -317,7 +323,10 @@ func CastToBufferedInputStream(object *gobject.Object) *BufferedInputStream {
 
 // BufferedInputStreamNew is a wrapper around the C function g_buffered_input_stream_new.
 func BufferedInputStreamNew(baseStream *InputStream) *BufferedInputStream {
-	c_base_stream := (*C.GInputStream)(baseStream.ToC())
+	c_base_stream := (*C.GInputStream)(C.NULL)
+	if baseStream != nil {
+		c_base_stream = (*C.GInputStream)(baseStream.ToC())
+	}
 
 	retC := C.g_buffered_input_stream_new(c_base_stream)
 	retGo := BufferedInputStreamNewFromC(unsafe.Pointer(retC))
@@ -327,7 +336,10 @@ func BufferedInputStreamNew(baseStream *InputStream) *BufferedInputStream {
 
 // BufferedInputStreamNewSized is a wrapper around the C function g_buffered_input_stream_new_sized.
 func BufferedInputStreamNewSized(baseStream *InputStream, size uint64) *BufferedInputStream {
-	c_base_stream := (*C.GInputStream)(baseStream.ToC())
+	c_base_stream := (*C.GInputStream)(C.NULL)
+	if baseStream != nil {
+		c_base_stream = (*C.GInputStream)(baseStream.ToC())
+	}
 
 	c_size := (C.gsize)(size)
 
@@ -341,7 +353,10 @@ func BufferedInputStreamNewSized(baseStream *InputStream, size uint64) *Buffered
 func (recv *BufferedInputStream) Fill(count int64, cancellable *Cancellable) (int64, error) {
 	c_count := (C.gssize)(count)
 
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -409,7 +424,10 @@ func (recv *BufferedInputStream) Peek(buffer []uint8, offset uint64) uint64 {
 
 // ReadByte is a wrapper around the C function g_buffered_input_stream_read_byte.
 func (recv *BufferedInputStream) ReadByte(cancellable *Cancellable) (int32, error) {
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -484,7 +502,10 @@ func CastToBufferedOutputStream(object *gobject.Object) *BufferedOutputStream {
 
 // BufferedOutputStreamNew is a wrapper around the C function g_buffered_output_stream_new.
 func BufferedOutputStreamNew(baseStream *OutputStream) *BufferedOutputStream {
-	c_base_stream := (*C.GOutputStream)(baseStream.ToC())
+	c_base_stream := (*C.GOutputStream)(C.NULL)
+	if baseStream != nil {
+		c_base_stream = (*C.GOutputStream)(baseStream.ToC())
+	}
 
 	retC := C.g_buffered_output_stream_new(c_base_stream)
 	retGo := BufferedOutputStreamNewFromC(unsafe.Pointer(retC))
@@ -494,7 +515,10 @@ func BufferedOutputStreamNew(baseStream *OutputStream) *BufferedOutputStream {
 
 // BufferedOutputStreamNewSized is a wrapper around the C function g_buffered_output_stream_new_sized.
 func BufferedOutputStreamNewSized(baseStream *OutputStream, size uint64) *BufferedOutputStream {
-	c_base_stream := (*C.GOutputStream)(baseStream.ToC())
+	c_base_stream := (*C.GOutputStream)(C.NULL)
+	if baseStream != nil {
+		c_base_stream = (*C.GOutputStream)(baseStream.ToC())
+	}
 
 	c_size := (C.gsize)(size)
 
@@ -832,7 +856,10 @@ func CastToConverterInputStream(object *gobject.Object) *ConverterInputStream {
 
 // ConverterInputStreamNew is a wrapper around the C function g_converter_input_stream_new.
 func ConverterInputStreamNew(baseStream *InputStream, converter *Converter) *ConverterInputStream {
-	c_base_stream := (*C.GInputStream)(baseStream.ToC())
+	c_base_stream := (*C.GInputStream)(C.NULL)
+	if baseStream != nil {
+		c_base_stream = (*C.GInputStream)(baseStream.ToC())
+	}
 
 	c_converter := (*C.GConverter)(converter.ToC())
 
@@ -893,7 +920,10 @@ func CastToConverterOutputStream(object *gobject.Object) *ConverterOutputStream 
 
 // ConverterOutputStreamNew is a wrapper around the C function g_converter_output_stream_new.
 func ConverterOutputStreamNew(baseStream *OutputStream, converter *Converter) *ConverterOutputStream {
-	c_base_stream := (*C.GOutputStream)(baseStream.ToC())
+	c_base_stream := (*C.GOutputStream)(C.NULL)
+	if baseStream != nil {
+		c_base_stream = (*C.GOutputStream)(baseStream.ToC())
+	}
 
 	c_converter := (*C.GConverter)(converter.ToC())
 
@@ -1038,7 +1068,10 @@ func CastToDataInputStream(object *gobject.Object) *DataInputStream {
 
 // DataInputStreamNew is a wrapper around the C function g_data_input_stream_new.
 func DataInputStreamNew(baseStream *InputStream) *DataInputStream {
-	c_base_stream := (*C.GInputStream)(baseStream.ToC())
+	c_base_stream := (*C.GInputStream)(C.NULL)
+	if baseStream != nil {
+		c_base_stream = (*C.GInputStream)(baseStream.ToC())
+	}
 
 	retC := C.g_data_input_stream_new(c_base_stream)
 	retGo := DataInputStreamNewFromC(unsafe.Pointer(retC))
@@ -1064,7 +1097,10 @@ func (recv *DataInputStream) GetNewlineType() DataStreamNewlineType {
 
 // ReadByte is a wrapper around the C function g_data_input_stream_read_byte.
 func (recv *DataInputStream) ReadByte(cancellable *Cancellable) (uint8, error) {
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -1081,7 +1117,10 @@ func (recv *DataInputStream) ReadByte(cancellable *Cancellable) (uint8, error) {
 
 // ReadInt16 is a wrapper around the C function g_data_input_stream_read_int16.
 func (recv *DataInputStream) ReadInt16(cancellable *Cancellable) (int16, error) {
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -1098,7 +1137,10 @@ func (recv *DataInputStream) ReadInt16(cancellable *Cancellable) (int16, error) 
 
 // ReadInt32 is a wrapper around the C function g_data_input_stream_read_int32.
 func (recv *DataInputStream) ReadInt32(cancellable *Cancellable) (int32, error) {
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -1115,7 +1157,10 @@ func (recv *DataInputStream) ReadInt32(cancellable *Cancellable) (int32, error) 
 
 // ReadInt64 is a wrapper around the C function g_data_input_stream_read_int64.
 func (recv *DataInputStream) ReadInt64(cancellable *Cancellable) (int64, error) {
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -1134,7 +1179,10 @@ func (recv *DataInputStream) ReadInt64(cancellable *Cancellable) (int64, error) 
 
 // ReadUint16 is a wrapper around the C function g_data_input_stream_read_uint16.
 func (recv *DataInputStream) ReadUint16(cancellable *Cancellable) (uint16, error) {
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -1151,7 +1199,10 @@ func (recv *DataInputStream) ReadUint16(cancellable *Cancellable) (uint16, error
 
 // ReadUint32 is a wrapper around the C function g_data_input_stream_read_uint32.
 func (recv *DataInputStream) ReadUint32(cancellable *Cancellable) (uint32, error) {
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -1168,7 +1219,10 @@ func (recv *DataInputStream) ReadUint32(cancellable *Cancellable) (uint32, error
 
 // ReadUint64 is a wrapper around the C function g_data_input_stream_read_uint64.
 func (recv *DataInputStream) ReadUint64(cancellable *Cancellable) (uint64, error) {
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -1190,7 +1244,10 @@ func (recv *DataInputStream) ReadUntil(stopChars string, cancellable *Cancellabl
 
 	var c_length C.gsize
 
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -1277,7 +1334,10 @@ func CastToDataOutputStream(object *gobject.Object) *DataOutputStream {
 
 // DataOutputStreamNew is a wrapper around the C function g_data_output_stream_new.
 func DataOutputStreamNew(baseStream *OutputStream) *DataOutputStream {
-	c_base_stream := (*C.GOutputStream)(baseStream.ToC())
+	c_base_stream := (*C.GOutputStream)(C.NULL)
+	if baseStream != nil {
+		c_base_stream = (*C.GOutputStream)(baseStream.ToC())
+	}
 
 	retC := C.g_data_output_stream_new(c_base_stream)
 	retGo := DataOutputStreamNewFromC(unsafe.Pointer(retC))
@@ -1297,7 +1357,10 @@ func (recv *DataOutputStream) GetByteOrder() DataStreamByteOrder {
 func (recv *DataOutputStream) PutByte(data uint8, cancellable *Cancellable) (bool, error) {
 	c_data := (C.guchar)(data)
 
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -1316,7 +1379,10 @@ func (recv *DataOutputStream) PutByte(data uint8, cancellable *Cancellable) (boo
 func (recv *DataOutputStream) PutInt16(data int16, cancellable *Cancellable) (bool, error) {
 	c_data := (C.gint16)(data)
 
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -1335,7 +1401,10 @@ func (recv *DataOutputStream) PutInt16(data int16, cancellable *Cancellable) (bo
 func (recv *DataOutputStream) PutInt32(data int32, cancellable *Cancellable) (bool, error) {
 	c_data := (C.gint32)(data)
 
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -1354,7 +1423,10 @@ func (recv *DataOutputStream) PutInt32(data int32, cancellable *Cancellable) (bo
 func (recv *DataOutputStream) PutInt64(data int64, cancellable *Cancellable) (bool, error) {
 	c_data := (C.gint64)(data)
 
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -1374,7 +1446,10 @@ func (recv *DataOutputStream) PutString(str string, cancellable *Cancellable) (b
 	c_str := C.CString(str)
 	defer C.free(unsafe.Pointer(c_str))
 
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -1393,7 +1468,10 @@ func (recv *DataOutputStream) PutString(str string, cancellable *Cancellable) (b
 func (recv *DataOutputStream) PutUint16(data uint16, cancellable *Cancellable) (bool, error) {
 	c_data := (C.guint16)(data)
 
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -1412,7 +1490,10 @@ func (recv *DataOutputStream) PutUint16(data uint16, cancellable *Cancellable) (
 func (recv *DataOutputStream) PutUint32(data uint32, cancellable *Cancellable) (bool, error) {
 	c_data := (C.guint32)(data)
 
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -1431,7 +1512,10 @@ func (recv *DataOutputStream) PutUint32(data uint32, cancellable *Cancellable) (
 func (recv *DataOutputStream) PutUint64(data uint64, cancellable *Cancellable) (bool, error) {
 	c_data := (C.guint64)(data)
 
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -1657,7 +1741,10 @@ func CastToFileEnumerator(object *gobject.Object) *FileEnumerator {
 
 // Close is a wrapper around the C function g_file_enumerator_close.
 func (recv *FileEnumerator) Close(cancellable *Cancellable) (bool, error) {
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -1709,7 +1796,10 @@ func (recv *FileEnumerator) IsClosed() bool {
 
 // NextFile is a wrapper around the C function g_file_enumerator_next_file.
 func (recv *FileEnumerator) NextFile(cancellable *Cancellable) (*FileInfo, error) {
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -1911,7 +2001,10 @@ func (recv *FileInfo) ClearStatus() {
 
 // CopyInto is a wrapper around the C function g_file_info_copy_into.
 func (recv *FileInfo) CopyInto(destInfo *FileInfo) {
-	c_dest_info := (*C.GFileInfo)(destInfo.ToC())
+	c_dest_info := (*C.GFileInfo)(C.NULL)
+	if destInfo != nil {
+		c_dest_info = (*C.GFileInfo)(destInfo.ToC())
+	}
 
 	C.g_file_info_copy_into((*C.GFileInfo)(recv.native), c_dest_info)
 
@@ -2254,7 +2347,10 @@ func (recv *FileInfo) SetAttributeInt64(attribute string, attrValue int64) {
 
 // SetAttributeMask is a wrapper around the C function g_file_info_set_attribute_mask.
 func (recv *FileInfo) SetAttributeMask(mask *FileAttributeMatcher) {
-	c_mask := (*C.GFileAttributeMatcher)(mask.ToC())
+	c_mask := (*C.GFileAttributeMatcher)(C.NULL)
+	if mask != nil {
+		c_mask = (*C.GFileAttributeMatcher)(mask.ToC())
+	}
 
 	C.g_file_info_set_attribute_mask((*C.GFileInfo)(recv.native), c_mask)
 
@@ -2266,7 +2362,10 @@ func (recv *FileInfo) SetAttributeObject(attribute string, attrValue *gobject.Ob
 	c_attribute := C.CString(attribute)
 	defer C.free(unsafe.Pointer(c_attribute))
 
-	c_attr_value := (*C.GObject)(attrValue.ToC())
+	c_attr_value := (*C.GObject)(C.NULL)
+	if attrValue != nil {
+		c_attr_value = (*C.GObject)(attrValue.ToC())
+	}
 
 	C.g_file_info_set_attribute_object((*C.GFileInfo)(recv.native), c_attribute, c_attr_value)
 
@@ -2382,7 +2481,10 @@ func (recv *FileInfo) SetIsSymlink(isSymlink bool) {
 
 // SetModificationTime is a wrapper around the C function g_file_info_set_modification_time.
 func (recv *FileInfo) SetModificationTime(mtime *glib.TimeVal) {
-	c_mtime := (*C.GTimeVal)(mtime.ToC())
+	c_mtime := (*C.GTimeVal)(C.NULL)
+	if mtime != nil {
+		c_mtime = (*C.GTimeVal)(mtime.ToC())
+	}
 
 	C.g_file_info_set_modification_time((*C.GFileInfo)(recv.native), c_mtime)
 
@@ -2478,7 +2580,10 @@ func (recv *FileInputStream) QueryInfo(attributes string, cancellable *Cancellab
 	c_attributes := C.CString(attributes)
 	defer C.free(unsafe.Pointer(c_attributes))
 
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -2644,7 +2749,10 @@ func (recv *FileOutputStream) QueryInfo(attributes string, cancellable *Cancella
 	c_attributes := C.CString(attributes)
 	defer C.free(unsafe.Pointer(c_attributes))
 
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -3136,7 +3244,10 @@ func (recv *InputStream) ClearPending() {
 
 // Close is a wrapper around the C function g_input_stream_close.
 func (recv *InputStream) Close(cancellable *Cancellable) (bool, error) {
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -3192,7 +3303,10 @@ func (recv *InputStream) Read(buffer []uint8, cancellable *Cancellable) (int64, 
 
 	c_count := (C.gsize)(len(buffer))
 
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -3215,7 +3329,10 @@ func (recv *InputStream) ReadAll(buffer []uint8, cancellable *Cancellable) (bool
 
 	var c_bytes_read C.gsize
 
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -3270,7 +3387,10 @@ func (recv *InputStream) SetPending() (bool, error) {
 func (recv *InputStream) Skip(count uint64, cancellable *Cancellable) (int64, error) {
 	c_count := (C.gsize)(count)
 
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -3791,7 +3911,10 @@ func (recv *OutputStream) ClearPending() {
 
 // Close is a wrapper around the C function g_output_stream_close.
 func (recv *OutputStream) Close(cancellable *Cancellable) (bool, error) {
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -3827,7 +3950,10 @@ func (recv *OutputStream) CloseFinish(result *AsyncResult) (bool, error) {
 
 // Flush is a wrapper around the C function g_output_stream_flush.
 func (recv *OutputStream) Flush(cancellable *Cancellable) (bool, error) {
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -3894,11 +4020,17 @@ func (recv *OutputStream) SetPending() (bool, error) {
 
 // Splice is a wrapper around the C function g_output_stream_splice.
 func (recv *OutputStream) Splice(source *InputStream, flags OutputStreamSpliceFlags, cancellable *Cancellable) (int64, error) {
-	c_source := (*C.GInputStream)(source.ToC())
+	c_source := (*C.GInputStream)(C.NULL)
+	if source != nil {
+		c_source = (*C.GInputStream)(source.ToC())
+	}
 
 	c_flags := (C.GOutputStreamSpliceFlags)(flags)
 
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -3938,7 +4070,10 @@ func (recv *OutputStream) Write(buffer []uint8, cancellable *Cancellable) (int64
 
 	c_count := (C.gsize)(len(buffer))
 
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -3961,7 +4096,10 @@ func (recv *OutputStream) WriteAll(buffer []uint8, cancellable *Cancellable) (bo
 
 	var c_bytes_written C.gsize
 
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -4458,7 +4596,10 @@ func (recv *SimpleAsyncResult) PropagateError() (bool, error) {
 
 // SetFromError is a wrapper around the C function g_simple_async_result_set_from_error.
 func (recv *SimpleAsyncResult) SetFromError(error *glib.Error) {
-	c_error := (*C.GError)(error.ToC())
+	c_error := (*C.GError)(C.NULL)
+	if error != nil {
+		c_error = (*C.GError)(error.ToC())
+	}
 
 	C.g_simple_async_result_set_from_error((*C.GSimpleAsyncResult)(recv.native), c_error)
 
@@ -4650,7 +4791,10 @@ func CastToSocketAddressEnumerator(object *gobject.Object) *SocketAddressEnumera
 
 // Next is a wrapper around the C function g_socket_address_enumerator_next.
 func (recv *SocketAddressEnumerator) Next(cancellable *Cancellable) (*SocketAddress, error) {
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 

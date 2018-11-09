@@ -25,7 +25,10 @@ import "C"
 
 // LoadBytes is a wrapper around the C function g_file_load_bytes.
 func (recv *File) LoadBytes(cancellable *Cancellable) (*glib.Bytes, string, error) {
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var c_etag_out *C.gchar
 

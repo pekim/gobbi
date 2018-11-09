@@ -237,7 +237,10 @@ func (recv *ShortcutsWindowClass) ToC() unsafe.Pointer {
 
 // StartsTag is a wrapper around the C function gtk_text_iter_starts_tag.
 func (recv *TextIter) StartsTag(tag *TextTag) bool {
-	c_tag := (*C.GtkTextTag)(tag.ToC())
+	c_tag := (*C.GtkTextTag)(C.NULL)
+	if tag != nil {
+		c_tag = (*C.GtkTextTag)(tag.ToC())
+	}
 
 	retC := C.gtk_text_iter_starts_tag((*C.GtkTextIter)(recv.native), c_tag)
 	retGo := retC == C.TRUE

@@ -12,7 +12,10 @@ import "C"
 
 // CopyOptions is a wrapper around the C function gdk_pixbuf_copy_options.
 func (recv *Pixbuf) CopyOptions(destPixbuf *Pixbuf) bool {
-	c_dest_pixbuf := (*C.GdkPixbuf)(destPixbuf.ToC())
+	c_dest_pixbuf := (*C.GdkPixbuf)(C.NULL)
+	if destPixbuf != nil {
+		c_dest_pixbuf = (*C.GdkPixbuf)(destPixbuf.ToC())
+	}
 
 	retC := C.gdk_pixbuf_copy_options((*C.GdkPixbuf)(recv.native), c_dest_pixbuf)
 	retGo := retC == C.TRUE

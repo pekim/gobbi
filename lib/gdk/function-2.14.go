@@ -10,7 +10,10 @@ import "C"
 
 // TestRenderSync is a wrapper around the C function gdk_test_render_sync.
 func TestRenderSync(window *Window) {
-	c_window := (*C.GdkWindow)(window.ToC())
+	c_window := (*C.GdkWindow)(C.NULL)
+	if window != nil {
+		c_window = (*C.GdkWindow)(window.ToC())
+	}
 
 	C.gdk_test_render_sync(c_window)
 
@@ -19,7 +22,10 @@ func TestRenderSync(window *Window) {
 
 // TestSimulateButton is a wrapper around the C function gdk_test_simulate_button.
 func TestSimulateButton(window *Window, x int32, y int32, button uint32, modifiers ModifierType, buttonPressrelease EventType) bool {
-	c_window := (*C.GdkWindow)(window.ToC())
+	c_window := (*C.GdkWindow)(C.NULL)
+	if window != nil {
+		c_window = (*C.GdkWindow)(window.ToC())
+	}
 
 	c_x := (C.gint)(x)
 
@@ -39,7 +45,10 @@ func TestSimulateButton(window *Window, x int32, y int32, button uint32, modifie
 
 // TestSimulateKey is a wrapper around the C function gdk_test_simulate_key.
 func TestSimulateKey(window *Window, x int32, y int32, keyval uint32, modifiers ModifierType, keyPressrelease EventType) bool {
-	c_window := (*C.GdkWindow)(window.ToC())
+	c_window := (*C.GdkWindow)(C.NULL)
+	if window != nil {
+		c_window = (*C.GdkWindow)(window.ToC())
+	}
 
 	c_x := (C.gint)(x)
 

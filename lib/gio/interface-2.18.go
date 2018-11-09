@@ -25,7 +25,10 @@ import "C"
 
 // MakeDirectoryWithParents is a wrapper around the C function g_file_make_directory_with_parents.
 func (recv *File) MakeDirectoryWithParents(cancellable *Cancellable) (bool, error) {
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -44,7 +47,10 @@ func (recv *File) MakeDirectoryWithParents(cancellable *Cancellable) (bool, erro
 func (recv *File) Monitor(flags FileMonitorFlags, cancellable *Cancellable) (*FileMonitor, error) {
 	c_flags := (C.GFileMonitorFlags)(flags)
 
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -63,7 +69,10 @@ func (recv *File) Monitor(flags FileMonitorFlags, cancellable *Cancellable) (*Fi
 func (recv *File) QueryFileType(flags FileQueryInfoFlags, cancellable *Cancellable) FileType {
 	c_flags := (C.GFileQueryInfoFlags)(flags)
 
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	retC := C.g_file_query_file_type((*C.GFile)(recv.native), c_flags, c_cancellable)
 	retGo := (FileType)(retC)

@@ -38,7 +38,10 @@ func (recv *ActionGroup) GetAccelGroup() *AccelGroup {
 
 // SetAccelGroup is a wrapper around the C function gtk_action_group_set_accel_group.
 func (recv *ActionGroup) SetAccelGroup(accelGroup *AccelGroup) {
-	c_accel_group := (*C.GtkAccelGroup)(accelGroup.ToC())
+	c_accel_group := (*C.GtkAccelGroup)(C.NULL)
+	if accelGroup != nil {
+		c_accel_group = (*C.GtkAccelGroup)(accelGroup.ToC())
+	}
 
 	C.gtk_action_group_set_accel_group((*C.GtkActionGroup)(recv.native), c_accel_group)
 
@@ -130,7 +133,10 @@ func (recv *Entry) GetInputPurpose() InputPurpose {
 
 // SetAttributes is a wrapper around the C function gtk_entry_set_attributes.
 func (recv *Entry) SetAttributes(attrs *pango.AttrList) {
-	c_attrs := (*C.PangoAttrList)(attrs.ToC())
+	c_attrs := (*C.PangoAttrList)(C.NULL)
+	if attrs != nil {
+		c_attrs = (*C.PangoAttrList)(attrs.ToC())
+	}
 
 	C.gtk_entry_set_attributes((*C.GtkEntry)(recv.native), c_attrs)
 
@@ -341,7 +347,10 @@ func (recv *MenuButton) GetPopup() *Menu {
 
 // SetAlignWidget is a wrapper around the C function gtk_menu_button_set_align_widget.
 func (recv *MenuButton) SetAlignWidget(alignWidget *Widget) {
-	c_align_widget := (*C.GtkWidget)(alignWidget.ToC())
+	c_align_widget := (*C.GtkWidget)(C.NULL)
+	if alignWidget != nil {
+		c_align_widget = (*C.GtkWidget)(alignWidget.ToC())
+	}
 
 	C.gtk_menu_button_set_align_widget((*C.GtkMenuButton)(recv.native), c_align_widget)
 
@@ -359,7 +368,10 @@ func (recv *MenuButton) SetDirection(direction ArrowType) {
 
 // SetMenuModel is a wrapper around the C function gtk_menu_button_set_menu_model.
 func (recv *MenuButton) SetMenuModel(menuModel *gio.MenuModel) {
-	c_menu_model := (*C.GMenuModel)(menuModel.ToC())
+	c_menu_model := (*C.GMenuModel)(C.NULL)
+	if menuModel != nil {
+		c_menu_model = (*C.GMenuModel)(menuModel.ToC())
+	}
 
 	C.gtk_menu_button_set_menu_model((*C.GtkMenuButton)(recv.native), c_menu_model)
 
@@ -368,7 +380,10 @@ func (recv *MenuButton) SetMenuModel(menuModel *gio.MenuModel) {
 
 // SetPopup is a wrapper around the C function gtk_menu_button_set_popup.
 func (recv *MenuButton) SetPopup(menu *Widget) {
-	c_menu := (*C.GtkWidget)(menu.ToC())
+	c_menu := (*C.GtkWidget)(C.NULL)
+	if menu != nil {
+		c_menu = (*C.GtkWidget)(menu.ToC())
+	}
 
 	C.gtk_menu_button_set_popup((*C.GtkMenuButton)(recv.native), c_menu)
 
@@ -377,7 +392,10 @@ func (recv *MenuButton) SetPopup(menu *Widget) {
 
 // BindModel is a wrapper around the C function gtk_menu_shell_bind_model.
 func (recv *MenuShell) BindModel(model *gio.MenuModel, actionNamespace string, withSeparators bool) {
-	c_model := (*C.GMenuModel)(model.ToC())
+	c_model := (*C.GMenuModel)(C.NULL)
+	if model != nil {
+		c_model = (*C.GMenuModel)(model.ToC())
+	}
 
 	c_action_namespace := C.CString(actionNamespace)
 	defer C.free(unsafe.Pointer(c_action_namespace))

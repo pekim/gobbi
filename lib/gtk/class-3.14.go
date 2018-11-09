@@ -149,7 +149,10 @@ func (recv *Application) PrefersAppMenu() bool {
 
 // AttributeGetColumn is a wrapper around the C function gtk_cell_area_attribute_get_column.
 func (recv *CellArea) AttributeGetColumn(renderer *CellRenderer, attribute string) int32 {
-	c_renderer := (*C.GtkCellRenderer)(renderer.ToC())
+	c_renderer := (*C.GtkCellRenderer)(C.NULL)
+	if renderer != nil {
+		c_renderer = (*C.GtkCellRenderer)(renderer.ToC())
+	}
 
 	c_attribute := C.CString(attribute)
 	defer C.free(unsafe.Pointer(c_attribute))
@@ -543,7 +546,10 @@ func (recv *Gesture) GetLastUpdatedSequence() *gdk.EventSequence {
 
 // GetPoint is a wrapper around the C function gtk_gesture_get_point.
 func (recv *Gesture) GetPoint(sequence *gdk.EventSequence) (bool, float64, float64) {
-	c_sequence := (*C.GdkEventSequence)(sequence.ToC())
+	c_sequence := (*C.GdkEventSequence)(C.NULL)
+	if sequence != nil {
+		c_sequence = (*C.GdkEventSequence)(sequence.ToC())
+	}
 
 	var c_x C.gdouble
 
@@ -561,7 +567,10 @@ func (recv *Gesture) GetPoint(sequence *gdk.EventSequence) (bool, float64, float
 
 // GetSequenceState is a wrapper around the C function gtk_gesture_get_sequence_state.
 func (recv *Gesture) GetSequenceState(sequence *gdk.EventSequence) EventSequenceState {
-	c_sequence := (*C.GdkEventSequence)(sequence.ToC())
+	c_sequence := (*C.GdkEventSequence)(C.NULL)
+	if sequence != nil {
+		c_sequence = (*C.GdkEventSequence)(sequence.ToC())
+	}
 
 	retC := C.gtk_gesture_get_sequence_state((*C.GtkGesture)(recv.native), c_sequence)
 	retGo := (EventSequenceState)(retC)
@@ -592,7 +601,10 @@ func (recv *Gesture) GetWindow() *gdk.Window {
 
 // Group is a wrapper around the C function gtk_gesture_group.
 func (recv *Gesture) Group(gesture *Gesture) {
-	c_gesture := (*C.GtkGesture)(gesture.ToC())
+	c_gesture := (*C.GtkGesture)(C.NULL)
+	if gesture != nil {
+		c_gesture = (*C.GtkGesture)(gesture.ToC())
+	}
 
 	C.gtk_gesture_group((*C.GtkGesture)(recv.native), c_gesture)
 
@@ -601,7 +613,10 @@ func (recv *Gesture) Group(gesture *Gesture) {
 
 // HandlesSequence is a wrapper around the C function gtk_gesture_handles_sequence.
 func (recv *Gesture) HandlesSequence(sequence *gdk.EventSequence) bool {
-	c_sequence := (*C.GdkEventSequence)(sequence.ToC())
+	c_sequence := (*C.GdkEventSequence)(C.NULL)
+	if sequence != nil {
+		c_sequence = (*C.GdkEventSequence)(sequence.ToC())
+	}
 
 	retC := C.gtk_gesture_handles_sequence((*C.GtkGesture)(recv.native), c_sequence)
 	retGo := retC == C.TRUE
@@ -619,7 +634,10 @@ func (recv *Gesture) IsActive() bool {
 
 // IsGroupedWith is a wrapper around the C function gtk_gesture_is_grouped_with.
 func (recv *Gesture) IsGroupedWith(other *Gesture) bool {
-	c_other := (*C.GtkGesture)(other.ToC())
+	c_other := (*C.GtkGesture)(C.NULL)
+	if other != nil {
+		c_other = (*C.GtkGesture)(other.ToC())
+	}
 
 	retC := C.gtk_gesture_is_grouped_with((*C.GtkGesture)(recv.native), c_other)
 	retGo := retC == C.TRUE
@@ -637,7 +655,10 @@ func (recv *Gesture) IsRecognized() bool {
 
 // SetSequenceState is a wrapper around the C function gtk_gesture_set_sequence_state.
 func (recv *Gesture) SetSequenceState(sequence *gdk.EventSequence, state EventSequenceState) bool {
-	c_sequence := (*C.GdkEventSequence)(sequence.ToC())
+	c_sequence := (*C.GdkEventSequence)(C.NULL)
+	if sequence != nil {
+		c_sequence = (*C.GdkEventSequence)(sequence.ToC())
+	}
 
 	c_state := (C.GtkEventSequenceState)(state)
 
@@ -659,7 +680,10 @@ func (recv *Gesture) SetState(state EventSequenceState) bool {
 
 // SetWindow is a wrapper around the C function gtk_gesture_set_window.
 func (recv *Gesture) SetWindow(window *gdk.Window) {
-	c_window := (*C.GdkWindow)(window.ToC())
+	c_window := (*C.GdkWindow)(C.NULL)
+	if window != nil {
+		c_window = (*C.GdkWindow)(window.ToC())
+	}
 
 	C.gtk_gesture_set_window((*C.GtkGesture)(recv.native), c_window)
 
@@ -681,7 +705,10 @@ func (recv *Gesture) Ungroup() {
 
 // GestureDragNew is a wrapper around the C function gtk_gesture_drag_new.
 func GestureDragNew(widget *Widget) *GestureDrag {
-	c_widget := (*C.GtkWidget)(widget.ToC())
+	c_widget := (*C.GtkWidget)(C.NULL)
+	if widget != nil {
+		c_widget = (*C.GtkWidget)(widget.ToC())
+	}
 
 	retC := C.gtk_gesture_drag_new(c_widget)
 	retGo := GestureDragNewFromC(unsafe.Pointer(retC))
@@ -782,7 +809,10 @@ func gesturelongpress_cancelledHandler(_ *C.GObject, data C.gpointer) {
 
 // GestureLongPressNew is a wrapper around the C function gtk_gesture_long_press_new.
 func GestureLongPressNew(widget *Widget) *GestureLongPress {
-	c_widget := (*C.GtkWidget)(widget.ToC())
+	c_widget := (*C.GtkWidget)(C.NULL)
+	if widget != nil {
+		c_widget = (*C.GtkWidget)(widget.ToC())
+	}
 
 	retC := C.gtk_gesture_long_press_new(c_widget)
 	retGo := GestureLongPressNewFromC(unsafe.Pointer(retC))
@@ -853,7 +883,10 @@ func gesturemultipress_stoppedHandler(_ *C.GObject, data C.gpointer) {
 
 // GestureMultiPressNew is a wrapper around the C function gtk_gesture_multi_press_new.
 func GestureMultiPressNew(widget *Widget) *GestureMultiPress {
-	c_widget := (*C.GtkWidget)(widget.ToC())
+	c_widget := (*C.GtkWidget)(C.NULL)
+	if widget != nil {
+		c_widget = (*C.GtkWidget)(widget.ToC())
+	}
 
 	retC := C.gtk_gesture_multi_press_new(c_widget)
 	retGo := GestureMultiPressNewFromC(unsafe.Pointer(retC))
@@ -869,7 +902,10 @@ func GestureMultiPressNew(widget *Widget) *GestureMultiPress {
 
 // GesturePanNew is a wrapper around the C function gtk_gesture_pan_new.
 func GesturePanNew(widget *Widget, orientation Orientation) *GesturePan {
-	c_widget := (*C.GtkWidget)(widget.ToC())
+	c_widget := (*C.GtkWidget)(C.NULL)
+	if widget != nil {
+		c_widget = (*C.GtkWidget)(widget.ToC())
+	}
 
 	c_orientation := (C.GtkOrientation)(orientation)
 
@@ -900,7 +936,10 @@ func (recv *GesturePan) SetOrientation(orientation Orientation) {
 
 // GestureRotateNew is a wrapper around the C function gtk_gesture_rotate_new.
 func GestureRotateNew(widget *Widget) *GestureRotate {
-	c_widget := (*C.GtkWidget)(widget.ToC())
+	c_widget := (*C.GtkWidget)(C.NULL)
+	if widget != nil {
+		c_widget = (*C.GtkWidget)(widget.ToC())
+	}
 
 	retC := C.gtk_gesture_rotate_new(c_widget)
 	retGo := GestureRotateNewFromC(unsafe.Pointer(retC))
@@ -994,7 +1033,10 @@ func (recv *GestureSingle) SetTouchOnly(touchOnly bool) {
 
 // GestureSwipeNew is a wrapper around the C function gtk_gesture_swipe_new.
 func GestureSwipeNew(widget *Widget) *GestureSwipe {
-	c_widget := (*C.GtkWidget)(widget.ToC())
+	c_widget := (*C.GtkWidget)(C.NULL)
+	if widget != nil {
+		c_widget = (*C.GtkWidget)(widget.ToC())
+	}
 
 	retC := C.gtk_gesture_swipe_new(c_widget)
 	retGo := GestureSwipeNewFromC(unsafe.Pointer(retC))
@@ -1022,7 +1064,10 @@ func (recv *GestureSwipe) GetVelocity() (bool, float64, float64) {
 
 // GestureZoomNew is a wrapper around the C function gtk_gesture_zoom_new.
 func GestureZoomNew(widget *Widget) *GestureZoom {
-	c_widget := (*C.GtkWidget)(widget.ToC())
+	c_widget := (*C.GtkWidget)(C.NULL)
+	if widget != nil {
+		c_widget = (*C.GtkWidget)(widget.ToC())
+	}
 
 	retC := C.gtk_gesture_zoom_new(c_widget)
 	retGo := GestureZoomNewFromC(unsafe.Pointer(retC))
@@ -1245,7 +1290,10 @@ func (recv *ListBox) UnselectAll() {
 
 // UnselectRow is a wrapper around the C function gtk_list_box_unselect_row.
 func (recv *ListBox) UnselectRow(row *ListBoxRow) {
-	c_row := (*C.GtkListBoxRow)(row.ToC())
+	c_row := (*C.GtkListBoxRow)(C.NULL)
+	if row != nil {
+		c_row = (*C.GtkListBoxRow)(row.ToC())
+	}
 
 	C.gtk_list_box_unselect_row((*C.GtkListBox)(recv.native), c_row)
 

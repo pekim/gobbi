@@ -76,7 +76,10 @@ func (recv *DesktopAppInfo) HasKey(key string) bool {
 
 // GetChild is a wrapper around the C function g_file_enumerator_get_child.
 func (recv *FileEnumerator) GetChild(info *FileInfo) *File {
-	c_info := (*C.GFileInfo)(info.ToC())
+	c_info := (*C.GFileInfo)(C.NULL)
+	if info != nil {
+		c_info = (*C.GFileInfo)(info.ToC())
+	}
 
 	retC := C.g_file_enumerator_get_child((*C.GFileEnumerator)(recv.native), c_info)
 	retGo := FileNewFromC(unsafe.Pointer(retC))
@@ -319,7 +322,10 @@ func (recv *Task) ReturnBoolean(result bool) {
 
 // ReturnError is a wrapper around the C function g_task_return_error.
 func (recv *Task) ReturnError(error *glib.Error) {
-	c_error := (*C.GError)(error.ToC())
+	c_error := (*C.GError)(C.NULL)
+	if error != nil {
+		c_error = (*C.GError)(error.ToC())
+	}
 
 	C.g_task_return_error((*C.GTask)(recv.native), c_error)
 

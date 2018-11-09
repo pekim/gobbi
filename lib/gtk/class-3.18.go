@@ -29,7 +29,10 @@ import "C"
 
 // GetPageHasPadding is a wrapper around the C function gtk_assistant_get_page_has_padding.
 func (recv *Assistant) GetPageHasPadding(page *Widget) bool {
-	c_page := (*C.GtkWidget)(page.ToC())
+	c_page := (*C.GtkWidget)(C.NULL)
+	if page != nil {
+		c_page = (*C.GtkWidget)(page.ToC())
+	}
 
 	retC := C.gtk_assistant_get_page_has_padding((*C.GtkAssistant)(recv.native), c_page)
 	retGo := retC == C.TRUE
@@ -39,7 +42,10 @@ func (recv *Assistant) GetPageHasPadding(page *Widget) bool {
 
 // SetPageHasPadding is a wrapper around the C function gtk_assistant_set_page_has_padding.
 func (recv *Assistant) SetPageHasPadding(page *Widget, hasPadding bool) {
-	c_page := (*C.GtkWidget)(page.ToC())
+	c_page := (*C.GtkWidget)(C.NULL)
+	if page != nil {
+		c_page = (*C.GtkWidget)(page.ToC())
+	}
 
 	c_has_padding :=
 		boolToGboolean(hasPadding)
@@ -55,7 +61,10 @@ func (recv *Assistant) SetPageHasPadding(page *Widget, hasPadding bool) {
 
 // GetOverlayPassThrough is a wrapper around the C function gtk_overlay_get_overlay_pass_through.
 func (recv *Overlay) GetOverlayPassThrough(widget *Widget) bool {
-	c_widget := (*C.GtkWidget)(widget.ToC())
+	c_widget := (*C.GtkWidget)(C.NULL)
+	if widget != nil {
+		c_widget = (*C.GtkWidget)(widget.ToC())
+	}
 
 	retC := C.gtk_overlay_get_overlay_pass_through((*C.GtkOverlay)(recv.native), c_widget)
 	retGo := retC == C.TRUE
@@ -65,7 +74,10 @@ func (recv *Overlay) GetOverlayPassThrough(widget *Widget) bool {
 
 // ReorderOverlay is a wrapper around the C function gtk_overlay_reorder_overlay.
 func (recv *Overlay) ReorderOverlay(child *Widget, position int32) {
-	c_child := (*C.GtkWidget)(child.ToC())
+	c_child := (*C.GtkWidget)(C.NULL)
+	if child != nil {
+		c_child = (*C.GtkWidget)(child.ToC())
+	}
 
 	c_position := (C.gint)(position)
 
@@ -76,7 +88,10 @@ func (recv *Overlay) ReorderOverlay(child *Widget, position int32) {
 
 // SetOverlayPassThrough is a wrapper around the C function gtk_overlay_set_overlay_pass_through.
 func (recv *Overlay) SetOverlayPassThrough(widget *Widget, passThrough bool) {
-	c_widget := (*C.GtkWidget)(widget.ToC())
+	c_widget := (*C.GtkWidget)(C.NULL)
+	if widget != nil {
+		c_widget = (*C.GtkWidget)(widget.ToC())
+	}
 
 	c_pass_through :=
 		boolToGboolean(passThrough)
@@ -172,7 +187,10 @@ func (recv *PlacesSidebar) SetDropTargetsVisible(visible bool, context *gdk.Drag
 	c_visible :=
 		boolToGboolean(visible)
 
-	c_context := (*C.GdkDragContext)(context.ToC())
+	c_context := (*C.GdkDragContext)(C.NULL)
+	if context != nil {
+		c_context = (*C.GdkDragContext)(context.ToC())
+	}
 
 	C.gtk_places_sidebar_set_drop_targets_visible((*C.GtkPlacesSidebar)(recv.native), c_visible, c_context)
 
@@ -224,7 +242,10 @@ func (recv *Popover) GetDefaultWidget() *Widget {
 
 // SetDefaultWidget is a wrapper around the C function gtk_popover_set_default_widget.
 func (recv *Popover) SetDefaultWidget(widget *Widget) {
-	c_widget := (*C.GtkWidget)(widget.ToC())
+	c_widget := (*C.GtkWidget)(C.NULL)
+	if widget != nil {
+		c_widget = (*C.GtkWidget)(widget.ToC())
+	}
 
 	C.gtk_popover_set_default_widget((*C.GtkPopover)(recv.native), c_widget)
 
@@ -233,7 +254,10 @@ func (recv *Popover) SetDefaultWidget(widget *Widget) {
 
 // JoinGroup is a wrapper around the C function gtk_radio_menu_item_join_group.
 func (recv *RadioMenuItem) JoinGroup(groupSource *RadioMenuItem) {
-	c_group_source := (*C.GtkRadioMenuItem)(groupSource.ToC())
+	c_group_source := (*C.GtkRadioMenuItem)(C.NULL)
+	if groupSource != nil {
+		c_group_source = (*C.GtkRadioMenuItem)(groupSource.ToC())
+	}
 
 	C.gtk_radio_menu_item_join_group((*C.GtkRadioMenuItem)(recv.native), c_group_source)
 
@@ -320,7 +344,10 @@ func (recv *Widget) GetFontOptions() *cairo.FontOptions {
 
 // SetFontMap is a wrapper around the C function gtk_widget_set_font_map.
 func (recv *Widget) SetFontMap(fontMap *pango.FontMap) {
-	c_font_map := (*C.PangoFontMap)(fontMap.ToC())
+	c_font_map := (*C.PangoFontMap)(C.NULL)
+	if fontMap != nil {
+		c_font_map = (*C.PangoFontMap)(fontMap.ToC())
+	}
 
 	C.gtk_widget_set_font_map((*C.GtkWidget)(recv.native), c_font_map)
 
@@ -329,7 +356,10 @@ func (recv *Widget) SetFontMap(fontMap *pango.FontMap) {
 
 // SetFontOptions is a wrapper around the C function gtk_widget_set_font_options.
 func (recv *Widget) SetFontOptions(options *cairo.FontOptions) {
-	c_options := (*C.cairo_font_options_t)(options.ToC())
+	c_options := (*C.cairo_font_options_t)(C.NULL)
+	if options != nil {
+		c_options = (*C.cairo_font_options_t)(options.ToC())
+	}
 
 	C.gtk_widget_set_font_options((*C.GtkWidget)(recv.native), c_options)
 
@@ -338,7 +368,10 @@ func (recv *Widget) SetFontOptions(options *cairo.FontOptions) {
 
 // FullscreenOnMonitor is a wrapper around the C function gtk_window_fullscreen_on_monitor.
 func (recv *Window) FullscreenOnMonitor(screen *gdk.Screen, monitor int32) {
-	c_screen := (*C.GdkScreen)(screen.ToC())
+	c_screen := (*C.GdkScreen)(C.NULL)
+	if screen != nil {
+		c_screen = (*C.GdkScreen)(screen.ToC())
+	}
 
 	c_monitor := (C.gint)(monitor)
 

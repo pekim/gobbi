@@ -78,7 +78,10 @@ func (recv *Notebook) GetActionWidget(packType PackType) *Widget {
 
 // SetActionWidget is a wrapper around the C function gtk_notebook_set_action_widget.
 func (recv *Notebook) SetActionWidget(widget *Widget, packType PackType) {
-	c_widget := (*C.GtkWidget)(widget.ToC())
+	c_widget := (*C.GtkWidget)(C.NULL)
+	if widget != nil {
+		c_widget = (*C.GtkWidget)(widget.ToC())
+	}
 
 	c_pack_type := (C.GtkPackType)(packType)
 
@@ -328,7 +331,10 @@ func (recv *ToolItemGroup) GetHeaderRelief() ReliefStyle {
 
 // GetItemPosition is a wrapper around the C function gtk_tool_item_group_get_item_position.
 func (recv *ToolItemGroup) GetItemPosition(item *ToolItem) int32 {
-	c_item := (*C.GtkToolItem)(item.ToC())
+	c_item := (*C.GtkToolItem)(C.NULL)
+	if item != nil {
+		c_item = (*C.GtkToolItem)(item.ToC())
+	}
 
 	retC := C.gtk_tool_item_group_get_item_position((*C.GtkToolItemGroup)(recv.native), c_item)
 	retGo := (int32)(retC)
@@ -372,7 +378,10 @@ func (recv *ToolItemGroup) GetNthItem(index uint32) *ToolItem {
 
 // Insert is a wrapper around the C function gtk_tool_item_group_insert.
 func (recv *ToolItemGroup) Insert(item *ToolItem, position int32) {
-	c_item := (*C.GtkToolItem)(item.ToC())
+	c_item := (*C.GtkToolItem)(C.NULL)
+	if item != nil {
+		c_item = (*C.GtkToolItem)(item.ToC())
+	}
 
 	c_position := (C.gint)(position)
 
@@ -411,7 +420,10 @@ func (recv *ToolItemGroup) SetHeaderRelief(style ReliefStyle) {
 
 // SetItemPosition is a wrapper around the C function gtk_tool_item_group_set_item_position.
 func (recv *ToolItemGroup) SetItemPosition(item *ToolItem, position int32) {
-	c_item := (*C.GtkToolItem)(item.ToC())
+	c_item := (*C.GtkToolItem)(C.NULL)
+	if item != nil {
+		c_item = (*C.GtkToolItem)(item.ToC())
+	}
 
 	c_position := (C.gint)(position)
 
@@ -432,7 +444,10 @@ func (recv *ToolItemGroup) SetLabel(label string) {
 
 // SetLabelWidget is a wrapper around the C function gtk_tool_item_group_set_label_widget.
 func (recv *ToolItemGroup) SetLabelWidget(labelWidget *Widget) {
-	c_label_widget := (*C.GtkWidget)(labelWidget.ToC())
+	c_label_widget := (*C.GtkWidget)(C.NULL)
+	if labelWidget != nil {
+		c_label_widget = (*C.GtkWidget)(labelWidget.ToC())
+	}
 
 	C.gtk_tool_item_group_set_label_widget((*C.GtkToolItemGroup)(recv.native), c_label_widget)
 
@@ -449,7 +464,10 @@ func ToolPaletteNew() *ToolPalette {
 
 // AddDragDest is a wrapper around the C function gtk_tool_palette_add_drag_dest.
 func (recv *ToolPalette) AddDragDest(widget *Widget, flags DestDefaults, targets ToolPaletteDragTargets, actions gdk.DragAction) {
-	c_widget := (*C.GtkWidget)(widget.ToC())
+	c_widget := (*C.GtkWidget)(C.NULL)
+	if widget != nil {
+		c_widget = (*C.GtkWidget)(widget.ToC())
+	}
 
 	c_flags := (C.GtkDestDefaults)(flags)
 
@@ -464,7 +482,10 @@ func (recv *ToolPalette) AddDragDest(widget *Widget, flags DestDefaults, targets
 
 // GetDragItem is a wrapper around the C function gtk_tool_palette_get_drag_item.
 func (recv *ToolPalette) GetDragItem(selection *SelectionData) *Widget {
-	c_selection := (*C.GtkSelectionData)(selection.ToC())
+	c_selection := (*C.GtkSelectionData)(C.NULL)
+	if selection != nil {
+		c_selection = (*C.GtkSelectionData)(selection.ToC())
+	}
 
 	retC := C.gtk_tool_palette_get_drag_item((*C.GtkToolPalette)(recv.native), c_selection)
 	retGo := WidgetNewFromC(unsafe.Pointer(retC))
@@ -508,7 +529,10 @@ func (recv *ToolPalette) GetDropItem(x int32, y int32) *ToolItem {
 
 // GetExclusive is a wrapper around the C function gtk_tool_palette_get_exclusive.
 func (recv *ToolPalette) GetExclusive(group *ToolItemGroup) bool {
-	c_group := (*C.GtkToolItemGroup)(group.ToC())
+	c_group := (*C.GtkToolItemGroup)(C.NULL)
+	if group != nil {
+		c_group = (*C.GtkToolItemGroup)(group.ToC())
+	}
 
 	retC := C.gtk_tool_palette_get_exclusive((*C.GtkToolPalette)(recv.native), c_group)
 	retGo := retC == C.TRUE
@@ -518,7 +542,10 @@ func (recv *ToolPalette) GetExclusive(group *ToolItemGroup) bool {
 
 // GetExpand is a wrapper around the C function gtk_tool_palette_get_expand.
 func (recv *ToolPalette) GetExpand(group *ToolItemGroup) bool {
-	c_group := (*C.GtkToolItemGroup)(group.ToC())
+	c_group := (*C.GtkToolItemGroup)(C.NULL)
+	if group != nil {
+		c_group = (*C.GtkToolItemGroup)(group.ToC())
+	}
 
 	retC := C.gtk_tool_palette_get_expand((*C.GtkToolPalette)(recv.native), c_group)
 	retGo := retC == C.TRUE
@@ -528,7 +555,10 @@ func (recv *ToolPalette) GetExpand(group *ToolItemGroup) bool {
 
 // GetGroupPosition is a wrapper around the C function gtk_tool_palette_get_group_position.
 func (recv *ToolPalette) GetGroupPosition(group *ToolItemGroup) int32 {
-	c_group := (*C.GtkToolItemGroup)(group.ToC())
+	c_group := (*C.GtkToolItemGroup)(C.NULL)
+	if group != nil {
+		c_group = (*C.GtkToolItemGroup)(group.ToC())
+	}
 
 	retC := C.gtk_tool_palette_get_group_position((*C.GtkToolPalette)(recv.native), c_group)
 	retGo := (int32)(retC)
@@ -573,7 +603,10 @@ func (recv *ToolPalette) SetDragSource(targets ToolPaletteDragTargets) {
 
 // SetExclusive is a wrapper around the C function gtk_tool_palette_set_exclusive.
 func (recv *ToolPalette) SetExclusive(group *ToolItemGroup, exclusive bool) {
-	c_group := (*C.GtkToolItemGroup)(group.ToC())
+	c_group := (*C.GtkToolItemGroup)(C.NULL)
+	if group != nil {
+		c_group = (*C.GtkToolItemGroup)(group.ToC())
+	}
 
 	c_exclusive :=
 		boolToGboolean(exclusive)
@@ -585,7 +618,10 @@ func (recv *ToolPalette) SetExclusive(group *ToolItemGroup, exclusive bool) {
 
 // SetExpand is a wrapper around the C function gtk_tool_palette_set_expand.
 func (recv *ToolPalette) SetExpand(group *ToolItemGroup, expand bool) {
-	c_group := (*C.GtkToolItemGroup)(group.ToC())
+	c_group := (*C.GtkToolItemGroup)(C.NULL)
+	if group != nil {
+		c_group = (*C.GtkToolItemGroup)(group.ToC())
+	}
 
 	c_expand :=
 		boolToGboolean(expand)
@@ -597,7 +633,10 @@ func (recv *ToolPalette) SetExpand(group *ToolItemGroup, expand bool) {
 
 // SetGroupPosition is a wrapper around the C function gtk_tool_palette_set_group_position.
 func (recv *ToolPalette) SetGroupPosition(group *ToolItemGroup, position int32) {
-	c_group := (*C.GtkToolItemGroup)(group.ToC())
+	c_group := (*C.GtkToolItemGroup)(C.NULL)
+	if group != nil {
+		c_group = (*C.GtkToolItemGroup)(group.ToC())
+	}
 
 	c_position := (C.gint)(position)
 

@@ -53,7 +53,10 @@ import "C"
 
 // CursorNewForDisplay is a wrapper around the C function gdk_cursor_new_for_display.
 func CursorNewForDisplay(display *Display, cursorType CursorType) *Cursor {
-	c_display := (*C.GdkDisplay)(display.ToC())
+	c_display := (*C.GdkDisplay)(C.NULL)
+	if display != nil {
+		c_display = (*C.GdkDisplay)(display.ToC())
+	}
 
 	c_cursor_type := (C.GdkCursorType)(cursorType)
 
@@ -339,7 +342,10 @@ func (recv *DisplayManager) ListDisplays() *glib.SList {
 
 // SetDefaultDisplay is a wrapper around the C function gdk_display_manager_set_default_display.
 func (recv *DisplayManager) SetDefaultDisplay(display *Display) {
-	c_display := (*C.GdkDisplay)(display.ToC())
+	c_display := (*C.GdkDisplay)(C.NULL)
+	if display != nil {
+		c_display = (*C.GdkDisplay)(display.ToC())
+	}
 
 	C.gdk_display_manager_set_default_display((*C.GdkDisplayManager)(recv.native), c_display)
 
@@ -498,7 +504,10 @@ func (recv *Screen) GetMonitorAtPoint(x int32, y int32) int32 {
 
 // GetMonitorAtWindow is a wrapper around the C function gdk_screen_get_monitor_at_window.
 func (recv *Screen) GetMonitorAtWindow(window *Window) int32 {
-	c_window := (*C.GdkWindow)(window.ToC())
+	c_window := (*C.GdkWindow)(C.NULL)
+	if window != nil {
+		c_window = (*C.GdkWindow)(window.ToC())
+	}
 
 	retC := C.gdk_screen_get_monitor_at_window((*C.GdkScreen)(recv.native), c_window)
 	retGo := (int32)(retC)
@@ -537,7 +546,10 @@ func (recv *Screen) GetSetting(name string, value *gobject.Value) bool {
 	c_name := C.CString(name)
 	defer C.free(unsafe.Pointer(c_name))
 
-	c_value := (*C.GValue)(value.ToC())
+	c_value := (*C.GValue)(C.NULL)
+	if value != nil {
+		c_value = (*C.GValue)(value.ToC())
+	}
 
 	retC := C.gdk_screen_get_setting((*C.GdkScreen)(recv.native), c_name, c_value)
 	retGo := retC == C.TRUE

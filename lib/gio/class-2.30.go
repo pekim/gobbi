@@ -66,7 +66,10 @@ func CastToDBusInterfaceSkeleton(object *gobject.Object) *DBusInterfaceSkeleton 
 
 // Export is a wrapper around the C function g_dbus_interface_skeleton_export.
 func (recv *DBusInterfaceSkeleton) Export(connection *DBusConnection, objectPath string) (bool, error) {
-	c_connection := (*C.GDBusConnection)(connection.ToC())
+	c_connection := (*C.GDBusConnection)(C.NULL)
+	if connection != nil {
+		c_connection = (*C.GDBusConnection)(connection.ToC())
+	}
 
 	c_object_path := C.CString(objectPath)
 	defer C.free(unsafe.Pointer(c_object_path))
@@ -153,7 +156,10 @@ func (recv *DBusInterfaceSkeleton) Unexport() {
 
 // TakeError is a wrapper around the C function g_dbus_method_invocation_take_error.
 func (recv *DBusMethodInvocation) TakeError(error *glib.Error) {
-	c_error := (*C.GError)(error.ToC())
+	c_error := (*C.GError)(C.NULL)
+	if error != nil {
+		c_error = (*C.GError)(error.ToC())
+	}
 
 	C.g_dbus_method_invocation_take_error((*C.GDBusMethodInvocation)(recv.native), c_error)
 
@@ -312,7 +318,10 @@ func DBusObjectManagerServerNew(objectPath string) *DBusObjectManagerServer {
 
 // Export is a wrapper around the C function g_dbus_object_manager_server_export.
 func (recv *DBusObjectManagerServer) Export(object *DBusObjectSkeleton) {
-	c_object := (*C.GDBusObjectSkeleton)(object.ToC())
+	c_object := (*C.GDBusObjectSkeleton)(C.NULL)
+	if object != nil {
+		c_object = (*C.GDBusObjectSkeleton)(object.ToC())
+	}
 
 	C.g_dbus_object_manager_server_export((*C.GDBusObjectManagerServer)(recv.native), c_object)
 
@@ -321,7 +330,10 @@ func (recv *DBusObjectManagerServer) Export(object *DBusObjectSkeleton) {
 
 // ExportUniquely is a wrapper around the C function g_dbus_object_manager_server_export_uniquely.
 func (recv *DBusObjectManagerServer) ExportUniquely(object *DBusObjectSkeleton) {
-	c_object := (*C.GDBusObjectSkeleton)(object.ToC())
+	c_object := (*C.GDBusObjectSkeleton)(C.NULL)
+	if object != nil {
+		c_object = (*C.GDBusObjectSkeleton)(object.ToC())
+	}
 
 	C.g_dbus_object_manager_server_export_uniquely((*C.GDBusObjectManagerServer)(recv.native), c_object)
 
@@ -338,7 +350,10 @@ func (recv *DBusObjectManagerServer) GetConnection() *DBusConnection {
 
 // SetConnection is a wrapper around the C function g_dbus_object_manager_server_set_connection.
 func (recv *DBusObjectManagerServer) SetConnection(connection *DBusConnection) {
-	c_connection := (*C.GDBusConnection)(connection.ToC())
+	c_connection := (*C.GDBusConnection)(C.NULL)
+	if connection != nil {
+		c_connection = (*C.GDBusConnection)(connection.ToC())
+	}
 
 	C.g_dbus_object_manager_server_set_connection((*C.GDBusObjectManagerServer)(recv.native), c_connection)
 
@@ -392,7 +407,10 @@ func CastToDBusObjectProxy(object *gobject.Object) *DBusObjectProxy {
 
 // DBusObjectProxyNew is a wrapper around the C function g_dbus_object_proxy_new.
 func DBusObjectProxyNew(connection *DBusConnection, objectPath string) *DBusObjectProxy {
-	c_connection := (*C.GDBusConnection)(connection.ToC())
+	c_connection := (*C.GDBusConnection)(C.NULL)
+	if connection != nil {
+		c_connection = (*C.GDBusConnection)(connection.ToC())
+	}
 
 	c_object_path := C.CString(objectPath)
 	defer C.free(unsafe.Pointer(c_object_path))
@@ -458,7 +476,10 @@ func DBusObjectSkeletonNew(objectPath string) *DBusObjectSkeleton {
 
 // AddInterface is a wrapper around the C function g_dbus_object_skeleton_add_interface.
 func (recv *DBusObjectSkeleton) AddInterface(interface_ *DBusInterfaceSkeleton) {
-	c_interface_ := (*C.GDBusInterfaceSkeleton)(interface_.ToC())
+	c_interface_ := (*C.GDBusInterfaceSkeleton)(C.NULL)
+	if interface_ != nil {
+		c_interface_ = (*C.GDBusInterfaceSkeleton)(interface_.ToC())
+	}
 
 	C.g_dbus_object_skeleton_add_interface((*C.GDBusObjectSkeleton)(recv.native), c_interface_)
 
@@ -474,7 +495,10 @@ func (recv *DBusObjectSkeleton) Flush() {
 
 // RemoveInterface is a wrapper around the C function g_dbus_object_skeleton_remove_interface.
 func (recv *DBusObjectSkeleton) RemoveInterface(interface_ *DBusInterfaceSkeleton) {
-	c_interface_ := (*C.GDBusInterfaceSkeleton)(interface_.ToC())
+	c_interface_ := (*C.GDBusInterfaceSkeleton)(C.NULL)
+	if interface_ != nil {
+		c_interface_ = (*C.GDBusInterfaceSkeleton)(interface_.ToC())
+	}
 
 	C.g_dbus_object_skeleton_remove_interface((*C.GDBusObjectSkeleton)(recv.native), c_interface_)
 
@@ -533,7 +557,10 @@ func (recv *DataInputStream) ReadLineFinishUtf8(result *AsyncResult) (string, ui
 func (recv *DataInputStream) ReadLineUtf8(cancellable *Cancellable) (string, uint64, error) {
 	var c_length C.gsize
 
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -572,7 +599,10 @@ func (recv *DesktopAppInfo) GetShowIn(desktopEnv string) bool {
 
 // Equal is a wrapper around the C function g_inet_address_equal.
 func (recv *InetAddress) Equal(otherAddress *InetAddress) bool {
-	c_other_address := (*C.GInetAddress)(otherAddress.ToC())
+	c_other_address := (*C.GInetAddress)(C.NULL)
+	if otherAddress != nil {
+		c_other_address = (*C.GInetAddress)(otherAddress.ToC())
+	}
 
 	retC := C.g_inet_address_equal((*C.GInetAddress)(recv.native), c_other_address)
 	retGo := retC == C.TRUE
@@ -628,7 +658,10 @@ func (recv *TlsConnection) GetInteraction() *TlsInteraction {
 
 // SetDatabase is a wrapper around the C function g_tls_connection_set_database.
 func (recv *TlsConnection) SetDatabase(database *TlsDatabase) {
-	c_database := (*C.GTlsDatabase)(database.ToC())
+	c_database := (*C.GTlsDatabase)(C.NULL)
+	if database != nil {
+		c_database = (*C.GTlsDatabase)(database.ToC())
+	}
 
 	C.g_tls_connection_set_database((*C.GTlsConnection)(recv.native), c_database)
 
@@ -637,7 +670,10 @@ func (recv *TlsConnection) SetDatabase(database *TlsDatabase) {
 
 // SetInteraction is a wrapper around the C function g_tls_connection_set_interaction.
 func (recv *TlsConnection) SetInteraction(interaction *TlsInteraction) {
-	c_interaction := (*C.GTlsInteraction)(interaction.ToC())
+	c_interaction := (*C.GTlsInteraction)(C.NULL)
+	if interaction != nil {
+		c_interaction = (*C.GTlsInteraction)(interaction.ToC())
+	}
 
 	C.g_tls_connection_set_interaction((*C.GTlsConnection)(recv.native), c_interaction)
 
@@ -680,7 +716,10 @@ func CastToTlsDatabase(object *gobject.Object) *TlsDatabase {
 
 // CreateCertificateHandle is a wrapper around the C function g_tls_database_create_certificate_handle.
 func (recv *TlsDatabase) CreateCertificateHandle(certificate *TlsCertificate) string {
-	c_certificate := (*C.GTlsCertificate)(certificate.ToC())
+	c_certificate := (*C.GTlsCertificate)(C.NULL)
+	if certificate != nil {
+		c_certificate = (*C.GTlsCertificate)(certificate.ToC())
+	}
 
 	retC := C.g_tls_database_create_certificate_handle((*C.GTlsDatabase)(recv.native), c_certificate)
 	retGo := C.GoString(retC)
@@ -694,11 +733,17 @@ func (recv *TlsDatabase) LookupCertificateForHandle(handle string, interaction *
 	c_handle := C.CString(handle)
 	defer C.free(unsafe.Pointer(c_handle))
 
-	c_interaction := (*C.GTlsInteraction)(interaction.ToC())
+	c_interaction := (*C.GTlsInteraction)(C.NULL)
+	if interaction != nil {
+		c_interaction = (*C.GTlsInteraction)(interaction.ToC())
+	}
 
 	c_flags := (C.GTlsDatabaseLookupFlags)(flags)
 
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -739,13 +784,22 @@ func (recv *TlsDatabase) LookupCertificateForHandleFinish(result *AsyncResult) (
 
 // LookupCertificateIssuer is a wrapper around the C function g_tls_database_lookup_certificate_issuer.
 func (recv *TlsDatabase) LookupCertificateIssuer(certificate *TlsCertificate, interaction *TlsInteraction, flags TlsDatabaseLookupFlags, cancellable *Cancellable) (*TlsCertificate, error) {
-	c_certificate := (*C.GTlsCertificate)(certificate.ToC())
+	c_certificate := (*C.GTlsCertificate)(C.NULL)
+	if certificate != nil {
+		c_certificate = (*C.GTlsCertificate)(certificate.ToC())
+	}
 
-	c_interaction := (*C.GTlsInteraction)(interaction.ToC())
+	c_interaction := (*C.GTlsInteraction)(C.NULL)
+	if interaction != nil {
+		c_interaction = (*C.GTlsInteraction)(interaction.ToC())
+	}
 
 	c_flags := (C.GTlsDatabaseLookupFlags)(flags)
 
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -783,11 +837,17 @@ func (recv *TlsDatabase) LookupCertificateIssuerFinish(result *AsyncResult) (*Tl
 func (recv *TlsDatabase) LookupCertificatesIssuedBy(issuerRawDn []uint8, interaction *TlsInteraction, flags TlsDatabaseLookupFlags, cancellable *Cancellable) (*glib.List, error) {
 	c_issuer_raw_dn := &issuerRawDn[0]
 
-	c_interaction := (*C.GTlsInteraction)(interaction.ToC())
+	c_interaction := (*C.GTlsInteraction)(C.NULL)
+	if interaction != nil {
+		c_interaction = (*C.GTlsInteraction)(interaction.ToC())
+	}
 
 	c_flags := (C.GTlsDatabaseLookupFlags)(flags)
 
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -823,18 +883,27 @@ func (recv *TlsDatabase) LookupCertificatesIssuedByFinish(result *AsyncResult) (
 
 // VerifyChain is a wrapper around the C function g_tls_database_verify_chain.
 func (recv *TlsDatabase) VerifyChain(chain *TlsCertificate, purpose string, identity *SocketConnectable, interaction *TlsInteraction, flags TlsDatabaseVerifyFlags, cancellable *Cancellable) (TlsCertificateFlags, error) {
-	c_chain := (*C.GTlsCertificate)(chain.ToC())
+	c_chain := (*C.GTlsCertificate)(C.NULL)
+	if chain != nil {
+		c_chain = (*C.GTlsCertificate)(chain.ToC())
+	}
 
 	c_purpose := C.CString(purpose)
 	defer C.free(unsafe.Pointer(c_purpose))
 
 	c_identity := (*C.GSocketConnectable)(identity.ToC())
 
-	c_interaction := (*C.GTlsInteraction)(interaction.ToC())
+	c_interaction := (*C.GTlsInteraction)(C.NULL)
+	if interaction != nil {
+		c_interaction = (*C.GTlsInteraction)(interaction.ToC())
+	}
 
 	c_flags := (C.GTlsDatabaseVerifyFlags)(flags)
 
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -904,9 +973,15 @@ func CastToTlsInteraction(object *gobject.Object) *TlsInteraction {
 
 // AskPassword is a wrapper around the C function g_tls_interaction_ask_password.
 func (recv *TlsInteraction) AskPassword(password *TlsPassword, cancellable *Cancellable) (TlsInteractionResult, error) {
-	c_password := (*C.GTlsPassword)(password.ToC())
+	c_password := (*C.GTlsPassword)(C.NULL)
+	if password != nil {
+		c_password = (*C.GTlsPassword)(password.ToC())
+	}
 
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -942,9 +1017,15 @@ func (recv *TlsInteraction) AskPasswordFinish(result *AsyncResult) (TlsInteracti
 
 // InvokeAskPassword is a wrapper around the C function g_tls_interaction_invoke_ask_password.
 func (recv *TlsInteraction) InvokeAskPassword(password *TlsPassword, cancellable *Cancellable) (TlsInteractionResult, error) {
-	c_password := (*C.GTlsPassword)(password.ToC())
+	c_password := (*C.GTlsPassword)(C.NULL)
+	if password != nil {
+		c_password = (*C.GTlsPassword)(password.ToC())
+	}
 
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 

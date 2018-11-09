@@ -17,7 +17,10 @@ import "C"
 
 // AddAttribute is a wrapper around the C function gtk_cell_layout_add_attribute.
 func (recv *CellLayout) AddAttribute(cell *CellRenderer, attribute string, column int32) {
-	c_cell := (*C.GtkCellRenderer)(cell.ToC())
+	c_cell := (*C.GtkCellRenderer)(C.NULL)
+	if cell != nil {
+		c_cell = (*C.GtkCellRenderer)(cell.ToC())
+	}
 
 	c_attribute := C.CString(attribute)
 	defer C.free(unsafe.Pointer(c_attribute))
@@ -38,7 +41,10 @@ func (recv *CellLayout) Clear() {
 
 // ClearAttributes is a wrapper around the C function gtk_cell_layout_clear_attributes.
 func (recv *CellLayout) ClearAttributes(cell *CellRenderer) {
-	c_cell := (*C.GtkCellRenderer)(cell.ToC())
+	c_cell := (*C.GtkCellRenderer)(C.NULL)
+	if cell != nil {
+		c_cell = (*C.GtkCellRenderer)(cell.ToC())
+	}
 
 	C.gtk_cell_layout_clear_attributes((*C.GtkCellLayout)(recv.native), c_cell)
 
@@ -47,7 +53,10 @@ func (recv *CellLayout) ClearAttributes(cell *CellRenderer) {
 
 // PackEnd is a wrapper around the C function gtk_cell_layout_pack_end.
 func (recv *CellLayout) PackEnd(cell *CellRenderer, expand bool) {
-	c_cell := (*C.GtkCellRenderer)(cell.ToC())
+	c_cell := (*C.GtkCellRenderer)(C.NULL)
+	if cell != nil {
+		c_cell = (*C.GtkCellRenderer)(cell.ToC())
+	}
 
 	c_expand :=
 		boolToGboolean(expand)
@@ -59,7 +68,10 @@ func (recv *CellLayout) PackEnd(cell *CellRenderer, expand bool) {
 
 // PackStart is a wrapper around the C function gtk_cell_layout_pack_start.
 func (recv *CellLayout) PackStart(cell *CellRenderer, expand bool) {
-	c_cell := (*C.GtkCellRenderer)(cell.ToC())
+	c_cell := (*C.GtkCellRenderer)(C.NULL)
+	if cell != nil {
+		c_cell = (*C.GtkCellRenderer)(cell.ToC())
+	}
 
 	c_expand :=
 		boolToGboolean(expand)
@@ -71,7 +83,10 @@ func (recv *CellLayout) PackStart(cell *CellRenderer, expand bool) {
 
 // Reorder is a wrapper around the C function gtk_cell_layout_reorder.
 func (recv *CellLayout) Reorder(cell *CellRenderer, position int32) {
-	c_cell := (*C.GtkCellRenderer)(cell.ToC())
+	c_cell := (*C.GtkCellRenderer)(C.NULL)
+	if cell != nil {
+		c_cell = (*C.GtkCellRenderer)(cell.ToC())
+	}
 
 	c_position := (C.gint)(position)
 
@@ -86,7 +101,10 @@ func (recv *CellLayout) Reorder(cell *CellRenderer, position int32) {
 
 // AddFilter is a wrapper around the C function gtk_file_chooser_add_filter.
 func (recv *FileChooser) AddFilter(filter *FileFilter) {
-	c_filter := (*C.GtkFileFilter)(filter.ToC())
+	c_filter := (*C.GtkFileFilter)(C.NULL)
+	if filter != nil {
+		c_filter = (*C.GtkFileFilter)(filter.ToC())
+	}
 
 	C.gtk_file_chooser_add_filter((*C.GtkFileChooser)(recv.native), c_filter)
 
@@ -306,7 +324,10 @@ func (recv *FileChooser) ListShortcutFolders() *glib.SList {
 
 // RemoveFilter is a wrapper around the C function gtk_file_chooser_remove_filter.
 func (recv *FileChooser) RemoveFilter(filter *FileFilter) {
-	c_filter := (*C.GtkFileFilter)(filter.ToC())
+	c_filter := (*C.GtkFileFilter)(C.NULL)
+	if filter != nil {
+		c_filter = (*C.GtkFileFilter)(filter.ToC())
+	}
 
 	C.gtk_file_chooser_remove_filter((*C.GtkFileChooser)(recv.native), c_filter)
 
@@ -421,7 +442,10 @@ func (recv *FileChooser) SetCurrentName(name string) {
 
 // SetExtraWidget is a wrapper around the C function gtk_file_chooser_set_extra_widget.
 func (recv *FileChooser) SetExtraWidget(extraWidget *Widget) {
-	c_extra_widget := (*C.GtkWidget)(extraWidget.ToC())
+	c_extra_widget := (*C.GtkWidget)(C.NULL)
+	if extraWidget != nil {
+		c_extra_widget = (*C.GtkWidget)(extraWidget.ToC())
+	}
 
 	C.gtk_file_chooser_set_extra_widget((*C.GtkFileChooser)(recv.native), c_extra_widget)
 
@@ -441,7 +465,10 @@ func (recv *FileChooser) SetFilename(filename string) bool {
 
 // SetFilter is a wrapper around the C function gtk_file_chooser_set_filter.
 func (recv *FileChooser) SetFilter(filter *FileFilter) {
-	c_filter := (*C.GtkFileFilter)(filter.ToC())
+	c_filter := (*C.GtkFileFilter)(C.NULL)
+	if filter != nil {
+		c_filter = (*C.GtkFileFilter)(filter.ToC())
+	}
 
 	C.gtk_file_chooser_set_filter((*C.GtkFileChooser)(recv.native), c_filter)
 
@@ -460,7 +487,10 @@ func (recv *FileChooser) SetLocalOnly(localOnly bool) {
 
 // SetPreviewWidget is a wrapper around the C function gtk_file_chooser_set_preview_widget.
 func (recv *FileChooser) SetPreviewWidget(previewWidget *Widget) {
-	c_preview_widget := (*C.GtkWidget)(previewWidget.ToC())
+	c_preview_widget := (*C.GtkWidget)(C.NULL)
+	if previewWidget != nil {
+		c_preview_widget = (*C.GtkWidget)(previewWidget.ToC())
+	}
 
 	C.gtk_file_chooser_set_preview_widget((*C.GtkFileChooser)(recv.native), c_preview_widget)
 
@@ -537,7 +567,10 @@ func (recv *FileChooser) UnselectUri(uri string) {
 
 // FilterNew is a wrapper around the C function gtk_tree_model_filter_new.
 func (recv *TreeModel) FilterNew(root *TreePath) *TreeModel {
-	c_root := (*C.GtkTreePath)(root.ToC())
+	c_root := (*C.GtkTreePath)(C.NULL)
+	if root != nil {
+		c_root = (*C.GtkTreePath)(root.ToC())
+	}
 
 	retC := C.gtk_tree_model_filter_new((*C.GtkTreeModel)(recv.native), c_root)
 	retGo := TreeModelNewFromC(unsafe.Pointer(retC))

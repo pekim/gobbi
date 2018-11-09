@@ -62,7 +62,10 @@ func (recv *FileEnumerator) Iterate(cancellable *Cancellable) (bool, *FileInfo, 
 
 	var c_out_child *C.GFile
 
-	c_cancellable := (*C.GCancellable)(cancellable.ToC())
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
 
 	var cThrowableError *C.GError
 
@@ -228,9 +231,15 @@ func CastToSimpleIOStream(object *gobject.Object) *SimpleIOStream {
 
 // SimpleIOStreamNew is a wrapper around the C function g_simple_io_stream_new.
 func SimpleIOStreamNew(inputStream *InputStream, outputStream *OutputStream) *SimpleIOStream {
-	c_input_stream := (*C.GInputStream)(inputStream.ToC())
+	c_input_stream := (*C.GInputStream)(C.NULL)
+	if inputStream != nil {
+		c_input_stream = (*C.GInputStream)(inputStream.ToC())
+	}
 
-	c_output_stream := (*C.GOutputStream)(outputStream.ToC())
+	c_output_stream := (*C.GOutputStream)(C.NULL)
+	if outputStream != nil {
+		c_output_stream = (*C.GOutputStream)(outputStream.ToC())
+	}
 
 	retC := C.g_simple_io_stream_new(c_input_stream, c_output_stream)
 	retGo := SimpleIOStreamNewFromC(unsafe.Pointer(retC))

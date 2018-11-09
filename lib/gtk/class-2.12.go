@@ -369,7 +369,10 @@ func (recv *Entry) GetCursorHadjustment() *Adjustment {
 
 // SetCursorHadjustment is a wrapper around the C function gtk_entry_set_cursor_hadjustment.
 func (recv *Entry) SetCursorHadjustment(adjustment *Adjustment) {
-	c_adjustment := (*C.GtkAdjustment)(adjustment.ToC())
+	c_adjustment := (*C.GtkAdjustment)(C.NULL)
+	if adjustment != nil {
+		c_adjustment = (*C.GtkAdjustment)(adjustment.ToC())
+	}
 
 	C.gtk_entry_set_cursor_hadjustment((*C.GtkEntry)(recv.native), c_adjustment)
 
@@ -589,11 +592,20 @@ func (recv *IconView) GetTooltipContext(x int32, y int32, keyboardTip bool) (boo
 
 // SetTooltipCell is a wrapper around the C function gtk_icon_view_set_tooltip_cell.
 func (recv *IconView) SetTooltipCell(tooltip *Tooltip, path *TreePath, cell *CellRenderer) {
-	c_tooltip := (*C.GtkTooltip)(tooltip.ToC())
+	c_tooltip := (*C.GtkTooltip)(C.NULL)
+	if tooltip != nil {
+		c_tooltip = (*C.GtkTooltip)(tooltip.ToC())
+	}
 
-	c_path := (*C.GtkTreePath)(path.ToC())
+	c_path := (*C.GtkTreePath)(C.NULL)
+	if path != nil {
+		c_path = (*C.GtkTreePath)(path.ToC())
+	}
 
-	c_cell := (*C.GtkCellRenderer)(cell.ToC())
+	c_cell := (*C.GtkCellRenderer)(C.NULL)
+	if cell != nil {
+		c_cell = (*C.GtkCellRenderer)(cell.ToC())
+	}
 
 	C.gtk_icon_view_set_tooltip_cell((*C.GtkIconView)(recv.native), c_tooltip, c_path, c_cell)
 
@@ -611,9 +623,15 @@ func (recv *IconView) SetTooltipColumn(column int32) {
 
 // SetTooltipItem is a wrapper around the C function gtk_icon_view_set_tooltip_item.
 func (recv *IconView) SetTooltipItem(tooltip *Tooltip, path *TreePath) {
-	c_tooltip := (*C.GtkTooltip)(tooltip.ToC())
+	c_tooltip := (*C.GtkTooltip)(C.NULL)
+	if tooltip != nil {
+		c_tooltip = (*C.GtkTooltip)(tooltip.ToC())
+	}
 
-	c_path := (*C.GtkTreePath)(path.ToC())
+	c_path := (*C.GtkTreePath)(C.NULL)
+	if path != nil {
+		c_path = (*C.GtkTreePath)(path.ToC())
+	}
 
 	C.gtk_icon_view_set_tooltip_item((*C.GtkIconView)(recv.native), c_tooltip, c_path)
 
@@ -666,7 +684,10 @@ func PageSetupNewFromFile(fileName string) (*PageSetup, error) {
 
 // PageSetupNewFromKeyFile is a wrapper around the C function gtk_page_setup_new_from_key_file.
 func PageSetupNewFromKeyFile(keyFile *glib.KeyFile, groupName string) (*PageSetup, error) {
-	c_key_file := (*C.GKeyFile)(keyFile.ToC())
+	c_key_file := (*C.GKeyFile)(C.NULL)
+	if keyFile != nil {
+		c_key_file = (*C.GKeyFile)(keyFile.ToC())
+	}
 
 	c_group_name := C.CString(groupName)
 	defer C.free(unsafe.Pointer(c_group_name))
@@ -704,7 +725,10 @@ func (recv *PageSetup) ToFile(fileName string) (bool, error) {
 
 // ToKeyFile is a wrapper around the C function gtk_page_setup_to_key_file.
 func (recv *PageSetup) ToKeyFile(keyFile *glib.KeyFile, groupName string) {
-	c_key_file := (*C.GKeyFile)(keyFile.ToC())
+	c_key_file := (*C.GKeyFile)(C.NULL)
+	if keyFile != nil {
+		c_key_file = (*C.GKeyFile)(keyFile.ToC())
+	}
 
 	c_group_name := C.CString(groupName)
 	defer C.free(unsafe.Pointer(c_group_name))
@@ -734,7 +758,10 @@ func PrintSettingsNewFromFile(fileName string) (*PrintSettings, error) {
 
 // PrintSettingsNewFromKeyFile is a wrapper around the C function gtk_print_settings_new_from_key_file.
 func PrintSettingsNewFromKeyFile(keyFile *glib.KeyFile, groupName string) (*PrintSettings, error) {
-	c_key_file := (*C.GKeyFile)(keyFile.ToC())
+	c_key_file := (*C.GKeyFile)(C.NULL)
+	if keyFile != nil {
+		c_key_file = (*C.GKeyFile)(keyFile.ToC())
+	}
 
 	c_group_name := C.CString(groupName)
 	defer C.free(unsafe.Pointer(c_group_name))
@@ -772,7 +799,10 @@ func (recv *PrintSettings) ToFile(fileName string) (bool, error) {
 
 // ToKeyFile is a wrapper around the C function gtk_print_settings_to_key_file.
 func (recv *PrintSettings) ToKeyFile(keyFile *glib.KeyFile, groupName string) {
-	c_key_file := (*C.GKeyFile)(keyFile.ToC())
+	c_key_file := (*C.GKeyFile)(C.NULL)
+	if keyFile != nil {
+		c_key_file = (*C.GKeyFile)(keyFile.ToC())
+	}
 
 	c_group_name := C.CString(groupName)
 	defer C.free(unsafe.Pointer(c_group_name))
@@ -869,7 +899,10 @@ func RecentActionNewForManager(name string, label string, tooltip string, stockI
 	c_stock_id := C.CString(stockId)
 	defer C.free(unsafe.Pointer(c_stock_id))
 
-	c_manager := (*C.GtkRecentManager)(manager.ToC())
+	c_manager := (*C.GtkRecentManager)(C.NULL)
+	if manager != nil {
+		c_manager = (*C.GtkRecentManager)(manager.ToC())
+	}
 
 	retC := C.gtk_recent_action_new_for_manager(c_name, c_label, c_tooltip, c_stock_id, c_manager)
 	retGo := RecentActionNewFromC(unsafe.Pointer(retC))
@@ -1031,7 +1064,10 @@ func (recv *ScaleButton) GetValue() float64 {
 
 // SetAdjustment is a wrapper around the C function gtk_scale_button_set_adjustment.
 func (recv *ScaleButton) SetAdjustment(adjustment *Adjustment) {
-	c_adjustment := (*C.GtkAdjustment)(adjustment.ToC())
+	c_adjustment := (*C.GtkAdjustment)(C.NULL)
+	if adjustment != nil {
+		c_adjustment = (*C.GtkAdjustment)(adjustment.ToC())
+	}
 
 	C.gtk_scale_button_set_adjustment((*C.GtkScaleButton)(recv.native), c_adjustment)
 
@@ -1059,7 +1095,10 @@ func (recv *StatusIcon) GetScreen() *gdk.Screen {
 
 // SetScreen is a wrapper around the C function gtk_status_icon_set_screen.
 func (recv *StatusIcon) SetScreen(screen *gdk.Screen) {
-	c_screen := (*C.GdkScreen)(screen.ToC())
+	c_screen := (*C.GdkScreen)(C.NULL)
+	if screen != nil {
+		c_screen = (*C.GdkScreen)(screen.ToC())
+	}
 
 	C.gtk_status_icon_set_screen((*C.GtkStatusIcon)(recv.native), c_screen)
 
@@ -1068,9 +1107,15 @@ func (recv *StatusIcon) SetScreen(screen *gdk.Screen) {
 
 // AddMark is a wrapper around the C function gtk_text_buffer_add_mark.
 func (recv *TextBuffer) AddMark(mark *TextMark, where *TextIter) {
-	c_mark := (*C.GtkTextMark)(mark.ToC())
+	c_mark := (*C.GtkTextMark)(C.NULL)
+	if mark != nil {
+		c_mark = (*C.GtkTextMark)(mark.ToC())
+	}
 
-	c_where := (*C.GtkTextIter)(where.ToC())
+	c_where := (*C.GtkTextIter)(C.NULL)
+	if where != nil {
+		c_where = (*C.GtkTextIter)(where.ToC())
+	}
 
 	C.gtk_text_buffer_add_mark((*C.GtkTextBuffer)(recv.native), c_mark, c_where)
 
@@ -1113,7 +1158,10 @@ func (recv *ToolItem) SetTooltipText(text string) {
 
 // SetCustom is a wrapper around the C function gtk_tooltip_set_custom.
 func (recv *Tooltip) SetCustom(customWidget *Widget) {
-	c_custom_widget := (*C.GtkWidget)(customWidget.ToC())
+	c_custom_widget := (*C.GtkWidget)(C.NULL)
+	if customWidget != nil {
+		c_custom_widget = (*C.GtkWidget)(customWidget.ToC())
+	}
 
 	C.gtk_tooltip_set_custom((*C.GtkTooltip)(recv.native), c_custom_widget)
 
@@ -1122,7 +1170,10 @@ func (recv *Tooltip) SetCustom(customWidget *Widget) {
 
 // SetIcon is a wrapper around the C function gtk_tooltip_set_icon.
 func (recv *Tooltip) SetIcon(pixbuf *gdkpixbuf.Pixbuf) {
-	c_pixbuf := (*C.GdkPixbuf)(pixbuf.ToC())
+	c_pixbuf := (*C.GdkPixbuf)(C.NULL)
+	if pixbuf != nil {
+		c_pixbuf = (*C.GdkPixbuf)(pixbuf.ToC())
+	}
 
 	C.gtk_tooltip_set_icon((*C.GtkTooltip)(recv.native), c_pixbuf)
 
@@ -1349,13 +1400,25 @@ func (recv *TreeView) SetShowExpanders(enabled bool) {
 
 // SetTooltipCell is a wrapper around the C function gtk_tree_view_set_tooltip_cell.
 func (recv *TreeView) SetTooltipCell(tooltip *Tooltip, path *TreePath, column *TreeViewColumn, cell *CellRenderer) {
-	c_tooltip := (*C.GtkTooltip)(tooltip.ToC())
+	c_tooltip := (*C.GtkTooltip)(C.NULL)
+	if tooltip != nil {
+		c_tooltip = (*C.GtkTooltip)(tooltip.ToC())
+	}
 
-	c_path := (*C.GtkTreePath)(path.ToC())
+	c_path := (*C.GtkTreePath)(C.NULL)
+	if path != nil {
+		c_path = (*C.GtkTreePath)(path.ToC())
+	}
 
-	c_column := (*C.GtkTreeViewColumn)(column.ToC())
+	c_column := (*C.GtkTreeViewColumn)(C.NULL)
+	if column != nil {
+		c_column = (*C.GtkTreeViewColumn)(column.ToC())
+	}
 
-	c_cell := (*C.GtkCellRenderer)(cell.ToC())
+	c_cell := (*C.GtkCellRenderer)(C.NULL)
+	if cell != nil {
+		c_cell = (*C.GtkCellRenderer)(cell.ToC())
+	}
 
 	C.gtk_tree_view_set_tooltip_cell((*C.GtkTreeView)(recv.native), c_tooltip, c_path, c_column, c_cell)
 
@@ -1373,9 +1436,15 @@ func (recv *TreeView) SetTooltipColumn(column int32) {
 
 // SetTooltipRow is a wrapper around the C function gtk_tree_view_set_tooltip_row.
 func (recv *TreeView) SetTooltipRow(tooltip *Tooltip, path *TreePath) {
-	c_tooltip := (*C.GtkTooltip)(tooltip.ToC())
+	c_tooltip := (*C.GtkTooltip)(C.NULL)
+	if tooltip != nil {
+		c_tooltip = (*C.GtkTooltip)(tooltip.ToC())
+	}
 
-	c_path := (*C.GtkTreePath)(path.ToC())
+	c_path := (*C.GtkTreePath)(C.NULL)
+	if path != nil {
+		c_path = (*C.GtkTreePath)(path.ToC())
+	}
 
 	C.gtk_tree_view_set_tooltip_row((*C.GtkTreeView)(recv.native), c_tooltip, c_path)
 
@@ -1462,9 +1531,15 @@ func (recv *Widget) KeynavFailed(direction DirectionType) bool {
 
 // ModifyCursor is a wrapper around the C function gtk_widget_modify_cursor.
 func (recv *Widget) ModifyCursor(primary *gdk.Color, secondary *gdk.Color) {
-	c_primary := (*C.GdkColor)(primary.ToC())
+	c_primary := (*C.GdkColor)(C.NULL)
+	if primary != nil {
+		c_primary = (*C.GdkColor)(primary.ToC())
+	}
 
-	c_secondary := (*C.GdkColor)(secondary.ToC())
+	c_secondary := (*C.GdkColor)(C.NULL)
+	if secondary != nil {
+		c_secondary = (*C.GdkColor)(secondary.ToC())
+	}
 
 	C.gtk_widget_modify_cursor((*C.GtkWidget)(recv.native), c_primary, c_secondary)
 
@@ -1503,7 +1578,10 @@ func (recv *Widget) SetTooltipText(text string) {
 
 // SetTooltipWindow is a wrapper around the C function gtk_widget_set_tooltip_window.
 func (recv *Widget) SetTooltipWindow(customWindow *Window) {
-	c_custom_window := (*C.GtkWindow)(customWindow.ToC())
+	c_custom_window := (*C.GtkWindow)(C.NULL)
+	if customWindow != nil {
+		c_custom_window = (*C.GtkWindow)(customWindow.ToC())
+	}
 
 	C.gtk_widget_set_tooltip_window((*C.GtkWidget)(recv.native), c_custom_window)
 

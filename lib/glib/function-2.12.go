@@ -52,7 +52,10 @@ func Base64Encode(data []uint8) string {
 
 // HashTableRemoveAll is a wrapper around the C function g_hash_table_remove_all.
 func HashTableRemoveAll(hashTable *HashTable) {
-	c_hash_table := (*C.GHashTable)(hashTable.ToC())
+	c_hash_table := (*C.GHashTable)(C.NULL)
+	if hashTable != nil {
+		c_hash_table = (*C.GHashTable)(hashTable.ToC())
+	}
 
 	C.g_hash_table_remove_all(c_hash_table)
 
@@ -61,7 +64,10 @@ func HashTableRemoveAll(hashTable *HashTable) {
 
 // HashTableStealAll is a wrapper around the C function g_hash_table_steal_all.
 func HashTableStealAll(hashTable *HashTable) {
-	c_hash_table := (*C.GHashTable)(hashTable.ToC())
+	c_hash_table := (*C.GHashTable)(C.NULL)
+	if hashTable != nil {
+		c_hash_table = (*C.GHashTable)(hashTable.ToC())
+	}
 
 	C.g_hash_table_steal_all(c_hash_table)
 

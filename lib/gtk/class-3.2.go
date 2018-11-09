@@ -189,7 +189,10 @@ func (recv *Assistant) RemovePage(pageNum int32) {
 
 // GetChildNonHomogeneous is a wrapper around the C function gtk_button_box_get_child_non_homogeneous.
 func (recv *ButtonBox) GetChildNonHomogeneous(child *Widget) bool {
-	c_child := (*C.GtkWidget)(child.ToC())
+	c_child := (*C.GtkWidget)(C.NULL)
+	if child != nil {
+		c_child = (*C.GtkWidget)(child.ToC())
+	}
 
 	retC := C.gtk_button_box_get_child_non_homogeneous((*C.GtkButtonBox)(recv.native), c_child)
 	retGo := retC == C.TRUE
@@ -199,7 +202,10 @@ func (recv *ButtonBox) GetChildNonHomogeneous(child *Widget) bool {
 
 // SetChildNonHomogeneous is a wrapper around the C function gtk_button_box_set_child_non_homogeneous.
 func (recv *ButtonBox) SetChildNonHomogeneous(child *Widget, nonHomogeneous bool) {
-	c_child := (*C.GtkWidget)(child.ToC())
+	c_child := (*C.GtkWidget)(C.NULL)
+	if child != nil {
+		c_child = (*C.GtkWidget)(child.ToC())
+	}
 
 	c_non_homogeneous :=
 		boolToGboolean(nonHomogeneous)
@@ -211,7 +217,10 @@ func (recv *ButtonBox) SetChildNonHomogeneous(child *Widget, nonHomogeneous bool
 
 // ChildNotify is a wrapper around the C function gtk_container_child_notify.
 func (recv *Container) ChildNotify(child *Widget, childProperty string) {
-	c_child := (*C.GtkWidget)(child.ToC())
+	c_child := (*C.GtkWidget)(C.NULL)
+	if child != nil {
+		c_child = (*C.GtkWidget)(child.ToC())
+	}
 
 	c_child_property := C.CString(childProperty)
 	defer C.free(unsafe.Pointer(c_child_property))
@@ -271,7 +280,10 @@ func FontChooserDialogNew(title string, parent *Window) *FontChooserDialog {
 	c_title := C.CString(title)
 	defer C.free(unsafe.Pointer(c_title))
 
-	c_parent := (*C.GtkWindow)(parent.ToC())
+	c_parent := (*C.GtkWindow)(C.NULL)
+	if parent != nil {
+		c_parent = (*C.GtkWindow)(parent.ToC())
+	}
 
 	retC := C.gtk_font_chooser_dialog_new(c_title, c_parent)
 	retGo := FontChooserDialogNewFromC(unsafe.Pointer(retC))
@@ -315,7 +327,10 @@ func (recv *Grid) InsertColumn(position int32) {
 
 // InsertNextTo is a wrapper around the C function gtk_grid_insert_next_to.
 func (recv *Grid) InsertNextTo(sibling *Widget, side PositionType) {
-	c_sibling := (*C.GtkWidget)(sibling.ToC())
+	c_sibling := (*C.GtkWidget)(C.NULL)
+	if sibling != nil {
+		c_sibling = (*C.GtkWidget)(sibling.ToC())
+	}
 
 	c_side := (C.GtkPositionType)(side)
 
@@ -335,7 +350,10 @@ func (recv *Grid) InsertRow(position int32) {
 
 // LockButtonNew is a wrapper around the C function gtk_lock_button_new.
 func LockButtonNew(permission *gio.Permission) *LockButton {
-	c_permission := (*C.GPermission)(permission.ToC())
+	c_permission := (*C.GPermission)(C.NULL)
+	if permission != nil {
+		c_permission = (*C.GPermission)(permission.ToC())
+	}
 
 	retC := C.gtk_lock_button_new(c_permission)
 	retGo := LockButtonNewFromC(unsafe.Pointer(retC))
@@ -353,7 +371,10 @@ func (recv *LockButton) GetPermission() *gio.Permission {
 
 // SetPermission is a wrapper around the C function gtk_lock_button_set_permission.
 func (recv *LockButton) SetPermission(permission *gio.Permission) {
-	c_permission := (*C.GPermission)(permission.ToC())
+	c_permission := (*C.GPermission)(C.NULL)
+	if permission != nil {
+		c_permission = (*C.GPermission)(permission.ToC())
+	}
 
 	C.gtk_lock_button_set_permission((*C.GtkLockButton)(recv.native), c_permission)
 
@@ -372,7 +393,10 @@ func OverlayNew() *Overlay {
 
 // AddOverlay is a wrapper around the C function gtk_overlay_add_overlay.
 func (recv *Overlay) AddOverlay(widget *Widget) {
-	c_widget := (*C.GtkWidget)(widget.ToC())
+	c_widget := (*C.GtkWidget)(C.NULL)
+	if widget != nil {
+		c_widget = (*C.GtkWidget)(widget.ToC())
+	}
 
 	C.gtk_overlay_add_overlay((*C.GtkOverlay)(recv.native), c_widget)
 

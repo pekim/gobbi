@@ -1535,7 +1535,10 @@ func (recv *Table) RemoveRowSelection(row int32) bool {
 
 // SetCaption is a wrapper around the C function atk_table_set_caption.
 func (recv *Table) SetCaption(caption *Object) {
-	c_caption := (*C.AtkObject)(caption.ToC())
+	c_caption := (*C.AtkObject)(C.NULL)
+	if caption != nil {
+		c_caption = (*C.AtkObject)(caption.ToC())
+	}
 
 	C.atk_table_set_caption((*C.AtkTable)(recv.native), c_caption)
 
@@ -1558,7 +1561,10 @@ func (recv *Table) SetColumnDescription(column int32, description string) {
 func (recv *Table) SetColumnHeader(column int32, header *Object) {
 	c_column := (C.gint)(column)
 
-	c_header := (*C.AtkObject)(header.ToC())
+	c_header := (*C.AtkObject)(C.NULL)
+	if header != nil {
+		c_header = (*C.AtkObject)(header.ToC())
+	}
 
 	C.atk_table_set_column_header((*C.AtkTable)(recv.native), c_column, c_header)
 
@@ -1581,7 +1587,10 @@ func (recv *Table) SetRowDescription(row int32, description string) {
 func (recv *Table) SetRowHeader(row int32, header *Object) {
 	c_row := (C.gint)(row)
 
-	c_header := (*C.AtkObject)(header.ToC())
+	c_header := (*C.AtkObject)(C.NULL)
+	if header != nil {
+		c_header = (*C.AtkObject)(header.ToC())
+	}
 
 	C.atk_table_set_row_header((*C.AtkTable)(recv.native), c_row, c_header)
 
@@ -1590,7 +1599,10 @@ func (recv *Table) SetRowHeader(row int32, header *Object) {
 
 // SetSummary is a wrapper around the C function atk_table_set_summary.
 func (recv *Table) SetSummary(accessible *Object) {
-	c_accessible := (*C.AtkObject)(accessible.ToC())
+	c_accessible := (*C.AtkObject)(C.NULL)
+	if accessible != nil {
+		c_accessible = (*C.AtkObject)(accessible.ToC())
+	}
 
 	C.atk_table_set_summary((*C.AtkTable)(recv.native), c_accessible)
 
@@ -2037,7 +2049,10 @@ func (recv *Value) GetMinimumValue() *gobject.Value {
 
 // SetCurrentValue is a wrapper around the C function atk_value_set_current_value.
 func (recv *Value) SetCurrentValue(value *gobject.Value) bool {
-	c_value := (*C.GValue)(value.ToC())
+	c_value := (*C.GValue)(C.NULL)
+	if value != nil {
+		c_value = (*C.GValue)(value.ToC())
+	}
 
 	retC := C.atk_value_set_current_value((*C.AtkValue)(recv.native), c_value)
 	retGo := retC == C.TRUE

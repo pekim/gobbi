@@ -52,7 +52,10 @@ func AppInfoGetRecommendedForType(contentType string) *glib.List {
 
 // PollableSourceNew is a wrapper around the C function g_pollable_source_new.
 func PollableSourceNew(pollableStream *gobject.Object) *glib.Source {
-	c_pollable_stream := (*C.GObject)(pollableStream.ToC())
+	c_pollable_stream := (*C.GObject)(C.NULL)
+	if pollableStream != nil {
+		c_pollable_stream = (*C.GObject)(pollableStream.ToC())
+	}
 
 	retC := C.g_pollable_source_new(c_pollable_stream)
 	retGo := glib.SourceNewFromC(unsafe.Pointer(retC))
@@ -72,7 +75,10 @@ func TlsBackendGetDefault() *TlsBackend {
 
 // TlsClientConnectionNew is a wrapper around the C function g_tls_client_connection_new.
 func TlsClientConnectionNew(baseIoStream *IOStream, serverIdentity *SocketConnectable) (*TlsClientConnection, error) {
-	c_base_io_stream := (*C.GIOStream)(baseIoStream.ToC())
+	c_base_io_stream := (*C.GIOStream)(C.NULL)
+	if baseIoStream != nil {
+		c_base_io_stream = (*C.GIOStream)(baseIoStream.ToC())
+	}
 
 	c_server_identity := (*C.GSocketConnectable)(serverIdentity.ToC())
 
@@ -99,9 +105,15 @@ func TlsErrorQuark() glib.Quark {
 
 // TlsServerConnectionNew is a wrapper around the C function g_tls_server_connection_new.
 func TlsServerConnectionNew(baseIoStream *IOStream, certificate *TlsCertificate) (*TlsServerConnection, error) {
-	c_base_io_stream := (*C.GIOStream)(baseIoStream.ToC())
+	c_base_io_stream := (*C.GIOStream)(C.NULL)
+	if baseIoStream != nil {
+		c_base_io_stream = (*C.GIOStream)(baseIoStream.ToC())
+	}
 
-	c_certificate := (*C.GTlsCertificate)(certificate.ToC())
+	c_certificate := (*C.GTlsCertificate)(C.NULL)
+	if certificate != nil {
+		c_certificate = (*C.GTlsCertificate)(certificate.ToC())
+	}
 
 	var cThrowableError *C.GError
 

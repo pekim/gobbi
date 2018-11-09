@@ -30,7 +30,10 @@ func (recv *Keymap) GetModifierState() uint32 {
 
 // BeginMoveDragForDevice is a wrapper around the C function gdk_window_begin_move_drag_for_device.
 func (recv *Window) BeginMoveDragForDevice(device *Device, button int32, rootX int32, rootY int32, timestamp uint32) {
-	c_device := (*C.GdkDevice)(device.ToC())
+	c_device := (*C.GdkDevice)(C.NULL)
+	if device != nil {
+		c_device = (*C.GdkDevice)(device.ToC())
+	}
 
 	c_button := (C.gint)(button)
 
@@ -49,7 +52,10 @@ func (recv *Window) BeginMoveDragForDevice(device *Device, button int32, rootX i
 func (recv *Window) BeginResizeDragForDevice(edge WindowEdge, device *Device, button int32, rootX int32, rootY int32, timestamp uint32) {
 	c_edge := (C.GdkWindowEdge)(edge)
 
-	c_device := (*C.GdkDevice)(device.ToC())
+	c_device := (*C.GdkDevice)(C.NULL)
+	if device != nil {
+		c_device = (*C.GdkDevice)(device.ToC())
+	}
 
 	c_button := (C.gint)(button)
 

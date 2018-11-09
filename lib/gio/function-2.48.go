@@ -46,7 +46,10 @@ func DtlsClientConnectionNew(baseSocket *DatagramBased, serverIdentity *SocketCo
 func DtlsServerConnectionNew(baseSocket *DatagramBased, certificate *TlsCertificate) (*DtlsServerConnection, error) {
 	c_base_socket := (*C.GDatagramBased)(baseSocket.ToC())
 
-	c_certificate := (*C.GTlsCertificate)(certificate.ToC())
+	c_certificate := (*C.GTlsCertificate)(C.NULL)
+	if certificate != nil {
+		c_certificate = (*C.GTlsCertificate)(certificate.ToC())
+	}
 
 	var cThrowableError *C.GError
 

@@ -33,7 +33,10 @@ func (recv *Context) GetMatrix() *Matrix {
 
 // SetMatrix is a wrapper around the C function pango_context_set_matrix.
 func (recv *Context) SetMatrix(matrix *Matrix) {
-	c_matrix := (*C.PangoMatrix)(matrix.ToC())
+	c_matrix := (*C.PangoMatrix)(C.NULL)
+	if matrix != nil {
+		c_matrix = (*C.PangoMatrix)(matrix.ToC())
+	}
 
 	C.pango_context_set_matrix((*C.PangoContext)(recv.native), c_matrix)
 

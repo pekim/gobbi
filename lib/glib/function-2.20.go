@@ -14,7 +14,10 @@ import "C"
 
 // Poll is a wrapper around the C function g_poll.
 func Poll(fds *PollFD, nfds uint32, timeout int32) int32 {
-	c_fds := (*C.GPollFD)(fds.ToC())
+	c_fds := (*C.GPollFD)(C.NULL)
+	if fds != nil {
+		c_fds = (*C.GPollFD)(fds.ToC())
+	}
 
 	c_nfds := (C.guint)(nfds)
 

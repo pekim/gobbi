@@ -38,7 +38,10 @@ func (recv *WidgetClass) BindTemplateChildFull(name string, internalChild bool, 
 
 // SetTemplate is a wrapper around the C function gtk_widget_class_set_template.
 func (recv *WidgetClass) SetTemplate(templateBytes *glib.Bytes) {
-	c_template_bytes := (*C.GBytes)(templateBytes.ToC())
+	c_template_bytes := (*C.GBytes)(C.NULL)
+	if templateBytes != nil {
+		c_template_bytes = (*C.GBytes)(templateBytes.ToC())
+	}
 
 	C.gtk_widget_class_set_template((*C.GtkWidgetClass)(recv.native), c_template_bytes)
 

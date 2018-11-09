@@ -151,7 +151,10 @@ func ResourcesOpenStream(path string, lookupFlags ResourceLookupFlags) (*InputSt
 
 // ResourcesRegister is a wrapper around the C function g_resources_register.
 func ResourcesRegister(resource *Resource) {
-	c_resource := (*C.GResource)(resource.ToC())
+	c_resource := (*C.GResource)(C.NULL)
+	if resource != nil {
+		c_resource = (*C.GResource)(resource.ToC())
+	}
 
 	C.g_resources_register(c_resource)
 
@@ -160,7 +163,10 @@ func ResourcesRegister(resource *Resource) {
 
 // ResourcesUnregister is a wrapper around the C function g_resources_unregister.
 func ResourcesUnregister(resource *Resource) {
-	c_resource := (*C.GResource)(resource.ToC())
+	c_resource := (*C.GResource)(C.NULL)
+	if resource != nil {
+		c_resource = (*C.GResource)(resource.ToC())
+	}
 
 	C.g_resources_unregister(c_resource)
 

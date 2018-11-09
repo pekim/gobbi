@@ -14,7 +14,10 @@ import "C"
 
 // DoSetRelatedAction is a wrapper around the C function gtk_activatable_do_set_related_action.
 func (recv *Activatable) DoSetRelatedAction(action *Action) {
-	c_action := (*C.GtkAction)(action.ToC())
+	c_action := (*C.GtkAction)(C.NULL)
+	if action != nil {
+		c_action = (*C.GtkAction)(action.ToC())
+	}
 
 	C.gtk_activatable_do_set_related_action((*C.GtkActivatable)(recv.native), c_action)
 
@@ -39,7 +42,10 @@ func (recv *Activatable) GetUseActionAppearance() bool {
 
 // SetRelatedAction is a wrapper around the C function gtk_activatable_set_related_action.
 func (recv *Activatable) SetRelatedAction(action *Action) {
-	c_action := (*C.GtkAction)(action.ToC())
+	c_action := (*C.GtkAction)(C.NULL)
+	if action != nil {
+		c_action = (*C.GtkAction)(action.ToC())
+	}
 
 	C.gtk_activatable_set_related_action((*C.GtkActivatable)(recv.native), c_action)
 
@@ -58,7 +64,10 @@ func (recv *Activatable) SetUseActionAppearance(useAppearance bool) {
 
 // SyncActionProperties is a wrapper around the C function gtk_activatable_sync_action_properties.
 func (recv *Activatable) SyncActionProperties(action *Action) {
-	c_action := (*C.GtkAction)(action.ToC())
+	c_action := (*C.GtkAction)(C.NULL)
+	if action != nil {
+		c_action = (*C.GtkAction)(action.ToC())
+	}
 
 	C.gtk_activatable_sync_action_properties((*C.GtkActivatable)(recv.native), c_action)
 
