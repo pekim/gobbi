@@ -3,6 +3,7 @@ package main
 import (
 	"github.com/pekim/gobbi/lib/gobject"
 	"github.com/pekim/gobbi/lib/gtk"
+	"github.com/pekim/gobbi/lib/pango"
 	"os"
 	"runtime"
 )
@@ -14,6 +15,7 @@ func init() {
 const (
 	COL_NUMBER = iota
 	COL_TEXT
+	COL_LENGTH
 	COL_COLOUR
 )
 
@@ -39,7 +41,8 @@ func main() {
 }
 
 func createTree() *gtk.TreeView {
-	listStore := gtk.ListStoreNewv([]gobject.Type{gobject.TYPE_INT, gobject.TYPE_STRING, gobject.TYPE_STRING})
+	listStore := gtk.ListStoreNewv([]gobject.Type{
+		gobject.TYPE_INT, gobject.TYPE_STRING, gobject.TYPE_INT, gobject.TYPE_STRING})
 	addRow(listStore, 42, "some text")
 	addRow(listStore, 43, "some more text")
 	addRow(listStore, 43, "yet more text, don't you know")
@@ -50,6 +53,7 @@ func createTree() *gtk.TreeView {
 
 	addColumn(tree, "number", COL_NUMBER, -1)
 	addColumn(tree, "text", COL_TEXT, COL_COLOUR)
+	addColumn(tree, "length of text", COL_LENGTH, -1)
 
 	return tree
 }
@@ -65,15 +69,23 @@ func addRow(store *gtk.ListStore, number int32, text string) {
 	valueText.SetString(text)
 	store.SetValue(iter, COL_TEXT, valueText)
 
+	valueLength := gobject.ValueNew(gobject.TYPE_INT)
+	valueLength.SetInt(int32(len(text)))
+	store.SetValue(iter, COL_LENGTH, valueLength)
+
 	valueColour := gobject.ValueNew(gobject.TYPE_STRING)
 	valueColour.SetString("red")
 	store.SetValue(iter, COL_COLOUR, valueColour)
 }
 
 func addColumn(view *gtk.TreeView, title string, modelColumn int32, foregroundColumn int32) {
-	column := gtk.TreeViewColumnNew()
-	renderer := gtk.CellRendererTextNew()
+	ellipsize := gobject.ValueNew(gobject.TYPE_INT)
+	ellipsize.SetInt(int32(pango.PANGO_ELLIPSIZE_END))
 
+	renderer := gtk.CellRendererTextNew()
+	renderer.Object().SetProperty("ellipsize", ellipsize)
+
+	column := gtk.TreeViewColumnNew()
 	column.SetResizable(true)
 	column.SetTitle(title)
 	column.PackStart(renderer.CellRenderer(), true)
