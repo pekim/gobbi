@@ -25,19 +25,23 @@ func main() {
 
 	window := gtk.WindowNew(gtk.GTK_WINDOW_TOPLEVEL)
 	window.SetTitle("A window title")
-	window.SetDefaultSize(300, 300)
+	window.SetDefaultSize(400, 300)
 
 	container := gtk.BoxNew(gtk.GTK_ORIENTATION_VERTICAL, 20).Container()
+	container.Widget().SetMarginTop(20)
 	container.Widget().SetMarginLeft(20)
 	container.Widget().SetMarginRight(20)
-	container.Widget().SetMarginBottom(20)
-	container.Add(gtk.LabelNew("A tree view").Widget())
 
-	tree := createTree()
+	selectionLabel := gtk.LabelNew("A tree view")
+	selectionLabel.Widget().SetHalign(gtk.GTK_ALIGN_START)
+
+	tree := createTree(selectionLabel)
 	scrolledWindow := gtk.ScrolledWindowNew(nil, nil)
 	scrolledWindow.Widget().SetVexpand(true)
 	scrolledWindow.Container().Add(tree.Widget())
+
 	container.Add(scrolledWindow.Widget())
+	container.Add(selectionLabel.Widget())
 
 	window.Container().Add(container.Widget())
 
@@ -47,7 +51,7 @@ func main() {
 	gtk.Main()
 }
 
-func createTree() *gtk.TreeView {
+func createTree(selectionLabel *gtk.Label) *gtk.TreeView {
 	listStore := gtk.ListStoreNewv([]gobject.Type{
 		gobject.TYPE_INT, gobject.TYPE_STRING, gobject.TYPE_INT, gobject.TYPE_STRING})
 	addRow(listStore, 42, "some text")
@@ -67,7 +71,7 @@ func createTree() *gtk.TreeView {
 
 	selection := tree.GetSelection()
 	selection.SetMode(gtk.GTK_SELECTION_SINGLE)
-	selection.ConnectChanged(selectionChange(selection))
+	selection.ConnectChanged(selectionChange(selection, selectionLabel))
 
 	return tree
 }
@@ -102,7 +106,7 @@ func addColumn(view *gtk.TreeView, title string, modelColumn int32, foregroundCo
 	column := gtk.TreeViewColumnNew()
 	column.SetResizable(true)
 	column.SetTitle(title)
-	column.SetMinWidth(30)
+	column.SetMinWidth(50)
 	column.PackStart(renderer.CellRenderer(), true)
 	column.AddAttribute(renderer.CellRenderer(), "text", modelColumn)
 
@@ -113,16 +117,16 @@ func addColumn(view *gtk.TreeView, title string, modelColumn int32, foregroundCo
 	view.AppendColumn(column)
 }
 
-func selectionChange(selection *gtk.TreeSelection) func() {
+func selectionChange(selection *gtk.TreeSelection, selectionLabel *gtk.Label) func() {
 	return func() {
 		isSelected, model, iter := selection.GetSelected()
 
 		if isSelected {
 			number := model.GetValue(iter, COL_NUMBER).GetInt()
 			text := model.GetValue(iter, COL_TEXT).GetString()
-			fmt.Printf("selected : %d, %s\n", number, text)
+			selectionLabel.SetText(fmt.Sprintf("selected : %d, %s\n", number, text))
 		} else {
-			fmt.Println("no selection")
+			selectionLabel.SetText("no selection")
 		}
 	}
 }
