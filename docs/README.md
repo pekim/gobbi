@@ -4,5 +4,6 @@
 [build tags (library versions)](build-tags.md)  
 [downcasting & upcasting](downcasting-upcasting.md)  
 [goroutines](goroutines.md)  
+[glib.Value](gvalue.md)  
 [library APIs](api.md)  
 [signal handling](signal-handling.md)
