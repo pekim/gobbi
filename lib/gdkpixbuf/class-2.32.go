@@ -55,10 +55,4 @@ func (recv *Pixbuf) ReadPixelBytes() *glib.Bytes {
 	return retGo
 }
 
-// ReadPixels is a wrapper around the C function gdk_pixbuf_read_pixels.
-func (recv *Pixbuf) ReadPixels() uint8 {
-	retC := C.gdk_pixbuf_read_pixels((*C.GdkPixbuf)(recv.native))
-	retGo := (uint8)(retC)
-
-	return retGo
-}
+// Blacklisted : gdk_pixbuf_read_pixels

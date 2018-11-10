@@ -10,19 +10,7 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// SetOption is a wrapper around the C function gdk_pixbuf_set_option.
-func (recv *Pixbuf) SetOption(key string, value string) bool {
-	c_key := C.CString(key)
-	defer C.free(unsafe.Pointer(c_key))
-
-	c_value := C.CString(value)
-	defer C.free(unsafe.Pointer(c_value))
-
-	retC := C.gdk_pixbuf_set_option((*C.GdkPixbuf)(recv.native), c_key, c_value)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
+// Blacklisted : gdk_pixbuf_set_option
 
 // GetFormat is a wrapper around the C function gdk_pixbuf_loader_get_format.
 func (recv *PixbufLoader) GetFormat() *PixbufFormat {

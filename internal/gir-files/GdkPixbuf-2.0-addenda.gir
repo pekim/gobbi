@@ -11,6 +11,11 @@
     <constant blacklist="true" name="PIXBUF_MAGIC_NUMBER"/>
     <constant blacklist="true" name="PIXDATA_HEADER_LENGTH"/>
 
+    <class name="Pixbuf">
+      <method blacklist="true" c:identifier="gdk_pixbuf_read_pixels"/>
+      <method blacklist="true" c:identifier="gdk_pixbuf_set_option"/>
+    </class>
+
     <record blacklist="true" name="Pixdata"/>
   </namespace>
 </repository>
