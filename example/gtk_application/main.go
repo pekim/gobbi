@@ -46,7 +46,7 @@ func main() {
 }
 
 func createWindow(app *gtk.Application, windowNumber int) {
-	window := gtk.WindowNew(gtk.GTK_WINDOW_TOPLEVEL)
+	window := gtk.ApplicationWindowNew(app).Window()
 	window.SetTitle(fmt.Sprintf("window #%d", windowNumber))
 	window.SetDefaultSize(300, 300)
 
