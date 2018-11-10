@@ -38,7 +38,7 @@ test () {
 }
 
 examples () {
-  for example in $(find $exampleDir -name main.go -printf '%h\n') ; do
+  for example in $(find $exampleDir -name main.go -printf '%h\n' | sort) ; do
     basename $example
   done
 }
