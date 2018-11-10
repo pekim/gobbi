@@ -55,16 +55,8 @@ and needs tidying up.
 There are more examples in the `example` directory. 
 
 ## documentation
-There is currently very little Godoc api documentation for gobbi.
-As most apis are relatively direct mappings of the C library
-apis, the libraries' own documentation should provide
-enough information to gain an understanding of how to
-use the Go apis.
-
-Out parameters are mapped as return value in Go functions.
-Inout parameters are not yet supported, but when they are
-the will be exposed as both parameters and return values
-in Go functions.
+The [docs](./docs/README.md) directory contains some
+documentation. 
 
 ## gotk3
 [gotk3](https://github.com/gotk3/gotk3)
