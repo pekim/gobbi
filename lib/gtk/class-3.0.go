@@ -3159,7 +3159,23 @@ func (recv *Widget) QueueDrawRegion(region *cairo.Region) {
 	return
 }
 
-// Unsupported : gtk_widget_render_icon_pixbuf : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
+// RenderIconPixbuf is a wrapper around the C function gtk_widget_render_icon_pixbuf.
+func (recv *Widget) RenderIconPixbuf(stockId string, size IconSize) *gdkpixbuf.Pixbuf {
+	c_stock_id := C.CString(stockId)
+	defer C.free(unsafe.Pointer(c_stock_id))
+
+	c_size := (C.GtkIconSize)(size)
+
+	retC := C.gtk_widget_render_icon_pixbuf((*C.GtkWidget)(recv.native), c_stock_id, c_size)
+	var retGo (*gdkpixbuf.Pixbuf)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = gdkpixbuf.PixbufNewFromC(unsafe.Pointer(retC))
+	}
+
+	return retGo
+}
 
 // ResetStyle is a wrapper around the C function gtk_widget_reset_style.
 func (recv *Widget) ResetStyle() {

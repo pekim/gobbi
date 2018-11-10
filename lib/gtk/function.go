@@ -441,15 +441,71 @@ func GrabGetCurrent() *Widget {
 	return retGo
 }
 
-// Unsupported : gtk_icon_size_from_name : no return generator
+// IconSizeFromName is a wrapper around the C function gtk_icon_size_from_name.
+func IconSizeFromName(name string) IconSize {
+	c_name := C.CString(name)
+	defer C.free(unsafe.Pointer(c_name))
 
-// Unsupported : gtk_icon_size_get_name : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
+	retC := C.gtk_icon_size_from_name(c_name)
+	retGo := (IconSize)(retC)
 
-// Unsupported : gtk_icon_size_lookup : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
+	return retGo
+}
 
-// Unsupported : gtk_icon_size_register : no return generator
+// IconSizeGetName is a wrapper around the C function gtk_icon_size_get_name.
+func IconSizeGetName(size IconSize) string {
+	c_size := (C.GtkIconSize)(size)
 
-// Unsupported : gtk_icon_size_register_alias : unsupported parameter target : no type generator for gint (GtkIconSize) for param target
+	retC := C.gtk_icon_size_get_name(c_size)
+	retGo := C.GoString(retC)
+
+	return retGo
+}
+
+// IconSizeLookup is a wrapper around the C function gtk_icon_size_lookup.
+func IconSizeLookup(size IconSize) (bool, int32, int32) {
+	c_size := (C.GtkIconSize)(size)
+
+	var c_width C.gint
+
+	var c_height C.gint
+
+	retC := C.gtk_icon_size_lookup(c_size, &c_width, &c_height)
+	retGo := retC == C.TRUE
+
+	width := (int32)(c_width)
+
+	height := (int32)(c_height)
+
+	return retGo, width, height
+}
+
+// IconSizeRegister is a wrapper around the C function gtk_icon_size_register.
+func IconSizeRegister(name string, width int32, height int32) IconSize {
+	c_name := C.CString(name)
+	defer C.free(unsafe.Pointer(c_name))
+
+	c_width := (C.gint)(width)
+
+	c_height := (C.gint)(height)
+
+	retC := C.gtk_icon_size_register(c_name, c_width, c_height)
+	retGo := (IconSize)(retC)
+
+	return retGo
+}
+
+// IconSizeRegisterAlias is a wrapper around the C function gtk_icon_size_register_alias.
+func IconSizeRegisterAlias(alias string, target IconSize) {
+	c_alias := C.CString(alias)
+	defer C.free(unsafe.Pointer(c_alias))
+
+	c_target := (C.GtkIconSize)(target)
+
+	C.gtk_icon_size_register_alias(c_alias, c_target)
+
+	return
+}
 
 // IconThemeErrorQuark is a wrapper around the C function gtk_icon_theme_error_quark.
 func IconThemeErrorQuark() glib.Quark {

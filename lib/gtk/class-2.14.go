@@ -500,11 +500,30 @@ func (recv *IconTheme) LookupByGicon(icon *gio.Icon, size int32, flags IconLooku
 	return retGo
 }
 
-// Unsupported : gtk_image_new_from_gicon : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
+// ImageNewFromGicon is a wrapper around the C function gtk_image_new_from_gicon.
+func ImageNewFromGicon(icon *gio.Icon, size IconSize) *Image {
+	c_icon := (*C.GIcon)(icon.ToC())
+
+	c_size := (C.GtkIconSize)(size)
+
+	retC := C.gtk_image_new_from_gicon(c_icon, c_size)
+	retGo := ImageNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // Unsupported : gtk_image_get_gicon : unsupported parameter size : no type generator for gint (GtkIconSize*) for param size
 
-// Unsupported : gtk_image_set_from_gicon : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
+// SetFromGicon is a wrapper around the C function gtk_image_set_from_gicon.
+func (recv *Image) SetFromGicon(icon *gio.Icon, size IconSize) {
+	c_icon := (*C.GIcon)(icon.ToC())
+
+	c_size := (C.GtkIconSize)(size)
+
+	C.gtk_image_set_from_gicon((*C.GtkImage)(recv.native), c_icon, c_size)
+
+	return
+}
 
 // GetBinWindow is a wrapper around the C function gtk_layout_get_bin_window.
 func (recv *Layout) GetBinWindow() *gdk.Window {
@@ -919,7 +938,17 @@ func (recv *ToolItem) ToolbarReconfigured() {
 	return
 }
 
-// Unsupported : gtk_tooltip_set_icon_from_icon_name : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
+// SetIconFromIconName is a wrapper around the C function gtk_tooltip_set_icon_from_icon_name.
+func (recv *Tooltip) SetIconFromIconName(iconName string, size IconSize) {
+	c_icon_name := C.CString(iconName)
+	defer C.free(unsafe.Pointer(c_icon_name))
+
+	c_size := (C.GtkIconSize)(size)
+
+	C.gtk_tooltip_set_icon_from_icon_name((*C.GtkTooltip)(recv.native), c_icon_name, c_size)
+
+	return
+}
 
 // Unsupported : gtk_tree_selection_get_select_function : no return generator
 

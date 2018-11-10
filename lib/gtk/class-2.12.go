@@ -1044,7 +1044,7 @@ func scalebutton_popupHandler(_ *C.GObject, data C.gpointer) {
 
 // Unsupported signal 'value-changed' for ScaleButton : unsupported parameter value : type gdouble :
 
-// Unsupported : gtk_scale_button_new : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
+// Unsupported : gtk_scale_button_new : unsupported parameter icons :
 
 // GetAdjustment is a wrapper around the C function gtk_scale_button_get_adjustment.
 func (recv *ScaleButton) GetAdjustment() *Adjustment {
@@ -1180,7 +1180,17 @@ func (recv *Tooltip) SetIcon(pixbuf *gdkpixbuf.Pixbuf) {
 	return
 }
 
-// Unsupported : gtk_tooltip_set_icon_from_stock : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
+// SetIconFromStock is a wrapper around the C function gtk_tooltip_set_icon_from_stock.
+func (recv *Tooltip) SetIconFromStock(stockId string, size IconSize) {
+	c_stock_id := C.CString(stockId)
+	defer C.free(unsafe.Pointer(c_stock_id))
+
+	c_size := (C.GtkIconSize)(size)
+
+	C.gtk_tooltip_set_icon_from_stock((*C.GtkTooltip)(recv.native), c_stock_id, c_size)
+
+	return
+}
 
 // SetMarkup is a wrapper around the C function gtk_tooltip_set_markup.
 func (recv *Tooltip) SetMarkup(markup string) {

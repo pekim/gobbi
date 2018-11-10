@@ -6,6 +6,7 @@ package gtk
 import (
 	cairo "github.com/pekim/gobbi/lib/cairo"
 	gdk "github.com/pekim/gobbi/lib/gdk"
+	gdkpixbuf "github.com/pekim/gobbi/lib/gdkpixbuf"
 	glib "github.com/pekim/gobbi/lib/glib"
 	pango "github.com/pekim/gobbi/lib/pango"
 	"unsafe"
@@ -386,7 +387,25 @@ func RenderHandle(context *StyleContext, cr *cairo.Context, x float64, y float64
 	return
 }
 
-// Unsupported : gtk_render_icon_pixbuf : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
+// RenderIconPixbuf is a wrapper around the C function gtk_render_icon_pixbuf.
+func RenderIconPixbuf(context *StyleContext, source *IconSource, size IconSize) *gdkpixbuf.Pixbuf {
+	c_context := (*C.GtkStyleContext)(C.NULL)
+	if context != nil {
+		c_context = (*C.GtkStyleContext)(context.ToC())
+	}
+
+	c_source := (*C.GtkIconSource)(C.NULL)
+	if source != nil {
+		c_source = (*C.GtkIconSource)(source.ToC())
+	}
+
+	c_size := (C.GtkIconSize)(size)
+
+	retC := C.gtk_render_icon_pixbuf(c_context, c_source, c_size)
+	retGo := gdkpixbuf.PixbufNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // RenderLayout is a wrapper around the C function gtk_render_layout.
 func RenderLayout(context *StyleContext, cr *cairo.Context, x float64, y float64, layout *pango.Layout) {

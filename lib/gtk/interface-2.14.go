@@ -113,7 +113,13 @@ func (recv *FileChooser) UnselectFile(file *gio.File) {
 	return
 }
 
-// Unsupported : gtk_tool_shell_get_icon_size : no return generator
+// GetIconSize is a wrapper around the C function gtk_tool_shell_get_icon_size.
+func (recv *ToolShell) GetIconSize() IconSize {
+	retC := C.gtk_tool_shell_get_icon_size((*C.GtkToolShell)(recv.native))
+	retGo := (IconSize)(retC)
+
+	return retGo
+}
 
 // GetOrientation is a wrapper around the C function gtk_tool_shell_get_orientation.
 func (recv *ToolShell) GetOrientation() Orientation {

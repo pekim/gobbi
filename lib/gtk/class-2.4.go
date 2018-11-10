@@ -292,7 +292,15 @@ func (recv *Action) ConnectAccelerator() {
 	return
 }
 
-// Unsupported : gtk_action_create_icon : unsupported parameter icon_size : no type generator for gint (GtkIconSize) for param icon_size
+// CreateIcon is a wrapper around the C function gtk_action_create_icon.
+func (recv *Action) CreateIcon(iconSize IconSize) *Widget {
+	c_icon_size := (C.GtkIconSize)(iconSize)
+
+	retC := C.gtk_action_create_icon((*C.GtkAction)(recv.native), c_icon_size)
+	retGo := WidgetNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // CreateMenuItem is a wrapper around the C function gtk_action_create_menu_item.
 func (recv *Action) CreateMenuItem() *Widget {
@@ -2990,7 +2998,13 @@ func (recv *ToolItem) GetHomogeneous() bool {
 	return retGo
 }
 
-// Unsupported : gtk_tool_item_get_icon_size : no return generator
+// GetIconSize is a wrapper around the C function gtk_tool_item_get_icon_size.
+func (recv *ToolItem) GetIconSize() IconSize {
+	retC := C.gtk_tool_item_get_icon_size((*C.GtkToolItem)(recv.native))
+	retGo := (IconSize)(retC)
+
+	return retGo
+}
 
 // GetIsImportant is a wrapper around the C function gtk_tool_item_get_is_important.
 func (recv *ToolItem) GetIsImportant() bool {

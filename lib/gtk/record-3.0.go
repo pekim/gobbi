@@ -6,6 +6,7 @@ package gtk
 import (
 	cairo "github.com/pekim/gobbi/lib/cairo"
 	gdk "github.com/pekim/gobbi/lib/gdk"
+	gdkpixbuf "github.com/pekim/gobbi/lib/gdkpixbuf"
 	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	"unsafe"
@@ -106,7 +107,20 @@ func (recv *Gradient) Unref() {
 	return
 }
 
-// Unsupported : gtk_icon_set_render_icon_pixbuf : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
+// RenderIconPixbuf is a wrapper around the C function gtk_icon_set_render_icon_pixbuf.
+func (recv *IconSet) RenderIconPixbuf(context *StyleContext, size IconSize) *gdkpixbuf.Pixbuf {
+	c_context := (*C.GtkStyleContext)(C.NULL)
+	if context != nil {
+		c_context = (*C.GtkStyleContext)(context.ToC())
+	}
+
+	c_size := (C.GtkIconSize)(size)
+
+	retC := C.gtk_icon_set_render_icon_pixbuf((*C.GtkIconSet)(recv.native), c_context, c_size)
+	retGo := gdkpixbuf.PixbufNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // RequisitionNew is a wrapper around the C function gtk_requisition_new.
 func RequisitionNew() *Requisition {

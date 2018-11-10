@@ -14481,7 +14481,20 @@ func ImageNewFromFile(filename string) *Image {
 	return retGo
 }
 
-// Unsupported : gtk_image_new_from_icon_set : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
+// ImageNewFromIconSet is a wrapper around the C function gtk_image_new_from_icon_set.
+func ImageNewFromIconSet(iconSet *IconSet, size IconSize) *Image {
+	c_icon_set := (*C.GtkIconSet)(C.NULL)
+	if iconSet != nil {
+		c_icon_set = (*C.GtkIconSet)(iconSet.ToC())
+	}
+
+	c_size := (C.GtkIconSize)(size)
+
+	retC := C.gtk_image_new_from_icon_set(c_icon_set, c_size)
+	retGo := ImageNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // ImageNewFromPixbuf is a wrapper around the C function gtk_image_new_from_pixbuf.
 func ImageNewFromPixbuf(pixbuf *gdkpixbuf.Pixbuf) *Image {
@@ -14496,7 +14509,18 @@ func ImageNewFromPixbuf(pixbuf *gdkpixbuf.Pixbuf) *Image {
 	return retGo
 }
 
-// Unsupported : gtk_image_new_from_stock : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
+// ImageNewFromStock is a wrapper around the C function gtk_image_new_from_stock.
+func ImageNewFromStock(stockId string, size IconSize) *Image {
+	c_stock_id := C.CString(stockId)
+	defer C.free(unsafe.Pointer(c_stock_id))
+
+	c_size := (C.GtkIconSize)(size)
+
+	retC := C.gtk_image_new_from_stock(c_stock_id, c_size)
+	retGo := ImageNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // GetAnimation is a wrapper around the C function gtk_image_get_animation.
 func (recv *Image) GetAnimation() *gdkpixbuf.PixbufAnimation {
@@ -14558,7 +14582,19 @@ func (recv *Image) SetFromFile(filename string) {
 	return
 }
 
-// Unsupported : gtk_image_set_from_icon_set : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
+// SetFromIconSet is a wrapper around the C function gtk_image_set_from_icon_set.
+func (recv *Image) SetFromIconSet(iconSet *IconSet, size IconSize) {
+	c_icon_set := (*C.GtkIconSet)(C.NULL)
+	if iconSet != nil {
+		c_icon_set = (*C.GtkIconSet)(iconSet.ToC())
+	}
+
+	c_size := (C.GtkIconSize)(size)
+
+	C.gtk_image_set_from_icon_set((*C.GtkImage)(recv.native), c_icon_set, c_size)
+
+	return
+}
 
 // SetFromPixbuf is a wrapper around the C function gtk_image_set_from_pixbuf.
 func (recv *Image) SetFromPixbuf(pixbuf *gdkpixbuf.Pixbuf) {
@@ -14582,7 +14618,17 @@ func (recv *Image) SetFromResource(resourcePath string) {
 	return
 }
 
-// Unsupported : gtk_image_set_from_stock : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
+// SetFromStock is a wrapper around the C function gtk_image_set_from_stock.
+func (recv *Image) SetFromStock(stockId string, size IconSize) {
+	c_stock_id := C.CString(stockId)
+	defer C.free(unsafe.Pointer(c_stock_id))
+
+	c_size := (C.GtkIconSize)(size)
+
+	C.gtk_image_set_from_stock((*C.GtkImage)(recv.native), c_stock_id, c_size)
+
+	return
+}
 
 // ImplementorIface returns the ImplementorIface interface implemented by Image
 func (recv *Image) ImplementorIface() *atk.ImplementorIface {
@@ -24175,7 +24221,32 @@ func (recv *Style) LookupIconSet(stockId string) *IconSet {
 	return retGo
 }
 
-// Unsupported : gtk_style_render_icon : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
+// RenderIcon is a wrapper around the C function gtk_style_render_icon.
+func (recv *Style) RenderIcon(source *IconSource, direction TextDirection, state StateType, size IconSize, widget *Widget, detail string) *gdkpixbuf.Pixbuf {
+	c_source := (*C.GtkIconSource)(C.NULL)
+	if source != nil {
+		c_source = (*C.GtkIconSource)(source.ToC())
+	}
+
+	c_direction := (C.GtkTextDirection)(direction)
+
+	c_state := (C.GtkStateType)(state)
+
+	c_size := (C.GtkIconSize)(size)
+
+	c_widget := (*C.GtkWidget)(C.NULL)
+	if widget != nil {
+		c_widget = (*C.GtkWidget)(widget.ToC())
+	}
+
+	c_detail := C.CString(detail)
+	defer C.free(unsafe.Pointer(c_detail))
+
+	retC := C.gtk_style_render_icon((*C.GtkStyle)(recv.native), c_source, c_direction, c_state, c_size, c_widget, c_detail)
+	retGo := gdkpixbuf.PixbufNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // SetBackground is a wrapper around the C function gtk_style_set_background.
 func (recv *Style) SetBackground(window *gdk.Window, stateType StateType) {
@@ -36285,7 +36356,26 @@ func (recv *Widget) RemoveAccelerator(accelGroup *AccelGroup, accelKey uint32, a
 	return retGo
 }
 
-// Unsupported : gtk_widget_render_icon : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
+// RenderIcon is a wrapper around the C function gtk_widget_render_icon.
+func (recv *Widget) RenderIcon(stockId string, size IconSize, detail string) *gdkpixbuf.Pixbuf {
+	c_stock_id := C.CString(stockId)
+	defer C.free(unsafe.Pointer(c_stock_id))
+
+	c_size := (C.GtkIconSize)(size)
+
+	c_detail := C.CString(detail)
+	defer C.free(unsafe.Pointer(c_detail))
+
+	retC := C.gtk_widget_render_icon((*C.GtkWidget)(recv.native), c_stock_id, c_size, c_detail)
+	var retGo (*gdkpixbuf.Pixbuf)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = gdkpixbuf.PixbufNewFromC(unsafe.Pointer(retC))
+	}
+
+	return retGo
+}
 
 // Reparent is a wrapper around the C function gtk_widget_reparent.
 func (recv *Widget) Reparent(newParent *Widget) {

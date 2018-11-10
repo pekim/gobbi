@@ -4,6 +4,8 @@
 package gtk
 
 import (
+	cairo "github.com/pekim/gobbi/lib/cairo"
+	gdk "github.com/pekim/gobbi/lib/gdk"
 	glib "github.com/pekim/gobbi/lib/glib"
 	"unsafe"
 )
@@ -15,7 +17,27 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : gtk_icon_set_render_icon_surface : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
+// RenderIconSurface is a wrapper around the C function gtk_icon_set_render_icon_surface.
+func (recv *IconSet) RenderIconSurface(context *StyleContext, size IconSize, scale int32, forWindow *gdk.Window) *cairo.Surface {
+	c_context := (*C.GtkStyleContext)(C.NULL)
+	if context != nil {
+		c_context = (*C.GtkStyleContext)(context.ToC())
+	}
+
+	c_size := (C.GtkIconSize)(size)
+
+	c_scale := (C.int)(scale)
+
+	c_for_window := (*C.GdkWindow)(C.NULL)
+	if forWindow != nil {
+		c_for_window = (*C.GdkWindow)(forWindow.ToC())
+	}
+
+	retC := C.gtk_icon_set_render_icon_surface((*C.GtkIconSet)(recv.native), c_context, c_size, c_scale, c_for_window)
+	retGo := cairo.SurfaceNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // Unsupported : gtk_widget_class_bind_template_callback_full : unsupported parameter callback_symbol : no type generator for GObject.Callback (GCallback) for param callback_symbol
 

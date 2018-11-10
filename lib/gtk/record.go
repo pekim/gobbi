@@ -5346,7 +5346,32 @@ func (recv *IconSet) Ref() *IconSet {
 	return retGo
 }
 
-// Unsupported : gtk_icon_set_render_icon : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
+// RenderIcon is a wrapper around the C function gtk_icon_set_render_icon.
+func (recv *IconSet) RenderIcon(style *Style, direction TextDirection, state StateType, size IconSize, widget *Widget, detail string) *gdkpixbuf.Pixbuf {
+	c_style := (*C.GtkStyle)(C.NULL)
+	if style != nil {
+		c_style = (*C.GtkStyle)(style.ToC())
+	}
+
+	c_direction := (C.GtkTextDirection)(direction)
+
+	c_state := (C.GtkStateType)(state)
+
+	c_size := (C.GtkIconSize)(size)
+
+	c_widget := (*C.GtkWidget)(C.NULL)
+	if widget != nil {
+		c_widget = (*C.GtkWidget)(widget.ToC())
+	}
+
+	c_detail := C.CString(detail)
+	defer C.free(unsafe.Pointer(c_detail))
+
+	retC := C.gtk_icon_set_render_icon((*C.GtkIconSet)(recv.native), c_style, c_direction, c_state, c_size, c_widget, c_detail)
+	retGo := gdkpixbuf.PixbufNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // Unref is a wrapper around the C function gtk_icon_set_unref.
 func (recv *IconSet) Unref() {
@@ -5439,7 +5464,13 @@ func (recv *IconSource) GetPixbuf() *gdkpixbuf.Pixbuf {
 	return retGo
 }
 
-// Unsupported : gtk_icon_source_get_size : no return generator
+// GetSize is a wrapper around the C function gtk_icon_source_get_size.
+func (recv *IconSource) GetSize() IconSize {
+	retC := C.gtk_icon_source_get_size((*C.GtkIconSource)(recv.native))
+	retGo := (IconSize)(retC)
+
+	return retGo
+}
 
 // GetSizeWildcarded is a wrapper around the C function gtk_icon_source_get_size_wildcarded.
 func (recv *IconSource) GetSizeWildcarded() bool {
@@ -5516,7 +5547,14 @@ func (recv *IconSource) SetPixbuf(pixbuf *gdkpixbuf.Pixbuf) {
 	return
 }
 
-// Unsupported : gtk_icon_source_set_size : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
+// SetSize is a wrapper around the C function gtk_icon_source_set_size.
+func (recv *IconSource) SetSize(size IconSize) {
+	c_size := (C.GtkIconSize)(size)
+
+	C.gtk_icon_source_set_size((*C.GtkIconSource)(recv.native), c_size)
+
+	return
+}
 
 // SetSizeWildcarded is a wrapper around the C function gtk_icon_source_set_size_wildcarded.
 func (recv *IconSource) SetSizeWildcarded(setting bool) {

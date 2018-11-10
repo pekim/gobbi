@@ -7,6 +7,7 @@ import (
 	cairo "github.com/pekim/gobbi/lib/cairo"
 	gdk "github.com/pekim/gobbi/lib/gdk"
 	gdkpixbuf "github.com/pekim/gobbi/lib/gdkpixbuf"
+	gio "github.com/pekim/gobbi/lib/gio"
 	pango "github.com/pekim/gobbi/lib/pango"
 	"unsafe"
 )
@@ -574,7 +575,13 @@ func (recv *ToolPalette) GetHadjustment() *Adjustment {
 	return retGo
 }
 
-// Unsupported : gtk_tool_palette_get_icon_size : no return generator
+// GetIconSize is a wrapper around the C function gtk_tool_palette_get_icon_size.
+func (recv *ToolPalette) GetIconSize() IconSize {
+	retC := C.gtk_tool_palette_get_icon_size((*C.GtkToolPalette)(recv.native))
+	retGo := (IconSize)(retC)
+
+	return retGo
+}
 
 // GetStyle is a wrapper around the C function gtk_tool_palette_get_style.
 func (recv *ToolPalette) GetStyle() ToolbarStyle {
@@ -645,7 +652,14 @@ func (recv *ToolPalette) SetGroupPosition(group *ToolItemGroup, position int32) 
 	return
 }
 
-// Unsupported : gtk_tool_palette_set_icon_size : unsupported parameter icon_size : no type generator for gint (GtkIconSize) for param icon_size
+// SetIconSize is a wrapper around the C function gtk_tool_palette_set_icon_size.
+func (recv *ToolPalette) SetIconSize(iconSize IconSize) {
+	c_icon_size := (C.GtkIconSize)(iconSize)
+
+	C.gtk_tool_palette_set_icon_size((*C.GtkToolPalette)(recv.native), c_icon_size)
+
+	return
+}
 
 // SetStyle is a wrapper around the C function gtk_tool_palette_set_style.
 func (recv *ToolPalette) SetStyle(style ToolbarStyle) {
@@ -670,7 +684,16 @@ func (recv *ToolPalette) UnsetStyle() {
 	return
 }
 
-// Unsupported : gtk_tooltip_set_icon_from_gicon : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
+// SetIconFromGicon is a wrapper around the C function gtk_tooltip_set_icon_from_gicon.
+func (recv *Tooltip) SetIconFromGicon(gicon *gio.Icon, size IconSize) {
+	c_gicon := (*C.GIcon)(gicon.ToC())
+
+	c_size := (C.GtkIconSize)(size)
+
+	C.gtk_tooltip_set_icon_from_gicon((*C.GtkTooltip)(recv.native), c_gicon, c_size)
+
+	return
+}
 
 // GetBinWindow is a wrapper around the C function gtk_viewport_get_bin_window.
 func (recv *Viewport) GetBinWindow() *gdk.Window {

@@ -1051,7 +1051,18 @@ func (recv *IconView) UnselectPath(path *TreePath) {
 	return
 }
 
-// Unsupported : gtk_image_new_from_icon_name : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
+// ImageNewFromIconName is a wrapper around the C function gtk_image_new_from_icon_name.
+func ImageNewFromIconName(iconName string, size IconSize) *Image {
+	c_icon_name := C.CString(iconName)
+	defer C.free(unsafe.Pointer(c_icon_name))
+
+	c_size := (C.GtkIconSize)(size)
+
+	retC := C.gtk_image_new_from_icon_name(c_icon_name, c_size)
+	retGo := ImageNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // Unsupported : gtk_image_get_icon_name : unsupported parameter size : no type generator for gint (GtkIconSize*) for param size
 
@@ -1063,7 +1074,17 @@ func (recv *Image) GetPixelSize() int32 {
 	return retGo
 }
 
-// Unsupported : gtk_image_set_from_icon_name : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
+// SetFromIconName is a wrapper around the C function gtk_image_set_from_icon_name.
+func (recv *Image) SetFromIconName(iconName string, size IconSize) {
+	c_icon_name := C.CString(iconName)
+	defer C.free(unsafe.Pointer(c_icon_name))
+
+	c_size := (C.GtkIconSize)(size)
+
+	C.gtk_image_set_from_icon_name((*C.GtkImage)(recv.native), c_icon_name, c_size)
+
+	return
+}
 
 // SetPixelSize is a wrapper around the C function gtk_image_set_pixel_size.
 func (recv *Image) SetPixelSize(pixelSize int32) {

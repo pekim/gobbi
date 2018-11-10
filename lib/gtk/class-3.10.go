@@ -149,7 +149,18 @@ func (recv *Builder) SetApplication(application *Application) {
 	return
 }
 
-// Unsupported : gtk_button_new_from_icon_name : unsupported parameter size : no type generator for gint (GtkIconSize) for param size
+// ButtonNewFromIconName is a wrapper around the C function gtk_button_new_from_icon_name.
+func ButtonNewFromIconName(iconName string, size IconSize) *Button {
+	c_icon_name := C.CString(iconName)
+	defer C.free(unsafe.Pointer(c_icon_name))
+
+	c_size := (C.GtkIconSize)(size)
+
+	retC := C.gtk_button_new_from_icon_name(c_icon_name, c_size)
+	retGo := ButtonNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // GetTabs is a wrapper around the C function gtk_entry_get_tabs.
 func (recv *Entry) GetTabs() *pango.TabArray {
