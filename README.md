@@ -15,11 +15,13 @@ libraries, such as glib and gobject, is adequately supported
 in Go core packages.     
  
 ## status
-**caution**: This library is immature,
+**caution**:
+This library is immature,
 but may be useable with caution
-if the apis required have been generated.
+if the required APIs have been generated.
 
-Some simple example applications have been created.
+Some simple example applications have been created,
+and may be found in the [example](./example) directory.
 It is likely that for more complex applications
 some necessary apis may be missing. 
 
@@ -50,9 +52,9 @@ and needs tidying up.
         The first `go build` or `go run` will take quite a while,
         perhaps a few minutes.
         Subsequent builds of applications will be a *lot* quicker
-        as cached gobbi packages will be used by the Go tool set. 
+        as cached gobbi packages will be used by the Go commands. 
 
-There are more examples in the `example` directory. 
+Run `./gobbi examples` for a list of the available examples.
 
 ## documentation
 The [docs](./docs/README.md) directory contains some
