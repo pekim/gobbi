@@ -59,4 +59,6 @@ button := gtk.CastToButton(buttonObject)
 button.ConnectClicked(...)
 ```
 
-See the builder example to see this in an application. 
+See the
+[builder](../example/builder/main.go)
+example to see this in an application. 
