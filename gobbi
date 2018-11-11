@@ -37,7 +37,7 @@ generate () {
 }
 
 docs () {
-    mdbook build mdbook
+    mdbook clean mdbook && mdbook build mdbook
 }
 
 test () {
