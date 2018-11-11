@@ -1,4 +1,4 @@
-# build tags
+# Build tags
 
 gobbi uses Go 
 [build tags](https://golang.org/pkg/go/build/#hdr-Build_Constraints)

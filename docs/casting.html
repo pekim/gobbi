@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Downcasting &amp; upcasting - gobbi</title>
+        <title>Casting - gobbi</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -74,7 +74,7 @@
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-            <ol class="chapter"><li class="affix"><a href="introduction.html">Introduction</a></li><li class="affix"><a href="getting-started.html">Getting started</a></li><li class="affix"><a href="application-lifecycle.html">Application lifecycle</a></li><li class="affix"><a href="build-tags.html">Build tags (library versions)</a></li><li class="affix"><a href="downcasting-upcasting.html" class="active">Downcasting &amp; upcasting</a></li><li class="affix"><a href="goroutines.html">Goroutines</a></li><li class="affix"><a href="gvalue.html">glib.Value</a></li><li class="affix"><a href="api.html">Library APIs</a></li><li class="affix"><a href="signal-handling.html">Signal handling</a></li></ol>
+            <ol class="chapter"><li class="affix"><a href="introduction.html">Introduction</a></li><li class="affix"><a href="getting-started.html">Getting started</a></li><li class="affix"><a href="application-lifecycle.html">Application lifecycle</a></li><li class="affix"><a href="build-tags.html">Build tags (library versions)</a></li><li class="affix"><a href="casting.html" class="active">Casting</a></li><li class="affix"><a href="goroutines.html">Goroutines</a></li><li class="affix"><a href="gvalue.html">gobject.Value</a></li><li class="affix"><a href="api.html">Library APIs</a></li><li class="affix"><a href="signal-handling.html">Signal handling</a></li></ol>
         </nav>
 
         <div id="page-wrapper" class="page-wrapper">
@@ -138,13 +138,15 @@
 
                 <div id="content" class="content">
                     <main>
-                        <a class="header" href="#downcasting-and-upcasting" id="downcasting-and-upcasting"><h1>downcasting and upcasting</h1></a>
-<p>Gtk classes derive, in a hierarchy, from the GObject class.</p>
+                        <a class="header" href="#casting" id="casting"><h1>Casting</h1></a>
+<p>Gtk classes derive in a hierarchy from the GObject class.</p>
 <p>In gobbi's implementation of GOBject's classes,
-each class does not directly extend its ancestor classes.
+each class does not directly extend
+(or embed in Go terms)
+its ancestor classes.
 Instead, for an class instance it is possible to get
-a reference to a ancestor class instance for the same
-gtk object.</p>
+a reference to an ancestor or descendant class instance
+for the same gtk object.</p>
 <a class="header" href="#upcasting" id="upcasting"><h1>upcasting</h1></a>
 <p>In a gtk application there will frequently be a need to
 access members of an object's ancestor class.</p>

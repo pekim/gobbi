@@ -74,7 +74,7 @@
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-            <ol class="chapter"><li class="affix"><a href="introduction.html">Introduction</a></li><li class="affix"><a href="getting-started.html">Getting started</a></li><li class="affix"><a href="application-lifecycle.html">Application lifecycle</a></li><li class="affix"><a href="build-tags.html">Build tags (library versions)</a></li><li class="affix"><a href="downcasting-upcasting.html">Downcasting &amp; upcasting</a></li><li class="affix"><a href="goroutines.html">Goroutines</a></li><li class="affix"><a href="gvalue.html">glib.Value</a></li><li class="affix"><a href="api.html">Library APIs</a></li><li class="affix"><a href="signal-handling.html" class="active">Signal handling</a></li></ol>
+            <ol class="chapter"><li class="affix"><a href="introduction.html">Introduction</a></li><li class="affix"><a href="getting-started.html">Getting started</a></li><li class="affix"><a href="application-lifecycle.html">Application lifecycle</a></li><li class="affix"><a href="build-tags.html">Build tags (library versions)</a></li><li class="affix"><a href="casting.html">Casting</a></li><li class="affix"><a href="goroutines.html">Goroutines</a></li><li class="affix"><a href="gvalue.html">gobject.Value</a></li><li class="affix"><a href="api.html">Library APIs</a></li><li class="affix"><a href="signal-handling.html" class="active">Signal handling</a></li></ol>
         </nav>
 
         <div id="page-wrapper" class="page-wrapper">
@@ -138,7 +138,7 @@
 
                 <div id="content" class="content">
                     <main>
-                        <a class="header" href="#signal-handling" id="signal-handling"><h1>signal handling</h1></a>
+                        <a class="header" href="#signal-handling" id="signal-handling"><h1>Signal handling</h1></a>
 <a class="header" href="#connecting" id="connecting"><h2>connecting</h2></a>
 <p>To connect an object to a signal that it emits,
 call one of the object's <code>Connect...</code> methods.</p>
@@ -157,7 +157,7 @@ button.Widget().ConnectMotionNotifyEvent(
 </code></pre>
 <p>Remember that it may be necessary to upcast to access the
 desired connect method.</p>
-<a class="header" href="#disconnecting" id="disconnecting"><h1>disconnecting</h1></a>
+<a class="header" href="#disconnecting" id="disconnecting"><h2>disconnecting</h2></a>
 <p>All of the <code>Connect...</code> methods return a handler id.
 The id may be used later to disconnect the handler.</p>
 <pre><code class="language-go">    connectId := button.ConnectClicked(func() {

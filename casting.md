@@ -1,4 +1,4 @@
-# downcasting and upcasting
+# Casting
 
 Gtk classes derive, in a hierarchy, from the GObject class.
 

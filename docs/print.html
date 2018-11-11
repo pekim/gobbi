@@ -74,7 +74,7 @@
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-            <ol class="chapter"><li class="affix"><a href="introduction.html">Introduction</a></li><li class="affix"><a href="getting-started.html">Getting started</a></li><li class="affix"><a href="application-lifecycle.html">Application lifecycle</a></li><li class="affix"><a href="build-tags.html">Build tags (library versions)</a></li><li class="affix"><a href="downcasting-upcasting.html">Downcasting &amp; upcasting</a></li><li class="affix"><a href="goroutines.html">Goroutines</a></li><li class="affix"><a href="gvalue.html">glib.Value</a></li><li class="affix"><a href="api.html">Library APIs</a></li><li class="affix"><a href="signal-handling.html">Signal handling</a></li></ol>
+            <ol class="chapter"><li class="affix"><a href="introduction.html">Introduction</a></li><li class="affix"><a href="getting-started.html">Getting started</a></li><li class="affix"><a href="application-lifecycle.html">Application lifecycle</a></li><li class="affix"><a href="build-tags.html">Build tags (library versions)</a></li><li class="affix"><a href="casting.html">Casting</a></li><li class="affix"><a href="goroutines.html">Goroutines</a></li><li class="affix"><a href="gvalue.html">gobject.Value</a></li><li class="affix"><a href="api.html">Library APIs</a></li><li class="affix"><a href="signal-handling.html">Signal handling</a></li></ol>
         </nav>
 
         <div id="page-wrapper" class="page-wrapper">
@@ -150,7 +150,7 @@ libraries such as gtk, gdk, gdkpixbuf and gio.
 Much of the functionality provided by the lower level
 libraries, such as glib and gobject, is adequately supported
 in Go core packages.</p>
-<a class="header" href="#getting-started" id="getting-started"><h1>getting started</h1></a>
+<a class="header" href="#getting-started" id="getting-started"><h1>Getting started</h1></a>
 <a class="header" href="#pre-requisites" id="pre-requisites"><h2>pre-requisites</h2></a>
 <ul>
 <li>go 1.11 or later</li>
@@ -267,7 +267,7 @@ func main() {
 management is to use <code>gtk.Application</code>.
 The <a href="https://github.com/pekim/gobbi/blob/master/example/gtk_application/main.go">gtk_application</a>
 example illustrates this.</p>
-<a class="header" href="#build-tags-1" id="build-tags-1"><h1>build tags</h1></a>
+<a class="header" href="#build-tags-1" id="build-tags-1"><h1>Build tags</h1></a>
 <p>gobbi uses Go
 <a href="https://golang.org/pkg/go/build/#hdr-Build_Constraints">build tags</a>
 to allow targetting of specific library versions.
@@ -318,13 +318,15 @@ be found under</p>
 </ul>
 </li>
 </ul>
-<a class="header" href="#downcasting-and-upcasting" id="downcasting-and-upcasting"><h1>downcasting and upcasting</h1></a>
-<p>Gtk classes derive, in a hierarchy, from the GObject class.</p>
+<a class="header" href="#casting" id="casting"><h1>Casting</h1></a>
+<p>Gtk classes derive in a hierarchy from the GObject class.</p>
 <p>In gobbi's implementation of GOBject's classes,
-each class does not directly extend its ancestor classes.
+each class does not directly extend
+(or embed in Go terms)
+its ancestor classes.
 Instead, for an class instance it is possible to get
-a reference to a ancestor class instance for the same
-gtk object.</p>
+a reference to an ancestor or descendant class instance
+for the same gtk object.</p>
 <a class="header" href="#upcasting" id="upcasting"><h1>upcasting</h1></a>
 <p>In a gtk application there will frequently be a need to
 access members of an object's ancestor class.</p>
@@ -364,7 +366,7 @@ button.ConnectClicked(...)
 <p>See the
 <a href="https://github.com/pekim/gobbi/blob/master/example/builder/main.go">builder</a>
 example to see this in an application.</p>
-<a class="header" href="#goroutines" id="goroutines"><h1>goroutines</h1></a>
+<a class="header" href="#goroutines" id="goroutines"><h1>Goroutines</h1></a>
 <p>All calls to gtk functions should be performed on
 the main thread.
 To perform such a call from a goroutine,
@@ -426,7 +428,7 @@ on a single item at a time.</p>
 as the introspection date available for them is inadequate.
 Support may be added later, with manually generated
 bindings.</p>
-<a class="header" href="#signal-handling" id="signal-handling"><h1>signal handling</h1></a>
+<a class="header" href="#signal-handling" id="signal-handling"><h1>Signal handling</h1></a>
 <a class="header" href="#connecting" id="connecting"><h2>connecting</h2></a>
 <p>To connect an object to a signal that it emits,
 call one of the object's <code>Connect...</code> methods.</p>
@@ -445,7 +447,7 @@ button.Widget().ConnectMotionNotifyEvent(
 </code></pre>
 <p>Remember that it may be necessary to upcast to access the
 desired connect method.</p>
-<a class="header" href="#disconnecting" id="disconnecting"><h1>disconnecting</h1></a>
+<a class="header" href="#disconnecting" id="disconnecting"><h2>disconnecting</h2></a>
 <p>All of the <code>Connect...</code> methods return a handler id.
 The id may be used later to disconnect the handler.</p>
 <pre><code class="language-go">    connectId := button.ConnectClicked(func() {

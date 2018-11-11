@@ -1,4 +1,4 @@
-# signal handling
+# Signal handling
 
 ## connecting
 To connect an object to a signal that it emits,
@@ -23,7 +23,7 @@ button.Widget().ConnectMotionNotifyEvent(
 Remember that it may be necessary to upcast to access the
 desired connect method.
 
-# disconnecting
+## disconnecting
 All of the `Connect...` methods return a handler id.
 The id may be used later to disconnect the handler.
 

@@ -1,4 +1,4 @@
-# goroutines
+# Goroutines
 
 All calls to gtk functions should be performed on
 the main thread.

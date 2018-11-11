@@ -1,4 +1,4 @@
-# getting started
+# Getting started
 
 ## pre-requisites
 * go 1.11 or later
