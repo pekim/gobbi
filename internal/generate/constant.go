@@ -3,7 +3,6 @@ package generate
 import (
 	"fmt"
 	"github.com/dave/jennifer/jen"
-	"os"
 	"strings"
 )
 
@@ -77,19 +76,20 @@ func (c *Constant) generate(g *jen.Group, version *Version) {
 		Qual("C", c.CType)
 }
 
-func (c *Constant) generateDocs(file *os.File) {
+func (c *Constant) generateDocs(file *DocFile) {
 	doc := ""
 	if c.Doc != nil {
-		doc = strings.Replace(c.Doc.Text, "\n#", "\n&num;", -1)
+		doc = c.Doc.Text
+		// escape any '#'s
+		doc = strings.Replace(doc, "\n#", "\n&num;", -1)
 	}
 
-	_, err := file.WriteString(fmt.Sprintf(
-		"## `%s`\n\n%s\n\nC - `%s`\n\n",
-		c.Name,
-		doc,
-		c.CType,
-	))
-	if err != nil {
-		panic(err)
-	}
+	file.writeLinef("## `%s`", c.Name)
+	file.writeLine("")
+
+	file.writeLine(doc)
+	file.writeLine("")
+
+	file.writeLinef("C - `%s`", c.CType)
+	file.writeLine("")
 }
