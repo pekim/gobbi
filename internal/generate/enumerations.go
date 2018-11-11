@@ -47,3 +47,5 @@ func (ee Enumerations) mergeAddenda(addenda Enumerations) {
 		}
 	}
 }
+
+func (ee Enumerations) generateDocs(ns *Namespace) {}

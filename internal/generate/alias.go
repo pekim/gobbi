@@ -50,7 +50,7 @@ func (a *Alias) mergeAddenda(addenda *Alias) {
 	a.Blacklist = addenda.Blacklist
 }
 
-func (a Alias) generate(g *jen.Group, version *Version) {
+func (a *Alias) generate(g *jen.Group, version *Version) {
 	if !supportedByVersion(a, version) {
 		return
 	}

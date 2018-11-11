@@ -74,7 +74,7 @@
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-            <ol class="chapter"><li class="affix"><a href="introduction.html">Introduction</a></li><li class="affix"><a href="getting-started.html">Getting started</a></li><li class="affix"><a href="application-lifecycle.html">Application lifecycle</a></li><li class="affix"><a href="build-tags.html">Build tags (library versions)</a></li><li class="affix"><a href="casting.html">Casting</a></li><li class="affix"><a href="goroutines.html">Goroutines</a></li><li class="affix"><a href="gvalue.html">gobject.Value</a></li><li class="affix"><a href="api.html">Library APIs</a></li><li class="affix"><a href="signal-handling.html">Signal handling</a></li></ol>
+            <ol class="chapter"><li><a href="introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li><a href="getting-started.html"><strong aria-hidden="true">2.</strong> Getting started</a></li><li><a href="application-lifecycle.html"><strong aria-hidden="true">3.</strong> Application lifecycle</a></li><li><a href="build-tags.html"><strong aria-hidden="true">4.</strong> Build tags (library versions)</a></li><li><a href="casting.html"><strong aria-hidden="true">5.</strong> Casting</a></li><li><a href="goroutines.html"><strong aria-hidden="true">6.</strong> Goroutines</a></li><li><a href="gvalue.html"><strong aria-hidden="true">7.</strong> gobject.Value</a></li><li><a href="signal-handling.html"><strong aria-hidden="true">8.</strong> Signal handling</a></li><li><a href="api.html"><strong aria-hidden="true">9.</strong> API</a></li><li><ol class="section"><li><a href="api.html"><strong aria-hidden="true">9.1.</strong> atk</a></li><li><ol class="section"><li><a href="api.html"><strong aria-hidden="true">9.1.1.</strong> Types</a></li><li><a href="api.html"><strong aria-hidden="true">9.1.2.</strong> Classes</a></li></ol></li></ol></li></ol>
         </nav>
 
         <div id="page-wrapper" class="page-wrapper">
@@ -386,6 +386,36 @@ the function called again.</p>
 <code>gobject.Value</code>.</p>
 <p>See the <a href="https://github.com/pekim/gobbi/blob/master/example/list/main.go">list</a>
 example for an example of its use.</p>
+<a class="header" href="#signal-handling" id="signal-handling"><h1>Signal handling</h1></a>
+<a class="header" href="#connecting" id="connecting"><h2>connecting</h2></a>
+<p>To connect an object to a signal that it emits,
+call one of the object's <code>Connect...</code> methods.</p>
+<p>The connect methods all accept a handler argument
+that is a function with a specific signature.
+Some handlers have no parameters,
+others have one or more parameters that provide event-specific
+information.</p>
+<pre><code class="language-go">button := gtk.ButtonNewWithLabel(&quot;a button&quot;)
+button.Widget().SetEvents(int32(gdk.GDK_POINTER_MOTION_MASK))
+button.Widget().ConnectMotionNotifyEvent(
+    func(event *gdk.EventMotion) bool {
+        fmt.Println(event.Y, event.Y)
+        return false
+    })
+</code></pre>
+<p>Remember that it may be necessary to upcast to access the
+desired connect method.</p>
+<a class="header" href="#disconnecting" id="disconnecting"><h2>disconnecting</h2></a>
+<p>All of the <code>Connect...</code> methods return a handler id.
+The id may be used later to disconnect the handler.</p>
+<pre><code class="language-go">    connectId := button.ConnectClicked(func() {
+        ...
+    })
+    
+    ...
+    
+    button.DisconnectClicked(connectId)
+</code></pre>
 <a class="header" href="#apis" id="apis"><h1>APIs</h1></a>
 <p>There is currently very little Godoc api documentation for gobbi.
 As most apis are relatively direct mappings of the C library
@@ -428,36 +458,132 @@ on a single item at a time.</p>
 as the introspection date available for them is inadequate.
 Support may be added later, with manually generated
 bindings.</p>
-<a class="header" href="#signal-handling" id="signal-handling"><h1>Signal handling</h1></a>
-<a class="header" href="#connecting" id="connecting"><h2>connecting</h2></a>
-<p>To connect an object to a signal that it emits,
-call one of the object's <code>Connect...</code> methods.</p>
-<p>The connect methods all accept a handler argument
-that is a function with a specific signature.
-Some handlers have no parameters,
-others have one or more parameters that provide event-specific
-information.</p>
-<pre><code class="language-go">button := gtk.ButtonNewWithLabel(&quot;a button&quot;)
-button.Widget().SetEvents(int32(gdk.GDK_POINTER_MOTION_MASK))
-button.Widget().ConnectMotionNotifyEvent(
-    func(event *gdk.EventMotion) bool {
-        fmt.Println(event.Y, event.Y)
-        return false
-    })
-</code></pre>
-<p>Remember that it may be necessary to upcast to access the
-desired connect method.</p>
-<a class="header" href="#disconnecting" id="disconnecting"><h2>disconnecting</h2></a>
-<p>All of the <code>Connect...</code> methods return a handler id.
-The id may be used later to disconnect the handler.</p>
-<pre><code class="language-go">    connectId := button.ConnectClicked(func() {
-        ...
-    })
-    
-    ...
-    
-    button.DisconnectClicked(connectId)
-</code></pre>
+<a class="header" href="#apis-1" id="apis-1"><h1>APIs</h1></a>
+<p>There is currently very little Godoc api documentation for gobbi.
+As most apis are relatively direct mappings of the C library
+APIs,
+the <a href="https://developer.gnome.org/references">Gnome libraries documentation</a>
+should provide enough information to gain some
+understanding of how to use the Go apis in gobbi.</p>
+<a class="header" href="#packages-1" id="packages-1"><h2>packages</h2></a>
+<p>There is one go package for each Gnome library.</p>
+<a class="header" href="#out-params-1" id="out-params-1"><h2>out params</h2></a>
+<p>Out parameters are mapped as return values in Go functions.
+Inout parameters are not yet supported, but when they are
+the will be exposed as both parameters and return values
+in Go functions.</p>
+<a class="header" href="#inout-params-1" id="inout-params-1"><h2>inout params</h2></a>
+<p>Inout parameters are not yet supported.</p>
+<a class="header" href="#functions-returning-gerror-1" id="functions-returning-gerror-1"><h2>functions returning GError</h2></a>
+<p>Functions that have a GError out parameter, may return
+a Go <code>error</code>.
+The <code>error</code> (if not <code>nil</code>) will be a <code>glib.Error</code>,
+which has fields containing details of the error.</p>
+<a class="header" href="#variadic-functions-1" id="variadic-functions-1"><h2>variadic functions</h2></a>
+<p>Variadic api functions are not supported.</p>
+<a class="header" href="#array-functions-1" id="array-functions-1"><h3>array functions</h3></a>
+<p>In many cases the library provides an equivalent
+array based function that can be used instead.
+The names of the array-based functions often
+end in a 'v'.</p>
+<p>The C arrays are represented as Go slices.</p>
+<p>In the case of such functions that accept two slice,
+be certain that they are both of the same length.
+The behaviour when they are not is undefined.</p>
+<a class="header" href="#single-item-functions-1" id="single-item-functions-1"><h3>single item functions</h3></a>
+<p>In other cases, instead of a variadic function
+that would operate on multiple values at once,
+there will be a supported function that operates
+on a single item at a time.</p>
+<a class="header" href="#cairo--pango-1" id="cairo--pango-1"><h2>cairo &amp; pango</h2></a>
+<p>These libraries currently have very little support,
+as the introspection date available for them is inadequate.
+Support may be added later, with manually generated
+bindings.</p>
+<a class="header" href="#apis-2" id="apis-2"><h1>APIs</h1></a>
+<p>There is currently very little Godoc api documentation for gobbi.
+As most apis are relatively direct mappings of the C library
+APIs,
+the <a href="https://developer.gnome.org/references">Gnome libraries documentation</a>
+should provide enough information to gain some
+understanding of how to use the Go apis in gobbi.</p>
+<a class="header" href="#packages-2" id="packages-2"><h2>packages</h2></a>
+<p>There is one go package for each Gnome library.</p>
+<a class="header" href="#out-params-2" id="out-params-2"><h2>out params</h2></a>
+<p>Out parameters are mapped as return values in Go functions.
+Inout parameters are not yet supported, but when they are
+the will be exposed as both parameters and return values
+in Go functions.</p>
+<a class="header" href="#inout-params-2" id="inout-params-2"><h2>inout params</h2></a>
+<p>Inout parameters are not yet supported.</p>
+<a class="header" href="#functions-returning-gerror-2" id="functions-returning-gerror-2"><h2>functions returning GError</h2></a>
+<p>Functions that have a GError out parameter, may return
+a Go <code>error</code>.
+The <code>error</code> (if not <code>nil</code>) will be a <code>glib.Error</code>,
+which has fields containing details of the error.</p>
+<a class="header" href="#variadic-functions-2" id="variadic-functions-2"><h2>variadic functions</h2></a>
+<p>Variadic api functions are not supported.</p>
+<a class="header" href="#array-functions-2" id="array-functions-2"><h3>array functions</h3></a>
+<p>In many cases the library provides an equivalent
+array based function that can be used instead.
+The names of the array-based functions often
+end in a 'v'.</p>
+<p>The C arrays are represented as Go slices.</p>
+<p>In the case of such functions that accept two slice,
+be certain that they are both of the same length.
+The behaviour when they are not is undefined.</p>
+<a class="header" href="#single-item-functions-2" id="single-item-functions-2"><h3>single item functions</h3></a>
+<p>In other cases, instead of a variadic function
+that would operate on multiple values at once,
+there will be a supported function that operates
+on a single item at a time.</p>
+<a class="header" href="#cairo--pango-2" id="cairo--pango-2"><h2>cairo &amp; pango</h2></a>
+<p>These libraries currently have very little support,
+as the introspection date available for them is inadequate.
+Support may be added later, with manually generated
+bindings.</p>
+<a class="header" href="#apis-3" id="apis-3"><h1>APIs</h1></a>
+<p>There is currently very little Godoc api documentation for gobbi.
+As most apis are relatively direct mappings of the C library
+APIs,
+the <a href="https://developer.gnome.org/references">Gnome libraries documentation</a>
+should provide enough information to gain some
+understanding of how to use the Go apis in gobbi.</p>
+<a class="header" href="#packages-3" id="packages-3"><h2>packages</h2></a>
+<p>There is one go package for each Gnome library.</p>
+<a class="header" href="#out-params-3" id="out-params-3"><h2>out params</h2></a>
+<p>Out parameters are mapped as return values in Go functions.
+Inout parameters are not yet supported, but when they are
+the will be exposed as both parameters and return values
+in Go functions.</p>
+<a class="header" href="#inout-params-3" id="inout-params-3"><h2>inout params</h2></a>
+<p>Inout parameters are not yet supported.</p>
+<a class="header" href="#functions-returning-gerror-3" id="functions-returning-gerror-3"><h2>functions returning GError</h2></a>
+<p>Functions that have a GError out parameter, may return
+a Go <code>error</code>.
+The <code>error</code> (if not <code>nil</code>) will be a <code>glib.Error</code>,
+which has fields containing details of the error.</p>
+<a class="header" href="#variadic-functions-3" id="variadic-functions-3"><h2>variadic functions</h2></a>
+<p>Variadic api functions are not supported.</p>
+<a class="header" href="#array-functions-3" id="array-functions-3"><h3>array functions</h3></a>
+<p>In many cases the library provides an equivalent
+array based function that can be used instead.
+The names of the array-based functions often
+end in a 'v'.</p>
+<p>The C arrays are represented as Go slices.</p>
+<p>In the case of such functions that accept two slice,
+be certain that they are both of the same length.
+The behaviour when they are not is undefined.</p>
+<a class="header" href="#single-item-functions-3" id="single-item-functions-3"><h3>single item functions</h3></a>
+<p>In other cases, instead of a variadic function
+that would operate on multiple values at once,
+there will be a supported function that operates
+on a single item at a time.</p>
+<a class="header" href="#cairo--pango-3" id="cairo--pango-3"><h2>cairo &amp; pango</h2></a>
+<p>These libraries currently have very little support,
+as the introspection date available for them is inadequate.
+Support may be added later, with manually generated
+bindings.</p>
 
                     </main>
 

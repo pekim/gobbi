@@ -3,6 +3,7 @@ package generate
 import (
 	"fmt"
 	"github.com/dave/jennifer/jen"
+	"os"
 	"strings"
 )
 
@@ -29,6 +30,7 @@ type Namespace struct {
 	fullGoPackageName string
 	allVersions       Versions
 	versionDebug      bool
+	docsDir           string
 	libDir            string
 	namespaces        map[string]*Namespace
 }
@@ -37,7 +39,14 @@ func (ns *Namespace) init(repo *Repository) {
 	ns.repo = repo
 	ns.goPackageName = strings.ToLower(ns.Name)
 	ns.fullGoPackageName = fmt.Sprintf("github.com/pekim/gobbi/lib/%s", ns.goPackageName)
+	ns.docsDir = projectFilepath("mdbook", "lib", ns.goPackageName)
 	ns.libDir = projectFilepath("lib", ns.goPackageName)
+
+	os.RemoveAll(ns.docsDir)
+	err := os.MkdirAll(ns.docsDir, 0775)
+	if err != nil {
+		panic(err)
+	}
 
 	ns.Aliases.init(ns)
 	ns.Bitfields.init(ns)

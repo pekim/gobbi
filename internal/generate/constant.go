@@ -2,8 +2,9 @@ package generate
 
 import (
 	"fmt"
-
 	"github.com/dave/jennifer/jen"
+	"os"
+	"strings"
 )
 
 type Constant struct {
@@ -74,4 +75,21 @@ func (c *Constant) generate(g *jen.Group, version *Version) {
 		Id(goTypeName).
 		Op("=").
 		Qual("C", c.CType)
+}
+
+func (c *Constant) generateDocs(file *os.File) {
+	doc := ""
+	if c.Doc != nil {
+		doc = strings.Replace(c.Doc.Text, "\n#", "\n&num;", -1)
+	}
+
+	_, err := file.WriteString(fmt.Sprintf(
+		"## `%s`\n\n%s\n\nC - `%s`\n\n",
+		c.Name,
+		doc,
+		c.CType,
+	))
+	if err != nil {
+		panic(err)
+	}
 }

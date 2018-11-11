@@ -58,3 +58,5 @@ func (rr Records) mergeAddenda(addenda Records) {
 		}
 	}
 }
+
+func (rr Records) generateDocs(ns *Namespace) {}

@@ -1,5 +1,11 @@
 package generate
 
+import (
+	"fmt"
+	"os"
+	"path"
+)
+
 type Constants []*Constant
 
 func (cc Constants) init(ns *Namespace) {
@@ -46,4 +52,33 @@ func (cc Constants) mergeAddenda(addenda Constants) {
 			constant.mergeAddenda(addendaContant)
 		}
 	}
+}
+
+func (cc Constants) generateDocs(ns *Namespace) {
+	filename := path.Join(ns.docsDir, "constant.md")
+	//fmt.Println(filename)
+	file, err := os.OpenFile(filename, os.O_CREATE|os.O_WRONLY, 0644)
+	if err != nil {
+		panic(err)
+	}
+
+	_, err = file.WriteString(fmt.Sprintf(
+		"# `%s` Constants\n\n",
+		ns.goPackageName,
+	))
+	if err != nil {
+		panic(err)
+	}
+
+	for _, constant := range cc {
+		blacklisted, _ := constant.blacklisted()
+		supported, _ := constant.supported()
+		if blacklisted || !supported {
+			continue
+		}
+
+		constant.generateDocs(file)
+	}
+
+	file.Close()
 }

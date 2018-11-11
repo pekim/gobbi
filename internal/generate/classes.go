@@ -58,3 +58,5 @@ func (cc Classes) mergeAddenda(addenda Classes) {
 		}
 	}
 }
+
+func (cc Classes) generateDocs(ns *Namespace) {}
