@@ -14,6 +14,8 @@ type Gir struct {
 }
 
 func FromRoot(name, version string) {
+	initialiseDocsSummaryFile()
+
 	girs := girNewRoot("Gtk", "3.0")
 
 	for _, gir := range girs {

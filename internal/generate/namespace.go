@@ -3,7 +3,7 @@ package generate
 import (
 	"fmt"
 	"github.com/dave/jennifer/jen"
-	"os"
+	"path"
 	"strings"
 )
 
@@ -41,12 +41,6 @@ func (ns *Namespace) init(repo *Repository) {
 	ns.fullGoPackageName = fmt.Sprintf("github.com/pekim/gobbi/lib/%s", ns.goPackageName)
 	ns.docsDir = projectFilepath("mdbook", "lib", ns.goPackageName)
 	ns.libDir = projectFilepath("lib", ns.goPackageName)
-
-	os.RemoveAll(ns.docsDir)
-	err := os.MkdirAll(ns.docsDir, 0775)
-	if err != nil {
-		panic(err)
-	}
 
 	ns.Aliases.init(ns)
 	ns.Bitfields.init(ns)
@@ -86,6 +80,9 @@ func (ns *Namespace) generate() {
 	}
 
 	fmt.Printf("%-10s %s\n", ns.Name, ns.Version)
+
+	pkgDocFilePath := path.Join(ns.docsDir, "package.md")
+	appendDocsSummaryFile(1, ns.goPackageName, pkgDocFilePath)
 
 	ns.generateLibDir()
 	ns.generatePackageFile()

@@ -62,5 +62,7 @@ func (cc Constants) generateDocs(ns *Namespace) {
 
 			constant.generateDocs(file)
 		}
+
+		appendDocsSummaryFile(2, "constants", file.path)
 	})
 }

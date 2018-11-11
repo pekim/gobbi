@@ -8,4 +8,4 @@ title = "gobbi"
 build-dir = "../docs"
 
 [output.html]
-additional-css = ["custom.css"]
+#additional-css = ["custom.css"]

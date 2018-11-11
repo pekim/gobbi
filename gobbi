@@ -37,7 +37,8 @@ generate () {
 }
 
 docs () {
-    mdbook clean mdbook && mdbook build mdbook
+    mdbook clean mdbook/ && \
+    mdbook build mdbook/
 }
 
 test () {
@@ -77,6 +78,9 @@ processSubcommand () {
   case "$subCommand" in
     build)
       build
+      ;;
+    docs)
+      docs
       ;;
     generate)
       generate

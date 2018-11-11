@@ -1,0 +1,660 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>constants - gobbi</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body class="light">
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">var path_to_root = "../../";</script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { } 
+            if (theme === null || theme === undefined) { theme = 'light'; }
+            document.body.className = theme;
+            document.querySelector('html').className = theme + ' js';
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <ol class="chapter"><li><a href="../../introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li><a href="../../getting-started.html"><strong aria-hidden="true">2.</strong> Getting started</a></li><li><a href="../../application-lifecycle.html"><strong aria-hidden="true">3.</strong> Application lifecycle</a></li><li><a href="../../build-tags.html"><strong aria-hidden="true">4.</strong> Build tags (library versions)</a></li><li><a href="../../casting.html"><strong aria-hidden="true">5.</strong> Casting</a></li><li><a href="../../goroutines.html"><strong aria-hidden="true">6.</strong> Goroutines</a></li><li><a href="../../gvalue.html"><strong aria-hidden="true">7.</strong> gobject.Value</a></li><li><a href="../../signal-handling.html"><strong aria-hidden="true">8.</strong> Signal handling</a></li><li><a href="../../api.html"><strong aria-hidden="true">9.</strong> API</a></li><li><ol class="section"><li><a href="../../lib/atk/package.html"><strong aria-hidden="true">9.1.</strong> atk</a></li><li><ol class="section"><li><a href="../../lib/atk/constant.html"><strong aria-hidden="true">9.1.1.</strong> constants</a></li></ol></li><li><a href="../../lib/glib/package.html"><strong aria-hidden="true">9.2.</strong> glib</a></li><li><ol class="section"><li><a href="../../lib/glib/constant.html" class="active"><strong aria-hidden="true">9.2.1.</strong> constants</a></li></ol></li><li><a href="../../lib/gobject/package.html"><strong aria-hidden="true">9.3.</strong> gobject</a></li><li><ol class="section"><li><a href="../../lib/gobject/constant.html"><strong aria-hidden="true">9.3.1.</strong> constants</a></li></ol></li><li><a href="../../lib/gdk/package.html"><strong aria-hidden="true">9.4.</strong> gdk</a></li><li><ol class="section"><li><a href="../../lib/gdk/constant.html"><strong aria-hidden="true">9.4.1.</strong> constants</a></li></ol></li><li><a href="../../lib/gdkpixbuf/package.html"><strong aria-hidden="true">9.5.</strong> gdkpixbuf</a></li><li><ol class="section"><li><a href="../../lib/gdkpixbuf/constant.html"><strong aria-hidden="true">9.5.1.</strong> constants</a></li></ol></li><li><a href="../../lib/gio/package.html"><strong aria-hidden="true">9.6.</strong> gio</a></li><li><ol class="section"><li><a href="../../lib/gio/constant.html"><strong aria-hidden="true">9.6.1.</strong> constants</a></li></ol></li><li><a href="../../lib/gtk/package.html"><strong aria-hidden="true">9.7.</strong> gtk</a></li><li><ol class="section"><li><a href="../../lib/gtk/constant.html"><strong aria-hidden="true">9.7.1.</strong> constants</a></li></ol></li><li><a href="../../lib/pango/package.html"><strong aria-hidden="true">9.8.</strong> pango</a></li><li><ol class="section"><li><a href="../../lib/pango/constant.html"><strong aria-hidden="true">9.8.1.</strong> constants</a></li></ol></li><li><a href="../../lib/cairo/package.html"><strong aria-hidden="true">9.9.</strong> cairo</a></li><li><ol class="section"><li><a href="../../lib/cairo/constant.html"><strong aria-hidden="true">9.9.1.</strong> constants</a></li></ol></li></ol></li></ol>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar" class="menu-bar">
+                    <div id="menu-bar-sticky-container">
+                        <div class="left-buttons">
+                            <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                                <i class="fa fa-bars"></i>
+                            </button>
+                            <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                                <i class="fa fa-paint-brush"></i>
+                            </button>
+                            <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                                <li role="none"><button role="menuitem" class="theme" id="light">Light <span class="default">(default)</span></button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                            </ul>
+                            
+                            <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                                <i class="fa fa-search"></i>
+                            </button>
+                            
+                        </div>
+
+                        <h1 class="menu-title">gobbi</h1> 
+
+                        <div class="right-buttons">
+                            <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                                <i id="print-button" class="fa fa-print"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <a class="header" href="#glib-constants" id="glib-constants"><h1><code>glib</code> Constants</h1></a>
+<a class="header" href="#analyzer_analyzing" id="analyzer_analyzing"><h2><code>ANALYZER_ANALYZING</code></h2></a>
+<p>C - <code>G_ANALYZER_ANALYZING</code></p>
+<a class="header" href="#ascii_dtostr_buf_size" id="ascii_dtostr_buf_size"><h2><code>ASCII_DTOSTR_BUF_SIZE</code></h2></a>
+<p>A good size for a buffer to be passed into g_ascii_dtostr().
+It is guaranteed to be enough for all output of that function
+on systems with 64bit IEEE-compatible doubles.</p>
+<p>The typical usage would be something like:
+|[<!-- language="C" -->
+char buf[G_ASCII_DTOSTR_BUF_SIZE];</p>
+<p>fprintf (out, &quot;value=%s\n&quot;, g_ascii_dtostr (buf, sizeof (buf), value));
+]|</p>
+<p>C - <code>G_ASCII_DTOSTR_BUF_SIZE</code></p>
+<a class="header" href="#big_endian" id="big_endian"><h2><code>BIG_ENDIAN</code></h2></a>
+<p>Specifies one of the possible types of byte order.
+See #G_BYTE_ORDER.</p>
+<p>C - <code>G_BIG_ENDIAN</code></p>
+<a class="header" href="#cset_a_2_z" id="cset_a_2_z"><h2><code>CSET_A_2_Z</code></h2></a>
+<p>The set of uppercase ASCII alphabet characters.
+Used for specifying valid identifier characters
+in #GScannerConfig.</p>
+<p>C - <code>G_CSET_A_2_Z</code></p>
+<a class="header" href="#cset_digits" id="cset_digits"><h2><code>CSET_DIGITS</code></h2></a>
+<p>The set of ASCII digits.
+Used for specifying valid identifier characters
+in #GScannerConfig.</p>
+<p>C - <code>G_CSET_DIGITS</code></p>
+<a class="header" href="#cset_a_2_z-1" id="cset_a_2_z-1"><h2><code>CSET_a_2_z</code></h2></a>
+<p>The set of lowercase ASCII alphabet characters.
+Used for specifying valid identifier characters
+in #GScannerConfig.</p>
+<p>C - <code>G_CSET_a_2_z</code></p>
+<a class="header" href="#datalist_flags_mask" id="datalist_flags_mask"><h2><code>DATALIST_FLAGS_MASK</code></h2></a>
+<p>A bitmask that restricts the possible flags passed to
+g_datalist_set_flags(). Passing a flags value where
+flags &amp; ~G_DATALIST_FLAGS_MASK != 0 is an error.</p>
+<p>C - <code>G_DATALIST_FLAGS_MASK</code></p>
+<a class="header" href="#date_bad_day" id="date_bad_day"><h2><code>DATE_BAD_DAY</code></h2></a>
+<p>Represents an invalid #GDateDay.</p>
+<p>C - <code>G_DATE_BAD_DAY</code></p>
+<a class="header" href="#date_bad_julian" id="date_bad_julian"><h2><code>DATE_BAD_JULIAN</code></h2></a>
+<p>Represents an invalid Julian day number.</p>
+<p>C - <code>G_DATE_BAD_JULIAN</code></p>
+<a class="header" href="#date_bad_year" id="date_bad_year"><h2><code>DATE_BAD_YEAR</code></h2></a>
+<p>Represents an invalid year.</p>
+<p>C - <code>G_DATE_BAD_YEAR</code></p>
+<a class="header" href="#dir_separator" id="dir_separator"><h2><code>DIR_SEPARATOR</code></h2></a>
+<p>The directory separator character.
+This is '/' on UNIX machines and '' under Windows.</p>
+<p>C - <code>G_DIR_SEPARATOR</code></p>
+<a class="header" href="#dir_separator_s" id="dir_separator_s"><h2><code>DIR_SEPARATOR_S</code></h2></a>
+<p>The directory separator as a string.
+This is &quot;/&quot; on UNIX machines and &quot;&quot; under Windows.</p>
+<p>C - <code>G_DIR_SEPARATOR_S</code></p>
+<a class="header" href="#gint16_format" id="gint16_format"><h2><code>GINT16_FORMAT</code></h2></a>
+<p>This is the platform dependent conversion specifier for scanning and
+printing values of type #gint16. It is a string literal, but doesn't
+include the percent-sign, such that you can add precision and length
+modifiers between percent-sign and conversion specifier.</p>
+<p>|[<!-- language="C" -->
+gint16 in;
+gint32 out;
+sscanf (&quot;42&quot;, &quot;%&quot; G_GINT16_FORMAT, &amp;in)
+out = in * 1000;
+g_print (&quot;%&quot; G_GINT32_FORMAT, out);
+]|</p>
+<p>C - <code>G_GINT16_FORMAT</code></p>
+<a class="header" href="#gint16_modifier" id="gint16_modifier"><h2><code>GINT16_MODIFIER</code></h2></a>
+<p>The platform dependent length modifier for conversion specifiers
+for scanning and printing values of type #gint16 or #guint16. It
+is a string literal, but doesn't include the percent-sign, such
+that you can add precision and length modifiers between percent-sign
+and conversion specifier and append a conversion specifier.</p>
+<p>The following example prints &quot;0x7b&quot;;
+|[<!-- language="C" -->
+gint16 value = 123;
+g_print (&quot;%#&quot; G_GINT16_MODIFIER &quot;x&quot;, value);
+]|</p>
+<p>C - <code>G_GINT16_MODIFIER</code></p>
+<a class="header" href="#gint32_format" id="gint32_format"><h2><code>GINT32_FORMAT</code></h2></a>
+<p>This is the platform dependent conversion specifier for scanning
+and printing values of type #gint32. See also #G_GINT16_FORMAT.</p>
+<p>C - <code>G_GINT32_FORMAT</code></p>
+<a class="header" href="#gint32_modifier" id="gint32_modifier"><h2><code>GINT32_MODIFIER</code></h2></a>
+<p>The platform dependent length modifier for conversion specifiers
+for scanning and printing values of type #gint32 or #guint32. It
+is a string literal. See also #G_GINT16_MODIFIER.</p>
+<p>C - <code>G_GINT32_MODIFIER</code></p>
+<a class="header" href="#gint64_format" id="gint64_format"><h2><code>GINT64_FORMAT</code></h2></a>
+<p>This is the platform dependent conversion specifier for scanning
+and printing values of type #gint64. See also #G_GINT16_FORMAT.</p>
+<p>Some platforms do not support scanning and printing 64-bit integers,
+even though the types are supported. On such platforms %G_GINT64_FORMAT
+is not defined. Note that scanf() may not support 64-bit integers, even
+if %G_GINT64_FORMAT is defined. Due to its weak error handling, scanf()
+is not recommended for parsing anyway; consider using g_ascii_strtoull()
+instead.</p>
+<p>C - <code>G_GINT64_FORMAT</code></p>
+<a class="header" href="#gint64_modifier" id="gint64_modifier"><h2><code>GINT64_MODIFIER</code></h2></a>
+<p>The platform dependent length modifier for conversion specifiers
+for scanning and printing values of type #gint64 or #guint64.
+It is a string literal.</p>
+<p>Some platforms do not support printing 64-bit integers, even
+though the types are supported. On such platforms %G_GINT64_MODIFIER
+is not defined.</p>
+<p>C - <code>G_GINT64_MODIFIER</code></p>
+<a class="header" href="#gintptr_format" id="gintptr_format"><h2><code>GINTPTR_FORMAT</code></h2></a>
+<p>This is the platform dependent conversion specifier for scanning
+and printing values of type #gintptr.</p>
+<p>C - <code>G_GINTPTR_FORMAT</code></p>
+<a class="header" href="#gintptr_modifier" id="gintptr_modifier"><h2><code>GINTPTR_MODIFIER</code></h2></a>
+<p>The platform dependent length modifier for conversion specifiers
+for scanning and printing values of type #gintptr or #guintptr.
+It is a string literal.</p>
+<p>C - <code>G_GINTPTR_MODIFIER</code></p>
+<a class="header" href="#gnuc_function" id="gnuc_function"><h2><code>GNUC_FUNCTION</code></h2></a>
+<p>Expands to &quot;&quot; on all modern compilers, and to  <strong>FUNCTION</strong> on gcc
+version 2.x. Don't use it.</p>
+<p>C - <code>G_GNUC_FUNCTION</code></p>
+<a class="header" href="#gnuc_pretty_function" id="gnuc_pretty_function"><h2><code>GNUC_PRETTY_FUNCTION</code></h2></a>
+<p>Expands to &quot;&quot; on all modern compilers, and to <strong>PRETTY_FUNCTION</strong>
+on gcc version 2.x. Don't use it.</p>
+<p>C - <code>G_GNUC_PRETTY_FUNCTION</code></p>
+<a class="header" href="#gsize_format" id="gsize_format"><h2><code>GSIZE_FORMAT</code></h2></a>
+<p>This is the platform dependent conversion specifier for scanning
+and printing values of type #gsize. See also #G_GINT16_FORMAT.</p>
+<p>C - <code>G_GSIZE_FORMAT</code></p>
+<a class="header" href="#gsize_modifier" id="gsize_modifier"><h2><code>GSIZE_MODIFIER</code></h2></a>
+<p>The platform dependent length modifier for conversion specifiers
+for scanning and printing values of type #gsize. It
+is a string literal.</p>
+<p>C - <code>G_GSIZE_MODIFIER</code></p>
+<a class="header" href="#gssize_format" id="gssize_format"><h2><code>GSSIZE_FORMAT</code></h2></a>
+<p>This is the platform dependent conversion specifier for scanning
+and printing values of type #gssize. See also #G_GINT16_FORMAT.</p>
+<p>C - <code>G_GSSIZE_FORMAT</code></p>
+<a class="header" href="#gssize_modifier" id="gssize_modifier"><h2><code>GSSIZE_MODIFIER</code></h2></a>
+<p>The platform dependent length modifier for conversion specifiers
+for scanning and printing values of type #gssize. It
+is a string literal.</p>
+<p>C - <code>G_GSSIZE_MODIFIER</code></p>
+<a class="header" href="#guint16_format" id="guint16_format"><h2><code>GUINT16_FORMAT</code></h2></a>
+<p>This is the platform dependent conversion specifier for scanning
+and printing values of type #guint16. See also #G_GINT16_FORMAT</p>
+<p>C - <code>G_GUINT16_FORMAT</code></p>
+<a class="header" href="#guint32_format" id="guint32_format"><h2><code>GUINT32_FORMAT</code></h2></a>
+<p>This is the platform dependent conversion specifier for scanning
+and printing values of type #guint32. See also #G_GINT16_FORMAT.</p>
+<p>C - <code>G_GUINT32_FORMAT</code></p>
+<a class="header" href="#guint64_format" id="guint64_format"><h2><code>GUINT64_FORMAT</code></h2></a>
+<p>This is the platform dependent conversion specifier for scanning
+and printing values of type #guint64. See also #G_GINT16_FORMAT.</p>
+<p>Some platforms do not support scanning and printing 64-bit integers,
+even though the types are supported. On such platforms %G_GUINT64_FORMAT
+is not defined.  Note that scanf() may not support 64-bit integers, even
+if %G_GINT64_FORMAT is defined. Due to its weak error handling, scanf()
+is not recommended for parsing anyway; consider using g_ascii_strtoull()
+instead.</p>
+<p>C - <code>G_GUINT64_FORMAT</code></p>
+<a class="header" href="#guintptr_format" id="guintptr_format"><h2><code>GUINTPTR_FORMAT</code></h2></a>
+<p>This is the platform dependent conversion specifier
+for scanning and printing values of type #guintptr.</p>
+<p>C - <code>G_GUINTPTR_FORMAT</code></p>
+<a class="header" href="#have_gint64" id="have_gint64"><h2><code>HAVE_GINT64</code></h2></a>
+<p>C - <code>G_HAVE_GINT64</code></p>
+<a class="header" href="#have_gnuc_varargs" id="have_gnuc_varargs"><h2><code>HAVE_GNUC_VARARGS</code></h2></a>
+<p>C - <code>G_HAVE_GNUC_VARARGS</code></p>
+<a class="header" href="#have_gnuc_visibility" id="have_gnuc_visibility"><h2><code>HAVE_GNUC_VISIBILITY</code></h2></a>
+<p>Defined to 1 if gcc-style visibility handling is supported.</p>
+<p>C - <code>G_HAVE_GNUC_VISIBILITY</code></p>
+<a class="header" href="#have_growing_stack" id="have_growing_stack"><h2><code>HAVE_GROWING_STACK</code></h2></a>
+<p>C - <code>G_HAVE_GROWING_STACK</code></p>
+<a class="header" href="#have_iso_varargs" id="have_iso_varargs"><h2><code>HAVE_ISO_VARARGS</code></h2></a>
+<p>C - <code>G_HAVE_ISO_VARARGS</code></p>
+<a class="header" href="#hook_flag_user_shift" id="hook_flag_user_shift"><h2><code>HOOK_FLAG_USER_SHIFT</code></h2></a>
+<p>The position of the first bit which is not reserved for internal
+use be the #GHook implementation, i.e.
+<code>1 &lt;&lt; G_HOOK_FLAG_USER_SHIFT</code> is the first
+bit which can be used for application-defined flags.</p>
+<p>C - <code>G_HOOK_FLAG_USER_SHIFT</code></p>
+<a class="header" href="#ieee754_double_bias" id="ieee754_double_bias"><h2><code>IEEE754_DOUBLE_BIAS</code></h2></a>
+<p>The bias by which exponents in double-precision floats are offset.</p>
+<p>C - <code>G_IEEE754_DOUBLE_BIAS</code></p>
+<a class="header" href="#ieee754_float_bias" id="ieee754_float_bias"><h2><code>IEEE754_FLOAT_BIAS</code></h2></a>
+<p>The bias by which exponents in single-precision floats are offset.</p>
+<p>C - <code>G_IEEE754_FLOAT_BIAS</code></p>
+<a class="header" href="#key_file_desktop_group" id="key_file_desktop_group"><h2><code>KEY_FILE_DESKTOP_GROUP</code></h2></a>
+<p>The name of the main group of a desktop entry file, as defined in the
+<a href="http://freedesktop.org/Standards/desktop-entry-spec">Desktop Entry Specification</a>.
+Consult the specification for more
+details about the meanings of the keys below.</p>
+<p>C - <code>G_KEY_FILE_DESKTOP_GROUP</code></p>
+<a class="header" href="#key_file_desktop_key_actions" id="key_file_desktop_key_actions"><h2><code>KEY_FILE_DESKTOP_KEY_ACTIONS</code></h2></a>
+<p>A key under #G_KEY_FILE_DESKTOP_GROUP, whose value is a string list
+giving the available application actions.</p>
+<p>C - <code>G_KEY_FILE_DESKTOP_KEY_ACTIONS</code></p>
+<a class="header" href="#key_file_desktop_key_categories" id="key_file_desktop_key_categories"><h2><code>KEY_FILE_DESKTOP_KEY_CATEGORIES</code></h2></a>
+<p>A key under #G_KEY_FILE_DESKTOP_GROUP, whose value is a list
+of strings giving the categories in which the desktop entry
+should be shown in a menu.</p>
+<p>C - <code>G_KEY_FILE_DESKTOP_KEY_CATEGORIES</code></p>
+<a class="header" href="#key_file_desktop_key_comment" id="key_file_desktop_key_comment"><h2><code>KEY_FILE_DESKTOP_KEY_COMMENT</code></h2></a>
+<p>A key under #G_KEY_FILE_DESKTOP_GROUP, whose value is a localized
+string giving the tooltip for the desktop entry.</p>
+<p>C - <code>G_KEY_FILE_DESKTOP_KEY_COMMENT</code></p>
+<a class="header" href="#key_file_desktop_key_dbus_activatable" id="key_file_desktop_key_dbus_activatable"><h2><code>KEY_FILE_DESKTOP_KEY_DBUS_ACTIVATABLE</code></h2></a>
+<p>A key under #G_KEY_FILE_DESKTOP_GROUP, whose value is a boolean set to true
+if the application is D-Bus activatable.</p>
+<p>C - <code>G_KEY_FILE_DESKTOP_KEY_DBUS_ACTIVATABLE</code></p>
+<a class="header" href="#key_file_desktop_key_exec" id="key_file_desktop_key_exec"><h2><code>KEY_FILE_DESKTOP_KEY_EXEC</code></h2></a>
+<p>A key under #G_KEY_FILE_DESKTOP_GROUP, whose value is a string
+giving the command line to execute. It is only valid for desktop
+entries with the <code>Application</code> type.</p>
+<p>C - <code>G_KEY_FILE_DESKTOP_KEY_EXEC</code></p>
+<a class="header" href="#key_file_desktop_key_fullname" id="key_file_desktop_key_fullname"><h2><code>KEY_FILE_DESKTOP_KEY_FULLNAME</code></h2></a>
+<p>C - <code>G_KEY_FILE_DESKTOP_KEY_FULLNAME</code></p>
+<a class="header" href="#key_file_desktop_key_generic_name" id="key_file_desktop_key_generic_name"><h2><code>KEY_FILE_DESKTOP_KEY_GENERIC_NAME</code></h2></a>
+<p>A key under #G_KEY_FILE_DESKTOP_GROUP, whose value is a localized
+string giving the generic name of the desktop entry.</p>
+<p>C - <code>G_KEY_FILE_DESKTOP_KEY_GENERIC_NAME</code></p>
+<a class="header" href="#key_file_desktop_key_gettext_domain" id="key_file_desktop_key_gettext_domain"><h2><code>KEY_FILE_DESKTOP_KEY_GETTEXT_DOMAIN</code></h2></a>
+<p>C - <code>G_KEY_FILE_DESKTOP_KEY_GETTEXT_DOMAIN</code></p>
+<a class="header" href="#key_file_desktop_key_hidden" id="key_file_desktop_key_hidden"><h2><code>KEY_FILE_DESKTOP_KEY_HIDDEN</code></h2></a>
+<p>A key under #G_KEY_FILE_DESKTOP_GROUP, whose value is a boolean
+stating whether the desktop entry has been deleted by the user.</p>
+<p>C - <code>G_KEY_FILE_DESKTOP_KEY_HIDDEN</code></p>
+<a class="header" href="#key_file_desktop_key_icon" id="key_file_desktop_key_icon"><h2><code>KEY_FILE_DESKTOP_KEY_ICON</code></h2></a>
+<p>A key under #G_KEY_FILE_DESKTOP_GROUP, whose value is a localized
+string giving the name of the icon to be displayed for the desktop
+entry.</p>
+<p>C - <code>G_KEY_FILE_DESKTOP_KEY_ICON</code></p>
+<a class="header" href="#key_file_desktop_key_keywords" id="key_file_desktop_key_keywords"><h2><code>KEY_FILE_DESKTOP_KEY_KEYWORDS</code></h2></a>
+<p>C - <code>G_KEY_FILE_DESKTOP_KEY_KEYWORDS</code></p>
+<a class="header" href="#key_file_desktop_key_mime_type" id="key_file_desktop_key_mime_type"><h2><code>KEY_FILE_DESKTOP_KEY_MIME_TYPE</code></h2></a>
+<p>A key under #G_KEY_FILE_DESKTOP_GROUP, whose value is a list
+of strings giving the MIME types supported by this desktop entry.</p>
+<p>C - <code>G_KEY_FILE_DESKTOP_KEY_MIME_TYPE</code></p>
+<a class="header" href="#key_file_desktop_key_name" id="key_file_desktop_key_name"><h2><code>KEY_FILE_DESKTOP_KEY_NAME</code></h2></a>
+<p>A key under #G_KEY_FILE_DESKTOP_GROUP, whose value is a localized
+string giving the specific name of the desktop entry.</p>
+<p>C - <code>G_KEY_FILE_DESKTOP_KEY_NAME</code></p>
+<a class="header" href="#key_file_desktop_key_not_show_in" id="key_file_desktop_key_not_show_in"><h2><code>KEY_FILE_DESKTOP_KEY_NOT_SHOW_IN</code></h2></a>
+<p>A key under #G_KEY_FILE_DESKTOP_GROUP, whose value is a list of
+strings identifying the environments that should not display the
+desktop entry.</p>
+<p>C - <code>G_KEY_FILE_DESKTOP_KEY_NOT_SHOW_IN</code></p>
+<a class="header" href="#key_file_desktop_key_no_display" id="key_file_desktop_key_no_display"><h2><code>KEY_FILE_DESKTOP_KEY_NO_DISPLAY</code></h2></a>
+<p>A key under #G_KEY_FILE_DESKTOP_GROUP, whose value is a boolean
+stating whether the desktop entry should be shown in menus.</p>
+<p>C - <code>G_KEY_FILE_DESKTOP_KEY_NO_DISPLAY</code></p>
+<a class="header" href="#key_file_desktop_key_only_show_in" id="key_file_desktop_key_only_show_in"><h2><code>KEY_FILE_DESKTOP_KEY_ONLY_SHOW_IN</code></h2></a>
+<p>A key under #G_KEY_FILE_DESKTOP_GROUP, whose value is a list of
+strings identifying the environments that should display the
+desktop entry.</p>
+<p>C - <code>G_KEY_FILE_DESKTOP_KEY_ONLY_SHOW_IN</code></p>
+<a class="header" href="#key_file_desktop_key_path" id="key_file_desktop_key_path"><h2><code>KEY_FILE_DESKTOP_KEY_PATH</code></h2></a>
+<p>A key under #G_KEY_FILE_DESKTOP_GROUP, whose value is a string
+containing the working directory to run the program in. It is only
+valid for desktop entries with the <code>Application</code> type.</p>
+<p>C - <code>G_KEY_FILE_DESKTOP_KEY_PATH</code></p>
+<a class="header" href="#key_file_desktop_key_startup_notify" id="key_file_desktop_key_startup_notify"><h2><code>KEY_FILE_DESKTOP_KEY_STARTUP_NOTIFY</code></h2></a>
+<p>A key under #G_KEY_FILE_DESKTOP_GROUP, whose value is a boolean
+stating whether the application supports the
+<a href="http://www.freedesktop.org/Standards/startup-notification-spec">Startup Notification Protocol Specification</a>.</p>
+<p>C - <code>G_KEY_FILE_DESKTOP_KEY_STARTUP_NOTIFY</code></p>
+<a class="header" href="#key_file_desktop_key_startup_wm_class" id="key_file_desktop_key_startup_wm_class"><h2><code>KEY_FILE_DESKTOP_KEY_STARTUP_WM_CLASS</code></h2></a>
+<p>A key under #G_KEY_FILE_DESKTOP_GROUP, whose value is string
+identifying the WM class or name hint of a window that the application
+will create, which can be used to emulate Startup Notification with
+older applications.</p>
+<p>C - <code>G_KEY_FILE_DESKTOP_KEY_STARTUP_WM_CLASS</code></p>
+<a class="header" href="#key_file_desktop_key_terminal" id="key_file_desktop_key_terminal"><h2><code>KEY_FILE_DESKTOP_KEY_TERMINAL</code></h2></a>
+<p>A key under #G_KEY_FILE_DESKTOP_GROUP, whose value is a boolean
+stating whether the program should be run in a terminal window.
+It is only valid for desktop entries with the
+<code>Application</code> type.</p>
+<p>C - <code>G_KEY_FILE_DESKTOP_KEY_TERMINAL</code></p>
+<a class="header" href="#key_file_desktop_key_try_exec" id="key_file_desktop_key_try_exec"><h2><code>KEY_FILE_DESKTOP_KEY_TRY_EXEC</code></h2></a>
+<p>A key under #G_KEY_FILE_DESKTOP_GROUP, whose value is a string
+giving the file name of a binary on disk used to determine if the
+program is actually installed. It is only valid for desktop entries
+with the <code>Application</code> type.</p>
+<p>C - <code>G_KEY_FILE_DESKTOP_KEY_TRY_EXEC</code></p>
+<a class="header" href="#key_file_desktop_key_type" id="key_file_desktop_key_type"><h2><code>KEY_FILE_DESKTOP_KEY_TYPE</code></h2></a>
+<p>A key under #G_KEY_FILE_DESKTOP_GROUP, whose value is a string
+giving the type of the desktop entry. Usually
+#G_KEY_FILE_DESKTOP_TYPE_APPLICATION,
+#G_KEY_FILE_DESKTOP_TYPE_LINK, or
+#G_KEY_FILE_DESKTOP_TYPE_DIRECTORY.</p>
+<p>C - <code>G_KEY_FILE_DESKTOP_KEY_TYPE</code></p>
+<a class="header" href="#key_file_desktop_key_url" id="key_file_desktop_key_url"><h2><code>KEY_FILE_DESKTOP_KEY_URL</code></h2></a>
+<p>A key under #G_KEY_FILE_DESKTOP_GROUP, whose value is a string
+giving the URL to access. It is only valid for desktop entries
+with the <code>Link</code> type.</p>
+<p>C - <code>G_KEY_FILE_DESKTOP_KEY_URL</code></p>
+<a class="header" href="#key_file_desktop_key_version" id="key_file_desktop_key_version"><h2><code>KEY_FILE_DESKTOP_KEY_VERSION</code></h2></a>
+<p>A key under #G_KEY_FILE_DESKTOP_GROUP, whose value is a string
+giving the version of the Desktop Entry Specification used for
+the desktop entry file.</p>
+<p>C - <code>G_KEY_FILE_DESKTOP_KEY_VERSION</code></p>
+<a class="header" href="#key_file_desktop_type_application" id="key_file_desktop_type_application"><h2><code>KEY_FILE_DESKTOP_TYPE_APPLICATION</code></h2></a>
+<p>The value of the #G_KEY_FILE_DESKTOP_KEY_TYPE, key for desktop
+entries representing applications.</p>
+<p>C - <code>G_KEY_FILE_DESKTOP_TYPE_APPLICATION</code></p>
+<a class="header" href="#key_file_desktop_type_directory" id="key_file_desktop_type_directory"><h2><code>KEY_FILE_DESKTOP_TYPE_DIRECTORY</code></h2></a>
+<p>The value of the #G_KEY_FILE_DESKTOP_KEY_TYPE, key for desktop
+entries representing directories.</p>
+<p>C - <code>G_KEY_FILE_DESKTOP_TYPE_DIRECTORY</code></p>
+<a class="header" href="#key_file_desktop_type_link" id="key_file_desktop_type_link"><h2><code>KEY_FILE_DESKTOP_TYPE_LINK</code></h2></a>
+<p>The value of the #G_KEY_FILE_DESKTOP_KEY_TYPE, key for desktop
+entries representing links to documents.</p>
+<p>C - <code>G_KEY_FILE_DESKTOP_TYPE_LINK</code></p>
+<a class="header" href="#little_endian" id="little_endian"><h2><code>LITTLE_ENDIAN</code></h2></a>
+<p>Specifies one of the possible types of byte order.
+See #G_BYTE_ORDER.</p>
+<p>C - <code>G_LITTLE_ENDIAN</code></p>
+<a class="header" href="#log_fatal_mask" id="log_fatal_mask"><h2><code>LOG_FATAL_MASK</code></h2></a>
+<p>GLib log levels that are considered fatal by default.</p>
+<p>This is not used if structured logging is enabled; see
+[Using Structured Logging][using-structured-logging].</p>
+<p>C - <code>G_LOG_FATAL_MASK</code></p>
+<a class="header" href="#log_level_user_shift" id="log_level_user_shift"><h2><code>LOG_LEVEL_USER_SHIFT</code></h2></a>
+<p>Log levels below 1&lt;&lt;G_LOG_LEVEL_USER_SHIFT are used by GLib.
+Higher bits can be used for user-defined log levels.</p>
+<p>C - <code>G_LOG_LEVEL_USER_SHIFT</code></p>
+<a class="header" href="#major_version" id="major_version"><h2><code>MAJOR_VERSION</code></h2></a>
+<p>The major version number of the GLib library.</p>
+<p>Like #glib_major_version, but from the headers used at
+application compile time, rather than from the library
+linked against at application run time.</p>
+<p>C - <code>GLIB_MAJOR_VERSION</code></p>
+<a class="header" href="#micro_version" id="micro_version"><h2><code>MICRO_VERSION</code></h2></a>
+<p>The micro version number of the GLib library.</p>
+<p>Like #gtk_micro_version, but from the headers used at
+application compile time, rather than from the library
+linked against at application run time.</p>
+<p>C - <code>GLIB_MICRO_VERSION</code></p>
+<a class="header" href="#minor_version" id="minor_version"><h2><code>MINOR_VERSION</code></h2></a>
+<p>The minor version number of the GLib library.</p>
+<p>Like #gtk_minor_version, but from the headers used at
+application compile time, rather than from the library
+linked against at application run time.</p>
+<p>C - <code>GLIB_MINOR_VERSION</code></p>
+<a class="header" href="#module_suffix" id="module_suffix"><h2><code>MODULE_SUFFIX</code></h2></a>
+<p>C - <code>G_MODULE_SUFFIX</code></p>
+<a class="header" href="#option_remaining" id="option_remaining"><h2><code>OPTION_REMAINING</code></h2></a>
+<p>If a long option in the main group has this name, it is not treated as a
+regular option. Instead it collects all non-option arguments which would
+otherwise be left in <code>argv</code>. The option must be of type
+%G_OPTION_ARG_CALLBACK, %G_OPTION_ARG_STRING_ARRAY
+or %G_OPTION_ARG_FILENAME_ARRAY.</p>
+<p>Using #G_OPTION_REMAINING instead of simply scanning <code>argv</code>
+for leftover arguments has the advantage that GOption takes care of
+necessary encoding conversions for strings or filenames.</p>
+<p>C - <code>G_OPTION_REMAINING</code></p>
+<a class="header" href="#pdp_endian" id="pdp_endian"><h2><code>PDP_ENDIAN</code></h2></a>
+<p>Specifies one of the possible types of byte order
+(currently unused). See #G_BYTE_ORDER.</p>
+<p>C - <code>G_PDP_ENDIAN</code></p>
+<a class="header" href="#pid_format" id="pid_format"><h2><code>PID_FORMAT</code></h2></a>
+<p>A format specifier that can be used in printf()-style format strings
+when printing a #GPid.</p>
+<p>C - <code>G_PID_FORMAT</code></p>
+<a class="header" href="#pollfd_format" id="pollfd_format"><h2><code>POLLFD_FORMAT</code></h2></a>
+<p>A format specifier that can be used in printf()-style format strings
+when printing the @fd member of a #GPollFD.</p>
+<p>C - <code>G_POLLFD_FORMAT</code></p>
+<a class="header" href="#priority_default" id="priority_default"><h2><code>PRIORITY_DEFAULT</code></h2></a>
+<p>Use this for default priority event sources.</p>
+<p>In GLib this priority is used when adding timeout functions
+with g_timeout_add(). In GDK this priority is used for events
+from the X server.</p>
+<p>C - <code>G_PRIORITY_DEFAULT</code></p>
+<a class="header" href="#priority_default_idle" id="priority_default_idle"><h2><code>PRIORITY_DEFAULT_IDLE</code></h2></a>
+<p>Use this for default priority idle functions.</p>
+<p>In GLib this priority is used when adding idle functions with
+g_idle_add().</p>
+<p>C - <code>G_PRIORITY_DEFAULT_IDLE</code></p>
+<a class="header" href="#priority_high" id="priority_high"><h2><code>PRIORITY_HIGH</code></h2></a>
+<p>Use this for high priority event sources.</p>
+<p>It is not used within GLib or GTK+.</p>
+<p>C - <code>G_PRIORITY_HIGH</code></p>
+<a class="header" href="#priority_high_idle" id="priority_high_idle"><h2><code>PRIORITY_HIGH_IDLE</code></h2></a>
+<p>Use this for high priority idle functions.</p>
+<p>GTK+ uses #G_PRIORITY_HIGH_IDLE + 10 for resizing operations,
+and #G_PRIORITY_HIGH_IDLE + 20 for redrawing operations. (This is
+done to ensure that any pending resizes are processed before any
+pending redraws, so that widgets are not redrawn twice unnecessarily.)</p>
+<p>C - <code>G_PRIORITY_HIGH_IDLE</code></p>
+<a class="header" href="#priority_low" id="priority_low"><h2><code>PRIORITY_LOW</code></h2></a>
+<p>Use this for very low priority background tasks.</p>
+<p>It is not used within GLib or GTK+.</p>
+<p>C - <code>G_PRIORITY_LOW</code></p>
+<a class="header" href="#searchpath_separator" id="searchpath_separator"><h2><code>SEARCHPATH_SEPARATOR</code></h2></a>
+<p>The search path separator character.
+This is ':' on UNIX machines and ';' under Windows.</p>
+<p>C - <code>G_SEARCHPATH_SEPARATOR</code></p>
+<a class="header" href="#searchpath_separator_s" id="searchpath_separator_s"><h2><code>SEARCHPATH_SEPARATOR_S</code></h2></a>
+<p>The search path separator as a string.
+This is &quot;:&quot; on UNIX machines and &quot;;&quot; under Windows.</p>
+<p>C - <code>G_SEARCHPATH_SEPARATOR_S</code></p>
+<a class="header" href="#sizeof_long" id="sizeof_long"><h2><code>SIZEOF_LONG</code></h2></a>
+<p>C - <code>GLIB_SIZEOF_LONG</code></p>
+<a class="header" href="#sizeof_size_t" id="sizeof_size_t"><h2><code>SIZEOF_SIZE_T</code></h2></a>
+<p>C - <code>GLIB_SIZEOF_SIZE_T</code></p>
+<a class="header" href="#sizeof_ssize_t" id="sizeof_ssize_t"><h2><code>SIZEOF_SSIZE_T</code></h2></a>
+<p>C - <code>GLIB_SIZEOF_SSIZE_T</code></p>
+<a class="header" href="#sizeof_void_p" id="sizeof_void_p"><h2><code>SIZEOF_VOID_P</code></h2></a>
+<p>C - <code>GLIB_SIZEOF_VOID_P</code></p>
+<a class="header" href="#source_continue" id="source_continue"><h2><code>SOURCE_CONTINUE</code></h2></a>
+<p>Use this macro as the return value of a #GSourceFunc to leave
+the #GSource in the main loop.</p>
+<p>C - <code>G_SOURCE_CONTINUE</code></p>
+<a class="header" href="#source_remove" id="source_remove"><h2><code>SOURCE_REMOVE</code></h2></a>
+<p>Use this macro as the return value of a #GSourceFunc to remove
+the #GSource from the main loop.</p>
+<p>C - <code>G_SOURCE_REMOVE</code></p>
+<a class="header" href="#str_delimiters" id="str_delimiters"><h2><code>STR_DELIMITERS</code></h2></a>
+<p>The standard delimiters, used in g_strdelimit().</p>
+<p>C - <code>G_STR_DELIMITERS</code></p>
+<a class="header" href="#sysdef_af_inet" id="sysdef_af_inet"><h2><code>SYSDEF_AF_INET</code></h2></a>
+<p>C - <code>GLIB_SYSDEF_AF_INET</code></p>
+<a class="header" href="#sysdef_af_inet6" id="sysdef_af_inet6"><h2><code>SYSDEF_AF_INET6</code></h2></a>
+<p>C - <code>GLIB_SYSDEF_AF_INET6</code></p>
+<a class="header" href="#sysdef_af_unix" id="sysdef_af_unix"><h2><code>SYSDEF_AF_UNIX</code></h2></a>
+<p>C - <code>GLIB_SYSDEF_AF_UNIX</code></p>
+<a class="header" href="#sysdef_msg_dontroute" id="sysdef_msg_dontroute"><h2><code>SYSDEF_MSG_DONTROUTE</code></h2></a>
+<p>C - <code>GLIB_SYSDEF_MSG_DONTROUTE</code></p>
+<a class="header" href="#sysdef_msg_oob" id="sysdef_msg_oob"><h2><code>SYSDEF_MSG_OOB</code></h2></a>
+<p>C - <code>GLIB_SYSDEF_MSG_OOB</code></p>
+<a class="header" href="#sysdef_msg_peek" id="sysdef_msg_peek"><h2><code>SYSDEF_MSG_PEEK</code></h2></a>
+<p>C - <code>GLIB_SYSDEF_MSG_PEEK</code></p>
+<a class="header" href="#unichar_max_decomposition_length" id="unichar_max_decomposition_length"><h2><code>UNICHAR_MAX_DECOMPOSITION_LENGTH</code></h2></a>
+<p>The maximum length (in codepoints) of a compatibility or canonical
+decomposition of a single Unicode character.</p>
+<p>This is as defined by Unicode 6.1.</p>
+<p>C - <code>G_UNICHAR_MAX_DECOMPOSITION_LENGTH</code></p>
+<a class="header" href="#uri_reserved_chars_generic_delimiters" id="uri_reserved_chars_generic_delimiters"><h2><code>URI_RESERVED_CHARS_GENERIC_DELIMITERS</code></h2></a>
+<p>Generic delimiters characters as defined in RFC 3986. Includes &quot;:/?#[]@&quot;.</p>
+<p>C - <code>G_URI_RESERVED_CHARS_GENERIC_DELIMITERS</code></p>
+<a class="header" href="#uri_reserved_chars_subcomponent_delimiters" id="uri_reserved_chars_subcomponent_delimiters"><h2><code>URI_RESERVED_CHARS_SUBCOMPONENT_DELIMITERS</code></h2></a>
+<p>Subcomponent delimiter characters as defined in RFC 3986. Includes &quot;!$&amp;'()*+,;=&quot;.</p>
+<p>C - <code>G_URI_RESERVED_CHARS_SUBCOMPONENT_DELIMITERS</code></p>
+<a class="header" href="#usec_per_sec" id="usec_per_sec"><h2><code>USEC_PER_SEC</code></h2></a>
+<p>Number of microseconds in one second (1 million).
+This macro is provided for code readability.</p>
+<p>C - <code>G_USEC_PER_SEC</code></p>
+<a class="header" href="#va_copy_as_array" id="va_copy_as_array"><h2><code>VA_COPY_AS_ARRAY</code></h2></a>
+<p>C - <code>G_VA_COPY_AS_ARRAY</code></p>
+<a class="header" href="#version_min_required" id="version_min_required"><h2><code>VERSION_MIN_REQUIRED</code></h2></a>
+<p>A macro that should be defined by the user prior to including
+the glib.h header.
+The definition should be one of the predefined GLib version
+macros: %GLIB_VERSION_2_26, %GLIB_VERSION_2_28,...</p>
+<p>This macro defines the earliest version of GLib that the package is
+required to be able to compile against.</p>
+<p>If the compiler is configured to warn about the use of deprecated
+functions, then using functions that were deprecated in version
+%GLIB_VERSION_MIN_REQUIRED or earlier will cause warnings (but
+using functions deprecated in later releases will not).</p>
+<p>C - <code>GLIB_VERSION_MIN_REQUIRED</code></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="../../lib/glib/package.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="../../lib/gobject/package.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a href="../../lib/glib/package.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a href="../../lib/gobject/package.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+
+        
+        <script src="../../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="../../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>

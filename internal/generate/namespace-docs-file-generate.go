@@ -8,6 +8,7 @@ import (
 
 type DocFile struct {
 	file *os.File
+	path string
 }
 
 func (f *DocFile) write(text string) {
@@ -42,7 +43,10 @@ func (ns Namespace) generateDocFile(name string, callback func(docfile *DocFile)
 		panic(err)
 	}
 
-	callback(&DocFile{file})
+	callback(&DocFile{
+		file: file,
+		path: filename,
+	})
 
 	err = file.Close()
 	if err != nil {
