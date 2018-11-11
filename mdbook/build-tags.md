@@ -40,15 +40,15 @@ the following tags would be a good starting point.
 go build -tags "glib_2.48 gdk_3.4 gdkpixbuf_2.32 gio_2.32 gtk_3.18" my_app.go
 ```
 
-# editors & IDEs
+## editors & IDEs
 Editors and IDE can provide better completion
 and error feedback if they are aware of the build
 tags that an application is to be built with.
 
-## vs code
+### vs code
 The relevant setting is `Go: Build Tags`.
 
-## goland
+### goland
 In the `Settings...` dialog, the relevant setting can
 be found under
 - Go

@@ -8,7 +8,8 @@ tags="glib_2.48 gdk_3.4 gdkpixbuf_2.32 gio_2.32 gtk_3.18"
 usage () {
     echo "Usage:"
     echo "  do -h                       Show this help"
-    echo "  do build                    Generate libraries, and run tests"
+    echo "  do build                    Generate libraries and docs, and run tests"
+    echo "  do docs                     Generate documentation"
     echo "  do generate                 Generate libraries"
     echo "  do test                     Run tests"
     echo "  do examples                 List the available examples"
@@ -26,11 +27,17 @@ example () {
 build () {
     generate && \
     echo "" && \
+    docs && \
+    echo "" && \
     test
 }
 
 generate () {
     go run internal/cmd/generate/*.go
+}
+
+docs () {
+    mdbook build mdbook
 }
 
 test () {

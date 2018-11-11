@@ -60,5 +60,5 @@ button.ConnectClicked(...)
 ```
 
 See the
-[builder](../example/builder/main.go)
+[builder](https://github.com/pekim/gobbi/blob/master/example/builder/main.go)
 example to see this in an application. 

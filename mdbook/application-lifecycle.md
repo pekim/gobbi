@@ -87,5 +87,5 @@ func main() {
 ## gtk.Application
 A preferred approach to gtk application and window
 management is to use `gtk.Application`.
-The [gtk_application](../example/gtk_application/main.go)
+The [gtk_application](https://github.com/pekim/gobbi/blob/master/example/gtk_application/main.go)
 example illustrates this.

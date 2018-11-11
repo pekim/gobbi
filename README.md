@@ -43,34 +43,8 @@ although some changes are certainly possible.
 The generation code is quite messy in some areas,
 and needs tidying up.
 
-## pre-requisites
-* go 1.11 or later
-* libraries
-    * debian/ubuntu packages -
-        `libatk1.0-dev libcairo2-dev libglib2.0-dev
-        libgtk-3-dev libpango1.0-dev`
-    * note that dev libraries are required because pkg-config
-        and headers are necessary
-* C compiler, and a linker
-    * required because of the use of cgo
-    * for debian based distributions the `build-essential`
-        package should suffice 
-
-## getting started
-* `git clone https://github.com/pekim/gobbi.git`
-* `cd gobbi`
-* `./gobbi example simple_window`
-    * Be patient.
-        The first `go build` or `go run` will take quite a while,
-        perhaps a few minutes.
-        Subsequent builds of applications will be a *lot* quicker
-        as cached gobbi packages will be used by the Go commands. 
-
-Run `./gobbi examples` for a list of the available examples.
-
 ## documentation
-The [docs](./docs/README.md) directory contains some
-documentation. 
+https://pekim.github.io/gobbi/
 
 ## gotk3
 [gotk3](https://github.com/gotk3/gotk3)
